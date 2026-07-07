@@ -1,0 +1,19 @@
+{
+  "short_name": "Tixar",
+  "name": "Tixar Learning Platform",
+  "icons": [
+    {
+      "src": "Tixar.jpeg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#7552f3",
+  "background_color": "#ffffff"
+}
+
+
+

@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Security-Policy" content="
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:;
+      worker-src 'self' blob:;
+      style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
+      font-src 'self' https://fonts.gstatic.com;
+      img-src 'self' data: blob:;
+      connect-src 'self' *;
+      manifest-src 'self';
+    ">
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/jpeg" href="/Tixar.jpeg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tixar — Master Any Subject, Anywhere</title>
+    <meta name="description" content="Tixar is an offline-first learning platform designed to provide a seamless, interactive educational experience. Dive into high-quality curriculum content and master subjects at your own pace." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link rel="manifest" href="/manifest.json" />
+
+
+    <link rel="apple-touch-icon" href="/Tixar.jpeg" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+            navigator.serviceWorker.getRegistrations().then((registrations) => {
+              for (const registration of registrations) {
+                registration.unregister();
+              }
+            });
+          } else {
+            navigator.serviceWorker.register('/sw.js');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+
+
+

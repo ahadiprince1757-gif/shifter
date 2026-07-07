@@ -1,0 +1,58 @@
+# Render Blueprint — Shifter (Tixar)
+# https://render.com/docs/blueprint-spec
+#
+# Deploy both services from this monorepo:
+#   1. Backend  → Node Web Service  (backend/)
+#   2. Frontend → Static Site        (frontend/)
+#
+# After connecting your repo on Render, set the environment
+# variables listed below in the Render dashboard.
+services:
+  # ── Backend API ──────────────────────────────────────────
+  - type: web
+    name: shifter-api
+    runtime: node
+    region: oregon
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: node index.js
+    plan: free
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: "10000"
+      # Set this in the Render dashboard after deploying the frontend
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_KEY
+        sync: false
+    healthCheckPath: /health
+
+  # ── Frontend Static Site ─────────────────────────────────
+  - type: web
+    name: shifter-app
+    runtime: static
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    plan: free
+    headers:
+      - path: /*
+        name: X-Frame-Options
+        value: DENY
+    routes:
+      # SPA fallback — serve index.html for all client-side routes
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    envVars:
+      # Set this in the Render dashboard to your backend URL
+      # e.g. https://shifter-api.onrender.com
+      - key: VITE_API_URL
+        sync: false
+
+
+

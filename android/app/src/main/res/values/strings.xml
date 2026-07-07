@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tixar</string>
+    <string name="title_activity_main">Tixar</string>
+    <string name="package_name">com.Tixar.app</string>
+    <string name="custom_url_scheme">com.Tixar.app</string>
+</resources>

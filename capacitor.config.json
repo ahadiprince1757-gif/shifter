@@ -1,0 +1,5 @@
+{
+  "appId": "com.Tixar.app",
+  "appName": "Tixar",
+  "webDir": "frontend/dist"
+}
