@@ -655,7 +655,7 @@ app.post("/logs", (req, res) => {
   res.status(204).send();
 });
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 10000;
 
 // Error handling middleware (must be after all other middleware/routes)
 app.use((err, req, res, next) => {
@@ -695,15 +695,15 @@ process.on("uncaughtException", (error) => {
   console.log("Server recovered from uncaught exception, continuing...");
 });
 
-const server = app.listen(PORT, () => {
+const server = app.listen(PORT, "0.0.0.0", () => {
   try {
     logger.action("SERVER_START", "success", {
       port: PORT,
-      url: `http://localhost:${PORT}`,
+      url: `http://0.0.0.0:${PORT}`,
     });
-    console.log(`✅ Server running on http://localhost:${PORT}`);
+    console.log(`✅ Server running on port ${PORT}`);
   } catch (err) {
-    console.log(`✅ Server running on http://localhost:${PORT}`);
+    console.log(`✅ Server running on port ${PORT}`);
   }
 });
 
