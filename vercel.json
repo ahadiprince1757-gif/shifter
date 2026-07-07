@@ -6,6 +6,11 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "/api/$1.js" },
-    { "src": "/(.*)", "dest": "/frontend/$1" }
+    { "src": "/assets/(.*)", "dest": "/frontend/assets/$1" },
+    { "src": "/manifest.json", "dest": "/frontend/manifest.json" },
+    { "src": "/sw.js", "dest": "/frontend/sw.js" },
+    { "src": "/favicon.ico", "dest": "/frontend/favicon.ico" },
+    { "src": "/(.*)\\.(png|jpg|jpeg|gif|svg|ico|webp)$", "dest": "/frontend/$1.$2" },
+    { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
