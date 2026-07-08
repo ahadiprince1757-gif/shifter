@@ -26,7 +26,9 @@ const corsOptions = {
     if (allowedEnv.length === 0) return callback(null, true);
     if (
       allowedEnv.includes(origin) ||
-      allowedEnv.some((a) => origin.endsWith(a))
+      allowedEnv.some((a) => origin.endsWith(a)) ||
+      origin.endsWith(".vercel.app") ||
+      origin === "https://shifter-iota.vercel.app"
     )
       return callback(null, true);
     return callback(new Error("Not allowed by CORS"));

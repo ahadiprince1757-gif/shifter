@@ -6,10 +6,21 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || "";
 const hasValidConfig = supabaseUrl && supabaseAnonKey && supabaseAnonKey !== "YOUR_SUPABASE_ANON_KEY";
 
 let supabaseInstance = null;
+let currentSession = null;
 
 if (hasValidConfig) {
   try {
     supabaseInstance = createClient(supabaseUrl, supabaseAnonKey);
+    
+    // Fetch initial session
+    supabaseInstance.auth.getSession().then(({ data: { session } }) => {
+      currentSession = session;
+    }).catch(err => console.error("Error getting session:", err));
+
+    // Listen for auth state changes to keep currentSession updated
+    supabaseInstance.auth.onAuthStateChange((_event, session) => {
+      currentSession = session;
+    });
   } catch (err) {
     console.error("Failed to initialize Supabase client:", err);
   }
@@ -39,3 +50,8 @@ export const supabase = supabaseInstance || new Proxy({}, {
     };
   }
 });
+
+export function getActiveSession() {
+  return currentSession;
+}
+

@@ -1,12 +1,23 @@
 import logger from "./utils/logger";
+import { getActiveSession } from "./supabase";
 
+// Base API URL – taken from env or fallback to localhost during dev
 const raw = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
 const API_BASE = raw.replace(/\/$/, "") + "/api";
+
+/** Helper to retrieve auth headers from Supabase session */
+function getAuthHeaders() {
+  const session = getActiveSession();
+  if (session?.access_token) {
+    return { Authorization: `Bearer ${session.access_token}` };
+  }
+  return {};
+}
 
 export async function fetchCurriculum() {
   const startTime = Date.now();
   try {
-    const r = await fetch(`${API_BASE}/curriculum`);
+    const r = await fetch(`${API_BASE}/curriculum`, { headers: getAuthHeaders() });
     const responseTime = Date.now() - startTime;
 
     if (!r.ok) {
@@ -32,6 +43,7 @@ export async function fetchTopicContent(sid, cid, topic) {
   try {
     const r = await fetch(
       `${API_BASE}/content/${encodeURIComponent(sid)}/${encodeURIComponent(cid)}/${encodeURIComponent(topic)}`,
+      { headers: getAuthHeaders() }
     );
     const responseTime = Date.now() - startTime;
 
@@ -69,7 +81,10 @@ export async function gradeAnswer(payload) {
   try {
     const r = await fetch(`${API_BASE}/grade`, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: {
+        "Content-Type": "application/json",
+        ...getAuthHeaders(),
+      },
       body: JSON.stringify(payload),
     });
     const responseTime = Date.now() - startTime;
@@ -99,7 +114,7 @@ export async function gradeAnswer(payload) {
 export async function fetchAnalytics() {
   const startTime = Date.now();
   try {
-    const r = await fetch(`${API_BASE}/analytics`);
+    const r = await fetch(`${API_BASE}/analytics`, { headers: getAuthHeaders() });
     const responseTime = Date.now() - startTime;
 
     if (!r.ok) {
