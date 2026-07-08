@@ -902,31 +902,7 @@ html.dark-mode .lnav-search-panel {
   flex-direction: column;
 }
 
-.app-bar {
-  position: sticky;
-  top: 0;
-  z-index: 200;
-  background: rgba(255, 255, 255, 0.94);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
-  border-bottom: none;
-  padding: 0.72rem 1.6rem;
-  display: flex;
-  align-items: center;
-  gap: 0.82rem;
-  flex-shrink: 0;
-}
-
-.app-bar::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--g2);
-  opacity: 0.35;
-}
+/* .app-bar styles removed in favor of shared .lnav Navbar */
 
 .app-logo {
   display: flex;
@@ -1083,7 +1059,7 @@ html.dark-mode .lnav-search-panel {
   color: var(--v);
 }
 
-/* ── APP BAR – MOBILE (≤ 640px) ──────────────────────────── */
+/* Removed legacy .app-bar styles (now using shared .lnav Navbar) */
 @media (max-width: 640px) {
   .app-bar {
     padding: 0.6rem 1rem;
