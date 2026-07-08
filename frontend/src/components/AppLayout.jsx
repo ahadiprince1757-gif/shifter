@@ -1,4 +1,4 @@
-import { Suspense } from "react";
+import { Suspense, useState } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Breadcrumbs from "./Breadcrumbs";
 import GlobalSearch from "./GlobalSearch";
@@ -14,23 +14,50 @@ export default function AppLayout() {
   const { curriculum } = useCurriculum();
   const [isDark, toggleDark] = useDarkMode();
   const navigate = useNavigate();
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const navigateToTopic = (subjectId, chapterId, topic) => {
     navigate(`/learn/${subjectId}/${chapterId}/${encodeURIComponent(topic)}`);
+    setSearchOpen(false);
   };
 
   return (
     <div id="app-screen" className="screen active">
       <div className="app-bar">
+        {/* Logo */}
         <div className="app-logo" onClick={() => navigate("/subjects")}>
           <img src="/Tixar.jpeg" alt="Tixar Logo" className="logo-img" />
           <span className="app-brand">Tixar</span>
         </div>
 
-        <Breadcrumbs />
+        {/* Breadcrumbs – hidden on small screens */}
+        <div className="app-bar-breadcrumbs">
+          <Breadcrumbs />
+        </div>
 
-        <GlobalSearch curriculum={curriculum} navigateToTopic={navigateToTopic} />
+        {/* Search – full on desktop, icon-toggle on mobile */}
+        <div className={`app-bar-search${searchOpen ? " mobile-open" : ""}`}>
+          <GlobalSearch curriculum={curriculum} navigateToTopic={navigateToTopic} />
+        </div>
 
+        {/* Search icon toggle – only visible on mobile */}
+        <button
+          className="app-bar-search-toggle"
+          aria-label={searchOpen ? "Close search" : "Open search"}
+          onClick={() => setSearchOpen((o) => !o)}
+        >
+          {searchOpen ? (
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M18.3 5.71a1 1 0 00-1.41 0L12 10.59 7.11 5.7A1 1 0 005.7 7.11L10.59 12 5.7 16.89a1 1 0 001.41 1.41L12 13.41l4.89 4.89a1 1 0 001.41-1.41L13.41 12l4.89-4.89a1 1 0 000-1.4z" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+              <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z" />
+            </svg>
+          )}
+        </button>
+
+        {/* Theme toggle */}
         <button className="theme-toggle" onClick={toggleDark} aria-label="Toggle Dark Mode">
           {isDark ? (
             <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
@@ -43,6 +70,7 @@ export default function AppLayout() {
           )}
         </button>
 
+        {/* Auth / Profile */}
         {session ? (
           <ProfileDropdown />
         ) : (
@@ -55,11 +83,12 @@ export default function AppLayout() {
           </button>
         )}
 
+        {/* Home button */}
         <button className="home-btn" onClick={() => navigate("/")} aria-label="Go back to Home">
           <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
             <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
           </svg>
-          <span>Home</span>
+          <span className="home-btn-text">Home</span>
         </button>
       </div>
 

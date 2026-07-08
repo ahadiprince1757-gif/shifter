@@ -3,6 +3,7 @@ import { useState } from "react";
 function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }) {
   const [legalModal, setLegalModal] = useState(null);
   const [activeFeature, setActiveFeature] = useState(null);
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
 
   const totalTopics =
     curriculum?.reduce(
@@ -383,18 +384,36 @@ function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }
       )}
 
       <nav className="lnav">
-        <div className="lnav-logo" onClick={() => window.scrollTo(0, 0)}>
+        <div className="lnav-logo" onClick={() => { window.scrollTo(0, 0); setMobileNavOpen(false); }}>
           <img src="/Tixar.jpeg" alt="Tixar Logo" className="logo-img" />
           <span className="lnav-brand">TIXAR</span>
         </div>
-        <div className="lnav-links">
+
+        {/* Hamburger button – only visible on mobile */}
+        <button
+          className="lnav-hamburger"
+          aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
+          aria-expanded={mobileNavOpen}
+          onClick={() => setMobileNavOpen((o) => !o)}
+        >
+          {mobileNavOpen ? (
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M18.3 5.71a1 1 0 00-1.41 0L12 10.59 7.11 5.7A1 1 0 005.7 7.11L10.59 12 5.7 16.89a1 1 0 001.41 1.41L12 13.41l4.89 4.89a1 1 0 001.41-1.41L13.41 12l4.89-4.89a1 1 0 000-1.4z" />
+            </svg>
+          ) : (
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+            </svg>
+          )}
+        </button>
+
+        <div className={`lnav-links${mobileNavOpen ? " open" : ""}`}>
           <button
             className="lnav-link-btn"
-            onClick={() =>
-              document
-                .getElementById("subjs")
-                .scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => {
+              document.getElementById("subjs")?.scrollIntoView({ behavior: "smooth" });
+              setMobileNavOpen(false);
+            }}
           >
             Subjects
           </button>
@@ -425,11 +444,11 @@ function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }
             )}
           </button>
           {session ? (
-            <button className="lnav-cta" onClick={enterApp}>
+            <button className="lnav-cta" onClick={() => { enterApp(); setMobileNavOpen(false); }}>
               Go to App ({session.user.email.split("@")[0]})
             </button>
           ) : (
-            <button className="lnav-cta" onClick={openAuth}>
+            <button className="lnav-cta" onClick={() => { openAuth(); setMobileNavOpen(false); }}>
               Sign In
             </button>
           )}

@@ -87,7 +87,7 @@ body {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 0.85rem 2rem;
+  padding: 0.75rem 2rem;
   display: flex;
   align-items: center;
   gap: 0.9rem;
@@ -102,6 +102,7 @@ body {
   align-items: center;
   gap: 0.55rem;
   cursor: pointer;
+  flex-shrink: 0;
 }
 
 .lnav-brand {
@@ -119,6 +120,24 @@ body {
   height: 38px;
   object-fit: contain;
   border-radius: 8px;
+}
+
+/* Hamburger – hidden by default, shown on mobile */
+.lnav-hamburger {
+  display: none;
+  margin-left: auto;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--t2);
+  padding: 0.3rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.lnav-hamburger:hover {
+  color: var(--v);
+  background: var(--bg2);
 }
 
 .lnav-links {
@@ -162,6 +181,64 @@ body {
   opacity: 0.88;
   transform: translateY(-1px);
 }
+
+/* ── LANDING NAV – MOBILE (≤ 640px) ─────────────────────── */
+@media (max-width: 640px) {
+  .lnav {
+    flex-wrap: wrap;
+    padding: 0.75rem 1.2rem;
+  }
+
+  .lnav-hamburger {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lnav-links {
+    /* Hidden by default on mobile */
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    margin-left: 0;
+    padding: 0.5rem 0 0.75rem;
+    border-top: 1px solid var(--bd);
+    animation: navSlideDown 0.22s ease;
+  }
+
+  .lnav-links.open {
+    display: flex;
+  }
+
+  .lnav-links .lnav-link-btn {
+    padding: 0.72rem 0.2rem;
+    font-size: 0.92rem;
+    text-align: left;
+    border-bottom: 1px solid var(--bd);
+  }
+
+  .lnav-links .theme-toggle {
+    align-self: flex-start;
+    margin-right: 0 !important;
+    padding: 0.6rem 0;
+  }
+
+  .lnav-links .lnav-cta {
+    margin-top: 0.6rem;
+    width: 100%;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    border-radius: 12px;
+  }
+}
+
+@keyframes navSlideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
 
 .hero {
   min-height: 100vh;
@@ -704,8 +781,14 @@ body {
   -webkit-text-fill-color: transparent;
 }
 
-.bc {
+/* Breadcrumbs wrapper – hidden on mobile */
+.app-bar-breadcrumbs {
   flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.bc {
   font-size: 0.69rem;
   color: var(--t3);
   display: flex;
@@ -787,6 +870,32 @@ body {
   opacity: 0.32;
 }
 
+/* Search wrapper in app bar */
+.app-bar-search {
+  position: relative;
+  flex: 1;
+  max-width: 320px;
+  display: flex;
+  align-items: center;
+}
+
+/* Search toggle icon – only on mobile */
+.app-bar-search-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--t2);
+  padding: 0.35rem;
+  border-radius: 50%;
+  transition: color 0.2s, background 0.2s;
+  flex-shrink: 0;
+}
+.app-bar-search-toggle:hover {
+  color: var(--v);
+  background: var(--bg2);
+}
+
 .home-btn {
   background: none;
   border: 1.5px solid var(--bd);
@@ -808,6 +917,63 @@ body {
   border-color: var(--v);
   color: var(--v);
 }
+
+/* ── APP BAR – MOBILE (≤ 640px) ──────────────────────────── */
+@media (max-width: 640px) {
+  .app-bar {
+    padding: 0.6rem 1rem;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  /* Hide breadcrumbs on small screens */
+  .app-bar-breadcrumbs {
+    display: none;
+  }
+
+  /* Hide the full-width search box, show only when mobile-open */
+  .app-bar-search {
+    display: none;
+    position: fixed;
+    top: 56px;
+    left: 0;
+    right: 0;
+    z-index: 300;
+    max-width: 100%;
+    padding: 0.6rem 1rem;
+    background: var(--sur);
+    border-bottom: 1px solid var(--bd);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    animation: navSlideDown 0.2s ease;
+  }
+
+  .app-bar-search.mobile-open {
+    display: flex;
+  }
+
+  .app-bar-search.mobile-open .global-search {
+    flex: 1;
+    max-width: 100%;
+    margin-left: 0;
+  }
+
+  /* Show the toggle icon on mobile */
+  .app-bar-search-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Hide "Home" text on very small screens, keep icon */
+  .home-btn-text {
+    display: none;
+  }
+
+  .home-btn {
+    padding: 0.25rem 0.4rem;
+  }
+}
+
 
 .prog-wrap {
   background: var(--bg);
@@ -2543,6 +2709,9 @@ html.dark-mode .lnav {
 }
 html.dark-mode .app-bar {
   background: rgba(15, 17, 23, 0.94);
+}
+html.dark-mode .app-bar-search {
+  background: var(--sur);
 }
 html.dark-mode .landing-footer {
   background: var(--bg2);
