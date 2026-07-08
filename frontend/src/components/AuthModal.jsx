@@ -233,45 +233,6 @@ export default function AuthModal({ isOpen, onClose, onGuestAccess }) {
                   Active
                 </span>
               </button>
-
-              {/* Apple (Soon) */}
-              <button className="oauth-btn disabled-btn" disabled>
-                <span>Continue with Apple</span>
-                <span className="provider-badge">Soon</span>
-              </button>
-
-              <button
-                className="oauth-btn guest-btn"
-                onClick={async () => {
-                  logger.action("GUEST_ACCESS_REQUESTED");
-                  onClose();
-                  if (supabase.isMock) {
-                    await supabase.auth.signInWithPassword({
-                      email: "guest@tixar.app",
-                      password: "guest"
-                    });
-                  }
-                  if (onGuestAccess) onGuestAccess();
-                }}
-                style={{
-                  borderStyle: "dashed",
-                  borderColor: "var(--v)",
-                  background: "rgba(117, 82, 243, 0.05)",
-                  color: "var(--v)",
-                  marginTop: "0.4rem",
-                }}
-              >
-                <span>Explore as Guest</span>
-                <span
-                  className="provider-badge"
-                  style={{
-                    background: "rgba(117, 82, 243, 0.12)",
-                    color: "var(--v)",
-                  }}
-                >
-                  Free
-                </span>
-              </button>
             </div>
           </>
         ) : (
