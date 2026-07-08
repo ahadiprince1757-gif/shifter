@@ -3,7 +3,7 @@ import { supabase } from "../supabase";
 import logger from "../utils/logger";
 import toast from "react-hot-toast";
 
-export default function AuthModal({ isOpen, onClose, onGuestAccess }) {
+export default function AuthModal({ isOpen, onClose }) {
   // Navigation is handled centrally by App.jsx's onAuthStateChange listener
   const [mode, setMode] = useState("select"); // 'select' | 'email_signin' | 'email_signup'
   const [email, setEmail] = useState("");
