@@ -5,12 +5,12 @@
     { "src": "api/**/*.js", "use": "@vercel/node" }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/$1.js" },
-    { "src": "/assets/(.*)", "dest": "/assets/$1" },
-    { "src": "/manifest.json", "dest": "/manifest.json" },
-    { "src": "/sw.js", "dest": "/sw.js" },
-    { "src": "/favicon.ico", "dest": "/favicon.ico" },
-    { "src": "/(.*)\\.(png|jpg|jpeg|gif|svg|ico|webp)$", "dest": "/$1.$2" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "/api/(.*)", "dest": "/api/index.js" },
+    { "src": "/assets/(.*)", "dest": "/frontend/assets/$1" },
+    { "src": "/manifest.json", "dest": "/frontend/manifest.json" },
+    { "src": "/sw.js", "dest": "/frontend/sw.js" },
+    { "src": "/favicon.ico", "dest": "/frontend/favicon.ico" },
+    { "src": "/(.*)\\.(png|jpg|jpeg|gif|svg|ico|webp)$", "dest": "/frontend/$1.$2" },
+    { "src": "/(.*)", "dest": "/frontend/index.html" }
   ]
 }
