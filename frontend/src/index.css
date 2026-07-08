@@ -97,6 +97,171 @@ body {
   border-bottom: 1px solid var(--bd);
 }
 
+#app-content {
+  margin-top: 59px;
+  flex: 1;
+}
+
+/* SHARED NAVBAR (LNAV) IN APP VIEWS */
+.lnav-breadcrumbs {
+  margin-left: 0.5rem;
+  max-width: 45%;
+  flex-shrink: 1;
+}
+
+.lnav-search-desktop {
+  flex: 1;
+  max-width: 420px;
+  margin: 0 1.5rem;
+}
+
+.lnav-desktop-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-left: auto;
+}
+
+.lnav-search-icon {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--t2);
+  cursor: pointer;
+  padding: 0.4rem;
+  border-radius: 50%;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+.lnav-search-icon:hover {
+  color: var(--v);
+  background: var(--bg2);
+}
+
+.lnav-home-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: rgba(117, 82, 243, 0.08);
+  border: 1px solid rgba(117, 82, 243, 0.2);
+  color: var(--v);
+  padding: 0.4rem 0.85rem;
+  border-radius: 99px;
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.lnav-home-btn:hover {
+  background: var(--g2);
+  color: #fff;
+  border-color: transparent;
+  transform: translateY(-1px);
+}
+
+.lnav-search-panel {
+  position: fixed;
+  top: 59px;
+  left: 0;
+  right: 0;
+  background: rgba(255, 255, 255, 0.96);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--bd);
+  z-index: 99;
+  animation: navSlideDown 0.22s ease;
+}
+
+/* Mobile Drawer (replaces landing mobile links) */
+.lnav-drawer {
+  position: fixed;
+  top: 59px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.98);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  z-index: 98;
+  animation: navSlideDown 0.22s ease;
+  overflow-y: auto;
+}
+
+.lnav-drawer-breadcrumbs {
+  border-bottom: 1px solid var(--bd);
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.lnav-drawer-item {
+  background: none;
+  border: none;
+  text-align: left;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--t);
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--bd);
+  cursor: pointer;
+  transition: color 0.2s;
+  width: 100%;
+}
+.lnav-drawer-item:hover {
+  color: var(--v);
+}
+
+.lnav-drawer-profile {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem 0;
+}
+
+.lnav-drawer-cta {
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+}
+
+/* Dark Mode Overrides for Drawer and Search Panel */
+html.dark-mode .lnav-drawer {
+  background: rgba(15, 17, 23, 0.98);
+}
+html.dark-mode .lnav-search-panel {
+  background: rgba(15, 17, 23, 0.96);
+}
+
+/* Responsive updates for lnav components */
+@media (max-width: 820px) {
+  .lnav-search-desktop {
+    display: none;
+  }
+  .lnav-search-icon {
+    display: flex;
+  }
+}
+
+@media (max-width: 640px) {
+  .lnav-breadcrumbs {
+    display: none;
+  }
+  .lnav-desktop-controls {
+    display: none;
+  }
+  .lnav-home-text {
+    display: none;
+  }
+}
+
+
 .lnav-logo {
   display: flex;
   align-items: center;
