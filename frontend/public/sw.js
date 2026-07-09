@@ -81,16 +81,12 @@ self.addEventListener('fetch', (e) => {
         return cachedResponse;
       }
       
-      try {
-        const netResponse = await fetch(e.request);
-        if (netResponse && netResponse.status === 200) {
-          const cache = await caches.open(CACHE_NAME);
-          cache.put(e.request, netResponse.clone());
-        }
-        return netResponse;
-      } catch (err) {
-        throw err;
+      const netResponse = await fetch(e.request);
+      if (netResponse && netResponse.status === 200) {
+        const cache = await caches.open(CACHE_NAME);
+        cache.put(e.request, netResponse.clone());
       }
+      return netResponse;
     })()
   );
 });
