@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Tixar-v3';
+const CACHE_NAME = 'Tixar-v4';
 const ASSETS = [
   '/',
   '/index.html',
@@ -69,25 +69,34 @@ self.addEventListener('fetch', (e) => {
             cache.put(e.request, netResponse.clone());
           }
           return netResponse;
-        } catch (err) {
+        } catch (_) {
           const cachedResponse = await caches.match(e.request);
           if (cachedResponse) return cachedResponse;
-          throw err;
+          // If no cached HTML, return a basic offline page
+          return new Response(
+            '<html><body><h1>You are offline</h1><p>Please check your internet connection and try again.</p></body></html>',
+            { headers: { 'Content-Type': 'text/html' } }
+          );
         }
       }
 
-      // Cache-first for JS/CSS/Images
+      // Cache-first for JS/CSS/Images with graceful offline fallback
       const cachedResponse = await caches.match(e.request);
       if (cachedResponse) {
         return cachedResponse;
       }
-      
-      const netResponse = await fetch(e.request);
-      if (netResponse && netResponse.status === 200) {
-        const cache = await caches.open(CACHE_NAME);
-        cache.put(e.request, netResponse.clone());
+
+      try {
+        const netResponse = await fetch(e.request);
+        if (netResponse && netResponse.status === 200) {
+          const cache = await caches.open(CACHE_NAME);
+          cache.put(e.request, netResponse.clone());
+        }
+        return netResponse;
+      } catch (_) {
+        // Network failed and no cache — return a 503 instead of throwing
+        return new Response('Service Unavailable', { status: 503, statusText: 'Offline' });
       }
-      return netResponse;
     })()
   );
 });

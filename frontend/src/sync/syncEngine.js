@@ -5,6 +5,21 @@ import { progressRepo } from "../repository/progressRepo";
 import { fetchCurriculum, fetchTopicContent, gradeAnswer } from "../api";
 import { networkService } from "../services/networkService";
 
+/**
+ * Check if an error is a transient network failure (not a server/logic error).
+ */
+function isNetworkError(err) {
+  if (!err) return false;
+  const msg = err.message || "";
+  return (
+    msg === "Failed to fetch" ||
+    msg.includes("NetworkError") ||
+    msg.includes("ERR_NETWORK") ||
+    msg.includes("ERR_NAME_NOT_RESOLVED") ||
+    msg.includes("Load failed")
+  );
+}
+
 class SyncEngine {
   constructor() {
     this.isSyncing = false;
@@ -18,7 +33,7 @@ class SyncEngine {
   }
 
   async syncAll() {
-    if (!networkService.isOnline || this.isSyncing) return;
+    if (!navigator.onLine || !networkService.isOnline || this.isSyncing) return;
     this.isSyncing = true;
 
     try {
@@ -28,7 +43,11 @@ class SyncEngine {
       // 2. Process DOWN sync (server changes pulled to local)
       await this.pullDownSync();
     } catch (error) {
-      console.error("Sync failed:", error);
+      if (isNetworkError(error)) {
+        console.warn("[Sync] Skipped — device appears offline or network is unstable.");
+      } else {
+        console.error("Sync failed:", error);
+      }
     } finally {
       this.isSyncing = false;
     }
@@ -51,6 +70,10 @@ class SyncEngine {
           await db.change_log.update(change.id, { synced: true });
         }
       } catch (err) {
+        if (isNetworkError(err)) {
+          console.warn(`[Sync] Push skipped (offline) for change ${change.id}`);
+          break; // Stop trying to push more if we're offline
+        }
         console.error(`Failed to sync change ${change.id}`, err);
         // We do not throw here to allow other items in the queue to process
       }
@@ -58,13 +81,13 @@ class SyncEngine {
   }
 
   async pullDownSync() {
+    if (!navigator.onLine) return;
+
     try {
       // Lazy prefetch: Only fetch curriculum high-level data
-      // For a real delta-sync, we'd send 'last_synced_at' from sync_metadata table
       const curriculumData = await fetchCurriculum();
       
       // Store in DB, assuming the server sends an array of curriculum subjects
-      // In our current implementation, fetchCurriculum returns an array.
       if (Array.isArray(curriculumData)) {
         await curriculumRepo.upsertBatch(curriculumData.map(c => ({
           ...c,
@@ -77,7 +100,11 @@ class SyncEngine {
         });
       }
     } catch (err) {
-      console.error("DOWN sync failed:", err);
+      if (isNetworkError(err)) {
+        console.warn("[Sync] Down-sync skipped — network unavailable.");
+      } else {
+        console.error("DOWN sync failed:", err);
+      }
       throw err;
     }
   }
@@ -87,7 +114,7 @@ class SyncEngine {
    * if we are online. If offline, the UI will just read what we have in Dexie.
    */
   async prefetchTopic(subjectId, chapterId, topicId) {
-    if (!networkService.isOnline) return;
+    if (!navigator.onLine || !networkService.isOnline) return;
 
     try {
       const topicData = await fetchTopicContent(subjectId, chapterId, topicId);
@@ -100,6 +127,11 @@ class SyncEngine {
         is_deleted: false
       }]);
     } catch (err) {
+      if (isNetworkError(err)) {
+        console.warn(`[Sync] Topic prefetch skipped (offline): ${topicId}`);
+        // Don't throw for network errors — the UI will show cached content or a gentle message
+        return;
+      }
       console.error(`Failed to prefetch topic ${topicId}:`, err);
       throw err;
     }

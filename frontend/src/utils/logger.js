@@ -133,6 +133,9 @@ class FrontendLogger {
   _flushLogs() {
     if (this.logQueue.length === 0) return;
 
+    // Don't attempt to send logs when offline — keep them queued for later
+    if (!navigator.onLine) return;
+
     const logsToSend = [...this.logQueue];
     this.logQueue = [];
 
@@ -141,7 +144,11 @@ class FrontendLogger {
 
     if (navigator.sendBeacon) {
       const blob = new Blob([logsData], { type: "application/json" });
-      navigator.sendBeacon(`${this.baseUrl}/logs`, blob);
+      const sent = navigator.sendBeacon(`${this.baseUrl}/logs`, blob);
+      if (!sent) {
+        // sendBeacon failed — re-queue logs
+        this.logQueue.unshift(...logsToSend);
+      }
     } else {
       fetch(`${this.baseUrl}/logs`, {
         method: "POST",
@@ -149,7 +156,8 @@ class FrontendLogger {
         body: logsData,
         keepalive: true,
       }).catch(() => {
-        // Silently fail
+        // Re-queue logs on failure so they can be retried
+        this.logQueue.unshift(...logsToSend);
       });
     }
   }
@@ -164,6 +172,11 @@ class FrontendLogger {
 
     // Also flush on page unload
     window.addEventListener("beforeunload", () => {
+      this._flushLogs();
+    });
+
+    // Retry flushing queued logs when internet is restored
+    window.addEventListener("online", () => {
       this._flushLogs();
     });
   }
@@ -261,8 +274,9 @@ class FrontendLogger {
 }
 
 // Create singleton instance
+const loggerApiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "https://shifter-i49i.onrender.com" : "http://localhost:3001");
 const frontendLogger = new FrontendLogger({
-  baseUrl: import.meta.env.VITE_API_URL || "http://localhost:3001",
+  baseUrl: loggerApiUrl,
   batchSize: 10,
   batchInterval: 30000, // 30 seconds
   logLevel: import.meta.env.VITE_LOG_LEVEL || "info",
