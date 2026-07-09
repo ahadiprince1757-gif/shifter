@@ -179,12 +179,12 @@ export default function Navbar({
           )}
         </div>
 
-        {/* Hamburger – mobile only */}
+        {/* Hamburger – shown at ≤820px */}
         <button
           className="lnav-hamburger"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((o) => !o)}
+          onClick={() => { setMenuOpen((o) => !o); setSearchOpen(false); }}
         >
           {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
         </button>

@@ -1,6 +1,7 @@
 import { Suspense } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
+import BottomNav from "./BottomNav";
 import AuthModal from "./AuthModal";
 import { useAuth } from "../hooks/useAuth";
 import { useCurriculum } from "../hooks/useCurriculum";
@@ -33,6 +34,14 @@ export default function AppLayout() {
           <Outlet />
         </Suspense>
       </div>
+
+      {/* Mobile bottom navigation — hidden on desktop via CSS */}
+      <BottomNav
+        session={session}
+        curriculum={curriculum}
+        onNavigateToTopic={navigateToTopic}
+        setShowAuthModal={setShowAuthModal}
+      />
 
       <AuthModal
         isOpen={showAuthModal}
