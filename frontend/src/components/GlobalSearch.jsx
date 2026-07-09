@@ -25,15 +25,29 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     const q = query.toLowerCase();
     const matches = [];
     curriculum.forEach((subj) => {
+      const subjMatch = subj.label.toLowerCase().includes(q);
       subj.chapters.forEach((chap) => {
+        const chapMatch = chap.label.toLowerCase().includes(q);
         chap.topics.forEach((t) => {
-          if (t.toLowerCase().includes(q)) {
-            matches.push({ subject: subj, chapter: chap, topic: t });
+          const tLower = t.toLowerCase();
+          const topicMatch = tLower.includes(q);
+          if (topicMatch || subjMatch || chapMatch) {
+            let score = 0;
+            if (tLower.startsWith(q)) {
+              score += 100;
+            } else if (topicMatch) {
+              score += 50;
+            } else if (chapMatch) {
+              score += 25;
+            } else if (subjMatch) {
+              score += 10;
+            }
+            matches.push({ subject: subj, chapter: chap, topic: t, score });
           }
         });
       });
     });
-    return matches.slice(0, 8); // limit to 8 results
+    return matches.sort((a, b) => b.score - a.score).slice(0, 8);
   }, [query, curriculum]);
 
   // Reset selection when query changes (during render to prevent cascading renders)
@@ -76,6 +90,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
         type="text"
         placeholder="Search topics..."
         value={query}
+        autoFocus
         onChange={(e) => {
           setQuery(e.target.value);
           setIsOpen(true);
