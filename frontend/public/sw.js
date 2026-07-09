@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Tixar-v1';
+const CACHE_NAME = 'Tixar-v2';
 const ASSETS = [
   '/',
   '/index.html',
@@ -14,6 +14,18 @@ self.addEventListener('install', (e) => {
   );
 });
 
+self.addEventListener('activate', (e) => {
+  e.waitUntil(
+    caches.keys().then((keyList) => {
+      return Promise.all(keyList.map((key) => {
+        if (key !== CACHE_NAME) {
+          return caches.delete(key);
+        }
+      }));
+    })
+  );
+});
+
 self.addEventListener('fetch', (e) => {
   const url = e.request.url;
 
@@ -23,9 +35,6 @@ self.addEventListener('fetch', (e) => {
   }
 
   // Bypass service worker for:
-  // 1. Vite dev server files and hot reload scripts
-  // 2. Supabase auth requests (OAuth callbacks, session checks)
-  // 3. Any URL with auth-related hash fragments
   if (
     url.includes('/@vite') || 
     url.includes('/@react-refresh') || 
@@ -40,34 +49,49 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // Only handle GET requests
   if (e.request.method !== 'GET') {
     return;
   }
 
-  // Bypass API calls entirely. The local IndexedDB architecture handles offline data now.
   if (url.includes('/api/')) {
     return;
   }
 
-  // Cache-First (with network fallback + dynamic caching) for static assets, images, etc.
   e.respondWith(
-    caches.match(e.request).then((response) => {
-      if (response) {
-        return response;
+    (async () => {
+      // Network-first for HTML files/navigation to ensure we get the latest asset hashes
+      if (e.request.mode === 'navigate' || url.endsWith('.html') || url.endsWith('/')) {
+        try {
+          const netResponse = await fetch(e.request);
+          if (netResponse && netResponse.status === 200) {
+            const cache = await caches.open(CACHE_NAME);
+            cache.put(e.request, netResponse.clone());
+          }
+          return netResponse;
+        } catch (err) {
+          const cachedResponse = await caches.match(e.request);
+          if (cachedResponse) return cachedResponse;
+          throw err;
+        }
       }
-      return fetch(e.request).then((netResponse) => {
+
+      // Cache-first for JS/CSS/Images
+      const cachedResponse = await caches.match(e.request);
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+      
+      try {
+        const netResponse = await fetch(e.request);
         if (netResponse && netResponse.status === 200) {
-          const responseClone = netResponse.clone();
-          caches.open(CACHE_NAME).then((cache) => {
-            cache.put(e.request, responseClone);
-          });
+          const cache = await caches.open(CACHE_NAME);
+          cache.put(e.request, netResponse.clone());
         }
         return netResponse;
-      }).catch((err) => {
+      } catch (err) {
         throw err;
-      });
-    })
+      }
+    })()
   );
 });
 
