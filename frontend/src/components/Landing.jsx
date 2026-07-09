@@ -443,37 +443,6 @@ function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }
         </div>
       </section>
 
-      <section className="sec" id="features" style={{ background: "var(--sur)", borderBottom: "1px solid var(--bd)" }}>
-        <div className="sec-head">
-          <div className="sec-lbl">Key Features</div>
-          <h2 className="sec-title">Designed for Seamless Learning</h2>
-          <p className="sec-sub">
-            Discover a suite of tools built to assist your academic journey, with or without internet access.
-          </p>
-        </div>
-        <div className="feat-grid">
-          <div className="feat-card">
-            <div className="feat-icon">📡</div>
-            <h3 className="feat-title">Offline-First Tech</h3>
-            <p className="feat-desc">Access comprehensive notes, formulas, and quizzes anywhere, even without active connectivity.</p>
-          </div>
-          <div className="feat-card">
-            <div className="feat-icon">⚡</div>
-            <h3 className="feat-title">Immediate Feedback</h3>
-            <p className="feat-desc">Get instant grades, step-by-step explanations, and deep analytical insights after answering.</p>
-          </div>
-          <div className="feat-card">
-            <div className="feat-icon">📚</div>
-            <h3 className="feat-title">Structured Curriculum</h3>
-            <p className="feat-desc">Navigate through well-organized chapters and topics curated for Kenyan educational standards.</p>
-          </div>
-          <div className="feat-card">
-            <div className="feat-icon">📊</div>
-            <h3 className="feat-title">Progress Tracking</h3>
-            <p className="feat-desc">Visualize your academic trajectory, check off mastered topics, and view dynamic learning metrics.</p>
-          </div>
-        </div>
-      </section>
 
       <section className="sec" id="subjs" style={{ background: "var(--bg)" }}>
         <div className="sec-head">
