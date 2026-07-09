@@ -32,24 +32,7 @@ export default function AuthModal({ isOpen, onClose }) {
     }
   };
 
-  const handleFacebookLogin = async () => {
-    try {
-      logger.action("FACEBOOK_LOGIN_INITIATED");
-      const { error } = await supabase.auth.signInWithOAuth({
-        provider: "facebook",
-        options: {
-          // Dynamically redirect back to the current application origin
-          redirectTo: window.location.origin,
-        },
-      });
-      if (error) throw error;
-      logger.auth("success", "FACEBOOK_LOGIN");
-    } catch (err) {
-      logger.error("FACEBOOK_LOGIN", err);
-      logger.auth("failed", "FACEBOOK_LOGIN", { errorMessage: err.message });
-      toast.error(`Facebook Login failed: ${err.message}`);
-    }
-  };
+
 
   const handleEmailAuthSubmit = async (e) => {
     e.preventDefault();
@@ -182,35 +165,7 @@ export default function AuthModal({ isOpen, onClose }) {
                 </span>
               </button>
 
-              {/* Active Facebook Login */}
-              <button
-                className="oauth-btn"
-                onClick={handleFacebookLogin}
-                style={{
-                  borderColor: "#1877f2",
-                  color: "#1877f2",
-                  background: "rgba(24, 119, 242, 0.04)",
-                }}
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  width="18"
-                  height="18"
-                  fill="currentColor"
-                >
-                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                </svg>
-                Continue with Facebook
-                <span
-                  className="provider-badge"
-                  style={{
-                    background: "rgba(24, 119, 242, 0.12)",
-                    color: "#1877f2",
-                  }}
-                >
-                  Active
-                </span>
-              </button>
+
 
               {/* Active Email Login */}
               <button
