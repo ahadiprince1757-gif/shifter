@@ -69,7 +69,7 @@ self.addEventListener('fetch', (e) => {
             cache.put(e.request, netResponse.clone());
           }
           return netResponse;
-        } catch (_) {
+        } catch {
           const cachedResponse = await caches.match(e.request);
           if (cachedResponse) return cachedResponse;
           // If no cached HTML, return a basic offline page
@@ -93,7 +93,7 @@ self.addEventListener('fetch', (e) => {
           cache.put(e.request, netResponse.clone());
         }
         return netResponse;
-      } catch (_) {
+      } catch {
         // Network failed and no cache — return a 503 instead of throwing
         return new Response('Service Unavailable', { status: 503, statusText: 'Offline' });
       }
