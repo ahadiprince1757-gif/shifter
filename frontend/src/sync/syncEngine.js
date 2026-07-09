@@ -93,7 +93,7 @@ class SyncEngine {
       const topicData = await fetchTopicContent(subjectId, chapterId, topicId);
       
       await topicRepo.upsertBatch([{
-        id: topicId,
+        id: `${subjectId}|${chapterId}|${topicId}`,
         curriculum_id: subjectId,
         chapter_id: chapterId,
         data: topicData,
@@ -101,6 +101,7 @@ class SyncEngine {
       }]);
     } catch (err) {
       console.error(`Failed to prefetch topic ${topicId}:`, err);
+      throw err;
     }
   }
 }

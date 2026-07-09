@@ -5,7 +5,7 @@ export const topicRepo = {
    * Fetch a specific topic by its identifiers.
    */
   async getTopic(curriculumId, chapterId, topicId) {
-    const record = await db.topics.get(topicId);
+    const record = await db.topics.get(`${curriculumId}|${chapterId}|${topicId}`);
     if (
       record &&
       record.curriculum_id === curriculumId &&

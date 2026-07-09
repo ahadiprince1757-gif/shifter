@@ -2,7 +2,7 @@ import logger from "./utils/logger";
 import { getActiveSession } from "./supabase";
 
 // Base API URL – taken from env or fallback to localhost during dev
-const raw = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || "http://localhost:3001";
+const raw = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "https://shifter-i49i.onrender.com" : "http://localhost:3001");
 const API_BASE = raw.replace(/\/$/, "") + "/api";
 
 /** Helper to retrieve auth headers from Supabase session */
