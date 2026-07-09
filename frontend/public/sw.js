@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Tixar-v2';
+const CACHE_NAME = 'Tixar-v3';
 const ASSETS = [
   '/',
   '/index.html',
@@ -7,6 +7,7 @@ const ASSETS = [
 ];
 
 self.addEventListener('install', (e) => {
+  self.skipWaiting(); // Force the waiting service worker to become the active service worker
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
       return cache.addAll(ASSETS);
@@ -22,7 +23,7 @@ self.addEventListener('activate', (e) => {
           return caches.delete(key);
         }
       }));
-    })
+    }).then(() => self.clients.claim()) // Claim all clients immediately
   );
 });
 
