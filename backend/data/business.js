@@ -37,7 +37,11 @@ market changes, competition, or poor decisions.
 </ul>
 
 <h3> DIAGRAM</h3>
-
+<pre>
+Raw Materials → Production → Goods → Distribution → Consumer
+      ↑                                           ↓
+      ←—————— Money Flow (Payment) ——————→
+</pre>
 
 <h3> IMPORTANT DISTINCTIONS</h3>
 <ul>
@@ -143,7 +147,11 @@ Without these activities working together, business cannot function. For example
 </ul>
 
 <h3> COMPLETE FLOW DIAGRAM</h3>
-
+<pre>
+Raw Materials → Production → Warehousing → Transport → Trade → Consumer
+        ↑                                                     ↓
+        ←——————— Finance, Communication, Insurance ———————→
+</pre>
 
 <h3> KEY EXAM INSIGHT</h3>
 <ul>
@@ -263,7 +271,15 @@ They must work together in a coordinated way for efficient production.
 </ul>
 
 <h3> COMPLETE DIAGRAM</h3>
-
+<pre>
+Land + Labour + Capital + Entrepreneur
+                ↓
+     Organized & Coordinated Production
+                ↓
+        Goods and Services
+                ↓
+              Profit
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -391,7 +407,17 @@ Some factors are controllable (internal), while others are uncontrollable (exter
 </ul>
 
 <h3> COMPLETE DIAGRAM</h3>
-
+<pre>
+                BUSINESS
+                    |
+    ---------------------------------
+    |                               |
+Internal Environment        External Environment
+(Control)                  (No Control)
+    |                               |
+Management, Workers       Government, Economy,
+Finance, Policies         Technology, Society
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -529,7 +555,13 @@ Different economic systems answer these questions in different ways.
 </li>
 </ul>
 <h3> COMPARISON DIAGRAM</h3>
-
+<pre>
+Capitalism       Socialism         Mixed Economy
+-----------      -----------       ----------------
+Private          Government        Both
+Profit           Welfare           Profit + Welfare
+Free Market      Planned           Combined System
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -631,7 +663,13 @@ In business, wants are very important because they create <strong>demand</strong
 </ul>
 
 <h3> CLEAR DIAGRAM</h3>
+<pre>
+Basic Needs → Food, Shelter, Clothing (Survival)
 
+Wants → Cars, Smartphones, Fashion, Entertainment
+        ↓
+  Influenced by Income, Culture, Advertising
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -747,7 +785,14 @@ Needs are essential for survival, while wants are things that improve comfort, l
 </ul>
 
 <h3> CLEAR COMPARISON DIAGRAM</h3>
-
+<pre>
+NEEDS (Survival)                 WANTS (Comfort)
+----------------                 ----------------
+Food                             Car
+Water                            Smartphone
+Shelter                          Luxury clothes
+Clothing                         Entertainment
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -869,7 +914,15 @@ Because of scarcity, individuals must prioritize some needs and wants over other
 </ul>
 
 <h3> CLEAR DIAGRAM</h3>
-
+<pre>
+Unlimited Wants
+        ↓
+Limited Resources
+        ↓
+     SCARCITY
+        ↓
+   Choice + Opportunity Cost
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -999,7 +1052,15 @@ This helps individuals, businesses, and governments make better decisions by com
 </ul>
 
 <h3> CLEAR DIAGRAM</h3>
-
+<pre>
+Resources (Limited)
+        ↓
+      Choice
+   /         \
+Phone       Shoes
+   ↓
+If Phone chosen → Shoes = Opportunity Cost
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -1127,7 +1188,13 @@ Because of scarcity, not all wants can be satisfied at once, so prioritization i
 </li>
 </ul>
 <h3> CLEAR DIAGRAM (EXAMPLE SCALE)</h3>
-
+<pre>
+1. Shelter (most important)
+2. Food
+3. Clothing
+4. Education
+5. Phone (least urgent)
+</pre>
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
 <li>Scale of preference is a result of scarcity</li>
@@ -1255,7 +1322,17 @@ Choice making is closely linked to scarcity, scale of preference, and opportunit
 </ul>
 
 <h3> CLEAR DIAGRAM</h3>
-
+<pre>
+Limited Resources
+        ↓
+     Choices
+   /    |    \
+  A     B     C
+        ↓
+   Select ONE
+        ↓
+ Opportunity Cost (forgone options)
+</pre>
 
 <h3> LINK TO OTHER ECONOMIC CONCEPTS</h3>
 <p>
@@ -1395,7 +1472,16 @@ It is commonly used in factories and large-scale production systems such as asse
 </ul>
 
 <h3> FACTORY FLOW DIAGRAM</h3>
-
+<pre>
+Raw Materials
+      ↓
+Worker A → Cutting
+Worker B → Sewing
+Worker C → Assembling
+Worker D → Packaging
+      ↓
+Finished Product (Clothes)
+</pre>
 
 <h3> LINK TO SPECIALIZATION</h3>
 <p>
@@ -1515,7 +1601,12 @@ It is closely linked to division of labour because when work is divided, individ
 </li>
 </ul>
 <h3> CLEAR EXAMPLES DIAGRAM</h3>
-
+<pre>
+Individual: Doctor → only medicine
+Business: Bakery → only bread production
+Region: Kenya → coffee production
+Country: Japan → electronics production
+</pre>
 <h3> INTERNATIONAL TRADE LINK</h3>
 <p>
 Specialization leads countries to trade with each other because no country can produce everything efficiently.
@@ -1763,7 +1854,13 @@ Efficiency is not about working harder only, but about working smarter by using 
 </li>
 </ul>
 <h3> EFFICIENCY FLOW DIAGRAM</h3>
+<pre>
+Inefficient System:
+More input → Less output → High waste → Low profit
 
+Efficient System:
+Optimized input → Maximum output → Minimal waste → High profit
+</pre>
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
 <li>Efficiency is about smart use of resources, not just speed</li>
@@ -2927,7 +3024,21 @@ A small food distribution company that buys and sells goods, pays expenses, and 
 Below is a full-day accounting cycle recorded in the journal.
 </p>
 
+<pre>
+Date        Account                         Debit      Credit
+----------------------------------------------------------------
+May 1       Cash Account                   5000
+            Capital Account                           5000
 
+May 1       Purchases Account             2000
+            Cash Account                               2000
+
+May 1       Cash Account                   1200
+            Sales Account                             1200
+
+May 1       Rent Expense                   300
+            Cash Account                               300
+</pre>
 
 <p>
  Meaning:
@@ -2943,11 +3054,37 @@ Below is a full-day accounting cycle recorded in the journal.
 <li>Used to prepare financial statements</li>
 </ul>
 <h4> LEDGER OF Nairobi Fresh Foods Ltd</h4>
-
-
-
-
-
+<pre>
+CASH ACCOUNT
+------------------------------------------------
+May 1      Debit      Credit
+           5000
+                      2000
+           1200
+                      300
+------------------------------------------------
+Balance: 3900 (Debit)
+</pre>
+<pre>
+CAPITAL ACCOUNT
+------------------------------------------------
+May 1                  5000
+</pre>
+<pre>
+PURCHASES ACCOUNT
+------------------------------------------------
+May 1      2000
+</pre>
+<pre>
+SALES ACCOUNT
+------------------------------------------------
+May 1                  1200
+</pre>
+<pre>
+RENT EXPENSE ACCOUNT
+------------------------------------------------
+May 1      300
+</pre>
 <h3> DOUBLE ENTRY RULE</h3>
 <p>
 Every transaction has TWO effects:
@@ -2956,7 +3093,10 @@ Every transaction has TWO effects:
 Total Debits = Total Credits
 </p>
 <h4> REAL ORGANIZATION CHECK</h4>
-
+<pre>
+Total Debits  = 5000 + 2000 + 1200 + 300 = 8500
+Total Credits = 5000 + 2000 + 1200 + 300 = 8500
+</pre>
 <p>
  The system balances perfectly  
  Every transaction has a source and destination  
@@ -3033,7 +3173,20 @@ We continue with Nairobi Fresh Foods Ltd, where all transactions from journals a
 
 <h3> TRIAL BALANCE (Correct Version)</h3>
 
+<pre>
+Nairobi Fresh Foods Ltd
+Trial Balance as at May 1
 
+Account                Debit      Credit
+-----------------------------------------
+Cash Account          3900
+Capital Account                  5000
+Purchases Account     2000
+Sales Account                    1200
+Rent Expense          300
+-----------------------------------------
+TOTAL                 6200       6200
+</pre>
 
 <h3> WHAT TRIAL BALANCE CONFIRMS</h3>
 <ul>
@@ -3127,7 +3280,15 @@ Profit & Loss Account, Balance Sheet, and Cash Flow Summary.
 Using the completed Trial Balance, we now prepare final financial statements for the business.
 </p>
 <h3> 1. PROFIT & LOSS STATEMENT (INCOME STATEMENT)</h3>
-
+<pre>
+Nairobi Fresh Foods Ltd
+Profit & Loss Statement (May 1)
+Revenue (Sales)                1200
+Less: Expenses
+   Rent Expense               (300)
+-----------------------------------
+Net Profit                     900
+</pre>
 <p>
  Meaning:
 - The business earned 1200 from sales
@@ -3135,7 +3296,22 @@ Using the completed Trial Balance, we now prepare final financial statements for
 - Remaining profit = 900
 </p>
 <h3> 2. BALANCE SHEET (FINANCIAL POSITION)</h3>
-
+<pre>
+Nairobi Fresh Foods Ltd
+Balance Sheet (May 1)
+ASSETS
+Cash                         3900
+Purchases/Stock             2000
+------------------------------
+Total Assets                5900
+LIABILITIES
+None                         0
+EQUITY
+Capital                     5000
+Add: Profit                 900
+------------------------------
+Total Equity               5900
+</pre>
 <p>
  Meaning:
 - Shows what the business OWNS (Assets)
@@ -3146,7 +3322,9 @@ Using the completed Trial Balance, we now prepare final financial statements for
 <p>
 Assets = Liabilities + Equity
 </p>
-
+<pre>
+5900 = 0 + 5900 
+</pre>
 <h3> WHAT EACH STATEMENT DOES</h3>
 <ul>
 <li><strong>Profit & Loss:</strong> Shows performance (profit or loss)</li>
@@ -3231,21 +3409,31 @@ Using the financial statements from Phase 4, we now analyze the business perform
 </p>
 <h3> 1. PROFITABILITY ANALYSIS</h3>
 <h4>Profit Margin</h4>
-
-
+<pre>
+Profit Margin = Net Profit ÷ Revenue
+</pre>
+<pre>
+= 900 ÷ 1200 = 0.75 (75%)
+</pre>
 <p>
  Meaning: The business keeps 75% of its sales as profit after expenses.
 </p>
 <h3> 2. LIQUIDITY ANALYSIS</h3>
 <h4>Current Position (Simplified)</h4>
-
+<pre>
+Cash Available = 3900
+Short-term obligations = 0
+</pre>
 <p>
  Meaning: The business can easily cover its short-term needs.
 Liquidity is very strong.
 </p>
 <h3> 3. FINANCIAL STABILITY (EQUITY CHECK)</h3>
 
-
+<pre>
+Equity = Capital + Profit
+       = 5000 + 900 = 5900
+</pre>
 <p>
  Meaning: The business is fully financed by the owner.
 No debt risk exists in this case.
@@ -3343,14 +3531,21 @@ We now upgrade the same business into a real operational company that owns equip
 </p>
 <h3> 1. DEPRECIATION (ASSET VALUE LOSS OVER TIME)</h3>
 <h4>Example: Delivery Truck</h4>
-
+<pre>
+Cost of truck = 10,000
+Useful life = 5 years
+Annual depreciation = 2,000
+</pre>
 <p>
  Meaning:
 - The truck loses value each year as it is used
 - This is not cash outflow, but an accounting expense
 </p>
 <h4>Depreciation Entry:</h4>
-
+<pre>
+Depreciation Expense     2000
+    Accumulated Depreciation      2000
+</pre>
 <h3>⏳ 2. ACCRUAL ACCOUNTING (REAL TIMING SYSTEM)</h3>
 <p>
 Revenue and expenses are recorded when they are earned or incurred — not when cash is received or paid.
@@ -3359,7 +3554,10 @@ Revenue and expenses are recorded when they are earned or incurred — not when 
 <p>
 Goods sold today, payment received next month.
 </p>
-
+<pre>
+Accounts Receivable     1500
+    Sales Revenue              1500
+</pre>
  Meaning:
 - Sale is recorded immediately
 - Cash is not required at the time of sale
@@ -3370,8 +3568,14 @@ Goods sold today, payment received next month.
 <li><strong>Perpetual System:</strong> Inventory updated after every sale</li>
 </ul>
 <h4>Example:</h4>
-
-
+<pre>
+Beginning Inventory = 2000
+Purchases = 3000
+Ending Inventory = 1500
+</pre>
+<pre>
+Cost of Goods Sold = 3500
+</pre>
  Meaning:
 - Shows how much stock was actually used in sales
 <h3> 4. ADJUSTING ENTRIES</h3>
@@ -3379,7 +3583,10 @@ Goods sold today, payment received next month.
 Adjusting entries correct accounts at the end of a period to reflect true financial position.
 </p>
 <h4>Example: Unpaid Salary</h4>
-
+<pre>
+Salary Expense      800
+    Salary Payable        800
+</pre>
  Meaning:
 - Employees worked but have not been paid yet
 - Expense must still be recorded
@@ -3468,13 +3675,21 @@ The business is now mature and uses accounting not just for reporting, but for p
 </p>
 <h3> 1. BUDGETING (FUTURE FINANCIAL PLAN)</h3>
 <h4>Sales Budget</h4>
-
+<pre>
+Expected Sales = 10,000
+Expected Expenses = 6,000
+Expected Profit = 4,000
+</pre>
  Meaning:
 - Business predicts future income and spending
 - Helps avoid overspending and financial risk
 <h3> 2. VARIANCE ANALYSIS (PLAN vs REALITY)</h3>
 <h4>Example:</h4>
-
+<pre>
+Budgeted Sales = 10,000
+Actual Sales = 9,000
+Variance = -1,000 (Unfavorable)
+</pre>
  Meaning:
 - Business performed below expectations
 - Managers must investigate cause
@@ -3488,12 +3703,21 @@ Cost control ensures expenses do not exceed planned limits.
 <li>Improves efficiency</li>
 </ul>
 <h4>Example:</h4>
-
+<pre>
+Budgeted Cost = 5,000
+Actual Cost = 6,500
+Overrun = 1,500
+</pre>
 <h3> 4. CASH FLOW PLANNING</h3>
 <p>
 Cash flow planning ensures the business always has enough cash to operate.
 </p>
-
+<pre>
+Opening Cash = 3,000
+Inflows = 5,000
+Outflows = 4,000
+Closing Cash = 4,000
+</pre>
  Meaning:
 - Even profitable businesses can fail without cash
 - Cash flow is survival control
@@ -4537,7 +4761,14 @@ In real business environments, the choice of structure affects how decisions are
 </ul>
 
 <h3> COMPARISON FLOW</h3>
-
+<pre>
+Sole → Full control, high risk
+Partnership → Shared control, shared risk
+Company → Shared ownership, limited liability
+Cooperative → Democratic control, slow decisions
+Public Corporation → Government control, public service focus
+Franchise → Brand support, limited independence
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -4786,7 +5017,13 @@ Every successful organization depends on how well managers plan, organize, lead,
 </li>
 </ul>
 <h3> INTERCONNECTION OF FUNCTIONS</h3>
-
+<pre>
+Planning sets direction
+Organizing builds structure
+Leading drives people
+Controlling checks progress
+→ All work together in a continuous cycle
+</pre>
 
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
@@ -6067,7 +6304,13 @@ The main challenge of barter trade was the need for both parties to want what th
 </ul>
 <hr>
 <h3> BARTER VS MONEY SYSTEM</h3>
+<pre>
+BARTER SYSTEM:
+Goods ↔ Goods (requires mutual need)
 
+MONEY SYSTEM:
+Goods → Money → Goods (flexible exchange)
+</pre>
 
 <hr>
 
@@ -6328,7 +6571,11 @@ Banks may also reward customers with interest depending on the type of account a
 <hr>
 
 <h3> COMPARISON TABLE</h3>
-
+<pre>
+Savings Account  → Save money + earn moderate interest + limited withdrawals
+Current Account  → Business use + frequent transactions + no interest
+Fixed Deposit    → Locked savings + high interest + long-term investment
+</pre>
 
 <hr>
 
@@ -6733,7 +6980,9 @@ Through trade, people can access a wide variety of goods and services that they 
 <hr>
 
 <h3> FLOW OF TRADE</h3>
-
+<pre>
+Producer/Seller → Goods & Services → Buyer/Consumer → Money → Seller
+</pre>
 
 <hr>
 
@@ -7796,7 +8045,7 @@ add(
   </ul>
   <hr>
   <h2> THE ACCOUNTING EQUATION</h2>
-  
+  <pre>Assets = Liabilities + Equity</pre>
   <p>This equation must ALWAYS balance. Every transaction changes at least two accounts.</p>
   <hr>
   <h2> THE 80/20 UNDERSTANDING</h2>
@@ -7835,20 +8084,32 @@ add(
   <h3>3⃣ Equity / Capital (Owner’s Share)</h3>
   <p>Equity is the owner's financial interest in the business.</p>
   <p>It represents what remains after liabilities are removed from assets.</p>
-  
+  <pre>Equity = Assets - Liabilities</pre>
   <p>Think:<strong>“What truly belongs to the owner?”</strong></p>
   <hr>
   <h2> HOW TRANSACTIONS AFFECT THE EQUATION</h2>
   <h3>Example 1 — Owner Invests Cash</h3>
-  
+  <pre>
+Owner invests $10,000 cash
+Assets ↑ 10,000
+Equity ↑ 10,000
+  </pre>
   <p>The business now has more cash, and the owner's claim increases.</p>
   <hr>
   <h3>Example 2 — Business Takes a Loan</h3>
-  
+  <pre>
+Business borrows $5,000 from bank
+Assets ↑ 5,000
+Liabilities ↑ 5,000
+  </pre>
   <p>Cash increases, but debt also increases.</p>
   <hr>
   <h3>Example 3 — Buying Equipment with Cash</h3>
-  
+  <pre>
+Business buys equipment for $2,000 cash
+Equipment ↑ 2,000
+Cash ↓ 2,000
+  </pre>
   <p>
     One asset increases while another asset decreases.
     Total assets remain balanced.
@@ -8011,7 +8272,13 @@ add(
   <h2> THE LEDGER SYSTEM (T-ACCOUNTS)</h2>
   <p>Ledgers are collections of accounts where journal entries are posted:</p>
   <h3>T-ACCOUNT FORMAT</h3>
-  
+  <pre>
+Left Side (Debit)         |      Right Side (Credit)
+=====================================================
+Account Name             |      Account Name
+-----------------------------------------------------
+Date     | Amount      |      Date     |      Amount
+</pre>
   <h3> KEY RULE</h3>
   <ul>
     <li><strong>DEBIT → LEFT</strong></li>
@@ -8021,9 +8288,18 @@ add(
   <h2> DOUBLE-ENTRY PRINCIPLE</h2>
   <p>Every transaction affects at least <strong>two accounts</strong>.</p>
   <h3>The Golden Rule:</h3>
-  
+  <pre>
+DEBIT (Dr) the Receiver
+CREDIT (Cr) the Giver
+  </pre>
   <h3>How It Maintains Balance:</h3>
-  
+  <pre>
+Assets = Liabilities + Equity
+When you debit an asset (+), you must credit either:
+• Another asset (-)
+• A liability (+)
+• Equity (+)
+  </pre>
   <hr>
   <h2> EXAM INSIGHTS</h2>
   <ul>
@@ -8122,7 +8398,7 @@ add(
   <h2> PURPOSE OF A TRIAL BALANCE</h2>
   <h3>1⃣ Check Mathematical Accuracy</h3>
   <p>The main purpose is to confirm that the double-entry bookkeeping systemwas followed correctly.</p>
-  
+  <pre>Total Debit = Total Credit</pre>
   <p>If they are unequal, an error exists somewhere in the accounts.</p>
   <hr>
   <h3>2⃣ Prepare Financial Statements</h3>
@@ -8136,7 +8412,24 @@ add(
   <p>It organizes all account balances into one statement for easier review.</p>
   <hr>
 <h2> BASIC TRIAL BALANCE FORMAT (WITH REAL NUMBERS)</h2>
-
+<pre>
+---------------------------------------------------------
+Account Name              Debit (Dr)      Credit (Cr)
+---------------------------------------------------------
+Cash                         15,000
+Bank                          8,500
+Purchases                    12,000
+Rent Expense                  2,500
+Equipment                     6,000
+Drawings                      1,000
+Accounts Payable                              5,000
+Loan Payable                                  7,000
+Sales Revenue                                18,000
+Capital                                       15,000
+---------------------------------------------------------
+TOTAL                        45,000          45,000
+---------------------------------------------------------
+</pre>
 <hr>
 <h2> SIMPLE EXPLANATION OF THE NUMBERS</h2>
 <h3> Debit Side (What the business has or uses)</h3>
@@ -8158,7 +8451,10 @@ add(
 </ul>
 <hr>
 <h2> THE MOST IMPORTANT THING TO NOTICE</h2>
-
+<pre>
+Total Debits  = 45,000
+Total Credits = 45,000
+</pre>
 <p>Since both totals are equal,the Trial Balance mathematically balances correctly.</p>
 <blockquote>“Equal totals show arithmetic accuracy,not perfect accounting.”</blockquote>
   <h2> UNDERSTANDING DEBIT VS CREDIT</h2>
@@ -8189,34 +8485,42 @@ add(
   <h2> COMMON ERRORS THAT DO NOT AFFECT AGREEMENT</h2>
   <h3>1⃣ Error of Omission</h3>
   <p>A transaction is completely forgotten and never recorded.</p>
-  
+  <pre>Example:Cash sale not recorded at all.</pre>
   <hr>
   <h3>2⃣ Error of Commission</h3>
   <p>Correct amount recorded in the wrong account of the same class.</p>
-  
+  <pre>Example:Paid John instead of James.</pre>
   <hr>
   <h3>3⃣ Error of Principle</h3>
   <p>Transaction recorded in the wrong category of account.</p>
-  
+  <pre>Example:Buying equipment recorded as an expense.</pre>
   <hr>
   <h3>4⃣ Compensating Errors</h3>
   <p>Two separate errors cancel each other mathematically.</p>
-  
+  <pre>Example:One account overstated by 500 and another understated by 500</pre>
   <hr>
   <h3>5⃣ Error of Original Entry</h3>
   <p>Wrong amount entered in both debit and credit entries.</p>
-  
+  <pre>Example:$540 recorded as $450 on both sides.</pre>
   <hr>
   <h2> WHEN THE TRIAL BALANCE DOES NOT AGREE</h2>
   <p>If totals are unequal, accountants may temporarily open a:</p>
-  
+  <pre>Suspense Account</pre>
   <p>This helps continue preparing accounts while searching for the error.</p>
   <hr>
   <h2> MEMORY HACK</h2>
-  
+  <pre>
+Debit → Assets & Expenses
+Credit → Liabilities, Capital & Income
+  </pre>
   <p>Easy shortcut:</p>
   <blockquote>“DEALER”</blockquote>
-  
+  <pre>
+D = Drawings
+E = Expenses
+A = Assets
+(Liabilities, Equity, Revenue → Credit)
+  </pre>
 `,
 [
   {
@@ -8299,25 +8603,70 @@ add(
   <p>It answers: <strong>“What is the business worth right now?”</strong></p>
   <hr>
   <h2> INCOME STATEMENT STRUCTURE (WITH REAL NUMBERS)</h2>
-  
+  <pre>
+SALES REVENUE.................................. 50,000
+
+Less: Cost of Sales
+Opening Stock.......................... 5,000
+Add: Purchases......................... 20,000
+Less: Closing Stock.................... (3,000)
+-----------------------------------------------
+Cost of Goods Sold..................... 22,000
+
+-----------------------------------------------
+GROSS PROFIT........................... 28,000
+
+Less: Operating Expenses
+Rent................................... 5,000
+Salaries............................... 8,000
+Utilities.............................. 2,000
+-----------------------------------------------
+Total Expenses......................... 15,000
+
+-----------------------------------------------
+NET PROFIT............................. 13,000
+  </pre>
   <hr>
   <h2> SIMPLE BREAKDOWN</h2>
   <h3> Gross Profit</h3>
   <p>Gross Profit = Money made from selling goods before expenses.</p>
-  
+  <pre>Gross Profit = Sales - Cost of Goods Sold</pre>
   <p>Think: <strong>“Did we sell goods at a profit?”</strong></p>
   <hr>
   <h3> Net Profit</h3>
   <p>Net Profit = Final profit after all expenses.</p>
-  
+  <pre>Net Profit = Gross Profit - Expenses</pre>
   <p>Think: <strong>“How much money is left for the owner?”</strong></p>
   <hr>
   <h2> BALANCE SHEET (WITH REAL NUMBERS)</h2>
-  
+  <pre>ASSETS
+Cash............................... 10,000
+Bank................................ 8,000
+Inventory........................... 7,000
+Equipment........................... 5,000
+-----------------------------------------
+TOTAL ASSETS....................... 30,000
+
+LIABILITIES
+Accounts Payable................... 6,000
+Loan Payable....................... 4,000
+-----------------------------------------
+Total Liabilities................. 10,000
+
+CAPITAL
+Owner’s Capital.................... 15,000
+Add: Net Profit.................... 5,000
+Less: Drawings..................... (0)
+-----------------------------------------
+Total Equity....................... 20,000
+
+-----------------------------------------
+TOTAL (L + C)...................... 30,000
+  </pre>
   <hr>
   <h2> KEY CONNECTION (VERY IMPORTANT)</h2>
   <p>Net Profit from the Income Statement is transferred into the Balance Sheet.</p>
-  
+  <pre>Net Profit → Increases Owner’s Capital</pre>
   <p>This is how the two statements are connected.</p>
   <hr>
   <h2> KEY EXAM INSIGHTS</h2>
@@ -8326,7 +8675,7 @@ add(
     <li> Net Profit includes ALL expenses.</li>
     <li> Balance Sheet must always balance:</li>
   </ul>
-  
+  <pre>Assets = Liabilities + Capital</pre>
   <ul><li> Profit increases equity (owner’s wealth).</li></ul>
   <hr>
   <h2> FINAL MASTER IDEA</h2>
@@ -8409,7 +8758,11 @@ The most common tool for financial analysis is <strong>Ratio Analysis</strong>, 
 <li><strong>Working Capital:</strong> Current Assets minus Current Liabilities. It is the money available for day-to-day operations.</li>
 </ul>
 <h3> KEY FORMULAS</h3>
-
+<pre>
+1. Gross Profit Margin = (Gross Profit / Sales) × 100
+2. Current Ratio = Current Assets / Current Liabilities
+3. Working Capital = Current Assets - Current Liabilities
+</pre>
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
 <li>A Current Ratio of 2:1 is generally considered healthy.</li>
@@ -8488,7 +8841,10 @@ It goes beyond simple sole proprietorships to address how profits are shared, ho
 <li><strong>Depreciation:</strong> The systematic allocation of the cost of a fixed asset over its useful life (Straight-line or Reducing balance methods).</li>
 </ul>
 <h3> MANUFACTURING COST FLOW</h3>
-
+<pre>
+Direct Materials + Direct Labour = PRIME COST
+Prime Cost + Factory Overheads = TOTAL COST OF PRODUCTION
+</pre>
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
 <li>In partnerships, if there is no agreement, profits are shared equally.</li>
@@ -8568,7 +8924,10 @@ A key part of this is <strong>Budgeting</strong> and <strong>Variance Analysis</
 <li><strong>Internal Controls:</strong> Systems put in place to prevent fraud, ensure accuracy, and protect assets.</li>
 </ul>
 <h3> BREAK-EVEN FORMULA</h3>
-
+<pre>
+Break-Even Point (Units) = Fixed Costs / Contribution per unit
+(Contribution per unit = Selling Price - Variable Cost)
+</pre>
 <h3> KEY EXAM INSIGHTS</h3>
 <ul>
 <li>Adverse variance means costs were higher than expected, or revenues were lower.</li>

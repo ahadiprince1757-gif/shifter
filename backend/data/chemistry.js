@@ -148,7 +148,13 @@ add(
   </ul>
 
   <h3> QUICK REVISION BOX</h3>
-  
+  <pre>
+Safety → prevents accidents
+Burette/Pipette → high accuracy
+Beaker → general use
+Bunsen burner → heating
+Thermometer → temperature
+  </pre>
   `,
   [
     {
@@ -247,7 +253,11 @@ Water is a <b>universal solvent</b> that dissolves many substances and enables r
 </ul>
 
 <h3> SIMPLE RELATIONSHIP MAP</h3>
-
+<pre>
+Air → provides oxygen
+Oxygen → supports respiration & combustion
+Water → supports life & dissolves substances
+</pre>
 
 <h3> WHY THIS TOPIC MATTERS</h3>
 <ul>
@@ -331,7 +341,14 @@ add(
   </ul>
 
   <h3> DIAGRAM</h3>
-  
+  <pre>
+SOLID → LIQUID → GAS
+
+Particles:
+Solid: ●●●● (very close, fixed positions)
+Liquid: ● ● ● (close, can slide)
+Gas: ●   ●   ● (far apart, move fast)
+  </pre>
 
   <h3> CHANGES OF STATE</h3>
   <ul>
@@ -782,7 +799,13 @@ add(
   </ul>
 
   <h3> ATOMIC STRUCTURE RELATIONSHIP</h3>
-  
+  <pre>
+Mass Number (A) = p⁺ + n⁰
+Atomic Number (Z) = p⁺
+
+Therefore:
+Neutrons = A − Z
+  </pre>
 
   <h3> EXAMPLE</h3>
   <ul>
@@ -881,7 +904,15 @@ add(
   </ul>
 
   <h3> SIMPLE REPRESENTATION</h3>
-  
+  <pre>
+Carbon isotopes:
+
+C-12 → p⁺ = 6, n⁰ = 6
+C-14 → p⁺ = 6, n⁰ = 8
+
+Same protons → same element
+Different neutrons → different mass
+  </pre>
 
   <h3> WHY ISOTOPES HAVE SAME CHEMICAL PROPERTIES</h3>
   <ul>
@@ -986,7 +1017,15 @@ add(
   </ul>
 
   <h3> SIMPLE ION FORMATION DIAGRAM</h3>
-  
+  <pre>
+Sodium (Na)
+Before: 11p⁺, 11e⁻ (neutral)
+After:  11p⁺, 10e⁻ (Na⁺)
+
+Chlorine (Cl)
+Before: 17p⁺, 17e⁻ (neutral)
+After:  17p⁺, 18e⁻ (Cl⁻)
+  </pre>
 
   <h3> COMMON EXAMPLES</h3>
   <ul>
@@ -1498,7 +1537,9 @@ add(
 </ul>
 
 <h3> SIMPLE MODEL</h3>
-
+<pre>
+Atoms → Electron change → Stable compound
+</pre>
 `,
   [
     {
@@ -1612,7 +1653,13 @@ This creates oppositely charged ions that attract each other strongly.
 
 <h3> GENERAL FORMATION MODEL</h3>
 
+<pre>
+Metal atom  →  loses electron(s)  →  Cation (+)
 
+Non-metal atom  →  gains electron(s)  →  Anion (−)
+
+Cation (+)  +  Anion (−)  →  Ionic Compound
+</pre>
 
 <h3> EXAMPLE: FORMATION OF SODIUM CHLORIDE (NaCl)</h3>
 
@@ -2186,7 +2233,12 @@ Atoms are extremely small, so counting them individually is impossible.
 The mole acts as a “bridge” between the microscopic world (atoms) and the macroscopic world (grams in the lab).
 </p>
 <h3> IMPORTANT RELATIONSHIPS</h3>
-
+<pre>
+1 mole = 6.02 × 10²³ particles
+n = m / M
+(where n = moles, m = mass, M = molar mass)
+Number of particles = n × 6.02 × 10²³
+</pre>
 <h3> TYPES OF PARTICLES IN A MOLE</h3>
 <ul>
 <li><b>Atoms:</b> He, Fe, Na</li>
@@ -2287,7 +2339,12 @@ These conversions are important because atoms are too small to measure directly.
 </p>
 <hr>
 <h3> KEY CONVERSIONS</h3>
-
+<pre>
+n = m ÷ M
+m = n × M
+N = n × 6.02 × 10²³
+n = N ÷ 6.02 × 10²³
+</pre>
 <p><strong>Where:</strong></p>
 <ul>
   <li>n = moles</li>
@@ -2301,38 +2358,55 @@ These conversions are important because atoms are too small to measure directly.
   <li>Mass ↔ Moles (use molar mass)</li>
   <li>Moles ↔ Particles (use Avogadro’s number)</li>
 </ul>
-
+<pre>
+1 mole = 6.02 × 10²³ particles
+</pre>
 <hr>
 <h3> EXAMPLE 1: MASS → MOLES</h3>
 <p><strong>Question:</strong> Find moles in 18 g of water (H₂O)</p>
 <h4>Step 1: Write formula</h4>
-
+<pre>n = m ÷ M</pre>
 <h4>Step 2: Identify values</h4>
-
+<pre>
+m = 18 g
+M = 18 g/mol
+</pre>
 <h4>Step 3: Substitute</h4>
-
+<pre>
+n = 18 ÷ 18
+</pre>
 <h4>Step 4: Calculate</h4>
-
+<pre>
+n = 1 mol
+</pre>
 <p><strong>Answer:</strong> 1 mole</p>
 <hr>
 <h3> EXAMPLE 2: MOLES → PARTICLES</h3>
 <p><strong>Question:</strong> Find particles in 1 mole of CO₂</p>
 <h4>Step 1: Formula</h4>
-
+<pre>N = n × 6.02 × 10²³</pre>
 <h4>Step 2: Substitute</h4>
-
+<pre>
+N = 1 × 6.02 × 10²³
+</pre>
 <h4>Step 3: Calculate</h4>
-
+<pre>
+N = 6.02 × 10²³ particles
+</pre>
 <p><strong>Answer:</strong> 6.02 × 10²³ particles</p>
 <hr>
 <h3> EXAMPLE 3: PARTICLES → MOLES</h3>
 <p><strong>Question:</strong> Convert 1.204 × 10²⁴ particles to moles</p>
 <h4>Step 1: Formula</h4>
-
+<pre>n = N ÷ 6.02 × 10²³</pre>
 <h4>Step 2: Substitute</h4>
-
+<pre>
+n = (1.204 × 10²⁴) ÷ (6.02 × 10²³)
+</pre>
 <h4>Step 3: Calculate</h4>
-
+<pre>
+n = 2 mol
+</pre>
 <p><strong>Answer:</strong> 2 moles</p>
 <hr>
 <h3> QUICK UNDERSTANDING</h3>
@@ -2343,7 +2417,10 @@ These conversions are important because atoms are too small to measure directly.
 </ul>
 <hr>
 <h3> QUICK SUMMARY</h3>
-
+<pre>
+Mass ↔ Moles: n = m ÷ M
+Moles ↔ Particles: N = n × 6.02 × 10²³
+</pre>
 `,
 
   [
@@ -2437,50 +2514,83 @@ Molar mass is the mass of 1 mole of a substance measured in <strong>g/mol</stron
   <li>Add atomic masses of all atoms in a formula</li>
   <li>Unit is always g/mol</li>
 </ul>
-
+<pre>
+Molar Mass = Sum of all atomic masses in the formula
+</pre>
 <hr>
 <h3> BASIC METHOD</h3>
-
+<pre>
+1. Write formula
+2. Count atoms
+3. Multiply by atomic masses
+4. Add everything
+</pre>
 <hr>
 <h3> EXAMPLE 1: WATER (H₂O)</h3>
 <p><strong>Question:</strong> Find molar mass of H₂O</p>
 <h4>Step 1: Write formula</h4>
-
+<pre>H₂O</pre>
 <h4>Step 2: Count atoms</h4>
-
+<pre>
+H = 2
+O = 1
+</pre>
 <h4>Step 3: Multiply atomic masses</h4>
-
+<pre>
+H = 1 × 2 = 2
+O = 16 × 1 = 16
+</pre>
 <h4>Step 4: Add</h4>
-
+<pre>
+2 + 16 = 18 g/mol
+</pre>
 <p><strong>Answer:</strong> 18 g/mol</p>
 <hr>
 <h3> EXAMPLE 2: CARBON DIOXIDE (CO₂)</h3>
 <p><strong>Question:</strong> Find molar mass of CO₂</p>
 <h4>Step 1: Formula</h4>
-
+<pre>CO₂</pre>
 <h4>Step 2: Count atoms</h4>
-
+<pre>
+C = 1
+O = 2
+</pre>
 <h4>Step 3: Multiply</h4>
-
+<pre>
+C = 12 × 1 = 12
+O = 16 × 2 = 32
+</pre>
 <h4>Step 4: Add</h4>
-
+<pre>
+12 + 32 = 44 g/mol
+</pre>
 <p><strong>Answer:</strong> 44 g/mol</p>
 <hr>
 <h3> EXAMPLE 3: SODIUM CHLORIDE (NaCl)</h3>
 <p><strong>Question:</strong> Find molar mass of NaCl</p>
 <h4>Step 1: Formula</h4>
-
+<pre>NaCl</pre>
 <h4>Step 2: Count atoms</h4>
-
+<pre>
+Na = 1
+Cl = 1
+</pre>
 <h4>Step 3: Multiply</h4>
-
+<pre>
+Na = 23 × 1 = 23
+Cl = 35.5 × 1 = 35.5
+</pre>
 <h4>Step 4: Add</h4>
-
+<pre>
+23 + 35.5 = 58.5 g/mol
+</pre>
 <p><strong>Answer:</strong> 58.5 g/mol</p>
 <hr>
 <h3> HOW IT CONNECTS TO MOLES</h3>
 <p>Once you know molar mass, you can calculate moles:</p>
-
+<pre>
+n = m ÷ M
+</pre>
 <p>
 Where:
 </p>
@@ -2491,7 +2601,12 @@ Where:
 </ul>
 <hr>
 <h3> QUICK SUMMARY</h3>
-
+<pre>
+1. Count atoms
+2. Multiply by atomic mass
+3. Add totals
+4. Use in n = m ÷ M
+</pre>
 `,
 
   [
@@ -2583,7 +2698,10 @@ Stoichiometry is the calculation of amounts of reactants and products in chemica
   <li>Moles are used to connect mass, volume, and particles</li>
   <li>All calculations depend on the mole concept</li>
 </ul>
-
+<pre>
+2H₂ + O₂ → 2H₂O
+Ratio = 2 : 1 : 2
+</pre>
 <hr>
 <h3> BASIC METHOD</h3>
 <ul>
@@ -2594,26 +2712,44 @@ Stoichiometry is the calculation of amounts of reactants and products in chemica
 </ul>
 <hr>
 <h3> MOLE FORMULAS</h3>
-
+<pre>
+n = mass ÷ molar mass
+mass = moles × molar mass
+particles = moles × 6.02 × 10²³
+</pre>
 <hr>
 <h3> EXAMPLE 1: MOLES FROM MASS</h3>
 <p><strong>Question:</strong> Find moles in 10 g of oxygen gas (O₂)</p>
 <h4>Step 1: Write formula</h4>
-
+<pre>
+n = mass ÷ molar mass
+</pre>
 <h4>Step 2: Substitute values</h4>
-
+<pre>
+M(O₂) = 32
+n = 10 ÷ 32
+</pre>
 <h4>Step 3: Calculate</h4>
-
+<pre>
+n = 0.3125 mol
+</pre>
 <p><strong>Answer:</strong> 0.3125 mol</p>
 <hr>
 <h3> EXAMPLE 2: MASS–MASS STOICHIOMETRY</h3>
 <p><strong>Question:</strong> 2H₂ + O₂ → 2H₂O. Find mass of water formed from 4 g of H₂.</p>
 <h4>Step 1: Convert H₂ to moles</h4>
-
+<pre>
+n = 4 ÷ 2 = 2 mol
+</pre>
 <h4>Step 2: Use mole ratio</h4>
-
+<pre>
+2H₂ : 2H₂O → 1 : 1 ratio
+So 2 mol H₂ → 2 mol H₂O
+</pre>
 <h4>Step 3: Convert moles of water to mass</h4>
-
+<pre>
+Mass = 2 × 18 = 36 g
+</pre>
 <p><strong>Answer:</strong> 36 g of water</p>
 <hr>
 <h3> KEY POINTS</h3>
@@ -2633,7 +2769,12 @@ Stoichiometry is the calculation of amounts of reactants and products in chemica
 </ul>
 <hr>
 <h3> QUICK SUMMARY</h3>
-
+<pre>
+1. Balance equation
+2. Convert to moles
+3. Use ratio
+4. Convert to final answer
+</pre>
 `,
   [
     {
@@ -2723,7 +2864,9 @@ The <strong>empirical formula</strong> is the simplest whole-number ratio of ato
   <li>Divide all by the smallest number of moles</li>
   <li>Adjust to whole numbers if needed</li>
 </ul>
-
+<pre>
+Empirical Formula = Simplest Ratio of atoms
+</pre>
 <hr>
 <h3> METHOD (STEP BY STEP)</h3>
 <ul>
@@ -2737,37 +2880,72 @@ The <strong>empirical formula</strong> is the simplest whole-number ratio of ato
 <h3> EXAMPLE 1: C, H, O COMPOUND</h3>
 <p><strong>Question:</strong> Find empirical formula for 40% C, 6.7% H, 53.3% O</p>
 <h4>Step 1: Assume 100 g</h4>
-
+<pre>
+C = 40 g
+H = 6.7 g
+O = 53.3 g
+</pre>
 <h4>Step 2: Convert to moles</h4>
-
+<pre>
+C = 40 ÷ 12 = 3.33
+H = 6.7 ÷ 1 = 6.7
+O = 53.3 ÷ 16 = 3.33
+</pre>
 <h4>Step 3: Divide by smallest</h4>
-
+<pre>
+3.33 : 6.7 : 3.33
+÷ 3.33
+= 1 : 2 : 1
+</pre>
 <h4>Step 4: Write formula</h4>
-
+<pre>
+CH₂O
+</pre>
 <p><strong>Answer:</strong> CH₂O</p>
 <hr>
 <h3> EXAMPLE 2: IRON OXIDE</h3>
 <p><strong>Question:</strong> 70% Fe, 30% O</p>
 <h4>Step 1: Assume 100 g</h4>
-
+<pre>
+Fe = 70 g
+O = 30 g
+</pre>
 <h4>Step 2: Convert to moles</h4>
-
+<pre>
+Fe = 70 ÷ 56 = 1.25
+O = 30 ÷ 16 = 1.875
+</pre>
 <h4>Step 3: Divide by smallest</h4>
-
+<pre>
+1.25 : 1.875
+÷ 1.25
+= 1 : 1.5
+</pre>
 <h4>Step 4: Make whole numbers</h4>
-
+<pre>
+1 : 1.5 × 2 = 2 : 3
+</pre>
 <h4>Step 5: Write formula</h4>
-
+<pre>
+Fe₂O₃
+</pre>
 <p><strong>Answer:</strong> Fe₂O₃</p>
 <hr>
 <h3> EXAMPLE 3: WATER</h3>
 <p><strong>Question:</strong> 2 g H and 16 g O</p>
 <h4>Step 1: Convert to moles</h4>
-
+<pre>
+H = 2 ÷ 1 = 2
+O = 16 ÷ 16 = 1
+</pre>
 <h4>Step 2: Ratio</h4>
-
+<pre>
+2 : 1
+</pre>
 <h4>Step 3: Write formula</h4>
-
+<pre>
+H₂O
+</pre>
 <p><strong>Answer:</strong> H₂O</p>
 <hr>
 <h3> COMMON FIXES (VERY IMPORTANT)</h3>
@@ -2787,7 +2965,13 @@ The <strong>empirical formula</strong> is the simplest whole-number ratio of ato
 </ul>
 <hr>
 <h3> QUICK SUMMARY</h3>
-
+<pre>
+1. Assume 100 g (if % given)
+2. Convert to moles
+3. Divide by smallest
+4. Make whole numbers
+5. Write formula
+</pre>
 `,
   [
     {
@@ -2862,7 +3046,10 @@ It is always a multiple of the <strong>empirical formula</strong>.
   <li>Use molar mass (Mr)</li>
   <li>Find how many times bigger the real formula is</li>
 </ul>
-
+<pre>
+Molecular Formula = Empirical Formula × n
+n = Mr ÷ Empirical Formula Mass
+</pre>
 <hr>
 <h3> METHOD (VERY IMPORTANT STEPS)</h3>
 <ul>
@@ -2875,25 +3062,42 @@ It is always a multiple of the <strong>empirical formula</strong>.
 <h3> EXAMPLE 1: CH₂O</h3>
 <p><strong>Question:</strong> Empirical formula = CH₂O, Mr = 60. Find molecular formula.</p>
 <h4>Step 1: Empirical formula</h4>
-
+<pre>CH₂O</pre>
 <h4>Step 2: EFM</h4>
-
+<pre>
+C = 12
+H = 1 × 2 = 2
+O = 16
+EFM = 12 + 2 + 16 = 30
+</pre>
 <h4>Step 3: Find n</h4>
-
+<pre>
+n = 60 ÷ 30 = 2
+</pre>
 <h4>Step 4: Multiply everything by 2</h4>
-
+<pre>
+CH₂O × 2 = C₂H₄O₂
+</pre>
 <p><strong>Answer:</strong> C₂H₄O₂</p>
 <hr>
 <h3> EXAMPLE 2: CH</h3>
 <p><strong>Question:</strong> Empirical formula = CH, Mr = 78</p>
 <h4>Step 1: Empirical formula</h4>
-
+<pre>CH</pre>
 <h4>Step 2: EFM</h4>
-
+<pre>
+C = 12
+H = 1
+EFM = 13
+</pre>
 <h4>Step 3: Find n</h4>
-
+<pre>
+n = 78 ÷ 13 = 6
+</pre>
 <h4>Step 4: Multiply formula</h4>
-
+<pre>
+CH × 6 = C₆H₆
+</pre>
 <p><strong>Answer:</strong> C₆H₆</p>
 <hr>
 <h3> KEY POINTS</h3>
@@ -2914,7 +3118,12 @@ It is always a multiple of the <strong>empirical formula</strong>.
 </ul>
 <hr>
 <h3> QUICK SUMMARY</h3>
-
+<pre>
+1. Write empirical formula
+2. Find EFM
+3. n = Mr ÷ EFM
+4. Multiply entire formula by n
+</pre>
 `,
   [
     {
@@ -2984,20 +3193,29 @@ It controls how much product is formed.
 <h3> EXAMPLE 1: HYDROGEN + OXYGEN</h3>
 <p><strong>Question:</strong> Find the limiting reagent when 4 mol H₂ reacts with 1 mol O₂.</p>
 <h4>Step 1: Balanced equation</h4>
-
+<pre>
+2H₂ + O₂ → 2H₂O
+</pre>
 <h4>Step 2: Compare ratio</h4>
 <p>
 From the equation:
 </p>
-
+<pre>
+2 mol H₂ needs 1 mol O₂
+</pre>
 <p>
 Now compare with what we have:
 </p>
-
+<pre>
+H₂ = 4 mol
+O₂ = 1 mol
+</pre>
 <p>
 Check how much H₂ is needed for 1 mol O₂:
 </p>
-
+<pre>
+1 mol O₂ needs 2 mol H₂ (we have 4 mol H₂ → excess)
+</pre>
 <p>
 So oxygen runs out first.
 </p>
@@ -3016,9 +3234,14 @@ It is completely used to form products.
 <h3> EXAMPLE 3: MAGNESIUM + OXYGEN</h3>
 <p><strong>Question:</strong> 2 mol Mg reacts with 1 mol O₂</p>
 <h4>Step 1: Balanced equation</h4>
-
+<pre>
+2Mg + O₂ → 2MgO
+</pre>
 <h4>Step 2: Compare</h4>
-
+<pre>
+Mg = 2 mol
+O₂ = 1 mol
+</pre>
 <p>
 This matches the exact ratio in the equation.
 </p>
@@ -3109,9 +3332,13 @@ This relationship allows conversion between the <strong>number of moles</strong>
 <hr>
 <h3> FORMULAS</h3>
 <p><strong>Volume of gas:</strong></p>
-
+<pre>
+Volume = moles × 22.4
+</pre>
 <p><strong>Number of moles:</strong></p>
-
+<pre>
+Moles = Volume ÷ 22.4
+</pre>
 <p><strong>Where:</strong></p>
 <ul>
   <li>Volume is in dm³</li>
@@ -3121,26 +3348,39 @@ This relationship allows conversion between the <strong>number of moles</strong>
 <h3> WORKED EXAMPLE 1</h3>
 <p><strong>Question:</strong> Find the volume of 2 moles of oxygen gas at STP.</p>
 <p><strong>Solution:</strong></p>
-
+<pre>
+Volume = moles × 22.4
+Volume = 2 × 22.4
+Volume = 44.8 dm³
+</pre>
 <p><strong>Answer:</strong> 44.8 dm³</p>
 <hr>
 <h3> WORKED EXAMPLE 2</h3>
 <p><strong>Question:</strong> Find the volume of 0.5 moles of hydrogen gas at STP.</p>
 <p><strong>Solution:</strong></p>
-
+<pre>
+Volume = 0.5 × 22.4
+Volume = 11.2 dm³
+</pre>
 <p><strong>Answer:</strong> 11.2 dm³</p>
 <hr>
 <h3> WORKED EXAMPLE 3</h3>
 <p><strong>Question:</strong> A gas occupies 67.2 dm³ at STP. Find the number of moles.</p>
 <p><strong>Solution:</strong></p>
-
+<pre>
+Moles = Volume ÷ 22.4
+Moles = 67.2 ÷ 22.4
+Moles = 3 mol
+</pre>
 <p><strong>Answer:</strong> 3 mol</p>
 <hr>
 <h3> MASTER RULE</h3>
 <p>
 At STP, all gas calculations depend on:
 </p>
-
+<pre>
+1 mole = 22.4 dm³
+</pre>
 <p>
 Always convert between moles and volume using this relationship.
 </p>
@@ -3154,7 +3394,11 @@ Always convert between moles and volume using this relationship.
 </ul>
 <hr>
 <h3> QUICK SUMMARY</h3>
-
+<pre>
+STP GAS RULE:
+Volume = moles × 22.4
+Moles = volume ÷ 22.4
+</pre>
 `,
     [
       {
@@ -3281,7 +3525,11 @@ add(
 </ul>
 
 <h3> SIMPLE MODEL</h3>
+<pre>
+Physical change:  Ice → Water → Ice (reversible)
 
+Chemical change:  Iron + Oxygen → Rust (new substance)
+</pre>
 
 <h3> CHARACTERISTICS</h3>
 
@@ -3392,7 +3640,10 @@ add(
 </ul>
 
 <h3> SIMPLE MODEL</h3>
-
+<pre>
+Unbalanced:   H₂ + O₂ → H₂O
+Balanced:     2H₂ + O₂ → 2H₂O
+</pre>
 
 <h3> WHY BALANCING IS IMPORTANT</h3>
 <ul>
@@ -3483,7 +3734,10 @@ add(
 </ul>
 
 <h3> SIMPLE MODEL</h3>
-
+<pre>
+Reactants → rearrangement of atoms → Products
+Mass before = Mass after
+</pre>
 
 <h3> REAL EXPERIMENT IDEA</h3>
 <ul>
@@ -3561,10 +3815,16 @@ add(
 </ul>
 
 <h3> SIMPLE MODEL</h3>
-
+<pre>
+Reactants  →  Products
+Mg + O₂     →  MgO
+</pre>
 
 <h3> EXAMPLE WITH BALANCING</h3>
-
+<pre>
+Unbalanced: Mg + O₂ → MgO
+Balanced:   2Mg + O₂ → 2MgO
+</pre>
 `,
   [
     {
@@ -3646,10 +3906,15 @@ add(
 </ul>
 
 <h3> SIMPLE MODEL</h3>
-
+<pre>
+HCl + NaOH → NaCl + H₂O
+(acid) (base)   (salt) (water)
+</pre>
 
 <h3> IONIC VIEW</h3>
-
+<pre>
+H⁺ + OH⁻ → H₂O
+</pre>
 
 <h3> CHARACTERISTICS</h3>
 <ul>
@@ -3753,7 +4018,11 @@ add(
 </ul>
 
 <h3> DISSOCIATION MODEL</h3>
-
+<pre>
+HCl → H⁺ + Cl⁻
+H₂SO₄ → 2H⁺ + SO₄²⁻
+CH₃COOH ⇌ H⁺ + CH₃COO⁻ (weak acid)
+</pre>
 
 <h3> COMMON ACIDS</h3>
 <ul>
@@ -3859,7 +4128,11 @@ add(
 </ul>
 
 <h3> DISSOCIATION MODEL</h3>
-
+<pre>
+NaOH → Na⁺ + OH⁻
+KOH → K⁺ + OH⁻
+Ca(OH)₂ → Ca²⁺ + 2OH⁻
+</pre>
 
 <h3> COMMON BASES & ALKALIS</h3>
 <ul>
@@ -3964,7 +4237,19 @@ add(
 </ul>
 
 <h3> COMMON INDICATORS AND COLOURS</h3>
+<pre>
+Litmus:
+Acid → Red
+Base → Blue
 
+Phenolphthalein:
+Acid → Colourless
+Base → Pink
+
+Methyl orange:
+Acid → Red
+Base → Yellow
+</pre>
 
 <h3> FUNCTION OF INDICATORS</h3>
 <ul>
@@ -4056,7 +4341,10 @@ add(
 </ul>
 
 <h3> pH SCALE MODEL</h3>
-
+<pre>
+0 —— 1 —— 3 —— 7 —— 10 —— 14
+Strong acid   Neutral   Strong base
+</pre>
 
 <h3> TYPICAL pH RANGES</h3>
 <ul>
@@ -4155,7 +4443,10 @@ add(
 </ul>
 
 <h3> EXAMPLE</h3>
-
+<pre>
+HCl + NaOH → NaCl + H₂O
+Salt formed: NaCl (sodium chloride)
+</pre>
 
 <h3> TYPES OF SALTS (INTRO)</h3>
 <ul>
@@ -4251,7 +4542,10 @@ add(
 </ul>
 
 <h3> SIMPLE SUMMARY</h3>
-
+<pre>
+Acids → Batteries, Fertilizers, Food preservation
+Bases → Soap, Cleaning agents, Antacids
+</pre>
 
 <h3> INDUSTRIAL & DAILY APPLICATIONS</h3>
 
@@ -4352,7 +4646,19 @@ add(
 </ul>
 
 <h3> IONIZATION MODEL</h3>
+<pre>
+Strong acid:
+HCl → H⁺ + Cl⁻   (complete ionization)
 
+Weak acid:
+CH₃COOH ⇌ H⁺ + CH₃COO⁻   (partial ionization)
+
+Strong base:
+NaOH → Na⁺ + OH⁻
+
+Weak base:
+NH₃ + H₂O ⇌ NH₄⁺ + OH⁻
+</pre>
 
 <h3> CONDUCTIVITY IDEA</h3>
 <ul>
@@ -4446,7 +4752,12 @@ add(
 </ul>
 
 <h3> STRUCTURE MODEL</h3>
-
+<pre>
+Metal lattice:
+[+][+][+][+]
+ e⁻ e⁻ e⁻ e⁻   → free electrons flow
+[+][+][+][+]
+</pre>
 
 <h3> KEY PROPERTIES SUMMARY</h3>
 <ul>
@@ -4524,7 +4835,12 @@ add(
 </ul>
 
 <h3> STRUCTURE MODEL</h3>
-
+<pre>
+Non-metal solid:
+X   X    X
+  X   X
+(no free electrons → no conductivity)
+</pre>
 
 <h3> KEY PROPERTIES</h3>
 <ul>
@@ -4600,7 +4916,10 @@ add(
 </ul>
 
 <h3> REACTIVITY SERIES</h3>
-
+<pre>
+K > Na > Ca > Mg > Al > Zn > Fe > H > Cu > Ag > Au
+(Highly reactive → Least reactive)
+</pre>
 
 <h3> IMPORTANT CONSEQUENCES</h3>
 <ul>
@@ -4699,7 +5018,12 @@ add(
 </ul>
 
 <h3> STANDARD EXAMPLE</h3>
+<pre>
+Zn + CuSO₄ → ZnSO₄ + Cu
 
+Zinc (Zn) is more reactive than copper (Cu),
+so Zn displaces Cu from copper sulfate solution.
+</pre>
 
 <h3> REDOX IDENTIFICATION</h3>
 <ul>
@@ -4720,7 +5044,13 @@ add(
 </ul>
 
 <h3> MINI CALCULATION EXAMPLE</h3>
+<pre>
+If 2 moles of Zn react completely:
 
+Zn : Cu ratio = 1 : 1
+
+2 mol Zn → 2 mol Cu produced
+</pre>
 `,
   [
     {
@@ -4816,15 +5146,27 @@ add(
 </ul>
 <hr>
 <h3> SIMPLE EXAMPLE (HOW x IS FOUND)</h3>
-
+<pre>
+If 1 mole of rust weighs 178 g
+Fe₂O₃ = 160 g
+H₂O = 18 g each
+</pre>
 <p><b>Step 1:</b> Subtract iron oxide part</p>
-
+<pre>
+178 - 160 = 18 g
+</pre>
 <p><b>Step 2:</b> Find water amount</p>
-
+<pre>
+18 g ÷ 18 g/mol = 1 mole of water
+</pre>
 <p><b>Step 3:</b> So x = 1</p>
 <hr>
 <h3> FINAL ANSWER</h3>
-
+<pre>
+x = 1
+Final formula:
+Fe₂O₃·H₂O
+</pre>
 <hr>
 <h3> MEMORY TRICK</h3>
 <p>
@@ -4922,7 +5264,9 @@ add(
 </ul>
 
 <h3> SIMPLIFIED FLOW</h3>
-
+<pre>
+Ore → Concentration → Extraction → Purification → Pure Metal
+</pre>
 
 <h3> METHODS OF EXTRACTION</h3>
 
@@ -4945,7 +5289,9 @@ add(
 </ul>
 
 <h3> BLAST FURNACE (IRON EXTRACTION)</h3>
-
+<pre>
+Iron ore + Coke + Limestone → Iron + Slag
+</pre>
 
 <h3> ROLE OF MATERIALS</h3>
 <ul>
@@ -5039,7 +5385,11 @@ add(
 </ul>
 
 <h3> STRUCTURE IDEA</h3>
+<pre>
+Pure metal:   layers slide easily → soft
 
+Alloy:   mixed atoms distort layers → hard
+</pre>
 
 <h3> TYPES OF ALLOYS</h3>
 <ul>
@@ -5147,7 +5497,13 @@ add(
 </ul>
 
 <h3> COMMON USES</h3>
-
+<pre>
+Iron → buildings, bridges, machinery
+Copper → electrical wiring, cables
+Aluminium → aircraft, utensils, packaging
+Gold → jewelry, electronics
+Silver → ornaments, photography
+</pre>
 
 <h3> REASONING IDEA</h3>
 <ul>
@@ -5230,7 +5586,12 @@ add(
 </ul>
 
 <h3> CARBON STRUCTURE IDEA</h3>
-
+<pre>
+Straight chain:   C–C–C–C–C
+Branched chain:       C
+                     / | \\
+                    C  C  C
+</pre>
 
 <h3> TYPES OF HYDROCARBONS</h3>
 <ul>
@@ -5249,7 +5610,9 @@ add(
 <h3> EXAMPLE REACTIONS</h3>
 
 <h4>1. Combustion of methane</h4>
-
+<pre>
+CH₄ + 2O₂ → CO₂ + 2H₂O
+</pre>
 <p><b>Step-by-step:</b></p>
 <ul>
 <li>Carbon reacts with oxygen → carbon dioxide</li>
@@ -5258,14 +5621,18 @@ add(
 </ul>
 
 <h4>2. Formation of ethane (catenation)</h4>
-
+<pre>
+CH₃ + CH₃ → C₂H₆
+</pre>
 <ul>
 <li>Two carbon units join to form a longer chain</li>
 <li>This shows carbon bonding ability</li>
 </ul>
 
 <h4>3. Ethene addition reaction</h4>
-
+<pre>
+C₂H₄ + H₂ → C₂H₆
+</pre>
 <ul>
 <li>Double bond breaks</li>
 <li>Hydrogen atoms add to carbon</li>
@@ -5273,7 +5640,9 @@ add(
 </ul>
 
 <h4>4. Complete combustion of ethane</h4>
-
+<pre>
+2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O
+</pre>
 
 </div>`,
 
@@ -5368,7 +5737,15 @@ add(
 </ul>
 
 <h3> STRUCTURAL REPRESENTATION</h3>
+<pre>
+Methane:   CH₄
 
+Ethane:    CH₃–CH₃
+
+Propane:   CH₃–CH₂–CH₃
+
+Butane:    CH₃–CH₂–CH₂–CH₃
+</pre>
 
 <h3> MOLECULAR FORMULAS</h3>
 <ul>
@@ -5389,7 +5766,9 @@ add(
 <h3> IMPORTANT REACTION</h3>
 
 <h4>1. Combustion of methane</h4>
-
+<pre>
+CH₄ + 2O₂ → CO₂ + 2H₂O
+</pre>
 
 <p><b>Step-by-step:</b></p>
 <ul>
@@ -5399,10 +5778,14 @@ add(
 </ul>
 
 <h4>2. Combustion of propane</h4>
-
+<pre>
+C₃H₈ + 5O₂ → 3CO₂ + 4H₂O
+</pre>
 
 <h3> STRUCTURE IDEA (CHAIN GROWTH)</h3>
-
+<pre>
+CH₄ → CH₃–CH₃ → CH₃–CH₂–CH₃ → longer chains
+</pre>
 `,
 
   [
@@ -5496,7 +5879,13 @@ add(
 </ul>
 
 <h3> STRUCTURAL REPRESENTATION</h3>
+<pre>
+Ethene:    H2C=CH2
 
+Propene:   CH3–CH=CH2
+
+Butene:    CH3–CH2–CH=CH2
+</pre>
 
 <h3> DOUBLE BOND EXPLANATION</h3>
 <ul>
@@ -5508,7 +5897,9 @@ add(
 <h3> IMPORTANT REACTIONS</h3>
 
 <h4>1. Hydrogenation (Addition of Hydrogen)</h4>
-
+<pre>
+C₂H₄ + H₂ → C₂H₆
+</pre>
 
 <p><b>Step-by-step:</b></p>
 <ul>
@@ -5519,15 +5910,22 @@ add(
 </ul>
 
 <h4>2. Addition of Bromine (Test for alkenes)</h4>
-
+<pre>
+C₂H₄ + Br₂ → C₂H₄Br₂
+</pre>
 
 <p><b>Observation:</b> Brown bromine water turns colorless</p>
 
 <h4>3. Combustion of ethene</h4>
-
+<pre>
+C₂H₄ + 3O₂ → 2CO₂ + 2H₂O
+</pre>
 
 <h3> COMPARISON: ALKANES vs ALKENES</h3>
-
+<pre>
+Alkanes: C–C (single bond), less reactive
+Alkenes: C=C (double bond), more reactive
+</pre>
 </div>`,
 
   [
@@ -5622,7 +6020,13 @@ add(
 </ul>
 
 <h3> STRUCTURAL REPRESENTATION</h3>
+<pre>
+Ethyne:    HC≡CH
 
+Propyne:   CH₃–C≡CH
+
+Butyne:    CH₃–CH₂–C≡CH
+</pre>
 
 <h3> TRIPLE BOND EXPLANATION</h3>
 <ul>
@@ -5634,7 +6038,9 @@ add(
 <h3> IMPORTANT REACTIONS</h3>
 
 <h4>1. Hydrogenation (Addition of Hydrogen)</h4>
-
+<pre>
+C₂H₂ + 2H₂ → C₂H₆
+</pre>
 
 <p><b>Step-by-step:</b></p>
 <ul>
@@ -5645,15 +6051,24 @@ add(
 </ul>
 
 <h4>2. Addition of Bromine</h4>
-
+<pre>
+C₂H₂ + Br₂ → C₂H₂Br₂ (first addition)
+C₂H₂Br₂ + Br₂ → C₂H₂Br₄ (further addition)
+</pre>
 
 <p><b>Observation:</b> Bromine water is decolorized</p>
 
 <h4>3. Combustion of ethyne</h4>
-
+<pre>
+2C₂H₂ + 5O₂ → 4CO₂ + 2H₂O
+</pre>
 
 <h3> COMPARISON: ALKANES vs ALKENES vs ALKYNES</h3>
-
+<pre>
+Alkanes: C–C (single bond) → least reactive
+Alkenes: C=C (double bond) → more reactive
+Alkynes: C≡C (triple bond) → most reactive
+</pre>
 `,
 
   [
@@ -5748,18 +6163,26 @@ add(
 </ul>
 
 <h3> GENERAL EQUATION</h3>
-
+<pre>
+Hydrocarbon + Oxygen → Carbon dioxide + Water + Energy
+</pre>
 
 <h3> EXAMPLE COMBUSTION REACTIONS</h3>
 
 <h4>1. Methane combustion</h4>
-
+<pre>
+CH₄ + 2O₂ → CO₂ + 2H₂O + energy
+</pre>
 
 <h4>2. Ethane combustion</h4>
-
+<pre>
+2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O + energy
+</pre>
 
 <h4>3. Propane combustion</h4>
-
+<pre>
+C₃H₈ + 5O₂ → 3CO₂ + 4H₂O + energy
+</pre>
 
 <h3> TYPES OF COMBUSTION</h3>
 
@@ -5777,7 +6200,9 @@ add(
 <li>Produces less energy</li>
 </ul>
 
-
+<pre>
+CH₄ + O₂ → CO + H₂O + energy (incomplete)
+</pre>
 
 <h3> ENERGY EXPLANATION</h3>
 <ul>
@@ -5787,7 +6212,10 @@ add(
 </ul>
 
 <h3> COMPARISON TABLE</h3>
-
+<pre>
+Complete combustion → CO₂ + H₂O → more energy
+Incomplete combustion → CO / C + H₂O → less energy
+</pre>
 </div>`,
 
   [
@@ -5881,7 +6309,11 @@ add(
 </ul>
 
 <h3> STRUCTURAL FORMULAS</h3>
-
+<pre>
+Methanol:   CH₃OH
+Ethanol:    CH₃CH₂OH
+Propanol:   CH₃CH₂CH₂OH
+</pre>
 
 <h3> FUNCTIONAL GROUP</h3>
 <ul>
@@ -5890,10 +6322,14 @@ add(
 </ul>
 
 <h3> PREPARATION IDEA (BASIC)</h3>
-
+<pre>
+Alkane → Alcohol (substitution reaction)
+</pre>
 
 <h3> COMBUSTION OF ETHANOL</h3>
-
+<pre>
+C₂H₅OH + 3O₂ → 2CO₂ + 3H₂O + energy
+</pre>
 
 <p><b>Step-by-step:</b></p>
 <ul>
@@ -5905,10 +6341,16 @@ add(
 <h3> OXIDATION OF ALCOHOLS</h3>
 
 <h4>1. Ethanol oxidation</h4>
-
+<pre>
+C₂H₅OH + [O] → CH₃CHO + H₂O
+(ethanol → ethanal)
+</pre>
 
 <h4>2. Further oxidation</h4>
-
+<pre>
+CH₃CHO + [O] → CH₃COOH
+(ethanal → ethanoic acid)
+</pre>
 
 <h3> KEY PROPERTIES</h3>
 <ul>
@@ -5918,7 +6360,9 @@ add(
 </ul>
 
 <h3> IMPORTANT IDEA</h3>
-
+<pre>
+Alcohol → Aldehyde → Carboxylic Acid (oxidation pathway)
+</pre>
 </div>`,
 
   [
@@ -6009,7 +6453,12 @@ add(
 </ul>
 
 <h3> STRUCTURAL FORMULAS</h3>
-
+<pre>
+Methanoic acid:   HCOOH
+Ethanoic acid:    CH₃COOH
+Propanoic acid:   CH₃CH₂COOH
+Butanoic acid:    CH₃CH₂CH₂COOH
+</pre>
 
 <h3> FUNCTIONAL GROUP</h3>
 <ul>
@@ -6020,7 +6469,9 @@ add(
 <h3> FORMATION (FROM ALCOHOLS)</h3>
 
 <h4>Oxidation of ethanol</h4>
-
+<pre>
+CH₃CH₂OH + [O] → CH₃COOH + H₂O
+</pre>
 
 <p><b>Step-by-step:</b></p>
 <ul>
@@ -6032,10 +6483,14 @@ add(
 <h3> REACTIONS OF CARBOXYLIC ACIDS</h3>
 
 <h4>1. Reaction with metals</h4>
-
+<pre>
+2CH₃COOH + Mg → (CH₃COO)₂Mg + H₂
+</pre>
 
 <h4>2. Reaction with carbonates</h4>
-
+<pre>
+2CH₃COOH + Na₂CO₃ → 2CH₃COONa + CO₂ + H₂O
+</pre>
 
 <h3> KEY PROPERTIES</h3>
 <ul>
@@ -6046,7 +6501,10 @@ add(
 </ul>
 
 <h3> IMPORTANT IDEA</h3>
-
+<pre>
+Alcohol → Aldehyde → Carboxylic Acid
+(oxidation pathway)
+</pre>
 </div>`,
 
   [
@@ -6137,10 +6595,14 @@ add(
 </ul>
 
 <h3> GENERAL EQUATION</h3>
-
+<pre>
+Large Alkane → Smaller Alkane + Alkene
+</pre>
 
 <h3> EXAMPLE REACTION</h3>
-
+<pre>
+C₁₀H₂₂ → C₈H₁₈ + C₂H₄
+</pre>
 
 <p><b>Step-by-step:</b></p>
 <ul>
@@ -6174,7 +6636,9 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-
+<pre>
+Large molecule (low demand) → Small molecules (high demand fuels + plastics)
+</pre>
 
 <h3> INDUSTRIAL CONNECTION</h3>
 <ul>
@@ -6275,10 +6739,16 @@ add(
 <h3> STRUCTURAL EXAMPLES (C₄H₁₀)</h3>
 
 <h4>1. Butane (straight chain)</h4>
-
+<pre>
+CH₃–CH₂–CH₂–CH₃
+</pre>
 
 <h4>2. Isobutane (branched chain)</h4>
-
+<pre>
+      CH₃
+       |
+CH₃–CH–CH₃
+</pre>
 
 <h3> TYPES OF ISOMERISM (Basic Level)</h3>
 
@@ -6302,7 +6772,9 @@ add(
 </ul>
 
 <h3> GENERAL IDEA</h3>
-
+<pre>
+Same formula → Different structure → Different properties
+</pre>
 </div>`,
 
   [
@@ -6400,7 +6872,9 @@ add(
 <li>They release energy during combustion</li>
 </ul>
 
-
+<pre>
+CH₄ + 2O₂ → CO₂ + 2H₂O + energy
+</pre>
 
 <h4>2. Plastics and Polymers</h4>
 <ul>
@@ -6408,7 +6882,9 @@ add(
 <li>Cracking produces alkenes for polymer production</li>
 </ul>
 
-
+<pre>
+n(CH₂=CH₂) → (–CH₂–CH₂–)ₙ  [polyethene]
+</pre>
 
 <h4>3. Medicines and Pharmaceuticals</h4>
 <ul>
@@ -6425,7 +6901,9 @@ add(
 </ul>
 
 <h3> SIMPLE FLOW IDEA</h3>
-
+<pre>
+Crude oil → hydrocarbons → fuels + plastics + chemicals
+</pre>
 
 <h3> WHY IT IS IMPORTANT</h3>
 <ul>
@@ -6435,7 +6913,9 @@ add(
 </ul>
 
 <h3> KEY SUMMARY</h3>
-
+<pre>
+Organic chemistry = foundation of fuels + materials + life-saving drugs
+</pre>
 </div>`,
 
   [
@@ -6908,7 +7388,10 @@ add(
 </ul>
 
 <h3> STRUCTURE COMPARISON</h3>
-
+<pre>
+Diamond: 3D rigid network (no free electrons)
+Graphite: layered structure (free electrons move between layers)
+</pre>
 
 <h3> PROPERTIES SUMMARY</h3>
 <ul>
@@ -7144,7 +7627,9 @@ add(
 </ul>
 
 <h3> SIMPLIFIED FLOW</h3>
-
+<pre>
+N₂ → NH₃ → NO₂⁻ → NO₃⁻ → Plants → Animals → Decomposition → N₂
+</pre>
 
 <h3> IMPORTANCE OF THE NITROGEN CYCLE</h3>
 <ul>
@@ -7269,7 +7754,11 @@ add(
 </ul>
 
 <h3> KEY REACTIONS</h3>
-
+<pre>
+SO₂ + H₂O → H₂SO₄ (acid rain formation)
+CO + Hb → COHb (carboxyhaemoglobin)
+CO₂ → greenhouse effect (heat trapping)
+</pre>
 
 <h3> EFFECTS OF AIR POLLUTION</h3>
 <ul>
@@ -7409,7 +7898,9 @@ add(
 </ul>
 
 <h3> SUMMARY FLOW</h3>
-
+<pre>
+Non-metals → Life processes + Industry + Agriculture + Environment balance
+</pre>
 `,
 
   [

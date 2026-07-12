@@ -23,7 +23,9 @@ add(
 </ul>
 <hr>
 <h3> 3. BASIC PROCESS</h3>
-
+<pre>
+Land preparation → Planting/Breeding → Management → Harvest → Storage/Market
+</pre>
 <hr>
 <h3> 4. IMPORTANCE</h3>
 <ul>
@@ -34,7 +36,11 @@ add(
 </ul>
 <hr>
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Agriculture = Science + Art + Business
+Goal → Food + Raw materials + Income
+Process → Produce → Manage → Harvest → Sell
+</pre>
 <hr>
 <h3> EXAM TIP</h3>
 <ul>
@@ -146,7 +152,14 @@ add(
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Crops → food production
+Animals → livestock products
+Engineering → tools & machines
+Economics → profit system
+Extension → knowledge transfer
+All → interconnected system
+</pre>
 `,
 [
 {
@@ -255,7 +268,14 @@ add(
 </ul>
 <hr>
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Food → survival
+Jobs → employment
+Income → livelihood
+Industry → raw materials
+Trade → economy growth
+Exports → foreign currency
+</pre>
 `,
 [
 {
@@ -317,7 +337,9 @@ add(
 <li>Family labour mainly used</li>
 <li>Low output</li>
 </ul>
-
+<pre>
+Goal → survival (food for home)
+</pre>
 <hr>
 <h3> 2. COMMERCIAL FARMING</h3>
 <ul>
@@ -327,7 +349,9 @@ add(
 <li>Hired labour used</li>
 <li>High output</li>
 </ul>
-
+<pre>
+Goal → profit (market production)
+</pre>
 <hr>
 <h3> 3. KEY DIFFERENCES</h3>
 <ul>
@@ -338,7 +362,11 @@ add(
 </ul>
 <hr>
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Subsistence → food for home
+Commercial → food for profit
+Difference → purpose + scale + technology
+</pre>
 `,
 [
 {
@@ -390,7 +418,9 @@ add(
 <li>Simple management system</li>
 </ul>
 
-
+<pre>
+Focus → crop production only
+</pre>
 
 <hr>
 
@@ -401,7 +431,9 @@ add(
 <li>Common in dry areas</li>
 </ul>
 
-
+<pre>
+Focus → livestock only
+</pre>
 
 <hr>
 
@@ -413,7 +445,9 @@ add(
 <li>Multiple income sources</li>
 </ul>
 
-
+<pre>
+Most efficient system → integrated farming
+</pre>
 
 <hr>
 
@@ -427,7 +461,11 @@ add(
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Arable → crops
+Pastoral → animals
+Mixed → both (best efficiency)
+</pre>
 `,
 [
 {
@@ -524,7 +562,13 @@ add(
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Clear → remove weeds
+Plough → loosen soil
+Harrow → break soil
+Level → smooth surface
+Goal → good seedbed for crops
+</pre>
 `,
 [
 {
@@ -613,7 +657,12 @@ add(
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Good seeds → high yield
+Viable seeds → germinate well
+Certified seeds → reliable quality
+Bad seeds → crop failure risk
+</pre>
 `,
 [
 {
@@ -665,7 +714,10 @@ add(
 <li>Used for cereals and grasses</li>
 </ul>
 
-
+<pre>
+Pros → fast, cheap
+Cons → uneven growth, hard weeding
+</pre>
 
 <hr>
 
@@ -676,7 +728,10 @@ add(
 <li>Easier weeding and management</li>
 </ul>
 
-
+<pre>
+Pros → better yield, easy control
+Cons → more labor/time
+</pre>
 
 <hr>
 
@@ -687,7 +742,10 @@ add(
 <li>Used in rice and vegetables</li>
 </ul>
 
-
+<pre>
+Pros → strong plants, high survival
+Cons → labor intensive
+</pre>
 
 <hr>
 
@@ -711,7 +769,12 @@ add(
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Broadcast → random seeds
+Row planting → straight lines
+Transplanting → nursery to field
+Goal → good spacing + high yield
+</pre>
 `,
 [
 {
@@ -772,7 +835,9 @@ Germination is the biological process by which a dormant seed resumes growth and
 <li>Seedling establishes itself in soil</li>
 </ol>
 <h3> CONCEPT DIAGRAM</h3>
-
+<pre>
+Dormant Seed → Water Absorption → Enzyme Activation → Root → Shoot → Seedling
+</pre>
 <h3> IMPORTANCE OF GERMINATION</h3>
 <ul>
 <li>Starts plant life cycle</li>
@@ -2170,7 +2235,9 @@ add(
 Photosynthesis is the process by which green plants manufacture their own food (glucose) using sunlight energy, carbon dioxide, and water in the presence of chlorophyll found in chloroplasts.
 </p>
 <h4> OVERALL CHEMICAL EQUATION</h4>
-
+<pre>
+6CO₂ + 6H₂O → C₆H₁₂O₆ + 6O₂ (in presence of light & chlorophyll)
+</pre>
 <h4> SITES OF PHOTOSYNTHESIS</h4>
 <ul>
 <li><b>Chloroplasts:</b> Contain chlorophyll, the green pigment that traps sunlight energy</li>
@@ -2258,7 +2325,9 @@ add(
 Respiration in plants is the biochemical process by which stored food (glucose) is broken down in the presence or absence of oxygen to release energy (ATP) needed for growth, development, and all cellular activities.
 </p>
 <h4> OVERALL CHEMICAL EQUATION (AEROBIC RESPIRATION)</h4>
-
+<pre>
+C₆H₁₂O₆ + 6O₂ → 6CO₂ + 6H₂O + Energy (ATP)
+</pre>
 <h4> SITE OF RESPIRATION</h4>
 <ul>
 <li>Occurs in all living plant cells</li>
@@ -2625,7 +2694,9 @@ Farm tools and mechanization refer to the use of hand tools, animal-drawn implem
 It represents the gradual shift from manual farming to technology-driven agriculture.
 </p>
 <h4> STAGES OF AGRICULTURAL MECHANIZATION</h4>
-
+<pre>
+Human Labor → Animal Power → Engine Machines → Automated / Smart Farming
+</pre>
 <h4> TYPES OF FARM POWER</h4>
 <ul>
 <li><b>Human power:</b> Use of hand tools like hoes and cutlasses</li>
@@ -3101,7 +3172,9 @@ It enables farmers to make data-driven decisions, automate farm operations, and 
 <hr>
 <h4> SMART FARMING PROCESS</h4>
 
-
+<pre>
+Sensors & Drones → Data Collection → AI Analysis → Smart Decisions → Automated Action → Improved Yield
+</pre>
 <hr>
 <h4> BENEFITS OF SMART AGRICULTURE</h4>
 <ul>
@@ -4123,7 +4196,11 @@ Sorting products by size, quality, and appearance.
 <li><b>Product diversification:</b> Farmers can offer multiple products instead of just raw materials</li>
 </ul>
 <h3> EXAMPLE</h3>
-
+<pre>
+Milk → 100 units → ₹100
+Milk → Yogurt → 120 units → ₹180
+Value added = ₹80 (67% increase)
+</pre>
 `,
 [
   {
@@ -4231,7 +4308,9 @@ Used to convert raw products into value-added goods.
 <li>Adds value to agricultural products</li>
 </ul>
 <h3> SYSTEM FLOW</h3>
-
+<pre>
+Harvest → Technology Application → Preservation → Storage → Marketing → Consumer
+</pre>
 <h3> KEY INSIGHT</h3>
 <p>
 Proper use of post-harvest technologies is essential for minimizing losses and maximizing the value of agricultural products. Without these technologies, significant amounts of food can be wasted before reaching consumers.
@@ -4308,7 +4387,12 @@ Includes traders, agents, and brokers who facilitate the marketing process.
 </p>
 <hr>
 <h3> MARKETING CHANNELS</h3>
-
+<pre>
+Channel 1: Farmer → Consumer
+Channel 2: Farmer → Wholesaler → Retailer → Consumer
+Channel 3: Farmer → Marketing Cooperative → Consumer
+Channel 4: Farmer → Export Market
+</pre>
 <h3> FACTORS AFFECTING AGRICULTURAL MARKETING</h3>
 <ul>
 <li>Market demand and supply</li>
@@ -4804,7 +4888,9 @@ Both revenue and profit are crucial measures of farm performance and success.
 </p>
 <hr>
 <h3> FORMULA FOR PROFIT</h3>
-
+<pre>
+Profit = Total Revenue - Total Cost of Production
+</pre>
 <hr>
 <h3> KEY INSIGHT</h3>
 <p>
@@ -5074,7 +5160,9 @@ It acts as an essential link between agricultural production and consumption, en
 </p>
 <hr>
 <h3> CORE IDEA</h3>
-
+<pre>
+Production → Collection → Storage → Transport → Market → Consumption
+</pre>
 <hr>
 <h3> KEY INSIGHT</h3>
 <p>
@@ -5192,7 +5280,9 @@ This provides farmers and traders with information about prices, demand, and sup
 <p><b>Example:</b> Farmers checking daily market prices before selling their produce.</p>
 <hr>
 <h4> KEY IDEA FLOW</h4>
-
+<pre>
+Production → Collection → Storage → Transport → Processing → Packaging → Marketing → Consumption
+</pre>
 <hr>
 `,
 [

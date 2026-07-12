@@ -8,13 +8,20 @@ add(
   `<h2>Cell Biology</h2>
 <p>Cell biology is the study of cells, the basic structural and functional units of life.</p>
 <h3> CELL THEORY</h3>
-
+<pre>
+1. All living organisms are made of cells
+2. Cells are the basic unit of life
+3. All cells come from pre-existing cells
+</pre>
 <h3> 1. Types of Cells</h3>
 <ul>
 <li><b>Animal Cells</b> – no cell wall, flexible shape</li>
 <li><b>Plant Cells</b> – cell wall, chloroplasts, fixed shape</li>
 </ul>
-
+<pre>
+Plant Cell → Rigid + Chloroplasts
+Animal Cell → Flexible + No chloroplasts
+</pre>
 <hr>
 <h3> 2. Cell Structure (Organelles)</h3>
 <ul>
@@ -144,7 +151,12 @@ add(
 <li><b>Diaphragm</b> – controls amount of light</li>
 </ul>
 
-
+<pre>
+Eyepiece → Viewing
+Objective Lens → Magnification
+Stage → Holds slide
+Mirror → Light source
+</pre>
 
 <hr>
 
@@ -160,7 +172,11 @@ add(
 <li><b>Protists</b> – organisms like amoeba and paramecium</li>
 </ul>
 
-
+<pre>
+Plant Cell → Cell wall + Chloroplasts
+Animal Cell → No cell wall
+Bacteria → Very tiny unicellular organisms
+</pre>
 
 <hr>
 <h3> 4. Types of Microscopes</h3>
@@ -200,24 +216,52 @@ add(
 <td>Expensive and complex</td>
 </tr>
 </table>
-
+<pre>
+Light Microscope → Living cells
+Electron Microscope → Very detailed structures
+</pre>
 <hr>
 <h3> 6. Magnification</h3>
 <p>Magnification is how many times larger an image appears compared to the real object.</p>
 <h3> Formula</h3>
-
+<pre>
+Magnification = Image Size ÷ Actual Size
+</pre>
 <h3> Rearranged Formulae</h3>
-
+<pre>
+Image Size = Magnification × Actual Size
+Actual Size = Image Size ÷ Magnification
+</pre>
 <h3> Example 1</h3>
-
+<pre>
+Image size = 40 mm
+Actual size = 2 mm
+Magnification = 40 ÷ 2
+= 20×
+Answer = 20×
+</pre>
 <h3> Example 2</h3>
-
+<pre>
+Magnification = 100×
+Actual size = 0.5 mm
+Image size = 100 × 0.5
+= 50 mm
+</pre>
 <hr>
 <h3> 7. Total Magnification</h3>
 <p>Total magnification is found by multiplying the eyepiece lens magnification by the objective lens magnification.</p>
-
+<pre>
+Total Magnification =
+Eyepiece Lens × Objective Lens
+</pre>
 <h3> Example</h3>
-
+<pre>
+Eyepiece = 10×
+Objective = 40×
+Total Magnification =
+10 × 40
+= 400×
+</pre>
 <hr>
 <h3> 8. Importance of Microscopes</h3>
 <ul>
@@ -327,7 +371,9 @@ add(
 <hr>
 <h3> 1. MITOSIS (CELL DIVISION IN DETAIL)</h3>
 <p>Mitosis produces two identical daughter cells.</p>
-
+<pre>
+Prophase → Metaphase → Anaphase → Telophase → Cytokinesis
+</pre>
 <h4> Prophase</h4>
 <ul>
 <li>Chromosomes become visible</li>
@@ -395,7 +441,12 @@ add(
 </ul>
 <hr>
 <h3> SUMMARY</h3>
-
+<pre>
+Mitosis → Growth & repair
+Cancer → uncontrolled division
+Stem cells → repair system
+Transport → cell intake & output
+</pre>
 `,
 
   [
@@ -444,7 +495,13 @@ add(
   `<h2>Biological Molecules</h2>
 <p>Biological molecules are chemicals found in living organisms that are essential for life processes such as growth, energy, and repair.</p>
 <h3> MAIN BIOLOGICAL MOLECULES</h3>
-
+<pre>
+Carbohydrates → Energy
+Proteins → Growth & repair
+Lipids → Energy storage
+Water → Life medium
+Vitamins → Protection & regulation
+</pre>
 <hr>
 <h3> 1. CARBOHYDRATES</h3>
 <ul>
@@ -589,7 +646,9 @@ add(
 <p>Respiration is the process of releasing energy from glucose.</p>
 <hr>
 <h4> A. AEROBIC RESPIRATION</h4>
-
+<pre>
+Glucose + Oxygen → Carbon dioxide + Water + Energy (ATP)
+</pre>
 <ul>
 <li>Occurs in mitochondria</li>
 <li>Releases large amount of energy</li>
@@ -597,7 +656,9 @@ add(
 </ul>
 <hr>
 <h4> B. ANAEROBIC RESPIRATION</h4>
-
+<pre>
+Glucose → Lactic acid + Small amount of energy
+</pre>
 <ul>
 <li>Occurs when oxygen is insufficient</li>
 <li>Less energy produced</li>
@@ -621,7 +682,9 @@ add(
 </ul>
 <hr>
 <h4> B. NEPHRON STRUCTURE (VERY IMPORTANT)</h4>
-
+<pre>
+Glomerulus → Bowman’s capsule → Tubule → Collecting duct
+</pre>
 <h4> PROCESSES:</h4>
 <ul>
 <li><b>Filtration:</b> removes waste from blood</li>
@@ -684,10 +747,19 @@ add(
 <li>Work in pairs</li>
 <li>One contracts, one relaxes</li>
 </ul>
-
+<pre>
+Biceps contracts → arm bends
+Triceps contracts → arm straightens
+</pre>
 <hr>
 <h3> 6. BODY SYSTEM INTEGRATION</h3>
-
+<pre>
+Respiration → energy (ATP)
+Excretion → waste removal
+Immunity → protection
+Muscles → movement
+Skeleton → support
+</pre>
 <hr>
 `,
 
@@ -832,12 +904,24 @@ add(
 <hr>
 
 <h3> CORE FLOW</h3>
-
+<pre>
+Roots → absorb water + minerals
+Xylem → moves water up
+Leaves → make food
+Phloem → distributes food
+Meristem → growth
+</pre>
 
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Xylem → water up
+Phloem → food around
+Meristem → growth
+Translocation → food movement
+Active transport → mineral uptake
+</pre>
 `,
   [
     {
@@ -944,7 +1028,10 @@ add(
 <li>Phenotype → visible trait (tall/short)</li>
 </ul>
 
-
+<pre>
+Genotype → hidden
+Phenotype → visible
+</pre>
 
 <hr>
 
@@ -954,7 +1041,11 @@ add(
 <li>Recessive (t) → only if tt</li>
 </ul>
 
-
+<pre>
+TT = Tall
+Tt = Tall
+tt = Short
+</pre>
 
 <hr>
 
@@ -968,7 +1059,11 @@ add(
 
 <h3> 5. PUNNETT CORE PATTERNS</h3>
 
-
+<pre>
+Tt × Tt → 75% dominant, 25% recessive
+TT × tt → 100% dominant
+Tt × tt → 50% dominant, 50% recessive
+</pre>
 
 <hr>
 
@@ -996,7 +1091,15 @@ add(
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Genes → traits
+Alleles → variations
+Dominance → what shows
+Inheritance → how passed
+Punnett → predicts outcomes
+Mutation → new traits
+Selection → survival advantage
+</pre>
 `,
   [
     {
@@ -1114,7 +1217,9 @@ add(
 <li>mRNA → protein (in ribosome)</li>
 <li>tRNA brings amino acids</li>
 </ul>
-
+<pre>
+DNA → RNA → Protein
+</pre>
 <hr>
 <h3> 4. GENETIC CODE</h3>
 <ul>
@@ -1126,7 +1231,9 @@ add(
 <ul>
 <li>Proteins determine traits and functions</li>
 </ul>
-
+<pre>
+DNA → RNA → Amino acids → Protein → Trait
+</pre>
 <hr>
 <h3> 6. MUTATION</h3>
 <ul>
@@ -1153,7 +1260,15 @@ add(
 </ul>
 <hr>
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+DNA → stores code
+Replication → copy DNA
+Transcription → DNA to RNA
+Translation → RNA to protein
+Protein → trait control
+Mutation → changes code
+Engineering → modify DNA
+</pre>
 `,
   [
     {
@@ -1452,7 +1567,9 @@ add(
 <hr>
 <h3> 3. FOOD CHAIN</h3>
 <p>A food chain shows the flow of energy from one organism to another.</p>
-
+<pre>
+Grass → Grasshopper → Frog → Snake → Eagle
+</pre>
 <h4>Roles:</h4>
 <ul>
 <li>Producer → Plants</li>
@@ -1796,7 +1913,9 @@ add(
 <ul>
 <li>Vaccines → antibodies + memory cells</li>
 </ul>
-
+<pre>
+Vaccine → Immunity → Protection
+</pre>
 <hr>
 <h3> 8. PUBLIC HEALTH</h3>
 <ul>
@@ -1807,7 +1926,13 @@ add(
 </ul>
 <hr>
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Prevent → Primary/Secondary/Tertiary
+Spread → Pathogen + Host + Environment
+Treat → Antibiotics (bacteria only)
+Protect → Vaccines + immunity
+Control → Public health systems
+</pre>
 `,
   [
     {
@@ -1893,7 +2018,10 @@ add(
 <li>High glucose → insulin released → glucose stored as glycogen</li>
 <li>Low glucose → glucagon released → glycogen → glucose</li>
 </ul>
-
+<pre>
+High sugar → Insulin → Storage
+Low sugar → Glucagon → Release
+</pre>
 <hr>
 <h3> 4. WATER BALANCE (OSMOREGULATION)</h3>
 <ul>
@@ -1915,7 +2043,10 @@ add(
 <hr>
 <h3> 5. NEGATIVE FEEDBACK SYSTEM</h3>
 <p>Mechanism that reverses changes to maintain stability.</p>
-
+<pre>
+Increase → Response reduces it
+Decrease → Response increases it
+</pre>
 <p><b>Example:</b> Body temperature control</p>
 <hr>
 <h3> 6. COORDINATION (NERVOUS vs HORMONAL)</h3>
@@ -2024,7 +2155,9 @@ add(
 </ul>
 <hr>
 <h3> 6. MICROSCOPE</h3>
-
+<pre>
+Magnification = Image size / Actual size
+</pre>
 <hr>
 <h3> 7. EXPERIMENT DESIGN</h3>
 <ul>
@@ -2032,7 +2165,9 @@ add(
 <li>Dependent → measure</li>
 <li>Control → constant</li>
 </ul>
-
+<pre>
+Hypothesis → Method → Results → Conclusion
+</pre>
 <hr>
 <h3> 8. DATA INTERPRETATION</h3>
 <ul>
@@ -2041,7 +2176,13 @@ add(
 </ul>
 <hr>
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Enzymes → control reactions
+Factors → affect rate
+Food tests → identify nutrients
+Experiments → prove concepts
+Graphs → show patterns
+</pre>
 `,
   [
     {
@@ -2120,7 +2261,9 @@ add(
 </ul>
 <hr>
 <h3> 3. PHOTOSYNTHESIS GRAPHS</h3>
-
+<pre>
+:contentReference[oaicite:1]{index=1}
+</pre>
 <h4> FACTORS:</h4>
 <ul>
 <li>Light intensity</li>
@@ -2313,7 +2456,9 @@ add(
 </ul>
 <h3> 7. LINK TO RESPIRATION</h3>
 <p>Glucose is broken down to produce ATP:</p>
-
+<pre>
+Glucose + Oxygen → CO₂ + Water + ATP (Energy)
+</pre>
 <hr>
 `,
   [
@@ -2412,7 +2557,9 @@ add(
 </ul>
 <hr>
 <h3> 4. HIERARCHY</h3>
-
+<pre>
+Kingdom → Phylum → Class → Order → Family → Genus → Species
+</pre>
 <hr>
 <h3> 5. VARIATION</h3>
 <ul>
@@ -2427,7 +2574,9 @@ add(
 <li>Best adapted survive</li>
 <li>Traits passed on</li>
 </ul>
-
+<pre>
+Variation → Selection → Survival → Evolution
+</pre>
 <hr>
 <h3> 7. EVIDENCE</h3>
 <ul>
@@ -2458,7 +2607,14 @@ add(
 </ul>
 <hr>
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Classification → organize life
+Variation → differences
+Selection → survival
+Evolution → change over time
+Speciation → new species
+Adaptation → survival traits
+</pre>
 `,
   [
     {
@@ -2545,7 +2701,9 @@ add(
 <li>Auxin → controls growth direction</li>
 <li>Causes cell elongation</li>
 </ul>
-
+<pre>
+Light → auxin redistributes → uneven growth → bending
+</pre>
 
 <hr>
 
@@ -2565,7 +2723,11 @@ add(
 <li>Potassium → enzymes & flowering</li>
 </ul>
 
-
+<pre>
+N → leaves
+P → roots
+K → function
+</pre>
 
 <hr>
 
@@ -2580,7 +2742,10 @@ add(
 <li>Energy decreases at each level</li>
 <li>Biomass & numbers may vary</li>
 </ul>
-
+<pre>
+Sun → Producers → Consumers
+~10% energy transfer
+</pre>
 <hr>
 <h3> 6. ENERGY LOSS</h3>
 <ul>
@@ -2594,7 +2759,9 @@ add(
 <li>Primary → starts on bare land</li>
 <li>Secondary → starts on existing soil</li>
 </ul>
-
+<pre>
+Pioneer → grass → shrubs → forest
+</pre>
 <hr>
 <h3> 8. CARRYING CAPACITY</h3>
 <ul>
@@ -2626,7 +2793,14 @@ add(
 <hr>
 
 <h3> ULTRA SUMMARY</h3>
-
+<pre>
+Auxin → growth control
+Tropisms → direction response
+Minerals → plant health
+Energy → decreases in food chain
+Succession → ecosystem development
+Population → resource-limited
+</pre>
 `,
   [
     {
@@ -2775,7 +2949,9 @@ add(
   <li><b>Axon terminals:</b> Pass signal to next neuron or muscle</li>
 </ul>
 
-
+<pre>
+Dendrites → Cell body → Axon → Axon terminals
+</pre>
 
 <hr>
 
@@ -2794,7 +2970,9 @@ add(
   <li>Effector (muscle/gland) reacts</li>
 </ul>
 
-
+<pre>
+Stimulus → Receptor → Sensory neuron → CNS → Motor neuron → Effector → Response
+</pre>
 
 <hr>
 
@@ -2822,7 +3000,10 @@ add(
   <li>Helps protect the body from danger</li>
 </ul>
 
-
+<pre>
+Example:
+Touch fire → instant withdrawal of hand
+</pre>
 
 <hr>
 
@@ -2872,7 +3053,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Nervous system = fast communication system
+Brain = control center
+Spinal cord = reflex control
+Nerves = message carriers
+Neurons = basic unit of the nervous system
+</pre>
 `,
 
   [
@@ -2961,7 +3148,9 @@ add(
   <li><b>Response:</b> Action (e.g., pulling hand away)</li>
 </ul>
 
-
+<pre>
+Stimulus → Receptor → Sensory neuron → Spinal cord → Motor neuron → Effector → Response
+</pre>
 
 <hr>
 
@@ -3043,7 +3232,12 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Reflex action = fast, automatic response
+Controlled mainly by spinal cord
+Protects the body from danger
+Uses reflex arc pathway
+</pre>
 `,
 
   [
@@ -3144,7 +3338,9 @@ add(
   <li>Target organ responds</li>
 </ul>
 
-
+<pre>
+Gland → Hormone → Bloodstream → Target Organ → Response
+</pre>
 
 <hr>
 
@@ -3240,7 +3436,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Endocrine system = chemical control system
+Hormones = chemical messengers
+Bloodstream = transport system
+Glands = hormone producers
+Target organs = response sites
+</pre>
 `,
 
   [
@@ -3314,7 +3516,9 @@ add(
 
 <p>The process of seeing happens in a precise sequence:</p>
 
-
+<pre>
+Light → Cornea → Pupil → Lens → Retina → Optic nerve → Brain
+</pre>
 
 <h4> Step 1: Light enters the eye</h4>
 <ul>
@@ -3409,7 +3613,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Eye = light detector
+Retina = image formation + signal conversion
+Optic nerve = signal carrier
+Brain = image interpreter
+Seeing = brain process, not just eye
+</pre>
 `,
 
   [
@@ -3489,7 +3699,9 @@ add(
 
 <h3> 2. HOW HEARING WORKS (STEP-BY-STEP PROCESS)</h3>
 
-
+<pre>
+Sound waves → Outer ear → Middle ear → Inner ear → Auditory nerve → Brain
+</pre>
 
 <h4> Step 1: Sound is collected</h4>
 <ul>
@@ -3588,7 +3800,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Ear = sound detector
+Cochlea = signal converter
+Auditory nerve = signal carrier
+Brain = sound interpreter
+Hearing = brain process using ear signals
+</pre>
 `,
 
   [
@@ -3676,7 +3894,9 @@ add(
 
 <h3> 2. HOW SMELL WORKS (STEP-BY-STEP PROCESS)</h3>
 
-
+<pre>
+Odor molecules → Nose → Olfactory receptors → Olfactory nerve → Brain → Smell recognition
+</pre>
 
 <h4> Step 1: Odor enters nose</h4>
 <ul>
@@ -3773,7 +3993,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Nose = chemical detector
+Olfactory receptors = smell sensors
+Olfactory nerve = signal carrier
+Brain = smell interpreter
+Smelling = brain process using nose signals
+</pre>
 `,
 
   [
@@ -3857,7 +4083,9 @@ add(
 
 <h3> 2. HOW TASTE WORKS (STEP-BY-STEP PROCESS)</h3>
 
-
+<pre>
+Food → Saliva → Taste buds → Taste nerves → Brain → Taste perception
+</pre>
 
 <h4> Step 1: Food enters mouth</h4>
 <ul>
@@ -3953,7 +4181,14 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Tongue = taste detector
+Taste buds = chemical receptors
+Saliva = dissolves food
+Taste nerves = signal carriers
+Brain = taste interpreter
+Taste = brain interpretation of chemicals
+</pre>
 `,
 
   [
@@ -4045,7 +4280,9 @@ add(
 
 <h3> 3. HOW TOUCH WORKS (STEP-BY-STEP PROCESS)</h3>
 
-
+<pre>
+Stimulus → Skin receptors → Sensory nerve → Spinal cord → Brain → Sensation (touch/pain/temperature)
+</pre>
 
 <h4> Step 1: Stimulus occurs</h4>
 <ul>
@@ -4141,7 +4378,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Skin = largest sense organ
+Receptors = detect touch, pain, temperature
+Nerves = carry signals
+Brain = interprets sensation
+Feeling = brain-based interpretation of skin signals
+</pre>
 `,
 
   [
@@ -4223,7 +4466,9 @@ add(
 
 <h3> 2. HOW THE BRAIN WORKS (INFORMATION FLOW)</h3>
 
-
+<pre>
+Stimulus → Sense organ → Nerves → Brain → Response → Body action
+</pre>
 
 <h4> Step-by-step process:</h4>
 
@@ -4322,7 +4567,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Brain = control center of body
+Cerebrum = thinking and voluntary actions
+Cerebellum = balance and coordination
+Medulla = involuntary actions
+Brain = interpreter of all sensory signals
+</pre>
 `,
 
   [
@@ -4422,7 +4673,9 @@ add(
 
 <h3> 4. REFLEX ARC (SPINAL CORD PATHWAY)</h3>
 
-
+<pre>
+Stimulus → Receptor → Sensory neuron → Spinal cord → Motor neuron → Effector → Response
+</pre>
 
 <h4> Step-by-step:</h4>
 <ul>
@@ -4503,7 +4756,12 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Spinal cord = communication + reflex center
+Reflex arc = fast response pathway
+Function = fast protection + signal transmission
+Brain = delayed awareness, spinal cord = instant action
+</pre>
 `,
 
   [
@@ -4663,7 +4921,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Reproduction = production of new life
+Two types:
+1. Asexual → one parent, identical offspring
+2. Sexual → two parents, varied offspring
+Purpose = survival and continuity of species
+</pre>
 `,
 
   [
@@ -4748,7 +5012,9 @@ add(
   <li>Cell splits into two identical daughter cells</li>
 </ul>
 
-
+<pre>
+1 cell → DNA copies → nucleus divides → 2 identical cells
+</pre>
 
 <h4> Examples:</h4>
 <ul>
@@ -4770,7 +5036,9 @@ add(
   <li>Eventually detaches or stays attached</li>
 </ul>
 
-
+<pre>
+Parent → bud forms → grows → new organism
+</pre>
 
 <h4> Example:</h4>
 <ul>
@@ -4792,7 +5060,9 @@ add(
   <li>They germinate under suitable conditions</li>
 </ul>
 
-
+<pre>
+Spore → dispersal → germination → new organism
+</pre>
 
 <h4> Example:</h4>
 <ul>
@@ -4857,7 +5127,16 @@ add(
 
 <h3> SUMMARY</h3>
 
+<pre>
+Asexual reproduction = one parent, no gametes
+Types:
+1. Binary fission → Amoeba, bacteria
+2. Budding → yeast, hydra
+3. Spore formation → fungi
+4. Vegetative propagation → plants
 
+Key idea: fast reproduction but no variation
+</pre>
 `,
 
   [
@@ -4964,7 +5243,9 @@ add(
 
 <p>Fertilization is the <b>fusion of male and female gametes</b> to form a zygote.</p>
 
-
+<pre>
+Sperm + Egg → Zygote → New Organism
+</pre>
 
 <h4> Types of Fertilization:</h4>
 
@@ -5008,7 +5289,17 @@ add(
 
 <h3> 6. SEXUAL REPRODUCTION PROCESS (FULL FLOW)</h3>
 
-
+<pre>
+Male gamete (sperm) + Female gamete (egg)
+            ↓
+       Fertilization
+            ↓
+          Zygote
+            ↓
+      Cell division
+            ↓
+     Embryo → Fetus → Baby
+</pre>
 
 <hr>
 
@@ -5049,7 +5340,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Sexual reproduction = two parents
+Gametes = sperm + egg
+Fertilization = fusion of gametes
+Result = zygote → new organism
+Key benefit = genetic variation
+</pre>
 `,
 
   [
@@ -5206,7 +5503,9 @@ add(
 
 <h3> 3. HOW THE SYSTEMS WORK TOGETHER</h3>
 
-
+<pre>
+Male produces sperm → Female produces egg → Fertilization → Zygote → Pregnancy → Baby
+</pre>
 
 <h4> Step-by-step:</h4>
 
@@ -5280,7 +5579,12 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Male system = sperm production + delivery
+Female system = egg production + baby development
+Fertilization = occurs in fallopian tube
+Uterus = development site for baby
+</pre>
 `,
 
   [
@@ -5352,7 +5656,9 @@ add(
   <li>A zygote is formed</li>
 </ul>
 
-
+<pre>
+Sperm + Egg → Fertilization → Zygote
+</pre>
 
 <hr>
 
@@ -5425,7 +5731,9 @@ add(
 
 <h3> 6. SUMMARY OF DEVELOPMENT STAGES</h3>
 
-
+<pre>
+Fertilization → Zygote → Embryo → Fetus → Birth
+</pre>
 
 <ul>
   <li><b>Zygote:</b> Single cell after fertilization</li>
@@ -5473,7 +5781,13 @@ add(
 
 <h3> SUMMARY</h3>
 
-
+<pre>
+Fertilization = sperm + egg fusion
+Zygote = first cell
+Embryo = organ formation stage
+Fetus = growth and maturation stage
+Birth = baby leaves uterus
+</pre>
 `,
 
   [
@@ -5624,7 +5938,21 @@ add(
 </ul>
 <h3> 6. QUICK REVISION SUMMARY</h3>
 
+<pre>
+ASEXUAL:
+- 1 parent
+- No gametes
+- No fertilization
+- Identical offspring
+- Fast reproduction
 
+SEXUAL:
+- 2 parents
+- Gametes involved
+- Fertilization occurs
+- Variation produced
+- Slower reproduction
+</pre>
 <hr>
 <h3> 7. MASTER KEY IDEA</h3>
 
