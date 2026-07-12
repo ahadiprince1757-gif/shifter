@@ -10,6 +10,7 @@ export default function LoadingScreen({
   isReady = false,
   onComplete,
   message = "",
+
 }) {
   const [progress, setProgress] = useState(0);
   const [phase, setPhase] = useState("sprint"); // "sprint" | "crawl" | "done" | "hidden"

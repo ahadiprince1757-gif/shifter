@@ -14,7 +14,8 @@
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
-    "vite": "^8.0.14"
+    "vite": "^8.0.14",
+    "vite-plugin-compress": "^2.1.1"
   },
   "dependencies": {
     "@capacitor/android": "^8.4.0",
