@@ -154,6 +154,7 @@ Burette/Pipette → high accuracy
 Beaker → general use
 Bunsen burner → heating
 Thermometer → temperature
+
   </pre>
   `,
   [
