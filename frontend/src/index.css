@@ -4108,6 +4108,35 @@ html.dark-mode .bottom-search-panel {
   animation: spin 1s linear infinite;
 }
 
+/* Notes scroll and zoom styles */
+.notes-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+.notes-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--bd);
+  border-radius: 3px;
+}
+.notes-scroll-container::-webkit-scrollbar-track {
+  background: var(--bg2);
+}
+.notes-scroll-container table {
+  min-width: 600px;
+  display: table;
+}
+.notes-scroll-container img {
+  max-width: 100%;
+  height: auto;
+}
+.zoom-btn {
+  transition: all 0.2s ease-in-out;
+}
+.zoom-btn:hover {
+  background: var(--bg) !important;
+  color: var(--v) !important;
+  border-color: var(--v) !important;
+}
+
+
 
 
 
