@@ -3,7 +3,6 @@ import Navbar from "./Navbar";
 
 function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }) {
   const [legalModal, setLegalModal] = useState(null);
-  const [activeFeature, setActiveFeature] = useState(null);
 
   const totalTopics =
     curriculum?.reduce(
@@ -551,50 +550,6 @@ function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }
                       <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 00-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
                     </svg>
                   </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="footer-column links-col">
-              <h4 className="footer-heading">Features</h4>
-              <div className="footer-accordion">
-                <div className={`footer-accordion-item ${activeFeature === "feedback" ? "active" : ""}`}>
-                  <button
-                    className="footer-accordion-trigger"
-                    onClick={() => setActiveFeature(activeFeature === "feedback" ? null : "feedback")}
-                  >
-                    <span>Immediate Feedback</span>
-                    <span className="accordion-arrow">▾</span>
-                  </button>
-                  <div className="footer-accordion-content">
-                    <p>Receive instant feedback, clear explanations, and step-by-step insights immediately after every answer.</p>
-                  </div>
-                </div>
-
-                <div className={`footer-accordion-item ${activeFeature === "content" ? "active" : ""}`}>
-                  <button
-                    className="footer-accordion-trigger"
-                    onClick={() => setActiveFeature(activeFeature === "content" ? null : "content")}
-                  >
-                    <span>Rich Content</span>
-                    <span className="accordion-arrow">▾</span>
-                  </button>
-                  <div className="footer-accordion-content">
-                    <p>Comprehensive curriculum materials across 12 distinct subjects.</p>
-                  </div>
-                </div>
-
-                <div className={`footer-accordion-item ${activeFeature === "tracking" ? "active" : ""}`}>
-                  <button
-                    className="footer-accordion-trigger"
-                    onClick={() => setActiveFeature(activeFeature === "tracking" ? null : "tracking")}
-                  >
-                    <span>Progress Tracking</span>
-                    <span className="accordion-arrow">▾</span>
-                  </button>
-                  <div className="footer-accordion-content">
-                    <p>Visualize your learning journey and keep track of mastered concepts.</p>
-                  </div>
                 </div>
               </div>
             </div>
