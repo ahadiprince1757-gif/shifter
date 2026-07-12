@@ -65,36 +65,7 @@ The Earth is made up of concentric layers with different compositions, densities
 
 <h3> EARTH CROSS-SECTION (STRUCTURE DIAGRAM)</h3>
 
-<pre>
-             EARTH STRUCTURE
 
-         CRUST (solid, thin layer)
-        ┌──────────────────────────────┐
-        │ Continental crust (SIAL)     │
-        │ Oceanic crust (SIMA)         │
-        │ Density: 2.7 – 3.0 g/cm³     │
-        ├──────────────────────────────┤
-
-         MANTLE (semi-solid / plastic)
-        │ Magnesium + Iron silicates   │
-        │ Semi-molten rock (magma)     │
-        │ Density: 3.3 – 5.5 g/cm³     │
-        │ Convection currents present   │
-        ├──────────────────────────────┤
-
-         OUTER CORE (liquid)
-        │ Iron + Nickel (NIFE)         │
-        │ Density: 9.9 – 12.2 g/cm³    │
-        │ Generates Earth's magnetic field
-        ├──────────────────────────────┤
-
-         INNER CORE (solid)
-        │ Iron + Nickel (solid state)  │
-        │ Density: 12.8 – 13.1 g/cm³   │
-        │ Extremely high temperature   │
-        │ Solid due to immense pressure│
-        └──────────────────────────────┘
-</pre>
 <hr>
 <h3> COMMON EXAM MISTAKES</h3>
 <ul>
@@ -105,14 +76,7 @@ The Earth is made up of concentric layers with different compositions, densities
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Earth Structure = layered system of increasing density
-Crust → life & tectonics  
-Mantle → movement engine (convection)  
-Outer core → magnetic field  
-Inner core → solid energy center  
-System = dynamic planet, not static rock
-</pre>
+
   `,
   [
     {
@@ -153,12 +117,7 @@ add(
 The Earth’s lithosphere is broken into large rigid plates that float and move slowly over the semi-molten asthenosphere, causing earthquakes, volcanoes, and the formation of major landforms.
 </p>
 <h3> BIG IDEA (ANALOGY MODEL)</h3>
-<pre>
- Lithosphere plates = floating logs
- Asthenosphere = slow-moving semi-molten "sea"
-              
-← drifting slowly drifting →
-</pre>
+
 <h4> Meaning</h4>
 <p>
 Tectonic plates move very slowly, driven by heat and convection currents inside the Earth.
@@ -166,17 +125,9 @@ Tectonic plates move very slowly, driven by heat and convection currents inside 
 <hr>
 <h3> CONTINENTAL DRIFT (PANGAEA THEORY)</h3>
 <h4> BEFORE (Pangaea)</h4>
-<pre>
-         
-  All continents joined as one supercontinent
-</pre>
+
 <h4> AFTER BREAKUP</h4>
-<pre>
-Laurasia (North)        Gondwanaland (South)
-North America           Africa      South America
-Europe                  India       Antarctica
-Asia                    Australia
-</pre>
+
 <h4> Panthalassa Ocean</h4>
 <p>
 A vast ancient ocean that surrounded Pangaea before it split apart.
@@ -189,11 +140,7 @@ A vast ancient ocean that surrounded Pangaea before it split apart.
   <li>Magma rises and forms new crust</li>
   <li>Creates mid-ocean ridges</li>
 </ul>
-<pre>
-←   |   →
-    crack
-  magma rises
-</pre>
+
 <h4>Example:</h4>
 <p>Mid-Atlantic Ridge</p>
 <hr>
@@ -203,11 +150,7 @@ A vast ancient ocean that surrounded Pangaea before it split apart.
   <li>One plate may sink (subduction)</li>
   <li>Forms mountains, volcanoes, and trenches</li>
 </ul>
-<pre>
-→   /\   ←
-    /  \
- mountain / volcano formation
-</pre>
+
 <h4>Example:</h4>
 <p>Himalayas (collision of Indian and Eurasian plates)</p>
 <hr>
@@ -217,28 +160,7 @@ A vast ancient ocean that surrounded Pangaea before it split apart.
   <li>Creates strong friction</li>
   <li>Causes earthquakes</li>
 </ul>
-<pre>
-↑
-|  plates slide
-↓
-</pre
-<h4>Example:</h4>
-<p>San Andreas Fault (USA)</p>
-<hr>
-<h3> GLOBAL PLATE SYSTEM (MAJOR PLATES)</h3>
-<pre>
- Pacific Plate → surrounds Pacific Ocean
-    Ring of Fire (volcanoes + earthquakes)
 
- Eurasian Plate → Europe + Asia
-
- African Plate → Africa + Rift Valley
-
- Indo-Australian Plate → India + Australia
-
- South American Plate
- North American Plate
-</pre>
 <hr>
 <h3> RING OF FIRE (IMPORTANT ZONE)</h3>
 <ul>
@@ -270,13 +192,7 @@ Continents are still moving today at a rate of a few centimeters per year due to
 </p>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Plate Tectonics = Earth’s moving crust system
-Divergent → creation of crust  
-Convergent → destruction + mountains  
-Transform → earthquakes  
-Result = dynamic Earth surface
-</pre>
+
   `,
   [
     {
@@ -324,30 +240,10 @@ add(
 Volcanoes and earthquakes are natural hazards caused by movement and interaction of tectonic plates, leading to pressure build-up and release of energy within the Earth’s crust.
 </p>
 <h3> VOLCANIC PROCESS (STEP-BY-STEP)</h3>
-<pre>
-1. Magma forms in the mantle due to intense heat
-2. Pressure builds up beneath the crust
-3. Cracks (vents) form in the Earth's crust
-4. Magma rises through the vent
-5. Eruption occurs (lava, ash, gases released)
-6. Lava cools and solidifies → new landforms
-</pre>
+
 <hr>
 <h3> VOLCANIC STRUCTURE (DIAGRAM EXPLANATION)</h3>
-<pre>
-             VOLCANO
 
-               Ash cloud
-                 
-                /\\
-               /  \\   ← Crater (opening)
-              /____\\
-             /      \\
-            /  vent  \\  ← Main conduit
-           /----------\\
-          | magma chamber |
-          |_______________|
-</pre>
 <hr>
 <h3> TYPES OF LAVA</h3>
 <ul>
@@ -366,32 +262,19 @@ Volcanoes and earthquakes are natural hazards caused by movement and interaction
 <h3> INTERNAL IGNEOUS FEATURES</h3>
 
 <h4>1. Laccolith</h4>
-<pre>
-______
-/      \  → magma pushes rock layers upward (dome shape)
-</pre>
+
 
 <h4>2. Lopolith</h4>
-<pre>
-\______/
-→ magma causes downward sinking (basin shape)
-</pre>
+
 
 <h4>3. Batholith</h4>
 <p>Very large underground mass of solidified magma forming the core of mountains.</p>
 
 <h4>4. Dyke</h4>
-<pre>
-|
-|  → vertical intrusion cutting rock layers
-|
-</pre>
+
 
 <h4>5. Sill</h4>
-<pre>
-========
-→ horizontal intrusion between rock layers
-</pre>
+
 <hr>
 <h3> GEYSERS & HOT SPRINGS</h3>
 <ul>
@@ -486,12 +369,7 @@ ______
 <hr>
 
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Volcanoes + Earthquakes = Tectonic Energy Release System
-Cause: Plate movement  
-Process: Pressure build-up → release  
-Result: Landforms + hazards + benefits
-</pre>
+
   `,
   [
     {
@@ -604,17 +482,7 @@ add(
 Climate zones are regions of the Earth with similar long-term weather patterns, controlled by latitude, global atmospheric circulation, and physical geographical factors.
 </p>
 <h3> GLOBAL HEAT BELTS & CLIMATE ZONES</h3>
-<pre>
-        90°N    Polar Zone (Very cold, low sun angle)
-        66.5°N Arctic Circle
-        30°N    Subtropical Desert Zone (High pressure)
-        23.5°N Tropic of Cancer
-         0°     Equatorial Zone (High temperature & rainfall)
-        23.5°S Tropic of Capricorn
-        30°S    Subtropical Desert Zone
-        66.5°S Antarctic Circle
-        90°S    Polar Zone
-</pre>
+
 
 <h4> Key Idea</h4>
 <p>
@@ -630,17 +498,7 @@ Climate zones are arranged mainly according to latitude because the amount of so
 <hr>
 <h3> GLOBAL PRESSURE & WIND BELTS</h3>
 
-<pre>
-0°     ↑ Rising warm air → LOW pressure → rain
-30°    ↓ Sinking air → HIGH pressure → deserts
-60°    ↑ Rising air → LOW pressure → rainfall
-90°    ↓ Cold sinking air → HIGH pressure → dry
 
-Winds:
-→ Trade Winds (0°–30°)
-→ Westerlies (30°–60°)
-→ Polar Easterlies (60°–90°)
-</pre>
 <hr>
 <h3> MAJOR CLIMATE ZONES</h3>
 <h4> 1. Equatorial Climate</h4>
@@ -680,25 +538,12 @@ Winds:
 <hr>
 <h3> TYPES OF RAINFALL</h3>
 <h4>1. Convectional Rainfall</h4>
-<pre>
- heats ground
-↑ warm air rises
- condensation
- heavy rainfall
-</pre>
+
 <h4>2. Relief (Orographic) Rainfall</h4>
-<pre>
-Windward side (wet)     Leeward side (dry)
-                           
-     /\\
-    /  \\  mountain
-   /    \\
-</pre>
+
 
 <h4>3. Frontal Rainfall</h4>
-<pre>
-Warm air rises over cold air → condensation → rain
-</pre>
+
 <hr>
 <h3> FACTORS AFFECTING CLIMATE</h3>
 <ul>
@@ -735,15 +580,7 @@ A microclimate is a small area with climate conditions different from surroundin
   <li>Listing rainfall types without explanation</li>
 </ul>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Climate = long-term weather patterns
-Controlled by:
- Latitude (energy)
- Winds (movement)
- Oceans (moderation)
- Relief (barriers)
-System = global energy + circulation balance
-</pre>
+
   `,
   [
     {
@@ -791,18 +628,7 @@ add(
 Population distribution refers to the way people are spread across the Earth’s surface, which can be uneven due to physical, economic, and social factors.
 </p>
 <h3> WORLD POPULATION DISTRIBUTION PATTERN</h3>
-<pre>
-HIGH POPULATION AREAS:
-- Asia (China , India )
-- Europe
-- Southeast Asia
 
-LOW POPULATION AREAS:
--  Deserts (Sahara, Arabian Desert)
--  Polar regions (Arctic, Antarctica)
--  High mountain regions (Himalayas)
--  Dense tropical forests (Amazon Basin)
-</pre>
 <hr>
 <h3> EXPLANATION OF PATTERNS</h3>
 <h4> High Population Areas</h4>
@@ -843,12 +669,7 @@ LOW POPULATION AREAS:
   <li>Giving examples without linking to reasons</li>
 </ul>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Population distribution = uneven spread of people
-High density → good climate + jobs + fertile land  
-Low density → extreme climate + poor resources + harsh terrain  
-Human + Physical factors = final pattern
-</pre>
+
   `,
 [
   {
@@ -902,12 +723,7 @@ add(
 Urbanisation is the increase in the proportion of people living in towns and cities, caused by rural–urban migration and natural population growth within urban areas.
 </p>
 <h3> PROCESS OF URBANISATION</h3>
-<pre>
-Rural Area  →  Migration  →  Urban Growth
 
-               ‍           
- (farm life)   (movement)   (city expansion)
-</pre>
 <hr>
 <h3> CAUSES OF URBANISATION</h3>
 <ul>
@@ -953,12 +769,7 @@ Rural Area  →  Migration  →  Urban Growth
   <li>Ignoring environmental impacts</li>
 </ul>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Urbanisation = Rural → Urban shift
-Causes: jobs + services + migration  
-Effects: growth + problems + development pressure  
-Balance = development vs sustainability
-</pre>
+
 `,
 [
   {
@@ -1012,15 +823,7 @@ add(
 Migration is the movement of people from one place to another, either permanently or temporarily, for various reasons such as work, safety, or better living conditions.
 </p>
 <h3> PUSH & PULL FACTORS</h3>
-<pre>
-PUSH FACTORS (Force people to leave)      PULL FACTORS (Attract people)
 
-- Unemployment                          - Job opportunities
-- Drought / famine                      - Better living conditions
-- Conflict / insecurity                 - Better education
-- Poor services (health, water)         - Better healthcare
-- Overpopulation                        - Security and stability
-</pre>
 <hr>
 <h3> DEEP UNDERSTANDING</h3>
 
@@ -1059,12 +862,7 @@ These are positive conditions in the destination that attract people.
   <li>Giving examples without explanation</li>
 </ul>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Migration = Movement of people
-Push → force to leave  
-Pull → attract to move  
-Effects = changes in population, economy, and services
-</pre>
+
 `,
 [
   {
@@ -1143,11 +941,7 @@ Settlement refers to places where people live. These can range from small rural 
 </ul>
 <hr>
 <h3> SETTLEMENT PATTERNS</h3>
-<pre>
-Nucleated:   ●●●●● (clustered around a central point)
-Dispersed:   ●   ●     ●     ● (scattered settlements)
-Linear:      ●●●●● (along roads, rivers, or valleys)
-</pre>
+
 <h4> Explanation</h4>
 <ul>
   <li><b>Nucleated:</b> Houses grouped together, often around water, roads, or markets</li>
@@ -1178,14 +972,7 @@ People settle in areas where conditions support survival, safety, and economic o
   <li>Ignoring physical and human factors separately</li>
 </ul>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Settlement = Where people live
-Patterns:
-Nucleated → clustered  
-Dispersed → scattered  
-Linear → along features  
-Choice of settlement = survival + resources + safety + jobs
-</pre>`,
+`,
 [
   {
     q: "What is settlement? (2 marks)",
@@ -1265,12 +1052,7 @@ Economic activities are the ways in which people earn a living through the produ
 <hr>
 <h3> FLOW OF ECONOMIC ACTIVITIES</h3>
 
-<pre>
-Raw Materials → Processing → Services → Consumer
 
-                               
-   Primary        Secondary     Tertiary
-</pre>
 
 <p><b>Key Idea:</b> Each stage adds value before goods reach the consumer.</p>
 
@@ -1358,20 +1140,7 @@ Latitude and longitude form a global coordinate system used to locate any place 
 </p>
 <h3> GLOBAL GRID DIAGRAM</h3>
 
-<pre>
-        N
-        |
-   90°N --------- (North Pole region)
-        |   |   |
-        |   |   |
-  0° ---+---+---+--- (Equator)
-        |   |   |
-        |   |   |
-   90°S --------- (South Pole region)
 
-Latitude = Horizontal lines (East–West)
-Longitude = Vertical lines (North–South)
-</pre>
 <hr>
 <h3> LATITUDE</h3>
 <ul>
@@ -1518,16 +1287,7 @@ Topographical maps use contour lines to show height and shape of land. They allo
 
 <h3> Contour Diagram</h3>
 
-<pre>
-      500m
-     /----\
-    / 400m \
-   / 300m   \
-  /__________\
 
-Close lines = steep slope
-Wide lines  = gentle slope
-</pre>
 <hr>
 <h3> Key Features of Contours</h3>
 <h4>1. Contour Lines</h4>
@@ -1687,12 +1447,7 @@ Map scale shows the relationship between distance on a map and the actual distan
 <h4>Example  (Statement Scale Conversion)</h4>
 <p><b>Question:</b> Convert 1 cm = 1 km into ratio scale.</p>
 <p><b>Solution:</b></p>
-<pre>
-1 km = 100,000 cm
-So:
-1 cm : 100,000 cm
-= 1:100,000
-</pre>
+
 <p><b>Answer:</b> 1:100,000</p>
 <hr>
 <h3> COMMON EXAM MISTAKES</h3>
@@ -1818,11 +1573,7 @@ Map reading is the skill of interpreting and analyzing information shown on a ma
 <p>
 A grid reference is a system used to locate exact positions on a map using numbered grid lines.
 </p>
-<pre>
-Example: 123456 (6-figure grid reference)
-First 3 digits = Eastings (horizontal)
-Last 3 digits = Northings (vertical)
-</pre>
+
 <hr>
 <h3> How to Read Grid References</h3>
 <ul>
@@ -2080,27 +1831,15 @@ Scale tells you how many units on the ground are represented by one unit on the 
 </ul>
 <hr>
 <h3> Formula</h3>
-<pre>
-Scale = Map Distance : Ground Distance
-</pre>
+
 <hr>
 <h3> Conversion Guide (VERY IMPORTANT)</h3>
-<pre>
-1 : 50,000
-1 cm on map =
-50,000 cm on ground
-= 500 m
-= 0.5 km
-</pre>
+
 <p><b>Key Skill:</b> Always convert cm → m → km when required.</p>
 <h3> Worked Example</h3>
 <p><b>Question:</b> A road measures 6.5 cm on a map with scale 1:25,000. Find real distance.</p>
 <h4>Solution:</h4>
-<pre>
-6.5 × 25,000 = 162,500 cm
-162,500 cm ÷ 100 = 1625 m
-1625 m ÷ 1000 = 1.625 km
-</pre>
+
 <p><b>Final Answer:</b> 1.625 km</p>
 <hr>
 <h3> Key Exam Steps (Memory Trick)</h3>
@@ -2177,13 +1916,7 @@ A bearing is the direction of one point from another, measured in degrees clockw
 
 <h3> Compass Diagram</h3>
 
-<pre>
-         000° (N)
-           |
-  270° ----+---- 090°
-           |
-         180° (S)
-</pre>
+
 
 <hr>
 
@@ -2225,9 +1958,7 @@ A bearing is the direction of one point from another, measured in degrees clockw
 </ul>
 
 <p><b>Calculation:</b></p>
-<pre>
-(180° + 270°) ÷ 2 = 225°
-</pre>
+
 
 <p><b>Answer:</b> 225°</p>
 
@@ -2250,9 +1981,7 @@ A bearing is the direction of one point from another, measured in degrees clockw
   <li>Since 060° is less than 180°, add 180°</li>
 </ul>
 
-<pre>
-060° + 180° = 240°
-</pre>
+
 
 <p><b>Answer:</b> 240°</p>
 
@@ -2340,9 +2069,7 @@ Vertical exaggeration is used because natural landforms are often very flat comp
 <p><b>Important:</b> A higher V.E means steeper-looking landforms on the diagram (not in real life).</p>
 <hr>
 <h3> Formula</h3>
-<pre>
-V.E = Horizontal Scale ÷ Vertical Scale
-</pre>
+
 <hr>
 <h3> Step-by-Step Worked Example</h3>
 <h4>Given:</h4>
@@ -2356,14 +2083,9 @@ V.E = Horizontal Scale ÷ Vertical Scale
   <li>V.S = 100</li>
 </ul>
 <h4>Step 2: Apply formula</h4>
-<pre>
-V.E = Horizontal Scale ÷ Vertical Scale
-V.E = 1000 ÷ 100
-</pre>
+
 <h4>Step 3: Calculate</h4>
-<pre>
-V.E = 10
-</pre>
+
 <p><b>Final Answer:</b> Vertical exaggeration = 10 times</p>
 <hr>
 <h3> Interpretation of V.E Values</h3>
@@ -2475,12 +2197,7 @@ A cross section transforms a flat map into a vertical profile, allowing you to �
 
 <h4>Result (Shape Interpretation):</h4>
 
-<pre>
-        /\
-       /  \
-      /    \
-_____/      \_____
-</pre>
+
 
 <p><b>Interpretation:</b> This represents a hill because height increases to a peak then decreases.</p>
 <hr>
@@ -2589,12 +2306,7 @@ Maps cannot show real objects in their actual size, so symbols are used to repre
 </ul>
 <hr>
 <h3> Diagram</h3>
-<pre>
-     Δ        BM        ●
-  (Trig)   (Bench)   (Spot)
 
-Contour lines → show elevation and relief
-</pre>
 <hr>
 <h3> Key Differences (Very Important for Exams)</h3>
 <table border="1" cellpadding="5">
@@ -2680,10 +2392,7 @@ Latitude and longitude are imaginary lines used to locate places on the Earth’
 </ul>
 <hr>
 <h3> Direction System</h3>
-<pre>
-   Latitude → horizontal lines (East-West direction)
-   Longitude → vertical lines (North-South direction)
-</pre>
+
 <hr>
 <h3> Important Reference Lines</h3>
 <ul>
@@ -2930,15 +2639,7 @@ Bearings are directions measured in degrees clockwise from North (0°), used to 
 </ul>
 <hr>
 <h3> Compass Diagram</h3>
-<pre>
-           N (000°)
-       NNW     NNE
-    NW    |     NE
-W (270°)--+--(090°) E
-    SW    |     SE
-       SSW     SSE
-           S (180°)
-</pre>
+
 <hr>
 <h3> Common Bearings Table</h3>
 <ul>
@@ -3127,13 +2828,7 @@ Excessive or harmful levels of noise in the environment.
 </ul>
 <hr>
 <h3> Concept Diagram</h3>
-<pre>
-Human Activities → Release pollutants → Contaminate environment → Harm life
-Air → Breathing problems  
-Water → Unsafe drinking  
-Soil → Poor crops  
-Noise → Stress
-</pre>
+
 <hr>
   `,
   [
@@ -3260,10 +2955,7 @@ Trees are cut for firewood and charcoal, especially in developing regions.
 </ul>
 <hr>
 <h3> Concept Diagram</h3>
-<pre>
-Forests removed → Soil exposed → Erosion increases → Land becomes infertile
-Trees cut → Less CO₂ absorbed → More greenhouse gases → Climate change
-</pre>
+
   `,
   [
   {
@@ -3396,10 +3088,7 @@ Factories release pollutants and greenhouse gases into the atmosphere.
 </ul>
 <hr>
 <h3> Concept Diagram</h3>
-<pre>
-Sun → Earth absorbs heat → Heat re-radiated → 
-Greenhouse gases trap heat → Temperature rises → Climate change
-</pre>
+
 `,
 [
   {
@@ -3534,10 +3223,7 @@ Eruption of molten rock (magma) from beneath the Earth's surface.
 </ul>
 <hr>
 <h3> Concept Diagram</h3>
-<pre>
-Hazard → Exposure → Vulnerability → Disaster
-(If people are prepared, disaster impact reduces)
-</pre>
+
 <hr>
   `,
   [
@@ -3651,14 +3337,7 @@ Sustainable development refers to development that meets the needs of the presen
 <hr>
 <h3> Concept Diagram</h3>
 
-<pre>
-        Environment
-           /   \
-          /     \
-   Economy ----- Society
 
- (Balance = Sustainability)
-</pre>
   `,
   [
   {
@@ -3765,16 +3444,7 @@ Oceans are vast, continuous bodies of salt water that cover most of the Earth's 
 </ul>
 <hr>
 <h3> Concept Diagram</h3>
-<pre>
-        EARTH
-   ----------------
-   |              |
- LAND (29%)   WATER (71%)
-                  |
-         ------------------
-         |                |
-      Oceans           Seas
-</pre>
+
   `,
   [
     {
@@ -3984,450 +3654,7 @@ The ocean floor (or ocean basin) refers to the physical features found beneath t
 
 <h3> OCEAN FLOOR CONCEPT DIAGRAM</h3>
 
-<pre>
-CONTINENT
-   |
-   |____ Continental Shelf (shallow, gently sloping)
-          \
-           \
-            \____ Continental Slope (steep drop)
-                  \
-                   \
-                    \________ Abyssal Plain (flat deep ocean)
-                             ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                   /\        /\ 
-                                  /  \______/  \   ← Mid-Ocean Ridge (underwater mountains)
-                                          |
-                                          |
-                                       Deep-Sea Trench
-<h3> Importance of Ocean Floor Features</h3>
-<ul>
-  <li>Support marine ecosystems</li>
-  <li>Provide resources (oil, gas, minerals)</li>
-  <li>Help scientists understand Earth's structure</li>
-  <li>Influence ocean currents</li>
-</ul>
-  `,
-  [
-    {
-      q: "What is the continental shelf? (2 marks)",
-      ans: "A shallow, gently sloping part of the ocean floor near the coast.",
-      hint: "Think shallow area near land.",
-      reason: "Tests basic feature identification."
-    },
-    {
-      q: "Name one feature of the ocean floor. (1 mark)",
-      ans: "Abyssal plain.",
-      hint: "Think flat deep area.",
-      reason: "Checks knowledge of features."
-    },
-    {
-      q: "Which is the deepest part of the ocean? (1 mark)",
-      ans: "Ocean trench.",
-      hint: "Think deepest depression.",
-      reason: "Tests key concept."
-    },
-    {
-      q: "Why is the continental shelf important? (2 marks)",
-      ans: "It supports fishing and contains oil and gas resources.",
-      hint: "Think resources and food.",
-      reason: "Application-based question."
-    },
-    {
-      q: "How are mid-ocean ridges formed? (2 marks)",
-      ans: "They are formed when tectonic plates move apart and magma rises to create new crust.",
-      hint: "Think volcano + plate movement.",
-      reason: "Tests process understanding."
-    }
-  ]
-);
 
-// -----------------------------------------------------------------------------
-//  21. Ocean Water Properties (Temperature, Salinity, Density) (Geography: Physical)
-// -----------------------------------------------------------------------------
-
-add(
-  "geography",
-  "oceans",
-  "Ocean Water Properties",
-  `<h2> Ocean Water Properties (Advanced Mastery Notes)</h2>
-
-<h3> Definition</h3>
-<p>
-Ocean water properties refer to the physical and chemical characteristics of seawater, including temperature, salinity, density, and color.
-</p>
-<h3> DEEP NOTES</h3>
-<h4>1. Temperature of Ocean Water</h4>
-<ul>
-  <li>Surface water is warmer than deep water</li>
-  <li>Temperature decreases with depth</li>
-  <li>Equatorial regions are warmer than polar regions</li>
-</ul>
-<p><b>Factors affecting temperature:</b></p>
-<ul>
-  <li>Latitude (distance from equator)</li>
-  <li>Ocean currents</li>
-  <li>Season</li>
-  <li>Depth of water</li>
-</ul>
-<p><b>Key Idea:</b> Sun heats the surface → deeper water remains cold.</p>
-<hr>
-<h4>2. Salinity (Salt Content)</h4>
-<ul>
-  <li>Average salinity is about <b>35‰ (parts per thousand)</b></li>
-  <li>Salt mainly comes from dissolved minerals from land</li>
-</ul>
-<p><b>Factors affecting salinity:</b></p>
-<ul>
-  <li>Evaporation (increases salinity)</li>
-  <li>Rainfall (decreases salinity)</li>
-  <li>River inflow (reduces salinity)</li>
-  <li>Ice melting/freezing</li>
-</ul>
-<p><b>Insight:</b> Hot, dry areas → high salinity.</p>
-<hr>
-<h4>3. Density of Ocean Water</h4>
-<ul>
-  <li>Density = how heavy water is</li>
-  <li>Cold and salty water is denser</li>
-  <li>Warm and less salty water is lighter</li>
-</ul>
-<p><b>Importance:</b></p>
-<ul>
-  <li>Controls ocean currents</li>
-  <li>Causes sinking and rising of water</li>
-</ul>
-<hr>
-<h4>4. Color and Transparency</h4>
-<ul>
-  <li>Ocean appears blue due to reflection of sky</li>
-  <li>Clear water allows light penetration</li>
-  <li>Murky water contains sediments or plankton</li>
-</ul>
-<h3> Importance of Ocean Water Properties</h3>
-<ul>
-  <li>Influence ocean currents</li>
-  <li>Affect marine life distribution</li>
-  <li>Control global climate</li>
-  <li>Determine water movement (circulation)</li>
-</ul>
-
-  `,
-  [
-    {
-      q: "What is salinity? (2 marks)",
-      ans: "The amount of salt dissolved in ocean water.",
-      hint: "Think salt content.",
-      reason: "Basic definition test."
-    },
-    {
-      q: "What is the average salinity of ocean water? (1 mark)",
-      ans: "35‰.",
-      hint: "Standard ocean value.",
-      reason: "Factual recall."
-    },
-    {
-      q: "Why is deep ocean water cold? (2 marks)",
-      ans: "Because it does not receive direct heat from the sun.",
-      hint: "Think sunlight only reaches surface.",
-      reason: "Conceptual understanding."
-    },
-    {
-      q: "How does evaporation affect salinity? (2 marks)",
-      ans: "It increases salinity by removing water and leaving salts behind.",
-      hint: "Water leaves, salt stays.",
-      reason: "Cause-effect understanding."
-    },
-    {
-      q: "What happens to density when temperature increases? (1 mark)",
-      ans: "Density decreases.",
-      hint: "Warm water is lighter.",
-      reason: "Relationship test."
-    }
-  ]
-);
-
-// -----------------------------------------------------------------------------
-//  22. Ocean Movements (Waves, Tides, Currents) (Geography: Physical)
-// -----------------------------------------------------------------------------
-
-add(
-  "geography",
-  "oceans",
-  "Ocean Movements (Waves, Tides, Currents)",
-  `<h2> Ocean Movements (Advanced Mastery Notes)</h2>
-
-<h3> Definition</h3>
-<p>
-Ocean movements refer to the continuous motion of ocean water in the form of waves, tides, and currents.
-</p>
-<h3> DEEP NOTES</h3>
-<h4>1. Waves</h4>
-<ul>
-  <li>Waves are movements of water on the ocean surface</li>
-  <li>Energy moves, but water particles mostly stay in place</li>
-</ul>
-<p><b>Causes of Waves:</b></p>
-<ul>
-  <li>Wind (main cause)</li>
-  <li>Earthquakes (tsunamis)</li>
-</ul>
-<p><b>Types of Waves:</b></p>
-<ul>
-  <li><b>Constructive waves:</b> Build up beaches</li>
-  <li><b>Destructive waves:</b> Erode coastlines</li>
-</ul>
-<p><b>Effects:</b></p>
-<ul>
-  <li>Coastal erosion</li>
-  <li>Formation of beaches</li>
-</ul>
-<hr>
-<h4>2. Tides</h4>
-<ul>
-  <li>Regular rise and fall of sea level</li>
-</ul>
-<p><b>Causes of Tides:</b></p>
-<ul>
-  <li>Gravitational pull of the moon (main cause)</li>
-  <li>Gravitational pull of the sun</li>
-  <li>Rotation of the Earth</li>
-</ul>
-<p><b>Types of Tides:</b></p>
-<ul>
-  <li><b>High Tide:</b> Water rises</li>
-  <li><b>Low Tide:</b> Water falls</li>
-  <li><b>Spring Tide:</b> Very high tides (moon + sun aligned)</li>
-  <li><b>Neap Tide:</b> Lower tides (moon and sun at right angles)</li>
-</ul>
-<p><b>Importance:</b></p>
-<ul>
-  <li>Aids navigation</li>
-  <li>Supports fishing activities</li>
-</ul>
-<hr>
-<h4>3. Ocean Currents</h4>
-<ul>
-  <li>Large masses of moving ocean water</li>
-</ul>
-<p><b>Types:</b></p>
-<ul>
-  <li><b>Warm currents:</b> Move from equator</li>
-  <li><b>Cold currents:</b> Move from polar regions</li>
-</ul>
-<p><b>Causes:</b></p>
-<ul>
-  <li>Wind patterns</li>
-  <li>Temperature differences</li>
-  <li>Earth's rotation</li>
-</ul>
-<p><b>Effects:</b></p>
-<ul>
-  <li>Influence climate</li>
-  <li>Affect rainfall patterns</li>
-  <li>Support fishing (nutrient-rich waters)</li>
-</ul>
-<h3> Importance of Ocean Movements</h3>
-<ul>
-  <li>Regulate global climate</li>
-  <li>Shape coastlines</li>
-  <li>Support marine ecosystems</li>
-  <li>Assist in navigation and trade</li>
-</ul>
-  `,
-  [
-    {
-      q: "What are waves? (2 marks)",
-      ans: "Movements of water on the ocean surface caused mainly by wind.",
-      hint: "Think surface movement.",
-      reason: "Tests basic definition."
-    },
-    {
-      q: "What causes tides? (2 marks)",
-      ans: "The gravitational pull of the moon and the sun.",
-      hint: "Think gravity.",
-      reason: "Core concept."
-    },
-    {
-      q: "What is a current? (2 marks)",
-      ans: "A large mass of moving ocean water.",
-      hint: "Think flowing water.",
-      reason: "Definition test."
-    },
-    {
-      q: "Name one type of tide. (1 mark)",
-      ans: "Spring tide.",
-      hint: "Think highest tides.",
-      reason: "Recall question."
-    },
-    {
-      q: "State one effect of ocean currents. (1 mark)",
-      ans: "They influence climate.",
-      hint: "Think temperature changes.",
-      reason: "Application understanding."
-    }
-  ]
-);
-// -----------------------------------------------------------------------------
-//  23. Ocean Currents (Advanced) (Geography: Physical)
-// -----------------------------------------------------------------------------
-add(
-  "geography",
-  "oceans",
-  "Ocean Currents (Advanced)",
-  `<h2> Ocean Currents (Advanced Mastery Notes)</h2>
-
-<h3> Definition</h3>
-<p>
-Ocean currents are large, continuous movements of ocean water flowing in specific directions across the Earth's oceans.
-</p>
-<h3> DEEP NOTES</h3>
-<h4>1. Types of Ocean Currents</h4>
-<ul>
-  <li>
-    <b>Warm Currents:</b>  
-    Flow from equatorial regions towards the poles  
-     Example: Gulf Stream  
-     Effect: Warm nearby coastal areas
-  </li>
-  <li>
-    <b>Cold Currents:</b>  
-    Flow from polar regions towards the equator  
-     Example: Canary Current  
-     Effect: Cool nearby coastal areas
-  </li>
-</ul>
-<p><b>Key Idea:</b> Warm = heat transfer outward, Cold = cooling influence.</p>
-<hr>
-<h4>2. Causes of Ocean Currents</h4>
-<ul>
-  <li><b>Wind:</b> Drives surface currents</li>
-  <li><b>Temperature differences:</b> Cause density changes</li>
-  <li><b>Salinity differences:</b> Affect density and movement</li>
-  <li><b>Earth’s rotation (Coriolis effect):</b> Deflects currents</li>
-  <li><b>Shape of continents:</b> Redirects flow</li>
-</ul>
-<hr>
-<h4>3. Major Ocean Currents</h4>
-<ul>
-  <li><b>Gulf Stream</b> – Warm current in Atlantic Ocean</li>
-  <li><b>Canary Current</b> – Cold current off northwest Africa</li>
-  <li><b>Labrador Current</b> – Cold current from Arctic</li>
-  <li><b>Kuroshio Current</b> – Warm current near Japan</li>
-  <li><b>Benguela Current</b> – Cold current off southwest Africa</li>
-</ul>
-<hr>
-<h4>4. Effects on Climate</h4>
-<ul>
-  <li>Warm currents increase temperature of nearby land</li>
-  <li>Cold currents reduce temperature</li>
-  <li>Currents influence rainfall patterns</li>
-  <li>Can create deserts (e.g., coastal deserts)</li>
-</ul>
-<p><b>Example Insight:</b> Cold currents → dry conditions → desert formation.</p>
-<hr>
-<h4>5. Effects on Fishing</h4>
-<ul>
-  <li>Cold currents bring nutrients from deep water</li>
-  <li>Support plankton growth</li>
-  <li>Attract large fish populations</li>
-</ul>
-<p><b>Key Idea:</b> Best fishing zones = where warm and cold currents meet.</p>
-<hr>
-<h4>6. Effects on Navigation</h4>
-<ul>
-  <li>Currents can speed up or slow down ships</li>
-  <li>Affect shipping routes</li>
-  <li>Influence fuel efficiency</li>
-</ul>
-  `,
-  [
-    {
-      q: "What are ocean currents? (2 marks)",
-      ans: "Large, continuous movements of ocean water flowing in specific directions.",
-      hint: "Think flowing water over long distances.",
-      reason: "Core definition."
-    },
-    {
-      q: "What is a warm current? (2 marks)",
-      ans: "A current that flows from the equator towards the poles carrying warm water.",
-      hint: "Think heat moving away from equator.",
-      reason: "Tests classification."
-    },
-    {
-      q: "Name one cold current. (1 mark)",
-      ans: "Canary Current.",
-      hint: "Think Africa west coast.",
-      reason: "Recall question."
-    },
-    {
-      q: "State one effect of ocean currents on climate. (1 mark)",
-      ans: "They influence temperature.",
-      hint: "Think warming or cooling.",
-      reason: "Concept application."
-    },
-    {
-      q: "Why are fishing grounds found where currents meet? (2 marks)",
-      ans: "Because nutrients are brought to the surface, supporting plankton and fish.",
-      hint: "Think food chain.",
-      reason: "Tests deeper understanding."
-    }
-  ]
-);
-
-// -----------------------------------------------------------------------------
-//  24. Coastal Features (Advanced) (Geography: Physical)
-// -----------------------------------------------------------------------------
-
-add(
-  "geography",
-  "oceans",
-  "Coastal Features (Erosion and Deposition)",
-  `<h2> Coastal Features (Advanced Mastery Notes)</h2>
-
-<h3> Definition</h3>
-<p>
-Coastal features are landforms found along the coast, formed mainly by the action of waves through processes such as erosion, transportation, and deposition.
-</p>
-<h3> DEEP NOTES</h3>
-<h4>1. Processes at the Coast</h4>
-<ul>
-  <li>
-    <b>Erosion:</b> Wearing away of land by waves  
-     Processes include hydraulic action, abrasion, attrition, and solution
-  </li>
-  <li>
-    <b>Transportation:</b> Movement of materials by waves  
-     Includes longshore drift
-  </li>
-  <li>
-    <b>Deposition:</b> Laying down of materials when wave energy reduces
-  </li>
-</ul>
-<p><b>Key Idea:</b> Strong waves = erosion, Weak waves = deposition.</p>
-<hr>
-<h4>2. Erosional Coastal Features</h4>
-<ul>
-  <li>
-    <b>Cliffs:</b> Steep rock faces formed by wave erosion
-  </li>
-  <li>
-    <b>Caves:</b> Formed when waves erode weak parts of a cliff
-  </li>
-  <li>
-    <b>Arches:</b> Form when caves enlarge and break through a headland
-  </li>
-  <li>
-    <b>Stacks:</b> Isolated rock pillars formed when arches collapse
-  </li>
-  <li>
-    <b>Stumps:</b> Remains of eroded stacks
-  </li>
-</ul>
-<p><b>Formation Sequence (IMPORTANT):</b></p>
-<pre>
-Crack → Cave → Arch → Stack → Stump
-</pre>
 <hr>
 <h4>3. Depositional Coastal Features</h4>
 <ul>

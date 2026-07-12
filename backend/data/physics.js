@@ -534,30 +534,10 @@ Average velocity = Total displacement / Total time
 <h3> MOTION GRAPHS</h3>
 
 <p><b>Displacement–Time Graph</b></p>
-<pre>
-s
-|      /
-|     /
-|    /
-|   /
-|  /
-+------------ t
-Slope = Velocity
-</pre>
+
 
 <p><b>Velocity–Time Graph</b></p>
-<pre>
-v
-|      /
-|     /
-|    /
-|   /
-|  /
-+------------ t
 
-Slope = Acceleration  
-Area = Displacement
-</pre>
 
 <h3> STEP-BY-STEP WORKED EXAMPLES</h3>
 
@@ -5828,9 +5808,7 @@ The two main types of circuits are series circuits and parallel circuits.
 <li>If one component breaks, the whole circuit stops working</li>
 </ul>
 
-<pre>
-Battery → [R1] → [R2] → [R3]
-</pre>
+
 
 <div class="example-box">
 <b>Key Idea:</b> One path for current flow only
@@ -5847,12 +5825,7 @@ Battery → [R1] → [R2] → [R3]
 <li>If one component fails, others still work</li>
 </ul>
 
-<pre>
-      |--[R1]--|
-Battery        |
-      |--[R2]--|
-      |--[R3]--|
-</pre>
+
 
 <div class="example-box">
 <b>Key Idea:</b> Multiple paths for current flow
@@ -6733,11 +6706,7 @@ Fluids are essential in everyday life: air is a gas fluid, water is a liquid flu
 </ul>
 
 <h3> IMPORTANT FORMULAS</h3>
-<pre>
-Density: ρ = m / V
-Pressure: P = F / A
-Fluid pressure: P = ρgh
-</pre>
+
 
 <ul>
 <li>ρ = density (kg/m³)</li>
@@ -6746,60 +6715,31 @@ Fluid pressure: P = ρgh
 </ul>
 
 <h3> FLUID PRESSURE IDEA</h3>
-<pre>
-More depth (h) → More pressure (P)
-More density (ρ) → More pressure (P)
-</pre>
+
 
 <h3> FLOW DIAGRAM</h3>
-<pre>
-Force → Pressure → Fluid motion → Buoyancy effects
-</pre>
+
 
 <h3> WORKED OUT CALCULATIONS</h3>
 
 <h4>Example 1: Pressure in a fluid</h4>
 <p>Calculate pressure at a depth of 5 m in water (ρ = 1000 kg/m³, g = 9.8 m/s²).</p>
 
-<pre>
-Step 1: Use formula P = ρgh
 
-Step 2: Substitute values
-P = 1000 × 9.8 × 5
-
-Step 3: Multiply
-P = 49000 Pa
-</pre>
 
 <p><b>Answer:</b> 49,000 Pa</p>
 
 <h4>Example 2: Density calculation</h4>
 <p>A substance has mass 2 kg and volume 0.5 m³. Find density.</p>
 
-<pre>
-Step 1: Use ρ = m / V
 
-Step 2: Substitute values
-ρ = 2 / 0.5
-
-Step 3: Calculate
-ρ = 4 kg/m³
-</pre>
 
 <p><b>Answer:</b> 4 kg/m³</p>
 
 <h4>Example 3: Pressure from force</h4>
 <p>A force of 200 N acts on an area of 4 m². Find pressure.</p>
 
-<pre>
-Step 1: Use P = F / A
 
-Step 2: Substitute values
-P = 200 / 4
-
-Step 3: Calculate
-P = 50 Pa
-</pre>
 
 <p><b>Answer:</b> 50 Pa</p>
 
@@ -6872,17 +6812,7 @@ It focuses on the internal structure of atoms, the nucleus, and how energy is re
 </ul>
 
 <h3> ATOMIC MODEL FLOW</h3>
-<pre>
-Atom
- ↓
-Nucleus (protons + neutrons)
- ↓
-Unstable nucleus
- ↓
-Radiation emitted (α, β, γ)
- ↓
-More stable atom
-</pre>
+
 
 <h3> TYPES OF RADIATION</h3>
 <ul>
@@ -6900,9 +6830,7 @@ More stable atom
 <li>Used in nuclear power plants</li>
 </ul>
 
-<pre>
-U-235 → Ba + Kr + Energy + Neutrons
-</pre>
+
 
 <h4> Nuclear Fusion</h4>
 <ul>
@@ -6911,29 +6839,19 @@ U-235 → Ba + Kr + Energy + Neutrons
 <li>Occurs in the sun and stars</li>
 </ul>
 
-<pre>
-H + H → He + Energy
-</pre>
+
 
 <h3> WORKED EXAMPLES</h3>
 
 <h4>Example 1: Identify radiation type</h4>
 <p>A radiation is stopped by paper but strongly ionizing. What is it?</p>
 
-<pre>
-Step 1: Check penetration → low
-Step 2: Check ionization → high
-Step 3: Match properties
-</pre>
+
 
 <p><b>Answer:</b> Alpha radiation</p>
 
 <h4>Example 2: Compare fission and fusion</h4>
-<pre>
-Step 1: Fission = splitting of heavy nucleus
-Step 2: Fusion = combining light nuclei
-Step 3: Both release energy
-</pre>
+
 
 <p><b>Answer:</b> Fission splits atoms, fusion joins atoms</p>
 
@@ -7007,16 +6925,7 @@ In a Cathode Ray Tube (CRT), electrons are accelerated through a potential diffe
 </ul>
 
 <h3> IMPORTANT FORMULAS</h3>
-<pre>
-Energy gained by electron:
-E = eV
 
-Kinetic energy:
-KE = ½mv²
-
-Therefore:
-eV = ½mv²
-</pre>
 
 <ul>
 <li>e = charge of electron = 1.6 × 10⁻¹⁹ C</li>
@@ -7025,48 +6934,21 @@ eV = ½mv²
 </ul>
 
 <h3> CATHODE RAY TUBE STRUCTURE</h3>
-<pre>
-Cathode (−) → Electron beam → Anode (+) → Deflection plates → Fluorescent screen
-</pre>
+
 
 <h3> WORKED OUT CALCULATIONS</h3>
 
 <h4>Example 1: Energy gained by an electron</h4>
 <p>An electron is accelerated through a potential difference of 200 V. Find the energy gained.</p>
 
-<pre>
-Step 1: Use formula E = eV
 
-Step 2: Substitute values
-E = (1.6 × 10⁻¹⁹) × 200
-
-Step 3: Multiply
-E = 3.2 × 10⁻¹⁷ J
-</pre>
 
 <p><b>Answer:</b> 3.2 × 10⁻¹⁷ J</p>
 
 <h4>Example 2: Speed of electron</h4>
 <p>An electron is accelerated through 100 V. Calculate its speed.</p>
 
-<pre>
-Step 1: Use eV = ½mv²
 
-Step 2: Substitute values
-(1.6 × 10⁻¹⁹ × 100) = ½ × (9.11 × 10⁻³¹) × v²
-
-Step 3: Solve energy
-1.6 × 10⁻¹⁷ = 4.555 × 10⁻³¹ v²
-
-Step 4: Rearrange
-v² = (1.6 × 10⁻¹⁷) / (4.555 × 10⁻³¹)
-
-Step 5: Calculate
-v² ≈ 3.51 × 10¹³
-
-Step 6: Square root
-v ≈ 5.9 × 10⁶ m/s
-</pre>
 
 <p><b>Answer:</b> 5.9 × 10⁶ m/s</p>
 
@@ -7148,10 +7030,7 @@ This phenomenon provided strong evidence that light behaves as particles called 
 <li><b>Intensity:</b> Affects number of emitted electrons, not their energy</li>
 </ul>
 <h3> EINSTEIN’S PHOTOELECTRIC EQUATION</h3>
-<pre>
-E = hf
-KE(max) = hf − φ
-</pre>
+
 <ul>
 <li>E = photon energy</li>
 <li>h = Planck’s constant (6.63 × 10⁻³⁴ J·s)</li>
@@ -7165,31 +7044,15 @@ KE(max) = hf − φ
 <li>If f < f₀ → no electrons emitted, no matter how intense the light is</li>
 </ul>
 <h3> PROCESS DIAGRAM</h3>
-<pre>
-Photon (hf) hits metal
-        ↓
-Energy transferred to electron
-        ↓
-If hf ≥ φ → electron escapes
-        ↓
-Photoelectron emitted
-</pre>
+
 <h3> WORKED EXAMPLES</h3>
 <h4>Example 1: Photon Energy</h4>
 <p>Calculate energy of a photon of frequency 5 × 10¹⁴ Hz</p>
-<pre>
-E = hf
-E = 6.63 × 10⁻³⁴ × 5 × 10¹⁴
-E = 3.315 × 10⁻¹⁹ J
-</pre>
+
 <p><b>Answer:</b> 3.315 × 10⁻¹⁹ J</p>
 <h4>Example 2: Photoelectron Kinetic Energy</h4>
 <p>A metal has work function 2.0 × 10⁻¹⁹ J. Light of energy 5.0 × 10⁻¹⁹ J is incident. Find KE(max).</p>
-<pre>
-KE = hf − φ
-KE = 5.0 × 10⁻¹⁹ − 2.0 × 10⁻¹⁹
-KE = 3.0 × 10⁻¹⁹ J
-</pre>
+
 <p><b>Answer:</b> 3.0 × 10⁻¹⁹ J</p>
 <h3> REAL-LIFE APPLICATIONS</h3>
 <ul>

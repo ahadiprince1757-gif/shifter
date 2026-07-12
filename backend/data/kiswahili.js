@@ -15,12 +15,7 @@ add(
 
 <h3> MUUNDO WA SENTENSI</h3>
 
-<pre>
-Mhusika + Kitenzi + Kijalizo
 
-Mfano:
-Mtoto anasoma kitabu
-</pre>
 
 <hr>
 
@@ -56,9 +51,7 @@ Mtoto anasoma kitabu
 
 <h3> MFANO WA SENTENSI</h3>
 
-<pre>
-Mtoto mzuri anasoma kitabu kikubwa
-</pre>
+
 
 <p><b>Uchambuzi:</b></p>
 <ul>
@@ -174,9 +167,7 @@ add(
 
 <h3> MCHAKATO WA UFAHAMU</h3>
 
-<pre>
-Soma → Elewa → Changanua → Jibu → Hakiki
-</pre>
+
 
 <hr>
 
@@ -212,13 +203,7 @@ Soma → Elewa → Changanua → Jibu → Hakiki
 
 <h3> MFANO WA UFAHAMU</h3>
 
-<pre>
-Kifungu:
-"Mtoto alisoma kwa bidii na kufaulu mtihani wake."
 
-Swali: Kwa nini mtoto alifaulu?
-Jibu: Kwa sababu alisoma kwa bidii.
-</pre>
 `
 ,
 
@@ -325,9 +310,7 @@ add(
 
 <h3> MUUNDO WA INSHA</h3>
 
-<pre>
-Utangulizi → Kiini → Hitimisho
-</pre>
+
 
 <hr>
 
@@ -363,16 +346,7 @@ Utangulizi → Kiini → Hitimisho
 
 <h3> MFANO WA MUUNDO</h3>
 
-<pre>
-UTANGULIZI:
-Eleza mada kwa ufupi
 
-KIINI:
-Maelezo ya kina (paragraphs)
-
-HITIMISHO:
-Muhtasari na maoni
-</pre>
 
 <hr>
 
@@ -486,9 +460,7 @@ add(
 
 <h3> AINA KUU</h3>
 
-<pre>
-Methali → Nahau → Vitendawili → Hadithi → Nyimbo → Misemo → Majigambo
-</pre>
+
 
 <hr>
 
@@ -530,10 +502,7 @@ Methali → Nahau → Vitendawili → Hadithi → Nyimbo → Misemo → Majigamb
 
 <h3> MFANO WA FASIHI</h3>
 
-<pre>
-Methali: Mvumilivu hula mbivu
-Maana: Uvumilivu huleta mafanikio
-</pre>
+
 `
 ,
 
@@ -646,9 +615,7 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Riwaya ni hadithi ndefu inayoeleza maisha ya watu kwa undani kupitia maandishi.
-</pre>
+
 
 <h3> SIFA ZA RIWAYA</h3>
 <ul>
@@ -660,9 +627,7 @@ Riwaya ni hadithi ndefu inayoeleza maisha ya watu kwa undani kupitia maandishi.
 </ul>
 
 <h3> MFANO WA RIWAYA</h3>
-<pre>
-"Chozi la Heri" — riwaya inayoonyesha maisha ya majonzi na changamoto za kijamii
-</pre>
+
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -752,9 +717,7 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Tamthilia ni kazi ya fasihi inayoandikwa kwa mazungumzo na kuigizwa jukwaani mbele ya hadhira.
-</pre>
+
 
 <h3> SIFA ZA TAMTHILIA</h3>
 <ul>
@@ -766,18 +729,10 @@ Tamthilia ni kazi ya fasihi inayoandikwa kwa mazungumzo na kuigizwa jukwaani mbe
 </ul>
 
 <h3> MFANO WA TAMTHILIA</h3>
-<pre>
-"Kigogo" — tamthilia inayoonyesha masuala ya uongozi na rushwa
-</pre>
+
 
 <h3> MUUNDO WA TAMTHILIA</h3>
-<pre>
-Onyesho (Scene) → Mgawanyo wa matukio
 
-Mazungumzo → Wahusika wanapokezana
-
-Maelekezo ya jukwaa → jinsi tukio linavyofanyika
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -867,9 +822,7 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Ushairi ni matumizi ya lugha ya kisanaa yenye mpangilio wa vina na mizani ili kuwasilisha hisia na ujumbe.
-</pre>
+
 
 <h3> SIFA ZA USHAIRI</h3>
 <ul>
@@ -881,19 +834,10 @@ Ushairi ni matumizi ya lugha ya kisanaa yenye mpangilio wa vina na mizani ili ku
 </ul>
 
 <h3> MFANO WA SHAIRI</h3>
-<pre>
-Mapenzi ni moto unaowaka,
-Moyo hupenda bila kusita,
-Furaha na huzuni hukutana,
-Katika safari ya mapenzi.
-</pre>
+
 
 <h3> AINA ZA USHAIRI</h3>
-<pre>
-Shairi la jadi → lina vina na mizani kali
 
-Shairi huru → halina masharti makali ya vina
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -983,27 +927,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Wahusika ni watu au viumbe wanaoendesha matukio na kuwasilisha ujumbe katika fasihi.
-</pre>
+
 
 <h3> AINA ZA WAHUSIKA</h3>
-<pre>
-Mhusika Mkuu → hubeba hadithi yote
 
-Wahusika Wadogo → husaidia mhusika mkuu
-
-Mhusika Mbadala → huleta mabadiliko ya matukio
-</pre>
 
 <h3> MFANO WA WAHUSIKA</h3>
-<pre>
-Riwaya: Amina (mhusika mkuu), Juma (msaidizi)
 
-Tamthilia: Mfalme, washauri wake
-
-Ushairi: Mzungumzaji (shairi linaweza kuwa sauti ya mtu)
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1093,27 +1023,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Mandhari ni mahali na wakati ambapo matukio ya fasihi hutokea.
-</pre>
+
 
 <h3> AINA ZA MANDHARI</h3>
-<pre>
-Mandhari Halisi → mji, kijiji, shule
 
-Mandhari ya Kufikirika → maeneo ya kubuni
-
-Mandhari ya Wakati → zamani, sasa, baadaye
-</pre>
 
 <h3> MFANO WA MANDHARI</h3>
-<pre>
-Kijiji → maisha ya wakulima
 
-Mjini → biashara na maendeleo
-
-Shuleni → elimu na mafunzo
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1203,27 +1119,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Dhamira ni ujumbe mkuu unaopatikana katika kazi ya fasihi.
-</pre>
+
 
 <h3> MFANO WA DHAMIRA</h3>
-<pre>
-Ufisadi → matumizi mabaya ya madaraka
 
-Mapenzi → hisia kati ya watu wawili
-
-Ujasiri → kukabiliana na changamoto
-
-Umaskini → hali ya maisha magumu
-</pre>
 
 <h3> DHAMIRA KUU NA NDOGO</h3>
-<pre>
-Dhamira Kuu → ujumbe mkuu wa hadithi
 
-Dhamira Ndogo → mawazo madogo yanayosaidia kuu
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1314,31 +1216,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Mbinu za kisanaa ni njia zinazotumiwa kupamba na kuimarisha lugha ya fasihi.
-</pre>
+
 
 <h3> MIFANO YA MBINU ZA KISANAA</h3>
-<pre>
-Tashbihi → “Ana nguvu kama simba”
 
-Sitiari → “Yeye ni simba wa darasa”
-
-Chuku → “Nimekuita mara milioni”
-
-Tanakali sauti → “Bam! mlango ukagonga”
-</pre>
 
 <h3> AINA ZA MBINU</h3>
-<pre>
-Tashbihi → kulinganisha kwa “kama”
 
-Sitiari → kulinganisha moja kwa moja
-
-Chuku → kutia chumvi
-
-Kinaya → maana tofauti na maneno
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1428,29 +1312,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Wahusika huonyesha tabia, migogoro na dhamira ya kazi ya fasihi.
-</pre>
+
 
 <h3> AINA ZA WAHUSIKA</h3>
-<pre>
-Mhusika Bapa → tabia moja (mwema au mwovu)
 
-Mhusika Duara → hubadilika na matukio
-
-Mhusika Mkuu → mhusika muhimu zaidi
-
-Mhusika Msaidizi → husaidia hadithi
-</pre>
 
 <h3> MFANO WA UCHAMBUZI</h3>
-<pre>
-Amina → mnyenyekevu lakini anakuwa jasiri baada ya changamoto
 
-Juma → msaidizi mwaminifu
-
-Mwalimu → mwongozo wa maadili
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1541,27 +1409,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Mandhari huweka mazingira ya matukio na kuathiri wahusika na dhamira ya hadithi.
-</pre>
+
 
 <h3> AINA ZA MANDHARI</h3>
-<pre>
-Mandhari Halisi → kijiji, mji, shule
 
-Mandhari ya Kubuni → maeneo ya kufikirika
-
-Mandhari ya Wakati → zamani, sasa, baadaye
-</pre>
 
 <h3> MFANO WA UCHAMBUZI</h3>
-<pre>
-Kijijini → maisha ya kilimo na umaskini
 
-Mjini → maisha ya kasi na biashara
-
-Zamani → mila na desturi za kale
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1654,20 +1508,10 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Matumizi ya lugha ni msingi wa mawasiliano yote ya binadamu.
-</pre>
+
 
 <h3> MIFANO</h3>
-<pre>
-Darasani → mwanafunzi anajibu swali la mwalimu
 
-Nyumbani → mzazi anazungumza na mtoto
-
-Sokoni → mnunuzi na muuzaji wanajadili bei
-
-Simu → watu wanawasiliana kwa umbali
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1760,23 +1604,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Mawasiliano ni mchakato unaohusisha mzungumzaji, ujumbe, msikilizaji na majibu.
-</pre>
+
 
 <h3> MCHAKATO WA MAWASILIANO</h3>
-<pre>
-Mzungumzaji → Ujumbe → Msikilizaji → Majibu (Feedback)
-</pre>
+
 
 <h3> MIFANO</h3>
-<pre>
-Darasani → Mwalimu anaeleza somo, wanafunzi wanasikiliza na kuuliza maswali
 
-Simu → Mtu anapiga simu, mwingine anapokea na kujibu
-
-Mazungumzo → Rafiki anauliza swali, mwingine anajibu
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1869,25 +1703,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Maongezi rasmi hutumia lugha ya heshima, mpangilio na usahihi ili kufikisha ujumbe kwa uwazi.
-</pre>
+
 
 <h3> MIFANO</h3>
-<pre>
-Darasani → "Tafadhali eleza jibu lako."
 
-Ofisini → "Naomba kuwasilisha ripoti yangu."
-
-Mkutano → "Ningependa kutoa hoja kuhusu ajenda hii."
-</pre>
 
 <h3> MFANO WA MAZUNGUMZO RASMI</h3>
-<pre>
-Mwalimu: Tafadhali simama na ujieleze.
-Mwanafunzi: Asante mwalimu, jina langu ni Amina.
-Mwalimu: Karibu sana, tafadhali kaa chini.
-</pre>
+
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -1980,26 +1802,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Maongezi yasiyo rasmi hutumia lugha ya kawaida kwa uhuru katika mazingira ya kirafiki.
-</pre>
+
 
 <h3> MIFANO</h3>
-<pre>
-Mitaani → "Niaje? Uko aje?"
 
-Nyumbani → "Umekula?"
-
-Marafiki → "Leo tunatoka wapi?"
-</pre>
 
 <h3> MFANO WA MAZUNGUMZO</h3>
-<pre>
-A: Niaje?
-B: Poa sana, wewe?
-A: Niko fiti, tunaenda wapi leo?
-B: Twende tukacheze mpira.
-</pre>
+
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -2091,45 +1900,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Barua rasmi huandikwa kwa kufuata muundo maalum na kutumia lugha ya heshima.
-</pre>
+
 
 <h3> MUUNDO WA BARUA RASMI</h3>
-<pre>
-Anuani ya mwandishi
-Tarehe
 
-Anuani ya mpokeaji
-
-Salamu (Mfano: Ndugu/Mheshimiwa)
-
-Kichwa cha barua
-
-Mwili wa barua
-
-Hitimisho (Mfano: Wako mwaminifu)
-
-Jina na sahihi
-</pre>
 
 <h3> MFANO</h3>
-<pre>
-S.L.P 123,
-Nairobi,
-10/04/2026
 
-Mkuu wa Shule,
-Shule ya Upili XYZ,
-Nairobi
-
-YAH: OMBI LA NAFASI YA MASOMO
-
-Naomba nafasi ya kujiunga na shule yenu...
-
-Wako mwaminifu,
-Juma Ali
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -2221,37 +1998,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Barua zisizo rasmi hutumia lugha ya kawaida na huandikwa kwa uhuru kwa watu wa karibu.
-</pre>
+
 
 <h3> MUUNDO WA BARUA ISIYO RASMI</h3>
-<pre>
-Anuani ya mwandishi
-Tarehe
 
-Salamu (Mfano: Rafiki yangu)
-
-Mwili wa barua
-
-Hitimisho (Mfano: Rafiki yako)
-
-Jina
-</pre>
 
 <h3> MFANO</h3>
-<pre>
-S.L.P 456,
-Nairobi,
-10/04/2026
 
-Rafiki yangu John,
-
-Habari yako? Natumai uko salama...
-
-Rafiki yako,
-Ali
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -2344,36 +2097,16 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Hotuba ni njia ya kuwasilisha ujumbe kwa hadhira kwa mpangilio na kusudi maalum.
-</pre>
+
 
 <h3> MUUNDO WA HOTUBA</h3>
-<pre>
-Utangulizi → salamu na kujitambulisha
 
-Mwili → maelezo ya hoja kuu
-
-Hitimisho → muhtasari na shukrani
-</pre>
 
 <h3> MIFANO YA MADHUMUNI YA HOTUBA</h3>
-<pre>
-Elimu → kufundisha mada fulani
 
-Hamasa → kuhimiza watu wafanye jambo
-
-Burudani → kuburudisha hadhira
-</pre>
 
 <h3> MFANO MFUPI WA HOTUBA</h3>
-<pre>
-Waheshimiwa wote, nawasalimu.
 
-Leo ningependa kuzungumzia umuhimu wa elimu...
-
-Asanteni kwa kunisikiliza.
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -2465,24 +2198,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Mazungumzo ni kubadilishana mawazo kati ya watu wawili au zaidi kwa kupokezana.
-</pre>
+
 
 <h3> MUUNDO WA MAZUNGUMZO</h3>
-<pre>
-Jina la msemaji → maneno yake
 
-Jina la msemaji mwingine → majibu yake
-</pre>
 
 <h3> MFANO WA MAZUNGUMZO</h3>
-<pre>
-A: Habari yako?
-B: Nzuri, na wewe?
-A: Niko salama, unafanya nini?
-B: Ninasoma Kiswahili.
-</pre>
+
 
 <h3> SIFA ZA MAZUNGUMZO</h3>
 <ul>
@@ -2582,29 +2304,13 @@ add(
 </ul>
 
 <h3> WAZO KUU</h3>
-<pre>
-Mawasiliano ya kijamii ni msingi wa uhusiano na mshikamano katika jamii.
-</pre>
+
 
 <h3> NJIA ZA MAWASILIANO</h3>
-<pre>
-Kuzungumza → uso kwa uso
 
-Kuandika → barua, ujumbe
-
-Teknolojia → simu, mitandao ya kijamii
-</pre>
 
 <h3> MIFANO</h3>
-<pre>
-Familia → wazazi na watoto wanazungumza nyumbani
 
-Shule → walimu na wanafunzi
-
-Jamii → mikutano ya kijamii
-
-Mtandao → WhatsApp, Facebook
-</pre>
 
 <h3> MAKOSA YA KAWAIDA</h3>
 <ul>
@@ -2691,9 +2397,7 @@ add(
 
 <h3> MWENDO WA UJIFUNZAJI WA MSAMIATI</h3>
 
-<pre>
-Neno → Maana → Matumizi → Mfano → Muktadha
-</pre>
+
 
 <hr>
 
@@ -2733,11 +2437,7 @@ Neno → Maana → Matumizi → Mfano → Muktadha
 
 <h3> MFANO WA MATUMIZI</h3>
 
-<pre>
-Neno: Jasiri
-Maana: Asiyeogopa
-Sentensi: Askari jasiri alilinda nchi
-</pre>
+
 
 <hr>
 

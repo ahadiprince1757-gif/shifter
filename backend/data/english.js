@@ -19,16 +19,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Parts of speech are the building blocks of language that work together to form meaning.
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-The tall boy runs quickly in the big school.
-Wow! He is very fast but tired.
-She and her friend walked under the bridge because it was raining.
-</pre>
+
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -109,23 +103,13 @@ add(
   `<h2>Sentence Structure</h2>
 
 <h3> KEY IDEA</h3>
-<pre>
-A sentence structure shows how words are arranged to form meaning.
-</pre>
+
 
 <h3> BASIC STRUCTURE</h3>
-<pre>
-S + V + O
-Subject + Verb + Object
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-John eats mango.
-She reads a book.
-The boy kicks the ball.
-They watch movies.
-</pre>
+
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -137,23 +121,15 @@ They watch movies.
 <hr>
 
 <h3> SIMPLE SENTENCES</h3>
-<pre>
-She sleeps.
-The dog barks.
-I eat rice.
-</pre>
+
 
 <h3> SIMPLE IDEA</h3>
-<pre>
-A simple sentence has one subject and one verb.
-</pre>
+
 
 <hr>
 
 <h3> COMPOUND SENTENCES</h3>
-<pre>
-A compound sentence joins two simple sentences using conjunctions.
-</pre>
+
 
 <h3> COMMON CONJUNCTIONS</h3>
 <ul>
@@ -165,12 +141,7 @@ A compound sentence joins two simple sentences using conjunctions.
 </ul>
 
 <h3> EXAMPLES</h3>
-<pre>
-I wanted to play, but it started raining.
-She studied hard, and she passed the exam.
-He was tired, so he went to sleep.
-You can stay here, or you can leave.
-</pre>
+
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -182,16 +153,10 @@ You can stay here, or you can leave.
 <hr>
 
 <h3> COMPLEX SENTENCES</h3>
-<pre>
-A complex sentence has one main clause and one subordinate clause.
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-I stayed home because I was sick.
-When it rained, we stayed inside.
-She passed the exam although it was difficult.
-</pre>
+
 
 <hr>
 
@@ -256,27 +221,13 @@ add(
   "Tenses",
   `<h2>Tenses</h2>
 <h3> KEY IDEA</h3>
-<pre>
-Tenses show the time of an action: present, past, or future.
-</pre>
+
 
 <h3> BASIC PATTERNS</h3>
-<pre>
-Present → Subject + base verb (She plays)
-Past → Subject + past verb (She played)
-Future → Subject + will + base verb (She will play)
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-Present → She plays football.
-Past → She played football.
-Future → She will play football.
 
-Present → They eat rice.
-Past → They ate rice.
-Future → They will eat rice.
-</pre>
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -356,19 +307,10 @@ improve this notes <h3> NOTES</h3>
 <li><b>Apostrophe (’)</b> → shows possession or contraction (e.g., John's, don't)</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Punctuation helps writing become clear, structured, and meaningful.
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-Where are you?
-I am fine.
-Wow! That is amazing.
 
-I bought apples, bananas, oranges, and mangoes.
-John’s book is on the table.
-</pre>
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -447,35 +389,18 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Active voice focuses on the doer, while passive voice focuses on the receiver of the action.
-</pre>
+
 
 <h3> STRUCTURE</h3>
 
 <h4>Active Voice</h4>
-<pre>
-Subject + Verb + Object
-The boy eats a mango.
-</pre>
+
 
 <h4>Passive Voice</h4>
-<pre>
-Object + to be verb + past participle + by + subject
-The mango is eaten by the boy.
-</pre>
+
 
 <h3> MORE EXAMPLES</h3>
-<pre>
-Active: She writes a letter.
-Passive: A letter is written by her.
 
-Active: They built the house.
-Passive: The house was built by them.
-
-Active: The teacher teaches the class.
-Passive: The class is taught by the teacher.
-</pre>
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -556,17 +481,9 @@ add(
 <li><b>Word Order Errors</b> → incorrect arrangement of words in a sentence</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Grammar errors happen when structure, time, or word forms do not match correctly.
-</pre>
+
 <h3> EXAMPLES</h3>
-<pre>
- He go →  He goes
- They is →  They are
- She eat yesterday →  She ate yesterday
- I am go to school →  I am going to school
- He writed a letter →  He wrote a letter
-</pre>
+
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -652,22 +569,12 @@ Sentence types show the purpose or intention behind a sentence—whether we are 
 <hr>
 
 <h3> MAIN TYPES OF SENTENCES</h3>
-<pre>
-Declarative   → makes a statement
-Interrogative → asks a question
-Imperative    → gives a command or instruction
-Exclamatory   → expresses strong feeling or emotion
-</pre>
+
 
 <hr>
 
 <h3> SIMPLE EXAMPLES</h3>
-<pre>
-Declarative   → I am going home.
-Interrogative → What is your name?
-Imperative    → Close the door.
-Exclamatory   → What a beautiful day!
-</pre>
+
 <hr>
 <h3> BREAKDOWN (HOW TO IDENTIFY)</h3>
 <ul>
@@ -678,12 +585,7 @@ Exclamatory   → What a beautiful day!
 </ul>
 <hr>
 <h3> QUICK MEMORY TRICK</h3>
-<pre>
-D → Declares (statement)
-I → Inquires (question)
-I → Instructs (command)
-E → Expresses emotion
-</pre>
+
 <h3> COMMON MISTAKES</h3>
 <ul>
 <li> Confusing questions with statements</li>
@@ -757,18 +659,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Grammar is the structure that turns thoughts into clear and understandable communication.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
- Correct grammar → clear meaning
-"I am going to school."
 
- Wrong grammar → confusion
-"I going school am."
-</pre>
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -852,14 +746,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Comprehension is not memorization—it is understanding and interpreting meaning from text.
-</pre>
+
 
 <h3> STRATEGY</h3>
-<pre>
-Read → Understand → Locate → Analyze → Answer
-</pre>
+
 
 <h3> STEP-BY-STEP EXPLANATION</h3>
 <ul>
@@ -871,13 +761,7 @@ Read → Understand → Locate → Analyze → Answer
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Passage: The Nile River provides water for farming in Egypt.
 
-Question: Why is the Nile important?
-
-Answer: It provides water for farming.
-</pre>
 
 <h3> COMMON MISTAKES</h3>
 <ul>
@@ -954,14 +838,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Inference means reading between the lines to find meaning that is suggested, not stated.
-</pre>
+
 
 <h3> STRATEGY</h3>
-<pre>
-Clue + Logic + Context = Answer
-</pre>
+
 
 <h3> STEP-BY-STEP METHOD</h3>
 <ul>
@@ -973,13 +853,7 @@ Clue + Logic + Context = Answer
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Passage: The ground was wet and people carried umbrellas.
 
-Question: What is the weather like?
-
-Answer: It is raining.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -1062,16 +936,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Words do not have fixed meaning alone—they gain meaning from context.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-He banked the money. → (bank = financial institution / to deposit money)
 
-The river bank is muddy. → (bank = side of a river)
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -1151,14 +1019,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Direct questions test your ability to find information, not interpret it.
-</pre>
+
 
 <h3> STRATEGY</h3>
-<pre>
-Locate → Identify keyword → Copy relevant idea → Answer
-</pre>
+
 
 <h3> STEP-BY-STEP METHOD</h3>
 <ul>
@@ -1170,13 +1034,7 @@ Locate → Identify keyword → Copy relevant idea → Answer
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Passage: The Nile River provides water for farming in Egypt.
 
-Question: What does the Nile River provide?
-
-Answer: Water for farming.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -1258,14 +1116,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Summarizing means keeping the meaning while reducing the size of the text.
-</pre>
+
 
 <h3> METHOD</h3>
-<pre>
-Read → Underline → Select → Rewrite → Simplify
-</pre>
+
 
 <h3> STEP-BY-STEP EXPLANATION</h3>
 <ul>
@@ -1277,11 +1131,7 @@ Read → Underline → Select → Rewrite → Simplify
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Original: The Nile River provides water for farming, supports life in Egypt, and is very important for agriculture.
 
-Summary: The Nile River is important for farming and life in Egypt.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -1364,21 +1214,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Paraphrasing is changing how something is said, not what it means.
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-Original: He is very intelligent.
-Paraphrase: He is highly smart.
 
-Original: The boy is running quickly.
-Paraphrase: The boy is moving fast on foot.
-
-Original: She is angry about the situation.
-Paraphrase: She is upset because of the situation.
-</pre>
 
 <h3> BREAKDOWN EXAMPLE</h3>
 <ul>
@@ -1457,14 +1296,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Good answers come from understanding the question and using clear evidence from the passage.
-</pre>
+
 
 <h3> STRATEGY</h3>
-<pre>
-Understand → Locate → Extract Evidence → Answer Clearly
-</pre>
+
 
 <h3> STEP-BY-STEP METHOD</h3>
 <ul>
@@ -1475,13 +1310,7 @@ Understand → Locate → Extract Evidence → Answer Clearly
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Passage: The Nile River provides water for farming in Egypt.
 
-Question: Why is the Nile important?
-
-Answer: It provides water for farming.
-</pre>
 
 <h3> COMMON MISTAKES</h3>
 <ul>
@@ -1557,15 +1386,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Strong comprehension skills improve both academic success and real-world understanding.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-Good comprehension → high marks and clear understanding
-Poor comprehension → low marks and confusion
-</pre>
+
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -1644,14 +1468,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-A strong paragraph builds one clear idea step by step using support and examples.
-</pre>
+
 
 <h3> FORMAT</h3>
-<pre>
-Topic sentence → Explanation → Example → (Optional) Conclusion sentence
-</pre>
+
 
 <h3> DETAILED BREAKDOWN</h3>
 <ul>
@@ -1662,15 +1482,7 @@ Topic sentence → Explanation → Example → (Optional) Conclusion sentence
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Topic sentence: Education is important in life.
 
-Explanation: It helps people gain knowledge and skills needed for success.
-
-Example: For instance, educated people are more likely to get better jobs.
-
-Conclusion: Therefore, education plays a key role in personal development.
-</pre>
 
 <h3> COMMON MISTAKES</h3>
 <ul>
@@ -1741,9 +1553,7 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Coherence is about meaning flow; cohesion is about sentence connection.
-</pre>
+
 
 <h3> LINKING WORD EXAMPLES</h3>
 <ul>
@@ -1754,13 +1564,7 @@ Coherence is about meaning flow; cohesion is about sentence connection.
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-I was tired. However, I continued working.
 
-She studied hard because she wanted to pass the exam.
-
-It was raining, therefore the match was cancelled.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -1840,17 +1644,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Good writing is balanced between ideas, language, structure, and originality.
-</pre>
+
 
 <h3> BREAKDOWN</h3>
-<pre>
-Content → 40%  (ideas and relevance)
-Language → 30% (grammar and vocabulary)
-Organization → 20% (structure and flow)
-Creativity → 10% (original expression and style)
-</pre>
+
 
 <h3> EXPLANATION</h3>
 <ul>
@@ -1933,15 +1730,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Good writing skills improve both academic performance and real-life communication.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-Good essay → high marks, clear ideas, strong structure
-Poor essay → low marks, unclear ideas, weak structure
-</pre>
+
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -2022,20 +1814,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-A good composition is organized, clear, and follows a logical structure from start to finish.
-</pre>
+
 
 <h3> FORMAT</h3>
-<pre>
-Introduction (Hook + Topic Sentence)
 
-Paragraph 1 (Main Idea 1 + Explanation + Example)
-Paragraph 2 (Main Idea 2 + Explanation + Example)
-Paragraph 3 (Main Idea 3 + Explanation + Example)
-
-Conclusion (Summary + Final Opinion)
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -2045,19 +1827,7 @@ Conclusion (Summary + Final Opinion)
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Topic: Importance of Water
 
-Introduction: Water is essential for life on Earth.
-
-Paragraph 1: Water is needed for drinking and survival.
-
-Paragraph 2: Water is used in agriculture for growing crops.
-
-Paragraph 3: Water supports industries and daily activities.
-
-Conclusion: Therefore, water is very important for all living things.
-</pre>
 
 <h3> COMMON MISTAKES</h3>
 <ul>
@@ -2130,14 +1900,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Narrative writing organizes events into a meaningful story with a beginning, middle, and end.
-</pre>
+
 
 <h3> STRUCTURE</h3>
-<pre>
-Beginning → Middle → End
-</pre>
+
 
 <h3> DETAILED BREAKDOWN</h3>
 <ul>
@@ -2147,13 +1913,7 @@ Beginning → Middle → End
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Beginning: A boy went to the forest to collect firewood.
 
-Middle: He got lost while searching deep inside the forest.
-
-End: He followed a river and found his way back home.
-</pre>
 
 <h3> COMMON MISTAKES</h3>
 <ul>
@@ -2229,16 +1989,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Descriptive writing helps the reader “see” the picture through words.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-A busy market full of noise and color.
 
-Expanded: A crowded market filled with shouting vendors, bright stalls, and the smell of fresh food in the air.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -2320,14 +2074,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Argumentative writing is about convincing the reader using clear reasons and logic.
-</pre>
+
 
 <h3> STRUCTURE</h3>
-<pre>
-Introduction → Arguments → Conclusion
-</pre>
+
 
 <h3> DETAILED BREAKDOWN</h3>
 <ul>
@@ -2337,18 +2087,7 @@ Introduction → Arguments → Conclusion
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Topic: Should students do homework?
 
-Introduction: Students should be given homework.
-
-Arguments:
-1. It improves understanding.
-2. It builds discipline.
-3. It helps revision.
-
-Conclusion: Therefore, homework is important for learning.
-</pre>
 
 <h3> COMMON MISTAKES</h3>
 <ul>
@@ -2419,14 +2158,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-A strong paragraph builds one clear idea using explanation and examples.
-</pre>
+
 
 <h3> FORMAT</h3>
-<pre>
-Topic sentence → Explanation → Example
-</pre>
+
 
 <h3> DETAILED BREAKDOWN</h3>
 <ul>
@@ -2436,13 +2171,7 @@ Topic sentence → Explanation → Example
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-Topic sentence: Exercise is important for health.
 
-Explanation: It helps improve strength and keeps the body active.
-
-Example: For example, people who exercise regularly have more energy and fewer illnesses.
-</pre>
 
 <h3> COMMON MISTAKES</h3>
 <ul>
@@ -2520,15 +2249,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Poetry expresses deep meaning and emotion using carefully arranged words and structure.
-</pre>
+
 
 <h3> STRUCTURE</h3>
-<pre>
-Stanza → group of lines
-Line → single row of words
-</pre>
+
 
 <h3> DETAILED BREAKDOWN</h3>
 <ul>
@@ -2538,24 +2262,10 @@ Line → single row of words
 </ul>
 
 <h3> EXAMPLE</h3>
-<pre>
-The sun rises in golden light,
-Waking earth from quiet night.
 
-(2 lines = 1 stanza)
-</pre>
 
 <h3> SAMPLE POEM</h3>
-<pre>
-The morning sun climbs up the sky,
-And paints the clouds as days go by.
 
-The birds awake with joyful song,
-As gentle winds flow soft and long.
-
-The world feels fresh, alive, and bright,
-A peaceful start with warm sunlight.
-</pre>
 
 <h3> SAMPLE ANALYSIS</h3>
 <ul>
@@ -2626,29 +2336,13 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Rhyme and rhythm give poetry its sound, flow, and musical quality.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-cat / hat / mat → rhyme (same ending sound)
 
-The sun is bright,
-Shining light.
-</pre>
 
 <h3> SAMPLE POEM</h3>
-<pre>
-The stars appear in silent night,
-They sparkle softly, pure and bright.
 
-The moon above begins to gleam,
-Like silver floating in a dream.
-
-The wind it sings a gentle tune,
-Beneath the calm and glowing moon.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -2710,30 +2404,13 @@ add(
   `<h2>Tone & Mood</h2>
 
 <h3> KEY IDEA</h3>
-<pre>
-Tone is what the writer feels; mood is what the reader feels.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-Sad poem → mood: sadness in the reader
 
-Angry tone → writer expresses frustration or anger
-
-Happy story → mood: joy and excitement in the reader
-</pre>
 
 <h3> SAMPLE POEM</h3>
-<pre>
-The sky is dark, the wind is cold,
-The night feels heavy, harsh and old.
 
-I walk alone without a sound,
-No friendly voice, no hope is found.
-
-The silence speaks in tones of pain,
-As lonely thoughts return again.
-</pre>
 
 <h3> ANALYSIS OF THE POEM</h3>
 <ul>
@@ -2804,35 +2481,13 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Figurative language makes writing more vivid, expressive, and imaginative.
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-Simile: He is as strong as a lion.
 
-Metaphor: Time is a thief.
-
-Alliteration: She sells sea shells by the sea shore.
-
-Personification: The wind whispered through the trees.
-</pre>
 
 <h3> SAMPLE POEM</h3>
-<pre>
-The wind danced through the silent night,
-Like a ghost in silver light. (simile)
 
-Time is a river flowing fast, (metaphor)
-Carrying moments that cannot last.
-
-Soft seas sing songs along the shore, (personification)
-Whispering tales forevermore.
-
-Brilliant birds beat bright blue skies, (alliteration)
-As golden sunrise slowly rises.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -2904,14 +2559,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Poetry analysis is about understanding meaning through structure, language, and evidence.
-</pre>
+
 
 <h3> METHOD</h3>
-<pre>
-Point → Evidence → Explanation
-</pre>
+
 
 <h3> DETAILED BREAKDOWN</h3>
 <ul>
@@ -2921,25 +2572,10 @@ Point → Evidence → Explanation
 </ul>
 
 <h3> SAMPLE POEM</h3>
-<pre>
-The rain falls softly on the ground,
-A silent tear without a sound.
 
-The clouds above are dark and grey,
-As sunlight slowly fades away.
-
-The wind it sighs through empty trees,
-A lonely voice upon the breeze.
-</pre>
 
 <h3> EXAMPLE ANALYSIS</h3>
-<pre>
-Point: The poem shows sadness in nature.
 
-Evidence: “The rain falls softly on the ground, / A silent tear without a sound.”
-
-Explanation: The rain is compared to tears, suggesting sadness and emotional expression in nature.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3010,14 +2646,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Understanding poetry requires careful reading, interpretation, and attention to meaning.
-</pre>
+
 
 <h3> STRATEGY</h3>
-<pre>
-Read → Understand → Interpret → Answer
-</pre>
+
 
 <h3> STEP-BY-STEP BREAKDOWN</h3>
 <ul>
@@ -3028,25 +2660,10 @@ Read → Understand → Interpret → Answer
 </ul>
 
 <h3> SAMPLE POEM</h3>
-<pre>
-The night is quiet, dark and deep,
-The world has drifted fast asleep.
 
-No voices break the silent air,
-Just stillness hanging everywhere.
-
-The moonlight glows so pale and white,
-A watchful eye throughout the night.
-</pre>
 
 <h3> EXAMPLE</h3>
-<pre>
-Poem line: “The night is quiet, dark and deep.”
 
-Mood: calmness and loneliness
-
-Theme: peace and stillness of night / solitude
-</pre>
 
 <h3> ANALYSIS</h3>
 <ul>
@@ -3116,81 +2733,43 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-A theme is the deeper message behind the poem’s words and events.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-Nature → beauty of the environment and harmony with life
 
-Love → emotional connection between people
-
-Death → the reality and mystery of life’s end
-</pre>
 
 <h3> SAMPLE POEMS BY THEME</h3>
 
 <h3> Nature Theme</h3>
-<pre>
-The river flows through greenest land,
-Carved gently by nature’s hand.
 
-The trees stand tall in morning light,
-Dancing softly through the night.
-</pre>
 
 <h3> Theme: Nature → beauty, peace, and harmony of the environment</h3>
 
 <hr>
 
 <h3> Love Theme</h3>
-<pre>
-Your smile is like the morning sun,
-A warmth that melts the day begun.
 
-Your voice is calm, a gentle song,
-That makes my heart feel safe and strong.
-</pre>
 
 <h3> Theme: Love → affection, emotional connection, warmth</h3>
 
 <hr>
 
 <h3> Death Theme</h3>
-<pre>
-The candle fades into the night,
-A final blink of fading light.
 
-Silence falls where voices were,
-Only memories now occur.
-</pre>
 
 <h3> Theme: Death → endings, loss, and remembrance</h3>
 
 <hr>
 
 <h3> Friendship Theme</h3>
-<pre>
-Through storms and rain, we stand as one,
-Two paths that feel like they are one.
 
-A hand to hold when times are tough,
-A simple smile is strong enough.
-</pre>
 
 <h3> Theme: Friendship → loyalty, support, and trust</h3>
 
 <hr>
 
 <h3> Struggle Theme</h3>
-<pre>
-I walk through fire, cold and deep,
-Through broken dreams and nights of sleep.
 
-But still I rise, I will not fall,
-I hear success is worth it all.
-</pre>
 
 <h3> Theme: Struggle → resilience, perseverance, overcoming hardship</h3>
 
@@ -3256,14 +2835,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Poetry is a powerful form of expression that combines emotion, creativity, and language.
-</pre>
+
 
 <h3> EXAMPLE</h3>
-<pre>
-Poetry → emotional expression through creative and meaningful words
-</pre>
+
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3337,47 +2912,13 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-A formal letter communicates clearly and respectfully using a fixed structure.
-</pre>
+
 
 <h3> FORMAT</h3>
-<pre>
-Sender’s Address
-Date
-Receiver’s Address
-Salutation (Dear Sir/Madam)
 
-Introduction
-Body
-Conclusion
-
-Yours faithfully
-Name
-</pre>
 
 <h3> SAMPLE LETTER</h3>
-<pre>
-P.O. Box 123
-Huure, Jenhak
-23rd April 2026
 
-The Headteacher
-Green Valley School
-P.O. Box 456
-Aders,Fractals
-
-Dear Sir/Madam,
-
-I am writing to request permission to be absent from school for two days due to illness. I have been advised by a doctor to rest and recover fully.
-
-I will ensure that I catch up with all missed work once I return to school. I kindly request your approval for my absence.
-
-Thank you for your understanding.
-
-Yours faithfully,
-John larry
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3448,33 +2989,13 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-An informal letter is a friendly message written in a relaxed and personal way.
-</pre>
+
 
 <h3> FORMAT</h3>
-<pre>
-Dear Friend,
 
-Paragraphs (chat style)
-
-Yours sincerely,
-Name
-</pre>
 
 <h3> SAMPLE LETTER</h3>
-<pre>
-Dear Friend,
 
-I hope you are doing well. I just wanted to tell you about my weekend. It was really fun because I went to visit my cousin and we played football for hours.
-
-We also went to a nearby park and had snacks while talking about school and life. I wish you were there too because it would have been even more fun.
-
-Please write back when you are free and tell me how you are doing.
-
-Yours sincerely,
-Jutyer
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3544,35 +3065,13 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-A report presents facts clearly, logically, and without personal opinion.
-</pre>
+
 
 <h3> FORMAT</h3>
-<pre>
-Title
-Introduction
-Findings
-Conclusion
-Recommendations
-</pre>
+
 
 <h3> SAMPLE REPORT</h3>
-<pre>
-Title: Report on Cleanliness in School
 
-Introduction:
-This report investigates the level of cleanliness in the school compound.
-
-Findings:
-It was observed that classrooms are generally clean, but the playground has litter. Some dustbins are also not properly used.
-
-Conclusion:
-The school environment is fairly clean, but improvement is needed in waste disposal.
-
-Recommendations:
-Students should be encouraged to use dustbins properly, and more cleaning days should be organized.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3643,33 +3142,13 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-A speech is a spoken presentation meant to inform, persuade, or entertain an audience.
-</pre>
+
 
 <h3> FORMAT</h3>
-<pre>
-Ladies and gentlemen...
 
-Introduction
-Body
-Conclusion
-
-Thank you.
-</pre>
 
 <h3> SAMPLE SPEECH</h3>
-<pre>
-Ladies and gentlemen,
 
-Today I would like to talk about the importance of education. Education helps us gain knowledge, develop skills, and build a better future.
-
-In addition, education opens opportunities for better jobs and improves living standards. It also helps society grow by creating responsible citizens.
-
-In conclusion, education is the key to success and development. Let us all value and support learning.
-
-Thank you.
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3740,20 +3219,10 @@ add(
 </ul>
 
 <h3> KEY IDEA</h3>
-<pre>
-Idioms and proverbs communicate deeper meaning beyond the literal words used.
-</pre>
+
 
 <h3> EXAMPLES</h3>
-<pre>
-Idiom: break the ice → start a conversation in a social situation
 
-Idiom: hit the books → start studying seriously
-
-Proverb: no pain no gain → success requires effort and struggle
-
-Proverb: a stitch in time saves nine → solving problems early prevents bigger issues
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3821,19 +3290,9 @@ add(
 <li><b>Tone Difference</b> → formal is serious, informal is friendly</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Register is the level of formality in language depending on who you are speaking or writing to.
-</pre>
+
 <h3> EXAMPLE</h3>
-<pre>
-Formal: I request your assistance.
 
-Informal: Help me please.
-
-Formal: I am unable to attend the meeting.
-
-Informal: I can’t come to the meeting.
-</pre>
 <h3> BREAKDOWN</h3>
 <ul>
 <li><b>Formal</b> → polite, complete sentences, no slang</li>
@@ -3900,35 +3359,11 @@ add(
 <li><b>Professional Structure</b> → follows a fixed format for clarity</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-An email is a digital message used for fast and structured communication.
-</pre>
+
 <h3> FORMAT</h3>
-<pre>
-To: ...
-Subject: ...
 
-Message body
-
-Regards,
-Name
-</pre>
 <h3> SAMPLE EMAIL</h3>
-<pre>
-To: teacher@example.com
-Subject: Request for Extension of Assignment Deadline
 
-Dear Sir/Madam,
-
-I am writing to kindly request an extension for submitting my assignment due to illness. I have been advised to rest and recover before resuming my studies.
-
-I would appreciate it if I could be given a few extra days to complete my work.
-
-Thank you for your understanding.
-
-Regards,
-Jutyer
-</pre>
 
 <h3> BREAKDOWN</h3>
 <ul>
@@ -3997,14 +3432,9 @@ add(
 <li><b>Improves Clarity</b> → reduces misunderstandings in communication</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Good writing skills help people communicate clearly, succeed academically, and act professionally.
-</pre>
+
 <h3> EXAMPLE</h3>
-<pre>
-Good language → clear message understood easily
-Bad language → confusing message and misunderstanding
-</pre>
+
 <h3> BREAKDOWN</h3>
 <ul>
 <li><b>Good language</b> → correct grammar, clear vocabulary, and proper structure</li>

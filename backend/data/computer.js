@@ -164,14 +164,7 @@ Computers are classified based on size, power, and purpose. Each type is designe
 </ul>
 </ul>
 <h3> COMPARISON TABLE</h3>
-<pre>
-Type           | Power     | Users      | Example Use
-------------------------------------------------------
-Supercomputer  | Very High | Few        | Weather prediction
-Mainframe      | High      | Many       | Banking systems
-Microcomputer  | Moderate  | One        | Personal use
-Embedded       | Low       | Single use | Appliances
-</pre>
+
 <h3> EXAM FOCUS</h3>
 <ul>
 <li>Differences between supercomputer and mainframe</li>
@@ -246,15 +239,7 @@ Each generation is defined by major technological advancements.
 <li>Focus on smart systems</li>
 </ul>
 <h3> SUMMARY TABLE</h3>
-<pre>
-Generation | Technology        | Key Feature
-------------------------------------------------
-1st        | Vacuum tubes      | Large, hot
-2nd        | Transistors       | Smaller, faster
-3rd        | ICs               | Reliable
-4th        | Microprocessors   | Personal computers
-5th        | AI                | Intelligent systems
-</pre>
+
 <h3> EXAM FOCUS</h3>
 <ul>
 <li>Key technology in each generation</li>
@@ -319,43 +304,16 @@ add(
   <li><b>1 = ON</b> (electric signal present)</li>
   <li><b>0 = OFF</b> (no signal)</li>
 </ul>
-<pre>
-Computers use binary because they only understand two states:
-ON  → 1
-OFF → 0
-</pre>
+
 <h3> Number System Conversions</h3>
 <h4> Decimal to Binary</h4>
-<pre>
-Example: 10₁₀ → Binary
-10 ÷ 2 = 5 remainder 0
-5 ÷ 2  = 2 remainder 1
-2 ÷ 2  = 1 remainder 0
-1 ÷ 2  = 0 remainder 1
-Read from bottom to top:
-10₁₀ = 1010₂
-</pre>
+
 <h4> Binary to Decimal</h4>
-<pre>
-Example: 1010₂ → Decimal
-(1×2³) + (0×2²) + (1×2¹) + (0×2⁰)
-= 8 + 0 + 2 + 0
-= 10₁₀
-</pre>
+
 <h4> Binary to Hexadecimal</h4>
-<pre>
-Example: 1010₂ → Hexadecimal
-Group into 4 bits:
-1010 = A
-So, 1010₂ = A₁₆
-</pre>
+
 <h4> Hexadecimal to Binary</h4>
-<pre>
-Example: A₁₆ → Binary
-A = 10 in decimal
-10 = 1010₂
-So, A₁₆ = 1010₂
-</pre>
+
 <h3> Exam Focus Areas</h3>
 <ul>
   <li>Convert decimal to binary</li>
@@ -431,14 +389,7 @@ add(
   Number of Bits = Number of Bytes × 8
 </div>
 <h3> 3. Examples of Bit Calculation</h3>
-<pre>
-Example 1:
-5 Bytes → 5 × 8 = 40 Bits
-Example 2:
-10 Bytes → 10 × 8 = 80 Bits
-Example 3:
-2 KB → 2 × 1024 Bytes × 8 = 16384 Bits
-</pre>
+
 <h3> 4. Character Encoding</h3>
 <h4> ASCII</h4>
 <ul>
@@ -452,13 +403,7 @@ Example 3:
   Each character is stored using binary inside the computer
 </div>
 <h3> 5. Relationship Between Units</h3>
-<pre>
-1 Byte  = 8 Bits
-1 KB     = 1024 Bytes
-1 MB     = 1024 KB
-1 GB     = 1024 MB
-1 TB     = 1024 GB
-</pre>
+
 <h3> 6. Why Binary is Used</h3>
 <ul>
   <li>Computers use ON (1) and OFF (0) signals</li>
@@ -634,9 +579,7 @@ It runs continuously while the computer is powered on, allowing software to func
 </ul>
 
 <h3> INSTRUCTION CYCLE FLOW</h3>
-<pre>
-Fetch → Decode → Execute → Fetch → Decode → Execute (repeats continuously)
-</pre>
+
 
 <h3> DETAILED PROCESS INSIDE CPU</h3>
 <ul>
@@ -713,11 +656,7 @@ It forms the basic structure of most modern computers and follows a sequential p
   <li><b>System Bus:</b> Transfers data and instructions between components</li>
 </ul>
 <h3> VON NEUMANN STRUCTURE</h3>
-<pre>
-Input Devices → Memory ↔ CPU → Output Devices
-                     ↑
-                 System Bus
-</pre>
+
 
 <h3> TYPES OF BUSES AND THEIR PURPOSES</h3>
 <h4>1. Data Bus</h4>
@@ -758,11 +697,7 @@ Input Devices → Memory ↔ CPU → Output Devices
   <li>CPU must wait to access memory</li>
   <li>Slows down processing speed</li>
 </ul>
-<pre>
-Problem:
-CPU ↔ SAME BUS ↔ MEMORY (data + instructions)
-This creates a bottleneck (traffic jam in data flow)
-</pre>
+
 <h3> ADVANTAGES</h3>
 <ul>
   <li>Simple and easy to design</li>
@@ -1435,15 +1370,9 @@ add(
   "Loops & conditionals",
   `<h2>Loops & Conditionals</h2>
 <p><strong>Conditionals:</strong> decision making</p>
-<pre>
-if x > 5:
-  print("Big")
-</pre>
+
 <p><strong>Loops:</strong> repetition</p>
-<pre>
-for i in range(5):
-  print(i)
-</pre>
+
 <div class="example-box">
 Loop prints numbers 0–4
 </div>
@@ -1453,71 +1382,27 @@ Loop prints numbers 0–4
 <p>Conditionals allow a program to execute specific blocks of code only if a certain condition is met.</p>
 <h3>A. The if Statement</h3>
 <p>The most basic decision-making statement. If the condition is true, the code runs.</p>
-<pre>
-age = 20
-if age >= 18:
-    print("You are an adult.")
-</pre>
+
 <h3>B. The if-else Statement</h3>
 <p>Provides an alternative path if the condition is false.</p>
-<pre>
-score = 45
-if score >= 50:
-    print("Pass")
-else:
-    print("Fail")
-</pre>
+
 <h3>C. The if-elif-else Ladder</h3>
 <p>Used when there are more than two possible outcomes.</p>
-<pre>
-grade = 85
-if grade >= 90:
-    print("A")
-elif grade >= 80:
-    print("B")
-elif grade >= 70:
-    print("C")
-else:
-    print("D or F")
-</pre>
+
 <h3>D. Nested if Statements</h3>
 <p>An if statement inside another if for complex conditions.</p>
-<pre>
-has_ticket = True
-has_id = False
 
-if has_ticket:
-    if has_id:
-        print("Entry allowed.")
-    else:
-        print("Please show your ID.")
-else:
-    print("No ticket, no entry.")
-</pre>
 <h2>2. Loops (Iteration)</h2>
 <p>Loops repeat a block of code multiple times.</p>
 <h3>A. The for Loop</h3>
 <p>Used when you know how many times to repeat.</p>
-<pre>
-for i in range(5):
-    print("Loop number:", i)
-</pre>
+
 <h3>B. The while Loop</h3>
 <p>Repeats while a condition is true.</p>
-<pre>
-count = 5
-while count > 0:
-    print(count)
-    count = count - 1
-print("Blast off!")
-</pre>
+
 <h3>C. Nested Loops</h3>
 <p>A loop inside another loop.</p>
-<pre>
-for row in range(3):
-    for col in range(3):
-        print("Row", row, "Col", col)
-</pre>
+
 <h2>3. Key Loop Controls</h2>
 <ul>
 <li><strong>break:</strong> Stops the loop immediately</li>
@@ -1586,10 +1471,7 @@ add(
   "Functions & methods",
   `<h2>Functions & Methods</h2>
 <p>A function is reusable code.</p>
-<pre>
-def add(a,b):
-  return a+b
-</pre>
+
 <div class="example-box">
 add(2,3) = 5
 </div>
@@ -1605,14 +1487,7 @@ add(2,3) = 5
 <li><strong>Return Statement:</strong> The "output" the function sends back to the main program.</li>
 </ul>
 <h3>Example in Python:</h3>
-<pre>
-# Defining the function
-def greet_user(name): 
-    return "Hello, " + name
-# Calling the function
-message = greet_user("Alex")
-print(message)
-</pre>
+
 <h2>2. What is a Method?</h2>
 <p>A method is essentially a function that "belongs" to an object or a class. While functions can be called by themselves, a method must be called on a specific object.</p>
 <h3>The Difference:</h3>
@@ -1621,10 +1496,7 @@ print(message)
 <li><strong>Method:</strong> my_dog.bark() (Dependent on the "dog" object)</li>
 </ul>
 <h3>Example of a String Method:</h3>
-<pre>
-text = "hello world"
-print(text.upper())
-</pre>
+
 <h2>3. Why Use Functions and Methods?</h2>
 <ul>
 <li><strong>Reusability (DRY):</strong> Write code once and reuse it.</li>
@@ -1639,16 +1511,7 @@ print(text.upper())
 <li><strong>Global Scope:</strong> Variable outside function.</li>
 </ul>
 <h3>Example:</h3>
-<pre>
-x = 10 # Global variable
-def my_function():
-    y = 5 # Local variable
-    print(x)
-    print(y)
 
-my_function()
-print(y) # ERROR
-</pre>
 <h2>5. Built-in vs User-Defined Functions</h2>
 <ul>
 <li><strong>Built-in:</strong> Provided by language (print(), len())</li>
@@ -1740,11 +1603,7 @@ add(
 <li>Second element → index 1</li>
 <li>Last element → index (n-1)</li>
 </ul>
-<pre>
-prices = [10.50, 20.00, 5.75]
-prices[0] = 10.50
-prices[2] = 5.75
-</pre>
+
 <h3>3. Arrays vs Lists</h3>
 <table border="1">
 <tr><th>Feature</th><th>Array</th><th>List</th></tr>
@@ -1762,32 +1621,11 @@ prices[2] = 5.75
 </ul>
 <h3>5. Code Examples</h3>
 <h4>Python (Lists)</h4>
-<pre>
-fruits = ["Apple", "Banana", "Cherry"]
-fruits.append("Orange")
-fruits[1] = "Blueberry"
-for x in fruits:
-    print(x)
-</pre>
+
 <h4>Java (Arrays)</h4>
-<pre>
-int[] numbers = new int[5];
 
-numbers[0] = 10;
-numbers[1] = 20;
-
-System.out.println(numbers[0]);
-</pre>
 <h3>6. Two-Dimensional (2D) Arrays</h3>
-<pre>
-grid = [
-  [1,2,3],
-  [4,5,6],
-  [7,8,9]
-]
 
-print(grid[1][1])
-</pre>
 <h3>7. Why Use Arrays/Lists?</h3>
 <ul>
 <li><b>Efficiency:</b> Fast access using index</li>
@@ -1855,38 +1693,17 @@ add(
 <p>
 Errors caused by breaking programming language rules. The program will not run.
 </p>
-<pre>
-if age >= 18
-    print("Allowed")  # Missing colon causes error
 
-# Fix
-if age >= 18:
-    print("Allowed")
-</pre>
 <h4>2. Runtime Errors</h4>
 <p>
 Errors that occur while the program is running (often causes crash).
 </p>
-<pre>
-x = 10
-y = 0
-print(x / y)  # Division by zero error
 
-# Fix
-if y != 0:
-    print(x / y)
-</pre>
 <h4>3. Logical Errors</h4>
 <p>
 The program runs but produces incorrect results.
 </p>
-<pre>
-# Wrong
-average = num1 + num2 / 2
 
-# Correct
-average = (num1 + num2) / 2
-</pre>
 <h3> COMMON ERROR TYPES</h3>
 <table border="1">
 <tr><th>Error</th><th>Cause</th><th>Fix</th></tr>
@@ -1902,9 +1719,7 @@ average = (num1 + num2) / 2
 <li><b>Rubber duck debugging</b>: Explain code to find logic errors</li>
 <li><b>Code isolation</b>: Comment out sections to locate errors</li>
 </ul>
-<pre>
-print("DEBUG:", x)
-</pre>
+
 <h3> DEBUGGING CHECKLIST</h3>
 <ul>
 <li>Read error messages carefully</li>
@@ -1986,17 +1801,7 @@ Methods → drive(), brake()
 <li><b>Abstraction</b>: Hiding complex implementation and showing only essentials</li>
 </ul>
 <h3> BASIC STRUCTURE (PYTHON)</h3>
-<pre>
-class Car:
-    def __init__(self, brand):
-        self.brand = brand
 
-    def drive(self):
-        print(self.brand + " is moving")
-
-my_car = Car("Toyota")
-my_car.drive()
-</pre>
 <h3> KEY CONCEPTS</h3>
 <ul>
 <li><b>Class</b>: Blueprint for objects</li>
@@ -2063,15 +1868,7 @@ In Object-Oriented Programming (OOP), a <b>class</b> is a blueprint (template), 
 <li><b>Object</b>: A real entity created from a class with actual values</li>
 </ul>
 <h3> PYTHON EXAMPLE</h3>
-<pre>
-class Student:
-    def __init__(self, name):
-        self.name = name
 
-student1 = Student("Alex")
-
-print(student1.name)
-</pre>
 <h3> COMPONENTS</h3>
 <ul>
 <li><b>Attributes</b>: Variables inside a class (e.g., name)</li>
@@ -2135,19 +1932,7 @@ add(
 It represents a <b>parent → child relationship</b> and allows code reuse and extension.
 </p>
 <h3> PYTHON EXAMPLE</h3>
-<pre>
-class Animal:
-    def speak(self):
-        print("Animal sound")
 
-class Dog(Animal):   # Dog inherits from Animal
-    def bark(self):
-        print("Woof!")
-
-d = Dog()
-d.speak()  # inherited method
-d.bark()   # own method
-</pre>
 <h3> TYPES OF INHERITANCE</h3>
 <ul>
 <li><b>Single Inheritance</b>: One parent → one child</li>
@@ -2219,17 +2004,7 @@ add(
 Data is hidden from outside access and can only be modified through controlled methods.
 </p>
 <h3> PYTHON EXAMPLE</h3>
-<pre>
-class Bank:
-    def __init__(self):
-        self.__balance = 0   # Private variable
 
-    def deposit(self, amount):
-        self.__balance += amount
-
-    def get_balance(self):
-        return self.__balance
-</pre>
 <h3> ACCESS MODIFIERS (IMPORTANT)</h3>
 <ul>
 <li><b>Public</b>: Accessible anywhere</li>
@@ -2300,20 +2075,9 @@ add(
 <li><b>Recursive Case</b>: The part where the function calls itself</li>
 </ul>
 <h3> HOW IT WORKS</h3>
-<pre>
-factorial(3)
-= 3 × factorial(2)
-= 3 × 2 × factorial(1)
-= 3 × 2 × 1
-= 6
-</pre>
+
 <h3> PYTHON EXAMPLE (FACTORIAL)</h3>
-<pre>
-def factorial(n):
-    if n == 1:   # Base case
-        return 1
-    return n * factorial(n-1)  # Recursive call
-</pre>
+
 <h3> IMPORTANT RULES</h3>
 <ul>
 <li>Must have a base case (to avoid infinite recursion)</li>
@@ -2324,13 +2088,7 @@ def factorial(n):
 ---
 
 <h3> RECURSION VS ITERATION</h3>
-<pre>
-Recursion        | Iteration
------------------------------
-Function calls   | Loops (for/while)
-Uses call stack  | Uses variables
-Cleaner logic    | More memory efficient
-</pre>
+
 
 ---
 
@@ -2408,11 +2166,7 @@ The last element added is the first one to be removed.
 ---
 
 <h3> VISUAL FLOW</h3>
-<pre>
-Push → [1, 2, 3] → Pop → [1, 2]
-            ↑
-          Top
-</pre>
+
 
 ---
 
@@ -2426,19 +2180,7 @@ Push → [1, 2, 3] → Pop → [1, 2]
 ---
 
 <h3> PYTHON EXAMPLE</h3>
-<pre>
-stack = []
 
-# Push
-stack.append(1)
-stack.append(2)
-
-# Pop
-stack.pop()
-
-# Peek
-print(stack[-1])
-</pre>
 
 ---
 
@@ -2517,9 +2259,7 @@ The first element added is the first one to be removed.
 ---
 
 <h3> VISUAL FLOW</h3>
-<pre>
-Enqueue → [1, 2, 3] → Dequeue → [2, 3]
-</pre>
+
 
 ---
 
@@ -2534,21 +2274,7 @@ Enqueue → [1, 2, 3] → Dequeue → [2, 3]
 ---
 
 <h3> PYTHON EXAMPLE</h3>
-<pre>
-from collections import deque
 
-queue = deque()
-
-# Enqueue
-queue.append(1)
-queue.append(2)
-
-# Dequeue
-queue.popleft()
-
-# Peek
-print(queue[0])
-</pre>
 
 ---
 
@@ -2625,9 +2351,7 @@ They guide how teams organize work, manage time, and deliver reliable software.
 </ul>
 
 <h4> FLOW</h4>
-<pre>
-Requirements → Design → Implementation → Testing → Deployment → Maintenance
-</pre>
+
 
 <h4> ADVANTAGES</h4>
 <ul>
@@ -2651,9 +2375,7 @@ Requirements → Design → Implementation → Testing → Deployment → Mainte
 </ul>
 
 <h4> FLOW</h4>
-<pre>
-Plan → Develop → Test → Review → Improve (repeat)
-</pre>
+
 
 <h4> ADVANTAGES</h4>
 <ul>
@@ -2678,9 +2400,7 @@ Plan → Develop → Test → Review → Improve (repeat)
 </ul>
 
 <h4> FLOW</h4>
-<pre>
-Plan → Risk Analysis → Develop → Test → Repeat
-</pre>
+
 
 <h4> ADVANTAGES</h4>
 <ul>
@@ -2697,14 +2417,7 @@ Plan → Risk Analysis → Develop → Test → Repeat
 ---
 
 <h3> COMPARISON</h3>
-<pre>
-Waterfall        | Agile           | Spiral
-----------------------------------------------
-Linear           | Iterative       | Iterative + Risk
-Rigid            | Flexible        | Flexible
-Late testing     | Continuous      | Continuous
-Low risk focus   | Moderate        | High risk focus
-</pre>
+
 
 ---
 
@@ -2808,9 +2521,7 @@ Without version control, managing large projects and teamwork becomes difficult 
 </ul>
 
 <h4> BASIC GIT FLOW</h4>
-<pre>
-Write Code → Stage (git add) → Commit (git commit) → Repository
-</pre>
+
 
 ---
 
@@ -2968,9 +2679,7 @@ Testing is done in stages, starting from small components to the entire system, 
 ---
 
 <h3> TESTING FLOW</h3>
-<pre>
-Unit → Integration → System → UAT
-</pre>
+
 
 ---
 
@@ -4165,18 +3874,7 @@ add(
   </ul>
 
   <h3> Example</h3>
-  <pre>
-&lt;html&gt;
-  &lt;head&gt;
-    &lt;title&gt;My First Page&lt;/title&gt;
-  &lt;/head&gt;
-
-  &lt;body&gt;
-    &lt;h1&gt;Hello World&lt;/h1&gt;
-    &lt;p&gt;This is my first webpage&lt;/p&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-  </pre>
+  
 
   <h3> Real-world Application</h3>
   <p>
@@ -5239,10 +4937,7 @@ add(
   </div>
 
   <h3> 3. Examples of AI in Action</h3>
-  <pre>
-Phone Face Unlock → AI recognizes facial patterns
-YouTube/Netflix → AI recommends videos based on behavior
-  </pre>
+  
 
   <h3> 4. Real-world Applications</h3>
   <ul>
@@ -5358,9 +5053,7 @@ add(
   </div>
 
   <h3> 2. Example of Machine Learning</h3>
-  <pre>
-Email System → Learns spam patterns → Automatically filters unwanted emails
-  </pre>
+  
 
   <h3> 3. Real-world Applications</h3>
   <ul>
@@ -5474,11 +5167,7 @@ add(
   </div>
 
   <h3> 2. Example of Cloud Computing</h3>
-  <pre>
-Google Drive → Stores files online
-Dropbox → Allows file access from anywhere
-OneDrive → Cloud-based storage system
-  </pre>
+  
 
   <h3> 3. Real-world Applications</h3>
   <ul>
@@ -5577,10 +5266,7 @@ add(
   </ul>
 
   <h3> 2. Example of IoT System</h3>
-  <pre>
-Smart Home System:
-Phone → Controls lights → Adjusts temperature → Manages security system
-  </pre>
+  
 
   <h3> 3. IoT Devices</h3>
   <div class="example-box">
@@ -5678,9 +5364,7 @@ add(
     Blockchain is a secure system where data is stored in linked blocks across a distributed network, making it nearly impossible to alter.
   </p>
   <h3> 1. How Blockchain Works</h3>
-  <pre>
-Transaction → Verified by network → Added to a block → Block added to chain → Stored permanently
-  </pre>
+  
 
   <h3> 2. Key Features of Blockchain</h3>
   <ul>
@@ -5792,22 +5476,12 @@ add(
   <h4>INNER JOIN</h4>
   <p>Returns only records that match in both tables.</p>
 
-  <pre>
-SELECT Students.Name, Courses.CourseName
-FROM Students
-INNER JOIN Enrollments ON Students.ID = Enrollments.StudentID
-INNER JOIN Courses ON Enrollments.CourseID = Courses.CourseID;
-  </pre>
+  
 
   <h4>LEFT JOIN</h4>
   <p>Returns all records from the left table and matching records from the right table.</p>
 
-  <pre>
-SELECT Students.Name, Courses.CourseName
-FROM Students
-LEFT JOIN Enrollments ON Students.ID = Enrollments.StudentID
-LEFT JOIN Courses ON Enrollments.CourseID = Courses.CourseID;
-  </pre>
+  
 
   <h4>RIGHT JOIN</h4>
   <p>Returns all records from the right table and matching records from the left table.</p>
@@ -5818,23 +5492,10 @@ LEFT JOIN Courses ON Enrollments.CourseID = Courses.CourseID;
   </p>
 
   <h4> Before Normalization</h4>
-  <pre>
-Student | Course | Instructor
-Alex    | Math   | Mr. John
-Alex    | Science| Mr. Mike
-  </pre>
+  
 
   <h4> After Normalization</h4>
-  <pre>
-Students Table
-ID | Name
-
-Courses Table
-CourseID | CourseName
-
-Enrollments Table
-StudentID | CourseID
-  </pre>
+  
 
   <p>
     This removes duplication and improves efficiency.
@@ -5845,9 +5506,7 @@ StudentID | CourseID
     An index is a database structure that improves the speed of data retrieval operations.
   </p>
 
-  <pre>
-CREATE INDEX idx_name ON Students(Name);
-  </pre>
+  
 
   <p>
     Without an index, the database scans every record. With an index, it quickly locates data.
@@ -6048,9 +5707,7 @@ add(
     The SELECT statement is used to retrieve data from a database table.
   </p>
 
-  <pre>
-SELECT * FROM students;
-  </pre>
+  
 
   <p>
     This command retrieves all records from the "students" table.
@@ -6061,9 +5718,7 @@ SELECT * FROM students;
     The WHERE clause is used to filter records based on conditions.
   </p>
 
-  <pre>
-SELECT Name FROM students WHERE ID = 101;
-  </pre>
+  
 
   <p>
     This retrieves only the name of the student with ID 101.
@@ -6085,16 +5740,7 @@ SELECT Name FROM students WHERE ID = 101;
   </ul>
 
   <h3> 5. Example Queries</h3>
-  <pre>
--- Select specific columns
-SELECT Name, Age FROM students;
-
--- Filter records
-SELECT * FROM students WHERE Age > 18;
-
--- Insert data
-INSERT INTO students (Name, Age) VALUES ('John', 20);
-  </pre>
+  
 
   <h3> 6. Importance of SQL</h3>
   <ul>
@@ -6173,21 +5819,13 @@ add(
   </ul>
   <h3> 2. CRUD and SQL Mapping</h3>
   <h4>Create (INSERT)</h4>
-  <pre>
-INSERT INTO Students (ID, Name) VALUES (101, 'Alex');
-  </pre>
+  
   <h4>Read (SELECT)</h4>
-  <pre>
-SELECT Name FROM Students WHERE ID = 101;
-  </pre>
+  
   <h4>Update</h4>
-  <pre>
-UPDATE Students SET Name = 'Alexander' WHERE ID = 101;
-  </pre>
+  
   <h4>Delete</h4>
-  <pre>
-DELETE FROM Students WHERE ID = 101;
-  </pre>
+  
   <h3> 3. Database Integrity Rules</h3>
   <ul>
     <li><b>Data Type Validation:</b> Ensures correct data formats are used</li>
@@ -6291,55 +5929,20 @@ add(
   <p>
     A primary key is a unique identifier for each record in a table.
   </p>
-  <pre>
-Students Table
-ID | Name
-101 | Alex
-102 | Jane
-  </pre>
+  
 
   <h3> 4. Foreign Key</h3>
   <p>
     A foreign key is a field in one table that refers to the primary key in another table.
   </p>
 
-  <pre>
-Enrollments Table
-StudentID | CourseID
-101       | 501
-  </pre>
+  
 
   <h3> 5. Example Database Structure</h3>
-  <pre>
-Students
-ID | Name
-
-Courses
-CourseID | CourseName
-
-Enrollments
-StudentID | CourseID
-  </pre>
+  
 
   <h3> 6. SQL Example (Relationships)</h3>
-  <pre>
-CREATE TABLE Students (
-  ID INT PRIMARY KEY,
-  Name VARCHAR(50)
-);
-
-CREATE TABLE Courses (
-  CourseID INT PRIMARY KEY,
-  CourseName VARCHAR(50)
-);
-
-CREATE TABLE Enrollments (
-  StudentID INT,
-  CourseID INT,
-  FOREIGN KEY (StudentID) REFERENCES Students(ID),
-  FOREIGN KEY (CourseID) REFERENCES Courses(CourseID)
-);
-  </pre>
+  
 
   <h3> 7. Referential Integrity</h3>
   <ul>
@@ -6460,12 +6063,7 @@ add(
 
   <h3> 4. SQL Transaction Example</h3>
 
-  <pre>
-BEGIN;
-UPDATE accounts SET balance = balance - 100 WHERE id = 1;
-UPDATE accounts SET balance = balance + 100 WHERE id = 2;
-COMMIT;
-  </pre>
+  
   <p>
     If an error occurs before COMMIT, the system can perform a ROLLBACK.
   </p>
@@ -6558,13 +6156,7 @@ add(
     <li><b>Document:</b> Individual record stored in JSON format</li>
   </ul>
   <h3> 4. Example MongoDB Document</h3>
-  <pre>
-{
-  "name": "Alex",
-  "age": 20,
-  "course": "Computer Science"
-}
-  </pre>
+  
   <h3> 5. SQL vs NoSQL Comparison</h3>
   <table>
     <tr>
@@ -7121,12 +6713,7 @@ add(
     Each octet is made up of 8 binary digits (bits).
   </p>
 
-  <pre>
-192 → 11000000
-168 → 10101000
-1   → 00000001
-1   → 00000001
-  </pre>
+  
 
   <h3> Types of IP Addresses</h3>
   <ul>
@@ -7545,12 +7132,7 @@ add(
   <li>Update or reinstall network drivers</li>
 </ol>
 <h3> Troubleshooting Tools</h3>
-<pre>
- Ping        → Tests if a device is reachable on a network
- Traceroute  → Shows the path data takes to reach a destination
- IPConfig     → Displays IP address and network configuration
- DNS Lookup   → Checks domain name resolution
-</pre>
+
 <h3> Advanced Troubleshooting Techniques</h3>
 <ul>
   <li>Checking bandwidth usage to detect congestion</li>
@@ -7634,20 +7216,9 @@ add(
   using agreed rules (protocols) and communication technologies.
 </p>
 <h3> Key Components of Data Communication</h3>
-<pre>
- Sender          → Device that sends data
- Receiver        → Device that receives data
- Message         → The data being transmitted (text, images, video, etc.)
- Transmission Medium → Path used to carry data (cables or wireless signals)
- Protocol        → Rules that control data communication
-</pre>
+
 <h3> Key Concepts</h3>
-<pre>
- Bandwidth   → Amount of data transmitted per second (speed of connection)
- Protocols   → Rules that ensure proper communication between devices (e.g., TCP/IP, HTTP)
- Modem       → Converts digital signals for transmission over communication lines
- Router      → Directs data between different networks
-</pre>
+
 <h3> Explanation of Concepts</h3>
 <ul>
   <li><b>Bandwidth:</b> Determines how much data can be transferred in a given time (higher bandwidth = faster communication)</li>
@@ -7742,24 +7313,9 @@ add(
   while preventing, detecting, and responding to cyber threats.
 </p>
 <h3> Types of Network Security Threats</h3>
-<pre>
- Malware       → Harmful software (viruses, worms, ransomware)
- Phishing      → Fake messages that trick users into revealing information
-‍ Hacking       → Unauthorized access to systems or data
- Eavesdropping → Interception of network data during transmission
- Sniffing      → Capturing and monitoring network data packets secretly
- Spoofing      → Pretending to be a trusted device or user to gain access
- Denial of Service (DoS) → Overloading a system to make it unavailable
-</pre>
+
 <h3> Methods of Network Security</h3>
-<pre>
- Firewall        → Blocks unauthorized access to a network
- Encryption      → Converts data into unreadable code
- Authentication  → Verifies user identity (passwords, biometrics, 2FA)
- Antivirus       → Detects and removes malicious software
- Access Control  → Restricts user permissions and privileges
- Monitoring      → Tracks network activity for suspicious behavior
-</pre>
+
 <h3> Explanation of Key Methods</h3>
 <ul>
   <li><b>Firewall:</b> Filters incoming and outgoing network traffic to block threats</li>
@@ -7848,16 +7404,7 @@ add(
   controlling how data is sent, received, and directed across a network efficiently and securely.
 </p>
 <h3> Types of Networking Hardware</h3>
-<pre>
- NIC (Network Interface Card) → Connects a computer to a network
- Hub                         → Sends data to all connected devices
- Switch                      → Sends data only to the correct device
- Router                      → Connects different networks and provides internet access
- Bridge                      → Connects two similar networks and filters traffic
- Brouter                     → Combines the functions of a bridge and a router
- Access Point               → Allows wireless devices to connect to a network
- Modem                       → Converts signals for internet communication
-</pre>
+
 <h3> Functions of Networking Devices</h3>
 <ul>
   <li><b>NIC:</b> Allows a computer to connect to a network and communicate with other devices</li>
@@ -7947,12 +7494,7 @@ add(
   with the ability to edit, correct, and improve content easily without rewriting everything.
 </p>
 <h3> Examples of Word Processing Software</h3>
-<pre>
- Microsoft Word        → Most widely used word processor
- Google Docs          → Online collaborative document editor
- LibreOffice Writer   → Free offline word processing software
- WPS Writer           → Lightweight and easy-to-use word processor
-</pre>
+
 <h3> Key Features of Word Processing</h3>
 <ul>
   <li>Typing, editing, and deleting text</li>
@@ -7965,27 +7507,7 @@ add(
   <li>Printing documents professionally</li>
 </ul>
 <h3> Keyboard Shortcuts in Word Processing</h3>
-<pre>
-Ctrl + C   → Copy selected text
-Ctrl + V   → Paste copied text
-Ctrl + X   → Cut selected text
-Ctrl + Z   → Undo last action
-Ctrl + Y   → Redo last action
-Ctrl + B   → Make text Bold
-Ctrl + I   → Make text Italic
-Ctrl + U   → Underline text
-Ctrl + A   → Select all text in the document
-Ctrl + S   → Save the document
-Ctrl + P   → Print document
-Ctrl + F   → Find a word or phrase in the document
-Ctrl + H   → Find and replace text
-Ctrl + N   → Create a new document
-Ctrl + O   → Open an existing document
-Ctrl + L   → Align text to the left
-Ctrl + E   → Center align text
-Ctrl + R   → Align text to the right
-Ctrl + J   → Justify text (align both sides)
-</pre>
+
 <h3> Advanced Features</h3>
 <ul>
   <li>Track changes for editing review</li>
@@ -8081,27 +7603,9 @@ add(
   and calculations are performed automatically using formulas.
 </p>
 <h3> Examples of Spreadsheet Software</h3>
-<pre>
- Microsoft Excel   → Most popular spreadsheet program
- Google Sheets     → Online spreadsheet application
- LibreOffice Calc  → Free spreadsheet software
- Apple Numbers     → Spreadsheet for Apple devices
-</pre>
-<h3> Structure of a Spreadsheet</h3>
-<pre>
-        A        B        C
-     ┌────────┬────────┬────────┐
-1    │ Name   │ Marks  │ Grade  │
-     ├────────┼────────┼────────┤
-2    │ John   │ 85     │ A      │
-     ├────────┼────────┼────────┤
-3    │ Mary   │ 72     │ B      │
-     └────────┴────────┴────────┘
 
-Rows    → Horizontal lines (1,2,3...)
-Columns → Vertical lines (A,B,C...)
-Cells   → Intersection of row and column (A1, B2...)
-</pre>
+<h3> Structure of a Spreadsheet</h3>
+
 <h3> Explanation of Spreadsheet Parts</h3>
 <ul>
   <li><b>Rows:</b> Horizontal sections identified by numbers</li>
@@ -8112,12 +7616,7 @@ Cells   → Intersection of row and column (A1, B2...)
   <li><b>Worksheet:</b> One page inside a spreadsheet file</li>
 </ul>
 <h3> Data Types in Spreadsheets</h3>
-<pre>
-Text     → Names or words
-Numbers  → Values used in calculations
-Dates    → Calendar dates
-Formulas → Instructions for calculations
-</pre>
+
 <h3> Key Features</h3>
 <ul>
   <li>Organizing data into tables</li>
@@ -8128,32 +7627,9 @@ Formulas → Instructions for calculations
   <li>Data analysis and reporting tools</li>
 </ul>
 <h3> Important Formulas</h3>
-<pre>
-=SUM(A1:A10)         → Adds values in a range
-=AVERAGE(A1:A10)     → Calculates the mean
-=MAX(A1:A10)         → Finds highest value
-=MIN(A1:A10)         → Finds lowest value
-=COUNT(A1:A10)       → Counts numeric entries
-=COUNTA(A1:A10)      → Counts all non-empty cells
-=COUNTBLANK(A1:A10)  → Counts empty cells
-=IF(A1>50,"Pass","Fail") → Logical decision test
-=IFS(A1>80,"A",A1>60,"B",A1>40,"C") → Multiple conditions
-=SUMIF(A1:A10,">50") → Adds values greater than 50
-=COUNTIF(A1:A10,">50") → Counts values greater than 50
-=AVERAGEIF(A1:A10,">50") → Average of values above condition
-</pre>
+
 <h3> Formula Example</h3>
-<pre>
-A        B
-----------------
-1  Math      80
-2  English   70
-3  Science   90
-Formula:
-=SUM(B1:B3)
-Result:
-240
-</pre>
+
 <h3> Uses of Spreadsheets</h3>
 <ul>
   <li>Keeping school marks and records</li>
@@ -8411,12 +7887,7 @@ add(
   including text, images, documents, videos, and links.
 </p>
 <h3> Examples of Email Services</h3>
-<pre>
- Gmail       → Google email service
- Outlook     → Microsoft email service
- Yahoo Mail  → Yahoo communication service
- ProtonMail  → Secure encrypted email service
-</pre>
+
 <h3> Features of Email</h3>
 <ul>
   <li>Send and receive messages instantly</li>
@@ -8427,15 +7898,7 @@ add(
   <li>Access emails from phones, tablets, and computers</li>
 </ul>
 <h3> Structure of an Email Address</h3>
-<pre>
-student@gmail.com
-│       │      │
-│       │      └── Domain Extension (.com)
-│       └───────── Domain Name (gmail)
-└──────────────── Username (student)
 
-@  → At symbol used to separate the username and domain
-</pre>
 <h3> Explanation of Parts</h3>
 <ul>
   <li><b>Username:</b> The unique name of the email owner</li>
@@ -8444,13 +7907,7 @@ student@gmail.com
   <li><b>Domain Extension:</b> The ending of the domain such as .com, .org, or .edu</li>
 </ul>
 <h3> Common Domain Extensions</h3>
-<pre>
-.com  → Commercial organizations
-.org  → Organizations
-.edu  → Educational institutions
-.gov  → Government institutions
-.net  → Network services
-</pre>
+
 <h3> Structure of an Email</h3>
 <ul>
   <li><b>To:</b> Recipient's email address</li>

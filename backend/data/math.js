@@ -43,19 +43,10 @@ Despite differences, they all follow the same mathematical rules when used in op
 <p>
 BODMAS defines the correct order in which mathematical operations must be solved to avoid confusion.
 </p>
-<pre>
-B → Brackets
-O → Orders (powers, squares, roots)
-D → Division
-M → Multiplication
-A → Addition
-S → Subtraction
-</pre>
+
 <p><b>Key Principle:</b> Operations are solved from left to right after applying priority rules.</p>
 <p><b>Example:</b></p>
-<pre>
-8 + 2 × (5 - 3)²
-</pre>
+
 <p>Step-by-step idea:</p>
 <ul>
 <li>First solve Brackets: (5 - 3) = 2</li>
@@ -133,9 +124,7 @@ add(
 A complex number extends the real number system by introducing the imaginary unit i, where i² = -1.
 It allows us to represent quantities that cannot be described on the real number line alone, especially in rotation, waves, and oscillations.
 </p>
-<pre>
-z = a + bi
-</pre>
+
 <hr>
 <h3> DEFINITIONS (EXPANDED)</h3>
 <ul>
@@ -146,26 +135,13 @@ z = a + bi
 </ul>
 <hr>
 <h3> KEY IDEA (DEEPER UNDERSTANDING)</h3>
-<pre>
-Complex number = real axis + imaginary axis
-z = a + bi
-Think of it as a coordinate:
-(a, b) in a 2D plane
-</pre>
+
 <p>
 Instead of existing on a straight line like real numbers, complex numbers exist on a plane called the <b>Argand Plane</b>.
 </p>
 <hr>
 <h3> GEOMETRIC INTERPRETATION</h3>
-<pre>
-        Imaginary axis (i)
-              ↑
-              |
-              |     (a, b) = a + bi
-              |
---------------+----------------→ Real axis
-              |
-</pre>
+
 <p>
 This means every complex number represents a <b>point or vector in 2D space</b>.
 </p>
@@ -201,9 +177,7 @@ This means every complex number represents a <b>point or vector in 2D space</b>.
 Complex numbers are not just arithmetic tools—they represent <b>rotation and transformation</b>.
 Multiplying by i rotates a number by 90° in the complex plane.
 </p>
-<pre>
-1 → i → -1 → -i → 1 (rotation cycle)
-</pre>
+
 <hr>
 <h3> REAL WORLD APPLICATION (EXPANDED)</h3>
 <ul>
@@ -289,10 +263,7 @@ add(
 <p>
 An Argand diagram represents complex numbers as points on a 2D plane, where each complex number corresponds to a coordinate.
 </p>
-<pre>
-x-axis → real part (Re)
-y-axis → imaginary part (Im)
-</pre>
+
 <h3> KEY IDEA</h3>
 <ul>
 <li>z = a + bi → point (a, b)</li>
@@ -312,14 +283,7 @@ y-axis → imaginary part (Im)
 <p><b>Step 3:</b> Plot point (3, 4)</p>
 <p><b>Final Answer:</b> (3, 4)</p>
 <h3> VISUAL DIAGRAM</h3>
-<pre>
-        Im
-         |
-         |      * (3,4)
-         |
----------+---------------- Re
-         |
-</pre>
+
 <h3> QUIZ QUESTIONS</h3>
 `,
   [
@@ -431,11 +395,7 @@ Complex numbers can be added, subtracted, multiplied, and divided using algebrai
 <p><b>Step 4: Final answer</b></p>
 <p>2 + 11i</p>
 <h3> VISUAL IDEA</h3>
-<pre>
-FOIL:
-First + Outer + Inner + Last
-Then simplify using i² = -1
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Electrical engineering (impedance)</li>
@@ -540,9 +500,7 @@ add(
 <p>
 A complex number can be represented using its magnitude (r) and angle (θ).
 </p>
-<pre>
-z = r(cosθ + i sinθ)
-</pre>
+
 <h3> KEY IDEA</h3>
 <ul>
 <li>r = distance from origin</li>
@@ -558,14 +516,7 @@ z = r(cosθ + i sinθ)
 <p><b>Step 3: Write polar form</b></p>
 <p>z = 5(cosθ + i sinθ)</p>
 <h3> DIAGRAM</h3>
-<pre>
-      |\
-      | \
-   4i |  \  r
-      |   \
-      +------>
-        3
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> AC circuit analysis</li>
@@ -662,9 +613,7 @@ add(
 <h2> De Moivre’s Theorem</h2>
 <p>De Moivre’s Theorem is used to raise complex numbers in trigonometric form to powers quickly by multiplying angles.</p>
 <h3> DEFINITION</h3>
-<pre>
-(cosθ + i sinθ)^n = cos(nθ) + i sin(nθ)
-</pre>
+
 <h3> KEY IDEA</h3>
 <ul>
 <li>Power → multiply the angle</li>
@@ -672,10 +621,7 @@ add(
 <li>Represents rotation on the complex plane</li>
 </ul>
 <h3> GEOMETRIC MEANING</h3>
-<pre>
-Each multiplication rotates the point around the origin
-Angle increases by n × θ
-</pre>
+
 <h3> COMMON MISTAKES</h3>
 <ul>
 <li> Forgetting to multiply the angle</li>
@@ -692,10 +638,7 @@ Angle increases by n × θ
 <p>cos60° = 1/2, sin60° = √3/2</p>
 <p><b>Final Answer:</b> 1/2 + i(√3/2)</p>
 <h3> VISUAL IDEA</h3>
-<pre>
-Initial point → rotates on unit circle
-30° → 60° after squaring
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Electrical engineering (AC signals)</li>
@@ -806,10 +749,7 @@ add(
 <li><b>Important:</b> Expressions do NOT contain an equals sign (=)</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Expression = mathematical phrase (no equals sign)
-Equation = mathematical sentence (has equals sign)
-</pre>
+
 <h3> EXAMPLE BREAKDOWN</h3>
 <p>In 2x + 3:</p>
 <ul>
@@ -847,12 +787,7 @@ Step 2: 3 more → +3<br>
 </li>
 </ul>
 <h3> VISUAL IDEA</h3>
-<pre>
-Expression: 2x + 3
-→ x = unknown value
-→ 2x = scaled unknown
-→ +3 = constant shift
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Finance → calculating unknown costs</li>
@@ -921,10 +856,7 @@ add(
 <li>Only coefficients (numbers in front) are added or subtracted</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Combine only like terms:
-2x + 3x = 5x
-</pre>
+
 <h3> COMMON MISTAKES</h3>
 <ul>
 <li> Mixing unlike terms (x + y ≠ xy)</li>
@@ -959,13 +891,7 @@ Step 2: Keep y<br>
 </li>
 </ul>
 <h3> VISUAL IDEA</h3>
-<pre>
-3x + 4x + y
-↓ group like terms
-(3x + 4x) + y
-↓ simplify
-7x + y
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Finance → combining costs or income sources</li>
@@ -1030,9 +956,7 @@ add(
 <li>Use inverse operations: + ↔ −, × ↔ ÷</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Keep both sides of the equation balanced at all times
-</pre>
+
 <h3> COMMON MISTAKES</h3>
 <ul>
 <li> Moving terms without changing both sides</li>
@@ -1061,13 +985,7 @@ Step 2: Divide by 3 → x = 3<br>
 </li>
 </ul>
 <h3> VISUAL IDEA</h3>
-<pre>
-3x + 2 = 11
-   ↓ subtract 2
-3x = 9
-   ↓ divide by 3
-x = 3
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Budget calculations → finding unknown costs</li>
@@ -1134,9 +1052,7 @@ add(
 <li>Be careful with brackets after substitution</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Variable → Number → Simplify expression
-</pre>
+
 <h3> COMMON MISTAKES</h3>
 <ul>
 <li> Forgetting to replace all variables</li>
@@ -1165,13 +1081,7 @@ Step 2: Simplify → 3<br>
 </li>
 </ul>
 <h3> VISUAL IDEA</h3>
-<pre>
-Expression: 2x + 3
-If x = 5:
-→ 2(5) + 3
-→ 10 + 3
-→ 13
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Finance → calculating costs and profits</li>
@@ -1237,10 +1147,7 @@ add(
 <li>Be careful with signs (+ and −)</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-a(b + c) = ab + ac
-Multiply everything inside the bracket
-</pre>
+
 <h3> COMMON MISTAKE</h3>
 <ul>
 <li> Only multiplying the first term</li>
@@ -1269,11 +1176,7 @@ Step 2: 5 × 2 = 10<br>
 </li>
 </ul>
 <h3> VISUAL IDEA</h3>
-<pre>
-2(x + 3)
-= 2×x + 2×3
-= 2x + 6
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Budget calculations (multiplying costs)</li>
@@ -1348,9 +1251,7 @@ add(
 <li><b>Straight angle:</b> Exactly 180° (forms a straight line)</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Use 90° and 180° as reference points to classify angles
-</pre>
+
 <h3> ANGLE CLASSIFICATION GUIDE</h3>
 <ul>
 <li>0° – 90° → Acute angle</li>
@@ -1380,12 +1281,7 @@ Step 2: 150° lies between them<br>
 </li>
 </ul>
 <h3> VISUAL IDEA</h3>
-<pre>
-Acute:   < 90°   (small)
-Right:   90°     (corner)
-Obtuse:  > 90°   (wide)
-Straight: 180°   (line)
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Construction → building corners and structures</li>
@@ -1457,9 +1353,7 @@ add(
 <li><b>Formula:</b> Missing angle = 180° − (sum of known angles)</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-All triangles always add up to 180°
-</pre>
+
 <h3> TYPES OF TRIANGLES</h3>
 <ul>
 <li> Equilateral → all sides equal, all angles = 60°</li>
@@ -1564,9 +1458,7 @@ add(
 <li><b>Formula:</b> Missing angle = 360° − (sum of known angles)</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Total interior angle sum of quadrilateral = 360°
-</pre>
+
 <h3> TYPES OF QUADRILATERALS</h3>
 <ul>
 <li>⬜ Square → all sides equal, all angles 90°</li>
@@ -1672,10 +1564,7 @@ add(
 <li><b>Circumference:</b> Distance around the circle</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Radius = half of diameter  
-Diameter = twice the radius
-</pre>
+
 <h3> WORKED EXAMPLES</h3>
 <ul>
 <li>
@@ -1774,10 +1663,7 @@ add(
 <li><b>Triangle:</b> Area = ½ × base × height</li>
 </ul>
 <h3> KEY IDEA</h3>
-<pre>
-Perimeter → boundary length (outside)
-Area → surface coverage (inside)
-</pre>
+
 <h3> WORKED EXAMPLES</h3>
 <ul>
 <li>
@@ -1800,10 +1686,7 @@ Step 2: = 12<br>
 </li>
 </ul>
 <h3> VISUAL IDEA</h3>
-<pre>
-Perimeter: outline of shape
-Area: filled region inside shape
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> Construction → measuring floor and wall space</li>
@@ -1872,10 +1755,7 @@ But in Non-Euclidean geometry, space can be curved (like a ball or a saddle), so
 Because of this curvature, lines that seem parallel can actually meet or spread apart differently than in flat space.
 </p>
 <h3> KEY IDEA</h3>
-<pre>
-Flat space → Euclidean geometry (normal rules apply)
-Curved space → Non-Euclidean geometry (rules change)
-</pre>
+
 <h3> TYPES OF NON-EUCLIDEAN GEOMETRY</h3>
 <ul>
 <li> Spherical Geometry → positive curvature (like Earth)</li>
@@ -2496,17 +2376,7 @@ Even a tiny difference accumulates into large GPS errors if not corrected.
 <p><b>Final Result:</b> Time difference ≈ 7×10⁻¹⁰ per second effect</p>
 <hr>
 <h3> DIAGRAM (INTUITION)</h3>
-<pre>
-FLAT MODEL (WRONG):
-Earth ---- satellite ---- signal (assumed straight time flow)
 
-CURVED SPACE (CORRECT):
-Earth curves spacetime
-     ↓
-satellite moves through different time rate
-     ↓
-signal timing must be corrected
-</pre>
 <hr>
 <h3> REAL WORLD APPLICATION (WHY THIS MATTERS)</h3>
 <ul>
@@ -2593,11 +2463,7 @@ add(
 Optimization is the mathematical process of finding the best possible value (maximum or minimum) of a function under given constraints.
 It is widely used in economics, engineering, and decision-making systems.
 </p>
-<pre>
-Optimization form:
-Maximize or Minimize f(x)
-Subject to constraints (conditions)
-</pre>
+
 <h3> KEY IDEA</h3>
 <ul>
 <li>Maximum → highest possible value of a function</li>
@@ -2759,15 +2625,7 @@ These problems are common in agriculture, architecture, and engineering design.
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Best shape = square
 
-  10m × 10m
-  ┌────────┐
-  │        │
-  │        │
-  └────────┘
-</pre>
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -2887,9 +2745,7 @@ In geometry and optimization, the shortest path between two points is always a s
 <p><b>Step 2: Recognize best path</b></p>
 <p>Straight line is always shortest distance</p>
 <p><b>Step 3: Apply distance formula</b></p>
-<pre>
-d = √((x₂ - x₁)² + (y₂ - y₁)²)
-</pre>
+
 <p><b>Step 4: Interpret result</b></p>
 <p>The calculated distance is the minimum possible path</p>
 <p><b>Final Answer:</b> Straight line distance between the two points</p>
@@ -2988,13 +2844,7 @@ Cost optimization focuses on minimizing production or operational costs while ma
 It is widely used in business, engineering, and economics.
 </p>
 
-<pre>
-Cost function: C(x) = ax + b
-Where:
-a = cost per unit
-b = fixed cost
-x = number of units
-</pre>
+
 
 <h3> KEY IDEAS</h3>
 <ul>
@@ -3170,15 +3020,7 @@ subject to constraints:
 <p><b>Final Answer:</b> Maximum value = 25 at x = 5</p>
 <hr>
 <h3> GEOMETRIC INTERPRETATION</h3>
-<pre>
-Parabola (optimization shape):
 
-          ●  maximum point (vertex)
-         / \
-        /   \
-_______/     \_______
-        x = 5
-</pre>
 <hr>
 <h3> REAL WORLD APPLICATIONS (MATHEMATICAL MODELS)</h3>
 <ul>
@@ -3276,10 +3118,7 @@ add(
 <p>
 Linear programming is a mathematical method used to find the best possible outcome (maximum or minimum) of a linear function subject to given constraints.
 </p>
-<pre>
-Objective function: Max/Min Z = ax + by  
-Subject to constraints (inequalities)
-</pre>
+
 <h3> KEY IDEA</h3>
 <ul>
 <li>Objective function → what you want to optimize (maximize or minimize)</li>
@@ -3306,15 +3145,7 @@ Subject to constraints (inequalities)
 <p><b>Step 6: Optimal solution</b></p>
 <p>Maximum Z = 12 at (4,0)</p>
 <h3> DIAGRAM</h3>
-<pre>
-y
-|\
-| \
-|  \  feasible region
-|   \
-|____\_____ x
-(0,4) (4,0)
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Business profit maximization</li>
@@ -3433,16 +3264,7 @@ The graphical method solves linear programming problems by plotting constraints 
 <p><b>Step 6:</b> Conclusion</p>
 <p>Maximum Z = 12 at (0,6)</p>
 <h3> DIAGRAM</h3>
-<pre>
-(0,6)
- |\
- | \
- |  \
- |   \
- |____\ (6,0)
-(0,0)
-Feasible region = triangle in first quadrant
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
 <li>Profit maximization in businesses</li>
@@ -3551,16 +3373,7 @@ They restrict the possible values of variables to a valid region.
 <p>Below the line in the first quadrant</p>
 <p><b>Final Answer:</b> Triangular feasible region bounded by axes and x + y = 5</p>
 <h3> DIAGRAM</h3>
-<pre>
-(0,5)
- |\
- | \
- |  \
- |   \
- |____\ (5,0)
-(0,0)
-Feasible region = triangle in first quadrant
-</pre>
+
 
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
@@ -3653,18 +3466,7 @@ Only points inside or on this region are valid solutions.
 <p><b>Step 4:</b> Shade the common overlapping region</p>
 <p><b>Final Answer:</b> A triangular region in the first quadrant bounded by the axes and the line x + y = 4</p>
 <h3> DIAGRAM</h3>
-<pre>
-        y
-        |
-    4   |\
-        | \
-        |  \
-        |   \
-        |____\______ x
-       (0,0)   (4,0)
 
-Feasible region = triangle under the line in first quadrant
-</pre>
 
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
@@ -3771,9 +3573,7 @@ It helps find the best possible outcome (maximum or minimum) under given restric
 <p><b>Step 4:</b> Optimize (maximize or minimize result)</p>
 <p><b>Final Answer:</b> To get the best possible outcome under restrictions</p>
 <h3> DIAGRAM</h3>
-<pre>
-Constraints → Feasible region → Optimal solution
-</pre>
+
 `,
   [
     {
@@ -5038,16 +4838,7 @@ add(
 Step 1: Move 2 units right<br>
 Step 2: Move 3 units up<br>
 
-<pre>
-          y
-          ↑
-     4    |
-     3    |      ● (2,3)
-     2    |     /
-     1    |    /
-  -------O----------------→ x
-     0    |  1  2  3
-</pre>
+
 
 <b>Answer: (2,3)</b>
 </li>
@@ -5058,16 +4849,7 @@ Step 2: Move 3 units up<br>
 Step 1: Move 2 units left<br>
 Step 2: Move 1 unit up<br>
 
-<pre>
-          y
-          ↑
-     3    |
-     2    |
-     1    |   ● (-2,1)
-     0    |
-  -------O----------------→ x
-        -3  -2  -1
-</pre>
+
 
 <b>Answer: (-2,1)</b>
 </li>
@@ -5078,17 +4860,7 @@ Step 2: Move 1 unit up<br>
 Step 1: Stay on Y-axis<br>
 Step 2: Move 4 units up<br>
 
-<pre>
-          y
-          ↑
-     5    |
-     4    |   ● (0,4)
-     3    |
-     2    |
-     1    |
-  -------O----------------→ x
-     0
-</pre>
+
 
 <b>Answer: (0,4)</b>
 </li>
@@ -5260,17 +5032,7 @@ Step 2: Mark equal scale on both axes<br>
 Step 3: Plot each coordinate point accurately<br>
 Step 4: Connect points in correct order<br>
 
-<pre>
-          y
-          ↑
-     5    |
-     4    |        ● (3,4)
-     3    |      ● (2,3)
-     2    |    ● (1,2)
-     1    |  ● (0,1)
-  -------O------------------------→ x
-     0    1    2    3
-</pre>
+
 
 <b>Answer: A plotted coordinate line graph showing change between points</b>
 </li>
@@ -5285,17 +5047,7 @@ Step 2: Follow direction of connected line<br>
 Step 3: Compare rise or fall in values<br>
 Step 4: Identify pattern behavior over time or variable change<br>
 
-<pre>
-          y
-          ↑
-     5    |        ●
-     4    |      ●
-     3    |    ●
-     2    |  ●
-     1    |●
-  -------O------------------------→ x
-     0
-</pre>
+
 
 <b>Answer: It represents a pattern or trend in data (increase or decrease)</b>
 </li>
@@ -5310,17 +5062,7 @@ Step 2: Observe order of values on x-axis<br>
 Step 3: Connect points to show continuous change<br>
 Step 4: Form a relationship model between variables<br>
 
-<pre>
-          y
-          ↑
-     5    |        ●──────●
-     4    |      ●
-     3    |    ●
-     2    |  ●
-     1    |●
-  -------O------------------------→ x
-     0
-</pre>
+
 
 <b>Answer: To show continuity and relationship between data points</b>
 </li>
@@ -5412,10 +5154,7 @@ It shows how much the vertical value changes compared to the horizontal change.
 </p>
 <h3> GRADIENT (SLOPE) — CALCULATION VIEW</h3>
 
-<pre>
-Gradient = rise ÷ run
-m = (y₂ − y₁) / (x₂ − x₁)
-</pre>
+
 
 <ul>
 <li><b>Rise</b> = y₂ − y₁ (vertical change)</li>
@@ -5916,10 +5655,9 @@ add(
 A proportion shows that two ratios are equal.
 It helps us compare quantities and solve missing values.
 </p>
-<pre>a : b = c : d  →  a/b = c/
-</pre>
+
 <p>Using cross multiplication:</p>
-<pre>a × d = b × c</pre>
+
 <p><b> Key idea:</b> Proportion means two equal ratios.</p>
 <h3> WELL EXPLAINED NOTES</h3>
 <ul>
@@ -6028,7 +5766,7 @@ add(
 In direct proportion, when one quantity increases, the other increases at the same rate.
 They maintain a constant ratio.
 </p>
-<pre>y ∝ x  →  y = kx</pre>
+
 <p><b> Key idea:</b> Same direction change (increase → increase, decrease → decrease)</p>
 <h3> WELL EXPLAINED NOTES</h3>
 <ul>
@@ -6135,7 +5873,7 @@ add(
 In inverse proportion, when one quantity increases, the other decreases.
 Their product remains constant.
 </p>
-<pre>x × y = k (constant)</pre>
+
 <p><b> Key idea:</b> More workers → less time needed.</p>
 <h3> WELL EXPLAINED NOTES</h3>
 <ul>
@@ -6271,30 +6009,10 @@ A frequency table helps us answer:
 
 <h3> WORKED EXAMPLE</h3>
 
-<pre>
-Data: 2, 3, 3, 4, 4, 4, 5
 
-Step 1: List unique values → 2, 3, 4, 5
-Step 2: Count occurrences
-
-Value | Frequency
-  2   | 1
-  3   | 2
-  4   | 3
-  5   | 1
-
-Conclusion:
-- 4 has the highest frequency
-- It is the mode of the data
-</pre>
 
 <h3> VISUAL IDEA</h3>
-<pre>
-2 → █
-3 → ██
-4 → ███
-5 → █
-</pre>
+
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -6397,23 +6115,9 @@ It represents a balanced value of a dataset.
 
 <h3> WORKED EXAMPLES</h3>
 
-<pre>
-Example 1:
-Find mean of: 2, 4, 6
 
-Step 1: Sum = 2 + 4 + 6 = 12
-Step 2: Count = 3
-Step 3: Mean = 12 ÷ 3 = 4
-</pre>
 
-<pre>
-Example 2:
-Find mean of: 5, 5, 10
 
-Step 1: Sum = 20
-Step 2: Count = 3
-Step 3: Mean = 20 ÷ 3 = 6.67
-</pre>
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -6519,24 +6223,9 @@ It shows the center of the dataset and is not affected by extreme values (outlie
 
 <h3> WORKED EXAMPLES</h3>
 
-<pre>
-Example 1:
-Find median of: 7, 1, 3
 
-Step 1: Arrange → 1, 3, 7
-Step 2: Middle value = 3
 
-Median = 3
-</pre>
 
-<pre>
-Example 2:
-Find median of: 2, 4, 6, 8
-
-Step 1: Arrange → 2, 4, 6, 8
-Step 2: Middle values = 4 and 6
-Step 3: Median = (4 + 6) ÷ 2 = 5
-</pre>
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -6627,32 +6316,11 @@ It answers the question: <b>"What is the most common value?"</b>
 
 <h3> WORKED EXAMPLE</h3>
 
-<pre>
-Find mode of: 1, 2, 2, 3
 
-Step 1: Count frequency
-1 → 1 time
-2 → 2 times
-3 → 1 time
-
-Step 2: Highest frequency = 2
-
-Mode = 2
-</pre>
 
 <h3> WORKED EXAMPLE 2</h3>
 
-<pre>
-Find mode of: 5, 5, 6, 6
 
-Step 1: Count frequency
-5 → 2 times
-6 → 2 times
-
-Step 2: Two highest equal frequencies
-
-Mode = 5 and 6 (bimodal)
-</pre>
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -6744,28 +6412,10 @@ Each bar represents a category, and its height shows the value.
 
 <h3> WORKED EXAMPLE</h3>
 
-<pre>
-Fruit Sales:
 
-Apples → 5
-Bananas → 8
-Mangoes → 3
-
-Step 1: Assign each fruit a bar
-Step 2: Set bar height equal to value
-
-Conclusion:
-- Bananas highest (8)
-- Apples medium (5)
-- Mangoes lowest (3)
-</pre>
 
 <h3> VISUAL INTERPRETATION IDEA</h3>
-<pre>
-Bananas  ████████ (8)
-Apples   █████     (5)
-Mangoes  ███       (3)
-</pre>
+
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -6908,35 +6558,11 @@ It compares favorable outcomes to total possible outcomes in a sample space.
 
 <h3> WORKED EXAMPLES</h3>
 
-<pre>
-Example 1:
-A bag contains 2 red balls and 3 blue balls.
-P(red)?
 
-Step 1: Total = 2 + 3 = 5
-Step 2: Favorable = 2
-Step 3: P = 2/5
-</pre>
 
-<pre>
-Example 2:
-A bag contains 3 red balls and 2 blue balls.
-P(blue)?
 
-Step 1: Total = 5
-Step 2: Favorable = 2
-Step 3: P = 2/5
-</pre>
 
-<pre>
-Example 3:
-A bag contains 4 red balls and 1 blue ball.
-P(not red)?
 
-Step 1: Total = 5
-Step 2: Not red = 1
-Step 3: P = 1/5
-</pre>
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -7043,35 +6669,11 @@ Each outcome has the same probability.
 
 <h3> WORKED EXAMPLES</h3>
 
-<pre>
-Example 1:
-A fair die is rolled.
-P(getting 4)?
 
-Favorable = 1
-Total = 6
-P = 1/6
-</pre>
 
-<pre>
-Example 2:
-A fair die is rolled.
-P(even number)?
 
-Even = {2,4,6}
-Favorable = 3
-P = 3/6 = 1/2
-</pre>
 
-<pre>
-Example 3:
-A fair die is rolled.
-P(number > 4)?
 
-Numbers = {5,6}
-Favorable = 2
-P = 2/6 = 1/3
-</pre>
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -7189,56 +6791,17 @@ Because the coin is fair, both outcomes have an <b>equal chance</b>.
 </ul>
 
 <h3> DIAGRAM</h3>
-<pre>
-Sample space:
-H | T
-</pre>
+
 
 <h3> WORKED EXAMPLES</h3>
 
-<pre>
-Example 1:
-A coin is tossed once.
-P(Head)?
 
-Total = 2
-Favorable = 1
-P(H) = 1/2
-</pre>
 
-<pre>
-Example 2:
-A coin is tossed once.
-P(Tail)?
 
-Total = 2
-Favorable = 1
-P(T) = 1/2
-</pre>
 
-<pre>
-Example 3:
-A coin is tossed twice.
-P(HH)?
 
-P(H) × P(H)
-= 1/2 × 1/2
-= 1/4
-</pre>
 
-<pre>
-Example 4:
-A coin is tossed twice.
-P(one head)?
 
-Sample space:
-HH, HT, TH, TT
-
-Favorable = HT, TH = 2
-Total = 4
-
-P = 2/4 = 1/2
-</pre>
 
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -7349,49 +6912,17 @@ Independent means one event does NOT affect the other.
 
 <h3> WORKED EXAMPLES</h3>
 
-<pre>
-Example 1:
-A coin is tossed and a die is rolled.
-What is the probability of getting a head and a 4?
 
-Step 1: P(head) = 1/2
-Step 2: P(4) = 1/6
-Step 3: Multiply → (1/2) × (1/6) = 1/12
-Final Answer: 1/12
-</pre>
 
-<pre>
-Example 2:
-A coin is tossed and a die is rolled.
-What is the probability of getting a tail and an even number?
 
-Step 1: P(tail) = 1/2
-Step 2: Even numbers = {2,4,6} → 3/6 = 1/2
-Step 3: Multiply → (1/2) × (1/2) = 1/4
-Final Answer: 1/4
-</pre>
 
-<pre>
-Example 3:
-A coin is tossed and a die is rolled.
-What is the probability of getting a head and a number greater than 4?
 
-Step 1: P(head) = 1/2
-Step 2: Numbers > 4 = {5,6} → 2/6 = 1/3
-Step 3: Multiply → (1/2) × (1/3) = 1/6
-Final Answer: 1/6
-</pre>
 
 ---
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Event A (coin)     Event B (die)
-   1/2  ×            1/6
-        ↓
-   Combined probability = multiplication
-</pre>
+
 
 ---
 
@@ -7499,42 +7030,25 @@ add(
 Bayes theorem updates probability based on new information.
 It reverses conditional probability: instead of P(B|A), we find P(A|B).
 </p>
-<pre>
-P(A|B) = P(B|A)P(A) / P(B)
-</pre>
+
  It is used when we already have evidence and want to revise beliefs.
 <h3> WORKED EXAMPLE (STEP BY STEP)</h3>
 
 <p><b>Question:</b> A disease affects 1% of population. Test is 90% accurate. If a person tests positive, what is probability they are actually sick?</p>
 <p><b>Step 1: Define probabilities</b></p>
-<pre>
-P(D) = 0.01
-P(¬D) = 0.99
-</pre>
+
 
 <p><b>Step 2: Test accuracy</b></p>
-<pre>
-P(+ | D) = 0.9
-P(+ | ¬D) = 0.1
-</pre>
+
 
 <p><b>Step 3: Total probability of positive test</b></p>
-<pre>
-P(+) = (0.9 × 0.01) + (0.1 × 0.99)
-     = 0.009 + 0.099
-     = 0.108
-</pre>
+
 
 <p><b>Step 4: Apply Bayes theorem</b></p>
-<pre>
-P(D | +) = (0.9 × 0.01) / 0.108
-         = 0.009 / 0.108
-</pre>
+
 
 <p><b>Step 5: Final Answer</b></p>
-<pre>
-P(D | +) ≈ 0.083 = 8.3%
-</pre>
+
  Even with a positive test, probability is still low due to rarity of disease.
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
@@ -7630,35 +7144,19 @@ add(
 Expected value is the long-term average outcome of a random process if it is repeated many times.
 It does not guarantee what will happen in a single trial.
 </p>
-<pre>
-E(X) = Σ (x × P(x))
-</pre>
+
  It is a weighted average of all possible outcomes.
 <h3> WORKED EXAMPLE (STEP BY STEP)</h3>
 <p><b>Question:</b> A game gives: +10 (50%), +0 (50%). Find expected value.</p>
 <p><b>Step 1: Identify outcomes and probabilities</b></p>
-<pre>
-10 with probability 0.5
-0 with probability 0.5
-</pre>
+
 <p><b>Step 2: Multiply each outcome by probability</b></p>
-<pre>
-10 × 0.5 = 5
-0 × 0.5 = 0
-</pre>
+
 <p><b>Step 3: Add results</b></p>
-<pre>
-E(X) = 5 + 0 = 5
-</pre>
+
 <p><b>Final Answer:</b> Expected value = 5</p>
 <h3> DIAGRAM</h3>
-<pre>
-Outcome      Probability      Contribution
-Win 10   →      0.5        →      5
-Win 0    →      0.5        →      0
----------------------------------------
-Expected Value = 5
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Casino games and gambling risk analysis</li>
@@ -7767,41 +7265,17 @@ It tells us how likely an event is to happen.
 
 <h3> WORKED EXAMPLES</h3>
 
-<pre>
-Example 1:
-Weather forecast says 70% chance of rain.
 
-Step 1: Convert → 70%
-Step 2: Interpretation → likely to rain
-Step 3: Decision → carry umbrella
-</pre>
 
-<pre>
-Example 2:
-A player has probability 0.8 of scoring a goal.
 
-Step 1: Convert → 0.8 = 80%
-Step 2: Interpretation → very high chance
-Step 3: Conclusion → strong performer
-</pre>
 
-<pre>
-Example 3:
-Probability of accident is 0.01.
 
-Step 1: Convert → 1%
-Step 2: Interpretation → very rare event
-Step 3: Conclusion → low risk
-</pre>
 
 ---
 
 <h3> DIAGRAM</h3>
 
-<pre>
-0 ─────────────── 0.5 ─────────────── 1
-Impossible        Uncertain          Certain
-</pre>
+
 
 ---
 
@@ -7865,15 +7339,7 @@ Matrices are rectangular arrays of numbers arranged in rows and columns.
 Addition and subtraction are only possible when matrices have the SAME dimensions.
 </p>
 
-<pre>
-A = [1 2]      B = [5 6]
-    [3 4]          [7 8]
 
-A + B = [1+5  2+6]
-        [3+7  4+8]
-      = [6 8]
-        [10 12]
-</pre>
 
  This is called element-wise operation.
 
@@ -7883,19 +7349,13 @@ A + B = [1+5  2+6]
 
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Add matrices</p>
-<pre>
-A = [2 1],  B = [3 4]
-</pre>
+
 
 <p><b>Step 1:</b> Add corresponding elements</p>
-<pre>
-(2+3) , (1+4)
-</pre>
+
 
 <p><b>Step 2:</b> Compute</p>
-<pre>
-5 , 5
-</pre>
+
 
 <p><b>Final Answer:</b> [5 5]</p>
 
@@ -7903,14 +7363,10 @@ A = [2 1],  B = [3 4]
 
 <p><b>Example 2</b></p>
 <p><b>Question:</b> Add identity-style matrices</p>
-<pre>
-A = [1 0], B = [0 1]
-</pre>
+
 
 <p><b>Step 1:</b> Add elements</p>
-<pre>
-(1+0), (0+1)
-</pre>
+
 
 <p><b>Final Answer:</b> [1 1]</p>
 
@@ -7918,14 +7374,10 @@ A = [1 0], B = [0 1]
 
 <p><b>Example 3</b></p>
 <p><b>Question:</b> Subtract matrices</p>
-<pre>
-A = [5 2], B = [1 3]
-</pre>
+
 
 <p><b>Step 1:</b> Subtract element-wise</p>
-<pre>
-(5-1), (2-3)
-</pre>
+
 
 <p><b>Final Answer:</b> [4 -1]</p>
 
@@ -7933,9 +7385,7 @@ A = [5 2], B = [1 3]
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Same position elements → add or subtract → new matrix
-</pre>
+
 
 ---
 
@@ -8034,45 +7484,23 @@ add(
 Matrix multiplication is NOT done element-by-element. Instead, each entry in the result is obtained by multiplying rows of the first matrix with columns of the second matrix.
 </p>
 
-<pre>
-A = [1 2]     B = [5]
-    [3 4]         [6]
 
-Step:
-Row × Column
-
-(1×5 + 2×6) = 17  
-(3×5 + 4×6) = 39
-</pre>
 <h3> WORKED EXAMPLES (STEP BY STEP)</h3>
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Multiply</p>
-<pre>
-|1 2|   |5|
-|3 4| × |6|
-</pre>
+
 <p><b>Step 1:</b> First row × column</p>
-<pre>
-(1×5 + 2×6) = 17
-</pre>
+
 <p><b>Step 2:</b> Second row × column</p>
-<pre>
-(3×5 + 4×6) = 39
-</pre>
+
 <p><b>Final Answer:</b></p>
-<pre>
-|17|
-|39|
-</pre>
+
 <br>
 <p><b>Example 2</b></p>
 <p><b>Question:</b> Multiply any matrix by identity matrix</p>
 
 <p><b>Step 1:</b> Identity matrix</p>
-<pre>
-I = |1 0|
-    |0 1|
-</pre>
+
 
 <p><b>Step 2:</b> Multiply A × I</p>
 <p><b>Result:</b> Original matrix remains unchanged</p>
@@ -8085,16 +7513,10 @@ I = |1 0|
 <p><b>Question:</b> Scalar multiplication</p>
 
 <p><b>Step 1:</b> Multiply each entry by scalar</p>
-<pre>
-2 × |1 2|
-    |3 4|
-</pre>
+
 
 <p><b>Step 2:</b> Compute</p>
-<pre>
-|2 4|
-|6 8|
-</pre>
+
 
 <p><b>Final Answer:</b> |2 4; 6 8|</p>
 
@@ -8102,9 +7524,7 @@ I = |1 0|
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Row of A  ×  Column of B  →  Entry in result matrix
-</pre>
+
 
 ---
 
@@ -8206,26 +7626,16 @@ add(
 A determinant is a single numerical value derived from a square matrix. It helps determine whether a matrix has an inverse and whether a system of equations has a unique solution.
 </p>
 
-<pre>
-|a b|
-|c d| = ad - bc
-</pre>
+
 <h3> WORKED EXAMPLES (STEP BY STEP)</h3>
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Find determinant of</p>
-<pre>
-|1 2|
-|3 4|
-</pre>
+
 <p><b>Step 1:</b> Apply formula</p>
-<pre>
-det = (1×4) - (2×3)
-</pre>
+
 
 <p><b>Step 2:</b> Compute</p>
-<pre>
-det = 4 - 6 = -2
-</pre>
+
 
 <p><b>Final Answer:</b> -2</p>
 
@@ -8233,20 +7643,13 @@ det = 4 - 6 = -2
 
 <p><b>Example 2</b></p>
 <p><b>Question:</b> Find determinant of</p>
-<pre>
-|5 1|
-|2 3|
-</pre>
+
 
 <p><b>Step 1:</b> Multiply diagonals</p>
-<pre>
-(5×3) - (1×2)
-</pre>
+
 
 <p><b>Step 2:</b> Compute</p>
-<pre>
-15 - 2 = 13
-</pre>
+
 
 <p><b>Final Answer:</b> 13</p>
 
@@ -8254,20 +7657,13 @@ det = 4 - 6 = -2
 
 <p><b>Example 3</b></p>
 <p><b>Question:</b> Find determinant of</p>
-<pre>
-|0 2|
-|1 0|
-</pre>
+
 
 <p><b>Step 1:</b> Apply formula</p>
-<pre>
-(0×0) - (2×1)
-</pre>
+
 
 <p><b>Step 2:</b> Compute</p>
-<pre>
-0 - 2 = -2
-</pre>
+
 
 <p><b>Final Answer:</b> -2</p>
 
@@ -8275,9 +7671,7 @@ det = 4 - 6 = -2
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Matrix → Cross multiplication → Single value (determinant)
-</pre>
+
 
 ---
 
@@ -8376,9 +7770,7 @@ The inverse of a matrix reverses its effect when multiplied.
 If A has an inverse, then:
 </p>
 
-<pre>
-A × A⁻¹ = I
-</pre>
+
 
 <p>Where I is the identity matrix.</p>
 
@@ -8388,27 +7780,16 @@ A × A⁻¹ = I
 
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Find inverse of</p>
-<pre>
-A = [2  1]
-    [5  3]
-</pre>
+
 
 <p><b>Step 1:</b> Find determinant</p>
-<pre>
-det(A) = (2×3) - (1×5) = 6 - 5 = 1
-</pre>
+
 
 <p><b>Step 2:</b> Apply formula</p>
-<pre>
-A⁻¹ = (1/det) [ d  -b ]
-              [ -c  a ]
-</pre>
+
 
 <p><b>Step 3:</b> Substitute values</p>
-<pre>
-A⁻¹ = [ 3  -1 ]
-      [ -5  2 ]
-</pre>
+
 
 <p><b>Final Answer:</b> A⁻¹ = [[3, -1], [-5, 2]]</p>
 
@@ -8416,15 +7797,10 @@ A⁻¹ = [ 3  -1 ]
 
 <p><b>Example 2</b></p>
 <p><b>Question:</b> Does inverse exist?</p>
-<pre>
-A = [1  2]
-    [2  4]
-</pre>
+
 
 <p><b>Step 1:</b> Compute determinant</p>
-<pre>
-det(A) = (1×4) - (2×2) = 4 - 4 = 0
-</pre>
+
 
 <p><b>Step 2:</b> Conclusion</p>
 <p><b>Final Answer:</b> No inverse exists</p>
@@ -8443,11 +7819,7 @@ det(A) = (1×4) - (2×2) = 4 - 4 = 0
 
 <h3> DIAGRAM</h3>
 
-<pre>
-A × A⁻¹ = I
-↓
-Original → Reverse → Identity
-</pre>
+
 
 ---
 
@@ -8547,9 +7919,7 @@ add(
 <p>
 A system of linear equations can be written in matrix form as:</p>
 
-<pre>
-AX = B
-</pre>
+
 
 <p>Where:</p>
 <ul>
@@ -8560,67 +7930,37 @@ AX = B
 
 <p>If A has an inverse, then:</p>
 
-<pre>
-X = A⁻¹B
-</pre>
+
 <h3> WORKED EXAMPLES (MATRIX METHOD ONLY)</h3>
 
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Solve using matrix method</p>
 
-<pre>
-x + y = 5
-x − y = 1
-</pre>
+
 
 <p><b>Step 1: Write in matrix form AX = B</b></p>
 
-<pre>
-A = [ 1  1 ]
-    [ 1 -1 ]
 
-X = [ x ]
-    [ y ]
-
-B = [ 5 ]
-    [ 1 ]
-</pre>
 
 <p><b>Step 2: Find determinant of A</b></p>
 
-<pre>
-det(A) = (1×-1) − (1×1) = -2
-</pre>
+
 
 <p><b>Step 3: Find inverse of A</b></p>
 
-<pre>
-A⁻¹ = (1/-2) [ -1  -1 ]
-             [ -1   1 ]
-</pre>
+
 
 <p><b>Step 4: Multiply X = A⁻¹B</b></p>
 
-<pre>
-X = (1/-2) [ -1  -1 ] [ 5 ]
-           [ -1   1 ] [ 1 ]
-</pre>
+
 
 <p><b>Step 5: Perform multiplication</b></p>
 
-<pre>
-X = (1/-2) [ (-5 - 1) ]
-           [ (-5 + 1) ]
 
-X = (1/-2) [ -6 ]
-           [ -4 ]
-</pre>
 
 <p><b>Step 6: Simplify</b></p>
 
-<pre>
-x = 3, y = 2
-</pre>
+
 
 <p><b>Final Answer:</b> (3, 2)</p>
 
@@ -8629,23 +7969,15 @@ x = 3, y = 2
 <p><b>Example 2</b></p>
 <p><b>Question:</b> Determine system type using matrix form</p>
 
-<pre>
-2x + 4y = 8
-x + 2y = 4
-</pre>
+
 
 <p><b>Step 1: Write AX = B</b></p>
 
-<pre>
-A = [ 2  4 ]
-    [ 1  2 ]
-</pre>
+
 
 <p><b>Step 2: Compute determinant</b></p>
 
-<pre>
-det(A) = (2×2 − 4×1) = 0
-</pre>
+
 
 <p><b>Step 3: Interpret result</b></p>
 
@@ -8653,9 +7985,7 @@ det(A) = (2×2 − 4×1) = 0
 
 <p><b>Step 4: Compare rows</b></p>
 
-<pre>
-Row2 = (1/2) Row1 AND RHS also matches
-</pre>
+
 
 <p><b>Final Answer:</b> Dependent system (infinite solutions)</p>
 
@@ -8664,32 +7994,19 @@ Row2 = (1/2) Row1 AND RHS also matches
 <p><b>Example 3</b></p>
 <p><b>Question:</b> Solve system using matrix method</p>
 
-<pre>
-x + y = 2
-x + y = 5
-</pre>
+
 
 <p><b>Step 1: Write AX = B</b></p>
 
-<pre>
-A = [ 1  1 ]
-    [ 1  1 ]
 
-B = [ 2 ]
-    [ 5 ]
-</pre>
 
 <p><b>Step 2: Compute determinant</b></p>
 
-<pre>
-det(A) = (1×1 − 1×1) = 0
-</pre>
+
 
 <p><b>Step 3: Check consistency via matrix comparison</b></p>
 
-<pre>
-Same coefficient matrix but different constants
-</pre>
+
 
 <p><b>Step 4: Conclusion</b></p>
 
@@ -8701,15 +8018,7 @@ Same coefficient matrix but different constants
 
 <h3> DIAGRAM</h3>
 
-<pre>
-AX = B
-↓
-det(A) ≠ 0 → X = A⁻¹B → Unique solution
 
-det(A) = 0 → check consistency
-        ↓
-   dependent / inconsistent
-</pre>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Economics: supply and demand systems</li>
@@ -8804,10 +8113,7 @@ add(
 A vector is a quantity with BOTH magnitude and direction. It can be represented in multiple equivalent forms.
 </p>
 
-<pre>
-a = (x, y)
-a = xi + yj
-</pre>
+
 
  i = unit vector in horizontal direction  
  j = unit vector in vertical direction  
@@ -8842,14 +8148,7 @@ a = xi + yj
 
 <h3> DIAGRAM</h3>
 
-<pre>
-          j ↑
-            |
-            |     • (x, y)
-            |
-------------•--------------→ i
-          origin
-</pre>
+
 
 ---
 
@@ -8959,14 +8258,10 @@ add(
 Magnitude is the length of a vector, while direction shows where the vector is pointing.
 </p>
 
-<pre>
-|a| = √(x² + y²)
-</pre>
+
 
  Direction can be found using angle:
-<pre>
-θ = tan⁻¹(y/x)
-</pre>
+
 
 ---
 
@@ -9001,16 +8296,7 @@ Magnitude is the length of a vector, while direction shows where the vector is p
 
 <h3> DIAGRAM</h3>
 
-<pre>
-      ↑ y
-      |
-      |   • (x,y)
-      |  /
-      | /
-      |/ θ
-------•------------→ x
-     origin
-</pre>
+
 
 ---
 
@@ -9125,13 +8411,7 @@ add(
 Vectors are added or subtracted by combining corresponding components.
 </p>
 
-<pre>
-a = (x₁, y₁)
-b = (x₂, y₂)
 
-a + b = (x₁ + x₂, y₁ + y₂)
-a − b = (x₁ − x₂, y₁ − y₂)
-</pre>
 
 ---
 
@@ -9163,13 +8443,7 @@ a − b = (x₁ − x₂, y₁ − y₂)
 
 <h3> DIAGRAM</h3>
 
-<pre>
-A →→→
-      ↘
-        A + B (resultant)
-      ↗
-B →→→
-</pre>
+
 
 ---
 
@@ -9270,9 +8544,7 @@ Dot product gives a SCALAR (single number), not a vector.
 It measures how much two vectors align with each other.
 </p>
 
-<pre>
-a · b = x₁x₂ + y₁y₂
-</pre>
+
 
  If result is:
 <ul>
@@ -9312,12 +8584,7 @@ a · b = x₁x₂ + y₁y₂
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Vector A →→
-Vector B ↗
 
-Dot product measures overlap (projection)
-</pre>
 
 ---
 
@@ -9454,11 +8721,7 @@ They are essential in describing motion, forces, and spatial relationships.
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Wind →→→
-Plane ↗ movement
-Result → diagonal path
-</pre>
+
 
 ---
 
@@ -9554,9 +8817,7 @@ A limit describes the value a function approaches as the input approaches a cert
 The function does not always have to reach that value.
 </p>
 
-<pre>
-lim x→a f(x) = L
-</pre>
+
 
  As x gets closer to a, f(x) gets closer to L.
 
@@ -9679,10 +8940,7 @@ add(
 Limits can be approached from two directions:
 </p>
 
-<pre>
-lim x→a⁻ f(x) = left-hand limit  
-lim x→a⁺ f(x) = right-hand limit
-</pre>
+
 
  A limit exists only if both sides are equal.
 <h3> WORKED EXAMPLES (MATHEMATICAL CALCULATION FORMAT)</h3>
@@ -9714,13 +8972,7 @@ lim x→a⁺ f(x) = right-hand limit
 <p><b>Final Answer:</b> Limit does not exist due to discontinuity</p>
 <h3> DIAGRAM</h3>
 
-<pre>
-   3 |      ● (right side)
-     |
-   5 |  ● (approach point)
-     |
-   7 |● (left side)
-</pre>
+
 
 ---
 
@@ -9832,9 +9084,7 @@ add(
 Indeterminate forms occur when direct substitution in limits gives unclear or undefined results.
 </p>
 
-<pre>
-0/0, ∞/∞, ∞ - ∞
-</pre>
+
 
  These do not give a final answer directly and require simplification.
 
@@ -9970,10 +9220,7 @@ add(
 One-sided limits describe the value a function approaches from one direction only.
 </p>
 
-<pre>
-lim (x → a⁻) f(x)  → left-hand limit  
-lim (x → a⁺) f(x)  → right-hand limit
-</pre>
+
 
  If both sides are equal → limit exists  
  If different → discontinuity
@@ -10008,12 +9255,7 @@ lim (x → a⁺) f(x)  → right-hand limit
 
 <h3> DIAGRAM</h3>
 
-<pre>
-x → 0
-Left side: ●●●
-Jump
-Right side: ●●●●●
-</pre>
+
 
 ---
 
@@ -10101,9 +9343,7 @@ Limits describe the value a function approaches as the input gets closer to a ce
 They are the foundation of differentiation and integration.
 </p>
 
-<pre>
-lim (x → a) f(x)
-</pre>
+
 
  Used to define instantaneous change and continuity.
 
@@ -10138,10 +9378,7 @@ lim (x → a) f(x)
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Distance vs Time curve:
-Smooth curve → tangent at a point = limit concept
-</pre>
+
 
 ---
 
@@ -10192,9 +9429,7 @@ add(
 The gradient of a curve shows how steep the curve is at a specific point. It is calculated using differentiation and represents the instantaneous rate of change.
 </p>
 
-<pre>
-dy/dx = gradient at a point
-</pre>
+
 
  It represents the slope of the tangent at that point.
 
@@ -10230,12 +9465,7 @@ dy/dx = gradient at a point
 
 <h3> DIAGRAM</h3>
 
-<pre>
-      /
-     /  ← tangent line (gradient here)
-    /
----•---------- curve point
-</pre>
+
 
 ---
 
@@ -10317,9 +9547,7 @@ add(
 Rate of change describes how one quantity changes with respect to another. It is the foundation of differentiation.
 </p>
 
-<pre>
-dy/dx = rate of change
-</pre>
+
 
 ---
 
@@ -10353,11 +9581,7 @@ dy/dx = rate of change
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Time →
-Distance curve rising ↑
-Slope shows speed
-</pre>
+
 
 ---
 
@@ -10442,9 +9666,7 @@ Maxima are highest points and minima are lowest points of a curve.
 They occur where the derivative equals zero.
 </p>
 
-<pre>
-dy/dx = 0 → critical point
-</pre>
+
 
 ---
 
@@ -10568,10 +9790,7 @@ A tangent is a straight line that touches a curve at exactly one point without c
 A normal is a line perpendicular to the tangent at the same point.
 </p>
 
-<pre>
-Slope of tangent = dy/dx  
-Slope of normal = -1 / (dy/dx)
-</pre>
+
 
 ---
 
@@ -10613,13 +9832,7 @@ Slope of normal = -1 / (dy/dx)
 
 <h3> DIAGRAM</h3>
 
-<pre>
-      tangent /
-             /
-   curve •---
-             \
-              normal ⟂
-</pre>
+
 
 ---
 
@@ -10815,9 +10028,7 @@ Differentiation is used to model change in real systems. It tells how fast one q
 Geometrically, the derivative represents the slope of a curve at a point.
 </p>
 
-<pre>
-f'(x) = rate of change
-</pre>
+
 
 ---
 
@@ -10861,10 +10072,7 @@ f'(x) = rate of change
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Curve → slope at each point = change rate
-Peak point → slope = 0
-</pre>
+
 
 ---
 
@@ -10916,9 +10124,7 @@ Integration is used to calculate the area between a curve and the x-axis over a 
 For positive functions, this area is directly given by a definite integral.
 </p>
 
-<pre>
-∫ f(x) dx = area under curve
-</pre>
+
 
  It is the reverse process of differentiation and accumulates infinitely small slices into a total area.
 
@@ -10964,14 +10170,7 @@ For positive functions, this area is directly given by a definite integral.
 
 <h3> DIAGRAM</h3>
 
-<pre>
-y
-|
-|      ███████
-|    ██████████   ← area under curve
-|  █████████████
-|______________________ x
-</pre>
+
 
 ---
 
@@ -11055,9 +10254,7 @@ add(
 Indefinite integrals have NO limits and include a constant C because differentiation removes constants.
 </p>
 
-<pre>
-∫ f(x) dx = F(x) + C
-</pre>
+
 
  They represent a FAMILY of functions, not a single value.
 
@@ -11103,10 +10300,7 @@ Indefinite integrals have NO limits and include a constant C because differentia
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Family of curves:
-Same shape, different vertical shifts (C)
-</pre>
+
 
 ---
 
@@ -11204,9 +10398,7 @@ add(
 Definite integrals have limits and give a NUMERICAL value representing the total accumulation (often area under a curve).
 </p>
 
-<pre>
-∫[a to b] f(x) dx
-</pre>
+
 
  Unlike indefinite integrals, they do NOT include +C because limits remove the constant.
 
@@ -11253,12 +10445,7 @@ Definite integrals have limits and give a NUMERICAL value representing the total
 
 <h3> DIAGRAM</h3>
 
-<pre>
-y
-|     ██████
-|   ██████████  between a and b
-|__a__________b________ x
-</pre>
+
 
 ---
 
@@ -11387,10 +10574,7 @@ If dy/dx = f(x), then ∫f(x) dx = original function.
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Differentiation ↓
-Integration ↑ (reverse process)
-</pre>
+
 
 ---
 
@@ -11475,9 +10659,7 @@ add(
 Integration is used to accumulate small changes into a total result. It is essentially the reverse process of differentiation.
 </p>
 
-<pre>
-∫ f(x) dx → total accumulation
-</pre>
+
 <h3> WORKED EXAMPLES (MATHEMATICAL CALCULATION STYLE)</h3>
 
 <p><b>Example 1</b></p>
@@ -11600,9 +10782,7 @@ A differential equation is an equation that contains a function and its derivati
 It describes how a quantity changes continuously over time or space.
 </p>
 
-<pre>
-dy/dx = f(x, y)
-</pre>
+
 
  It models real-life change over time.
 <h3> EXAMPLES (MATHEMATICAL CALCULATION STYLE)</h3>
@@ -11642,15 +10822,7 @@ dy/dx = f(x, y)
 
 <h3> DIAGRAM (MATHEMATICAL INTERPRETATION)</h3>
 
-<pre>
-dy/dx = slope function
 
-x → increases → slope changes
-y → depends on x
-
-Solution evolves as:
-differential equation → integration → function
-</pre>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Population growth models</li>
@@ -11729,9 +10901,7 @@ add(
 Used when a quantity increases or decreases at a rate proportional to its current value.
 </p>
 
-<pre>
-dy/dt = ky
-</pre>
+
 
  k > 0 → growth  
  k < 0 → decay  
@@ -11770,14 +10940,7 @@ dy/dt = ky
 
 <h3> DIAGRAM (MATHEMATICAL INTERPRETATION)</h3>
 
-<pre>
-dy/dt = ky
 
-k > 0  → exponential growth:    y = Ce^(kt)
-k < 0  → exponential decay:     y = Ce^(kt)
-
-Behavior depends on sign of k
-</pre>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Bacteria reproduction</li>
@@ -11878,9 +11041,7 @@ Population change depends on birth rate, death rate, and resource limitations.
 This is commonly modeled using a logistic differential equation.
 </p>
 
-<pre>
-dP/dt = kP(1 - P/K)
-</pre>
+
 
  K = carrying capacity
 <h3> EXAMPLES (MATHEMATICAL CALCULATION STYLE)</h3>
@@ -11918,16 +11079,7 @@ dP/dt = kP(1 - P/K)
 
 <h3> DIAGRAM (MATHEMATICAL INTERPRETATION)</h3>
 
-<pre>
-dP/dt = kP(1 - P/K)
 
-Case 1: P → 0   → dP/dt ≈ kP (exponential growth)
-Case 2: P → K   → dP/dt = 0 (equilibrium)
-Case 3: P > 0   → growth slows due to (1 - P/K)
-
-Curve:
-fast growth → slow growth → saturation at K
-</pre>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Ecology systems</li>
@@ -12028,10 +11180,7 @@ add(
 Motion is described using derivatives of displacement, velocity, and acceleration.
 </p>
 
-<pre>
-v = ds/dt  
-a = dv/dt
-</pre>
+
 <h3> EXAMPLES (MATHEMATICAL CALCULATION STYLE)</h3>
 
 <p><b>Example 1:</b> velocity from position function</p>
@@ -12085,14 +11234,7 @@ a = dv/dt
 
 <h3> DIAGRAM</h3>
 
-<pre>
-s(t) = position
-v(t) = ds/dt
-a(t) = d²s/dt²
 
-t → differentiation chain:
-s(t) → v(t) → a(t)
-</pre>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Car braking systems</li>
@@ -12176,9 +11318,7 @@ add(
 These involve only the first derivative (dy/dx), describing how a quantity changes with respect to another variable.
 </p>
 
-<pre>
-dy/dx = f(x, y)
-</pre>
+
 ---
 
 <h3> EXAMPLES</h3>
@@ -12219,17 +11359,7 @@ Integrate: ln|y| = 3x + C → y = Ce^(3x)</p>
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Exponential growth curve:
 
-y
-|
-|        /
-|      /
-|    /
-|  /
-|_/________________ x
-</pre>
 
 ---
 <h3> REAL WORLD APPLICATION</h3>
@@ -12317,20 +11447,14 @@ add(
 A direct proof shows that a statement is true by starting from known facts, definitions, or axioms and applying logical steps until the conclusion is reached.
 </p>
 
-<pre>
-Given facts → logical reasoning → conclusion 
-</pre>
+
 
  No assumptions of falsehood and no contradiction—just clear step-by-step deduction.
 
 ---
 
 <h3> CORE IDEA</h3>
-<pre>
-Start with true statement
-Apply definitions and rules
-Reach required result
-</pre>
+
 
 ---
 
@@ -12365,9 +11489,7 @@ Reach required result
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Start → apply definitions → logical steps → conclusion 
-</pre>
+
 
 ---
 
@@ -12455,19 +11577,12 @@ add(
 Proof by contradiction works by assuming that the statement is false, then logically showing that this assumption leads to an impossibility (a contradiction). Therefore, the original statement must be true.
 </p>
 
-<pre>
-Assume statement is false → logical contradiction  → statement is true 
-</pre>
+
 
 ---
 
 <h3> CORE IDEA</h3>
-<pre>
-1. Assume opposite of what you want to prove
-2. Follow logical consequences
-3. Reach contradiction
-4. Conclude original statement is true
-</pre>
+
 
 ---
 
@@ -12504,9 +11619,7 @@ Assume statement is false → logical contradiction  → statement is true
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Assume false → logical steps → contradiction  → conclusion true 
-</pre>
+
 
 ---
 
@@ -12596,21 +11709,13 @@ Proof by induction is a method used to prove that a statement is true for all na
 It works by proving a starting case and then showing the rule holds step by step.
 </p>
 
-<pre>
-Step 1: Base case (n = 1)
-Step 2: Assume true for n = k
-Step 3: Prove for n = k + 1
-</pre>
+
 
 ---
 
 <h3> CORE STRUCTURE</h3>
 
-<pre>
-1. Base Case: Show true for first value
-2. Inductive Hypothesis: Assume true for n = k
-3. Inductive Step: Prove true for n = k + 1
-</pre>
+
 
 ---
 
@@ -12645,9 +11750,7 @@ Step 3: Prove for n = k + 1
 
 <h3> DIAGRAM</h3>
 
-<pre>
-n=1  → assume n=k  → prove n=k+1  → holds for all n
-</pre>
+
 
 ---
 
@@ -12736,17 +11839,12 @@ add(
 Mathematical logic uses structured reasoning based on TRUE/FALSE statements. A logical argument connects premises to conclusions in a valid sequence.
 </p>
 
-<pre>
-P → Q (if P then Q)
-If premise is true, conclusion must follow
-</pre>
+
 
 ---
 
 <h3> KEY IDEA</h3>
-<pre>
-Premise (P) → Rule → Conclusion (Q)
-</pre>
+
 
 ---
 
@@ -12779,10 +11877,7 @@ Premise (P) → Rule → Conclusion (Q)
 
 <h3> DIAGRAM</h3>
 
-<pre>
-P → Q → R → Conclusion
-(logical chain reasoning)
-</pre>
+
 
 ---
 
@@ -12864,9 +11959,7 @@ Proofs ensure that mathematical statements are always correct and reliable. They
 ---
 
 <h3> CORE IDEA</h3>
-<pre>
-Statement → Logical steps → Proof → Guaranteed truth 
-</pre>
+
 
 ---
 
@@ -12898,9 +11991,7 @@ Statement → Logical steps → Proof → Guaranteed truth
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Claim → Logical reasoning → Proof → Verified truth 
-</pre>
+
 
 ---
 
@@ -12989,21 +12080,13 @@ Logic statements are used to represent TRUE or FALSE conditions.
 They are the foundation of computer decision-making and digital circuits.
 </p>
 
-<pre>
-AND (∧) → both must be true  
-OR (∨) → at least one true  
-NOT (¬) → reverses truth value
-</pre>
+
 
 ---
 
 <h3> TRUTH RULES</h3>
 
-<pre>
-P AND Q → true only if both are true
-P OR Q  → true if at least one is true
-NOT P   → flips truth value
-</pre>
+
 
 ---
 
@@ -13034,11 +12117,7 @@ NOT P   → flips truth value
 
 <h3> DIAGRAM</h3>
 
-<pre>
-AND → both must pass 
-OR  → at least one passes 
-NOT → flips value (T ↔ F)
-</pre>
+
 
 ---
 
@@ -13125,23 +12204,13 @@ add(
 Truth tables are used in logic to display all possible truth values of a logical expression based on its inputs.
 </p>
 
-<pre>
-P | Q | P AND Q
-T | T | T
-T | F | F
-F | T | F
-F | F | F
-</pre>
+
 
 ---
 
 <h3> KEY LOGIC OPERATORS</h3>
 
-<pre>
-AND: true only if both are true
-OR: true if at least one is true
-NOT: reverses truth value
-</pre>
+
 
 ---
 
@@ -13172,14 +12241,7 @@ NOT: reverses truth value
 
 <h3> DIAGRAM</h3>
 
-<pre>
-All combinations → output column
-P Q → result
-T T → T
-T F → F
-F T → F
-F F → F
-</pre>
+
 
 ---
 
@@ -13286,18 +12348,12 @@ add(
 Combinatorics is the study of counting arrangements and selections of objects without listing them one by one.
 </p>
 
-<pre>
-n! = n × (n−1) × (n−2) × ... × 1
-</pre>
+
 
 ---
 
 <h3> KEY FORMULAS</h3>
-<pre>
-Factorial: n!
-Permutations: nPr = n! / (n−r)!
-Combinations: nCr = n! / (r!(n−r)!)
-</pre>
+
 
 ---
 
@@ -13330,10 +12386,7 @@ Combinations: nCr = n! / (r!(n−r)!)
 
 <h3> DIAGRAM</h3>
 
-<pre>
-ABC → ACB → BAC → BCA → CAB → CBA
-(total arrangements = 6)
-</pre>
+
 
 ---
 
@@ -13469,12 +12522,7 @@ A node represents an object, while an edge represents a connection between objec
 
 <h3> DIAGRAM</h3>
 
-<pre>
-A —— B —— C
- \         /
-   —— D ——
-(nodes connected by edges)
-</pre>
+
 
 ---
 
@@ -13622,10 +12670,7 @@ It must be clear, finite, and effective.
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Start → Step 1 → Step 2 → Decision → End
-clear logical flow of instructions
-</pre>
+
 
 ---
 
@@ -13719,12 +12764,7 @@ Divisibility rules help determine if a number can be divided exactly by another 
 They allow quick checking without long division.
 </p>
 
-<pre>
-2 → last digit even  
-3 → sum of digits divisible by 3  
-5 → ends in 0 or 5  
-10 → ends in 0
-</pre>
+
 
 ---
 
@@ -13752,10 +12792,7 @@ They allow quick checking without long division.
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Number → Rule check → divisible / not divisible
-fast mental test system
-</pre>
+
 
 ---
 
@@ -13840,9 +12877,7 @@ Modular arithmetic deals with remainders after division.
 It is like clock arithmetic where values “wrap around” after reaching a fixed number.
 </p>
 
-<pre>
-a mod n = remainder when a is divided by n
-</pre>
+
 
 ---
 
@@ -13869,11 +12904,7 @@ a mod n = remainder when a is divided by n
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Clock:
-12 → 1 → 2 → 3 → ... → 11 → back to 12
-(repeats cycle)
-</pre>
+
 
 ---
 
@@ -13967,12 +12998,7 @@ Prime numbers are numbers greater than 1 with only two factors: 1 and itself.
 <p><b>Final Answer:</b> 4 is NOT prime (it is composite)</p>
 <h3> DIAGRAM</h3>
 
-<pre>
-Numbers:
-1 2 3 4 5 6 7 8 9 10
-   P   C P C P   C
-(P = Prime, C = Composite)
-</pre>
+
 
 ---
 
@@ -14074,10 +13100,7 @@ add(
 Two numbers are congruent if they give the same remainder when divided by a number.
 </p>
 
-<pre>
-a ≡ b (mod n)
-means a and b leave the same remainder when divided by n
-</pre>
+
 
 ---
 
@@ -14106,10 +13129,7 @@ means a and b leave the same remainder when divided by n
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Divide → same remainder → congruent
-a mod n = b mod n
-</pre>
+
 
 ---
 
@@ -14241,13 +13261,7 @@ Cryptography uses modular arithmetic, prime numbers, and number theory to secure
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Plain Text (M)
-      ↓  Encryption (mod / exponent)
-Cipher Text (C)
-      ↓  Decryption (inverse operation)
-Plain Text (M)
-</pre>
+
 
 ---
 <h3> REAL WORLD APPLICATION</h3>
@@ -14332,13 +13346,7 @@ add(
 A group is a set of elements combined with an operation that follows specific rules.
 </p>
 
-<pre>
-A group (G, *) must satisfy:
-1. Closure
-2. Associativity
-3. Identity element
-4. Inverse element
-</pre>
+
 ---
 
 <h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>
@@ -14399,15 +13407,7 @@ A group (G, *) must satisfy:
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Group Structure Check:
 
-Closure 
-Associativity 
-Identity 
-Inverse 
-→ MUST ALL HOLD
-</pre>
 
 ---
 <h3> REAL WORLD APPLICATION</h3>
@@ -14562,13 +13562,7 @@ A ring is a set with two operations (+ and ×). A field is a stronger structure 
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Integers (ℤ) → Ring only
-Rationals (ℚ) → Field
-Mod p (ℤₚ) → Field if p is prime
 
-Ring ⊂ Field ⊂ Number Systems
-</pre>
 
 ---
 <h3> REAL WORLD APPLICATION</h3>
@@ -14655,9 +13649,7 @@ add(
 Symmetry transformations (rotation, reflection, translation) form mathematical structures called groups because they preserve structure while changing position.
 </p>
 
-<pre>
-Object → Transformation → Same Structure (Invariant)
-</pre>
+
 
 ---
 
@@ -14699,19 +13691,7 @@ Object → Transformation → Same Structure (Invariant)
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Square symmetry:
 
-   ↻ 90°
- ┌─────┐
- │    │  → unchanged
- └─────┘
-
-Axes:
-  | vertical line
-  — horizontal line
-  \ diagonal lines
-</pre>
 
 ---
 <h3> REAL WORLD APPLICATION</h3>
@@ -14797,9 +13777,7 @@ add(
 A group operation is a rule that combines two elements of a set to produce another element in the same set. For a structure to be a group, it must satisfy closure, associativity, identity, and inverses.
 </p>
 
-<pre>
-a * b → element in same set G
-</pre>
+
 
 ---
 
@@ -14838,9 +13816,7 @@ a * b → element in same set G
 
 <h3> DIAGRAM</h3>
 
-<pre>
-a * b = a + b → result ∈ Z (closed system)
-</pre>
+
 
 ---
 
@@ -14925,9 +13901,7 @@ add(
 Abstract algebra studies mathematical structures such as groups, rings, and fields. It focuses on how operations behave rather than just numerical values, making it essential in modern computing, physics, and cryptography.
 </p>
 
-<pre>
-Groups → Rings → Fields → Applied Systems (Cryptography, Physics, Computing)
-</pre>
+
 
 ---
 
@@ -14974,9 +13948,7 @@ Groups → Rings → Fields → Applied Systems (Cryptography, Physics, Computin
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Groups → Rings → Fields → Cryptography → Computing & Physics
-</pre>
+
 
 ---
 
@@ -15062,9 +14034,7 @@ add(
 Cryptography is the science of securing information using mathematical techniques so that only authorized users can read it. It is the foundation of digital security systems.
 </p>
 
-<pre>
-Plaintext → Encryption → Ciphertext → Decryption → Plaintext
-</pre>
+
 
 ---
 
@@ -15112,9 +14082,7 @@ Plaintext → Encryption → Ciphertext → Decryption → Plaintext
 
 <h3> DIAGRAM</h3>
 
-<pre>
-User A →  Encryption → Internet →  Decryption → User B
-</pre>
+
 
 ---
 
@@ -15165,11 +14133,7 @@ add(
 Cryptography uses modular arithmetic because it creates repeating (cyclic) number systems that are difficult to reverse without the key. It keeps numbers within a fixed range, which is essential for encryption algorithms.
 </p>
 
-<pre>
-(a + b) mod n
-(a × b) mod n
-a^k mod n
-</pre>
+
 
 ---
 
@@ -15214,10 +14178,7 @@ a^k mod n
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Cycle mod 5:
-0 → 1 → 2 → 3 → 4 → 0 → repeat
-</pre>
+
 
 ---
 
@@ -15270,9 +14231,7 @@ add(
 RSA is a public-key cryptography system based on the difficulty of factoring large prime numbers. It uses two keys: a public key for encryption and a private key for decryption.
 </p>
 
-<pre>
-Plaintext → Encrypt (Public Key) → Ciphertext → Decrypt (Private Key) → Plaintext
-</pre>
+
 
 ---
 
@@ -15284,11 +14243,7 @@ Plaintext → Encrypt (Public Key) → Ciphertext → Decrypt (Private Key) → 
 <p><b>Step 1:</b> Compute n = p × q = 3 × 11 = 33</p>
 <p><b>Step 2:</b> Apply formula C = M^e mod n</p>
 
-<pre>
-C = 4^3 mod 33
-C = 64 mod 33
-C = 31
-</pre>
+
 
 <p><b>Final Answer:</b> Ciphertext = 31</p>
 
@@ -15314,13 +14269,7 @@ C = 31
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Plaintext (M)
-   ↓ encryption (M^e mod n)
-Ciphertext (C)
-   ↓ decryption
-Plaintext recovered
-</pre>
+
 
 ---
 
@@ -15371,9 +14320,7 @@ add(
 Hashing converts data into a fixed-size value (hash) using a mathematical function. It is a one-way process, meaning the original input cannot be recovered from the output.
 </p>
 
-<pre>
-Data → Hash Function → Fixed-size Hash Output
-</pre>
+
 
 ---
 
@@ -15406,9 +14353,7 @@ Data → Hash Function → Fixed-size Hash Output
 
 <h3> DIAGRAM</h3>
 
-<pre>
-Password → Hash Function → 9f3a2c7d... (fixed output)
-</pre>
+
 
 ---
 
@@ -15494,9 +14439,7 @@ add(
 Cryptography protects digital communication and financial systems by converting readable data into secure formats that only authorized users can access.
 </p>
 
-<pre>
-Plain Text → Encryption → Cipher Text → Decryption → Plain Text
-</pre>
+
 
 ---
 
@@ -15538,9 +14481,7 @@ Plain Text → Encryption → Cipher Text → Decryption → Plain Text
 
 <h3> DIAGRAM</h3>
 
-<pre>
-User → Encryption → Internet → Decryption → Receiver
-</pre>
+
 
 ---
 
@@ -15626,7 +14567,7 @@ add(
 Game theory studies strategic interactions where the outcome of one person depends on the choices of others.
 It is used to analyze competition, cooperation, and decision-making.
 </p>
-<pre>Players → Strategies → Payoffs → Outcome</pre>
+
 <h3> KEY TERMS</h3>
 <ul>
 <li><b>Player:</b> decision maker</li>
@@ -15662,16 +14603,7 @@ It is used to analyze competition, cooperation, and decision-making.
 <p><b>Step 3:</b> Compare outcomes</p>
 <p><b>Final Answer:</b> B has higher total payoff (9)</p>
 <h3> DIAGRAM</h3>
-<pre>
-Payoff Matrix:
 
-        B1     B2
-A1     (6,3)  (2,5)
-A2     (4,1)  (8,9)
-
-→ Players choose highest payoff
-→ Strategy interaction decides outcome
-</pre>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Business competition</li>
@@ -15755,12 +14687,7 @@ A payoff matrix shows all possible outcomes for players based on the strategies 
 Each cell represents the result (payoff) for each player.
 </p>
 <h3> EXAMPLE MATRIX</h3>
-<pre>
-          B
-        L     R
-A   L (3,2) (1,4)
-    R (0,0) (5,1)
-</pre>
+
 <h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>
 <p><b>Example 1</b></p>
 <p><b>Question:</b> What is the payoff when A chooses L and B chooses R?</p>
@@ -15782,10 +14709,7 @@ A   L (3,2) (1,4)
 <p><b>Step 2:</b> Identify maximum value</p>
 <p><b>Final Answer:</b> A gets highest payoff (5) at (R, R)</p>
 <h3> DIAGRAM</h3>
-<pre>
-Matrix = strategic outcome grid
-Each cell = (A payoff, B payoff)
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Business pricing competition</li>
@@ -15869,12 +14793,7 @@ A Nash equilibrium occurs when no player can improve their payoff by changing st
 <h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Find the Nash equilibrium in the payoff matrix:</p>
-<pre>
-          B
-        L        R
-A   L  (2,2)   (0,3)
-    R  (3,0)   (1,1)
-</pre>
+
 <p><b>Step 1:</b> Find best response for Player A (row player)</p>
 <ul>
   <li>If B chooses L → A compares 2 vs 3 → chooses R (3 > 2)</li>
@@ -15933,13 +14852,7 @@ A   L  (2,2)   (0,3)
 <p><b>Final Answer:</b> Nash equilibrium is about stability, not total maximum payoff</p>
 <br>
 <h3> DIAGRAM</h3>
-<pre>
-Best response arrows:
-A → chooses best row
-B → chooses best column
-Only intersection of best responses = equilibrium point
-(R, R)
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Market price stability</li>
@@ -16028,12 +14941,7 @@ A dominant strategy is a strategy that gives a player the best payoff no matter 
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Find the dominant strategy for Player A:</p>
 
-<pre>
-          B
-        L        R
-A   L  (2,1)   (1,0)
-    R  (3,2)   (4,1)
-</pre>
+
 <p><b>Step 1:</b> Compare A’s payoffs when B chooses L</p>
 <p>A gets 2 (L) vs 3 (R) → 3 > 2 so R is better</p>
 <p><b>Step 2:</b> Compare A’s payoffs when B chooses R</p>
@@ -16057,20 +14965,12 @@ A   L  (2,1)   (1,0)
 <p><b>Step 1:</b> Player A chooses R (dominant)</p>
 <p><b>Step 2:</b> Player B chooses L (dominant)</p>
 <p><b>Step 3:</b> Combine strategies</p>
-<pre>
-Outcome = (R, L)
-Payoff = (3,2)
-</pre>
+
 <p><b>Step 4:</b> Check stability</p>
 <p>No player can improve payoff by switching alone</p>
 <p><b>Final Answer:</b> (R, L) is the dominant strategy outcome</p>
 <h3> DIAGRAM</h3>
-<pre>
-Best strategy arrows:
-A: R dominates L → always choose R
-B: L dominates R → always choose L
-Result → (R, L)
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Business pricing decisions</li>
@@ -16163,15 +15063,7 @@ It studies how individuals or groups choose strategies when outcomes depend on o
 <h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>
 <p><b>Example 1</b></p>
 <p><b>Question:</b> Find the optimal pricing strategy using a simple payoff comparison:</p>
-<pre>
-Firm A prices: High (H), Low (L)
-Firm B prices: High (H), Low (L)
-Payoffs:
-(H,H) → (4,4)
-(H,L) → (1,6)
-(L,H) → (6,1)
-(L,L) → (3,3)
-</pre>
+
 <p><b>Step 1:</b> Compare Firm A payoffs</p>
 <ul>
   <li>If B chooses H → A gets 4 (H) vs 6 (L) → L is better</li>
@@ -16197,22 +15089,14 @@ Payoffs:
 <br>
 <p><b>Example 3</b></p>
 <p><b>Question:</b> Predict stable voting outcome using payoff logic:</p>
-<pre>
-Candidate strategies: Policy A, Policy B
-Voters prefer:
-A → 60 votes
-B → 40 votes
-</pre>
+
 <p><b>Step 1:</b> Compare total support</p>
 <p>A = 60, B = 40</p>
 <p><b>Step 2:</b> Identify dominant choice</p>
 <p>A receives higher payoff (votes)</p>
 <p><b>Final Answer:</b> Policy A is the stable winning strategy</p>
 <h3> DIAGRAM</h3>
-<pre>
-Strategic interaction flow:
-Players → choices → payoff calculation → best response → equilibrium
-</pre>
+
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Business competition strategies</li>
@@ -16281,9 +15165,7 @@ add(
 A fractal is a shape that repeats its pattern at different scales (self-similarity).
 Even when you zoom in, the structure looks similar.
 </p>
-<pre>
-Self-similarity = same pattern at different scales
-</pre>
+
 <h3> KEY IDEA</h3>
 <ul>
 <li>Infinite detail</li>
@@ -16321,12 +15203,7 @@ Self-similarity = same pattern at different scales
 <p><b>Step 3:</b> Detail increases infinitely with zoom</p>
 <p><b>Final Answer:</b> Because fractals have scaling complexity that produces non-integer (fractional) dimensions</p>
 <h3> DIAGRAM</h3>
-<pre>
-Iteration 1 → simple shape
-Iteration 2 → repeated branching
-Iteration 3 → more detailed repetition
-→ infinite self-similarity
-</pre>
+
 <h3> REAL WORLD APPLICATION (MATHEMATICAL VIEW)</h3>
 <ul>
 <li>Fractal dimension in coastlines (length increases with scale)</li>
@@ -16395,17 +15272,12 @@ add(
 <p>
 The Mandelbrot set is a famous fractal formed by repeatedly applying a simple mathematical rule:
 </p>
-<pre>
-z = z² + c
-</pre>
+
 <p>
 Each point is tested by iteration. Some values remain bounded (stable), while others grow infinitely (diverge).
 The boundary between these regions creates infinitely complex patterns.
 </p>
-<pre>
-Stable values  → stay bounded  
-Diverging values  → grow without limit
-</pre>
+
 <h3> KEY IDEAS</h3>
 <ul>
   <li>Generated using simple iterative equations</li>
@@ -16441,14 +15313,7 @@ Diverging values  → grow without limit
 <p><b>Final Answer:</b> Because iterative feedback creates infinitely detailed separation between stable and unstable points</p>
 <h3> DIAGRAM</h3>
 
-<pre>
-c values →
-| bounded (inside set) | boundary | diverges |
-        infinite zoom reveals new structure
 
-Zoom → more patterns → infinite detail
- boundary never ends
-</pre>
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>Computer-generated art and graphics</li>
@@ -16518,9 +15383,7 @@ add(
 Chaos theory is the study of systems that follow deterministic rules but show highly unpredictable behavior because they are extremely sensitive to initial conditions.
 Even very small differences at the start can lead to completely different outcomes over time.
 </p>
-<pre>
-Small change → amplified over time → large unpredictable outcome
-</pre>
+
 <h3> KEY IDEAS</h3>
 <ul>
   <li>Chaotic systems are not random; they are deterministic</li>
@@ -16554,11 +15417,7 @@ Small change → amplified over time → large unpredictable outcome
 <p><b>Step 3:</b> System does not settle to a fixed pattern</p>
 <p><b>Final Answer:</b> Because repeated nonlinear feedback amplifies small differences into unpredictable outcomes</p>
 <h3> DIAGRAM</h3>
-<pre>
-x₀ = 0.50 → 0.8 → ...
-x₀ = 0.51 → 0.79968 → ...
-tiny difference → large divergence over time
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>Weather forecasting systems</li>
@@ -16628,9 +15487,7 @@ add(
 The butterfly effect describes how very small changes in the initial conditions of a system can lead to extremely large and unpredictable outcomes over time.
 It is a key idea in chaos theory and explains why some systems are difficult to predict.
 </p>
-<pre>
-Small change → amplified over time → large effect
-</pre>
+
 <h3> KEY IDEAS</h3>
 <ul>
   <li>Small causes can lead to large consequences</li>
@@ -16672,13 +15529,7 @@ Small change → amplified over time → large effect
 <p>E₅ ≈ 0.005 × 2.48832 = 0.0124416</p>
 <p><b>Final Answer:</b> ≈ 0.01244</p>
 <h3> DIAGRAM</h3>
-<pre>
-Small change (0.01)
-        ↓
-  exponential growth
-        ↓
-Large difference over time
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>Climate and weather prediction</li>
@@ -16763,10 +15614,7 @@ add(
 Chaos theory studies systems that follow precise mathematical rules but behave in ways that appear random due to extreme sensitivity to initial conditions.
 Fractals describe patterns that repeat at different scales, creating complex structures from simple rules.
 </p>
-<pre>
-Simple rules → complex behavior
-Small change → large effect
-</pre>
+
 <h3> KEY IDEAS</h3>
 <ul>
   <li>Chaotic systems are deterministic, not truly random</li>
@@ -16807,11 +15655,7 @@ Small change → large effect
 <p><b>Final Answer:</b> S₁ = 2, S₂ = 4, S₃ = 8</p>
 <br>
 <h3> DIAGRAM</h3>
-<pre>
-Iteration rule → repeated application → complex structure
-Logistic map:
-x → x(1 − x) → nonlinear feedback → chaos
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>Weather forecasting systems</li>
@@ -16876,10 +15720,7 @@ add(
 Topology is a branch of mathematics that studies properties of shapes that remain unchanged under continuous deformation such as stretching, bending, or twisting, without tearing or cutting.
 It focuses on structure and connectivity rather than measurements like length, angle, or area.
 </p>
-<pre>
-Allowed  → stretch, bend, twist
-Not allowed  → tear, cut, glue
-</pre>
+
 <h3> KEY IDEAS</h3>
 <ul>
   <li>Size and angles are ignored</li>
@@ -16919,11 +15760,7 @@ Not allowed  → tear, cut, glue
 <p>Sphere = 2, Torus = 0</p>
 <p><b>Final Answer:</b> They are NOT topologically equivalent</p>
 <h3> DIAGRAM</h3>
-<pre>
-Sphere (χ = 2)  ≈  Cube (χ = 2)
-Torus (χ = 0)   ≠  Sphere (χ = 2)
-Invariant → Euler characteristic
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>Robotics path planning</li>
@@ -16992,10 +15829,7 @@ add(
 Deformation in topology refers to changing the shape of an object continuously without tearing, cutting, or gluing.
 The focus is on preserving structure rather than exact geometry.
 </p>
-<pre>
-Allowed  → stretch, bend, twist
-Not allowed  → tear, cut, glue
-</pre>
+
 <h3> WORKED EXAMPLES (MATHEMATICAL TOPOLOGY + DEFORMATION)</h3>
 <h4> Example 1: Euler Characteristic Check (Cube Deformation)</h4>
 <p><b>Question:</b> A cube is continuously deformed into a sphere. Does the Euler characteristic change?</p>
@@ -17026,11 +15860,7 @@ Not allowed  → tear, cut, glue
 <p>No cutting or gluing occurs</p>
 <p><b>Final Answer:</b> Yes, it is a valid continuous deformation</p>
 <h3> DIAGRAM</h3>
-<pre>
-Cube (χ=2) → Stretch → Sphere (χ=2)
-Torus (g=1) ≠ Sphere (g=0)
-Topology invariants remain unchanged under deformation
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>3D modeling and animation</li>
@@ -17100,10 +15930,7 @@ add(
 A space is connected if it exists as a single whole piece without separation, gaps, or isolated parts.
 In topology, connectedness focuses on whether points are all part of one unified structure.
 </p>
-<pre>
-Connected  → one piece (no gaps)
-Disconnected  → separated parts
-</pre>
+
 <h3> WORKED EXAMPLES (WITH MATHEMATICAL CONNECTION)</h3>
 <h4> Example 4: Connected Graph Check</h4>
 <p><b>Question:</b> Is the graph with edges {(1,2), (2,3), (3,4)} connected?</p>
@@ -17122,13 +15949,7 @@ Disconnected  → separated parts
 <p><b>Final Answer:</b> No, the graph is disconnected</p>
 <h4> Example 6: Connectedness via Adjacency Matrix</h4>
 <p><b>Question:</b> Determine if the graph is connected:</p>
-<pre>
-A = [
-  [0,1,0],
-  [1,0,1],
-  [0,1,0]
-]
-</pre>
+
 <p><b>Step 1:</b> Interpret matrix connections</p>
 <p>1 connects to 2</p>
 <p>2 connects to 1 and 3</p>
@@ -17137,11 +15958,7 @@ A = [
 <p><b>Step 3:</b> All nodes reachable</p>
 <p><b>Final Answer:</b> Graph is connected</p>
 <h4> DIAGRAM</h4>
-<pre>
-Connected:        1—2—3—4
-Disconnected:     1—2   3—4
-Matrix form shows reachability paths
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>Internet and communication networks</li>
@@ -17248,10 +16065,7 @@ add(
 A continuous transformation is a change that happens smoothly without breaks, jumps, tearing, or sudden interruptions.
 In topology, objects can be stretched, bent, or twisted as long as continuity is preserved.
 </p>
-<pre>
-Continuous  → smooth change (no breaks)
-Discontinuous  → jumps, cuts, or gaps
-</pre>
+
  <h3> WORKED EXAMPLES (WITH MATHEMATICAL / FUNCTION-BASED VIEW)</h3>
 <h4> Example 4: Continuity of a Function</h4>
 <p><b>Question:</b> Is f(x) = x² a continuous transformation on all real numbers?</p>
@@ -17273,12 +16087,7 @@ Discontinuous  → jumps, cuts, or gaps
 <p><b>Final Answer:</b> No, it is not continuous at x = 2</p>
 <h4> Example 6: Piecewise Continuity Check</h4>
 <p><b>Question:</b> Is the function continuous at x = 1?</p>
-<pre>
-f(x) =
-  x + 1,  x < 1
-  3,      x = 1
-  2x,     x > 1
-</pre>
+
 <p><b>Step 1:</b> Left-hand limit (x → 1⁻)</p>
 <p>f(x) = x + 1 → 2</p>
 <p><b>Step 2:</b> Right-hand limit (x → 1⁺)</p>
@@ -17289,12 +16098,7 @@ f(x) =
 <p>Limit = 2, but f(1) = 3</p>
 <p><b>Final Answer:</b> No, the function is not continuous at x = 1</p>
 <h3> DIAGRAM</h3>
-<pre>
-Continuous:        smooth curve
-f(x) = x²        ↗↗↗↗
-Discontinuous:     jump / break
-f(x) = 1/(x-2)    →  ||  ←
-</pre>
+
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
   <li>Computer animation and graphics</li>
@@ -17399,11 +16203,7 @@ add(
 <p>
 Topology is a branch of mathematics that studies properties of shapes and spaces that remain unchanged under continuous deformation such as stretching or bending, without tearing or cutting.
 </p>
-<pre>
-Shape changes  (stretch, bend)
-Structure preserved 
-Size ignored  (not important)
-</pre>
+
 <h3> REAL-WORLD APPLICATIONS</h3>
 <ul>
   <li>DNA structure and molecular modeling</li>
@@ -17429,10 +16229,7 @@ Size ignored  (not important)
 <p><b>Step 2:</b> Focus is on connections, not physical distance</p>
 <p><b>Final Answer:</b> It helps analyze how systems are connected rather than their exact layout</p>
 <h3> DIAGRAM</h3>
-<pre>
-Start → flexible path → Goal
-(no fixed distance, only connection matters)
-</pre>
+
 
 `,
   [
@@ -17491,10 +16288,7 @@ add(
 Numerical methods are mathematical techniques used to find approximate solutions to problems that cannot be solved exactly using algebraic methods.
 They are essential in real-world computation where exact answers are impossible or impractical.
 </p>
-<pre>
-Exact solution  (sometimes impossible)
-Approximate solution  (practical and usable)
-</pre>
+
 <h3> KEY IDEAS</h3>
 <ul>
   <li>Uses repeated calculations (iteration)</li>
@@ -17534,10 +16328,7 @@ Approximate solution  (practical and usable)
 <p><b>Step 5:</b> x₁ = 5/2</p>
 <p><b>Final Answer:</b> x₁ = 2.5</p>
 <h3> DIAGRAM</h3>
-<pre>
-Initial Guess → Iteration → Better Approximation
-      x₀            x₁              x₂
-</pre>
+
 `,
   [
     {
@@ -17616,7 +16407,7 @@ add(
 Iteration is a process of repeating calculations using previous results to get closer to the correct answer.
 Each new value is generated from the previous one until convergence is achieved.
 </p>
-<pre>xₙ₊₁ = f(xₙ)</pre>
+
 <p>The process continues until values become stable (converge).</p>
 <h3> WORKED EXAMPLES</h3>
 <h4> Example 1: Fixed Point Iteration</h4>
@@ -17668,11 +16459,7 @@ Each new value is generated from the previous one until convergence is achieved.
 <p>|0.08| = 0.08</p>
 <p><b>Final Answer:</b> Absolute error = 0.08</p>
 <h3> DIAGRAM</h3>
-<pre>
-x₀ → x₁ → x₂ → x₃ → stable value
-2    2.25   2.236   2.236...
-(convergence through iteration)
-</pre>
+
 `,
   [
     {
@@ -17732,7 +16519,7 @@ add(
 
 <h3> DEEP NOTES</h3>
 <p>Root-finding methods are numerical techniques used to estimate the value of x where a function equals zero.</p>
-<pre>f(x) = 0  →  root of the equation</pre>
+
 <p>One common idea is that if f(a) and f(b) have opposite signs, a root lies between a and b.</p>
 <h3> WORKED EXAMPLES</h3>
 <h4> Example 1: Solving a Simple Root</h4>
@@ -17778,17 +16565,7 @@ add(
 <p>x₁ = 2.25</p>
 <p><b>Final Answer:</b> Approximate root after one iteration = 2.25</p>
 <h3> DIAGRAM</h3>
-<pre>
-f(x)
 
- ^
- |        /
- |       /
- |------/------→ x-axis
- |     /
- |    • root
- |
-</pre>
 `,
   [
     {
@@ -17848,10 +16625,7 @@ add(
 Error is the difference between the exact value and an approximate value.
 It shows how accurate a mathematical approximation is.
 </p>
-<pre>
-Error = Exact value − Approximate value
-Absolute Error = |Exact − Approximate|
-</pre>
+
 <h3> WORKED EXAMPLES</h3>
 <h4> Example 1: Basic Error Calculation</h4>
 <p><b>Question:</b> Exact value = 15, Approximate value = 14.6. Find the error.</p>
@@ -17890,11 +16664,7 @@ Absolute Error = |Exact − Approximate|
 <p>Exact Value = 13</p>
 <p><b>Final Answer:</b> Exact value = 13</p>
 <h3> DIAGRAM</h3>
-<pre>
-Exact Value
-     ●-------------------● Approximate Value
-           error gap
-</pre>
+
 `,
   [
     {
@@ -18002,11 +16772,7 @@ They are widely used in science, engineering, computing, and data modelling.
 <p>0.05 × 100% = 5%</p>
 <p><b>Final Answer:</b> Percentage error = 5%</p>
 <h3> DIAGRAM</h3>
-<pre>
-Approximation Process:
-Initial Guess → Correction → Better Estimate
-      8.4         -0.15         8.25
-</pre>
+
 `,
   [
     {

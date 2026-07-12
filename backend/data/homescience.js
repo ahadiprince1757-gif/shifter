@@ -17,9 +17,7 @@ add("homescience", "food_preparation",
 <h4>3. Steaming</h4>
 <p>Cooking using steam without direct water contact.</p>
 <p><b>Example:</b> Vegetables, dumplings.</p>
-<pre>
-Water boils → Steam rises → Food cooks
-</pre>
+
 <h4>4. Roasting</h4>
 <p>Cooking food using dry heat (fire/oven).</p>
 <p><b>Example:</b> Meat, maize.</p>
@@ -35,12 +33,7 @@ Water boils → Steam rises → Food cooks
 <li>Spoons – stirring</li>
 <li>Oven – baking</li>
 </ul>
-<pre>
-Knife → Cutting
-Pot → Boiling
-Pan → Frying
-Oven → Baking
-</pre>
+
 <hr>
 <h3> KITCHEN SAFETY RULES</h3>
 <ul>
@@ -82,11 +75,7 @@ Oven → Baking
 <p>Rice + beans + vegetables</p>
 <h4>Dinner Example</h4>
 <p>Ugali + meat + soup</p>
-<pre>
-Breakfast → Energy start
-Lunch → Main meal
-Dinner → Light meal
-</pre>
+
 `,
 [
 {
@@ -149,10 +138,7 @@ add("homescience", "food_preservation",
 <li>Heat and sunlight</li>
 <li>Insects and pests</li>
 </ul>
-<pre>
-Food Spoilage Cycle:
-Microbes → Growth → Decomposition → Bad smell/decay
-</pre>
+
 <hr>
 <h3> DRYING METHOD</h3>
 <p>Drying removes moisture from food to stop bacteria growth.</p>
@@ -162,9 +148,7 @@ Microbes → Growth → Decomposition → Bad smell/decay
 <li>Dry grains (maize, beans)</li>
 <li>Dried fruits</li>
 </ul>
-<pre>
-Food → Sun/heat → Moisture removed → Long storage life
-</pre>
+
 <hr>
 <h3> FREEZING METHOD</h3>
 <p>Freezing preserves food by storing it at very low temperatures.</p>
@@ -174,9 +158,7 @@ Food → Sun/heat → Moisture removed → Long storage life
 <li>Frozen vegetables</li>
 <li>Ice cream storage</li>
 </ul>
-<pre>
-Food → Freezer (-18°C) → Microbes inactive → Food preserved
-</pre>
+
 <hr>
 <h3> SALTING & SMOKING</h3>
 <h4>Salting</h4>
@@ -191,9 +173,7 @@ Food → Freezer (-18°C) → Microbes inactive → Food preserved
 <hr>
 <h3> CANNING & BOTTLING</h3>
 <p>Food is sealed in airtight containers and heated to kill microorganisms.</p>
-<pre>
-Food → Container → Heat sterilization → Airtight seal → Long storage
-</pre>
+
 <h4>Examples:</h4>
 <ul>
 <li>Canned beans</li>
@@ -208,19 +188,10 @@ Food → Container → Heat sterilization → Airtight seal → Long storage
 <li>Fermented milk</li>
 <li>Bread dough rising</li>
 </ul>
-<pre>
-Sugars → Bacteria/Yeast → Acid/Alcohol → Preserved food
-</pre>
+
 <hr>
 <h3> COMPARISON OF METHODS</h3>
-<pre>
-Drying      → Removes water
-Freezing    → Stops microbes
-Salting     → Draws out moisture
-Smoking     → Heat + chemicals
-Canning     → Airtight + heat
-Fermentation → Microbial action
-</pre>
+
 <hr>
 `,
 [
@@ -280,12 +251,7 @@ add("homescience", "home_management",
 <li>Children → cleaning, studying, helping</li>
 <li>Extended family → support when needed</li>
 </ul>
-<pre>
-Family System:
-Father → Income
-Mother → Care + management
-Children → Support tasks
-</pre>
+
 <hr>
 <h3>‍‍ FAMILY RESPONSIBILITIES</h3>
 <ul>
@@ -305,9 +271,7 @@ Children → Support tasks
 <li>Compromise</li>
 <li>Mediation by elders</li>
 </ul>
-<pre>
-Conflict → Discussion → Understanding → Solution
-</pre>
+
 <hr>
 <h3> HOME ORGANIZATION SKILLS</h3>
 <ul>
@@ -317,9 +281,7 @@ Conflict → Discussion → Understanding → Solution
 <li>Labeling storage items</li>
 <li>Planning daily routines</li>
 </ul>
-<pre>
-Organized Home = Less stress + Efficiency
-</pre>
+
 <hr>
 <h3> WORK SIMPLIFICATION TECHNIQUES</h3>
 <p>These are methods used to make household tasks easier and faster.</p>
@@ -330,10 +292,7 @@ Organized Home = Less stress + Efficiency
 <li>Reducing unnecessary movement</li>
 <li>Planning work before starting</li>
 </ul>
-<pre>
-Before: Slow manual work
-After: Efficient planned work
-</pre>
+
 <hr>
 <h3> LABOR-SAVING DEVICES</h3>
 <p>These are machines that reduce human effort in the home.</p>
@@ -344,11 +303,7 @@ After: Efficient planned work
 <li>Vacuum cleaner</li>
 <li>Gas/electric cooker</li>
 </ul>
-<pre>
-Human effort ↓
-Machine support ↑
-Efficiency ↑
-</pre>
+
 <hr>
 <h3> IMPORTANCE OF HOME MANAGEMENT</h3>
 <ul>
@@ -411,15 +366,7 @@ add("homescience", "child_care_development",
   `<h2>Child Care & Development</h2>
 <p>Child care and development is the study of how children grow physically, emotionally, socially, and mentally, and how to provide proper care for healthy development.</p>
 <h3> STAGES OF CHILD DEVELOPMENT</h3>
-<pre>
-Infancy (0–2 years)
-↓
-Early Childhood (2–6 years)
-↓
-Middle Childhood (6–12 years)
-↓
-Adolescence (12–18 years)
-</pre>
+
 <hr>
 <h3> TYPES OF DEVELOPMENT</h3>
 <h4>1. Physical Development</h4>
@@ -443,13 +390,7 @@ Adolescence (12–18 years)
 <hr>
 <h3> CHILD NUTRITION</h3>
 <p>Children need a balanced diet for proper growth and development.</p>
-<pre>
-Carbohydrates → Energy
-Proteins → Growth
-Vitamins → Protection
-Minerals → Body strength
-Water → Body functions
-</pre>
+
 <h4>Example Diet:</h4>
 <p>Milk + eggs + fruits + vegetables + cereals</p>
 <hr>
@@ -460,9 +401,7 @@ Water → Body functions
 <li>Measles vaccine → Prevents measles</li>
 <li>DPT → Prevents diphtheria, pertussis, tetanus</li>
 </ul>
-<pre>
-Vaccine → Antibody formation → Disease protection
-</pre>
+
 <hr>
 <h3> BABY CARE PRACTICES</h3>
 <ul>
@@ -481,9 +420,7 @@ Vaccine → Antibody formation → Disease protection
 <li>Malaria</li>
 <li>Pneumonia</li>
 </ul>
-<pre>
-Germs → Weak immunity → Disease → Treatment/prevention
-</pre>
+
 <hr>
 <h3> TOYS & LEARNING DEVELOPMENT</h3>
 <p>Toys help children develop mental and physical skills.</p>
@@ -493,9 +430,7 @@ Germs → Weak immunity → Disease → Treatment/prevention
 <li>Physical toys (balls, skipping ropes)</li>
 <li>Creative toys (drawing kits)</li>
 </ul>
-<pre>
-Play → Learning → Brain development
-</pre>
+
 <hr>
 <h3> IMPORTANCE OF CHILD CARE</h3>
 <ul>
@@ -572,9 +507,7 @@ add("homescience", "laundry_work",
 <li>Iron – removing wrinkles</li>
 <li>Cloth pegs – hanging clothes</li>
 </ul>
-<pre>
-Clothes → Soap → Water → Washing → Drying → Ironing → Storage
-</pre>
+
 <hr>
 <h3> WASHING METHODS</h3>
 <h4>1. Hand Washing</h4>
@@ -588,10 +521,7 @@ Clothes → Soap → Water → Washing → Drying → Ironing → Storage
 <li>Uses electric washing machines</li>
 <li>Faster and more efficient</li>
 </ul>
-<pre>
-Hand Wash = Gentle care
-Machine Wash = Fast cleaning
-</pre>
+
 <hr>
 <h3> STAIN REMOVAL TECHNIQUES</h3>
 <h4>Types of stains:</h4>
@@ -608,9 +538,7 @@ Machine Wash = Fast cleaning
 <li>Rubbing gently with brush</li>
 <li>Cold water for blood stains</li>
 </ul>
-<pre>
-Stain → Identify type → Apply treatment → Wash → Dry
-</pre>
+
 <hr>
 <h3> IRONING TECHNIQUES</h3>
 <ul>
@@ -619,11 +547,7 @@ Stain → Identify type → Apply treatment → Wash → Dry
 <li>Iron inside out for delicate clothes</li>
 <li>Avoid burning fabric</li>
 </ul>
-<pre>
-Low heat → Silk
-Medium heat → Cotton
-High heat → Linen
-</pre>
+
 <hr>
 <h3> DRYING & STORAGE METHODS</h3>
 <h4>Drying:</h4>
@@ -637,9 +561,7 @@ High heat → Linen
 <li>Store in clean cupboards</li>
 <li>Use moth repellents</li>
 </ul>
-<pre>
-Wash → Dry → Iron → Fold → Store
-</pre>
+
 <hr>
 <h3> CARE LABELS ON CLOTHES</h3>
 <ul>
@@ -648,9 +570,7 @@ Wash → Dry → Iron → Fold → Store
 <li>Bleaching symbols → safe or unsafe</li>
 <li>Dry cleaning symbols → professional cleaning</li>
 </ul>
-<pre>
-Label = Instruction guide for clothing care
-</pre>
+
 <hr>
 <h3> IMPORTANCE OF LAUNDRY WORK</h3>
 <ul>
@@ -743,12 +663,7 @@ Household cleaning is the process of removing dirt, germs, stains, and unwanted 
   <li>Example: scouring powder, steel wool</li>
 </ul>
 <h4> Exam Summary</h4>
-<pre>
-Soap        → Removes dirt
-Detergent   → Deep cleaning
-Disinfectant→ Kills germs
-Abrasive    → Scrubs tough stains
-</pre>
+
 <hr>
 <h3> CLEANING TOOLS & EQUIPMENT (WITH FUNCTIONS)</h3>
 <ul>
@@ -759,12 +674,7 @@ Abrasive    → Scrubs tough stains
   <li><b>Dustpans:</b> Used for collecting swept dirt</li>
 </ul>
 <h4> Tool Function Link</h4>
-<pre>
-Broom → Removes dust
-Mop → Cleans wet surfaces
-Cloth → Wipes surfaces
-Brush → Removes stubborn stains
-</pre>
+
 <hr>
 <h3> CLEANING DIFFERENT SURFACES (METHODS)</h3>
 <h4>1. Floor Cleaning</h4>
@@ -786,11 +696,7 @@ Brush → Removes stubborn stains
   <li>Disinfect to kill bacteria</li>
 </ul>
 <h4> Exam Flow</h4>
-<pre>
-Floor → Sweep → Mop → Dry
-Glass → Spray → Wipe → Polish
-Kitchen → Clean → Disinfect → Maintain hygiene
-</pre>
+
 <hr>
 <h3> CLEANING SCHEDULES (TIME MANAGEMENT)</h3>
 <ul>
@@ -799,11 +705,7 @@ Kitchen → Clean → Disinfect → Maintain hygiene
   <li><b>Monthly:</b> Deep cleaning (mattresses, curtains, hidden areas)</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Daily → Maintenance cleaning  
-Weekly → Deep cleaning  
-Monthly → Intensive cleaning
-</pre>
+
 <hr>
 <h3> SAFETY WHEN USING CLEANING CHEMICALS</h3>
 <ul>
@@ -814,9 +716,7 @@ Monthly → Intensive cleaning
   <li>Always read product labels before use</li>
 </ul>
 <h4> Safety Rule</h4>
-<pre>
-Protect skin + Follow instructions + Avoid mixing chemicals = Safe cleaning
-</pre>
+
 <hr>
 <h3> IMPORTANCE OF HOUSEHOLD CLEANING</h3>
 <ul>
@@ -835,10 +735,7 @@ Protect skin + Follow instructions + Avoid mixing chemicals = Safe cleaning
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Household Cleaning = Hygiene + Tools + Chemicals + Safety
-Clean home → Healthy family → Disease prevention → Better living environment
-</pre>
+
 `,
 [
 {
@@ -921,10 +818,7 @@ Energy in the home refers to different sources used for cooking, lighting, heati
   <li>Readily available in rural areas but produces smoke</li>
 </ul>
 <h4> Classification Idea</h4>
-<pre>
-Renewable → Solar, Firewood (partially renewable if replanted)
-Non-renewable → Gas, Electricity (depends on source)
-</pre>
+
 <hr>
 <h3> KITCHEN FUEL TYPES (APPLICATION)</h3>
 <ul>
@@ -934,10 +828,7 @@ Non-renewable → Gas, Electricity (depends on source)
   <li>Firewood stoves (rural areas)</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Modern fuels → Electricity, Gas  
-Traditional fuels → Firewood, Charcoal
-</pre>
+
 <hr>
 <h3> ENERGY CONSERVATION METHODS (IMPORTANT)</h3>
 <ul>
@@ -948,9 +839,7 @@ Traditional fuels → Firewood, Charcoal
   <li>Maintain electrical devices regularly</li>
 </ul>
 <h4> Key Idea</h4>
-<pre>
-Energy conservation → Lower bills + Environmental protection
-</pre>
+
 <hr>
 <h3> SAFE USE OF ELECTRICITY (VERY IMPORTANT)</h3>
 <ul>
@@ -961,9 +850,7 @@ Energy conservation → Lower bills + Environmental protection
   <li>Keep children away from electrical outlets</li>
 </ul>
 <h4> Safety Rule</h4>
-<pre>
-Dry hands + Proper wiring + Avoid overload = Electrical safety
-</pre>
+
 <hr>
 <h3> ADVANTAGES & DISADVANTAGES (EXAM COMPARISON)</h3>
 <h4>Electricity</h4>
@@ -988,12 +875,7 @@ Dry hands + Proper wiring + Avoid overload = Electrical safety
 </ul>
 <hr>
 <h3> ENERGY COMPARISON TABLE</h3>
-<pre>
-Electricity → Efficient but costly and risky if misused
-Gas        → Fast but safety hazards
-Solar      → Clean but weather-dependent
-Firewood   → Cheap but polluting
-</pre>
+
 <hr>
 <h3> IMPORTANCE OF ENERGY MANAGEMENT</h3>
 <ul>
@@ -1012,10 +894,7 @@ Firewood   → Cheap but polluting
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Home Energy = Sources + Safety + Conservation + Efficiency
-Smart energy use → Lower cost + Safety + Sustainable living
-</pre>
+
 `,
 [
 {
@@ -1086,9 +965,7 @@ Consumer education is the process of learning how to make informed decisions whe
   <li><b>Right to redress:</b> Compensation or replacement when wronged</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Rights = Protection + Fair treatment in the market
-</pre>
+
 <hr>
 <h3> CONSUMER RESPONSIBILITIES (DETAILED)</h3>
 <ul>
@@ -1099,10 +976,7 @@ Rights = Protection + Fair treatment in the market
   <li>Avoiding impulsive or unnecessary buying</li>
 </ul>
 <h4> Exam Comparison</h4>
-<pre>
-Rights = What the consumer is entitled to
-Responsibilities = What the consumer must do
-</pre>
+
 <hr>
 <h3> PRODUCT LABELING (INTERPRETATION SKILLS)</h3>
 <p>
@@ -1117,9 +991,7 @@ Product labels provide essential information that helps consumers make informed 
   <li>Manufacturer details</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Label = Product identity + Safety information + Usage guide
-</pre>
+
 <h3> ADVERTISING (CRITICAL THINKING)</h3>
 <h4> Types of Advertising:</h4>
 <ul>
@@ -1141,9 +1013,7 @@ Label = Product identity + Safety information + Usage guide
   <li>Creates pressure to buy expensive goods</li>
 </ul>
 <h4> Exam Flow</h4>
-<pre>
-Advertisement → Awareness → Interest → Buying decision
-</pre>
+
 <hr>
 <h3> MARKET SCAMS & FRAUD (APPLICATION)</h3>
 <h4> Common Examples:</h4>
@@ -1161,9 +1031,7 @@ Advertisement → Awareness → Interest → Buying decision
   <li>Compare prices and product labels</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Awareness → Verification → Safe purchasing → Consumer protection
-</pre>
+
 <hr>
 <h3> QUALITY CONTROL (IMPORTANT CONCEPT)</h3>
 <p>
@@ -1175,9 +1043,7 @@ Quality control is the process of checking products to ensure they meet safety a
   <li>Protects consumers from harmful goods</li>
 </ul>
 <h4> Process Flow</h4>
-<pre>
-Production → Inspection → Testing → Approval → Market sale
-</pre>
+
 <h3> COMMON EXAM MISTAKES</h3>
 <ul>
   <li>Mixing rights with responsibilities</li>
@@ -1187,10 +1053,7 @@ Production → Inspection → Testing → Approval → Market sale
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Consumer Education = Rights + Responsibilities + Awareness + Protection
-Informed buyer → Smart decisions → Safe market → Fair trade system
-</pre>
+
 `,
 [
 {
@@ -1260,9 +1123,7 @@ Personal care and grooming refers to practices that maintain cleanliness, health
   <li>Regular hand washing especially before eating and after using the toilet</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Clean body → Removes germs → Prevents disease → Improves confidence
-</pre>
+
 <hr>
 <h3> ORAL HYGIENE (DETAILED)</h3>
 <p>Oral hygiene is the care of teeth, gums, and mouth to prevent dental diseases and maintain fresh breath.</p>
@@ -1274,9 +1135,7 @@ Clean body → Removes germs → Prevents disease → Improves confidence
   <li>Visit dentist regularly for check-ups</li>
 </ul>
 <h4> Exam Flow</h4>
-<pre>
-Sugar + bacteria → Acid → Tooth enamel damage → Cavities
-</pre>
+
 <hr>
 <h3> HAIR CARE (DETAILED)</h3>
 <ul>
@@ -1286,9 +1145,7 @@ Sugar + bacteria → Acid → Tooth enamel damage → Cavities
   <li>Keep hair neat, clean, and well-groomed</li>
 </ul>
 <h4> Key Idea</h4>
-<pre>
-Clean hair → Healthy scalp → Better appearance → Confidence
-</pre>
+
 <hr>
 <h3> SKIN CARE (DETAILED)</h3>
 <ul>
@@ -1298,9 +1155,7 @@ Clean hair → Healthy scalp → Better appearance → Confidence
   <li>Avoid harsh chemicals that damage skin cells</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Skin protection → Prevents infections + maintains appearance
-</pre>
+
 <hr>
 <h3> PERSONAL APPEARANCE & SELF-IMAGE</h3>
 <p>
@@ -1319,9 +1174,7 @@ Self-image is how a person sees themselves physically, emotionally, and socially
   <li>Social withdrawal</li>
 </ul>
 <h4> Exam Summary</h4>
-<pre>
-Good grooming → Positive self-image → Confidence → Social success
-</pre>
+
 <hr>
 <h3> EFFECTS OF POOR PERSONAL CARE (EXAM IMPORTANT)</h3>
 <ul>
@@ -1332,9 +1185,7 @@ Good grooming → Positive self-image → Confidence → Social success
   <li>Social rejection or isolation</li>
 </ul>
 <h4> Chain Effect</h4>
-<pre>
-Poor hygiene → Germ growth → Disease → Low confidence → Social problems
-</pre>
+
 <hr>
 <h3> IMPORTANCE OF PERSONAL CARE</h3>
 <ul>
@@ -1353,10 +1204,7 @@ Poor hygiene → Germ growth → Disease → Low confidence → Social problems
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Personal Care = Hygiene + Grooming + Health + Confidence
-Clean body → Healthy life → Positive self-image → Social success
-</pre>
+
 `,
 [
 {
@@ -1431,17 +1279,10 @@ Food science is the study of nutrients in food, how the body uses them, how food
   <li><b>Minerals:</b> Support body functions (e.g., calcium builds bones)</li>
 </ul>
 <h4> Examiner Summary</h4>
-<pre>
-Carbohydrates → Quick energy
-Proteins → Growth and repair
-Fats → Long-term energy storage
-Vitamins/Minerals → Protection and regulation
-</pre>
+
 <hr>
 <h3> DIGESTION PROCESS (WITH FUNCTIONS)</h3>
-<pre>
-Mouth → Esophagus → Stomach → Small Intestine → Large Intestine
-</pre>
+
 <h4> Detailed Explanation</h4>
 <ul>
   <li><b>Mouth:</b> Mechanical digestion (chewing) + chemical digestion (saliva breaks starch)</li>
@@ -1451,9 +1292,7 @@ Mouth → Esophagus → Stomach → Small Intestine → Large Intestine
   <li><b>Large Intestine:</b> Absorbs water and forms feces</li>
 </ul>
 <h4> Exam Flow</h4>
-<pre>
-Ingestion → Digestion → Absorption → Assimilation → Egestion
-</pre>
+
 <hr>
 <h3> FOOD TESTS (WITH PROCEDURES)</h3>
 <h4>1. Starch Test (Iodine)</h4>
@@ -1472,11 +1311,7 @@ Ingestion → Digestion → Absorption → Assimilation → Egestion
   <li><b>Result:</b> Translucent spot = fat present</li>
 </ul>
 <h4> Comparison Table</h4>
-<pre>
-Starch  → Blue-black
-Protein → Purple
-Fat     → Greasy transparent spot
-</pre>
+
 <hr>
 <h3> FOOD ENERGY VALUES (APPLICATION)</h3>
 <ul>
@@ -1485,9 +1320,7 @@ Fat     → Greasy transparent spot
   <li>Fats = 9 kcal/g</li>
 </ul>
 <h4> Exam Insight</h4>
-<pre>
-A diet high in fat provides more energy but increases health risks if excessive.
-</pre>
+
 <h4> Example Question</h4>
 <p><b>Q:</b> Why do fats provide more energy than carbohydrates?</p>
 <p><b>A:</b> Because fats contain more energy-rich bonds per gram than carbohydrates.</p>
@@ -1509,11 +1342,7 @@ A diet high in fat provides more energy but increases health risks if excessive.
   <li>Effect: Heart disease, diabetes risk</li>
 </ul>
 <h4> Comparison</h4>
-<pre>
-Kwashiorkor → Protein lack
-Marasmus → Total starvation
-Obesity → Excess energy intake
-</pre>
+
 <h3> COMMON EXAM MISTAKES (IMPORTANT)</h3>
 <ul>
   <li>Confusing absorption with digestion</li>
@@ -1523,11 +1352,7 @@ Obesity → Excess energy intake
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Food Science = Nutrition + Digestion + Testing + Health Application
-Food → Energy → Growth → Maintenance → Survival
-Balanced diet = Healthy body system
-</pre>
+
 `,
 [
 {
@@ -1601,9 +1426,7 @@ Primary health care refers to basic health services provided at community level 
   <li>Treatment of minor illnesses (flu, malaria, wounds)</li>
 </ul>
 <h4> Process Flow</h4>
-<pre>
-Community → Clinic/Health Post → Basic Treatment → Referral to Hospital (if severe)
-</pre>
+
 <h4> Exam Idea</h4>
 <p>PHC reduces disease burden by preventing illness before it becomes severe.</p>
 <hr>
@@ -1623,10 +1446,7 @@ Community → Clinic/Health Post → Basic Treatment → Referral to Hospital (i
   <li>Offer surgery and intensive care</li>
 </ul>
 <h4> Comparison Idea</h4>
-<pre>
-Health Center = First line / Basic care
-Hospital = Advanced / Specialized care
-</pre>
+
 <hr>
 <h3>‍ ROLES OF HEALTH WORKERS</h3>
 <ul>
@@ -1637,9 +1457,7 @@ Hospital = Advanced / Specialized care
   <li><b>Pharmacists:</b> Dispense and explain medicines</li>
 </ul>
 <h4> Key Idea</h4>
-<pre>
-Health system = Teamwork of professionals working together
-</pre>
+
 <hr>
 <h3> ENVIRONMENTAL HEALTH SERVICES</h3>
 <p>
@@ -1654,9 +1472,7 @@ These are services that ensure a clean, safe, and healthy environment to prevent
   <li>Food safety inspection</li>
 </ul>
 <h4> Cause–Effect Idea</h4>
-<pre>
-Clean environment → Reduced disease transmission → Healthy community
-</pre>
+
 <hr>
 <h3> PUBLIC HEALTH EDUCATION PROGRAMS</h3>
 <p>
@@ -1670,9 +1486,7 @@ These are organized programs that teach communities how to prevent diseases and 
   <li>Hygiene and sanitation campaigns</li>
 </ul>
 <h4> Learning Flow</h4>
-<pre>
-Education → Awareness → Behavior Change → Disease Prevention
-</pre>
+
 <hr>
 <h3> IMPORTANCE OF COMMUNITY HEALTH</h3>
 <ul>
@@ -1692,10 +1506,7 @@ Education → Awareness → Behavior Change → Disease Prevention
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Community Health = Prevention + Education + Treatment + Environment
-Healthy people → Strong community → Productive nation
-</pre>
+
 `,
 [
 {
@@ -1768,9 +1579,7 @@ Traditional clothing reflects cultural identity, history, environment, and socia
   <li><b>Luo:</b> Animal skin (traditional), modern adapted clothing styles</li>
 </ul>
 <h4> Exam Idea</h4>
-<pre>
-Clothing = Identity + Culture + History + Environment
-</pre>
+
 <hr>
 <h3> FASHION TRENDS</h3>
 <p>
@@ -1785,9 +1594,7 @@ Fashion trends refer to changing styles of clothing influenced by society, media
   <li>Street fashion</li>
 </ul>
 <h4> Key Idea</h4>
-<pre>
-Fashion change = Society + Culture + Technology + Media influence
-</pre>
+
 <hr>
 <h3> TEXTILE DYEING & PRINTING</h3>
 <h4> Dyeing</h4>
@@ -1805,9 +1612,7 @@ Printing is the application of patterns or designs onto fabric surfaces.
   <li>Screen printing</li>
 </ul>
 <h4> Process Diagram</h4>
-<pre>
-White fabric → Dye/print → Patterned colored fabric
-</pre>
+
 <hr>
 <h3> FABRIC DECORATION TECHNIQUES</h3>
 <ul>
@@ -1817,9 +1622,7 @@ White fabric → Dye/print → Patterned colored fabric
   <li>Fabric painting</li>
 </ul>
 <h4> Concept Flow</h4>
-<pre>
-Plain fabric → Decoration → Attractive textile product
-</pre>
+
 <hr>
 <h3> EMBROIDERY & BEADWORK</h3>
 <h4> Embroidery</h4>
@@ -1831,12 +1634,7 @@ Embroidery is decorating fabric using needle and thread to create patterns and d
 Beadwork involves attaching beads onto fabric or accessories to form decorative patterns.
 </p>
 <h4> Common Stitches</h4>
-<pre>
-Running stitch:   ---- ---- ----
-Back stitch:      ========
-Chain stitch:     O-O-O-O-O
-Cross stitch:     X X X X X
-</pre>
+
 <h4> Exam Tip</h4>
 <p>Always state both the function and appearance when describing stitches.</p>
 <hr>
@@ -1858,10 +1656,7 @@ Cross stitch:     X X X X X
 </ul>
 <hr>
 <h3> FINAL MASTER IDEA</h3>
-<pre>
-Textile Design = Culture + Creativity + Identity
-Fabric → Design → Cultural expression → Fashion industry
-</pre>
+
  EXAM QUESTIONS
 `,
 [
