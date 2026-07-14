@@ -28,6 +28,25 @@ export default defineConfig({
       'react-router-dom',
     ],
   },
+  build: {
+    // Increase warning limit — we're actively splitting below anyway
+    chunkSizeWarningLimit: 600,
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          // Supabase into its own chunk (large auth SDK)
+          if (id.includes('@supabase')) return 'supabase';
+          // Dexie (IndexedDB ORM) into its own chunk
+          if (id.includes('dexie')) return 'dexie';
+          // React ecosystem into vendor chunk
+          if (id.includes('react-router') || id.includes('react-hot-toast')) return 'vendor-router';
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) return 'vendor-react';
+          // Markdown rendering (only needed on learn pages)
+          if (id.includes('react-markdown') || id.includes('remark') || id.includes('rehype')) return 'vendor-markdown';
+        },
+      },
+    },
+  },
   server: {
     port: 5173,
   },

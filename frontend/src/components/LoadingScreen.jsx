@@ -29,7 +29,7 @@ export default function LoadingScreen({
     }
 
     // Parameters for target threshold
-    const sprintDuration = 800; // ms to hit the initial curve peak
+    const sprintDuration = 250; // ms to hit the initial curve peak (was 800)
     const sprintTarget = 70;    // The magic 70% mark
 
     const tick = () => {
@@ -92,8 +92,8 @@ export default function LoadingScreen({
           if (onComplete) {
             onComplete();
           }
-        }, 400); // Match CSS transition duration
-      }, 700);
+        }, 150); // Faster fade out (was 400ms)
+      }, 100); // Minimal done-state display (was 700ms)
 
       return () => {
         clearTimeout(timer);
@@ -120,7 +120,7 @@ export default function LoadingScreen({
         alignItems: "center",
         overflow: "hidden",
         zIndex: 9999,
-        transition: "opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1)",
+        transition: "opacity 0.2s cubic-bezier(0.25, 1, 0.5, 1)",
         opacity: (phase === "hidden" || phase === "fade") ? 0 : 1,
       }}
     >
@@ -219,10 +219,8 @@ export default function LoadingScreen({
       </div>
 
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght400;500;600;700;800&family=Space+Grotesk:wght500;700&display=swap');
-
         .premium-loader-root {
-          font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
           background-color: var(--bg, #0b0a12);
           color: var(--t, #f1effa);
         }
