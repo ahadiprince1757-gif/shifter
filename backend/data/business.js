@@ -2907,8 +2907,8 @@ Even a strong business idea can fail if key success factors are missing, while g
    2. ACCOUNTING EQUATION
 ==============================*/
 add(
+  "business",
   "accounting",
-  "foundation",
   "Accounting Equation",
   `<h2>Accounting Equation</h2>
 
@@ -2999,9 +2999,9 @@ Assets = Liabilities + Equity
    RECORDING SYSTEM
 =========================================*/
 add(
+  "business",
   "accounting",
-  "recording_system",
-  "Journals and Ledgers",
+  "Recording System",
   `<h2>Journals and Ledgers</h2>
 
 <h3> DEEP FOUNDATION EXPLANATION</h3>
@@ -3151,9 +3151,9 @@ Total Credits = 5000 + 2000 + 1200 + 300 = 8500
   TRIAL BALANCE
 ============================*/
 add(
+  "business",
   "accounting",
-  "trial_balance",
-  "Trial Balance & Error Detection",
+  "Trial Balance",
   `<h2>Trial Balance & Error Detection</h2>
 <h3> DEEP FOUNDATION EXPLANATION</h3>
 <p>
@@ -3264,8 +3264,8 @@ If Trial Balance does NOT balance, errors may include:
 ]
 );
 add(
+  "business",
   "accounting",
-  "financial_statements",
   "Financial Statements",
   `<h2>Financial Statements</h2>
 <h3> DEEP FOUNDATION EXPLANATION</h3>
@@ -3390,8 +3390,8 @@ Assets = Liabilities + Equity
 Financial Analysis
 ============================*/
 add(
+  "business",
   "accounting",
-  "financial_analysis",
   "Financial Analysis",
   `<h2>Financial Analysis</h2>
 
@@ -3513,8 +3513,8 @@ Efficiency looks at how well resources are used to generate profit.
 Advanced Accounting
 =================================*/
 add(
+  "business",
   "accounting",
-  "advanced_accounting",
   "Advanced Accounting",
   `<h2>Advanced Accounting</h2>
 <h3> DEEP FOUNDATION EXPLANATION</h3>
@@ -3657,8 +3657,8 @@ Salary Expense      800
 Strategic Accounting & Financial Control
 ================================*/
 add(
+  "business",
   "accounting",
-  "strategic_accounting",
   "Strategic Accounting & Financial Control",
   `<h2>Strategic Accounting & Financial Control</h2>
 <h3> DEEP FOUNDATION EXPLANATION</h3>

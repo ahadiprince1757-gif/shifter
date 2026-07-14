@@ -7,7 +7,9 @@
       {
         "id": "numbers",
         "label": "Numbers",
-        "topics": ["Number Systems & Basic Operations"]
+        "topics": [
+          "Number Systems & Basic Operations"
+        ]
       },
       {
         "id": "algebra",
@@ -367,29 +369,36 @@
           "Series & Parallel Circuits",
           "Magnetic fields",
           "Electromagnetism",
-          "Ohm’s Law",
           "Ohm’s Law"
         ]
       },
       {
         "id": "fluids",
         "label": "Fluids",
-        "topics": ["Fluids"]
+        "topics": [
+          "Fluids"
+        ]
       },
       {
         "id": "modern_physics",
         "label": "Modern Physics",
-        "topics": ["Modern Physics"]
+        "topics": [
+          "Modern Physics"
+        ]
       },
       {
         "id": "cathode_rays",
         "label": "Cathode Rays",
-        "topics": ["Cathode Rays and Cathode Ray Tube"]
+        "topics": [
+          "Cathode Rays and Cathode Ray Tube"
+        ]
       },
       {
         "id": "photoelectric_emission",
         "label": "Photoelectric Emission",
-        "topics": ["Photoelectric Emission"]
+        "topics": [
+          "Photoelectric Emission"
+        ]
       }
     ]
   },
@@ -401,7 +410,10 @@
       {
         "id": "introduction",
         "label": "Introduction",
-        "topics": ["Meaning of Chemistry", "Laboratory Safety and Apparatus"]
+        "topics": [
+          "Meaning of Chemistry",
+          "Laboratory Safety and Apparatus"
+        ]
       },
       {
         "id": "matter",
@@ -426,7 +438,9 @@
       {
         "id": "elements",
         "label": "Periodic Table",
-        "topics": ["Periodic Table and Periodicity"]
+        "topics": [
+          "Periodic Table and Periodicity"
+        ]
       },
       {
         "id": "bonding",
@@ -489,6 +503,38 @@
           "Alloys",
           "Uses of Metals"
         ]
+      },
+      {
+        "id": "air",
+        "label": "Air",
+        "topics": [
+          "Introduction to air, oxygen and water"
+        ]
+      },
+      {
+        "id": "organic",
+        "label": "Organic",
+        "topics": [
+          "Introduction to organic chemistry",
+          "Homologous series",
+          "Combustion of Fuels",
+          "Alcohols (Alkanols)",
+          "Carboxylic Acids (Organic Acids)",
+          "Cracking",
+          "Isomerism",
+          "Importance of Organic Chemistry"
+        ]
+      },
+      {
+        "id": "nonmetals",
+        "label": "Nonmetals",
+        "topics": [
+          "Sulphur and compounds",
+          "Carbon and compounds",
+          "Nitrogen and compounds",
+          "Air pollution",
+          "Importance"
+        ]
       }
     ]
   },
@@ -500,17 +546,24 @@
       {
         "id": "cells",
         "label": "Cells",
-        "topics": ["Cell Biology", "Microscopes & Cell Observation"]
+        "topics": [
+          "Cell Biology",
+          "Microscopes & Cell Observation"
+        ]
       },
       {
         "id": "advanced_cell_biology",
         "label": "Advanced Cell Biology",
-        "topics": ["Advanced Cell Biology"]
+        "topics": [
+          "Advanced Cell Biology"
+        ]
       },
       {
         "id": "biochemistry",
         "label": "Biochemistry",
-        "topics": ["Biological Molecules"]
+        "topics": [
+          "Biological Molecules"
+        ]
       },
       {
         "id": "human_physiology_deep",
@@ -529,32 +582,45 @@
       {
         "id": "genetics",
         "label": "Genetics",
-        "topics": ["Genetics", "Genetics & Evolution"]
+        "topics": [
+          "Genetics",
+          "Genetics & Evolution"
+        ]
       },
       {
         "id": "molecular_genetics",
         "label": "Molecular Genetics",
-        "topics": ["Molecular Genetics "]
+        "topics": [
+          "Molecular Genetics "
+        ]
       },
       {
         "id": "ecology",
         "label": "Ecology",
-        "topics": ["Classification & Evolution"]
+        "topics": [
+          "Classification & Evolution"
+        ]
       },
       {
         "id": "microbiology",
         "label": "Microbiology",
-        "topics": ["Microbiology & Health"]
+        "topics": [
+          "Microbiology & Health"
+        ]
       },
       {
         "id": "health_microbiology",
         "label": "Health Microbiology",
-        "topics": ["Microbiology & Health Control"]
+        "topics": [
+          "Microbiology & Health Control"
+        ]
       },
       {
         "id": "homeostasis_reproduction",
         "label": "Homeostasis Reproduction",
-        "topics": ["Homeostasis & Reproduction"]
+        "topics": [
+          "Homeostasis & Reproduction"
+        ]
       },
       {
         "id": "practical_biology",
@@ -567,7 +633,9 @@
       {
         "id": "exam_skills",
         "label": "Exam Skills",
-        "topics": ["Biology Exam Skills"]
+        "topics": [
+          "Biology Exam Skills"
+        ]
       },
       {
         "id": "nervous_system",
@@ -595,6 +663,20 @@
           "Human Reproductive System (Male & Female Organs in Full Detail)",
           "Fertilization and Development (Phase 5: Zygote → Embryo → Fetus → Birth)",
           "Reproduction (Sexual vs Asexual)"
+        ]
+      },
+      {
+        "id": "classification_evolution",
+        "label": "Classification Evolution",
+        "topics": [
+          "Classification & Evolution"
+        ]
+      },
+      {
+        "id": "plant_ecology",
+        "label": "Plant Ecology",
+        "topics": [
+          "Plant Coordination, Nutrition & Ecology"
         ]
       }
     ]
@@ -633,7 +715,10 @@
       {
         "id": "summary",
         "label": "Summary Writing",
-        "topics": ["Summary writing rules", "Paraphrasing"]
+        "topics": [
+          "Summary writing rules",
+          "Paraphrasing"
+        ]
       },
       {
         "id": "writing",
@@ -647,7 +732,6 @@
           "Narrative essay",
           "Descriptive essay",
           "Argumentative essay",
-          "Paragraph writing",
           "Formal letters",
           "Informal letters",
           "Report writing",
@@ -688,22 +772,30 @@
       {
         "id": "sarufi",
         "label": "Sarufi",
-        "topics": ["Sarufi (Grammar) Full Master Notes"]
+        "topics": [
+          "Sarufi (Grammar) Full Master Notes"
+        ]
       },
       {
         "id": "ufahamu",
         "label": "Ufahamu",
-        "topics": ["Ufahamu (Comprehension) Full Master Notes"]
+        "topics": [
+          "Ufahamu (Comprehension) Full Master Notes"
+        ]
       },
       {
         "id": "insha",
         "label": "Insha",
-        "topics": ["Insha (Composition Writing) Full Master Notes"]
+        "topics": [
+          "Insha (Composition Writing) Full Master Notes"
+        ]
       },
       {
         "id": "fasihi_simulizi",
         "label": "Fasihi Simulizi",
-        "topics": ["Fasihi Simulizi (Oral Literature) Full Master Notes"]
+        "topics": [
+          "Fasihi Simulizi (Oral Literature) Full Master Notes"
+        ]
       },
       {
         "id": "fasihi_andishi",
@@ -738,7 +830,9 @@
       {
         "id": "msamiati",
         "label": "Msamiati",
-        "topics": ["Msamiati na Tajiri ya Lugha (Vocabulary Enrichment)"]
+        "topics": [
+          "Msamiati na Tajiri ya Lugha (Vocabulary Enrichment)"
+        ]
       }
     ]
   },
@@ -782,10 +876,7 @@
           "Bearing calculations",
           "Vertical Exaggeration",
           "Cross section drawing",
-          "Map features",
-          "Latitude & longitude",
-          "Topographical maps",
-          "Compass direction"
+          "Map features"
         ]
       },
       {
@@ -811,13 +902,74 @@
           "Ocean Currents (Advanced)",
           "Coastal Features (Erosion and Deposition)",
           "Importance and Disadvantages of Oceans",
-          "Introduction to Oceans and Seas",
           "Importance of Oceans",
           "Disadvantages of Oceans",
           "Ocean Currents and Their Effects",
           "Marine Resources and Economic Importance",
           "Ocean Pollution and Conservation",
           "Ocean Processes: Erosion, Transportation and Deposition"
+        ]
+      },
+      {
+        "id": "mining_and_minerals",
+        "label": "Mining and Minerals",
+        "topics": [
+          "Introduction to Mining",
+          "Metallic Minerals",
+          "Non-Metallic Minerals",
+          "Energy Minerals",
+          "Surface Mining",
+          "Underground Mining",
+          "Factors Influencing Mining",
+          "Importance of Mining",
+          "Environmental Effects of Mining",
+          "Problems Facing Mining"
+        ]
+      },
+      {
+        "id": "agriculture",
+        "label": "Agriculture",
+        "topics": [
+          "Introduction to Agriculture",
+          "Types of Agriculture",
+          "Farming Systems",
+          "Types of Farming (Methods)",
+          "Factors Influencing Agriculture",
+          "Agricultural Inputs and Outputs",
+          "Problems Facing Agriculture",
+          "Solutions to Agricultural Problems"
+        ]
+      },
+      {
+        "id": "glaciation",
+        "label": "Glaciation",
+        "topics": [
+          "Introduction to Glaciation",
+          "Types of Glaciers",
+          "Glacial Processes",
+          "Glacial Erosional Landforms",
+          "Glacial Depositional Landforms",
+          "Importance of Glaciation",
+          "Effects of Glaciation"
+        ]
+      },
+      {
+        "id": "deserts_and_arid_regions",
+        "label": "Deserts and Arid Regions",
+        "topics": [
+          "Introduction to Deserts",
+          "Formation of Deserts",
+          "Desert Landforms",
+          "Desert Processes",
+          "Desert Vegetation and Adaptations",
+          "Desertification"
+        ]
+      },
+      {
+        "id": "rivers",
+        "label": "Rivers",
+        "topics": [
+          "Introduction to Rivers"
         ]
       }
     ]
@@ -830,32 +982,44 @@
       {
         "id": "human_evolution",
         "label": "Human Evolution",
-        "topics": ["Human Evolution and Origins of Early Humans"]
+        "topics": [
+          "Human Evolution and Origins of Early Humans"
+        ]
       },
       {
         "id": "migration_out_of_africa",
         "label": "Migration Out Of Africa",
-        "topics": ["Migration of Early Humans Out of Africa"]
+        "topics": [
+          "Migration of Early Humans Out of Africa"
+        ]
       },
       {
         "id": "stone_age_life",
         "label": "Stone Age Life",
-        "topics": ["Stone Age Life and Early Human Survival"]
+        "topics": [
+          "Stone Age Life and Early Human Survival"
+        ]
       },
       {
         "id": "neolithic_revolution",
         "label": "Neolithic Revolution",
-        "topics": ["Neolithic Revolution and Birth of Agriculture"]
+        "topics": [
+          "Neolithic Revolution and Birth of Agriculture"
+        ]
       },
       {
         "id": "mesopotamia",
         "label": "Mesopotamia",
-        "topics": ["Mesopotamia: Birth of Cities, Writing, and Law"]
+        "topics": [
+          "Mesopotamia: Birth of Cities, Writing, and Law"
+        ]
       },
       {
         "id": "ancient_egypt",
         "label": "Ancient Egypt",
-        "topics": ["Ancient Egypt: Nile Civilization and Pharaoh Power"]
+        "topics": [
+          "Ancient Egypt: Nile Civilization and Pharaoh Power"
+        ]
       },
       {
         "id": "indus_valley",
@@ -867,27 +1031,37 @@
       {
         "id": "ancient_china",
         "label": "Ancient China",
-        "topics": ["Ancient China: Dynasties and Early Civilization Systems"]
+        "topics": [
+          "Ancient China: Dynasties and Early Civilization Systems"
+        ]
       },
       {
         "id": "ancient_greece",
         "label": "Ancient Greece",
-        "topics": ["Ancient Greece: Democracy, Philosophy, and City-States"]
+        "topics": [
+          "Ancient Greece: Democracy, Philosophy, and City-States"
+        ]
       },
       {
         "id": "ancient_rome",
         "label": "Ancient Rome",
-        "topics": ["Ancient Rome: Law, Empire, and Engineering Systems"]
+        "topics": [
+          "Ancient Rome: Law, Empire, and Engineering Systems"
+        ]
       },
       {
         "id": "ancient_india_empires",
         "label": "Ancient India Empires",
-        "topics": ["Ancient India: Maurya and Gupta Empires"]
+        "topics": [
+          "Ancient India: Maurya and Gupta Empires"
+        ]
       },
       {
         "id": "feudal_europe",
         "label": "Feudal Europe",
-        "topics": ["Medieval Europe: Feudal System and Society Structure"]
+        "topics": [
+          "Medieval Europe: Feudal System and Society Structure"
+        ]
       },
       {
         "id": "islamic_golden_age",
@@ -899,12 +1073,16 @@
       {
         "id": "african_kingdoms",
         "label": "African Kingdoms",
-        "topics": ["African Kingdoms: Mali, Songhai, and Great Zimbabwe"]
+        "topics": [
+          "African Kingdoms: Mali, Songhai, and Great Zimbabwe"
+        ]
       },
       {
         "id": "mongol_empire_silk_road",
         "label": "Mongol Empire Silk Road",
-        "topics": ["Mongol Empire and Silk Road: Global Connection System"]
+        "topics": [
+          "Mongol Empire and Silk Road: Global Connection System"
+        ]
       },
       {
         "id": "age_of_exploration",
@@ -916,7 +1094,9 @@
       {
         "id": "colonization_system",
         "label": "Colonization System",
-        "topics": ["Colonization: Control of Lands and Formation of Empires"]
+        "topics": [
+          "Colonization: Control of Lands and Formation of Empires"
+        ]
       },
       {
         "id": "atlantic_slave_trade",
@@ -949,12 +1129,16 @@
       {
         "id": "urbanization_social_change",
         "label": "Urbanization Social Change",
-        "topics": ["Urbanization: Growth of Cities and Social Transformation"]
+        "topics": [
+          "Urbanization: Growth of Cities and Social Transformation"
+        ]
       },
       {
         "id": "world_war1",
         "label": "World War1",
-        "topics": ["World War I: Causes, Conflict, and Collapse of Empires"]
+        "topics": [
+          "World War I: Causes, Conflict, and Collapse of Empires"
+        ]
       },
       {
         "id": "interwar_period",
@@ -966,7 +1150,9 @@
       {
         "id": "world_war2",
         "label": "World War2",
-        "topics": ["World War II: Global Conflict, Ideologies, and Atomic Age"]
+        "topics": [
+          "World War II: Global Conflict, Ideologies, and Atomic Age"
+        ]
       },
       {
         "id": "cold_war",
@@ -978,17 +1164,23 @@
       {
         "id": "space_race",
         "label": "Space Race",
-        "topics": ["Space Race: Technological Competition Between Superpowers"]
+        "topics": [
+          "Space Race: Technological Competition Between Superpowers"
+        ]
       },
       {
         "id": "decolonization",
         "label": "Decolonization",
-        "topics": ["Decolonization: Independence Movements in Asia and Africa"]
+        "topics": [
+          "Decolonization: Independence Movements in Asia and Africa"
+        ]
       },
       {
         "id": "globalization",
         "label": "Globalization",
-        "topics": ["Globalization: The Modern Connected World System"]
+        "topics": [
+          "Globalization: The Modern Connected World System"
+        ]
       },
       {
         "id": "digital_revolution",
@@ -1014,7 +1206,9 @@
       {
         "id": "human_drivers",
         "label": "Human Drivers",
-        "topics": ["Human Drivers System: The Core Engine of All History"]
+        "topics": [
+          "Human Drivers System: The Core Engine of All History"
+        ]
       },
       {
         "id": "power_formation",
@@ -1219,7 +1413,6 @@
           "Input & Output Devices",
           "Memory & Storage",
           "Operating systems",
-          "File management",
           "File management"
         ]
       },
@@ -1282,6 +1475,70 @@
           "Presentations",
           "Email & Communication ",
           "Collaboration Tools (Full Course)"
+        ]
+      },
+      {
+        "id": "software_engineering",
+        "label": "Software Engineering",
+        "topics": [
+          "Software Development Methodologies",
+          "Version Control Systems",
+          "Software Testing Types",
+          "Documentation and Maintenance"
+        ]
+      },
+      {
+        "id": "cybersecurity",
+        "label": "Cybersecurity",
+        "topics": [
+          "Malware and Its Types",
+          "Phishing and Social Engineering",
+          "Password Security Practices",
+          "Data Privacy and Backup Strategies"
+        ]
+      },
+      {
+        "id": "internet_web",
+        "label": "Internet Web",
+        "topics": [
+          "Internet vs World Wide Web",
+          "Web Browsers and Search Engines",
+          "URLs and Domain Names",
+          "HTTP vs HTTPS",
+          "Cookies and Tracking",
+          "Basic HTML"
+        ]
+      },
+      {
+        "id": "data_information_systems",
+        "label": "Data Information Systems",
+        "topics": [
+          "Data vs Information",
+          "Types of Information Systems",
+          "Data Lifecycle",
+          "Big Data Basics"
+        ]
+      },
+      {
+        "id": "ethics_legal",
+        "label": "Ethics Legal",
+        "topics": [
+          "Computer Ethics",
+          "Cyber Laws",
+          "Copyright and Piracy",
+          "Plagiarism",
+          "Digital Citizenship"
+        ]
+      },
+      {
+        "id": "emerging_technologies",
+        "label": "Emerging Technologies",
+        "topics": [
+          "Artificial Intelligence (AI Basics)",
+          "Machine Learning (Introduction)",
+          "Cloud Computing",
+          "Internet of Things (IoT)",
+          "Blockchain Basics"
         ]
       }
     ]
@@ -1359,8 +1616,7 @@
           "Importance of Agricultural Technology",
           "Maintenance of Farm Tools",
           "Advantages and Disadvantages of Mechanization",
-          "Evolution of Farming Systems",
-          "Importance of Agricultural Technology"
+          "Evolution of Farming Systems"
         ]
       },
       {
@@ -1422,6 +1678,89 @@
           "Farm Sheds and Workshops",
           "Importance of Farm Infrastructure (Exam Master Notes)"
         ]
+      },
+      {
+        "id": "cropping_systems",
+        "label": "Cropping Systems",
+        "topics": [
+          "Monocropping",
+          "Intercropping",
+          "Mixed Cropping",
+          "Crop Rotation",
+          "Relay Cropping"
+        ]
+      },
+      {
+        "id": "crop_production_systems",
+        "label": "Crop Production Systems",
+        "topics": [
+          "Introduction to Crop Production Systems (Exam Master Notes)",
+          "Land Preparation (Exam Master Notes)",
+          "Seed Selection and Treatment (Exam Master Notes)",
+          "Planting Methods (Exam Master Notes)",
+          "Crop Management Practices (Exam Master Notes)",
+          "Irrigation (Introduction - Exam Master Notes)",
+          "Types of Irrigation Systems (Exam Master Notes)",
+          "Factors Affecting Irrigation (Exam Master Notes)",
+          "Problems of Irrigation (Exam Master Notes)",
+          "Fertilizer Application (Exam Master Notes)",
+          "Crop Harvesting (Exam Master Notes)",
+          "Importance of Crop Production Systems (Exam Master Notes)"
+        ]
+      },
+      {
+        "id": "irrigation",
+        "label": "Irrigation",
+        "topics": [
+          "Importance of Irrigation Systems (Exam Master Notes)"
+        ]
+      },
+      {
+        "id": "environmental_factors",
+        "label": "Environmental Factors",
+        "topics": [
+          "Introduction to Agricultural Environment",
+          "Climate and Agriculture",
+          "Temperature and Crops",
+          "Rainfall and Agriculture",
+          "Soil and Plant Growth",
+          "Soil Types and Farming",
+          "Water in Agriculture",
+          "Wind and Humidity Effects",
+          "Climate Change and Farming",
+          "Importance of Environment in Agriculture"
+        ]
+      },
+      {
+        "id": "crop_classification",
+        "label": "Crop Classification",
+        "topics": [
+          "Introduction to Crop Classification",
+          "Food Crops vs Cash Crops",
+          "Cereal Crops",
+          "Legume Crops",
+          "Root and Tuber Crops",
+          "Horticultural Crops",
+          "Perennial vs Annual Crops",
+          "Climatic Classification of Crops",
+          "Importance of Crop Classification"
+        ]
+      },
+      {
+        "id": "livestock",
+        "label": "Livestock",
+        "topics": [
+          "Introduction to Livestock Production",
+          "Types of Livestock Farming",
+          "Cattle Production",
+          "Poultry Farming",
+          "Sheep and Goat Farming",
+          "Pig Farming",
+          "Livestock Feeding",
+          "Livestock Housing",
+          "Livestock Diseases",
+          "Importance of Livestock Farming"
+        ]
       }
     ]
   },
@@ -1433,62 +1772,86 @@
       {
         "id": "food_preparation",
         "label": "Food Preparation",
-        "topics": ["Food Preparation & Cookery (Full Master Notes)"]
+        "topics": [
+          "Food Preparation & Cookery (Full Master Notes)"
+        ]
       },
       {
         "id": "food_preservation",
         "label": "Food Preservation",
-        "topics": ["Food Preservation (Full Master Notes)"]
+        "topics": [
+          "Food Preservation (Full Master Notes)"
+        ]
       },
       {
         "id": "home_management",
         "label": "Home Management",
-        "topics": ["Home Management (Advanced Full Master Notes)"]
+        "topics": [
+          "Home Management (Advanced Full Master Notes)"
+        ]
       },
       {
         "id": "child_care_development",
         "label": "Child Care & Development",
-        "topics": ["Child Care & Development (Full Master Notes)"]
+        "topics": [
+          "Child Care & Development (Full Master Notes)"
+        ]
       },
       {
         "id": "laundry_work",
         "label": "Laundry Work",
-        "topics": ["Laundry Work (Clothing Care Full Master Notes)"]
+        "topics": [
+          "Laundry Work (Clothing Care Full Master Notes)"
+        ]
       },
       {
         "id": "household_cleaning",
         "label": "Household Cleaning",
-        "topics": ["Household Cleaning & Cleaning Agents (Full Master Notes)"]
+        "topics": [
+          "Household Cleaning & Cleaning Agents (Full Master Notes)"
+        ]
       },
       {
         "id": "energy_use_home",
         "label": "Energy in the Home",
-        "topics": ["Energy Use in the Home (Full Master Notes)"]
+        "topics": [
+          "Energy Use in the Home (Full Master Notes)"
+        ]
       },
       {
         "id": "consumer_education",
         "label": "Consumer Education",
-        "topics": ["Consumer Education (Full Master Notes)"]
+        "topics": [
+          "Consumer Education (Full Master Notes)"
+        ]
       },
       {
         "id": "personal_care_grooming",
         "label": "Personal Care & Grooming",
-        "topics": ["Personal Care & Grooming (Full Master Notes)"]
+        "topics": [
+          "Personal Care & Grooming (Full Master Notes)"
+        ]
       },
       {
         "id": "food_science",
         "label": "Food Science",
-        "topics": ["Food Science Basics (Full Master Notes)"]
+        "topics": [
+          "Food Science Basics (Full Master Notes)"
+        ]
       },
       {
         "id": "community_health",
         "label": "Community Health",
-        "topics": ["Community Health (Full Master Notes)"]
+        "topics": [
+          "Community Health (Full Master Notes)"
+        ]
       },
       {
         "id": "textile_design_culture",
         "label": "Textile Design & Culture",
-        "topics": ["Textile Design & Culture (Full Master Notes)"]
+        "topics": [
+          "Textile Design & Culture (Full Master Notes)"
+        ]
       }
     ]
   }

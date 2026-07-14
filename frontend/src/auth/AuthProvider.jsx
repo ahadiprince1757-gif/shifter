@@ -59,6 +59,7 @@ export function AuthProvider({ children }) {
     try {
       let isInitialCall = true;
 
+      
       const result = supabase.auth.onAuthStateChange((event, newSession) => {
         setSession(newSession);
         setSessionLoading(false);
