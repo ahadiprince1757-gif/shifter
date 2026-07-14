@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import { useLiveQuery } from "./useLiveQuery";
 import { curriculumRepo } from "../repository/curriculumRepo";
 
@@ -9,25 +10,32 @@ export function useCurriculum() {
     null // default result while loading
   );
 
-  const loading = curriculum === null;
+  // If Dexie hasn't resolved after 2 s (e.g. first-visit + offline), stop blocking the UI
+  const [timedOut, setTimedOut] = useState(false);
+  useEffect(() => {
+    if (curriculum !== null) return; // Data arrived — no timeout needed
+    const id = setTimeout(() => setTimedOut(true), 2000);
+    return () => clearTimeout(id);
+  }, [curriculum]);
+
+  const loading = curriculum === null && !timedOut;
 
   // Derive lookups
   const subjectMap = new Map();
   const chapterMap = new Map();
 
-  if (curriculum && Array.isArray(curriculum)) {
-    curriculum.forEach((subject) => {
-      subjectMap.set(subject.id, subject);
-      if (subject.chapters) {
-        subject.chapters.forEach((chapter) => {
-          chapterMap.set(`${subject.id}|${chapter.id}`, chapter);
-        });
-      }
-    });
-  }
+  const list = Array.isArray(curriculum) ? curriculum : [];
+  list.forEach((subject) => {
+    subjectMap.set(subject.id, subject);
+    if (subject.chapters) {
+      subject.chapters.forEach((chapter) => {
+        chapterMap.set(`${subject.id}|${chapter.id}`, chapter);
+      });
+    }
+  });
 
   return {
-    curriculum,
+    curriculum: list,
     subjectMap,
     chapterMap,
     loading,
