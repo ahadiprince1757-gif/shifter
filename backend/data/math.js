@@ -158,37 +158,36 @@ Instead of existing on a straight line like real numbers, complex numbers exist 
 <hr>
 <h3> GEOMETRIC INTERPRETATION</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <!-- Grid lines -->
-  <line x1="20" y1="100" x2="260" y2="100" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
-  <line x1="140" y1="180" x2="140" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
-  
-  <!-- Dotted coordinate helper lines -->
-  <line x1="200" y1="100" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
-  <line x1="140" y1="50" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
-
-  <!-- Plotted complex number vector -->
-  <line x1="140" y1="100" x2="200" y2="50" stroke="#3498db" stroke-width="2.5" marker-end="url(#vector-arrow)"/>
-  <circle cx="200" cy="50" r="4" fill="#e74c3c"/>
-
-  <!-- Labels -->
-  <text x="270" y="104" fill="#aaa" font-size="8" font-family="sans-serif">Re (Real)</text>
-  <text x="140" y="15" fill="#aaa" font-size="8" text-anchor="middle" font-family="sans-serif">Im (Imaginary)</text>
-  <text x="208" y="46" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = a + bi</text>
-  <text x="208" y="58" fill="#aaa" font-size="8" font-family="monospace">(a, b)</text>
-  
-  <!-- Axis values -->
-  <text x="200" y="112" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">a</text>
-  <text x="132" y="54" fill="#aaa" font-size="8" text-anchor="end" font-family="monospace">bi</text>
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
   
   <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
     <marker id="math-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#445"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
     </marker>
     <marker id="vector-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
       <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
     </marker>
   </defs>
+
+  <rect width="280" height="200" fill="url(#grid)"/>
+  <line x1="20" y1="100" x2="260" y2="100" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  <line x1="140" y1="180" x2="140" y2="20" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  <line x1="200" y1="97" x2="200" y2="103" stroke="#888" stroke-width="1"/>
+  <line x1="137" y1="50" x2="143" y2="50" stroke="#888" stroke-width="1"/>
+  <line x1="200" y1="100" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
+  <line x1="140" y1="50" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
+  <line x1="140" y1="100" x2="195" y2="54" stroke="#3498db" stroke-width="2.5" marker-end="url(#vector-arrow)"/>
+  <circle cx="200" cy="50" r="4.5" fill="#e74c3c"/>
+  <text x="275" y="103" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="end">Re</text>
+  <text x="140" y="14" fill="#9b59b6" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Im</text>
+  <text x="208" y="44" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = a + bi</text>
+  <text x="208" y="56" fill="#aaa" font-size="8" font-family="monospace">(a, b)</text>
+  <text x="200" y="114" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace">a</text>
+  <text x="130" y="54" fill="#fff" font-size="9" text-anchor="end" font-family="monospace">bi</text>
+  <text x="130" y="112" fill="#888" font-size="8" text-anchor="end" font-family="monospace">O</text>
 </svg>
 </div>
 <p>
@@ -338,28 +337,40 @@ y-axis → imaginary part (Im)
 <p><b>Final Answer:</b> (3, 4)</p>
 <h3> VISUAL DIAGRAM</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <!-- Axis -->
-  <line x1="20" y1="140" x2="260" y2="140" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
-  <line x1="80" y1="180" x2="80" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
   
-  <!-- Grid projection lines -->
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="math-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="vector-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <rect width="280" height="200" fill="url(#grid)"/>
+  <line x1="20" y1="140" x2="260" y2="140" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  <line x1="80" y1="180" x2="80" y2="20" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  <line x1="120" y1="137" x2="120" y2="143" stroke="#888" stroke-width="1"/>
+  <line x1="160" y1="137" x2="160" y2="143" stroke="#888" stroke-width="1"/>
+  <line x1="200" y1="137" x2="200" y2="143" stroke="#888" stroke-width="1"/>
+  <line x1="77" y1="110" x2="83" y2="110" stroke="#888" stroke-width="1"/>
+  <line x1="77" y1="80" x2="83" y2="80" stroke="#888" stroke-width="1"/>
+  <line x1="77" y1="60" x2="83" y2="60" stroke="#888" stroke-width="1"/>
   <line x1="200" y1="140" x2="200" y2="60" stroke="#3498db" stroke-dasharray="3,3" stroke-width="1"/>
   <line x1="80" y1="60" x2="200" y2="60" stroke="#3498db" stroke-dasharray="3,3" stroke-width="1"/>
-
-  <!-- Plotted Point -->
-  <circle cx="200" cy="60" r="4" fill="#e74c3c"/>
-
-  <!-- Labels -->
-  <text x="270" y="144" fill="#aaa" font-size="8" font-family="sans-serif">Re</text>
-  <text x="80" y="15" fill="#aaa" font-size="8" text-anchor="middle" font-family="sans-serif">Im</text>
-  
-  <!-- Specific values -->
-  <text x="200" y="152" fill="#3498db" font-size="8" text-anchor="middle" font-family="monospace">3</text>
-  <text x="72" y="64" fill="#3498db" font-size="8" text-anchor="end" font-family="monospace">4i</text>
-  
-  <text x="208" y="56" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = 3 + 4i</text>
-  <text x="208" y="68" fill="#aaa" font-size="8" font-family="monospace">(3, 4)</text>
+  <line x1="80" y1="140" x2="195" y2="64" stroke="#e74c3c" stroke-width="2.5" marker-end="url(#vector-arrow)"/>
+  <circle cx="200" cy="60" r="4.5" fill="#e74c3c"/>
+  <text x="270" y="137" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold">Re</text>
+  <text x="80" y="14" fill="#9b59b6" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Im</text>
+  <text x="200" y="152" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace">3</text>
+  <text x="70" y="63" fill="#fff" font-size="9" text-anchor="end" font-family="monospace">4i</text>
+  <text x="72" y="152" fill="#888" font-size="8" text-anchor="end" font-family="monospace">O</text>
+  <text x="208" y="52" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = 3 + 4i</text>
+  <text x="208" y="65" fill="#aaa" font-size="8" font-family="monospace">(3, 4)</text>
 </svg>
 </div>
 <h3> QUIZ QUESTIONS</h3>
@@ -601,29 +612,33 @@ z = r(cosθ + i sinθ)
 <p>z = 5(cosθ + i sinθ)</p>
 <h3> DIAGRAM</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
-  <!-- Horizontal Base (Real part) -->
-  <line x1="60" y1="140" x2="220" y2="140" stroke="#fff" stroke-width="2"/>
-  <!-- Vertical Height (Imaginary part) -->
-  <line x1="220" y1="140" x2="220" y2="40" stroke="#fff" stroke-width="2"/>
-  <!-- Hypotenuse (Modulus r) -->
-  <line x1="60" y1="140" x2="220" y2="40" stroke="#3498db" stroke-width="2.5"/>
-
-  <!-- Angle arc for theta -->
-  <path d="M 90,141 A 30,30 0 0,0 87,123" fill="none" stroke="#f1c40f" stroke-width="1.5"/>
-  <text x="96" y="134" fill="#f1c40f" font-size="10" font-family="sans-serif">θ</text>
-
-  <!-- Right angle indicator -->
-  <rect x="208" y="128" width="12" height="12" fill="none" stroke="#aaa" stroke-width="1"/>
-
-  <!-- Labels -->
-  <text x="140" y="155" fill="#e74c3c" font-size="10" text-anchor="middle" font-family="sans-serif" font-weight="bold">Real part (x = 3)</text>
-  <text x="230" y="95" fill="#2ecc71" font-size="10" font-family="sans-serif" font-weight="bold">Imag part (y = 4)</text>
-  <text x="130" y="80" fill="#3498db" font-size="10" font-family="sans-serif" font-weight="bold" transform="rotate(-32 130 80)">Modulus (r = 5)</text>
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
   
-  <circle cx="60" cy="140" r="3" fill="#fff"/>
-  <circle cx="220" cy="40" r="4" fill="#e74c3c"/>
-  <text x="226" y="34" fill="#fff" font-size="9" font-family="monospace">(3, 4)</text>
+  <defs>
+    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="math-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="vector-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <rect width="280" height="200" fill="url(#grid)"/>
+  <line x1="60" y1="140" x2="220" y2="140" stroke="#aaa" stroke-width="2"/>
+  <line x1="220" y1="140" x2="220" y2="40" stroke="#aaa" stroke-width="2"/>
+  <line x1="60" y1="140" x2="220" y2="40" stroke="#3498db" stroke-width="3"/>
+  <path d="M 90,140 A 30,30 0 0,0 85,121" fill="none" stroke="#f1c40f" stroke-width="2"/>
+  <text x="96" y="132" fill="#f1c40f" font-size="11" font-weight="bold" font-family="sans-serif">θ</text>
+  <rect x="208" y="128" width="12" height="12" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
+  <text x="140" y="156" fill="#ffa07a" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">Real part (x = 3)</text>
+  <text x="232" y="95" fill="#2ecc71" font-size="10" font-weight="bold" font-family="sans-serif">Imag part (y = 4i)</text>
+  <text x="125" y="78" fill="#3498db" font-size="10" font-weight="bold" font-family="sans-serif" transform="rotate(-32 125 78)">Modulus r = √(3² + 4²) = 5</text>
+  <circle cx="60" cy="140" r="4.5" fill="#fff"/>
+  <circle cx="220" cy="40" r="4.5" fill="#e74c3c"/>
+  <text x="226" y="34" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">z = 3 + 4i</text>
 </svg>
 </div>
 <h3> REAL WORLD APPLICATION</h3>
@@ -3231,24 +3246,37 @@ subject to constraints:
 <hr>
 <h3> GEOMETRIC INTERPRETATION</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 320 180" width="320" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
-  <!-- Grid -->
-  <line x1="40" y1="140" x2="280" y2="140" stroke="#334" stroke-width="1.5"/>
-  <line x1="160" y1="160" x2="160" y2="20" stroke="#334" stroke-width="1.5" stroke-dasharray="3,3"/>
+<svg viewBox="0 0 320 180" width="320" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
   
-  <!-- Parabola curve -->
-  <path d="M 60,140 Q 160,30 260,140" fill="none" stroke="#2ecc71" stroke-width="3" stroke-linecap="round"/>
+  <defs>
+    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
 
-  <!-- Maximum point (vertex) -->
-  <circle cx="160" cy="40" r="4.5" fill="#e74c3c"/>
-  <line x1="160" y1="40" x2="160" y2="140" stroke="#e74c3c" stroke-width="1" stroke-dasharray="2,2"/>
-  
-  <!-- Labels -->
-  <text x="160" y="30" fill="#fff" font-size="9" text-anchor="middle" font-family="sans-serif" font-weight="bold">Maximum Point (5, 25)</text>
-  <text x="160" y="152" fill="#e74c3c" font-size="8" text-anchor="middle" font-family="monospace">x = 5</text>
-  <text x="240" y="125" fill="#2ecc71" font-size="9" font-family="sans-serif">f(x) = 10x - x²</text>
-  <text x="285" y="144" fill="#aaa" font-size="8" font-family="monospace">x</text>
-  <text x="160" y="14" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">y</text>
+  <rect width="320" height="180" fill="url(#grid-lp)"/>
+  <line x1="30" y1="150" x2="300" y2="150" stroke="#aaa" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="170" x2="40" y2="20" stroke="#aaa" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+  <line x1="100" y1="147" x2="100" y2="153" stroke="#ccc" stroke-width="1"/>
+  <text x="100" y="162" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">2</text>
+  <line x1="160" y1="147" x2="160" y2="153" stroke="#ccc" stroke-width="1"/>
+  <text x="160" y="162" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">5</text>
+  <line x1="220" y1="147" x2="220" y2="153" stroke="#ccc" stroke-width="1"/>
+  <text x="220" y="162" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">8</text>
+  <path d="M 60,150 Q 160,30 260,150" fill="none" stroke="#2ecc71" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="160" cy="40" r="8" fill="#e74c3c" opacity="0.3"/>
+  <circle cx="160" cy="40" r="4" fill="#e74c3c"/>
+  <line x1="160" y1="40" x2="160" y2="150" stroke="#e74c3c" stroke-width="1" stroke-dasharray="3,3"/>
+  <text x="160" y="26" fill="#fff" font-size="10" text-anchor="middle" font-family="sans-serif" font-weight="bold">Vertex / Maximum (5, 25)</text>
+  <text x="250" y="125" fill="#2ecc71" font-size="10" font-weight="bold" font-family="sans-serif">f(x) = 10x - x²</text>
+  <text x="305" y="154" fill="#aaa" font-size="9" font-family="monospace">x</text>
+  <text x="40" y="15" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
 </svg>
 </div>
 <hr>
@@ -3379,29 +3407,35 @@ Subject to constraints (inequalities)
 <p>Maximum Z = 12 at (4,0)</p>
 <h3> DIAGRAM</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
-  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-
-  <!-- Feaded shaded area -->
-  <polygon points="40,160 40,50 200,160" fill="#2ecc71" opacity="0.25"/>
-
-  <!-- Boundary line -->
-  <line x1="40" y1="50" x2="200" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-
-  <!-- Point dots -->
-  <circle cx="40" cy="50" r="4.5" fill="#f1c40f"/>
-  <circle cx="200" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
-
-  <!-- Labels -->
-  <text x="25" y="54" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
-  <text x="200" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
-  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
   
-  <text x="120" y="115" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="160" y="80" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-34 160 80)">x + y = 4</text>
-  
+  <defs>
+    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect width="280" height="200" fill="url(#grid-lp)"/>
+  <polygon points="40,160 40,60 180,160" fill="#2ecc71" opacity="0.3" stroke="#2ecc71" stroke-width="1.5"/>
+  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+  <line x1="40" y1="60" x2="180" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="180" y1="157" x2="180" y2="163" stroke="#ccc" stroke-width="1"/>
+  <line x1="37" y1="60" x2="43" y2="60" stroke="#ccc" stroke-width="1"/>
+  <circle cx="40" cy="60" r="4.5" fill="#f1c40f"/>
+  <circle cx="180" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
+  <text x="25" y="64" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
+  <text x="180" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
+  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
+  <text x="85" y="125" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="140" y="85" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 85)">x + y = 4</text>
   <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
   <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
 </svg>
@@ -3525,29 +3559,35 @@ The graphical method solves linear programming problems by plotting constraints 
 <p>Maximum Z = 12 at (0,6)</p>
 <h3> DIAGRAM</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
-  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-
-  <!-- Feaded shaded area -->
-  <polygon points="40,160 40,40 210,160" fill="#3498db" opacity="0.25"/>
-
-  <!-- Boundary line -->
-  <line x1="40" y1="40" x2="210" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-
-  <!-- Point dots -->
-  <circle cx="40" cy="40" r="4.5" fill="#f1c40f"/>
-  <circle cx="210" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
-
-  <!-- Labels -->
-  <text x="25" y="44" fill="#f1c40f" font-size="9" font-family="monospace">(0,6)</text>
-  <text x="210" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(6,0)</text>
-  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
   
-  <text x="110" y="115" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="160" y="75" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 160 75)">x + y = 6</text>
-  
+  <defs>
+    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect width="280" height="200" fill="url(#grid-lp)"/>
+  <polygon points="40,160 40,50 190,160" fill="#3498db" opacity="0.3" stroke="#3498db" stroke-width="1.5"/>
+  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+  <line x1="40" y1="50" x2="190" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="190" y1="157" x2="190" y2="163" stroke="#ccc" stroke-width="1"/>
+  <line x1="37" y1="50" x2="43" y2="50" stroke="#ccc" stroke-width="1"/>
+  <circle cx="40" cy="50" r="4.5" fill="#f1c40f"/>
+  <circle cx="190" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
+  <text x="25" y="54" fill="#f1c40f" font-size="9" font-family="monospace">(0,6)</text>
+  <text x="190" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(6,0)</text>
+  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
+  <text x="85" y="125" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="140" y="80" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 80)">x + y = 6</text>
   <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
   <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
 </svg>
@@ -3661,29 +3701,35 @@ They restrict the possible values of variables to a valid region.
 <p><b>Final Answer:</b> Triangular feasible region bounded by axes and x + y = 5</p>
 <h3> DIAGRAM</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
-  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-
-  <!-- Feaded shaded area -->
-  <polygon points="40,160 40,45 205,160" fill="#9b59b6" opacity="0.25"/>
-
-  <!-- Boundary line -->
-  <line x1="40" y1="45" x2="205" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-
-  <!-- Point dots -->
-  <circle cx="40" cy="45" r="4.5" fill="#f1c40f"/>
-  <circle cx="205" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
-
-  <!-- Labels -->
-  <text x="25" y="49" fill="#f1c40f" font-size="9" font-family="monospace">(0,5)</text>
-  <text x="205" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(5,0)</text>
-  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
   
-  <text x="110" y="115" fill="#9b59b6" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="160" y="78" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 160 78)">x + y = 5</text>
-  
+  <defs>
+    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <rect width="280" height="200" fill="url(#grid-lp)"/>
+  <polygon points="40,160 40,55 195,160" fill="#9b59b6" opacity="0.3" stroke="#9b59b6" stroke-width="1.5"/>
+  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+  <line x1="40" y1="55" x2="195" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="195" y1="157" x2="195" y2="163" stroke="#ccc" stroke-width="1"/>
+  <line x1="37" y1="55" x2="43" y2="55" stroke="#ccc" stroke-width="1"/>
+  <circle cx="40" cy="55" r="4.5" fill="#f1c40f"/>
+  <circle cx="195" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
+  <text x="25" y="59" fill="#f1c40f" font-size="9" font-family="monospace">(0,5)</text>
+  <text x="195" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(5,0)</text>
+  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
+  <text x="85" y="125" fill="#9b59b6" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="140" y="82" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 82)">x + y = 5</text>
   <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
   <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
 </svg>
@@ -3781,39 +3827,35 @@ Only points inside or on this region are valid solutions.
 <p><b>Final Answer:</b> A triangular region in the first quadrant bounded by the axes and the line x + y = 4</p>
 <h3> DIAGRAM</h3>
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
-  <!-- Defining arrows -->
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
+  
   <defs>
+    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
     <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#445"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
     </marker>
     <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#445"/>
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
     </marker>
   </defs>
 
-  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-
-  <!-- Feaded shaded area -->
-  <polygon points="40,160 40,50 200,160" fill="#2ecc71" opacity="0.25"/>
-
-  <!-- Boundary line -->
-  <line x1="40" y1="50" x2="200" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-
-  <!-- Point dots -->
-  <circle cx="40" cy="50" r="4.5" fill="#f1c40f"/>
-  <circle cx="200" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
-
-  <!-- Labels -->
-  <text x="25" y="54" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
-  <text x="200" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
-  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
-  
-  <text x="120" y="115" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="160" y="80" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-34 160 80)">x + y = 4</text>
-  
+  <rect width="280" height="200" fill="url(#grid-lp)"/>
+  <polygon points="40,160 40,60 180,160" fill="#2ecc71" opacity="0.3" stroke="#2ecc71" stroke-width="1.5"/>
+  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+  <line x1="40" y1="60" x2="180" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+  <line x1="180" y1="157" x2="180" y2="163" stroke="#ccc" stroke-width="1"/>
+  <line x1="37" y1="60" x2="43" y2="60" stroke="#ccc" stroke-width="1"/>
+  <circle cx="40" cy="60" r="4.5" fill="#f1c40f"/>
+  <circle cx="180" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
+  <text x="25" y="64" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
+  <text x="180" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
+  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
+  <text x="85" y="125" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="140" y="85" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 85)">x + y = 4</text>
   <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
   <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
 </svg>
@@ -11118,26 +11160,30 @@ For positive functions, this area is directly given by a definite integral.
 <h3> DIAGRAM</h3>
 
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 180" width="280" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
-  <line x1="30" y1="140" x2="260" y2="140" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+<svg viewBox="0 0 280 180" width="280" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
+  
+  <defs>
+    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
 
-  <!-- Shaded area under curve (filled path) -->
+  <rect width="280" height="180" fill="url(#grid-lp)"/>
   <path d="M 60,140 L 60,110 C 100,60 180,40 220,100 L 220,140 Z" fill="#2ecc71" opacity="0.3"/>
-
-  <!-- The function curve -->
+  <line x1="30" y1="140" x2="260" y2="140" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
   <path d="M 50,115 C 100,50 180,30 230,115" fill="none" stroke="#2ecc71" stroke-width="2.5"/>
-
-  <!-- Dotted boundary lines -->
-  <line x1="60" y1="140" x2="60" y2="108" stroke="#aaa" stroke-width="1" stroke-dasharray="3,3"/>
-  <line x1="220" y1="140" x2="220" y2="101" stroke="#aaa" stroke-width="1" stroke-dasharray="3,3"/>
-
-  <!-- Labels -->
+  <line x1="60" y1="140" x2="60" y2="108" stroke="#fff" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="220" y1="140" x2="220" y2="101" stroke="#fff" stroke-width="1" stroke-dasharray="3,3"/>
   <text x="140" y="115" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">Area Under Curve</text>
   <text x="140" y="127" fill="#2ecc71" font-size="8" font-family="monospace" text-anchor="middle">A = ∫ f(x) dx</text>
-  
   <text x="180" y="45" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">y = f(x)</text>
-
   <text x="260" y="144" fill="#aaa" font-size="8" font-family="monospace">x</text>
   <text x="40" y="14" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">y</text>
 </svg>
@@ -11424,27 +11470,31 @@ Definite integrals have limits and give a NUMERICAL value representing the total
 <h3> DIAGRAM</h3>
 
 <div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 180" width="280" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
-  <line x1="30" y1="140" x2="260" y2="140" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+<svg viewBox="0 0 280 180" width="280" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
+  
+  <defs>
+    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
+      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
+    </pattern>
+    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
+    </marker>
+  </defs>
 
-  <!-- Shaded Area from a to b -->
+  <rect width="280" height="180" fill="url(#grid-lp)"/>
   <path d="M 80,140 L 80,105 C 120,60 160,50 200,95 L 200,140 Z" fill="#3498db" opacity="0.3"/>
-
-  <!-- The function curve -->
+  <line x1="30" y1="140" x2="260" y2="140" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
   <path d="M 50,120 C 100,50 160,30 230,120" fill="none" stroke="#3498db" stroke-width="2.5"/>
-
-  <!-- Dotted boundary lines -->
   <line x1="80" y1="140" x2="80" y2="103" stroke="#fff" stroke-width="1" stroke-dasharray="3,3"/>
   <line x1="200" y1="140" x2="200" y2="95" stroke="#fff" stroke-width="1" stroke-dasharray="3,3"/>
-
-  <!-- Labels -->
   <text x="80" y="152" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace" font-weight="bold">a</text>
   <text x="200" y="152" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace" font-weight="bold">b</text>
-  
   <text x="140" y="115" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">Area = ∫ₐᵇ f(x) dx</text>
   <text x="180" y="45" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">y = f(x)</text>
-
   <text x="260" y="144" fill="#aaa" font-size="8" font-family="monospace">x</text>
   <text x="40" y="14" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">y</text>
 </svg>
