@@ -157,15 +157,40 @@ Instead of existing on a straight line like real numbers, complex numbers exist 
 </p>
 <hr>
 <h3> GEOMETRIC INTERPRETATION</h3>
-<pre>
-        Imaginary axis (i)
-              ↑
-              |
-              |     (a, b) = a + bi
-              |
---------------+----------------→ Real axis
-              |
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <!-- Grid lines -->
+  <line x1="20" y1="100" x2="260" y2="100" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  <line x1="140" y1="180" x2="140" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  
+  <!-- Dotted coordinate helper lines -->
+  <line x1="200" y1="100" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
+  <line x1="140" y1="50" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
+
+  <!-- Plotted complex number vector -->
+  <line x1="140" y1="100" x2="200" y2="50" stroke="#3498db" stroke-width="2.5" marker-end="url(#vector-arrow)"/>
+  <circle cx="200" cy="50" r="4" fill="#e74c3c"/>
+
+  <!-- Labels -->
+  <text x="270" y="104" fill="#aaa" font-size="8" font-family="sans-serif">Re (Real)</text>
+  <text x="140" y="15" fill="#aaa" font-size="8" text-anchor="middle" font-family="sans-serif">Im (Imaginary)</text>
+  <text x="208" y="46" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = a + bi</text>
+  <text x="208" y="58" fill="#aaa" font-size="8" font-family="monospace">(a, b)</text>
+  
+  <!-- Axis values -->
+  <text x="200" y="112" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">a</text>
+  <text x="132" y="54" fill="#aaa" font-size="8" text-anchor="end" font-family="monospace">bi</text>
+  
+  <defs>
+    <marker id="math-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#445"/>
+    </marker>
+    <marker id="vector-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+    </marker>
+  </defs>
+</svg>
+</div>
 <p>
 This means every complex number represents a <b>point or vector in 2D space</b>.
 </p>
@@ -312,14 +337,31 @@ y-axis → imaginary part (Im)
 <p><b>Step 3:</b> Plot point (3, 4)</p>
 <p><b>Final Answer:</b> (3, 4)</p>
 <h3> VISUAL DIAGRAM</h3>
-<pre>
-        Im
-         |
-         |      * (3,4)
-         |
----------+---------------- Re
-         |
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <!-- Axis -->
+  <line x1="20" y1="140" x2="260" y2="140" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  <line x1="80" y1="180" x2="80" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#math-arrow)"/>
+  
+  <!-- Grid projection lines -->
+  <line x1="200" y1="140" x2="200" y2="60" stroke="#3498db" stroke-dasharray="3,3" stroke-width="1"/>
+  <line x1="80" y1="60" x2="200" y2="60" stroke="#3498db" stroke-dasharray="3,3" stroke-width="1"/>
+
+  <!-- Plotted Point -->
+  <circle cx="200" cy="60" r="4" fill="#e74c3c"/>
+
+  <!-- Labels -->
+  <text x="270" y="144" fill="#aaa" font-size="8" font-family="sans-serif">Re</text>
+  <text x="80" y="15" fill="#aaa" font-size="8" text-anchor="middle" font-family="sans-serif">Im</text>
+  
+  <!-- Specific values -->
+  <text x="200" y="152" fill="#3498db" font-size="8" text-anchor="middle" font-family="monospace">3</text>
+  <text x="72" y="64" fill="#3498db" font-size="8" text-anchor="end" font-family="monospace">4i</text>
+  
+  <text x="208" y="56" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = 3 + 4i</text>
+  <text x="208" y="68" fill="#aaa" font-size="8" font-family="monospace">(3, 4)</text>
+</svg>
+</div>
 <h3> QUIZ QUESTIONS</h3>
 `,
   [
@@ -558,14 +600,32 @@ z = r(cosθ + i sinθ)
 <p><b>Step 3: Write polar form</b></p>
 <p>z = 5(cosθ + i sinθ)</p>
 <h3> DIAGRAM</h3>
-<pre>
-      |\
-      | \
-   4i |  \  r
-      |   \
-      +------>
-        3
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <!-- Horizontal Base (Real part) -->
+  <line x1="60" y1="140" x2="220" y2="140" stroke="#fff" stroke-width="2"/>
+  <!-- Vertical Height (Imaginary part) -->
+  <line x1="220" y1="140" x2="220" y2="40" stroke="#fff" stroke-width="2"/>
+  <!-- Hypotenuse (Modulus r) -->
+  <line x1="60" y1="140" x2="220" y2="40" stroke="#3498db" stroke-width="2.5"/>
+
+  <!-- Angle arc for theta -->
+  <path d="M 90,141 A 30,30 0 0,0 87,123" fill="none" stroke="#f1c40f" stroke-width="1.5"/>
+  <text x="96" y="134" fill="#f1c40f" font-size="10" font-family="sans-serif">θ</text>
+
+  <!-- Right angle indicator -->
+  <rect x="208" y="128" width="12" height="12" fill="none" stroke="#aaa" stroke-width="1"/>
+
+  <!-- Labels -->
+  <text x="140" y="155" fill="#e74c3c" font-size="10" text-anchor="middle" font-family="sans-serif" font-weight="bold">Real part (x = 3)</text>
+  <text x="230" y="95" fill="#2ecc71" font-size="10" font-family="sans-serif" font-weight="bold">Imag part (y = 4)</text>
+  <text x="130" y="80" fill="#3498db" font-size="10" font-family="sans-serif" font-weight="bold" transform="rotate(-32 130 80)">Modulus (r = 5)</text>
+  
+  <circle cx="60" cy="140" r="3" fill="#fff"/>
+  <circle cx="220" cy="40" r="4" fill="#e74c3c"/>
+  <text x="226" y="34" fill="#fff" font-size="9" font-family="monospace">(3, 4)</text>
+</svg>
+</div>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li> AC circuit analysis</li>
@@ -3170,15 +3230,27 @@ subject to constraints:
 <p><b>Final Answer:</b> Maximum value = 25 at x = 5</p>
 <hr>
 <h3> GEOMETRIC INTERPRETATION</h3>
-<pre>
-Parabola (optimization shape):
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 320 180" width="320" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <!-- Grid -->
+  <line x1="40" y1="140" x2="280" y2="140" stroke="#334" stroke-width="1.5"/>
+  <line x1="160" y1="160" x2="160" y2="20" stroke="#334" stroke-width="1.5" stroke-dasharray="3,3"/>
+  
+  <!-- Parabola curve -->
+  <path d="M 60,140 Q 160,30 260,140" fill="none" stroke="#2ecc71" stroke-width="3" stroke-linecap="round"/>
 
-          ●  maximum point (vertex)
-         / \
-        /   \
-_______/     \_______
-        x = 5
-</pre>
+  <!-- Maximum point (vertex) -->
+  <circle cx="160" cy="40" r="4.5" fill="#e74c3c"/>
+  <line x1="160" y1="40" x2="160" y2="140" stroke="#e74c3c" stroke-width="1" stroke-dasharray="2,2"/>
+  
+  <!-- Labels -->
+  <text x="160" y="30" fill="#fff" font-size="9" text-anchor="middle" font-family="sans-serif" font-weight="bold">Maximum Point (5, 25)</text>
+  <text x="160" y="152" fill="#e74c3c" font-size="8" text-anchor="middle" font-family="monospace">x = 5</text>
+  <text x="240" y="125" fill="#2ecc71" font-size="9" font-family="sans-serif">f(x) = 10x - x²</text>
+  <text x="285" y="144" fill="#aaa" font-size="8" font-family="monospace">x</text>
+  <text x="160" y="14" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">y</text>
+</svg>
+</div>
 <hr>
 <h3> REAL WORLD APPLICATIONS (MATHEMATICAL MODELS)</h3>
 <ul>
@@ -3306,15 +3378,34 @@ Subject to constraints (inequalities)
 <p><b>Step 6: Optimal solution</b></p>
 <p>Maximum Z = 12 at (4,0)</p>
 <h3> DIAGRAM</h3>
-<pre>
-y
-|\
-| \
-|  \  feasible region
-|   \
-|____\_____ x
-(0,4) (4,0)
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+
+  <!-- Feaded shaded area -->
+  <polygon points="40,160 40,50 200,160" fill="#2ecc71" opacity="0.25"/>
+
+  <!-- Boundary line -->
+  <line x1="40" y1="50" x2="200" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- Point dots -->
+  <circle cx="40" cy="50" r="4.5" fill="#f1c40f"/>
+  <circle cx="200" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
+
+  <!-- Labels -->
+  <text x="25" y="54" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
+  <text x="200" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
+  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
+  
+  <text x="120" y="115" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="160" y="80" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-34 160 80)">x + y = 4</text>
+  
+  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
+  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
+</svg>
+</div>
 <h3> REAL WORLD APPLICATION</h3>
 <ul>
 <li>Business profit maximization</li>
@@ -3433,16 +3524,34 @@ The graphical method solves linear programming problems by plotting constraints 
 <p><b>Step 6:</b> Conclusion</p>
 <p>Maximum Z = 12 at (0,6)</p>
 <h3> DIAGRAM</h3>
-<pre>
-(0,6)
- |\
- | \
- |  \
- |   \
- |____\ (6,0)
-(0,0)
-Feasible region = triangle in first quadrant
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+
+  <!-- Feaded shaded area -->
+  <polygon points="40,160 40,40 210,160" fill="#3498db" opacity="0.25"/>
+
+  <!-- Boundary line -->
+  <line x1="40" y1="40" x2="210" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- Point dots -->
+  <circle cx="40" cy="40" r="4.5" fill="#f1c40f"/>
+  <circle cx="210" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
+
+  <!-- Labels -->
+  <text x="25" y="44" fill="#f1c40f" font-size="9" font-family="monospace">(0,6)</text>
+  <text x="210" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(6,0)</text>
+  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
+  
+  <text x="110" y="115" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="160" y="75" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 160 75)">x + y = 6</text>
+  
+  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
+  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
+</svg>
+</div>
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
 <li>Profit maximization in businesses</li>
@@ -3551,16 +3660,34 @@ They restrict the possible values of variables to a valid region.
 <p>Below the line in the first quadrant</p>
 <p><b>Final Answer:</b> Triangular feasible region bounded by axes and x + y = 5</p>
 <h3> DIAGRAM</h3>
-<pre>
-(0,5)
- |\
- | \
- |  \
- |   \
- |____\ (5,0)
-(0,0)
-Feasible region = triangle in first quadrant
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+
+  <!-- Feaded shaded area -->
+  <polygon points="40,160 40,45 205,160" fill="#9b59b6" opacity="0.25"/>
+
+  <!-- Boundary line -->
+  <line x1="40" y1="45" x2="205" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- Point dots -->
+  <circle cx="40" cy="45" r="4.5" fill="#f1c40f"/>
+  <circle cx="205" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
+
+  <!-- Labels -->
+  <text x="25" y="49" fill="#f1c40f" font-size="9" font-family="monospace">(0,5)</text>
+  <text x="205" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(5,0)</text>
+  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
+  
+  <text x="110" y="115" fill="#9b59b6" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="160" y="78" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 160 78)">x + y = 5</text>
+  
+  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
+  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
+</svg>
+</div>
 
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
@@ -3653,18 +3780,44 @@ Only points inside or on this region are valid solutions.
 <p><b>Step 4:</b> Shade the common overlapping region</p>
 <p><b>Final Answer:</b> A triangular region in the first quadrant bounded by the axes and the line x + y = 4</p>
 <h3> DIAGRAM</h3>
-<pre>
-        y
-        |
-    4   |\
-        | \
-        |  \
-        |   \
-        |____\______ x
-       (0,0)   (4,0)
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <!-- Defining arrows -->
+  <defs>
+    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#445"/>
+    </marker>
+    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#445"/>
+    </marker>
+  </defs>
 
-Feasible region = triangle under the line in first quadrant
-</pre>
+  <line x1="40" y1="160" x2="250" y2="160" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+
+  <!-- Feaded shaded area -->
+  <polygon points="40,160 40,50 200,160" fill="#2ecc71" opacity="0.25"/>
+
+  <!-- Boundary line -->
+  <line x1="40" y1="50" x2="200" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
+
+  <!-- Point dots -->
+  <circle cx="40" cy="50" r="4.5" fill="#f1c40f"/>
+  <circle cx="200" cy="160" r="4.5" fill="#f1c40f"/>
+  <circle cx="40" cy="160" r="4.5" fill="#5d6d7e"/>
+
+  <!-- Labels -->
+  <text x="25" y="54" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
+  <text x="200" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
+  <text x="28" y="172" fill="#aaa" font-size="9" font-family="monospace">(0,0)</text>
+  
+  <text x="120" y="115" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
+  <text x="160" y="80" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-34 160 80)">x + y = 4</text>
+  
+  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
+  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
+</svg>
+</div>
 
 <h3> REAL WORLD APPLICATIONS</h3>
 <ul>
@@ -10964,14 +11117,31 @@ For positive functions, this area is directly given by a definite integral.
 
 <h3> DIAGRAM</h3>
 
-<pre>
-y
-|
-|      ███████
-|    ██████████   ← area under curve
-|  █████████████
-|______________________ x
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 180" width="280" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <line x1="30" y1="140" x2="260" y2="140" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+
+  <!-- Shaded area under curve (filled path) -->
+  <path d="M 60,140 L 60,110 C 100,60 180,40 220,100 L 220,140 Z" fill="#2ecc71" opacity="0.3"/>
+
+  <!-- The function curve -->
+  <path d="M 50,115 C 100,50 180,30 230,115" fill="none" stroke="#2ecc71" stroke-width="2.5"/>
+
+  <!-- Dotted boundary lines -->
+  <line x1="60" y1="140" x2="60" y2="108" stroke="#aaa" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="220" y1="140" x2="220" y2="101" stroke="#aaa" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Labels -->
+  <text x="140" y="115" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">Area Under Curve</text>
+  <text x="140" y="127" fill="#2ecc71" font-size="8" font-family="monospace" text-anchor="middle">A = ∫ f(x) dx</text>
+  
+  <text x="180" y="45" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">y = f(x)</text>
+
+  <text x="260" y="144" fill="#aaa" font-size="8" font-family="monospace">x</text>
+  <text x="40" y="14" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">y</text>
+</svg>
+</div>
 
 ---
 
@@ -11253,12 +11423,32 @@ Definite integrals have limits and give a NUMERICAL value representing the total
 
 <h3> DIAGRAM</h3>
 
-<pre>
-y
-|     ██████
-|   ██████████  between a and b
-|__a__________b________ x
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 280 180" width="280" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#131326;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <line x1="30" y1="140" x2="260" y2="140" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-x)"/>
+  <line x1="40" y1="160" x2="40" y2="20" stroke="#445" stroke-width="1.5" marker-end="url(#arrow-y)"/>
+
+  <!-- Shaded Area from a to b -->
+  <path d="M 80,140 L 80,105 C 120,60 160,50 200,95 L 200,140 Z" fill="#3498db" opacity="0.3"/>
+
+  <!-- The function curve -->
+  <path d="M 50,120 C 100,50 160,30 230,120" fill="none" stroke="#3498db" stroke-width="2.5"/>
+
+  <!-- Dotted boundary lines -->
+  <line x1="80" y1="140" x2="80" y2="103" stroke="#fff" stroke-width="1" stroke-dasharray="3,3"/>
+  <line x1="200" y1="140" x2="200" y2="95" stroke="#fff" stroke-width="1" stroke-dasharray="3,3"/>
+
+  <!-- Labels -->
+  <text x="80" y="152" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace" font-weight="bold">a</text>
+  <text x="200" y="152" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace" font-weight="bold">b</text>
+  
+  <text x="140" y="115" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">Area = ∫ₐᵇ f(x) dx</text>
+  <text x="180" y="45" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">y = f(x)</text>
+
+  <text x="260" y="144" fill="#aaa" font-size="8" font-family="monospace">x</text>
+  <text x="40" y="14" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">y</text>
+</svg>
+</div>
 
 ---
 

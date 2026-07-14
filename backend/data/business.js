@@ -37,11 +37,51 @@ market changes, competition, or poor decisions.
 </ul>
 
 <h3> DIAGRAM</h3>
-<pre>
-Raw Materials → Production → Goods → Distribution → Consumer
-      ↑                                           ↓
-      ←—————— Money Flow (Payment) ——————→
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 500 120" width="500" height="120" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;background:#111124;border-radius:8px;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <!-- Nodes -->
+  <g transform="translate(10, 20)">
+    <rect x="0" y="0" width="80" height="30" fill="#1b2a4a" stroke="#3498db" stroke-width="1.5" rx="4"/>
+    <text x="40" y="18" fill="#fff" font-size="9" text-anchor="middle" font-family="sans-serif">Raw Materials</text>
+  </g>
+  <g transform="translate(110, 20)">
+    <rect x="0" y="0" width="80" height="30" fill="#1b2a4a" stroke="#3498db" stroke-width="1.5" rx="4"/>
+    <text x="40" y="18" fill="#fff" font-size="9" text-anchor="middle" font-family="sans-serif">Production</text>
+  </g>
+  <g transform="translate(210, 20)">
+    <rect x="0" y="0" width="80" height="30" fill="#1b2a4a" stroke="#3498db" stroke-width="1.5" rx="4"/>
+    <text x="40" y="18" fill="#fff" font-size="9" text-anchor="middle" font-family="sans-serif">Goods</text>
+  </g>
+  <g transform="translate(310, 20)">
+    <rect x="0" y="0" width="80" height="30" fill="#1b2a4a" stroke="#3498db" stroke-width="1.5" rx="4"/>
+    <text x="40" y="18" fill="#fff" font-size="9" text-anchor="middle" font-family="sans-serif">Distribution</text>
+  </g>
+  <g transform="translate(410, 20)">
+    <rect x="0" y="0" width="80" height="30" fill="#2e4053" stroke="#5d6d7e" stroke-width="1.5" rx="4"/>
+    <text x="40" y="18" fill="#fff" font-size="9" text-anchor="middle" font-family="sans-serif">Consumer</text>
+  </g>
+
+  <!-- Connectors -->
+  <line x1="90" y1="35" x2="110" y2="35" stroke="#3498db" stroke-width="2" marker-end="url(#arrow-flow)"/>
+  <line x1="190" y1="35" x2="210" y2="35" stroke="#3498db" stroke-width="2" marker-end="url(#arrow-flow)"/>
+  <line x1="290" y1="35" x2="310" y2="35" stroke="#3498db" stroke-width="2" marker-end="url(#arrow-flow)"/>
+  <line x1="390" y1="35" x2="410" y2="35" stroke="#3498db" stroke-width="2" marker-end="url(#arrow-flow)"/>
+
+  <!-- Money Flow Loop -->
+  <path d="M 450,50 L 450,85 L 50,85 L 50,50" fill="none" stroke="#f1c40f" stroke-width="1.5" stroke-dasharray="4,3" marker-end="url(#arrow-money)"/>
+  <text x="250" y="98" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="sans-serif" font-weight="bold">Money Flow (Payment)</text>
+
+  <!-- Markers definition -->
+  <defs>
+    <marker id="arrow-flow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+    </marker>
+    <marker id="arrow-money" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f1c40f"/>
+    </marker>
+  </defs>
+</svg>
+</div>
 
 <h3> IMPORTANT DISTINCTIONS</h3>
 <ul>
@@ -147,11 +187,58 @@ Without these activities working together, business cannot function. For example
 </ul>
 
 <h3> COMPLETE FLOW DIAGRAM</h3>
-<pre>
-Raw Materials → Production → Warehousing → Transport → Trade → Consumer
-        ↑                                                     ↓
-        ←——————— Finance, Communication, Insurance ———————→
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 600 130" width="600" height="130" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;background:#111124;border-radius:8px;box-shadow: 0 4px 10px rgba(0,0,0,0.35);">
+  <!-- Flow nodes -->
+  <g transform="translate(10, 15)">
+    <rect x="0" y="0" width="80" height="28" fill="#1b2a4a" stroke="#3498db" stroke-width="1" rx="3"/>
+    <text x="40" y="17" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif">Raw Materials</text>
+  </g>
+  <g transform="translate(110, 15)">
+    <rect x="0" y="0" width="80" height="28" fill="#1b2a4a" stroke="#3498db" stroke-width="1" rx="3"/>
+    <text x="40" y="17" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif">Production</text>
+  </g>
+  <g transform="translate(210, 15)">
+    <rect x="0" y="0" width="80" height="28" fill="#1b2a4a" stroke="#3498db" stroke-width="1" rx="3"/>
+    <text x="40" y="17" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif">Warehousing</text>
+  </g>
+  <g transform="translate(310, 15)">
+    <rect x="0" y="0" width="80" height="28" fill="#1b2a4a" stroke="#3498db" stroke-width="1" rx="3"/>
+    <text x="40" y="17" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif">Transport</text>
+  </g>
+  <g transform="translate(410, 15)">
+    <rect x="0" y="0" width="80" height="28" fill="#1b2a4a" stroke="#3498db" stroke-width="1" rx="3"/>
+    <text x="40" y="17" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif">Trade</text>
+  </g>
+  <g transform="translate(510, 15)">
+    <rect x="0" y="0" width="80" height="28" fill="#2e4053" stroke="#5d6d7e" stroke-width="1" rx="3"/>
+    <text x="40" y="17" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif">Consumer</text>
+  </g>
+
+  <!-- Connectors -->
+  <line x1="90" y1="29" x2="110" y2="29" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrow-f)"/>
+  <line x1="190" y1="29" x2="210" y2="29" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrow-f)"/>
+  <line x1="290" y1="29" x2="310" y2="29" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrow-f)"/>
+  <line x1="390" y1="29" x2="410" y2="29" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrow-f)"/>
+  <line x1="490" y1="29" x2="510" y2="29" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrow-f)"/>
+
+  <!-- Aids support block -->
+  <rect x="50" y="70" width="500" height="30" fill="#27ae60" opacity="0.2" stroke="#2ecc71" stroke-width="1" rx="5"/>
+  <text x="300" y="89" fill="#2ecc71" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">AIDS TO TRADE (Finance, Communication, Insurance, Advertising)</text>
+
+  <!-- Support indicators -->
+  <path d="M 300,70 L 300,43" stroke="#2ecc71" stroke-width="1.5" stroke-dasharray="3,2" marker-end="url(#arrow-support)"/>
+  
+  <defs>
+    <marker id="arrow-f" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+    </marker>
+    <marker id="arrow-support" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2ecc71"/>
+    </marker>
+  </defs>
+</svg>
+</div>
 
 <h3> KEY EXAM INSIGHT</h3>
 <ul>
