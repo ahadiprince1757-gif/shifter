@@ -334,20 +334,45 @@ Volcanoes and earthquakes are natural hazards caused by movement and interaction
 </pre>
 <hr>
 <h3> VOLCANIC STRUCTURE (DIAGRAM EXPLANATION)</h3>
-<pre>
-             VOLCANO
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 340 300" width="340" height="300" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:12px;background:#1a1a2e;">
+  <!-- Ash Cloud -->
+  <ellipse cx="170" cy="32" rx="40" ry="18" fill="#666" opacity="0.7"/>
+  <ellipse cx="145" cy="28" rx="22" ry="13" fill="#888" opacity="0.6"/>
+  <ellipse cx="195" cy="28" rx="22" ry="13" fill="#777" opacity="0.6"/>
+  <text x="170" y="16" fill="#ccc" font-size="10" text-anchor="middle" font-family="sans-serif">Ash Cloud</text>
 
-               Ash cloud
-                 
-                /\\
-               /  \\   ← Crater (opening)
-              /____\\
-             /      \\
-            /  vent  \\  ← Main conduit
-           /----------\\
-          | magma chamber |
-          |_______________|
-</pre>
+  <!-- Lava Ejection -->
+  <line x1="170" y1="88" x2="155" y2="55" stroke="#ff6b1a" stroke-width="3" stroke-dasharray="4,2"/>
+  <line x1="170" y1="88" x2="185" y2="50" stroke="#ff6b1a" stroke-width="3" stroke-dasharray="4,2"/>
+
+  <!-- Volcano body -->
+  <polygon points="170,88 60,240 280,240" fill="#5a3e28"/>
+  <!-- Crater opening -->
+  <ellipse cx="170" cy="90" rx="22" ry="8" fill="#c0392b"/>
+
+  <!-- Vent (main conduit) -->
+  <rect x="162" y="90" width="16" height="100" fill="#8b0000" opacity="0.8"/>
+
+  <!-- Magma chamber -->
+  <ellipse cx="170" cy="210" rx="55" ry="28" fill="#ff4500"/>
+  <ellipse cx="170" cy="210" rx="40" ry="19" fill="#ff6b1a" opacity="0.7"/>
+
+  <!-- Lava flows on sides -->
+  <path d="M148,130 Q100,180 80,240" stroke="#ff4500" stroke-width="6" fill="none" stroke-linecap="round"/>
+  <path d="M192,130 Q240,180 260,240" stroke="#ff4500" stroke-width="6" fill="none" stroke-linecap="round"/>
+
+  <!-- Ground -->
+  <rect x="50" y="240" width="240" height="12" fill="#4a3728" rx="4"/>
+
+  <!-- Labels -->
+  <text x="208" y="94" fill="#ffcc00" font-size="10" font-family="sans-serif" font-weight="bold">← Crater</text>
+  <text x="208" y="148" fill="#ffa07a" font-size="10" font-family="sans-serif">← Vent</text>
+  <text x="155" y="216" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle">Magma Chamber</text>
+  <text x="170" y="6" fill="#aaa" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="bold">VOLCANO CROSS-SECTION</text>
+</svg>
+</div>
+
 <hr>
 <h3> TYPES OF LAVA</h3>
 <ul>
@@ -366,32 +391,95 @@ Volcanoes and earthquakes are natural hazards caused by movement and interaction
 <h3> INTERNAL IGNEOUS FEATURES</h3>
 
 <h4>1. Laccolith</h4>
-<pre>
-______
-/      \  → magma pushes rock layers upward (dome shape)
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 300 150" width="300" height="150" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#1a1a2e;">
+  <!-- Surrounding rock layers -->
+  <rect x="20" y="20" width="260" height="110" fill="#3e3832"/>
+  <rect x="20" y="55" width="260" height="35" fill="#5a4d41"/>
+  <rect x="20" y="90" width="260" height="40" fill="#7f7267"/>
+  
+  <!-- Curved/domed layers (forced upward by Laccolith) -->
+  <path d="M 20,55 L 80,55 Q 150,20 220,55 L 280,55" stroke="#3e3832" stroke-width="35" fill="none"/>
+  <path d="M 20,90 L 80,90 Q 150,50 220,90 L 280,90" stroke="#5a4d41" stroke-width="35" fill="none"/>
+  
+  <!-- Laccolith Magma Dome -->
+  <path d="M 80,105 Q 150,55 220,105 Z" fill="#ff4500" stroke="#ff6b1a" stroke-width="2"/>
+  <!-- Feeder dyke -->
+  <rect x="145" y="105" width="10" height="25" fill="#ff4500"/>
+  
+  <!-- Labels -->
+  <text x="150" y="85" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">LACCOLITH (Dome)</text>
+  <text x="150" y="125" fill="#ffcc00" font-size="8" font-family="sans-serif" text-anchor="middle">Feeder Conduit</text>
+</svg>
+</div>
 
 <h4>2. Lopolith</h4>
-<pre>
-\______/
-→ magma causes downward sinking (basin shape)
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 300 150" width="300" height="150" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#1a1a2e;">
+  <!-- Surrounding rock layers -->
+  <rect x="20" y="20" width="260" height="110" fill="#3e3832"/>
+  <rect x="20" y="55" width="260" height="35" fill="#5a4d41"/>
+  <rect x="20" y="90" width="260" height="40" fill="#7f7267"/>
+  
+  <!-- Saucer-shaped bent layers (Lopolith weight sinking) -->
+  <path d="M 20,55 L 60,55 Q 150,90 240,55 L 280,55" stroke="#3e3832" stroke-width="35" fill="none"/>
+  <path d="M 20,90 L 60,90 Q 150,125 240,90 L 280,90" stroke="#5a4d41" stroke-width="35" fill="none"/>
+  
+  <!-- Lopolith Magma Basin -->
+  <path d="M 60,70 Q 150,110 240,70 Q 150,90 60,70 Z" fill="#ff4500" stroke="#ff6b1a" stroke-width="2"/>
+  <!-- Feeder dyke -->
+  <rect x="145" y="95" width="10" height="35" fill="#ff4500"/>
+  
+  <!-- Labels -->
+  <text x="150" y="70" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">LOPOLITH (Basin)</text>
+</svg>
+</div>
 
 <h4>3. Batholith</h4>
-<p>Very large underground mass of solidified magma forming the core of mountains.</p>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 300 150" width="300" height="150" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#1a1a2e;">
+  <!-- Surrounding rock layers -->
+  <rect x="20" y="20" width="260" height="110" fill="#5a4d41"/>
+  
+  <!-- Batholith giant chamber -->
+  <path d="M 40,130 Q 50,60 100,50 Q 150,30 200,60 Q 250,70 260,130 Z" fill="#ff4500" stroke="#ff6b1a" stroke-width="2"/>
+  
+  <!-- Labels -->
+  <text x="150" y="90" fill="#fff" font-size="11" font-family="sans-serif" text-anchor="middle" font-weight="bold">BATHOLITH</text>
+  <text x="150" y="105" fill="#fff" font-size="8" font-family="sans-serif" text-anchor="middle">(Large Intrusive Mass)</text>
+</svg>
+</div>
 
 <h4>4. Dyke</h4>
-<pre>
-|
-|  → vertical intrusion cutting rock layers
-|
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 300 150" width="300" height="150" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#1a1a2e;">
+  <!-- Surrounding rock layers -->
+  <rect x="20" y="20" width="260" height="30" fill="#3e3832"/>
+  <rect x="20" y="50" width="260" height="35" fill="#5a4d41"/>
+  <rect x="20" y="85" width="260" height="45" fill="#7f7267"/>
+  
+  <!-- Vertical Dyke cutting across -->
+  <rect x="140" y="20" width="20" height="110" fill="#ff4500" stroke="#ff6b1a" stroke-width="1.5"/>
+  
+  <!-- Labels -->
+  <text x="170" y="75" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">DYKE (Vertical)</text>
+</svg>
+</div>
 
 <h4>5. Sill</h4>
-<pre>
-========
-→ horizontal intrusion between rock layers
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 300 150" width="300" height="150" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:8px;background:#1a1a2e;">
+  <!-- Surrounding rock layers -->
+  <rect x="20" y="20" width="260" height="40" fill="#3e3832"/>
+  <rect x="20" y="60" width="260" height="70" fill="#7f7267"/>
+  
+  <!-- Horizontal Sill between layers -->
+  <rect x="20" y="60" width="260" height="15" fill="#ff4500" stroke="#ff6b1a" stroke-width="1.5"/>
+  
+  <!-- Labels -->
+  <text x="150" y="72" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">SILL (Horizontal)</text>
+</svg>
+</div>
 <hr>
 <h3> GEYSERS & HOT SPRINGS</h3>
 <ul>
@@ -1358,20 +1446,42 @@ Latitude and longitude form a global coordinate system used to locate any place 
 </p>
 <h3> GLOBAL GRID DIAGRAM</h3>
 
-<pre>
-        N
-        |
-   90°N --------- (North Pole region)
-        |   |   |
-        |   |   |
-  0° ---+---+---+--- (Equator)
-        |   |   |
-        |   |   |
-   90°S --------- (South Pole region)
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 320 240" width="320" height="240" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:12px;background:#111126;box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+  <!-- Earth Circle background -->
+  <circle cx="160" cy="120" r="85" fill="#1b2a4a" stroke="#2c3e50" stroke-width="2"/>
+  
+  <!-- Latitudes (Horizontal lines) -->
+  <path d="M 88 65 Q 160 80 232 65" fill="none" stroke="#3498db" stroke-width="1" opacity="0.6"/>
+  <text x="240" y="68" fill="#3498db" font-size="8" font-family="monospace">30°N</text>
+  <path d="M 88 175 Q 160 190 232 175" fill="none" stroke="#3498db" stroke-width="1" opacity="0.6"/>
+  <text x="240" y="178" fill="#3498db" font-size="8" font-family="monospace">30°S</text>
 
-Latitude = Horizontal lines (East–West)
-Longitude = Vertical lines (North–South)
-</pre>
+  <!-- EQUATOR (0° Latitude) -->
+  <path d="M 75 120 Q 160 135 245 120" fill="none" stroke="#ff5722" stroke-width="2"/>
+  <text x="252" y="123" fill="#ff5722" font-size="9" font-family="sans-serif" font-weight="bold">Equator (0°)</text>
+
+  <!-- Longitudes (Vertical ellipses) -->
+  <path d="M 160 35 Q 120 120 160 205" fill="none" stroke="#9b59b6" stroke-width="1" opacity="0.6"/>
+  <path d="M 160 35 Q 200 120 160 205" fill="none" stroke="#9b59b6" stroke-width="1" opacity="0.6"/>
+  
+  <!-- PRIME MERIDIAN (0° Longitude) -->
+  <line x1="160" y1="35" x2="160" y2="205" stroke="#f1c40f" stroke-width="2"/>
+  <text x="160" y="28" fill="#f1c40f" font-size="8" text-anchor="middle" font-family="sans-serif" font-weight="bold">Prime Meridian (0°)</text>
+
+  <!-- Outer Ring (Silhouette) -->
+  <circle cx="160" cy="120" r="85" fill="none" stroke="#34495e" stroke-width="1.5" opacity="0.5"/>
+
+  <!-- N / S Poles -->
+  <text x="160" y="16" fill="#e74c3c" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">North Pole (90°N)</text>
+  <text x="160" y="222" fill="#ecf0f1" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">South Pole (90°S)</text>
+
+  <!-- Legend -->
+  <rect x="10" y="195" width="90" height="35" fill="#1e272c" rx="4" opacity="0.8"/>
+  <text x="15" y="208" fill="#3498db" font-size="8" font-family="sans-serif">─ Latitude (E-W)</text>
+  <text x="15" y="222" fill="#9b59b6" font-size="8" font-family="sans-serif">─ Longitude (N-S)</text>
+</svg>
+</div>
 <hr>
 <h3> LATITUDE</h3>
 <ul>
@@ -1518,16 +1628,46 @@ Topographical maps use contour lines to show height and shape of land. They allo
 
 <h3> Contour Diagram</h3>
 
-<pre>
-      500m
-     /----\
-    / 400m \
-   / 300m   \
-  /__________\
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 340 180" width="340" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:12px;background:#1e1e2f;box-shadow: 0 4px 15px rgba(0,0,0,0.35);">
+  <!-- Grid Lines -->
+  <line x1="20" y1="90" x2="320" y2="90" stroke="#2e2e3f" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="170" y1="10" x2="170" y2="170" stroke="#2e2e3f" stroke-width="1" stroke-dasharray="4,4"/>
 
-Close lines = steep slope
-Wide lines  = gentle slope
-</pre>
+  <!-- Contour lines representation -->
+  <!-- 300m Contour -->
+  <path d="M 50,110 C 50,60 130,40 190,40 C 260,40 300,80 290,120 C 280,160 210,160 140,160 C 80,160 50,140 50,110 Z" fill="none" stroke="#2ecc71" stroke-width="2"/>
+  <text x="54" y="90" fill="#2ecc71" font-size="8" font-family="monospace" font-weight="bold">300m</text>
+
+  <!-- 400m Contour -->
+  <path d="M 85,105 C 85,75 135,60 180,60 C 230,60 260,85 250,110 C 240,135 200,135 150,135 C 110,135 85,125 85,105 Z" fill="none" stroke="#f1c40f" stroke-width="2"/>
+  <text x="88" y="90" fill="#f1c40f" font-size="8" font-family="monospace" font-weight="bold">400m</text>
+
+  <!-- 500m Contour -->
+  <path d="M 120,100 C 120,85 150,75 180,75 C 210,75 225,90 220,105 C 215,120 190,120 160,120 C 135,120 120,110 120,100 Z" fill="none" stroke="#e74c3c" stroke-width="2"/>
+  <text x="123" y="90" fill="#e74c3c" font-size="8" font-family="monospace" font-weight="bold">500m</text>
+
+  <!-- Slopes indicator arrows -->
+  <path d="M 45,110 L 15,110" stroke="#e74c3c" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+  <path d="M 295,120 L 325,120" stroke="#3498db" stroke-width="1.5" marker-end="url(#arrow)" fill="none"/>
+
+  <!-- Helper markers for SVGs -->
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <!-- Slope labels -->
+  <text x="45" y="150" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">STEEP SLOPE</text>
+  <text x="45" y="162" fill="#888" font-size="7" font-family="sans-serif" text-anchor="middle">(Contours Close)</text>
+
+  <text x="285" y="150" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="middle">GENTLE SLOPE</text>
+  <text x="285" y="162" fill="#888" font-size="7" font-family="sans-serif" text-anchor="middle">(Contours Wide)</text>
+
+  <text x="170" y="22" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">CONTOUR MAP OF A HILL</text>
+</svg>
+</div>
 <hr>
 <h3> Key Features of Contours</h3>
 <h4>1. Contour Lines</h4>
@@ -2177,13 +2317,27 @@ A bearing is the direction of one point from another, measured in degrees clockw
 
 <h3> Compass Diagram</h3>
 
-<pre>
-         000° (N)
-           |
-  270° ----+---- 090°
-           |
-         180° (S)
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 220 220" width="220" height="220" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:50%;background:#111124;box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+  <!-- Axis -->
+  <line x1="110" y1="15" x2="110" y2="205" stroke="#334" stroke-width="1.5"/>
+  <line x1="15" y1="110" x2="205" y2="110" stroke="#334" stroke-width="1.5"/>
+  
+  <!-- Clockwise Measurement Path Arrow -->
+  <path d="M 110 40 A 70 70 0 1 1 55 160" fill="none" stroke="#f1c40f" stroke-width="2.5" stroke-dasharray="3,3"/>
+  <polygon points="53,155 45,170 63,165" fill="#f1c40f"/>
+  <text x="175" y="65" fill="#f1c40f" font-size="8" font-family="sans-serif" font-weight="bold">Clockwise</text>
+
+  <!-- Pointers -->
+  <circle cx="110" cy="110" r="4" fill="#e74c3c"/>
+
+  <!-- Labels -->
+  <text x="110" y="12" fill="#e74c3c" font-size="12" font-weight="bold" text-anchor="middle" font-family="sans-serif">N (000°)</text>
+  <text x="215" y="114" fill="#ecf0f1" font-size="11" font-weight="bold" font-family="sans-serif">E (090°)</text>
+  <text x="110" y="217" fill="#ecf0f1" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">S (180°)</text>
+  <text x="5" y="114" fill="#ecf0f1" font-size="11" font-weight="bold" font-family="sans-serif">W (270°)</text>
+</svg>
+</div>
 
 <hr>
 
@@ -2475,12 +2629,45 @@ A cross section transforms a flat map into a vertical profile, allowing you to �
 
 <h4>Result (Shape Interpretation):</h4>
 
-<pre>
-        /\
-       /  \
-      /    \
-_____/      \_____
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 340 180" width="340" height="180" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:12px;background:#1e1e2f;box-shadow: 0 4px 15px rgba(0,0,0,0.35);">
+  <!-- Grid Lines -->
+  <line x1="50" y1="130" x2="300" y2="130" stroke="#2e2e3f" stroke-width="1"/>
+  <line x1="50" y1="90" x2="300" y2="90" stroke="#2e2e3f" stroke-width="1"/>
+  <line x1="50" y1="50" x2="300" y2="50" stroke="#2e2e3f" stroke-width="1"/>
+
+  <!-- Y-Axis Labels (Elevation) -->
+  <text x="40" y="134" fill="#aaa" font-size="8" text-anchor="end" font-family="monospace">100m</text>
+  <text x="40" y="94" fill="#aaa" font-size="8" text-anchor="end" font-family="monospace">200m</text>
+  <text x="40" y="54" fill="#aaa" font-size="8" text-anchor="end" font-family="monospace">300m</text>
+  <text x="12" y="95" fill="#fff" font-size="9" font-family="sans-serif" transform="rotate(-90 12 95)" text-anchor="middle" font-weight="bold">Height (m)</text>
+
+  <!-- X-Axis Labels (Distance) -->
+  <text x="50" y="160" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">0</text>
+  <text x="112.5" y="160" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">1</text>
+  <text x="175" y="160" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">2</text>
+  <text x="237.5" y="160" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">3</text>
+  <text x="300" y="160" fill="#aaa" font-size="8" text-anchor="middle" font-family="monospace">4</text>
+  <text x="175" y="174" fill="#fff" font-size="9" font-family="sans-serif" text-anchor="middle" font-weight="bold">Distance (km)</text>
+
+  <!-- Axes lines -->
+  <line x1="50" y1="30" x2="50" y2="145" stroke="#ccc" stroke-width="1.5"/>
+  <line x1="50" y1="145" x2="310" y2="145" stroke="#ccc" stroke-width="1.5"/>
+
+  <!-- Plotted points -->
+  <circle cx="50" cy="130" r="4" fill="#ff5722"/>
+  <circle cx="112.5" cy="90" r="4" fill="#ff5722"/>
+  <circle cx="175" cy="50" r="4" fill="#ff5722"/>
+  <circle cx="237.5" cy="90" r="4" fill="#ff5722"/>
+  <circle cx="300" cy="130" r="4" fill="#ff5722"/>
+
+  <!-- Smooth Profile Curve -->
+  <path d="M 50,130 C 80,110 90,90 112.5,90 C 135,90 150,50 175,50 C 200,50 215,90 237.5,90 C 260,90 270,110 300,130" fill="none" stroke="#2ecc71" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Title/Interpretation -->
+  <text x="175" y="20" fill="#ffcc00" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">PLOTTED CROSS-SECTION PROFILE (HILL)</text>
+</svg>
+</div>
 
 <p><b>Interpretation:</b> This represents a hill because height increases to a peak then decreases.</p>
 <hr>
@@ -2930,15 +3117,51 @@ Bearings are directions measured in degrees clockwise from North (0°), used to 
 </ul>
 <hr>
 <h3> Compass Diagram</h3>
-<pre>
-           N (000°)
-       NNW     NNE
-    NW    |     NE
-W (270°)--+--(090°) E
-    SW    |     SE
-       SSW     SSE
-           S (180°)
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 260 260" width="260" height="260" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:50%;background:#12122a;">
+  <!-- Outer circle -->
+  <circle cx="130" cy="130" r="118" fill="none" stroke="#334" stroke-width="2"/>
+  <circle cx="130" cy="130" r="90" fill="none" stroke="#223" stroke-width="1"/>
+
+  <!-- Cardinal spokes -->
+  <line x1="130" y1="12" x2="130" y2="248" stroke="#445" stroke-width="1"/>
+  <line x1="12" y1="130" x2="248" y2="130" stroke="#445" stroke-width="1"/>
+  <!-- Diagonal spokes -->
+  <line x1="47" y1="47" x2="213" y2="213" stroke="#334" stroke-width="1"/>
+  <line x1="213" y1="47" x2="47" y2="213" stroke="#334" stroke-width="1"/>
+
+  <!-- N pointer (red) -->
+  <polygon points="130,20 123,130 137,130" fill="#e74c3c"/>
+  <!-- S pointer (white) -->
+  <polygon points="130,240 123,130 137,130" fill="#ecf0f1"/>
+  <!-- E pointer -->
+  <polygon points="240,130 130,123 130,137" fill="#ecf0f1"/>
+  <!-- W pointer -->
+  <polygon points="20,130 130,123 130,137" fill="#ecf0f1"/>
+
+  <!-- Centre dot -->
+  <circle cx="130" cy="130" r="6" fill="#f39c12"/>
+
+  <!-- Cardinal labels -->
+  <text x="130" y="12" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle" font-family="sans-serif">N</text>
+  <text x="130" y="253" fill="#ecf0f1" font-size="16" font-weight="bold" text-anchor="middle" font-family="sans-serif">S</text>
+  <text x="252" y="135" fill="#ecf0f1" font-size="16" font-weight="bold" text-anchor="middle" font-family="sans-serif">E</text>
+  <text x="8" y="135" fill="#ecf0f1" font-size="16" font-weight="bold" text-anchor="middle" font-family="sans-serif">W</text>
+
+  <!-- Intermediate labels -->
+  <text x="206" y="55" fill="#3498db" font-size="12" font-weight="bold" font-family="sans-serif">NE</text>
+  <text x="55" y="55" fill="#3498db" font-size="12" font-weight="bold" font-family="sans-serif">NW</text>
+  <text x="206" y="215" fill="#3498db" font-size="12" font-weight="bold" font-family="sans-serif">SE</text>
+  <text x="55" y="215" fill="#3498db" font-size="12" font-weight="bold" font-family="sans-serif">SW</text>
+
+  <!-- Bearing degrees -->
+  <text x="130" y="30" fill="#f39c12" font-size="9" text-anchor="middle" font-family="monospace">000°</text>
+  <text x="230" y="134" fill="#f39c12" font-size="9" text-anchor="middle" font-family="monospace">090°</text>
+  <text x="130" y="242" fill="#f39c12" font-size="9" text-anchor="middle" font-family="monospace">180°</text>
+  <text x="30" y="134" fill="#f39c12" font-size="9" text-anchor="middle" font-family="monospace">270°</text>
+</svg>
+</div>
+
 <hr>
 <h3> Common Bearings Table</h3>
 <ul>
@@ -3651,14 +3874,34 @@ Sustainable development refers to development that meets the needs of the presen
 <hr>
 <h3> Concept Diagram</h3>
 
-<pre>
-        Environment
-           /   \
-          /     \
-   Economy ----- Society
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 300 240" width="300" height="240" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:12px;background:#131326;box-shadow: 0 4px 15px rgba(0,0,0,0.35);">
+  <!-- Intersecting circles -->
+  <!-- Environment (Green) -->
+  <circle cx="150" cy="90" r="65" fill="#2ecc71" opacity="0.3" stroke="#2ecc71" stroke-width="2"/>
+  <!-- Economy (Blue) -->
+  <circle cx="105" cy="155" r="65" fill="#3498db" opacity="0.3" stroke="#3498db" stroke-width="2"/>
+  <!-- Society (Purple) -->
+  <circle cx="195" cy="155" r="65" fill="#9b59b6" opacity="0.3" stroke="#9b59b6" stroke-width="2"/>
 
- (Balance = Sustainability)
-</pre>
+  <!-- Center intersection glow (Sustainability) -->
+  <path d="M 150,118 A 65,65 0 0,0 128,155 A 65,65 0 0,0 172,155 A 65,65 0 0,0 150,118 Z" fill="#f1c40f" opacity="0.75"/>
+
+  <!-- Labels for circles -->
+  <text x="150" y="55" fill="#2ecc71" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">ENVIRONMENT</text>
+  <text x="75" y="195" fill="#3498db" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">ECONOMY</text>
+  <text x="225" y="195" fill="#9b59b6" font-size="11" font-weight="bold" text-anchor="middle" font-family="sans-serif">SOCIETY</text>
+
+  <!-- Labels for intersection (Viable, Equitable, Bearable, Sustainable) -->
+  <text x="108" y="112" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif" opacity="0.8">Viable</text>
+  <text x="192" y="112" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif" opacity="0.8">Bearable</text>
+  <text x="150" y="185" fill="#fff" font-size="8" text-anchor="middle" font-family="sans-serif" opacity="0.8">Equitable</text>
+
+  <!-- Central sustainability label -->
+  <rect x="110" y="128" width="80" height="15" fill="#000" rx="3" opacity="0.85"/>
+  <text x="150" y="139" fill="#f1c40f" font-size="8" font-weight="bold" text-anchor="middle" font-family="sans-serif">SUSTAINABLE</text>
+</svg>
+</div>
   `,
   [
   {
@@ -3765,16 +4008,49 @@ Oceans are vast, continuous bodies of salt water that cover most of the Earth's 
 </ul>
 <hr>
 <h3> Concept Diagram</h3>
-<pre>
-        EARTH
-   ----------------
-   |              |
- LAND (29%)   WATER (71%)
-                  |
-         ------------------
-         |                |
-      Oceans           Seas
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 320 200" width="320" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:12px;background:#14142a;box-shadow: 0 4px 15px rgba(0,0,0,0.35);">
+  <!-- Pie Chart (Land vs Water) -->
+  <!-- Water slice (71%): stroke-dasharray="71 29" -->
+  <circle cx="90" cy="100" r="55" fill="none" stroke="#2980b9" stroke-width="110" stroke-dasharray="245.04 100.53" transform="rotate(-90 90 100)"/>
+  <!-- Land slice (29%) -->
+  <circle cx="90" cy="100" r="55" fill="none" stroke="#27ae60" stroke-width="110" stroke-dasharray="100.53 245.04" transform="rotate(155.04 90 100)"/>
+  <!-- Inner boundary circle to make it look clean -->
+  <circle cx="90" cy="100" r="55" fill="none" stroke="#14142a" stroke-width="2"/>
+
+  <!-- Flow Arrows -->
+  <path d="M 150,100 L 195,100" stroke="#3498db" stroke-width="2" marker-end="url(#arrow-oceans)" fill="none"/>
+  <path d="M 230,100 L 230,65 L 260,65" stroke="#3498db" stroke-width="1.5" fill="none" marker-end="url(#arrow-oceans)"/>
+  <path d="M 230,100 L 230,135 L 260,135" stroke="#3498db" stroke-width="1.5" fill="none" marker-end="url(#arrow-oceans)"/>
+
+  <!-- Markers -->
+  <defs>
+    <marker id="arrow-oceans" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
+    </marker>
+  </defs>
+
+  <!-- Pie Labels -->
+  <text x="50" y="80" fill="#fff" font-size="10" font-weight="bold" font-family="sans-serif">Land</text>
+  <text x="50" y="94" fill="#fff" font-size="9" font-family="sans-serif">29%</text>
+
+  <text x="110" y="125" fill="#fff" font-size="10" font-weight="bold" font-family="sans-serif">Water</text>
+  <text x="110" y="139" fill="#fff" font-size="9" font-family="sans-serif">71%</text>
+
+  <!-- Hierarchical Labels -->
+  <rect x="200" y="90" width="60" height="20" fill="#1e272c" rx="4"/>
+  <text x="230" y="103" fill="#3498db" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Water</text>
+
+  <rect x="260" y="53" width="55" height="22" fill="#2980b9" rx="4"/>
+  <text x="287" y="67" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Oceans</text>
+
+  <rect x="260" y="123" width="55" height="22" fill="#8e44ad" rx="4"/>
+  <text x="287" y="137" fill="#fff" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Seas</text>
+
+  <!-- Title -->
+  <text x="160" y="24" fill="#fff" font-size="10" font-family="sans-serif" text-anchor="middle" font-weight="bold">EARTH SURFACE COMPOSITION</text>
+</svg>
+</div>
   `,
   [
     {

@@ -5828,9 +5828,34 @@ The two main types of circuits are series circuits and parallel circuits.
 <li>If one component breaks, the whole circuit stops working</li>
 </ul>
 
-<pre>
-Battery → [R1] → [R2] → [R3]
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 400 100" width="400" height="100" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;background:#12122a;border-radius:8px;">
+  <!-- Wire top -->
+  <line x1="40" y1="30" x2="380" y2="30" stroke="#7cfc00" stroke-width="2"/>
+  <!-- Wire bottom -->
+  <line x1="40" y1="70" x2="380" y2="70" stroke="#7cfc00" stroke-width="2"/>
+  <!-- Battery left side -->
+  <line x1="40" y1="30" x2="40" y2="70" stroke="#7cfc00" stroke-width="2"/>
+  <line x1="30" y1="38" x2="50" y2="38" stroke="#f39c12" stroke-width="3"/>
+  <line x1="35" y1="45" x2="45" y2="45" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="20" y="60" fill="#f39c12" font-size="10" font-family="sans-serif">+</text>
+  <text x="42" y="60" fill="#f39c12" font-size="10" font-family="sans-serif">-</text>
+  <text x="25" y="88" fill="#aaa" font-size="9" font-family="sans-serif">Battery</text>
+  <!-- R1 -->
+  <rect x="90" y="22" width="60" height="16" fill="#1a3a6a" stroke="#3498db" stroke-width="1.5" rx="3"/>
+  <text x="120" y="34" fill="#3498db" font-size="11" text-anchor="middle" font-family="monospace">R1</text>
+  <!-- R2 -->
+  <rect x="180" y="22" width="60" height="16" fill="#1a3a6a" stroke="#3498db" stroke-width="1.5" rx="3"/>
+  <text x="210" y="34" fill="#3498db" font-size="11" text-anchor="middle" font-family="monospace">R2</text>
+  <!-- R3 -->
+  <rect x="270" y="22" width="60" height="16" fill="#1a3a6a" stroke="#3498db" stroke-width="1.5" rx="3"/>
+  <text x="300" y="34" fill="#3498db" font-size="11" text-anchor="middle" font-family="monospace">R3</text>
+  <!-- Right close -->
+  <line x1="380" y1="30" x2="380" y2="70" stroke="#7cfc00" stroke-width="2"/>
+  <!-- Title -->
+  <text x="200" y="90" fill="#aaa" font-size="10" text-anchor="middle" font-family="sans-serif">SERIES CIRCUIT — One path for current</text>
+</svg>
+</div>
 
 <div class="example-box">
 <b>Key Idea:</b> One path for current flow only
@@ -5847,12 +5872,40 @@ Battery → [R1] → [R2] → [R3]
 <li>If one component fails, others still work</li>
 </ul>
 
-<pre>
-      |--[R1]--|
-Battery        |
-      |--[R2]--|
-      |--[R3]--|
-</pre>
+<div style="text-align:center;margin:1rem 0;">
+<svg viewBox="0 0 380 160" width="380" height="160" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;background:#12122a;border-radius:8px;">
+  <!-- Battery -->
+  <line x1="40" y1="20" x2="40" y2="140" stroke="#7cfc00" stroke-width="2"/>
+  <line x1="28" y1="60" x2="52" y2="60" stroke="#f39c12" stroke-width="3"/>
+  <line x1="33" y1="72" x2="47" y2="72" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="18" y="68" fill="#f39c12" font-size="10" font-family="sans-serif">+</text>
+  <text x="44" y="82" fill="#f39c12" font-size="10" font-family="sans-serif">-</text>
+  <text x="18" y="150" fill="#aaa" font-size="9" font-family="sans-serif">Battery</text>
+  <!-- Top bus wire -->
+  <line x1="40" y1="20" x2="340" y2="20" stroke="#7cfc00" stroke-width="2"/>
+  <!-- Bottom bus wire -->
+  <line x1="40" y1="140" x2="340" y2="140" stroke="#7cfc00" stroke-width="2"/>
+  <!-- Right close -->
+  <line x1="340" y1="20" x2="340" y2="140" stroke="#7cfc00" stroke-width="2"/>
+  <!-- Branch R1 -->
+  <line x1="120" y1="20" x2="120" y2="45" stroke="#7cfc00" stroke-width="1.5"/>
+  <rect x="98" y="45" width="44" height="18" fill="#1a3a6a" stroke="#e74c3c" stroke-width="1.5" rx="3"/>
+  <text x="120" y="58" fill="#e74c3c" font-size="11" text-anchor="middle" font-family="monospace">R1</text>
+  <line x1="120" y1="63" x2="120" y2="140" stroke="#7cfc00" stroke-width="1.5"/>
+  <!-- Branch R2 -->
+  <line x1="200" y1="20" x2="200" y2="61" stroke="#7cfc00" stroke-width="1.5"/>
+  <rect x="178" y="61" width="44" height="18" fill="#1a3a6a" stroke="#9b59b6" stroke-width="1.5" rx="3"/>
+  <text x="200" y="74" fill="#9b59b6" font-size="11" text-anchor="middle" font-family="monospace">R2</text>
+  <line x1="200" y1="79" x2="200" y2="140" stroke="#7cfc00" stroke-width="1.5"/>
+  <!-- Branch R3 -->
+  <line x1="280" y1="20" x2="280" y2="77" stroke="#7cfc00" stroke-width="1.5"/>
+  <rect x="258" y="77" width="44" height="18" fill="#1a3a6a" stroke="#f39c12" stroke-width="1.5" rx="3"/>
+  <text x="280" y="90" fill="#f39c12" font-size="11" text-anchor="middle" font-family="monospace">R3</text>
+  <line x1="280" y1="95" x2="280" y2="140" stroke="#7cfc00" stroke-width="1.5"/>
+  <!-- Title -->
+  <text x="190" y="158" fill="#aaa" font-size="10" text-anchor="middle" font-family="sans-serif">PARALLEL CIRCUIT — Multiple paths for current</text>
+</svg>
+</div>
 
 <div class="example-box">
 <b>Key Idea:</b> Multiple paths for current flow
