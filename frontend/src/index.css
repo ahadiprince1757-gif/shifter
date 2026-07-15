@@ -990,11 +990,11 @@ html.dark-mode .lnav-search-panel {
 }
 
 .bc {
-  font-size: 0.69rem;
+  font-size: 0.78rem;
   color: var(--t3);
   display: flex;
   align-items: center;
-  gap: 0.27rem;
+  gap: 0.4rem;
   flex-wrap: wrap;
   overflow: hidden;
 }
@@ -1004,20 +1004,32 @@ html.dark-mode .lnav-search-panel {
   font-weight: 500;
   cursor: pointer;
   white-space: nowrap;
-  transition: color 0.14s;
+  transition: all 0.15s ease;
+  background: var(--bg2);
+  border: 1px solid var(--bd);
+  padding: 0.25rem 0.6rem;
+  border-radius: 6px;
+  display: inline-flex;
+  align-items: center;
 }
 
 .bi:hover {
   color: var(--v);
+  border-color: var(--v);
+  background: var(--sur);
 }
 
 .bsep {
-  color: var(--bd2);
+  color: var(--t3);
+  opacity: 0.5;
+  font-weight: 300;
 }
 
 .bcur {
-  color: var(--v);
+  color: var(--t);
   font-weight: 600;
+  padding: 0.25rem 0.6rem;
+  white-space: nowrap;
 }
 
 .lps {
@@ -1233,6 +1245,60 @@ html.dark-mode .lnav-search-panel {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* View Header & Back Navigation Styles */
+.vhd {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.vback {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--t2);
+  cursor: pointer;
+  background: var(--bg2);
+  border: 1px solid var(--bd);
+  padding: 0.45rem 0.9rem;
+  border-radius: 99px;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+  margin-bottom: 1.25rem;
+  outline: none;
+  text-decoration: none;
+}
+
+.vback:hover {
+  color: var(--v);
+  border-color: var(--v);
+  background: var(--sur);
+  transform: translateX(-3px);
+}
+
+.vback:focus-visible {
+  box-shadow: 0 0 0 2px rgba(117, 82, 243, 0.25);
+}
+
+.vtitle {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--t);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.vsub {
+  font-size: 0.85rem;
+  color: var(--t3);
+  margin-top: 0.35rem;
 }
 
 /* Subject List - Steve Jobs Minimalist Redesign */
