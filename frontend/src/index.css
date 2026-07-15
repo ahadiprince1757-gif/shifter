@@ -4190,6 +4190,114 @@ html.dark-mode .bottom-search-panel {
   border-color: var(--v) !important;
 }
 
+/* STEVE JOBS MINIMALIST AESTHETIC */
+.hero-inner.jobs-centered {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 8rem 1.5rem 6rem;
+}
+
+.hero-inner.jobs-centered .hero-content {
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  max-width: 680px;
+}
+
+.hero-inner.jobs-centered .hero-title {
+  font-size: clamp(2.5rem, 6.5vw, 4.4rem);
+  font-weight: 800;
+  line-height: 1.12;
+  letter-spacing: -0.04em;
+  color: var(--t);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.hero-inner.jobs-centered .hero-sub {
+  font-size: clamp(0.98rem, 2vw, 1.2rem);
+  line-height: 1.62;
+  color: var(--t2);
+  max-width: 580px;
+  opacity: 0.9;
+  margin: 0 auto;
+}
+
+.hero-inner.jobs-centered .btn-hero.primary {
+  padding: 0.9rem 2.8rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  background: var(--t);
+  color: var(--bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  border: 1px solid transparent;
+}
+
+html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
+  background: #ffffff;
+  color: #000000;
+}
+
+.hero-inner.jobs-centered .btn-hero.primary:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
+  opacity: 0.95;
+}
+
+.landing-footer.jobs-footer {
+  padding: 3rem 1.5rem;
+  border-top: none;
+  background: transparent;
+}
+
+.jobs-footer .footer-content {
+  align-items: center;
+  gap: 1rem;
+}
+
+.footer-links-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.footer-sep {
+  color: var(--t3);
+  opacity: 0.5;
+  font-size: 0.85rem;
+}
+
+.jobs-footer .footer-link-btn {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--t3);
+  transition: color 0.2s ease;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.jobs-footer .footer-link-btn:hover {
+  color: var(--t);
+}
+
+.jobs-footer .footer-copyright {
+  margin: 0;
+  padding: 0;
+  border-top: none;
+  font-size: 0.78rem;
+  color: var(--t3);
+  opacity: 0.6;
+}
+
 
 
 

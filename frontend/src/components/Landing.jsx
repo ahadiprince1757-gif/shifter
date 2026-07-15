@@ -4,11 +4,6 @@ import Navbar from "./Navbar";
 function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }) {
   const [legalModal, setLegalModal] = useState(null);
 
-  const totalTopics =
-    curriculum?.reduce(
-      (acc, s) => acc + s.chapters.reduce((a, c) => a + c.topics.length, 0),
-      0,
-    ) ?? 0;
 
   const legalContent = {
     policy: {
@@ -388,190 +383,44 @@ function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }
         session={session}
         onOpenAuth={openAuth}
       />
+      
       <section className="hero">
         <div className="hero-bg"></div>
-        <div className="orb orb1"></div>
-        <div className="orb orb2"></div>
-        <div className="hero-inner">
+        <div className="hero-inner jobs-centered">
           <div className="hero-content">
-            <div className="hero-badge">
-              ✨ Where curiosity and knowledge connect
-            </div>
-            <div className="hero-title">
-              Master Any Subject, <span className="gt">Anywhere.</span>
-            </div>
-            <div className="hero-sub" style={{ marginBottom: "1rem" }}>
-              Tixar is an offline-first learning platform designed to provide a
-              seamless, interactive educational experience. Dive into
-              high-quality curriculum content, track your progress, and master
-              subjects at your own pace without needing an internet connection.
-            </div>
+            <h1 className="hero-title">
+              Master your subjects. <br />
+              <span className="gt">Completely offline.</span>
+            </h1>
+            <p className="hero-sub">
+              A distraction-free space for study notes, active recall, and quizzes. Study at your own pace, anytime, anywhere.
+            </p>
             <div className="hero-actions">
               <button className="btn-hero primary" onClick={enterApp}>
-                Start Learning →
+                Start Learning
               </button>
             </div>
-            <div className="hero-stats">
-              <div>
-                <div className="sn">{curriculum?.length ?? 0}+</div>
-                <div className="sl">Subjects</div>
-              </div>
-              <div>
-                <div className="sn">
-                  {totalTopics > 0 ? totalTopics + "+" : "500+"}
-                </div>
-                <div className="sl">Topics</div>
-              </div>
-              <div>
-                <div className="sn">Explore</div>
-                <div className="sl">Offline</div>
-              </div>
-            </div>
-          </div>
-          <div className="hero-visual">
-            <div className="logo-mega">
-              <div className="ring"></div>
-              <div className="ring2"></div>
-              <img
-                src="/Tixar.jpeg"
-                alt="Tichar Logo Mega"
-                className="logo-img-mega"
-              />
-            </div>
           </div>
         </div>
       </section>
 
-
-      <section className="sec" id="subjs" style={{ background: "var(--bg)" }}>
-        <div className="sec-head">
-          <div className="sec-lbl">Our Subjects</div>
-          <h2 className="sec-title">Explore and Master</h2>
-          <p className="sec-sub">
-            Dive into any subject below. Track your completion rate and master each chapter topic-by-topic.
-          </p>
-        </div>
-        <div className="subj-grid-land">
-          {curriculum?.map((s) => (
-            <button
-              className="sc-land"
-              key={s.id}
-              onClick={enterApp}
-              aria-label={`View ${s.label} subject`}
-            >
-              <div className="si">{s.icon}</div>
-              <div className="sn2">{s.label}</div>
-              <div className="sc2">
-                {s.chapters?.reduce((a, c) => a + (c.topics?.length ?? 0), 0) ??
-                  0}{" "}
-                topics
-              </div>
-            </button>
-          )) ?? null}
-        </div>
-        <div
-          style={{
-            textAlign: "center",
-            marginTop: "1.65rem",
-            position: "relative",
-            zIndex: 10,
-          }}
-        >
-          <button
-            className="btn-hero primary"
-            onClick={enterApp}
-            style={{ fontSize: "0.84rem" }}
-          >
-            Explore All Subjects →
-          </button>
-        </div>
-      </section>
-
-      <footer className="landing-footer">
+      <footer className="landing-footer jobs-footer">
         <div className="footer-content">
-          <div className="footer-links-grid">
-            <div className="footer-column brand-col">
-              <div className="footer-brand">
-                <img src="/Tixar.jpeg" alt="Tixar Logo" className="footer-logo" />
-                <span className="footer-name">Tixar</span>
-              </div>
-              <p className="footer-tagline">Connecting ideas. Empowering minds.</p>
-
-              <div className="footer-socials">
-                <span className="socials-text">Follow us on:</span>
-                <div className="socials-icons">
-                  <a
-                    href="https://facebook.com/nesis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Facebook"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M14 13.5h2.5l1-4H14v-2c0-1.03 0-2 2-2h1.5V2.14c-.326-.043-1.557-.14-2.857-.14C11.928 2 10 3.657 10 6.7v2.8H7v4h3V22h4v-8.5z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://instagram.com/Tixarapp"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="Instagram"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://x.com/nesis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="X (Twitter)"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://tiktok.com/@Tixar"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="TikTok"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64 2.93 2.93 0 01.88.13V9.4a6.84 6.84 0 00-1-.05A6.28 6.28 0 005.4 15.63a6.28 6.28 0 004.5 1.87A6.29 6.29 0 0015.8 11.8V5.3a8.16 8.16 0 004.77 1.52v-3.4a4.85 4.85 0 01-1-.1z" />
-                    </svg>
-                  </a>
-                  <a
-                    href="https://youtube.com/@nesis"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label="YouTube"
-                  >
-                    <svg viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.5 12 3.5 12 3.5s-7.505 0-9.377.55a3.016 3.016 0 00-2.122 2.136C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.55 9.376.55 9.376.55s7.505 0 9.377-.55a3.016 3.016 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                    </svg>
-                  </a>
-                </div>
-              </div>
-            </div>
-
-            <div className="footer-column links-col">
-              <h4 className="footer-heading">Legal Requirements</h4>
-              <div className="footer-links">
-                <button onClick={() => setLegalModal("policy")} className="footer-link-btn">
-                  Privacy Policy
-                </button>
-                <button onClick={() => setLegalModal("terms")} className="footer-link-btn">
-                  Terms of Service
-                </button>
-                <button onClick={() => setLegalModal("consent")} className="footer-link-btn">
-                  AI Use & Child Safety
-                </button>
-              </div>
-            </div>
+          <div className="footer-links-row">
+            <button onClick={() => setLegalModal("policy")} className="footer-link-btn">
+              Privacy Policy
+            </button>
+            <span className="footer-sep">•</span>
+            <button onClick={() => setLegalModal("terms")} className="footer-link-btn">
+              Terms of Service
+            </button>
+            <span className="footer-sep">•</span>
+            <button onClick={() => setLegalModal("consent")} className="footer-link-btn">
+              AI & Child Safety
+            </button>
           </div>
-
           <p className="footer-copyright">
-            © Copyright 2026. All rights reserved.
+            © 2026 Tixar. All rights reserved.
           </p>
         </div>
       </footer>
