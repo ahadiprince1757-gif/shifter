@@ -1135,226 +1135,237 @@ add(
   </ul>
 <h3> MODERN PERIODIC TABLE (FIRST 20 ELEMENTS)</h3>
 
-<style>
-.periodic-table {
-  border-collapse: collapse;
-  margin: 20px 0;
-  font-family: Arial, sans-serif;
-}
+<div style="text-align:center;margin:1.5rem 0;overflow-x:auto;">
+<svg viewBox="0 0 760 440" width="760" height="440" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:12px;background:#0a0a1a;box-shadow:0 6px 20px rgba(0,0,0,0.5);border:1px solid #1e1e2f;font-family:'Segoe UI',Arial,sans-serif;">
 
-.periodic-table td {
-  width: 110px;
-  height: 90px;
-  border: 1px solid #333;
-  vertical-align: top;
-  text-align: center;
-  padding: 4px;
-  font-size: 12px;
-}
+  <defs>
+    <linearGradient id="pt-bg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#12122a"/>
+      <stop offset="100%" stop-color="#0a0a1a"/>
+    </linearGradient>
+    <filter id="pt-glow">
+      <feGaussianBlur stdDeviation="2" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
 
-.empty {
-  border: none;
-}
+  <rect width="760" height="440" fill="url(#pt-bg)" rx="12"/>
 
-.element {
-  background: #f5f5f5;
-  border-radius: 6px;
-}
+  <!-- Title -->
+  <text x="380" y="28" fill="#fff" font-size="14" font-weight="bold" text-anchor="middle" letter-spacing="1">PERIODIC TABLE OF ELEMENTS</text>
+  <line x1="200" y1="34" x2="560" y2="34" stroke="#3498db" stroke-width="1.5" opacity="0.5"/>
 
-.alkali { background: #ffcccc; }
-.alkaline { background: #ffe0b3; }
-.nonmetal { background: #ccffcc; }
-.halogen { background: #ffff99; }
-.noble { background: #ccccff; }
-.metalloid { background: #d9d9d9; }
+  <!-- Group labels -->
+  <text x="50" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 1</text>
+  <text x="90" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 2</text>
+  <text x="530" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 13</text>
+  <text x="570" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 14</text>
+  <text x="610" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 15</text>
+  <text x="650" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 16</text>
+  <text x="690" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 17</text>
+  <text x="730" y="52" fill="#667" font-size="8" text-anchor="middle">Gp 18</text>
 
-.atomic {
-  font-size: 11px;
-  text-align: left;
-}
+  <!-- Period labels -->
+  <text x="20" y="82" fill="#667" font-size="9" text-anchor="middle" font-weight="bold">1</text>
+  <text x="20" y="142" fill="#667" font-size="9" text-anchor="middle" font-weight="bold">2</text>
+  <text x="20" y="202" fill="#667" font-size="9" text-anchor="middle" font-weight="bold">3</text>
+  <text x="20" y="262" fill="#667" font-size="9" text-anchor="middle" font-weight="bold">4</text>
 
-.symbol {
-  font-size: 22px;
-  font-weight: bold;
-}
+  <!-- ═══════ PERIOD 1 ═══════ -->
+  <!-- H -->
+  <rect x="32" y="58" width="36" height="42" rx="4" fill="#2ecc71" opacity="0.2" stroke="#2ecc71" stroke-width="1"/>
+  <text x="36" y="68" fill="#888" font-size="7">1</text>
+  <text x="50" y="84" fill="#2ecc71" font-size="16" font-weight="bold" text-anchor="middle">H</text>
+  <text x="50" y="93" fill="#aaa" font-size="6" text-anchor="middle">Hydrogen</text>
+  <text x="50" y="98" fill="#667" font-size="5.5" text-anchor="middle">1.01</text>
 
-.name {
-  font-size: 11px;
-}
+  <!-- He -->
+  <rect x="712" y="58" width="36" height="42" rx="4" fill="#9b59b6" opacity="0.2" stroke="#9b59b6" stroke-width="1"/>
+  <text x="716" y="68" fill="#888" font-size="7">2</text>
+  <text x="730" y="84" fill="#9b59b6" font-size="16" font-weight="bold" text-anchor="middle">He</text>
+  <text x="730" y="93" fill="#aaa" font-size="6" text-anchor="middle">Helium</text>
+  <text x="730" y="98" fill="#667" font-size="5.5" text-anchor="middle">4.00</text>
 
-.mass {
-  font-size: 10px;
-}
-</style>
+  <!-- ═══════ PERIOD 2 ═══════ -->
+  <!-- Li -->
+  <rect x="32" y="118" width="36" height="42" rx="4" fill="#e74c3c" opacity="0.2" stroke="#e74c3c" stroke-width="1"/>
+  <text x="36" y="128" fill="#888" font-size="7">3</text>
+  <text x="50" y="144" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle">Li</text>
+  <text x="50" y="153" fill="#aaa" font-size="6" text-anchor="middle">Lithium</text>
+  <text x="50" y="158" fill="#667" font-size="5.5" text-anchor="middle">6.94</text>
 
-<table class="periodic-table">
+  <!-- Be -->
+  <rect x="72" y="118" width="36" height="42" rx="4" fill="#e67e22" opacity="0.2" stroke="#e67e22" stroke-width="1"/>
+  <text x="76" y="128" fill="#888" font-size="7">4</text>
+  <text x="90" y="144" fill="#e67e22" font-size="16" font-weight="bold" text-anchor="middle">Be</text>
+  <text x="90" y="153" fill="#aaa" font-size="6" text-anchor="middle">Beryllium</text>
+  <text x="90" y="158" fill="#667" font-size="5.5" text-anchor="middle">9.01</text>
 
-<!-- PERIOD 1 -->
-<tr>
-  <td class="element nonmetal">
-    <div class="atomic">1</div>
-    <div class="symbol">H</div>
-    <div class="name">Hydrogen</div>
-    <div class="mass">1.01</div>
-  </td>
+  <!-- B -->
+  <rect x="512" y="118" width="36" height="42" rx="4" fill="#95a5a6" opacity="0.2" stroke="#95a5a6" stroke-width="1"/>
+  <text x="516" y="128" fill="#888" font-size="7">5</text>
+  <text x="530" y="144" fill="#95a5a6" font-size="16" font-weight="bold" text-anchor="middle">B</text>
+  <text x="530" y="153" fill="#aaa" font-size="6" text-anchor="middle">Boron</text>
+  <text x="530" y="158" fill="#667" font-size="5.5" text-anchor="middle">10.81</text>
 
-  <td class="empty" colspan="16"></td>
+  <!-- C -->
+  <rect x="552" y="118" width="36" height="42" rx="4" fill="#2ecc71" opacity="0.2" stroke="#2ecc71" stroke-width="1"/>
+  <text x="556" y="128" fill="#888" font-size="7">6</text>
+  <text x="570" y="144" fill="#2ecc71" font-size="16" font-weight="bold" text-anchor="middle">C</text>
+  <text x="570" y="153" fill="#aaa" font-size="6" text-anchor="middle">Carbon</text>
+  <text x="570" y="158" fill="#667" font-size="5.5" text-anchor="middle">12.01</text>
 
-  <td class="element noble">
-    <div class="atomic">2</div>
-    <div class="symbol">He</div>
-    <div class="name">Helium</div>
-    <div class="mass">4.00</div>
-  </td>
-</tr>
+  <!-- N -->
+  <rect x="592" y="118" width="36" height="42" rx="4" fill="#2ecc71" opacity="0.2" stroke="#2ecc71" stroke-width="1"/>
+  <text x="596" y="128" fill="#888" font-size="7">7</text>
+  <text x="610" y="144" fill="#2ecc71" font-size="16" font-weight="bold" text-anchor="middle">N</text>
+  <text x="610" y="153" fill="#aaa" font-size="6" text-anchor="middle">Nitrogen</text>
+  <text x="610" y="158" fill="#667" font-size="5.5" text-anchor="middle">14.01</text>
 
-<!-- PERIOD 2 -->
-<tr>
-  <td class="element alkali">
-    <div class="atomic">3</div>
-    <div class="symbol">Li</div>
-    <div class="name">Lithium</div>
-    <div class="mass">6.94</div>
-  </td>
+  <!-- O -->
+  <rect x="632" y="118" width="36" height="42" rx="4" fill="#2ecc71" opacity="0.2" stroke="#2ecc71" stroke-width="1"/>
+  <text x="636" y="128" fill="#888" font-size="7">8</text>
+  <text x="650" y="144" fill="#2ecc71" font-size="16" font-weight="bold" text-anchor="middle">O</text>
+  <text x="650" y="153" fill="#aaa" font-size="6" text-anchor="middle">Oxygen</text>
+  <text x="650" y="158" fill="#667" font-size="5.5" text-anchor="middle">16.00</text>
 
-  <td class="element alkaline">
-    <div class="atomic">4</div>
-    <div class="symbol">Be</div>
-    <div class="name">Beryllium</div>
-    <div class="mass">9.01</div>
-  </td>
+  <!-- F -->
+  <rect x="672" y="118" width="36" height="42" rx="4" fill="#f1c40f" opacity="0.2" stroke="#f1c40f" stroke-width="1"/>
+  <text x="676" y="128" fill="#888" font-size="7">9</text>
+  <text x="690" y="144" fill="#f1c40f" font-size="16" font-weight="bold" text-anchor="middle">F</text>
+  <text x="690" y="153" fill="#aaa" font-size="6" text-anchor="middle">Fluorine</text>
+  <text x="690" y="158" fill="#667" font-size="5.5" text-anchor="middle">19.00</text>
 
-  <td class="empty" colspan="10"></td>
+  <!-- Ne -->
+  <rect x="712" y="118" width="36" height="42" rx="4" fill="#9b59b6" opacity="0.2" stroke="#9b59b6" stroke-width="1"/>
+  <text x="716" y="128" fill="#888" font-size="7">10</text>
+  <text x="730" y="144" fill="#9b59b6" font-size="16" font-weight="bold" text-anchor="middle">Ne</text>
+  <text x="730" y="153" fill="#aaa" font-size="6" text-anchor="middle">Neon</text>
+  <text x="730" y="158" fill="#667" font-size="5.5" text-anchor="middle">20.18</text>
 
-  <td class="element metalloid">
-    <div class="atomic">5</div>
-    <div class="symbol">B</div>
-    <div class="name">Boron</div>
-    <div class="mass">10.81</div>
-  </td>
+  <!-- ═══════ PERIOD 3 ═══════ -->
+  <!-- Na -->
+  <rect x="32" y="178" width="36" height="42" rx="4" fill="#e74c3c" opacity="0.2" stroke="#e74c3c" stroke-width="1"/>
+  <text x="36" y="188" fill="#888" font-size="7">11</text>
+  <text x="50" y="204" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle">Na</text>
+  <text x="50" y="213" fill="#aaa" font-size="6" text-anchor="middle">Sodium</text>
+  <text x="50" y="218" fill="#667" font-size="5.5" text-anchor="middle">22.99</text>
 
-  <td class="element nonmetal">
-    <div class="atomic">6</div>
-    <div class="symbol">C</div>
-    <div class="name">Carbon</div>
-    <div class="mass">12.01</div>
-  </td>
+  <!-- Mg -->
+  <rect x="72" y="178" width="36" height="42" rx="4" fill="#e67e22" opacity="0.2" stroke="#e67e22" stroke-width="1"/>
+  <text x="76" y="188" fill="#888" font-size="7">12</text>
+  <text x="90" y="204" fill="#e67e22" font-size="16" font-weight="bold" text-anchor="middle">Mg</text>
+  <text x="90" y="213" fill="#aaa" font-size="6" text-anchor="middle">Magnesium</text>
+  <text x="90" y="218" fill="#667" font-size="5.5" text-anchor="middle">24.31</text>
 
-  <td class="element nonmetal">
-    <div class="atomic">7</div>
-    <div class="symbol">N</div>
-    <div class="name">Nitrogen</div>
-    <div class="mass">14.01</div>
-  </td>
+  <!-- Al -->
+  <rect x="512" y="178" width="36" height="42" rx="4" fill="#3498db" opacity="0.2" stroke="#3498db" stroke-width="1"/>
+  <text x="516" y="188" fill="#888" font-size="7">13</text>
+  <text x="530" y="204" fill="#3498db" font-size="16" font-weight="bold" text-anchor="middle">Al</text>
+  <text x="530" y="213" fill="#aaa" font-size="6" text-anchor="middle">Aluminium</text>
+  <text x="530" y="218" fill="#667" font-size="5.5" text-anchor="middle">26.98</text>
 
-  <td class="element nonmetal">
-    <div class="atomic">8</div>
-    <div class="symbol">O</div>
-    <div class="name">Oxygen</div>
-    <div class="mass">16.00</div>
-  </td>
+  <!-- Si -->
+  <rect x="552" y="178" width="36" height="42" rx="4" fill="#95a5a6" opacity="0.2" stroke="#95a5a6" stroke-width="1"/>
+  <text x="556" y="188" fill="#888" font-size="7">14</text>
+  <text x="570" y="204" fill="#95a5a6" font-size="16" font-weight="bold" text-anchor="middle">Si</text>
+  <text x="570" y="213" fill="#aaa" font-size="6" text-anchor="middle">Silicon</text>
+  <text x="570" y="218" fill="#667" font-size="5.5" text-anchor="middle">28.09</text>
 
-  <td class="element halogen">
-    <div class="atomic">9</div>
-    <div class="symbol">F</div>
-    <div class="name">Fluorine</div>
-    <div class="mass">19.00</div>
-  </td>
+  <!-- P -->
+  <rect x="592" y="178" width="36" height="42" rx="4" fill="#2ecc71" opacity="0.2" stroke="#2ecc71" stroke-width="1"/>
+  <text x="596" y="188" fill="#888" font-size="7">15</text>
+  <text x="610" y="204" fill="#2ecc71" font-size="16" font-weight="bold" text-anchor="middle">P</text>
+  <text x="610" y="213" fill="#aaa" font-size="6" text-anchor="middle">Phosphorus</text>
+  <text x="610" y="218" fill="#667" font-size="5.5" text-anchor="middle">30.97</text>
 
-  <td class="element noble">
-    <div class="atomic">10</div>
-    <div class="symbol">Ne</div>
-    <div class="name">Neon</div>
-    <div class="mass">20.18</div>
-  </td>
-</tr>
+  <!-- S -->
+  <rect x="632" y="178" width="36" height="42" rx="4" fill="#2ecc71" opacity="0.2" stroke="#2ecc71" stroke-width="1"/>
+  <text x="636" y="188" fill="#888" font-size="7">16</text>
+  <text x="650" y="204" fill="#2ecc71" font-size="16" font-weight="bold" text-anchor="middle">S</text>
+  <text x="650" y="213" fill="#aaa" font-size="6" text-anchor="middle">Sulfur</text>
+  <text x="650" y="218" fill="#667" font-size="5.5" text-anchor="middle">32.06</text>
 
-<!-- PERIOD 3 -->
-<tr>
-  <td class="element alkali">
-    <div class="atomic">11</div>
-    <div class="symbol">Na</div>
-    <div class="name">Sodium</div>
-    <div class="mass">22.99</div>
-  </td>
+  <!-- Cl -->
+  <rect x="672" y="178" width="36" height="42" rx="4" fill="#f1c40f" opacity="0.2" stroke="#f1c40f" stroke-width="1"/>
+  <text x="676" y="188" fill="#888" font-size="7">17</text>
+  <text x="690" y="204" fill="#f1c40f" font-size="16" font-weight="bold" text-anchor="middle">Cl</text>
+  <text x="690" y="213" fill="#aaa" font-size="6" text-anchor="middle">Chlorine</text>
+  <text x="690" y="218" fill="#667" font-size="5.5" text-anchor="middle">35.45</text>
 
-  <td class="element alkaline">
-    <div class="atomic">12</div>
-    <div class="symbol">Mg</div>
-    <div class="name">Magnesium</div>
-    <div class="mass">24.31</div>
-  </td>
+  <!-- Ar -->
+  <rect x="712" y="178" width="36" height="42" rx="4" fill="#9b59b6" opacity="0.2" stroke="#9b59b6" stroke-width="1"/>
+  <text x="716" y="188" fill="#888" font-size="7">18</text>
+  <text x="730" y="204" fill="#9b59b6" font-size="16" font-weight="bold" text-anchor="middle">Ar</text>
+  <text x="730" y="213" fill="#aaa" font-size="6" text-anchor="middle">Argon</text>
+  <text x="730" y="218" fill="#667" font-size="5.5" text-anchor="middle">39.95</text>
 
-  <td class="empty" colspan="10"></td>
+  <!-- ═══════ PERIOD 4 ═══════ -->
+  <!-- K -->
+  <rect x="32" y="238" width="36" height="42" rx="4" fill="#e74c3c" opacity="0.2" stroke="#e74c3c" stroke-width="1"/>
+  <text x="36" y="248" fill="#888" font-size="7">19</text>
+  <text x="50" y="264" fill="#e74c3c" font-size="16" font-weight="bold" text-anchor="middle">K</text>
+  <text x="50" y="273" fill="#aaa" font-size="6" text-anchor="middle">Potassium</text>
+  <text x="50" y="278" fill="#667" font-size="5.5" text-anchor="middle">39.10</text>
 
-  <td class="element metal">
-    <div class="atomic">13</div>
-    <div class="symbol">Al</div>
-    <div class="name">Aluminium</div>
-    <div class="mass">26.98</div>
-  </td>
+  <!-- Ca -->
+  <rect x="72" y="238" width="36" height="42" rx="4" fill="#e67e22" opacity="0.2" stroke="#e67e22" stroke-width="1"/>
+  <text x="76" y="248" fill="#888" font-size="7">20</text>
+  <text x="90" y="264" fill="#e67e22" font-size="16" font-weight="bold" text-anchor="middle">Ca</text>
+  <text x="90" y="273" fill="#aaa" font-size="6" text-anchor="middle">Calcium</text>
+  <text x="90" y="278" fill="#667" font-size="5.5" text-anchor="middle">40.08</text>
 
-  <td class="element metalloid">
-    <div class="atomic">14</div>
-    <div class="symbol">Si</div>
-    <div class="name">Silicon</div>
-    <div class="mass">28.09</div>
-  </td>
+  <!-- D-block placeholder -->
+  <rect x="132" y="238" width="360" height="42" rx="6" fill="#1a1a2e" stroke="#334" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="312" y="263" fill="#556" font-size="11" font-weight="bold" text-anchor="middle" letter-spacing="2">d-BLOCK TRANSITION METALS</text>
 
-  <td class="element nonmetal">
-    <div class="atomic">15</div>
-    <div class="symbol">P</div>
-    <div class="name">Phosphorus</div>
-    <div class="mass">30.97</div>
-  </td>
+  <!-- ═══════ LEGEND ═══════ -->
+  <rect x="32" y="310" width="716" height="115" rx="8" fill="#0e0e22" stroke="#1e1e2f" stroke-width="1"/>
+  <text x="380" y="328" fill="#ccc" font-size="10" font-weight="bold" text-anchor="middle" letter-spacing="1">ELEMENT CATEGORIES</text>
 
-  <td class="element nonmetal">
-    <div class="atomic">16</div>
-    <div class="symbol">S</div>
-    <div class="name">Sulfur</div>
-    <div class="mass">32.06</div>
-  </td>
+  <!-- Alkali Metals -->
+  <rect x="52" y="340" width="14" height="14" rx="3" fill="#e74c3c" opacity="0.35" stroke="#e74c3c" stroke-width="1"/>
+  <text x="72" y="351" fill="#e74c3c" font-size="9">Alkali Metals</text>
 
-  <td class="element halogen">
-    <div class="atomic">17</div>
-    <div class="symbol">Cl</div>
-    <div class="name">Chlorine</div>
-    <div class="mass">35.45</div>
-  </td>
+  <!-- Alkaline Earth -->
+  <rect x="52" y="362" width="14" height="14" rx="3" fill="#e67e22" opacity="0.35" stroke="#e67e22" stroke-width="1"/>
+  <text x="72" y="373" fill="#e67e22" font-size="9">Alkaline Earth Metals</text>
 
-  <td class="element noble">
-    <div class="atomic">18</div>
-    <div class="symbol">Ar</div>
-    <div class="name">Argon</div>
-    <div class="mass">39.95</div>
-  </td>
-</tr>
+  <!-- Post-transition Metal -->
+  <rect x="52" y="384" width="14" height="14" rx="3" fill="#3498db" opacity="0.35" stroke="#3498db" stroke-width="1"/>
+  <text x="72" y="395" fill="#3498db" font-size="9">Post-transition Metal</text>
 
-<!-- PERIOD 4 -->
-<tr>
-  <td class="element alkali">
-    <div class="atomic">19</div>
-    <div class="symbol">K</div>
-    <div class="name">Potassium</div>
-    <div class="mass">39.10</div>
-  </td>
+  <!-- Nonmetals -->
+  <rect x="280" y="340" width="14" height="14" rx="3" fill="#2ecc71" opacity="0.35" stroke="#2ecc71" stroke-width="1"/>
+  <text x="300" y="351" fill="#2ecc71" font-size="9">Nonmetals</text>
 
-  <td class="element alkaline">
-    <div class="atomic">20</div>
-    <div class="symbol">Ca</div>
-    <div class="name">Calcium</div>
-    <div class="mass">40.08</div>
-  </td>
+  <!-- Metalloids -->
+  <rect x="280" y="362" width="14" height="14" rx="3" fill="#95a5a6" opacity="0.35" stroke="#95a5a6" stroke-width="1"/>
+  <text x="300" y="373" fill="#95a5a6" font-size="9">Metalloids</text>
 
-  <!-- SPACE FOR D-BLOCK ELEMENTS -->
-  <td colspan="10" style="text-align:center; font-weight:bold;">
-    D-BLOCK ELEMENTS
-  </td>
+  <!-- Halogens -->
+  <rect x="520" y="340" width="14" height="14" rx="3" fill="#f1c40f" opacity="0.35" stroke="#f1c40f" stroke-width="1"/>
+  <text x="540" y="351" fill="#f1c40f" font-size="9">Halogens</text>
 
-  <td class="empty" colspan="6"></td>
-</tr>
+  <!-- Noble Gases -->
+  <rect x="520" y="362" width="14" height="14" rx="3" fill="#9b59b6" opacity="0.35" stroke="#9b59b6" stroke-width="1"/>
+  <text x="540" y="373" fill="#9b59b6" font-size="9">Noble Gases</text>
 
-</table>
+  <!-- Element reading guide -->
+  <rect x="280" y="384" width="14" height="14" rx="3" fill="#1a1a2e" stroke="#556" stroke-width="1"/>
+  <text x="300" y="395" fill="#888" font-size="9">d-block (not in first 20)</text>
+
+  <!-- Annotation: how to read an element cell -->
+  <rect x="520" y="384" width="36" height="30" rx="4" fill="#2ecc71" opacity="0.15" stroke="#2ecc71" stroke-width="0.8"/>
+  <text x="524" y="393" fill="#667" font-size="5.5">Z →</text>
+  <text x="538" y="404" fill="#2ecc71" font-size="11" font-weight="bold" text-anchor="middle">X</text>
+  <text x="538" y="412" fill="#aaa" font-size="4.5" text-anchor="middle">Name</text>
+  <text x="570" y="393" fill="#667" font-size="7">← Atomic No.</text>
+  <text x="570" y="403" fill="#667" font-size="7">← Symbol</text>
+  <text x="570" y="413" fill="#667" font-size="7">← Mass</text>
+
+</svg>
+</div>
 
 <h3> ELEMENT FAMILIES</h3>
 
