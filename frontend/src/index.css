@@ -562,17 +562,29 @@ html.dark-mode .lnav-search-panel {
     justify-content: center;
   }
   .hero-stats {
-    justify-content: center;
+    display: none;
   }
   .hero-visual {
     display: none;
   }
   .hero {
-    padding: 6rem 1.25rem 3rem;
+    padding: 5rem 1.25rem 2.5rem;
     min-height: unset;
   }
   .hero-sub {
     max-width: 100%;
+    margin-bottom: 0.5rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+  }
+  #subjs {
+    display: none;
+  }
+  .brand-col {
+    display: none;
+  }
+  .landing-footer {
+    padding: 2.5rem 1.5rem 1.5rem;
   }
 }
 
