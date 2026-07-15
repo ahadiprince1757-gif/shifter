@@ -8,7 +8,7 @@ function SubjectGrid({ curriculum, openSubject, mastered }) {
         <div className="sg-header">
           <h1 className="sg-title">Subjects</h1>
         </div>
-        <div className="subj-list">
+        <div className="subj-grid">
           <SkeletonLoader type="grid" count={6} />
         </div>
       </div>
@@ -26,7 +26,7 @@ function SubjectGrid({ curriculum, openSubject, mastered }) {
         <h1 className="sg-title">Subjects</h1>
       </div>
 
-      <div className="subj-list">
+      <div className="subj-grid">
         {curriculum.map((s) => {
           const totalTopics = s.chapters.reduce((a, c) => a + c.topics.length, 0);
           const masteredCount = s.chapters.reduce(
@@ -37,24 +37,18 @@ function SubjectGrid({ curriculum, openSubject, mastered }) {
 
           return (
             <button
-              className="subj-row"
+              className="subj-box"
               key={s.id}
               onClick={() => handleSubjectClick(s.id, s.label)}
               aria-label={`${s.label}, ${Math.round(prog)}% complete`}
             >
-              <span className="subj-row-icon">{s.icon}</span>
-              <div className="subj-row-body">
-                <div className="subj-row-name">{s.label}</div>
-                <div className="subj-row-prog">
-                  <div className="subj-row-bar">
-                    <div className="subj-row-fill" style={{ width: `${prog}%` }} />
-                  </div>
-                  <span className="subj-row-pct">{Math.round(prog)}%</span>
+              <div className="subj-box-name">{s.label}</div>
+              <div className="subj-box-prog">
+                <div className="subj-box-bar">
+                  <div className="subj-box-fill" style={{ width: `${prog}%` }} />
                 </div>
+                <span className="subj-box-pct">{Math.round(prog)}%</span>
               </div>
-              <svg className="subj-row-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
-                <path d="M9 18l6-6-6-6" />
-              </svg>
             </button>
           );
         })}
@@ -64,5 +58,3 @@ function SubjectGrid({ curriculum, openSubject, mastered }) {
 }
 
 export default SubjectGrid;
-
-
