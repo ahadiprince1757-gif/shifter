@@ -15,9 +15,15 @@ function FeedbackDisplay({
   return (
     <div className={`fb-box ${feedback.isCorrect ? "fb-cor" : "fb-wrn"}`}>
       <div className="fb-h">
-        {feedback.isCorrect
-          ? "Correct Answer!"
-          : " Not quite right, let's review."}
+        {feedback.isCorrect ? (
+          <>
+            <span style={{ fontSize: "1.2rem" }}>✅</span> Correct Answer!
+          </>
+        ) : (
+          <>
+            <span style={{ fontSize: "1.2rem" }}>❌</span> Not quite right, let's review.
+          </>
+        )}
       </div>
 
       <div className="fb-b">
@@ -28,17 +34,8 @@ function FeedbackDisplay({
           </div>
         </div>
 
-        {!feedback.isCorrect && feedback.correctAnswer && (
-          <div className="fb-section">
-            <div className="fb-label">Correct Answer</div>
-            <div className="fb-text">{feedback.correctAnswer}</div>
-          </div>
-        )}
-
-
-
         {!feedback.isCorrect && feedback.correctAnswer && !showAnswer && (
-          <button className="btn-g" onClick={() => setShowAnswer(true)}>
+          <button type="button" className="btn-g" onClick={() => setShowAnswer(true)}>
             Show Correct Answer
           </button>
         )}
@@ -46,7 +43,7 @@ function FeedbackDisplay({
         {showAnswer && !feedback.isCorrect && feedback.correctAnswer && (
           <div className="fb-section">
             <div className="fb-label">Correct Answer</div>
-            <div className="fb-text">{feedback.correctAnswer}</div>
+            <div className="fb-text" style={{ fontWeight: "700" }}>{feedback.correctAnswer}</div>
           </div>
         )}
       </div>
