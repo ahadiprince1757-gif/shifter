@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Navbar from "./Navbar";
 
-function Landing({ curriculum, enterApp, isDark, toggleDark, session, openAuth }) {
+function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
   const [legalModal, setLegalModal] = useState(null);
 
 
