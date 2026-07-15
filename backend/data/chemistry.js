@@ -2268,68 +2268,59 @@ Number of particles = n × 6.02 × 10²³
 
   [
     {
-      q: "What does 1 mole represent?",
+      q: "A chemistry student is told that 1 mole of any substance always contains the same fixed number of particles. What is this number, and what is it called?",
       steps: [
-        "Step 1: Recall definition",
-        "Step 2: Identify particle number",
-        "Step 3: State Avogadro’s constant"
+        "Step 1: Recall that the mole is a counting unit, like 'dozen' means 12",
+        "Step 2: Remember the fixed number linked to 1 mole is Avogadro's constant",
+        "Step 3: State the value: 6.02 × 10²³ particles per mole"
       ],
-      ans: "6.02 × 10²³ particles",
-      why: "Standard definition of mole"
+      ans: "6.02 × 10²³ particles — called Avogadro's constant",
+      why: "The mole is defined as the amount of substance containing exactly 6.02 × 10²³ particles. This number is always the same regardless of what substance you are measuring."
     },
     {
-      q: "How many moles are in 1.204 × 10²⁴ particles?",
-      hint: "divide by Avogadro’s number",
+      q: "A sample contains 1.204 × 10²⁴ atoms of sodium. How many moles of sodium is this?",
+      hint: "Divide the number of particles by Avogadro's number (6.02 × 10²³)",
       steps: [
-        "Step 1: n = particles ÷ 6.02 × 10²³",
-        "Step 2: 1.204 × 10²⁴ ÷ 6.02 × 10²³",
-        "Step 3: Simplify"
+        "Step 1: Write the formula: n = number of particles ÷ 6.02 × 10²³",
+        "Step 2: Substitute the values: n = 1.204 × 10²⁴ ÷ 6.02 × 10²³",
+        "Step 3: Divide: 1.204 ÷ 6.02 = 0.2, and 10²⁴ ÷ 10²³ = 10¹ = 10",
+        "Step 4: So n = 0.2 × 10 = 2"
       ],
       ans: "2 moles",
-      why: "Reverse conversion"
+      why: "You divide by Avogadro's constant to convert from number of particles to moles. 1.204 × 10²⁴ is exactly twice Avogadro's number, so it equals 2 moles."
     },
     {
-      q: "What is Avogadro’s constant?",
+      q: "A teacher asks: 'How many individual molecules are contained in 2 moles of water (H₂O)?' Show your working.",
+      hint: "Multiply the number of moles by Avogadro's number",
       steps: [
-        "Step 1: It is a fixed number",
-        "Step 2: It represents particles in 1 mole",
-        "Step 3: Apply scientific notation"
+        "Step 1: Write the formula: Number of particles = n × 6.02 × 10²³",
+        "Step 2: Substitute: Number of particles = 2 × 6.02 × 10²³",
+        "Step 3: Multiply the coefficient: 2 × 6.02 = 12.04",
+        "Step 4: Express in standard scientific notation: 1.204 × 10²⁴"
       ],
-      ans: "6.02 × 10²³ particles per mole",
-      why: "Standard scientific constant"
+      ans: "1.204 × 10²⁴ molecules",
+      why: "Each mole contains 6.02 × 10²³ molecules, so 2 moles contains twice that amount. Scientific notation is used because the number is extremely large."
     },
     {
-      q: "How many particles are in 2 moles?",
-      hint: "multiply Avogadro’s number",
+      q: "A scientist measures out 3 moles of oxygen gas (O₂). How many oxygen molecules does this sample contain?",
       steps: [
-        "Step 1: Write formula 2 × 6.02 × 10²³",
-        "Step 2: Multiply numbers",
-        "Step 3: Keep exponent same rule"
-      ],
-      ans: "1.204 × 10²⁴ particles",
-      why: "Direct proportionality"
-    },
-
-    {
-      q: "How many moles are in 6.02 × 10²³ particles?",
-      hint: "reverse operation",
-      steps: [
-        "Step 1: Identify Avogadro’s number",
-        "Step 2: Divide by 6.02 × 10²³",
-        "Step 3: Simplify"
-      ],
-      ans: "1 mole",
-      why: "Definition of mole"
-    },
-    {
-      q: "If 3 moles of oxygen molecules exist, how many molecules are present?",
-      steps: [
-        "Step 1: Write formula 3 × 6.02 × 10²³",
-        "Step 2: Multiply values",
-        "Step 3: Keep exponent rule"
+        "Step 1: Write the formula: Number of molecules = n × 6.02 × 10²³",
+        "Step 2: Substitute: Number of molecules = 3 × 6.02 × 10²³",
+        "Step 3: Multiply: 3 × 6.02 = 18.06",
+        "Step 4: Write in scientific notation: 1.806 × 10²⁴ molecules"
       ],
       ans: "1.806 × 10²⁴ molecules",
-      why: "Direct mole-to-particle conversion"
+      why: "Multiplying moles by Avogadro's number converts from moles to individual particles. Since each mole has 6.02 × 10²³ molecules, 3 moles has 3 times that."
+    },
+    {
+      q: "Why do chemists use the mole instead of counting atoms directly? Explain using the idea of microscopic vs macroscopic.",
+      steps: [
+        "Step 1: Recognise that atoms are too small to count individually — even 1 g of hydrogen contains ~6 × 10²³ atoms",
+        "Step 2: The mole groups this enormous number into a manageable counting unit",
+        "Step 3: It bridges the microscopic world (atoms) and the macroscopic world (grams on a balance scale)"
+      ],
+      ans: "Atoms are too small to count directly. The mole provides a practical unit that links atom-scale amounts to measurable gram quantities.",
+      why: "Without the mole, it would be impossible to connect what we measure in the lab (grams, litres) to what is happening at the atomic level. The mole is the essential bridge."
     }
   ]
 );
@@ -2435,75 +2426,66 @@ Moles ↔ Particles: N = n × 6.02 × 10²³
 </pre>
 `,
 
+
   [
     {
-      q: "How many moles are in 36g of water?",
-      hint: "H₂O = 18 g/mol",
+      q: "A chemist has 36 g of water (H₂O). The molar mass of water is 18 g/mol. Calculate how many moles of water are present.",
+      hint: "Use the formula: n = mass ÷ molar mass",
       steps: [
-        "Step 1: n = m ÷ M",
-        "Step 2: 36 ÷ 18",
-        "Step 3: Answer = 2"
+        "Step 1: Write the formula: n = m ÷ M",
+        "Step 2: Identify values: m = 36 g, M = 18 g/mol",
+        "Step 3: Substitute: n = 36 ÷ 18",
+        "Step 4: Calculate: n = 2 mol"
       ],
       ans: "2 moles",
-      why: "Mass to mole conversion"
+      why: "Dividing mass by molar mass converts grams into moles. Since 36 g is exactly twice the molar mass (18 g/mol), the sample contains 2 moles."
     },
-
     {
-      q: "How many particles are in 2 moles?",
-      hint: "use Avogadro’s number",
+      q: "A student measures 0.5 moles of nitrogen gas (N₂). How many individual molecules does this sample contain?",
+      hint: "Multiply the number of moles by Avogadro's number (6.02 × 10²³)",
       steps: [
-        "Step 1: N = n × 6.02 × 10²³",
-        "Step 2: 2 × 6.02 × 10²³",
-        "Step 3: Answer"
+        "Step 1: Write the formula: N = n × 6.02 × 10²³",
+        "Step 2: Substitute: N = 0.5 × 6.02 × 10²³",
+        "Step 3: Multiply: 0.5 × 6.02 = 3.01",
+        "Step 4: Write the answer: N = 3.01 × 10²³ molecules"
       ],
-      ans: "1.204 × 10²⁴ particles",
-      why: "Direct proportionality"
+      ans: "3.01 × 10²³ molecules",
+      why: "Half a mole contains exactly half of Avogadro's number of particles. Moles and particle count are directly proportional."
     },
     {
-      q: "Calculate moles in 18g of water (H₂O, Mr = 18)",
-      hint: "mass ÷ molar mass",
+      q: "A laboratory has 2 moles of carbon dioxide (CO₂). The molar mass of CO₂ is 44 g/mol. What is the total mass of this CO₂ sample?",
       steps: [
-        "Step 1: Write formula n = mass ÷ Mr",
-        "Step 2: Substitute values → 18 ÷ 18",
-        "Step 3: Solve",
-        "Step 4: State answer in moles"
-      ],
-      ans: "1 mole",
-      why: "Mass equals molar mass, so it is 1 mole"
-    },
-
-    {
-      q: "How many particles are in 2 moles of carbon?",
-      hint: "use Avogadro’s number",
-      steps: [
-        "Step 1: Identify moles = 2",
-        "Step 2: Multiply by 6.02 × 10²³",
-        "Step 3: Calculate result"
-      ],
-      ans: "1.204 × 10²⁴ particles",
-      why: "Direct mole-to-particle conversion"
-    },
-    {
-      q: "A substance has 0.5 moles. How many particles are present?",
-      steps: [
-        "Step 1: Write formula particles = moles × 6.02 × 10²³",
-        "Step 2: Substitute 0.5 × 6.02 × 10²³",
-        "Step 3: Multiply",
-        "Step 4: Express in scientific notation"
-      ],
-      ans: "3.01 × 10²³ particles",
-      why: "Half a mole equals half Avogadro’s number"
-    },
-
-    {
-      q: "Find mass of 2 moles of CO₂ (Mr = 44 g/mol)",
-      steps: [
-        "Step 1: Use formula mass = moles × Mr",
-        "Step 2: Substitute 2 × 44",
-        "Step 3: Calculate result"
+        "Step 1: Write the formula: m = n × M",
+        "Step 2: Identify values: n = 2 mol, M = 44 g/mol",
+        "Step 3: Substitute: m = 2 × 44",
+        "Step 4: Calculate: m = 88 g"
       ],
       ans: "88 g",
-      why: "Mass is proportional to moles"
+      why: "Multiplying moles by molar mass converts moles back into grams. Each mole of CO₂ has a mass of 44 g, so 2 moles has twice the mass."
+    },
+    {
+      q: "A sample contains 9.03 × 10²³ atoms of iron (Fe). How many moles of iron is this?",
+      hint: "Divide the particle count by Avogadro's number",
+      steps: [
+        "Step 1: Write the formula: n = N ÷ 6.02 × 10²³",
+        "Step 2: Substitute: n = 9.03 × 10²³ ÷ 6.02 × 10²³",
+        "Step 3: Divide: 9.03 ÷ 6.02 ≈ 1.5",
+        "Step 4: Answer: n = 1.5 mol"
+      ],
+      ans: "1.5 moles",
+      why: "Dividing the number of particles by Avogadro's constant gives moles. 9.03 × 10²³ is 1.5 times Avogadro's number, so the answer is 1.5 moles."
+    },
+    {
+      q: "The molar mass of NaOH (sodium hydroxide) is 40 g/mol. A student uses 20 g of NaOH in an experiment. How many moles of NaOH is this?",
+      hint: "Use n = mass ÷ molar mass",
+      steps: [
+        "Step 1: Write the formula: n = m ÷ M",
+        "Step 2: Identify values: m = 20 g, M = 40 g/mol",
+        "Step 3: Substitute: n = 20 ÷ 40",
+        "Step 4: Calculate: n = 0.5 mol"
+      ],
+      ans: "0.5 moles",
+      why: "20 g is exactly half the molar mass of NaOH (40 g/mol), so the sample contains 0.5 moles."
     }
   ]
 );
@@ -2623,70 +2605,64 @@ Where:
 
   [
     {
-      q: "What is molar mass?",
+      q: "A student is asked to calculate the molar mass of carbon dioxide (CO₂). Given that the atomic mass of C = 12 and O = 16, find the molar mass of CO₂.",
       steps: [
-        "Step 1: Identify 1 mole of substance",
-        "Step 2: Measure its mass in grams",
-        "Step 3: Define per mole"
-      ],
-      ans: "Mass of one mole of a substance in g/mol",
-      why: "It links mass and amount of substance"
-    },
-    {
-      q: "What is molar mass of CO₂?",
-      steps: [
-        "Step 1: C = 12",
-        "Step 2: O = 16 × 2 = 32",
-        "Step 3: Add values"
+        "Step 1: Write the molecular formula: CO₂ — it contains 1 carbon atom and 2 oxygen atoms",
+        "Step 2: Find the mass of carbon: 1 × 12 = 12",
+        "Step 3: Find the mass of oxygen: 2 × 16 = 32",
+        "Step 4: Add all atomic masses together: 12 + 32 = 44 g/mol"
       ],
       ans: "44 g/mol",
-      why: "Sum of atomic masses"
+      why: "Molar mass is found by adding the atomic masses of all atoms in the formula. CO₂ has one C (mass 12) and two O atoms (mass 16 each), giving 44 g/mol."
     },
     {
-      q: "Find molar mass of Na₂O",
-      hint: "Na = 23, O = 16",
+      q: "Calculate the molar mass of sodium chloride (NaCl). Use: Na = 23, Cl = 35.5.",
+      hint: "Add the atomic mass of each element present in one formula unit",
       steps: [
-        "Step 1: Na = 23 × 2 = 46",
-        "Step 2: O = 16 × 1 = 16",
-        "Step 3: Add = 62"
-      ],
-      ans: "62 g/mol",
-      why: "Atomic mass addition"
-    },
-    {
-      q: "Calculate molar mass of CO₂",
-      steps: [
-        "Step 1: C = 12",
-        "Step 2: O = 16 × 2 = 32",
-        "Step 3: Add 12 + 32",
-        "Step 4: Final answer"
-      ],
-      ans: "44 g/mol",
-      why: "Sum of atomic masses"
-    },
-    {
-      q: "Calculate molar mass of NaCl",
-      hint: "Na=23, Cl=35.5",
-      steps: [
-        "Step 1: Write elements Na and Cl",
-        "Step 2: Add atomic masses 23 + 35.5",
-        "Step 3: Compute total"
+        "Step 1: Write the formula: NaCl — it contains 1 Na and 1 Cl atom",
+        "Step 2: Mass of Na = 1 × 23 = 23",
+        "Step 3: Mass of Cl = 1 × 35.5 = 35.5",
+        "Step 4: Total molar mass = 23 + 35.5 = 58.5 g/mol"
       ],
       ans: "58.5 g/mol",
-      why: "Sum of atomic masses"
+      why: "NaCl is a simple ionic compound with one atom of each element. Adding their atomic masses directly gives the molar mass."
     },
-
     {
-      q: "Find molar mass of Ca(OH)₂",
-      hint: "Ca=40, O=16, H=1",
+      q: "Find the molar mass of sodium oxide (Na₂O). Use: Na = 23, O = 16.",
+      hint: "Note there are 2 sodium atoms — multiply the atomic mass of Na by 2",
       steps: [
-        "Step 1: Ca = 40",
-        "Step 2: O = 16 × 2 = 32",
-        "Step 3: H = 1 × 2 = 2",
-        "Step 4: Add 40 + 32 + 2"
+        "Step 1: Write the formula: Na₂O — it contains 2 Na atoms and 1 O atom",
+        "Step 2: Mass of Na: 2 × 23 = 46",
+        "Step 3: Mass of O: 1 × 16 = 16",
+        "Step 4: Total molar mass = 46 + 16 = 62 g/mol"
+      ],
+      ans: "62 g/mol",
+      why: "The subscript 2 in Na₂O means there are 2 sodium atoms. Always multiply the atomic mass by the subscript number before adding."
+    },
+    {
+      q: "Calculate the molar mass of calcium hydroxide, Ca(OH)₂. Use: Ca = 40, O = 16, H = 1.",
+      hint: "The bracket (OH)₂ means there are 2 OH groups — so 2 oxygen atoms and 2 hydrogen atoms in total",
+      steps: [
+        "Step 1: Expand the formula: Ca(OH)₂ = Ca + 2O + 2H",
+        "Step 2: Mass of Ca: 1 × 40 = 40",
+        "Step 3: Mass of O: 2 × 16 = 32",
+        "Step 4: Mass of H: 2 × 1 = 2",
+        "Step 5: Total = 40 + 32 + 2 = 74 g/mol"
       ],
       ans: "74 g/mol",
-      why: "Multiply before adding"
+      why: "The bracket and subscript 2 in Ca(OH)₂ mean both O and H appear twice. Always expand brackets before calculating molar mass."
+    },
+    {
+      q: "A chemist knows that the molar mass of H₂SO₄ (sulphuric acid) is 98 g/mol and uses 49 g in a reaction. How many moles of H₂SO₄ does the chemist use?",
+      hint: "Use n = mass ÷ molar mass",
+      steps: [
+        "Step 1: Write the formula: n = m ÷ M",
+        "Step 2: Identify: m = 49 g, M = 98 g/mol",
+        "Step 3: Substitute: n = 49 ÷ 98",
+        "Step 4: Calculate: n = 0.5 mol"
+      ],
+      ans: "0.5 moles",
+      why: "Once you know the molar mass, you can find moles by dividing the given mass by it. 49 g is half of 98 g/mol, so this is 0.5 moles."
     }
   ]
 );
@@ -2790,70 +2766,62 @@ Mass = 2 × 18 = 36 g
 `,
   [
     {
-      q: "What is stoichiometry?",
+      q: "In the reaction 2H₂ + O₂ → 2H₂O, a student burns 2 moles of hydrogen gas (H₂). Using the mole ratio from the equation, how many moles of water (H₂O) are produced?",
       steps: [
-        "Step 1: Identify balanced equation",
-        "Step 2: Convert quantities to moles",
-        "Step 3: Use mole ratios",
-        "Step 4: Convert back to required unit"
+        "Step 1: Read the balanced equation: 2H₂ + O₂ → 2H₂O",
+        "Step 2: Identify the mole ratio of H₂ to H₂O from the coefficients: 2 : 2, which simplifies to 1 : 1",
+        "Step 3: Since the ratio is 1:1, every mole of H₂ produces exactly 1 mole of H₂O",
+        "Step 4: Therefore 2 moles of H₂ → 2 moles of H₂O"
       ],
-      ans: "Stoichiometry is the calculation of quantities in chemical reactions using mole ratios",
-      why: "Based on balanced equations"
+      ans: "2 moles of water (H₂O)",
+      why: "The balanced equation shows H₂ and H₂O are in a 1:1 ratio. The coefficient of each is 2, so they cancel to give an equal mole relationship."
     },
     {
-      q: "Example 1: 2H₂ + O₂ → 2H₂O, find moles of water from 2 moles of H₂",
+      q: "Using the equation N₂ + 3H₂ → 2NH₃, calculate how many moles of ammonia (NH₃) are produced from 1 mole of nitrogen gas (N₂).",
       steps: [
-        "Step 1: ratio H₂ : H₂O = 2 : 2",
-        "Step 2: simplify ratio = 1 : 1",
-        "Step 3: 2 moles H₂ → 2 moles H₂O"
+        "Step 1: Write the balanced equation: N₂ + 3H₂ → 2NH₃",
+        "Step 2: Read the mole ratio of N₂ to NH₃ from the coefficients: 1 : 2",
+        "Step 3: Since 1 mole of N₂ produces 2 moles of NH₃, multiply: 1 × 2 = 2",
+        "Step 4: Answer: 1 mol N₂ → 2 mol NH₃"
       ],
-      ans: "2 moles of water",
-      why: "1:1 ratio"
+      ans: "2 moles of NH₃",
+      why: "The coefficient of N₂ is 1 and NH₃ is 2 in the balanced equation. The ratio 1:2 means for every mole of N₂ used, 2 moles of NH₃ are produced."
     },
-
     {
-      q: "Example 2: 1 mol N₂ produces how many moles NH₃? (N₂ + 3H₂ → 2NH₃)",
+      q: "In the reaction 2H₂ + O₂ → 2H₂O, if 4 moles of H₂ are burned, how many moles of water are formed?",
       steps: [
-        "Step 1: ratio N₂ : NH₃ = 1 : 2",
-        "Step 2: multiply 1 × 2",
-        "Step 3: result = 2"
+        "Step 1: Read the equation: 2H₂ + O₂ → 2H₂O",
+        "Step 2: Find the mole ratio H₂ : H₂O = 2 : 2 = 1 : 1",
+        "Step 3: Apply the ratio to 4 moles of H₂: 4 × (1/1) = 4",
+        "Step 4: 4 moles of H₂ produces 4 moles of H₂O"
       ],
-      ans: "2 moles NH₃",
-      why: "mole ratio"
+      ans: "4 moles of H₂O",
+      why: "Because H₂ and H₂O have an equal (1:1) ratio in this equation, the number of moles produced always equals the number of moles of H₂ used."
     },
-
     {
-      q: "Example 3: 4 mol H₂ → H₂O formation",
+      q: "Calcium carbonate decomposes according to: CaCO₃ → CaO + CO₂. If 1 mole of CaCO₃ fully decomposes, how many moles of carbon dioxide (CO₂) are released?",
       steps: [
-        "Step 1: 2H₂ → 2H₂O ratio = 1:1",
-        "Step 2: 4 mol H₂ → 4 mol H₂O"
+        "Step 1: Write the balanced equation: CaCO₃ → CaO + CO₂",
+        "Step 2: Read the mole ratio of CaCO₃ to CO₂ from coefficients: 1 : 1",
+        "Step 3: Apply the ratio: 1 mole of CaCO₃ → 1 mole of CO₂",
+        "Step 4: Answer: 1 mole of CO₂ is released"
       ],
-      ans: "4 moles H₂O",
-      why: "equal ratio"
+      ans: "1 mole of CO₂",
+      why: "In a 1:1 decomposition, every formula unit of CaCO₃ produces exactly one CO₂ molecule. The coefficients are all 1, making this a direct conversion."
     },
-
     {
-      q: "Example 4: CaCO₃ → CaO + CO₂, 1 mol CaCO₃ produces?",
+      q: "In the reaction 4Al + 3O₂ → 2Al₂O₃, calculate the moles of aluminium oxide (Al₂O₃) produced from 4 moles of aluminium (Al).",
       steps: [
-        "Step 1: ratio 1:1",
-        "Step 2: direct conversion"
+        "Step 1: Write the balanced equation: 4Al + 3O₂ → 2Al₂O₃",
+        "Step 2: Find the mole ratio of Al to Al₂O₃: 4 : 2, which simplifies to 2 : 1",
+        "Step 3: Set up the ratio calculation: moles of Al₂O₃ = 4 × (2/4) = 4 × 0.5 = 2",
+        "Step 4: Wait — use ratio directly: if 4 mol Al → 2 mol Al₂O₃ (from equation)"
       ],
-      ans: "1 mole CO₂",
-      why: "1:1 decomposition"
-    },
-
-    {
-      q: "Example 5: 2 mol Al reacts with O₂ → Al₂O₃, find product moles",
-      steps: [
-        "Step 1: 4Al + 3O₂ → 2Al₂O₃",
-        "Step 2: ratio Al : Al₂O₃ = 4 : 2",
-        "Step 3: simplify = 2 : 1",
-        "Step 4: 2 mol Al → 1 mol Al₂O₃"
-      ],
-      ans: "1 mole Al₂O₃",
-      why: "balanced ratio conversion"
+      ans: "2 moles of Al₂O₃",
+      why: "The equation shows that 4 moles of Al always produce 2 moles of Al₂O₃. The ratio is 4:2 = 2:1. With exactly 4 moles of Al, the answer is directly 2 moles of product."
     }
   ],
+
 );
 /*===============================================
 Emperical formular
@@ -2987,49 +2955,51 @@ H₂O
 `,
   [
     {
-      q: "Example 2: 52.2% C, 13% H, 34.8% O",
+      q: "A compound contains 52.2% carbon, 13% hydrogen, and 34.8% oxygen by mass. Determine its empirical formula. (C = 12, H = 1, O = 16)",
+      hint: "Assume 100 g of the compound, then convert each mass to moles, divide by the smallest, and write the whole-number ratio",
       steps: [
-        "Step 1: convert to moles",
-        "Step 2: C=4.35, H=13, O=2.18",
-        "Step 3: divide by 2.18",
-        "Step 4: ratio ≈ 2 : 6 : 1"
+        "Step 1: Assume 100 g — so C = 52.2 g, H = 13 g, O = 34.8 g",
+        "Step 2: Convert to moles: C = 52.2 ÷ 12 = 4.35, H = 13 ÷ 1 = 13, O = 34.8 ÷ 16 = 2.18",
+        "Step 3: Divide all by the smallest value (2.18): C = 4.35/2.18 ≈ 2, H = 13/2.18 ≈ 6, O = 2.18/2.18 = 1",
+        "Step 4: The whole-number ratio is C:H:O = 2:6:1, so the empirical formula is C₂H₆O"
       ],
       ans: "C₂H₆O",
-      why: "simplest ratio"
+      why: "After dividing all mole values by the smallest (2.18), the ratios become whole numbers: 2, 6, 1. This gives the simplest atom ratio, which is the empirical formula."
     },
-
     {
-      q: "Example 3: 70% Fe, 30% O",
+      q: "An iron oxide compound contains 70% iron (Fe) and 30% oxygen (O) by mass. Find its empirical formula. (Fe = 56, O = 16)",
+      hint: "When the ratio gives a decimal like 1.5, multiply all values by 2 to get whole numbers",
       steps: [
-        "Step 1: Fe=70/56=1.25",
-        "Step 2: O=30/16=1.875",
-        "Step 3: divide by 1.25",
-        "Step 4: 1 : 1.5 → multiply by 2"
+        "Step 1: Assume 100 g — Fe = 70 g, O = 30 g",
+        "Step 2: Convert to moles: Fe = 70 ÷ 56 = 1.25, O = 30 ÷ 16 = 1.875",
+        "Step 3: Divide by the smallest (1.25): Fe = 1.25/1.25 = 1, O = 1.875/1.25 = 1.5",
+        "Step 4: Ratio 1 : 1.5 is not whole — multiply everything by 2: Fe = 2, O = 3",
+        "Step 5: Empirical formula = Fe₂O₃"
       ],
       ans: "Fe₂O₃",
-      why: "whole number adjustment"
+      why: "The ratio 1:1.5 must be made into whole numbers. Multiplying by 2 gives 2:3, which is the correct ratio of Fe to O atoms in iron(III) oxide."
     },
-
     {
-      q: "Example 4: 2.0g H and 16g O",
+      q: "A sample contains 2.0 g of hydrogen (H) and 16 g of oxygen (O). What is the empirical formula of the compound formed? (H = 1, O = 16)",
       steps: [
-        "Step 1: H=2/1=2",
-        "Step 2: O=16/16=1",
-        "Step 3: ratio 2:1"
+        "Step 1: Convert each mass to moles: H = 2.0 ÷ 1 = 2, O = 16 ÷ 16 = 1",
+        "Step 2: Find the mole ratio: H : O = 2 : 1",
+        "Step 3: Check — are these already whole numbers? Yes.",
+        "Step 4: Write the empirical formula: H₂O"
       ],
       ans: "H₂O",
-      why: "simple ratio"
+      why: "The mole ratio of 2:1 directly gives the subscripts in the empirical formula. Since both values are already whole numbers, no further adjustment is needed."
     },
-
     {
-      q: "Example 5: 3.0g C and 8.0g O",
+      q: "A compound is made from 3.0 g of carbon (C) and 8.0 g of oxygen (O). Find the empirical formula. (C = 12, O = 16)",
       steps: [
-        "Step 1: C=3/12=0.25",
-        "Step 2: O=8/16=0.5",
-        "Step 3: divide by 0.25 → 1:2"
+        "Step 1: Convert to moles: C = 3.0 ÷ 12 = 0.25, O = 8.0 ÷ 16 = 0.5",
+        "Step 2: Divide by the smallest value (0.25): C = 0.25/0.25 = 1, O = 0.5/0.25 = 2",
+        "Step 3: Ratio C : O = 1 : 2",
+        "Step 4: Empirical formula = CO₂"
       ],
       ans: "CO₂",
-      why: "simplest ratio"
+      why: "Dividing both mole values by the smallest (0.25) gives a ratio of 1:2, meaning for every 1 carbon atom there are 2 oxygen atoms. This matches the known formula of carbon dioxide."
     }
   ],
 );
@@ -3139,43 +3109,45 @@ CH × 6 = C₆H₆
 `,
   [
     {
-      q: "Example 2: CH₂, Mr = 56",
+      q: "A compound has an empirical formula of CH₂ and a molar mass (Mr) of 56 g/mol. Find the molecular formula.",
+      hint: "Find the empirical formula mass first, then divide Mr by it to get the multiplying factor n",
       steps: [
-        "Step 1: CH₂ = 14",
-        "Step 2: 56 ÷ 14 = 4"
+        "Step 1: Calculate the empirical formula mass (EFM): CH₂ → C = 12, H₂ = 2, EFM = 14",
+        "Step 2: Calculate the multiplying factor: n = Mr ÷ EFM = 56 ÷ 14 = 4",
+        "Step 3: Multiply the entire empirical formula by n: CH₂ × 4 = C₄H₈"
       ],
       ans: "C₄H₈",
-      why: "multiply empirical"
+      why: "The empirical formula CH₂ has a mass of 14. Since the actual Mr is 56, the molecular formula is 4 times bigger, giving C₄H₈ (the formula for butene)."
     },
-
     {
-      q: "Example 3: NH₂, Mr = 32",
+      q: "A compound has the empirical formula NH₂ and a molar mass (Mr) of 32 g/mol. What is its molecular formula? (N = 14, H = 1)",
       steps: [
-        "Step 1: NH₂ = 16",
-        "Step 2: 32 ÷ 16 = 2"
+        "Step 1: Calculate EFM: NH₂ → N = 14, H₂ = 2, EFM = 16",
+        "Step 2: Find n: n = Mr ÷ EFM = 32 ÷ 16 = 2",
+        "Step 3: Multiply formula by 2: NH₂ × 2 = N₂H₄"
       ],
       ans: "N₂H₄",
-      why: "scaling factor"
+      why: "The EFM of NH₂ is 16. With Mr = 32, n = 2. Multiplying every subscript by 2 gives N₂H₄, which is hydrazine."
     },
-
     {
-      q: "Example 4: CO, Mr = 56",
+      q: "The empirical formula of a compound is CH and its molar mass is 78 g/mol. Determine the molecular formula. (C = 12, H = 1)",
       steps: [
-        "Step 1: CO = 28",
-        "Step 2: 56 ÷ 28 = 2"
-      ],
-      ans: "C₂O₂",
-      why: "multiply ratio"
-    },
-
-    {
-      q: "Example 5: CH, Mr = 78",
-      steps: [
-        "Step 1: CH = 13",
-        "Step 2: 78 ÷ 13 = 6"
+        "Step 1: Calculate EFM: CH → C = 12, H = 1, EFM = 13",
+        "Step 2: Find n: n = Mr ÷ EFM = 78 ÷ 13 = 6",
+        "Step 3: Multiply formula by 6: CH × 6 = C₆H₆"
       ],
       ans: "C₆H₆",
-      why: "benzene structure"
+      why: "EFM of CH is 13. Since Mr = 78 and 78 ÷ 13 = 6, the molecular formula is 6 times the empirical formula, giving C₆H₆ (benzene)."
+    },
+    {
+      q: "A compound has the empirical formula CH₂O and a molar mass of 90 g/mol. Find the molecular formula. (C = 12, H = 1, O = 16)",
+      steps: [
+        "Step 1: Calculate EFM: CH₂O → C = 12, H₂ = 2, O = 16, EFM = 30",
+        "Step 2: Find n: n = Mr ÷ EFM = 90 ÷ 30 = 3",
+        "Step 3: Multiply formula by 3: CH₂O × 3 = C₃H₆O₃"
+      ],
+      ans: "C₃H₆O₃",
+      why: "EFM of CH₂O is 30. Dividing the actual Mr (90) by 30 gives n = 3. Every atom in the empirical formula is multiplied by 3 to get the molecular formula."
     }
   ],
 );
@@ -3273,46 +3245,49 @@ So both react completely.
 `,
   [
     {
-      q: "Example 2: 6 mol H₂ and 2 mol N₂",
+      q: "In the reaction N₂ + 3H₂ → 2NH₃, a student has 6 mol of H₂ and 2 mol of N₂. Which substance, if any, is the limiting reagent?",
+      hint: "Check how much H₂ is needed for 2 mol of N₂ using the mole ratio from the equation",
       steps: [
-        "Step 1: 3H₂ : 1N₂",
-        "Step 2: 2 N₂ needs 6 H₂",
-        "Step 3: exact match"
+        "Step 1: Read the equation: N₂ + 3H₂ → 2NH₃. The ratio is N₂ : H₂ = 1 : 3",
+        "Step 2: Calculate H₂ needed for 2 mol N₂: 2 × 3 = 6 mol of H₂ is required",
+        "Step 3: Compare with what is available: we have exactly 6 mol H₂",
+        "Step 4: Both reactants are used up at the same rate — neither runs out first"
       ],
-      ans: "No limiting reagent",
-      why: "perfect ratio"
+      ans: "No limiting reagent — both react completely (stoichiometric amounts)",
+      why: "When the available amounts of reactants exactly match the required mole ratio, both are fully consumed. There is no limiting reagent and no excess."
     },
-
     {
-      q: "Example 3: 10 mol H₂ and 2 mol N₂",
+      q: "In the reaction N₂ + 3H₂ → 2NH₃, a student mixes 10 mol of H₂ with 2 mol of N₂. Which reactant is the limiting reagent?",
       steps: [
-        "Step 1: 2 N₂ needs 6 H₂",
-        "Step 2: excess H₂",
-        "Step 3: N₂ limits"
+        "Step 1: Read the equation: N₂ + 3H₂ → 2NH₃. Ratio N₂ : H₂ = 1 : 3",
+        "Step 2: Calculate how much H₂ is needed to react with 2 mol N₂: 2 × 3 = 6 mol H₂",
+        "Step 3: Compare: we have 10 mol H₂ but only need 6 mol — so H₂ is in excess",
+        "Step 4: N₂ is used up completely (only 2 mol available), so N₂ is the limiting reagent"
       ],
-      ans: "N₂ is limiting",
-      why: "runs out first"
+      ans: "N₂ is the limiting reagent",
+      why: "N₂ runs out first because the 2 mol available is completely consumed when reacting with 6 mol H₂. The remaining 4 mol of H₂ is excess and does not react."
     },
-
     {
-      q: "Example 4: 5 mol Al and O₂ excess",
+      q: "In the reaction 2H₂ + O₂ → 2H₂O, a student has 4 mol of H₂ and only 1 mol of O₂. Identify the limiting reagent and state how many moles of water are produced.",
       steps: [
-        "Step 1: Al controls reaction",
-        "Step 2: O₂ not limiting"
+        "Step 1: Read the equation: 2H₂ + O₂ → 2H₂O. Ratio H₂ : O₂ = 2 : 1",
+        "Step 2: Calculate H₂ needed for 1 mol O₂: 1 × 2 = 2 mol H₂ needed",
+        "Step 3: We have 4 mol H₂ — that is more than enough, so H₂ is in excess",
+        "Step 4: O₂ is the limiting reagent. The reaction produces 2 × 1 = 2 mol H₂O"
       ],
-      ans: "Al is limiting reagent",
-      why: "less available in ratio"
+      ans: "O₂ is the limiting reagent; 2 moles of H₂O are produced",
+      why: "Only 1 mol of O₂ is available, and it can react with at most 2 mol of H₂. The remaining 2 mol of H₂ goes unreacted. The limiting reagent controls the amount of product formed."
     },
-
     {
-      q: "Example 5: 1 mol CaCO₃ heated",
+      q: "In the reaction 4Al + 3O₂ → 2Al₂O₃, a student has 4 mol of Al but has a very large excess of O₂. Which is the limiting reagent, and how many moles of Al₂O₃ are produced?",
       steps: [
-        "Step 1: CaCO₃ → CaO + CO₂",
-        "Step 2: 1:1 ratio",
-        "Step 3: full conversion"
+        "Step 1: Read the equation: 4Al + 3O₂ → 2Al₂O₃. Ratio Al : Al₂O₃ = 4 : 2 = 2 : 1",
+        "Step 2: Since O₂ is in excess, the amount of Al controls the reaction",
+        "Step 3: Al is the limiting reagent. Use the ratio: 4 mol Al → 2 mol Al₂O₃",
+        "Step 4: 4 mol Al produces (4 ÷ 2) × 1 = 2 mol Al₂O₃"
       ],
-      ans: "No limiting reagent",
-      why: "single reactant system"
+      ans: "Al is the limiting reagent; 2 moles of Al₂O₃ are produced",
+      why: "When one reactant is in large excess, the other (Al here) is the limiting reagent. The amount of product is always determined by the limiting reagent, not by the excess."
     }
   ],
 );
@@ -3414,33 +3389,35 @@ Moles = volume ÷ 22.4
 `,
     [
       {
-        q: "Example 3: 44.8 dm³ gas = how many moles?",
+        q: "A container holds 44.8 dm³ of carbon dioxide gas at STP. How many moles of CO₂ does the container hold?",
+        hint: "Use the formula: moles = volume ÷ 22.4",
         steps: [
-          "Step 1: divide by 22.4",
-          "Step 2: 44.8 ÷ 22.4"
+          "Step 1: Write the formula: n = Volume ÷ 22.4",
+          "Step 2: Substitute: n = 44.8 ÷ 22.4",
+          "Step 3: Calculate: n = 2 mol"
         ],
         ans: "2 moles",
-        why: "reverse calculation"
+        why: "At STP, 1 mole of any gas occupies 22.4 dm³. Dividing 44.8 by 22.4 gives 2, meaning the container holds 2 moles of CO₂."
       },
-
       {
-        q: "Example 4: 5 moles gas volume?",
+        q: "A chemist needs 5 moles of hydrogen gas (H₂) for an experiment. What volume of hydrogen gas, measured at STP, would the chemist need to collect?",
         steps: [
-          "Step 1: 5 × 22.4",
-          "Step 2: compute"
+          "Step 1: Write the formula: Volume = n × 22.4",
+          "Step 2: Substitute: Volume = 5 × 22.4",
+          "Step 3: Calculate: Volume = 112 dm³"
         ],
         ans: "112 dm³",
-        why: "direct conversion"
+        why: "Multiplying moles by 22.4 converts to volume at STP. 5 moles of any gas takes up 5 × 22.4 = 112 dm³ under standard conditions."
       },
-
       {
-        q: "Example 5: 11.2 dm³ gas = moles?",
+        q: "A balloon contains 11.2 dm³ of helium gas at STP. How many moles of helium are in the balloon?",
         steps: [
-          "Step 1: 11.2 ÷ 22.4",
-          "Step 2: compute"
+          "Step 1: Write the formula: n = Volume ÷ 22.4",
+          "Step 2: Substitute: n = 11.2 ÷ 22.4",
+          "Step 3: Calculate: n = 0.5 mol"
         ],
         ans: "0.5 moles",
-        why: "inverse relationship"
+        why: "11.2 dm³ is exactly half of 22.4 dm³ (the molar volume at STP). So the balloon contains half a mole of helium gas."
       }
     ]
   );
@@ -3480,37 +3457,39 @@ add(
 `,
   [
     {
-      q: "Example 5: How is mole used in fertilizer production?",
+      q: "A student says 'the mole concept is a bridge in chemistry.' What do they mean by this? Explain using the difference between the microscopic and macroscopic worlds.",
+      hint: "Think about how atoms are too small to weigh individually, but we can measure grams in the lab",
       steps: [
-        "Step 1: Identify required NPK ratio",
-        "Step 2: Convert to moles",
-        "Step 3: Mix correct proportions"
+        "Step 1: The microscopic world = individual atoms and molecules, which are far too small to count or weigh directly",
+        "Step 2: The macroscopic world = the gram quantities we can measure using a balance in a laboratory",
+        "Step 3: The mole links these two worlds — 1 mole of any substance has a fixed number of particles (6.02 × 10²³) AND a measurable mass in grams (its molar mass)",
+        "Step 4: This allows chemists to move between counting particles and measuring mass"
       ],
-      ans: "It ensures correct nutrient ratios in fertilizers",
-      why: "Plants require precise nutrient balance"
+      ans: "The mole connects the atomic world (particles) to the measurable world (grams), making it possible to calculate amounts in chemical reactions",
+      why: "Without the mole, chemists could not relate what happens at the atomic level (e.g. 2 atoms of H react with 1 atom of O) to what they measure in the lab (grams of hydrogen and oxygen)."
     },
     {
-      q: "Why is the mole concept called a bridge in chemistry?",
-      hint: "microscopic vs macroscopic",
+      q: "Explain how the mole concept is used in the pharmaceutical (medicine) industry when manufacturing drugs.",
+      hint: "Think about why precise amounts of substances matter in medicine",
       steps: [
-        "Step 1: Identify atomic scale",
-        "Step 2: Identify measurable scale",
-        "Step 3: Link both using mole"
+        "Step 1: Drug molecules must be mixed in exact proportions to be effective and safe",
+        "Step 2: Chemists use mole ratios to calculate exactly how many grams of each ingredient to combine",
+        "Step 3: The mole ensures that the correct number of molecules of the active substance is in every tablet or dose",
+        "Step 4: Too little is ineffective; too much can be toxic — the mole concept enables precision"
       ],
-      ans: "Because it connects atoms to measurable quantities",
-      why: "It links two chemical worlds"
+      ans: "The mole concept allows pharmacists to calculate exact masses of ingredients so that each dose contains the correct number of drug molecules",
+      why: "Drug effectiveness depends on having the right number of molecules, not just the right weight. The mole converts between particle counts and measurable gram quantities."
     },
-
     {
-      q: "Give two industrial applications of mole concept.",
-      hint: "manufacturing",
+      q: "State two industrial applications of the mole concept and briefly explain how it is used in each.",
+      hint: "Think of industries that involve chemical reactions at large scale",
       steps: [
-        "Step 1: Identify chemical industries",
-        "Step 2: Apply mole ratios",
-        "Step 3: Scale production"
+        "Step 1: Ammonia production (Haber Process) — N₂ + 3H₂ → 2NH₃. Mole ratios tell engineers exactly how much N₂ and H₂ to feed into the reactor to maximise yield.",
+        "Step 2: Fertilizer production — nutrients like nitrogen, phosphorus, and potassium (NPK) must be present in precise mole ratios for plant growth.",
+        "Step 3: Both industries use mole calculations to avoid waste, maximise efficiency, and ensure product quality."
       ],
-      ans: "Ammonia production and fertilizer production",
-      why: "Both require mole calculations"
+      ans: "Ammonia production (uses mole ratios to mix N₂ and H₂ correctly) and fertilizer production (uses moles to get precise NPK nutrient ratios)",
+      why: "Large-scale chemical manufacturing depends on accurate mole calculations. Even small errors in mole ratios can result in wasted materials, unsafe products, or financial loss."
     }
   ]
 );
