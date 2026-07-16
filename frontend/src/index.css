@@ -4438,6 +4438,7 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   color: var(--t2);
   cursor: pointer;
   outline: none;
+  -webkit-user-select: none;
   user-select: none;
   transition: background 0.15s ease;
 }
