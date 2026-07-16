@@ -6,7 +6,7 @@ function TopicList({ subject, chapter, openTopic, goBack, mastered }) {
       <div className="vhd">
         <button className="vback" onClick={goBack}>← Back</button>
         <div className="vtitle">{chapter.label}</div>
-        <div className="vsub">{subject.icon} {subject.label}</div>
+        <div className="vsub">{subject.label}</div>
       </div>
       <div className="topic-list">
         {(() => {
@@ -22,12 +22,13 @@ function TopicList({ subject, chapter, openTopic, goBack, mastered }) {
                 key={t} 
                 onClick={() => openTopic(t)}
               >
-                <div className="t-num">{isMastered ? "✓" : i + 1}</div>
                 <div className="t-info">
-                  <div className="t-name">{t}</div>
-                  <div className="t-meta">{isMastered ? "Mastered ✓" : "Suggested next step ✨"}</div>
+                  <div className="t-name">
+                    {t}
+                    {isMastered && <span className="t-check">✓</span>}
+                    {isSuggested && <span className="t-dot" title="Suggested next step" />}
+                  </div>
                 </div>
-                <div className="t-arr">→</div>
               </div>
             );
           });
