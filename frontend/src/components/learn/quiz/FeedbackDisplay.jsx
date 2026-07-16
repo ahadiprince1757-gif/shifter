@@ -1,7 +1,5 @@
 function FeedbackDisplay({
   feedback,
-  showAnswer,
-  setShowAnswer,
   nextQuestion,
   finishTopic,
   grading,
@@ -12,62 +10,52 @@ function FeedbackDisplay({
 
   if (!feedback) return null;
 
+  const isCorrect = feedback.isCorrect;
+
   return (
-    <div className={`fb-box ${feedback.isCorrect ? "fb-cor" : "fb-wrn"}`}>
-      <div className="fb-h">
-        {feedback.isCorrect ? (
-          <>
-            <span style={{ fontSize: "1.2rem" }}>✅</span> Correct Answer!
-          </>
-        ) : (
-          <>
-            <span style={{ fontSize: "1.2rem" }}>❌</span> Not quite right, let's review.
-          </>
-        )}
+    <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-incorrect"}`}>
+      {/* Verdict line */}
+      <div className="fb-verdict">
+        <span className={`fb-dot ${isCorrect ? "fb-dot-correct" : "fb-dot-incorrect"}`} />
+        <span className="fb-verdict-text">
+          {isCorrect ? "Correct" : "Incorrect"}
+        </span>
+        <span className="fb-progress">{qIdx + 1} / {totalQs}</span>
       </div>
 
-      <div className="fb-b">
-        <div className="fb-section">
-          <div className="fb-label">Explanation</div>
-          <div className="fb-text">
-            {feedback.solution || "No explanation provided."}
-          </div>
+      {/* Correct answer — shown inline for wrong answers */}
+      {!isCorrect && feedback.correctAnswer && (
+        <div className="fb-answer">
+          <span className="fb-answer-label">Correct answer</span>
+          <span className="fb-answer-value">{feedback.correctAnswer}</span>
         </div>
+      )}
 
-        {!feedback.isCorrect && feedback.correctAnswer && !showAnswer && (
-          <button type="button" className="btn-g" onClick={() => setShowAnswer(true)}>
-            Show Correct Answer
-          </button>
-        )}
+      {/* Explanation */}
+      {feedback.solution && (
+        <div className="fb-explanation">
+          {feedback.solution}
+        </div>
+      )}
 
-        {showAnswer && !feedback.isCorrect && feedback.correctAnswer && (
-          <div className="fb-section">
-            <div className="fb-label">Correct Answer</div>
-            <div className="fb-text" style={{ fontWeight: "700" }}>{feedback.correctAnswer}</div>
-          </div>
-        )}
-      </div>
-
-      <div className="btn-row fb-btn-row">
-        <button
-          type="button"
-          className="btn-p"
-          onClick={() => {
-            setShowAnswer(false);
-            if (isLastQuestion) {
-              finishTopic();
-            } else {
-              nextQuestion();
-            }
-          }}
-          disabled={grading}
-          style={{ cursor: grading ? "not-allowed" : "pointer" }}
-        >
-          {isLastQuestion ? "Finish Topic" : "Next Question →"}
-        </button>
-      </div>
+      {/* Single action */}
+      <button
+        type="button"
+        className="btn-p fb-action"
+        onClick={() => {
+          if (isLastQuestion) {
+            finishTopic();
+          } else {
+            nextQuestion();
+          }
+        }}
+        disabled={grading}
+      >
+        {isLastQuestion ? "Finish Topic" : "Next Question →"}
+      </button>
     </div>
   );
 }
 
 export default FeedbackDisplay;
+
