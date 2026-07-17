@@ -4,6 +4,7 @@ import { progressRepo } from "../repository/progressRepo";
 import { networkService } from "../services/networkService";
 import logger from "../utils/logger";
 import { recordEvent } from "../utils/analytics";
+import { restructureQuestion } from "../utils/questionMutator";
 
 export function useQuiz(
   subject,
@@ -26,6 +27,10 @@ export function useQuiz(
   const [quizFinished, setQuizFinished] = useState(false);
   const [prevTopic, setPrevTopic] = useState(topic);
 
+  // Adaptive Retry State Machine
+  const [retryState, setRetryState] = useState(null); // null | "review" | "retry"
+  const [activeQuestion, setActiveQuestion] = useState(null);
+
   // Reset state when topic changes (during render to prevent cascading render warnings)
   if (topic !== prevTopic) {
     setPrevTopic(topic);
@@ -39,6 +44,8 @@ export function useQuiz(
     setValidationError("");
     setFailedQuestions([]);
     setQuizFinished(false);
+    setRetryState(null);
+    setActiveQuestion(null);
   }
 
   // Clear validation error when answer is filled (during render)
@@ -76,7 +83,35 @@ export function useQuiz(
       topic,
       questionIndex: qIdx,
       answerLength: answer.trim().length,
+      isRetry: retryState === "retry"
     });
+
+    if (retryState === "retry" && activeQuestion) {
+      // Grade client side to support dynamic mutations and offline mode perfectly
+      setTimeout(() => {
+        const clean = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "").trim();
+        const isCorrect = clean(answer) === clean(activeQuestion.ans);
+
+        const res = {
+          isCorrect,
+          correctAnswer: activeQuestion.ans,
+          solution: activeQuestion.sol || activeQuestion.why || "Verify your answer against the correct one.",
+          mark: isCorrect ? "Correct" : "Incorrect"
+        };
+
+        setFeedback(res);
+        setGrading(false);
+
+        logger.action("RETRY_GRADED", "success", {
+          subject: subject.id,
+          chapter: chapter.id,
+          topic,
+          questionIndex: qIdx,
+          isCorrect: res.isCorrect,
+        });
+      }, 300);
+      return;
+    }
 
     const payload = {
       sid: subject.id,
@@ -183,6 +218,9 @@ export function useQuiz(
       isLastQuestion: lastQuestion,
     });
 
+    setRetryState(null);
+    setActiveQuestion(null);
+
     if (!lastQuestion) {
       setQIdx((prev) => prev + 1);
       setAnswer("");
@@ -195,6 +233,25 @@ export function useQuiz(
     }
 
     finishQuiz();
+  };
+
+  const startRetry = () => {
+    const qObj = content?.qs?.[qIdx];
+    if (!qObj) return;
+    const mutated = restructureQuestion(qObj, content);
+    setActiveQuestion(mutated);
+    setRetryState("retry");
+    setAnswer("");
+    setWork("");
+    setExplanation("");
+    setFeedback(null);
+    setShowHint(false);
+    setValidationError("");
+  };
+
+  const goToReview = () => {
+    setRetryState("review");
+    setFeedback(null);
   };
 
   return {
@@ -227,6 +284,11 @@ export function useQuiz(
     quizFinished,
     submitAnswer,
     nextQuestion,
+    finishTopic: finishQuiz, // Map to finishQuiz for backwards compatibility
     finishQuiz,
+    retryState,
+    activeQuestion,
+    startRetry,
+    goToReview
   };
 }

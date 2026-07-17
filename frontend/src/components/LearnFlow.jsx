@@ -205,8 +205,8 @@ const canJumpToPhase = (idx) => {
             <QuizPhase
               topic={topic}
               qIdx={quiz.qIdx}
-              curQ={curQ}
-              isCalc={isCalc}
+              curQ={quiz.activeQuestion || curQ}
+              isCalc={quiz.activeQuestion ? quiz.activeQuestion.type === "calc" : isCalc}
               answer={quiz.answer}
               setAnswer={quiz.setAnswer}
               work={quiz.work}
@@ -223,6 +223,11 @@ const canJumpToPhase = (idx) => {
               finishTopic={finishTopic}
               isLastQuestion={isLastQuestion}
               totalQs={questions.length}
+              retryState={quiz.retryState}
+              activeQuestion={quiz.activeQuestion}
+              startRetry={quiz.startRetry}
+              goToReview={quiz.goToReview}
+              content={content}
             />
           ) : (
             <div className="lc" style={{ padding: "2rem" }}>
