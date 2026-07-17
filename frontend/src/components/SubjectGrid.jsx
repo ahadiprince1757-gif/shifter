@@ -1,7 +1,16 @@
+import { useState } from "react";
 import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
 
-function SubjectGrid({ curriculum, openSubject, mastered }) {
+function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
+  // Lazy initializer — reads localStorage once on first render, no effect needed
+  const [lastTopic] = useState(() => {
+    try {
+      const raw = localStorage.getItem("lastTopic");
+      return raw ? JSON.parse(raw) : null;
+    } catch { return null; }
+  });
+
   if (!curriculum) {
     return (
       <div id="v-subjects" className="view active">
@@ -20,8 +29,30 @@ function SubjectGrid({ curriculum, openSubject, mastered }) {
     openSubject(subjectId);
   };
 
+  // Only show the resume banner if there's at least some mastery progress
+  const hasMastered = mastered && mastered.size > 0;
+  const showResume = lastTopic && hasMastered && onResume;
+
   return (
     <div id="v-subjects" className="view active">
+      {showResume && (
+        <div className="resume-card">
+          <div className="resume-card-text">
+            <span className="resume-card-label">Continue learning</span>
+            <span className="resume-card-topic">{lastTopic.topic}</span>
+            <span className="resume-card-path">
+              {lastTopic.subjectLabel} · {lastTopic.chapterLabel}
+            </span>
+          </div>
+          <button
+            className="btn-p resume-card-btn"
+            onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
+          >
+            Resume →
+          </button>
+        </div>
+      )}
+
       <div className="sg-header">
         <h1 className="sg-title">Subjects</h1>
       </div>

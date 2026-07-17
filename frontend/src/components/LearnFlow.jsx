@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTopicContent } from "../hooks/useTopicContent";
 import { useQuiz } from "../hooks/useQuiz";
 import SkeletonLoader from "./SkeletonLoader";
@@ -19,6 +19,24 @@ function LearnFlow({
   mastered,
 }) {
   const [phase, setPhase] = useState(0); // 0: Notes, 1: Quiz, 2: Mastered
+
+  // Persist last-visited topic so the Subjects page can offer a "Continue" banner
+  useEffect(() => {
+    if (subject?.id && chapter?.id && topic) {
+      try {
+        localStorage.setItem(
+          "lastTopic",
+          JSON.stringify({
+            subjectId: subject.id,
+            subjectLabel: subject.label,
+            chapterId: chapter.id,
+            chapterLabel: chapter.label,
+            topic,
+          })
+        );
+      } catch { /* storage quota or private-mode errors — silently ignore */ }
+    }
+  }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic]);
 
   const { content, loading, error } = useTopicContent(
     subject,

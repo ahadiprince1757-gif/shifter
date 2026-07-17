@@ -88,6 +88,9 @@ const SubjectsView = () => {
       curriculum={curriculum}
       openSubject={(id) => navigate(`/subjects/${id}`)}
       mastered={mastered}
+      onResume={(subjectId, chapterId, topic) =>
+        navigate(`/learn/${subjectId}/${chapterId}/${encodeURIComponent(topic)}`)
+      }
     />
   );
 };

@@ -4634,3 +4634,52 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   width: 100%;
   margin-top: 0.25rem;
 }
+
+/* ── Continue Where You Left Off Banner ────────────────────────────── */
+.resume-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin: 0 0 1.25rem 0;
+  padding: 0.85rem 1.1rem;
+  border-radius: 14px;
+  border: 1.5px solid rgba(var(--v-rgb, 124,92,252), 0.25);
+  background: rgba(var(--v-rgb, 124,92,252), 0.05);
+  animation: vin 0.25s ease;
+}
+
+.resume-card-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.resume-card-label {
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--v);
+}
+
+.resume-card-topic {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--t);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resume-card-path {
+  font-size: 0.72rem;
+  color: var(--t3);
+}
+
+.resume-card-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.82rem;
+}
