@@ -4,7 +4,7 @@ import { progressRepo } from "../repository/progressRepo";
 import { networkService } from "../services/networkService";
 import logger from "../utils/logger";
 import { recordEvent } from "../utils/analytics";
-import { restructureQuestion } from "../utils/questionMutator";
+// import { restructureQuestion } from "../utils/questionMutator"; // Removed mutator import
 
 export function useQuiz(
   subject,
@@ -236,11 +236,10 @@ export function useQuiz(
   };
 
   const startRetry = () => {
-    const qObj = content?.qs?.[qIdx];
-    if (!qObj) return;
-    const mutated = restructureQuestion(qObj, content);
-    setActiveQuestion(mutated);
+    // Previously mutated the question using restructureQuestion, but mutator is removed.
+    // Reset retry state and clear any active question.
     setRetryState("retry");
+    setActiveQuestion(null);
     setAnswer("");
     setWork("");
     setExplanation("");
