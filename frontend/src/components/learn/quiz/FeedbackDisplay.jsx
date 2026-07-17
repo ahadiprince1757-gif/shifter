@@ -5,6 +5,7 @@ function FeedbackDisplay({
   grading,
   qIdx,
   totalQs,
+  goToReview, // new prop for review navigation
 }) {
   const isLastQuestion = qIdx >= totalQs - 1;
 
@@ -38,21 +39,49 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Single action */}
-      <button
-        type="button"
-        className="btn-p fb-action"
-        onClick={() => {
-          if (isLastQuestion) {
-            finishTopic();
-          } else {
-            nextQuestion();
-          }
-        }}
-        disabled={grading}
-      >
-        {isLastQuestion ? "Finish Topic" : "Next Question →"}
-      </button>
+      {/* Action buttons */}
+      {isCorrect ? (
+        <button
+          type="button"
+          className="btn-p fb-action"
+          onClick={() => {
+            if (isLastQuestion) {
+              finishTopic();
+            } else {
+              nextQuestion();
+            }
+          }}
+          disabled={grading}
+        >
+          {isLastQuestion ? "Finish Topic" : "Next Question →"}
+        </button>
+      ) : (
+        <div className="fb-actions">
+          <button
+            type="button"
+            className="btn-g fb-action"
+            onClick={goToReview}
+            disabled={grading}
+          >
+            Review Concept
+          </button>
+          <button
+            type="button"
+            className="btn-p fb-action"
+            onClick={() => {
+              if (isLastQuestion) {
+                finishTopic();
+              } else {
+                nextQuestion();
+              }
+            }}
+            disabled={grading}
+          >
+            {isLastQuestion ? "Finish Topic" : "Next Question →"}
+          </button>
+        </div>
+      )}
+
     </div>
   );
 }
