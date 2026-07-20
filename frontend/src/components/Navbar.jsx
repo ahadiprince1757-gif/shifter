@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import GlobalSearch from "./GlobalSearch";
 import ProfileDropdown from "./ProfileDropdown";
@@ -66,6 +66,43 @@ export default function Navbar({
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show header near the top of the page
+      if (currentScrollY <= 15) {
+        setIsVisible(true);
+      } else if (Math.abs(currentScrollY - lastScrollY) > 8) {
+        if (currentScrollY > lastScrollY) {
+          // Scrolling down -> hide
+          setIsVisible(false);
+        } else {
+          // Scrolling up -> show
+          setIsVisible(true);
+        }
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    const handleTap = () => {
+      // Tap anywhere on page to show header again
+      setIsVisible(true);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("click", handleTap, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleTap);
+    };
+  }, [lastScrollY]);
+
+  const isHeaderVisible = isVisible || menuOpen || searchOpen;
 
   const isLanding = location.pathname === "/";
   const isApp = !isLanding;
@@ -92,7 +129,7 @@ export default function Navbar({
 
   return (
     <>
-      <nav className="lnav">
+      <nav className={`lnav ${isHeaderVisible ? "" : "lnav-hidden"}`}>
         {/* Logo */}
         <div className="lnav-logo" onClick={handleLogoClick}>
           <img src="/Tixar.jpeg" alt="Tixar Logo" className="logo-img" />
