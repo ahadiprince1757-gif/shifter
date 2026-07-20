@@ -389,15 +389,16 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
         <div className="hero-inner jobs-centered">
           <div className="hero-content">
             <h1 className="hero-title">
-              Master your subjects. <br />
-              <span className="gt">Completely offline.</span>
+              Open a topic.
+              <br />
+              <span className="gt">Start learning in seconds.</span>
             </h1>
             <p className="hero-sub">
-              A distraction-free space for study notes, active recall, and quizzes. Study at your own pace, anytime, anywhere.
+              Pick a subject, dive into structured notes, and test yourself with quizzes — all in one focused flow.
             </p>
             <div className="hero-actions">
               <button className="btn-hero primary" onClick={enterApp}>
-                Start Learning
+                Open Tixar →
               </button>
             </div>
           </div>
