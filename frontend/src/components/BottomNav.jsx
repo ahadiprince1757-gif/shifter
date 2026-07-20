@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import GlobalSearch from "./GlobalSearch";
 
 const HomeIcon = () => (
@@ -42,6 +42,42 @@ export default function BottomNav({
   const location = useLocation();
   const navigate = useNavigate();
   const [searchOpen, setSearchOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      // Always show nav when close to the top of the page
+      if (currentScrollY <= 15) {
+        setIsVisible(true);
+      } else if (Math.abs(currentScrollY - lastScrollY) > 8) {
+        // Hide if scrolling down, show if scrolling up
+        if (currentScrollY > lastScrollY) {
+          setIsVisible(false);
+        } else {
+          setIsVisible(true);
+        }
+      }
+      setLastScrollY(currentScrollY);
+    };
+
+    const handleTap = () => {
+      // Tap anywhere on the page to make bottom nav reappear
+      setIsVisible(true);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("click", handleTap, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("click", handleTap);
+    };
+  }, [lastScrollY]);
+
+  const isNavVisible = isVisible || searchOpen;
 
   const path = location.pathname;
   const isHome = path === "/subjects";
@@ -90,7 +126,7 @@ export default function BottomNav({
       )}
 
       {/* Bottom navigation bar */}
-      <nav className="bottom-nav" role="navigation" aria-label="Mobile navigation">
+      <nav className={`bottom-nav ${isNavVisible ? "" : "bn-hidden"}`} role="navigation" aria-label="Mobile navigation">
         <button
           className={`bn-item ${isHome ? "active" : ""}`}
           onClick={() => navigate("/subjects")}
