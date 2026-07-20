@@ -391,7 +391,7 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
             <h1 className="hero-title">
               Open a topic.
               <br />
-              <span className="gt">Start learning in seconds.</span>
+              <span className="gt">Start learning at your own own pace.</span>
             </h1>
             <p className="hero-sub">
               Pick a subject, dive into structured notes, and test yourself with quizzes — all in one focused flow.
