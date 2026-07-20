@@ -25,6 +25,45 @@ function App() {
     syncEngine.syncAll().catch(err => console.error("Initial sync failed", err));
   }, []);
 
+  // Handle global double-tap (mobile) or double-click (desktop) to zoom in/out
+  useEffect(() => {
+    let lastTap = 0;
+    
+    const handleTouchEnd = (e) => {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+      
+      if (tapLength < 300 && tapLength > 0) {
+        const target = e.target;
+        // Ignore double taps on standard interactive controls
+        if (target.closest('button, input, textarea, select, a, [role="button"]')) {
+          return;
+        }
+        
+        e.preventDefault();
+        document.documentElement.classList.toggle('app-zoomed');
+      }
+      lastTap = currentTime;
+    };
+
+    const handleDblClick = (e) => {
+      const target = e.target;
+      // Ignore double clicks on standard interactive controls
+      if (target.closest('button, input, textarea, select, a, [role="button"]')) {
+        return;
+      }
+      document.documentElement.classList.toggle('app-zoomed');
+    };
+
+    window.addEventListener('touchend', handleTouchEnd, { passive: false });
+    window.addEventListener('dblclick', handleDblClick);
+
+    return () => {
+      window.removeEventListener('touchend', handleTouchEnd);
+      window.removeEventListener('dblclick', handleDblClick);
+    };
+  }, []);
+
   return (
     <AuthProvider>
       <AppRoutes />

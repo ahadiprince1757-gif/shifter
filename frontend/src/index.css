@@ -4702,3 +4702,17 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   padding: 0.5rem 1rem;
   font-size: 0.82rem;
 }
+
+/* App zoom state */
+html.app-zoomed {
+  zoom: 1.15; /* 15% zoom-in */
+}
+@supports not (zoom: 1.15) {
+  html.app-zoomed {
+    /* Fallback for browsers that don't support zoom property natively */
+    transform: scale(1.15);
+    transform-origin: top center;
+    width: 86.9%;
+    height: 86.9%;
+  }
+}
