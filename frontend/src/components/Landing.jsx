@@ -394,7 +394,6 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
               <span className="gt">Start learning at your own own pace.</span>
             </h1>
             <p className="hero-sub">
-              Pick a subject, dive into structured notes, and test yourself with quizzes — all in one focused flow.
             </p>
             <div className="hero-actions">
               <button className="btn-hero primary" onClick={enterApp}>
