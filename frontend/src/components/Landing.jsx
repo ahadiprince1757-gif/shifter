@@ -389,7 +389,7 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
         <div className="hero-inner jobs-centered">
           <div className="hero-content">
             <h1 className="hero-title">
-              Open a topic.
+            
               <br />
               <span className="gt">Start learning at your own own pace.</span>
             </h1>
