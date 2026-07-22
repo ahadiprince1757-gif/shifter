@@ -4,7 +4,7 @@ import { progressRepo } from "../repository/progressRepo";
 import { networkService } from "../services/networkService";
 import logger from "../utils/logger";
 import { recordEvent } from "../utils/analytics";
-// import { restructureQuestion } from "../utils/questionMutator"; // Removed mutator import
+import { evaluateAnswer } from "../utils/grader";
 
 export function useQuiz(
   subject,
@@ -86,19 +86,11 @@ export function useQuiz(
       isRetry: retryState === "retry"
     });
 
+    const targetQ = activeQuestion || content?.qs?.[qIdx];
+
     if (retryState === "retry" && activeQuestion) {
-      // Grade client side to support dynamic mutations and offline mode perfectly
       setTimeout(() => {
-        const clean = (s) => String(s || "").toLowerCase().replace(/[^a-z0-9]/g, "").trim();
-        const isCorrect = clean(answer) === clean(activeQuestion.ans);
-
-        const res = {
-          isCorrect,
-          correctAnswer: activeQuestion.ans,
-          solution: activeQuestion.sol || activeQuestion.why || "Verify your answer against the correct one.",
-          mark: isCorrect ? "Correct" : "Incorrect"
-        };
-
+        const res = evaluateAnswer(answer, activeQuestion);
         setFeedback(res);
         setGrading(false);
 
@@ -109,7 +101,7 @@ export function useQuiz(
           questionIndex: qIdx,
           isCorrect: res.isCorrect,
         });
-      }, 300);
+      }, 250);
       return;
     }
 
@@ -123,18 +115,17 @@ export function useQuiz(
       explanation: explanation,
     };
 
-    // Attempt online grade, fallback to offline save
+    // Attempt online grade, fallback to client-side offline grade
     networkService.executeIfOnline(
       () => gradeAnswer(payload),
       async () => {
-        // Fallback action if offline
-        await progressRepo.saveProgress({ topicId: topic, data: payload });
-        return {
-          isCorrect: true, // Optimistic offline assumption, or generic response
-          correctAnswer: "Saved offline",
-          solution: "Your answer has been saved and will be graded when you reconnect.",
-          mark: "Pending Sync"
-        };
+        // Evaluate answer locally offline
+        const res = evaluateAnswer(answer, targetQ);
+        await progressRepo.saveProgress({
+          topicId: topic,
+          data: { ...payload, isCorrect: res.isCorrect },
+        });
+        return res;
       }
     )
       .then((res) => {
@@ -154,7 +145,7 @@ export function useQuiz(
             ...prev,
             {
               qIdx,
-              question: content?.qs?.[qIdx]?.q || "",
+              question: targetQ?.q || "",
               correctAnswer: res.correctAnswer,
               solution: res.solution,
               mark: res.mark,
@@ -186,11 +177,9 @@ export function useQuiz(
           topic,
           questionIndex: qIdx,
         });
-        setFeedback({
-          isCorrect: false,
-          correctAnswer: "Could not grade answer.",
-          solution: "There was a network error. Please try again.",
-        });
+        // Graceful fallback to client-side grading if server request fails
+        const fallbackRes = evaluateAnswer(answer, targetQ);
+        setFeedback(fallbackRes);
         setGrading(false);
       });
   };
