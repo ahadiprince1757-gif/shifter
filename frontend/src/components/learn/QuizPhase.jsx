@@ -25,6 +25,7 @@ function QuizPhase({
   isLastQuestion,
   totalQs,
   retryState,
+  activeQuestion,
   startRetry,
   goToReview,
   content,
