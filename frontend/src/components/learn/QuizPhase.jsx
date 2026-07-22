@@ -41,14 +41,16 @@ function QuizPhase({
           <span className="lct">{topic}</span>
         </div>
         <div className="lcb">
-          <div className="review-box">
-            <div className="review-header">
-              <h3 className="review-title">Let's Review This Concept</h3>
+          <div className="fb-card">
+            <div className="fb-verdict">
+              <span className="fb-dot fb-dot-incorrect" style={{ background: "var(--v)" }} />
+              <span className="fb-verdict-text" style={{ color: "var(--v)" }}>Let's Review This Concept</span>
             </div>
-            <div className="review-body">
+            
+            <div className="fb-explanation">
               {originalQ?.steps && originalQ.steps.length > 0 && (
-                <div className="review-section">
-                  <h4 className="review-section-title">Step-by-Step Breakdown</h4>
+                <div style={{ marginBottom: "1.25rem" }}>
+                  <h4 className="fb-explanation-title">Step-by-Step Breakdown</h4>
                   <ol className="review-steps-list">
                     {originalQ.steps.map((step, i) => (
                       <li key={i} className="review-step-item">
@@ -58,22 +60,23 @@ function QuizPhase({
                   </ol>
                 </div>
               )}
+              
               {originalQ?.ans && (
-                <div className="review-section highlight-section">
-                  <h4 className="review-section-title">Correct Answer</h4>
-                  <p className="review-answer-text">{originalQ.ans}</p>
+                <div className="fb-answer" style={{ marginBottom: "1.25rem" }}>
+                  <span className="fb-answer-label">Correct Answer</span>
+                  <span className="fb-answer-value">{originalQ.ans}</span>
                 </div>
               )}
-              {originalQ?.why && (
-                <div className="review-section">
-                  <h4 className="review-section-title">Explanation</h4>
-                  <p className="review-explanation-text">{originalQ.why}</p>
-                </div>
-              )}
-              {originalQ?.sol && originalQ.sol !== originalQ.why && (
-                <div className="review-section">
-                  <h4 className="review-section-title">Solution</h4>
-                  <p className="review-explanation-text">{originalQ.sol}</p>
+              
+              {(originalQ?.why || originalQ?.sol) && (
+                <div>
+                  <h4 className="fb-explanation-title">Explanation</h4>
+                  <div className="fb-explanation-text">
+                    {originalQ.why}
+                    {originalQ?.sol && originalQ.sol !== originalQ.why && (
+                      <div style={{ marginTop: "0.5rem" }}>{originalQ.sol}</div>
+                    )}
+                  </div>
                 </div>
               )}
             </div>
