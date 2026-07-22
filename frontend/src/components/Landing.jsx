@@ -393,7 +393,7 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
               <br />
               <span className="gt">Start learning at your own own pace.</span>
             </h1>
-            <p className="hero-sub">
+            <p className="hero-sub"> connecting ideas empowering minds
             </p>
             <div className="hero-actions">
               <button className="btn-hero primary" onClick={enterApp}>
