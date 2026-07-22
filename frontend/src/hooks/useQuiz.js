@@ -229,7 +229,8 @@ export function useQuiz(
     setRetryState("retry");
     const currentQ = content?.qs?.[qIdx];
     if (currentQ) {
-      const mutated = questionMutator.mutate(currentQ);
+      const subjectName = subject?.name || subject?.id || "";
+      const mutated = questionMutator.mutate(currentQ, subjectName);
       setActiveQuestion(mutated || currentQ);
     } else {
       setActiveQuestion(null);
