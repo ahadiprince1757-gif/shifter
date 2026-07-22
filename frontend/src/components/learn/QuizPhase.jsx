@@ -103,6 +103,11 @@ function QuizPhase({
       </div>
 
       <div className="lcb">
+        {retryState === "retry" && (
+          <div className="retry-mode-banner">
+            🔄 Restructured Question — Same concept, different approach. Show what you know!
+          </div>
+        )}
         <QuestionDisplay isCalc={isCalc} questionText={curQ?.q} />
 
         {isMCQ ? (
@@ -111,6 +116,7 @@ function QuizPhase({
               <label
                 key={i}
                 className={`mcq-option${answer === opt ? " mcq-selected" : ""}${feedback ? " mcq-disabled" : ""}`}
+                onClick={() => !feedback && !grading && setAnswer(opt)}
               >
                 <input
                   type="radio"
@@ -121,6 +127,9 @@ function QuizPhase({
                   onChange={() => !feedback && !grading && setAnswer(opt)}
                   disabled={!!feedback || grading}
                 />
+                <span className="mcq-letter">
+                  {String.fromCharCode(65 + i)}
+                </span>
                 <span className="mcq-label">{opt}</span>
               </label>
             ))}
