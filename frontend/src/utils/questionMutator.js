@@ -1,194 +1,166 @@
 /**
- * questionMutator.js
- * Restructures quiz questions dynamically on the client side.
- * Supports:
- * 1. Math/Calculation questions: parses numbers, randomizes them, and calculates new answers.
- * 2. Conceptual/Written questions: converts them to Multiple Choice (MCQ) using other questions' answers as distractors.
+ * Universal Client-Side Question Mutator
+ * Zero dependencies | Offline-first | Subject-agnostic
  */
 
-// Helper to evaluate basic mathematical expressions safely
-function safeEval(expr) {
-  const normalized = expr
-    .replace(/×/g, "*")
-    .replace(/÷/g, "/")
-    .replace(/[^0-9+\-*/().\s]/g, ""); // strip anything unsafe
-  try {
-    const val = Function(`"use strict"; return (${normalized})`)();
-    return Number(val);
-  } catch {
-    return null;
+export class QuestionMutator {
+  constructor() {
+    // Registered mutation strategies
+    this.strategies = {
+      NUMBER: this._mutateNumber,
+      SELECT: this._mutateSelect,
+      FORMULA: this._evaluateFormula,
+    };
   }
-}
 
-// Generate a random integer between min and max (inclusive)
-function randomInt(min, max) {
-  return Math.floor(Math.random() * (max - min + 1)) + min;
-}
+  /**
+   * Main entry point: takes a question blueprint and returns a fully mutated, printable question object.
+   */
+  mutate(blueprint) {
+    if (!blueprint) return null;
 
-// Mutate a number slightly while preserving its size (single vs double digit, etc.)
-function mutateNumber(num) {
-  const n = parseInt(num, 10);
-  if (isNaN(n)) return num;
+    // 1. Create a deep copy of the blueprint to avoid mutating the original template
+    const instance = JSON.parse(JSON.stringify(blueprint));
+    const context = {};
 
-  if (n === 0) return randomInt(1, 5).toString();
-  if (n >= 1 && n <= 9) {
-    let next = randomInt(2, 9);
-    while (next === n) {
-      next = randomInt(2, 9);
+    // 2. Resolve all variables defined in the blueprint
+    if (instance.variables) {
+      Object.entries(instance.variables).forEach(([varName, config]) => {
+        context[varName] = this._resolveVariable(config, context);
+      });
     }
-    return next.toString();
+
+    // 3. Mutate the question stem text
+    const mutatedStem = this._interpolateText(instance.stem || instance.q || "", context);
+
+    // 4. Mutate and shuffle options (if multiple choice)
+    let mutatedOptions = [];
+    let correctIndex = instance.correctIndex ?? 0;
+
+    if (instance.options) {
+      const processedOptions = instance.options.map((opt) => {
+        if (typeof opt === "string") {
+          return this._interpolateText(opt, context);
+        } else if (typeof opt === "object" && opt !== null && opt.formula) {
+          return String(this._evaluateFormula(opt.formula, context));
+        }
+        return String(opt);
+      });
+
+      // Securely shuffle options and recalculate correct answer index
+      const shuffled = this._shuffleWithOptions(processedOptions, correctIndex);
+      mutatedOptions = shuffled.options;
+      correctIndex = shuffled.newCorrectIndex;
+    }
+
+    // 5. Generate dynamic explanation/feedback
+    const mutatedExplanation = instance.explanation || instance.why || instance.sol
+      ? this._interpolateText(instance.explanation || instance.why || instance.sol, context)
+      : "";
+
+    const correctAnswerText =
+      mutatedOptions.length > 0 && correctIndex >= 0 && correctIndex < mutatedOptions.length
+        ? mutatedOptions[correctIndex]
+        : (instance.ans ? this._interpolateText(String(instance.ans), context) : "");
+
+    return {
+      id: `${instance.id}_${Date.now()}`,
+      originalId: instance.id,
+      subject: instance.subject,
+      topic: instance.topic,
+      q: mutatedStem,
+      stem: mutatedStem,
+      options: mutatedOptions,
+      correctIndex: correctIndex,
+      ans: correctAnswerText,
+      explanation: mutatedExplanation,
+      why: mutatedExplanation,
+      sol: mutatedExplanation,
+      resolvedVariables: context,
+    };
   }
-  if (n >= 10 && n <= 99) {
-    // If it's a multiple of 5, keep it a multiple of 5
-    if (n % 5 === 0) {
-      let next = randomInt(2, 19) * 5;
-      while (next === n || next < 10) {
-        next = randomInt(2, 19) * 5;
+
+  // --- Internal Strategy Handlers ---
+
+  _resolveVariable(config, context) {
+    if (!config) return null;
+    switch (config.type) {
+      case "NUMBER":
+        return this._mutateNumber(config);
+      case "SELECT":
+        return this._mutateSelect(config);
+      case "FORMULA":
+        return this._evaluateFormula(config.expression, context);
+      default:
+        return config.value ?? null;
+    }
+  }
+
+  _mutateNumber({ min = 1, max = 100, step = 1, precision = 0 }) {
+    const steps = Math.floor((max - min) / step);
+    const randomStep = Math.floor(Math.random() * (steps + 1));
+    const val = min + randomStep * step;
+    return Number(val.toFixed(precision));
+  }
+
+  _mutateSelect({ choices = [] }) {
+    if (!choices.length) return "";
+    const randomIndex = Math.floor(Math.random() * choices.length);
+    return choices[randomIndex];
+  }
+
+  _evaluateFormula(expression, context) {
+    if (!expression) return "";
+    const keys = Object.keys(context);
+    const values = Object.values(context);
+    try {
+      const func = new Function(...keys, `return ${expression};`);
+      const result = func(...values);
+      return Number.isFinite(result) && !Number.isInteger(result)
+        ? Number(result.toFixed(2))
+        : result;
+    } catch (err) {
+      console.error(`Failed to evaluate formula: "${expression}"`, err);
+      return NaN;
+    }
+  }
+
+  _interpolateText(template, context) {
+    if (!template) return "";
+    return template.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, keyPath) => {
+      // Support dot notation like scenario.function
+      const parts = keyPath.split(".");
+      let val = context;
+      for (const part of parts) {
+        if (val !== undefined && val !== null) {
+          val = val[part];
+        } else {
+          val = undefined;
+          break;
+        }
       }
-      return next.toString();
+      return val !== undefined && val !== null ? val : `{{${keyPath}}}`;
+    });
+  }
+
+  _shuffleWithOptions(options, correctIndex) {
+    const indexed = options.map((opt, idx) => ({
+      value: opt,
+      isCorrect: idx === correctIndex,
+    }));
+
+    // Fisher-Yates shuffle algorithm
+    for (let i = indexed.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [indexed[i], indexed[j]] = [indexed[j], indexed[i]];
     }
-    let next = n + randomInt(-5, 5);
-    while (next === n || next < 10 || next > 99) {
-      next = n + randomInt(-5, 5);
-    }
-    return next.toString();
-  }
-  return (n + randomInt(-10, 10)).toString();
-}
 
-/**
- * Restructures a calculation question by mutating numbers and recalculating.
- */
-function mutateMathQuestion(question) {
-  const qText = question.q;
-  const originalAns = question.ans;
-
-  // Pattern 1: Solve: A + B × C or Find: A ÷ B + C
-  const triplePattern = /(\d+)\s*([+\-*/÷×])\s*(\d+)\s*([+\-*/÷×])\s*(\d+)/;
-  // Pattern 2: Solve: (A + B) × C
-  const bracketPattern = /\((\d+)\s*([+\-*/÷×])\s*(\d+)\)\s*([+\-*/÷×])\s*(\d+)/;
-  // Pattern 3: Simple fraction A/B
-  const fractionPattern = /(\d+)\s*([/÷])\s*(\d+)/;
-
-  let newQText = qText;
-  let newExpr = "";
-
-  if (bracketPattern.test(qText)) {
-    const match = qText.match(bracketPattern);
-    const a = mutateNumber(match[1]);
-    const b = mutateNumber(match[3]);
-    const c = mutateNumber(match[5]);
-    newExpr = `(${a} ${match[2]} ${b}) ${match[4]} ${c}`;
-    newQText = qText.replace(bracketPattern, `(${a} ${match[2]} ${b}) ${match[4]} ${c}`);
-  } else if (triplePattern.test(qText)) {
-    const match = qText.match(triplePattern);
-    const a = mutateNumber(match[1]);
-    const b = mutateNumber(match[3]);
-    const c = mutateNumber(match[5]);
-    newExpr = `${a} ${match[2]} ${b} ${match[4]} ${c}`;
-    newQText = qText.replace(triplePattern, `${a} ${match[2]} ${b} ${match[4]} ${c}`);
-  } else if (fractionPattern.test(qText)) {
-    const match = qText.match(fractionPattern);
-    const a = mutateNumber(match[1]);
-    const b = mutateNumber(match[3]);
-    newExpr = `${a} ${match[2]} ${b}`;
-    newQText = qText.replace(fractionPattern, `${a}${match[2]}${b}`);
-  }
-
-  if (newExpr) {
-    const evaluated = safeEval(newExpr);
-    if (evaluated !== null) {
-      // Determine format of original answer
-      const newAns = originalAns.includes(".")
-        ? evaluated.toFixed(2)
-        : Math.round(evaluated).toString();
-
-      return {
-        ...question,
-        q: newQText,
-        ans: newAns.toString(),
-        steps: [
-          `Step 1: Read the new numbers in the equation: ${newQText.replace(/Solve:\s*|Find:\s*/, "")}`,
-          `Step 2: Solve calculations applying BODMAS hierarchy correctly.`,
-          `Step 3: The correct solution is ${newAns}.`
-        ],
-        why: `Calculated variation: applying correct operations yields ${newAns}.`,
-        sol: `Applying correct operations yields ${newAns}.`
-      };
-    }
-  }
-
-  // Fallback if regex matching fails: just ask the original question in a concept check wrapper
-  return {
-    ...question,
-    q: `Concept Check: ${qText}`,
-    why: question.why || "Let's review the original explanation."
-  };
-}
-
-/**
- * Restructures a conceptual question by converting it into a Multiple Choice Question (MCQ).
- */
-function mutateConceptualQuestion(question, topicContent) {
-  const originalAns = question.ans;
-
-  // Retrieve correct answers from other questions in this topic to use as distractors
-  let distractors = [];
-  if (topicContent && Array.isArray(topicContent.qs)) {
-    distractors = topicContent.qs
-      .map(q => q.ans)
-      .filter(ans => ans && ans.toLowerCase() !== originalAns.toLowerCase());
-  }
-
-  // Standard backup distractors if not enough other questions exist
-  const backupDistractors = [
-    "None of the above",
-    "Both factors combined",
-    "It remains constant",
-    "It decreases linearly",
-    "An opposing process"
-  ];
-
-  let chosenDistractors = [...new Set(distractors)];
-  if (chosenDistractors.length < 3) {
-    chosenDistractors = [
-      ...chosenDistractors,
-      ...backupDistractors.filter(d => !chosenDistractors.includes(d))
-    ].slice(0, 3);
-  } else {
-    // Shuffle and pick 3
-    chosenDistractors = chosenDistractors
-      .sort(() => Math.random() - 0.5)
-      .slice(0, 3);
-  }
-
-  // Assemble and shuffle choices
-  const choices = [originalAns, ...chosenDistractors]
-    .map(c => c.trim())
-    .filter(Boolean)
-    .sort(() => Math.random() - 0.5);
-
-  return {
-    ...question,
-    q: `Verification: ${question.q}`,
-    type: "mcq", // Mark as Multiple Choice Question
-    options: choices,
-    ans: originalAns
-  };
-}
-
-/**
- * Main entry point to restructure/mutate a question.
- * @param {Object} question - The original question object.
- * @param {Object} topicContent - The full topic content (for distractors).
- */
-export function restructureQuestion(question, topicContent) {
-  if (!question) return null;
-
-  const isCalc = question.type === "calc" || /\d+/.test(question.q);
-  if (isCalc) {
-    return mutateMathQuestion(question);
-  } else {
-    return mutateConceptualQuestion(question, topicContent);
+    return {
+      options: indexed.map((item) => item.value),
+      newCorrectIndex: indexed.findIndex((item) => item.isCorrect),
+    };
   }
 }
+
+// Global Singleton Instance
+export const questionMutator = new QuestionMutator();

@@ -5,6 +5,7 @@ import { networkService } from "../services/networkService";
 import logger from "../utils/logger";
 import { recordEvent } from "../utils/analytics";
 import { evaluateAnswer } from "../utils/grader";
+import { questionMutator } from "../utils/QuestionMutator";
 
 export function useQuiz(
   subject,
@@ -225,10 +226,14 @@ export function useQuiz(
   };
 
   const startRetry = () => {
-    // Previously mutated the question using restructureQuestion, but mutator is removed.
-    // Reset retry state and clear any active question.
     setRetryState("retry");
-    setActiveQuestion(null);
+    const currentQ = content?.qs?.[qIdx];
+    if (currentQ) {
+      const mutated = questionMutator.mutate(currentQ);
+      setActiveQuestion(mutated || currentQ);
+    } else {
+      setActiveQuestion(null);
+    }
     setAnswer("");
     setWork("");
     setExplanation("");
