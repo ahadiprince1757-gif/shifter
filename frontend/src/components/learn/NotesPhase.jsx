@@ -1,10 +1,43 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 function NotesPhase({ topic, content, goBack, onNext }) {
   const [fontSize, setFontSize] = useState(100);
+
+  // Swipe detection
+  const touchStartX = useRef(null);
+  const touchStartY = useRef(null);
+  const [swipeHint, setSwipeHint] = useState(null); // null | "left" | "right"
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+    touchStartY.current = e.touches[0].clientY;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current === null) return;
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current;
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current;
+
+    // Only count horizontal swipes (must be more horizontal than vertical)
+    if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) {
+      touchStartX.current = null;
+      return;
+    }
+
+    if (deltaX < 0) {
+      // Swipe left → advance to quiz
+      setSwipeHint("left");
+      setTimeout(() => { setSwipeHint(null); onNext(); }, 300);
+    } else {
+      // Swipe right → go back to topics
+      setSwipeHint("right");
+      setTimeout(() => { setSwipeHint(null); goBack(); }, 300);
+    }
+    touchStartX.current = null;
+  };
 
   const notes = Array.isArray(content.notes)
     ? content.notes.join("\n")
@@ -17,7 +50,12 @@ function NotesPhase({ topic, content, goBack, onNext }) {
   const zoomOut = () => setFontSize((f) => Math.max(f - 10, 70));
 
   return (
-    <div className="lc" id="notesCard">
+    <div
+      className={`lc notes-swipeable${swipeHint ? ` swipe-${swipeHint}` : ""}`}
+      id="notesCard"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
+    >
       <div className="lch">
         <span className="lbadge lb-n">📖 Notes</span>
         <span className="lct">{topic}</span>
@@ -41,6 +79,14 @@ function NotesPhase({ topic, content, goBack, onNext }) {
             )}
           </div>
         </div>
+
+        {/* Swipe hint row */}
+        <div className="notes-swipe-hint">
+          <span className="swipe-hint-text">← Swipe right to go back</span>
+          <span className="swipe-hint-dot" />
+          <span className="swipe-hint-text">Swipe left for quiz →</span>
+        </div>
+
         <div className="lnav-strip">
           <button className="btn-g" onClick={goBack}>
             ← Back to Topics
@@ -55,5 +101,3 @@ function NotesPhase({ topic, content, goBack, onNext }) {
 }
 
 export default NotesPhase;
-
-

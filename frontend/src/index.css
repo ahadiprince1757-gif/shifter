@@ -1738,6 +1738,49 @@ html.dark-mode .lnav-search-panel {
   border-bottom: 1px solid var(--bd);
 }
 
+/* SWIPE GESTURE & HINT STYLES */
+.notes-swipeable {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.25s ease;
+  touch-action: pan-y;
+}
+
+.notes-swipeable.swipe-left {
+  transform: translateX(-40px);
+  opacity: 0.5;
+}
+
+.notes-swipeable.swipe-right {
+  transform: translateX(40px);
+  opacity: 0.5;
+}
+
+.notes-swipe-hint {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0;
+  margin-top: 0.8rem;
+  font-size: 0.73rem;
+  color: var(--t2);
+  opacity: 0.75;
+  user-select: none;
+}
+
+.swipe-hint-text {
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.swipe-hint-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--t2);
+  opacity: 0.4;
+}
+
+
 .img-grid {
   display: flex;
   gap: 0.66rem;
