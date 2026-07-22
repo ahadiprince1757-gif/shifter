@@ -89,7 +89,7 @@ export function useQuiz(
 
     const targetQ = activeQuestion || content?.qs?.[qIdx];
 
-    if (retryState === "retry" && activeQuestion) {
+    if (activeQuestion) {
       setTimeout(() => {
         const res = evaluateAnswer(answer, activeQuestion);
         setFeedback(res);

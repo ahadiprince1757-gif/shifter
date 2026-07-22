@@ -5305,3 +5305,42 @@ html.dark-mode .fb-card {
 .btn-g:hover {
   background: rgba(117, 82, 243, 0.15);
 }
+
+.fb-answer-value,
+.fb-explanation-text {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+}
+
+.fb-answer-bullets {
+  list-style-type: none;
+  padding: 0;
+  margin: 0.35rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fb-answer-bullet-item {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--t);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  word-break: break-word;
+}
+
+.fb-answer-bullet-item::before {
+  content: "•";
+  color: var(--v);
+  font-weight: bold;
+}
+
+.fb-steps-box {
+  background: var(--bg);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--s);
+}
+

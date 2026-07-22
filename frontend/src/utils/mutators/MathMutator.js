@@ -63,7 +63,7 @@ export class MathMutator {
       return {
         ...qObj,
         q: mutatedStem,
-        ans: qObj.ans ? `[Recalculated for new inputs]: ${qObj.ans}` : "Use updated values to compute.",
+        ans: qObj.ans || "Use updated values to compute.",
         hint: qObj.hint || "Carefully substitute the new numbers into the formula.",
         why: qObj.why || "Problem values have been randomized for practice.",
         sol: qObj.explain || qObj.why || "Substitute updated numbers into the formula.",

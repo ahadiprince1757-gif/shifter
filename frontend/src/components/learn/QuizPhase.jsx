@@ -33,7 +33,7 @@ function QuizPhase({
 
   // ── Concept Review Screen ──────────────────────────────────
   if (retryState === "review") {
-    const originalQ = content?.qs?.[qIdx];
+    const originalQ = activeQuestion || content?.qs?.[qIdx];
     return (
       <div className="lc" id="qCard">
         <div className="lch">

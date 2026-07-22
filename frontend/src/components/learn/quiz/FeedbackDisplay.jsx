@@ -5,7 +5,7 @@ function FeedbackDisplay({
   grading,
   qIdx,
   totalQs,
-  goToReview, // new prop for review navigation
+  goToReview,
 }) {
   const isLastQuestion = qIdx >= totalQs - 1;
 
@@ -13,26 +13,56 @@ function FeedbackDisplay({
 
   const isCorrect = feedback.isCorrect;
 
+  // Format multi-bullet correct answers if present
+  const rawAnswer = feedback.correctAnswer || "";
+  const answerBulletList = rawAnswer.includes("•")
+    ? rawAnswer.split("•").map((s) => s.trim()).filter(Boolean)
+    : null;
+
   return (
     <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-incorrect"}`}>
-      {/* Verdict line */}
+      {/* Verdict header */}
       <div className="fb-verdict">
         <span className={`fb-dot ${isCorrect ? "fb-dot-correct" : "fb-dot-incorrect"}`} />
         <span className="fb-verdict-text">
-          {isCorrect ? "Correct" : "Incorrect"}
+          {isCorrect ? "✓ Correct!" : "✕ Needs Review"}
         </span>
         <span className="fb-progress">{qIdx + 1} / {totalQs}</span>
       </div>
 
-      {/* Correct answer — shown inline for wrong answers */}
-      {!isCorrect && feedback.correctAnswer && (
+      {/* Correct answer display (for incorrect submissions) */}
+      {!isCorrect && rawAnswer && (
         <div className="fb-answer">
-          <span className="fb-answer-label">Correct answer:</span>
-          <span className="fb-answer-value">{feedback.correctAnswer}</span>
+          <span className="fb-answer-label">Correct Answer:</span>
+          {answerBulletList ? (
+            <ul className="fb-answer-bullets">
+              {answerBulletList.map((item, idx) => (
+                <li key={idx} className="fb-answer-bullet-item">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <span className="fb-answer-value">{rawAnswer}</span>
+          )}
         </div>
       )}
 
-      {/* Explanation */}
+      {/* Step-by-step guidance if available */}
+      {!isCorrect && Array.isArray(feedback.steps) && feedback.steps.length > 0 && (
+        <div className="fb-steps-box">
+          <h4 className="fb-explanation-title">Step-by-Step Breakdown</h4>
+          <ol className="review-steps-list">
+            {feedback.steps.map((step, i) => (
+              <li key={i} className="review-step-item">
+                <span className="step-text">{step}</span>
+              </li>
+            ))}
+          </ol>
+        </div>
+      )}
+
+      {/* Explanation / Solution text */}
       {feedback.solution && (
         <div className="fb-explanation">
           <h4 className="fb-explanation-title">Explanation</h4>
@@ -42,7 +72,7 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Action buttons */}
+      {/* Navigation action buttons */}
       {isCorrect ? (
         <button
           type="button"
@@ -56,7 +86,7 @@ function FeedbackDisplay({
           }}
           disabled={grading}
         >
-          {isLastQuestion ? "Finish Topic" : "Next Question →"}
+          {isLastQuestion ? "Finish Topic 🎉" : "Next Question →"}
         </button>
       ) : (
         <div className="fb-actions">
@@ -66,7 +96,7 @@ function FeedbackDisplay({
             onClick={goToReview}
             disabled={grading}
           >
-            Review Concept
+            Review Concept 📖
           </button>
           <button
             type="button"
@@ -84,10 +114,8 @@ function FeedbackDisplay({
           </button>
         </div>
       )}
-
     </div>
   );
 }
 
 export default FeedbackDisplay;
-

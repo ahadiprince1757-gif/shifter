@@ -34,7 +34,7 @@ export function evaluateAnswer(userAnswer, question) {
   let mainCorrectAnswerStr = "";
 
   if (Array.isArray(rawAns)) {
-    mainCorrectAnswerStr = rawAns[0] || "";
+    mainCorrectAnswerStr = rawAns.join(" • ");
     isCorrect = rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize));
   } else {
     mainCorrectAnswerStr = String(rawAns || "");
@@ -44,7 +44,9 @@ export function evaluateAnswer(userAnswer, question) {
   return {
     isCorrect,
     correctAnswer: mainCorrectAnswerStr,
+    correctAnswerList: Array.isArray(rawAns) ? rawAns : [mainCorrectAnswerStr],
     solution,
+    steps: Array.isArray(question.steps) ? question.steps : [],
     mark: isCorrect ? "Correct" : "Incorrect",
   };
 }

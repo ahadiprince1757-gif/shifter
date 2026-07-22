@@ -88,7 +88,7 @@ export class PhysicsMutator {
       return {
         ...qObj,
         q: mutatedStem,
-        ans: qObj.ans ? `[Recalculated for updated values]: ${qObj.ans}` : "Calculate using updated numbers",
+        ans: qObj.ans || "Calculate using updated numbers",
         hint: qObj.hint || "Identify physical constants and apply appropriate formula.",
         why: qObj.why || "Physics parameters randomized for calculation practice.",
         sol: qObj.explain || qObj.why || "Substitute updated numbers into physics equation.",
