@@ -76,6 +76,7 @@ export class QuestionMutator {
       explanation: mutatedExplanation,
       why: mutatedExplanation,
       sol: mutatedExplanation,
+      steps: instance.steps || [],
       resolvedVariables: context,
     };
   }

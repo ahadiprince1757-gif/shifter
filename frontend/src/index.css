@@ -5167,3 +5167,141 @@ html.dark-mode .review-box {
   border-radius: 12px;
   border-left: 4px solid var(--v);
 }
+
+/* ── Feedback Display UI ────────────────────────────────────── */
+.fb-card {
+  margin-top: 1.5rem;
+  padding: 1.25rem;
+  border-radius: 12px;
+  background: #fff;
+  border: 1px solid var(--bd);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: navSlideDown 0.3s ease;
+}
+
+html.dark-mode .fb-card {
+  background: var(--sur);
+}
+
+.fb-correct {
+  border-left: 5px solid var(--gr);
+}
+
+.fb-incorrect {
+  border-left: 5px solid var(--rd);
+}
+
+.fb-verdict {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.fb-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.fb-dot-correct {
+  background: var(--gr);
+}
+
+.fb-dot-incorrect {
+  background: var(--rd);
+}
+
+.fb-verdict-text {
+  font-weight: 700;
+  font-size: 1.1rem;
+}
+
+.fb-correct .fb-verdict-text {
+  color: var(--gr);
+}
+
+.fb-incorrect .fb-verdict-text {
+  color: var(--rd);
+}
+
+.fb-progress {
+  margin-left: auto;
+  font-size: 0.85rem;
+  color: var(--t3);
+  font-weight: 600;
+}
+
+.fb-answer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  background: rgba(239, 68, 68, 0.05);
+  padding: 1rem;
+  border-radius: 8px;
+  border: 1px solid rgba(239, 68, 68, 0.1);
+}
+
+.fb-answer-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--rd);
+}
+
+.fb-answer-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--t);
+}
+
+.fb-explanation {
+  background: var(--bg);
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 3px solid var(--v);
+}
+
+.fb-explanation-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--v);
+  margin: 0 0 0.5rem 0;
+  letter-spacing: 0.05em;
+}
+
+.fb-explanation-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: var(--t);
+}
+
+.fb-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+}
+
+.fb-action {
+  flex: 1;
+}
+
+.btn-g {
+  background: rgba(117, 82, 243, 0.1);
+  color: var(--v);
+  border: none;
+  padding: 0.7rem 1.2rem;
+  border-radius: 11px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-g:hover {
+  background: rgba(117, 82, 243, 0.15);
+}

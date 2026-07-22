@@ -27,7 +27,7 @@ function FeedbackDisplay({
       {/* Correct answer — shown inline for wrong answers */}
       {!isCorrect && feedback.correctAnswer && (
         <div className="fb-answer">
-          <span className="fb-answer-label">Correct answer</span>
+          <span className="fb-answer-label">Correct answer:</span>
           <span className="fb-answer-value">{feedback.correctAnswer}</span>
         </div>
       )}
@@ -35,7 +35,10 @@ function FeedbackDisplay({
       {/* Explanation */}
       {feedback.solution && (
         <div className="fb-explanation">
-          {feedback.solution}
+          <h4 className="fb-explanation-title">Explanation</h4>
+          <div className="fb-explanation-text">
+            {feedback.solution}
+          </div>
         </div>
       )}
 
