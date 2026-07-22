@@ -1,152 +1,162 @@
 /**
  * Biology & Life Sciences Subject Mutator
- * Simplifies complex concepts, handles organelle/system swaps,
- * and scaffolds multi-item questions into guided retries.
+ * Provides multi-mode adaptive mutations:
+ * - Mode 1: Real-World Scenario / Experiment Case Study
+ * - Mode 2: Multiple Choice Discrimination Challenge
+ * - Mode 3: Cloze Concept Completion
+ * - Mode 4: Organelle & Biological System Swap
  */
 
-const ORGANELLE_POOL = [
+const ORGANELLE_DATA = [
   {
-    organelle: "Mitochondria",
-    function: "producing ATP energy through cellular respiration",
-    hint: "Powerhouse of the cell",
-    why: "Mitochondria convert nutrients into usable chemical energy (ATP).",
-    steps: ["Step 1: Identify energy organelle", "Step 2: Link to cellular respiration", "Step 3: State ATP production"]
+    name: "Mitochondria",
+    function: "cellular respiration and ATP energy production",
+    scenario: "A muscular cell requires high amounts of energy to contract during exercise. Which organelle will be found in abnormally high numbers in this cell?",
+    distractors: ["Chloroplast", "Ribosome", "Golgi Apparatus"],
+    hint: "Think about the energy powerhouse of the cell",
+    why: "Mitochondria carry out aerobic respiration, producing ATP needed for muscular work."
   },
   {
-    organelle: "Chloroplast",
-    function: "converting sunlight into chemical energy via photosynthesis",
-    hint: "Contains chlorophyll",
-    why: "Chloroplasts trap light energy to produce glucose in plant cells.",
-    steps: ["Step 1: Identify plant organelle", "Step 2: Link to sunlight absorption", "Step 3: State photosynthesis"]
+    name: "Chloroplast",
+    function: "photosynthesis and converting sunlight into glucose",
+    scenario: "A scientist isolates green plant leaves and exposes them to sunlight and carbon dioxide. Which organelle is responsible for synthesizing sugars in these leaf cells?",
+    distractors: ["Mitochondria", "Nucleus", "Vacuole"],
+    hint: "Contains green chlorophyll pigment",
+    why: "Chloroplasts contain chlorophyll which absorbs solar energy to synthesize glucose."
   },
   {
-    organelle: "Ribosome",
-    function: "synthesizing proteins using mRNA instructions",
-    hint: "Protein factory",
-    why: "Ribosomes translate genetic instructions to build proteins.",
-    steps: ["Step 1: Identify protein machinery", "Step 2: Link to translation", "Step 3: State protein synthesis"]
+    name: "Ribosome",
+    function: "protein synthesis by translating mRNA instructions",
+    scenario: "A pancreatic cell actively secretes digestive enzymes (which are proteins). Which organelle is primarily responsible for manufacturing these protein enzymes?",
+    distractors: ["Lysosome", "Centriole", "Mitochondria"],
+    hint: "Site of protein assembly",
+    why: "Ribosomes translate messenger RNA into polypeptide chains to build functional proteins."
   },
   {
-    organelle: "Nucleus",
-    function: "controlling cell activities and storing genetic material (DNA)",
-    hint: "Control center",
-    why: "The nucleus holds chromosomes and regulates gene expression.",
-    steps: ["Step 1: Identify control center", "Step 2: Link to DNA storage", "Step 3: State cellular regulation"]
+    name: "Cell Membrane",
+    function: "selective permeability and controlling transport of materials",
+    scenario: "A cell absorbs necessary glucose while blocking harmful toxins from entering its cytoplasm. Which structure regulates this selective passage?",
+    distractors: ["Cell Wall", "Cytoplasm", "Endoplasmic Reticulum"],
+    hint: "Phospholipid bilayer boundary",
+    why: "The selectively permeable cell membrane controls which substances enter or exit the cell."
+  }
+];
+
+const EXPERIMENTS = [
+  {
+    topic: "osmosis",
+    scenario: "A student places a plant cell into a hypertonic (concentrated salt) solution. What will happen to the water inside the cell?",
+    ans: "Water moves out of the cell by osmosis causing plasmolysis",
+    options: [
+      "Water moves out of the cell by osmosis causing plasmolysis",
+      "Water enters the cell causing it to burst",
+      "No water movement occurs",
+      "Salt enters the cell by active transport"
+    ],
+    hint: "Water moves from low solute to high solute concentration",
+    why: "In a hypertonic solution, water leaves the cell down the water potential gradient."
   },
   {
-    organelle: "Cell Membrane",
-    function: "regulating the movement of substances in and out of the cell",
-    hint: "Selectively permeable barrier",
-    why: "The cell membrane maintains internal cell balance by selective transport.",
-    steps: ["Step 1: Identify cell boundary", "Step 2: Link to selective permeability", "Step 3: State transport regulation"]
+    topic: "enzymes",
+    scenario: "An enzyme-catalyzed reaction is heated to 80°C (far above optimum temperature). Why does the reaction rate drop to zero?",
+    ans: "The enzyme active site is denatured by high heat",
+    options: [
+      "The enzyme active site is denatured by high heat",
+      "Substrate molecules are destroyed",
+      "The enzyme is consumed in the reaction",
+      "The reaction becomes too fast to measure"
+    ],
+    hint: "High temperatures permanently alter 3D protein structure",
+    why: "Excess heat breaks hydrogen bonds, denaturing the enzyme's active site."
   }
 ];
 
 export class BiologyMutator {
   mutate(qObj) {
     if (!qObj) return null;
-    const stem = qObj.q || qObj.stem || "";
-    const lowerStem = stem.toLowerCase();
+    const stem = (qObj.q || qObj.stem || "").toLowerCase();
+    const mode = Math.floor(Math.random() * 4); // Randomize pedagogical mode
 
-    // 1. Organelle / Cell Structure Swap Strategy
-    if (lowerStem.includes("organelle") || lowerStem.includes("cell") || ORGANELLE_POOL.some(o => lowerStem.includes(o.organelle.toLowerCase()))) {
-      const selected = ORGANELLE_POOL[Math.floor(Math.random() * ORGANELLE_POOL.length)];
-      const isFunctionQ = Math.random() > 0.5;
-
-      if (isFunctionQ) {
+    // 1. Organelle / Cell Structure Match
+    const organelleMatch = ORGANELLE_DATA.find(o => stem.includes(o.name.toLowerCase()) || stem.includes("organelle") || stem.includes("cell"));
+    if (organelleMatch) {
+      if (mode === 0) {
+        // Real-World Scenario
         return {
-          q: `Which cell organelle is primarily responsible for ${selected.function}?`,
-          ans: selected.organelle,
-          hint: selected.hint,
-          why: selected.why,
-          sol: selected.why,
-          steps: selected.steps,
+          q: organelleMatch.scenario,
+          ans: organelleMatch.name,
+          hint: organelleMatch.hint,
+          why: organelleMatch.why,
+          sol: organelleMatch.why,
+          steps: ["Step 1: Identify cellular requirement in scenario", "Step 2: Relate function to organelle", "Step 3: State organelle name"],
           type: "mcq",
-          options: this._shuffleOptions(selected.organelle, ["Mitochondria", "Chloroplast", "Ribosome", "Nucleus", "Endoplasmic Reticulum"])
+          options: this._shuffle([organelleMatch.name, ...organelleMatch.distractors])
         };
-      } else {
+      } else if (mode === 1) {
+        // Function to Organelle
         return {
-          q: `State the primary function of the ${selected.organelle} in a cell.`,
-          ans: selected.function,
-          hint: selected.hint,
-          why: selected.why,
-          sol: selected.why,
-          steps: selected.steps
+          q: `What is the primary biological function of the ${organelleMatch.name} in eukaryotic cells?`,
+          ans: organelleMatch.function,
+          hint: organelleMatch.hint,
+          why: organelleMatch.why,
+          sol: organelleMatch.why,
+          steps: ["Step 1: Identify organelle structure", "Step 2: Recall biochemical role", "Step 3: State main function"]
         };
       }
     }
 
-    // 2. Osmosis / Diffusion Simplification Strategy
-    if (lowerStem.includes("osmosis") || lowerStem.includes("diffusion") || lowerStem.includes("transport")) {
-      const isOsmosis = lowerStem.includes("osmosis");
+    // 2. Experiment / Osmosis / Enzyme Match
+    const expMatch = EXPERIMENTS.find(e => stem.includes(e.topic));
+    if (expMatch) {
       return {
-        q: isOsmosis
-          ? "In biological systems, osmosis specifically refers to the movement of which substance across a semi-permeable membrane?"
-          : "What is the net movement of particles from a region of higher concentration to lower concentration called?",
-        ans: isOsmosis ? "Water (or solvent molecules)" : "Diffusion",
-        hint: isOsmosis ? "Think about liquid solvent" : "Passive transport process",
-        why: isOsmosis
-          ? "Osmosis is the specialized passive movement of water molecules across a selectively permeable membrane."
-          : "Diffusion occurs down a concentration gradient without requiring cellular energy.",
-        sol: isOsmosis
-          ? "Osmosis is the specialized passive movement of water molecules across a selectively permeable membrane."
-          : "Diffusion occurs down a concentration gradient without requiring cellular energy.",
-        steps: isOsmosis
-          ? ["Step 1: Identify solvent (water)", "Step 2: Note concentration gradient", "Step 3: Require semi-permeable membrane"]
-          : ["Step 1: Identify high vs low concentration", "Step 2: Recognize passive movement", "Step 3: State diffusion definition"]
+        q: expMatch.scenario,
+        ans: expMatch.ans,
+        hint: expMatch.hint,
+        why: expMatch.why,
+        sol: expMatch.why,
+        steps: ["Step 1: Analyze experimental setup", "Step 2: Apply biological principle", "Step 3: Predict outcome"],
+        type: "mcq",
+        options: expMatch.options
       };
     }
 
-    // 3. Multi-Item Request Reduction (e.g., "Give 10 functions...")
-    const numberMatch = stem.match(/(?:give|state|list|name)\s+(\d+)/i);
-    if (numberMatch && qObj.ans && Array.isArray(qObj.ans)) {
-      const singleItem = qObj.ans[Math.floor(Math.random() * qObj.ans.length)];
-      return {
-        q: stem.replace(numberMatch[0], "State 1 key function/characteristic of"),
-        ans: singleItem,
-        hint: qObj.hint || "Focus on one primary function",
-        why: qObj.why || `One essential aspect is: ${singleItem}`,
-        sol: qObj.explain || qObj.why || singleItem,
-        steps: ["Step 1: Identify key requirement", "Step 2: Focus on one valid function", "Step 3: State clearly"]
-      };
-    }
-
-    // 4. Cloze / Fill-in-the-Blank Scaffold Strategy
-    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 5) {
+    // 3. Cloze Concept Completion Mode
+    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 6) {
       const words = qObj.ans.split(" ");
       if (words.length >= 3) {
         const maskedIdx = Math.floor(words.length / 2);
         const targetWord = words[maskedIdx];
-        const maskedAns = [...words];
-        maskedAns[maskedIdx] = "________";
+        const masked = [...words];
+        masked[maskedIdx] = "________";
 
         return {
-          q: `Complete the key biological concept: "${maskedAns.join(" ")}"`,
+          q: `[Concept Check] Fill in the missing term: "${masked.join(" ")}"`,
           ans: targetWord,
-          hint: qObj.hint || `Missing term starts with '${targetWord.charAt(0).toUpperCase()}'`,
-          why: `Full concept: ${qObj.ans}`,
-          sol: qObj.explain || qObj.why || `Full concept: ${qObj.ans}`,
-          steps: ["Step 1: Read incomplete statement", "Step 2: Identify missing key biological term", "Step 3: Provide missing word"]
+          hint: qObj.hint || `Missing biological term starts with '${targetWord.charAt(0).toUpperCase()}'`,
+          why: `Complete concept: ${qObj.ans}`,
+          sol: qObj.why || `Complete concept: ${qObj.ans}`,
+          steps: ["Step 1: Read statement context", "Step 2: Identify missing biological term", "Step 3: Fill in the blank"]
         };
       }
     }
 
-    // Fallback: Scaffolded stem with hint
+    // 4. Default Application Scaffold Mode
     return {
-      ...qObj,
-      q: `[SIMPLIFIED RETRY] ${qObj.q || qObj.stem}`,
-      hint: qObj.hint || "Focus on core principles",
-      steps: qObj.steps || ["Step 1: Review question context", "Step 2: Apply core principles", "Step 3: State final answer"]
+      q: `[Application Check] Regarding ${qObj.q || qObj.stem}: What is the core biological principle involved?`,
+      ans: qObj.ans,
+      hint: qObj.hint || "Focus on fundamental biological mechanism",
+      why: qObj.why || qObj.ans,
+      sol: qObj.why || qObj.ans,
+      steps: ["Step 1: Identify biological principle", "Step 2: Apply to question scenario", "Step 3: Formulate answer"]
     };
   }
 
-  _shuffleOptions(correctOpt, pool) {
-    const distractors = pool.filter(p => p !== correctOpt).slice(0, 3);
-    const opts = [correctOpt, ...distractors];
-    for (let i = opts.length - 1; i > 0; i--) {
+  _shuffle(arr) {
+    const copy = [...arr];
+    for (let i = copy.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [opts[i], opts[j]] = [opts[j], opts[i]];
+      [copy[i], copy[j]] = [copy[j], copy[i]];
     }
-    return opts;
+    return copy;
   }
 }
