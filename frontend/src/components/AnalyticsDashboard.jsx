@@ -184,18 +184,14 @@ export default function AnalyticsDashboard() {
               <div className="clean-topic-list">
                 {mostFailed.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
-                    <span className="clean-rank">#{idx + 1}</span>
                     <div className="clean-topic-details">
                       <span className="clean-topic-name">{item.topic_title}</span>
                       <span className="clean-topic-meta">
                         {item.subject_name} • {item.chapter_title}
                       </span>
                     </div>
-                    <span className="clean-badge tag-fail">
-                      {item.fail_count} missed
-                    </span>
                     <button
-                      className="clean-action-btn"
+                      className="clean-action-btn primary"
                       onClick={() => handleStudyTopic(item)}
                     >
                       Practice →
@@ -223,18 +219,14 @@ export default function AnalyticsDashboard() {
               <div className="clean-topic-list">
                 {mostVisited.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
-                    <span className="clean-rank">#{idx + 1}</span>
                     <div className="clean-topic-details">
                       <span className="clean-topic-name">{item.topic_title}</span>
                       <span className="clean-topic-meta">
                         {item.subject_name} • {item.chapter_title}
                       </span>
                     </div>
-                    <span className="clean-badge tag-visit">
-                      {item.visit_count} views
-                    </span>
                     <button
-                      className="clean-action-btn"
+                      className="clean-action-btn primary"
                       onClick={() => handleStudyTopic(item)}
                     >
                       Study →
@@ -262,18 +254,14 @@ export default function AnalyticsDashboard() {
               <div className="clean-topic-list">
                 {mostPassed.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
-                    <span className="clean-rank">#{idx + 1}</span>
                     <div className="clean-topic-details">
                       <span className="clean-topic-name">{item.topic_title}</span>
                       <span className="clean-topic-meta">
                         {item.subject_name} • {item.chapter_title}
                       </span>
                     </div>
-                    <span className="clean-badge tag-pass">
-                      {item.pass_count} correct
-                    </span>
                     <button
-                      className="clean-action-btn"
+                      className="clean-action-btn primary"
                       onClick={() => handleStudyTopic(item)}
                     >
                       Review →
