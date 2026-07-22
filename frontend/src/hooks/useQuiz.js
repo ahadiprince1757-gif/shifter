@@ -5,7 +5,7 @@ import { networkService } from "../services/networkService";
 import logger from "../utils/logger";
 import { recordEvent } from "../utils/analytics";
 import { evaluateAnswer } from "../utils/grader";
-import { questionMutator } from "../utils/QuestionMutator";
+import { questionMutator } from "../utils/questionMutator";
 
 export function useQuiz(
   subject,
