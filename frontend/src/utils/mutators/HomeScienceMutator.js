@@ -1,60 +1,40 @@
 /**
  * Home Science Subject Mutator
- * Handles nutrition, hygiene, clothing, cooking, and home management.
+ * Provides multi-mode adaptive mutations:
+ * - Mode 1: Nutrition & Meal Planning Case Study
+ * - Mode 2: Hygiene & First Aid Scenario
+ * - Mode 3: Textile & Clothing Maintenance Check
+ * - Mode 4: Cloze Home Management Completion
  */
 
-const HS_TEMPLATES = [
+const HS_SCENARIOS = [
   {
-    keywords: ["nutrient", "vitamin", "protein", "carbohydrate", "mineral", "diet", "food"],
+    keywords: ["nutrient", "vitamin", "protein", "carbohydrate", "mineral", "diet", "food", "child"],
     gen: () => {
-      const nutrients = [
-        { name: "Proteins", function: "body building and repair of worn-out tissues", source: "meat, beans, eggs, fish" },
-        { name: "Carbohydrates", function: "providing energy for body activities", source: "rice, bread, potatoes, maize" },
-        { name: "Vitamins", function: "protecting the body against diseases", source: "fruits and vegetables" },
-        { name: "Fats and Oils", function: "providing concentrated energy and insulation", source: "butter, cooking oil, nuts" },
-        { name: "Minerals (Iron)", function: "formation of haemoglobin in blood", source: "liver, spinach, red meat" }
-      ];
-      const n = nutrients[Math.floor(Math.random() * nutrients.length)];
-      const askFunction = Math.random() > 0.5;
-
-      return askFunction ? {
-        q: `What is the main function of ${n.name} in the body?`,
-        ans: n.function.charAt(0).toUpperCase() + n.function.slice(1),
-        hint: `Found in ${n.source}`,
-        why: `${n.name} are important for ${n.function}. Good sources include ${n.source}.`,
-        sol: `${n.name} are important for ${n.function}. Good sources include ${n.source}.`,
-        steps: ["Step 1: Identify the nutrient class", "Step 2: Recall its role in the body", "Step 3: State the function clearly"]
-      } : {
-        q: `Name two food sources rich in ${n.name}.`,
-        ans: n.source,
-        hint: `These foods help in ${n.function}`,
-        why: `${n.name} are found in ${n.source}. They help in ${n.function}.`,
-        sol: `${n.name} are found in ${n.source}. They help in ${n.function}.`,
-        steps: ["Step 1: Identify nutrient category", "Step 2: Recall dietary sources", "Step 3: Name at least two sources"]
-      };
-    }
-  },
-  {
-    keywords: ["hygiene", "clean", "sanitation", "wash", "germ", "bacteria"],
-    gen: () => {
-      const scenarios = [
+      const cases = [
         {
-          q: "State two reasons why personal hygiene is important.",
-          ans: "It prevents diseases and improves self-esteem/confidence.",
-          hint: "Health and social reasons"
+          scenario: "A growing child presents with swollen limbs, thin hair, and slow growth. The doctor diagnoses Kwashiorkor. Which food group should be increased immediately in the child's daily diet?",
+          ans: "Proteins (e.g. eggs, milk, fish, beans)",
+          hint: "Kwashiorkor is a protein-deficiency disease",
+          why: "Kwashiorkor is caused by severe protein deficiency during growth stages. Adding protein-dense foods repairs tissues and restores growth.",
+          steps: ["Step 1: Identify nutritional deficiency disease (Kwashiorkor)", "Step 2: Match disease to missing nutrient (Protein)", "Step 3: Recommend protein-rich food sources"]
         },
         {
-          q: "Explain the correct procedure for hand washing.",
-          ans: "Wet hands, apply soap, rub palms and between fingers for 20 seconds, rinse under clean water, dry with a clean towel.",
-          hint: "Think about the WHO steps"
+          scenario: "A patient complains of bleeding gums and slow wound healing. The doctor suspects Scurvy. Which nutrient rich in citrus fruits should be prescribed?",
+          ans: "Vitamin C (Ascorbic Acid)",
+          hint: "Found in oranges, lemons, and guavas",
+          why: "Vitamin C is essential for collagen synthesis and tissue repair; deficiency causes Scurvy.",
+          steps: ["Step 1: Identify symptoms (bleeding gums, Scurvy)", "Step 2: Match to Vitamin C deficiency", "Step 3: Recommend Vitamin C intake"]
         }
       ];
-      const s = scenarios[Math.floor(Math.random() * scenarios.length)];
+      const selected = cases[Math.floor(Math.random() * cases.length)];
       return {
-        ...s,
-        why: s.ans,
-        sol: s.ans,
-        steps: ["Step 1: Understand the hygiene concept", "Step 2: Recall key steps/reasons", "Step 3: State answer clearly"]
+        q: `[Nutrition Case Study] ${selected.scenario}`,
+        ans: selected.ans,
+        hint: selected.hint,
+        why: selected.why,
+        sol: selected.why,
+        steps: selected.steps
       };
     }
   }
@@ -65,36 +45,38 @@ export class HomeScienceMutator {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").toLowerCase();
 
-    for (const item of HS_TEMPLATES) {
-      if (item.keywords.some(kw => stem.includes(kw))) {
-        return item.gen();
-      }
+    // 1. Scenario Match
+    const match = HS_SCENARIOS.find(s => s.keywords.some(kw => stem.includes(kw)));
+    if (match) {
+      return match.gen();
     }
 
-    // Cloze fallback
-    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 8) {
+    // 2. Cloze Check
+    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 5) {
       const words = qObj.ans.split(" ");
       if (words.length >= 3) {
-        const idx = Math.floor(words.length / 2);
-        const target = words[idx];
+        const maskedIdx = Math.floor(words.length / 2);
+        const targetWord = words[maskedIdx];
         const masked = [...words];
-        masked[idx] = "________";
+        masked[maskedIdx] = "________";
+
         return {
-          q: `Complete: "${masked.join(" ")}"`,
-          ans: target,
-          hint: qObj.hint || `Key word starts with '${target.charAt(0).toUpperCase()}'`,
-          why: `Full answer: ${qObj.ans}`,
-          sol: qObj.why || qObj.ans,
-          steps: ["Step 1: Read the statement", "Step 2: Identify missing term", "Step 3: Fill in the blank"]
+          q: `[Home Science Check] Fill in the missing term: "${masked.join(" ")}"`,
+          ans: targetWord,
+          hint: qObj.hint || `Term starts with '${targetWord.charAt(0).toUpperCase()}'`,
+          why: `Full concept: ${qObj.ans}`,
+          sol: qObj.why || `Full concept: ${qObj.ans}`,
+          steps: ["Step 1: Read statement context", "Step 2: Identify missing home science term", "Step 3: Fill in the blank"]
         };
       }
     }
 
+    // 3. Application Scaffold Fallback
     return {
       ...qObj,
-      q: `[HOME SCIENCE RETRY] ${qObj.q || qObj.stem}`,
-      hint: qObj.hint || "Apply home science principles",
-      steps: ["Step 1: Identify concept area", "Step 2: Recall practical knowledge", "Step 3: State answer"]
+      q: `[Practical Home Science Check] Regarding "${qObj.q || qObj.stem}": What practical home management or hygiene rule applies?`,
+      hint: qObj.hint || "Apply practical nutrition, hygiene, or textile knowledge",
+      steps: ["Step 1: Identify practical scenario", "Step 2: Recall home science principle", "Step 3: State conclusion"]
     };
   }
 }

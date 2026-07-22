@@ -1,36 +1,40 @@
 /**
  * Agriculture Subject Mutator
- * Handles crop production, animal husbandry, soil science, and farm management.
+ * Provides multi-mode adaptive mutations:
+ * - Mode 1: Farm Management & Soil Science Case Study
+ * - Mode 2: Crop & Livestock Disease Discrimination
+ * - Mode 3: NPK Fertilizer & Nutrient Calculation
+ * - Mode 4: Cloze Agricultural Best Practices Check
  */
 
-const AGRI_TEMPLATES = [
+const AGRI_SCENARIOS = [
   {
-    keywords: ["soil", "loam", "clay", "sand", "humus", "erosion"],
+    keywords: ["soil", "loam", "clay", "sand", "humus", "erosion", "farm"],
     gen: () => {
-      const soils = [
-        { type: "Sandy soil", property: "large particles and drains water quickly", crop: "Carrots and groundnuts" },
-        { type: "Clay soil", property: "fine particles and retains water", crop: "Rice and paddy crops" },
-        { type: "Loam soil", property: "a balanced mixture of sand, silt, and clay", crop: "Most crops including maize and beans" }
+      const cases = [
+        {
+          scenario: "A farmer in a dry region observes that rainwater drains away almost immediately, leaving crops wilted due to low water retention. What soil management practice should the farmer apply to improve organic matter and water holding capacity?",
+          ans: "Adding compost / organic manure",
+          hint: "Organic matter improves soil structure and water retention",
+          why: "Adding organic manure increases humus content, improving water retention in coarse sandy soils.",
+          steps: ["Step 1: Identify soil problem (poor water retention)", "Step 2: Relate organic matter to soil structure", "Step 3: Recommend organic manure addition"]
+        },
+        {
+          scenario: "A farmer on a hilly slope notices topsoil being washed away during heavy rainfall. Which soil conservation method is best suited for steep slopes?",
+          ans: "Terracing and planting cover crops",
+          hint: "Steps cut into hillsides reduce runoff velocity",
+          why: "Terracing reduces slope gradient, slowing down surface runoff and preventing soil erosion.",
+          steps: ["Step 1: Identify slope erosion risk", "Step 2: Select slope conservation practice", "Step 3: Recommend terracing"]
+        }
       ];
-      const s = soils[Math.floor(Math.random() * soils.length)];
-      const isProperty = Math.random() > 0.5;
-
-      return isProperty ? {
-        q: `Which type of soil has ${s.property}?`,
-        ans: s.type,
-        hint: `Suitable for growing ${s.crop}`,
-        why: `${s.type} is characterized by ${s.property}.`,
-        sol: `${s.type} is characterized by ${s.property}.`,
-        steps: ["Step 1: Identify soil characteristic described", "Step 2: Match to soil type", "Step 3: State soil name"],
-        type: "mcq",
-        options: ["Sandy soil", "Clay soil", "Loam soil", "Silt soil"]
-      } : {
-        q: `State one type of crop suitable for growing in ${s.type}.`,
-        ans: s.crop,
-        hint: `${s.type} has ${s.property}`,
-        why: `${s.crop} grow well in ${s.type} because it has ${s.property}.`,
-        sol: `${s.crop} grow well in ${s.type} because it has ${s.property}.`,
-        steps: ["Step 1: Identify soil type", "Step 2: Recall water retention and drainage", "Step 3: Name suitable crop"]
+      const selected = cases[Math.floor(Math.random() * cases.length)];
+      return {
+        q: `[Farm Case Study] ${selected.scenario}`,
+        ans: selected.ans,
+        hint: selected.hint,
+        why: selected.why,
+        sol: selected.why,
+        steps: selected.steps
       };
     }
   },
@@ -38,19 +42,19 @@ const AGRI_TEMPLATES = [
     keywords: ["fertilizer", "manure", "nutrient", "nitrogen", "phosphorus", "potassium", "npk"],
     gen: () => {
       const nutrients = [
-        { name: "Nitrogen (N)", role: "promotes leafy/vegetative growth", deficiency: "yellowing of leaves (chlorosis)" },
-        { name: "Phosphorus (P)", role: "promotes root development and flowering", deficiency: "purple/reddish leaves" },
-        { name: "Potassium (K)", role: "strengthens stems and disease resistance", deficiency: "brown scorching of leaf edges" }
+        { name: "Nitrogen (N)", role: "vegetative growth and leaf development", sign: "yellowing of lower leaves (chlorosis)" },
+        { name: "Phosphorus (P)", role: "root development and early crop establishment", sign: "purple discoloration of leaf margins" },
+        { name: "Potassium (K)", role: "disease resistance and stem strength", sign: "browning and scorching of leaf edges" }
       ];
       const n = nutrients[Math.floor(Math.random() * nutrients.length)];
 
       return {
-        q: `In crop production, which primary nutrient ${n.role}?`,
+        q: `[Crop Diagnostic Scenario] A maize crop exhibits ${n.sign}. Which essential soil nutrient is deficient in this field?`,
         ans: n.name,
-        hint: `Deficiency causes ${n.deficiency}`,
-        why: `${n.name} is essential because it ${n.role}.`,
-        sol: `${n.name} is essential because it ${n.role}.`,
-        steps: ["Step 1: Identify plant growth function described", "Step 2: Match to NPK nutrient", "Step 3: State nutrient name"],
+        hint: `Essential for ${n.role}`,
+        why: `Deficiency in ${n.name} causes ${n.sign} because it is needed for ${n.role}.`,
+        sol: `Deficiency in ${n.name} causes ${n.sign} because it is needed for ${n.role}.`,
+        steps: ["Step 1: Observe crop deficiency symptom", "Step 2: Match symptom to NPK nutrient", "Step 3: Diagnose missing element"],
         type: "mcq",
         options: ["Nitrogen (N)", "Phosphorus (P)", "Potassium (K)", "Calcium (Ca)"]
       };
@@ -63,36 +67,38 @@ export class AgricultureMutator {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").toLowerCase();
 
-    for (const item of AGRI_TEMPLATES) {
-      if (item.keywords.some(kw => stem.includes(kw))) {
-        return item.gen();
-      }
+    // 1. Farm Case Study Match
+    const match = AGRI_SCENARIOS.find(s => s.keywords.some(kw => stem.includes(kw)));
+    if (match) {
+      return match.gen();
     }
 
-    // Cloze fallback
-    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 8) {
+    // 2. Cloze Check
+    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 6) {
       const words = qObj.ans.split(" ");
       if (words.length >= 3) {
-        const idx = Math.floor(words.length / 2);
-        const target = words[idx];
+        const maskedIdx = Math.floor(words.length / 2);
+        const targetWord = words[maskedIdx];
         const masked = [...words];
-        masked[idx] = "________";
+        masked[maskedIdx] = "________";
+
         return {
-          q: `Complete the agricultural concept: "${masked.join(" ")}"`,
-          ans: target,
-          hint: qObj.hint || `Key term starts with '${target.charAt(0).toUpperCase()}'`,
+          q: `[Agricultural Concept Check] Fill in the missing term: "${masked.join(" ")}"`,
+          ans: targetWord,
+          hint: qObj.hint || `Term starts with '${targetWord.charAt(0).toUpperCase()}'`,
           why: `Full concept: ${qObj.ans}`,
-          sol: qObj.why || qObj.ans,
-          steps: ["Step 1: Read the statement", "Step 2: Identify missing agricultural term", "Step 3: Fill in the blank"]
+          sol: qObj.why || `Full concept: ${qObj.ans}`,
+          steps: ["Step 1: Read agricultural statement", "Step 2: Identify missing farming term", "Step 3: Fill in the blank"]
         };
       }
     }
 
+    // 3. Application Scaffold Fallback
     return {
       ...qObj,
-      q: `[AGRICULTURE RETRY] ${qObj.q || qObj.stem}`,
-      hint: qObj.hint || "Apply farming and crop science principles",
-      steps: ["Step 1: Identify agricultural concept", "Step 2: Recall best practices", "Step 3: State answer"]
+      q: `[Agronomic Application Check] Regarding "${qObj.q || qObj.stem}": What agronomic practice or soil principle applies here?`,
+      hint: qObj.hint || "Recall crop husbandry and soil management rules",
+      steps: ["Step 1: Identify crop/animal scenario", "Step 2: Recall farming principle", "Step 3: State answer"]
     };
   }
 }

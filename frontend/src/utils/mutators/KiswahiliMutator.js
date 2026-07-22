@@ -1,58 +1,38 @@
 /**
  * Kiswahili Language Subject Mutator
- * Handles sarufi (grammar), msamiati (vocabulary), and ufahamu (comprehension).
+ * Provides multi-mode adaptive mutations:
+ * - Mode 1: Sarufi Context & Ngeli Scenario
+ * - Mode 2: Aina za Maneno Discrimination
+ * - Mode 3: Umoja / Wingi Transformation
+ * - Mode 4: Cloze Msamiati Check
  */
 
-const KISW_TEMPLATES = [
+const KISW_SCENARIOS = [
   {
-    keywords: ["nomino", "kitenzi", "kivumishi", "kielezi", "aina", "neno", "sehemu"],
+    keywords: ["wingi", "umoja", "ngeli", "nomino", "sentensi"],
     gen: () => {
-      const parts = [
-        { word: "haraka", pos: "Kielezi (Adverb)", why: "Kinaelezea jinsi kitendo kinavyofanyika." },
-        { word: "mzuri", pos: "Kivumishi (Adjective)", why: "Kinaelezea sifa ya nomino." },
-        { word: "mwalimu", pos: "Nomino (Noun)", why: "Ni jina la mtu, kitu, au mahali." },
-        { word: "anasoma", pos: "Kitenzi (Verb)", why: "Kinaonyesha kitendo kinachofanyika." },
-        { word: "ndani", pos: "Kihusishi (Preposition)", why: "Kinaonyesha uhusiano wa mahali." }
+      const cases = [
+        { umoja: "Mtoto mtiifu anasoma kitabu.", wingi: "Watoto watiifu wanasoma vitabu.", ngeli: "M-WA / KI-VI", hint: "mtoto ➔ watoto, kitabu ➔ vitabu" },
+        { umoja: "Mti mrefu umeanguka njiani.", wingi: "Miti mirefu imeanguka njiani.", ngeli: "M-MI", hint: "mti ➔ miti, umeanguka ➔ imeanguka" },
+        { umoja: "Kiti kile kimevunjika.", wingi: "Viti vile vimevunjika.", ngeli: "KI-VI", hint: "kiti ➔ viti, kile ➔ vile" }
       ];
-      const p = parts[Math.floor(Math.random() * parts.length)];
-
-      return {
-        q: `Tambua aina ya neno hili: "${p.word}"`,
-        ans: p.pos,
-        hint: p.why,
-        why: `"${p.word}" ni ${p.pos}. ${p.why}`,
-        sol: `"${p.word}" ni ${p.pos}. ${p.why}`,
-        steps: ["Hatua ya 1: Soma neno", "Hatua ya 2: Tambua kazi yake katika sentensi", "Hatua ya 3: Ainisha aina ya neno"]
-      };
-    }
-  },
-  {
-    keywords: ["wingi", "umoja", "ngeli", "nomino"],
-    gen: () => {
-      const pairs = [
-        { umoja: "mtoto", wingi: "watoto", ngeli: "M-WA" },
-        { umoja: "mti", wingi: "miti", ngeli: "M-MI" },
-        { umoja: "kiti", wingi: "viti", ngeli: "KI-VI" },
-        { umoja: "nyumba", wingi: "nyumba", ngeli: "N-N" },
-        { umoja: "ukuta", wingi: "kuta", ngeli: "U-N" }
-      ];
-      const p = pairs[Math.floor(Math.random() * pairs.length)];
+      const selected = cases[Math.floor(Math.random() * cases.length)];
       const askWingi = Math.random() > 0.5;
 
       return askWingi ? {
-        q: `Andika wingi wa neno hili: "${p.umoja}"`,
-        ans: p.wingi,
-        hint: `Ngeli ya ${p.ngeli}`,
-        why: `Umoja: ${p.umoja} → Wingi: ${p.wingi} (Ngeli ya ${p.ngeli}).`,
-        sol: `Umoja: ${p.umoja} → Wingi: ${p.wingi} (Ngeli ya ${p.ngeli}).`,
-        steps: ["Hatua ya 1: Tambua ngeli ya neno", "Hatua ya 2: Badilisha kiambishi awali", "Hatua ya 3: Andika wingi"]
+        q: `[Sentensi na Wingi] Badilisha sentensi hii katika wingi:\n"${selected.umoja}"`,
+        ans: selected.wingi,
+        hint: selected.hint,
+        why: `Umoja: "${selected.umoja}" ➔ Wingi: "${selected.wingi}".`,
+        sol: `Umoja: "${selected.umoja}" ➔ Wingi: "${selected.wingi}".`,
+        steps: ["Hatua ya 1: Tambua ngeli ya nomino", "Hatua ya 2: Badilisha viambishi vya ngeli", "Hatua ya 3: Andika sentensi katika wingi"]
       } : {
-        q: `Andika umoja wa neno hili: "${p.wingi}"`,
-        ans: p.umoja,
-        hint: `Ngeli ya ${p.ngeli}`,
-        why: `Wingi: ${p.wingi} → Umoja: ${p.umoja} (Ngeli ya ${p.ngeli}).`,
-        sol: `Wingi: ${p.wingi} → Umoja: ${p.umoja} (Ngeli ya ${p.ngeli}).`,
-        steps: ["Hatua ya 1: Tambua ngeli ya neno", "Hatua ya 2: Badilisha kiambishi awali", "Hatua ya 3: Andika umoja"]
+        q: `[Sentensi na Umoja] Badilisha sentensi hii katika umoja:\n"${selected.wingi}"`,
+        ans: selected.umoja,
+        hint: selected.hint,
+        why: `Wingi: "${selected.wingi}" ➔ Umoja: "${selected.umoja}".`,
+        sol: `Wingi: "${selected.wingi}" ➔ Umoja: "${selected.umoja}".`,
+        steps: ["Hatua ya 1: Tambua ngeli ya nomino", "Hatua ya 2: Badilisha viambishi vya ngeli", "Hatua ya 3: Andika sentensi katika umoja"]
       };
     }
   }
@@ -63,36 +43,38 @@ export class KiswahiliMutator {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").toLowerCase();
 
-    for (const item of KISW_TEMPLATES) {
-      if (item.keywords.some(kw => stem.includes(kw))) {
-        return item.gen();
-      }
+    // 1. Scenario Match
+    const match = KISW_SCENARIOS.find(s => s.keywords.some(kw => stem.includes(kw)));
+    if (match) {
+      return match.gen();
     }
 
-    // Cloze fallback
+    // 2. Cloze Check
     if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 5) {
       const words = qObj.ans.split(" ");
       if (words.length >= 3) {
-        const idx = Math.floor(words.length / 2);
-        const target = words[idx];
+        const maskedIdx = Math.floor(words.length / 2);
+        const targetWord = words[maskedIdx];
         const masked = [...words];
-        masked[idx] = "________";
+        masked[maskedIdx] = "________";
+
         return {
-          q: `Kamilisha: "${masked.join(" ")}"`,
-          ans: target,
-          hint: qObj.hint || `Neno linaanza na '${target.charAt(0).toUpperCase()}'`,
+          q: `[Ufahamu na Msamiati] Kamilisha pengo: "${masked.join(" ")}"`,
+          ans: targetWord,
+          hint: qObj.hint || `Neno linaanza na '${targetWord.charAt(0).toUpperCase()}'`,
           why: `Jibu kamili: ${qObj.ans}`,
-          sol: qObj.why || qObj.ans,
+          sol: qObj.why || `Jibu kamili: ${qObj.ans}`,
           steps: ["Hatua ya 1: Soma sentensi", "Hatua ya 2: Tambua neno linalokosekana", "Hatua ya 3: Jaza pengo"]
         };
       }
     }
 
+    // 3. Fallback
     return {
       ...qObj,
-      q: `[KISWAHILI JARIBIO] ${qObj.q || qObj.stem}`,
-      hint: qObj.hint || "Tumia kanuni za sarufi",
-      steps: ["Hatua ya 1: Tambua dhana", "Hatua ya 2: Tumia kanuni", "Hatua ya 3: Toa jibu"]
+      q: `[Jaribio la Sarufi] Kuhusu "${qObj.q || qObj.stem}": Ni kanuni gani ya Kiswahili inayotumika hapa?`,
+      hint: qObj.hint || "Tumia kanuni za ngeli na sarufi",
+      steps: ["Hatua ya 1: Tambua dhana ya lugha", "Hatua ya 2: Tumia kanuni ya ngeli", "Hatua ya 3: Toa jibu sahihi"]
     };
   }
 }

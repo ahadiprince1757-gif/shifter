@@ -1,56 +1,45 @@
 /**
  * Geography Subject Mutator
- * Handles physical geography, climate, map work, and environmental concepts.
+ * Provides multi-mode adaptive mutations:
+ * - Mode 1: Environmental & Fieldwork Case Study
+ * - Mode 2: Map Work & Scale Calculations
+ * - Mode 3: Physical Geography Feature Discrimination
+ * - Mode 4: Cloze Climate & Terrain Check
  */
 
-const GEO_TEMPLATES = [
+const GEO_SCENARIOS = [
   {
-    keywords: ["climate", "weather", "temperature", "rainfall", "humid"],
+    keywords: ["climate", "weather", "temperature", "rainfall", "humid", "sea"],
     gen: () => {
-      const scenarios = [
-        {
-          q: "What is the difference between weather and climate?",
-          ans: "Weather is the short-term atmospheric condition of a place, while climate is the average weather pattern over a long period (usually 30+ years).",
-          hint: "One is short-term, one is long-term"
-        },
-        {
-          q: "Name any two factors that influence the climate of a region.",
-          ans: "Altitude and distance from the sea (continentality)",
-          hint: "Think height and water bodies"
-        },
-        {
-          q: "Why do coastal areas receive more rainfall than inland areas?",
-          ans: "Because moisture-laden winds from the sea lose moisture as they move inland, so coastal areas get more rainfall.",
-          hint: "Think about wind carrying moisture"
-        }
-      ];
-      const s = scenarios[Math.floor(Math.random() * scenarios.length)];
       return {
-        ...s,
-        why: s.ans,
-        sol: s.ans,
-        steps: ["Step 1: Identify the geographic factor", "Step 2: Explain the relationship", "Step 3: State conclusion clearly"]
+        q: `[Environmental Case Study] A weather station recorded high temperatures, heavy afternoon convectional rainfall, and high humidity consistently throughout the year. Which climatic zone is being described?`,
+        ans: "Equatorial Climate",
+        hint: "Characterized by high temperatures and daily afternoon rainfall",
+        why: "Equatorial climate experiences high radiation year-round leading to daily evaporation and convectional rain.",
+        sol: "Equatorial climate experiences high radiation year-round leading to daily evaporation and convectional rain.",
+        steps: ["Step 1: Analyze temperature and rainfall pattern", "Step 2: Compare climatic zones", "Step 3: Identify Equatorial climate"],
+        type: "mcq",
+        options: ["Equatorial Climate", "Savanna Climate", "Desert Climate", "Mediterranean Climate"]
       };
     }
   },
   {
     keywords: ["map", "scale", "grid", "bearing", "contour", "distance"],
     gen: () => {
-      const scale = [10000, 25000, 50000][Math.floor(Math.random() * 3)];
-      const mapDist = Math.floor(Math.random() * 15) + 2; // 2 to 16 cm
-      const actualDist = (mapDist * scale) / 100000; // in km
+      const scales = [25000, 50000, 100000];
+      const selectedScale = scales[Math.floor(Math.random() * scales.length)];
+      const mapCm = Math.floor(Math.random() * 12) + 3; // 3 to 14 cm
+      const actualKm = (mapCm * selectedScale) / 100000;
 
       return {
-        q: `On a map with a scale of 1:${scale.toLocaleString()}, the distance between two towns is ${mapDist} cm. Calculate the actual ground distance in kilometres.`,
-        ans: `${actualDist} km`,
-        hint: "Actual distance = Map distance × Scale",
-        why: `Actual distance = ${mapDist} cm × ${scale.toLocaleString()} = ${mapDist * scale} cm = ${actualDist} km.`,
-        sol: `Actual distance = ${mapDist} cm × ${scale.toLocaleString()} = ${mapDist * scale} cm = ${actualDist} km.`,
-        steps: [
-          "Step 1: Note map distance and scale",
-          "Step 2: Multiply map distance by scale factor",
-          "Step 3: Convert cm to km (÷ 100,000)"
-        ]
+        q: `[Map Work Scenario] On a topographical map drawn to a scale of 1:${selectedScale.toLocaleString()}, a straight road measures ${mapCm} cm. Calculate the actual ground distance of the road in kilometres.`,
+        ans: `${actualKm} km`,
+        hint: "Formula: Ground Distance = (Map Distance × Scale Factor) ÷ 100,000",
+        why: `Ground Distance = ${mapCm} cm × ${selectedScale.toLocaleString()} = ${mapCm * selectedScale} cm = ${actualKm} km.`,
+        sol: `Ground Distance = ${mapCm} cm × ${selectedScale.toLocaleString()} = ${mapCm * selectedScale} cm = ${actualKm} km.`,
+        steps: ["Step 1: Multiply map distance in cm by scale factor", "Step 2: Convert cm to km by dividing by 100,000", "Step 3: State final ground distance"],
+        type: "mcq",
+        options: [`${actualKm} km`, `${actualKm * 10} km`, `${(actualKm / 2).toFixed(1)} km`, `${actualKm * 2} km`]
       };
     }
   }
@@ -61,36 +50,38 @@ export class GeographyMutator {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").toLowerCase();
 
-    for (const item of GEO_TEMPLATES) {
-      if (item.keywords.some(kw => stem.includes(kw))) {
-        return item.gen();
-      }
+    // 1. Scenario Match
+    const match = GEO_SCENARIOS.find(s => s.keywords.some(kw => stem.includes(kw)));
+    if (match) {
+      return match.gen();
     }
 
-    // Cloze fallback
-    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 8) {
+    // 2. Cloze Check
+    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 6) {
       const words = qObj.ans.split(" ");
       if (words.length >= 3) {
-        const idx = Math.floor(words.length / 2);
-        const target = words[idx];
+        const maskedIdx = Math.floor(words.length / 2);
+        const targetWord = words[maskedIdx];
         const masked = [...words];
-        masked[idx] = "________";
+        masked[maskedIdx] = "________";
+
         return {
-          q: `Complete the geographic concept: "${masked.join(" ")}"`,
-          ans: target,
-          hint: qObj.hint || `Starts with '${target.charAt(0).toUpperCase()}'`,
+          q: `[Geographic Concept Check] Fill in the missing term: "${masked.join(" ")}"`,
+          ans: targetWord,
+          hint: qObj.hint || `Term starts with '${targetWord.charAt(0).toUpperCase()}'`,
           why: `Full concept: ${qObj.ans}`,
-          sol: qObj.why || qObj.ans,
-          steps: ["Step 1: Read the geographic statement", "Step 2: Identify missing term", "Step 3: Fill in the blank"]
+          sol: qObj.why || `Full concept: ${qObj.ans}`,
+          steps: ["Step 1: Read geographic statement", "Step 2: Identify missing landform/climate term", "Step 3: Fill in the blank"]
         };
       }
     }
 
+    // 3. Application Scaffold Fallback
     return {
       ...qObj,
-      q: `[GEOGRAPHY RETRY] ${qObj.q || qObj.stem}`,
-      hint: qObj.hint || "Apply geographic principles",
-      steps: ["Step 1: Identify geographic concept", "Step 2: Recall key factors", "Step 3: State answer"]
+      q: `[Fieldwork & Physical Check] Regarding "${qObj.q || qObj.stem}": What physical process or geographic factor explains this?`,
+      hint: qObj.hint || "Recall physical landforms and environmental processes",
+      steps: ["Step 1: Identify geographic feature", "Step 2: Trace formation process", "Step 3: State conclusion"]
     };
   }
 }

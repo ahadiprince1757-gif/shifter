@@ -1,61 +1,57 @@
 /**
  * Physics Subject Mutator
- * Handles physical quantities, kinematic equations, force/energy calculations,
- * and unit-aware variable mutation.
+ * Provides multi-mode adaptive mutations:
+ * - Mode 1: Real-World Physics Case Study / Application Scenario
+ * - Mode 2: Multiple Choice Formula & Unit Discrimination
+ * - Mode 3: Cloze Physics Law Completion
+ * - Mode 4: Numerical Parameter Randomization with Step Guidance
  */
 
-const PHYSICS_FORMULAS = [
+const PHYSICS_SCENARIOS = [
   {
-    topic: "Kinematics",
-    keywords: ["accelerat", "velocity", "speed", "distance", "rest"],
-    formulaName: "Distance (d = ½at²)",
+    topic: "kinematics",
+    keywords: ["accelerat", "velocity", "speed", "distance", "rest", "car", "motion"],
     gen: () => {
-      const a = (Math.floor(Math.random() * 8) + 2); // 2 to 9 m/s²
-      const t = (Math.floor(Math.random() * 10) + 2); // 2 to 11 s
+      const a = Math.floor(Math.random() * 8) + 2; // 2 to 9 m/s²
+      const t = Math.floor(Math.random() * 8) + 2; // 2 to 9 s
       const d = 0.5 * a * t * t;
+      const v = a * t;
+
+      const scenarios = [
+        `[Application Scenario] An electric vehicle accelerates smoothly from rest at ${a} m/s² for ${t} seconds on a test track. Calculate the total distance covered.`,
+        `[Scenario] A sprinter starts from rest and accelerates at ${a} m/s² for ${t} seconds. What is the total distance traveled during this acceleration phase?`
+      ];
+      const qText = scenarios[Math.floor(Math.random() * scenarios.length)];
+
       return {
-        q: `A body accelerates from rest at a constant rate of ${a} m/s² for ${t} seconds. Calculate the total distance traveled.`,
+        q: qText,
         ans: `${d} m`,
-        hint: "Use d = ½at²",
-        why: `d = 0.5 × ${a} m/s² × (${t} s)² = 0.5 × ${a} × ${t * t} = ${d} m.`,
-        sol: `d = 0.5 × ${a} m/s² × (${t} s)² = 0.5 × ${a} × ${t * t} = ${d} m.`,
-        steps: ["Step 1: Identify acceleration (a) and time (t)", "Step 2: Apply formula d = ½at²", "Step 3: Calculate distance"]
+        hint: "Use kinematic equation: d = ½at²",
+        why: `Given a = ${a} m/s², t = ${t} s. Distance d = 0.5 × ${a} × (${t})² = ${d} m.`,
+        sol: `Given a = ${a} m/s², t = ${t} s. Distance d = 0.5 × ${a} × (${t})² = ${d} m.`,
+        steps: ["Step 1: Identify given variables (a = " + a + " m/s², t = " + t + " s)", "Step 2: Apply formula d = ½at²", "Step 3: Calculate total distance"],
+        type: "mcq",
+        options: [`${d} m`, `${v} m`, `${a * t * t} m`, `${0.5 * a * t} m`]
       };
     }
   },
   {
-    topic: "Forces & Motion",
-    keywords: ["force", "mass", "newton", "acceleration"],
-    formulaName: "Force (F = ma)",
+    topic: "electricity",
+    keywords: ["current", "voltage", "resistance", "ohm", "volt", "circuit", "kettle"],
     gen: () => {
-      const m = Math.floor(Math.random() * 45) + 5; // 5 to 50 kg
-      const a = Math.floor(Math.random() * 9) + 2; // 2 to 10 m/s²
-      const f = m * a;
-      return {
-        q: `Calculate the force required to accelerate a mass of ${m} kg at a rate of ${a} m/s².`,
-        ans: `${f} N`,
-        hint: "Use Newton's second law: F = m × a",
-        why: `Force F = mass (${m} kg) × acceleration (${a} m/s²) = ${f} N.`,
-        sol: `Force F = mass (${m} kg) × acceleration (${a} m/s²) = ${f} N.`,
-        steps: ["Step 1: Identify mass (m) and acceleration (a)", "Step 2: Apply F = m × a", "Step 3: State answer in Newtons (N)"]
-      };
-    }
-  },
-  {
-    topic: "Electricity",
-    keywords: ["current", "voltage", "resistance", "ohm", "volt", "ampere"],
-    formulaName: "Ohm's Law (V = IR)",
-    gen: () => {
-      const i = Math.floor(Math.random() * 8) + 1; // 1 to 8 A
-      const r = Math.floor(Math.random() * 20) + 5; // 5 to 24 ohms
+      const i = Math.floor(Math.random() * 6) + 2; // 2 to 7 A
+      const r = Math.floor(Math.random() * 15) + 5; // 5 to 19 ohms
       const v = i * r;
+
       return {
-        q: `Calculate the potential difference (voltage) across a resistor of ${r} Ω when a current of ${i} A flows through it.`,
+        q: `[Circuit Scenario] An electric appliance draws a current of ${i} A when connected to a circuit with a resistance of ${r} Ω. Calculate the potential difference (voltage) across the appliance.`,
         ans: `${v} V`,
-        hint: "Use Ohm's Law: V = I × R",
+        hint: "Apply Ohm's Law: V = I × R",
         why: `Voltage V = Current (${i} A) × Resistance (${r} Ω) = ${v} V.`,
         sol: `Voltage V = Current (${i} A) × Resistance (${r} Ω) = ${v} V.`,
-        steps: ["Step 1: Identify current (I) and resistance (R)", "Step 2: Apply V = I × R", "Step 3: Calculate voltage in Volts (V)"]
+        steps: ["Step 1: Identify Current (I = " + i + " A) and Resistance (R = " + r + " Ω)", "Step 2: Apply Ohm's Law V = I × R", "Step 3: Multiply to get Voltage in Volts (V)"],
+        type: "mcq",
+        options: [`${v} V`, `${i + r} V`, `${(r / i).toFixed(1)} V`, `${v * 2} V`]
       };
     }
   }
@@ -66,28 +62,47 @@ export class PhysicsMutator {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").toLowerCase();
 
-    // Match matched topic formula generator
-    for (const item of PHYSICS_FORMULAS) {
-      if (item.keywords.some(kw => stem.includes(kw))) {
-        return item.gen();
+    // 1. Scenario Match
+    const match = PHYSICS_SCENARIOS.find(s => s.keywords.some(kw => stem.includes(kw)));
+    if (match) {
+      return match.gen();
+    }
+
+    // 2. Cloze Physics Law Completion
+    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 5) {
+      const words = qObj.ans.split(" ");
+      if (words.length >= 3) {
+        const maskedIdx = Math.floor(words.length / 2);
+        const targetWord = words[maskedIdx];
+        const masked = [...words];
+        masked[maskedIdx] = "________";
+
+        return {
+          q: `[Physics Concept Check] Fill in the missing term: "${masked.join(" ")}"`,
+          ans: targetWord,
+          hint: qObj.hint || `Missing physical term starts with '${targetWord.charAt(0).toUpperCase()}'`,
+          why: `Complete principle: ${qObj.ans}`,
+          sol: qObj.why || `Complete principle: ${qObj.ans}`,
+          steps: ["Step 1: Read physics statement", "Step 2: Identify missing law/unit", "Step 3: State answer"]
+        };
       }
     }
 
-    // Generic physics numeric mutation
+    // 3. Fallback Parameter Randomization
     const numbers = stem.match(/\b\d+(?:\.\d+)?\b/g);
     if (numbers && numbers.length >= 1) {
       let mutatedStem = qObj.q || qObj.stem || "";
       numbers.forEach(n => {
         const val = parseFloat(n);
         if (val > 0 && val < 1000) {
-          const newVal = Math.round(val * (1.2 + Math.random() * 0.8));
+          const newVal = Math.round(val * (1.2 + Math.random() * 0.6));
           mutatedStem = mutatedStem.replace(n, String(newVal));
         }
       });
 
       return {
         ...qObj,
-        q: mutatedStem,
+        q: `[Physics Calculation] ${mutatedStem}`,
         ans: qObj.ans || "Calculate using updated numbers",
         hint: qObj.hint || "Identify physical constants and apply appropriate formula.",
         why: qObj.why || "Physics parameters randomized for calculation practice.",
@@ -98,9 +113,9 @@ export class PhysicsMutator {
 
     return {
       ...qObj,
-      q: `[PHYSICS PRACTICE] ${qObj.q || qObj.stem}`,
+      q: `[Physics Application Check] ${qObj.q || qObj.stem}`,
       hint: qObj.hint || "Check physics formulas and units",
-      steps: ["Step 1: Identify given physical values", "Step 2: Select physics law/formula", "Step 3: Solve for unknown"]
+      steps: ["Step 1: Identify physical quantities", "Step 2: Select physics law/formula", "Step 3: Solve for unknown"]
     };
   }
 }
