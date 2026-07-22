@@ -20,12 +20,6 @@ const ProgressIcon = () => (
   </svg>
 );
 
-const ProfileIcon = () => (
-  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
-    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
-  </svg>
-);
-
 const CloseIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
     <path d="M18.3 5.71a1 1 0 00-1.41 0L12 10.59 7.11 5.7A1 1 0 005.7 7.11L10.59 12 5.7 16.89a1 1 0 001.41 1.41L12 13.41l4.89 4.89a1 1 0 001.41-1.41L13.41 12l4.89-4.89a1 1 0 000-1.4z" />
@@ -33,11 +27,8 @@ const CloseIcon = () => (
 );
 
 export default function BottomNav({
-  session,
   curriculum,
   onNavigateToTopic,
-  onOpenAuth,
-  setShowAuthModal,
 }) {
   const location = useLocation();
   const navigate = useNavigate();
@@ -82,21 +73,10 @@ export default function BottomNav({
   const path = location.pathname;
   const isHome = path === "/subjects";
   const isProgress = path === "/analytics";
-  const isProfile = false; // future page
 
   const handleSearchNavigate = (subjectId, chapterId, topic) => {
     if (onNavigateToTopic) onNavigateToTopic(subjectId, chapterId, topic);
     setSearchOpen(false);
-  };
-
-  const handleProfileTap = () => {
-    if (session) {
-      // Navigate to analytics as profile proxy for now
-      navigate("/analytics");
-    } else {
-      if (onOpenAuth) onOpenAuth();
-      else if (setShowAuthModal) setShowAuthModal(true);
-    }
   };
 
   return (
@@ -153,24 +133,8 @@ export default function BottomNav({
           <span className="bn-icon"><ProgressIcon /></span>
           <span className="bn-label">Progress</span>
         </button>
-
-        <button
-          className={`bn-item ${isProfile ? "active" : ""}`}
-          onClick={handleProfileTap}
-          aria-label="Profile"
-        >
-          {session?.user?.user_metadata?.avatar_url ? (
-            <img
-              src={session.user.user_metadata.avatar_url}
-              alt="Profile"
-              className="bn-avatar"
-            />
-          ) : (
-            <span className="bn-icon"><ProfileIcon /></span>
-          )}
-          <span className="bn-label">{session ? "Profile" : "Sign In"}</span>
-        </button>
       </nav>
     </>
   );
 }
+
