@@ -1,114 +1,14 @@
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { fetchAnalytics } from "../api";
 import SkeletonLoader from "./SkeletonLoader";
-
-function StatCard({ title, icon, items, valueKey, color }) {
-  return (
-    <div className="analytics-card" style={{ "--card-accent": color }}>
-      <div className="analytics-card-header">
-        <span className="analytics-card-icon">{icon}</span>
-        <h3 className="analytics-card-title">{title}</h3>
-      </div>
-      <div className="analytics-card-body">
-        {items.length === 0 ? (
-          <p className="analytics-empty">No data yet</p>
-        ) : (
-          <ul className="analytics-list">
-            {items.map((item, idx) => (
-              <li key={idx} className="analytics-list-item">
-                <div className="analytics-list-rank">#{idx + 1}</div>
-                <div className="analytics-list-info">
-                  <span className="analytics-list-topic">
-                    {item.topic_title}
-                  </span>
-                  <span className="analytics-list-meta">
-                    {item.subject_name} › {item.chapter_title}
-                  </span>
-                </div>
-                <div
-                  className="analytics-list-count"
-                  style={{ color }}
-                >
-                  {item[valueKey]}
-                </div>
-              </li>
-            ))}
-          </ul>
-        )}
-      </div>
-    </div>
-  );
-}
-
-function UnvisitedCard({ items }) {
-  const [expanded, setExpanded] = useState(false);
-  // Group by subject
-  const grouped = {};
-  items.forEach((item) => {
-    if (!grouped[item.subject_name]) grouped[item.subject_name] = [];
-    grouped[item.subject_name].push(item);
-  });
-
-  const subjectNames = Object.keys(grouped).sort();
-  const displayItems = expanded ? subjectNames : subjectNames.slice(0, 5);
-
-  return (
-    <div
-      className="analytics-card analytics-card-wide"
-      style={{ "--card-accent": "var(--t3)" }}
-    >
-      <div className="analytics-card-header">
-        <span className="analytics-card-icon">🔍</span>
-        <h3 className="analytics-card-title">
-          Unvisited Topics
-          <span className="analytics-badge">{items.length}</span>
-        </h3>
-      </div>
-      <div className="analytics-card-body">
-        {items.length === 0 ? (
-          <p className="analytics-empty">
-            🎉 All topics have been visited!
-          </p>
-        ) : (
-          <>
-            {displayItems.map((subjectName) => (
-              <div key={subjectName} className="analytics-unvisited-group">
-                <h4 className="analytics-unvisited-subject">{subjectName}</h4>
-                <div className="analytics-unvisited-chips">
-                  {grouped[subjectName].slice(0, 8).map((item, idx) => (
-                    <span key={idx} className="analytics-chip">
-                      {item.topic_title}
-                    </span>
-                  ))}
-                  {grouped[subjectName].length > 8 && (
-                    <span className="analytics-chip analytics-chip-more">
-                      +{grouped[subjectName].length - 8} more
-                    </span>
-                  )}
-                </div>
-              </div>
-            ))}
-            {subjectNames.length > 5 && (
-              <button
-                className="analytics-expand-btn"
-                onClick={() => setExpanded(!expanded)}
-              >
-                {expanded
-                  ? "Show less"
-                  : `Show ${subjectNames.length - 5} more subjects`}
-              </button>
-            )}
-          </>
-        )}
-      </div>
-    </div>
-  );
-}
 
 export default function AnalyticsDashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [activeTab, setActiveTab] = useState("focus"); // 'focus' | 'visited' | 'strengths' | 'unexplored'
+  const navigate = useNavigate();
 
   useEffect(() => {
     fetchAnalytics()
@@ -127,14 +27,11 @@ export default function AnalyticsDashboard() {
     return (
       <div className="analytics-dashboard">
         <div className="analytics-hero">
-          <h2 className="analytics-hero-title">📊 Learning Analytics</h2>
-          <p className="analytics-hero-sub">
-            Track learning patterns, identify strengths, and discover areas for
-            improvement.
-          </p>
+          <h2 className="analytics-hero-title">Learning Progress</h2>
+          <p className="analytics-hero-sub">Loading your study insights...</p>
         </div>
-        <div style={{ marginTop: "2rem" }}>
-          <SkeletonLoader type="list" count={4} />
+        <div style={{ marginTop: "1.5rem" }}>
+          <SkeletonLoader type="list" count={3} />
         </div>
       </div>
     );
@@ -150,81 +47,295 @@ export default function AnalyticsDashboard() {
 
   if (!data) return null;
 
-  const totalVisits = (data.mostVisited || []).reduce(
-    (s, r) => s + (r.visit_count || 0),
-    0,
-  );
-  const totalPasses = (data.mostPassed || []).reduce(
-    (s, r) => s + (r.pass_count || 0),
-    0,
-  );
-  const totalFails = (data.mostFailed || []).reduce(
-    (s, r) => s + (r.fail_count || 0),
-    0,
-  );
+  const mostVisited = data.mostVisited || [];
+  const mostPassed = data.mostPassed || [];
+  const mostFailed = data.mostFailed || [];
+  const unvisited = data.unvisited || [];
+
+  const totalVisits = mostVisited.reduce((s, r) => s + (r.visit_count || 0), 0);
+  const totalPasses = mostPassed.reduce((s, r) => s + (r.pass_count || 0), 0);
+  const totalFails = mostFailed.reduce((s, r) => s + (r.fail_count || 0), 0);
+  const totalQuizzes = totalPasses + totalFails;
+
+  const accuracyRate =
+    totalQuizzes > 0 ? Math.round((totalPasses / totalQuizzes) * 100) : 0;
+
+  const handleStudyTopic = (item) => {
+    if (item.subject_id && item.chapter_id && item.topic_title) {
+      navigate(
+        `/learn/${item.subject_id}/${item.chapter_id}/${encodeURIComponent(
+          item.topic_title
+        )}`
+      );
+    } else {
+      navigate("/subjects");
+    }
+  };
+
+  // Group unvisited by subject cleanly
+  const unvisitedBySubject = {};
+  unvisited.forEach((item) => {
+    const subName = item.subject_name || "General";
+    if (!unvisitedBySubject[subName]) unvisitedBySubject[subName] = [];
+    unvisitedBySubject[subName].push(item);
+  });
 
   return (
-    <div className="analytics-dashboard">
+    <div className="analytics-dashboard clean-view">
+      {/* Header */}
       <div className="analytics-hero">
-        <h2 className="analytics-hero-title">📊 Learning Analytics</h2>
+        <h2 className="analytics-hero-title">Learning Progress</h2>
         <p className="analytics-hero-sub">
-          Track learning patterns, identify strengths, and discover areas for
-          improvement.
+          A noise-free view of your study habits, quiz accuracy, and recommended practice areas.
         </p>
       </div>
 
-      <div className="analytics-summary-row">
-        <div className="analytics-summary-stat">
-          <span className="analytics-summary-num" style={{ color: "#7c5cfc" }}>
+      {/* Top Learning Summary Banner */}
+      <div className="analytics-overview-card">
+        <div className="analytics-metric">
+          <span className="metric-val" style={{ color: "var(--v)" }}>
+            {accuracyRate}%
+          </span>
+          <span className="metric-lbl">Quiz Accuracy</span>
+        </div>
+        <div className="metric-divider" />
+        <div className="analytics-metric">
+          <span className="metric-val" style={{ color: "#3a8ffd" }}>
             {totalVisits}
           </span>
-          <span className="analytics-summary-label">Topic Views</span>
+          <span className="metric-lbl">Notes Read</span>
         </div>
-        <div className="analytics-summary-stat">
-          <span className="analytics-summary-num" style={{ color: "#34d399" }}>
+        <div className="metric-divider" />
+        <div className="analytics-metric">
+          <span className="metric-val" style={{ color: "#10b981" }}>
             {totalPasses}
           </span>
-          <span className="analytics-summary-label">Correct Answers</span>
-        </div>
-        <div className="analytics-summary-stat">
-          <span className="analytics-summary-num" style={{ color: "#f87171" }}>
-            {totalFails}
-          </span>
-          <span className="analytics-summary-label">Incorrect Answers</span>
-        </div>
-        <div className="analytics-summary-stat">
-          <span className="analytics-summary-num" style={{ color: "var(--t2)" }}>
-            {(data.unvisited || []).length}
-          </span>
-          <span className="analytics-summary-label">Unvisited Topics</span>
+          <span className="metric-lbl">Correct Answers</span>
         </div>
       </div>
 
-      <div className="analytics-grid">
-        <StatCard
-          title="Most Visited Topics"
-          icon="🔥"
-          items={data.mostVisited || []}
-          valueKey="visit_count"
-          color="#7c5cfc"
-        />
-        <StatCard
-          title="Top Successes"
-          icon="✅"
-          items={data.mostPassed || []}
-          valueKey="pass_count"
-          color="#34d399"
-        />
-        <StatCard
-          title="Hardest Topics"
-          icon="⚠️"
-          items={data.mostFailed || []}
-          valueKey="fail_count"
-          color="#f87171"
-        />
+      {/* Accuracy Visual Progress Bar */}
+      {totalQuizzes > 0 && (
+        <div className="analytics-progress-bar-container">
+          <div className="progress-bar-header">
+            <span>Overall Quiz Performance</span>
+            <span>{accuracyRate}% Accuracy ({totalPasses}/{totalQuizzes})</span>
+          </div>
+          <div className="progress-track">
+            <div
+              className="progress-fill-pass"
+              style={{ width: `${accuracyRate}%` }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Noise-Free Tab Switcher */}
+      <div className="analytics-tabs" role="tablist">
+        <button
+          className={`analytics-tab-btn ${activeTab === "focus" ? "active" : ""}`}
+          onClick={() => setActiveTab("focus")}
+          role="tab"
+          aria-selected={activeTab === "focus"}
+        >
+          🎯 Focus Areas ({mostFailed.length})
+        </button>
+        <button
+          className={`analytics-tab-btn ${activeTab === "visited" ? "active" : ""}`}
+          onClick={() => setActiveTab("visited")}
+          role="tab"
+          aria-selected={activeTab === "visited"}
+        >
+          🔥 Most Studied ({mostVisited.length})
+        </button>
+        <button
+          className={`analytics-tab-btn ${activeTab === "strengths" ? "active" : ""}`}
+          onClick={() => setActiveTab("strengths")}
+          role="tab"
+          aria-selected={activeTab === "strengths"}
+        >
+          ⭐ Strengths ({mostPassed.length})
+        </button>
+        <button
+          className={`analytics-tab-btn ${activeTab === "unexplored" ? "active" : ""}`}
+          onClick={() => setActiveTab("unexplored")}
+          role="tab"
+          aria-selected={activeTab === "unexplored"}
+        >
+          🌱 Unexplored ({unvisited.length})
+        </button>
       </div>
 
-      <UnvisitedCard items={data.unvisited || []} />
+      {/* Tab Panel Content */}
+      <div className="analytics-tab-panel">
+        {/* TAB 1: Focus Areas (Needs Review) */}
+        {activeTab === "focus" && (
+          <div className="clean-card">
+            <div className="clean-card-header">
+              <h3>Topics Needing Review</h3>
+              <p>Topics where quiz questions were missed — practice these to improve score.</p>
+            </div>
+            {mostFailed.length === 0 ? (
+              <div className="clean-empty-state">
+                <span className="empty-icon">✨</span>
+                <p>No weak spots detected! Keep up the great work.</p>
+              </div>
+            ) : (
+              <div className="clean-topic-list">
+                {mostFailed.map((item, idx) => (
+                  <div key={idx} className="clean-topic-item">
+                    <span className="clean-rank">#{idx + 1}</span>
+                    <div className="clean-topic-details">
+                      <span className="clean-topic-name">{item.topic_title}</span>
+                      <span className="clean-topic-meta">
+                        {item.subject_name} • {item.chapter_title}
+                      </span>
+                    </div>
+                    <span className="clean-badge tag-fail">
+                      {item.fail_count} missed
+                    </span>
+                    <button
+                      className="clean-action-btn"
+                      onClick={() => handleStudyTopic(item)}
+                    >
+                      Practice →
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB 2: Most Studied */}
+        {activeTab === "visited" && (
+          <div className="clean-card">
+            <div className="clean-card-header">
+              <h3>Frequently Read Topics</h3>
+              <p>Topics you have revisited and studied most often.</p>
+            </div>
+            {mostVisited.length === 0 ? (
+              <div className="clean-empty-state">
+                <span className="empty-icon">📖</span>
+                <p>Start reading topics to see your study activity here.</p>
+              </div>
+            ) : (
+              <div className="clean-topic-list">
+                {mostVisited.map((item, idx) => (
+                  <div key={idx} className="clean-topic-item">
+                    <span className="clean-rank">#{idx + 1}</span>
+                    <div className="clean-topic-details">
+                      <span className="clean-topic-name">{item.topic_title}</span>
+                      <span className="clean-topic-meta">
+                        {item.subject_name} • {item.chapter_title}
+                      </span>
+                    </div>
+                    <span className="clean-badge tag-visit">
+                      {item.visit_count} views
+                    </span>
+                    <button
+                      className="clean-action-btn"
+                      onClick={() => handleStudyTopic(item)}
+                    >
+                      Study →
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB 3: Strengths */}
+        {activeTab === "strengths" && (
+          <div className="clean-card">
+            <div className="clean-card-header">
+              <h3>Mastered Topics</h3>
+              <p>Topics where you scored highest and demonstrated mastery.</p>
+            </div>
+            {mostPassed.length === 0 ? (
+              <div className="clean-empty-state">
+                <span className="empty-icon">🏆</span>
+                <p>Complete quizzes to unlock your topic strengths.</p>
+              </div>
+            ) : (
+              <div className="clean-topic-list">
+                {mostPassed.map((item, idx) => (
+                  <div key={idx} className="clean-topic-item">
+                    <span className="clean-rank">#{idx + 1}</span>
+                    <div className="clean-topic-details">
+                      <span className="clean-topic-name">{item.topic_title}</span>
+                      <span className="clean-topic-meta">
+                        {item.subject_name} • {item.chapter_title}
+                      </span>
+                    </div>
+                    <span className="clean-badge tag-pass">
+                      {item.pass_count} correct
+                    </span>
+                    <button
+                      className="clean-action-btn"
+                      onClick={() => handleStudyTopic(item)}
+                    >
+                      Review →
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB 4: Unexplored */}
+        {activeTab === "unexplored" && (
+          <div className="clean-card">
+            <div className="clean-card-header">
+              <h3>Unexplored Topics ({unvisited.length})</h3>
+              <p>Topics waiting for you to discover and start learning.</p>
+            </div>
+            {unvisited.length === 0 ? (
+              <div className="clean-empty-state">
+                <span className="empty-icon">🎉</span>
+                <p>Amazing! You've explored every single topic in the curriculum.</p>
+              </div>
+            ) : (
+              <div className="clean-unvisited-subjects">
+                {Object.keys(unvisitedBySubject).sort().map((subName) => (
+                  <div key={subName} className="clean-subject-group">
+                    <div className="subject-group-header">
+                      <span className="subject-group-title">{subName}</span>
+                      <span className="subject-group-count">
+                        {unvisitedBySubject[subName].length} topics remaining
+                      </span>
+                    </div>
+                    <div className="clean-topic-list">
+                      {unvisitedBySubject[subName].slice(0, 5).map((item, idx) => (
+                        <div key={idx} className="clean-topic-item">
+                          <div className="clean-topic-details">
+                            <span className="clean-topic-name">{item.topic_title}</span>
+                            <span className="clean-topic-meta">{item.chapter_title}</span>
+                          </div>
+                          <button
+                            className="clean-action-btn primary"
+                            onClick={() => handleStudyTopic(item)}
+                          >
+                            Start →
+                          </button>
+                        </div>
+                      ))}
+                      {unvisitedBySubject[subName].length > 5 && (
+                        <div className="more-topics-note">
+                          +{unvisitedBySubject[subName].length - 5} more topics in {subName}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+      </div>
     </div>
   );
 }
+
