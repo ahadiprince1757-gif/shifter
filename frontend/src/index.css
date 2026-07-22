@@ -5051,3 +5051,119 @@ html.app-zoomed {
     height: 86.9%;
   }
 }
+
+/* ── Concept Review UI ────────────────────────────────────── */
+.review-box {
+  background: #fff;
+  border-radius: 16px;
+  border: 1px solid var(--bd);
+  box-shadow: var(--sh);
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+}
+
+html.dark-mode .review-box {
+  background: var(--sur);
+}
+
+.review-header {
+  background: var(--bg2);
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--bd);
+}
+
+.review-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--t);
+  margin: 0;
+}
+
+.review-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.review-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.review-section-title {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--t2);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin: 0;
+}
+
+.review-steps-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  counter-reset: step-counter;
+}
+
+.review-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  background: var(--bg);
+  padding: 1rem;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  color: var(--t);
+  line-height: 1.5;
+  counter-increment: step-counter;
+}
+
+.review-step-item::before {
+  content: counter(step-counter);
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  background: var(--v);
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.85rem;
+  border-radius: 50%;
+}
+
+.highlight-section {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 1.25rem;
+  border-radius: 12px;
+}
+
+.highlight-section .review-section-title {
+  color: var(--gr);
+}
+
+.review-answer-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--t);
+  margin: 0;
+}
+
+.review-explanation-text {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--t);
+  margin: 0;
+  background: var(--bg);
+  padding: 1.25rem;
+  border-radius: 12px;
+  border-left: 4px solid var(--v);
+}

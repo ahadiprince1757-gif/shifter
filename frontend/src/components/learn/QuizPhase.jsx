@@ -42,28 +42,38 @@ function QuizPhase({
         </div>
         <div className="lcb">
           <div className="review-box">
-            <div className="review-title">Let's Review This Concept</div>
+            <div className="review-header">
+              <h3 className="review-title">Let's Review This Concept</h3>
+            </div>
             <div className="review-body">
-              {originalQ?.why && (
-                <p className="review-explanation">{originalQ.why}</p>
-              )}
-              {originalQ?.sol && originalQ.sol !== originalQ.why && (
-                <p className="review-explanation">{originalQ.sol}</p>
-              )}
               {originalQ?.steps && originalQ.steps.length > 0 && (
-                <div className="review-steps">
-                  {originalQ.steps.map((step, i) => (
-                    <div key={i} className="review-step">
-                      <span className="review-step-num">{i + 1}</span>
-                      <span>{step}</span>
-                    </div>
-                  ))}
+                <div className="review-section">
+                  <h4 className="review-section-title">Step-by-Step Breakdown</h4>
+                  <ol className="review-steps-list">
+                    {originalQ.steps.map((step, i) => (
+                      <li key={i} className="review-step-item">
+                        <span className="step-text">{step}</span>
+                      </li>
+                    ))}
+                  </ol>
                 </div>
               )}
               {originalQ?.ans && (
-                <div className="review-answer">
-                  <span className="review-answer-label">Correct Answer</span>
-                  <span className="review-answer-value">{originalQ.ans}</span>
+                <div className="review-section highlight-section">
+                  <h4 className="review-section-title">Correct Answer</h4>
+                  <p className="review-answer-text">{originalQ.ans}</p>
+                </div>
+              )}
+              {originalQ?.why && (
+                <div className="review-section">
+                  <h4 className="review-section-title">Explanation</h4>
+                  <p className="review-explanation-text">{originalQ.why}</p>
+                </div>
+              )}
+              {originalQ?.sol && originalQ.sol !== originalQ.why && (
+                <div className="review-section">
+                  <h4 className="review-section-title">Solution</h4>
+                  <p className="review-explanation-text">{originalQ.sol}</p>
                 </div>
               )}
             </div>
