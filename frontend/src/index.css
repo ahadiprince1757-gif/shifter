@@ -3243,6 +3243,89 @@ html.dark-mode .legal-modal-header {
   color: var(--t3);
 }
 
+/* ── Local Search Concept Cards ────────────────────────────── */
+.search-section {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--bd);
+}
+.search-section:last-child {
+  border-bottom: none;
+}
+.search-section-header {
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--v);
+  padding: 0.5rem 0.9rem 0.2rem;
+  background: rgba(117, 82, 243, 0.04);
+}
+.search-concept-card {
+  padding: 0.85rem 0.95rem;
+  border-bottom: 1px dashed var(--bd);
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.search-concept-card:last-child {
+  border-bottom: none;
+}
+.search-concept-card:hover,
+.search-concept-card.selected {
+  background: rgba(117, 82, 243, 0.08);
+}
+.scc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+.scc-title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--t);
+}
+.scc-badge {
+  font-size: 0.62rem;
+  font-weight: 700;
+  background: rgba(117, 82, 243, 0.12);
+  color: var(--v);
+  padding: 0.15rem 0.5rem;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+.scc-formula {
+  background: rgba(245, 158, 11, 0.08);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  border-radius: 6px;
+  padding: 0.35rem 0.6rem;
+  margin: 0.35rem 0 0.45rem;
+  font-size: 0.78rem;
+  color: #92400e;
+}
+.scc-formula code {
+  font-family: monospace;
+  font-weight: 700;
+}
+.scc-explanation {
+  font-size: 0.78rem;
+  color: var(--t2);
+  line-height: 1.5;
+  margin-bottom: 0.35rem;
+}
+.scc-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  margin-top: 0.35rem;
+  padding-left: 0.4rem;
+  border-left: 2px solid var(--s);
+}
+.scc-step-item {
+  font-size: 0.71rem;
+  color: var(--t3);
+}
+
 /* Bottom Nav Search Overlay */
 .bottom-search-overlay {
   position: fixed;
