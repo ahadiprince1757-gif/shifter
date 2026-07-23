@@ -3,14 +3,162 @@
  * Offline & Online Hybrid | Live Value Calculator | Supabase & IndexedDB Integrator
  * Performs:
  * 1. 0ms Offline Inverted Index Knowledge Search
- * 2. Live Mathematical & Physical Value Evaluations (e.g., "Ohm's Law 12V 3A" -> R=4Ω, P=36W)
- * 3. Online Supabase & IndexedDB Database Querying when connected
+ * 2. Natural Language Question Parsing ("What is a cell", "What is kinetic energy", "What is rhyme")
+ * 3. Live Mathematical & Physical Value Evaluations (e.g., "Ohm's Law 12V 3A" -> R=4Ω, P=36W)
+ * 4. Online Supabase & IndexedDB Database Querying when connected
  */
 
 import { supabase } from "../supabase.js";
 import { db } from "../db/db.js";
 
 export const KNOWLEDGE_BASE = [
+  // ── BIOLOGY & CELL SCIENCE ───────────────────────────────
+  {
+    id: "bio_what_is_cell",
+    subject: "Biology",
+    topic: "Cell Biology & Organization",
+    title: "What is a Cell? (Definition, Structure & Functions)",
+    keywords: ["what is a cell", "what is cell", "cell definition", "cell structure", "organelles", "cytoplasm", "membrane", "basic unit of life", "eukaryote", "prokaryote"],
+    formula: "Cell = Cell Membrane + Cytoplasm + Organelles + Genetic Material (DNA)",
+    explanation: "A cell is the microscopic structural, functional, and biological unit of all living organisms. Known as the 'building block of life', cells carry out essential processes such as respiration, metabolism, protein synthesis, and self-replication.",
+    steps: [
+      "Step 1: Cell Membrane: Selectively permeable boundary regulating transport in and out of the cell",
+      "Step 2: Cytoplasm: Jelly-like fluid hosting metabolic enzymes and organelles",
+      "Step 3: Nucleus / DNA: Stores genetic instructions to direct cellular growth and protein synthesis",
+      "Step 4: Organelles (Mitochondria, Ribosomes): Perform specialized functions like ATP energy production and protein assembly"
+    ]
+  },
+  {
+    id: "bio_photosynthesis",
+    subject: "Biology",
+    topic: "Plant Nutrition",
+    title: "Photosynthesis Mechanism and Starch Testing",
+    keywords: ["photosynthesis", "what is photosynthesis", "chlorophyll", "chloroplast", "glucose", "starch test", "iodine", "sunlight", "carbon dioxide", "light stage"],
+    formula: "6CO₂ + 6H₂O + Sunlight ➔ C₆H₁₂O₆ + 6O₂",
+    explanation: "Chlorophyll inside chloroplasts absorbs solar energy to convert carbon dioxide and water into glucose and oxygen. Stored glucose is converted to starch, tested using iodine (turns blue-black).",
+    steps: [
+      "Step 1: Light reaction: Chlorophyll traps solar energy to split water (photolysis)",
+      "Step 2: Dark reaction: Carbon dioxide is reduced to synthesize glucose",
+      "Step 3: Iodine test: Add iodine to leaf; blue-black color confirms starch presence"
+    ]
+  },
+  {
+    id: "bio_enzymes",
+    subject: "Biology",
+    topic: "Biochemistry",
+    title: "Enzyme Kinetics and Thermal Denaturation",
+    keywords: ["enzyme", "what is an enzyme", "catalyst", "active site", "denaturation", "temperature", "pH", "pepsin", "substrate", "lock and key"],
+    formula: "Enzyme + Substrate ➔ Enzyme-Substrate Complex ➔ Enzyme + Product",
+    explanation: "Enzymes are biological protein catalysts with specific 3D active sites. Temperatures above optimum (>40°C) denature enzymes by breaking hydrogen bonds, permanently deforming the active site.",
+    steps: [
+      "Step 1: Substrate binds to specific complementary active site (Lock and Key model)",
+      "Step 2: Activation energy is lowered, speeding up chemical transformation",
+      "Step 3: Excessive heat or extreme pH alters 3D tertiary structure, causing denaturation"
+    ]
+  },
+  {
+    id: "bio_osmosis",
+    subject: "Biology",
+    topic: "Cell Transport Mechanisms",
+    title: "Osmosis, Plasmolysis, and Turgor Pressure",
+    keywords: ["osmosis", "what is osmosis", "diffusion", "semi-permeable", "turgid", "plasmolysis", "hypertonic", "hypotonic", "cell membrane", "water potential"],
+    formula: "Water moves from High Water Potential (dilute) ➔ Low Water Potential (concentrated)",
+    explanation: "Osmosis is the passive movement of water molecules across a selectively permeable membrane down a water potential gradient. Plant cells in hypertonic salt solutions lose water, resulting in plasmolysis.",
+    steps: [
+      "Step 1: Compare solute concentrations inside vs outside the cell",
+      "Step 2: In hypertonic solutions, water leaves cell via osmosis",
+      "Step 3: In hypotonic solutions, water enters cell, making plant cells turgid"
+    ]
+  },
+
+  // ── PHYSICS & ENERGY ──────────────────────────────────────
+  {
+    id: "phys_kinetic_energy",
+    subject: "Physics",
+    topic: "Work, Energy & Power",
+    title: "What is Kinetic Energy? (Definition & Formula)",
+    keywords: ["kinetic energy", "what is kinetic energy", "ke formula", "energy of motion", "mechanical energy", "half m v squared", "joules", "velocity", "mass"],
+    formula: "KE = ½ × m × v²   (Joules)",
+    explanation: "Kinetic energy (KE) is the energy possessed by an object due to its motion. It is directly proportional to the object's mass 'm' (in kg) and the square of its velocity 'v' (in m/s). When speed doubles, kinetic energy quadruples!",
+    steps: [
+      "Step 1: Identify mass m (in kilograms kg) and velocity v (in meters per second m/s)",
+      "Step 2: Square the velocity (v² = v × v)",
+      "Step 3: Multiply by mass and 0.5: KE = 0.5 × m × v² (expressed in Joules J)"
+    ]
+  },
+  {
+    id: "phys_potential_energy",
+    subject: "Physics",
+    topic: "Work, Energy & Power",
+    title: "What is Gravitational Potential Energy? (PE = mgh)",
+    keywords: ["potential energy", "what is potential energy", "gravitational potential energy", "mgh", "pe formula", "stored energy", "height", "gravity"],
+    formula: "PE = m × g × h   (Joules)",
+    explanation: "Gravitational potential energy is the energy stored in an object due to its vertical height position relative to the ground. It depends on mass 'm', acceleration due to gravity 'g' (9.8 or 10 m/s²), and height 'h'.",
+    steps: [
+      "Step 1: Identify mass m (kg), gravity g (10 m/s²), and height h (meters)",
+      "Step 2: Multiply parameters together: PE = m × g × h",
+      "Step 3: Express final stored energy in Joules (J)"
+    ]
+  },
+  {
+    id: "phys_ohms_law",
+    subject: "Physics",
+    topic: "Current Electricity",
+    title: "Ohm's Law and Electrical Power (V = I × R)",
+    keywords: ["ohms law", "what is ohms law", "voltage", "current", "resistance", "power", "watts", "volts", "amperes", "circuit", "resistor"],
+    formula: "V = I × R | Power (P) = V × I = I²R = V²/R",
+    explanation: "Ohm's Law states that potential difference (V in Volts) across a conductor is directly proportional to current (I in Amperes) passing through it, provided temperature remains constant.",
+    steps: [
+      "Step 1: Identify given parameters (V in Volts, I in Amps, R in Ohms Ω)",
+      "Step 2: Apply Ohm's Law: V = I × R",
+      "Step 3: Calculate Power: P = V × I (in Watts)"
+    ]
+  },
+  {
+    id: "phys_newton_laws",
+    subject: "Physics",
+    topic: "Forces & Motion",
+    title: "Newton's Second Law of Motion (F = m × a)",
+    keywords: ["force", "mass", "acceleration", "newton", "f=ma", "work", "joules", "momentum", "motion"],
+    formula: "Force (F) = mass (m) × acceleration (a) | Work (W) = Force × Distance",
+    explanation: "Newton's 2nd Law states that net force applied to an object equals its mass multiplied by resulting acceleration. Work is done when a force moves an object through a distance.",
+    steps: [
+      "Step 1: Identify mass m in kg and acceleration a in m/s²",
+      "Step 2: Calculate Force F = m × a (in Newtons N)",
+      "Step 3: Calculate Work W = F × d (in Joules J)"
+    ]
+  },
+  {
+    id: "phys_waves",
+    subject: "Physics",
+    topic: "Waves & Sound",
+    title: "Wave Equation (v = f × λ)",
+    keywords: ["wave", "frequency", "wavelength", "hertz", "sound", "light", "speed of wave", "lambda"],
+    formula: "v = f × λ (Speed = Frequency × Wavelength)",
+    explanation: "Wave velocity 'v' is the product of its frequency 'f' (in Hertz Hz) and wavelength 'λ' (in meters m). Speed of sound in air is approximately 340 m/s.",
+    steps: [
+      "Step 1: Identify frequency f in Hz and wavelength λ in meters",
+      "Step 2: Multiply f × λ to find wave speed v (m/s)",
+      "Step 3: Rearrange as λ = v / f to find wavelength if speed is known"
+    ]
+  },
+
+  // ── ENGLISH LITERATURE & LANGUAGE ─────────────────────────
+  {
+    id: "eng_what_is_rhyme",
+    subject: "English",
+    topic: "Poetry & Literary Devices",
+    title: "What is Rhyme? (Definition, Types & Rhyme Scheme)",
+    keywords: ["what is rhyme", "what is a rhyme", "rhyme", "ryme", "rhyme scheme", "end rhyme", "internal rhyme", "poetry", "stanzas", "syllable sound", "couplet"],
+    formula: "Rhyme Scheme: AABB, ABAB, or ABCB | Examples: Cat / Hat, Light / Night",
+    explanation: "A rhyme is the repetition of identical or similar vowel and consonant sounds at the end of words or lines in poetry and song lyrics. Rhyme creates rhythm, emphasis, and musical quality in literary verse.",
+    steps: [
+      "Step 1: Identify final stressed syllables at the end of poetry lines",
+      "Step 2: Group words with matching ending sounds (e.g., 'play' / 'day' = Sound A)",
+      "Step 3: Label the pattern to determine the Rhyme Scheme (e.g., Line 1 [A], Line 2 [B], Line 3 [A], Line 4 [B] = ABAB)"
+    ]
+  },
+
   // ── MATHEMATICS ───────────────────────────────────────────
   {
     id: "math_linear_eq",
@@ -66,94 +214,6 @@ export const KNOWLEDGE_BASE = [
       "Step 1: Check unit compatibility (convert km/h to m/s by dividing by 3.6 if needed)",
       "Step 2: Apply formula: Distance = Speed × Time",
       "Step 3: State final value with correct unit (km or m)"
-    ]
-  },
-
-  // ── PHYSICS ───────────────────────────────────────────────
-  {
-    id: "phys_ohms_law",
-    subject: "Physics",
-    topic: "Current Electricity",
-    title: "Ohm's Law and Electrical Power (V = I × R)",
-    keywords: ["ohms law", "voltage", "current", "resistance", "power", "watts", "volts", "amperes", "circuit", "resistor"],
-    formula: "V = I × R | Power (P) = V × I = I²R = V²/R",
-    explanation: "Ohm's Law states that potential difference (V in Volts) across a conductor is directly proportional to current (I in Amperes) passing through it, provided temperature remains constant.",
-    steps: [
-      "Step 1: Identify given parameters (V in Volts, I in Amps, R in Ohms Ω)",
-      "Step 2: Apply Ohm's Law: V = I × R",
-      "Step 3: Calculate Power: P = V × I (in Watts)"
-    ]
-  },
-  {
-    id: "phys_newton_laws",
-    subject: "Physics",
-    topic: "Forces & Motion",
-    title: "Newton's Second Law of Motion (F = m × a)",
-    keywords: ["force", "mass", "acceleration", "newton", "f=ma", "work", "joules", "momentum", "motion"],
-    formula: "Force (F) = mass (m) × acceleration (a) | Work (W) = Force × Distance",
-    explanation: "Newton's 2nd Law states that net force applied to an object equals its mass multiplied by resulting acceleration. Work is done when a force moves an object through a distance.",
-    steps: [
-      "Step 1: Identify mass m in kg and acceleration a in m/s²",
-      "Step 2: Calculate Force F = m × a (in Newtons N)",
-      "Step 3: Calculate Work W = F × d (in Joules J)"
-    ]
-  },
-  {
-    id: "phys_waves",
-    subject: "Physics",
-    topic: "Waves & Sound",
-    title: "Wave Equation (v = f × λ)",
-    keywords: ["wave", "frequency", "wavelength", "hertz", "sound", "light", "speed of wave", "lambda"],
-    formula: "v = f × λ (Speed = Frequency × Wavelength)",
-    explanation: "Wave velocity 'v' is the product of its frequency 'f' (in Hertz Hz) and wavelength 'λ' (in meters m). Speed of sound in air is approximately 340 m/s.",
-    steps: [
-      "Step 1: Identify frequency f in Hz and wavelength λ in meters",
-      "Step 2: Multiply f × λ to find wave speed v (m/s)",
-      "Step 3: Rearrange as λ = v / f to find wavelength if speed is known"
-    ]
-  },
-
-  // ── BIOLOGY ───────────────────────────────────────────────
-  {
-    id: "bio_photosynthesis",
-    subject: "Biology",
-    topic: "Plant Nutrition",
-    title: "Photosynthesis Mechanism and Starch Testing",
-    keywords: ["photosynthesis", "chlorophyll", "chloroplast", "glucose", "starch test", "iodine", "sunlight", "carbon dioxide", "light stage"],
-    formula: "6CO₂ + 6H₂O + Sunlight ➔ C₆H₁₂O₆ + 6O₂",
-    explanation: "Chlorophyll inside chloroplasts absorbs solar energy to convert carbon dioxide and water into glucose and oxygen. Stored glucose is converted to starch, tested using iodine (turns blue-black).",
-    steps: [
-      "Step 1: Light reaction: Chlorophyll traps solar energy to split water (photolysis)",
-      "Step 2: Dark reaction: Carbon dioxide is reduced to synthesize glucose",
-      "Step 3: Iodine test: Add iodine to leaf; blue-black color confirms starch presence"
-    ]
-  },
-  {
-    id: "bio_enzymes",
-    subject: "Biology",
-    topic: "Biochemistry",
-    title: "Enzyme Kinetics and Thermal Denaturation",
-    keywords: ["enzyme", "catalyst", "active site", "denaturation", "temperature", "pH", "pepsin", "substrate", "lock and key"],
-    formula: "Enzyme + Substrate ➔ Enzyme-Substrate Complex ➔ Enzyme + Product",
-    explanation: "Enzymes are biological protein catalysts with specific 3D active sites. Temperatures above optimum (>40°C) denature enzymes by breaking hydrogen bonds, permanently deforming the active site.",
-    steps: [
-      "Step 1: Substrate binds to specific complementary active site (Lock and Key model)",
-      "Step 2: Activation energy is lowered, speeding up chemical transformation",
-      "Step 3: Excessive heat or extreme pH alters 3D tertiary structure, causing denaturation"
-    ]
-  },
-  {
-    id: "bio_osmosis",
-    subject: "Biology",
-    topic: "Cell Transport Mechanisms",
-    title: "Osmosis, Plasmolysis, and Turgor Pressure",
-    keywords: ["osmosis", "diffusion", "semi-permeable", "turgid", "plasmolysis", "hypertonic", "hypotonic", "cell membrane", "water potential"],
-    formula: "Water moves from High Water Potential (dilute) ➔ Low Water Potential (concentrated)",
-    explanation: "Osmosis is the passive movement of water molecules across a selectively permeable membrane down a water potential gradient. Plant cells in hypertonic salt solutions lose water, resulting in plasmolysis.",
-    steps: [
-      "Step 1: Compare solute concentrations inside vs outside the cell",
-      "Step 2: In hypertonic solutions, water leaves cell via osmosis",
-      "Step 3: In hypotonic solutions, water enters cell, making plant cells turgid"
     ]
   },
 
@@ -256,10 +316,19 @@ export class LocalSearchEngine {
   }
 
   /**
+   * Cleans natural language question prefixes like "what is a", "what is", "tell me about", "define", "how to"
+   */
+  _normalizeQuery(queryText) {
+    let clean = queryText.toLowerCase().trim();
+    // Fix typos (e.g., ryme -> rhyme)
+    clean = clean.replace(/\bryme\b/g, "rhyme");
+    // Strip common question prefixes
+    clean = clean.replace(/^(what\s+is\s+a\s+|what\s+is\s+an\s+|what\s+is\s+|define\s+|explain\s+|tell\s+me\s+about\s+|how\s+to\s+)/i, "");
+    return clean.trim();
+  }
+
+  /**
    * Evaluates numerical queries to compute live physical/mathematical values on the fly.
-   * e.g., "Ohm's law 12V 3A" -> R = 4 Ω, P = 36 W
-   * e.g., "Circle radius 7" -> Area = 154 cm²
-   * e.g., "Speed 100 km 2 hours" -> 50 km/h
    */
   evaluateLiveQueryValues(queryText) {
     if (!queryText || typeof queryText !== "string") return null;
@@ -422,18 +491,22 @@ export class LocalSearchEngine {
    */
   search(queryText) {
     if (!queryText || typeof queryText !== "string") return [];
-    const q = queryText.toLowerCase().trim();
-    if (q.length < 2) return [];
+    const rawQuery = queryText.toLowerCase().trim();
+    if (rawQuery.length < 2) return [];
+
+    const normalizedQuery = this._normalizeQuery(rawQuery);
 
     const results = [];
 
     // Check if query contains numerical parameters for live value evaluation
-    const liveValueResult = this.evaluateLiveQueryValues(q);
+    const liveValueResult = this.evaluateLiveQueryValues(rawQuery);
     if (liveValueResult) {
       results.push(liveValueResult);
     }
 
-    const queryTokens = q.split(/\s+/).filter(t => t.length > 1);
+    const rawTokens = rawQuery.split(/\s+/).filter(t => t.length > 1);
+    const normTokens = normalizedQuery.split(/\s+/).filter(t => t.length > 1);
+    const allTokens = Array.from(new Set([...rawTokens, ...normTokens]));
 
     this.documents.forEach((doc) => {
       let score = 0;
@@ -444,13 +517,16 @@ export class LocalSearchEngine {
       const formulaLower = (doc.formula || "").toLowerCase();
       const keywords = doc.keywords || [];
 
-      // Exact title match boost
-      if (titleLower.includes(q)) score += 100;
-      if (topicLower.includes(q)) score += 60;
-      if (subjectLower.includes(q)) score += 30;
+      // Natural language phrase match
+      if (titleLower.includes(rawQuery) || titleLower.includes(normalizedQuery)) score += 120;
+      if (keywords.some(k => k.toLowerCase() === rawQuery || k.toLowerCase() === normalizedQuery)) score += 150;
+      if (keywords.some(k => k.toLowerCase().includes(normalizedQuery))) score += 80;
+
+      if (topicLower.includes(rawQuery) || topicLower.includes(normalizedQuery)) score += 60;
+      if (subjectLower.includes(rawQuery) || subjectLower.includes(normalizedQuery)) score += 30;
 
       // Token matching
-      queryTokens.forEach((token) => {
+      allTokens.forEach((token) => {
         if (titleLower.includes(token)) score += 30;
         if (keywords.some(k => k.includes(token))) score += 25;
         if (formulaLower.includes(token)) score += 20;
