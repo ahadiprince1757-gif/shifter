@@ -29,12 +29,10 @@ export class MathMutator {
     }
 
     // 3. Linear Equations & Algebra (e.g. 2x + 5 = 15 or solve for x)
-    const eqMatch = stem.match(/(\d+)\s*x\s*([\+\-])\s*(\d+)\s*=\s*(\d+)/i);
+    const eqMatch = stem.match(/(\d+)\s*x\s*([+-])\s*(\d+)\s*=\s*(\d+)/i);
     if (eqMatch) {
       const a = parseInt(eqMatch[1], 10);
       const op = eqMatch[2];
-      const b = parseInt(eqMatch[3], 10);
-      const c = parseInt(eqMatch[4], 10);
 
       const newA = a + (Math.floor(Math.random() * 3) + 1);
       const newX = Math.floor(Math.random() * 8) + 2; // Make x a clean integer
@@ -86,13 +84,12 @@ export class MathMutator {
     // 5. Generic Number Extraction & Dynamic Scaling for Any Math Question
     const numbers = stem.match(/\b\d+(?:\.\d+)?\b/g);
     if (numbers && numbers.length >= 1) {
-      let mutatedStem = stem;
-      let scaleFactor = (Math.floor(Math.random() * 4) + 2); // 2, 3, 4, 5
+      const scaleFactor = (Math.floor(Math.random() * 4) + 2); // 2, 3, 4, 5
 
       const numVal = parseFloat(numbers[0]);
       if (numVal > 0 && numVal < 1000) {
         const newVal = numVal * scaleFactor;
-        mutatedStem = stem.replace(numbers[0], String(newVal));
+        const mutatedStem = stem.replace(numbers[0], String(newVal));
 
         // Try to update answer numerically if possible
         let origAnsNum = parseFloat(rawAns.replace(/[^0-9.]/g, ""));
