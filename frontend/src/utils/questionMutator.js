@@ -64,7 +64,13 @@ export class QuestionMutator {
 
     // 2. Route to subject-specific mutator
     const subjectKey = (subjectName || blueprint.subject || "").toLowerCase().trim();
-    const mutator = this._mutators[subjectKey];
+    let mutator = this._mutators[subjectKey];
+
+    if (!mutator && subjectKey) {
+      // Find key that is included in subjectKey or vice-versa
+      const matchKey = Object.keys(this._mutators).find(k => subjectKey.includes(k) || k.includes(subjectKey));
+      if (matchKey) mutator = this._mutators[matchKey];
+    }
 
     if (mutator) {
       const result = mutator.mutate(blueprint);
