@@ -74,20 +74,34 @@ export class ChemistryMutator {
     if (lower.includes("acid") || lower.includes("base") || lower.includes("ph") || lower.includes("indicator") || lower.includes("litmus") || lower.includes("neutral")) {
       const isAcid = Math.random() > 0.5;
       return {
-        q: `[Chemical Analysis] A laboratory technician tests an unknown clear aqueous solution with Universal Indicator. The solution turns dark red and shows a pH reading of 2.0. How is this solution correctly classified?`,
-        ans: "Strongly acidic (high H⁺ ion concentration)",
-        hint: "pH values from 0 to 3 indicate strong acids with high H⁺ ion concentration.",
-        why: "A pH of 2.0 indicates a high concentration of hydrogen ions (H⁺), characteristic of a strong acid.",
-        sol: "Strongly acidic",
-        steps: [
-          "Step 1: Observe pH reading (pH 2.0 < 7)",
-          "Step 2: Interpret indicator color (Red = Highly acidic)",
-          "Step 3: Conclude solution contains excess H⁺ ions"
-        ],
+        q: isAcid
+          ? `[Chemical Analysis] A laboratory technician tests an unknown clear aqueous solution with Universal Indicator. The solution turns dark red and shows a pH reading of 2.0. How is this solution correctly classified?`
+          : `[Chemical Analysis] A laboratory technician tests an unknown clear aqueous solution with Universal Indicator. The solution turns dark purple and shows a pH reading of 12.0. How is this solution correctly classified?`,
+        ans: isAcid
+          ? "Strongly acidic (high H⁺ ion concentration)"
+          : "Strongly alkaline (high OH⁻ ion concentration)",
+        hint: isAcid
+          ? "pH values from 0 to 3 indicate strong acids with high H⁺ ion concentration."
+          : "pH values from 11 to 14 indicate strong bases with high OH⁻ ion concentration.",
+        why: isAcid
+          ? "A pH of 2.0 indicates a high concentration of hydrogen ions (H⁺), characteristic of a strong acid."
+          : "A pH of 12.0 indicates a high concentration of hydroxide ions (OH⁻), characteristic of a strong base.",
+        sol: isAcid ? "Strongly acidic" : "Strongly alkaline",
+        steps: isAcid
+          ? [
+              "Step 1: Observe pH reading (pH 2.0 < 7)",
+              "Step 2: Interpret indicator color (Red = Highly acidic)",
+              "Step 3: Conclude solution contains excess H⁺ ions"
+            ]
+          : [
+              "Step 1: Observe pH reading (pH 12.0 > 7)",
+              "Step 2: Interpret indicator color (Purple = Highly alkaline)",
+              "Step 3: Conclude solution contains excess OH⁻ ions"
+            ],
         type: "mcq",
         options: [
-          "Strongly acidic (high H⁺ ion concentration)",
-          "Strongly alkaline (high OH⁻ ion concentration)",
+          isAcid ? "Strongly acidic (high H⁺ ion concentration)" : "Strongly alkaline (high OH⁻ ion concentration)",
+          isAcid ? "Strongly alkaline (high OH⁻ ion concentration)" : "Strongly acidic (high H⁺ ion concentration)",
           "Neutral (equal H⁺ and OH⁻ concentration)",
           "Weakly basic (pH 8.5 - 9.0)"
         ]
