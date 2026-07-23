@@ -1,8 +1,14 @@
 /**
- * Local In-Browser Knowledge Search Engine
- * Offline-first | 0ms Latency | Zero API Costs
- * Indexes subject formulas, concept explanations, common student questions, and curriculum topics.
+ * Advanced Knowledge & Database Search Engine
+ * Offline & Online Hybrid | Live Value Calculator | Supabase & IndexedDB Integrator
+ * Performs:
+ * 1. 0ms Offline Inverted Index Knowledge Search
+ * 2. Live Mathematical & Physical Value Evaluations (e.g., "Ohm's Law 12V 3A" -> R=4Ω, P=36W)
+ * 3. Online Supabase & IndexedDB Database Querying when connected
  */
+
+import { supabase } from "../supabase.js";
+import { db } from "../db/db.js";
 
 export const KNOWLEDGE_BASE = [
   // ── MATHEMATICS ───────────────────────────────────────────
@@ -250,18 +256,133 @@ export class LocalSearchEngine {
   }
 
   /**
-   * Search knowledge base with fuzzy keyword matching & scoring.
-   * @param {string} queryText 
-   * @returns {Array} Ranked search results with score, formula, and step breakdowns
+   * Evaluates numerical queries to compute live physical/mathematical values on the fly.
+   * e.g., "Ohm's law 12V 3A" -> R = 4 Ω, P = 36 W
+   * e.g., "Circle radius 7" -> Area = 154 cm²
+   * e.g., "Speed 100 km 2 hours" -> 50 km/h
+   */
+  evaluateLiveQueryValues(queryText) {
+    if (!queryText || typeof queryText !== "string") return null;
+    const lower = queryText.toLowerCase();
+
+    // 1. Ohm's Law Evaluation: e.g. "12V 3A" or "voltage 24 current 2"
+    const voltMatch = lower.match(/(\d+(?:\.\d+)?)\s*v/i);
+    const ampMatch = lower.match(/(\d+(?:\.\d+)?)\s*a/i);
+    const ohmMatch = lower.match(/(\d+(?:\.\d+)?)\s*(?:ohm|Ω)/i);
+
+    if (voltMatch && ampMatch) {
+      const v = parseFloat(voltMatch[1]);
+      const i = parseFloat(ampMatch[1]);
+      if (i > 0) {
+        const r = (v / i).toFixed(2);
+        const p = (v * i).toFixed(2);
+        return {
+          id: "live_calc_ohms",
+          subject: "Physics",
+          topic: "Electricity Calculation",
+          title: `🧮 Live Calculation: Ohm's Law for ${v} V & ${i} A`,
+          formula: `V = ${v} V | I = ${i} A ➔ Resistance R = ${r} Ω | Power P = ${p} W`,
+          explanation: `Calculated values: Resistance R = V ÷ I = ${v} ÷ ${i} = ${r} Ω. Electrical Power P = V × I = ${v} × ${i} = ${p} Watts.`,
+          steps: [
+            `Step 1: Given V = ${v} V, I = ${i} A`,
+            `Step 2: Resistance R = ${v} / ${i} = ${r} Ω`,
+            `Step 3: Power P = ${v} × ${i} = ${p} W`
+          ],
+          isLiveCalculated: true
+        };
+      }
+    }
+
+    if (voltMatch && ohmMatch) {
+      const v = parseFloat(voltMatch[1]);
+      const r = parseFloat(ohmMatch[1]);
+      if (r > 0) {
+        const i = (v / r).toFixed(2);
+        const p = ((v * v) / r).toFixed(2);
+        return {
+          id: "live_calc_ohms_vr",
+          subject: "Physics",
+          topic: "Electricity Calculation",
+          title: `🧮 Live Calculation: Ohm's Law for ${v} V & ${r} Ω`,
+          formula: `V = ${v} V | R = ${r} Ω ➔ Current I = ${i} A | Power P = ${p} W`,
+          explanation: `Calculated values: Current I = V ÷ R = ${v} ÷ ${r} = ${i} Amperes. Power P = V² ÷ R = ${p} Watts.`,
+          steps: [
+            `Step 1: Given V = ${v} V, R = ${r} Ω`,
+            `Step 2: Current I = ${v} / ${r} = ${i} A`,
+            `Step 3: Power P = (${v}²) / ${r} = ${p} W`
+          ],
+          isLiveCalculated: true
+        };
+      }
+    }
+
+    // 2. Speed / Kinematics Evaluation: e.g. "100 km 2 hours"
+    const distMatch = lower.match(/(\d+(?:\.\d+)?)\s*km/i);
+    const timeMatch = lower.match(/(\d+(?:\.\d+)?)\s*(?:hour|hr|h|second|sec|s)/i);
+
+    if (distMatch && timeMatch) {
+      const d = parseFloat(distMatch[1]);
+      const t = parseFloat(timeMatch[1]);
+      if (t > 0) {
+        const s = (d / t).toFixed(1);
+        return {
+          id: "live_calc_speed",
+          subject: "Mathematics / Physics",
+          topic: "Kinematics Evaluation",
+          title: `🧮 Live Calculation: Speed for ${d} km in ${t} hours`,
+          formula: `Speed = Distance ÷ Time = ${d} km ÷ ${t} h = ${s} km/h`,
+          explanation: `Calculated average speed: ${s} km/h. Distance covered = ${d} km over ${t} hours.`,
+          steps: [
+            `Step 1: Given Distance d = ${d} km, Time t = ${t} hours`,
+            `Step 2: Speed = d / t = ${d} / ${t} = ${s} km/h`
+          ],
+          isLiveCalculated: true
+        };
+      }
+    }
+
+    // 3. Circle Geometry Evaluation: e.g. "circle radius 7"
+    const radMatch = lower.match(/(?:radius|r)\s*=?\s*(\d+(?:\.\d+)?)/i);
+    if (radMatch && lower.includes("circle")) {
+      const r = parseFloat(radMatch[1]);
+      const area = ((22 / 7) * r * r).toFixed(2);
+      const circ = (2 * (22 / 7) * r).toFixed(2);
+      return {
+        id: "live_calc_circle",
+        subject: "Mathematics",
+        topic: "Geometry Evaluation",
+        title: `🧮 Live Calculation: Circle with Radius r = ${r}`,
+        formula: `Area = πr² = ${area} | Circumference = 2πr = ${circ}`,
+        explanation: `Taking π ≈ 22/7: Area = (22/7) × ${r}² = ${area}. Circumference = 2 × (22/7) × ${r} = ${circ}.`,
+        steps: [
+          `Step 1: Radius r = ${r}`,
+          `Step 2: Area = (22/7) × ${r}² = ${area}`,
+          `Step 3: Circumference = 2 × (22/7) × ${r} = ${circ}`
+        ],
+        isLiveCalculated: true
+      };
+    }
+
+    return null;
+  }
+
+  /**
+   * Search offline knowledge base + calculate live parameter values.
    */
   search(queryText) {
     if (!queryText || typeof queryText !== "string") return [];
     const q = queryText.toLowerCase().trim();
     if (q.length < 2) return [];
 
-    const queryTokens = q.split(/\s+/).filter(t => t.length > 1);
-
     const results = [];
+
+    // Check if query contains numerical parameters for live value evaluation
+    const liveValueResult = this.evaluateLiveQueryValues(q);
+    if (liveValueResult) {
+      results.push(liveValueResult);
+    }
+
+    const queryTokens = q.split(/\s+/).filter(t => t.length > 1);
 
     this.documents.forEach((doc) => {
       let score = 0;
@@ -296,8 +417,67 @@ export class LocalSearchEngine {
       }
     });
 
-    // Sort descending by score
     return results.sort((a, b) => b.score - a.score).slice(0, 10);
+  }
+
+  /**
+   * Online Database Search: Queries live Supabase & IndexedDB database tables when connected.
+   */
+  async searchOnlineDatabase(queryText) {
+    if (!queryText || typeof queryText !== "string") return [];
+    const q = queryText.trim();
+    if (q.length < 2) return [];
+
+    const dbResults = [];
+
+    // 1. Search local IndexedDB topics store
+    try {
+      const localTopics = await db.topics.filter(t => !t.is_deleted).toArray();
+      localTopics.forEach(t => {
+        const title = t.title || t.topic || "";
+        if (title.toLowerCase().includes(q.toLowerCase())) {
+          dbResults.push({
+            id: `db_local_${t.id}`,
+            subject: t.curriculum_id || "Database Topic",
+            topic: t.chapter_id || "Live IndexedDB Record",
+            title: `🌐 DB Topic: ${title}`,
+            formula: t.formula || null,
+            explanation: t.summary || t.content || `Live record retrieved from IndexedDB.`,
+            isOnlineDatabaseRecord: true
+          });
+        }
+      });
+    } catch (err) {
+      console.warn("IndexedDB search warning:", err);
+    }
+
+    // 2. Search Supabase remote database if online
+    if (typeof navigator !== "undefined" && navigator.onLine && supabase && typeof supabase.from === "function") {
+      try {
+        const { data, error } = await supabase
+          .from("topics")
+          .select("id, title, summary, curriculum_id, chapter_id")
+          .ilike("title", `%${q}%`)
+          .limit(5);
+
+        if (!error && data && data.length > 0) {
+          data.forEach(item => {
+            dbResults.push({
+              id: `db_supabase_${item.id}`,
+              subject: item.curriculum_id || "Supabase Cloud",
+              topic: item.chapter_id || "Live Cloud Database",
+              title: `☁️ Cloud DB: ${item.title}`,
+              explanation: item.summary || "Live topic record retrieved from Cloud Database.",
+              isOnlineDatabaseRecord: true
+            });
+          });
+        }
+      } catch (err) {
+        console.warn("Supabase online database search warning:", err);
+      }
+    }
+
+    return dbResults;
   }
 }
 

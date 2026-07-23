@@ -3269,6 +3269,10 @@ html.dark-mode .legal-modal-header {
 .search-concept-card:last-child {
   border-bottom: none;
 }
+.search-concept-card.live-calc-card {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(58, 143, 253, 0.06));
+  border-left: 3px solid var(--gr);
+}
 .search-concept-card:hover,
 .search-concept-card.selected {
   background: rgba(117, 82, 243, 0.08);

@@ -12,6 +12,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [prevQuery, setPrevQuery] = useState("");
+  const [onlineDbResults, setOnlineDbResults] = useState([]);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -29,12 +30,37 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
+  // Async query for online Supabase & local IndexedDB records
+  useEffect(() => {
+    if (!query.trim() || query.length < 2) {
+      setOnlineDbResults([]);
+      return;
+    }
+
+    let isMounted = true;
+    const timer = setTimeout(async () => {
+      try {
+        const results = await localSearchEngine.searchOnlineDatabase(query);
+        if (isMounted) {
+          setOnlineDbResults(results);
+        }
+      } catch (err) {
+        console.warn("Online DB search error:", err);
+      }
+    }, 200);
+
+    return () => {
+      isMounted = false;
+      clearTimeout(timer);
+    };
+  }, [query]);
+
   // Hybrid Search: In-Browser Knowledge Base + Curriculum Matching
   const { conceptResults, curriculumResults } = useMemo(() => {
     if (!query.trim()) return { conceptResults: [], curriculumResults: [] };
     const q = query.toLowerCase().trim();
 
-    // 1. In-Browser Instant Knowledge Search (<5ms)
+    // 1. In-Browser Instant Knowledge Search & Live Value Calculations (<5ms)
     const concepts = localSearchEngine.search(q);
 
     // 2. Curriculum Topic Matching
@@ -69,7 +95,11 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     };
   }, [query, curriculum]);
 
-  const totalResultsCount = conceptResults.length + curriculumResults.length;
+  const allConceptResults = useMemo(() => {
+    return [...conceptResults, ...onlineDbResults];
+  }, [conceptResults, onlineDbResults]);
+
+  const totalResultsCount = allConceptResults.length + curriculumResults.length;
 
   // Reset selection when query changes
   if (query !== prevQuery) {
@@ -95,19 +125,18 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
       setSelectedIndex((prev) => (prev > 0 ? prev - 1 : prev));
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (selectedIndex >= 0 && selectedIndex < conceptResults.length) {
-        // Concept item selected
-        const item = conceptResults[selectedIndex];
-        // Find matching subject in curriculum or navigate to first available
-        const subj = curriculum.find(s => s.label.toLowerCase().includes(item.subject.toLowerCase())) || curriculum[0];
+      if (selectedIndex >= 0 && selectedIndex < allConceptResults.length) {
+        // Concept / DB item selected
+        const item = allConceptResults[selectedIndex];
+        const subj = curriculum.find(s => s.label.toLowerCase().includes(String(item.subject).toLowerCase())) || curriculum[0];
         if (subj && subj.chapters.length > 0) {
           const chap = subj.chapters[0];
           navigateToTopic(subj.id, chap.id, chap.topics[0] || item.topic);
         }
         setIsOpen(false);
-      } else if (selectedIndex >= conceptResults.length) {
+      } else if (selectedIndex >= allConceptResults.length) {
         // Curriculum item selected
-        const currItem = curriculumResults[selectedIndex - conceptResults.length];
+        const currItem = curriculumResults[selectedIndex - allConceptResults.length];
         if (currItem) handleSelectTopic(currItem);
       }
     } else if (e.key === "Escape") {
@@ -130,7 +159,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
         <input
           ref={inputRef}
           type="search"
-          placeholder="Ask any question, formula, or topic (Offline Search)..."
+          placeholder="Search formulas, concepts, live values & DB records..."
           value={query}
           autoFocus
           autoComplete="off"
@@ -167,18 +196,18 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
           id="search-dropdown-list"
           role="listbox"
         >
-          {/* Section 1: In-Browser Instant Answers & Formulas */}
-          {conceptResults.length > 0 && (
+          {/* Section 1: In-Browser Instant Answers, Live Calculations & DB Records */}
+          {allConceptResults.length > 0 && (
             <div className="search-section">
-              <div className="search-section-header">⚡ Instant Concept & Formula Answers</div>
-              {conceptResults.map((item, i) => {
+              <div className="search-section-header">⚡ Instant Concepts, Live Values & DB Records</div>
+              {allConceptResults.map((item, i) => {
                 const isSelected = i === selectedIndex;
                 return (
                   <div
                     key={`concept_${item.id}`}
-                    className={`search-concept-card ${isSelected ? "selected" : ""}`}
+                    className={`search-concept-card ${isSelected ? "selected" : ""} ${item.isLiveCalculated ? "live-calc-card" : ""}`}
                     onClick={() => {
-                      const subj = curriculum.find(s => s.label.toLowerCase().includes(item.subject.toLowerCase())) || curriculum[0];
+                      const subj = curriculum.find(s => s.label.toLowerCase().includes(String(item.subject).toLowerCase())) || curriculum[0];
                       if (subj && subj.chapters.length > 0) {
                         const chap = subj.chapters[0];
                         navigateToTopic(subj.id, chap.id, chap.topics[0] || item.topic);
@@ -217,7 +246,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
             <div className="search-section">
               <div className="search-section-header">📚 Curriculum Topics</div>
               {curriculumResults.map((r, idx) => {
-                const globalIdx = conceptResults.length + idx;
+                const globalIdx = allConceptResults.length + idx;
                 const isSelected = globalIdx === selectedIndex;
                 return (
                   <div
@@ -237,10 +266,10 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
 
           {totalResultsCount === 0 && (
             <div className="search-empty">
-              No local answers or topics found for &ldquo;{query}&rdquo;.
+              No answers, calculated values, or DB records found for &ldquo;{query}&rdquo;.
               <br />
               <small style={{ opacity: 0.75, display: "block", marginTop: "4px" }}>
-                Try searching for formulas ("V = I * R"), concepts ("photosynthesis"), or topics ("algebra").
+                Try searching for values ("12V 3A"), formulas ("V = I * R"), or topics ("algebra").
               </small>
             </div>
           )}
