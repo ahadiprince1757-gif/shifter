@@ -363,6 +363,57 @@ export class LocalSearchEngine {
       };
     }
 
+    // 4. Financial Math & Discount Evaluation: e.g. "20% discount on 5000"
+    const pctMatch = lower.match(/(\d+(?:\.\d+)?)\s*%/);
+    const amountMatch = lower.match(/(?:ksh|\$|€|£|\bon\b|\bof\b)\s*(\d+(?:,\d+)*(?:\.\d+)?)/i);
+    if (pctMatch && amountMatch && (lower.includes("discount") || lower.includes("profit") || lower.includes("interest"))) {
+      const pct = parseFloat(pctMatch[1]);
+      const amt = parseFloat(amountMatch[1].replace(/,/g, ""));
+      const disc = Math.round((amt * pct) / 100);
+      const finalPrice = lower.includes("discount") ? amt - disc : amt + disc;
+      return {
+        id: "live_calc_discount",
+        subject: "Mathematics / Business",
+        topic: "Financial Math Calculation",
+        title: `🧮 Live Calculation: ${pct}% ${lower.includes("discount") ? "Discount" : "Profit"} on KSh ${amt.toLocaleString()}`,
+        formula: `${lower.includes("discount") ? "Discount" : "Profit"} = KSh ${disc.toLocaleString()} | Final Amount = KSh ${finalPrice.toLocaleString()}`,
+        explanation: `${pct}% of KSh ${amt.toLocaleString()} = KSh ${disc.toLocaleString()}. ${lower.includes("discount") ? "Amount paid after discount" : "Total accumulated amount"} = KSh ${finalPrice.toLocaleString()}.`,
+        steps: [
+          `Step 1: Calculate ${pct}% of KSh ${amt.toLocaleString()} = KSh ${disc.toLocaleString()}`,
+          `Step 2: ${lower.includes("discount") ? "Subtract from" : "Add to"} original price: KSh ${amt.toLocaleString()} ${lower.includes("discount") ? "-" : "+"} KSh ${disc.toLocaleString()}`,
+          `Step 3: Final Amount = KSh ${finalPrice.toLocaleString()}`
+        ],
+        isLiveCalculated: true
+      };
+    }
+
+    // 5. Linear Equation Solver: e.g. "2x + 10 = 30" or "5x - 15 = 35"
+    const eqMatch = lower.match(/(\d+)\s*x\s*([+-])\s*(\d+)\s*=\s*(\d+)/i);
+    if (eqMatch) {
+      const a = parseInt(eqMatch[1], 10);
+      const op = eqMatch[2];
+      const b = parseInt(eqMatch[3], 10);
+      const c = parseInt(eqMatch[4], 10);
+
+      if (a > 0) {
+        const rhs = op === "+" ? c - b : c + b;
+        const x = (rhs / a).toFixed(2);
+        return {
+          id: "live_calc_linear_eq",
+          subject: "Mathematics",
+          topic: "Algebra Solver",
+          title: `🧮 Live Calculation: Solve ${a}x ${op} ${b} = ${c}`,
+          formula: `${a}x = ${c} ${op === "+" ? "-" : "+"} ${b} = ${rhs} ➔ x = ${x}`,
+          explanation: `Solving for x: First ${op === "+" ? "subtract" : "add"} ${b} from both sides (${a}x = ${rhs}). Then divide by ${a} to get x = ${x}.`,
+          steps: [
+            `Step 1: ${a}x = ${c} ${op === "+" ? "-" : "+"} ${b} = ${rhs}`,
+            `Step 2: x = ${rhs} / ${a} = ${x}`
+          ],
+          isLiveCalculated: true
+        };
+      }
+    }
+
     return null;
   }
 

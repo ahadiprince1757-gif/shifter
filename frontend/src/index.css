@@ -3298,7 +3298,38 @@ html.dark-mode .legal-modal-header {
   border-radius: 99px;
   flex-shrink: 0;
 }
-.scc-formula {
+/* ── Search Filter Bar & Formula Copy Button ──────────────── */
+.search-filter-bar {
+  display: flex;
+  gap: 0.35rem;
+  padding: 0.4rem 0.6rem;
+  background: var(--bg);
+  border-bottom: 1px solid var(--bd);
+  overflow-x: auto;
+}
+.sfb-btn {
+  background: transparent;
+  border: 1px solid var(--bd);
+  border-radius: 99px;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  color: var(--t2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+.sfb-btn:hover,
+.sfb-btn.active {
+  background: var(--v);
+  border-color: var(--v);
+  color: #fff;
+}
+.scc-formula-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
   background: rgba(245, 158, 11, 0.08);
   border: 1px solid rgba(245, 158, 11, 0.25);
   border-radius: 6px;

@@ -12,9 +12,24 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [prevQuery, setPrevQuery] = useState("");
+  const [activeTab, setActiveTab] = useState("all");
+  const [copiedId, setCopiedId] = useState(null);
   const [onlineDbResults, setOnlineDbResults] = useState([]);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Global Keyboard Shortcut: '/' or 'Ctrl+K' to focus search
+  useEffect(() => {
+    function handleGlobalKeyDown(e) {
+      if ((e.key === "/" && document.activeElement !== inputRef.current) || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k")) {
+        e.preventDefault();
+        inputRef.current?.focus();
+        setIsOpen(true);
+      }
+    }
+    document.addEventListener("keydown", handleGlobalKeyDown);
+    return () => document.removeEventListener("keydown", handleGlobalKeyDown);
+  }, []);
 
   // Close when clicking outside
   useEffect(() => {
@@ -99,7 +114,20 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     return [...conceptResults, ...onlineDbResults];
   }, [conceptResults, onlineDbResults]);
 
-  const totalResultsCount = allConceptResults.length + curriculumResults.length;
+  // Filter items by active tab
+  const filteredConceptResults = useMemo(() => {
+    if (activeTab === "calc") return allConceptResults.filter(c => c.isLiveCalculated || c.formula);
+    if (activeTab === "concepts") return allConceptResults.filter(c => !c.isLiveCalculated && !c.isOnlineDatabaseRecord);
+    if (activeTab === "db") return allConceptResults.filter(c => c.isOnlineDatabaseRecord);
+    return allConceptResults;
+  }, [allConceptResults, activeTab]);
+
+  const filteredCurriculumResults = useMemo(() => {
+    if (activeTab === "calc" || activeTab === "db") return [];
+    return curriculumResults;
+  }, [curriculumResults, activeTab]);
+
+  const totalResultsCount = filteredConceptResults.length + filteredCurriculumResults.length;
 
   // Reset selection when query changes
   if (query !== prevQuery) {
@@ -114,6 +142,15 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     setSelectedIndex(-1);
   };
 
+  const handleCopyFormula = (e, formula, id) => {
+    e.stopPropagation();
+    if (navigator.clipboard && formula) {
+      navigator.clipboard.writeText(formula);
+      setCopiedId(id);
+      setTimeout(() => setCopiedId(null), 1500);
+    }
+  };
+
   const handleKeyDown = (e) => {
     if (!isOpen || totalResultsCount === 0) return;
 
@@ -125,18 +162,18 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
       setSelectedIndex((prev) => (prev > 0 ? prev - 1 : prev));
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (selectedIndex >= 0 && selectedIndex < allConceptResults.length) {
+      if (selectedIndex >= 0 && selectedIndex < filteredConceptResults.length) {
         // Concept / DB item selected
-        const item = allConceptResults[selectedIndex];
+        const item = filteredConceptResults[selectedIndex];
         const subj = curriculum.find(s => s.label.toLowerCase().includes(String(item.subject).toLowerCase())) || curriculum[0];
         if (subj && subj.chapters.length > 0) {
           const chap = subj.chapters[0];
           navigateToTopic(subj.id, chap.id, chap.topics[0] || item.topic);
         }
         setIsOpen(false);
-      } else if (selectedIndex >= allConceptResults.length) {
+      } else if (selectedIndex >= filteredConceptResults.length) {
         // Curriculum item selected
-        const currItem = curriculumResults[selectedIndex - allConceptResults.length];
+        const currItem = filteredCurriculumResults[selectedIndex - filteredConceptResults.length];
         if (currItem) handleSelectTopic(currItem);
       }
     } else if (e.key === "Escape") {
@@ -159,7 +196,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
         <input
           ref={inputRef}
           type="search"
-          placeholder="Search formulas, concepts, live values & DB records..."
+          placeholder="Search formulas, live values & topics... (Press '/' to focus)"
           value={query}
           autoFocus
           autoComplete="off"
@@ -196,11 +233,41 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
           id="search-dropdown-list"
           role="listbox"
         >
+          {/* Filter Bar */}
+          <div className="search-filter-bar">
+            <button
+              className={`sfb-btn ${activeTab === "all" ? "active" : ""}`}
+              onClick={() => setActiveTab("all")}
+            >
+              All
+            </button>
+            <button
+              className={`sfb-btn ${activeTab === "calc" ? "active" : ""}`}
+              onClick={() => setActiveTab("calc")}
+            >
+              🧮 Calculations
+            </button>
+            <button
+              className={`sfb-btn ${activeTab === "concepts" ? "active" : ""}`}
+              onClick={() => setActiveTab("concepts")}
+            >
+              ⚡ Concepts
+            </button>
+            {onlineDbResults.length > 0 && (
+              <button
+                className={`sfb-btn ${activeTab === "db" ? "active" : ""}`}
+                onClick={() => setActiveTab("db")}
+              >
+                ☁️ DB ({onlineDbResults.length})
+              </button>
+            )}
+          </div>
+
           {/* Section 1: In-Browser Instant Answers, Live Calculations & DB Records */}
-          {allConceptResults.length > 0 && (
+          {filteredConceptResults.length > 0 && (
             <div className="search-section">
               <div className="search-section-header">⚡ Instant Concepts, Live Values & DB Records</div>
-              {allConceptResults.map((item, i) => {
+              {filteredConceptResults.map((item, i) => {
                 const isSelected = i === selectedIndex;
                 return (
                   <div
@@ -221,8 +288,17 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
                     </div>
 
                     {item.formula && (
-                      <div className="scc-formula">
-                        📐 <code>{item.formula}</code>
+                      <div className="scc-formula-wrap">
+                        <div className="scc-formula">
+                          📐 <code>{item.formula}</code>
+                        </div>
+                        <button
+                          className="scc-copy-btn"
+                          onClick={(e) => handleCopyFormula(e, item.formula, item.id)}
+                          title="Copy formula"
+                        >
+                          {copiedId === item.id ? "✓ Copied" : "📋 Copy"}
+                        </button>
                       </div>
                     )}
 
@@ -242,11 +318,11 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
           )}
 
           {/* Section 2: Curriculum Topics */}
-          {curriculumResults.length > 0 && (
+          {filteredCurriculumResults.length > 0 && (
             <div className="search-section">
               <div className="search-section-header">📚 Curriculum Topics</div>
-              {curriculumResults.map((r, idx) => {
-                const globalIdx = allConceptResults.length + idx;
+              {filteredCurriculumResults.map((r, idx) => {
+                const globalIdx = filteredConceptResults.length + idx;
                 const isSelected = globalIdx === selectedIndex;
                 return (
                   <div
