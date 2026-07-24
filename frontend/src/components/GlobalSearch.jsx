@@ -305,12 +305,12 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
                     <div className="scc-explanation">{item.explanation}</div>
 
                     {item.steps && (
-                      <div className="scc-steps">
-                        {item.steps.map((st, sIdx) => (
-                          <div key={sIdx} className="scc-step-item">{st}</div>
-                        ))}
-                      </div>
-                    )}
+                       <div className="scc-steps">
+                         {(Array.isArray(item.steps) ? item.steps : item.steps.split('.')).filter(Boolean).map((st, sIdx) => (
+                           <div key={sIdx} className="scc-step-item">{st.trim()}</div>
+                         ))}
+                       </div>
+                     )}
                   </div>
                 );
               })}
