@@ -5,11 +5,9 @@ import rehypeRaw from "rehype-raw";
 
 function NotesPhase({ topic, content, goBack, onNext }) {
   const [fontSize, setFontSize] = useState(100);
-
-  // Swipe detection
+  const [swipeHint, setSwipeHint] = useState(null); // null | "left" | "right"
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
-  const [swipeHint, setSwipeHint] = useState(null); // null | "left" | "right"
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -21,32 +19,30 @@ function NotesPhase({ topic, content, goBack, onNext }) {
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
 
-    // Only count horizontal swipes (must be more horizontal than vertical)
+    // Require a horizontal swipe longer than 50px and more horizontal than vertical
     if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) {
       touchStartX.current = null;
       return;
     }
 
     if (deltaX < 0) {
-      // Swipe left → advance to quiz
+      // Swipe left – show hint only
       setSwipeHint("left");
-      setTimeout(() => { setSwipeHint(null); onNext(); }, 300);
     } else {
-      // Swipe right → go back to topics
+      // Swipe right – show hint only
       setSwipeHint("right");
-      setTimeout(() => { setSwipeHint(null); goBack(); }, 300);
     }
+    setTimeout(() => setSwipeHint(null), 300);
     touchStartX.current = null;
   };
 
   const notes = Array.isArray(content.notes)
     ? content.notes.join("\n")
     : content.notes || "";
-
   const hasHtml = typeof notes === "string" && /<[^>]+>/.test(notes);
   const markup = notes || "<p>No notes are available for this topic yet.</p>";
 
-  const zoomIn  = () => setFontSize((f) => Math.min(f + 10, 160));
+  const zoomIn = () => setFontSize((f) => Math.min(f + 10, 160));
   const zoomOut = () => setFontSize((f) => Math.max(f - 10, 70));
 
   return (
@@ -61,7 +57,7 @@ function NotesPhase({ topic, content, goBack, onNext }) {
         <span className="lct">{topic}</span>
         <div className="zoom-controls">
           <button className="zoom-btn" onClick={zoomOut} title="Decrease font size">A−</button>
-          <button className="zoom-btn" onClick={zoomIn}  title="Increase font size">A+</button>
+          <button className="zoom-btn" onClick={zoomIn} title="Increase font size">A+</button>
         </div>
       </div>
       <div className="lcb">
@@ -70,10 +66,7 @@ function NotesPhase({ topic, content, goBack, onNext }) {
             {hasHtml ? (
               <div dangerouslySetInnerHTML={{ __html: markup }} />
             ) : (
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-              >
+              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                 {markup}
               </ReactMarkdown>
             )}
@@ -88,12 +81,8 @@ function NotesPhase({ topic, content, goBack, onNext }) {
         </div>
 
         <div className="lnav-strip">
-          <button className="btn-g" onClick={goBack}>
-            ← Back to Topics
-          </button>
-          <button className="btn-p" onClick={onNext}>
-            I've Finished Reading →
-          </button>
+          <button className="btn-g" onClick={goBack}>← Back to Topics</button>
+          <button className="btn-p" onClick={onNext}>I've Finished Reading →</button>
         </div>
       </div>
     </div>
