@@ -161,11 +161,10 @@ export class PhysicsMutator {
     // 6. Generic Parameter Randomizer Fallback
     const numbers = stem.match(/\b\d+(?:\.\d+)?\b/g);
     if (numbers && numbers.length >= 1) {
-      let mutatedStem = stem;
       const numVal = parseFloat(numbers[0]);
       if (numVal > 0 && numVal < 1000) {
         const newVal = Math.round(numVal * 1.5);
-        mutatedStem = stem.replace(numbers[0], String(newVal));
+        const mutatedStem = stem.replace(numbers[0], String(newVal));
 
         return {
           ...qObj,

@@ -3,7 +3,7 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
-function NotesPhase({ topic, content, goBack, onNext }) {
+function NotesPhase({ content, goBack, onNext }) {
   const [fontSize, setFontSize] = useState(100);
   const [swipeHint, setSwipeHint] = useState(null); // null | "left" | "right"
   const touchStartX = useRef(null);

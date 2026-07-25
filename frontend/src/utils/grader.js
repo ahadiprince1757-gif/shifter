@@ -30,16 +30,10 @@ export function evaluateAnswer(userAnswer, question) {
   const tokenize = (s) => normalize(s).split(" ").filter(Boolean);
   const uAns = normalize(userAnswer);
 
-  let isCorrect = false;
-  let mainCorrectAnswerStr = "";
-
-  if (Array.isArray(rawAns)) {
-    mainCorrectAnswerStr = rawAns.join(" • ");
-    isCorrect = rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize));
-  } else {
-    mainCorrectAnswerStr = String(rawAns || "");
-    isCorrect = checkSingleVariant(uAns, normalize(rawAns), tokenize);
-  }
+  const mainCorrectAnswerStr = Array.isArray(rawAns) ? rawAns.join(" • ") : String(rawAns || "");
+  const isCorrect = Array.isArray(rawAns)
+    ? rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize))
+    : checkSingleVariant(uAns, normalize(rawAns), tokenize);
 
   return {
     isCorrect,

@@ -48,8 +48,8 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
   // Async query for online Supabase & local IndexedDB records
   useEffect(() => {
     if (!query.trim() || query.length < 2) {
-      setOnlineDbResults([]);
-      return;
+      const resetTimer = setTimeout(() => setOnlineDbResults([]), 0);
+      return () => clearTimeout(resetTimer);
     }
 
     let isMounted = true;
