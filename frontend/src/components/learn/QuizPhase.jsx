@@ -39,7 +39,6 @@ function QuizPhase({
       <div className="lc" id="qCard">
         <div className="lch">
           <span className="lbadge lb-n">📖 Review</span>
-          <span className="lct">{topic}</span>
         </div>
         <div className="lcb">
           <div className="fb-card">
@@ -97,9 +96,8 @@ function QuizPhase({
     <div className="lc" id="qCard">
       <div className="lch">
         <span className="lbadge lb-q">
-          {retryState === "retry" ? "🔄 Retry" : `🧠 Question ${qIdx + 1}`}
+          {retryState === "retry" ? "🔄 Retry" : `🧠 Question ${qIdx + 1} of ${totalQs || 1}`}
         </span>
-        <span className="lct">{topic}</span>
       </div>
 
       <div className="lcb">

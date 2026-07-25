@@ -1,19 +1,19 @@
-function LearnHeader({ goBack, topic, subject, chapter, phase }) {
-  const phaseLabels = ["Notes", "Quiz", "Mastered"];
-  const currentPhase = phaseLabels[phase] ?? "Notes";
-
+function LearnHeader({ goBack, topic, subject, chapter }) {
   return (
     <div className="vhd">
-      <button className="vback" onClick={goBack}>
-        ← Back to Topics
-      </button>
-      <div className="vtitle">{topic}</div>
-      <div className="vsub">
-        {subject.icon} {subject.label} · {chapter.label}
+      <div className="vhd-top-row">
+        <button className="vback" onClick={goBack}>
+          ← Topics
+        </button>
+        <div className="vsub">
+          {subject?.icon ? <span>{subject.icon} </span> : null}
+          {subject?.label} · {chapter?.label}
+        </div>
       </div>
-      <div className="vphase">{currentPhase}</div>
+      <h1 className="vtitle">{topic}</h1>
     </div>
   );
 }
 
 export default LearnHeader;
+

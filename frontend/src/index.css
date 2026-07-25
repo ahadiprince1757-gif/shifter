@@ -1256,29 +1256,38 @@ html.dark-mode .lnav-search-panel {
 
 /* View Header & Back Navigation Styles */
 .vhd {
-  margin-bottom: 2rem;
+  margin-bottom: 1.1rem;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.vhd-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  width: 100%;
 }
 
 .vback {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   font-size: 0.8rem;
   font-weight: 500;
   color: var(--t2);
   cursor: pointer;
   background: var(--bg2);
   border: 1px solid var(--bd);
-  padding: 0.45rem 0.9rem;
+  padding: 0.35rem 0.8rem;
   border-radius: 99px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   font-family: inherit;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0;
   outline: none;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .vback:hover {
@@ -1292,20 +1301,24 @@ html.dark-mode .lnav-search-panel {
   box-shadow: 0 0 0 2px rgba(117, 82, 243, 0.25);
 }
 
+.vsub {
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--t3);
+  margin-top: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .vtitle {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  font-size: clamp(1.4rem, 3.5vw, 1.85rem);
+  font-size: clamp(1.25rem, 3.5vw, 1.75rem);
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--t);
   margin: 0;
-  line-height: 1.2;
-}
-
-.vsub {
-  font-size: 0.85rem;
-  color: var(--t3);
-  margin-top: 0.35rem;
+  line-height: 1.25;
 }
 
 /* Subject List - Steve Jobs Minimalist Redesign */

@@ -54,7 +54,6 @@ function NotesPhase({ topic, content, goBack, onNext }) {
     >
       <div className="lch">
         <span className="lbadge lb-n">📖 Notes</span>
-        <span className="lct">{topic}</span>
         <div className="zoom-controls">
           <button className="zoom-btn" onClick={zoomOut} title="Decrease font size">A−</button>
           <button className="zoom-btn" onClick={zoomIn} title="Increase font size">A+</button>
