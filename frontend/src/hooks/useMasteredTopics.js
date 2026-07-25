@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { db } from "../utils/db";
-import logger from "../utils/logger";
 import toast from "react-hot-toast";
 
 export function useMasteredTopics() {
