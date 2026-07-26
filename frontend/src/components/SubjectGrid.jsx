@@ -29,22 +29,33 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     openSubject(subjectId);
   };
 
-  // Only show the resume banner if there's at least some mastery progress
-  const hasMastered = mastered && mastered.size > 0;
-  const showResume = lastTopic && hasMastered && onResume;
+  // Show the resume banner whenever there is a valid last visited topic
+  const showResume = Boolean(
+    lastTopic &&
+    lastTopic.subjectId &&
+    lastTopic.chapterId &&
+    lastTopic.topic &&
+    onResume
+  );
 
   return (
     <div id="v-subjects" className="view active">
       {showResume && (
         <div className="resume-card">
+          <div className="resume-card-icon-wrapper">
+            <span className="resume-card-icon">⚡</span>
+          </div>
           <div className="resume-card-text">
-            <span className="resume-card-label">Continue learning</span>
-            <span className="resume-card-topic">{lastTopic.topic}</span>
-            <span className="resume-card-path">
-              {lastTopic.subjectLabel} · {lastTopic.chapterLabel}
-            </span>
+            <div className="resume-card-header">
+              <span className="resume-card-badge">Continue Learning</span>
+              <span className="resume-card-path">
+                {lastTopic.subjectLabel || "Subject"} • {lastTopic.chapterLabel || "Chapter"}
+              </span>
+            </div>
+            <h2 className="resume-card-topic">{lastTopic.topic}</h2>
           </div>
           <button
+            type="button"
             className="btn-p resume-card-btn"
             onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
