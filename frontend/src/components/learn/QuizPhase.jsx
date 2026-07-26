@@ -35,53 +35,65 @@ function QuizPhase({
   // ── Concept Review Screen ──────────────────────────────────
   if (retryState === "review") {
     const originalQ = activeQuestion || content?.qs?.[qIdx];
+    const rawAnswer = originalQ?.ans || "";
     return (
       <div className="lc" id="qCard">
         <div className="lch">
-          <span className="lbadge lb-n">📖 Review</span>
+          <span className="lbadge lb-n">📖 Concept Review</span>
         </div>
         <div className="lcb">
-          <div className="fb-card">
+          <div className="fb-card fb-review-mode">
             <div className="fb-verdict">
-              <span className="fb-dot fb-dot-incorrect" style={{ background: "var(--v)" }} />
-              <span className="fb-verdict-text" style={{ color: "var(--v)" }}>Let's Review This Concept</span>
+              <div className="fb-verdict-badge">
+                <span className="fb-dot fb-dot-review" />
+                <span className="fb-verdict-text">📖 Concept Deep-Dive</span>
+              </div>
             </div>
-            
-            <div className="fb-explanation">
-              {originalQ?.steps && originalQ.steps.length > 0 && (
-                <div style={{ marginBottom: "1.25rem" }}>
-                  <h4 className="fb-explanation-title">Step-by-Step Breakdown</h4>
-                  <ol className="review-steps-list">
-                    {originalQ.steps.map((step, i) => (
-                      <li key={i} className="review-step-item">
-                        <span className="step-text">{step}</span>
-                      </li>
-                    ))}
-                  </ol>
+
+            {/* Target Answer */}
+            {rawAnswer && (
+              <div className="fb-correct-answer-box">
+                <div className="fb-answer-label">✓ Correct Target Answer</div>
+                <div className="fb-answer-value">{rawAnswer}</div>
+              </div>
+            )}
+
+            {/* Step-by-Step Breakdown */}
+            {originalQ?.steps && originalQ.steps.length > 0 && (
+              <div className="fb-steps-container">
+                <div className="fb-section-header">
+                  <span className="fb-section-icon">📌</span>
+                  <span className="fb-section-title">Step-by-Step Solution</span>
                 </div>
-              )}
-              
-              {originalQ?.ans && (
-                <div className="fb-answer" style={{ marginBottom: "1.25rem" }}>
-                  <span className="fb-answer-label">Correct Answer</span>
-                  <span className="fb-answer-value">{originalQ.ans}</span>
+                <div className="fb-steps-list">
+                  {originalQ.steps.map((step, i) => (
+                    <div key={i} className="fb-step-item">
+                      <span className="fb-step-number">{i + 1}</span>
+                      <span className="fb-step-text">{step.replace(/^step\s*\d+\s*:\s*/i, "")}</span>
+                    </div>
+                  ))}
                 </div>
-              )}
-              
-              {(originalQ?.why || originalQ?.sol) && (
-                <div>
-                  <h4 className="fb-explanation-title">Explanation</h4>
-                  <div className="fb-explanation-text">
-                    {originalQ.why}
-                    {originalQ?.sol && originalQ.sol !== originalQ.why && (
-                      <div style={{ marginTop: "0.5rem" }}>{originalQ.sol}</div>
-                    )}
-                  </div>
+              </div>
+            )}
+
+            {/* Explanation */}
+            {(originalQ?.why || originalQ?.sol) && (
+              <div className="fb-explanation-box">
+                <div className="fb-section-header">
+                  <span className="fb-section-icon">💡</span>
+                  <span className="fb-section-title">Key Concept Explanation</span>
                 </div>
-              )}
-            </div>
+                <div className="fb-explanation-text">
+                  {originalQ.why}
+                  {originalQ?.sol && originalQ.sol !== originalQ.why && (
+                    <div style={{ marginTop: "0.5rem" }}>{originalQ.sol}</div>
+                  )}
+                </div>
+              </div>
+            )}
           </div>
-          <button className="btn-p" onClick={startRetry} style={{ marginTop: "1rem", width: "100%" }}>
+
+          <button className="btn-p" onClick={startRetry} style={{ marginTop: "1.2rem", width: "100%" }}>
             Try Restructured Question →
           </button>
         </div>
