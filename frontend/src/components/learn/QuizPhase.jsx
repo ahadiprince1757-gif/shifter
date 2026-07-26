@@ -1,3 +1,6 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
 import { useQuizUI } from "../../hooks/useQuizUI";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import QuizInputFields from "./quiz/QuizInputFields";
@@ -43,20 +46,32 @@ function QuizPhase({
         </div>
         <div className="lcb">
           <div className="fb-card fb-review-mode">
-            <div className="fb-verdict">
-              <div className="fb-verdict-badge">
-                <span className="fb-dot fb-dot-review" />
-                <span className="fb-verdict-text">📖 Concept Deep-Dive</span>
+            <div className="fb-header">
+              <div className="fb-status-wrapper">
+                <div className="fb-icon-ring fb-ring-review">
+                  <span className="fb-status-icon">📖</span>
+                </div>
+                <div className="fb-status-info">
+                  <div className="fb-verdict-title">Concept Deep-Dive</div>
+                  <div className="fb-verdict-subtitle">
+                    Study the solution below, then attempt the restructured question.
+                  </div>
+                </div>
               </div>
             </div>
 
             {/* Target Answer */}
             {rawAnswer && (
               <div className="fb-correct-answer-box">
-                <div className="fb-answer-label">
-                  <span className="fb-label-icon">✓</span> Correct Target Answer
+                <div className="fb-section-header">
+                  <span className="fb-section-icon">🎯</span>
+                  <span className="fb-section-title">Correct Target Answer</span>
                 </div>
-                <div className="fb-answer-value">{rawAnswer}</div>
+                <div className="fb-answer-value">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                    {rawAnswer}
+                  </ReactMarkdown>
+                </div>
               </div>
             )}
 
@@ -64,14 +79,18 @@ function QuizPhase({
             {originalQ?.steps && originalQ.steps.length > 0 && (
               <div className="fb-steps-container">
                 <div className="fb-section-header">
-                  <span className="fb-section-icon">📌</span>
-                  <span className="fb-section-title">Step-by-Step Solution</span>
+                  <span className="fb-section-icon">🧩</span>
+                  <span className="fb-section-title">Step-by-Step Breakdown</span>
                 </div>
-                <div className="fb-steps-list">
+                <div className="fb-steps-timeline">
                   {originalQ.steps.map((step, i) => (
-                    <div key={i} className="fb-step-item">
-                      <span className="fb-step-number">{i + 1}</span>
-                      <span className="fb-step-text">{step.replace(/^step\s*\d+\s*:\s*/i, "")}</span>
+                    <div key={i} className="fb-step-card">
+                      <div className="fb-step-badge">Step {i + 1}</div>
+                      <div className="fb-step-text">
+                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                          {step.replace(/^step\s*\d+\s*:\s*/i, "")}
+                        </ReactMarkdown>
+                      </div>
                     </div>
                   ))}
                 </div>
@@ -86,16 +105,15 @@ function QuizPhase({
                   <span className="fb-section-title">Key Concept Explanation</span>
                 </div>
                 <div className="fb-explanation-text">
-                  {originalQ.why}
-                  {originalQ?.sol && originalQ.sol !== originalQ.why && (
-                    <div style={{ marginTop: "0.5rem" }}>{originalQ.sol}</div>
-                  )}
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                    {originalQ.why || originalQ?.sol}
+                  </ReactMarkdown>
                 </div>
               </div>
             )}
           </div>
 
-          <button className="btn-p" onClick={startRetry} style={{ marginTop: "1.2rem", width: "100%" }}>
+          <button className="btn-p fb-action-btn fb-next-btn" onClick={startRetry} style={{ marginTop: "1.2rem", width: "100%" }}>
             Try Restructured Question →
           </button>
         </div>

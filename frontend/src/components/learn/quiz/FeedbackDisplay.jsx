@@ -1,3 +1,7 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+
 function FeedbackDisplay({
   feedback,
   nextQuestion,
@@ -7,11 +11,10 @@ function FeedbackDisplay({
   totalQs,
   goToReview,
 }) {
-  const isLastQuestion = qIdx >= totalQs - 1;
-
   if (!feedback) return null;
 
   const isCorrect = feedback.isCorrect;
+  const isLastQuestion = qIdx >= totalQs - 1;
 
   // Format multi-bullet correct answers if present
   const rawAnswer = feedback.correctAnswer || "";
@@ -21,22 +24,38 @@ function FeedbackDisplay({
 
   return (
     <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-incorrect"}`}>
-      {/* Verdict header */}
-      <div className="fb-verdict">
-        <div className="fb-verdict-badge">
-          <span className={`fb-dot ${isCorrect ? "fb-dot-correct" : "fb-dot-incorrect"}`} />
-          <span className="fb-verdict-text">
-            {isCorrect ? "✓ Excellent! Correct Answer" : "💡 Not Quite — Let's Learn Why"}
+      {/* Top Banner Status */}
+      <div className="fb-header">
+        <div className="fb-status-wrapper">
+          <div className={`fb-icon-ring ${isCorrect ? "fb-ring-success" : "fb-ring-error"}`}>
+            <span className="fb-status-icon">{isCorrect ? "✓" : "💡"}</span>
+          </div>
+          <div className="fb-status-info">
+            <div className="fb-verdict-title">
+              {isCorrect ? "Spot on! Outstanding work" : "Not quite — let's master this"}
+            </div>
+            <div className="fb-verdict-subtitle">
+              {isCorrect
+                ? "You answered this question correctly."
+                : "Review the breakdown below to understand the key concept."}
+            </div>
+          </div>
+        </div>
+
+        <div className="fb-meta-badges">
+          {isCorrect && <span className="fb-xp-badge">+10 XP</span>}
+          <span className="fb-progress-pill">
+            {qIdx + 1} / {totalQs}
           </span>
         </div>
-        <span className="fb-progress">{qIdx + 1} of {totalQs}</span>
       </div>
 
       {/* Correct answer display (for incorrect submissions) */}
       {!isCorrect && rawAnswer && (
         <div className="fb-correct-answer-box">
-          <div className="fb-answer-label">
-            <span className="fb-label-icon">✓</span> Correct Target Answer
+          <div className="fb-section-header">
+            <span className="fb-section-icon">🎯</span>
+            <span className="fb-section-title">Correct Target Answer</span>
           </div>
           {answerBulletList ? (
             <ul className="fb-answer-bullets">
@@ -48,7 +67,11 @@ function FeedbackDisplay({
               ))}
             </ul>
           ) : (
-            <div className="fb-answer-value">{rawAnswer}</div>
+            <div className="fb-answer-value">
+              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {rawAnswer}
+              </ReactMarkdown>
+            </div>
           )}
         </div>
       )}
@@ -57,14 +80,18 @@ function FeedbackDisplay({
       {!isCorrect && Array.isArray(feedback.steps) && feedback.steps.length > 0 && (
         <div className="fb-steps-container">
           <div className="fb-section-header">
-            <span className="fb-section-icon">📌</span>
-            <span className="fb-section-title">Step-by-Step Solution</span>
+            <span className="fb-section-icon">🧩</span>
+            <span className="fb-section-title">Step-by-Step Breakdown</span>
           </div>
-          <div className="fb-steps-list">
+          <div className="fb-steps-timeline">
             {feedback.steps.map((step, i) => (
-              <div key={i} className="fb-step-item">
-                <span className="fb-step-number">{i + 1}</span>
-                <span className="fb-step-text">{step.replace(/^step\s*\d+\s*:\s*/i, "")}</span>
+              <div key={i} className="fb-step-card">
+                <div className="fb-step-badge">Step {i + 1}</div>
+                <div className="fb-step-text">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                    {step.replace(/^step\s*\d+\s*:\s*/i, "")}
+                  </ReactMarkdown>
+                </div>
               </div>
             ))}
           </div>
@@ -79,7 +106,9 @@ function FeedbackDisplay({
             <span className="fb-section-title">Key Concept Explanation</span>
           </div>
           <div className="fb-explanation-text">
-            {feedback.solution}
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              {feedback.solution}
+            </ReactMarkdown>
           </div>
         </div>
       )}
@@ -89,7 +118,7 @@ function FeedbackDisplay({
         {!isCorrect && (
           <button
             type="button"
-            className="btn-g fb-action-btn"
+            className="btn-g fb-action-btn fb-review-btn"
             onClick={goToReview}
             disabled={grading}
           >
@@ -98,7 +127,7 @@ function FeedbackDisplay({
         )}
         <button
           type="button"
-          className="btn-p fb-action-btn"
+          className="btn-p fb-action-btn fb-next-btn"
           onClick={() => {
             if (isLastQuestion) {
               finishTopic();
