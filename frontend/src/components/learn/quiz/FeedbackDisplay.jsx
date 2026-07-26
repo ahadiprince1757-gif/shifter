@@ -35,7 +35,9 @@ function FeedbackDisplay({
       {/* Correct answer display (for incorrect submissions) */}
       {!isCorrect && rawAnswer && (
         <div className="fb-correct-answer-box">
-          <div className="fb-answer-label">✓ Correct Answer</div>
+          <div className="fb-answer-label">
+            <span className="fb-label-icon">✓</span> Correct Target Answer
+          </div>
           {answerBulletList ? (
             <ul className="fb-answer-bullets">
               {answerBulletList.map((item, idx) => (

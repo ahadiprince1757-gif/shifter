@@ -53,7 +53,9 @@ function QuizPhase({
             {/* Target Answer */}
             {rawAnswer && (
               <div className="fb-correct-answer-box">
-                <div className="fb-answer-label">✓ Correct Target Answer</div>
+                <div className="fb-answer-label">
+                  <span className="fb-label-icon">✓</span> Correct Target Answer
+                </div>
                 <div className="fb-answer-value">{rawAnswer}</div>
               </div>
             )}
