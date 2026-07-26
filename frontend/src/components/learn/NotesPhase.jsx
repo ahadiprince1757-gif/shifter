@@ -16,6 +16,8 @@ function NotesPhase({ content, goBack, onNext }) {
   const [swipeHint, setSwipeHint] = useState(null); // null | "left" | "right"
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
+  const pinchStartDist = useRef(null);
+  const isPinching = useRef(false);
 
   useEffect(() => {
     try {
@@ -26,26 +28,57 @@ function NotesPhase({ content, goBack, onNext }) {
   }, [fontSize]);
 
   const handleTouchStart = (e) => {
-    touchStartX.current = e.touches[0].clientX;
-    touchStartY.current = e.touches[0].clientY;
+    if (e.touches.length === 2) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      pinchStartDist.current = dist;
+      isPinching.current = true;
+    } else {
+      isPinching.current = false;
+      pinchStartDist.current = null;
+      touchStartX.current = e.touches[0].clientX;
+      touchStartY.current = e.touches[0].clientY;
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (isPinching.current && e.touches.length === 2) {
+      const dist = Math.hypot(
+        e.touches[0].clientX - e.touches[1].clientX,
+        e.touches[0].clientY - e.touches[1].clientY
+      );
+      if (pinchStartDist.current) {
+        const delta = dist - pinchStartDist.current;
+        if (Math.abs(delta) > 5) {
+          setFontSize((f) => {
+            let newSize = f + (delta > 0 ? 5 : -5);
+            newSize = Math.max(70, Math.min(newSize, 170));
+            return newSize;
+          });
+          pinchStartDist.current = dist;
+        }
+      }
+    }
   };
 
   const handleTouchEnd = (e) => {
+    if (isPinching.current) {
+      isPinching.current = false;
+      pinchStartDist.current = null;
+      return;
+    }
     if (touchStartX.current === null) return;
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
-
-    // Require a horizontal swipe longer than 50px and more horizontal than vertical
     if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) {
       touchStartX.current = null;
       return;
     }
-
     if (deltaX < 0) {
-      // Swipe left – show hint only
       setSwipeHint("left");
     } else {
-      // Swipe right – show hint only
       setSwipeHint("right");
     }
     setTimeout(() => setSwipeHint(null), 300);
