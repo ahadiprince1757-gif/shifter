@@ -1,13 +1,29 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 
 function NotesPhase({ content, goBack, onNext }) {
-  const [fontSize, setFontSize] = useState(100);
+  const [fontSize, setFontSize] = useState(() => {
+    try {
+      const saved = localStorage.getItem("shifter_reader_zoom");
+      return saved ? parseInt(saved, 10) : 100;
+    } catch {
+      return 100;
+    }
+  });
+
   const [swipeHint, setSwipeHint] = useState(null); // null | "left" | "right"
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
+
+  useEffect(() => {
+    try {
+      localStorage.setItem("shifter_reader_zoom", fontSize.toString());
+    } catch {
+      // ignore storage errors
+    }
+  }, [fontSize]);
 
   const handleTouchStart = (e) => {
     touchStartX.current = e.touches[0].clientX;
@@ -42,8 +58,9 @@ function NotesPhase({ content, goBack, onNext }) {
   const hasHtml = typeof notes === "string" && /<[^>]+>/.test(notes);
   const markup = notes || "<p>No notes are available for this topic yet.</p>";
 
-  const zoomIn = () => setFontSize((f) => Math.min(f + 10, 160));
+  const zoomIn = () => setFontSize((f) => Math.min(f + 10, 170));
   const zoomOut = () => setFontSize((f) => Math.max(f - 10, 70));
+  const resetZoom = () => setFontSize(100);
 
   return (
     <div
@@ -55,8 +72,41 @@ function NotesPhase({ content, goBack, onNext }) {
       <div className="lch">
         <span className="lbadge lb-n">📖 Notes</span>
         <div className="zoom-controls">
-          <button className="zoom-btn" onClick={zoomOut} title="Decrease font size">A−</button>
-          <button className="zoom-btn" onClick={zoomIn} title="Increase font size">A+</button>
+          <button
+            type="button"
+            className="zoom-btn"
+            onClick={zoomOut}
+            disabled={fontSize <= 70}
+            title="Decrease font size (A−)"
+          >
+            A−
+          </button>
+          <span
+            className="zoom-level-badge"
+            onClick={resetZoom}
+            title="Click to reset font size to 100%"
+          >
+            {fontSize}%
+          </span>
+          <button
+            type="button"
+            className="zoom-btn"
+            onClick={zoomIn}
+            disabled={fontSize >= 170}
+            title="Increase font size (A+)"
+          >
+            A+
+          </button>
+          {fontSize !== 100 && (
+            <button
+              type="button"
+              className="zoom-reset-btn"
+              onClick={resetZoom}
+              title="Reset font size to 100%"
+            >
+              ↺
+            </button>
+          )}
         </div>
       </div>
       <div className="lcb">
