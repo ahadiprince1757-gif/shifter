@@ -17,7 +17,9 @@ function NotesPhase({ content, goBack, onNext }) {
   const touchStartX = useRef(null);
   const touchStartY = useRef(null);
   const pinchStartDist = useRef(null);
+  const pinchStartFontSize = useRef(100);
   const isPinching = useRef(false);
+  const containerRef = useRef(null);
 
   useEffect(() => {
     try {
@@ -27,6 +29,27 @@ function NotesPhase({ content, goBack, onNext }) {
     }
   }, [fontSize]);
 
+  // Support pinch-to-zoom on desktop trackpads (ctrl + wheel)
+  useEffect(() => {
+    const el = containerRef.current;
+    if (!el) return;
+
+    const handleWheel = (e) => {
+      if (e.ctrlKey) {
+        e.preventDefault();
+        setFontSize((prev) => {
+          const delta = e.deltaY < 0 ? 5 : -5;
+          return Math.max(70, Math.min(200, prev + delta));
+        });
+      }
+    };
+
+    el.addEventListener("wheel", handleWheel, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", handleWheel);
+    };
+  }, []);
+
   const handleTouchStart = (e) => {
     if (e.touches.length === 2) {
       const dist = Math.hypot(
@@ -34,8 +57,9 @@ function NotesPhase({ content, goBack, onNext }) {
         e.touches[0].clientY - e.touches[1].clientY
       );
       pinchStartDist.current = dist;
+      pinchStartFontSize.current = fontSize;
       isPinching.current = true;
-    } else {
+    } else if (e.touches.length === 1) {
       isPinching.current = false;
       pinchStartDist.current = null;
       touchStartX.current = e.touches[0].clientX;
@@ -45,31 +69,31 @@ function NotesPhase({ content, goBack, onNext }) {
 
   const handleTouchMove = (e) => {
     if (isPinching.current && e.touches.length === 2) {
-      const dist = Math.hypot(
+      const currentDist = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
         e.touches[0].clientY - e.touches[1].clientY
       );
-      if (pinchStartDist.current) {
-        const delta = dist - pinchStartDist.current;
-        if (Math.abs(delta) > 5) {
-          setFontSize((f) => {
-            let newSize = f + (delta > 0 ? 5 : -5);
-            newSize = Math.max(70, Math.min(newSize, 170));
-            return newSize;
-          });
-          pinchStartDist.current = dist;
-        }
+      if (pinchStartDist.current && pinchStartDist.current > 0) {
+        const scale = currentDist / pinchStartDist.current;
+        const newSize = Math.round(
+          Math.max(70, Math.min(200, pinchStartFontSize.current * scale))
+        );
+        setFontSize(newSize);
       }
     }
   };
 
   const handleTouchEnd = (e) => {
     if (isPinching.current) {
-      isPinching.current = false;
-      pinchStartDist.current = null;
+      if (e.touches.length < 2) {
+        isPinching.current = false;
+        pinchStartDist.current = null;
+      }
       return;
     }
     if (touchStartX.current === null) return;
+    if (!e.changedTouches || e.changedTouches.length === 0) return;
+
     const deltaX = e.changedTouches[0].clientX - touchStartX.current;
     const deltaY = e.changedTouches[0].clientY - touchStartY.current;
     if (Math.abs(deltaX) < 50 || Math.abs(deltaX) < Math.abs(deltaY) * 1.5) {
@@ -91,56 +115,18 @@ function NotesPhase({ content, goBack, onNext }) {
   const hasHtml = typeof notes === "string" && /<[^>]+>/.test(notes);
   const markup = notes || "<p>No notes are available for this topic yet.</p>";
 
-  const zoomIn = () => setFontSize((f) => Math.min(f + 10, 170));
-  const zoomOut = () => setFontSize((f) => Math.max(f - 10, 70));
-  const resetZoom = () => setFontSize(100);
-
   return (
     <div
+      ref={containerRef}
       className={`lc notes-swipeable${swipeHint ? ` swipe-${swipeHint}` : ""}`}
       id="notesCard"
       onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
+      onTouchCancel={handleTouchEnd}
     >
       <div className="lch">
         <span className="lbadge lb-n">📖 Notes</span>
-        <div className="zoom-controls">
-          <button
-            type="button"
-            className="zoom-btn"
-            onClick={zoomOut}
-            disabled={fontSize <= 70}
-            title="Decrease font size (A−)"
-          >
-            A−
-          </button>
-          <span
-            className="zoom-level-badge"
-            onClick={resetZoom}
-            title="Click to reset font size to 100%"
-          >
-            {fontSize}%
-          </span>
-          <button
-            type="button"
-            className="zoom-btn"
-            onClick={zoomIn}
-            disabled={fontSize >= 170}
-            title="Increase font size (A+)"
-          >
-            A+
-          </button>
-          {fontSize !== 100 && (
-            <button
-              type="button"
-              className="zoom-reset-btn"
-              onClick={resetZoom}
-              title="Reset font size to 100%"
-            >
-              ↺
-            </button>
-          )}
-        </div>
       </div>
       <div className="lcb">
         <div className="notes-scroll-container">
@@ -155,9 +141,11 @@ function NotesPhase({ content, goBack, onNext }) {
           </div>
         </div>
 
-        {/* Swipe hint row */}
+        {/* Swipe & Pinch hint row */}
         <div className="notes-swipe-hint">
           <span className="swipe-hint-text">← Swipe right to go back</span>
+          <span className="swipe-hint-dot" />
+          <span className="swipe-hint-text">Pinch to zoom</span>
           <span className="swipe-hint-dot" />
           <span className="swipe-hint-text">Swipe left for quiz →</span>
         </div>
