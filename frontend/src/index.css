@@ -1927,7 +1927,7 @@ html.dark-mode .fb-card {
   border-left: 5px solid #10b981;
 }
 
-.fb-incorrect {
+.fb-needs-review {
   border-left: 5px solid #f59e0b;
 }
 
@@ -1989,13 +1989,13 @@ html.dark-mode .fb-correct .fb-verdict-badge {
   color: #34d399;
 }
 
-.fb-incorrect .fb-verdict-badge {
+.fb-needs-review .fb-verdict-badge {
   background: rgba(245, 158, 11, 0.08);
   color: #d97706;
   border: 1px solid rgba(245, 158, 11, 0.25);
 }
 
-html.dark-mode .fb-incorrect .fb-verdict-badge {
+html.dark-mode .fb-needs-review .fb-verdict-badge {
   background: rgba(245, 158, 11, 0.15);
   color: #fbbf24;
 }
@@ -5515,8 +5515,8 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   background: var(--gr);
 }
 
-.fb-incorrect::before {
-  background: var(--rd);
+.fb-needs-review::before {
+  background: var(--am, #f59e0b);
 }
 
 .fb-review-mode::before {

@@ -111,14 +111,14 @@ function QuizPhase({
     <div className="lc" id="qCard">
       <div className="lch">
         <span className="lbadge lb-q">
-          {retryState === "retry" ? "🔄 Retry" : `🧠 Question ${qIdx + 1} of ${totalQs || 1}`}
+          {retryState === "retry" ? "Retry" : `Question ${qIdx + 1} of ${totalQs || 1}`}
         </span>
       </div>
 
       <div className="lcb">
         {retryState === "retry" && (
           <div className="retry-mode-banner">
-            🔄 Restructured Question — Same concept, different approach. Show what you know!
+            Restructured Question — Same concept, different approach.
           </div>
         )}
         <QuestionDisplay isCalc={isCalc} questionText={curQ?.q} />

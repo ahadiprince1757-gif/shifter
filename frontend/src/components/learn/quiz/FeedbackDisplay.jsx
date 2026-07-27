@@ -22,12 +22,12 @@ function FeedbackDisplay({
     : null;
 
   return (
-    <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-incorrect"}`}>
+    <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-needs-review"}`}>
       {/* Header Status */}
       <div className="fb-header">
         <div className="fb-status-wrapper">
-          <span className={`fb-status-badge ${isCorrect ? "fb-badge-success" : "fb-badge-error"}`}>
-            {isCorrect ? "Correct" : "Incorrect"}
+          <span className={`fb-status-badge ${isCorrect ? "fb-badge-success" : "fb-badge-review"}`}>
+            {isCorrect ? "Correct" : "Needs Review"}
           </span>
         </div>
         <span className="fb-progress-pill">
