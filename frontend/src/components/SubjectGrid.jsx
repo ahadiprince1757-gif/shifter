@@ -42,24 +42,21 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     <div id="v-subjects" className="view active">
       {showResume && (
         <div className="resume-card">
-          <div className="resume-card-icon-wrapper">
-            <span className="resume-card-icon">⚡</span>
-          </div>
           <div className="resume-card-text">
             <div className="resume-card-header">
-              <span className="resume-card-badge">Continue Learning</span>
+              <span className="resume-card-badge">Continue</span>
               <span className="resume-card-path">
-                {lastTopic.subjectLabel || "Subject"} • {lastTopic.chapterLabel || "Chapter"}
+                {lastTopic.subjectLabel || "Subject"} · {lastTopic.chapterLabel || "Chapter"}
               </span>
             </div>
             <h2 className="resume-card-topic">{lastTopic.topic}</h2>
           </div>
           <button
             type="button"
-            className="btn-p resume-card-btn"
+            className="resume-card-btn"
             onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
-            Resume →
+            Resume
           </button>
         </div>
       )}

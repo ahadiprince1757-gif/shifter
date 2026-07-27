@@ -5728,42 +5728,18 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 }
 
 .resume-card {
-  margin-bottom: 2rem;
-  padding: 1.25rem 1.6rem;
-  border-radius: 18px;
-  background: linear-gradient(135deg, rgba(117, 82, 243, 0.08), rgba(58, 143, 253, 0.12));
-  border: 1px solid rgba(117, 82, 243, 0.22);
-  box-shadow: 0 8px 24px rgba(117, 82, 243, 0.08);
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  animation: resumeSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-  position: relative;
-  overflow: hidden;
-}
-
-.resume-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  bottom: 0;
-  width: 4px;
-  background: var(--g2);
-}
-
-.resume-card-icon-wrapper {
-  width: 44px;
-  height: 44px;
+  margin-bottom: 1.5rem;
+  padding: 1rem 1.1rem 1rem 1.4rem;
   border-radius: 14px;
-  background: var(--g2);
-  color: #fff;
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-left: 4px solid var(--v);
   display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  flex-shrink: 0;
-  box-shadow: 0 4px 14px rgba(117, 82, 243, 0.3);
+  gap: 1rem;
+  animation: resumeSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .resume-card-text {
@@ -5777,31 +5753,35 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 .resume-card-header {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
-  flex-wrap: wrap;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .resume-card-badge {
-  font-size: 0.68rem;
+  font-size: 0.65rem;
   font-weight: 800;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--v);
-  background: rgba(117, 82, 243, 0.12);
-  padding: 0.15rem 0.55rem;
+  background: rgba(117, 82, 243, 0.1);
+  padding: 0.12rem 0.5rem;
   border-radius: 99px;
+  flex-shrink: 0;
 }
 
 .resume-card-path {
-  font-size: 0.78rem;
-  color: var(--t2);
+  font-size: 0.75rem;
+  color: var(--t3);
   font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .resume-card-topic {
-  font-family: 'Manrope', sans-serif;
-  font-size: 1.1rem;
-  font-weight: 800;
+  font-size: 0.95rem;
+  font-weight: 700;
   color: var(--t);
   margin: 0;
   white-space: nowrap;
@@ -5810,37 +5790,23 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 }
 
 .resume-card-btn {
-  padding: 0.65rem 1.3rem;
-  border-radius: 12px;
-  font-size: 0.88rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 8px;
+  font-size: 0.82rem;
   font-weight: 700;
   cursor: pointer;
   flex-shrink: 0;
-  background: var(--g2);
+  background: var(--v);
   color: #fff;
   border: none;
-  box-shadow: 0 4px 14px rgba(117, 82, 243, 0.28);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: opacity 0.15s ease;
+  font-family: 'Inter', sans-serif;
 }
 
 .resume-card-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 8px 22px rgba(117, 82, 243, 0.38);
+  opacity: 0.88;
 }
 
-@media (max-width: 600px) {
-  .resume-card {
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.1rem;
-    gap: 0.9rem;
-  }
-  .resume-card-btn {
-    width: 100%;
-    text-align: center;
-    justify-content: center;
-  }
-}
 
 /* ── Mastered Phase Completion Card Styles ─────────────────────────── */
 .mastered-container {
