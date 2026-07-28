@@ -326,6 +326,27 @@ END;
 $$;
 
 -- ─────────────────────────────────────────────────────────────
+-- SECTION 7: DEMO ACHIEVEMENTS
+-- Pre-seed topic mastery milestone achievements for demo user
+-- ─────────────────────────────────────────────────────────────
+DO $$
+DECLARE
+  v_user UUID;
+BEGIN
+  SELECT id INTO v_user FROM public.profiles LIMIT 1;
+  IF v_user IS NULL THEN RETURN; END IF;
+
+  INSERT INTO public.achievements (user_id, achievement_name, unlocked_at)
+  VALUES
+    (v_user, 'Mastered Topic: Number Systems & Basic Operations', now() - INTERVAL '3 days'),
+    (v_user, 'Mastered Topic: Linear equations', now() - INTERVAL '2 days'),
+    (v_user, 'Mastered Topic: Fraction basics', now() - INTERVAL '1 day'),
+    (v_user, 'Mastered Topic: Types of angles', now())
+  ON CONFLICT DO NOTHING;
+END;
+$$;
+
+-- ─────────────────────────────────────────────────────────────
 -- CLEANUP: Drop temporary seed helper functions
 -- ─────────────────────────────────────────────────────────────
 DROP FUNCTION IF EXISTS _seed_topic_id(TEXT, TEXT, TEXT);
@@ -344,4 +365,7 @@ SELECT 'spaced_reviews' AS tbl, COUNT(*) FROM public.spaced_reviews
 UNION ALL
 SELECT 'user_notes'     AS tbl, COUNT(*) FROM public.user_notes
 UNION ALL
-SELECT 'learning_events'AS tbl, COUNT(*) FROM public.learning_events;
+SELECT 'learning_events'AS tbl, COUNT(*) FROM public.learning_events
+UNION ALL
+SELECT 'achievements'   AS tbl, COUNT(*) FROM public.achievements;
+

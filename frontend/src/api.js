@@ -244,3 +244,21 @@ export async function saveProgress({ sid, cid, topicTitle, completed, score, mas
   return silentPost("/progress", { sid, cid, topicTitle, completed, score, mastered, confidenceLevel });
 }
 
+/** Unlock/save an achievement in Supabase. */
+export async function saveAchievement(achievementName) {
+  return silentPost("/achievements", { achievementName });
+}
+
+/** Fetch all achievements for the current user. */
+export async function fetchAchievements() {
+  try {
+    const r = await fetch(`${API_BASE}/achievements`, { headers: getAuthHeaders() });
+    if (!r.ok) return [];
+    const data = await r.json();
+    return data.achievements || [];
+  } catch {
+    return [];
+  }
+}
+
+

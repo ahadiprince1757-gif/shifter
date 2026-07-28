@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { gradeAnswer, saveProgress } from "../api";
+import { gradeAnswer, saveProgress, saveAchievement } from "../api";
 import { progressRepo } from "../repository/progressRepo";
 import { networkService } from "../services/networkService";
 import logger from "../utils/logger";
@@ -228,15 +228,20 @@ export function useQuiz(
       // Save progress summary to Supabase
       if (subject?.id && chapter?.id && networkService.isOnline) {
         const score = totalQs > 0 ? Math.round(((totalQs - failedCount) / totalQs) * 100) : 0;
+        const mastered = failedCount === 0;
         saveProgress({
           sid: subject.id,
           cid: chapter.id,
           topicTitle: topic,
           completed: true,
           score,
-          mastered: failedCount === 0,
+          mastered,
           confidenceLevel: finalConfidence,
         }).catch(() => {});
+
+        if (mastered) {
+          saveAchievement(`Mastered Topic: ${topic}`).catch(() => {});
+        }
       }
     }
     logger.action("QUIZ_COMPLETED", "success", {

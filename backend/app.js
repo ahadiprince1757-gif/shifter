@@ -935,5 +935,58 @@ app.post("/api/progress", async (req, res) => {
   }
 });
 
+// GET /api/achievements — Fetch user achievements
+app.get('/api/achievements', async (req, res) => {
+  try {
+    const userId = await getUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthorized" });
+
+    const { data, error } = await supabase
+      .from('achievements')
+      .select('*')
+      .eq('user_id', userId)
+      .order('unlocked_at', { ascending: false });
+
+    if (error) {
+      logger.db('SELECT', 'achievements', 'error', { error: error.message });
+      return res.status(500).json({ error: "Failed to fetch achievements" });
+    }
+
+    res.json({ achievements: data || [] });
+  } catch (err) {
+    logger.error("ACHIEVEMENTS_GET", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// POST /api/achievements — Unlock an achievement
+app.post('/api/achievements', async (req, res) => {
+  try {
+    const userId = await getUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthorized" });
+
+    const { achievementName } = req.body || {};
+    if (!achievementName) {
+      return res.status(400).json({ error: "achievementName is required" });
+    }
+
+    const { data, error } = await supabase
+      .from('achievements')
+      .insert([{ user_id: userId, achievement_name: achievementName }])
+      .select();
+
+    if (error) {
+      logger.db('INSERT', 'achievements', 'error', { error: error.message });
+      return res.status(500).json({ error: "Failed to unlock achievement" });
+    }
+
+    logger.action("ACHIEVEMENT_UNLOCKED", "success", { userId, achievementName });
+    res.json({ ok: true, achievement: data?.[0] });
+  } catch (err) {
+    logger.error("ACHIEVEMENT_POST", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = app;
 

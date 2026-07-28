@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchAnalytics } from "../api";
+import { fetchAnalytics, fetchAchievements } from "../api";
 import SkeletonLoader from "./SkeletonLoader";
 import { spacedRepo } from "../repository/spacedRepo";
 import { mistakeRepo } from "../repository/mistakeRepo";
@@ -9,9 +9,10 @@ export default function AnalyticsDashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("focus"); // 'focus' | 'visited' | 'strengths' | 'unexplored' | 'review' | 'mistakes'
+  const [activeTab, setActiveTab] = useState("focus"); // 'focus' | 'visited' | 'strengths' | 'unexplored' | 'review' | 'mistakes' | 'achievements'
   const [dueReviews, setDueReviews] = useState([]);
   const [mistakeCount, setMistakeCount] = useState(0);
+  const [achievements, setAchievements] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,9 +27,10 @@ export default function AnalyticsDashboard() {
         setLoading(false);
       });
 
-    // Load local spaced review queue and mistake count
+    // Load local spaced review queue, mistake count, and cloud achievements
     spacedRepo.getDueReviews().then(setDueReviews).catch(() => {});
     mistakeRepo.getUnresolvedMistakes().then((m) => setMistakeCount(m.length)).catch(() => {});
+    fetchAchievements().then(setAchievements).catch(() => {});
   }, []);
 
   if (loading) {
@@ -94,6 +96,7 @@ export default function AnalyticsDashboard() {
     { id: "mistakes", label: `Mistake Journal`, count: mistakeCount, highlight: mistakeCount > 0 },
     { id: "visited", label: `Most Studied`, count: mostVisited.length },
     { id: "strengths", label: `Strengths`, count: mostPassed.length },
+    { id: "achievements", label: `Achievements`, count: achievements.length },
     { id: "unexplored", label: `Unexplored`, count: unvisited.length },
   ];
 
@@ -331,6 +334,34 @@ export default function AnalyticsDashboard() {
                     >
                       Review →
                     </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB: Achievements */}
+        {activeTab === "achievements" && (
+          <div className="clean-card">
+            <div className="clean-card-header">
+              <h3>Earned Achievements ({achievements.length})</h3>
+              <p>Milestones and topic masteries saved to your cloud profile.</p>
+            </div>
+            {achievements.length === 0 ? (
+              <div className="clean-empty-state">
+                <p>Complete quizzes with 100% score to unlock topic mastery achievements.</p>
+              </div>
+            ) : (
+              <div className="clean-topic-list">
+                {achievements.map((ach, idx) => (
+                  <div key={idx} className="clean-topic-item">
+                    <div className="clean-topic-details">
+                      <span className="clean-topic-name">🏆 {ach.achievement_name}</span>
+                      <span className="clean-topic-meta">
+                        Unlocked {new Date(ach.unlocked_at).toLocaleDateString()}
+                      </span>
+                    </div>
                   </div>
                 ))}
               </div>
