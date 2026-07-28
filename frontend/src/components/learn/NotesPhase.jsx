@@ -2,8 +2,9 @@ import { useState, useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { notesRepo } from "../../repository/notesRepo";
 
-function NotesPhase({ content, goBack, onNext }) {
+function NotesPhase({ content, goBack, onNext, topic }) {
   const [fontSize, setFontSize] = useState(() => {
     try {
       const saved = localStorage.getItem("shifter_reader_zoom");
@@ -20,6 +21,20 @@ function NotesPhase({ content, goBack, onNext }) {
   const pinchStartFontSize = useRef(100);
   const isPinching = useRef(false);
   const containerRef = useRef(null);
+  const saveTimerRef = useRef(null);
+
+  // Personal synthesis note state
+  const [scratchpadOpen, setScratchpadOpen] = useState(false);
+  const [scratchpadText, setScratchpadText] = useState("");
+  const [scratchpadSaved, setScratchpadSaved] = useState(true);
+
+  // Load saved personal note for this topic on mount / topic change
+  useEffect(() => {
+    if (!topic) return;
+    notesRepo.getNote(topic).then((saved) => {
+      setScratchpadText(saved || "");
+    }).catch(() => {});
+  }, [topic]);
 
   useEffect(() => {
     try {
@@ -148,6 +163,48 @@ function NotesPhase({ content, goBack, onNext }) {
           <span className="swipe-hint-text">Pinch to zoom</span>
           <span className="swipe-hint-dot" />
           <span className="swipe-hint-text">Swipe left for quiz →</span>
+        </div>
+
+        {/* Active Synthesis Scratchpad */}
+        <div className="scratchpad-section">
+          <button
+            className="scratchpad-toggle"
+            onClick={() => setScratchpadOpen((o) => !o)}
+            aria-expanded={scratchpadOpen}
+          >
+            <span className="scratchpad-toggle-label">
+              {scratchpadOpen ? "Hide" : "Show"} Personal Notes & Key Takeaways
+            </span>
+            <span className={`scratchpad-toggle-icon ${scratchpadOpen ? "open" : ""}`}>▾</span>
+          </button>
+
+          {scratchpadOpen && (
+            <div className="scratchpad-body">
+              <p className="scratchpad-prompt">
+                Summarise this topic in your own words. What are the key ideas? What would you tell someone who has never seen this before?
+              </p>
+              <textarea
+                className="scratchpad-textarea"
+                placeholder="Write your summary and key takeaways here..."
+                value={scratchpadText}
+                onChange={(e) => {
+                  const val = e.target.value;
+                  setScratchpadText(val);
+                  setScratchpadSaved(false);
+                  clearTimeout(saveTimerRef.current);
+                  saveTimerRef.current = setTimeout(() => {
+                    if (topic) {
+                      notesRepo.saveNote(topic, val).then(() => setScratchpadSaved(true)).catch(() => {});
+                    }
+                  }, 800);
+                }}
+                rows={5}
+              />
+              <div className="scratchpad-status">
+                {scratchpadSaved ? "Saved" : "Saving..."}
+              </div>
+            </div>
+          )}
         </div>
 
         <div className="lnav-strip">

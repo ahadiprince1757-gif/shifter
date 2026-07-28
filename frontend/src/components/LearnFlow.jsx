@@ -228,6 +228,8 @@ const canJumpToPhase = (idx) => {
               startRetry={quiz.startRetry}
               goToReview={quiz.goToReview}
               content={content}
+              confidence={quiz.confidence}
+              setConfidence={quiz.setConfidence}
             />
           ) : (
             <div className="lc" style={{ padding: "2rem" }}>

@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
+import { spacedRepo } from "../repository/spacedRepo";
 
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
+  const navigate = useNavigate();
   // Lazy initializer — reads localStorage once on first render, no effect needed
   const [lastTopic] = useState(() => {
     try {
@@ -10,6 +13,11 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
   });
+  const [dueReviews, setDueReviews] = useState([]);
+
+  useEffect(() => {
+    spacedRepo.getDueReviews().then(setDueReviews).catch(() => {});
+  }, []);
 
   if (!curriculum) {
     return (
@@ -57,6 +65,25 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
             onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
             Resume
+          </button>
+        </div>
+      )}
+
+      {/* Spaced Review Queue Banner */}
+      {dueReviews.length > 0 && (
+        <div className="review-queue-banner">
+          <div className="review-queue-text">
+            <span className="review-queue-count">{dueReviews.length}</span>
+            <span className="review-queue-label">
+              topic{dueReviews.length !== 1 ? "s" : ""} scheduled for memory review today
+            </span>
+          </div>
+          <button
+            type="button"
+            className="review-queue-btn"
+            onClick={() => navigate("/analytics")}
+          >
+            View Queue
           </button>
         </div>
       )}

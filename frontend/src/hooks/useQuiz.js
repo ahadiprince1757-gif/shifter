@@ -6,6 +6,8 @@ import logger from "../utils/logger";
 import { recordEvent } from "../utils/analytics";
 import { evaluateAnswer } from "../utils/grader";
 import { questionMutator } from "../utils/questionMutator";
+import { mistakeRepo } from "../repository/mistakeRepo";
+import { spacedRepo } from "../repository/spacedRepo";
 
 export function useQuiz(
   subject,
@@ -27,6 +29,8 @@ export function useQuiz(
   const [failedQuestions, setFailedQuestions] = useState([]);
   const [quizFinished, setQuizFinished] = useState(false);
   const [prevTopic, setPrevTopic] = useState(topic);
+  // Metacognitive confidence rating: null | "low" | "medium" | "high"
+  const [confidence, setConfidence] = useState(null);
 
   // Adaptive Retry State Machine
   const [retryState, setRetryState] = useState(null); // null | "review" | "retry"
@@ -47,6 +51,7 @@ export function useQuiz(
     setQuizFinished(false);
     setRetryState(null);
     setActiveQuestion(null);
+    setConfidence(null);
   }
 
   // Clear validation error when answer is filled (during render)
@@ -92,8 +97,13 @@ export function useQuiz(
     if (activeQuestion) {
       setTimeout(() => {
         const res = evaluateAnswer(answer, activeQuestion);
-        setFeedback(res);
+        setFeedback({ ...res, confidence });
         setGrading(false);
+
+        // If retry correct, mark the mistake as resolved
+        if (res.isCorrect) {
+          mistakeRepo.resolveMistake(topic, qIdx).catch(() => {});
+        }
 
         logger.action("RETRY_GRADED", "success", {
           subject: subject.id,
@@ -130,7 +140,7 @@ export function useQuiz(
       }
     )
       .then((res) => {
-        setFeedback(res);
+        setFeedback({ ...res, confidence });
         setGrading(false);
 
         logger.action("ANSWER_GRADED", "success", {
@@ -139,6 +149,7 @@ export function useQuiz(
           topic,
           questionIndex: qIdx,
           isCorrect: res.isCorrect,
+          confidence,
         });
 
         if (!res.isCorrect) {
@@ -152,6 +163,16 @@ export function useQuiz(
               mark: res.mark,
             },
           ]);
+          // Persist mistake to IndexedDB
+          mistakeRepo.saveMistake({
+            topicId: topic,
+            subjectId: subject.id,
+            chapterId: chapter.id,
+            questionIndex: qIdx,
+            questionText: targetQ?.q || "",
+            correctAnswer: res.correctAnswer,
+            solution: res.solution,
+          }).catch(() => {});
           logger.action("ANSWER_INCORRECT", "result", {
             subject: subject.id,
             chapter: chapter.id,
@@ -187,6 +208,14 @@ export function useQuiz(
 
   const finishQuiz = () => {
     setQuizFinished(true);
+    const totalQs = content?.qs?.length || 0;
+    const failedCount = failedQuestions.length;
+    // Update spaced repetition schedule based on quiz performance
+    if (topic) {
+      const isCorrect = totalQs > 0 && failedCount === 0;
+      const finalConfidence = confidence || "medium";
+      spacedRepo.updateReviewSchedule(topic, isCorrect, finalConfidence).catch(() => {});
+    }
     logger.action("QUIZ_COMPLETED", "success", {
       subject: subject?.id,
       chapter: chapter?.id,
@@ -241,6 +270,7 @@ export function useQuiz(
     setFeedback(null);
     setShowHint(false);
     setValidationError("");
+    setConfidence(null);
   };
 
   const goToReview = () => {
@@ -260,6 +290,8 @@ export function useQuiz(
     grading,
     feedback,
     setFeedback,
+    confidence,
+    setConfidence,
     showHint: showHint,
     setShowHint: (value) => {
       setShowHint(value);

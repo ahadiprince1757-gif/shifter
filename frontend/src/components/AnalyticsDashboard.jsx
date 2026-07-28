@@ -2,12 +2,16 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchAnalytics } from "../api";
 import SkeletonLoader from "./SkeletonLoader";
+import { spacedRepo } from "../repository/spacedRepo";
+import { mistakeRepo } from "../repository/mistakeRepo";
 
 export default function AnalyticsDashboard() {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("focus"); // 'focus' | 'visited' | 'strengths' | 'unexplored'
+  const [activeTab, setActiveTab] = useState("focus"); // 'focus' | 'visited' | 'strengths' | 'unexplored' | 'review' | 'mistakes'
+  const [dueReviews, setDueReviews] = useState([]);
+  const [mistakeCount, setMistakeCount] = useState(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,6 +25,10 @@ export default function AnalyticsDashboard() {
         setError("Failed to load analytics. Please try again.");
         setLoading(false);
       });
+
+    // Load local spaced review queue and mistake count
+    spacedRepo.getDueReviews().then(setDueReviews).catch(() => {});
+    mistakeRepo.getUnresolvedMistakes().then((m) => setMistakeCount(m.length)).catch(() => {});
   }, []);
 
   if (loading) {
@@ -80,13 +88,22 @@ export default function AnalyticsDashboard() {
     unvisitedBySubject[subName].push(item);
   });
 
+  const TABS = [
+    { id: "focus", label: `Focus Areas`, count: mostFailed.length },
+    { id: "review", label: `Due for Review`, count: dueReviews.length, highlight: dueReviews.length > 0 },
+    { id: "mistakes", label: `Mistake Journal`, count: mistakeCount, highlight: mistakeCount > 0 },
+    { id: "visited", label: `Most Studied`, count: mostVisited.length },
+    { id: "strengths", label: `Strengths`, count: mostPassed.length },
+    { id: "unexplored", label: `Unexplored`, count: unvisited.length },
+  ];
+
   return (
     <div className="analytics-dashboard clean-view">
       {/* Header */}
       <div className="analytics-hero">
         <h2 className="analytics-hero-title">Learning Progress</h2>
         <p className="analytics-hero-sub">
-          A noise-free view of your study habits, quiz accuracy, and recommended practice areas.
+          A clear view of your study habits, quiz accuracy, and recommended practice areas.
         </p>
       </div>
 
@@ -112,6 +129,13 @@ export default function AnalyticsDashboard() {
           </span>
           <span className="metric-lbl">Correct Answers</span>
         </div>
+        <div className="metric-divider" />
+        <div className="analytics-metric">
+          <span className="metric-val" style={{ color: dueReviews.length > 0 ? "#f59e0b" : "var(--t2)" }}>
+            {dueReviews.length}
+          </span>
+          <span className="metric-lbl">Due for Review</span>
+        </div>
       </div>
 
       {/* Accuracy Visual Progress Bar */}
@@ -130,45 +154,89 @@ export default function AnalyticsDashboard() {
         </div>
       )}
 
-      {/* Noise-Free Tab Switcher */}
+      {/* Tab Switcher */}
       <div className="analytics-tabs" role="tablist">
-        <button
-          className={`analytics-tab-btn ${activeTab === "focus" ? "active" : ""}`}
-          onClick={() => setActiveTab("focus")}
-          role="tab"
-          aria-selected={activeTab === "focus"}
-        >
-          🎯 Focus Areas ({mostFailed.length})
-        </button>
-        <button
-          className={`analytics-tab-btn ${activeTab === "visited" ? "active" : ""}`}
-          onClick={() => setActiveTab("visited")}
-          role="tab"
-          aria-selected={activeTab === "visited"}
-        >
-          🔥 Most Studied ({mostVisited.length})
-        </button>
-        <button
-          className={`analytics-tab-btn ${activeTab === "strengths" ? "active" : ""}`}
-          onClick={() => setActiveTab("strengths")}
-          role="tab"
-          aria-selected={activeTab === "strengths"}
-        >
-          ⭐ Strengths ({mostPassed.length})
-        </button>
-        <button
-          className={`analytics-tab-btn ${activeTab === "unexplored" ? "active" : ""}`}
-          onClick={() => setActiveTab("unexplored")}
-          role="tab"
-          aria-selected={activeTab === "unexplored"}
-        >
-          🌱 Unexplored ({unvisited.length})
-        </button>
+        {TABS.map((tab) => (
+          <button
+            key={tab.id}
+            className={`analytics-tab-btn ${activeTab === tab.id ? "active" : ""} ${tab.highlight ? "analytics-tab-btn--alert" : ""}`}
+            onClick={() => setActiveTab(tab.id)}
+            role="tab"
+            aria-selected={activeTab === tab.id}
+          >
+            {tab.label}
+            <span className="analytics-tab-count">{tab.count}</span>
+          </button>
+        ))}
       </div>
 
       {/* Tab Panel Content */}
       <div className="analytics-tab-panel">
-        {/* TAB 1: Focus Areas (Needs Review) */}
+
+        {/* TAB: Due for Review (Spaced Repetition Queue) */}
+        {activeTab === "review" && (
+          <div className="clean-card">
+            <div className="clean-card-header">
+              <h3>Spaced Review Queue</h3>
+              <p>
+                Topics whose memory retention is scheduled to fade today — revisit them now to reinforce long-term recall.
+              </p>
+            </div>
+            {dueReviews.length === 0 ? (
+              <div className="clean-empty-state">
+                <p>No reviews due today. Check back after completing more quizzes.</p>
+              </div>
+            ) : (
+              <div className="clean-topic-list">
+                {dueReviews.map((item, idx) => (
+                  <div key={idx} className="clean-topic-item">
+                    <div className="clean-topic-details">
+                      <span className="clean-topic-name">{item.topic_id}</span>
+                      <span className="clean-topic-meta">
+                        Review interval: {item.interval_days} day{item.interval_days !== 1 ? "s" : ""} · Repetitions: {item.repetitions}
+                      </span>
+                    </div>
+                    <button
+                      className="clean-action-btn primary"
+                      onClick={() => navigate(`/subjects`)}
+                    >
+                      Review →
+                    </button>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB: Mistake Journal */}
+        {activeTab === "mistakes" && (
+          <div className="clean-card">
+            <div className="clean-card-header">
+              <h3>Mistake Journal</h3>
+              <p>Questions you answered incorrectly — revisit topics to resolve them.</p>
+            </div>
+            {mistakeCount === 0 ? (
+              <div className="clean-empty-state">
+                <p>No active mistakes. Keep it up.</p>
+              </div>
+            ) : (
+              <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
+                <p style={{ color: "var(--t2)", marginBottom: "1.2rem" }}>
+                  You have <strong style={{ color: "var(--t)" }}>{mistakeCount}</strong> unresolved mistake{mistakeCount !== 1 ? "s" : ""} across your quizzes.
+                </p>
+                <button
+                  className="clean-action-btn primary"
+                  onClick={() => navigate("/mistakes")}
+                >
+                  Open Mistake Journal →
+                </button>
+              </div>
+            )}
+          </div>
+        )}
+
+        {/* TAB: Focus Areas (Needs Review) */}
         {activeTab === "focus" && (
           <div className="clean-card">
             <div className="clean-card-header">
@@ -177,7 +245,6 @@ export default function AnalyticsDashboard() {
             </div>
             {mostFailed.length === 0 ? (
               <div className="clean-empty-state">
-                <span className="empty-icon">✨</span>
                 <p>No weak spots detected! Keep up the great work.</p>
               </div>
             ) : (
@@ -203,7 +270,7 @@ export default function AnalyticsDashboard() {
           </div>
         )}
 
-        {/* TAB 2: Most Studied */}
+        {/* TAB: Most Studied */}
         {activeTab === "visited" && (
           <div className="clean-card">
             <div className="clean-card-header">
@@ -212,7 +279,6 @@ export default function AnalyticsDashboard() {
             </div>
             {mostVisited.length === 0 ? (
               <div className="clean-empty-state">
-                <span className="empty-icon">📖</span>
                 <p>Start reading topics to see your study activity here.</p>
               </div>
             ) : (
@@ -238,7 +304,7 @@ export default function AnalyticsDashboard() {
           </div>
         )}
 
-        {/* TAB 3: Strengths */}
+        {/* TAB: Strengths */}
         {activeTab === "strengths" && (
           <div className="clean-card">
             <div className="clean-card-header">
@@ -247,7 +313,6 @@ export default function AnalyticsDashboard() {
             </div>
             {mostPassed.length === 0 ? (
               <div className="clean-empty-state">
-                <span className="empty-icon">🏆</span>
                 <p>Complete quizzes to unlock your topic strengths.</p>
               </div>
             ) : (
@@ -273,7 +338,7 @@ export default function AnalyticsDashboard() {
           </div>
         )}
 
-        {/* TAB 4: Unexplored */}
+        {/* TAB: Unexplored */}
         {activeTab === "unexplored" && (
           <div className="clean-card">
             <div className="clean-card-header">
@@ -282,8 +347,7 @@ export default function AnalyticsDashboard() {
             </div>
             {unvisited.length === 0 ? (
               <div className="clean-empty-state">
-                <span className="empty-icon">🎉</span>
-                <p>Amazing! You've explored every single topic in the curriculum.</p>
+                <p>You have explored every single topic in the curriculum.</p>
               </div>
             ) : (
               <div className="clean-unvisited-subjects">
@@ -326,4 +390,3 @@ export default function AnalyticsDashboard() {
     </div>
   );
 }
-

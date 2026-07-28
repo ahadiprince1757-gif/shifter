@@ -15,11 +15,41 @@ function FeedbackDisplay({
 
   const isCorrect = feedback.isCorrect;
   const isLastQuestion = qIdx >= totalQs - 1;
+  const confidence = feedback.confidence; // "low" | "medium" | "high" | null
 
   const rawAnswer = feedback.correctAnswer || "";
   const answerBulletList = rawAnswer.includes("•")
     ? rawAnswer.split("•").map((s) => s.trim()).filter(Boolean)
     : null;
+
+  // Calibration insight: cross-reference correctness with confidence
+  const getCalibrationInsight = () => {
+    if (!confidence) return null;
+    if (!isCorrect && confidence === "high") {
+      return {
+        type: "misconception",
+        message:
+          "Concept Misconception — you were very confident but answered incorrectly. Review the explanation carefully; this is a priority area.",
+      };
+    }
+    if (isCorrect && confidence === "low") {
+      return {
+        type: "unsure",
+        message:
+          "Lucky Guess / Unsure — you got it right but weren't confident. This topic is flagged for earlier review to reinforce it properly.",
+      };
+    }
+    if (!isCorrect && confidence === "medium") {
+      return {
+        type: "knowledge-gap",
+        message:
+          "Knowledge Gap — study the explanation below, then use 'Review Concept' to see the full solution before retrying.",
+      };
+    }
+    return null;
+  };
+
+  const calibration = getCalibrationInsight();
 
   return (
     <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-needs-review"}`}>
@@ -34,6 +64,16 @@ function FeedbackDisplay({
           {qIdx + 1} / {totalQs}
         </span>
       </div>
+
+      {/* Calibration Insight Banner */}
+      {calibration && (
+        <div className={`calibration-insight calibration-${calibration.type}`}>
+          <div className="calibration-icon">
+            {calibration.type === "misconception" ? "!" : calibration.type === "unsure" ? "?" : "i"}
+          </div>
+          <div className="calibration-text">{calibration.message}</div>
+        </div>
+      )}
 
       {/* 1. Direct Explanation / Solution FIRST */}
       {feedback.solution && (
@@ -120,4 +160,3 @@ function FeedbackDisplay({
 }
 
 export default FeedbackDisplay;
-
