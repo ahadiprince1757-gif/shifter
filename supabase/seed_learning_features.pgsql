@@ -1,9 +1,9 @@
 -- ═══════════════════════════════════════════════════════════════════════
 -- SEED: Learning Features + Enrollments
--- Shifter App — Run AFTER schema.sql and migration_learning_features.sql
+-- Shifter App — Run AFTER schema.sql and migration_learning_features.pgsql
 --
--- NOTE: This file uses DO blocks with dynamic lookups so it works
--- correctly regardless of auto-generated topic/chapter IDs.
+-- NOTE: Helper functions are created outside DO blocks (required in PG),
+--       then dropped at the end.
 -- ═══════════════════════════════════════════════════════════════════════
 
 -- ─────────────────────────────────────────────────────────────
@@ -27,39 +27,76 @@ END;
 $$;
 
 -- ─────────────────────────────────────────────────────────────
+-- HELPER: topic_id lookup function (created outside DO block)
+-- PostgreSQL does NOT allow CREATE FUNCTION inside DO blocks.
+-- We create it here and drop it at the end of the script.
+-- ─────────────────────────────────────────────────────────────
+CREATE OR REPLACE FUNCTION _seed_topic_id(
+  p_subject TEXT,
+  p_chapter TEXT,
+  p_title   TEXT
+)
+RETURNS BIGINT
+LANGUAGE plpgsql AS $$
+DECLARE
+  v_id BIGINT;
+BEGIN
+  SELECT t.id INTO v_id
+  FROM public.topics t
+  JOIN public.chapters c ON c.id = t.chapter_id
+  JOIN public.subjects s ON s.id = c.subject_id
+  WHERE s.id = p_subject
+    AND c.chapter_key = p_chapter
+    AND lower(t.title) = lower(p_title)
+  LIMIT 1;
+  RETURN v_id;
+END;
+$$;
+
+-- ─────────────────────────────────────────────────────────────
+-- HELPER: insert_events procedure (created outside DO block)
+-- ─────────────────────────────────────────────────────────────
+CREATE OR REPLACE PROCEDURE _seed_insert_events(
+  p_topic_id BIGINT,
+  p_visits   INT,
+  p_passes   INT,
+  p_fails    INT
+)
+LANGUAGE plpgsql AS $$
+DECLARE
+  i INT;
+BEGIN
+  FOR i IN 1..p_visits LOOP
+    INSERT INTO public.learning_events (topic_id, event_type)
+    VALUES (p_topic_id, 'visit');
+  END LOOP;
+  FOR i IN 1..p_passes LOOP
+    INSERT INTO public.learning_events (topic_id, event_type)
+    VALUES (p_topic_id, 'pass');
+  END LOOP;
+  FOR i IN 1..p_fails LOOP
+    INSERT INTO public.learning_events (topic_id, event_type)
+    VALUES (p_topic_id, 'fail');
+  END LOOP;
+END;
+$$;
+
+-- ─────────────────────────────────────────────────────────────
 -- SECTION 2: DEMO PROGRESS
 -- Mark several topics as completed across subjects so the
 -- Analytics Dashboard has real data to show.
--- Uses dynamic topic lookups so it won't break on ID changes.
 -- ─────────────────────────────────────────────────────────────
 DO $$
 DECLARE
   v_user     UUID;
   v_topic_id BIGINT;
-
-  -- Topic lookup helper
-  FUNCTION topic_id(p_subject TEXT, p_chapter TEXT, p_title TEXT)
-  RETURNS BIGINT AS $fn$
-  DECLARE v_id BIGINT;
-  BEGIN
-    SELECT t.id INTO v_id
-    FROM public.topics t
-    JOIN public.chapters c ON c.id = t.chapter_id
-    JOIN public.subjects s ON s.id = c.subject_id
-    WHERE s.id = p_subject AND c.chapter_key = p_chapter
-      AND lower(t.title) = lower(p_title)
-    LIMIT 1;
-    RETURN v_id;
-  END;
-  $fn$ LANGUAGE plpgsql;
-
 BEGIN
   -- Get first user (safe for demo seeding)
   SELECT id INTO v_user FROM public.profiles LIMIT 1;
   IF v_user IS NULL THEN RETURN; END IF;
 
   -- Math: Numbers chapter
-  v_topic_id := topic_id('math','numbers','Number Systems & Basic Operations');
+  v_topic_id := _seed_topic_id('math', 'numbers', 'Number Systems & Basic Operations');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.progress (user_id, topic_id, completed, score, mastered, confidence_level)
     VALUES (v_user, v_topic_id, TRUE, 90, TRUE, 'high')
@@ -68,7 +105,7 @@ BEGIN
   END IF;
 
   -- Math: Algebra chapter
-  v_topic_id := topic_id('math','algebra','Linear equations');
+  v_topic_id := _seed_topic_id('math', 'algebra', 'Linear equations');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.progress (user_id, topic_id, completed, score, mastered, confidence_level)
     VALUES (v_user, v_topic_id, TRUE, 75, TRUE, 'medium')
@@ -76,7 +113,7 @@ BEGIN
     SET completed = TRUE, score = 75, mastered = TRUE, confidence_level = 'medium';
   END IF;
 
-  v_topic_id := topic_id('math','algebra','Algebraic expressions');
+  v_topic_id := _seed_topic_id('math', 'algebra', 'Algebraic expressions');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.progress (user_id, topic_id, completed, score, mastered, confidence_level)
     VALUES (v_user, v_topic_id, TRUE, 60, FALSE, 'low')
@@ -85,7 +122,7 @@ BEGIN
   END IF;
 
   -- Math: Geometry
-  v_topic_id := topic_id('math','geometry','Types of angles');
+  v_topic_id := _seed_topic_id('math', 'geometry', 'Types of angles');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.progress (user_id, topic_id, completed, score, mastered, confidence_level)
     VALUES (v_user, v_topic_id, TRUE, 85, TRUE, 'high')
@@ -94,7 +131,7 @@ BEGIN
   END IF;
 
   -- Math: Fractions
-  v_topic_id := topic_id('math','fractions','Fraction basics');
+  v_topic_id := _seed_topic_id('math', 'fractions', 'Fraction basics');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.progress (user_id, topic_id, completed, score, mastered, confidence_level)
     VALUES (v_user, v_topic_id, TRUE, 95, TRUE, 'high')
@@ -113,61 +150,27 @@ $$;
 DO $$
 DECLARE
   v_topic_id BIGINT;
-
-  FUNCTION topic_id(p_subject TEXT, p_chapter TEXT, p_title TEXT)
-  RETURNS BIGINT AS $fn$
-  DECLARE v_id BIGINT;
-  BEGIN
-    SELECT t.id INTO v_id
-    FROM public.topics t
-    JOIN public.chapters c ON c.id = t.chapter_id
-    JOIN public.subjects s ON s.id = c.subject_id
-    WHERE s.id = p_subject AND c.chapter_key = p_chapter
-      AND lower(t.title) = lower(p_title)
-    LIMIT 1;
-    RETURN v_id;
-  END;
-  $fn$ LANGUAGE plpgsql;
-
-  PROCEDURE insert_events(p_topic_id BIGINT, p_visits INT, p_passes INT, p_fails INT) AS $pr$
-  DECLARE i INT;
-  BEGIN
-    FOR i IN 1..p_visits LOOP
-      INSERT INTO public.learning_events (topic_id, event_type)
-      VALUES (p_topic_id, 'visit');
-    END LOOP;
-    FOR i IN 1..p_passes LOOP
-      INSERT INTO public.learning_events (topic_id, event_type)
-      VALUES (p_topic_id, 'pass');
-    END LOOP;
-    FOR i IN 1..p_fails LOOP
-      INSERT INTO public.learning_events (topic_id, event_type)
-      VALUES (p_topic_id, 'fail');
-    END LOOP;
-  END;
-  $pr$ LANGUAGE plpgsql;
-
 BEGIN
-  v_topic_id := topic_id('math','algebra','Linear equations');
-  IF v_topic_id IS NOT NULL THEN CALL insert_events(v_topic_id, 8, 5, 3); END IF;
+  v_topic_id := _seed_topic_id('math', 'algebra', 'Linear equations');
+  IF v_topic_id IS NOT NULL THEN CALL _seed_insert_events(v_topic_id, 8, 5, 3); END IF;
 
-  v_topic_id := topic_id('math','algebra','Algebraic expressions');
-  IF v_topic_id IS NOT NULL THEN CALL insert_events(v_topic_id, 6, 2, 4); END IF;
+  v_topic_id := _seed_topic_id('math', 'algebra', 'Algebraic expressions');
+  IF v_topic_id IS NOT NULL THEN CALL _seed_insert_events(v_topic_id, 6, 2, 4); END IF;
 
-  v_topic_id := topic_id('math','geometry','Types of angles');
-  IF v_topic_id IS NOT NULL THEN CALL insert_events(v_topic_id, 5, 4, 1); END IF;
+  v_topic_id := _seed_topic_id('math', 'geometry', 'Types of angles');
+  IF v_topic_id IS NOT NULL THEN CALL _seed_insert_events(v_topic_id, 5, 4, 1); END IF;
 
-  v_topic_id := topic_id('math','fractions','Fraction basics');
-  IF v_topic_id IS NOT NULL THEN CALL insert_events(v_topic_id, 10, 9, 1); END IF;
+  v_topic_id := _seed_topic_id('math', 'fractions', 'Fraction basics');
+  IF v_topic_id IS NOT NULL THEN CALL _seed_insert_events(v_topic_id, 10, 9, 1); END IF;
 
-  v_topic_id := topic_id('math','numbers','Number Systems & Basic Operations');
-  IF v_topic_id IS NOT NULL THEN CALL insert_events(v_topic_id, 7, 6, 1); END IF;
+  v_topic_id := _seed_topic_id('math', 'numbers', 'Number Systems & Basic Operations');
+  IF v_topic_id IS NOT NULL THEN CALL _seed_insert_events(v_topic_id, 7, 6, 1); END IF;
 
-  v_topic_id := topic_id('math','probability','Basic probability');
-  IF v_topic_id IS NOT NULL THEN CALL insert_events(v_topic_id, 4, 1, 3); END IF;
+  v_topic_id := _seed_topic_id('math', 'probability', 'Basic probability');
+  IF v_topic_id IS NOT NULL THEN CALL _seed_insert_events(v_topic_id, 4, 1, 3); END IF;
 
-  v_topic_id := topic_id('math','statistics','Mean');
-  IF v_topic_id IS NOT NULL THEN CALL insert_events(v_topic_id, 3, 2, 1); END IF;
+  v_topic_id := _seed_topic_id('math', 'statistics', 'Mean');
+  IF v_topic_id IS NOT NULL THEN CALL _seed_insert_events(v_topic_id, 3, 2, 1); END IF;
 END;
 $$;
 
@@ -181,28 +184,12 @@ DECLARE
   v_user     UUID;
   v_topic_id BIGINT;
   v_subject  TEXT := 'math';
-
-  FUNCTION topic_id(p_subject TEXT, p_chapter TEXT, p_title TEXT)
-  RETURNS BIGINT AS $fn$
-  DECLARE v_id BIGINT;
-  BEGIN
-    SELECT t.id INTO v_id
-    FROM public.topics t
-    JOIN public.chapters c ON c.id = t.chapter_id
-    JOIN public.subjects s ON s.id = c.subject_id
-    WHERE s.id = p_subject AND c.chapter_key = p_chapter
-      AND lower(t.title) = lower(p_title)
-    LIMIT 1;
-    RETURN v_id;
-  END;
-  $fn$ LANGUAGE plpgsql;
-
 BEGIN
   SELECT id INTO v_user FROM public.profiles LIMIT 1;
   IF v_user IS NULL THEN RETURN; END IF;
 
   -- Mistake 1: Linear equations Q0
-  v_topic_id := topic_id(v_subject, 'algebra', 'Linear equations');
+  v_topic_id := _seed_topic_id(v_subject, 'algebra', 'Linear equations');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.user_mistakes
       (user_id, topic_id, subject_id, chapter_key, question_index,
@@ -217,7 +204,7 @@ BEGIN
   END IF;
 
   -- Mistake 2: Probability Q0
-  v_topic_id := topic_id(v_subject, 'probability', 'Basic probability');
+  v_topic_id := _seed_topic_id(v_subject, 'probability', 'Basic probability');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.user_mistakes
       (user_id, topic_id, subject_id, chapter_key, question_index,
@@ -232,7 +219,7 @@ BEGIN
   END IF;
 
   -- Mistake 3: Algebraic expressions Q1 (resolved)
-  v_topic_id := topic_id(v_subject, 'algebra', 'Algebraic expressions');
+  v_topic_id := _seed_topic_id(v_subject, 'algebra', 'Algebraic expressions');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.user_mistakes
       (user_id, topic_id, subject_id, chapter_key, question_index,
@@ -257,28 +244,12 @@ DO $$
 DECLARE
   v_user     UUID;
   v_topic_id BIGINT;
-
-  FUNCTION topic_id(p_subject TEXT, p_chapter TEXT, p_title TEXT)
-  RETURNS BIGINT AS $fn$
-  DECLARE v_id BIGINT;
-  BEGIN
-    SELECT t.id INTO v_id
-    FROM public.topics t
-    JOIN public.chapters c ON c.id = t.chapter_id
-    JOIN public.subjects s ON s.id = c.subject_id
-    WHERE s.id = p_subject AND c.chapter_key = p_chapter
-      AND lower(t.title) = lower(p_title)
-    LIMIT 1;
-    RETURN v_id;
-  END;
-  $fn$ LANGUAGE plpgsql;
-
 BEGIN
   SELECT id INTO v_user FROM public.profiles LIMIT 1;
   IF v_user IS NULL THEN RETURN; END IF;
 
   -- Due TODAY (overdue) — should appear in review queue
-  v_topic_id := topic_id('math','algebra','Linear equations');
+  v_topic_id := _seed_topic_id('math', 'algebra', 'Linear equations');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.spaced_reviews
       (user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions)
@@ -288,7 +259,7 @@ BEGIN
   END IF;
 
   -- Due TODAY (exactly now)
-  v_topic_id := topic_id('math','probability','Basic probability');
+  v_topic_id := _seed_topic_id('math', 'probability', 'Basic probability');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.spaced_reviews
       (user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions)
@@ -298,7 +269,7 @@ BEGIN
   END IF;
 
   -- Due in 4 days (not yet due)
-  v_topic_id := topic_id('math','fractions','Fraction basics');
+  v_topic_id := _seed_topic_id('math', 'fractions', 'Fraction basics');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.spaced_reviews
       (user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions)
@@ -308,7 +279,7 @@ BEGIN
   END IF;
 
   -- Well-mastered — due in 14 days
-  v_topic_id := topic_id('math','geometry','Types of angles');
+  v_topic_id := _seed_topic_id('math', 'geometry', 'Types of angles');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.spaced_reviews
       (user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions)
@@ -327,27 +298,11 @@ DO $$
 DECLARE
   v_user     UUID;
   v_topic_id BIGINT;
-
-  FUNCTION topic_id(p_subject TEXT, p_chapter TEXT, p_title TEXT)
-  RETURNS BIGINT AS $fn$
-  DECLARE v_id BIGINT;
-  BEGIN
-    SELECT t.id INTO v_id
-    FROM public.topics t
-    JOIN public.chapters c ON c.id = t.chapter_id
-    JOIN public.subjects s ON s.id = c.subject_id
-    WHERE s.id = p_subject AND c.chapter_key = p_chapter
-      AND lower(t.title) = lower(p_title)
-    LIMIT 1;
-    RETURN v_id;
-  END;
-  $fn$ LANGUAGE plpgsql;
-
 BEGIN
   SELECT id INTO v_user FROM public.profiles LIMIT 1;
   IF v_user IS NULL THEN RETURN; END IF;
 
-  v_topic_id := topic_id('math','algebra','Linear equations');
+  v_topic_id := _seed_topic_id('math', 'algebra', 'Linear equations');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.user_notes (user_id, topic_id, note_text)
     VALUES (
@@ -357,7 +312,7 @@ BEGIN
     ON CONFLICT (user_id, topic_id) DO NOTHING;
   END IF;
 
-  v_topic_id := topic_id('math','fractions','Fraction basics');
+  v_topic_id := _seed_topic_id('math', 'fractions', 'Fraction basics');
   IF v_topic_id IS NOT NULL THEN
     INSERT INTO public.user_notes (user_id, topic_id, note_text)
     VALUES (
@@ -371,16 +326,22 @@ END;
 $$;
 
 -- ─────────────────────────────────────────────────────────────
+-- CLEANUP: Drop temporary seed helper functions
+-- ─────────────────────────────────────────────────────────────
+DROP FUNCTION IF EXISTS _seed_topic_id(TEXT, TEXT, TEXT);
+DROP PROCEDURE IF EXISTS _seed_insert_events(BIGINT, INT, INT, INT);
+
+-- ─────────────────────────────────────────────────────────────
 -- VERIFY: Quick row-count check
 -- ─────────────────────────────────────────────────────────────
-SELECT 'enrollments'   AS tbl, COUNT(*) FROM public.enrollments
+SELECT 'enrollments'    AS tbl, COUNT(*) FROM public.enrollments
 UNION ALL
-SELECT 'progress'      AS tbl, COUNT(*) FROM public.progress
+SELECT 'progress'       AS tbl, COUNT(*) FROM public.progress
 UNION ALL
-SELECT 'user_mistakes' AS tbl, COUNT(*) FROM public.user_mistakes
+SELECT 'user_mistakes'  AS tbl, COUNT(*) FROM public.user_mistakes
 UNION ALL
-SELECT 'spaced_reviews'AS tbl, COUNT(*) FROM public.spaced_reviews
+SELECT 'spaced_reviews' AS tbl, COUNT(*) FROM public.spaced_reviews
 UNION ALL
-SELECT 'user_notes'    AS tbl, COUNT(*) FROM public.user_notes
+SELECT 'user_notes'     AS tbl, COUNT(*) FROM public.user_notes
 UNION ALL
-SELECT 'learning_events' AS tbl, COUNT(*) FROM public.learning_events;
+SELECT 'learning_events'AS tbl, COUNT(*) FROM public.learning_events;
