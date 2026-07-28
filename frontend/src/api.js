@@ -132,3 +132,115 @@ export async function fetchAnalytics() {
     throw error;
   }
 }
+
+// ─────────────────────────────────────────────────────────────
+// LEARNING FEATURES: Mistakes, Spaced Reviews, Notes,
+//                   Enrollments, Progress
+// All silently no-op if the user is offline or unauthenticated —
+// local IndexedDB is always the source of truth.
+// ─────────────────────────────────────────────────────────────
+
+async function silentPost(endpoint, body) {
+  try {
+    const r = await fetch(`${API_BASE}${endpoint}`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json", ...getAuthHeaders() },
+      body: JSON.stringify(body),
+    });
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
+async function silentPatch(endpoint, body) {
+  try {
+    const r = await fetch(`${API_BASE}${endpoint}`, {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json", ...getAuthHeaders() },
+      body: JSON.stringify(body),
+    });
+    return r.ok;
+  } catch {
+    return false;
+  }
+}
+
+/** Save a missed question to Supabase. Silently fails when offline/unauthenticated. */
+export async function saveMistake({ sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution }) {
+  return silentPost("/mistakes", { sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution });
+}
+
+/** Mark a mistake as resolved in Supabase. */
+export async function resolveMistake({ sid, cid, topicTitle, questionIndex }) {
+  return silentPatch("/mistakes/resolve", { sid, cid, topicTitle, questionIndex });
+}
+
+/** Fetch all unresolved mistakes from Supabase (falls back to [] on error). */
+export async function fetchMistakes() {
+  try {
+    const r = await fetch(`${API_BASE}/mistakes`, { headers: getAuthHeaders() });
+    if (!r.ok) return [];
+    return r.json();
+  } catch {
+    return [];
+  }
+}
+
+/** Upsert an SM-2 spaced review schedule for a topic. */
+export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions }) {
+  return silentPost("/spaced-reviews", { sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions });
+}
+
+/** Fetch all due spaced reviews from Supabase (falls back to [] on error). */
+export async function fetchSpacedReviews() {
+  try {
+    const r = await fetch(`${API_BASE}/spaced-reviews`, { headers: getAuthHeaders() });
+    if (!r.ok) return [];
+    return r.json();
+  } catch {
+    return [];
+  }
+}
+
+/** Save or update a personal synthesis note for a topic. */
+export async function saveNote({ sid, cid, topicTitle, noteText }) {
+  return silentPost("/notes", { sid, cid, topicTitle, noteText });
+}
+
+/** Fetch personal note text for a specific topic. Returns '' on error. */
+export async function fetchNote(sid, cid, topicTitle) {
+  try {
+    const r = await fetch(
+      `${API_BASE}/notes/${encodeURIComponent(sid)}/${encodeURIComponent(cid)}/${encodeURIComponent(topicTitle)}`,
+      { headers: getAuthHeaders() }
+    );
+    if (!r.ok) return "";
+    const data = await r.json();
+    return data.note_text || "";
+  } catch {
+    return "";
+  }
+}
+
+/** Enroll the current user in a subject. */
+export async function enroll(subjectId) {
+  return silentPost("/enroll", { subjectId });
+}
+
+/** Fetch all enrolled subjects for the current user. */
+export async function fetchEnrollments() {
+  try {
+    const r = await fetch(`${API_BASE}/enrollments`, { headers: getAuthHeaders() });
+    if (!r.ok) return [];
+    return r.json();
+  } catch {
+    return [];
+  }
+}
+
+/** Save topic progress (completion, score, mastered, confidence) to Supabase. */
+export async function saveProgress({ sid, cid, topicTitle, completed, score, mastered, confidenceLevel }) {
+  return silentPost("/progress", { sid, cid, topicTitle, completed, score, mastered, confidenceLevel });
+}
+

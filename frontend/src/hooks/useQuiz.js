@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { gradeAnswer } from "../api";
+import { gradeAnswer, saveProgress } from "../api";
 import { progressRepo } from "../repository/progressRepo";
 import { networkService } from "../services/networkService";
 import logger from "../utils/logger";
@@ -100,9 +100,12 @@ export function useQuiz(
         setFeedback({ ...res, confidence });
         setGrading(false);
 
-        // If retry correct, mark the mistake as resolved
+        // If retry correct, mark the mistake as resolved (with context for Supabase)
         if (res.isCorrect) {
-          mistakeRepo.resolveMistake(topic, qIdx).catch(() => {});
+          mistakeRepo.resolveMistake(topic, qIdx, {
+            subjectId: subject.id,
+            chapterId: chapter.id,
+          }).catch(() => {});
         }
 
         logger.action("RETRY_GRADED", "success", {
@@ -163,7 +166,7 @@ export function useQuiz(
               mark: res.mark,
             },
           ]);
-          // Persist mistake to IndexedDB
+          // Persist mistake to IndexedDB + Supabase
           mistakeRepo.saveMistake({
             topicId: topic,
             subjectId: subject.id,
@@ -214,7 +217,27 @@ export function useQuiz(
     if (topic) {
       const isCorrect = totalQs > 0 && failedCount === 0;
       const finalConfidence = confidence || "medium";
-      spacedRepo.updateReviewSchedule(topic, isCorrect, finalConfidence).catch(() => {});
+      // Pass subject/chapter context so spacedRepo can sync to Supabase
+      spacedRepo.updateReviewSchedule(
+        topic,
+        isCorrect,
+        finalConfidence,
+        { sid: subject?.id, cid: chapter?.id }
+      ).catch(() => {});
+
+      // Save progress summary to Supabase
+      if (subject?.id && chapter?.id && networkService.isOnline) {
+        const score = totalQs > 0 ? Math.round(((totalQs - failedCount) / totalQs) * 100) : 0;
+        saveProgress({
+          sid: subject.id,
+          cid: chapter.id,
+          topicTitle: topic,
+          completed: true,
+          score,
+          mastered: failedCount === 0,
+          confidenceLevel: finalConfidence,
+        }).catch(() => {});
+      }
     }
     logger.action("QUIZ_COMPLETED", "success", {
       subject: subject?.id,

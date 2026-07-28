@@ -569,4 +569,371 @@ app.post("/logs", (req, res) => {
   res.status(204).send();
 });
 
+// ─────────────────────────────────────────────────────────────
+// LEARNING FEATURE SYNC ENDPOINTS
+// ─────────────────────────────────────────────────────────────
+
+/**
+ * Helper: resolve a topic_id from (subject_id, chapter_key, topic_title)
+ * Returns null if not found.
+ */
+async function resolveTopicId(sid, cid, topicTitle) {
+  const { data, error } = await supabase
+    .from("content_view")
+    .select("topic_id")
+    .eq("sid", sid)
+    .eq("cid", cid)
+    .eq("topic", topicTitle)
+    .maybeSingle();
+  if (error || !data) return null;
+  return data.topic_id;
+}
+
+/**
+ * Helper: resolve user_id from Authorization Bearer token.
+ * Returns null if unauthenticated or token invalid.
+ */
+async function resolveUserId(req) {
+  const auth = req.headers.authorization || "";
+  const token = auth.startsWith("Bearer ") ? auth.slice(7) : null;
+  if (!token) return null;
+  const { data: { user }, error } = await supabase.auth.getUser(token);
+  if (error || !user) return null;
+  return user.id;
+}
+
+// ── MISTAKES ─────────────────────────────────────────────────
+
+// POST /api/mistakes — save or update a missed question
+app.post("/api/mistakes", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution } = req.body || {};
+    if (!sid || !cid || !topicTitle || questionIndex == null) {
+      return res.status(400).json({ error: "sid, cid, topicTitle, questionIndex are required" });
+    }
+
+    const topicId = await resolveTopicId(sid, cid, topicTitle);
+    if (!topicId) return res.status(404).json({ error: "Topic not found" });
+
+    const { error } = await supabase
+      .from("user_mistakes")
+      .upsert({
+        user_id: userId,
+        topic_id: topicId,
+        subject_id: sid,
+        chapter_key: cid,
+        question_index: questionIndex,
+        question_text: questionText || "",
+        correct_answer: correctAnswer || "",
+        solution: solution || "",
+        resolved: false,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id,topic_id,question_index", ignoreDuplicates: false });
+
+    if (error) {
+      logger.db("UPSERT", "user_mistakes", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to save mistake" });
+    }
+
+    logger.action("MISTAKE_SAVED", "success", { userId, topicId, questionIndex });
+    res.json({ ok: true });
+  } catch (err) {
+    logger.error("MISTAKE_SAVE", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// PATCH /api/mistakes/resolve — mark a mistake as resolved
+app.patch("/api/mistakes/resolve", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { sid, cid, topicTitle, questionIndex } = req.body || {};
+    if (!sid || !cid || !topicTitle || questionIndex == null) {
+      return res.status(400).json({ error: "sid, cid, topicTitle, questionIndex are required" });
+    }
+
+    const topicId = await resolveTopicId(sid, cid, topicTitle);
+    if (!topicId) return res.status(404).json({ error: "Topic not found" });
+
+    const { error } = await supabase
+      .from("user_mistakes")
+      .update({ resolved: true, resolved_at: new Date().toISOString(), updated_at: new Date().toISOString() })
+      .eq("user_id", userId)
+      .eq("topic_id", topicId)
+      .eq("question_index", questionIndex);
+
+    if (error) {
+      logger.db("UPDATE", "user_mistakes", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to resolve mistake" });
+    }
+
+    logger.action("MISTAKE_RESOLVED", "success", { userId, topicId, questionIndex });
+    res.json({ ok: true });
+  } catch (err) {
+    logger.error("MISTAKE_RESOLVE", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// GET /api/mistakes — fetch all unresolved mistakes for the user
+app.get("/api/mistakes", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { data, error } = await supabase
+      .from("user_mistakes")
+      .select(`
+        id, topic_id, subject_id, chapter_key, question_index,
+        question_text, correct_answer, solution,
+        resolved, attempt_count, created_at, updated_at,
+        topics ( title )
+      `)
+      .eq("user_id", userId)
+      .eq("resolved", false)
+      .order("updated_at", { ascending: false });
+
+    if (error) {
+      logger.db("SELECT", "user_mistakes", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to fetch mistakes" });
+    }
+
+    res.json(data || []);
+  } catch (err) {
+    logger.error("MISTAKES_FETCH", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// ── SPACED REVIEWS ────────────────────────────────────────────
+
+// POST /api/spaced-reviews — upsert a review schedule
+app.post("/api/spaced-reviews", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions } = req.body || {};
+    if (!sid || !cid || !topicTitle || !nextReviewAt) {
+      return res.status(400).json({ error: "sid, cid, topicTitle, nextReviewAt are required" });
+    }
+
+    const topicId = await resolveTopicId(sid, cid, topicTitle);
+    if (!topicId) return res.status(404).json({ error: "Topic not found" });
+
+    const { error } = await supabase
+      .from("spaced_reviews")
+      .upsert({
+        user_id: userId,
+        topic_id: topicId,
+        next_review_at: nextReviewAt,
+        interval_days: intervalDays || 1,
+        ease_factor: easeFactor || 2.5,
+        repetitions: repetitions || 0,
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id,topic_id", ignoreDuplicates: false });
+
+    if (error) {
+      logger.db("UPSERT", "spaced_reviews", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to save spaced review" });
+    }
+
+    logger.action("SPACED_REVIEW_SAVED", "success", { userId, topicId });
+    res.json({ ok: true });
+  } catch (err) {
+    logger.error("SPACED_REVIEW_SAVE", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// GET /api/spaced-reviews — fetch due reviews for the user
+app.get("/api/spaced-reviews", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { data, error } = await supabase
+      .from("user_review_queue")
+      .select("*")
+      .eq("user_id", userId);
+
+    if (error) {
+      logger.db("SELECT", "user_review_queue", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to fetch review queue" });
+    }
+
+    res.json(data || []);
+  } catch (err) {
+    logger.error("SPACED_REVIEWS_FETCH", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// ── USER NOTES ────────────────────────────────────────────────
+
+// POST /api/notes — save personal synthesis note
+app.post("/api/notes", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { sid, cid, topicTitle, noteText } = req.body || {};
+    if (!sid || !cid || !topicTitle) {
+      return res.status(400).json({ error: "sid, cid, topicTitle are required" });
+    }
+
+    const topicId = await resolveTopicId(sid, cid, topicTitle);
+    if (!topicId) return res.status(404).json({ error: "Topic not found" });
+
+    const { error } = await supabase
+      .from("user_notes")
+      .upsert({
+        user_id: userId,
+        topic_id: topicId,
+        note_text: noteText || "",
+        updated_at: new Date().toISOString(),
+      }, { onConflict: "user_id,topic_id", ignoreDuplicates: false });
+
+    if (error) {
+      logger.db("UPSERT", "user_notes", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to save note" });
+    }
+
+    res.json({ ok: true });
+  } catch (err) {
+    logger.error("NOTE_SAVE", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// GET /api/notes/:sid/:cid/:topicTitle — fetch note for a topic
+app.get("/api/notes/:sid/:cid/:topicTitle", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ note_text: "" });
+
+    const { sid, cid, topicTitle } = req.params;
+    const topicId = await resolveTopicId(sid, cid, decodeURIComponent(topicTitle));
+    if (!topicId) return res.json({ note_text: "" });
+
+    const { data, error } = await supabase
+      .from("user_notes")
+      .select("note_text, updated_at")
+      .eq("user_id", userId)
+      .eq("topic_id", topicId)
+      .maybeSingle();
+
+    if (error) {
+      logger.db("SELECT", "user_notes", "error", { error: error.message });
+      return res.json({ note_text: "" });
+    }
+
+    res.json({ note_text: data?.note_text || "", updated_at: data?.updated_at });
+  } catch (err) {
+    logger.error("NOTE_FETCH", err);
+    res.json({ note_text: "" });
+  }
+});
+
+// ── ENROLLMENTS ───────────────────────────────────────────────
+
+// POST /api/enroll — enroll user in a subject
+app.post("/api/enroll", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { subjectId } = req.body || {};
+    if (!subjectId) return res.status(400).json({ error: "subjectId is required" });
+
+    const { error } = await supabase
+      .from("enrollments")
+      .upsert({ user_id: userId, subject_id: subjectId }, { onConflict: "user_id,subject_id", ignoreDuplicates: true });
+
+    if (error) {
+      logger.db("UPSERT", "enrollments", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to enroll" });
+    }
+
+    logger.action("ENROLLED", "success", { userId, subjectId });
+    res.json({ ok: true });
+  } catch (err) {
+    logger.error("ENROLL", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// GET /api/enrollments — get all enrolled subjects for the user
+app.get("/api/enrollments", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { data, error } = await supabase
+      .from("enrollments")
+      .select("subject_id, enrolled_at, subjects(name)")
+      .eq("user_id", userId);
+
+    if (error) {
+      logger.db("SELECT", "enrollments", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to fetch enrollments" });
+    }
+
+    res.json(data || []);
+  } catch (err) {
+    logger.error("ENROLLMENTS_FETCH", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// POST /api/progress — save mastered topic + confidence level
+app.post("/api/progress", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { sid, cid, topicTitle, completed, score, mastered, confidenceLevel } = req.body || {};
+    if (!sid || !cid || !topicTitle) {
+      return res.status(400).json({ error: "sid, cid, topicTitle are required" });
+    }
+
+    const topicId = await resolveTopicId(sid, cid, topicTitle);
+    if (!topicId) return res.status(404).json({ error: "Topic not found" });
+
+    const updateObj = {
+      user_id: userId,
+      topic_id: topicId,
+      updated_at: new Date().toISOString(),
+    };
+    if (completed != null) updateObj.completed = completed;
+    if (score != null) updateObj.score = score;
+    if (mastered != null) {
+      updateObj.mastered = mastered;
+      if (mastered) updateObj.mastered_at = new Date().toISOString();
+    }
+    if (confidenceLevel) updateObj.confidence_level = confidenceLevel;
+
+    const { error } = await supabase
+      .from("progress")
+      .upsert(updateObj, { onConflict: "user_id,topic_id", ignoreDuplicates: false });
+
+    if (error) {
+      logger.db("UPSERT", "progress", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to save progress" });
+    }
+
+    logger.action("PROGRESS_SAVED", "success", { userId, topicId, mastered });
+    res.json({ ok: true });
+  } catch (err) {
+    logger.error("PROGRESS_SAVE", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 module.exports = app;
+

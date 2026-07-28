@@ -194,6 +194,8 @@ const canJumpToPhase = (idx) => {
         {phase === 0 && (
           <NotesPhase
             topic={topic}
+            subject={subject}
+            chapter={chapter}
             content={content}
             goBack={goBack}
             onNext={() => setPhase(1)}

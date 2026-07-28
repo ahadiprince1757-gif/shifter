@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { notesRepo } from "../../repository/notesRepo";
 
-function NotesPhase({ content, goBack, onNext, topic }) {
+function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
   const [fontSize, setFontSize] = useState(() => {
     try {
       const saved = localStorage.getItem("shifter_reader_zoom");
@@ -194,7 +194,10 @@ function NotesPhase({ content, goBack, onNext, topic }) {
                   clearTimeout(saveTimerRef.current);
                   saveTimerRef.current = setTimeout(() => {
                     if (topic) {
-                      notesRepo.saveNote(topic, val).then(() => setScratchpadSaved(true)).catch(() => {});
+                      notesRepo.saveNote(topic, val, {
+                        sid: subject?.id,
+                        cid: chapter?.id,
+                      }).then(() => setScratchpadSaved(true)).catch(() => {});
                     }
                   }, 800);
                 }}
