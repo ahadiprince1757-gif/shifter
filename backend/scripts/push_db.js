@@ -431,6 +431,164 @@ async function run() {
     }
   }
 
+  // 12. Batch Insert Profiles & Learning Feature Data
+  console.log("Syncing profiles and seeding learning feature data (enrollments, progress, mistakes, spaced reviews, notes, audit logs, learning events)...");
+
+  let profilesList = [];
+  try {
+    const { data: authUsersData } = await supabase.auth.admin.listUsers();
+    if (authUsersData && authUsersData.users && authUsersData.users.length > 0) {
+      const profilesToUpsert = authUsersData.users.map((u) => ({
+        id: u.id,
+        email: u.email,
+        username: u.email ? u.email.split("@")[0] : "student",
+        full_name: u.user_metadata?.full_name || (u.email ? u.email.split("@")[0] : "Student"),
+        role_name: "student",
+      }));
+      await supabase.from("profiles").upsert(profilesToUpsert, { onConflict: "id" });
+      profilesList = profilesToUpsert;
+    }
+  } catch (e) {
+    console.warn("Notice: auth.admin.listUsers() not available or failed:", e.message);
+  }
+
+  // Fallback if no auth profiles
+  if (profilesList.length === 0) {
+    const { data: existingProfiles } = await supabase.from("profiles").select("id, email");
+    if (existingProfiles && existingProfiles.length > 0) {
+      profilesList = existingProfiles;
+    } else {
+      const demoId = "00000000-0000-0000-0000-000000000001";
+      await supabase.from("profiles").upsert({
+        id: demoId,
+        email: "demo@shifter.app",
+        username: "demouser",
+        full_name: "Demo Student",
+        role_name: "student",
+      }, { onConflict: "id" });
+      profilesList = [{ id: demoId, email: "demo@shifter.app" }];
+    }
+  }
+
+  console.log(`Seeding user features for ${profilesList.length} profiles...`);
+
+  // Prepare seed datasets across topics
+  const allTopicEntries = Array.from(topicMap.entries()); // [key, topic_id]
+
+  for (const user of profilesList) {
+    const uId = user.id;
+
+    // A. Enrollments: Enroll user in ALL subjects
+    const enrollmentsToInsert = subjectsToInsert.map((s) => ({
+      user_id: uId,
+      subject_id: s.id,
+    }));
+    await supabase.from("enrollments").upsert(enrollmentsToInsert, { onConflict: "user_id,subject_id", ignoreDuplicates: true });
+
+    if (allTopicEntries.length > 0) {
+      // B. Progress: Seed completed topic scores & mastery
+      const sampleTopics = allTopicEntries.slice(0, Math.min(30, allTopicEntries.length));
+      const progressToInsert = sampleTopics.map(([key, tId], idx) => {
+        const score = 60 + ((idx * 11) % 40);
+        return {
+          user_id: uId,
+          topic_id: tId,
+          completed: true,
+          score: score,
+          mastered: score >= 75,
+          confidence_level: score >= 85 ? "high" : score >= 70 ? "medium" : "low",
+        };
+      });
+      await supabase.from("progress").upsert(progressToInsert, { onConflict: "user_id,topic_id", ignoreDuplicates: false });
+
+      // C. User Mistakes (Mistake Journal)
+      const mistakeTopics = allTopicEntries.slice(0, Math.min(8, allTopicEntries.length));
+      const mistakesToInsert = mistakeTopics.map(([key, tId], idx) => {
+        const parts = key.split("|");
+        const sId = parts[0];
+        const cKey = parts[1];
+        const topicName = parts[2] || "concept";
+        return {
+          user_id: uId,
+          topic_id: tId,
+          subject_id: sId,
+          chapter_key: cKey,
+          question_index: idx % 3,
+          question_text: `Practice Question on ${topicName}: Explain the fundamental principle governing this topic.`,
+          correct_answer: `The primary law and key relationship for ${topicName}.`,
+          solution: `Step 1: Identify given quantities.\nStep 2: Apply the governing formula.\nStep 3: Calculate the result.`,
+          resolved: idx % 2 === 1,
+          attempt_count: idx + 1,
+          resolved_at: idx % 2 === 1 ? new Date().toISOString() : null,
+        };
+      });
+      await supabase.from("user_mistakes").upsert(mistakesToInsert, { onConflict: "user_id,topic_id,question_index", ignoreDuplicates: false });
+
+      // D. Spaced Reviews (User Review Queue)
+      const reviewTopics = allTopicEntries.slice(0, Math.min(10, allTopicEntries.length));
+      const reviewsToInsert = reviewTopics.map(([key, tId], idx) => {
+        const isOverdue = idx < 5; // First 5 are due/overdue for immediate review queue!
+        const nextDate = isOverdue
+          ? new Date(Date.now() - (idx + 1) * 3600 * 1000 * 4).toISOString() // 4 to 20 hours ago (due today)
+          : new Date(Date.now() + (idx + 1) * 86400 * 1000 * 3).toISOString(); // 3 to 15 days in future
+        return {
+          user_id: uId,
+          topic_id: tId,
+          next_review_at: nextDate,
+          interval_days: isOverdue ? 1 : (idx + 1) * 3,
+          ease_factor: 2.5,
+          repetitions: isOverdue ? 1 : 2,
+        };
+      });
+      await supabase.from("spaced_reviews").upsert(reviewsToInsert, { onConflict: "user_id,topic_id", ignoreDuplicates: false });
+
+      // E. User Notes (Personal Scratchpad)
+      const noteTopics = allTopicEntries.slice(0, Math.min(6, allTopicEntries.length));
+      const notesToInsert = noteTopics.map(([key, tId]) => {
+        const parts = key.split("|");
+        const topicName = parts[2] || "Topic";
+        return {
+          user_id: uId,
+          topic_id: tId,
+          note_text: `Study Notes for ${topicName}:\n• Key Concept: Remember the main definitions.\n• Calculations: Double-check units.\n• Common Exam Pitfall: Watch out for negative signs and conversion factors.`,
+        };
+      });
+      await supabase.from("user_notes").upsert(notesToInsert, { onConflict: "user_id,topic_id", ignoreDuplicates: false });
+
+      // F. Achievements
+      const achievementsToInsert = sampleTopics.slice(0, 5).map(([key]) => {
+        const parts = key.split("|");
+        return {
+          user_id: uId,
+          achievement_name: `Mastered Topic: ${parts[2]}`,
+          unlocked_at: new Date(Date.now() - Math.floor(Math.random() * 86400000 * 7)).toISOString(),
+        };
+      });
+      await supabase.from("achievements").insert(achievementsToInsert);
+
+      // G. Audit Logs
+      const auditLogsToInsert = [
+        { user_id: uId, action: "USER_LOGIN", table_name: "profiles", record_id: uId, timestamp: new Date(Date.now() - 86400000 * 2).toISOString() },
+        { user_id: uId, action: "SUBJECT_ENROLLED", table_name: "enrollments", record_id: "physics", timestamp: new Date(Date.now() - 86400000).toISOString() },
+        { user_id: uId, action: "QUIZ_COMPLETED", table_name: "quizzes", record_id: "1", timestamp: new Date(Date.now() - 3600000 * 5).toISOString() },
+        { user_id: uId, action: "NOTE_SAVED", table_name: "user_notes", record_id: "1", timestamp: new Date(Date.now() - 3600000 * 2).toISOString() },
+      ];
+      await supabase.from("audit_logs").insert(auditLogsToInsert);
+
+      // H. Learning Events (Analytics)
+      const learningEventsToInsert = [];
+      allTopicEntries.slice(0, 15).forEach(([key, tId]) => {
+        for (let i = 0; i < 4; i++) learningEventsToInsert.push({ topic_id: tId, user_id: uId, event_type: "visit" });
+        for (let i = 0; i < 2; i++) learningEventsToInsert.push({ topic_id: tId, user_id: uId, event_type: "pass" });
+        for (let i = 0; i < 1; i++) learningEventsToInsert.push({ topic_id: tId, user_id: uId, event_type: "fail" });
+      });
+      for (let i = 0; i < learningEventsToInsert.length; i += batchSize) {
+        const chunk = learningEventsToInsert.slice(i, i + batchSize);
+        await supabase.from("learning_events").insert(chunk);
+      }
+    }
+  }
+
   console.log("Database upload completed successfully!");
 }
 
