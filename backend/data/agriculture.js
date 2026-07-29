@@ -495,7 +495,49 @@ hint: "Think recycling resources",
 ans: "Because it allows recycling of resources such as manure and crop residues.",
 explain: "This improves soil fertility and reduces waste.",
 why: "Tests deeper conceptual understanding."
-}
+},
+  {
+    "q": "Differentiate between intensive and extensive farming systems.",
+    "hint": "Think about land area compared to labor and capital inputs.",
+    "ans": "Intensive farming uses high labor and capital inputs per unit area to maximize yield, while extensive farming uses lower inputs over large areas of land.",
+    "explain": "Intensive farming aims for high output per acre (e.g., greenhouse horticulture), whereas extensive farming relies on large acreage with lower output per acre (e.g., large-scale cattle ranching).",
+    "why": "Frequently tested comparative question in economics and management modules."
+  },
+  {
+    "q": "What type of farming system involves growing crops for family survival rather than sale?",
+    "hint": "Focus on the primary motivation/destination of the harvest.",
+    "ans": "Subsistence farming.",
+    "explain": "In subsistence farming, almost all crops or livestock raised are used to maintain the farmer and the farmer's family, leaving little to no surplus for sale.",
+    "why": "Key distinction between basic farm orientation types."
+  },
+  {
+    "q": "State two advantages of crop rotation in arable farming.",
+    "hint": "Consider pest life cycles and nutrient demands of different plant families.",
+    "ans": "1. Breaks disease and pest cycles. 2. Maintains balanced soil fertility and structure.",
+    "explain": "Alternating different plant families prevents pests from establishing permament populations and prevents the continuous depletion of specific soil nutrients.",
+    "why": "Core principle tested in sustainable arable crop management."
+  },
+  {
+    "q": "A farmer moves livestock periodically to seek fresh pasture and water. Identify this specific pastoral system.",
+    "hint": "Think movement pattern without permanent settlement.",
+    "ans": "Nomadic pastoralism (or transhumance).",
+    "explain": "Nomadic pastoralism involves non-settled livestock farming where herders move animals according to seasonal availability of vegetation and water.",
+    "why": "Tests classification of traditional livestock management practices."
+  },
+  {
+    "q": "Explain one economic advantage of mixed farming over specialized crop farming.",
+    "hint": "Think about income streams and market risk.",
+    "ans": "Risk diversification: if one product's market price drops or a crop fails, income from livestock can cushion the loss.",
+    "explain": "Having multiple enterprises distributes financial risk across seasons rather than relying on a single harvest cycle.",
+    "why": "Evaluates understanding of farm risk management strategies."
+  },
+  {
+    "q": "Define monoculture and mention one major ecological risk associated with it.",
+    "hint": "Single crop practice and susceptibility to disease.",
+    "ans": "Monoculture is the continuous growing of a single crop species on the same land. A major risk is rapid, widespread destruction by pests or diseases.",
+    "explain": "Without genetic or species diversity, an adapted pest or pathogen can easily wipe out an entire farm's harvest.",
+    "why": "Tests critical evaluation of modern commercial agricultural practices."
+  }
 ]
 );
 /*=================================================
@@ -598,7 +640,42 @@ hint: "Think roots and yield",
 ans: "It improves soil conditions for root growth and increases crop yield.",
 explain: "Proper preparation leads to better germination and productivity.",
 why: "Evaluates overall understanding of crop production."
-}
+},
+  {
+    "q": "Distinguish between primary tillage and secondary tillage.",
+    "hint": "Focus on the depth of operation, timing, and soil condition produced by each.",
+    "ans": "Primary tillage is deep, initial cultivation performed to break up hard ground and invert soil (e.g., ploughing), whereas secondary tillage is shallow cultivation done afterward to refine clods into a fine seedbed (e.g., harrowing).",
+    "explain": "Primary tillage cuts into unbroken soil to open it up, while secondary tillage smooths and prepares the top layer directly for planting.",
+    "why": "Core distinction tested to evaluate mastery of basic agricultural operations."
+  },
+  {
+    "q": "Explain the purpose of subsoiling as a minimum or specialized tillage practice.",
+    "hint": "Consider what happens beneath the normal plough layer when heavy machinery causes compaction.",
+    "ans": "Subsoiling uses a deep shank to shatter hardpans and compacted soil layers below the normal plough depth without turning over the topsoil.",
+    "explain": "It breaks up subsurface hardpans created by heavy machinery or continuous shallow ploughing, restoring deep root penetration and water drainage.",
+    "why": "Evaluates understanding of field soil compaction management and specialized machinery."
+  },
+  {
+    "q": "Outline two potential negative impacts of excessive land preparation or over-tillage.",
+    "hint": "Think about long-term soil structure, organic matter breakdown, and environmental exposure.",
+    "ans": "1. Destruction of soil aggregate structure leading to increased erosion risk (wind/water). 2. Rapid degradation of soil organic matter due to excessive aeration.",
+    "explain": "Over-tilling breaks down natural soil granules into fine dust that crusts easily under rain and blows away under wind, depleting soil fertility.",
+    "why": "Tests critical evaluation of sustainable land management versus aggressive mechanical preparation."
+  },
+  {
+    "q": "Define minimum tillage and state two advantages it holds over conventional tillage.",
+    "hint": "Think of conservation agriculture practices that minimize soil disturbance.",
+    "ans": "Minimum tillage is a soil conservation system that reduces soil manipulation to the minimum necessary for crop establishment. Advantages: 1. Reduces fuel and labor costs. 2. Preserves soil structure and conserves moisture.",
+    "explain": "By avoiding unnecessary field passes, farmers cut energy consumption while protecting beneficial soil microorganisms and preventing erosion.",
+    "why": "Key exam topic modernizing traditional tillage concepts with sustainable agronomic practices."
+  },
+  {
+    "q": "Explain why soil moisture content at the time of tillage is critical.",
+    "hint": "Consider the difference between working dry soil versus excessively wet soil.",
+    "ans": "Tilling wet soil destroys soil structure and causes compaction/clodding, while tilling extremely dry soil requires excessive power and causes heavy soil dust loss.",
+    "explain": "Working soil at optimum moisture (friable state) allows clods to break apart easily into ideal seedbed particles without smearing or creating dust.",
+    "why": "Tests practical decision-making skills regarding timing and field operations."
+  }
 ]
 );
 /*=========================================
@@ -692,7 +769,42 @@ hint: "Think weak plants",
 ans: "It leads to poor germination, weak plants, and low yield.",
 explain: "Low quality seeds reduce productivity.",
 why: "Evaluates cause-effect understanding."
-}
+},
+  {
+    "q": "4. Define seed germination percentage and state its importance.",
+    "hint": "Think ratio of seeds that sprout successfully",
+    "ans": "Seed germination percentage is the proportion of seeds in a batch that sprout under favorable conditions. It determines optimal seed rate and planting density.",
+    "explain": "A high germination rate ensures full field density without wasting seeds or leaving empty spaces for weeds.",
+    "why": "Crucial quantitative measure in seed viability testing and farm planning."
+  },
+  {
+    "q": "5. Differentiate between certified seed and farmer-saved seed.",
+    "hint": "Think official testing and quality control",
+    "ans": "Certified seeds are produced and inspected under strict regulatory quality standards to guarantee high purity and germination, whereas farmer-saved seeds are harvested from previous yields with variable purity.",
+    "explain": "Certified seeds undergo rigorous field checks and lab testing to ensure freedom from pathogens and weeds.",
+    "why": "Evaluates knowledge of formal agricultural supply chains vs. traditional farming practices."
+  },
+  {
+    "q": "7. Describe two common seed treatment practices done before sowing.",
+    "hint": "Think seed dressing or soaking to protect against pathogens",
+    "ans": "1. Seed dressing (coating seeds with fungicides or insecticides) to prevent soil-borne diseases. 2. Scarification or soaking to break seed dormancy.",
+    "explain": "Treating seeds shields young seedlings from soil pests and speeds up uniform germination.",
+    "why": "Tests procedural knowledge of pre-planting crop management."
+  },
+  {
+    "q": "8. Explain the concept of seed dormancy and one method used to break it.",
+    "hint": "Think why viable seeds fail to sprout even when watered",
+    "ans": "Seed dormancy is a state where a viable seed fails to germinate even under favorable conditions. It can be broken by scarification (nicking the seed coat) or soaking in water.",
+    "explain": "Dormancy mechanisms prevent premature sprouting in nature but must be overcome for uniform crop establishment.",
+    "why": "High-yield physiological topic tested in seed science modules."
+  },
+  {
+    "q": "9. Outline three proper storage conditions required to preserve seed viability.",
+    "hint": "Think humidity, temperature, and pest control",
+    "ans": "1. Cool temperature. 2. Low relative humidity (dry environment). 3. Airtight or pest-proof containers.",
+    "explain": "Low temperature and dry conditions slow down seed respiration and inhibit fungal or insect damage.",
+    "why": "Evaluates post-harvest management and seed preservation principles."
+  }
 ]
 );
 /*=========================================
@@ -951,7 +1063,42 @@ hint: "Think yield",
 ans: "It determines final yield and crop productivity.",
 explain: "Better growth leads to higher harvest.",
 why: "Application-based reasoning question."
-}
+},
+  {
+    "q": "3. Differentiate between crop growth and crop development.",
+    "hint": "Think physical size vs structural change and maturity",
+    "ans": "Crop growth refers to an irreversible increase in physical size and mass, whereas crop development refers to progressive structural changes and stage transitions (e.g., vegetative to reproductive phase).",
+    "explain": "Growth is about size and cell division, while development is about structural maturation and phase changes.",
+    "why": "Core conceptual distinction in plant biology and agronomy examinations."
+  },
+  {
+    "q": "4. State four environmental factors that directly influence crop growth.",
+    "hint": "Think climate, light, water, and soil conditions",
+    "ans": "Sunlight intensity, water availability, temperature, and soil nutrient availability.",
+    "explain": "These external inputs govern rates of photosynthesis, transpiration, and root nutrient uptake.",
+    "why": "Standard listing question evaluating knowledge of plant growth requirements."
+  },
+  {
+    "q": "6. Explain the physiological role of light in crop growth.",
+    "hint": "Think energy source for food production",
+    "ans": "Light provides the radiant energy required for photosynthesis, enabling plants to synthesize carbohydrates for growth and energy storage.",
+    "explain": "Without adequate light intensity and duration, photosynthesis slows, resulting in stunted or etiolated plant growth.",
+    "why": "Tests foundational understanding of plant metabolic processes and crop performance."
+  },
+  {
+    "q": "7. Describe the impact of water stress during the flowering stage of crop growth.",
+    "hint": "Think flower drop and pollination failure",
+    "ans": "Water stress causes flower abortion, poor pollination, and reduced fruit set, resulting in severe crop yield loss.",
+    "explain": "The reproductive stage is highly sensitive to moisture deficits, which directly impede gamete viability and pod/fruit filling.",
+    "why": "High-yield agronomic reasoning question on critical growth stage vulnerabilities."
+  },
+  {
+    "q": "8. Explain how temperature affects the rate of crop growth.",
+    "hint": "Think enzyme activity and metabolic processes",
+    "ans": "Temperature regulates enzyme activity; optimal temperatures accelerate metabolic reactions, while extreme cold or heat slows growth or causes cellular damage.",
+    "explain": "Every crop species has cardinal temperatures (minimum, optimum, maximum) governing its rate of development.",
+    "why": "Evaluates cause-and-effect understanding of environmental physiology in crops."
+  }
 ]
 );
 /*=========================================
@@ -1234,7 +1381,42 @@ hint: "Think efficiency",
 ans: "Because it uses land and resources more efficiently.",
 explain: "Different crops share resources effectively.",
 why: "High-level reasoning question."
-}
+},
+  {
+    "q": "3. Differentiate between intercropping and mixed cropping.",
+    "hint": "Think organized row pattern vs random seed broadcasting",
+    "ans": "Intercropping involves growing two or more crops simultaneously in distinct row arrangements, whereas mixed cropping involves growing them with no distinct row arrangement or pattern.",
+    "explain": "Intercropping maintains structured spacing to minimize inter-specific competition, whereas mixed cropping randomly distributes different seeds across the field.",
+    "why": "Core distinction tested to verify understanding of cropping spatial patterns."
+  },
+  {
+    "q": "4. State four types or arrangements of intercropping.",
+    "hint": "Think rows, strips, relays, and temporal overlapping",
+    "ans": "1. Row intercropping 2. Strip intercropping 3. Relay intercropping 4. Mixed intercropping.",
+    "explain": "Each arrangement varies in spatial layout and timing to suit specific machinery, labor, or crop canopy structures.",
+    "why": "Standard classification question in agronomy and cropping system modules."
+  },
+  {
+    "q": "6. Explain the agronomic advantage of intercropping a legume with a cereal crop.",
+    "hint": "Think biological nitrogen fixation and soil fertility",
+    "ans": "Legumes fix atmospheric nitrogen into the soil via root nodule bacteria, which enriches soil fertility and reduces the nitrogen fertilizer requirement for the companion cereal crop.",
+    "explain": "This mutually beneficial interaction improves nutrient availability and optimizes land resource utilization.",
+    "why": "Evaluates understanding of soil-plant chemical interactions and sustainable nutrient management."
+  },
+  {
+    "q": "7. Describe two potential disadvantages or limitations of intercropping.",
+    "hint": "Think mechanical harvesting difficulties and crop competition",
+    "ans": "1. Difficulty in mechanizing field operations like weeding and harvesting. 2. Severe competition for light, water, and nutrients if unsuitable crops are paired together.",
+    "explain": "Varying crop heights and maturity rates can complicate tractor use and lead to dominant crops shading out sensitive companion crops.",
+    "why": "Tests critical analysis of cropping systems beyond their immediate benefits."
+  },
+  {
+    "q": "8. Define Land Equivalent Ratio (LER) and explain its significance in intercropping.",
+    "hint": "Think relative yield measure comparing intercrop vs monoculture",
+    "ans": "Land Equivalent Ratio (LER) is the relative land area required under sole cropping to produce the yields achieved in an intercropping system. An LER greater than 1.0 indicates an intercropping advantage.",
+    "explain": "If LER is 1.25, it means intercropping produces 25% more yield from the same land area than growing the crops separately as sole crops.",
+    "why": "High-yield quantitative evaluation concept tested in advanced agronomy and crop production."
+  }
 ]
 );
 /*=========================================
@@ -1310,7 +1492,42 @@ hint: "Think diversity",
 ans: "Because different crops provide harvest even if one fails.",
 explain: "Multiple crops increase chances of yield.",
 why: "Reasoning question in exams."
-}
+},
+  {
+    "q": "3. Differentiate between mixed cropping and crop rotation.",
+    "hint": "Think simultaneous growing vs sequential growing over time",
+    "ans": "Mixed cropping involves growing multiple crops together on the same field at the same time, whereas crop rotation involves growing different crops on the same field in a planned sequence over different seasons.",
+    "explain": "Mixed cropping varies spatial diversity at one moment, while crop rotation varies temporal diversity across multiple planting cycles.",
+    "why": "Core distinction tested to ensure students do not confuse spatial crop patterns with temporal crop sequences."
+  },
+  {
+    "q": "4. State four disadvantages of mixed cropping.",
+    "hint": "Think weeding difficulty, chemical spraying, harvesting, and competition",
+    "ans": "1. Mechanized harvesting is difficult. 2. Selective weed control with agrochemicals is hard. 3. Crop competition for light and nutrients. 4. Irregular plant density.",
+    "explain": "The random distribution of different crop types makes using standard tractors, harvesters, or targeted herbicides challenging.",
+    "why": "Standard evaluation question testing practical field management constraints."
+  },
+  {
+    "q": "6. Explain how mixed cropping helps in pest and disease suppression.",
+    "hint": "Think host plant separation and barrier effects",
+    "ans": "Mixing non-host crops creates physical barriers that disrupt the movement of specialized pests and slow down the spread of fungal spores across the field.",
+    "explain": "Pests that feed on a specific crop find it harder to navigate to their target when non-susceptible plants are interspersed randomly.",
+    "why": "Evaluates biological principles behind non-chemical pest management in traditional cropping systems."
+  },
+  {
+    "q": "7. Describe the criteria for selecting suitable crop combinations for mixed cropping.",
+    "hint": "Think root depth, light requirements, and growth habits",
+    "ans": "Crops should have different rooting depths, varying canopy heights, and complementary nutrient needs (such as shallow-rooted cereals paired with deep-rooted legumes).",
+    "explain": "Selecting crops with non-competing root zones and different canopy structures minimizes resource competition and optimizes yield.",
+    "why": "Tests agronomic planning and resource optimization concepts in crop production."
+  },
+  {
+    "q": "8. Explain why mixed cropping is predominantly practiced by smallholder farmers.",
+    "hint": "Think limited land, low capital, and subsistence needs",
+    "ans": "Smallholder farmers rely on mixed cropping to maximize food diversity on limited acreage, reduce market risk, and minimize reliance on costly chemical inputs.",
+    "explain": "It offers risk insurance against total crop failure caused by unpredictable weather, pests, or market price drops.",
+    "why": "High-yield socio-economic reasoning question commonly featured in agricultural economics and farming systems modules."
+  }
 ]
 );
 /*=========================================
@@ -1384,7 +1601,42 @@ hint: "One crop vs many over time",
 ans: "Crop rotation involves different crops in sequence while monocropping is one crop repeatedly.",
 explain: "They differ in crop diversity over time.",
 why: "Frequent comparison question."
-}
+},
+  {
+    "q": "3. State four key principles considered when designing a crop rotation plan.",
+    "hint": "Think root depth, nitrogen fixation, heavy vs light feeders, and weed control",
+    "ans": "1. Alternate deep-rooted and shallow-rooted crops. 2. Include legumes to fix nitrogen. 3. Alternate heavy nutrient feeders with light feeders. 4. Alternate weed-susceptible crops with weed-suppressing crops.",
+    "explain": "Adhering to these principles balances soil nutrient depletion, optimizes soil structure utilization, and prevents pest accumulation.",
+    "why": "High-yield procedural question evaluating practical agronomic planning."
+  },
+  {
+    "q": "4. Explain how crop rotation controls soil-borne pests and diseases.",
+    "hint": "Think host deprivation and life cycle disruption",
+    "ans": "By planting non-host crops in consecutive seasons, soil-borne pests and pathogens are deprived of their food source, causing their populations to die out before the susceptible crop returns.",
+    "explain": "Pathogens adapted to a specific crop family cannot survive when a non-susceptible crop family occupies the land next.",
+    "why": "Evaluates cause-and-effect understanding of biological pest management."
+  },
+  {
+    "q": "6. Explain the role of deep-rooted crops in a crop rotation system.",
+    "hint": "Think subsoil nutrients, hardpan breaking, and soil aeration",
+    "ans": "Deep-rooted crops break up subsurface hardpans, open drainage channels, and draw up nutrients and water from lower soil strata to make them available to subsequent shallow-rooted crops.",
+    "explain": "They recycle nutrients that have leached beyond the reach of shallow roots and improve overall subsoil structure.",
+    "why": "Tests biological and physical principles of soil profile management."
+  },
+  {
+    "q": "7. Describe two major disadvantages or challenges of implementing a crop rotation system.",
+    "hint": "Think market demands, specialized machinery, and technical knowledge",
+    "ans": "1. Requires diverse farm machinery, specialized knowledge, and varied management for different crops. 2. Less financial flexibility if high-value market demand favors only one crop.",
+    "explain": "Farmers must invest in different seeds, tools, and storage facilities for multiple crop types rather than specializing in a single profitable commodity.",
+    "why": "Tests critical analysis of economic and operational constraints in diversified farming."
+  },
+  {
+    "q": "8. Outline a typical 4-year crop rotation program using cereals, legumes, root crops, and cover crops.",
+    "hint": "Think logical sequence of soil preparation, heavy feeding, nitrogen restoration, and weed suppression",
+    "ans": "Year 1: Legumes (nitrogen fixer) → Year 2: Leafy/Cereal crop (heavy nitrogen feeder) → Year 3: Root crop (deep soil loosener) → Year 4: Cover crop/fallow (soil cover and organic restoration).",
+    "explain": "This sequence ensures legumes build up nitrogen for nutrient-hungry cereals, followed by root crops that utilize deeper soil layers, and ends with cover crops to restore organic matter.",
+    "why": "Comprehensive synthesis question testing ability to structure a practical, sustainable rotation plan."
+  }
 ]
 );
 /*=========================================
@@ -1464,7 +1716,42 @@ hint: "Timing difference",
 ans: "Relay cropping involves planting before harvest while intercropping involves planting at the same time.",
 explain: "They differ in timing of planting.",
 why: "Comparison question."
-}
+},
+  {
+    "q": "2. State three key advantages of relay cropping.",
+    "hint": "Think land utilization, growing season length, and erosion control",
+    "ans": "1. Maximizes land use efficiency across multiple seasons. 2. Provides continuous living cover to prevent soil erosion. 3. Enables double-cropping in regions with short growing seasons.",
+    "explain": "By establishing the second crop before the first is removed, farmers save time and maintain ground cover between main harvests.",
+    "why": "Standard listing question evaluating resource optimization in intensive cropping systems."
+  },
+  {
+    "q": "3. Explain the ideal conditions required for successful relay cropping.",
+    "hint": "Think residual soil moisture, shade tolerance, and harvest care",
+    "ans": "The secondary crop must be shade-tolerant during early growth, residual soil moisture must be sufficient for germination, and harvesting the main crop must not damage young seedlings.",
+    "explain": "Because the second crop sprouts under the established canopy of the first, early shade tolerance and precise field operations are critical.",
+    "why": "Tests biological and management requirements for dual-crop overlapping."
+  },
+  {
+    "q": "6. Describe two field management challenges faced during the harvest phase in relay cropping.",
+    "hint": "Think tractor damage to young plants and labor conflicts",
+    "ans": "1. Difficulty harvesting the mature main crop without trampling or damaging young seedlings. 2. Labor competition between harvesting the first crop and managing the second.",
+    "explain": "Machinery or manual harvesting workers must navigate rows carefully to avoid damaging the newly emerged secondary crop.",
+    "why": "Evaluates practical management constraints in time-overlapping crop production."
+  },
+  {
+    "q": "7. Explain how relay cropping contributes to sustainable weed management.",
+    "hint": "Think canopy cover, light deprivation, and weed suppression",
+    "ans": "Relay cropping maintains continuous ground cover, which shades the soil surface and suppresses weed germination during the transition window between crops.",
+    "explain": "Eliminating bare ground periods deprives weed seeds of the light needed to sprout, reducing herbicide reliance.",
+    "why": "Tests integrated pest management principles within intensive farming systems."
+  },
+  {
+    "q": "8. Give a practical agronomic example of a relay cropping system.",
+    "hint": "Think planting a pulse or legume into a standing cereal crop before harvest",
+    "ans": "Sowing chickpeas or lentils into a standing rice or maize crop shortly before the grain harvest.",
+    "explain": "The legume germinates using residual moisture from the rice field and continues growing after the rice stalks are harvested.",
+    "why": "Tests real-world application of cropping concepts in field agronomy."
+  }
 ]
 );
 /*================================================
@@ -1545,7 +1832,42 @@ hint: "Think roots or organisms",
 ans: "Plant roots breaking rocks.",
 explain: "Living organisms contribute to rock breakdown.",
 why: "Recall-based question."
-}
+},
+  {
+    "q": "2. State the five major soil-forming factors.",
+    "hint": "Think CROPT: Climate, Relief, Organisms, Parent material, Time",
+    "ans": "1. Parent material 2. Climate 3. Organisms (biota) 4. Topography (relief) 5. Time.",
+    "explain": "These five factors interact continuously to govern the rate of pedogenesis and determine the final properties of the soil.",
+    "why": "Fundamental high-yield topic tested across all introductory soil science modules."
+  },
+  {
+    "q": "3. Differentiate between physical weathering and chemical weathering.",
+    "hint": "Think physical breakdown without chemical change vs chemical alteration of minerals",
+    "ans": "Physical weathering breaks rocks into smaller fragments without changing their chemical composition, whereas chemical weathering alters or dissolves the chemical minerals within the rock.",
+    "explain": "Physical processes (e.g., frost wedging) reduce grain size, while chemical processes (e.g., oxidation, hydrolysis) transform mineral structures.",
+    "why": "Core distinction tested to evaluate understanding of rock decomposition processes."
+  },
+  {
+    "q": "6. Explain the role of parent material in determining soil properties.",
+    "hint": "Think mineral composition, texture, and initial fertility inherited from original rock",
+    "ans": "Parent material dictates the initial chemical composition, mineral content, soil texture, and pH of the newly forming soil.",
+    "explain": "Soils formed from granite tend to be acidic and sandy, while soils formed from basalt are often dark, fine-textured, and rich in calcium and magnesium.",
+    "why": "Evaluates cause-and-effect understanding of how geology influences agricultural soil types."
+  },
+  {
+    "q": "7. Describe how topography (relief) influences soil profile development on a steep slope versus a flat plain.",
+    "hint": "Think water runoff, soil erosion, and drainage differences",
+    "ans": "Steep slopes experience high runoff and erosion, resulting in thin, poorly developed soils, while flat lowlands collect water and sediments, creating deeper, organic-rich soils.",
+    "explain": "Slope gradient affects water infiltration, drainage rates, and sediment accumulation across a landscape (catena effect).",
+    "why": "Tests spatial reasoning and landscape-level soil profile analysis."
+  },
+  {
+    "q": "8. Explain why time is considered a passive factor in pedogenesis.",
+    "hint": "Think age of soil and extent of horizon development over hundreds of years",
+    "ans": "Time does not actively apply energy to break down rocks, but it dictates the duration over which climate, organisms, and topography act upon the parent material.",
+    "explain": "Young soils retain strong characteristics of their parent rock, whereas mature soils develop distinct, deep horizons (A, B, C) over thousands of years.",
+    "why": "High-yield conceptual question testing deep understanding of soil genesis kinetics."
+  }
 ]
 );
 /*=========================================
@@ -1636,7 +1958,42 @@ hint: "Think minerals",
 ans: "Because it determines soil mineral content.",
 explain: "Different rocks form different soils.",
 why: "Core concept question."
-}
+},
+  {
+    "q": "3. Explain the role of living organisms in soil formation.",
+    "hint": "Think organic matter, burrowing, and root breakdown",
+    "ans": "Organisms decompose plant and animal matter to form humus, aerate the soil through burrowing, and release organic acids that break down rocks.",
+    "explain": "Microorganisms transform raw organic debris into fertile topsoil, while macro-organisms like earthworms physically mix soil layers.",
+    "why": "Tests understanding of biological contributions to pedogenesis."
+  },
+  {
+    "q": "4. Describe how topography (relief) affects soil depth on steep slopes versus flat valleys.",
+    "hint": "Think water runoff, drainage, and soil erosion",
+    "ans": "Steep slopes have thin soils due to rapid water runoff and high erosion, while flat valleys accumulate deep, nutrient-rich soils due to sediment deposition.",
+    "explain": "Relief influences local microclimate, water infiltration, and erosion rates along a landscape.",
+    "why": "High-yield landscape and physical soil science question."
+  },
+  {
+    "q": "6. Explain how time influences soil maturity and horizon development.",
+    "hint": "Think young vs old soils",
+    "ans": "Over long periods of time, continuous weathering and organic accumulation create deep, distinct soil horizons, turning young parent material into mature soil.",
+    "explain": "Young soils closely resemble their parent rock, whereas old soils display distinct layers (A, B, C horizons) formed over thousands of years.",
+    "why": "Evaluates conceptual understanding of soil aging kinetics."
+  },
+  {
+    "q": "7. How does high rainfall accelerate chemical weathering during soil formation?",
+    "hint": "Think leaching and hydrolysis",
+    "ans": "High rainfall supplies water for chemical reactions like hydrolysis and hydration, and promotes leaching of soluble minerals down the soil profile.",
+    "explain": "Abundant moisture speeds up mineral breakdown and washes soluble salts deeper into the subsoil.",
+    "why": "Tests physiological and chemical interactions in soil chemistry."
+  },
+  {
+    "q": "8. Differentiate between active and passive factors of soil formation.",
+    "hint": "Think energy supply vs background conditions",
+    "ans": "Climate and organisms are active factors that directly supply energy and matter to break down rocks, while parent material, relief, and time are passive factors that act as conditions for these processes.",
+    "explain": "Active factors drive the chemical and biological transformations, while passive factors define the starting state and environmental constraints.",
+    "why": "Core conceptual distinction in advanced soil science examinations."
+  }
 ]
 );
 /*=========================================
@@ -1717,7 +2074,42 @@ hint: "Think crop growth",
 ans: "It helps determine soil fertility and root depth.",
 explain: "Different layers affect plant growth.",
 why: "Application-based question."
-}
+},
+  {
+    "q": "3. Describe the main characteristics and composition of the O Horizon.",
+    "hint": "Think organic layer at the surface",
+    "ans": "The O Horizon is the uppermost layer composed mostly of organic matter, such as fresh or partially decomposed plant leaves, twigs, and animal remains.",
+    "explain": "This organic litter layer feeds soil microorganisms and decomposes to form dark humus.",
+    "why": "Tests specific knowledge of individual soil horizons and organic matter accumulation."
+  },
+  {
+    "q": "4. Explain why the A Horizon (topsoil) is the most critical layer for crop production.",
+    "hint": "Think nutrients, biological activity, and root zone",
+    "ans": "The A Horizon is rich in humus and mineral nutrients, possesses high biological activity, and serves as the primary root zone for crop plants.",
+    "explain": "Its high organic content gives it good water retention, aeration, and nutrient availability necessary for seed germination and early root growth.",
+    "why": "High-yield application question linking soil horizons to agricultural productivity."
+  },
+  {
+    "q": "6. Differentiate between the B Horizon (subsoil) and the C Horizon (substratum).",
+    "hint": "Think accumulated leached minerals vs partially weathered rock",
+    "ans": "The B Horizon is an accumulation zone containing leached minerals (like clay and iron oxides) from topsoil, whereas the C Horizon consists of partially weathered parent material with little organic matter.",
+    "explain": "Horizon B is a subsoil layer altered by illuviation, while Horizon C represents broken rock transitioning into bedrock.",
+    "why": "Evaluates understanding of chemical leaching, mineral deposition, and soil layer differentiation."
+  },
+  {
+    "q": "7. Define the term 'leaching' and state which horizon is most affected by it.",
+    "hint": "Think downward movement of soluble nutrients by water",
+    "ans": "Leaching is the downward movement of dissolved minerals and nutrients through the soil profile caused by percolating water. It primarily affects the A Horizon (or E Horizon, where present).",
+    "explain": "Heavy rainfall washes soluble nutrients out of topsoil layers down into deeper subsoil horizons.",
+    "why": "Core soil chemistry concept tested in relation to profile horizons."
+  },
+  {
+    "q": "8. Explain how a hardpan in the B Horizon negatively affects crop performance.",
+    "hint": "Think root restriction and poor drainage",
+    "ans": "A hardpan forms a dense, compacted barrier in the subsoil that restricts deep root penetration, inhibits water drainage, and causes waterlogging in the root zone.",
+    "explain": "Compacted subsoil prevents crops from reaching deep moisture during droughts and suffocates roots during rainy periods.",
+    "why": "Tests critical diagnostic reasoning regarding subsoil physical constraints."
+  }
 ]
 );
 /*=========================================
@@ -1804,7 +2196,42 @@ hint: "Think plant growth",
 ans: "It determines soil fertility and plant growth.",
 explain: "Balanced components support crops.",
 why: "Reasoning question."
-}
+},
+  {
+    "q": "3. State the ideal volumetric proportions of the four major soil components in a healthy topsoil.",
+    "hint": "Think percentages of solids (minerals/organic matter) vs pore space (air/water)",
+    "ans": "45% mineral matter, 25% water, 25% air, and 5% organic matter.",
+    "explain": "A balanced 50:50 ratio of solid materials to pore space provides optimal conditions for root growth and microbial life.",
+    "why": "High-yield quantitative recall question featured in standard soil science examinations."
+  },
+  {
+    "q": "4. Explain the role of soil organic matter in improving soil physical properties.",
+    "hint": "Think water retention, soil structure, and aggregation",
+    "ans": "Soil organic matter binds soil particles into stable aggregates, increases water-holding capacity, and improves soil aeration and porosity.",
+    "explain": "Decomposed organic matter (humus) acts like a sponge, helping sandy soils hold water and loosening heavy clay soils.",
+    "why": "Evaluates cause-and-effect understanding of organic amendments on soil physics."
+  },
+  {
+    "q": "6. Explain the inverse relationship between soil air and soil water in soil pore spaces.",
+    "hint": "Think about what happens when rainfall fills the pores",
+    "ans": "Soil air and water share the same pore spaces; when water enters the soil after rain, it displaces air, and as water dries or drains out, air fills the empty pores.",
+    "explain": "Waterlogging reduces oxygen levels because water fills macro- and micro-pores, cutting off gas exchange for plant roots.",
+    "why": "Tests conceptual understanding of dynamic soil pore space mechanics."
+  },
+  {
+    "q": "7. Describe how the mineral component of soil originates and its importance to crops.",
+    "hint": "Think rock weathering and essential plant nutrients",
+    "ans": "The mineral component originates from the weathering of parent rock and provides the physical matrix of the soil as well as essential nutrients like potassium, calcium, and iron.",
+    "explain": "Sand, silt, and clay particles form the structural backbone of soil and slowly release mineral ions into the soil solution.",
+    "why": "Links parent material weathering directly to plant nutrient availability."
+  },
+  {
+    "q": "8. Outline two negative consequences on crop growth when soil organic matter is severely depleted.",
+    "hint": "Think soil crusting, nutrient loss, and low water holding",
+    "ans": "1. Reduced water retention causing rapid drought stress. 2. Breakdown of soil aggregates leading to surface crusting and reduced nutrient retention.",
+    "explain": "Depleted organic matter reduces cation exchange capacity and leaves soil vulnerable to erosion and compaction.",
+    "why": "Tests practical reasoning on soil degradation and crop health."
+  }
 ]
 );
 /*=========================================
@@ -1878,7 +2305,42 @@ hint: "Think toxicity and deficiency",
 ans: "Because nutrients become unavailable or toxic.",
 explain: "Plants cannot absorb nutrients properly.",
 why: "Reasoning question."
-}
+},
+  {
+    "q": "3. Explain how soil pH affects the availability of primary macro-nutrients to plants.",
+    "hint": "Think nitrogen, phosphorus, and potassium solubility across the pH scale",
+    "ans": "In highly acidic soils (pH < 5.5), phosphorus becomes bound to aluminum and iron, while in alkaline soils (pH > 7.5), phosphorus fixes with calcium, making it unavailable to plants in both extremes.",
+    "explain": "Nutrients dissolve best in the soil solution at near-neutral pH (6.0 to 7.0), ensuring optimal root absorption.",
+    "why": "High-yield application question linking soil chemistry to plant nutrition."
+  },
+  {
+    "q": "4. Describe how soil acidification occurs naturally over time in high-rainfall regions.",
+    "hint": "Think leaching of basic cations like Ca2+ and Mg2+ by rain",
+    "ans": "Heavy rainfall leaches basic cations (calcium, magnesium, potassium) down through the soil profile, leaving higher concentrations of acidic hydrogen and aluminum ions behind.",
+    "explain": "Percolating rainwater carries soluble basic minerals deep into subsoil horizons, lowering topsoil pH.",
+    "why": "Evaluates understanding of chemical weathering and environmental soil dynamics."
+  },
+  {
+    "q": "6. Name the common agricultural amendment used to raise soil pH and lower acidity.",
+    "hint": "Think agricultural lime or calcium carbonate",
+    "ans": "Agricultural limestone (calcium carbonate, CaCO3).",
+    "explain": "Liming neutralizes hydrogen ions in the soil solution, raising the pH toward an optimal range for crop roots.",
+    "why": "Core practical agronomy question tested on soil management practices."
+  },
+  {
+    "q": "7. How can acidic soil cause aluminum toxicity in sensitive crops?",
+    "hint": "Think soluble Al3+ ions dissolving at pH below 5.0",
+    "ans": "When soil pH drops below 5.0, insoluble aluminum minerals dissolve into soluble Al3+ ions, which damage root tips and restrict root expansion.",
+    "explain": "Toxic concentrations of soluble aluminum stunt root development, preventing plants from absorbing water and nutrients efficiently.",
+    "why": "Tests diagnostic knowledge of physiological disorders caused by soil chemical extremes."
+  },
+  {
+    "q": "8. Differentiate between active acidity and reserve (potential) acidity in soil.",
+    "hint": "Think H+ ions in soil solution vs H+ ions adsorbed on clay/humus surfaces",
+    "ans": "Active acidity refers to the concentration of hydrogen ions dissolved directly in the soil water solution, while reserve acidity refers to hydrogen and aluminum ions bound to clay and organic matter particles.",
+    "explain": "Active acidity is measured by standard pH tests, but reserve acidity acts as a buffer that resists rapid changes in soil pH when amendments are added.",
+    "why": "Core advanced concept evaluated in soil fertility and soil chemistry modules."
+  }
 ]
 );
 /*=========================================
@@ -1965,7 +2427,42 @@ hint: "Think nutrient balance",
 ans: "It prevents nutrient depletion.",
 explain: "Different crops use different nutrients.",
 why: "Reasoning question."
-}
+},
+  {
+    "q": "2. Differentiate between soil fertility and soil productivity.",
+    "hint": "Think nutrient supply capability vs actual crop yield output per hectare",
+    "ans": "Soil fertility is the intrinsic capacity of soil to supply essential nutrients, whereas soil productivity is the actual yield produced per unit area under specific climate and management conditions.",
+    "explain": "A soil can be highly fertile but unproductive if limited by water scarcity, poor drainage, pests, or unfavorable climate.",
+    "why": "High-yield conceptual distinction tested across introductory and intermediate agronomy modules."
+  },
+  {
+    "q": "3. List the primary macro-nutrients required by plants and state one key function of nitrogen.",
+    "hint": "Think NPK and vegetative growth/chlorophyll formation",
+    "ans": "Primary macro-nutrients: Nitrogen (N), Phosphorus (P), and Potassium (K). Nitrogen promotes vegetative leaf growth and is a key building block of chlorophyll and plant proteins.",
+    "explain": "Nitrogen fuels rapid vegetative growth, phosphorus aids root and seed development, and potassium regulates water balance and disease resistance.",
+    "why": "Core plant nutrition question fundamental to crop husbandry and fertilizer management."
+  },
+  {
+    "q": "6. Explain how leguminous crops improve soil nitrogen fertility during crop rotation.",
+    "hint": "Think Rhizobium root nodules and atmospheric nitrogen fixation",
+    "ans": "Legumes form symbiotic relationships with Rhizobium bacteria in their root nodules, converting atmospheric nitrogen into plant-available ammonium ions that enrich the soil.",
+    "explain": "When legume roots and crop residues decompose, the fixed organic nitrogen is released into the topsoil for subsequent non-legume crops.",
+    "why": "Tests biological processes in sustainable cropping systems and soil nutrient management."
+  },
+  {
+    "q": "7. Describe how continuous heavy application of inorganic nitrogen fertilizers can degrade soil fertility over time.",
+    "hint": "Think soil acidification, microbial decline, and leaching",
+    "ans": "Excessive inorganic nitrogen use causes soil acidification (lowers pH), accelerates organic matter decomposition without replacement, and leaches basic cations out of the root zone.",
+    "explain": "Ammonium-based fertilizers release hydrogen ions during nitrification, gradually lowering soil pH and suppressing beneficial soil organisms.",
+    "why": "Evaluates environmental soil science concepts and sustainable nutrient management."
+  },
+  {
+    "q": "8. Define Cation Exchange Capacity (CEC) and explain its relationship to soil fertility.",
+    "hint": "Think negative charges on clay/humus holding onto positively charged nutrient ions",
+    "ans": "CEC is the total capacity of a soil to hold exchangeable positively charged ions (cations like Ca2+, Mg2+, K+, NH4+); a higher CEC indicates greater potential soil fertility and nutrient retention.",
+    "explain": "Soils high in clay and organic matter have high CEC, preventing essential mineral nutrients from being washed away by percolating water.",
+    "why": "Core advanced concept evaluating physical-chemical determinants of soil fertility."
+  }
 ]
 );
 /*=========================================

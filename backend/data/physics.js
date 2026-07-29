@@ -1495,8 +1495,7 @@ T = time
       explanation:
         "Final velocity depends on initial velocity plus acceleration effect.",
     },
-  ][
-    ({
+    {
       q: "A car starts from rest and accelerates at 3 m/s² for 5 s. Find final velocity.",
       hint: "Use v = u + at",
       formula: "v = u + at",
@@ -1545,7 +1544,7 @@ T = time
       ans: "When time is not given in the problem.",
       explanation:
         "This equation is used when you need to relate velocity, acceleration, and displacement without involving time.",
-    })
+    },
   ],
 );
 /* =========================
@@ -3753,23 +3752,186 @@ Total in = Total out
 </div>
 `,
   [
-    {
-      type: "calc",
-      q: "A 2kg object falls from 5m. Find total energy.",
-      ans: "100J",
-      sol: "mgh = 2 × 10 × 5 = 100J",
-    },
-    {
-      type: "written",
-      q: "What happens to energy when an object hits the ground?",
-      ans: "It converts into heat, sound, and deformation energy.",
-    },
-    {
-      type: "written",
-      q: "State the law of conservation of energy.",
-      ans: "Energy cannot be created or destroyed, only transformed from one form to another.",
-    },
-  ],
+  {
+    q: "A 2kg object falls from 5m. Find total energy.",
+    ans: "100J",
+    sol: "mgh = 2 × 10 × 5 = 100J",
+    steps: [
+      "Step 1: Identify the given values: mass (m) = 2kg, height (h) = 5m, and gravitational acceleration (g) ≈ 10m/s².",
+      "Step 2: Recall the formula for gravitational potential energy: PE = m × g × h.",
+      "Step 3: Substitute the known values into the equation: PE = 2 × 10 × 5.",
+      "Step 4: Calculate the final value to find the total mechanical energy: 100 Joules (100J)."
+    ]
+  },
+
+  {
+    q: "A 5kg object is lifted to a height of 8m. Calculate its potential energy.",
+    ans: "400J",
+    sol: "PE = mgh = 5 × 10 × 8 = 400J",
+    steps: [
+      "Step 1: Identify the values: m = 5kg, h = 8m, g = 10m/s².",
+      "Step 2: Recall the formula PE = m × g × h.",
+      "Step 3: Substitute the values: PE = 5 × 10 × 8.",
+      "Step 4: Calculate the answer: 400 Joules."
+    ]
+  },
+
+  {
+    q: "A 4kg object moves at 6m/s. Find its kinetic energy.",
+    ans: "72J",
+    sol: "KE = ½mv² = ½ × 4 × 6² = 72J",
+    steps: [
+      "Step 1: Identify the mass (4kg) and velocity (6m/s).",
+      "Step 2: Recall the formula KE = ½mv².",
+      "Step 3: Square the velocity: 6² = 36.",
+      "Step 4: Calculate: ½ × 4 × 36 = 72J."
+    ]
+  },
+
+  {
+    q: "A car of mass 1000kg travels at 20m/s. Calculate its kinetic energy.",
+    ans: "200000J",
+    sol: "KE = ½ × 1000 × 20² = 200000J",
+    steps: [
+      "Step 1: Identify m = 1000kg and v = 20m/s.",
+      "Step 2: Recall KE = ½mv².",
+      "Step 3: Square the speed: 20² = 400.",
+      "Step 4: Calculate: ½ × 1000 × 400 = 200000J."
+    ]
+  },
+
+  {
+    q: "A 10N force moves an object through 6m. Calculate the work done.",
+    ans: "60J",
+    sol: "Work = Force × Distance = 10 × 6 = 60J",
+    steps: [
+      "Step 1: Identify force = 10N and distance = 6m.",
+      "Step 2: Recall the formula Work = Force × Distance.",
+      "Step 3: Substitute the values: 10 × 6.",
+      "Step 4: Calculate the work done: 60J."
+    ]
+  },
+
+  {
+    q: "A machine does 500J of work in 10 seconds. Calculate its power.",
+    ans: "50W",
+    sol: "Power = Work ÷ Time = 500 ÷ 10 = 50W",
+    steps: [
+      "Step 1: Identify work = 500J and time = 10s.",
+      "Step 2: Recall the formula Power = Work ÷ Time.",
+      "Step 3: Substitute the values into the formula.",
+      "Step 4: Divide 500 by 10 to obtain 50W."
+    ]
+  },
+
+  {
+    q: "A 3kg object is raised 15m above the ground. Find its potential energy.",
+    ans: "450J",
+    sol: "PE = 3 × 10 × 15 = 450J",
+    steps: [
+      "Step 1: Identify m = 3kg, h = 15m, g = 10m/s².",
+      "Step 2: Recall PE = mgh.",
+      "Step 3: Substitute: 3 × 10 × 15.",
+      "Step 4: Calculate: 450J."
+    ]
+  },
+
+  {
+    q: "A 6kg object moves with a speed of 5m/s. Find its kinetic energy.",
+    ans: "75J",
+    sol: "KE = ½ × 6 × 5² = 75J",
+    steps: [
+      "Step 1: Identify mass and velocity.",
+      "Step 2: Recall KE = ½mv².",
+      "Step 3: Square the velocity: 5² = 25.",
+      "Step 4: Calculate: ½ × 6 × 25 = 75J."
+    ]
+  },
+
+  {
+    q: "A 50N force pushes a box for 12m. Calculate the work done.",
+    ans: "600J",
+    sol: "Work = 50 × 12 = 600J",
+    steps: [
+      "Step 1: Identify force = 50N and distance = 12m.",
+      "Step 2: Recall Work = Force × Distance.",
+      "Step 3: Multiply the given values.",
+      "Step 4: The work done is 600J."
+    ]
+  },
+
+  {
+    q: "A motor produces 2400J of work in 60 seconds. Find its power.",
+    ans: "40W",
+    sol: "Power = 2400 ÷ 60 = 40W",
+    steps: [
+      "Step 1: Identify work = 2400J and time = 60s.",
+      "Step 2: Recall Power = Work ÷ Time.",
+      "Step 3: Substitute the values.",
+      "Step 4: Divide 2400 by 60 to get 40W."
+    ]
+  },
+
+  {
+    q: "A 7kg object is placed 9m above the ground. Calculate its potential energy.",
+    ans: "630J",
+    sol: "PE = 7 × 10 × 9 = 630J",
+    steps: [
+      "Step 1: Identify m = 7kg, h = 9m.",
+      "Step 2: Recall PE = mgh.",
+      "Step 3: Substitute the values using g = 10m/s².",
+      "Step 4: Calculate 630J."
+    ]
+  },
+
+  {
+    q: "A cyclist and bicycle have a combined mass of 80kg and move at 10m/s. Calculate the kinetic energy.",
+    ans: "4000J",
+    sol: "KE = ½ × 80 × 10² = 4000J",
+    steps: [
+      "Step 1: Identify mass = 80kg and velocity = 10m/s.",
+      "Step 2: Recall KE = ½mv².",
+      "Step 3: Square the velocity: 10² = 100.",
+      "Step 4: Calculate: ½ × 80 × 100 = 4000J."
+    ]
+  },
+
+  {
+    q: "A crane lifts a 200kg load by 5m. Calculate the gain in potential energy.",
+    ans: "10000J",
+    sol: "PE = 200 × 10 × 5 = 10000J",
+    steps: [
+      "Step 1: Identify m = 200kg and h = 5m.",
+      "Step 2: Recall PE = mgh.",
+      "Step 3: Substitute the values.",
+      "Step 4: Calculate the gain in potential energy: 10000J."
+    ]
+  },
+
+  {
+    q: "A machine uses 1500J of energy in 30 seconds. Find its power output.",
+    ans: "50W",
+    sol: "Power = 1500 ÷ 30 = 50W",
+    steps: [
+      "Step 1: Identify work = 1500J and time = 30s.",
+      "Step 2: Recall Power = Work ÷ Time.",
+      "Step 3: Substitute the values.",
+      "Step 4: Divide 1500 by 30 to get 50W."
+    ]
+  },
+
+  {
+    q: "A 12N force moves an object 15m. Calculate the work done.",
+    ans: "180J",
+    sol: "Work = 12 × 15 = 180J",
+    steps: [
+      "Step 1: Identify force = 12N and distance = 15m.",
+      "Step 2: Recall Work = Force × Distance.",
+      "Step 3: Substitute the values.",
+      "Step 4: Calculate: 180J."
+    ]
+  }
+],
 );
 add(
   "physics",
@@ -5758,45 +5920,226 @@ Solution:<br>
 
 `,
   [
-    {
-      q: "A charge of 18C flows in 3s. Find current.",
-      hint: "Use I = Q / t",
-      formula: "I = Q / t",
-      steps: [
-        "Step 1: Identify values → Q = 18C, t = 3s",
-        "Step 2: Write formula → I = Q / t",
-        "Step 3: Substitute values → I = 18 / 3",
-        "Step 4: Calculate → I = 6A",
-      ],
-      ans: "6A",
-      final_check: "Unit is amperes (A), which is correct for current",
-      common_mistakes: [
-        "Using I = t / Q instead of Q / t",
-        "Forgetting units (C and s)",
-        "Incorrect division",
-      ],
-      explanation: "Current is the rate of flow of charge per unit time.",
-    },
-    {
-      q: "Find current if V = 12V and R = 3Ω",
-      hint: "Use Ohm’s Law I = V / R",
-      formula: "I = V / R",
-      steps: [
-        "Step 1: Identify values → V = 12V, R = 3Ω",
-        "Step 2: Write formula → I = V / R",
-        "Step 3: Substitute values → I = 12 / 3",
-        "Step 4: Calculate → I = 4A",
-      ],
-      ans: "4A",
-      final_check: "Current decreases when resistance increases",
-      common_mistakes: [
-        "Swapping formula to R / V",
-        "Ignoring Ohm’s Law conditions",
-        "Wrong unit for resistance",
-      ],
-      explanation: "Current depends on voltage and resistance in a circuit.",
-    },
-  ],
+  {
+    q: "A charge of 18C flows in 3s. Find current.",
+    hint: "Use I = Q / t",
+    formula: "I = Q / t",
+    steps: [
+      "Step 1: Identify values → Q = 18C, t = 3s",
+      "Step 2: Write formula → I = Q / t",
+      "Step 3: Substitute values → I = 18 / 3",
+      "Step 4: Calculate → I = 6A",
+    ],
+    ans: "6A",
+    final_check: "Unit is amperes (A), which is correct for current",
+    common_mistakes: [
+      "Using I = t / Q instead of Q / t",
+      "Forgetting units (C and s)",
+      "Incorrect division",
+    ],
+    explanation: "Current is the rate of flow of charge per unit time.",
+  },
+
+  {
+    q: "Find current if V = 12V and R = 3Ω.",
+    hint: "Use Ohm's Law I = V / R",
+    formula: "I = V / R",
+    steps: [
+      "Step 1: Identify values → V = 12V, R = 3Ω",
+      "Step 2: Write formula → I = V / R",
+      "Step 3: Substitute values → I = 12 / 3",
+      "Step 4: Calculate → I = 4A",
+    ],
+    ans: "4A",
+    final_check: "Current decreases when resistance increases.",
+    common_mistakes: [
+      "Using R / V instead of V / R",
+      "Ignoring units",
+      "Dividing incorrectly",
+    ],
+    explanation: "Ohm's Law relates voltage, current, and resistance.",
+  },
+
+  {
+    q: "Find the resistance if V = 24V and I = 6A.",
+    hint: "Use R = V / I",
+    formula: "R = V / I",
+    steps: [
+      "Step 1: Identify values → V = 24V, I = 6A",
+      "Step 2: Write formula → R = V / I",
+      "Step 3: Substitute values → R = 24 / 6",
+      "Step 4: Calculate → R = 4Ω",
+    ],
+    ans: "4Ω",
+    final_check: "Resistance is measured in ohms (Ω).",
+    common_mistakes: [
+      "Using I / V instead of V / I",
+      "Forgetting the Ω unit",
+      "Calculation errors",
+    ],
+    explanation: "Resistance opposes the flow of electric current.",
+  },
+
+  {
+    q: "Find the voltage if I = 5A and R = 8Ω.",
+    hint: "Use V = IR",
+    formula: "V = IR",
+    steps: [
+      "Step 1: Identify values → I = 5A, R = 8Ω",
+      "Step 2: Write formula → V = IR",
+      "Step 3: Substitute values → V = 5 × 8",
+      "Step 4: Calculate → V = 40V",
+    ],
+    ans: "40V",
+    final_check: "Voltage is measured in volts (V).",
+    common_mistakes: [
+      "Adding instead of multiplying",
+      "Using the wrong formula",
+      "Incorrect units",
+    ],
+    explanation: "Voltage is the electrical energy supplied per unit charge.",
+  },
+
+  {
+    q: "A charge of 60C flows in 12s. Find the current.",
+    hint: "Use I = Q / t",
+    formula: "I = Q / t",
+    steps: [
+      "Step 1: Identify values → Q = 60C, t = 12s",
+      "Step 2: Write formula → I = Q / t",
+      "Step 3: Substitute values → I = 60 / 12",
+      "Step 4: Calculate → I = 5A",
+    ],
+    ans: "5A",
+    final_check: "Current is measured in amperes (A).",
+    common_mistakes: [
+      "Dividing incorrectly",
+      "Using the wrong formula",
+      "Leaving out units",
+    ],
+    explanation: "Current tells us how much charge passes a point each second.",
+  },
+
+  {
+    q: "A bulb uses 120W at 240V. Find the current.",
+    hint: "Use P = VI",
+    formula: "I = P / V",
+    steps: [
+      "Step 1: Identify values → P = 120W, V = 240V",
+      "Step 2: Rearrange formula → I = P / V",
+      "Step 3: Substitute values → I = 120 / 240",
+      "Step 4: Calculate → I = 0.5A",
+    ],
+    ans: "0.5A",
+    final_check: "Current should be less than 1A for these values.",
+    common_mistakes: [
+      "Using V / P instead of P / V",
+      "Ignoring decimal answers",
+      "Using the wrong formula",
+    ],
+    explanation: "Power equals voltage multiplied by current.",
+  },
+
+  {
+    q: "A circuit has V = 18V and I = 3A. Find the power.",
+    hint: "Use P = VI",
+    formula: "P = VI",
+    steps: [
+      "Step 1: Identify values → V = 18V, I = 3A",
+      "Step 2: Write formula → P = VI",
+      "Step 3: Substitute values → P = 18 × 3",
+      "Step 4: Calculate → P = 54W",
+    ],
+    ans: "54W",
+    final_check: "Power is measured in watts (W).",
+    common_mistakes: [
+      "Adding V and I",
+      "Using division instead of multiplication",
+      "Wrong unit",
+    ],
+    explanation: "Electrical power is the rate at which electrical energy is used.",
+  },
+
+  {
+    q: "An appliance uses 1000J of energy in 50s. Find the power.",
+    hint: "Use P = E / t",
+    formula: "P = E / t",
+    steps: [
+      "Step 1: Identify values → E = 1000J, t = 50s",
+      "Step 2: Write formula → P = E / t",
+      "Step 3: Substitute values → P = 1000 / 50",
+      "Step 4: Calculate → P = 20W",
+    ],
+    ans: "20W",
+    final_check: "Power is measured in watts (W).",
+    common_mistakes: [
+      "Using t / E",
+      "Calculation mistakes",
+      "Wrong units",
+    ],
+    explanation: "Power measures how quickly energy is transferred.",
+  },
+
+  {
+    q: "A resistor of 5Ω carries a current of 4A. Find the voltage.",
+    hint: "Use V = IR",
+    formula: "V = IR",
+    steps: [
+      "Step 1: Identify values → I = 4A, R = 5Ω",
+      "Step 2: Write formula → V = IR",
+      "Step 3: Substitute values → V = 4 × 5",
+      "Step 4: Calculate → V = 20V",
+    ],
+    ans: "20V",
+    final_check: "Voltage is measured in volts.",
+    common_mistakes: [
+      "Adding instead of multiplying",
+      "Using R / I",
+      "Ignoring units",
+    ],
+    explanation: "Voltage across a resistor depends on current and resistance.",
+  },
+
+  {
+    q: "Find the resistance if V = 30V and I = 5A.",
+    hint: "Use R = V / I",
+    formula: "R = V / I",
+    steps: [
+      "Step 1: Identify values → V = 30V, I = 5A",
+      "Step 2: Write formula → R = V / I",
+      "Step 3: Substitute values → R = 30 / 5",
+      "Step 4: Calculate → R = 6Ω",
+    ],
+    ans: "6Ω",
+    final_check: "Resistance is measured in ohms (Ω).",
+    common_mistakes: [
+      "Using I / V",
+      "Incorrect division",
+      "Leaving out Ω",
+    ],
+    explanation: "Resistance determines how much a material opposes current flow.",
+  },
+
+  {
+    q: "A battery supplies 48V to a 12Ω resistor. Find the current.",
+    hint: "Use I = V / R",
+    formula: "I = V / R",
+    steps: [
+      "Step 1: Identify values → V = 48V, R = 12Ω",
+      "Step 2: Write formula → I = V / R",
+      "Step 3: Substitute values → I = 48 / 12",
+      "Step 4: Calculate → I = 4A",
+    ],
+    ans: "4A",
+    final_check: "Current is measured in amperes.",
+    common_mistakes: [
+      "Using multiplication instead of division",
+      "Using the wrong formula",
+      "Ignoring units",
+    ],
+    explanation: "Current increases when voltage increases or resistance decreases.",
+  }
+]
 );
 
 /* =========================
@@ -6735,24 +7078,224 @@ Step 2: V = 4 × 2<br>
 </ul>
 `,
   [
-    {
-      type: "calc",
-      q: "A voltage of 20V produces a current of 5A. Find resistance.",
-      ans: "4Ω",
-      sol: "R = V/I = 20/5 = 4Ω",
-    },
-    {
-      type: "calc",
-      q: "Find current if V = 12V and R = 3Ω",
-      ans: "4A",
-      sol: "I = V/R = 12/3 = 4A",
-    },
-    {
-      type: "written",
-      q: "State Ohm’s Law",
-      ans: "Current is directly proportional to voltage at constant temperature",
-    },
-  ],
+  {
+    type: "calc",
+    q: "A voltage of 20V produces a current of 5A. Find the resistance.",
+    ans: "4Ω",
+    sol: "R = V / I = 20 / 5 = 4Ω",
+    steps: [
+      "Step 1: Identify the given values: V = 20V and I = 5A.",
+      "Step 2: Recall Ohm's Law for resistance: R = V / I.",
+      "Step 3: Substitute the values: R = 20 / 5.",
+      "Step 4: Calculate: R = 4Ω."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "Find the current if V = 12V and R = 3Ω.",
+    ans: "4A",
+    sol: "I = V / R = 12 / 3 = 4A",
+    steps: [
+      "Step 1: Identify the given values: V = 12V and R = 3Ω.",
+      "Step 2: Recall the formula: I = V / R.",
+      "Step 3: Substitute the values: I = 12 / 3.",
+      "Step 4: Calculate: I = 4A."
+    ]
+  },
+
+  {
+    type: "written",
+    q: "State Ohm's Law.",
+    ans: "Current is directly proportional to voltage provided the temperature remains constant."
+  },
+
+  {
+    type: "calc",
+    q: "A battery supplies 24V to a resistor of 6Ω. Find the current.",
+    ans: "4A",
+    sol: "I = V / R = 24 / 6 = 4A",
+    steps: [
+      "Step 1: Identify V = 24V and R = 6Ω.",
+      "Step 2: Use the formula I = V / R.",
+      "Step 3: Substitute the values: I = 24 / 6.",
+      "Step 4: Calculate: I = 4A."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A current of 2A flows through a resistor of 10Ω. Find the voltage.",
+    ans: "20V",
+    sol: "V = IR = 2 × 10 = 20V",
+    steps: [
+      "Step 1: Identify I = 2A and R = 10Ω.",
+      "Step 2: Recall the formula: V = IR.",
+      "Step 3: Substitute the values: V = 2 × 10.",
+      "Step 4: Calculate: V = 20V."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A resistor has a voltage of 18V and a current of 3A. Find its resistance.",
+    ans: "6Ω",
+    sol: "R = V / I = 18 / 3 = 6Ω",
+    steps: [
+      "Step 1: Identify V = 18V and I = 3A.",
+      "Step 2: Recall the formula: R = V / I.",
+      "Step 3: Substitute the values: R = 18 / 3.",
+      "Step 4: Calculate: R = 6Ω."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A charge of 40C passes through a conductor in 8 seconds. Find the current.",
+    ans: "5A",
+    sol: "I = Q / t = 40 / 8 = 5A",
+    steps: [
+      "Step 1: Identify Q = 40C and t = 8s.",
+      "Step 2: Recall the formula: I = Q / t.",
+      "Step 3: Substitute the values: I = 40 / 8.",
+      "Step 4: Calculate: I = 5A."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A charge of 72C flows for 9 seconds. Calculate the current.",
+    ans: "8A",
+    sol: "I = Q / t = 72 / 9 = 8A",
+    steps: [
+      "Step 1: Identify Q = 72C and t = 9s.",
+      "Step 2: Recall the formula: I = Q / t.",
+      "Step 3: Substitute the values: I = 72 / 9.",
+      "Step 4: Calculate: I = 8A."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A current of 5A flows for 12 seconds. Find the charge transferred.",
+    ans: "60C",
+    sol: "Q = It = 5 × 12 = 60C",
+    steps: [
+      "Step 1: Identify I = 5A and t = 12s.",
+      "Step 2: Recall the formula: Q = It.",
+      "Step 3: Substitute the values: Q = 5 × 12.",
+      "Step 4: Calculate: Q = 60C."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A current of 3A flows for 15 seconds. Calculate the charge.",
+    ans: "45C",
+    sol: "Q = It = 3 × 15 = 45C",
+    steps: [
+      "Step 1: Identify I = 3A and t = 15s.",
+      "Step 2: Recall the formula: Q = It.",
+      "Step 3: Substitute the values: Q = 3 × 15.",
+      "Step 4: Calculate: Q = 45C."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "An electric heater operates at 240V and draws a current of 5A. Find the power.",
+    ans: "1200W",
+    sol: "P = VI = 240 × 5 = 1200W",
+    steps: [
+      "Step 1: Identify V = 240V and I = 5A.",
+      "Step 2: Recall the formula: P = VI.",
+      "Step 3: Substitute the values: P = 240 × 5.",
+      "Step 4: Calculate: P = 1200W."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A bulb operates at 12V and draws 2A. Calculate its power.",
+    ans: "24W",
+    sol: "P = VI = 12 × 2 = 24W",
+    steps: [
+      "Step 1: Identify V = 12V and I = 2A.",
+      "Step 2: Recall the formula: P = VI.",
+      "Step 3: Substitute the values: P = 12 × 2.",
+      "Step 4: Calculate: P = 24W."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A motor uses 600W from a 200V supply. Find the current.",
+    ans: "3A",
+    sol: "I = P / V = 600 / 200 = 3A",
+    steps: [
+      "Step 1: Identify P = 600W and V = 200V.",
+      "Step 2: Rearrange the power formula: I = P / V.",
+      "Step 3: Substitute the values: I = 600 / 200.",
+      "Step 4: Calculate: I = 3A."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "An appliance consumes 1000W on a 250V supply. Find the current.",
+    ans: "4A",
+    sol: "I = P / V = 1000 / 250 = 4A",
+    steps: [
+      "Step 1: Identify P = 1000W and V = 250V.",
+      "Step 2: Use the formula: I = P / V.",
+      "Step 3: Substitute the values: I = 1000 / 250.",
+      "Step 4: Calculate: I = 4A."
+    ]
+  },
+
+  {
+    type: "calc",
+    q: "A resistor carries a current of 8A when connected to a 40V supply. Find the resistance.",
+    ans: "5Ω",
+    sol: "R = V / I = 40 / 8 = 5Ω",
+    steps: [
+      "Step 1: Identify V = 40V and I = 8A.",
+      "Step 2: Recall the formula: R = V / I.",
+      "Step 3: Substitute the values: R = 40 / 8.",
+      "Step 4: Calculate: R = 5Ω."
+    ]
+  },
+
+  {
+    type: "written",
+    q: "What is electric current?",
+    ans: "Electric current is the rate of flow of electric charge through a conductor."
+  },
+
+  {
+    type: "written",
+    q: "State the SI unit of electric current.",
+    ans: "The SI unit of electric current is the ampere (A)."
+  },
+
+  {
+    type: "written",
+    q: "State the SI unit of resistance.",
+    ans: "The SI unit of resistance is the ohm (Ω)."
+  },
+
+  {
+    type: "written",
+    q: "State the SI unit of voltage.",
+    ans: "The SI unit of voltage is the volt (V)."
+  },
+
+  {
+    type: "written",
+    q: "What instrument is used to measure electric current?",
+    ans: "An ammeter is used to measure electric current."
+  }
+]
 );
 /* =========================================================
    PHYSICS MODULE: FLUIDS + MODERN PHYSICS (ADVANCED)
@@ -6872,30 +7415,135 @@ P = 50 Pa
 </ul>
 `,
   [
-    {
-      q: "Why do ships float on water?",
-      steps: [
-        "Step 1: Identify upthrust",
-        "Step 2: Compare weight and buoyant force",
-        "Step 3: Determine floating condition",
-      ],
-      ans: "Ships float because water provides enough upthrust to balance their weight",
-      why: "Upthrust supports heavy objects",
-    },
-  ],
-  [
-    {
-      q: "A force of 200N acts on an area of 4m². Calculate pressure.",
-      hint: "Pressure = Force ÷ Area",
-      steps: [
-        "Step 1: Write formula P = F / A",
-        "Step 2: Substitute values 200 ÷ 4",
-        "Step 3: Solve",
-      ],
-      ans: "50 Pa",
-      why: "Pressure is force per unit area",
-    },
-  ],
+  {
+    q: "Why do ships float on water?",
+    steps: [
+      "Step 1: Recall that water exerts an upward force called upthrust (buoyant force).",
+      "Step 2: Compare the ship's weight with the upthrust acting on it.",
+      "Step 3: When the upthrust equals the weight of the ship, the ship floats.",
+      "Step 4: The large hollow shape of a ship displaces enough water to produce sufficient upthrust."
+    ],
+    ans: "Ships float because water provides enough upthrust to balance their weight.",
+    why: "A floating object remains in equilibrium when the buoyant force equals its weight."
+  },
+  {
+    q: "Why does a stone sink in water?",
+    steps: [
+      "Step 1: Identify the weight of the stone acting downward.",
+      "Step 2: Identify the upthrust provided by the water acting upward.",
+      "Step 3: Compare the two forces.",
+      "Step 4: Since the stone's weight is greater than the upthrust, it sinks."
+    ],
+    ans: "A stone sinks because its weight is greater than the upthrust acting on it.",
+    why: "Objects sink when the downward force exceeds the buoyant force."
+  },
+  {
+    q: "State Archimedes' Principle.",
+    steps: [
+      "Step 1: Consider an object immersed in a fluid.",
+      "Step 2: The object displaces some of the fluid.",
+      "Step 3: The displaced fluid has weight.",
+      "Step 4: The upthrust equals the weight of the displaced fluid."
+    ],
+    ans: "A body wholly or partially immersed in a fluid experiences an upthrust equal to the weight of the fluid displaced.",
+    why: "This principle explains floating and sinking."
+  },
+  {
+    q: "Why is it easier to swim in seawater than in fresh water?",
+    steps: [
+      "Step 1: Compare the densities of seawater and fresh water.",
+      "Step 2: Note that seawater is denser because of dissolved salts.",
+      "Step 3: Denser water produces a greater upthrust.",
+      "Step 4: Greater upthrust makes floating easier."
+    ],
+    ans: "Seawater is denser and provides greater upthrust than fresh water.",
+    why: "Greater density increases the buoyant force."
+  },
+  {
+    q: "A force of 200N acts on an area of 4m². Calculate the pressure.",
+    hint: "Pressure = Force ÷ Area",
+    steps: [
+      "Step 1: Identify the values: Force = 200N and Area = 4m².",
+      "Step 2: Write the formula: P = F ÷ A.",
+      "Step 3: Substitute the values: P = 200 ÷ 4.",
+      "Step 4: Calculate: P = 50 Pa."
+    ],
+    ans: "50 Pa",
+    why: "Pressure is the force acting per unit area."
+  },
+  {
+    q: "A force of 150N acts on an area of 3m². Find the pressure.",
+    hint: "Use P = F ÷ A",
+    steps: [
+      "Step 1: Identify Force = 150N and Area = 3m².",
+      "Step 2: Write the formula P = F ÷ A.",
+      "Step 3: Substitute: P = 150 ÷ 3.",
+      "Step 4: Calculate: P = 50 Pa."
+    ],
+    ans: "50 Pa",
+    why: "Pressure increases when force increases or area decreases."
+  },
+  {
+    q: "A pressure of 80Pa acts over an area of 5m². Calculate the force.",
+    hint: "Force = Pressure × Area",
+    steps: [
+      "Step 1: Identify Pressure = 80Pa and Area = 5m².",
+      "Step 2: Write the formula: F = PA.",
+      "Step 3: Substitute: F = 80 × 5.",
+      "Step 4: Calculate: F = 400N."
+    ],
+    ans: "400 N",
+    why: "Force equals pressure multiplied by area."
+  },
+  {
+    q: "A pressure of 300Pa is produced by a force of 600N. Find the area.",
+    hint: "Area = Force ÷ Pressure",
+    steps: [
+      "Step 1: Identify Force = 600N and Pressure = 300Pa.",
+      "Step 2: Rearrange the formula: A = F ÷ P.",
+      "Step 3: Substitute: A = 600 ÷ 300.",
+      "Step 4: Calculate: A = 2m²."
+    ],
+    ans: "2 m²",
+    why: "Area is obtained by dividing force by pressure."
+  },
+  {
+    q: "A force of 900N acts on an area of 9m². Calculate the pressure.",
+    hint: "Use P = F ÷ A",
+    steps: [
+      "Step 1: Identify Force = 900N and Area = 9m².",
+      "Step 2: Write the formula P = F ÷ A.",
+      "Step 3: Substitute: P = 900 ÷ 9.",
+      "Step 4: Calculate: P = 100 Pa."
+    ],
+    ans: "100 Pa",
+    why: "Pressure is directly proportional to force and inversely proportional to area."
+  },
+  {
+    q: "A pressure of 250Pa acts over an area of 8m². Find the force.",
+    hint: "Use F = PA",
+    steps: [
+      "Step 1: Identify Pressure = 250Pa and Area = 8m².",
+      "Step 2: Write the formula F = PA.",
+      "Step 3: Substitute: F = 250 × 8.",
+      "Step 4: Calculate: F = 2000N."
+    ],
+    ans: "2000 N",
+    why: "Increasing either pressure or area increases the force."
+  },
+  {
+    q: "A force of 360N acts on an area of 12m². Find the pressure.",
+    hint: "Use P = F ÷ A",
+    steps: [
+      "Step 1: Identify Force = 360N and Area = 12m².",
+      "Step 2: Write the formula P = F ÷ A.",
+      "Step 3: Substitute: P = 360 ÷ 12.",
+      "Step 4: Calculate: P = 30 Pa."
+    ],
+    ans: "30 Pa",
+    why: "Pressure is measured in pascals (Pa)."
+  }
+]
 );
 
 /* =========================
@@ -7000,26 +7648,138 @@ Step 3: Both release energy
 </ul>
 `,
   [
-    {
-      q: "What is radioactivity?",
-      steps: [
-        "Step 1: Identify unstable nucleus",
-        "Step 2: Check emission of particles",
-        "Step 3: Define process",
-      ],
-      ans: "Radioactivity is the spontaneous emission of radiation from an unstable nucleus",
-      why: "Unstable atoms release energy to become stable",
-    },
-  ],
-  [
-    {
-      q: "Name two applications of modern physics",
-      hint: "think medicine and energy",
-      steps: ["Step 1: Identify medical use", "Step 2: Identify energy use"],
-      ans: "X-ray imaging and nuclear power generation",
-      why: "Both rely on atomic and nuclear processes",
-    },
-  ],
+  {
+    q: "What is radioactivity?",
+    steps: [
+      "Step 1: Recall that some atomic nuclei are unstable.",
+      "Step 2: An unstable nucleus emits radiation without any external influence.",
+      "Step 3: This emission may include alpha particles, beta particles, or gamma rays.",
+      "Step 4: The process continues until the nucleus becomes more stable."
+    ],
+    ans: "Radioactivity is the spontaneous emission of radiation from an unstable nucleus.",
+    why: "Unstable nuclei lose excess energy by emitting radiation to become more stable."
+  },
+  {
+    q: "What is an alpha particle?",
+    steps: [
+      "Step 1: Recall the three common types of radioactive emissions.",
+      "Step 2: Identify that an alpha particle contains protons and neutrons.",
+      "Step 3: State its composition.",
+      "Step 4: Give the definition."
+    ],
+    ans: "An alpha particle is a helium nucleus containing two protons and two neutrons.",
+    why: "Alpha particles are emitted by heavy unstable nuclei."
+  },
+  {
+    q: "What is a beta particle?",
+    steps: [
+      "Step 1: Recall radioactive emissions.",
+      "Step 2: Identify the beta particle as a fast-moving electron.",
+      "Step 3: State that it is emitted from the nucleus.",
+      "Step 4: Give the definition."
+    ],
+    ans: "A beta particle is a high-speed electron emitted from the nucleus of a radioactive atom.",
+    why: "Beta decay helps unstable nuclei achieve greater stability."
+  },
+  {
+    q: "What are gamma rays?",
+    steps: [
+      "Step 1: Recall that gamma rays are a type of radiation.",
+      "Step 2: Identify that they are electromagnetic waves.",
+      "Step 3: Note that they have no mass and no charge.",
+      "Step 4: State the definition."
+    ],
+    ans: "Gamma rays are high-energy electromagnetic waves emitted from radioactive nuclei.",
+    why: "Gamma rays carry excess energy away from unstable nuclei."
+  },
+  {
+    q: "State one property of alpha particles.",
+    steps: [
+      "Step 1: Recall the characteristics of alpha particles.",
+      "Step 2: Identify one property.",
+      "Step 3: State the property clearly."
+    ],
+    ans: "Alpha particles have a positive charge of +2.",
+    why: "They contain two positively charged protons."
+  },
+  {
+    q: "Why are gamma rays more penetrating than alpha particles?",
+    steps: [
+      "Step 1: Compare the masses of alpha particles and gamma rays.",
+      "Step 2: Recall that gamma rays have no mass or charge.",
+      "Step 3: Less interaction with matter allows deeper penetration.",
+      "Step 4: State the conclusion."
+    ],
+    ans: "Gamma rays are more penetrating because they have no mass and no charge.",
+    why: "They interact less with matter than charged particles."
+  },
+  {
+    q: "Name two applications of modern physics.",
+    hint: "Think medicine and energy.",
+    steps: [
+      "Step 1: Identify one medical application.",
+      "Step 2: Identify one energy application.",
+      "Step 3: State both applications."
+    ],
+    ans: "X-ray imaging and nuclear power generation.",
+    why: "Both rely on atomic and nuclear physics."
+  },
+  {
+    q: "State one medical application of radioactivity.",
+    hint: "Think hospitals.",
+    steps: [
+      "Step 1: Recall how radiation is used in medicine.",
+      "Step 2: Identify one example.",
+      "Step 3: State the application."
+    ],
+    ans: "Cancer treatment using radiotherapy.",
+    why: "Radiation destroys cancer cells."
+  },
+  {
+    q: "State one industrial application of radioactivity.",
+    hint: "Think manufacturing.",
+    steps: [
+      "Step 1: Recall industrial uses of radiation.",
+      "Step 2: Identify one example.",
+      "Step 3: State the application."
+    ],
+    ans: "Checking the thickness of paper or metal sheets.",
+    why: "Radiation helps monitor product quality."
+  },
+  {
+    q: "State one agricultural application of radioactivity.",
+    hint: "Think crops.",
+    steps: [
+      "Step 1: Recall how radiation is used in agriculture.",
+      "Step 2: Identify one use.",
+      "Step 3: State the application."
+    ],
+    ans: "Producing improved crop varieties through mutation breeding.",
+    why: "Radiation can produce useful genetic variations."
+  },
+  {
+    q: "State one disadvantage of radioactivity.",
+    hint: "Think health effects.",
+    steps: [
+      "Step 1: Recall the harmful effects of radiation.",
+      "Step 2: Identify one effect.",
+      "Step 3: State the disadvantage."
+    ],
+    ans: "Exposure to radiation can cause cancer.",
+    why: "Ionising radiation damages body cells and DNA."
+  },
+  {
+    q: "Why must radioactive materials be handled carefully?",
+    hint: "Think safety.",
+    steps: [
+      "Step 1: Recall that radiation can damage living tissue.",
+      "Step 2: Consider long-term exposure effects.",
+      "Step 3: State why safety precautions are necessary."
+    ],
+    ans: "They emit harmful radiation that can damage living cells and tissues.",
+    why: "Proper handling reduces exposure and protects human health."
+  }
+]
 );
 
 /* =========================
@@ -7151,30 +7911,122 @@ v ≈ 5.9 × 10⁶ m/s
 </ul>
 `,
   [
-    {
-      q: "What are cathode rays?",
-      steps: [
-        "Step 1: Identify source (cathode)",
-        "Step 2: Identify nature (electrons)",
-        "Step 3: Define motion",
-      ],
-      ans: "Cathode rays are streams of electrons moving from the cathode to the anode in a vacuum tube",
-      why: "They are fundamental particles in electric discharge",
-    },
-  ],
-  [
-    {
-      q: "Why are cathode rays deflected in electric fields?",
-      hint: "charge property",
-      steps: [
-        "Step 1: Identify charge of rays",
-        "Step 2: Apply electric field interaction",
-        "Step 3: Explain deflection",
-      ],
-      ans: "Because cathode rays are negatively charged electrons",
-      why: "Charged particles respond to electric fields",
-    },
-  ],
+  {
+    q: "What are cathode rays?",
+    steps: [
+      "Step 1: Recall that a cathode ray tube contains a cathode and an anode in a vacuum.",
+      "Step 2: Electrons are emitted from the cathode when a high voltage is applied.",
+      "Step 3: The electrons travel across the vacuum toward the anode.",
+      "Step 4: These moving electrons are called cathode rays."
+    ],
+    ans: "Cathode rays are streams of electrons moving from the cathode to the anode in a vacuum tube.",
+    why: "Cathode rays consist of negatively charged electrons."
+  },
+  {
+    q: "State two properties of cathode rays.",
+    steps: [
+      "Step 1: Recall the characteristics of cathode rays.",
+      "Step 2: Identify that they travel in straight lines.",
+      "Step 3: Identify that they are negatively charged.",
+      "Step 4: State both properties."
+    ],
+    ans: "They travel in straight lines and are negatively charged.",
+    why: "These properties were demonstrated using cathode ray tubes."
+  },
+  {
+    q: "Why do cathode rays produce shadows?",
+    steps: [
+      "Step 1: Recall that cathode rays travel in straight lines.",
+      "Step 2: Place an object in their path.",
+      "Step 3: The object blocks the rays.",
+      "Step 4: A shadow forms behind the object."
+    ],
+    ans: "Because cathode rays travel in straight lines and are blocked by solid objects.",
+    why: "Straight-line motion causes shadow formation."
+  },
+  {
+    q: "Why do cathode rays cause fluorescence?",
+    steps: [
+      "Step 1: Cathode rays strike a fluorescent material.",
+      "Step 2: The electrons transfer energy to the material.",
+      "Step 3: The material emits visible light.",
+      "Step 4: The screen glows."
+    ],
+    ans: "They transfer energy to fluorescent materials, causing them to emit light.",
+    why: "The kinetic energy of electrons is converted into light energy."
+  },
+  {
+    q: "Why can cathode rays turn a light paddle wheel?",
+    steps: [
+      "Step 1: Recall that cathode rays are streams of particles.",
+      "Step 2: The particles strike the paddle wheel.",
+      "Step 3: They transfer momentum to the wheel.",
+      "Step 4: The wheel rotates."
+    ],
+    ans: "Because cathode rays have mass and momentum that can push the paddle wheel.",
+    why: "This demonstrates that cathode rays are particles."
+  },
+  {
+    q: "Why are cathode rays deflected in electric fields?",
+    hint: "Think about their charge.",
+    steps: [
+      "Step 1: Recall that cathode rays are electrons.",
+      "Step 2: Electrons have a negative charge.",
+      "Step 3: Electric fields exert forces on charged particles.",
+      "Step 4: Therefore, cathode rays are deflected toward the positive plate."
+    ],
+    ans: "Because cathode rays are negatively charged electrons.",
+    why: "Charged particles experience forces in electric fields."
+  },
+  {
+    q: "Why are cathode rays deflected by magnetic fields?",
+    hint: "Think about moving charges.",
+    steps: [
+      "Step 1: Recall that cathode rays are moving electrons.",
+      "Step 2: Moving charges experience magnetic forces.",
+      "Step 3: The magnetic field changes their direction.",
+      "Step 4: The rays are deflected."
+    ],
+    ans: "Because moving electrons experience a force in a magnetic field.",
+    why: "Magnetic fields affect moving charged particles."
+  },
+  {
+    q: "What happens when cathode rays strike a metal target?",
+    hint: "Think X-rays.",
+    steps: [
+      "Step 1: Cathode rays move at very high speed.",
+      "Step 2: They collide with the metal target.",
+      "Step 3: They lose energy suddenly.",
+      "Step 4: X-rays are produced."
+    ],
+    ans: "X-rays are produced when cathode rays strike a metal target.",
+    why: "Rapid deceleration of electrons produces X-rays."
+  },
+  {
+    q: "Why is a vacuum needed in a cathode ray tube?",
+    hint: "Think collisions.",
+    steps: [
+      "Step 1: Recall that air contains many particles.",
+      "Step 2: Electrons would collide with air molecules.",
+      "Step 3: These collisions would reduce their energy.",
+      "Step 4: A vacuum allows electrons to travel freely."
+    ],
+    ans: "A vacuum prevents electrons from colliding with air molecules.",
+    why: "The rays can travel efficiently only in a vacuum."
+  },
+  {
+    q: "How do cathode rays demonstrate that electrons are particles?",
+    hint: "Think mass and momentum.",
+    steps: [
+      "Step 1: Observe that cathode rays can move a light paddle wheel.",
+      "Step 2: Only particles with mass can transfer momentum.",
+      "Step 3: The wheel rotates after being struck.",
+      "Step 4: Therefore, cathode rays are particles."
+    ],
+    ans: "They move a light paddle wheel, showing that they have mass and momentum.",
+    why: "Objects with mass behave as particles."
+  }
+]
 );
 
 /* =========================
@@ -7253,27 +8105,105 @@ KE = 3.0 × 10⁻¹⁹ J
 </ul>
 `,
   [
-    {
-      q: "What is photoelectric emission?",
-      steps: [
-        "Step 1: Identify light source",
-        "Step 2: Identify electron emission",
-        "Step 3: Define process",
-      ],
-      ans: "Photoelectric emission is the emission of electrons from a metal surface when light of sufficient frequency falls on it",
-      why: "Light transfers energy to electrons",
-    },
-  ],
-  [
-    {
-      q: "What is threshold frequency?",
-      steps: [
-        "Step 1: Identify minimum energy requirement",
-        "Step 2: Link to electron emission",
-        "Step 3: Define concept",
-      ],
-      ans: "Threshold frequency is the minimum frequency of light required to eject electrons from a metal surface",
-      why: "Below this frequency, no emission occurs",
-    },
-  ],
+  {
+    q: "A 2kg object falls from 5m. Find total energy.",
+    steps: [
+      "Step 1: Identify given mass (2kg), height (5m), and gravity (10m/s²)",
+      "Step 2: Apply potential energy formula (PE = m × g × h)",
+      "Step 3: Calculate total mechanical energy"
+    ],
+    ans: "100J",
+    why: "Gravitational potential energy converts to kinetic energy as it falls, keeping total energy equal to mgh"
+  },
+  {
+    q: "What happens to energy when an object hits the ground?",
+    steps: [
+      "Step 1: Identify initial kinetic energy before impact",
+      "Step 2: Trace energy transfer during impact",
+      "Step 3: Define resultant energy forms"
+    ],
+    ans: "It converts into heat, sound, and deformation energy",
+    why: "Energy cannot disappear, so kinetic energy dissipates into thermal, acoustic, and mechanical stress"
+  },
+  {
+    q: "State the law of conservation of energy.",
+    steps: [
+      "Step 1: Define energy creation boundary",
+      "Step 2: Define energy destruction boundary",
+      "Step 3: State transformation principle"
+    ],
+    ans: "Energy cannot be created or destroyed, only transformed from one form to another",
+    why: "The total amount of energy in an isolated system remains constant"
+  },
+  {
+    q: "Calculate the kinetic energy of a 1000kg car traveling at 20 m/s.",
+    steps: [
+      "Step 1: Identify mass (1000kg) and velocity (20m/s)",
+      "Step 2: Square the velocity value",
+      "Step 3: Apply kinetic energy formula (KE = 0.5 × m × v²)"
+    ],
+    ans: "200,000J",
+    why: "Kinetic energy depends on mass and grows quadratically with velocity"
+  },
+  {
+    q: "A force of 50N pushes a box across 4m. Calculate the work done.",
+    steps: [
+      "Step 1: Identify applied force (50N)",
+      "Step 2: Identify displacement (4m)",
+      "Step 3: Apply work formula (W = F × d)"
+    ],
+    ans: "200J",
+    why: "Work done measures mechanical energy transferred over a distance"
+  },
+  {
+    q: "What is the difference between kinetic energy and potential energy?",
+    steps: [
+      "Step 1: Define motion-based energy",
+      "Step 2: Define position-based energy",
+      "Step 3: Compare energy states"
+    ],
+    ans: "Kinetic energy is energy due to motion, whereas potential energy is stored energy due to position or state",
+    why: "One represents active mechanical movement while the other represents stored capability"
+  },
+  {
+    q: "An electric motor does 6000J of work in 30 seconds. What is its power output?",
+    steps: [
+      "Step 1: Identify work done (6000J)",
+      "Step 2: Identify time taken (30s)",
+      "Step 3: Apply power formula (P = W / t)"
+    ],
+    ans: "200W",
+    why: "Power measures the rate at which work is performed per unit time"
+  },
+  {
+    q: "Why is the efficiency of a real machine always less than 100%?",
+    steps: [
+      "Step 1: Identify useful input energy",
+      "Step 2: Account for real-world mechanical resistive forces",
+      "Step 3: Explain energy dissipation"
+    ],
+    ans: "Because some input energy is always lost as heat and sound due to friction and air resistance",
+    why: "Non-conservative forces continuously transform useful mechanical work into non-reusable thermal energy"
+  },
+  {
+    q: "What is photoelectric emission?",
+    steps: [
+      "Step 1: Identify light source",
+      "Step 2: Identify electron emission",
+      "Step 3: Define process"
+    ],
+    ans: "Photoelectric emission is the emission of electrons from a metal surface when light of sufficient frequency falls on it",
+    why: "Light transfers energy to electrons"
+  },
+  {
+    q: "What is threshold frequency?",
+    steps: [
+      "Step 1: Identify minimum energy requirement",
+      "Step 2: Link to electron emission",
+      "Step 3: Define concept"
+    ],
+    ans: "Threshold frequency is the minimum frequency of light required to eject electrons from a metal surface",
+    why: "Below this frequency, no emission occurs"
+  },
+],
 );
