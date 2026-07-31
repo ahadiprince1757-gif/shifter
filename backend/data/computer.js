@@ -8088,20 +8088,52 @@ add(
  Apple Numbers     → Spreadsheet for Apple devices
 </pre>
 <h3> Structure of a Spreadsheet</h3>
-<pre>
-        A        B        C
-     ┌────────┬────────┬────────┐
-1    │ Name   │ Marks  │ Grade  │
-     ├────────┼────────┼────────┤
-2    │ John   │ 85     │ A      │
-     ├────────┼────────┼────────┤
-3    │ Mary   │ 72     │ B      │
-     └────────┴────────┴────────┘
 
-Rows    → Horizontal lines (1,2,3...)
-Columns → Vertical lines (A,B,C...)
-Cells   → Intersection of row and column (A1, B2...)
-</pre>
+<div style="background:#131326; border:1px solid #2a2a48; border-radius:12px; padding:16px; margin:20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+  <div style="display:flex; align-items:center; background:#1c1c36; padding:8px 12px; border-radius:8px; margin-bottom:12px; border:1px solid #323254; font-family:monospace; font-size:0.9em; color:#00e5ff;">
+    <span style="color:#ff007f; font-weight:bold; margin-right:12px; font-size:1em;">fx</span>
+    <span style="color:#e0e0e0;">=SUM(B2:B3)</span>
+  </div>
+  <div style="overflow-x:auto;">
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Roboto, sans-serif; font-size:0.9em; color:#e0e0e0;">
+      <thead>
+        <tr style="background:#22223e; color:#00e5ff;">
+          <th style="border:1px solid #323254; padding:10px; width:45px; background:#16162d; color:#888;">#</th>
+          <th style="border:1px solid #323254; padding:10px; min-width:90px;">A</th>
+          <th style="border:1px solid #323254; padding:10px; min-width:90px;">B</th>
+          <th style="border:1px solid #323254; padding:10px; min-width:90px;">C</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid #323254; padding:10px; background:#16162d; color:#888; font-weight:bold;">1</td>
+          <td style="border:1px solid #323254; padding:10px; font-weight:bold; color:#ffffff; background:#1a1a33;">Name</td>
+          <td style="border:1px solid #323254; padding:10px; font-weight:bold; color:#ffffff; background:#1a1a33;">Marks</td>
+          <td style="border:1px solid #323254; padding:10px; font-weight:bold; color:#ffffff; background:#1a1a33;">Grade</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #323254; padding:10px; background:#16162d; color:#888; font-weight:bold;">2</td>
+          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">John</td>
+          <td style="border:1px solid #323254; padding:10px; color:#00ffcc; font-weight:bold; background:rgba(0,255,204,0.1); border:2px solid #00ffcc;">85</td>
+          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">A</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #323254; padding:10px; background:#16162d; color:#888; font-weight:bold;">3</td>
+          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">Mary</td>
+          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">72</td>
+          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">B</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.85em; color:#a0a0b0; text-align:center; margin-top:10px; margin-bottom:0;"><b>Figure:</b> Spreadsheet Worksheet UI Grid (Columns A-C, Rows 1-3, Active Cell B2)</p>
+</div>
+
+<ul>
+  <li><b>Rows:</b> Horizontal lines identified by numbers (1, 2, 3...)</li>
+  <li><b>Columns:</b> Vertical lines identified by letters (A, B, C...)</li>
+  <li><b>Cells:</b> Intersection of a row and column (e.g. A1, B2)</li>
+</ul>
 <h3> Explanation of Spreadsheet Parts</h3>
 <ul>
   <li><b>Rows:</b> Horizontal sections identified by numbers</li>
@@ -8143,17 +8175,47 @@ Formulas → Instructions for calculations
 =AVERAGEIF(A1:A10,">50") → Average of values above condition
 </pre>
 <h3> Formula Example</h3>
-<pre>
-A        B
-----------------
-1  Math      80
-2  English   70
-3  Science   90
-Formula:
-=SUM(B1:B3)
-Result:
-240
-</pre>
+
+<div style="background:#131326; border:1px solid #2a2a48; border-radius:12px; padding:16px; margin:20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+  <div style="display:flex; align-items:center; background:#1c1c36; padding:8px 12px; border-radius:8px; margin-bottom:12px; border:1px solid #323254; font-family:monospace; font-size:0.9em; color:#00e5ff;">
+    <span style="color:#ff007f; font-weight:bold; margin-right:12px;">fx</span>
+    <span style="color:#00ffcc; font-weight:bold;">=SUM(B1:B3) &nbsp;➔ &nbsp;Result: 240</span>
+  </div>
+  <div style="overflow-x:auto;">
+    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Roboto, sans-serif; font-size:0.9em; color:#e0e0e0;">
+      <thead>
+        <tr style="background:#22223e; color:#00e5ff;">
+          <th style="border:1px solid #323254; padding:8px; width:40px; background:#16162d; color:#888;">#</th>
+          <th style="border:1px solid #323254; padding:8px; min-width:100px;">A</th>
+          <th style="border:1px solid #323254; padding:8px; min-width:100px;">B</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">1</td>
+          <td style="border:1px solid #323254; padding:8px;">Math</td>
+          <td style="border:1px solid #323254; padding:8px; color:#ffdd57; font-weight:bold;">80</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">2</td>
+          <td style="border:1px solid #323254; padding:8px;">English</td>
+          <td style="border:1px solid #323254; padding:8px; color:#ffdd57; font-weight:bold;">70</td>
+        </tr>
+        <tr>
+          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">3</td>
+          <td style="border:1px solid #323254; padding:8px;">Science</td>
+          <td style="border:1px solid #323254; padding:8px; color:#ffdd57; font-weight:bold;">90</td>
+        </tr>
+        <tr style="background:rgba(0, 229, 255, 0.1);">
+          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">4</td>
+          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#00e5ff;">Total (=SUM)</td>
+          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#00ffcc; font-size:1.05em; border:2px solid #00ffcc;">240</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="font-size:0.85em; color:#a0a0b0; text-align:center; margin-top:10px; margin-bottom:0;"><b>Figure:</b> Spreadsheet SUM Formula Result Grid</p>
+</div>
 <h3> Uses of Spreadsheets</h3>
 <ul>
   <li>Keeping school marks and records</li>
@@ -8427,15 +8489,18 @@ add(
   <li>Access emails from phones, tablets, and computers</li>
 </ul>
 <h3> Structure of an Email Address</h3>
-<pre>
-student@gmail.com
-│       │      │
-│       │      └── Domain Extension (.com)
-│       └───────── Domain Name (gmail)
-└──────────────── Username (student)
 
-@  → At symbol used to separate the username and domain
-</pre>
+<div style="background:#131326; border:1px solid #2a2a48; border-radius:12px; padding:18px; margin:20px 0; text-align:center; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
+  <div style="display:inline-block; background:#1c1c36; border:1px solid #00e5ff; padding:12px 24px; border-radius:30px; font-family:monospace; font-size:1.2em; letter-spacing:1px; margin-bottom:15px;">
+    <span style="color:#ff007f; font-weight:bold;">student</span><span style="color:#ffdd57; font-weight:bold;">@</span><span style="color:#00e5ff; font-weight:bold;">gmail</span><span style="color:#00ffcc; font-weight:bold;">.com</span>
+  </div>
+  <div style="display:flex; justify-content:center; gap:15px; flex-wrap:wrap; font-size:0.85em; margin-top:10px;">
+    <div style="background:#241933; border:1px solid #ff007f; padding:8px 12px; border-radius:8px; color:#ff80bf;"><b>Username:</b> student</div>
+    <div style="background:#2d291e; border:1px solid #ffdd57; padding:8px 12px; border-radius:8px; color:#ffeb80;"><b>Separator:</b> @</div>
+    <div style="background:#1a2838; border:1px solid #00e5ff; padding:8px 12px; border-radius:8px; color:#80f0ff;"><b>Domain Name:</b> gmail</div>
+    <div style="background:#19332b; border:1px solid #00ffcc; padding:8px 12px; border-radius:8px; color:#80ffdf;"><b>Extension:</b> .com</div>
+  </div>
+</div>
 <h3> Explanation of Parts</h3>
 <ul>
   <li><b>Username:</b> The unique name of the email owner</li>

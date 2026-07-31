@@ -2941,9 +2941,9 @@ add(
 
 <h3> 2. STRUCTURE OF A NEURON (NERVE CELL)</h3>
 
-<div style="text-align:center; margin: 20px 0;">
-  <img src="/images/neuron.png" alt="Structure of a Neuron" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
-  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Detailed Structure & Anatomy of a Neuron (Nerve Cell)</p>
+<div style="text-align:center; margin: 14px 0;">
+  <img src="/images/neuron.png" alt="Structure of a Neuron" style="width:100%; max-width:340px; max-height:220px; object-fit:contain; border-radius:10px; box-shadow: 0 3px 12px rgba(0,0,0,0.45); display:block; margin:0 auto;" />
+  <p style="font-size:0.8em; color:#a0a0b0; margin-top:6px;"><b>Fig:</b> Neuron (Nerve Cell) Structure</p>
 </div>
 
 <ul>
@@ -3504,9 +3504,9 @@ add(
 
 <h3> 1. MAIN PARTS OF THE EYE</h3>
 
-<div style="text-align:center; margin: 20px 0;">
-  <img src="/images/human_eye.png" alt="Anatomy of the Human Eye" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
-  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Anatomical Cross-Section of the Human Eye</p>
+<div style="text-align:center; margin: 14px 0;">
+  <img src="/images/human_eye.png" alt="Anatomy of the Human Eye" style="width:100%; max-width:340px; max-height:220px; object-fit:contain; border-radius:10px; box-shadow: 0 3px 12px rgba(0,0,0,0.45); display:block; margin:0 auto;" />
+  <p style="font-size:0.8em; color:#a0a0b0; margin-top:6px;"><b>Fig:</b> Human Eye Cross-Section</p>
 </div>
 
 <ul>
@@ -3686,9 +3686,9 @@ add(
 
 <h3> 1. MAIN PARTS OF THE EAR</h3>
 
-<div style="text-align:center; margin: 20px 0;">
-  <img src="/images/human_ear.png" alt="Anatomy of the Human Ear" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
-  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Anatomical Cross-Section of the Human Ear (Outer, Middle, and Inner Ear)</p>
+<div style="text-align:center; margin: 14px 0;">
+  <img src="/images/human_ear.png" alt="Anatomy of the Human Ear" style="width:100%; max-width:340px; max-height:220px; object-fit:contain; border-radius:10px; box-shadow: 0 3px 12px rgba(0,0,0,0.45); display:block; margin:0 auto;" />
+  <p style="font-size:0.8em; color:#a0a0b0; margin-top:6px;"><b>Fig:</b> Human Ear – Outer, Middle & Inner</p>
 </div>
 
 <h4> A. Outer Ear</h4>
@@ -4260,9 +4260,9 @@ add(
 
 <h3> 1. MAIN LAYERS OF THE SKIN</h3>
 
-<div style="text-align:center; margin: 20px 0;">
-  <img src="/images/skin.png" alt="Anatomy of Human Skin" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
-  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Cross-Section of Human Skin Layers & Sensory Receptors</p>
+<div style="text-align:center; margin: 14px 0;">
+  <img src="/images/skin.png" alt="Anatomy of Human Skin" style="width:100%; max-width:340px; max-height:220px; object-fit:contain; border-radius:10px; box-shadow: 0 3px 12px rgba(0,0,0,0.45); display:block; margin:0 auto;" />
+  <p style="font-size:0.8em; color:#a0a0b0; margin-top:6px;"><b>Fig:</b> Skin Layers & Sensory Receptors</p>
 </div>
 
 <h4> A. Epidermis</h4>
@@ -4461,9 +4461,9 @@ add(
 
 <h3> 1. MAIN PARTS OF THE BRAIN</h3>
 
-<div style="text-align:center; margin: 20px 0;">
-  <img src="/images/human_brain.png" alt="Anatomy of the Human Brain" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
-  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Major Structures of the Human Brain (Cerebrum, Cerebellum, Medulla)</p>
+<div style="text-align:center; margin: 14px 0;">
+  <img src="/images/human_brain.png" alt="Anatomy of the Human Brain" style="width:100%; max-width:340px; max-height:220px; object-fit:contain; border-radius:10px; box-shadow: 0 3px 12px rgba(0,0,0,0.45); display:block; margin:0 auto;" />
+  <p style="font-size:0.8em; color:#a0a0b0; margin-top:6px;"><b>Fig:</b> Brain – Cerebrum, Cerebellum & Medulla</p>
 </div>
 
 <h4> A. Cerebrum (Largest part)</h4>
@@ -4698,9 +4698,9 @@ add(
 
 <h3> 4. REFLEX ARC (SPINAL CORD PATHWAY)</h3>
 
-<div style="text-align:center; margin: 20px 0;">
-  <img src="/images/reflex_arc.png" alt="Reflex Arc Pathway" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
-  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Spinal Cord Cross-Section & Reflex Arc Neural Pathway</p>
+<div style="text-align:center; margin: 14px 0;">
+  <img src="/images/reflex_arc.png" alt="Reflex Arc Pathway" style="width:100%; max-width:340px; max-height:220px; object-fit:contain; border-radius:10px; box-shadow: 0 3px 12px rgba(0,0,0,0.45); display:block; margin:0 auto;" />
+  <p style="font-size:0.8em; color:#a0a0b0; margin-top:6px;"><b>Fig:</b> Spinal Cord & Reflex Arc Pathway</p>
 </div>
 
 <pre>
