@@ -11009,6 +11009,11 @@ INSERT INTO content (sid, cid, topic, notes, qs) VALUES (
 
 <h3> 2. STRUCTURE OF A NEURON (NERVE CELL)</h3>
 
+<div style="text-align:center; margin: 20px 0;">
+  <img src="/images/neuron.png" alt="Structure of a Neuron" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
+  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Detailed Structure & Anatomy of a Neuron (Nerve Cell)</p>
+</div>
+
 <ul>
   <li><b>Dendrites:</b> Receive signals from other cells</li>
   <li><b>Cell body:</b> Processes information</li>
@@ -11441,6 +11446,11 @@ INSERT INTO content (sid, cid, topic, notes, qs) VALUES (
 
 <h3> 1. MAIN PARTS OF THE EYE</h3>
 
+<div style="text-align:center; margin: 20px 0;">
+  <img src="/images/human_eye.png" alt="Anatomy of the Human Eye" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
+  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Anatomical Cross-Section of the Human Eye</p>
+</div>
+
 <ul>
   <li><b>Cornea:</b> Transparent outer layer that protects the eye and helps focus light</li>
   <li><b>Iris:</b> Colored part that controls the size of the pupil</li>
@@ -11577,6 +11587,11 @@ INSERT INTO content (sid, cid, topic, notes, qs) VALUES (
 <hr>
 
 <h3> 1. MAIN PARTS OF THE EAR</h3>
+
+<div style="text-align:center; margin: 20px 0;">
+  <img src="/images/human_ear.png" alt="Anatomy of the Human Ear" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
+  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Anatomical Cross-Section of the Human Ear (Outer, Middle, and Inner Ear)</p>
+</div>
 
 <h4> A. Outer Ear</h4>
 <ul>
@@ -12027,6 +12042,11 @@ INSERT INTO content (sid, cid, topic, notes, qs) VALUES (
 
 <h3> 1. MAIN LAYERS OF THE SKIN</h3>
 
+<div style="text-align:center; margin: 20px 0;">
+  <img src="/images/skin.png" alt="Anatomy of Human Skin" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
+  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Cross-Section of Human Skin Layers & Sensory Receptors</p>
+</div>
+
 <h4> A. Epidermis</h4>
 <ul>
   <li>Outermost protective layer</li>
@@ -12182,6 +12202,11 @@ INSERT INTO content (sid, cid, topic, notes, qs) VALUES (
 <hr>
 
 <h3> 1. MAIN PARTS OF THE BRAIN</h3>
+
+<div style="text-align:center; margin: 20px 0;">
+  <img src="/images/human_brain.png" alt="Anatomy of the Human Brain" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
+  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Major Structures of the Human Brain (Cerebrum, Cerebellum, Medulla)</p>
+</div>
 
 <h4> A. Cerebrum (Largest part)</h4>
 <ul>
@@ -12373,6 +12398,11 @@ INSERT INTO content (sid, cid, topic, notes, qs) VALUES (
 <hr>
 
 <h3> 4. REFLEX ARC (SPINAL CORD PATHWAY)</h3>
+
+<div style="text-align:center; margin: 20px 0;">
+  <img src="/images/reflex_arc.png" alt="Reflex Arc Pathway" style="max-width:100%; border-radius:12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);" />
+  <p style="font-size:0.9em; color:#a0a0b0; margin-top:8px;"><b>Figure:</b> Spinal Cord Cross-Section & Reflex Arc Neural Pathway</p>
+</div>
 
 <pre>
 Stimulus → Receptor → Sensory neuron → Spinal cord → Motor neuron → Effector → Response
