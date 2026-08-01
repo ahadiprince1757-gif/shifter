@@ -5096,12 +5096,15 @@ html.dark-mode .bottom-search-panel {
   background: var(--bg2);
 }
 .notes-scroll-container table {
-  min-width: 600px;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
   display: table;
 }
 .notes-scroll-container img {
   max-width: 100%;
   height: auto;
+  object-fit: contain;
 }
 .zoom-btn {
   transition: all 0.2s ease-in-out;

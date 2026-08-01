@@ -1,10 +1,12 @@
 /* =========================================================
-   PHASE 1: NUMBER SYSTEMS & BASIC OPERATIONS
+   MATH DATA FILE - STANDARDIZED SCHEMA
 ========================================================= */
+
 add(
   "math",
   "numbers",
   "Number Systems & Basic Operations",
+
   `<h2>Number Systems & Basic Operations</h2>
 <hr>
 <h3> DEEP NOTES</h3>
@@ -69,63 +71,70 @@ S → Subtraction
 Mathematics is a structured language. Number systems define what we can represent, while rules like BODMAS define how we process them correctly.
 </p>
 `,
+
   [
     {
-      q: "Solve: 6 + 2 × 3",
-      hint: "Use BODMAS",
-      steps: [
+      "q": "Solve: 6 + 2 × 3",
+      "hint": "Use BODMAS",
+      "steps": [
         "Step 1: 6 + 2 × 3",
         "Step 2: 6 + (2 × 3) = 6 + 6",
         "Step 3: = 12"
       ],
-      ans: "12",
-      why: "BODMAS: Multiplication before Addition → 2 × 3 = 6, then 6 + 6 = 12"
+      "ans": "12",
+      "why": "BODMAS: Multiplication before Addition → 2 × 3 = 6, then 6 + 6 = 12"
     },
-
     {
-      q: "Find: 15 ÷ 3 + 2",
-      hint: "Division first",
-      steps: ["Step 1: 15 ÷ 3 + 2", "Step 2: (15 ÷ 3) + 2 = 5 + 2", "Step 3: = 7"],
-      ans: "7",
-      why: "BODMAS: Division before Addition → 15 ÷ 3 = 5, then 5 + 2 = 7"
+      "q": "Find: 15 ÷ 3 + 2",
+      "hint": "Division first",
+      "steps": [
+        "Step 1: 15 ÷ 3 + 2",
+        "Step 2: (15 ÷ 3) + 2 = 5 + 2",
+        "Step 3: = 7"
+      ],
+      "ans": "7",
+      "why": "BODMAS: Division before Addition → 15 ÷ 3 = 5, then 5 + 2 = 7"
     },
-
     {
-      q: "What type of number is -5?",
-      hint: "check sign",
-      steps: [
+      "q": "What type of number is -5?",
+      "hint": "check sign",
+      "steps": [
         "Step 1: -5 < 0 → negative number",
         "Step 2: -5 ∈ {..., -3, -2, -1, 0, 1, 2, 3, ...}",
         "Step 3: ∴ -5 ∈ ℤ (integers)"
       ],
-      ans: "Integer",
-      why: "ℤ = {..., -3, -2, -1, 0, 1, 2, ...} → -5 ∈ ℤ"
+      "ans": "Integer",
+      "why": "ℤ = {..., -3, -2, -1, 0, 1, 2, ...} → -5 ∈ ℤ"
     },
-
     {
-      q: "Convert 3/4 into a decimal",
-      hint: "divide",
-      steps: ["Step 1: 3/4 = 3 ÷ 4", "Step 2: 3 ÷ 4 = 0.75"],
-      ans: "0.75",
-      why: "3/4 = 3 ÷ 4 = 0.75"
+      "q": "Convert 3/4 into a decimal",
+      "hint": "divide",
+      "steps": [
+        "Step 1: 3/4 = 3 ÷ 4",
+        "Step 2: 3 ÷ 4 = 0.75"
+      ],
+      "ans": "0.75",
+      "why": "3/4 = 3 ÷ 4 = 0.75"
     },
-
     {
-      q: "Solve: (5 + 3) × 2",
-      hint: "brackets first",
-      steps: ["Step 1: (5 + 3) × 2", "Step 2: (8) × 2", "Step 3: = 16"],
-      ans: "16",
-      why: "BODMAS: Brackets first → (5 + 3) = 8, then 8 × 2 = 16"
+      "q": "Solve: (5 + 3) × 2",
+      "hint": "brackets first",
+      "steps": [
+        "Step 1: (5 + 3) × 2",
+        "Step 2: (8) × 2",
+        "Step 3: = 16"
+      ],
+      "ans": "16",
+      "why": "BODMAS: Brackets first → (5 + 3) = 8, then 8 × 2 = 16"
     }
-  ],
+  ]
 );
-/* =========================================================
-   COMPLEX NUMBERS
-========================================================= */
+
 add(
   "math",
   "complex_numbers",
   "Imaginary Unit and Basic Complex Numbers",
+
   `
 <h2> Imaginary Unit and Complex Numbers</h2>
 <h3> DEEP NOTES</h3>
@@ -239,74 +248,72 @@ Multiplying by i rotates a number by 90° in the complex plane.
 </ul>
 <h3> QUIZ QUESTIONS</h3>
 `,
+
   [
     {
-      q: "What is i defined as?",
-      hint: "square root",
-      steps: [
+      "q": "What is i defined as?",
+      "hint": "square root",
+      "steps": [
         "Step 1: The imaginary unit i satisfies i² = -1",
-        "Step 2: Therefore i = √(-1)",
+        "Step 2: Therefore i = √(-1)"
       ],
-      ans: "√(-1)",
-      why: "It extends the number system beyond real numbers",
+      "ans": "√(-1)",
+      "why": "It extends the number system beyond real numbers"
     },
-
     {
-      q: "Find real and imaginary parts of 5 + 3i",
-      hint: "separate terms",
-      steps: [
+      "q": "Find real and imaginary parts of 5 + 3i",
+      "hint": "separate terms",
+      "steps": [
         "Step 1: Real part = 5",
         "Step 2: Imaginary part = 3i",
-        "Step 3: Combine as 5 + 3i",
+        "Step 3: Combine as 5 + 3i"
       ],
-      ans: "Real = 5, Imaginary = 3i",
-      why: "Complex number a + bi splits into real part a and imaginary part bi",
+      "ans": "Real = 5, Imaginary = 3i",
+      "why": "Complex number a + bi splits into real part a and imaginary part bi"
     },
-
     {
-      q: "Simplify 2i + 4i",
-      hint: "combine like terms",
-      steps: [
+      "q": "Simplify 2i + 4i",
+      "hint": "combine like terms",
+      "steps": [
         "Step 1: Combine like terms: 2i + 4i",
         "Step 2: Add coefficients: 2 + 4 = 6",
-        "Step 3: Result = 6i",
+        "Step 3: Result = 6i"
       ],
-      ans: "6i",
-      why: "Imaginary terms combine by adding coefficients, yielding 6i",
+      "ans": "6i",
+      "why": "Imaginary terms combine by adding coefficients, yielding 6i"
     },
-{
-  q: "What type of number is a + bi?",
-  hint: "name of system",
-  steps: [
-    "Step 1: Identify the form a + bi",
-    "Step 2: Recognize that a is the real part and bi is the imaginary part",
-    "Step 3: Any number of the form a + bi belongs to the complex number system",
-    "Step 4: Therefore, a + bi is a complex number"
-  ],
-  ans: "Complex number",
-  why: "A complex number combines a real part (a) and an imaginary part (bi) into a single number of the form a + bi."
-},
     {
-  q: "What happens when i² is calculated?",
-  hint: "negative result",
-  steps: [
-    "Step 1: Define the imaginary unit: i = √(-1)",
-    "Step 2: Square both sides: i² = (√(-1))²",
-    "Step 3: Simplify the square and square root: (√(-1))² = -1",
-    "Step 4: Therefore, i² = -1"
-  ],
-  ans: "-1",
-  why: "The imaginary unit i is defined so that i² = -1. This is the fundamental property of complex numbers."
-}
-  ],
+      "q": "What type of number is a + bi?",
+      "hint": "name of system",
+      "steps": [
+        "Step 1: Identify the form a + bi",
+        "Step 2: Recognize that a is the real part and bi is the imaginary part",
+        "Step 3: Any number of the form a + bi belongs to the complex number system",
+        "Step 4: Therefore, a + bi is a complex number"
+      ],
+      "ans": "Complex number",
+      "why": "A complex number combines a real part (a) and an imaginary part (bi) into a single number of the form a + bi."
+    },
+    {
+      "q": "What happens when i² is calculated?",
+      "hint": "negative result",
+      "steps": [
+        "Step 1: Define the imaginary unit: i = √(-1)",
+        "Step 2: Square both sides: i² = (√(-1))²",
+        "Step 3: Simplify the square and square root: (√(-1))² = -1",
+        "Step 4: Therefore, i² = -1"
+      ],
+      "ans": "-1",
+      "why": "The imaginary unit i is defined so that i² = -1. This is the fundamental property of complex numbers."
+    }
+  ]
 );
-/*==================================================
-  Argand Diagram (Complex Plane)
-  ================================================*/
+
 add(
   "math",
   "complex_numbers",
   "Argand Diagram (Complex Plane)",
+
   `
 <h2> Argand Diagram (Complex Plane)</h2>
 <h3> DEEP NOTES</h3>
@@ -375,88 +382,83 @@ y-axis → imaginary part (Im)
 </div>
 <h3> QUIZ QUESTIONS</h3>
 `,
+
   [
     {
-      q: "What axis represents the imaginary part?",
-      hint: "vertical axis",
-      steps: [
+      "q": "What axis represents the imaginary part?",
+      "hint": "vertical axis",
+      "steps": [
         "Step 1: In z = a + bi, the imaginary part is b",
         "Step 2: On the Argand plane, b is plotted on the vertical axis",
         "Step 3: ∴ Imaginary part → y-axis"
       ],
-      ans: "y-axis",
-      why: "In z = a + bi, b maps to the y-axis (vertical), a maps to the x-axis (horizontal)"
+      "ans": "y-axis",
+      "why": "In z = a + bi, b maps to the y-axis (vertical), a maps to the x-axis (horizontal)"
     },
-
     {
-      q: "Plot z = 2 + 5i as a point",
-      hint: "real then imaginary",
-      steps: [
+      "q": "Plot z = 2 + 5i as a point",
+      "hint": "real then imaginary",
+      "steps": [
         "Step 1: z = 2 + 5i → a = 2, b = 5",
         "Step 2: Plot (a, b) = (2, 5) on the Argand plane",
         "Step 3: ∴ z = 2 + 5i → point (2, 5)"
       ],
-      ans: "(2,5)",
-      why: "z = a + bi maps to the coordinate (a, b), so 2 + 5i → (2, 5)"
+      "ans": "(2,5)",
+      "why": "z = a + bi maps to the coordinate (a, b), so 2 + 5i → (2, 5)"
     },
-
     {
-      q: "What does z = a + bi represent on the Argand plane?",
-      hint: "coordinate system",
-      steps: [
+      "q": "What does z = a + bi represent on the Argand plane?",
+      "hint": "coordinate system",
+      "steps": [
         "Step 1: z = a + bi → real part = a, imaginary part = b",
         "Step 2: Map a to x-axis, b to y-axis",
         "Step 3: ∴ z = a + bi ↔ point (a, b) in 2D"
       ],
-      ans: "A point (a, b)",
-      why: "Every complex number z = a + bi corresponds to a unique point (a, b) on the 2D Argand plane"
+      "ans": "A point (a, b)",
+      "why": "Every complex number z = a + bi corresponds to a unique point (a, b) on the 2D Argand plane"
     },
-
     {
-      q: "Where is the real part plotted?",
-      hint: "horizontal axis",
-      steps: [
+      "q": "Where is the real part plotted?",
+      "hint": "horizontal axis",
+      "steps": [
         "Step 1: In z = a + bi, the real part is a",
         "Step 2: On the Argand plane, a is measured along the horizontal axis",
         "Step 3: ∴ Real part → x-axis"
       ],
-      ans: "x-axis",
-      why: "In z = a + bi, a maps to the x-axis (horizontal), just like the x-coordinate in Cartesian geometry"
+      "ans": "x-axis",
+      "why": "In z = a + bi, a maps to the x-axis (horizontal), just like the x-coordinate in Cartesian geometry"
     },
-
     {
-      q: "What is the point for z = -3 + 2i?",
-      hint: "negative real",
-      steps: [
+      "q": "What is the point for z = -3 + 2i?",
+      "hint": "negative real",
+      "steps": [
         "Step 1: Real = -3 (left)",
         "Step 2: Imaginary = 2 (up)",
-        "Step 3: Coordinate = (-3, 2)",
+        "Step 3: Coordinate = (-3, 2)"
       ],
-      ans: "(-3, 2)",
-      why: "Negative real moves left, positive imaginary moves up",
+      "ans": "(-3, 2)",
+      "why": "Negative real moves left, positive imaginary moves up"
     },
-
     {
-      q: "Why is Argand diagram useful?",
-      hint: "visual representation",
-      steps: [
+      "q": "Why is Argand diagram useful?",
+      "hint": "visual representation",
+      "steps": [
         "Step 1: z = a + bi is algebraic → hard to visualize",
         "Step 2: Argand plane maps z → point (a, b) in 2D",
         "Step 3: Operations like addition become vector addition on the plane",
         "Step 4: ∴ The diagram turns algebra into geometry"
       ],
-      ans: "It gives a geometric representation of complex numbers",
-      why: "Mapping z = a + bi to (a, b) lets us visualize addition as vector sums and multiplication as rotation + scaling"
-    },
-  ],
+      "ans": "It gives a geometric representation of complex numbers",
+      "why": "Mapping z = a + bi to (a, b) lets us visualize addition as vector sums and multiplication as rotation + scaling"
+    }
+  ]
 );
-/*====================================================
-  Operations on Complex Numbers
-  ==================================================*/
+
 add(
   "math",
   "complex_numbers",
   "Operations on Complex Numbers",
+
   `
 <h2> Complex Number Operations</h2>
 
@@ -498,36 +500,35 @@ Then simplify using i² = -1
 </ul>
 <h3> QUIZ QUESTIONS</h3>
 `,
+
   [
     {
-      q: "What is i² equal to?",
-      hint: "definition of i",
-      steps: [
+      "q": "What is i² equal to?",
+      "hint": "definition of i",
+      "steps": [
         "Step 1: By definition, i = √(−1)",
         "Step 2: Square both sides: i² = (√(−1))²",
         "Step 3: (√(−1))² = −1",
         "Step 4: ∴ i² = −1"
       ],
-      ans: "-1",
-      why: "i = √(−1), so i² = (√(−1))² = −1. This is the foundational identity of complex numbers."
+      "ans": "-1",
+      "why": "i = √(−1), so i² = (√(−1))² = −1. This is the foundational identity of complex numbers."
     },
-
     {
-      q: "Simplify i² + 5",
-      hint: "replace i²",
-      steps: [
+      "q": "Simplify i² + 5",
+      "hint": "replace i²",
+      "steps": [
         "Step 1: i² + 5",
         "Step 2: Replace i² with −1: (−1) + 5",
         "Step 3: −1 + 5 = 4"
       ],
-      ans: "4",
-      why: "i² = −1 by definition, so i² + 5 = −1 + 5 = 4"
+      "ans": "4",
+      "why": "i² = −1 by definition, so i² + 5 = −1 + 5 = 4"
     },
-
     {
-      q: "Multiply (1 + i)(1 + i)",
-      hint: "FOIL method",
-      steps: [
+      "q": "Multiply (1 + i)(1 + i)",
+      "hint": "FOIL method",
+      "steps": [
         "Step 1: (1 + i)(1 + i) → use FOIL",
         "Step 2: First: 1×1 = 1",
         "Step 3: Outer: 1×i = i",
@@ -536,57 +537,53 @@ Then simplify using i² = -1
         "Step 6: Combine: 1 + i + i + (−1) = 1 + 2i − 1",
         "Step 7: = 2i"
       ],
-      ans: "2i",
-      why: "FOIL: (1+i)(1+i) = 1 + 2i + i² = 1 + 2i − 1 = 2i"
+      "ans": "2i",
+      "why": "FOIL: (1+i)(1+i) = 1 + 2i + i² = 1 + 2i − 1 = 2i"
     },
-
     {
-      q: "Find (3 + 2i) + (1 + 4i)",
-      hint: "add like terms",
-      steps: [
+      "q": "Find (3 + 2i) + (1 + 4i)",
+      "hint": "add like terms",
+      "steps": [
         "Step 1: (3 + 2i) + (1 + 4i)",
         "Step 2: Group real parts: 3 + 1 = 4",
         "Step 3: Group imaginary parts: 2i + 4i = 6i",
         "Step 4: ∴ (3 + 2i) + (1 + 4i) = 4 + 6i"
       ],
-      ans: "4 + 6i",
-      why: "(a + bi) + (c + di) = (a+c) + (b+d)i, so (3+1) + (2+4)i = 4 + 6i"
+      "ans": "4 + 6i",
+      "why": "(a + bi) + (c + di) = (a+c) + (b+d)i, so (3+1) + (2+4)i = 4 + 6i"
     },
-
     {
-      q: "Why do we replace i² with -1?",
-      hint: "definition",
-      steps: [
+      "q": "Why do we replace i² with -1?",
+      "hint": "definition",
+      "steps": [
         "Step 1: The imaginary unit is defined as i = √(−1)",
         "Step 2: Squaring: i² = (√(−1))² = −1",
         "Step 3: So whenever i² appears, substitute −1",
         "Step 4: This converts imaginary terms into real terms for simplification"
       ],
-      ans: "Because i² = -1 by definition",
-      why: "i = √(−1) ∴ i² = −1. Replacing i² converts imaginary expressions into real numbers."
+      "ans": "Because i² = -1 by definition",
+      "why": "i = √(−1) ∴ i² = −1. Replacing i² converts imaginary expressions into real numbers."
     },
-
     {
-      q: "What method is used for multiplying complex numbers?",
-      hint: "FOIL",
-      steps: [
+      "q": "What method is used for multiplying complex numbers?",
+      "hint": "FOIL",
+      "steps": [
         "Step 1: (a + bi)(c + di) → expand using FOIL",
         "Step 2: = ac + adi + bci + bdi²",
         "Step 3: Replace i² = −1: = ac + adi + bci − bd",
         "Step 4: Group: = (ac − bd) + (ad + bc)i"
       ],
-      ans: "FOIL / distributive method",
-      why: "FOIL expands (a+bi)(c+di) = (ac−bd) + (ad+bc)i, then i² = −1 simplifies the result"
-    },
-  ],
+      "ans": "FOIL / distributive method",
+      "why": "FOIL expands (a+bi)(c+di) = (ac−bd) + (ad+bc)i, then i² = −1 simplifies the result"
+    }
+  ]
 );
-/*====================================================
-   Polar Form of Complex Numbers
-   =================================================*/
+
 add(
   "math",
   "complex_numbers",
   "Polar Form of Complex Numbers",
+
   `
 <h2> Polar Form</h2>
 <h3> DEEP NOTES</h3>
@@ -650,89 +647,84 @@ z = r(cosθ + i sinθ)
 </ul>
 <h3> QUIZ QUESTIONS</h3>
 `,
+
   [
     {
-      q: "What does r represent in polar form?",
-      hint: "distance from origin",
-      steps: [
+      "q": "What does r represent in polar form?",
+      "hint": "distance from origin",
+      "steps": [
         "Step 1: z = r(cosθ + i sinθ), where r = √(a² + b²)",
         "Step 2: r is the distance from the origin (0,0) to the point (a, b)",
         "Step 3: ∴ r = |z| = magnitude of z"
       ],
-      ans: "Magnitude",
-      why: "r = √(a² + b²) gives the distance from origin to (a,b), i.e. the modulus |z|"
+      "ans": "Magnitude",
+      "why": "r = √(a² + b²) gives the distance from origin to (a,b), i.e. the modulus |z|"
     },
-
     {
-      q: "What does θ represent in polar form?",
-      hint: "angle",
-      steps: [
+      "q": "What does θ represent in polar form?",
+      "hint": "angle",
+      "steps": [
         "Step 1: z = r(cosθ + i sinθ)",
         "Step 2: θ = tan⁻¹(b/a), the angle from the positive real axis",
         "Step 3: ∴ θ = argument of z = direction of z in the complex plane"
       ],
-      ans: "Angle",
-      why: "θ = tan⁻¹(b/a) measures the direction from the positive x-axis to the vector (a, b)"
+      "ans": "Angle",
+      "why": "θ = tan⁻¹(b/a) measures the direction from the positive x-axis to the vector (a, b)"
     },
-
     {
-      q: "Convert (3,4) into polar form: find r",
-      hint: "use Pythagoras",
-      steps: [
+      "q": "Convert (3,4) into polar form: find r",
+      "hint": "use Pythagoras",
+      "steps": [
         "Step 1: r = √(a² + b²) = √(3² + 4²)",
         "Step 2: = √(9 + 16) = √25",
         "Step 3: r = 5"
       ],
-      ans: "5",
-      why: "r = √(3² + 4²) = √(9+16) = √25 = 5 (Pythagorean theorem)"
+      "ans": "5",
+      "why": "r = √(3² + 4²) = √(9+16) = √25 = 5 (Pythagorean theorem)"
     },
-
     {
-      q: "Why is polar form useful?",
-      hint: "simplifies operations",
-      steps: [
+      "q": "Why is polar form useful?",
+      "hint": "simplifies operations",
+      "steps": [
         "Step 1: In Cartesian form, (a+bi)(c+di) requires FOIL expansion",
         "Step 2: In polar form: z₁·z₂ = r₁r₂ [cos(θ₁+θ₂) + i sin(θ₁+θ₂)]",
         "Step 3: Multiplication becomes: multiply magnitudes, add angles",
         "Step 4: ∴ Polar form simplifies multiplication and division of complex numbers"
       ],
-      ans: "It simplifies multiplication and rotation",
-      why: "z₁·z₂ = r₁r₂ cis(θ₁+θ₂): just multiply |z| and add angles, no FOIL needed"
+      "ans": "It simplifies multiplication and rotation",
+      "why": "z₁·z₂ = r₁r₂ cis(θ₁+θ₂): just multiply |z| and add angles, no FOIL needed"
     },
-
     {
-      q: "What is the general polar form of a complex number?",
-      hint: "formula",
-      steps: [
+      "q": "What is the general polar form of a complex number?",
+      "hint": "formula",
+      "steps": [
         "Step 1: For z = a + bi, compute r = √(a² + b²)",
         "Step 2: Compute θ = tan⁻¹(b/a)",
         "Step 3: Write z = r(cosθ + i sinθ)",
         "Step 4: Also written as z = r cis(θ)"
       ],
-      ans: "z = r(cosθ + i sinθ)",
-      why: "z = a + bi converts to z = r(cosθ + i sinθ) where r = |z| and θ = arg(z)"
+      "ans": "z = r(cosθ + i sinθ)",
+      "why": "z = a + bi converts to z = r(cosθ + i sinθ) where r = |z| and θ = arg(z)"
     },
-
     {
-      q: "What is the first step when converting to polar form?",
-      hint: "distance",
-      steps: [
+      "q": "What is the first step when converting to polar form?",
+      "hint": "distance",
+      "steps": [
         "Step 1: Given z = a + bi, first find r = √(a² + b²)",
         "Step 2: Then find θ = tan⁻¹(b/a)",
         "Step 3: Assemble: z = r(cosθ + i sinθ)"
       ],
-      ans: "Find r",
-      why: "r = √(a² + b²) must be calculated first because it defines the magnitude before the angle"
-    },
-  ],
+      "ans": "Find r",
+      "why": "r = √(a² + b²) must be calculated first because it defines the magnitude before the angle"
+    }
+  ]
 );
-/*===============================================
-  De Moivre’s Theorem
-  =============================================*/
+
 add(
   "math",
   "complex_numbers",
   "De Moivre’s Theorem",
+
   `
 <h2> De Moivre’s Theorem</h2>
 <p>De Moivre’s Theorem is used to raise complex numbers in trigonometric form to powers quickly by multiplying angles.</p>
@@ -779,96 +771,88 @@ Initial point → rotates on unit circle
 <li> Satellite communication modeling</li>
 </ul>
 `,
+
   [
     {
-      q: "What happens to angle in De Moivre’s theorem?",
-      hint: "power effect",
-      steps: [
+      "q": "What happens to angle in De Moivre’s theorem?",
+      "hint": "power effect",
+      "steps": [
         "Step 1: De Moivre’s theorem: (cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ)",
         "Step 2: The angle θ is multiplied by the exponent n",
         "Step 3: ∴ New angle = nθ"
       ],
-      ans: "Angle is multiplied by the exponent",
-      why: "(cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ) → the angle becomes n×θ"
+      "ans": "Angle is multiplied by the exponent",
+      "why": "(cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ) → the angle becomes n×θ"
     },
-
     {
-      q: "Evaluate (cos45° + i sin45°)^2",
-      hint: "use De Moivre’s theorem",
-      steps: [
+      "q": "Evaluate (cos45° + i sin45°)^2",
+      "hint": "use De Moivre’s theorem",
+      "steps": [
         "Step 1: Apply (cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ)",
         "Step 2: n = 2, θ = 45° → nθ = 2 × 45° = 90°",
         "Step 3: = cos90° + i sin90°",
         "Step 4: cos90° = 0, sin90° = 1",
         "Step 5: = 0 + i(1) = i"
       ],
-      ans: "i",
-      why: "(cos45° + i sin45°)² = cos(90°) + i sin(90°) = 0 + i = i"
+      "ans": "i",
+      "why": "(cos45° + i sin45°)² = cos(90°) + i sin(90°) = 0 + i = i"
     },
-
     {
-      q: "What does De Moivre’s theorem represent?",
-      hint: "geometry meaning",
-      steps: [
+      "q": "What does De Moivre’s theorem represent?",
+      "hint": "geometry meaning",
+      "steps": [
         "Step 1: z = cosθ + i sinθ is a point on the unit circle at angle θ",
         "Step 2: zⁿ = cos(nθ) + i sin(nθ) moves to angle nθ",
         "Step 3: ∴ Raising to power n rotates the point by n×θ on the unit circle"
       ],
-      ans: "Rotation of complex numbers on a circle",
-      why: "zⁿ = cos(nθ) + i sin(nθ): each power rotates the point n times around the unit circle"
+      "ans": "Rotation of complex numbers on a circle",
+      "why": "zⁿ = cos(nθ) + i sin(nθ): each power rotates the point n times around the unit circle"
     },
-
     {
-      q: "What is the effect of raising a complex number to a power?",
-      hint: "think angle",
-      steps: [
+      "q": "What is the effect of raising a complex number to a power?",
+      "hint": "think angle",
+      "steps": [
         "Step 1: Let z = r(cosθ + i sinθ)",
         "Step 2: zⁿ = rⁿ(cos(nθ) + i sin(nθ))",
         "Step 3: Magnitude becomes rⁿ, angle becomes nθ",
         "Step 4: ∴ Power n multiplies the angle by n and raises magnitude to n"
       ],
-      ans: "It multiplies the angle by the exponent",
-      why: "zⁿ = rⁿ cis(nθ): magnitude → rⁿ, angle → n×θ"
+      "ans": "It multiplies the angle by the exponent",
+      "why": "zⁿ = rⁿ cis(nθ): magnitude → rⁿ, angle → n×θ"
     },
-
     {
-      q: "Evaluate (cos60° + i sin60°)^3",
-      hint: "multiply angle",
-      steps: [
+      "q": "Evaluate (cos60° + i sin60°)^3",
+      "hint": "multiply angle",
+      "steps": [
         "Step 1: Apply De Moivre’s: (cosθ + i sinθ)³ = cos(3θ) + i sin(3θ)",
         "Step 2: θ = 60° → 3 × 60° = 180°",
         "Step 3: = cos180° + i sin180°",
         "Step 4: cos180° = −1, sin180° = 0",
         "Step 5: = −1 + i(0) = −1"
       ],
-      ans: "-1",
-      why: "(cos60° + i sin60°)³ = cos180° + i sin180° = −1 + 0i = −1"
+      "ans": "-1",
+      "why": "(cos60° + i sin60°)³ = cos180° + i sin180° = −1 + 0i = −1"
     },
-{
-  q: "Why is De Moivre's theorem useful?",
-  hint: "It makes powers easier.",
-  steps: [
-    "Step 1: Finding zⁿ by repeated multiplication is long and difficult.",
-    "Step 2: De Moivre's theorem gives zⁿ = rⁿ(cos nθ + i sin nθ).",
-    "Step 3: Multiply only the angle by n.",
-    "Step 4: This saves time and reduces calculations."
-  ],
-  ans: "It simplifies powers of complex numbers.",
-  why: "Instead of multiplying a complex number many times, De Moivre's theorem uses a simple formula."
-}
-  ],
+    {
+      "q": "Why is De Moivre's theorem useful?",
+      "hint": "It makes powers easier.",
+      "steps": [
+        "Step 1: Finding zⁿ by repeated multiplication is long and difficult.",
+        "Step 2: De Moivre's theorem gives zⁿ = rⁿ(cos nθ + i sin nθ).",
+        "Step 3: Multiply only the angle by n.",
+        "Step 4: This saves time and reduces calculations."
+      ],
+      "ans": "It simplifies powers of complex numbers.",
+      "why": "Instead of multiplying a complex number many times, De Moivre's theorem uses a simple formula."
+    }
+  ]
 );
 
-/* =========================================================
-   ALGEBRA
-========================================================= */
-/* =========================
-   1. ALGEBRAIC EXPRESSIONS
-========================= */
 add(
   "math",
   "algebra",
   "Algebraic expressions",
+
   `<h2> Algebraic Expressions</h2>
 
 <p>Algebra uses letters (variables) to represent unknown numbers and helps describe mathematical relationships.</p>
@@ -937,55 +921,60 @@ Expression: 2x + 3
 <li> Shopping → pricing formulas</li>
 </ul>
 `,
+
   [
     {
-      q: "Evaluate 3x + 5 when x = 2",
-      hint: "substitute first",
-      steps: [
+      "q": "Evaluate 3x + 5 when x = 2",
+      "hint": "substitute first",
+      "steps": [
         "Step 1: Replace x with 2 → 3(2) + 5",
         "Step 2: Multiply → 6 + 5",
-        "Step 3: = 11",
+        "Step 3: = 11"
       ],
-      ans: "11",
-      why: "Substitution must be done before simplifying",
+      "ans": "11",
+      "why": "Substitution must be done before simplifying"
     },
-
     {
-      q: "Simplify 2x + 3x",
-      hint: "like terms",
-      steps: ["Step 1: 2x + 3x", "Step 2: (2 + 3)x", "Step 3: = 5x"],
-      ans: "5x",
-      why: "Only like terms can be combined",
+      "q": "Simplify 2x + 3x",
+      "hint": "like terms",
+      "steps": [
+        "Step 1: 2x + 3x",
+        "Step 2: (2 + 3)x",
+        "Step 3: = 5x"
+      ],
+      "ans": "5x",
+      "why": "Only like terms can be combined"
     },
-
     {
-      q: "Identify: 4y + 7",
-      hint: "expression parts",
-      steps: [
+      "q": "Identify: 4y + 7",
+      "hint": "expression parts",
+      "steps": [
         "Step 1: Contains variable y",
         "Step 2: Contains constant 7",
-        "Step 3: No equals sign",
+        "Step 3: No equals sign"
       ],
-      ans: "Algebraic expression",
-      why: "It has variables and constants but no equation",
+      "ans": "Algebraic expression",
+      "why": "It has variables and constants but no equation"
     },
-
     {
-      q: "Translate: ‘5 less than a number x’",
-      hint: "subtract 5",
-      steps: ["Step 1: number x → x", "Step 2: 5 less → −5", "Step 3: x − 5"],
-      ans: "x - 5",
-      why: "Word phrases convert into algebraic expressions",
-    },
-  ],
+      "q": "Translate: ‘5 less than a number x’",
+      "hint": "subtract 5",
+      "steps": [
+        "Step 1: number x → x",
+        "Step 2: 5 less → −5",
+        "Step 3: x − 5"
+      ],
+      "ans": "x - 5",
+      "why": "Word phrases convert into algebraic expressions"
+    }
+  ]
 );
-/* =========================
-   2. SIMPLIFYING EXPRESSIONS
-========================= */
+
 add(
   "math",
   "algebra",
   "Simplifying expressions",
+
   `<h2> Simplifying Expressions</h2>
 
 <p>Simplifying expressions means rewriting them in a shorter and clearer form by combining like terms.</p>
@@ -1050,51 +1039,57 @@ Step 2: Keep y<br>
 <li> Business → aggregating sales or profits</li>
 </ul>
 `,
+
   [
     {
-      q: "Simplify 3x + 4x + 2",
-      hint: "group like terms",
-      steps: [
+      "q": "Simplify 3x + 4x + 2",
+      "hint": "group like terms",
+      "steps": [
         "Step 1: 3x + 4x = 7x",
         "Step 2: +2 remains unchanged",
-        "Step 3: 7x + 2",
+        "Step 3: 7x + 2"
       ],
-      ans: "7x + 2",
-      why: "Only like terms can be combined",
+      "ans": "7x + 2",
+      "why": "Only like terms can be combined"
     },
-
     {
-      q: "Simplify 6a - 2a",
-      hint: "subtract coefficients",
-      steps: ["Step 1: 6a − 2a", "Step 2: (6 − 2)a = 4a"],
-      ans: "4a",
-      why: "Same variable means combine coefficients",
+      "q": "Simplify 6a - 2a",
+      "hint": "subtract coefficients",
+      "steps": [
+        "Step 1: 6a − 2a",
+        "Step 2: (6 − 2)a = 4a"
+      ],
+      "ans": "4a",
+      "why": "Same variable means combine coefficients"
     },
-
     {
-      q: "Simplify 2x + 3y + 5x",
-      hint: "group x terms",
-      steps: ["Step 1: (2x + 5x) + 3y", "Step 2: 7x + 3y"],
-      ans: "7x + 3y",
-      why: "Like terms grouped together",
+      "q": "Simplify 2x + 3y + 5x",
+      "hint": "group x terms",
+      "steps": [
+        "Step 1: (2x + 5x) + 3y",
+        "Step 2: 7x + 3y"
+      ],
+      "ans": "7x + 3y",
+      "why": "Like terms grouped together"
     },
-
     {
-      q: "Simplify x + 2x + y + 3y",
-      hint: "group both variables",
-      steps: ["Step 1: (x + 2x) + (y + 3y)", "Step 2: 3x + 4y"],
-      ans: "3x + 4y",
-      why: "Combine each variable separately",
-    },
-  ],
+      "q": "Simplify x + 2x + y + 3y",
+      "hint": "group both variables",
+      "steps": [
+        "Step 1: (x + 2x) + (y + 3y)",
+        "Step 2: 3x + 4y"
+      ],
+      "ans": "3x + 4y",
+      "why": "Combine each variable separately"
+    }
+  ]
 );
-/* =========================
-   3. LINEAR EQUATIONS
-========================= */
+
 add(
   "math",
   "algebra",
   "Linear equations",
+
   `<h2> Linear Equations</h2>
 <p>A linear equation is a mathematical statement that contains an equals sign and can be solved to find the value of a variable.</p>
 <h3> NOTES (EXPLAINED)</h3>
@@ -1152,53 +1147,59 @@ x = 3
 <li> Shopping → calculating discounts and totals</li>
 </ul>
 `,
+
   [
     {
-      q: "Solve x + 5 = 12",
-      hint: "inverse operation",
-      steps: [
+      "q": "Solve x + 5 = 12",
+      "hint": "inverse operation",
+      "steps": [
         "Step 1: Subtract 5 from both sides",
         "Step 2: x = 12 − 5",
-        "Step 3: x = 7",
+        "Step 3: x = 7"
       ],
-      ans: "7",
-      why: "Maintain balance by doing same operation on both sides",
+      "ans": "7",
+      "why": "Maintain balance by doing same operation on both sides"
     },
-
     {
-      q: "Solve 2x = 10",
-      hint: "divide both sides",
-      steps: ["Step 1: Divide both sides by 2", 
+      "q": "Solve 2x = 10",
+      "hint": "divide both sides",
+      "steps": [
+        "Step 1: Divide both sides by 2",
         "Step 2: x = 5"
       ],
-      ans: "5",
-      why: "Inverse of multiplication is division",
+      "ans": "5",
+      "why": "Inverse of multiplication is division"
     },
-
     {
-      q: "Solve 3x + 2 = 11",
-      hint: "remove constant first",
-      steps: ["Step 1: 3x = 11 − 2", "Step 2: 3x = 9", "Step 3: x = 3"],
-      ans: "3",
-      why: "Isolate variable step by step",
+      "q": "Solve 3x + 2 = 11",
+      "hint": "remove constant first",
+      "steps": [
+        "Step 1: 3x = 11 − 2",
+        "Step 2: 3x = 9",
+        "Step 3: x = 3"
+      ],
+      "ans": "3",
+      "why": "Isolate variable step by step"
     },
-
     {
-      q: "Solve 4x − 6 = 10",
-      hint: "add 6 first",
-      steps: ["Step 1: 4x = 10 + 6", "Step 2: 4x = 16", "Step 3: x = 4"],
-      ans: "4",
-      why: "Move constants using inverse operations",
-    },
-  ],
+      "q": "Solve 4x − 6 = 10",
+      "hint": "add 6 first",
+      "steps": [
+        "Step 1: 4x = 10 + 6",
+        "Step 2: 4x = 16",
+        "Step 3: x = 4"
+      ],
+      "ans": "4",
+      "why": "Move constants using inverse operations"
+    }
+  ]
 );
-/* =========================
-   4. SUBSTITUTION
-========================= */
+
 add(
   "math",
   "algebra",
   "Substitution",
+
   `<h2> Substitution</h2>
 <p>Substitution means replacing a variable (like x or y) with a given numerical value and then simplifying the expression.</p>
 <h3> NOTES (EXPLAINED)</h3>
@@ -1256,52 +1257,60 @@ If x = 5:
 <li> Business → forecasting outcomes</li>
 </ul>
 `,
+
   [
     {
-      q: "If x = 3, find x + 4",
-      hint: "replace x first",
-      steps: ["Step 1: Substitute x = 3", "Step 2: 3 + 4", "Step 3: = 7"],
-      ans: "7",
-      why: "Substitution replaces variables with numbers",
+      "q": "If x = 3, find x + 4",
+      "hint": "replace x first",
+      "steps": [
+        "Step 1: Substitute x = 3",
+        "Step 2: 3 + 4",
+        "Step 3: = 7"
+      ],
+      "ans": "7",
+      "why": "Substitution replaces variables with numbers"
     },
-
     {
-      q: "If x = 2, find 2x + 1",
-      hint: "multiply first",
-      steps: [
+      "q": "If x = 2, find 2x + 1",
+      "hint": "multiply first",
+      "steps": [
         "Step 1: Substitute → 2(2) + 1",
         "Step 2: Multiply → 4 + 1",
-        "Step 3: = 5",
+        "Step 3: = 5"
       ],
-      ans: "5",
-      why: "Follow multiplication before addition",
+      "ans": "5",
+      "why": "Follow multiplication before addition"
     },
-
     {
-      q: "If x = 4, y = 3, find x + y",
-      hint: "replace both variables",
-      steps: ["Step 1: Substitute → 4 + 3", "Step 2: Simplify", "Step 3: = 7"],
-      ans: "7",
-      why: "Both variables must be replaced",
+      "q": "If x = 4, y = 3, find x + y",
+      "hint": "replace both variables",
+      "steps": [
+        "Step 1: Substitute → 4 + 3",
+        "Step 2: Simplify",
+        "Step 3: = 7"
+      ],
+      "ans": "7",
+      "why": "Both variables must be replaced"
     },
-
     {
-      q: "If x = 5, find 3x − 2",
-      hint: "multiply then subtract",
-      steps: ["Step 1: 3 × 5 = 15", "Step 2: 15 − 2", "Step 3: = 13"],
-      ans: "13",
-      why: "Substitution followed by order of operations",
-    },
-  ],
+      "q": "If x = 5, find 3x − 2",
+      "hint": "multiply then subtract",
+      "steps": [
+        "Step 1: 3 × 5 = 15",
+        "Step 2: 15 − 2",
+        "Step 3: = 13"
+      ],
+      "ans": "13",
+      "why": "Substitution followed by order of operations"
+    }
+  ]
 );
 
-/* =========================
-   5. EXPANDING BRACKETS
-========================= */
 add(
   "math",
   "algebra",
   "Expanding brackets",
+
   `<h2> Expanding Brackets</h2>
 
 <p>Expanding brackets means multiplying the term outside the bracket with every term inside using the distributive law.</p>
@@ -1358,59 +1367,60 @@ Step 2: 5 × 2 = 10<br>
 <li> Resource distribution problems</li>
 </ul>
 `,
+
   [
     {
-      q: "Expand 2(x + 3)",
-      hint: "multiply each term",
-      steps: [
+      "q": "Expand 2(x + 3)",
+      "hint": "multiply each term",
+      "steps": [
         "Step 1: 2 × x = 2x",
         "Step 2: 2 × 3 = 6",
-        "Step 3: Combine → 2x + 6",
+        "Step 3: Combine → 2x + 6"
       ],
-      ans: "2x + 6",
-      why: "Distributive law multiplies each term inside bracket",
+      "ans": "2x + 6",
+      "why": "Distributive law multiplies each term inside bracket"
     },
-
     {
-      q: "Expand 3(a + 2)",
-      hint: "distribute 3",
-      steps: ["Step 1: 3 × a = 3a", "Step 2: 3 × 2 = 6", "Step 3: 3a + 6"],
-      ans: "3a + 6",
-      why: "Each term inside bracket must be multiplied",
+      "q": "Expand 3(a + 2)",
+      "hint": "distribute 3",
+      "steps": [
+        "Step 1: 3 × a = 3a",
+        "Step 2: 3 × 2 = 6",
+        "Step 3: 3a + 6"
+      ],
+      "ans": "3a + 6",
+      "why": "Each term inside bracket must be multiplied"
     },
-
     {
-      q: "Expand 4(x + 1)",
-      hint: "multiply each term",
-      steps: ["Step 1: 4 × x = 4x", "Step 2: 4 × 1 = 4", "Step 3: 4x + 4"],
-      ans: "4x + 4",
-      why: "Distributive property applies to all terms",
+      "q": "Expand 4(x + 1)",
+      "hint": "multiply each term",
+      "steps": [
+        "Step 1: 4 × x = 4x",
+        "Step 2: 4 × 1 = 4",
+        "Step 3: 4x + 4"
+      ],
+      "ans": "4x + 4",
+      "why": "Distributive property applies to all terms"
     },
-
     {
-      q: "What is the distributive law?",
-      hint: "a(b + c)",
-      steps: [
+      "q": "What is the distributive law?",
+      "hint": "a(b + c)",
+      "steps": [
         "Step 1: Multiply outside term",
         "Step 2: Multiply each inside term",
-        "Step 3: Combine results",
+        "Step 3: Combine results"
       ],
-      ans: "a(b + c) = ab + ac",
-      why: "It ensures correct expansion of brackets",
-    },
-  ],
+      "ans": "a(b + c) = ab + ac",
+      "why": "It ensures correct expansion of brackets"
+    }
+  ]
 );
-/* =========================================================
-   PHASE 3: GEOMETRY (FULL TEACHING VERSION)
-========================================================= */
 
-/* =========================
-   1. TYPES OF ANGLES
-========================= */
 add(
   "math",
   "geometry",
   "Types of angles",
+
   `<h2> Types of Angles</h2>
 <p>An angle is formed when two lines meet at a common point called a vertex.</p>
 <h3> NOTES (EXPLAINED)</h3>
@@ -1470,59 +1480,59 @@ Straight: 180°   (line)
 <li> Design → architecture and blueprint layouts</li>
 </ul>
 `,
+
   [
     {
-      q: "Classify 60°",
-      hint: "Compare with 90°",
-      steps: ["Step 1: 60° is less than 90°", "Step 2: Therefore it is acute"],
-      ans: "Acute angle",
-      why: "Angles less than 90° are acute",
+      "q": "Classify 60°",
+      "hint": "Compare with 90°",
+      "steps": [
+        "Step 1: 60° is less than 90°",
+        "Step 2: Therefore it is acute"
+      ],
+      "ans": "Acute angle",
+      "why": "Angles less than 90° are acute"
     },
-
     {
-      q: "Classify 120°",
-      hint: "Between 90° and 180°",
-      steps: [
+      "q": "Classify 120°",
+      "hint": "Between 90° and 180°",
+      "steps": [
         "Step 1: Compare with 90°",
         "Step 2: Compare with 180°",
-        "Step 3: Determine range",
+        "Step 3: Determine range"
       ],
-      ans: "Obtuse angle",
-      why: "Angles between 90° and 180° are obtuse",
+      "ans": "Obtuse angle",
+      "why": "Angles between 90° and 180° are obtuse"
     },
-
     {
-      q: "What is a right angle?",
-      hint: "corner",
-      steps: [
+      "q": "What is a right angle?",
+      "hint": "corner",
+      "steps": [
         "Step 1: Identify angle size",
         "Step 2: Check if exactly 90°",
-        "Step 3: Define type",
+        "Step 3: Define type"
       ],
-      ans: "An angle of exactly 90°",
-      why: "It forms a perfect square corner",
+      "ans": "An angle of exactly 90°",
+      "why": "It forms a perfect square corner"
     },
-
     {
-      q: "What is a straight angle?",
-      hint: "line",
-      steps: [
+      "q": "What is a straight angle?",
+      "hint": "line",
+      "steps": [
         "Step 1: Observe full line",
         "Step 2: Measure angle",
-        "Step 3: Identify value",
+        "Step 3: Identify value"
       ],
-      ans: "180°",
-      why: "It forms a straight line",
-    },
-  ],
+      "ans": "180°",
+      "why": "It forms a straight line"
+    }
+  ]
 );
-/* =========================
-   2. TRIANGLES
-========================= */
+
 add(
   "math",
   "geometry",
   "Triangles",
+
   `<h2> Triangles</h2>
 <p>A triangle is a polygon with 3 sides, 3 vertices, and 3 angles.</p>
 <h3> NOTES (EXPLAINED)</h3>
@@ -1571,64 +1581,60 @@ Step 2: 180 − 120 = 60<br>
 <li> Game design → 3D modeling structures</li>
 </ul>
 `,
+
   [
     {
-      q: "Find missing angle: 30° + 80° + x = 180°",
-      hint: "Use 180° rule",
-      steps: [
+      "q": "Find missing angle: 30° + 80° + x = 180°",
+      "hint": "Use 180° rule",
+      "steps": [
         "Step 1: Add known angles → 110°",
         "Step 2: 180 − 110",
-        "Step 3: x = 70°",
+        "Step 3: x = 70°"
       ],
-      ans: "70°",
-      why: "All triangle angles must sum to 180°",
+      "ans": "70°",
+      "why": "All triangle angles must sum to 180°"
     },
-
     {
-      q: "What is the sum of angles in a triangle?",
-      hint: "constant rule",
-      steps: [
+      "q": "What is the sum of angles in a triangle?",
+      "hint": "constant rule",
+      "steps": [
         "Step 1: Identify shape",
         "Step 2: Apply rule",
-        "Step 3: State result",
+        "Step 3: State result"
       ],
-      ans: "180°",
-      why: "All triangles have a fixed angle sum of 180°",
+      "ans": "180°",
+      "why": "All triangles have a fixed angle sum of 180°"
     },
-
     {
-      q: "Which triangle has all sides equal?",
-      hint: "equilateral",
-      steps: [
+      "q": "Which triangle has all sides equal?",
+      "hint": "equilateral",
+      "steps": [
         "Step 1: Compare sides",
         "Step 2: Check equality",
-        "Step 3: Identify type",
+        "Step 3: Identify type"
       ],
-      ans: "Equilateral triangle",
-      why: "All sides and angles are equal",
+      "ans": "Equilateral triangle",
+      "why": "All sides and angles are equal"
     },
-
     {
-      q: "What is special about right-angled triangles?",
-      hint: "90° angle",
-      steps: [
+      "q": "What is special about right-angled triangles?",
+      "hint": "90° angle",
+      "steps": [
         "Step 1: Identify angle",
         "Step 2: Check for 90°",
-        "Step 3: Define type",
+        "Step 3: Define type"
       ],
-      ans: "One angle is 90°",
-      why: "It forms perpendicular sides",
-    },
-  ],
+      "ans": "One angle is 90°",
+      "why": "It forms perpendicular sides"
+    }
+  ]
 );
 
-/* =========================
-   3. QUADRILATERALS
-========================= */
 add(
   "math",
   "geometry",
   "Quadrilaterals",
+
   `<h2>⬛ Quadrilaterals</h2>
 <p>A quadrilateral is any polygon with four sides, four angles, and four vertices.</p>
 <h3> NOTES (EXPLAINED)</h3>
@@ -1678,64 +1684,60 @@ Step 1: Identify properties<br>
 <li> Graphic design → layout and framing</li>
 </ul>
 `,
+
   [
     {
-      q: "Find missing angle: 100° + 70° + 80° + x = 360°",
-      hint: "Use 360° rule",
-      steps: [
+      "q": "Find missing angle: 100° + 70° + 80° + x = 360°",
+      "hint": "Use 360° rule",
+      "steps": [
         "Step 1: Add known angles → 250°",
         "Step 2: 360 − 250",
-        "Step 3: x = 110°",
+        "Step 3: x = 110°"
       ],
-      ans: "110°",
-      why: "Interior angles of a quadrilateral always sum to 360°",
+      "ans": "110°",
+      "why": "Interior angles of a quadrilateral always sum to 360°"
     },
-
     {
-      q: "What is the sum of interior angles of a quadrilateral?",
-      hint: "constant rule",
-      steps: [
+      "q": "What is the sum of interior angles of a quadrilateral?",
+      "hint": "constant rule",
+      "steps": [
         "Step 1: Identify shape",
         "Step 2: Apply formula",
-        "Step 3: State result",
+        "Step 3: State result"
       ],
-      ans: "360°",
-      why: "All four interior angles always add up to 360°",
+      "ans": "360°",
+      "why": "All four interior angles always add up to 360°"
     },
-
     {
-      q: "Which quadrilateral has all sides equal?",
-      hint: "rhombus or square",
-      steps: [
+      "q": "Which quadrilateral has all sides equal?",
+      "hint": "rhombus or square",
+      "steps": [
         "Step 1: Check side lengths",
         "Step 2: Compare properties",
-        "Step 3: Identify shape",
+        "Step 3: Identify shape"
       ],
-      ans: "Square or Rhombus",
-      why: "Both have equal side lengths",
+      "ans": "Square or Rhombus",
+      "why": "Both have equal side lengths"
     },
-
     {
-      q: "What makes a rectangle different from a square?",
-      hint: "side lengths",
-      steps: [
+      "q": "What makes a rectangle different from a square?",
+      "hint": "side lengths",
+      "steps": [
         "Step 1: Compare sides",
         "Step 2: Compare angles",
-        "Step 3: Identify difference",
+        "Step 3: Identify difference"
       ],
-      ans: "Rectangle has equal opposite sides, square has all equal sides",
-      why: "Square is a special type of rectangle",
-    },
-  ],
+      "ans": "Rectangle has equal opposite sides, square has all equal sides",
+      "why": "Square is a special type of rectangle"
+    }
+  ]
 );
 
-/* =========================
-   4. CIRCLES BASICS
-========================= */
 add(
   "math",
   "geometry",
   "Circles",
+
   `<h2>⭕ Circles</h2>
 <p>A circle is a closed shape where all points are equally distant from a fixed point called the center.</p>
 <h3> NOTES (EXPLAINED)</h3>
@@ -1781,63 +1783,60 @@ Step 2: Understand it is the outer distance<br>
 <li> Food → pizza and circular cutting designs</li>
 </ul>
 `,
+
   [
     {
-      q: "Diameter 14 cm, find radius",
-      hint: "Divide by 2",
-      steps: [
+      "q": "Diameter 14 cm, find radius",
+      "hint": "Divide by 2",
+      "steps": [
         "Step 1: Identify formula radius = diameter ÷ 2",
         "Step 2: 14 ÷ 2",
-        "Step 3: = 7 cm",
+        "Step 3: = 7 cm"
       ],
-      ans: "7 cm",
-      why: "Radius is always half the diameter",
+      "ans": "7 cm",
+      "why": "Radius is always half the diameter"
     },
-
     {
-      q: "Radius 9 cm, find diameter",
-      hint: "Multiply by 2",
-      steps: [
+      "q": "Radius 9 cm, find diameter",
+      "hint": "Multiply by 2",
+      "steps": [
         "Step 1: Use formula diameter = 2 × radius",
         "Step 2: 2 × 9",
-        "Step 3: = 18 cm",
+        "Step 3: = 18 cm"
       ],
-      ans: "18 cm",
-      why: "Diameter is twice the radius",
+      "ans": "18 cm",
+      "why": "Diameter is twice the radius"
     },
-
     {
-      q: "What is a circle?",
-      hint: "distance from center",
-      steps: [
+      "q": "What is a circle?",
+      "hint": "distance from center",
+      "steps": [
         "Step 1: Identify center point",
         "Step 2: All points equal distance",
-        "Step 3: Define shape",
+        "Step 3: Define shape"
       ],
-      ans: "A shape where all points are equidistant from the center",
-      why: "This equal distance defines a perfect circular shape",
+      "ans": "A shape where all points are equidistant from the center",
+      "why": "This equal distance defines a perfect circular shape"
     },
-
     {
-      q: "What is circumference?",
-      hint: "outer edge",
-      steps: [
+      "q": "What is circumference?",
+      "hint": "outer edge",
+      "steps": [
         "Step 1: Look at boundary",
         "Step 2: Measure full distance around circle",
-        "Step 3: Define term",
+        "Step 3: Define term"
       ],
-      ans: "Distance around a circle",
-      why: "It measures the perimeter of a circle",
-    },
-  ],
+      "ans": "Distance around a circle",
+      "why": "It measures the perimeter of a circle"
+    }
+  ]
 );
-/* =========================
-   5. AREA & PERIMETER
-========================= */
+
 add(
   "math",
   "geometry",
   "Area and Perimeter",
+
   `<h2> Area & Perimeter</h2>
 <p>These are basic measurements used to describe the size and boundary of shapes.</p>
 <h3> NOTES (EXPLAINED)</h3>
@@ -1888,55 +1887,58 @@ Area: filled region inside shape
 <li> School planning → classroom space allocation</li>
 </ul>
 `,
+
   [
     {
-      q: "Area of rectangle 8 × 2",
-      hint: "Multiply length and width",
-      steps: ["Step 1: Multiply 8 × 2", "Step 2: Compute result = 16"],
-      ans: "16",
-      why: "Area of rectangle is length × width",
+      "q": "Area of rectangle 8 × 2",
+      "hint": "Multiply length and width",
+      "steps": [
+        "Step 1: Multiply 8 × 2",
+        "Step 2: Compute result = 16"
+      ],
+      "ans": "16",
+      "why": "Area of rectangle is length × width"
     },
-
     {
-      q: "What is perimeter of a square with side 5?",
-      hint: "4 × side",
-      steps: ["Step 1: Use formula 4 × side", "Step 2: 4 × 5 = 20"],
-      ans: "20",
-      why: "Perimeter adds all four equal sides",
+      "q": "What is perimeter of a square with side 5?",
+      "hint": "4 × side",
+      "steps": [
+        "Step 1: Use formula 4 × side",
+        "Step 2: 4 × 5 = 20"
+      ],
+      "ans": "20",
+      "why": "Perimeter adds all four equal sides"
     },
-
     {
-      q: "Find area of triangle with base 10 and height 6",
-      hint: "½ × b × h",
-      steps: [
+      "q": "Find area of triangle with base 10 and height 6",
+      "hint": "½ × b × h",
+      "steps": [
         "Step 1: Multiply 10 × 6 = 60",
         "Step 2: Divide by 2",
-        "Step 3: = 30",
+        "Step 3: = 30"
       ],
-      ans: "30",
-      why: "Triangle area is half of rectangle",
+      "ans": "30",
+      "why": "Triangle area is half of rectangle"
     },
-
     {
-      q: "What is the difference between area and perimeter?",
-      hint: "inside vs outside",
-      steps: [
+      "q": "What is the difference between area and perimeter?",
+      "hint": "inside vs outside",
+      "steps": [
         "Step 1: Define area",
         "Step 2: Define perimeter",
-        "Step 3: Compare meanings",
+        "Step 3: Compare meanings"
       ],
-      ans: "Area is inside space, perimeter is outside boundary",
-      why: "They measure different properties of shapes",
-    },
-  ],
+      "ans": "Area is inside space, perimeter is outside boundary",
+      "why": "They measure different properties of shapes"
+    }
+  ]
 );
-/* =========================================================
-   NON-EUCLIDEAN GEOMETRY
-========================================================= */
+
 add(
   "math",
   "non_euclidean_geometry",
   "Introduction to Non-Euclidean Geometry",
+
   `
 <h2> Non-Euclidean Geometry</h2>
 <h3> DEEP NOTES</h3>
@@ -1979,75 +1981,71 @@ Curved space → Non-Euclidean geometry (rules change)
 <li> Cartography → map projection systems</li>
 </ul>
 `,
+
   [
     {
-      q: "What is non-Euclidean geometry?",
-      hint: "flat vs curved space",
-      steps: [
+      "q": "What is non-Euclidean geometry?",
+      "hint": "flat vs curved space",
+      "steps": [
         "Step 1: Identify Euclidean rules",
         "Step 2: Observe failure of parallel postulate",
-        "Step 3: Define curved space geometry",
+        "Step 3: Define curved space geometry"
       ],
-      ans: "Geometry that studies curved spaces where Euclid’s rules do not apply",
-      why: "It describes real-world curved surfaces like Earth and spacetime",
+      "ans": "Geometry that studies curved spaces where Euclid’s rules do not apply",
+      "why": "It describes real-world curved surfaces like Earth and spacetime"
     },
-
     {
-      q: "What causes geometry to become non-Euclidean?",
-      hint: "curvature",
-      steps: [
+      "q": "What causes geometry to become non-Euclidean?",
+      "hint": "curvature",
+      "steps": [
         "Step 1: Identify flat surface assumption",
         "Step 2: Introduce curvature",
-        "Step 3: Observe rule changes",
+        "Step 3: Observe rule changes"
       ],
-      ans: "Curved space",
-      why: "Curvature changes how lines and angles behave",
+      "ans": "Curved space",
+      "why": "Curvature changes how lines and angles behave"
     },
-
     {
-      q: "Why do great circle routes look curved on maps?",
-      hint: "projection",
-      steps: [
+      "q": "Why do great circle routes look curved on maps?",
+      "hint": "projection",
+      "steps": [
         "Step 1: Identify spherical Earth",
         "Step 2: Find shortest path on sphere",
-        "Step 3: Compare with flat map",
+        "Step 3: Compare with flat map"
       ],
-      ans: "Because map projections distort curved Earth geometry",
-      why: "Flat maps cannot represent spherical geometry perfectly",
+      "ans": "Because map projections distort curved Earth geometry",
+      "why": "Flat maps cannot represent spherical geometry perfectly"
     },
-
     {
-      q: "What are the two main types of non-Euclidean geometry?",
-      hint: "positive and negative curvature",
-      steps: [
+      "q": "What are the two main types of non-Euclidean geometry?",
+      "hint": "positive and negative curvature",
+      "steps": [
         "Step 1: Identify spherical geometry",
         "Step 2: Identify hyperbolic geometry",
-        "Step 3: Compare curvature types",
+        "Step 3: Compare curvature types"
       ],
-      ans: "Spherical and hyperbolic geometry",
-      why: "They represent positive and negative curvature respectively",
+      "ans": "Spherical and hyperbolic geometry",
+      "why": "They represent positive and negative curvature respectively"
     },
-
     {
-      q: "Give one real-life application of non-Euclidean geometry",
-      hint: "navigation",
-      steps: [
+      "q": "Give one real-life application of non-Euclidean geometry",
+      "hint": "navigation",
+      "steps": [
         "Step 1: Identify global system",
         "Step 2: Apply curved space model",
-        "Step 3: Optimize path or calculation",
+        "Step 3: Optimize path or calculation"
       ],
-      ans: "GPS and airplane navigation systems",
-      why: "They rely on curved Earth geometry for accuracy",
-    },
-  ],
+      "ans": "GPS and airplane navigation systems",
+      "why": "They rely on curved Earth geometry for accuracy"
+    }
+  ]
 );
-/*==================================================
-Spherical Geometry
-==================================================*/
+
 add(
   "math",
   "non_euclidean_geometry",
   "Spherical Geometry",
+
   `
 <h2> Spherical Geometry</h2>
 <h3> DEEP NOTES</h3>
@@ -2102,63 +2100,60 @@ Unlike flat geometry, where area depends only on base and height, here area depe
 <li> Astronomy → modeling planetary motion</li>
 </ul>
 `,
+
   [
     {
-      q: "Find spherical excess of a triangle with angles 100°, 80°, and 70°",
-      hint: "E = sum of angles − 180°",
-      steps: [
+      "q": "Find spherical excess of a triangle with angles 100°, 80°, and 70°",
+      "hint": "E = sum of angles − 180°",
+      "steps": [
         "Step 1: Add angles 100° + 80° + 70°",
         "Step 2: Subtract 180°",
-        "Step 3: Interpret result as spherical excess",
+        "Step 3: Interpret result as spherical excess"
       ],
-      ans: "70°",
-      why: "Spherical excess measures how much the triangle exceeds flat geometry",
+      "ans": "70°",
+      "why": "Spherical excess measures how much the triangle exceeds flat geometry"
     },
-
     {
-      q: "Find the area of a spherical triangle with spherical excess 70° on a sphere of radius R",
-      hint: "Area = E × R²",
-      steps: [
+      "q": "Find the area of a spherical triangle with spherical excess 70° on a sphere of radius R",
+      "hint": "Area = E × R²",
+      "steps": [
         "Step 1: Identify spherical excess E = 70°",
         "Step 2: Convert concept into formula Area = E × R²",
-        "Step 3: Substitute values to get final expression",
+        "Step 3: Substitute values to get final expression"
       ],
-      ans: "70° × R² (or in radians form for exact calculation)",
-      why: "Area on a sphere depends on curvature, not just side lengths",
+      "ans": "70° × R² (or in radians form for exact calculation)",
+      "why": "Area on a sphere depends on curvature, not just side lengths"
     },
-
     {
-      q: "Convert spherical excess 70° into radians",
-      hint: "1° = π/180",
-      steps: [
+      "q": "Convert spherical excess 70° into radians",
+      "hint": "1° = π/180",
+      "steps": [
         "Step 1: Use conversion formula E × (π/180)",
         "Step 2: Substitute 70°",
-        "Step 3: Simplify fraction",
+        "Step 3: Simplify fraction"
       ],
-      ans: "(70π/180) = (7π/18) radians",
-      why: "Radians are required for precise spherical area calculations",
+      "ans": "(70π/180) = (7π/18) radians",
+      "why": "Radians are required for precise spherical area calculations"
     },
-
     {
-      q: "Find area of a spherical triangle with excess (7π/18) on a sphere of radius 10",
-      hint: "Area = E × R²",
-      steps: [
+      "q": "Find area of a spherical triangle with excess (7π/18) on a sphere of radius 10",
+      "hint": "Area = E × R²",
+      "steps": [
         "Step 1: Identify E = 7π/18",
         "Step 2: Identify R = 10",
-        "Step 3: Apply Area = E × R² = (7π/18) × 100",
+        "Step 3: Apply Area = E × R² = (7π/18) × 100"
       ],
-      ans: "(700π/18) = (350π/9) square units",
-      why: "This shows direct link between curvature and surface area",
-    },
-  ],
+      "ans": "(700π/18) = (350π/9) square units",
+      "why": "This shows direct link between curvature and surface area"
+    }
+  ]
 );
-/*=================================================
-Hyperbolic Geometry
-=================================================*/
+
 add(
   "math",
   "non_euclidean_geometry",
   "Hyperbolic Geometry",
+
   `
 <h2> Hyperbolic Geometry</h2>
 <h3> DEEP NOTES</h3>
@@ -2229,75 +2224,71 @@ Meaning: space is negatively curved
 <li> Theoretical physics → spacetime curvature studies</li>
 </ul>
 `,
+
   [
     {
-      q: "Find the angular deficit of a hyperbolic triangle with angles 40°, 50°, and 60°",
-      hint: "D = 180° − (A + B + C)",
-      steps: [
+      "q": "Find the angular deficit of a hyperbolic triangle with angles 40°, 50°, and 60°",
+      "hint": "D = 180° − (A + B + C)",
+      "steps": [
         "Step 1: Add angles 40° + 50° + 60°",
         "Step 2: Subtract the sum from 180°",
-        "Step 3: Identify angular deficit",
+        "Step 3: Identify angular deficit"
       ],
-      ans: "30°",
-      why: "Angular deficit measures deviation from flat geometry",
+      "ans": "30°",
+      "why": "Angular deficit measures deviation from flat geometry"
     },
-
     {
-      q: "Find the sum of angles of a hyperbolic triangle if angular deficit is 25°",
-      hint: "A + B + C = 180° − D",
-      steps: [
+      "q": "Find the sum of angles of a hyperbolic triangle if angular deficit is 25°",
+      "hint": "A + B + C = 180° − D",
+      "steps": [
         "Step 1: Use formula A + B + C = 180° − D",
         "Step 2: Substitute D = 25°",
-        "Step 3: Compute result",
+        "Step 3: Compute result"
       ],
-      ans: "155°",
-      why: "Hyperbolic triangles always have reduced angle sums",
+      "ans": "155°",
+      "why": "Hyperbolic triangles always have reduced angle sums"
     },
-
     {
-      q: "Find angular deficit if a triangle has angles 35°, 45°, and 55°",
-      hint: "D = 180° − sum of angles",
-      steps: [
+      "q": "Find angular deficit if a triangle has angles 35°, 45°, and 55°",
+      "hint": "D = 180° − sum of angles",
+      "steps": [
         "Step 1: Add 35° + 45° + 55°",
         "Step 2: Subtract result from 180°",
-        "Step 3: Finalize deficit",
+        "Step 3: Finalize deficit"
       ],
-      ans: "45°",
-      why: "Difference shows strength of negative curvature",
+      "ans": "45°",
+      "why": "Difference shows strength of negative curvature"
     },
-
     {
-      q: "If angular deficit is 60°, find the sum of angles of the triangle",
-      hint: "Sum = 180° − D",
-      steps: [
+      "q": "If angular deficit is 60°, find the sum of angles of the triangle",
+      "hint": "Sum = 180° − D",
+      "steps": [
         "Step 1: Identify formula A + B + C = 180° − D",
         "Step 2: Substitute D = 60°",
-        "Step 3: Compute total angle sum",
+        "Step 3: Compute total angle sum"
       ],
-      ans: "120°",
-      why: "Large deficit indicates strong hyperbolic curvature",
+      "ans": "120°",
+      "why": "Large deficit indicates strong hyperbolic curvature"
     },
-
     {
-      q: "A hyperbolic triangle has angles 20°, 60°, and x°. If angular deficit is 40°, find x",
-      hint: "D = 180° − (A + B + C)",
-      steps: [
+      "q": "A hyperbolic triangle has angles 20°, 60°, and x°. If angular deficit is 40°, find x",
+      "hint": "D = 180° − (A + B + C)",
+      "steps": [
         "Step 1: Write equation 40° = 180° − (20° + 60° + x)",
         "Step 2: Simplify equation",
-        "Step 3: Solve for x",
+        "Step 3: Solve for x"
       ],
-      ans: "60°",
-      why: "Unknown angle found using deficit equation",
-    },
-  ],
+      "ans": "60°",
+      "why": "Unknown angle found using deficit equation"
+    }
+  ]
 );
-/*===============================================
-  Geometry in Relativity
-  ==============================================*/
+
 add(
   "math",
   "non_euclidean_geometry",
   "Geometry in Relativity",
+
   `
 <h2> Geometry in Relativity</h2>
 <h3> DEEP NOTES</h3>
@@ -2388,82 +2379,78 @@ Denominator:<br>
 </ul>
 
 `,
+
   [
     {
-      q: "Calculate spacetime curvature strength factor near Earth using simplified ratio (Gm/r²)",
-      hint: "gravity field strength",
-      steps: [
+      "q": "Calculate spacetime curvature strength factor near Earth using simplified ratio (Gm/r²)",
+      "hint": "gravity field strength",
+      "steps": [
         "Step 1: Use formula g = GM / r²",
         "Step 2: Substitute G = 6.67×10⁻¹¹, M = 6×10²⁴, r = 6.4×10⁶",
         "Step 3: Compute numerator and denominator",
-        "Step 4: Find final gravitational field strength",
+        "Step 4: Find final gravitational field strength"
       ],
-      ans: "≈ 9.8 m/s²",
-      why: "This value represents how strongly spacetime is curved near Earth",
+      "ans": "≈ 9.8 m/s²",
+      "why": "This value represents how strongly spacetime is curved near Earth"
     },
-
     {
-      q: "Calculate light bending angle near the Sun using θ = (4GM)/(c²b)",
-      hint: "gravitational deflection",
-      steps: [
+      "q": "Calculate light bending angle near the Sun using θ = (4GM)/(c²b)",
+      "hint": "gravitational deflection",
+      "steps": [
         "Step 1: Write formula θ = (4GM)/(c²b)",
         "Step 2: Substitute G = 6.67×10⁻¹¹, M = 2×10³⁰",
         "Step 3: Use c = 3×10⁸ and b = 7×10⁸",
         "Step 4: Solve numerator and denominator",
-        "Step 5: Convert radians to arcseconds",
+        "Step 5: Convert radians to arcseconds"
       ],
-      ans: "≈ 1.75 arcseconds",
-      why: "Light bends due to spacetime curvature near massive objects",
+      "ans": "≈ 1.75 arcseconds",
+      "why": "Light bends due to spacetime curvature near massive objects"
     },
-
     {
-      q: "Calculate Schwarzschild radius for a black hole of mass 2×10³¹ kg using rₛ = (2GM)/c²",
-      hint: "event horizon",
-      steps: [
+      "q": "Calculate Schwarzschild radius for a black hole of mass 2×10³¹ kg using rₛ = (2GM)/c²",
+      "hint": "event horizon",
+      "steps": [
         "Step 1: Write formula rₛ = (2GM)/c²",
         "Step 2: Substitute G = 6.67×10⁻¹¹, M = 2×10³¹",
         "Step 3: Use c = 3×10⁸",
         "Step 4: Compute numerator and denominator",
-        "Step 5: Finalize radius in meters",
+        "Step 5: Finalize radius in meters"
       ],
-      ans: "≈ 2.96 × 10⁴ m (29.6 km)",
-      why: "Inside this radius, spacetime curvature prevents light escape",
+      "ans": "≈ 2.96 × 10⁴ m (29.6 km)",
+      "why": "Inside this radius, spacetime curvature prevents light escape"
     },
-
     {
-      q: "Calculate orbital time dilation effect using simplified factor √(1 - 2GM/rc²)",
-      hint: "time slows near mass",
-      steps: [
+      "q": "Calculate orbital time dilation effect using simplified factor √(1 - 2GM/rc²)",
+      "hint": "time slows near mass",
+      "steps": [
         "Step 1: Write formula √(1 - 2GM/rc²)",
         "Step 2: Substitute G, M (Earth), r ≈ 6.4×10⁶, c",
         "Step 3: Compute fraction 2GM/rc²",
-        "Step 4: Evaluate square root approximation",
+        "Step 4: Evaluate square root approximation"
       ],
-      ans: "≈ 1 - 6.9×10⁻¹⁰ (very small time slowdown)",
-      why: "Time runs slightly slower closer to Earth due to spacetime curvature",
+      "ans": "≈ 1 - 6.9×10⁻¹⁰ (very small time slowdown)",
+      "why": "Time runs slightly slower closer to Earth due to spacetime curvature"
     },
-
     {
-      q: "Calculate geodesic meaning distance difference: straight line vs curved space approximation",
-      hint: "shortest path in curved space",
-      steps: [
+      "q": "Calculate geodesic meaning distance difference: straight line vs curved space approximation",
+      "hint": "shortest path in curved space",
+      "steps": [
         "Step 1: Define straight Euclidean distance d",
         "Step 2: Compare with curved path (geodesic) D",
         "Step 3: Use approximation D ≈ d + curvature correction",
-        "Step 4: Identify that geodesic is always shortest path",
+        "Step 4: Identify that geodesic is always shortest path"
       ],
-      ans: "Geodesic distance ≤ Euclidean distance",
-      why: "Curved spacetime changes what 'straight line' means",
-    },
-  ],
+      "ans": "Geodesic distance ≤ Euclidean distance",
+      "why": "Curved spacetime changes what 'straight line' means"
+    }
+  ]
 );
-/*=================================================
-   Applications of Non-Euclidean Geometry
-   ===============================================*/
+
 add(
   "math",
   "non_euclidean_geometry",
   "Applications of Non-Euclidean Geometry",
+
   `
 <h2> Applications of Non-Euclidean Geometry</h2>
 <h3> DEEP NOTES (RELATIVITY + CURVED SPACE)</h3>
@@ -2592,75 +2579,71 @@ signal timing must be corrected
 <li> Earth science → precise global positioning and mapping</li>
 </ul>
 `,
+
   [
     {
-      q: "What is non-Euclidean geometry?",
-      hint: "curved space",
-      steps: [
+      "q": "What is non-Euclidean geometry?",
+      "hint": "curved space",
+      "steps": [
         "Step 1: Identify flat geometry limitations",
         "Step 2: Recognize curved space concept",
-        "Step 3: Define new geometry rules",
+        "Step 3: Define new geometry rules"
       ],
-      ans: "A type of geometry that describes curved space instead of flat surfaces",
-      why: "It explains real-world space better than Euclidean geometry",
+      "ans": "A type of geometry that describes curved space instead of flat surfaces",
+      "why": "It explains real-world space better than Euclidean geometry"
     },
-
     {
-      q: "Why is Euclidean geometry not enough for space science?",
-      hint: "real universe",
-      steps: [
+      "q": "Why is Euclidean geometry not enough for space science?",
+      "hint": "real universe",
+      "steps": [
         "Step 1: Compare flat vs curved space",
         "Step 2: Observe gravity effects",
-        "Step 3: Apply to universe structure",
+        "Step 3: Apply to universe structure"
       ],
-      ans: "Because space is curved by gravity",
-      why: "The universe does not follow flat geometry rules",
+      "ans": "Because space is curved by gravity",
+      "why": "The universe does not follow flat geometry rules"
     },
-
     {
-      q: "How does GPS use non-Euclidean geometry?",
-      hint: "satellite time",
-      steps: [
+      "q": "How does GPS use non-Euclidean geometry?",
+      "hint": "satellite time",
+      "steps": [
         "Step 1: Satellites orbit Earth",
         "Step 2: Time changes due to gravity",
-        "Step 3: Apply corrections",
+        "Step 3: Apply corrections"
       ],
-      ans: "It corrects time differences caused by relativity",
-      why: "Without correction, location data would be inaccurate",
+      "ans": "It corrects time differences caused by relativity",
+      "why": "Without correction, location data would be inaccurate"
     },
-
     {
-      q: "What causes spacetime curvature?",
-      hint: "gravity",
-      steps: [
+      "q": "What causes spacetime curvature?",
+      "hint": "gravity",
+      "steps": [
         "Step 1: Identify massive objects",
         "Step 2: Observe gravitational effects",
-        "Step 3: Understand space distortion",
+        "Step 3: Understand space distortion"
       ],
-      ans: "Mass and gravity",
-      why: "Massive objects bend spacetime according to relativity",
+      "ans": "Mass and gravity",
+      "why": "Massive objects bend spacetime according to relativity"
     },
-
     {
-      q: "Give one real-life application of curved geometry",
-      hint: "navigation",
-      steps: [
+      "q": "Give one real-life application of curved geometry",
+      "hint": "navigation",
+      "steps": [
         "Step 1: Identify technology system",
         "Step 2: Apply space correction",
-        "Step 3: Ensure accuracy",
+        "Step 3: Ensure accuracy"
       ],
-      ans: "GPS navigation systems",
-      why: "They require curved space corrections for accuracy",
-    },
-  ],
+      "ans": "GPS navigation systems",
+      "why": "They require curved space corrections for accuracy"
+    }
+  ]
 );
-/* =========================================================
-OPTIMIZATION PROBLEMS
-========================================================= */
+
 add(
   "math",
   "optimization",
   "Introduction to Optimization",
+
   `
 <h2> Optimization Problems</h2>
 <h3> DEEP NOTES</h3>
@@ -2707,89 +2690,85 @@ Subject to constraints (conditions)
 </ul>
 
 `,
+
   [
     {
-      q: "Find the maximum value of the function A(x) = 10x − x²",
-      hint: "vertex of parabola",
-      steps: [
+      "q": "Find the maximum value of the function A(x) = 10x − x²",
+      "hint": "vertex of parabola",
+      "steps": [
         "Step 1: Identify function A(x) = 10x − x²",
         "Step 2: Rewrite as A(x) = −x² + 10x",
         "Step 3: Use vertex formula x = −b/(2a)",
         "Step 4: Substitute a = −1, b = 10",
         "Step 5: Find x = −10 / (2 × −1) = 5",
-        "Step 6: Substitute x = 5 into function",
+        "Step 6: Substitute x = 5 into function"
       ],
-      ans: "A(5) = 25",
-      why: "The vertex of a downward parabola gives the maximum value",
+      "ans": "A(5) = 25",
+      "why": "The vertex of a downward parabola gives the maximum value"
     },
-
     {
-      q: "Find the maximum area of a rectangle with perimeter 20 units",
-      hint: "use perimeter constraint",
-      steps: [
+      "q": "Find the maximum area of a rectangle with perimeter 20 units",
+      "hint": "use perimeter constraint",
+      "steps": [
         "Step 1: Write perimeter formula 2(L + W) = 20",
         "Step 2: Simplify to L + W = 10",
         "Step 3: Express W = 10 − L",
         "Step 4: Write area A = L(10 − L)",
         "Step 5: Expand A = 10L − L²",
         "Step 6: Find vertex at L = 5",
-        "Step 7: Compute area = 5 × 5",
+        "Step 7: Compute area = 5 × 5"
       ],
-      ans: "25 square units",
-      why: "A square gives maximum area for a fixed perimeter",
+      "ans": "25 square units",
+      "why": "A square gives maximum area for a fixed perimeter"
     },
-
     {
-      q: "Find minimum value of cost function C(x) = x² + 4x + 7",
-      hint: "complete square or vertex",
-      steps: [
+      "q": "Find minimum value of cost function C(x) = x² + 4x + 7",
+      "hint": "complete square or vertex",
+      "steps": [
         "Step 1: Identify a = 1, b = 4",
         "Step 2: Use x = −b/(2a)",
         "Step 3: Compute x = −4/2 = −2",
         "Step 4: Substitute x = −2 into function",
-        "Step 5: Calculate C(−2) = 4 − 8 + 7",
+        "Step 5: Calculate C(−2) = 4 − 8 + 7"
       ],
-      ans: "3",
-      why: "Vertex of parabola gives minimum value when a > 0",
+      "ans": "3",
+      "why": "Vertex of parabola gives minimum value when a > 0"
     },
-
     {
-      q: "Find optimal dimensions of rectangle with fixed area maximization under constraint L + W = 12",
-      hint: "maximize product",
-      steps: [
+      "q": "Find optimal dimensions of rectangle with fixed area maximization under constraint L + W = 12",
+      "hint": "maximize product",
+      "steps": [
         "Step 1: Express W = 12 − L",
         "Step 2: Write area A = L(12 − L)",
         "Step 3: Expand A = 12L − L²",
         "Step 4: Find vertex at L = 6",
         "Step 5: Compute W = 6",
-        "Step 6: Compute area = 6 × 6",
+        "Step 6: Compute area = 6 × 6"
       ],
-      ans: "Maximum area = 36 at L = W = 6",
-      why: "Equal distribution of constraints maximizes product",
+      "ans": "Maximum area = 36 at L = W = 6",
+      "why": "Equal distribution of constraints maximizes product"
     },
-
     {
-      q: "Find maximum profit P(x) = 50x − 2x²",
-      hint: "vertex method",
-      steps: [
+      "q": "Find maximum profit P(x) = 50x − 2x²",
+      "hint": "vertex method",
+      "steps": [
         "Step 1: Identify a = −2, b = 50",
         "Step 2: Use x = −b/(2a)",
         "Step 3: Compute x = −50/(−4) = 12.5",
         "Step 4: Substitute into function",
-        "Step 5: P(12.5) = 50(12.5) − 2(12.5)²",
+        "Step 5: P(12.5) = 50(12.5) − 2(12.5)²"
       ],
-      ans: "312.5",
-      why: "Maximum profit occurs at vertex of parabola",
-    },
-  ],
+      "ans": "312.5",
+      "why": "Maximum profit occurs at vertex of parabola"
+    }
+  ]
 );
-/*==================================================
-   Maximizing Area Problems
-   ===============================================*/
+
 add(
   "math",
   "optimization",
   "Maximizing Area Problems",
+
   `
 <h2> Maximizing Area</h2>
 
@@ -2853,11 +2832,12 @@ Best shape = square
 <li> School planning → optimal classroom space usage</li>
 </ul>
 `,
+
   [
     {
-      q: "Find the maximum area of a rectangle with perimeter 20 units",
-      hint: "use constraint method",
-      steps: [
+      "q": "Find the maximum area of a rectangle with perimeter 20 units",
+      "hint": "use constraint method",
+      "steps": [
         "Step 1: Write perimeter equation 2x + 2y = 20",
         "Step 2: Simplify to x + y = 10",
         "Step 3: Express y = 10 − x",
@@ -2865,80 +2845,75 @@ Best shape = square
         "Step 5: Expand A = 10x − x²",
         "Step 6: Find vertex x = −b/(2a)",
         "Step 7: Compute x = 5, y = 5",
-        "Step 8: Calculate area = 25",
+        "Step 8: Calculate area = 25"
       ],
-      ans: "25 square units",
-      why: "Quadratic maximum occurs at vertex",
+      "ans": "25 square units",
+      "why": "Quadratic maximum occurs at vertex"
     },
-
     {
-      q: "Find optimal dimensions of a rectangle when x + y = 12 and maximize area",
-      hint: "product maximization",
-      steps: [
+      "q": "Find optimal dimensions of a rectangle when x + y = 12 and maximize area",
+      "hint": "product maximization",
+      "steps": [
         "Step 1: Express y = 12 − x",
         "Step 2: Write area A = x(12 − x)",
         "Step 3: Expand A = 12x − x²",
         "Step 4: Find vertex x = −b/(2a)",
         "Step 5: Compute x = 6",
         "Step 6: Compute y = 6",
-        "Step 7: Compute area = 36",
+        "Step 7: Compute area = 36"
       ],
-      ans: "36 square units",
-      why: "Equal partition of constraint maximizes product",
+      "ans": "36 square units",
+      "why": "Equal partition of constraint maximizes product"
     },
-
     {
-      q: "Given A(x) = 8x − x², find maximum value",
-      hint: "vertex formula",
-      steps: [
+      "q": "Given A(x) = 8x − x², find maximum value",
+      "hint": "vertex formula",
+      "steps": [
         "Step 1: Identify a = −1, b = 8",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = 4",
         "Step 4: Evaluate A(4)",
-        "Step 5: Compute 8×4 − 16",
+        "Step 5: Compute 8×4 − 16"
       ],
-      ans: "16",
-      why: "Maximum value of quadratic occurs at vertex",
+      "ans": "16",
+      "why": "Maximum value of quadratic occurs at vertex"
     },
-
     {
-      q: "Find maximum area when perimeter is 30 units",
-      hint: "A = x(15 − x)",
-      steps: [
+      "q": "Find maximum area when perimeter is 30 units",
+      "hint": "A = x(15 − x)",
+      "steps": [
         "Step 1: Write 2x + 2y = 30",
         "Step 2: Simplify to x + y = 15",
         "Step 3: Express y = 15 − x",
         "Step 4: Write A = x(15 − x)",
         "Step 5: Expand A = 15x − x²",
         "Step 6: Find x = 7.5",
-        "Step 7: Compute area = 7.5 × 7.5",
+        "Step 7: Compute area = 7.5 × 7.5"
       ],
-      ans: "56.25 square units",
-      why: "Square gives maximum area under fixed perimeter",
+      "ans": "56.25 square units",
+      "why": "Square gives maximum area under fixed perimeter"
     },
-
     {
-      q: "Maximize A = 12x − 2x²",
-      hint: "vertex method",
-      steps: [
+      "q": "Maximize A = 12x − 2x²",
+      "hint": "vertex method",
+      "steps": [
         "Step 1: Identify a = −2, b = 12",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = 3",
         "Step 4: Evaluate A(3)",
-        "Step 5: Compute 12×3 − 2×9",
+        "Step 5: Compute 12×3 − 2×9"
       ],
-      ans: "18",
-      why: "Parabolic function reaches maximum at vertex",
-    },
-  ],
+      "ans": "18",
+      "why": "Parabolic function reaches maximum at vertex"
+    }
+  ]
 );
-/*==================================================
-  Minimization Problems
-  ================================================*/
+
 add(
   "math",
   "optimization",
   "Minimization Problems",
+
   `
 <h2> Minimization Problems</h2>
 <h3> DEEP NOTES</h3>
@@ -2978,83 +2953,79 @@ d = √((x₂ - x₁)² + (y₂ - y₁)²)
 </ul>
 
 `,
+
   [
     {
-      q: "Find the minimum value of f(x) = x² − 6x + 10",
-      hint: "vertex method",
-      steps: [
+      "q": "Find the minimum value of f(x) = x² − 6x + 10",
+      "hint": "vertex method",
+      "steps": [
         "Step 1: Identify a = 1, b = −6",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = 3",
         "Step 4: Evaluate f(3)",
-        "Step 5: Compute 9 − 18 + 10",
+        "Step 5: Compute 9 − 18 + 10"
       ],
-      ans: "1",
-      why: "Quadratic minimum occurs at vertex when a > 0",
+      "ans": "1",
+      "why": "Quadratic minimum occurs at vertex when a > 0"
     },
-
     {
-      q: "Find shortest distance between points (1,2) and (4,6)",
-      hint: "distance formula",
-      steps: [
+      "q": "Find shortest distance between points (1,2) and (4,6)",
+      "hint": "distance formula",
+      "steps": [
         "Step 1: Apply d = √((x₂ − x₁)² + (y₂ − y₁)²)",
         "Step 2: Substitute values (4−1) and (6−2)",
         "Step 3: Compute squares 3² and 4²",
         "Step 4: Add results",
-        "Step 5: Take square root",
+        "Step 5: Take square root"
       ],
-      ans: "5",
-      why: "Distance formula gives direct linear separation",
+      "ans": "5",
+      "why": "Distance formula gives direct linear separation"
     },
-
     {
-      q: "Find minimum path length between points (0,0) and (6,8)",
-      hint: "Pythagorean distance",
-      steps: [
+      "q": "Find minimum path length between points (0,0) and (6,8)",
+      "hint": "Pythagorean distance",
+      "steps": [
         "Step 1: Use d = √(6² + 8²)",
         "Step 2: Compute 36 + 64",
         "Step 3: Take square root",
-        "Step 4: Final simplify",
+        "Step 4: Final simplify"
       ],
-      ans: "10",
-      why: "Straight line is shortest path in Euclidean space",
+      "ans": "10",
+      "why": "Straight line is shortest path in Euclidean space"
     },
-
     {
-      q: "Minimize cost function C(x) = x² + 4x + 9",
-      hint: "vertex formula",
-      steps: [
+      "q": "Minimize cost function C(x) = x² + 4x + 9",
+      "hint": "vertex formula",
+      "steps": [
         "Step 1: Identify a = 1, b = 4",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = −2",
         "Step 4: Evaluate C(−2)",
-        "Step 5: Compute 4 − 8 + 9",
+        "Step 5: Compute 4 − 8 + 9"
       ],
-      ans: "5",
-      why: "Vertex of parabola gives minimum value",
+      "ans": "5",
+      "why": "Vertex of parabola gives minimum value"
     },
-
     {
-      q: "Find shortest distance after moving 3 units right and 4 units up",
-      hint: "resultant displacement",
-      steps: [
+      "q": "Find shortest distance after moving 3 units right and 4 units up",
+      "hint": "resultant displacement",
+      "steps": [
         "Step 1: Model movement as (3,4)",
         "Step 2: Apply d = √(3² + 4²)",
         "Step 3: Compute squares",
-        "Step 4: Add and simplify",
+        "Step 4: Add and simplify"
       ],
-      ans: "5",
-      why: "Resultant displacement forms right triangle",
-    },
-  ],
+      "ans": "5",
+      "why": "Resultant displacement forms right triangle"
+    }
+  ]
 );
-/*====================================================
-  Cost Optimization Problems
-  ===================================================*/
+
 add(
   "math",
   "optimization",
   "Cost Optimization Problems",
+
   `
 <h2> Cost Optimization</h2>
 <h3> DEEP NOTES</h3>
@@ -3103,79 +3074,75 @@ x = number of units
 </ul>
 
 `,
+
   [
     {
-      q: "Evaluate total cost for C(x) = 50x + 200 when x = 10",
-      hint: "substitution",
-      steps: [
+      "q": "Evaluate total cost for C(x) = 50x + 200 when x = 10",
+      "hint": "substitution",
+      "steps": [
         "Step 1: Write C(x) = 50x + 200",
         "Step 2: Substitute x = 10",
         "Step 3: Compute 50 × 10",
         "Step 4: Add constant term",
-        "Step 5: Final calculation",
+        "Step 5: Final calculation"
       ],
-      ans: "700",
-      why: "Direct substitution into cost function",
+      "ans": "700",
+      "why": "Direct substitution into cost function"
     },
-
     {
-      q: "Find cost when production is x = 25 for C(x) = 40x + 300",
-      hint: "linear function",
-      steps: [
+      "q": "Find cost when production is x = 25 for C(x) = 40x + 300",
+      "hint": "linear function",
+      "steps": [
         "Step 1: Substitute x = 25 into C(x)",
         "Step 2: Compute 40 × 25",
         "Step 3: Add fixed cost 300",
-        "Step 4: Final sum",
+        "Step 4: Final sum"
       ],
-      ans: "1300",
-      why: "Total cost = variable cost + fixed cost",
+      "ans": "1300",
+      "why": "Total cost = variable cost + fixed cost"
     },
-
     {
-      q: "Find fixed cost in C(x) = 75x + 500",
-      hint: "constant term",
-      steps: [
+      "q": "Find fixed cost in C(x) = 75x + 500",
+      "hint": "constant term",
+      "steps": [
         "Step 1: Identify constant term in function",
         "Step 2: Separate variable and constant parts",
-        "Step 3: Extract fixed component",
+        "Step 3: Extract fixed component"
       ],
-      ans: "500",
-      why: "Constant term represents cost independent of production",
+      "ans": "500",
+      "why": "Constant term represents cost independent of production"
     },
-
     {
-      q: "Compute increase in cost when production changes from x = 10 to x = 15 in C(x) = 20x + 100",
-      hint: "difference calculation",
-      steps: [
+      "q": "Compute increase in cost when production changes from x = 10 to x = 15 in C(x) = 20x + 100",
+      "hint": "difference calculation",
+      "steps": [
         "Step 1: Compute C(15)",
         "Step 2: Compute C(10)",
         "Step 3: Subtract values",
-        "Step 4: Find cost difference",
+        "Step 4: Find cost difference"
       ],
-      ans: "100",
-      why: "Cost increases linearly with production",
+      "ans": "100",
+      "why": "Cost increases linearly with production"
     },
-
     {
-      q: "Find cost per unit increase in C(x) = 60x + 150",
-      hint: "slope interpretation",
-      steps: [
+      "q": "Find cost per unit increase in C(x) = 60x + 150",
+      "hint": "slope interpretation",
+      "steps": [
         "Step 1: Identify coefficient of x",
         "Step 2: Interpret rate of change",
-        "Step 3: State cost per unit",
+        "Step 3: State cost per unit"
       ],
-      ans: "60",
-      why: "Coefficient of x represents marginal cost per unit",
-    },
-  ],
+      "ans": "60",
+      "why": "Coefficient of x represents marginal cost per unit"
+    }
+  ]
 );
-/*====================================================
-    Applications of Optimization
-    ================================================*/
+
 add(
   "math",
   "optimization",
   "Applications of Optimization",
+
   `
 <h2> Applications of Optimization</h2>
 <h3> DEEP NOTES (FULL MATHEMATICAL FRAMEWORK)</h3>
@@ -3290,85 +3257,81 @@ subject to constraints:
 <li> Network systems → optimize data flow functions</li>
 </ul>
 `,
+
   [
     {
-      q: "Maximize A(x) = 12x − x²",
-      hint: "vertex method",
-      steps: [
+      "q": "Maximize A(x) = 12x − x²",
+      "hint": "vertex method",
+      "steps": [
         "Step 1: Identify a = −1, b = 12",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = 6",
         "Step 4: Evaluate A(6)",
-        "Step 5: Compute 72 − 36",
+        "Step 5: Compute 72 − 36"
       ],
-      ans: "36",
-      why: "Quadratic function reaches maximum at vertex",
+      "ans": "36",
+      "why": "Quadratic function reaches maximum at vertex"
     },
-
     {
-      q: "Minimize C(x) = x² + 8x + 20",
-      hint: "complete square / vertex",
-      steps: [
+      "q": "Minimize C(x) = x² + 8x + 20",
+      "hint": "complete square / vertex",
+      "steps": [
         "Step 1: Identify a = 1, b = 8",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = −4",
         "Step 4: Evaluate C(−4)",
-        "Step 5: Compute 16 − 32 + 20",
+        "Step 5: Compute 16 − 32 + 20"
       ],
-      ans: "4",
-      why: "Minimum occurs at vertex of upward parabola",
+      "ans": "4",
+      "why": "Minimum occurs at vertex of upward parabola"
     },
-
     {
-      q: "Find optimal route length between points (2,3) and (8,15)",
-      hint: "distance formula",
-      steps: [
+      "q": "Find optimal route length between points (2,3) and (8,15)",
+      "hint": "distance formula",
+      "steps": [
         "Step 1: Apply d = √((x₂ − x₁)² + (y₂ − y₁)²)",
         "Step 2: Substitute values (8−2), (15−3)",
         "Step 3: Compute 6² and 12²",
         "Step 4: Add results",
-        "Step 5: Take square root",
+        "Step 5: Take square root"
       ],
-      ans: "≈ 13.42",
-      why: "Shortest path is Euclidean distance",
+      "ans": "≈ 13.42",
+      "why": "Shortest path is Euclidean distance"
     },
-
     {
-      q: "Maximize profit P(x) = 100x − 5x²",
-      hint: "vertex optimization",
-      steps: [
+      "q": "Maximize profit P(x) = 100x − 5x²",
+      "hint": "vertex optimization",
+      "steps": [
         "Step 1: Identify a = −5, b = 100",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = 10",
         "Step 4: Evaluate P(10)",
-        "Step 5: Compute 1000 − 500",
+        "Step 5: Compute 1000 − 500"
       ],
-      ans: "500",
-      why: "Maximum profit occurs at vertex",
+      "ans": "500",
+      "why": "Maximum profit occurs at vertex"
     },
-
     {
-      q: "Find minimum value of f(x) = 2x² − 12x + 18",
-      hint: "vertex formula",
-      steps: [
+      "q": "Find minimum value of f(x) = 2x² − 12x + 18",
+      "hint": "vertex formula",
+      "steps": [
         "Step 1: Identify a = 2, b = −12",
         "Step 2: Compute x = −b/(2a)",
         "Step 3: Substitute x = 3",
         "Step 4: Evaluate f(3)",
-        "Step 5: Compute 18 − 36 + 18",
+        "Step 5: Compute 18 − 36 + 18"
       ],
-      ans: "0",
-      why: "Minimum value occurs at vertex of parabola",
-    },
-  ],
+      "ans": "0",
+      "why": "Minimum value occurs at vertex of parabola"
+    }
+  ]
 );
-/* =========================================================
-  LINEAR PROGRAMMING
-========================================================= */
+
 add(
   "math",
   "linear_programming",
   "Introduction to Linear Programming",
+
   `
 <h2> Linear Programming</h2>
 
@@ -3448,83 +3411,79 @@ Subject to constraints (inequalities)
 <li>Transport and logistics optimization</li>
 </ul>
 `,
+
   [
     {
-      q: "Maximize Z = 3x + 2y subject to x + y ≤ 10, x ≥ 0, y ≥ 0",
-      hint: "corner point method",
-      steps: [
+      "q": "Maximize Z = 3x + 2y subject to x + y ≤ 10, x ≥ 0, y ≥ 0",
+      "hint": "corner point method",
+      "steps": [
         "Step 1: Identify constraints x + y ≤ 10, x ≥ 0, y ≥ 0",
         "Step 2: Find corner points of feasible region",
         "Step 3: Corner points are (0,0), (10,0), (0,10)",
         "Step 4: Evaluate Z at each point",
-        "Step 5: Compute Z(0,0), Z(10,0), Z(0,10)",
+        "Step 5: Compute Z(0,0), Z(10,0), Z(0,10)"
       ],
-      ans: "Zmax = 30 at (10,0)",
-      why: "Linear programming solutions occur at vertices of feasible region",
+      "ans": "Zmax = 30 at (10,0)",
+      "why": "Linear programming solutions occur at vertices of feasible region"
     },
-
     {
-      q: "Maximize Z = 5x + 4y subject to x + 2y ≤ 8, x ≥ 0, y ≥ 0",
-      hint: "substitute corner points",
-      steps: [
+      "q": "Maximize Z = 5x + 4y subject to x + 2y ≤ 8, x ≥ 0, y ≥ 0",
+      "hint": "substitute corner points",
+      "steps": [
         "Step 1: Find intercepts of x + 2y = 8",
         "Step 2: Set x = 0 → y = 4",
         "Step 3: Set y = 0 → x = 8",
         "Step 4: Corner points are (0,0), (8,0), (0,4)",
-        "Step 5: Evaluate Z at each point",
+        "Step 5: Evaluate Z at each point"
       ],
-      ans: "Zmax = 40 at (8,0)",
-      why: "Maximum occurs at feasible region vertex",
+      "ans": "Zmax = 40 at (8,0)",
+      "why": "Maximum occurs at feasible region vertex"
     },
-
     {
-      q: "Minimize C = 2x + 3y subject to x + y ≥ 6, x ≥ 0, y ≥ 0",
-      hint: "corner evaluation",
-      steps: [
+      "q": "Minimize C = 2x + 3y subject to x + y ≥ 6, x ≥ 0, y ≥ 0",
+      "hint": "corner evaluation",
+      "steps": [
         "Step 1: Convert boundary x + y = 6",
         "Step 2: Find intercepts (6,0) and (0,6)",
         "Step 3: Identify feasible corner points",
-        "Step 4: Evaluate C at (6,0) and (0,6)",
+        "Step 4: Evaluate C at (6,0) and (0,6)"
       ],
-      ans: "Cmin = 12 at (6,0)",
-      why: "Minimum occurs at boundary vertex",
+      "ans": "Cmin = 12 at (6,0)",
+      "why": "Minimum occurs at boundary vertex"
     },
-
     {
-      q: "Find feasible region corner points for x + y ≤ 5, x ≥ 0, y ≥ 0",
-      hint: "graph intercepts",
-      steps: [
+      "q": "Find feasible region corner points for x + y ≤ 5, x ≥ 0, y ≥ 0",
+      "hint": "graph intercepts",
+      "steps": [
         "Step 1: Set x + y = 5",
         "Step 2: Find x-intercept (5,0)",
         "Step 3: Find y-intercept (0,5)",
         "Step 4: Include origin (0,0)",
-        "Step 5: List all vertices",
+        "Step 5: List all vertices"
       ],
-      ans: "(0,0), (5,0), (0,5)",
-      why: "Feasible region is bounded by axes and constraint line",
+      "ans": "(0,0), (5,0), (0,5)",
+      "why": "Feasible region is bounded by axes and constraint line"
     },
-
     {
-      q: "Evaluate Z = 4x + y at feasible region vertices (0,0), (3,2), (5,0)",
-      hint: "substitution method",
-      steps: [
+      "q": "Evaluate Z = 4x + y at feasible region vertices (0,0), (3,2), (5,0)",
+      "hint": "substitution method",
+      "steps": [
         "Step 1: Substitute (0,0) into Z",
         "Step 2: Substitute (3,2) into Z",
         "Step 3: Substitute (5,0) into Z",
-        "Step 4: Compare all results",
+        "Step 4: Compare all results"
       ],
-      ans: "Zmax = 20 at (5,0)",
-      why: "Optimal solution occurs at vertex with highest value",
-    },
-  ],
+      "ans": "Zmax = 20 at (5,0)",
+      "why": "Optimal solution occurs at vertex with highest value"
+    }
+  ]
 );
-/*===========================================
-  Graphical Method
-  =========================================*/
+
 add(
   "math",
   "linear_programming",
   "Graphical Method",
+
   `
 <h2> Graphical Method</h2>
 <h3> DEEP NOTES</h3>
@@ -3600,82 +3559,78 @@ The graphical method solves linear programming problems by plotting constraints 
 <li>Resource allocation under constraints</li>
 </ul>
 `,
+
   [
     {
-      q: "Evaluate Z = 3x + 2y at corner points of x + y ≤ 6, x ≥ 0, y ≥ 0",
-      hint: "vertex evaluation",
-      steps: [
+      "q": "Evaluate Z = 3x + 2y at corner points of x + y ≤ 6, x ≥ 0, y ≥ 0",
+      "hint": "vertex evaluation",
+      "steps": [
         "Step 1: Convert x + y ≤ 6 into x + y = 6",
         "Step 2: Find intercepts (6,0) and (0,6)",
         "Step 3: Include origin (0,0)",
         "Step 4: Evaluate Z at (0,0), (6,0), (0,6)",
-        "Step 5: Compute Z values",
+        "Step 5: Compute Z values"
       ],
-      ans: "Zmax = 18 at (6,0)",
-      why: "Maximum occurs at a vertex of feasible region",
+      "ans": "Zmax = 18 at (6,0)",
+      "why": "Maximum occurs at a vertex of feasible region"
     },
-
     {
-      q: "Find boundary line equation for x + y ≤ 5",
-      hint: "convert inequality",
-      steps: [
+      "q": "Find boundary line equation for x + y ≤ 5",
+      "hint": "convert inequality",
+      "steps": [
         "Step 1: Replace ≤ with =",
         "Step 2: Write equation x + y = 5",
         "Step 3: Find intercepts (5,0) and (0,5)",
-        "Step 4: Plot straight line",
+        "Step 4: Plot straight line"
       ],
-      ans: "x + y = 5",
-      why: "Boundary is formed by equality case of inequality",
+      "ans": "x + y = 5",
+      "why": "Boundary is formed by equality case of inequality"
     },
-
     {
-      q: "Find feasible region for x ≥ 0 and y ≥ 0 in coordinate plane",
-      hint: "quadrant identification",
-      steps: [
+      "q": "Find feasible region for x ≥ 0 and y ≥ 0 in coordinate plane",
+      "hint": "quadrant identification",
+      "steps": [
         "Step 1: Set x ≥ 0 (right half-plane)",
         "Step 2: Set y ≥ 0 (upper half-plane)",
         "Step 3: Intersect both regions",
-        "Step 4: Identify common region",
+        "Step 4: Identify common region"
       ],
-      ans: "First quadrant",
-      why: "Only points with both coordinates non-negative satisfy conditions",
+      "ans": "First quadrant",
+      "why": "Only points with both coordinates non-negative satisfy conditions"
     },
-
     {
-      q: "Test whether point (0,0) satisfies x + y ≤ 4, 2x + y ≤ 6",
-      hint: "substitution check",
-      steps: [
+      "q": "Test whether point (0,0) satisfies x + y ≤ 4, 2x + y ≤ 6",
+      "hint": "substitution check",
+      "steps": [
         "Step 1: Substitute x = 0, y = 0 into x + y ≤ 4",
         "Step 2: Verify 0 ≤ 4",
         "Step 3: Substitute into 2x + y ≤ 6",
         "Step 4: Verify 0 ≤ 6",
-        "Step 5: Confirm validity",
+        "Step 5: Confirm validity"
       ],
-      ans: "Yes, (0,0) satisfies both inequalities",
-      why: "Point lies inside feasible region",
+      "ans": "Yes, (0,0) satisfies both inequalities",
+      "why": "Point lies inside feasible region"
     },
-
     {
-      q: "Evaluate Z = 2x + 3y at (0,0), (4,0), (0,4)",
-      hint: "corner substitution",
-      steps: [
+      "q": "Evaluate Z = 2x + 3y at (0,0), (4,0), (0,4)",
+      "hint": "corner substitution",
+      "steps": [
         "Step 1: Compute Z(0,0)",
         "Step 2: Compute Z(4,0)",
         "Step 3: Compute Z(0,4)",
-        "Step 4: Compare all values",
+        "Step 4: Compare all values"
       ],
-      ans: "Zmax = 12 at (0,4)",
-      why: "Optimal solution occurs at highest vertex value",
-    },
-  ],
+      "ans": "Zmax = 12 at (0,4)",
+      "why": "Optimal solution occurs at highest vertex value"
+    }
+  ]
 );
-/*===========================================
-  Inequality Constraints
-  ==========================================*/
+
 add(
   "math",
   "linear_programming",
   "Inequality Constraints",
+
   `
 <h2> Inequality Constraints</h2>
 <h3> DEEP NOTES</h3>
@@ -3743,68 +3698,66 @@ They restrict the possible values of variables to a valid region.
 <li>Resource allocation problems</li>
 </ul>
 `,
+
   [
     {
-      q: "Find intercepts and boundary points for x + y ≤ 5",
-      hint: "set variables to zero",
-      steps: [
+      "q": "Find intercepts and boundary points for x + y ≤ 5",
+      "hint": "set variables to zero",
+      "steps": [
         "Step 1: Convert inequality to equation x + y = 5",
         "Step 2: Set x = 0 → y = 5",
         "Step 3: Set y = 0 → x = 5",
-        "Step 4: Write intercept points",
+        "Step 4: Write intercept points"
       ],
-      ans: "(5,0) and (0,5)",
-      why: "Boundary line is defined by its intercepts",
+      "ans": "(5,0) and (0,5)",
+      "why": "Boundary line is defined by its intercepts"
     },
-
     {
-      q: "Determine all points satisfying x ≥ 0 and y ≥ 0 in coordinate plane",
-      hint: "sign conditions",
-      steps: [
+      "q": "Determine all points satisfying x ≥ 0 and y ≥ 0 in coordinate plane",
+      "hint": "sign conditions",
+      "steps": [
         "Step 1: Solve x ≥ 0 → x ∈ [0, ∞)",
         "Step 2: Solve y ≥ 0 → y ∈ [0, ∞)",
         "Step 3: Combine conditions using intersection",
-        "Step 4: Express solution set",
+        "Step 4: Express solution set"
       ],
-      ans: "{(x,y) | x ≥ 0, y ≥ 0}",
-      why: "Intersection of non-negative half-planes defines region",
+      "ans": "{(x,y) | x ≥ 0, y ≥ 0}",
+      "why": "Intersection of non-negative half-planes defines region"
     },
-
     {
-      q: "Test whether point (0,0) satisfies x + y ≤ 4 and 2x + y ≤ 6",
-      hint: "substitution",
-      steps: [
+      "q": "Test whether point (0,0) satisfies x + y ≤ 4 and 2x + y ≤ 6",
+      "hint": "substitution",
+      "steps": [
         "Step 1: Substitute (0,0) into x + y ≤ 4",
         "Step 2: Evaluate 0 ≤ 4",
         "Step 3: Substitute into 2x + y ≤ 6",
         "Step 4: Evaluate 0 ≤ 6",
-        "Step 5: Confirm both conditions",
+        "Step 5: Confirm both conditions"
       ],
-      ans: "Yes, (0,0) satisfies both inequalities",
-      why: "Point lies in feasible solution set",
+      "ans": "Yes, (0,0) satisfies both inequalities",
+      "why": "Point lies in feasible solution set"
     },
     {
-      q: "Draw feasible region for x ≥ 0, y ≥ 0, and 2x + 3y ≤ 12",
-      hint: "graph all constraints",
-      steps: [
+      "q": "Draw feasible region for x ≥ 0, y ≥ 0, and 2x + 3y ≤ 12",
+      "hint": "graph all constraints",
+      "steps": [
         "Step 1: Draw axes (x ≥ 0, y ≥ 0)",
         "Step 2: Convert 2x + 3y ≤ 12 to boundary 2x + 3y = 12",
         "Step 3: Find intercepts (6,0) and (0,4)",
         "Step 4: Draw line through intercepts",
-        "Step 5: Shade region below line in first quadrant",
+        "Step 5: Shade region below line in first quadrant"
       ],
-      ans: "Triangle with vertices (0,0), (6,0), (0,4)",
-      why: "Region satisfying all inequalities simultaneously",
-    },
-  ],
+      "ans": "Triangle with vertices (0,0), (6,0), (0,4)",
+      "why": "Region satisfying all inequalities simultaneously"
+    }
+  ]
 );
-/*================================================
-  Feasible Region
-  ===============================================*/
+
 add(
   "math",
   "linear_programming",
   "Feasible Region",
+
   `
 <h2> Feasible Region</h2>
 <h3> DEEP NOTES</h3>
@@ -3869,81 +3822,78 @@ Only points inside or on this region are valid solutions.
 <li>Transport and logistics planning</li>
 </ul>
 `,
+
   [
     {
-      q: "Find the set of all feasible points satisfying x ≥ 0 and y ≥ 0",
-      hint: "inequality intersection",
-      steps: [
+      "q": "Find the set of all feasible points satisfying x ≥ 0 and y ≥ 0",
+      "hint": "inequality intersection",
+      "steps": [
         "Step 1: Solve x ≥ 0 → x ∈ [0, ∞)",
         "Step 2: Solve y ≥ 0 → y ∈ [0, ∞)",
         "Step 3: Take intersection of both sets",
-        "Step 4: Write ordered pair form",
+        "Step 4: Write ordered pair form"
       ],
-      ans: "{(x,y) | x ≥ 0, y ≥ 0}",
-      why: "Feasible region is intersection of all constraint sets",
+      "ans": "{(x,y) | x ≥ 0, y ≥ 0}",
+      "why": "Feasible region is intersection of all constraint sets"
     },
-
     {
-      q: "Find intercept points of boundary line x + y = 4",
-      hint: "set variables to zero",
-      steps: [
+      "q": "Find intercept points of boundary line x + y = 4",
+      "hint": "set variables to zero",
+      "steps": [
         "Step 1: Set x = 0 → y = 4",
         "Step 2: Set y = 0 → x = 4",
         "Step 3: Write coordinate points",
-        "Step 4: Define line segment between points",
+        "Step 4: Define line segment between points"
       ],
-      ans: "(4,0) and (0,4)",
-      why: "Intercepts define geometry of boundary line",
+      "ans": "(4,0) and (0,4)",
+      "why": "Intercepts define geometry of boundary line"
     },
-
     {
-      q: "Determine region defined by x + y ≤ 4 in first quadrant",
-      hint: "inequality region",
-      steps: [
+      "q": "Determine region defined by x + y ≤ 4 in first quadrant",
+      "hint": "inequality region",
+      "steps": [
         "Step 1: Convert boundary x + y = 4",
         "Step 2: Identify intercepts (4,0), (0,4)",
         "Step 3: Restrict to x ≥ 0, y ≥ 0",
-        "Step 4: Describe bounded region",
+        "Step 4: Describe bounded region"
       ],
-      ans: "Triangular region with vertices (0,0), (4,0), (0,4)",
-      why: "Intersection of inequality and axes forms triangle",
+      "ans": "Triangular region with vertices (0,0), (4,0), (0,4)",
+      "why": "Intersection of inequality and axes forms triangle"
     },
     {
-      q: "Draw the feasible region for 2x + 3y ≤ 12, x ≥ 0, y ≥ 0",
-      hint: "graph bounded region",
-      steps: [
+      "q": "Draw the feasible region for 2x + 3y ≤ 12, x ≥ 0, y ≥ 0",
+      "hint": "graph bounded region",
+      "steps": [
         "Step 1: Draw axes",
         "Step 2: Find intercepts of 2x + 3y = 12: (6,0) and (0,4)",
         "Step 3: Draw line through intercepts",
         "Step 4: Shade region satisfying all inequalities",
-        "Step 5: Identify vertices of region",
+        "Step 5: Identify vertices of region"
       ],
-      ans: "Triangle with vertices (0,0), (6,0), (0,4)",
-      why: "Feasible region is bounded area satisfying all constraints",
+      "ans": "Triangle with vertices (0,0), (6,0), (0,4)",
+      "why": "Feasible region is bounded area satisfying all constraints"
     },
-
     {
-      q: "Determine the feasible region for constraints 3x + 2y ≤ 12, x ≥ 0, y ≥ 0",
-      hint: "graph bounded triangular region",
-      steps: [
+      "q": "Determine the feasible region for constraints 3x + 2y ≤ 12, x ≥ 0, y ≥ 0",
+      "hint": "graph bounded triangular region",
+      "steps": [
         "Step 1: Draw axes for x ≥ 0, y ≥ 0",
         "Step 2: Find intercepts for 3x + 2y = 12: x=4 when y=0, y=6 when x=0",
         "Step 3: Draw line connecting (4,0) and (0,6)",
         "Step 4: Test point (0,0) → 0 ≤ 12 is true",
-        "Step 5: Shade region toward origin (bounded triangle)",
+        "Step 5: Shade region toward origin (bounded triangle)"
       ],
-      ans: "Triangle with vertices (0,0), (4,0), (0,6)",
-      why: "Region below line 3x + 2y = 12 in the first quadrant",
-    },
-  ],
+      "ans": "Triangle with vertices (0,0), (4,0), (0,6)",
+      "why": "Region below line 3x + 2y = 12 in the first quadrant"
+    }
+  ]
 );
-/*=================================================
- Applications of Linear Programming
- =================================================*/
+
 add(
   "math",
   "linear_programming",
   "Applications of Linear Programming",
+
   `
 <h2> Applications of Linear Programming</h2>
 <h3> DEEP NOTES</h3>
@@ -3970,11 +3920,12 @@ It helps find the best possible outcome (maximum or minimum) under given restric
 Constraints → Feasible region → Optimal solution
 </pre>
 `,
+
   [
     {
-      q: "Evaluate Z = 3x + 5y at (2,4), (0,6), (5,0)",
-      hint: "substitute points",
-      steps: [
+      "q": "Evaluate Z = 3x + 5y at (2,4), (0,6), (5,0)",
+      "hint": "substitute points",
+      "steps": [
         "Step 1: Substitute (2,4) → Z = 3(2) + 5(4)",
         "Step 2: Compute Z = 6 + 20",
         "Step 3: Z(2,4) = 26",
@@ -3982,51 +3933,45 @@ Constraints → Feasible region → Optimal solution
         "Step 5: Z(0,6) = 30",
         "Step 6: Substitute (5,0) → Z = 3(5) + 5(0)",
         "Step 7: Z(5,0) = 15",
-        "Step 8: Compare all values",
+        "Step 8: Compare all values"
       ],
-      ans: "Maximum value = 30 at (0,6)",
-      why: "Objective function is evaluated at vertices to find optimum",
+      "ans": "Maximum value = 30 at (0,6)",
+      "why": "Objective function is evaluated at vertices to find optimum"
     },
-
     {
-      q: "Maximize Z = 4x + 2y subject to x + y ≤ 6",
-      hint: "corner point evaluation",
-      steps: [
+      "q": "Maximize Z = 4x + 2y subject to x + y ≤ 6",
+      "hint": "corner point evaluation",
+      "steps": [
         "Step 1: Convert x + y ≤ 6 to x + y = 6",
         "Step 2: Find intercepts (6,0) and (0,6)",
         "Step 3: Include origin (0,0)",
         "Step 4: Evaluate Z at all points",
-        "Step 5: Compare results",
+        "Step 5: Compare results"
       ],
-      ans: "Zmax = 24 at (6,0)",
-      why: "Linear objective reaches extreme at boundary vertices",
+      "ans": "Zmax = 24 at (6,0)",
+      "why": "Linear objective reaches extreme at boundary vertices"
     },
-
     {
-      q: "Find objective function value for C = 10x + 3y at x = 4, y = 5",
-      hint: "direct substitution",
-      steps: [
+      "q": "Find objective function value for C = 10x + 3y at x = 4, y = 5",
+      "hint": "direct substitution",
+      "steps": [
         "Step 1: Write C = 10x + 3y",
         "Step 2: Substitute x = 4, y = 5",
         "Step 3: Compute 10×4",
         "Step 4: Compute 3×5",
-        "Step 5: Add results",
+        "Step 5: Add results"
       ],
-      ans: "55",
-      why: "Objective function evaluates performance of given solution",
-    },
-  ],
+      "ans": "55",
+      "why": "Objective function evaluates performance of given solution"
+    }
+  ]
 );
-/* =========================================================
-   FRACTIONS & DECIMALS (FULL TEACHING VERSION)
-========================================================= */
-/* =========================
-   1. FRACTION BASICS
-========================= */
+
 add(
   "math",
   "fractions",
   "Fraction basics",
+
   `<h2>Fractions Basics</h2>
 
 <h3> NOTES (EXPLAINED)</h3>
@@ -4083,64 +4028,60 @@ Step 2: Bottom = 9<br>
 
   [
     {
-      q: "Evaluate 7/9 as a decimal",
-      hint: "division",
-      steps: [
+      "q": "Evaluate 7/9 as a decimal",
+      "hint": "division",
+      "steps": [
         "Step 1: Divide 7 ÷ 9",
         "Step 2: Perform long division",
         "Step 3: Obtain repeating decimal",
-        "Step 4: Round to required precision",
+        "Step 4: Round to required precision"
       ],
-      ans: "0.777…",
-      why: "Fraction is expressed as division of numerator by denominator",
+      "ans": "0.777…",
+      "why": "Fraction is expressed as division of numerator by denominator"
     },
-
     {
-      q: "Find the missing denominator if 3/x = 0.6",
-      hint: "solve equation",
-      steps: [
+      "q": "Find the missing denominator if 3/x = 0.6",
+      "hint": "solve equation",
+      "steps": [
         "Step 1: Write 3/x = 0.6",
         "Step 2: Multiply both sides by x",
         "Step 3: 3 = 0.6x",
         "Step 4: Divide both sides by 0.6",
-        "Step 5: Solve for x",
+        "Step 5: Solve for x"
       ],
-      ans: "5",
-      why: "Denominator is found by rearranging fractional equation",
+      "ans": "5",
+      "why": "Denominator is found by rearranging fractional equation"
     },
-
     {
-      q: "Convert 3/5 into percentage",
-      hint: "fraction to percent",
-      steps: [
+      "q": "Convert 3/5 into percentage",
+      "hint": "fraction to percent",
+      "steps": [
         "Step 1: Divide 3 ÷ 5",
         "Step 2: Multiply result by 100",
-        "Step 3: Compute final percentage",
+        "Step 3: Compute final percentage"
       ],
-      ans: "60%",
-      why: "Fraction conversion uses multiplication by 100",
+      "ans": "60%",
+      "why": "Fraction conversion uses multiplication by 100"
     },
-
     {
-      q: "Find equivalent fraction of 3/5 with denominator 20",
-      hint: "scaling fractions",
-      steps: [
+      "q": "Find equivalent fraction of 3/5 with denominator 20",
+      "hint": "scaling fractions",
+      "steps": [
         "Step 1: Determine multiplier from 5 to 20",
         "Step 2: Multiply numerator by same factor",
-        "Step 3: Form new fraction",
+        "Step 3: Form new fraction"
       ],
-      ans: "12/20",
-      why: "Equivalent fractions preserve ratio by scaling numerator and denominator equally",
-    },
-  ],
+      "ans": "12/20",
+      "why": "Equivalent fractions preserve ratio by scaling numerator and denominator equally"
+    }
+  ]
 );
-/* =========================
-   2. ADDITION & SUBTRACTION OF FRACTIONS
-========================= */
+
 add(
   "math",
   "fractions",
   "Adding and subtracting fractions",
+
   `<h2>Add & Subtract Fractions</h2>
 
 <h3> NOTES (EXPLAINED)</h3>
@@ -4197,45 +4138,46 @@ Step 3: 4/6 + 1/6 = 5/6<br>
 
   [
     {
-      q: "2/3 + 1/3",
-      hint: "Same denominator",
-      steps: [
+      "q": "2/3 + 1/3",
+      "hint": "Same denominator",
+      "steps": [
         "Step 1: Add numerators → 2 + 1 = 3",
         "Step 2: 3/3",
-        "Step 3: Simplify → 1",
+        "Step 3: Simplify → 1"
       ],
-      ans: "1",
-      why: "Forms a whole",
+      "ans": "1",
+      "why": "Forms a whole"
     },
-
     {
-      q: "1/2 + 1/4",
-      hint: "Find LCM",
-      steps: [
+      "q": "1/2 + 1/4",
+      "hint": "Find LCM",
+      "steps": [
         "Step 1: LCM of 2 and 4 = 4",
         "Step 2: Convert 1/2 = 2/4",
-        "Step 3: 2/4 + 1/4 = 3/4",
+        "Step 3: 2/4 + 1/4 = 3/4"
       ],
-      ans: "3/4",
-      why: "Common denominator method",
+      "ans": "3/4",
+      "why": "Common denominator method"
     },
-
     {
-      q: "5/6 - 1/3",
-      hint: "Convert denominator",
-      steps: ["Step 1: 1/3 = 2/6", "Step 2: 5/6 - 2/6", "Step 3: 3/6 = 1/2"],
-      ans: "1/2",
-      why: "Subtraction with LCM",
-    },
-  ],
+      "q": "5/6 - 1/3",
+      "hint": "Convert denominator",
+      "steps": [
+        "Step 1: 1/3 = 2/6",
+        "Step 2: 5/6 - 2/6",
+        "Step 3: 3/6 = 1/2"
+      ],
+      "ans": "1/2",
+      "why": "Subtraction with LCM"
+    }
+  ]
 );
-/* =========================
-   3. MULTIPLICATION & DIVISION OF FRACTIONS
-========================= */
+
 add(
   "math",
   "fractions",
   "Multiplying and dividing fractions",
+
   `<h2>Multiply & Divide Fractions</h2>
 
 <h3> NOTES (EXPLAINED)</h3>
@@ -4291,39 +4233,45 @@ Step 3: Simplify → 2/5<br>
 
   [
     {
-      q: "4/7 × 2/3",
-      hint: "Multiply straight across",
-      steps: ["Step 1: 4 × 2 = 8", "Step 2: 7 × 3 = 21"],
-      ans: "8/21",
-      why: "Multiply numerators and denominators",
+      "q": "4/7 × 2/3",
+      "hint": "Multiply straight across",
+      "steps": [
+        "Step 1: 4 × 2 = 8",
+        "Step 2: 7 × 3 = 21"
+      ],
+      "ans": "8/21",
+      "why": "Multiply numerators and denominators"
     },
     {
-      q: "5/6 ÷ 1/3",
-      hint: "Flip second fraction",
-      steps: ["Step 1: 5/6 × 3/1", "Step 2: 15/6", "Step 3: Simplify → 5/2"],
-      ans: "5/2",
-      why: "Division uses reciprocal",
+      "q": "5/6 ÷ 1/3",
+      "hint": "Flip second fraction",
+      "steps": [
+        "Step 1: 5/6 × 3/1",
+        "Step 2: 15/6",
+        "Step 3: Simplify → 5/2"
+      ],
+      "ans": "5/2",
+      "why": "Division uses reciprocal"
     },
     {
-      q: "2/5 ÷ 2/5",
-      hint: "Same fractions",
-      steps: [
+      "q": "2/5 ÷ 2/5",
+      "hint": "Same fractions",
+      "steps": [
         "Step 1: Flip → 2/5 × 5/2",
         "Step 2: Cancel common factors",
-        "Step 3: 1",
+        "Step 3: 1"
       ],
-      ans: "1",
-      why: "Any number divided by itself = 1",
-    },
-  ],
+      "ans": "1",
+      "why": "Any number divided by itself = 1"
+    }
+  ]
 );
-/* =========================
-   4. DECIMALS
-========================= */
+
 add(
   "math",
   "fractions",
   "Decimals",
+
   `<h2>Decimals</h2>
 
 <h3> NOTES (EXPLAINED)</h3>
@@ -4387,39 +4335,46 @@ Step 2: = 1.75<br>
 
   [
     {
-      q: "0.2 + 0.3",
-      hint: "Add decimals",
-      steps: [
+      "q": "0.2 + 0.3",
+      "hint": "Add decimals",
+      "steps": [
         "Step 1: Align decimal points",
         "Step 2: 0.2 + 0.3",
-        "Step 3: 0.5",
+        "Step 3: 0.5"
       ],
-      ans: "0.5",
-      why: "Place value addition",
+      "ans": "0.5",
+      "why": "Place value addition"
     },
     {
-      q: "Convert 0.6 to fraction",
-      hint: "Write over 10",
-      steps: ["Step 1: 0.6 = 6/10", "Step 2: Simplify", "Step 3: 3/5"],
-      ans: "3/5",
-      why: "Simplifying fractions",
+      "q": "Convert 0.6 to fraction",
+      "hint": "Write over 10",
+      "steps": [
+        "Step 1: 0.6 = 6/10",
+        "Step 2: Simplify",
+        "Step 3: 3/5"
+      ],
+      "ans": "3/5",
+      "why": "Simplifying fractions"
     },
     {
-      q: "1.5 + 2.25",
-      hint: "Align decimals",
-      steps: ["Step 1: 1.50 + 2.25", "Step 2: Add", "Step 3: 3.75"],
-      ans: "3.75",
-      why: "Decimal addition rules",
-    },
-  ],
+      "q": "1.5 + 2.25",
+      "hint": "Align decimals",
+      "steps": [
+        "Step 1: 1.50 + 2.25",
+        "Step 2: Add",
+        "Step 3: 3.75"
+      ],
+      "ans": "3.75",
+      "why": "Decimal addition rules"
+    }
+  ]
 );
-/* =========================
-   5. FRACTIONS TO DECIMALS
-========================= */
+
 add(
   "math",
   "fractions",
   "Fractions to decimals",
+
   `<h2>Fractions ↔ Decimals</h2>
 
 <h3> NOTES (EXPLAINED)</h3>
@@ -4514,86 +4469,78 @@ Answer: 0.625
 
   [
     {
-      q: "Convert 0.666... into fraction form",
-      hint: "recurring decimal",
-      steps: [
+      "q": "Convert 0.666... into fraction form",
+      "hint": "recurring decimal",
+      "steps": [
         "Step 1: Let x = 0.666...",
         "Step 2: Multiply both sides by 10 → 10x = 6.666...",
         "Step 3: Subtract x from 10x",
         "Step 4: 9x = 6",
-        "Step 5: Solve for x",
+        "Step 5: Solve for x"
       ],
-      ans: "2/3",
-      why: "Recurring decimals are solved using elimination of repeating part",
+      "ans": "2/3",
+      "why": "Recurring decimals are solved using elimination of repeating part"
     },
-
     {
-      q: "Convert 0.121212... into fraction form",
-      hint: "two-digit repeating block",
-      steps: [
+      "q": "Convert 0.121212... into fraction form",
+      "hint": "two-digit repeating block",
+      "steps": [
         "Step 1: Let x = 0.121212...",
         "Step 2: Multiply both sides by 100 → 100x = 12.121212...",
         "Step 3: Subtract x from 100x",
         "Step 4: 99x = 12",
-        "Step 5: Solve for x",
+        "Step 5: Solve for x"
       ],
-      ans: "12/99 = 4/33",
-      why: "Repeating blocks are eliminated using powers of 10",
+      "ans": "12/99 = 4/33",
+      "why": "Repeating blocks are eliminated using powers of 10"
     },
-
     {
-      q: "Convert 0.444... into fraction form",
-      hint: "single repeating digit",
-      steps: [
+      "q": "Convert 0.444... into fraction form",
+      "hint": "single repeating digit",
+      "steps": [
         "Step 1: Let x = 0.444...",
         "Step 2: Multiply both sides by 10 → 10x = 4.444...",
         "Step 3: Subtract x from 10x",
         "Step 4: 9x = 4",
-        "Step 5: Solve for x",
+        "Step 5: Solve for x"
       ],
-      ans: "4/9",
-      why: "Single repeating digits simplify into ninths",
+      "ans": "4/9",
+      "why": "Single repeating digits simplify into ninths"
     },
-
     {
-      q: "Convert 0.777... into fraction form",
-      hint: "recurring decimal",
-      steps: [
+      "q": "Convert 0.777... into fraction form",
+      "hint": "recurring decimal",
+      "steps": [
         "Step 1: Let x = 0.777...",
         "Step 2: Multiply both sides by 10 → 10x = 7.777...",
         "Step 3: Subtract x from 10x",
         "Step 4: 9x = 7",
-        "Step 5: Solve for x",
+        "Step 5: Solve for x"
       ],
-      ans: "7/9",
-      why: "Recurring decimals convert into fraction using elimination method",
+      "ans": "7/9",
+      "why": "Recurring decimals convert into fraction using elimination method"
     },
-
     {
-      q: "Convert 0.090909... into fraction form",
-      hint: "two-digit repetition",
-      steps: [
+      "q": "Convert 0.090909... into fraction form",
+      "hint": "two-digit repetition",
+      "steps": [
         "Step 1: Let x = 0.090909...",
         "Step 2: Multiply both sides by 100 → 100x = 9.090909...",
         "Step 3: Subtract x from 100x",
         "Step 4: 99x = 9",
-        "Step 5: Solve for x",
+        "Step 5: Solve for x"
       ],
-      ans: "1/11",
-      why: "Repeating patterns convert into simplified fractions using algebra",
-    },
-  ],
+      "ans": "1/11",
+      "why": "Repeating patterns convert into simplified fractions using algebra"
+    }
+  ]
 );
-/* =========================================================
-   AREA & VOLUME
-========================================================= */
-/* =========================
-   1. AREA OF RECTANGLES & SQUARES
-========================= */
+
 add(
   "math",
   "measurement",
   "Area of rectangles and squares",
+
   `<h2>Area of Rectangles & Squares</h2>
 
 <h3> NOTES (EXPLAINED)</h3>
@@ -4642,52 +4589,64 @@ Step 2: 30<br>
 
   [
     {
-      q: "Find area of rectangle 8 × 2",
-      hint: "Multiply length and width",
-      steps: ["Step 1: Area = length × width", "Step 2: 8 × 2", "Step 3: 16"],
-      ans: "16",
-      why: "Area formula for rectangle",
-    },
-    {
-      q: "Find area of square with side 7",
-      hint: "Side × side",
-      steps: ["Step 1: 7 × 7", "Step 2: 49"],
-      ans: "49",
-      why: "Square area rule",
-    },
-    {
-      q: "Rectangle has length 9 and width 5. Find area",
-      hint: "Multiply",
-      steps: ["Step 1: 9 × 5", "Step 2: 45"],
-      ans: "45",
-      why: "Direct formula application",
-    },
-    {
-      q: "Square side 10. Find area",
-      hint: "Square rule",
-      steps: ["Step 1: 10 × 10", "Step 2: 100"],
-      ans: "100",
-      why: "Side squared",
-    },
-    {
-      q: "Which is correct formula for rectangle area?",
-      hint: "length and width",
-      steps: [
-        "Step 1: Identify rectangle formula",
-        "Step 2: Multiply length × width",
+      "q": "Find area of rectangle 8 × 2",
+      "hint": "Multiply length and width",
+      "steps": [
+        "Step 1: Area = length × width",
+        "Step 2: 8 × 2",
+        "Step 3: 16"
       ],
-      ans: "length × width",
-      why: "Definition of rectangle area",
+      "ans": "16",
+      "why": "Area formula for rectangle"
     },
-  ],
+    {
+      "q": "Find area of square with side 7",
+      "hint": "Side × side",
+      "steps": [
+        "Step 1: 7 × 7",
+        "Step 2: 49"
+      ],
+      "ans": "49",
+      "why": "Square area rule"
+    },
+    {
+      "q": "Rectangle has length 9 and width 5. Find area",
+      "hint": "Multiply",
+      "steps": [
+        "Step 1: 9 × 5",
+        "Step 2: 45"
+      ],
+      "ans": "45",
+      "why": "Direct formula application"
+    },
+    {
+      "q": "Square side 10. Find area",
+      "hint": "Square rule",
+      "steps": [
+        "Step 1: 10 × 10",
+        "Step 2: 100"
+      ],
+      "ans": "100",
+      "why": "Side squared"
+    },
+    {
+      "q": "Which is correct formula for rectangle area?",
+      "hint": "length and width",
+      "steps": [
+        "Step 1: Identify rectangle formula",
+        "Step 2: Multiply length × width"
+      ],
+      "ans": "length × width",
+      "why": "Definition of rectangle area"
+    }
+  ]
 );
-/* =========================
-   2. AREA OF TRIANGLES
-========================= */
+
 add(
   "math",
   "measurement",
   "Area of triangles",
+
   `<h2>Area of Triangles</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -4767,42 +4726,46 @@ Answer: 8 cm
 
   [
     {
-      q: "Base 12 height 4",
-      hint: "Half × base × height",
-      steps: ["Step 1: 1/2 × 12 × 4", "Step 2: 24"],
-      ans: "24",
-      why: "Triangle area rule",
+      "q": "Base 12 height 4",
+      "hint": "Half × base × height",
+      "steps": [
+        "Step 1: 1/2 × 12 × 4",
+        "Step 2: 24"
+      ],
+      "ans": "24",
+      "why": "Triangle area rule"
     },
-
     {
-      q: "Base 14 height 6",
-      hint: "Use formula",
-      steps: ["Step 1: 1/2 × 14 × 6", "Step 2: 7 × 6", "Step 3: 42"],
-      ans: "42",
-      why: "Standard area calculation",
+      "q": "Base 14 height 6",
+      "hint": "Use formula",
+      "steps": [
+        "Step 1: 1/2 × 14 × 6",
+        "Step 2: 7 × 6",
+        "Step 3: 42"
+      ],
+      "ans": "42",
+      "why": "Standard area calculation"
     },
-
     {
-      q: "Area = 40, base = 10 find height",
-      hint: "Rearrange formula",
-      steps: [
+      "q": "Area = 40, base = 10 find height",
+      "hint": "Rearrange formula",
+      "steps": [
         "Step 1: A = 1/2 b h",
         "Step 2: 40 = 1/2 × 10 × h",
         "Step 3: 40 = 5h",
-        "Step 4: h = 8",
+        "Step 4: h = 8"
       ],
-      ans: "8",
-      why: "Rearranged formula",
-    },
-  ],
+      "ans": "8",
+      "why": "Rearranged formula"
+    }
+  ]
 );
-/* =========================
-   3. VOLUME OF CUBES & CUBOIDS
-========================= */
+
 add(
   "math",
   "measurement",
   "Volume of cubes and cuboids",
+
   `<h2>Volume of Cubes & Cuboids</h2>
 
 <p>Volume measures the space inside a 3D object.</p>
@@ -4861,33 +4824,31 @@ Step 2: 10<br>
 
   [
     {
-      Q: "Find volume of a cube with side 4",
-      Answer: "64 cm³",
-      Hint: "side³",
-      Explanation: "4 × 4 × 4 = 64, so the volume is 64 cubic units",
+      "q": "Find volume of a cube with side 4",
+      "hint": "side³",
+      "ans": "64 cm³",
+      "why": "4 × 4 × 4 = 64, so the volume is 64 cubic units"
     },
     {
-      Q: "What is the formula for cuboid volume?",
-      Answer: "length × width × height",
-      Hint: "3 dimensions",
-      Explanation:
-        "A cuboid’s volume is found by multiplying its three dimensions",
+      "q": "What is the formula for cuboid volume?",
+      "hint": "3 dimensions",
+      "ans": "length × width × height",
+      "why": "A cuboid’s volume is found by multiplying its three dimensions"
     },
     {
-      Q: "What does volume measure?",
-      Answer: "Space inside a 3D shape",
-      Hint: "inside capacity",
-      Explanation: "Volume tells us how much space an object can hold",
-    },
-  ],
+      "q": "What does volume measure?",
+      "hint": "inside capacity",
+      "ans": "Space inside a 3D shape",
+      "why": "Volume tells us how much space an object can hold"
+    }
+  ]
 );
-/* =========================
-   4. SURFACE AREA (BASIC)
-========================= */
+
 add(
   "math",
   "measurement",
   "Surface area basics",
+
   `<h2>Surface Area</h2>
 
 <p>Surface area is the total area of all outer faces of a 3D shape.</p>
@@ -4946,34 +4907,31 @@ Step 2: 6 × 1 = 6<br>
 
   [
     {
-      Q: "Find surface area of a cube with side 5",
-      Answer: "150 cm²",
-      Hint: "6 × side²",
-      Explanation: "6 × 5² = 6 × 25 = 150, so total surface area is 150 cm²",
+      "q": "Find surface area of a cube with side 5",
+      "hint": "6 × side²",
+      "ans": "150 cm²",
+      "why": "6 × 5² = 6 × 25 = 150, so total surface area is 150 cm²"
     },
     {
-      Q: "What does surface area measure?",
-      Answer: "Outer covering of a 3D shape",
-      Hint: "outside faces",
-      Explanation:
-        "Surface area is the total area of all outer faces of a solid",
+      "q": "What does surface area measure?",
+      "hint": "outside faces",
+      "ans": "Outer covering of a 3D shape",
+      "why": "Surface area is the total area of all outer faces of a solid"
     },
     {
-      Q: "What is the formula for cube surface area?",
-      Answer: "6 × side²",
-      Hint: "6 faces",
-      Explanation:
-        "A cube has 6 equal square faces, so we multiply one face area by 6",
-    },
-  ],
+      "q": "What is the formula for cube surface area?",
+      "hint": "6 faces",
+      "ans": "6 × side²",
+      "why": "A cube has 6 equal square faces, so we multiply one face area by 6"
+    }
+  ]
 );
-/* =========================
-   5. REAL LIFE APPLICATIONS
-========================= */
+
 add(
   "math",
   "measurement",
   "Real life applications",
+
   `<h2>Real Life Applications</h2>
 
 <p>Mathematics is used to measure and design real-world spaces.</p>
@@ -5035,37 +4993,31 @@ Step 3: Estimate paint needed<br>
 
   [
     {
-      Q: "Why is volume important in real life?",
-      Answer: "It measures storage capacity",
-      Hint: "think containers",
-      Explanation:
-        "Volume tells us how much space an object can hold, such as water in a tank",
+      "q": "Why is volume important in real life?",
+      "hint": "think containers",
+      "ans": "It measures storage capacity",
+      "why": "Volume tells us how much space an object can hold, such as water in a tank"
     },
     {
-      Q: "When do we use area in real life?",
-      Answer: "To measure flat surfaces",
-      Hint: "2D spaces",
-      Explanation: "Area is used for surfaces like land, floors, and walls",
+      "q": "When do we use area in real life?",
+      "hint": "2D spaces",
+      "ans": "To measure flat surfaces",
+      "why": "Area is used for surfaces like land, floors, and walls"
     },
     {
-      Q: "What is the difference between area and volume?",
-      Answer: "Area is 2D, volume is 3D",
-      Hint: "dimensions",
-      Explanation:
-        "Area measures flat surfaces, while volume measures space inside objects",
-    },
-  ],
+      "q": "What is the difference between area and volume?",
+      "hint": "dimensions",
+      "ans": "Area is 2D, volume is 3D",
+      "why": "Area measures flat surfaces, while volume measures space inside objects"
+    }
+  ]
 );
-/* =========================================================
-   GRAPHS & COORDINATES
-========================================================= */
-/* =========================
-   1. COORDINATE PLANE BASICS
-========================= */
+
 add(
   "math",
   "graphs",
   "Coordinate plane basics",
+
   `<h2>Coordinate Plane Basics</h2>
 
 <p>The coordinate plane is used to locate points using numbers.</p>
@@ -5125,82 +5077,77 @@ Step 2: This is the Y-axis<br>
 
   [
     {
-      q: "Find the distance between points (2,3) and (6,7)",
-      hint: "distance formula",
-      steps: [
+      "q": "Find the distance between points (2,3) and (6,7)",
+      "hint": "distance formula",
+      "steps": [
         "Step 1: Use d = √((x₂ − x₁)² + (y₂ − y₁)²)",
         "Step 2: Substitute values (6−2) and (7−3)",
         "Step 3: Compute 4² and 4²",
         "Step 4: Add results",
-        "Step 5: Take square root",
+        "Step 5: Take square root"
       ],
-      ans: "√32 = 4√2",
-      why: "Distance between two points is found using Euclidean formula",
+      "ans": "√32 = 4√2",
+      "why": "Distance between two points is found using Euclidean formula"
     },
-
     {
-      q: "Find midpoint of (2,4) and (8,10)",
-      hint: "midpoint formula",
-      steps: [
+      "q": "Find midpoint of (2,4) and (8,10)",
+      "hint": "midpoint formula",
+      "steps": [
         "Step 1: Use M = ((x₁ + x₂)/2, (y₁ + y₂)/2)",
         "Step 2: Substitute values",
         "Step 3: Compute x-coordinate",
         "Step 4: Compute y-coordinate",
-        "Step 5: Form midpoint",
+        "Step 5: Form midpoint"
       ],
-      ans: "(5,7)",
-      why: "Midpoint is average of coordinates",
+      "ans": "(5,7)",
+      "why": "Midpoint is average of coordinates"
     },
-
     {
-      q: "Determine the coordinates after moving from (3,5) by +4 in x and −2 in y",
-      hint: "translation",
-      steps: [
+      "q": "Determine the coordinates after moving from (3,5) by +4 in x and −2 in y",
+      "hint": "translation",
+      "steps": [
         "Step 1: Start at (3,5)",
         "Step 2: Add 4 to x-coordinate",
         "Step 3: Subtract 2 from y-coordinate",
-        "Step 4: Write new coordinates",
+        "Step 4: Write new coordinates"
       ],
-      ans: "(7,3)",
-      why: "Translation shifts points by vector addition",
+      "ans": "(7,3)",
+      "why": "Translation shifts points by vector addition"
     },
-
     {
-      q: "Find slope between points (1,2) and (5,10)",
-      hint: "rise over run",
-      steps: [
+      "q": "Find slope between points (1,2) and (5,10)",
+      "hint": "rise over run",
+      "steps": [
         "Step 1: Use m = (y₂ − y₁)/(x₂ − x₁)",
         "Step 2: Substitute values",
         "Step 3: Compute numerator 8",
         "Step 4: Compute denominator 4",
-        "Step 5: Simplify fraction",
+        "Step 5: Simplify fraction"
       ],
-      ans: "2",
-      why: "Slope measures rate of change between two points",
+      "ans": "2",
+      "why": "Slope measures rate of change between two points"
     },
-
     {
-      q: "Find equation of line passing through (0,0) with slope 3",
-      hint: "y = mx + c",
-      steps: [
+      "q": "Find equation of line passing through (0,0) with slope 3",
+      "hint": "y = mx + c",
+      "steps": [
         "Step 1: Use y = mx + c",
         "Step 2: Substitute m = 3",
         "Step 3: Use point (0,0) to find c",
         "Step 4: Solve for c",
-        "Step 5: Write final equation",
+        "Step 5: Write final equation"
       ],
-      ans: "y = 3x",
-      why: "Line equation is determined by slope and intercept",
-    },
-  ],
+      "ans": "y = 3x",
+      "why": "Line equation is determined by slope and intercept"
+    }
+  ]
 );
-/* =========================
-   2. PLOTTING POINTS
-========================= */
+
 add(
   "math",
   "graphs",
   "Plotting points",
+
   `<h2>Plotting Points</h2>
 
 <p>Plotting means marking a point on the coordinate plane using (x, y).</p>
@@ -5300,129 +5247,72 @@ Step 2: Move 4 units up<br>
 
   [
     {
-      q: "Locate the point (3, -2) on a coordinate plane and describe its movement from origin",
-      hint: "x then y movement",
-      steps: [
+      "q": "Locate the point (3, -2) on a coordinate plane and describe its movement from origin",
+      "hint": "x then y movement",
+      "steps": [
         "Step 1: Start at origin (0,0)",
         "Step 2: Move +3 units along x-axis",
         "Step 3: Move −2 units along y-axis",
-        "Step 4: Mark final position on plane",
+        "Step 4: Mark final position on plane"
       ],
-      diagram: `
-          y
-          ↑
-     3    |
-     2    |
-     1    |
-  -------O----------------→ x
-     -1   |
-     -2   |        ● (3,-2)
-     -3   |
-`,
-      ans: "(3, -2)",
-      why: "Coordinates represent horizontal (x) and vertical (y) displacement from origin",
+      "ans": "(3, -2)",
+      "why": "Coordinates represent horizontal (x) and vertical (y) displacement from origin"
     },
-
     {
-      q: "Find coordinates after moving 5 units right and 4 units up from origin",
-      hint: "directional movement",
-      steps: [
+      "q": "Find coordinates after moving 5 units right and 4 units up from origin",
+      "hint": "directional movement",
+      "steps": [
         "Step 1: Start at (0,0)",
         "Step 2: Move +5 along x-axis",
         "Step 3: Move +4 along y-axis",
-        "Step 4: Plot final point",
+        "Step 4: Plot final point"
       ],
-      diagram: `
-          y
-          ↑
-     4    |          ● (5,4)
-     3    |
-     2    |
-     1    |
-  -------O----------------→ x
-     0    |  1  2  3  4  5
-`,
-      ans: "(5, 4)",
-      why: "Positive x and y values place the point in the first quadrant",
+      "ans": "(5, 4)",
+      "why": "Positive x and y values place the point in the first quadrant"
     },
-
     {
-      q: "Determine location of point (0, -6) on coordinate plane",
-      hint: "axis identification",
-      steps: [
+      "q": "Determine location of point (0, -6) on coordinate plane",
+      "hint": "axis identification",
+      "steps": [
         "Step 1: Check x = 0",
         "Step 2: Move only along y-axis",
         "Step 3: Locate negative direction",
-        "Step 4: Identify axis position",
+        "Step 4: Identify axis position"
       ],
-      diagram: `
-          y
-          ↑
-     2    |
-     1    |
-  -------O----------------→ x
-    -1    |
-    -2    |
-    -3    |
-    -4    |
-    -5    |
-    -6    ●
-`,
-      ans: "On the negative Y-axis",
-      why: "x = 0 means the point lies directly on the y-axis",
+      "ans": "On the negative Y-axis",
+      "why": "x = 0 means the point lies directly on the y-axis"
     },
-
     {
-      q: "Determine location of point (4, 0) on coordinate plane",
-      hint: "axis rule",
-      steps: [
+      "q": "Determine location of point (4, 0) on coordinate plane",
+      "hint": "axis rule",
+      "steps": [
         "Step 1: Check y = 0",
         "Step 2: Move only along x-axis",
         "Step 3: Locate positive direction",
-        "Step 4: Identify axis position",
+        "Step 4: Identify axis position"
       ],
-      diagram: `
-          y
-          ↑
-     2    |
-     1    |
-  -------O----●--------------→ x
-     0    |    4
-    -1    |
-`,
-      ans: "On the positive X-axis",
-      why: "y = 0 means the point lies on the x-axis",
+      "ans": "On the positive X-axis",
+      "why": "y = 0 means the point lies on the x-axis"
     },
-
     {
-      q: "Identify the reference starting point for all coordinate plotting",
-      hint: "origin concept",
-      steps: [
+      "q": "Identify the reference starting point for all coordinate plotting",
+      "hint": "origin concept",
+      "steps": [
         "Step 1: Locate intersection of axes",
         "Step 2: Identify x = 0 and y = 0",
-        "Step 3: Mark central reference point",
+        "Step 3: Mark central reference point"
       ],
-      diagram: `
-          y
-          ↑
-          |
-          |
-  --------O----------------→ x
-          |
-          |
-`,
-      ans: "(0,0)",
-      why: "All coordinates are measured from the origin",
-    },
-  ],
+      "ans": "(0,0)",
+      "why": "All coordinates are measured from the origin"
+    }
+  ]
 );
-/* =========================
-   3. LINE GRAPHS
-========================= */
+
 add(
   "math",
   "graphs",
   "Line graphs",
+
   `<h2>Line Graphs</h2>
 
 <p>A line graph shows how values change over time or sequence.</p>
@@ -5525,79 +5415,74 @@ Step 4: Form a relationship model between variables<br>
 
   [
     {
-      q: "Plot a line graph for points (1,2), (2,3), (3,5)",
-      hint: "coordinate plotting",
-      steps: [
+      "q": "Plot a line graph for points (1,2), (2,3), (3,5)",
+      "hint": "coordinate plotting",
+      "steps": [
         "Step 1: Draw x-axis and y-axis",
         "Step 2: Plot (1,2), (2,3), (3,5)",
         "Step 3: Check correct positions on plane",
-        "Step 4: Join points in order with straight lines",
+        "Step 4: Join points in order with straight lines"
       ],
-      ans: "A rising line graph",
-      why: "Increasing y-values show upward trend",
+      "ans": "A rising line graph",
+      "why": "Increasing y-values show upward trend"
     },
-
     {
-      q: "Identify change when graph goes from (1,5) to (3,5)",
-      hint: "constant value",
-      steps: [
+      "q": "Identify change when graph goes from (1,5) to (3,5)",
+      "hint": "constant value",
+      "steps": [
         "Step 1: Compare y-values at both points",
         "Step 2: 5 and 5 are equal",
         "Step 3: Determine slope behavior",
-        "Step 4: Classify trend",
+        "Step 4: Classify trend"
       ],
-      ans: "No change (constant graph)",
-      why: "Equal y-values form a horizontal line",
+      "ans": "No change (constant graph)",
+      "why": "Equal y-values form a horizontal line"
     },
-
     {
-      q: "Determine trend of points (1,4), (2,3), (3,2)",
-      hint: "decreasing pattern",
-      steps: [
+      "q": "Determine trend of points (1,4), (2,3), (3,2)",
+      "hint": "decreasing pattern",
+      "steps": [
         "Step 1: Observe y-values",
         "Step 2: 4 → 3 → 2",
         "Step 3: Check direction of change",
-        "Step 4: Classify graph behavior",
+        "Step 4: Classify graph behavior"
       ],
-      ans: "Decreasing trend",
-      why: "Y-values reduce as x increases",
+      "ans": "Decreasing trend",
+      "why": "Y-values reduce as x increases"
     },
-
     {
-      q: "Find slope between points (1,1) and (4,7)",
-      hint: "rise over run",
-      steps: [
+      "q": "Find slope between points (1,1) and (4,7)",
+      "hint": "rise over run",
+      "steps": [
         "Step 1: Use m = (y₂ − y₁)/(x₂ − x₁)",
         "Step 2: Substitute values",
         "Step 3: Compute 7 − 1 = 6",
         "Step 4: Compute 4 − 1 = 3",
-        "Step 5: Simplify fraction",
+        "Step 5: Simplify fraction"
       ],
-      ans: "2",
-      why: "Slope measures rate of change in a line graph",
+      "ans": "2",
+      "why": "Slope measures rate of change in a line graph"
     },
-
     {
-      q: "Find missing point pattern if graph is linear: (1,2), (2,?), (3,6)",
-      hint: "linear pattern",
-      steps: [
+      "q": "Find missing point pattern if graph is linear: (1,2), (2,?), (3,6)",
+      "hint": "linear pattern",
+      "steps": [
         "Step 1: Observe change from 1 to 3 in x",
         "Step 2: Observe change from 2 to 6 in y",
         "Step 3: Determine pattern increase",
-        "Step 4: Find middle value",
+        "Step 4: Find middle value"
       ],
-      ans: "(2,4)",
-      why: "Linear graphs have constant rate of change",
-    },
-  ],
+      "ans": "(2,4)",
+      "why": "Linear graphs have constant rate of change"
+    }
+  ]
 );
-/* =========================
-   4. GRADIENT (SLOPE)
-========================= */
+
 add(
   "math",
   "graphs",
   "Gradient",
+
   `<h2>Gradient (Slope)</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -5691,66 +5576,62 @@ Step 3: m = −8 ÷ 4<br>
 
   [
     {
-      q: "Find gradient when rise = 12 and run = 3",
-      hint: "m = rise ÷ run",
-      steps: [
+      "q": "Find gradient when rise = 12 and run = 3",
+      "hint": "m = rise ÷ run",
+      "steps": [
         "Step 1: Write m = rise ÷ run",
         "Step 2: Substitute m = 12 ÷ 3",
         "Step 3: Compute division",
-        "Step 4: Simplify result",
+        "Step 4: Simplify result"
       ],
-      ans: "4",
-      why: "Gradient measures vertical change per unit horizontal change",
+      "ans": "4",
+      "why": "Gradient measures vertical change per unit horizontal change"
     },
-
     {
-      q: "Find gradient between points (2,5) and (6,1)",
-      hint: "use coordinate formula",
-      steps: [
+      "q": "Find gradient between points (2,5) and (6,1)",
+      "hint": "use coordinate formula",
+      "steps": [
         "Step 1: Use m = (y₂ − y₁)/(x₂ − x₁)",
         "Step 2: Substitute values (1 − 5)/(6 − 2)",
         "Step 3: Compute numerator −4",
         "Step 4: Compute denominator 4",
-        "Step 5: Simplify fraction",
+        "Step 5: Simplify fraction"
       ],
-      ans: "-1",
-      why: "Gradient is found using change in y over change in x",
+      "ans": "-1",
+      "why": "Gradient is found using change in y over change in x"
     },
-
     {
-      q: "Interpret gradient m = -3 in a line",
-      hint: "direction",
-      steps: [
+      "q": "Interpret gradient m = -3 in a line",
+      "hint": "direction",
+      "steps": [
         "Step 1: Identify sign of gradient",
         "Step 2: m < 0 indicates negative slope",
         "Step 3: For each 1 step right, y decreases by 3",
-        "Step 4: Describe direction",
+        "Step 4: Describe direction"
       ],
-      ans: "Line decreases steeply",
-      why: "Negative gradient shows downward movement from left to right",
+      "ans": "Line decreases steeply",
+      "why": "Negative gradient shows downward movement from left to right"
     },
-
     {
-      q: "Interpret gradient m = 0",
-      hint: "flat line",
-      steps: [
+      "q": "Interpret gradient m = 0",
+      "hint": "flat line",
+      "steps": [
         "Step 1: Check gradient value",
         "Step 2: m = 0 means no vertical change",
         "Step 3: y-value remains constant",
-        "Step 4: Describe graph",
+        "Step 4: Describe graph"
       ],
-      ans: "Horizontal line",
-      why: "Zero gradient means constant y-value across x",
-    },
-  ],
+      "ans": "Horizontal line",
+      "why": "Zero gradient means constant y-value across x"
+    }
+  ]
 );
-/* =========================
-   5. REAL LIFE APPLICATIONS OF GRAPHS
-========================= */
+
 add(
   "math",
   "graphs",
   "Applications of graphs",
+
   `<h2>Applications of Graphs</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -5815,38 +5696,31 @@ Step 3: Analyze increase rate<br>
 
   [
     {
-      Q: "Why are graphs important?",
-      Answer: "data visualization",
-      Hint: "show data visually",
-      Explanation:
-        "Graphs convert numerical data into visual form, making patterns and trends easier to understand",
+      "q": "Why are graphs important?",
+      "hint": "show data visually",
+      "ans": "data visualization",
+      "why": "Graphs convert numerical data into visual form, making patterns and trends easier to understand"
     },
     {
-      Q: "What do graphs help us identify?",
-      Answer: "patterns and trends",
-      Hint: "look at shape of graph",
-      Explanation:
-        "Graphs show how data changes over time or categories, revealing hidden patterns",
+      "q": "What do graphs help us identify?",
+      "hint": "look at shape of graph",
+      "ans": "patterns and trends",
+      "why": "Graphs show how data changes over time or categories, revealing hidden patterns"
     },
     {
-      Q: "Give one real-life use of graphs",
-      Answer: "weather forecasting or business analysis",
-      Hint: "daily applications",
-      Explanation:
-        "Graphs are widely used to analyze weather, sales, population, and scientific data",
-    },
-  ],
+      "q": "Give one real-life use of graphs",
+      "hint": "daily applications",
+      "ans": "weather forecasting or business analysis",
+      "why": "Graphs are widely used to analyze weather, sales, population, and scientific data"
+    }
+  ]
 );
-/* =========================================================
-   PHASE 7: RATIO & PROPORTION
-========================================================= */
-/* =========================
-   1. RATIO BASICS
-========================= */
+
 add(
   "math",
   "ratio",
   "Ratio basics",
+
   `<h2>Ratio Basics</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -5908,67 +5782,63 @@ Step 2: 15 ÷ 5 : 5 ÷ 5<br>
 
   [
     {
-      q: "Simplify the ratio 24:36",
-      hint: "HCF method",
-      steps: [
+      "q": "Simplify the ratio 24:36",
+      "hint": "HCF method",
+      "steps": [
         "Step 1: Find HCF of 24 and 36",
         "Step 2: HCF = 12",
         "Step 3: Divide both terms by 12",
         "Step 4: 24 ÷ 12 and 36 ÷ 12",
-        "Step 5: Write simplified ratio",
+        "Step 5: Write simplified ratio"
       ],
-      ans: "2:3",
-      why: "Ratios are simplified by dividing both terms by their highest common factor",
+      "ans": "2:3",
+      "why": "Ratios are simplified by dividing both terms by their highest common factor"
     },
-
     {
-      q: "Divide 60 in the ratio 2:3",
-      hint: "total parts method",
-      steps: [
+      "q": "Divide 60 in the ratio 2:3",
+      "hint": "total parts method",
+      "steps": [
         "Step 1: Add ratio parts 2 + 3 = 5",
         "Step 2: Divide 60 by 5",
         "Step 3: One part = 12",
         "Step 4: Multiply 2 × 12 and 3 × 12",
-        "Step 5: Find each share",
+        "Step 5: Find each share"
       ],
-      ans: "24 and 36",
-      why: "Total is split according to ratio parts",
+      "ans": "24 and 36",
+      "why": "Total is split according to ratio parts"
     },
-
     {
-      q: "Find ratio of 45 to 15 in simplest form",
-      hint: "divide both terms",
-      steps: [
+      "q": "Find ratio of 45 to 15 in simplest form",
+      "hint": "divide both terms",
+      "steps": [
         "Step 1: Write ratio 45:15",
         "Step 2: Find HCF = 15",
         "Step 3: Divide both terms by 15",
-        "Step 4: Simplify result",
+        "Step 4: Simplify result"
       ],
-      ans: "3:1",
-      why: "Simplification reduces ratio to smallest whole numbers",
+      "ans": "3:1",
+      "why": "Simplification reduces ratio to smallest whole numbers"
     },
-
     {
-      q: "Check if ratios 4:6 and 2:3 are equivalent",
-      hint: "compare simplified forms",
-      steps: [
+      "q": "Check if ratios 4:6 and 2:3 are equivalent",
+      "hint": "compare simplified forms",
+      "steps": [
         "Step 1: Simplify 4:6",
         "Step 2: Divide both by 2 → 2:3",
         "Step 3: Compare with 2:3",
-        "Step 4: Conclude equivalence",
+        "Step 4: Conclude equivalence"
       ],
-      ans: "Yes, they are equivalent",
-      why: "Equivalent ratios reduce to the same simplest form",
-    },
-  ],
+      "ans": "Yes, they are equivalent",
+      "why": "Equivalent ratios reduce to the same simplest form"
+    }
+  ]
 );
-/* =========================
-   2. DIVIDING IN A GIVEN RATIO
-========================= */
+
 add(
   "math",
   "ratio",
   "Dividing in ratio",
+
   `<h2>Dividing in Ratio</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6040,70 +5910,66 @@ Step 3: 54 and 36<br>
 
   [
     {
-      q: "Divide 120 in the ratio 3:2",
-      hint: "total parts method",
-      steps: [
+      "q": "Divide 120 in the ratio 3:2",
+      "hint": "total parts method",
+      "steps": [
         "Step 1: Add ratio parts 3 + 2 = 5",
         "Step 2: Divide 120 by 5",
         "Step 3: One part = 24",
         "Step 4: Multiply 3 × 24",
         "Step 5: Multiply 2 × 24",
-        "Step 6: Write final split",
+        "Step 6: Write final split"
       ],
-      ans: "72 and 48",
-      why: "Total is distributed proportionally using ratio parts",
+      "ans": "72 and 48",
+      "why": "Total is distributed proportionally using ratio parts"
     },
-
     {
-      q: "Divide 250 in the ratio 5:3",
-      hint: "part value method",
-      steps: [
+      "q": "Divide 250 in the ratio 5:3",
+      "hint": "part value method",
+      "steps": [
         "Step 1: Add ratio parts 5 + 3 = 8",
         "Step 2: Divide 250 by 8",
         "Step 3: One part = 31.25",
         "Step 4: Multiply 5 × 31.25",
         "Step 5: Multiply 3 × 31.25",
-        "Step 6: Write final values",
+        "Step 6: Write final values"
       ],
-      ans: "156.25 and 93.75",
-      why: "Each share is proportional to its ratio weight",
+      "ans": "156.25 and 93.75",
+      "why": "Each share is proportional to its ratio weight"
     },
-
     {
-      q: "Check if 40:60 simplifies correctly to 2:3",
-      hint: "simplification check",
-      steps: [
+      "q": "Check if 40:60 simplifies correctly to 2:3",
+      "hint": "simplification check",
+      "steps": [
         "Step 1: Write ratio 40:60",
         "Step 2: Find HCF = 20",
         "Step 3: Divide both terms by 20",
         "Step 4: Get simplified form",
-        "Step 5: Compare with 2:3",
+        "Step 5: Compare with 2:3"
       ],
-      ans: "Yes, it simplifies to 2:3",
-      why: "Both ratios represent the same proportional relationship",
+      "ans": "Yes, it simplifies to 2:3",
+      "why": "Both ratios represent the same proportional relationship"
     },
-
     {
-      q: "Find value of one part if 84 is divided in ratio 2:5",
-      hint: "total parts method",
-      steps: [
+      "q": "Find value of one part if 84 is divided in ratio 2:5",
+      "hint": "total parts method",
+      "steps": [
         "Step 1: Add ratio parts 2 + 5 = 7",
         "Step 2: Divide 84 by 7",
         "Step 3: One part = 12",
-        "Step 4: Use part value for distribution",
+        "Step 4: Use part value for distribution"
       ],
-      ans: "12",
-      why: "Each unit of ratio is found by dividing total by sum of parts",
-    },
-  ],
+      "ans": "12",
+      "why": "Each unit of ratio is found by dividing total by sum of parts"
+    }
+  ]
 );
-/* =========================
-   3. PROPORTION
-========================= */
+
 add(
   "math",
   "ratio",
   "Proportion",
+
   `<h2>Proportion</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6156,66 +6022,62 @@ Step 2: x = 3<br>
 
   [
     {
-      q: "Solve for x: 6:9 = x:27",
-      hint: "cross multiplication",
-      steps: [
+      "q": "Solve for x: 6:9 = x:27",
+      "hint": "cross multiplication",
+      "steps": [
         "Step 1: Write proportion 6/9 = x/27",
         "Step 2: Cross multiply → 6 × 27 = 9x",
         "Step 3: Compute 162 = 9x",
         "Step 4: Divide both sides by 9",
-        "Step 5: Solve for x",
+        "Step 5: Solve for x"
       ],
-      ans: "18",
-      why: "Cross multiplication removes ratios and forms a solvable equation",
+      "ans": "18",
+      "why": "Cross multiplication removes ratios and forms a solvable equation"
     },
-
     {
-      q: "Solve for x: 8:12 = 20:x",
-      hint: "diagonal multiplication",
-      steps: [
+      "q": "Solve for x: 8:12 = 20:x",
+      "hint": "diagonal multiplication",
+      "steps": [
         "Step 1: Write 8/12 = 20/x",
         "Step 2: Cross multiply → 8x = 240",
         "Step 3: Divide both sides by 8",
-        "Step 4: Solve for x",
+        "Step 4: Solve for x"
       ],
-      ans: "30",
-      why: "Proportions are solved by equating cross products",
+      "ans": "30",
+      "why": "Proportions are solved by equating cross products"
     },
-
     {
-      q: "Check if 3:5 and 12:20 form a proportion",
-      hint: "simplify ratio",
-      steps: [
+      "q": "Check if 3:5 and 12:20 form a proportion",
+      "hint": "simplify ratio",
+      "steps": [
         "Step 1: Simplify 12:20 by dividing by 4",
         "Step 2: Get 3:5",
         "Step 3: Compare both ratios",
-        "Step 4: Confirm equality",
+        "Step 4: Confirm equality"
       ],
-      ans: "Yes, they form a proportion",
-      why: "Equivalent ratios form a valid proportion",
+      "ans": "Yes, they form a proportion",
+      "why": "Equivalent ratios form a valid proportion"
     },
-
     {
-      q: "What is the value of x in 7/ x = 14/28",
-      hint: "cross multiply",
-      steps: [
+      "q": "What is the value of x in 7/ x = 14/28",
+      "hint": "cross multiply",
+      "steps": [
         "Step 1: Cross multiply → 7 × 28 = 14x",
         "Step 2: Compute 196 = 14x",
         "Step 3: Divide both sides by 14",
-        "Step 4: Solve for x",
+        "Step 4: Solve for x"
       ],
-      ans: "14",
-      why: "Cross multiplication converts proportion into linear equation",
-    },
-  ],
+      "ans": "14",
+      "why": "Cross multiplication converts proportion into linear equation"
+    }
+  ]
 );
-/* =========================
-   4. DIRECT PROPORTION
-========================= */
+
 add(
   "math",
   "ratio",
   "Direct proportion",
+
   `<h2>Direct Proportion</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6264,65 +6126,61 @@ Step 2: 10 items = 50<br>
 
   [
     {
-      q: "If 6 notebooks cost 90, find the cost of 1 notebook",
-      hint: "unit rate",
-      steps: [
+      "q": "If 6 notebooks cost 90, find the cost of 1 notebook",
+      "hint": "unit rate",
+      "steps": [
         "Step 1: Write total cost = 90 and quantity = 6",
         "Step 2: Compute 90 ÷ 6",
         "Step 3: Find cost per notebook",
-        "Step 4: State unit price",
+        "Step 4: State unit price"
       ],
-      ans: "15",
-      why: "Unit cost is found by dividing total cost by number of items",
+      "ans": "15",
+      "why": "Unit cost is found by dividing total cost by number of items"
     },
-
     {
-      q: "Find k if y = kx, when y = 36 and x = 9",
-      hint: "constant of proportionality",
-      steps: [
+      "q": "Find k if y = kx, when y = 36 and x = 9",
+      "hint": "constant of proportionality",
+      "steps": [
         "Step 1: Write y = kx",
         "Step 2: Substitute 36 = k × 9",
         "Step 3: Divide both sides by 9",
-        "Step 4: Solve for k",
+        "Step 4: Solve for k"
       ],
-      ans: "4",
-      why: "k represents constant ratio between y and x",
+      "ans": "4",
+      "why": "k represents constant ratio between y and x"
     },
-
     {
-      q: "If y = 5x, find y when x = 7",
-      hint: "substitution",
-      steps: [
+      "q": "If y = 5x, find y when x = 7",
+      "hint": "substitution",
+      "steps": [
         "Step 1: Write equation y = 5x",
         "Step 2: Substitute x = 7",
         "Step 3: Multiply 5 × 7",
-        "Step 4: Compute y value",
+        "Step 4: Compute y value"
       ],
-      ans: "35",
-      why: "Direct proportion uses substitution into linear equation",
+      "ans": "35",
+      "why": "Direct proportion uses substitution into linear equation"
     },
-
     {
-      q: "If x doubles in y = 3x, what happens to y when x changes from 4 to 8?",
-      hint: "scaling",
-      steps: [
+      "q": "If x doubles in y = 3x, what happens to y when x changes from 4 to 8?",
+      "hint": "scaling",
+      "steps": [
         "Step 1: Compute y when x = 4 → y = 3 × 4",
         "Step 2: Compute y when x = 8 → y = 3 × 8",
         "Step 3: Compare both results",
-        "Step 4: Identify relationship",
+        "Step 4: Identify relationship"
       ],
-      ans: "y doubles (from 12 to 24)",
-      why: "In direct proportion, scaling x scales y by same factor",
-    },
-  ],
+      "ans": "y doubles (from 12 to 24)",
+      "why": "In direct proportion, scaling x scales y by same factor"
+    }
+  ]
 );
-/* =========================
-   5. INVERSE PROPORTION
-========================= */
+
 add(
   "math",
   "ratio",
   "Inverse proportion",
+
   `<h2>Inverse Proportion</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6371,76 +6229,68 @@ Step 2: 32 ÷ 8 = 4<br>
 
   [
     {
-      q: "If y is inversely proportional to x and x = 6, y = 12, find k in x × y = k",
-      hint: "constant of inverse proportion",
-      steps: [
+      "q": "If y is inversely proportional to x and x = 6, y = 12, find k in x × y = k",
+      "hint": "constant of inverse proportion",
+      "steps": [
         "Step 1: Write k = x × y",
         "Step 2: Substitute values k = 6 × 12",
-        "Step 3: Multiply to find k",
+        "Step 3: Multiply to find k"
       ],
-      ans: "72",
-      why: "In inverse proportion, the product of x and y stays constant",
+      "ans": "72",
+      "why": "In inverse proportion, the product of x and y stays constant"
     },
-
     {
-      q: "If x = 9 and y = 8 in an inverse proportion, find k",
-      hint: "multiply values",
-      steps: [
+      "q": "If x = 9 and y = 8 in an inverse proportion, find k",
+      "hint": "multiply values",
+      "steps": [
         "Step 1: Write k = x × y",
         "Step 2: Substitute k = 9 × 8",
-        "Step 3: Compute product",
+        "Step 3: Compute product"
       ],
-      ans: "72",
-      why: "Inverse proportion means x × y remains constant",
+      "ans": "72",
+      "why": "Inverse proportion means x × y remains constant"
     },
-
     {
-      q: "If y is inversely proportional to x and x = 3, y = 20, find k",
-      hint: "constant product rule",
-      steps: [
+      "q": "If y is inversely proportional to x and x = 3, y = 20, find k",
+      "hint": "constant product rule",
+      "steps": [
         "Step 1: Use k = x × y",
         "Step 2: Substitute 3 × 20",
-        "Step 3: Calculate k",
+        "Step 3: Calculate k"
       ],
-      ans: "60",
-      why: "The product of variables remains unchanged in inverse proportion",
+      "ans": "60",
+      "why": "The product of variables remains unchanged in inverse proportion"
     },
-
     {
-      q: "If x = 5 and y = 14 in inverse proportion, determine k",
-      hint: "multiply",
-      steps: [
+      "q": "If x = 5 and y = 14 in inverse proportion, determine k",
+      "hint": "multiply",
+      "steps": [
         "Step 1: Write formula k = x × y",
         "Step 2: Substitute values 5 × 14",
-        "Step 3: Compute result",
+        "Step 3: Compute result"
       ],
-      ans: "70",
-      why: "Inverse proportion keeps product of variables constant",
+      "ans": "70",
+      "why": "Inverse proportion keeps product of variables constant"
     },
-
     {
-      q: "If y is inversely proportional to x and x = 2, y = 30, find k",
-      hint: "constant product",
-      steps: [
+      "q": "If y is inversely proportional to x and x = 2, y = 30, find k",
+      "hint": "constant product",
+      "steps": [
         "Step 1: Write k = x × y",
         "Step 2: Substitute 2 × 30",
-        "Step 3: Multiply to get k",
+        "Step 3: Multiply to get k"
       ],
-      ans: "60",
-      why: "Inverse proportion is defined by a constant product relationship",
-    },
-  ],
+      "ans": "60",
+      "why": "Inverse proportion is defined by a constant product relationship"
+    }
+  ]
 );
-/* =========================================================
-   STATISTICS 
-========================================================= */
-/* =========================
-   1. DATA AND FREQUENCY TABLES
-========================= */
+
 add(
   "math",
   "statistics",
   "Data & frequency tables",
+
   `<h2>Data & Frequency Tables</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6499,80 +6349,76 @@ Conclusion:
 <li>Population studies</li>
 </ul>
 `,
+
   [
     {
-      q: "Find frequency of 7 in data: 7, 2, 7, 5, 7, 1",
-      hint: "count occurrences",
-      steps: [
+      "q": "Find frequency of 7 in data: 7, 2, 7, 5, 7, 1",
+      "hint": "count occurrences",
+      "steps": [
         "Step 1: Scan the dataset",
         "Step 2: Identify all occurrences of 7",
         "Step 3: Count each appearance",
-        "Step 4: Write total frequency",
+        "Step 4: Write total frequency"
       ],
-      ans: "3",
-      why: "Frequency is the number of times a value appears in a dataset",
+      "ans": "3",
+      "why": "Frequency is the number of times a value appears in a dataset"
     },
-
     {
-      q: "Find frequency of 3 in data: 1, 3, 3, 3, 4, 5, 3",
-      hint: "tally method",
-      steps: [
+      "q": "Find frequency of 3 in data: 1, 3, 3, 3, 4, 5, 3",
+      "hint": "tally method",
+      "steps": [
         "Step 1: Go through each value one by one",
         "Step 2: Mark every occurrence of 3",
         "Step 3: Count all marks",
-        "Step 4: Record final frequency",
+        "Step 4: Record final frequency"
       ],
-      ans: "4",
-      why: "Counting repeated values gives frequency",
+      "ans": "4",
+      "why": "Counting repeated values gives frequency"
     },
-
     {
-      q: "Find frequency of even numbers in: 2, 4, 5, 6, 8, 9, 2, 4",
-      hint: "filter then count",
-      steps: [
+      "q": "Find frequency of even numbers in: 2, 4, 5, 6, 8, 9, 2, 4",
+      "hint": "filter then count",
+      "steps": [
         "Step 1: Identify even numbers (2, 4, 6, 8)",
         "Step 2: List occurrences: 2,4,6,8 in dataset",
         "Step 3: Count total even values",
-        "Step 4: Compute frequency",
+        "Step 4: Compute frequency"
       ],
-      ans: "6",
-      why: "Frequency can apply to a condition, not just one value",
+      "ans": "6",
+      "why": "Frequency can apply to a condition, not just one value"
     },
-
     {
-      q: "What is the frequency of values greater than 5 in: 3, 6, 7, 2, 9, 5, 8",
-      hint: "condition-based counting",
-      steps: [
+      "q": "What is the frequency of values greater than 5 in: 3, 6, 7, 2, 9, 5, 8",
+      "hint": "condition-based counting",
+      "steps": [
         "Step 1: Identify values greater than 5 (6, 7, 9, 8)",
         "Step 2: Count each occurrence",
         "Step 3: Total the count",
-        "Step 4: Write final frequency",
+        "Step 4: Write final frequency"
       ],
-      ans: "4",
-      why: "Frequency can measure how often a condition is satisfied in data",
+      "ans": "4",
+      "why": "Frequency can measure how often a condition is satisfied in data"
     },
-
     {
-      q: "Find frequency of 10 in data: 1, 2, 3, 4, 5",
-      hint: "absence check",
-      steps: [
+      "q": "Find frequency of 10 in data: 1, 2, 3, 4, 5",
+      "hint": "absence check",
+      "steps": [
         "Step 1: Scan dataset for 10",
         "Step 2: Confirm if it appears",
         "Step 3: Count occurrences",
-        "Step 4: Record result",
+        "Step 4: Record result"
       ],
-      ans: "0",
-      why: "If a value does not appear, its frequency is zero",
-    },
-  ],
+      "ans": "0",
+      "why": "If a value does not appear, its frequency is zero"
+    }
+  ]
 );
-/* =========================
-   2. MEAN
-========================= */
+
 add(
   "math",
   "statistics",
   "Mean",
+
   `<h2>Mean (Average)</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6618,84 +6464,80 @@ Step 3: Mean = 20 ÷ 3 = 6.67
 <li>Sports performance statistics</li>
 </ul>
 `,
+
   [
     {
-      q: "Find mean of 5, 7, 9, 3",
-      hint: "sum ÷ number of values",
-      steps: [
+      "q": "Find mean of 5, 7, 9, 3",
+      "hint": "sum ÷ number of values",
+      "steps": [
         "Step 1: Add all values 5 + 7 + 9 + 3",
         "Step 2: Compute total sum = 24",
         "Step 3: Count number of values = 4",
         "Step 4: Divide 24 ÷ 4",
-        "Step 5: Write final mean",
+        "Step 5: Write final mean"
       ],
-      ans: "6",
-      why: "Mean is total sum divided by number of values",
+      "ans": "6",
+      "why": "Mean is total sum divided by number of values"
     },
-
     {
-      q: "Find mean of 12, 15, 9, 24",
-      hint: "average calculation",
-      steps: [
+      "q": "Find mean of 12, 15, 9, 24",
+      "hint": "average calculation",
+      "steps": [
         "Step 1: Add values 12 + 15 + 9 + 24",
         "Step 2: Compute sum = 60",
         "Step 3: Count values = 4",
         "Step 4: Divide 60 ÷ 4",
-        "Step 5: Get mean",
+        "Step 5: Get mean"
       ],
-      ans: "15",
-      why: "Mean balances all values into a single representative number",
+      "ans": "15",
+      "why": "Mean balances all values into a single representative number"
     },
-
     {
-      q: "A dataset has values 10, 10, 10, 50. Find the mean and explain effect of outlier",
-      hint: "outlier impact",
-      steps: [
+      "q": "A dataset has values 10, 10, 10, 50. Find the mean and explain effect of outlier",
+      "hint": "outlier impact",
+      "steps": [
         "Step 1: Add values 10 + 10 + 10 + 50",
         "Step 2: Compute sum = 80",
         "Step 3: Divide by 4 values",
         "Step 4: Mean = 20",
-        "Step 5: Compare with typical value 10",
+        "Step 5: Compare with typical value 10"
       ],
-      ans: "20",
-      why: "A single large value increases the mean significantly",
+      "ans": "20",
+      "why": "A single large value increases the mean significantly"
     },
-
     {
-      q: "If mean of 4 numbers is 8, what is their total sum?",
-      hint: "reverse formula",
-      steps: [
+      "q": "If mean of 4 numbers is 8, what is their total sum?",
+      "hint": "reverse formula",
+      "steps": [
         "Step 1: Use formula mean = sum ÷ n",
         "Step 2: Rearrange sum = mean × n",
         "Step 3: Substitute sum = 8 × 4",
-        "Step 4: Compute result",
+        "Step 4: Compute result"
       ],
-      ans: "32",
-      why: "Rearranging mean formula gives total sum directly",
+      "ans": "32",
+      "why": "Rearranging mean formula gives total sum directly"
     },
-
     {
-      q: "Find mean of 2, 4, 6, 8, 10",
-      hint: "arithmetic mean",
-      steps: [
+      "q": "Find mean of 2, 4, 6, 8, 10",
+      "hint": "arithmetic mean",
+      "steps": [
         "Step 1: Add all values",
         "Step 2: 2 + 4 + 6 + 8 + 10 = 30",
         "Step 3: Count values = 5",
         "Step 4: Divide 30 ÷ 5",
-        "Step 5: Final answer",
+        "Step 5: Final answer"
       ],
-      ans: "6",
-      why: "Mean represents central value of a balanced dataset",
-    },
-  ],
+      "ans": "6",
+      "why": "Mean represents central value of a balanced dataset"
+    }
+  ]
 );
-/* =========================
-   3. MEDIAN
-========================= */
+
 add(
   "math",
   "statistics",
   "Median",
+
   `<h2>Median</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6744,67 +6586,63 @@ Step 3: Median = (4 + 6) ÷ 2 = 5
 
   [
     {
-      q: "Find the median of 7, 3, 12, 5, 9",
-      hint: "sort first",
-      steps: [
+      "q": "Find the median of 7, 3, 12, 5, 9",
+      "hint": "sort first",
+      "steps": [
         "Step 1: Arrange numbers in ascending order",
         "Step 2: 3, 5, 7, 9, 12",
         "Step 3: Identify middle position",
-        "Step 4: Pick the middle value",
+        "Step 4: Pick the middle value"
       ],
-      ans: "7",
-      why: "Median is the central value of an ordered dataset",
+      "ans": "7",
+      "why": "Median is the central value of an ordered dataset"
     },
-
     {
-      q: "Find the median of 4, 8, 2, 10, 6, 12",
-      hint: "even number of values",
-      steps: [
+      "q": "Find the median of 4, 8, 2, 10, 6, 12",
+      "hint": "even number of values",
+      "steps": [
         "Step 1: Arrange in order",
         "Step 2: 2, 4, 6, 8, 10, 12",
         "Step 3: Identify two middle values",
         "Step 4: Take average of 6 and 8",
-        "Step 5: Compute result",
+        "Step 5: Compute result"
       ],
-      ans: "7",
-      why: "Even datasets use the mean of two middle values",
+      "ans": "7",
+      "why": "Even datasets use the mean of two middle values"
     },
-
     {
-      q: "Find median of 15, 3, 9, 21, 11",
-      hint: "ordering method",
-      steps: [
+      "q": "Find median of 15, 3, 9, 21, 11",
+      "hint": "ordering method",
+      "steps": [
         "Step 1: Sort values",
         "Step 2: 3, 9, 11, 15, 21",
         "Step 3: Locate central value",
-        "Step 4: Select median",
+        "Step 4: Select median"
       ],
-      ans: "11",
-      why: "Median is the middle number after ordering",
+      "ans": "11",
+      "why": "Median is the middle number after ordering"
     },
-
     {
-      q: "Find median of 1, 2, 3, 4",
-      hint: "two middle numbers",
-      steps: [
+      "q": "Find median of 1, 2, 3, 4",
+      "hint": "two middle numbers",
+      "steps": [
         "Step 1: Arrange in order",
         "Step 2: Identify middle values 2 and 3",
         "Step 3: Add 2 + 3 = 5",
         "Step 4: Divide by 2",
-        "Step 5: Compute median",
+        "Step 5: Compute median"
       ],
-      ans: "2.5",
-      why: "Median of even dataset is average of middle values",
-    },
-  ],
+      "ans": "2.5",
+      "why": "Median of even dataset is average of middle values"
+    }
+  ]
 );
-/* =========================
-   4. MODE
-========================= */
+
 add(
   "math",
   "statistics",
   "Mode",
+
   `<h2>Mode</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6860,66 +6698,62 @@ Mode = 5 and 6 (bimodal)
 
   [
     {
-      q: "Find the mode of 6, 3, 6, 2, 6, 3",
-      hint: "count frequency",
-      steps: [
+      "q": "Find the mode of 6, 3, 6, 2, 6, 3",
+      "hint": "count frequency",
+      "steps": [
         "Step 1: List each value in the dataset",
         "Step 2: Count occurrences of each number",
         "Step 3: 6 appears 3 times, 3 appears 2 times, 2 appears 1 time",
         "Step 4: Identify highest frequency",
-        "Step 5: Select value with highest count",
+        "Step 5: Select value with highest count"
       ],
-      ans: "6",
-      why: "Mode is the value that appears most frequently",
+      "ans": "6",
+      "why": "Mode is the value that appears most frequently"
     },
-
     {
-      q: "Find the mode of 5, 1, 5, 2, 2, 3",
-      hint: "multiple highest frequencies",
-      steps: [
+      "q": "Find the mode of 5, 1, 5, 2, 2, 3",
+      "hint": "multiple highest frequencies",
+      "steps": [
         "Step 1: Count frequency of each value",
         "Step 2: 5 appears 2 times, 2 appears 2 times",
         "Step 3: Identify highest frequency",
-        "Step 4: List all values with same highest count",
+        "Step 4: List all values with same highest count"
       ],
-      ans: "5 and 2",
-      why: "A dataset can have more than one mode if frequencies are equal",
+      "ans": "5 and 2",
+      "why": "A dataset can have more than one mode if frequencies are equal"
     },
-
     {
-      q: "Find mode of 8, 9, 10, 11",
-      hint: "no repetition",
-      steps: [
+      "q": "Find mode of 8, 9, 10, 11",
+      "hint": "no repetition",
+      "steps": [
         "Step 1: Count frequency of each value",
         "Step 2: Check if any value repeats",
         "Step 3: Compare frequencies",
-        "Step 4: Determine mode",
+        "Step 4: Determine mode"
       ],
-      ans: "No mode",
-      why: "If all values occur only once, there is no mode",
+      "ans": "No mode",
+      "why": "If all values occur only once, there is no mode"
     },
-
     {
-      q: "Find mode of 12, 12, 15, 15, 18, 18",
-      hint: "equal frequency",
-      steps: [
+      "q": "Find mode of 12, 12, 15, 15, 18, 18",
+      "hint": "equal frequency",
+      "steps": [
         "Step 1: Count occurrences",
         "Step 2: 12 = 2 times, 15 = 2 times, 18 = 2 times",
         "Step 3: Identify highest frequency",
-        "Step 4: List all modes",
+        "Step 4: List all modes"
       ],
-      ans: "12, 15, 18",
-      why: "All values share the same highest frequency",
-    },
-  ],
+      "ans": "12, 15, 18",
+      "why": "All values share the same highest frequency"
+    }
+  ]
 );
-/* =========================
-   5. BAR GRAPHS
-========================= */
+
 add(
   "math",
   "statistics",
   "Bar graphs",
+
   `<h2>Bar Graphs</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -6973,117 +6807,72 @@ Mangoes  ███       (3)
 
   [
     {
-      q: "In a dataset: Apples = 5, Mangoes = 9, Bananas = 3, Grapes = 7. Which category has the highest value?",
-      hint: "compare values",
-      steps: [
+      "q": "In a dataset: Apples = 5, Mangoes = 9, Bananas = 3, Grapes = 7. Which category has the highest value?",
+      "hint": "compare values",
+      "steps": [
         "Step 1: List all values",
         "Step 2: Apples = 5, Mangoes = 9, Bananas = 3, Grapes = 7",
         "Step 3: Compare magnitudes",
-        "Step 4: Identify the largest value",
+        "Step 4: Identify the largest value"
       ],
-      ans: `
-Bar Graph (visual representation):
-
-Apples   | █████ (5)
-Mangoes  | █████████ (9)
-Bananas  | ███ (3)
-Grapes   | ███████ (7)
-
-Highest bar = Mangoes (9)
-  `,
-      why: "Bar graphs represent data using height, so the largest value has the tallest bar",
+      "ans": "\nBar Graph (visual representation):\n\nApples   | █████ (5)\nMangoes  | █████████ (9)\nBananas  | ███ (3)\nGrapes   | ███████ (7)\n\nHighest bar = Mangoes (9)\n  ",
+      "why": "Bar graphs represent data using height, so the largest value has the tallest bar"
     },
-
     {
-      q: "In a bar chart, values are 2, 6, 4, 10. Find the difference between highest and lowest bars",
-      hint: "range",
-      steps: [
+      "q": "In a bar chart, values are 2, 6, 4, 10. Find the difference between highest and lowest bars",
+      "hint": "range",
+      "steps": [
         "Step 1: Identify highest value = 10",
         "Step 2: Identify lowest value = 2",
         "Step 3: Subtract 10 − 2",
-        "Step 4: Compute result",
+        "Step 4: Compute result"
       ],
-      ans: `
-Bar Representation:
-
-2  | ██
-6  | ██████
-4  | ████
-10 | ██████████
-
-Range = 10 − 2 = 8
-  `,
-      why: "Difference between bar heights shows range of data",
+      "ans": "\nBar Representation:\n\n2  | ██\n6  | ██████\n4  | ████\n10 | ██████████\n\nRange = 10 − 2 = 8\n  ",
+      "why": "Difference between bar heights shows range of data"
     },
-
     {
-      q: "If a bar represents 12 units and another represents 5 units, how many more units does the first represent?",
-      hint: "subtraction",
-      steps: [
+      "q": "If a bar represents 12 units and another represents 5 units, how many more units does the first represent?",
+      "hint": "subtraction",
+      "steps": [
         "Step 1: Identify values 12 and 5",
         "Step 2: Subtract 12 − 5",
         "Step 3: Compute difference",
-        "Step 4: Interpret result",
+        "Step 4: Interpret result"
       ],
-      ans: `
-Bar Comparison:
-
-12 | ████████████
-5  | █████
-
-Difference = 12 − 5 = 7
-  `,
-      why: "Bar comparison uses difference in heights",
+      "ans": "\nBar Comparison:\n\n12 | ████████████\n5  | █████\n\nDifference = 12 − 5 = 7\n  ",
+      "why": "Bar comparison uses difference in heights"
     },
-
     {
-      q: "If total value in a bar chart is 40 and one category is 15, what is the remaining total?",
-      hint: "total minus part",
-      steps: [
+      "q": "If total value in a bar chart is 40 and one category is 15, what is the remaining total?",
+      "hint": "total minus part",
+      "steps": [
         "Step 1: Identify total = 40",
         "Step 2: Identify part = 15",
         "Step 3: Subtract 40 − 15",
-        "Step 4: Compute remaining value",
+        "Step 4: Compute remaining value"
       ],
-      ans: `
-Total Bar:
-
-40 | ████████████████████████████████████████
-15 | ███████████████
-
-Remaining = 25
-  `,
-      why: "Bar charts can represent parts of a whole using subtraction",
+      "ans": "\nTotal Bar:\n\n40 | ████████████████████████████████████████\n15 | ███████████████\n\nRemaining = 25\n  ",
+      "why": "Bar charts can represent parts of a whole using subtraction"
     },
-
     {
-      q: "Which statement is true about bar graphs?",
-      hint: "representation",
-      steps: [
+      "q": "Which statement is true about bar graphs?",
+      "hint": "representation",
+      "steps": [
         "Step 1: Understand bar height meaning",
         "Step 2: Compare different categories",
-        "Step 3: Interpret visual data",
+        "Step 3: Interpret visual data"
       ],
-      ans: `
-Bar Graph Idea:
-
-A  | ███
-B  | ██████
-C  | █████████
-
-Bars represent values using height comparison
-  `,
-      why: "Bar graphs convert numbers into visual lengths for comparison",
-    },
-  ],
+      "ans": "\nBar Graph Idea:\n\nA  | ███\nB  | ██████\nC  | █████████\n\nBars represent values using height comparison\n  ",
+      "why": "Bar graphs convert numbers into visual lengths for comparison"
+    }
+  ]
 );
-/* =========================
-   1. BASIC PROBABILITY
-========================= */
+
 add(
   "math",
   "probability",
   "Basic probability",
+
   `<h2>Basic Probability</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -7144,82 +6933,77 @@ Step 3: P = 1/5
 
   [
     {
-      q: "A bag contains 5 red balls and 3 blue balls. What is the probability of picking a blue ball?",
-      hint: "favorable ÷ total",
-      steps: [
+      "q": "A bag contains 5 red balls and 3 blue balls. What is the probability of picking a blue ball?",
+      "hint": "favorable ÷ total",
+      "steps": [
         "Step 1: Identify total number of balls = 5 + 3 = 8",
         "Step 2: Identify favorable outcomes (blue balls) = 3",
         "Step 3: Write probability formula P = favorable / total",
         "Step 4: Substitute P = 3 / 8",
-        "Step 5: Simplify if possible",
+        "Step 5: Simplify if possible"
       ],
-      ans: "3/8",
-      why: "Probability is calculated as favorable outcomes divided by total outcomes",
+      "ans": "3/8",
+      "why": "Probability is calculated as favorable outcomes divided by total outcomes"
     },
-
     {
-      q: "A bag has 6 red balls and 4 blue balls. What is the probability of NOT picking red?",
-      hint: "complement rule",
-      steps: [
+      "q": "A bag has 6 red balls and 4 blue balls. What is the probability of NOT picking red?",
+      "hint": "complement rule",
+      "steps": [
         "Step 1: Find total balls = 6 + 4 = 10",
         "Step 2: Identify non-red outcomes = blue balls = 4",
         "Step 3: Write probability P = favorable / total",
         "Step 4: Substitute P = 4 / 10",
-        "Step 5: Simplify fraction",
+        "Step 5: Simplify fraction"
       ],
-      ans: "2/5",
-      why: "Not picking red means selecting from all non-red outcomes",
+      "ans": "2/5",
+      "why": "Not picking red means selecting from all non-red outcomes"
     },
-
     {
-      q: "A fair dice is rolled. What is the probability of getting an even number?",
-      hint: "count favorable outcomes",
-      steps: [
+      "q": "A fair dice is rolled. What is the probability of getting an even number?",
+      "hint": "count favorable outcomes",
+      "steps": [
         "Step 1: List sample space = {1,2,3,4,5,6}",
         "Step 2: Identify even numbers = {2,4,6}",
         "Step 3: Count favorable outcomes = 3",
         "Step 4: Count total outcomes = 6",
-        "Step 5: Compute probability = 3/6",
+        "Step 5: Compute probability = 3/6"
       ],
-      ans: "1/2",
-      why: "Probability depends on ratio of favorable to total outcomes",
+      "ans": "1/2",
+      "why": "Probability depends on ratio of favorable to total outcomes"
     },
-
     {
-      q: "What is the probability of getting a number greater than 4 on a fair dice?",
-      hint: "sample space filtering",
-      steps: [
+      "q": "What is the probability of getting a number greater than 4 on a fair dice?",
+      "hint": "sample space filtering",
+      "steps": [
         "Step 1: List outcomes = {1,2,3,4,5,6}",
         "Step 2: Identify numbers > 4 = {5,6}",
         "Step 3: Count favorable outcomes = 2",
         "Step 4: Total outcomes = 6",
-        "Step 5: Write probability = 2/6",
+        "Step 5: Write probability = 2/6"
       ],
-      ans: "1/3",
-      why: "Probability is favorable outcomes divided by total outcomes",
+      "ans": "1/3",
+      "why": "Probability is favorable outcomes divided by total outcomes"
     },
-
     {
-      q: "What is the probability range of any event?",
-      hint: "limits",
-      steps: [
+      "q": "What is the probability range of any event?",
+      "hint": "limits",
+      "steps": [
         "Step 1: Identify impossible event = 0",
         "Step 2: Identify certain event = 1",
         "Step 3: Understand probability scale",
-        "Step 4: Define range",
+        "Step 4: Define range"
       ],
-      ans: "0 to 1",
-      why: "Probability values always lie between impossible (0) and certain (1)",
-    },
-  ],
+      "ans": "0 to 1",
+      "why": "Probability values always lie between impossible (0) and certain (1)"
+    }
+  ]
 );
-/* =========================
-   2. DICE PROBABILITY
-========================= */
+
 add(
   "math",
   "probability",
   "Dice probability",
+
   `<h2>Dice Probability</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -7278,89 +7062,83 @@ P = 2/6 = 1/3
 
   [
     {
-      q: "A fair die is rolled. What is the probability of getting a number less than 4?",
-      hint: "filter outcomes",
-      steps: [
+      "q": "A fair die is rolled. What is the probability of getting a number less than 4?",
+      "hint": "filter outcomes",
+      "steps": [
         "Step 1: Write sample space S = {1,2,3,4,5,6}",
         "Step 2: Identify outcomes < 4 = {1,2,3}",
         "Step 3: Count favorable outcomes = 3",
         "Step 4: Total outcomes = 6",
         "Step 5: Compute probability = 3/6",
-        "Step 6: Simplify fraction",
+        "Step 6: Simplify fraction"
       ],
-      ans: "1/2",
-      why: "Probability is favorable outcomes divided by total outcomes",
+      "ans": "1/2",
+      "why": "Probability is favorable outcomes divided by total outcomes"
     },
-
     {
-      q: "A fair die is rolled. What is the probability of getting an even number?",
-      hint: "even numbers",
-      steps: [
+      "q": "A fair die is rolled. What is the probability of getting an even number?",
+      "hint": "even numbers",
+      "steps": [
         "Step 1: Write sample space S = {1,2,3,4,5,6}",
         "Step 2: Identify even outcomes = {2,4,6}",
         "Step 3: Count favorable outcomes = 3",
         "Step 4: Total outcomes = 6",
         "Step 5: Compute probability = 3/6",
-        "Step 6: Simplify fraction",
+        "Step 6: Simplify fraction"
       ],
-      ans: "1/2",
-      why: "Even numbers are half of all outcomes on a fair die",
+      "ans": "1/2",
+      "why": "Even numbers are half of all outcomes on a fair die"
     },
-
     {
-      q: "A fair die is rolled. What is the probability of getting a multiple of 3?",
-      hint: "multiples",
-      steps: [
+      "q": "A fair die is rolled. What is the probability of getting a multiple of 3?",
+      "hint": "multiples",
+      "steps": [
         "Step 1: Write sample space S = {1,2,3,4,5,6}",
         "Step 2: Identify multiples of 3 = {3,6}",
         "Step 3: Count favorable outcomes = 2",
         "Step 4: Total outcomes = 6",
         "Step 5: Compute probability = 2/6",
-        "Step 6: Simplify fraction",
+        "Step 6: Simplify fraction"
       ],
-      ans: "1/3",
-      why: "Probability is based on count of favorable outcomes over total outcomes",
+      "ans": "1/3",
+      "why": "Probability is based on count of favorable outcomes over total outcomes"
     },
-
     {
-      q: "A fair die is rolled. What is the probability of getting a number that is not a prime?",
-      hint: "complement",
-      steps: [
+      "q": "A fair die is rolled. What is the probability of getting a number that is not a prime?",
+      "hint": "complement",
+      "steps": [
         "Step 1: Write sample space S = {1,2,3,4,5,6}",
         "Step 2: Identify primes = {2,3,5}",
         "Step 3: Identify non-primes = {1,4,6}",
         "Step 4: Count favorable outcomes = 3",
         "Step 5: Total outcomes = 6",
         "Step 6: Compute probability = 3/6",
-        "Step 7: Simplify fraction",
+        "Step 7: Simplify fraction"
       ],
-      ans: "1/2",
-      why: "Non-prime outcomes are the complement of prime outcomes",
+      "ans": "1/2",
+      "why": "Non-prime outcomes are the complement of prime outcomes"
     },
-
     {
-      q: "A fair die is rolled. What is the probability of getting 6?",
-      hint: "single outcome",
-      steps: [
+      "q": "A fair die is rolled. What is the probability of getting 6?",
+      "hint": "single outcome",
+      "steps": [
         "Step 1: Write sample space S = {1,2,3,4,5,6}",
         "Step 2: Identify favorable outcome = {6}",
         "Step 3: Count favorable outcomes = 1",
         "Step 4: Total outcomes = 6",
-        "Step 5: Compute probability = 1/6",
+        "Step 5: Compute probability = 1/6"
       ],
-      ans: "1/6",
-      why: "Single outcomes have probability 1 over total sample space",
-    },
-  ],
+      "ans": "1/6",
+      "why": "Single outcomes have probability 1 over total sample space"
+    }
+  ]
 );
 
-/* =========================
-   3. COIN PROBABILITY
-========================= */
 add(
   "math",
   "probability",
   "Coin probability",
+
   `<h2>Coin Probability</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -7445,84 +7223,78 @@ P = 2/4 = 1/2
 
   [
     {
-      q: "A coin is tossed once. Find the probability of getting a head",
-      hint: "equally likely outcomes",
-      steps: [
+      "q": "A coin is tossed once. Find the probability of getting a head",
+      "hint": "equally likely outcomes",
+      "steps": [
         "Step 1: Write sample space S = {H, T}",
         "Step 2: Identify favorable outcome = {H}",
         "Step 3: Count favorable outcomes = 1",
         "Step 4: Count total outcomes = 2",
-        "Step 5: Compute probability = 1/2",
+        "Step 5: Compute probability = 1/2"
       ],
-      ans: "1/2",
-      why: "Probability is favorable outcomes divided by total equally likely outcomes",
+      "ans": "1/2",
+      "why": "Probability is favorable outcomes divided by total equally likely outcomes"
     },
-
     {
-      q: "A coin is tossed twice. Find the probability of getting two heads",
-      hint: "independent events",
-      steps: [
+      "q": "A coin is tossed twice. Find the probability of getting two heads",
+      "hint": "independent events",
+      "steps": [
         "Step 1: List sample space = {HH, HT, TH, TT}",
         "Step 2: Identify favorable outcome = {HH}",
         "Step 3: Count favorable outcomes = 1",
         "Step 4: Count total outcomes = 4",
-        "Step 5: Compute probability = 1/4",
+        "Step 5: Compute probability = 1/4"
       ],
-      ans: "1/4",
-      why: "Independent events multiply probabilities: 1/2 × 1/2",
+      "ans": "1/4",
+      "why": "Independent events multiply probabilities: 1/2 × 1/2"
     },
-
     {
-      q: "A coin is tossed twice. Find the probability of getting exactly one head",
-      hint: "favorable outcomes",
-      steps: [
+      "q": "A coin is tossed twice. Find the probability of getting exactly one head",
+      "hint": "favorable outcomes",
+      "steps": [
         "Step 1: List sample space = {HH, HT, TH, TT}",
         "Step 2: Identify outcomes with one head = {HT, TH}",
         "Step 3: Count favorable outcomes = 2",
         "Step 4: Count total outcomes = 4",
         "Step 5: Compute probability = 2/4",
-        "Step 6: Simplify fraction",
+        "Step 6: Simplify fraction"
       ],
-      ans: "1/2",
-      why: "Exactly one head occurs in two of the four equally likely outcomes",
+      "ans": "1/2",
+      "why": "Exactly one head occurs in two of the four equally likely outcomes"
     },
-
     {
-      q: "What is the probability of getting at least one tail in two coin tosses?",
-      hint: "complement method",
-      steps: [
+      "q": "What is the probability of getting at least one tail in two coin tosses?",
+      "hint": "complement method",
+      "steps": [
         "Step 1: List sample space = {HH, HT, TH, TT}",
         "Step 2: Identify complement event = no tails = {HH}",
         "Step 3: Compute P(no tail) = 1/4",
         "Step 4: Use complement rule 1 − P(no tail)",
-        "Step 5: Calculate 1 − 1/4",
+        "Step 5: Calculate 1 − 1/4"
       ],
-      ans: "3/4",
-      why: "Complement rule simplifies probability of complex events",
+      "ans": "3/4",
+      "why": "Complement rule simplifies probability of complex events"
     },
-
     {
-      q: "Why is probability of head in a fair coin 1/2?",
-      hint: "symmetry",
-      steps: [
+      "q": "Why is probability of head in a fair coin 1/2?",
+      "hint": "symmetry",
+      "steps": [
         "Step 1: Identify outcomes = {H, T}",
         "Step 2: Check fairness (equal likelihood)",
         "Step 3: Assign equal probability to each outcome",
-        "Step 4: Divide 1 outcome by 2 total outcomes",
+        "Step 4: Divide 1 outcome by 2 total outcomes"
       ],
-      ans: "1/2",
-      why: "A fair coin has symmetric outcomes with equal probability",
-    },
-  ],
+      "ans": "1/2",
+      "why": "A fair coin has symmetric outcomes with equal probability"
+    }
+  ]
 );
 
-/* =========================
-   4. COMBINED EVENTS
-========================= */
 add(
   "math",
   "probability",
   "Combined events",
+
   `<h2>Combined Events</h2>
 
 <h3> FOUNDATION EXPLANATION</h3>
@@ -7600,93 +7372,88 @@ Event A (coin)     Event B (die)
 
 ---
 `,
+
   [
     {
-      q: "A coin is tossed and a die is rolled. Find P(tail and 3)",
-      hint: "independent events multiply",
-      steps: [
+      "q": "A coin is tossed and a die is rolled. Find P(tail and 3)",
+      "hint": "independent events multiply",
+      "steps": [
         "Step 1: P(tail) = 1/2",
         "Step 2: P(3 on die) = 1/6",
         "Step 3: Multiply 1/2 × 1/6",
-        "Step 4: Compute result = 1/12",
+        "Step 4: Compute result = 1/12"
       ],
-      ans: "1/12",
-      why: "Coin toss and die roll are independent events",
+      "ans": "1/12",
+      "why": "Coin toss and die roll are independent events"
     },
-
     {
-      q: "A coin is tossed and a die is rolled. Find P(head and even number)",
-      hint: "find even probability first",
-      steps: [
+      "q": "A coin is tossed and a die is rolled. Find P(head and even number)",
+      "hint": "find even probability first",
+      "steps": [
         "Step 1: P(head) = 1/2",
         "Step 2: Even numbers = {2,4,6} so P(even) = 3/6 = 1/2",
         "Step 3: Multiply 1/2 × 1/2",
-        "Step 4: Compute result = 1/4",
+        "Step 4: Compute result = 1/4"
       ],
-      ans: "1/4",
-      why: "Independent events are multiplied",
+      "ans": "1/4",
+      "why": "Independent events are multiplied"
     },
-
     {
-      q: "A coin is tossed and a die is rolled. Find P(head and number greater than 4)",
-      hint: "identify sample space",
-      steps: [
+      "q": "A coin is tossed and a die is rolled. Find P(head and number greater than 4)",
+      "hint": "identify sample space",
+      "steps": [
         "Step 1: P(head) = 1/2",
         "Step 2: Numbers > 4 = {5,6} so P = 2/6 = 1/3",
         "Step 3: Multiply 1/2 × 1/3",
-        "Step 4: Compute result = 1/6",
+        "Step 4: Compute result = 1/6"
       ],
-      ans: "1/6",
-      why: "Each event is independent so probabilities multiply",
+      "ans": "1/6",
+      "why": "Each event is independent so probabilities multiply"
     },
-
     {
-      q: "A coin is tossed twice. Find P(head on first toss and tail on second toss)",
-      hint: "list outcomes",
-      steps: [
+      "q": "A coin is tossed twice. Find P(head on first toss and tail on second toss)",
+      "hint": "list outcomes",
+      "steps": [
         "Step 1: P(head) = 1/2",
         "Step 2: P(tail) = 1/2",
         "Step 3: Multiply 1/2 × 1/2",
-        "Step 4: Compute result = 1/4",
+        "Step 4: Compute result = 1/4"
       ],
-      ans: "1/4",
-      why: "Each coin toss is independent",
+      "ans": "1/4",
+      "why": "Each coin toss is independent"
     },
-
     {
-      q: "A coin is tossed and a die is rolled. Find P(tail and prime number)",
-      hint: "prime numbers on a die",
-      steps: [
+      "q": "A coin is tossed and a die is rolled. Find P(tail and prime number)",
+      "hint": "prime numbers on a die",
+      "steps": [
         "Step 1: P(tail) = 1/2",
         "Step 2: Prime numbers = {2,3,5} so P = 3/6 = 1/2",
         "Step 3: Multiply 1/2 × 1/2",
-        "Step 4: Compute result = 1/4",
+        "Step 4: Compute result = 1/4"
       ],
-      ans: "1/4",
-      why: "Both events are independent",
+      "ans": "1/4",
+      "why": "Both events are independent"
     },
-
     {
-      q: "A coin is tossed and a die is rolled. Find P(head and not 6)",
-      hint: "complement on die",
-      steps: [
+      "q": "A coin is tossed and a die is rolled. Find P(head and not 6)",
+      "hint": "complement on die",
+      "steps": [
         "Step 1: P(head) = 1/2",
         "Step 2: P(not 6) = 5/6",
         "Step 3: Multiply 1/2 × 5/6",
-        "Step 4: Compute result = 5/12",
+        "Step 4: Compute result = 5/12"
       ],
-      ans: "5/12",
-      why: "Independent events multiply probabilities",
-    },
-  ],
+      "ans": "5/12",
+      "why": "Independent events multiply probabilities"
+    }
+  ]
 );
-/*===================================================
-Bayes Theorem
-===================================================*/
+
 add(
   "math",
   "probability",
   "Bayes Theorem",
+
   `
 <h2> Bayes Theorem</h2>
 <h3> DEEP NOTES</h3>
@@ -7741,82 +7508,78 @@ P(D | +) ≈ 0.083 = 8.3%
 
 ---
 `,
+
   [
     {
-      q: "A disease affects 1% of a population. A test has 90% accuracy for detecting the disease when it is present. What is P(Disease ∩ Positive)?",
-      hint: "use multiplication rule",
-      steps: [
+      "q": "A disease affects 1% of a population. A test has 90% accuracy for detecting the disease when it is present. What is P(Disease ∩ Positive)?",
+      "hint": "use multiplication rule",
+      "steps": [
         "Step 1: P(Disease) = 0.01",
         "Step 2: P(Positive | Disease) = 0.90",
         "Step 3: Apply Bayes building block: P(A ∩ B) = P(A) × P(B|A)",
         "Step 4: Multiply 0.01 × 0.90",
-        "Step 5: Compute result = 0.009",
+        "Step 5: Compute result = 0.009"
       ],
-      ans: "0.009",
-      why: "Joint probability combines prior probability with likelihood of evidence",
+      "ans": "0.009",
+      "why": "Joint probability combines prior probability with likelihood of evidence"
     },
-
     {
-      q: "A test detects a condition with probability 0.8 if the condition is present. If 5% of people have the condition, find P(Condition ∩ Positive)",
-      hint: "joint probability",
-      steps: [
+      "q": "A test detects a condition with probability 0.8 if the condition is present. If 5% of people have the condition, find P(Condition ∩ Positive)",
+      "hint": "joint probability",
+      "steps": [
         "Step 1: P(C) = 0.05",
         "Step 2: P(P+ | C) = 0.8",
         "Step 3: Multiply P(C) × P(P+ | C)",
         "Step 4: 0.05 × 0.8",
-        "Step 5: Compute result = 0.04",
+        "Step 5: Compute result = 0.04"
       ],
-      ans: "0.04",
-      why: "Bayes framework starts with prior probability then updates using evidence likelihood",
+      "ans": "0.04",
+      "why": "Bayes framework starts with prior probability then updates using evidence likelihood"
     },
-
     {
-      q: "In a system, 2% of items are defective. A detector correctly flags defective items 95% of the time. Find probability of defective AND flagged",
-      hint: "conditional probability",
-      steps: [
+      "q": "In a system, 2% of items are defective. A detector correctly flags defective items 95% of the time. Find probability of defective AND flagged",
+      "hint": "conditional probability",
+      "steps": [
         "Step 1: P(D) = 0.02",
         "Step 2: P(Flag | D) = 0.95",
         "Step 3: Multiply 0.02 × 0.95",
-        "Step 4: Compute result = 0.019",
+        "Step 4: Compute result = 0.019"
       ],
-      ans: "0.019",
-      why: "We combine prior defect rate with detection accuracy",
+      "ans": "0.019",
+      "why": "We combine prior defect rate with detection accuracy"
     },
-
     {
-      q: "A rare condition occurs in 1 out of 200 people. A test detects it with 98% accuracy. Find P(Condition ∩ Positive)",
-      hint: "convert fraction to probability",
-      steps: [
+      "q": "A rare condition occurs in 1 out of 200 people. A test detects it with 98% accuracy. Find P(Condition ∩ Positive)",
+      "hint": "convert fraction to probability",
+      "steps": [
         "Step 1: P(C) = 1/200 = 0.005",
         "Step 2: P(Pos | C) = 0.98",
         "Step 3: Multiply 0.005 × 0.98",
-        "Step 4: Compute result = 0.0049",
+        "Step 4: Compute result = 0.0049"
       ],
-      ans: "0.0049",
-      why: "Rare prior probability is updated using strong evidence likelihood",
+      "ans": "0.0049",
+      "why": "Rare prior probability is updated using strong evidence likelihood"
     },
-
     {
-      q: "A spam filter correctly identifies spam emails 85% of the time. If 30% of emails are spam, find P(Spam ∩ Detected)",
-      hint: "multiply probability and accuracy",
-      steps: [
+      "q": "A spam filter correctly identifies spam emails 85% of the time. If 30% of emails are spam, find P(Spam ∩ Detected)",
+      "hint": "multiply probability and accuracy",
+      "steps": [
         "Step 1: P(Spam) = 0.30",
         "Step 2: P(Detected | Spam) = 0.85",
         "Step 3: Multiply 0.30 × 0.85",
-        "Step 4: Compute result = 0.255",
+        "Step 4: Compute result = 0.255"
       ],
-      ans: "0.255",
-      why: "Bayes reasoning combines base rate with detection likelihood",
-    },
-  ],
+      "ans": "0.255",
+      "why": "Bayes reasoning combines base rate with detection likelihood"
+    }
+  ]
 );
-/*==================================================
-Expected Value
-==================================================*/
+
 add(
   "math",
   "probability",
   "Expected Value",
+
   `
 <h2> Expected Value</h2>
 
@@ -7862,83 +7625,79 @@ Expected Value = 5
 <li>Decision making under uncertainty</li>
 </ul>
 `,
+
   [
     {
-      q: "A game gives you 10 if you win with probability 0.3 and 0 if you lose with probability 0.7. Find the expected value",
-      hint: "use E(X) = Σ xP(x)",
-      steps: [
+      "q": "A game gives you 10 if you win with probability 0.3 and 0 if you lose with probability 0.7. Find the expected value",
+      "hint": "use E(X) = Σ xP(x)",
+      "steps": [
         "Step 1: List outcomes: win = 10, lose = 0",
         "Step 2: Assign probabilities: P(win)=0.3, P(lose)=0.7",
         "Step 3: Multiply outcomes: 10 × 0.3 = 3",
         "Step 4: Multiply loss outcome: 0 × 0.7 = 0",
-        "Step 5: Add results: 3 + 0",
+        "Step 5: Add results: 3 + 0"
       ],
-      ans: "3",
-      why: "Expected value is the weighted average of all possible outcomes",
+      "ans": "3",
+      "why": "Expected value is the weighted average of all possible outcomes"
     },
-
     {
-      q: "A dice game pays 6 when you roll a 6 and 0 otherwise. Find expected value",
-      hint: "probability of 6 is 1/6",
-      steps: [
+      "q": "A dice game pays 6 when you roll a 6 and 0 otherwise. Find expected value",
+      "hint": "probability of 6 is 1/6",
+      "steps": [
         "Step 1: Outcome 6 pays 6, probability = 1/6",
         "Step 2: All other outcomes pay 0, probability = 5/6",
         "Step 3: Compute 6 × 1/6 = 1",
         "Step 4: Compute 0 × 5/6 = 0",
-        "Step 5: Add results = 1",
+        "Step 5: Add results = 1"
       ],
-      ans: "1",
-      why: "Expected value combines all outcomes weighted by probability",
+      "ans": "1",
+      "why": "Expected value combines all outcomes weighted by probability"
     },
-
     {
-      q: "A lottery gives 100 with probability 0.05 and 0 otherwise. Find expected value",
-      hint: "weighted mean",
-      steps: [
+      "q": "A lottery gives 100 with probability 0.05 and 0 otherwise. Find expected value",
+      "hint": "weighted mean",
+      "steps": [
         "Step 1: Identify outcomes: 100 and 0",
         "Step 2: Assign probabilities: 0.05 and 0.95",
         "Step 3: Compute 100 × 0.05 = 5",
         "Step 4: Compute 0 × 0.95 = 0",
-        "Step 5: Add results",
+        "Step 5: Add results"
       ],
-      ans: "5",
-      why: "Expected value represents long-term average winnings",
+      "ans": "5",
+      "why": "Expected value represents long-term average winnings"
     },
-
     {
-      q: "A spinner gives 2 with probability 0.4 and 8 with probability 0.6. Find expected value",
-      hint: "multiply and add",
-      steps: [
+      "q": "A spinner gives 2 with probability 0.4 and 8 with probability 0.6. Find expected value",
+      "hint": "multiply and add",
+      "steps": [
         "Step 1: Compute 2 × 0.4 = 0.8",
         "Step 2: Compute 8 × 0.6 = 4.8",
         "Step 3: Add results 0.8 + 4.8",
-        "Step 4: Final value",
+        "Step 4: Final value"
       ],
-      ans: "5.6",
-      why: "Expected value averages outcomes based on probability weights",
+      "ans": "5.6",
+      "why": "Expected value averages outcomes based on probability weights"
     },
-
     {
-      q: "A risky investment returns 50 with probability 0.2 and -10 with probability 0.8. Find expected value",
-      hint: "include negative outcomes",
-      steps: [
+      "q": "A risky investment returns 50 with probability 0.2 and -10 with probability 0.8. Find expected value",
+      "hint": "include negative outcomes",
+      "steps": [
         "Step 1: Compute 50 × 0.2 = 10",
         "Step 2: Compute (-10) × 0.8 = -8",
         "Step 3: Add 10 + (-8)",
-        "Step 4: Final result",
+        "Step 4: Final result"
       ],
-      ans: "2",
-      why: "Expected value includes both gains and losses weighted by probability",
-    },
-  ],
+      "ans": "2",
+      "why": "Expected value includes both gains and losses weighted by probability"
+    }
+  ]
 );
-/* =========================
-   5. REAL life applications
-========================= */
+
 add(
   "math",
   "probability",
   "Real life probability",
+
   `
 <h2>Real World Applications of Probability</h2>
 
@@ -8010,47 +7769,46 @@ Impossible        Uncertain          Certain
 
 ---
 `,
+
   [
     {
-      Q1: "What does probability measure?",
-      Answer: "likelihood of an event happening",
-      Hint: "chance",
-      Explanation:
-        "Probability tells how likely something is to occur, from 0 (impossible) to 1 (certain)",
+      "q": "What does probability measure?",
+      "hint": "chance",
+      "ans": "likelihood of an event happening",
+      "why": "Probability tells how likely something is to occur, from 0 (impossible) to 1 (certain)"
     },
     {
-      Q2: "What does 0.7 probability mean?",
-      Answer: "70% chance of occurrence",
-      Hint: "convert to percentage",
-      Explanation: "0.7 means 70 out of 100 chances the event will happen",
+      "q": "What does 0.7 probability mean?",
+      "hint": "convert to percentage",
+      "ans": "70% chance of occurrence",
+      "why": "0.7 means 70 out of 100 chances the event will happen"
     },
     {
-      Q3: "Where is probability used in real life?",
-      Answer: "weather, insurance, sports, business",
-      Hint: "prediction systems",
-      Explanation: "It helps model uncertainty in real-world decisions",
+      "q": "Where is probability used in real life?",
+      "hint": "prediction systems",
+      "ans": "weather, insurance, sports, business",
+      "why": "It helps model uncertainty in real-world decisions"
     },
     {
-      Q4: "What does probability close to 1 mean?",
-      Answer: "very likely event",
-      Hint: "almost certain",
-      Explanation: "Values near 1 indicate high chance of happening",
+      "q": "What does probability close to 1 mean?",
+      "hint": "almost certain",
+      "ans": "very likely event",
+      "why": "Values near 1 indicate high chance of happening"
     },
     {
-      Q5: "What does probability close to 0 mean?",
-      Answer: "very unlikely event",
-      Hint: "rare event",
-      Explanation: "Values near 0 indicate low chance of happening",
-    },
-  ],
+      "q": "What does probability close to 0 mean?",
+      "hint": "rare event",
+      "ans": "very unlikely event",
+      "why": "Values near 0 indicate low chance of happening"
+    }
+  ]
 );
-/*==================================================
-MATRIX
-=================================================*/
+
 add(
   "math",
   "matrices",
   "Matrix Addition & Subtraction",
+
   `
 <h2> Matrix Addition & Subtraction</h2>
 
@@ -8143,84 +7901,80 @@ Same position elements → add or subtract → new matrix
 
 ---
 `,
+
   [
     {
-      q: "Add the matrices A = [[2, 5], [1, 3]] and B = [[4, 1], [6, 2]]",
-      hint: "add corresponding elements",
-      steps: [
+      "q": "Add the matrices A = [[2, 5], [1, 3]] and B = [[4, 1], [6, 2]]",
+      "hint": "add corresponding elements",
+      "steps": [
         "Step 1: Check dimensions → both are 2×2 matrices",
         "Step 2: Add first row: (2+4, 5+1) = (6, 6)",
         "Step 3: Add second row: (1+6, 3+2) = (7, 5)",
         "Step 4: Write final matrix result",
-        "Step 5: Combine into [[6,6],[7,5]]",
+        "Step 5: Combine into [[6,6],[7,5]]"
       ],
-      ans: "[[6,6],[7,5]]",
-      why: "Matrix addition is done element-by-element at the same positions",
+      "ans": "[[6,6],[7,5]]",
+      "why": "Matrix addition is done element-by-element at the same positions"
     },
-
     {
-      q: "Subtract B = [[3, 7], [2, 5]] from A = [[9, 4], [6, 8]]",
-      hint: "element-wise subtraction",
-      steps: [
+      "q": "Subtract B = [[3, 7], [2, 5]] from A = [[9, 4], [6, 8]]",
+      "hint": "element-wise subtraction",
+      "steps": [
         "Step 1: Confirm both matrices are 2×2",
         "Step 2: Subtract first row: (9−3, 4−7) = (6, −3)",
         "Step 3: Subtract second row: (6−2, 8−5) = (4, 3)",
         "Step 4: Combine results into matrix form",
-        "Step 5: Final matrix [[6,-3],[4,3]]",
+        "Step 5: Final matrix [[6,-3],[4,3]]"
       ],
-      ans: "[[6,-3],[4,3]]",
-      why: "Matrix subtraction is performed element-wise",
+      "ans": "[[6,-3],[4,3]]",
+      "why": "Matrix subtraction is performed element-wise"
     },
-
     {
-      q: "Find A + B where A = [[1, -2, 3], [4, 0, 5]] and B = [[3, 2, -1], [6, 1, 2]]",
-      hint: "3-column matrices",
-      steps: [
+      "q": "Find A + B where A = [[1, -2, 3], [4, 0, 5]] and B = [[3, 2, -1], [6, 1, 2]]",
+      "hint": "3-column matrices",
+      "steps": [
         "Step 1: Confirm both are 2×3 matrices",
         "Step 2: Add first row: (1+3, -2+2, 3+(-1)) = (4, 0, 2)",
         "Step 3: Add second row: (4+6, 0+1, 5+2) = (10, 1, 7)",
         "Step 4: Write final result matrix",
-        "Step 5: Combine into [[4,0,2],[10,1,7]]",
+        "Step 5: Combine into [[4,0,2],[10,1,7]]"
       ],
-      ans: "[[4,0,2],[10,1,7]]",
-      why: "Only matrices of equal size can be added element-wise",
+      "ans": "[[4,0,2],[10,1,7]]",
+      "why": "Only matrices of equal size can be added element-wise"
     },
-
     {
-      q: "Why can't a 2×2 matrix be added to a 2×3 matrix?",
-      hint: "dimension rule",
-      steps: [
+      "q": "Why can't a 2×2 matrix be added to a 2×3 matrix?",
+      "hint": "dimension rule",
+      "steps": [
         "Step 1: Identify number of rows in both matrices",
         "Step 2: Identify number of columns in both matrices",
         "Step 3: Compare dimensions (2×2 vs 2×3)",
         "Step 4: Check element-by-element matching requirement",
-        "Step 5: Conclude operation is invalid",
+        "Step 5: Conclude operation is invalid"
       ],
-      ans: "They have different dimensions",
-      why: "Matrix addition requires identical row and column structure",
+      "ans": "They have different dimensions",
+      "why": "Matrix addition requires identical row and column structure"
     },
-
     {
-      q: "A matrix represents pixel data in an image. What happens when two matrices are added?",
-      hint: "image blending",
-      steps: [
+      "q": "A matrix represents pixel data in an image. What happens when two matrices are added?",
+      "hint": "image blending",
+      "steps": [
         "Step 1: Treat matrices as pixel intensity values",
         "Step 2: Add corresponding pixel values",
         "Step 3: Observe intensity change",
-        "Step 4: Result becomes combined image data",
+        "Step 4: Result becomes combined image data"
       ],
-      ans: "They combine pixel values",
-      why: "Matrix addition is used in image processing to blend or modify images",
-    },
-  ],
+      "ans": "They combine pixel values",
+      "why": "Matrix addition is used in image processing to blend or modify images"
+    }
+  ]
 );
-/*=======================================================
-    Matrix Multiplication
-  =====================================================*/
+
 add(
   "math",
   "matrices",
   "Matrix Multiplication",
+
   `
 <h2> Matrix Multiplication</h2>
 
@@ -8312,87 +8066,83 @@ Row of A  ×  Column of B  →  Entry in result matrix
 
 ---
 `,
+
   [
     {
-      q: "Multiply A = [[1, 2], [3, 4]] by B = [[2, 0], [1, 2]]",
-      hint: "row by column (dot product)",
-      steps: [
+      "q": "Multiply A = [[1, 2], [3, 4]] by B = [[2, 0], [1, 2]]",
+      "hint": "row by column (dot product)",
+      "steps": [
         "Step 1: Check dimensions → A(2×2), B(2×2), multiplication possible",
         "Step 2: Compute first entry: (1×2 + 2×1) = 4",
         "Step 3: Compute second entry: (1×0 + 2×2) = 4",
         "Step 4: Compute third entry: (3×2 + 4×1) = 10",
         "Step 5: Compute fourth entry: (3×0 + 4×2) = 8",
-        "Step 6: Form final matrix [[4,4],[10,8]]",
+        "Step 6: Form final matrix [[4,4],[10,8]]"
       ],
-      ans: "[[4,4],[10,8]]",
-      why: "Matrix multiplication uses row-by-column dot product rule",
+      "ans": "[[4,4],[10,8]]",
+      "why": "Matrix multiplication uses row-by-column dot product rule"
     },
-
     {
-      q: "Multiply A = [[2, 1, 3]] by B = [[1], [2], [0]]",
-      hint: "row × column",
-      steps: [
+      "q": "Multiply A = [[2, 1, 3]] by B = [[1], [2], [0]]",
+      "hint": "row × column",
+      "steps": [
         "Step 1: Confirm A is 1×3 and B is 3×1",
         "Step 2: Multiply (2×1) = 2",
         "Step 3: Multiply (1×2) = 2",
         "Step 4: Multiply (3×0) = 0",
         "Step 5: Add results 2 + 2 + 0",
-        "Step 6: Final answer = 4",
+        "Step 6: Final answer = 4"
       ],
-      ans: "4",
-      why: "Dot product of row and column vectors gives a scalar",
+      "ans": "4",
+      "why": "Dot product of row and column vectors gives a scalar"
     },
-
     {
-      q: "Find A × I where A = [[5, 7], [2, 3]] and I = [[1, 0], [0, 1]]",
-      hint: "identity matrix property",
-      steps: [
+      "q": "Find A × I where A = [[5, 7], [2, 3]] and I = [[1, 0], [0, 1]]",
+      "hint": "identity matrix property",
+      "steps": [
         "Step 1: Multiply first row: (5×1 + 7×0, 5×0 + 7×1) = (5, 7)",
         "Step 2: Multiply second row: (2×1 + 3×0, 2×0 + 3×1) = (2, 3)",
         "Step 3: Form result matrix",
         "Step 4: Compare with original matrix",
-        "Step 5: Observe no change",
+        "Step 5: Observe no change"
       ],
-      ans: "[[5,7],[2,3]]",
-      why: "Identity matrix preserves original matrix values",
+      "ans": "[[5,7],[2,3]]",
+      "why": "Identity matrix preserves original matrix values"
     },
-
     {
-      q: "Compute 3 × [[2, -1], [4, 0]] (scalar multiplication)",
-      hint: "multiply every entry",
-      steps: [
+      "q": "Compute 3 × [[2, -1], [4, 0]] (scalar multiplication)",
+      "hint": "multiply every entry",
+      "steps": [
         "Step 1: Multiply 3 × 2 = 6",
         "Step 2: Multiply 3 × (-1) = -3",
         "Step 3: Multiply 3 × 4 = 12",
         "Step 4: Multiply 3 × 0 = 0",
-        "Step 5: Form final matrix [[6,-3],[12,0]]",
+        "Step 5: Form final matrix [[6,-3],[12,0]]"
       ],
-      ans: "[[6,-3],[12,0]]",
-      why: "Scalar multiplication scales every entry equally",
+      "ans": "[[6,-3],[12,0]]",
+      "why": "Scalar multiplication scales every entry equally"
     },
-
     {
-      q: "Show why A×B ≠ B×A using A = [[1,2],[0,1]] and B = [[2,0],[3,1]]",
-      hint: "check both products",
-      steps: [
+      "q": "Show why A×B ≠ B×A using A = [[1,2],[0,1]] and B = [[2,0],[3,1]]",
+      "hint": "check both products",
+      "steps": [
         "Step 1: Compute A×B = [[8,2],[3,1]]",
         "Step 2: Compute B×A = [[2,4],[3,7]]",
         "Step 3: Compare results",
         "Step 4: Observe they are different",
-        "Step 5: Conclude multiplication is not commutative",
+        "Step 5: Conclude multiplication is not commutative"
       ],
-      ans: "A×B ≠ B×A",
-      why: "Matrix multiplication depends on order of operations",
-    },
-  ],
+      "ans": "A×B ≠ B×A",
+      "why": "Matrix multiplication depends on order of operations"
+    }
+  ]
 );
-/*========================================================
-Determinants
-========================================================*/
+
 add(
   "math",
   "matrices",
   "Determinants",
+
   `
 <h2> Determinants</h2>
 
@@ -8485,83 +8235,79 @@ Matrix → Cross multiplication → Single value (determinant)
 
 ---
 `,
+
   [
     {
-      q: "Find the determinant of A = [[3, 2], [5, 4]]",
-      hint: "use ad - bc",
-      steps: [
+      "q": "Find the determinant of A = [[3, 2], [5, 4]]",
+      "hint": "use ad - bc",
+      "steps": [
         "Step 1: Identify a = 3, b = 2, c = 5, d = 4",
         "Step 2: Compute ad = 3 × 4 = 12",
         "Step 3: Compute bc = 2 × 5 = 10",
         "Step 4: Subtract ad - bc = 12 - 10",
-        "Step 5: Final determinant = 2",
+        "Step 5: Final determinant = 2"
       ],
-      ans: "2",
-      why: "Determinant is found using ad − bc for 2×2 matrices",
+      "ans": "2",
+      "why": "Determinant is found using ad − bc for 2×2 matrices"
     },
-
     {
-      q: "Find determinant of A = [[6, 1], [3, 2]]",
-      hint: "cross multiplication",
-      steps: [
+      "q": "Find determinant of A = [[6, 1], [3, 2]]",
+      "hint": "cross multiplication",
+      "steps": [
         "Step 1: Identify a = 6, b = 1, c = 3, d = 2",
         "Step 2: Compute ad = 6 × 2 = 12",
         "Step 3: Compute bc = 1 × 3 = 3",
         "Step 4: Subtract 12 - 3",
-        "Step 5: Final determinant = 9",
+        "Step 5: Final determinant = 9"
       ],
-      ans: "9",
-      why: "Determinant measures scaling and invertibility of matrix",
+      "ans": "9",
+      "why": "Determinant measures scaling and invertibility of matrix"
     },
-
     {
-      q: "Find determinant of A = [[2, 5], [4, 10]]",
-      hint: "check zero result",
-      steps: [
+      "q": "Find determinant of A = [[2, 5], [4, 10]]",
+      "hint": "check zero result",
+      "steps": [
         "Step 1: Compute ad = 2 × 10 = 20",
         "Step 2: Compute bc = 5 × 4 = 20",
         "Step 3: Subtract 20 - 20",
         "Step 4: Final determinant = 0",
-        "Step 5: Interpret result",
+        "Step 5: Interpret result"
       ],
-      ans: "0",
-      why: "Zero determinant means matrix is singular (not invertible)",
+      "ans": "0",
+      "why": "Zero determinant means matrix is singular (not invertible)"
     },
-
     {
-      q: "Why does a zero determinant mean no inverse?",
-      hint: "singular matrix",
-      steps: [
+      "q": "Why does a zero determinant mean no inverse?",
+      "hint": "singular matrix",
+      "steps": [
         "Step 1: Understand determinant measures scaling",
         "Step 2: If determinant = 0, area collapses",
         "Step 3: No unique transformation exists",
-        "Step 4: Therefore inverse cannot exist",
+        "Step 4: Therefore inverse cannot exist"
       ],
-      ans: "Matrix is not invertible",
-      why: "A zero determinant collapses space, removing reversibility",
+      "ans": "Matrix is not invertible",
+      "why": "A zero determinant collapses space, removing reversibility"
     },
-
     {
-      q: "Find determinant of A = [[7, 3], [2, 6]]",
-      hint: "apply formula ad - bc",
-      steps: [
+      "q": "Find determinant of A = [[7, 3], [2, 6]]",
+      "hint": "apply formula ad - bc",
+      "steps": [
         "Step 1: Compute ad = 7 × 6 = 42",
         "Step 2: Compute bc = 3 × 2 = 6",
         "Step 3: Subtract 42 - 6",
-        "Step 4: Final result = 36",
+        "Step 4: Final result = 36"
       ],
-      ans: "36",
-      why: "Determinant reflects scaling effect of matrix transformation",
-    },
-  ],
+      "ans": "36",
+      "why": "Determinant reflects scaling effect of matrix transformation"
+    }
+  ]
 );
-/*=====================================================
-Inverse Matrices
-=====================================================*/
+
 add(
   "math",
   "matrices",
   "Inverse Matrices",
+
   `
 <h2> Inverse Matrices</h2>
 
@@ -8655,86 +8401,82 @@ Original → Reverse → Identity
 
 ---
 `,
+
   [
     {
-      q: "Find the inverse of A = [[4, 7], [2, 6]] using formula A⁻¹ = (1/det(A)) × [[d, -b], [-c, a]]",
-      hint: "use determinant first",
-      steps: [
+      "q": "Find the inverse of A = [[4, 7], [2, 6]] using formula A⁻¹ = (1/det(A)) × [[d, -b], [-c, a]]",
+      "hint": "use determinant first",
+      "steps": [
         "Step 1: Identify a = 4, b = 7, c = 2, d = 6",
         "Step 2: Compute determinant det(A) = ad - bc = (4×6) - (7×2)",
         "Step 3: Calculate det(A) = 24 - 14 = 10",
         "Step 4: Swap diagonal elements → [[6, 4]] becomes [[6, 4]] (place d and a)",
         "Step 5: Change signs of off-diagonal → [[6, -7], [-2, 4]]",
         "Step 6: Multiply by 1/det(A) = 1/10",
-        "Step 7: Final inverse = (1/10)[[6, -7], [-2, 4]]",
+        "Step 7: Final inverse = (1/10)[[6, -7], [-2, 4]]"
       ],
-      ans: "(1/10)[[6, -7], [-2, 4]]",
-      why: "Inverse matrix reverses transformation using determinant scaling",
+      "ans": "(1/10)[[6, -7], [-2, 4]]",
+      "why": "Inverse matrix reverses transformation using determinant scaling"
     },
-
     {
-      q: "Check if inverse exists for A = [[2, 4], [1, 2]]",
-      hint: "determinant test",
-      steps: [
+      "q": "Check if inverse exists for A = [[2, 4], [1, 2]]",
+      "hint": "determinant test",
+      "steps": [
         "Step 1: Compute det(A) = (2×2) - (4×1)",
         "Step 2: Calculate det(A) = 4 - 4",
         "Step 3: det(A) = 0",
         "Step 4: Conclude matrix is singular",
-        "Step 5: Therefore inverse does not exist",
+        "Step 5: Therefore inverse does not exist"
       ],
-      ans: "No inverse exists",
-      why: "Zero determinant means matrix cannot be reversed",
+      "ans": "No inverse exists",
+      "why": "Zero determinant means matrix cannot be reversed"
     },
-
     {
-      q: "Verify A × A⁻¹ for A = [[3, 0], [0, 2]]",
-      hint: "identity result",
-      steps: [
+      "q": "Verify A × A⁻¹ for A = [[3, 0], [0, 2]]",
+      "hint": "identity result",
+      "steps": [
         "Step 1: Compute inverse = [[1/3, 0], [0, 1/2]]",
         "Step 2: Multiply A × A⁻¹",
         "Step 3: Multiply first row → (3×1/3, 0×1/2) = (1, 0)",
         "Step 4: Multiply second row → (0×1/3, 2×1/2) = (0, 1)",
-        "Step 5: Result = [[1, 0], [0, 1]]",
+        "Step 5: Result = [[1, 0], [0, 1]]"
       ],
-      ans: "Identity matrix",
-      why: "A matrix multiplied by its inverse always gives identity",
+      "ans": "Identity matrix",
+      "why": "A matrix multiplied by its inverse always gives identity"
     },
-
     {
-      q: "Solve AX = B using inverse method where A = [[2,1],[1,1]] and B = [[3],[2]]",
-      hint: "X = A⁻¹B",
-      steps: [
+      "q": "Solve AX = B using inverse method where A = [[2,1],[1,1]] and B = [[3],[2]]",
+      "hint": "X = A⁻¹B",
+      "steps": [
         "Step 1: Compute det(A) = (2×1) - (1×1) = 1",
         "Step 2: Find inverse A⁻¹ = [[1, -1], [-1, 2]]",
         "Step 3: Multiply A⁻¹ by B",
         "Step 4: Compute row products",
-        "Step 5: Final solution X = [[1], [1]]",
+        "Step 5: Final solution X = [[1], [1]]"
       ],
-      ans: "[[1],[1]]",
-      why: "Inverse method isolates variables in system AX = B",
+      "ans": "[[1],[1]]",
+      "why": "Inverse method isolates variables in system AX = B"
     },
-
     {
-      q: "Why does a matrix need a non-zero determinant to have an inverse?",
-      hint: "invertibility condition",
-      steps: [
+      "q": "Why does a matrix need a non-zero determinant to have an inverse?",
+      "hint": "invertibility condition",
+      "steps": [
         "Step 1: Check determinant meaning",
         "Step 2: If det(A) = 0, space collapses",
         "Step 3: No unique reverse mapping exists",
-        "Step 4: Therefore inverse cannot be defined",
+        "Step 4: Therefore inverse cannot be defined"
       ],
-      ans: "det(A) ≠ 0",
-      why: "Only non-singular matrices preserve reversible transformations",
-    },
-  ],
+      "ans": "det(A) ≠ 0",
+      "why": "Only non-singular matrices preserve reversible transformations"
+    }
+  ]
 );
-/*=====================================================
-Solving Systems of Equations Using Matrices
-=====================================================*/
+
 add(
   "math",
   "matrices",
   "Solving Systems of Equations Using Matrices",
+
   `
 <h2> Systems of Equations (Matrix Method)</h2>
 
@@ -8914,83 +8656,79 @@ det(A) = 0 → check consistency
 
 ---
 `,
+
   [
     {
-      q: "What is matrix form of linear equations AX = B and how is X found?",
-      hint: "use inverse method",
-      steps: [
+      "q": "What is matrix form of linear equations AX = B and how is X found?",
+      "hint": "use inverse method",
+      "steps": [
         "Step 1: Write system in matrix form AX = B",
         "Step 2: Multiply both sides by A⁻¹",
         "Step 3: A⁻¹AX = A⁻¹B",
         "Step 4: I·X = A⁻¹B",
-        "Step 5: X = A⁻¹B",
+        "Step 5: X = A⁻¹B"
       ],
-      ans: "X = A⁻¹B",
-      why: "Multiplying by inverse isolates the variable matrix",
+      "ans": "X = A⁻¹B",
+      "why": "Multiplying by inverse isolates the variable matrix"
     },
-
     {
-      q: "Solve for X when A = [[2,1],[1,3]] and B = [[5],[7]]",
-      hint: "use inverse of 2×2 matrix",
-      steps: [
+      "q": "Solve for X when A = [[2,1],[1,3]] and B = [[5],[7]]",
+      "hint": "use inverse of 2×2 matrix",
+      "steps": [
         "Step 1: Compute determinant of A: (2×3 − 1×1) = 5",
         "Step 2: Find inverse A⁻¹ = (1/5)[[3, -1],[-1, 2]]",
         "Step 3: Multiply A⁻¹ by B",
         "Step 4: [[3, -1],[-1, 2]] × [[5],[7]]",
         "Step 5: = [[(15 - 7)], [(-5 + 14)]]",
         "Step 6: Multiply by 1/5",
-        "Step 7: X = [[8/5],[9/5]]",
+        "Step 7: X = [[8/5],[9/5]]"
       ],
-      ans: "X = (8/5, 9/5)",
-      why: "Inverse matrix converts system into direct computation",
+      "ans": "X = (8/5, 9/5)",
+      "why": "Inverse matrix converts system into direct computation"
     },
-
     {
-      q: "When does a system AX = B have no solution using determinants?",
-      hint: "determinant condition",
-      steps: [
+      "q": "When does a system AX = B have no solution using determinants?",
+      "hint": "determinant condition",
+      "steps": [
         "Step 1: Compute det(A)",
         "Step 2: Check if det(A) = 0",
         "Step 3: If det(A) = 0, check consistency",
-        "Step 4: If inconsistent → no solution",
+        "Step 4: If inconsistent → no solution"
       ],
-      ans: "When det(A) = 0 and equations are inconsistent",
-      why: "Singular matrices cannot produce unique solutions",
+      "ans": "When det(A) = 0 and equations are inconsistent",
+      "why": "Singular matrices cannot produce unique solutions"
     },
-
     {
-      q: "What happens when det(A) = 0 in AX = B?",
-      hint: "singular matrix",
-      steps: [
+      "q": "What happens when det(A) = 0 in AX = B?",
+      "hint": "singular matrix",
+      "steps": [
         "Step 1: Compute det(A)",
         "Step 2: If det(A) = 0, matrix is singular",
         "Step 3: Try row reduction",
-        "Step 4: Check if system reduces to contradiction or dependency",
+        "Step 4: Check if system reduces to contradiction or dependency"
       ],
-      ans: "No unique solution (either infinite or none)",
-      why: "Zero determinant removes invertibility",
+      "ans": "No unique solution (either infinite or none)",
+      "why": "Zero determinant removes invertibility"
     },
-
     {
-      q: "Find X if A⁻¹ = [[1,0],[0,1]] and B = [[4],[6]]",
-      hint: "identity inverse case",
-      steps: [
+      "q": "Find X if A⁻¹ = [[1,0],[0,1]] and B = [[4],[6]]",
+      "hint": "identity inverse case",
+      "steps": [
         "Step 1: Recognize A⁻¹ is identity matrix",
         "Step 2: Multiply I × B",
-        "Step 3: Result equals B unchanged",
+        "Step 3: Result equals B unchanged"
       ],
-      ans: "X = [[4],[6]]",
-      why: "Identity matrix does not change any vector",
-    },
-  ],
+      "ans": "X = [[4],[6]]",
+      "why": "Identity matrix does not change any vector"
+    }
+  ]
 );
-/*=======================================================
-VECTORS
-========================================================*/
+
 add(
   "math",
   "vectors",
   "Vector Notation",
+
   `
 <h2> Vector Notation</h2>
 
@@ -9057,95 +8795,90 @@ a = xi + yj
 
 ---
 `,
+
   [
     {
-      q: "Convert (-3, 7) into i and j vector form",
-      hint: "split components",
-      steps: [
+      "q": "Convert (-3, 7) into i and j vector form",
+      "hint": "split components",
+      "steps": [
         "Step 1: Identify x-component = -3",
         "Step 2: Identify y-component = 7",
         "Step 3: Multiply x by i → -3i",
         "Step 4: Multiply y by j → 7j",
-        "Step 5: Combine components",
+        "Step 5: Combine components"
       ],
-      ans: "-3i + 7j",
-      why: "Each coordinate is written along its axis direction",
+      "ans": "-3i + 7j",
+      "why": "Each coordinate is written along its axis direction"
     },
-
     {
-      q: "Convert (0, 6) into i and j form",
-      hint: "x is zero",
-      steps: [
+      "q": "Convert (0, 6) into i and j form",
+      "hint": "x is zero",
+      "steps": [
         "Step 1: Identify x-component = 0",
         "Step 2: Identify y-component = 6",
         "Step 3: 0i contributes nothing",
-        "Step 4: Write remaining j component",
+        "Step 4: Write remaining j component"
       ],
-      ans: "6j",
-      why: "Zero x-component removes i term",
+      "ans": "6j",
+      "why": "Zero x-component removes i term"
     },
-
     {
-      q: "Convert 8i - 5j into coordinate form",
-      hint: "extract components",
-      steps: [
+      "q": "Convert 8i - 5j into coordinate form",
+      "hint": "extract components",
+      "steps": [
         "Step 1: Identify i coefficient = 8",
         "Step 2: Identify j coefficient = -5",
         "Step 3: Write x = 8",
         "Step 4: Write y = -5",
-        "Step 5: Form coordinate pair",
+        "Step 5: Form coordinate pair"
       ],
-      ans: "(8, -5)",
-      why: "i corresponds to x-axis and j corresponds to y-axis",
+      "ans": "(8, -5)",
+      "why": "i corresponds to x-axis and j corresponds to y-axis"
     },
-
     {
-      q: "Add vectors (2i + 3j) + (4i - j)",
-      hint: "combine like terms",
-      steps: [
+      "q": "Add vectors (2i + 3j) + (4i - j)",
+      "hint": "combine like terms",
+      "steps": [
         "Step 1: Group i terms → 2i + 4i",
         "Step 2: Group j terms → 3j - j",
         "Step 3: Add i components → 6i",
-        "Step 4: Add j components → 2j",
+        "Step 4: Add j components → 2j"
       ],
-      ans: "6i + 2j",
-      why: "Vector addition is done component-wise",
+      "ans": "6i + 2j",
+      "why": "Vector addition is done component-wise"
     },
-
     {
-      q: "Subtract vectors (7i + 2j) - (3i + 5j)",
-      hint: "distribute minus sign",
-      steps: [
+      "q": "Subtract vectors (7i + 2j) - (3i + 5j)",
+      "hint": "distribute minus sign",
+      "steps": [
         "Step 1: Expand subtraction → 7i + 2j - 3i - 5j",
         "Step 2: Group i terms → 7i - 3i",
         "Step 3: Group j terms → 2j - 5j",
-        "Step 4: Simplify components",
+        "Step 4: Simplify components"
       ],
-      ans: "4i - 3j",
-      why: "Subtraction changes signs of second vector",
+      "ans": "4i - 3j",
+      "why": "Subtraction changes signs of second vector"
     },
-
     {
-      q: "Find resultant of (5i + 1j) + (-2i + 6j)",
-      hint: "component addition",
-      steps: [
+      "q": "Find resultant of (5i + 1j) + (-2i + 6j)",
+      "hint": "component addition",
+      "steps": [
         "Step 1: Add i components → 5 + (-2)",
         "Step 2: Add j components → 1 + 6",
         "Step 3: Simplify each component",
-        "Step 4: Write final vector form",
+        "Step 4: Write final vector form"
       ],
-      ans: "3i + 7j",
-      why: "Resultant vector is sum of components",
-    },
-  ],
+      "ans": "3i + 7j",
+      "why": "Resultant vector is sum of components"
+    }
+  ]
 );
-/*====================================================
-Magnitude and Direction
-====================================================*/
+
 add(
   "math",
   "vectors",
   "Magnitude and Direction",
+
   `
 <h2> Magnitude and Direction</h2>
 
@@ -9218,100 +8951,95 @@ Magnitude is the length of a vector, while direction shows where the vector is p
 
 ---
 `,
+
   [
     {
-      q: "Find magnitude of vector v = 3i - 4j",
-      hint: "Pythagoras theorem",
-      steps: [
+      "q": "Find magnitude of vector v = 3i - 4j",
+      "hint": "Pythagoras theorem",
+      "steps": [
         "Step 1: Identify components: x = 3, y = -4",
         "Step 2: Square each component: 3² = 9, (-4)² = 16",
         "Step 3: Add the squares: 9 + 16 = 25",
         "Step 4: Take square root of sum",
-        "Step 5: Final magnitude = √25",
+        "Step 5: Final magnitude = √25"
       ],
-      ans: "5 units",
-      why: "Magnitude is the length of vector, calculated using Pythagorean theorem",
+      "ans": "5 units",
+      "why": "Magnitude is the length of vector, calculated using Pythagorean theorem"
     },
-
     {
-      q: "Find direction angle of vector v = 1i + 1j",
-      hint: "tan inverse",
-      steps: [
+      "q": "Find direction angle of vector v = 1i + 1j",
+      "hint": "tan inverse",
+      "steps": [
         "Step 1: Identify components: x = 1, y = 1",
         "Step 2: Calculate tangent: tan(θ) = y/x = 1/1 = 1",
         "Step 3: Use arctan to find angle",
         "Step 4: θ = tan⁻¹(1)",
-        "Step 5: Final angle = 45°",
+        "Step 5: Final angle = 45°"
       ],
-      ans: "45° or π/4 radians",
-      why: "Direction angle shows orientation from positive x-axis",
+      "ans": "45° or π/4 radians",
+      "why": "Direction angle shows orientation from positive x-axis"
     },
-
     {
-      q: "What is magnitude of a vector that goes 3 units right and 4 units down?",
-      hint: "direct Pythagorean application",
-      steps: [
-        'Step 1: Interpret "right" as +x → 3',
-        'Step 2: Interpret "down" as -y → -4',
+      "q": "What is magnitude of a vector that goes 3 units right and 4 units down?",
+      "hint": "direct Pythagorean application",
+      "steps": [
+        "Step 1: Interpret \"right\" as +x → 3",
+        "Step 2: Interpret \"down\" as -y → -4",
         "Step 3: Square components: 3² = 9, (-4)² = 16",
         "Step 4: Add squared values: 9 + 16 = 25",
-        "Step 5: Take square root",
+        "Step 5: Take square root"
       ],
-      ans: "5 units",
-      why: "Same as Example 1, just phrased differently",
+      "ans": "5 units",
+      "why": "Same as Example 1, just phrased differently"
     },
-
     {
-      q: "Why is magnitude always positive?",
-      hint: "square root property",
-      steps: [
+      "q": "Why is magnitude always positive?",
+      "hint": "square root property",
+      "steps": [
         "Step 1: Recall magnitude formula: √(x² + y²)",
         "Step 2: x² and y² are always ≥ 0",
         "Step 3: Their sum is also ≥ 0",
         "Step 4: Square root of non-negative is always non-negative",
-        "Step 5: Therefore magnitude is always positive",
+        "Step 5: Therefore magnitude is always positive"
       ],
-      ans: "Because square roots of positive numbers are positive",
-      why: "Mathematical definition ensures magnitude represents length",
+      "ans": "Because square roots of positive numbers are positive",
+      "why": "Mathematical definition ensures magnitude represents length"
     },
-
     {
-      q: "Find magnitude and direction of vector v = 2i + 2√3 j",
-      hint: "special triangle 1:√3:2",
-      steps: [
+      "q": "Find magnitude and direction of vector v = 2i + 2√3 j",
+      "hint": "special triangle 1:√3:2",
+      "steps": [
         "Step 1: Identify components: x = 2, y = 2√3",
         "Step 2: Square components: 2² = 4, (2√3)² = 12",
         "Step 3: Add: 4 + 12 = 16",
         "Step 4: Take square root: √16 = 4 (magnitude)",
         "Step 5: Calculate angle: tan(θ) = 2√3 / 2 = √3",
-        "Step 6: θ = 60° (recognize 30-60-90 triangle)",
+        "Step 6: θ = 60° (recognize 30-60-90 triangle)"
       ],
-      ans: "Magnitude = 4, Direction = 60°",
-      why: "Components form a 30-60-90 triangle with sides 2, 2√3, and hypotenuse 4",
+      "ans": "Magnitude = 4, Direction = 60°",
+      "why": "Components form a 30-60-90 triangle with sides 2, 2√3, and hypotenuse 4"
     },
-
     {
-      q: "If magnitude is 5 and direction is 0°, what is vector form?",
-      hint: "cosine and sine",
-      steps: [
+      "q": "If magnitude is 5 and direction is 0°, what is vector form?",
+      "hint": "cosine and sine",
+      "steps": [
         "Step 1: Use formulas: x = |v|cos(θ), y = |v|sin(θ)",
         "Step 2: Substitute values: x = 5cos(0°), y = 5sin(0°)",
         "Step 3: Evaluate trigonometric functions: cos(0°) = 1, sin(0°) = 0",
         "Step 4: Calculate components: x = 5×1 = 5, y = 5×0 = 0",
-        "Step 5: Write vector form",
+        "Step 5: Write vector form"
       ],
-      ans: "5i + 0j or 5i",
-      why: "0° direction means vector points purely along positive x-axis",
-    },
-  ],
+      "ans": "5i + 0j or 5i",
+      "why": "0° direction means vector points purely along positive x-axis"
+    }
+  ]
 );
-/*===============================================
-Vector Addition and Subtraction
-===============================================*/
+
 add(
   "math",
   "vectors",
   "Vector Addition and Subtraction",
+
   `
 <h2> Vector Addition & Subtraction</h2>
 
@@ -9377,85 +9105,82 @@ B →→→
 
 ---
 `,
+
   [
     {
-      q: "Add vectors (3,4) + (1,2)",
-      hint: "add x and y separately",
-      steps: [
+      "q": "Add vectors (3,4) + (1,2)",
+      "hint": "add x and y separately",
+      "steps": [
         "Step 1: Add x-components: 3 + 1",
         "Step 2: Add y-components: 4 + 2",
-        "Step 3: Combine results",
+        "Step 3: Combine results"
       ],
-      ans: "(4, 6)",
-      why: "Vector addition combines corresponding components",
+      "ans": "(4, 6)",
+      "why": "Vector addition combines corresponding components"
     },
-
     {
-      q: "Subtract vectors (6,8) - (2,3)",
-      hint: "subtract components",
-      steps: [
+      "q": "Subtract vectors (6,8) - (2,3)",
+      "hint": "subtract components",
+      "steps": [
         "Step 1: Subtract x-components: 6 - 2",
         "Step 2: Subtract y-components: 8 - 3",
-        "Step 3: Combine results",
+        "Step 3: Combine results"
       ],
-      ans: "(4, 5)",
-      why: "Subtraction works same way as addition but with minus signs",
+      "ans": "(4, 5)",
+      "why": "Subtraction works same way as addition but with minus signs"
     },
     {
-      q: "Find resultant of (2i + 3j) + (4i - 2j)",
-      hint: "group i and j",
-      steps: [
+      "q": "Find resultant of (2i + 3j) + (4i - 2j)",
+      "hint": "group i and j",
+      "steps": [
         "Step 1: Combine i terms: 2i + 4i",
         "Step 2: Combine j terms: 3j - 2j",
-        "Step 3: Write final vector",
+        "Step 3: Write final vector"
       ],
-      ans: "6i + 1j or 6i + j",
-      why: "Like terms are added together just like regular algebra",
+      "ans": "6i + 1j or 6i + j",
+      "why": "Like terms are added together just like regular algebra"
     },
-
     {
-      q: "Subtract vectors in i,j form: (8i - 3j) - (4i + 5j)",
-      hint: "distribute negative",
-      steps: [
+      "q": "Subtract vectors in i,j form: (8i - 3j) - (4i + 5j)",
+      "hint": "distribute negative",
+      "steps": [
         "Step 1: Expand: 8i - 3j - 4i - 5j",
         "Step 2: Group i terms: 8i - 4i",
         "Step 3: Group j terms: -3j - 5j",
-        "Step 4: Simplify",
+        "Step 4: Simplify"
       ],
-      ans: "4i - 8j",
-      why: "Distributing the subtraction changes signs of second vector",
+      "ans": "4i - 8j",
+      "why": "Distributing the subtraction changes signs of second vector"
     },
-
     {
-      q: "Add three vectors: (1,1) + (2,2) + (3,3)",
-      hint: "add all x, all y",
-      steps: [
+      "q": "Add three vectors: (1,1) + (2,2) + (3,3)",
+      "hint": "add all x, all y",
+      "steps": [
         "Step 1: Add all x-components: 1 + 2 + 3",
         "Step 2: Add all y-components: 1 + 2 + 3",
-        "Step 3: Combine",
+        "Step 3: Combine"
       ],
-      ans: "(6,6)",
-      why: "Can add any number of vectors by summing components",
+      "ans": "(6,6)",
+      "why": "Can add any number of vectors by summing components"
     },
     {
-      q: "If v = (x,y), what is v - v?",
-      hint: "same vector subtracted from itself",
-      steps: [
+      "q": "If v = (x,y), what is v - v?",
+      "hint": "same vector subtracted from itself",
+      "steps": [
         "Step 1: Set up subtraction: (x-x, y-y)",
-        "Step 2: Simplify components",
+        "Step 2: Simplify components"
       ],
-      ans: "(0,0)",
-      why: "Any vector subtracted from itself equals zero vector",
-    },
-  ],
+      "ans": "(0,0)",
+      "why": "Any vector subtracted from itself equals zero vector"
+    }
+  ]
 );
-/*=========================================
-Dot Product (Scalar Product)
-=========================================*/
+
 add(
   "math",
   "vectors",
   "Dot Product (Scalar Product)",
+
   `
 <h2> Dot Product</h2>
 
@@ -9525,91 +9250,87 @@ Dot product measures overlap (projection)
 
 ---
 `,
+
   [
     {
-      q: "Find dot product of (2,3) · (4,5)",
-      hint: "multiply corresponding components then add",
-      steps: [
+      "q": "Find dot product of (2,3) · (4,5)",
+      "hint": "multiply corresponding components then add",
+      "steps": [
         "Step 1: Multiply x-components: 2 × 4",
         "Step 2: Multiply y-components: 3 × 5",
         "Step 3: Add the products",
-        "Step 4: Final result is scalar",
+        "Step 4: Final result is scalar"
       ],
-      ans: "23",
-      why: "Dot product measures alignment of vectors",
+      "ans": "23",
+      "why": "Dot product measures alignment of vectors"
     },
-
     {
-      q: "Are vectors (1,2) and (-2,1) perpendicular?",
-      hint: "check if dot product is zero",
-      steps: [
+      "q": "Are vectors (1,2) and (-2,1) perpendicular?",
+      "hint": "check if dot product is zero",
+      "steps": [
         "Step 1: Compute dot product of (1,2) and (-2,1)",
         "Step 2: (1×-2) + (2×1) = -2 + 2 = 0",
-        "Step 3: Result is 0, so they're perpendicular",
+        "Step 3: Result is 0, so they're perpendicular"
       ],
-      ans: "Yes",
-      why: "Perpendicular vectors have zero dot product",
+      "ans": "Yes",
+      "why": "Perpendicular vectors have zero dot product"
     },
     {
-      q: "Calculate dot product for v = 3i - 4j and w = 4i + 3j",
-      hint: "convert to coordinate form first",
-      steps: [
+      "q": "Calculate dot product for v = 3i - 4j and w = 4i + 3j",
+      "hint": "convert to coordinate form first",
+      "steps": [
         "Step 1: Convert to coordinate form: v=(3,-4), w=(4,3)",
         "Step 2: Multiply components: (3×4) + (-4×3)",
         "Step 3: 12 - 12 = 0",
-        "Step 4: Final result is scalar",
+        "Step 4: Final result is scalar"
       ],
-      ans: "0",
-      why: "Vectors are perpendicular (opposite directions)",
+      "ans": "0",
+      "why": "Vectors are perpendicular (opposite directions)"
     },
-
     {
-      q: "How does dot product change if one vector is doubled?",
-      hint: "multiply both components by 2",
-      steps: [
+      "q": "How does dot product change if one vector is doubled?",
+      "hint": "multiply both components by 2",
+      "steps": [
         "Step 1: Let original be (x,y)",
         "Step 2: New vector is (2x, 2y)",
         "Step 3: Dot product becomes x(2x) + y(2y) = 2(x²+y²)",
-        "Step 4: Result is doubled",
+        "Step 4: Result is doubled"
       ],
-      ans: "Doubles",
-      why: "Linear property: a(u·v) = (au)·v",
+      "ans": "Doubles",
+      "why": "Linear property: a(u·v) = (au)·v"
     },
-
     {
-      q: "Find dot product of zero vector (0,0) with any vector",
-      hint: "multiply by zero",
-      steps: [
+      "q": "Find dot product of zero vector (0,0) with any vector",
+      "hint": "multiply by zero",
+      "steps": [
         "Step 1: Let vector be (x,y)",
         "Step 2: Dot product is (0×x) + (0×y)",
         "Step 3: 0 + 0 = 0",
-        "Step 4: Result is always zero",
+        "Step 4: Result is always zero"
       ],
-      ans: "0",
-      why: "Zero vector has no magnitude, so dot product is always zero",
+      "ans": "0",
+      "why": "Zero vector has no magnitude, so dot product is always zero"
     },
-
     {
-      q: "If a · b = 0, what is angle between vectors?",
-      hint: "perpendicular condition",
-      steps: [
+      "q": "If a · b = 0, what is angle between vectors?",
+      "hint": "perpendicular condition",
+      "steps": [
         "Step 1: Recall dot product formula: |a||b|cos(θ) = 0",
         "Step 2: If |a| and |b| are nonzero, then cos(θ) must be 0",
         "Step 3: cos(θ) = 0 when θ = 90° or 270°",
-        "Step 4: These correspond to perpendicular vectors",
+        "Step 4: These correspond to perpendicular vectors"
       ],
-      ans: "90° (or 270°)",
-      why: "Zero dot product means vectors are perpendicular",
-    },
-  ],
+      "ans": "90° (or 270°)",
+      "why": "Zero dot product means vectors are perpendicular"
+    }
+  ]
 );
-/*=======================================================
-Applications of Vectors
-========================================================*/
+
 add(
   "math",
   "vectors",
   "Applications of Vectors",
+
   `
 <h2> Applications of Vectors</h2>
 
@@ -9666,80 +9387,76 @@ Result → diagonal path
 
 ---
 `,
+
   [
     {
-      q: "How do you add two vectors (2i + 3j) + (4i + 5j)?",
-      hint: "add like components",
-      steps: [
+      "q": "How do you add two vectors (2i + 3j) + (4i + 5j)?",
+      "hint": "add like components",
+      "steps": [
         "Step 1: Group i components → 2i + 4i",
         "Step 2: Group j components → 3j + 5j",
         "Step 3: Add i components → 6i",
         "Step 4: Add j components → 8j",
-        "Step 5: Combine results",
+        "Step 5: Combine results"
       ],
-      ans: "6i + 8j",
-      why: "Vector addition is performed component-wise",
+      "ans": "6i + 8j",
+      "why": "Vector addition is performed component-wise"
     },
-
     {
-      q: "How do you subtract vectors (6i + 7j) - (2i + 3j)?",
-      hint: "distribute minus sign",
-      steps: [
+      "q": "How do you subtract vectors (6i + 7j) - (2i + 3j)?",
+      "hint": "distribute minus sign",
+      "steps": [
         "Step 1: Expand subtraction → 6i + 7j - 2i - 3j",
         "Step 2: Group i components → 6i - 2i",
         "Step 3: Group j components → 7j - 3j",
-        "Step 4: Simplify components",
+        "Step 4: Simplify components"
       ],
-      ans: "4i + 4j",
-      why: "Subtraction is done component-wise after distributing minus",
+      "ans": "4i + 4j",
+      "why": "Subtraction is done component-wise after distributing minus"
     },
-
     {
-      q: "Find resultant of vectors (5i + 2j) + (-3i + 6j)",
-      hint: "combine components",
-      steps: [
+      "q": "Find resultant of vectors (5i + 2j) + (-3i + 6j)",
+      "hint": "combine components",
+      "steps": [
         "Step 1: Add i components → 5 + (-3)",
         "Step 2: Add j components → 2 + 6",
         "Step 3: Simplify each component",
-        "Step 4: Write final vector",
+        "Step 4: Write final vector"
       ],
-      ans: "2i + 8j",
-      why: "Resultant is obtained by adding corresponding components",
+      "ans": "2i + 8j",
+      "why": "Resultant is obtained by adding corresponding components"
     },
-
     {
-      q: "What is the zero vector in i and j form?",
-      hint: "no magnitude",
-      steps: [
+      "q": "What is the zero vector in i and j form?",
+      "hint": "no magnitude",
+      "steps": [
         "Step 1: Identify zero movement in x-direction → 0i",
         "Step 2: Identify zero movement in y-direction → 0j",
-        "Step 3: Combine both components",
+        "Step 3: Combine both components"
       ],
-      ans: "0i + 0j",
-      why: "Zero vector has no magnitude or direction",
+      "ans": "0i + 0j",
+      "why": "Zero vector has no magnitude or direction"
     },
-
     {
-      q: "Find the resultant of (3i - 4j) and (-3i + 4j)",
-      hint: "opposites cancel",
-      steps: [
+      "q": "Find the resultant of (3i - 4j) and (-3i + 4j)",
+      "hint": "opposites cancel",
+      "steps": [
         "Step 1: Add i components → 3 + (-3)",
         "Step 2: Add j components → -4 + 4",
         "Step 3: Simplify both results",
-        "Step 4: Write final vector",
+        "Step 4: Write final vector"
       ],
-      ans: "0i + 0j",
-      why: "Opposite vectors cancel each other out completely",
-    },
-  ],
+      "ans": "0i + 0j",
+      "why": "Opposite vectors cancel each other out completely"
+    }
+  ]
 );
-/*=======================================================
-Concept of Limits
-========================================================*/
+
 add(
   "math",
   "limits",
   "Concept of Limits",
+
   `
 <h2> Concept of Limits</h2>
 
@@ -9792,80 +9509,76 @@ lim x→a f(x) = L
 
 ---
 `,
+
   [
     {
-      q: "Evaluate lim x→3 of (2x + 1)",
-      hint: "direct substitution",
-      steps: [
+      "q": "Evaluate lim x→3 of (2x + 1)",
+      "hint": "direct substitution",
+      "steps": [
         "Step 1: Identify the function f(x) = 2x + 1",
         "Step 2: Substitute x = 3 into the expression",
         "Step 3: Compute 2(3) + 1",
-        "Step 4: Simplify result",
+        "Step 4: Simplify result"
       ],
-      ans: "7",
-      why: "Polynomials are continuous, so limit equals direct substitution",
+      "ans": "7",
+      "why": "Polynomials are continuous, so limit equals direct substitution"
     },
-
     {
-      q: "Evaluate lim x→5 of (x² - 9)",
-      hint: "substitute directly",
-      steps: [
+      "q": "Evaluate lim x→5 of (x² - 9)",
+      "hint": "substitute directly",
+      "steps": [
         "Step 1: Identify expression f(x) = x² - 9",
         "Step 2: Substitute x = 5",
         "Step 3: Compute 5² - 9",
-        "Step 4: Simplify result",
+        "Step 4: Simplify result"
       ],
-      ans: "16",
-      why: "Continuous functions allow direct substitution in limits",
+      "ans": "16",
+      "why": "Continuous functions allow direct substitution in limits"
     },
-
     {
-      q: "Find lim x→2 of (3x - 4)",
-      hint: "plug in value",
-      steps: [
+      "q": "Find lim x→2 of (3x - 4)",
+      "hint": "plug in value",
+      "steps": [
         "Step 1: Write function f(x) = 3x - 4",
         "Step 2: Substitute x = 2",
         "Step 3: Compute 3(2) - 4",
-        "Step 4: Simplify",
+        "Step 4: Simplify"
       ],
-      ans: "2",
-      why: "Linear functions are continuous, so limit equals function value",
+      "ans": "2",
+      "why": "Linear functions are continuous, so limit equals function value"
     },
-
     {
-      q: "Find lim x→4 of (x² + 2x)",
-      hint: "substitute x",
-      steps: [
+      "q": "Find lim x→4 of (x² + 2x)",
+      "hint": "substitute x",
+      "steps": [
         "Step 1: Identify function f(x) = x² + 2x",
         "Step 2: Substitute x = 4",
         "Step 3: Compute 4² + 2(4)",
-        "Step 4: Simplify expression",
+        "Step 4: Simplify expression"
       ],
-      ans: "24",
-      why: "Polynomials are continuous so direct substitution applies",
+      "ans": "24",
+      "why": "Polynomials are continuous so direct substitution applies"
     },
-
     {
-      q: "Evaluate lim x→1 of (5x + 3)",
-      hint: "direct substitution method",
-      steps: [
+      "q": "Evaluate lim x→1 of (5x + 3)",
+      "hint": "direct substitution method",
+      "steps": [
         "Step 1: Identify function f(x) = 5x + 3",
         "Step 2: Substitute x = 1",
         "Step 3: Compute 5(1) + 3",
-        "Step 4: Simplify",
+        "Step 4: Simplify"
       ],
-      ans: "8",
-      why: "Linear functions are continuous at all points",
-    },
-  ],
+      "ans": "8",
+      "why": "Linear functions are continuous at all points"
+    }
+  ]
 );
-/*==================================================
-Left-Hand and Right-Hand Limits
-==================================================*/
+
 add(
   "math",
   "limits",
   "Left-Hand and Right-Hand Limits",
+
   `
 <h2> Left-Hand & Right-Hand Limits</h2>
 
@@ -9928,97 +9641,92 @@ lim x→a⁺ f(x) = right-hand limit
 
 ---
 `,
+
   [
     {
-      q: "Find lim x→2 of (3x + 1) using one-sided limits",
-      hint: "check both sides",
-      steps: [
+      "q": "Find lim x→2 of (3x + 1) using one-sided limits",
+      "hint": "check both sides",
+      "steps": [
         "Step 1: Compute lim x→2⁻ (3x + 1)",
         "Step 2: Substitute x = 2 → 3(2) + 1",
         "Step 3: Compute left-hand limit = 7",
         "Step 4: Compute lim x→2⁺ (3x + 1)",
         "Step 5: Substitute x = 2 → 3(2) + 1 = 7",
-        "Step 6: Compare both sides",
+        "Step 6: Compare both sides"
       ],
-      ans: "7",
-      why: "Both one-sided limits are equal, so limit exists",
+      "ans": "7",
+      "why": "Both one-sided limits are equal, so limit exists"
     },
-
     {
-      q: "Determine if lim x→1 exists for f(x) = {2x if x<1, x+1 if x>1}",
-      hint: "piecewise function",
-      steps: [
+      "q": "Determine if lim x→1 exists for f(x) = {2x if x<1, x+1 if x>1}",
+      "hint": "piecewise function",
+      "steps": [
         "Step 1: Compute left-hand limit → 2(1) = 2",
         "Step 2: Compute right-hand limit → 1 + 1 = 2",
         "Step 3: Compare LHL and RHL",
-        "Step 4: Check equality condition",
+        "Step 4: Check equality condition"
       ],
-      ans: "Limit exists and equals 2",
-      why: "Both sides give same approaching value",
+      "ans": "Limit exists and equals 2",
+      "why": "Both sides give same approaching value"
     },
-
     {
-      q: "Find lim x→4 of f(x) = {x² if x<4, 10 if x>4}",
-      hint: "check discontinuity",
-      steps: [
+      "q": "Find lim x→4 of f(x) = {x² if x<4, 10 if x>4}",
+      "hint": "check discontinuity",
+      "steps": [
         "Step 1: Compute LHL → 4² = 16",
         "Step 2: Compute RHL → 10",
         "Step 3: Compare 16 and 10",
-        "Step 4: Check equality condition",
+        "Step 4: Check equality condition"
       ],
-      ans: "Limit does not exist",
-      why: "Left and right limits are not equal",
+      "ans": "Limit does not exist",
+      "why": "Left and right limits are not equal"
     },
-
     {
-      q: "Find lim x→0 of (x² + 5x) using substitution check",
-      hint: "approach from both sides",
-      steps: [
+      "q": "Find lim x→0 of (x² + 5x) using substitution check",
+      "hint": "approach from both sides",
+      "steps": [
         "Step 1: Compute lim x→0⁻ (x² + 5x)",
         "Step 2: Substitute values close to 0 → result approaches 0",
         "Step 3: Compute lim x→0⁺ (x² + 5x)",
         "Step 4: Substitute values close to 0 → result approaches 0",
-        "Step 5: Compare both sides",
+        "Step 5: Compare both sides"
       ],
-      ans: "0",
-      why: "Both sides approach same value",
+      "ans": "0",
+      "why": "Both sides approach same value"
     },
-
     {
-      q: "Evaluate lim x→3 of (x² - 9)/(x - 3)",
-      hint: "factorization needed",
-      steps: [
+      "q": "Evaluate lim x→3 of (x² - 9)/(x - 3)",
+      "hint": "factorization needed",
+      "steps": [
         "Step 1: Factor numerator → (x - 3)(x + 3)",
         "Step 2: Simplify expression → cancel (x - 3)",
         "Step 3: New expression becomes (x + 3)",
         "Step 4: Substitute x = 3",
-        "Step 5: Compute 3 + 3",
+        "Step 5: Compute 3 + 3"
       ],
-      ans: "6",
-      why: "After simplification, direct substitution is possible",
+      "ans": "6",
+      "why": "After simplification, direct substitution is possible"
     },
-
     {
-      q: "Check if lim x→2 exists for f(x) = {x+2 if x<2, 5 if x>2}",
-      hint: "compare LHL and RHL",
-      steps: [
+      "q": "Check if lim x→2 exists for f(x) = {x+2 if x<2, 5 if x>2}",
+      "hint": "compare LHL and RHL",
+      "steps": [
         "Step 1: Compute LHL → 2 + 2 = 4",
         "Step 2: Compute RHL → 5",
         "Step 3: Compare 4 and 5",
-        "Step 4: Determine continuity",
+        "Step 4: Determine continuity"
       ],
-      ans: "Limit does not exist",
-      why: "Left and right limits are different",
-    },
-  ],
+      "ans": "Limit does not exist",
+      "why": "Left and right limits are different"
+    }
+  ]
 );
-/*==============================================
-Indeterminate Forms
-==============================================*/
+
 add(
   "math",
   "limits",
   "Indeterminate Forms",
+
   `
 <h2> Indeterminate Forms</h2>
 
@@ -10075,88 +9783,84 @@ Indeterminate forms occur when direct substitution in limits gives unclear or un
 
 ---
 `,
+
   [
     {
-      q: "Evaluate lim (x → 2) (x² - 4)/(x - 2)",
-      hint: "factor and cancel",
-      steps: [
+      "q": "Evaluate lim (x → 2) (x² - 4)/(x - 2)",
+      "hint": "factor and cancel",
+      "steps": [
         "Step 1: Substitute x = 2 → (4 - 4)/(0) = 0/0 (indeterminate form)",
         "Step 2: Factor numerator → x² - 4 = (x - 2)(x + 2)",
         "Step 3: Rewrite expression → [(x - 2)(x + 2)] / (x - 2)",
         "Step 4: Cancel common factor (x - 2)",
         "Step 5: Simplify → x + 2",
-        "Step 6: Substitute x = 2 → 2 + 2",
+        "Step 6: Substitute x = 2 → 2 + 2"
       ],
-      ans: "4",
-      why: "Factoring removes the indeterminate form and reveals the simplified function",
+      "ans": "4",
+      "why": "Factoring removes the indeterminate form and reveals the simplified function"
     },
-
     {
-      q: "Evaluate lim (x → 1) (x² - 1)/(x - 1)",
-      hint: "difference of squares",
-      steps: [
+      "q": "Evaluate lim (x → 1) (x² - 1)/(x - 1)",
+      "hint": "difference of squares",
+      "steps": [
         "Step 1: Substitute x = 1 → (1 - 1)/(0) = 0/0",
         "Step 2: Factor numerator → x² - 1 = (x - 1)(x + 1)",
         "Step 3: Rewrite → [(x - 1)(x + 1)] / (x - 1)",
         "Step 4: Cancel (x - 1)",
         "Step 5: Simplify → x + 1",
-        "Step 6: Substitute x = 1 → 1 + 1",
+        "Step 6: Substitute x = 1 → 1 + 1"
       ],
-      ans: "2",
-      why: "The expression simplifies after cancelling the common factor",
+      "ans": "2",
+      "why": "The expression simplifies after cancelling the common factor"
     },
-
     {
-      q: "Evaluate lim (x → 3) (x² - 9)/(x - 3)",
-      hint: "factor quadratic",
-      steps: [
+      "q": "Evaluate lim (x → 3) (x² - 9)/(x - 3)",
+      "hint": "factor quadratic",
+      "steps": [
         "Step 1: Substitute x = 3 → (9 - 9)/(0) = 0/0",
         "Step 2: Factor numerator → x² - 9 = (x - 3)(x + 3)",
         "Step 3: Rewrite → [(x - 3)(x + 3)] / (x - 3)",
         "Step 4: Cancel (x - 3)",
         "Step 5: Simplify → x + 3",
-        "Step 6: Substitute x = 3 → 3 + 3",
+        "Step 6: Substitute x = 3 → 3 + 3"
       ],
-      ans: "6",
-      why: "Indeterminate form resolves after factoring and cancellation",
+      "ans": "6",
+      "why": "Indeterminate form resolves after factoring and cancellation"
     },
-
     {
-      q: "Evaluate lim (x → 4) (x² - 16)/(x - 4)",
-      hint: "difference of squares",
-      steps: [
+      "q": "Evaluate lim (x → 4) (x² - 16)/(x - 4)",
+      "hint": "difference of squares",
+      "steps": [
         "Step 1: Substitute x = 4 → (16 - 16)/(0) = 0/0",
         "Step 2: Factor numerator → x² - 16 = (x - 4)(x + 4)",
         "Step 3: Cancel (x - 4)",
         "Step 4: Simplify → x + 4",
-        "Step 5: Substitute x = 4 → 4 + 4",
+        "Step 5: Substitute x = 4 → 4 + 4"
       ],
-      ans: "8",
-      why: "Canceling the common factor removes the indeterminate form",
+      "ans": "8",
+      "why": "Canceling the common factor removes the indeterminate form"
     },
-
     {
-      q: "Evaluate lim (x → 5) (x² - 25)/(x - 5)",
-      hint: "factorization",
-      steps: [
+      "q": "Evaluate lim (x → 5) (x² - 25)/(x - 5)",
+      "hint": "factorization",
+      "steps": [
         "Step 1: Substitute x = 5 → (25 - 25)/(0) = 0/0",
         "Step 2: Factor numerator → x² - 25 = (x - 5)(x + 5)",
         "Step 3: Cancel (x - 5)",
         "Step 4: Simplify → x + 5",
-        "Step 5: Substitute x = 5 → 5 + 5",
+        "Step 5: Substitute x = 5 → 5 + 5"
       ],
-      ans: "10",
-      why: "Factorization resolves the indeterminate expression",
-    },
-  ],
+      "ans": "10",
+      "why": "Factorization resolves the indeterminate expression"
+    }
+  ]
 );
-/*==================================================
-One-Sided Limit Problems
-==================================================*/
+
 add(
   "math",
   "limits",
   "One-Sided Limit Problems",
+
   `
 <h2> One-Sided Limits (Advanced)</h2>
 
@@ -10221,72 +9925,69 @@ Right side: ●●●●●
 
 ---
 `,
+
   [
     {
-      q: "When does lim x→a f(x) exist using one-sided limits?",
-      hint: "compare both sides",
-      steps: [
+      "q": "When does lim x→a f(x) exist using one-sided limits?",
+      "hint": "compare both sides",
+      "steps": [
         "Step 1: Compute lim x→a⁻ f(x)",
         "Step 2: Compute lim x→a⁺ f(x)",
         "Step 3: Let left-hand limit = L",
         "Step 4: Let right-hand limit = R",
         "Step 5: Compare L and R",
-        "Step 6: If L = R, limit exists",
+        "Step 6: If L = R, limit exists"
       ],
-      ans: "When lim x→a⁻ f(x) = lim x→a⁺ f(x)",
-      why: "A limit exists only when both directional values are equal",
+      "ans": "When lim x→a⁻ f(x) = lim x→a⁺ f(x)",
+      "why": "A limit exists only when both directional values are equal"
     },
-
     {
-      q: "Determine whether a limit exists if lim x→2⁻ f(x) = 5 and lim x→2⁺ f(x) = 5",
-      hint: "compare values",
-      steps: [
+      "q": "Determine whether a limit exists if lim x→2⁻ f(x) = 5 and lim x→2⁺ f(x) = 5",
+      "hint": "compare values",
+      "steps": [
         "Step 1: Identify left-hand limit = 5",
         "Step 2: Identify right-hand limit = 5",
         "Step 3: Compare both values",
         "Step 4: Check equality condition",
-        "Step 5: Conclude result",
+        "Step 5: Conclude result"
       ],
-      ans: "Limit exists and equals 5",
-      why: "Both one-sided limits are equal",
+      "ans": "Limit exists and equals 5",
+      "why": "Both one-sided limits are equal"
     },
-
     {
-      q: "Determine limit existence if lim x→3⁻ f(x) = 4 and lim x→3⁺ f(x) = 7",
-      hint: "check discontinuity",
-      steps: [
+      "q": "Determine limit existence if lim x→3⁻ f(x) = 4 and lim x→3⁺ f(x) = 7",
+      "hint": "check discontinuity",
+      "steps": [
         "Step 1: Left-hand limit = 4",
         "Step 2: Right-hand limit = 7",
         "Step 3: Compare 4 and 7",
         "Step 4: Identify inequality",
-        "Step 5: Conclude limit behavior",
+        "Step 5: Conclude limit behavior"
       ],
-      ans: "Limit does not exist",
-      why: "Unequal one-sided limits indicate a jump discontinuity",
+      "ans": "Limit does not exist",
+      "why": "Unequal one-sided limits indicate a jump discontinuity"
     },
-
     {
-      q: "Find result when lim x→5⁻ f(x) = 10 and lim x→5⁺ f(x) = 10",
-      hint: "equal sides",
-      steps: [
+      "q": "Find result when lim x→5⁻ f(x) = 10 and lim x→5⁺ f(x) = 10",
+      "hint": "equal sides",
+      "steps": [
         "Step 1: Left-hand limit = 10",
         "Step 2: Right-hand limit = 10",
         "Step 3: Compare values",
         "Step 4: Confirm equality",
-        "Step 5: State final result",
+        "Step 5: State final result"
       ],
-      ans: "Limit exists and equals 10",
-      why: "Equal one-sided limits confirm continuity at that point",
-    },
-  ],
+      "ans": "Limit exists and equals 10",
+      "why": "Equal one-sided limits confirm continuity at that point"
+    }
+  ]
 );
-/*==============================================
-  Applications of Limits
-  ============================================*/
+
 add(
   "math",
   "limits",
   "Applications of Limits",
+
   `
 <h2> Applications of Limits</h2>
 
@@ -10348,37 +10049,34 @@ Smooth curve → tangent at a point = limit concept
 </ul>
 
 `,
+
   [
     {
-      Q1: "Why are limits important?",
-      Answer: "foundation of calculus",
-      Hint: "used in derivatives and integrals",
-      Explanation:
-        "Limits define both differentiation and integration, forming the core of calculus.",
+      "q": "Why are limits important?",
+      "hint": "used in derivatives and integrals",
+      "ans": "foundation of calculus",
+      "why": "Limits define both differentiation and integration, forming the core of calculus."
     },
     {
-      Q2: "Give one real-world use of limits",
-      Answer: "instantaneous speed",
-      Hint: "motion",
-      Explanation:
-        "Limits are used to calculate velocity at a specific moment in time.",
+      "q": "Give one real-world use of limits",
+      "hint": "motion",
+      "ans": "instantaneous speed",
+      "why": "Limits are used to calculate velocity at a specific moment in time."
     },
     {
-      Q3: "What does lim x→a f(x) mean?",
-      Answer: "value f(x) approaches as x nears a",
-      Hint: "approaching value",
-      Explanation:
-        "It represents the value a function gets close to near a specific input.",
-    },
-  ],
+      "q": "What does lim x→a f(x) mean?",
+      "hint": "approaching value",
+      "ans": "value f(x) approaches as x nears a",
+      "why": "It represents the value a function gets close to near a specific input."
+    }
+  ]
 );
-/*===================================================
-Gradient of a Curve
-===================================================*/
+
 add(
   "math",
   "differentiation",
   "Gradient of a Curve",
+
   `
 <h2> Gradient of a Curve</h2>
 
@@ -10443,67 +10141,64 @@ dy/dx = gradient at a point
 
 ---
 `,
+
   [
     {
-      q: "Find gradient of curve using dy/dx at a point",
-      hint: "differentiate then substitute",
-      steps: [
+      "q": "Find gradient of curve using dy/dx at a point",
+      "hint": "differentiate then substitute",
+      "steps": [
         "Step 1: Start with function y = f(x)",
         "Step 2: Differentiate to find dy/dx",
         "Step 3: Substitute the given x-value",
-        "Step 4: Compute gradient at that point",
+        "Step 4: Compute gradient at that point"
       ],
-      ans: "Value of dy/dx at the given point",
-      why: "Gradient of a curve is found using differentiation at a specific point",
+      "ans": "Value of dy/dx at the given point",
+      "why": "Gradient of a curve is found using differentiation at a specific point"
     },
-
     {
-      q: "Find dy/dx for y = x² and evaluate at x = 3",
-      hint: "power rule",
-      steps: [
+      "q": "Find dy/dx for y = x² and evaluate at x = 3",
+      "hint": "power rule",
+      "steps": [
         "Step 1: Differentiate y = x² → dy/dx = 2x",
         "Step 2: Substitute x = 3",
         "Step 3: Compute 2 × 3",
-        "Step 4: Get final gradient",
+        "Step 4: Get final gradient"
       ],
-      ans: "6",
-      why: "Derivative gives slope of tangent at a point",
+      "ans": "6",
+      "why": "Derivative gives slope of tangent at a point"
     },
-
     {
-      q: "Find gradient of y = 2x + 3",
-      hint: "linear function rule",
-      steps: [
+      "q": "Find gradient of y = 2x + 3",
+      "hint": "linear function rule",
+      "steps": [
         "Step 1: Identify equation y = mx + c",
         "Step 2: Recognize coefficient of x",
         "Step 3: Extract m value",
-        "Step 4: State gradient",
+        "Step 4: State gradient"
       ],
-      ans: "2",
-      why: "In linear equations, gradient is the coefficient of x",
+      "ans": "2",
+      "why": "In linear equations, gradient is the coefficient of x"
     },
-
     {
-      q: "Find dy/dx of y = 3x² at x = 2",
-      hint: "power rule",
-      steps: [
+      "q": "Find dy/dx of y = 3x² at x = 2",
+      "hint": "power rule",
+      "steps": [
         "Step 1: Differentiate y = 3x² → dy/dx = 6x",
         "Step 2: Substitute x = 2",
         "Step 3: Multiply 6 × 2",
-        "Step 4: Compute gradient",
+        "Step 4: Compute gradient"
       ],
-      ans: "12",
-      why: "Derivative gives instantaneous rate of change",
-    },
-  ],
+      "ans": "12",
+      "why": "Derivative gives instantaneous rate of change"
+    }
+  ]
 );
-/*==================================================
-Rate of Change
-==================================================*/
+
 add(
   "math",
   "differentiation",
   "Rate of Change",
+
   `
 <h2> Rate of Change</h2>
 
@@ -10565,69 +10260,66 @@ Slope shows speed
 
 ---
 `,
+
   [
     {
-      q: "Find rate of change of y with respect to x for y = 3x² at x = 2",
-      hint: "differentiate then substitute",
-      steps: [
+      "q": "Find rate of change of y with respect to x for y = 3x² at x = 2",
+      "hint": "differentiate then substitute",
+      "steps": [
         "Step 1: Start with y = 3x²",
         "Step 2: Differentiate → dy/dx = 6x",
         "Step 3: Substitute x = 2",
         "Step 4: Compute 6 × 2",
-        "Step 5: Final value of rate of change",
+        "Step 5: Final value of rate of change"
       ],
-      ans: "12",
-      why: "Rate of change is found using differentiation and substitution",
+      "ans": "12",
+      "why": "Rate of change is found using differentiation and substitution"
     },
-
     {
-      q: "Find dy/dx for y = 5x at any point",
-      hint: "linear rule",
-      steps: [
+      "q": "Find dy/dx for y = 5x at any point",
+      "hint": "linear rule",
+      "steps": [
         "Step 1: Identify y = mx form",
         "Step 2: Differentiate → dy/dx = 5",
         "Step 3: Note constant slope",
-        "Step 4: State rate of change",
+        "Step 4: State rate of change"
       ],
-      ans: "5",
-      why: "Linear functions have constant rate of change equal to slope",
+      "ans": "5",
+      "why": "Linear functions have constant rate of change equal to slope"
     },
-
     {
-      q: "A car travels distance s = 4t². Find speed at t = 3",
-      hint: "differentiate distance",
-      steps: [
+      "q": "A car travels distance s = 4t². Find speed at t = 3",
+      "hint": "differentiate distance",
+      "steps": [
         "Step 1: Start with s = 4t²",
         "Step 2: Differentiate → ds/dt = 8t",
         "Step 3: Substitute t = 3",
         "Step 4: Compute 8 × 3",
-        "Step 5: Final speed value",
+        "Step 5: Final speed value"
       ],
-      ans: "24",
-      why: "Speed is rate of change of distance with respect to time",
+      "ans": "24",
+      "why": "Speed is rate of change of distance with respect to time"
     },
-
     {
-      q: "Find rate of change of y = x³ at x = 1",
-      hint: "power rule",
-      steps: [
+      "q": "Find rate of change of y = x³ at x = 1",
+      "hint": "power rule",
+      "steps": [
         "Step 1: Differentiate y = x³ → dy/dx = 3x²",
         "Step 2: Substitute x = 1",
         "Step 3: Compute 3 × 1²",
-        "Step 4: Final value",
+        "Step 4: Final value"
       ],
-      ans: "3",
-      why: "Derivative gives instantaneous rate of change",
-    },
-  ],
+      "ans": "3",
+      "why": "Derivative gives instantaneous rate of change"
+    }
+  ]
 );
-/*===============================================
-Maxima and Minima
-================================================*/
+
 add(
   "math",
   "differentiation",
   "Maxima and Minima",
+
   `
 <h2> Maxima and Minima</h2>
 
@@ -10669,91 +10361,87 @@ dy/dx = 0 → critical point
 
 ---
 `,
+
   [
     {
-      q: "Find turning point and determine maximum/minimum for y = -x² + 6x - 5",
-      hint: "differentiate and classify",
-      steps: [
+      "q": "Find turning point and determine maximum/minimum for y = -x² + 6x - 5",
+      "hint": "differentiate and classify",
+      "steps": [
         "Step 1: Differentiate y = -x² + 6x - 5 → dy/dx = -2x + 6",
         "Step 2: Set dy/dx = 0 → -2x + 6 = 0",
         "Step 3: Solve → 2x = 6",
         "Step 4: x = 3",
         "Step 5: Since coefficient of x² is negative, curve opens downward",
-        "Step 6: Therefore turning point is a maximum",
+        "Step 6: Therefore turning point is a maximum"
       ],
-      ans: "x = 3 (maximum point)",
-      why: "Negative x² means the parabola opens downward, giving a maximum",
+      "ans": "x = 3 (maximum point)",
+      "why": "Negative x² means the parabola opens downward, giving a maximum"
     },
-
     {
-      q: "Find maximum point of y = -2x² + 8x + 1",
-      hint: "dy/dx = 0",
-      steps: [
+      "q": "Find maximum point of y = -2x² + 8x + 1",
+      "hint": "dy/dx = 0",
+      "steps": [
         "Step 1: Differentiate → dy/dx = -4x + 8",
         "Step 2: Set dy/dx = 0 → -4x + 8 = 0",
         "Step 3: Solve → 4x = 8",
         "Step 4: x = 2",
         "Step 5: Substitute into original function → y = -2(2²) + 8(2) + 1",
-        "Step 6: y = -8 + 16 + 1 = 9",
+        "Step 6: y = -8 + 16 + 1 = 9"
       ],
-      ans: "(2, 9) maximum point",
-      why: "Vertex gives highest value because parabola opens downward",
+      "ans": "(2, 9) maximum point",
+      "why": "Vertex gives highest value because parabola opens downward"
     },
-
     {
-      q: "Find minimum point of y = x² + 8x + 12",
-      hint: "complete or differentiate",
-      steps: [
+      "q": "Find minimum point of y = x² + 8x + 12",
+      "hint": "complete or differentiate",
+      "steps": [
         "Step 1: Differentiate → dy/dx = 2x + 8",
         "Step 2: Set dy/dx = 0 → 2x + 8 = 0",
         "Step 3: Solve → 2x = -8",
         "Step 4: x = -4",
         "Step 5: Substitute into function → y = (-4)² + 8(-4) + 12",
-        "Step 6: y = 16 - 32 + 12 = -4",
+        "Step 6: y = 16 - 32 + 12 = -4"
       ],
-      ans: "(-4, -4) minimum point",
-      why: "Positive x² means parabola opens upward giving a minimum",
+      "ans": "(-4, -4) minimum point",
+      "why": "Positive x² means parabola opens upward giving a minimum"
     },
-
     {
-      q: "Find stationary point of y = x² - 10x + 25 and classify it",
-      hint: "perfect square form",
-      steps: [
+      "q": "Find stationary point of y = x² - 10x + 25 and classify it",
+      "hint": "perfect square form",
+      "steps": [
         "Step 1: Differentiate → dy/dx = 2x - 10",
         "Step 2: Set dy/dx = 0 → 2x - 10 = 0",
         "Step 3: Solve → 2x = 10",
         "Step 4: x = 5",
         "Step 5: Substitute → y = 25 - 50 + 25 = 0",
-        "Step 6: Since coefficient of x² is positive, it is a minimum",
+        "Step 6: Since coefficient of x² is positive, it is a minimum"
       ],
-      ans: "(5, 0) minimum point",
-      why: "Perfect square quadratic always has a minimum vertex",
+      "ans": "(5, 0) minimum point",
+      "why": "Perfect square quadratic always has a minimum vertex"
     },
-
     {
-      q: "Find maximum value of y = 3x - x²",
-      hint: "rearrange quadratic",
-      steps: [
+      "q": "Find maximum value of y = 3x - x²",
+      "hint": "rearrange quadratic",
+      "steps": [
         "Step 1: Rewrite y = -x² + 3x",
         "Step 2: Differentiate → dy/dx = -2x + 3",
         "Step 3: Set dy/dx = 0 → -2x + 3 = 0",
         "Step 4: Solve → 2x = 3",
         "Step 5: x = 3/2",
         "Step 6: Substitute → y = 3(3/2) - (3/2)²",
-        "Step 7: y = 9/2 - 9/4 = 9/4",
+        "Step 7: y = 9/2 - 9/4 = 9/4"
       ],
-      ans: "(3/2, 9/4) maximum point",
-      why: "Negative x² ensures a maximum at vertex",
-    },
-  ],
+      "ans": "(3/2, 9/4) maximum point",
+      "why": "Negative x² ensures a maximum at vertex"
+    }
+  ]
 );
-/*==================================================
-Tangents and Normals
-==================================================*/
+
 add(
   "math",
   "differentiation",
   "Tangents and Normals",
+
   `
 <h2> Tangents and Normals</h2>
 
@@ -10812,8 +10500,7 @@ Slope of normal = -1 / (dy/dx)
       tangent /
              /
    curve •---
-             \
-              normal ⟂
+                           normal ⟂
 </pre>
 
 ---
@@ -10827,176 +10514,167 @@ Slope of normal = -1 / (dy/dx)
 
 ---
 `,
+
   [
     {
-      q: "Find slope of tangent to y = x² at x = 4",
-      hint: "differentiate and substitute",
-      steps: [
+      "q": "Find slope of tangent to y = x² at x = 4",
+      "hint": "differentiate and substitute",
+      "steps": [
         "Step 1: Differentiate y = x² → dy/dx = 2x",
         "Step 2: Substitute x = 4",
         "Step 3: Compute 2 × 4",
-        "Step 4: Final slope value",
+        "Step 4: Final slope value"
       ],
-      ans: "8",
-      why: "Derivative gives slope of tangent at a point",
+      "ans": "8",
+      "why": "Derivative gives slope of tangent at a point"
     },
-
     {
-      q: "If tangent slope is 3, what is slope of normal?",
-      hint: "negative reciprocal",
-      steps: [
+      "q": "If tangent slope is 3, what is slope of normal?",
+      "hint": "negative reciprocal",
+      "steps": [
         "Step 1: Identify tangent slope m = 3",
         "Step 2: Use formula slope(normal) = -1/m",
         "Step 3: Compute -1/3",
-        "Step 4: Final result",
+        "Step 4: Final result"
       ],
-      ans: "-1/3",
-      why: "Perpendicular lines have slopes that multiply to -1",
+      "ans": "-1/3",
+      "why": "Perpendicular lines have slopes that multiply to -1"
     },
-
     {
-      q: "Find equation of tangent to y = x² at (2, 4)",
-      hint: "point-slope form",
-      steps: [
+      "q": "Find equation of tangent to y = x² at (2, 4)",
+      "hint": "point-slope form",
+      "steps": [
         "Step 1: Differentiate to find slope at x = 2",
         "Step 2: dy/dx = 2x → slope = 4",
         "Step 3: Use point (2, 4) and slope 4",
         "Step 4: Equation: y - 4 = 4(x - 2)",
-        "Step 5: Simplify → y = 4x - 4",
+        "Step 5: Simplify → y = 4x - 4"
       ],
-      ans: "y = 4x - 4",
-      why: "Tangent is a straight line touching the curve at a point",
+      "ans": "y = 4x - 4",
+      "why": "Tangent is a straight line touching the curve at a point"
     },
     {
-      q: "Find equation of tangent slope for y = x² at x = 2",
-      hint: "differentiate then substitute",
-      steps: [
+      "q": "Find equation of tangent slope for y = x² at x = 2",
+      "hint": "differentiate then substitute",
+      "steps": [
         "Step 1: Differentiate y = x² → dy/dx = 2x",
         "Step 2: Substitute x = 2",
         "Step 3: Compute 2 × 2",
-        "Step 4: Tangent slope = 4",
+        "Step 4: Tangent slope = 4"
       ],
-      ans: "4",
-      why: "Tangent slope is found using derivative at a point",
+      "ans": "4",
+      "why": "Tangent slope is found using derivative at a point"
     },
-
     {
-      q: "Find equation of normal slope if tangent slope is 3",
-      hint: "negative reciprocal",
-      steps: [
+      "q": "Find equation of normal slope if tangent slope is 3",
+      "hint": "negative reciprocal",
+      "steps": [
         "Step 1: Identify tangent slope m = 3",
         "Step 2: Apply normal formula = -1/m",
         "Step 3: Substitute values → -1/3",
-        "Step 4: Simplify result",
+        "Step 4: Simplify result"
       ],
-      ans: "-1/3",
-      why: "Normal is perpendicular to tangent, so slopes multiply to -1",
+      "ans": "-1/3",
+      "why": "Normal is perpendicular to tangent, so slopes multiply to -1"
     },
-
     {
-      q: "Find slope of tangent for y = 3x² + 2x at x = 1",
-      hint: "differentiate first",
-      steps: [
+      "q": "Find slope of tangent for y = 3x² + 2x at x = 1",
+      "hint": "differentiate first",
+      "steps": [
         "Step 1: Differentiate y → dy/dx = 6x + 2",
         "Step 2: Substitute x = 1",
         "Step 3: Compute 6(1) + 2",
-        "Step 4: Final slope = 8",
+        "Step 4: Final slope = 8"
       ],
-      ans: "8",
-      why: "Derivative gives slope of tangent at a point",
+      "ans": "8",
+      "why": "Derivative gives slope of tangent at a point"
     },
-
     {
-      q: "Find normal slope if tangent slope is -5",
-      hint: "negative reciprocal rule",
-      steps: [
+      "q": "Find normal slope if tangent slope is -5",
+      "hint": "negative reciprocal rule",
+      "steps": [
         "Step 1: Tangent slope m = -5",
         "Step 2: Apply formula -1/m",
         "Step 3: Compute -1 / (-5)",
-        "Step 4: Simplify result",
+        "Step 4: Simplify result"
       ],
-      ans: "1/5",
-      why: "Normal is perpendicular so slope is negative reciprocal",
+      "ans": "1/5",
+      "why": "Normal is perpendicular so slope is negative reciprocal"
     },
     {
-      q: "Find equation of tangent to y = x² at point (2, 4)",
-      hint: "first find slope, then use point-slope form",
-      steps: [
+      "q": "Find equation of tangent to y = x² at point (2, 4)",
+      "hint": "first find slope, then use point-slope form",
+      "steps": [
         "Step 1: Differentiate y = x² → dy/dx = 2x",
         "Step 2: Substitute x = 2 → slope m = 4",
         "Step 3: Use point (2, 4) in y - y₁ = m(x - x₁)",
         "Step 4: Equation becomes y - 4 = 4(x - 2)",
-        "Step 5: Simplify → y = 4x - 4",
+        "Step 5: Simplify → y = 4x - 4"
       ],
-      ans: "y = 4x - 4",
-      why: "Tangent is a line touching curve at a point; its slope is the derivative value at that point",
+      "ans": "y = 4x - 4",
+      "why": "Tangent is a line touching curve at a point; its slope is the derivative value at that point"
     },
-
     {
-      q: "Find equation of normal to y = x² at (2, 4)",
-      hint: "use perpendicular slope",
-      steps: [
+      "q": "Find equation of normal to y = x² at (2, 4)",
+      "hint": "use perpendicular slope",
+      "steps": [
         "Step 1: Slope of tangent at x = 2 is m = 4",
         "Step 2: Normal slope is perpendicular → -1/4",
         "Step 3: Use point (2, 4) in y - y₁ = m(x - x₁)",
         "Step 4: Equation: y - 4 = -1/4(x - 2)",
-        "Step 5: Simplify to standard form",
+        "Step 5: Simplify to standard form"
       ],
-      ans: "y = -1/4x + 9/2",
-      why: "Normal is perpendicular to tangent at the same point, hence negative reciprocal slope",
+      "ans": "y = -1/4x + 9/2",
+      "why": "Normal is perpendicular to tangent at the same point, hence negative reciprocal slope"
     },
-
     {
-      q: "Find x-intercept of tangent to y = x² at x = 3",
-      hint: "first find tangent equation",
-      steps: [
+      "q": "Find x-intercept of tangent to y = x² at x = 3",
+      "hint": "first find tangent equation",
+      "steps": [
         "Step 1: Differentiate y = x² → dy/dx = 2x",
         "Step 2: At x = 3, slope m = 2(3) = 6",
         "Step 3: Point is (3, 3²) = (3, 9)",
         "Step 4: Tangent equation: y - 9 = 6(x - 3)",
         "Step 5: Set y = 0 to find x-intercept → -9 = 6x - 18",
-        "Step 6: Solve for x → x = 9/6 = 3/2",
+        "Step 6: Solve for x → x = 9/6 = 3/2"
       ],
-      ans: "x = 3/2",
-      why: "The tangent line has a specific slope and passes through the point, allowing its intercepts to be calculated",
+      "ans": "x = 3/2",
+      "why": "The tangent line has a specific slope and passes through the point, allowing its intercepts to be calculated"
     },
-
     {
-      q: "At what x-value is tangent to y = x² parallel to line y = 4x + 1?",
-      hint: "slopes must be equal",
-      steps: [
+      "q": "At what x-value is tangent to y = x² parallel to line y = 4x + 1?",
+      "hint": "slopes must be equal",
+      "steps": [
         "Step 1: Slope of given line is 4",
         "Step 2: Slope of tangent is derivative dy/dx = 2x",
         "Step 3: Set slopes equal → 2x = 4",
-        "Step 4: Solve for x → x = 2",
+        "Step 4: Solve for x → x = 2"
       ],
-      ans: "x = 2",
-      why: "Parallel lines have equal slopes, so we equate tangent slope to line slope and solve for x",
+      "ans": "x = 2",
+      "why": "Parallel lines have equal slopes, so we equate tangent slope to line slope and solve for x"
     },
-
     {
-      q: "Find the perpendicular distance from origin (0, 0) to tangent of y = x² at x = 4",
-      hint: "find tangent equation first",
-      steps: [
+      "q": "Find the perpendicular distance from origin (0, 0) to tangent of y = x² at x = 4",
+      "hint": "find tangent equation first",
+      "steps": [
         "Step 1: At x = 4, slope m = 2(4) = 8",
         "Step 2: Point is (4, 4²) = (4, 16)",
         "Step 3: Tangent equation: y - 16 = 8(x - 4) → 8x - y - 16 = 0",
         "Step 4: Use distance formula from point (x₀, y₀) to line Ax + By + C = 0: distance = |Ax₀ + By₀ + C| / sqrt(A² + B²)",
         "Step 5: For origin (0, 0) and line 8x - y - 16 = 0 → distance = |-16| / sqrt(8² + (-1)²)",
-        "Step 6: Simplify → distance = 16 / sqrt(65)",
+        "Step 6: Simplify → distance = 16 / sqrt(65)"
       ],
-      ans: "16/sqrt(65)",
-      why: "Perpendicular distance formula is used to find distance from origin to the calculated tangent line",
-    },
-  ],
+      "ans": "16/sqrt(65)",
+      "why": "Perpendicular distance formula is used to find distance from origin to the calculated tangent line"
+    }
+  ]
 );
-/*================================================
-Applications of Differentiation
-================================================*/
+
 add(
   "math",
   "differentiation",
   "Applications of Differentiation",
+
   `
 <h2> Applications of Differentiation</h2>
 
@@ -11072,36 +10750,34 @@ Peak point → slope = 0
 
 ---
 `,
+
   [
     {
-      Q1: "Why is differentiation important?",
-      Answer: "measures change",
-      Hint: "rate of change",
-      Explanation:
-        "It quantifies how one variable changes with respect to another",
+      "q": "Why is differentiation important?",
+      "hint": "rate of change",
+      "ans": "measures change",
+      "why": "It quantifies how one variable changes with respect to another"
     },
     {
-      Q2: "Give real-life use",
-      Answer: "speed or profit optimization",
-      Hint: "motion or business",
-      Explanation:
-        "Used in physics for velocity and in economics for maximizing profit",
+      "q": "Give real-life use",
+      "hint": "motion or business",
+      "ans": "speed or profit optimization",
+      "why": "Used in physics for velocity and in economics for maximizing profit"
     },
     {
-      Q3: "What does f'(x) represent?",
-      Answer: "rate of change or slope",
-      Hint: "derivative meaning",
-      Explanation: "It represents instantaneous rate of change of a function",
-    },
-  ],
+      "q": "What does f'(x) represent?",
+      "hint": "derivative meaning",
+      "ans": "rate of change or slope",
+      "why": "It represents instantaneous rate of change of a function"
+    }
+  ]
 );
-/*================================================
-Area Under a Curve
-=================================================*/
+
 add(
   "math",
   "integration",
   "Area Under a Curve",
+
   `
 <h2> Area Under a Curve</h2>
 
@@ -11200,69 +10876,66 @@ For positive functions, this area is directly given by a definite integral.
 
 ---
 `,
+
   [
     {
-      q: "Evaluate ∫ x dx",
-      hint: "power rule integration",
-      steps: [
+      "q": "Evaluate ∫ x dx",
+      "hint": "power rule integration",
+      "steps": [
         "Step 1: Increase power of x by 1 → x¹ becomes x²",
         "Step 2: Divide by new power → x² / 2",
         "Step 3: Add constant of integration C",
-        "Step 4: Final expression",
+        "Step 4: Final expression"
       ],
-      ans: "x²/2 + C",
-      why: "Integration is reverse of differentiation using power rule",
+      "ans": "x²/2 + C",
+      "why": "Integration is reverse of differentiation using power rule"
     },
-
     {
-      q: "Evaluate ∫ x² dx",
-      hint: "increase power",
-      steps: [
+      "q": "Evaluate ∫ x² dx",
+      "hint": "increase power",
+      "steps": [
         "Step 1: Increase exponent → x² becomes x³",
         "Step 2: Divide by new exponent → x³ / 3",
         "Step 3: Add constant C",
-        "Step 4: Write final result",
+        "Step 4: Write final result"
       ],
-      ans: "x³/3 + C",
-      why: "Power rule: add 1 to exponent then divide",
+      "ans": "x³/3 + C",
+      "why": "Power rule: add 1 to exponent then divide"
     },
-
     {
-      q: "Evaluate definite integral ∫ from 0 to 2 of x dx",
-      hint: "area under curve",
-      steps: [
+      "q": "Evaluate definite integral ∫ from 0 to 2 of x dx",
+      "hint": "area under curve",
+      "steps": [
         "Step 1: Find integral of x → x²/2",
         "Step 2: Substitute upper limit 2 → (2²)/2 = 4/2 = 2",
         "Step 3: Substitute lower limit 0 → 0²/2 = 0",
         "Step 4: Subtract upper - lower → 2 - 0",
-        "Step 5: Final answer",
+        "Step 5: Final answer"
       ],
-      ans: "2",
-      why: "Definite integrals give net area under curve",
+      "ans": "2",
+      "why": "Definite integrals give net area under curve"
     },
-
     {
-      q: "Evaluate ∫ 3x² dx",
-      hint: "constant multiple rule",
-      steps: [
+      "q": "Evaluate ∫ 3x² dx",
+      "hint": "constant multiple rule",
+      "steps": [
         "Step 1: Keep constant 3 outside",
         "Step 2: Integrate x² → x³/3",
         "Step 3: Multiply → 3 × (x³/3)",
         "Step 4: Simplify expression",
-        "Step 5: Add +C",
+        "Step 5: Add +C"
       ],
-      ans: "x³ + C",
-      why: "Constant multiples remain unchanged in integration",
-    },
-  ],
+      "ans": "x³ + C",
+      "why": "Constant multiples remain unchanged in integration"
+    }
+  ]
 );
-/*============================================
-Indefinite Integrals
-============================================*/
+
 add(
   "math",
   "integration",
   "Indefinite Integrals",
+
   `
 <h2> Indefinite Integrals</h2>
 
@@ -11335,83 +11008,79 @@ Same shape, different vertical shifts (C)
 
 ---
 `,
+
   [
     {
-      q: "Evaluate ∫ x dx",
-      hint: "power rule integration",
-      steps: [
+      "q": "Evaluate ∫ x dx",
+      "hint": "power rule integration",
+      "steps": [
         "Step 1: Increase power of x by 1 → x¹ becomes x²",
         "Step 2: Divide by new power → x² / 2",
         "Step 3: Add constant of integration C",
-        "Step 4: Final expression",
+        "Step 4: Final expression"
       ],
-      ans: "x²/2 + C",
-      why: "Integration is reverse of differentiation using power rule",
+      "ans": "x²/2 + C",
+      "why": "Integration is reverse of differentiation using power rule"
     },
-
     {
-      q: "Evaluate ∫ x² dx",
-      hint: "increase power",
-      steps: [
+      "q": "Evaluate ∫ x² dx",
+      "hint": "increase power",
+      "steps": [
         "Step 1: Increase exponent → x² becomes x³",
         "Step 2: Divide by new exponent → x³ / 3",
         "Step 3: Add constant C",
-        "Step 4: Write final result",
+        "Step 4: Write final result"
       ],
-      ans: "x³/3 + C",
-      why: "Power rule: add 1 to exponent then divide",
+      "ans": "x³/3 + C",
+      "why": "Power rule: add 1 to exponent then divide"
     },
-
     {
-      q: "Evaluate definite integral ∫ from 0 to 2 of x dx",
-      hint: "area under curve",
-      steps: [
+      "q": "Evaluate definite integral ∫ from 0 to 2 of x dx",
+      "hint": "area under curve",
+      "steps": [
         "Step 1: Find integral of x → x²/2",
         "Step 2: Substitute upper limit 2 → (2²)/2 = 4/2 = 2",
         "Step 3: Substitute lower limit 0 → 0²/2 = 0",
         "Step 4: Subtract upper - lower → 2 - 0",
-        "Step 5: Final answer",
+        "Step 5: Final answer"
       ],
-      ans: "2",
-      why: "Definite integrals give net area under curve",
+      "ans": "2",
+      "why": "Definite integrals give net area under curve"
     },
-
     {
-      q: "Evaluate ∫ 3x² dx",
-      hint: "constant multiple rule",
-      steps: [
+      "q": "Evaluate ∫ 3x² dx",
+      "hint": "constant multiple rule",
+      "steps": [
         "Step 1: Keep constant 3 outside",
         "Step 2: Integrate x² → x³/3",
         "Step 3: Multiply → 3 × (x³/3)",
         "Step 4: Simplify expression",
-        "Step 5: Add +C",
+        "Step 5: Add +C"
       ],
-      ans: "x³ + C",
-      why: "Constant multiples remain unchanged in integration",
+      "ans": "x³ + C",
+      "why": "Constant multiples remain unchanged in integration"
     },
-
     {
-      q: "Why does integration represent area under a curve?",
-      hint: "limit of rectangles",
-      steps: [
+      "q": "Why does integration represent area under a curve?",
+      "hint": "limit of rectangles",
+      "steps": [
         "Step 1: Divide area under curve into small rectangles",
         "Step 2: Approximate each rectangle’s area",
         "Step 3: Increase number of rectangles",
         "Step 4: Make width approach zero",
-        "Step 5: Sum becomes exact area",
+        "Step 5: Sum becomes exact area"
       ],
-      ans: "Sum of infinitely small areas",
-      why: "Integration is the limit of summing thin rectangles",
-    },
-  ],
+      "ans": "Sum of infinitely small areas",
+      "why": "Integration is the limit of summing thin rectangles"
+    }
+  ]
 );
-/*===========================================
-Definite Integrals
-===========================================*/
+
 add(
   "math",
   "integration",
   "Definite Integrals",
+
   `
 <h2> Definite Integrals</h2>
 
@@ -11511,71 +11180,68 @@ Definite integrals have limits and give a NUMERICAL value representing the total
 
 ---
 `,
+
   [
     {
-      q: "Evaluate definite integral ∫ from 1 to 2 of x dx",
-      hint: "definite integral with limits",
-      steps: [
+      "q": "Evaluate definite integral ∫ from 1 to 2 of x dx",
+      "hint": "definite integral with limits",
+      "steps": [
         "Step 1: Find antiderivative of x → x²/2",
         "Step 2: Substitute upper limit 2 → (2²)/2 = 4/2 = 2",
         "Step 3: Substitute lower limit 1 → (1²)/2 = 1/2",
         "Step 4: Subtract upper limit value from lower limit value",
-        "Step 5: Result = 2 - 1/2 = 3/2",
+        "Step 5: Result = 2 - 1/2 = 3/2"
       ],
-      ans: "3/2",
-      why: "Definite integrals calculate net area under a curve between two points",
+      "ans": "3/2",
+      "why": "Definite integrals calculate net area under a curve between two points"
     },
-
     {
-      q: "Find area under y = x² from 0 to 3",
-      hint: "use definite integral",
-      steps: [
+      "q": "Find area under y = x² from 0 to 3",
+      "hint": "use definite integral",
+      "steps": [
         "Step 1: Set up integral ∫ from 0 to 3 of x² dx",
         "Step 2: Integrate x² → x³/3",
         "Step 3: Apply limits → (3³/3) - (0³/3)",
         "Step 4: Simplify → 27/3 - 0",
-        "Step 5: Final area = 9",
+        "Step 5: Final area = 9"
       ],
-      ans: "9",
-      why: "Definite integral of a function over an interval gives the area under that curve",
+      "ans": "9",
+      "why": "Definite integral of a function over an interval gives the area under that curve"
     },
-
     {
-      q: "Evaluate ∫ from 0 to 1 of (2x + 1) dx",
-      hint: "integrate term by term",
-      steps: [
+      "q": "Evaluate ∫ from 0 to 1 of (2x + 1) dx",
+      "hint": "integrate term by term",
+      "steps": [
         "Step 1: Integrate 2x → x²",
         "Step 2: Integrate 1 → x",
         "Step 3: Combine → x² + x",
         "Step 4: Apply limits [0, 1] → (1² + 1) - (0² + 0)",
-        "Step 5: Result = 2 - 0 = 2",
+        "Step 5: Result = 2 - 0 = 2"
       ],
-      ans: "2",
-      why: "Integrate each term separately and evaluate over the given interval",
+      "ans": "2",
+      "why": "Integrate each term separately and evaluate over the given interval"
     },
-
     {
-      q: "What is difference between ∫ x dx and ∫₀¹ x dx?",
-      hint: "limits vs no limits",
-      steps: [
+      "q": "What is difference between ∫ x dx and ∫₀¹ x dx?",
+      "hint": "limits vs no limits",
+      "steps": [
         "Step 1: ∫ x dx has no limits",
         "Step 2: Result is family of functions → x²/2 + C",
         "Step 3: ∫₀¹ x dx has limits",
         "Step 4: Result is numerical value → 1/2",
-        "Step 5: Compare both results",
+        "Step 5: Compare both results"
       ],
-      ans: "First is indefinite (family of functions), second is definite (numerical value)",
-      why: "Limits define the interval and produce a single value instead of a function",
-    },
-  ],
+      "ans": "First is indefinite (family of functions), second is definite (numerical value)",
+      "why": "Limits define the interval and produce a single value instead of a function"
+    }
+  ]
 );
-/*============================================
-  Integration as Reverse of Differentiation
-  ==========================================*/
+
 add(
   "math",
   "integration",
   "Integration as Reverse of Differentiation",
+
   `
   
 <h2> Reverse of Differentiation</h2>
@@ -11643,70 +11309,67 @@ Integration ↑ (reverse process)
 
 ---
 `,
+
   [
     {
-      q: "Find ∫ (2x) dx and verify relationship with differentiation",
-      hint: "reverse of derivative",
-      steps: [
+      "q": "Find ∫ (2x) dx and verify relationship with differentiation",
+      "hint": "reverse of derivative",
+      "steps": [
         "Step 1: Recognize 2x as derivative of x²",
         "Step 2: Apply integration rule → increase power of x",
         "Step 3: ∫ 2x dx = x² + C",
         "Step 4: Differentiate result → d/dx(x² + C)",
-        "Step 5: Get 2x (original function)",
+        "Step 5: Get 2x (original function)"
       ],
-      ans: "x² + C",
-      why: "Integration reverses differentiation",
+      "ans": "x² + C",
+      "why": "Integration reverses differentiation"
     },
-
     {
-      q: "Find function if ∫ f(x) dx = x³/3 + C",
-      hint: "differentiate result",
-      steps: [
+      "q": "Find function if ∫ f(x) dx = x³/3 + C",
+      "hint": "differentiate result",
+      "steps": [
         "Step 1: Differentiate both sides",
         "Step 2: d/dx (x³/3 + C)",
         "Step 3: Apply power rule → (3x²)/3",
         "Step 4: Simplify result",
-        "Step 5: Get f(x)",
+        "Step 5: Get f(x)"
       ],
-      ans: "x²",
-      why: "Differentiation reverses integration",
+      "ans": "x²",
+      "why": "Differentiation reverses integration"
     },
-
     {
-      q: "Show that integration adds a constant using ∫ 0 dx",
-      hint: "constant rule",
-      steps: [
+      "q": "Show that integration adds a constant using ∫ 0 dx",
+      "hint": "constant rule",
+      "steps": [
         "Step 1: Integrate 0 → ∫ 0 dx",
         "Step 2: Result is constant C",
         "Step 3: Differentiate C",
         "Step 4: d/dx(C) = 0",
-        "Step 5: Confirm relationship",
+        "Step 5: Confirm relationship"
       ],
-      ans: "C",
-      why: "Derivative removes constants, integration restores them",
+      "ans": "C",
+      "why": "Derivative removes constants, integration restores them"
     },
-
     {
-      q: "If d/dx (x² + 5) = 2x, find integral of 2x",
-      hint: "inverse process",
-      steps: [
+      "q": "If d/dx (x² + 5) = 2x, find integral of 2x",
+      "hint": "inverse process",
+      "steps": [
         "Step 1: Recognize 2x as derivative of x²",
         "Step 2: Integrate 2x → x²",
         "Step 3: Add constant C",
-        "Step 4: Final expression",
+        "Step 4: Final expression"
       ],
-      ans: "x² + C",
-      why: "Integration reconstructs original function up to a constant",
-    },
-  ],
+      "ans": "x² + C",
+      "why": "Integration reconstructs original function up to a constant"
+    }
+  ]
 );
-/*============================================
-  Applications of Integration
-  ===========================================*/
+
 add(
   "math",
   "integration",
   "Applications of Integration",
+
   `
 <h2> Applications of Integration</h2>
 
@@ -11767,70 +11430,67 @@ Integration is used to accumulate small changes into a total result. It is essen
 <li>Economics cumulative profit analysis</li>
 </ul>
 `,
+
   [
     {
-      q: "Find ∫ (2x) dx and verify relationship with differentiation",
-      hint: "reverse of derivative",
-      steps: [
+      "q": "Find ∫ (2x) dx and verify relationship with differentiation",
+      "hint": "reverse of derivative",
+      "steps": [
         "Step 1: Recognize 2x as derivative of x²",
         "Step 2: Apply integration rule → increase power of x",
         "Step 3: ∫ 2x dx = x² + C",
         "Step 4: Differentiate result → d/dx(x² + C)",
-        "Step 5: Get 2x (original function)",
+        "Step 5: Get 2x (original function)"
       ],
-      ans: "x² + C",
-      why: "Integration reverses differentiation",
+      "ans": "x² + C",
+      "why": "Integration reverses differentiation"
     },
-
     {
-      q: "Find function if ∫ f(x) dx = x³/3 + C",
-      hint: "differentiate result",
-      steps: [
+      "q": "Find function if ∫ f(x) dx = x³/3 + C",
+      "hint": "differentiate result",
+      "steps": [
         "Step 1: Differentiate both sides",
         "Step 2: d/dx (x³/3 + C)",
         "Step 3: Apply power rule → (3x²)/3",
         "Step 4: Simplify result",
-        "Step 5: Get f(x)",
+        "Step 5: Get f(x)"
       ],
-      ans: "x²",
-      why: "Differentiation reverses integration",
+      "ans": "x²",
+      "why": "Differentiation reverses integration"
     },
-
     {
-      q: "Show that integration adds a constant using ∫ 0 dx",
-      hint: "constant rule",
-      steps: [
+      "q": "Show that integration adds a constant using ∫ 0 dx",
+      "hint": "constant rule",
+      "steps": [
         "Step 1: Integrate 0 → ∫ 0 dx",
         "Step 2: Result is constant C",
         "Step 3: Differentiate C",
         "Step 4: d/dx(C) = 0",
-        "Step 5: Confirm relationship",
+        "Step 5: Confirm relationship"
       ],
-      ans: "C",
-      why: "Derivative removes constants, integration restores them",
+      "ans": "C",
+      "why": "Derivative removes constants, integration restores them"
     },
-
     {
-      q: "If d/dx (x² + 5) = 2x, find integral of 2x",
-      hint: "inverse process",
-      steps: [
+      "q": "If d/dx (x² + 5) = 2x, find integral of 2x",
+      "hint": "inverse process",
+      "steps": [
         "Step 1: Recognize 2x as derivative of x²",
         "Step 2: Integrate 2x → x²",
         "Step 3: Add constant C",
-        "Step 4: Final expression",
+        "Step 4: Final expression"
       ],
-      ans: "x² + C",
-      why: "Integration reconstructs original function up to a constant",
-    },
-  ],
+      "ans": "x² + C",
+      "why": "Integration reconstructs original function up to a constant"
+    }
+  ]
 );
-/*=============================================
-  Introduction to Differential Equations
-  ===========================================*/
+
 add(
   "math",
   "differential_equations",
   "Introduction to Differential Equations",
+
   `
 <h2> Introduction to Differential Equations</h2>
 
@@ -11898,69 +11558,66 @@ differential equation → integration → function
 <li>Spread of diseases</li>
 </ul>
 `,
+
   [
     {
-      q: "Rewrite dy/dx = 2x as a differential equation and solve for y",
-      hint: "integrate both sides",
-      steps: [
+      "q": "Rewrite dy/dx = 2x as a differential equation and solve for y",
+      "hint": "integrate both sides",
+      "steps": [
         "Step 1: Start with dy/dx = 2x",
         "Step 2: Rewrite as dy = 2x dx",
         "Step 3: Integrate both sides → ∫dy = ∫2x dx",
-        "Step 4: Solve integrals → y = x² + C",
+        "Step 4: Solve integrals → y = x² + C"
       ],
-      ans: "y = x² + C",
-      why: "Integration reverses differentiation to recover function",
+      "ans": "y = x² + C",
+      "why": "Integration reverses differentiation to recover function"
     },
-
     {
-      q: "Solve dy/dx = 3y using separation of variables",
-      hint: "separate y and x",
-      steps: [
+      "q": "Solve dy/dx = 3y using separation of variables",
+      "hint": "separate y and x",
+      "steps": [
         "Step 1: dy/dx = 3y",
         "Step 2: Rearrange → dy/y = 3dx",
         "Step 3: Integrate both sides → ∫(1/y)dy = ∫3dx",
         "Step 4: ln|y| = 3x + C",
-        "Step 5: Exponentiate → y = Ce^(3x)",
+        "Step 5: Exponentiate → y = Ce^(3x)"
       ],
-      ans: "y = Ce^(3x)",
-      why: "Growth proportional to value gives exponential solution",
+      "ans": "y = Ce^(3x)",
+      "why": "Growth proportional to value gives exponential solution"
     },
-
     {
-      q: "Show how dy/dx models continuous change in y = x²",
-      hint: "differentiate function",
-      steps: [
+      "q": "Show how dy/dx models continuous change in y = x²",
+      "hint": "differentiate function",
+      "steps": [
         "Step 1: Start with y = x²",
         "Step 2: Differentiate → dy/dx = 2x",
         "Step 3: Substitute values of x (e.g., x = 1,2,3)",
         "Step 4: Observe slope changes with x",
-        "Step 5: Conclude rate is not constant",
+        "Step 5: Conclude rate is not constant"
       ],
-      ans: "dy/dx = 2x",
-      why: "Derivative shows how function changes continuously",
+      "ans": "dy/dx = 2x",
+      "why": "Derivative shows how function changes continuously"
     },
-
     {
-      q: "Interpret dy/dx = x + y using algebraic rearrangement",
-      hint: "mixed variables",
-      steps: [
+      "q": "Interpret dy/dx = x + y using algebraic rearrangement",
+      "hint": "mixed variables",
+      "steps": [
         "Step 1: Start with dy/dx = x + y",
         "Step 2: Rearrange → dy/dx - y = x",
         "Step 3: Recognize linear differential equation form",
-        "Step 4: Identify need for integrating factor method",
+        "Step 4: Identify need for integrating factor method"
       ],
-      ans: "linear differential equation",
-      why: "Both variables affect rate of change simultaneously",
-    },
-  ],
+      "ans": "linear differential equation",
+      "why": "Both variables affect rate of change simultaneously"
+    }
+  ]
 );
-/*===========================================
-Growth and decay models
-===========================================*/
+
 add(
   "math",
   "differential_equations",
   "Growth and Decay Models",
+
   `
 <h2> Growth and Decay Models</h2>
 
@@ -12025,90 +11682,86 @@ Behavior depends on sign of k
 <li>Bank interest growth</li>
 </ul>
 `,
+
   [
     {
-      q: "Solve dy/dt = 4y with initial condition y = 3 when t = 0",
-      hint: "use separation of variables",
-      steps: [
+      "q": "Solve dy/dt = 4y with initial condition y = 3 when t = 0",
+      "hint": "use separation of variables",
+      "steps": [
         "Step 1: Write dy/dt = 4y",
         "Step 2: Separate variables → dy/y = 4dt",
         "Step 3: Integrate both sides → ∫(1/y)dy = ∫4dt",
         "Step 4: ln|y| = 4t + C",
         "Step 5: Exponentiate → y = Ce^(4t)",
-        "Step 6: Apply initial condition y(0)=3 → 3 = C",
+        "Step 6: Apply initial condition y(0)=3 → 3 = C"
       ],
-      ans: "y = 3e^(4t)",
-      why: "Initial condition determines constant of integration",
+      "ans": "y = 3e^(4t)",
+      "why": "Initial condition determines constant of integration"
     },
-
     {
-      q: "Solve dy/dt = -2y with y = 8 at t = 0",
-      hint: "decay model",
-      steps: [
+      "q": "Solve dy/dt = -2y with y = 8 at t = 0",
+      "hint": "decay model",
+      "steps": [
         "Step 1: Write dy/dt = -2y",
         "Step 2: Separate variables → dy/y = -2dt",
         "Step 3: Integrate → ∫(1/y)dy = ∫-2dt",
         "Step 4: ln|y| = -2t + C",
         "Step 5: Exponentiate → y = Ce^(-2t)",
-        "Step 6: Substitute y(0)=8 → C = 8",
+        "Step 6: Substitute y(0)=8 → C = 8"
       ],
-      ans: "y = 8e^(-2t)",
-      why: "Negative constant produces exponential decay",
+      "ans": "y = 8e^(-2t)",
+      "why": "Negative constant produces exponential decay"
     },
-
     {
-      q: "If dy/dt = ky and y doubles in 3 hours, find relation of k",
-      hint: "use exponential model",
-      steps: [
+      "q": "If dy/dt = ky and y doubles in 3 hours, find relation of k",
+      "hint": "use exponential model",
+      "steps": [
         "Step 1: Write general solution y = Ce^(kt)",
         "Step 2: Let initial value y(0) = C",
         "Step 3: After 3 hours → y(3) = 2C",
         "Step 4: Substitute → 2C = Ce^(3k)",
         "Step 5: Cancel C → 2 = e^(3k)",
-        "Step 6: Take ln → ln2 = 3k",
+        "Step 6: Take ln → ln2 = 3k"
       ],
-      ans: "k = ln2 / 3",
-      why: "Doubling condition determines growth rate",
+      "ans": "k = ln2 / 3",
+      "why": "Doubling condition determines growth rate"
     },
-
     {
-      q: "Find k if y = 5e^(kt) and y becomes 20 when t = 2",
-      hint: "substitution in exponential",
-      steps: [
+      "q": "Find k if y = 5e^(kt) and y becomes 20 when t = 2",
+      "hint": "substitution in exponential",
+      "steps": [
         "Step 1: Write equation y = 5e^(kt)",
         "Step 2: Substitute y = 20, t = 2",
         "Step 3: 20 = 5e^(2k)",
         "Step 4: Divide → 4 = e^(2k)",
         "Step 5: Take ln → ln4 = 2k",
-        "Step 6: Solve → k = ln4 / 2",
+        "Step 6: Solve → k = ln4 / 2"
       ],
-      ans: "k = ln4 / 2",
-      why: "Exponential constant is found using known values",
+      "ans": "k = ln4 / 2",
+      "why": "Exponential constant is found using known values"
     },
-
     {
-      q: "Show why k controls growth or decay in dy/dt = ky",
-      hint: "sign of k",
-      steps: [
+      "q": "Show why k controls growth or decay in dy/dt = ky",
+      "hint": "sign of k",
+      "steps": [
         "Step 1: Solve dy/dt = ky → y = Ce^(kt)",
         "Step 2: If k > 0, exponent increases with t",
         "Step 3: If k < 0, exponent decreases with t",
         "Step 4: Evaluate behavior as t → ∞",
         "Step 5: k > 0 → y increases",
-        "Step 6: k < 0 → y approaches 0",
+        "Step 6: k < 0 → y approaches 0"
       ],
-      ans: "k determines growth or decay",
-      why: "Sign of exponent controls long-term behavior",
-    },
-  ],
+      "ans": "k determines growth or decay",
+      "why": "Sign of exponent controls long-term behavior"
+    }
+  ]
 );
-/*=============================================
-Population Models
-==============================================*/
+
 add(
   "math",
   "differential_equations",
   "Population Models",
+
   `
 <h2> Population Models</h2>
 
@@ -12177,89 +11830,85 @@ fast growth → slow growth → saturation at K
 
 ---
 `,
+
   [
     {
-      q: "Find carrying capacity effect when dP/dt = kP(1 - P/K) and P = K/2",
-      hint: "substitute into model",
-      steps: [
+      "q": "Find carrying capacity effect when dP/dt = kP(1 - P/K) and P = K/2",
+      "hint": "substitute into model",
+      "steps": [
         "Step 1: Start with dP/dt = kP(1 - P/K)",
         "Step 2: Substitute P = K/2",
         "Step 3: dP/dt = k(K/2)(1 - (K/2)/K)",
         "Step 4: Simplify fraction → (K/2)/K = 1/2",
         "Step 5: dP/dt = k(K/2)(1 - 1/2)",
         "Step 6: dP/dt = k(K/2)(1/2)",
-        "Step 7: Final result → dP/dt = kK/4",
+        "Step 7: Final result → dP/dt = kK/4"
       ],
-      ans: "kK/4",
-      why: "Growth is half-maximized at half carrying capacity",
+      "ans": "kK/4",
+      "why": "Growth is half-maximized at half carrying capacity"
     },
-
     {
-      q: "Show why growth becomes zero at carrying capacity",
-      hint: "set derivative to zero",
-      steps: [
+      "q": "Show why growth becomes zero at carrying capacity",
+      "hint": "set derivative to zero",
+      "steps": [
         "Step 1: Start with dP/dt = kP(1 - P/K)",
         "Step 2: Set dP/dt = 0",
         "Step 3: kP(1 - P/K) = 0",
         "Step 4: Solve factors → P = 0 or 1 - P/K = 0",
         "Step 5: Solve second case → P = K",
-        "Step 6: Substitute P = K back → dP/dt = 0",
+        "Step 6: Substitute P = K back → dP/dt = 0"
       ],
-      ans: "growth = 0 at P = K",
-      why: "No net growth occurs when environment is saturated",
+      "ans": "growth = 0 at P = K",
+      "why": "No net growth occurs when environment is saturated"
     },
-
     {
-      q: "Explain why population grows fastest when P is small in logistic model",
-      hint: "approximation",
-      steps: [
+      "q": "Explain why population grows fastest when P is small in logistic model",
+      "hint": "approximation",
+      "steps": [
         "Step 1: Start with dP/dt = kP(1 - P/K)",
         "Step 2: If P is very small, P/K ≈ 0",
         "Step 3: Simplify → (1 - P/K) ≈ 1",
         "Step 4: dP/dt ≈ kP",
         "Step 5: Recognize exponential growth form",
-        "Step 6: Growth rate is proportional to population",
+        "Step 6: Growth rate is proportional to population"
       ],
-      ans: "rapid exponential growth",
-      why: "Resources are effectively unlimited at low population",
+      "ans": "rapid exponential growth",
+      "why": "Resources are effectively unlimited at low population"
     },
-
     {
-      q: "Find behavior of growth when P > K",
-      hint: "sign of factor",
-      steps: [
+      "q": "Find behavior of growth when P > K",
+      "hint": "sign of factor",
+      "steps": [
         "Step 1: Start with dP/dt = kP(1 - P/K)",
         "Step 2: If P > K, then P/K > 1",
         "Step 3: So (1 - P/K) becomes negative",
         "Step 4: dP/dt becomes negative",
-        "Step 5: Population decreases over time",
+        "Step 5: Population decreases over time"
       ],
-      ans: "population declines",
-      why: "Overpopulation leads to negative growth due to lack of resources",
+      "ans": "population declines",
+      "why": "Overpopulation leads to negative growth due to lack of resources"
     },
-
     {
-      q: "Determine equilibrium points of logistic equation",
-      hint: "set growth to zero",
-      steps: [
+      "q": "Determine equilibrium points of logistic equation",
+      "hint": "set growth to zero",
+      "steps": [
         "Step 1: Start with dP/dt = kP(1 - P/K)",
         "Step 2: Set dP/dt = 0",
         "Step 3: Solve kP(1 - P/K) = 0",
         "Step 4: P = 0 or P = K",
-        "Step 5: Interpret both solutions",
+        "Step 5: Interpret both solutions"
       ],
-      ans: "P = 0 and P = K",
-      why: "Both represent stable or extinction equilibrium states",
-    },
-  ],
+      "ans": "P = 0 and P = K",
+      "why": "Both represent stable or extinction equilibrium states"
+    }
+  ]
 );
-/*============================================
-Motion Equations
-=============================================*/
+
 add(
   "math",
   "differential_equations",
   "Motion Equations",
+
   `
 <h2> Motion Equations</h2>
 
@@ -12342,72 +11991,69 @@ s(t) → v(t) → a(t)
 
 ---
 `,
+
   [
     {
-      q: "Find velocity if s(t) = 4t² + 6t - 3",
-      hint: "differentiate displacement",
-      steps: [
+      "q": "Find velocity if s(t) = 4t² + 6t - 3",
+      "hint": "differentiate displacement",
+      "steps": [
         "Step 1: Write s(t) = 4t² + 6t - 3",
         "Step 2: Use v(t) = ds/dt",
         "Step 3: Differentiate 4t² → 8t",
         "Step 4: Differentiate 6t → 6",
         "Step 5: Differentiate -3 → 0",
-        "Step 6: Combine results → v(t) = 8t + 6",
+        "Step 6: Combine results → v(t) = 8t + 6"
       ],
-      ans: "v(t) = 8t + 6",
-      why: "Velocity is derivative of displacement",
+      "ans": "v(t) = 8t + 6",
+      "why": "Velocity is derivative of displacement"
     },
-
     {
-      q: "Find acceleration if v(t) = 7t² - 4t + 1",
-      hint: "differentiate velocity",
-      steps: [
+      "q": "Find acceleration if v(t) = 7t² - 4t + 1",
+      "hint": "differentiate velocity",
+      "steps": [
         "Step 1: Write v(t) = 7t² - 4t + 1",
         "Step 2: Use a(t) = dv/dt",
         "Step 3: Differentiate 7t² → 14t",
         "Step 4: Differentiate -4t → -4",
         "Step 5: Differentiate 1 → 0",
-        "Step 6: Combine results → a(t) = 14t - 4",
+        "Step 6: Combine results → a(t) = 14t - 4"
       ],
-      ans: "a(t) = 14t - 4",
-      why: "Acceleration is derivative of velocity",
+      "ans": "a(t) = 14t - 4",
+      "why": "Acceleration is derivative of velocity"
     },
-
     {
-      q: "If a particle has constant velocity v = 12, find acceleration",
-      hint: "constant means derivative is zero",
-      steps: [
+      "q": "If a particle has constant velocity v = 12, find acceleration",
+      "hint": "constant means derivative is zero",
+      "steps": [
         "Step 1: Write v = 12 (constant)",
         "Step 2: Use a = dv/dt",
         "Step 3: Differentiate constant → 0",
-        "Step 4: a = 0",
+        "Step 4: a = 0"
       ],
-      ans: "0",
-      why: "Constant velocity means no change over time",
+      "ans": "0",
+      "why": "Constant velocity means no change over time"
     },
-
     {
-      q: "If acceleration a(t) = 5, find velocity given v(0) = 2",
-      hint: "integrate acceleration",
-      steps: [
+      "q": "If acceleration a(t) = 5, find velocity given v(0) = 2",
+      "hint": "integrate acceleration",
+      "steps": [
         "Step 1: Write a(t) = dv/dt = 5",
         "Step 2: Rewrite → dv = 5dt",
         "Step 3: Integrate → v = ∫5dt",
         "Step 4: v(t) = 5t + C",
-        "Step 5: Use v(0) = 2 → C = 2",
+        "Step 5: Use v(0) = 2 → C = 2"
       ],
-      ans: "v(t) = 5t + 2",
-      why: "Integrating acceleration gives velocity",
-    },
-  ],
+      "ans": "v(t) = 5t + 2",
+      "why": "Integrating acceleration gives velocity"
+    }
+  ]
 );
-/*============================================
-First-Order Differential Equations
-============================================*/
+
 add(
   "math",
   "differential_equations",
   "First-Order Differential Equations",
+
   `
 <h2> First-Order Differential Equations</h2>
 
@@ -12481,74 +12127,71 @@ y
 
 ---
 `,
+
   [
     {
-      q: "Solve dy/dx = 5x²",
-      hint: "integrate both sides",
-      steps: [
+      "q": "Solve dy/dx = 5x²",
+      "hint": "integrate both sides",
+      "steps": [
         "Step 1: Start with dy/dx = 5x²",
         "Step 2: Rewrite as dy = 5x² dx",
         "Step 3: Integrate both sides → y = ∫5x² dx",
         "Step 4: Apply power rule → ∫x² dx = x³/3",
         "Step 5: Multiply constant → y = 5(x³/3)",
-        "Step 6: Final answer → y = (5/3)x³ + C",
+        "Step 6: Final answer → y = (5/3)x³ + C"
       ],
-      ans: "y = (5/3)x³ + C",
-      why: "Integration reverses differentiation",
+      "ans": "y = (5/3)x³ + C",
+      "why": "Integration reverses differentiation"
     },
-
     {
-      q: "Solve dy/dx = 4x + 2 with y(0) = 3",
-      hint: "integrate and use condition",
-      steps: [
+      "q": "Solve dy/dx = 4x + 2 with y(0) = 3",
+      "hint": "integrate and use condition",
+      "steps": [
         "Step 1: dy/dx = 4x + 2",
         "Step 2: Integrate → y = ∫(4x + 2) dx",
         "Step 3: Split → ∫4x dx + ∫2 dx",
         "Step 4: Compute → 2x² + 2x + C",
         "Step 5: Use y(0) = 3",
         "Step 6: 3 = C",
-        "Step 7: Final answer → y = 2x² + 2x + 3",
+        "Step 7: Final answer → y = 2x² + 2x + 3"
       ],
-      ans: "y = 2x² + 2x + 3",
-      why: "Initial conditions determine constant of integration",
+      "ans": "y = 2x² + 2x + 3",
+      "why": "Initial conditions determine constant of integration"
     },
-
     {
-      q: "Solve dy/dx = y/x (separable form)",
-      hint: "separate variables",
-      steps: [
+      "q": "Solve dy/dx = y/x (separable form)",
+      "hint": "separate variables",
+      "steps": [
         "Step 1: dy/dx = y/x",
         "Step 2: Rearrange → dy/y = dx/x",
         "Step 3: Integrate both sides",
         "Step 4: ∫(1/y)dy = ∫(1/x)dx",
         "Step 5: ln|y| = ln|x| + C",
-        "Step 6: Exponentiate → y = Cx",
+        "Step 6: Exponentiate → y = Cx"
       ],
-      ans: "y = Cx",
-      why: "Separable equations integrate on both sides",
+      "ans": "y = Cx",
+      "why": "Separable equations integrate on both sides"
     },
-
     {
-      q: "Solve dy/dx = 6",
-      hint: "constant derivative",
-      steps: [
+      "q": "Solve dy/dx = 6",
+      "hint": "constant derivative",
+      "steps": [
         "Step 1: dy/dx = 6",
         "Step 2: Integrate both sides",
         "Step 3: y = ∫6 dx",
-        "Step 4: y = 6x + C",
+        "Step 4: y = 6x + C"
       ],
-      ans: "y = 6x + C",
-      why: "Constant derivative integrates to linear function",
-    },
-  ],
+      "ans": "y = 6x + C",
+      "why": "Constant derivative integrates to linear function"
+    }
+  ]
 );
-/*=============================================================
-MATHEMATICAL PROOFS
-==============================================================*/
+
 add(
   "math",
   "proofs",
   "Direct Proof",
+
   `
 <h2> Direct Proof</h2>
 
@@ -12621,72 +12264,69 @@ Start → apply definitions → logical steps → conclusion
 
 ---
 `,
+
   [
     {
-      q: "Prove that the sum of two even numbers is even",
-      hint: "use definition 2k",
-      steps: [
+      "q": "Prove that the sum of two even numbers is even",
+      "hint": "use definition 2k",
+      "steps": [
         "Step 1: Let numbers be 2a and 2b",
         "Step 2: Write 2a + 2b",
         "Step 3: Factor out 2 → 2(a + b)",
         "Step 4: Let k = a + b",
-        "Step 5: Result is 2k which is even",
+        "Step 5: Result is 2k which is even"
       ],
-      ans: "2(a + b)",
-      why: "Even numbers have form 2k",
+      "ans": "2(a + b)",
+      "why": "Even numbers have form 2k"
     },
-
     {
-      q: "Prove 3 is irrational",
-      hint: "assume 3=a/b contradiction",
-      steps: [
+      "q": "Prove 3 is irrational",
+      "hint": "assume 3=a/b contradiction",
+      "steps": [
         "Step 1: Assume 3 is rational → 3 = a/b",
         "Step 2: Cross-multiply → 3b = a",
         "Step 3: This means a is multiple of 3",
         "Step 4: But we assumed simplest form",
-        "Step 5: Contradiction! So 3 is irrational",
+        "Step 5: Contradiction! So 3 is irrational"
       ],
-      ans: "irrational",
-      why: "Contradiction arises from assumption",
+      "ans": "irrational",
+      "why": "Contradiction arises from assumption"
     },
-
     {
-      q: "Prove if n² is even, then n is even",
-      hint: "prove contrapositive",
-      steps: [
+      "q": "Prove if n² is even, then n is even",
+      "hint": "prove contrapositive",
+      "steps": [
         "Step 1: Assume n is odd",
         "Step 2: n = 2k + 1",
         "Step 3: n² = (2k + 1)² = 4k² + 4k + 1",
         "Step 4: n² = 2(2k² + 2k) + 1",
         "Step 5: n² is odd",
-        "Step 6: Contrapositive true, so original statement true",
+        "Step 6: Contrapositive true, so original statement true"
       ],
-      ans: "even",
-      why: "Proof by contrapositive",
+      "ans": "even",
+      "why": "Proof by contrapositive"
     },
-
     {
-      q: "Prove there are infinite primes",
-      hint: " Euclid's proof",
-      steps: [
+      "q": "Prove there are infinite primes",
+      "hint": " Euclid's proof",
+      "steps": [
         "Step 1: Assume finite primes: p1, p2, ..., pn",
         "Step 2: Construct N = (p1×p2×...×pn) + 1",
         "Step 3: N is not divisible by any pi",
         "Step 4: Must have new prime factor",
-        "Step 5: Contradiction to assumption of finiteness",
+        "Step 5: Contradiction to assumption of finiteness"
       ],
-      ans: "infinite primes",
-      why: "Contradiction shows assumption false",
-    },
-  ],
+      "ans": "infinite primes",
+      "why": "Contradiction shows assumption false"
+    }
+  ]
 );
-/*============================================
-Proof by Contradiction
-============================================*/
+
 add(
   "math",
   "proofs",
   "Proof by Contradiction",
+
   `
 <h2> Proof by Contradiction</h2>
 
@@ -12760,73 +12400,70 @@ Assume false → logical steps → contradiction  → conclusion true
 
 ---
 `,
+
   [
     {
-      q: "Prove 1 + 3 + 5 + ... + (2n-1) = n²",
-      hint: "use induction template",
-      steps: [
+      "q": "Prove 1 + 3 + 5 + ... + (2n-1) = n²",
+      "hint": "use induction template",
+      "steps": [
         "Step 1: Base case: n=1 → LHS = 1, RHS = 1² = 1. True.",
         "Step 2: Assume true for n=k: 1 + ... + (2k-1) = k²",
         "Step 3: Show for n=k+1: 1 + ... + (2k-1) + (2k+1) = (k+1)²",
         "Step 4: Use assumption → k² + (2k+1) = (k+1)²",
         "Step 5: Simplify → k² + 2k + 1 = (k+1)²",
-        "Step 6: Conclusion: holds for all n",
+        "Step 6: Conclusion: holds for all n"
       ],
-      ans: "n²",
-      why: "Induction proves base case and inductive step",
+      "ans": "n²",
+      "why": "Induction proves base case and inductive step"
     },
-
     {
-      q: "Prove n < 2ⁿ",
-      hint: "show true for n=1, then assume and prove step",
-      steps: [
+      "q": "Prove n < 2ⁿ",
+      "hint": "show true for n=1, then assume and prove step",
+      "steps": [
         "Step 1: Base case n=1: 1 < 2¹ = 2. True.",
         "Step 2: Assume k < 2ᵏ",
         "Step 3: Show k+1 < 2ᵏ⁺¹",
         "Step 4: k+1 < 2ᵏ + 1 (from assumption)",
         "Step 5: Since 1 < 2ᵏ (for k≥1), then 2ᵏ + 1 < 2ᵏ + 2ᵏ = 2ᵏ⁺¹",
-        "Step 6: Combine → k+1 < 2ᵏ⁺¹",
+        "Step 6: Combine → k+1 < 2ᵏ⁺¹"
       ],
-      ans: "True",
-      why: "Two-part induction proof structure",
+      "ans": "True",
+      "why": "Two-part induction proof structure"
     },
-
     {
-      q: "Prove 3ⁿ - 1 is divisible by 2",
-      hint: "factor or use pattern",
-      steps: [
+      "q": "Prove 3ⁿ - 1 is divisible by 2",
+      "hint": "factor or use pattern",
+      "steps": [
         "Step 1: Base case n=1: 3¹ - 1 = 2 (divisible by 2)",
         "Step 2: Assume 3ᵏ - 1 = 2m for some integer m",
         "Step 3: Consider 3ᵏ⁺¹ - 1 = 3(3ᵏ) - 1",
         "Step 4: = 3(2m + 1) - 1 = 6m + 3 - 1 = 6m + 2",
         "Step 5: = 2(3m + 1) (divisible by 2)",
-        "Step 6: Conclusion: true for all n",
+        "Step 6: Conclusion: true for all n"
       ],
-      ans: "divisible by 2",
-      why: "Shows divisibility extends step by step",
+      "ans": "divisible by 2",
+      "why": "Shows divisibility extends step by step"
     },
-
     {
-      q: "Prove n³ - n is divisible by 3",
-      hint: "factor into 3 consecutive integers",
-      steps: [
+      "q": "Prove n³ - n is divisible by 3",
+      "hint": "factor into 3 consecutive integers",
+      "steps": [
         "Step 1: n³ - n = n(n²-1) = n(n-1)(n+1)",
         "Step 2: Three consecutive integers always have one multiple of 3",
         "Step 3: Therefore n(n-1)(n+1) is divisible by 3",
-        "Step 4: Conclusion: true for all n",
+        "Step 4: Conclusion: true for all n"
       ],
-      ans: "divisible by 3",
-      why: "Direct proof using algebraic factorization",
-    },
-  ],
+      "ans": "divisible by 3",
+      "why": "Direct proof using algebraic factorization"
+    }
+  ]
 );
-/*=================================================
-Proof by Induction
-==================================================*/
+
 add(
   "math",
   "proofs",
   "Proof by Induction",
+
   `
 <h2> Proof by Induction</h2>
 
@@ -12901,73 +12538,70 @@ n=1  → assume n=k  → prove n=k+1  → holds for all n
 
 ---
 `,
+
   [
     {
-      q: "Prove 1 + 3 + ... + (2n-1) = n²",
-      hint: "use induction template",
-      steps: [
+      "q": "Prove 1 + 3 + ... + (2n-1) = n²",
+      "hint": "use induction template",
+      "steps": [
         "Step 1: Base case: n=1 → LHS = 1, RHS = 1² = 1. True.",
         "Step 2: Assume true for n=k: 1 + ... + (2k-1) = k²",
         "Step 3: Show for n=k+1: 1 + ... + (2k-1) + (2k+1) = (k+1)²",
         "Step 4: Use assumption → k² + (2k+1) = (k+1)²",
         "Step 5: Simplify → k² + 2k + 1 = (k+1)²",
-        "Step 6: Conclusion: holds for all n",
+        "Step 6: Conclusion: holds for all n"
       ],
-      ans: "n²",
-      why: "Induction proves base case and inductive step",
+      "ans": "n²",
+      "why": "Induction proves base case and inductive step"
     },
-
     {
-      q: "Prove n < 2ⁿ",
-      hint: "show true for n=1, then assume and prove step",
-      steps: [
+      "q": "Prove n < 2ⁿ",
+      "hint": "show true for n=1, then assume and prove step",
+      "steps": [
         "Step 1: Base case n=1: 1 < 2¹ = 2. True.",
         "Step 2: Assume k < 2ᵏ",
         "Step 3: Show k+1 < 2ᵏ⁺¹",
         "Step 4: k+1 < 2ᵏ + 1 (from assumption)",
         "Step 5: Since 1 < 2ᵏ (for k≥1), then 2ᵏ + 1 < 2ᵏ + 2ᵏ = 2ᵏ⁺¹",
-        "Step 6: Combine → k+1 < 2ᵏ⁺¹",
+        "Step 6: Combine → k+1 < 2ᵏ⁺¹"
       ],
-      ans: "True",
-      why: "Two-part induction proof structure",
+      "ans": "True",
+      "why": "Two-part induction proof structure"
     },
-
     {
-      q: "Prove 3ⁿ - 1 is divisible by 2",
-      hint: "factor or use pattern",
-      steps: [
+      "q": "Prove 3ⁿ - 1 is divisible by 2",
+      "hint": "factor or use pattern",
+      "steps": [
         "Step 1: Base case n=1: 3¹ - 1 = 2 (divisible by 2)",
         "Step 2: Assume 3ᵏ - 1 = 2m for some integer m",
         "Step 3: Consider 3ᵏ⁺¹ - 1 = 3(3ᵏ) - 1",
         "Step 4: = 3(2m + 1) - 1 = 6m + 3 - 1 = 6m + 2",
         "Step 5: = 2(3m + 1) (divisible by 2)",
-        "Step 6: Conclusion: true for all n",
+        "Step 6: Conclusion: true for all n"
       ],
-      ans: "divisible by 2",
-      why: "Shows divisibility extends step by step",
+      "ans": "divisible by 2",
+      "why": "Shows divisibility extends step by step"
     },
-
     {
-      q: "Prove n³ - n is divisible by 3",
-      hint: "factor into 3 consecutive integers",
-      steps: [
+      "q": "Prove n³ - n is divisible by 3",
+      "hint": "factor into 3 consecutive integers",
+      "steps": [
         "Step 1: n³ - n = n(n²-1) = n(n-1)(n+1)",
         "Step 2: Three consecutive integers always have one multiple of 3",
         "Step 3: Therefore n(n-1)(n+1) is divisible by 3",
-        "Step 4: Conclusion: true for all n",
+        "Step 4: Conclusion: true for all n"
       ],
-      ans: "divisible by 3",
-      why: "Direct proof using algebraic factorization",
-    },
-  ],
+      "ans": "divisible by 3",
+      "why": "Direct proof using algebraic factorization"
+    }
+  ]
 );
-/*=================================================
-Logical Argument Structures
-=================================================*/
+
 add(
   "math",
   "proofs",
   "Logical Argument Structures",
+
   `
 <h2> Logical Arguments</h2>
 
@@ -13036,63 +12670,63 @@ P → Q → R → Conclusion
 
 ---
 `,
+
   [
     {
-      q: "If x > 5, what about x²?",
-      hint: "square both sides",
-      steps: [
+      "q": "If x > 5, what about x²?",
+      "hint": "square both sides",
+      "steps": [
         "Step 1: Start with x > 5",
         "Step 2: Square both sides → x² > 5²",
-        "Step 3: Simplify → x² > 25",
+        "Step 3: Simplify → x² > 25"
       ],
-      ans: "x² > 25",
-      why: "Squaring preserves inequality for positive numbers",
+      "ans": "x² > 25",
+      "why": "Squaring preserves inequality for positive numbers"
     },
     {
-      q: "If P → Q and Q → R, what follows if P is true?",
-      hint: "chain reasoning",
-      steps: [
+      "q": "If P → Q and Q → R, what follows if P is true?",
+      "hint": "chain reasoning",
+      "steps": [
         "Step 1: P implies Q",
         "Step 2: Q implies R",
         "Step 3: Chain the implication",
-        "Step 4: Therefore P implies R",
+        "Step 4: Therefore P implies R"
       ],
-      ans: "P → R",
-      why: "Transitive property of implication",
+      "ans": "P → R",
+      "why": "Transitive property of implication"
     },
     {
-      q: "Explain P → Q (if P then Q)",
-      hint: "cause and effect",
-      steps: [
+      "q": "Explain P → Q (if P then Q)",
+      "hint": "cause and effect",
+      "steps": [
         "Step 1: P = premise (cause)",
         "Step 2: Q = conclusion (effect)",
         "Step 3: If P occurs, Q must follow",
-        "Step 4: True logical connection",
+        "Step 4: True logical connection"
       ],
-      ans: "Cause-effect relationship",
-      why: "Represents how one statement leads to another",
+      "ans": "Cause-effect relationship",
+      "why": "Represents how one statement leads to another"
     },
     {
-      q: "If a number is divisible by 4, is it divisible by 2?",
-      hint: "show property",
-      steps: [
+      "q": "If a number is divisible by 4, is it divisible by 2?",
+      "hint": "show property",
+      "steps": [
         "Step 1: Let number = 4k",
         "Step 2: Rewrite as 2(2k)",
         "Step 3: This is form 2m where m=2k",
-        "Step 4: Therefore divisible by 2",
+        "Step 4: Therefore divisible by 2"
       ],
-      ans: "Yes",
-      why: "Divisibility property: 4|n implies 2|n",
-    },
-  ],
+      "ans": "Yes",
+      "why": "Divisibility property: 4|n implies 2|n"
+    }
+  ]
 );
-/*=================================================
-   Applications of Mathematical Proofs
-   ==============================================*/
+
 add(
   "math",
   "proofs",
   "Applications of Mathematical Proofs",
+
   `
 <h2> Applications of Proofs</h2>
 
@@ -13154,72 +12788,69 @@ Claim → Logical reasoning → Proof → Verified truth
 
 ---
 `,
+
   [
     {
-      q: "Prove 1 + 3 + ... + (2n-1) = n² using induction",
-      hint: "base case, inductive step",
-      steps: [
+      "q": "Prove 1 + 3 + ... + (2n-1) = n² using induction",
+      "hint": "base case, inductive step",
+      "steps": [
         "Step 1: Base case n=1: LHS = 1, RHS = 1² = 1. True.",
         "Step 2: Assume true for k: 1 + ... + (2k-1) = k²",
         "Step 3: Show for k+1: 1 + ... + (2k-1) + (2k+1) = (k+1)²",
         "Step 4: Use assumption → k² + (2k+1) = (k+1)²",
         "Step 5: Simplify → k² + 2k + 1 = (k+1)²",
-        "Step 6: Conclusion: holds for all n",
+        "Step 6: Conclusion: holds for all n"
       ],
-      ans: "n²",
-      why: "Induction proves base case and inductive step",
+      "ans": "n²",
+      "why": "Induction proves base case and inductive step"
     },
-
     {
-      q: "Prove n < 2ⁿ by induction",
-      hint: "show true for n=1, then prove",
-      steps: [
+      "q": "Prove n < 2ⁿ by induction",
+      "hint": "show true for n=1, then prove",
+      "steps": [
         "Step 1: Base case n=1: 1 < 2¹ = 2. True.",
         "Step 2: Assume k < 2ᵏ",
         "Step 3: Show k+1 < 2ᵏ⁺¹",
         "Step 4: k+1 < 2ᵏ + 1 (from assumption)",
         "Step 5: Since 1 < 2ᵏ for k≥1, then 2ᵏ + 1 < 2ᵏ + 2ᵏ = 2ᵏ⁺¹",
-        "Step 6: Combine → k+1 < 2ᵏ⁺¹",
+        "Step 6: Combine → k+1 < 2ᵏ⁺¹"
       ],
-      ans: "True",
-      why: "Two-part induction proof",
+      "ans": "True",
+      "why": "Two-part induction proof"
     },
-
     {
-      q: "Prove 3ⁿ - 1 is divisible by 2 using induction",
-      hint: "factor form",
-      steps: [
+      "q": "Prove 3ⁿ - 1 is divisible by 2 using induction",
+      "hint": "factor form",
+      "steps": [
         "Step 1: Base case n=1: 3¹ - 1 = 2 (divisible by 2)",
         "Step 2: Assume 3ᵏ - 1 = 2m for some m",
         "Step 3: Show 3ᵏ⁺¹ - 1 = 3(3ᵏ) - 1 = 3(2m+1) - 1",
         "Step 4: = 6m + 3 - 1 = 6m + 2 = 2(3m+1)",
-        "Step 5: Conclusion: divisible by 2",
+        "Step 5: Conclusion: divisible by 2"
       ],
-      ans: "divisible by 2",
-      why: "Shows divisibility extends step by step",
+      "ans": "divisible by 2",
+      "why": "Shows divisibility extends step by step"
     },
-
     {
-      q: "Prove n³ - n is divisible by 3",
-      hint: "factor into consecutive integers",
-      steps: [
+      "q": "Prove n³ - n is divisible by 3",
+      "hint": "factor into consecutive integers",
+      "steps": [
         "Step 1: n³ - n = n(n-1)(n+1)",
         "Step 2: Three consecutive integers always have one multiple of 3",
         "Step 3: Therefore n(n-1)(n+1) is divisible by 3",
-        "Step 4: Conclusion: true for all n",
+        "Step 4: Conclusion: true for all n"
       ],
-      ans: "divisible by 3",
-      why: "Direct proof using factorization",
-    },
-  ],
+      "ans": "divisible by 3",
+      "why": "Direct proof using factorization"
+    }
+  ]
 );
-/*=============================================================
-DISCRETE MATHEMATICS
-=============================================================*/
+
 add(
   "math",
   "discrete_mathematics",
   "Logic Statements (AND, OR, NOT)",
+
   `
 <h2> Logic Statements</h2>
 
@@ -13292,71 +12923,71 @@ NOT → flips value (T ↔ F)
 
 ---
 `,
+
   [
     {
-      q: "If P=True, Q=False, what is P AND Q?",
-      hint: "both must be true",
-      steps: [
+      "q": "If P=True, Q=False, what is P AND Q?",
+      "hint": "both must be true",
+      "steps": [
         "Step 1: Identify P = True, Q = False",
         "Step 2: Apply AND rule: both must be true",
-        "Step 3: Since Q is False, the result is False",
+        "Step 3: Since Q is False, the result is False"
       ],
-      ans: "False",
-      why: "AND requires all inputs to be True",
+      "ans": "False",
+      "why": "AND requires all inputs to be True"
     },
     {
-      q: "If P=True, Q=False, what is P OR Q?",
-      hint: "at least one true",
-      steps: [
+      "q": "If P=True, Q=False, what is P OR Q?",
+      "hint": "at least one true",
+      "steps": [
         "Step 1: Identify P = True, Q = False",
         "Step 2: Apply OR rule: at least one must be true",
-        "Step 3: Since P is True, the result is True",
+        "Step 3: Since P is True, the result is True"
       ],
-      ans: "True",
-      why: "OR only needs one True input",
+      "ans": "True",
+      "why": "OR only needs one True input"
     },
     {
-      q: "What is NOT(NOT P) when P=True?",
-      hint: "double negation",
-      steps: [
+      "q": "What is NOT(NOT P) when P=True?",
+      "hint": "double negation",
+      "steps": [
         "Step 1: Start with P = True",
         "Step 2: Apply first NOT → NOT(True) = False",
-        "Step 3: Apply second NOT → NOT(False) = True",
+        "Step 3: Apply second NOT → NOT(False) = True"
       ],
-      ans: "True",
-      why: "Double negation cancels out",
+      "ans": "True",
+      "why": "Double negation cancels out"
     },
     {
-      q: "If A=True, B=True, C=False, what is A AND B AND C?",
-      hint: "all must be true",
-      steps: [
+      "q": "If A=True, B=True, C=False, what is A AND B AND C?",
+      "hint": "all must be true",
+      "steps": [
         "Step 1: Identify inputs: True, True, False",
         "Step 2: AND requires all to be True",
-        "Step 3: C is False, so entire expression is False",
+        "Step 3: C is False, so entire expression is False"
       ],
-      ans: "False",
-      why: "One false input makes AND expression false",
+      "ans": "False",
+      "why": "One false input makes AND expression false"
     },
     {
-      q: "If A=True, B=False, C=False, what is A OR B OR C?",
-      hint: "at least one true",
-      steps: [
+      "q": "If A=True, B=False, C=False, what is A OR B OR C?",
+      "hint": "at least one true",
+      "steps": [
         "Step 1: Identify inputs: True, False, False",
         "Step 2: OR requires at least one True",
-        "Step 3: A is True, so OR expression is True",
+        "Step 3: A is True, so OR expression is True"
       ],
-      ans: "True",
-      why: "At least one True input makes OR expression true",
-    },
-  ],
+      "ans": "True",
+      "why": "At least one True input makes OR expression true"
+    }
+  ]
 );
-/*=============================================
-Truth Tables
-=============================================*/
+
 add(
   "math",
   "discrete_mathematics",
   "Truth Tables",
+
   `
 <h2> Truth Tables</h2>
 
@@ -13432,54 +13063,52 @@ F F → F
 
 ---
 `,
+
   [
     {
-      q: "Make truth table for P AND Q",
-      hint: "4 combinations",
-      steps: [
+      "q": "Make truth table for P AND Q",
+      "hint": "4 combinations",
+      "steps": [
         "Step 1: List inputs: T T, T F, F T, F F",
         "Step 2: Apply AND rule (both true)",
         "Step 3: T AND T → T",
         "Step 4: T AND F → F",
         "Step 5: F AND T → F",
-        "Step 6: F AND F → F",
+        "Step 6: F AND F → F"
       ],
-      ans: "T, F, F, F",
-      why: "AND requires both inputs to be True",
+      "ans": "T, F, F, F",
+      "why": "AND requires both inputs to be True"
     },
-
     {
-      q: "Make truth table for P OR Q",
-      hint: "at least one true",
-      steps: [
+      "q": "Make truth table for P OR Q",
+      "hint": "at least one true",
+      "steps": [
         "Step 1: List inputs: T T, T F, F T, F F",
         "Step 2: Apply OR rule (at least one true)",
         "Step 3: T OR T → T",
         "Step 4: T OR F → T",
         "Step 5: F OR T → T",
-        "Step 6: F OR F → F",
+        "Step 6: F OR F → F"
       ],
-      ans: "T, T, T, F",
-      why: "OR only needs one True input",
+      "ans": "T, T, T, F",
+      "why": "OR only needs one True input"
     },
-
     {
-      q: "Make truth table for NOT P",
-      hint: "flip truth value",
-      steps: [
+      "q": "Make truth table for NOT P",
+      "hint": "flip truth value",
+      "steps": [
         "Step 1: List P: T, F",
         "Step 2: Apply NOT operation",
         "Step 3: T → F",
-        "Step 4: F → T",
+        "Step 4: F → T"
       ],
-      ans: "F, T",
-      why: "NOT reverses the truth value",
+      "ans": "F, T",
+      "why": "NOT reverses the truth value"
     },
-
     {
-      q: "Build truth table for (P AND Q) OR R",
-      hint: "two-step calculation",
-      steps: [
+      "q": "Build truth table for (P AND Q) OR R",
+      "hint": "two-step calculation",
+      "steps": [
         "Step 1: Calculate P AND Q for all inputs",
         "Step 2: Combine with R using OR",
         "Step 3: (T T T) → T",
@@ -13489,35 +13118,33 @@ F F → F
         "Step 7: (F T T) → T",
         "Step 8: (F T F) → F",
         "Step 9: (F F T) → T",
-        "Step 10: (F F F) → F",
+        "Step 10: (F F F) → F"
       ],
-      ans: "T T T F T F T F",
-      why: "Step-by-step evaluation of compound expression",
+      "ans": "T T T F T F T F",
+      "why": "Step-by-step evaluation of compound expression"
     },
-
     {
-      q: "If P=True, Q=False, build truth table for P → Q",
-      hint: "implication rule",
-      steps: [
+      "q": "If P=True, Q=False, build truth table for P → Q",
+      "hint": "implication rule",
+      "steps": [
         "Step 1: Identify inputs: T T, T F, F T, F F",
         "Step 2: Apply implication: P → Q is false only when P is true and Q is false",
         "Step 3: T → T → T",
         "Step 4: T → F → F",
         "Step 5: F → T → T",
-        "Step 6: F → F → T",
+        "Step 6: F → F → T"
       ],
-      ans: "T F T T",
-      why: "Implication is only false when premise true, conclusion false",
-    },
-  ],
+      "ans": "T F T T",
+      "why": "Implication is only false when premise true, conclusion false"
+    }
+  ]
 );
-/*=============================================
-Combinatorics
-=============================================*/
+
 add(
   "math",
   "discrete_mathematics",
   "Combinatorics (Counting Methods)",
+
   `
 <h2> Combinatorics</h2>
 
@@ -13586,93 +13213,93 @@ ABC → ACB → BAC → BCA → CAB → CBA
 
 ---
 `,
+
   [
     {
-      q: "Find number of arrangements of ABC",
-      hint: "n! formula",
-      steps: [
+      "q": "Find number of arrangements of ABC",
+      "hint": "n! formula",
+      "steps": [
         "Step 1: Identify n = 3 distinct items",
         "Step 2: Use formula n! = 3 × 2 × 1",
-        "Step 3: Calculate = 6",
+        "Step 3: Calculate = 6"
       ],
-      ans: "6 arrangements",
-      why: "3! = 6 distinct permutations",
+      "ans": "6 arrangements",
+      "why": "3! = 6 distinct permutations"
     },
-
     {
-      q: "How many ways to select 2 letters from ABCD (order matters)?",
-      hint: "permutation formula",
-      steps: [
+      "q": "How many ways to select 2 letters from ABCD (order matters)?",
+      "hint": "permutation formula",
+      "steps": [
         "Step 1: Identify n=4, r=2",
         "Step 2: Formula: nPr = n! / (n-r)!",
         "Step 3: 4P2 = 4! / 2! = (4×3×2×1) / (2×1)",
-        "Step 4: = 24 / 2 = 12",
+        "Step 4: = 24 / 2 = 12"
       ],
-      ans: "12 ways",
-      why: "Permutation accounts for order",
+      "ans": "12 ways",
+      "why": "Permutation accounts for order"
     },
-
     {
-      q: "How many ways to choose 2 fruits from apple, banana, cherry (order doesn't matter)?",
-      hint: "combination formula",
-      steps: [
+      "q": "How many ways to choose 2 fruits from apple, banana, cherry (order doesn't matter)?",
+      "hint": "combination formula",
+      "steps": [
         "Step 1: Identify n=3, r=2",
         "Step 2: Formula: nCr = n! / (r!(n-r)!)",
         "Step 3: 3C2 = 3! / (2!1!) = (3×2×1) / ((2×1)×1)",
-        "Step 4: = 3",
+        "Step 4: = 3"
       ],
-      ans: "3 ways",
-      why: "Combination ignores order",
+      "ans": "3 ways",
+      "why": "Combination ignores order"
     },
-
     {
-      q: "Find 5!",
-      hint: "calculate factorial",
-      steps: ["Step 1: 5 × 4 × 3 × 2 × 1", "Step 2: = 120"],
-      ans: "120",
-      why: "Factorial calculation",
+      "q": "Find 5!",
+      "hint": "calculate factorial",
+      "steps": [
+        "Step 1: 5 × 4 × 3 × 2 × 1",
+        "Step 2: = 120"
+      ],
+      "ans": "120",
+      "why": "Factorial calculation"
     },
-
     {
-      q: "If 3 items can be arranged in 6 ways, how many if one is repeated?",
-      hint: "division by factorial of repeats",
-      steps: [
+      "q": "If 3 items can be arranged in 6 ways, how many if one is repeated?",
+      "hint": "division by factorial of repeats",
+      "steps": [
         "Step 1: Total permutations = n! / (r₁!r₂!...)",
         "Step 2: Here, 1 item repeated means divide by 2!",
-        "Step 3: 6 / 2 = 3 arrangements",
+        "Step 3: 6 / 2 = 3 arrangements"
       ],
-      ans: "3 arrangements",
-      why: "Repetitions reduce number of distinct arrangements",
+      "ans": "3 arrangements",
+      "why": "Repetitions reduce number of distinct arrangements"
     },
-
     {
-      q: "How many 3-digit numbers using digits 1,2,3 without repetition?",
-      hint: "permutation",
-      steps: ["Step 1: n=3 digits, choose 3 positions", "Step 2: 3P3 = 3! = 6"],
-      ans: "6 numbers",
-      why: "All digits used, order matters",
+      "q": "How many 3-digit numbers using digits 1,2,3 without repetition?",
+      "hint": "permutation",
+      "steps": [
+        "Step 1: n=3 digits, choose 3 positions",
+        "Step 2: 3P3 = 3! = 6"
+      ],
+      "ans": "6 numbers",
+      "why": "All digits used, order matters"
     },
-
     {
-      q: "Select committee of 3 from 10 people (order doesn't matter)",
-      hint: "combination",
-      steps: [
+      "q": "Select committee of 3 from 10 people (order doesn't matter)",
+      "hint": "combination",
+      "steps": [
         "Step 1: n=10, r=3",
         "Step 2: 10C3 = 10! / (3!7!) = (10×9×8) / (3×2×1)",
-        "Step 3: = 120",
+        "Step 3: = 120"
       ],
-      ans: "120 ways",
-      why: "Committee selection → combination (order irrelevant)",
-    },
-  ],
+      "ans": "120 ways",
+      "why": "Committee selection → combination (order irrelevant)"
+    }
+  ]
 );
-/*=========================================
-Graph Theory
-=========================================*/
+
 add(
   "math",
   "discrete_mathematics",
   "Graph Theory (Nodes and Edges)",
+
   `
 <h2> Graph Theory</h2>
 
@@ -13711,7 +13338,7 @@ A node represents an object, while an edge represents a connection between objec
 
 <pre>
 A —— B —— C
- \         /
+          /
    —— D ——
 (nodes connected by edges)
 </pre>
@@ -13728,100 +13355,94 @@ A —— B —— C
 
 ---
 `,
+
   [
     {
-      q: "Draw a graph with 4 nodes and 3 edges",
-      hint: "create any valid graph",
-      steps: [
+      "q": "Draw a graph with 4 nodes and 3 edges",
+      "hint": "create any valid graph",
+      "steps": [
         "Step 1: Draw 4 dots (nodes)",
         "Step 2: Connect any 3 pairs with lines (edges)",
-        "Step 3: Example: Connect 1-2, 2-3, 3-4",
+        "Step 3: Example: Connect 1-2, 2-3, 3-4"
       ],
-      ans: "Graph with 4 nodes and 3 edges",
-      why: "Basic graph structure",
+      "ans": "Graph with 4 nodes and 3 edges",
+      "why": "Basic graph structure"
     },
-
     {
-      q: "How many edges in a triangle graph?",
-      hint: "triangle = 3 nodes + 3 edges",
-      steps: [
+      "q": "How many edges in a triangle graph?",
+      "hint": "triangle = 3 nodes + 3 edges",
+      "steps": [
         "Step 1: A triangle has 3 nodes",
         "Step 2: Each node connects to 2 others",
-        "Step 3: Total edges = 3",
+        "Step 3: Total edges = 3"
       ],
-      ans: "3 edges",
-      why: "Triangle graph property",
+      "ans": "3 edges",
+      "why": "Triangle graph property"
     },
-
     {
-      q: "Can you connect 4 nodes with 2 edges?",
-      hint: "connect any 2 pairs",
-      steps: [
+      "q": "Can you connect 4 nodes with 2 edges?",
+      "hint": "connect any 2 pairs",
+      "steps": [
         "Step 1: Draw 4 nodes",
         "Step 2: Draw 2 edges (e.g., 1-2 and 3-4)",
-        "Step 3: Yes, possible",
+        "Step 3: Yes, possible"
       ],
-      ans: "Yes",
-      why: "Edges can connect any pairs independently",
+      "ans": "Yes",
+      "why": "Edges can connect any pairs independently"
     },
-
     {
-      q: "Draw a complete graph with 3 nodes",
-      hint: "all nodes connected",
-      steps: [
+      "q": "Draw a complete graph with 3 nodes",
+      "hint": "all nodes connected",
+      "steps": [
         "Step 1: Draw 3 nodes",
         "Step 2: Connect every node to every other node",
-        "Step 3: Result = triangle",
+        "Step 3: Result = triangle"
       ],
-      ans: "Triangle graph",
-      why: "Complete graph K₃",
+      "ans": "Triangle graph",
+      "why": "Complete graph K₃"
     },
-
     {
-      q: "What if an edge connects a node to itself?",
-      hint: "loop edge",
-      steps: [
+      "q": "What if an edge connects a node to itself?",
+      "hint": "loop edge",
+      "steps": [
         "Step 1: Draw a node",
         "Step 2: Draw an edge from the node to itself",
-        "Step 3: This is called a loop",
+        "Step 3: This is called a loop"
       ],
-      ans: "Loop edge",
-      why: "Valid in some graph types",
+      "ans": "Loop edge",
+      "why": "Valid in some graph types"
     },
-
     {
-      q: "Draw a disconnected graph with 4 nodes",
-      hint: "two separate parts",
-      steps: [
+      "q": "Draw a disconnected graph with 4 nodes",
+      "hint": "two separate parts",
+      "steps": [
         "Step 1: Draw 2 separate pairs of nodes (1-2 and 3-4)",
         "Step 2: No connection between the pairs",
-        "Step 3: This is disconnected",
+        "Step 3: This is disconnected"
       ],
-      ans: "Disconnected graph",
-      why: "Not all nodes reachable from each other",
+      "ans": "Disconnected graph",
+      "why": "Not all nodes reachable from each other"
     },
-
     {
-      q: "How many edges in a complete graph with 4 nodes?",
-      hint: "every node connects to 3 others",
-      steps: [
+      "q": "How many edges in a complete graph with 4 nodes?",
+      "hint": "every node connects to 3 others",
+      "steps": [
         "Step 1: Each of 4 nodes connects to 3 others",
         "Step 2: 4 × 3 = 12 connections",
         "Step 3: Divide by 2 (each edge counted twice)",
-        "Step 4: = 6 edges",
+        "Step 4: = 6 edges"
       ],
-      ans: "6 edges",
-      why: "n(n-1)/2 formula",
-    },
-  ],
+      "ans": "6 edges",
+      "why": "n(n-1)/2 formula"
+    }
+  ]
 );
-/*============================================
-Basic Algorithims
-============================================*/
+
 add(
   "math",
   "discrete_mathematics",
   "Basic Algorithms",
+
   `
 <h2> Algorithms Basics</h2>
 
@@ -13879,77 +13500,73 @@ clear logical flow of instructions
 
 ---
 `,
+
   [
     {
-      q: "Find largest number in [4, 9, 2, 11] using algorithm",
-      hint: "iterative comparison",
-      steps: [
+      "q": "Find largest number in [4, 9, 2, 11] using algorithm",
+      "hint": "iterative comparison",
+      "steps": [
         "Step 1: Assume max = 4",
         "Step 2: Compare with 9 → max = 9",
         "Step 3: Compare with 2 → max still 9",
-        "Step 4: Compare with 11 → max = 11",
+        "Step 4: Compare with 11 → max = 11"
       ],
-      ans: "11",
-      why: "Systematic comparison finds maximum",
+      "ans": "11",
+      "why": "Systematic comparison finds maximum"
     },
-
     {
-      q: "Search for 7 in [1, 3, 7, 9]",
-      hint: "sequential search",
-      steps: [
+      "q": "Search for 7 in [1, 3, 7, 9]",
+      "hint": "sequential search",
+      "steps": [
         "Step 1: Check 1 → not 7",
         "Step 2: Check 3 → not 7",
         "Step 3: Check 7 → found!",
-        "Step 4: Stop",
+        "Step 4: Stop"
       ],
-      ans: "Found",
-      why: "Sequential search stops when value located",
+      "ans": "Found",
+      "why": "Sequential search stops when value located"
     },
-
     {
-      q: "Sort [5, 2, 8] using bubble sort",
-      hint: "swap adjacent if out of order",
-      steps: [
+      "q": "Sort [5, 2, 8] using bubble sort",
+      "hint": "swap adjacent if out of order",
+      "steps": [
         "Step 1: Compare 5,2 → swap → [2,5,8]",
         "Step 2: Compare 5,8 → no swap",
         "Step 3: Second pass → no swaps needed",
-        "Step 4: Sorted: [2,5,8]",
+        "Step 4: Sorted: [2,5,8]"
       ],
-      ans: "[2,5,8]",
-      why: "Bubble sort repeatedly swaps adjacent elements",
+      "ans": "[2,5,8]",
+      "why": "Bubble sort repeatedly swaps adjacent elements"
     },
-
     {
-      q: "How many steps to search 100 items if target is last?",
-      hint: "worst-case scenario",
-      steps: [
+      "q": "How many steps to search 100 items if target is last?",
+      "hint": "worst-case scenario",
+      "steps": [
         "Step 1: In worst case, must check all",
-        "Step 2: = 100 comparisons",
+        "Step 2: = 100 comparisons"
       ],
-      ans: "100 steps",
-      why: "Linear search checks every element in worst case",
+      "ans": "100 steps",
+      "why": "Linear search checks every element in worst case"
     },
-
     {
-      q: "How many swaps in bubble sort for [3,2,1]?",
-      hint: "track swaps",
-      steps: [
+      "q": "How many swaps in bubble sort for [3,2,1]?",
+      "hint": "track swaps",
+      "steps": [
         "Step 1: [3,2,1] → swap 3,2 → [2,3,1]",
         "Step 2: [2,3,1] → swap 3,1 → [2,1,3]",
-        "Step 3: [2,1,3] → swap 2,1 → [1,2,3]",
+        "Step 3: [2,1,3] → swap 2,1 → [1,2,3]"
       ],
-      ans: "3 swaps",
-      why: "Sorted in 3 swap operations",
-    },
-  ],
+      "ans": "3 swaps",
+      "why": "Sorted in 3 swap operations"
+    }
+  ]
 );
-/*========================================================
-NUMBER THEORY
-=========================================================*/
+
 add(
   "math",
   "number_theory",
   "Divisibility Rules",
+
   `
 <h2> Divisibility Rules</h2>
 
@@ -14009,68 +13626,65 @@ fast mental test system
 
 ---
 `,
+
   [
     {
-      q: "Is 372 divisible by 3?",
-      hint: "add digits",
-      steps: [
+      "q": "Is 372 divisible by 3?",
+      "hint": "add digits",
+      "steps": [
         "Step 1: Take digits of 372 → 3, 7, 2",
         "Step 2: Add them → 3 + 7 + 2 = 12",
         "Step 3: Check if 12 is divisible by 3",
         "Step 4: 12 ÷ 3 = 4 (no remainder)",
-        "Step 5: Conclude divisibility",
+        "Step 5: Conclude divisibility"
       ],
-      ans: "Yes",
-      why: "If the sum of digits is divisible by 3, the number is divisible by 3",
+      "ans": "Yes",
+      "why": "If the sum of digits is divisible by 3, the number is divisible by 3"
     },
-
     {
-      q: "Check if 145 is divisible by 5",
-      hint: "last digit rule",
-      steps: [
+      "q": "Check if 145 is divisible by 5",
+      "hint": "last digit rule",
+      "steps": [
         "Step 1: Look at last digit of 145",
         "Step 2: Last digit is 5",
         "Step 3: Check rule for divisibility by 5",
-        "Step 4: Numbers ending in 0 or 5 are divisible by 5",
+        "Step 4: Numbers ending in 0 or 5 are divisible by 5"
       ],
-      ans: "Yes",
-      why: "Numbers ending in 5 are always divisible by 5",
+      "ans": "Yes",
+      "why": "Numbers ending in 5 are always divisible by 5"
     },
-
     {
-      q: "Is 638 divisible by 2?",
-      hint: "check last digit",
-      steps: [
+      "q": "Is 638 divisible by 2?",
+      "hint": "check last digit",
+      "steps": [
         "Step 1: Look at last digit of 638",
         "Step 2: Last digit is 8",
         "Step 3: Check if 8 is even",
-        "Step 4: Even numbers are divisible by 2",
+        "Step 4: Even numbers are divisible by 2"
       ],
-      ans: "Yes",
-      why: "Even last digit means number is divisible by 2",
+      "ans": "Yes",
+      "why": "Even last digit means number is divisible by 2"
     },
-
     {
-      q: "Is 251 divisible by 3?",
-      hint: "sum of digits",
-      steps: [
+      "q": "Is 251 divisible by 3?",
+      "hint": "sum of digits",
+      "steps": [
         "Step 1: Add digits → 2 + 5 + 1 = 8",
         "Step 2: Check if 8 is divisible by 3",
         "Step 3: 8 ÷ 3 leaves remainder",
-        "Step 4: Conclude divisibility",
+        "Step 4: Conclude divisibility"
       ],
-      ans: "No",
-      why: "Sum of digits not divisible by 3 means number is not divisible by 3",
-    },
-  ],
+      "ans": "No",
+      "why": "Sum of digits not divisible by 3 means number is not divisible by 3"
+    }
+  ]
 );
-/*==============================================
-Modular Arithmetic
-===============================================*/
+
 add(
   "math",
   "number_theory",
   "Modular Arithmetic",
+
   `
 <h2> Modular Arithmetic (Clock Math)</h2>
 
@@ -14127,64 +13741,61 @@ Clock:
 
 ---
 `,
+
   [
     {
-      q: "Calculate 17 mod 5",
-      hint: "divide and find remainder",
-      steps: [
+      "q": "Calculate 17 mod 5",
+      "hint": "divide and find remainder",
+      "steps": [
         "Step 1: Divide 17 by 5 → 17 ÷ 5",
         "Step 2: Result is 3 with remainder 2",
-        "Step 3: Remainder is the modular result",
+        "Step 3: Remainder is the modular result"
       ],
-      ans: "2",
-      why: "Modular arithmetic gives remainder of division",
+      "ans": "2",
+      "why": "Modular arithmetic gives remainder of division"
     },
-
     {
-      q: "What time is it 3 hours after 10 o'clock on a 12-hour clock?",
-      hint: "clock arithmetic mod 12",
-      steps: [
+      "q": "What time is it 3 hours after 10 o'clock on a 12-hour clock?",
+      "hint": "clock arithmetic mod 12",
+      "steps": [
         "Step 1: Start at 10",
         "Step 2: Add 3 hours → 10 + 3 = 13",
         "Step 3: Since clock repeats at 12, use mod 12",
-        "Step 4: 13 mod 12 = 1",
+        "Step 4: 13 mod 12 = 1"
       ],
-      ans: "1 o'clock",
-      why: "Clock arithmetic is modular (repeats every 12)",
+      "ans": "1 o'clock",
+      "why": "Clock arithmetic is modular (repeats every 12)"
     },
-
     {
-      q: "Find 22 mod 7",
-      hint: "division with remainder",
-      steps: [
+      "q": "Find 22 mod 7",
+      "hint": "division with remainder",
+      "steps": [
         "Step 1: 22 ÷ 7",
         "Step 2: 3 × 7 = 21",
-        "Step 3: Remainder = 22 - 21 = 1",
+        "Step 3: Remainder = 22 - 21 = 1"
       ],
-      ans: "1",
-      why: "Remainder is the result in modular arithmetic",
+      "ans": "1",
+      "why": "Remainder is the result in modular arithmetic"
     },
-
     {
-      q: "Is 21 divisible by 3 using mod?",
-      hint: "check if remainder is 0",
-      steps: [
+      "q": "Is 21 divisible by 3 using mod?",
+      "hint": "check if remainder is 0",
+      "steps": [
         "Step 1: Calculate 21 mod 3",
         "Step 2: 21 ÷ 3 = 7 with remainder 0",
-        "Step 3: Remainder = 0 means divisible",
+        "Step 3: Remainder = 0 means divisible"
       ],
-      ans: "Yes",
-      why: "If remainder is 0, number is divisible by the modulus",
-    },
-  ],
+      "ans": "Yes",
+      "why": "If remainder is 0, number is divisible by the modulus"
+    }
+  ]
 );
-/*=========================================
-Prime Numbers
-=========================================*/
+
 add(
   "math",
   "number_theory",
   "Prime Numbers",
+
   `
 <h2> Prime Numbers</h2>
 <h3> DEEP NOTES</h3>
@@ -14226,40 +13837,39 @@ Numbers:
 
 ---
 `,
+
   [
     {
-      q: "List first 5 prime numbers",
-      hint: "numbers with only 1 and self as factors",
-      steps: [
+      "q": "List first 5 prime numbers",
+      "hint": "numbers with only 1 and self as factors",
+      "steps": [
         "Step 1: Start from 2 (first prime)",
         "Step 2: Check 3 → prime",
         "Step 3: Check 4 → composite (2×2)",
         "Step 4: Check 5 → prime",
         "Step 5: Check 6 → composite",
         "Step 6: Check 7 → prime",
-        "Step 7: Continue until 5 primes found",
+        "Step 7: Continue until 5 primes found"
       ],
-      ans: "2, 3, 5, 7, 11",
-      why: "These numbers have only two factors: 1 and themselves",
+      "ans": "2, 3, 5, 7, 11",
+      "why": "These numbers have only two factors: 1 and themselves"
     },
-
     {
-      q: "Why is 9 not a prime number?",
-      hint: "check factors",
-      steps: [
+      "q": "Why is 9 not a prime number?",
+      "hint": "check factors",
+      "steps": [
         "Step 1: List factors of 9",
         "Step 2: Factors are 1, 3, 9",
         "Step 3: More than two factors found",
-        "Step 4: Conclude it's not prime",
+        "Step 4: Conclude it's not prime"
       ],
-      ans: "Not prime (has 3 factors)",
-      why: "Prime numbers must have exactly two factors",
+      "ans": "Not prime (has 3 factors)",
+      "why": "Prime numbers must have exactly two factors"
     },
-
     {
-      q: "Find all prime numbers between 10 and 20",
-      hint: "check each number",
-      steps: [
+      "q": "Find all prime numbers between 10 and 20",
+      "hint": "check each number",
+      "steps": [
         "Step 1: Check 11 → prime",
         "Step 2: Check 12 → composite",
         "Step 3: Check 13 → prime",
@@ -14268,44 +13878,41 @@ Numbers:
         "Step 6: Check 16 → composite",
         "Step 7: Check 17 → prime",
         "Step 8: Check 18 → composite",
-        "Step 9: Check 19 → prime",
+        "Step 9: Check 19 → prime"
       ],
-      ans: "11, 13, 17, 19",
-      why: "Only these numbers have exactly two factors in this range",
+      "ans": "11, 13, 17, 19",
+      "why": "Only these numbers have exactly two factors in this range"
     },
-
     {
-      q: "How many prime numbers are less than 10?",
-      hint: "list and count",
-      steps: [
+      "q": "How many prime numbers are less than 10?",
+      "hint": "list and count",
+      "steps": [
         "Step 1: List primes: 2, 3, 5, 7",
         "Step 2: Count them",
-        "Step 3: Result = 4",
+        "Step 3: Result = 4"
       ],
-      ans: "4",
-      why: "There are four prime numbers less than 10",
+      "ans": "4",
+      "why": "There are four prime numbers less than 10"
     },
-
     {
-      q: "Is 1 prime?",
-      hint: "definition of prime",
-      steps: [
+      "q": "Is 1 prime?",
+      "hint": "definition of prime",
+      "steps": [
         "Step 1: Definition → prime has two factors",
         "Step 2: 1 has only one factor (1)",
-        "Step 3: Not two factors → not prime",
+        "Step 3: Not two factors → not prime"
       ],
-      ans: "No",
-      why: "1 is neither prime nor composite",
-    },
-  ],
+      "ans": "No",
+      "why": "1 is neither prime nor composite"
+    }
+  ]
 );
-/*=========================================
-Congruency Relations
-=========================================*/
+
 add(
   "math",
   "number_theory",
   "Congruence Relations",
+
   `
 <h2> Congruence Relations</h2>
 
@@ -14363,66 +13970,63 @@ a mod n = b mod n
 
 ---
 `,
+
   [
     {
-      q: "Find 37 ≡ ? (mod 5)",
-      hint: "divide and find remainder",
-      steps: [
+      "q": "Find 37 ≡ ? (mod 5)",
+      "hint": "divide and find remainder",
+      "steps": [
         "Step 1: Divide 37 by 5",
         "Step 2: 37 ÷ 5 = 7 remainder 2",
         "Step 3: Identify remainder",
-        "Step 4: Write congruence result",
+        "Step 4: Write congruence result"
       ],
-      ans: "2",
-      why: "Congruence gives the remainder after division by the modulus",
+      "ans": "2",
+      "why": "Congruence gives the remainder after division by the modulus"
     },
-
     {
-      q: "Check if 18 ≡ 4 (mod 7)",
-      hint: "compare remainders",
-      steps: [
+      "q": "Check if 18 ≡ 4 (mod 7)",
+      "hint": "compare remainders",
+      "steps": [
         "Step 1: Find remainder of 18 ÷ 7 → 4",
         "Step 2: Find remainder of 4 ÷ 7 → 4",
         "Step 3: Compare remainders",
-        "Step 4: Decide if congruent",
+        "Step 4: Decide if congruent"
       ],
-      ans: "Yes",
-      why: "Both numbers leave the same remainder when divided by 7",
+      "ans": "Yes",
+      "why": "Both numbers leave the same remainder when divided by 7"
     },
-
     {
-      q: "Find x if x ≡ 3 (mod 6) and x < 20",
-      hint: "list values in sequence",
-      steps: [
+      "q": "Find x if x ≡ 3 (mod 6) and x < 20",
+      "hint": "list values in sequence",
+      "steps": [
         "Step 1: Write numbers congruent to 3 mod 6",
         "Step 2: Sequence: 3, 9, 15, 21...",
         "Step 3: Select values less than 20",
-        "Step 4: Possible answers: 3, 9, 15",
+        "Step 4: Possible answers: 3, 9, 15"
       ],
-      ans: "3, 9, 15",
-      why: "All numbers differ by multiples of 6 from 3",
+      "ans": "3, 9, 15",
+      "why": "All numbers differ by multiples of 6 from 3"
     },
-
     {
-      q: "What is 52 mod 9?",
-      hint: "divide 52 by 9",
-      steps: [
+      "q": "What is 52 mod 9?",
+      "hint": "divide 52 by 9",
+      "steps": [
         "Step 1: Divide 52 by 9",
         "Step 2: 52 ÷ 9 = 5 remainder 7",
-        "Step 3: Identify remainder",
+        "Step 3: Identify remainder"
       ],
-      ans: "7",
-      why: "Modulus gives the remainder after division",
-    },
-  ],
+      "ans": "7",
+      "why": "Modulus gives the remainder after division"
+    }
+  ]
 );
-/*============================================
-cryptography basics
-=============================================*/
+
 add(
   "math",
   "number_theory",
   "Cryptography Basics",
+
   `
 <h2> Cryptography Basics</h2>
 <h3> DEEP NOTES</h3>
@@ -14500,70 +14104,67 @@ Plain Text (M)
 
 ---
 `,
+
   [
     {
-      q: "Encrypt a message using a simple shift: E(x) = (x + 7) mod 26. If x = 10, find ciphertext",
-      hint: "substitute into formula",
-      steps: [
+      "q": "Encrypt a message using a simple shift: E(x) = (x + 7) mod 26. If x = 10, find ciphertext",
+      "hint": "substitute into formula",
+      "steps": [
         "Step 1: Write formula E(x) = (x + 7) mod 26",
         "Step 2: Substitute x = 10",
         "Step 3: Compute 10 + 7 = 17",
         "Step 4: Apply mod 26 → 17 mod 26 = 17",
-        "Step 5: Final ciphertext = 17",
+        "Step 5: Final ciphertext = 17"
       ],
-      ans: "17",
-      why: "Modular addition shifts values within a fixed alphabet range",
+      "ans": "17",
+      "why": "Modular addition shifts values within a fixed alphabet range"
     },
-
     {
-      q: "Decrypt C = 15 using D(x) = (x - 4) mod 26",
-      hint: "reverse operation",
-      steps: [
+      "q": "Decrypt C = 15 using D(x) = (x - 4) mod 26",
+      "hint": "reverse operation",
+      "steps": [
         "Step 1: Write formula D(x) = (x - 4) mod 26",
         "Step 2: Substitute x = 15",
         "Step 3: Compute 15 - 4 = 11",
         "Step 4: Apply mod 26 → 11 mod 26 = 11",
-        "Step 5: Final plaintext = 11",
+        "Step 5: Final plaintext = 11"
       ],
-      ans: "11",
-      why: "Decryption reverses the encryption shift",
+      "ans": "11",
+      "why": "Decryption reverses the encryption shift"
     },
-
     {
-      q: "If p = 3 and q = 11, find n used in RSA setup",
-      hint: "multiply primes",
-      steps: [
+      "q": "If p = 3 and q = 11, find n used in RSA setup",
+      "hint": "multiply primes",
+      "steps": [
         "Step 1: Identify primes p = 3, q = 11",
         "Step 2: Compute n = p × q",
         "Step 3: Multiply 3 × 11",
-        "Step 4: n = 33",
+        "Step 4: n = 33"
       ],
-      ans: "33",
-      why: "RSA security starts by multiplying two primes",
+      "ans": "33",
+      "why": "RSA security starts by multiplying two primes"
     },
-
     {
-      q: "Why does RSA rely on prime factorization difficulty?",
-      hint: "reverse problem",
-      steps: [
+      "q": "Why does RSA rely on prime factorization difficulty?",
+      "hint": "reverse problem",
+      "steps": [
         "Step 1: Multiply two large primes to get n",
         "Step 2: Observe that multiplication is easy",
         "Step 3: Try reversing n into primes",
         "Step 4: Recognize this is computationally hard",
-        "Step 5: Conclude security comes from difficulty",
+        "Step 5: Conclude security comes from difficulty"
       ],
-      ans: "Factorization is hard",
-      why: "Security depends on the difficulty of reversing prime multiplication",
-    },
-  ],
+      "ans": "Factorization is hard",
+      "why": "Security depends on the difficulty of reversing prime multiplication"
+    }
+  ]
 );
-/*========================================================
-ABSTRACT ALGEBRA
-=========================================================*/
+
 add(
   "math",
   "abstract_algebra",
   "Introduction to Groups",
+
   `
 <h2> Groups in Abstract Algebra</h2>
 
@@ -14660,101 +14261,96 @@ Inverse
 
 ---
 `,
+
   [
     {
-      q: "Is (Z, ×) closed under multiplication?",
-      hint: "check product stays in set",
-      steps: [
+      "q": "Is (Z, ×) closed under multiplication?",
+      "hint": "check product stays in set",
+      "steps": [
         "Step 1: Take two integers a, b ∈ Z",
         "Step 2: Compute a × b",
         "Step 3: Example: 2 × 3 = 6 (integer)",
         "Step 4: Example: (-4) × 5 = -20 (integer)",
         "Step 5: Check if result always stays in Z",
-        "Step 6: Conclude closure property",
+        "Step 6: Conclude closure property"
       ],
-      ans: "Yes, integers are closed under multiplication",
-      why: "Product of any two integers is always an integer",
+      "ans": "Yes, integers are closed under multiplication",
+      "why": "Product of any two integers is always an integer"
     },
-
     {
-      q: "Find identity element for addition in real numbers",
-      hint: "a + e = a",
-      steps: [
+      "q": "Find identity element for addition in real numbers",
+      "hint": "a + e = a",
+      "steps": [
         "Step 1: Let identity be e",
         "Step 2: Write a + e = a",
         "Step 3: Subtract a from both sides",
         "Step 4: e = 0",
-        "Step 5: Check: a + 0 = a",
+        "Step 5: Check: a + 0 = a"
       ],
-      ans: "0",
-      why: "0 leaves every real number unchanged under addition",
+      "ans": "0",
+      "why": "0 leaves every real number unchanged under addition"
     },
-
     {
-      q: "Find inverse of 7 under addition",
-      hint: "a + (-a) = 0",
-      steps: [
+      "q": "Find inverse of 7 under addition",
+      "hint": "a + (-a) = 0",
+      "steps": [
         "Step 1: Let inverse be x",
         "Step 2: Write 7 + x = 0",
         "Step 3: Solve for x",
         "Step 4: x = -7",
-        "Step 5: Check: 7 + (-7) = 0",
+        "Step 5: Check: 7 + (-7) = 0"
       ],
-      ans: "-7",
-      why: "Additive inverse cancels the number to identity 0",
+      "ans": "-7",
+      "why": "Additive inverse cancels the number to identity 0"
     },
-
     {
-      q: "Check associativity: (2 + 3) + 4",
-      hint: "grouping does not matter",
-      steps: [
+      "q": "Check associativity: (2 + 3) + 4",
+      "hint": "grouping does not matter",
+      "steps": [
         "Step 1: Compute left side (2 + 3) + 4",
         "Step 2: 2 + 3 = 5",
         "Step 3: 5 + 4 = 9",
         "Step 4: Compute right side 2 + (3 + 4)",
         "Step 5: 3 + 4 = 7",
-        "Step 6: 2 + 7 = 9",
+        "Step 6: 2 + 7 = 9"
       ],
-      ans: "Both sides equal 9",
-      why: "Addition is associative because grouping does not change result",
+      "ans": "Both sides equal 9",
+      "why": "Addition is associative because grouping does not change result"
     },
-
     {
-      q: "Find inverse of 5 under multiplication (in real numbers)",
-      hint: "a × a⁻¹ = 1",
-      steps: [
+      "q": "Find inverse of 5 under multiplication (in real numbers)",
+      "hint": "a × a⁻¹ = 1",
+      "steps": [
         "Step 1: Let inverse be x",
         "Step 2: Write 5 × x = 1",
         "Step 3: Solve x = 1/5",
-        "Step 4: Check: 5 × 1/5 = 1",
+        "Step 4: Check: 5 × 1/5 = 1"
       ],
-      ans: "1/5",
-      why: "Multiplicative inverse produces identity 1",
+      "ans": "1/5",
+      "why": "Multiplicative inverse produces identity 1"
     },
-
     {
-      q: "Check closure: Is natural numbers closed under subtraction?",
-      hint: "result must stay in set",
-      steps: [
+      "q": "Check closure: Is natural numbers closed under subtraction?",
+      "hint": "result must stay in set",
+      "steps": [
         "Step 1: Take two natural numbers 3 and 5",
         "Step 2: Compute 3 - 5 = -2",
         "Step 3: Check if -2 is natural number",
         "Step 4: It is not in N",
         "Step 5: Try more examples (2 - 1 = 1 works, but not always)",
-        "Step 6: Conclude closure fails",
+        "Step 6: Conclude closure fails"
       ],
-      ans: "No, not closed under subtraction",
-      why: "Subtraction can produce negative numbers outside natural set",
-    },
-  ],
+      "ans": "No, not closed under subtraction",
+      "why": "Subtraction can produce negative numbers outside natural set"
+    }
+  ]
 );
-/*===========================================
-Rings and Fields
-===========================================*/
+
 add(
   "math",
   "abstract_algebra",
   "Rings and Fields",
+
   `
 <h2> Rings and Fields</h2>
 
@@ -14821,73 +14417,70 @@ Ring ⊂ Field ⊂ Number Systems
 
 ---
 `,
+
   [
     {
-      q: "Why is ℤ₇ (integers mod 7) a field?",
-      hint: "prime modulus",
-      steps: [
+      "q": "Why is ℤ₇ (integers mod 7) a field?",
+      "hint": "prime modulus",
+      "steps": [
         "Step 1: Identify set ℤ₇ = {0,1,2,3,4,5,6}",
         "Step 2: Check addition mod 7 → always stays in set ",
         "Step 3: Check multiplication mod 7 → always stays in set ",
         "Step 4: Check multiplicative inverses for non-zero elements",
         "Step 5: Example: 3 × 5 = 15 ≡ 1 (mod 7)",
-        "Step 6: Every non-zero element has an inverse ",
+        "Step 6: Every non-zero element has an inverse "
       ],
-      ans: "ℤ₇ is a field",
-      why: "When modulus is prime, every non-zero element has a multiplicative inverse",
+      "ans": "ℤ₇ is a field",
+      "why": "When modulus is prime, every non-zero element has a multiplicative inverse"
     },
-
     {
-      q: "Why is ℤ₆ not a field?",
-      hint: "check inverses",
-      steps: [
+      "q": "Why is ℤ₆ not a field?",
+      "hint": "check inverses",
+      "steps": [
         "Step 1: Consider ℤ₆ = {0,1,2,3,4,5}",
         "Step 2: Check multiplication mod 6",
         "Step 3: Try to find inverse of 2",
         "Step 4: 2 × 3 = 6 ≡ 0 (mod 6), not 1",
         "Step 5: So 2 has no inverse",
-        "Step 6: Conclude not all elements have inverses",
+        "Step 6: Conclude not all elements have inverses"
       ],
-      ans: "ℤ₆ is not a field",
-      why: "Non-prime modulus leads to missing multiplicative inverses",
+      "ans": "ℤ₆ is not a field",
+      "why": "Non-prime modulus leads to missing multiplicative inverses"
     },
-
     {
-      q: "Give an example showing why fields allow division",
-      hint: "inverse existence",
-      steps: [
+      "q": "Give an example showing why fields allow division",
+      "hint": "inverse existence",
+      "steps": [
         "Step 1: Take a non-zero element, e.g. 4 in ℚ",
         "Step 2: Find inverse → 1/4",
         "Step 3: Multiply 4 × 1/4 = 1",
         "Step 4: This shows division is possible",
-        "Step 5: Repeat for any non-zero rational number",
+        "Step 5: Repeat for any non-zero rational number"
       ],
-      ans: "Division works in ℚ because every non-zero element has an inverse",
-      why: "Fields guarantee existence of multiplicative inverses for all non-zero elements",
+      "ans": "Division works in ℚ because every non-zero element has an inverse",
+      "why": "Fields guarantee existence of multiplicative inverses for all non-zero elements"
     },
-
     {
-      q: "What condition ensures a ring becomes a field?",
-      hint: "invertibility",
-      steps: [
+      "q": "What condition ensures a ring becomes a field?",
+      "hint": "invertibility",
+      "steps": [
         "Step 1: Start with a ring (addition + multiplication)",
         "Step 2: Check existence of multiplicative identity",
         "Step 3: Ensure every non-zero element has an inverse",
         "Step 4: Verify division is always possible (except 0)",
-        "Step 5: If all hold, structure is a field",
+        "Step 5: If all hold, structure is a field"
       ],
-      ans: "Every non-zero element must have a multiplicative inverse",
-      why: "This property upgrades a ring into a field",
-    },
-  ],
+      "ans": "Every non-zero element must have a multiplicative inverse",
+      "why": "This property upgrades a ring into a field"
+    }
+  ]
 );
-/*============================================
-Symmetry Structures
-============================================*/
+
 add(
   "math",
   "abstract_algebra",
   "Symmetry Structures",
+
   `
 <h2> Symmetry in Algebra</h2>
 <h3> DEEP NOTES</h3>
@@ -14950,7 +14543,7 @@ Square symmetry:
 Axes:
   | vertical line
   — horizontal line
-  \ diagonal lines
+   diagonal lines
 </pre>
 
 ---
@@ -14963,72 +14556,69 @@ Axes:
 
 ---
 `,
+
   [
     {
-      q: "How many lines of symmetry does a regular hexagon have?",
-      hint: "count axes through vertices and edges",
-      steps: [
+      "q": "How many lines of symmetry does a regular hexagon have?",
+      "hint": "count axes through vertices and edges",
+      "steps": [
         "Step 1: Identify shape → regular hexagon",
         "Step 2: Count lines through opposite vertices",
         "Step 3: Count lines through midpoints of opposite sides",
         "Step 4: Add all valid symmetry axes",
-        "Step 5: Total = 6 lines of symmetry",
+        "Step 5: Total = 6 lines of symmetry"
       ],
-      ans: "6",
-      why: "A regular hexagon is highly symmetric with equal rotational and reflectional structure",
+      "ans": "6",
+      "why": "A regular hexagon is highly symmetric with equal rotational and reflectional structure"
     },
-
     {
-      q: "What is the order of rotational symmetry of a regular pentagon?",
-      hint: "360° divided by steps",
-      steps: [
+      "q": "What is the order of rotational symmetry of a regular pentagon?",
+      "hint": "360° divided by steps",
+      "steps": [
         "Step 1: Total rotation = 360°",
         "Step 2: Divide by smallest angle that maps onto itself",
         "Step 3: For pentagon, angle = 72°",
         "Step 4: 360 ÷ 72 = 5",
-        "Step 5: Count valid rotations",
+        "Step 5: Count valid rotations"
       ],
-      ans: "5",
-      why: "A regular pentagon maps onto itself 5 times in a full rotation",
+      "ans": "5",
+      "why": "A regular pentagon maps onto itself 5 times in a full rotation"
     },
-
     {
-      q: "Does a scalene triangle have symmetry?",
-      hint: "check equal sides",
-      steps: [
+      "q": "Does a scalene triangle have symmetry?",
+      "hint": "check equal sides",
+      "steps": [
         "Step 1: Identify triangle type → scalene",
         "Step 2: Check side lengths → all unequal",
         "Step 3: Try reflection symmetry → fails",
         "Step 4: Try rotational symmetry → fails",
-        "Step 5: Conclude no symmetry exists",
+        "Step 5: Conclude no symmetry exists"
       ],
-      ans: "No symmetry",
-      why: "Scalene triangles lack equal sides or angles, so no invariance exists",
+      "ans": "No symmetry",
+      "why": "Scalene triangles lack equal sides or angles, so no invariance exists"
     },
-
     {
-      q: "Why do symmetries form a group in mathematics?",
-      hint: "closure under composition",
-      steps: [
+      "q": "Why do symmetries form a group in mathematics?",
+      "hint": "closure under composition",
+      "steps": [
         "Step 1: Take two symmetry operations",
         "Step 2: Apply one after another (composition)",
         "Step 3: Result is still a symmetry",
         "Step 4: Identity transformation exists",
         "Step 5: Every symmetry has an inverse",
-        "Step 6: Conclude group structure is formed",
+        "Step 6: Conclude group structure is formed"
       ],
-      ans: "Because symmetries are closed under composition and have identity and inverses",
-      why: "All group axioms are satisfied by symmetry transformations",
-    },
-  ],
+      "ans": "Because symmetries are closed under composition and have identity and inverses",
+      "why": "All group axioms are satisfied by symmetry transformations"
+    }
+  ]
 );
-/*==============================================
-Groups Operations
-==============================================*/
+
 add(
   "math",
   "abstract_algebra",
   "Group Operations",
+
   `
 <h2> Group Operations</h2>
 
@@ -15093,70 +14683,67 @@ a * b = a + b → result ∈ Z (closed system)
 
 ---
 `,
+
   [
     {
-      q: "Check closure: Is the set of even integers closed under addition?",
-      hint: "add two even numbers",
-      steps: [
+      "q": "Check closure: Is the set of even integers closed under addition?",
+      "hint": "add two even numbers",
+      "steps": [
         "Step 1: Let two even integers be 2a and 2b",
         "Step 2: Add them → 2a + 2b",
         "Step 3: Factor → 2(a + b)",
         "Step 4: Since (a + b) is integer, result is even",
-        "Step 5: Result stays in the same set",
+        "Step 5: Result stays in the same set"
       ],
-      ans: "Yes, even integers are closed under addition",
-      why: "Sum of two even numbers is always even",
+      "ans": "Yes, even integers are closed under addition",
+      "why": "Sum of two even numbers is always even"
     },
-
     {
-      q: "Find identity element for multiplication in real numbers",
-      hint: "a × e = a",
-      steps: [
+      "q": "Find identity element for multiplication in real numbers",
+      "hint": "a × e = a",
+      "steps": [
         "Step 1: Let identity be e",
         "Step 2: Write equation a × e = a",
         "Step 3: Divide both sides by a (a ≠ 0)",
         "Step 4: e = 1",
-        "Step 5: Check: a × 1 = a",
+        "Step 5: Check: a × 1 = a"
       ],
-      ans: "1",
-      why: "1 leaves every real number unchanged under multiplication",
+      "ans": "1",
+      "why": "1 leaves every real number unchanged under multiplication"
     },
-
     {
-      q: "Find inverse of 8 under multiplication",
-      hint: "a × a⁻¹ = 1",
-      steps: [
+      "q": "Find inverse of 8 under multiplication",
+      "hint": "a × a⁻¹ = 1",
+      "steps": [
         "Step 1: Let inverse be x",
         "Step 2: Write 8 × x = 1",
         "Step 3: Solve x = 1/8",
-        "Step 4: Verify: 8 × 1/8 = 1",
+        "Step 4: Verify: 8 × 1/8 = 1"
       ],
-      ans: "1/8",
-      why: "Multiplicative inverse produces identity element 1",
+      "ans": "1/8",
+      "why": "Multiplicative inverse produces identity element 1"
     },
-
     {
-      q: "Is closure satisfied for subtraction in integers?",
-      hint: "check result set",
-      steps: [
+      "q": "Is closure satisfied for subtraction in integers?",
+      "hint": "check result set",
+      "steps": [
         "Step 1: Take two integers, e.g. 3 and 7",
         "Step 2: Compute 3 - 7 = -4",
         "Step 3: Check if -4 is integer",
         "Step 4: Try general form a - b = integer",
-        "Step 5: Conclude result stays in integers",
+        "Step 5: Conclude result stays in integers"
       ],
-      ans: "Yes, integers are closed under subtraction",
-      why: "Subtracting integers always produces an integer",
-    },
-  ],
+      "ans": "Yes, integers are closed under subtraction",
+      "why": "Subtracting integers always produces an integer"
+    }
+  ]
 );
-/*====================================================
-Applications of Abstract Algebra
-=====================================================*/
+
 add(
   "math",
   "abstract_algebra",
   "Applications of Abstract Algebra",
+
   `
 <h2> Applications of Abstract Algebra</h2>
 
@@ -15229,71 +14816,68 @@ Groups → Rings → Fields → Cryptography → Computing & Physics
 
 ---
 `,
+
   [
     {
-      q: "Check if (ℤ, +) forms a group under addition",
-      hint: "verify 4 group properties",
-      steps: [
+      "q": "Check if (ℤ, +) forms a group under addition",
+      "hint": "verify 4 group properties",
+      "steps": [
         "Step 1: Closure → a + b is always an integer ",
         "Step 2: Associativity → (a + b) + c = a + (b + c) ",
         "Step 3: Identity → 0 satisfies a + 0 = a ",
         "Step 4: Inverse → for every a, inverse is -a ",
-        "Step 5: All group axioms satisfied",
+        "Step 5: All group axioms satisfied"
       ],
-      ans: "Yes, (ℤ, +) is a group",
-      why: "All four group properties (closure, associativity, identity, inverse) hold",
+      "ans": "Yes, (ℤ, +) is a group",
+      "why": "All four group properties (closure, associativity, identity, inverse) hold"
     },
-
     {
-      q: "Check if (ℤ, ×) forms a group under multiplication",
-      hint: "look for inverse property",
-      steps: [
+      "q": "Check if (ℤ, ×) forms a group under multiplication",
+      "hint": "look for inverse property",
+      "steps": [
         "Step 1: Closure → integer × integer = integer ",
         "Step 2: Associativity → multiplication is associative ",
         "Step 3: Identity → 1 satisfies a × 1 = a ",
         "Step 4: Inverse → 1/a is not always integer ",
-        "Step 5: Conclude structure fails group condition",
+        "Step 5: Conclude structure fails group condition"
       ],
-      ans: "No, (ℤ, ×) is not a group",
-      why: "Not every element has a multiplicative inverse in integers",
+      "ans": "No, (ℤ, ×) is not a group",
+      "why": "Not every element has a multiplicative inverse in integers"
     },
-
     {
-      q: "Why is abstract algebra used in cryptography systems?",
-      hint: "structure + security",
-      steps: [
+      "q": "Why is abstract algebra used in cryptography systems?",
+      "hint": "structure + security",
+      "steps": [
         "Step 1: Identify need for secure communication",
         "Step 2: Use groups and modular arithmetic",
         "Step 3: Apply hard problems like factoring primes",
         "Step 4: Encode data using algebraic structures",
-        "Step 5: Decode only with valid keys",
+        "Step 5: Decode only with valid keys"
       ],
-      ans: "Because it provides secure mathematical structures for encryption",
-      why: "Group and field structures support encryption algorithms like RSA",
+      "ans": "Because it provides secure mathematical structures for encryption",
+      "why": "Group and field structures support encryption algorithms like RSA"
     },
-
     {
-      q: "Check if rational numbers (ℚ) form a field",
-      hint: "verify division property",
-      steps: [
+      "q": "Check if rational numbers (ℚ) form a field",
+      "hint": "verify division property",
+      "steps": [
         "Step 1: Check closure under addition ",
         "Step 2: Check closure under multiplication ",
         "Step 3: Check additive inverse exists ",
         "Step 4: Check multiplicative inverse exists for all non-zero numbers ",
-        "Step 5: Division is possible (except by 0)",
+        "Step 5: Division is possible (except by 0)"
       ],
-      ans: "Yes, ℚ is a field",
-      why: "All field properties including inverses are satisfied",
-    },
-  ],
+      "ans": "Yes, ℚ is a field",
+      "why": "All field properties including inverses are satisfied"
+    }
+  ]
 );
-/*========================================================
-CRYPTOGRAPHY MATHEMATICS
-=========================================================*/
+
 add(
   "math",
   "cryptography",
   "Introduction to Cryptography",
+
   `
 <h2> Cryptography Basics</h2>
 
@@ -15367,36 +14951,34 @@ User A →  Encryption → Internet →  Decryption → User B
 
 ---
 `,
+
   [
     {
-      Question: "What is encryption?",
-      Hint: "hiding data",
-      Answer: "converting data into unreadable form",
-      Reason: "protects sensitive information",
+      "q": "What is encryption?",
+      "hint": "hiding data",
+      "ans": "converting data into unreadable form",
+      "why": "protects sensitive information"
     },
-
     {
-      Question: "What is the purpose of a cryptographic key?",
-      Hint: "lock and unlock",
-      Answer: "to encrypt and decrypt data securely",
-      Reason: "ensures only authorized access",
+      "q": "What is the purpose of a cryptographic key?",
+      "hint": "lock and unlock",
+      "ans": "to encrypt and decrypt data securely",
+      "why": "ensures only authorized access"
     },
-
     {
-      Question: "Why is cryptography important in modern systems?",
-      Hint: "security",
-      Answer: "it protects communication and data from unauthorized access",
-      Reason: "ensures confidentiality and data safety",
-    },
-  ],
+      "q": "Why is cryptography important in modern systems?",
+      "hint": "security",
+      "ans": "it protects communication and data from unauthorized access",
+      "why": "ensures confidentiality and data safety"
+    }
+  ]
 );
-/*=============================================
-Modular Arithmetic in Encryption
-=============================================*/
+
 add(
   "math",
   "cryptography",
   "Modular Arithmetic in Encryption",
+
   `
 <h2> Modular Arithmetic in Cryptography</h2>
 
@@ -15471,37 +15053,34 @@ Cycle mod 5:
 
 ---
 `,
+
   [
     {
-      Question: "What does mod mean?",
-      Hint: "remainder",
-      Answer: "remainder after division",
-      Reason: "used to keep values within a fixed range",
+      "q": "What does mod mean?",
+      "hint": "remainder",
+      "ans": "remainder after division",
+      "why": "used to keep values within a fixed range"
     },
-
     {
-      Question: "Why is modular arithmetic important in cryptography?",
-      Hint: "cyclic system",
-      Answer:
-        "it keeps values within a fixed range and enables secure encryption systems",
-      Reason: "prevents overflow and supports encryption cycles",
+      "q": "Why is modular arithmetic important in cryptography?",
+      "hint": "cyclic system",
+      "ans": "it keeps values within a fixed range and enables secure encryption systems",
+      "why": "prevents overflow and supports encryption cycles"
     },
-
     {
-      Question: "Give one operation used in modular arithmetic.",
-      Hint: "addition or multiplication",
-      Answer: "(a + b) mod n or (a × b) mod n",
-      Reason: "basic operations used in cryptographic algorithms",
-    },
-  ],
+      "q": "Give one operation used in modular arithmetic.",
+      "hint": "addition or multiplication",
+      "ans": "(a + b) mod n or (a × b) mod n",
+      "why": "basic operations used in cryptographic algorithms"
+    }
+  ]
 );
-/*=============================================
-RSA Encryption Systems
-=============================================*/
+
 add(
   "math",
   "cryptography",
   "RSA Encryption System",
+
   `
 <h2> RSA Encryption System</h2>
 
@@ -15573,36 +15152,34 @@ Plaintext recovered
 
 ---
 `,
+
   [
     {
-      Question: "What is RSA based on?",
-      Hint: "prime numbers",
-      Answer: "large prime factorization",
-      Reason: "security depends on difficulty of factoring large numbers",
+      "q": "What is RSA based on?",
+      "hint": "prime numbers",
+      "ans": "large prime factorization",
+      "why": "security depends on difficulty of factoring large numbers"
     },
-
     {
-      Question: "What are the two keys in RSA?",
-      Hint: "public and private",
-      Answer: "public key and private key",
-      Reason: "one encrypts and the other decrypts",
+      "q": "What are the two keys in RSA?",
+      "hint": "public and private",
+      "ans": "public key and private key",
+      "why": "one encrypts and the other decrypts"
     },
-
     {
-      Question: "Why is modular arithmetic used in RSA?",
-      Hint: "large numbers",
-      Answer: "to keep results within a fixed range",
-      Reason: "prevents values from becoming too large during computation",
-    },
-  ],
+      "q": "Why is modular arithmetic used in RSA?",
+      "hint": "large numbers",
+      "ans": "to keep results within a fixed range",
+      "why": "prevents values from becoming too large during computation"
+    }
+  ]
 );
-/*=============================================
-Hashing functions
-=============================================*/
+
 add(
   "math",
   "cryptography",
   "Hashing Functions",
+
   `
 <h2> Hashing Functions</h2>
 
@@ -15661,71 +15238,68 @@ Password → Hash Function → 9f3a2c7d... (fixed output)
 
 ---
 `,
+
   [
     {
-      q: "What is a simple hash of a number using mod 10?",
-      hint: "remainder operation",
-      steps: [
+      "q": "What is a simple hash of a number using mod 10?",
+      "hint": "remainder operation",
+      "steps": [
         "Step 1: Take a number, e.g. 347",
         "Step 2: Apply hash function h(x) = x mod 10",
         "Step 3: Compute 347 ÷ 10 = 34 remainder 7",
         "Step 4: Extract remainder",
-        "Step 5: Final hash value = 7",
+        "Step 5: Final hash value = 7"
       ],
-      ans: "7",
-      why: "Modular arithmetic reduces data into fixed-size outputs",
+      "ans": "7",
+      "why": "Modular arithmetic reduces data into fixed-size outputs"
     },
-
     {
-      q: "If two inputs have same hash, what is it called?",
-      hint: "collision",
-      steps: [
+      "q": "If two inputs have same hash, what is it called?",
+      "hint": "collision",
+      "steps": [
         "Step 1: Take two inputs x and y",
         "Step 2: Compute h(x) and h(y)",
         "Step 3: Compare outputs",
         "Step 4: If h(x) = h(y), identify event",
-        "Step 5: Recognize collision condition",
+        "Step 5: Recognize collision condition"
       ],
-      ans: "hash collision",
-      why: "Different inputs producing same hash value is called a collision",
+      "ans": "hash collision",
+      "why": "Different inputs producing same hash value is called a collision"
     },
-
     {
-      q: "Why is hashing useful in password systems?",
-      hint: "security comparison",
-      steps: [
+      "q": "Why is hashing useful in password systems?",
+      "hint": "security comparison",
+      "steps": [
         "Step 1: User creates password",
         "Step 2: System applies hash function",
         "Step 3: Store only hashed value, not original password",
         "Step 4: On login, input is hashed again",
-        "Step 5: Compare hashes instead of raw password",
+        "Step 5: Compare hashes instead of raw password"
       ],
-      ans: "Because it stores passwords securely without revealing original data",
-      why: "Hashing ensures original password is never directly stored",
+      "ans": "Because it stores passwords securely without revealing original data",
+      "why": "Hashing ensures original password is never directly stored"
     },
-
     {
-      q: "What happens if hashing is reversed?",
-      hint: "one-way function",
-      steps: [
+      "q": "What happens if hashing is reversed?",
+      "hint": "one-way function",
+      "steps": [
         "Step 1: Hash function compresses input",
         "Step 2: Original data structure is lost",
         "Step 3: Multiple inputs can map to same output",
         "Step 4: No unique reverse mapping exists",
-        "Step 5: Therefore reversal is impossible",
+        "Step 5: Therefore reversal is impossible"
       ],
-      ans: "It cannot be reversed",
-      why: "Hash functions are designed as one-way functions",
-    },
-  ],
+      "ans": "It cannot be reversed",
+      "why": "Hash functions are designed as one-way functions"
+    }
+  ]
 );
-/*=============================================
-Applications Of cryptography
-=============================================*/
+
 add(
   "math",
   "cryptography",
   "Applications of Cryptography",
+
   `
 <h2> Applications</h2>
 
@@ -15793,71 +15367,68 @@ User → Encryption → Internet → Decryption → Receiver
 
 ---
 `,
+
   [
     {
-      q: "How does public key encryption work step-by-step?",
-      hint: "two-key process",
-      steps: [
+      "q": "How does public key encryption work step-by-step?",
+      "hint": "two-key process",
+      "steps": [
         "Step 1: Receiver generates a key pair (public key + private key)",
         "Step 2: Public key is shared openly",
         "Step 3: Sender encrypts message using receiver’s public key",
         "Step 4: Encrypted message is sent through insecure channel",
-        "Step 5: Receiver decrypts message using private key",
+        "Step 5: Receiver decrypts message using private key"
       ],
-      ans: "Message is encrypted with public key and decrypted with private key",
-      why: "Only the private key can reverse encryption done by the public key",
+      "ans": "Message is encrypted with public key and decrypted with private key",
+      "why": "Only the private key can reverse encryption done by the public key"
     },
-
     {
-      q: "Why can't the public key decrypt a message?",
-      hint: "asymmetric system",
-      steps: [
+      "q": "Why can't the public key decrypt a message?",
+      "hint": "asymmetric system",
+      "steps": [
         "Step 1: Public key is used only for encryption",
         "Step 2: Private key is mathematically linked but not identical",
         "Step 3: Encryption transforms data using public key function",
         "Step 4: Reverse operation requires private key only",
-        "Step 5: Public key cannot invert the process",
+        "Step 5: Public key cannot invert the process"
       ],
-      ans: "Because only the private key can decrypt the message",
-      why: "Asymmetric cryptography separates encryption and decryption roles",
+      "ans": "Because only the private key can decrypt the message",
+      "why": "Asymmetric cryptography separates encryption and decryption roles"
     },
-
     {
-      q: "What happens if someone intercepts a public key message?",
-      hint: "security property",
-      steps: [
+      "q": "What happens if someone intercepts a public key message?",
+      "hint": "security property",
+      "steps": [
         "Step 1: Attacker intercepts encrypted message",
         "Step 2: They also know public key (it is public)",
         "Step 3: Try to decrypt message using public key",
         "Step 4: Encryption cannot be reversed without private key",
-        "Step 5: Message remains secure",
+        "Step 5: Message remains secure"
       ],
-      ans: "They cannot read the message",
-      why: "Security relies on private key being secret",
+      "ans": "They cannot read the message",
+      "why": "Security relies on private key being secret"
     },
-
     {
-      q: "Why is cryptography important in online banking?",
-      hint: "protect transactions",
-      steps: [
+      "q": "Why is cryptography important in online banking?",
+      "hint": "protect transactions",
+      "steps": [
         "Step 1: Financial data is sent over networks",
         "Step 2: Data is encrypted before transmission",
         "Step 3: Only bank server can decrypt it",
         "Step 4: Prevents attackers from reading data",
-        "Step 5: Ensures secure transactions",
+        "Step 5: Ensures secure transactions"
       ],
-      ans: "To protect financial data and transactions",
-      why: "Cryptography ensures confidentiality and integrity of sensitive information",
-    },
-  ],
+      "ans": "To protect financial data and transactions",
+      "why": "Cryptography ensures confidentiality and integrity of sensitive information"
+    }
+  ]
 );
-/*========================================================
-GAME THEORY
-=========================================================*/
+
 add(
   "math",
   "game_theory",
   "Introduction to Game Theory",
+
   `
 <h2> Game Theory Basics</h2>
 
@@ -15921,71 +15492,68 @@ A2     (4,1)  (8,9)
 
 ---
 `,
+
   [
     {
-      q: "In a simple payoff game, choose strategy A or B: A = (5,2), B = (3,4). Which is better for Player 1?",
-      hint: "compare first values",
-      steps: [
+      "q": "In a simple payoff game, choose strategy A or B: A = (5,2), B = (3,4). Which is better for Player 1?",
+      "hint": "compare first values",
+      "steps": [
         "Step 1: Identify payoffs for Player 1",
         "Step 2: Strategy A gives 5",
         "Step 3: Strategy B gives 3",
         "Step 4: Compare 5 vs 3",
-        "Step 5: Choose higher payoff",
+        "Step 5: Choose higher payoff"
       ],
-      ans: "Strategy A",
-      why: "Player 1 maximizes payoff by choosing the higher value",
+      "ans": "Strategy A",
+      "why": "Player 1 maximizes payoff by choosing the higher value"
     },
-
     {
-      q: "Find Nash equilibrium in a coordination game",
-      hint: "best response match",
-      steps: [
+      "q": "Find Nash equilibrium in a coordination game",
+      "hint": "best response match",
+      "steps": [
         "Step 1: List strategies for both players",
         "Step 2: Check best response of Player 1",
         "Step 3: Check best response of Player 2",
         "Step 4: Find where both strategies match best responses",
-        "Step 5: Identify stable outcome",
+        "Step 5: Identify stable outcome"
       ],
-      ans: "Mutual best response strategy pair",
-      why: "Nash equilibrium occurs when no player benefits from changing strategy alone",
+      "ans": "Mutual best response strategy pair",
+      "why": "Nash equilibrium occurs when no player benefits from changing strategy alone"
     },
-
     {
-      q: "If Player A chooses between (2,10) and (8,3), what is rational choice for A?",
-      hint: "maximize payoff",
-      steps: [
+      "q": "If Player A chooses between (2,10) and (8,3), what is rational choice for A?",
+      "hint": "maximize payoff",
+      "steps": [
         "Step 1: Extract Player A payoffs",
         "Step 2: First option gives 2",
         "Step 3: Second option gives 8",
         "Step 4: Compare 2 vs 8",
-        "Step 5: Choose maximum payoff",
+        "Step 5: Choose maximum payoff"
       ],
-      ans: "Choose (8,3)",
-      why: "Rational choice maximizes individual payoff",
+      "ans": "Choose (8,3)",
+      "why": "Rational choice maximizes individual payoff"
     },
-
     {
-      q: "Why is game theory important in economics?",
-      hint: "strategic decisions",
-      steps: [
+      "q": "Why is game theory important in economics?",
+      "hint": "strategic decisions",
+      "steps": [
         "Step 1: Identify multiple decision makers",
         "Step 2: Each player affects others' outcomes",
         "Step 3: Model interactions mathematically",
         "Step 4: Predict optimal strategies",
-        "Step 5: Apply to markets and competition",
+        "Step 5: Apply to markets and competition"
       ],
-      ans: "It predicts optimal strategies in competitive environments",
-      why: "Game theory models strategic interdependence between rational agents",
-    },
-  ],
+      "ans": "It predicts optimal strategies in competitive environments",
+      "why": "Game theory models strategic interdependence between rational agents"
+    }
+  ]
 );
-/*==========================================
-Payoff Matrices
-==========================================*/
+
 add(
   "math",
   "game_theory",
   "Payoff Matrices",
+
   `
 <h2> Payoff Matrix</h2>
 
@@ -16035,71 +15603,68 @@ Each cell = (A payoff, B payoff)
 
 ---
 `,
+
   [
     {
-      q: "In a payoff matrix, Player A chooses between (7,2) and (4,6). Which choice maximizes A’s payoff?",
-      hint: "compare first values only",
-      steps: [
+      "q": "In a payoff matrix, Player A chooses between (7,2) and (4,6). Which choice maximizes A’s payoff?",
+      "hint": "compare first values only",
+      "steps": [
         "Step 1: Identify Player A’s payoffs in each option",
         "Step 2: Option 1 gives A = 7",
         "Step 3: Option 2 gives A = 4",
         "Step 4: Compare 7 and 4",
-        "Step 5: Choose the higher payoff",
+        "Step 5: Choose the higher payoff"
       ],
-      ans: "Choose (7,2)",
-      why: "Player A maximizes gain by selecting the highest payoff value",
+      "ans": "Choose (7,2)",
+      "why": "Player A maximizes gain by selecting the highest payoff value"
     },
-
     {
-      q: "If Player B’s payoffs are 3, 8, and 5, which strategy is best?",
-      hint: "maximize payoff",
-      steps: [
+      "q": "If Player B’s payoffs are 3, 8, and 5, which strategy is best?",
+      "hint": "maximize payoff",
+      "steps": [
         "Step 1: List B’s payoffs: 3, 8, 5",
         "Step 2: Compare values",
         "Step 3: Identify maximum value",
         "Step 4: 8 is highest among all",
-        "Step 5: Select strategy with payoff 8",
+        "Step 5: Select strategy with payoff 8"
       ],
-      ans: "Strategy with payoff 8",
-      why: "Rational choice selects the maximum payoff",
+      "ans": "Strategy with payoff 8",
+      "why": "Rational choice selects the maximum payoff"
     },
-
     {
-      q: "In a game cell (6,4), what does the ordered pair represent?",
-      hint: "first vs second player",
-      steps: [
+      "q": "In a game cell (6,4), what does the ordered pair represent?",
+      "hint": "first vs second player",
+      "steps": [
         "Step 1: Identify structure (A, B)",
         "Step 2: First value = Player A payoff = 6",
         "Step 3: Second value = Player B payoff = 4",
         "Step 4: Interpret both outcomes together",
-        "Step 5: Represent simultaneous result",
+        "Step 5: Represent simultaneous result"
       ],
-      ans: "A gets 6 and B gets 4",
-      why: "Each cell shows outcomes for both players at once",
+      "ans": "A gets 6 and B gets 4",
+      "why": "Each cell shows outcomes for both players at once"
     },
-
     {
-      q: "If Player A gets (2,9) vs (8,1), what is total payoff comparison?",
-      hint: "add values",
-      steps: [
+      "q": "If Player A gets (2,9) vs (8,1), what is total payoff comparison?",
+      "hint": "add values",
+      "steps": [
         "Step 1: Compute total for first option → 2 + 9 = 11",
         "Step 2: Compute total for second option → 8 + 1 = 9",
         "Step 3: Compare 11 and 9",
         "Step 4: Identify larger total",
-        "Step 5: Choose better overall outcome",
+        "Step 5: Choose better overall outcome"
       ],
-      ans: "First option (2,9)",
-      why: "Higher combined payoff indicates better outcome in total welfare sense",
-    },
-  ],
+      "ans": "First option (2,9)",
+      "why": "Higher combined payoff indicates better outcome in total welfare sense"
+    }
+  ]
 );
-/*========================================
-Nash Equilibrium
-=========================================*/
+
 add(
   "math",
   "game_theory",
   "Nash Equilibrium",
+
   `
 <h2> Nash Equilibrium</h2>
 <h3> DEEP NOTES</h3>
@@ -16189,74 +15754,71 @@ Only intersection of best responses = equilibrium point
 
 ---
 `,
+
   [
     {
-      q: "Find Nash equilibrium in a simple payoff matrix: (2,2), (0,3), (3,0), (1,1). Which outcome is stable?",
-      hint: "check best responses step by step",
-      steps: [
+      "q": "Find Nash equilibrium in a simple payoff matrix: (2,2), (0,3), (3,0), (1,1). Which outcome is stable?",
+      "hint": "check best responses step by step",
+      "steps": [
         "Step 1: List all outcomes: (2,2), (0,3), (3,0), (1,1)",
         "Step 2: For Player A, compare first values: 2, 0, 3, 1 → best is 3",
         "Step 3: For Player B, compare second values: 2, 3, 0, 1 → best is 3",
         "Step 4: Identify where both players are best responding",
         "Step 5: Check intersection of best responses",
         "Step 6: Only (0,3) is best for B but not A; (3,0) best for A but not B",
-        "Step 7: (2,2) is the closest mutual best response consistency",
+        "Step 7: (2,2) is the closest mutual best response consistency"
       ],
-      ans: "(2,2)",
-      why: "Nash equilibrium occurs where neither player can improve unilaterally",
+      "ans": "(2,2)",
+      "why": "Nash equilibrium occurs where neither player can improve unilaterally"
     },
-
     {
-      q: "In a 2-player game, A chooses between 5 or 1, B chooses between 4 or 2. Find stable outcome assuming best response behavior",
-      hint: "maximize individually",
-      steps: [
+      "q": "In a 2-player game, A chooses between 5 or 1, B chooses between 4 or 2. Find stable outcome assuming best response behavior",
+      "hint": "maximize individually",
+      "steps": [
         "Step 1: Player A compares 5 vs 1 → chooses 5",
         "Step 2: Player B compares 4 vs 2 → chooses 4",
         "Step 3: Combine best responses",
         "Step 4: Outcome becomes (5,4)",
         "Step 5: Check if deviation improves payoff",
-        "Step 6: Neither player benefits from changing alone",
+        "Step 6: Neither player benefits from changing alone"
       ],
-      ans: "(5,4)",
-      why: "Both players are already playing their best responses",
+      "ans": "(5,4)",
+      "why": "Both players are already playing their best responses"
     },
-
     {
-      q: "Why can Nash equilibrium fail to give the highest total payoff?",
-      hint: "individual vs collective",
-      steps: [
+      "q": "Why can Nash equilibrium fail to give the highest total payoff?",
+      "hint": "individual vs collective",
+      "steps": [
         "Step 1: Each player maximizes personal payoff",
         "Step 2: Compare individual vs total outcome",
         "Step 3: Note that best individual choices may conflict",
         "Step 4: Compute example totals",
-        "Step 5: Observe that global maximum may differ from equilibrium",
+        "Step 5: Observe that global maximum may differ from equilibrium"
       ],
-      ans: "Because players act individually, not cooperatively",
-      why: "Nash equilibrium is about stability, not total optimization",
+      "ans": "Because players act individually, not cooperatively",
+      "why": "Nash equilibrium is about stability, not total optimization"
     },
-
     {
-      q: "Check if (A chooses 3, B chooses 3) is a Nash equilibrium given best responses match",
-      hint: "no unilateral gain",
-      steps: [
+      "q": "Check if (A chooses 3, B chooses 3) is a Nash equilibrium given best responses match",
+      "hint": "no unilateral gain",
+      "steps": [
         "Step 1: Assume outcome (3,3)",
         "Step 2: Check A’s deviation → any better than 3? No",
         "Step 3: Check B’s deviation → any better than 3? No",
         "Step 4: Both players satisfied with current choice",
-        "Step 5: Confirm stability condition",
+        "Step 5: Confirm stability condition"
       ],
-      ans: "Yes, it is a Nash equilibrium",
-      why: "Neither player benefits from changing strategy alone",
-    },
-  ],
+      "ans": "Yes, it is a Nash equilibrium",
+      "why": "Neither player benefits from changing strategy alone"
+    }
+  ]
 );
-/*========================================
-Dominant Strategies
-=========================================*/
+
 add(
   "math",
   "game_theory",
   "Dominant Strategies",
+
   `
 <h2> Dominant Strategy</h2>
 
@@ -16320,72 +15882,69 @@ Result → (R, L)
 
 ---
 `,
+
   [
     {
-      q: "In a payoff matrix, Player A has choices L and R. If A gets (5,1) from L and (6,2) from R depending on B’s actions, does A have a dominant strategy?",
-      hint: "compare A’s payoffs across all cases",
-      steps: [
+      "q": "In a payoff matrix, Player A has choices L and R. If A gets (5,1) from L and (6,2) from R depending on B’s actions, does A have a dominant strategy?",
+      "hint": "compare A’s payoffs across all cases",
+      "steps": [
         "Step 1: List A’s payoffs when B chooses first option",
         "Step 2: Compare L vs R → L gives 5, R gives 6 → R is better",
         "Step 3: List A’s payoffs when B chooses second option",
         "Step 4: Compare L vs R → L gives 1, R gives 2 → R is better",
         "Step 5: Check consistency across all scenarios",
-        "Step 6: Since R is always higher, it is dominant",
+        "Step 6: Since R is always higher, it is dominant"
       ],
-      ans: "Yes, R is a dominant strategy",
-      why: "A dominant strategy gives a higher payoff in every possible case",
+      "ans": "Yes, R is a dominant strategy",
+      "why": "A dominant strategy gives a higher payoff in every possible case"
     },
-
     {
-      q: "Player B receives payoffs (3,4) if L is chosen and (7,2) if R is chosen. Does B have a dominant strategy?",
-      hint: "check each row case",
-      steps: [
+      "q": "Player B receives payoffs (3,4) if L is chosen and (7,2) if R is chosen. Does B have a dominant strategy?",
+      "hint": "check each row case",
+      "steps": [
         "Step 1: If A chooses L, compare B’s payoffs: 3 vs 4 → R is better",
         "Step 2: If A chooses R, compare B’s payoffs: 7 vs 2 → L is better",
         "Step 3: Compare results across both scenarios",
         "Step 4: B prefers R in one case and L in another",
-        "Step 5: No single consistent best choice exists",
+        "Step 5: No single consistent best choice exists"
       ],
-      ans: "No dominant strategy",
-      why: "A dominant strategy must be best in all cases, which is not satisfied",
+      "ans": "No dominant strategy",
+      "why": "A dominant strategy must be best in all cases, which is not satisfied"
     },
-
     {
-      q: "Why is a dominant strategy useful in decision-making?",
-      hint: "no need to predict opponent",
-      steps: [
+      "q": "Why is a dominant strategy useful in decision-making?",
+      "hint": "no need to predict opponent",
+      "steps": [
         "Step 1: Identify that payoff comparison is independent of opponent strategy",
         "Step 2: Player evaluates all possible opponent actions",
         "Step 3: Select strategy that always gives highest payoff",
         "Step 4: No need for prediction or complex analysis",
-        "Step 5: Decision becomes simplified and stable",
+        "Step 5: Decision becomes simplified and stable"
       ],
-      ans: "It simplifies decision-making",
-      why: "Players can choose optimal strategy without forecasting others",
+      "ans": "It simplifies decision-making",
+      "why": "Players can choose optimal strategy without forecasting others"
     },
-
     {
-      q: "Can a game have no dominant strategy equilibrium? Explain using reasoning steps.",
-      hint: "check consistency failure",
-      steps: [
+      "q": "Can a game have no dominant strategy equilibrium? Explain using reasoning steps.",
+      "hint": "check consistency failure",
+      "steps": [
         "Step 1: Consider a game where best responses change with opponent’s choice",
         "Step 2: Compare payoffs across different scenarios",
         "Step 3: Observe that no single strategy is always best",
         "Step 4: Identify dependency on opponent’s move",
-        "Step 5: Conclude absence of dominance",
+        "Step 5: Conclude absence of dominance"
       ],
-      ans: "Yes, many games have no dominant strategy equilibrium",
-      why: "Dominance requires consistent superiority across all cases, which may not exist",
-    },
-  ],
+      "ans": "Yes, many games have no dominant strategy equilibrium",
+      "why": "Dominance requires consistent superiority across all cases, which may not exist"
+    }
+  ]
 );
-/*===========================================
-Applications Of The Game Theory
-============================================*/
+
 add(
   "math",
   "game_theory",
   "Applications of Game Theory",
+
   `
 <h2> Applications</h2>
 
@@ -16462,57 +16021,55 @@ Players → choices → payoff calculation → best response → equilibrium
 
 ---
 `,
+
   [
     {
-      q: "In a game, Player A chooses between strategies S1 and S2. Payoffs depend on Player B’s choice. If A gets (2,5) from S1 and (4,3) from S2 across B’s two possible actions, find A’s best response.",
-      hint: "compare payoffs in each scenario",
-      steps: [
+      "q": "In a game, Player A chooses between strategies S1 and S2. Payoffs depend on Player B’s choice. If A gets (2,5) from S1 and (4,3) from S2 across B’s two possible actions, find A’s best response.",
+      "hint": "compare payoffs in each scenario",
+      "steps": [
         "Step 1: List A’s payoffs when B chooses first action: S1 = 2, S2 = 4",
         "Step 2: Compare values: 4 > 2 so S2 is better",
         "Step 3: List A’s payoffs when B chooses second action: S1 = 5, S2 = 3",
         "Step 4: Compare values: 5 > 3 so S1 is better",
         "Step 5: Identify best response changes with B’s action",
-        "Step 6: Conclude no single dominant strategy for A",
+        "Step 6: Conclude no single dominant strategy for A"
       ],
-      ans: "Best response depends on B’s action",
-      why: "A best response is conditional, not fixed across all opponent choices",
+      "ans": "Best response depends on B’s action",
+      "why": "A best response is conditional, not fixed across all opponent choices"
     },
-
     {
-      q: "Two firms compete. Payoff matrix gives Firm A profits as (10,2) for strategy X and (6,6) for strategy Y depending on market response. Which strategy is safer (maximin idea)?",
-      hint: "choose worst-case payoff",
-      steps: [
+      "q": "Two firms compete. Payoff matrix gives Firm A profits as (10,2) for strategy X and (6,6) for strategy Y depending on market response. Which strategy is safer (maximin idea)?",
+      "hint": "choose worst-case payoff",
+      "steps": [
         "Step 1: Identify worst-case for X → min(10,2) = 2",
         "Step 2: Identify worst-case for Y → min(6,6) = 6",
         "Step 3: Compare worst-case outcomes: 2 vs 6",
-        "Step 4: Choose strategy with higher minimum payoff",
+        "Step 4: Choose strategy with higher minimum payoff"
       ],
-      ans: "Strategy Y",
-      why: "Maximin strategy maximizes the worst-case payoff",
+      "ans": "Strategy Y",
+      "why": "Maximin strategy maximizes the worst-case payoff"
     },
-
     {
-      q: "Why does payoff depend on opponent strategy in game theory?",
-      hint: "interdependence",
-      steps: [
+      "q": "Why does payoff depend on opponent strategy in game theory?",
+      "hint": "interdependence",
+      "steps": [
         "Step 1: Identify that players act simultaneously or sequentially",
         "Step 2: Each player’s choice affects outcomes of others",
         "Step 3: Payoff is computed at intersection of strategies",
         "Step 4: Recognize interdependent decision structure",
-        "Step 5: Conclude payoff is not isolated but relational",
+        "Step 5: Conclude payoff is not isolated but relational"
       ],
-      ans: "Because outcomes depend on all players’ choices",
-      why: "Game theory models interdependent decisions rather than isolated actions",
-    },
-  ],
+      "ans": "Because outcomes depend on all players’ choices",
+      "why": "Game theory models interdependent decisions rather than isolated actions"
+    }
+  ]
 );
-/*========================================================
-FRACTALS & CHAOS THEORY
-=========================================================*/
+
 add(
   "math",
   "fractals_chaos_theory",
   "Introduction to Fractals",
+
   `
 <h2> Fractals</h2>
 
@@ -16579,55 +16136,53 @@ Iteration 3 → more detailed repetition
 
 ---
 `,
+
   [
     {
-      q: "A fractal line starts with length 2. Each step replaces every segment with 3 segments, each half the length. Find total length after 2 iterations.",
-      hint: "track number of segments and scaling",
-      steps: [
+      "q": "A fractal line starts with length 2. Each step replaces every segment with 3 segments, each half the length. Find total length after 2 iterations.",
+      "hint": "track number of segments and scaling",
+      "steps": [
         "Step 1: Initial length = 2",
         "Step 2: After 1st iteration: 3 segments, each length = 1 → total length = 3 × 1 = 3",
         "Step 3: After 2nd iteration: each of 3 segments becomes 3 segments → total segments = 9",
         "Step 4: Each segment length = 1/2",
-        "Step 5: Total length = 9 × (1/2) = 9/2",
+        "Step 5: Total length = 9 × (1/2) = 9/2"
       ],
-      ans: "9/2",
-      why: "Fractal construction increases segments while scaling lengths, changing total measure each iteration",
+      "ans": "9/2",
+      "why": "Fractal construction increases segments while scaling lengths, changing total measure each iteration"
     },
-
     {
-      q: "A fractal square keeps 1/4 of its area removed at each step. If initial area is 1, find area after 3 steps.",
-      hint: "multiply remaining fraction repeatedly",
-      steps: [
+      "q": "A fractal square keeps 1/4 of its area removed at each step. If initial area is 1, find area after 3 steps.",
+      "hint": "multiply remaining fraction repeatedly",
+      "steps": [
         "Step 1: Initial area = 1",
         "Step 2: After 1st step → remaining = 3/4",
         "Step 3: After 2nd step → (3/4) × (3/4) = 9/16",
-        "Step 4: After 3rd step → (9/16) × (3/4) = 27/64",
+        "Step 4: After 3rd step → (9/16) × (3/4) = 27/64"
       ],
-      ans: "27/64",
-      why: "Each iteration scales the remaining area multiplicatively",
+      "ans": "27/64",
+      "why": "Each iteration scales the remaining area multiplicatively"
     },
-
     {
-      q: "Why do fractals often produce infinite perimeter in finite area structures?",
-      hint: "increasing detail with scaling",
-      steps: [
+      "q": "Why do fractals often produce infinite perimeter in finite area structures?",
+      "hint": "increasing detail with scaling",
+      "steps": [
         "Step 1: Each iteration adds more boundary detail",
         "Step 2: Segment length decreases but number increases faster",
         "Step 3: Total boundary length grows without bound",
-        "Step 4: Area converges while perimeter diverges",
+        "Step 4: Area converges while perimeter diverges"
       ],
-      ans: "Infinite perimeter with finite area",
-      why: "Self-similar iteration increases boundary complexity at every scale",
-    },
-  ],
+      "ans": "Infinite perimeter with finite area",
+      "why": "Self-similar iteration increases boundary complexity at every scale"
+    }
+  ]
 );
-/*=========================================
-Mandelbrot Set
-==========================================*/
+
 add(
   "math",
   "fractals_chaos_theory",
   "Mandelbrot Set",
+
   `
 <h2> Mandelbrot Set</h2>
 
@@ -16698,58 +16253,56 @@ Zoom → more patterns → infinite detail
 </ul>
 
 `,
+
   [
     {
-      q: "For c = 1, test whether it belongs to the Mandelbrot set using zₙ₊₁ = zₙ² + c starting from z₀ = 0.",
-      hint: "compute iterations and check divergence",
-      steps: [
+      "q": "For c = 1, test whether it belongs to the Mandelbrot set using zₙ₊₁ = zₙ² + c starting from z₀ = 0.",
+      "hint": "compute iterations and check divergence",
+      "steps": [
         "Step 1: Start with z₀ = 0",
         "Step 2: Compute z₁ = 0² + 1 = 1",
         "Step 3: Compute z₂ = 1² + 1 = 2",
         "Step 4: Compute z₃ = 2² + 1 = 5",
         "Step 5: Compute z₄ = 5² + 1 = 26",
-        "Step 6: Observe that values increase rapidly",
+        "Step 6: Observe that values increase rapidly"
       ],
-      ans: "c = 1 is NOT in the Mandelbrot set",
-      why: "The sequence diverges to infinity, so the point is not bounded",
+      "ans": "c = 1 is NOT in the Mandelbrot set",
+      "why": "The sequence diverges to infinity, so the point is not bounded"
     },
-
     {
-      q: "For c = 0.2, test boundedness for first iterations of zₙ₊₁ = zₙ² + c starting from z₀ = 0.",
-      hint: "check growth pattern",
-      steps: [
+      "q": "For c = 0.2, test boundedness for first iterations of zₙ₊₁ = zₙ² + c starting from z₀ = 0.",
+      "hint": "check growth pattern",
+      "steps": [
         "Step 1: z₀ = 0",
         "Step 2: z₁ = 0² + 0.2 = 0.2",
         "Step 3: z₂ = (0.2)² + 0.2 = 0.04 + 0.2 = 0.24",
         "Step 4: z₃ = (0.24)² + 0.2 = 0.0576 + 0.2 = 0.2576",
-        "Step 5: Values remain small and stable",
+        "Step 5: Values remain small and stable"
       ],
-      ans: "Likely in Mandelbrot set region (bounded behavior)",
-      why: "The iteration does not diverge, indicating stability",
+      "ans": "Likely in Mandelbrot set region (bounded behavior)",
+      "why": "The iteration does not diverge, indicating stability"
     },
-
     {
-      q: "Why does the Mandelbrot set boundary contain infinite detail?",
-      hint: "small changes cause big effects",
-      steps: [
+      "q": "Why does the Mandelbrot set boundary contain infinite detail?",
+      "hint": "small changes cause big effects",
+      "steps": [
         "Step 1: Each point depends on repeated iteration",
         "Step 2: Slight changes in c change long-term behavior",
         "Step 3: Some points converge while nearby ones diverge",
         "Step 4: This creates a highly sensitive boundary",
-        "Step 5: Zooming reveals new structures endlessly",
+        "Step 5: Zooming reveals new structures endlessly"
       ],
-      ans: "Because the boundary is infinitely sensitive and self-similar",
-      why: "Iterative systems amplify small differences, creating infinite fractal complexity",
-    },
-  ],
+      "ans": "Because the boundary is infinitely sensitive and self-similar",
+      "why": "Iterative systems amplify small differences, creating infinite fractal complexity"
+    }
+  ]
 );
-/*=========================================
-Chaos theory
-=========================================*/
+
 add(
   "math",
   "fractals_chaos_theory",
   "Chaos Theory",
+
   `
 <h2> Chaos Theory</h2>
 
@@ -16808,59 +16361,57 @@ tiny difference → large divergence over time
 </ul>
 
 `,
+
   [
     {
-      q: "For the system xₙ₊₁ = 2xₙ(1 − xₙ), compare x₀ = 0.40 and x₀ = 0.41 after one iteration.",
-      hint: "compute both and compare",
-      steps: [
+      "q": "For the system xₙ₊₁ = 2xₙ(1 − xₙ), compare x₀ = 0.40 and x₀ = 0.41 after one iteration.",
+      "hint": "compute both and compare",
+      "steps": [
         "Step 1: Use xₙ₊₁ = 2xₙ(1 − xₙ)",
         "Step 2: For x₀ = 0.40 → x₁ = 2(0.40)(1 − 0.40)",
         "Step 3: x₁ = 2(0.40)(0.60) = 0.48",
         "Step 4: For x₀ = 0.41 → x₁ = 2(0.41)(1 − 0.41)",
         "Step 5: x₁ = 2(0.41)(0.59) = 2(0.2419) = 0.4838",
-        "Step 6: Compare results: 0.48 vs 0.4838",
+        "Step 6: Compare results: 0.48 vs 0.4838"
       ],
-      ans: "Small initial difference (0.01) produces a growing difference after iteration",
-      why: "This shows sensitivity to initial conditions, a key property of chaos",
+      "ans": "Small initial difference (0.01) produces a growing difference after iteration",
+      "why": "This shows sensitivity to initial conditions, a key property of chaos"
     },
-
     {
-      q: "For xₙ₊₁ = 3xₙ(1 − xₙ), compute one step for x₀ = 0.2 and x₀ = 0.21 and compare.",
-      hint: "logistic iteration",
-      steps: [
+      "q": "For xₙ₊₁ = 3xₙ(1 − xₙ), compute one step for x₀ = 0.2 and x₀ = 0.21 and compare.",
+      "hint": "logistic iteration",
+      "steps": [
         "Step 1: Apply formula xₙ₊₁ = 3xₙ(1 − xₙ)",
         "Step 2: For x₀ = 0.2 → x₁ = 3(0.2)(0.8)",
         "Step 3: x₁ = 3(0.16) = 0.48",
         "Step 4: For x₀ = 0.21 → x₁ = 3(0.21)(0.79)",
         "Step 5: x₁ = 3(0.1659) = 0.4977",
-        "Step 6: Compare results: 0.48 vs 0.4977",
+        "Step 6: Compare results: 0.48 vs 0.4977"
       ],
-      ans: "A small difference in input leads to a noticeable change in output",
-      why: "Nonlinear feedback amplifies tiny initial differences",
+      "ans": "A small difference in input leads to a noticeable change in output",
+      "why": "Nonlinear feedback amplifies tiny initial differences"
     },
-
     {
-      q: "Why are chaotic systems deterministic but unpredictable?",
-      hint: "rules vs outcomes",
-      steps: [
+      "q": "Why are chaotic systems deterministic but unpredictable?",
+      "hint": "rules vs outcomes",
+      "steps": [
         "Step 1: Chaotic systems follow fixed mathematical rules",
         "Step 2: No randomness is added in the equations",
         "Step 3: However, repeated iteration amplifies tiny errors",
         "Step 4: Measurement cannot be perfectly exact in real life",
-        "Step 5: Therefore long-term prediction becomes unreliable",
+        "Step 5: Therefore long-term prediction becomes unreliable"
       ],
-      ans: "They are deterministic but practically unpredictable due to error amplification",
-      why: "Even exact rules produce unpredictable behavior when sensitivity to initial conditions is high",
-    },
-  ],
+      "ans": "They are deterministic but practically unpredictable due to error amplification",
+      "why": "Even exact rules produce unpredictable behavior when sensitivity to initial conditions is high"
+    }
+  ]
 );
-/*======================================
-Butterfly Effect
-======================================*/
+
 add(
   "math",
   "fractals_chaos_theory",
   "Butterfly Effect",
+
   `
 <h2> Butterfly Effect</h2>
 <h3> DEEP NOTES</h3>
@@ -16927,75 +16478,75 @@ Large difference over time
   <li>Population and ecological modeling</li>
 </ul>
 `,
+
   [
     {
-      q: "A system follows xₙ₊₁ = 2xₙ. If x₀ = 0.5, find x₃.",
-      hint: "repeated doubling",
-      steps: [
+      "q": "A system follows xₙ₊₁ = 2xₙ. If x₀ = 0.5, find x₃.",
+      "hint": "repeated doubling",
+      "steps": [
         "Step 1: Start with x₀ = 0.5",
         "Step 2: Apply rule x₁ = 2x₀ = 2 × 0.5 = 1",
         "Step 3: x₂ = 2x₁ = 2 × 1 = 2",
-        "Step 4: x₃ = 2x₂ = 2 × 2 = 4",
+        "Step 4: x₃ = 2x₂ = 2 × 2 = 4"
       ],
-      ans: "4",
-      why: "Each step doubles the previous value, showing exponential growth",
+      "ans": "4",
+      "why": "Each step doubles the previous value, showing exponential growth"
     },
     {
-      q: "Compare the output after two steps for x₀ = 0.1 and x₀ = 0.11 in the system xₙ₊₁ = 1.5xₙ.",
-      hint: "calculate both and compare",
-      steps: [
+      "q": "Compare the output after two steps for x₀ = 0.1 and x₀ = 0.11 in the system xₙ₊₁ = 1.5xₙ.",
+      "hint": "calculate both and compare",
+      "steps": [
         "Step 1: Use xₙ₊₁ = 1.5xₙ",
         "Step 2: For x₀ = 0.1 → x₁ = 1.5(0.1) = 0.15 → x₂ = 1.5(0.15) = 0.225",
         "Step 3: For x₀ = 0.11 → x₁ = 1.5(0.11) = 0.165 → x₂ = 1.5(0.165) = 0.2475",
-        "Step 4: Compare: 0.225 vs 0.2475",
+        "Step 4: Compare: 0.225 vs 0.2475"
       ],
-      ans: "Small initial difference (0.01) produces larger difference (0.0225)",
-      why: "Exponential growth amplifies initial differences over time",
+      "ans": "Small initial difference (0.01) produces larger difference (0.0225)",
+      "why": "Exponential growth amplifies initial differences over time"
     },
     {
-      q: "In a chaotic system, why can small measurement errors lead to completely different outcomes?",
-      hint: "sensitivity to initial conditions",
-      steps: [
+      "q": "In a chaotic system, why can small measurement errors lead to completely different outcomes?",
+      "hint": "sensitivity to initial conditions",
+      "steps": [
         "Step 1: Chaotic systems have high sensitivity",
         "Step 2: Tiny errors get multiplied repeatedly",
         "Step 3: Error grows exponentially with each iteration",
-        "Step 4: Over time, predicted path diverges completely",
+        "Step 4: Over time, predicted path diverges completely"
       ],
-      ans: "Because tiny errors are amplified exponentially through repeated nonlinear feedback",
-      why: "This extreme sensitivity makes long-term prediction impossible",
+      "ans": "Because tiny errors are amplified exponentially through repeated nonlinear feedback",
+      "why": "This extreme sensitivity makes long-term prediction impossible"
     },
     {
-      q: "Two initial values are x₀ = 10 and x₀ = 10.01 in a system xₙ₊₁ = 1.1xₙ. Find difference after 2 steps.",
-      hint: "track both sequences",
-      steps: [
+      "q": "Two initial values are x₀ = 10 and x₀ = 10.01 in a system xₙ₊₁ = 1.1xₙ. Find difference after 2 steps.",
+      "hint": "track both sequences",
+      "steps": [
         "Step 1: First system → 10 × 1.1 = 11, then 11 × 1.1 = 12.1",
         "Step 2: Second system → 10.01 × 1.1 = 11.011, then 11.011 × 1.1 = 12.1121",
-        "Step 3: Compute difference → 12.1121 − 12.1 = 0.0121",
+        "Step 3: Compute difference → 12.1121 − 12.1 = 0.0121"
       ],
-      ans: "0.0121",
-      why: "Small initial differences grow over iterations, showing sensitivity",
+      "ans": "0.0121",
+      "why": "Small initial differences grow over iterations, showing sensitivity"
     },
     {
-      q: "A prediction error starts at 0.002 and increases by factor 3 each step. Find error after 4 steps.",
-      hint: "exponential error growth",
-      steps: [
+      "q": "A prediction error starts at 0.002 and increases by factor 3 each step. Find error after 4 steps.",
+      "hint": "exponential error growth",
+      "steps": [
         "Step 1: Use formula Eₙ = E₀ × 3ⁿ",
         "Step 2: Substitute values → E₄ = 0.002 × 3⁴",
         "Step 3: Compute power → 3⁴ = 81",
-        "Step 4: Multiply → 0.002 × 81 = 0.162",
+        "Step 4: Multiply → 0.002 × 81 = 0.162"
       ],
-      ans: "0.162",
-      why: "Errors grow exponentially in chaotic systems, making long-term prediction difficult",
-    },
-  ],
+      "ans": "0.162",
+      "why": "Errors grow exponentially in chaotic systems, making long-term prediction difficult"
+    }
+  ]
 );
-/*====================================
-Applications of Fractals and Chaos
-=====================================*/
+
 add(
   "math",
   "fractals_chaos_theory",
   "Applications of Fractals and Chaos",
+
   `
 <h2> Applications of Fractals and Chaos</h2>
 <h3> DEEP NOTES</h3>
@@ -17060,55 +16611,55 @@ x → x(1 − x) → nonlinear feedback → chaos
   <li>Computer graphics and natural modeling</li>
 </ul>
 `,
+
   [
     {
-      q: "What is a simple example showing chaos from a formula?",
-      hint: "iteration + feedback",
-      steps: [
+      "q": "What is a simple example showing chaos from a formula?",
+      "hint": "iteration + feedback",
+      "steps": [
         "Step 1: Use a nonlinear recurrence such as xₙ₊₁ = 3.9xₙ(1 − xₙ)",
         "Step 2: Choose initial value x₀ = 0.4",
         "Step 3: Compute x₁ = 3.9 × 0.4 × 0.6 = 0.936",
         "Step 4: Compute x₂ = 3.9 × 0.936 × (1 − 0.936) = 3.9 × 0.936 × 0.064 = 0.233",
-        "Step 5: Observe rapid change in values despite simple rule",
+        "Step 5: Observe rapid change in values despite simple rule"
       ],
-      ans: "Nonlinear iteration produces rapidly changing values",
-      why: "Feedback systems amplify small changes leading to chaotic behavior",
+      "ans": "Nonlinear iteration produces rapidly changing values",
+      "why": "Feedback systems amplify small changes leading to chaotic behavior"
     },
     {
-      q: "Show sensitivity to initial conditions using two close values",
-      hint: "compare iterations",
-      steps: [
+      "q": "Show sensitivity to initial conditions using two close values",
+      "hint": "compare iterations",
+      "steps": [
         "Step 1: Define function xₙ₊₁ = 4xₙ(1 − xₙ)",
         "Step 2: Start with x₀ = 0.50 → x₁ = 4 × 0.5 × 0.5 = 1.0",
         "Step 3: Start with x₀ = 0.51 → x₁ = 4 × 0.51 × 0.49 = 0.9996",
         "Step 4: After next iteration values diverge significantly",
-        "Step 5: Small initial difference grows over time",
+        "Step 5: Small initial difference grows over time"
       ],
-      ans: "Small changes in start lead to large differences later",
-      why: "This demonstrates exponential divergence in chaotic systems",
+      "ans": "Small changes in start lead to large differences later",
+      "why": "This demonstrates exponential divergence in chaotic systems"
     },
     {
-      q: "Generate a simple fractal pattern numerically",
-      hint: "repeated scaling",
-      steps: [
+      "q": "Generate a simple fractal pattern numerically",
+      "hint": "repeated scaling",
+      "steps": [
         "Step 1: Start with S₀ = 1",
         "Step 2: Apply rule Sₙ₊₁ = 3Sₙ",
         "Step 3: Compute S₁ = 3 × 1 = 3",
         "Step 4: Compute S₂ = 3 × 3 = 9",
-        "Step 5: Compute S₃ = 3 × 9 = 27",
+        "Step 5: Compute S₃ = 3 × 9 = 27"
       ],
-      ans: "1, 3, 9, 27",
-      why: "Repeated scaling rules create self-similar structure at all levels",
-    },
-  ],
+      "ans": "1, 3, 9, 27",
+      "why": "Repeated scaling rules create self-similar structure at all levels"
+    }
+  ]
 );
-/*========================================================
-TOPOLOGY
-=========================================================*/
+
 add(
   "math",
   "topology",
   "Introduction to Topology",
+
   `
 <h2> Introduction to Topology</h2>
 <h3> DEEP NOTES</h3>
@@ -17172,58 +16723,58 @@ Invariant → Euler characteristic
   <li>Network and connectivity analysis</li>
 </ul>
 `,
+
   [
     {
-      q: "Find Euler characteristic of a square (treated as a graph).",
-      hint: "use V − E + F",
-      steps: [
+      "q": "Find Euler characteristic of a square (treated as a graph).",
+      "hint": "use V − E + F",
+      "steps": [
         "Step 1: Identify vertices (V) = 4 corners of the square",
         "Step 2: Identify edges (E) = 4 sides",
         "Step 3: Identify faces (F) = 1 interior region",
         "Step 4: Apply Euler formula χ = V − E + F",
         "Step 5: Substitute values χ = 4 − 4 + 1",
-        "Step 6: Compute χ = 1",
+        "Step 6: Compute χ = 1"
       ],
-      ans: "χ = 1",
-      why: "Euler characteristic measures topological structure, not shape size",
+      "ans": "χ = 1",
+      "why": "Euler characteristic measures topological structure, not shape size"
     },
     {
-      q: "Compare topology of a triangle and a circle (as graphs)",
-      hint: "count structure, not shape",
-      steps: [
+      "q": "Compare topology of a triangle and a circle (as graphs)",
+      "hint": "count structure, not shape",
+      "steps": [
         "Step 1: Triangle has V = 3, E = 3, F = 1",
         "Step 2: Compute χ = 3 − 3 + 1 = 1",
         "Step 3: Circle boundary can be modeled as V = 1 loop, E = 1 loop",
         "Step 4: Compute χ = 1 − 1 + 1 = 1 (same invariant idea)",
         "Step 5: Compare Euler characteristics",
-        "Step 6: Both give same topological invariant value",
+        "Step 6: Both give same topological invariant value"
       ],
-      ans: "They share the same Euler characteristic (χ = 1)",
-      why: "Topology compares invariants, not geometric shape",
+      "ans": "They share the same Euler characteristic (χ = 1)",
+      "why": "Topology compares invariants, not geometric shape"
     },
     {
-      q: "Determine if two shapes are topologically equivalent: stretched square → circle",
-      hint: "continuous deformation",
-      steps: [
+      "q": "Determine if two shapes are topologically equivalent: stretched square → circle",
+      "hint": "continuous deformation",
+      "steps": [
         "Step 1: Start with a square shape",
         "Step 2: Apply continuous deformation (stretching only)",
         "Step 3: No tearing or cutting is allowed",
         "Step 4: Check connectivity is preserved",
         "Step 5: Confirm number of holes is unchanged (0 holes)",
-        "Step 6: Conclude equivalence based on preserved topology",
+        "Step 6: Conclude equivalence based on preserved topology"
       ],
-      ans: "Yes, they are topologically equivalent",
-      why: "Topology preserves connectivity under continuous deformation",
-    },
-  ],
+      "ans": "Yes, they are topologically equivalent",
+      "why": "Topology preserves connectivity under continuous deformation"
+    }
+  ]
 );
-/*============================================
-Topological Deformation
-============================================*/
+
 add(
   "math",
   "topology",
   "Topological Deformation",
+
   `
 <h2> Topological Deformation</h2>
 
@@ -17279,60 +16830,58 @@ Topology invariants remain unchanged under deformation
   <li>Computer graphics transformations</li>
 </ul>
 `,
+
   [
     {
-      q: "Find the genus of a sphere and determine if it can be transformed into a torus without cutting.",
-      hint: "think holes and deformation rules",
-      steps: [
+      "q": "Find the genus of a sphere and determine if it can be transformed into a torus without cutting.",
+      "hint": "think holes and deformation rules",
+      "steps": [
         "Step 1: Identify the genus of a sphere → it has 0 holes (g = 0)",
         "Step 2: Identify the genus of a torus → it has 1 hole (g = 1)",
         "Step 3: Compare genus values (0 vs 1)",
         "Step 4: Apply topology rule: genus must remain unchanged under deformation",
         "Step 5: Check allowed operations (only stretching allowed, no cutting or gluing)",
-        "Step 6: Conclude transformation is impossible under topological rules",
+        "Step 6: Conclude transformation is impossible under topological rules"
       ],
-      ans: "No, a sphere cannot be transformed into a torus without cutting or gluing",
-      why: "Genus is a topological invariant and cannot change under continuous deformation",
+      "ans": "No, a sphere cannot be transformed into a torus without cutting or gluing",
+      "why": "Genus is a topological invariant and cannot change under continuous deformation"
     },
-
     {
-      q: "Determine whether a cylinder is topologically equivalent to a circle",
-      hint: "check connectivity and holes",
-      steps: [
+      "q": "Determine whether a cylinder is topologically equivalent to a circle",
+      "hint": "check connectivity and holes",
+      "steps": [
         "Step 1: Identify cylinder structure → 1 surface with 2 circular boundaries",
         "Step 2: Identify circle structure → 1 closed loop",
         "Step 3: Compare topology → cylinder has boundary edges, circle does not",
         "Step 4: Check deformation rules → no cutting or gluing allowed",
         "Step 5: Evaluate invariants (holes and boundaries differ)",
-        "Step 6: Conclude they are not equivalent in topology",
+        "Step 6: Conclude they are not equivalent in topology"
       ],
-      ans: "No, a cylinder is not topologically equivalent to a circle",
-      why: "They differ in boundary structure and cannot be matched via continuous deformation",
+      "ans": "No, a cylinder is not topologically equivalent to a circle",
+      "why": "They differ in boundary structure and cannot be matched via continuous deformation"
     },
-
     {
-      q: "Is bending a sheet of paper without tearing a valid topological deformation?",
-      hint: "think allowed operations",
-      steps: [
+      "q": "Is bending a sheet of paper without tearing a valid topological deformation?",
+      "hint": "think allowed operations",
+      "steps": [
         "Step 1: Observe transformation → paper is bent smoothly",
         "Step 2: Check if cutting occurs → no cutting or tearing",
         "Step 3: Check if gluing occurs → none applied",
         "Step 4: Verify continuity → surface remains connected",
         "Step 5: Apply definition of deformation → continuous change only",
-        "Step 6: Conclude validity of transformation",
+        "Step 6: Conclude validity of transformation"
       ],
-      ans: "Yes, it is a valid topological deformation",
-      why: "Topology allows only continuous transformations that preserve structure",
-    },
-  ],
+      "ans": "Yes, it is a valid topological deformation",
+      "why": "Topology allows only continuous transformations that preserve structure"
+    }
+  ]
 );
-/*=====================================
-Connectedness
-=====================================*/
+
 add(
   "math",
   "topology",
   "Connectedness",
+
   `
 <h2> Connectedness</h2>
 <h3> DEEP NOTES</h3>
@@ -17390,97 +16939,97 @@ Matrix form shows reachability paths
   <li>Computer network topology</li>
 </ul>
 `,
+
   [
     {
-      q: "Is a graph with all vertices isolated considered connected?",
-      hint: "check path between nodes",
-      steps: [
+      "q": "Is a graph with all vertices isolated considered connected?",
+      "hint": "check path between nodes",
+      "steps": [
         "Step 1: Identify vertices → multiple nodes exist",
         "Step 2: Check edges → no edges connect any vertices",
         "Step 3: Test connectivity → no path exists between any two nodes",
         "Step 4: Apply definition → a connected graph requires a path between every pair of vertices",
-        "Step 5: Compare condition → requirement is not satisfied",
+        "Step 5: Compare condition → requirement is not satisfied"
       ],
-      ans: "No, it is not connected",
-      why: "A connected graph requires at least one path between every pair of vertices",
+      "ans": "No, it is not connected",
+      "why": "A connected graph requires at least one path between every pair of vertices"
     },
     {
-      q: "Determine if a triangle graph (3 vertices all connected to each other) is connected",
-      hint: "check paths between nodes",
-      steps: [
+      "q": "Determine if a triangle graph (3 vertices all connected to each other) is connected",
+      "hint": "check paths between nodes",
+      "steps": [
         "Step 1: Identify vertices A, B, C",
         "Step 2: Identify edges AB, BC, and CA",
         "Step 3: Check connectivity between each pair",
         "Step 4: A → B exists, B → C exists, C → A exists",
-        "Step 5: Verify path exists for every pair of vertices",
+        "Step 5: Verify path exists for every pair of vertices"
       ],
-      ans: "Yes, it is connected",
-      why: "Every vertex has a path to every other vertex through edges",
+      "ans": "Yes, it is connected",
+      "why": "Every vertex has a path to every other vertex through edges"
     },
     {
-      q: "Is a graph with two separate clusters connected?",
-      hint: "check components",
-      steps: [
+      "q": "Is a graph with two separate clusters connected?",
+      "hint": "check components",
+      "steps": [
         "Step 1: Identify cluster 1 → group of connected vertices",
         "Step 2: Identify cluster 2 → another separate group",
         "Step 3: Check if any edge links cluster 1 to cluster 2",
         "Step 4: No connecting edge exists",
-        "Step 5: Conclude graph has multiple disconnected components",
+        "Step 5: Conclude graph has multiple disconnected components"
       ],
-      ans: "No, it is not connected",
-      why: "A graph is disconnected if it has more than one separate component",
+      "ans": "No, it is not connected",
+      "why": "A graph is disconnected if it has more than one separate component"
     },
     {
-      q: "In a weighted graph, is the graph connected if all vertices are linked but some edges have very large weights?",
-      hint: "ignore weight for connectivity",
-      steps: [
+      "q": "In a weighted graph, is the graph connected if all vertices are linked but some edges have very large weights?",
+      "hint": "ignore weight for connectivity",
+      "steps": [
         "Step 1: Identify all vertices in the graph",
         "Step 2: Check whether every vertex has at least one path to every other vertex",
         "Step 3: Note that edge weights (e.g., large or small values) do not affect existence of a path",
         "Step 4: Determine if at least one route connects all vertices regardless of cost",
         "Step 5: Apply definition of connectivity (path existence, not path cost)",
-        "Step 6: Conclude based on reachability condition",
+        "Step 6: Conclude based on reachability condition"
       ],
-      ans: "Yes, the graph is connected",
-      why: "Connectivity depends on existence of paths, not edge weights",
+      "ans": "Yes, the graph is connected",
+      "why": "Connectivity depends on existence of paths, not edge weights"
     },
     {
-      q: "A graph has vertices {1,2,3,4} and edges {(1,2), (2,3), (3,4), (4,2)}. Is it connected?",
-      hint: "check reachability cycle",
-      steps: [
+      "q": "A graph has vertices {1,2,3,4} and edges {(1,2), (2,3), (3,4), (4,2)}. Is it connected?",
+      "hint": "check reachability cycle",
+      "steps": [
         "Step 1: List vertices → {1,2,3,4}",
         "Step 2: Identify edges forming a cycle among 2,3,4",
         "Step 3: Check reachability from vertex 1 → 1 connects to 2",
         "Step 4: From 2 → reach 3 and 4 through edges",
         "Step 5: Verify all vertices are reachable from any starting vertex",
-        "Step 6: Confirm single connected component exists",
+        "Step 6: Confirm single connected component exists"
       ],
-      ans: "Yes, the graph is connected",
-      why: "All vertices are reachable through direct or indirect paths",
+      "ans": "Yes, the graph is connected",
+      "why": "All vertices are reachable through direct or indirect paths"
     },
     {
-      q: "A graph has edges {(1,2), (2,3)} and vertex 4 isolated. Is the graph connected?",
-      hint: "check isolated node",
-      steps: [
+      "q": "A graph has edges {(1,2), (2,3)} and vertex 4 isolated. Is the graph connected?",
+      "hint": "check isolated node",
+      "steps": [
         "Step 1: Identify vertices → {1,2,3,4}",
         "Step 2: Observe edges → 1–2–3 forms one component",
         "Step 3: Note vertex 4 has no edges",
         "Step 4: Check reachability → 4 cannot be reached from any other vertex",
         "Step 5: Compare with definition of connected graph",
-        "Step 6: Determine number of components > 1",
+        "Step 6: Determine number of components > 1"
       ],
-      ans: "No, the graph is disconnected",
-      why: "Presence of an isolated vertex creates multiple components",
-    },
-  ],
+      "ans": "No, the graph is disconnected",
+      "why": "Presence of an isolated vertex creates multiple components"
+    }
+  ]
 );
-/*====================================
-Continous transformations
-=====================================*/
+
 add(
   "math",
   "topology",
   "Continuous Transformations",
+
   `
 <h2> Continuous Transformations</h2>
 <h3> DEEP NOTES</h3>
@@ -17543,95 +17092,95 @@ f(x) = 1/(x-2)    →  ||  ←
   <li>Robotics movement modeling</li>
 </ul>
 `,
+
   [
     {
-      q: "Is f(x) = |x| a continuous function, and what happens at x = 0?",
-      hint: "check left and right behavior",
-      steps: [
+      "q": "Is f(x) = |x| a continuous function, and what happens at x = 0?",
+      "hint": "check left and right behavior",
+      "steps": [
         "Step 1: Write function definition: f(x) = |x| = x for x ≥ 0 and -x for x < 0",
         "Step 2: Compute left-hand limit at x → 0⁻: f(x) = -x → 0",
         "Step 3: Compute right-hand limit at x → 0⁺: f(x) = x → 0",
         "Step 4: Compare both limits: LHL = RHL = 0",
         "Step 5: Check function value: f(0) = 0",
-        "Step 6: Apply continuity condition: LHL = RHL = f(0)",
+        "Step 6: Apply continuity condition: LHL = RHL = f(0)"
       ],
-      ans: "Yes, f(x) = |x| is continuous at x = 0",
-      why: "Left limit, right limit, and function value all match",
+      "ans": "Yes, f(x) = |x| is continuous at x = 0",
+      "why": "Left limit, right limit, and function value all match"
     },
     {
-      q: "Is a step function continuous at the jump point x = 1?",
-      hint: "check left vs right values",
-      steps: [
+      "q": "Is a step function continuous at the jump point x = 1?",
+      "hint": "check left vs right values",
+      "steps": [
         "Step 1: Define step behavior: f(x) = 0 for x < 1, f(x) = 2 for x ≥ 1",
         "Step 2: Compute left-hand limit at x → 1⁻: LHL = 0",
         "Step 3: Compute right-hand limit at x → 1⁺: RHL = 2",
         "Step 4: Compare limits: 0 ≠ 2",
         "Step 5: Apply continuity condition: limits must match",
-        "Step 6: Conclude discontinuity at x = 1",
+        "Step 6: Conclude discontinuity at x = 1"
       ],
-      ans: "No, it is not continuous at x = 1",
-      why: "Left-hand and right-hand limits are not equal",
+      "ans": "No, it is not continuous at x = 1",
+      "why": "Left-hand and right-hand limits are not equal"
     },
     {
-      q: "Determine continuity of f(x) = (x² − 4)/(x − 2) at x = 2",
-      hint: "simplify expression",
-      steps: [
+      "q": "Determine continuity of f(x) = (x² − 4)/(x − 2) at x = 2",
+      "hint": "simplify expression",
+      "steps": [
         "Step 1: Substitute x = 2 → (4 − 4)/(0) = 0/0 indeterminate",
         "Step 2: Factor numerator: x² − 4 = (x − 2)(x + 2)",
         "Step 3: Simplify function: f(x) = x + 2 for x ≠ 2",
         "Step 4: Compute limit as x → 2: lim f(x) = 4",
         "Step 5: Check if function is defined at x = 2: it is not defined",
-        "Step 6: Apply continuity condition: function must be defined and equal to limit",
+        "Step 6: Apply continuity condition: function must be defined and equal to limit"
       ],
-      ans: "No, it is not continuous at x = 2 (removable discontinuity)",
-      why: "Limit exists but function is undefined at the point",
+      "ans": "No, it is not continuous at x = 2 (removable discontinuity)",
+      "why": "Limit exists but function is undefined at the point"
     },
     {
-      q: "Is a function with a jump discontinuity continuous? Explain.",
-      hint: "A jump discontinuity means left and right values don't match",
-      steps: [
+      "q": "Is a function with a jump discontinuity continuous? Explain.",
+      "hint": "A jump discontinuity means left and right values don't match",
+      "steps": [
         "Step 1: Understand jump discontinuity → left-hand limit ≠ right-hand limit",
         "Step 2: Recall continuity condition → limit must exist and equal function value",
         "Step 3: Apply condition to jump discontinuity → since limits differ, no single limit exists",
-        "Step 4: Conclude on continuity → if no limit, cannot satisfy continuity condition",
+        "Step 4: Conclude on continuity → if no limit, cannot satisfy continuity condition"
       ],
-      ans: "No, it is not continuous",
-      why: "A jump discontinuity means the limit does not exist, violating continuity requirement",
+      "ans": "No, it is not continuous",
+      "why": "A jump discontinuity means the limit does not exist, violating continuity requirement"
     },
     {
-      q: "Can we make a function with a removable discontinuity continuous? How?",
-      hint: "Think about filling the hole",
-      steps: [
+      "q": "Can we make a function with a removable discontinuity continuous? How?",
+      "hint": "Think about filling the hole",
+      "steps": [
         "Step 1: Identify removable discontinuity → limit exists but function undefined or different",
         "Step 2: Recall continuity requirement → limit must equal function value",
         "Step 3: Define new function value → set f(x) = limit at the point of discontinuity",
-        "Step 4: Check if new function is continuous → now all conditions are met",
+        "Step 4: Check if new function is continuous → now all conditions are met"
       ],
-      ans: "Yes, by redefining the function at that point",
-      why: "Redefining the function to equal the limit makes it continuous",
+      "ans": "Yes, by redefining the function at that point",
+      "why": "Redefining the function to equal the limit makes it continuous"
     },
     {
-      q: "Is the greatest integer function f(x) = ⌊x⌋ continuous anywhere?",
-      hint: "Graph the step pattern",
-      steps: [
+      "q": "Is the greatest integer function f(x) = ⌊x⌋ continuous anywhere?",
+      "hint": "Graph the step pattern",
+      "steps": [
         "Step 1: Understand the floor function → rounds down to nearest integer",
         "Step 2: Consider intervals (0,1), (1,2), etc. → constant on each interval",
         "Step 3: Check at integer points (e.g., x = 1) → step down occurs",
         "Step 4: Evaluate limits → LHL ≠ RHL at integers",
-        "Step 5: Conclude on continuity → continuous on open intervals, discontinuous at integers",
+        "Step 5: Conclude on continuity → continuous on open intervals, discontinuous at integers"
       ],
-      ans: "Yes, on open intervals between integers",
-      why: "It has jump discontinuities at every integer value",
-    },
-  ],
+      "ans": "Yes, on open intervals between integers",
+      "why": "It has jump discontinuities at every integer value"
+    }
+  ]
 );
-/*====================================
-Applications of Topology
-=====================================*/
+
 add(
   "math",
   "topology",
   "Applications of Topology",
+
   `
 <h2> Applications of Topology</h2>
 
@@ -17675,55 +17224,55 @@ Start → flexible path → Goal
 </pre>
 
 `,
+
   [
     {
-      q: "Is a circle topologically equivalent to a triangle? Explain using deformation steps.",
-      hint: "Think stretching without cutting",
-      steps: [
+      "q": "Is a circle topologically equivalent to a triangle? Explain using deformation steps.",
+      "hint": "Think stretching without cutting",
+      "steps": [
         "Step 1: Consider a circle as a flexible loop",
         "Step 2: Imagine stretching the loop into a triangle shape",
         "Step 3: Ensure no cutting, tearing, or gluing is used",
         "Step 4: Check connectivity is preserved (single closed loop)",
-        "Step 5: Conclude that only shape changes, not structure",
+        "Step 5: Conclude that only shape changes, not structure"
       ],
-      ans: "Yes, a circle is topologically equivalent to a triangle",
-      why: "Both are closed loops with no breaks, only geometry changes",
+      "ans": "Yes, a circle is topologically equivalent to a triangle",
+      "why": "Both are closed loops with no breaks, only geometry changes"
     },
     {
-      q: "Is a solid disk topologically equivalent to a sphere surface?",
-      hint: "check holes and boundaries",
-      steps: [
+      "q": "Is a solid disk topologically equivalent to a sphere surface?",
+      "hint": "check holes and boundaries",
+      "steps": [
         "Step 1: Identify disk has a boundary edge",
         "Step 2: Identify sphere surface has no boundary",
         "Step 3: Compare topological properties (holes/boundaries)",
         "Step 4: Note that boundary is a preserved topological feature",
-        "Step 5: Conclude they are not equivalent",
+        "Step 5: Conclude they are not equivalent"
       ],
-      ans: "No, they are not topologically equivalent",
-      why: "A disk has a boundary while a sphere surface does not",
+      "ans": "No, they are not topologically equivalent",
+      "why": "A disk has a boundary while a sphere surface does not"
     },
     {
-      q: "Why is a coffee cup topologically equivalent to a torus (donut)?",
-      hint: "think hole preservation",
-      steps: [
+      "q": "Why is a coffee cup topologically equivalent to a torus (donut)?",
+      "hint": "think hole preservation",
+      "steps": [
         "Step 1: Identify coffee cup has one handle (one hole)",
         "Step 2: Identify torus has one continuous hole",
         "Step 3: Imagine continuous deformation without cutting",
         "Step 4: Preserve number of holes (genus = 1)",
-        "Step 5: Conclude same topological structure",
+        "Step 5: Conclude same topological structure"
       ],
-      ans: "Because both have exactly one hole and can be deformed into each other",
-      why: "Topology classifies objects by holes, not shape",
-    },
-  ],
+      "ans": "Because both have exactly one hole and can be deformed into each other",
+      "why": "Topology classifies objects by holes, not shape"
+    }
+  ]
 );
-/*========================================================
-NUMERICAL METHODS
-=========================================================*/
+
 add(
   "math",
   "numerical_methods",
   "Introduction to Numerical Methods",
+
   `
 <h2> Introduction to Numerical Methods</h2>
 <h3> DEEP NOTES</h3>
@@ -17779,11 +17328,12 @@ Initial Guess → Iteration → Better Approximation
       x₀            x₁              x₂
 </pre>
 `,
+
   [
     {
-      q: "Use Newton-Raphson method once to approximate √5 using x₀ = 2",
-      hint: "use x_{n+1} = x_n − f(x_n)/f'(x_n)",
-      steps: [
+      "q": "Use Newton-Raphson method once to approximate √5 using x₀ = 2",
+      "hint": "use x_{n+1} = x_n − f(x_n)/f'(x_n)",
+      "steps": [
         "Step 1: Define function f(x) = x² − 5",
         "Step 2: Differentiate → f'(x) = 2x",
         "Step 3: Use Newton-Raphson formula x₁ = x₀ − f(x₀)/f'(x₀)",
@@ -17791,29 +17341,27 @@ Initial Guess → Iteration → Better Approximation
         "Step 5: Compute f(2) = 4 − 5 = −1",
         "Step 6: Compute f'(2) = 4",
         "Step 7: Compute x₁ = 2 − (−1/4) = 2 + 0.25",
-        "Step 8: Final approximation x₁ = 2.25",
+        "Step 8: Final approximation x₁ = 2.25"
       ],
-      ans: "Approximate root after one iteration = 2.25",
-      why: "Newton-Raphson improves approximations using tangent lines",
+      "ans": "Approximate root after one iteration = 2.25",
+      "why": "Newton-Raphson improves approximations using tangent lines"
     },
-
     {
-      q: "Find the absolute error if exact value = 3.14159 and approximation = 3.14",
-      hint: "subtract and take positive value",
-      steps: [
+      "q": "Find the absolute error if exact value = 3.14159 and approximation = 3.14",
+      "hint": "subtract and take positive value",
+      "steps": [
         "Step 1: Write formula → Absolute Error = |Exact − Approximate|",
         "Step 2: Substitute values → |3.14159 − 3.14|",
         "Step 3: Compute difference → 0.00159",
-        "Step 4: Take positive value",
+        "Step 4: Take positive value"
       ],
-      ans: "Absolute error = 0.00159",
-      why: "Absolute error measures the size of approximation error",
+      "ans": "Absolute error = 0.00159",
+      "why": "Absolute error measures the size of approximation error"
     },
-
     {
-      q: "Approximate √10 using two iterations of Babylonian method starting with x₀ = 3",
-      hint: "use x_{n+1} = (x_n + 10/x_n)/2",
-      steps: [
+      "q": "Approximate √10 using two iterations of Babylonian method starting with x₀ = 3",
+      "hint": "use x_{n+1} = (x_n + 10/x_n)/2",
+      "steps": [
         "Step 1: Define iteration formula x_{n+1} = (x_n + 10/x_n)/2",
         "Step 2: Start with x₀ = 3",
         "Step 3: Compute x₁ = (3 + 10/3)/2",
@@ -17821,34 +17369,32 @@ Initial Guess → Iteration → Better Approximation
         "Step 5: x₁ ≈ (3 + 3.333)/2 = 6.333/2 ≈ 3.167",
         "Step 6: Compute x₂ = (3.167 + 10/3.167)/2",
         "Step 7: 10/3.167 ≈ 3.157",
-        "Step 8: x₂ ≈ (3.167 + 3.157)/2 ≈ 3.162",
+        "Step 8: x₂ ≈ (3.167 + 3.157)/2 ≈ 3.162"
       ],
-      ans: "Approximation after two iterations ≈ 3.162",
-      why: "Repeated averaging improves approximation accuracy",
+      "ans": "Approximation after two iterations ≈ 3.162",
+      "why": "Repeated averaging improves approximation accuracy"
     },
-
     {
-      q: "Why are approximate solutions used instead of exact solutions in some problems?",
-      hint: "complex equations",
-      steps: [
+      "q": "Why are approximate solutions used instead of exact solutions in some problems?",
+      "hint": "complex equations",
+      "steps": [
         "Step 1: Some equations cannot be solved algebraically",
         "Step 2: Exact formulas may not exist",
         "Step 3: Numerical methods generate close estimates",
         "Step 4: Computers can repeat calculations efficiently",
-        "Step 5: Approximate answers are often sufficient in science and engineering",
+        "Step 5: Approximate answers are often sufficient in science and engineering"
       ],
-      ans: "Because many real-world equations are too complex for exact algebraic solutions",
-      why: "Numerical methods provide practical and efficient approximations",
-    },
-  ],
+      "ans": "Because many real-world equations are too complex for exact algebraic solutions",
+      "why": "Numerical methods provide practical and efficient approximations"
+    }
+  ]
 );
-/*====================================
-Iteration Methods
-====================================*/
+
 add(
   "math",
   "numerical_methods",
   "Iteration Method",
+
   `
 <h2> Iteration Method</h2>
 <h3> DEEP NOTES</h3>
@@ -17914,59 +17460,57 @@ x₀ → x₁ → x₂ → x₃ → stable value
 (convergence through iteration)
 </pre>
 `,
+
   [
     {
-      q: "Use fixed-point iteration to solve x = cos(x), starting with x₀ = 1 (first 3 iterations)",
-      hint: "repeat substitution x_{n+1} = cos(x_n)",
-      steps: [
+      "q": "Use fixed-point iteration to solve x = cos(x), starting with x₀ = 1 (first 3 iterations)",
+      "hint": "repeat substitution x_{n+1} = cos(x_n)",
+      "steps": [
         "Step 1: Define iteration formula x_{n+1} = cos(x_n)",
         "Step 2: Start with x₀ = 1",
         "Step 3: Compute x₁ = cos(1) ≈ 0.5403",
         "Step 4: Compute x₂ = cos(0.5403) ≈ 0.8576",
         "Step 5: Compute x₃ = cos(0.8576) ≈ 0.6543",
-        "Step 6: Observe values are moving toward a stable number",
+        "Step 6: Observe values are moving toward a stable number"
       ],
-      ans: "x₁ ≈ 0.5403, x₂ ≈ 0.8576, x₃ ≈ 0.6543",
-      why: "Iteration repeatedly refines estimates to approach a fixed point",
+      "ans": "x₁ ≈ 0.5403, x₂ ≈ 0.8576, x₃ ≈ 0.6543",
+      "why": "Iteration repeatedly refines estimates to approach a fixed point"
     },
-
     {
-      q: "Check whether the iteration x_{n+1} = (x_n + 3/x_n)/2 converges for x₀ = 2",
-      hint: "compute first steps and observe stability",
-      steps: [
+      "q": "Check whether the iteration x_{n+1} = (x_n + 3/x_n)/2 converges for x₀ = 2",
+      "hint": "compute first steps and observe stability",
+      "steps": [
         "Step 1: Define iteration x_{n+1} = (x_n + 3/x_n)/2",
         "Step 2: Start with x₀ = 2",
         "Step 3: Compute x₁ = (2 + 3/2)/2 = (2 + 1.5)/2 = 1.75",
         "Step 4: Compute x₂ = (1.75 + 3/1.75)/2 ≈ (1.75 + 1.714)/2 ≈ 1.732",
         "Step 5: Compute x₃ ≈ (1.732 + 1.732)/2 ≈ 1.732",
-        "Step 6: Values stabilize around 1.732",
+        "Step 6: Values stabilize around 1.732"
       ],
-      ans: "Yes, it converges to approximately 1.732",
-      why: "Stabilization of successive iterates indicates convergence",
+      "ans": "Yes, it converges to approximately 1.732",
+      "why": "Stabilization of successive iterates indicates convergence"
     },
-
     {
-      q: "Why can some iterative methods fail to converge?",
-      hint: "divergence or oscillation",
-      steps: [
+      "q": "Why can some iterative methods fail to converge?",
+      "hint": "divergence or oscillation",
+      "steps": [
         "Step 1: Iteration depends on chosen formula and starting value",
         "Step 2: Some functions amplify errors instead of reducing them",
         "Step 3: Values may oscillate or grow without bound",
         "Step 4: No stable fixed point is reached",
-        "Step 5: Therefore iteration fails to converge",
+        "Step 5: Therefore iteration fails to converge"
       ],
-      ans: "Because some iterations diverge or oscillate instead of stabilizing",
-      why: "Convergence depends on stability of the iteration function and initial guess",
-    },
-  ],
+      "ans": "Because some iterations diverge or oscillate instead of stabilizing",
+      "why": "Convergence depends on stability of the iteration function and initial guess"
+    }
+  ]
 );
-/*=======================================
-Root Finding Methods
-========================================*/
+
 add(
   "math",
   "numerical_methods",
   "Root Finding Methods",
+
   `
 <h2> Root Finding Methods</h2>
 
@@ -18030,57 +17574,57 @@ f(x)
  |
 </pre>
 `,
+
   [
     {
-      q: "Use the bisection method to find a root of f(x) = x² − 4 in the interval [1, 3]",
-      hint: "check sign change and halve interval",
-      steps: [
+      "q": "Use the bisection method to find a root of f(x) = x² − 4 in the interval [1, 3]",
+      "hint": "check sign change and halve interval",
+      "steps": [
         "Step 1: Define function f(x) = x² − 4",
         "Step 2: Evaluate endpoints: f(1) = 1 − 4 = −3, f(3) = 9 − 4 = 5",
         "Step 3: Since sign changes (− to +), a root lies in [1, 3]",
         "Step 4: Find midpoint x₁ = (1 + 3)/2 = 2",
         "Step 5: Evaluate f(2) = 4 − 4 = 0",
-        "Step 6: Since f(2) = 0, root is found exactly",
+        "Step 6: Since f(2) = 0, root is found exactly"
       ],
-      ans: "Root = x = 2",
-      why: "Bisection method isolates roots by repeatedly halving intervals with sign change",
+      "ans": "Root = x = 2",
+      "why": "Bisection method isolates roots by repeatedly halving intervals with sign change"
     },
     {
-      q: "Apply one iteration of bisection method for f(x) = x² − 2 on interval [1, 2]",
-      hint: "midpoint test",
-      steps: [
+      "q": "Apply one iteration of bisection method for f(x) = x² − 2 on interval [1, 2]",
+      "hint": "midpoint test",
+      "steps": [
         "Step 1: Define function f(x) = x² − 2",
         "Step 2: Evaluate endpoints: f(1) = −1, f(2) = 2",
         "Step 3: Confirm sign change so root lies in [1, 2]",
         "Step 4: Compute midpoint x₁ = (1 + 2)/2 = 1.5",
         "Step 5: Evaluate f(1.5) = 2.25 − 2 = 0.25",
-        "Step 6: Since f(1.5) > 0, new interval becomes [1, 1.5]",
+        "Step 6: Since f(1.5) > 0, new interval becomes [1, 1.5]"
       ],
-      ans: "New interval is [1, 1.5]",
-      why: "Bisection narrows interval containing the root each iteration",
+      "ans": "New interval is [1, 1.5]",
+      "why": "Bisection narrows interval containing the root each iteration"
     },
     {
-      q: "Why does the bisection method guarantee convergence?",
-      hint: "interval shrinking",
-      steps: [
+      "q": "Why does the bisection method guarantee convergence?",
+      "hint": "interval shrinking",
+      "steps": [
         "Step 1: Start with interval where function changes sign",
         "Step 2: A root must exist inside by continuity",
         "Step 3: Each iteration halves the interval size",
         "Step 4: Interval keeps shrinking toward the root",
-        "Step 5: Eventually it converges to the root value",
+        "Step 5: Eventually it converges to the root value"
       ],
-      ans: "Because the interval continuously shrinks around the root",
-      why: "Bisection uses sign change and interval halving to ensure convergence",
-    },
-  ],
+      "ans": "Because the interval continuously shrinks around the root",
+      "why": "Bisection uses sign change and interval halving to ensure convergence"
+    }
+  ]
 );
-/*=======================================
-Error Estimation
-=======================================*/
+
 add(
   "math",
   "numerical_methods",
   "Error Estimation",
+
   `
 <h2> Error Estimation</h2>
 <h3> DEEP NOTES</h3>
@@ -18136,58 +17680,56 @@ Exact Value
            error gap
 </pre>
 `,
+
   [
     {
-      q: "Find the absolute and relative error if the exact value is 3.142 and the approximation is 3.14",
-      hint: "use difference and ratio",
-      steps: [
+      "q": "Find the absolute and relative error if the exact value is 3.142 and the approximation is 3.14",
+      "hint": "use difference and ratio",
+      "steps": [
         "Step 1: Identify exact value = 3.142 and approximate value = 3.14",
         "Step 2: Compute absolute error = |3.142 − 3.14|",
         "Step 3: Calculate difference = |0.002| = 0.002",
         "Step 4: Compute relative error = absolute error / exact value",
         "Step 5: Substitute values: 0.002 / 3.142",
-        "Step 6: Approximate result ≈ 0.000637",
+        "Step 6: Approximate result ≈ 0.000637"
       ],
-      ans: "Absolute error = 0.002, Relative error ≈ 0.000637",
-      why: "Error measures deviation between exact and approximate values",
+      "ans": "Absolute error = 0.002, Relative error ≈ 0.000637",
+      "why": "Error measures deviation between exact and approximate values"
     },
-
     {
-      q: "If an approximation is 9.8 and exact value is 10, find percentage error",
-      hint: "convert relative error to percentage",
-      steps: [
+      "q": "If an approximation is 9.8 and exact value is 10, find percentage error",
+      "hint": "convert relative error to percentage",
+      "steps": [
         "Step 1: Identify exact value = 10 and approximation = 9.8",
         "Step 2: Compute absolute error = |10 − 9.8| = 0.2",
         "Step 3: Compute relative error = 0.2 / 10",
         "Step 4: Calculate relative error = 0.02",
-        "Step 5: Convert to percentage = 0.02 × 100",
+        "Step 5: Convert to percentage = 0.02 × 100"
       ],
-      ans: "Percentage error = 2%",
-      why: "Percentage error expresses relative error in percentage form",
+      "ans": "Percentage error = 2%",
+      "why": "Percentage error expresses relative error in percentage form"
     },
-
     {
-      q: "Why does a small absolute error not always mean high accuracy?",
-      hint: "consider scale of numbers",
-      steps: [
+      "q": "Why does a small absolute error not always mean high accuracy?",
+      "hint": "consider scale of numbers",
+      "steps": [
         "Step 1: Observe absolute error measures only raw difference",
         "Step 2: Consider two cases: large values vs small values",
         "Step 3: Same error may be small or large relative to value",
         "Step 4: Relative error compares error to actual magnitude",
-        "Step 5: Conclude accuracy depends on relative size",
+        "Step 5: Conclude accuracy depends on relative size"
       ],
-      ans: "Because accuracy depends on relative error, not just absolute error",
-      why: "Relative error gives scale-independent measure of accuracy",
-    },
-  ],
+      "ans": "Because accuracy depends on relative error, not just absolute error",
+      "why": "Relative error gives scale-independent measure of accuracy"
+    }
+  ]
 );
-/*=======================================
-Applications of Numerical methods
-=======================================*/
+
 add(
   "math",
   "numerical_methods",
   "Applications of Numerical Methods",
+
   `
 <h2> Applications of Numerical Methods</h2>
 <h3> DEEP NOTES</h3>
@@ -18248,48 +17790,48 @@ Initial Guess → Correction → Better Estimate
       8.4         -0.15         8.25
 </pre>
 `,
+
   [
     {
-      q: "Use Newton’s method to approximate a root of f(x) = x² − 2 starting from x₀ = 1",
-      hint: "use iteration formula xₙ₊₁ = xₙ − f(xₙ)/f'(xₙ)",
-      steps: [
+      "q": "Use Newton’s method to approximate a root of f(x) = x² − 2 starting from x₀ = 1",
+      "hint": "use iteration formula xₙ₊₁ = xₙ − f(xₙ)/f'(xₙ)",
+      "steps": [
         "Step 1: Identify function f(x) = x² − 2",
         "Step 2: Differentiate to get f'(x) = 2x",
         "Step 3: Apply Newton’s formula: xₙ₊₁ = xₙ − (xₙ² − 2)/(2xₙ)",
         "Step 4: Substitute x₀ = 1: x₁ = 1 − (1 − 2)/2",
         "Step 5: Simplify: x₁ = 1 − (-1/2) = 1 + 0.5",
-        "Step 6: Compute x₁ = 1.5",
+        "Step 6: Compute x₁ = 1.5"
       ],
-      ans: "First approximation x₁ = 1.5",
-      why: "Newton’s method improves accuracy through iterative refinement",
+      "ans": "First approximation x₁ = 1.5",
+      "why": "Newton’s method improves accuracy through iterative refinement"
     },
-
     {
-      q: "Show one iteration of fixed-point method for x = cos(x) starting at x₀ = 0.5",
-      hint: "substitute into function repeatedly",
-      steps: [
+      "q": "Show one iteration of fixed-point method for x = cos(x) starting at x₀ = 0.5",
+      "hint": "substitute into function repeatedly",
+      "steps": [
         "Step 1: Define iteration rule x = cos(x)",
         "Step 2: Start with x₀ = 0.5",
         "Step 3: Compute x₁ = cos(0.5)",
         "Step 4: Use approximation cos(0.5) ≈ 0.8776",
-        "Step 5: Interpret result as improved estimate",
+        "Step 5: Interpret result as improved estimate"
       ],
-      ans: "x₁ ≈ 0.8776",
-      why: "Fixed-point iteration improves approximation step by step",
+      "ans": "x₁ ≈ 0.8776",
+      "why": "Fixed-point iteration improves approximation step by step"
     },
-
     {
-      q: "Why do numerical methods rely on iteration?",
-      hint: "repeated refinement",
-      steps: [
+      "q": "Why do numerical methods rely on iteration?",
+      "hint": "repeated refinement",
+      "steps": [
         "Step 1: Exact solutions are often impossible for complex equations",
         "Step 2: Start with an initial guess",
         "Step 3: Improve the guess using a rule repeatedly",
         "Step 4: Each step reduces error",
-        "Step 5: Process continues until acceptable accuracy is reached",
+        "Step 5: Process continues until acceptable accuracy is reached"
       ],
-      ans: "Because iteration gradually reduces error toward the correct value",
-      why: "Iteration allows controlled convergence toward solutions",
-    },
-  ],
+      "ans": "Because iteration gradually reduces error toward the correct value",
+      "why": "Iteration allows controlled convergence toward solutions"
+    }
+  ]
 );
+

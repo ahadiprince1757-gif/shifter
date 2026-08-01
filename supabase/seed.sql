@@ -26779,44 +26779,49 @@ INSERT INTO content (sid, cid, topic, notes, qs) VALUES (
 </pre>
 <h3> Structure of a Spreadsheet</h3>
 
-<div style="background:#131326; border:1px solid #2a2a48; border-radius:12px; padding:16px; margin:20px 0; box-shadow: 0 4px 20px rgba(0,0,0,0.4);">
-  <div style="display:flex; align-items:center; background:#1c1c36; padding:8px 12px; border-radius:8px; margin-bottom:12px; border:1px solid #323254; font-family:monospace; font-size:0.9em; color:#00e5ff;">
+<div style="background: linear-gradient(145deg, #131326, #1c1c36); border: 1px solid #323254; border-radius: 14px; padding: 16px; margin: 20px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.45); text-align: center;">
+  <div style="display: flex; align-items: center; justify-content: space-between; background: #0d0e1a; padding: 8px 14px; border-radius: 8px; margin-bottom: 14px; border: 1px solid #282a4a;">
+    <span style="color: #00e5ff; font-weight: 700; font-size: 0.85em; letter-spacing: 0.5px;">📱 SPREADSHEET SCREENSHOT (PHONE VIEW)</span>
+    <span style="background: rgba(0,229,255,0.15); color: #00e5ff; border: 1px solid rgba(0,229,255,0.3); font-size: 0.72em; padding: 2px 8px; border-radius: 12px; font-weight: 600;">Mobile HD Screenshot</span>
+  </div>
+  <img src="/images/spreadsheet_screenshot.png" alt="Spreadsheet Interface Screenshot for Mobile Screen" style="width: 100%; max-width: 540px; height: auto; border-radius: 10px; border: 1px solid #323560; box-shadow: 0 4px 20px rgba(0,0,0,0.6); display: block; margin: 0 auto 14px auto; object-fit: contain;" />
+  <div style="display:flex; align-items:center; background:#1c1c36; padding:8px 12px; border-radius:8px; margin-bottom:12px; border:1px solid #323254; font-family:monospace; font-size:0.85em; color:#00e5ff;">
     <span style="color:#ff007f; font-weight:bold; margin-right:12px; font-size:1em;">fx</span>
     <span style="color:#e0e0e0;">=SUM(B2:B3)</span>
   </div>
-  <div style="overflow-x:auto;">
-    <table style="width:100%; border-collapse:collapse; text-align:center; font-family:''Segoe UI'', Roboto, sans-serif; font-size:0.9em; color:#e0e0e0;">
+  <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
+    <table style="width:100%; min-width:280px; border-collapse:collapse; text-align:center; font-family:''Segoe UI'', Roboto, sans-serif; font-size:0.85em; color:#e0e0e0;">
       <thead>
         <tr style="background:#22223e; color:#00e5ff;">
-          <th style="border:1px solid #323254; padding:10px; width:45px; background:#16162d; color:#888;">#</th>
-          <th style="border:1px solid #323254; padding:10px; min-width:90px;">A</th>
-          <th style="border:1px solid #323254; padding:10px; min-width:90px;">B</th>
-          <th style="border:1px solid #323254; padding:10px; min-width:90px;">C</th>
+          <th style="border:1px solid #323254; padding:8px; width:35px; background:#16162d; color:#888;">#</th>
+          <th style="border:1px solid #323254; padding:8px;">A</th>
+          <th style="border:1px solid #323254; padding:8px;">B</th>
+          <th style="border:1px solid #323254; padding:8px;">C</th>
         </tr>
       </thead>
       <tbody>
         <tr>
-          <td style="border:1px solid #323254; padding:10px; background:#16162d; color:#888; font-weight:bold;">1</td>
-          <td style="border:1px solid #323254; padding:10px; font-weight:bold; color:#ffffff; background:#1a1a33;">Name</td>
-          <td style="border:1px solid #323254; padding:10px; font-weight:bold; color:#ffffff; background:#1a1a33;">Marks</td>
-          <td style="border:1px solid #323254; padding:10px; font-weight:bold; color:#ffffff; background:#1a1a33;">Grade</td>
+          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">1</td>
+          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#ffffff; background:#1a1a33;">Name</td>
+          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#ffffff; background:#1a1a33;">Marks</td>
+          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#ffffff; background:#1a1a33;">Grade</td>
         </tr>
         <tr>
-          <td style="border:1px solid #323254; padding:10px; background:#16162d; color:#888; font-weight:bold;">2</td>
-          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">John</td>
-          <td style="border:1px solid #323254; padding:10px; color:#00ffcc; font-weight:bold; background:rgba(0,255,204,0.1); border:2px solid #00ffcc;">85</td>
-          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">A</td>
+          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">2</td>
+          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">John</td>
+          <td style="border:1px solid #323254; padding:8px; color:#00ffcc; font-weight:bold; background:rgba(0,255,204,0.1); border:2px solid #00ffcc;">85</td>
+          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">A</td>
         </tr>
         <tr>
-          <td style="border:1px solid #323254; padding:10px; background:#16162d; color:#888; font-weight:bold;">3</td>
-          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">Mary</td>
-          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">72</td>
-          <td style="border:1px solid #323254; padding:10px; color:#e0e0e0;">B</td>
+          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">3</td>
+          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">Mary</td>
+          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">72</td>
+          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">B</td>
         </tr>
       </tbody>
     </table>
   </div>
-  <p style="font-size:0.85em; color:#a0a0b0; text-align:center; margin-top:10px; margin-bottom:0;"><b>Figure:</b> Spreadsheet Worksheet UI Grid (Columns A-C, Rows 1-3, Active Cell B2)</p>
+  <p style="font-size:0.85em; color:#a0a0b0; text-align:center; margin-top:10px; margin-bottom:0;"><b>Figure:</b> Spreadsheet Screenshot & Mobile Grid Preview (Columns A-C, Rows 1-3, Active Cell B2)</p>
 </div>
 
 <ul>
@@ -55643,7 +55648,7 @@ Step 2: 10<br>
 <li>Shipping and logistics calculations</li>
 </ul>
 ',
-  '[{"Q":"Find volume of a cube with side 4","Answer":"64 cm³","Hint":"side³","Explanation":"4 × 4 × 4 = 64, so the volume is 64 cubic units"},{"Q":"What is the formula for cuboid volume?","Answer":"length × width × height","Hint":"3 dimensions","Explanation":"A cuboid’s volume is found by multiplying its three dimensions"},{"Q":"What does volume measure?","Answer":"Space inside a 3D shape","Hint":"inside capacity","Explanation":"Volume tells us how much space an object can hold"}]'
+  '[{"q":"Find volume of a cube with side 4","hint":"side³","ans":"64 cm³","why":"4 × 4 × 4 = 64, so the volume is 64 cubic units"},{"q":"What is the formula for cuboid volume?","hint":"3 dimensions","ans":"length × width × height","why":"A cuboid’s volume is found by multiplying its three dimensions"},{"q":"What does volume measure?","hint":"inside capacity","ans":"Space inside a 3D shape","why":"Volume tells us how much space an object can hold"}]'
 );
 
 -- Topic: math -> measurement -> Surface area basics
@@ -55706,7 +55711,7 @@ Step 2: 6 × 1 = 6<br>
 <li>Construction material estimation</li>
 </ul>
 ',
-  '[{"Q":"Find surface area of a cube with side 5","Answer":"150 cm²","Hint":"6 × side²","Explanation":"6 × 5² = 6 × 25 = 150, so total surface area is 150 cm²"},{"Q":"What does surface area measure?","Answer":"Outer covering of a 3D shape","Hint":"outside faces","Explanation":"Surface area is the total area of all outer faces of a solid"},{"Q":"What is the formula for cube surface area?","Answer":"6 × side²","Hint":"6 faces","Explanation":"A cube has 6 equal square faces, so we multiply one face area by 6"}]'
+  '[{"q":"Find surface area of a cube with side 5","hint":"6 × side²","ans":"150 cm²","why":"6 × 5² = 6 × 25 = 150, so total surface area is 150 cm²"},{"q":"What does surface area measure?","hint":"outside faces","ans":"Outer covering of a 3D shape","why":"Surface area is the total area of all outer faces of a solid"},{"q":"What is the formula for cube surface area?","hint":"6 faces","ans":"6 × side²","why":"A cube has 6 equal square faces, so we multiply one face area by 6"}]'
 );
 
 -- Topic: math -> measurement -> Real life applications
@@ -55772,7 +55777,7 @@ Step 3: Estimate paint needed<br>
 <li>Interior decoration and painting</li>
 </ul>
 ',
-  '[{"Q":"Why is volume important in real life?","Answer":"It measures storage capacity","Hint":"think containers","Explanation":"Volume tells us how much space an object can hold, such as water in a tank"},{"Q":"When do we use area in real life?","Answer":"To measure flat surfaces","Hint":"2D spaces","Explanation":"Area is used for surfaces like land, floors, and walls"},{"Q":"What is the difference between area and volume?","Answer":"Area is 2D, volume is 3D","Hint":"dimensions","Explanation":"Area measures flat surfaces, while volume measures space inside objects"}]'
+  '[{"q":"Why is volume important in real life?","hint":"think containers","ans":"It measures storage capacity","why":"Volume tells us how much space an object can hold, such as water in a tank"},{"q":"When do we use area in real life?","hint":"2D spaces","ans":"To measure flat surfaces","why":"Area is used for surfaces like land, floors, and walls"},{"q":"What is the difference between area and volume?","hint":"dimensions","ans":"Area is 2D, volume is 3D","why":"Area measures flat surfaces, while volume measures space inside objects"}]'
 );
 
 -- Topic: math -> graphs -> Coordinate plane basics
@@ -55940,7 +55945,7 @@ Step 2: Move 4 units up<br>
 <li>Engineering design layouts</li>
 </ul>
 ',
-  '[{"q":"Locate the point (3, -2) on a coordinate plane and describe its movement from origin","hint":"x then y movement","steps":["Step 1: Start at origin (0,0)","Step 2: Move +3 units along x-axis","Step 3: Move −2 units along y-axis","Step 4: Mark final position on plane"],"diagram":"\n          y\n          ↑\n     3    |\n     2    |\n     1    |\n  -------O----------------→ x\n     -1   |\n     -2   |        ● (3,-2)\n     -3   |\n","ans":"(3, -2)","why":"Coordinates represent horizontal (x) and vertical (y) displacement from origin"},{"q":"Find coordinates after moving 5 units right and 4 units up from origin","hint":"directional movement","steps":["Step 1: Start at (0,0)","Step 2: Move +5 along x-axis","Step 3: Move +4 along y-axis","Step 4: Plot final point"],"diagram":"\n          y\n          ↑\n     4    |          ● (5,4)\n     3    |\n     2    |\n     1    |\n  -------O----------------→ x\n     0    |  1  2  3  4  5\n","ans":"(5, 4)","why":"Positive x and y values place the point in the first quadrant"},{"q":"Determine location of point (0, -6) on coordinate plane","hint":"axis identification","steps":["Step 1: Check x = 0","Step 2: Move only along y-axis","Step 3: Locate negative direction","Step 4: Identify axis position"],"diagram":"\n          y\n          ↑\n     2    |\n     1    |\n  -------O----------------→ x\n    -1    |\n    -2    |\n    -3    |\n    -4    |\n    -5    |\n    -6    ●\n","ans":"On the negative Y-axis","why":"x = 0 means the point lies directly on the y-axis"},{"q":"Determine location of point (4, 0) on coordinate plane","hint":"axis rule","steps":["Step 1: Check y = 0","Step 2: Move only along x-axis","Step 3: Locate positive direction","Step 4: Identify axis position"],"diagram":"\n          y\n          ↑\n     2    |\n     1    |\n  -------O----●--------------→ x\n     0    |    4\n    -1    |\n","ans":"On the positive X-axis","why":"y = 0 means the point lies on the x-axis"},{"q":"Identify the reference starting point for all coordinate plotting","hint":"origin concept","steps":["Step 1: Locate intersection of axes","Step 2: Identify x = 0 and y = 0","Step 3: Mark central reference point"],"diagram":"\n          y\n          ↑\n          |\n          |\n  --------O----------------→ x\n          |\n          |\n","ans":"(0,0)","why":"All coordinates are measured from the origin"}]'
+  '[{"q":"Locate the point (3, -2) on a coordinate plane and describe its movement from origin","hint":"x then y movement","steps":["Step 1: Start at origin (0,0)","Step 2: Move +3 units along x-axis","Step 3: Move −2 units along y-axis","Step 4: Mark final position on plane"],"ans":"(3, -2)","why":"Coordinates represent horizontal (x) and vertical (y) displacement from origin"},{"q":"Find coordinates after moving 5 units right and 4 units up from origin","hint":"directional movement","steps":["Step 1: Start at (0,0)","Step 2: Move +5 along x-axis","Step 3: Move +4 along y-axis","Step 4: Plot final point"],"ans":"(5, 4)","why":"Positive x and y values place the point in the first quadrant"},{"q":"Determine location of point (0, -6) on coordinate plane","hint":"axis identification","steps":["Step 1: Check x = 0","Step 2: Move only along y-axis","Step 3: Locate negative direction","Step 4: Identify axis position"],"ans":"On the negative Y-axis","why":"x = 0 means the point lies directly on the y-axis"},{"q":"Determine location of point (4, 0) on coordinate plane","hint":"axis rule","steps":["Step 1: Check y = 0","Step 2: Move only along x-axis","Step 3: Locate positive direction","Step 4: Identify axis position"],"ans":"On the positive X-axis","why":"y = 0 means the point lies on the x-axis"},{"q":"Identify the reference starting point for all coordinate plotting","hint":"origin concept","steps":["Step 1: Locate intersection of axes","Step 2: Identify x = 0 and y = 0","Step 3: Mark central reference point"],"ans":"(0,0)","why":"All coordinates are measured from the origin"}]'
 );
 
 -- Topic: math -> graphs -> Line graphs
@@ -56214,7 +56219,7 @@ Step 3: Analyze increase rate<br>
 <li>Scientific experiment analysis</li>
 </ul>
 ',
-  '[{"Q":"Why are graphs important?","Answer":"data visualization","Hint":"show data visually","Explanation":"Graphs convert numerical data into visual form, making patterns and trends easier to understand"},{"Q":"What do graphs help us identify?","Answer":"patterns and trends","Hint":"look at shape of graph","Explanation":"Graphs show how data changes over time or categories, revealing hidden patterns"},{"Q":"Give one real-life use of graphs","Answer":"weather forecasting or business analysis","Hint":"daily applications","Explanation":"Graphs are widely used to analyze weather, sales, population, and scientific data"}]'
+  '[{"q":"Why are graphs important?","hint":"show data visually","ans":"data visualization","why":"Graphs convert numerical data into visual form, making patterns and trends easier to understand"},{"q":"What do graphs help us identify?","hint":"look at shape of graph","ans":"patterns and trends","why":"Graphs show how data changes over time or categories, revealing hidden patterns"},{"q":"Give one real-life use of graphs","hint":"daily applications","ans":"weather forecasting or business analysis","why":"Graphs are widely used to analyze weather, sales, population, and scientific data"}]'
 );
 
 -- Topic: math -> ratio -> Ratio basics
@@ -57305,7 +57310,7 @@ Impossible        Uncertain          Certain
 
 ---
 ',
-  '[{"Q1":"What does probability measure?","Answer":"likelihood of an event happening","Hint":"chance","Explanation":"Probability tells how likely something is to occur, from 0 (impossible) to 1 (certain)"},{"Q2":"What does 0.7 probability mean?","Answer":"70% chance of occurrence","Hint":"convert to percentage","Explanation":"0.7 means 70 out of 100 chances the event will happen"},{"Q3":"Where is probability used in real life?","Answer":"weather, insurance, sports, business","Hint":"prediction systems","Explanation":"It helps model uncertainty in real-world decisions"},{"Q4":"What does probability close to 1 mean?","Answer":"very likely event","Hint":"almost certain","Explanation":"Values near 1 indicate high chance of happening"},{"Q5":"What does probability close to 0 mean?","Answer":"very unlikely event","Hint":"rare event","Explanation":"Values near 0 indicate low chance of happening"}]'
+  '[{"q":"What does probability measure?","hint":"chance","ans":"likelihood of an event happening","why":"Probability tells how likely something is to occur, from 0 (impossible) to 1 (certain)"},{"q":"What does 0.7 probability mean?","hint":"convert to percentage","ans":"70% chance of occurrence","why":"0.7 means 70 out of 100 chances the event will happen"},{"q":"Where is probability used in real life?","hint":"prediction systems","ans":"weather, insurance, sports, business","why":"It helps model uncertainty in real-world decisions"},{"q":"What does probability close to 1 mean?","hint":"almost certain","ans":"very likely event","why":"Values near 1 indicate high chance of happening"},{"q":"What does probability close to 0 mean?","hint":"rare event","ans":"very unlikely event","why":"Values near 0 indicate low chance of happening"}]'
 );
 
 -- Topic: math -> matrices -> Matrix Addition & Subtraction
@@ -58595,7 +58600,7 @@ Smooth curve → tangent at a point = limit concept
 </ul>
 
 ',
-  '[{"Q1":"Why are limits important?","Answer":"foundation of calculus","Hint":"used in derivatives and integrals","Explanation":"Limits define both differentiation and integration, forming the core of calculus."},{"Q2":"Give one real-world use of limits","Answer":"instantaneous speed","Hint":"motion","Explanation":"Limits are used to calculate velocity at a specific moment in time."},{"Q3":"What does lim x→a f(x) mean?","Answer":"value f(x) approaches as x nears a","Hint":"approaching value","Explanation":"It represents the value a function gets close to near a specific input."}]'
+  '[{"q":"Why are limits important?","hint":"used in derivatives and integrals","ans":"foundation of calculus","why":"Limits define both differentiation and integration, forming the core of calculus."},{"q":"Give one real-world use of limits","hint":"motion","ans":"instantaneous speed","why":"Limits are used to calculate velocity at a specific moment in time."},{"q":"What does lim x→a f(x) mean?","hint":"approaching value","ans":"value f(x) approaches as x nears a","why":"It represents the value a function gets close to near a specific input."}]'
 );
 
 -- Topic: math -> differentiation -> Gradient of a Curve
@@ -58948,7 +58953,7 @@ Peak point → slope = 0
 
 ---
 ',
-  '[{"Q1":"Why is differentiation important?","Answer":"measures change","Hint":"rate of change","Explanation":"It quantifies how one variable changes with respect to another"},{"Q2":"Give real-life use","Answer":"speed or profit optimization","Hint":"motion or business","Explanation":"Used in physics for velocity and in economics for maximizing profit"},{"Q3":"What does f''(x) represent?","Answer":"rate of change or slope","Hint":"derivative meaning","Explanation":"It represents instantaneous rate of change of a function"}]'
+  '[{"q":"Why is differentiation important?","hint":"rate of change","ans":"measures change","why":"It quantifies how one variable changes with respect to another"},{"q":"Give real-life use","hint":"motion or business","ans":"speed or profit optimization","why":"Used in physics for velocity and in economics for maximizing profit"},{"q":"What does f''(x) represent?","hint":"derivative meaning","ans":"rate of change or slope","why":"It represents instantaneous rate of change of a function"}]'
 );
 
 -- Topic: math -> integration -> Area Under a Curve
@@ -61357,7 +61362,7 @@ User A →  Encryption → Internet →  Decryption → User B
 
 ---
 ',
-  '[{"Question":"What is encryption?","Hint":"hiding data","Answer":"converting data into unreadable form","Reason":"protects sensitive information"},{"Question":"What is the purpose of a cryptographic key?","Hint":"lock and unlock","Answer":"to encrypt and decrypt data securely","Reason":"ensures only authorized access"},{"Question":"Why is cryptography important in modern systems?","Hint":"security","Answer":"it protects communication and data from unauthorized access","Reason":"ensures confidentiality and data safety"}]'
+  '[{"q":"What is encryption?","hint":"hiding data","ans":"converting data into unreadable form","why":"protects sensitive information"},{"q":"What is the purpose of a cryptographic key?","hint":"lock and unlock","ans":"to encrypt and decrypt data securely","why":"ensures only authorized access"},{"q":"Why is cryptography important in modern systems?","hint":"security","ans":"it protects communication and data from unauthorized access","why":"ensures confidentiality and data safety"}]'
 );
 
 -- Topic: math -> cryptography -> Modular Arithmetic in Encryption
@@ -61439,7 +61444,7 @@ Cycle mod 5:
 
 ---
 ',
-  '[{"Question":"What does mod mean?","Hint":"remainder","Answer":"remainder after division","Reason":"used to keep values within a fixed range"},{"Question":"Why is modular arithmetic important in cryptography?","Hint":"cyclic system","Answer":"it keeps values within a fixed range and enables secure encryption systems","Reason":"prevents overflow and supports encryption cycles"},{"Question":"Give one operation used in modular arithmetic.","Hint":"addition or multiplication","Answer":"(a + b) mod n or (a × b) mod n","Reason":"basic operations used in cryptographic algorithms"}]'
+  '[{"q":"What does mod mean?","hint":"remainder","ans":"remainder after division","why":"used to keep values within a fixed range"},{"q":"Why is modular arithmetic important in cryptography?","hint":"cyclic system","ans":"it keeps values within a fixed range and enables secure encryption systems","why":"prevents overflow and supports encryption cycles"},{"q":"Give one operation used in modular arithmetic.","hint":"addition or multiplication","ans":"(a + b) mod n or (a × b) mod n","why":"basic operations used in cryptographic algorithms"}]'
 );
 
 -- Topic: math -> cryptography -> RSA Encryption System
@@ -61518,7 +61523,7 @@ Plaintext recovered
 
 ---
 ',
-  '[{"Question":"What is RSA based on?","Hint":"prime numbers","Answer":"large prime factorization","Reason":"security depends on difficulty of factoring large numbers"},{"Question":"What are the two keys in RSA?","Hint":"public and private","Answer":"public key and private key","Reason":"one encrypts and the other decrypts"},{"Question":"Why is modular arithmetic used in RSA?","Hint":"large numbers","Answer":"to keep results within a fixed range","Reason":"prevents values from becoming too large during computation"}]'
+  '[{"q":"What is RSA based on?","hint":"prime numbers","ans":"large prime factorization","why":"security depends on difficulty of factoring large numbers"},{"q":"What are the two keys in RSA?","hint":"public and private","ans":"public key and private key","why":"one encrypts and the other decrypts"},{"q":"Why is modular arithmetic used in RSA?","hint":"large numbers","ans":"to keep results within a fixed range","why":"prevents values from becoming too large during computation"}]'
 );
 
 -- Topic: math -> cryptography -> Hashing Functions
