@@ -2,7 +2,7 @@ import Dexie from "dexie";
 
 export const db = new Dexie("ShifterLocalDB_v2");
 
-db.version(3).stores({
+db.version(4).stores({
   curriculum: "id, is_deleted",
   topics: "id, curriculum_id, chapter_id, is_deleted",
   user_progress: "id, topic_id, sync_status, updated_at",
@@ -13,6 +13,9 @@ db.version(3).stores({
   user_mistakes: "++id, topic_id, subject_id, chapter_id, question_index, resolved, updated_at",
   spaced_reviews: "topic_id, next_review_at, interval_days, ease_factor, repetitions, updated_at",
   user_notes: "topic_id, updated_at",
+}).upgrade(async (tx) => {
+  // Clear stale cached topic content so latest server content is fetched
+  await tx.table("topics").clear();
 });
 
 // Optional: Add some basic helper hooks or defaults here if needed
