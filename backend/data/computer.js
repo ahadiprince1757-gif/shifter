@@ -8090,48 +8090,8 @@ add(
 <h3> Structure of a Spreadsheet</h3>
 
 <div style="background: linear-gradient(145deg, #131326, #1c1c36); border: 1px solid #323254; border-radius: 14px; padding: 16px; margin: 20px 0; box-shadow: 0 8px 25px rgba(0,0,0,0.45); text-align: center;">
-  <div style="display: flex; align-items: center; justify-content: space-between; background: #0d0e1a; padding: 8px 14px; border-radius: 8px; margin-bottom: 14px; border: 1px solid #282a4a;">
-    <span style="color: #00e5ff; font-weight: 700; font-size: 0.85em; letter-spacing: 0.5px;">📱 SPREADSHEET SCREENSHOT (PHONE VIEW)</span>
-    <span style="background: rgba(0,229,255,0.15); color: #00e5ff; border: 1px solid rgba(0,229,255,0.3); font-size: 0.72em; padding: 2px 8px; border-radius: 12px; font-weight: 600;">Mobile HD Screenshot</span>
-  </div>
-  <img src="/images/spreadsheet_screenshot.png" alt="Spreadsheet Interface Screenshot for Mobile Screen" style="width: 100%; max-width: 540px; height: auto; border-radius: 10px; border: 1px solid #323560; box-shadow: 0 4px 20px rgba(0,0,0,0.6); display: block; margin: 0 auto 14px auto; object-fit: contain;" />
-  <div style="display:flex; align-items:center; background:#1c1c36; padding:8px 12px; border-radius:8px; margin-bottom:12px; border:1px solid #323254; font-family:monospace; font-size:0.85em; color:#00e5ff;">
-    <span style="color:#ff007f; font-weight:bold; margin-right:12px; font-size:1em;">fx</span>
-    <span style="color:#e0e0e0;">=SUM(B2:B3)</span>
-  </div>
-  <div style="overflow-x:auto; -webkit-overflow-scrolling:touch;">
-    <table style="width:100%; min-width:280px; border-collapse:collapse; text-align:center; font-family:'Segoe UI', Roboto, sans-serif; font-size:0.85em; color:#e0e0e0;">
-      <thead>
-        <tr style="background:#22223e; color:#00e5ff;">
-          <th style="border:1px solid #323254; padding:8px; width:35px; background:#16162d; color:#888;">#</th>
-          <th style="border:1px solid #323254; padding:8px;">A</th>
-          <th style="border:1px solid #323254; padding:8px;">B</th>
-          <th style="border:1px solid #323254; padding:8px;">C</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">1</td>
-          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#ffffff; background:#1a1a33;">Name</td>
-          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#ffffff; background:#1a1a33;">Marks</td>
-          <td style="border:1px solid #323254; padding:8px; font-weight:bold; color:#ffffff; background:#1a1a33;">Grade</td>
-        </tr>
-        <tr>
-          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">2</td>
-          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">John</td>
-          <td style="border:1px solid #323254; padding:8px; color:#00ffcc; font-weight:bold; background:rgba(0,255,204,0.1); border:2px solid #00ffcc;">85</td>
-          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">A</td>
-        </tr>
-        <tr>
-          <td style="border:1px solid #323254; padding:8px; background:#16162d; color:#888; font-weight:bold;">3</td>
-          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">Mary</td>
-          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">72</td>
-          <td style="border:1px solid #323254; padding:8px; color:#e0e0e0;">B</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <p style="font-size:0.85em; color:#a0a0b0; text-align:center; margin-top:10px; margin-bottom:0;"><b>Figure:</b> Spreadsheet Screenshot & Mobile Grid Preview (Columns A-C, Rows 1-3, Active Cell B2)</p>
+  <img src="/images/spreadsheet_screenshot.png" alt="Real World Spreadsheet Interface Screenshot" style="width: 100%; max-width: 680px; height: auto; border-radius: 10px; border: 1px solid #323560; box-shadow: 0 4px 20px rgba(0,0,0,0.6); display: block; margin: 0 auto 10px auto; object-fit: contain;" />
+  <p style="font-size:0.85em; color:#a0a0b0; text-align:center; margin-top:10px; margin-bottom:0;"><b>Figure:</b> Real World Spreadsheet Interface Screenshot (showing Formula Bar, Rows, Columns, and Data Cells)</p>
 </div>
 
 <ul>
