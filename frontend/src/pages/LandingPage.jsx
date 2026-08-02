@@ -15,7 +15,7 @@ export default function LandingPage() {
     <>
       <Landing
         curriculum={curriculum}
-        enterApp={() => (session ? navigate("/subjects") : setShowAuthModal(true))}
+        enterApp={() => navigate("/subjects")}
         isDark={isDark}
         toggleDark={toggleDark}
         session={session}

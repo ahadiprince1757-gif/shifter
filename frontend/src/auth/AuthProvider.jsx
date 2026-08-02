@@ -35,7 +35,13 @@ export function AuthProvider({ children }) {
   // If we already have a cached session, mark loading as done straight away
   const [sessionLoading, setSessionLoading] = useState(() => readCachedSession() === null);
   const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authReason, setAuthReason] = useState(null);
   const navigate = useNavigate();
+
+  const openAuthWithReason = (reason) => {
+    setAuthReason(reason);
+    setShowAuthModal(true);
+  };
 
   useEffect(() => {
     // Try to get the live session from Supabase (may fail if offline — that's OK,
@@ -78,12 +84,18 @@ export function AuthProvider({ children }) {
           }, 500);
 
           if (!isInitialCall || isAuthCallback) {
+            // Show welcome toast regardless of where the user is
+            toast.success(
+              `Welcome! Logged in as ${newSession.user.user_metadata?.full_name || newSession.user.email}`
+            );
+
             if (isOnLanding || isAuthCallback) {
-              toast.success(
-                `Welcome! Logged in as ${newSession.user.user_metadata?.full_name || newSession.user.email}`
-              );
+              // Coming from landing page or OAuth redirect → send to app
               setTimeout(() => navigate("/subjects"), 100);
             }
+            // If already inside the app (e.g., notes/quiz phase), close the modal in-place
+            // Navigation is NOT triggered — user stays on their current page
+            setShowAuthModal(false);
           }
         }
 
@@ -126,6 +138,9 @@ export function AuthProvider({ children }) {
         sessionLoading,
         showAuthModal,
         setShowAuthModal,
+        authReason,
+        setAuthReason,
+        openAuthWithReason,
         logout,
       }}
     >

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useTopicContent } from "../hooks/useTopicContent";
 import { useQuiz } from "../hooks/useQuiz";
 import SkeletonLoader from "./SkeletonLoader";
+import { useAuth } from "../hooks/useAuth";
+import { isTeaserLimitReached, incrementGuestQuizCount } from "../utils/guestSession";
 
 import LearnHeader from "./learn/LearnHeader";
 import PhaseStrip from "./learn/PhaseStrip";
@@ -19,6 +21,17 @@ function LearnFlow({
   mastered,
 }) {
   const [phase, setPhase] = useState(0); // 0: Notes, 1: Quiz, 2: Mastered
+  const { session, openAuthWithReason } = useAuth();
+
+  const handleGoToQuiz = () => {
+    if (!session && isTeaserLimitReached()) {
+      openAuthWithReason(
+        "You have completed your 3 free guest quizzes. Create a free account to unlock unlimited quizzes, track your mastery, and sync your scores across devices."
+      );
+      return;
+    }
+    setPhase(1);
+  };
 
   // Persist last-visited topic so the Subjects page can offer a "Continue" banner
   useEffect(() => {
@@ -131,6 +144,11 @@ function LearnFlow({
 const finishTopic = () => {
   const key = `${subject.id}|${chapter.id}|${topic}`;
 
+  // If guest, increment the free quiz counter on each completed quiz
+  if (!session) {
+    incrementGuestQuizCount();
+  }
+
   markMastered(key);
 
   if (quiz.finishQuiz) {
@@ -198,7 +216,7 @@ const canJumpToPhase = (idx) => {
             chapter={chapter}
             content={content}
             goBack={goBack}
-            onNext={() => setPhase(1)}
+            onNext={handleGoToQuiz}
           />
         )}
 

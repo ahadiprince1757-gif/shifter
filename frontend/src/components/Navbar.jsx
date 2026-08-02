@@ -3,6 +3,8 @@ import { useNavigate, useLocation } from "react-router-dom";
 import GlobalSearch from "./GlobalSearch";
 import ProfileDropdown from "./ProfileDropdown";
 import Breadcrumbs from "./Breadcrumbs";
+import { getRemainingFreeQuizzes } from "../utils/guestSession";
+import { useAuth } from "../hooks/useAuth";
 
 // Sun icon
 const SunIcon = () => (
@@ -64,10 +66,12 @@ export default function Navbar({
 }) {
   const navigate = useNavigate();
   const location = useLocation();
+  const { openAuthWithReason } = useAuth();
   const [menuOpen, setMenuOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const remainingQuizzes = session ? null : getRemainingFreeQuizzes();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -190,14 +194,22 @@ export default function Navbar({
             <ProfileDropdown />
           ) : (
             <button
-              className="lnav-cta"
+              className="lnav-guest-pill"
               onClick={() => {
-                if (onOpenAuth) onOpenAuth();
+                const reason = "Create a free account to unlock unlimited quizzes, track your mastery, and sync your progress across devices.";
+                if (openAuthWithReason) openAuthWithReason(reason);
+                else if (onOpenAuth) onOpenAuth();
                 else if (setShowAuthModal) setShowAuthModal(true);
                 setMenuOpen(false);
               }}
             >
-              Sign In
+              <span className="lnav-guest-label">Guest Mode</span>
+              {remainingQuizzes !== null && (
+                <span className="lnav-guest-count">
+                  {remainingQuizzes} of 3 quizzes left
+                </span>
+              )}
+              <span className="lnav-guest-action">Sign In</span>
             </button>
           )}
 
@@ -277,7 +289,9 @@ export default function Navbar({
             <button
               className="lnav-cta lnav-drawer-cta"
               onClick={() => {
-                if (onOpenAuth) onOpenAuth();
+                const reason = "Create a free account to unlock unlimited quizzes, track your mastery, and sync your progress across devices.";
+                if (openAuthWithReason) openAuthWithReason(reason);
+                else if (onOpenAuth) onOpenAuth();
                 else if (setShowAuthModal) setShowAuthModal(true);
                 setMenuOpen(false);
               }}

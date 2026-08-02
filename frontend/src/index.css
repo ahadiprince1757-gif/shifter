@@ -380,6 +380,49 @@ html.dark-mode .lnav-search-panel {
   transform: translateY(-1px);
 }
 
+/* Guest mode status pill — shown in place of Sign In when no session */
+.lnav-guest-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--bd);
+  border-radius: 99px;
+  padding: 0.32rem 0.75rem;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-size: 0.75rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.lnav-guest-pill:hover {
+  border-color: var(--v);
+  background: rgba(117, 82, 243, 0.06);
+}
+
+.lnav-guest-label {
+  font-weight: 600;
+  color: var(--t2);
+}
+
+.lnav-guest-count {
+  color: var(--v);
+  font-weight: 500;
+  font-size: 0.72rem;
+  background: rgba(117, 82, 243, 0.1);
+  border-radius: 99px;
+  padding: 0.1rem 0.5rem;
+}
+
+.lnav-guest-action {
+  font-weight: 600;
+  color: var(--v);
+  border-left: 1px solid var(--bd);
+  padding-left: 0.45rem;
+  margin-left: 0.1rem;
+}
+
 /* ── LANDING NAV – MOBILE (≤ 768px) ───────────────────────── */
 @media (max-width: 768px) {
   .lnav {

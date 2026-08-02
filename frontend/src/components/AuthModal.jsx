@@ -2,8 +2,10 @@ import { useState } from "react";
 import { supabase } from "../supabase";
 import logger from "../utils/logger";
 import toast from "react-hot-toast";
+import { useAuth } from "../hooks/useAuth";
 
 export default function AuthModal({ isOpen, onClose }) {
+  const { authReason, setAuthReason } = useAuth();
   // Navigation is handled centrally by App.jsx's onAuthStateChange listener
   const [mode, setMode] = useState("select"); // 'select' | 'email_signin' | 'email_signup'
   const [email, setEmail] = useState("");
@@ -12,6 +14,12 @@ export default function AuthModal({ isOpen, onClose }) {
   const [loading, setLoading] = useState(false);
 
   if (!isOpen) return null;
+
+  const handleClose = () => {
+    resetForm();
+    if (setAuthReason) setAuthReason(null);
+    onClose();
+  };
 
   const handleGoogleLogin = async () => {
     try {
@@ -102,18 +110,12 @@ export default function AuthModal({ isOpen, onClose }) {
   return (
     <div
       className="auth-overlay"
-      onClick={() => {
-        resetForm();
-        onClose();
-      }}
+      onClick={handleClose}
     >
       <div className="auth-modal" onClick={(e) => e.stopPropagation()}>
         <button
           className="auth-close"
-          onClick={() => {
-            resetForm();
-            onClose();
-          }}
+          onClick={handleClose}
           aria-label="Close"
         >
           ✕
@@ -123,10 +125,14 @@ export default function AuthModal({ isOpen, onClose }) {
 
         {mode === "select" ? (
           <>
-            <h2 className="auth-title">Sign In to Tixar</h2>
+            <h2 className="auth-title">
+              {authReason ? "Create a Free Account" : "Sign In to Tixar"}
+            </h2>
             <p className="auth-desc">
-              Sign in to save your learning progress, view analytics, and verify
-              your credentials.
+              {authReason
+                ? authReason
+                : "Sign in to save your learning progress, view analytics, and sync your scores."
+              }
             </p>
 
             <div className="auth-buttons-list">
