@@ -6261,7 +6261,6 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   flex: 1;
   overflow-y: auto;
   padding: 1.25rem;
-  -webkit-overflow-scrolling: touch;
 }
 
 .ref-drawer-content {
