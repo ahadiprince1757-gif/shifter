@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Tixar-v7';
+const CACHE_NAME = 'Tixar-v8';
 const ASSETS = [
   '/',
   '/index.html',

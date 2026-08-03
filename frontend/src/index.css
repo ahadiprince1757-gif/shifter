@@ -6692,3 +6692,47 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   .scratchpad-textarea { background: var(--bg); }
 }
 
+/* ==========================================
+   Responsive Topic Diagrams & Media Styles
+   ========================================== */
+.nc figure,
+.topic-img-container {
+  margin: 1.5rem 0;
+  padding: 0.85rem;
+  background: var(--sur, rgba(255, 255, 255, 0.03));
+  border: 1px solid var(--bor, rgba(255, 255, 255, 0.08));
+  border-radius: 14px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shd, 0 4px 20px rgba(0, 0, 0, 0.25));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nc img,
+.topic-img {
+  width: 100%;
+  max-width: 580px;
+  height: auto;
+  max-height: 400px;
+  object-fit: contain;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+  display: block;
+  margin: 0 auto;
+}
+
+.nc figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  color: var(--mu, #94a3b8);
+  line-height: 1.45;
+  font-style: italic;
+  max-width: 540px;
+  text-align: center;
+}
+
+
