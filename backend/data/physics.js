@@ -7838,9 +7838,10 @@ eV = ½mv²
 </ul>
 
 <h3> CATHODE RAY TUBE STRUCTURE</h3>
-<pre>
-Cathode (−) → Electron beam → Anode (+) → Deflection plates → Fluorescent screen
-</pre>
+<figure class="topic-img-container">
+  <img src="/images/cathode_ray_tube.png" alt="Cathode Ray Tube Schematic Diagram" class="topic-img" />
+  <figcaption>Schematic of a Cathode Ray Tube showing electron emission from cathode, anode acceleration, deflection plates, and glowing fluorescent screen.</figcaption>
+</figure>
 
 <h3> WORKED OUT CALCULATIONS</h3>
 
@@ -8070,15 +8071,10 @@ KE(max) = hf − φ
 <li>If f < f₀ → no electrons emitted, no matter how intense the light is</li>
 </ul>
 <h3> PROCESS DIAGRAM</h3>
-<pre>
-Photon (hf) hits metal
-        ↓
-Energy transferred to electron
-        ↓
-If hf ≥ φ → electron escapes
-        ↓
-Photoelectron emitted
-</pre>
+<figure class="topic-img-container">
+  <img src="/images/photoelectric_effect_diagram.png" alt="Photoelectric Effect Diagram" class="topic-img" />
+  <figcaption>Illustration of Photoelectric Emission: Light photons striking a metal surface, work function barrier (φ), and emitted photoelectrons.</figcaption>
+</figure>
 <h3> WORKED EXAMPLES</h3>
 <h4>Example 1: Photon Energy</h4>
 <p>Calculate energy of a photon of frequency 5 × 10¹⁴ Hz</p>

@@ -423,6 +423,37 @@ html.dark-mode .lnav-search-panel {
   margin-left: 0.1rem;
 }
 
+/* ── TOPIC CONTENT RESPONSIVE DIAGRAMS ───────────────────── */
+.topic-img-container {
+  margin: 1.5rem 0;
+  padding: 0.75rem;
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  text-align: center;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+.topic-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+  margin: 0 auto;
+  object-fit: contain;
+}
+
+.topic-img-container figcaption {
+  margin-top: 0.65rem;
+  font-size: 0.8rem;
+  color: var(--t2);
+  line-height: 1.5;
+  font-style: italic;
+  font-family: "Inter", sans-serif;
+}
+
+
 /* ── LANDING NAV – MOBILE (≤ 768px) ───────────────────────── */
 @media (max-width: 768px) {
   .lnav {
