@@ -2,7 +2,7 @@ import Dexie from "dexie";
 
 export const db = new Dexie("ShifterLocalDB_v2");
 
-db.version(5).stores({
+db.version(6).stores({
   curriculum: "id, is_deleted",
   topics: "id, curriculum_id, chapter_id, is_deleted",
   user_progress: "id, topic_id, sync_status, updated_at",

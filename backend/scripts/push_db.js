@@ -294,8 +294,9 @@ async function run() {
     version: 1
   }));
 
-  for (let i = 0; i < lessonVersionsToInsert.length; i += batchSize) {
-    const chunk = lessonVersionsToInsert.slice(i, i + batchSize);
+  const lessonVersionBatchSize = 10;
+  for (let i = 0; i < lessonVersionsToInsert.length; i += lessonVersionBatchSize) {
+    const chunk = lessonVersionsToInsert.slice(i, i + lessonVersionBatchSize);
     const { error: versionsInsertErr } = await supabase
       .from("lesson_versions")
       .insert(chunk);

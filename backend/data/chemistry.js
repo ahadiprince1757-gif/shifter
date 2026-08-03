@@ -709,6 +709,12 @@ add(
     <li>Nucleus contains protons and neutrons</li>
     <li>Electrons move around the nucleus in energy levels (shells)</li>
   </ul>
+
+<figure class="topic-img-container">
+  <img src="/images/electron_structure.png" alt="Atomic Structure and Electron Shell Diagram" class="topic-img" />
+  <figcaption>Atomic Structure: Negatively charged electrons orbiting a central nucleus in discrete energy level shells.</figcaption>
+</figure>
+
 <h3> ELECTRON ARRANGEMENT (ENERGY LEVELS)</h3>
 <ul>
   <li><strong>1st energy level:</strong> Holds up to 2 electrons</li>
