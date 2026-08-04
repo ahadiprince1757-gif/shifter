@@ -15,6 +15,26 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
   auth: { persistSession: false }
 });
 
+// Retry wrapper for transient Node.js fetch failures (Windows TLS drops etc.)
+async function sb(fn, label = "supabase call", retries = 5) {
+  for (let attempt = 1; attempt <= retries; attempt++) {
+    try {
+      const result = await fn();
+      if (result.error && attempt === retries) return result;
+      if (result.error && result.error.message && !result.error.message.includes("fetch failed")) return result;
+      if (!result.error) return result;
+      throw new Error(result.error.message);
+    } catch (err) {
+      if (attempt === retries) {
+        return { error: err, data: null };
+      }
+      const delay = 600 * attempt;
+      console.warn(`  [retry ${attempt}/${retries}] ${label}: ${err.message} — waiting ${delay}ms`);
+      await new Promise((r) => setTimeout(r, delay));
+    }
+  }
+}
+
 const dataDir = path.join(__dirname, "..", "data");
 const curriculumPath = path.join(dataDir, "curriculum.json");
 
@@ -111,10 +131,10 @@ async function run() {
 
   // 4. Truncate existing data via cascading subjects delete
   console.log("Clearing existing content data in Supabase...");
-  const { error: deleteErr } = await supabase
-    .from("subjects")
-    .delete()
-    .neq("id", "_");
+  const { error: deleteErr } = await sb(
+    () => supabase.from("subjects").delete().neq("id", "_"),
+    "clear subjects"
+  );
 
   if (deleteErr) {
     console.error("Error clearing existing subjects:", deleteErr.message);
@@ -131,9 +151,10 @@ async function run() {
     description: subj.label
   }));
 
-  const { error: subjInsertErr } = await supabase
-    .from("subjects")
-    .insert(subjectsToInsert);
+  const { error: subjInsertErr } = await sb(
+    () => supabase.from("subjects").insert(subjectsToInsert),
+    "insert subjects"
+  );
 
   if (subjInsertErr) {
     console.error("Error inserting subjects:", subjInsertErr.message);
@@ -156,9 +177,10 @@ async function run() {
     }
   });
 
-  const { error: chapInsertErr } = await supabase
-    .from("chapters")
-    .insert(chaptersToInsert);
+  const { error: chapInsertErr } = await sb(
+    () => supabase.from("chapters").insert(chaptersToInsert),
+    "insert chapters"
+  );
 
   if (chapInsertErr) {
     console.error("Error inserting chapters:", chapInsertErr.message);
@@ -166,9 +188,10 @@ async function run() {
   }
 
   // Fetch chapters back to map (subject_id, chapter_key) -> chapter_id
-  const { data: chaptersData, error: chapFetchErr } = await supabase
-    .from("chapters")
-    .select("id, subject_id, chapter_key");
+  const { data: chaptersData, error: chapFetchErr } = await sb(
+    () => supabase.from("chapters").select("id, subject_id, chapter_key"),
+    "fetch chapters"
+  );
 
   if (chapFetchErr) {
     console.error("Error fetching chapters:", chapFetchErr.message);
@@ -212,9 +235,10 @@ async function run() {
   const batchSize = 100;
   for (let i = 0; i < topicsToInsert.length; i += batchSize) {
     const chunk = topicsToInsert.slice(i, i + batchSize);
-    const { error: topicInsertErr } = await supabase
-      .from("topics")
-      .insert(chunk);
+    const { error: topicInsertErr } = await sb(
+      () => supabase.from("topics").insert(chunk),
+      `insert topics chunk ${i}`
+    );
 
     if (topicInsertErr) {
       console.error("Error inserting topics chunk:", topicInsertErr.message);
@@ -224,16 +248,10 @@ async function run() {
 
   // Fetch topics back to map (subject_id, chapter_key, topic_title_lower) -> topic_id
   // We need to fetch chapters and subjects relationally or construct the map by joining
-  const { data: topicsData, error: topicsFetchErr } = await supabase
-    .from("topics")
-    .select(`
-      id,
-      title,
-      chapter:chapter_id (
-        chapter_key,
-        subject_id
-      )
-    `);
+  const { data: topicsData, error: topicsFetchErr } = await sb(
+    () => supabase.from("topics").select(`id, title, chapter:chapter_id ( chapter_key, subject_id )`),
+    "fetch topics"
+  );
 
   if (topicsFetchErr) {
     console.error("Error fetching topics:", topicsFetchErr.message);
@@ -266,22 +284,34 @@ async function run() {
     }
   });
 
-  for (let i = 0; i < lessonsToInsert.length; i += batchSize) {
-    const chunk = lessonsToInsert.slice(i, i + batchSize);
-    const { error: lessonInsertErr } = await supabase
-      .from("lessons")
-      .insert(chunk);
-
-    if (lessonInsertErr) {
-      console.error("Error inserting lessons chunk:", lessonInsertErr.message);
-      process.exit(1);
-    }
+  // insertWithRetry now delegates to the global sb() retry wrapper
+  async function insertWithRetry(table, row) {
+    const { error } = await sb(
+      () => supabase.from(table).insert([row]),
+      `insert row into ${table}`
+    );
+    if (error) throw error;
   }
 
+  let lessonCount = 0;
+  for (const row of lessonsToInsert) {
+    try {
+      await insertWithRetry("lessons", row);
+    } catch (err) {
+      console.error("Error inserting lesson:", err.message);
+      process.exit(1);
+    }
+    lessonCount++;
+    if (lessonCount % 50 === 0) console.log(`  Inserted ${lessonCount}/${lessonsToInsert.length} lessons...`);
+    await new Promise((r) => setTimeout(r, 150));
+  }
+  console.log(`  Inserted all ${lessonCount} lessons.`);
+
   // Fetch lessons back to insert lesson_versions
-  const { data: lessonsData, error: lessonsFetchErr } = await supabase
-    .from("lessons")
-    .select("id, content");
+  const { data: lessonsData, error: lessonsFetchErr } = await sb(
+    () => supabase.from("lessons").select("id, content"),
+    "fetch lessons"
+  );
 
   if (lessonsFetchErr) {
     console.error("Error fetching lessons:", lessonsFetchErr.message);
@@ -294,18 +324,19 @@ async function run() {
     version: 1
   }));
 
-  const lessonVersionBatchSize = 10;
-  for (let i = 0; i < lessonVersionsToInsert.length; i += lessonVersionBatchSize) {
-    const chunk = lessonVersionsToInsert.slice(i, i + lessonVersionBatchSize);
-    const { error: versionsInsertErr } = await supabase
-      .from("lesson_versions")
-      .insert(chunk);
-
-    if (versionsInsertErr) {
-      console.error("Error inserting lesson versions chunk:", versionsInsertErr.message);
+  let versionCount = 0;
+  for (const row of lessonVersionsToInsert) {
+    try {
+      await insertWithRetry("lesson_versions", row);
+    } catch (err) {
+      console.error("Error inserting lesson_version:", err.message);
       process.exit(1);
     }
+    versionCount++;
+    if (versionCount % 50 === 0) console.log(`  Inserted ${versionCount}/${lessonVersionsToInsert.length} lesson versions...`);
+    await new Promise((r) => setTimeout(r, 150));
   }
+  console.log(`  Inserted all ${versionCount} lesson versions.`);
 
   // 9. Batch Insert Quizzes
   console.log("Inserting quizzes...");
