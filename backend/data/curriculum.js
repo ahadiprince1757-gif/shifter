@@ -409,6 +409,7 @@ const CURRICULUM_DATA = [
         label: "Atomic Structure",
         topics: [
           "Atomic Structure and Electron Arrangement",
+          "Atomic Orbitals and Electron Configurations",
           "Mass Number and Atomic Number",
           "Isotopes",
           "Ion Formation",

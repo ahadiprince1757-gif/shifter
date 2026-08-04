@@ -785,6 +785,137 @@ add(
   ]
 );
 /*===================================================
+  Atomic Orbitals and Electron Configurations
+  =================================================*/
+add(
+  "chemistry",
+  "atoms",
+  "Atomic Orbitals and Electron Configurations",
+  `<h2>Atomic Orbitals & Electron Configurations</h2>
+  <h3>WHAT ARE ATOMIC ORBITALS?</h3>
+  <ul>
+    <li>An <strong>atomic orbital</strong> is a three-dimensional region of space around an atomic nucleus where there is a high probability (90%+) of locating an electron.</li>
+    <li>Unlike fixed circular orbits (Bohr model), orbitals represent <em>probability clouds</em> described by quantum mechanics.</li>
+    <li>Each individual orbital can hold a maximum of <strong>2 electrons</strong> with opposite spins.</li>
+  </ul>
+
+  <h3>SUBSHELLS AND ORBITAL SHAPES</h3>
+  <p>Energy levels (principal quantum shells n = 1, 2, 3...) are divided into subshells designated as <strong>s, p, d, and f</strong>:</p>
+  <ul>
+    <li><strong>s Subshell:</strong> Spherical shape. Contains 1 orbital (holds up to 2 electrons).</li>
+    <li><strong>p Subshell:</strong> Dumbbell shape oriented along x, y, and z axes (pₓ, pᵧ, p_z). Contains 3 orbitals (holds up to 6 electrons).</li>
+    <li><strong>d Subshell:</strong> Complex cloverleaf shapes. Contains 5 orbitals (holds up to 10 electrons).</li>
+    <li><strong>f Subshell:</strong> Multi-lobed complex shapes. Contains 7 orbitals (holds up to 14 electrons).</li>
+  </ul>
+
+  <h3>ELECTRON CAPACITY OF MAIN SHELLS</h3>
+  <p>The maximum number of electrons in principal energy level n is given by 2n²:</p>
+  <ul>
+    <li><strong>n = 1 (K Shell):</strong> Subshell 1s &rarr; 1 orbital &rarr; Max <strong>2 electrons</strong></li>
+    <li><strong>n = 2 (L Shell):</strong> Subshells 2s, 2p &rarr; 1 + 3 = 4 orbitals &rarr; Max <strong>8 electrons</strong></li>
+    <li><strong>n = 3 (M Shell):</strong> Subshells 3s, 3p, 3d &rarr; 1 + 3 + 5 = 9 orbitals &rarr; Max <strong>18 electrons</strong></li>
+    <li><strong>n = 4 (N Shell):</strong> Subshells 4s, 4p, 4d, 4f &rarr; 1 + 3 + 5 + 7 = 16 orbitals &rarr; Max <strong>32 electrons</strong></li>
+  </ul>
+
+  <h3>THREE CORE RULES FOR FILLING ORBITALS</h3>
+  <ul>
+    <li><strong>1. Aufbau Principle:</strong> Electrons occupy the lowest available energy orbital first.<br />
+    Filling sequence: <code>1s &rarr; 2s &rarr; 2p &rarr; 3s &rarr; 3p &rarr; 4s &rarr; 3d &rarr; 4p &rarr; 5s...</code><br />
+    <em>Note: The 4s subshell is slightly lower in energy than 3d and fills before 3d.</em></li>
+
+    <li><strong>2. Pauli Exclusion Principle:</strong> An orbital can hold a maximum of 2 electrons, and they must have opposite spins.</li>
+
+    <li><strong>3. Hund's Rule of Maximum Multiplicity:</strong> When filling orbitals of equal energy (degenerate orbitals, like 2p_x, 2p_y, 2p_z), electrons occupy them singly with parallel spins before pairing up.</li>
+  </ul>
+
+  <h3>EXAMPLES OF ELECTRON CONFIGURATIONS</h3>
+  <ul>
+    <li><strong>Hydrogen (Z = 1):</strong> <code>1s¹</code></li>
+    <li><strong>Helium (Z = 2):</strong> <code>1s²</code></li>
+    <li><strong>Carbon (Z = 6):</strong> <code>1s² 2s² 2p²</code></li>
+    <li><strong>Nitrogen (Z = 7):</strong> <code>1s² 2s² 2p³</code></li>
+    <li><strong>Sodium (Z = 11):</strong> <code>1s² 2s² 2p⁶ 3s¹</code> or <code>[Ne] 3s¹</code></li>
+    <li><strong>Chlorine (Z = 17):</strong> <code>1s² 2s² 2p⁶ 3s² 3p⁵</code> or <code>[Ar] 3p⁵</code></li>
+  </ul>
+
+  <h3>SUMMARY OF SUBSHELL CAPACITIES</h3>
+  <ul>
+    <li>s subshell = 1 orbital = max 2 electrons</li>
+    <li>p subshell = 3 orbitals = max 6 electrons</li>
+    <li>d subshell = 5 orbitals = max 10 electrons</li>
+    <li>f subshell = 7 orbitals = max 14 electrons</li>
+  </ul>
+  `,
+  [
+    {
+      q: "What is an atomic orbital?",
+      hint: "Think about probability regions rather than fixed tracks",
+      steps: [
+        "Step 1: Identify that electrons do not move in fixed orbits.",
+        "Step 2: Define orbital as a 3D region of space.",
+        "Step 3: State that it represents high probability (90%+) of finding an electron."
+      ],
+      ans: "A three-dimensional region of space around a nucleus where there is a high probability of finding an electron",
+      why: "Definition of an atomic orbital based on quantum mechanics."
+    },
+    {
+      q: "What are the shapes of s and p orbitals?",
+      hint: "s is symmetrical in all directions, p extends along axes",
+      steps: [
+        "Step 1: Recall the shape of s subshell orbitals.",
+        "Step 2: Recall the shape of p subshell orbitals."
+      ],
+      ans: "s orbitals are spherical; p orbitals are dumbbell-shaped",
+      why: "s orbitals are spherically symmetrical; p orbitals have two lobes creating a dumbbell shape along spatial axes."
+    },
+    {
+      q: "What is the maximum number of electrons that can occupy a p subshell?",
+      hint: "A p subshell contains 3 orbitals, and each orbital holds up to 2 electrons.",
+      steps: [
+        "Step 1: Determine number of orbitals in p subshell = 3.",
+        "Step 2: Multiply by maximum capacity per orbital (2 electrons).",
+        "Step 3: 3 x 2 = 6 electrons."
+      ],
+      ans: "6 electrons",
+      why: "A p subshell has 3 degenerate orbitals (px, py, pz). Each orbital holds 2 electrons, giving 3 x 2 = 6 electrons total."
+    },
+    {
+      q: "State the Aufbau principle.",
+      hint: "Focus on the energy order in which orbitals are filled.",
+      steps: [
+        "Step 1: Consider how electrons build up in an atom.",
+        "Step 2: State that lower energy levels fill before higher energy levels."
+      ],
+      ans: "Electrons occupy the lowest available energy orbital first",
+      why: "The Aufbau principle dictates that electron configurations build up from the lowest energy subshell outward."
+    },
+    {
+      q: "Write the full s, p, d electron configuration for a neutral sodium atom (atomic number 11).",
+      hint: "Fill subshells in order: 1s, 2s, 2p, 3s until you reach 11 electrons.",
+      steps: [
+        "Step 1: Total electrons for Na = 11.",
+        "Step 2: Fill 1s with 2 electrons -> 1s² (9 remaining).",
+        "Step 3: Fill 2s with 2 electrons -> 2s² (7 remaining).",
+        "Step 4: Fill 2p with 6 electrons -> 2p⁶ (1 remaining).",
+        "Step 5: Place final electron in 3s -> 3s¹."
+      ],
+      ans: "1s² 2s² 2p⁶ 3s¹",
+      why: "1s holds 2, 2s holds 2, 2p holds 6, and 3s holds the 11th electron, totaling 1s² 2s² 2p⁶ 3s¹."
+    },
+    {
+      q: "Why does the 4s subshell fill before the 3d subshell?",
+      hint: "Compare the relative energy levels of 4s and 3d.",
+      steps: [
+        "Step 1: Compare energy levels of 4s and 3d subshells.",
+        "Step 2: Apply the Aufbau principle.",
+        "Step 3: 4s has lower energy than 3d in uncharged atoms."
+      ],
+      ans: "Because the 4s subshell is lower in energy than the 3d subshell",
+      why: "According to the Aufbau principle, orbitals fill in order of increasing energy. 4s is slightly lower in energy than 3d, so it fills first."
+    }
+  ]
+);
+/*===================================================
   Mass Number and Atomic Number
   =================================================*/
 add(
