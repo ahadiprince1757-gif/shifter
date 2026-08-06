@@ -149,11 +149,11 @@
         "id": "matrices",
         "label": "Matrices",
         "topics": [
-          "Matrix Addition & Subtraction",
+          "Introduction & Notation",
+          "Basic Matrix Operations",
           "Matrix Multiplication",
-          "Determinants",
-          "Inverse Matrices",
-          "Solving Systems of Equations Using Matrices"
+          "Determinants & Inverses (2x2)",
+          "Application to Linear Equations"
         ]
       },
       {

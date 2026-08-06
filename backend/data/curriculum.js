@@ -89,7 +89,15 @@ const CURRICULUM_DATA = [
       {
         id: "probability",
         label: "Probability",
-        topics: ["Bayes Theorem", "Expected Value"],
+        topics: [
+          "Basic probability",
+          "Dice probability",
+          "Coin probability",
+          "Combined events",
+          "Bayes Theorem",
+          "Expected Value",
+          "Real life probability",
+        ],
       },
       {
         id: "complex_numbers",
@@ -139,11 +147,11 @@ const CURRICULUM_DATA = [
         id: "matrices",
         label: "Matrices",
         topics: [
-          "Matrix Addition & Subtraction",
+          "Introduction & Notation",
+          "Basic Matrix Operations",
           "Matrix Multiplication",
-          "Determinants",
-          "Inverse Matrices",
-          "Solving Systems of Equations Using Matrices",
+          "Determinants & Inverses (2x2)",
+          "Application to Linear Equations",
         ],
       },
       {
