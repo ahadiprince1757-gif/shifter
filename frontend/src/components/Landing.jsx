@@ -388,17 +388,61 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
         <div className="hero-bg"></div>
         <div className="hero-inner jobs-centered">
           <div className="hero-content">
+            <div className="hero-eyebrow">
+              OFFLINE-READY • SELF-PACED • ZERO OVERWHELM
+            </div>
             <h1 className="hero-title">
-            
-              <br />
-              <span className="gt">Start learning at your own own pace.</span>
+              Learn Complex Subjects <br />
+              <span className="gt">In Half the Time.</span>
             </h1>
-            <p className="hero-sub"> Connecting ideas.Empowering minds.
+            <p className="hero-sub">
+              Tixar simplifies high school and university curricula into clear step-by-step master notes, interactive problem derivations, and instant practice — fully available online and offline.
             </p>
             <div className="hero-actions">
               <button className="btn-hero primary" onClick={enterApp}>
-                Open Tixar 
+                Start Learning Free
               </button>
+            </div>
+            <p className="hero-trust-text">
+              Instant access • Works 100% offline • No credit card required
+            </p>
+          </div>
+
+          <div className="curriculum-ribbon">
+            <span>MATHEMATICS</span>
+            <span className="ribbon-dot">•</span>
+            <span>PHYSICS</span>
+            <span className="ribbon-dot">•</span>
+            <span>CHEMISTRY</span>
+            <span className="ribbon-dot">•</span>
+            <span>BIOLOGY</span>
+            <span className="ribbon-dot">•</span>
+            <span>COMPUTER STUDIES</span>
+            <span className="ribbon-dot">•</span>
+            <span>BUSINESS & MORE</span>
+          </div>
+
+          <div className="landing-pillars">
+            <div className="pillar-card">
+              <div className="pillar-num">01</div>
+              <h3 className="pillar-title">Clear Concept Breakdown</h3>
+              <p className="pillar-desc">
+                Read step-by-step master notes that explain core principles without textbook clutter or fluff.
+              </p>
+            </div>
+            <div className="pillar-card">
+              <div className="pillar-num">02</div>
+              <h3 className="pillar-title">Guided Worked Derivations</h3>
+              <p className="pillar-desc">
+                Follow problem-solving logic step by step with instant hints and complete explanations.
+              </p>
+            </div>
+            <div className="pillar-card">
+              <div className="pillar-num">03</div>
+              <h3 className="pillar-title">100% Offline Access</h3>
+              <p className="pillar-desc">
+                Study anytime, anywhere. Your curriculum and notes stay fully available without an internet connection.
+              </p>
             </div>
           </div>
         </div>
