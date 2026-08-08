@@ -137,7 +137,7 @@ export default function LoadingScreen({
         fontFamily: "Inter, sans-serif",
       }}>
         {/* Logo */}
-        <img src="/Tixar.jpeg" alt="Tixar" style={{ width: "64px", height: "64px", borderRadius: "12px", marginBottom: "1rem" }} />
+        <img src="/tixar-logo.png?v=3" alt="Tixar" style={{ width: "64px", height: "64px", borderRadius: "12px", marginBottom: "1rem" }} />
         
         {/* Progress Bar */}
         <div className="minimal-loader__track" style={{

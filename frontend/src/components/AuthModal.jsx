@@ -121,7 +121,7 @@ export default function AuthModal({ isOpen, onClose }) {
           ✕
         </button>
 
-        <img src="/Tixar.jpeg" alt="Tixar Logo" className="auth-logo" />
+        <img src="/tixar-logo.png?v=3" alt="Tixar Logo" className="auth-logo" />
 
         {mode === "select" ? (
           <>

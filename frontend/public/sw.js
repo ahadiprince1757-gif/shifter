@@ -3,7 +3,7 @@ const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
-  '/Tixar.jpeg'
+  '/tixar-logo.png'
 ];
 
 self.addEventListener('install', (e) => {
