@@ -5307,6 +5307,7 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   border-radius: 16px;
   padding: 1.5rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
 }
 
