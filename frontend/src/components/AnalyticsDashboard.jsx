@@ -112,21 +112,21 @@ export default function AnalyticsDashboard() {
       {/* 3 Core Metric Cards */}
       <div className="analytics-overview-card">
         <div className="analytics-metric">
-          <span className="metric-val" style={{ color: "var(--v)" }}>
+          <span className="metric-val">
             {accuracyRate}%
           </span>
           <span className="metric-lbl">Quiz Accuracy</span>
         </div>
         <div className="metric-divider" />
         <div className="analytics-metric">
-          <span className="metric-val" style={{ color: dueReviews.length > 0 ? "#f59e0b" : "var(--t2)" }}>
+          <span className="metric-val">
             {dueReviews.length}
           </span>
           <span className="metric-lbl">Due Reviews</span>
         </div>
         <div className="metric-divider" />
         <div className="analytics-metric">
-          <span className="metric-val" style={{ color: mistakeCount > 0 ? "#ef4444" : "var(--t2)" }}>
+          <span className="metric-val">
             {mistakeCount}
           </span>
           <span className="metric-lbl">Active Mistakes</span>
