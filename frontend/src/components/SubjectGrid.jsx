@@ -4,20 +4,26 @@ import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
 import { spacedRepo } from "../repository/spacedRepo";
 
+import { useAuth } from "../hooks/useAuth";
+
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const navigate = useNavigate();
-  // Lazy initializer — reads localStorage once on first render, no effect needed
-  const [lastTopic] = useState(() => {
-    try {
-      const raw = localStorage.getItem("lastTopic");
-      return raw ? JSON.parse(raw) : null;
-    } catch { return null; }
-  });
+  const { session } = useAuth();
+  const userId = session?.user?.id || null;
+
+  // Read user-scoped lastTopic and due reviews
+  const [lastTopic, setLastTopic] = useState(null);
   const [dueReviews, setDueReviews] = useState([]);
 
   useEffect(() => {
-    spacedRepo.getDueReviews().then(setDueReviews).catch(() => {});
-  }, []);
+    if (!userId) return; // state already initialised to null/[] above
+    try {
+      const raw = localStorage.getItem(`lastTopic_${userId}`);
+      setLastTopic(raw ? JSON.parse(raw) : null);
+    } catch { setLastTopic(null); }
+
+    spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
+  }, [userId]);
 
   if (!curriculum) {
     return (

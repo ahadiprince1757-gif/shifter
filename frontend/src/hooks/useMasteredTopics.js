@@ -49,7 +49,7 @@ export function useMasteredTopics() {
 
         const userKeys = new Set(
           all
-            .filter((item) => !item.userId || item.userId === userId)
+            .filter((item) => item.userId === userId)
             .map((item) => item.topicKey)
             .filter(Boolean)
         );

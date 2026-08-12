@@ -34,12 +34,13 @@ function LearnFlow({
   };
 
 
-  // Persist last-visited topic so the Subjects page can offer a "Continue" banner
+  // Persist last-visited topic per user so Subjects page can offer a "Continue" banner
   useEffect(() => {
-    if (subject?.id && chapter?.id && topic) {
+    const userId = session?.user?.id;
+    if (subject?.id && chapter?.id && topic && userId) {
       try {
         localStorage.setItem(
-          "lastTopic",
+          `lastTopic_${userId}`,
           JSON.stringify({
             subjectId: subject.id,
             subjectLabel: subject.label,
@@ -50,7 +51,7 @@ function LearnFlow({
         );
       } catch { /* storage quota or private-mode errors — silently ignore */ }
     }
-  }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic]);
+  }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic, session?.user?.id]);
 
   const { content, loading, error } = useTopicContent(
     subject,
