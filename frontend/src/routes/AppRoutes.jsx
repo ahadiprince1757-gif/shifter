@@ -96,6 +96,22 @@ const SubjectsView = () => {
   );
 };
 
+const ProtectedLayout = () => {
+  const { session, sessionLoading, openAuthWithReason } = useAuth();
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (!sessionLoading && !session) {
+      openAuthWithReason("Please sign in to access Tixar.");
+      navigate("/");
+    }
+  }, [session, sessionLoading, navigate, openAuthWithReason]);
+
+  if (sessionLoading || !session) return null;
+
+  return <AppLayout />;
+};
+
 export default function AppRoutes() {
   const { loading: curriculumLoading } = useCurriculum();
   const { sessionLoading } = useAuth();
@@ -127,7 +143,7 @@ export default function AppRoutes() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         
-        <Route element={<AppLayout />}>
+        <Route element={<ProtectedLayout />}>
           <Route path="/subjects" element={<SubjectsView />} />
           <Route path="/subjects/:subjectId" element={<ChapterListWrapper />} />
           <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />
@@ -140,3 +156,4 @@ export default function AppRoutes() {
     </Suspense>
   );
 }
+

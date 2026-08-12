@@ -4,7 +4,30 @@ import { supabase } from "../supabase";
 import toast from "react-hot-toast";
 import { AuthContext } from "./AuthContext";
 
+import { db as tixarDb } from "../utils/db";
+import { db as shifterDb } from "../db/db";
+
 const SESSION_CACHE_KEY = "shifter_cached_session";
+const CURRENT_USER_ID_KEY = "shifter_current_user_id";
+
+/** Wipe all local storage & IndexedDB user-scoped caches when switching accounts or logging out. */
+export async function clearUserDataForUserSwitch() {
+  try {
+    await Promise.all([
+      tixarDb.mastered.clear().catch(() => {}),
+      shifterDb.user_progress.clear().catch(() => {}),
+      shifterDb.user_mistakes.clear().catch(() => {}),
+      shifterDb.user_notes.clear().catch(() => {}),
+      shifterDb.spaced_reviews.clear().catch(() => {}),
+    ]);
+    localStorage.removeItem("Tixar_mastered");
+    localStorage.removeItem("lastTopic");
+    localStorage.removeItem("shifter_guest_quiz_count");
+    localStorage.removeItem(CURRENT_USER_ID_KEY);
+  } catch (err) {
+    console.error("Error clearing user data for switch:", err);
+  }
+}
 
 /** Read the last known session from localStorage synchronously (works offline). */
 function readCachedSession() {
@@ -49,6 +72,14 @@ export function AuthProvider({ children }) {
     supabase.auth.getSession()
       .then(({ data: { session: existingSession } }) => {
         if (existingSession) {
+          const prevUserId = localStorage.getItem(CURRENT_USER_ID_KEY);
+          const newUserId = existingSession.user?.id;
+          if (prevUserId && newUserId && prevUserId !== newUserId) {
+            clearUserDataForUserSwitch();
+          }
+          if (newUserId) {
+            localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
+          }
           setSession(existingSession);
           cacheSession(existingSession);
         }
@@ -65,13 +96,19 @@ export function AuthProvider({ children }) {
     try {
       let isInitialCall = true;
 
-      
       const result = supabase.auth.onAuthStateChange((event, newSession) => {
-        setSession(newSession);
-        setSessionLoading(false);
+        const prevUserId = localStorage.getItem(CURRENT_USER_ID_KEY);
+        const newUserId = newSession?.user?.id;
 
-        // Keep localStorage in sync
-        if (event === "SIGNED_IN" && newSession) {
+        if (newSession) {
+          if (prevUserId && newUserId && prevUserId !== newUserId) {
+            clearUserDataForUserSwitch();
+          }
+          if (newUserId) {
+            localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
+          }
+          setSession(newSession);
+          setSessionLoading(false);
           cacheSession(newSession);
 
           const isAuthCallback =
@@ -84,24 +121,22 @@ export function AuthProvider({ children }) {
           }, 500);
 
           if (!isInitialCall || isAuthCallback) {
-            // Show welcome toast regardless of where the user is
             toast.success(
               `Welcome! Logged in as ${newSession.user.user_metadata?.full_name || newSession.user.email}`
             );
 
             if (isOnLanding || isAuthCallback) {
-              // Coming from landing page or OAuth redirect → send to app
               setTimeout(() => navigate("/subjects"), 100);
             }
-            // If already inside the app (e.g., notes/quiz phase), close the modal in-place
-            // Navigation is NOT triggered — user stays on their current page
             setShowAuthModal(false);
           }
-        }
-
-        if (event === "SIGNED_OUT") {
-          // Real sign-out — clear the cache so the user is truly logged out
-          cacheSession(null);
+        } else if (event === "SIGNED_OUT" || !newSession) {
+          if (event === "SIGNED_OUT") {
+            clearUserDataForUserSwitch();
+            cacheSession(null);
+            setSession(null);
+            setSessionLoading(false);
+          }
         }
 
         isInitialCall = false;
@@ -121,8 +156,10 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
+      await clearUserDataForUserSwitch();
       await supabase.auth.signOut();
       cacheSession(null); // Clear offline cache on explicit logout
+      setSession(null);
       toast.success("Logged out successfully");
       navigate("/");
     } catch (err) {
@@ -130,6 +167,7 @@ export function AuthProvider({ children }) {
       toast.error(`Logout failed: ${err.message}`);
     }
   };
+
 
   return (
     <AuthContext.Provider

@@ -11,11 +11,19 @@ export default function LandingPage() {
   const [isDark, toggleDark] = useDarkMode();
   const navigate = useNavigate();
 
+  const handleEnterApp = () => {
+    if (session) {
+      navigate("/subjects");
+    } else {
+      setShowAuthModal(true);
+    }
+  };
+
   return (
     <>
       <Landing
         curriculum={curriculum}
-        enterApp={() => navigate("/subjects")}
+        enterApp={handleEnterApp}
         isDark={isDark}
         toggleDark={toggleDark}
         session={session}
@@ -24,8 +32,8 @@ export default function LandingPage() {
       <AuthModal
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
-        onGuestAccess={() => navigate("/subjects")}
       />
     </>
   );
 }
+

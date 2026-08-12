@@ -24,14 +24,15 @@ function LearnFlow({
   const { session, openAuthWithReason } = useAuth();
 
   const handleGoToQuiz = () => {
-    if (!session && isTeaserLimitReached()) {
+    if (!session) {
       openAuthWithReason(
-        "You have completed your 3 free guest quizzes. Create a free account to unlock unlimited quizzes, track your mastery, and sync your scores across devices."
+        "Please sign in to take quizzes and track your mastery."
       );
       return;
     }
     setPhase(1);
   };
+
 
   // Persist last-visited topic so the Subjects page can offer a "Continue" banner
   useEffect(() => {

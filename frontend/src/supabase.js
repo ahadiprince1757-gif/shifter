@@ -52,6 +52,14 @@ export const supabase = supabaseInstance || new Proxy({}, {
 });
 
 export function getActiveSession() {
+  if (!currentSession) {
+    try {
+      const raw = localStorage.getItem("shifter_cached_session");
+      if (raw) currentSession = JSON.parse(raw);
+    } catch {
+      // Ignore JSON parse errors
+    }
+  }
   return currentSession;
 }
 

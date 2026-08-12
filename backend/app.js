@@ -935,6 +935,63 @@ app.post("/api/progress", async (req, res) => {
   }
 });
 
+// GET /api/progress — fetch user-specific progress (mastered topics, scores, completion)
+app.get("/api/progress", async (req, res) => {
+  try {
+    const userId = await resolveUserId(req);
+    if (!userId) return res.status(401).json({ error: "Unauthenticated" });
+
+    const { data: progressRows, error } = await supabase
+      .from("progress")
+      .select("*")
+      .eq("user_id", userId);
+
+    if (error) {
+      logger.db("SELECT", "progress", "error", { error: error.message });
+      return res.status(500).json({ error: "Failed to fetch progress" });
+    }
+
+    if (!progressRows || progressRows.length === 0) {
+      return res.json({ progress: [] });
+    }
+
+    const topicIds = progressRows.map((p) => p.topic_id);
+    const { data: contentRows } = await supabase
+      .from("content_view")
+      .select("topic_id, sid, cid, topic")
+      .in("topic_id", topicIds);
+
+    const topicMap = new Map();
+    if (contentRows) {
+      contentRows.forEach((c) => topicMap.set(c.topic_id, c));
+    }
+
+    const result = progressRows.map((p) => {
+      const topicInfo = topicMap.get(p.topic_id) || {};
+      const sid = topicInfo.sid;
+      const cid = topicInfo.cid;
+      const topic = topicInfo.topic;
+      return {
+        topic_id: p.topic_id,
+        sid,
+        cid,
+        topic,
+        topicKey: sid && cid && topic ? `${sid}|${cid}|${topic}` : null,
+        mastered: !!p.mastered,
+        completed: !!p.completed,
+        score: p.score,
+        confidence_level: p.confidence_level,
+        updated_at: p.updated_at,
+      };
+    });
+
+    res.json({ progress: result });
+  } catch (err) {
+    logger.error("PROGRESS_GET", err);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
 // GET /api/achievements — Fetch user achievements
 app.get('/api/achievements', async (req, res) => {
   try {

@@ -196,21 +196,16 @@ export default function Navbar({
             <button
               className="lnav-guest-pill"
               onClick={() => {
-                const reason = "Create a free account to unlock unlimited quizzes, track your mastery, and sync your progress across devices.";
+                const reason = "Sign in to save your learning progress, view analytics, and sync your scores across devices.";
                 if (openAuthWithReason) openAuthWithReason(reason);
                 else if (onOpenAuth) onOpenAuth();
                 else if (setShowAuthModal) setShowAuthModal(true);
                 setMenuOpen(false);
               }}
             >
-              <span className="lnav-guest-label">Guest Mode</span>
-              {remainingQuizzes !== null && (
-                <span className="lnav-guest-count">
-                  {remainingQuizzes} of 3 quizzes left
-                </span>
-              )}
-              <span className="lnav-guest-action">Sign In</span>
+              <span className="lnav-guest-action" style={{ fontWeight: 600 }}>Sign In</span>
             </button>
+
           )}
 
           {/* App: Home button */}
