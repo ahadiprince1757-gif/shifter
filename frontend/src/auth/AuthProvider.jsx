@@ -70,12 +70,12 @@ export function AuthProvider({ children }) {
     // Try to get the live session from Supabase (may fail if offline — that's OK,
     // we already have the cached session in state above).
     supabase.auth.getSession()
-      .then(({ data: { session: existingSession } }) => {
+      .then(async ({ data: { session: existingSession } }) => {
         if (existingSession) {
           const prevUserId = localStorage.getItem(CURRENT_USER_ID_KEY);
           const newUserId = existingSession.user?.id;
           if (prevUserId && newUserId && prevUserId !== newUserId) {
-            clearUserDataForUserSwitch();
+            await clearUserDataForUserSwitch();
           }
           if (newUserId) {
             localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
@@ -96,13 +96,13 @@ export function AuthProvider({ children }) {
     try {
       let isInitialCall = true;
 
-      const result = supabase.auth.onAuthStateChange((event, newSession) => {
+      const result = supabase.auth.onAuthStateChange(async (event, newSession) => {
         const prevUserId = localStorage.getItem(CURRENT_USER_ID_KEY);
         const newUserId = newSession?.user?.id;
 
         if (newSession) {
           if (prevUserId && newUserId && prevUserId !== newUserId) {
-            clearUserDataForUserSwitch();
+            await clearUserDataForUserSwitch();
           }
           if (newUserId) {
             localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
@@ -132,7 +132,7 @@ export function AuthProvider({ children }) {
           }
         } else if (event === "SIGNED_OUT" || !newSession) {
           if (event === "SIGNED_OUT") {
-            clearUserDataForUserSwitch();
+            await clearUserDataForUserSwitch();
             cacheSession(null);
             setSession(null);
             setSessionLoading(false);
@@ -142,6 +142,7 @@ export function AuthProvider({ children }) {
         isInitialCall = false;
       });
       subscription = result?.data?.subscription;
+
     } catch (err) {
       console.error("Failed to set up auth listener", err);
       setTimeout(() => setSessionLoading(false), 0);

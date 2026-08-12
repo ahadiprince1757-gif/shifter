@@ -136,6 +136,7 @@ export function useQuiz(
         // Evaluate answer locally offline
         const res = evaluateAnswer(answer, targetQ);
         await progressRepo.saveProgress({
+          userId,
           topicId: topic,
           data: { ...payload, isCorrect: res.isCorrect },
         });
@@ -168,6 +169,7 @@ export function useQuiz(
           ]);
           // Persist mistake to IndexedDB + Supabase
           mistakeRepo.saveMistake({
+            userId,
             topicId: topic,
             subjectId: subject.id,
             chapterId: chapter.id,

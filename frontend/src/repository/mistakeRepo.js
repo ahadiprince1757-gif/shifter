@@ -6,21 +6,24 @@ export const mistakeRepo = {
   /**
    * Save or update a missed question in IndexedDB, then sync to Supabase.
    */
-  async saveMistake({ topicId, subjectId, chapterId, questionIndex, questionText, correctAnswer, solution }) {
+  async saveMistake({ userId, topicId, subjectId, chapterId, questionIndex, questionText, correctAnswer, solution }) {
     try {
       // 1. Write to IndexedDB (always, offline-first)
-      const existing = await db.user_mistakes
+      const all = await db.user_mistakes
         .where({ topic_id: topicId, question_index: questionIndex })
-        .first();
+        .toArray();
+      const existing = all.find(m => !userId || !m.user_id || m.user_id === userId);
 
       if (existing) {
         await db.user_mistakes.update(existing.id, {
+          user_id: userId || existing.user_id,
           resolved: false,
           attempt_count: (existing.attempt_count || 1) + 1,
           updated_at: new Date().toISOString(),
         });
       } else {
         await db.user_mistakes.add({
+          user_id: userId || null,
           topic_id: topicId,
           subject_id: subjectId,
           chapter_id: chapterId,
@@ -55,9 +58,9 @@ export const mistakeRepo = {
   /**
    * Get all unresolved mistakes.
    */
-  async getUnresolvedMistakes() {
+  async getUnresolvedMistakes(userId) {
     try {
-      return await db.user_mistakes.filter(m => !m.resolved).toArray();
+      return await db.user_mistakes.filter(m => !m.resolved && (!userId || !m.user_id || m.user_id === userId)).toArray();
     } catch (err) {
       console.error("Failed to fetch unresolved mistakes:", err);
       return [];

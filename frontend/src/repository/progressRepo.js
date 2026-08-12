@@ -8,8 +8,10 @@ export const progressRepo = {
   async saveProgress(progressData) {
     return db.transaction("rw", db.user_progress, db.change_log, async () => {
       // 1. Update the local view instantly
+      const userId = progressData.userId || null;
       const progressRecord = {
-        id: progressData.id || crypto.randomUUID(), // Or composite like `${userId}_${topicId}`
+        id: progressData.id || (userId ? `${userId}_${progressData.topicId}` : crypto.randomUUID()),
+        user_id: userId,
         topic_id: progressData.topicId,
         data: progressData.data, // the actual quiz results/score
         sync_status: "pending",

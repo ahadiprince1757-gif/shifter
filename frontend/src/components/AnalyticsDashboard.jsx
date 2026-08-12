@@ -4,8 +4,11 @@ import { fetchAnalytics, fetchAchievements } from "../api";
 import SkeletonLoader from "./SkeletonLoader";
 import { spacedRepo } from "../repository/spacedRepo";
 import { mistakeRepo } from "../repository/mistakeRepo";
+import { useAuth } from "../hooks/useAuth";
 
 export default function AnalyticsDashboard() {
+  const { session } = useAuth();
+  const userId = session?.user?.id || null;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -29,9 +32,9 @@ export default function AnalyticsDashboard() {
 
     // Load local spaced review queue, mistake count, and cloud achievements
     spacedRepo.getDueReviews().then(setDueReviews).catch(() => {});
-    mistakeRepo.getUnresolvedMistakes().then((m) => setMistakeCount(m.length)).catch(() => {});
+    mistakeRepo.getUnresolvedMistakes(userId).then((m) => setMistakeCount(m.length)).catch(() => {});
     fetchAchievements().then(setAchievements).catch(() => {});
-  }, []);
+  }, [userId]);
 
   if (loading) {
     return (

@@ -18,6 +18,20 @@ db.version(10).stores({
   await tx.table("topics").clear();
 });
 
+db.version(11).stores({
+  curriculum: "id, is_deleted",
+  topics: "id, curriculum_id, chapter_id, is_deleted",
+  user_progress: "id, user_id, topic_id, sync_status, updated_at",
+  change_log: "++id, type, entity_id, synced, timestamp",
+  sync_metadata: "table_name, last_synced_at",
+
+  // User-scoped learning stores
+  user_mistakes: "++id, user_id, topic_id, subject_id, chapter_id, question_index, resolved, updated_at",
+  spaced_reviews: "[user_id+topic_id], user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions, updated_at",
+  user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
+});
+
+
 // Optional: Add some basic helper hooks or defaults here if needed
 db.on("populate", () => {
   console.log("Database initialized for the first time.");

@@ -2,8 +2,11 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import SkeletonLoader from "./SkeletonLoader";
+import { useAuth } from "../hooks/useAuth";
 
 export default function MistakeJournal() {
+  const { session } = useAuth();
+  const userId = session?.user?.id || null;
   const [mistakes, setMistakes] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all"); // "all" | subjectId
@@ -13,7 +16,7 @@ export default function MistakeJournal() {
     let cancelled = false;
     async function load() {
       setLoading(true);
-      const data = await mistakeRepo.getUnresolvedMistakes();
+      const data = await mistakeRepo.getUnresolvedMistakes(userId);
       if (cancelled) return;
       data.sort((a, b) => new Date(b.updated_at) - new Date(a.updated_at));
       setMistakes(data);
@@ -22,7 +25,7 @@ export default function MistakeJournal() {
     }
     load();
     return () => { cancelled = true; };
-  }, []);
+  }, [userId]);
 
   const subjects = [...new Set(mistakes.map((m) => m.subject_id).filter(Boolean))];
 
