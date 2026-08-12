@@ -124,7 +124,7 @@ add(
   "biology",
   "cells",
   "Microscopes & Cell Observation",
-  `<h2>Microscopes & Cell Observation</h2>
+  `<h2>Microscopes &amp; Cell Observation</h2>
 
 <p>A microscope is an instrument used to magnify small objects so they can be seen clearly.</p>
 
@@ -138,9 +138,17 @@ add(
 <hr>
 
 <h3> 2. Parts of a Light Microscope</h3>
+
+<div style="text-align:center;margin:1.5rem 0">
+<img src="/images/microscope-labelled.png" alt="Labelled diagram of a compound light microscope showing eyepiece lens, body tube, revolving nosepiece, objective lenses, stage, stage clips, diaphragm, mirror, coarse and fine adjustment knobs, arm, and base" style="max-width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.15)" />
+<p style="font-size:0.9em;color:#666;margin-top:0.5rem"><em>Figure 1: Labelled diagram of a compound light microscope</em></p>
+</div>
+
 <ul>
 <li><b>Eyepiece Lens</b> – lens you look through</li>
-<li><b>Objective Lens</b> – magnifies the specimen</li>
+<li><b>Body Tube</b> – connects eyepiece to objective lenses</li>
+<li><b>Revolving Nosepiece</b> – holds and rotates objective lenses</li>
+<li><b>Objective Lens</b> – magnifies the specimen (low, medium, high power)</li>
 <li><b>Stage</b> – platform holding the slide</li>
 <li><b>Stage Clips</b> – keep slide in place</li>
 <li><b>Coarse Adjustment Knob</b> – large focusing movement</li>
@@ -153,6 +161,8 @@ add(
 
 <pre>
 Eyepiece → Viewing
+Body Tube → Connects eyepiece to objectives
+Revolving Nosepiece → Rotates objectives
 Objective Lens → Magnification
 Stage → Holds slide
 Mirror → Light source
