@@ -24,14 +24,25 @@ export function useMasteredTopics() {
 
       setLoading(true);
 
-      // 1. First load local cached state for fast offline UI
-      try {
-        const all = await db.mastered.toArray();
-        if (!isCancelled && all.length > 0) {
-          setMastered(new Set(all.map((item) => item.topicKey)));
+      // Check if user changed before loading cached data
+      const cachedUserId = localStorage.getItem("shifter_current_user_id");
+      const isDifferentUser = cachedUserId && cachedUserId !== userId;
+
+      // 1. If different user, wipe local DB immediately so old user data is never loaded
+      if (isDifferentUser) {
+        await db.mastered.clear().catch(() => {});
+        localStorage.removeItem("Tixar_mastered");
+        if (!isCancelled) setMastered(new Set());
+      } else {
+        // Load local cached state for fast offline UI
+        try {
+          const all = await db.mastered.toArray();
+          if (!isCancelled && all.length > 0) {
+            setMastered(new Set(all.map((item) => item.topicKey)));
+          }
+        } catch (err) {
+          console.error("Failed to load mastered topics from IndexedDB", err);
         }
-      } catch (err) {
-        console.error("Failed to load mastered topics from IndexedDB", err);
       }
 
       // 2. Fetch user's latest progress from Supabase if online
@@ -48,17 +59,16 @@ export function useMasteredTopics() {
             }
           }
 
-          if (remoteProgress.length > 0 || masteredKeys.size > 0) {
-            setMastered(masteredKeys);
-            // Sync local DB with user's verified remote progress
-            await db.mastered.clear().catch(() => {});
-            if (dbEntries.length > 0) {
-              await db.mastered.bulkPut(dbEntries).catch(() => {});
-            }
-            try {
-              localStorage.setItem("Tixar_mastered", JSON.stringify([...masteredKeys]));
-            } catch {}
+          // ALWAYS sync state and local DB with remote response (even if 0 items for new user)
+          setMastered(masteredKeys);
+          await db.mastered.clear().catch(() => {});
+          if (dbEntries.length > 0) {
+            await db.mastered.bulkPut(dbEntries).catch(() => {});
           }
+          try {
+            localStorage.setItem("Tixar_mastered", JSON.stringify([...masteredKeys]));
+            localStorage.setItem("shifter_current_user_id", userId);
+          } catch {}
         }
       } catch (err) {
         console.warn("Could not sync remote progress (offline?):", err);
@@ -67,6 +77,7 @@ export function useMasteredTopics() {
           setLoading(false);
         }
       }
+
     }
 
     loadMastered();
