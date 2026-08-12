@@ -14,11 +14,17 @@ db.version(10).stores({
   spaced_reviews: "topic_id, next_review_at, interval_days, ease_factor, repetitions, updated_at",
   user_notes: "topic_id, updated_at",
 }).upgrade(async (tx) => {
-  // Clear stale cached topic content so latest server content is fetched
   await tx.table("topics").clear();
 });
 
+// Version 11: Drop stores with old primary keys to prevent Dexie UpgradeError
 db.version(11).stores({
+  spaced_reviews: null,
+  user_notes: null,
+});
+
+// Version 12: Re-create user-scoped stores with compound primary keys
+db.version(12).stores({
   curriculum: "id, is_deleted",
   topics: "id, curriculum_id, chapter_id, is_deleted",
   user_progress: "id, user_id, topic_id, sync_status, updated_at",
@@ -31,10 +37,17 @@ db.version(11).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
-
-// Optional: Add some basic helper hooks or defaults here if needed
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
+});
+
+// Auto-recovery if database connection ever gets stuck or corrupted during migration
+db.open().catch(async (err) => {
+  if (err.name === "UpgradeError" || err.name === "DatabaseClosedError") {
+    console.warn("ShifterLocalDB_v2 upgrade error detected, auto-resetting database...", err);
+    await Dexie.delete("ShifterLocalDB_v2");
+    await db.open();
+  }
 });
 
 export default db;
