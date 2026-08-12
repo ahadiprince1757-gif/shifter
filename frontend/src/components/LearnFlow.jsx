@@ -3,7 +3,8 @@ import { useTopicContent } from "../hooks/useTopicContent";
 import { useQuiz } from "../hooks/useQuiz";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
-import { isTeaserLimitReached, incrementGuestQuizCount } from "../utils/guestSession";
+import { incrementGuestQuizCount } from "../utils/guestSession";
+
 
 import LearnHeader from "./learn/LearnHeader";
 import PhaseStrip from "./learn/PhaseStrip";

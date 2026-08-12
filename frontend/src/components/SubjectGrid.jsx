@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
@@ -11,19 +11,24 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
 
-  // Read user-scoped lastTopic and due reviews
-  const [lastTopic, setLastTopic] = useState(null);
-  const [dueReviews, setDueReviews] = useState([]);
-
-  useEffect(() => {
-    if (!userId) return; // state already initialised to null/[] above
+  // localStorage is synchronous → derive lastTopic via useMemo (no setState in effects)
+  const lastTopic = useMemo(() => {
+    if (!userId) return null;
     try {
       const raw = localStorage.getItem(`lastTopic_${userId}`);
-      setLastTopic(raw ? JSON.parse(raw) : null);
-    } catch { setLastTopic(null); }
+      return raw ? JSON.parse(raw) : null;
+    } catch { return null; }
+  }, [userId]);
 
+  // Async spaced reviews state
+  const [dueReviews, setDueReviews] = useState([]);
+
+  // Only async work goes in useEffect
+  useEffect(() => {
+    if (!userId) return;
     spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
   }, [userId]);
+
 
   if (!curriculum) {
     return (
