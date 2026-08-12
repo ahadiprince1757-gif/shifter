@@ -37,9 +37,8 @@ db.version(12).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
-// Version 13: Full data reset — wipe all user progress stores so every user
-// starts with a clean slate (fixes data shared across accounts from earlier bug).
-db.version(13).stores({
+// Version 14: Comprehensive data reset — wipe all user progress stores, clear telemetry queue, and delete legacy TixarProgressDB
+db.version(14).stores({
   curriculum: "id, is_deleted",
   topics: "id, curriculum_id, chapter_id, is_deleted",
   user_progress: "id, user_id, topic_id, sync_status, updated_at",
@@ -49,7 +48,6 @@ db.version(13).stores({
   spaced_reviews: "[user_id+topic_id], user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions, updated_at",
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 }).upgrade(async (tx) => {
-  // Clear all user-scoped data — each user will rebuild from Supabase
   await Promise.all([
     tx.table("user_progress").clear(),
     tx.table("user_mistakes").clear(),
@@ -57,8 +55,17 @@ db.version(13).stores({
     tx.table("user_notes").clear(),
     tx.table("change_log").clear(),
   ]);
-  console.log("[db v13] All user data stores wiped — fresh start for all users.");
+  try {
+    localStorage.removeItem("shifter_learning_events");
+    localStorage.removeItem("Tixar_mastered");
+    Object.keys(localStorage)
+      .filter((k) => k.startsWith("lastTopic_") || k.startsWith("Tixar_mastered_"))
+      .forEach((k) => localStorage.removeItem(k));
+    await Dexie.delete("TixarProgressDB").catch(() => {});
+  } catch { /* ignore */ }
+  console.log("[db v14] Total data reset completed — stores, telemetry queue, and legacy DBs purged.");
 });
+
 
 
 db.on("populate", () => {

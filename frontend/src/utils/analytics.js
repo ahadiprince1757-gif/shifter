@@ -106,3 +106,15 @@ export async function triggerSync() {
     syncInProgress = false;
   }
 }
+
+/**
+ * Clear all queued telemetry events from local storage
+ */
+export function clearQueuedEvents() {
+  try {
+    localStorage.removeItem(QUEUE_KEY);
+    console.log("[Telemetry] Telemetry event queue cleared.");
+  } catch (e) {
+    console.error("Failed to clear telemetry event queue", e);
+  }
+}
