@@ -37,7 +37,9 @@
               }
             });
           } else {
-            navigator.serviceWorker.register('/sw.js');
+            navigator.serviceWorker.register('/sw.js?v=12.0').then((reg) => {
+              reg.update();
+            });
           }
         });
       }
