@@ -46,13 +46,13 @@ export const spacedRepo = {
   },
 
   /**
-   * Get all topics currently due for review (next_review_at <= NOW).
+   * Get all topics currently due for review (next_review_at <= NOW) for a specific user.
    */
-  async getDueReviews() {
+  async getDueReviews(userId) {
     try {
       const now = new Date().toISOString();
       const all = await db.spaced_reviews.toArray();
-      return all.filter(r => r.next_review_at <= now);
+      return all.filter(r => r.next_review_at <= now && (!userId || !r.user_id || r.user_id === userId));
     } catch (err) {
       console.error("Failed to get due reviews:", err);
       return [];

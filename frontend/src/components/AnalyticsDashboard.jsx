@@ -31,7 +31,7 @@ export default function AnalyticsDashboard() {
       });
 
     // Load local spaced review queue, mistake count, and cloud achievements
-    spacedRepo.getDueReviews().then(setDueReviews).catch(() => {});
+    spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
     mistakeRepo.getUnresolvedMistakes(userId).then((m) => setMistakeCount(m.length)).catch(() => {});
     fetchAchievements().then(setAchievements).catch(() => {});
   }, [userId]);

@@ -515,39 +515,89 @@ app.post("/api/analytics/events", async (req, res) => {
   }
 });
 
-// Endpoint: Get aggregated analytics from topic_analytics_view
+// Endpoint: Get aggregated analytics for the current user
 app.get("/api/analytics", async (req, res) => {
   try {
-    const { data, error } = await supabase
-      .from("topic_analytics_view")
-      .select("*");
-    if (error) {
-      logger.db("SELECT", "topic_analytics_view", "error", {
-        error: error.message,
-      });
-      return res
-        .status(500)
-        .json({ error: "Database query failed fetching analytics" });
+    const userId = await resolveUserId(req);
+
+    // Fetch full topics list from content_view
+    const { data: allTopics, error: topicErr } = await supabase
+      .from("content_view")
+      .select("topic_id, sid, cid, topic");
+
+    if (topicErr) {
+      logger.db("SELECT", "content_view", "error", { error: topicErr.message });
+      return res.status(500).json({ error: "Database query failed fetching topics for analytics" });
     }
-    const rows = data || [];
-    const mostVisited = [...rows]
-      .filter((r) => r.visit_count > 0)
-      .sort((a, b) => b.visit_count - a.visit_count)
-      .slice(0, 10);
-    const mostPassed = [...rows]
-      .filter((r) => r.pass_count > 0)
-      .sort((a, b) => b.pass_count - a.pass_count)
-      .slice(0, 10);
-    const mostFailed = [...rows]
-      .filter((r) => r.fail_count > 0)
-      .sort((a, b) => b.fail_count - a.fail_count)
-      .slice(0, 10);
-    const unvisited = rows.filter((r) => r.visit_count === 0);
+
+    const topicMap = new Map();
+    (allTopics || []).forEach((t) => {
+      topicMap.set(t.topic_id, {
+        topic_id: t.topic_id,
+        topic_title: t.topic,
+        chapter_title: t.cid,
+        subject_name: t.sid,
+        subject_id: t.sid,
+        chapter_id: t.cid,
+        visit_count: 0,
+        pass_count: 0,
+        fail_count: 0,
+      });
+    });
+
+    if (userId) {
+      // 1. User-specific learning events
+      const { data: events } = await supabase
+        .from("learning_events")
+        .select("topic_id, event_type")
+        .eq("user_id", userId);
+
+      if (events) {
+        events.forEach((e) => {
+          const item = topicMap.get(e.topic_id);
+          if (item) {
+            if (e.event_type === "visit") item.visit_count += 1;
+            if (e.event_type === "pass") item.pass_count += 1;
+            if (e.event_type === "fail") item.fail_count += 1;
+          }
+        });
+      }
+
+      // 2. User-specific progress
+      const { data: progressRows } = await supabase
+        .from("progress")
+        .select("topic_id, completed, score")
+        .eq("user_id", userId);
+
+      if (progressRows) {
+        progressRows.forEach((p) => {
+          const item = topicMap.get(p.topic_id);
+          if (item) {
+            if (p.completed && item.pass_count === 0) {
+              item.pass_count = 1;
+            }
+            if (p.score != null && p.score < 50 && item.fail_count === 0) {
+              item.fail_count = 1;
+            }
+          }
+        });
+      }
+    }
+
+    const rows = Array.from(topicMap.values());
+
+    const mostVisited = [...rows].filter((r) => r.visit_count > 0).sort((a, b) => b.visit_count - a.visit_count).slice(0, 10);
+    const mostPassed = [...rows].filter((r) => r.pass_count > 0).sort((a, b) => b.pass_count - a.pass_count).slice(0, 10);
+    const mostFailed = [...rows].filter((r) => r.fail_count > 0).sort((a, b) => b.fail_count - a.fail_count).slice(0, 10);
+    const unvisited = rows.filter((r) => r.visit_count === 0 && r.pass_count === 0);
+
     logger.action("ANALYTICS_FETCHED", "success", {
+      userId,
       totalTopics: rows.length,
-      visitedCount: rows.filter((r) => r.visit_count > 0).length,
+      visitedCount: mostVisited.length,
       unvisitedCount: unvisited.length,
     });
+
     res.json({ mostVisited, mostPassed, mostFailed, unvisited });
   } catch (err) {
     logger.error("ANALYTICS_FETCH", err);
