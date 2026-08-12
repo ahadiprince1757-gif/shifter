@@ -6,6 +6,21 @@ import { spacedRepo } from "../repository/spacedRepo";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import { useAuth } from "../hooks/useAuth";
 
+/** Helper to convert raw IDs/slugs (e.g. physics_motion_speed) into clean title case */
+function formatTitle(str) {
+  if (!str) return "";
+  // If it's already properly formatted text (has spaces and no underscores), return as is
+  if (!str.includes("_") && !str.includes("-") && /[a-z]/.test(str)) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  return str
+    .replace(/[_-]/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
 export default function AnalyticsDashboard() {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
@@ -197,7 +212,7 @@ export default function AnalyticsDashboard() {
                 {dueReviews.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
                     <div className="clean-topic-details">
-                      <span className="clean-topic-name">{item.topic_id}</span>
+                      <span className="clean-topic-name">{formatTitle(item.topic_id)}</span>
                       <span className="clean-topic-meta">
                         Review interval: {item.interval_days} day{item.interval_days !== 1 ? "s" : ""} · Repetitions: {item.repetitions}
                       </span>
@@ -258,9 +273,9 @@ export default function AnalyticsDashboard() {
                 {mostFailed.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
                     <div className="clean-topic-details">
-                      <span className="clean-topic-name">{item.topic_title}</span>
+                      <span className="clean-topic-name">{formatTitle(item.topic_title)}</span>
                       <span className="clean-topic-meta">
-                        {item.subject_name} • {item.chapter_title}
+                        {formatTitle(item.subject_name)} • {formatTitle(item.chapter_title)}
                       </span>
                     </div>
                     <button
@@ -292,9 +307,9 @@ export default function AnalyticsDashboard() {
                 {mostVisited.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
                     <div className="clean-topic-details">
-                      <span className="clean-topic-name">{item.topic_title}</span>
+                      <span className="clean-topic-name">{formatTitle(item.topic_title)}</span>
                       <span className="clean-topic-meta">
-                        {item.subject_name} • {item.chapter_title}
+                        {formatTitle(item.subject_name)} • {formatTitle(item.chapter_title)}
                       </span>
                     </div>
                     <button
@@ -326,9 +341,9 @@ export default function AnalyticsDashboard() {
                 {mostPassed.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
                     <div className="clean-topic-details">
-                      <span className="clean-topic-name">{item.topic_title}</span>
+                      <span className="clean-topic-name">{formatTitle(item.topic_title)}</span>
                       <span className="clean-topic-meta">
-                        {item.subject_name} • {item.chapter_title}
+                        {formatTitle(item.subject_name)} • {formatTitle(item.chapter_title)}
                       </span>
                     </div>
                     <button
@@ -360,7 +375,7 @@ export default function AnalyticsDashboard() {
                 {achievements.map((ach, idx) => (
                   <div key={idx} className="clean-topic-item">
                     <div className="clean-topic-details">
-                      <span className="clean-topic-name">🏆 {ach.achievement_name}</span>
+                      <span className="clean-topic-name">🏆 {formatTitle(ach.achievement_name)}</span>
                       <span className="clean-topic-meta">
                         Unlocked {new Date(ach.unlocked_at).toLocaleDateString()}
                       </span>
@@ -388,7 +403,7 @@ export default function AnalyticsDashboard() {
                 {Object.keys(unvisitedBySubject).sort().map((subName) => (
                   <div key={subName} className="clean-subject-group">
                     <div className="subject-group-header">
-                      <span className="subject-group-title">{subName}</span>
+                      <span className="subject-group-title">{formatTitle(subName)}</span>
                       <span className="subject-group-count">
                         {unvisitedBySubject[subName].length} topics remaining
                       </span>
@@ -397,8 +412,8 @@ export default function AnalyticsDashboard() {
                       {unvisitedBySubject[subName].slice(0, 5).map((item, idx) => (
                         <div key={idx} className="clean-topic-item">
                           <div className="clean-topic-details">
-                            <span className="clean-topic-name">{item.topic_title}</span>
-                            <span className="clean-topic-meta">{item.chapter_title}</span>
+                            <span className="clean-topic-name">{formatTitle(item.topic_title)}</span>
+                            <span className="clean-topic-meta">{formatTitle(item.chapter_title)}</span>
                           </div>
                           <button
                             className="clean-action-btn primary"
