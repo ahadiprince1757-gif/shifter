@@ -1,0 +1,189 @@
+[
+  {
+    "id": "math",
+    "icon": "",
+    "label": "Mathematics",
+    "chapters": [
+      {
+        "id": "numbers",
+        "label": "Numbers",
+        "topics": [
+          "Number Systems & Basic Operations"
+        ]
+      },
+      {
+        "id": "algebra",
+        "label": "Algebra",
+        "topics": [
+          "Algebraic expressions",
+          "Simplifying expressions",
+          "Linear equations",
+          "Substitution",
+          "Expanding brackets"
+        ]
+      },
+      {
+        "id": "geometry",
+        "label": "Geometry",
+        "topics": [
+          "Types of angles",
+          "Triangles",
+          "Quadrilaterals",
+          "Circles",
+          "Area and Perimeter"
+        ]
+      },
+      {
+        "id": "fractions",
+        "label": "Fractions & Decimals",
+        "topics": [
+          "Fraction basics",
+          "Adding and subtracting fractions",
+          "Multiplying and dividing fractions",
+          "Decimals",
+          "Fractions to decimals"
+        ]
+      },
+      {
+        "id": "measurement",
+        "label": "Measurement",
+        "topics": [
+          "Area of rectangles and squares",
+          "Area of triangles",
+          "Volume of cubes and cuboids",
+          "Surface area basics",
+          "Real life applications"
+        ]
+      },
+      {
+        "id": "graphs",
+        "label": "Graphs",
+        "topics": [
+          "Coordinate plane basics",
+          "Plotting points",
+          "Line graphs",
+          "Gradient",
+          "Applications of graphs"
+        ]
+      },
+      {
+        "id": "ratio",
+        "label": "Ratio & Proportion",
+        "topics": [
+          "Ratio basics",
+          "Dividing in ratio",
+          "Proportion",
+          "Direct proportion",
+          "Inverse proportion"
+        ]
+      },
+      {
+        "id": "statistics",
+        "label": "Statistics",
+        "topics": [
+          "Data & frequency tables",
+          "Mean",
+          "Median",
+          "Mode",
+          "Bar graphs"
+        ]
+      },
+      {
+        "id": "probability",
+        "label": "Probability",
+        "topics": [
+          "Basic probability",
+          "Dice probability",
+          "Coin probability",
+          "Combined events",
+          "Bayes Theorem",
+          "Expected Value"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "swe_se",
+    "icon": "",
+    "label": "Software Engineering",
+    "chapters": [
+      {
+        "id": "fundamentals",
+        "label": "Fundamentals & SDLC",
+        "topics": [
+          "What is Software Engineering?",
+          "Software Development Life Cycle (SDLC)",
+          "Waterfall Model",
+          "Agile Methodology & Scrum",
+          "Requirements Engineering"
+        ]
+      },
+      {
+        "id": "design_architecture",
+        "label": "System Design & Architecture",
+        "topics": [
+          "Object-Oriented Programming (OOP) Principles",
+          "SOLID Principles",
+          "Common Design Patterns (Singleton, Factory, Observer)",
+          "Monolithic vs. Microservices Architecture",
+          "UML Diagrams (Use Case, Class, Sequence)"
+        ]
+      },
+      {
+        "id": "git_version_control",
+        "label": "Version Control (Git)",
+        "topics": [
+          "Basic Git Commands (init, clone, add, commit, push)",
+          "Branching & Merging Strategies (Gitflow, Feature Branching)",
+          "Handling Merge Conflicts",
+          "Rebasing vs. Merging",
+          "Pull Requests & Code Reviews"
+        ]
+      },
+      {
+        "id": "testing_quality",
+        "label": "Software Testing & Quality Assurance",
+        "topics": [
+          "Unit Testing vs. Integration Testing vs. E2E Testing",
+          "Test-Driven Development (TDD)",
+          "Code Coverage & Static Code Analysis",
+          "Manual vs. Automated Testing",
+          "CI/CD Pipelines (Continuous Integration / Continuous Deployment)"
+        ]
+      },
+      {
+        "id": "databases_storage",
+        "label": "Databases & Data Management",
+        "topics": [
+          "Relational (SQL) vs. Non-Relational (NoSQL) Databases",
+          "Database Normalization (1NF, 2NF, 3NF)",
+          "ACID Properties & Transactions",
+          "Indexing & Query Optimization",
+          "ORM (Object-Relational Mapping) Frameworks"
+        ]
+      },
+      {
+        "id": "web_apis",
+        "label": "Web Development & APIs",
+        "topics": [
+          "Client-Server Architecture & HTTP/HTTPS Protocols",
+          "RESTful API Design Best Practices",
+          "GraphQL vs. REST APIs",
+          "Authentication vs. Authorization (JWT, OAuth 2.0)",
+          "CORS & Basic Web Security (OWASP Top 10)"
+        ]
+      },
+      {
+        "id": "cloud_devops",
+        "label": "DevOps, Cloud & Infrastructure",
+        "topics": [
+          "Containerization with Docker",
+          "Container Orchestration with Kubernetes",
+          "Cloud Computing Basics (AWS, GCP, Azure)",
+          "Serverless Architecture (FaaS)",
+          "Monitoring, Logging & Observability (Prometheus, Grafana, ELK)"
+        ]
+      }
+    ]
+  }
+]
