@@ -37,6 +37,30 @@ db.version(12).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
+// Version 13: Full data reset — wipe all user progress stores so every user
+// starts with a clean slate (fixes data shared across accounts from earlier bug).
+db.version(13).stores({
+  curriculum: "id, is_deleted",
+  topics: "id, curriculum_id, chapter_id, is_deleted",
+  user_progress: "id, user_id, topic_id, sync_status, updated_at",
+  change_log: "++id, type, entity_id, synced, timestamp",
+  sync_metadata: "table_name, last_synced_at",
+  user_mistakes: "++id, user_id, topic_id, subject_id, chapter_id, question_index, resolved, updated_at",
+  spaced_reviews: "[user_id+topic_id], user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions, updated_at",
+  user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
+}).upgrade(async (tx) => {
+  // Clear all user-scoped data — each user will rebuild from Supabase
+  await Promise.all([
+    tx.table("user_progress").clear(),
+    tx.table("user_mistakes").clear(),
+    tx.table("spaced_reviews").clear(),
+    tx.table("user_notes").clear(),
+    tx.table("change_log").clear(),
+  ]);
+  console.log("[db v13] All user data stores wiped — fresh start for all users.");
+});
+
+
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
