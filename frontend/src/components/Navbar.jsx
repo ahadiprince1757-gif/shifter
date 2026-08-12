@@ -3,7 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import GlobalSearch from "./GlobalSearch";
 import ProfileDropdown from "./ProfileDropdown";
 import Breadcrumbs from "./Breadcrumbs";
-import { getRemainingFreeQuizzes } from "../utils/guestSession";
+
 import { useAuth } from "../hooks/useAuth";
 
 // Sun icon
@@ -71,7 +71,7 @@ export default function Navbar({
   const [searchOpen, setSearchOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
-  const remainingQuizzes = session ? null : getRemainingFreeQuizzes();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -208,6 +208,20 @@ export default function Navbar({
 
           )}
 
+          {/* App: Progress link */}
+          {isApp && (
+            <button
+              className={`lnav-home-btn ${location.pathname === "/analytics" ? "lnav-home-btn--active" : ""}`}
+              onClick={() => { navigate("/analytics"); setMenuOpen(false); }}
+              aria-label="View Progress"
+            >
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z" />
+              </svg>
+              <span className="lnav-home-text">Progress</span>
+            </button>
+          )}
+
           {/* App: Home button */}
           {isApp && (
             <button
@@ -266,6 +280,15 @@ export default function Navbar({
           >
             {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
           </button>
+
+          {isApp && (
+            <button
+              className="lnav-drawer-item"
+              onClick={() => { navigate("/analytics"); setMenuOpen(false); }}
+            >
+              📊 Progress
+            </button>
+          )}
 
           {isApp && (
             <button

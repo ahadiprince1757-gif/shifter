@@ -173,6 +173,11 @@ body {
   border-color: transparent;
   transform: translateY(-1px);
 }
+.lnav-home-btn--active {
+  background: var(--v);
+  color: #fff;
+  border-color: transparent;
+}
 
 .lnav-search-panel {
   position: fixed;
