@@ -15,18 +15,28 @@ export const spacedRepo = {
    */
   async updateReviewSchedule(topicId, isCorrect, confidence = "medium", meta = {}) {
     try {
-      const existing = await db.spaced_reviews.get(topicId);
+      const { sid, cid, userId } = meta;
+      const uid = userId || null;
+      
+      let existing = null;
+      if (uid) {
+        existing = await db.spaced_reviews.get([uid, topicId]);
+      } else {
+        const all = await db.spaced_reviews.where("topic_id").equals(topicId).toArray();
+        existing = all.find(r => !r.user_id) || null;
+      }
+
       const quality = convertToQualityRating(isCorrect, confidence);
       const nextData = calculateNextReview(quality, existing);
 
       // 1. Write to IndexedDB
       await db.spaced_reviews.put({
+        user_id: uid,
         topic_id: topicId,
         ...nextData,
       });
 
       // 2. Sync to Supabase (fire-and-forget)
-      const { sid, cid } = meta;
       if (sid && cid && networkService.isOnline) {
         apiSaveSpacedReview({
           sid,
@@ -52,7 +62,11 @@ export const spacedRepo = {
     try {
       const now = new Date().toISOString();
       const all = await db.spaced_reviews.toArray();
-      return all.filter(r => r.next_review_at <= now && (!userId || !r.user_id || r.user_id === userId));
+      return all.filter(r => {
+        if (r.next_review_at > now) return false;
+        if (userId) return r.user_id === userId;
+        return !r.user_id;
+      });
     } catch (err) {
       console.error("Failed to get due reviews:", err);
       return [];
@@ -62,9 +76,13 @@ export const spacedRepo = {
   /**
    * Get spaced review metadata for a single topic.
    */
-  async getTopicReviewInfo(topicId) {
+  async getTopicReviewInfo(topicId, userId = null) {
     try {
-      return await db.spaced_reviews.get(topicId);
+      if (userId) {
+        return await db.spaced_reviews.get([userId, topicId]);
+      }
+      const all = await db.spaced_reviews.where("topic_id").equals(topicId).toArray();
+      return all.find(r => !r.user_id) || null;
     } catch (err) {
       console.error("Failed to get topic review info:", err);
       return null;

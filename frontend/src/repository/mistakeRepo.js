@@ -60,7 +60,11 @@ export const mistakeRepo = {
    */
   async getUnresolvedMistakes(userId) {
     try {
-      return await db.user_mistakes.filter(m => !m.resolved && (!userId || !m.user_id || m.user_id === userId)).toArray();
+      return await db.user_mistakes.filter(m => {
+        if (m.resolved) return false;
+        if (userId) return m.user_id === userId;
+        return !m.user_id;
+      }).toArray();
     } catch (err) {
       console.error("Failed to fetch unresolved mistakes:", err);
       return [];

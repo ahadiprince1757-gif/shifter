@@ -224,7 +224,7 @@ export function useQuiz(
         topic,
         isCorrect,
         finalConfidence,
-        { sid: subject?.id, cid: chapter?.id }
+        { sid: subject?.id, cid: chapter?.id, userId }
       ).catch(() => {});
 
       // Save progress summary to Supabase

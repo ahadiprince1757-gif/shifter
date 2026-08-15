@@ -1,3 +1,5 @@
+import { getActiveSession } from "../supabase";
+
 // Event-driven learning analytics telemetry queue and synchronization
 const QUEUE_KEY = "shifter_learning_events";
 
@@ -82,11 +84,17 @@ export async function triggerSync() {
   const batchIds = new Set(batchToSync.map(e => e.id));
 
   try {
+    const session = getActiveSession();
+    const headers = {
+      "Content-Type": "application/json"
+    };
+    if (session?.access_token) {
+      headers["Authorization"] = `Bearer ${session.access_token}`;
+    }
+
     const res = await fetch(syncUrl, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
+      headers,
       body: JSON.stringify({ events: batchToSync })
     });
 

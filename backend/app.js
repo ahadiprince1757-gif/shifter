@@ -468,10 +468,16 @@ app.post("/api/analytics/events", async (req, res) => {
     return res.status(400).json({ error: "events array is required" });
   }
   try {
+    const authUserId = await resolveUserId(req);
     const rowsToInsert = [];
     for (const evt of events) {
       const { sid, cid, topic, event_type, user_id } = evt;
       if (!sid || !cid || !topic || !event_type) continue;
+
+      // Strict User Resolution: Require resolved auth token user_id or provided payload user_id
+      const targetUserId = authUserId || user_id || null;
+      if (!targetUserId) continue; // Skip unauthenticated anonymous events to prevent global data contamination
+
       const { data: contentRow, error: contentErr } = await supabase
         .from("content_view")
         .select("topic_id")
@@ -483,7 +489,7 @@ app.post("/api/analytics/events", async (req, res) => {
       rowsToInsert.push({
         topic_id: contentRow.topic_id,
         event_type,
-        user_id: user_id || null,
+        user_id: targetUserId,
       });
     }
     if (rowsToInsert.length === 0) {
@@ -507,6 +513,7 @@ app.post("/api/analytics/events", async (req, res) => {
     logger.action("ANALYTICS_EVENTS_SYNCED", "success", {
       receivedCount: events.length,
       insertedCount: totalInserted,
+      userId: authUserId,
     });
     res.json({ inserted: totalInserted });
   } catch (err) {
@@ -519,6 +526,10 @@ app.post("/api/analytics/events", async (req, res) => {
 app.get("/api/analytics", async (req, res) => {
   try {
     const userId = await resolveUserId(req);
+
+    if (!userId) {
+      return res.json({ mostVisited: [], mostPassed: [], mostFailed: [], unvisited: [] });
+    }
 
     // Fetch full topics list from content_view
     const { data: allTopics, error: topicErr } = await supabase
@@ -545,43 +556,41 @@ app.get("/api/analytics", async (req, res) => {
       });
     });
 
-    if (userId) {
-      // 1. User-specific learning events
-      const { data: events } = await supabase
-        .from("learning_events")
-        .select("topic_id, event_type")
-        .eq("user_id", userId);
+    // 1. User-specific learning events
+    const { data: events } = await supabase
+      .from("learning_events")
+      .select("topic_id, event_type")
+      .eq("user_id", userId);
 
-      if (events) {
-        events.forEach((e) => {
-          const item = topicMap.get(e.topic_id);
-          if (item) {
-            if (e.event_type === "visit") item.visit_count += 1;
-            if (e.event_type === "pass") item.pass_count += 1;
-            if (e.event_type === "fail") item.fail_count += 1;
+    if (events) {
+      events.forEach((e) => {
+        const item = topicMap.get(e.topic_id);
+        if (item) {
+          if (e.event_type === "visit") item.visit_count += 1;
+          if (e.event_type === "pass") item.pass_count += 1;
+          if (e.event_type === "fail") item.fail_count += 1;
+        }
+      });
+    }
+
+    // 2. User-specific progress
+    const { data: progressRows } = await supabase
+      .from("progress")
+      .select("topic_id, completed, score")
+      .eq("user_id", userId);
+
+    if (progressRows) {
+      progressRows.forEach((p) => {
+        const item = topicMap.get(p.topic_id);
+        if (item) {
+          if (p.completed && item.pass_count === 0) {
+            item.pass_count = 1;
           }
-        });
-      }
-
-      // 2. User-specific progress
-      const { data: progressRows } = await supabase
-        .from("progress")
-        .select("topic_id, completed, score")
-        .eq("user_id", userId);
-
-      if (progressRows) {
-        progressRows.forEach((p) => {
-          const item = topicMap.get(p.topic_id);
-          if (item) {
-            if (p.completed && item.pass_count === 0) {
-              item.pass_count = 1;
-            }
-            if (p.score != null && p.score < 50 && item.fail_count === 0) {
-              item.fail_count = 1;
-            }
+          if (p.score != null && p.score < 50 && item.fail_count === 0) {
+            item.fail_count = 1;
           }
-        });
-      }
+        }
+      });
     }
 
     const rows = Array.from(topicMap.values());

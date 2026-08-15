@@ -54,11 +54,14 @@ function LearnFlow({
     }
   }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic, session?.user?.id]);
 
+  const userId = session?.user?.id || null;
+
   const { content, loading, error } = useTopicContent(
     subject,
     chapter,
     topic,
     setPhase,
+    userId,
   );
 
   const quiz = useQuiz(
@@ -68,6 +71,7 @@ function LearnFlow({
     content,
     markMastered,
     setPhase,
+    userId,
   );
 
   if (loading || error || !content) {
