@@ -141,7 +141,7 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
       onTouchCancel={handleTouchEnd}
     >
       <div className="lch">
-        <span className="lbadge lb-n">📖 Notes</span>
+        <span className="lbadge lb-n">NOTES</span>
       </div>
       <div className="lcb">
         <div className="notes-scroll-container">
@@ -212,7 +212,7 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
 
         <div className="lnav-strip">
           <button className="btn-g" onClick={goBack}>← Back to Topics</button>
-          <button className="btn-p" onClick={onNext}>I've Finished Reading →</button>
+          <button className="btn-p" onClick={onNext}>Start Practice Quiz →</button>
         </div>
       </div>
     </div>

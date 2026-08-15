@@ -278,7 +278,7 @@ export default function Navbar({
             className="lnav-drawer-item"
             onClick={() => { toggleDark(); }}
           >
-            {isDark ? "☀️ Light Mode" : "🌙 Dark Mode"}
+            {isDark ? "Light Mode" : "Dark Mode"}
           </button>
 
           {isApp && (
@@ -286,7 +286,7 @@ export default function Navbar({
               className="lnav-drawer-item"
               onClick={() => { navigate("/analytics"); setMenuOpen(false); }}
             >
-              📊 Progress
+              Progress
             </button>
           )}
 
@@ -295,7 +295,7 @@ export default function Navbar({
               className="lnav-drawer-item"
               onClick={() => { navigate("/"); setMenuOpen(false); }}
             >
-              🏠 Home
+              Home
             </button>
           )}
 

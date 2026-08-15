@@ -347,9 +347,6 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
             aria-labelledby="modal-title"
           >
             <div className="legal-modal-header">
-              <span className="legal-modal-icon">
-                {legalContent[legalModal].icon}
-              </span>
               <h2 id="modal-title" className="legal-modal-title">
                 {legalContent[legalModal].title}
               </h2>
@@ -389,15 +386,14 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
         <div className="hero-inner jobs-centered">
           <div className="hero-content">
             <h1 className="hero-title">
-            
-              <br />
-              <span className="gt">Start learning at your own own pace.</span>
+              <span className="gt">Master every topic at your own pace.</span>
             </h1>
-            <p className="hero-sub"> Connecting ideas.Empowering minds.
+            <p className="hero-sub">
+              Adaptive study notes, instant practice feedback, and personalized memory reviews.
             </p>
             <div className="hero-actions">
               <button className="btn-hero primary" onClick={enterApp}>
-                Open Tixar 
+                Start Studying Now →
               </button>
             </div>
           </div>

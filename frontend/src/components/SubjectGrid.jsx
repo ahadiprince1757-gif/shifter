@@ -75,7 +75,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
             className="resume-card-btn"
             onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
-            Resume
+            Resume Topic →
           </button>
         </div>
       )}
@@ -94,7 +94,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
             className="review-queue-btn"
             onClick={() => navigate("/analytics")}
           >
-            View Queue
+            Start Memory Review →
           </button>
         </div>
       )}

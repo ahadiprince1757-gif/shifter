@@ -177,7 +177,13 @@ export default function AnalyticsDashboard() {
             </div>
             {mostFailed.length === 0 ? (
               <div className="clean-empty-state">
-                <p>No weak spots detected. Complete quizzes to get practice recommendations.</p>
+                <p style={{ marginBottom: "1rem" }}>No weak spots detected. Complete quizzes to get practice recommendations.</p>
+                <button
+                  className="clean-action-btn primary"
+                  onClick={() => navigate("/subjects")}
+                >
+                  Browse Subjects to Practice →
+                </button>
               </div>
             ) : (
               <div className="clean-topic-list">
