@@ -26,6 +26,12 @@ const CloseIcon = () => (
   </svg>
 );
 
+const BotIcon = () => (
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+    <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1a2 2 0 01-2 2h-1v1a3 3 0 01-3 3H9a3 3 0 01-3-3v-1H5a2 2 0 01-2-2v-1a7 7 0 017-7h1V5.73A2.001 2.001 0 0112 2zm-3 8a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+  </svg>
+);
+
 export default function BottomNav({
   curriculum,
   onNavigateToTopic,
@@ -73,6 +79,7 @@ export default function BottomNav({
   const path = location.pathname;
   const isHome = path === "/subjects";
   const isProgress = path === "/analytics";
+  const isTutor = path === "/tutor" || path === "/ai-tutor";
 
   const handleSearchNavigate = (subjectId, chapterId, topic) => {
     if (onNavigateToTopic) onNavigateToTopic(subjectId, chapterId, topic);
@@ -123,6 +130,15 @@ export default function BottomNav({
         >
           <span className="bn-icon"><SearchIcon /></span>
           <span className="bn-label">Search</span>
+        </button>
+
+        <button
+          className={`bn-item ${isTutor ? "active" : ""}`}
+          onClick={() => navigate("/tutor")}
+          aria-label="AI Tutor"
+        >
+          <span className="bn-icon"><BotIcon /></span>
+          <span className="bn-label">AI Tutor</span>
         </button>
 
         <button

@@ -15,6 +15,7 @@ const TopicList = React.lazy(() => import("../components/TopicList"));
 const LearnFlow = React.lazy(() => import("../components/LearnFlow"));
 const AnalyticsDashboard = React.lazy(() => import("../components/AnalyticsDashboard"));
 const MistakeJournal = React.lazy(() => import("../components/MistakeJournal"));
+const AITutor = React.lazy(() => import("../components/AITutor"));
 
 const ChapterListWrapper = () => {
   const { subjectId } = useParams();
@@ -151,6 +152,8 @@ export default function AppRoutes() {
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/analytics" element={<AnalyticsDashboard />} />
           <Route path="/mistakes" element={<MistakeJournal />} />
+          <Route path="/tutor" element={<AITutor />} />
+          <Route path="/ai-tutor" element={<AITutor />} />
         </Route>
       </Routes>
     </Suspense>
