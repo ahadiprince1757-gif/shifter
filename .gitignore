@@ -10,7 +10,3 @@ dist/
 .env.test.local
 .env.production.local
 !.env.example
-
-# Excluded images / sensitive assets
-tixar-logo.png
-**/tixar-logo.png
