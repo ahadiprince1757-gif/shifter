@@ -6800,6 +6800,12 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   gap: 0.35rem;
 }
 
+@media (max-width: 820px) {
+  .lnav-nav-links {
+    display: none !important;
+  }
+}
+
 .lnav-tab-btn {
   display: inline-flex;
   align-items: center;
