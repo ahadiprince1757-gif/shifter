@@ -1,43 +1,65 @@
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
 
-// Default model standard for 1B quantized (~700MB)
-export const DEFAULT_MODEL = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
-// Low-RAM model for devices with limited memory (~350MB)
+// Ultra-fast instant model (~60MB download, 2-3 sec load)
+export const FAST_MODEL = "SmolLM2-135M-Instruct-q0f16-MLC";
+// Fast balanced model (~200MB download)
+export const LIGHT_MODEL = "SmolLM2-360M-Instruct-q4f16_1-MLC";
+// Medium low-RAM model (~350MB download)
 export const LOW_RAM_MODEL = "Qwen2.5-0.5B-Instruct-q4f16_1-MLC";
+// Standard high accuracy model (~700MB download)
+export const DEFAULT_MODEL = "Llama-3.2-1B-Instruct-q4f16_1-MLC";
 
 let engineInstance = null;
+let engineInitPromise = null;
+let loadedModelName = null;
 
 /**
- * Determines the optimal model based on available device RAM safeguard.
+ * Determines the optimal default model.
+ * Defaults to FAST_MODEL (~60MB) for near-instant initialization.
  */
 export function getOptimalModel() {
-  if (typeof navigator !== "undefined" && navigator.deviceMemory) {
-    if (navigator.deviceMemory < 4) {
-      return LOW_RAM_MODEL;
-    }
-  }
-  return DEFAULT_MODEL;
+  return FAST_MODEL;
 }
 
 /**
  * Initializes the WebLLM engine with GPU acceleration and IndexedDB caching.
+ * Uses promise deduplication to prevent duplicate downloads and hanging loads.
  * @param {Function} onProgress Callback function to receive download & init status reports
  * @param {string} [modelOverride] Optional model name override
  */
 export async function initializeAIEngine(onProgress, modelOverride) {
-  if (engineInstance) return engineInstance;
-
   const modelName = modelOverride || getOptimalModel();
 
-  engineInstance = await CreateMLCEngine(modelName, {
-    initProgressCallback: (report) => {
-      if (onProgress) {
-        onProgress(report);
-      }
-    },
-  });
+  if (engineInstance && loadedModelName === modelName) {
+    return engineInstance;
+  }
 
-  return engineInstance;
+  if (engineInitPromise && loadedModelName === modelName) {
+    return engineInitPromise;
+  }
+
+  loadedModelName = modelName;
+  engineInstance = null;
+
+  engineInitPromise = (async () => {
+    try {
+      const engine = await CreateMLCEngine(modelName, {
+        initProgressCallback: (report) => {
+          if (onProgress) {
+            onProgress(report);
+          }
+        },
+      });
+      engineInstance = engine;
+      return engine;
+    } catch (err) {
+      engineInitPromise = null;
+      loadedModelName = null;
+      throw err;
+    }
+  })();
+
+  return engineInitPromise;
 }
 
 /**

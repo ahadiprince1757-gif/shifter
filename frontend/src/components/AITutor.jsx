@@ -4,8 +4,10 @@ import {
   askLocalAI,
   isWebGPUSupported,
   getOptimalModel,
-  DEFAULT_MODEL,
+  FAST_MODEL,
+  LIGHT_MODEL,
   LOW_RAM_MODEL,
+  DEFAULT_MODEL,
 } from "../services/aiEngine";
 
 const STARTER_PROMPTS = [
@@ -202,7 +204,12 @@ export default function AITutor() {
                 gap: "0.3rem",
               }}
             >
-              <ModelIcon /> {selectedModel === DEFAULT_MODEL ? "Llama 3.2 1B" : "Qwen 2.5 0.5B"}
+              <ModelIcon /> {
+                selectedModel === FAST_MODEL ? "SmolLM2 135M (~60MB)" :
+                selectedModel === LIGHT_MODEL ? "SmolLM2 360M (~200MB)" :
+                selectedModel === LOW_RAM_MODEL ? "Qwen 2.5 0.5B (~350MB)" :
+                "Llama 3.2 1B (~700MB)"
+              }
             </button>
 
             {showModelPicker && (
@@ -223,8 +230,10 @@ export default function AITutor() {
                 gap: "0.4rem",
               }}>
                 {[
-                  { value: DEFAULT_MODEL, label: "Llama 3.2 1B", sub: "~700MB — Higher accuracy" },
-                  { value: LOW_RAM_MODEL, label: "Qwen 2.5 0.5B", sub: "~350MB — Ultra light" },
+                  { value: FAST_MODEL, label: "SmolLM2 135M", sub: "~60MB — Near Instant (Recommended)" },
+                  { value: LIGHT_MODEL, label: "SmolLM2 360M", sub: "~200MB — Fast & Balanced" },
+                  { value: LOW_RAM_MODEL, label: "Qwen 2.5 0.5B", sub: "~350MB — Medium Quality" },
+                  { value: DEFAULT_MODEL, label: "Llama 3.2 1B", sub: "~700MB — High Accuracy" },
                 ].map((m) => (
                   <button
                     key={m.value}
