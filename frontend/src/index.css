@@ -6789,4 +6789,231 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   text-align: center;
 }
 
+/* ==========================================
+   Minimalist AI Assistant & Navigation Styles
+   ========================================== */
+
+/* Navbar Navigation Links & Active Indicators */
+.lnav-nav-links {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.lnav-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 10px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--t2);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.lnav-tab-btn:hover {
+  color: var(--t);
+  background: var(--bg2);
+  border-color: var(--bd);
+}
+
+.lnav-tab-btn--active {
+  color: var(--v);
+  background: rgba(117, 82, 243, 0.08);
+  border-color: var(--bd2);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(117, 82, 243, 0.08);
+}
+
+html.dark-mode .lnav-tab-btn--active {
+  background: rgba(117, 82, 243, 0.18);
+  color: #a78bfa;
+}
+
+.lnav-tab-btn svg {
+  transition: transform 0.2s ease;
+}
+
+.lnav-tab-btn:hover svg {
+  transform: translateY(-1px);
+}
+
+/* Bottom Nav active pill refinement */
+.bn-item {
+  position: relative;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.bn-item.active {
+  color: var(--v) !important;
+  font-weight: 600;
+}
+
+.bn-item.active::after {
+  content: "";
+  position: absolute;
+  top: 4px;
+  width: 24px;
+  height: 3px;
+  background: var(--g2);
+  border-radius: 3px;
+  animation: bnPillPop 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes bnPillPop {
+  0% { transform: scaleX(0); }
+  100% { transform: scaleX(1); }
+}
+
+/* Minimalist AI Assistant Layout */
+.ai-minimalist-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem 3rem 1rem;
+}
+
+.ai-minimalist-card {
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 20px;
+  box-shadow: var(--sh);
+  display: flex;
+  flex-direction: column;
+  min-height: 540px;
+  max-height: 780px;
+  overflow: hidden;
+  position: relative;
+  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(16px);
+}
+
+.ai-minimalist-header {
+  padding: 1.1rem 1.5rem;
+  border-bottom: 1px solid var(--bd);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(255, 255, 255, 0.5);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+
+html.dark-mode .ai-minimalist-header {
+  background: rgba(26, 26, 46, 0.6);
+}
+
+.ai-status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: all 0.2s ease;
+}
+
+.ai-status-pill--ready {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--gr);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.ai-status-pill--idle {
+  background: rgba(245, 158, 11, 0.1);
+  color: var(--go);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.ai-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: currentColor;
+}
+
+.ai-status-dot--pulse {
+  animation: aiPulse 1.5s ease-in-out infinite;
+}
+
+@keyframes aiPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(1.2); }
+}
+
+/* Starter prompt pills */
+.ai-starter-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.25rem;
+  justify-content: center;
+}
+
+.ai-starter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.95rem;
+  background: var(--bg);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  font-size: 0.825rem;
+  color: var(--t2);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.ai-starter-pill:hover {
+  background: rgba(117, 82, 243, 0.08);
+  border-color: var(--bd2);
+  color: var(--v);
+  transform: translateY(-1px);
+}
+
+/* Chat bubble styling */
+.ai-msg-bubble {
+  max-width: 82%;
+  padding: 0.9rem 1.15rem;
+  font-size: 0.925rem;
+  line-height: 1.55;
+  border-radius: 18px;
+  animation: aiBubblePop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  word-break: break-word;
+}
+
+@keyframes aiBubblePop {
+  0% { opacity: 0; transform: translateY(6px) scale(0.98); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.ai-msg-bubble--user {
+  background: var(--v);
+  color: #ffffff;
+  border-bottom-right-radius: 4px;
+  box-shadow: 0 3px 12px rgba(117, 82, 243, 0.22);
+}
+
+.ai-msg-bubble--assistant {
+  background: var(--bg2);
+  color: var(--t);
+  border-bottom-left-radius: 4px;
+  border: 1px solid var(--bd);
+}
+
+html.dark-mode .ai-msg-bubble--assistant {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+
 
