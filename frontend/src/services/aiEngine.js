@@ -68,12 +68,14 @@ export async function initializeAIEngine(onProgress, modelOverride) {
  * @param {string} prompt User prompt text
  * @param {Function} onToken Callback triggered on each streamed token chunk
  * @param {string} [customSystemPrompt] Optional system prompt
+ * @param {AbortSignal} [abortSignal] Optional signal to stop generation early
  */
 export async function askLocalAI(
   engine,
   prompt,
   onToken,
-  customSystemPrompt = "You are an offline high school tutor. Provide concise, clear explanations."
+  customSystemPrompt = "You are an offline high school tutor. Provide concise, clear explanations.",
+  abortSignal = null
 ) {
   if (!engine) throw new Error("AI Engine not initialized");
 
@@ -90,6 +92,7 @@ export async function askLocalAI(
 
   let fullResponse = "";
   for await (const chunk of completion) {
+    if (abortSignal?.aborted) break;
     const delta = chunk.choices[0]?.delta?.content || "";
     fullResponse += delta;
     if (onToken) {
@@ -99,6 +102,7 @@ export async function askLocalAI(
 
   return fullResponse;
 }
+
 
 /**
  * Checks whether WebGPU is supported by the current browser environment.

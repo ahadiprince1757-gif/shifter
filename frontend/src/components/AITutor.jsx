@@ -104,6 +104,32 @@ const PencilIcon = () => (
   </svg>
 );
 
+const CopyIcon = () => (
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+    <path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1" />
+  </svg>
+);
+
+const CheckIcon = () => (
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="20 6 9 17 4 12" />
+  </svg>
+);
+
+const StopIcon = () => (
+  <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+    <rect x="4" y="4" width="16" height="16" rx="3" />
+  </svg>
+);
+
+const RefreshIcon = () => (
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="23 4 23 10 17 10" />
+    <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
+  </svg>
+);
+
 // Storage key for saved chats
 const CHATS_STORAGE_KEY = "tixar_ai_chats";
 
@@ -127,9 +153,19 @@ export default function AITutor() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showModelPicker, setShowModelPicker] = useState(false);
 
-  // Prompt edit state
+  // User prompt edit state
   const [editingIdx, setEditingIdx] = useState(null);
   const [editPromptText, setEditPromptText] = useState("");
+
+  // AI message edit state
+  const [editingAiIdx, setEditingAiIdx] = useState(null);
+  const [editAiText, setEditAiText] = useState("");
+
+  // Copy state (tracks which message was just copied)
+  const [copiedIdx, setCopiedIdx] = useState(null);
+
+  // Abort controller ref for stopping generation
+  const abortControllerRef = useRef(null);
 
   const chatEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -270,6 +306,9 @@ export default function AITutor() {
     setIsGenerating(true);
     setMessages((prev) => [...prev, { role: "assistant", text: "" }]);
 
+    const abortCtrl = new AbortController();
+    abortControllerRef.current = abortCtrl;
+
     try {
       await askLocalAI(engine, userText, (currentText) => {
         setMessages((prev) => {
@@ -277,20 +316,66 @@ export default function AITutor() {
           updated[updated.length - 1] = { role: "assistant", text: currentText };
           return updated;
         });
-      });
+      }, undefined, abortCtrl.signal);
     } catch (err) {
-      console.error("AI Generation Error:", err);
-      setMessages((prev) => {
-        const updated = [...prev];
-        updated[updated.length - 1] = {
-          role: "assistant",
-          text: "Something went wrong. Please try again.",
-        };
-        return updated;
-      });
+      if (!abortCtrl.signal.aborted) {
+        console.error("AI Generation Error:", err);
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = {
+            role: "assistant",
+            text: "Something went wrong. Please try again.",
+          };
+          return updated;
+        });
+      }
     } finally {
       setIsGenerating(false);
+      abortControllerRef.current = null;
     }
+  };
+
+  // Stop ongoing AI generation
+  const handleStopGeneration = () => {
+    if (abortControllerRef.current) {
+      abortControllerRef.current.abort();
+    }
+  };
+
+  // Copy any message text to clipboard
+  const handleCopyMessage = async (text, idx) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopiedIdx(idx);
+      setTimeout(() => setCopiedIdx(null), 2000);
+    } catch {
+      /* clipboard unavailable */
+    }
+  };
+
+  // Start editing an AI message inline
+  const handleStartAiEdit = (idx, text) => {
+    if (isGenerating) return;
+    setEditingAiIdx(idx);
+    setEditAiText(text);
+  };
+
+  // Save edited AI message (no re-generation — user edits the content directly)
+  const handleSaveAiEdit = (idx) => {
+    const trimmed = editAiText.trim();
+    if (!trimmed) return;
+    setMessages((prev) => {
+      const updated = [...prev];
+      updated[idx] = { ...updated[idx], text: trimmed };
+      return updated;
+    });
+    setEditingAiIdx(null);
+    setEditAiText("");
+  };
+
+  const handleCancelAiEdit = () => {
+    setEditingAiIdx(null);
+    setEditAiText("");
   };
 
   // Prompt Edit Handlers
@@ -322,6 +407,9 @@ export default function AITutor() {
     setIsGenerating(true);
     setMessages((prev) => [...prev, { role: "assistant", text: "" }]);
 
+    const abortCtrl = new AbortController();
+    abortControllerRef.current = abortCtrl;
+
     try {
       await askLocalAI(engine, updatedText, (currentText) => {
         setMessages((prev) => {
@@ -329,19 +417,22 @@ export default function AITutor() {
           updated[updated.length - 1] = { role: "assistant", text: currentText };
           return updated;
         });
-      });
+      }, undefined, abortCtrl.signal);
     } catch (err) {
-      console.error("AI Generation Error:", err);
-      setMessages((prev) => {
-        const updated = [...prev];
-        updated[updated.length - 1] = {
-          role: "assistant",
-          text: "Something went wrong while generating response.",
-        };
-        return updated;
-      });
+      if (!abortCtrl.signal.aborted) {
+        console.error("AI Generation Error:", err);
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = {
+            role: "assistant",
+            text: "Something went wrong while generating response.",
+          };
+          return updated;
+        });
+      }
     } finally {
       setIsGenerating(false);
+      abortControllerRef.current = null;
     }
   };
 
@@ -829,28 +920,104 @@ export default function AITutor() {
                 }
 
                 // Assistant message
+                const isEditingAi = editingAiIdx === idx;
+                const isCopied = copiedIdx === idx;
+                const isLastMsg = idx === messages.length - 1;
+
+                if (isEditingAi) {
+                  return (
+                    <div key={idx} style={{ display: "flex", justifyContent: "flex-start", gap: "0.5rem" }}>
+                      <div style={{
+                        width: "28px", height: "28px", borderRadius: "50%",
+                        background: "rgba(117,82,243,0.1)", display: "flex",
+                        alignItems: "center", justifyContent: "center",
+                        color: "var(--v)", flexShrink: 0, marginTop: "0.1rem",
+                      }}>
+                        <BotAvatarIcon />
+                      </div>
+                      <div className="ai-msg-edit-container" style={{ flex: 1, maxWidth: "82%" }}>
+                        <textarea
+                          className="ai-msg-edit-textarea"
+                          value={editAiText}
+                          onChange={(e) => setEditAiText(e.target.value)}
+                          placeholder="Edit AI response..."
+                          autoFocus
+                          style={{ minHeight: "80px" }}
+                        />
+                        <div className="ai-msg-edit-actions">
+                          <button type="button" className="ai-msg-edit-cancel-btn" onClick={handleCancelAiEdit}>Cancel</button>
+                          <button type="button" className="ai-msg-edit-save-btn" onClick={() => handleSaveAiEdit(idx)} disabled={!editAiText.trim()}>Save</button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
                 return (
-                  <div key={idx} style={{ display: "flex", justifyContent: "flex-start" }}>
-                    <div style={{
-                      width: "28px",
-                      height: "28px",
-                      borderRadius: "50%",
-                      background: "rgba(117, 82, 243, 0.1)",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "center",
-                      color: "var(--v)",
-                      flexShrink: 0,
-                      marginRight: "0.5rem",
-                      marginTop: "0.1rem",
-                    }}>
-                      <BotAvatarIcon />
+                  <div key={idx} className="ai-msg-assistant-group">
+                    <div style={{ display: "flex", justifyContent: "flex-start", alignItems: "flex-start" }}>
+                      <div style={{
+                        width: "28px",
+                        height: "28px",
+                        borderRadius: "50%",
+                        background: "rgba(117, 82, 243, 0.1)",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        color: "var(--v)",
+                        flexShrink: 0,
+                        marginRight: "0.5rem",
+                        marginTop: "0.1rem",
+                      }}>
+                        <BotAvatarIcon />
+                      </div>
+                      <div className="ai-msg-bubble ai-msg-bubble--assistant" style={{ whiteSpace: "pre-wrap" }}>
+                        {msg.text || (isGenerating && isLastMsg ? (
+                          <span style={{ opacity: 0.5, fontStyle: "italic" }}>Thinking…</span>
+                        ) : "")}
+                      </div>
                     </div>
-                    <div className="ai-msg-bubble ai-msg-bubble--assistant" style={{ whiteSpace: "pre-wrap" }}>
-                      {msg.text || (isGenerating ? (
-                        <span style={{ opacity: 0.5, fontStyle: "italic" }}>Thinking…</span>
-                      ) : "")}
-                    </div>
+
+                    {/* Action buttons row below AI bubble */}
+                    {msg.text && (
+                      <div className="ai-msg-actions">
+                        <button
+                          type="button"
+                          className="ai-msg-action-btn"
+                          onClick={() => handleCopyMessage(msg.text, idx)}
+                          title={isCopied ? "Copied!" : "Copy message"}
+                        >
+                          {isCopied ? <CheckIcon /> : <CopyIcon />}
+                          <span>{isCopied ? "Copied" : "Copy"}</span>
+                        </button>
+                        {!isGenerating && (
+                          <button
+                            type="button"
+                            className="ai-msg-action-btn"
+                            onClick={() => handleStartAiEdit(idx, msg.text)}
+                            title="Edit this response"
+                          >
+                            <PencilIcon />
+                            <span>Edit</span>
+                          </button>
+                        )}
+                      </div>
+                    )}
+
+                    {/* Stop button — only shown on the actively streaming last message */}
+                    {isGenerating && isLastMsg && (
+                      <div style={{ paddingLeft: "2.5rem", marginTop: "0.4rem" }}>
+                        <button
+                          type="button"
+                          className="ai-stop-btn"
+                          onClick={handleStopGeneration}
+                          title="Stop generation"
+                        >
+                          <StopIcon />
+                          Stop generating
+                        </button>
+                      </div>
+                    )}
                   </div>
                 );
               })}
