@@ -6950,8 +6950,8 @@ html.dark-mode .lnav-tab-btn--active {
   inset: 0;
   background: rgba(0, 0, 0, 0.4);
   z-index: 40;
-  backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
   animation: fadeIn 0.2s ease;
 }
 
