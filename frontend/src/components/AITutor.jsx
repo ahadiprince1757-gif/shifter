@@ -17,6 +17,7 @@ const STARTER_PROMPTS = [
   { text: "What is Ohm's Law?" },
 ];
 
+// Icons
 const BotAvatarIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
     <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1a2 2 0 01-2 2h-1v1a3 3 0 01-3 3H9a3 3 0 01-3-3v-1H5a2 2 0 01-2-2v-1a7 7 0 017-7h1V5.73A2.001 2.001 0 0112 2zm-3 8a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
@@ -50,6 +51,55 @@ const SpinnerIcon = () => (
   </svg>
 );
 
+const MaximizeIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="15 3 21 3 21 9" />
+    <polyline points="9 21 3 21 3 15" />
+    <line x1="21" y1="3" x2="14" y2="10" />
+    <line x1="3" y1="21" x2="10" y2="14" />
+  </svg>
+);
+
+const MinimizeIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="4 14 10 14 10 20" />
+    <polyline points="20 10 14 10 14 4" />
+    <line x1="14" y1="10" x2="21" y2="3" />
+    <line x1="10" y1="14" x2="3" y2="21" />
+  </svg>
+);
+
+const SidebarIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+    <line x1="9" y1="3" x2="9" y2="21" />
+  </svg>
+);
+
+const PlusIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="12" y1="5" x2="12" y2="19" />
+    <line x1="5" y1="12" x2="19" y2="12" />
+  </svg>
+);
+
+const TrashIcon = () => (
+  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <polyline points="3 6 5 6 21 6" />
+    <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
+  </svg>
+);
+
+const CloseIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <line x1="18" y1="6" x2="6" y2="18" />
+    <line x1="6" y1="6" x2="18" y2="18" />
+  </svg>
+);
+
+// Storage key for saved chats
+const CHATS_STORAGE_KEY = "tixar_ai_chats";
+
 export default function AITutor() {
   const [engine, setEngine] = useState(null);
   const [statusText, setStatusText] = useState("Not Loaded");
@@ -59,14 +109,117 @@ export default function AITutor() {
   const [inputPrompt, setInputPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
   const [webGpuSupported] = useState(() => isWebGPUSupported());
+
+  // 100% Fullscreen state
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  // Saved chats state
+  const [savedChats, setSavedChats] = useState([]);
+  const [activeChatId, setActiveChatId] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showModelPicker, setShowModelPicker] = useState(false);
+
   const chatEndRef = useRef(null);
   const inputRef = useRef(null);
+
+  // Load saved chats from localStorage on mount
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          setSavedChats(parsed);
+          setActiveChatId(parsed[0].id);
+          setMessages(parsed[0].messages || []);
+        }
+      }
+    } catch {
+      /* ignore storage errors */
+    }
+  }, []);
+
+  // Save current messages to active chat or localStorage
+  useEffect(() => {
+    if (messages.length === 0) return;
+
+    setSavedChats((prev) => {
+      let updated;
+      if (activeChatId) {
+        updated = prev.map((c) =>
+          c.id === activeChatId ? { ...c, messages, updatedAt: new Date().toISOString() } : c
+        );
+      } else {
+        const newId = `chat_${Date.now()}`;
+        const firstUserMsg = messages.find((m) => m.role === "user")?.text || "New Chat";
+        const title = firstUserMsg.length > 30 ? `${firstUserMsg.substring(0, 30)}...` : firstUserMsg;
+        const newChat = {
+          id: newId,
+          title,
+          createdAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          messages,
+        };
+        setActiveChatId(newId);
+        updated = [newChat, ...prev];
+      }
+      try {
+        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(updated));
+      } catch { /* storage full */ }
+      return updated;
+    });
+  }, [messages, activeChatId]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isGenerating]);
+
+  // Create a new chat session
+  const handleNewChat = () => {
+    setActiveChatId(null);
+    setMessages([]);
+    setInputPrompt("");
+    setSidebarOpen(false);
+  };
+
+  // Switch to a saved chat
+  const handleSelectChat = (chat) => {
+    setActiveChatId(chat.id);
+    setMessages(chat.messages || []);
+    setSidebarOpen(false);
+  };
+
+  // Delete a saved chat
+  const handleDeleteChat = (e, chatId) => {
+    e.stopPropagation();
+    setSavedChats((prev) => {
+      const updated = prev.filter((c) => c.id !== chatId);
+      try {
+        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(updated));
+      } catch { /* storage error */ }
+      if (activeChatId === chatId) {
+        if (updated.length > 0) {
+          setActiveChatId(updated[0].id);
+          setMessages(updated[0].messages || []);
+        } else {
+          setActiveChatId(null);
+          setMessages([]);
+        }
+      }
+      return updated;
+    });
+  };
+
+  // Clear all saved chats
+  const handleClearAllChats = () => {
+    setSavedChats([]);
+    setActiveChatId(null);
+    setMessages([]);
+    try {
+      localStorage.removeItem(CHATS_STORAGE_KEY);
+    } catch { /* storage error */ }
+  };
 
   const handleStartEngine = async () => {
     setIsLoading(true);
@@ -139,26 +292,49 @@ export default function AITutor() {
   };
 
   return (
-    <div className="ai-minimalist-wrapper">
-      {/* Top bar */}
-      <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
-        <div>
-          <h1 style={{ fontSize: "1.3rem", fontWeight: "700", color: "var(--t)", lineHeight: 1.2 }}>
-            AI Tutor
-          </h1>
-          <p style={{ fontSize: "0.8rem", color: "var(--t3)", marginTop: "0.2rem" }}>
-            Runs 100% on-device · Private · Free
-          </p>
+    <div className={`ai-minimalist-wrapper ${isFullscreen ? "ai-minimalist-wrapper--fullscreen" : ""}`}>
+      {/* Header bar when NOT fullscreen */}
+      {!isFullscreen && (
+        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+          <div>
+            <h1 style={{ fontSize: "1.3rem", fontWeight: "700", color: "var(--t)", lineHeight: 1.2 }}>
+              AI Tutor
+            </h1>
+            <p style={{ fontSize: "0.8rem", color: "var(--t3)", marginTop: "0.2rem" }}>
+              Runs 100% on-device · Private · Free
+            </p>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <span className={`ai-status-pill ${engine ? "ai-status-pill--ready" : "ai-status-pill--idle"}`}>
+              <span className={`ai-status-dot ${isLoading ? "ai-status-dot--pulse" : ""}`} />
+              {isLoading ? `Loading ${progressRatio}%` : engine ? "AI Ready" : "Offline AI"}
+            </span>
+
+            {/* 100% Fullscreen Toggle */}
+            <button
+              onClick={() => setIsFullscreen(true)}
+              title="Expand to 100% Full Screen"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "34px",
+                height: "34px",
+                borderRadius: "10px",
+                background: "var(--sur)",
+                border: "1px solid var(--bd)",
+                color: "var(--t2)",
+                cursor: "pointer",
+              }}
+            >
+              <MaximizeIcon />
+            </button>
+          </div>
         </div>
+      )}
 
-        {/* Status pill */}
-        <span className={`ai-status-pill ${engine ? "ai-status-pill--ready" : "ai-status-pill--idle"}`}>
-          <span className={`ai-status-dot ${isLoading ? "ai-status-dot--pulse" : ""}`} />
-          {isLoading ? `Loading ${progressRatio}%` : engine ? "AI Ready" : "Offline AI"}
-        </span>
-      </div>
-
-      {/* WebGPU warning */}
+      {/* WebGPU Warning */}
       {!webGpuSupported && (
         <div style={{
           marginBottom: "1rem",
@@ -175,29 +351,79 @@ export default function AITutor() {
         </div>
       )}
 
-      {/* Main chat card */}
-      <div className="ai-minimalist-card">
+      {/* Main Container Card */}
+      <div className={`ai-minimalist-card ${isFullscreen ? "ai-minimalist-card--fullscreen" : ""}`}>
+        
+        {/* Card Header Bar */}
+        <div className="ai-minimalist-header">
+          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+            {/* Sidebar toggle */}
+            <button
+              onClick={() => setSidebarOpen((o) => !o)}
+              title="Saved Chats History"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.4rem",
+                padding: "0.4rem 0.65rem",
+                borderRadius: "8px",
+                border: "1px solid var(--bd)",
+                background: sidebarOpen ? "rgba(117, 82, 243, 0.1)" : "transparent",
+                color: sidebarOpen ? "var(--v)" : "var(--t2)",
+                fontSize: "0.825rem",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              <SidebarIcon />
+              <span style={{ display: "inline-block" }}>Saved Chats</span>
+              {savedChats.length > 0 && (
+                <span style={{
+                  background: "var(--g2)",
+                  color: "#fff",
+                  fontSize: "0.7rem",
+                  fontWeight: 700,
+                  borderRadius: "10px",
+                  padding: "0.1rem 0.45rem",
+                }}>
+                  {savedChats.length}
+                </span>
+              )}
+            </button>
 
-        {/* Model loader bar — shown only when model not loaded */}
-        {!engine && webGpuSupported && (
-          <div style={{
-            padding: "1rem 1.5rem",
-            borderBottom: "1px solid var(--bd)",
-            background: "var(--bg)",
-            display: "flex",
-            alignItems: "center",
-            gap: "0.75rem",
-            flexWrap: "wrap",
-          }}>
+            {/* New Chat Button */}
+            <button
+              onClick={handleNewChat}
+              title="Start New Chat"
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: "0.3rem",
+                padding: "0.4rem 0.65rem",
+                borderRadius: "8px",
+                border: "1px solid var(--bd)",
+                background: "transparent",
+                color: "var(--t2)",
+                fontSize: "0.825rem",
+                fontWeight: 500,
+                cursor: "pointer",
+              }}
+            >
+              <PlusIcon /> New
+            </button>
+          </div>
+
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            {/* Model Selector Trigger */}
             <button
               onClick={() => setShowModelPicker((o) => !o)}
               style={{
-                fontSize: "0.8rem",
-                color: "var(--t3)",
+                fontSize: "0.78rem",
+                color: "var(--t2)",
                 background: "none",
                 border: "1px solid var(--bd)",
                 borderRadius: "8px",
-                padding: "0.35rem 0.7rem",
+                padding: "0.35rem 0.65rem",
                 cursor: "pointer",
                 display: "flex",
                 alignItems: "center",
@@ -212,52 +438,84 @@ export default function AITutor() {
               }
             </button>
 
-            {showModelPicker && (
-              <div style={{
-                position: "absolute",
-                top: "100%",
-                left: 0,
-                right: 0,
-                background: "var(--sur)",
+            {/* Fullscreen Toggle */}
+            <button
+              onClick={() => setIsFullscreen((f) => !f)}
+              title={isFullscreen ? "Exit Fullscreen" : "100% Full Screen"}
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                justifyContent: "center",
+                width: "32px",
+                height: "32px",
+                borderRadius: "8px",
                 border: "1px solid var(--bd)",
-                borderRadius: "12px",
-                padding: "0.75rem",
-                zIndex: 10,
-                boxShadow: "var(--sh)",
-                marginTop: "0.5rem",
-                display: "flex",
-                flexDirection: "column",
-                gap: "0.4rem",
-              }}>
-                {[
-                  { value: FAST_MODEL, label: "SmolLM2 135M", sub: "~60MB — Near Instant (Recommended)" },
-                  { value: LIGHT_MODEL, label: "SmolLM2 360M", sub: "~200MB — Fast & Balanced" },
-                  { value: LOW_RAM_MODEL, label: "Qwen 2.5 0.5B", sub: "~350MB — Medium Quality" },
-                  { value: DEFAULT_MODEL, label: "Llama 3.2 1B", sub: "~700MB — High Accuracy" },
-                ].map((m) => (
-                  <button
-                    key={m.value}
-                    onClick={() => { setSelectedModel(m.value); setShowModelPicker(false); }}
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      alignItems: "flex-start",
-                      padding: "0.65rem 0.85rem",
-                      borderRadius: "8px",
-                      border: `1px solid ${selectedModel === m.value ? "var(--bd2)" : "transparent"}`,
-                      background: selectedModel === m.value ? "rgba(117,82,243,0.07)" : "transparent",
-                      cursor: "pointer",
-                      textAlign: "left",
-                      gap: "0.1rem",
-                    }}
-                  >
-                    <span style={{ fontSize: "0.875rem", fontWeight: 600, color: "var(--t)" }}>{m.label}</span>
-                    <span style={{ fontSize: "0.75rem", color: "var(--t3)" }}>{m.sub}</span>
-                  </button>
-                ))}
-              </div>
-            )}
+                background: "transparent",
+                color: "var(--t2)",
+                cursor: "pointer",
+              }}
+            >
+              {isFullscreen ? <MinimizeIcon /> : <MaximizeIcon />}
+            </button>
+          </div>
+        </div>
 
+        {/* Model Picker Dropdown */}
+        {showModelPicker && (
+          <div style={{
+            position: "absolute",
+            top: "54px",
+            right: "1rem",
+            background: "var(--sur)",
+            border: "1px solid var(--bd)",
+            borderRadius: "14px",
+            padding: "0.6rem",
+            zIndex: 100,
+            boxShadow: "var(--sh)",
+            display: "flex",
+            flexDirection: "column",
+            gap: "0.35rem",
+            maxWidth: "300px",
+          }}>
+            {[
+              { value: FAST_MODEL, label: "SmolLM2 135M", sub: "~60MB — Near Instant (Recommended)" },
+              { value: LIGHT_MODEL, label: "SmolLM2 360M", sub: "~200MB — Fast & Balanced" },
+              { value: LOW_RAM_MODEL, label: "Qwen 2.5 0.5B", sub: "~350MB — Medium Quality" },
+              { value: DEFAULT_MODEL, label: "Llama 3.2 1B", sub: "~700MB — High Accuracy" },
+            ].map((m) => (
+              <button
+                key={m.value}
+                onClick={() => { setSelectedModel(m.value); setShowModelPicker(false); }}
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "flex-start",
+                  padding: "0.55rem 0.75rem",
+                  borderRadius: "8px",
+                  border: `1px solid ${selectedModel === m.value ? "var(--bd2)" : "transparent"}`,
+                  background: selectedModel === m.value ? "rgba(117,82,243,0.07)" : "transparent",
+                  cursor: "pointer",
+                  textAlign: "left",
+                  gap: "0.1rem",
+                }}
+              >
+                <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--t)" }}>{m.label}</span>
+                <span style={{ fontSize: "0.72rem", color: "var(--t3)" }}>{m.sub}</span>
+              </button>
+            ))}
+          </div>
+        )}
+
+        {/* Model Download Bar (if not loaded) */}
+        {!engine && webGpuSupported && (
+          <div style={{
+            padding: "0.85rem 1.25rem",
+            borderBottom: "1px solid var(--bd)",
+            background: "var(--bg)",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.75rem",
+          }}>
             {isLoading ? (
               <div style={{ flex: 1, minWidth: 0 }}>
                 <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.75rem", color: "var(--t3)", marginBottom: "0.3rem" }}>
@@ -291,177 +549,273 @@ export default function AITutor() {
                   transition: "opacity 0.2s",
                 }}
               >
-                Load AI Model
+                Load AI Model into Browser
               </button>
             )}
           </div>
         )}
 
-        {/* Chat messages area */}
-        <div style={{
-          flex: 1,
-          overflowY: "auto",
-          padding: "1.5rem",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.85rem",
-        }}>
-          {messages.length === 0 && (
-            <div style={{
-              margin: "auto",
-              textAlign: "center",
-              padding: "2rem 1rem",
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              gap: "0.5rem",
-            }}>
-              <div style={{
-                width: "52px",
-                height: "52px",
-                background: "rgba(117, 82, 243, 0.1)",
-                borderRadius: "50%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                color: "var(--v)",
-                marginBottom: "0.25rem",
-              }}>
-                <BotAvatarIcon />
-              </div>
-              <h2 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--t)" }}>
-                {engine ? "Ask me anything" : "Load the AI to start"}
-              </h2>
-              <p style={{ fontSize: "0.83rem", color: "var(--t3)", maxWidth: "280px", lineHeight: 1.5 }}>
-                {engine
-                  ? "Science, maths, history — fully on-device and private."
-                  : "Click 'Load AI Model' above to download and run locally."}
-              </p>
-
-              {engine && (
-                <div className="ai-starter-grid" style={{ maxWidth: "480px" }}>
-                  {STARTER_PROMPTS.map((sp) => (
-                    <button
-                      key={sp.text}
-                      className="ai-starter-pill"
-                      onClick={() => handleStarterClick(sp.text)}
-                    >
-                      {sp.text}
-                    </button>
-                  ))}
-                </div>
-              )}
-            </div>
+        {/* Body Layout: Sidebar + Main Chat */}
+        <div className="ai-layout-body">
+          {/* Mobile Overlay for Sidebar */}
+          {sidebarOpen && (
+            <div className="ai-sidebar-overlay" onClick={() => setSidebarOpen(false)} />
           )}
 
-          {messages.map((msg, idx) => (
-            <div
-              key={idx}
-              style={{
-                display: "flex",
-                justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
-              }}
-            >
-              {msg.role === "assistant" && (
+          {/* Saved Chats Sidebar Drawer */}
+          <div className={`ai-sidebar ${sidebarOpen ? "" : "ai-sidebar--hidden"}`}>
+            <div className="ai-sidebar-header">
+              <span className="ai-sidebar-title">
+                Saved Chats History
+              </span>
+              <button
+                onClick={() => setSidebarOpen(false)}
+                style={{ background: "none", border: "none", color: "var(--t3)", cursor: "pointer" }}
+              >
+                <CloseIcon />
+              </button>
+            </div>
+
+            <div className="ai-sidebar-list">
+              {savedChats.length === 0 ? (
+                <div style={{ padding: "1.5rem 1rem", textAlign: "center", color: "var(--t3)", fontSize: "0.8rem" }}>
+                  No saved chats yet. Your conversations will be saved automatically here!
+                </div>
+              ) : (
+                savedChats.map((chat) => {
+                  const isActive = chat.id === activeChatId;
+                  const dateStr = new Date(chat.updatedAt || chat.createdAt).toLocaleDateString(undefined, {
+                    month: "short",
+                    day: "numeric",
+                    hour: "2-digit",
+                    minute: "2-digit",
+                  });
+                  return (
+                    <div
+                      key={chat.id}
+                      className={`ai-sidebar-item ${isActive ? "ai-sidebar-item--active" : ""}`}
+                      onClick={() => handleSelectChat(chat)}
+                    >
+                      <div className="ai-sidebar-item-text">
+                        <div className="ai-sidebar-item-title">{chat.title || "Conversation"}</div>
+                        <div className="ai-sidebar-item-date">{dateStr}</div>
+                      </div>
+                      <button
+                        className="ai-sidebar-delete-btn"
+                        onClick={(e) => handleDeleteChat(e, chat.id)}
+                        title="Delete chat"
+                        aria-label="Delete chat"
+                      >
+                        <TrashIcon />
+                      </button>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+
+            {savedChats.length > 0 && (
+              <div style={{ padding: "0.75rem", borderTop: "1px solid var(--bd)" }}>
+                <button
+                  onClick={handleClearAllChats}
+                  style={{
+                    width: "100%",
+                    padding: "0.45rem",
+                    borderRadius: "8px",
+                    border: "1px solid var(--bd)",
+                    background: "transparent",
+                    color: "var(--rd)",
+                    fontSize: "0.78rem",
+                    fontWeight: 500,
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    gap: "0.3rem",
+                  }}
+                >
+                  <TrashIcon /> Clear All Saved Chats
+                </button>
+              </div>
+            )}
+          </div>
+
+          {/* Main Chat Area */}
+          <div style={{
+            flex: 1,
+            display: "flex",
+            flexDirection: "column",
+            minWidth: 0,
+            background: "var(--sur)",
+          }}>
+            {/* Chat Messages */}
+            <div style={{
+              flex: 1,
+              overflowY: "auto",
+              padding: "1.5rem",
+              display: "flex",
+              flexDirection: "column",
+              gap: "0.85rem",
+            }}>
+              {messages.length === 0 && (
                 <div style={{
-                  width: "28px",
-                  height: "28px",
-                  borderRadius: "50%",
-                  background: "rgba(117, 82, 243, 0.1)",
+                  margin: "auto",
+                  textAlign: "center",
+                  padding: "2rem 1rem",
                   display: "flex",
+                  flexDirection: "column",
                   alignItems: "center",
-                  justifyContent: "center",
-                  color: "var(--v)",
-                  flexShrink: 0,
-                  marginRight: "0.5rem",
-                  marginTop: "0.1rem",
+                  gap: "0.5rem",
                 }}>
-                  <BotAvatarIcon />
+                  <div style={{
+                    width: "52px",
+                    height: "52px",
+                    background: "rgba(117, 82, 243, 0.1)",
+                    borderRadius: "50%",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    color: "var(--v)",
+                    marginBottom: "0.25rem",
+                  }}>
+                    <BotAvatarIcon />
+                  </div>
+                  <h2 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--t)" }}>
+                    {engine ? "Ask me anything" : "Load the AI model to start"}
+                  </h2>
+                  <p style={{ fontSize: "0.83rem", color: "var(--t3)", maxWidth: "280px", lineHeight: 1.5 }}>
+                    {engine
+                      ? "Science, maths, history — fully on-device and private."
+                      : "Click 'Load AI Model' above to start."}
+                  </p>
+
+                  {engine && (
+                    <div className="ai-starter-grid" style={{ maxWidth: "480px" }}>
+                      {STARTER_PROMPTS.map((sp) => (
+                        <button
+                          key={sp.text}
+                          className="ai-starter-pill"
+                          onClick={() => handleStarterClick(sp.text)}
+                        >
+                          {sp.text}
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
-              <div className={`ai-msg-bubble ${msg.role === "user" ? "ai-msg-bubble--user" : "ai-msg-bubble--assistant"}`}
-                style={{ whiteSpace: "pre-wrap" }}
-              >
-                {msg.text || (msg.role === "assistant" && isGenerating ? (
-                  <span style={{ opacity: 0.5, fontStyle: "italic" }}>Thinking…</span>
-                ) : "")}
-              </div>
-            </div>
-          ))}
-          <div ref={chatEndRef} />
-        </div>
 
-        {/* Input bar */}
-        <form
-          onSubmit={handleSendMessage}
-          style={{
-            padding: "0.85rem 1rem",
-            borderTop: "1px solid var(--bd)",
-            background: "var(--sur)",
-          }}
-        >
-          <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
-            <textarea
-              ref={inputRef}
-              rows={1}
-              value={inputPrompt}
-              onChange={(e) => setInputPrompt(e.target.value)}
-              onKeyDown={handleKeyDown}
-              placeholder={engine ? "Ask anything… (Enter to send)" : "Load the AI model first"}
-              disabled={!engine || isGenerating}
+              {messages.map((msg, idx) => (
+                <div
+                  key={idx}
+                  style={{
+                    display: "flex",
+                    justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
+                  }}
+                >
+                  {msg.role === "assistant" && (
+                    <div style={{
+                      width: "28px",
+                      height: "28px",
+                      borderRadius: "50%",
+                      background: "rgba(117, 82, 243, 0.1)",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      color: "var(--v)",
+                      flexShrink: 0,
+                      marginRight: "0.5rem",
+                      marginTop: "0.1rem",
+                    }}>
+                      <BotAvatarIcon />
+                    </div>
+                  )}
+                  <div
+                    className={`ai-msg-bubble ${msg.role === "user" ? "ai-msg-bubble--user" : "ai-msg-bubble--assistant"}`}
+                    style={{ whiteSpace: "pre-wrap" }}
+                  >
+                    {msg.text || (msg.role === "assistant" && isGenerating ? (
+                      <span style={{ opacity: 0.5, fontStyle: "italic" }}>Thinking…</span>
+                    ) : "")}
+                  </div>
+                </div>
+              ))}
+              <div ref={chatEndRef} />
+            </div>
+
+            {/* Input Bar */}
+            <form
+              onSubmit={handleSendMessage}
               style={{
-                width: "100%",
-                padding: "0.85rem 3.5rem 0.85rem 1.1rem",
-                borderRadius: "16px",
-                border: "1px solid var(--bd)",
-                background: engine ? "var(--bg)" : "var(--bg2)",
-                color: "var(--t)",
-                fontSize: "0.925rem",
-                outline: "none",
-                resize: "none",
-                lineHeight: 1.4,
-                fontFamily: "inherit",
-                transition: "border-color 0.2s",
-                opacity: engine ? 1 : 0.6,
-                minHeight: "48px",
-                maxHeight: "120px",
-                overflowY: "auto",
-              }}
-            />
-            <button
-              type="submit"
-              disabled={isGenerating || !inputPrompt.trim() || !engine}
-              aria-label="Send"
-              style={{
-                position: "absolute",
-                right: "8px",
-                width: "36px",
-                height: "36px",
-                borderRadius: "50%",
-                border: "none",
-                background: inputPrompt.trim() && engine && !isGenerating
-                  ? "var(--g2)"
-                  : "rgba(117, 82, 243, 0.12)",
-                color: inputPrompt.trim() && engine && !isGenerating ? "#fff" : "var(--t3)",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                cursor: isGenerating || !inputPrompt.trim() || !engine ? "not-allowed" : "pointer",
-                boxShadow: inputPrompt.trim() && engine && !isGenerating
-                  ? "0 2px 8px rgba(117, 82, 243, 0.3)"
-                  : "none",
-                transition: "all 0.18s cubic-bezier(0.4, 0, 0.2, 1)",
-                transform: inputPrompt.trim() && !isGenerating ? "scale(1)" : "scale(0.9)",
-                flexShrink: 0,
+                padding: "0.85rem 1rem",
+                borderTop: "1px solid var(--bd)",
+                background: "var(--sur)",
               }}
             >
-              {isGenerating ? <SpinnerIcon /> : <SendIcon />}
-            </button>
+              <div style={{ position: "relative", display: "flex", alignItems: "center" }}>
+                <textarea
+                  ref={inputRef}
+                  rows={1}
+                  value={inputPrompt}
+                  onChange={(e) => setInputPrompt(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  placeholder={engine ? "Ask anything… (Enter to send)" : "Load the AI model first"}
+                  disabled={!engine || isGenerating}
+                  style={{
+                    width: "100%",
+                    padding: "0.85rem 3.5rem 0.85rem 1.1rem",
+                    borderRadius: "16px",
+                    border: "1px solid var(--bd)",
+                    background: engine ? "var(--bg)" : "var(--bg2)",
+                    color: "var(--t)",
+                    fontSize: "0.925rem",
+                    outline: "none",
+                    resize: "none",
+                    lineHeight: 1.4,
+                    fontFamily: "inherit",
+                    transition: "border-color 0.2s",
+                    opacity: engine ? 1 : 0.6,
+                    minHeight: "48px",
+                    maxHeight: "120px",
+                    overflowY: "auto",
+                  }}
+                />
+                <button
+                  type="submit"
+                  disabled={isGenerating || !inputPrompt.trim() || !engine}
+                  aria-label="Send"
+                  style={{
+                    position: "absolute",
+                    right: "8px",
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "50%",
+                    border: "none",
+                    background: inputPrompt.trim() && engine && !isGenerating
+                      ? "var(--g2)"
+                      : "rgba(117, 82, 243, 0.12)",
+                    color: inputPrompt.trim() && engine && !isGenerating ? "#fff" : "var(--t3)",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: isGenerating || !inputPrompt.trim() || !engine ? "not-allowed" : "pointer",
+                    boxShadow: inputPrompt.trim() && engine && !isGenerating
+                      ? "0 2px 8px rgba(117, 82, 243, 0.3)"
+                      : "none",
+                    transition: "all 0.18s cubic-bezier(0.4, 0, 0.2, 1)",
+                    transform: inputPrompt.trim() && !isGenerating ? "scale(1)" : "scale(0.9)",
+                    flexShrink: 0,
+                  }}
+                >
+                  {isGenerating ? <SpinnerIcon /> : <SendIcon />}
+                </button>
+              </div>
+              <p style={{ fontSize: "0.72rem", color: "var(--t3)", textAlign: "center", marginTop: "0.5rem" }}>
+                Downloads once to browser cache · Future loads are instant offline
+              </p>
+            </form>
           </div>
-          <p style={{ fontSize: "0.72rem", color: "var(--t3)", textAlign: "center", marginTop: "0.5rem" }}>
-            Downloads once to browser cache · Future loads are instant offline
-          </p>
-        </form>
+        </div>
       </div>
     </div>
   );
