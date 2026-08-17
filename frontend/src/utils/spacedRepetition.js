@@ -203,10 +203,10 @@ function determineNextAction({ isCorrect, confidence, learningState }) {
  * 2) calculateNextReview(qualityRating: number, currentItem: object)
  */
 export function calculateNextReview(param1, param2 = null, param3 = null) {
-  let isCorrect = true;
-  let confidence = "medium";
-  let currentItem = null;
-  let qualityRating = 4;
+  let isCorrect;
+  let confidence;
+  let currentItem;
+  let qualityRating;
 
   if (typeof param1 === "boolean") {
     isCorrect = param1;
