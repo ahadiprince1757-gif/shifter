@@ -97,6 +97,13 @@ const CloseIcon = () => (
   </svg>
 );
 
+const PencilIcon = () => (
+  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M11 4H4a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2v-7" />
+    <path d="M18.5 2.5a2.121 2.121 0 013 3L12 15l-4 1 1-4 9.5-9.5z" />
+  </svg>
+);
+
 // Storage key for saved chats
 const CHATS_STORAGE_KEY = "tixar_ai_chats";
 
@@ -119,6 +126,10 @@ export default function AITutor() {
   const [messages, setMessages] = useState([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showModelPicker, setShowModelPicker] = useState(false);
+
+  // Prompt edit state
+  const [editingIdx, setEditingIdx] = useState(null);
+  const [editPromptText, setEditPromptText] = useState("");
 
   const chatEndRef = useRef(null);
   const inputRef = useRef(null);
@@ -180,6 +191,7 @@ export default function AITutor() {
     setActiveChatId(null);
     setMessages([]);
     setInputPrompt("");
+    setEditingIdx(null);
     setSidebarOpen(false);
   };
 
@@ -187,6 +199,7 @@ export default function AITutor() {
   const handleSelectChat = (chat) => {
     setActiveChatId(chat.id);
     setMessages(chat.messages || []);
+    setEditingIdx(null);
     setSidebarOpen(false);
   };
 
@@ -216,6 +229,7 @@ export default function AITutor() {
     setSavedChats([]);
     setActiveChatId(null);
     setMessages([]);
+    setEditingIdx(null);
     try {
       localStorage.removeItem(CHATS_STORAGE_KEY);
     } catch { /* storage error */ }
@@ -271,6 +285,58 @@ export default function AITutor() {
         updated[updated.length - 1] = {
           role: "assistant",
           text: "Something went wrong. Please try again.",
+        };
+        return updated;
+      });
+    } finally {
+      setIsGenerating(false);
+    }
+  };
+
+  // Prompt Edit Handlers
+  const handleStartEdit = (idx, text) => {
+    if (isGenerating) return;
+    setEditingIdx(idx);
+    setEditPromptText(text);
+  };
+
+  const handleCancelEdit = () => {
+    setEditingIdx(null);
+    setEditPromptText("");
+  };
+
+  const handleSaveEdit = async (idx) => {
+    const updatedText = editPromptText.trim();
+    if (!updatedText || isGenerating) return;
+
+    // Truncate messages up to index idx with the new text, removing old AI responses after it
+    const updatedMessages = messages.slice(0, idx);
+    updatedMessages.push({ role: "user", text: updatedText });
+
+    setEditingIdx(null);
+    setEditPromptText("");
+    setMessages(updatedMessages);
+
+    if (!engine) return;
+
+    setIsGenerating(true);
+    setMessages((prev) => [...prev, { role: "assistant", text: "" }]);
+
+    try {
+      await askLocalAI(engine, updatedText, (currentText) => {
+        setMessages((prev) => {
+          const updated = [...prev];
+          updated[updated.length - 1] = { role: "assistant", text: currentText };
+          return updated;
+        });
+      });
+    } catch (err) {
+      console.error("AI Generation Error:", err);
+      setMessages((prev) => {
+        const updated = [...prev];
+        updated[updated.length - 1] = {
+          role: "assistant",
+          text: "Something went wrong while generating response.",
         };
         return updated;
       });
@@ -705,15 +771,66 @@ export default function AITutor() {
                 </div>
               )}
 
-              {messages.map((msg, idx) => (
-                <div
-                  key={idx}
-                  style={{
-                    display: "flex",
-                    justifyContent: msg.role === "user" ? "flex-end" : "flex-start",
-                  }}
-                >
-                  {msg.role === "assistant" && (
+              {messages.map((msg, idx) => {
+                const isEditingThis = editingIdx === idx;
+
+                if (msg.role === "user") {
+                  if (isEditingThis) {
+                    return (
+                      <div key={idx} style={{ display: "flex", justifyContent: "flex-end" }}>
+                        <div className="ai-msg-edit-container">
+                          <textarea
+                            className="ai-msg-edit-textarea"
+                            value={editPromptText}
+                            onChange={(e) => setEditPromptText(e.target.value)}
+                            placeholder="Edit your prompt..."
+                            autoFocus
+                          />
+                          <div className="ai-msg-edit-actions">
+                            <button
+                              type="button"
+                              className="ai-msg-edit-cancel-btn"
+                              onClick={handleCancelEdit}
+                            >
+                              Cancel
+                            </button>
+                            <button
+                              type="button"
+                              className="ai-msg-edit-save-btn"
+                              onClick={() => handleSaveEdit(idx)}
+                              disabled={!editPromptText.trim()}
+                            >
+                              Save & Resubmit
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  }
+
+                  return (
+                    <div key={idx} style={{ display: "flex", justifyContent: "flex-end" }}>
+                      <div className="ai-msg-user-wrapper">
+                        <button
+                          type="button"
+                          className="ai-msg-edit-btn"
+                          onClick={() => handleStartEdit(idx, msg.text)}
+                          title="Edit prompt"
+                          aria-label="Edit prompt"
+                        >
+                          <PencilIcon />
+                        </button>
+                        <div className="ai-msg-bubble ai-msg-bubble--user" style={{ whiteSpace: "pre-wrap" }}>
+                          {msg.text}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                }
+
+                // Assistant message
+                return (
+                  <div key={idx} style={{ display: "flex", justifyContent: "flex-start" }}>
                     <div style={{
                       width: "28px",
                       height: "28px",
@@ -729,17 +846,14 @@ export default function AITutor() {
                     }}>
                       <BotAvatarIcon />
                     </div>
-                  )}
-                  <div
-                    className={`ai-msg-bubble ${msg.role === "user" ? "ai-msg-bubble--user" : "ai-msg-bubble--assistant"}`}
-                    style={{ whiteSpace: "pre-wrap" }}
-                  >
-                    {msg.text || (msg.role === "assistant" && isGenerating ? (
-                      <span style={{ opacity: 0.5, fontStyle: "italic" }}>Thinking…</span>
-                    ) : "")}
+                    <div className="ai-msg-bubble ai-msg-bubble--assistant" style={{ whiteSpace: "pre-wrap" }}>
+                      {msg.text || (isGenerating ? (
+                        <span style={{ opacity: 0.5, fontStyle: "italic" }}>Thinking…</span>
+                      ) : "")}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
               <div ref={chatEndRef} />
             </div>
 

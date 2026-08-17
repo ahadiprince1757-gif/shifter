@@ -7033,6 +7033,116 @@ html.dark-mode .ai-sidebar-item--active {
   text-overflow: ellipsis;
 }
 
+/* User Prompt Inline Edit Styles */
+.ai-msg-user-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  max-width: 82%;
+  position: relative;
+}
+
+.ai-msg-edit-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--bd);
+  background: var(--sur);
+  color: var(--t3);
+  cursor: pointer;
+  opacity: 0;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+  box-shadow: var(--sh);
+}
+
+.ai-msg-user-wrapper:hover .ai-msg-edit-btn,
+.ai-msg-user-wrapper:focus-within .ai-msg-edit-btn {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .ai-msg-edit-btn {
+    opacity: 0.85;
+  }
+}
+
+.ai-msg-edit-btn:hover {
+  background: var(--bg2);
+  color: var(--v);
+  transform: scale(1.08);
+}
+
+.ai-msg-edit-container {
+  width: 100%;
+  max-width: 82%;
+  background: var(--sur);
+  border: 1px solid var(--bd2);
+  border-radius: 16px;
+  padding: 0.75rem;
+  box-shadow: var(--sh);
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  animation: aiBubblePop 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.ai-msg-edit-textarea {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  border-radius: 10px;
+  border: 1px solid var(--bd);
+  background: var(--bg);
+  color: var(--t);
+  font-size: 0.9rem;
+  font-family: inherit;
+  outline: none;
+  resize: vertical;
+  min-height: 54px;
+  line-height: 1.4;
+}
+
+.ai-msg-edit-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.4rem;
+}
+
+.ai-msg-edit-save-btn {
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  border: none;
+  background: var(--g2);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(117, 82, 243, 0.25);
+  transition: transform 0.15s ease;
+}
+
+.ai-msg-edit-save-btn:hover {
+  transform: scale(1.02);
+}
+
+.ai-msg-edit-cancel-btn {
+  padding: 0.4rem 0.75rem;
+  border-radius: 8px;
+  border: 1px solid var(--bd);
+  background: transparent;
+  color: var(--t2);
+  font-size: 0.8rem;
+  cursor: pointer;
+}
+
+.ai-msg-edit-cancel-btn:hover {
+  background: var(--bg2);
+}
+
 .ai-sidebar-item-date {
   font-size: 0.72rem;
   color: var(--t3);
