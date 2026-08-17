@@ -141,7 +141,7 @@ function QuizPhase({
         <div className="lcb">
           {retryState === "retry" && (
             <div className="retry-mode-banner">
-              Restructured Question — Same concept, different approach.
+              Practice Variant — Testing the same core concept with new parameters.
             </div>
           )}
           <QuestionDisplay isCalc={isCalc} questionText={curQ?.q} />

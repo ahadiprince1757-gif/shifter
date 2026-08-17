@@ -75,14 +75,29 @@ export class QuestionMutator {
     if (mutator) {
       const result = mutator.mutate(blueprint);
       if (result) {
+        // Strip any ugly bracket prefixes like [Algebra Practice] or [Physics Parameter Retry]
+        let cleanStem = (result.q || result.stem || blueprint.q || blueprint.stem || "").trim();
+        cleanStem = cleanStem.replace(/^\[[^\]]+\]\s*/i, "");
+
+        // Format simplified explanation for high clarity
+        const rawWhy = result.why || result.explanation || blueprint.why || blueprint.explanation || "";
+        const formattedWhy = this._formatSimplifiedExplanation(rawWhy, result.ans || blueprint.ans);
+
         return {
           id: `${blueprint.id || "q"}_${Date.now()}`,
           originalId: blueprint.id,
           subject: blueprint.subject || subjectName,
           topic: blueprint.topic,
           ...result,
-          // Ensure steps always exist
-          steps: result.steps || blueprint.steps || [],
+          q: cleanStem,
+          stem: cleanStem,
+          why: formattedWhy,
+          explanation: formattedWhy,
+          sol: formattedWhy,
+          hint: result.hint || blueprint.hint || "Focus on the core concept definition and key principles.",
+          steps: Array.isArray(result.steps) && result.steps.length > 0
+            ? result.steps
+            : ["Step 1: Identify key values", "Step 2: Apply the fundamental rule", "Step 3: Calculate the answer"],
         };
       }
     }
@@ -150,40 +165,60 @@ export class QuestionMutator {
     };
   }
 
-  // ── Generic Fallback ────────────────────────────────────────
+  // ── Generic Fallback: High-Clarity Conceptual Practice ─────
 
   _genericFallback(qObj) {
-    if (qObj.ans && typeof qObj.ans === "string" && qObj.ans.length > 5) {
-      const words = qObj.ans.split(" ");
-      if (words.length >= 3) {
-        const idx = Math.floor(words.length / 2);
-        const target = words[idx];
-        const masked = [...words];
-        masked[idx] = "________";
+    const rawStem = (qObj.q || qObj.stem || "").replace(/^\[[^\]]+\]\s*/i, "");
+    const cleanStem = rawStem ? `Practice Question: ${rawStem}` : "Practice Question: Review the core concept below.";
+    const answer = qObj.ans || (Array.isArray(qObj.options) ? qObj.options[qObj.correctIndex || 0] : "Correct Answer");
 
-        return {
-          id: `fallback_${Date.now()}`,
-          originalId: qObj.id,
-          subject: qObj.subject,
-          topic: qObj.topic,
-          q: `Complete the concept: "${masked.join(" ")}"`,
-          ans: target,
-          hint: qObj.hint || `Missing word starts with '${target.charAt(0).toUpperCase()}'`,
-          why: `Full answer: ${qObj.ans}`,
-          sol: qObj.why || qObj.explain || `Full answer: ${qObj.ans}`,
-          steps: ["Step 1: Read the incomplete statement", "Step 2: Identify missing key term", "Step 3: Fill in the blank"],
-        };
-      }
+    const simpleWhy = this._formatSimplifiedExplanation(
+      qObj.why || qObj.explanation || qObj.sol || `The correct answer is: ${answer}`,
+      answer
+    );
+
+    return {
+      id: `retry_${Date.now()}`,
+      originalId: qObj.id,
+      subject: qObj.subject,
+      topic: qObj.topic,
+      q: cleanStem,
+      stem: cleanStem,
+      options: qObj.options ? [...qObj.options] : undefined,
+      correctIndex: qObj.correctIndex,
+      ans: answer,
+      type: qObj.type || "mcq",
+      hint: qObj.hint || `Hint: Focus on the core definition of ${qObj.topic || "this topic"}.`,
+      why: simpleWhy,
+      explanation: simpleWhy,
+      sol: simpleWhy,
+      steps: Array.isArray(qObj.steps) && qObj.steps.length > 0
+        ? qObj.steps
+        : [
+            "Step 1: Read the question carefully to identify the target concept",
+            "Step 2: Apply the core definition or rule",
+            "Step 3: Verify your answer against the key principles"
+          ],
+    };
+  }
+
+  /**
+   * Formats explanations into clear, simple, student-friendly sections:
+   * 💡 Core Idea | 📝 Step-by-Step Breakdown | ⚠️ Key Takeaway
+   */
+  _formatSimplifiedExplanation(rawText, correctAnswer) {
+    if (!rawText) {
+      return `💡 **Core Idea:** The target answer is **${correctAnswer || "shown above"}**.\n\n📝 **How to Solve:** Review the key definition and apply the standard rule step-by-step.`;
     }
 
-    // Last resort: return with scaffolded hint
-    return {
-      ...qObj,
-      id: `retry_${Date.now()}`,
-      q: qObj.q || qObj.stem,
-      hint: qObj.hint || "Focus on core principles and definitions",
-      steps: qObj.steps || ["Step 1: Review the concept", "Step 2: Apply key principles", "Step 3: State your answer"],
-    };
+    // If already formatted, return as-is
+    if (rawText.includes("💡") || rawText.includes("Core Idea")) {
+      return rawText;
+    }
+
+    const cleanText = rawText.replace(/^Step\s*\d+:\s*/gi, "").trim();
+
+    return `💡 **Core Idea:**\n${cleanText}\n\n📝 **Key Point:**\nMake sure to remember the core definition for **${correctAnswer ? `${correctAnswer}` : "this concept"}** when attempting similar problems.`;
   }
 
   // ── Internal Strategy Handlers ─────────────────────────────
