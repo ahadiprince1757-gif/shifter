@@ -952,21 +952,6 @@ export default function AITutor() {
                         )}
                       </div>
                     )}
-
-                    {/* Stop button — only shown on the actively streaming last message */}
-                    {isGenerating && isLastMsg && (
-                      <div style={{ paddingLeft: "2.5rem", marginTop: "0.4rem" }}>
-                        <button
-                          type="button"
-                          className="ai-stop-btn"
-                          onClick={handleStopGeneration}
-                          title="Stop generation"
-                        >
-                          <StopIcon />
-                          Stop generating
-                        </button>
-                      </div>
-                    )}
                   </div>
                 );
               })}
@@ -1011,9 +996,11 @@ export default function AITutor() {
                   }}
                 />
                 <button
-                  type="submit"
-                  disabled={isGenerating || !inputPrompt.trim() || !engine}
-                  aria-label="Send"
+                  type={isGenerating ? "button" : "submit"}
+                  onClick={isGenerating ? handleStopGeneration : undefined}
+                  disabled={!isGenerating && (!inputPrompt.trim() || !engine)}
+                  aria-label={isGenerating ? "Stop generating" : "Send"}
+                  title={isGenerating ? "Stop generating" : "Send message"}
                   style={{
                     position: "absolute",
                     right: "8px",
@@ -1021,23 +1008,27 @@ export default function AITutor() {
                     height: "36px",
                     borderRadius: "50%",
                     border: "none",
-                    background: inputPrompt.trim() && engine && !isGenerating
+                    background: isGenerating
+                      ? "var(--rd, #ef4444)"
+                      : inputPrompt.trim() && engine
                       ? "var(--g2)"
                       : "rgba(117, 82, 243, 0.12)",
-                    color: inputPrompt.trim() && engine && !isGenerating ? "#fff" : "var(--t3)",
+                    color: isGenerating || (inputPrompt.trim() && engine) ? "#fff" : "var(--t3)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    cursor: isGenerating || !inputPrompt.trim() || !engine ? "not-allowed" : "pointer",
-                    boxShadow: inputPrompt.trim() && engine && !isGenerating
+                    cursor: isGenerating || (inputPrompt.trim() && engine) ? "pointer" : "not-allowed",
+                    boxShadow: isGenerating
+                      ? "0 2px 10px rgba(239, 68, 68, 0.35)"
+                      : inputPrompt.trim() && engine
                       ? "0 2px 8px rgba(117, 82, 243, 0.3)"
                       : "none",
                     transition: "all 0.18s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transform: inputPrompt.trim() && !isGenerating ? "scale(1)" : "scale(0.9)",
+                    transform: isGenerating || (inputPrompt.trim() && engine) ? "scale(1)" : "scale(0.9)",
                     flexShrink: 0,
                   }}
                 >
-                  {isGenerating ? <SpinnerIcon /> : <SendIcon />}
+                  {isGenerating ? <StopIcon /> : <SendIcon />}
                 </button>
               </div>
               <p style={{ fontSize: "0.72rem", color: "var(--t3)", textAlign: "center", marginTop: "0.5rem" }}>
