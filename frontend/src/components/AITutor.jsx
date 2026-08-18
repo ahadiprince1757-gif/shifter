@@ -452,12 +452,12 @@ export default function AITutor() {
     <div className={`ai-minimalist-wrapper ${isFullscreen ? "ai-minimalist-wrapper--fullscreen" : ""}`}>
       {/* Header bar when NOT fullscreen */}
       {!isFullscreen && (
-        <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", marginBottom: "1rem" }}>
+        <div className="ai-outer-header">
           <div>
             <h1 style={{ fontSize: "1.3rem", fontWeight: "700", color: "var(--t)", lineHeight: 1.2 }}>
               AI Tutor
             </h1>
-            <p style={{ fontSize: "0.8rem", color: "var(--t3)", marginTop: "0.2rem" }}>
+            <p className="ai-outer-subtitle" style={{ fontSize: "0.8rem", color: "var(--t3)", marginTop: "0.2rem" }}>
               Runs 100% on-device · Private · Free
             </p>
           </div>
@@ -465,25 +465,16 @@ export default function AITutor() {
           <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
             <span className={`ai-status-pill ${engine ? "ai-status-pill--ready" : "ai-status-pill--idle"}`}>
               <span className={`ai-status-dot ${isLoading ? "ai-status-dot--pulse" : ""}`} />
-              {isLoading ? `Loading ${progressRatio}%` : engine ? "AI Ready" : "Offline AI"}
+              <span className="ai-status-text">
+                {isLoading ? `Loading ${progressRatio}%` : engine ? "AI Ready" : "Offline AI"}
+              </span>
             </span>
 
             {/* 100% Fullscreen Toggle */}
             <button
               onClick={() => setIsFullscreen(true)}
               title="Expand to 100% Full Screen"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "34px",
-                height: "34px",
-                borderRadius: "10px",
-                background: "var(--sur)",
-                border: "1px solid var(--bd)",
-                color: "var(--t2)",
-                cursor: "pointer",
-              }}
+              className="ai-icon-btn"
             >
               <MaximizeIcon />
             </button>
@@ -513,36 +504,17 @@ export default function AITutor() {
         
         {/* Card Header Bar */}
         <div className="ai-minimalist-header">
-          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
             {/* Sidebar toggle */}
             <button
               onClick={() => setSidebarOpen((o) => !o)}
               title="Saved Chats History"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.4rem",
-                padding: "0.4rem 0.65rem",
-                borderRadius: "8px",
-                border: "1px solid var(--bd)",
-                background: sidebarOpen ? "rgba(117, 82, 243, 0.1)" : "transparent",
-                color: sidebarOpen ? "var(--v)" : "var(--t2)",
-                fontSize: "0.825rem",
-                fontWeight: 600,
-                cursor: "pointer",
-              }}
+              className="ai-card-btn"
             >
               <SidebarIcon />
-              <span style={{ display: "inline-block" }}>Saved Chats</span>
+              <span className="ai-btn-text">Chats</span>
               {savedChats.length > 0 && (
-                <span style={{
-                  background: "var(--g2)",
-                  color: "#fff",
-                  fontSize: "0.7rem",
-                  fontWeight: 700,
-                  borderRadius: "10px",
-                  padding: "0.1rem 0.45rem",
-                }}>
+                <span className="ai-chat-badge">
                   {savedChats.length}
                 </span>
               )}
@@ -552,65 +524,42 @@ export default function AITutor() {
             <button
               onClick={handleNewChat}
               title="Start New Chat"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "0.3rem",
-                padding: "0.4rem 0.65rem",
-                borderRadius: "8px",
-                border: "1px solid var(--bd)",
-                background: "transparent",
-                color: "var(--t2)",
-                fontSize: "0.825rem",
-                fontWeight: 500,
-                cursor: "pointer",
-              }}
+              className="ai-card-btn"
             >
-              <PlusIcon /> New
+              <PlusIcon /> <span className="ai-btn-text">New</span>
             </button>
           </div>
 
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
             {/* Model Selector Trigger */}
             <button
               onClick={() => setShowModelPicker((o) => !o)}
-              style={{
-                fontSize: "0.78rem",
-                color: "var(--t2)",
-                background: "none",
-                border: "1px solid var(--bd)",
-                borderRadius: "8px",
-                padding: "0.35rem 0.65rem",
-                cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                gap: "0.3rem",
-              }}
+              className="ai-model-select-btn"
             >
-              <ModelIcon /> {
-                selectedModel === FAST_MODEL ? "SmolLM2 135M (~60MB)" :
-                selectedModel === LIGHT_MODEL ? "SmolLM2 360M (~200MB)" :
-                selectedModel === LOW_RAM_MODEL ? "Qwen 2.5 0.5B (~350MB)" :
-                "Llama 3.2 1B (~700MB)"
-              }
+              <ModelIcon />
+              <span className="ai-model-label-desktop">
+                {
+                  selectedModel === FAST_MODEL ? "SmolLM2 135M (~60MB)" :
+                  selectedModel === LIGHT_MODEL ? "SmolLM2 360M (~200MB)" :
+                  selectedModel === LOW_RAM_MODEL ? "Qwen 2.5 0.5B (~350MB)" :
+                  "Llama 3.2 1B (~700MB)"
+                }
+              </span>
+              <span className="ai-model-label-mobile">
+                {
+                  selectedModel === FAST_MODEL ? "SmolLM2 135M" :
+                  selectedModel === LIGHT_MODEL ? "SmolLM2 360M" :
+                  selectedModel === LOW_RAM_MODEL ? "Qwen 0.5B" :
+                  "Llama 1B"
+                }
+              </span>
             </button>
 
             {/* Fullscreen Toggle */}
             <button
               onClick={() => setIsFullscreen((f) => !f)}
               title={isFullscreen ? "Exit Fullscreen" : "100% Full Screen"}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: "32px",
-                height: "32px",
-                borderRadius: "8px",
-                border: "1px solid var(--bd)",
-                background: "transparent",
-                color: "var(--t2)",
-                cursor: "pointer",
-              }}
+              className="ai-icon-btn"
             >
               {isFullscreen ? <MinimizeIcon /> : <MaximizeIcon />}
             </button>

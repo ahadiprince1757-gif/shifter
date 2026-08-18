@@ -74,7 +74,7 @@ export async function askLocalAI(
   engine,
   prompt,
   onToken,
-  customSystemPrompt = "You are an offline high school tutor. Provide concise, clear explanations.",
+  customSystemPrompt = "You are an offline high school tutor. Provide concise, clear explanations. Do not use emojis in your responses.",
   abortSignal = null
 ) {
   if (!engine) throw new Error("AI Engine not initialized");
