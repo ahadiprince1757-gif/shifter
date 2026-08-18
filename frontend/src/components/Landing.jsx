@@ -396,11 +396,8 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
                 Start Studying for Free →
               </button>
               <div style={{ display: "flex", gap: "1rem", fontSize: "0.78rem", color: "var(--t3)", opacity: 0.85 }}>
-                <span>Works 100% Offline</span>
-                <span>•</span>
+                <span>Works Offline</span>
                 <span>No Ads</span>
-                <span>•</span>
-                <span>Free Forever</span>
               </div>
             </div>
           </div>
