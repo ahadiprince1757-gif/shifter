@@ -4,6 +4,19 @@ import { mistakeRepo } from "../repository/mistakeRepo";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 
+function formatTitle(str) {
+  if (!str) return "";
+  if (!str.includes("_") && !str.includes("-") && /[a-z]/.test(str)) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  return str
+    .replace(/[_-]/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
 export default function MistakeJournal() {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
@@ -78,7 +91,7 @@ export default function MistakeJournal() {
                   className={`mj-filter-btn ${filter === sub ? "active" : ""}`}
                   onClick={() => setFilter(sub)}
                 >
-                  {sub} ({mistakes.filter((m) => m.subject_id === sub).length})
+                  {formatTitle(sub)} ({mistakes.filter((m) => m.subject_id === sub).length})
                 </button>
               ))}
             </div>
@@ -88,10 +101,10 @@ export default function MistakeJournal() {
             {filtered.map((mistake) => (
               <div key={mistake.id} className="mj-item">
                 <div className="mj-item-meta">
-                  <span className="mj-topic-label">{mistake.topic_id}</span>
+                  <span className="mj-topic-label">{formatTitle(mistake.topic_id)}</span>
                   <span className="mj-subject-label">
-                    {mistake.subject_id}
-                    {mistake.chapter_id ? ` · ${mistake.chapter_id}` : ""}
+                    {formatTitle(mistake.subject_id)}
+                    {mistake.chapter_id ? ` · ${formatTitle(mistake.chapter_id)}` : ""}
                   </span>
                 </div>
 

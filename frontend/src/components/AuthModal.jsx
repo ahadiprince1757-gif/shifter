@@ -123,16 +123,29 @@ export default function AuthModal({ isOpen, onClose }) {
 
         <img src="/tixar-logo.png?v=3" alt="Tixar Logo" className="auth-logo" />
 
+        {authReason && (
+          <div style={{
+            background: "rgba(117, 82, 243, 0.08)",
+            border: "1px solid rgba(117, 82, 243, 0.25)",
+            borderRadius: "12px",
+            padding: "0.65rem 0.85rem",
+            marginBottom: "1rem",
+            fontSize: "0.825rem",
+            color: "var(--v)",
+            fontWeight: 600,
+            textAlign: "center",
+          }}>
+            {authReason}
+          </div>
+        )}
+
         {mode === "select" ? (
           <>
             <h2 className="auth-title">
-              {authReason ? "Create a Free Account" : "Sign In to Tixar"}
+              Sign In to Tixar
             </h2>
             <p className="auth-desc">
-              {authReason
-                ? authReason
-                : "Sign in to save your learning progress, view analytics, and sync your scores."
-              }
+              Save your learning progress, view analytics, and sync across devices.
             </p>
 
             <div className="auth-buttons-list">

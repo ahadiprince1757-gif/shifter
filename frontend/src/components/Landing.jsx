@@ -386,15 +386,22 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
         <div className="hero-inner jobs-centered">
           <div className="hero-content">
             <h1 className="hero-title">
-              <span className="gt">Master every topic at your own pace.</span>
+              <span className="gt">Stop forgetting topics you've already studied.</span>
             </h1>
             <p className="hero-sub">
-              Adaptive study notes, instant practice feedback, and personalized memory reviews.
+              Tixar pinpoints exactly where your memory breaks down and fixes it with adaptive notes, instant practice quizzes, and spaced repetition.
             </p>
-            <div className="hero-actions">
+            <div className="hero-actions" style={{ flexDirection: "column", gap: "0.75rem", alignItems: "center" }}>
               <button className="btn-hero primary" onClick={enterApp}>
-                Start Studying Now →
+                Start Studying for Free →
               </button>
+              <div style={{ display: "flex", gap: "1rem", fontSize: "0.78rem", color: "var(--t3)", opacity: 0.85 }}>
+                <span>Works 100% Offline</span>
+                <span>•</span>
+                <span>No Ads</span>
+                <span>•</span>
+                <span>Free Forever</span>
+              </div>
             </div>
           </div>
         </div>

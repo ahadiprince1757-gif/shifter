@@ -787,12 +787,12 @@ export default function AITutor() {
                     <BotAvatarIcon />
                   </div>
                   <h2 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--t)" }}>
-                    {engine ? "Ask me anything" : "Load the AI model to start"}
+                    {engine ? "Ask me anything" : "Personal AI Tutor — 100% Offline"}
                   </h2>
-                  <p style={{ fontSize: "0.83rem", color: "var(--t3)", maxWidth: "280px", lineHeight: 1.5 }}>
+                  <p style={{ fontSize: "0.83rem", color: "var(--t3)", maxWidth: "320px", lineHeight: 1.5 }}>
                     {engine
                       ? "Science, maths, history — fully on-device and private."
-                      : "Click 'Load AI Model' above to start."}
+                      : "Ask questions about any topic you're studying. Runs directly inside your browser — private, free, and works without internet once loaded."}
                   </p>
 
                   {engine && (
