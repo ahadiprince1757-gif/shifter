@@ -176,7 +176,7 @@ export default function LoadingScreen({
               background: phase === "done" ? "#10b981" : "#3a8ffd",
               boxShadow: phase === "done"
                 ? "0 0 12px rgba(16, 185, 129, 0.8)"
-                : "0 0 10px rgba(58, 143, 253, 0.7), 0 0 20px rgba(117, 82, 243, 0.4)",
+                : "0 0 10px rgba(58, 143, 253, 0.7), 0 0 20px rgba(77, 166, 255, 0.4)",
               transition: phase === "done" ? "left 0.4s cubic-bezier(0.22, 1, 0.36, 1)" : "left 0.06s linear",
               animation: "glowPulse 1.2s ease-in-out infinite",
             }}
@@ -189,8 +189,8 @@ export default function LoadingScreen({
           fontSize: "1.2rem", 
           fontWeight: 700, 
           backgroundImage: phase === "done" 
-            ? "linear-gradient(135deg, #7552f3, #10b981)"
-            : "linear-gradient(135deg, #7552f3, #3a8ffd)", 
+            ? "linear-gradient(135deg, #4da6ff, #10b981)"
+            : "linear-gradient(135deg, #4da6ff, #3a8ffd)", 
           WebkitBackgroundClip: "text", 
           backgroundClip: "text", 
           WebkitTextFillColor: "transparent" 
