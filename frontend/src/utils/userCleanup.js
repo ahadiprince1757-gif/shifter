@@ -40,3 +40,33 @@ export async function clearUserDataForUserSwitch(userId) {
   }
 }
 
+/** Transfer guest study records created before log-in to the newly authenticated user_id. */
+export async function migrateGuestDataToUser(newUserId) {
+  if (!newUserId) return;
+  try {
+    const guestProgress = await shifterDb.user_progress.filter((p) => !p.user_id).toArray().catch(() => []);
+    for (const p of guestProgress) {
+      await shifterDb.user_progress.put({ ...p, user_id: newUserId });
+    }
+
+    const guestMistakes = await shifterDb.user_mistakes.filter((m) => !m.user_id).toArray().catch(() => []);
+    for (const m of guestMistakes) {
+      await shifterDb.user_mistakes.put({ ...m, user_id: newUserId });
+    }
+
+    const guestReviews = await shifterDb.spaced_reviews.filter((r) => !r.user_id).toArray().catch(() => []);
+    for (const r of guestReviews) {
+      await shifterDb.spaced_reviews.delete([null, r.topic_id]).catch(() => {});
+      await shifterDb.spaced_reviews.put({ ...r, user_id: newUserId });
+    }
+
+    const guestNotes = await shifterDb.user_notes.filter((n) => !n.user_id).toArray().catch(() => []);
+    for (const n of guestNotes) {
+      await shifterDb.user_notes.delete([null, n.topic_id]).catch(() => {});
+      await shifterDb.user_notes.put({ ...n, user_id: newUserId });
+    }
+  } catch (err) {
+    console.error("Error migrating guest data to user:", err);
+  }
+}
+

@@ -660,6 +660,7 @@ async function resolveUserId(req) {
   if (error || !user) return null;
   return user.id;
 }
+const getUserId = resolveUserId;
 
 // ── MISTAKES ─────────────────────────────────────────────────
 

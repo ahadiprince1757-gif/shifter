@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase";
 import toast from "react-hot-toast";
 import { AuthContext } from "./AuthContext";
-import { clearUserDataForUserSwitch } from "../utils/userCleanup";
+import { clearUserDataForUserSwitch, migrateGuestDataToUser } from "../utils/userCleanup";
 
 const SESSION_CACHE_KEY = "shifter_cached_session";
 const CURRENT_USER_ID_KEY = "shifter_current_user_id";
@@ -58,6 +58,7 @@ export function AuthProvider({ children }) {
           }
           if (newUserId) {
             localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
+            migrateGuestDataToUser(newUserId).catch(() => {});
           }
           setSession(existingSession);
           cacheSession(existingSession);
@@ -85,6 +86,7 @@ export function AuthProvider({ children }) {
           }
           if (newUserId) {
             localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
+            migrateGuestDataToUser(newUserId).catch(() => {});
           }
           setSession(newSession);
           setSessionLoading(false);
