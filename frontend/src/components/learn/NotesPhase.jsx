@@ -3,8 +3,11 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { notesRepo } from "../../repository/notesRepo";
+import { useAuth } from "../../hooks/useAuth";
 
 function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
+  const { session } = useAuth();
+  const userId = session?.user?.id || null;
   const [fontSize, setFontSize] = useState(() => {
     try {
       const saved = localStorage.getItem("shifter_reader_zoom");
@@ -31,10 +34,14 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
   // Load saved personal note for this topic on mount / topic change
   useEffect(() => {
     if (!topic) return;
-    notesRepo.getNote(topic).then((saved) => {
+    notesRepo.getNote(topic, {
+      sid: subject?.id,
+      cid: chapter?.id,
+      userId,
+    }).then((saved) => {
       setScratchpadText(saved || "");
     }).catch(() => {});
-  }, [topic]);
+  }, [topic, subject?.id, chapter?.id, userId]);
 
   useEffect(() => {
     try {
@@ -197,6 +204,7 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
                       notesRepo.saveNote(topic, val, {
                         sid: subject?.id,
                         cid: chapter?.id,
+                        userId,
                       }).then(() => setScratchpadSaved(true)).catch(() => {});
                     }
                   }, 800);

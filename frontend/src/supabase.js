@@ -19,7 +19,11 @@ if (hasValidConfig) {
 
     // Listen for auth state changes to keep currentSession updated
     supabaseInstance.auth.onAuthStateChange((_event, session) => {
-      currentSession = session;
+      if (_event === "SIGNED_OUT") {
+        currentSession = null;
+      } else {
+        currentSession = session;
+      }
     });
   } catch (err) {
     console.error("Failed to initialize Supabase client:", err);

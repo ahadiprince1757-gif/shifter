@@ -2,7 +2,7 @@ import { db } from "../db/db";
 import { curriculumRepo } from "../repository/curriculumRepo";
 import { topicRepo } from "../repository/topicRepo";
 import { progressRepo } from "../repository/progressRepo";
-import { fetchCurriculum, fetchTopicContent, gradeAnswer } from "../api";
+import { fetchCurriculum, fetchTopicContent, saveProgress } from "../api";
 import { networkService } from "../services/networkService";
 
 /**
@@ -62,9 +62,22 @@ class SyncEngine {
     for (const change of pendingChanges) {
       try {
         if (change.type === "progress_update") {
-          // Push to server
-          await gradeAnswer(change.payload.data); // Assuming payload has what API needs
-          
+          const payload = change.payload || {};
+          const { sid, cid, topicId, completed, score, mastered, confidenceLevel } = payload;
+
+          // Only push to Supabase if we have enough context (sid, cid, topicId)
+          if (sid && cid && topicId) {
+            await saveProgress({
+              sid,
+              cid,
+              topicTitle: topicId,
+              completed: completed ?? false,
+              score: score ?? null,
+              mastered: mastered ?? false,
+              confidenceLevel: confidenceLevel ?? null,
+            });
+          }
+
           // Mark as synced locally
           await progressRepo.markSynced(change.entity_id);
           await db.change_log.update(change.id, { synced: true });

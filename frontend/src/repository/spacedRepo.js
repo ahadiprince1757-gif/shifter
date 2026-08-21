@@ -1,6 +1,6 @@
 import { db } from "../db/db";
 import { calculateNextReview, convertToQualityRating } from "../utils/spacedRepetition";
-import { saveSpacedReview as apiSaveSpacedReview } from "../api";
+import { saveSpacedReview as apiSaveSpacedReview, fetchSpacedReviews } from "../api";
 import { networkService } from "../services/networkService";
 
 export const spacedRepo = {
@@ -11,7 +11,7 @@ export const spacedRepo = {
    * @param {string} topicId   - The topic title (used as local key)
    * @param {boolean} isCorrect
    * @param {string} confidence - "low" | "medium" | "high"
-   * @param {{ sid: string, cid: string }} meta - needed for Supabase sync
+   * @param {{ sid: string, cid: string, userId?: string }} meta - needed for Supabase sync
    */
   async updateReviewSchedule(topicId, isCorrect, confidence = "medium", meta = {}) {
     try {
@@ -57,14 +57,46 @@ export const spacedRepo = {
 
   /**
    * Get all topics currently due for review (next_review_at <= NOW) for a specific user.
+   * Hydrates from Supabase user_review_queue if online.
    */
   async getDueReviews(userId) {
     try {
+      const uid = userId || null;
+
+      // Hydrate from Supabase if online and authenticated
+      if (uid && networkService.isOnline) {
+        try {
+          const remoteReviews = await fetchSpacedReviews();
+          if (Array.isArray(remoteReviews) && remoteReviews.length > 0) {
+            for (const r of remoteReviews) {
+              const topicTitle = r.topic_title || "";
+              if (!topicTitle) continue;
+              const existing = await db.spaced_reviews.get([uid, topicTitle]);
+              // Only hydrate if local data is absent or stale
+              if (!existing || existing.next_review_at !== r.next_review_at) {
+                await db.spaced_reviews.put({
+                  user_id: uid,
+                  topic_id: topicTitle,
+                  next_review_at: r.next_review_at,
+                  interval_days: r.interval_days || 1,
+                  ease_factor: r.ease_factor || 2.5,
+                  repetitions: r.repetitions || 0,
+                  updated_at: new Date().toISOString(),
+                }).catch(() => {});
+              }
+            }
+          }
+        } catch {
+          // Hydration failed — fall back to local data
+        }
+      }
+
+      // Return from local IndexedDB, filtered by user and due date
       const now = new Date().toISOString();
       const all = await db.spaced_reviews.toArray();
       return all.filter(r => {
         if (r.next_review_at > now) return false;
-        if (userId) return r.user_id === userId;
+        if (uid) return r.user_id === uid;
         return !r.user_id;
       });
     } catch (err) {

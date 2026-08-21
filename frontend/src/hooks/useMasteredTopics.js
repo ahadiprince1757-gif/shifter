@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { db } from "../utils/db";
 import { useAuth } from "./useAuth";
-import { fetchProgress } from "../api";
+import { fetchProgress, saveProgress } from "../api";
 import toast from "react-hot-toast";
 
 export function useMasteredTopics() {
@@ -118,7 +118,12 @@ export function useMasteredTopics() {
     };
   }, [userId]);
 
-  const markMastered = async (topicKey) => {
+  /**
+   * Mark a topic as mastered.
+   * @param {string} topicKey  — format: "${sid}|${cid}|${topicTitle}"
+   * @param {{ sid: string, cid: string, topicTitle: string }} [meta] — needed to sync to Supabase
+   */
+  const markMastered = async (topicKey, meta = {}) => {
     if (!userId) return;
 
     // Optimistic state update
@@ -146,9 +151,28 @@ export function useMasteredTopics() {
       console.error("Failed to save mastered topic to IndexedDB", err);
       toast.error("Failed to save progress offline.");
     }
+
+    // Sync mastery to Supabase progress table
+    // Parse meta from the topicKey if not provided explicitly
+    let { sid, cid, topicTitle } = meta;
+    if (!sid || !cid || !topicTitle) {
+      const parts = topicKey.split("|");
+      if (parts.length === 3) {
+        [sid, cid, topicTitle] = parts;
+      }
+    }
+
+    if (sid && cid && topicTitle) {
+      saveProgress({
+        sid,
+        cid,
+        topicTitle,
+        completed: true,
+        mastered: true,
+        score: 100,
+      }).catch(() => {}); // fire-and-forget
+    }
   };
 
   return { mastered, markMastered, loading };
 }
-
-

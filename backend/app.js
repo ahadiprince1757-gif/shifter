@@ -643,9 +643,9 @@ async function resolveTopicId(sid, cid, topicTitle) {
     .eq("sid", sid)
     .eq("cid", cid)
     .eq("topic", topicTitle)
-    .maybeSingle();
-  if (error || !data) return null;
-  return data.topic_id;
+    .limit(1);
+  if (error || !data || data.length === 0) return null;
+  return data[0].topic_id;
 }
 
 /**
