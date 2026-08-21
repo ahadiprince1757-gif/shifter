@@ -6,6 +6,19 @@ import { spacedRepo } from "../repository/spacedRepo";
 
 import { useAuth } from "../hooks/useAuth";
 
+function formatTitle(str) {
+  if (!str) return "";
+  if (!str.includes("_") && !str.includes("-") && /[a-z]/.test(str)) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  }
+  return str
+    .replace(/[_-]/g, " ")
+    .split(" ")
+    .filter(Boolean)
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .join(" ");
+}
+
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const navigate = useNavigate();
   const { session } = useAuth();
@@ -28,7 +41,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     if (!userId) return;
     spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
   }, [userId]);
-
 
   if (!curriculum) {
     return (
@@ -65,17 +77,17 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
             <div className="resume-card-header">
               <span className="resume-card-badge">Continue</span>
               <span className="resume-card-path">
-                {lastTopic.subjectLabel || "Subject"} · {lastTopic.chapterLabel || "Chapter"}
+                {formatTitle(lastTopic.subjectLabel || lastTopic.subjectId)} · {formatTitle(lastTopic.chapterLabel || lastTopic.chapterId)}
               </span>
             </div>
-            <h2 className="resume-card-topic">{lastTopic.topic}</h2>
+            <h2 className="resume-card-topic">{formatTitle(lastTopic.topic)}</h2>
           </div>
           <button
             type="button"
             className="resume-card-btn"
             onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
-            Resume Topic →
+            Continue Studying →
           </button>
         </div>
       )}

@@ -32,6 +32,12 @@ const BotIcon = () => (
   </svg>
 );
 
+const MistakesIcon = () => (
+  <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
+  </svg>
+);
+
 export default function BottomNav({
   curriculum,
   onNavigateToTopic,
@@ -79,6 +85,7 @@ export default function BottomNav({
   const path = location.pathname;
   const isHome = path === "/subjects";
   const isProgress = path === "/analytics";
+  const isMistakes = path === "/mistakes";
   const isTutor = path === "/tutor" || path === "/ai-tutor";
 
   const handleSearchNavigate = (subjectId, chapterId, topic) => {
@@ -124,21 +131,21 @@ export default function BottomNav({
         </button>
 
         <button
-          className={`bn-item ${searchOpen ? "active" : ""}`}
-          onClick={() => setSearchOpen((o) => !o)}
-          aria-label="Search"
-        >
-          <span className="bn-icon"><SearchIcon /></span>
-          <span className="bn-label">Search</span>
-        </button>
-
-        <button
           className={`bn-item ${isTutor ? "active" : ""}`}
           onClick={() => navigate("/tutor")}
           aria-label="AI Tutor"
         >
           <span className="bn-icon"><BotIcon /></span>
           <span className="bn-label">AI Tutor</span>
+        </button>
+
+        <button
+          className={`bn-item ${isMistakes ? "active" : ""}`}
+          onClick={() => navigate("/mistakes")}
+          aria-label="Mistakes"
+        >
+          <span className="bn-icon"><MistakesIcon /></span>
+          <span className="bn-label">Mistakes</span>
         </button>
 
         <button
