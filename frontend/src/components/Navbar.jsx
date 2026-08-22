@@ -268,7 +268,7 @@ export default function Navbar({
           })}
 
           <button className="lnav-drawer-item" onClick={() => { toggleDark(); }}>
-            {isDark ? "☀ Light Mode" : "🌙 Dark Mode"}
+            {isDark ? "☀ Light Mode" : " Dark Mode"}
           </button>
 
           {session ? (
