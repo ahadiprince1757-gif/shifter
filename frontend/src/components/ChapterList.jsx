@@ -3,18 +3,38 @@ function ChapterList({ subject, openChapter, goBack }) {
 
   return (
     <div id="v-chapters" className="view active">
-      <div className="vhd">
-        <button className="vback" onClick={goBack}>← All Subjects</button>
-        <div className="vtitle">{subject.label}</div>
-        <div className="vsub">{subject.chapters.length} chapters</div>
+      <div className="vhd-humanistic">
+        <button className="vback-humanistic" onClick={goBack}>
+          ← All Subjects
+        </button>
+        <div className="vtitle-humanistic">{subject.label}</div>
+        <div className="vsub-humanistic">
+          {subject.chapters.length} chapter{subject.chapters.length !== 1 ? "s" : ""} · Select a chapter to start learning
+        </div>
       </div>
-      <div className="chap-list">
-        {subject.chapters.map((c) => (
-          <div className="chap-card" key={c.id} onClick={() => openChapter(c.id)}>
-            <div className="chap-name">{c.label}</div>
-            <div className="chap-meta">{c.topics.length} topics</div>
-          </div>
-        ))}
+
+      <div className="chap-list-humanistic">
+        {subject.chapters.map((c, idx) => {
+          const estMinutes = Math.max(5, c.topics.length * 4);
+          return (
+            <div
+              className="chap-card-humanistic"
+              key={c.id}
+              onClick={() => openChapter(c.id)}
+            >
+              <div className="chap-badge-number">Chapter {idx + 1}</div>
+              <div className="chap-card-content">
+                <div className="chap-name-humanistic">{c.label}</div>
+                <div className="chap-meta-humanistic">
+                  <span>{c.topics.length} topic{c.topics.length !== 1 ? "s" : ""}</span>
+                  <span className="chap-meta-dot">•</span>
+                  <span>~{estMinutes} min study</span>
+                </div>
+              </div>
+              <div className="chap-arrow">→</div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

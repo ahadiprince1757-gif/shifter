@@ -3,8 +3,16 @@ import { useNavigate } from "react-router-dom";
 import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
 import { spacedRepo } from "../repository/spacedRepo";
-
 import { useAuth } from "../hooks/useAuth";
+
+const HUMANISTIC_PALETTES = [
+  { accent: "#E07A5F", bg: "rgba(224, 122, 95, 0.06)", border: "rgba(224, 122, 95, 0.28)", icon: "⚛️" },
+  { accent: "#81B29A", bg: "rgba(129, 178, 154, 0.06)", border: "rgba(129, 178, 154, 0.28)", icon: "🧪" },
+  { accent: "#E0A96D", bg: "rgba(224, 169, 109, 0.06)", border: "rgba(224, 169, 109, 0.28)", icon: "📐" },
+  { accent: "#6B9AB8", bg: "rgba(107, 154, 184, 0.06)", border: "rgba(107, 154, 184, 0.28)", icon: "🧬" },
+  { accent: "#D4A5A5", bg: "rgba(212, 165, 165, 0.06)", border: "rgba(212, 165, 165, 0.28)", icon: "🏛️" },
+  { accent: "#9B88B3", bg: "rgba(155, 136, 179, 0.06)", border: "rgba(155, 136, 179, 0.28)", icon: "📚" },
+];
 
 function formatTitle(str) {
   if (!str) return "";
@@ -19,12 +27,34 @@ function formatTitle(str) {
     .join(" ");
 }
 
+function getGreeting() {
+  const hour = new Date().getHours();
+  if (hour < 12) return "Good morning";
+  if (hour < 18) return "Good afternoon";
+  return "Good evening";
+}
+
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const navigate = useNavigate();
   const { session } = useAuth();
   const userId = session?.user?.id || null;
 
-  // localStorage is synchronous → derive lastTopic via useMemo (no setState in effects)
+  const firstName = useMemo(() => {
+    const metaName = session?.user?.user_metadata?.full_name || session?.user?.user_metadata?.name;
+    if (metaName) {
+      return metaName.trim().split(" ")[0];
+    }
+    const email = session?.user?.email;
+    if (email) {
+      const handle = email.split("@")[0];
+      return handle.charAt(0).toUpperCase() + handle.slice(1);
+    }
+    return "Learner";
+  }, [session]);
+
+  const greeting = useMemo(() => getGreeting(), []);
+
+  // localStorage is synchronous → derive lastTopic via useMemo
   const lastTopic = useMemo(() => {
     if (!userId) return null;
     try {
@@ -36,7 +66,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   // Async spaced reviews state
   const [dueReviews, setDueReviews] = useState([]);
 
-  // Only async work goes in useEffect
   useEffect(() => {
     if (!userId) return;
     spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
@@ -45,10 +74,11 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   if (!curriculum) {
     return (
       <div id="v-subjects" className="view active">
-        <div className="sg-header">
-          <h1 className="sg-title">Subjects</h1>
+        <div className="sg-header-humanistic">
+          <h1 className="sg-greeting">{greeting}, {firstName} 👋</h1>
+          <p className="sg-subtitle">Your personal learning sanctuary</p>
         </div>
-        <div className="subj-grid">
+        <div className="subj-grid-humanistic">
           <SkeletonLoader type="grid" count={6} />
         </div>
       </div>
@@ -60,7 +90,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     openSubject(subjectId);
   };
 
-  // Show the resume banner whenever there is a valid last visited topic
   const showResume = Boolean(
     lastTopic &&
     lastTopic.subjectId &&
@@ -71,20 +100,51 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   return (
     <div id="v-subjects" className="view active">
-      {showResume && (
-        <div className="resume-card">
-          <div className="resume-card-text">
-            <div className="resume-card-header">
-              <span className="resume-card-badge">Continue</span>
-              <span className="resume-card-path">
-                {formatTitle(lastTopic.subjectLabel || lastTopic.subjectId)} · {formatTitle(lastTopic.chapterLabel || lastTopic.chapterId)}
-              </span>
+      {/* Warm Time-aware Greeting Header */}
+      <div className="sg-header-humanistic">
+        <div className="sg-greeting-badge">Study Sanctuary</div>
+        <h1 className="sg-greeting">{greeting}, {firstName} 👋</h1>
+        <p className="sg-subtitle">What are we exploring tonight?</p>
+      </div>
+
+      {/* Spaced Review Queue Banner */}
+      {dueReviews.length > 0 && (
+        <div className="review-queue-banner-humanistic">
+          <div className="review-queue-icon">🧠</div>
+          <div className="review-queue-text">
+            <div className="review-queue-title">
+              {dueReviews.length} topic{dueReviews.length !== 1 ? "s" : ""} need a quick refresher
             </div>
-            <h2 className="resume-card-topic">{formatTitle(lastTopic.topic)}</h2>
+            <div className="review-queue-sub">
+              Strengthen long-term memory before topics fade
+            </div>
           </div>
           <button
             type="button"
-            className="resume-card-btn"
+            className="review-queue-btn-humanistic"
+            onClick={() => navigate("/analytics")}
+          >
+            Refresh Memory →
+          </button>
+        </div>
+      )}
+
+      {/* Warmer Bookmark Continue Card */}
+      {showResume && (
+        <div className="resume-card-humanistic">
+          <div className="resume-bookmark-icon">🔖</div>
+          <div className="resume-card-content">
+            <div className="resume-card-kicker">Pick up where you left off</div>
+            <h2 className="resume-card-topic-title">
+              {formatTitle(lastTopic.topic)}
+            </h2>
+            <div className="resume-card-location">
+              {formatTitle(lastTopic.subjectLabel || lastTopic.subjectId)} · {formatTitle(lastTopic.chapterLabel || lastTopic.chapterId)}
+            </div>
+          </div>
+          <button
+            type="button"
+            className="resume-card-action-btn"
             onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
             Continue Studying →
@@ -92,51 +152,82 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
         </div>
       )}
 
-      {/* Spaced Review Queue Banner */}
-      {dueReviews.length > 0 && (
-        <div className="review-queue-banner">
-          <div className="review-queue-text">
-            <span className="review-queue-count">{dueReviews.length}</span>
-            <span className="review-queue-label">
-              topic{dueReviews.length !== 1 ? "s" : ""} scheduled for memory review today
-            </span>
-          </div>
-          <button
-            type="button"
-            className="review-queue-btn"
-            onClick={() => navigate("/analytics")}
-          >
-            Start Memory Review →
-          </button>
-        </div>
-      )}
-
-      <div className="sg-header">
-        <h1 className="sg-title">Subjects</h1>
+      {/* Subject Section Header */}
+      <div className="sg-section-title">
+        <span>Your Subjects</span>
+        <span className="sg-subject-count">{curriculum.length} curated courses</span>
       </div>
 
-      <div className="subj-grid">
-        {curriculum.map((s) => {
+      {/* Humanistic Subject Cards Grid */}
+      <div className="subj-grid-humanistic">
+        {curriculum.map((s, idx) => {
           const totalTopics = s.chapters.reduce((a, c) => a + c.topics.length, 0);
           const masteredCount = s.chapters.reduce(
             (a, c) => a + c.topics.filter((t) => mastered.has(`${s.id}|${c.id}|${t}`)).length,
             0
           );
-          const prog = totalTopics > 0 ? (masteredCount / totalTopics) * 100 : 0;
+          const pct = totalTopics > 0 ? Math.round((masteredCount / totalTopics) * 100) : 0;
+          const palette = HUMANISTIC_PALETTES[idx % HUMANISTIC_PALETTES.length];
+
+          // SVG progress circle calculations
+          const radius = 16;
+          const circumference = 2 * Math.PI * radius;
+          const strokeDashoffset = circumference - (pct / 100) * circumference;
 
           return (
             <button
-              className="subj-box"
+              className="subj-notebook-card"
               key={s.id}
               onClick={() => handleSubjectClick(s.id, s.label)}
-              aria-label={`${s.label}, ${Math.round(prog)}% complete`}
+              style={{
+                "--card-accent": palette.accent,
+                "--card-bg-tint": palette.bg,
+                "--card-border-tint": palette.border,
+              }}
+              aria-label={`${s.label}, ${masteredCount} of ${totalTopics} topics mastered`}
             >
-              <div className="subj-box-name">{s.label}</div>
-              <div className="subj-box-prog">
-                <div className="subj-box-bar">
-                  <div className="subj-box-fill" style={{ width: `${prog}%` }} />
+              <div className="subj-notebook-spine" />
+              <div className="subj-notebook-body">
+                <div className="subj-notebook-header">
+                  <span className="subj-notebook-icon">{palette.icon}</span>
+                  <div className="subj-ring-container" title={`${pct}% complete`}>
+                    <svg width="40" height="40" viewBox="0 0 40 40">
+                      <circle
+                        cx="20"
+                        cy="20"
+                        r={radius}
+                        className="subj-ring-bg"
+                      />
+                      <circle
+                        cx="20"
+                        cy="20"
+                        r={radius}
+                        className="subj-ring-fill"
+                        style={{
+                          strokeDasharray: circumference,
+                          strokeDashoffset: strokeDashoffset,
+                          stroke: palette.accent,
+                        }}
+                      />
+                    </svg>
+                    <span className="subj-ring-pct">{pct}%</span>
+                  </div>
                 </div>
-                <span className="subj-box-pct">{Math.round(prog)}%</span>
+
+                <div className="subj-notebook-name">{s.label}</div>
+                <div className="subj-notebook-chapters">
+                  {s.chapters.length} chapters
+                </div>
+
+                <div className="subj-notebook-footer">
+                  <span className="subj-notebook-progress-text">
+                    {masteredCount === 0
+                      ? "Not started yet"
+                      : masteredCount === totalTopics
+                      ? "All mastered! 🎉"
+                      : `${masteredCount} of ${totalTopics} topics done`}
+                  </span>
+                </div>
               </div>
             </button>
           );

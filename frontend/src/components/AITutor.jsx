@@ -11,16 +11,18 @@ import {
 } from "../services/aiEngine";
 
 const STARTER_PROMPTS = [
-  { text: "Explain photosynthesis simply" },
-  { text: "Help me solve a quadratic equation" },
-  { text: "Summarize the causes of World War I" },
-  { text: "What is Ohm's Law?" },
+  { text: "Help me truly understand Ohm's Law" },
+  { text: "Explain photosynthesis with a vivid analogy" },
+  { text: "Break down quadratic equations intuitively" },
+  { text: "Why did World War I start? Give me the human story" },
 ];
 
 // Icons
 const BotAvatarIcon = () => (
-  <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
-    <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1a2 2 0 01-2 2h-1v1a3 3 0 01-3 3H9a3 3 0 01-3-3v-1H5a2 2 0 01-2-2v-1a7 7 0 017-7h1V5.73A2.001 2.001 0 0112 2zm-3 8a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" opacity="0.4" />
+    <circle cx="12" cy="12" r="4" fill="currentColor" fillOpacity="0.2" />
+    <circle cx="12" cy="12" r="2" fill="currentColor" />
   </svg>
 );
 
@@ -454,11 +456,11 @@ export default function AITutor() {
       {!isFullscreen && (
         <div className="ai-outer-header">
           <div>
-            <h1 style={{ fontSize: "1.3rem", fontWeight: "700", color: "var(--t)", lineHeight: 1.2 }}>
-              AI Tutor
+            <h1 className="ai-editorial-title">
+              Thought Companion
             </h1>
-            <p className="ai-outer-subtitle" style={{ fontSize: "0.8rem", color: "var(--t3)", marginTop: "0.2rem" }}>
-              Runs 100% on-device · Private · Free
+            <p className="ai-outer-subtitle">
+              Socrates · Your quiet, on-device study guide
             </p>
           </div>
 
@@ -466,7 +468,7 @@ export default function AITutor() {
             <span className={`ai-status-pill ${engine ? "ai-status-pill--ready" : "ai-status-pill--idle"}`}>
               <span className={`ai-status-dot ${isLoading ? "ai-status-dot--pulse" : ""}`} />
               <span className="ai-status-text">
-                {isLoading ? `Loading ${progressRatio}%` : engine ? "AI Ready" : "Offline AI"}
+                {isLoading ? `Preparing ${progressRatio}%` : engine ? "Companion Ready" : "Offline Ready"}
               </span>
             </span>
 
@@ -786,13 +788,13 @@ export default function AITutor() {
                   }}>
                     <BotAvatarIcon />
                   </div>
-                  <h2 style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--t)" }}>
-                    {engine ? "Ask me anything" : "Personal AI Tutor — 100% Offline"}
+                  <h2 className="ai-empty-title">
+                    {engine ? "What shall we explore today?" : "Thought Companion — Offline Learning"}
                   </h2>
-                  <p style={{ fontSize: "0.83rem", color: "var(--t3)", maxWidth: "320px", lineHeight: 1.5 }}>
+                  <p className="ai-empty-subtitle">
                     {engine
-                      ? "Science, maths, history — fully on-device and private."
-                      : "Ask questions about any topic you're studying. Runs directly inside your browser — private, free, and works without internet once loaded."}
+                      ? "Ask about any concept, equation, or topic. We'll explore it together through intuitive reasoning."
+                      : "Initialize your companion to ask questions about your studies. Runs 100% locally in your browser."}
                   </p>
 
                   {engine && (

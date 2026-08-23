@@ -7532,6 +7532,519 @@ html.dark-mode .ai-msg-bubble--assistant {
   transform: scale(1.02);
 }
 
+/* ═══════════════════════════════════════════════════════════════════════
+   HUMANISTIC & TASTE-DRIVEN DESIGN SYSTEM (SUBJECT DESK & THOUGHT COMPANION)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+/* ── Typography & Headings ── */
+.ai-editorial-title,
+.sg-greeting,
+.vtitle-humanistic {
+  font-family: 'Newsreader', Georgia, serif;
+  letter-spacing: -0.02em;
+}
+
+.sg-header-humanistic {
+  margin-bottom: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.35rem;
+}
+
+.sg-greeting-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  color: #e07a5f;
+  background: rgba(224, 122, 95, 0.1);
+  padding: 0.2rem 0.65rem;
+  border-radius: 99px;
+  border: 1px solid rgba(224, 122, 95, 0.2);
+  margin-bottom: 0.2rem;
+}
+
+.sg-greeting {
+  font-size: clamp(1.85rem, 4.5vw, 2.6rem);
+  font-weight: 600;
+  color: var(--t);
+  margin: 0;
+  line-height: 1.15;
+}
+
+.sg-subtitle {
+  font-size: 1rem;
+  color: var(--t3);
+  margin: 0;
+  font-weight: 400;
+}
+
+/* ── Section Title ── */
+.sg-section-title {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin: 2rem 0 1.25rem;
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--t);
+  border-bottom: 1px solid var(--bd);
+  padding-bottom: 0.6rem;
+}
+
+.sg-subject-count {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--t3);
+}
+
+/* ── Humanistic Subject Notebook Grid ── */
+.subj-grid-humanistic {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.subj-notebook-card {
+  position: relative;
+  display: flex;
+  background: var(--sur);
+  border: 1px solid var(--card-border-tint, var(--bd));
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+  width: 100%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.subj-notebook-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.08);
+  border-color: var(--card-accent);
+}
+
+.subj-notebook-card:focus-visible {
+  border-color: var(--card-accent);
+  box-shadow: 0 0 0 3px rgba(224, 122, 95, 0.2);
+}
+
+.subj-notebook-spine {
+  width: 7px;
+  background: var(--card-accent);
+  flex-shrink: 0;
+  transition: width 0.2s ease;
+}
+
+.subj-notebook-card:hover .subj-notebook-spine {
+  width: 10px;
+}
+
+.subj-notebook-body {
+  flex: 1;
+  padding: 1.4rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--card-bg-tint, transparent);
+  min-height: 160px;
+}
+
+.subj-notebook-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.8rem;
+}
+
+.subj-notebook-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+/* ── Circular Progress Ring ── */
+.subj-ring-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.subj-ring-bg {
+  fill: none;
+  stroke: var(--bg2);
+  stroke-width: 3.5;
+}
+
+.subj-ring-fill {
+  fill: none;
+  stroke-width: 3.5;
+  stroke-linecap: round;
+  transform: rotate(-90deg);
+  transform-origin: 50% 50%;
+  transition: stroke-dashoffset 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.subj-ring-pct {
+  position: absolute;
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: var(--t);
+  font-variant-numeric: tabular-nums;
+}
+
+.subj-notebook-name {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--t);
+  line-height: 1.25;
+  margin-bottom: 0.2rem;
+}
+
+.subj-notebook-chapters {
+  font-size: 0.78rem;
+  color: var(--t3);
+  margin-bottom: 1.2rem;
+}
+
+.subj-notebook-footer {
+  border-top: 1px dashed var(--bd);
+  padding-top: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.subj-notebook-progress-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--t2);
+}
+
+/* ── Humanistic Resume Card ── */
+.resume-card-humanistic {
+  margin-bottom: 1.75rem;
+  padding: 1.25rem 1.6rem;
+  border-radius: 18px;
+  background: linear-gradient(135deg, rgba(224, 122, 95, 0.08), rgba(224, 169, 109, 0.05));
+  border: 1px solid rgba(224, 122, 95, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: 0 6px 20px rgba(224, 122, 95, 0.06);
+}
+
+.resume-bookmark-icon {
+  font-size: 1.8rem;
+  flex-shrink: 0;
+}
+
+.resume-card-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.resume-card-kicker {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #e07a5f;
+  margin-bottom: 0.2rem;
+}
+
+.resume-card-topic-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--t);
+  margin: 0 0 0.15rem 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resume-card-location {
+  font-size: 0.8rem;
+  color: var(--t3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.resume-card-action-btn {
+  padding: 0.65rem 1.3rem;
+  border-radius: 99px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  background: #e07a5f;
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 14px rgba(224, 122, 95, 0.3);
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.resume-card-action-btn:hover {
+  background: #d4684b;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(224, 122, 95, 0.4);
+}
+
+/* ── Spaced Review Queue Banner ── */
+.review-queue-banner-humanistic {
+  margin-bottom: 1.5rem;
+  padding: 1.1rem 1.5rem;
+  border-radius: 16px;
+  background: rgba(129, 178, 154, 0.08);
+  border: 1px solid rgba(129, 178, 154, 0.25);
+  display: flex;
+  align-items: center;
+  gap: 1.1rem;
+}
+
+.review-queue-icon {
+  font-size: 1.6rem;
+  flex-shrink: 0;
+}
+
+.review-queue-text {
+  flex: 1;
+}
+
+.review-queue-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--t);
+}
+
+.review-queue-sub {
+  font-size: 0.78rem;
+  color: var(--t3);
+}
+
+.review-queue-btn-humanistic {
+  padding: 0.55rem 1.1rem;
+  border-radius: 99px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  background: #81b29a;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.review-queue-btn-humanistic:hover {
+  background: #6fa289;
+  transform: translateY(-1px);
+}
+
+/* ── Chapter & Topic Lists (Humanistic) ── */
+.vhd-humanistic {
+  margin-bottom: 2rem;
+}
+
+.vback-humanistic {
+  background: none;
+  border: none;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--t3);
+  cursor: pointer;
+  padding: 0;
+  margin-bottom: 0.75rem;
+  transition: color 0.15s ease;
+}
+
+.vback-humanistic:hover {
+  color: var(--t);
+}
+
+.vtitle-humanistic {
+  font-size: clamp(1.6rem, 3.8vw, 2.2rem);
+  font-weight: 600;
+  color: var(--t);
+  line-height: 1.2;
+}
+
+.vsub-humanistic {
+  font-size: 0.88rem;
+  color: var(--t3);
+  margin-top: 0.3rem;
+}
+
+.chap-list-humanistic,
+.topic-list-humanistic {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.chap-card-humanistic {
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 1.25rem 1.6rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+}
+
+.chap-card-humanistic:hover {
+  border-color: var(--bd2);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+}
+
+.chap-badge-number {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #e07a5f;
+  background: rgba(224, 122, 95, 0.08);
+  padding: 0.3rem 0.75rem;
+  border-radius: 99px;
+  flex-shrink: 0;
+}
+
+.chap-card-content {
+  flex: 1;
+}
+
+.chap-name-humanistic {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--t);
+}
+
+.chap-meta-humanistic {
+  font-size: 0.8rem;
+  color: var(--t3);
+  margin-top: 0.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.chap-meta-dot {
+  font-size: 0.6rem;
+  opacity: 0.5;
+}
+
+.chap-arrow {
+  font-size: 1.2rem;
+  color: var(--t3);
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.chap-card-humanistic:hover .chap-arrow {
+  transform: translateX(4px);
+  color: var(--t);
+}
+
+/* ── Topic Cards ── */
+.topic-card-humanistic {
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 1.1rem 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.topic-card-humanistic:hover {
+  border-color: var(--bd2);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.04);
+}
+
+.topic-index {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--t3);
+  font-variant-numeric: tabular-nums;
+  min-width: 24px;
+}
+
+.topic-card-body {
+  flex: 1;
+}
+
+.topic-title {
+  font-size: 0.98rem;
+  font-weight: 500;
+  color: var(--t);
+}
+
+.topic-card-humanistic.done {
+  border-color: rgba(129, 178, 154, 0.35);
+  background: rgba(129, 178, 154, 0.04);
+}
+
+.topic-card-humanistic.suggested {
+  border-color: rgba(224, 122, 95, 0.4);
+  box-shadow: 0 0 0 1px rgba(224, 122, 95, 0.15);
+}
+
+.pill-done {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #2b7a59;
+  background: rgba(129, 178, 154, 0.15);
+  padding: 0.2rem 0.65rem;
+  border-radius: 99px;
+}
+
+.pill-suggested {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #d45d3e;
+  background: rgba(224, 122, 95, 0.12);
+  padding: 0.2rem 0.65rem;
+  border-radius: 99px;
+}
+
+.pill-ready {
+  font-size: 0.78rem;
+  color: var(--t3);
+}
+
+/* ── Empty AI State Styles ── */
+.ai-empty-title {
+  font-family: 'Newsreader', Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--t);
+  margin-top: 0.4rem;
+}
+
+.ai-empty-subtitle {
+  font-size: 0.88rem;
+  color: var(--t3);
+  max-width: 360px;
+  line-height: 1.5;
+}
+
+
 
 
 
