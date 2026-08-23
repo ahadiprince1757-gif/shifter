@@ -84,7 +84,7 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
     },
     terms: {
       title: "TIXAR LEGAL FRAMEWORK - Terms of Service",
-      icon: "⚖️",
+      icon: "",
       body: (
         <>
           <p style={{ marginBottom: "1rem" }}>
@@ -275,7 +275,7 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
     },
     consent: {
       title: "TIXAR LEGAL FRAMEWORK - AI Use & Child Safety",
-      icon: "🛡️",
+      icon: "",
       body: (
         <>
           <p style={{ marginBottom: "1rem" }}>

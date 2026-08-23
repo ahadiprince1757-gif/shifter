@@ -245,20 +245,20 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
               className={`sfb-btn ${activeTab === "calc" ? "active" : ""}`}
               onClick={() => setActiveTab("calc")}
             >
-              🧮 Calculations
+              Calculations
             </button>
             <button
               className={`sfb-btn ${activeTab === "concepts" ? "active" : ""}`}
               onClick={() => setActiveTab("concepts")}
             >
-              ⚡ Concepts
+              Concepts
             </button>
             {onlineDbResults.length > 0 && (
               <button
                 className={`sfb-btn ${activeTab === "db" ? "active" : ""}`}
                 onClick={() => setActiveTab("db")}
               >
-                ☁️ DB ({onlineDbResults.length})
+                Database ({onlineDbResults.length})
               </button>
             )}
           </div>
@@ -266,7 +266,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
           {/* Section 1: In-Browser Instant Answers, Live Calculations & DB Records */}
           {filteredConceptResults.length > 0 && (
             <div className="search-section">
-              <div className="search-section-header">⚡ Instant Concepts, Live Values & DB Records</div>
+              <div className="search-section-header">Instant Concepts & Live Calculations</div>
               {filteredConceptResults.map((item, i) => {
                 const isSelected = i === selectedIndex;
                 return (
@@ -290,14 +290,14 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
                     {item.formula && (
                       <div className="scc-formula-wrap">
                         <div className="scc-formula">
-                          📐 <code>{item.formula}</code>
+                          <code>{item.formula}</code>
                         </div>
                         <button
                           className="scc-copy-btn"
                           onClick={(e) => handleCopyFormula(e, item.formula, item.id)}
                           title="Copy formula"
                         >
-                          {copiedId === item.id ? "✓ Copied" : "📋 Copy"}
+                          {copiedId === item.id ? "✓ Copied" : "Copy"}
                         </button>
                       </div>
                     )}
@@ -310,7 +310,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
                            <div key={sIdx} className="scc-step-item">{st.trim()}</div>
                          ))}
                        </div>
-                     )}
+                      )}
                   </div>
                 );
               })}
@@ -320,7 +320,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
           {/* Section 2: Curriculum Topics */}
           {filteredCurriculumResults.length > 0 && (
             <div className="search-section">
-              <div className="search-section-header">📚 Curriculum Topics</div>
+              <div className="search-section-header">Curriculum Topics</div>
               {filteredCurriculumResults.map((r, idx) => {
                 const globalIdx = filteredConceptResults.length + idx;
                 const isSelected = globalIdx === selectedIndex;

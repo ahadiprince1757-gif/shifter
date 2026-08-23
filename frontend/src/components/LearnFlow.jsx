@@ -261,7 +261,7 @@ const canJumpToPhase = (idx) => {
           ) : (
             <div className="lc" style={{ padding: "2rem" }}>
               <div className="lch">
-                <span className="lbadge lb-q">🧠 Quiz</span>
+                <span className="lbadge lb-q">Practice Quiz</span>
               </div>
               <div className="lcb">
                 <p style={{ color: "var(--t2)", marginBottom: "1.2rem" }}>

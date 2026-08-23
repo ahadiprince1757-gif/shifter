@@ -48,7 +48,7 @@ function QuizInputFields({
 
   return (
     <div style={{ margin: ".75rem 0" }}>
-      <div className="fl">✍️ Your Full Answer</div>
+      <div className="fl">Your Full Answer</div>
       <textarea
         className="work-ta"
         placeholder="Write your complete, detailed answer here..."

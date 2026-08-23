@@ -6,12 +6,12 @@ import { spacedRepo } from "../repository/spacedRepo";
 import { useAuth } from "../hooks/useAuth";
 
 const HUMANISTIC_PALETTES = [
-  { accent: "#E07A5F", bg: "rgba(224, 122, 95, 0.06)", border: "rgba(224, 122, 95, 0.28)", icon: "⚛️" },
-  { accent: "#81B29A", bg: "rgba(129, 178, 154, 0.06)", border: "rgba(129, 178, 154, 0.28)", icon: "🧪" },
-  { accent: "#E0A96D", bg: "rgba(224, 169, 109, 0.06)", border: "rgba(224, 169, 109, 0.28)", icon: "📐" },
-  { accent: "#6B9AB8", bg: "rgba(107, 154, 184, 0.06)", border: "rgba(107, 154, 184, 0.28)", icon: "🧬" },
-  { accent: "#D4A5A5", bg: "rgba(212, 165, 165, 0.06)", border: "rgba(212, 165, 165, 0.28)", icon: "🏛️" },
-  { accent: "#9B88B3", bg: "rgba(155, 136, 179, 0.06)", border: "rgba(155, 136, 179, 0.28)", icon: "📚" },
+  { accent: "#E07A5F", bg: "rgba(224, 122, 95, 0.06)", border: "rgba(224, 122, 95, 0.28)" },
+  { accent: "#81B29A", bg: "rgba(129, 178, 154, 0.06)", border: "rgba(129, 178, 154, 0.28)" },
+  { accent: "#E0A96D", bg: "rgba(224, 169, 109, 0.06)", border: "rgba(224, 169, 109, 0.28)" },
+  { accent: "#6B9AB8", bg: "rgba(107, 154, 184, 0.06)", border: "rgba(107, 154, 184, 0.28)" },
+  { accent: "#D4A5A5", bg: "rgba(212, 165, 165, 0.06)", border: "rgba(212, 165, 165, 0.28)" },
+  { accent: "#9B88B3", bg: "rgba(155, 136, 179, 0.06)", border: "rgba(155, 136, 179, 0.28)" },
 ];
 
 function formatTitle(str) {
@@ -75,7 +75,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     return (
       <div id="v-subjects" className="view active">
         <div className="sg-header-humanistic">
-          <h1 className="sg-greeting">{greeting}, {firstName} 👋</h1>
+          <h1 className="sg-greeting">{greeting}, {firstName}</h1>
           <p className="sg-subtitle">Your personal learning sanctuary</p>
         </div>
         <div className="subj-grid-humanistic">
@@ -103,14 +103,19 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {/* Warm Time-aware Greeting Header */}
       <div className="sg-header-humanistic">
         <div className="sg-greeting-badge">Study Sanctuary</div>
-        <h1 className="sg-greeting">{greeting}, {firstName} 👋</h1>
+        <h1 className="sg-greeting">{greeting}, {firstName}</h1>
         <p className="sg-subtitle">What are we exploring tonight?</p>
       </div>
 
       {/* Spaced Review Queue Banner */}
       {dueReviews.length > 0 && (
         <div className="review-queue-banner-humanistic">
-          <div className="review-queue-icon">🧠</div>
+          <div className="review-queue-icon-svg">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" opacity="0.6" />
+              <circle cx="12" cy="12" r="4" fill="currentColor" fillOpacity="0.2" />
+            </svg>
+          </div>
           <div className="review-queue-text">
             <div className="review-queue-title">
               {dueReviews.length} topic{dueReviews.length !== 1 ? "s" : ""} need a quick refresher
@@ -132,7 +137,11 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {/* Warmer Bookmark Continue Card */}
       {showResume && (
         <div className="resume-card-humanistic">
-          <div className="resume-bookmark-icon">🔖</div>
+          <div className="resume-bookmark-icon-svg">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
           <div className="resume-card-content">
             <div className="resume-card-kicker">Pick up where you left off</div>
             <h2 className="resume-card-topic-title">
@@ -189,7 +198,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
               <div className="subj-notebook-spine" />
               <div className="subj-notebook-body">
                 <div className="subj-notebook-header">
-                  <span className="subj-notebook-icon">{palette.icon}</span>
+                  <span className="subj-notebook-tag">Course {idx + 1}</span>
                   <div className="subj-ring-container" title={`${pct}% complete`}>
                     <svg width="40" height="40" viewBox="0 0 40 40">
                       <circle
@@ -224,7 +233,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                     {masteredCount === 0
                       ? "Not started yet"
                       : masteredCount === totalTopics
-                      ? "All mastered! 🎉"
+                      ? "All mastered"
                       : `${masteredCount} of ${totalTopics} topics done`}
                   </span>
                 </div>

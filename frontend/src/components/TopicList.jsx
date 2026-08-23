@@ -36,7 +36,7 @@ function TopicList({ subject, chapter, openTopic, goBack, mastered }) {
 
                 <div className="topic-status-pill">
                   {isMastered && <span className="pill-done">Completed ✓</span>}
-                  {isSuggested && <span className="pill-suggested">Up Next 🔥</span>}
+                  {isSuggested && <span className="pill-suggested">Up Next</span>}
                   {!isMastered && !isSuggested && <span className="pill-ready">Ready →</span>}
                 </div>
               </div>
