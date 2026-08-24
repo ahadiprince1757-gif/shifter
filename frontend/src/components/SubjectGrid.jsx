@@ -27,11 +27,30 @@ function formatTitle(str) {
     .join(" ");
 }
 
-function getGreeting() {
+function getTimeContext() {
   const hour = new Date().getHours();
-  if (hour < 12) return "Good morning";
-  if (hour < 18) return "Good afternoon";
-  return "Good evening";
+
+  if (hour >= 5 && hour < 12) {
+    return {
+      salutation: "Good morning",
+      subtitle: "Fresh start. What concept are we mastering today?",
+    };
+  } else if (hour >= 12 && hour < 17) {
+    return {
+      salutation: "Good afternoon",
+      subtitle: "Keep the momentum going. What are we exploring this afternoon?",
+    };
+  } else if (hour >= 17 && hour < 22) {
+    return {
+      salutation: "Good evening",
+      subtitle: "Quiet evening focus. What are we exploring tonight?",
+    };
+  } else {
+    return {
+      salutation: "Welcome back",
+      subtitle: "Late night focus hour. Let's make every topic count.",
+    };
+  }
 }
 
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
@@ -52,7 +71,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     return "Learner";
   }, [session]);
 
-  const greeting = useMemo(() => getGreeting(), []);
+  const { salutation, subtitle } = useMemo(() => getTimeContext(), []);
 
   // localStorage is synchronous → derive lastTopic via useMemo
   const lastTopic = useMemo(() => {
@@ -75,8 +94,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     return (
       <div id="v-subjects" className="view active">
         <div className="sg-header-humanistic">
-          <h1 className="sg-greeting">{greeting}, {firstName}</h1>
-          <p className="sg-subtitle">Your personal learning sanctuary</p>
+          <h1 className="sg-greeting">{salutation}, {firstName}</h1>
+          <p className="sg-subtitle">{subtitle}</p>
         </div>
         <div className="subj-grid-humanistic">
           <SkeletonLoader type="grid" count={6} />
@@ -103,8 +122,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {/* Warm Time-aware Greeting Header */}
       <div className="sg-header-humanistic">
         <div className="sg-greeting-badge">Study Sanctuary</div>
-        <h1 className="sg-greeting">{greeting}, {firstName}</h1>
-        <p className="sg-subtitle">What are we exploring tonight?</p>
+        <h1 className="sg-greeting">{salutation}, {firstName}</h1>
+        <p className="sg-subtitle">{subtitle}</p>
       </div>
 
       {/* Spaced Review Queue Banner */}
