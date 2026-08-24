@@ -146,8 +146,6 @@ export async function saveMistake({ sid, cid, topicTitle, questionIndex, questio
     user_id: session.user.id,
     subject_id: sid || null,
     chapter_key: cid || null,
-    chapter_id: cid || null,
-    topic_title: topicTitle || "",
     question_index: typeof questionIndex === "number" ? questionIndex : (parseInt(questionIndex, 10) || 0),
     question_text: questionText || "",
     correct_answer: correctAnswer || "",
@@ -177,12 +175,19 @@ export async function resolveMistake({ sid, cid, topicTitle, questionIndex }) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
   try {
-    const { error } = await supabase
+    let query = supabase
       .from("user_mistakes")
       .update({ resolved: true })
       .eq("user_id", session.user.id)
-      .eq("topic_title", topicTitle)
       .eq("question_index", questionIndex);
+
+    if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
+      query = query.eq("topic_id", parseInt(topicTitle, 10));
+    } else if (cid) {
+      query = query.eq("chapter_key", cid);
+    }
+
+    const { error } = await query;
     return !error;
   } catch {
     return false;
