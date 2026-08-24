@@ -8,6 +8,7 @@
     "dev": "node --watch index.js",
     "seed:supabase": "node scripts/generate_seed.js",
     "db:push": "node scripts/push_db.js",
+    "db:rls": "node scripts/apply_all_rls.js",
     "import:csv": "node scripts/import_csv.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
