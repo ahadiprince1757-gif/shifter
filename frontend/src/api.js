@@ -1,5 +1,7 @@
 import logger from "./utils/logger";
 import { getActiveSession } from "./supabase";
+import { curriculumRepo } from "./repository/curriculumRepo";
+import { topicRepo } from "./repository/topicRepo";
 
 // Base API URL – taken from env or fallback to localhost during dev
 const raw = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "https://shifter-i49i.onrender.com" : "http://localhost:3001");
@@ -14,6 +16,12 @@ function getAuthHeaders() {
   return {};
 }
 
+function isOfflineOrNotFound(r, err) {
+  if (err) return true;
+  if (!r) return true;
+  return r.status === 404 || r.status === 502 || r.status === 503 || !r.ok;
+}
+
 export async function fetchCurriculum() {
   const startTime = Date.now();
   try {
@@ -21,18 +29,15 @@ export async function fetchCurriculum() {
     const responseTime = Date.now() - startTime;
 
     if (!r.ok) {
-      logger.api("GET", "/api/curriculum", r.status, {
-        responseTime,
-        error: "Failed to fetch curriculum",
-      });
-      throw new Error("Failed to fetch curriculum");
+      console.warn("[API] Remote curriculum endpoint unavailable. Using local database fallback.");
+      return await curriculumRepo.getAll();
     }
 
     logger.api("GET", "/api/curriculum", r.status, { responseTime });
-    return r.json();
+    return await r.json();
   } catch (error) {
-    logger.error("FETCH_CURRICULUM", error);
-    throw error;
+    console.warn("[API] Network unavailable for curriculum. Using local IndexedDB fallback.");
+    return await curriculumRepo.getAll();
   }
 }
 
@@ -48,14 +53,9 @@ export async function fetchTopicContent(sid, cid, topic) {
     const responseTime = Date.now() - startTime;
 
     if (!r.ok) {
-      logger.api("GET", endpoint, r.status, {
-        responseTime,
-        subject: sid,
-        chapter: cid,
-        topic,
-        error: "Failed to fetch topic content",
-      });
-      throw new Error("Failed to fetch topic content");
+      console.warn(`[API] Remote content unavailable for ${topic}. Using local fallback.`);
+      const cached = await topicRepo.getById(`${sid}|${cid}|${topic}`);
+      return cached?.data || null;
     }
 
     logger.api("GET", endpoint, r.status, {
@@ -64,14 +64,11 @@ export async function fetchTopicContent(sid, cid, topic) {
       chapter: cid,
       topic,
     });
-    return r.json();
+    return await r.json();
   } catch (error) {
-    logger.error("FETCH_TOPIC_CONTENT", error, {
-      subject: sid,
-      chapter: cid,
-      topic,
-    });
-    throw error;
+    console.warn(`[API] Network offline for topic content (${topic}). Using local fallback.`);
+    const cached = await topicRepo.getById(`${sid}|${cid}|${topic}`);
+    return cached?.data || null;
   }
 }
 
