@@ -1,4 +1,5 @@
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
+import { routeMathQuery } from "../utils/mathRouter";
 
 // Ultra-fast instant model (~60MB download, 2-3 sec load)
 export const FAST_MODEL = "SmolLM2-135M-Instruct-q0f16-MLC";
@@ -64,6 +65,7 @@ export async function initializeAIEngine(onProgress, modelOverride) {
 
 /**
  * Queries the local offline AI model with real-time word-by-word streaming.
+ * Automatically routes math & arithmetic queries to a deterministic solver first!
  * @param {Object} engine The active MLC engine instance
  * @param {string} prompt User prompt text
  * @param {Function} onToken Callback triggered on each streamed token chunk
@@ -77,8 +79,18 @@ export async function askLocalAI(
   customSystemPrompt = "You are a warm, thoughtful, and humanistic learning companion named Socrates on Shifter. Your goal is to help the student truly grasp concepts through intuitive metaphors, clear reasoning, and encouraging dialogue. Speak like a wise, friendly mentor. Keep explanations clear, engaging, and personal without robotic jargon.",
   abortSignal = null
 ) {
+  // 1. Intercept Math Queries for 100% Deterministic Precision (No Hallucination)
+  const mathResult = routeMathQuery(prompt);
+  if (mathResult.isMath && mathResult.answer) {
+    if (onToken) {
+      onToken(mathResult.answer);
+    }
+    return mathResult.answer;
+  }
+
   if (!engine) throw new Error("AI Engine not initialized");
 
+  // 2. Query Local LLM with Low Temperature (0.1) for Fact Precision
   const messages = [
     { role: "system", content: customSystemPrompt },
     { role: "user", content: prompt },
@@ -87,7 +99,7 @@ export async function askLocalAI(
   const completion = await engine.chat.completions.create({
     messages,
     stream: true,
-    temperature: 0.3,
+    temperature: 0.1, // Low temperature suppresses creative hallucination
   });
 
   let fullResponse = "";
