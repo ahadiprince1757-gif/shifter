@@ -1,5 +1,5 @@
 import logger from "./utils/logger";
-import { getActiveSession } from "./supabase";
+import { supabase, getActiveSession } from "./supabase";
 import { curriculumRepo } from "./repository/curriculumRepo";
 import { topicRepo } from "./repository/topicRepo";
 
@@ -132,140 +132,239 @@ export async function fetchAnalytics() {
 
 // ─────────────────────────────────────────────────────────────
 // LEARNING FEATURES: Mistakes, Spaced Reviews, Notes,
-//                   Enrollments, Progress
-// All silently no-op if the user is offline or unauthenticated —
-// local IndexedDB is always the source of truth.
+//                   Enrollments, Progress, Achievements
+// Directly queries Supabase tables with user_id scoping.
+// Returns empty fallback when unauthenticated or offline.
 // ─────────────────────────────────────────────────────────────
 
-async function silentPost(endpoint, body) {
-  try {
-    const r = await fetch(`${API_BASE}${endpoint}`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", ...getAuthHeaders() },
-      body: JSON.stringify(body),
-    });
-    return r.ok;
-  } catch {
-    return false;
-  }
-}
-
-async function silentPatch(endpoint, body) {
-  try {
-    const r = await fetch(`${API_BASE}${endpoint}`, {
-      method: "PATCH",
-      headers: { "Content-Type": "application/json", ...getAuthHeaders() },
-      body: JSON.stringify(body),
-    });
-    return r.ok;
-  } catch {
-    return false;
-  }
-}
-
-/** Save a missed question to Supabase. Silently fails when offline/unauthenticated. */
+/** Save a missed question to Supabase user_mistakes table. */
 export async function saveMistake({ sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution }) {
-  return silentPost("/mistakes", { sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution });
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return false;
+  try {
+    const { error } = await supabase.from("user_mistakes").insert({
+      user_id: session.user.id,
+      subject_id: sid,
+      chapter_id: cid,
+      topic_title: topicTitle,
+      question_index: questionIndex,
+      question_text: questionText,
+      correct_answer: correctAnswer,
+      solution: solution,
+      resolved: false,
+    });
+    return !error;
+  } catch {
+    return false;
+  }
 }
 
 /** Mark a mistake as resolved in Supabase. */
 export async function resolveMistake({ sid, cid, topicTitle, questionIndex }) {
-  return silentPatch("/mistakes/resolve", { sid, cid, topicTitle, questionIndex });
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return false;
+  try {
+    const { error } = await supabase
+      .from("user_mistakes")
+      .update({ resolved: true })
+      .eq("user_id", session.user.id)
+      .eq("topic_title", topicTitle)
+      .eq("question_index", questionIndex);
+    return !error;
+  } catch {
+    return false;
+  }
 }
 
-/** Fetch all unresolved mistakes from Supabase (falls back to [] on error). */
+/** Fetch all unresolved mistakes from Supabase for current user. */
 export async function fetchMistakes() {
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return [];
   try {
-    const r = await fetch(`${API_BASE}/mistakes`, { headers: getAuthHeaders() });
-    if (!r.ok) return [];
-    return r.json();
+    const { data, error } = await supabase
+      .from("user_mistakes")
+      .select("*")
+      .eq("user_id", session.user.id)
+      .eq("resolved", false);
+    if (error) return [];
+    return data || [];
   } catch {
     return [];
   }
 }
 
-/** Upsert an SM-2 spaced review schedule for a topic. */
+/** Upsert an SM-2 spaced review schedule for a topic in Supabase. */
 export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions }) {
-  return silentPost("/spaced-reviews", { sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions });
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return false;
+  try {
+    const { error } = await supabase.from("spaced_reviews").upsert({
+      user_id: session.user.id,
+      topic_title: topicTitle,
+      subject_id: sid,
+      chapter_id: cid,
+      next_review_at: nextReviewAt,
+      interval_days: intervalDays,
+      ease_factor: easeFactor,
+      repetitions: repetitions,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: "user_id, topic_title" });
+    return !error;
+  } catch {
+    return false;
+  }
 }
 
-/** Fetch all due spaced reviews from Supabase (falls back to [] on error). */
+/** Fetch all due spaced reviews from Supabase for current user. */
 export async function fetchSpacedReviews() {
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return [];
   try {
-    const r = await fetch(`${API_BASE}/spaced-reviews`, { headers: getAuthHeaders() });
-    if (!r.ok) return [];
-    return r.json();
+    const { data, error } = await supabase
+      .from("spaced_reviews")
+      .select("*")
+      .eq("user_id", session.user.id);
+    if (error) return [];
+    return data || [];
   } catch {
     return [];
   }
 }
 
-/** Save or update a personal synthesis note for a topic. */
+/** Save or update a personal synthesis note for a topic in Supabase. */
 export async function saveNote({ sid, cid, topicTitle, noteText }) {
-  return silentPost("/notes", { sid, cid, topicTitle, noteText });
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return false;
+  try {
+    const { error } = await supabase.from("user_notes").upsert({
+      user_id: session.user.id,
+      subject_id: sid,
+      chapter_id: cid,
+      topic_title: topicTitle,
+      note_text: noteText,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: "user_id, topic_title" });
+    return !error;
+  } catch {
+    return false;
+  }
 }
 
-/** Fetch personal note text for a specific topic. Returns '' on error. */
+/** Fetch personal note text for a specific topic from Supabase. */
 export async function fetchNote(sid, cid, topicTitle) {
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return "";
   try {
-    const r = await fetch(
-      `${API_BASE}/notes/${encodeURIComponent(sid)}/${encodeURIComponent(cid)}/${encodeURIComponent(topicTitle)}`,
-      { headers: getAuthHeaders() }
-    );
-    if (!r.ok) return "";
-    const data = await r.json();
-    return data.note_text || "";
+    const { data, error } = await supabase
+      .from("user_notes")
+      .select("note_text")
+      .eq("user_id", session.user.id)
+      .eq("topic_title", topicTitle)
+      .limit(1);
+    if (error || !data || data.length === 0) return "";
+    return data[0].note_text || "";
   } catch {
     return "";
   }
 }
 
-/** Enroll the current user in a subject. */
+/** Enroll the current user in a subject in Supabase. */
 export async function enroll(subjectId) {
-  return silentPost("/enroll", { subjectId });
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return false;
+  try {
+    const { error } = await supabase.from("enrollments").upsert({
+      user_id: session.user.id,
+      subject_id: subjectId,
+      created_at: new Date().toISOString(),
+    }, { onConflict: "user_id, subject_id" });
+    return !error;
+  } catch {
+    return false;
+  }
 }
 
-/** Fetch all enrolled subjects for the current user. */
+/** Fetch all enrolled subjects for the current user from Supabase. */
 export async function fetchEnrollments() {
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return [];
   try {
-    const r = await fetch(`${API_BASE}/enrollments`, { headers: getAuthHeaders() });
-    if (!r.ok) return [];
-    return r.json();
+    const { data, error } = await supabase
+      .from("enrollments")
+      .select("*")
+      .eq("user_id", session.user.id);
+    if (error) return [];
+    return data || [];
   } catch {
     return [];
   }
 }
 
-/** Save topic progress (completion, score, mastered, confidence) to Supabase. */
+/** Save topic progress to Supabase. */
 export async function saveProgress({ sid, cid, topicTitle, completed, score, mastered, confidenceLevel }) {
-  return silentPost("/progress", { sid, cid, topicTitle, completed, score, mastered, confidenceLevel });
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return false;
+  try {
+    const { error } = await supabase.from("progress").upsert({
+      user_id: session.user.id,
+      topic_id: topicTitle,
+      subject_id: sid,
+      chapter_id: cid,
+      completed: completed ?? false,
+      score: score ?? null,
+      mastered: mastered ?? false,
+      confidence_level: confidenceLevel ?? null,
+      updated_at: new Date().toISOString(),
+    }, { onConflict: "user_id, topic_id" });
+    return !error;
+  } catch {
+    return false;
+  }
 }
 
 /** Fetch all progress records for the current user from Supabase. */
 export async function fetchProgress() {
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return [];
   try {
-    const r = await fetch(`${API_BASE}/progress`, { headers: getAuthHeaders() });
-    if (!r.ok) return [];
-    const data = await r.json();
-    return data.progress || [];
+    const { data, error } = await supabase
+      .from("progress")
+      .select("*")
+      .eq("user_id", session.user.id);
+    if (error) return [];
+    return data || [];
   } catch {
     return [];
   }
 }
 
 /** Unlock/save an achievement in Supabase. */
-
 export async function saveAchievement(achievementName) {
-  return silentPost("/achievements", { achievementName });
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return false;
+  try {
+    const { error } = await supabase.from("achievements").upsert({
+      user_id: session.user.id,
+      achievement_name: achievementName,
+      unlocked_at: new Date().toISOString(),
+    }, { onConflict: "user_id, achievement_name" });
+    return !error;
+  } catch {
+    return false;
+  }
 }
 
 /** Fetch all achievements for the current user. */
 export async function fetchAchievements() {
+  const session = getActiveSession();
+  if (!session?.user?.id || !supabase) return [];
   try {
-    const r = await fetch(`${API_BASE}/achievements`, { headers: getAuthHeaders() });
-    if (!r.ok) return [];
-    const data = await r.json();
-    return data.achievements || [];
+    const { data, error } = await supabase
+      .from("achievements")
+      .select("*")
+      .eq("user_id", session.user.id);
+    if (error) return [];
+    return data || [];
   } catch {
     return [];
   }
