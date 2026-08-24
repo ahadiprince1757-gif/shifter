@@ -47,12 +47,32 @@ FROM auth.users
 ON CONFLICT (id) DO NOTHING;
 
 -- ─────────────────────────────────────────────────────────────
--- 2. Extend progress table with mastery columns (idempotent)
+-- ─────────────────────────────────────────────────────────────
+-- 2. Extend tables with topic_title, subject_id, chapter_id & mastery columns (idempotent)
 -- ─────────────────────────────────────────────────────────────
 ALTER TABLE public.progress
+  ADD COLUMN IF NOT EXISTS topic_title TEXT,
+  ADD COLUMN IF NOT EXISTS subject_id TEXT,
+  ADD COLUMN IF NOT EXISTS chapter_id TEXT,
   ADD COLUMN IF NOT EXISTS confidence_level TEXT CHECK (confidence_level IN ('low','medium','high')),
   ADD COLUMN IF NOT EXISTS mastered BOOLEAN NOT NULL DEFAULT FALSE,
   ADD COLUMN IF NOT EXISTS mastered_at TIMESTAMP WITH TIME ZONE;
+
+ALTER TABLE public.user_mistakes
+  ADD COLUMN IF NOT EXISTS topic_title TEXT,
+  ADD COLUMN IF NOT EXISTS chapter_id TEXT;
+
+ALTER TABLE public.spaced_reviews
+  ADD COLUMN IF NOT EXISTS topic_title TEXT,
+  ADD COLUMN IF NOT EXISTS subject_id TEXT,
+  ADD COLUMN IF NOT EXISTS chapter_id TEXT,
+  ALTER COLUMN topic_id DROP NOT NULL;
+
+ALTER TABLE public.user_notes
+  ADD COLUMN IF NOT EXISTS topic_title TEXT,
+  ADD COLUMN IF NOT EXISTS subject_id TEXT,
+  ADD COLUMN IF NOT EXISTS chapter_id TEXT,
+  ALTER COLUMN topic_id DROP NOT NULL;
 
 -- ─────────────────────────────────────────────────────────────
 -- 3. User Mistakes Table

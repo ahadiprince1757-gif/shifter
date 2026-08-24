@@ -141,20 +141,33 @@ export async function fetchAnalytics() {
 export async function saveMistake({ sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution }) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
+
+  const payload = {
+    user_id: session.user.id,
+    subject_id: sid || null,
+    chapter_key: cid || null,
+    chapter_id: cid || null,
+    topic_title: topicTitle || "",
+    question_index: typeof questionIndex === "number" ? questionIndex : (parseInt(questionIndex, 10) || 0),
+    question_text: questionText || "",
+    correct_answer: correctAnswer || "",
+    solution: solution || "",
+    resolved: false,
+  };
+
+  if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
+    payload.topic_id = parseInt(topicTitle, 10);
+  }
+
   try {
-    const { error } = await supabase.from("user_mistakes").insert({
-      user_id: session.user.id,
-      subject_id: sid,
-      chapter_id: cid,
-      topic_title: topicTitle,
-      question_index: questionIndex,
-      question_text: questionText,
-      correct_answer: correctAnswer,
-      solution: solution,
-      resolved: false,
-    });
-    return !error;
-  } catch {
+    const { error } = await supabase.from("user_mistakes").insert(payload);
+    if (error) {
+      console.warn("[Supabase] user_mistakes insert warning:", error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn("[Supabase] user_mistakes error:", err);
     return false;
   }
 }
@@ -197,20 +210,32 @@ export async function fetchMistakes() {
 export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions }) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
+
+  const payload = {
+    user_id: session.user.id,
+    topic_title: topicTitle || "",
+    subject_id: sid || null,
+    chapter_id: cid || null,
+    next_review_at: nextReviewAt,
+    interval_days: intervalDays,
+    ease_factor: easeFactor,
+    repetitions: repetitions,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
+    payload.topic_id = parseInt(topicTitle, 10);
+  }
+
   try {
-    const { error } = await supabase.from("spaced_reviews").upsert({
-      user_id: session.user.id,
-      topic_title: topicTitle,
-      subject_id: sid,
-      chapter_id: cid,
-      next_review_at: nextReviewAt,
-      interval_days: intervalDays,
-      ease_factor: easeFactor,
-      repetitions: repetitions,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: "user_id, topic_title" });
-    return !error;
-  } catch {
+    const { error } = await supabase.from("spaced_reviews").upsert(payload);
+    if (error) {
+      console.warn("[Supabase] spaced_reviews upsert warning:", error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn("[Supabase] spaced_reviews error:", err);
     return false;
   }
 }
@@ -235,17 +260,29 @@ export async function fetchSpacedReviews() {
 export async function saveNote({ sid, cid, topicTitle, noteText }) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
+
+  const payload = {
+    user_id: session.user.id,
+    topic_title: topicTitle || "",
+    subject_id: sid || null,
+    chapter_id: cid || null,
+    note_text: noteText || "",
+    updated_at: new Date().toISOString(),
+  };
+
+  if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
+    payload.topic_id = parseInt(topicTitle, 10);
+  }
+
   try {
-    const { error } = await supabase.from("user_notes").upsert({
-      user_id: session.user.id,
-      subject_id: sid,
-      chapter_id: cid,
-      topic_title: topicTitle,
-      note_text: noteText,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: "user_id, topic_title" });
-    return !error;
-  } catch {
+    const { error } = await supabase.from("user_notes").upsert(payload);
+    if (error) {
+      console.warn("[Supabase] user_notes upsert warning:", error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn("[Supabase] user_notes error:", err);
     return false;
   }
 }
@@ -259,7 +296,7 @@ export async function fetchNote(sid, cid, topicTitle) {
       .from("user_notes")
       .select("note_text")
       .eq("user_id", session.user.id)
-      .eq("topic_title", topicTitle)
+      .or(`topic_title.eq.${topicTitle},topic_id.eq.${parseInt(topicTitle, 10) || 0}`)
       .limit(1);
     if (error || !data || data.length === 0) return "";
     return data[0].note_text || "";
@@ -304,20 +341,32 @@ export async function fetchEnrollments() {
 export async function saveProgress({ sid, cid, topicTitle, completed, score, mastered, confidenceLevel }) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
+
+  const payload = {
+    user_id: session.user.id,
+    topic_title: topicTitle || "",
+    subject_id: sid || null,
+    chapter_id: cid || null,
+    completed: completed ?? false,
+    score: score ?? null,
+    mastered: mastered ?? false,
+    confidence_level: confidenceLevel ?? null,
+    updated_at: new Date().toISOString(),
+  };
+
+  if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
+    payload.topic_id = parseInt(topicTitle, 10);
+  }
+
   try {
-    const { error } = await supabase.from("progress").upsert({
-      user_id: session.user.id,
-      topic_id: topicTitle,
-      subject_id: sid,
-      chapter_id: cid,
-      completed: completed ?? false,
-      score: score ?? null,
-      mastered: mastered ?? false,
-      confidence_level: confidenceLevel ?? null,
-      updated_at: new Date().toISOString(),
-    }, { onConflict: "user_id, topic_id" });
-    return !error;
-  } catch {
+    const { error } = await supabase.from("progress").upsert(payload);
+    if (error) {
+      console.warn("[Supabase] progress upsert warning:", error.message);
+      return false;
+    }
+    return true;
+  } catch (err) {
+    console.warn("[Supabase] progress error:", err);
     return false;
   }
 }
