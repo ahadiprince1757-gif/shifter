@@ -1,5 +1,6 @@
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
 import { routeMathQuery } from "../utils/mathRouter";
+import { getLocalRAGContext, buildGuardedSystemPrompt } from "../utils/aiRAGRouter";
 
 // Ultra-fast instant model (~60MB download, 2-3 sec load)
 export const FAST_MODEL = "SmolLM2-135M-Instruct-q0f16-MLC";
@@ -65,7 +66,7 @@ export async function initializeAIEngine(onProgress, modelOverride) {
 
 /**
  * Queries the local offline AI model with real-time word-by-word streaming.
- * Automatically routes math & arithmetic queries to a deterministic solver first!
+ * Automatically routes math to a deterministic solver & injects local RAG curriculum context.
  * @param {Object} engine The active MLC engine instance
  * @param {string} prompt User prompt text
  * @param {Function} onToken Callback triggered on each streamed token chunk
@@ -76,7 +77,7 @@ export async function askLocalAI(
   engine,
   prompt,
   onToken,
-  customSystemPrompt = "You are a warm, thoughtful, and humanistic learning companion named Socrates on Shifter. Your goal is to help the student truly grasp concepts through intuitive metaphors, clear reasoning, and encouraging dialogue. Speak like a wise, friendly mentor. Keep explanations clear, engaging, and personal without robotic jargon.",
+  customSystemPrompt = null,
   abortSignal = null
 ) {
   // 1. Intercept Math Queries for 100% Deterministic Precision (No Hallucination)
@@ -90,9 +91,16 @@ export async function askLocalAI(
 
   if (!engine) throw new Error("AI Engine not initialized");
 
-  // 2. Query Local LLM with Low Temperature (0.1) for Fact Precision
+  // 2. Retrieve Local RAG Context from BM25 Local Index & Build Guarded Prompt
+  let systemPromptToUse = customSystemPrompt;
+  if (!systemPromptToUse) {
+    const ragContext = await getLocalRAGContext(prompt);
+    systemPromptToUse = buildGuardedSystemPrompt(ragContext);
+  }
+
+  // 3. Query Local LLM with Low Temperature (0.1) for Fact Precision
   const messages = [
-    { role: "system", content: customSystemPrompt },
+    { role: "system", content: systemPromptToUse },
     { role: "user", content: prompt },
   ];
 
