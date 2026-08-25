@@ -6,12 +6,12 @@ import { spacedRepo } from "../repository/spacedRepo";
 import { useAuth } from "../hooks/useAuth";
 
 const HUMANISTIC_PALETTES = [
-  { accent: "#E07A5F", bg: "rgba(224, 122, 95, 0.06)", border: "rgba(224, 122, 95, 0.28)" },
-  { accent: "#81B29A", bg: "rgba(129, 178, 154, 0.06)", border: "rgba(129, 178, 154, 0.28)" },
-  { accent: "#E0A96D", bg: "rgba(224, 169, 109, 0.06)", border: "rgba(224, 169, 109, 0.28)" },
-  { accent: "#6B9AB8", bg: "rgba(107, 154, 184, 0.06)", border: "rgba(107, 154, 184, 0.28)" },
-  { accent: "#D4A5A5", bg: "rgba(212, 165, 165, 0.06)", border: "rgba(212, 165, 165, 0.28)" },
-  { accent: "#9B88B3", bg: "rgba(155, 136, 179, 0.06)", border: "rgba(155, 136, 179, 0.28)" },
+  { accent: "#74B8E8", bg: "rgba(116, 184, 232, 0.06)", border: "rgba(116, 184, 232, 0.28)" },
+  { accent: "#5AAEE0", bg: "rgba(90, 174, 224, 0.06)",  border: "rgba(90, 174, 224, 0.28)" },
+  { accent: "#8ECBF0", bg: "rgba(142, 203, 240, 0.06)", border: "rgba(142, 203, 240, 0.28)" },
+  { accent: "#4A9FD4", bg: "rgba(74, 159, 212, 0.06)",  border: "rgba(74, 159, 212, 0.28)" },
+  { accent: "#9ED4F5", bg: "rgba(158, 212, 245, 0.06)", border: "rgba(158, 212, 245, 0.28)" },
+  { accent: "#60B4E8", bg: "rgba(96, 180, 232, 0.06)",  border: "rgba(96, 180, 232, 0.28)" },
 ];
 
 function formatTitle(str) {
@@ -219,7 +219,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                 <div className="subj-notebook-header">
                   <span className="subj-notebook-tag">Course {idx + 1}</span>
                   <div className="subj-ring-container" title={`${pct}% complete`}>
-                    <svg width="40" height="40" viewBox="0 0 40 40">
+                    <svg className="subj-ring-svg" viewBox="0 0 40 40" style={{ width: "100%", height: "100%" }}>
                       <circle
                         cx="20"
                         cy="20"
