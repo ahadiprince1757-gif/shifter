@@ -146,6 +146,7 @@ export async function saveMistake({ sid, cid, topicTitle, questionIndex, questio
     user_id: session.user.id,
     subject_id: sid || null,
     chapter_key: cid || null,
+    topic_title: topicTitle || "",
     question_index: typeof questionIndex === "number" ? questionIndex : (parseInt(questionIndex, 10) || 0),
     question_text: questionText || "",
     correct_answer: correctAnswer || "",
