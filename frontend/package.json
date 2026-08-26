@@ -20,7 +20,8 @@
     "react-markdown": "^10.1.0",
     "react-router-dom": "^7.15.1",
     "rehype-raw": "^7.0.0",
-    "remark-gfm": "^4.0.1"
+    "remark-gfm": "^4.0.1",
+    "tesseract.js": "^7.0.0"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",

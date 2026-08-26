@@ -10,6 +10,8 @@ import {
   DEFAULT_MODEL,
 } from "../services/aiEngine";
 
+import HomeworkScannerModal from "./HomeworkScannerModal";
+
 const STARTER_PROMPTS = [
   { text: "Help me truly understand Ohm's Law" },
   { text: "Explain photosynthesis with a vivid analogy" },
@@ -18,6 +20,12 @@ const STARTER_PROMPTS = [
 ];
 
 // Icons
+const CameraScanIcon = () => (
+  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
+    <circle cx="12" cy="13" r="4" />
+  </svg>
+);
 const BotAvatarIcon = () => (
   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
     <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" opacity="0.4" />
@@ -45,13 +53,7 @@ const SendIcon = () => (
   </svg>
 );
 
-const SpinnerIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" style={{ animation: "spin 0.9s linear infinite" }}>
-    <style>{`@keyframes spin { 100% { transform: rotate(360deg); } }`}</style>
-    <circle cx="12" cy="12" r="10" strokeOpacity="0.2" />
-    <path d="M12 2a10 10 0 0 1 10 10" strokeLinecap="round" />
-  </svg>
-);
+
 
 const MaximizeIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -125,12 +127,7 @@ const StopIcon = () => (
   </svg>
 );
 
-const RefreshIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="23 4 23 10 17 10" />
-    <path d="M20.49 15a9 9 0 11-2.12-9.36L23 10" />
-  </svg>
-);
+
 
 // Storage key for saved chats
 const CHATS_STORAGE_KEY = "tixar_ai_chats";
@@ -148,10 +145,46 @@ export default function AITutor() {
   // 100% Fullscreen state
   const [isFullscreen, setIsFullscreen] = useState(false);
 
-  // Saved chats state
-  const [savedChats, setSavedChats] = useState([]);
-  const [activeChatId, setActiveChatId] = useState(null);
-  const [messages, setMessages] = useState([]);
+  // Saved chats state with lazy initializer
+  const [savedChats, setSavedChats] = useState(() => {
+    try {
+      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) return parsed;
+      }
+    } catch (err) {
+      console.warn("Storage parse warning:", err);
+    }
+    return [];
+  });
+
+  const [activeChatId, setActiveChatId] = useState(() => {
+    try {
+      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed[0].id;
+      }
+    } catch (err) {
+      console.warn("Storage parse warning:", err);
+    }
+    return null;
+  });
+
+  const [messages, setMessages] = useState(() => {
+    try {
+      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed[0].messages || [];
+      }
+    } catch (err) {
+      console.warn("Storage parse warning:", err);
+    }
+    return [];
+  });
+
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [showModelPicker, setShowModelPicker] = useState(false);
 
@@ -166,59 +199,41 @@ export default function AITutor() {
   // Copy state (tracks which message was just copied)
   const [copiedIdx, setCopiedIdx] = useState(null);
 
+  // Scanner modal state
+  const [isScannerOpen, setIsScannerOpen] = useState(false);
+
+  const handleInsertScannedText = (text) => {
+    if (!text) return;
+    setInputPrompt((prev) => (prev ? `${prev}\n${text}` : text));
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  };
+
+  const handleSubmitScannedPrompt = (text) => {
+    if (!text) return;
+    setInputPrompt(text);
+    setTimeout(() => {
+      handleSendMessage();
+    }, 50);
+  };
+
   // Abort controller ref for stopping generation
   const abortControllerRef = useRef(null);
 
   const chatEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Load saved chats from localStorage on mount
+  // Persist savedChats changes to localStorage
   useEffect(() => {
-    try {
-      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          setSavedChats(parsed);
-          setActiveChatId(parsed[0].id);
-          setMessages(parsed[0].messages || []);
-        }
-      }
-    } catch {
-      /* ignore storage errors */
-    }
-  }, []);
-
-  // Save current messages to active chat or localStorage
-  useEffect(() => {
-    if (messages.length === 0) return;
-
-    setSavedChats((prev) => {
-      let updated;
-      if (activeChatId) {
-        updated = prev.map((c) =>
-          c.id === activeChatId ? { ...c, messages, updatedAt: new Date().toISOString() } : c
-        );
-      } else {
-        const newId = `chat_${Date.now()}`;
-        const firstUserMsg = messages.find((m) => m.role === "user")?.text || "New Chat";
-        const title = firstUserMsg.length > 30 ? `${firstUserMsg.substring(0, 30)}...` : firstUserMsg;
-        const newChat = {
-          id: newId,
-          title,
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          messages,
-        };
-        setActiveChatId(newId);
-        updated = [newChat, ...prev];
-      }
+    if (savedChats.length > 0) {
       try {
-        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(updated));
-      } catch { /* storage full */ }
-      return updated;
-    });
-  }, [messages, activeChatId]);
+        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(savedChats));
+      } catch (err) {
+        console.warn("localStorage quota full:", err);
+      }
+    }
+  }, [savedChats]);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -980,7 +995,7 @@ export default function AITutor() {
                   disabled={!engine || isGenerating}
                   style={{
                     width: "100%",
-                    padding: "0.85rem 3.5rem 0.85rem 1.1rem",
+                    padding: "0.85rem 5.6rem 0.85rem 1.1rem",
                     borderRadius: "16px",
                     border: "1px solid var(--bd)",
                     background: engine ? "var(--bg)" : "var(--bg2)",
@@ -997,6 +1012,30 @@ export default function AITutor() {
                     overflowY: "auto",
                   }}
                 />
+                <button
+                  type="button"
+                  onClick={() => setIsScannerOpen(true)}
+                  aria-label="Scan homework photo or image"
+                  title="Scan homework with camera or upload photo"
+                  style={{
+                    position: "absolute",
+                    right: "48px",
+                    width: "36px",
+                    height: "36px",
+                    borderRadius: "50%",
+                    border: "none",
+                    background: "rgba(116, 184, 232, 0.15)",
+                    color: "#74B8E8",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    cursor: "pointer",
+                    transition: "all 0.18s ease",
+                    flexShrink: 0,
+                  }}
+                >
+                  <CameraScanIcon />
+                </button>
                 <button
                   type={isGenerating ? "button" : "submit"}
                   onClick={isGenerating ? handleStopGeneration : undefined}
@@ -1040,6 +1079,13 @@ export default function AITutor() {
           </div>
         </div>
       </div>
+
+      <HomeworkScannerModal
+        isOpen={isScannerOpen}
+        onClose={() => setIsScannerOpen(false)}
+        onInsertText={handleInsertScannedText}
+        onSubmitPrompt={handleSubmitScannedPrompt}
+      />
     </div>
   );
 }
