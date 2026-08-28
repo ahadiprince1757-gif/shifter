@@ -4,6 +4,8 @@ import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
 import { spacedRepo } from "../repository/spacedRepo";
 import { useAuth } from "../hooks/useAuth";
+import SmartPrompt from "./SmartPrompt";
+import { useNextAction } from "../hooks/useNextAction";
 
 const HUMANISTIC_PALETTES = [
   { accent: "#74B8E8", bg: "rgba(116, 184, 232, 0.06)", border: "rgba(116, 184, 232, 0.28)" },
@@ -73,6 +75,9 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   const { salutation, subtitle } = useMemo(() => getTimeContext(), []);
 
+  // Compute the single most urgent next study action
+  const { action: nextAction, loading: nextActionLoading } = useNextAction(userId);
+
   // localStorage is synchronous → derive lastTopic via useMemo
   const lastTopic = useMemo(() => {
     if (!userId) return null;
@@ -125,6 +130,9 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
         <h1 className="sg-greeting">{salutation}, {firstName}</h1>
         <p className="sg-subtitle">{subtitle}</p>
       </div>
+
+      {/* Smart Prompt — single next-action card, hidden when nothing is urgent */}
+      <SmartPrompt action={nextAction} loading={nextActionLoading} />
 
       {/* Spaced Review Queue Banner */}
       {dueReviews.length > 0 && (

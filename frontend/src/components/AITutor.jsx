@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import {
   initializeAIEngine,
   askLocalAI,
@@ -224,21 +224,6 @@ export default function AITutor() {
   const chatEndRef = useRef(null);
   const inputRef = useRef(null);
 
-  // Persist savedChats changes to localStorage
-  useEffect(() => {
-    if (savedChats.length > 0) {
-      try {
-        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(savedChats));
-      } catch (err) {
-        console.warn("localStorage quota full:", err);
-      }
-    }
-  }, [savedChats]);
-
-  useEffect(() => {
-    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages, isGenerating]);
-
   // Create a new chat session
   const handleNewChat = () => {
     setActiveChatId(null);
@@ -288,9 +273,10 @@ export default function AITutor() {
     } catch { /* storage error */ }
   };
 
-  const handleStartEngine = async () => {
+  const handleStartEngine = useCallback(async (modelToLoad = selectedModel) => {
+    if (!webGpuSupported) return null;
     setIsLoading(true);
-    setStatusText("Initializing...");
+    setStatusText("Initializing AI...");
     setProgressRatio(0);
     try {
       const loadedEngine = await initializeAIEngine((report) => {
@@ -298,21 +284,53 @@ export default function AITutor() {
         if (report.progress !== undefined) {
           setProgressRatio(Math.round(report.progress * 100));
         }
-      }, selectedModel);
+      }, modelToLoad);
       setEngine(loadedEngine);
       setStatusText("Ready");
       setProgressRatio(100);
+      return loadedEngine;
     } catch (err) {
       console.error("WebLLM Initialization Error:", err);
       setStatusText("Failed — check browser WebGPU support.");
+      return null;
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [webGpuSupported, selectedModel]);
+
+  // Persist savedChats changes to localStorage
+  useEffect(() => {
+    if (savedChats.length > 0) {
+      try {
+        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(savedChats));
+      } catch (err) {
+        console.warn("localStorage quota full:", err);
+      }
+    }
+  }, [savedChats]);
+
+  useEffect(() => {
+    chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages, isGenerating]);
+
+  // Auto-initialize AI engine on mount & when selected model changes (Minimalist, zero button fatigue)
+  useEffect(() => {
+    let mounted = true;
+    if (webGpuSupported) {
+      Promise.resolve().then(() => {
+        if (mounted) {
+          handleStartEngine(selectedModel);
+        }
+      });
+    }
+    return () => {
+      mounted = false;
+    };
+  }, [selectedModel, webGpuSupported, handleStartEngine]);
 
   const handleSendMessage = async (e) => {
     e?.preventDefault();
-    if (!engine || !inputPrompt.trim() || isGenerating) return;
+    if (!inputPrompt.trim() || isGenerating) return;
 
     const userText = inputPrompt.trim();
     setInputPrompt("");
@@ -327,7 +345,17 @@ export default function AITutor() {
     abortControllerRef.current = abortCtrl;
 
     try {
-      await askLocalAI(engine, userText, (currentText) => {
+      let activeEngine = engine;
+      if (!activeEngine) {
+        setStatusText("Initializing AI...");
+        activeEngine = await handleStartEngine(selectedModel);
+      }
+
+      if (!activeEngine) {
+        throw new Error("AI engine failed to initialize.");
+      }
+
+      await askLocalAI(activeEngine, userText, (currentText) => {
         setMessages((prev) => {
           const updated = [...prev];
           updated[updated.length - 1] = { role: "assistant", text: currentText };
@@ -341,7 +369,7 @@ export default function AITutor() {
           const updated = [...prev];
           updated[updated.length - 1] = {
             role: "assistant",
-            text: "Something went wrong. Please try again.",
+            text: "Something went wrong while generating response. Please verify WebGPU support in your browser.",
           };
           return updated;
         });
@@ -629,52 +657,30 @@ export default function AITutor() {
           </div>
         )}
 
-        {/* Model Download Bar (if not loaded) */}
-        {!engine && webGpuSupported && (
+        {/* Model Download / Initialization Progress Bar (Automatic, minimalist) */}
+        {isLoading && (
           <div style={{
-            padding: "0.85rem 1.25rem",
+            padding: "0.65rem 1.25rem",
             borderBottom: "1px solid var(--bd)",
             background: "var(--bg)",
             display: "flex",
             alignItems: "center",
             gap: "0.75rem",
           }}>
-            {isLoading ? (
-              <div style={{ flex: 1, minWidth: 0 }}>
-                <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.75rem", color: "var(--t3)", marginBottom: "0.3rem" }}>
-                  <span>{statusText}</span>
-                  <span>{progressRatio}%</span>
-                </div>
-                <div style={{
-                  width: "100%", height: "5px", background: "rgba(117,82,243,0.12)", borderRadius: "3px", overflow: "hidden"
-                }}>
-                  <div style={{
-                    width: `${progressRatio}%`, height: "100%",
-                    background: "var(--g2)", transition: "width 0.3s ease", borderRadius: "3px"
-                  }} />
-                </div>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", fontSize: "0.75rem", color: "var(--t3)", marginBottom: "0.3rem" }}>
+                <span>{statusText}</span>
+                <span>{progressRatio}%</span>
               </div>
-            ) : (
-              <button
-                onClick={handleStartEngine}
-                disabled={isLoading}
-                style={{
-                  flex: 1,
-                  padding: "0.55rem 1rem",
-                  borderRadius: "10px",
-                  border: "none",
-                  background: "var(--g2)",
-                  color: "#fff",
-                  fontWeight: "600",
-                  fontSize: "0.875rem",
-                  cursor: "pointer",
-                  boxShadow: "0 3px 10px rgba(117, 82, 243, 0.28)",
-                  transition: "opacity 0.2s",
-                }}
-              >
-                Load AI Model into Browser
-              </button>
-            )}
+              <div style={{
+                width: "100%", height: "4px", background: "rgba(117,82,243,0.12)", borderRadius: "2px", overflow: "hidden"
+              }}>
+                <div style={{
+                  width: `${progressRatio}%`, height: "100%",
+                  background: "var(--g2)", transition: "width 0.3s ease", borderRadius: "2px"
+                }} />
+              </div>
+            </div>
           </div>
         )}
 
@@ -804,27 +810,23 @@ export default function AITutor() {
                     <BotAvatarIcon />
                   </div>
                   <h2 className="ai-empty-title">
-                    {engine ? "What shall we explore today?" : "Thought Companion — Offline Learning"}
+                    What shall we explore today?
                   </h2>
                   <p className="ai-empty-subtitle">
-                    {engine
-                      ? "Ask about any concept, equation, or topic. We'll explore it together through intuitive reasoning."
-                      : "Initialize your companion to ask questions about your studies. Runs 100% locally in your browser."}
+                    Ask about any concept, equation, or topic. We'll explore it together through intuitive reasoning.
                   </p>
 
-                  {engine && (
-                    <div className="ai-starter-grid" style={{ maxWidth: "480px" }}>
-                      {STARTER_PROMPTS.map((sp) => (
-                        <button
-                          key={sp.text}
-                          className="ai-starter-pill"
-                          onClick={() => handleStarterClick(sp.text)}
-                        >
-                          {sp.text}
-                        </button>
-                      ))}
-                    </div>
-                  )}
+                  <div className="ai-starter-grid" style={{ maxWidth: "480px" }}>
+                    {STARTER_PROMPTS.map((sp) => (
+                      <button
+                        key={sp.text}
+                        className="ai-starter-pill"
+                        onClick={() => handleStarterClick(sp.text)}
+                      >
+                        {sp.text}
+                      </button>
+                    ))}
+                  </div>
                 </div>
               )}
 
@@ -991,14 +993,14 @@ export default function AITutor() {
                   value={inputPrompt}
                   onChange={(e) => setInputPrompt(e.target.value)}
                   onKeyDown={handleKeyDown}
-                  placeholder={engine ? "Ask anything… (Enter to send)" : "Load the AI model first"}
-                  disabled={!engine || isGenerating}
+                  placeholder={isLoading ? "Initializing AI companion..." : "Ask anything… (Enter to send)"}
+                  disabled={isGenerating}
                   style={{
                     width: "100%",
                     padding: "0.85rem 5.6rem 0.85rem 1.1rem",
                     borderRadius: "16px",
                     border: "1px solid var(--bd)",
-                    background: engine ? "var(--bg)" : "var(--bg2)",
+                    background: "var(--bg)",
                     color: "var(--t)",
                     fontSize: "0.925rem",
                     outline: "none",
@@ -1006,7 +1008,7 @@ export default function AITutor() {
                     lineHeight: 1.4,
                     fontFamily: "inherit",
                     transition: "border-color 0.2s",
-                    opacity: engine ? 1 : 0.6,
+                    opacity: isGenerating ? 0.6 : 1,
                     minHeight: "48px",
                     maxHeight: "120px",
                     overflowY: "auto",
@@ -1039,7 +1041,7 @@ export default function AITutor() {
                 <button
                   type={isGenerating ? "button" : "submit"}
                   onClick={isGenerating ? handleStopGeneration : undefined}
-                  disabled={!isGenerating && (!inputPrompt.trim() || !engine)}
+                  disabled={!isGenerating && !inputPrompt.trim()}
                   aria-label={isGenerating ? "Stop generating" : "Send"}
                   title={isGenerating ? "Stop generating" : "Send message"}
                   style={{
@@ -1051,21 +1053,21 @@ export default function AITutor() {
                     border: "none",
                     background: isGenerating
                       ? "var(--rd, #ef4444)"
-                      : inputPrompt.trim() && engine
+                      : inputPrompt.trim()
                       ? "var(--g2)"
                       : "rgba(117, 82, 243, 0.12)",
-                    color: isGenerating || (inputPrompt.trim() && engine) ? "#fff" : "var(--t3)",
+                    color: isGenerating || inputPrompt.trim() ? "#fff" : "var(--t3)",
                     display: "flex",
                     alignItems: "center",
                     justifyContent: "center",
-                    cursor: isGenerating || (inputPrompt.trim() && engine) ? "pointer" : "not-allowed",
+                    cursor: isGenerating || inputPrompt.trim() ? "pointer" : "not-allowed",
                     boxShadow: isGenerating
                       ? "0 2px 10px rgba(239, 68, 68, 0.35)"
-                      : inputPrompt.trim() && engine
+                      : inputPrompt.trim()
                       ? "0 2px 8px rgba(117, 82, 243, 0.3)"
                       : "none",
                     transition: "all 0.18s cubic-bezier(0.4, 0, 0.2, 1)",
-                    transform: isGenerating || (inputPrompt.trim() && engine) ? "scale(1)" : "scale(0.9)",
+                    transform: isGenerating || inputPrompt.trim() ? "scale(1)" : "scale(0.9)",
                     flexShrink: 0,
                   }}
                 >

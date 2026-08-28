@@ -1,6 +1,9 @@
+import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { explainMisconception } from "../../../services/aiEngine";
+import { getLocalRAGContext } from "../../../utils/aiRAGRouter";
 
 function FeedbackDisplay({
   feedback,
@@ -11,11 +14,75 @@ function FeedbackDisplay({
   totalQs,
   goToReview,
 }) {
+  // Inline AI explanation state — fires only on misconception (high confidence + wrong)
+  const [explanationText, setExplanationText] = useState(null); // null = not triggered
+  const [explanationGenerating, setExplanationGenerating] = useState(false);
+  const abortRef = useRef(null);
+
+  useEffect(() => {
+    if (!feedback) return;
+
+    const isMisconception =
+      !feedback.isCorrect && feedback.confidence === "high";
+
+    if (!isMisconception) return;
+
+    // Trigger inline AI explanation
+    let cancelled = false;
+    abortRef.current = new AbortController();
+
+    Promise.resolve().then(() => {
+      setExplanationGenerating(true);
+      setExplanationText("");
+    });
+
+    const question = feedback.questionText || "";
+    const wrongAnswer = feedback.studentAnswer || feedback.answer || "";
+    const correctAnswer = feedback.correctAnswer || "";
+
+    // Fetch RAG context then stream the explanation
+    getLocalRAGContext(question)
+      .then((ragContext) => {
+        if (cancelled) return;
+        return explainMisconception(
+          question,
+          wrongAnswer,
+          correctAnswer,
+          ragContext || "",
+          (chunk) => {
+            if (cancelled) return;
+            if (chunk === null) {
+              // Engine not ready or error — silently hide the section
+              setExplanationText(null);
+              setExplanationGenerating(false);
+            } else {
+              setExplanationText(chunk);
+            }
+          },
+          abortRef.current.signal
+        );
+      })
+      .then(() => {
+        if (!cancelled) setExplanationGenerating(false);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          setExplanationText(null);
+          setExplanationGenerating(false);
+        }
+      });
+
+    return () => {
+      cancelled = true;
+      abortRef.current?.abort();
+    };
+  }, [feedback]);
+
   if (!feedback) return null;
 
   const isCorrect = feedback.isCorrect;
   const isLastQuestion = qIdx >= totalQs - 1;
-  const confidence = feedback.confidence; // "low" | "medium" | "high" | null
+  const confidence = feedback.confidence;
 
   const rawAnswer = feedback.correctAnswer || "";
   const answerBulletList = rawAnswer.includes("•")
@@ -73,6 +140,24 @@ function FeedbackDisplay({
           </div>
           <div className="calibration-text">{calibration.message}</div>
         </div>
+      )}
+
+      {/* Inline AI Misconception Explanation — no branding, appears as plain explanation */}
+      {!isCorrect && confidence === "high" && (
+        <>
+          {explanationGenerating && !explanationText && (
+            <div className="misconception-explanation-thinking" aria-live="polite" aria-label="Generating explanation">
+              <span className="misconception-explanation-dot" />
+              <span className="misconception-explanation-dot" />
+              <span className="misconception-explanation-dot" />
+            </div>
+          )}
+          {explanationText && (
+            <div className="misconception-explanation" aria-live="polite">
+              {explanationText}
+            </div>
+          )}
+        </>
       )}
 
       {/* 1. Direct Explanation / Solution FIRST */}

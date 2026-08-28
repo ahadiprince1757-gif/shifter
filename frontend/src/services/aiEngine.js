@@ -130,3 +130,66 @@ export async function askLocalAI(
 export function isWebGPUSupported() {
   return typeof navigator !== "undefined" && "gpu" in navigator;
 }
+
+/**
+ * Inline misconception explanation — fires ONLY when a student answered with
+ * high confidence but got it wrong (confirmed misconception state).
+ *
+ * Streams word-by-word into the UI. No AI branding is ever shown to the user —
+ * the output appears as plain explanation text below the feedback card.
+ *
+ * Silently returns (calls onToken with null) if the engine is not ready,
+ * so the quiz flow is never blocked by model load state.
+ *
+ * @param {string}   question       - The question text
+ * @param {string}   wrongAnswer    - What the student answered
+ * @param {string}   correctAnswer  - The correct answer
+ * @param {string}   [topicContext] - Optional topic context from RAG
+ * @param {Function} onToken        - Called with streamed text chunks (null = done/skipped)
+ * @param {AbortSignal} [abortSignal]
+ */
+export async function explainMisconception(
+  question,
+  wrongAnswer,
+  correctAnswer,
+  topicContext = "",
+  onToken,
+  abortSignal = null
+) {
+  // Silently skip if engine not ready — never block the quiz flow
+  if (!engineInstance) {
+    if (onToken) onToken(null);
+    return;
+  }
+
+  const systemPrompt = topicContext
+    ? `You are a study guide. Context: ${topicContext}`
+    : "You are a study guide.";
+
+  const userPrompt = `The student answered "${wrongAnswer}" to this question: "${question}". The correct answer is "${correctAnswer}". In 2 sentences maximum: explain why the student's thinking was wrong and the one core principle they must understand to correct it. Do not use phrases like "As an AI". Be direct and specific.`;
+
+  try {
+    const messages = [
+      { role: "system", content: systemPrompt },
+      { role: "user", content: userPrompt },
+    ];
+
+    const completion = await engineInstance.chat.completions.create({
+      messages,
+      stream: true,
+      temperature: 0.1,
+      max_tokens: 120, // Enforce the 2-sentence constraint at the token level
+    });
+
+    let fullResponse = "";
+    for await (const chunk of completion) {
+      if (abortSignal?.aborted) break;
+      const delta = chunk.choices[0]?.delta?.content || "";
+      fullResponse += delta;
+      if (onToken) onToken(fullResponse);
+    }
+  } catch {
+    // Silently swallow errors — the existing static explanation is always present
+    if (onToken) onToken(null);
+  }
+}

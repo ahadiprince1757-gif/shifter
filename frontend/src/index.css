@@ -8140,6 +8140,7 @@ html.dark-mode .ai-msg-bubble--assistant {
   right: 0;
   bottom: 0;
   background: rgba(0, 0, 0, 0.55);
+  -webkit-backdrop-filter: blur(4px);
   backdrop-filter: blur(4px);
   z-index: 9999;
   display: flex;
@@ -8488,6 +8489,158 @@ html.dark-mode .ai-msg-bubble--assistant {
   background: #5AA5D9;
   transform: translateY(-1px);
 }
+
+/* ── Smart Prompt ─────────────────────────────────────────────────────────── */
+/* Single next-action card above the subject grid. Hidden when action is null. */
+
+.smart-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  border-radius: 14px;
+  border: 1px solid var(--bd, rgba(0,0,0,0.08));
+  background: var(--sur, #fff);
+  margin-bottom: 1rem;
+  animation: smartPromptIn 0.22s ease;
+}
+
+@keyframes smartPromptIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.smart-prompt--high {
+  border-color: rgba(239, 68, 68, 0.2);
+  background: rgba(239, 68, 68, 0.04);
+}
+
+.smart-prompt--medium {
+  border-color: rgba(116, 184, 232, 0.25);
+  background: rgba(116, 184, 232, 0.04);
+}
+
+.smart-prompt--low {
+  border-color: var(--bd, rgba(0,0,0,0.08));
+}
+
+.smart-prompt-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.18rem;
+  min-width: 0;
+  flex: 1;
+}
+
+.smart-prompt-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--t3, #888);
+}
+
+.smart-prompt--high .smart-prompt-label {
+  color: rgba(239, 68, 68, 0.8);
+}
+
+.smart-prompt-topic {
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: var(--t, #111);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.smart-prompt-reason {
+  font-size: 0.8rem;
+  color: var(--t3, #888);
+  line-height: 1.4;
+}
+
+.smart-prompt-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 1.1rem;
+  border-radius: 99px;
+  border: none;
+  background: var(--g2, #7452f3);
+  color: #fff;
+  font-size: 0.84rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  white-space: nowrap;
+}
+
+.smart-prompt--high .smart-prompt-btn {
+  background: rgba(239, 68, 68, 0.85);
+}
+
+.smart-prompt-btn:hover {
+  opacity: 0.88;
+  transform: translateY(-1px);
+}
+
+@media (max-width: 480px) {
+  .smart-prompt {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+  .smart-prompt-btn {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* ── Inline Misconception Explanation ────────────────────────────────────── */
+/* Streams below the feedback card when a high-confidence wrong answer is detected */
+
+.misconception-explanation {
+  margin-top: 0.85rem;
+  padding: 0.9rem 1rem;
+  border-radius: 10px;
+  border-left: 3px solid rgba(239, 68, 68, 0.4);
+  background: rgba(239, 68, 68, 0.04);
+  font-size: 0.88rem;
+  color: var(--t2, #444);
+  line-height: 1.6;
+  animation: misconceptionFadeIn 0.3s ease;
+}
+
+@keyframes misconceptionFadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.misconception-explanation-thinking {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  color: var(--t3, #888);
+  font-size: 0.8rem;
+  font-style: italic;
+  padding: 0.5rem 0;
+}
+
+.misconception-explanation-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--t3, #888);
+  animation: meDotPulse 1.2s ease-in-out infinite;
+}
+
+.misconception-explanation-dot:nth-child(2) { animation-delay: 0.2s; }
+.misconception-explanation-dot:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes meDotPulse {
+  0%, 80%, 100% { opacity: 0.3; transform: scale(0.8); }
+  40% { opacity: 1; transform: scale(1); }
+}
+
 
 
 
