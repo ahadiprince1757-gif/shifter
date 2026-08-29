@@ -33,22 +33,22 @@ function getTimeContext() {
   if (hour >= 5 && hour < 12) {
     return {
       salutation: "Good morning",
-      subtitle: "Fresh start. What concept are we mastering today?",
+      subtitle: "Select a course below or follow your recommended study action.",
     };
   } else if (hour >= 12 && hour < 17) {
     return {
       salutation: "Good afternoon",
-      subtitle: "Keep the momentum going. What are we exploring this afternoon?",
+      subtitle: "Select a course below or follow your recommended study action.",
     };
   } else if (hour >= 17 && hour < 22) {
     return {
       salutation: "Good evening",
-      subtitle: "Quiet evening focus. What are we exploring tonight?",
+      subtitle: "Select a course below or follow your recommended study action.",
     };
   } else {
     return {
       salutation: "Welcome back",
-      subtitle: "Late night focus hour. Let's make every topic count.",
+      subtitle: "Select a course below or follow your recommended study action.",
     };
   }
 }
@@ -113,9 +113,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   return (
     <div id="v-subjects" className="view active">
-      {/* Warm Time-aware Greeting Header */}
+      {/* Clean Minimal Welcoming Area */}
       <div className="sg-header-humanistic">
-        <div className="sg-greeting-badge">Study Sanctuary</div>
         <h1 className="sg-greeting">{salutation}, {firstName}</h1>
         <p className="sg-subtitle">{subtitle}</p>
       </div>
