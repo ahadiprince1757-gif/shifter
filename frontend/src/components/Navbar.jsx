@@ -63,7 +63,7 @@ const MistakesIcon = () => (
 // Navigation items used in desktop tabs and mobile drawer
 const APP_NAV_ITEMS = [
   { path: "/subjects", label: "Subjects", icon: HomeIcon },
-  { path: "/tutor", label: "AI Tutor", icon: BotIcon },
+  { path: "/tutor", label: "Ask Quiz", icon: BotIcon },
   { path: "/mistakes", label: "Mistakes", icon: MistakesIcon },
   { path: "/analytics", label: "Progress", icon: ProgressIcon },
 ];

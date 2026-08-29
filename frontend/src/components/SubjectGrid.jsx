@@ -1,8 +1,6 @@
-import { useState, useEffect, useMemo } from "react";
-import { useNavigate } from "react-router-dom";
+import { useMemo } from "react";
 import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
-import { spacedRepo } from "../repository/spacedRepo";
 import { useAuth } from "../hooks/useAuth";
 import SmartPrompt from "./SmartPrompt";
 import { useNextAction } from "../hooks/useNextAction";
@@ -56,7 +54,6 @@ function getTimeContext() {
 }
 
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
-  const navigate = useNavigate();
   const { session } = useAuth();
   const userId = session?.user?.id || null;
 
@@ -85,14 +82,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       const raw = localStorage.getItem(`lastTopic_${userId}`);
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
-  }, [userId]);
-
-  // Async spaced reviews state
-  const [dueReviews, setDueReviews] = useState([]);
-
-  useEffect(() => {
-    if (!userId) return;
-    spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
   }, [userId]);
 
   if (!curriculum) {
@@ -134,35 +123,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {/* Smart Prompt — single next-action card, hidden when nothing is urgent */}
       <SmartPrompt action={nextAction} loading={nextActionLoading} />
 
-      {/* Spaced Review Queue Banner */}
-      {dueReviews.length > 0 && (
-        <div className="review-queue-banner-humanistic">
-          <div className="review-queue-icon-svg">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83" opacity="0.6" />
-              <circle cx="12" cy="12" r="4" fill="currentColor" fillOpacity="0.2" />
-            </svg>
-          </div>
-          <div className="review-queue-text">
-            <div className="review-queue-title">
-              {dueReviews.length} topic{dueReviews.length !== 1 ? "s" : ""} need a quick refresher
-            </div>
-            <div className="review-queue-sub">
-              Strengthen long-term memory before topics fade
-            </div>
-          </div>
-          <button
-            type="button"
-            className="review-queue-btn-humanistic"
-            onClick={() => navigate("/analytics")}
-          >
-            Refresh Memory →
-          </button>
-        </div>
-      )}
-
-      {/* Warmer Bookmark Continue Card */}
-      {showResume && (
+      {/* Fallback Bookmark Continue Card (only rendered if SmartPrompt is inactive) */}
+      {!nextAction && showResume && (
         <div className="resume-card-humanistic">
           <div className="resume-bookmark-icon-svg">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

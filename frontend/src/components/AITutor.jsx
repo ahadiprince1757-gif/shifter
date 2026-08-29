@@ -4,10 +4,6 @@ import {
   askLocalAI,
   isWebGPUSupported,
   getOptimalModel,
-  FAST_MODEL,
-  LIGHT_MODEL,
-  LOW_RAM_MODEL,
-  DEFAULT_MODEL,
 } from "../services/aiEngine";
 
 import HomeworkScannerModal from "./HomeworkScannerModal";
@@ -39,13 +35,6 @@ const WarnIcon = () => (
     <path d="M12 2L1 21h22L12 2zm0 3.5L20.5 19h-17L12 5.5zM11 10v4h2v-4h-2zm0 6v2h2v-2h-2z" />
   </svg>
 );
-
-const ModelIcon = () => (
-  <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
-    <path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.07.62-.07.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z" />
-  </svg>
-);
-
 const SendIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <line x1="12" y1="19" x2="12" y2="5" />
@@ -72,32 +61,10 @@ const MinimizeIcon = () => (
     <line x1="10" y1="14" x2="3" y2="21" />
   </svg>
 );
-
-const SidebarIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
-    <line x1="9" y1="3" x2="9" y2="21" />
-  </svg>
-);
-
 const PlusIcon = () => (
   <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
     <line x1="12" y1="5" x2="12" y2="19" />
     <line x1="5" y1="12" x2="19" y2="12" />
-  </svg>
-);
-
-const TrashIcon = () => (
-  <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <polyline points="3 6 5 6 21 6" />
-    <path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2" />
-  </svg>
-);
-
-const CloseIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <line x1="18" y1="6" x2="6" y2="18" />
-    <line x1="6" y1="6" x2="18" y2="18" />
   </svg>
 );
 
@@ -129,64 +96,16 @@ const StopIcon = () => (
 
 
 
-// Storage key for saved chats
-const CHATS_STORAGE_KEY = "tixar_ai_chats";
-
 export default function AITutor() {
   const [engine, setEngine] = useState(null);
   const [statusText, setStatusText] = useState("Not Loaded");
   const [progressRatio, setProgressRatio] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedModel, setSelectedModel] = useState(getOptimalModel());
   const [inputPrompt, setInputPrompt] = useState("");
   const [isGenerating, setIsGenerating] = useState(false);
-  const [webGpuSupported] = useState(() => isWebGPUSupported());
-
-  // 100% Fullscreen state
   const [isFullscreen, setIsFullscreen] = useState(false);
-
-  // Saved chats state with lazy initializer
-  const [savedChats, setSavedChats] = useState(() => {
-    try {
-      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed)) return parsed;
-      }
-    } catch (err) {
-      console.warn("Storage parse warning:", err);
-    }
-    return [];
-  });
-
-  const [activeChatId, setActiveChatId] = useState(() => {
-    try {
-      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed[0].id;
-      }
-    } catch (err) {
-      console.warn("Storage parse warning:", err);
-    }
-    return null;
-  });
-
-  const [messages, setMessages] = useState(() => {
-    try {
-      const raw = localStorage.getItem(CHATS_STORAGE_KEY);
-      if (raw) {
-        const parsed = JSON.parse(raw);
-        if (Array.isArray(parsed) && parsed.length > 0) return parsed[0].messages || [];
-      }
-    } catch (err) {
-      console.warn("Storage parse warning:", err);
-    }
-    return [];
-  });
-
-  const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [showModelPicker, setShowModelPicker] = useState(false);
+  const [messages, setMessages] = useState([]);
+  const [webGpuSupported] = useState(() => isWebGPUSupported());
 
   // User prompt edit state
   const [editingIdx, setEditingIdx] = useState(null);
@@ -226,65 +145,24 @@ export default function AITutor() {
 
   // Create a new chat session
   const handleNewChat = () => {
-    setActiveChatId(null);
     setMessages([]);
     setInputPrompt("");
     setEditingIdx(null);
-    setSidebarOpen(false);
   };
 
-  // Switch to a saved chat
-  const handleSelectChat = (chat) => {
-    setActiveChatId(chat.id);
-    setMessages(chat.messages || []);
-    setEditingIdx(null);
-    setSidebarOpen(false);
-  };
-
-  // Delete a saved chat
-  const handleDeleteChat = (e, chatId) => {
-    e.stopPropagation();
-    setSavedChats((prev) => {
-      const updated = prev.filter((c) => c.id !== chatId);
-      try {
-        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(updated));
-      } catch { /* storage error */ }
-      if (activeChatId === chatId) {
-        if (updated.length > 0) {
-          setActiveChatId(updated[0].id);
-          setMessages(updated[0].messages || []);
-        } else {
-          setActiveChatId(null);
-          setMessages([]);
-        }
-      }
-      return updated;
-    });
-  };
-
-  // Clear all saved chats
-  const handleClearAllChats = () => {
-    setSavedChats([]);
-    setActiveChatId(null);
-    setMessages([]);
-    setEditingIdx(null);
-    try {
-      localStorage.removeItem(CHATS_STORAGE_KEY);
-    } catch { /* storage error */ }
-  };
-
-  const handleStartEngine = useCallback(async (modelToLoad = selectedModel) => {
-    if (!webGpuSupported) return null;
+  const handleStartEngine = useCallback(async () => {
+    if (!isWebGPUSupported()) return null;
     setIsLoading(true);
     setStatusText("Initializing AI...");
     setProgressRatio(0);
     try {
+      const optimalModel = getOptimalModel();
       const loadedEngine = await initializeAIEngine((report) => {
         setStatusText(report.text || "Loading model...");
         if (report.progress !== undefined) {
           setProgressRatio(Math.round(report.progress * 100));
         }
-      }, modelToLoad);
+      }, optimalModel);
       setEngine(loadedEngine);
       setStatusText("Ready");
       setProgressRatio(100);
@@ -296,37 +174,26 @@ export default function AITutor() {
     } finally {
       setIsLoading(false);
     }
-  }, [webGpuSupported, selectedModel]);
-
-  // Persist savedChats changes to localStorage
-  useEffect(() => {
-    if (savedChats.length > 0) {
-      try {
-        localStorage.setItem(CHATS_STORAGE_KEY, JSON.stringify(savedChats));
-      } catch (err) {
-        console.warn("localStorage quota full:", err);
-      }
-    }
-  }, [savedChats]);
+  }, []);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isGenerating]);
 
-  // Auto-initialize AI engine on mount & when selected model changes (Minimalist, zero button fatigue)
+  // Auto-initialize AI engine on mount (Minimalist, zero button fatigue)
   useEffect(() => {
     let mounted = true;
-    if (webGpuSupported) {
+    if (isWebGPUSupported()) {
       Promise.resolve().then(() => {
         if (mounted) {
-          handleStartEngine(selectedModel);
+          handleStartEngine();
         }
       });
     }
     return () => {
       mounted = false;
     };
-  }, [selectedModel, webGpuSupported, handleStartEngine]);
+  }, [handleStartEngine]);
 
   const handleSendMessage = async (e) => {
     e?.preventDefault();
@@ -348,7 +215,7 @@ export default function AITutor() {
       let activeEngine = engine;
       if (!activeEngine) {
         setStatusText("Initializing AI...");
-        activeEngine = await handleStartEngine(selectedModel);
+        activeEngine = await handleStartEngine();
       }
 
       if (!activeEngine) {
@@ -500,10 +367,10 @@ export default function AITutor() {
         <div className="ai-outer-header">
           <div>
             <h1 className="ai-editorial-title">
-              Thought Companion
+              Ask Quiz
             </h1>
             <p className="ai-outer-subtitle">
-              Socrates · Your quiet, on-device study guide
+              Instant on-device concept & quiz explainer
             </p>
           </div>
 
@@ -511,7 +378,7 @@ export default function AITutor() {
             <span className={`ai-status-pill ${engine ? "ai-status-pill--ready" : "ai-status-pill--idle"}`}>
               <span className={`ai-status-dot ${isLoading ? "ai-status-dot--pulse" : ""}`} />
               <span className="ai-status-text">
-                {isLoading ? `Preparing ${progressRatio}%` : engine ? "Companion Ready" : "Offline Ready"}
+                {isLoading ? `Preparing ${progressRatio}%` : engine ? "Ask Quiz Ready" : "Offline Ready"}
               </span>
             </span>
 
@@ -550,56 +417,17 @@ export default function AITutor() {
         {/* Card Header Bar */}
         <div className="ai-minimalist-header">
           <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-            {/* Sidebar toggle */}
-            <button
-              onClick={() => setSidebarOpen((o) => !o)}
-              title="Saved Chats History"
-              className="ai-card-btn"
-            >
-              <SidebarIcon />
-              <span className="ai-btn-text">Chats</span>
-              {savedChats.length > 0 && (
-                <span className="ai-chat-badge">
-                  {savedChats.length}
-                </span>
-              )}
-            </button>
-
             {/* New Chat Button */}
             <button
               onClick={handleNewChat}
-              title="Start New Chat"
+              title="Clear & Start New Session"
               className="ai-card-btn"
             >
-              <PlusIcon /> <span className="ai-btn-text">New</span>
+              <PlusIcon /> <span className="ai-btn-text">New Session</span>
             </button>
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "0.4rem" }}>
-            {/* Model Selector Trigger */}
-            <button
-              onClick={() => setShowModelPicker((o) => !o)}
-              className="ai-model-select-btn"
-            >
-              <ModelIcon />
-              <span className="ai-model-label-desktop">
-                {
-                  selectedModel === FAST_MODEL ? "SmolLM2 135M (~60MB)" :
-                  selectedModel === LIGHT_MODEL ? "SmolLM2 360M (~200MB)" :
-                  selectedModel === LOW_RAM_MODEL ? "Qwen 2.5 0.5B (~350MB)" :
-                  "Llama 3.2 1B (~700MB)"
-                }
-              </span>
-              <span className="ai-model-label-mobile">
-                {
-                  selectedModel === FAST_MODEL ? "SmolLM2 135M" :
-                  selectedModel === LIGHT_MODEL ? "SmolLM2 360M" :
-                  selectedModel === LOW_RAM_MODEL ? "Qwen 0.5B" :
-                  "Llama 1B"
-                }
-              </span>
-            </button>
-
             {/* Fullscreen Toggle */}
             <button
               onClick={() => setIsFullscreen((f) => !f)}
@@ -610,52 +438,6 @@ export default function AITutor() {
             </button>
           </div>
         </div>
-
-        {/* Model Picker Dropdown */}
-        {showModelPicker && (
-          <div style={{
-            position: "absolute",
-            top: "54px",
-            right: "1rem",
-            background: "var(--sur)",
-            border: "1px solid var(--bd)",
-            borderRadius: "14px",
-            padding: "0.6rem",
-            zIndex: 100,
-            boxShadow: "var(--sh)",
-            display: "flex",
-            flexDirection: "column",
-            gap: "0.35rem",
-            maxWidth: "300px",
-          }}>
-            {[
-              { value: FAST_MODEL, label: "SmolLM2 135M", sub: "~60MB — Near Instant (Recommended)" },
-              { value: LIGHT_MODEL, label: "SmolLM2 360M", sub: "~200MB — Fast & Balanced" },
-              { value: LOW_RAM_MODEL, label: "Qwen 2.5 0.5B", sub: "~350MB — Medium Quality" },
-              { value: DEFAULT_MODEL, label: "Llama 3.2 1B", sub: "~700MB — High Accuracy" },
-            ].map((m) => (
-              <button
-                key={m.value}
-                onClick={() => { setSelectedModel(m.value); setShowModelPicker(false); }}
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-start",
-                  padding: "0.55rem 0.75rem",
-                  borderRadius: "8px",
-                  border: `1px solid ${selectedModel === m.value ? "var(--bd2)" : "transparent"}`,
-                  background: selectedModel === m.value ? "rgba(117,82,243,0.07)" : "transparent",
-                  cursor: "pointer",
-                  textAlign: "left",
-                  gap: "0.1rem",
-                }}
-              >
-                <span style={{ fontSize: "0.85rem", fontWeight: 600, color: "var(--t)" }}>{m.label}</span>
-                <span style={{ fontSize: "0.72rem", color: "var(--t3)" }}>{m.sub}</span>
-              </button>
-            ))}
-          </div>
-        )}
 
         {/* Model Download / Initialization Progress Bar (Automatic, minimalist) */}
         {isLoading && (
@@ -684,91 +466,8 @@ export default function AITutor() {
           </div>
         )}
 
-        {/* Body Layout: Sidebar + Main Chat */}
+        {/* Body Layout: Main Chat */}
         <div className="ai-layout-body">
-          {/* Mobile Overlay for Sidebar */}
-          {sidebarOpen && (
-            <div className="ai-sidebar-overlay" onClick={() => setSidebarOpen(false)} />
-          )}
-
-          {/* Saved Chats Sidebar Drawer */}
-          <div className={`ai-sidebar ${sidebarOpen ? "" : "ai-sidebar--hidden"}`}>
-            <div className="ai-sidebar-header">
-              <span className="ai-sidebar-title">
-                Saved Chats History
-              </span>
-              <button
-                onClick={() => setSidebarOpen(false)}
-                style={{ background: "none", border: "none", color: "var(--t3)", cursor: "pointer" }}
-              >
-                <CloseIcon />
-              </button>
-            </div>
-
-            <div className="ai-sidebar-list">
-              {savedChats.length === 0 ? (
-                <div style={{ padding: "1.5rem 1rem", textAlign: "center", color: "var(--t3)", fontSize: "0.8rem" }}>
-                  No saved chats yet. Your conversations will be saved automatically here!
-                </div>
-              ) : (
-                savedChats.map((chat) => {
-                  const isActive = chat.id === activeChatId;
-                  const dateStr = new Date(chat.updatedAt || chat.createdAt).toLocaleDateString(undefined, {
-                    month: "short",
-                    day: "numeric",
-                    hour: "2-digit",
-                    minute: "2-digit",
-                  });
-                  return (
-                    <div
-                      key={chat.id}
-                      className={`ai-sidebar-item ${isActive ? "ai-sidebar-item--active" : ""}`}
-                      onClick={() => handleSelectChat(chat)}
-                    >
-                      <div className="ai-sidebar-item-text">
-                        <div className="ai-sidebar-item-title">{chat.title || "Conversation"}</div>
-                        <div className="ai-sidebar-item-date">{dateStr}</div>
-                      </div>
-                      <button
-                        className="ai-sidebar-delete-btn"
-                        onClick={(e) => handleDeleteChat(e, chat.id)}
-                        title="Delete chat"
-                        aria-label="Delete chat"
-                      >
-                        <TrashIcon />
-                      </button>
-                    </div>
-                  );
-                })
-              )}
-            </div>
-
-            {savedChats.length > 0 && (
-              <div style={{ padding: "0.75rem", borderTop: "1px solid var(--bd)" }}>
-                <button
-                  onClick={handleClearAllChats}
-                  style={{
-                    width: "100%",
-                    padding: "0.45rem",
-                    borderRadius: "8px",
-                    border: "1px solid var(--bd)",
-                    background: "transparent",
-                    color: "var(--rd)",
-                    fontSize: "0.78rem",
-                    fontWeight: 500,
-                    cursor: "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "0.3rem",
-                  }}
-                >
-                  <TrashIcon /> Clear All Saved Chats
-                </button>
-              </div>
-            )}
-          </div>
-
           {/* Main Chat Area */}
           <div style={{
             flex: 1,
@@ -810,10 +509,10 @@ export default function AITutor() {
                     <BotAvatarIcon />
                   </div>
                   <h2 className="ai-empty-title">
-                    What shall we explore today?
+                    Ask Quiz
                   </h2>
                   <p className="ai-empty-subtitle">
-                    Ask about any concept, equation, or topic. We'll explore it together through intuitive reasoning.
+                    Ask any question about your studies, equations, or concepts. Runs 100% locally in your browser.
                   </p>
 
                   <div className="ai-starter-grid" style={{ maxWidth: "480px" }}>
