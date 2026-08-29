@@ -74,11 +74,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {/* Fallback Bookmark Continue Card (only rendered if SmartPrompt is inactive) */}
       {!nextAction && showResume && (
         <div className="resume-card-humanistic">
-          <div className="resume-bookmark-icon-svg">
-            <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" />
-            </svg>
-          </div>
           <div className="resume-card-content">
             <div className="resume-card-kicker">Pick up where you left off</div>
             <h2 className="resume-card-topic-title">
@@ -93,7 +88,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
             className="resume-card-action-btn"
             onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
-            Continue Studying →
+            Continue →
           </button>
         </div>
       )}
