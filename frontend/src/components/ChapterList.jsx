@@ -22,13 +22,11 @@ function ChapterList({ subject, openChapter, goBack }) {
               key={c.id}
               onClick={() => openChapter(c.id)}
             >
-              <div className="chap-badge-number">Chapter {idx + 1}</div>
               <div className="chap-card-content">
+                <div className="chap-badge-number">Chapter {idx + 1}</div>
                 <div className="chap-name-humanistic">{c.label}</div>
                 <div className="chap-meta-humanistic">
-                  <span>{c.topics.length} topic{c.topics.length !== 1 ? "s" : ""}</span>
-                  <span className="chap-meta-dot">•</span>
-                  <span>~{estMinutes} min study</span>
+                  {c.topics.length} topic{c.topics.length !== 1 ? "s" : ""} · ~{estMinutes} min study
                 </div>
               </div>
               <div className="chap-arrow">→</div>

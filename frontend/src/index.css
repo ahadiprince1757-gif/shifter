@@ -7976,58 +7976,53 @@ html.dark-mode .ai-msg-bubble--assistant {
 .topic-list-humanistic {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
+  gap: 0.6rem;
 }
 
 .chap-card-humanistic {
   background: var(--sur);
   border: 1px solid var(--bd);
-  border-radius: 16px;
-  padding: 1.25rem 1.6rem;
+  border-radius: 12px;
+  padding: 0.85rem 1.1rem;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   display: flex;
   align-items: center;
-  gap: 1.2rem;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+  gap: 0.8rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
 }
 
 .chap-card-humanistic:hover {
   border-color: var(--bd2);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
 }
 
 .chap-badge-number {
-  font-size: 0.75rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: #74B8E8;
-  background: rgba(116, 184, 232, 0.08);
-  padding: 0.3rem 0.75rem;
-  border-radius: 99px;
-  flex-shrink: 0;
+  margin-bottom: 0.15rem;
 }
 
 .chap-card-content {
   flex: 1;
+  min-width: 0;
 }
 
 .chap-name-humanistic {
-  font-family: 'Newsreader', Georgia, serif;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--t);
+  line-height: 1.25;
 }
 
 .chap-meta-humanistic {
-  font-size: 0.8rem;
+  font-size: 0.78rem;
   color: var(--t3);
-  margin-top: 0.2rem;
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
+  margin-top: 0.15rem;
 }
 
 .chap-meta-dot {
@@ -8036,7 +8031,7 @@ html.dark-mode .ai-msg-bubble--assistant {
 }
 
 .chap-arrow {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: var(--t3);
   transition: transform 0.2s ease, color 0.2s ease;
 }
