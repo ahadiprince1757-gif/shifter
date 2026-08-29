@@ -14,25 +14,22 @@ function ChapterList({ subject, openChapter, goBack }) {
       </div>
 
       <div className="chap-list-humanistic">
-        {subject.chapters.map((c, idx) => {
-          const estMinutes = Math.max(5, c.topics.length * 4);
-          return (
-            <div
-              className="chap-card-humanistic"
-              key={c.id}
-              onClick={() => openChapter(c.id)}
-            >
-              <div className="chap-card-content">
-                <div className="chap-badge-number">Chapter {idx + 1}</div>
-                <div className="chap-name-humanistic">{c.label}</div>
-                <div className="chap-meta-humanistic">
-                  {c.topics.length} topic{c.topics.length !== 1 ? "s" : ""} · ~{estMinutes} min study
-                </div>
+        {subject.chapters.map((c, idx) => (
+          <div
+            className="chap-card-humanistic"
+            key={c.id}
+            onClick={() => openChapter(c.id)}
+          >
+            <div className="chap-card-content">
+              <div className="chap-badge-number">Chapter {idx + 1}</div>
+              <div className="chap-name-humanistic">{c.label}</div>
+              <div className="chap-meta-humanistic">
+                {c.topics.length} topic{c.topics.length !== 1 ? "s" : ""}
               </div>
-              <div className="chap-arrow">→</div>
             </div>
-          );
-        })}
+            <div className="chap-arrow">→</div>
+          </div>
+        ))}
       </div>
     </div>
   );
