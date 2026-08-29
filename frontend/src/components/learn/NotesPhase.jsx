@@ -132,7 +132,7 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
   };
 
   const notes = Array.isArray(content.notes)
-    ? content.notes.join("\n")
+    ? content.notes.join("\n\n")
     : content.notes || "";
   const hasHtml = typeof notes === "string" && /<[^>]+>/.test(notes);
   const markup = notes || "<p>No notes are available for this topic yet.</p>";
@@ -161,15 +161,6 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
               </ReactMarkdown>
             )}
           </div>
-        </div>
-
-        {/* Swipe & Pinch hint row */}
-        <div className="notes-swipe-hint">
-          <span className="swipe-hint-text">← Swipe right to go back</span>
-          <span className="swipe-hint-dot" />
-          <span className="swipe-hint-text">Pinch to zoom</span>
-          <span className="swipe-hint-dot" />
-          <span className="swipe-hint-text">Swipe left for quiz →</span>
         </div>
 
         {/* Active Synthesis Scratchpad */}

@@ -1704,44 +1704,47 @@ html.dark-mode .lnav-search-panel {
   padding: 1.2rem 1.34rem;
 }
 
-/* NOTES */
+/* NOTES TYPOGRAPHY (MINIMALIST & MOBILE-OPTIMIZED) */
 .nc {
-  font-size: 0.88rem;
-  line-height: 1.95;
+  font-size: 0.96rem;
+  line-height: 1.65;
   color: var(--t);
-  letter-spacing: 0.005em;
+  letter-spacing: -0.005em;
+  word-break: break-word;
 }
 
+.nc h1,
 .nc h2 {
-  font-family: "Manrope", sans-serif;
-  font-size: 1.02rem;
-  font-weight: 800;
-  color: var(--v);
-  margin: 1.4rem 0 0.5rem;
-  padding-bottom: 0.28rem;
-  border-bottom: 2px solid rgba(77, 166, 255, 0.12);
-  letter-spacing: -0.01em;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--t);
+  margin: 1.2rem 0 0.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.015em;
 }
 
 .nc h3 {
-  font-family: "Manrope", sans-serif;
-  font-size: 0.88rem;
-  font-weight: 700;
-  color: #3a8ffd;
-  margin: 0.88rem 0 0.28rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #74B8E8;
+  margin: 0.95rem 0 0.35rem;
+  line-height: 1.35;
 }
 
 .nc p {
-  margin-bottom: 0.66rem;
+  margin-bottom: 0.85rem;
+  line-height: 1.65;
 }
 
 .nc ul,
 .nc ol {
-  margin: 0.38rem 0 0.66rem 1.28rem;
+  margin: 0.4rem 0 0.85rem 1.1rem;
+  padding-left: 0.2rem;
 }
 
 .nc li {
-  margin-bottom: 0.26rem;
+  margin-bottom: 0.4rem;
+  line-height: 1.6;
 }
 
 .nc strong {
@@ -1750,16 +1753,16 @@ html.dark-mode .lnav-search-panel {
 }
 
 .nc em {
-  color: var(--v);
+  color: #74B8E8;
   font-style: italic;
 }
 
 .nc code {
   font-family: monospace;
-  font-size: 0.77rem;
+  font-size: 0.82rem;
   background: var(--bg2);
-  padding: 0.1em 0.33em;
-  border-radius: 4px;
+  padding: 0.15em 0.4em;
+  border-radius: 6px;
   color: var(--v);
 }
 
