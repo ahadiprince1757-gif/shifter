@@ -130,7 +130,12 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
               <div className="subj-notebook-spine" />
               <div className="subj-notebook-body">
                 <div className="subj-notebook-header">
-                  <span className="subj-notebook-tag">Course {idx + 1}</span>
+                  <div className="subj-notebook-info">
+                    <div className="subj-notebook-name">{s.label}</div>
+                    <div className="subj-notebook-chapters">
+                      {s.chapters.length} chapter{s.chapters.length !== 1 ? "s" : ""} · {totalTopics} topic{totalTopics !== 1 ? "s" : ""}
+                    </div>
+                  </div>
                   <div className="subj-ring-container" title={`${pct}% complete`}>
                     <svg className="subj-ring-svg" viewBox="0 0 40 40" style={{ width: "100%", height: "100%" }}>
                       <circle
@@ -153,21 +158,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                     </svg>
                     <span className="subj-ring-pct">{pct}%</span>
                   </div>
-                </div>
-
-                <div className="subj-notebook-name">{s.label}</div>
-                <div className="subj-notebook-chapters">
-                  {s.chapters.length} chapters
-                </div>
-
-                <div className="subj-notebook-footer">
-                  <span className="subj-notebook-progress-text">
-                    {masteredCount === 0
-                      ? "Not started yet"
-                      : masteredCount === totalTopics
-                      ? "All mastered"
-                      : `${masteredCount} of ${totalTopics} topics done`}
-                  </span>
                 </div>
               </div>
             </button>

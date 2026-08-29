@@ -7674,25 +7674,17 @@ html.dark-mode .ai-msg-bubble--assistant {
 
 .subj-notebook-body {
   flex: 1;
-  padding: 0.95rem 1rem;
+  padding: 0.95rem 1.1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
   background: var(--card-bg-tint, transparent);
-  min-height: 120px;
+  box-sizing: border-box;
 }
 
 @media (min-width: 600px) {
   .subj-notebook-body {
-    padding: 1.25rem 1.35rem;
-    min-height: 150px;
-  }
-}
-
-@media (min-width: 900px) {
-  .subj-notebook-body {
-    padding: 1.4rem 1.5rem;
-    min-height: 160px;
+    padding: 1.2rem 1.35rem;
   }
 }
 
@@ -7700,7 +7692,13 @@ html.dark-mode .ai-msg-bubble--assistant {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-bottom: 0.8rem;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.subj-notebook-info {
+  flex: 1;
+  min-width: 0;
 }
 
 .subj-notebook-icon {
@@ -7711,8 +7709,8 @@ html.dark-mode .ai-msg-bubble--assistant {
 /* ── Circular Progress Ring ── */
 .subj-ring-container {
   position: relative;
-  width: 32px;
-  height: 32px;
+  width: 34px;
+  height: 34px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -7750,47 +7748,17 @@ html.dark-mode .ai-msg-bubble--assistant {
 }
 
 .subj-notebook-name {
-  font-family: 'Newsreader', Georgia, serif;
-  font-size: clamp(0.95rem, 2.5vw, 1.35rem);
+  font-size: clamp(0.96rem, 2.2vw, 1.25rem);
   font-weight: 600;
   color: var(--t);
   line-height: 1.25;
-  margin-bottom: 0.15rem;
+  margin-bottom: 0.2rem;
 }
 
 .subj-notebook-chapters {
-  font-size: 0.72rem;
+  font-size: 0.76rem;
   color: var(--t3);
-  margin-bottom: 0.8rem;
-}
-
-@media (min-width: 600px) {
-  .subj-notebook-chapters {
-    margin-bottom: 1.2rem;
-  }
-}
-
-.subj-notebook-footer {
-  border-top: 1px dashed var(--bd);
-  padding-top: 0.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.subj-notebook-progress-text {
-  font-size: 0.72rem;
-  font-weight: 500;
-  color: var(--t2);
-}
-
-@media (min-width: 600px) {
-  .subj-notebook-footer {
-    padding-top: 0.75rem;
-  }
-  .subj-notebook-progress-text {
-    font-size: 0.8rem;
-  }
+  margin: 0;
 }
 
 /* ── Humanistic Resume Card ── */
