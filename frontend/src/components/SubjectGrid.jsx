@@ -27,50 +27,9 @@ function formatTitle(str) {
     .join(" ");
 }
 
-function getTimeContext() {
-  const hour = new Date().getHours();
-
-  if (hour >= 5 && hour < 12) {
-    return {
-      salutation: "Good morning",
-      subtitle: "Select a course below or follow your recommended study action.",
-    };
-  } else if (hour >= 12 && hour < 17) {
-    return {
-      salutation: "Good afternoon",
-      subtitle: "Select a course below or follow your recommended study action.",
-    };
-  } else if (hour >= 17 && hour < 22) {
-    return {
-      salutation: "Good evening",
-      subtitle: "Select a course below or follow your recommended study action.",
-    };
-  } else {
-    return {
-      salutation: "Welcome back",
-      subtitle: "Select a course below or follow your recommended study action.",
-    };
-  }
-}
-
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
-
-  const firstName = useMemo(() => {
-    const metaName = session?.user?.user_metadata?.full_name || session?.user?.user_metadata?.name;
-    if (metaName) {
-      return metaName.trim().split(" ")[0];
-    }
-    const email = session?.user?.email;
-    if (email) {
-      const handle = email.split("@")[0];
-      return handle.charAt(0).toUpperCase() + handle.slice(1);
-    }
-    return "Learner";
-  }, [session]);
-
-  const { salutation, subtitle } = useMemo(() => getTimeContext(), []);
 
   // Compute the single most urgent next study action
   const { action: nextAction, loading: nextActionLoading } = useNextAction(userId);
@@ -86,11 +45,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   if (!curriculum) {
     return (
-      <div id="v-subjects" className="view active">
-        <div className="sg-header-humanistic">
-          <h1 className="sg-greeting">{salutation}, {firstName}</h1>
-          <p className="sg-subtitle">{subtitle}</p>
-        </div>
+      <div id="v-subjects" className="view active" style={{ paddingTop: "0.5rem" }}>
         <div className="subj-grid-humanistic">
           <SkeletonLoader type="grid" count={6} />
         </div>
@@ -112,13 +67,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   );
 
   return (
-    <div id="v-subjects" className="view active">
-      {/* Clean Minimal Welcoming Area */}
-      <div className="sg-header-humanistic">
-        <h1 className="sg-greeting">{salutation}, {firstName}</h1>
-        <p className="sg-subtitle">{subtitle}</p>
-      </div>
-
+    <div id="v-subjects" className="view active" style={{ paddingTop: "0.5rem" }}>
       {/* Smart Prompt — single next-action card, hidden when nothing is urgent */}
       <SmartPrompt action={nextAction} loading={nextActionLoading} />
 
