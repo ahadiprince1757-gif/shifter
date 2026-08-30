@@ -8,11 +8,13 @@
  */
 
 export class HomeScienceMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
+
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
     // 1. Clinical Nutrition & Malnutrition Deficiency Case Studies
     if (lower.includes("nutrient") || lower.includes("vitamin") || lower.includes("protein") || lower.includes("mineral") || lower.includes("diet") || lower.includes("scurvy") || lower.includes("kwashiorkor") || lower.includes("rickets")) {
@@ -42,22 +44,47 @@ export class HomeScienceMutator {
           why: "Vitamin C is required for collagen synthesis and blood vessel maintenance; deficiency causes capillary fragility and Scurvy."
         }
       ];
-      const selected = cases[Math.floor(Math.random() * cases.length)];
+      const selected = cases[mode % cases.length];
+      const ansStr = selected.ans;
 
-      return {
-        q: `[Clinical Nutrition Case Study] ${selected.scenario}`,
-        ans: selected.ans,
-        hint: selected.hint,
-        why: selected.why,
-        sol: selected.ans,
-        steps: [
-          "Step 1: Identify deficiency symptoms described in clinical case study",
-          "Step 2: Match symptoms to underlying missing nutrient",
-          "Step 3: Recommend therapeutic dietary remedy"
-        ],
-        type: "mcq",
-        options: selected.options
-      };
+      if (mode === 0) {
+        return {
+          q: selected.scenario,
+          ans: ansStr,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: selected.scenario,
+          ans: ansStr,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "mcq",
+          options: selected.options,
+        };
+      } else if (mode === 2) {
+        const wrongRemedy = selected.options[1];
+        return {
+          q: `A patient exhibiting symptoms in this case study: "${selected.scenario.split('.')[0]}." was prescribed ${wrongRemedy}. Is this recommendation correct? State the true dietary remedy.`,
+          ans: `Incorrect. The true dietary remedy is ${ansStr}.`,
+          hint: selected.hint,
+          sol: `Prescribing ${wrongRemedy} is incorrect. Correct remedy = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `State the missing nutrient and therapeutic dietary remedy for the following condition:\n"${selected.scenario}"`,
+          ans: `Nutrient/Remedy: ${ansStr}. ${selected.hint}`,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 2. Reverse Inquiry for Practical Home Management

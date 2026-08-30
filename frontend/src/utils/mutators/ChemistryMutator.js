@@ -68,64 +68,100 @@ export class ChemistryMutator {
     return Math.abs(hash);
   }
 
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
     const seed = this._hash(stem + (qObj.id || ""));
 
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
+
     // ── 1. Direct Molar Mass Calculation (e.g. "molar mass of", "relative formula mass") ──
     if (lower.includes("molar mass of") || lower.includes("relative formula mass") || lower.includes("rfm") || lower.includes("calculate the molar mass")) {
-      const cmp = this.compounds[seed % this.compounds.length];
+      const cmpIndex = (seed + 1) % this.compounds.length;
+      const cmp = this.compounds[cmpIndex];
       const mm = cmp.molarMass;
-      return {
-        q: `[Stoichiometry] Calculate the molar mass (relative formula mass) of ${cmp.name} (${cmp.formula}).`,
-        ans: `${mm} g/mol`,
-        hint: `Sum the atomic masses of all constituent atoms in ${cmp.formula}.`,
-        why: `Atomic mass breakdown for ${cmp.formula}: ${cmp.breakdown}. Total Molar Mass = ${mm} g/mol.`,
-        sol: `${mm} g/mol`,
-        steps: [
-          `Step 1: Identify constituent elements in ${cmp.formula}`,
-          `Step 2: Multiply atomic masses by subscript counts: ${cmp.breakdown}`,
-          `Step 3: Sum to get total molar mass: ${mm} g/mol`
-        ],
-        type: "mcq",
-        options: [
-          `${mm} g/mol`,
-          `${(mm * 1.5).toFixed(1)} g/mol`,
-          `${(mm - 16 > 0 ? mm - 16 : mm + 12)} g/mol`,
-          `${(mm / 2).toFixed(1)} g/mol`
-        ]
-      };
+      const ansStr = `${mm} g/mol`;
+
+      if (mode === 0) {
+        return {
+          q: `Calculate the molar mass (relative formula mass) of ${cmp.name} (${cmp.formula}).`,
+          ans: ansStr,
+          hint: `Sum the atomic masses of all constituent atoms in ${cmp.formula}.`,
+          sol: `Atomic mass breakdown: ${cmp.breakdown}. Total = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: `What is the molar mass of ${cmp.name} (${cmp.formula})?`,
+          ans: ansStr,
+          hint: `Sum constituent atomic masses: ${cmp.breakdown}`,
+          sol: `Total Molar Mass = ${ansStr}.`,
+          type: "mcq",
+          options: [
+            ansStr,
+            `${(mm * 1.5).toFixed(1)} g/mol`,
+            `${(mm - 16 > 0 ? mm - 16 : mm + 12)} g/mol`,
+            `${(mm / 2).toFixed(1)} g/mol`
+          ],
+        };
+      } else if (mode === 2) {
+        const wrongMM = mm + 12;
+        return {
+          q: `A student calculated the molar mass of ${cmp.name} (${cmp.formula}) as ${wrongMM} g/mol. Is this calculation correct? State the true molar mass.`,
+          ans: `Incorrect. The true molar mass is ${ansStr}.`,
+          hint: `Sum constituent atomic masses: ${cmp.breakdown}.`,
+          sol: `Calculation of ${wrongMM} g/mol is incorrect. Breakdown: ${cmp.breakdown}. True molar mass = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `State how to calculate relative formula mass from atomic masses, then determine the molar mass of ${cmp.name} (${cmp.formula}).`,
+          ans: `Add relative atomic masses of all constituent atoms. Molar mass = ${ansStr}.`,
+          hint: `Sum atomic masses of constituent atoms.`,
+          sol: `Sum atomic masses: ${cmp.breakdown} = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // ── 2. Mass to Moles Calculation (n = m / M) ──
     if (lower.includes("moles in") || lower.includes("number of moles") || lower.includes("how many moles") || lower.includes("calculate the moles")) {
-      const cmp = this.compounds[seed % this.compounds.length];
-      const multiplier = (seed % 6) + 2; // 2 to 7
+      const cmpIndex = (seed + 2) % this.compounds.length;
+      const cmp = this.compounds[cmpIndex];
+      const multiplier = (seed % 5) + 2;
       const mass = parseFloat((cmp.molarMass * (multiplier * 0.25)).toFixed(1));
       const moles = (mass / cmp.molarMass).toFixed(2);
+      const ansStr = `${moles} mol`;
 
-      return {
-        q: `[Quantitative Chemistry] A student weighs out a ${mass} g sample of pure ${cmp.name} (${cmp.formula}, Molar Mass = ${cmp.molarMass} g/mol). Calculate the number of moles present in the sample.`,
-        ans: `${moles} mol`,
-        hint: "Formula: Moles (n) = Mass in grams (m) ÷ Molar Mass (M)",
-        why: `Given Mass m = ${mass} g, Molar Mass M = ${cmp.molarMass} g/mol.\nMoles n = ${mass} / ${cmp.molarMass} = ${moles} mol.`,
-        sol: `${moles} mol`,
-        steps: [
-          `Step 1: Note parameters: Mass = ${mass} g, Molar Mass = ${cmp.molarMass} g/mol`,
-          `Step 2: Apply formula: Moles = Mass ÷ Molar Mass`,
-          `Step 3: Calculate: ${mass} ÷ ${cmp.molarMass} = ${moles} mol`
-        ],
-        type: "mcq",
-        options: [
-          `${moles} mol`,
-          `${(mass * cmp.molarMass).toLocaleString()} mol`,
-          `${(cmp.molarMass / mass).toFixed(2)} mol`,
-          `${(parseFloat(moles) * 2).toFixed(2)} mol`
-        ]
-      };
+      if (mode === 0) {
+        return {
+          q: `A lab sample contains ${mass} g of pure ${cmp.name} (${cmp.formula}, Molar Mass = ${cmp.molarMass} g/mol). Calculate the number of moles present in the sample.`,
+          ans: ansStr,
+          hint: "Formula: Moles (n) = Mass in grams (m) ÷ Molar Mass (M)",
+          sol: `Moles n = ${mass} g ÷ ${cmp.molarMass} g/mol = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `How many moles are present in a ${mass} g sample of ${cmp.name} (${cmp.formula}, Molar Mass = ${cmp.molarMass} g/mol)?`,
+          ans: ansStr,
+          hint: "n = m / M",
+          sol: `n = ${mass} / ${cmp.molarMass} = ${ansStr}.`,
+          type: "mcq",
+          options: [
+            ansStr,
+            `${(parseFloat(moles) * 2).toFixed(2)} mol`,
+            `${(parseFloat(moles) / 2).toFixed(2)} mol`,
+            `${(parseFloat(moles) + 1.5).toFixed(2)} mol`
+          ],
+        };
+      }
     }
 
     // ── 3. Moles to Mass Calculation (m = n * M) ──

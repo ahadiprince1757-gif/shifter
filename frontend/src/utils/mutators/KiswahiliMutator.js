@@ -8,11 +8,13 @@
  */
 
 export class KiswahiliMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
+
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
     // 1. Ngeli na Upatanisho wa Kisarufi (Umoja na Wingi)
     if (lower.includes("wingi") || lower.includes("umoja") || lower.includes("ngeli") || lower.includes("sentensi") || lower.includes("kisarufi")) {
@@ -32,7 +34,7 @@ export class KiswahiliMutator {
           wingi: "Miti mirefu imeanguka njiani.",
           distractors: [
             "Miti mrefu umeanguka njiani.",
-            "Miti mirefu umeanguka njiani.",
+            "Miti mirefu imeanguka njiani.",
             "Mti mirefu imeanguka njiani."
           ],
           hint: "Ngeli ya M-MI: mti (u-) ➔ miti (i-); mrefu ➔ mirefu."
@@ -48,36 +50,47 @@ export class KiswahiliMutator {
           hint: "Ngeli ya LI-YA: jicho (li-) ➔ macho (ya-)."
         }
       ];
-      const selected = cases[Math.floor(Math.random() * cases.length)];
-      const askWingi = Math.random() > 0.5;
+      const selected = cases[mode % cases.length];
+      const ansStr = selected.wingi;
 
-      return askWingi ? {
-        q: `[Sarufi na Ngeli] Teua sentensi iliyoandikwa vizuri katika WINGI:\n"${selected.umoja}"`,
-        ans: selected.wingi,
-        hint: selected.hint,
-        why: `Umoja: "${selected.umoja}" ➔ Wingi sahihi ni: "${selected.wingi}". ${selected.hint}`,
-        sol: selected.wingi,
-        steps: [
-          "Hatua ya 1: Tambua ngeli za nomino katika sentensi",
-          "Hatua ya 2: Badilisha viambishi vya ngeli (Umoja ➔ Wingi)",
-          "Hatua ya 3: Teua sentensi sahihi katika wingi"
-        ],
-        type: "mcq",
-        options: [selected.wingi, ...selected.distractors]
-      } : {
-        q: `[Sarufi na Ngeli] Teua sentensi iliyoandikwa vizuri katika UMOJA:\n"${selected.wingi}"`,
-        ans: selected.umoja,
-        hint: selected.hint,
-        why: `Wingi: "${selected.wingi}" ➔ Umoja sahihi ni: "${selected.umoja}". ${selected.hint}`,
-        sol: selected.umoja,
-        steps: [
-          "Hatua ya 1: Tambua ngeli za nomino katika sentensi",
-          "Hatua ya 2: Badilisha viambishi vya ngeli (Wingi ➔ Umoja)",
-          "Hatua ya 3: Teua sentensi sahihi katika umoja"
-        ],
-        type: "mcq",
-        options: [selected.umoja, ...selected.distractors]
-      };
+      if (mode === 0) {
+        return {
+          q: `Andika sentensi hii katika wingi:\n"${selected.umoja}"`,
+          ans: ansStr,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: `Teua sentensi iliyoandikwa vizuri katika WINGI:\n"${selected.umoja}"`,
+          ans: ansStr,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "mcq",
+          options: [ansStr, ...selected.distractors],
+        };
+      } else if (mode === 2) {
+        const wrongSentence = selected.distractors[0];
+        return {
+          q: `Sahihisha kosa la upatanisho wa kisarufi katika sentensi hii:\n"${wrongSentence}"`,
+          ans: `Sentensi sahihi ni: "${ansStr}".`,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `Taja ngeli za nomino zilizotumika katika sentensi hii na uandike wingi wake:\n"${selected.umoja}"`,
+          ans: `Ngeli na Wingi: ${selected.hint}. Sentensi katika wingi: "${ansStr}".`,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 2. Aina za Maneno (Nomino, Kivumishi, Kielezi, Kitenzi)

@@ -8,11 +8,12 @@
  */
 
 export class MathMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
     // 1. Percentage & Financial Math (Profit, Loss, Interest, Discount)
     const currencyMatch = stem.match(/(?:KSh|\$|€|£)\s*(\d+(?:,\d+)*(?:\.\d+)?)/i) || stem.match(/(\d+)\s*(?:shilling|ksh)/i);
@@ -43,8 +44,10 @@ export class MathMutator {
       const correctAns = `${newX}`;
       const options = this._generateNumberOptions(newX, false);
 
+      const type = mode === 0 ? "open_response" : "mcq";
+
       return {
-        q: `[Algebra Practice] Solve for x in the equation: ${newEq}`,
+        q: `Solve for x in the equation: ${newEq}`,
         ans: correctAns,
         hint: `Isolate x: First ${op === "+" ? "subtract" : "add"} ${newB}, then divide by ${newA}`,
         why: `Step 1: ${newA}x = ${newC} ${op === "+" ? "-" : "+"} ${newB} = ${newA * newX}.\nStep 2: x = ${newA * newX} ÷ ${newA} = ${newX}.`,
@@ -54,8 +57,8 @@ export class MathMutator {
           `Step 2: Simplify RHS: ${newA}x = ${newA * newX}`,
           `Step 3: Divide by coefficient ${newA}: x = ${newX}`
         ],
-        type: "mcq",
-        options
+        type,
+        options: type === "mcq" ? options : null
       };
     }
 
@@ -64,20 +67,21 @@ export class MathMutator {
       const s = (Math.floor(Math.random() * 8) + 4) * 10; // 40 to 110 km/h
       const t = Math.floor(Math.random() * 4) + 2; // 2 to 5 hours
       const d = s * t;
+      const type = mode === 0 ? "open_response" : "mcq";
 
       return {
-        q: `[Kinematics Math] A vehicle travels at a constant speed of ${s} km/h for ${t} hours. Calculate the total distance covered.`,
+        q: `A vehicle travels at a constant speed of ${s} km/h for ${t} hours. Calculate the total distance covered.`,
         ans: `${d} km`,
         hint: "Formula: Distance = Speed × Time",
         why: `Distance = ${s} km/h × ${t} h = ${d} km.`,
-        sol: `Distance = ${d} km`,
+        sol: `${d} km`,
         steps: [
           `Step 1: Note given parameters: Speed = ${s} km/h, Time = ${t} hours`,
           `Step 2: Apply formula: Distance = Speed × Time`,
           `Step 3: Calculate: ${s} × ${t} = ${d} km`
         ],
-        type: "mcq",
-        options: [`${d} km`, `${s + t} km`, `${d + s} km`, `${Math.round(d / 2)} km`]
+        type,
+        options: type === "mcq" ? [`${d} km`, `${s + t} km`, `${d + s} km`, `${Math.round(d / 2)} km`] : null
       };
     }
 

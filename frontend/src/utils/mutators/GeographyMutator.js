@@ -7,38 +7,71 @@
  */
 
 export class GeographyMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
 
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
+
     // 1. Dynamic Map Work & Scale Calculations
     if (lower.includes("map") || lower.includes("scale") || lower.includes("grid") || lower.includes("bearing") || lower.includes("distance") || lower.includes("contour")) {
-      const scales = [25000, 50000, 100000];
-      const selectedScale = scales[Math.floor(Math.random() * scales.length)];
-      const mapCm = Math.floor(Math.random() * 12) + 3; // 3 to 14 cm
-      const actualKm = (mapCm * selectedScale) / 100000;
+      const origCmMatch = stem.match(/(\d+(?:\.\d+)?)\s*cm/i);
+      const origCm = origCmMatch ? parseFloat(origCmMatch[1]) : 0;
 
-      return {
-        q: `[Map Work Scenario] On a topographical map drawn to a representative fraction scale of 1:${selectedScale.toLocaleString()}, a straight road segment measures ${mapCm} cm. Calculate the actual ground distance of the road in kilometres.`,
-        ans: `${actualKm} km`,
-        hint: "Formula: Ground Distance (km) = (Map Distance in cm × Scale Factor) ÷ 100,000",
-        why: `Ground Distance = ${mapCm} cm × ${selectedScale.toLocaleString()} = ${mapCm * selectedScale} cm = ${actualKm} km.`,
-        sol: `${actualKm} km`,
-        steps: [
-          `Step 1: Multiply map distance in cm by scale denominator: ${mapCm} × ${selectedScale.toLocaleString()} = ${mapCm * selectedScale} cm`,
-          `Step 2: Convert cm to km by dividing by 100,000: ${mapCm * selectedScale} ÷ 100,000`,
-          `Step 3: Final ground distance = ${actualKm} km`
-        ],
-        type: "mcq",
-        options: [
-          `${actualKm} km`,
-          `${(actualKm * 10).toFixed(1)} km`,
-          `${(actualKm / 2).toFixed(1)} km`,
-          `${(actualKm * 2).toFixed(1)} km`
-        ]
-      };
+      const scales = [25000, 50000, 100000];
+      const selectedScale = scales[mode % scales.length];
+      
+      let mapCm = Math.floor(Math.random() * 10) + 4; // 4 to 13 cm
+      if (mapCm === origCm) mapCm += 3;
+
+      const actualKm = (mapCm * selectedScale) / 100000;
+      const ansStr = `${actualKm} km`;
+
+      if (mode === 0) {
+        return {
+          q: `On a topographical map drawn to a scale of 1:${selectedScale.toLocaleString()}, a road segment measures ${mapCm} cm. Calculate the actual ground distance in kilometres.`,
+          ans: ansStr,
+          hint: "Formula: Ground Distance (km) = (Map Distance in cm × Scale Factor) ÷ 100,000",
+          sol: `Ground Distance = ${mapCm} cm × ${selectedScale.toLocaleString()} ÷ 100,000 = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: `A road measures ${mapCm} cm on a 1:${selectedScale.toLocaleString()} map. Select the correct ground distance.`,
+          ans: ansStr,
+          hint: "Multiply cm by scale denominator, then divide by 100,000.",
+          sol: `Ground Distance = ${ansStr}.`,
+          type: "mcq",
+          options: [
+            ansStr,
+            `${(actualKm * 10).toFixed(1)} km`,
+            `${(actualKm / 2).toFixed(1)} km`,
+            `${(actualKm * 2).toFixed(1)} km`
+          ],
+        };
+      } else if (mode === 2) {
+        const claimedWrong = actualKm * 10;
+        return {
+          q: `A student calculated ${mapCm} cm on a 1:${selectedScale.toLocaleString()} map as ${claimedWrong} km. Is this calculation correct? State the true ground distance.`,
+          ans: `Incorrect. The true ground distance is ${ansStr}.`,
+          hint: "Ground distance = (map cm × scale) ÷ 100,000.",
+          sol: `Calculation of ${claimedWrong} km is incorrect. True distance = ${mapCm} × ${selectedScale} ÷ 100,000 = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `State the formula to convert map distance in centimetres to ground distance in kilometres, then calculate the distance for ${mapCm} cm on a 1:${selectedScale.toLocaleString()} map.`,
+          ans: `Formula: Ground Distance (km) = (Map cm × Scale Factor) ÷ 100,000. Distance = ${ansStr}.`,
+          hint: "Multiply cm by scale factor, then divide by 100,000.",
+          sol: `Formula: (Map cm × Scale) ÷ 100,000. Distance = ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 2. Climate & Meteorology Case Studies

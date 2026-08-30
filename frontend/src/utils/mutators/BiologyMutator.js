@@ -7,56 +7,96 @@
  */
 
 export class BiologyMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
     // 1. Photosynthesis & Plant Physiology
     if (lower.includes("photosynthe") || lower.includes("chlorophyll") || lower.includes("leaf") || lower.includes("stomata") || lower.includes("light stage") || lower.includes("dark stage")) {
-      return {
-        q: `[Botany Lab Experiment] A botanist places a variegated leaf under bright sunlight for 6 hours after de-starching. After performing an iodine starch test, only the green areas turn dark blue/black while white areas remain brown. What does this experiment prove?`,
-        ans: "Chlorophyll is essential for photosynthesis (starch production)",
-        hint: "Iodine tests for starch; green areas contain chlorophyll pigment.",
-        why: "Chlorophyll traps solar energy needed to synthesize glucose, which is converted to starch. Non-green areas lack chlorophyll and cannot perform photosynthesis.",
-        sol: "Chlorophyll is essential for photosynthesis",
-        steps: [
-          "Step 1: Identify key variable (Green areas = Chlorophyll present)",
-          "Step 2: Relate iodine color change (Blue-black = Starch present)",
-          "Step 3: Conclude chlorophyll is required for light absorption and sugar production"
-        ],
-        type: "mcq",
-        options: [
-          "Chlorophyll is essential for photosynthesis (starch production)",
-          "Sunlight is not required for starch formation",
-          "Carbon dioxide is produced by chlorophyll",
-          "Water is absorbed only by non-green areas"
-        ]
-      };
+      const ansStr = "Chlorophyll is essential for photosynthesis (starch production)";
+      if (mode === 0) {
+        return {
+          q: `A botanist places a variegated leaf under bright sunlight for 6 hours after de-starching. After an iodine test, only green areas turn dark blue/black while white areas remain brown. Explain what this experiment proves regarding starch production.`,
+          ans: ansStr,
+          hint: "Iodine tests for starch; green areas contain chlorophyll pigment.",
+          sol: "Chlorophyll is essential for photosynthesis because green areas with chlorophyll formed starch while non-green areas did not.",
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: `In a variegated leaf iodine experiment, only chlorophyll-containing green areas test positive for starch. Which conclusion is correct?`,
+          ans: ansStr,
+          hint: "Green pigment traps light for sugar synthesis.",
+          sol: ansStr,
+          type: "mcq",
+          options: [
+            ansStr,
+            "Sunlight is not required for starch formation",
+            "Carbon dioxide is produced by chlorophyll",
+            "Water is absorbed only by non-green areas"
+          ],
+        };
+      } else if (mode === 2) {
+        return {
+          q: `A student claimed that white non-green leaf areas produce more starch than green areas during photosynthesis. Is this claim correct? Explain why.`,
+          ans: "Incorrect. Chlorophyll in green areas is essential for trapping light energy to form starch.",
+          hint: "Chlorophyll pigment is required for light absorption.",
+          sol: "Incorrect. Starch is formed only where chlorophyll is present to absorb light.",
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `State the balanced chemical equation for photosynthesis and explain the role of chlorophyll pigment in the light stage.`,
+          ans: `Equation: 6CO₂ + 6H₂O -> C₆H₁₂O₆ + 6O₂. Chlorophyll absorbs solar light energy to split water (photolysis).`,
+          hint: "Reactants: CO2 + H2O, Products: Glucose + Oxygen.",
+          sol: "6CO2 + 6H2O -> C6H12O6 + 6O2. Chlorophyll absorbs light energy.",
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 2. Enzymes & Digestion
     if (lower.includes("enzyme") || lower.includes("catalyst") || lower.includes("substrate") || lower.includes("active site") || lower.includes("denatur") || lower.includes("pepsin") || lower.includes("amylase")) {
-      return {
-        q: `[Biochemistry Diagnostic] A patient's core body temperature spikes to 41.5°C during a severe fever. Laboratory tests show that metabolic digestive reactions have slowed drastically. What is the molecular cause of this enzyme failure at high temperature?`,
-        ans: "Thermal denaturation altering the 3D structure of the active site",
-        hint: "High heat breaks delicate hydrogen bonds in protein structures.",
-        why: "Excess thermal energy breaks hydrogen and disulfide bonds, deforming the enzyme's active site so substrates can no longer bind.",
-        sol: "Thermal denaturation altering the active site",
-        steps: [
-          "Step 1: Analyze environmental condition (High temperature > 40°C)",
-          "Step 2: Recall protein structure sensitivity to heat",
-          "Step 3: State active site denaturation prevents enzyme-substrate complex formation"
-        ],
-        type: "mcq",
-        options: [
-          "Thermal denaturation altering the 3D structure of the active site",
-          "Enzymes being completely consumed during the reaction",
-          "Substrate molecules expanding and becoming too large",
-          "Activation energy being lowered to zero"
-        ]
-      };
+      const ansStr = "Thermal denaturation altering the 3D structure of the active site";
+      if (mode === 0) {
+        return {
+          q: `A patient's body temperature spikes to 41.5°C during a fever and metabolic digestive reactions slow drastically. Explain the molecular cause of enzyme failure at high temperatures.`,
+          ans: ansStr,
+          hint: "Excess heat breaks delicate hydrogen bonds in protein structures.",
+          sol: "Thermal denaturation deforms the active site, preventing substrate binding.",
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: `What happens to enzyme activity when temperature rises significantly above the optimum level?`,
+          ans: ansStr,
+          hint: "High heat deforms active site shape.",
+          sol: ansStr,
+          type: "mcq",
+          options: [
+            ansStr,
+            "Enzymes are completely consumed during the reaction",
+            "Substrate molecules expand and become too large",
+            "Activation energy is lowered to zero"
+          ],
+        };
+      } else {
+        return {
+          q: `A student claimed that high temperatures increase enzyme activity indefinitely by raising substrate energy. Is this claim correct? State the true thermal effect on enzymes.`,
+          ans: "Incorrect. Temperatures above optimum denature enzymes by deforming the active site.",
+          hint: "Enzymes denature at high temperatures.",
+          sol: "Incorrect. High temperature breaks hydrogen bonds and denatures the active site.",
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 3. Respiration & Cell Organelles (Mitochondria, ATP)

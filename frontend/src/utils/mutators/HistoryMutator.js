@@ -7,11 +7,13 @@
  */
 
 export class HistoryMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
+
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
     // 1. Arms of Government & Constitutional Roles
     if (lower.includes("constitution") || lower.includes("government") || lower.includes("parliament") || lower.includes("judiciary") || lower.includes("executive") || lower.includes("president") || lower.includes("court") || lower.includes("bill")) {
@@ -20,27 +22,52 @@ export class HistoryMutator {
         { name: "Executive", role: "implementing laws and administering public policy", head: "President" },
         { name: "Judiciary", role: "interpreting laws and administering justice through courts", head: "Chief Justice" }
       ];
-      const selected = branches[Math.floor(Math.random() * branches.length)];
+      const selected = branches[mode % branches.length];
+      const ansStr = selected.name;
 
-      return {
-        q: `[Government Role Scenario] A new national policy bill has been drafted. Which organ of government is constitutionally mandated for ${selected.role}?`,
-        ans: selected.name,
-        hint: `This organ is headed by the ${selected.head}.`,
-        why: `The ${selected.name} is the organ of government constitutionally empowered for ${selected.role}.`,
-        sol: selected.name,
-        steps: [
-          `Step 1: Identify constitutional function described (${selected.role})`,
-          `Step 2: Compare arms of government (Legislature, Executive, Judiciary)`,
-          `Step 3: Conclude ${selected.name} is responsible`
-        ],
-        type: "mcq",
-        options: [
-          selected.name,
-          selected.name.includes("Legislature") ? "Executive" : "Legislature (Parliament)",
-          selected.name.includes("Judiciary") ? "Executive" : "Judiciary",
-          "Public Service Commission"
-        ]
-      };
+      if (mode === 0) {
+        return {
+          q: `A new national policy bill has been drafted. Which organ of government is constitutionally mandated for ${selected.role}?`,
+          ans: ansStr,
+          hint: `This organ is headed by the ${selected.head}.`,
+          sol: `The ${selected.name} is constitutionally empowered for ${selected.role}.`,
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: `Which arm of government holds the constitutional responsibility for ${selected.role}?`,
+          ans: ansStr,
+          hint: `Headed by the ${selected.head}.`,
+          sol: ansStr,
+          type: "mcq",
+          options: [
+            ansStr,
+            selected.name.includes("Legislature") ? "Executive" : "Legislature (Parliament)",
+            selected.name.includes("Judiciary") ? "Executive" : "Judiciary",
+            "Public Service Commission"
+          ],
+        };
+      } else if (mode === 2) {
+        const wrongBranch = selected.name.includes("Executive") ? "Judiciary" : "Executive";
+        return {
+          q: `A student claimed that the ${wrongBranch} branch is constitutionally responsible for ${selected.role}. Is this claim correct? State the true organ.`,
+          ans: `Incorrect. The true organ is ${ansStr}.`,
+          hint: `Compare roles of Legislature, Executive, and Judiciary.`,
+          sol: `Incorrect. The ${wrongBranch} does not perform this role; ${ansStr} is constitutionally mandated.`,
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `State the 3 arms of government defined by the constitution, then identify the organ responsible for ${selected.role}.`,
+          ans: `Three arms: Legislature, Executive, Judiciary. Organ responsible for ${selected.role} = ${ansStr}.`,
+          hint: `Identify the specific organ for ${selected.role}.`,
+          sol: `Legislature, Executive, Judiciary. ${ansStr} performs this function.`,
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 2. Historical Trade Routes & International Relations

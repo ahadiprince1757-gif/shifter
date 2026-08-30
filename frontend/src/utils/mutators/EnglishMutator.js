@@ -8,11 +8,13 @@
  */
 
 export class EnglishMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
+
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
     // 1. Verb Tenses & Subject-Verb Agreement
     if (lower.includes("tense") || lower.includes("verb") || lower.includes("past") || lower.includes("present") || lower.includes("agreement") || lower.includes("plural")) {
@@ -36,22 +38,48 @@ export class EnglishMutator {
           hint: "Third Conditional ('If + past perfect..., would have + past participle')."
         }
       ];
-      const selected = items[Math.floor(Math.random() * items.length)];
+      const selected = items[mode % items.length];
+      const ansStr = selected.ans;
 
-      return {
-        q: `[Grammar & Tense Scenario] Select the grammatically correct verb form to complete the sentence:\n"${selected.sentence}"`,
-        ans: selected.ans,
-        hint: selected.hint,
-        why: `The correct option is '${selected.ans}'. ${selected.hint}`,
-        sol: selected.ans,
-        steps: [
-          "Step 1: Read full sentence and identify time markers/conjunctions",
-          "Step 2: Apply grammatical rule (Tense sequencing / Subject-Verb agreement)",
-          "Step 3: Choose correct verb form"
-        ],
-        type: "mcq",
-        options: selected.options
-      };
+      if (mode === 0) {
+        return {
+          q: `Fill in the blank with the correct verb form:\n"${selected.sentence}"`,
+          ans: ansStr,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        return {
+          q: `Select the grammatically correct verb form to complete the sentence:\n"${selected.sentence}"`,
+          ans: ansStr,
+          hint: selected.hint,
+          sol: ansStr,
+          type: "mcq",
+          options: selected.options,
+        };
+      } else if (mode === 2) {
+        const wrongForm = selected.options.find(o => o !== ansStr) || "was";
+        const errorSentence = selected.sentence.replace("________", wrongForm);
+        return {
+          q: `Identify the grammatical error in this sentence and state the correct verb form:\n"${errorSentence}"`,
+          ans: `The word '${wrongForm}' is incorrect; the correct form is '${ansStr}'.`,
+          hint: selected.hint,
+          sol: `Change '${wrongForm}' to '${ansStr}'.`,
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        return {
+          q: `State the grammatical rule governing the blank space in this sentence and provide the correct word:\n"${selected.sentence}"`,
+          ans: `Rule: ${selected.hint}. Correct word: ${ansStr}.`,
+          hint: selected.hint,
+          sol: `Rule: ${selected.hint}. Correct word: ${ansStr}.`,
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 2. Parts of Speech & Syntactical Analysis

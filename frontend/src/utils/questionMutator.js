@@ -233,7 +233,8 @@ export class QuestionMutator {
     }
 
     if (mutator) {
-      return mutator.mutate(blueprint);
+      const modalityIndex = typeof blueprint._attemptCount === "number" ? blueprint._attemptCount : Math.floor(Math.random() * 4);
+      return mutator.mutate(blueprint, modalityIndex);
     }
 
     return null;

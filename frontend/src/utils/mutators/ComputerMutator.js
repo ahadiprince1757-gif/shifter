@@ -8,53 +8,73 @@
  */
 
 export class ComputerMutator {
-  mutate(qObj) {
+  mutate(qObj, modalityIndex = 0) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
 
+    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
+
     // 1. Dynamic Binary <-> Decimal Number System Engine
     if (lower.includes("binary") || lower.includes("decimal") || lower.includes("convert") || lower.includes("base 2") || lower.includes("base 10") || lower.includes("bit")) {
-      const dec = Math.floor(Math.random() * 120) + 15; // 15 to 135
-      const bin = dec.toString(2);
-      const isDecToBin = Math.random() > 0.5;
+      const origMatch = stem.match(/\b\d+\b/);
+      const origDec = origMatch ? parseInt(origMatch[0], 10) : 0;
+
+      let dec = Math.floor(Math.random() * 100) + 20; // 20 to 119
+      if (dec === origDec) dec += 15;
+
+      const bin = dec.toString(2).padStart(8, "0");
+      const isDecToBin = mode % 2 === 0;
 
       if (isDecToBin) {
-        return {
-          q: `[Number Systems Conversion] A computer system processes integer values in binary. Convert the decimal number ${dec} into its 8-bit binary representation.`,
-          ans: bin.padStart(8, "0"),
-          hint: "Repeatedly divide the decimal number by 2 and record remainders from bottom to top.",
-          why: `Decimal ${dec} in binary is ${bin.padStart(8, "0")}.\nDivide by 2 repeatedly: ${dec} ÷ 2 = ${Math.floor(dec / 2)} rem ${dec % 2}...`,
-          sol: bin.padStart(8, "0"),
-          steps: [
-            `Step 1: Divide decimal ${dec} by 2 repeatedly`,
-            `Step 2: Collect remainders in reverse order: ${bin}`,
-            `Step 3: Pad to 8-bits: ${bin.padStart(8, "0")}`
-          ],
-          type: "mcq",
-          options: [
-            bin.padStart(8, "0"),
-            (dec + 1).toString(2).padStart(8, "0"),
-            (dec - 2).toString(2).padStart(8, "0"),
-            (dec + 4).toString(2).padStart(8, "0")
-          ]
-        };
+        const ansStr = bin;
+        if (mode === 0) {
+          return {
+            q: `Convert the decimal number ${dec} into its 8-bit binary representation.`,
+            ans: ansStr,
+            hint: "Repeatedly divide by 2 and record remainders from bottom to top.",
+            sol: `Decimal ${dec} = Binary ${ansStr}.`,
+            type: "open_response",
+            options: null,
+          };
+        } else {
+          return {
+            q: `Which 8-bit binary string represents the decimal integer ${dec}?`,
+            ans: ansStr,
+            hint: "Divide by 2 repeatedly.",
+            sol: `Decimal ${dec} = Binary ${ansStr}.`,
+            type: "mcq",
+            options: [
+              ansStr,
+              (dec + 1).toString(2).padStart(8, "0"),
+              (dec - 2).toString(2).padStart(8, "0"),
+              (dec + 4).toString(2).padStart(8, "0")
+            ],
+          };
+        }
       } else {
-        return {
-          q: `[Digital Data Encoding] A CPU register holds a binary string '${bin}'. What is the equivalent decimal value represented by this binary code?`,
-          ans: `${dec}`,
-          hint: "Multiply each binary digit by its positional power of 2 (128, 64, 32, 16, 8, 4, 2, 1) and sum.",
-          why: `Binary ${bin} = Decimal ${dec}. Positional sum of active bits equals ${dec}.`,
-          sol: `${dec}`,
-          steps: [
-            `Step 1: Assign binary place values (1, 2, 4, 8, 16, 32, 64...)`,
-            `Step 2: Multiply each binary digit '1' by its place value`,
-            `Step 3: Add the products together: Total = ${dec}`
-          ],
-          type: "mcq",
-          options: [`${dec}`, `${dec + 1}`, `${dec - 2}`, `${dec * 2}`]
-        };
+        const ansStr = `${dec}`;
+        if (mode === 1) {
+          return {
+            q: `A CPU register holds the binary string '${bin}'. What is the equivalent decimal value represented by this binary code?`,
+            ans: ansStr,
+            hint: "Multiply each bit by its positional power of 2 (128, 64, 32, 16, 8, 4, 2, 1) and sum.",
+            sol: `Binary ${bin} = Decimal ${ansStr}.`,
+            type: "open_response",
+            options: null,
+          };
+        } else {
+          const claimedWrong = dec + 8;
+          return {
+            q: `A technician recorded binary '${bin}' as decimal ${claimedWrong}. Is this record correct? State the true decimal value.`,
+            ans: `Incorrect. The true decimal value is ${ansStr}.`,
+            hint: "Sum positional powers of active bits.",
+            sol: `Calculation of ${claimedWrong} is incorrect. True decimal = ${ansStr}.`,
+            type: "open_response",
+            options: null,
+          };
+        }
       }
     }
 
