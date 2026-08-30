@@ -3,7 +3,7 @@ function HintBox({ showHint, hintText }) {
 
   return (
     <div className="hint-box">
-      💡 <strong>Hint:</strong>{" "}
+      <strong>Hint:</strong>{" "}
       {hintText || "Review the notes to formulate your answer."}
     </div>
   );

@@ -1728,6 +1728,39 @@ html.dark-mode .lnav-search-panel {
   color: #22c55e !important;
 }
 
+/* Probe Input Styling */
+.probe-input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 0.85rem;
+}
+
+.probe-input-field {
+  width: 100%;
+  padding: 0.8rem 1rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background: var(--bg);
+  color: var(--t);
+  border: 1.5px solid var(--bd);
+  border-radius: 12px;
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.probe-input-field:focus {
+  border-color: var(--v, #3b82f6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+.input-shortcut-hint {
+  font-size: 0.72rem;
+  color: var(--t3);
+  font-weight: 500;
+  text-align: right;
+}
+
 .ph-step-9.ph-current {
   opacity: 1;
   background: rgba(77, 166, 255, 0.12);

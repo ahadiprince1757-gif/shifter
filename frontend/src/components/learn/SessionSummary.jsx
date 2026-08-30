@@ -191,7 +191,6 @@ export default function SessionSummary({
 
       {/* Next review date */}
       <div className="ss-review-banner">
-        <div className="ss-review-icon">📅</div>
         <div className="ss-review-text">
           <div className="ss-review-label">Spaced review scheduled</div>
           <div className="ss-review-date">Come back {formatDate(nextReview)}</div>

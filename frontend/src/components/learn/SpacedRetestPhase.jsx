@@ -72,7 +72,7 @@ function SpacedRetestPhase({ dueReviews = [], onComplete }) {
 
       <div className="lcb">
         <div className="retest-framing">
-          ⏰ Spaced Review: Testing past material to strengthen long-term memory retrieval.
+          Spaced Review: Testing past material to strengthen long-term memory retrieval.
         </div>
 
         <QuestionDisplay

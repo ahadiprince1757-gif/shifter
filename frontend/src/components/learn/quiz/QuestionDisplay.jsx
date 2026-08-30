@@ -17,7 +17,7 @@ function QuestionDisplay({ questionText, category }) {
     <div className="q-display-card">
       {tag && (
         <div className="q-tag-row">
-          <span className="q-tag-badge">💡 {tag}</span>
+          <span className="q-tag-badge">{tag}</span>
         </div>
       )}
       <div className="q-txt">{text}</div>

@@ -156,8 +156,8 @@ function LearnFlow({
           <div className="teach-phase-wrapper">
             <div className={`diagnostic-banner ${noGap ? "diagnostic-banner--nogap" : ""}`}>
               {noGap
-                ? "✓ Diagnostic probes passed! Review the core concepts below to solidify your understanding before retrieval practice."
-                : "⚠️ Knowledge gap detected in probes. Review the key notes below before taking your retrieval quiz."}
+                ? "Diagnostic probes passed! Review the core concepts below to solidify your understanding before retrieval practice."
+                : "Knowledge gap detected in probes. Review the key notes below before taking your retrieval quiz."}
             </div>
             <NotesPhase
               topic={topic}

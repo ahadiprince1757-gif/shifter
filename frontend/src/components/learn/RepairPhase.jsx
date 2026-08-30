@@ -161,7 +161,6 @@ function RepairPhase({
         {repairStep === "teach" && (
           <div className="repair-teach-block">
             <div className="repair-concept-header">
-              <div className="repair-concept-icon">🎯</div>
               <div>
                 <div className="repair-concept-title">Where Your Understanding Broke</div>
                 <div className="repair-concept-tag">{conceptLabel}</div>

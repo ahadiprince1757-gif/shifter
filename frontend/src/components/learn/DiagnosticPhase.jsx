@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import HintBox from "./quiz/HintBox";
 import { evaluateAnswer } from "../../utils/grader";
@@ -7,9 +7,10 @@ import { evaluateAnswer } from "../../utils/grader";
  * DiagnosticPhase
  *
  * Runs 2-3 quick diagnostic probes before main study.
- * System-driven: determines whether a knowledge gap exists.
- *   - 0 mistakes → skip to RETRIEVE (or Notes optional)
- *   - 1+ mistakes → transition to TEACH
+ * Features an optimized typing experience:
+ *   - Auto-focused input
+ *   - Press Enter / Ctrl+Enter to submit probe instantly
+ *   - Clean professional typography without emojis
  *
  * Props:
  *   diagnosticQuestions  Array<{ qIdx, q }>
@@ -23,21 +24,30 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
   const [showHint, setShowHint] = useState(false);
   const [validationError, setValidationError] = useState("");
 
+  const inputRef = useRef(null);
+
   const currentProbe = diagnosticQuestions[currentIndex] || null;
   const q = currentProbe?.q;
   const isMCQ = q?.type === "mcq" && Array.isArray(q?.options);
+
+  // Auto-focus answer input on load or question change
+  useEffect(() => {
+    if (!feedback && inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, [currentIndex, feedback]);
 
   if (!q) {
     return (
       <div className="lc" id="diagnosticCard">
         <div className="lcb">
-          <p>No diagnostic probes available. Preparing your session…</p>
+          <p>No diagnostic probes available. Preparing your session...</p>
           <button
             className="btn-p"
             onClick={() => onComplete([])}
             style={{ marginTop: "1rem" }}
           >
-            Continue →
+            Continue
           </button>
         </div>
       </div>
@@ -58,6 +68,15 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
       ...prev.filter((r) => r.qIdx !== currentProbe.qIdx),
       { qIdx: currentProbe.qIdx, passed: res.isCorrect },
     ]);
+  };
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+      if (answer.trim() && !feedback) {
+        handleSubmit();
+      }
+    }
   };
 
   const handleNext = () => {
@@ -86,7 +105,7 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
       <div className="lcb">
         {!feedback && (
           <div className="diagnostic-framing">
-            🔍 Quick check: Let's see what you already know about this topic.
+            Quick Check: Test your baseline knowledge on this topic.
           </div>
         )}
 
@@ -119,13 +138,20 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
                 ))}
               </div>
             ) : (
-              <textarea
-                className="quiz-input"
-                rows={3}
-                placeholder="Type your answer…"
-                value={answer}
-                onChange={(e) => setAnswer(e.target.value)}
-              />
+              <div className="probe-input-container">
+                <input
+                  ref={inputRef}
+                  type="text"
+                  className="quiz-input probe-input-field"
+                  placeholder="Type your answer and press Enter..."
+                  value={answer}
+                  onChange={(e) => setAnswer(e.target.value)}
+                  onKeyDown={handleKeyDown}
+                  autoComplete="off"
+                  spellCheck="false"
+                />
+                <span className="input-shortcut-hint">Press Enter to submit</span>
+              </div>
             )}
 
             {validationError && (
@@ -161,13 +187,13 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
             }`}
           >
             <div className="diagnostic-feedback-status">
-              {feedback.isCorrect ? "✓ Probe Passed" : "✗ Gap Detected"}
+              {feedback.isCorrect ? "Probe Passed" : "Gap Detected"}
             </div>
 
             <button className="btn-p diagnostic-next-btn" onClick={handleNext}>
               {currentIndex < diagnosticQuestions.length - 1
-                ? "Next Probe →"
-                : "Complete Diagnosis →"}
+                ? "Next Probe"
+                : "Complete Diagnosis"}
             </button>
           </div>
         )}

@@ -52,7 +52,6 @@ function TransferPhase({
       <div className="lcb">
         {!feedback && (
           <div className="transfer-framing-card">
-            <div className="transfer-framing-icon">📐</div>
             <div className="transfer-framing-text">
               <strong>Representation Challenge:</strong> This question re-frames the underlying concept into a new structural representation. Solve for the exact result using the same core principles.
             </div>
