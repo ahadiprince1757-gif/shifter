@@ -40,6 +40,6 @@ CREATE VIEW public.public_profiles AS
   FROM public.profiles;
 
 -- Verify
-SELECT table_name, policyname, cmd, roles
-FROM information_schema.policies
-WHERE table_schema = 'public' AND table_name = 'profiles';
+SELECT tablename, policyname, cmd, roles
+FROM pg_policies
+WHERE schemaname = 'public' AND tablename = 'profiles';

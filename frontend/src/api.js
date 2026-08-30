@@ -212,9 +212,12 @@ export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, int
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
 
+  const userId = session.user.id;
+  const topicTitleStr = topicTitle || "";
+
   const payload = {
-    user_id: session.user.id,
-    topic_title: topicTitle || "",
+    user_id: userId,
+    topic_title: topicTitleStr,
     subject_id: sid || null,
     chapter_id: cid || null,
     next_review_at: nextReviewAt,
@@ -229,10 +232,28 @@ export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, int
   }
 
   try {
-    const { error } = await supabase.from("spaced_reviews").upsert(payload);
-    if (error) {
-      console.warn("[Supabase] spaced_reviews upsert warning:", error.message);
-      return false;
+    const { data: existing } = await supabase
+      .from("spaced_reviews")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("topic_title", topicTitleStr)
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      const { error } = await supabase
+        .from("spaced_reviews")
+        .update(payload)
+        .eq("id", existing[0].id);
+      if (error) {
+        console.warn("[Supabase] spaced_reviews update warning:", error.message);
+        return false;
+      }
+    } else {
+      const { error } = await supabase.from("spaced_reviews").insert(payload);
+      if (error) {
+        console.warn("[Supabase] spaced_reviews insert warning:", error.message);
+        return false;
+      }
     }
     return true;
   } catch (err) {
@@ -262,9 +283,12 @@ export async function saveNote({ sid, cid, topicTitle, noteText }) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
 
+  const userId = session.user.id;
+  const topicTitleStr = topicTitle || "";
+
   const payload = {
-    user_id: session.user.id,
-    topic_title: topicTitle || "",
+    user_id: userId,
+    topic_title: topicTitleStr,
     subject_id: sid || null,
     chapter_id: cid || null,
     note_text: noteText || "",
@@ -276,10 +300,28 @@ export async function saveNote({ sid, cid, topicTitle, noteText }) {
   }
 
   try {
-    const { error } = await supabase.from("user_notes").upsert(payload);
-    if (error) {
-      console.warn("[Supabase] user_notes upsert warning:", error.message);
-      return false;
+    const { data: existing } = await supabase
+      .from("user_notes")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("topic_title", topicTitleStr)
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      const { error } = await supabase
+        .from("user_notes")
+        .update(payload)
+        .eq("id", existing[0].id);
+      if (error) {
+        console.warn("[Supabase] user_notes update warning:", error.message);
+        return false;
+      }
+    } else {
+      const { error } = await supabase.from("user_notes").insert(payload);
+      if (error) {
+        console.warn("[Supabase] user_notes insert warning:", error.message);
+        return false;
+      }
     }
     return true;
   } catch (err) {
