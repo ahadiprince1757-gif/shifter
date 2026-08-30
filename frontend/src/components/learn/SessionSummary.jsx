@@ -64,6 +64,7 @@ export default function SessionSummary({
   subject,
   chapter,
   sessionScore,
+  weaknessMap = {},
   repairedConcepts = [],
   nextTopic,
   goToNext,
@@ -71,6 +72,7 @@ export default function SessionSummary({
   userId,
 }) {
   const [nextReview, setNextReview] = useState(null);
+  const weaknessEntries = Object.values(weaknessMap || {});
 
   useEffect(() => {
     if (!topic) return;
@@ -100,16 +102,40 @@ export default function SessionSummary({
       <div className="ss-score-row">
         <ScoreRing score={sessionScore ?? 0} />
         <div className="ss-score-meta">
-          <div className="ss-score-label">Retrieval Score</div>
+          <div className="ss-score-label">Knowledge Survival Score</div>
           <div className="ss-score-hint">
             {(sessionScore ?? 0) >= 80
-              ? "Strong — this concept is consolidating."
+              ? "High Retention — core concepts survived retrieval testing."
               : (sessionScore ?? 0) >= 50
-              ? "Partial — keep spacing your reviews."
-              : "Needs more work — review is scheduled soon."}
+              ? "Partial Retention — review recommended to prevent memory decay."
+              : "Low Retention — targeted spaced review queued."}
           </div>
         </div>
       </div>
+
+      {/* Cognitive Knowledge-Gap Diagnostic Breakdown */}
+      {weaknessEntries.length > 0 && (
+        <div className="ss-section" style={{ marginTop: "1.2rem", padding: "1rem", background: "rgba(255, 255, 255, 0.03)", borderRadius: "8px", border: "1px solid var(--bd)" }}>
+          <div className="ss-section-title" style={{ color: "#8ECBF0", marginBottom: "0.8rem" }}>
+            Cognitive Knowledge-Gap Diagnosis
+          </div>
+          <div className="ss-concept-list" style={{ flexDirection: "column", gap: "0.8rem" }}>
+            {weaknessEntries.map((w, idx) => (
+              <div key={idx} style={{ padding: "0.6rem 0.8rem", background: "rgba(0,0,0,0.2)", borderRadius: "6px" }}>
+                <div style={{ fontWeight: 600, color: "#fff", fontSize: "0.9rem" }}>
+                  {w.prerequisiteSkill || "Prerequisite Concept"}
+                </div>
+                <div style={{ fontSize: "0.82rem", color: "var(--t2)", marginTop: "0.2rem" }}>
+                  <strong>Root Cause:</strong> {w.rootCause}
+                </div>
+                <div style={{ fontSize: "0.82rem", color: "#74B8E8", marginTop: "0.2rem" }}>
+                  <strong>Target Action:</strong> {w.remediationAction}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
 
       {/* Repaired concepts list if user did variant retries during quiz */}
       {repairedConcepts && repairedConcepts.length > 0 && (
@@ -129,8 +155,8 @@ export default function SessionSummary({
       {/* Next review date */}
       <div className="ss-review-banner">
         <div className="ss-review-text">
-          <div className="ss-review-label">Spaced review scheduled</div>
-          <div className="ss-review-date">Come back {formatDate(nextReview)}</div>
+          <div className="ss-review-label">Spaced Memory Review Scheduled</div>
+          <div className="ss-review-date">Next retention check {formatDate(nextReview)}</div>
         </div>
       </div>
 

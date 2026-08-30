@@ -42,7 +42,54 @@ function deriveConceptTag(q, qIdx) {
 }
 
 /**
+ * Derives the underlying cognitive prerequisite skill and root-cause breakdown
+ * for a failed concept.
+ */
+function derivePrerequisiteAnalysis(qText) {
+  const text = (qText || "").toLowerCase();
+  
+  if (/\b(area|perimeter|rectangle|triangle|circle|radius|length|width)\b/i.test(text)) {
+    return {
+      prerequisiteSkill: "Geometric Dimensional Properties & Formulas",
+      rootCause: "Sub-concept confusion between linear perimeter and 2D area calculations",
+      remediationAction: "Isolate length/width relationship before computing total area",
+    };
+  }
+
+  if (/\b(x|=|solve|equation|algebra|factor)\b/i.test(text)) {
+    return {
+      prerequisiteSkill: "Algebraic Equivalence & Inverse Operations",
+      rootCause: "Misapplication of inverse operations across equal sign",
+      remediationAction: "Isolate variable term by applying matching operations on both sides",
+    };
+  }
+
+  if (/\b(speed|distance|time|rate|km\/h|m\/s)\b/i.test(text)) {
+    return {
+      prerequisiteSkill: "Rate & Kinematic Relations",
+      rootCause: "Incorrect operational pairing of speed, distance, and time variables",
+      remediationAction: "Check variable triangle: Distance = Speed × Time",
+    };
+  }
+
+  if (/\b(%|percent|profit|discount|interest|shilling|ksh)\b/i.test(text)) {
+    return {
+      prerequisiteSkill: "Percentage Proportions & Base Quantity Calculation",
+      rootCause: "Identifying correct base principal amount before applying rate percentage",
+      remediationAction: "Define initial principal value as 100% baseline",
+    };
+  }
+
+  return {
+    prerequisiteSkill: "Core Operational Logic & Rule Application",
+    rootCause: "Misconception in core procedural rule or step-by-step evaluation",
+    remediationAction: "Review core definition step-by-step",
+  };
+}
+
+/**
  * Build a WeaknessMap from the list of failed questions produced by useQuiz.
+ * Now enriched with Cognitive Prerequisite Graph diagnostics.
  *
  * @param {Array<{ qIdx, question, correctAnswer, solution, mark }>} failedQuestions
  * @param {Array<object>} allQuestions  - full content.qs[] array
@@ -54,10 +101,15 @@ export function buildWeaknessMap(failedQuestions = [], allQuestions = []) {
   for (const failed of failedQuestions) {
     const originalQ = allQuestions[failed.qIdx] || null;
     const conceptTag = deriveConceptTag(originalQ, failed.qIdx);
+    const qText = failed.question || (originalQ && originalQ.q) || "";
+    const diag = derivePrerequisiteAnalysis(qText, originalQ, failed.mark);
 
     if (!map[conceptTag]) {
       map[conceptTag] = {
         conceptTag,
+        prerequisiteSkill: diag.prerequisiteSkill,
+        rootCause: diag.rootCause,
+        remediationAction: diag.remediationAction,
         questions: [],
         repairTaught: false,
         repairPassed: false,
@@ -66,7 +118,7 @@ export function buildWeaknessMap(failedQuestions = [], allQuestions = []) {
 
     map[conceptTag].questions.push({
       qIdx: failed.qIdx,
-      questionText: failed.question || (originalQ && originalQ.q) || "",
+      questionText: qText,
       correctAnswer: failed.correctAnswer || (originalQ && originalQ.ans) || "",
       solution: failed.solution || (originalQ && (originalQ.sol || originalQ.why)) || "",
       mark: failed.mark || (originalQ && originalQ.mark) || "",

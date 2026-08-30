@@ -4,8 +4,11 @@ function MasteredPhase({
   goBack,
   goToNext,
   failedQuestions,
+  weaknessMap = {},
+  sessionScore = 100,
 }) {
   const hasMistakes = failedQuestions && failedQuestions.length > 0;
+  const weaknessEntries = Object.values(weaknessMap || {});
 
   return (
     <div className="mastered-container">
@@ -14,7 +17,7 @@ function MasteredPhase({
         {/* Corner Branding */}
         <div className="m-card-header">
           <span className="m-brand">TIXAR</span>
-          <span className="m-status">COMPLETED</span>
+          <span className="m-status">{sessionScore === 100 ? "PERFECT MASTERY" : "COMPLETED"}</span>
         </div>
 
         {/* Certificate Content */}
@@ -26,18 +29,40 @@ function MasteredPhase({
             </svg>
           </div>
           <h2 className="m-title">{topic}</h2>
-          <p className="m-subtitle">Topic Mastery Achieved</p>
+          <p className="m-subtitle">Knowledge Survival Score: {sessionScore}%</p>
         </div>
 
         {/* Footer detail */}
         <div className="m-card-footer">
-          <span>Verify progress on shifter.tixar.com</span>
+          <span>Memory Retention Review Scheduled via SM-2 Spaced Repetition</span>
         </div>
       </div>
 
-      {/* review details if mistakes occurred, placed cleanly below card */}
+      {/* Cognitive Knowledge-Gap Diagnostic Breakdown */}
+      {hasMistakes && weaknessEntries.length > 0 && (
+        <div className="m-diagnostic-card" style={{ marginTop: "1rem", padding: "1.2rem", background: "var(--card-bg, #1a1a1a)", borderRadius: "8px", border: "1px solid var(--border-color, #333)" }}>
+          <div style={{ fontSize: "0.85rem", textTransform: "uppercase", letterSpacing: "0.05em", color: "#888", marginBottom: "0.5rem" }}>
+            Cognitive Knowledge-Gap Diagnosis
+          </div>
+          {weaknessEntries.map((w, idx) => (
+            <div key={idx} style={{ marginBottom: idx < weaknessEntries.length - 1 ? "1rem" : 0 }}>
+              <div style={{ fontWeight: 600, color: "#fff", fontSize: "0.95rem" }}>
+                {w.prerequisiteSkill || "Prerequisite Concept"}
+              </div>
+              <div style={{ fontSize: "0.85rem", color: "#bbb", marginTop: "0.2rem" }}>
+                <strong>Root Cause:</strong> {w.rootCause}
+              </div>
+              <div style={{ fontSize: "0.85rem", color: "#74B8E8", marginTop: "0.2rem" }}>
+                <strong>Target Action:</strong> {w.remediationAction}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Review details if mistakes occurred */}
       {hasMistakes && (
-        <details className="m-review-details">
+        <details className="m-review-details" style={{ marginTop: "1rem" }}>
           <summary className="m-review-summary">
             Review {failedQuestions.length} correction{failedQuestions.length > 1 ? "s" : ""}
           </summary>
