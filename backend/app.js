@@ -546,8 +546,10 @@ app.get("/api/analytics", async (req, res) => {
     }
 
     const topicMap = new Map();
+    const titleMap = new Map();
+
     (allTopics || []).forEach((t) => {
-      topicMap.set(t.topic_id, {
+      const topicObj = {
         topic_id: t.topic_id,
         topic_title: t.topic,
         chapter_title: t.cid,
@@ -557,8 +559,16 @@ app.get("/api/analytics", async (req, res) => {
         visit_count: 0,
         pass_count: 0,
         fail_count: 0,
-      });
+      };
+      if (t.topic_id != null) topicMap.set(t.topic_id, topicObj);
+      if (t.topic) titleMap.set(t.topic.toLowerCase().trim(), topicObj);
     });
+
+    const getTopicItem = (id, title) => {
+      if (id != null && topicMap.has(id)) return topicMap.get(id);
+      if (title && titleMap.has(title.toLowerCase().trim())) return titleMap.get(title.toLowerCase().trim());
+      return null;
+    };
 
     // 1. User-specific learning events
     const { data: events } = await supabase
@@ -568,7 +578,7 @@ app.get("/api/analytics", async (req, res) => {
 
     if (events) {
       events.forEach((e) => {
-        const item = topicMap.get(e.topic_id);
+        const item = getTopicItem(e.topic_id, null);
         if (item) {
           if (e.event_type === "visit") item.visit_count += 1;
           if (e.event_type === "pass") item.pass_count += 1;
@@ -580,12 +590,12 @@ app.get("/api/analytics", async (req, res) => {
     // 2. User-specific progress
     const { data: progressRows } = await supabase
       .from("progress")
-      .select("topic_id, completed, score")
+      .select("topic_id, topic_title, completed, score")
       .eq("user_id", userId);
 
     if (progressRows) {
       progressRows.forEach((p) => {
-        const item = topicMap.get(p.topic_id);
+        const item = getTopicItem(p.topic_id, p.topic_title);
         if (item) {
           if (p.completed && item.pass_count === 0) {
             item.pass_count = 1;
