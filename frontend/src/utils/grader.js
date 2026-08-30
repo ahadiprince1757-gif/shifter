@@ -42,32 +42,30 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
     question.multi_part ||
     /\b(four|4|three|3|both|all|list|name\s+the|which\s+ones)\b/i.test(stem);
 
-  let isAnswerCorrect = false;
   let partialInfo = null;
 
-  if (Array.isArray(rawAns) && isMultiPartQuestion) {
-    // Requires multiple items
-    const requiredItems = rawAns.map(normalize);
-    const matchedCount = requiredItems.filter((item) => checkSingleVariant(uAns, item, tokenize)).length;
-    const totalRequired = requiredItems.length;
+  const checkAnswer = () => {
+    if (Array.isArray(rawAns) && isMultiPartQuestion) {
+      const requiredItems = rawAns.map(normalize);
+      const matchedCount = requiredItems.filter((item) => checkSingleVariant(uAns, item, tokenize)).length;
+      const totalRequired = requiredItems.length;
 
-    if (matchedCount === totalRequired) {
-      isAnswerCorrect = true;
-    } else {
-      isAnswerCorrect = false;
-      partialInfo = {
-        matchedCount,
-        totalRequired,
-        percent: Math.round((matchedCount / totalRequired) * 100),
-      };
+      if (matchedCount < totalRequired) {
+        partialInfo = {
+          matchedCount,
+          totalRequired,
+          percent: Math.round((matchedCount / totalRequired) * 100),
+        };
+      }
+      return matchedCount === totalRequired;
     }
-  } else if (Array.isArray(rawAns)) {
-    // Array of alternative synonyms
-    isAnswerCorrect = rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize));
-  } else {
-    // Single answer comparison
-    isAnswerCorrect = checkSingleVariant(uAns, normalize(rawAns), tokenize);
-  }
+    if (Array.isArray(rawAns)) {
+      return rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize));
+    }
+    return checkSingleVariant(uAns, normalize(rawAns), tokenize);
+  };
+
+  const isAnswerCorrect = checkAnswer();
 
   // 2. Working vs. Final Answer Evaluation
   let isWorkCorrect = null;

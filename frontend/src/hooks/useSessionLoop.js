@@ -141,7 +141,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
         }
       }
     }, 150);
-  }, [grading, answer, currentQuestion, confidence, isRepairing, qIdx, userId, topic, subject, chapter]);
+  }, [grading, answer, work, currentQuestion, confidence, isRepairing, qIdx, userId, topic, subject, chapter]);
 
   // ── Trigger In-Quiz Mutated Repair (Edge of Friction) ─────────────────────
   const startMutatedRepair = useCallback(() => {
