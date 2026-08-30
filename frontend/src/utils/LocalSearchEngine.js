@@ -397,7 +397,7 @@ function evaluateLiveQueryValues(lower) {
       const r = (v / i).toFixed(2), p = (v * i).toFixed(2);
       return {
         id: "live_ohms_vi", subject: "Physics", topic: "Electricity Calculation",
-        title: `🧮 Live Result: Ohm's Law — ${v} V & ${i} A`,
+        title: `Live Result: Ohm's Law — ${v} V & ${i} A`,
         formula: `R = V/I = ${r} Ω | P = V×I = ${p} W`,
         explanation: `Resistance R = ${v} ÷ ${i} = ${r} Ω. Electrical Power P = ${v} × ${i} = ${p} Watts.`,
         steps: `Step 1: V = ${v} V, I = ${i} A → Step 2: R = V/I = ${r} Ω → Step 3: P = V×I = ${p} W`,
@@ -412,7 +412,7 @@ function evaluateLiveQueryValues(lower) {
       const i = (v / r).toFixed(2), p = ((v * v) / r).toFixed(2);
       return {
         id: "live_ohms_vr", subject: "Physics", topic: "Electricity Calculation",
-        title: `🧮 Live Result: Ohm's Law — ${v} V & ${r} Ω`,
+        title: `Live Result: Ohm's Law — ${v} V & ${r} Ω`,
         formula: `I = V/R = ${i} A | P = V²/R = ${p} W`,
         explanation: `Current I = ${v} ÷ ${r} = ${i} A. Power P = ${v}² ÷ ${r} = ${p} W.`,
         steps: `Step 1: V = ${v} V, R = ${r} Ω → Step 2: I = V/R = ${i} A → Step 3: P = V²/R = ${p} W`,
@@ -429,7 +429,7 @@ function evaluateLiveQueryValues(lower) {
       const s = (d / t).toFixed(1);
       return {
         id: "live_speed", subject: "Mathematics / Physics", topic: "Kinematics",
-        title: `🧮 Live Result: ${d} km in ${t} hours`,
+        title: `Live Result: ${d} km in ${t} hours`,
         formula: `Speed = ${d} km ÷ ${t} h = ${s} km/h`,
         explanation: `Average speed = Distance ÷ Time = ${d} ÷ ${t} = ${s} km/h.`,
         steps: `Step 1: d = ${d} km, t = ${t} h → Step 2: Speed = ${d} / ${t} = ${s} km/h`,
@@ -445,7 +445,7 @@ function evaluateLiveQueryValues(lower) {
     const circ = (2 * (22 / 7) * r).toFixed(2);
     return {
       id: "live_circle", subject: "Mathematics", topic: "Geometry",
-      title: `🧮 Live Result: Circle r = ${r}`,
+      title: `Live Result: Circle r = ${r}`,
       formula: `Area = πr² = ${area} | Circumference = 2πr = ${circ}`,
       explanation: `Area = (22/7) × ${r}² = ${area}. Circumference = 2 × (22/7) × ${r} = ${circ}.`,
       steps: `Step 1: r = ${r} → Step 2: Area = (22/7) × ${r}² = ${area} → Step 3: C = 2 × (22/7) × ${r} = ${circ}`,
@@ -463,7 +463,7 @@ function evaluateLiveQueryValues(lower) {
     const label = lower.includes("discount") ? "Discount" : "Profit";
     return {
       id: "live_financial", subject: "Mathematics", topic: "Financial Math",
-      title: `🧮 Live Result: ${pct}% ${label} on ${amt.toLocaleString()}`,
+      title: `Live Result: ${pct}% ${label} on ${amt.toLocaleString()}`,
       formula: `${label} = ${calcAmt.toLocaleString()} | Final = ${final.toLocaleString()}`,
       explanation: `${pct}% of ${amt.toLocaleString()} = ${calcAmt.toLocaleString()}. Final amount = ${final.toLocaleString()}.`,
       steps: `Step 1: ${pct}% × ${amt.toLocaleString()} = ${calcAmt.toLocaleString()} → Step 2: Final = ${amt.toLocaleString()} ${lower.includes("discount") ? "-" : "+"} ${calcAmt.toLocaleString()} = ${final.toLocaleString()}`,
@@ -480,7 +480,7 @@ function evaluateLiveQueryValues(lower) {
       const x = (rhs / a).toFixed(2);
       return {
         id: "live_algebra", subject: "Mathematics", topic: "Algebra",
-        title: `🧮 Live Result: Solve ${a}x ${op} ${b} = ${c}`,
+        title: `Live Result: Solve ${a}x ${op} ${b} = ${c}`,
         formula: `${a}x = ${rhs} → x = ${rhs} / ${a} = ${x}`,
         explanation: `${op === "+" ? "Subtract" : "Add"} ${b} from both sides: ${a}x = ${rhs}. Divide by ${a}: x = ${x}.`,
         steps: `Step 1: ${a}x = ${c} ${op === "+" ? "−" : "+"} ${b} = ${rhs} → Step 2: x = ${rhs} ÷ ${a} = ${x}`,

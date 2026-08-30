@@ -15,8 +15,7 @@ function FeedbackDisplay({
   goToReview,
   startMutatedRepair,
 }) {
-  // Inline AI explanation state — fires only on misconception (high confidence + wrong)
-  const [explanationText, setExplanationText] = useState(null); // null = not triggered
+  const [explanationText, setExplanationText] = useState(null);
   const [explanationGenerating, setExplanationGenerating] = useState(false);
   const abortRef = useRef(null);
 
@@ -28,7 +27,6 @@ function FeedbackDisplay({
 
     if (!isMisconception) return;
 
-    // Trigger inline AI explanation
     let cancelled = false;
     abortRef.current = new AbortController();
 
@@ -41,7 +39,6 @@ function FeedbackDisplay({
     const wrongAnswer = feedback.studentAnswer || feedback.answer || "";
     const correctAnswer = feedback.correctAnswer || "";
 
-    // Fetch RAG context then stream the explanation
     getLocalRAGContext(question)
       .then((ragContext) => {
         if (cancelled) return;
@@ -53,7 +50,6 @@ function FeedbackDisplay({
           (chunk) => {
             if (cancelled) return;
             if (chunk === null) {
-              // Engine not ready or error — silently hide the section
               setExplanationText(null);
               setExplanationGenerating(false);
             } else {
@@ -90,28 +86,27 @@ function FeedbackDisplay({
     ? rawAnswer.split("•").map((s) => s.trim()).filter(Boolean)
     : null;
 
-  // Calibration insight: cross-reference correctness with confidence
   const getCalibrationInsight = () => {
     if (!confidence) return null;
     if (!isCorrect && confidence === "high") {
       return {
         type: "misconception",
         message:
-          "Concept Misconception — you were very confident but answered incorrectly. Review the explanation carefully; this is a priority area.",
+          "Concept Misconception — You were confident in your response, but the logic broke. Review the step-by-step solution carefully.",
       };
     }
     if (isCorrect && confidence === "low") {
       return {
         type: "unsure",
         message:
-          "Lucky Guess / Unsure — you got it right but weren't confident. This topic is flagged for earlier review to reinforce it properly.",
+          "Unsure Confirmation — Correct answer recorded, but low confidence was flagged for future review.",
       };
     }
     if (!isCorrect && confidence === "medium") {
       return {
         type: "knowledge-gap",
         message:
-          "Knowledge Gap — study the explanation below, then use 'Review Concept' to see the full solution before retrying.",
+          "Knowledge Gap — Review the breakdown below to clarify the concept before moving forward.",
       };
     }
     return null;
@@ -121,7 +116,7 @@ function FeedbackDisplay({
 
   return (
     <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-needs-review"}`}>
-      {/* Header Status */}
+      {/* Status Header */}
       <div className="fb-header">
         <div className="fb-status-wrapper">
           <span className={`fb-status-badge ${isCorrect ? "fb-badge-success" : "fb-badge-review"}`}>
@@ -133,21 +128,18 @@ function FeedbackDisplay({
         </span>
       </div>
 
-      {/* Calibration Insight Banner */}
+      {/* Calibration Insight */}
       {calibration && (
         <div className={`calibration-insight calibration-${calibration.type}`}>
-          <div className="calibration-icon">
-            {calibration.type === "misconception" ? "!" : calibration.type === "unsure" ? "?" : "i"}
-          </div>
           <div className="calibration-text">{calibration.message}</div>
         </div>
       )}
 
-      {/* Inline AI Misconception Explanation — no branding, appears as plain explanation */}
+      {/* Inline Misconception Explanation */}
       {!isCorrect && confidence === "high" && (
         <>
           {explanationGenerating && !explanationText && (
-            <div className="misconception-explanation-thinking" aria-live="polite" aria-label="Generating explanation">
+            <div className="misconception-explanation-thinking" aria-live="polite">
               <span className="misconception-explanation-dot" />
               <span className="misconception-explanation-dot" />
               <span className="misconception-explanation-dot" />
@@ -161,7 +153,7 @@ function FeedbackDisplay({
         </>
       )}
 
-      {/* 1. Direct Explanation / Solution FIRST */}
+      {/* Explanation / Solution */}
       {feedback.solution && (
         <div className="fb-explanation-box">
           <div className="fb-section-title">Explanation</div>
@@ -173,7 +165,7 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* 2. Step-by-Step Breakdown (if available) */}
+      {/* Step-by-Step Breakdown */}
       {!isCorrect && Array.isArray(feedback.steps) && feedback.steps.length > 0 && (
         <div className="fb-steps-container">
           <div className="fb-section-title">Step-by-Step Solution</div>
@@ -192,7 +184,7 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* 3. Correct Target Answer SECOND */}
+      {/* Correct Target Answer */}
       {!isCorrect && rawAnswer && (
         <div className="fb-correct-answer-box">
           <div className="fb-section-title">Correct Answer</div>
@@ -222,14 +214,8 @@ function FeedbackDisplay({
             className="fb-action-btn fb-repair-btn"
             onClick={startMutatedRepair}
             disabled={grading}
-            style={{
-              background: "rgba(245, 158, 11, 0.15)",
-              color: "#f59e0b",
-              border: "1px solid rgba(245, 158, 11, 0.3)",
-              fontWeight: 700,
-            }}
           >
-            Try Variant Question (Test Fix)
+            Try Variant Question
           </button>
         )}
         {!isCorrect && goToReview && (
@@ -254,7 +240,7 @@ function FeedbackDisplay({
           }}
           disabled={grading}
         >
-          {isLastQuestion ? "Finish Topic" : "Next Question →"}
+          {isLastQuestion ? "Finish Topic" : "Next Question"}
         </button>
       </div>
     </div>

@@ -8,7 +8,7 @@ function Landing({ enterApp, isDark, toggleDark, session, openAuth }) {
   const legalContent = {
     policy: {
       title: "TIXAR LEGAL FRAMEWORK - Privacy Policy",
-      icon: "🔒",
+      icon: "",
       body: (
         <>
           <p style={{ marginBottom: "1rem" }}>

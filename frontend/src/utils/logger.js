@@ -96,7 +96,7 @@ class FrontendLogger {
     // Show only errors and warnings in console in a highly structured format
     if (logEntry.level === "error") {
       console.error(
-        `🔴 %c[SYSTEM ERROR - ${logEntry.action}]%c\n` +
+        `%c[SYSTEM ERROR - ${logEntry.action}]%c\n` +
         `• Message: ${logEntry.errorMessage || "No error message provided"}\n` +
         `• Time: ${new Date(logEntry.timestamp).toLocaleTimeString()}\n` +
         `• Context:`,
@@ -110,7 +110,7 @@ class FrontendLogger {
       );
     } else if (logEntry.level === "warn") {
       console.warn(
-        `⚠️ %c[SYSTEM WARNING - ${logEntry.action}]%c\n` +
+        `%c[SYSTEM WARNING - ${logEntry.action}]%c\n` +
         `• Time: ${new Date(logEntry.timestamp).toLocaleTimeString()}\n` +
         `• Context:`,
         "color: #ffcc00; font-weight: 700; font-size: 1.05em; text-transform: uppercase;",
