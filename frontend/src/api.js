@@ -398,11 +398,21 @@ export async function saveAchievement(achievementName) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
   try {
-    const { error } = await supabase.from("achievements").upsert({
+    // Check if already exists to avoid duplicates (no unique constraint required)
+    const { data: existing } = await supabase
+      .from("achievements")
+      .select("id")
+      .eq("user_id", session.user.id)
+      .eq("achievement_name", achievementName)
+      .limit(1);
+
+    if (existing && existing.length > 0) return true; // Already unlocked
+
+    const { error } = await supabase.from("achievements").insert({
       user_id: session.user.id,
       achievement_name: achievementName,
       unlocked_at: new Date().toISOString(),
-    }, { onConflict: "user_id, achievement_name" });
+    });
     return !error;
   } catch {
     return false;

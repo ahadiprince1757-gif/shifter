@@ -14,6 +14,7 @@ import { selectTransferQuestion, buildFallbackTransferQuestion } from "../utils/
 import { spacedRepo } from "../repository/spacedRepo";
 import { evaluateAnswer } from "../utils/grader";
 import { questionMutator } from "../utils/questionMutator";
+import { saveAchievement, saveProgress } from "../api";
 
 export const SESSION_PHASES = {
   NOTES: 0,
@@ -155,8 +156,10 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     const score = total > 0 ? Math.round(((total - failedCount) / total) * 100) : 100;
     setSessionScore(score);
 
+    const mastered = failedCount === 0;
     const isCorrect = score >= 80;
     const finalConfidence = confidence || "medium";
+
     spacedRepo
       .updateReviewSchedule(topic, isCorrect, finalConfidence, {
         sid: subject?.id,
@@ -164,6 +167,27 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
         userId,
       })
       .catch(() => {});
+
+    // Persist progress and achievements to Supabase
+    if (subject?.id && chapter?.id) {
+      saveProgress({
+        sid: subject.id,
+        cid: chapter.id,
+        topicTitle: topic,
+        completed: true,
+        score,
+        mastered,
+        confidenceLevel: finalConfidence,
+      }).catch(() => {});
+
+      if (mastered && topic) {
+        saveAchievement(`Mastered Topic: ${topic}`).catch(() => {});
+      }
+
+      if (score >= 80 && topic) {
+        saveAchievement(`High Score: ${topic}`).catch(() => {});
+      }
+    }
 
     if (score === 100 && markMastered) {
       markMastered(`${subject?.id}|${chapter?.id}|${topic}`);
