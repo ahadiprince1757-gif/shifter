@@ -1,30 +1,3 @@
-/**
- * SessionSummary
- *
- * Shown after the TRANSFER phase completes.
- * Replaces MasteredPhase with a full-cycle report.
- *
- * Shows:
- *   - Score from the RETRIEVE phase
- *   - Diagnostic outcome (gap found / no gap)
- *   - Concepts that were repaired
- *   - Next scheduled review date (from spacedRepo)
- *   - Actions: next topic or return to list
- *
- * Props:
- *   topic            string
- *   subject          object
- *   chapter          object
- *   sessionScore     number  (0–100)
- *   diagnosticResult "gap_found" | "no_gap" | null
- *   weaknessMap      object   { [conceptTag]: { questions[], repairTaught, repairPassed } }
- *   conceptOrder     string[]
- *   nextTopic        string | null
- *   goToNext         function
- *   goBack           function
- *   userId           string | null
- */
-
 import { useState, useEffect } from "react";
 import { spacedRepo } from "../../repository/spacedRepo";
 
@@ -91,9 +64,7 @@ export default function SessionSummary({
   subject,
   chapter,
   sessionScore,
-  diagnosticResult,
-  weaknessMap,
-  conceptOrder,
+  repairedConcepts = [],
   nextTopic,
   goToNext,
   goBack,
@@ -111,21 +82,12 @@ export default function SessionSummary({
       .catch(() => {});
   }, [topic, userId]);
 
-  const repairedConcepts = (conceptOrder || []).filter(
-    (tag) => weaknessMap?.[tag]?.repairPassed
-  );
-  const skippedConcepts = (conceptOrder || []).filter(
-    (tag) => !weaknessMap?.[tag]?.repairPassed
-  );
-  const noGap = diagnosticResult === "no_gap";
-
   return (
     <div className="session-summary">
       {/* Header */}
       <div className="ss-header">
         <div className="ss-badge-row">
           <span className="lbadge lb-done">Session Complete</span>
-          {noGap && <span className="ss-nogap-pill">No gap detected</span>}
         </div>
         <h2 className="ss-topic-title">{topic}</h2>
         <p className="ss-subtitle">
@@ -138,7 +100,7 @@ export default function SessionSummary({
       <div className="ss-score-row">
         <ScoreRing score={sessionScore ?? 0} />
         <div className="ss-score-meta">
-          <div className="ss-score-label">Retrieval score</div>
+          <div className="ss-score-label">Retrieval Score</div>
           <div className="ss-score-hint">
             {(sessionScore ?? 0) >= 80
               ? "Strong — this concept is consolidating."
@@ -149,39 +111,14 @@ export default function SessionSummary({
         </div>
       </div>
 
-      {/* Diagnostic row */}
-      <div className="ss-section">
-        <div className="ss-section-title">Diagnosis</div>
-        <div className={`ss-diagnostic-pill ${noGap ? "ss-dp--green" : "ss-dp--amber"}`}>
-          {noGap
-            ? "✓ You entered with no significant gaps"
-            : "⚠ Gap detected — targeted teaching was applied"}
-        </div>
-      </div>
-
-      {/* Repaired concepts */}
-      {repairedConcepts.length > 0 && (
+      {/* Repaired concepts list if user did variant retries during quiz */}
+      {repairedConcepts && repairedConcepts.length > 0 && (
         <div className="ss-section">
-          <div className="ss-section-title">Concepts Repaired</div>
+          <div className="ss-section-title">Concepts Tested & Repaired In Quiz</div>
           <div className="ss-concept-list">
             {repairedConcepts.map((tag) => (
               <div key={tag} className="ss-concept-chip ss-concept-chip--repaired">
                 <span className="ss-chip-icon">✓</span>
-                {formatConceptLabel(tag)}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Skipped concepts (used all attempts but still wrong) */}
-      {skippedConcepts.length > 0 && (
-        <div className="ss-section">
-          <div className="ss-section-title">Still Needs Work</div>
-          <div className="ss-concept-list">
-            {skippedConcepts.map((tag) => (
-              <div key={tag} className="ss-concept-chip ss-concept-chip--skipped">
-                <span className="ss-chip-icon">↻</span>
                 {formatConceptLabel(tag)}
               </div>
             ))}

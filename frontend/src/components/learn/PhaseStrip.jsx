@@ -1,28 +1,34 @@
 
 
-const THREE_ACTS = [
-  { actIdx: 0, title: "Check & Learn", short: "1. Learn" },
-  { actIdx: 1, title: "Active Retrieval", short: "2. Practice" },
-  { actIdx: 2, title: "Transfer & Mastery", short: "3. Transfer" },
+const STEPS = [
+  { idx: 0, label: "Study Notes", short: "Notes" },
+  { idx: 1, label: "Practice Quiz", short: "Quiz" },
+  { idx: 2, label: "Mastery & Review", short: "Mastered" },
 ];
 
-function PhaseStrip({ activeActIndex = 0 }) {
+function PhaseStrip({ phase = 0, setPhase, canJumpTo }) {
   return (
     <div className="phase-strip-container">
       <div className="phase-strip-3act">
-        {THREE_ACTS.map(({ actIdx, title, short }) => {
-          const isDone = activeActIndex > actIdx;
-          const isCurrent = activeActIndex === actIdx;
+        {STEPS.map(({ idx, label, short }) => {
+          const isDone = phase > idx;
+          const isCurrent = phase === idx;
+          const allowed = canJumpTo ? canJumpTo(idx) : true;
 
           return (
-            <div
-              key={actIdx}
-              className={`ph-act-btn ${isDone ? "act-done" : ""} ${isCurrent ? "act-current" : ""}`}
+            <button
+              key={idx}
+              type="button"
+              className={`ph-act-btn ${isDone ? "act-done" : ""} ${isCurrent ? "act-current" : ""} ${allowed ? "" : "disabled"}`}
+              onClick={() => {
+                if (setPhase && allowed) setPhase(idx);
+              }}
+              disabled={!allowed}
             >
-              <span className="act-dot">{isDone ? "✓" : actIdx + 1}</span>
-              <span className="act-label-full">{title}</span>
+              <span className="act-dot">{isDone ? "✓" : idx + 1}</span>
+              <span className="act-label-full">{label}</span>
               <span className="act-label-short">{short}</span>
-            </div>
+            </button>
           );
         })}
       </div>

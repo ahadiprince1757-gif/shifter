@@ -1,18 +1,14 @@
 import { useEffect } from "react";
 import { useTopicContent } from "../hooks/useTopicContent";
-import { useSessionLoop, SESSION_STATES } from "../hooks/useSessionLoop";
+import { useSessionLoop, SESSION_PHASES } from "../hooks/useSessionLoop";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import { incrementGuestQuizCount } from "../utils/guestSession";
 
 import LearnHeader from "./learn/LearnHeader";
 import PhaseStrip from "./learn/PhaseStrip";
-import DiagnosticPhase from "./learn/DiagnosticPhase";
 import NotesPhase from "./learn/NotesPhase";
 import QuizPhase from "./learn/QuizPhase";
-import RepairPhase from "./learn/RepairPhase";
-import SpacedRetestPhase from "./learn/SpacedRetestPhase";
-import TransferPhase from "./learn/TransferPhase";
 import SessionSummary from "./learn/SessionSummary";
 
 function LearnFlow({
@@ -24,7 +20,7 @@ function LearnFlow({
   markMastered,
   mastered,
 }) {
-  const { session } = useAuth();
+  const { session, openAuthWithReason } = useAuth();
   const userId = session?.user?.id || null;
 
   // Persist last-visited topic per user
@@ -47,7 +43,7 @@ function LearnFlow({
     }
   }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic, userId]);
 
-  // Load content
+  // Load topic content
   const { content, loading, error } = useTopicContent(
     subject,
     chapter,
@@ -56,7 +52,7 @@ function LearnFlow({
     userId
   );
 
-  // Initialize the Session Loop Controller
+  // Initialize edge-of-friction session loop
   const loop = useSessionLoop({
     subject,
     chapter,
@@ -65,6 +61,16 @@ function LearnFlow({
     userId,
     markMastered,
   });
+
+  const handleGoToQuiz = () => {
+    if (!session) {
+      openAuthWithReason(
+        "Please sign in to take quizzes and track your mastery."
+      );
+      return;
+    }
+    loop.setPhase(SESSION_PHASES.QUIZ);
+  };
 
   // Calculate next topic in curriculum
   const findNextTopic = () => {
@@ -113,7 +119,7 @@ function LearnFlow({
           subject={subject}
           chapter={chapter}
         />
-        <PhaseStrip activeActIndex={loop.activeActIndex} />
+        <PhaseStrip phase={loop.phase} setPhase={loop.setPhase} />
         <div id="learnFlow">
           <div className="lc" style={{ padding: "2rem" }}>
             <SkeletonLoader type="text" />
@@ -123,14 +129,15 @@ function LearnFlow({
     );
   }
 
-  const handleFinishSession = () => {
+  const handleFinishQuiz = () => {
     if (!session) {
       incrementGuestQuizCount();
     }
-    loop.finishSession();
+    loop.nextQuestion();
   };
 
-  const noGap = loop.diagnosticResult === "no_gap";
+  const questions = Array.isArray(content?.qs) ? content.qs : [];
+  const hasQuestions = questions.length > 0;
 
   return (
     <div id="v-learn" className="view active">
@@ -141,133 +148,92 @@ function LearnFlow({
         chapter={chapter}
       />
 
-      <PhaseStrip activeActIndex={loop.activeActIndex} />
+      <PhaseStrip
+        phase={loop.phase}
+        setPhase={loop.setPhase}
+        canJumpTo={(p) => {
+          if (p === 0) return true;
+          if (p === 1) return true;
+          if (p === 2) return loop.phase === 2 || mastered?.has(`${subject?.id}|${chapter?.id}|${topic}`);
+          return false;
+        }}
+      />
 
       <div id="learnFlow">
-        {/* ACT 1: CHECK & LEARN */}
-        {loop.sessionState === SESSION_STATES.DIAGNOSE && (
-          <DiagnosticPhase
-            diagnosticQuestions={loop.diagnosticQuestions}
-            onComplete={loop.finishDiagnostic}
-          />
-        )}
-
-        {loop.sessionState === SESSION_STATES.TEACH && (
-          <div className="teach-phase-wrapper">
-            <div className={`diagnostic-banner ${noGap ? "diagnostic-banner--nogap" : ""}`}>
-              {noGap
-                ? "Diagnostic probes passed! Review the core concepts below to solidify your understanding before retrieval practice."
-                : "Knowledge gap detected in probes. Review the key notes below before taking your retrieval quiz."}
-            </div>
-            <NotesPhase
-              topic={topic}
-              subject={subject}
-              chapter={chapter}
-              content={content}
-              goBack={goBack}
-              onNext={loop.finishTeach}
-            />
-          </div>
-        )}
-
-        {/* ACT 2: ACTIVE RETRIEVAL & REPAIR */}
-        {loop.sessionState === SESSION_STATES.RETRIEVE && (
-          <QuizPhase
+        {/* STEP 0: STUDY NOTES */}
+        {loop.phase === SESSION_PHASES.NOTES && (
+          <NotesPhase
             topic={topic}
-            qIdx={loop.retrieveQIdx}
-            curQ={loop.currentRetrieveQuestion}
-            isCalc={loop.currentRetrieveQuestion?.type === "calc"}
-            answer={loop.retrieveAnswer}
-            setAnswer={loop.setRetrieveAnswer}
-            work={loop.retrieveWork}
-            setWork={loop.setRetrieveWork}
-            explanation=""
-            setExplanation={() => {}}
-            grading={loop.retrieveGrading}
-            feedback={loop.retrieveFeedback}
-            validationError={loop.retrieveValidationError}
-            showHint={loop.retrieveShowHint}
-            setShowHint={loop.setRetrieveShowHint}
-            submitAnswer={() =>
-              loop.submitRetrieveAnswer(
-                loop.retrieveQIdx,
-                loop.retrieveAnswer,
-                loop.retrieveWork,
-                loop.retrieveConfidence
-              )
-            }
-            nextQuestion={() =>
-              loop.nextRetrieveQuestion(loop.failedQuestions, loop.retrieveConfidence)
-            }
-            finishTopic={() =>
-              loop.nextRetrieveQuestion(loop.failedQuestions, loop.retrieveConfidence)
-            }
-            isLastQuestion={loop.isLastRetrieveQuestion}
-            totalQs={loop.totalRetrieveQuestions}
-            confidence={loop.retrieveConfidence}
-            setConfidence={loop.setRetrieveConfidence}
-          />
-        )}
-
-        {(loop.sessionState === SESSION_STATES.IDENTIFY ||
-          loop.sessionState === SESSION_STATES.REPAIR) && (
-          <RepairPhase
-            conceptTag={loop.currentRepairConcept}
-            repairData={loop.currentRepairData}
-            content={content}
             subject={subject}
-            currentIdx={loop.currentRepairIdx + 1}
-            totalConcepts={loop.conceptOrder.length}
-            onTaught={loop.markConceptTaught}
-            onPassed={(concept) =>
-              loop.passRepair(concept, loop.sessionScore, loop.retrieveConfidence)
-            }
-            onSkip={(concept) =>
-              loop.passRepair(concept, loop.sessionScore, loop.retrieveConfidence)
-            }
+            chapter={chapter}
+            content={content}
+            goBack={goBack}
+            onNext={handleGoToQuiz}
           />
         )}
 
-        {/* ACT 3: TRANSFER & MASTERY SUMMARY */}
-        {loop.sessionState === SESSION_STATES.SPACE && (
-          <div className="lc" style={{ padding: "2rem", textAlign: "center" }}>
-            <div className="lbadge lb-space">Memory Consolidation</div>
-            <h3 style={{ marginTop: "1rem" }}>Schedule Updated</h3>
-            <p style={{ color: "var(--t2)", marginTop: "0.5rem" }}>
-              Preparing structural transfer challenge...
-            </p>
-          </div>
-        )}
+        {/* STEP 1: PRACTICE QUIZ (with in-quiz Edge of Friction Repair) */}
+        {loop.phase === SESSION_PHASES.QUIZ &&
+          (hasQuestions ? (
+            <QuizPhase
+              topic={topic}
+              qIdx={loop.qIdx}
+              curQ={loop.currentQuestion}
+              isCalc={loop.currentQuestion?.type === "calc"}
+              answer={loop.answer}
+              setAnswer={loop.setAnswer}
+              work={loop.work}
+              setWork={loop.setWork}
+              grading={loop.grading}
+              feedback={loop.feedback}
+              validationError={loop.validationError}
+              showHint={loop.showHint}
+              setShowHint={loop.setShowHint}
+              submitAnswer={loop.submitAnswer}
+              nextQuestion={loop.nextQuestion}
+              finishTopic={handleFinishQuiz}
+              isLastQuestion={loop.isLastQuestion}
+              totalQs={loop.totalQs}
+              confidence={loop.confidence}
+              setConfidence={loop.setConfidence}
+              content={content}
+              startMutatedRepair={loop.startMutatedRepair}
+            />
+          ) : (
+            <div className="lc" style={{ padding: "2rem" }}>
+              <div className="lch">
+                <span className="lbadge lb-q">Practice Quiz</span>
+              </div>
+              <div className="lcb">
+                <p style={{ color: "var(--t2)", marginBottom: "1.2rem" }}>
+                  There are no quiz questions available for this topic yet.
+                </p>
+                <button
+                  className="btn-p"
+                  onClick={() => loop.setPhase(SESSION_PHASES.MASTERY)}
+                >
+                  Finish Topic
+                </button>
+                <button
+                  className="btn-g"
+                  onClick={() => loop.setPhase(SESSION_PHASES.NOTES)}
+                  style={{ marginLeft: "1rem" }}
+                >
+                  Back to Notes
+                </button>
+              </div>
+            </div>
+          ))}
 
-        {loop.sessionState === SESSION_STATES.RETEST && (
-          <SpacedRetestPhase
-            dueReviews={loop.dueReviews}
-            onComplete={loop.finishRetest}
-          />
-        )}
-
-        {loop.sessionState === SESSION_STATES.TRANSFER && (
-          <TransferPhase
-            transferQuestion={loop.transferQuestion}
-            answer={loop.transferAnswer}
-            setAnswer={loop.setTransferAnswer}
-            feedback={loop.transferFeedback}
-            confidence={loop.transferConfidence}
-            setConfidence={loop.setTransferConfidence}
-            onSubmit={loop.submitTransferAnswer}
-            onFinish={handleFinishSession}
-          />
-        )}
-
-        {loop.sessionState === SESSION_STATES.DONE && (
+        {/* STEP 2: MASTERY & REVIEW */}
+        {loop.phase === SESSION_PHASES.MASTERY && (
           <SessionSummary
             topic={topic}
             subject={subject}
             chapter={chapter}
             sessionScore={loop.sessionScore}
-            diagnosticResult={loop.diagnosticResult}
             weaknessMap={loop.weaknessMap}
-            conceptOrder={loop.conceptOrder}
+            repairedConcepts={loop.repairedConcepts}
             nextTopic={nextTopic?.topic}
             goToNext={goToNextTopic}
             goBack={goBack}

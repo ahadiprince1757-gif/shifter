@@ -13,6 +13,7 @@ function FeedbackDisplay({
   qIdx,
   totalQs,
   goToReview,
+  startMutatedRepair,
 }) {
   // Inline AI explanation state — fires only on misconception (high confidence + wrong)
   const [explanationText, setExplanationText] = useState(null); // null = not triggered
@@ -215,7 +216,23 @@ function FeedbackDisplay({
 
       {/* Action Buttons */}
       <div className="fb-actions">
-        {!isCorrect && (
+        {!isCorrect && startMutatedRepair && (
+          <button
+            type="button"
+            className="fb-action-btn fb-repair-btn"
+            onClick={startMutatedRepair}
+            disabled={grading}
+            style={{
+              background: "rgba(245, 158, 11, 0.15)",
+              color: "#f59e0b",
+              border: "1px solid rgba(245, 158, 11, 0.3)",
+              fontWeight: 700,
+            }}
+          >
+            Try Variant Question (Test Fix)
+          </button>
+        )}
+        {!isCorrect && goToReview && (
           <button
             type="button"
             className="fb-action-btn fb-review-btn"
