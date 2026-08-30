@@ -16,39 +16,98 @@ export class BusinessMutator {
     // 1. Financial Math & Profit / Loss / Margin
     const costMatch = stem.match(/ksh\s*(\d+(?:,\d+)*)/i) || stem.match(/(\d+)\s*(?:ksh|shilling)/i);
     if (costMatch || lower.includes("profit") || lower.includes("cost") || lower.includes("revenue") || lower.includes("price") || lower.includes("capital")) {
-      const baseCost = (Math.floor(Math.random() * 15) + 5) * 1000; // KSh 5,000 to 19,000
-      const marginPct = (Math.floor(Math.random() * 5) + 2) * 5; // 10%, 15%, 20%, 25%, 30%
+      const origCost = costMatch ? parseInt(costMatch[1].replace(/,/g, ""), 10) : 5000;
+      
+      // Force baseCost to be DIFFERENT than original cost
+      let baseCost = (Math.floor(Math.random() * 14) + 6) * 1000; // KSh 6,000 to 19,000
+      if (baseCost === origCost) baseCost += 2500;
+
+      const marginPct = [15, 20, 25, 30].filter(m => !stem.includes(`${m}%`))[Math.floor(Math.random() * 3)] || 15;
       const profit = Math.round((baseCost * marginPct) / 100);
-      const sellingPrice = baseCost + profit;
-
       const isLoss = lower.includes("loss");
-      const finalPrice = isLoss ? baseCost - profit : sellingPrice;
+      const finalPrice = isLoss ? baseCost - profit : baseCost + profit;
+      const finalPriceStr = `KSh ${finalPrice.toLocaleString()}`;
 
-      return {
-        q: isLoss
-          ? `[Financial Decision] A trader purchased inventory for KSh ${baseCost.toLocaleString()} but had to clear stock at a ${marginPct}% loss due to low market demand. Calculate the final selling price.`
-          : `[Financial Decision] A retail business buys stock for KSh ${baseCost.toLocaleString()} and applies a ${marginPct}% profit margin. Calculate the final selling price of the stock.`,
-        ans: `KSh ${finalPrice.toLocaleString()}`,
-        hint: isLoss
-          ? `Loss = ${marginPct}% of KSh ${baseCost.toLocaleString()}. Subtract loss from cost price.`
-          : `Profit = ${marginPct}% of KSh ${baseCost.toLocaleString()}. Add profit to cost price.`,
-        why: isLoss
-          ? `Loss = (${marginPct}/100) × ${baseCost} = KSh ${profit.toLocaleString()}.\nSelling Price = KSh ${baseCost.toLocaleString()} - KSh ${profit.toLocaleString()} = KSh ${finalPrice.toLocaleString()}.`
-          : `Profit = (${marginPct}/100) × ${baseCost} = KSh ${profit.toLocaleString()}.\nSelling Price = KSh ${baseCost.toLocaleString()} + KSh ${profit.toLocaleString()} = KSh ${finalPrice.toLocaleString()}.`,
-        sol: `KSh ${finalPrice.toLocaleString()}`,
-        steps: [
-          `Step 1: Calculate ${marginPct}% margin: (${marginPct}/100) × KSh ${baseCost.toLocaleString()} = KSh ${profit.toLocaleString()}`,
-          `Step 2: ${isLoss ? "Subtract loss from" : "Add profit to"} cost price: KSh ${baseCost.toLocaleString()} ${isLoss ? "-" : "+"} KSh ${profit.toLocaleString()}`,
-          `Step 3: Final selling price = KSh ${finalPrice.toLocaleString()}`
-        ],
-        type: "mcq",
-        options: [
-          `KSh ${finalPrice.toLocaleString()}`,
+      // Modality Rotation (rotate format to test concept from different angles)
+      const mode = Math.floor(Math.random() * 4);
+
+      if (mode === 0) {
+        // 1. Open Response Direct Calculation
+        return {
+          q: isLoss
+            ? `A trader purchased inventory for KSh ${baseCost.toLocaleString()} but had to clear stock at a ${marginPct}% loss. Calculate the final selling price.`
+            : `A retail business buys stock for KSh ${baseCost.toLocaleString()} and applies a ${marginPct}% profit margin. Calculate the final selling price of the stock.`,
+          ans: finalPriceStr,
+          hint: isLoss
+            ? `Loss = ${marginPct}% of KSh ${baseCost.toLocaleString()}. Subtract loss from cost price.`
+            : `Profit = ${marginPct}% of KSh ${baseCost.toLocaleString()}. Add profit to cost price.`,
+          why: `Profit = (${marginPct}/100) × KSh ${baseCost.toLocaleString()} = KSh ${profit.toLocaleString()}.\nSelling Price = KSh ${baseCost.toLocaleString()} + KSh ${profit.toLocaleString()} = ${finalPriceStr}.`,
+          sol: finalPriceStr,
+          steps: [
+            `Step 1: Calculate ${marginPct}% margin: (${marginPct}/100) × KSh ${baseCost.toLocaleString()} = KSh ${profit.toLocaleString()}`,
+            `Step 2: Add profit to cost price: KSh ${baseCost.toLocaleString()} + KSh ${profit.toLocaleString()}`,
+            `Step 3: Final selling price = ${finalPriceStr}`
+          ],
+          type: "open_response",
+          options: null,
+        };
+      } else if (mode === 1) {
+        // 2. Multiple Choice Distractor Discrimination
+        const options = [
+          finalPriceStr,
           `KSh ${profit.toLocaleString()}`,
           `KSh ${(baseCost + profit * 2).toLocaleString()}`,
-          `KSh ${(baseCost / 2).toLocaleString()}`
-        ]
-      };
+          `KSh ${(baseCost - profit).toLocaleString()}`
+        ];
+        return {
+          q: isLoss
+            ? `An inventory lot costing KSh ${baseCost.toLocaleString()} is sold at a ${marginPct}% loss. Which option is the correct final selling price?`
+            : `A store purchases goods for KSh ${baseCost.toLocaleString()} and applies a ${marginPct}% profit margin. Select the correct final selling price.`,
+          ans: finalPriceStr,
+          hint: `Calculate ${marginPct}% of KSh ${baseCost.toLocaleString()} and add it to the cost price.`,
+          why: `Margin = KSh ${profit.toLocaleString()}.\nFinal Price = ${finalPriceStr}.`,
+          sol: finalPriceStr,
+          steps: [
+            `Step 1: Margin = ${marginPct}% × KSh ${baseCost.toLocaleString()} = KSh ${profit.toLocaleString()}`,
+            `Step 2: Selling Price = KSh ${baseCost.toLocaleString()} + KSh ${profit.toLocaleString()} = ${finalPriceStr}`
+          ],
+          type: "mcq",
+          options,
+        };
+      } else if (mode === 2) {
+        // 3. Error Verification / Contradicting Claim
+        const claimedWrong = finalPrice - 500;
+        return {
+          q: `An accountant recorded the selling price of inventory bought for KSh ${baseCost.toLocaleString()} with a ${marginPct}% margin as KSh ${claimedWrong.toLocaleString()}. Is this record correct? State the true selling price.`,
+          ans: `Incorrect. The true selling price is ${finalPriceStr}.`,
+          hint: `Compute the margin first: ${marginPct}% of KSh ${baseCost.toLocaleString()} = KSh ${profit.toLocaleString()}.`,
+          why: `The recorded value of KSh ${claimedWrong.toLocaleString()} is incorrect. Cost KSh ${baseCost.toLocaleString()} + KSh ${profit.toLocaleString()} margin = ${finalPriceStr}.`,
+          sol: `Incorrect. True price = ${finalPriceStr}`,
+          steps: [
+            `Step 1: True Margin = (${marginPct}/100) × KSh ${baseCost.toLocaleString()} = KSh ${profit.toLocaleString()}`,
+            `Step 2: True Selling Price = KSh ${baseCost.toLocaleString()} + KSh ${profit.toLocaleString()} = ${finalPriceStr}`,
+            `Step 3: Conclude recorded price is incorrect`
+          ],
+          type: "open_response",
+          options: null,
+        };
+      } else {
+        // 4. Formula Relation & Step Breakdown
+        return {
+          q: `State the formula relating Cost Price, Margin %, and Selling Price, then calculate the selling price for stock bought at KSh ${baseCost.toLocaleString()} with a ${marginPct}% margin.`,
+          ans: `Selling Price = Cost Price + (Margin % × Cost Price). Final price = ${finalPriceStr}.`,
+          hint: `Formula: Selling Price = Cost Price + (Margin % × Cost Price).`,
+          why: `Formula: Selling Price = Cost Price + (Margin % × Cost Price).\nCalculation: KSh ${baseCost.toLocaleString()} + KSh ${profit.toLocaleString()} = ${finalPriceStr}.`,
+          sol: `Selling Price = Cost Price + Margin. Price = ${finalPriceStr}`,
+          steps: [
+            `Step 1: State relationship: Selling Price = Cost Price + Margin`,
+            `Step 2: Compute Margin = ${marginPct}% × KSh ${baseCost.toLocaleString()} = KSh ${profit.toLocaleString()}`,
+            `Step 3: Calculate final price = ${finalPriceStr}`
+          ],
+          type: "open_response",
+          options: null,
+        };
+      }
     }
 
     // 2. Scarcity, Opportunity Cost & Economic Systems

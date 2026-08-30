@@ -127,50 +127,78 @@ export class QuestionMutator {
   }
 
   _applyTargetedDiagnosis(variant, blueprint, diagnosis, correctAnswer) {
-    const rawStem = (variant.q || variant.stem || blueprint.q || blueprint.stem || "").replace(/^\[[^\]]+\]\s*/i, "").trim();
-    let cleanStem = this._reframeStructuralRepresentation(rawStem);
+    let cleanStem = (variant.q || variant.stem || blueprint.q || blueprint.stem || "")
+      .replace(/^\[[^\]]+\]\s*/i, "")
+      .replace(/^step-by-step practice:\s*/i, "")
+      .trim();
+
+    cleanStem = this._reframeStructuralRepresentation(cleanStem);
+
+    // Guarantee parameter variation if stem numbers match blueprint numbers
+    cleanStem = this._ensureParameterVariation(cleanStem, blueprint);
+
     let targetedHint;
-    let targetedBanner;
+    let targetedTag;
 
     switch (diagnosis.type) {
       case "BLANK_KNEW_NOTHING":
-        targetedBanner = "[Guided Scaffold Variant]";
-        cleanStem = `Step-by-Step Practice: First state the formula/rule, then solve: ${cleanStem}`;
-        targetedHint = `Scaffolded Hint: Look at what the question asks for, then apply the rule step-by-step.`;
+        targetedTag = "Scaffolded Variant";
+        targetedHint = `Scaffolded Hint: Review the required rule or formula, then solve step-by-step.`;
         break;
 
       case "NOTATION_UNIT_TYPO":
-        targetedBanner = "[Unit & Notation Variant]";
-        cleanStem = `${cleanStem} (State your answer with standard units)`;
-        targetedHint = `Notation Check: Your calculation was close! Make sure to include exact required units or formatting (e.g. ${correctAnswer ? `check unit for ${correctAnswer}` : "units"}).`;
+        targetedTag = "Notation Check";
+        if (!/\b(unit|cm|m|kg|ksh|\$)\b/i.test(cleanStem)) {
+          cleanStem = `${cleanStem} (Include standard units)`;
+        }
+        targetedHint = `Notation Check: Ensure your answer includes exact required units or formatting ${correctAnswer ? `(Target format: ${correctAnswer})` : ""}.`;
         break;
 
       case "ARITHMETIC_OPERATIONAL_SLIP":
-        targetedBanner = "[Structural Re-Framing Variant]";
-        targetedHint = `Calculation Check: Pay special attention to sign rules and order of operations when evaluating.`;
+        targetedTag = "Calculation Check";
+        targetedHint = `Calculation Check: Pay special attention to sign rules and operational steps.`;
         break;
 
       case "CONCEPTUAL_FORMULA_MISCONCEPTION":
       default:
-        targetedBanner = "[Concept Focus Variant]";
-        targetedHint = `Concept Focus: Identify the target formula first before applying numbers.`;
+        targetedTag = "Concept Focus";
+        targetedHint = `Concept Focus: Identify the target formula or principle first before evaluating.`;
         break;
     }
 
     const finalHint = targetedHint || variant.hint || blueprint.hint || "";
 
-    // Switch modality away from simple multiple-choice to open response / structural calculation
-    // so learners face authentic friction and cannot just guess options.
+    // Preserve variant type if variant already generated a specific modality (e.g. mcq, open_response)
+    const finalType = variant.type || "open_response";
+
     return {
       ...variant,
-      q: `${targetedBanner} ${cleanStem}`,
-      stem: `${targetedBanner} ${cleanStem}`,
-      type: "open_response",
-      options: null,
+      q: cleanStem,
+      stem: cleanStem,
+      type: finalType,
+      options: finalType === "mcq" ? variant.options : null,
       diagnosis,
-      targetedBanner,
+      targetedTag,
       hint: finalHint,
     };
+  }
+
+  _ensureParameterVariation(cleanStem, blueprint) {
+    const origStem = blueprint.q || blueprint.stem || "";
+    const origNums = origStem.match(/\b\d+(?:\.\d+)?\b/g);
+    const currNums = cleanStem.match(/\b\d+(?:\.\d+)?\b/g);
+
+    if (origNums && currNums && origNums.join(",") === currNums.join(",")) {
+      // Numbers are identical to original — vary the numbers!
+      const scale = (Math.floor(Math.random() * 3) + 2); // scale by 2, 3, or 4
+      return cleanStem.replace(/\b\d+(?:\.\d+)?\b/g, (match) => {
+        const val = parseFloat(match);
+        if (val >= 1000) return (val * scale).toLocaleString();
+        if (val > 1) return String(val * scale);
+        return match;
+      });
+    }
+    return cleanStem;
   }
 
   _reframeStructuralRepresentation(rawStem) {
