@@ -1,8 +1,11 @@
 /**
  * Client-side evaluation engine for immediate offline & online grading.
  * Compares user answer against target question answer key.
+ * Now handles:
+ *  - Working vs. Final Answer evaluation
+ *  - Multi-part / multi-item partial grading (e.g. 1/4 correct is NOT full pass)
  */
-export function evaluateAnswer(userAnswer, question) {
+export function evaluateAnswer(userAnswer, question, userWork = "") {
   if (!question) {
     return {
       isCorrect: false,
@@ -23,25 +26,88 @@ export function evaluateAnswer(userAnswer, question) {
     String(s || "")
       .toLowerCase()
       .replace(/[\u2018\u2019\u201C\u201D]/g, "")
-      .replace(/[^a-z0-9\s]/g, " ")
+      .replace(/[^a-z0-9\s.,-]/g, " ")
       .replace(/\s+/g, " ")
       .trim();
 
   const tokenize = (s) => normalize(s).split(" ").filter(Boolean);
   const uAns = normalize(userAnswer);
+  const uWork = normalize(userWork);
 
   const mainCorrectAnswerStr = Array.isArray(rawAns) ? rawAns.join(" • ") : String(rawAns || "");
-  const isCorrect = Array.isArray(rawAns)
-    ? rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize))
-    : checkSingleVariant(uAns, normalize(rawAns), tokenize);
+
+  // 1. Multi-Item / Multi-Part Checking
+  const stem = String(question.q || question.stem || "").toLowerCase();
+  const isMultiPartQuestion =
+    question.multi_part ||
+    /\b(four|4|three|3|both|all|list|name\s+the|which\s+ones)\b/i.test(stem);
+
+  let isAnswerCorrect = false;
+  let partialInfo = null;
+
+  if (Array.isArray(rawAns) && isMultiPartQuestion) {
+    // Requires multiple items
+    const requiredItems = rawAns.map(normalize);
+    const matchedCount = requiredItems.filter((item) => checkSingleVariant(uAns, item, tokenize)).length;
+    const totalRequired = requiredItems.length;
+
+    if (matchedCount === totalRequired) {
+      isAnswerCorrect = true;
+    } else {
+      isAnswerCorrect = false;
+      partialInfo = {
+        matchedCount,
+        totalRequired,
+        percent: Math.round((matchedCount / totalRequired) * 100),
+      };
+    }
+  } else if (Array.isArray(rawAns)) {
+    // Array of alternative synonyms
+    isAnswerCorrect = rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize));
+  } else {
+    // Single answer comparison
+    isAnswerCorrect = checkSingleVariant(uAns, normalize(rawAns), tokenize);
+  }
+
+  // 2. Working vs. Final Answer Evaluation
+  let isWorkCorrect = null;
+  let workingNote = null;
+
+  if (uWork && question.steps && question.steps.length > 0) {
+    const stepTokens = tokenize(question.steps.join(" "));
+    const workTokens = tokenize(uWork);
+    const matchedWork = stepTokens.filter((t) => t.length > 2 && workTokens.includes(t));
+    isWorkCorrect = stepTokens.length > 0 ? (matchedWork.length / Math.min(stepTokens.length, workTokens.length)) >= 0.35 : true;
+  }
+
+  let finalIsCorrect = isAnswerCorrect;
+
+  if (uWork && isWorkCorrect !== null) {
+    if (isAnswerCorrect && !isWorkCorrect) {
+      // Correct answer, flawed working -> STILL PERMIT TO PROCEED (isCorrect: true) with working note
+      finalIsCorrect = true;
+      workingNote = "Your final answer is correct! (Note: Review your working steps to ensure proper method formatting).";
+    } else if (!isAnswerCorrect && isWorkCorrect) {
+      // Correct working method, wrong final answer -> MARK INCORRECT (isCorrect: false) to trigger calculation repair
+      finalIsCorrect = false;
+      workingNote = "Your working method is on the right track, but your final answer calculation was incorrect.";
+    }
+  }
+
+  if (!finalIsCorrect && partialInfo) {
+    workingNote = `Partially correct (${partialInfo.matchedCount}/${partialInfo.totalRequired} items identified — ${partialInfo.percent}%). Complete all required items to master this concept.`;
+  }
 
   return {
-    isCorrect,
+    isCorrect: finalIsCorrect,
+    isAnswerCorrect,
+    isWorkCorrect,
+    workingNote,
     correctAnswer: mainCorrectAnswerStr,
     correctAnswerList: Array.isArray(rawAns) ? rawAns : [mainCorrectAnswerStr],
     solution,
     steps: Array.isArray(question.steps) ? question.steps : [],
-    mark: isCorrect ? "Correct" : "Incorrect",
+    mark: finalIsCorrect ? "Correct" : "Incorrect",
   };
 }
 

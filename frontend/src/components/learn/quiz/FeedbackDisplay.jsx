@@ -135,6 +135,13 @@ function FeedbackDisplay({
         </div>
       )}
 
+      {/* Working & Procedural Evaluation Note */}
+      {feedback.workingNote && (
+        <div className={`calibration-insight ${isCorrect ? "calibration-unsure" : "calibration-knowledge-gap"}`} style={{ marginTop: "0.5rem" }}>
+          <div className="calibration-text">{feedback.workingNote}</div>
+        </div>
+      )}
+
       {/* Inline Misconception Explanation */}
       {!isCorrect && confidence === "high" && (
         <>

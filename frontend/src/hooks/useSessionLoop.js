@@ -104,7 +104,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     }
 
     setTimeout(() => {
-      const res = evaluateAnswer(answer, q);
+      const res = evaluateAnswer(answer, q, work);
       setFeedback({ ...res, confidence });
       setGrading(false);
 

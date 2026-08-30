@@ -128,25 +128,26 @@ export class QuestionMutator {
 
   _applyTargetedDiagnosis(variant, blueprint, diagnosis, correctAnswer) {
     const rawStem = (variant.q || variant.stem || blueprint.q || blueprint.stem || "").replace(/^\[[^\]]+\]\s*/i, "").trim();
-    let cleanStem = rawStem;
+    let cleanStem = this._reframeStructuralRepresentation(rawStem);
     let targetedHint;
     let targetedBanner;
 
     switch (diagnosis.type) {
       case "BLANK_KNEW_NOTHING":
         targetedBanner = "[Guided Scaffold Variant]";
-        cleanStem = `Step-by-Step Practice: First identify the core definition, then solve: ${rawStem}`;
-        targetedHint = `Scaffolded Hint: Look at what the question is asking for, then apply the rule step-by-step.`;
+        cleanStem = `Step-by-Step Practice: First state the formula/rule, then solve: ${cleanStem}`;
+        targetedHint = `Scaffolded Hint: Look at what the question asks for, then apply the rule step-by-step.`;
         break;
 
       case "NOTATION_UNIT_TYPO":
         targetedBanner = "[Unit & Notation Variant]";
-        targetedHint = `Notation Check: Your calculation was close! Make sure to include the exact required unit or notation (e.g. ${correctAnswer ? `check unit for ${correctAnswer}` : "units"}).`;
+        cleanStem = `${cleanStem} (State your answer with standard units)`;
+        targetedHint = `Notation Check: Your calculation was close! Make sure to include exact required units or formatting (e.g. ${correctAnswer ? `check unit for ${correctAnswer}` : "units"}).`;
         break;
 
       case "ARITHMETIC_OPERATIONAL_SLIP":
-        targetedBanner = "[Calculation Check Variant]";
-        targetedHint = `Calculation Check: Pay special attention to signs (+/-) and order of operations when evaluating.`;
+        targetedBanner = "[Structural Re-Framing Variant]";
+        targetedHint = `Calculation Check: Pay special attention to sign rules and order of operations when evaluating.`;
         break;
 
       case "CONCEPTUAL_FORMULA_MISCONCEPTION":
@@ -158,14 +159,36 @@ export class QuestionMutator {
 
     const finalHint = targetedHint || variant.hint || blueprint.hint || "";
 
+    // Switch modality away from simple multiple-choice to open response / structural calculation
+    // so learners face authentic friction and cannot just guess options.
     return {
       ...variant,
       q: `${targetedBanner} ${cleanStem}`,
       stem: `${targetedBanner} ${cleanStem}`,
+      type: "open_response",
+      options: null,
       diagnosis,
       targetedBanner,
       hint: finalHint,
     };
+  }
+
+  _reframeStructuralRepresentation(rawStem) {
+    const multMatch = rawStem.match(/(\d+(?:\.\d+)?)\s*(?:[x×*]|times)\s*(\d+(?:\.\d+)?)/i);
+    if (multMatch) {
+      const a = multMatch[1];
+      const b = multMatch[2];
+      return `A rectangle has a length of ${a} units and a width of ${b} units. Calculate its total area.`;
+    }
+
+    const divMatch = rawStem.match(/(\d+(?:\.\d+)?)\s*(?:[÷/]|divided\s+by)\s*(\d+(?:\.\d+)?)/i);
+    if (divMatch) {
+      const a = divMatch[1];
+      const b = divMatch[2];
+      return `A total quantity of ${a} items is divided equally into ${b} groups. How many items are in each group?`;
+    }
+
+    return rawStem;
   }
 
   _routeToSubjectMutator(blueprint, subjectName) {
