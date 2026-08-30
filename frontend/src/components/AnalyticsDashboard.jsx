@@ -82,11 +82,25 @@ export default function AnalyticsDashboard() {
     totalQuizzes > 0 ? Math.round((totalPasses / totalQuizzes) * 100) : 0;
 
   const handleStudyTopic = (item) => {
-    if (item.subject_id && item.chapter_id && item.topic_title) {
+    const sid = item.subject_id || item.sid;
+    const cid = item.chapter_id || item.chapter_key || item.cid;
+    const topic = item.topic_title || item.topic;
+    if (sid && cid && topic) {
       navigate(
-        `/learn/${item.subject_id}/${item.chapter_id}/${encodeURIComponent(
-          item.topic_title
-        )}`
+        `/learn/${sid}/${cid}/${encodeURIComponent(topic)}`
+      );
+    } else {
+      navigate("/subjects");
+    }
+  };
+
+  const handleReviewTopic = (item) => {
+    const sid = item.subject_id || item.sid;
+    const cid = item.chapter_id || item.chapter_key || item.cid;
+    const topic = item.topic_title || item.topic_id || item.topic;
+    if (sid && cid && topic) {
+      navigate(
+        `/learn/${sid}/${cid}/${encodeURIComponent(topic)}`
       );
     } else {
       navigate("/subjects");
@@ -231,7 +245,7 @@ export default function AnalyticsDashboard() {
                     </div>
                     <button
                       className="clean-action-btn primary"
-                      onClick={() => navigate(`/subjects`)}
+                      onClick={() => handleReviewTopic(item)}
                     >
                       Review →
                     </button>

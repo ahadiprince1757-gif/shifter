@@ -48,10 +48,15 @@ export default function MistakeJournal() {
       : mistakes.filter((m) => m.subject_id === filter);
 
   const handlePractice = (mistake) => {
-    if (mistake.subject_id && mistake.chapter_id && mistake.topic_id) {
+    const sid = mistake.subject_id || mistake.sid;
+    const cid = mistake.chapter_id || mistake.chapter_key || mistake.cid;
+    const topic = mistake.topic_id || mistake.topic_title;
+    if (sid && cid && topic) {
       navigate(
-        `/learn/${mistake.subject_id}/${mistake.chapter_id}/${encodeURIComponent(mistake.topic_id)}`
+        `/learn/${sid}/${cid}/${encodeURIComponent(topic)}`
       );
+    } else {
+      navigate("/subjects");
     }
   };
 

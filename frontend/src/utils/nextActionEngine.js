@@ -55,11 +55,23 @@ export async function computeNextAction(userId) {
         (a, b) => new Date(a.next_review_at) - new Date(b.next_review_at)
       );
       const top = sorted[0];
+      const matchingMistake = unresolvedMistakes.find(
+        (m) => (m.topic_id || m.topic_title) === (top.topic_id || top.topic_title)
+      );
+
+      const sid = top.subject_id || top.sid || matchingMistake?.subject_id || null;
+      const cid = top.chapter_id || top.cid || top.chapter_key || matchingMistake?.chapter_id || matchingMistake?.chapter_key || null;
+      const topicName = top.topic_id || top.topic_title;
+
+      const route = sid && cid && topicName
+        ? `/learn/${sid}/${cid}/${encodeURIComponent(topicName)}`
+        : "/analytics";
+
       return {
-        topic: top.topic_id,
-        subject: null,  // spacedRepo doesn't store subject — navigate via analytics
-        chapter: null,
-        route: "/analytics",
+        topic: topicName,
+        subject: sid,
+        chapter: cid,
+        route,
         reason: `This topic is due for memory review. Revisiting now keeps it in long-term memory.`,
         urgency: dueReviews.length > 3 ? "high" : "medium",
         type: "review",
