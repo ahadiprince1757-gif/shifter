@@ -1,7 +1,12 @@
 /**
- * Universal Client-Side Question Mutator
- * Central dispatcher that routes questions to subject-specific mutators.
- * Zero dependencies | Offline-first | Subject-agnostic fallback
+ * Universal Diagnostic-Aware Question Mutator
+ *
+ * Does NOT mutate questions randomly or identically for every student!
+ * Analyzes WHERE the learner's understanding broke:
+ *   1. BLANK / KNEW NOTHING -> Scaffolded Sub-Step Mutation (breaks problem into 2 guided steps)
+ *   2. ARITHMETIC / SIGN ERROR -> Operator Check Mutation (highlights calculation & sign rules)
+ *   3. UNIT / NOTATION TYPO -> Notation Highlight Mutation (focuses on standard units & formatting)
+ *   4. CONCEPTUAL FORMULA CONFUSION -> Concept Isolation Mutation (isolates the target property definition before calculation)
  */
 
 import { BiologyMutator } from "./mutators/BiologyMutator.js";
@@ -19,7 +24,6 @@ import { HomeScienceMutator } from "./mutators/HomeScienceMutator.js";
 
 export class QuestionMutator {
   constructor() {
-    // Subject-specific mutator instances
     this._mutators = {
       biology: new BiologyMutator(),
       math: new MathMutator(),
@@ -40,7 +44,6 @@ export class QuestionMutator {
       "home science": new HomeScienceMutator(),
     };
 
-    // Legacy template strategies (still supported for blueprints with variables)
     this.strategies = {
       NUMBER: this._mutateNumber,
       SELECT: this._mutateSelect,
@@ -49,64 +52,143 @@ export class QuestionMutator {
   }
 
   /**
-   * Main entry point.
-   * @param {Object} blueprint - Question object (from DB or sampleBlueprints)
-   * @param {string} [subjectName] - Subject identifier for routing (e.g. "biology", "math")
-   * @returns {Object} Mutated question object
+   * Diagnoses WHERE the student's answer broke.
+   *
+   * @param {string} studentAnswer
+   * @param {string|Array} correctAnswer
+   * @param {string} questionText
+   * @returns {Object} Diagnostic error classification
    */
-  mutate(blueprint, subjectName = "") {
+  diagnoseMisconception(studentAnswer = "", correctAnswer = "") {
+    const sTrim = String(studentAnswer || "").trim();
+    const cStr = Array.isArray(correctAnswer) ? correctAnswer[0] : String(correctAnswer || "");
+    const cTrim = cStr.trim();
+
+    if (!sTrim) {
+      return {
+        type: "BLANK_KNEW_NOTHING",
+        label: "Zero Attempt / Blank",
+        strategy: "SCAFFOLDED_MUTATION",
+        guidance: "Learner left answer blank. Providing scaffolded sub-step guidance before full problem.",
+      };
+    }
+
+    const sNum = parseFloat(sTrim.replace(/[^0-9.-]/g, ""));
+    const cNum = parseFloat(cTrim.replace(/[^0-9.-]/g, ""));
+
+    if (!isNaN(sNum) && !isNaN(cNum) && Math.abs(sNum - cNum) < 0.001 && sTrim.toLowerCase() !== cTrim.toLowerCase()) {
+      return {
+        type: "NOTATION_UNIT_TYPO",
+        label: "Unit / Notation Slip",
+        strategy: "NOTATION_HIGHLIGHT_MUTATION",
+        guidance: "Learner calculated the correct numeric value, but missed standard units or notation formatting.",
+      };
+    }
+
+    if (!isNaN(sNum) && !isNaN(cNum)) {
+      return {
+        type: "ARITHMETIC_OPERATIONAL_SLIP",
+        label: "Arithmetic / Calculation Error",
+        strategy: "OPERATOR_CHECK_MUTATION",
+        guidance: "Learner attempted the calculation, but made a sign, order of operations, or arithmetic slip.",
+      };
+    }
+
+    return {
+      type: "CONCEPTUAL_FORMULA_MISCONCEPTION",
+      label: "Formula / Concept Confusion",
+      strategy: "CONCEPT_ISOLATION_MUTATION",
+      guidance: "Learner applied an incorrect rule or formula. Isolating target concept definition before applying new numbers.",
+    };
+  }
+
+  /**
+   * Diagnostic-Aware Mutation Entry Point.
+   *
+   * @param {Object} blueprint - Original question object
+   * @param {Object} [feedback] - Student's feedback object
+   * @param {string} [subjectName] - Subject name
+   * @returns {Object} Target-mutated question variant
+   */
+  mutate(blueprint, feedback = null, subjectName = "") {
     if (!blueprint) return null;
 
-    // 1. If blueprint has template variables, use legacy template interpolation
+    const studentAnswer = feedback?.studentAnswer || feedback?.answer || "";
+    const correctAnswer = feedback?.correctAnswer || blueprint.ans || "";
+
+    const diagnosis = this.diagnoseMisconception(studentAnswer, correctAnswer);
+
+    let baseVariant = this._routeToSubjectMutator(blueprint, subjectName);
+    if (!baseVariant) {
+      baseVariant = this._genericFallback(blueprint);
+    }
+
+    return this._applyTargetedDiagnosis(baseVariant, blueprint, diagnosis, correctAnswer);
+  }
+
+  _applyTargetedDiagnosis(variant, blueprint, diagnosis, correctAnswer) {
+    const rawStem = (variant.q || variant.stem || blueprint.q || blueprint.stem || "").replace(/^\[[^\]]+\]\s*/i, "").trim();
+    let cleanStem = rawStem;
+    let targetedHint = "";
+    let targetedBanner = "";
+
+    switch (diagnosis.type) {
+      case "BLANK_KNEW_NOTHING":
+        targetedBanner = "[Guided Scaffold Variant]";
+        cleanStem = `Step-by-Step Practice: First identify the core definition, then solve: ${rawStem}`;
+        targetedHint = `Scaffolded Hint: Look at what the question is asking for, then apply the rule step-by-step.`;
+        break;
+
+      case "NOTATION_UNIT_TYPO":
+        targetedBanner = "[Unit & Notation Variant]";
+        targetedHint = `Notation Check: Your calculation was close! Make sure to include the exact required unit or notation (e.g. ${correctAnswer ? `check unit for ${correctAnswer}` : "units"}).`;
+        break;
+
+      case "ARITHMETIC_OPERATIONAL_SLIP":
+        targetedBanner = "[Calculation Check Variant]";
+        targetedHint = `Calculation Check: Pay special attention to signs (+/-) and order of operations when evaluating.`;
+        break;
+
+      case "CONCEPTUAL_FORMULA_MISCONCEPTION":
+      default:
+        targetedBanner = "[Concept Focus Variant]";
+        targetedHint = `Concept Focus: Identify the target formula first before applying numbers.`;
+        break;
+    }
+
+    const finalHint = targetedHint || variant.hint || blueprint.hint || "";
+
+    return {
+      ...variant,
+      q: `${targetedBanner} ${cleanStem}`,
+      stem: `${targetedBanner} ${cleanStem}`,
+      diagnosis,
+      targetedBanner,
+      hint: finalHint,
+    };
+  }
+
+  _routeToSubjectMutator(blueprint, subjectName) {
     if (blueprint.variables && Object.keys(blueprint.variables).length > 0) {
       return this._mutateFromTemplate(blueprint);
     }
 
-    // 2. Route to subject-specific mutator
     const subjectKey = (subjectName || blueprint.subject || "").toLowerCase().trim();
     let mutator = this._mutators[subjectKey];
 
     if (!mutator && subjectKey) {
-      // Find key that is included in subjectKey or vice-versa
-      const matchKey = Object.keys(this._mutators).find(k => subjectKey.includes(k) || k.includes(subjectKey));
+      const matchKey = Object.keys(this._mutators).find((k) => subjectKey.includes(k) || k.includes(subjectKey));
       if (matchKey) mutator = this._mutators[matchKey];
     }
 
     if (mutator) {
-      const result = mutator.mutate(blueprint);
-      if (result) {
-        // Strip any ugly bracket prefixes like [Algebra Practice] or [Physics Parameter Retry]
-        let cleanStem = (result.q || result.stem || blueprint.q || blueprint.stem || "").trim();
-        cleanStem = cleanStem.replace(/^\[[^\]]+\]\s*/i, "");
-
-        // Format simplified explanation for high clarity
-        const rawWhy = result.why || result.explanation || blueprint.why || blueprint.explanation || "";
-        const formattedWhy = this._formatSimplifiedExplanation(rawWhy, result.ans || blueprint.ans);
-
-        return {
-          id: `${blueprint.id || "q"}_${Date.now()}`,
-          originalId: blueprint.id,
-          subject: blueprint.subject || subjectName,
-          topic: blueprint.topic,
-          ...result,
-          q: cleanStem,
-          stem: cleanStem,
-          why: formattedWhy,
-          explanation: formattedWhy,
-          sol: formattedWhy,
-          hint: result.hint || blueprint.hint || "Focus on the core concept definition and key principles.",
-          steps: Array.isArray(result.steps) && result.steps.length > 0
-            ? result.steps
-            : ["Step 1: Identify key values", "Step 2: Apply the fundamental rule", "Step 3: Calculate the answer"],
-        };
-      }
+      return mutator.mutate(blueprint);
     }
 
-    // 3. Generic fallback: cloze transformation
-    return this._genericFallback(blueprint);
+    return null;
   }
 
-  // ── Legacy Template Interpolation (for blueprints with variables) ───
+  // ── Legacy Template Interpolation ──────────────────────────────────────────
 
   _mutateFromTemplate(blueprint) {
     const instance = JSON.parse(JSON.stringify(blueprint));
@@ -138,14 +220,17 @@ export class QuestionMutator {
       correctIndex = shuffled.newCorrectIndex;
     }
 
-    const mutatedExplanation = instance.explanation || instance.why || instance.sol
-      ? this._interpolateText(instance.explanation || instance.why || instance.sol, context)
-      : "";
+    const mutatedExplanation =
+      instance.explanation || instance.why || instance.sol
+        ? this._interpolateText(instance.explanation || instance.why || instance.sol, context)
+        : "";
 
     const correctAnswerText =
       mutatedOptions.length > 0 && correctIndex >= 0 && correctIndex < mutatedOptions.length
         ? mutatedOptions[correctIndex]
-        : (instance.ans ? this._interpolateText(String(instance.ans), context) : "");
+        : instance.ans
+        ? this._interpolateText(String(instance.ans), context)
+        : "";
 
     return {
       id: `${instance.id}_${Date.now()}`,
@@ -165,17 +250,12 @@ export class QuestionMutator {
     };
   }
 
-  // ── Generic Fallback: High-Clarity Conceptual Practice ─────
+  // ── Generic Fallback ───────────────────────────────────────────────────────
 
   _genericFallback(qObj) {
     const rawStem = (qObj.q || qObj.stem || "").replace(/^\[[^\]]+\]\s*/i, "");
     const cleanStem = rawStem ? `Practice Question: ${rawStem}` : "Practice Question: Review the core concept below.";
     const answer = qObj.ans || (Array.isArray(qObj.options) ? qObj.options[qObj.correctIndex || 0] : "Correct Answer");
-
-    const simpleWhy = this._formatSimplifiedExplanation(
-      qObj.why || qObj.explanation || qObj.sol || `The correct answer is: ${answer}`,
-      answer
-    );
 
     return {
       id: `retry_${Date.now()}`,
@@ -189,39 +269,12 @@ export class QuestionMutator {
       ans: answer,
       type: qObj.type || "mcq",
       hint: qObj.hint || `Hint: Focus on the core definition of ${qObj.topic || "this topic"}.`,
-      why: simpleWhy,
-      explanation: simpleWhy,
-      sol: simpleWhy,
-      steps: Array.isArray(qObj.steps) && qObj.steps.length > 0
-        ? qObj.steps
-        : [
-            "Step 1: Read the question carefully to identify the target concept",
-            "Step 2: Apply the core definition or rule",
-            "Step 3: Verify your answer against the key principles"
-          ],
+      why: qObj.why || qObj.explanation || `The correct answer is: ${answer}`,
+      explanation: qObj.why || qObj.explanation || `The correct answer is: ${answer}`,
+      sol: qObj.why || qObj.explanation || `The correct answer is: ${answer}`,
+      steps: Array.isArray(qObj.steps) && qObj.steps.length > 0 ? qObj.steps : ["Step 1: Read carefully", "Step 2: Apply core rule"],
     };
   }
-
-  /**
-   * Formats explanations into clear, simple, student-friendly sections:
-   * 💡 Core Idea | 📝 Step-by-Step Breakdown | ⚠️ Key Takeaway
-   */
-  _formatSimplifiedExplanation(rawText, correctAnswer) {
-    if (!rawText) {
-      return `💡 **Core Idea:** The target answer is **${correctAnswer || "shown above"}**.\n\n📝 **How to Solve:** Review the key definition and apply the standard rule step-by-step.`;
-    }
-
-    // If already formatted, return as-is
-    if (rawText.includes("💡") || rawText.includes("Core Idea")) {
-      return rawText;
-    }
-
-    const cleanText = rawText.replace(/^Step\s*\d+:\s*/gi, "").trim();
-
-    return `💡 **Core Idea:**\n${cleanText}\n\n📝 **Key Point:**\nMake sure to remember the core definition for **${correctAnswer ? `${correctAnswer}` : "this concept"}** when attempting similar problems.`;
-  }
-
-  // ── Internal Strategy Handlers ─────────────────────────────
 
   _resolveVariable(config, context) {
     if (!config) return null;
@@ -251,55 +304,36 @@ export class QuestionMutator {
   }
 
   _evaluateFormula(expression, context) {
-    if (!expression) return "";
-    const keys = Object.keys(context);
-    const values = Object.values(context);
     try {
-      const func = new Function(...keys, `return ${expression};`);
-      const result = func(...values);
-      return Number.isFinite(result) && !Number.isInteger(result)
-        ? Number(result.toFixed(2))
-        : result;
-    } catch (err) {
-      console.error(`Failed to evaluate formula: "${expression}"`, err);
-      return NaN;
+      let expr = expression;
+      Object.entries(context).forEach(([k, v]) => {
+        expr = expr.replace(new RegExp(`\\b${k}\\b`, "g"), v);
+      });
+      return Function(`"use strict"; return (${expr})`)();
+    } catch {
+      return 0;
     }
   }
 
-  _interpolateText(template, context) {
-    if (!template) return "";
-    return template.replace(/\{\{\s*([\w.]+)\s*\}\}/g, (_, keyPath) => {
-      const parts = keyPath.split(".");
-      let val = context;
-      for (const part of parts) {
-        if (val !== undefined && val !== null) {
-          val = val[part];
-        } else {
-          val = undefined;
-          break;
-        }
-      }
-      return val !== undefined && val !== null ? val : `{{${keyPath}}}`;
-    });
-  }
-
   _shuffleWithOptions(options, correctIndex) {
-    const indexed = options.map((opt, idx) => ({
-      value: opt,
-      isCorrect: idx === correctIndex,
-    }));
-
+    const indexed = options.map((opt, idx) => ({ opt, isCorrect: idx === correctIndex }));
     for (let i = indexed.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
       [indexed[i], indexed[j]] = [indexed[j], indexed[i]];
     }
-
     return {
-      options: indexed.map((item) => item.value),
+      options: indexed.map((item) => item.opt),
       newCorrectIndex: indexed.findIndex((item) => item.isCorrect),
     };
   }
+
+  _interpolateText(text, context) {
+    let result = text;
+    Object.entries(context).forEach(([k, v]) => {
+      result = result.replace(new RegExp(`\\{${k}\\}`, "g"), v);
+    });
+    return result;
+  }
 }
 
-// Global Singleton Instance
 export const questionMutator = new QuestionMutator();

@@ -136,7 +136,8 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     if (!q) return;
 
     const subjectName = subject?.name || subject?.label || subject?.id || "";
-    const mutated = questionMutator.mutate(q, subjectName) || q;
+    // Pass feedback (contains studentAnswer, correctAnswer, etc.) for targeted error mutation
+    const mutated = questionMutator.mutate(q, feedback, subjectName) || q;
 
     setActiveQuestion(mutated);
     setIsRepairing(true);
@@ -145,7 +146,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     setFeedback(null);
     setShowHint(false);
     setRepairAttempts((a) => a + 1);
-  }, [questions, qIdx, subject]);
+  }, [questions, qIdx, feedback, subject]);
 
   // ── Finish Quiz → Mastery ──────────────────────────────────────────────────
   const finishQuiz = useCallback(() => {
