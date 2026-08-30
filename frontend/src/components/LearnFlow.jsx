@@ -56,7 +56,7 @@ function LearnFlow({
     userId
   );
 
-  // Initialize the 9-state Mastery Session Loop
+  // Initialize the Session Loop Controller
   const loop = useSessionLoop({
     subject,
     chapter,
@@ -113,12 +113,7 @@ function LearnFlow({
           subject={subject}
           chapter={chapter}
         />
-        <PhaseStrip
-          sessionState={loop.sessionState}
-          stateIndex={loop.stateIndex}
-          isStateDone={loop.isStateDone}
-          isStateCurrent={loop.isStateCurrent}
-        />
+        <PhaseStrip activeActIndex={loop.activeActIndex} />
         <div id="learnFlow">
           <div className="lc" style={{ padding: "2rem" }}>
             <SkeletonLoader type="text" />
@@ -135,6 +130,8 @@ function LearnFlow({
     loop.finishSession();
   };
 
+  const noGap = loop.diagnosticResult === "no_gap";
+
   return (
     <div id="v-learn" className="view active">
       <LearnHeader
@@ -144,15 +141,10 @@ function LearnFlow({
         chapter={chapter}
       />
 
-      <PhaseStrip
-        sessionState={loop.sessionState}
-        stateIndex={loop.stateIndex}
-        isStateDone={loop.isStateDone}
-        isStateCurrent={loop.isStateCurrent}
-      />
+      <PhaseStrip activeActIndex={loop.activeActIndex} />
 
       <div id="learnFlow">
-        {/* 1. DIAGNOSE PHASE */}
+        {/* ACT 1: CHECK & LEARN */}
         {loop.sessionState === SESSION_STATES.DIAGNOSE && (
           <DiagnosticPhase
             diagnosticQuestions={loop.diagnosticQuestions}
@@ -160,11 +152,12 @@ function LearnFlow({
           />
         )}
 
-        {/* 2. TEACH PHASE (shown if gap found in diagnosis) */}
         {loop.sessionState === SESSION_STATES.TEACH && (
           <div className="teach-phase-wrapper">
-            <div className="diagnostic-banner">
-              ⚠️ Diagnostic outcome: Knowledge gap detected. Study the material below before taking the retrieval quiz.
+            <div className={`diagnostic-banner ${noGap ? "diagnostic-banner--nogap" : ""}`}>
+              {noGap
+                ? "✓ Diagnostic probes passed! Review the core concepts below to solidify your understanding before retrieval practice."
+                : "⚠️ Knowledge gap detected in probes. Review the key notes below before taking your retrieval quiz."}
             </div>
             <NotesPhase
               topic={topic}
@@ -177,7 +170,7 @@ function LearnFlow({
           </div>
         )}
 
-        {/* 3. RETRIEVE PHASE */}
+        {/* ACT 2: ACTIVE RETRIEVAL & REPAIR */}
         {loop.sessionState === SESSION_STATES.RETRIEVE && (
           <QuizPhase
             topic={topic}
@@ -216,7 +209,6 @@ function LearnFlow({
           />
         )}
 
-        {/* 4. REPAIR PHASE (IDENTIFY & REPAIR) */}
         {(loop.sessionState === SESSION_STATES.IDENTIFY ||
           loop.sessionState === SESSION_STATES.REPAIR) && (
           <RepairPhase
@@ -236,18 +228,17 @@ function LearnFlow({
           />
         )}
 
-        {/* 5. SPACE PHASE */}
+        {/* ACT 3: TRANSFER & MASTERY SUMMARY */}
         {loop.sessionState === SESSION_STATES.SPACE && (
           <div className="lc" style={{ padding: "2rem", textAlign: "center" }}>
-            <div className="lbadge lb-space">Spacing Memory</div>
-            <h3 style={{ marginTop: "1rem" }}>Review Schedule Updated</h3>
+            <div className="lbadge lb-space">Memory Consolidation</div>
+            <h3 style={{ marginTop: "1rem" }}>Schedule Updated</h3>
             <p style={{ color: "var(--t2)", marginTop: "0.5rem" }}>
-              Memory consolidation schedule calculated. Preparing retest items...
+              Preparing structural transfer challenge...
             </p>
           </div>
         )}
 
-        {/* 6. RETEST PHASE */}
         {loop.sessionState === SESSION_STATES.RETEST && (
           <SpacedRetestPhase
             dueReviews={loop.dueReviews}
@@ -255,7 +246,6 @@ function LearnFlow({
           />
         )}
 
-        {/* 7. TRANSFER PHASE */}
         {loop.sessionState === SESSION_STATES.TRANSFER && (
           <TransferPhase
             transferQuestion={loop.transferQuestion}
@@ -269,7 +259,6 @@ function LearnFlow({
           />
         )}
 
-        {/* 8. DONE PHASE (SESSION SUMMARY) */}
         {loop.sessionState === SESSION_STATES.DONE && (
           <SessionSummary
             topic={topic}

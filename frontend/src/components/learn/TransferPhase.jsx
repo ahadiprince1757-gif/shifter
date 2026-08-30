@@ -8,19 +8,10 @@ import HintBox from "./quiz/HintBox";
 /**
  * TransferPhase
  *
- * Final active phase of the session loop.
- * Shows a novel-context question and asks the learner to apply what they know.
- * After answering (right or wrong), the session summary is unlocked.
- *
- * Props:
- *   transferQuestion   { qIdx, q }   — from useSessionLoop.transferQuestion
- *   answer             string
- *   setAnswer          function
- *   feedback           object | null
- *   confidence         string | null
- *   setConfidence      function
- *   onSubmit           function       — submitTransferAnswer from useSessionLoop
- *   onFinish           function       — finishSession from useSessionLoop
+ * Structural Representation Transfer Phase.
+ * Tests if the student can apply the exact same mathematical/conceptual structure
+ * when re-framed into a different representation (e.g., geometric area vs pure multiplication,
+ * visual diagram vs formula equation).
  */
 function TransferPhase({
   transferQuestion,
@@ -53,19 +44,17 @@ function TransferPhase({
     <div className="lc" id="transferCard">
       <div className="lch">
         <div className="transfer-header-row">
-          <span className="lbadge lb-transfer">Transfer</span>
-          <span className="transfer-header-sub">Apply what you know</span>
+          <span className="lbadge lb-transfer">Representation Transfer</span>
+          <span className="transfer-header-sub">Apply concept in a new structure</span>
         </div>
       </div>
 
       <div className="lcb">
-        {/* Framing message */}
         {!feedback && (
           <div className="transfer-framing-card">
-            <div className="transfer-framing-icon">🔗</div>
+            <div className="transfer-framing-icon">📐</div>
             <div className="transfer-framing-text">
-              This question uses the same concept in a new context. There's no
-              notes page to consult — show that you can apply what you learned.
+              <strong>Representation Challenge:</strong> This question re-frames the underlying concept into a new structural representation. Solve for the exact result using the same core principles.
             </div>
           </div>
         )}
@@ -75,7 +64,6 @@ function TransferPhase({
           questionText={q.q}
         />
 
-        {/* Answer input */}
         {!feedback && (
           <>
             {isMCQ ? (
@@ -102,8 +90,8 @@ function TransferPhase({
             ) : (
               <textarea
                 className="quiz-input"
-                rows={4}
-                placeholder="Write your answer here…"
+                rows={3}
+                placeholder="Enter your calculation or response…"
                 value={answer}
                 onChange={(e) => setAnswer(e.target.value)}
               />
@@ -113,7 +101,6 @@ function TransferPhase({
               <div className="validation-error">{validationError}</div>
             )}
 
-            {/* Confidence selector */}
             {answer.trim() && (
               <div className="confidence-selector">
                 <div className="confidence-selector-label">
@@ -156,13 +143,12 @@ function TransferPhase({
                 onClick={handleSubmit}
                 disabled={!answer.trim()}
               >
-                Submit
+                Submit Transfer Answer
               </button>
             </div>
           </>
         )}
 
-        {/* Feedback */}
         {feedback && (
           <div
             className={`transfer-feedback ${
@@ -173,16 +159,16 @@ function TransferPhase({
           >
             <div className="transfer-feedback-status">
               {feedback.isCorrect
-                ? "✓ Correct — you can transfer this knowledge"
-                : "Not quite — but attempting transfer is how retention is built"}
+                ? "✓ Correct — Structural Transfer Complete!"
+                : "Not quite — review the structural connection below"}
             </div>
 
             {feedback.correctAnswer && (
               <div className="transfer-feedback-answer">
-                <div className="transfer-answer-label">Model answer:</div>
+                <div className="transfer-answer-label">Correct Solution:</div>
                 <div className="transfer-answer-body">
                   <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                    {feedback.correctAnswer}
+                    {String(feedback.correctAnswer)}
                   </ReactMarkdown>
                 </div>
               </div>
@@ -197,7 +183,7 @@ function TransferPhase({
             )}
 
             <button className="btn-p transfer-finish-btn" onClick={onFinish}>
-              See session summary →
+              See Session Summary →
             </button>
           </div>
         )}

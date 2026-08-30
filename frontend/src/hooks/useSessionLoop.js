@@ -1,13 +1,14 @@
 /**
  * useSessionLoop.js
  *
- * The 9-state session controller that replaces the simple `phase` integer
- * in LearnFlow. Every transition is system-driven based on performance data.
+ * 3-Act Session Loop Controller wrapping the deep pedagogical engine:
  *
- * States (in order):
- *   DIAGNOSE → TEACH → RETRIEVE → IDENTIFY → REPAIR → SPACE → RETEST → TRANSFER → DONE
+ * Act 1: CHECK & LEARN (Diagnose Probes → ALWAYS Teach/Notes)
+ * Act 2: RETRIEVAL & REPAIR (Closed-Book Quiz → Targeted Concept Repair)
+ * Act 3: TRANSFER & MASTERY (Spaced Retest → Structural Representation Transfer → Summary)
  *
- * The learner never manually advances between states.
+ * Note: Even if diagnostic probes are answered correctly (no gap), Teaching/Notes is NEVER
+ * skipped. It is presented as a concept confirmation pass to ensure no guessing occurred.
  */
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
@@ -35,28 +36,20 @@ export const SESSION_STATES = {
   DONE: "DONE",
 };
 
-const STATE_ORDER = [
-  "DIAGNOSE",
-  "TEACH",
-  "RETRIEVE",
-  "IDENTIFY",
-  "REPAIR",
-  "SPACE",
-  "RETEST",
-  "TRANSFER",
-  "DONE",
-];
+// 3 visual acts exposed to the UI top bar
+export const ACT_MAP = {
+  DIAGNOSE: 0, // Act 1: Check & Learn
+  TEACH: 0,    // Act 1: Check & Learn
+  RETRIEVE: 1, // Act 2: Retrieval & Repair
+  IDENTIFY: 1, // Act 2: Retrieval & Repair
+  REPAIR: 1,   // Act 2: Retrieval & Repair
+  SPACE: 2,    // Act 3: Transfer & Mastery
+  RETEST: 2,   // Act 3: Transfer & Mastery
+  TRANSFER: 2, // Act 3: Transfer & Mastery
+  DONE: 2,     // Act 3: Transfer & Mastery
+};
 
-/**
- * @param {object} subject
- * @param {object} chapter
- * @param {string} topic
- * @param {object|null} content       - from useTopicContent (notes + qs)
- * @param {string|null} userId
- * @param {Function} markMastered     - from useMasteredTopics
- */
 export function useSessionLoop({ subject, chapter, topic, content, userId, markMastered }) {
-  // Stable questions array — avoids re-render on every call
   const questions = useMemo(
     () => (Array.isArray(content?.qs) ? content.qs : []),
     [content]
@@ -66,9 +59,8 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
   const [sessionState, setSessionState] = useState(SESSION_STATES.DIAGNOSE);
   const [diagnosticQuestions, setDiagnosticQuestions] = useState([]);
   const [diagnosticResults, setDiagnosticResults] = useState([]);
-  const [diagnosticResult, setDiagnosticResult] = useState(null);
+  const [diagnosticResult, setDiagnosticResult] = useState(null); // "gap_found" | "no_gap"
 
-  // Track used question indices without triggering renders
   const usedIndicesRef = useRef(new Set());
 
   // ── Retrieve / Evaluate state ────────────────────────────────────────────────
@@ -101,7 +93,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
   const [sessionScore, setSessionScore] = useState(0);
   const [sessionComplete, setSessionComplete] = useState(false);
 
-  // ── Reset all state when topic changes (via useEffect, not during render) ─────
+  // Reset when topic changes
   const prevTopicRef = useRef(topic);
   useEffect(() => {
     if (topic === prevTopicRef.current) return;
@@ -134,7 +126,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     setSessionComplete(false);
   }, [topic]);
 
-  // ── Initialize diagnostics when content loads ────────────────────────────────
+  // Load diagnostic questions
   useEffect(() => {
     if (questions.length === 0) return;
     if (sessionState !== SESSION_STATES.DIAGNOSE) return;
@@ -154,7 +146,6 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
       });
   }, [questions, sessionState, topic, userId, diagnosticQuestions.length]);
 
-  // ── DIAGNOSE: record result for a single diagnostic question ─────────────────
   const recordDiagnosticResult = useCallback((qIdx, passed) => {
     setDiagnosticResults((prev) => [
       ...prev.filter((r) => r.qIdx !== qIdx),
@@ -162,8 +153,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     ]);
   }, []);
 
-  // ── SPACE: schedule spaced review, then go to RETEST or TRANSFER ─────────────
-  // Declared early so finishRetrieve and passRepair can reference it
+  // ── SPACE: schedule review & transition ──────────────────────────────────────
   const enterSpace = useCallback(
     (score, currentConfidence) => {
       setSessionState(SESSION_STATES.SPACE);
@@ -191,7 +181,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
 
           const tq =
             selectTransferQuestion(questions, usedIndicesRef.current) ||
-            { qIdx: -1, q: buildFallbackTransferQuestion(topic) };
+            { qIdx: -1, q: buildFallbackTransferQuestion(topic, questions) };
           setTransferQuestion(tq);
 
           setSessionState(
@@ -201,7 +191,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
         .catch(() => {
           const tq =
             selectTransferQuestion(questions, usedIndicesRef.current) ||
-            { qIdx: -1, q: buildFallbackTransferQuestion(topic) };
+            { qIdx: -1, q: buildFallbackTransferQuestion(topic, questions) };
           setTransferQuestion(tq);
           setSessionState(SESSION_STATES.TRANSFER);
         });
@@ -210,7 +200,6 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
   );
 
   // ── RETRIEVE → IDENTIFY → REPAIR or SPACE ────────────────────────────────────
-  // Declared before nextRetrieveQuestion which calls it
   const finishRetrieve = useCallback(
     (currentFailed, currentConfidence) => {
       setRetrieveFinished(true);
@@ -234,7 +223,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     [questions, enterSpace]
   );
 
-  // ── DIAGNOSE → TEACH or RETRIEVE ─────────────────────────────────────────────
+  // ── DIAGNOSE → ALWAYS TEACH (never skip teaching/notes) ─────────────────────
   const finishDiagnostic = useCallback(
     (results) => {
       const allResults = results || diagnosticResults;
@@ -242,9 +231,9 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
 
       const interpretation = interpretDiagnostic(allResults);
       setDiagnosticResult(interpretation);
-      setSessionState(
-        interpretation === "gap_found" ? SESSION_STATES.TEACH : SESSION_STATES.RETRIEVE
-      );
+
+      // ALWAYS proceed to TEACH/Notes so the student confirms their knowledge!
+      setSessionState(SESSION_STATES.TEACH);
     },
     [diagnosticResults, diagnosticQuestions]
   );
@@ -254,7 +243,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     setSessionState(SESSION_STATES.RETRIEVE);
   }, []);
 
-  // ── RETRIEVE: submit an answer ────────────────────────────────────────────────
+  // ── RETRIEVE answer submit ───────────────────────────────────────────────────
   const submitRetrieveAnswer = useCallback(
     (currentQIdx, currentAnswer, currentWork, currentConfidence) => {
       if (retrieveGrading) return;
@@ -297,7 +286,6 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     [retrieveGrading, retrieveAnswer, retrieveQIdx, questions, retrieveConfidence]
   );
 
-  // ── RETRIEVE: advance to next question or finish ──────────────────────────────
   const nextRetrieveQuestion = useCallback(
     (currentFailed, currentConfidence) => {
       const isLast = retrieveQIdx >= questions.length - 1;
@@ -317,12 +305,10 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     [retrieveQIdx, questions.length, finishRetrieve]
   );
 
-  // ── REPAIR: mark concept as taught ───────────────────────────────────────────
   const markConceptTaught = useCallback((conceptTag) => {
     setWeaknessMap((prev) => markRepairTaught(prev, conceptTag));
   }, []);
 
-  // ── REPAIR: pass repair for a concept, advance ────────────────────────────────
   const passRepair = useCallback(
     (conceptTag, currentScore, currentConfidence) => {
       setWeaknessMap((prev) => markRepairPassed(prev, conceptTag));
@@ -337,12 +323,10 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     [conceptOrder.length, enterSpace, sessionScore, retrieveConfidence]
   );
 
-  // ── RETEST → TRANSFER ────────────────────────────────────────────────────────
   const finishRetest = useCallback(() => {
     setSessionState(SESSION_STATES.TRANSFER);
   }, []);
 
-  // ── TRANSFER: submit transfer answer ─────────────────────────────────────────
   const submitTransferAnswer = useCallback(() => {
     if (!transferAnswer.trim() || transferFeedback) return;
     const q = transferQuestion?.q;
@@ -351,22 +335,13 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     setTransferFeedback({ ...res, confidence: transferConfidence });
   }, [transferAnswer, transferFeedback, transferQuestion, transferConfidence]);
 
-  // ── TRANSFER → DONE ───────────────────────────────────────────────────────────
   const finishSession = useCallback(() => {
     setSessionState(SESSION_STATES.DONE);
     setSessionComplete(true);
   }, []);
 
-  // ── Helpers for PhaseStrip ────────────────────────────────────────────────────
-  const stateIndex = STATE_ORDER.indexOf(sessionState);
-  const isStateDone = useCallback(
-    (stateName) => STATE_ORDER.indexOf(stateName) < stateIndex,
-    [stateIndex]
-  );
-  const isStateCurrent = useCallback(
-    (stateName) => stateName === sessionState,
-    [sessionState]
-  );
+  // Compute active 3-act UI index (0, 1, or 2)
+  const activeActIndex = ACT_MAP[sessionState] ?? 0;
 
   const currentRetrieveQuestion = questions[retrieveQIdx] || null;
   const isLastRetrieveQuestion = retrieveQIdx >= questions.length - 1;
@@ -376,9 +351,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
   return {
     // State
     sessionState,
-    stateIndex,
-    isStateDone,
-    isStateCurrent,
+    activeActIndex,
 
     // DIAGNOSE
     diagnosticQuestions,
