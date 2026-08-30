@@ -15,6 +15,7 @@ import { spacedRepo } from "../repository/spacedRepo";
 import { evaluateAnswer } from "../utils/grader";
 import { questionMutator } from "../utils/questionMutator";
 import { saveAchievement, saveProgress } from "../api";
+import { mistakeRepo } from "../repository/mistakeRepo";
 
 export const SESSION_PHASES = {
   NOTES: 0,
@@ -121,6 +122,17 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
               originalQ: q,
             },
           ]);
+          // Persist mistake to IndexedDB + Supabase
+          mistakeRepo.saveMistake({
+            userId,
+            topicId: topic,
+            subjectId: subject?.id || null,
+            chapterId: chapter?.id || null,
+            questionIndex: qIdx,
+            questionText: q.q || "",
+            correctAnswer: res.correctAnswer || "",
+            solution: res.solution || "",
+          }).catch(() => {});
         }
       } else {
         if (res.isCorrect) {
@@ -129,7 +141,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
         }
       }
     }, 150);
-  }, [grading, answer, currentQuestion, confidence, isRepairing, qIdx]);
+  }, [grading, answer, currentQuestion, confidence, isRepairing, qIdx, userId, topic, subject, chapter]);
 
   // ── Trigger In-Quiz Mutated Repair (Edge of Friction) ─────────────────────
   const startMutatedRepair = useCallback(() => {

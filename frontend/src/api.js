@@ -16,11 +16,6 @@ function getAuthHeaders() {
   return {};
 }
 
-function isOfflineOrNotFound(r, err) {
-  if (err) return true;
-  if (!r) return true;
-  return r.status === 404 || r.status === 502 || r.status === 503 || !r.ok;
-}
 
 export async function fetchCurriculum() {
   const startTime = Date.now();
@@ -35,7 +30,7 @@ export async function fetchCurriculum() {
 
     logger.api("GET", "/api/curriculum", r.status, { responseTime });
     return await r.json();
-  } catch (error) {
+  } catch {
     console.warn("[API] Network unavailable for curriculum. Using local IndexedDB fallback.");
     return await curriculumRepo.getAll();
   }
@@ -65,7 +60,7 @@ export async function fetchTopicContent(sid, cid, topic) {
       topic,
     });
     return await r.json();
-  } catch (error) {
+  } catch {
     console.warn(`[API] Network offline for topic content (${topic}). Using local fallback.`);
     const cached = await topicRepo.getById(`${sid}|${cid}|${topic}`);
     return cached?.data || null;
@@ -172,7 +167,7 @@ export async function saveMistake({ sid, cid, topicTitle, questionIndex, questio
 }
 
 /** Mark a mistake as resolved in Supabase. */
-export async function resolveMistake({ sid, cid, topicTitle, questionIndex }) {
+export async function resolveMistake({ cid, topicTitle, questionIndex }) {
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
   try {
@@ -348,9 +343,12 @@ export async function saveProgress({ sid, cid, topicTitle, completed, score, mas
   const session = getActiveSession();
   if (!session?.user?.id || !supabase) return false;
 
+  const userId = session.user.id;
+  const topicTitleStr = topicTitle || "";
+
   const payload = {
-    user_id: session.user.id,
-    topic_title: topicTitle || "",
+    user_id: userId,
+    topic_title: topicTitleStr,
     subject_id: sid || null,
     chapter_id: cid || null,
     completed: completed ?? false,
@@ -360,15 +358,32 @@ export async function saveProgress({ sid, cid, topicTitle, completed, score, mas
     updated_at: new Date().toISOString(),
   };
 
-  if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
-    payload.topic_id = parseInt(topicTitle, 10);
-  }
-
   try {
-    const { error } = await supabase.from("progress").upsert(payload);
-    if (error) {
-      console.warn("[Supabase] progress upsert warning:", error.message);
-      return false;
+    // Check if a row already exists for this user + topic (by title, since topic_id may be null)
+    const { data: existing } = await supabase
+      .from("progress")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("topic_title", topicTitleStr)
+      .limit(1);
+
+    if (existing && existing.length > 0) {
+      // Update existing row
+      const { error } = await supabase
+        .from("progress")
+        .update(payload)
+        .eq("id", existing[0].id);
+      if (error) {
+        console.warn("[Supabase] progress update warning:", error.message);
+        return false;
+      }
+    } else {
+      // Insert new row
+      const { error } = await supabase.from("progress").insert(payload);
+      if (error) {
+        console.warn("[Supabase] progress insert warning:", error.message);
+        return false;
+      }
     }
     return true;
   } catch (err) {

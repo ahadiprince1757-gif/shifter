@@ -4,6 +4,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import SmartPrompt from "./SmartPrompt";
 import { useNextAction } from "../hooks/useNextAction";
+import { enroll } from "../api";
 
 const HUMANISTIC_PALETTES = [
   { accent: "#74B8E8", bg: "rgba(116, 184, 232, 0.06)", border: "rgba(116, 184, 232, 0.28)" },
@@ -55,6 +56,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   const handleSubjectClick = (subjectId, label) => {
     logger.action("SUBJECT_SELECTED", "success", { subjectId, subjectLabel: label });
+    // Silently enroll user in the subject on first visit (fire-and-forget)
+    if (userId) enroll(subjectId).catch(() => {});
     openSubject(subjectId);
   };
 
