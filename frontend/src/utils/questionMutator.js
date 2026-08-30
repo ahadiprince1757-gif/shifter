@@ -129,8 +129,8 @@ export class QuestionMutator {
   _applyTargetedDiagnosis(variant, blueprint, diagnosis, correctAnswer) {
     const rawStem = (variant.q || variant.stem || blueprint.q || blueprint.stem || "").replace(/^\[[^\]]+\]\s*/i, "").trim();
     let cleanStem = rawStem;
-    let targetedHint = "";
-    let targetedBanner = "";
+    let targetedHint;
+    let targetedBanner;
 
     switch (diagnosis.type) {
       case "BLANK_KNEW_NOTHING":
