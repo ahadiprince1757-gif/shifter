@@ -1,62 +1,67 @@
-function PhaseStrip({ phase, setPhase, canJumpTo }) {
-  const steps = [
-    { title: "Study Notes", shortLabel: "Notes", idx: 0 },
-    { title: "Practice Quiz", shortLabel: "Quiz", idx: 1 },
-    { title: "Mastered", shortLabel: "Mastered", idx: 2 },
-  ];
+
+
+const MASTERY_STEPS = [
+  { key: "DIAGNOSE", label: "Diagnose", short: "Diag" },
+  { key: "TEACH", label: "Teach", short: "Teach" },
+  { key: "RETRIEVE", label: "Retrieve", short: "Quiz" },
+  { key: "IDENTIFY", label: "Identify", short: "Map" },
+  { key: "REPAIR", label: "Repair", short: "Fix" },
+  { key: "SPACE", label: "Space", short: "Space" },
+  { key: "RETEST", label: "Retest", short: "Retest" },
+  { key: "TRANSFER", label: "Transfer", short: "Transfer" },
+  { key: "DONE", label: "Summary", short: "Done" },
+];
+
+function PhaseStrip({ sessionState, stateIndex, isStateDone, isStateCurrent }) {
+  // If fallback legacy phase number is passed (e.g., phase = 0, 1, 2)
+  if (typeof sessionState === "number") {
+    const legacySteps = [
+      { title: "Study Notes", shortLabel: "Notes", idx: 0 },
+      { title: "Practice Quiz", shortLabel: "Quiz", idx: 1 },
+      { title: "Mastered", shortLabel: "Mastered", idx: 2 },
+    ];
+    return (
+      <div className="phase-strip legacy-strip">
+        {legacySteps.map(({ shortLabel, idx }) => {
+          const isCompleted = sessionState > idx;
+          const isCurr = sessionState === idx;
+          return (
+            <div
+              key={idx}
+              className={`ph ${isCompleted ? "active" : ""} ${isCurr ? "current" : ""}`}
+            >
+              <span className="ph-num">{isCompleted ? "✓" : idx + 1}</span>
+              <span className="phase-strip-label">{shortLabel}</span>
+            </div>
+          );
+        })}
+      </div>
+    );
+  }
+
+  const activeIdx = stateIndex !== undefined ? stateIndex : 0;
 
   return (
-    <div className="phase-strip" style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "0.5rem" }}>
-      {steps.map(({ title, shortLabel, idx }) => {
-        const isCompleted = phase > idx;
-        const isCurrent = phase === idx;
-        const allowed = canJumpTo ? canJumpTo(idx) : true;
+    <div className="phase-strip-container">
+      <div className="phase-strip-9state">
+        {MASTERY_STEPS.map((step, idx) => {
+          const done = isStateDone ? isStateDone(step.key) : idx < activeIdx;
+          const current = isStateCurrent ? isStateCurrent(step.key) : idx === activeIdx;
 
-        return (
-          <button
-            key={idx}
-            type="button"
-            className={`ph ${isCompleted ? "active" : ""} ${isCurrent ? "current" : ""} ${allowed ? "" : "disabled"}`}
-            onClick={() => {
-              if (!setPhase || !allowed) return;
-              setPhase(idx);
-            }}
-            disabled={!allowed}
-            style={{
-              flex: 1,
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              gap: "0.4rem",
-              cursor: allowed && setPhase ? "pointer" : "default",
-              opacity: allowed ? 1 : 0.5,
-              border: isCurrent ? "1px solid var(--v)" : "1px solid var(--bd)",
-              background: isCurrent ? "rgba(77, 166, 255, 0.12)" : isCompleted ? "var(--bg2)" : "transparent",
-              color: isCurrent ? "var(--v)" : isCompleted ? "var(--t)" : "var(--t3)",
-              fontWeight: isCurrent ? 700 : 500,
-              padding: "0.45rem 0.75rem",
-              borderRadius: "12px",
-              transition: "all 0.2s ease",
-            }}
-          >
-            <span style={{
-              display: "inline-flex",
-              alignItems: "center",
-              justifyContent: "center",
-              width: "18px",
-              height: "18px",
-              borderRadius: "50%",
-              fontSize: "0.72rem",
-              fontWeight: 800,
-              background: isCompleted ? "var(--gr)" : isCurrent ? "var(--v)" : "var(--bd)",
-              color: "#ffffff",
-            }}>
-              {isCompleted ? "✓" : idx + 1}
-            </span>
-            <span className="phase-strip-label">{shortLabel}</span>
-          </button>
-        );
-      })}
+          return (
+            <div
+              key={step.key}
+              className={`ph-step-9 ${done ? "ph-done" : ""} ${current ? "ph-current" : ""}`}
+              title={step.label}
+            >
+              <span className="ph-step-dot">
+                {done ? "✓" : idx + 1}
+              </span>
+              <span className="ph-step-label">{step.short}</span>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 }

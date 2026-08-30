@@ -244,6 +244,8 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
           hint,
           explain,
           position,
+          concept_tag,
+          difficulty,
           answers (
             answer_text,
             is_correct
@@ -281,6 +283,8 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
           ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
           explain: qObj.explain || "",
           why: qObj.explain || "",
+          concept_tag: qObj.concept_tag || "",
+          difficulty: qObj.difficulty || "",
         });
       });
     }

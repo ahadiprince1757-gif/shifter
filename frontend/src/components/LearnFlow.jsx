@@ -1,16 +1,19 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useTopicContent } from "../hooks/useTopicContent";
-import { useQuiz } from "../hooks/useQuiz";
+import { useSessionLoop, SESSION_STATES } from "../hooks/useSessionLoop";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import { incrementGuestQuizCount } from "../utils/guestSession";
 
-
 import LearnHeader from "./learn/LearnHeader";
 import PhaseStrip from "./learn/PhaseStrip";
+import DiagnosticPhase from "./learn/DiagnosticPhase";
 import NotesPhase from "./learn/NotesPhase";
 import QuizPhase from "./learn/QuizPhase";
-import MasteredPhase from "./learn/MasteredPhase";
+import RepairPhase from "./learn/RepairPhase";
+import SpacedRetestPhase from "./learn/SpacedRetestPhase";
+import TransferPhase from "./learn/TransferPhase";
+import SessionSummary from "./learn/SessionSummary";
 
 function LearnFlow({
   subject,
@@ -21,23 +24,11 @@ function LearnFlow({
   markMastered,
   mastered,
 }) {
-  const [phase, setPhase] = useState(0); // 0: Notes, 1: Quiz, 2: Mastered
-  const { session, openAuthWithReason } = useAuth();
+  const { session } = useAuth();
+  const userId = session?.user?.id || null;
 
-  const handleGoToQuiz = () => {
-    if (!session) {
-      openAuthWithReason(
-        "Please sign in to take quizzes and track your mastery."
-      );
-      return;
-    }
-    setPhase(1);
-  };
-
-
-  // Persist last-visited topic per user so Subjects page can offer a "Continue" banner
+  // Persist last-visited topic per user
   useEffect(() => {
-    const userId = session?.user?.id;
     if (subject?.id && chapter?.id && topic && userId) {
       try {
         localStorage.setItem(
@@ -50,91 +41,59 @@ function LearnFlow({
             topic,
           })
         );
-      } catch { /* storage quota or private-mode errors — silently ignore */ }
+      } catch {
+        /* storage quota — ignore */
+      }
     }
-  }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic, session?.user?.id]);
+  }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic, userId]);
 
-  const userId = session?.user?.id || null;
-
+  // Load content
   const { content, loading, error } = useTopicContent(
     subject,
     chapter,
     topic,
-    setPhase,
-    userId,
+    null,
+    userId
   );
 
-  const quiz = useQuiz(
+  // Initialize the 9-state Mastery Session Loop
+  const loop = useSessionLoop({
     subject,
     chapter,
     topic,
     content,
-    markMastered,
-    setPhase,
     userId,
-  );
+    markMastered,
+  });
 
-  if (loading || error || !content) {
-    return (
-      <div id="v-learn" className="view active">
-        <LearnHeader
-          goBack={goBack}
-          topic={topic}
-          subject={subject}
-          chapter={chapter}
-          phase={phase}
-        />
-
-        <PhaseStrip
-          phase={phase}
-          setPhase={setPhase}
-          canJumpTo={() => false}
-        />
-
-        <div id="learnFlow">
-          <div className="lc" style={{ padding: "2rem" }}>
-            {phase === 1 ? (
-              <SkeletonLoader type="quiz" />
-            ) : phase === 2 ? (
-              <SkeletonLoader type="list" count={3} />
-            ) : (
-              <SkeletonLoader type="text" />
-            )}
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  const questions = Array.isArray(content?.qs) ? content.qs : [];
-  const curQ = questions[quiz.qIdx] ?? null;
-  const isCalc = curQ && curQ.type === "calc";
-
+  // Calculate next topic in curriculum
   const findNextTopic = () => {
     if (!subject || !chapter || !topic) return null;
-
-    const currentTopicIndex = chapter.topics.indexOf(topic);
+    const currentTopicIndex = chapter.topics?.indexOf(topic);
     if (currentTopicIndex >= 0) {
       const nextInChapter = chapter.topics
         .slice(currentTopicIndex + 1)
-        .find((t) => !mastered.has(`${subject.id}|${chapter.id}|${t}`));
+        .find((t) => !mastered?.has(`${subject.id}|${chapter.id}|${t}`));
       if (nextInChapter) {
         return { chapterId: chapter.id, topic: nextInChapter };
       }
     }
 
-    const currentChapterIndex = subject.chapters.findIndex(
-      (c) => c.id === chapter.id,
+    const currentChapterIndex = subject.chapters?.findIndex(
+      (c) => c.id === chapter.id
     );
-    for (let i = currentChapterIndex + 1; i < subject.chapters.length; i += 1) {
-      const nextTopic = subject.chapters[i].topics.find(
-        (t) => !mastered.has(`${subject.id}|${subject.chapters[i].id}|${t}`),
+    for (
+      let i = (currentChapterIndex ?? -1) + 1;
+      i < (subject.chapters?.length || 0);
+      i += 1
+    ) {
+      const nextTopic = subject.chapters[i].topics?.find(
+        (t) => !mastered?.has(`${subject.id}|${subject.chapters[i].id}|${t}`)
       );
       if (nextTopic) {
         return { chapterId: subject.chapters[i].id, topic: nextTopic };
       }
     }
-
     return null;
   };
 
@@ -145,59 +104,36 @@ function LearnFlow({
     }
   };
 
-  const hasQuestions = questions.length > 0;
-  const isLastQuestion = hasQuestions && quiz.qIdx === questions.length - 1;
-
-const finishTopic = () => {
-  const key = `${subject.id}|${chapter.id}|${topic}`;
-
-  // If guest, increment the free quiz counter on each completed quiz
-  if (!session) {
-    incrementGuestQuizCount();
-  }
-
-  markMastered(key);
-
-  if (quiz.finishQuiz) {
-    quiz.finishQuiz();
-  }
-
-  setPhase(2);
-
-  if (typeof window !== "undefined") {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  }
-};
-
-
-
-  const quizCompleted =
-    !hasQuestions ||
-    quiz.quizFinished ||
-    (isLastQuestion && quiz.feedback !== null);
-
-const canJumpToPhase = (idx) => {
-  // Notes always clickable
-  if (idx === 0) return true;
-
-  // Quiz clickable after notes
-  if (idx === 1) return true;
-
-  // Mastered clickable after finishing
-  if (idx === 2) {
+  if (loading || error || !content) {
     return (
-      phase === 2 ||
-      quizCompleted ||
-      quiz.quizFinished ||
-      mastered.has(`${subject.id}|${chapter.id}|${topic}`)
+      <div id="v-learn" className="view active">
+        <LearnHeader
+          goBack={goBack}
+          topic={topic}
+          subject={subject}
+          chapter={chapter}
+        />
+        <PhaseStrip
+          sessionState={loop.sessionState}
+          stateIndex={loop.stateIndex}
+          isStateDone={loop.isStateDone}
+          isStateCurrent={loop.isStateCurrent}
+        />
+        <div id="learnFlow">
+          <div className="lc" style={{ padding: "2rem" }}>
+            <SkeletonLoader type="text" />
+          </div>
+        </div>
+      </div>
     );
   }
 
-  return false;
-};
+  const handleFinishSession = () => {
+    if (!session) {
+      incrementGuestQuizCount();
+    }
+    loop.finishSession();
+  };
 
   return (
     <div id="v-learn" className="view active">
@@ -206,89 +142,147 @@ const canJumpToPhase = (idx) => {
         topic={topic}
         subject={subject}
         chapter={chapter}
-        phase={phase}
       />
 
       <PhaseStrip
-        phase={phase}
-        setPhase={setPhase}
-        canJumpTo={canJumpToPhase}
+        sessionState={loop.sessionState}
+        stateIndex={loop.stateIndex}
+        isStateDone={loop.isStateDone}
+        isStateCurrent={loop.isStateCurrent}
       />
 
       <div id="learnFlow">
-        {phase === 0 && (
-          <NotesPhase
-            topic={topic}
-            subject={subject}
-            chapter={chapter}
-            content={content}
-            goBack={goBack}
-            onNext={handleGoToQuiz}
+        {/* 1. DIAGNOSE PHASE */}
+        {loop.sessionState === SESSION_STATES.DIAGNOSE && (
+          <DiagnosticPhase
+            diagnosticQuestions={loop.diagnosticQuestions}
+            onComplete={loop.finishDiagnostic}
           />
         )}
 
-        {phase === 1 &&
-          (hasQuestions ? (
-            <QuizPhase
-              topic={topic}
-              qIdx={quiz.qIdx}
-              curQ={quiz.activeQuestion || curQ}
-              isCalc={quiz.activeQuestion ? quiz.activeQuestion.type === "calc" : isCalc}
-              answer={quiz.answer}
-              setAnswer={quiz.setAnswer}
-              work={quiz.work}
-              setWork={quiz.setWork}
-              explanation={quiz.explanation}
-              setExplanation={quiz.setExplanation}
-              grading={quiz.grading}
-              feedback={quiz.feedback}
-              validationError={quiz.validationError}
-              showHint={quiz.showHint}
-              setShowHint={quiz.setShowHint}
-              submitAnswer={quiz.submitAnswer}
-              nextQuestion={quiz.nextQuestion}
-              finishTopic={finishTopic}
-              isLastQuestion={isLastQuestion}
-              totalQs={questions.length}
-              retryState={quiz.retryState}
-              activeQuestion={quiz.activeQuestion}
-              startRetry={quiz.startRetry}
-              goToReview={quiz.goToReview}
-              content={content}
-              confidence={quiz.confidence}
-              setConfidence={quiz.setConfidence}
-            />
-          ) : (
-            <div className="lc" style={{ padding: "2rem" }}>
-              <div className="lch">
-                <span className="lbadge lb-q">Practice Quiz</span>
-              </div>
-              <div className="lcb">
-                <p style={{ color: "var(--t2)", marginBottom: "1.2rem" }}>
-                  There are no quiz questions available for this topic yet.
-                </p>
-                <button className="btn-p" onClick={() => { finishTopic(); setPhase(2); }}>
-                  Finish Topic
-                </button>
-                <button
-                  className="btn-g"
-                  onClick={() => setPhase(0)}
-                  style={{ marginLeft: "1rem" }}
-                >
-                  Back to Notes
-                </button>
-              </div>
+        {/* 2. TEACH PHASE (shown if gap found in diagnosis) */}
+        {loop.sessionState === SESSION_STATES.TEACH && (
+          <div className="teach-phase-wrapper">
+            <div className="diagnostic-banner">
+              ⚠️ Diagnostic outcome: Knowledge gap detected. Study the material below before taking the retrieval quiz.
             </div>
-          ))}
+            <NotesPhase
+              topic={topic}
+              subject={subject}
+              chapter={chapter}
+              content={content}
+              goBack={goBack}
+              onNext={loop.finishTeach}
+            />
+          </div>
+        )}
 
-        {phase === 2 && (
-          <MasteredPhase
+        {/* 3. RETRIEVE PHASE */}
+        {loop.sessionState === SESSION_STATES.RETRIEVE && (
+          <QuizPhase
             topic={topic}
+            qIdx={loop.retrieveQIdx}
+            curQ={loop.currentRetrieveQuestion}
+            isCalc={loop.currentRetrieveQuestion?.type === "calc"}
+            answer={loop.retrieveAnswer}
+            setAnswer={loop.setRetrieveAnswer}
+            work={loop.retrieveWork}
+            setWork={loop.setRetrieveWork}
+            explanation=""
+            setExplanation={() => {}}
+            grading={loop.retrieveGrading}
+            feedback={loop.retrieveFeedback}
+            validationError={loop.retrieveValidationError}
+            showHint={loop.retrieveShowHint}
+            setShowHint={loop.setRetrieveShowHint}
+            submitAnswer={() =>
+              loop.submitRetrieveAnswer(
+                loop.retrieveQIdx,
+                loop.retrieveAnswer,
+                loop.retrieveWork,
+                loop.retrieveConfidence
+              )
+            }
+            nextQuestion={() =>
+              loop.nextRetrieveQuestion(loop.failedQuestions, loop.retrieveConfidence)
+            }
+            finishTopic={() =>
+              loop.nextRetrieveQuestion(loop.failedQuestions, loop.retrieveConfidence)
+            }
+            isLastQuestion={loop.isLastRetrieveQuestion}
+            totalQs={loop.totalRetrieveQuestions}
+            confidence={loop.retrieveConfidence}
+            setConfidence={loop.setRetrieveConfidence}
+          />
+        )}
+
+        {/* 4. REPAIR PHASE (IDENTIFY & REPAIR) */}
+        {(loop.sessionState === SESSION_STATES.IDENTIFY ||
+          loop.sessionState === SESSION_STATES.REPAIR) && (
+          <RepairPhase
+            conceptTag={loop.currentRepairConcept}
+            repairData={loop.currentRepairData}
             content={content}
+            subject={subject}
+            currentIdx={loop.currentRepairIdx + 1}
+            totalConcepts={loop.conceptOrder.length}
+            onTaught={loop.markConceptTaught}
+            onPassed={(concept) =>
+              loop.passRepair(concept, loop.sessionScore, loop.retrieveConfidence)
+            }
+            onSkip={(concept) =>
+              loop.passRepair(concept, loop.sessionScore, loop.retrieveConfidence)
+            }
+          />
+        )}
+
+        {/* 5. SPACE PHASE */}
+        {loop.sessionState === SESSION_STATES.SPACE && (
+          <div className="lc" style={{ padding: "2rem", textAlign: "center" }}>
+            <div className="lbadge lb-space">Spacing Memory</div>
+            <h3 style={{ marginTop: "1rem" }}>Review Schedule Updated</h3>
+            <p style={{ color: "var(--t2)", marginTop: "0.5rem" }}>
+              Memory consolidation schedule calculated. Preparing retest items...
+            </p>
+          </div>
+        )}
+
+        {/* 6. RETEST PHASE */}
+        {loop.sessionState === SESSION_STATES.RETEST && (
+          <SpacedRetestPhase
+            dueReviews={loop.dueReviews}
+            onComplete={loop.finishRetest}
+          />
+        )}
+
+        {/* 7. TRANSFER PHASE */}
+        {loop.sessionState === SESSION_STATES.TRANSFER && (
+          <TransferPhase
+            transferQuestion={loop.transferQuestion}
+            answer={loop.transferAnswer}
+            setAnswer={loop.setTransferAnswer}
+            feedback={loop.transferFeedback}
+            confidence={loop.transferConfidence}
+            setConfidence={loop.setTransferConfidence}
+            onSubmit={loop.submitTransferAnswer}
+            onFinish={handleFinishSession}
+          />
+        )}
+
+        {/* 8. DONE PHASE (SESSION SUMMARY) */}
+        {loop.sessionState === SESSION_STATES.DONE && (
+          <SessionSummary
+            topic={topic}
+            subject={subject}
+            chapter={chapter}
+            sessionScore={loop.sessionScore}
+            diagnosticResult={loop.diagnosticResult}
+            weaknessMap={loop.weaknessMap}
+            conceptOrder={loop.conceptOrder}
             nextTopic={nextTopic?.topic}
             goToNext={goToNextTopic}
             goBack={goBack}
-            failedQuestions={quiz.failedQuestions}
+            userId={userId}
           />
         )}
       </div>
