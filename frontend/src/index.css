@@ -6172,7 +6172,141 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   opacity: 0.92;
 }
 
+/* ── Personalised Answer Breakdown UI ───────────────────────────────── */
+.fb-breakdown-container {
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 12px;
+  padding: 1rem 1.1rem;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.fb-breakdown-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fb-breakdown-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.fb-breakdown-icon {
+  font-size: 0.85rem;
+}
+
+.fb-breakdown-quote {
+  font-size: 0.95rem;
+  color: #e2e8f0;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid rgba(148, 163, 184, 0.4);
+  border-radius: 0 8px 8px 0;
+  padding: 0.5rem 0.75rem;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* Closeness progress bar */
+.fb-breakdown-closeness-bar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.fb-breakdown-closeness-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.fb-breakdown-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.fb-breakdown-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.fb-breakdown-fill--close    { background: linear-gradient(90deg, #34d399, #10b981); }
+.fb-breakdown-fill--partial  { background: linear-gradient(90deg, #fbbf24, #f59e0b); }
+.fb-breakdown-fill--off-track { background: linear-gradient(90deg, #f87171, #ef4444); }
+.fb-breakdown-fill--irrelevant { background: rgba(148, 163, 184, 0.3); }
+
+.fb-breakdown-ratio-text {
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* Keyword chips */
+.fb-breakdown-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.fb-breakdown-chip {
+  display: inline-block;
+  padding: 0.2rem 0.55rem;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.fb-chip-correct {
+  background: rgba(52, 211, 153, 0.12);
+  color: #34d399;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+
+.fb-chip-missing {
+  background: rgba(248, 113, 113, 0.12);
+  color: #f87171;
+  border: 1px solid rgba(248, 113, 113, 0.3);
+}
+
+/* Gap explanation list */
+.fb-breakdown-gap-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 0.2rem;
+}
+
+.fb-breakdown-gap-item {
+  font-size: 0.83rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  padding: 0.3rem 0.5rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 6px;
+}
+
+.fb-breakdown-gap-keyword {
+  font-weight: 700;
+  color: #f87171;
+}
+
+.fb-breakdown-gap-reason {
+  color: #94a3b8;
+}
+
 /* ── Continue Learning Banner UI ────────────────────────────────────── */
+
 @keyframes resumeSlideDown {
   from {
     opacity: 0;

@@ -96,6 +96,11 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
     workingNote = `Partially correct (${partialInfo.matchedCount}/${partialInfo.totalRequired} items identified — ${partialInfo.percent}%). Complete all required items to master this concept.`;
   }
 
+  // 3. Generate personalised answer breakdown (always, not just for misconceptions)
+  const breakdown = !finalIsCorrect
+    ? generateAnswerBreakdown(userAnswer, mainCorrectAnswerStr, normalize, tokenize)
+    : null;
+
   return {
     isCorrect: finalIsCorrect,
     isAnswerCorrect,
@@ -106,6 +111,7 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
     solution,
     steps: Array.isArray(question.steps) ? question.steps : [],
     mark: finalIsCorrect ? "Correct" : "Incorrect",
+    breakdown,
   };
 }
 
@@ -134,4 +140,73 @@ function checkSingleVariant(uAns, cAns, tokenize) {
   }
 
   return false;
+}
+
+/**
+ * Generates a personalised breakdown comparing the student's answer to the correct answer.
+ * Returns exactly what they got right, what they missed, and a plain-English reason.
+ *
+ * @param {string} studentAnswer - What the student typed
+ * @param {string} correctAnswer - The correct answer string
+ * @param {Function} normalize - String normalizer
+ * @param {Function} tokenize - String tokenizer
+ * @returns {Object} breakdown
+ */
+function generateAnswerBreakdown(studentAnswer, correctAnswer, normalize, tokenize) {
+  const sNorm = normalize(studentAnswer || "");
+  const cNorm = normalize(correctAnswer || "");
+
+  const sTokens = tokenize(sNorm);
+  const cTokens = tokenize(cNorm);
+
+  // Key concept words (length > 3, ignore common stop words)
+  const STOP_WORDS = new Set([
+    "the", "and", "that", "this", "with", "from", "for", "are", "was",
+    "were", "have", "has", "had", "been", "will", "would", "could", "should",
+    "used", "also", "when", "them", "their", "they", "into", "which"
+  ]);
+
+  const cKeywords = cTokens.filter((w) => w.length > 3 && !STOP_WORDS.has(w));
+  const sKeywords = new Set(sTokens.filter((w) => w.length > 3 && !STOP_WORDS.has(w)));
+
+  const matched = cKeywords.filter((w) => sKeywords.has(w));
+  const missing = cKeywords.filter((w) => !sKeywords.has(w));
+
+  const matchRatio = cKeywords.length > 0 ? matched.length / cKeywords.length : 0;
+
+  // Determine how close the student was
+  let closeness;
+  let closenessLabel;
+  if (matchRatio >= 0.7) {
+    closeness = "close";
+    closenessLabel = "Very close — just missing key terminology.";
+  } else if (matchRatio >= 0.35) {
+    closeness = "partial";
+    closenessLabel = "Partially correct — you understood some concepts but missed core parts.";
+  } else if (sNorm.length < 5 || /^(idk|i don|no idea|pass|dunno|nothing|help)/.test(sNorm)) {
+    closeness = "irrelevant";
+    closenessLabel = "No attempt — you expressed having no idea.";
+  } else {
+    closeness = "off-track";
+    closenessLabel = "Your answer was off-track — different concept applied.";
+  }
+
+  // Generate specific gap explanations for missing keywords
+  const missingExplanations = missing.slice(0, 4).map((w) => {
+    return { keyword: w, reason: `The concept "${w}" is central to the correct answer but was not mentioned in your response.` };
+  });
+
+  // Identify what the student DID say that shows understanding
+  const creditedPhrases = matched.map((w) => w);
+
+  return {
+    studentSaid: studentAnswer.trim(),
+    correctAnswer,
+    matched: creditedPhrases,
+    missing: missing,
+    missingExplanations,
+    closeness,
+    closenessLabel,
+    matchRatio: Math.round(matchRatio * 100),
+  };
 }
