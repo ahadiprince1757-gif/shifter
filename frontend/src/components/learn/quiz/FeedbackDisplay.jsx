@@ -160,82 +160,56 @@ function FeedbackDisplay({
         </>
       )}
 
-      {/* ── PERSONALISED ANSWER BREAKDOWN ─────────────────────────── */}
-      {!isCorrect && feedback.breakdown && feedback.breakdown.closeness !== "irrelevant" && (
-        <div className="fb-breakdown-container">
+      {/* ── SMART ANSWER ANALYSIS ─────────────────────────────────────── */}
+      {!isCorrect && feedback.analysis && feedback.analysis.feedback && feedback.analysis.feedback.length > 0 && (
+        <div className="smart-analysis-container">
 
-          {/* What the student said */}
-          <div className="fb-breakdown-section fb-breakdown-you-said">
-            <div className="fb-breakdown-label">
-              <span className="fb-breakdown-icon">📝</span> You said:
-            </div>
-            <div className="fb-breakdown-quote">
-              "{feedback.breakdown.studentSaid}"
-            </div>
+          {/* What the student wrote */}
+          <div className="smart-analysis-you-said">
+            <span className="smart-analysis-label">📝 You wrote:</span>
+            <span className="smart-analysis-quote">"{feedback.analysis.studentSaid}"</span>
           </div>
 
-          {/* How close they were */}
-          <div className="fb-breakdown-closeness-bar">
-            <div className="fb-breakdown-closeness-label">
-              {feedback.breakdown.closenessLabel}
+          {/* Summary sentence */}
+          {feedback.analysis.summary && (
+            <div className="smart-analysis-summary">
+              {feedback.analysis.summary}
             </div>
-            <div className="fb-breakdown-track">
+          )}
+
+          {/* Per-issue breakdown — specific sentences */}
+          <div className="smart-analysis-list">
+            {feedback.analysis.feedback.map((item, i) => (
               <div
-                className={`fb-breakdown-fill fb-breakdown-fill--${feedback.breakdown.closeness}`}
-                style={{ width: `${Math.max(10, feedback.breakdown.matchRatio)}%` }}
-              />
-            </div>
-            <div className="fb-breakdown-ratio-text">
-              {feedback.breakdown.matchRatio}% of key concepts present
-            </div>
+                key={i}
+                className={`smart-analysis-item smart-analysis-item--${
+                  item.type === "segment_correct" || item.type === "step_correct"
+                    ? "correct"
+                    : item.type === "step_partial" || item.type === "missing_qualifier"
+                    ? "warn"
+                    : "wrong"
+                }`}
+              >
+                <span className="smart-analysis-item-icon">{item.icon}</span>
+                <span className="smart-analysis-item-text">{item.message}</span>
+              </div>
+            ))}
           </div>
 
-          {/* What they got right */}
-          {feedback.breakdown.matched.length > 0 && (
-            <div className="fb-breakdown-section fb-breakdown-matched">
-              <div className="fb-breakdown-label">
-                <span className="fb-breakdown-icon">✓</span> What you got right:
-              </div>
-              <div className="fb-breakdown-chips">
-                {feedback.breakdown.matched.map((w, i) => (
-                  <span key={i} className="fb-breakdown-chip fb-chip-correct">{w}</span>
-                ))}
+          {/* Concept accuracy bar */}
+          {feedback.analysis.type === "concept_analysis" && typeof feedback.analysis.overallRatio === "number" && (
+            <div className="smart-analysis-bar-row">
+              <span className="smart-analysis-bar-label">
+                Concept accuracy: {feedback.analysis.overallRatio}%
+              </span>
+              <div className="smart-analysis-bar-track">
+                <div
+                  className="smart-analysis-bar-fill"
+                  style={{ width: `${Math.max(5, feedback.analysis.overallRatio)}%` }}
+                />
               </div>
             </div>
           )}
-
-          {/* What they missed — with explanations */}
-          {feedback.breakdown.missing.length > 0 && (
-            <div className="fb-breakdown-section fb-breakdown-missing">
-              <div className="fb-breakdown-label">
-                <span className="fb-breakdown-icon">✗</span> What was missing from your answer:
-              </div>
-              <div className="fb-breakdown-chips" style={{ marginBottom: "0.6rem" }}>
-                {feedback.breakdown.missing.map((w, i) => (
-                  <span key={i} className="fb-breakdown-chip fb-chip-missing">{w}</span>
-                ))}
-              </div>
-              {feedback.breakdown.missingExplanations.length > 0 && (
-                <div className="fb-breakdown-gap-list">
-                  {feedback.breakdown.missingExplanations.map((gap, i) => (
-                    <div key={i} className="fb-breakdown-gap-item">
-                      <span className="fb-breakdown-gap-keyword">"{gap.keyword}"</span>
-                      <span className="fb-breakdown-gap-reason"> — {gap.reason}</span>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          )}
-        </div>
-      )}
-
-      {/* For genuinely irrelevant / no-attempt answers */}
-      {!isCorrect && feedback.breakdown && feedback.breakdown.closeness === "irrelevant" && (
-        <div className="fb-breakdown-container">
-          <div className="fb-breakdown-section" style={{ color: "#94a3b8", fontSize: "0.9rem" }}>
-            No meaningful attempt detected. Review the concept notes and try again.
-          </div>
         </div>
       )}
 

@@ -6172,7 +6172,132 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   opacity: 0.92;
 }
 
-/* ── Personalised Answer Breakdown UI ───────────────────────────────── */
+/* ── Smart Answer Analysis Panel ────────────────────────────────────── */
+.smart-analysis-container {
+  background: rgba(10, 18, 36, 0.6);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+  border-radius: 14px;
+  padding: 1rem 1.15rem;
+  margin: 0.75rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+/* "You wrote: …" row */
+.smart-analysis-you-said {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.4rem;
+  padding-bottom: 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.smart-analysis-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+  white-space: nowrap;
+}
+
+.smart-analysis-quote {
+  font-size: 0.95rem;
+  color: #cbd5e1;
+  font-style: italic;
+  line-height: 1.5;
+}
+
+/* One-line summary */
+.smart-analysis-summary {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #94a3b8;
+  line-height: 1.4;
+}
+
+/* Issue list */
+.smart-analysis-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.smart-analysis-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  font-size: 0.875rem;
+  line-height: 1.55;
+}
+
+/* Correct item */
+.smart-analysis-item--correct {
+  background: rgba(52, 211, 153, 0.08);
+  border-left: 3px solid #34d399;
+  color: #a7f3d0;
+}
+
+/* Warn item (partial step, missing qualifier) */
+.smart-analysis-item--warn {
+  background: rgba(251, 191, 36, 0.08);
+  border-left: 3px solid #fbbf24;
+  color: #fde68a;
+}
+
+/* Wrong item (wrong term, missing concept, contradiction) */
+.smart-analysis-item--wrong {
+  background: rgba(248, 113, 113, 0.08);
+  border-left: 3px solid #f87171;
+  color: #fecaca;
+}
+
+.smart-analysis-item-icon {
+  font-size: 0.85rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+  opacity: 0.85;
+}
+
+.smart-analysis-item-text {
+  flex: 1;
+}
+
+/* Concept accuracy bar */
+.smart-analysis-bar-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.smart-analysis-bar-label {
+  font-size: 0.75rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.smart-analysis-bar-track {
+  height: 5px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.smart-analysis-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  background: linear-gradient(90deg, #6366f1, #818cf8);
+  transition: width 0.5s ease;
+}
+
+/* ── Continue Learning Banner UI ────────────────────────────────────── */
+
 .fb-breakdown-container {
   background: rgba(15, 23, 42, 0.5);
   border: 1px solid rgba(99, 102, 241, 0.2);
