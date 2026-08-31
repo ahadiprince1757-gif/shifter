@@ -1,4 +1,4 @@
-﻿/**
+/**
  * Smart Answer Analyser
  * Produces specific, sentence-level feedback for every incorrect answer.
  */
@@ -95,20 +95,29 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
   // ── Step-level (for math / procedural questions) ─────────────────────────
   if (Array.isArray(question.steps) && question.steps.length > 0) {
     question.steps.forEach((step, i) => {
-      const stepClean = step.replace(/^step\s*\d+\s*[:\-]/i, "").trim();
+      const stepClean = step.replace(/^step\s*\d+\s*[:-]/i, "").trim();
       const stepToks  = tokenize(normalizeStr(stepClean));
       const overlap   = stepToks.filter((t) => studentToks.includes(t));
       const ratio     = stepToks.length > 0 ? overlap.length / stepToks.length : 0;
 
       if (ratio >= 0.45) {
-        feedback.push({ type: "step_correct", icon: "✓",
-          message: Step  was correct — you mentioned , which matches the expected approach. });
+        feedback.push({
+          type: "step_correct",
+          icon: "✓",
+          message: `Step ${i + 1} was correct — you mentioned ${overlap.slice(0, 3).join(", ")}, which matches the expected approach.`
+        });
       } else if (ratio >= 0.15) {
-        feedback.push({ type: "step_partial", icon: "⚠",
-          message: Step  was partially right. You started on the right path but didn't fully complete it. Expected: "" });
+        feedback.push({
+          type: "step_partial",
+          icon: "⚠",
+          message: `Step ${i + 1} was partially right. You started on the right path but didn't fully complete it. Expected: "${stepClean}"`
+        });
       } else {
-        feedback.push({ type: "step_wrong", icon: "✗",
-          message: Step  was missed or incorrect. The expected step was: "" });
+        feedback.push({
+          type: "step_wrong",
+          icon: "✗",
+          message: `Step ${i + 1} was missed or incorrect. The expected step was: "${stepClean}"`
+        });
       }
     });
 
@@ -138,16 +147,25 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
     const segRatio = segToks.length > 0 ? matched.length / segToks.length : 0;
 
     if (segRatio >= 0.8) {
-      feedback.push({ type: "segment_correct", icon: "✓",
-        message: You correctly said "" — that part of your answer is right. });
+      feedback.push({
+        type: "segment_correct",
+        icon: "✓",
+        message: `You correctly said "${segment}" — that part of your answer is right.`
+      });
     } else {
       for (const wt of wrongTerm) {
-        feedback.push({ type: "wrong_term", icon: "✗",
-          message: You said "" but the correct term here is "". You had the right idea but used the wrong word — the answer specifically requires "". });
+        feedback.push({
+          type: "wrong_term",
+          icon: "✗",
+          message: `You said "${wt.studentUsed}" but the correct term here is "${wt.expected}". You had the right idea but used the wrong word — the answer specifically requires "${wt.expected}".`
+        });
       }
       for (const m of missing.slice(0, 3)) {
-        feedback.push({ type: "missing_concept", icon: "✗",
-          message: You didn't mention "" — this is a required concept. The answer expects you to include "" because . });
+        feedback.push({
+          type: "missing_concept",
+          icon: "✗",
+          message: `You didn't mention "${m}" — this is a required concept. The answer expects you to include "${m}" because ${_explainWhy(m, correctNorm)}.`
+        });
       }
     }
   }
@@ -160,8 +178,11 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
     if (!opposite) continue;
     const correctRequiresOpposite = correctToks.some((ct) => getCluster(ct) === opposite);
     if (correctRequiresOpposite) {
-      feedback.push({ type: "contradiction", icon: "✗",
-        message: You said "" but the correct answer involves  — these are opposite concepts. This is the core place your answer broke. });
+      feedback.push({
+        type: "contradiction",
+        icon: "✗",
+        message: `You said "${sTok}" but the correct answer involves ${opposite} — these are opposite concepts. This is the core place your answer broke.`
+      });
     }
   }
 
@@ -170,8 +191,11 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
     if (correctNorm.includes(q) && !studentNorm.includes(q)) {
       const qIdx  = correctNorm.indexOf(q);
       const nearby = correctNorm.slice(qIdx, qIdx + 40).split(" ").slice(0, 4).join(" ");
-      feedback.push({ type: "missing_qualifier", icon: "✗",
-        message: You missed the qualifier "". The correct answer says "..." — without "" your answer is technically inaccurate. });
+      feedback.push({
+        type: "missing_qualifier",
+        icon: "✗",
+        message: `You missed the qualifier "${q}". The correct answer says "${nearby}..." — without "${q}" your answer is technically inaccurate.`
+      });
     }
   }
 
@@ -196,7 +220,7 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
   };
 }
 
-function _explainWhy(word, correctContext) {
+function _explainWhy(word) {
   const cluster = getCluster(word);
   if (cluster === "instrument") return "a microscope is a type of scientific instrument — that classification is the foundation of the definition";
   if (cluster === "magnify") return "the core function of the device is magnification";
