@@ -84,7 +84,7 @@ const OPPOSITES = {
 const QUALIFIERS = ["small","large","strong","weak","high","low","positive",
                     "negative","simple","complex","equal","unequal"];
 
-export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}) {
+export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}, userWork = "") {
   const studentNorm = normalizeStr(studentAnswer);
   const correctNorm = normalizeStr(correctAnswer);
   const studentToks = tokenize(studentNorm);
@@ -92,37 +92,12 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
   const feedback    = [];
   const covered     = new Set();
 
-  // ── Step-level (for math / procedural questions) ─────────────────────────
+  // ── Step-level Math & Procedural Analysis ─────────────────────────────────
   if (Array.isArray(question.steps) && question.steps.length > 0) {
-    question.steps.forEach((step, i) => {
-      const stepClean = step.replace(/^step\s*\d+\s*[:-]/i, "").trim();
-      const stepToks  = tokenize(normalizeStr(stepClean));
-      const overlap   = stepToks.filter((t) => studentToks.includes(t));
-      const ratio     = stepToks.length > 0 ? overlap.length / stepToks.length : 0;
-
-      if (ratio >= 0.45) {
-        feedback.push({
-          type: "step_correct",
-          icon: "✓",
-          message: `Step ${i + 1} was correct — you mentioned ${overlap.slice(0, 3).join(", ")}, which matches the expected approach.`
-        });
-      } else if (ratio >= 0.15) {
-        feedback.push({
-          type: "step_partial",
-          icon: "⚠",
-          message: `Step ${i + 1} was partially right. You started on the right path but didn't fully complete it. Expected: "${stepClean}"`
-        });
-      } else {
-        feedback.push({
-          type: "step_wrong",
-          icon: "✗",
-          message: `Step ${i + 1} was missed or incorrect. The expected step was: "${stepClean}"`
-        });
-      }
-    });
-
-    return { type: "step_analysis", feedback, studentSaid: studentAnswer.trim(), correctAnswer };
+    return analyseMathSteps(question.steps, studentAnswer, userWork, correctAnswer);
   }
+
+  // ── Concept-level analysis ────────────────────────────────────────────────
 
   // ── Concept-level analysis ────────────────────────────────────────────────
   const correctSegments = segmentPhrase(correctNorm);
@@ -229,4 +204,97 @@ function _explainWhy(word) {
   if (cluster === "covalent") return "the bonding type is covalent, involving shared electrons";
   if (cluster === "formula") return "identifying the correct formula is the first step before any calculation";
   return "it is part of the complete and accurate definition";
+}
+
+/**
+ * Detailed Math Step Analyzer
+ * Evaluates student's answer and working against question.steps.
+ * Pinpoints the EXACT step where math broke and explains WHY.
+ */
+function analyseMathSteps(questionSteps, studentAnswer, userWork, correctAnswer) {
+  const combinedWorking = [userWork, studentAnswer].filter(Boolean).join("\n");
+  const fullNorm = normalizeStr(combinedWorking);
+  const fullToks = tokenize(fullNorm);
+
+  // Extract all numbers (including signed & decimals) from student input
+  const studentNumbers = (combinedWorking.match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
+
+  const feedback = [];
+  let firstFailedStepIndex = -1;
+
+  questionSteps.forEach((step, i) => {
+    const stepNum = i + 1;
+    const stepClean = step.replace(/^step\s*\d+\s*[:-]/i, "").trim();
+    const stepNorm = normalizeStr(stepClean);
+    const stepToks = tokenize(stepNorm);
+    const stepNumbers = (stepClean.match(/-?\d+(?:\.\d+)?/g) || []).map(Number);
+
+    // Evaluate how well student's input matches this step
+    const overlapToks = stepToks.filter((t) => fullToks.includes(t));
+    const tokenMatchRatio = stepToks.length > 0 ? overlapToks.length / stepToks.length : 0;
+
+    // Evaluate numerical matches for this step
+    const numMatches = stepNumbers.filter((n) => studentNumbers.includes(n));
+    const numMatchRatio = stepNumbers.length > 0 ? numMatches.length / stepNumbers.length : 1;
+
+    // Check for Sign Error (e.g., student has -N when expected +N or vice-versa)
+    const signErrors = [];
+    stepNumbers.forEach((n) => {
+      if (n !== 0 && !studentNumbers.includes(n) && studentNumbers.includes(-n)) {
+        signErrors.push({ expected: n, studentGot: -n });
+      }
+    });
+
+    const isStepPassed = (tokenMatchRatio >= 0.35 || numMatchRatio >= 0.5) && signErrors.length === 0;
+
+    if (isStepPassed && firstFailedStepIndex === -1) {
+      feedback.push({
+        type: "step_correct",
+        icon: "✓",
+        message: `Step ${stepNum}: "${stepClean}" — Correct. You completed this step successfully.`
+      });
+    } else if (firstFailedStepIndex === -1) {
+      // THIS IS THE EXACT STEP WHERE MATH BROKE!
+      firstFailedStepIndex = i;
+
+      let reasonDetail;
+      if (signErrors.length > 0) {
+        const se = signErrors[0];
+        reasonDetail = `Sign Error: You wrote ${se.studentGot} instead of ${se.expected}. Pay close attention to positive/negative signs when rearranging terms.`;
+      } else if (stepNumbers.length > 0 && numMatches.length === 0) {
+        reasonDetail = `Calculation divergence: Expected values (${stepNumbers.join(", ")}) were not reached in your calculation. Check your arithmetic or formula substitution.`;
+      } else if (stepNorm.includes("factor")) {
+        reasonDetail = `Factoring error: The factors in your step do not expand back to the original quadratic expression.`;
+      } else if (stepNorm.includes("divide")) {
+        reasonDetail = `Division error: Division by coefficient was applied incorrectly or to only one side of the equation.`;
+      } else {
+        reasonDetail = `The method applied diverges from the required step: "${stepClean}".`;
+      }
+
+      feedback.push({
+        type: "step_wrong",
+        icon: "✗",
+        message: `Step ${stepNum} is where your math broke: Expected "${stepClean}". ${reasonDetail}`
+      });
+    } else {
+      // Subsequent step after a failure
+      feedback.push({
+        type: "step_partial",
+        icon: "⚠",
+        message: `Step ${stepNum}: "${stepClean}" — Could not be validated because your working broke at Step ${firstFailedStepIndex + 1}. Fix Step ${firstFailedStepIndex + 1} first.`
+      });
+    }
+  });
+
+  const displayStudentSaid = userWork ? `Working: "${userWork}" | Answer: "${studentAnswer}"` : studentAnswer.trim();
+
+  return {
+    type: "step_analysis",
+    feedback,
+    studentSaid: displayStudentSaid,
+    correctAnswer,
+    summary: firstFailedStepIndex !== -1
+      ? `Math Step Breakdown — Your working broke at Step ${firstFailedStepIndex + 1}.`
+      : "Math Step Breakdown — Steps attempted, but final calculation requires review.",
+  };
 }

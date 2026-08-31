@@ -100,7 +100,7 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
 
   // 3. Rich answer analysis — tells the student exactly where they went wrong
   const analysis = !finalIsCorrect
-    ? analyseStudentAnswer(userAnswer, mainCorrectAnswerStr, question)
+    ? analyseStudentAnswer(userAnswer, mainCorrectAnswerStr, question, userWork)
     : null;
 
   return {
