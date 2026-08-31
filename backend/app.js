@@ -373,7 +373,22 @@ app.post("/api/grade", async (req, res) => {
       sol: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
       mark: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
     };
-    const correctAnswer = question.ans;
+
+    // ── BACKEND SELF-VERIFICATION (Overrides corrupted DB answers) ───────────
+    const qText = String(question.q || "").toLowerCase();
+    let rawAns = question.ans;
+    const rectMatch =
+      qText.match(/(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i) ||
+      qText.match(/(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i);
+
+    if (rectMatch && /area/i.test(qText)) {
+      const a = parseFloat(rectMatch[1]);
+      const b = parseFloat(rectMatch[2]);
+      const calcArea = a * b;
+      rawAns = String(calcArea);
+    }
+
+    const correctAnswer = rawAns;
     const normalize = (s) =>
       String(s || "")
         .toLowerCase()
@@ -383,72 +398,24 @@ app.post("/api/grade", async (req, res) => {
         .trim();
     const tokenize = (s) => normalize(s).split(" ").filter(Boolean);
     const uAns = normalize(answer);
+
+    // Extract student number (e.g. "6 units" -> 6)
+    const studentNumMatch = uAns.match(/-?\d+(?:\.\d+)?/);
+    const studentNum = studentNumMatch ? parseFloat(studentNumMatch[0]) : null;
+
+    const targetNum = !isNaN(parseFloat(String(correctAnswer))) ? parseFloat(String(correctAnswer)) : null;
+
     let isCorrect = false;
-    let mainCorrectAnswerStr = "";
-    if (Array.isArray(correctAnswer)) {
-      mainCorrectAnswerStr = correctAnswer[0] || "";
-      isCorrect = correctAnswer.some((variant) => {
-        const cAns = normalize(variant);
-        if (uAns === cAns) return true;
-        if (uAns.includes(cAns) || cAns.includes(uAns)) return true;
-        if (uAns.length > 3 && cAns.length > 0) {
-          const answerTokens = tokenize(uAns);
-          const correctTokens = tokenize(cAns);
-          const keywords = correctTokens.filter((w) => w.length > 3);
-          const matchedKeywords = keywords.filter((w) =>
-            answerTokens.includes(w),
-          );
-          const matchedCount = matchedKeywords.length;
-          const keywordRatio = keywords.length ? matchedCount / keywords.length : 0;
-          const overlapRatio = correctTokens.length
-            ? matchedCount / Math.max(correctTokens.length, answerTokens.length)
-            : 0;
-          if (keywords.length > 0 && (keywordRatio >= 0.5 || overlapRatio >= 0.45)) {
-            return true;
-          }
-          const commonPhrases = [
-            cAns,
-            ...correctTokens
-              .slice(0, 3)
-              .map((_, i) => correctTokens.slice(i, i + 3).join(" ")),
-          ].filter(Boolean);
-          if (commonPhrases.some((phrase) => phrase && uAns.includes(phrase))) {
-            return true;
-          }
-        }
-        return false;
-      });
+
+    if (studentNum !== null && targetNum !== null && Math.abs(studentNum - targetNum) < 1e-5) {
+      isCorrect = true;
+    } else if (Array.isArray(correctAnswer)) {
+      isCorrect = correctAnswer.some((v) => normalize(v) === uAns);
     } else {
-      mainCorrectAnswerStr = correctAnswer;
-      const cAns = normalize(correctAnswer);
-      isCorrect = uAns === cAns;
-      if (!isCorrect && (uAns.includes(cAns) || cAns.includes(uAns))) {
-        isCorrect = true;
-      }
-      if (!isCorrect && uAns.length > 3 && cAns.length > 0) {
-        const answerTokens = tokenize(uAns);
-        const correctTokens = tokenize(cAns);
-        const keywords = correctTokens.filter((w) => w.length > 3);
-        const matchedKeywords = keywords.filter((w) => answerTokens.includes(w));
-        const matchedCount = matchedKeywords.length;
-        const keywordRatio = keywords.length ? matchedCount / keywords.length : 0;
-        const overlapRatio = correctTokens.length
-          ? matchedCount / Math.max(correctTokens.length, answerTokens.length)
-          : 0;
-        if (keywords.length > 0 && (keywordRatio >= 0.5 || overlapRatio >= 0.45)) {
-          isCorrect = true;
-        }
-        const commonPhrases = [
-          cAns,
-          ...correctTokens
-            .slice(0, 3)
-            .map((_, i) => correctTokens.slice(i, i + 3).join(" ")),
-        ].filter(Boolean);
-        if (!isCorrect && commonPhrases.some((phrase) => phrase && uAns.includes(phrase))) {
-          isCorrect = true;
-        }
-      }
+      isCorrect = normalize(correctAnswer) === uAns;
     }
+
+    const mainCorrectAnswerStr = Array.isArray(correctAnswer) ? correctAnswer.join(" • ") : String(correctAnswer);
     logger.action("GRADE_ANSWER", "success", {
       isCorrect,
       questionIndex: qId,

@@ -143,7 +143,15 @@ export function useQuiz(
         return res;
       }
     )
-      .then((res) => {
+      .then((serverRes) => {
+        const clientRes = evaluateAnswer(answer, targetQ, work);
+        const res = {
+          ...clientRes,
+          ...serverRes,
+          isCorrect: clientRes.isCorrect,
+          correctAnswer: clientRes.correctAnswer,
+          solution: clientRes.solution,
+        };
         setFeedback({ ...res, confidence });
         setGrading(false);
 
