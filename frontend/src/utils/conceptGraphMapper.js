@@ -809,7 +809,6 @@ export function evaluateConceptGraph(
     studentTokens = [],
     correctTokens = [],
     studentText = "",
-    _correctText = "",
   } = Array.isArray(input)
     ? {
         studentTriples:
