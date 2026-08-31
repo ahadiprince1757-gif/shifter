@@ -318,189 +318,9 @@ export class ChemistryMutator {
       };
     }
 
-    // ── 8. Chemical Bonding & Periodic Trends (Strict Concept Isolation) ──
-    if (lower.includes("bond") || lower.includes("ionic") || lower.includes("covalent") || lower.includes("metallic") || lower.includes("electron") || lower.includes("periodic") || lower.includes("valenc")) {
-      const isCovalent = lower.includes("covalent") || lower.includes("share") || lower.includes("sharing") || lower.includes("molecule") || lower.includes("non-metal");
-      const isMetallic = lower.includes("metallic") || lower.includes("sea of electron") || lower.includes("delocalized");
-
-      if (isCovalent) {
-        // Covalent Bonding Variants
-        const covalentScenarios = [
-          {
-            qStem: "Element A (Hydrogen, 1) and Element B (Chlorine, 2,8,7) combine to form Hydrogen Chloride (HCl). What type of chemical bond forms between them, and how are valence electrons involved?",
-            ans: "Covalent bond; Element A and Element B share 1 pair of valence electrons to achieve stable octet/duplet configurations.",
-            hint: "Non-metals share valence electrons to form covalent bonds.",
-            sol: "Covalent bond formed by sharing 1 pair of electrons between H and Cl.",
-            distractors: [
-              "Covalent bond; Element A and Element B share 1 pair of valence electrons to achieve stable octet/duplet configurations.",
-              "Ionic bond; Element A transfers 1 electron to Element B to form charged ions.",
-              "Metallic bond; Element A and B float in a sea of delocalized valence electrons.",
-              "Hydrogen bond; Permanent electrostatic attraction between fully ionized atoms."
-            ]
-          },
-          {
-            qStem: "Carbon (atomic number 6, config 2,4) reacts with Oxygen (atomic number 8, config 2,6) to form Carbon Dioxide (CO₂). Describe the bonding mechanism.",
-            ans: "Covalent bond; Carbon forms double covalent bonds by sharing 2 pairs of electrons with each Oxygen atom.",
-            hint: "Carbon has 4 valence electrons and needs 4 more by sharing with Oxygen.",
-            sol: "Covalent bond formed by sharing 2 pairs of electrons with each Oxygen atom.",
-            distractors: [
-              "Covalent bond; Carbon forms double covalent bonds by sharing 2 pairs of electrons with each Oxygen atom.",
-              "Ionic bond; Carbon transfers 4 electrons to Oxygen to form C⁴⁺ and O²⁻ ions.",
-              "Metallic bond; Carbon and Oxygen form a metallic crystal lattice.",
-              "Electrovalent bond; Electrons are transferred back and forth continuously."
-            ]
-          },
-          {
-            qStem: "Two Nitrogen atoms (config 2,5) combine to form a Nitrogen gas molecule (N₂). How many electron pairs are shared in this covalent bond?",
-            ans: "3 pairs of electrons (Triple covalent bond)",
-            hint: "Each Nitrogen atom needs 3 electrons to complete its octet (2,8).",
-            sol: "Triple covalent bond (3 shared electron pairs).",
-            distractors: [
-              "3 pairs of electrons (Triple covalent bond)",
-              "1 pair of electrons (Single covalent bond)",
-              "2 pairs of electrons (Double covalent bond)",
-              "4 pairs of electrons (Quadruple ionic bond)"
-            ]
-          }
-        ];
-
-        const selected = covalentScenarios[mode % covalentScenarios.length];
-        const ansStr = selected.ans;
-
-        if (mode === 0) {
-          return {
-            q: selected.qStem,
-            ans: ansStr,
-            hint: selected.hint,
-            sol: selected.sol,
-            type: "open_response",
-            options: null,
-          };
-        } else if (mode === 1) {
-          return {
-            q: selected.qStem,
-            ans: ansStr,
-            hint: selected.hint,
-            sol: selected.sol,
-            type: "mcq",
-            options: selected.distractors,
-          };
-        } else if (mode === 2) {
-          return {
-            q: `A student claimed that the atoms in this scenario ("${selected.qStem.split('.')[0]}.") form an ionic bond by transferring electrons. Is this claim correct? State the true bond type and mechanism.`,
-            ans: `Incorrect. The true bond is: ${ansStr}.`,
-            hint: selected.hint,
-            sol: `Claim is incorrect. ${selected.sol}`,
-            type: "open_response",
-            options: null,
-          };
-        } else {
-          return {
-            q: `State the general rule for covalent bond formation between non-metal atoms, then describe the bonding for:\n"${selected.qStem}"`,
-            ans: `Rule: Non-metals complete octets by sharing pairs of valence electrons. Bonding mechanism: ${ansStr}.`,
-            hint: selected.hint,
-            sol: selected.sol,
-            type: "open_response",
-            options: null,
-          };
-        }
-      } else if (isMetallic) {
-        // Metallic Bonding Variants
-        const ansStr = "Metallic bond; Electrostatic attraction between positive metal cations and a delocalized sea of valence electrons";
-        if (mode === 0) {
-          return {
-            q: "Explain the nature of chemical bonding in solid copper metal and state what holds the metal structure together.",
-            ans: ansStr,
-            hint: "Metal atoms shed outer electrons into a mobile sea of delocalized electrons.",
-            sol: ansStr,
-            type: "open_response",
-            options: null,
-          };
-        } else {
-          return {
-            q: "Which statement accurately describes metallic bonding in metals like sodium or aluminum?",
-            ans: ansStr,
-            hint: "Delocalized electrons flow between fixed positive metal ions.",
-            sol: ansStr,
-            type: "mcq",
-            options: [
-              ansStr,
-              "Ionic bond; Metal atoms transfer electrons to neighboring metal atoms",
-              "Covalent bond; Metal atoms share localized pairs of electrons",
-              "Van der Waals attraction between neutral gas molecules"
-            ],
-          };
-        }
-      } else {
-        // Ionic Bonding Variants
-        const ionicScenarios = [
-          {
-            qStem: "Element X (Sodium, 2,8,1) reacts with Element Y (Chlorine, 2,8,7) to form Sodium Chloride (NaCl). What type of chemical bond forms between X and Y, and how are electrons transferred?",
-            ans: "Ionic bond; Element X transfers 1 valence electron to Element Y to form X⁺ and Y⁻ ions.",
-            hint: "Metals (Group 1) transfer valence electrons to non-metals (Group 7) to form oppositely charged ions.",
-            sol: "Ionic bond formed by electron transfer from X to Y.",
-            distractors: [
-              "Ionic bond; Element X transfers 1 valence electron to Element Y to form X⁺ and Y⁻ ions.",
-              "Covalent bond; Element X and Y share a pair of electrons equally.",
-              "Metallic bond; Delocalized sea of electrons shared between metal ions.",
-              "Hydrogen bond; Permanent dipole attraction between polar molecules."
-            ]
-          },
-          {
-            qStem: "Magnesium (atomic number 12, config 2,8,2) reacts with Oxygen (atomic number 8, config 2,6) to form Magnesium Oxide (MgO). Describe the electron transfer.",
-            ans: "Ionic bond; Magnesium transfers 2 valence electrons to Oxygen, forming Mg²⁺ and O²⁻ ions.",
-            hint: "Magnesium loses 2 electrons to achieve octet (2,8); Oxygen gains 2 electrons to achieve octet (2,8).",
-            sol: "Ionic bond formed by transfer of 2 electrons from Mg to O.",
-            distractors: [
-              "Ionic bond; Magnesium transfers 2 valence electrons to Oxygen, forming Mg²⁺ and O²⁻ ions.",
-              "Covalent bond; Magnesium and Oxygen share 2 pairs of electrons.",
-              "Metallic bond; Magnesium and Oxygen share delocalized valence electrons.",
-              "Dative bond; Oxygen donates both electrons to Magnesium."
-            ]
-          }
-        ];
-
-        const selected = ionicScenarios[mode % ionicScenarios.length];
-        const ansStr = selected.ans;
-
-        if (mode === 0) {
-          return {
-            q: selected.qStem,
-            ans: ansStr,
-            hint: selected.hint,
-            sol: selected.sol,
-            type: "open_response",
-            options: null,
-          };
-        } else if (mode === 1) {
-          return {
-            q: selected.qStem,
-            ans: ansStr,
-            hint: selected.hint,
-            sol: selected.sol,
-            type: "mcq",
-            options: selected.distractors,
-          };
-        } else if (mode === 2) {
-          return {
-            q: `A student claimed that the reaction in this scenario ("${selected.qStem.split('.')[0]}.") forms a covalent bond by sharing electrons. Is this claim correct? State the true bond type and mechanism.`,
-            ans: `Incorrect. The true bond is: ${ansStr}.`,
-            hint: selected.hint,
-            sol: `Claim is incorrect. ${selected.sol}`,
-            type: "open_response",
-            options: null,
-          };
-        } else {
-          return {
-            q: `State the general rule for ionic bond formation between metal and non-metal atoms, then describe the bonding for:\n"${selected.qStem}"`,
-            ans: `Rule: Metal transfers valence electrons to non-metal to form oppositely charged ions held by electrostatic forces. Mechanism: ${ansStr}.`,
-            hint: selected.hint,
-            sol: selected.sol,
-            type: "open_response",
-            options: null,
-          };
-        }
-      }
+    // ── 8. Chemical Bonding & Periodic Trends (Dynamic Interactive Engine) ──
+    if (lower.includes("bond") || lower.includes("ionic") || lower.includes("covalent") || lower.includes("metallic") || lower.includes("electron") || lower.includes("periodic") || lower.includes("valenc") || lower.includes("melting") || lower.includes("lattice")) {
+      return this._generateDynamicBondingQuestion(stem, lower, mode);
     }
 
     // ── 9. Rates of Reaction & Catalysts ──
@@ -576,7 +396,7 @@ export class ChemistryMutator {
 
     return {
       ...qObj,
-      q: `[Chemical Reaction Check] ${stem}`,
+      q: stem,
       hint: qObj.hint || "Check chemical equations and stoichiometric ratios.",
       steps: [
         "Step 1: Balance chemical equation",
@@ -584,5 +404,192 @@ export class ChemistryMutator {
         "Step 3: Calculate final answer"
       ]
     };
+  }
+
+  _generateDynamicBondingQuestion(stem, lower, mode) {
+    const isCovalent = lower.includes("covalent") || lower.includes("share") || lower.includes("sharing") || lower.includes("molecule") || lower.includes("non-metal");
+    const isMetallic = lower.includes("metallic") || lower.includes("sea of electron") || lower.includes("delocalized");
+    const isProperty = lower.includes("melting") || lower.includes("boiling") || lower.includes("conduct") || lower.includes("solub") || lower.includes("lattice");
+
+    // Dynamic Element Database
+    const metals = [
+      { name: "Sodium", symbol: "Na", z: 11, config: "2,8,1", valency: 1, ion: "Na⁺" },
+      { name: "Potassium", symbol: "K", z: 19, config: "2,8,8,1", valency: 1, ion: "K⁺" },
+      { name: "Magnesium", symbol: "Mg", z: 12, config: "2,8,2", valency: 2, ion: "Mg²⁺" },
+      { name: "Calcium", symbol: "Ca", z: 20, config: "2,8,8,2", valency: 2, ion: "Ca²⁺" },
+      { name: "Aluminum", symbol: "Al", z: 13, config: "2,8,3", valency: 3, ion: "Al³⁺" },
+    ];
+
+    const nonMetals = [
+      { name: "Chlorine", symbol: "Cl", z: 17, config: "2,8,7", valency: 1, ion: "Cl⁻", covalentPairs: 1, gasFormula: "Cl₂" },
+      { name: "Fluorine", symbol: "F", z: 9, config: "2,7", valency: 1, ion: "F⁻", covalentPairs: 1, gasFormula: "F₂" },
+      { name: "Oxygen", symbol: "O", z: 8, config: "2,6", valency: 2, ion: "O²⁻", covalentPairs: 2, gasFormula: "O₂" },
+      { name: "Sulfur", symbol: "S", z: 16, config: "2,8,6", valency: 2, ion: "S²⁻", covalentPairs: 2, gasFormula: "S" },
+      { name: "Nitrogen", symbol: "N", z: 7, config: "2,5", valency: 3, ion: "N³⁻", covalentPairs: 3, gasFormula: "N₂" },
+      { name: "Hydrogen", symbol: "H", z: 1, config: "1", valency: 1, ion: "H⁺", covalentPairs: 1, gasFormula: "H₂" },
+      { name: "Carbon", symbol: "C", z: 6, config: "2,4", valency: 4, ion: "C⁴⁻", covalentPairs: 4, gasFormula: "CO₂" },
+    ];
+
+    if (isProperty) {
+      // 1. PHYSICAL PROPERTY & CRYSTAL LATTICE CORRELATION
+      const metal = metals[mode % metals.length];
+      const nonMetal = nonMetals[(mode + 1) % nonMetals.length];
+      const ionicCompound = `${metal.symbol}${nonMetal.valency > 1 ? "₂" : ""}${nonMetal.symbol}${metal.valency > 1 ? (nonMetal.valency === 1 ? (metal.valency === 2 ? "₂" : "₃") : "") : ""}`;
+      
+      const ansStr = `High melting point due to strong electrostatic attraction in the 3D ionic crystal lattice; conducts electricity when molten/dissolved because ions become mobile.`;
+      
+      if (mode === 0) {
+        return {
+          q: `Explain why ionic compounds such as ${metal.name} ${nonMetal.name} (${ionicCompound}) have high melting points and conduct electricity when molten, but not in the solid state.`,
+          ans: ansStr,
+          hint: "Consider ionic lattice attraction and mobility of ions in molten vs solid states.",
+          sol: ansStr,
+          type: "open_response",
+          options: null
+        };
+      } else {
+        return {
+          q: `Which explanation correctly accounts for the high melting point and electrical conductivity of molten ${metal.name} ${nonMetal.name} (${ionicCompound})?`,
+          ans: ansStr,
+          hint: "Ionic lattice forces require high heat; molten state frees ions.",
+          sol: ansStr,
+          type: "mcq",
+          options: [
+            ansStr,
+            "Low melting point because covalent bonds between molecules are easily broken by heat",
+            "High melting point because electrons flow freely in the solid state like metals",
+            "Low melting point because ionic compounds contain weak Van der Waals forces"
+          ]
+        };
+      }
+    } else if (isCovalent) {
+      // 2. COVALENT BONDING GENERATOR
+      const non1 = nonMetals[(mode + 2) % nonMetals.length];
+      const non2 = nonMetals[(mode + 5) % nonMetals.length];
+      const ansStr = `Covalent bond; ${non1.name} and ${non2.name} share ${non1.covalentPairs === 1 && non2.covalentPairs === 1 ? "1 pair" : `${non1.covalentPairs} pairs`} of valence electrons to complete their octet/duplet configurations.`;
+
+      if (mode === 0) {
+        return {
+          q: `Element M (${non1.name}, config ${non1.config}) reacts with Element N (${non2.name}, config ${non2.config}). Identify the bonding type and describe the valence electron interaction.`,
+          ans: ansStr,
+          hint: "Non-metal atoms share pairs of valence electrons to achieve noble gas configurations.",
+          sol: ansStr,
+          type: "open_response",
+          options: null
+        };
+      } else if (mode === 1) {
+        return {
+          q: `What type of chemical bond forms when ${non1.name} (config ${non1.config}) combines with ${non2.name} (config ${non2.config})?`,
+          ans: ansStr,
+          hint: "Sharing valence electrons between non-metals.",
+          sol: ansStr,
+          type: "mcq",
+          options: [
+            ansStr,
+            `Ionic bond; ${non1.name} transfers all valence electrons to ${non2.name} to form ions`,
+            `Metallic bond; Delocalized sea of valence electrons surrounding neutral nuclei`,
+            `Electrovalent bond; Electrons bounce back and forth between atoms`
+          ]
+        };
+      } else if (mode === 2) {
+        return {
+          q: `A student stated that ${non1.name} and ${non2.name} form an ionic bond where electrons are completely lost and gained. Is this statement correct? State the true bond type.`,
+          ans: `Incorrect. The true bond is: ${ansStr}`,
+          hint: "Both elements are non-metals and share valence electrons.",
+          sol: `Incorrect statement. ${ansStr}`,
+          type: "open_response",
+          options: null
+        };
+      } else {
+        return {
+          q: `Draw/describe the dot-and-cross arrangement of valence electrons for a covalent molecule formed between ${non1.name} (${non1.config}) and ${non2.name} (${non2.config}).`,
+          ans: `Dot-and-cross: Valence electrons overlap between ${non1.symbol} and ${non2.symbol} to share ${non1.covalentPairs} electron pair(s). Total shared electrons = ${non1.covalentPairs * 2}.`,
+          hint: "Show shared electrons in the overlapping region.",
+          sol: `Valence overlap: ${non1.covalentPairs} shared pair(s).`,
+          type: "open_response",
+          options: null
+        };
+      }
+    } else if (isMetallic) {
+      // 3. METALLIC BONDING GENERATOR
+      const metal = metals[mode % metals.length];
+      const ansStr = `Metallic bond; Electrostatic attraction between positive ${metal.name} cations (${metal.ion}) and a mobile, delocalized sea of valence electrons.`;
+
+      if (mode === 0) {
+        return {
+          q: `Describe the bonding structure in a crystal lattice of solid ${metal.name} metal (${metal.config}) and explain why it is malleable and conducts electricity.`,
+          ans: `${ansStr} Malleability occurs because layers of cations slide over each other without breaking the delocalized electron sea.`,
+          hint: "Positive metal cations float in a mobile sea of delocalized outer electrons.",
+          sol: ansStr,
+          type: "open_response",
+          options: null
+        };
+      } else {
+        return {
+          q: `Which description correctly accounts for metallic bonding and electrical conductivity in ${metal.name} metal?`,
+          ans: ansStr,
+          hint: "Delocalized sea of valence electrons carries electric charge.",
+          sol: ansStr,
+          type: "mcq",
+          options: [
+            ansStr,
+            `Ionic bond; Fixed ${metal.name} cations attract static non-metal anions`,
+            `Covalent bond; Localized pairs of electrons are shared between adjacent ${metal.name} atoms`,
+            `Van der Waals forces between individual ${metal.name} gas atoms`
+          ]
+        };
+      }
+    } else {
+      // 4. IONIC BONDING GENERATOR (FRESH METALS & NON-METALS)
+      const metal = metals[mode % metals.length];
+      const nonMetal = nonMetals[(mode + 3) % nonMetals.length];
+      
+      const ratioStr = metal.valency === nonMetal.valency ? `1:1 ratio (${metal.symbol}${nonMetal.symbol})` : `ratio forming ${metal.symbol}${nonMetal.valency > 1 ? "₂" : ""}${nonMetal.symbol}${metal.valency > 1 ? (nonMetal.valency === 1 ? (metal.valency === 2 ? "₂" : "₃") : "") : ""}`;
+      
+      const ansStr = `Ionic bond; ${metal.name} (config ${metal.config}) loses ${metal.valency} valence electron(s) to form ${metal.ion}, while ${nonMetal.name} (config ${nonMetal.config}) gains electron(s) to form ${nonMetal.ion}.`;
+
+      if (mode === 0) {
+        return {
+          q: `Element X (${metal.name}, atomic no ${metal.z}, config ${metal.config}) reacts with Element Y (${nonMetal.name}, atomic no ${nonMetal.z}, config ${nonMetal.config}). Identify the bond type, charges on resulting ions, and chemical formula ratio.`,
+          ans: `${ansStr} Formula ratio = ${ratioStr}.`,
+          hint: "Metal loses valence electrons to non-metal to form oppositely charged ions.",
+          sol: `${ansStr} Formula = ${ratioStr}.`,
+          type: "open_response",
+          options: null
+        };
+      } else if (mode === 1) {
+        return {
+          q: `What type of bond and ionic formula results when ${metal.name} (config ${metal.config}) reacts with ${nonMetal.name} (config ${nonMetal.config})?`,
+          ans: `${ansStr} Compound formula = ${ratioStr}.`,
+          hint: "Electron transfer from metal to non-metal.",
+          sol: ansStr,
+          type: "mcq",
+          options: [
+            `${ansStr} Compound formula = ${ratioStr}.`,
+            `Covalent bond; ${metal.name} and ${nonMetal.name} share 2 pairs of electrons.`,
+            `Metallic bond; ${metal.name} and ${nonMetal.name} dissolve into a sea of electrons.`,
+            `Hydrogen bond; Dipole-dipole attraction between neutral atoms.`
+          ]
+        };
+      } else if (mode === 2) {
+        return {
+          q: `A student claimed that when ${metal.name} reacts with ${nonMetal.name}, they form a covalent molecule by sharing electrons equally. Is this claim correct? State the true bond type and ion formation.`,
+          ans: `Incorrect. The true reaction is: ${ansStr}`,
+          hint: "Metal + Non-metal always forms an ionic bond via electron transfer.",
+          sol: `Claim is incorrect. ${ansStr}`,
+          type: "open_response",
+          options: null
+        };
+      } else {
+        return {
+          q: `State the octet rule mechanism for ionic bonding between ${metal.name} (${metal.config}) and ${nonMetal.name} (${nonMetal.config}), including the charges of the stable ions formed.`,
+          ans: `${metal.name} loses ${metal.valency} electron(s) to form ${metal.ion} (octet configuration). ${nonMetal.name} gains electron(s) to form ${nonMetal.ion} (octet configuration). Electrostatic attraction forms the ionic lattice.`,
+          hint: "Identify ion charges: Metal becomes positive cation, non-metal becomes negative anion.",
+          sol: `Stable ions: ${metal.ion} and ${nonMetal.ion}.`,
+          type: "open_response",
+          options: null
+        };
+      }
+    }
   }
 }
