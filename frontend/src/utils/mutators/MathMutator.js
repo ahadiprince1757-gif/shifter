@@ -8,35 +8,47 @@
  */
 
 export class MathMutator {
-  mutate(qObj, modalityIndex = 0) {
+  mutate(qObj, modalityIndex = 0, performanceContext = {}) {
     if (!qObj) return null;
     const stem = (qObj.q || qObj.stem || "").trim();
     const lower = stem.toLowerCase();
     const rawAns = String(qObj.ans || "");
+
     const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
-    // 1. Percentage & Financial Math (Profit, Loss, Interest, Discount)
+    // Performance & Diagnostic Context
+    const diagnosis = performanceContext.diagnosis || qObj.diagnosis || {};
+    const level = typeof performanceContext.level === "number" 
+      ? performanceContext.level 
+      : (qObj._attemptCount ? Math.min(3, qObj._attemptCount + 1) : 1);
+
+    // 1. Quadratic Expressions & Algebra Adaptation Engine
+    if (lower.includes("quadrat") || lower.includes("x²") || lower.includes("x^2") || lower.includes("factor") || lower.includes("solve for x") || lower.includes("equation")) {
+      return this._mutateQuadraticOrAlgebra(qObj, stem, lower, mode, level, diagnosis);
+    }
+
+    // 2. Percentage & Financial Math (Profit, Loss, Interest, Discount, Depreciation)
     const currencyMatch = stem.match(/(?:KSh|\$|€|£)\s*(\d+(?:,\d+)*(?:\.\d+)?)/i) || stem.match(/(\d+)\s*(?:shilling|ksh)/i);
     const pctMatch = stem.match(/(\d+(?:\.\d+)?)\s*%/);
 
-    if (currencyMatch || pctMatch || lower.includes("profit") || lower.includes("interest") || lower.includes("discount") || lower.includes("cost")) {
-      return this._mutateFinancialOrPercentage(qObj, stem, lower);
+    if (currencyMatch || pctMatch || lower.includes("profit") || lower.includes("interest") || lower.includes("discount") || lower.includes("cost") || lower.includes("vat")) {
+      return this._mutateFinancialOrPercentage(qObj, stem, lower, mode, level, diagnosis);
     }
 
-    // 2. Geometry & Measurement (Area, Perimeter, Radius, Volume)
+    // 3. Geometry & Measurement (Area, Perimeter, Volume, Trigonometry)
     if (lower.includes("area") || lower.includes("perimeter") || lower.includes("radius") || lower.includes("diameter") || lower.includes("volume") || lower.includes("rectangle") || lower.includes("circle") || lower.includes("triangle")) {
-      const geomRes = this._mutateGeometry(qObj, stem, lower);
+      const geomRes = this._mutateGeometry(qObj, stem, lower, mode, level, diagnosis);
       if (geomRes) return geomRes;
     }
 
-    // 3. Linear Equations & Algebra (e.g. 2x + 5 = 15 or solve for x)
+    // 4. Linear Equations & Basic Algebra (e.g. 2x + 5 = 15)
     const eqMatch = stem.match(/(\d+)\s*x\s*([+-])\s*(\d+)\s*=\s*(\d+)/i);
     if (eqMatch) {
       const a = parseInt(eqMatch[1], 10);
       const op = eqMatch[2];
 
       const newA = a + (Math.floor(Math.random() * 3) + 1);
-      const newX = Math.floor(Math.random() * 8) + 2; // Make x a clean integer
+      const newX = Math.floor(Math.random() * 8) + 2; // Clean integer x
       const newB = Math.floor(Math.random() * 10) + 1;
       const newC = op === "+" ? (newA * newX + newB) : (newA * newX - newB);
 
@@ -62,30 +74,12 @@ export class MathMutator {
       };
     }
 
-    // 4. Speed, Distance & Time (d = s * t)
-    if (lower.includes("speed") || lower.includes("distance") || lower.includes("time") || lower.includes("km/h") || lower.includes("m/s")) {
-      const s = (Math.floor(Math.random() * 8) + 4) * 10; // 40 to 110 km/h
-      const t = Math.floor(Math.random() * 4) + 2; // 2 to 5 hours
-      const d = s * t;
-      const type = mode === 0 ? "open_response" : "mcq";
-
-      return {
-        q: `A vehicle travels at a constant speed of ${s} km/h for ${t} hours. Calculate the total distance covered.`,
-        ans: `${d} km`,
-        hint: "Formula: Distance = Speed × Time",
-        why: `Distance = ${s} km/h × ${t} h = ${d} km.`,
-        sol: `${d} km`,
-        steps: [
-          `Step 1: Note given parameters: Speed = ${s} km/h, Time = ${t} hours`,
-          `Step 2: Apply formula: Distance = Speed × Time`,
-          `Step 3: Calculate: ${s} × ${t} = ${d} km`
-        ],
-        type,
-        options: type === "mcq" ? [`${d} km`, `${s + t} km`, `${d + s} km`, `${Math.round(d / 2)} km`] : null
-      };
+    // 5. Speed, Distance & Time (Kinematics & Relative Velocity)
+    if (lower.includes("speed") || lower.includes("distance") || lower.includes("time") || lower.includes("km/h") || lower.includes("m/s") || lower.includes("matatu")) {
+      return this._mutateKinematics(qObj, stem, lower, mode, level, diagnosis);
     }
 
-    // 5. Generic Number Extraction & Dynamic Scaling for Any Math Question
+    // 6. Generic Number Extraction & Dynamic Scaling
     const numbers = stem.match(/\b\d+(?:\.\d+)?\b/g);
     if (numbers && numbers.length >= 1) {
       const scaleFactor = (Math.floor(Math.random() * 4) + 2); // 2, 3, 4, 5
@@ -95,40 +89,28 @@ export class MathMutator {
         const newVal = numVal * scaleFactor;
         const mutatedStem = stem.replace(numbers[0], String(newVal));
 
-        // Try to update answer numerically if possible
         let origAnsNum = parseFloat(rawAns.replace(/[^0-9.]/g, ""));
         let newAnsStr = rawAns;
-        let correctVal = 0;
-
-        if (!isNaN(origAnsNum) && origAnsNum !== 0) {
-          correctVal = Math.round(origAnsNum * scaleFactor);
-          newAnsStr = rawAns.replace(/\d+(?:\.\d+)?/, String(correctVal));
+        if (!isNaN(origAnsNum)) {
+          const newAnsVal = origAnsNum * scaleFactor;
+          newAnsStr = rawAns.replace(String(origAnsNum), String(newAnsVal));
         }
-
-        const options = correctVal > 0 ? this._generateNumberOptions(correctVal, false) : undefined;
 
         return {
           ...qObj,
-          q: `[Application Retry] ${mutatedStem}`,
+          q: mutatedStem,
           ans: newAnsStr,
-          hint: qObj.hint || "Apply the mathematical relationship with the updated values.",
-          why: `Values updated by scale factor ×${scaleFactor}.`,
-          sol: `Updated solution: ${newAnsStr}`,
-          steps: [
-            "Step 1: Note updated numerical values in the question stem",
-            "Step 2: Apply the governing mathematical formula",
-            "Step 3: Compute final value"
-          ],
-          type: options ? "mcq" : qObj.type,
-          options
+          sol: newAnsStr,
+          type: mode === 0 ? "open_response" : "mcq",
+          options: mode === 0 ? null : this._generateNumberOptions(parseFloat(newAnsStr) || 10, false)
         };
       }
     }
 
-    // 6. Conceptual / Fallback Scaffold Mode
+    // Fallback Scaffold Mode
     return {
       ...qObj,
-      q: `[Concept Mastery] Regarding "${stem}": What is the fundamental formula or first step to solve this problem?`,
+      q: stem,
       ans: qObj.ans,
       hint: qObj.hint || "Recall the relevant mathematical rule or theorem.",
       steps: [
@@ -137,6 +119,110 @@ export class MathMutator {
         "Step 3: Calculate answer"
       ]
     };
+  }
+
+  _mutateQuadraticOrAlgebra(qObj, stem, lower, mode, level) {
+    if (level === 3) {
+      // LEVEL 3: REAL-WORLD CBC / KCSE TRANSFER (Ball trajectory, Farm yield, Profit modeling)
+      const transferScenarios = [
+        {
+          q: "A ball follows a quadratic trajectory given by h(t) = -5t² + 20t + 25, where h is height in meters and t is time in seconds. Find the time t when the ball hits the ground (h = 0).",
+          ans: "5 seconds",
+          hint: "Set h(t) = 0 -> -5t² + 20t + 25 = 0. Divide by -5 to get t² - 4t - 5 = 0, then factor (t - 5)(t + 1) = 0.",
+          sol: "t = 5 seconds (disregarding negative time t = -1).",
+          steps: [
+            "Step 1: Set height h(t) = 0: -5t² + 20t + 25 = 0",
+            "Step 2: Simplify by dividing by -5: t² - 4t - 5 = 0",
+            "Step 3: Factor: (t - 5)(t + 1) = 0 -> t = 5 s (since time t > 0)"
+          ],
+          type: mode === 0 ? "open_response" : "mcq",
+          options: mode === 0 ? null : ["5 seconds", "4 seconds", "25 seconds", "2 seconds"]
+        },
+        {
+          q: "A rectangular maize farm in Nakuru has an area of 120 m². The length of the farm is 7 m longer than its width. Calculate the width of the farm.",
+          ans: "8 meters",
+          hint: "Let width = w. Length = w + 7. Area = w(w + 7) = 120 -> w² + 7w - 120 = 0.",
+          sol: "w² + 7w - 120 = 0 -> (w + 15)(w - 8) = 0 -> w = 8 m.",
+          steps: [
+            "Step 1: Express area as equation: w(w + 7) = 120",
+            "Step 2: Expand to standard quadratic form: w² + 7w - 120 = 0",
+            "Step 3: Factor: (w + 15)(w - 8) = 0 -> Width = 8 m (positive dimension)"
+          ],
+          type: mode === 0 ? "open_response" : "mcq",
+          options: mode === 0 ? null : ["8 meters", "15 meters", "12 meters", "10 meters"]
+        }
+      ];
+      return transferScenarios[mode % transferScenarios.length];
+    } else if (level === 2) {
+      // LEVEL 2: OPERATIONAL STRESS (Non-unit leading coefficient a > 1)
+      const a = (mode % 3) + 2; // 2, 3, 4
+      const p = (mode % 4) + 1; // 1, 2, 3, 4
+      const q = (mode % 3) + 2; // 2, 3, 4
+      const b = (a * q) + p;
+      const c = p * q;
+      const eq = `${a}x² - ${b}x + ${c} = 0`;
+      const ansStr = `x = ${q} or x = ${p}/${a}`;
+
+      return {
+        q: `Solve the quadratic equation with non-unit leading coefficient: ${eq}`,
+        ans: ansStr,
+        hint: `Factor ${a}x² - ${b}x + ${c} = 0 using two numbers that multiply to ${a * c} and add up to -${b}.`,
+        sol: `(${a}x - ${p})(x - ${q}) = 0 -> x = ${q} or x = ${p}/${a}.`,
+        type: mode === 0 ? "open_response" : "mcq",
+        options: mode === 0 ? null : [ansStr, `x = ${q + 1}`, `x = ${b}`, `x = ${c}`]
+      };
+    } else {
+      // LEVEL 1: PROCEDURAL BASIS (Standard unit coefficient factoring)
+      const p = (mode % 4) + 2; // 2, 3, 4, 5
+      const q = (mode % 4) + 3; // 3, 4, 5, 6
+      const b = p + q;
+      const c = p * q;
+      const eq = `x² - ${b}x + ${c} = 0`;
+      const ansStr = `x = ${p} or x = ${q}`;
+
+      return {
+        q: `Solve for x in the quadratic equation: ${eq}`,
+        ans: ansStr,
+        hint: `Find two numbers that multiply to +${c} and add up to -${b}.`,
+        sol: `(x - ${p})(x - ${q}) = 0 -> x = ${p} or x = ${q}.`,
+        type: mode === 0 ? "open_response" : "mcq",
+        options: mode === 0 ? null : [ansStr, `x = ${b} or x = ${c}`, `x = -${p} or x = -${q}`, `x = ${p * 2}`]
+      };
+    }
+  }
+
+  _mutateKinematics(qObj, stem, lower, mode, level) {
+    if (level === 3) {
+      // LEVEL 3: REAL-WORLD RELATIVE VELOCITY & BREAKING DISTANCE
+      const v1 = (Math.floor(Math.random() * 4) + 6) * 10; // 60 to 90 km/h
+      const v2 = (Math.floor(Math.random() * 4) + 5) * 10; // 50 to 80 km/h
+      const totalDist = 280; // Nairobi to Kisumu segment distance
+      const relSpeed = v1 + v2;
+      const meetTimeHours = (totalDist / relSpeed).toFixed(1);
+
+      return {
+        q: `Two matatus leave Nairobi and Kisumu (280 km apart) at the same time, traveling towards each other along the highway. Matatu A travels at ${v1} km/h and Matatu B travels at ${v2} km/h. How many hours after departure will they meet?`,
+        ans: `${meetTimeHours} hours`,
+        hint: "Relative speed when moving towards each other = Speed A + Speed B. Time = Distance ÷ Relative Speed.",
+        sol: `Relative Speed = ${v1} + ${v2} = ${relSpeed} km/h. Time = 280 ÷ ${relSpeed} = ${meetTimeHours} hours.`,
+        type: mode === 0 ? "open_response" : "mcq",
+        options: mode === 0 ? null : [`${meetTimeHours} hours`, `${(totalDist / v1).toFixed(1)} hours`, `${(totalDist / v2).toFixed(1)} hours`, `3.0 hours`]
+      };
+    } else {
+      // LEVEL 1 / 2: UNIFORM KINEMATICS
+      const s = (Math.floor(Math.random() * 8) + 4) * 10; // 40 to 110 km/h
+      const t = Math.floor(Math.random() * 4) + 2; // 2 to 5 hours
+      const d = s * t;
+
+      return {
+        q: `A vehicle travels at a constant speed of ${s} km/h for ${t} hours. Calculate the total distance covered.`,
+        ans: `${d} km`,
+        hint: "Formula: Distance = Speed × Time",
+        sol: `Distance = ${s} km/h × ${t} h = ${d} km.`,
+        type: mode === 0 ? "open_response" : "mcq",
+        options: mode === 0 ? null : [`${d} km`, `${s + t} km`, `${d + s} km`, `${Math.round(d / 2)} km`]
+      };
+    }
   }
 
   _mutateFinancialOrPercentage(qObj, stem, lower) {
