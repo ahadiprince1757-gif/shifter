@@ -51,32 +51,54 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
   const sToks = tokenize(sNorm);
   const cToks = tokenize(cNorm);
 
-  const topicId = question.topicId || question.id || "general_math";
+  // Scope recurrence to specific question, not just topic — prevents inflated counts
+  const topicId = question.topicId || question.id || "general";
+  const questionKey = question.q
+    ? `${topicId}:q:${normalizeStr(question.q).slice(0, 40)}`
+    : topicId;
 
-  // ── ENGINE 1: PARSE INPUT (Triples & Math AST) ──────────────────────────────
-  const studentTriples = extractSemanticTriples(studentAnswer);
+  // ── DETECT: Is this a pure-number math question? ─────────────────────────────
+  // When correct answer is a plain number and question has steps, bypass text analysis.
+  const correctNum = parseFloat(String(correctAnswer).trim());
+  const isPureNumberMath =
+    !isNaN(correctNum) &&
+    String(correctAnswer).trim().match(/^-?\d+(?:\.\d+)?$/) !== null;
 
-  // ── ENGINE 2: CONCEPT GRAPH MAPPER ──────────────────────────────────────────
-  const graphEval = evaluateConceptGraph(studentTriples, sToks, cToks);
-
-  // ── ENGINE 3: ERROR & MISCONCEPTION DIAGNOSER ───────────────────────────────
-  const misconception = diagnoseMisconceptionPattern(studentAnswer, correctAnswer);
-
-  let mathDiag = null;
   const isMathQuestion = Array.isArray(question.steps) && question.steps.length > 0;
 
+  // ── ENGINE 3: MATH DIAGNOSER (always run for math questions) ─────────────────
+  let mathDiag = null;
   if (isMathQuestion) {
     mathDiag = diagnoseMathEquivalence(question.steps, studentAnswer, userWork, correctAnswer);
   }
 
-  // ── ENGINE 4: STUDENT MEMORY & CONFIDENCE SCORE ─────────────────────────────
-  const errorCategory = misconception ? misconception.type : (mathDiag ? mathDiag.type : "CONCEPTUAL_GAP");
-  const recurrence = recordErrorAndGetRecurrence(topicId, errorCategory);
+  // ── ENGINE 2: CONCEPT GRAPH (only run for non-number text answers) ────────────
+  let graphEval = null;
+  let misconception = null;
 
-  const isMathValid = isMathQuestion ? mathDiag.isMathValidPath : graphEval.isEssentialSatisfied;
+  if (!isPureNumberMath) {
+    const studentTriples = extractSemanticTriples(studentAnswer);
+    graphEval = evaluateConceptGraph(studentTriples, sToks, cToks);
+    misconception = diagnoseMisconceptionPattern(studentAnswer, correctAnswer);
+  }
+
+  // ── ENGINE 4: STUDENT MEMORY & CONFIDENCE SCORE ─────────────────────────────
+  const errorCategory = misconception
+    ? misconception.type
+    : mathDiag
+    ? mathDiag.type
+    : "CONCEPTUAL_GAP";
+
+  const recurrence = recordErrorAndGetRecurrence(questionKey, errorCategory);
+
+  const isMathValid = isMathQuestion
+    ? mathDiag.isMathValidPath
+    : graphEval
+    ? graphEval.isEssentialSatisfied
+    : false;
 
   const dimensions = computeDiagnosticConfidenceScore({
-    graphEval,
+    graphEval: graphEval || { weightedScore: isPureNumberMath ? 20 : 50, isEssentialSatisfied: false, essentialMissing: [] },
     misconception,
     isMathValid,
   });
@@ -93,15 +115,46 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
 
   const nextAction = determineNextAction(partialDiagResult, question);
 
-  // Build Sentence-Level Feedback Items for UI
+  // ── BUILD DIAGNOSTIC SUMMARY ─────────────────────────────────────────────────
+  let summary;
+  if (isPureNumberMath && mathDiag) {
+    // For pure-number math: give a precise arithmetic explanation
+    const studentVal = extractFinalStudentNumber(studentAnswer, userWork);
+    if (studentVal !== null) {
+      if (mathDiag.type === "FINAL_CONCLUSION_ERROR") {
+        summary = `You got ${studentVal} but the correct answer is ${correctNum}. Your working steps were correct — your final conclusion had an arithmetic error.`;
+      } else if (mathDiag.type === "STEP_EXECUTION_FAILURE") {
+        summary = mathDiag.message;
+      } else {
+        summary = `Your answer was ${studentVal}, but the correct answer is ${correctNum}. Check your order of operations — multiplication and division must be done before addition and subtraction (BODMAS/PEMDAS).`;
+      }
+    } else {
+      summary = mathDiag.message || `The correct answer is ${correctNum}. Review your calculation method.`;
+    }
+  } else if (misconception) {
+    summary = misconception.explanation;
+  } else if (isMathQuestion && mathDiag) {
+    summary = mathDiag.message;
+  } else if (graphEval) {
+    summary = graphEval.isEssentialSatisfied
+      ? "Your answer covers the key idea — make sure your wording is precise."
+      : `Your answer is missing the key concept: "${(graphEval.essentialMissing || []).join(", ")}".`;
+  } else {
+    summary = `The correct answer is ${correctAnswer}. Review the explanation below.`;
+  }
+
+  // ── BUILD SENTENCE FEEDBACK ITEMS ────────────────────────────────────────────
   const feedbackItems = buildSentenceFeedbackItems({
     graphEval,
     misconception,
     mathDiag,
+    isPureNumberMath,
+    studentAnswer,
+    correctNum,
   });
 
   const displayStudentSaid = userWork
-    ? `Working: "${userWork}" | Answer: "${studentAnswer}"`
+    ? `${userWork.trim()}`.split("\n").slice(-3).join(" → ")
     : studentAnswer.trim();
 
   return {
@@ -115,14 +168,25 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
     isMathValid,
     nextAction,
     overallRatio: dimensions.diagnosticConfidence,
-    summary: misconception
-      ? misconception.explanation
-      : (isMathQuestion
-          ? mathDiag.message
-          : (graphEval.isEssentialSatisfied
-              ? "Essential concepts present, but key terminology requires precision."
-              : `Essential Concept Missing: Need to include "${graphEval.essentialMissing.join(", ")}".`)),
+    summary,
   };
+}
+
+/**
+ * Helper: Extract student's final numerical answer from working or answer field.
+ */
+function extractFinalStudentNumber(studentAnswer, userWork) {
+  const combined = [userWork, studentAnswer].filter(Boolean).join("\n");
+  const lines = combined.split(/[\n;]/).map((l) => l.trim()).filter(Boolean);
+  const lastLine = lines[lines.length - 1] || combined;
+
+  const eqMatch = lastLine.match(/=\s*(-?\d+(?:\.\d+)?)/);
+  if (eqMatch) return parseFloat(eqMatch[1]);
+
+  const nums = lastLine.match(/-?\d+(?:\.\d+)?/g);
+  if (nums && nums.length > 0) return parseFloat(nums[nums.length - 1]);
+
+  return null;
 }
 
 /**
@@ -132,8 +196,31 @@ function buildSentenceFeedbackItems({
   graphEval,
   misconception,
   mathDiag,
+  isPureNumberMath,
+  studentAnswer,
+  correctNum,
 }) {
   const items = [];
+
+  // For pure-number math answers: only show arithmetic-specific items
+  if (isPureNumberMath) {
+    if (mathDiag && mathDiag.message && mathDiag.type !== "CALCULATION_ERROR") {
+      items.push({
+        type: mathDiag.isMathValidPath ? "step_partial" : "step_wrong",
+        icon: mathDiag.isMathValidPath ? "⚠" : "✗",
+        message: mathDiag.message,
+      });
+    }
+    // Show the correct order of operations hint if it's an order-of-operations problem
+    if (mathDiag && mathDiag.type === "CALCULATION_ERROR") {
+      items.push({
+        type: "step_wrong",
+        icon: "✗",
+        message: `You wrote ${studentAnswer?.trim() || "?"} — the correct answer is ${correctNum}. Check your order of operations.`,
+      });
+    }
+    return items;
+  }
 
   // Misconception Contrast item
   if (misconception) {
@@ -145,20 +232,20 @@ function buildSentenceFeedbackItems({
   }
 
   // Essential concept met items
-  if (graphEval && graphEval.essentialMet.length > 0) {
+  if (graphEval && graphEval.essentialMet && graphEval.essentialMet.length > 0) {
     items.push({
       type: "segment_correct",
       icon: "✓",
-      message: `You correctly identified the essential concept: "${graphEval.essentialMet.join(", ")}".`
+      message: `You correctly identified: "${graphEval.essentialMet.join(", ")}".`
     });
   }
 
   // Essential missing items
-  if (graphEval && graphEval.essentialMissing.length > 0) {
+  if (graphEval && graphEval.essentialMissing && graphEval.essentialMissing.length > 0) {
     items.push({
       type: "missing_concept",
       icon: "✗",
-      message: `Essential Concept Missing: Your answer lacks "${graphEval.essentialMissing.join(", ")}" — which is required for an accurate definition.`
+      message: `Missing key concept: "${graphEval.essentialMissing.join(", ")}" is required for a complete answer.`
     });
   }
 
@@ -172,11 +259,11 @@ function buildSentenceFeedbackItems({
   }
 
   // General missing important items
-  if (graphEval && graphEval.importantMissing.length > 0) {
+  if (graphEval && graphEval.importantMissing && graphEval.importantMissing.length > 0) {
     items.push({
       type: "missing_qualifier",
       icon: "⚠",
-      message: `Important Qualifier Missing: Consider adding "${graphEval.importantMissing.join(", ")}" to complete your response.`
+      message: `Consider adding: "${graphEval.importantMissing.join(", ")}" to strengthen your answer.`
     });
   }
 

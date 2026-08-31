@@ -20,43 +20,58 @@
 export function determineNextAction(diagnosticResult, question = {}) {
   const { misconception, recurrence, dimensions, isMathValid } = diagnosticResult;
 
-  // 1. Fundamental Recurrent Misconception -> SCAFFOLD_PREREQUISITE
-  if (recurrence && recurrence.level === "CROSS_TOPIC_RECURRENCE") {
-    return {
-      action: "SCAFFOLD_PREREQUISITE",
-      badge: "Prerequisite Rollback",
-      title: "Scaffold Prerequisite Concept",
-      instruction: "Your error pattern indicates a missing prerequisite foundation. Let's rebuild the prerequisite concept step-by-step before re-attempting.",
-      btnText: "Repair Prerequisite",
-      targetMode: "PREREQUISITE_REPAIR",
-    };
-  }
+  const isMathStepQuestion = Array.isArray(question.steps) && question.steps.length > 0;
+  const recurrenceCount = recurrence ? recurrence.count : 1;
 
-  // 2. Explicit Misconception Identified -> TEACH_MISCONCEPTION
-  if (misconception) {
-    return {
-      action: "TEACH_MISCONCEPTION",
-      badge: "Targeted Concept Repair",
-      title: misconception.explanation,
-      instruction: `Let me show you why "${misconception.studentConcept}" broke your reasoning and how "${misconception.expectedConcept}" establishes the correct model.`,
-      btnText: "Fix Concept Misconception",
-      targetMode: "MISCONCEPTION_TEACH",
-    };
-  }
-
-  // 3. One-off Math Step Error -> RETRIEVE_UNASSISTED
-  if (!isMathValid && Array.isArray(question.steps)) {
+  // 1. For math step questions with a single/two wrong attempts → guide to retry with steps
+  if (isMathStepQuestion && !misconception && recurrenceCount <= 2) {
     return {
       action: "RETRIEVE_UNASSISTED",
-      badge: "Step Repair",
-      title: "Recalculate Step Execution",
-      instruction: "You were on the right track initially! Try solving a variant with clean working steps.",
+      badge: "Step-by-Step Retry",
+      title: "Show Your Full Working",
+      instruction: "Write out every step clearly. For example: first apply BODMAS — do × and ÷ before + and −, then complete the final calculation.",
       btnText: "Try Variant Question",
       targetMode: "MUTATED_REPAIR",
     };
   }
 
-  // 4. High Diagnostic Confidence -> TRANSFER_TEST
+  // 2. Persistent recurring error on same question (3+ times) → SCAFFOLD_PREREQUISITE
+  if (recurrence && recurrence.level === "CROSS_TOPIC_RECURRENCE") {
+    return {
+      action: "SCAFFOLD_PREREQUISITE",
+      badge: "Concept Foundation",
+      title: "Let's Rebuild the Core Rule",
+      instruction: "You have attempted this type of problem several times with the same error. Let's revisit the underlying rule before trying again.",
+      btnText: "Rebuild Foundation",
+      targetMode: "PREREQUISITE_REPAIR",
+    };
+  }
+
+  // 3. Explicit Misconception Identified → TEACH_MISCONCEPTION
+  if (misconception) {
+    return {
+      action: "TEACH_MISCONCEPTION",
+      badge: "Concept Correction",
+      title: misconception.explanation,
+      instruction: `Let me show you why "${misconception.studentConcept}" is incorrect here and how "${misconception.expectedConcept}" establishes the correct model.`,
+      btnText: "Fix Concept",
+      targetMode: "MISCONCEPTION_TEACH",
+    };
+  }
+
+  // 4. Math step error (non-number, mixed formula) → RETRIEVE_UNASSISTED
+  if (!isMathValid && isMathStepQuestion) {
+    return {
+      action: "RETRIEVE_UNASSISTED",
+      badge: "Step Repair",
+      title: "Recalculate Step by Step",
+      instruction: "You were on the right track! Show your full working and re-attempt the calculation step by step.",
+      btnText: "Try Variant Question",
+      targetMode: "MUTATED_REPAIR",
+    };
+  }
+
+  // 5. High Diagnostic Confidence → TRANSFER_TEST
   if (dimensions && dimensions.diagnosticConfidence >= 75) {
     return {
       action: "TRANSFER_TEST",
