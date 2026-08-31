@@ -120,16 +120,43 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
 function checkSingleVariant(uAns, cAns, tokenize) {
   if (!uAns || !cAns) return uAns === cAns;
 
-  // Exact match
-  if (uAns === cAns) return true;
+  // Clean exact match
+  if (uAns.trim() === cAns.trim()) return true;
 
-  // Substring match for longer phrases
-  if (uAns.includes(cAns) || cAns.includes(uAns)) return true;
+  // 1. Numerical & Equation Evaluation
+  const cNumMatch = String(cAns).match(/-?\d+(?:\.\d+)?/);
+  if (cNumMatch) {
+    const targetNum = parseFloat(cNumMatch[0]);
 
-  // Keyword token fuzzy match
+    // Extract student's final line or final conclusion following '='
+    const rawLines = String(uAns).split(/[\n;]/).map((l) => l.trim()).filter(Boolean);
+    const lastLine = rawLines[rawLines.length - 1] || String(uAns);
+
+    // Look for explicit conclusion after '=' or last number on last line
+    const eqMatch = lastLine.match(/=\s*(-?\d+(?:\.\d+)?)/);
+    const numbersOnLastLine = lastLine.match(/-?\d+(?:\.\d+)?/g);
+
+    let studentFinalVal;
+    if (eqMatch) {
+      studentFinalVal = parseFloat(eqMatch[1]);
+    } else if (numbersOnLastLine && numbersOnLastLine.length > 0) {
+      studentFinalVal = parseFloat(numbersOnLastLine[numbersOnLastLine.length - 1]);
+    }
+
+    if (studentFinalVal !== undefined && !isNaN(studentFinalVal)) {
+      return Math.abs(studentFinalVal - targetNum) < 1e-5;
+    }
+  }
+
+  // 2. Substring match ONLY for longer non-numeric textual phrases
+  if (cAns.length > 4 && isNaN(parseFloat(cAns)) && uAns.includes(cAns)) {
+    return true;
+  }
+
+  // 3. Keyword token fuzzy match
   const answerTokens = tokenize(uAns);
   const correctTokens = tokenize(cAns);
-  const keywords = correctTokens.filter((w) => w.length > 3);
+  const keywords = correctTokens.filter((w) => w.length > 3 && isNaN(parseFloat(w)));
   const matchedKeywords = keywords.filter((w) => answerTokens.includes(w));
   const matchedCount = matchedKeywords.length;
   const keywordRatio = keywords.length ? matchedCount / keywords.length : 0;
@@ -137,7 +164,7 @@ function checkSingleVariant(uAns, cAns, tokenize) {
     ? matchedCount / Math.max(correctTokens.length, answerTokens.length)
     : 0;
 
-  if (keywords.length > 0 && (keywordRatio >= 0.5 || overlapRatio >= 0.45)) {
+  if (keywords.length > 0 && (keywordRatio >= 0.6 || overlapRatio >= 0.5)) {
     return true;
   }
 

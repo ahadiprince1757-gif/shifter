@@ -127,6 +127,29 @@ export function diagnoseMathEquivalence(steps, studentAnswer, userWork, correctA
     }
   });
 
+  // Final conclusion number check
+  const targetFinalNum = correctNums.length > 0 ? correctNums[correctNums.length - 1] : null;
+  const rawLines = combinedWork.split(/[\n;]/).map((l) => l.trim()).filter(Boolean);
+  const lastLine = rawLines[rawLines.length - 1] || combinedWork;
+  const eqMatch = lastLine.match(/=\s*(-?\d+(?:\.\d+)?)/);
+  const numbersOnLastLine = lastLine.match(/-?\d+(?:\.\d+)?/g);
+
+  let studentFinalNum;
+  if (eqMatch) {
+    studentFinalNum = parseFloat(eqMatch[1]);
+  } else if (numbersOnLastLine && numbersOnLastLine.length > 0) {
+    studentFinalNum = parseFloat(numbersOnLastLine[numbersOnLastLine.length - 1]);
+  }
+
+  if (targetFinalNum !== null && studentFinalNum !== undefined && Math.abs(studentFinalNum - targetFinalNum) >= 1e-5) {
+    return {
+      type: "FINAL_CONCLUSION_ERROR",
+      failedStepIndex: steps.length - 1,
+      message: `Final Calculation Error: Your intermediate steps were correct, but your final conclusion was ${studentFinalNum} instead of ${targetFinalNum}.`,
+      isMathValidPath: false,
+    };
+  }
+
   return {
     type: failedIndex === -1 ? "CALCULATION_ERROR" : "STEP_EXECUTION_FAILURE",
     failedStepIndex: failedIndex,
