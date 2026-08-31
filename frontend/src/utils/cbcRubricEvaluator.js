@@ -80,7 +80,7 @@ export class CbcRubricEvaluator {
       };
     }
 
-    if (level >= 3 && diagnosis.type !== "BLANK_KNEW_NOTHING") {
+    if (level >= 3 && diagnosis.type !== "IRRELEVANT_KNEW_NOTHING" && diagnosis.type !== "BLANK_KNEW_NOTHING") {
       return {
         rubric: CBC_RUBRICS.AE,
         feedback: "Approaching Expectations! You master procedural algebra, but struggle to translate real-world verbal constraints into mathematical equations.",

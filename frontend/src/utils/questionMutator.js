@@ -66,12 +66,17 @@ export class QuestionMutator {
     const cStr = Array.isArray(correctAnswer) ? correctAnswer[0] : String(correctAnswer || "");
     const cTrim = cStr.trim();
 
-    if (!sTrim) {
+    const isIrrelevantOrNoIdea = 
+      !sTrim || 
+      /^(idk|i\s*don'?t\s*know|no\s*idea|pass|skip|dunno|idfk|help|\?+|\.+|nothing|none|xyz|abc|asdf|qwerty|i\s*do\s*not\s*know|not\s*sure|whatever)$/i.test(sTrim) ||
+      (sTrim.length <= 2 && !/^\d+$/.test(sTrim));
+
+    if (isIrrelevantOrNoIdea) {
       return {
-        type: "BLANK_KNEW_NOTHING",
-        label: "Zero Attempt / Blank",
+        type: "IRRELEVANT_KNEW_NOTHING",
+        label: "Irrelevant / Knew Nothing",
         strategy: "SCAFFOLDED_MUTATION",
-        guidance: "Learner left answer blank. Providing scaffolded sub-step guidance before full problem.",
+        guidance: "Learner entered an irrelevant answer or expressed having no idea. Providing scaffolded sub-step guidance before full problem.",
       };
     }
 
@@ -143,6 +148,7 @@ export class QuestionMutator {
     let targetedTag;
 
     switch (diagnosis.type) {
+      case "IRRELEVANT_KNEW_NOTHING":
       case "BLANK_KNEW_NOTHING":
         targetedTag = "Scaffolded Variant";
         targetedHint = `Scaffolded Hint: Review the required rule or formula, then solve step-by-step.`;
