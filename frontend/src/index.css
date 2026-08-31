@@ -6172,17 +6172,26 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   opacity: 0.92;
 }
 
-/* ── Smart Answer Analysis Panel (Sky Blue Theme) ───────────────────── */
+/* ── Smart Answer Analysis Panel (High-Contrast Light & Dark Modes) ─── */
 .smart-analysis-container {
-  background: rgba(14, 165, 233, 0.07);
-  border: 1.5px solid rgba(56, 189, 248, 0.35);
-  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
-  border-radius: 14px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #0284c7;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
   padding: 1.1rem 1.25rem;
   margin: 0.75rem 0;
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
+  color: #0f172a;
+}
+
+html.dark-mode .smart-analysis-container {
+  background: #0f172a;
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  border-left: 4px solid #38bdf8;
+  color: #f8fafc;
 }
 
 /* "You wrote: …" row */
@@ -6192,7 +6201,11 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   align-items: baseline;
   gap: 0.45rem;
   padding-bottom: 0.65rem;
-  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+  border-bottom: 1px solid #e2e8f0;
+}
+
+html.dark-mode .smart-analysis-you-said {
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .smart-analysis-label {
@@ -6200,24 +6213,36 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: #38bdf8;
+  color: #0284c7;
   white-space: nowrap;
+}
+
+html.dark-mode .smart-analysis-label {
+  color: #38bdf8;
 }
 
 .smart-analysis-quote {
   font-size: 0.97rem;
-  color: #f0f9ff;
+  color: #0f172a;
   font-style: italic;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.5;
+}
+
+html.dark-mode .smart-analysis-quote {
+  color: #ffffff;
 }
 
 /* One-line summary */
 .smart-analysis-summary {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #7dd3fc;
+  color: #1e293b;
   line-height: 1.4;
+}
+
+html.dark-mode .smart-analysis-summary {
+  color: #e0f2fe;
 }
 
 /* Issue list */
@@ -6231,39 +6256,56 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   display: flex;
   align-items: flex-start;
   gap: 0.6rem;
-  padding: 0.6rem 0.85rem;
-  border-radius: 9px;
+  padding: 0.65rem 0.85rem;
+  border-radius: 8px;
   font-size: 0.9rem;
   font-weight: 500;
-  line-height: 1.6;
+  line-height: 1.55;
 }
 
-/* Correct item — bright green */
+/* Correct item */
 .smart-analysis-item--correct {
-  background: rgba(16, 185, 129, 0.14);
-  border-left: 4px solid #10b981;
-  color: #d1fae5;
+  background: #f0fdf4;
+  border-left: 4px solid #16a34a;
+  color: #14532d;
 }
 
-/* Warn item — bright amber */
+html.dark-mode .smart-analysis-item--correct {
+  background: rgba(22, 163, 74, 0.15);
+  border-left: 4px solid #4ade80;
+  color: #bbf7d0;
+}
+
+/* Warn item */
 .smart-analysis-item--warn {
-  background: rgba(245, 158, 11, 0.14);
-  border-left: 4px solid #f59e0b;
+  background: #fffbeb;
+  border-left: 4px solid #d97706;
+  color: #78350f;
+}
+
+html.dark-mode .smart-analysis-item--warn {
+  background: rgba(217, 119, 6, 0.15);
+  border-left: 4px solid #fbbf24;
   color: #fef3c7;
 }
 
-/* Wrong item — bright red */
+/* Wrong item */
 .smart-analysis-item--wrong {
-  background: rgba(239, 68, 68, 0.14);
-  border-left: 4px solid #ef4444;
-  color: #fee2e2;
+  background: #fef2f2;
+  border-left: 4px solid #dc2626;
+  color: #7f1d1d;
+}
+
+html.dark-mode .smart-analysis-item--wrong {
+  background: rgba(220, 38, 38, 0.15);
+  border-left: 4px solid #f87171;
+  color: #fecaca;
 }
 
 .smart-analysis-item-icon {
   font-size: 1rem;
   flex-shrink: 0;
-  margin-top: 0.15rem;
-  opacity: 1;
+  margin-top: 0.1rem;
   font-weight: 900;
 }
 
@@ -6271,57 +6313,83 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   flex: 1;
 }
 
-/* Sky Blue Diagnostic Confidence Bar */
+/* High-Contrast Diagnostic Confidence Bar */
 .smart-analysis-bar-row {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   padding-top: 0.6rem;
-  border-top: 1px solid rgba(56, 189, 248, 0.2);
+  border-top: 1px solid #e2e8f0;
+}
+
+html.dark-mode .smart-analysis-bar-row {
+  border-top-color: rgba(255, 255, 255, 0.1);
 }
 
 .smart-analysis-bar-label {
   font-size: 0.82rem;
-  color: #bae6fd;
+  color: #334155;
   font-weight: 700;
+}
+
+html.dark-mode .smart-analysis-bar-label {
+  color: #e2e8f0;
 }
 
 .smart-analysis-bar-track {
   height: 8px;
-  background: rgba(2, 132, 199, 0.2);
+  background: #e2e8f0;
   border-radius: 4px;
   overflow: hidden;
+}
+
+html.dark-mode .smart-analysis-bar-track {
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .smart-analysis-bar-fill {
   height: 100%;
   border-radius: 4px;
-  background: linear-gradient(90deg, #0284c7, #38bdf8);
-  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
-  transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #0284c7;
+  transition: width 0.55s ease;
+}
+
+html.dark-mode .smart-analysis-bar-fill {
+  background: #38bdf8;
 }
 
 /* Recurrence Badge */
 .smart-analysis-recurrence-badge {
-  background: rgba(245, 158, 11, 0.16);
-  border: 1px solid rgba(245, 158, 11, 0.4);
-  color: #fbbf24;
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+  color: #92400e;
   padding: 0.35rem 0.7rem;
   border-radius: 8px;
   font-size: 0.8rem;
   font-weight: 700;
 }
 
-/* Learning Policy Directive Card (Sky Blue Theme) */
+html.dark-mode .smart-analysis-recurrence-badge {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+  color: #fbbf24;
+}
+
+/* Learning Policy Directive Card */
 .smart-policy-card {
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(56, 189, 248, 0.15));
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
   border-radius: 10px;
   padding: 0.85rem 1rem;
   margin-top: 0.5rem;
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
+}
+
+html.dark-mode .smart-policy-card {
+  background: rgba(14, 165, 233, 0.12);
+  border-color: rgba(56, 189, 248, 0.35);
 }
 
 .smart-policy-header {
@@ -6344,14 +6412,22 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 .smart-policy-title {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #e0f2fe;
+  color: #0f172a;
+}
+
+html.dark-mode .smart-policy-title {
+  color: #f8fafc;
 }
 
 .smart-policy-instruction {
   font-size: 0.85rem;
-  color: #bae6fd;
+  color: #334155;
   line-height: 1.5;
   margin: 0;
+}
+
+html.dark-mode .smart-policy-instruction {
+  color: #cbd5e1;
 }
 
 /* ── Continue Learning Banner UI ────────────────────────────────────── */
