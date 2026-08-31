@@ -16,6 +16,7 @@ import { evaluateAnswer } from "../utils/grader";
 import { questionMutator } from "../utils/questionMutator";
 import { saveAchievement, saveProgress } from "../api";
 import { mistakeRepo } from "../repository/mistakeRepo";
+import { getVerifiedQuestionWithOptions } from "../utils/mcqVerifier";
 
 export const SESSION_PHASES = {
   NOTES: 0,
@@ -83,7 +84,10 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
   }, [topic]);
 
   // Current question being answered (mutated variant if in repair mode, otherwise standard bank question)
-  const currentQuestion = activeQuestion || questions[qIdx] || null;
+  const rawQuestion = activeQuestion || questions[qIdx] || null;
+  const currentQuestion = useMemo(() => {
+    return getVerifiedQuestionWithOptions(rawQuestion);
+  }, [rawQuestion]);
   const isLastQuestion = qIdx >= questions.length - 1;
 
   // ── Submit Answer ──────────────────────────────────────────────────────────
