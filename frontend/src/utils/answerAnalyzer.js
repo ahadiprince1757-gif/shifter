@@ -122,14 +122,14 @@ export function analyseStudentAnswer(studentAnswer, correctAnswer, question = {}
     const studentVal = extractFinalStudentNumber(studentAnswer, userWork);
     if (studentVal !== null) {
       if (mathDiag.type === "FINAL_CONCLUSION_ERROR") {
-        summary = `You got ${studentVal} but the correct answer is ${correctNum}. Your working steps were correct — your final conclusion had an arithmetic error.`;
+        summary = mathDiag.message;
       } else if (mathDiag.type === "STEP_EXECUTION_FAILURE") {
         summary = mathDiag.message;
       } else {
-        summary = `Your answer was ${studentVal}, but the correct answer is ${correctNum}. Check your order of operations — multiplication and division must be done before addition and subtraction (BODMAS/PEMDAS).`;
+        summary = `Your answer was ${studentVal}, but the correct answer is ${correctNum}. Double-check your arithmetic and order of operations (BODMAS/PEMDAS).`;
       }
     } else {
-      summary = mathDiag.message || `The correct answer is ${correctNum}. Review your calculation method.`;
+      summary = mathDiag.message || `The correct answer is ${correctNum}. Review your calculation method below.`;
     }
   } else if (misconception) {
     summary = misconception.explanation;

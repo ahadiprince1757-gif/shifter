@@ -141,11 +141,22 @@ export function diagnoseMathEquivalence(steps, studentAnswer, userWork, correctA
     studentFinalNum = parseFloat(numbersOnLastLine[numbersOnLastLine.length - 1]);
   }
 
+  const hasExplicitWorking = Boolean(userWork && userWork.trim()) || rawLines.length >= 2;
+
   if (targetFinalNum !== null && studentFinalNum !== undefined && Math.abs(studentFinalNum - targetFinalNum) >= 1e-5) {
+    if (hasExplicitWorking && failedIndex === -1) {
+      return {
+        type: "FINAL_CONCLUSION_ERROR",
+        failedStepIndex: steps.length - 1,
+        message: `Final Calculation Error: Your intermediate working steps were correct, but your final conclusion was ${studentFinalNum} instead of ${targetFinalNum}.`,
+        isMathValidPath: false,
+      };
+    }
+
     return {
-      type: "FINAL_CONCLUSION_ERROR",
+      type: "CALCULATION_ERROR",
       failedStepIndex: steps.length - 1,
-      message: `Final Calculation Error: Your intermediate steps were correct, but your final conclusion was ${studentFinalNum} instead of ${targetFinalNum}.`,
+      message: `Calculation Error: You entered ${studentFinalNum}, but the expected answer is ${targetFinalNum}.`,
       isMathValidPath: false,
     };
   }
@@ -153,7 +164,7 @@ export function diagnoseMathEquivalence(steps, studentAnswer, userWork, correctA
   return {
     type: failedIndex === -1 ? "CALCULATION_ERROR" : "STEP_EXECUTION_FAILURE",
     failedStepIndex: failedIndex,
-    message: failureReason || "Review your working steps against the solution above.",
+    message: failureReason || "Review your calculation against the solution steps below.",
     isMathValidPath: failedIndex === -1,
   };
 }

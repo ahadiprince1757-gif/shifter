@@ -139,8 +139,8 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Optional Solution / Explanation */}
-      {feedback.solution && (
+      {/* Optional Solution / Explanation — Only shown if no steps exist or if it provides distinct non-redundant context */}
+      {feedback.solution && (!feedback.steps || feedback.steps.length === 0) && (
         <div className="fb-explanation-box">
           <div className="fb-section-title">Explanation</div>
           <div className="fb-explanation-text">
