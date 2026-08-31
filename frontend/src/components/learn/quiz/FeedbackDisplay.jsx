@@ -120,6 +120,25 @@ function FeedbackDisplay({
         </div>
       )}
 
+      {/* Step-by-Step Solution (when steps exist — auto-generated or from DB) */}
+      {!isCorrect && feedback.steps && feedback.steps.length > 0 && (
+        <div className="fb-steps-container">
+          <div className="fb-section-title">How to Solve It</div>
+          <div className="fb-steps-timeline">
+            {feedback.steps.map((step, i) => (
+              <div key={i} className="fb-step-card">
+                <span className="fb-step-badge">Step {i + 1}</span>
+                <div className="fb-step-text">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                    {step.replace(/^step\s*\d+\s*:\s*/i, "")}
+                  </ReactMarkdown>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      )}
+
       {/* Optional Solution / Explanation */}
       {feedback.solution && (
         <div className="fb-explanation-box">

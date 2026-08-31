@@ -1,11 +1,15 @@
 import { analyseStudentAnswer } from "./answerAnalyzer.js";
+import { verifyMathAnswer } from "./mathVerifier.js";
 
 /**
  * Client-side evaluation engine for immediate offline & online grading.
- * Compares user answer against target question answer key.
- * Now handles:
+ *
+ * Now includes:
+ *  - Math Self-Verification: independently solves math questions from question text,
+ *    detects and overrides wrong database answers before they reach the student.
  *  - Working vs. Final Answer evaluation
- *  - Multi-part / multi-item partial grading (e.g. 1/4 correct is NOT full pass)
+ *  - Multi-part / multi-item partial grading
+ *  - Final conclusion extraction (prevents "123" matching "12")
  */
 export function evaluateAnswer(userAnswer, question, userWork = "") {
   if (!question) {
@@ -17,13 +21,41 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
     };
   }
 
-  const rawAns = question.ans;
+  let rawAns = question.ans;
+  const questionText = question.q || question.stem || "";
   const solution =
     question.sol ||
     question.why ||
     question.explain ||
     "Review your answer against the solution above.";
 
+  // ── MATH SELF-VERIFICATION ─────────────────────────────────────────────────
+  // Independently compute the answer from the question text.
+  // If the stored answer differs from what the math says, use our computation.
+  let verifiedSteps = Array.isArray(question.steps) && question.steps.length > 0
+    ? question.steps
+    : null;
+
+  const isNumericAnswer =
+    !Array.isArray(rawAns) &&
+    !isNaN(parseFloat(String(rawAns).trim())) &&
+    String(rawAns).trim().match(/^-?\d+(?:\.\d+)?(\s*(square|cubic|sq|cu)?\s*(units?|cm|m|km|mm|ft|in)?)?$/i);
+
+  if (isNumericAnswer && questionText) {
+    const verification = verifyMathAnswer(questionText, rawAns);
+    if (verification.wasOverridden) {
+      // Database answer was wrong — use our self-computed answer
+      console.warn(
+        `[Tixar Grader] Self-verification overrode stored answer "${rawAns}" → "${verification.verifiedAnswer}" for: "${questionText}"`
+      );
+      rawAns = verification.verifiedAnswer;
+    }
+    if (verification.verifiedSteps && !verifiedSteps) {
+      verifiedSteps = verification.verifiedSteps;
+    }
+  }
+
+  // ── NORMALIZERS ───────────────────────────────────────────────────────────
   const normalize = (s) =>
     String(s || "")
       .toLowerCase()
@@ -34,12 +66,13 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
 
   const tokenize = (s) => normalize(s).split(" ").filter(Boolean);
   const uAns = normalize(userAnswer);
-  const uWork = normalize(userWork);
 
-  const mainCorrectAnswerStr = Array.isArray(rawAns) ? rawAns.join(" • ") : String(rawAns || "");
+  const mainCorrectAnswerStr = Array.isArray(rawAns)
+    ? rawAns.join(" • ")
+    : String(rawAns || "");
 
-  // 1. Multi-Item / Multi-Part Checking
-  const stem = String(question.q || question.stem || "").toLowerCase();
+  // ── MULTI-PART CHECKING ───────────────────────────────────────────────────
+  const stem = questionText.toLowerCase();
   const isMultiPartQuestion =
     question.multi_part ||
     /\b(four|4|three|3|both|all|list|name\s+the|which\s+ones)\b/i.test(stem);
@@ -49,7 +82,9 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
   const checkAnswer = () => {
     if (Array.isArray(rawAns) && isMultiPartQuestion) {
       const requiredItems = rawAns.map(normalize);
-      const matchedCount = requiredItems.filter((item) => checkSingleVariant(uAns, item, tokenize)).length;
+      const matchedCount = requiredItems.filter((item) =>
+        checkSingleVariant(uAns, item, tokenize)
+      ).length;
       const totalRequired = requiredItems.length;
 
       if (matchedCount < totalRequired) {
@@ -62,45 +97,59 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
       return matchedCount === totalRequired;
     }
     if (Array.isArray(rawAns)) {
-      return rawAns.some((variant) => checkSingleVariant(uAns, normalize(variant), tokenize));
+      return rawAns.some((variant) =>
+        checkSingleVariant(uAns, normalize(variant), tokenize)
+      );
     }
     return checkSingleVariant(uAns, normalize(rawAns), tokenize);
   };
 
   const isAnswerCorrect = checkAnswer();
 
-  // 2. Working vs. Final Answer Evaluation
+  // ── WORKING vs. FINAL ANSWER EVALUATION ──────────────────────────────────
   let isWorkCorrect = null;
   let workingNote = null;
+  const uWork = normalize(userWork);
 
-  if (uWork && question.steps && question.steps.length > 0) {
-    const stepTokens = tokenize(question.steps.join(" "));
+  const stepsToCheck = verifiedSteps || question.steps;
+  if (uWork && stepsToCheck && stepsToCheck.length > 0) {
+    const stepTokens = tokenize(stepsToCheck.join(" "));
     const workTokens = tokenize(uWork);
-    const matchedWork = stepTokens.filter((t) => t.length > 2 && workTokens.includes(t));
-    isWorkCorrect = stepTokens.length > 0 ? (matchedWork.length / Math.min(stepTokens.length, workTokens.length)) >= 0.35 : true;
+    const matchedWork = stepTokens.filter(
+      (t) => t.length > 2 && workTokens.includes(t)
+    );
+    isWorkCorrect =
+      stepTokens.length > 0
+        ? matchedWork.length / Math.min(stepTokens.length, workTokens.length) >= 0.35
+        : true;
   }
 
   let finalIsCorrect = isAnswerCorrect;
 
   if (uWork && isWorkCorrect !== null) {
     if (isAnswerCorrect && !isWorkCorrect) {
-      // Correct answer, flawed working -> STILL PERMIT TO PROCEED (isCorrect: true) with working note
       finalIsCorrect = true;
-      workingNote = "Your final answer is correct! (Note: Review your working steps to ensure proper method formatting).";
+      workingNote =
+        "Your final answer is correct! (Note: Review your working steps for proper method formatting).";
     } else if (!isAnswerCorrect && isWorkCorrect) {
-      // Correct working method, wrong final answer -> MARK INCORRECT (isCorrect: false) to trigger calculation repair
       finalIsCorrect = false;
-      workingNote = "Your working method is on the right track, but your final answer calculation was incorrect.";
+      workingNote =
+        "Your working method is on the right track, but your final answer was incorrect.";
     }
   }
 
   if (!finalIsCorrect && partialInfo) {
-    workingNote = `Partially correct (${partialInfo.matchedCount}/${partialInfo.totalRequired} items identified — ${partialInfo.percent}%). Complete all required items to master this concept.`;
+    workingNote = `Partially correct (${partialInfo.matchedCount}/${partialInfo.totalRequired} items — ${partialInfo.percent}%). Complete all required items to master this concept.`;
   }
 
-  // 3. Rich answer analysis — tells the student exactly where they went wrong
+  // ── RICH ANSWER ANALYSIS ──────────────────────────────────────────────────
+  // Pass verified question object (with corrected answer + steps) to the analyser
+  const enrichedQuestion = verifiedSteps
+    ? { ...question, ans: rawAns, steps: verifiedSteps }
+    : { ...question, ans: rawAns };
+
   const analysis = !finalIsCorrect
-    ? analyseStudentAnswer(userAnswer, mainCorrectAnswerStr, question, userWork)
+    ? analyseStudentAnswer(userAnswer, mainCorrectAnswerStr, enrichedQuestion, userWork)
     : null;
 
   return {
@@ -111,7 +160,7 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
     correctAnswer: mainCorrectAnswerStr,
     correctAnswerList: Array.isArray(rawAns) ? rawAns : [mainCorrectAnswerStr],
     solution,
-    steps: Array.isArray(question.steps) ? question.steps : [],
+    steps: verifiedSteps || [],
     mark: finalIsCorrect ? "Correct" : "Incorrect",
     analysis,
   };
@@ -128,11 +177,13 @@ function checkSingleVariant(uAns, cAns, tokenize) {
   if (cNumMatch) {
     const targetNum = parseFloat(cNumMatch[0]);
 
-    // Extract student's final line or final conclusion following '='
-    const rawLines = String(uAns).split(/[\n;]/).map((l) => l.trim()).filter(Boolean);
+    // Extract student's final line or conclusion following '='
+    const rawLines = String(uAns)
+      .split(/[\n;]/)
+      .map((l) => l.trim())
+      .filter(Boolean);
     const lastLine = rawLines[rawLines.length - 1] || String(uAns);
 
-    // Look for explicit conclusion after '=' or last number on last line
     const eqMatch = lastLine.match(/=\s*(-?\d+(?:\.\d+)?)/);
     const numbersOnLastLine = lastLine.match(/-?\d+(?:\.\d+)?/g);
 
@@ -140,7 +191,9 @@ function checkSingleVariant(uAns, cAns, tokenize) {
     if (eqMatch) {
       studentFinalVal = parseFloat(eqMatch[1]);
     } else if (numbersOnLastLine && numbersOnLastLine.length > 0) {
-      studentFinalVal = parseFloat(numbersOnLastLine[numbersOnLastLine.length - 1]);
+      studentFinalVal = parseFloat(
+        numbersOnLastLine[numbersOnLastLine.length - 1]
+      );
     }
 
     if (studentFinalVal !== undefined && !isNaN(studentFinalVal)) {
@@ -156,7 +209,9 @@ function checkSingleVariant(uAns, cAns, tokenize) {
   // 3. Keyword token fuzzy match
   const answerTokens = tokenize(uAns);
   const correctTokens = tokenize(cAns);
-  const keywords = correctTokens.filter((w) => w.length > 3 && isNaN(parseFloat(w)));
+  const keywords = correctTokens.filter(
+    (w) => w.length > 3 && isNaN(parseFloat(w))
+  );
   const matchedKeywords = keywords.filter((w) => answerTokens.includes(w));
   const matchedCount = matchedKeywords.length;
   const keywordRatio = keywords.length ? matchedCount / keywords.length : 0;
@@ -170,5 +225,3 @@ function checkSingleVariant(uAns, cAns, tokenize) {
 
   return false;
 }
-
-
