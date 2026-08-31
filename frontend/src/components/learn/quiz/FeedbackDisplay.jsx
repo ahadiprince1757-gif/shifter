@@ -205,33 +205,11 @@ function FeedbackDisplay({
             </div>
           )}
 
-          {/* 6-Dimension Diagnostic Confidence Breakdown */}
-          {feedback.analysis.dimensions && (
-            <div className="smart-analysis-dimensions-grid">
-              <div className="smart-dim-card">
-                <span className="smart-dim-title">Concept Coverage</span>
-                <span className="smart-dim-val">{feedback.analysis.dimensions.conceptCoverage}%</span>
-              </div>
-              <div className="smart-dim-card">
-                <span className="smart-dim-title">Relationship Accuracy</span>
-                <span className="smart-dim-val">{feedback.analysis.dimensions.relationshipAccuracy}%</span>
-              </div>
-              <div className="smart-dim-card">
-                <span className="smart-dim-title">Terminology Precision</span>
-                <span className="smart-dim-val">{feedback.analysis.dimensions.terminologyPrecision}%</span>
-              </div>
-              <div className="smart-dim-card">
-                <span className="smart-dim-title">Reasoning Quality</span>
-                <span className="smart-dim-val">{feedback.analysis.dimensions.reasoningQuality}%</span>
-              </div>
-            </div>
-          )}
-
-          {/* Diagnostic Confidence Bar */}
+          {/* Single Clean Diagnostic Confidence Bar */}
           {feedback.analysis.dimensions && (
             <div className="smart-analysis-bar-row">
               <span className="smart-analysis-bar-label">
-                Overall Diagnostic Confidence: {feedback.analysis.dimensions.diagnosticConfidence}%
+                Diagnostic Confidence: {feedback.analysis.dimensions.diagnosticConfidence}%
               </span>
               <div className="smart-analysis-bar-track">
                 <div

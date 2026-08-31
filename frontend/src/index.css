@@ -6172,10 +6172,11 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   opacity: 0.92;
 }
 
-/* ── Smart Answer Analysis Panel ────────────────────────────────────── */
+/* ── Smart Answer Analysis Panel (Sky Blue Theme) ───────────────────── */
 .smart-analysis-container {
-  background: #0f1729;
-  border: 2px solid #6366f1;
+  background: rgba(14, 165, 233, 0.07);
+  border: 1.5px solid rgba(56, 189, 248, 0.35);
+  box-shadow: 0 4px 20px rgba(14, 165, 233, 0.08);
   border-radius: 14px;
   padding: 1.1rem 1.25rem;
   margin: 0.75rem 0;
@@ -6191,7 +6192,7 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   align-items: baseline;
   gap: 0.45rem;
   padding-bottom: 0.65rem;
-  border-bottom: 1px solid rgba(99, 102, 241, 0.3);
+  border-bottom: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 .smart-analysis-label {
@@ -6199,13 +6200,13 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: #a5b4fc;
+  color: #38bdf8;
   white-space: nowrap;
 }
 
 .smart-analysis-quote {
   font-size: 0.97rem;
-  color: #ffffff;
+  color: #f0f9ff;
   font-style: italic;
   font-weight: 500;
   line-height: 1.5;
@@ -6215,7 +6216,7 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 .smart-analysis-summary {
   font-size: 0.9rem;
   font-weight: 700;
-  color: #67e8f9;
+  color: #7dd3fc;
   line-height: 1.4;
 }
 
@@ -6239,21 +6240,21 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 
 /* Correct item — bright green */
 .smart-analysis-item--correct {
-  background: rgba(16, 185, 129, 0.18);
+  background: rgba(16, 185, 129, 0.14);
   border-left: 4px solid #10b981;
   color: #d1fae5;
 }
 
 /* Warn item — bright amber */
 .smart-analysis-item--warn {
-  background: rgba(245, 158, 11, 0.18);
+  background: rgba(245, 158, 11, 0.14);
   border-left: 4px solid #f59e0b;
   color: #fef3c7;
 }
 
 /* Wrong item — bright red */
 .smart-analysis-item--wrong {
-  background: rgba(239, 68, 68, 0.18);
+  background: rgba(239, 68, 68, 0.14);
   border-left: 4px solid #ef4444;
   color: #fee2e2;
 }
@@ -6270,24 +6271,24 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   flex: 1;
 }
 
-/* Concept accuracy bar */
+/* Sky Blue Diagnostic Confidence Bar */
 .smart-analysis-bar-row {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   padding-top: 0.6rem;
-  border-top: 1px solid rgba(99, 102, 241, 0.25);
+  border-top: 1px solid rgba(56, 189, 248, 0.2);
 }
 
 .smart-analysis-bar-label {
-  font-size: 0.8rem;
-  color: #c7d2fe;
+  font-size: 0.82rem;
+  color: #bae6fd;
   font-weight: 700;
 }
 
 .smart-analysis-bar-track {
-  height: 7px;
-  background: rgba(255, 255, 255, 0.1);
+  height: 8px;
+  background: rgba(2, 132, 199, 0.2);
   border-radius: 4px;
   overflow: hidden;
 }
@@ -6295,7 +6296,8 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 .smart-analysis-bar-fill {
   height: 100%;
   border-radius: 4px;
-  background: linear-gradient(90deg, #6366f1, #a78bfa);
+  background: linear-gradient(90deg, #0284c7, #38bdf8);
+  box-shadow: 0 0 10px rgba(56, 189, 248, 0.5);
   transition: width 0.55s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -6310,42 +6312,10 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
   font-weight: 700;
 }
 
-/* 6-Dimension Diagnostic Grid */
-.smart-analysis-dimensions-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-  gap: 0.5rem;
-  margin-top: 0.4rem;
-}
-
-.smart-dim-card {
-  background: rgba(255, 255, 255, 0.03);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 8px;
-  padding: 0.5rem 0.65rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.2rem;
-}
-
-.smart-dim-title {
-  font-size: 0.7rem;
-  color: #94a3b8;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-
-.smart-dim-val {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: #38bdf8;
-}
-
-/* Learning Policy Directive Card */
+/* Learning Policy Directive Card (Sky Blue Theme) */
 .smart-policy-card {
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(168, 85, 247, 0.15));
-  border: 1px solid rgba(168, 85, 247, 0.4);
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.12), rgba(56, 189, 248, 0.15));
+  border: 1px solid rgba(56, 189, 248, 0.35);
   border-radius: 10px;
   padding: 0.85rem 1rem;
   margin-top: 0.5rem;
@@ -6361,7 +6331,7 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 }
 
 .smart-policy-badge {
-  background: #8b5cf6;
+  background: #0284c7;
   color: #ffffff;
   font-size: 0.72rem;
   font-weight: 800;
@@ -6374,12 +6344,12 @@ html.dark-mode .hero-inner.jobs-centered .btn-hero.primary {
 .smart-policy-title {
   font-size: 0.88rem;
   font-weight: 700;
-  color: #f3e8ff;
+  color: #e0f2fe;
 }
 
 .smart-policy-instruction {
   font-size: 0.85rem;
-  color: #cbd5e1;
+  color: #bae6fd;
   line-height: 1.5;
   margin: 0;
 }
