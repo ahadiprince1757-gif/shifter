@@ -145,7 +145,12 @@ function QuizPhase({
               Practice Variant — Testing the same core concept with new parameters.
             </div>
           )}
-          <QuestionDisplay isCalc={isCalc} questionText={curQ?.q} />
+          <QuestionDisplay
+            isCalc={isCalc}
+            questionText={curQ?.q}
+            rubricEval={curQ?.rubricEval}
+            proveItState={curQ?.proveItState}
+          />
 
           {isMCQ ? (
             <div className="mcq-group">

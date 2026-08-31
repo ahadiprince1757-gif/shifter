@@ -21,6 +21,8 @@ import { ComputerMutator } from "./mutators/ComputerMutator.js";
 import { EnglishMutator } from "./mutators/EnglishMutator.js";
 import { KiswahiliMutator } from "./mutators/KiswahiliMutator.js";
 import { HomeScienceMutator } from "./mutators/HomeScienceMutator.js";
+import { CbcRubricEvaluator } from "./cbcRubricEvaluator.js";
+import { ProveItEngine } from "./proveItEngine.js";
 
 export class QuestionMutator {
   constructor() {
@@ -167,9 +169,19 @@ export class QuestionMutator {
     }
 
     const finalHint = targetedHint || variant.hint || blueprint.hint || "";
-
-    // Preserve variant type if variant already generated a specific modality (e.g. mcq, open_response)
     const finalType = variant.type || "open_response";
+
+    const level = blueprint._attemptCount ? Math.min(3, blueprint._attemptCount + 1) : 1;
+    const rubricEval = CbcRubricEvaluator.evaluateAttempt({
+      isCorrect: false,
+      level,
+      diagnosis
+    });
+
+    const proveItState = ProveItEngine.getLadderState({
+      level,
+      attempts: blueprint._attempts || []
+    });
 
     return {
       ...variant,
@@ -180,6 +192,8 @@ export class QuestionMutator {
       diagnosis,
       targetedTag,
       hint: finalHint,
+      rubricEval,
+      proveItState
     };
   }
 
