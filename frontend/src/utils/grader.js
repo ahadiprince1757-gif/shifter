@@ -1,15 +1,16 @@
 import { analyseStudentAnswer } from "./answerAnalyzer.js";
-import { verifyMathAnswer } from "./mathVerifier.js";
+import { verifyQuestionAcrossSubjects } from "./subjectVerifierRouter.js";
 
 /**
  * Client-side evaluation engine for immediate offline & online grading.
  *
  * Now includes:
- *  - Math Self-Verification: independently solves math questions from question text,
- *    detects and overrides wrong database answers before they reach the student.
+ *  - Universal Multi-Subject Verification (Math, Physics, Chemistry, Biology, Language Arts):
+ *    independently verifies questions across all subjects, catches database generation errors,
+ *    and auto-generates step-by-step solution cards.
  *  - Working vs. Final Answer evaluation
  *  - Multi-part / multi-item partial grading
- *  - Final conclusion extraction (prevents "123" matching "12")
+ *  - Final conclusion extraction
  */
 export function evaluateAnswer(userAnswer, question, userWork = "") {
   if (!question) {
@@ -29,27 +30,22 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
     question.explain ||
     "Review your answer against the solution above.";
 
-  // ── MATH SELF-VERIFICATION ─────────────────────────────────────────────────
-  // Independently compute the answer from the question text.
-  // If the stored answer differs from what the math says, use our computation.
+  // ── UNIVERSAL MULTI-SUBJECT SELF-VERIFICATION ─────────────────────────────
+  // Runs question through Subject Verifiers (Math, Physics/Chemistry, Biology, Language Arts)
   let verifiedSteps = Array.isArray(question.steps) && question.steps.length > 0
     ? question.steps
     : null;
 
-  const isNumericAnswer =
-    !Array.isArray(rawAns) &&
-    !isNaN(parseFloat(String(rawAns).trim())) &&
-    String(rawAns).trim().match(/^-?\d+(?:\.\d+)?(\s*(square|cubic|sq|cu)?\s*(units?|cm|m|km|mm|ft|in)?)?$/i);
+  if (questionText) {
+    const verification = verifyQuestionAcrossSubjects(questionText, rawAns, question);
 
-  if (isNumericAnswer && questionText) {
-    const verification = verifyMathAnswer(questionText, rawAns);
     if (verification.wasOverridden) {
-      // Database answer was wrong — use our self-computed answer
       console.warn(
-        `[Tixar Grader] Self-verification overrode stored answer "${rawAns}" → "${verification.verifiedAnswer}" for: "${questionText}"`
+        `[Tixar Grader] Multi-Subject Verifier (${verification.subject}) overrode stored answer "${rawAns}" → "${verification.verifiedAnswer}" for: "${questionText}"`
       );
       rawAns = verification.verifiedAnswer;
     }
+
     if (verification.verifiedSteps && !verifiedSteps) {
       verifiedSteps = verification.verifiedSteps;
     }
