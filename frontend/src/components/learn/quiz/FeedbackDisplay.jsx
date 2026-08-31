@@ -161,7 +161,7 @@ function FeedbackDisplay({
       )}
 
       {/* ── SMART ANSWER ANALYSIS ─────────────────────────────────────── */}
-      {!isCorrect && feedback.analysis && feedback.analysis.feedback && feedback.analysis.feedback.length > 0 && (
+      {!isCorrect && feedback.analysis && (
         <div className="smart-analysis-container">
 
           {/* What the student wrote */}
@@ -169,6 +169,13 @@ function FeedbackDisplay({
             <span className="smart-analysis-label">📝 You wrote:</span>
             <span className="smart-analysis-quote">"{feedback.analysis.studentSaid}"</span>
           </div>
+
+          {/* Recurrence Badge if present */}
+          {feedback.analysis.recurrence && feedback.analysis.recurrence.count > 1 && (
+            <div className="smart-analysis-recurrence-badge">
+              ⚠️ {feedback.analysis.recurrence.label} (Attempted {feedback.analysis.recurrence.count}x)
+            </div>
+          )}
 
           {/* Summary sentence */}
           {feedback.analysis.summary && (
@@ -178,38 +185,74 @@ function FeedbackDisplay({
           )}
 
           {/* Per-issue breakdown — specific sentences */}
-          <div className="smart-analysis-list">
-            {feedback.analysis.feedback.map((item, i) => (
-              <div
-                key={i}
-                className={`smart-analysis-item smart-analysis-item--${
-                  item.type === "segment_correct" || item.type === "step_correct"
-                    ? "correct"
-                    : item.type === "step_partial" || item.type === "missing_qualifier"
-                    ? "warn"
-                    : "wrong"
-                }`}
-              >
-                <span className="smart-analysis-item-icon">{item.icon}</span>
-                <span className="smart-analysis-item-text">{item.message}</span>
-              </div>
-            ))}
-          </div>
+          {Array.isArray(feedback.analysis.feedback) && feedback.analysis.feedback.length > 0 && (
+            <div className="smart-analysis-list">
+              {feedback.analysis.feedback.map((item, i) => (
+                <div
+                  key={i}
+                  className={`smart-analysis-item smart-analysis-item--${
+                    item.type === "segment_correct" || item.type === "step_correct"
+                      ? "correct"
+                      : item.type === "step_partial" || item.type === "missing_qualifier"
+                      ? "warn"
+                      : "wrong"
+                  }`}
+                >
+                  <span className="smart-analysis-item-icon">{item.icon}</span>
+                  <span className="smart-analysis-item-text">{item.message}</span>
+                </div>
+              ))}
+            </div>
+          )}
 
-          {/* Concept accuracy bar */}
-          {feedback.analysis.type === "concept_analysis" && typeof feedback.analysis.overallRatio === "number" && (
+          {/* 6-Dimension Diagnostic Confidence Breakdown */}
+          {feedback.analysis.dimensions && (
+            <div className="smart-analysis-dimensions-grid">
+              <div className="smart-dim-card">
+                <span className="smart-dim-title">Concept Coverage</span>
+                <span className="smart-dim-val">{feedback.analysis.dimensions.conceptCoverage}%</span>
+              </div>
+              <div className="smart-dim-card">
+                <span className="smart-dim-title">Relationship Accuracy</span>
+                <span className="smart-dim-val">{feedback.analysis.dimensions.relationshipAccuracy}%</span>
+              </div>
+              <div className="smart-dim-card">
+                <span className="smart-dim-title">Terminology Precision</span>
+                <span className="smart-dim-val">{feedback.analysis.dimensions.terminologyPrecision}%</span>
+              </div>
+              <div className="smart-dim-card">
+                <span className="smart-dim-title">Reasoning Quality</span>
+                <span className="smart-dim-val">{feedback.analysis.dimensions.reasoningQuality}%</span>
+              </div>
+            </div>
+          )}
+
+          {/* Diagnostic Confidence Bar */}
+          {feedback.analysis.dimensions && (
             <div className="smart-analysis-bar-row">
               <span className="smart-analysis-bar-label">
-                Concept accuracy: {feedback.analysis.overallRatio}%
+                Overall Diagnostic Confidence: {feedback.analysis.dimensions.diagnosticConfidence}%
               </span>
               <div className="smart-analysis-bar-track">
                 <div
                   className="smart-analysis-bar-fill"
-                  style={{ width: `${Math.max(5, feedback.analysis.overallRatio)}%` }}
+                  style={{ width: `${Math.max(10, feedback.analysis.dimensions.diagnosticConfidence)}%` }}
                 />
               </div>
             </div>
           )}
+
+          {/* Learning Policy Engine: Next Action Directive */}
+          {feedback.analysis.nextAction && (
+            <div className="smart-policy-card">
+              <div className="smart-policy-header">
+                <span className="smart-policy-badge">{feedback.analysis.nextAction.badge}</span>
+                <span className="smart-policy-title">{feedback.analysis.nextAction.title}</span>
+              </div>
+              <p className="smart-policy-instruction">{feedback.analysis.nextAction.instruction}</p>
+            </div>
+          )}
+
         </div>
       )}
 
