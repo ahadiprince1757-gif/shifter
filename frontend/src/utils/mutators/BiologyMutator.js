@@ -1,251 +1,1306 @@
-/**
- * Biology & Life Sciences Subject Mutator
- * Intelligent Context-Aware Biology Engine:
- * - Dynamically extracts target biological concepts (Photosynthesis, Enzymes, Genetics, Circulation, Plant Transport, Osmosis, Ecology).
- * - Transforms factual questions into real-world medical/ecological case studies and diagnostic investigations ("The Reverse Aha!").
- * - Generates 4 plausible domain-specific MCQ options with step-by-step biological explanations.
+﻿/**
+ * ============================================================
+ * TIXAR BIOLOGY MUTATOR v2
+ * ============================================================
+ *
+ * Biology is not mutated by randomly changing facts.
+ *
+ * Instead:
+ *
+ * ORIGINAL QUESTION
+ *       â†“
+ * CONCEPT IDENTIFICATION
+ *       â†“
+ * BIOLOGICAL MECHANISM
+ *       â†“
+ * CONTEXT TRANSFORMATION
+ *       â†“
+ * EVIDENCE / CONSEQUENCE
+ *       â†“
+ * MISCONCEPTION DISTRACTORS
+ *       â†“
+ * VALIDATION
+ *
+ * Core principle:
+ *
+ *     Change the CONTEXT.
+ *     Preserve the CONCEPT.
+ *
+ * This allows Tixar to test whether a learner actually
+ * understands biology rather than memorizing wording.
  */
 
 export class BiologyMutator {
-  mutate(qObj, modalityIndex = 0) {
+
+  constructor(config = {}) {
+    this.config = {
+      maxRetries: 10,
+      defaultDifficulty: 1,
+      seed: config.seed ?? Date.now(),
+      ...config
+    };
+
+    this.rng = this._createRNG(this.config.seed);
+  }
+
+  // ==========================================================
+  // PUBLIC API
+  // ==========================================================
+
+  mutate(
+    qObj,
+    modalityIndex = 0,
+    performanceContext = {}
+  ) {
     if (!qObj) return null;
-    const stem = (qObj.q || qObj.stem || "").trim();
-    const lower = stem.toLowerCase();
-    const rawAns = String(qObj.ans || "");
-    const mode = (typeof modalityIndex === "number" ? modalityIndex : Math.floor(Math.random() * 4)) % 4;
 
-    // 1. Photosynthesis & Plant Physiology
-    if (lower.includes("photosynthe") || lower.includes("chlorophyll") || lower.includes("leaf") || lower.includes("stomata") || lower.includes("light stage") || lower.includes("dark stage")) {
-      const ansStr = "Chlorophyll is essential for photosynthesis (starch production)";
-      if (mode === 0) {
-        return {
-          q: `A botanist places a variegated leaf under bright sunlight for 6 hours after de-starching. After an iodine test, only green areas turn dark blue/black while white areas remain brown. Explain what this experiment proves regarding starch production.`,
-          ans: ansStr,
-          hint: "Iodine tests for starch; green areas contain chlorophyll pigment.",
-          sol: "Chlorophyll is essential for photosynthesis because green areas with chlorophyll formed starch while non-green areas did not.",
-          type: "open_response",
-          options: null,
-        };
-      } else if (mode === 1) {
-        return {
-          q: `In a variegated leaf iodine experiment, only chlorophyll-containing green areas test positive for starch. Which conclusion is correct?`,
-          ans: ansStr,
-          hint: "Green pigment traps light for sugar synthesis.",
-          sol: ansStr,
-          type: "mcq",
-          options: [
-            ansStr,
-            "Sunlight is not required for starch formation",
-            "Carbon dioxide is produced by chlorophyll",
-            "Water is absorbed only by non-green areas"
-          ],
-        };
-      } else if (mode === 2) {
-        return {
-          q: `A student claimed that white non-green leaf areas produce more starch than green areas during photosynthesis. Is this claim correct? Explain why.`,
-          ans: "Incorrect. Chlorophyll in green areas is essential for trapping light energy to form starch.",
-          hint: "Chlorophyll pigment is required for light absorption.",
-          sol: "Incorrect. Starch is formed only where chlorophyll is present to absorb light.",
-          type: "open_response",
-          options: null,
-        };
-      } else {
-        return {
-          q: `State the balanced chemical equation for photosynthesis and explain the role of chlorophyll pigment in the light stage.`,
-          ans: `Equation: 6CO₂ + 6H₂O -> C₆H₁₂O₆ + 6O₂. Chlorophyll absorbs solar light energy to split water (photolysis).`,
-          hint: "Reactants: CO2 + H2O, Products: Glucose + Oxygen.",
-          sol: "6CO2 + 6H2O -> C6H12O6 + 6O2. Chlorophyll absorbs light energy.",
-          type: "open_response",
-          options: null,
-        };
+    const stem = String(
+      qObj.q ||
+      qObj.stem ||
+      ""
+    ).trim();
+
+    if (!stem) return null;
+
+    const difficulty =
+      this._determineDifficulty(
+        qObj,
+        performanceContext
+      );
+
+    const concept =
+      this._classifyConcept(stem);
+
+    const generator =
+      this._getGenerator(concept);
+
+    if (!generator) {
+      return this._fallback(
+        qObj,
+        modalityIndex,
+        difficulty,
+        concept
+      );
+    }
+
+    for (
+      let attempt = 0;
+      attempt < this.config.maxRetries;
+      attempt++
+    ) {
+
+      const question = generator.call(
+        this,
+        qObj,
+        difficulty,
+        performanceContext
+      );
+
+      if (
+        question &&
+        this._validateQuestion(question)
+      ) {
+        return this._finalize(
+          question,
+          modalityIndex,
+          concept,
+          difficulty
+        );
       }
     }
 
-    // 2. Enzymes & Digestion
-    if (lower.includes("enzyme") || lower.includes("catalyst") || lower.includes("substrate") || lower.includes("active site") || lower.includes("denatur") || lower.includes("pepsin") || lower.includes("amylase")) {
-      const ansStr = "Thermal denaturation altering the 3D structure of the active site";
-      if (mode === 0) {
-        return {
-          q: `A patient's body temperature spikes to 41.5°C during a fever and metabolic digestive reactions slow drastically. Explain the molecular cause of enzyme failure at high temperatures.`,
-          ans: ansStr,
-          hint: "Excess heat breaks delicate hydrogen bonds in protein structures.",
-          sol: "Thermal denaturation deforms the active site, preventing substrate binding.",
-          type: "open_response",
-          options: null,
-        };
-      } else if (mode === 1) {
-        return {
-          q: `What happens to enzyme activity when temperature rises significantly above the optimum level?`,
-          ans: ansStr,
-          hint: "High heat deforms active site shape.",
-          sol: ansStr,
-          type: "mcq",
-          options: [
-            ansStr,
-            "Enzymes are completely consumed during the reaction",
-            "Substrate molecules expand and become too large",
-            "Activation energy is lowered to zero"
-          ],
-        };
-      } else {
-        return {
-          q: `A student claimed that high temperatures increase enzyme activity indefinitely by raising substrate energy. Is this claim correct? State the true thermal effect on enzymes.`,
-          ans: "Incorrect. Temperatures above optimum denature enzymes by deforming the active site.",
-          hint: "Enzymes denature at high temperatures.",
-          sol: "Incorrect. High temperature breaks hydrogen bonds and denatures the active site.",
-          type: "open_response",
-          options: null,
-        };
+    return this._fallback(
+      qObj,
+      modalityIndex,
+      difficulty,
+      concept
+    );
+  }
+
+  // ==========================================================
+  // CONCEPT CLASSIFIER
+  // ==========================================================
+
+  _classifyConcept(stem) {
+
+    const text = stem.toLowerCase();
+
+    /*
+     * Specific concepts MUST come before broad concepts.
+     */
+
+    if (
+      /photosynth|chlorophyll|stomata|light-dependent|light independent|carbon dioxide.*plant/
+        .test(text)
+    ) {
+      return "photosynthesis";
+    }
+
+    if (
+      /enzyme|active site|substrate|catalyst|denatur|amylase|pepsin/
+        .test(text)
+    ) {
+      return "enzymes";
+    }
+
+    if (
+      /osmosis|water potential|plasmolysis|turgid|flaccid|diffusion|membrane/
+        .test(text)
+    ) {
+      return "transport";
+    }
+
+    if (
+      /mitochondria|atp|aerobic respiration|anaerobic respiration|glucose.*respiration/
+        .test(text)
+    ) {
+      return "respiration";
+    }
+
+    if (
+      /dna|gene|allele|genotype|phenotype|chromosome|mitosis|meiosis|inheritance/
+        .test(text)
+    ) {
+      return "genetics";
+    }
+
+    if (
+      /heart|blood|artery|vein|capillary|haemoglobin|hemoglobin|circulation/
+        .test(text)
+    ) {
+      return "circulation";
+    }
+
+    if (
+      /xylem|phloem|transpiration|translocation|vascular/
+        .test(text)
+    ) {
+      return "plant_transport";
+    }
+
+    if (
+      /ecosystem|food chain|food web|population|predator|prey|ecology|habitat/
+        .test(text)
+    ) {
+      return "ecology";
+    }
+
+    if (
+      /hormone|insulin|thyroxine|adrenaline|feedback/
+        .test(text)
+    ) {
+      return "homeostasis";
+    }
+
+    if (
+      /adaptation|natural selection|evolution|survival/
+        .test(text)
+    ) {
+      return "evolution";
+    }
+
+    if (
+      /cell|organelle|nucleus|ribosome|vacuole|chloroplast/
+        .test(text)
+    ) {
+      return "cell_biology";
+    }
+
+    return "generic";
+  }
+
+  // ==========================================================
+  // GENERATOR REGISTRY
+  // ==========================================================
+
+  _getGenerator(concept) {
+
+    const generators = {
+
+      photosynthesis:
+        this._generatePhotosynthesis,
+
+      enzymes:
+        this._generateEnzymes,
+
+      transport:
+        this._generateTransport,
+
+      respiration:
+        this._generateRespiration,
+
+      genetics:
+        this._generateGenetics,
+
+      circulation:
+        this._generateCirculation,
+
+      plant_transport:
+        this._generatePlantTransport,
+
+      ecology:
+        this._generateEcology,
+
+      homeostasis:
+        this._generateHomeostasis,
+
+      evolution:
+        this._generateEvolution,
+
+      cell_biology:
+        this._generateCellBiology
+    };
+
+    return generators[concept];
+  }
+
+  // ==========================================================
+  // DIFFICULTY ENGINE
+  // ==========================================================
+
+  _determineDifficulty(qObj, context) {
+
+    if (
+      typeof context.difficulty === "number"
+    ) {
+      return this._clamp(
+        Math.round(context.difficulty),
+        1,
+        5
+      );
+    }
+
+    const accuracy = Number(
+      context.recentAccuracy ??
+      context.accuracy ??
+      0.5
+    );
+
+    /*
+     * Difficulty is based on demonstrated mastery,
+     * not simply number of previous attempts.
+     */
+
+    if (accuracy >= 0.90) return 5;
+    if (accuracy >= 0.80) return 4;
+    if (accuracy >= 0.65) return 3;
+    if (accuracy >= 0.45) return 2;
+
+    return 1;
+  }
+
+  // ==========================================================
+  // PHOTOSYNTHESIS
+  // ==========================================================
+
+  _generatePhotosynthesis(
+    qObj,
+    difficulty
+  ) {
+
+    const scenarios = {
+
+      1: {
+        q:
+          "A green plant is placed in sunlight. " +
+          "Which substance does it produce during photosynthesis?",
+
+        ans:
+          "Glucose",
+
+        hint:
+          "Photosynthesis converts carbon dioxide and water " +
+          "into glucose using light energy.",
+
+        steps: [
+          "Step 1: Identify the process: photosynthesis.",
+          "Step 2: Plants use carbon dioxide and water.",
+          "Step 3: Light energy is captured by chlorophyll.",
+          "Step 4: Glucose is produced."
+        ],
+
+        distractors: [
+          "Oxygen only",
+          "Protein",
+          "Urea"
+        ]
+      },
+
+      2: {
+        q:
+          "A student covers part of a green leaf with opaque paper " +
+          "and leaves the plant in sunlight. After several hours, " +
+          "the leaf is tested with iodine. What is the purpose of " +
+          "this experiment?",
+
+        ans:
+          "To investigate whether light is required for starch formation",
+
+        hint:
+          "Iodine is used to test for starch.",
+
+        steps: [
+          "Step 1: The covered region receives little or no light.",
+          "Step 2: The uncovered region receives light.",
+          "Step 3: Iodine tests whether starch is present.",
+          "Step 4: Differences in starch formation reveal the role of light."
+        ],
+
+        distractors: [
+          "To test whether oxygen is required for respiration",
+          "To measure water absorption by roots",
+          "To determine whether chlorophyll is a protein"
+        ]
+      },
+
+      3: {
+        q:
+          "Two identical plants are placed under lamps. " +
+          "Plant A receives normal light while Plant B receives " +
+          "very low light. After several days, Plant A has accumulated " +
+          "more starch. Which explanation best accounts for the result?",
+
+        ans:
+          "Plant A received more light energy for photosynthesis",
+
+        hint:
+          "Light provides the energy required for photosynthesis.",
+
+        steps: [
+          "Step 1: Compare the independent variable: light intensity.",
+          "Step 2: Photosynthesis requires light energy.",
+          "Step 3: Greater available light can increase photosynthetic rate " +
+          "when light is limiting.",
+          "Step 4: More photosynthesis can result in greater starch accumulation."
+        ],
+
+        distractors: [
+          "Plant A absorbed more oxygen through its leaves",
+          "Low light directly converted starch into protein",
+          "Plant B could not absorb carbon dioxide at all"
+        ]
+      },
+
+      4: {
+        q:
+          "A greenhouse manager notices that increasing light intensity " +
+          "initially increases the rate of photosynthesis, but beyond a " +
+          "certain point the rate stops increasing. What is the most likely explanation?",
+
+        ans:
+          "Another factor has become limiting",
+
+        hint:
+          "Photosynthesis depends on several factors, including light, " +
+          "carbon dioxide concentration and temperature.",
+
+        steps: [
+          "Step 1: Increasing light initially increases energy availability.",
+          "Step 2: The rate eventually reaches a plateau.",
+          "Step 3: Light is no longer the limiting factor.",
+          "Step 4: Another factor such as COâ‚‚ concentration or temperature " +
+          "may now limit the rate."
+        ],
+
+        distractors: [
+          "Chlorophyll disappears immediately",
+          "Water stops being chemically useful",
+          "Oxygen becomes the main raw material"
+        ]
       }
-    }
+    };
 
-    // 3. Respiration & Cell Organelles (Mitochondria, ATP)
-    if (lower.includes("mitochondr") || lower.includes("atp") || lower.includes("respiration") || lower.includes("aerobic") || lower.includes("anaerobic") || lower.includes("glucose")) {
-      return {
-        q: `[Physiology Case Study] Microscopic examination of hummingbird wing muscle tissue reveals an extraordinarily high concentration of mitochondria compared to mammalian liver tissue. Why is this structural adaptation necessary?`,
-        ans: "To provide vast amounts of ATP energy required for rapid muscle contraction",
-        hint: "Mitochondria are the powerhouses where aerobic respiration generates ATP.",
-        why: "Continuous high-frequency wing flapping demands high rates of ATP synthesis produced via aerobic respiration in mitochondria.",
-        sol: "To provide vast amounts of ATP energy for rapid muscle contraction",
-        steps: [
-          "Step 1: Identify tissue requirement (Rapid continuous muscle movement)",
-          "Step 2: Link organelle function (Mitochondria = Aerobic respiration & ATP synthesis)",
-          "Step 3: Conclude high mitochondria count supports continuous energy supply"
-        ],
-        type: "mcq",
-        options: [
-          "To provide vast amounts of ATP energy required for rapid muscle contraction",
-          "To store glycogen and digestive enzymes for later use",
-          "To synthesize photosynthetic pigments during flight",
-          "To filter metabolic waste products out of the muscle"
-        ]
-      };
-    }
+    return this._scenario(
+      scenarios,
+      difficulty,
+      "photosynthesis"
+    );
+  }
 
-    // 4. Osmosis & Cell Transport (Turgor, Plasmolysis, Diffusion)
-    if (lower.includes("osmosis") || lower.includes("diffusion") || lower.includes("semi-permeable") || lower.includes("plasmolys") || lower.includes("turgid") || lower.includes("flaccid")) {
-      return {
-        q: `[Cell Physiology Experiment] Strips of fresh potato tuber are immersed in a beaker of 20% concentrated salt solution. After 1 hour, the potato strips become limp, flexible, and decrease in length. Explain the physical cellular process responsible.`,
-        ans: "Water moved out of potato cells into the concentrated salt solution by osmosis",
-        hint: "Water moves from high water potential (inside cell) to lower water potential (hypertonic solution).",
-        why: "The hypertonic salt solution has lower water potential than the cell sap, causing water to leave by osmosis, leading to loss of turgor (plasmolysis).",
-        sol: "Water moved out of potato cells by osmosis",
-        steps: [
-          "Step 1: Compare water potential (Potato cell sap > 20% Salt solution)",
-          "Step 2: Trace direction of osmosis (Water moves outward across membrane)",
-          "Step 3: State outcome (Cells lose turgor pressure and shrink)"
-        ],
-        type: "mcq",
-        options: [
-          "Water moved out of potato cells into the concentrated salt solution by osmosis",
-          "Salt molecules entered potato cells by active transport causing swelling",
-          "Starch molecules dissolved into the beaker by simple diffusion",
-          "Water entered potato cells by osmosis making them turgid"
-        ]
-      };
-    }
+  // ==========================================================
+  // ENZYMES
+  // ==========================================================
 
-    // 5. Genetics, DNA & Cell Division (Mitosis, Meiosis, Chromosomes)
-    if (lower.includes("dna") || lower.includes("gene") || lower.includes("chromosome") || lower.includes("mitosis") || lower.includes("meiosis") || lower.includes("allele") || lower.includes("genotype")) {
-      return {
-        q: `[Genetics Inquiry] During gamete formation (sperm and egg cells), homologous chromosomes separate so that each daughter cell receives half the original chromosome number. What type of nuclear division is this, and why is it essential?`,
-        ans: "Meiosis; it ensures the diploid chromosome number is restored upon fertilization",
-        hint: "Meiosis produces haploid (n) gametes.",
-        why: "Meiosis halves chromosome number (diploid 2n ➔ haploid n) so that fusion of sperm and egg during fertilization restores the diploid number (2n).",
-        sol: "Meiosis; restores diploid number upon fertilization",
-        steps: [
-          "Step 1: Identify cell division type in gamete formation (Meiosis)",
-          "Step 2: Note chromosome reduction (2n to n)",
-          "Step 3: Explain significance (Prevents doubling of chromosome count each generation)"
-        ],
-        type: "mcq",
-        options: [
-          "Meiosis; it ensures the diploid chromosome number is restored upon fertilization",
-          "Mitosis; it produces identical clone cells for growth and repair",
-          "Binary fission; it doubles the genetic material in each daughter cell",
-          "Fertilization; it multiplies chromosome numbers fourfold"
-        ]
-      };
-    }
+  _generateEnzymes(
+    qObj,
+    difficulty
+  ) {
 
-    // 6. Circulatory System & Transport in Animals
-    if (lower.includes("heart") || lower.includes("blood") || lower.includes("artery") || lower.includes("vein") || lower.includes("hemoglobin") || lower.includes("capillary")) {
-      return {
-        q: `[Cardiovascular Diagnostics] A patient's blood test reveals a abnormally low red blood cell count. As a consequence, the patient experiences chronic fatigue and shortness of breath upon exertion. What is the primary physiological reason?`,
-        ans: "Insufficient hemoglobin to transport adequate oxygen to body tissues",
-        hint: "Red blood cells contain hemoglobin, which binds oxygen.",
-        why: "Red blood cells carry oxygen via hemoglobin for cellular respiration. A shortage reduces ATP production, causing fatigue.",
-        sol: "Insufficient hemoglobin to transport oxygen to tissues",
-        steps: [
-          "Step 1: Relate red blood cells to hemoglobin content",
-          "Step 2: Identify hemoglobin role (Oxygen binding and transport)",
-          "Step 3: Connect oxygen deficit to reduced cellular respiration and fatigue"
-        ],
-        type: "mcq",
-        options: [
-          "Insufficient hemoglobin to transport adequate oxygen to body tissues",
-          "Inability of white blood cells to produce antibody proteins",
-          "Loss of blood clotting ability leading to internal bleeding",
-          "Decreased absorption of digested glucose in the small intestine"
-        ]
-      };
-    }
+    const temperature =
+      difficulty >= 3
+        ? this._choice([55, 60, 70])
+        : this._choice([5, 10, 40]);
 
-    // 7. Plant Vascular Transport (Xylem & Phloem)
-    if (lower.includes("xylem") || lower.includes("phloem") || lower.includes("transpiration") || lower.includes("translocation") || lower.includes("vascular")) {
-      return {
-        q: `[Plant Physiology Scenario] A researcher cuts a branch and places its cut stem into a flask of red dye. After 3 hours, red streaks appear inside the leaf veins. Which vascular tissue carried the red solution upward?`,
-        ans: "Xylem vessel elements",
-        hint: "Xylem transports water and dissolved mineral salts upward from roots to leaves.",
-        why: "Xylem vessels form continuous hollow tubes that transport water and dissolved minerals upward driven by transpiration pull.",
-        sol: "Xylem vessels",
-        steps: [
-          "Step 1: Identify substance transported (Liquid/Dye solution)",
-          "Step 2: Recall direction of flow (Upward from stem to leaves)",
-          "Step 3: Conclude Xylem is responsible for upward water transport"
-        ],
-        type: "mcq",
-        options: [
-          "Xylem vessel elements",
-          "Phloem sieve tube elements",
-          "Epidermal root hair cells",
-          "Parenchyma storage cells"
-        ]
-      };
-    }
+    const highTemp =
+      temperature >= 55;
 
-    // 8. Generic Reverse Inquiry for Any Biological Question
-    if (rawAns && rawAns.length > 3) {
-      return {
-        q: `[Biological Mechanism Inquiry] Regarding: "${stem}"\nWhat key biological process or structural mechanism explains this?`,
-        ans: rawAns,
-        hint: qObj.hint || "Relate the biological structure/function to core life principles.",
-        why: qObj.why || `Biological principle: ${rawAns}`,
-        sol: qObj.sol || qObj.why || rawAns,
-        steps: [
-          "Step 1: Identify the biological entity or system mentioned",
-          "Step 2: Recall its physiological or biochemical function",
-          "Step 3: State the core biological mechanism"
-        ],
-        type: "mcq",
-        options: [
-          rawAns,
-          "Passive osmotic balance regulation",
-          "Hormonal feedback inhibition",
-          "Cellular ATP hydrolysis energy transfer"
-        ]
-      };
-    }
+    const answer = highTemp
+      ? "The enzyme becomes denatured and its active site changes shape"
+      : "The enzyme may have reduced kinetic activity because molecules have less kinetic energy";
 
     return {
-      ...qObj,
-      q: `[Biological Principle Check] ${stem}`,
-      hint: qObj.hint || "Focus on structure-function relationships.",
-      steps: [
-        "Step 1: Analyze biological context",
-        "Step 2: Apply core biological mechanism",
-        "Step 3: Formulate answer"
-      ]
+
+      q:
+        `An enzyme-controlled reaction is investigated at ${temperature}Â°C. ` +
+        `${highTemp
+          ? "The reaction rate falls sharply after prolonged exposure."
+          : "The reaction occurs more slowly than it does at the optimum temperature."
+        } What is the best explanation?`,
+
+      ans:
+        answer,
+
+      hint:
+        highTemp
+          ? "Think about the three-dimensional structure of proteins."
+          : "Temperature affects molecular movement and collision frequency.",
+
+      steps: highTemp
+        ? [
+            `Step 1: ${temperature}Â°C is substantially above the typical optimum.`,
+            "Step 2: Excess heat disrupts bonds maintaining protein structure.",
+            "Step 3: The enzyme's active site changes shape.",
+            "Step 4: The substrate can no longer bind effectively."
+          ]
+        : [
+            "Step 1: Enzyme activity depends on molecular collisions.",
+            "Step 2: Lower temperature reduces molecular kinetic energy.",
+            "Step 3: Fewer successful enzyme-substrate collisions occur.",
+            "Step 4: Reaction rate decreases."
+          ],
+
+      sol:
+        answer,
+
+      options: [
+        answer,
+        highTemp
+          ? "The enzyme is converted into glucose"
+          : "The enzyme is permanently destroyed by every low temperature",
+
+        "The substrate becomes radioactive",
+
+        "The enzyme changes into a carbohydrate"
+      ],
+
+      metadata: {
+        skill: "enzyme_activity",
+        difficulty,
+        variables: {
+          temperature
+        }
+      }
     };
   }
+
+  // ==========================================================
+  // OSMOSIS / TRANSPORT
+  // ==========================================================
+
+  _generateTransport(
+    qObj,
+    difficulty
+  ) {
+
+    const scenarios = [
+      {
+        q:
+          "A plant cell is placed in a concentrated salt solution. " +
+          "After some time, the cell loses turgor. What happened?",
+
+        ans:
+          "Water moved out of the cell by osmosis",
+
+        hint:
+          "Osmosis is the movement of water across a selectively " +
+          "permeable membrane from higher water potential to lower water potential.",
+
+        steps: [
+          "Step 1: The external salt solution is more concentrated.",
+          "Step 2: The cell has relatively higher water potential.",
+          "Step 3: Water moves out across the selectively permeable membrane.",
+          "Step 4: The cell loses turgor."
+        ]
+      },
+
+      {
+        q:
+          "Potato cylinders placed in distilled water increase in mass. " +
+          "What is the best explanation?",
+
+        ans:
+          "Water entered the potato cells by osmosis",
+
+        hint:
+          "Distilled water has relatively high water potential.",
+
+        steps: [
+          "Step 1: Compare water potential.",
+          "Step 2: Water moves toward the region of lower water potential.",
+          "Step 3: Water enters the potato cells.",
+          "Step 4: Cell mass increases."
+        ]
+      }
+    ];
+
+    const selected =
+      scenarios[
+        this._randInt(
+          0,
+          scenarios.length - 1
+        )
+      ];
+
+    return {
+      ...selected,
+
+      sol: selected.ans,
+
+      options: [
+        selected.ans,
+        "Salt moved through the membrane by active transport",
+        "Water moved through the cell wall because the wall is fully permeable",
+        "Starch molecules were actively pumped into the cell"
+      ],
+
+      metadata: {
+        skill: "osmosis",
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // RESPIRATION
+  // ==========================================================
+
+  _generateRespiration(
+    qObj,
+    difficulty
+  ) {
+
+    const muscleDemand =
+      this._choice([
+        "a sprinter during a race",
+        "a hummingbird flying rapidly",
+        "a cyclist climbing a steep hill",
+        "a person performing intense exercise"
+      ]);
+
+    return {
+
+      q:
+        `During ${muscleDemand}, muscle cells require large amounts ` +
+        `of ATP. Which organelle is primarily responsible for aerobic ` +
+        `ATP production?`,
+
+      ans:
+        "Mitochondria",
+
+      hint:
+        "Aerobic respiration occurs mainly in mitochondria.",
+
+      steps: [
+        "Step 1: Identify the biological demand: high ATP requirement.",
+        "Step 2: ATP is required for cellular work such as muscle contraction.",
+        "Step 3: Aerobic respiration generates large amounts of ATP.",
+        "Step 4: Mitochondria are the main site of aerobic respiration."
+      ],
+
+      sol:
+        "Mitochondria produce ATP through aerobic respiration.",
+
+      options: [
+        "Mitochondria",
+        "Ribosomes",
+        "Golgi apparatus",
+        "Lysosomes"
+      ],
+
+      metadata: {
+        skill: "aerobic_respiration",
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // GENETICS
+  // ==========================================================
+
+  _generateGenetics(
+    qObj,
+    difficulty
+  ) {
+
+    const dominant =
+      this._choice(["A", "B"]);
+
+    const recessive =
+      dominant === "A"
+        ? "a"
+        : "b";
+
+    return {
+
+      q:
+        `In a genetic cross, ${dominant} is dominant over ${recessive}. ` +
+        `Two heterozygous parents are crossed. What proportion of ` +
+        `their offspring is expected to show the recessive phenotype?`,
+
+      ans:
+        "25%",
+
+      hint:
+        "Write the parental genotypes and construct a Punnett square.",
+
+      steps: [
+        `Step 1: Heterozygous parents are ${dominant}${recessive} Ã— ${dominant}${recessive}.`,
+        "Step 2: Each parent produces two possible gametes.",
+        "Step 3: The offspring genotypes occur in a 1:2:1 ratio.",
+        `Step 4: One of the four outcomes is homozygous recessive.`,
+        "Step 5: Therefore the expected recessive phenotype is 1/4 = 25%."
+      ],
+
+      sol:
+        "25%",
+
+      options: [
+        "25%",
+        "50%",
+        "75%",
+        "100%"
+      ],
+
+      metadata: {
+        skill: "monohybrid_inheritance",
+        difficulty,
+        variables: {
+          dominant,
+          recessive
+        }
+      }
+    };
+  }
+
+  // ==========================================================
+  // CIRCULATION
+  // ==========================================================
+
+  _generateCirculation(
+    qObj,
+    difficulty
+  ) {
+
+    const scenarios = [
+      {
+        q:
+          "A patient has a greatly reduced red blood cell count. " +
+          "Which physiological function is most directly affected?",
+
+        ans:
+          "Transport of oxygen to body tissues",
+
+        explanation:
+          "Red blood cells contain haemoglobin, which binds oxygen " +
+          "and transports it through the circulatory system."
+      },
+
+      {
+        q:
+          "Why do arteries generally have thicker muscular walls than veins?",
+
+        ans:
+          "They carry blood under higher pressure from the heart",
+
+        explanation:
+          "Blood pumped from the heart enters arteries at relatively high pressure, " +
+          "requiring stronger walls."
+      }
+    ];
+
+    const selected =
+      this._choice(scenarios);
+
+    return {
+
+      q: selected.q,
+
+      ans: selected.ans,
+
+      hint:
+        "Connect the structure or condition to its physiological function.",
+
+      why:
+        selected.explanation,
+
+      sol:
+        selected.ans,
+
+      steps: [
+        "Step 1: Identify the structure or physiological condition.",
+        "Step 2: Recall its normal biological function.",
+        "Step 3: Determine what changes when that function is disrupted.",
+        "Step 4: Select the consequence that follows directly."
+      ],
+
+      options: [
+        selected.ans,
+        "Production of digestive enzymes",
+        "Synthesis of chlorophyll",
+        "Removal of all carbon dioxide from the atmosphere"
+      ],
+
+      metadata: {
+        skill: "circulatory_system",
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // PLANT TRANSPORT
+  // ==========================================================
+
+  _generatePlantTransport(
+    qObj,
+    difficulty
+  ) {
+
+    const scenarios = [
+      {
+        q:
+          "A leafy shoot is placed in coloured water. After several hours, " +
+          "the dye appears in the veins of the leaves. Which tissue transported the water?",
+
+        ans:
+          "Xylem",
+
+        explanation:
+          "Xylem transports water and dissolved mineral ions from the roots toward the leaves."
+      },
+
+      {
+        q:
+          "A plant has healthy roots but its leaves wilt rapidly when exposed " +
+          "to dry, windy conditions. Which process is most directly increased?",
+
+        ans:
+          "Transpiration",
+
+        explanation:
+          "Dry moving air can increase water loss from leaves, increasing transpiration."
+      }
+    ];
+
+    const selected =
+      this._choice(scenarios);
+
+    return {
+
+      q: selected.q,
+
+      ans: selected.ans,
+
+      hint:
+        "Identify what substance is moving and determine the tissue responsible.",
+
+      why:
+        selected.explanation,
+
+      sol:
+        selected.ans,
+
+      steps: [
+        "Step 1: Identify the substance or process involved.",
+        "Step 2: Identify the direction of movement.",
+        "Step 3: Match the movement to the correct plant tissue.",
+        "Step 4: Explain why that tissue performs the function."
+      ],
+
+      options: [
+        selected.ans,
+        "Phloem",
+        "Epidermis",
+        "Root cap"
+      ],
+
+      metadata: {
+        skill: "plant_transport",
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // ECOLOGY
+  // ==========================================================
+
+  _generateEcology(
+    qObj,
+    difficulty
+  ) {
+
+    const prey =
+      this._choice([
+        "grass",
+        "maize",
+        "algae"
+      ]);
+
+    const herbivore =
+      this._choice([
+        "grasshopper",
+        "zebra",
+        "caterpillar"
+      ]);
+
+    const predator =
+      this._choice([
+        "frog",
+        "lion",
+        "bird"
+      ]);
+
+    return {
+
+      q:
+        `Consider the food chain:\n\n` +
+        `${prey} â†’ ${herbivore} â†’ ${predator}\n\n` +
+        `If the population of ${herbivoresOr(
+          herbivore
+        )} suddenly decreases, what is the most immediate likely effect ` +
+        `on the ${predator} population?`,
+
+      ans:
+        "It is likely to decrease because less food is available",
+
+      hint:
+        "Predators depend on their prey for energy.",
+
+      steps: [
+        `Step 1: Identify the predator's food source: ${herbivore}.`,
+        `Step 2: The ${herbivore} population decreases.`,
+        "Step 3: Less food is available to the predator.",
+        "Step 4: Predator survival and reproduction may decrease."
+      ],
+
+      sol:
+        "The predator population may decrease because its food supply has fallen.",
+
+      options: [
+        "It is likely to decrease because less food is available",
+        "It must immediately double",
+        "It becomes a producer",
+        "It no longer requires energy"
+      ],
+
+      metadata: {
+        skill: "food_chain_population",
+        difficulty,
+        variables: {
+          prey,
+          herbivore,
+          predator
+        }
+      }
+    };
+  }
+
+  // ==========================================================
+  // HOMEOSTASIS
+  // ==========================================================
+
+  _generateHomeostasis(
+    qObj,
+    difficulty
+  ) {
+
+    return {
+
+      q:
+        "After eating a carbohydrate-rich meal, blood glucose concentration rises. " +
+        "Which hormone helps return blood glucose toward its normal level?",
+
+      ans:
+        "Insulin",
+
+      hint:
+        "Think about the hormone released when blood glucose rises.",
+
+      steps: [
+        "Step 1: Blood glucose concentration increases.",
+        "Step 2: The pancreas detects the increase.",
+        "Step 3: Insulin is released.",
+        "Step 4: Cells take up more glucose and excess glucose can be stored as glycogen.",
+        "Step 5: Blood glucose concentration falls toward its normal range."
+      ],
+
+      sol:
+        "Insulin helps lower elevated blood glucose concentration.",
+
+      options: [
+        "Insulin",
+        "Adrenaline",
+        "Haemoglobin",
+        "Amylase"
+      ],
+
+      metadata: {
+        skill: "blood_glucose_homeostasis",
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // EVOLUTION
+  // ==========================================================
+
+  _generateEvolution(
+    qObj,
+    difficulty
+  ) {
+
+    return {
+
+      q:
+        "A population of insects is exposed repeatedly to the same insecticide. " +
+        "After several generations, a larger proportion of the population survives. " +
+        "Which process best explains this change?",
+
+      ans:
+        "Natural selection",
+
+      hint:
+        "Consider inherited variation and differential survival.",
+
+      steps: [
+        "Step 1: Individuals in the population vary.",
+        "Step 2: Some individuals possess inherited traits that increase survival.",
+        "Step 3: Resistant individuals are more likely to survive and reproduce.",
+        "Step 4: Resistance becomes more common over generations."
+      ],
+
+      sol:
+        "Natural selection increases the frequency of inherited resistance.",
+
+      options: [
+        "Natural selection",
+        "Individual insects deliberately changed their genes",
+        "Photosynthesis",
+        "Osmosis"
+      ],
+
+      metadata: {
+        skill: "natural_selection",
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // CELL BIOLOGY
+  // ==========================================================
+
+  _generateCellBiology(
+    qObj,
+    difficulty
+  ) {
+
+    return {
+
+      q:
+        "A cell contains many ribosomes. What does this suggest about the cell's activity?",
+
+      ans:
+        "It is actively synthesizing proteins",
+
+      hint:
+        "Ribosomes are the sites of protein synthesis.",
+
+      steps: [
+        "Step 1: Identify the organelle: ribosome.",
+        "Step 2: Recall its function: protein synthesis.",
+        "Step 3: A high number of ribosomes suggests high protein production."
+      ],
+
+      sol:
+        "Many ribosomes indicate active protein synthesis.",
+
+      options: [
+        "It is actively synthesizing proteins",
+        "It is performing photosynthesis only",
+        "It is storing all genetic material outside the nucleus",
+        "It is digesting cellulose using chlorophyll"
+      ],
+
+      metadata: {
+        skill: "cell_structure_function",
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // QUESTION BUILDER
+  // ==========================================================
+
+  _scenario(
+    scenarios,
+    difficulty,
+    skill
+  ) {
+
+    const selected =
+      scenarios[
+        Math.min(
+          difficulty,
+          Object.keys(scenarios).length
+        )
+      ] ||
+      scenarios[
+        Object.keys(scenarios).length
+      ];
+
+    return {
+      ...selected,
+
+      options: [
+        selected.ans,
+        ...(selected.distractors || [])
+      ],
+
+      metadata: {
+        skill,
+        difficulty
+      }
+    };
+  }
+
+  // ==========================================================
+  // VALIDATION
+  // ==========================================================
+
+  _validateQuestion(question) {
+
+    if (!question) return false;
+
+    if (!question.q) return false;
+
+    if (!question.ans) return false;
+
+    if (!question.options) return true;
+
+    const unique =
+      new Set(question.options);
+
+    if (unique.size !== 4) {
+      return false;
+    }
+
+    if (
+      !unique.has(question.ans)
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  // ==========================================================
+  // FINALIZATION
+  // ==========================================================
+
+  _finalize(
+    question,
+    modalityIndex,
+    concept,
+    difficulty
+  ) {
+
+    const mode =
+      Number(modalityIndex) % 4;
+
+    const open =
+      mode === 0;
+
+    return {
+
+      ...question,
+
+      type:
+        open
+          ? "open_response"
+          : "mcq",
+
+      options:
+        open
+          ? null
+          : this._shuffle(
+              question.options || []
+            ),
+
+      metadata: {
+
+        ...(question.metadata || {}),
+
+        concept,
+
+        difficulty,
+
+        mutationEngine:
+          "TixarBiologyMutator",
+
+        version:
+          "2.0"
+      }
+    };
+  }
+
+  // ==========================================================
+  // FALLBACK
+  // ==========================================================
+
+  _fallback(
+    qObj,
+    modalityIndex,
+    difficulty,
+    concept
+  ) {
+
+    return {
+
+      ...qObj,
+
+      type:
+        Number(modalityIndex) % 4 === 0
+          ? "open_response"
+          : "mcq",
+
+      hint:
+        qObj.hint ||
+        "Connect the biological structure, process, and function.",
+
+      steps:
+        qObj.steps || [
+          "Identify the biological structure or process.",
+          "Recall its function.",
+          "Explain the mechanism.",
+          "Connect the mechanism to the observed outcome."
+        ],
+
+      metadata: {
+        concept,
+        difficulty,
+        mutationEngine:
+          "TixarBiologyMutator",
+        version:
+          "2.0"
+      }
+    };
+  }
+
+  // ==========================================================
+  // UTILITIES
+  // ==========================================================
+
+  _choice(array) {
+
+    return array[
+      Math.floor(
+        this._rng() * array.length
+      )
+    ];
+  }
+
+  _randInt(min, max) {
+
+    return Math.floor(
+      this._rng() *
+      (max - min + 1)
+    ) + min;
+  }
+
+  _shuffle(array) {
+
+    const result =
+      [...array];
+
+    for (
+      let i = result.length - 1;
+      i > 0;
+      i--
+    ) {
+
+      const j =
+        Math.floor(
+          this._rng() * (i + 1)
+        );
+
+      [
+        result[i],
+        result[j]
+      ] = [
+        result[j],
+        result[i]
+      ];
+    }
+
+    return result;
+  }
+
+  _clamp(
+    value,
+    min,
+    max
+  ) {
+
+    return Math.max(
+      min,
+      Math.min(max, value)
+    );
+  }
+
+  _createRNG(seed) {
+
+    let state =
+      seed >>> 0;
+
+    return () => {
+
+      state +=
+        0x6D2B79F5;
+
+      let t =
+        state;
+
+      t = Math.imul(
+        t ^ (t >>> 15),
+        t | 1
+      );
+
+      t ^= t +
+        Math.imul(
+          t ^ (t >>> 7),
+          t | 61
+        );
+
+      return (
+        (
+          t ^
+          (t >>> 14)
+        ) >>> 0
+      ) / 4294967296;
+    };
+  }
+}
+
+/**
+ * Small helper used by the ecology generator.
+ * Keeping it outside the class prevents accidental
+ * coupling with the mutator state.
+ */
+function herbivoresOr(name) {
+  return name;
 }
