@@ -1,9 +1,6 @@
-import { useState, useEffect, useRef } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
-import { explainMisconception } from "../../../services/aiEngine";
-import { getLocalRAGContext } from "../../../utils/aiRAGRouter";
 
 function FeedbackDisplay({
   feedback,
@@ -29,19 +26,35 @@ function FeedbackDisplay({
 
   const sentenceItems = feedback.analysis?.feedback || [];
 
+  const nextAction = feedback.analysis?.nextAction || null;
+  const confidenceScore = feedback.analysis?.dimensions?.diagnosticConfidence || null;
+  const recurrence = feedback.analysis?.recurrence || null;
+
   return (
     <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-needs-review"}`}>
-      {/* Header Bar */}
+      {/* Header Bar with Readiness Confidence */}
       <div className="fb-header">
-        <div className="fb-status-wrapper">
+        <div className="fb-status-wrapper" style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
           <span className={`fb-status-badge ${isCorrect ? "fb-badge-success" : "fb-badge-review"}`}>
-            {isCorrect ? "✓ Correct" : "Needs Review"}
+            {isCorrect ? "✓ Mastered" : "Needs Review"}
           </span>
+          {confidenceScore !== null && (
+            <span className="smart-analysis-readiness-pill">
+              Readiness: {confidenceScore}%
+            </span>
+          )}
         </div>
         <span className="fb-progress-pill">
           {qIdx + 1} / {totalQs}
         </span>
       </div>
+
+      {/* Recurrence Warning (When misconception is repeated across attempts) */}
+      {!isCorrect && recurrence && recurrence.count > 1 && (
+        <div className="smart-analysis-recurrence-badge">
+          ⚠️ {recurrence.label} (Attempted {recurrence.count}x)
+        </div>
+      )}
 
       {/* Minimalist Diagnostic Insight (When Incorrect) */}
       {!isCorrect && (
@@ -84,6 +97,17 @@ function FeedbackDisplay({
         </div>
       )}
 
+      {/* Closed-Loop Learning Policy Directive (Tixar Next Action) */}
+      {!isCorrect && nextAction && (
+        <div className="smart-policy-card">
+          <div className="smart-policy-header">
+            <span className="smart-policy-badge">{nextAction.badge}</span>
+            <span className="smart-policy-title">{nextAction.title}</span>
+          </div>
+          <p className="smart-policy-instruction">{nextAction.instruction}</p>
+        </div>
+      )}
+
       {/* Correct Target Answer */}
       {!isCorrect && rawAnswer && (
         <div className="fb-correct-answer-box">
@@ -117,7 +141,7 @@ function FeedbackDisplay({
             onClick={startMutatedRepair}
             disabled={grading}
           >
-            Try Variant Question
+            {nextAction?.btnText || "Try Variant Question"}
           </button>
         )}
         {!isCorrect && goToReview && (

@@ -6194,6 +6194,24 @@ html.dark-mode .smart-analysis-container {
   color: #f8fafc;
 }
 
+/* Readiness Pill */
+.smart-analysis-readiness-pill {
+  background: #f0f9ff;
+  border: 1px solid #0284c7;
+  color: #0284c7;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 0.2rem 0.65rem;
+  border-radius: 12px;
+  letter-spacing: 0.03em;
+}
+
+html.dark-mode .smart-analysis-readiness-pill {
+  background: rgba(14, 165, 233, 0.18);
+  border-color: #38bdf8;
+  color: #38bdf8;
+}
+
 /* "You wrote: …" row */
 .smart-analysis-you-said {
   display: flex;
