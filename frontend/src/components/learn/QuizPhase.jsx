@@ -9,6 +9,7 @@ import HintBox from "./quiz/HintBox";
 import QuizActionButtons from "./quiz/QuizActionButtons";
 import FeedbackDisplay from "./quiz/FeedbackDisplay";
 import ConceptReferenceDrawer from "./quiz/ConceptReferenceDrawer";
+import { verifyQuestionAcrossSubjects } from "../../utils/subjectVerifierRouter";
 
 function QuizPhase({
   topic,
@@ -43,39 +44,35 @@ function QuizPhase({
 
   // ── Concept Review Screen ──────────────────────────────────
   if (retryState === "review") {
-    const originalQ = activeQuestion || content?.qs?.[qIdx];
-    const rawAnswer = originalQ?.ans || "";
+    const originalQ = activeQuestion || content?.qs?.[qIdx] || {};
+    const questionText = originalQ.q || originalQ.stem || "";
+    const rawAnswer = originalQ.ans || "";
+
+    // Run Universal Multi-Subject Verification to get verified answer & steps
+    const verification = verifyQuestionAcrossSubjects(questionText, rawAnswer, originalQ);
+    const displayAnswer = verification.wasOverridden ? verification.verifiedAnswer : rawAnswer;
+    const displaySteps = verification.verifiedSteps || originalQ.steps || [];
+    const displayExplanation = verification.explanation || originalQ.why || originalQ.sol || "";
+
     return (
       <div className="lc" id="qCard">
         <div className="lch">
-          <span className="lbadge lb-n">Concept Review</span>
+          <span className="lbadge lb-n">Concept Review & Method Repair</span>
         </div>
         <div className="lcb">
           <div className="fb-card fb-review-mode">
             <div className="fb-header">
               <div className="fb-status-wrapper">
-                <span className="fb-status-badge fb-badge-review">Concept Review</span>
+                <span className="fb-status-badge fb-badge-review">Concept Repair</span>
               </div>
             </div>
 
-            {/* 1. Explanation FIRST */}
-            {(originalQ?.why || originalQ?.sol) && (
-              <div className="fb-explanation-box">
-                <div className="fb-section-title">Explanation</div>
-                <div className="fb-explanation-text">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                    {originalQ.why || originalQ?.sol}
-                  </ReactMarkdown>
-                </div>
-              </div>
-            )}
-
-            {/* 2. Step-by-Step Breakdown */}
-            {originalQ?.steps && originalQ.steps.length > 0 && (
+            {/* 1. Step-by-Step Solution Timeline FIRST */}
+            {displaySteps.length > 0 && (
               <div className="fb-steps-container">
-                <div className="fb-section-title">Step-by-Step Solution</div>
+                <div className="fb-section-title">How to Solve It (Step-by-Step)</div>
                 <div className="fb-steps-timeline">
-                  {originalQ.steps.map((step, i) => (
+                  {displaySteps.map((step, i) => (
                     <div key={i} className="fb-step-card">
                       <span className="fb-step-badge">Step {i + 1}</span>
                       <div className="fb-step-text">
@@ -89,17 +86,31 @@ function QuizPhase({
               </div>
             )}
 
-            {/* 3. Target Answer SECOND */}
-            {rawAnswer && (
+            {/* 2. Verified Target Answer SECOND */}
+            {displayAnswer && (
               <div className="fb-correct-answer-box">
-                <div className="fb-section-title">Correct Answer</div>
+                <div className="fb-section-title">Target Correct Answer</div>
                 <div className="fb-answer-value">
                   <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                    {rawAnswer}
+                    {String(displayAnswer)}
                   </ReactMarkdown>
                 </div>
               </div>
             )}
+
+            {/* 3. Explanation (if non-redundant) */}
+            {displayExplanation &&
+              displaySteps.length === 0 &&
+              !/^\d+$/.test(String(displayExplanation).trim()) && (
+                <div className="fb-explanation-box">
+                  <div className="fb-section-title">Explanation</div>
+                  <div className="fb-explanation-text">
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                      {displayExplanation}
+                    </ReactMarkdown>
+                  </div>
+                </div>
+              )}
           </div>
 
           <button className="fb-action-btn fb-next-btn" onClick={startRetry} style={{ marginTop: "1.2rem", width: "100%" }}>

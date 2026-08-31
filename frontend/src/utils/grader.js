@@ -69,6 +69,7 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
   const tokenize = (s) => normalize(s).split(" ").filter(Boolean);
   const uAns = normalize(userAnswer);
 
+  // Compute mainCorrectAnswerStr AFTER rawAns has been verified & overridden!
   const mainCorrectAnswerStr = Array.isArray(rawAns)
     ? rawAns.join(" • ")
     : String(rawAns || "");
