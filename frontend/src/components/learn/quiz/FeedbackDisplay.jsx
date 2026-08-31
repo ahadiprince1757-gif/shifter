@@ -139,17 +139,20 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Optional Solution / Explanation — Only shown if no steps exist or if it provides distinct non-redundant context */}
-      {feedback.solution && (!feedback.steps || feedback.steps.length === 0) && (
-        <div className="fb-explanation-box">
-          <div className="fb-section-title">Explanation</div>
-          <div className="fb-explanation-text">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-              {feedback.solution}
-            </ReactMarkdown>
+      {/* Optional Solution / Explanation — Only shown if no steps exist and explanation is meaningful */}
+      {feedback.solution &&
+        (!feedback.steps || feedback.steps.length === 0) &&
+        !/^\d+$/.test(String(feedback.solution).trim()) &&
+        String(feedback.solution).trim() !== String(feedback.correctAnswer).trim() && (
+          <div className="fb-explanation-box">
+            <div className="fb-section-title">Explanation</div>
+            <div className="fb-explanation-text">
+              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                {feedback.solution}
+              </ReactMarkdown>
+            </div>
           </div>
-        </div>
-      )}
+        )}
 
       {/* Action Buttons */}
       <div className="fb-actions">

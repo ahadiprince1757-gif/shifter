@@ -24,7 +24,7 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
 
   let rawAns = question.ans;
   const questionText = question.q || question.stem || "";
-  const solution =
+  let solution =
     question.sol ||
     question.why ||
     question.explain ||
@@ -44,6 +44,12 @@ export function evaluateAnswer(userAnswer, question, userWork = "") {
         `[Tixar Grader] Multi-Subject Verifier (${verification.subject}) overrode stored answer "${rawAns}" → "${verification.verifiedAnswer}" for: "${questionText}"`
       );
       rawAns = verification.verifiedAnswer;
+      if (verification.explanation) {
+        solution = verification.explanation;
+      }
+    } else if (verification.explanation && (!solution || solution === String(question.ans) || /^\d+$/.test(String(solution).trim()))) {
+      // If stored solution is just a raw number (like "24"), replace it with rich verified explanation
+      solution = verification.explanation;
     }
 
     if (verification.verifiedSteps && !verifiedSteps) {
