@@ -318,27 +318,189 @@ export class ChemistryMutator {
       };
     }
 
-    // ── 8. Chemical Bonding & Periodic Trends ──
-    if (lower.includes("bond") || lower.includes("ionic") || lower.includes("covalent") || lower.includes("electron") || lower.includes("periodic") || lower.includes("valenc")) {
-      return {
-        q: `[Chemical Bonding Inquiry] Element X has an atomic number of 11 (2,8,1) and Element Y has an atomic number of 17 (2,8,7). What type of chemical bond forms between X and Y, and how are electrons transferred?`,
-        ans: "Ionic bond; Element X transfers 1 valence electron to Element Y",
-        hint: "Metals (Group 1) transfer valence electrons to non-metals (Group 7) to form oppositely charged ions.",
-        why: "Element X (Sodium metal) loses 1 electron to form X⁺, while Element Y (Chlorine non-metal) gains 1 electron to form Y⁻. Electrostatic attraction forms an ionic crystal lattice.",
-        sol: "Ionic bond formed by electron transfer from X to Y",
-        steps: [
-          "Step 1: Determine electron configurations (X = 2,8,1; Y = 2,8,7)",
-          "Step 2: Identify metal (X loses 1 e⁻) and non-metal (Y gains 1 e⁻)",
-          "Step 3: Conclude ionic bonding occurs via electron transfer"
-        ],
-        type: "mcq",
-        options: [
-          "Ionic bond; Element X transfers 1 valence electron to Element Y",
-          "Covalent bond; Element X and Y share a pair of electrons equally",
-          "Metallic bond; Delocalized sea of electrons shared between metal ions",
-          "Hydrogen bond; Permanent dipole attraction between polar molecules"
-        ]
-      };
+    // ── 8. Chemical Bonding & Periodic Trends (Strict Concept Isolation) ──
+    if (lower.includes("bond") || lower.includes("ionic") || lower.includes("covalent") || lower.includes("metallic") || lower.includes("electron") || lower.includes("periodic") || lower.includes("valenc")) {
+      const isCovalent = lower.includes("covalent") || lower.includes("share") || lower.includes("sharing") || lower.includes("molecule") || lower.includes("non-metal");
+      const isMetallic = lower.includes("metallic") || lower.includes("sea of electron") || lower.includes("delocalized");
+
+      if (isCovalent) {
+        // Covalent Bonding Variants
+        const covalentScenarios = [
+          {
+            qStem: "Element A (Hydrogen, 1) and Element B (Chlorine, 2,8,7) combine to form Hydrogen Chloride (HCl). What type of chemical bond forms between them, and how are valence electrons involved?",
+            ans: "Covalent bond; Element A and Element B share 1 pair of valence electrons to achieve stable octet/duplet configurations.",
+            hint: "Non-metals share valence electrons to form covalent bonds.",
+            sol: "Covalent bond formed by sharing 1 pair of electrons between H and Cl.",
+            distractors: [
+              "Covalent bond; Element A and Element B share 1 pair of valence electrons to achieve stable octet/duplet configurations.",
+              "Ionic bond; Element A transfers 1 electron to Element B to form charged ions.",
+              "Metallic bond; Element A and B float in a sea of delocalized valence electrons.",
+              "Hydrogen bond; Permanent electrostatic attraction between fully ionized atoms."
+            ]
+          },
+          {
+            qStem: "Carbon (atomic number 6, config 2,4) reacts with Oxygen (atomic number 8, config 2,6) to form Carbon Dioxide (CO₂). Describe the bonding mechanism.",
+            ans: "Covalent bond; Carbon forms double covalent bonds by sharing 2 pairs of electrons with each Oxygen atom.",
+            hint: "Carbon has 4 valence electrons and needs 4 more by sharing with Oxygen.",
+            sol: "Covalent bond formed by sharing 2 pairs of electrons with each Oxygen atom.",
+            distractors: [
+              "Covalent bond; Carbon forms double covalent bonds by sharing 2 pairs of electrons with each Oxygen atom.",
+              "Ionic bond; Carbon transfers 4 electrons to Oxygen to form C⁴⁺ and O²⁻ ions.",
+              "Metallic bond; Carbon and Oxygen form a metallic crystal lattice.",
+              "Electrovalent bond; Electrons are transferred back and forth continuously."
+            ]
+          },
+          {
+            qStem: "Two Nitrogen atoms (config 2,5) combine to form a Nitrogen gas molecule (N₂). How many electron pairs are shared in this covalent bond?",
+            ans: "3 pairs of electrons (Triple covalent bond)",
+            hint: "Each Nitrogen atom needs 3 electrons to complete its octet (2,8).",
+            sol: "Triple covalent bond (3 shared electron pairs).",
+            distractors: [
+              "3 pairs of electrons (Triple covalent bond)",
+              "1 pair of electrons (Single covalent bond)",
+              "2 pairs of electrons (Double covalent bond)",
+              "4 pairs of electrons (Quadruple ionic bond)"
+            ]
+          }
+        ];
+
+        const selected = covalentScenarios[mode % covalentScenarios.length];
+        const ansStr = selected.ans;
+
+        if (mode === 0) {
+          return {
+            q: selected.qStem,
+            ans: ansStr,
+            hint: selected.hint,
+            sol: selected.sol,
+            type: "open_response",
+            options: null,
+          };
+        } else if (mode === 1) {
+          return {
+            q: selected.qStem,
+            ans: ansStr,
+            hint: selected.hint,
+            sol: selected.sol,
+            type: "mcq",
+            options: selected.distractors,
+          };
+        } else if (mode === 2) {
+          return {
+            q: `A student claimed that the atoms in this scenario ("${selected.qStem.split('.')[0]}.") form an ionic bond by transferring electrons. Is this claim correct? State the true bond type and mechanism.`,
+            ans: `Incorrect. The true bond is: ${ansStr}.`,
+            hint: selected.hint,
+            sol: `Claim is incorrect. ${selected.sol}`,
+            type: "open_response",
+            options: null,
+          };
+        } else {
+          return {
+            q: `State the general rule for covalent bond formation between non-metal atoms, then describe the bonding for:\n"${selected.qStem}"`,
+            ans: `Rule: Non-metals complete octets by sharing pairs of valence electrons. Bonding mechanism: ${ansStr}.`,
+            hint: selected.hint,
+            sol: selected.sol,
+            type: "open_response",
+            options: null,
+          };
+        }
+      } else if (isMetallic) {
+        // Metallic Bonding Variants
+        const ansStr = "Metallic bond; Electrostatic attraction between positive metal cations and a delocalized sea of valence electrons";
+        if (mode === 0) {
+          return {
+            q: "Explain the nature of chemical bonding in solid copper metal and state what holds the metal structure together.",
+            ans: ansStr,
+            hint: "Metal atoms shed outer electrons into a mobile sea of delocalized electrons.",
+            sol: ansStr,
+            type: "open_response",
+            options: null,
+          };
+        } else {
+          return {
+            q: "Which statement accurately describes metallic bonding in metals like sodium or aluminum?",
+            ans: ansStr,
+            hint: "Delocalized electrons flow between fixed positive metal ions.",
+            sol: ansStr,
+            type: "mcq",
+            options: [
+              ansStr,
+              "Ionic bond; Metal atoms transfer electrons to neighboring metal atoms",
+              "Covalent bond; Metal atoms share localized pairs of electrons",
+              "Van der Waals attraction between neutral gas molecules"
+            ],
+          };
+        }
+      } else {
+        // Ionic Bonding Variants
+        const ionicScenarios = [
+          {
+            qStem: "Element X (Sodium, 2,8,1) reacts with Element Y (Chlorine, 2,8,7) to form Sodium Chloride (NaCl). What type of chemical bond forms between X and Y, and how are electrons transferred?",
+            ans: "Ionic bond; Element X transfers 1 valence electron to Element Y to form X⁺ and Y⁻ ions.",
+            hint: "Metals (Group 1) transfer valence electrons to non-metals (Group 7) to form oppositely charged ions.",
+            sol: "Ionic bond formed by electron transfer from X to Y.",
+            distractors: [
+              "Ionic bond; Element X transfers 1 valence electron to Element Y to form X⁺ and Y⁻ ions.",
+              "Covalent bond; Element X and Y share a pair of electrons equally.",
+              "Metallic bond; Delocalized sea of electrons shared between metal ions.",
+              "Hydrogen bond; Permanent dipole attraction between polar molecules."
+            ]
+          },
+          {
+            qStem: "Magnesium (atomic number 12, config 2,8,2) reacts with Oxygen (atomic number 8, config 2,6) to form Magnesium Oxide (MgO). Describe the electron transfer.",
+            ans: "Ionic bond; Magnesium transfers 2 valence electrons to Oxygen, forming Mg²⁺ and O²⁻ ions.",
+            hint: "Magnesium loses 2 electrons to achieve octet (2,8); Oxygen gains 2 electrons to achieve octet (2,8).",
+            sol: "Ionic bond formed by transfer of 2 electrons from Mg to O.",
+            distractors: [
+              "Ionic bond; Magnesium transfers 2 valence electrons to Oxygen, forming Mg²⁺ and O²⁻ ions.",
+              "Covalent bond; Magnesium and Oxygen share 2 pairs of electrons.",
+              "Metallic bond; Magnesium and Oxygen share delocalized valence electrons.",
+              "Dative bond; Oxygen donates both electrons to Magnesium."
+            ]
+          }
+        ];
+
+        const selected = ionicScenarios[mode % ionicScenarios.length];
+        const ansStr = selected.ans;
+
+        if (mode === 0) {
+          return {
+            q: selected.qStem,
+            ans: ansStr,
+            hint: selected.hint,
+            sol: selected.sol,
+            type: "open_response",
+            options: null,
+          };
+        } else if (mode === 1) {
+          return {
+            q: selected.qStem,
+            ans: ansStr,
+            hint: selected.hint,
+            sol: selected.sol,
+            type: "mcq",
+            options: selected.distractors,
+          };
+        } else if (mode === 2) {
+          return {
+            q: `A student claimed that the reaction in this scenario ("${selected.qStem.split('.')[0]}.") forms a covalent bond by sharing electrons. Is this claim correct? State the true bond type and mechanism.`,
+            ans: `Incorrect. The true bond is: ${ansStr}.`,
+            hint: selected.hint,
+            sol: `Claim is incorrect. ${selected.sol}`,
+            type: "open_response",
+            options: null,
+          };
+        } else {
+          return {
+            q: `State the general rule for ionic bond formation between metal and non-metal atoms, then describe the bonding for:\n"${selected.qStem}"`,
+            ans: `Rule: Metal transfers valence electrons to non-metal to form oppositely charged ions held by electrostatic forces. Mechanism: ${ansStr}.`,
+            hint: selected.hint,
+            sol: selected.sol,
+            type: "open_response",
+            options: null,
+          };
+        }
+      }
     }
 
     // ── 9. Rates of Reaction & Catalysts ──
