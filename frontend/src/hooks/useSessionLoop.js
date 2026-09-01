@@ -17,6 +17,7 @@ import { questionMutator } from "../utils/questionMutator";
 import { saveAchievement, saveProgress } from "../api";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import { getVerifiedQuestionWithOptions } from "../utils/mcqVerifier";
+import { recordErrorAndGetRecurrence } from "../utils/studentMemoryModel";
 
 export const SESSION_PHASES = {
   NOTES: 0,
@@ -109,7 +110,15 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
 
     setTimeout(() => {
       const res = evaluateAnswer(answer, q, work);
-      setFeedback({ ...res, confidence });
+      let enrichedAnalysis = res.analysis || {};
+
+      if (!res.isCorrect) {
+        const cat = res.diagnosis?.type || res.analysis?.diagnosis?.type || "CONCEPTUAL_GAP";
+        const recurrence = recordErrorAndGetRecurrence(topic, cat);
+        enrichedAnalysis = { ...enrichedAnalysis, recurrence };
+      }
+
+      setFeedback({ ...res, analysis: enrichedAnalysis, confidence });
       setGrading(false);
 
       if (!isRepairing) {

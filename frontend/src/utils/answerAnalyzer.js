@@ -16,6 +16,8 @@
  * Optional AI/semantic verification can be layered above this later.
  */
 
+import { diagnoseMisconceptionPattern } from "./misconceptionDiagnoser.js";
+
 // ============================================================================
 // CONCEPT CLUSTERS
 // ============================================================================
@@ -1505,6 +1507,14 @@ export function analyseStudentAnswer(
       severity: "high",
       message:
         `You used "${contradiction.studentConcept}" where the expected concept is "${contradiction.expectedConcept}". These concepts should not be treated as equivalent here.`,
+    });
+  }
+
+  const patternDiag = diagnoseMisconceptionPattern(studentAnswer, correctAnswer);
+  if (patternDiag && patternDiag.detail) {
+    misconceptions.push({
+      misconception: patternDiag.detail,
+      category: patternDiag.category
     });
   }
 

@@ -9557,6 +9557,141 @@ html.dark-mode .ai-msg-bubble--assistant {
   }
 }
 
+/* ───────────────────────────────────────────────────────────────────────────── */
+/* KNOWLEDGE STATE BREAKDOWN CARD (THEME ALIGNED & RESPONSIVE)                   */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+.knowledge-state-card {
+  margin-top: 1rem;
+  background: var(--sur, #ffffff);
+  border: 1px solid var(--bd, rgba(0, 0, 0, 0.08));
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
+  transition: all 0.2s ease;
+}
+
+html.dark-mode .knowledge-state-card {
+  background: var(--sur, #1a1a24);
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.knowledge-state-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.knowledge-state-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--t, #0f172a);
+}
+
+.knowledge-state-subtitle {
+  font-size: 0.8rem;
+  color: var(--t2, #64748b);
+  margin: 0.2rem 0 0 0;
+}
+
+.knowledge-state-gap-badge {
+  font-size: 0.75rem;
+  background: rgba(245, 158, 11, 0.08);
+  color: #d97706;
+  padding: 0.3rem 0.65rem;
+  border-radius: 8px;
+  font-weight: 700;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  white-space: nowrap;
+}
+
+html.dark-mode .knowledge-state-gap-badge {
+  background: rgba(245, 158, 11, 0.15);
+  color: #fbbf24;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.knowledge-state-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.knowledge-state-dim-card {
+  background: var(--bg, #f8fafc);
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid var(--bd, rgba(0, 0, 0, 0.06));
+}
+
+html.dark-mode .knowledge-state-dim-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.knowledge-state-dim-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: var(--t, #334155);
+  margin-bottom: 0.35rem;
+}
+
+html.dark-mode .knowledge-state-dim-label {
+  color: #cbd5e1;
+}
+
+.knowledge-state-dim-track {
+  height: 5px;
+  background: rgba(0, 0, 0, 0.06);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+html.dark-mode .knowledge-state-dim-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.knowledge-state-diagnosis-box {
+  background: linear-gradient(135deg, rgba(116, 82, 243, 0.05), rgba(77, 166, 255, 0.03));
+  border: 1px solid rgba(116, 82, 243, 0.2);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+
+html.dark-mode .knowledge-state-diagnosis-box {
+  background: rgba(116, 82, 243, 0.1);
+  border-color: rgba(116, 82, 243, 0.3);
+}
+
+.knowledge-state-diagnosis-title {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--g2, #7452f3);
+  display: block;
+  margin-bottom: 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.knowledge-state-diagnosis-text {
+  font-size: 0.85rem;
+  color: var(--t, #334155);
+  margin: 0;
+  line-height: 1.5;
+}
+
+html.dark-mode .knowledge-state-diagnosis-text {
+  color: #e2e8f0;
+}
+
 
 
 
