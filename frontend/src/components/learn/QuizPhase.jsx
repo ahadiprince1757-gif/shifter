@@ -9,6 +9,7 @@ import HintBox from "./quiz/HintBox";
 import QuizActionButtons from "./quiz/QuizActionButtons";
 import FeedbackDisplay from "./quiz/FeedbackDisplay";
 import ConceptReferenceDrawer from "./quiz/ConceptReferenceDrawer";
+import { determineResponseMode } from "../../utils/questionTypeHelper";
 import { verifyQuestionAcrossSubjects } from "../../utils/subjectVerifierRouter";
 
 function QuizPhase({
@@ -190,6 +191,7 @@ function QuizPhase({
           ) : (
             <QuizInputFields
               isCalc={isCalc}
+              mode={determineResponseMode(curQ, topic).mode}
               work={work}
               setWork={setWork}
               answer={answer}

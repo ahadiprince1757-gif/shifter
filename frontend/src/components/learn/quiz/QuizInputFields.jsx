@@ -1,12 +1,15 @@
 function QuizInputFields({
   isCalc,
+  mode = "conceptual",
   work,
   setWork,
   answer,
   setAnswer,
   disabled,
 }) {
-  if (isCalc) {
+  const requiresWorking = isCalc || mode === "calculation";
+
+  if (requiresWorking) {
     return (
       <>
         <div style={{ margin: ".75rem 0" }}>
@@ -36,7 +39,7 @@ function QuizInputFields({
           <input
             type="text"
             className="ans-input"
-            placeholder="Type your final answer here..."
+            placeholder="Type your final calculated answer..."
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             disabled={disabled}
@@ -46,12 +49,28 @@ function QuizInputFields({
     );
   }
 
+  if (mode === "short_answer") {
+    return (
+      <div style={{ margin: ".75rem 0" }}>
+        <div className="fl">Your Answer</div>
+        <input
+          type="text"
+          className="ans-input"
+          placeholder="Type your answer here..."
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
+          disabled={disabled}
+        />
+      </div>
+    );
+  }
+
   return (
     <div style={{ margin: ".75rem 0" }}>
-      <div className="fl">Your Full Answer</div>
+      <div className="fl">Your Explanation / Response</div>
       <textarea
         className="work-ta"
-        placeholder="Write your complete, detailed answer here..."
+        placeholder="Type your response here..."
         value={answer}
         onChange={(e) => setAnswer(e.target.value)}
         disabled={disabled}

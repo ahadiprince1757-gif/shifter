@@ -1,39 +1,77 @@
 /**
- * Determines whether a question requires mathematical working.
+ * TIXAR QUESTION RESPONSE ENGINE
  *
- * Used to decide whether to render:
- * - "Show Your Working"
- * - "Your Final Answer"
+ * Determines how a student should answer a question based on cognitive intent.
  *
- * Returns true only when the student is genuinely expected
- * to perform a calculation or numerical transformation.
+ * Priority:
+ * 1. Explicit metadata (responseMode, requiresWorking)
+ * 2. Question type (mcq vs calc vs short_answer)
+ * 3. Text normalization
+ * 4. Strong calculation commands
+ * 5. Mathematical structure (equations, arithmetic, conversions)
+ * 6. Quantitative context (measurements + quantitative concepts)
+ * 7. Conceptual question detection (explain, describe, define, why, what is)
+ * 8. Subject-aware inference
+ * 9. Safe default (conceptual, requiresWorking: false)
+ *
+ * Returns:
+ * {
+ *   mode: "calculation" | "conceptual" | "selection" | "short_answer",
+ *   requiresWorking: boolean,
+ *   confidence: number
+ * }
  */
 
-export function isCalculationQuestion(question, subjectName = "") {
+export function determineResponseMode(question, subjectName = "") {
   if (!question || typeof question !== "object") {
-    return false;
+    return {
+      mode: "conceptual",
+      requiresWorking: false,
+      confidence: 0,
+    };
   }
 
-  // --------------------------------------------------
-  // 1. Explicit question configuration has priority
-  // --------------------------------------------------
+  // ------------------------------------------
+  // 1. EXPLICIT METADATA — HIGHEST AUTHORITY
+  // ------------------------------------------
+
+  if (question.responseMode) {
+    return {
+      mode: question.responseMode,
+      requiresWorking:
+        question.requiresWorking ??
+        question.responseMode === "calculation",
+      confidence: 1,
+    };
+  }
+
+  // ------------------------------------------
+  // 2. QUESTION TYPE
+  // ------------------------------------------
+
+  if (
+    question.type === "mcq" ||
+    (Array.isArray(question.options) &&
+      question.options.length > 0)
+  ) {
+    return {
+      mode: "selection",
+      requiresWorking: false,
+      confidence: 1,
+    };
+  }
 
   if (question.type === "calc") {
-    return true;
+    return {
+      mode: "calculation",
+      requiresWorking: true,
+      confidence: 1,
+    };
   }
 
-  // MCQs are answered by selecting an option
-  if (
-    question.type === "mcq" &&
-    Array.isArray(question.options) &&
-    question.options.length > 0
-  ) {
-    return false;
-  }
-
-  // --------------------------------------------------
-  // 2. Extract question text
-  // --------------------------------------------------
+  // ------------------------------------------
+  // 3. NORMALIZE TEXT
+  // ------------------------------------------
 
   const stem = String(
     question.q ||
@@ -42,181 +80,135 @@ export function isCalculationQuestion(question, subjectName = "") {
     ""
   ).toLowerCase().trim();
 
-  const subject = String(subjectName || "")
+  const subject = String(subjectName)
     .toLowerCase()
     .trim();
 
   if (!stem) {
-    return false;
+    return {
+      mode: "conceptual",
+      requiresWorking: false,
+      confidence: 0,
+    };
   }
 
-  // --------------------------------------------------
-  // 3. Detect explicitly conceptual questions
-  // --------------------------------------------------
+  // ------------------------------------------
+  // 4. STRONG CALCULATION COMMANDS
+  // ------------------------------------------
 
-  const conceptualPatterns = [
-    /\b(explain|describe|discuss|define|state|identify)\b/,
-    /\b(compare|contrast|differentiate|outline)\b/,
-    /\b(why|how does|what is|what are)\b/,
-    /\b(advantages|disadvantages|importance|effects|causes)\b/,
-    /\b(analyse|analyze|evaluate|justify)\b/,
-  ];
+  const calculationCommands =
+    /\b(calculate|compute|evaluate|solve|work out|determine the value|find the value|hence calculate)\b/i;
 
-  const isConceptualQuestion = conceptualPatterns.some(
-    (pattern) => pattern.test(stem)
-  );
-
-  // --------------------------------------------------
-  // 4. Strong calculation instructions
-  // --------------------------------------------------
-
-  const calculationCommands = [
-    /\bcalculate\b/,
-    /\bcompute\b/,
-    /\bdetermine\b/,
-    /\bevaluate\b/,
-    /\bsolve\b/,
-    /\bwork out\b/,
-    /\bfind the value\b/,
-    /\bfind the numerical\b/,
-    /\busing the formula\b/,
-    /\bhence calculate\b/,
-  ];
-
-  const hasCalculationCommand = calculationCommands.some(
-    (pattern) => pattern.test(stem)
-  );
-
-  // Explicit calculation instruction always wins
-  if (hasCalculationCommand) {
-    return true;
+  if (calculationCommands.test(stem)) {
+    return {
+      mode: "calculation",
+      requiresWorking: true,
+      confidence: 0.95,
+    };
   }
 
-  // --------------------------------------------------
-  // 5. Detect mathematical expressions
-  // --------------------------------------------------
+  // ------------------------------------------
+  // 5. MATHEMATICAL STRUCTURE
+  // ------------------------------------------
 
-  const hasEquation = /[a-z]\s*=\s*[\d.]+/i.test(stem);
-
-  const hasMathOperators =
+  const hasArithmetic =
     /\d+\s*[+\-*/×÷]\s*\d+/.test(stem);
 
-  const hasAlgebra =
-    /\b(solve for|equation|inequality|simultaneous equations)\b/.test(stem);
+  const hasEquation =
+    /[a-z]\s*=\s*[\d.a-z+\-*/²^]+/i.test(stem);
 
-  const hasFormulaSymbols =
-    /\b(v\s*=\s*u\s*\+\s*at|f\s*=\s*ma|p\s*=\s*mv|e\s*=\s*mc\^?2)\b/i
-      .test(stem);
+  const hasSolveFor =
+    /\bsolve for\s+[a-z]\b/i.test(stem);
 
-  // --------------------------------------------------
-  // 6. Detect quantities with measurement units
-  // --------------------------------------------------
+  const hasConversion =
+    /\b(convert|express)\b.*\b(to|into)\b/i.test(stem) &&
+    /\b(binary|decimal|hexadecimal|fraction|percentage|standard form|scientific notation)\b/i.test(stem);
 
-  const hasMeasurements =
-    /\b\d+(?:\.\d+)?\s*(km|m|cm|mm|kg|g|mg|l|ml|s|min|hours?|°c|k|n|pa|j|w|v|a|hz|mol|%)\b/i
-      .test(stem);
-
-  // --------------------------------------------------
-  // 7. Numerical calculation topics
-  // --------------------------------------------------
-
-  const numericalTopics = [
-    "area",
-    "volume",
-    "perimeter",
-    "circumference",
-    "hypotenuse",
-    "percentage",
-    "ratio",
-    "proportion",
-    "probability",
-    "mean",
-    "median",
-    "mode",
-    "standard deviation",
-    "speed",
-    "distance",
-    "time",
-    "velocity",
-    "acceleration",
-    "force",
-    "momentum",
-    "density",
-    "pressure",
-    "energy",
-    "power",
-    "work done",
-    "molarity",
-    "moles",
-    "molar mass",
-    "stoichiometry",
-    "ph",
-    "concentration",
-    "binary to decimal",
-    "decimal to binary",
-    "interest",
-    "profit",
-    "loss",
-    "discount",
-    "tax",
-  ];
-
-  const hasNumericalTopic = numericalTopics.some((topic) =>
-    stem.includes(topic)
-  );
-
-  // --------------------------------------------------
-  // 8. Subjects that are primarily conceptual
-  // --------------------------------------------------
-
-  const primarilyConceptualSubjects =
-    /biology|english|history|geography|kiswahili|literature|civics|cre|ire|hre|home\s*science/;
-
-  if (primarilyConceptualSubjects.test(subject)) {
-    // Only calculations if mathematical evidence exists
-    return Boolean(
-      hasMathOperators ||
-      hasEquation ||
-      hasAlgebra ||
-      (hasMeasurements && hasNumericalTopic)
-    );
+  if (
+    hasArithmetic ||
+    hasEquation ||
+    hasSolveFor ||
+    hasConversion
+  ) {
+    return {
+      mode: "calculation",
+      requiresWorking: true,
+      confidence: 0.9,
+    };
   }
 
-  // --------------------------------------------------
-  // 9. Calculation-heavy subjects
-  // --------------------------------------------------
+  // ------------------------------------------
+  // 6. QUANTITATIVE CONTEXT
+  // ------------------------------------------
+
+  const hasMeasurement =
+    /\b\d+(?:\.\d+)?\s*(km|m|cm|mm|kg|g|mg|l|ml|s|min|hour|hours|n|j|w|pa|v|a|hz|mol|%)\b/i
+      .test(stem);
+
+  const quantitativeConcept =
+    /\b(speed|velocity|acceleration|distance|time|force|energy|power|pressure|density|momentum|area|volume|perimeter|probability|mean|median|molarity|moles|concentration|interest|discount|profit|loss)\b/i
+      .test(stem);
+
+  if (hasMeasurement && quantitativeConcept) {
+    return {
+      mode: "calculation",
+      requiresWorking: true,
+      confidence: 0.8,
+    };
+  }
+
+  // ------------------------------------------
+  // 7. CONCEPTUAL QUESTION DETECTION
+  // ------------------------------------------
+
+  const conceptualPatterns =
+    /\b(explain|describe|discuss|define|state|identify|compare|contrast|differentiate|justify|outline|analyze|analyse|why|how does|what is|what are)\b/i;
+
+  if (conceptualPatterns.test(stem)) {
+    return {
+      mode: "conceptual",
+      requiresWorking: false,
+      confidence: 0.9,
+    };
+  }
+
+  // ------------------------------------------
+  // 8. SUBJECT-AWARE FALLBACK
+  // ------------------------------------------
 
   const calculationSubjects =
-    /mathematics|math|physics|chemistry|statistics|accounting|finance|computer/;
+    /math|physics|chemistry|statistics|accounting|finance/;
 
-  if (calculationSubjects.test(subject)) {
-    // Conceptual questions should remain conceptual
-    if (
-      isConceptualQuestion &&
-      !hasMathOperators &&
-      !hasEquation &&
-      !hasAlgebra
-    ) {
-      return false;
-    }
+  const hasNumbers =
+    /\b\d+(?:\.\d+)?\b/.test(stem);
 
-    return Boolean(
-      hasMathOperators ||
-      hasEquation ||
-      hasAlgebra ||
-      hasFormulaSymbols ||
-      (hasMeasurements && hasNumericalTopic)
-    );
+  if (
+    calculationSubjects.test(subject) &&
+    hasNumbers &&
+    quantitativeConcept
+  ) {
+    return {
+      mode: "calculation",
+      requiresWorking: true,
+      confidence: 0.6,
+    };
   }
 
-  // --------------------------------------------------
-  // 10. Generic fallback
-  // --------------------------------------------------
+  // ------------------------------------------
+  // 9. SAFE DEFAULT
+  // ------------------------------------------
 
-  return Boolean(
-    hasMathOperators ||
-    hasEquation ||
-    hasAlgebra ||
-    (hasMeasurements && hasNumericalTopic)
-  );
+  return {
+    mode: "conceptual",
+    requiresWorking: false,
+    confidence: 0.5,
+  };
+}
+
+/**
+ * Backward-compatible helper returning boolean requiresWorking.
+ */
+export function isCalculationQuestion(question, subjectName = "") {
+  const result = determineResponseMode(question, subjectName);
+  return result.requiresWorking;
 }
