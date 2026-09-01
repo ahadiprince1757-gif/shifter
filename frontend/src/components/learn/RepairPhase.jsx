@@ -221,7 +221,7 @@ function RepairPhase({
             />
 
             {/* MCQ options */}
-            {repairQ.type === "mcq" && Array.isArray(repairQ.options) ? (
+            {repairQ.type === "mcq" && Array.isArray(repairQ.options) && repairQ.options.length > 0 ? (
               <div className="mcq-group">
                 {repairQ.options.map((opt, i) => (
                   <label

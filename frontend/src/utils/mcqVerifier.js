@@ -170,6 +170,11 @@ export function getVerifiedQuestionWithOptions(questionObj) {
       ans:
         targetAnswer,
 
+      type:
+        questionObj.type === "mcq"
+          ? (questionObj.isCalc || questionObj.steps ? "calc" : "open_response")
+          : (questionObj.type || "open_response"),
+
       verified:
         answerWasVerified,
 
@@ -189,7 +194,7 @@ export function getVerifiedQuestionWithOptions(questionObj) {
 
       repaired: false,
 
-      options: [],
+      options: null,
     };
   }
 

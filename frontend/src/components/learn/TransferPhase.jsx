@@ -29,7 +29,7 @@ function TransferPhase({
   const q = transferQuestion?.q;
   if (!q) return null;
 
-  const isMCQ = q.type === "mcq" && Array.isArray(q.options);
+  const isMCQ = q.type === "mcq" && Array.isArray(q.options) && q.options.length > 0;
 
   const handleSubmit = () => {
     if (!answer.trim()) {

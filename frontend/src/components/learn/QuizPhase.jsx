@@ -122,7 +122,7 @@ function QuizPhase({
   }
 
   // ── Normal / Retry Question Screen ─────────────────────────
-  const isMCQ = curQ?.type === "mcq" && Array.isArray(curQ?.options);
+  const isMCQ = curQ?.type === "mcq" && Array.isArray(curQ?.options) && curQ.options.length > 0;
 
   return (
     <>

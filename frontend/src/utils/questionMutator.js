@@ -175,7 +175,11 @@ export class QuestionMutator {
     }
 
     const finalHint = targetedHint || variant.hint || blueprint.hint || "";
-    const finalType = variant.type || "open_response";
+    const rawOptions = Array.isArray(variant.options) && variant.options.length > 0 ? variant.options : null;
+    const requestedType = variant.type || blueprint.type || "open_response";
+    const finalType = (requestedType === "mcq" && !rawOptions)
+      ? (blueprint.type === "calc" || variant.type === "calc" ? "calc" : "open_response")
+      : requestedType;
 
     const level = blueprint._attemptCount ? Math.min(3, blueprint._attemptCount + 1) : 1;
     const rubricEval = CbcRubricEvaluator.evaluateAttempt({
@@ -194,7 +198,7 @@ export class QuestionMutator {
       q: cleanStem,
       stem: cleanStem,
       type: finalType,
-      options: finalType === "mcq" ? variant.options : null,
+      options: finalType === "mcq" ? rawOptions : null,
       diagnosis,
       targetedTag,
       hint: finalHint,

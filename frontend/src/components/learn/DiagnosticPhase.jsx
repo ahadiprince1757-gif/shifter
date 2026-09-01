@@ -28,7 +28,7 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
 
   const currentProbe = diagnosticQuestions[currentIndex] || null;
   const q = currentProbe?.q;
-  const isMCQ = q?.type === "mcq" && Array.isArray(q?.options);
+  const isMCQ = q?.type === "mcq" && Array.isArray(q?.options) && q.options.length > 0;
 
   // Auto-focus answer input on load or question change
   useEffect(() => {
