@@ -22,7 +22,7 @@ function FeedbackDisplay({
   const diagnosticSummary =
     feedback.analysis?.summary ||
     feedback.workingNote ||
-    null;
+    (isCorrect ? "Great job! Your answer is correct and mathematically sound." : null);
 
   const sentenceItems = feedback.analysis?.feedback || [];
   const nextAction = feedback.analysis?.nextAction || null;
@@ -118,46 +118,46 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Minimalist Diagnostic Insight (When Incorrect) */}
-      {!isCorrect && (
-        <div className="smart-analysis-container">
-          {/* What student wrote */}
-          {feedback.analysis?.studentSaid && (
-            <div className="smart-analysis-you-said">
-              <span className="smart-analysis-label">You wrote:</span>
-              <span className="smart-analysis-quote">"{feedback.analysis.studentSaid}"</span>
-            </div>
-          )}
+      {/* Diagnostic / Summary Container — Always shown */}
+      <div className="smart-analysis-container">
+        {/* What student wrote */}
+        {(feedback.analysis?.studentSaid || feedback.userAnswer || feedback.studentAnswer) && (
+          <div className="smart-analysis-you-said">
+            <span className="smart-analysis-label">You wrote:</span>
+            <span className="smart-analysis-quote">
+              "{feedback.analysis?.studentSaid || feedback.userAnswer || feedback.studentAnswer}"
+            </span>
+          </div>
+        )}
 
-          {/* Primary Diagnostic Breakpoint Explanation */}
-          {diagnosticSummary && (
-            <div className="smart-analysis-summary">
-              {diagnosticSummary}
-            </div>
-          )}
+        {/* Diagnostic / Encouragement Summary */}
+        {diagnosticSummary && (
+          <div className="smart-analysis-summary">
+            {diagnosticSummary}
+          </div>
+        )}
 
-          {/* Sentence Feedback List */}
-          {sentenceItems.length > 0 && (
-            <div className="smart-analysis-list">
-              {sentenceItems.map((item, i) => (
-                <div
-                  key={i}
-                  className={`smart-analysis-item smart-analysis-item--${
-                    item.type === "segment_correct" || item.type === "step_correct"
-                      ? "correct"
-                      : item.type === "step_partial" || item.type === "missing_qualifier"
-                      ? "warn"
-                      : "wrong"
-                  }`}
-                >
-                  <span className="smart-analysis-item-icon">{item.icon}</span>
-                  <span className="smart-analysis-item-text">{item.message}</span>
-                </div>
-              ))}
-            </div>
-          )}
-        </div>
-      )}
+        {/* Sentence Feedback List */}
+        {sentenceItems.length > 0 && (
+          <div className="smart-analysis-list">
+            {sentenceItems.map((item, i) => (
+              <div
+                key={i}
+                className={`smart-analysis-item smart-analysis-item--${
+                  item.type === "segment_correct" || item.type === "step_correct"
+                    ? "correct"
+                    : item.type === "step_partial" || item.type === "missing_qualifier"
+                    ? "warn"
+                    : "wrong"
+                }`}
+              >
+                <span className="smart-analysis-item-icon">{item.icon}</span>
+                <span className="smart-analysis-item-text">{item.message}</span>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
 
       {/* Closed-Loop Learning Policy Directive (Tixar Next Action) */}
       {!isCorrect && nextAction && (
@@ -170,8 +170,8 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Correct Target Answer */}
-      {!isCorrect && rawAnswer && (
+      {/* Correct Target Answer — Always shown */}
+      {rawAnswer && (
         <div className="fb-correct-answer-box">
           <div className="fb-section-title">Correct Answer</div>
           <div className="fb-answer-value">
@@ -182,8 +182,8 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Step-by-Step Solution */}
-      {!isCorrect && displaySteps.length > 0 && (
+      {/* Step-by-Step Solution — Always shown when steps exist */}
+      {displaySteps.length > 0 && (
         <div className="fb-steps-container">
           <div className="fb-section-title">How to Solve It</div>
           <div className="fb-steps-timeline">
@@ -201,8 +201,8 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Explanation — Displayed whenever clean explanation text is available */}
-      {!isCorrect && displayExplanation && (
+      {/* Explanation — Always shown when explanation exists */}
+      {displayExplanation && (
         <div className="fb-explanation-box">
           <div className="fb-section-title">Explanation</div>
           <div className="fb-explanation-text">
@@ -215,7 +215,7 @@ function FeedbackDisplay({
 
       {/* Action Buttons */}
       <div className="fb-actions">
-        {!isCorrect && startMutatedRepair && (
+        {startMutatedRepair && (
           <button
             type="button"
             className="fb-action-btn fb-repair-btn"
@@ -225,7 +225,7 @@ function FeedbackDisplay({
             {nextAction?.btnText || "Try Variant Question"}
           </button>
         )}
-        {!isCorrect && goToReview && (
+        {goToReview && (
           <button
             type="button"
             className="fb-action-btn fb-review-btn"
