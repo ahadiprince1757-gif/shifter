@@ -9420,6 +9420,143 @@ html.dark-mode .ai-msg-bubble--assistant {
   }
 }
 
+/* ───────────────────────────────────────────────────────────────────────────── */
+/* ULTRA-PREMIUM 100% FULL-SCREEN MOBILE FEEDBACK DESIGN SYSTEM                  */
+/* ───────────────────────────────────────────────────────────────────────────── */
+
+@media (max-width: 640px) {
+  .quiz-container,
+  .learn-flow-container,
+  .repair-phase-container,
+  .transfer-phase-container,
+  .spaced-retest-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    margin: 0 !important;
+  }
+
+  .fb-card {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0.85rem 0 0 0 !important;
+    padding: 1.1rem 0.85rem !important;
+    border-radius: 16px !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06) !important;
+    border-left: none !important;
+  }
+
+  .fb-header {
+    padding-bottom: 0.75rem !important;
+    margin-bottom: 0.85rem !important;
+  }
+
+  .fb-status-badge {
+    font-size: 0.75rem !important;
+    padding: 0.3rem 0.65rem !important;
+  }
+
+  .smart-analysis-readiness-pill {
+    font-size: 0.72rem !important;
+    padding: 0.25rem 0.55rem !important;
+  }
+
+  .smart-analysis-container,
+  .fb-correct-answer-box,
+  .fb-explanation-box,
+  .fb-steps-container,
+  .smart-policy-card {
+    width: 100% !important;
+    padding: 0.95rem 1rem !important;
+    margin-bottom: 0.85rem !important;
+    border-radius: 12px !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03) !important;
+  }
+
+  .fb-correct-answer-box {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.08), rgba(16, 185, 129, 0.03)) !important;
+    border: 1px solid rgba(16, 185, 129, 0.3) !important;
+  }
+
+  .fb-section-title {
+    font-size: 0.78rem !important;
+    letter-spacing: 0.05em !important;
+    margin-bottom: 0.45rem !important;
+  }
+
+  .fb-answer-value {
+    font-size: 1.1rem !important;
+    font-weight: 700 !important;
+    line-height: 1.4 !important;
+  }
+
+  .fb-steps-timeline {
+    gap: 0.65rem !important;
+  }
+
+  .fb-step-card {
+    padding: 0.85rem 0.95rem !important;
+    border-radius: 10px !important;
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.4rem !important;
+    background: var(--sur, #ffffff) !important;
+    border: 1px solid var(--bd, rgba(0,0,0,0.08)) !important;
+  }
+
+  .fb-step-badge {
+    font-size: 0.7rem !important;
+    padding: 0.2rem 0.55rem !important;
+    border-radius: 6px !important;
+    font-weight: 700 !important;
+  }
+
+  .fb-step-text {
+    font-size: 0.92rem !important;
+    line-height: 1.55 !important;
+    width: 100% !important;
+  }
+
+  .fb-explanation-box {
+    background: linear-gradient(135deg, rgba(77, 166, 255, 0.06), rgba(58, 143, 253, 0.02)) !important;
+    border: 1px solid rgba(77, 166, 255, 0.25) !important;
+  }
+
+  .fb-explanation-text {
+    font-size: 0.92rem !important;
+    line-height: 1.6 !important;
+  }
+
+  .fb-actions {
+    flex-direction: column !important;
+    gap: 0.65rem !important;
+    margin-top: 1rem !important;
+    width: 100% !important;
+  }
+
+  .fb-action-btn {
+    width: 100% !important;
+    min-height: 48px !important;
+    font-size: 0.95rem !important;
+    font-weight: 700 !important;
+    padding: 0.75rem 1rem !important;
+    border-radius: 12px !important;
+  }
+
+  .fb-repair-btn {
+    background: linear-gradient(135deg, #f59e0b, #d97706) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35) !important;
+  }
+
+  .fb-next-btn {
+    background: linear-gradient(135deg, #0284c7, #2563eb) !important;
+    color: #ffffff !important;
+    box-shadow: 0 4px 14px rgba(37, 99, 235, 0.35) !important;
+  }
+}
+
 
 
 

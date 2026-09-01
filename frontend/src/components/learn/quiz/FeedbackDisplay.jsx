@@ -25,10 +25,72 @@ function FeedbackDisplay({
     null;
 
   const sentenceItems = feedback.analysis?.feedback || [];
-
   const nextAction = feedback.analysis?.nextAction || null;
   const confidenceScore = feedback.analysis?.dimensions?.diagnosticConfidence || null;
   const recurrence = feedback.analysis?.recurrence || null;
+
+  // Extract and clean solution & steps to eliminate duplicated headings & text
+  const { displaySteps, displayExplanation } = (() => {
+    let rawSol = String(feedback.solution || "").trim();
+    let stepsList = Array.isArray(feedback.steps) ? [...feedback.steps] : [];
+
+    // Filter out generic fallback steps
+    stepsList = stepsList.filter((step) => {
+      const s = String(step || "").toLowerCase();
+      return !(
+        s.includes("identify the modified numerical quantity") ||
+        s.includes("determine how the changed quantity affects") ||
+        s.includes("recalculate the result") ||
+        s.includes("check units") ||
+        s.includes("read carefully")
+      );
+    });
+
+    // Extract step lines if stepsList is empty but rawSol contains "Step 1:"
+    if (stepsList.length === 0 && /(?:^|\n)\s*step\s*\d+/i.test(rawSol)) {
+      const lines = rawSol.split(/\r?\n/);
+      const extractedSteps = [];
+      const nonStepLines = [];
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (/^steps?\s*:/i.test(line)) continue;
+        if (/^correct\s*answer\s*:/i.test(line)) {
+          if (i + 1 < lines.length && lines[i + 1].trim().toLowerCase() === rawAnswer.trim().toLowerCase()) {
+            i++;
+          }
+          continue;
+        }
+        if (/^explanation\s*:/i.test(line)) continue;
+
+        if (/^step\s*\d+/i.test(line)) {
+          extractedSteps.push(line);
+        } else if (extractedSteps.length > 0 && line && !line.toLowerCase().startsWith("explanation:")) {
+          extractedSteps.push(line);
+        } else {
+          nonStepLines.push(line);
+        }
+      }
+
+      if (extractedSteps.length > 0) {
+        stepsList = extractedSteps;
+        rawSol = nonStepLines.join("\n").trim();
+      }
+    }
+
+    // Clean up residual headings from rawSol
+    let cleanSol = rawSol
+      .replace(/(?:^|\n)\s*steps?\s*:\s*/gi, "\n")
+      .replace(/(?:^|\n)\s*correct\s*answer\s*:\s*[^\n]*/gi, "")
+      .replace(/(?:^|\n)\s*explanation\s*:\s*/gi, "\n")
+      .trim();
+
+    if (cleanSol.toLowerCase() === rawAnswer.trim().toLowerCase() || /^\d+$/.test(cleanSol)) {
+      cleanSol = "";
+    }
+
+    return { displaySteps: stepsList, displayExplanation: cleanSol };
+  })();
 
   return (
     <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-needs-review"}`}>
@@ -121,53 +183,35 @@ function FeedbackDisplay({
       )}
 
       {/* Step-by-Step Solution */}
-      {(() => {
-        const validSteps = (feedback.steps || []).filter((step) => {
-          const s = String(step || "").toLowerCase();
-          return !(
-            s.includes("identify the modified numerical quantity") ||
-            s.includes("determine how the changed quantity affects") ||
-            s.includes("recalculate the result") ||
-            s.includes("check units")
-          );
-        });
-
-        if (!isCorrect && validSteps.length > 0) {
-          return (
-            <div className="fb-steps-container">
-              <div className="fb-section-title">How to Solve It</div>
-              <div className="fb-steps-timeline">
-                {validSteps.map((step, i) => (
-                  <div key={i} className="fb-step-card">
-                    <span className="fb-step-badge">Step {i + 1}</span>
-                    <div className="fb-step-text">
-                      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                        {step.replace(/^step\s*\d+\s*:\s*/i, "")}
-                      </ReactMarkdown>
-                    </div>
-                  </div>
-                ))}
+      {!isCorrect && displaySteps.length > 0 && (
+        <div className="fb-steps-container">
+          <div className="fb-section-title">How to Solve It</div>
+          <div className="fb-steps-timeline">
+            {displaySteps.map((step, i) => (
+              <div key={i} className="fb-step-card">
+                <span className="fb-step-badge">Step {i + 1}</span>
+                <div className="fb-step-text">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                    {step.replace(/^step\s*\d+\s*:\s*/i, "")}
+                  </ReactMarkdown>
+                </div>
               </div>
-            </div>
-          );
-        }
-        return null;
-      })()}
-
-      {/* Explanation — Displayed whenever available and meaningful */}
-      {!isCorrect &&
-        feedback.solution &&
-        !/^\d+$/.test(String(feedback.solution).trim()) &&
-        String(feedback.solution).trim() !== String(feedback.correctAnswer).trim() && (
-          <div className="fb-explanation-box">
-            <div className="fb-section-title">Explanation</div>
-            <div className="fb-explanation-text">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                {feedback.solution}
-              </ReactMarkdown>
-            </div>
+            ))}
           </div>
-        )}
+        </div>
+      )}
+
+      {/* Explanation — Displayed whenever clean explanation text is available */}
+      {!isCorrect && displayExplanation && (
+        <div className="fb-explanation-box">
+          <div className="fb-section-title">Explanation</div>
+          <div className="fb-explanation-text">
+            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              {displayExplanation}
+            </ReactMarkdown>
+          </div>
+        </div>
+      )}
 
       {/* Action Buttons */}
       <div className="fb-actions">
