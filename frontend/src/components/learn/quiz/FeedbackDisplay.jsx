@@ -120,28 +120,43 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Step-by-Step Solution (when steps exist — auto-generated or from DB) */}
-      {!isCorrect && feedback.steps && feedback.steps.length > 0 && (
-        <div className="fb-steps-container">
-          <div className="fb-section-title">How to Solve It</div>
-          <div className="fb-steps-timeline">
-            {feedback.steps.map((step, i) => (
-              <div key={i} className="fb-step-card">
-                <span className="fb-step-badge">Step {i + 1}</span>
-                <div className="fb-step-text">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                    {step.replace(/^step\s*\d+\s*:\s*/i, "")}
-                  </ReactMarkdown>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* Step-by-Step Solution */}
+      {(() => {
+        const validSteps = (feedback.steps || []).filter((step) => {
+          const s = String(step || "").toLowerCase();
+          return !(
+            s.includes("identify the modified numerical quantity") ||
+            s.includes("determine how the changed quantity affects") ||
+            s.includes("recalculate the result") ||
+            s.includes("check units")
+          );
+        });
 
-      {/* Optional Solution / Explanation — Only shown if no steps exist and explanation is meaningful */}
-      {feedback.solution &&
-        (!feedback.steps || feedback.steps.length === 0) &&
+        if (!isCorrect && validSteps.length > 0) {
+          return (
+            <div className="fb-steps-container">
+              <div className="fb-section-title">How to Solve It</div>
+              <div className="fb-steps-timeline">
+                {validSteps.map((step, i) => (
+                  <div key={i} className="fb-step-card">
+                    <span className="fb-step-badge">Step {i + 1}</span>
+                    <div className="fb-step-text">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                        {step.replace(/^step\s*\d+\s*:\s*/i, "")}
+                      </ReactMarkdown>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          );
+        }
+        return null;
+      })()}
+
+      {/* Explanation — Displayed whenever available and meaningful */}
+      {!isCorrect &&
+        feedback.solution &&
         !/^\d+$/.test(String(feedback.solution).trim()) &&
         String(feedback.solution).trim() !== String(feedback.correctAnswer).trim() && (
           <div className="fb-explanation-box">

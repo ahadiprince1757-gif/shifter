@@ -623,6 +623,26 @@ export class ChemistryMutator {
 
 
     // ==========================================================
+    // 0. EMPIRICAL FORMULA
+    // ==========================================================
+
+    if (
+      lower.includes("empirical") ||
+      lower.includes("empirical formula") ||
+      lower.includes("simplest formula") ||
+      lower.includes("percent by mass") ||
+      lower.includes("composition by mass")
+    ) {
+
+      return this._empiricalFormulaQuestion(
+        seed,
+        mode
+      );
+
+    }
+
+
+    // ==========================================================
     // 1. MOLAR MASS
     // ==========================================================
 
@@ -877,6 +897,128 @@ export class ChemistryMutator {
 
     };
 
+  }
+
+
+  // ============================================================
+  // EMPIRICAL FORMULA QUESTION
+  // ============================================================
+
+  _empiricalFormulaQuestion(seed, mode) {
+    const problems = [
+      {
+        given: "70% Iron (Fe) and 30% Oxygen (O) by mass (Ar: Fe = 56, O = 16)",
+        ans: "Fe₂O₃",
+        steps: [
+          "Step 1: Assume a 100 g sample — mass of Fe = 70 g, mass of O = 30 g.",
+          "Step 2: Convert mass to moles: Fe = 70 ÷ 56 = 1.25 mol, O = 30 ÷ 16 = 1.875 mol.",
+          "Step 3: Divide by the smallest mole value (1.25): Fe = 1.25 ÷ 1.25 = 1, O = 1.875 ÷ 1.25 = 1.5.",
+          "Step 4: Convert non-integer ratio (1 : 1.5) to whole numbers by multiplying all by 2: Fe = 2, O = 3.",
+          "Step 5: Write the empirical formula: Fe₂O₃."
+        ],
+        sol: "The ratio 1 : 1.5 is multiplied by 2 to yield whole numbers 2 : 3. The empirical formula of iron(III) oxide is Fe₂O₃.",
+        options: ["Fe₂O₃", "FeO", "Fe₃O₂", "Fe₃O₄"]
+      },
+      {
+        given: "52.2% Carbon (C), 13.0% Hydrogen (H), and 34.8% Oxygen (O) by mass (Ar: C = 12, H = 1, O = 16)",
+        ans: "C₂H₆O",
+        steps: [
+          "Step 1: Assume a 100 g sample — mass of C = 52.2 g, H = 13.0 g, O = 34.8 g.",
+          "Step 2: Convert mass to moles: C = 52.2 ÷ 12 = 4.35 mol, H = 13.0 ÷ 1 = 13.0 mol, O = 34.8 ÷ 16 = 2.175 mol.",
+          "Step 3: Divide each mole value by the smallest (2.175): C = 4.35 ÷ 2.175 = 2, H = 13.0 ÷ 2.175 = 6, O = 2.175 ÷ 2.175 = 1.",
+          "Step 4: The simplest whole-number atom ratio is C : H : O = 2 : 6 : 1.",
+          "Step 5: Write the empirical formula: C₂H₆O."
+        ],
+        sol: "Converting mass percentages to moles gives C = 4.35, H = 13.0, and O = 2.175. Dividing by 2.175 gives the whole-number ratio 2 : 6 : 1. Empirical formula = C₂H₆O.",
+        options: ["C₂H₆O", "CH₃O", "C₂H₄O", "CH₂O"]
+      },
+      {
+        given: "2.4 g of Magnesium reacting completely with Oxygen to form 4.0 g of Magnesium Oxide (Ar: Mg = 24, O = 16)",
+        ans: "MgO",
+        steps: [
+          "Step 1: Determine element masses: Mg = 2.4 g, O = 4.0 g - 2.4 g = 1.6 g.",
+          "Step 2: Convert to moles: Mg = 2.4 ÷ 24 = 0.10 mol, O = 1.6 ÷ 16 = 0.10 mol.",
+          "Step 3: Divide each by the smallest mole value (0.10): Mg = 1, O = 1.",
+          "Step 4: The simplest whole-number mole ratio is 1 : 1.",
+          "Step 5: Write the empirical formula: MgO."
+        ],
+        sol: "2.4 g Mg combines with 1.6 g O. Converting to moles yields Mg = 0.10 mol and O = 0.10 mol, giving a 1 : 1 ratio. Empirical formula = MgO.",
+        options: ["MgO", "Mg₂O", "MgO₂", "Mg₂O₃"]
+      },
+      {
+        given: "32.4% Sodium (Na), 22.5% Sulfur (S), and 45.1% Oxygen (O) by mass (Ar: Na = 23, S = 32, O = 16)",
+        ans: "Na₂SO₄",
+        steps: [
+          "Step 1: Assume a 100 g sample — Na = 32.4 g, S = 22.5 g, O = 45.1 g.",
+          "Step 2: Convert mass to moles: Na = 32.4 ÷ 23 = 1.41 mol, S = 22.5 ÷ 32 = 0.703 mol, O = 45.1 ÷ 16 = 2.82 mol.",
+          "Step 3: Divide each mole value by the smallest (0.703): Na = 2, S = 1, O = 4.",
+          "Step 4: The simplest whole-number atom ratio Na : S : O = 2 : 1 : 4.",
+          "Step 5: Write the empirical formula: Na₂SO₄."
+        ],
+        sol: "Dividing mole values by 0.703 yields whole numbers Na = 2, S = 1, O = 4. Empirical formula = Na₂SO₄.",
+        options: ["Na₂SO₄", "NaSO₃", "Na₂SO₃", "NaSO₄"]
+      },
+      {
+        given: "79.9% Copper (Cu) and 20.1% Oxygen (O) by mass (Ar: Cu = 63.5, O = 16)",
+        ans: "CuO",
+        steps: [
+          "Step 1: Assume a 100 g sample — Cu = 79.9 g, O = 20.1 g.",
+          "Step 2: Convert to moles: Cu = 79.9 ÷ 63.5 = 1.258 mol, O = 20.1 ÷ 16 = 1.256 mol.",
+          "Step 3: Divide each by smallest (1.256): Cu = 1, O = 1.",
+          "Step 4: The simplest whole-number ratio is 1 : 1.",
+          "Step 5: Write the empirical formula: CuO."
+        ],
+        sol: "79.9 g Cu and 20.1 g O contain equal mole quantities (~1.26 mol). Ratio = 1 : 1. Empirical formula = CuO.",
+        options: ["CuO", "Cu₂O", "CuO₂", "Cu₂O₃"]
+      },
+      {
+        given: "43.6% Phosphorus (P) and 56.4% Oxygen (O) by mass (Ar: P = 31, O = 16)",
+        ans: "P₂O₅",
+        steps: [
+          "Step 1: Assume a 100 g sample — P = 43.6 g, O = 56.4 g.",
+          "Step 2: Convert mass to moles: P = 43.6 ÷ 31 = 1.406 mol, O = 56.4 ÷ 16 = 3.525 mol.",
+          "Step 3: Divide each by smallest (1.406): P = 1, O = 2.5.",
+          "Step 4: Multiply by 2 to obtain whole numbers: P = 2, O = 5.",
+          "Step 5: Write the empirical formula: P₂O₅."
+        ],
+        sol: "The mole ratio P : O is 1 : 2.5. Multiplying by 2 gives whole numbers 2 : 5. Empirical formula = P₂O₅.",
+        options: ["P₂O₅", "PO₂", "P₂O₃", "PO₃"]
+      }
+    ];
+
+    const selected = this._pick(problems, seed);
+
+    if (mode === 0) {
+      return {
+        q: `A compound contains ${selected.given}. Determine its empirical formula.`,
+        ans: selected.ans,
+        hint: "Convert mass percentages to moles by dividing by relative atomic masses, then find the simplest whole-number ratio.",
+        why: selected.sol,
+        sol: selected.sol,
+        steps: selected.steps,
+        type: "open_response",
+        options: null,
+        concept: "Empirical Formula",
+        skill: "Calculate empirical formula from mass percentages",
+        difficulty: 2,
+        misconception: "Forgets to divide by relative atomic masses or does not simplify mole ratio to whole numbers"
+      };
+    }
+
+    return {
+      q: `A compound contains ${selected.given}. Which is its empirical formula?`,
+      ans: selected.ans,
+      hint: "Find the mole ratio of the elements and simplify to whole numbers.",
+      why: selected.sol,
+      sol: selected.sol,
+      steps: selected.steps,
+      type: "mcq",
+      options: this._uniqueOptions(selected.options),
+      concept: "Empirical Formula",
+      skill: "Identify empirical formula",
+      difficulty: 2,
+      misconception: "Uses mass ratio directly instead of mole ratio"
+    };
   }
 
 
@@ -2193,17 +2335,14 @@ export class ChemistryMutator {
         qObj.sol ||
         "Recalculate using the updated quantity.",
 
-      steps: [
-
-        "Step 1: Identify the modified numerical quantity.",
-
-        "Step 2: Determine how the changed quantity affects the equation.",
-
-        "Step 3: Recalculate the result.",
-
-        "Step 4: Check units."
-
-      ],
+      steps: Array.isArray(qObj.steps) && qObj.steps.length > 0
+        ? qObj.steps.map(s => s.replace(new RegExp(`\\b${oldValue}\\b`, "g"), String(newValue)))
+        : [
+            `Step 1: Note the updated chemical quantity: ${newValue} (modified from ${oldValue}).`,
+            `Step 2: Substitute ${newValue} into the chemical equation or relationship.`,
+            `Step 3: Perform the calculation using ${newValue} to find the updated result.`,
+            `Step 4: Express the final result with standard chemical units.`
+          ],
 
       type:
         qObj.type || "open_response",

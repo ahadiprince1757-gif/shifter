@@ -1545,10 +1545,10 @@ export function analyseStudentAnswer(
     !isAnswerCorrect
   ) {
     feedback.push({
-      type: "insufficient_evidence",
-      icon: "⚠",
+      type: "incorrect_attempt",
+      icon: "✗",
       message:
-        "Your answer is incorrect, but the available evidence is not sufficient to determine the exact misconception.",
+        "Your answer is incorrect. Review the correct answer and step-by-step solution below.",
     });
   }
 
