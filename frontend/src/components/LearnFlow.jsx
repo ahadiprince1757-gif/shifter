@@ -179,7 +179,7 @@ function LearnFlow({
               topic={topic}
               qIdx={loop.qIdx}
               curQ={loop.currentQuestion}
-              isCalc={loop.currentQuestion?.type === "calc"}
+              isCalc={loop.currentQuestion?.type === "calc" || loop.currentQuestion?.type === "open_response"}
               answer={loop.answer}
               setAnswer={loop.setAnswer}
               work={loop.work}

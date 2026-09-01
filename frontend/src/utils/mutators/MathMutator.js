@@ -1053,9 +1053,10 @@ export class MathMutator {
       sol: solText,
       explanation: solText,
 
-      type: isOpen ? "open_response" : "mcq",
+      // Preserve "calc" type so the quiz UI still renders textarea + answer input
+      type: question.type === "calc" ? "calc" : (isOpen ? "open_response" : "mcq"),
 
-      options: isOpen ? null : question.options,
+      options: question.type === "calc" ? null : (isOpen ? null : question.options),
 
       metadata: {
         ...(question.metadata || {}),
@@ -1105,7 +1106,7 @@ export class MathMutator {
           sol: solText,
           explanation: solText,
           steps,
-          type: Number(modalityIndex) % 4 === 0 ? "open_response" : "mcq",
+          type: qObj.type === "calc" ? "calc" : (Number(modalityIndex) % 4 === 0 ? "open_response" : "mcq"),
           metadata: { skill: "numeric_mutation", difficulty, generatedBy: "TixarMathMutator" }
         };
       }
@@ -1132,7 +1133,7 @@ export class MathMutator {
       sol: solText,
       explanation: solText,
       steps,
-      type: Number(modalityIndex) % 4 === 0 ? "open_response" : "mcq",
+      type: qObj.type === "calc" ? "calc" : (Number(modalityIndex) % 4 === 0 ? "open_response" : "mcq"),
       metadata: { skill: "general_math", difficulty, generatedBy: "TixarMathMutator" }
     };
   }
