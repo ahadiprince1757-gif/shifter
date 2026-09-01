@@ -4,6 +4,7 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import { questionMutator } from "../../utils/questionMutator";
 import { evaluateAnswer } from "../../utils/grader";
+import { isCalculationQuestion } from "../../utils/questionTypeHelper";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import HintBox from "./quiz/HintBox";
 
@@ -216,7 +217,7 @@ function RepairPhase({
             </div>
 
             <QuestionDisplay
-              isCalc={repairQ.type === "calc"}
+              isCalc={isCalculationQuestion(repairQ, subject?.name || subject?.label)}
               questionText={repairQ.q}
             />
 

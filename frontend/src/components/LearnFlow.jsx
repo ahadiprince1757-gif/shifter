@@ -5,6 +5,8 @@ import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import { incrementGuestQuizCount } from "../utils/guestSession";
 
+import { isCalculationQuestion } from "../utils/questionTypeHelper";
+
 import LearnHeader from "./learn/LearnHeader";
 import PhaseStrip from "./learn/PhaseStrip";
 import NotesPhase from "./learn/NotesPhase";
@@ -179,7 +181,7 @@ function LearnFlow({
               topic={topic}
               qIdx={loop.qIdx}
               curQ={loop.currentQuestion}
-              isCalc={loop.currentQuestion?.type === "calc" || loop.currentQuestion?.type === "open_response"}
+              isCalc={isCalculationQuestion(loop.currentQuestion, subject?.name || subject?.label || subject?.id)}
               answer={loop.answer}
               setAnswer={loop.setAnswer}
               work={loop.work}

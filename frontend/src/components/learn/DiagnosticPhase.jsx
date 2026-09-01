@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import HintBox from "./quiz/HintBox";
 import { evaluateAnswer } from "../../utils/grader";
+import { isCalculationQuestion } from "../../utils/questionTypeHelper";
 
 /**
  * DiagnosticPhase
@@ -110,7 +111,7 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
         )}
 
         <QuestionDisplay
-          isCalc={q.type === "calc"}
+          isCalc={isCalculationQuestion(q, q?.subject)}
           questionText={q.q}
         />
 

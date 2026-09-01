@@ -2,6 +2,7 @@ import { useState } from "react";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import HintBox from "./quiz/HintBox";
 import { evaluateAnswer } from "../../utils/grader";
+import { isCalculationQuestion } from "../../utils/questionTypeHelper";
 
 /**
  * SpacedRetestPhase
@@ -76,7 +77,7 @@ function SpacedRetestPhase({ dueReviews = [], onComplete }) {
         </div>
 
         <QuestionDisplay
-          isCalc={questionObj.type === "calc"}
+          isCalc={isCalculationQuestion(questionObj, questionObj?.subject)}
           questionText={questionObj.q}
         />
 

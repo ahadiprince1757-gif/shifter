@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import { isCalculationQuestion } from "../../utils/questionTypeHelper";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import HintBox from "./quiz/HintBox";
 
@@ -14,6 +15,7 @@ import HintBox from "./quiz/HintBox";
  * visual diagram vs formula equation).
  */
 function TransferPhase({
+  topic,
   transferQuestion,
   answer,
   setAnswer,
@@ -59,7 +61,7 @@ function TransferPhase({
         )}
 
         <QuestionDisplay
-          isCalc={q.type === "calc"}
+          isCalc={isCalculationQuestion(q, topic)}
           questionText={q.q}
         />
 
