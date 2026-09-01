@@ -10,7 +10,7 @@
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
 import { buildWeaknessMap } from "../utils/weaknessMap";
-import { selectTransferQuestion, buildFallbackTransferQuestion } from "../utils/transferQuestion";
+import { getTransferQuestion } from "../utils/transferQuestion";
 import { spacedRepo } from "../repository/spacedRepo";
 import { evaluateAnswer } from "../utils/grader";
 import { questionMutator } from "../utils/questionMutator";
@@ -221,9 +221,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     const map = buildWeaknessMap(failedQuestions, questions);
     setWeaknessMap(map);
 
-    const tq =
-      selectTransferQuestion(questions, usedIndicesRef.current) ||
-      { qIdx: -1, q: buildFallbackTransferQuestion(topic, questions) };
+    const tq = getTransferQuestion(questions, usedIndicesRef.current, topic, questions[0]);
     setTransferQuestion(tq);
 
     setPhase(SESSION_PHASES.MASTERY);

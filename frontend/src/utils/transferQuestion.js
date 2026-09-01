@@ -1,297 +1,611 @@
 /**
- * transferQuestion.js
+ * ============================================================
+ * TIXAR STRUCTURAL TRANSFER ENGINE
+ * ============================================================
  *
- * Selects or builds a Structural Representation Transfer question.
+ * PURPOSE
  *
- * Transfer is NOT asking vague real-world essay questions like:
- * "Where do you use this?"
+ * Selects or constructs questions that test STRUCTURAL TRANSFER.
  *
- * Transfer means STRUCTURAL RE-FRAMING:
- * taking the same underlying concept and presenting it through
- * a different representation, structure, or problem format.
+ * Transfer does NOT simply mean:
+ * - changing numbers
+ * - changing names
+ * - adding a random real-world story
  *
- * Example:
- *   Original:       Calculate 12 × 7.
- *   Transfer:       A rectangle has length 12 cm and width 7 cm.
- *                   What is its area?
+ * Genuine transfer means:
+ * - PRESERVE the underlying concept or cognitive operation.
+ * - CHANGE the representation, structure, context, or format.
+ * - Keep the question independently solvable.
+ * - Never invent an answer without sufficient information.
  *
- * IMPORTANT:
- * This module never invents an answer to an unsolvable question.
+ * EXAMPLE
+ *
+ * Original:
+ * Calculate 12 × 7.
+ *
+ * Parameter variation:
+ * Calculate 14 × 6. -> NOT strong transfer.
+ *
+ * Structural transfer:
+ * A rectangle has a length of 12 cm and a width of 7 cm. What is its area?
+ * -> Same multiplicative structure.
+ * -> Different representation.
+ *
+ * TRANSFER QUALITY HIERARCHY
+ *
+ * Strongest: Same concept + clearly different representation.
+ * Good:      Same concept + different problem structure.
+ * Moderate:  Same concept + different context.
+ * Weak:      Same structure + different numbers only.
+ * Invalid:   Different concept entirely.
+ *
+ * ============================================================
  */
 
 /**
- * Select a transfer question from the question bank.
+ * Normalize a value for safe comparison.
+ */
+function normalize(value) {
+  return String(value || "")
+    .toLowerCase()
+    .trim();
+}
+
+/**
+ * Convert an Array, Set, or invalid value into a safe Set.
+ */
+function normalizeUsedIndices(usedIndices) {
+  if (usedIndices instanceof Set) {
+    return usedIndices;
+  }
+
+  if (Array.isArray(usedIndices)) {
+    return new Set(usedIndices);
+  }
+
+  return new Set();
+}
+
+/**
+ * Extract the question's main text.
+ */
+function getQuestionText(question) {
+  if (!question || typeof question !== "object") {
+    return "";
+  }
+
+  return String(
+    question.q ||
+    question.stem ||
+    question.question ||
+    ""
+  ).trim();
+}
+
+/**
+ * Determines whether a question contains enough information
+ * to be presented safely to a learner.
+ *
+ * A question without text is never valid.
+ */
+export function isUsableQuestion(question) {
+  if (!question || typeof question !== "object") {
+    return false;
+  }
+
+  return Boolean(getQuestionText(question));
+}
+
+/**
+ * Extract transfer-relevant metadata.
+ *
+ * These fields are optional, allowing the engine to work
+ * with both old and new Tixar question formats.
+ */
+export function getQuestionSignature(question) {
+  return {
+    concept: normalize(
+      question.concept_tag ||
+      question.concept ||
+      question.skill ||
+      question.topic
+    ),
+
+    representation: normalize(
+      question.representation ||
+      question.format ||
+      "unknown"
+    ),
+
+    structure: normalize(
+      question.structure ||
+      question.problem_structure ||
+      question.schema
+    ),
+
+    context: normalize(
+      question.context ||
+      question.domain ||
+      "abstract"
+    ),
+
+    cognitiveAction: normalize(
+      question.cognitive_action ||
+      question.learning_action ||
+      question.responseMode
+    ),
+  };
+}
+
+/**
+ * Determines whether a question is explicitly marked as transfer.
+ */
+export function isExplicitTransfer(question) {
+  if (!question || typeof question !== "object") {
+    return false;
+  }
+
+  return (
+    question.is_transfer === true ||
+    question.type === "transfer" ||
+    question.question_role === "transfer"
+  );
+}
+
+/**
+ * Scores how strongly a candidate differs structurally
+ * from the source question.
+ *
+ * Higher score = stronger transfer.
+ */
+export function scoreStructuralDifference(source, candidate) {
+  const sourceSig = getQuestionSignature(source);
+  const candidateSig = getQuestionSignature(candidate);
+
+  let score = 0;
+
+  // Different representation is the strongest signal.
+  if (
+    sourceSig.representation !== "unknown" &&
+    candidateSig.representation !== "unknown" &&
+    sourceSig.representation !== candidateSig.representation
+  ) {
+    score += 5;
+  }
+
+  // Different structural form.
+  if (
+    sourceSig.structure &&
+    candidateSig.structure &&
+    sourceSig.structure !== candidateSig.structure
+  ) {
+    score += 4;
+  }
+
+  // Different context.
+  if (
+    sourceSig.context &&
+    candidateSig.context &&
+    sourceSig.context !== candidateSig.context
+  ) {
+    score += 2;
+  }
+
+  // Different cognitive action may indicate transfer,
+  // but should receive lower weight.
+  if (
+    sourceSig.cognitiveAction &&
+    candidateSig.cognitiveAction &&
+    sourceSig.cognitiveAction !== candidateSig.cognitiveAction
+  ) {
+    score += 1;
+  }
+
+  return score;
+}
+
+/**
+ * Determines whether a candidate appears to test the same concept.
+ */
+export function hasCompatibleConcept(source, candidate) {
+  if (isExplicitTransfer(candidate)) {
+    return true;
+  }
+
+  const sourceSig = getQuestionSignature(source);
+  const candidateSig = getQuestionSignature(candidate);
+
+  // Strongest evidence: explicit concept tags.
+  if (
+    sourceSig.concept &&
+    candidateSig.concept
+  ) {
+    return sourceSig.concept === candidateSig.concept;
+  }
+
+  return false;
+}
+
+/**
+ * Determines whether the candidate has explicit evidence
+ * that it is a genuine structural transfer.
+ */
+export function validateTransferCandidate(
+  candidate,
+  sourceQuestion = null
+) {
+  if (!isUsableQuestion(candidate)) {
+    return {
+      valid: false,
+      score: 0,
+      reason: "invalid_question",
+    };
+  }
+
+  // Explicitly curated transfer questions are trusted,
+  // but still need valid question content.
+  if (isExplicitTransfer(candidate)) {
+    return {
+      valid: true,
+      score: 100,
+      reason: "explicit_transfer",
+    };
+  }
+
+  // Without a source question we cannot safely prove
+  // structural transfer from metadata alone.
+  if (!sourceQuestion) {
+    return {
+      valid: false,
+      score: 0,
+      reason: "no_source_question",
+    };
+  }
+
+  // The concept must be compatible.
+  if (!hasCompatibleConcept(sourceQuestion, candidate)) {
+    return {
+      valid: false,
+      score: 0,
+      reason: "concept_mismatch_or_unknown",
+    };
+  }
+
+  const differenceScore = scoreStructuralDifference(
+    sourceQuestion,
+    candidate
+  );
+
+  // Require a meaningful structural difference.
+  if (differenceScore < 4) {
+    return {
+      valid: false,
+      score: differenceScore,
+      reason: "insufficient_structural_difference",
+    };
+  }
+
+  return {
+    valid: true,
+    score: differenceScore,
+    reason: "validated_structural_transfer",
+  };
+}
+
+/**
+ * SELECT TRANSFER QUESTION
  *
  * Priority:
- *   1. Explicit transfer question that has not been used.
- *   2. Explicit transfer question even if all normal questions are used.
- *   3. Unused question that is structurally different from the main quiz.
- *   4. Last unused question.
- *   5. null if no valid candidate exists.
- *
- * @param {Array<object>} questions
- * @param {Set<number>|Array<number>} usedIndices
- * @returns {{ qIdx: number, q: object } | null}
+ * 1. Unused explicit transfer question.
+ * 2. Used explicit transfer question if reuse is allowed.
+ * 3. Unused validated structural transfer.
+ * 4. Used validated structural transfer if reuse is allowed.
+ * 5. null.
  */
 export function selectTransferQuestion(
   questions = [],
-  usedIndices = new Set()
+  usedIndices = new Set(),
+  sourceQuestion = null,
+  options = {}
 ) {
   if (!Array.isArray(questions) || questions.length === 0) {
     return null;
   }
 
-  // Normalize usedIndices so the function is safe with either Set or Array.
-  const used = usedIndices instanceof Set
-    ? usedIndices
-    : new Set(Array.isArray(usedIndices) ? usedIndices : []);
+  const {
+    allowReuse = true,
+  } = options;
+
+  const used = normalizeUsedIndices(usedIndices);
 
   const candidates = questions
-    .map((q, idx) => ({ q, idx }))
-    .filter(({ q }) => q && typeof q === "object");
+    .map((q, idx) => ({
+      q,
+      idx,
+      used: used.has(idx),
+    }))
+    .filter(({ q }) => isUsableQuestion(q));
 
-  // ------------------------------------------------------------
-  // 1. Explicit transfer questions that have NOT been used.
-  // ------------------------------------------------------------
-  const unusedExplicitTransfer = candidates.find(
-    ({ q, idx }) =>
-      !used.has(idx) &&
-      (q.is_transfer === true || q.type === "transfer")
+  // PHASE 1: Unused explicit transfer questions.
+  const unusedExplicit = candidates.find(
+    ({ q, used }) =>
+      !used && isExplicitTransfer(q)
   );
 
-  if (unusedExplicitTransfer) {
+  if (unusedExplicit) {
     return {
-      qIdx: unusedExplicitTransfer.idx,
-      q: unusedExplicitTransfer.q,
+      qIdx: unusedExplicit.idx,
+      q: unusedExplicit.q,
+      score: 100,
+      reason: "unused_explicit_transfer",
     };
   }
 
-  // ------------------------------------------------------------
-  // 2. Any unused question explicitly marked as transfer.
-  // ------------------------------------------------------------
-  const explicitTransfer = candidates.find(
-    ({ q }) => q.is_transfer === true || q.type === "transfer"
-  );
+  // PHASE 2: Reuse explicit transfer questions if permitted.
+  if (allowReuse) {
+    const reusableExplicit = candidates.find(
+      ({ q }) => isExplicitTransfer(q)
+    );
 
-  if (explicitTransfer) {
-    return {
-      qIdx: explicitTransfer.idx,
-      q: explicitTransfer.q,
-    };
-  }
-
-  // ------------------------------------------------------------
-  // 3. Prefer an unused question with a different representation.
-  //
-  // Useful metadata:
-  //   representation: "word_problem"
-  //   representation: "diagram"
-  //   representation: "table"
-  //   representation: "equation"
-  //   representation: "graph"
-  // ------------------------------------------------------------
-  const unusedRepresentations = candidates.filter(
-    ({ q, idx }) =>
-      !used.has(idx) &&
-      q.representation
-  );
-
-  if (unusedRepresentations.length > 0) {
-    const candidate = unusedRepresentations[
-      unusedRepresentations.length - 1
-    ];
-
-    return {
-      qIdx: candidate.idx,
-      q: candidate.q,
-    };
-  }
-
-  // ------------------------------------------------------------
-  // 4. Any unused question.
-  // ------------------------------------------------------------
-  for (let i = questions.length - 1; i >= 0; i--) {
-    if (!used.has(i)) {
+    if (reusableExplicit) {
       return {
-        qIdx: i,
-        q: questions[i],
+        qIdx: reusableExplicit.idx,
+        q: reusableExplicit.q,
+        score: 100,
+        reason: "reused_explicit_transfer",
       };
     }
   }
 
-  // ------------------------------------------------------------
-  // 5. No valid unused question exists.
-  //
-  // Do NOT fabricate a fake transfer problem.
-  // ------------------------------------------------------------
+  // PHASE 3: Score unused structural transfer candidates.
+  const unusedStructuralCandidates = candidates
+    .filter(({ used }) => !used)
+    .map(({ q, idx }) => {
+      const validation = validateTransferCandidate(
+        q,
+        sourceQuestion
+      );
+
+      return {
+        q,
+        idx,
+        ...validation,
+      };
+    })
+    .filter(({ valid }) => valid)
+    .sort((a, b) => b.score - a.score);
+
+  if (unusedStructuralCandidates.length > 0) {
+    const best = unusedStructuralCandidates[0];
+
+    return {
+      qIdx: best.idx,
+      q: best.q,
+      score: best.score,
+      reason: best.reason,
+    };
+  }
+
+  // PHASE 4: Reuse validated structural transfer if permitted.
+  if (allowReuse) {
+    const reusableStructuralCandidates = candidates
+      .map(({ q, idx }) => {
+        const validation = validateTransferCandidate(
+          q,
+          sourceQuestion
+        );
+
+        return {
+          q,
+          idx,
+          ...validation,
+        };
+      })
+      .filter(({ valid }) => valid)
+      .sort((a, b) => b.score - a.score);
+
+    if (reusableStructuralCandidates.length > 0) {
+      const best = reusableStructuralCandidates[0];
+
+      return {
+        qIdx: best.idx,
+        q: best.q,
+        score: best.score,
+        reason: "reused_" + best.reason,
+      };
+    }
+  }
+
   return null;
 }
 
 /**
- * Build a fallback structural transfer question.
- *
- * This function only creates a question when the source question
- * contains enough information to construct a valid transformation.
- *
- * @param {string} topic
- * @param {Array<object>} questions
- * @returns {object|null}
+ * Safely builds a transfer question from explicit transfer data.
  */
 export function buildFallbackTransferQuestion(
-  topic,
-  questions = []
+  topic = "",
+  sourceQuestion = null
 ) {
-  if (!Array.isArray(questions) || questions.length === 0) {
+  if (!isUsableQuestion(sourceQuestion)) {
     return null;
   }
 
-  const safeTopic = String(topic || "this concept").trim();
+  const safeTopic =
+    String(topic || "this concept").trim();
 
-  // Find the first usable source question.
-  const sampleQ = questions.find(
-    (q) =>
-      q &&
-      typeof q === "object" &&
-      typeof q.q === "string" &&
-      q.q.trim()
-  );
-
-  if (!sampleQ) {
-    return null;
-  }
-
-
-
-  /*
-   * If the original question already has a structural representation,
-   * reuse its metadata instead of inventing mathematics.
-   */
+  // OPTION 1: Explicit pre-authored transfer question.
   if (
-    sampleQ.representation &&
-    sampleQ.representation !== "standard"
+    typeof sourceQuestion.transfer_question === "string" &&
+    sourceQuestion.transfer_question.trim() &&
+    sourceQuestion.transfer_answer !== undefined &&
+    sourceQuestion.transfer_answer !== null
   ) {
     return {
-      ...sampleQ,
-      concept_tag:
-        sampleQ.concept_tag || "structural_transfer",
-      is_transfer: true,
-      type: "transfer",
-      transfer_source: "fallback",
-      transfer_topic: safeTopic,
-    };
-  }
+      q: sourceQuestion.transfer_question.trim(),
 
-  /*
-   * A numerical answer alone is NOT enough to generate a valid
-   * mathematical transfer problem.
-   *
-   * For example:
-   *
-   *   Answer = 84
-   *
-   * does NOT tell us whether the original operation was:
-   *   12 × 7
-   *   90 − 6
-   *   42 × 2
-   *   etc.
-   *
-   * Therefore, only generate a fallback if the original question
-   * provides explicit transfer data.
-   */
+      ans: String(
+        sourceQuestion.transfer_answer
+      ),
 
-  if (
-    sampleQ.transfer_question &&
-    sampleQ.transfer_answer !== undefined
-  ) {
-    return {
-      q: String(sampleQ.transfer_question),
-      ans: String(sampleQ.transfer_answer),
       hint:
-        sampleQ.transfer_hint ||
-        `Apply the underlying principle of ${safeTopic} to the new representation.`,
+        sourceQuestion.transfer_hint ||
+        `Apply the underlying structure of ${safeTopic} in this new form.`,
+
       why:
-        sampleQ.transfer_why ||
-        "This checks whether you can apply the same concept when the problem structure changes.",
+        sourceQuestion.transfer_why ||
+        "This question presents the same underlying concept through a different structure or representation.",
+
       type: "transfer",
-      concept_tag:
-        sampleQ.concept_tag || "structural_transfer",
+
       is_transfer: true,
-      transfer_source: "fallback",
+
+      concept_tag:
+        sourceQuestion.concept_tag ||
+        sourceQuestion.concept ||
+        safeTopic,
+
+      representation:
+        sourceQuestion.transfer_representation ||
+        "transferred",
+
+      transfer_source: "explicit_transfer_data",
+
+      source_question_id:
+        sourceQuestion.id || null,
     };
   }
 
-  /*
-   * If the question has an explicit transformation template,
-   * use it.
-   *
-   * Example:
-   *
-   * transferTemplate:
-   * {
-   *   q: "A rectangle has a length of {a} and width of {b}. Find its area.",
-   *   ans: "84"
-   * }
-   */
+  // OPTION 2: Structured transfer object.
+  const transfer = sourceQuestion.transfer;
+
   if (
-    sampleQ.transferTemplate &&
-    typeof sampleQ.transferTemplate.q === "string" &&
-    sampleQ.transferTemplate.ans !== undefined
+    transfer &&
+    typeof transfer === "object" &&
+    typeof transfer.q === "string" &&
+    transfer.q.trim() &&
+    transfer.ans !== undefined &&
+    transfer.ans !== null
   ) {
     return {
-      q: sampleQ.transferTemplate.q,
-      ans: String(sampleQ.transferTemplate.ans),
+      q: transfer.q.trim(),
+
+      ans: String(transfer.ans),
+
       hint:
-        sampleQ.transferTemplate.hint ||
-        `Apply the core rule of ${safeTopic} to the new representation.`,
+        transfer.hint ||
+        `Apply the underlying structure of ${safeTopic}.`,
+
       why:
-        "The problem uses a different representation while preserving the underlying concept.",
+        transfer.why ||
+        "The representation changes while the underlying concept remains the same.",
+
       type: "transfer",
-      concept_tag:
-        sampleQ.concept_tag || "structural_transfer",
+
       is_transfer: true,
-      transfer_source: "template",
+
+      concept_tag:
+        transfer.concept_tag ||
+        sourceQuestion.concept_tag ||
+        sourceQuestion.concept ||
+        safeTopic,
+
+      representation:
+        transfer.representation ||
+        "transferred",
+
+      structure:
+        transfer.structure ||
+        sourceQuestion.structure ||
+        null,
+
+      transfer_source: "structured_transfer_data",
+
+      source_question_id:
+        sourceQuestion.id || null,
     };
   }
 
-  /*
-   * Last resort:
-   * Do not manufacture a mathematically invalid question.
-   *
-   * Returning null tells the caller:
-   * "There is no safe fallback transfer question."
-   */
+  // OPTION 3: Legacy transfer template.
+  const template =
+    sourceQuestion.transferTemplate;
+
+  if (
+    template &&
+    typeof template === "object" &&
+    typeof template.q === "string" &&
+    template.q.trim() &&
+    template.ans !== undefined &&
+    template.ans !== null
+  ) {
+    return {
+      q: template.q.trim(),
+
+      ans: String(template.ans),
+
+      hint:
+        template.hint ||
+        `Apply the core structure of ${safeTopic}.`,
+
+      why:
+        template.why ||
+        "This problem changes the representation while preserving the underlying concept.",
+
+      type: "transfer",
+
+      is_transfer: true,
+
+      concept_tag:
+        sourceQuestion.concept_tag ||
+        sourceQuestion.concept ||
+        safeTopic,
+
+      representation:
+        template.representation ||
+        "transferred",
+
+      transfer_source:
+        "legacy_transfer_template",
+
+      source_question_id:
+        sourceQuestion.id || null,
+    };
+  }
+
   return null;
 }
 
 /**
- * Select a transfer question, falling back to a generated one
- * only when the generated question is actually valid.
+ * MAIN TRANSFER QUESTION API
  *
- * @param {Array<object>} questions
- * @param {Set<number>|Array<number>} usedIndices
- * @param {string} topic
- * @returns {{ qIdx: number, q: object } | null}
+ * Primary entry point for selecting/constructing transfer questions.
  */
 export function getTransferQuestion(
   questions = [],
   usedIndices = new Set(),
-  topic = ""
+  topic = "",
+  sourceQuestion = null,
+  options = {}
 ) {
-  // First try the actual question bank.
   const selected = selectTransferQuestion(
     questions,
-    usedIndices
+    usedIndices,
+    sourceQuestion,
+    options
   );
 
   if (selected) {
     return selected;
   }
 
-  // Only build a fallback if enough source information exists.
-  const fallback = buildFallbackTransferQuestion(
-    topic,
-    questions
-  );
+  const fallbackSource =
+    sourceQuestion ||
+    questions.find(isUsableQuestion);
+
+  const fallback =
+    buildFallbackTransferQuestion(
+      topic,
+      fallbackSource
+    );
 
   if (!fallback) {
     return null;
@@ -300,5 +614,7 @@ export function getTransferQuestion(
   return {
     qIdx: -1,
     q: fallback,
+    score: 95,
+    reason: "safe_explicit_fallback_transfer",
   };
 }
