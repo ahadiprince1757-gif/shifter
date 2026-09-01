@@ -1033,19 +1033,29 @@ export class MathMutator {
   // ============================================================
 
   _finalize(question, modalityIndex, skill, difficulty) {
-    const isOpen =
-      Number(modalityIndex) % 4 === 0;
+    const isOpen = Number(modalityIndex) % 4 === 0;
+
+    let solText = question.why || question.explanation;
+
+    if (!solText || solText.trim() === String(question.ans).trim()) {
+      if (Array.isArray(question.steps) && question.steps.length > 0) {
+        solText = question.steps.join("\n");
+      } else {
+        solText = `Calculated solution: ${question.ans}.`;
+      }
+    }
 
     return {
       ...question,
 
-      type: isOpen
-        ? "open_response"
-        : "mcq",
+      ans: String(question.ans),
+      why: solText,
+      sol: solText,
+      explanation: solText,
 
-      options: isOpen
-        ? null
-        : question.options,
+      type: isOpen ? "open_response" : "mcq",
+
+      options: isOpen ? null : question.options,
 
       metadata: {
         ...(question.metadata || {}),
@@ -1064,33 +1074,66 @@ export class MathMutator {
   // ============================================================
 
   _fallback(qObj, modalityIndex, difficulty) {
+    const stem = String(qObj.q || qObj.stem || "").trim();
+    const numbers = stem.match(/\b\d+(?:\.\d+)?\b/g);
+    const ans = qObj.ans ? String(qObj.ans) : "Calculated Result";
+
+    if (numbers && numbers.length >= 1) {
+      const oldValue = parseFloat(numbers[0]);
+      if (Number.isFinite(oldValue) && oldValue > 0) {
+        const factor = 2;
+        const newValue = oldValue * factor;
+        const mutatedStem = stem.replace(numbers[0], String(newValue));
+        const originalSteps = Array.isArray(qObj.steps) && qObj.steps.length > 0 ? qObj.steps : null;
+
+        const steps = originalSteps
+          ? originalSteps.map((s) => s.replace(new RegExp(`\\b${oldValue}\\b`, "g"), String(newValue)))
+          : [
+              `Step 1: Note the updated numerical quantity: ${newValue} (modified from ${oldValue}).`,
+              `Step 2: Substitute ${newValue} into the governing mathematical formula.`,
+              `Step 3: Perform the calculation to solve the problem.`,
+              `Step 4: Verify units and state the final result.`
+            ];
+
+        const solText = qObj.why || qObj.sol || `Recalculate using the updated value ${newValue}.`;
+
+        return {
+          ...qObj,
+          q: `[Math Variant] ${mutatedStem}`,
+          ans,
+          why: solText,
+          sol: solText,
+          explanation: solText,
+          steps,
+          type: Number(modalityIndex) % 4 === 0 ? "open_response" : "mcq",
+          metadata: { skill: "numeric_mutation", difficulty, generatedBy: "TixarMathMutator" }
+        };
+      }
+    }
+
+    const solText =
+      qObj.why ||
+      qObj.sol ||
+      qObj.explanation ||
+      `Apply the mathematical relationship to obtain ${ans}.`;
+
+    const steps = Array.isArray(qObj.steps) && qObj.steps.length > 0
+      ? qObj.steps
+      : [
+          `Step 1: Identify given quantities in: "${stem}".`,
+          `Step 2: Apply the governing mathematical rule or formula.`,
+          `Step 3: Calculate the final result: ${ans}.`
+        ];
+
     return {
       ...qObj,
-
-      type:
-        Number(modalityIndex) % 4 === 0
-          ? "open_response"
-          : "mcq",
-
-      hint:
-        qObj.hint ||
-        "Identify the quantities given and choose the mathematical rule that connects them.",
-
-      steps:
-        qObj.steps || [
-          "Identify what is given.",
-          "Identify what must be found.",
-          "Select the appropriate formula or rule.",
-          "Substitute the known values.",
-          "Check whether the answer is reasonable."
-        ],
-
-      metadata: {
-        skill: "unknown",
-        difficulty,
-        generatedBy: "TixarMathMutator",
-        version: "2.0"
-      }
+      ans,
+      why: solText,
+      sol: solText,
+      explanation: solText,
+      steps,
+      type: Number(modalityIndex) % 4 === 0 ? "open_response" : "mcq",
+      metadata: { skill: "general_math", difficulty, generatedBy: "TixarMathMutator" }
     };
   }
 
