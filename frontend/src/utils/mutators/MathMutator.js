@@ -94,6 +94,54 @@ export class MathMutator {
      */
 
     if (
+      /mean|average|find mean/.test(text)
+    ) {
+      return "mean";
+    }
+
+    if (
+      /median|find median|middle value/.test(text)
+    ) {
+      return "median";
+    }
+
+    if (
+      /mode|find mode|most frequent/.test(text)
+    ) {
+      return "mode";
+    }
+
+    if (
+      /probability|chance|dice|marbles|picking a|P\(/.test(text)
+    ) {
+      return "probability";
+    }
+
+    if (
+      /trigonometry|pythagoras|hypotenuse|sin|cos|tan|right-angled/.test(text)
+    ) {
+      return "trigonometry";
+    }
+
+    if (
+      /matrix|matrices|determinant|2x2/.test(text)
+    ) {
+      return "matrices";
+    }
+
+    if (
+      /vector|magnitude|column vector/.test(text)
+    ) {
+      return "vectors";
+    }
+
+    if (
+      /logarithm|log10|log2|log_/.test(text)
+    ) {
+      return "logarithms";
+    }
+
+    if (
       /quadratic|x\^2|factor.*quadratic|solve.*quadratic/.test(text)
     ) {
       return "quadratic";
@@ -196,7 +244,15 @@ export class MathMutator {
       fraction: this._generateFraction,
       ratio: this._generateRatio,
       simultaneous: this._generateSimultaneous,
-      measurement: this._generateMeasurement
+      measurement: this._generateMeasurement,
+      mean: this._generateMean,
+      median: this._generateMedian,
+      mode: this._generateMode,
+      probability: this._generateProbability,
+      trigonometry: this._generateTrigonometry,
+      matrices: this._generateMatrices,
+      vectors: this._generateVectors,
+      logarithms: this._generateLogarithms
     };
 
     return generators[skill];
@@ -970,6 +1026,300 @@ export class MathMutator {
       metadata: {
         skill: "area",
         variables: { length, width, area }
+      }
+    };
+  }
+
+  // ============================================================
+  // STATISTICS: MEAN
+  // ============================================================
+
+  _generateMean() {
+    const count = this._choice([4, 5, 6]);
+    const meanVal = this._randInt(5, 20);
+    const sumVal = meanVal * count;
+
+    // Generate random values that sum to sumVal
+    const nums = [];
+    let currentSum = 0;
+    for (let i = 0; i < count - 1; i++) {
+      const val = this._randInt(1, Math.max(2, Math.floor(sumVal / count) + 3));
+      nums.push(val);
+      currentSum += val;
+    }
+    const lastVal = Math.max(1, sumVal - currentSum);
+    nums.push(lastVal);
+    const actualSum = nums.reduce((a, b) => a + b, 0);
+    const finalMean = actualSum / count;
+
+    const numStr = nums.join(", ");
+
+    return {
+      q: `Find the mean (average) of the dataset: ${numStr}.`,
+      ans: this._formatNumber(finalMean),
+      hint: `Sum all numbers in the dataset and divide by the total count (${count}).`,
+      steps: [
+        `Step 1: Sum the numbers: ${nums.join(" + ")} = ${actualSum}`,
+        `Step 2: Count total data values: n = ${count}`,
+        `Step 3: Calculate Mean = Sum / n = ${actualSum} / ${count}`,
+        `Step 4: Mean = ${this._formatNumber(finalMean)}`
+      ],
+      sol: `Sum = ${actualSum}. Dividing by ${count} values gives Mean = ${this._formatNumber(finalMean)}.`,
+      options: this._numberDistractors(finalMean, [
+        actualSum,
+        actualSum / (count - 1),
+        finalMean + 2,
+        Math.max(1, finalMean - 1)
+      ]),
+      metadata: {
+        skill: "statistics_mean",
+        variables: { nums, count, sum: actualSum, mean: finalMean }
+      }
+    };
+  }
+
+  // ============================================================
+  // STATISTICS: MEDIAN
+  // ============================================================
+
+  _generateMedian() {
+    const nums = [
+      this._randInt(2, 10),
+      this._randInt(11, 20),
+      this._randInt(21, 30),
+      this._randInt(31, 40),
+      this._randInt(41, 50)
+    ];
+
+    const sorted = [...nums].sort((a, b) => a - b);
+    const medianVal = sorted[2];
+
+    const shuffled = this._shuffle([...nums]);
+    const numStr = shuffled.join(", ");
+
+    return {
+      q: `Find the median of the data set: ${numStr}.`,
+      ans: String(medianVal),
+      hint: `Arrange the numbers in ascending order and select the middle value.`,
+      steps: [
+        `Step 1: Arrange data in ascending order: ${sorted.join(", ")}`,
+        `Step 2: Identify the middle value (3rd position out of 5)`,
+        `Step 3: Median = ${medianVal}`
+      ],
+      sol: `Ordered dataset: ${sorted.join(", ")}. The middle (3rd) value is ${medianVal}.`,
+      options: this._uniqueOptions([
+        String(medianVal),
+        String(sorted[1]),
+        String(sorted[3]),
+        String(Math.round(sorted.reduce((a, b) => a + b, 0) / 5))
+      ]),
+      metadata: {
+        skill: "statistics_median",
+        variables: { nums: shuffled, sorted, median: medianVal }
+      }
+    };
+  }
+
+  // ============================================================
+  // STATISTICS: MODE
+  // ============================================================
+
+  _generateMode() {
+    const modeVal = this._randInt(3, 15);
+    const other1 = modeVal + this._randInt(1, 4);
+    const other2 = modeVal + this._randInt(5, 8);
+
+    const nums = [modeVal, other1, modeVal, other2, modeVal, other1];
+    const shuffled = this._shuffle([...nums]);
+
+    return {
+      q: `Find the mode of the numbers: ${shuffled.join(", ")}.`,
+      ans: String(modeVal),
+      hint: `The mode is the number that appears most frequently in the dataset.`,
+      steps: [
+        `Step 1: Count frequency of each value: ${modeVal} appears 3 times, ${other1} appears 2 times, ${other2} appears 1 time.`,
+        `Step 2: Identify the value with the highest frequency.`,
+        `Step 3: Mode = ${modeVal}`
+      ],
+      sol: `${modeVal} occurs most frequently (3 times), making it the mode.`,
+      options: this._uniqueOptions([
+        String(modeVal),
+        String(other1),
+        String(other2),
+        String(Math.round(nums.reduce((a, b) => a + b, 0) / nums.length))
+      ]),
+      metadata: {
+        skill: "statistics_mode",
+        variables: { nums: shuffled, mode: modeVal }
+      }
+    };
+  }
+
+  // ============================================================
+  // PROBABILITY
+  // ============================================================
+
+  _generateProbability() {
+    const red = this._randInt(2, 6);
+    const blue = this._randInt(4, 9);
+    const total = red + blue;
+
+    return {
+      q: `A bag contains ${red} red marbles and ${blue} blue marbles. What is the probability of picking a red marble at random?`,
+      ans: `${red}/${total}`,
+      hint: `Probability P(Event) = Number of favorable outcomes / Total possible outcomes.`,
+      steps: [
+        `Step 1: Calculate total marbles = ${red} + ${blue} = ${total}`,
+        `Step 2: Favorable red marbles = ${red}`,
+        `Step 3: P(Red) = ${red}/${total}`
+      ],
+      sol: `Total marbles = ${total}. Favorable red marbles = ${red}, so P(Red) = ${red}/${total}.`,
+      options: this._uniqueOptions([
+        `${red}/${total}`,
+        `${blue}/${total}`,
+        `${red}/${blue}`,
+        `1/${total}`
+      ]),
+      metadata: {
+        skill: "probability",
+        variables: { red, blue, total }
+      }
+    };
+  }
+
+  // ============================================================
+  // TRIGONOMETRY (PYTHAGORAS)
+  // ============================================================
+
+  _generateTrigonometry() {
+    const triplets = [
+      [3, 4, 5],
+      [6, 8, 10],
+      [5, 12, 13],
+      [9, 12, 15]
+    ];
+
+    const [a, b, c] = this._choice(triplets);
+
+    return {
+      q: `In a right-angled triangle, the two perpendicular sides are ${a} cm and ${b} cm long. Find the length of the hypotenuse.`,
+      ans: `${c} cm`,
+      hint: `Apply Pythagoras' Theorem: c^2 = a^2 + b^2.`,
+      steps: [
+        `Step 1: Formula: c^2 = a^2 + b^2`,
+        `Step 2: c^2 = ${a}^2 + ${b}^2 = ${a * a} + ${b * b} = ${c * c}`,
+        `Step 3: c = sqrt(${c * c}) = ${c} cm`
+      ],
+      sol: `c^2 = ${a}^2 + ${b}^2 = ${c * c}, giving hypotenuse = ${c} cm.`,
+      options: this._uniqueOptions([
+        `${c} cm`,
+        `${a + b} cm`,
+        `${c + 2} cm`,
+        `${Math.max(1, c - 2)} cm`
+      ]),
+      metadata: {
+        skill: "trigonometry",
+        variables: { a, b, c }
+      }
+    };
+  }
+
+  // ============================================================
+  // MATRICES (DETERMINANT)
+  // ============================================================
+
+  _generateMatrices() {
+    const a = this._randInt(2, 6);
+    const b = this._randInt(1, 5);
+    const c = this._randInt(1, 4);
+    const d = this._randInt(3, 8);
+
+    const det = a * d - b * c;
+
+    return {
+      q: `Find the determinant of the 2x2 matrix [[${a}, ${b}], [${c}, ${d}]].`,
+      ans: String(det),
+      hint: `For matrix [[a, b], [c, d]], Determinant = (a x d) - (b x c).`,
+      steps: [
+        `Step 1: ad = ${a} x ${d} = ${a * d}`,
+        `Step 2: bc = ${b} x ${c} = ${b * c}`,
+        `Step 3: Determinant = ad - bc = ${a * d} - ${b * c} = ${det}`
+      ],
+      sol: `Determinant = (${a} x ${d}) - (${b} x ${c}) = ${a * d} - ${b * c} = ${det}.`,
+      options: this._numberDistractors(det, [
+        a * d + b * c,
+        a * c - b * d,
+        a + b + c + d
+      ]),
+      metadata: {
+        skill: "matrices",
+        variables: { a, b, c, d, det }
+      }
+    };
+  }
+
+  // ============================================================
+  // VECTORS (MAGNITUDE)
+  // ============================================================
+
+  _generateVectors() {
+    const pairs = [
+      [3, 4, 5],
+      [6, 8, 10],
+      [5, 12, 13]
+    ];
+    const [x, y, mag] = this._choice(pairs);
+
+    return {
+      q: `Find the magnitude of the 2D vector v = (${x}, ${y}).`,
+      ans: String(mag),
+      hint: `Vector magnitude |v| = sqrt(x^2 + y^2).`,
+      steps: [
+        `Step 1: |v| = sqrt(x^2 + y^2)`,
+        `Step 2: |v| = sqrt(${x}^2 + ${y}^2) = sqrt(${x * x} + ${y * y}) = sqrt(${mag * mag})`,
+        `Step 3: |v| = ${mag}`
+      ],
+      sol: `|v| = sqrt(${x}^2 + ${y}^2) = sqrt(${mag * mag}) = ${mag}.`,
+      options: this._uniqueOptions([
+        String(mag),
+        String(x + y),
+        String(mag + 2),
+        String(Math.max(1, mag - 2))
+      ]),
+      metadata: {
+        skill: "vectors",
+        variables: { x, y, mag }
+      }
+    };
+  }
+
+  // ============================================================
+  // LOGARITHMS
+  // ============================================================
+
+  _generateLogarithms() {
+    const power = this._randInt(2, 4);
+    const value = Math.pow(10, power);
+
+    return {
+      q: `Evaluate log10(${value.toLocaleString()}).`,
+      ans: String(power),
+      hint: `log10(10^n) = n. Find the power of 10 that equals ${value}.`,
+      steps: [
+        `Step 1: Write ${value} as 10^${power}`,
+        `Step 2: Apply power rule: log10(10^${power}) = ${power} x log10(10)`,
+        `Step 3: Since log10(10) = 1, Answer = ${power}`
+      ],
+      sol: `10^${power} = ${value}, so log10(${value}) = ${power}.`,
+      options: this._uniqueOptions([
+        String(power),
+        String(power + 1),
+        String(power - 1),
+        String(value / 10)
+      ]),
+      metadata: {
+        skill: "logarithms",
+        variables: { value, power }
       }
     };
   }

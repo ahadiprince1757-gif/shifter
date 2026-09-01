@@ -492,4 +492,14 @@ export async function fetchAchievements() {
   }
 }
 
+// ----------------------------------------------------------------------------
+// AUTOMATIC ONLINE SYNC RECOVERY
+// ----------------------------------------------------------------------------
+if (typeof window !== "undefined") {
+  window.addEventListener("online", () => {
+    console.log("[Network] Connection restored. Auto-syncing progress with Supabase...");
+    fetchProgress().catch(() => {});
+  });
+}
+
 

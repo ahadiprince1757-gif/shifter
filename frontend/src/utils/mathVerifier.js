@@ -162,6 +162,7 @@ function solveFromText(q) {
   //
   // More specific solvers should run before generic arithmetic.
   return (
+    trySolveMean(normalized) ||
     trySolveArea(normalized) ||
     trySolvePerimeter(normalized) ||
     trySolveSpeedDistanceTime(normalized) ||
@@ -170,6 +171,37 @@ function solveFromText(q) {
     trySolveSimpleArithmetic(normalized) ||
     null
   );
+}
+
+// ============================================================================
+// MEAN / AVERAGE SOLVER
+// ============================================================================
+
+function trySolveMean(q) {
+  if (!/\b(?:mean|average)\b/i.test(q)) {
+    return null;
+  }
+
+  const matches = q.match(/\b\d+(?:\.\d+)?\b/g);
+  if (!matches || matches.length < 2) return null;
+
+  const numbers = matches.map(Number);
+  const sum = numbers.reduce((a, b) => a + b, 0);
+  const count = numbers.length;
+  const mean = sum / count;
+  const formatted = Number.isInteger(mean) ? String(mean) : mean.toFixed(2).replace(/\.00$/, "");
+
+  return {
+    answer: formatted,
+    confidence: 0.98,
+    operation: "mean",
+    explanation: `The mean of ${numbers.join(", ")} is calculated by (${numbers.join(" + ")}) / ${count} = ${sum} / ${count} = ${formatted}.`,
+    steps: [
+      `Step 1: Sum the values: ${numbers.join(" + ")} = ${sum}`,
+      `Step 2: Count total numbers: n = ${count}`,
+      `Step 3: Calculate Mean = ${sum} / ${count} = ${formatted}`
+    ]
+  };
 }
 
 // ============================================================================
