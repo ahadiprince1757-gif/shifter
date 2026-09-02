@@ -25,8 +25,10 @@ class SyncEngine {
     this.isSyncing = false;
     
     // Auto-sync when network comes online
-    networkService.subscribe((isOnline) => {
-      if (isOnline) {
+    networkService.subscribe((state, previousStatus) => {
+      const isOnlineNow = Boolean(state?.isOnline || state?.status === "ONLINE" || state?.status === "DEGRADED" || state === true);
+      const wasNotOnlineBefore = !previousStatus || previousStatus !== "ONLINE";
+      if (isOnlineNow && wasNotOnlineBefore) {
         this.syncAll();
       }
     });
