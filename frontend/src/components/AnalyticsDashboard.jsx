@@ -5,6 +5,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import { spacedRepo } from "../repository/spacedRepo";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import { useAuth } from "../hooks/useAuth";
+import { calculateCBCGrade } from "../engine/cbcGrading";
 
 /** Helper to convert raw IDs/slugs into clean human Title Case */
 function formatTitle(str) {
@@ -147,21 +148,42 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
-      {/* Accuracy Visual Progress Bar */}
-      {totalQuizzes > 0 && (
-        <div className="analytics-progress-bar-container">
-          <div className="progress-bar-header">
-            <span>Overall Performance</span>
-            <span>{accuracyRate}% Accuracy ({totalPasses}/{totalQuizzes} correct)</span>
+      {/* Accuracy Visual Progress Bar + CBC Badge */}
+      {totalQuizzes > 0 && (() => {
+        const cbc = calculateCBCGrade(accuracyRate);
+        return (
+          <div className="analytics-progress-bar-container">
+            <div className="progress-bar-header">
+              <span>Overall Performance</span>
+              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+                <span
+                  style={{
+                    background: cbc.badgeBg,
+                    color: cbc.badgeText,
+                    padding: "0.2rem 0.5rem",
+                    borderRadius: "6px",
+                    fontWeight: 700,
+                    fontSize: "0.75rem",
+                    border: `1px solid ${cbc.badgeText}40`,
+                  }}
+                >
+                  {cbc.level} · {cbc.points}/8 pts
+                </span>
+                <span>{accuracyRate}% Accuracy ({totalPasses}/{totalQuizzes} correct)</span>
+              </div>
+            </div>
+            <div className="progress-track">
+              <div
+                className="progress-fill-pass"
+                style={{ width: `${accuracyRate}%` }}
+              />
+            </div>
+            <div style={{ fontSize: "0.75rem", color: "var(--t2)", marginTop: "0.35rem" }}>
+              {cbc.category} — {cbc.description}
+            </div>
           </div>
-          <div className="progress-track">
-            <div
-              className="progress-fill-pass"
-              style={{ width: `${accuracyRate}%` }}
-            />
-          </div>
-        </div>
-      )}
+        );
+      })()}
 
       {/* Deep Knowledge State Card */}
       <div className="knowledge-state-card">

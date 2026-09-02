@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import { spacedRepo } from "../../repository/spacedRepo";
+import { calculateCBCGrade } from "../../engine/cbcGrading";
+import { computeTixarReadiness } from "../../engine/readinessEngine";
 
 function formatDate(isoString) {
   if (!isoString) return "soon";
@@ -66,6 +68,7 @@ export default function SessionSummary({
   sessionScore,
   weaknessMap = {},
   repairedConcepts = [],
+  failedQuestions = [],
   nextTopic,
   goToNext,
   goBack,
@@ -73,6 +76,13 @@ export default function SessionSummary({
 }) {
   const [nextReview, setNextReview] = useState(null);
   const weaknessEntries = Object.values(weaknessMap || {});
+
+  const cbc = calculateCBCGrade(sessionScore ?? 0);
+  const readiness = computeTixarReadiness({
+    accuracyRate: sessionScore ?? 0,
+    failedQuestions,
+    repairedConcepts: new Set(repairedConcepts || []),
+  });
 
   useEffect(() => {
     if (!topic) return;
@@ -93,24 +103,82 @@ export default function SessionSummary({
         </div>
         <h2 className="ss-topic-title">{topic}</h2>
         <p className="ss-subtitle">
-          {subject?.label || subject?.id}
+          {subject?.label || subject?.name || subject?.id}
           {chapter?.label ? ` · ${chapter.label}` : ""}
         </p>
       </div>
 
-      {/* Score ring */}
-      <div className="ss-score-row">
+      {/* Score ring + Official CBC Performance Level */}
+      <div className="ss-score-row" style={{ flexWrap: "wrap", gap: "1.25rem" }}>
         <ScoreRing score={sessionScore ?? 0} />
-        <div className="ss-score-meta">
-          <div className="ss-score-label">Knowledge Survival Score</div>
-          <div className="ss-score-hint">
-            {(sessionScore ?? 0) >= 80
-              ? "High Retention — core concepts survived retrieval testing."
-              : (sessionScore ?? 0) >= 50
-              ? "Partial Retention — review recommended to prevent memory decay."
-              : "Low Retention — targeted spaced review queued."}
+        <div className="ss-score-meta" style={{ flex: "1", minWidth: "220px" }}>
+          <div style={{ display: "flex", gap: "0.5rem", alignItems: "center", marginBottom: "0.4rem" }}>
+            <span
+              style={{
+                background: cbc.badgeBg,
+                color: cbc.badgeText,
+                padding: "0.3rem 0.65rem",
+                borderRadius: "8px",
+                fontWeight: 700,
+                fontSize: "0.85rem",
+                border: `1px solid ${cbc.badgeText}40`,
+              }}
+            >
+              CBC {cbc.level} — {cbc.category}
+            </span>
+            <span
+              style={{
+                background: "var(--bg, #f1f5f9)",
+                color: "var(--t, #334155)",
+                padding: "0.3rem 0.6rem",
+                borderRadius: "8px",
+                fontWeight: 700,
+                fontSize: "0.8rem",
+              }}
+            >
+              {cbc.points} / 8 Points
+            </span>
           </div>
+          <div className="ss-score-hint">{cbc.description}</div>
         </div>
+      </div>
+
+      {/* Tixar Readiness Engine Card */}
+      <div
+        style={{
+          marginTop: "1.2rem",
+          padding: "1rem 1.2rem",
+          background: "var(--sur, #ffffff)",
+          border: "1px solid var(--bd, rgba(0, 0, 0, 0.08))",
+          borderRadius: "12px",
+          boxShadow: "0 2px 12px rgba(0, 0, 0, 0.02)",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "0.5rem" }}>
+          <span style={{ fontSize: "0.85rem", fontWeight: 700, color: "var(--t, #0f172a)", textTransform: "uppercase", letterSpacing: "0.03em" }}>
+            🎯 Tixar Readiness Assessment
+          </span>
+          <span
+            style={{
+              background: readiness.badgeBg,
+              color: readiness.badgeText,
+              padding: "0.25rem 0.6rem",
+              borderRadius: "8px",
+              fontWeight: 700,
+              fontSize: "0.78rem",
+            }}
+          >
+            {readiness.readinessScore}% Readiness — {readiness.statusLabel}
+          </span>
+        </div>
+
+        <div style={{ height: "6px", background: "rgba(0, 0, 0, 0.06)", borderRadius: "3px", overflow: "hidden", marginBottom: "0.75rem" }}>
+          <div style={{ width: `${readiness.readinessScore}%`, height: "100%", background: readiness.badgeText, borderRadius: "3px" }} />
+        </div>
+
+        <p style={{ fontSize: "0.86rem", color: "var(--t2, #475569)", margin: 0, lineHeight: "1.5" }}>
+          <strong>Personalized Action:</strong> {readiness.recommendation}
+        </p>
       </div>
 
       {/* Cognitive Knowledge-Gap Diagnostic Breakdown */}
