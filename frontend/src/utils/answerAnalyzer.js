@@ -1558,7 +1558,7 @@ export function analyseStudentAnswer(
       type: "incorrect_attempt",
       icon: "✗",
       message:
-        "Your answer is incorrect. Review the correct answer and step-by-step solution below.",
+        "Not quite there yet! Take a look at the step-by-step solution below to see how to tackle this problem.",
     });
   }
 
