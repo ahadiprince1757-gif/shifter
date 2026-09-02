@@ -128,7 +128,7 @@ function TransferPhase({
               </div>
             )}
 
-            <HintBox showHint={showHint} hintText={q.hint} />
+            <HintBox showHint={showHint} hintText={q.hint} hints={q.hints} />
 
             <div className="transfer-action-row">
               {q.hint && (

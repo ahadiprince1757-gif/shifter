@@ -91,7 +91,7 @@ function SpacedRetestPhase({ dueReviews = [], onComplete }) {
               onChange={(e) => setAnswer(e.target.value)}
             />
 
-            <HintBox showHint={showHint} hintText={questionObj.hint} />
+            <HintBox showHint={showHint} hintText={questionObj.hint} hints={questionObj.hints} />
 
             <div className="retest-action-row">
               {questionObj.hint && (

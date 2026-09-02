@@ -259,7 +259,7 @@ function RepairPhase({
               <div className="validation-error">{validationError}</div>
             )}
 
-            <HintBox showHint={showHint} hintText={repairQ.hint} />
+            <HintBox showHint={showHint} hintText={repairQ.hint} hints={repairQ.hints} />
 
             {!feedback && (
               <div className="repair-action-row">

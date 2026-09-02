@@ -204,7 +204,7 @@ function QuizPhase({
             <div className="validation-error">{validationError}</div>
           )}
 
-          <HintBox showHint={showHint} hintText={curQ?.hint} />
+          <HintBox showHint={showHint} hintText={curQ?.hint} hints={curQ?.hints} />
 
           {/* Metacognitive Confidence Selector — shown before first submission */}
           {!feedback && answer.trim() && (

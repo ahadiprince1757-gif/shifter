@@ -159,7 +159,7 @@ function DiagnosticPhase({ diagnosticQuestions = [], onComplete }) {
               <div className="validation-error">{validationError}</div>
             )}
 
-            <HintBox showHint={showHint} hintText={q.hint} />
+            <HintBox showHint={showHint} hintText={q.hint} hints={q.hints} />
 
             <div className="diagnostic-action-row">
               {q.hint && (
