@@ -75,6 +75,8 @@ export function verifyBiologyQuestion(questionText) {
 
   return {
     ...result,
+    verifiedAnswer: result.answer,
+    verifiedSteps: result.steps || [],
     subject: "Biology",
     confidence: result.confidence ?? 0.95,
     wasOverridden: false,

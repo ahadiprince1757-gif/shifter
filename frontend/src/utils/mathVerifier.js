@@ -47,7 +47,9 @@ export function verifyMathAnswer(questionText, storedAns) {
 
   if (!q) {
     return {
+      answer: storedAns,
       verifiedAnswer: storedAns,
+      steps: null,
       verifiedSteps: null,
       wasOverridden: false,
       confidence: 0,
@@ -64,7 +66,9 @@ export function verifyMathAnswer(questionText, storedAns) {
 
   if (!result) {
     return {
+      answer: storedAns,
       verifiedAnswer: storedAns,
+      steps: null,
       verifiedSteps: null,
       wasOverridden: false,
       confidence: 0,
@@ -87,7 +91,9 @@ export function verifyMathAnswer(questionText, storedAns) {
 
   if (confidence < 0.95) {
     return {
+      answer: String(formatAnswer(answer)),
       verifiedAnswer: storedAns,
+      steps,
       verifiedSteps: steps,
       wasOverridden: false,
       confidence,
@@ -104,8 +110,11 @@ export function verifyMathAnswer(questionText, storedAns) {
   // ----------------------------------------------------------
 
   if (stored === null) {
+    const formatted = String(formatAnswer(answer));
     return {
-      verifiedAnswer: String(formatAnswer(answer)),
+      answer: formatted,
+      verifiedAnswer: formatted,
+      steps,
       verifiedSteps: steps,
       wasOverridden: true,
       confidence,
@@ -127,8 +136,11 @@ export function verifyMathAnswer(questionText, storedAns) {
       `[Tixar Math Verifier] Database answer "${storedAns}" differs from independently computed answer "${answer}".`
     );
 
+    const formatted = String(formatAnswer(answer));
     return {
-      verifiedAnswer: String(formatAnswer(answer)),
+      answer: formatted,
+      verifiedAnswer: formatted,
+      steps,
       verifiedSteps: steps,
       wasOverridden: true,
       confidence,
@@ -141,8 +153,11 @@ export function verifyMathAnswer(questionText, storedAns) {
   // Database answer agrees.
   // ----------------------------------------------------------
 
+  const formatted = String(formatAnswer(answer));
   return {
-    verifiedAnswer: String(formatAnswer(answer)),
+    answer: formatted,
+    verifiedAnswer: formatted,
+    steps,
     verifiedSteps: steps,
     wasOverridden: false,
     confidence,

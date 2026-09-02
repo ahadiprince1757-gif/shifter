@@ -68,8 +68,10 @@ export function verifyScienceQuestion(questionText, storedAns = null) {
   const comparison = compareAnswers(result.answer, storedAns, result.answerType);
 
   return {
+    answer: String(result.answer),
     verifiedAnswer: String(result.answer),
-    verifiedSteps: result.steps,
+    steps: result.steps || [],
+    verifiedSteps: result.steps || [],
     explanation: result.explanation,
     subject: result.subject || "science",
     topic: result.topic,
@@ -214,7 +216,7 @@ function extractQuantity(text, unitPattern) {
  * Extracts ALL quantities matching a unit pattern from text.
  * Useful when two quantities share the same unit (e.g. two lengths).
  */
-function extractAllQuantities(text, unitPattern) {
+export function extractAllQuantities(text, unitPattern) {
   const results = [];
   const re = new RegExp(unitPattern.source, "g");
   let match;

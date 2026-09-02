@@ -42,7 +42,9 @@ export function verifyLanguageQuestion(questionText, storedAns = null) {
   );
 
   return {
+    answer: result.answer,
     verifiedAnswer: result.answer,
+    steps: result.steps || [],
     verifiedSteps: result.steps || [],
     explanation: result.explanation,
     subject: "language",

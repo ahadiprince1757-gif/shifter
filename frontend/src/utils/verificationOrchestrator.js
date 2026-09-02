@@ -6,14 +6,15 @@
  * Responsibilities:
  * 1. Determine whether a deterministic verifier can solve/check the question.
  * 2. Establish a canonical answer where possible.
- * 3. Compare the candidate answer against the canonical answer.
+ * 3. Compare candidate answer against the canonical answer.
  * 4. Decide whether automatic correction is safe (shouldOverride).
  *
- * Concept Separation:
+ * Important Concept Separation:
  * - verificationStatus → Can Tixar establish the truth? (VERIFIED | PARTIALLY_VERIFIED | UNVERIFIED)
  * - answerStatus       → Is the candidate answer correct? (CORRECT | INCORRECT | PARTIALLY_CORRECT | NOT_COMPARABLE)
+ * - confidence         → Numerical reliability score (0.0 to 1.0)
  * - confidenceTier     → Reliability level (HIGH | MEDIUM | LOW)
- * - shouldOverride     → Safe to replace candidate answer? (true only when truth is VERIFIED & candidate is INCORRECT)
+ * - shouldOverride     → Safe to replace candidate answer? (true ONLY when truth is VERIFIED & candidate is INCORRECT)
  * ============================================================================
  */
 
@@ -28,9 +29,13 @@ import { verifyLanguageQuestion } from "./verifiers/languageVerifier.js";
  * @param {string} question  - The original question text
  * @param {string} [generatedAnswer] - The candidate or generated answer to verify
  * @param {string} [subjectHint] - Optional subject hint ('math'|'science'|'biology'|'language')
- * @returns {object} Verification Result object
+ * @returns {object} Universal Verification Result object
  */
-export function verifyGeneratedAnswer(question, generatedAnswer = null, subjectHint = null) {
+export function verifyGeneratedAnswer(
+  question,
+  generatedAnswer = null,
+  subjectHint = null
+) {
   const q = String(question || "").trim();
   const candidateAnswer = String(generatedAnswer || "").trim();
 
@@ -50,6 +55,7 @@ export function verifyGeneratedAnswer(question, generatedAnswer = null, subjectH
   for (const verifier of verifiers) {
     try {
       const result = verifier(q, candidateAnswer);
+
       if (!result?.matched) {
         continue;
       }
@@ -64,7 +70,10 @@ export function verifyGeneratedAnswer(question, generatedAnswer = null, subjectH
         extra: result.extra || {},
       });
     } catch (error) {
-      console.warn(`[Truth Brain] ${verifier.name || "Verifier"} failed:`, error);
+      console.warn(
+        `[Truth Brain] ${verifier.name || "Verifier"} failed:`,
+        error
+      );
     }
   }
 
@@ -74,38 +83,50 @@ export function verifyGeneratedAnswer(question, generatedAnswer = null, subjectH
   );
 }
 
-/* ============================================================================
-   PIPELINE BUILDER & SUBJECT DETECTION
-============================================================================ */
-
-function getVerifierPipeline(subject) {
+/**
+ * Pipeline Builder - constructs prioritized pipeline based on detected subject
+ */
+export function getVerifierPipeline(subject) {
   const pipeline = [];
 
-  if (subject === "mathematics") {
-    pipeline.push(runMathVerifier);
+  if (subject === "mathematics" || subject === "math") {
+    pipeline.push(runMathVerifier, runScienceVerifier, runBiologyVerifier, runLanguageVerifier);
   } else if (subject === "science") {
-    pipeline.push(runScienceVerifier);
+    pipeline.push(runScienceVerifier, runMathVerifier, runBiologyVerifier, runLanguageVerifier);
   } else if (subject === "biology") {
-    pipeline.push(runBiologyVerifier);
+    pipeline.push(runBiologyVerifier, runScienceVerifier, runMathVerifier, runLanguageVerifier);
   } else if (subject === "language") {
-    pipeline.push(runLanguageVerifier);
+    pipeline.push(runLanguageVerifier, runBiologyVerifier, runScienceVerifier, runMathVerifier);
+  } else {
+    // Unknown subject: try engines in a safe order
+    pipeline.push(
+      runMathVerifier,
+      runScienceVerifier,
+      runBiologyVerifier,
+      runLanguageVerifier
+    );
   }
-
-  // Fallback / Unknown subject: try verifiers in safe deterministic order
-  pipeline.push(
-    runMathVerifier,
-    runScienceVerifier,
-    runBiologyVerifier,
-    runLanguageVerifier
-  );
 
   return pipeline;
 }
 
-function detectSubject(question, subjectHint) {
-  if (subjectHint && ["mathematics", "math", "science", "physics", "chemistry", "biology", "language"].includes(subjectHint.toLowerCase())) {
+/**
+ * Subject Detector using score heuristics and candidate ranking
+ */
+export function detectSubject(question, subjectHint = null) {
+  if (
+    subjectHint &&
+    ["mathematics", "math", "science", "physics", "chemistry", "biology", "language"].includes(
+      subjectHint.toLowerCase()
+    )
+  ) {
     const normHint = subjectHint.toLowerCase();
-    const mapped = normHint === "math" ? "mathematics" : normHint === "physics" || normHint === "chemistry" ? "science" : normHint;
+    const mapped =
+      normHint === "math"
+        ? "mathematics"
+        : normHint === "physics" || normHint === "chemistry"
+        ? "science"
+        : normHint;
     return { subject: mapped, confidence: 1.0, candidates: [[mapped, 1.0]] };
   }
 
@@ -116,16 +137,41 @@ function detectSubject(question, subjectHint) {
     language: 0,
   };
 
-  if (/\b(area|perimeter|volume|solve|calculate|simplify|factor|expand|equation|expression|quadratic|polynomial|algebra|percentage|fraction|ratio|proportion|average|mean|circumference|radius|diameter|gradient|slope)\b/i.test(question)) {
+  const q = String(question || "").toLowerCase();
+
+  // Mathematics heuristics
+  if (
+    /\b(area|perimeter|volume|solve|calculate|simplify|factor|expand|equation|expression|quadratic|polynomial|algebra|percentage|fraction|ratio|proportion|average|mean|circumference|radius|diameter|gradient|slope)\b/i.test(
+      q
+    )
+  ) {
     scores.mathematics += 0.85;
   }
-  if (/\b(force|newton|ohm|ohms|voltage|current|resistance|density|work done|joules|watts|electrical power|ph scale|acidic|alkaline|neutral)\b/i.test(question)) {
-    scores.science += 0.90;
+
+  // Science heuristics (Physics & Chemistry)
+  if (
+    /\b(force|newton|ohm|ohms|voltage|current|resistance|density|work done|joules|watts|electrical power|ph scale|acidic|alkaline|neutral|speed|velocity|acceleration)\b/i.test(
+      q
+    )
+  ) {
+    scores.science += 0.85;
   }
-  if (/\b(mitosis|meiosis|photosynthesis|chlorophyll|chloroplast|mitochondria|ribosome|nucleus|vacuole|artery|arteries|vein|veins|capillary|capillaries|monohybrid|punnett|genotype|phenotype|cell division)\b/i.test(question)) {
-    scores.biology += 0.95;
+
+  // Biology heuristics
+  if (
+    /\b(mitosis|meiosis|photosynthesis|chlorophyll|chloroplast|mitochondria|ribosome|nucleus|vacuole|artery|arteries|vein|veins|capillary|capillaries|monohybrid|punnett|genotype|phenotype|cell division)\b/i.test(
+      q
+    )
+  ) {
+    scores.biology += 0.90;
   }
-  if (/\b(simile|metaphor|personification|alliteration|hyperbole|active voice|passive voice|part of speech|noun|verb|adjective|adverb|pronoun|preposition|synonym|antonym)\b/i.test(question)) {
+
+  // Language heuristics
+  if (
+    /\b(simile|metaphor|personification|alliteration|hyperbole|active voice|passive voice|part of speech|noun|verb|adjective|adverb|pronoun|preposition|synonym|antonym)\b/i.test(
+      q
+    )
+  ) {
     scores.language += 0.85;
   }
 
@@ -133,50 +179,63 @@ function detectSubject(question, subjectHint) {
   const [topSubject, confidence] = ranked[0];
 
   return {
-    subject: confidence >= 0.50 ? topSubject : "unknown",
+    subject: confidence >= 0.5 ? topSubject : "unknown",
     confidence,
     candidates: ranked,
   };
 }
 
 /* ============================================================================
-   DOMAIN ADAPTERS (Normalize engine outputs to orchestrator contract)
+   DOMAIN ADAPTERS (Normalize engine outputs to Universal Verifier Contract)
 ============================================================================ */
 
-function runMathVerifier(question, candidateAnswer) {
+export function runMathVerifier(question, candidateAnswer) {
   const result = verifyMathAnswer(question, candidateAnswer);
-  if (!result || !result.verified) {
+
+  if (!result || result.confidence === 0 || (!result.operation && !result.wasOverridden && !result.answer)) {
     return { matched: false };
   }
 
-  const canonicalAnswer = String(result.answer ?? "");
-  const isMatch = candidateAnswer && compareNumericOrString(candidateAnswer, canonicalAnswer);
+  const canonicalAnswer = String(result.answer ?? result.verifiedAnswer ?? "");
+  let answerStatus = "NOT_COMPARABLE";
+
+  if (candidateAnswer) {
+    const isMatch = compareNumericOrString(candidateAnswer, canonicalAnswer);
+    answerStatus = isMatch ? "CORRECT" : "INCORRECT";
+  }
 
   return {
     matched: true,
     subject: "mathematics",
     canonicalAnswer,
-    steps: result.steps || [],
-    explanation: result.explanation || "Calculated using the Symbolic Math Engine.",
-    confidence: 0.99,
-    answerStatus: candidateAnswer ? (isMatch ? "CORRECT" : "INCORRECT") : "NOT_COMPARABLE",
+    steps: result.steps || result.verifiedSteps || [],
+    explanation:
+      result.explanation || "Verified using the mathematical reasoning engine.",
+    confidence: result.confidence ?? 0.99,
+    answerStatus,
+    extra: {
+      operation: result.operation || null,
+    },
   };
 }
 
-function runScienceVerifier(question, candidateAnswer) {
+export function runScienceVerifier(question, candidateAnswer) {
   const result = verifyScienceQuestion(question, candidateAnswer);
+
   if (!result) {
     return { matched: false };
   }
 
-  const canonicalAnswer = result.verifiedAnswer || String(result.answer || "");
+  const canonicalAnswer = String(result.canonicalAnswer || result.verifiedAnswer || result.answer || "");
   let answerStatus = "NOT_COMPARABLE";
 
   if (candidateAnswer) {
     if (result.comparison?.compared) {
       answerStatus = result.comparison.isDifferent ? "INCORRECT" : "CORRECT";
     } else {
-      answerStatus = compareNumericOrString(candidateAnswer, canonicalAnswer) ? "CORRECT" : "INCORRECT";
+      answerStatus = compareNumericOrString(candidateAnswer, canonicalAnswer)
+        ? "CORRECT"
+        : "INCORRECT";
     }
   }
 
@@ -195,18 +254,23 @@ function runScienceVerifier(question, candidateAnswer) {
   };
 }
 
-function runBiologyVerifier(question, candidateAnswer) {
+export function runBiologyVerifier(question, candidateAnswer) {
   const questionResult = verifyBiologyQuestion(question);
+
   if (!questionResult) {
     return { matched: false };
   }
 
-  const canonicalAnswer = questionResult.answer || questionResult.verifiedAnswer || "";
+  const canonicalAnswer = String(questionResult.canonicalAnswer || questionResult.verifiedAnswer || questionResult.answer || "");
   let answerStatus = "NOT_COMPARABLE";
   let factCheck = null;
 
   if (candidateAnswer) {
-    factCheck = verifyBiologyAnswer({ question, studentAnswer: candidateAnswer });
+    factCheck = verifyBiologyAnswer({
+      question,
+      studentAnswer: candidateAnswer,
+    });
+
     if (factCheck?.verdict === "CORRECT") {
       answerStatus = "CORRECT";
     } else if (factCheck?.verdict === "PARTIALLY_CORRECT") {
@@ -220,28 +284,36 @@ function runBiologyVerifier(question, candidateAnswer) {
     matched: true,
     subject: "biology",
     canonicalAnswer,
-    steps: questionResult.steps || questionResult.verifiedSteps || [],
+    steps: questionResult.verifiedSteps || questionResult.steps || [],
     explanation: questionResult.explanation,
     confidence: questionResult.confidence ?? 0.92,
     answerStatus,
-    extra: { factCheck },
+    extra: {
+      factCheck,
+      facts: questionResult.facts || null,
+    },
   };
 }
 
-function runLanguageVerifier(question, candidateAnswer) {
+export function runLanguageVerifier(question, candidateAnswer) {
   const result = verifyLanguageQuestion(question, candidateAnswer);
+
   if (!result) {
     return { matched: false };
   }
 
-  const canonicalAnswer = result.verifiedAnswer || result.answer || "";
+  const canonicalAnswer = String(result.canonicalAnswer || result.verifiedAnswer || result.answer || "");
   let answerStatus = "NOT_COMPARABLE";
 
   if (candidateAnswer) {
     if (result.comparison?.compared) {
       answerStatus = result.comparison.isDifferent ? "INCORRECT" : "CORRECT";
     } else {
-      answerStatus = compareLanguageAnswer(candidateAnswer, canonicalAnswer, result.acceptableAnswers || []);
+      answerStatus = compareLanguageAnswer(
+        candidateAnswer,
+        canonicalAnswer,
+        result.acceptableAnswers || []
+      );
     }
   }
 
@@ -253,15 +325,18 @@ function runLanguageVerifier(question, candidateAnswer) {
     explanation: result.explanation,
     confidence: result.confidence ?? 0.85,
     answerStatus,
-    extra: { acceptableAnswers: result.acceptableAnswers || [] },
+    extra: {
+      acceptableAnswers: result.acceptableAnswers || [],
+      questionType: result.questionType || null,
+    },
   };
 }
 
 /* ============================================================================
-   RESPONSE BUILDERS & COMPARATOR HELPERS
+   RESPONSE BUILDER & HELPERS
 ============================================================================ */
 
-function buildVerificationResult({
+export function buildVerificationResult({
   subject,
   canonicalAnswer,
   steps = [],
@@ -281,29 +356,47 @@ function buildVerificationResult({
 
   // Only replace an answer if:
   // 1. Truth is established with high confidence (VERIFIED)
-  // 2. The candidate answer is demonstrably INCORRECT
-  const shouldOverride = verificationStatus === "VERIFIED" && answerStatus === "INCORRECT";
+  // 2. Candidate answer is demonstrably INCORRECT
+  const shouldOverride =
+    verificationStatus === "VERIFIED" && answerStatus === "INCORRECT";
 
   return {
+    // Can Tixar establish truth?
     verificationStatus,
+    verified: verificationStatus === "VERIFIED", // Backward compatibility alias
+
+    // Is candidate correct?
     answerStatus,
+
+    // Confidence information
     confidence,
     confidenceTier,
+
+    // Subject
     subject,
+
+    // Canonical truth
     canonicalAnswer,
-    verifiedAnswer: canonicalAnswer, // Backward compatibility property
+    verifiedAnswer: canonicalAnswer, // Backward compatibility alias
+
+    // Explanation & steps
     verifiedSteps: steps,
     explanation,
+
+    // Safety decision
     shouldOverride,
-    wasOverridden: shouldOverride, // Backward compatibility property
+    wasOverridden: shouldOverride, // Backward compatibility alias
+
     requiresSecondaryVerification: verificationStatus !== "VERIFIED",
+
     ...extra,
   };
 }
 
-function createUnverifiedResponse(reason) {
+export function createUnverifiedResponse(reason) {
   return {
     verificationStatus: "UNVERIFIED",
+    verified: false,
     answerStatus: "NOT_COMPARABLE",
     confidence: 0.40,
     confidenceTier: "LOW",
@@ -319,7 +412,7 @@ function createUnverifiedResponse(reason) {
   };
 }
 
-function getConfidenceTier(confidence) {
+export function getConfidenceTier(confidence) {
   if (confidence >= 0.85) return "HIGH";
   if (confidence >= 0.50) return "MEDIUM";
   return "LOW";
@@ -342,9 +435,16 @@ function compareNumericOrString(candidate, canonical) {
 function compareLanguageAnswer(candidate, canonical, acceptableAnswers = []) {
   const normCand = String(candidate).trim().toLowerCase();
   const normCanon = String(canonical).trim().toLowerCase();
-  const allAcceptable = [normCanon, ...acceptableAnswers.map((a) => String(a).trim().toLowerCase())];
+  const allAcceptable = [
+    normCanon,
+    ...acceptableAnswers.map((a) => String(a).trim().toLowerCase()),
+  ];
 
-  return allAcceptable.some((acc) => acc && (acc === normCand || normCand.includes(acc) || acc.includes(normCand)))
+  return allAcceptable.some(
+    (acc) =>
+      acc &&
+      (acc === normCand || normCand.includes(acc) || acc.includes(normCand))
+  )
     ? "CORRECT"
     : "INCORRECT";
 }
