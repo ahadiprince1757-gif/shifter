@@ -6,22 +6,15 @@
  * Responsibilities:
  * 1. Process verified answers from the Truth Brain (Verification Orchestrator).
  * 2. Record rich telemetry events to the Student Brain via recordLearningEvent.
- * 3. Update CBC competency levels and topic mastery metrics.
+ * 3. Evaluate single-attempt evidence (Level 1) & aggregate cumulative CBC competency (Level 2).
  * 4. Determine the immediate NEXT BEST ACTION for adaptive student learning.
  * ============================================================================
  */
 
 import { recordLearningEvent, LEARNING_EVENTS } from "./analytics.js";
+import { CbcRubricEvaluator, CbcCompetencyAggregator, CBC_RUBRICS } from "./cbcRubricEvaluator.js";
 
-/**
- * CBC Competency Tiers
- */
-export const CBC_COMPETENCY_TIERS = {
-  EXCEEDING_EXPECTATIONS: { label: "Exceeding Expectations", code: "EE", level: 4 },
-  MEETING_EXPECTATIONS: { label: "Meeting Expectations", code: "ME", level: 3 },
-  APPROACHING_EXPECTATIONS: { label: "Approaching Expectations", code: "AE", level: 2 },
-  BELOW_EXPECTATIONS: { label: "Below Expectations", code: "BE", level: 1 },
-};
+export { CBC_RUBRICS };
 
 /**
  * Standardized Next Best Action Recommendations
@@ -42,7 +35,7 @@ export const NEXT_BEST_ACTIONS = {
  * @param {string} params.question - The question text
  * @param {string} params.candidateAnswer - The student or candidate answer
  * @param {Object} params.verificationResult - Verification output from Truth Brain
- * @param {Object} [params.context] - Additional metadata (userId, subjectId, chapterId, topic, learningOutcomeId, etc.)
+ * @param {Object} [params.context] - Additional metadata (userId, subjectId, chapterId, topic, learningOutcomeId, proveItLevel, attemptsHistory, etc.)
  * @returns {Object} Processed learning outcome, CBC evaluation, and Next Best Action
  */
 export function processVerifiedLearningEvent({
@@ -61,9 +54,13 @@ export function processVerifiedLearningEvent({
     learningOutcomeId = null,
     questionId = null,
     questionType = verificationResult?.answerType || null,
+    proveItLevel = 1,
     timeSpentSeconds = null,
     hintsUsed = 0,
     attempts = 1,
+    diagnosis = {},
+    reasoningQuality = "unknown",
+    historicalAttempts = [],
   } = context;
 
   const verificationStatus = verificationResult?.verificationStatus || "UNVERIFIED";
@@ -71,10 +68,18 @@ export function processVerifiedLearningEvent({
   const confidence = verificationResult?.confidence ?? 0;
   const canonicalAnswer = verificationResult?.canonicalAnswer || null;
 
-  // Determine accuracy boolean & numerical score
   const isCorrect = answerStatus === "CORRECT";
   const isPartial = answerStatus === "PARTIALLY_CORRECT";
-  const score = isCorrect ? 1.0 : isPartial ? 0.5 : 0.0;
+
+  // 1. LEVEL 1: ATTEMPT EVALUATION
+  const attemptRubric = CbcRubricEvaluator.evaluateAttempt({
+    isCorrect,
+    level: proveItLevel,
+    diagnosis,
+    attempts,
+    hintsUsed,
+    reasoningQuality,
+  });
 
   // Map event type
   const eventType = isCorrect
@@ -83,7 +88,7 @@ export function processVerifiedLearningEvent({
     ? LEARNING_EVENTS.QUESTION_INCORRECT
     : LEARNING_EVENTS.QUESTION_ANSWERED;
 
-  // 1. RECORD TELEMETRY EVENT TO STUDENT BRAIN
+  // 2. RECORD TELEMETRY EVENT TO STUDENT BRAIN
   recordLearningEvent({
     subjectId,
     chapterId,
@@ -97,7 +102,7 @@ export function processVerifiedLearningEvent({
     type: eventType,
 
     correct: isCorrect,
-    score,
+    score: attemptRubric.competencyLevel,
 
     questionId,
     questionType,
@@ -113,15 +118,19 @@ export function processVerifiedLearningEvent({
       verificationStatus,
       answerStatus,
       confidence,
+      competencyCode: attemptRubric.competencyCode,
+      feedback: attemptRubric.feedback,
+      nextStep: attemptRubric.nextStep,
       explanation: verificationResult?.explanation || null,
       verifiedSteps: verificationResult?.verifiedSteps || [],
     },
   });
 
-  // 2. EVALUATE CBC COMPETENCY LEVEL
-  const cbcCompetency = evaluateCBCCompetency(score, confidence, hintsUsed);
+  // 3. LEVEL 2: CUMULATIVE COMPETENCY AGGREGATION
+  const allAttempts = [...historicalAttempts, attemptRubric];
+  const cumulativeCompetency = CbcCompetencyAggregator.calculateCompetency(allAttempts);
 
-  // 3. COMPUTE NEXT BEST ACTION
+  // 4. COMPUTE NEXT BEST ACTION
   const nextBestAction = computeNextBestAction({
     answerStatus,
     verificationStatus,
@@ -130,6 +139,7 @@ export function processVerifiedLearningEvent({
     attempts,
     topic,
     learningOutcomeId,
+    attemptRubric,
   });
 
   return {
@@ -137,32 +147,15 @@ export function processVerifiedLearningEvent({
     telemetryRecorded: true,
     performance: {
       correct: isCorrect,
-      score,
+      isPartial,
+      score: attemptRubric.competencyLevel,
       answerStatus,
     },
-    cbcCompetency,
+    attemptRubric,
+    cumulativeCompetency,
     nextBestAction,
     timestamp: new Date().toISOString(),
   };
-}
-
-/**
- * Evaluate CBC Competency tier based on score, confidence, and scaffolding
- */
-export function evaluateCBCCompetency(score, confidence, hintsUsed) {
-  // Heavy hint dependency lowers competency tier
-  const effectiveScore = hintsUsed > 2 ? Math.max(0, score - 0.2) : score;
-
-  if (effectiveScore >= 0.90 && confidence >= 0.85) {
-    return CBC_COMPETENCY_TIERS.EXCEEDING_EXPECTATIONS;
-  }
-  if (effectiveScore >= 0.70) {
-    return CBC_COMPETENCY_TIERS.MEETING_EXPECTATIONS;
-  }
-  if (effectiveScore >= 0.40) {
-    return CBC_COMPETENCY_TIERS.APPROACHING_EXPECTATIONS;
-  }
-  return CBC_COMPETENCY_TIERS.BELOW_EXPECTATIONS;
 }
 
 /**
@@ -176,9 +169,21 @@ export function computeNextBestAction({
   attempts = 1,
   topic = null,
   learningOutcomeId = null,
+  attemptRubric = null,
 }) {
+  const nextStep = attemptRubric?.nextStep;
+
+  if (nextStep === "REVIEW_PREREQUISITE_SKILL" || nextStep === "TRACE_PREREQUISITE_DAG") {
+    return {
+      action: NEXT_BEST_ACTIONS.REVIEW_CONCEPT,
+      reason: "Foundational conceptual gap identified.",
+      recommendation: "Review the prerequisite concept before attempting further exercises.",
+      topic,
+      learningOutcomeId,
+    };
+  }
+
   if (answerStatus === "INCORRECT") {
-    // High hint reliance + incorrect -> return to concept explanation
     if (hintsUsed >= 2 || attempts > 2) {
       return {
         action: NEXT_BEST_ACTIONS.REVIEW_CONCEPT,
@@ -189,7 +194,6 @@ export function computeNextBestAction({
       };
     }
 
-    // Single incorrect attempt -> provide a worked example or similar question
     return {
       action: NEXT_BEST_ACTIONS.SHOW_WORKED_EXAMPLE,
       reason: "Candidate answer was incorrect relative to canonical truth.",
@@ -202,7 +206,7 @@ export function computeNextBestAction({
   if (answerStatus === "PARTIALLY_CORRECT") {
     return {
       action: NEXT_BEST_ACTIONS.RETRY_SIMILAR_QUESTION,
-      reason: "Answer is partially correct, key elements missing or incomplete.",
+      reason: "Answer is partially correct; minor operational or translation slip.",
       recommendation: "Try a similar question to solidify full understanding.",
       topic,
       learningOutcomeId,
@@ -229,7 +233,6 @@ export function computeNextBestAction({
     };
   }
 
-  // Fallback for UNVERIFIED / NOT_COMPARABLE
   return {
     action: NEXT_BEST_ACTIONS.CONFIRMATION_PRACTICE,
     reason: "No deterministic verifier could verify ground truth.",
