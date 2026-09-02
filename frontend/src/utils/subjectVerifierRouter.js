@@ -18,7 +18,7 @@
 
 import { verifyMathAnswer } from "./mathVerifier.js";
 import { verifyScienceQuestion } from "./verifiers/scienceVerifier.js";
-import { verifyBiologyQuestion } from "./verifiers/biologyVerifier.js";
+import { verifyBiologyQuestion, verifyBiologyAnswer } from "./verifiers/biologyVerifier.js";
 import { verifyLanguageQuestion } from "./verifiers/languageVerifier.js";
 
 /* -------------------------------------------------------------------------- */
@@ -222,7 +222,7 @@ export function verifyQuestionAcrossSubjects(
   /* ---------------------------------------------------------------------- */
 
   try {
-    const biologyResult = verifyBiologyQuestion(text, rawAnsStr);
+    const biologyResult = verifyBiologyQuestion(text);
 
     if (isValidVerificationResult(biologyResult)) {
       const verifiedAnswer =
@@ -231,12 +231,14 @@ export function verifyQuestionAcrossSubjects(
           ? String(biologyResult.verifiedAnswer).trim()
           : rawAnsStr;
 
+      // Run answer fact-matching when a student answer exists
+      const answerVerification = rawAnsStr
+        ? verifyBiologyAnswer({ question: text, studentAnswer: rawAnsStr })
+        : null;
+
       return {
         verifiedAnswer,
-        verifiedSteps: getVerifiedSteps(
-          biologyResult,
-          originalSteps
-        ),
+        verifiedSteps: getVerifiedSteps(biologyResult, originalSteps),
         wasOverridden: Boolean(biologyResult.wasOverridden),
         subject: "biology",
         explanation: biologyResult.explanation || null,
@@ -244,6 +246,9 @@ export function verifyQuestionAcrossSubjects(
           typeof biologyResult.confidence === "number"
             ? biologyResult.confidence
             : null,
+        // Structured fact-match result for CBC/readiness engine
+        answerVerification: answerVerification || null,
+        facts: biologyResult.facts || null,
       };
     }
   } catch (error) {
