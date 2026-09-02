@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 /**
  * TIXAR PROGRESSIVE HINT BOX
@@ -20,12 +20,14 @@ function HintBox({
   hints = [],
   onHintViewed,
 }) {
+  const [prevProps, setPrevProps] = useState({ hintText, hints });
   const [currentHint, setCurrentHint] = useState(0);
 
-  // Reset hint progression when the question changes.
-  useEffect(() => {
+  // Reset hint progression during render when the question/hint prop changes
+  if (prevProps.hintText !== hintText || prevProps.hints !== hints) {
+    setPrevProps({ hintText, hints });
     setCurrentHint(0);
-  }, [hintText, hints]);
+  }
 
   if (!showHint) return null;
 
