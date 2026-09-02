@@ -25,7 +25,6 @@ function HintBox({
   // Build a stable reset key from the content itself, not object references.
   // This avoids the "setState during render" infinite loop caused by
   // new array/object literals being created on every parent render.
-  const hintListRef = useRef([]);
   const resetKeyRef = useRef("");
 
   // Normalise hints into a flat array (same logic as before)
@@ -46,9 +45,6 @@ function HintBox({
 
   // Compute a stable string key from hint contents
   const resetKey = hintList.join("|");
-
-  // Store current list in a ref for effect access
-  hintListRef.current = hintList;
 
   // Reset progression when the question/hints actually change
   useEffect(() => {
