@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 
 /**
  * TIXAR PROGRESSIVE HINT BOX
@@ -20,18 +20,15 @@ function HintBox({
   hints = [],
   onHintViewed,
 }) {
-  const [prevProps, setPrevProps] = useState({ hintText, hints });
   const [currentHint, setCurrentHint] = useState(0);
 
-  // Reset hint progression during render when the question/hint prop changes
-  if (prevProps.hintText !== hintText || prevProps.hints !== hints) {
-    setPrevProps({ hintText, hints });
-    setCurrentHint(0);
-  }
+  // Build a stable reset key from the content itself, not object references.
+  // This avoids the "setState during render" infinite loop caused by
+  // new array/object literals being created on every parent render.
+  const hintListRef = useRef([]);
+  const resetKeyRef = useRef("");
 
-  if (!showHint) return null;
-
-  // Normalize hints into a clean array.
+  // Normalise hints into a flat array (same logic as before)
   const hintList =
     Array.isArray(hints) && hints.length > 0
       ? hints.filter(Boolean)
@@ -46,6 +43,22 @@ function HintBox({
             "Focus on the information or concepts given in the question.",
             "Think about the first step you would take to solve or explain the problem.",
           ];
+
+  // Compute a stable string key from hint contents
+  const resetKey = hintList.join("|");
+
+  // Store current list in a ref for effect access
+  hintListRef.current = hintList;
+
+  // Reset progression when the question/hints actually change
+  useEffect(() => {
+    if (resetKey !== resetKeyRef.current) {
+      resetKeyRef.current = resetKey;
+      setCurrentHint(0);
+    }
+  }, [resetKey]);
+
+  if (!showHint) return null;
 
   const visibleHint = hintList[currentHint];
   const hasNextHint = currentHint < hintList.length - 1;
