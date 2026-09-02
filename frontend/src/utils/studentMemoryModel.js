@@ -1,74 +1,69 @@
 /**
  * Engine 4: Student Memory & Diagnostic Confidence Model
  *
- * Tracks error history across attempts to distinguish:
- * - SINGLE_SLIP
- * - PROBABLE_MISCONCEPTION
- * - CROSS_TOPIC_RECURRENCE
- *
- * Computes 6 diagnostic dimensions:
- * 1. Concept Coverage
- * 2. Relationship Accuracy
- * 3. Terminology Precision
- * 4. Reasoning Quality
- * 5. Critical Misconceptions
- * 6. Diagnostic Confidence
+ * Architecture:
+ * 1. 2-Level Recurrence Tracker:
+ *    - Topic-specific recurrence (repeated error within one topic)
+ *    - Cross-topic recurrence (same misconception across >= 3 distinct topics)
+ * 2. Time-Decay Evidence Model (30-day half-life so resolved errors naturally decay)
+ * 3. Two-Score Diagnostic Framework:
+ *    - Student Understanding Score (How well the student appears to understand)
+ *    - Diagnostic Confidence Score (How confident Tixar is in its diagnosis)
  */
 
-const MEMORY_STORAGE_KEY = "tixar_student_error_memory_v1";
+const MEMORY_STORAGE_KEY = "tixar_student_error_memory_v2";
+const LEGACY_STORAGE_KEY = "tixar_student_error_memory_v1";
 
 const DEFAULT_MEMORY = {
   attempts: [],
-  misconceptions: {},
+  topicErrors: {},
+  globalErrors: {},
+  misconceptionProfiles: {},
 };
 
 /**
- * Safely load student error history from localStorage.
+ * Calculates time-decay weight for past error evidence (30-day half-life)
  *
- * Works in both browser environments and environments where
- * localStorage does not exist.
+ * @param {number} timestamp - Unix timestamp in ms
+ * @returns {number} Decay multiplier between 0.0 and 1.0
+ */
+export function calculateRecencyWeight(timestamp) {
+  const ageDays = (Date.now() - Number(timestamp || Date.now())) / (1000 * 60 * 60 * 24);
+  return Math.pow(0.5, Math.max(0, ageDays) / 30);
+}
+
+/**
+ * Safely load student error history from localStorage.
+ * Handles migration from v1 memory structure seamlessly.
  *
  * @returns {Object}
  */
 export function getStudentMemory() {
   try {
     if (typeof localStorage === "undefined") {
-      return {
-        attempts: [],
-        misconceptions: {},
-      };
+      return { ...DEFAULT_MEMORY };
     }
 
-    const raw = localStorage.getItem(MEMORY_STORAGE_KEY);
+    const raw = localStorage.getItem(MEMORY_STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
 
     if (!raw) {
-      return {
-        attempts: [],
-        misconceptions: {},
-      };
+      return { ...DEFAULT_MEMORY };
     }
 
     const parsed = JSON.parse(raw);
 
     return {
-      attempts: Array.isArray(parsed.attempts)
-        ? parsed.attempts
-        : [],
-      misconceptions:
-        parsed.misconceptions &&
-        typeof parsed.misconceptions === "object"
-          ? parsed.misconceptions
+      attempts: Array.isArray(parsed.attempts) ? parsed.attempts : [],
+      topicErrors: parsed.topicErrors && typeof parsed.topicErrors === "object" ? parsed.topicErrors : {},
+      globalErrors: parsed.globalErrors && typeof parsed.globalErrors === "object" ? parsed.globalErrors : {},
+      misconceptionProfiles:
+        parsed.misconceptionProfiles && typeof parsed.misconceptionProfiles === "object"
+          ? parsed.misconceptionProfiles
           : {},
     };
   } catch (error) {
-    console.warn(
-      "[DiagnosticMemory] Failed to load memory:",
-      error
-    );
-
-    return {
-      ...DEFAULT_MEMORY,
-    };
+    console.warn("[DiagnosticMemory] Failed to load memory:", error);
+    return { ...DEFAULT_MEMORY };
   }
 }
 
@@ -83,18 +78,10 @@ function saveStudentMemory(memory) {
       return false;
     }
 
-    localStorage.setItem(
-      MEMORY_STORAGE_KEY,
-      JSON.stringify(memory)
-    );
-
+    localStorage.setItem(MEMORY_STORAGE_KEY, JSON.stringify(memory));
     return true;
   } catch (error) {
-    console.warn(
-      "[DiagnosticMemory] Failed to save memory:",
-      error
-    );
-
+    console.warn("[DiagnosticMemory] Failed to save memory:", error);
     return false;
   }
 }
@@ -113,134 +100,154 @@ function normalizeKey(value) {
 }
 
 /**
- * Records an error attempt and determines whether the error
- * looks like a slip or recurring misconception.
+ * Records an error attempt and evaluates 2-level recurrence (topic vs cross-topic).
  *
  * @param {string} topicId
  * @param {string} errorCategory
- * @returns {Object}
+ * @returns {Object} Recurrence evaluation with decay weighting
  */
-export function recordErrorAndGetRecurrence(
-  topicId,
-  errorCategory
-) {
-  const normalizedTopic = normalizeKey(topicId);
-  const normalizedCategory = normalizeKey(errorCategory);
+export function recordErrorAndGetRecurrence(topicId, errorCategory) {
+  const topic = normalizeKey(topicId);
+  const category = normalizeKey(errorCategory);
 
-  if (!normalizedTopic || !normalizedCategory) {
+  if (!topic || !category) {
     return {
       level: "UNKNOWN",
       label: "Insufficient diagnostic information",
-      count: 0,
+      topicCount: 0,
+      crossTopicCount: 0,
+      uniqueTopics: 0,
+      decayWeightedScore: 0,
     };
   }
 
   const memory = getStudentMemory();
 
-  const key = `${normalizedTopic}:${normalizedCategory}`;
+  memory.topicErrors ??= {};
+  memory.globalErrors ??= {};
+  memory.misconceptionProfiles ??= {};
 
-  const currentCount =
-    Number(memory.misconceptions[key]) || 0;
+  // 1. TOPIC-SPECIFIC RECURRENCE
+  const topicKey = `${topic}:${category}`;
+  memory.topicErrors[topicKey] = (memory.topicErrors[topicKey] || 0) + 1;
+  const topicCount = memory.topicErrors[topicKey];
 
-  const newCount = currentCount + 1;
+  // 2. CROSS-TOPIC RECURRENCE
+  if (!memory.globalErrors[category]) {
+    memory.globalErrors[category] = {
+      count: 0,
+      topics: [],
+    };
+  }
 
-  memory.misconceptions[key] = newCount;
+  const globalError = memory.globalErrors[category];
+  globalError.count += 1;
 
+  if (!globalError.topics.includes(topic)) {
+    globalError.topics.push(topic);
+  }
+
+  const uniqueTopics = globalError.topics.length;
+
+  // 3. RECORD ATTEMPT HISTORY
   memory.attempts.push({
-    topicId: normalizedTopic,
-    errorCategory: normalizedCategory,
+    topicId: topic,
+    errorCategory: category,
     timestamp: Date.now(),
   });
 
-  // Prevent unlimited localStorage growth.
-  // Keep the most recent 500 attempts.
+  // Cap history to 500 recent attempts
   if (memory.attempts.length > 500) {
     memory.attempts = memory.attempts.slice(-500);
   }
 
-  saveStudentMemory(memory);
+  // 4. CALCULATE TIME-DECAYED RECURRENCE EVIDENCE
+  const relevantAttempts = memory.attempts.filter(
+    (a) => a.errorCategory === category
+  );
 
+  const decayWeightedScore = Math.round(
+    relevantAttempts.reduce(
+      (sum, a) => sum + calculateRecencyWeight(a.timestamp),
+      0
+    ) * 10
+  ) / 10;
+
+  // 5. DETERMINE DIAGNOSTIC LEVEL
   let level = "SINGLE_SLIP";
-  let label = "Performance Error (One-off slip)";
+  let label = "One-off performance error";
 
-  if (newCount >= 3) {
+  // Same error category demonstrated across at least 3 distinct topics
+  if (uniqueTopics >= 3 && decayWeightedScore >= 2.0) {
     level = "CROSS_TOPIC_RECURRENCE";
-    label = "Recurring Fundamental Misconception";
-  } else if (newCount === 2) {
-    level = "PROBABLE_MISCONCEPTION";
-    label = "Probable Conceptual Gap";
+    label = "Recurring misconception across multiple learning areas";
   }
+  // Repeated error within one topic
+  else if (topicCount >= 2 && decayWeightedScore >= 1.5) {
+    level = "PROBABLE_MISCONCEPTION";
+    label = "Repeated conceptual difficulty detected";
+  }
+
+  // 6. UPDATE MISCONCEPTION PROFILE
+  memory.misconceptionProfiles[category] = {
+    category,
+    totalOccurrences: globalError.count,
+    affectedTopics: globalError.topics,
+    uniqueTopicCount: uniqueTopics,
+    decayWeightedScore,
+    lastSeen: Date.now(),
+    status: level,
+  };
+
+  saveStudentMemory(memory);
 
   return {
     level,
     label,
-    count: newCount,
-    topicId: normalizedTopic,
-    errorCategory: normalizedCategory,
+    topicId: topic,
+    errorCategory: category,
+    topicCount,
+    crossTopicCount: globalError.count,
+    uniqueTopics,
+    decayWeightedScore,
   };
 }
 
 /**
  * Clear all diagnostic memory.
- *
- * Useful for:
- * - testing
- * - development
- * - resetting a student's diagnostic profile
  */
 export function clearStudentMemory() {
   try {
     if (typeof localStorage === "undefined") {
       return;
     }
-
     localStorage.removeItem(MEMORY_STORAGE_KEY);
+    localStorage.removeItem(LEGACY_STORAGE_KEY);
   } catch (error) {
-    console.warn(
-      "[DiagnosticMemory] Failed to clear memory:",
-      error
-    );
+    console.warn("[DiagnosticMemory] Failed to clear memory:", error);
   }
 }
 
 /**
- * Computes the 6-dimensional diagnostic confidence score.
- *
- * IMPORTANT:
- * This function does NOT claim mastery merely because the
- * student got the final answer correct.
+ * Computes the Student Understanding Evidence Score (0 to 100).
+ * Measures how well the student appears to understand the target material.
  *
  * @param {Object} params
- * @param {Object|null} params.graphEval
- * @param {Object|null} params.misconception
- * @param {boolean} params.isMathValid
- * @returns {Object}
+ * @param {Object|null} [params.graphEval]
+ * @param {Object|null} [params.misconception]
+ * @param {boolean} [params.isMathValid=false]
+ * @returns {number} Understanding score (0-100)
  */
-export function computeDiagnosticConfidenceScore({
+export function computeUnderstandingEvidence({
   graphEval = null,
   misconception = null,
   isMathValid = false,
 } = {}) {
-  /*
-   * 1. CONCEPT COVERAGE
-   *
-   * Prefer the weighted concept graph score when available.
-   * For mathematics, a valid mathematical path provides
-   * stronger evidence than a simple answer match.
-   */
   const conceptCoverage = clampScore(
-    graphEval?.weightedScore ??
-      (isMathValid ? 85 : 40)
+    graphEval?.weightedScore ?? (isMathValid ? 85 : 40)
   );
 
-  /*
-   * 2. RELATIONSHIP ACCURACY
-   *
-   * A misconception is strong evidence that the student's
-   * conceptual relationship model is wrong.
-   */
   let relationshipAccuracy;
-
   if (misconception) {
     relationshipAccuracy = 20;
   } else if (graphEval?.isEssentialSatisfied) {
@@ -250,68 +257,137 @@ export function computeDiagnosticConfidenceScore({
   } else {
     relationshipAccuracy = isMathValid ? 85 : 50;
   }
-
   relationshipAccuracy = clampScore(relationshipAccuracy);
 
-  /*
-   * 3. TERMINOLOGY PRECISION
-   */
   let terminologyPrecision;
-
   if (graphEval) {
-    const missingEssential =
-      Array.isArray(graphEval.essentialMissing)
-        ? graphEval.essentialMissing.length
-        : 0;
-
-    terminologyPrecision =
-      missingEssential === 0 ? 90 : 50;
+    const missingEssential = Array.isArray(graphEval.essentialMissing)
+      ? graphEval.essentialMissing.length
+      : 0;
+    terminologyPrecision = missingEssential === 0 ? 90 : 50;
   } else {
     terminologyPrecision = isMathValid ? 80 : 60;
   }
+  terminologyPrecision = clampScore(terminologyPrecision);
 
-  terminologyPrecision = clampScore(
-    terminologyPrecision
-  );
+  const reasoningQuality = clampScore(isMathValid ? 90 : 45);
+  const criticalMisconceptionsCount = misconception ? 1 : 0;
 
-  /*
-   * 4. REASONING QUALITY
-   */
-  const reasoningQuality = clampScore(
-    isMathValid ? 90 : 45
-  );
-
-  /*
-   * 5. CRITICAL MISCONCEPTIONS
-   *
-   * Keep this numeric because the final confidence formula
-   * uses it as a penalty.
-   */
-  const criticalMisconceptionsCount =
-    misconception ? 1 : 0;
-
-  /*
-   * 6. OVERALL DIAGNOSTIC CONFIDENCE
-   *
-   * Weighted evidence:
-   *
-   * Concept Coverage       35%
-   * Relationship Accuracy  30%
-   * Terminology Precision  20%
-   * Reasoning Quality      15%
-   *
-   * Then apply a strong misconception penalty.
-   */
-  const rawConfidence =
+  const rawScore =
     conceptCoverage * 0.35 +
     relationshipAccuracy * 0.30 +
     terminologyPrecision * 0.20 +
     reasoningQuality * 0.15 -
     criticalMisconceptionsCount * 15;
 
-  const diagnosticConfidence = Math.round(
-    clamp(rawConfidence, 10, 99)
+  return Math.round(clamp(rawScore, 0, 100));
+}
+
+/**
+ * Computes Tixar's Diagnostic Confidence Score (0 to 99).
+ * Measures how confident Tixar is in its diagnostic conclusions.
+ *
+ * @param {Object} params
+ * @param {number} [params.attempts=1] - Number of observed attempts
+ * @param {number} [params.verifierConfidence=0.5] - Truth Brain verifier confidence (0.0 to 1.0)
+ * @param {string} [params.recurrenceLevel="UNKNOWN"] - Recurrence level (CROSS_TOPIC_RECURRENCE | PROBABLE_MISCONCEPTION | SINGLE_SLIP)
+ * @param {boolean} [params.graphEvidence=false] - Whether concept graph reasoning evidence exists
+ * @returns {number} Diagnostic confidence percentage (0-99)
+ */
+export function computeDiagnosticConfidence({
+  attempts = 1,
+  verifierConfidence = 0.5,
+  recurrenceLevel = "UNKNOWN",
+  graphEvidence = false,
+} = {}) {
+  let confidence = 0;
+
+  // Observation volume boosts confidence
+  if (attempts >= 5) {
+    confidence += 30;
+  } else if (attempts >= 3) {
+    confidence += 20;
+  } else if (attempts >= 2) {
+    confidence += 10;
+  } else {
+    confidence += 5;
+  }
+
+  // Quality of Truth Brain verifier
+  confidence += Math.min(30, Math.max(0, verifierConfidence * 30));
+
+  // Concept Graph reasoning provides structural evidence
+  if (graphEvidence) {
+    confidence += 20;
+  }
+
+  // Multi-context pattern evidence increases certainty
+  if (recurrenceLevel === "CROSS_TOPIC_RECURRENCE") {
+    confidence += 20;
+  } else if (recurrenceLevel === "PROBABLE_MISCONCEPTION") {
+    confidence += 12;
+  }
+
+  return Math.round(clamp(confidence, 10, 99));
+}
+
+/**
+ * Backward-compatible 6-dimensional diagnostic confidence wrapper.
+ * Combines understanding evidence score and diagnostic confidence score.
+ *
+ * @param {Object} params
+ * @returns {Object} Detailed diagnostic evaluation object
+ */
+export function computeDiagnosticConfidenceScore({
+  graphEval = null,
+  misconception = null,
+  isMathValid = false,
+  attempts = 1,
+  verifierConfidence = 0.85,
+  recurrenceLevel = "UNKNOWN",
+} = {}) {
+  const conceptCoverage = clampScore(
+    graphEval?.weightedScore ?? (isMathValid ? 85 : 40)
   );
+
+  let relationshipAccuracy;
+  if (misconception) {
+    relationshipAccuracy = 20;
+  } else if (graphEval?.isEssentialSatisfied) {
+    relationshipAccuracy = 95;
+  } else if (graphEval) {
+    relationshipAccuracy = 65;
+  } else {
+    relationshipAccuracy = isMathValid ? 85 : 50;
+  }
+  relationshipAccuracy = clampScore(relationshipAccuracy);
+
+  let terminologyPrecision;
+  if (graphEval) {
+    const missingEssential = Array.isArray(graphEval.essentialMissing)
+      ? graphEval.essentialMissing.length
+      : 0;
+    terminologyPrecision = missingEssential === 0 ? 90 : 50;
+  } else {
+    terminologyPrecision = isMathValid ? 80 : 60;
+  }
+  terminologyPrecision = clampScore(terminologyPrecision);
+
+  const reasoningQuality = clampScore(isMathValid ? 90 : 45);
+  const criticalMisconceptionsCount = misconception ? 1 : 0;
+
+  const understandingScore = computeUnderstandingEvidence({
+    graphEval,
+    misconception,
+    isMathValid,
+  });
+
+  const diagnosticConfidence = computeDiagnosticConfidence({
+    attempts,
+    verifierConfidence,
+    recurrenceLevel,
+    graphEvidence: Boolean(graphEval),
+  });
 
   return {
     conceptCoverage,
@@ -319,40 +395,17 @@ export function computeDiagnosticConfidenceScore({
     terminologyPrecision,
     reasoningQuality,
     criticalMisconceptionsCount,
+    understandingScore,
     diagnosticConfidence,
   };
 }
 
-/**
- * Clamp a numeric score between 0 and 100.
- *
- * @param {number} value
- * @returns {number}
- */
 function clampScore(value) {
   const numeric = Number(value);
-
-  if (!Number.isFinite(numeric)) {
-    return 0;
-  }
-
-  return Math.max(
-    0,
-    Math.min(100, numeric)
-  );
+  if (!Number.isFinite(numeric)) return 0;
+  return Math.max(0, Math.min(100, numeric));
 }
 
-/**
- * Generic clamp helper.
- *
- * @param {number} value
- * @param {number} min
- * @param {number} max
- * @returns {number}
- */
 function clamp(value, min, max) {
-  return Math.max(
-    min,
-    Math.min(max, value)
-  );
+  return Math.max(min, Math.min(max, value));
 }
