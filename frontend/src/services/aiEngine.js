@@ -1,24 +1,29 @@
 /**
  * ============================================================================
- * TIXAR INTELLIGENT LEARNING AI ENGINE
+ * TIXAR EVIDENCE-GATED INTELLIGENT LEARNING AI ENGINE
  * ============================================================================
  *
- * AI is NOT the source of truth.
+ * Core Philosophy:
+ * Deterministic systems decide what is TRUE. AI decides HOW TO TEACH IT.
+ * The AI is an adaptive reasoning and communication layer sitting above
+ * verified curriculum evidence, not an independent source of truth.
  *
- * Architecture:
- * 1. Request Intelligence Router
- * 2. Deterministic Truth Engines
- * 3. Curriculum Retrieval & Quality Check
- * 4. Student Learning Context
- * 5. Evidence-Aware Prompt Construction
- * 6. Adaptive Model Selection
- * 7. Safe Streaming Generation
+ * Pipeline Architecture:
+ * 1. Educational Query Router (Math Engine → Truth Brain → Curriculum RAG → Tutor AI)
+ * 2. Evidence Gate (Relevance scoring & insufficiency refusal)
+ * 3. Student Learning Context & Error History
+ * 4. Structured Teaching Protocol Prompting
+ * 5. Adaptive Hardware Model Selection
+ * 6. Post-Generation Response Validation
  * ============================================================================
  */
 
 import { CreateMLCEngine } from "@mlc-ai/web-llm";
 import { routeMathQuery } from "../utils/mathRouter";
 import { getLocalRAGContext, buildGuardedSystemPrompt } from "../utils/aiRAGRouter";
+import { verifyGeneratedAnswer } from "../utils/verificationOrchestrator";
+
+export { buildGuardedSystemPrompt };
 
 // Model Registry
 export const AI_MODELS = {
@@ -53,9 +58,26 @@ export const LIGHT_MODEL = AI_MODELS.LIGHT.id;
 export const LOW_RAM_MODEL = AI_MODELS.BALANCED.id;
 export const DEFAULT_MODEL = AI_MODELS.DEFAULT.id;
 
-let engineInstance = null;
-let engineInitPromise = null;
-let loadedModelName = null;
+// Engine State Machine
+let engineState = {
+  status: "idle", // "idle" | "checking_support" | "downloading" | "initializing" | "ready" | "failed"
+  engine: null,
+  model: null,
+  error: null,
+  initPromise: null,
+};
+
+/**
+ * Returns current engine state status
+ */
+export function getAIEngineStatus() {
+  return {
+    status: engineState.status,
+    model: engineState.model,
+    ready: engineState.status === "ready",
+    error: engineState.error,
+  };
+}
 
 /**
  * Detect device hardware capabilities
@@ -73,24 +95,27 @@ export function getDeviceCapabilities() {
 }
 
 /**
- * Select optimal model based on hardware capacity
+ * Select optimal model based on hardware capacity and task complexity
  */
-export function getOptimalModel() {
+export function getOptimalModel({ task = "general", memoryGB = null } = {}) {
   const device = getDeviceCapabilities();
+  if (!device.webGPU) return null;
 
-  if (!device.webGPU) {
-    return null;
+  const deviceMemory = memoryGB || device.memory;
+
+  if (task === "simple") {
+    return AI_MODELS.FAST.id;
   }
 
-  if (device.memory >= 8 && device.cores >= 8) {
+  if (task === "reasoning" && deviceMemory >= 8) {
     return AI_MODELS.DEFAULT.id;
   }
 
-  if (device.memory >= 4) {
+  if (deviceMemory >= 4) {
     return AI_MODELS.BALANCED.id;
   }
 
-  return AI_MODELS.FAST.id;
+  return AI_MODELS.LIGHT.id;
 }
 
 /**
@@ -101,144 +126,310 @@ export function isWebGPUSupported() {
 }
 
 /**
- * Initialize WebLLM engine with promise deduplication and progress updates
+ * Initialize WebLLM engine with state updates and promise deduplication
  */
 export async function initializeAIEngine(onProgress, modelOverride = null) {
   if (!isWebGPUSupported()) {
+    engineState.status = "failed";
+    engineState.error = "WebGPU not supported";
     throw new Error("This device does not support WebGPU.");
   }
 
   const modelName = modelOverride || getOptimalModel() || FAST_MODEL;
 
-  if (engineInstance && loadedModelName === modelName) {
-    return engineInstance;
+  if (engineState.engine && engineState.model === modelName && engineState.status === "ready") {
+    return engineState.engine;
   }
 
-  if (engineInitPromise && loadedModelName === modelName) {
-    return engineInitPromise;
+  if (engineState.initPromise && engineState.model === modelName) {
+    return engineState.initPromise;
   }
 
-  loadedModelName = modelName;
-  engineInstance = null;
+  engineState.status = "downloading";
+  engineState.model = modelName;
+  engineState.error = null;
 
-  engineInitPromise = (async () => {
+  engineState.initPromise = (async () => {
     try {
       const engine = await CreateMLCEngine(modelName, {
         initProgressCallback: (report) => {
+          if (report?.text?.includes("Fetching") || report?.text?.includes("Loading")) {
+            engineState.status = "downloading";
+          } else if (report?.text?.includes("Compiling") || report?.text?.includes("Init")) {
+            engineState.status = "initializing";
+          }
+
           if (onProgress) {
-            onProgress({ ...report, model: modelName });
+            onProgress({ ...report, model: modelName, engineStatus: engineState.status });
           }
         },
       });
-      engineInstance = engine;
+
+      engineState.engine = engine;
+      engineState.status = "ready";
       return engine;
     } catch (err) {
-      engineInitPromise = null;
-      loadedModelName = null;
+      engineState.engine = null;
+      engineState.status = "failed";
+      engineState.error = err.message || "Engine initialization failed";
+      engineState.initPromise = null;
       throw err;
     }
   })();
 
-  return engineInitPromise;
+  return engineState.initPromise;
 }
 
 /**
- * Classifies user prompt into learning request types
+ * Classifies query intent and routes to optimal engine layer
  */
-export function classifyLearningRequest(prompt = "") {
-  const text = String(prompt).trim().toLowerCase();
+export function routeEducationalQuery(prompt = "") {
+  const text = String(prompt || "").trim();
 
   if (!text) {
-    return { type: "empty", confidence: 1.0 };
+    return { route: "INVALID", confidence: 1.0 };
   }
 
-  if (/\b(hint|help me|don't tell me the answer|clue)\b/.test(text)) {
-    return { type: "hint", confidence: 0.95 };
+  // Layer 1 — Deterministic Mathematics
+  const mathResult = routeMathQuery(text);
+  if (mathResult?.isMath && mathResult?.answer) {
+    return {
+      route: "MATH_ENGINE",
+      confidence: 1.0,
+      result: mathResult,
+    };
   }
 
-  if (/^(explain|what is|define|describe|how does|why does|teach me)/.test(text)) {
-    return { type: "explanation", confidence: 0.90 };
+  // Layer 2 — Subject Truth Verification
+  const verification = verifyGeneratedAnswer(text, "", null);
+  if (verification && verification.verificationStatus === "VERIFIED" && (verification.confidence ?? 0) >= 0.85) {
+    return {
+      route: "VERIFICATION_ENGINE",
+      confidence: verification.confidence || 0.9,
+      result: verification,
+    };
   }
 
-  if (/\b(example|show me how|demonstrate)\b/.test(text)) {
-    return { type: "example", confidence: 0.90 };
+  // Layer 3 — Knowledge & Curriculum Retrieval
+  if (isKnowledgeQuestion(text)) {
+    return {
+      route: "CURRICULUM_RAG",
+      confidence: 0.8,
+    };
   }
 
-  if (/\b(revise|review|summary|summarize)\b/.test(text)) {
-    return { type: "revision", confidence: 0.85 };
-  }
+  // Layer 4 — Conversational Tutoring
+  return {
+    route: "TUTOR_AI",
+    confidence: 0.6,
+  };
+}
 
-  return { type: "general", confidence: 0.70 };
+function isKnowledgeQuestion(text) {
+  return /^(what|why|how|define|explain|describe|list|compare|differentiate|state|identify|give an example)/i.test(
+    text.trim()
+  );
 }
 
 /**
- * Evaluates retrieved RAG curriculum context quality
+ * Verified RAG Context Retrieval with Evidence Gate Scoring
  */
-function evaluateRAGContext(context) {
-  if (!context) {
-    return { available: false, confidence: 0 };
-  }
+export async function getVerifiedRAGContext(query) {
+  try {
+    const ragResult = await getLocalRAGContext(query);
+    const confidence = ragResult.confidence || 0;
+    const context = ragResult.context || "";
+    const evidenceFound = confidence >= 0.45 && context.length >= 40;
 
-  const length = context.length;
-  if (length < 80) {
-    return { available: true, confidence: 0.4 };
+    return {
+      context,
+      confidence,
+      evidenceFound,
+      sources: ragResult.sources ? ragResult.sources.length : 0,
+    };
+  } catch (error) {
+    console.warn("[Tixar RAG] Verified retrieval failed:", error);
+    return {
+      context: "",
+      confidence: 0,
+      evidenceFound: false,
+      sources: 0,
+    };
   }
-  if (length < 250) {
-    return { available: true, confidence: 0.7 };
-  }
-  return { available: true, confidence: 0.9 };
 }
 
 /**
- * Constructs an adaptive educational prompt with student learning state
+ * Structured Teaching Protocol Prompt Construction
  */
-function buildEducationalPrompt({
+export function buildTixarTeachingPrompt({
   ragContext = "",
-  requestType = "general",
+  evidenceConfidence = 0,
+  studentLevel = "high school",
   studentContext = {},
 }) {
-  const basePrompt = `You are the educational reasoning layer of Tixar.
-Your purpose is to help students understand, not merely give answers.
+  let prompt = `You are Tixar, an educational reasoning and teaching system.
+Your purpose is not merely to provide answers. Your purpose is to help the student understand WHY.
 
-STRICT RULES:
-1. Never invent facts.
-2. Treat verified curriculum material as higher priority than general knowledge.
-3. If reliable curriculum evidence is unavailable, say so clearly.
-4. Do not pretend certainty when uncertain.
-5. Adapt your explanation to the student's demonstrated understanding.
-6. Explain the principle before giving the conclusion.
-7. For mathematical questions, never contradict deterministic calculations.
-8. Encourage reasoning rather than answer dependence.`;
+STUDENT LEVEL: ${studentLevel}
 
-  const learningInstructions = {
-    hint: `The student requested a hint. Do NOT give the final answer. Give the smallest useful clue that moves them one step forward.`,
-    explanation: `Explain clearly using: 1. Core idea, 2. Why it works, 3. Simple example. Avoid unnecessary complexity.`,
-    example: `Provide one simple worked example. Explain each step and the reason behind it.`,
-    revision: `Create a concise revision-focused explanation prioritizing core concepts, common mistakes, and key relationships.`,
-    general: `Answer directly but teach the underlying principle.`,
-  };
+TRUTH PROTOCOL:
+1. Never present uncertain information as fact.
+2. If verified curriculum evidence is provided, use that evidence as the primary source of truth.
+3. Do not introduce important factual claims that contradict the provided evidence.
+4. If the evidence is insufficient, explicitly state: "I do not have enough verified curriculum evidence to answer this with confidence."
+5. Never invent formulas, definitions, historical events, scientific laws, or curriculum facts.
+6. Separate VERIFIED FACT, REASONING, and EXAMPLES.
 
-  let prompt = basePrompt + "\n\n" + (learningInstructions[requestType] || learningInstructions.general);
+TEACHING PROTOCOL:
+1. Start with the direct answer.
+2. Explain the core principle.
+3. Break difficult ideas into small logical steps.
+4. Use an analogy only if it improves understanding.
+5. Do not overwhelm the student.
+6. Prefer understanding over memorization.
+7. If the student is wrong, explain the misconception rather than simply repeating the correct answer.
+
+EVIDENCE CONFIDENCE: ${Math.round(evidenceConfidence * 100)}%
+VERIFIED CURRICULUM MATERIAL:
+${ragContext || "NO VERIFIED CURRICULUM MATERIAL AVAILABLE"}
+
+RESPONSE FORMAT:
+Answer:
+[Direct response]
+
+Why:
+[Core principle]
+
+Step-by-step:
+1.
+2.
+3.
+
+Key idea to remember:
+[One memorable principle]`;
 
   if (studentContext.repeatedMisconception) {
-    prompt += `\n\nIMPORTANT: This student has repeatedly struggled with this concept. Use a different teaching approach, analogy, or representation.`;
-  }
-
-  if (studentContext.masteryLevel === "beginner") {
-    prompt += `\n\nThe student is at a beginner level. Avoid assuming prerequisite knowledge.`;
-  } else if (studentContext.masteryLevel === "advanced") {
-    prompt += `\n\nThe student demonstrates strong foundational understanding. Challenge them to connect this concept to a deeper application.`;
-  }
-
-  if (ragContext) {
-    prompt += `\n\nVERIFIED CURRICULUM CONTEXT:\n${ragContext}\n\nUse this context as your primary factual evidence. Do not introduce conflicting claims.`;
+    prompt += `\n\nNOTE: The student has repeatedly struggled with this concept. Use a different teaching approach or analogy.`;
   }
 
   return prompt;
 }
 
 /**
- * Queries the local offline AI model with adaptive intelligence routing
+ * Post-Generative Response Validation ("AI does not grade its own homework")
+ */
+export function validateAIResponse({ question, answer, subject = null }) {
+  const verification = verifyGeneratedAnswer(question, answer, subject);
+  const safe = verification.answerStatus === "CORRECT" || verification.answerStatus === "VERIFIED";
+
+  return {
+    safe,
+    verification,
+  };
+}
+
+/**
+ * Main Evidence-Gated Tixar AI Pipeline Entry Point
+ */
+export async function askTixarAI({
+  engine = engineState.engine,
+  prompt,
+  onToken = null,
+  abortSignal = null,
+  studentContext = {},
+  customSystemPrompt = null,
+} = {}) {
+  const text = String(prompt || "").trim();
+  if (!text) {
+    throw new Error("Prompt cannot be empty");
+  }
+
+  // 1. INTELLIGENCE ROUTER
+  const route = routeEducationalQuery(text);
+
+  // 2. DETERMINISTIC ANSWERS (MATH & SUBJECT VERIFICATION)
+  if (route.route === "MATH_ENGINE") {
+    const answer = String(route.result.answer);
+    if (onToken) onToken(answer);
+    return {
+      answer,
+      source: "DETERMINISTIC_MATH",
+      confidence: 1.0,
+      ragUsed: false,
+    };
+  }
+
+  if (route.route === "VERIFICATION_ENGINE") {
+    const answer = route.result.canonicalAnswer || route.result.explanation || "Verified topic concept.";
+    if (onToken) onToken(answer);
+    return {
+      answer,
+      source: "VERIFICATION_ENGINE",
+      confidence: route.confidence,
+      ragUsed: false,
+    };
+  }
+
+  // 3. CURRICULUM RETRIEVAL & EVIDENCE GATE
+  const rag = await getVerifiedRAGContext(text);
+
+  if (route.route === "CURRICULUM_RAG" && !rag.evidenceFound) {
+    const answer = "I could not find enough verified curriculum material to answer this with confidence.";
+    if (onToken) onToken(answer);
+    return {
+      answer,
+      source: "INSUFFICIENT_EVIDENCE",
+      confidence: 0,
+      ragUsed: false,
+    };
+  }
+
+  // 4. AI TEACHING GENERATION
+  const activeEngine = engine || engineState.engine;
+  if (!activeEngine) {
+    throw new Error("AI engine not initialized");
+  }
+
+  const systemPrompt =
+    customSystemPrompt ||
+    buildTixarTeachingPrompt({
+      ragContext: rag.context,
+      evidenceConfidence: rag.confidence,
+      studentLevel: studentContext.level || "high school",
+      studentContext,
+    });
+
+  const messages = [
+    { role: "system", content: systemPrompt },
+    { role: "user", content: text },
+  ];
+
+  const completion = await activeEngine.chat.completions.create({
+    messages,
+    stream: true,
+    temperature: 0.15,
+    max_tokens: 500,
+  });
+
+  let fullResponse = "";
+  for await (const chunk of completion) {
+    if (abortSignal?.aborted) break;
+    const delta = chunk.choices?.[0]?.delta?.content || "";
+    if (!delta) continue;
+    fullResponse += delta;
+    if (onToken) onToken(fullResponse);
+  }
+
+  return {
+    answer: fullResponse,
+    source: rag.evidenceFound ? "CURRICULUM_GROUNDED_AI" : "GENERAL_TUTOR_AI",
+    confidence: rag.evidenceFound ? rag.confidence : 0.5,
+    ragUsed: rag.evidenceFound,
+  };
+}
+
+/**
+ * Backward compatibility wrapper for askLocalAI
  */
 export async function askLocalAI(
   engineOrOptions,
@@ -248,112 +439,29 @@ export async function askLocalAI(
   studentContextArg = {},
   abortSignalArg = null
 ) {
-  let engine, prompt, onToken, customSystemPrompt, studentContext, abortSignal;
-
   if (
     typeof engineOrOptions === "object" &&
     engineOrOptions !== null &&
     ("prompt" in engineOrOptions || "engine" in engineOrOptions)
   ) {
-    engine = engineOrOptions.engine || engineInstance;
-    prompt = engineOrOptions.prompt;
-    onToken = engineOrOptions.onToken || null;
-    customSystemPrompt = engineOrOptions.customSystemPrompt || null;
-    studentContext = engineOrOptions.studentContext || {};
-    abortSignal = engineOrOptions.abortSignal || null;
-  } else {
-    engine = engineOrOptions || engineInstance;
-    prompt = promptArg;
-    onToken = onTokenArg;
-    customSystemPrompt = customSystemPromptArg;
-    studentContext = studentContextArg || {};
-    abortSignal = abortSignalArg;
+    const result = await askTixarAI(engineOrOptions);
+    return result;
   }
 
-  const cleanPrompt = String(prompt || "").trim();
-  if (!cleanPrompt) {
-    throw new Error("A question or prompt is required.");
-  }
-
-  // 1. DETERMINISTIC MATH INTERCEPTION
-  const mathResult = routeMathQuery(cleanPrompt);
-  if (mathResult?.isMath && mathResult?.answer) {
-    const result = String(mathResult.answer);
-    if (onToken) {
-      onToken(result);
-    }
-    return {
-      source: "deterministic_math",
-      answer: result,
-      verified: true,
-      ragUsed: false,
-    };
-  }
-
-  // 2. REQUEST UNDERSTANDING
-  const request = classifyLearningRequest(cleanPrompt);
-
-  // 3. CURRICULUM RETRIEVAL & QUALITY EVALUATION
-  let ragContext = "";
-  try {
-    ragContext = await getLocalRAGContext(cleanPrompt);
-  } catch (error) {
-    console.warn("[Tixar AI] RAG retrieval failed:", error);
-  }
-  const ragQuality = evaluateRAGContext(ragContext);
-
-  // 4. PROMPT CONSTRUCTION
-  const systemPrompt =
-    customSystemPrompt ||
-    (ragQuality.confidence < 0.6 && !ragContext
-      ? buildGuardedSystemPrompt(ragContext)
-      : buildEducationalPrompt({
-          ragContext: ragQuality.confidence >= 0.6 ? ragContext : "",
-          requestType: request.type,
-          studentContext,
-        }));
-
-  const activeEngine = engine || engineInstance;
-  if (!activeEngine) {
-    throw new Error("Local AI engine is not initialized.");
-  }
-
-  // 5. STREAMING GENERATION
-  const messages = [
-    { role: "system", content: systemPrompt },
-    { role: "user", content: cleanPrompt },
-  ];
-
-  const completion = await activeEngine.chat.completions.create({
-    messages,
-    stream: true,
-    temperature: 0.2,
-    max_tokens: 500,
+  const result = await askTixarAI({
+    engine: engineOrOptions || engineState.engine,
+    prompt: promptArg,
+    onToken: onTokenArg,
+    customSystemPrompt: customSystemPromptArg,
+    studentContext: studentContextArg || {},
+    abortSignal: abortSignalArg,
   });
 
-  let fullResponse = "";
-  for await (const chunk of completion) {
-    if (abortSignal?.aborted) break;
-    const delta = chunk?.choices?.[0]?.delta?.content || "";
-    if (!delta) continue;
-    fullResponse += delta;
-    if (onToken) {
-      onToken(fullResponse);
-    }
-  }
-
-  return {
-    source: ragQuality.available ? "curriculum_rag_llm" : "local_llm",
-    answer: fullResponse,
-    verified: ragQuality.confidence >= 0.8,
-    ragUsed: ragQuality.available,
-    ragConfidence: ragQuality.confidence,
-    requestType: request.type,
-  };
+  return result.answer;
 }
 
 /**
- * Diagnostic Misconception Explanation Engine
+ * Diagnostic Misconception Detective Engine
  */
 export async function explainMisconception(
   questionOrOptions,
@@ -364,7 +472,7 @@ export async function explainMisconception(
   onTokenArg = null,
   abortSignalArg = null
 ) {
-  let question, wrongAnswer, correctAnswer, misconceptionType, topicContext, recurrenceLevel, onToken, abortSignal;
+  let question, wrongAnswer, correctAnswer, misconceptionType, topicContext, recurrenceLevel, previousMistakes, onToken, abortSignal;
 
   if (
     typeof questionOrOptions === "object" &&
@@ -377,6 +485,7 @@ export async function explainMisconception(
     misconceptionType = questionOrOptions.misconceptionType || null;
     topicContext = questionOrOptions.topicContext || "";
     recurrenceLevel = questionOrOptions.recurrenceLevel || "SINGLE_SLIP";
+    previousMistakes = questionOrOptions.previousMistakes || [];
     onToken = questionOrOptions.onToken;
     abortSignal = questionOrOptions.abortSignal || null;
   } else {
@@ -386,11 +495,12 @@ export async function explainMisconception(
     misconceptionType = null;
     topicContext = typeof misconceptionTypeOrContext === "string" ? misconceptionTypeOrContext : topicContextArg;
     recurrenceLevel = "SINGLE_SLIP";
+    previousMistakes = [];
     onToken = typeof topicContextArg === "function" ? topicContextArg : onTokenArg;
     abortSignal = abortSignalArg;
   }
 
-  const activeEngine = engineInstance;
+  const activeEngine = engineState.engine;
   if (!activeEngine) {
     if (onToken) onToken(null);
     return null;
@@ -398,23 +508,23 @@ export async function explainMisconception(
 
   const systemPrompt = `You are Tixar's diagnostic teaching system.
 Your job is NOT to merely tell a student they are wrong.
-Identify the likely thinking that produced their answer.
+You act as a misconception detective analyzing underlying conceptual patterns.
 
 Then:
-1. Identify the misconception.
-2. Explain why that reasoning fails.
+1. Identify what the student likely believes.
+2. Explain why that belief produces the error.
 3. Teach the correct principle.
-4. Use a simple example.
-5. Keep the explanation concise.
+4. Give one simple corrective example.
+5. Keep the explanation concise and encouraging.`;
 
-Never shame the student.
-Never say "you should have known".
-Do not mention being an AI.`;
+  const historyText = previousMistakes.length > 0
+    ? `ERROR HISTORY:\nStudent has repeatedly made these errors: ${previousMistakes.join(", ")}.\n`
+    : "";
 
   const recurrenceInstruction =
     recurrenceLevel === "CROSS_TOPIC_RECURRENCE"
       ? `This mistake has occurred repeatedly across multiple topics. Use a fundamentally different explanation or analogy.`
-      : `This may be a one-time mistake. First determine whether it appears to be a conceptual misunderstanding or a simple slip.`;
+      : `This may be an isolated mistake. First determine whether it appears to be a conceptual misunderstanding or a simple calculation slip.`;
 
   const userPrompt = `QUESTION:
 ${question}
@@ -428,22 +538,21 @@ ${correctAnswer}
 KNOWN MISCONCEPTION:
 ${misconceptionType || "Unknown"}
 
-CURRICULUM CONTEXT:
+${historyText}CURRICULUM CONTEXT:
 ${topicContext || "No additional context available."}
 
 ${recurrenceInstruction}
 
-Respond in a maximum of 4 short paragraphs.`;
+Respond in 4 structured, clear paragraphs.`;
 
   try {
-
     const completion = await activeEngine.chat.completions.create({
       messages: [
         { role: "system", content: systemPrompt },
         { role: "user", content: userPrompt },
       ],
       stream: true,
-      temperature: 0.2,
+      temperature: 0.15,
       max_tokens: 250,
     });
 
