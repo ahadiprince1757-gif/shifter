@@ -54,9 +54,9 @@ export default function AnalyticsDashboard() {
 
   if (loading) {
     return (
-      <div className="analytics-dashboard">
+      <div className="analytics-dashboard clean-view">
         <div className="analytics-hero">
-          <h2 className="analytics-hero-title">Tixar Learning Intelligence</h2>
+          <h2 className="analytics-hero-title">Learning Intelligence</h2>
           <p className="analytics-hero-sub">Analyzing learning evidence...</p>
         </div>
         <div style={{ marginTop: "1.5rem" }}>
@@ -133,8 +133,6 @@ export default function AnalyticsDashboard() {
   const handlePrimaryAction = () => {
     if (recommendation.route) {
       navigate(recommendation.route);
-    } else if (recommendation.targetTopic) {
-      navigate("/subjects");
     } else {
       navigate("/subjects");
     }
@@ -156,116 +154,87 @@ export default function AnalyticsDashboard() {
 
   return (
     <div className="analytics-dashboard clean-view">
-      {/* Hero Header */}
+      {/* Header */}
       <div className="analytics-hero">
-        <h2 className="analytics-hero-title">Tixar Learning Intelligence</h2>
+        <h2 className="analytics-hero-title">Learning Intelligence</h2>
         <p className="analytics-hero-sub">
           Evidence-grounded readiness decisioning and personalized learning bottleneck diagnosis.
         </p>
       </div>
 
-      {/* 1. TIXAR READINESS BANNER */}
-      <div
-        style={{
-          marginTop: "1rem",
-          padding: "1.4rem 1.6rem",
-          background: overview.isReady
-            ? "linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.05) 100%)"
-            : "linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.05) 100%)",
-          border: `1px solid ${overview.isReady ? "rgba(16, 185, 129, 0.3)" : "rgba(245, 158, 11, 0.3)"}`,
-          borderRadius: "14px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "0.8rem",
-          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.03)",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.8rem" }}>
-          <div>
-            <span style={{ fontSize: "0.75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: overview.isReady ? "#059669" : "#d97706" }}>
-              🎯 Tixar Advancement Readiness
-            </span>
-            <h3 style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--t, #0f172a)", margin: "0.2rem 0 0 0" }}>
-              {overview.readinessScore}% Readiness — {overview.readinessLabel}
-            </h3>
-          </div>
-          <span
-            style={{
-              padding: "0.35rem 0.8rem",
-              borderRadius: "8px",
-              fontWeight: 700,
-              fontSize: "0.82rem",
-              background: overview.isReady ? "rgba(16, 185, 129, 0.2)" : "rgba(245, 158, 11, 0.2)",
-              color: overview.isReady ? "#059669" : "#d97706",
-            }}
-          >
-            Evidence Confidence: {overview.evidenceConfidence}
-          </span>
-        </div>
-
-        <p style={{ fontSize: "0.92rem", color: "var(--t2, #475569)", margin: 0, lineHeight: "1.5" }}>
-          {overview.readinessRecommendation}
-        </p>
-      </div>
-
-      {/* 2. PRIMARY LEARNING BOTTLENECK / NEXT BEST ACTION */}
+      {/* 1. UNIFIED READINESS & BOTTLENECK ACTION CARD */}
       <div
         style={{
           marginTop: "1.2rem",
-          padding: "1.2rem 1.4rem",
+          padding: "1.4rem 1.5rem",
           background: "var(--sur, #ffffff)",
           border: "1px solid var(--bd, rgba(0, 0, 0, 0.08))",
-          borderRadius: "12px",
+          borderRadius: "14px",
           display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          flexWrap: "wrap",
-          gap: "1rem",
+          flexDirection: "column",
+          gap: "1.2rem",
+          boxShadow: "0 2px 12px rgba(0, 0, 0, 0.02)",
         }}
       >
-        <div style={{ flex: "1", minWidth: "260px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.3rem" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.8rem" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
             <span
               style={{
-                fontSize: "0.72rem",
-                fontWeight: 800,
-                textTransform: "uppercase",
-                padding: "0.2rem 0.5rem",
+                padding: "0.25rem 0.6rem",
                 borderRadius: "6px",
-                background:
-                  recommendation.priority === "CRITICAL"
-                    ? "rgba(239, 68, 68, 0.15)"
-                    : recommendation.priority === "HIGH"
-                    ? "rgba(245, 158, 11, 0.15)"
-                    : "rgba(59, 130, 246, 0.15)",
-                color:
-                  recommendation.priority === "CRITICAL"
-                    ? "#dc2626"
-                    : recommendation.priority === "HIGH"
-                    ? "#d97706"
-                    : "#2563eb",
+                fontWeight: 700,
+                fontSize: "0.78rem",
+                background: overview.isReady ? "rgba(16, 185, 129, 0.15)" : "rgba(245, 158, 11, 0.15)",
+                color: overview.isReady ? "#059669" : "#d97706",
               }}
             >
-              ⚡ Primary Learning Bottleneck
+              {overview.readinessLabel}
+            </span>
+            <span style={{ fontSize: "0.8rem", color: "var(--t2, #64748b)" }}>
+              Confidence: {overview.evidenceConfidence}
             </span>
           </div>
-          <h4 style={{ fontSize: "1.1rem", fontWeight: 700, margin: "0.2rem 0", color: "var(--t, #0f172a)" }}>
-            {recommendation.title}
-          </h4>
-          <p style={{ fontSize: "0.88rem", color: "var(--t2, #475569)", margin: 0 }}>
-            {recommendation.reason}
-          </p>
+          <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--t, #0f172a)" }}>
+            {overview.readinessScore}% <span style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--t2)" }}>Readiness</span>
+          </div>
         </div>
-        <button
-          className="clean-action-btn primary"
-          style={{ padding: "0.6rem 1.2rem", fontWeight: 700 }}
-          onClick={handlePrimaryAction}
+
+        <div
+          style={{
+            padding: "1rem 1.2rem",
+            background: "var(--bg, #f8fafc)",
+            borderRadius: "10px",
+            border: "1px solid var(--bd, rgba(0,0,0,0.05))",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            flexWrap: "wrap",
+            gap: "1rem",
+          }}
         >
-          {recommendation.buttonLabel} →
-        </button>
+          <div style={{ flex: "1", minWidth: "220px" }}>
+            <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "var(--t2, #64748b)", letterSpacing: "0.04em" }}>
+              Primary Bottleneck
+            </div>
+            <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--t, #0f172a)", marginTop: "0.2rem" }}>
+              {recommendation.title}
+            </div>
+            <div style={{ fontSize: "0.85rem", color: "var(--t2, #475569)", marginTop: "0.2rem" }}>
+              {recommendation.reason}
+            </div>
+          </div>
+
+          <button
+            className="clean-action-btn primary"
+            style={{ padding: "0.55rem 1.1rem", fontWeight: 700, fontSize: "0.88rem" }}
+            onClick={handlePrimaryAction}
+          >
+            {recommendation.buttonLabel} →
+          </button>
+        </div>
       </div>
 
-      {/* 3 Core Metric Cards */}
+      {/* 2. CORE METRICS ROW */}
       <div className="analytics-overview-card" style={{ marginTop: "1.2rem" }}>
         <div className="analytics-metric">
           <span className="metric-val">{accuracyRate}%</span>
@@ -283,7 +252,7 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
-      {/* Progress Bar + CBC Badge */}
+      {/* CBC Overall Performance */}
       {totalQuizzes > 0 && (
         <div className="analytics-progress-bar-container">
           <div className="progress-bar-header">
@@ -314,18 +283,13 @@ export default function AnalyticsDashboard() {
         </div>
       )}
 
-      {/* 3. TRUTHFUL EVIDENCE-BASED COGNITIVE MASTERY CARD */}
+      {/* 3. TRUTHFUL COGNITIVE EVIDENCE BREAKDOWN */}
       <div className="knowledge-state-card">
         <div className="knowledge-state-header">
           <div>
             <h3 className="knowledge-state-title">Evidence-Based Cognitive Mastery</h3>
-            <p className="knowledge-state-subtitle">Directly measured from tagged student attempt evidence (no estimations)</p>
+            <p className="knowledge-state-subtitle">Directly measured from tagged student attempt evidence</p>
           </div>
-          <span className="knowledge-state-gap-badge">
-            {overview.evidenceConfidence === "HIGH"
-              ? "✓ High Evidence Confidence"
-              : "More Practice Needed for Full Confidence"}
-          </span>
         </div>
 
         <div className="knowledge-state-grid">
@@ -336,7 +300,7 @@ export default function AnalyticsDashboard() {
                 {dim.val !== null ? (
                   <span style={{ fontWeight: 700, color: dim.color }}>{dim.val}%</span>
                 ) : (
-                  <span style={{ fontSize: "0.75rem", color: "var(--t2, #94a3b8)" }}>Not enough evidence yet</span>
+                  <span style={{ fontSize: "0.75rem", color: "var(--t2, #94a3b8)" }}>No evidence yet</span>
                 )}
               </div>
               <div className="knowledge-state-dim-track">
@@ -352,17 +316,19 @@ export default function AnalyticsDashboard() {
 
         {/* 4. KNOWLEDGE MAP: STRONG TOPICS VS WEAK TOPICS */}
         <div style={{ marginTop: "1.2rem", paddingTop: "1rem", borderTop: "1px solid var(--bd, rgba(0,0,0,0.06))" }}>
-          <span className="knowledge-state-diagnosis-title">Knowledge Map & Topic Vectors</span>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem", marginTop: "0.8rem" }}>
+          <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "var(--t, #0f172a)", marginBottom: "0.8rem" }}>
+            Knowledge Map
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
             {/* Strong Topics */}
-            <div style={{ padding: "0.8rem", background: "rgba(16, 185, 129, 0.05)", borderRadius: "8px", border: "1px solid rgba(16, 185, 129, 0.2)" }}>
-              <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "#059669", marginBottom: "0.4rem" }}>
-                ✓ Strong Topics ({masteryMap?.strongTopics?.length || 0})
+            <div style={{ padding: "0.8rem 1rem", background: "rgba(16, 185, 129, 0.04)", borderRadius: "8px", border: "1px solid rgba(16, 185, 129, 0.15)" }}>
+              <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#059669", marginBottom: "0.4rem" }}>
+                Strong Topics ({masteryMap?.strongTopics?.length || 0})
               </div>
               {masteryMap?.strongTopics?.length > 0 ? (
                 masteryMap.strongTopics.map((t, idx) => (
-                  <div key={idx} style={{ fontSize: "0.85rem", color: "var(--t)", padding: "0.2rem 0" }}>
-                    • {formatTitle(t.topic)} ({t.performanceScore || t.mastery}%)
+                  <div key={idx} style={{ fontSize: "0.84rem", color: "var(--t)", padding: "0.2rem 0" }}>
+                    {formatTitle(t.topic)} ({t.performanceScore ?? t.mastery ?? 0}%)
                   </div>
                 ))
               ) : (
@@ -371,14 +337,14 @@ export default function AnalyticsDashboard() {
             </div>
 
             {/* Weak Topics & Gaps */}
-            <div style={{ padding: "0.8rem", background: "rgba(239, 68, 68, 0.05)", borderRadius: "8px", border: "1px solid rgba(239, 68, 68, 0.2)" }}>
-              <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "#dc2626", marginBottom: "0.4rem" }}>
-                ⚠ Needs Attention ({masteryMap?.weakTopics?.length || 0})
+            <div style={{ padding: "0.8rem 1rem", background: "rgba(239, 68, 68, 0.04)", borderRadius: "8px", border: "1px solid rgba(239, 68, 68, 0.15)" }}>
+              <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#dc2626", marginBottom: "0.4rem" }}>
+                Needs Attention ({masteryMap?.weakTopics?.length || 0})
               </div>
               {masteryMap?.weakTopics?.length > 0 ? (
                 masteryMap.weakTopics.map((t, idx) => (
-                  <div key={idx} style={{ fontSize: "0.85rem", color: "var(--t)", padding: "0.2rem 0" }}>
-                    • {formatTitle(t.topic)} ({t.performanceScore || t.mastery}%)
+                  <div key={idx} style={{ fontSize: "0.84rem", color: "var(--t)", padding: "0.2rem 0" }}>
+                    {formatTitle(t.topic)} ({t.performanceScore ?? t.mastery ?? 0}%)
                   </div>
                 ))
               ) : (
@@ -389,7 +355,7 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
-      {/* 3 Action-Oriented Tabs */}
+      {/* 5. ACTION TABS */}
       <div className="analytics-tabs" role="tablist" style={{ marginTop: "1.5rem" }}>
         {TABS.map((tab) => (
           <button
@@ -430,7 +396,7 @@ export default function AnalyticsDashboard() {
                 {mostFailed.map((item, idx) => (
                   <div key={idx} className="clean-topic-item">
                     <div className="clean-topic-details">
-                      <span className="clean-topic-name">{formatTitle(item.topic_title)}</span>
+                      <span className="clean-topic-name">{formatTitle(item.topic_title || item.topic)}</span>
                       <span className="clean-topic-meta">
                         {formatTitle(item.subject_name)} • {formatTitle(item.chapter_title)}
                       </span>

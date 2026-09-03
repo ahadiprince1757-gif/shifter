@@ -267,9 +267,10 @@ export function calculateReadiness(options = {}, fallbackMap = null, fallbackPre
       status: "CRITICAL_GAP_DETECTED",
       label: "Not Ready — Critical Gap Detected",
       blockingTopics: criticalGaps.map((gap) => gap.topic),
-      recommendation: `Strengthen foundational concepts in weak topics before advancing: ${criticalGaps
-        .map((g) => g.topic)
-        .join(", ")}.`,
+      recommendation:
+        criticalGaps.length === 1
+          ? `Strengthen foundational concepts in ${criticalGaps[0].topic} before advancing.`
+          : `Strengthen foundational concepts in ${criticalGaps.length} weak topics before advancing.`,
     };
   }
 
