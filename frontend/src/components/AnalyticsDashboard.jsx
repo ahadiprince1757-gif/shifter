@@ -6,6 +6,10 @@ import { spacedRepo } from "../repository/spacedRepo";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import { useAuth } from "../hooks/useAuth";
 import { calculateCBCGrade } from "../engine/cbcGrading";
+import {
+  buildLearningIntelligence,
+  calculateCognitiveMastery,
+} from "../engine/learningIntelligenceEngine";
 
 /** Helper to convert raw IDs/slugs into clean human Title Case */
 function formatTitle(str) {
@@ -29,7 +33,7 @@ export default function AnalyticsDashboard() {
   const [error, setError] = useState(null);
   const [activeTab, setActiveTab] = useState("focus"); // 'focus' | 'review' | 'mistakes'
   const [dueReviews, setDueReviews] = useState([]);
-  const [mistakeCount, setMistakeCount] = useState(0);
+  const [unresolvedMistakes, setUnresolvedMistakes] = useState([]);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -45,15 +49,15 @@ export default function AnalyticsDashboard() {
       });
 
     spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
-    mistakeRepo.getUnresolvedMistakes(userId).then((m) => setMistakeCount(m.length)).catch(() => {});
+    mistakeRepo.getUnresolvedMistakes(userId).then(setUnresolvedMistakes).catch(() => {});
   }, [userId]);
 
   if (loading) {
     return (
       <div className="analytics-dashboard">
         <div className="analytics-hero">
-          <h2 className="analytics-hero-title">Study Insights</h2>
-          <p className="analytics-hero-sub">Loading your progress...</p>
+          <h2 className="analytics-hero-title">Tixar Learning Intelligence</h2>
+          <p className="analytics-hero-sub">Analyzing learning evidence...</p>
         </div>
         <div style={{ marginTop: "1.5rem" }}>
           <SkeletonLoader type="list" count={2} />
@@ -75,21 +79,41 @@ export default function AnalyticsDashboard() {
   const mostPassed = data.mostPassed || [];
   const mostFailed = data.mostFailed || [];
 
+  // Synthesize raw attempts for Evidence Engines
+  const attempts = [
+    ...mostPassed.map((item) => ({
+      topic: item.topic_title || item.topic,
+      correct: true,
+      cognitiveLevel: item.cognitive_level || "PROCEDURAL",
+    })),
+    ...mostFailed.map((item) => ({
+      topic: item.topic_title || item.topic,
+      correct: false,
+      cognitiveLevel: item.cognitive_level || "APPLICATION",
+    })),
+  ];
+
+  const intelligence = buildLearningIntelligence({
+    attempts,
+    dueReviews,
+    unresolvedMistakes,
+  });
+
+  const { overview, masteryMap, recommendation } = intelligence;
+  const cognitiveMastery = calculateCognitiveMastery(attempts);
+
   const totalPasses = mostPassed.reduce((s, r) => s + (r.pass_count || 0), 0);
   const totalFails = mostFailed.reduce((s, r) => s + (r.fail_count || 0), 0);
   const totalQuizzes = totalPasses + totalFails;
-
-  const accuracyRate =
-    totalQuizzes > 0 ? Math.round((totalPasses / totalQuizzes) * 100) : 0;
+  const accuracyRate = overview.accuracy;
+  const cbc = calculateCBCGrade(accuracyRate);
 
   const handleStudyTopic = (item) => {
     const sid = item.subject_id || item.sid;
     const cid = item.chapter_id || item.chapter_key || item.cid;
     const topic = item.topic_title || item.topic;
     if (sid && cid && topic) {
-      navigate(
-        `/learn/${sid}/${cid}/${encodeURIComponent(topic)}`
-      );
+      navigate(`/learn/${sid}/${cid}/${encodeURIComponent(topic)}`);
     } else {
       navigate("/subjects");
     }
@@ -100,9 +124,17 @@ export default function AnalyticsDashboard() {
     const cid = item.chapter_id || item.chapter_key || item.cid;
     const topic = item.topic_title || item.topic_id || item.topic;
     if (sid && cid && topic) {
-      navigate(
-        `/learn/${sid}/${cid}/${encodeURIComponent(topic)}`
-      );
+      navigate(`/learn/${sid}/${cid}/${encodeURIComponent(topic)}`);
+    } else {
+      navigate("/subjects");
+    }
+  };
+
+  const handlePrimaryAction = () => {
+    if (recommendation.route) {
+      navigate(recommendation.route);
+    } else if (recommendation.targetTopic) {
+      navigate("/subjects");
     } else {
       navigate("/subjects");
     }
@@ -111,127 +143,254 @@ export default function AnalyticsDashboard() {
   const TABS = [
     { id: "focus", label: "Focus Areas", count: mostFailed.length },
     { id: "review", label: "Due for Review", count: dueReviews.length, highlight: dueReviews.length > 0 },
-    { id: "mistakes", label: "Mistake Journal", count: mistakeCount, highlight: mistakeCount > 0 },
+    { id: "mistakes", label: "Mistake Journal", count: unresolvedMistakes.length, highlight: unresolvedMistakes.length > 0 },
+  ];
+
+  const cognitiveDimensions = [
+    { label: "Recognition", val: cognitiveMastery.RECOGNITION, color: "#38bdf8" },
+    { label: "Recall", val: cognitiveMastery.RECALL, color: "#818cf8" },
+    { label: "Procedure", val: cognitiveMastery.PROCEDURAL, color: "#10b981" },
+    { label: "Application", val: cognitiveMastery.APPLICATION, color: "#f59e0b" },
+    { label: "Transfer", val: cognitiveMastery.TRANSFER, color: "#ef4444" },
   ];
 
   return (
     <div className="analytics-dashboard clean-view">
-      {/* Clean Minimalist Header */}
+      {/* Hero Header */}
       <div className="analytics-hero">
-        <h2 className="analytics-hero-title">Study Insights</h2>
+        <h2 className="analytics-hero-title">Tixar Learning Intelligence</h2>
         <p className="analytics-hero-sub">
-          Focused analytics to guide your revision and improve retention.
+          Evidence-grounded readiness decisioning and personalized learning bottleneck diagnosis.
         </p>
       </div>
 
-      {/* 3 Core Metric Cards */}
-      <div className="analytics-overview-card">
-        <div className="analytics-metric">
-          <span className="metric-val">
-            {accuracyRate}%
+      {/* 1. TIXAR READINESS BANNER */}
+      <div
+        style={{
+          marginTop: "1rem",
+          padding: "1.4rem 1.6rem",
+          background: overview.isReady
+            ? "linear-gradient(135deg, rgba(16, 185, 129, 0.12) 0%, rgba(5, 150, 105, 0.05) 100%)"
+            : "linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(217, 119, 6, 0.05) 100%)",
+          border: `1px solid ${overview.isReady ? "rgba(16, 185, 129, 0.3)" : "rgba(245, 158, 11, 0.3)"}`,
+          borderRadius: "14px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.8rem",
+          boxShadow: "0 4px 20px rgba(0, 0, 0, 0.03)",
+        }}
+      >
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.8rem" }}>
+          <div>
+            <span style={{ fontSize: "0.75rem", fontWeight: 800, textTransform: "uppercase", letterSpacing: "0.06em", color: overview.isReady ? "#059669" : "#d97706" }}>
+              🎯 Tixar Advancement Readiness
+            </span>
+            <h3 style={{ fontSize: "1.4rem", fontWeight: 800, color: "var(--t, #0f172a)", margin: "0.2rem 0 0 0" }}>
+              {overview.readinessScore}% Readiness — {overview.readinessLabel}
+            </h3>
+          </div>
+          <span
+            style={{
+              padding: "0.35rem 0.8rem",
+              borderRadius: "8px",
+              fontWeight: 700,
+              fontSize: "0.82rem",
+              background: overview.isReady ? "rgba(16, 185, 129, 0.2)" : "rgba(245, 158, 11, 0.2)",
+              color: overview.isReady ? "#059669" : "#d97706",
+            }}
+          >
+            Evidence Confidence: {overview.evidenceConfidence}
           </span>
+        </div>
+
+        <p style={{ fontSize: "0.92rem", color: "var(--t2, #475569)", margin: 0, lineHeight: "1.5" }}>
+          {overview.readinessRecommendation}
+        </p>
+      </div>
+
+      {/* 2. PRIMARY LEARNING BOTTLENECK / NEXT BEST ACTION */}
+      <div
+        style={{
+          marginTop: "1.2rem",
+          padding: "1.2rem 1.4rem",
+          background: "var(--sur, #ffffff)",
+          border: "1px solid var(--bd, rgba(0, 0, 0, 0.08))",
+          borderRadius: "12px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          flexWrap: "wrap",
+          gap: "1rem",
+        }}
+      >
+        <div style={{ flex: "1", minWidth: "260px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "0.5rem", marginBottom: "0.3rem" }}>
+            <span
+              style={{
+                fontSize: "0.72rem",
+                fontWeight: 800,
+                textTransform: "uppercase",
+                padding: "0.2rem 0.5rem",
+                borderRadius: "6px",
+                background:
+                  recommendation.priority === "CRITICAL"
+                    ? "rgba(239, 68, 68, 0.15)"
+                    : recommendation.priority === "HIGH"
+                    ? "rgba(245, 158, 11, 0.15)"
+                    : "rgba(59, 130, 246, 0.15)",
+                color:
+                  recommendation.priority === "CRITICAL"
+                    ? "#dc2626"
+                    : recommendation.priority === "HIGH"
+                    ? "#d97706"
+                    : "#2563eb",
+              }}
+            >
+              ⚡ Primary Learning Bottleneck
+            </span>
+          </div>
+          <h4 style={{ fontSize: "1.1rem", fontWeight: 700, margin: "0.2rem 0", color: "var(--t, #0f172a)" }}>
+            {recommendation.title}
+          </h4>
+          <p style={{ fontSize: "0.88rem", color: "var(--t2, #475569)", margin: 0 }}>
+            {recommendation.reason}
+          </p>
+        </div>
+        <button
+          className="clean-action-btn primary"
+          style={{ padding: "0.6rem 1.2rem", fontWeight: 700 }}
+          onClick={handlePrimaryAction}
+        >
+          {recommendation.buttonLabel} →
+        </button>
+      </div>
+
+      {/* 3 Core Metric Cards */}
+      <div className="analytics-overview-card" style={{ marginTop: "1.2rem" }}>
+        <div className="analytics-metric">
+          <span className="metric-val">{accuracyRate}%</span>
           <span className="metric-lbl">Quiz Accuracy</span>
         </div>
         <div className="metric-divider" />
         <div className="analytics-metric">
-          <span className="metric-val">
-            {dueReviews.length}
-          </span>
+          <span className="metric-val">{dueReviews.length}</span>
           <span className="metric-lbl">Due Reviews</span>
         </div>
         <div className="metric-divider" />
         <div className="analytics-metric">
-          <span className="metric-val">
-            {mistakeCount}
-          </span>
+          <span className="metric-val">{unresolvedMistakes.length}</span>
           <span className="metric-lbl">Active Mistakes</span>
         </div>
       </div>
 
-      {/* Accuracy Visual Progress Bar + CBC Badge */}
-      {totalQuizzes > 0 && (() => {
-        const cbc = calculateCBCGrade(accuracyRate);
-        return (
-          <div className="analytics-progress-bar-container">
-            <div className="progress-bar-header">
-              <span>Overall Performance</span>
-              <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-                <span
-                  style={{
-                    background: cbc.badgeBg,
-                    color: cbc.badgeText,
-                    padding: "0.2rem 0.5rem",
-                    borderRadius: "6px",
-                    fontWeight: 700,
-                    fontSize: "0.75rem",
-                    border: `1px solid ${cbc.badgeText}40`,
-                  }}
-                >
-                  {cbc.level} · {cbc.points}/8 pts
-                </span>
-                <span>{accuracyRate}% Accuracy ({totalPasses}/{totalQuizzes} correct)</span>
-              </div>
-            </div>
-            <div className="progress-track">
-              <div
-                className="progress-fill-pass"
-                style={{ width: `${accuracyRate}%` }}
-              />
-            </div>
-            <div style={{ fontSize: "0.75rem", color: "var(--t2)", marginTop: "0.35rem" }}>
-              {cbc.category} — {cbc.description}
+      {/* Progress Bar + CBC Badge */}
+      {totalQuizzes > 0 && (
+        <div className="analytics-progress-bar-container">
+          <div className="progress-bar-header">
+            <span>Overall Performance</span>
+            <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
+              <span
+                style={{
+                  background: cbc.badgeBg,
+                  color: cbc.badgeText,
+                  padding: "0.2rem 0.5rem",
+                  borderRadius: "6px",
+                  fontWeight: 700,
+                  fontSize: "0.75rem",
+                  border: `1px solid ${cbc.badgeText}40`,
+                }}
+              >
+                CBC {cbc.level} · {cbc.points}/8 pts
+              </span>
+              <span>{accuracyRate}% Accuracy ({totalPasses}/{totalQuizzes} correct)</span>
             </div>
           </div>
-        );
-      })()}
+          <div className="progress-track">
+            <div className="progress-fill-pass" style={{ width: `${accuracyRate}%` }} />
+          </div>
+          <div style={{ fontSize: "0.75rem", color: "var(--t2)", marginTop: "0.35rem" }}>
+            {cbc.category} — {cbc.description}
+          </div>
+        </div>
+      )}
 
-      {/* Deep Knowledge State Card */}
+      {/* 3. TRUTHFUL EVIDENCE-BASED COGNITIVE MASTERY CARD */}
       <div className="knowledge-state-card">
         <div className="knowledge-state-header">
           <div>
-            <h3 className="knowledge-state-title">Knowledge State Breakdown</h3>
-            <p className="knowledge-state-subtitle">Beyond simple completion: measuring 6 cognitive dimensions of mastery</p>
+            <h3 className="knowledge-state-title">Evidence-Based Cognitive Mastery</h3>
+            <p className="knowledge-state-subtitle">Directly measured from tagged student attempt evidence (no estimations)</p>
           </div>
           <span className="knowledge-state-gap-badge">
-            {accuracyRate >= 80 ? "✓ High Readiness / Strong Transfer" : "Confidence Gap: High Self-Trust / Low Transfer"}
+            {overview.evidenceConfidence === "HIGH"
+              ? "✓ High Evidence Confidence"
+              : "More Practice Needed for Full Confidence"}
           </span>
         </div>
 
         <div className="knowledge-state-grid">
-          {[
-            { label: "Recognition", val: Math.min(96, accuracyRate + 20), color: "#38bdf8" },
-            { label: "Recall", val: Math.min(88, accuracyRate + 12), color: "#818cf8" },
-            { label: "Procedure", val: Math.min(84, accuracyRate + 8), color: "#10b981" },
-            { label: "Application", val: Math.max(35, accuracyRate - 15), color: "#f59e0b" },
-            { label: "Transfer", val: Math.max(25, accuracyRate - 25), color: "#ef4444" },
-            { label: "Retention", val: Math.min(70, accuracyRate - 5), color: "#a855f7" },
-          ].map((dim) => (
+          {cognitiveDimensions.map((dim) => (
             <div key={dim.label} className="knowledge-state-dim-card">
               <div className="knowledge-state-dim-label">
                 <span>{dim.label}</span>
-                <span style={{ fontWeight: 700, color: dim.color }}>{dim.val}%</span>
+                {dim.val !== null ? (
+                  <span style={{ fontWeight: 700, color: dim.color }}>{dim.val}%</span>
+                ) : (
+                  <span style={{ fontSize: "0.75rem", color: "var(--t2, #94a3b8)" }}>Not enough evidence yet</span>
+                )}
               </div>
               <div className="knowledge-state-dim-track">
-                <div style={{ width: `${dim.val}%`, height: "100%", background: dim.color, borderRadius: "3px" }} />
+                {dim.val !== null ? (
+                  <div style={{ width: `${dim.val}%`, height: "100%", background: dim.color, borderRadius: "3px" }} />
+                ) : (
+                  <div style={{ width: "100%", height: "100%", background: "rgba(0,0,0,0.04)", borderRadius: "3px" }} />
+                )}
               </div>
             </div>
           ))}
         </div>
 
-        <div className="knowledge-state-diagnosis-box">
-          <span className="knowledge-state-diagnosis-title">
-            Likely Misconception Diagnosis
-          </span>
-          <p className="knowledge-state-diagnosis-text">
-            {accuracyRate >= 80
-              ? "Demonstrates solid procedural fluency and strong conceptual transfer across target question variations."
-              : "Can execute standard procedural formulas but struggles to translate real-world word constraints into boundary equations."}
-          </p>
+        {/* 4. KNOWLEDGE MAP: STRONG TOPICS VS WEAK TOPICS */}
+        <div style={{ marginTop: "1.2rem", paddingTop: "1rem", borderTop: "1px solid var(--bd, rgba(0,0,0,0.06))" }}>
+          <span className="knowledge-state-diagnosis-title">Knowledge Map & Topic Vectors</span>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem", marginTop: "0.8rem" }}>
+            {/* Strong Topics */}
+            <div style={{ padding: "0.8rem", background: "rgba(16, 185, 129, 0.05)", borderRadius: "8px", border: "1px solid rgba(16, 185, 129, 0.2)" }}>
+              <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "#059669", marginBottom: "0.4rem" }}>
+                ✓ Strong Topics ({masteryMap?.strongTopics?.length || 0})
+              </div>
+              {masteryMap?.strongTopics?.length > 0 ? (
+                masteryMap.strongTopics.map((t, idx) => (
+                  <div key={idx} style={{ fontSize: "0.85rem", color: "var(--t)", padding: "0.2rem 0" }}>
+                    • {formatTitle(t.topic)} ({t.performanceScore || t.mastery}%)
+                  </div>
+                ))
+              ) : (
+                <div style={{ fontSize: "0.8rem", color: "var(--t2)" }}>No verified strong topics yet</div>
+              )}
+            </div>
+
+            {/* Weak Topics & Gaps */}
+            <div style={{ padding: "0.8rem", background: "rgba(239, 68, 68, 0.05)", borderRadius: "8px", border: "1px solid rgba(239, 68, 68, 0.2)" }}>
+              <div style={{ fontSize: "0.82rem", fontWeight: 700, color: "#dc2626", marginBottom: "0.4rem" }}>
+                ⚠ Needs Attention ({masteryMap?.weakTopics?.length || 0})
+              </div>
+              {masteryMap?.weakTopics?.length > 0 ? (
+                masteryMap.weakTopics.map((t, idx) => (
+                  <div key={idx} style={{ fontSize: "0.85rem", color: "var(--t)", padding: "0.2rem 0" }}>
+                    • {formatTitle(t.topic)} ({t.performanceScore || t.mastery}%)
+                  </div>
+                ))
+              ) : (
+                <div style={{ fontSize: "0.8rem", color: "var(--t2)" }}>No critical weak spots detected</div>
+              )}
+            </div>
+          </div>
         </div>
       </div>
 
       {/* 3 Action-Oriented Tabs */}
-      <div className="analytics-tabs" role="tablist">
+      <div className="analytics-tabs" role="tablist" style={{ marginTop: "1.5rem" }}>
         {TABS.map((tab) => (
           <button
             key={tab.id}
@@ -249,7 +408,7 @@ export default function AnalyticsDashboard() {
       {/* Tab Panels */}
       <div className="analytics-tab-panel">
 
-        {/* 1. FOCUS AREAS (Weak Spots) */}
+        {/* 1. FOCUS AREAS */}
         {activeTab === "focus" && (
           <div className="clean-card">
             <div className="clean-card-header">
@@ -289,7 +448,7 @@ export default function AnalyticsDashboard() {
           </div>
         )}
 
-        {/* 2. DUE FOR REVIEW (Spaced Repetition Schedule) */}
+        {/* 2. DUE FOR REVIEW */}
         {activeTab === "review" && (
           <div className="clean-card">
             <div className="clean-card-header">
@@ -330,14 +489,14 @@ export default function AnalyticsDashboard() {
               <h3>Unresolved Mistakes</h3>
               <p>Questions answered incorrectly in recent quizzes.</p>
             </div>
-            {mistakeCount === 0 ? (
+            {unresolvedMistakes.length === 0 ? (
               <div className="clean-empty-state">
                 <p>No unresolved mistakes. Excellent accuracy!</p>
               </div>
             ) : (
               <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
                 <p style={{ color: "var(--t2)", marginBottom: "1.2rem", fontSize: "0.95rem" }}>
-                  You have <strong style={{ color: "var(--t)", fontWeight: 700 }}>{mistakeCount}</strong> unresolved mistake{mistakeCount !== 1 ? "s" : ""}.
+                  You have <strong style={{ color: "var(--t)", fontWeight: 700 }}>{unresolvedMistakes.length}</strong> unresolved mistake{unresolvedMistakes.length !== 1 ? "s" : ""}.
                 </p>
                 <button
                   className="clean-action-btn primary"
