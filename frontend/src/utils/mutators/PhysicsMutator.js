@@ -62,7 +62,7 @@ export class PhysicsMutator {
         "ohm",
         "circuit",
         "resistor",
-        "power",
+        "electrical power",
         "electrical energy",
         "charge"
       ],
@@ -70,13 +70,11 @@ export class PhysicsMutator {
       mechanics: [
         "force",
         "mass",
-        "acceleration",
         "newton",
         "friction",
-        "momentum",
+        "resultant force",
         "work",
-        "power",
-        "energy"
+        "momentum"
       ],
 
       kinematics: [
@@ -86,25 +84,70 @@ export class PhysicsMutator {
         "distance",
         "displacement",
         "acceleration",
-        "rest",
-        "kinematic",
-        "time"
+        "kinematic"
       ],
 
       waves: [
         "wave",
-        "frequency",
         "wavelength",
-        "sound",
-        "light",
-        "hz",
+        "frequency",
         "amplitude",
-        "period"
+        "period",
+        "wave speed",
+        "sound wave"
+      ],
+
+      optics: [
+        "reflection",
+        "refraction",
+        "lens",
+        "mirror",
+        "critical angle",
+        "total internal reflection",
+        "refractive index"
+      ],
+
+      thermal: [
+        "temperature",
+        "heat",
+        "thermal energy",
+        "specific heat capacity",
+        "latent heat"
+      ],
+
+      pressure: [
+        "pressure",
+        "atmospheric pressure",
+        "hydraulic",
+        "pascal"
+      ],
+
+      nuclear: [
+        "radioactivity",
+        "radioactive",
+        "alpha particle",
+        "beta particle",
+        "gamma ray",
+        "half-life",
+        "nucleus",
+        "nuclear"
+      ],
+
+      modernPhysics: [
+        "photoelectric",
+        "photoelectric effect",
+        "photoelectric emission",
+        "photoelectron",
+        "photon",
+        "work function",
+        "threshold frequency",
+        "stopping potential",
+        "quantum",
+        "electron emission"
       ],
 
       density: [
         "density",
-        "volume",
         "mass per unit volume",
         "float",
         "sink",
@@ -173,32 +216,124 @@ export class PhysicsMutator {
   }
 
   // ============================================================
-  // 2. TOPIC DETECTION
+  // 2. TOPIC DETECTION & CONCEPT LOCKING
   // ============================================================
 
-  _detectTopic(stem) {
+  _normalizeTopic(topicStr) {
+    if (!topicStr) return null;
+    const lower = String(topicStr).toLowerCase();
 
-    const lower = stem.toLowerCase();
+    if (lower.includes("photoelectric") || lower.includes("quantum") || lower.includes("modern")) {
+      return "modernPhysics";
+    }
+    if (lower.includes("electric") || lower.includes("circuit") || lower.includes("current")) {
+      return "electricity";
+    }
+    if (lower.includes("kinematic") || lower.includes("speed") || lower.includes("velocity")) {
+      return "kinematics";
+    }
+    if (lower.includes("mechanic") || lower.includes("force") || lower.includes("newton")) {
+      return "mechanics";
+    }
+    if (lower.includes("wave") || lower.includes("sound")) {
+      return "waves";
+    }
+    if (lower.includes("optic") || lower.includes("light") || lower.includes("lens")) {
+      return "optics";
+    }
+    if (lower.includes("thermal") || lower.includes("heat")) {
+      return "thermal";
+    }
+    if (lower.includes("pressure") || lower.includes("pascal")) {
+      return "pressure";
+    }
+    if (lower.includes("nuclear") || lower.includes("radioactiv")) {
+      return "nuclear";
+    }
+    if (lower.includes("density")) {
+      return "density";
+    }
+    return null;
+  }
 
+  _detectTopic(stem, qObj = {}) {
+    // 1. Explicit curriculum metadata takes top priority
+    const explicitTopic = qObj.topic || qObj.strand || qObj.concept || qObj.topicId || null;
+    if (explicitTopic) {
+      const normalized = this._normalizeTopic(explicitTopic);
+      if (normalized) {
+        return normalized;
+      }
+    }
+
+    const lower = String(stem || "").toLowerCase();
+
+    // 2. Weighted keyword matching
     const scores = {};
 
     for (const [topic, keywords] of Object.entries(this.topics)) {
+      scores[topic] = 0;
 
-      scores[topic] = keywords.reduce(
-        (score, keyword) =>
-          score + (lower.includes(keyword) ? 1 : 0),
-        0
-      );
+      for (const keyword of keywords) {
+        if (lower.includes(keyword)) {
+          // Multi-word phrases are given higher weight (3 vs 1)
+          const weight = keyword.split(" ").length > 1 ? 3 : 1;
+          scores[topic] += weight;
+        }
+      }
     }
 
-    const bestTopic = Object.entries(scores)
-      .sort((a, b) => b[1] - a[1])[0];
+    const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
+    const [bestTopic, bestScore] = ranked[0] || ["general", 0];
+    const [, secondScore] = ranked[1] || ["general", 0];
 
-    if (!bestTopic || bestTopic[1] === 0) {
+    if (bestScore === 0) {
       return "general";
     }
 
-    return bestTopic[0];
+    // Prevent ambiguous classification
+    if (bestScore === secondScore && bestScore < 3) {
+      return "general";
+    }
+
+    return bestTopic;
+  }
+
+  _validateTopicIntegrity(originalTopic, mutatedQuestion) {
+    if (!mutatedQuestion || !mutatedQuestion.q) return false;
+    const detectedMutatedTopic = this._detectTopic(mutatedQuestion.q, mutatedQuestion);
+
+    if (
+      originalTopic !== "general" &&
+      detectedMutatedTopic !== "general" &&
+      detectedMutatedTopic !== originalTopic
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  _createSafeFallback(qObj, topic) {
+    const originalQuestion = qObj?.q || qObj?.stem || "";
+
+    return {
+      ...qObj,
+      q: originalQuestion,
+      ans: qObj?.ans || "",
+      hint: qObj?.hint || "Review the core physical concept involved before answering.",
+      sol: qObj?.sol || qObj?.explanation || "No safe mutation could be generated without changing the original physical concept.",
+      steps: qObj?.steps || [
+        "Identify the main physical concept.",
+        "Recall the governing principle.",
+        "Apply it to the original problem."
+      ],
+      mutationStatus: "SKIPPED_UNSAFE_MUTATION",
+      detectedTopic: topic,
+      safe: true,
+      difficulty: qObj?.difficulty || 2,
+      modality: "fallback"
+    };
   }
 
   // ============================================================
@@ -1633,7 +1768,7 @@ export class PhysicsMutator {
           : null,
 
       concept:
-        "Conceptual reasoning",
+        concept.concept || "Conceptual reasoning",
 
       skill:
         "Physical explanation",
@@ -1646,6 +1781,158 @@ export class PhysicsMutator {
       modality:
         "conceptual"
     });
+  }
+
+  // ============================================================
+  // 11. MODERN PHYSICS (PHOTOELECTRIC EFFECT)
+  // ============================================================
+
+  _generateModernPhysics(stem, mode, seed) {
+    const lower = stem.toLowerCase();
+
+    const frequency = 5e14 + (seed % 5) * 1e14;
+    const thresholdFrequency = 4e14;
+
+    if (
+      lower.includes("photoelectric") ||
+      lower.includes("photoelectron") ||
+      lower.includes("photon") ||
+      lower.includes("work function") ||
+      lower.includes("threshold frequency") ||
+      lower.includes("quantum") ||
+      lower.includes("emission")
+    ) {
+
+      // MODE 0 — CONCEPTUAL RECALL
+      if (mode === 0) {
+        return this._base({
+          q: "What is meant by the threshold frequency in the photoelectric effect?",
+          ans: "It is the minimum frequency of electromagnetic radiation required to eject electrons from a metal surface.",
+          hint: "Think about the minimum photon energy needed to overcome the work function.",
+          sol: "A photon must have sufficient energy (E = hf) to overcome the work function of the material. The corresponding minimum frequency is called the threshold frequency.",
+          steps: [
+            "Recall that photon energy is E = hf.",
+            "Electrons require a minimum energy (work function) to escape.",
+            "This minimum condition defines the threshold frequency."
+          ],
+          type: "mcq",
+          options: this._mcqOptions(
+            "It is the minimum frequency of electromagnetic radiation required to eject electrons from a metal surface.",
+            [
+              "It is the maximum frequency of light that a metal can reflect.",
+              "It is the frequency at which electrons move at the speed of light.",
+              "It is the intensity of light required to heat the metal to emission."
+            ],
+            seed
+          ),
+          concept: "Threshold frequency",
+          skill: "Conceptual understanding",
+          difficulty: 2,
+          modality: "recall"
+        });
+      }
+
+      // MODE 1 — FREQUENCY REASONING / APPLICATION
+      if (mode === 1) {
+        const isEmitted = frequency >= thresholdFrequency;
+        return this._base({
+          q: `Light with frequency ${frequency.toExponential(1)} Hz falls on a metal with threshold frequency ${thresholdFrequency.toExponential(1)} Hz. Will photoelectrons be emitted? Explain.`,
+          ans: isEmitted
+            ? "Yes. The frequency is greater than the threshold frequency, so photons have sufficient energy to release electrons."
+            : "No. The frequency is below the threshold frequency, so photons do not have sufficient energy to release electrons.",
+          hint: "Compare the incident light frequency with the threshold frequency.",
+          sol: isEmitted
+            ? `Since ${frequency.toExponential(1)} Hz is greater than ${thresholdFrequency.toExponential(1)} Hz, individual photons carry enough energy to eject photoelectrons.`
+            : `Since ${frequency.toExponential(1)} Hz is below ${thresholdFrequency.toExponential(1)} Hz, individual photons lack the required work function energy.`,
+          steps: [
+            "Identify the incident frequency.",
+            "Identify the threshold frequency.",
+            "Compare the two frequencies.",
+            "Determine whether electron emission occurs."
+          ],
+          type: "mcq",
+          options: this._mcqOptions(
+            isEmitted
+              ? "Yes. The frequency is greater than the threshold frequency, so photons have sufficient energy to release electrons."
+              : "No. The frequency is below the threshold frequency, so photons do not have sufficient energy to release electrons.",
+            [
+              isEmitted
+                ? "No. Photoelectrons are only emitted when light intensity is doubled."
+                : "Yes. Any light beam will eventually release electrons given enough time.",
+              "Yes. Electron emission depends only on the voltage applied across the metal.",
+              "No. Photoelectric emission can only occur in a liquid medium."
+            ],
+            seed
+          ),
+          concept: "Threshold frequency application",
+          skill: "Physical reasoning",
+          difficulty: 3,
+          modality: "application"
+        });
+      }
+
+      // MODE 2 — MISCONCEPTION DIAGNOSIS
+      if (mode === 2) {
+        return this._base({
+          q: "A student states that increasing the intensity of light will always cause electrons to be emitted from a metal, regardless of frequency. Is the student correct? Explain.",
+          ans: "No. If the light frequency is below the threshold frequency, increasing intensity alone will not provide enough energy per individual photon to eject electrons.",
+          hint: "Does intensity increase the energy of each individual photon?",
+          sol: "Photon energy depends strictly on frequency (E = hf). Increasing intensity increases the rate of incoming photons, but if each photon has energy below the work function, no emission occurs.",
+          steps: [
+            "Recall E = hf.",
+            "Identify that photon energy depends on frequency.",
+            "Distinguish photon quantity (intensity) from photon energy (frequency).",
+            "Evaluate the student's claim."
+          ],
+          type: "mcq",
+          options: this._mcqOptions(
+            "No. If the light frequency is below the threshold frequency, increasing intensity alone will not provide enough energy per individual photon to eject electrons.",
+            [
+              "Yes. Higher intensity increases photon energy until electrons are pushed out.",
+              "Yes. Bright light heats the metal so electrons boil off thermal-electronically.",
+              "No. Intensity only affects the speed of emitted electrons, not their count."
+            ],
+            seed
+          ),
+          concept: "Photoelectric effect intensity vs frequency",
+          skill: "Misconception diagnosis",
+          difficulty: 4,
+          misconception: "Increasing light intensity always causes photoelectric emission.",
+          modality: "diagnostic"
+        });
+      }
+
+      // MODE 3 — CONCEPTUAL TRANSFER
+      return this._base({
+        q: "Two beams of light shine on the same metal. Beam A has higher intensity but a frequency below the threshold frequency. Beam B has lower intensity but a frequency above the threshold frequency. Which beam will produce photoelectrons?",
+        ans: "Beam B will produce photoelectrons because its frequency is above the threshold frequency. Beam A cannot produce them regardless of intensity.",
+        hint: "For photoelectric emission, first consider the energy of an individual photon.",
+        sol: "A single photon must have energy at least equal to the work function (E = hf). Since Beam B has a frequency above the threshold frequency, its photons carry enough energy to eject electrons.",
+        steps: [
+          "Recall E = hf.",
+          "Compare each frequency with the threshold frequency.",
+          "Separate intensity from single-photon energy.",
+          "Determine which beam can cause emission."
+        ],
+        type: "mcq",
+        options: this._mcqOptions(
+          "Beam B will produce photoelectrons because its frequency is above the threshold frequency. Beam A cannot produce them regardless of intensity.",
+          [
+            "Beam A will produce them because its higher intensity delivers more overall energy.",
+            "Both beams will produce equal numbers of photoelectrons.",
+            "Neither beam will produce photoelectrons because intensity and frequency cancel out."
+          ],
+          seed
+        ),
+        concept: "Frequency versus intensity transfer",
+        skill: "Conceptual transfer",
+        difficulty: 5,
+        misconception: "Greater light intensity automatically means greater photon energy.",
+        modality: "transfer"
+      });
+    }
+
+    return null;
   }
 
   // ============================================================
@@ -1678,170 +1965,43 @@ export class PhysicsMutator {
         mode
       );
 
-    const topic =
-      this._detectTopic(
-        stem
-      );
+    const topic = this._detectTopic(stem, qObj);
+    let result = null;
 
     // ----------------------------------------------------------
-    // ELECTRICITY
+    // TOPIC ROUTING WITH CONCEPT LOCKING
     // ----------------------------------------------------------
 
-    if (
-      topic === "electricity"
-    ) {
-
-      return this._generateElectricity(
-        stem,
-        mode,
-        seed
-      );
+    if (topic === "electricity") {
+      result = this._generateElectricity(stem, mode, seed);
+    } else if (topic === "mechanics") {
+      result = this._generateMechanics(stem, mode, seed);
+    } else if (topic === "kinematics") {
+      result = this._generateKinematics(stem, mode, seed);
+    } else if (topic === "waves") {
+      result = this._generateWaves(stem, mode, seed);
+    } else if (topic === "density") {
+      result = this._generateDensity(stem, mode, seed);
+    } else if (topic === "modernPhysics") {
+      result = this._generateModernPhysics(stem, mode, seed);
+    } else if (stem.toLowerCase().includes("potential energy") || stem.toLowerCase().includes("gpe")) {
+      result = this._generateEnergy(stem, mode, seed);
+    } else if (stem.toLowerCase().includes("momentum") || stem.toLowerCase().includes("collision")) {
+      result = this._generateMomentum(stem, mode, seed);
     }
 
     // ----------------------------------------------------------
-    // MECHANICS
+    // SEMANTIC BOUNDARY VALIDATION
     // ----------------------------------------------------------
 
-    if (
-      topic === "mechanics"
-    ) {
-
-      return this._generateMechanics(
-        stem,
-        mode,
-        seed
-      );
+    if (result && this._validateTopicIntegrity(topic, result)) {
+      return result;
     }
 
     // ----------------------------------------------------------
-    // KINEMATICS
+    // SAFE CONCEPT-PRESERVING FALLBACK (No Topic Leakage)
     // ----------------------------------------------------------
 
-    if (
-      topic === "kinematics"
-    ) {
-
-      return this._generateKinematics(
-        stem,
-        mode,
-        seed
-      );
-    }
-
-    // ----------------------------------------------------------
-    // WAVES
-    // ----------------------------------------------------------
-
-    if (
-      topic === "waves"
-    ) {
-
-      return this._generateWaves(
-        stem,
-        mode,
-        seed
-      );
-    }
-
-    // ----------------------------------------------------------
-    // DENSITY
-    // ----------------------------------------------------------
-
-    if (
-      topic === "density"
-    ) {
-
-      return this._generateDensity(
-        stem,
-        mode,
-        seed
-      );
-    }
-
-    // ----------------------------------------------------------
-    // ENERGY
-    // ----------------------------------------------------------
-
-    if (
-      stem.toLowerCase().includes("potential energy") ||
-      stem.toLowerCase().includes("gravitational energy") ||
-      stem.toLowerCase().includes("gpe")
-    ) {
-
-      return this._generateEnergy(
-        stem,
-        mode,
-        seed
-      );
-    }
-
-    // ----------------------------------------------------------
-    // MOMENTUM
-    // ----------------------------------------------------------
-
-    if (
-      stem.toLowerCase().includes("momentum") ||
-      stem.toLowerCase().includes("collision")
-    ) {
-
-      return this._generateMomentum(
-        stem,
-        mode,
-        seed
-      );
-    }
-
-    // ----------------------------------------------------------
-    // CONCEPTUAL FALLBACK
-    // ----------------------------------------------------------
-
-    if (
-      qObj.ans &&
-      String(qObj.ans).length > 3
-    ) {
-
-      return this._generateConceptual(
-        stem,
-        mode,
-        seed
-      );
-    }
-
-    // ----------------------------------------------------------
-    // SAFE FALLBACK
-    // ----------------------------------------------------------
-
-    return {
-
-      ...qObj,
-
-      q:
-        stem,
-
-      hint:
-        qObj.hint ||
-        "Identify the physical quantities and the governing physical principle.",
-
-      steps:
-        qObj.steps || [
-          "Identify the known physical quantities.",
-          "Identify the unknown quantity.",
-          "Select the governing equation.",
-          "Substitute values with correct units.",
-          "Check whether the answer is physically reasonable."
-        ],
-
-      concept:
-        "Physics reasoning",
-
-      skill:
-        "Problem solving",
-
-      difficulty:
-        qObj.difficulty || 2,
-
-      modality:
-        "diagnostic"
-    };
+    return this._createSafeFallback(qObj, topic);
   }
 }
