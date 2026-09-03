@@ -17,19 +17,13 @@ export const spacedRepo = {
     try {
       const { sid, cid, userId } = meta;
       const uid = userId || null;
-      
-      let existing = null;
-      if (uid) {
-        existing = await db.spaced_reviews.get([uid, topicId]);
-      } else {
-        const all = await db.spaced_reviews.where("topic_id").equals(topicId).toArray();
-        existing = all.find(r => !r.user_id) || null;
-      }
+
+      const existing = await db.spaced_reviews.get([uid, topicId]).catch(() => null);
 
       const quality = convertToQualityRating(isCorrect, confidence);
       const nextData = calculateNextReview(quality, existing);
 
-      // 1. Write to IndexedDB
+      // 1. Write to IndexedDB scoped strictly to user_id
       await db.spaced_reviews.put({
         user_id: uid,
         topic_id: topicId,
@@ -71,7 +65,8 @@ export const spacedRepo = {
             for (const r of remoteReviews) {
               const topicTitle = r.topic_title || "";
               if (!topicTitle) continue;
-              const existing = await db.spaced_reviews.get([uid, topicTitle]);
+              const existing = await db.spaced_reviews.get([uid, topicTitle]).catch(() => null);
+
               // Only hydrate if local data is absent or stale
               if (!existing || existing.next_review_at !== r.next_review_at) {
                 await db.spaced_reviews.put({
@@ -91,14 +86,15 @@ export const spacedRepo = {
         }
       }
 
-      // Return from local IndexedDB, filtered by user and due date
+      // Return from local IndexedDB, filtered strictly by user_id and due date
       const now = new Date().toISOString();
-      const all = await db.spaced_reviews.toArray();
-      return all.filter(r => {
-        if (r.next_review_at > now) return false;
-        if (uid) return r.user_id === uid;
-        return !r.user_id;
-      });
+      const allUserReviews = await db.spaced_reviews
+        .where("user_id")
+        .equals(uid)
+        .toArray()
+        .catch(() => []);
+
+      return allUserReviews.filter((r) => r.next_review_at <= now);
     } catch (err) {
       console.error("Failed to get due reviews:", err);
       return [];
@@ -110,14 +106,11 @@ export const spacedRepo = {
    */
   async getTopicReviewInfo(topicId, userId = null) {
     try {
-      if (userId) {
-        return await db.spaced_reviews.get([userId, topicId]);
-      }
-      const all = await db.spaced_reviews.where("topic_id").equals(topicId).toArray();
-      return all.find(r => !r.user_id) || null;
+      const uid = userId || null;
+      return await db.spaced_reviews.get([uid, topicId]).catch(() => null);
     } catch (err) {
       console.error("Failed to get topic review info:", err);
       return null;
     }
-  }
+  },
 };

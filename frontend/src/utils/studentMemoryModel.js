@@ -11,8 +11,10 @@
  *    - Diagnostic Confidence Score (How confident Tixar is in its diagnosis)
  */
 
-const MEMORY_STORAGE_KEY = "tixar_student_error_memory_v2";
-const LEGACY_STORAGE_KEY = "tixar_student_error_memory_v1";
+import { getActiveSession } from "../supabase";
+import { getScopedStorageKey } from "./userDataScope";
+
+const MEMORY_BASE_KEY = "tixar_student_error_memory_v2";
 
 const DEFAULT_MEMORY = {
   attempts: [],
@@ -32,19 +34,26 @@ export function calculateRecencyWeight(timestamp) {
   return Math.pow(0.5, Math.max(0, ageDays) / 30);
 }
 
+function getMemoryStorageKey(userId = null) {
+  const session = getActiveSession();
+  const activeUserId = userId || session?.user?.id || session?.user_id || null;
+  return getScopedStorageKey(MEMORY_BASE_KEY, activeUserId);
+}
+
 /**
- * Safely load student error history from localStorage.
- * Handles migration from v1 memory structure seamlessly.
+ * Safely load student error history from localStorage scoped strictly per user.
  *
+ * @param {string|null} [userId=null]
  * @returns {Object}
  */
-export function getStudentMemory() {
+export function getStudentMemory(userId = null) {
   try {
     if (typeof localStorage === "undefined") {
       return { ...DEFAULT_MEMORY };
     }
 
-    const raw = localStorage.getItem(MEMORY_STORAGE_KEY) || localStorage.getItem(LEGACY_STORAGE_KEY);
+    const key = getMemoryStorageKey(userId);
+    const raw = localStorage.getItem(key);
 
     if (!raw) {
       return { ...DEFAULT_MEMORY };
@@ -68,17 +77,19 @@ export function getStudentMemory() {
 }
 
 /**
- * Save student memory safely.
+ * Save student memory safely for a specific user.
  *
  * @param {Object} memory
+ * @param {string|null} [userId=null]
  */
-function saveStudentMemory(memory) {
+function saveStudentMemory(memory, userId = null) {
   try {
     if (typeof localStorage === "undefined") {
       return false;
     }
 
-    localStorage.setItem(MEMORY_STORAGE_KEY, JSON.stringify(memory));
+    const key = getMemoryStorageKey(userId);
+    localStorage.setItem(key, JSON.stringify(memory));
     return true;
   } catch (error) {
     console.warn("[DiagnosticMemory] Failed to save memory:", error);
@@ -214,18 +225,27 @@ export function recordErrorAndGetRecurrence(topicId, errorCategory) {
 }
 
 /**
- * Clear all diagnostic memory.
+ * Clear diagnostic memory for a specific user.
+ *
+ * @param {string|null} [userId=null]
  */
-export function clearStudentMemory() {
+export function clearStudentMemory(userId = null) {
   try {
     if (typeof localStorage === "undefined") {
       return;
     }
-    localStorage.removeItem(MEMORY_STORAGE_KEY);
-    localStorage.removeItem(LEGACY_STORAGE_KEY);
+    const key = getMemoryStorageKey(userId);
+    localStorage.removeItem(key);
   } catch (error) {
     console.warn("[DiagnosticMemory] Failed to clear memory:", error);
   }
+}
+
+/**
+ * Clear in-memory diagnostic state caches during user transitions.
+ */
+export function clearStudentMemoryCache() {
+  clearStudentMemory(null);
 }
 
 /**

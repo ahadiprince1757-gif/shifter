@@ -445,9 +445,15 @@ app.post("/api/analytics/events", async (req, res) => {
       const { sid, cid, topic, event_type, user_id } = evt;
       if (!sid || !cid || !topic || !event_type) continue;
 
-      // Strict User Resolution: Require resolved auth token user_id or provided payload user_id
-      const targetUserId = authUserId || user_id || null;
-      if (!targetUserId) continue; // Skip unauthenticated anonymous events to prevent global data contamination
+      if (!authUserId) continue;
+
+      // Anti-spoofing rejection: Explicitly reject cross-account data submissions
+      if (user_id && user_id !== authUserId) {
+        logger.warn("ANALYTICS_REJECTED_CROSS_ACCOUNT", { authUserId, payloadUserId: user_id, topic });
+        continue;
+      }
+
+      const targetUserId = authUserId;
 
       const { data: contentRow, error: contentErr } = await supabase
         .from("content_view")

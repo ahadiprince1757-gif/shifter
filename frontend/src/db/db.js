@@ -37,33 +37,16 @@ db.version(12).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
-// Version 14: Comprehensive data reset — wipe all user progress stores, clear telemetry queue, and delete legacy TixarProgressDB
-db.version(14).stores({
+// Version 15: Compound indexes for strict identity isolation across user mistakes and spaced reviews
+db.version(15).stores({
   curriculum: "id, is_deleted",
   topics: "id, curriculum_id, chapter_id, is_deleted",
-  user_progress: "id, user_id, topic_id, sync_status, updated_at",
+  user_progress: "[user_id+topic_id], id, user_id, topic_id, sync_status, updated_at",
   change_log: "++id, type, entity_id, synced, timestamp",
   sync_metadata: "table_name, last_synced_at",
-  user_mistakes: "++id, user_id, topic_id, subject_id, chapter_id, question_index, resolved, updated_at",
+  user_mistakes: "++id, [user_id+topic_id+question_index], [user_id+topic_id], user_id, topic_id, subject_id, chapter_id, question_index, resolved, updated_at",
   spaced_reviews: "[user_id+topic_id], user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions, updated_at",
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
-}).upgrade(async (tx) => {
-  await Promise.all([
-    tx.table("user_progress").clear(),
-    tx.table("user_mistakes").clear(),
-    tx.table("spaced_reviews").clear(),
-    tx.table("user_notes").clear(),
-    tx.table("change_log").clear(),
-  ]);
-  try {
-    localStorage.removeItem("shifter_learning_events");
-    localStorage.removeItem("Tixar_mastered");
-    Object.keys(localStorage)
-      .filter((k) => k.startsWith("lastTopic_") || k.startsWith("Tixar_mastered_"))
-      .forEach((k) => localStorage.removeItem(k));
-    await Dexie.delete("TixarProgressDB").catch(() => {});
-  } catch { /* ignore */ }
-  console.log("[db v14] Total data reset completed — stores, telemetry queue, and legacy DBs purged.");
 });
 
 

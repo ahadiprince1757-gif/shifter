@@ -4,6 +4,7 @@ import { supabase } from "../supabase";
 import toast from "react-hot-toast";
 import { AuthContext } from "./AuthContext";
 import { clearUserDataForUserSwitch, migrateGuestDataToUser } from "../utils/userCleanup";
+import { handleUserSwitch } from "../utils/userSwitchTransaction";
 
 const SESSION_CACHE_KEY = "shifter_cached_session";
 const CURRENT_USER_ID_KEY = "shifter_current_user_id";
@@ -82,6 +83,7 @@ export function AuthProvider({ children }) {
 
         if (newSession) {
           if (prevUserId && newUserId && prevUserId !== newUserId) {
+            await handleUserSwitch({ previousUserId: prevUserId, nextUserId: newUserId });
             await clearUserDataForUserSwitch();
           }
           if (newUserId) {
@@ -113,6 +115,7 @@ export function AuthProvider({ children }) {
           }
         } else if (event === "SIGNED_OUT" || !newSession) {
           if (event === "SIGNED_OUT") {
+            await handleUserSwitch({ previousUserId: prevUserId, nextUserId: null });
             await clearUserDataForUserSwitch();
             cacheSession(null);
             setSession(null);

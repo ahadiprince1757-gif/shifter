@@ -10,12 +10,12 @@ export const mistakeRepo = {
     try {
       const uid = userId || null;
 
-      // 1. Write to IndexedDB (always, offline-first)
-      // Find existing record scoped to this user + topic + question
-      const all = await db.user_mistakes
-        .where({ topic_id: topicId, question_index: questionIndex })
-        .toArray();
-      const existing = all.find(m => m.user_id === uid);
+      // 1. Write to IndexedDB using compound user index
+      const existing = await db.user_mistakes
+        .where("[user_id+topic_id+question_index]")
+        .equals([uid, topicId, questionIndex])
+        .first()
+        .catch(() => null);
 
       if (existing) {
         await db.user_mistakes.update(existing.id, {
@@ -46,12 +46,12 @@ export const mistakeRepo = {
         apiSaveMistake({
           sid: subjectId,
           cid: chapterId,
-          topicTitle: topicId,   // topicId here is the topic title string
+          topicTitle: topicId,
           questionIndex,
           questionText: questionText || "",
           correctAnswer: correctAnswer || "",
           solution: solution || "",
-        }).catch(() => {});       // silently ignore if not logged in or offline
+        }).catch(() => {});
       }
     } catch (err) {
       console.error("Failed to save mistake:", err);
@@ -59,7 +59,7 @@ export const mistakeRepo = {
   },
 
   /**
-   * Get all unresolved mistakes for a user.
+   * Get all unresolved mistakes for a specific user.
    * Hydrates from Supabase on first call if online.
    */
   async getUnresolvedMistakes(userId) {
@@ -71,12 +71,14 @@ export const mistakeRepo = {
         try {
           const remoteMistakes = await fetchMistakes();
           if (Array.isArray(remoteMistakes) && remoteMistakes.length > 0) {
-            // Hydrate local IndexedDB with remote data
             for (const m of remoteMistakes) {
               const topicId = m.topics?.title || m.topic_id?.toString() || "";
               const existing = await db.user_mistakes
-                .where({ topic_id: topicId, question_index: m.question_index })
-                .first();
+                .where("[user_id+topic_id+question_index]")
+                .equals([uid, topicId, m.question_index])
+                .first()
+                .catch(() => null);
+
               if (!existing) {
                 await db.user_mistakes.add({
                   user_id: uid,
@@ -100,12 +102,14 @@ export const mistakeRepo = {
         }
       }
 
-      // Return from local IndexedDB, filtered by user
-      return await db.user_mistakes.filter(m => {
-        if (m.resolved) return false;
-        if (uid) return m.user_id === uid;
-        return !m.user_id;
-      }).toArray();
+      // Return from local IndexedDB, strictly filtered by user_id compound index
+      const allUserMistakes = await db.user_mistakes
+        .where("user_id")
+        .equals(uid)
+        .toArray()
+        .catch(() => []);
+
+      return allUserMistakes.filter((m) => !m.resolved);
     } catch (err) {
       console.error("Failed to fetch unresolved mistakes:", err);
       return [];
@@ -115,11 +119,14 @@ export const mistakeRepo = {
   /**
    * Mark a specific mistake as resolved in IndexedDB and Supabase.
    */
-  async resolveMistake(topicId, questionIndex, { subjectId, chapterId } = {}) {
+  async resolveMistake(topicId, questionIndex, { subjectId, chapterId, userId = null } = {}) {
     try {
+      const uid = userId || null;
       const existing = await db.user_mistakes
-        .where({ topic_id: topicId, question_index: questionIndex })
-        .first();
+        .where("[user_id+topic_id+question_index]")
+        .equals([uid, topicId, questionIndex])
+        .first()
+        .catch(() => null);
 
       if (existing) {
         await db.user_mistakes.update(existing.id, {
@@ -128,7 +135,6 @@ export const mistakeRepo = {
           updated_at: new Date().toISOString(),
         });
 
-        // Sync resolve to Supabase
         const sid = subjectId || existing.subject_id;
         const cid = chapterId || existing.chapter_id;
         if (sid && cid && networkService.isOnline) {
@@ -148,18 +154,23 @@ export const mistakeRepo = {
   /**
    * Clear resolved mistakes older than 30 days.
    */
-  async cleanupOldResolved() {
+  async cleanupOldResolved(userId = null) {
     try {
+      const uid = userId || null;
       const cutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
       const old = await db.user_mistakes
-        .filter(m => m.resolved && m.resolved_at < cutoff)
-        .toArray();
-      const ids = old.map(m => m.id);
+        .where("user_id")
+        .equals(uid)
+        .filter((m) => m.resolved && m.resolved_at < cutoff)
+        .toArray()
+        .catch(() => []);
+
+      const ids = old.map((m) => m.id);
       if (ids.length > 0) {
         await db.user_mistakes.bulkDelete(ids);
       }
     } catch (err) {
       console.error("Failed to cleanup old mistakes:", err);
     }
-  }
+  },
 };

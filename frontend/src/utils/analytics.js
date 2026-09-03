@@ -1,8 +1,9 @@
 import { getActiveSession } from "../supabase";
+import { getScopedStorageKey } from "./userDataScope";
 
-// Event-driven learning analytics telemetry queue and synchronization
-const QUEUE_KEY = "shifter_learning_events";
+const QUEUE_BASE_KEY = "tixar_learning_events";
 const MAX_QUEUE_SIZE = 5000;
+const activeSyncs = new Set();
 
 /**
  * Standardized Learning Event Vocabulary for Tixar's Student Brain
@@ -31,19 +32,34 @@ export const LEARNING_EVENTS = {
 };
 
 /**
- * Helper to generate a random unique ID for event deduplication
+ * Helper to generate a random unique UUID for event deduplication
  */
 function generateId() {
-  return `${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  if (typeof crypto !== "undefined" && typeof crypto.randomUUID === "function") {
+    return crypto.randomUUID();
+  }
+  return `${Date.now()}_${Math.random().toString(36).substring(2, 11)}`;
 }
 
 /**
- * Retrieve all queued events from local storage
+ * Calculates storage key scoped strictly to userId
  */
-export function getQueuedEvents() {
+function getQueueStorageKey(userId) {
+  return getScopedStorageKey(QUEUE_BASE_KEY, userId || null);
+}
+
+/**
+ * Retrieve all queued events for a specific user from local storage
+ */
+export function getQueuedEvents(userId = null) {
   try {
-    const data = localStorage.getItem(QUEUE_KEY);
-    return data ? JSON.parse(data) : [];
+    const key = getQueueStorageKey(userId);
+    const data = localStorage.getItem(key);
+    const events = data ? JSON.parse(data) : [];
+
+    // Defensive filtering: ensure only events belonging to target userId are returned
+    const targetUserId = userId || null;
+    return events.filter((evt) => (evt.user_id || null) === targetUserId);
   } catch (e) {
     console.error("[Telemetry] Failed to read event queue from localStorage", e);
     return [];
@@ -51,14 +67,49 @@ export function getQueuedEvents() {
 }
 
 /**
- * Overwrite/save the queue to local storage
+ * Overwrite/save the queue for a specific user to local storage
  */
-export function saveQueuedEvents(events) {
+export function saveQueuedEvents(userId, events) {
   try {
-    localStorage.setItem(QUEUE_KEY, JSON.stringify(events));
+    const key = getQueueStorageKey(userId);
+    const targetUserId = userId || null;
+    const safeEvents = events.filter((evt) => (evt.user_id || null) === targetUserId);
+    localStorage.setItem(key, JSON.stringify(safeEvents));
   } catch (e) {
     console.error("[Telemetry] Failed to save event queue to localStorage", e);
   }
+}
+
+/**
+ * Halt background sync for a specific user
+ */
+export function haltSyncForUser(userId) {
+  if (userId) {
+    activeSyncs.delete(userId);
+  }
+}
+
+/**
+ * Clear queued events for a specific user
+ */
+export function clearQueuedEventsForUser(userId = null) {
+  try {
+    const key = getQueueStorageKey(userId);
+    localStorage.removeItem(key);
+    console.log(`[Telemetry] Cleared telemetry event queue for ${userId || "guest"}`);
+  } catch (e) {
+    console.error("[Telemetry] Failed to clear telemetry event queue", e);
+  }
+}
+
+/**
+ * Backward compatible clearQueuedEvents (clears guest and active session events)
+ */
+export function clearQueuedEvents() {
+  const session = getActiveSession();
+  const userId = session?.user?.id || session?.user_id || null;
+  clearQueuedEventsForUser(userId);
+  clearQueuedEventsForUser(null);
 }
 
 /**
@@ -95,11 +146,13 @@ export function recordLearningEvent({
     return;
   }
 
-  const events = getQueuedEvents();
+  const session = getActiveSession();
+  const activeUserId = userId || session?.user?.id || session?.user_id || null;
+  const events = getQueuedEvents(activeUserId);
 
   const newEvent = {
     id: generateId(),
-    user_id: userId || null,
+    user_id: activeUserId,
     subject_id: subjectId,
     chapter_id: chapterId || null,
     topic: topic || null,
@@ -127,23 +180,21 @@ export function recordLearningEvent({
 
   events.push(newEvent);
 
-  // Prevent local queue overflow during prolonged offline periods
   if (events.length > MAX_QUEUE_SIZE) {
     events.splice(0, events.length - MAX_QUEUE_SIZE);
   }
 
-  saveQueuedEvents(events);
+  saveQueuedEvents(activeUserId, events);
   console.log(
-    `[Telemetry] Recorded learning event: ${type} -> ${subjectId}/${chapterId || "general"}/${topic || "general"}`
+    `[Telemetry] Recorded learning event: ${type} -> ${subjectId}/${chapterId || "general"}/${topic || "general"} [${activeUserId || "guest"}]`
   );
 
   // Trigger sync asynchronously in the background
-  triggerSync();
+  triggerSync(activeUserId);
 }
 
 /**
  * Backward-compatible legacy recordEvent wrapper
- * Maps (sid, cid, topic, type, userId) calls to recordLearningEvent
  */
 export function recordEvent(sid, cid, topic, type, userId = null) {
   const mappedType =
@@ -165,27 +216,32 @@ export function recordEvent(sid, cid, topic, type, userId = null) {
   });
 }
 
-let syncInProgress = false;
-
 /**
- * Sync queued events to backend in batches
+ * Sync queued events to backend with identity validation & double-check safety
  */
-export async function triggerSync() {
-  if (syncInProgress) return;
+export async function triggerSync(targetUserId = null) {
+  const session = getActiveSession();
+  const activeUserId = targetUserId || session?.user?.id || session?.user_id || null;
 
-  const events = getQueuedEvents();
+  if (!activeUserId) return; // Do not push unauthenticated guest telemetry to server
+  if (activeSyncs.has(activeUserId)) return;
+
+  const events = getQueuedEvents(activeUserId);
   if (events.length === 0) return;
 
-  syncInProgress = true;
+  activeSyncs.add(activeUserId);
   const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
   const syncUrl = `${VITE_API_URL.replace(/\/$/, "")}/api/analytics/events`;
 
-  // Capture the batch of event IDs we are trying to sync
-  const batchToSync = [...events];
-  const batchIds = new Set(batchToSync.map((e) => e.id));
+  const safeEvents = events.filter((e) => e.user_id === activeUserId);
+  if (safeEvents.length === 0) {
+    activeSyncs.delete(activeUserId);
+    return;
+  }
+
+  const batchIds = new Set(safeEvents.map((e) => e.id));
 
   try {
-    const session = await Promise.resolve(getActiveSession());
     const headers = {
       "Content-Type": "application/json",
     };
@@ -196,45 +252,47 @@ export async function triggerSync() {
     const res = await fetch(syncUrl, {
       method: "POST",
       headers,
-      body: JSON.stringify({ events: batchToSync }),
+      body: JSON.stringify({ events: safeEvents }),
     });
 
     if (res.ok) {
-      console.log(`[Telemetry] Successfully synced ${batchToSync.length} events to the backend.`);
-      // Retrieve the current queue state in case new events were added while syncing
-      const currentEvents = getQueuedEvents();
-      // Filter out only the events that we successfully synced
+      // Re-verify session identity before mutating local storage queue
+      const latestSession = getActiveSession();
+      const latestUserId = latestSession?.user?.id || latestSession?.user_id || null;
+
+      if (latestUserId !== activeUserId) {
+        console.warn(`[Telemetry] User changed during sync (${activeUserId} -> ${latestUserId}). Preserving queue.`);
+        return;
+      }
+
+      console.log(`[Telemetry] Successfully synced ${safeEvents.length} events for user ${activeUserId}.`);
+      const currentEvents = getQueuedEvents(activeUserId);
       const remainingEvents = currentEvents.filter((e) => !batchIds.has(e.id));
-      saveQueuedEvents(remainingEvents);
+      saveQueuedEvents(activeUserId, remainingEvents);
     } else {
       console.warn(`[Telemetry] Sync failed with status: ${res.status}`);
     }
   } catch (err) {
     console.warn("[Telemetry] Sync failed (offline mode):", err.message);
   } finally {
-    syncInProgress = false;
+    activeSyncs.delete(activeUserId);
   }
 }
 
-/**
- * Clear all queued telemetry events from local storage
- */
-export function clearQueuedEvents() {
-  try {
-    localStorage.removeItem(QUEUE_KEY);
-    console.log("[Telemetry] Telemetry event queue cleared.");
-  } catch (e) {
-    console.error("[Telemetry] Failed to clear telemetry event queue", e);
-  }
-}
-
-// Automatically retry sync when network connectivity returns or app boots
+// Retry sync on reconnection
 if (typeof window !== "undefined") {
   window.addEventListener("online", () => {
-    console.log("[Telemetry] Internet connection restored. Initiating telemetry sync.");
-    triggerSync();
+    const session = getActiveSession();
+    const activeUserId = session?.user?.id || session?.user_id || null;
+    if (activeUserId) {
+      console.log("[Telemetry] Internet connection restored. Initiating telemetry sync.");
+      triggerSync(activeUserId);
+    }
   });
 
-  // Attempt initial sync shortly after module load
-  setTimeout(() => triggerSync(), 1500);
+  setTimeout(() => {
+    const session = getActiveSession();
+    const activeUserId = session?.user?.id || session?.user_id || null;
+    if (activeUserId) triggerSync(activeUserId);
+  }, 1500);
 }
