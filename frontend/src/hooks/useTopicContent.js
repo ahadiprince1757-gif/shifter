@@ -49,7 +49,7 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
           toast.error("Failed to load notes. Please check your internet connection.");
         }
       });
-  }, [subject?.id, chapter?.id, topic, userId, hasParams, contentRecord]);
+  }, [subject?.id, chapter?.id, topic, userId, hasParams]);
 
   return { content, loading, error };
 }
