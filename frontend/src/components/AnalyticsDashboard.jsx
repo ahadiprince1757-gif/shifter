@@ -25,15 +25,61 @@ function formatTitle(str) {
     .join(" ");
 }
 
+/** Semi-Circle Arc Gauge SVG Component */
+function ReadinessArcGauge({ score = 0, confidence = "HIGH" }) {
+  const radius = 40;
+  const strokeWidth = 8;
+  const circumference = Math.PI * radius; // ~125.66
+  const safeScore = Math.min(Math.max(score, 0), 100);
+  const progressOffset = circumference * (1 - safeScore / 100);
+
+  return (
+    <div className="readiness-gauge-wrapper">
+      <svg viewBox="0 0 100 58" className="readiness-arc-svg">
+        {/* Background Arc */}
+        <path
+          d="M 10 48 A 40 40 0 0 1 90 48"
+          fill="none"
+          stroke="var(--bd2, #e2e8f0)"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+        />
+        {/* Progress Arc */}
+        <path
+          d="M 10 48 A 40 40 0 0 1 90 48"
+          fill="none"
+          stroke="#1d6bf3"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={progressOffset}
+          style={{ transition: "stroke-dashoffset 0.8s ease-in-out" }}
+        />
+        {/* Inner Score Text */}
+        <text x="50" y="38" textAnchor="middle" className="gauge-score-text">
+          {safeScore}%
+        </text>
+        <text x="50" y="48" textAnchor="middle" className="gauge-label-text">
+          Readiness
+        </text>
+      </svg>
+      <div className="gauge-confidence-tag">
+        Confidence: <span className="confidence-val">{confidence}</span>
+      </div>
+    </div>
+  );
+}
+
 export default function AnalyticsDashboard() {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("focus"); // 'focus' | 'review' | 'mistakes'
+  const [topicFilterTab, setTopicFilterTab] = useState("needs_attention"); // 'needs_attention' | 'weak' | 'strong'
   const [dueReviews, setDueReviews] = useState([]);
   const [unresolvedMistakes, setUnresolvedMistakes] = useState([]);
+  const [showCognitiveDetails, setShowCognitiveDetails] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -54,13 +100,13 @@ export default function AnalyticsDashboard() {
 
   if (loading) {
     return (
-      <div className="analytics-dashboard clean-view">
-        <div className="analytics-hero">
-          <h2 className="analytics-hero-title">Learning Intelligence</h2>
-          <p className="analytics-hero-sub">Analyzing learning evidence...</p>
+      <div className="analytics-v2-container">
+        <div className="analytics-v2-header">
+          <h1 className="analytics-v2-title">Learning Intelligence</h1>
+          <p className="analytics-v2-sub">Analyzing learning evidence...</p>
         </div>
         <div style={{ marginTop: "1.5rem" }}>
-          <SkeletonLoader type="list" count={2} />
+          <SkeletonLoader type="list" count={3} />
         </div>
       </div>
     );
@@ -68,8 +114,10 @@ export default function AnalyticsDashboard() {
 
   if (error) {
     return (
-      <div className="analytics-error">
-        <p>{error}</p>
+      <div className="analytics-v2-container">
+        <div className="analytics-error-box">
+          <p>{error}</p>
+        </div>
       </div>
     );
   }
@@ -119,17 +167,6 @@ export default function AnalyticsDashboard() {
     }
   };
 
-  const handleReviewTopic = (item) => {
-    const sid = item.subject_id || item.sid;
-    const cid = item.chapter_id || item.chapter_key || item.cid;
-    const topic = item.topic_title || item.topic_id || item.topic;
-    if (sid && cid && topic) {
-      navigate(`/learn/${sid}/${cid}/${encodeURIComponent(topic)}`);
-    } else {
-      navigate("/subjects");
-    }
-  };
-
   const handlePrimaryAction = () => {
     if (recommendation.route) {
       navigate(recommendation.route);
@@ -138,11 +175,25 @@ export default function AnalyticsDashboard() {
     }
   };
 
-  const TABS = [
-    { id: "focus", label: "Focus Areas", count: mostFailed.length },
-    { id: "review", label: "Due for Review", count: dueReviews.length, highlight: dueReviews.length > 0 },
-    { id: "mistakes", label: "Mistake Journal", count: unresolvedMistakes.length, highlight: unresolvedMistakes.length > 0 },
-  ];
+  // Compile topic lists for "Topics to Focus On" tabs
+  const needsAttentionList = masteryMap?.weakTopics?.length > 0 
+    ? masteryMap.weakTopics 
+    : mostFailed;
+
+  const weakList = attempts
+    .filter((a) => !a.correct)
+    .map((a) => ({ topic_title: a.topic, mastery: 0 }));
+
+  const strongList = masteryMap?.strongTopics?.length > 0 
+    ? masteryMap.strongTopics 
+    : mostPassed;
+
+  let currentFilteredList = needsAttentionList;
+  if (topicFilterTab === "weak") {
+    currentFilteredList = weakList;
+  } else if (topicFilterTab === "strong") {
+    currentFilteredList = strongList;
+  }
 
   const cognitiveDimensions = [
     { label: "Recognition", val: cognitiveMastery.RECOGNITION, color: "#38bdf8" },
@@ -153,329 +204,220 @@ export default function AnalyticsDashboard() {
   ];
 
   return (
-    <div className="analytics-dashboard clean-view">
-      {/* Header */}
-      <div className="analytics-hero">
-        <h2 className="analytics-hero-title">Learning Intelligence</h2>
-        <p className="analytics-hero-sub">
-          Evidence-grounded readiness decisioning and personalized learning bottleneck diagnosis.
-        </p>
-      </div>
-
-      {/* 1. UNIFIED READINESS & BOTTLENECK ACTION CARD */}
-      <div
-        style={{
-          marginTop: "1.2rem",
-          padding: "1.4rem 1.5rem",
-          background: "var(--sur, #ffffff)",
-          border: "1px solid var(--bd, rgba(0, 0, 0, 0.08))",
-          borderRadius: "14px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "1.2rem",
-          boxShadow: "0 2px 12px rgba(0, 0, 0, 0.02)",
-        }}
-      >
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: "0.8rem" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: "0.6rem" }}>
-            <span
-              style={{
-                padding: "0.25rem 0.6rem",
-                borderRadius: "6px",
-                fontWeight: 700,
-                fontSize: "0.78rem",
-                background: overview.isReady ? "rgba(16, 185, 129, 0.15)" : "rgba(245, 158, 11, 0.15)",
-                color: overview.isReady ? "#059669" : "#d97706",
-              }}
-            >
-              {overview.readinessLabel}
-            </span>
-            <span style={{ fontSize: "0.8rem", color: "var(--t2, #64748b)" }}>
-              Confidence: {overview.evidenceConfidence}
-            </span>
+    <div className="analytics-v2-container">
+      {/* 0. HEADER */}
+      <header className="analytics-v2-header">
+        <div className="analytics-v2-brand">
+          <div className="analytics-v2-logo-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="#1d6bf3">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
           </div>
-          <div style={{ fontSize: "1.5rem", fontWeight: 800, color: "var(--t, #0f172a)" }}>
-            {overview.readinessScore}% <span style={{ fontSize: "0.8rem", fontWeight: 500, color: "var(--t2)" }}>Readiness</span>
-          </div>
-        </div>
-
-        <div
-          style={{
-            padding: "1rem 1.2rem",
-            background: "var(--bg, #f8fafc)",
-            borderRadius: "10px",
-            border: "1px solid var(--bd, rgba(0,0,0,0.05))",
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            flexWrap: "wrap",
-            gap: "1rem",
-          }}
-        >
-          <div style={{ flex: "1", minWidth: "220px" }}>
-            <div style={{ fontSize: "0.75rem", fontWeight: 700, textTransform: "uppercase", color: "var(--t2, #64748b)", letterSpacing: "0.04em" }}>
-              Primary Bottleneck
-            </div>
-            <div style={{ fontSize: "1.05rem", fontWeight: 700, color: "var(--t, #0f172a)", marginTop: "0.2rem" }}>
-              {recommendation.title}
-            </div>
-            <div style={{ fontSize: "0.85rem", color: "var(--t2, #475569)", marginTop: "0.2rem" }}>
-              {recommendation.reason}
-            </div>
-          </div>
-
-          <button
-            className="clean-action-btn primary"
-            style={{ padding: "0.55rem 1.1rem", fontWeight: 700, fontSize: "0.88rem" }}
-            onClick={handlePrimaryAction}
-          >
-            {recommendation.buttonLabel} →
-          </button>
-        </div>
-      </div>
-
-      {/* 2. CORE METRICS ROW */}
-      <div className="analytics-overview-card" style={{ marginTop: "1.2rem" }}>
-        <div className="analytics-metric">
-          <span className="metric-val">{accuracyRate}%</span>
-          <span className="metric-lbl">Quiz Accuracy</span>
-        </div>
-        <div className="metric-divider" />
-        <div className="analytics-metric">
-          <span className="metric-val">{dueReviews.length}</span>
-          <span className="metric-lbl">Due Reviews</span>
-        </div>
-        <div className="metric-divider" />
-        <div className="analytics-metric">
-          <span className="metric-val">{unresolvedMistakes.length}</span>
-          <span className="metric-lbl">Active Mistakes</span>
-        </div>
-      </div>
-
-      {/* CBC Overall Performance */}
-      {totalQuizzes > 0 && (
-        <div className="analytics-progress-bar-container">
-          <div className="progress-bar-header">
-            <span>Overall Performance</span>
-            <div style={{ display: "flex", gap: "0.5rem", alignItems: "center" }}>
-              <span
-                style={{
-                  background: cbc.badgeBg,
-                  color: cbc.badgeText,
-                  padding: "0.2rem 0.5rem",
-                  borderRadius: "6px",
-                  fontWeight: 700,
-                  fontSize: "0.75rem",
-                  border: `1px solid ${cbc.badgeText}40`,
-                }}
-              >
-                CBC {cbc.level} · {cbc.points}/8 pts
-              </span>
-              <span>{accuracyRate}% Accuracy ({totalPasses}/{totalQuizzes} correct)</span>
-            </div>
-          </div>
-          <div className="progress-track">
-            <div className="progress-fill-pass" style={{ width: `${accuracyRate}%` }} />
-          </div>
-          <div style={{ fontSize: "0.75rem", color: "var(--t2)", marginTop: "0.35rem" }}>
-            {cbc.category} — {cbc.description}
-          </div>
-        </div>
-      )}
-
-      {/* 3. TRUTHFUL COGNITIVE EVIDENCE BREAKDOWN */}
-      <div className="knowledge-state-card">
-        <div className="knowledge-state-header">
           <div>
-            <h3 className="knowledge-state-title">Evidence-Based Cognitive Mastery</h3>
-            <p className="knowledge-state-subtitle">Directly measured from tagged student attempt evidence</p>
+            <h1 className="analytics-v2-title">Learning Intelligence</h1>
+            <p className="analytics-v2-sub">Your learning. Measured. Improved.</p>
           </div>
         </div>
+      </header>
 
-        <div className="knowledge-state-grid">
-          {cognitiveDimensions.map((dim) => (
-            <div key={dim.label} className="knowledge-state-dim-card">
-              <div className="knowledge-state-dim-label">
-                <span>{dim.label}</span>
-                {dim.val !== null ? (
-                  <span style={{ fontWeight: 700, color: dim.color }}>{dim.val}%</span>
-                ) : (
-                  <span style={{ fontSize: "0.75rem", color: "var(--t2, #94a3b8)" }}>No evidence yet</span>
-                )}
-              </div>
-              <div className="knowledge-state-dim-track">
-                {dim.val !== null ? (
-                  <div style={{ width: `${dim.val}%`, height: "100%", background: dim.color, borderRadius: "3px" }} />
-                ) : (
-                  <div style={{ width: "100%", height: "100%", background: "rgba(0,0,0,0.04)", borderRadius: "3px" }} />
-                )}
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* 4. KNOWLEDGE MAP: STRONG TOPICS VS WEAK TOPICS */}
-        <div style={{ marginTop: "1.2rem", paddingTop: "1rem", borderTop: "1px solid var(--bd, rgba(0,0,0,0.06))" }}>
-          <div style={{ fontSize: "0.9rem", fontWeight: 700, color: "var(--t, #0f172a)", marginBottom: "0.8rem" }}>
-            Knowledge Map
-          </div>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "1rem" }}>
-            {/* Strong Topics */}
-            <div style={{ padding: "0.8rem 1rem", background: "rgba(16, 185, 129, 0.04)", borderRadius: "8px", border: "1px solid rgba(16, 185, 129, 0.15)" }}>
-              <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#059669", marginBottom: "0.4rem" }}>
-                Strong Topics ({masteryMap?.strongTopics?.length || 0})
-              </div>
-              {masteryMap?.strongTopics?.length > 0 ? (
-                masteryMap.strongTopics.map((t, idx) => (
-                  <div key={idx} style={{ fontSize: "0.84rem", color: "var(--t)", padding: "0.2rem 0" }}>
-                    {formatTitle(t.topic)} ({t.performanceScore ?? t.mastery ?? 0}%)
-                  </div>
-                ))
-              ) : (
-                <div style={{ fontSize: "0.8rem", color: "var(--t2)" }}>No verified strong topics yet</div>
-              )}
-            </div>
-
-            {/* Weak Topics & Gaps */}
-            <div style={{ padding: "0.8rem 1rem", background: "rgba(239, 68, 68, 0.04)", borderRadius: "8px", border: "1px solid rgba(239, 68, 68, 0.15)" }}>
-              <div style={{ fontSize: "0.8rem", fontWeight: 700, color: "#dc2626", marginBottom: "0.4rem" }}>
-                Needs Attention ({masteryMap?.weakTopics?.length || 0})
-              </div>
-              {masteryMap?.weakTopics?.length > 0 ? (
-                masteryMap.weakTopics.map((t, idx) => (
-                  <div key={idx} style={{ fontSize: "0.84rem", color: "var(--t)", padding: "0.2rem 0" }}>
-                    {formatTitle(t.topic)} ({t.performanceScore ?? t.mastery ?? 0}%)
-                  </div>
-                ))
-              ) : (
-                <div style={{ fontSize: "0.8rem", color: "var(--t2)" }}>No critical weak spots detected</div>
-              )}
+      {/* 1. READINESS CARD */}
+      <div className="readiness-v2-card">
+        <div className="readiness-v2-top">
+          <div className="readiness-v2-info">
+            <div className="readiness-v2-label">READINESS</div>
+            <div className="readiness-v2-score">{overview.readinessScore}%</div>
+            <div className="readiness-v2-status">{overview.readinessLabel}</div>
+            <div className="readiness-v2-subtext">
+              {overview.isReady ? "All core prerequisites met" : "Critical gap detected"}
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* 5. ACTION TABS */}
-      <div className="analytics-tabs" role="tablist" style={{ marginTop: "1.5rem" }}>
-        {TABS.map((tab) => (
-          <button
-            key={tab.id}
-            className={`analytics-tab-btn ${activeTab === tab.id ? "active" : ""} ${tab.highlight ? "analytics-tab-btn--alert" : ""}`}
-            onClick={() => setActiveTab(tab.id)}
-            role="tab"
-            aria-selected={activeTab === tab.id}
-          >
-            {tab.label}
-            <span className="analytics-tab-count">{tab.count}</span>
+          <ReadinessArcGauge
+            score={overview.readinessScore}
+            confidence={overview.evidenceConfidence}
+          />
+        </div>
+
+        {/* Primary Bottleneck Banner */}
+        <div className="primary-bottleneck-v2-banner">
+          <div className="bottleneck-v2-content">
+            <div className="bottleneck-v2-tag">PRIMARY BOTTLENECK</div>
+            <div className="bottleneck-v2-title">
+              {formatTitle(recommendation.title || "Laboratory Safety and Apparatus")}
+            </div>
+            <div className="bottleneck-v2-desc">
+              {recommendation.reason || "Your mastery is currently 0%, creating a prerequisite gap."}
+            </div>
+          </div>
+          <button className="repair-gap-v2-btn" onClick={handlePrimaryAction}>
+            {recommendation.buttonLabel || "Repair This Gap"} →
           </button>
-        ))}
+        </div>
       </div>
 
-      {/* Tab Panels */}
-      <div className="analytics-tab-panel">
+      {/* 2. CORE METRICS 3-COLUMN GRID */}
+      <div className="metrics-v2-grid">
+        <div className="metric-v2-card">
+          <div className="metric-v2-val">{accuracyRate}%</div>
+          <div className="metric-v2-lbl">Quiz Accuracy</div>
+          <div className="metric-v2-sub">{totalPasses} / {totalQuizzes} correct</div>
+        </div>
 
-        {/* 1. FOCUS AREAS */}
-        {activeTab === "focus" && (
-          <div className="clean-card">
-            <div className="clean-card-header">
-              <h3>Topics Needing Practice</h3>
-              <p>Topics where questions were missed — practice these to raise your score.</p>
+        <div className="metric-v2-card" onClick={() => navigate("/analytics")}>
+          <div className="metric-v2-val">{dueReviews.length}</div>
+          <div className="metric-v2-lbl">Due Reviews</div>
+          <div className="metric-v2-sub">
+            {dueReviews.length > 0 ? "Review now" : "Keep it up!"}
+          </div>
+        </div>
+
+        <div className="metric-v2-card" onClick={() => navigate("/mistakes")}>
+          <div className="metric-v2-val">{unresolvedMistakes.length}</div>
+          <div className="metric-v2-lbl">Active Mistake</div>
+          <div className="metric-v2-sub">
+            {unresolvedMistakes.length > 0 ? "Review now" : "Review now"}
+          </div>
+        </div>
+      </div>
+
+      {/* 3. TOPICS TO FOCUS ON SECTION */}
+      <div className="topics-focus-v2-card">
+        <div className="topics-v2-header">
+          <h2 className="topics-v2-title">Topics to Focus On</h2>
+          <button className="view-all-v2-link" onClick={() => navigate("/subjects")}>
+            View all
+          </button>
+        </div>
+
+        {/* Filter Tabs (Pill Buttons) */}
+        <div className="topic-filter-v2-pills">
+          <button
+            className={`filter-v2-pill ${topicFilterTab === "needs_attention" ? "active" : ""}`}
+            onClick={() => setTopicFilterTab("needs_attention")}
+          >
+            Needs Attention ({needsAttentionList.length})
+          </button>
+          <button
+            className={`filter-v2-pill ${topicFilterTab === "weak" ? "active" : ""}`}
+            onClick={() => setTopicFilterTab("weak")}
+          >
+            Weak ({weakList.length})
+          </button>
+          <button
+            className={`filter-v2-pill ${topicFilterTab === "strong" ? "active" : ""}`}
+            onClick={() => setTopicFilterTab("strong")}
+          >
+            Strong ({strongList.length})
+          </button>
+        </div>
+
+        {/* Topic List */}
+        <div className="topic-v2-list">
+          {currentFilteredList.length === 0 ? (
+            <div className="topic-v2-empty">
+              <p>No topics in this category right now.</p>
             </div>
-            {mostFailed.length === 0 ? (
-              <div className="clean-empty-state">
-                <p style={{ marginBottom: "1rem" }}>No weak spots detected. Complete quizzes to get practice recommendations.</p>
-                <button
-                  className="clean-action-btn primary"
-                  onClick={() => navigate("/subjects")}
+          ) : (
+            currentFilteredList.map((item, idx) => {
+              const title = formatTitle(item.topic_title || item.topic || "Topic");
+              const subject = formatTitle(item.subject_name || item.subject_id || "Science");
+              const chapter = formatTitle(item.chapter_title || item.chapter_id || "Practical Skills");
+              const score = item.performanceScore ?? item.mastery ?? 0;
+
+              return (
+                <div
+                  key={idx}
+                  className="topic-v2-item"
+                  onClick={() => handleStudyTopic(item)}
                 >
-                  Browse Subjects to Practice →
-                </button>
-              </div>
-            ) : (
-              <div className="clean-topic-list">
-                {mostFailed.map((item, idx) => (
-                  <div key={idx} className="clean-topic-item">
-                    <div className="clean-topic-details">
-                      <span className="clean-topic-name">{formatTitle(item.topic_title || item.topic)}</span>
-                      <span className="clean-topic-meta">
-                        {formatTitle(item.subject_name)} • {formatTitle(item.chapter_title)}
-                      </span>
+                  <div className="topic-v2-item-main">
+                    <div className="topic-v2-item-title">{title}</div>
+                    <div className="topic-v2-item-sub">
+                      {subject} • {chapter}
                     </div>
-                    <button
-                      className="clean-action-btn primary"
-                      onClick={() => handleStudyTopic(item)}
-                    >
-                      Practice →
-                    </button>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
-
-        {/* 2. DUE FOR REVIEW */}
-        {activeTab === "review" && (
-          <div className="clean-card">
-            <div className="clean-card-header">
-              <h3>Memory Review Queue</h3>
-              <p>Topics scheduled for review today to strengthen long-term memory.</p>
-            </div>
-            {dueReviews.length === 0 ? (
-              <div className="clean-empty-state">
-                <p>No reviews scheduled today. Great job keeping your memory fresh!</p>
-              </div>
-            ) : (
-              <div className="clean-topic-list">
-                {dueReviews.map((item, idx) => (
-                  <div key={idx} className="clean-topic-item">
-                    <div className="clean-topic-details">
-                      <span className="clean-topic-name">{formatTitle(item.topic_id)}</span>
-                      <span className="clean-topic-meta">
-                        Interval: {item.interval_days} day{item.interval_days !== 1 ? "s" : ""} · Repetitions: {item.repetitions}
-                      </span>
-                    </div>
-                    <button
-                      className="clean-action-btn primary"
-                      onClick={() => handleReviewTopic(item)}
-                    >
-                      Review →
-                    </button>
+                  <div className="topic-v2-item-right">
+                    <span className="topic-v2-badge">{score}%</span>
+                    <span className="topic-v2-chevron">›</span>
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+                </div>
+              );
+            })
+          )}
+        </div>
 
-        {/* 3. MISTAKE JOURNAL */}
-        {activeTab === "mistakes" && (
-          <div className="clean-card">
-            <div className="clean-card-header">
-              <h3>Unresolved Mistakes</h3>
-              <p>Questions answered incorrectly in recent quizzes.</p>
-            </div>
-            {unresolvedMistakes.length === 0 ? (
-              <div className="clean-empty-state">
-                <p>No unresolved mistakes. Excellent accuracy!</p>
-              </div>
-            ) : (
-              <div style={{ textAlign: "center", padding: "1.5rem 0" }}>
-                <p style={{ color: "var(--t2)", marginBottom: "1.2rem", fontSize: "0.95rem" }}>
-                  You have <strong style={{ color: "var(--t)", fontWeight: 700 }}>{unresolvedMistakes.length}</strong> unresolved mistake{unresolvedMistakes.length !== 1 ? "s" : ""}.
-                </p>
-                <button
-                  className="clean-action-btn primary"
-                  onClick={() => navigate("/mistakes")}
+        {/* Explore All Weak Topics Banner Button */}
+        <button
+          className="explore-weak-v2-btn"
+          onClick={() => navigate("/subjects")}
+        >
+          <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="#1d6bf3">
+              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
+            </svg>
+            Explore All Weak Topics
+          </span>
+          <span className="explore-v2-chevron">›</span>
+        </button>
+      </div>
+
+      {/* 4. OPTIONAL COGNITIVE MASTERY EVIDENCE COLLAPSIBLE */}
+      <div className="cognitive-collapsible-v2">
+        <button
+          className="cognitive-v2-toggle"
+          onClick={() => setShowCognitiveDetails(!showCognitiveDetails)}
+        >
+          <span>Evidence & Cognitive Mastery Details</span>
+          <span>{showCognitiveDetails ? "▲" : "▼"}</span>
+        </button>
+
+        {showCognitiveDetails && (
+          <div className="cognitive-v2-body">
+            {totalQuizzes > 0 && (
+              <div className="cbc-v2-box">
+                <span
+                  style={{
+                    background: cbc.badgeBg,
+                    color: cbc.badgeText,
+                    padding: "0.25rem 0.6rem",
+                    borderRadius: "6px",
+                    fontWeight: 700,
+                    fontSize: "0.78rem",
+                  }}
                 >
-                  Open Mistake Journal →
-                </button>
+                  CBC {cbc.level} · {cbc.points}/8 pts
+                </span>
+                <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
+                  {cbc.category} — {cbc.description}
+                </span>
               </div>
             )}
+
+            <div className="cognitive-v2-grid">
+              {cognitiveDimensions.map((dim) => (
+                <div key={dim.label} className="cognitive-v2-row">
+                  <div className="cognitive-v2-label">
+                    <span>{dim.label}</span>
+                    <span style={{ fontWeight: 700, color: dim.color }}>
+                      {dim.val !== null ? `${dim.val}%` : "No evidence"}
+                    </span>
+                  </div>
+                  <div className="cognitive-v2-track">
+                    <div
+                      className="cognitive-v2-fill"
+                      style={{
+                        width: `${dim.val || 0}%`,
+                        background: dim.color,
+                      }}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
-
       </div>
     </div>
   );
 }
+
