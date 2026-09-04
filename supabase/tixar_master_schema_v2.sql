@@ -143,6 +143,10 @@ CREATE TABLE IF NOT EXISTS public.learning_events (
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
+-- Ensure column exists if table was already created in a previous migration
+ALTER TABLE public.learning_events
+    ADD COLUMN IF NOT EXISTS client_event_id TEXT;
+
 CREATE UNIQUE INDEX IF NOT EXISTS idx_learning_events_client_event_id
 ON public.learning_events(client_event_id)
 WHERE client_event_id IS NOT NULL;
