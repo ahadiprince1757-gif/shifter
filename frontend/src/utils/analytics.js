@@ -8,10 +8,19 @@ const recentEventsCache = new Map();
 const activeSyncs = new Set();
 
 /**
- * Checks whether an event is a rapid duplicate recorded within DUP_WINDOW_MS
+ * Checks whether an event is a rapid duplicate recorded within DUP_WINDOW_MS.
+ * Includes optional actionId/questionId to distinguish legitimate rapid answers across distinct questions.
  */
-function isRapidDuplicate(userId, type, subjectId, chapterId, topic) {
-  const key = `${userId || "guest"}:${type}:${subjectId}:${chapterId || "general"}:${topic || "general"}`;
+function isRapidDuplicate(userId, type, subjectId, chapterId, topic, actionId = "") {
+  const key = [
+    userId || "guest",
+    type,
+    subjectId,
+    chapterId || "general",
+    topic || "general",
+    actionId || ""
+  ].join(":");
+
   const now = Date.now();
   const lastTimestamp = recentEventsCache.get(key);
 
@@ -173,9 +182,10 @@ export function recordLearningEvent({
   }
 
   const activeUserId = userId || getActiveUserId();
+  const actionId = questionId || metadata?.questionId || metadata?.actionId || "";
 
   // Defense-in-depth: Suppress rapid duplicate event recordings within 2-second window
-  if (isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic)) {
+  if (isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic, actionId)) {
     console.warn(`[Telemetry] Suppressed rapid duplicate event (${type}) within ${DUP_WINDOW_MS}ms window.`);
     return;
   }
