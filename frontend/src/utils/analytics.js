@@ -112,6 +112,34 @@ export function clearQueuedEvents() {
   clearQueuedEventsForUser(null);
 }
 
+const recentEventCache = new Map();
+const DUP_WINDOW_MS = 5000; // 5-second deduplication window for identical rapid events
+
+/**
+ * Checks if an identical event was recorded within the 5-second deduplication window
+ */
+function isRapidDuplicate(userId, eventType, subjectId, chapterId, topic, questionId) {
+  const key = `${userId || "guest"}:${eventType}:${subjectId || ""}:${chapterId || ""}:${topic || ""}:${questionId || ""}`;
+  const now = Date.now();
+  const lastTime = recentEventCache.get(key);
+
+  if (lastTime && now - lastTime < DUP_WINDOW_MS) {
+    return true;
+  }
+
+  recentEventCache.set(key, now);
+
+  if (recentEventCache.size > 2000) {
+    for (const [k, ts] of recentEventCache.entries()) {
+      if (now - ts > DUP_WINDOW_MS * 2) {
+        recentEventCache.delete(k);
+      }
+    }
+  }
+
+  return false;
+}
+
 /**
  * Flexible Educational Learning Event Recorder
  * Captures student action, CBC curriculum mapping, performance, and context.
@@ -147,6 +175,12 @@ export function recordLearningEvent({
   }
 
   const activeUserId = userId || getActiveUserId();
+
+  // Production Deduplication Guard: Ignore rapid duplicate events fired within 5 seconds
+  if (isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic, questionId)) {
+    console.log(`[Telemetry Guard] Ignored rapid duplicate event (${type} -> ${subjectId}/${topic || "general"}) within 5s window.`);
+    return;
+  }
   const events = getQueuedEvents(activeUserId);
 
   const newEvent = {
