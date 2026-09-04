@@ -3,7 +3,33 @@ import { getScopedStorageKey } from "./userDataScope";
 
 const QUEUE_BASE_KEY = "tixar_learning_events";
 const MAX_QUEUE_SIZE = 5000;
+const DUP_WINDOW_MS = 2000; // 2-second deduplication window for identical event payloads
+const recentEventsCache = new Map();
 const activeSyncs = new Set();
+
+/**
+ * Checks whether an event is a rapid duplicate recorded within DUP_WINDOW_MS
+ */
+function isRapidDuplicate(userId, type, subjectId, chapterId, topic) {
+  const key = `${userId || "guest"}:${type}:${subjectId}:${chapterId || "general"}:${topic || "general"}`;
+  const now = Date.now();
+  const lastTimestamp = recentEventsCache.get(key);
+
+  if (lastTimestamp && (now - lastTimestamp < DUP_WINDOW_MS)) {
+    return true; // Suppress rapid duplicate within 2s
+  }
+
+  recentEventsCache.set(key, now);
+
+  // Evict stale entries older than 10 seconds to keep cache lightweight
+  if (recentEventsCache.size > 1000) {
+    for (const [k, time] of recentEventsCache.entries()) {
+      if (now - time > 10000) recentEventsCache.delete(k);
+    }
+  }
+
+  return false;
+}
 
 /**
  * Standardized Learning Event Vocabulary for Tixar's Student Brain
@@ -112,34 +138,6 @@ export function clearQueuedEvents() {
   clearQueuedEventsForUser(null);
 }
 
-const recentEventCache = new Map();
-const DUP_WINDOW_MS = 5000; // 5-second deduplication window for identical rapid events
-
-/**
- * Checks if an identical event was recorded within the 5-second deduplication window
- */
-function isRapidDuplicate(userId, eventType, subjectId, chapterId, topic, questionId) {
-  const key = `${userId || "guest"}:${eventType}:${subjectId || ""}:${chapterId || ""}:${topic || ""}:${questionId || ""}`;
-  const now = Date.now();
-  const lastTime = recentEventCache.get(key);
-
-  if (lastTime && now - lastTime < DUP_WINDOW_MS) {
-    return true;
-  }
-
-  recentEventCache.set(key, now);
-
-  if (recentEventCache.size > 2000) {
-    for (const [k, ts] of recentEventCache.entries()) {
-      if (now - ts > DUP_WINDOW_MS * 2) {
-        recentEventCache.delete(k);
-      }
-    }
-  }
-
-  return false;
-}
-
 /**
  * Flexible Educational Learning Event Recorder
  * Captures student action, CBC curriculum mapping, performance, and context.
@@ -176,11 +174,12 @@ export function recordLearningEvent({
 
   const activeUserId = userId || getActiveUserId();
 
-  // Production Deduplication Guard: Ignore rapid duplicate events fired within 5 seconds
-  if (isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic, questionId)) {
-    console.log(`[Telemetry Guard] Ignored rapid duplicate event (${type} -> ${subjectId}/${topic || "general"}) within 5s window.`);
+  // Defense-in-depth: Suppress rapid duplicate event recordings within 2-second window
+  if (isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic)) {
+    console.warn(`[Telemetry] Suppressed rapid duplicate event (${type}) within ${DUP_WINDOW_MS}ms window.`);
     return;
   }
+
   const events = getQueuedEvents(activeUserId);
 
   const newEvent = {
