@@ -10,6 +10,7 @@ import {
   buildLearningIntelligence,
   calculateCognitiveMastery,
 } from "../engine/learningIntelligenceEngine";
+import { adaptAnalyticsToEvidence } from "../engine/analyticsEvidenceAdapter";
 
 /** Helper to convert raw IDs/slugs into clean human Title Case */
 function formatTitle(str) {
@@ -132,22 +133,9 @@ export default function AnalyticsDashboard() {
 
   if (!data) return null;
 
-  const mostPassed = data.mostPassed || [];
-  const mostFailed = data.mostFailed || [];
-
-  // Synthesize raw attempts for Evidence Engines
-  const attempts = [
-    ...mostPassed.map((item) => ({
-      topic: item.topic_title || item.topic,
-      correct: true,
-      cognitiveLevel: item.cognitive_level || "PROCEDURAL",
-    })),
-    ...mostFailed.map((item) => ({
-      topic: item.topic_title || item.topic,
-      correct: false,
-      cognitiveLevel: item.cognitive_level || "APPLICATION",
-    })),
-  ];
+  // Adapt backend data to canonical evidence (no artificial attempt synthesis)
+  const evidence = adaptAnalyticsToEvidence(data);
+  const attempts = evidence.attempts;
 
   const intelligence = buildLearningIntelligence({
     attempts,
@@ -156,18 +144,16 @@ export default function AnalyticsDashboard() {
   });
 
   const { overview, masteryMap, recommendation } = intelligence;
-  const cognitiveMastery = calculateCognitiveMastery(attempts);
+  const cognitiveMastery = intelligence.cognitiveMastery || {};
 
-  const totalPasses = mostPassed.reduce((s, r) => s + (r.pass_count || 0), 0);
-  const totalFails = mostFailed.reduce((s, r) => s + (r.fail_count || 0), 0);
-  const totalQuizzes = totalPasses + totalFails;
+  const totalPasses = attempts.filter((a) => a.correct).length;
+  const totalQuizzes = attempts.length;
   const accuracyRate = overview.accuracy;
   const cbc = calculateCBCGrade(accuracyRate || 0);
 
-  // Strict Cold-Start Determination
+  // Strict Cold-Start Determination from evidence
   const isColdStart =
-    data?.coldStart === true ||
-    overview?.coldStart === true ||
+    overview.coldStart ||
     (attempts.length === 0 && dueReviews.length === 0 && unresolvedMistakes.length === 0);
 
   const handleStudyTopic = (item) => {
@@ -189,34 +175,33 @@ export default function AnalyticsDashboard() {
     }
   };
 
-  // Compile topic lists for "The Focus Queue" (Strictly scoped - NO global fallbacks)
-  const needsAttentionList = isColdStart
-    ? []
-    : (masteryMap?.weakTopics?.length > 0 ? masteryMap.weakTopics : []);
+  // Compile topic lists for "The Focus Queue" using evidence-backed thresholds
+  const allTopicStats = Object.values(masteryMap?.topics || {});
 
-  const weakList = isColdStart
-    ? []
-    : attempts
-        .filter((a) => !a.correct)
-        .map((a) => ({ topic_title: a.topic, mastery: 0 }));
+  // Needs Attention: Confirmed weak topics (>= 3 attempts, < 58% score)
+  const needsAttentionList = isColdStart ? [] : (masteryMap?.weakTopics || []);
 
-  const strongList = isColdStart
+  // Emerging: Topics with signal but insufficient evidence (1-2 attempts)
+  const emergingList = isColdStart
     ? []
-    : (masteryMap?.strongTopics?.length > 0 ? masteryMap.strongTopics : []);
+    : allTopicStats.filter((t) => t.attempts < 3 && t.performanceScore < 58);
+
+  // Strong: Verified mastery (>= 5 attempts, >= 75% score)
+  const strongList = isColdStart ? [] : (masteryMap?.strongTopics || []);
 
   let currentFilteredList = needsAttentionList;
-  if (topicFilterTab === "weak") {
-    currentFilteredList = weakList;
+  if (topicFilterTab === "emerging" || topicFilterTab === "weak") {
+    currentFilteredList = emergingList;
   } else if (topicFilterTab === "strong") {
     currentFilteredList = strongList;
   }
 
   const cognitiveDimensions = [
-    { label: "Recognition", val: cognitiveMastery.RECOGNITION, color: "#38bdf8" },
-    { label: "Recall", val: cognitiveMastery.RECALL, color: "#818cf8" },
-    { label: "Procedure", val: cognitiveMastery.PROCEDURAL, color: "#10b981" },
-    { label: "Application", val: cognitiveMastery.APPLICATION, color: "#f59e0b" },
-    { label: "Transfer", val: cognitiveMastery.TRANSFER, color: "#ef4444" },
+    { label: "Recognition", val: cognitiveMastery.RECOGNITION?.score, count: cognitiveMastery.RECOGNITION?.evidenceCount, color: "#38bdf8" },
+    { label: "Recall", val: cognitiveMastery.RECALL?.score, count: cognitiveMastery.RECALL?.evidenceCount, color: "#818cf8" },
+    { label: "Procedure", val: cognitiveMastery.PROCEDURAL?.score, count: cognitiveMastery.PROCEDURAL?.evidenceCount, color: "#10b981" },
+    { label: "Application", val: cognitiveMastery.APPLICATION?.score, count: cognitiveMastery.APPLICATION?.evidenceCount, color: "#f59e0b" },
+    { label: "Transfer", val: cognitiveMastery.TRANSFER?.score, count: cognitiveMastery.TRANSFER?.evidenceCount, color: "#ef4444" },
   ];
 
   return (
@@ -258,19 +243,25 @@ export default function AnalyticsDashboard() {
             <ReadinessArcGauge score={overview.readinessScore} />
           </div>
 
-          {/* Primary Bottleneck Banner */}
+          {/* Human-Centered Next Step Banner */}
           <div className="primary-bottleneck-v2-banner">
             <div className="bottleneck-v2-content">
-              <div className="bottleneck-v2-tag">PRIMARY BOTTLENECK</div>
+              <div className="bottleneck-v2-tag">
+                {recommendation.type === "critical_gap"
+                  ? "FOUNDATIONAL FOCUS"
+                  : recommendation.type === "calibrating"
+                  ? "CALIBRATING"
+                  : "RECOMMENDED NEXT STEP"}
+              </div>
               <div className="bottleneck-v2-title">
-                {formatTitle(recommendation.title || "Laboratory Safety and Apparatus")}
+                {formatTitle(recommendation.title || "Continue Practice")}
               </div>
               <div className="bottleneck-v2-desc">
-                {recommendation.reason || "Your mastery is currently 0%, creating a prerequisite gap."}
+                {recommendation.reason || "Complete additional practice to build your readiness profile."}
               </div>
             </div>
             <button className="repair-gap-v2-btn" onClick={handlePrimaryAction}>
-              {recommendation.buttonLabel || "Repair This Gap"} →
+              {recommendation.buttonLabel || "Practice Now"} →
             </button>
           </div>
         </div>
@@ -320,10 +311,10 @@ export default function AnalyticsDashboard() {
               Needs Attention ({needsAttentionList.length})
             </button>
             <button
-              className={`filter-v2-pill ${topicFilterTab === "weak" ? "active" : ""}`}
-              onClick={() => setTopicFilterTab("weak")}
+              className={`filter-v2-pill ${topicFilterTab === "emerging" ? "active" : ""}`}
+              onClick={() => setTopicFilterTab("emerging")}
             >
-              Weak ({weakList.length})
+              Emerging ({emergingList.length})
             </button>
             <button
               className={`filter-v2-pill ${topicFilterTab === "strong" ? "active" : ""}`}
@@ -455,7 +446,9 @@ export default function AnalyticsDashboard() {
                       <div className="cognitive-v2-label">
                         <span>{dim.label}</span>
                         <span style={{ fontWeight: 700, color: dim.color }}>
-                          {dim.val !== null ? `${dim.val}%` : "No evidence"}
+                          {dim.val !== null
+                            ? `${dim.val}% (${dim.count} question${dim.count > 1 ? "s" : ""})`
+                            : "No evidence yet"}
                         </span>
                       </div>
                       <div className="cognitive-v2-track">

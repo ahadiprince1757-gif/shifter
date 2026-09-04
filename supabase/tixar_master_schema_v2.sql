@@ -138,9 +138,14 @@ CREATE TABLE IF NOT EXISTS public.learning_events (
     question_id BIGINT
         REFERENCES public.questions(id)
         ON DELETE SET NULL,
+    client_event_id TEXT,
     metadata JSONB DEFAULT '{}'::jsonb,
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
+
+CREATE UNIQUE INDEX IF NOT EXISTS idx_learning_events_client_event_id
+ON public.learning_events(client_event_id)
+WHERE client_event_id IS NOT NULL;
 
 -- ==========================================================
 -- 6. EXTEND PROGRESS AS THE MASTERY RECORD

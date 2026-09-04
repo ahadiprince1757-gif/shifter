@@ -8,39 +8,6 @@ const recentEventsCache = new Map();
 const activeSyncs = new Set();
 
 /**
- * Checks whether an event is a rapid duplicate recorded within DUP_WINDOW_MS.
- * Includes optional actionId/questionId to distinguish legitimate rapid answers across distinct questions.
- */
-function isRapidDuplicate(userId, type, subjectId, chapterId, topic, actionId = "") {
-  const key = [
-    userId || "guest",
-    type,
-    subjectId,
-    chapterId || "general",
-    topic || "general",
-    actionId || ""
-  ].join(":");
-
-  const now = Date.now();
-  const lastTimestamp = recentEventsCache.get(key);
-
-  if (lastTimestamp && (now - lastTimestamp < DUP_WINDOW_MS)) {
-    return true; // Suppress rapid duplicate within 2s
-  }
-
-  recentEventsCache.set(key, now);
-
-  // Evict stale entries older than 10 seconds to keep cache lightweight
-  if (recentEventsCache.size > 1000) {
-    for (const [k, time] of recentEventsCache.entries()) {
-      if (now - time > 10000) recentEventsCache.delete(k);
-    }
-  }
-
-  return false;
-}
-
-/**
  * Standardized Learning Event Vocabulary for Tixar's Student Brain
  */
 export const LEARNING_EVENTS = {
@@ -65,6 +32,53 @@ export const LEARNING_EVENTS = {
   // Revision & Retention
   TOPIC_REVIEWED: "topic_reviewed",
 };
+
+/**
+ * Only navigation and scaffolding events are throttled.
+ * Genuine learning assessment evidence is NEVER suppressed by UI deduplication.
+ */
+const DEDUPLICATED_EVENT_TYPES = new Set([
+  LEARNING_EVENTS.LESSON_OPENED,
+  LEARNING_EVENTS.LESSON_COMPLETED,
+  LEARNING_EVENTS.QUESTION_STARTED,
+  LEARNING_EVENTS.HINT_REQUESTED,
+  LEARNING_EVENTS.EXPLANATION_VIEWED,
+]);
+
+/**
+ * Checks whether an event is a rapid duplicate recorded within DUP_WINDOW_MS.
+ * Includes optional actionId/questionId to distinguish legitimate rapid answers across distinct questions.
+ */
+function isRapidDuplicate(userId, type, subjectId, chapterId, topic, actionId = "") {
+  const key = [
+    userId || "guest",
+    type,
+    subjectId,
+    chapterId || "general",
+    topic || "general",
+    actionId || ""
+  ].join(":");
+
+  const now = Date.now();
+  const lastTimestamp = recentEventsCache.get(key);
+
+  if (lastTimestamp && (now - lastTimestamp < DUP_WINDOW_MS)) {
+    return true; // Suppress rapid duplicate within 2s
+  }
+
+  recentEventsCache.set(key, now);
+
+  // Periodically remove stale deduplication entries
+  if (recentEventsCache.size > 200) {
+    for (const [k, time] of recentEventsCache.entries()) {
+      if (now - time > DUP_WINDOW_MS * 5) {
+        recentEventsCache.delete(k);
+      }
+    }
+  }
+
+  return false;
+}
 
 /**
  * Helper to generate a random unique UUID for event deduplication
@@ -182,10 +196,19 @@ export function recordLearningEvent({
   }
 
   const activeUserId = userId || getActiveUserId();
+
+  if (!activeUserId) {
+    console.warn(`[Telemetry] Skipping ${type}: no authenticated user available.`);
+    return;
+  }
+
   const actionId = questionId || metadata?.questionId || metadata?.actionId || "";
 
-  // Defense-in-depth: Suppress rapid duplicate event recordings within 2-second window
-  if (isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic, actionId)) {
+  // Defense-in-depth: Suppress rapid duplicate event recordings for UI/scaffolding events
+  if (
+    DEDUPLICATED_EVENT_TYPES.has(type) &&
+    isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic, actionId)
+  ) {
     console.warn(`[Telemetry] Suppressed rapid duplicate event (${type}) within ${DUP_WINDOW_MS}ms window.`);
     return;
   }
@@ -197,6 +220,8 @@ export function recordLearningEvent({
     user_id: activeUserId,
     subject_id: subjectId,
     chapter_id: chapterId || null,
+    sid: subjectId,
+    cid: chapterId || null,
     topic: topic || null,
 
     strand: strand || null,

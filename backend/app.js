@@ -432,7 +432,7 @@ app.post("/api/grade", async (req, res) => {
   }
 });
 
-// Endpoint: Batch insert learning events for analytics
+// Endpoint: Batch insert learning events for analytics with idempotency & bulk resolution
 app.post("/api/analytics/events", async (req, res) => {
   const { events } = req.body || {};
   if (!Array.isArray(events) || events.length === 0) {
@@ -440,53 +440,102 @@ app.post("/api/analytics/events", async (req, res) => {
   }
   try {
     const authUserId = await resolveUserId(req);
+    if (!authUserId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
+
+    // 1. Bulk resolution: extract unique sid::cid::topic keys to prevent N+1 queries
+    const keysToResolve = new Map();
+    for (const evt of events) {
+      const sid = evt.sid || evt.subject_id;
+      const cid = evt.cid || evt.chapter_id;
+      const topic = evt.topic;
+      if (sid && cid && topic) {
+        const key = `${String(sid).toLowerCase().trim()}::${String(cid).toLowerCase().trim()}::${String(topic).toLowerCase().trim()}`;
+        if (!keysToResolve.has(key)) {
+          keysToResolve.set(key, { sid, cid, topic });
+        }
+      }
+    }
+
+    const topicIdLookup = new Map();
+    if (keysToResolve.size > 0) {
+      const sids = [...new Set([...keysToResolve.values()].map((k) => k.sid))];
+      const { data: matchedRows, error: lookupErr } = await supabase
+        .from("content_view")
+        .select("topic_id, sid, cid, topic")
+        .in("sid", sids);
+
+      if (!lookupErr && matchedRows) {
+        for (const row of matchedRows) {
+          if (row.sid && row.cid && row.topic) {
+            const key = `${String(row.sid).toLowerCase().trim()}::${String(row.cid).toLowerCase().trim()}::${String(row.topic).toLowerCase().trim()}`;
+            topicIdLookup.set(key, row.topic_id);
+          }
+        }
+      }
+    }
+
+    // 2. Build rowsToInsert with server-enforced identity and idempotency key
     const rowsToInsert = [];
     for (const evt of events) {
-      const { sid, cid, topic, event_type, user_id } = evt;
+      const sid = evt.sid || evt.subject_id;
+      const cid = evt.cid || evt.chapter_id;
+      const topic = evt.topic;
+      const event_type = evt.event_type || evt.type;
+
       if (!sid || !cid || !topic || !event_type) continue;
 
-      if (!authUserId) continue;
+      const lookupKey = `${String(sid).toLowerCase().trim()}::${String(cid).toLowerCase().trim()}::${String(topic).toLowerCase().trim()}`;
+      const topic_id = topicIdLookup.get(lookupKey) || null;
+      if (!topic_id) continue;
 
-      // Anti-spoofing rejection: Explicitly reject cross-account data submissions
-      if (user_id && user_id !== authUserId) {
-        logger.warn("ANALYTICS_REJECTED_CROSS_ACCOUNT", { authUserId, payloadUserId: user_id, topic });
-        continue;
+      const client_event_id = evt.id || evt.client_event_id || null;
+
+      const metadata = evt.metadata || {};
+      if (evt.cognitive_level || evt.cognitiveLevel) {
+        metadata.cognitiveLevel = evt.cognitive_level || evt.cognitiveLevel;
+      }
+      if (evt.question_id) {
+        metadata.questionId = evt.question_id;
       }
 
-      const targetUserId = authUserId;
-
-      const { data: contentRow, error: contentErr } = await supabase
-        .from("content_view")
-        .select("topic_id")
-        .eq("sid", sid)
-        .eq("cid", cid)
-        .eq("topic", topic)
-        .maybeSingle();
-      if (contentErr || !contentRow) continue;
       rowsToInsert.push({
-        topic_id: contentRow.topic_id,
+        topic_id,
         event_type,
-        user_id: targetUserId,
+        user_id: authUserId, // Server is the sole authority on identity
+        client_event_id,
+        metadata,
+        created_at: evt.created_at || new Date().toISOString(),
       });
     }
+
     if (rowsToInsert.length === 0) {
       return res.json({ inserted: 0 });
     }
+
+    // 3. Batch upsert with ON CONFLICT (client_event_id) for retry safety
     const batchSize = 100;
     let totalInserted = 0;
     for (let i = 0; i < rowsToInsert.length; i += batchSize) {
       const chunk = rowsToInsert.slice(i, i + batchSize);
       const { error: insertErr } = await supabase
         .from("learning_events")
-        .insert(chunk);
+        .upsert(chunk, { onConflict: "client_event_id", ignoreDuplicates: true });
+
       if (insertErr) {
-        logger.db("INSERT", "learning_events", "error", {
-          error: insertErr.message,
-        });
-        continue;
+        // Fallback for deployments where client_event_id index is still applying
+        logger.warn("UPSERT_FALLBACK_TO_INSERT", { error: insertErr.message });
+        const fallbackRows = chunk.map(({ client_event_id, ...rest }) => rest);
+        const { error: fallbackErr } = await supabase.from("learning_events").insert(fallbackRows);
+        if (fallbackErr) {
+          logger.db("INSERT", "learning_events", "error", { error: fallbackErr.message });
+          continue;
+        }
       }
       totalInserted += chunk.length;
     }
+
     logger.action("ANALYTICS_EVENTS_SYNCED", "success", {
       receivedCount: events.length,
       insertedCount: totalInserted,
@@ -499,7 +548,7 @@ app.post("/api/analytics/events", async (req, res) => {
   }
 });
 
-// Endpoint: Get aggregated analytics for the current user
+// Endpoint: Get aggregated canonical learning evidence for the current user
 app.get("/api/analytics", async (req, res) => {
   try {
     const userId = await resolveUserId(req);
@@ -507,16 +556,19 @@ app.get("/api/analytics", async (req, res) => {
     if (!userId) {
       return res.json({
         coldStart: true,
-        intelligenceState: "cold_start",
-        totalAttempts: 0,
+        intelligenceState: "no_evidence",
+        evidence: {
+          totalQuestionsAnswered: 0,
+          totalVisits: 0,
+          correctCount: 0,
+          incorrectCount: 0,
+          attempts: [],
+        },
+        topics: [],
         mostVisited: [],
         mostPassed: [],
         mostFailed: [],
         unvisited: [],
-        weakTopics: [],
-        strongTopics: [],
-        unresolvedMistakes: [],
-        dueReviews: [],
       });
     }
 
@@ -555,24 +607,71 @@ app.get("/api/analytics", async (req, res) => {
       return null;
     };
 
-    // 1. User-specific learning events
-    const { data: events } = await supabase
+    // 1. Fetch user-specific learning events with full details
+    const { data: events, error: eventErr } = await supabase
       .from("learning_events")
-      .select("topic_id, event_type")
-      .eq("user_id", userId);
+      .select("id, client_event_id, topic_id, event_type, created_at, metadata")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: true });
+
+    if (eventErr) {
+      logger.db("SELECT", "learning_events", "error", { error: eventErr.message });
+    }
+
+    const attempts = [];
+    let totalVisits = 0;
+    let correctCount = 0;
+    let incorrectCount = 0;
 
     if (events) {
       events.forEach((e) => {
+        const isVisit = e.event_type === "visit" || e.event_type === "lesson_opened";
+        const isPass = e.event_type === "pass" || e.event_type === "question_correct";
+        const isFail = e.event_type === "fail" || e.event_type === "question_incorrect";
+
         const item = getTopicItem(e.topic_id, null);
         if (item) {
-          if (e.event_type === "visit") item.visit_count += 1;
-          if (e.event_type === "pass") item.pass_count += 1;
-          if (e.event_type === "fail") item.fail_count += 1;
+          if (isVisit) {
+            item.visit_count += 1;
+            totalVisits += 1;
+          }
+          if (isPass) {
+            item.pass_count += 1;
+            correctCount += 1;
+            attempts.push({
+              id: e.id,
+              client_event_id: e.client_event_id || null,
+              topic_id: e.topic_id,
+              topic: item.topic_title,
+              subject_id: item.subject_id,
+              chapter_id: item.chapter_id,
+              correct: true,
+              event_type: e.event_type,
+              cognitive_level: e.metadata?.cognitiveLevel || e.metadata?.cognitive_level || null,
+              created_at: e.created_at,
+            });
+          }
+          if (isFail) {
+            item.fail_count += 1;
+            incorrectCount += 1;
+            attempts.push({
+              id: e.id,
+              client_event_id: e.client_event_id || null,
+              topic_id: e.topic_id,
+              topic: item.topic_title,
+              subject_id: item.subject_id,
+              chapter_id: item.chapter_id,
+              correct: false,
+              event_type: e.event_type,
+              cognitive_level: e.metadata?.cognitiveLevel || e.metadata?.cognitive_level || null,
+              created_at: e.created_at,
+            });
+          }
         }
       });
     }
 
-    // 2. User-specific progress
+    // 2. User-specific progress (for backward compatibility)
     const { data: progressRows } = await supabase
       .from("progress")
       .select("topic_id, topic_title, completed, score")
@@ -582,38 +681,49 @@ app.get("/api/analytics", async (req, res) => {
       progressRows.forEach((p) => {
         const item = getTopicItem(p.topic_id, p.topic_title);
         if (item) {
-          if (p.completed && item.pass_count === 0) {
-            item.pass_count = 1;
-          }
-          if (p.score != null && p.score < 50 && item.fail_count === 0) {
-            item.fail_count = 1;
-          }
+          if (p.completed && item.pass_count === 0) item.pass_count = 1;
+          if (p.score != null && p.score < 50 && item.fail_count === 0) item.fail_count = 1;
         }
       });
     }
 
     const rows = Array.from(topicMap.values());
-
     const mostVisited = [...rows].filter((r) => r.visit_count > 0).sort((a, b) => b.visit_count - a.visit_count).slice(0, 10);
     const mostPassed = [...rows].filter((r) => r.pass_count > 0).sort((a, b) => b.pass_count - a.pass_count).slice(0, 10);
     const mostFailed = [...rows].filter((r) => r.fail_count > 0).sort((a, b) => b.fail_count - a.fail_count).slice(0, 10);
     const unvisited = rows.filter((r) => r.visit_count === 0 && r.pass_count === 0);
 
-    const hasLearningEvidence = mostVisited.length > 0 || mostPassed.length > 0 || mostFailed.length > 0;
-    const isColdStart = !hasLearningEvidence;
+    const totalQuestionsAnswered = attempts.length;
+    const hasAssessmentEvidence = totalQuestionsAnswered > 0;
+    const isColdStart = !hasAssessmentEvidence;
+
+    const intelligenceState =
+      totalQuestionsAnswered === 0
+        ? "no_evidence"
+        : totalQuestionsAnswered < 5
+        ? "early_evidence"
+        : "established";
 
     logger.action("ANALYTICS_FETCHED", "success", {
       userId,
       totalTopics: rows.length,
-      visitedCount: mostVisited.length,
-      unvisitedCount: unvisited.length,
+      totalQuestionsAnswered,
+      totalVisits,
       isColdStart,
+      intelligenceState,
     });
 
     res.json({
       coldStart: isColdStart,
-      intelligenceState: isColdStart ? "cold_start" : "active_learning",
-      totalAttempts: (events || []).length + (progressRows || []).length,
+      intelligenceState,
+      evidence: {
+        totalQuestionsAnswered,
+        totalVisits,
+        correctCount,
+        incorrectCount,
+        attempts, // Canonical real assessment attempts (1:1 with learner actions)
+      },
+      topics: rows,
       mostVisited: isColdStart ? [] : mostVisited,
       mostPassed: isColdStart ? [] : mostPassed,
       mostFailed: isColdStart ? [] : mostFailed,

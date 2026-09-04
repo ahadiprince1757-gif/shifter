@@ -49,10 +49,10 @@ export function calculateReliableMastery(correct, total) {
 
 /**
  * Measures actual cognitive level performance directly from tagged attempt evidence.
- * Returns null for levels with 0 attempts (no fake estimations).
+ * Returns { score: null, evidenceCount: 0 } for untagged levels to preserve transparency.
  *
  * @param {Array<Object>} attempts
- * @returns {Object} Cognitive level percentages or null
+ * @returns {Object} Qualified cognitive levels with score and evidenceCount
  */
 export function calculateCognitiveMastery(attempts = []) {
   const levels = {
@@ -89,10 +89,13 @@ export function calculateCognitiveMastery(attempts = []) {
   const results = {};
   for (const [level, items] of Object.entries(levels)) {
     if (!items || items.length === 0) {
-      results[level] = null;
+      results[level] = { score: null, evidenceCount: 0 };
     } else {
       const correct = items.filter((item) => item.correct || item.isCorrect || item.passed).length;
-      results[level] = Math.round((correct / items.length) * 100);
+      results[level] = {
+        score: Math.round((correct / items.length) * 100),
+        evidenceCount: items.length,
+      };
     }
   }
 
@@ -100,23 +103,18 @@ export function calculateCognitiveMastery(attempts = []) {
 }
 
 /**
- * Determines the single Primary Learning Bottleneck and Next Best Action.
+ * Determines the single human-centered Next Best Action based on evidence confidence.
+ *
+ * Hierarchy:
+ * 1. Cold Start (0 attempts) -> Start somewhere
+ * 2. Calibration (1-4 attempts) -> Keep practicing, still learning strengths
+ * 3. Evidence-Backed Critical Gap (>= 5 attempts, < 40%) -> Let's fix this first
+ * 4. Repeated Mistakes (>= 5 unresolved) -> Look at mistake journal
+ * 5. Due Reviews (> 0) -> Refresh what you've learned
+ * 6. Ready to Advance (Readiness met) -> Ready to progress
+ * 7. Active Learning -> Keep practicing
  *
  * @param {Object} params
- * @param {Object} [params.readiness]
- * @param {Object} [params.masteryMap]
- * @param {Array} [params.dueReviews]
- * @param {Array} [params.unresolvedMistakes]
-/**
- * Determines the single Primary Learning Bottleneck and Next Best Action.
- *
- * @param {Object} params
- * @param {number} [params.totalAttempts]
- * @param {Object} [params.readiness]
- * @param {Object} [params.masteryMap]
- * @param {Array} [params.dueReviews]
- * @param {Array} [params.unresolvedMistakes]
- * @param {boolean} [params.isColdStart]
  * @returns {Object} Action recommendation object
  */
 export function generatePrimaryRecommendation({
@@ -127,81 +125,100 @@ export function generatePrimaryRecommendation({
   unresolvedMistakes = [],
   isColdStart = false,
 } = {}) {
+  // Stage 1: Cold Start (No question attempts yet)
   if (isColdStart || (totalAttempts === 0 && dueReviews.length === 0 && unresolvedMistakes.length === 0)) {
     return {
       type: "cold_start",
       priority: "ONBOARDING",
       action: "START_LEARNING",
       title: "Start Your Learning Journey",
-      reason: "Complete your first topic quiz to establish your baseline learning readiness.",
+      reason: "Complete your first topic quiz so we can begin understanding your strengths.",
       buttonLabel: "Browse Subjects",
       route: "/subjects",
     };
   }
 
-  const criticalGap = masteryMap?.knowledgeGaps?.[0];
+  // Stage 2: Calibration Phase (1 to 4 questions answered)
+  // Refuses to diagnose weaknesses prematurely; focuses on building baseline
+  if (totalAttempts < 5) {
+    return {
+      type: "calibrating",
+      priority: "CALIBRATION",
+      action: "PRACTICE",
+      title: "We're Still Learning Your Strengths",
+      reason: `You've completed ${totalAttempts} question${totalAttempts > 1 ? "s" : ""}. A little more practice will give us a clearer picture of where to focus.`,
+      buttonLabel: "Continue Practice",
+      route: "/subjects",
+    };
+  }
 
+  // Stage 3: Evidence-Backed Critical Gap (requires >= 5 attempts + < 40% accuracy)
+  const criticalGap = masteryMap?.knowledgeGaps?.[0];
   if (criticalGap) {
     return {
       type: "critical_gap",
-      priority: "CRITICAL",
+      priority: "HIGH",
       action: "REPAIR_KNOWLEDGE_GAP",
-      title: `Strengthen ${criticalGap.topic}`,
-      reason: `Your mastery is currently ${criticalGap.performanceScore || criticalGap.mastery || 0}%, creating a prerequisite gap.`,
-      buttonLabel: "Repair This Gap",
+      title: `Let's Fix This First: ${criticalGap.topic}`,
+      reason: `You've encountered consistent difficulty with ${criticalGap.topic}. Strengthening this foundation will make the next topics easier.`,
+      buttonLabel: "Review Topic",
       targetTopic: criticalGap.topic,
     };
   }
 
+  // Stage 4: Repeated Mistakes
   if (Array.isArray(unresolvedMistakes) && unresolvedMistakes.length >= 5) {
     return {
       type: "review_mistakes",
       priority: "HIGH",
       action: "REVIEW_MISTAKES",
-      title: "Repair Recurring Mistakes",
-      reason: `${unresolvedMistakes.length} unresolved mistakes detected in your journal.`,
+      title: "Look at Your Mistake Journal",
+      reason: `You have ${unresolvedMistakes.length} recurring mistakes. A quick review will help break the pattern.`,
       buttonLabel: "Open Mistake Journal",
       route: "/mistakes",
     };
   }
 
+  // Stage 5: Due Memory Reviews
   if (Array.isArray(dueReviews) && dueReviews.length > 0) {
     return {
       type: "complete_reviews",
       priority: "MEDIUM",
       action: "COMPLETE_REVIEWS",
-      title: "Protect What You've Learned",
-      reason: `${dueReviews.length} topic${dueReviews.length > 1 ? "s are" : " is"} due for memory review today.`,
+      title: "Refresh What You've Learned",
+      reason: `${dueReviews.length} topic${dueReviews.length > 1 ? "s are" : " is"} ready for memory review.`,
       buttonLabel: "Start Memory Review",
       route: "/analytics",
     };
   }
 
-  if (readiness?.status === "READY" || readiness?.ready) {
+  // Stage 6: Ready to Advance
+  if (readiness?.status === "READY_TO_ADVANCE" || readiness?.status === "READY" || readiness?.ready) {
     return {
       type: "ready_to_advance",
       priority: "SUCCESS",
       action: "ADVANCE",
       title: "You Are Ready to Advance",
-      reason: "Your recent performance demonstrates strong and consistent evidence of mastery.",
+      reason: "Your recent performance demonstrates strong and consistent evidence of understanding.",
       buttonLabel: "Continue Learning",
       route: "/subjects",
     };
   }
 
+  // Stage 7: Active Practice
   return {
     type: "active_learning",
     priority: "LOW",
     action: "PRACTICE",
-    title: "Build More Learning Evidence",
-    reason: "Complete additional practice questions to accurately measure your competency.",
+    title: "Keep Practicing",
+    reason: "Continue answering practice questions to build a clearer picture of your understanding.",
     buttonLabel: "Practice Now",
     route: "/subjects",
   };
 }
 
 /**
- * Builds the central Tixar Learning Intelligence State Object.
+ * Builds the central Tixar Learning Intelligence State Object from canonical evidence.
  *
  * @param {Object} params
  * @returns {Object} Comprehensive Intelligence Object
@@ -227,6 +244,7 @@ export function buildLearningIntelligence({
   const readiness = calculateReadiness({
     overallScore: accuracy,
     masteryMap,
+    totalAttempts,
   });
 
   const recommendation = generatePrimaryRecommendation({
@@ -241,7 +259,13 @@ export function buildLearningIntelligence({
   return {
     overview: {
       coldStart: isColdStart,
-      intelligenceState: isColdStart ? "cold_start" : (readiness.ready ? "ready_to_advance" : "active_learning"),
+      intelligenceState: isColdStart
+        ? "no_evidence"
+        : totalAttempts < 5
+        ? "early_evidence"
+        : readiness.ready
+        ? "ready_to_advance"
+        : "active_learning",
       totalAttempts,
       correctAttempts,
       accuracy: isColdStart ? null : accuracy,
@@ -250,7 +274,9 @@ export function buildLearningIntelligence({
       readinessScore: isColdStart ? null : readiness.score,
       readinessStatus: isColdStart ? "UNMEASURED" : readiness.status,
       readinessLabel: isColdStart ? "Unmeasured" : readiness.label,
-      readinessRecommendation: isColdStart ? "Complete your first topic quiz to measure readiness." : readiness.recommendation,
+      readinessRecommendation: isColdStart
+        ? "Complete your first topic quiz to measure readiness."
+        : readiness.recommendation,
       isReady: isColdStart ? false : readiness.ready,
     },
     cognitiveMastery,
