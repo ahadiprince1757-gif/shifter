@@ -25,8 +25,8 @@ function formatTitle(str) {
     .join(" ");
 }
 
-/** Semi-Circle Arc Gauge SVG Component */
-function ReadinessArcGauge({ score = 0, confidence = "HIGH" }) {
+/** Semi-Circle Arc Gauge SVG Component (Clean visual indicator without duplicate text) */
+function ReadinessArcGauge({ score = 0 }) {
   const radius = 40;
   const strokeWidth = 8;
   const circumference = Math.PI * radius; // ~125.66
@@ -35,10 +35,10 @@ function ReadinessArcGauge({ score = 0, confidence = "HIGH" }) {
 
   return (
     <div className="readiness-gauge-wrapper">
-      <svg viewBox="0 0 100 58" className="readiness-arc-svg">
+      <svg viewBox="0 0 100 52" className="readiness-arc-svg">
         {/* Background Arc */}
         <path
-          d="M 10 48 A 40 40 0 0 1 90 48"
+          d="M 10 46 A 40 40 0 0 1 90 46"
           fill="none"
           stroke="var(--bd2, #e2e8f0)"
           strokeWidth={strokeWidth}
@@ -46,7 +46,7 @@ function ReadinessArcGauge({ score = 0, confidence = "HIGH" }) {
         />
         {/* Progress Arc */}
         <path
-          d="M 10 48 A 40 40 0 0 1 90 48"
+          d="M 10 46 A 40 40 0 0 1 90 46"
           fill="none"
           stroke="#1d6bf3"
           strokeWidth={strokeWidth}
@@ -55,17 +55,7 @@ function ReadinessArcGauge({ score = 0, confidence = "HIGH" }) {
           strokeDashoffset={progressOffset}
           style={{ transition: "stroke-dashoffset 0.8s ease-in-out" }}
         />
-        {/* Inner Score Text */}
-        <text x="50" y="38" textAnchor="middle" className="gauge-score-text">
-          {safeScore}%
-        </text>
-        <text x="50" y="48" textAnchor="middle" className="gauge-label-text">
-          Readiness
-        </text>
       </svg>
-      <div className="gauge-confidence-tag">
-        Confidence: <span className="confidence-val">{confidence}</span>
-      </div>
     </div>
   );
 }
@@ -102,7 +92,7 @@ export default function AnalyticsDashboard() {
     return (
       <div className="analytics-v2-container">
         <div className="analytics-v2-header">
-          <h1 className="analytics-v2-title">Learning Intelligence</h1>
+          <h1 className="analytics-v2-title">My Learning</h1>
           <p className="analytics-v2-sub">Analyzing learning evidence...</p>
         </div>
         <div style={{ marginTop: "1.5rem" }}>
@@ -175,7 +165,7 @@ export default function AnalyticsDashboard() {
     }
   };
 
-  // Compile topic lists for "Topics to Focus On" tabs
+  // Compile topic lists for "The Focus Queue" tabs
   const needsAttentionList = masteryMap?.weakTopics?.length > 0 
     ? masteryMap.weakTopics 
     : mostFailed;
@@ -214,28 +204,29 @@ export default function AnalyticsDashboard() {
             </svg>
           </div>
           <div>
-            <h1 className="analytics-v2-title">Learning Intelligence</h1>
-            <p className="analytics-v2-sub">Your learning. Measured. Improved.</p>
+            <h1 className="analytics-v2-title">My Learning</h1>
+            <p className="analytics-v2-sub">Actionable intelligence for your next step.</p>
           </div>
         </div>
       </header>
 
-      {/* 1. READINESS CARD */}
+      {/* LEVEL 1: READINESS & ACTION HERO CARD */}
       <div className="readiness-v2-card">
         <div className="readiness-v2-top">
           <div className="readiness-v2-info">
-            <div className="readiness-v2-label">READINESS</div>
+            <div className="readiness-v2-label">LEARNING READINESS</div>
             <div className="readiness-v2-score">{overview.readinessScore}%</div>
-            <div className="readiness-v2-status">{overview.readinessLabel}</div>
+            <div className="readiness-v2-status">
+              {overview.isReady ? "Ready to progress" : "Not ready yet"}
+            </div>
             <div className="readiness-v2-subtext">
-              {overview.isReady ? "All core prerequisites met" : "Critical gap detected"}
+              {recommendation.title
+                ? `Your biggest gap is: ${formatTitle(recommendation.title)}`
+                : "All core prerequisites met"}
             </div>
           </div>
 
-          <ReadinessArcGauge
-            score={overview.readinessScore}
-            confidence={overview.evidenceConfidence}
-          />
+          <ReadinessArcGauge score={overview.readinessScore} />
         </div>
 
         {/* Primary Bottleneck Banner */}
@@ -255,7 +246,7 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
-      {/* 2. CORE METRICS 3-COLUMN GRID */}
+      {/* LEVEL 2: ESSENTIAL SIGNALS GRID */}
       <div className="metrics-v2-grid">
         <div className="metric-v2-card">
           <div className="metric-v2-val">{accuracyRate}%</div>
@@ -267,26 +258,26 @@ export default function AnalyticsDashboard() {
           <div className="metric-v2-val">{dueReviews.length}</div>
           <div className="metric-v2-lbl">Due Reviews</div>
           <div className="metric-v2-sub">
-            {dueReviews.length > 0 ? "Review now" : "Keep it up!"}
+            {dueReviews.length > 0 ? "Review now" : "All clean!"}
           </div>
         </div>
 
         <div className="metric-v2-card" onClick={() => navigate("/mistakes")}>
           <div className="metric-v2-val">{unresolvedMistakes.length}</div>
-          <div className="metric-v2-lbl">Active Mistake</div>
+          <div className="metric-v2-lbl">Active Mistakes</div>
           <div className="metric-v2-sub">
-            {unresolvedMistakes.length > 0 ? "Review now" : "Review now"}
+            {unresolvedMistakes.length > 0 ? "Review now" : "All clean!"}
           </div>
         </div>
       </div>
 
-      {/* 3. TOPICS TO FOCUS ON SECTION */}
+      {/* LEVEL 3: THE FOCUS QUEUE (Top 3 Priority Topics) */}
       <div className="topics-focus-v2-card">
         <div className="topics-v2-header">
-          <h2 className="topics-v2-title">Topics to Focus On</h2>
-          <button className="view-all-v2-link" onClick={() => navigate("/subjects")}>
-            View all
-          </button>
+          <div>
+            <h2 className="topics-v2-title">Your Next Focus</h2>
+            <p className="topics-v2-sub">Top priority steps for maximum score impact</p>
+          </div>
         </div>
 
         {/* Filter Tabs (Pill Buttons) */}
@@ -311,18 +302,19 @@ export default function AnalyticsDashboard() {
           </button>
         </div>
 
-        {/* Topic List */}
+        {/* Focus Queue Items (Capped at top 3) */}
         <div className="topic-v2-list">
           {currentFilteredList.length === 0 ? (
             <div className="topic-v2-empty">
               <p>No topics in this category right now.</p>
             </div>
           ) : (
-            currentFilteredList.map((item, idx) => {
+            currentFilteredList.slice(0, 3).map((item, idx) => {
               const title = formatTitle(item.topic_title || item.topic || "Topic");
               const subject = formatTitle(item.subject_name || item.subject_id || "Science");
               const chapter = formatTitle(item.chapter_title || item.chapter_id || "Practical Skills");
               const score = item.performanceScore ?? item.mastery ?? 0;
+              const actionLabel = score < 40 ? "Repair" : "Practice";
 
               return (
                 <div
@@ -331,14 +323,15 @@ export default function AnalyticsDashboard() {
                   onClick={() => handleStudyTopic(item)}
                 >
                   <div className="topic-v2-item-main">
-                    <div className="topic-v2-item-title">{title}</div>
+                    <div className="topic-v2-item-title">{idx + 1}. {title}</div>
                     <div className="topic-v2-item-sub">
-                      {subject} • {chapter}
+                      {subject} • {chapter} ({score}% mastery)
                     </div>
                   </div>
                   <div className="topic-v2-item-right">
-                    <span className="topic-v2-badge">{score}%</span>
-                    <span className="topic-v2-chevron">›</span>
+                    <button className="topic-action-pill-btn">
+                      {actionLabel} →
+                    </button>
                   </div>
                 </div>
               );
@@ -346,33 +339,41 @@ export default function AnalyticsDashboard() {
           )}
         </div>
 
-        {/* Explore All Weak Topics Banner Button */}
+        {/* View All Topics Button */}
         <button
           className="explore-weak-v2-btn"
           onClick={() => navigate("/subjects")}
         >
-          <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
-            <svg viewBox="0 0 24 24" width="18" height="18" fill="#1d6bf3">
-              <path d="M4 6h16v2H4zm0 5h16v2H4zm0 5h16v2H4z" />
-            </svg>
-            Explore All Weak Topics
-          </span>
-          <span className="explore-v2-chevron">›</span>
+          <span>View all {currentFilteredList.length} topics</span>
+          <span className="explore-v2-chevron">→</span>
         </button>
       </div>
 
-      {/* 4. OPTIONAL COGNITIVE MASTERY EVIDENCE COLLAPSIBLE */}
+      {/* LEVEL 4: DEEP INTELLIGENCE (Collapsed Analytics Drawer) */}
       <div className="cognitive-collapsible-v2">
         <button
           className="cognitive-v2-toggle"
           onClick={() => setShowCognitiveDetails(!showCognitiveDetails)}
         >
-          <span>Evidence & Cognitive Mastery Details</span>
+          <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+            </svg>
+            Deep Learning Intelligence & Evidence
+          </span>
           <span>{showCognitiveDetails ? "▲" : "▼"}</span>
         </button>
 
         {showCognitiveDetails && (
           <div className="cognitive-v2-body">
+            {/* Evidence Confidence Tag */}
+            <div className="deep-evidence-meta" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "0.6rem" }}>
+              <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
+                Evidence Confidence: <strong style={{ color: "#1d6bf3" }}>{overview.evidenceConfidence}</strong>
+              </span>
+              <span style={{ fontSize: "0.75rem", color: "var(--t3, #94a3b8)" }}>Measured from attempt history</span>
+            </div>
+
             {totalQuizzes > 0 && (
               <div className="cbc-v2-box">
                 <span
@@ -394,6 +395,9 @@ export default function AnalyticsDashboard() {
             )}
 
             <div className="cognitive-v2-grid">
+              <div style={{ fontSize: "0.84rem", fontWeight: 700, color: "var(--t)", marginTop: "0.4rem", marginBottom: "0.2rem" }}>
+                Cognitive Mastery Dimensions
+              </div>
               {cognitiveDimensions.map((dim) => (
                 <div key={dim.label} className="cognitive-v2-row">
                   <div className="cognitive-v2-label">
@@ -420,4 +424,5 @@ export default function AnalyticsDashboard() {
     </div>
   );
 }
+
 

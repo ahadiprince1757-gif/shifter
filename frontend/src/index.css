@@ -10299,6 +10299,32 @@ html.dark-mode .topic-filter-v2-pills {
   background: #0f172a;
 }
 
+.topics-v2-sub {
+  font-size: 0.76rem;
+  color: var(--t2, #64748b);
+  margin-top: 0.15rem;
+}
+
+.topic-action-pill-btn {
+  background: rgba(29, 107, 243, 0.08);
+  color: #1d6bf3;
+  border: 1px solid rgba(29, 107, 243, 0.2);
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.topic-action-pill-btn:hover {
+  background: #1d6bf3;
+  color: #ffffff;
+  border-color: #1d6bf3;
+}
+
+
 
 
 
