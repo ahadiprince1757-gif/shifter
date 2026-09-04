@@ -128,168 +128,60 @@ export async function fetchAnalytics() {
 // ─────────────────────────────────────────────────────────────
 // LEARNING FEATURES: Mistakes, Spaced Reviews, Notes,
 //                   Enrollments, Progress, Achievements
-// Directly queries Supabase tables with user_id scoping.
-// Returns empty fallback when unauthenticated or offline.
+// Delegates directly to modular database services in src/services/
 // ─────────────────────────────────────────────────────────────
 
 import { getActiveUserId } from "./supabase";
+import { recordMistake, markMistakeResolved, fetchUnresolvedMistakes } from "./services/mistakeService";
+import { updateProgress as serviceUpdateProgress, fetchUserProgress } from "./services/progressService";
+import { upsertSpacedReview, fetchDueSpacedReviews } from "./services/reviewService";
 
-/** Save a missed question to Supabase user_mistakes table. */
+/** Save a missed question to Supabase user_mistakes table via mistakeService. */
 export async function saveMistake({ sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution }) {
-  const userId = getActiveUserId();
-  if (!userId || !supabase) {
-    console.warn("[Supabase API] saveMistake skipped: No authenticated session.");
-    return false;
-  }
-
-  const payload = {
-    user_id: userId,
-    subject_id: sid || null,
-    chapter_key: cid || null,
-    topic_title: topicTitle || "",
-    question_index: typeof questionIndex === "number" ? questionIndex : (parseInt(questionIndex, 10) || 0),
-    question_text: questionText || "",
-    correct_answer: correctAnswer || "",
-    solution: solution || "",
-    resolved: false,
-  };
-
-  if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
-    payload.topic_id = parseInt(topicTitle, 10);
-  }
-
-  try {
-    const { error } = await supabase.from("user_mistakes").insert(payload);
-    if (error) {
-      console.warn("[Supabase API] user_mistakes insert error:", error.message);
-      return false;
-    }
-    return true;
-  } catch (err) {
-    console.error("[Supabase API] user_mistakes exception:", err);
-    return false;
-  }
+  const record = await recordMistake({
+    subjectId: sid,
+    chapterKey: cid,
+    topicTitle,
+    questionIndex,
+    questionText,
+    correctAnswer,
+    solution,
+  });
+  return Boolean(record);
 }
 
-/** Mark a mistake as resolved in Supabase. */
+/** Mark a mistake as resolved in Supabase via mistakeService. */
 export async function resolveMistake({ cid, topicTitle, questionIndex }) {
-  const userId = getActiveUserId();
-  if (!userId || !supabase) return false;
-  try {
-    let query = supabase
-      .from("user_mistakes")
-      .update({ resolved: true })
-      .eq("user_id", userId)
-      .eq("question_index", questionIndex);
-
-    if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
-      query = query.eq("topic_id", parseInt(topicTitle, 10));
-    } else if (cid) {
-      query = query.eq("chapter_key", cid);
-    }
-
-    const { error } = await query;
-    if (error) console.warn("[Supabase API] resolveMistake warning:", error.message);
-    return !error;
-  } catch (err) {
-    console.error("[Supabase API] resolveMistake exception:", err);
-    return false;
-  }
+  return await markMistakeResolved({
+    chapterKey: cid,
+    topicId: topicTitle,
+    questionIndex,
+  });
 }
 
-/** Fetch all unresolved mistakes from Supabase for current user. */
+/** Fetch all unresolved mistakes from Supabase for current user via mistakeService. */
 export async function fetchMistakes() {
-  const userId = getActiveUserId();
-  if (!userId || !supabase) return [];
-  try {
-    const { data, error } = await supabase
-      .from("user_mistakes")
-      .select("*")
-      .eq("user_id", userId)
-      .eq("resolved", false);
-    if (error) {
-      console.warn("[Supabase API] fetchMistakes warning:", error.message);
-      return [];
-    }
-    return data || [];
-  } catch (err) {
-    console.error("[Supabase API] fetchMistakes exception:", err);
-    return [];
-  }
+  return await fetchUnresolvedMistakes();
 }
 
-/** Upsert an SM-2 spaced review schedule for a topic in Supabase. */
+/** Upsert an SM-2 spaced review schedule for a topic in Supabase via reviewService. */
 export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions }) {
-  const userId = getActiveUserId();
-  if (!userId || !supabase) return false;
-
-  const topicTitleStr = topicTitle || "";
-
-  const payload = {
-    user_id: userId,
-    topic_title: topicTitleStr,
-    subject_id: sid || null,
-    chapter_id: cid || null,
-    next_review_at: nextReviewAt,
-    interval_days: intervalDays,
-    ease_factor: easeFactor,
-    repetitions: repetitions,
-    updated_at: new Date().toISOString(),
-  };
-
-  if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
-    payload.topic_id = parseInt(topicTitle, 10);
-  }
-
-  try {
-    const { data: existing } = await supabase
-      .from("spaced_reviews")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("topic_title", topicTitleStr)
-      .limit(1);
-
-    if (existing && existing.length > 0) {
-      const { error } = await supabase
-        .from("spaced_reviews")
-        .update(payload)
-        .eq("id", existing[0].id);
-      if (error) {
-        console.warn("[Supabase API] spaced_reviews update warning:", error.message);
-        return false;
-      }
-    } else {
-      const { error } = await supabase.from("spaced_reviews").insert(payload);
-      if (error) {
-        console.warn("[Supabase API] spaced_reviews insert warning:", error.message);
-        return false;
-      }
-    }
-    return true;
-  } catch (err) {
-    console.error("[Supabase API] spaced_reviews exception:", err);
-    return false;
-  }
+  const record = await upsertSpacedReview({
+    subjectId: sid,
+    chapterId: cid,
+    topicId: topicTitle,
+    topicTitle,
+    nextReviewAt,
+    intervalDays,
+    repetitions,
+    easeFactor,
+  });
+  return Boolean(record);
 }
 
-/** Fetch all due spaced reviews from Supabase for current user. */
+/** Fetch all due spaced reviews from Supabase for current user via reviewService. */
 export async function fetchSpacedReviews() {
-  const userId = getActiveUserId();
-  if (!userId || !supabase) return [];
-  try {
-    const { data, error } = await supabase
-      .from("spaced_reviews")
-      .select("*")
-      .eq("user_id", userId);
-    if (error) {
-      console.warn("[Supabase API] fetchSpacedReviews warning:", error.message);
-      return [];
-    }
-    return data || [];
-  } catch (err) {
-    console.error("[Supabase API] fetchSpacedReviews exception:", err);
-    return [];
-  }
+  return await fetchDueSpacedReviews();
 }
 
 /** Save or update a personal synthesis note for a topic in Supabase. */
@@ -303,13 +195,15 @@ export async function saveNote({ sid, cid, topicTitle, noteText }) {
     user_id: userId,
     topic_title: topicTitleStr,
     subject_id: sid || null,
-    chapter_id: cid || null,
     note_text: noteText || "",
     updated_at: new Date().toISOString(),
   };
 
   if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
     payload.topic_id = parseInt(topicTitle, 10);
+  }
+  if (cid && (typeof cid === "number" || /^\d+$/.test(cid))) {
+    payload.chapter_id = parseInt(cid, 10);
   }
 
   try {
@@ -400,77 +294,24 @@ export async function fetchEnrollments() {
   }
 }
 
-/** Save topic progress to Supabase. */
+/** Save topic progress to Supabase via progressService. */
 export async function saveProgress({ sid, cid, topicTitle, completed, score, mastered, confidenceLevel }) {
-  const userId = getActiveUserId();
-  if (!userId || !supabase) return false;
-
-  const topicTitleStr = topicTitle || "";
-
-  const payload = {
-    user_id: userId,
-    topic_title: topicTitleStr,
-    subject_id: sid || null,
-    chapter_id: cid || null,
+  const record = await serviceUpdateProgress({
+    subjectId: sid,
+    chapterId: cid,
+    topicId: topicTitle,
+    topicTitle,
     completed: completed ?? false,
-    score: score ?? null,
+    masteryScore: score ?? 0,
     mastered: mastered ?? false,
-    confidence_level: confidenceLevel ?? null,
-    updated_at: new Date().toISOString(),
-  };
-
-  try {
-    // Check if a row already exists for this user + topic (by title, since topic_id may be null)
-    const { data: existing } = await supabase
-      .from("progress")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("topic_title", topicTitleStr)
-      .limit(1);
-
-    if (existing && existing.length > 0) {
-      // Update existing row
-      const { error } = await supabase
-        .from("progress")
-        .update(payload)
-        .eq("id", existing[0].id);
-      if (error) {
-        console.warn("[Supabase API] progress update warning:", error.message);
-        return false;
-      }
-    } else {
-      // Insert new row
-      const { error } = await supabase.from("progress").insert(payload);
-      if (error) {
-        console.warn("[Supabase API] progress insert warning:", error.message);
-        return false;
-      }
-    }
-    return true;
-  } catch (err) {
-    console.error("[Supabase API] progress exception:", err);
-    return false;
-  }
+    confidenceLevel: confidenceLevel ?? "medium",
+  });
+  return Boolean(record);
 }
 
-/** Fetch all progress records for the current user from Supabase. */
+/** Fetch all progress records for the current user from Supabase via progressService. */
 export async function fetchProgress() {
-  const userId = getActiveUserId();
-  if (!userId || !supabase) return [];
-  try {
-    const { data, error } = await supabase
-      .from("progress")
-      .select("*")
-      .eq("user_id", userId);
-    if (error) {
-      console.warn("[Supabase API] fetchProgress warning:", error.message);
-      return [];
-    }
-    return data || [];
-  } catch (err) {
-    console.error("[Supabase API] fetchProgress exception:", err);
-    return [];
-  }
+  return await fetchUserProgress();
 }
 
 /** Unlock/save an achievement in Supabase. */
