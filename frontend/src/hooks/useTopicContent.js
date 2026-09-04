@@ -31,32 +31,31 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
   const content = contentRecord ? contentRecord.data : null;
 
   useEffect(() => {
-    if (!hasParams) return;
+    if (!hasParams || !subject?.id || !chapter?.id || !topic) return;
+
+    const currentTopicKey = `${subject.id}|${chapter.id}|${topic}`;
 
     // Defense-in-depth: Prevent duplicate visit event recordings during same topic component lifecycle
-    if (recordedTopicRef.current === topicKey) {
+    if (recordedTopicRef.current === currentTopicKey) {
       return;
     }
-    recordedTopicRef.current = topicKey;
+    recordedTopicRef.current = currentTopicKey;
 
     console.log(`useTopicContent: Requested ${subject.id}/${chapter.id}/${topic}`);
 
-    // If we have content, we don't technically NEED to prefetch unless we want the absolute latest.
-    // However, the offline-first approach is to trigger a background fetch if online to ensure freshness.
+    // 1. Immediately record student navigation telemetry event (independent of network/prefetch)
+    recordEvent(subject.id, chapter.id, topic, "visit", userId);
+
+    // 2. Asynchronously prepare/prefetch content in background
     syncEngine.prefetchTopic(subject.id, chapter.id, topic)
-      .then(() => {
-        // Log telemetry visit event once successfully checked/loaded
-        recordEvent(subject.id, chapter.id, topic, "visit", userId);
-      })
       .catch((err) => {
         console.error(`useTopicContent: Error prefetching ${subject.id}/${chapter.id}/${topic}:`, err);
-        // We only set an error if we ALSO don't have local content.
         if (!contentRecord) {
           setError("Failed to load content. Check your internet.");
           toast.error("Failed to load notes. Please check your internet connection.");
         }
       });
-  }, [subject?.id, chapter?.id, topic, userId, hasParams, topicKey]);
+  }, [subject?.id, chapter?.id, topic, userId, hasParams]);
 
   return { content, loading, error };
 }
