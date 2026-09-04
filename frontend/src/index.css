@@ -10324,6 +10324,33 @@ html.dark-mode .topic-filter-v2-pills {
   border-color: #1d6bf3;
 }
 
+/* COLD START ONBOARDING CARD STYLES */
+.cold-start-card {
+  padding: 1.4rem 1.25rem;
+  background: linear-gradient(135deg, rgba(29, 107, 243, 0.05) 0%, rgba(29, 107, 243, 0.02) 100%);
+  border: 1px solid rgba(29, 107, 243, 0.15);
+}
+
+.cold-start-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.cold-start-title {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--t, #0f172a);
+  margin-top: 0.3rem;
+}
+
+.cold-start-desc {
+  font-size: 0.86rem;
+  color: var(--t2, #475569);
+  margin-top: 0.35rem;
+  line-height: 1.45;
+}
+
+
 
 
 

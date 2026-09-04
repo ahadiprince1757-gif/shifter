@@ -107,18 +107,43 @@ export function calculateCognitiveMastery(attempts = []) {
  * @param {Object} [params.masteryMap]
  * @param {Array} [params.dueReviews]
  * @param {Array} [params.unresolvedMistakes]
+/**
+ * Determines the single Primary Learning Bottleneck and Next Best Action.
+ *
+ * @param {Object} params
+ * @param {number} [params.totalAttempts]
+ * @param {Object} [params.readiness]
+ * @param {Object} [params.masteryMap]
+ * @param {Array} [params.dueReviews]
+ * @param {Array} [params.unresolvedMistakes]
+ * @param {boolean} [params.isColdStart]
  * @returns {Object} Action recommendation object
  */
 export function generatePrimaryRecommendation({
+  totalAttempts = 0,
   readiness = null,
   masteryMap = null,
   dueReviews = [],
   unresolvedMistakes = [],
+  isColdStart = false,
 } = {}) {
+  if (isColdStart || (totalAttempts === 0 && dueReviews.length === 0 && unresolvedMistakes.length === 0)) {
+    return {
+      type: "cold_start",
+      priority: "ONBOARDING",
+      action: "START_LEARNING",
+      title: "Start Your Learning Journey",
+      reason: "Complete your first topic quiz to establish your baseline learning readiness.",
+      buttonLabel: "Browse Subjects",
+      route: "/subjects",
+    };
+  }
+
   const criticalGap = masteryMap?.knowledgeGaps?.[0];
 
   if (criticalGap) {
     return {
+      type: "critical_gap",
       priority: "CRITICAL",
       action: "REPAIR_KNOWLEDGE_GAP",
       title: `Strengthen ${criticalGap.topic}`,
@@ -130,6 +155,7 @@ export function generatePrimaryRecommendation({
 
   if (Array.isArray(unresolvedMistakes) && unresolvedMistakes.length >= 5) {
     return {
+      type: "review_mistakes",
       priority: "HIGH",
       action: "REVIEW_MISTAKES",
       title: "Repair Recurring Mistakes",
@@ -141,6 +167,7 @@ export function generatePrimaryRecommendation({
 
   if (Array.isArray(dueReviews) && dueReviews.length > 0) {
     return {
+      type: "complete_reviews",
       priority: "MEDIUM",
       action: "COMPLETE_REVIEWS",
       title: "Protect What You've Learned",
@@ -152,6 +179,7 @@ export function generatePrimaryRecommendation({
 
   if (readiness?.status === "READY" || readiness?.ready) {
     return {
+      type: "ready_to_advance",
       priority: "SUCCESS",
       action: "ADVANCE",
       title: "You Are Ready to Advance",
@@ -162,6 +190,7 @@ export function generatePrimaryRecommendation({
   }
 
   return {
+    type: "active_learning",
     priority: "LOW",
     action: "PRACTICE",
     title: "Build More Learning Evidence",
@@ -188,6 +217,8 @@ export function buildLearningIntelligence({
     (attempt) => attempt.correct || attempt.isCorrect || attempt.passed
   ).length;
 
+  const isColdStart = totalAttempts === 0 && dueReviews.length === 0 && unresolvedMistakes.length === 0;
+
   const accuracy = totalAttempts > 0 ? Math.round((correctAttempts / totalAttempts) * 100) : 0;
   const reliableMastery = calculateReliableMastery(correctAttempts, totalAttempts);
   const cognitiveMastery = calculateCognitiveMastery(attempts);
@@ -199,24 +230,28 @@ export function buildLearningIntelligence({
   });
 
   const recommendation = generatePrimaryRecommendation({
+    totalAttempts,
     readiness,
     masteryMap,
     dueReviews,
     unresolvedMistakes,
+    isColdStart,
   });
 
   return {
     overview: {
+      coldStart: isColdStart,
+      intelligenceState: isColdStart ? "cold_start" : (readiness.ready ? "ready_to_advance" : "active_learning"),
       totalAttempts,
       correctAttempts,
-      accuracy,
-      reliableMastery: reliableMastery.mastery,
-      evidenceConfidence: reliableMastery.confidence,
-      readinessScore: readiness.score,
-      readinessStatus: readiness.status,
-      readinessLabel: readiness.label,
-      readinessRecommendation: readiness.recommendation,
-      isReady: readiness.ready,
+      accuracy: isColdStart ? null : accuracy,
+      reliableMastery: isColdStart ? 0 : reliableMastery.mastery,
+      evidenceConfidence: isColdStart ? "UNMEASURED" : reliableMastery.confidence,
+      readinessScore: isColdStart ? null : readiness.score,
+      readinessStatus: isColdStart ? "UNMEASURED" : readiness.status,
+      readinessLabel: isColdStart ? "Unmeasured" : readiness.label,
+      readinessRecommendation: isColdStart ? "Complete your first topic quiz to measure readiness." : readiness.recommendation,
+      isReady: isColdStart ? false : readiness.ready,
     },
     cognitiveMastery,
     masteryMap,

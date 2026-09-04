@@ -30,7 +30,7 @@ function ReadinessArcGauge({ score = 0 }) {
   const radius = 40;
   const strokeWidth = 8;
   const circumference = Math.PI * radius; // ~125.66
-  const safeScore = Math.min(Math.max(score, 0), 100);
+  const safeScore = Math.min(Math.max(score || 0, 0), 100);
   const progressOffset = circumference * (1 - safeScore / 100);
 
   return (
@@ -56,6 +56,24 @@ function ReadinessArcGauge({ score = 0 }) {
           style={{ transition: "stroke-dashoffset 0.8s ease-in-out" }}
         />
       </svg>
+    </div>
+  );
+}
+
+/** Dedicated Hero Card for New Users (No learning evidence yet) */
+function ColdStartReadiness({ onBrowseSubjects }) {
+  return (
+    <div className="readiness-v2-card cold-start-card">
+      <div className="cold-start-content">
+        <div className="readiness-v2-label">LEARNING INTELLIGENCE</div>
+        <h2 className="cold-start-title">Start your learning journey</h2>
+        <p className="cold-start-desc">
+          Complete your first topic quiz to begin building your personalized learning profile and readiness diagnosis.
+        </p>
+        <button className="repair-gap-v2-btn" style={{ marginTop: "0.8rem", alignSelf: "flex-start" }} onClick={onBrowseSubjects}>
+          Browse Subjects →
+        </button>
+      </div>
     </div>
   );
 }
@@ -144,7 +162,13 @@ export default function AnalyticsDashboard() {
   const totalFails = mostFailed.reduce((s, r) => s + (r.fail_count || 0), 0);
   const totalQuizzes = totalPasses + totalFails;
   const accuracyRate = overview.accuracy;
-  const cbc = calculateCBCGrade(accuracyRate);
+  const cbc = calculateCBCGrade(accuracyRate || 0);
+
+  // Strict Cold-Start Determination
+  const isColdStart =
+    data?.coldStart === true ||
+    overview?.coldStart === true ||
+    (attempts.length === 0 && dueReviews.length === 0 && unresolvedMistakes.length === 0);
 
   const handleStudyTopic = (item) => {
     const sid = item.subject_id || item.sid;
@@ -165,18 +189,20 @@ export default function AnalyticsDashboard() {
     }
   };
 
-  // Compile topic lists for "The Focus Queue" tabs
-  const needsAttentionList = masteryMap?.weakTopics?.length > 0 
-    ? masteryMap.weakTopics 
-    : mostFailed;
+  // Compile topic lists for "The Focus Queue" (Strictly scoped - NO global fallbacks)
+  const needsAttentionList = isColdStart
+    ? []
+    : (masteryMap?.weakTopics?.length > 0 ? masteryMap.weakTopics : []);
 
-  const weakList = attempts
-    .filter((a) => !a.correct)
-    .map((a) => ({ topic_title: a.topic, mastery: 0 }));
+  const weakList = isColdStart
+    ? []
+    : attempts
+        .filter((a) => !a.correct)
+        .map((a) => ({ topic_title: a.topic, mastery: 0 }));
 
-  const strongList = masteryMap?.strongTopics?.length > 0 
-    ? masteryMap.strongTopics 
-    : mostPassed;
+  const strongList = isColdStart
+    ? []
+    : (masteryMap?.strongTopics?.length > 0 ? masteryMap.strongTopics : []);
 
   let currentFilteredList = needsAttentionList;
   if (topicFilterTab === "weak") {
@@ -211,47 +237,51 @@ export default function AnalyticsDashboard() {
       </header>
 
       {/* LEVEL 1: READINESS & ACTION HERO CARD */}
-      <div className="readiness-v2-card">
-        <div className="readiness-v2-top">
-          <div className="readiness-v2-info">
-            <div className="readiness-v2-label">LEARNING READINESS</div>
-            <div className="readiness-v2-score">{overview.readinessScore}%</div>
-            <div className="readiness-v2-status">
-              {overview.isReady ? "Ready to progress" : "Not ready yet"}
+      {isColdStart ? (
+        <ColdStartReadiness onBrowseSubjects={() => navigate("/subjects")} />
+      ) : (
+        <div className="readiness-v2-card">
+          <div className="readiness-v2-top">
+            <div className="readiness-v2-info">
+              <div className="readiness-v2-label">LEARNING READINESS</div>
+              <div className="readiness-v2-score">{overview.readinessScore}%</div>
+              <div className="readiness-v2-status">
+                {overview.isReady ? "Ready to progress" : "Not ready yet"}
+              </div>
+              <div className="readiness-v2-subtext">
+                {recommendation.title
+                  ? `Your biggest gap is: ${formatTitle(recommendation.title)}`
+                  : "All core prerequisites met"}
+              </div>
             </div>
-            <div className="readiness-v2-subtext">
-              {recommendation.title
-                ? `Your biggest gap is: ${formatTitle(recommendation.title)}`
-                : "All core prerequisites met"}
-            </div>
+
+            <ReadinessArcGauge score={overview.readinessScore} />
           </div>
 
-          <ReadinessArcGauge score={overview.readinessScore} />
-        </div>
-
-        {/* Primary Bottleneck Banner */}
-        <div className="primary-bottleneck-v2-banner">
-          <div className="bottleneck-v2-content">
-            <div className="bottleneck-v2-tag">PRIMARY BOTTLENECK</div>
-            <div className="bottleneck-v2-title">
-              {formatTitle(recommendation.title || "Laboratory Safety and Apparatus")}
+          {/* Primary Bottleneck Banner */}
+          <div className="primary-bottleneck-v2-banner">
+            <div className="bottleneck-v2-content">
+              <div className="bottleneck-v2-tag">PRIMARY BOTTLENECK</div>
+              <div className="bottleneck-v2-title">
+                {formatTitle(recommendation.title || "Laboratory Safety and Apparatus")}
+              </div>
+              <div className="bottleneck-v2-desc">
+                {recommendation.reason || "Your mastery is currently 0%, creating a prerequisite gap."}
+              </div>
             </div>
-            <div className="bottleneck-v2-desc">
-              {recommendation.reason || "Your mastery is currently 0%, creating a prerequisite gap."}
-            </div>
+            <button className="repair-gap-v2-btn" onClick={handlePrimaryAction}>
+              {recommendation.buttonLabel || "Repair This Gap"} →
+            </button>
           </div>
-          <button className="repair-gap-v2-btn" onClick={handlePrimaryAction}>
-            {recommendation.buttonLabel || "Repair This Gap"} →
-          </button>
         </div>
-      </div>
+      )}
 
       {/* LEVEL 2: ESSENTIAL SIGNALS GRID */}
       <div className="metrics-v2-grid">
         <div className="metric-v2-card">
-          <div className="metric-v2-val">{accuracyRate}%</div>
+          <div className="metric-v2-val">{isColdStart ? "—" : `${accuracyRate}%`}</div>
           <div className="metric-v2-lbl">Quiz Accuracy</div>
-          <div className="metric-v2-sub">{totalPasses} / {totalQuizzes} correct</div>
+          <div className="metric-v2-sub">{isColdStart ? "No attempts yet" : `${totalPasses} / ${totalQuizzes} correct`}</div>
         </div>
 
         <div className="metric-v2-card" onClick={() => navigate("/analytics")}>
@@ -281,32 +311,48 @@ export default function AnalyticsDashboard() {
         </div>
 
         {/* Filter Tabs (Pill Buttons) */}
-        <div className="topic-filter-v2-pills">
-          <button
-            className={`filter-v2-pill ${topicFilterTab === "needs_attention" ? "active" : ""}`}
-            onClick={() => setTopicFilterTab("needs_attention")}
-          >
-            Needs Attention ({needsAttentionList.length})
-          </button>
-          <button
-            className={`filter-v2-pill ${topicFilterTab === "weak" ? "active" : ""}`}
-            onClick={() => setTopicFilterTab("weak")}
-          >
-            Weak ({weakList.length})
-          </button>
-          <button
-            className={`filter-v2-pill ${topicFilterTab === "strong" ? "active" : ""}`}
-            onClick={() => setTopicFilterTab("strong")}
-          >
-            Strong ({strongList.length})
-          </button>
-        </div>
+        {!isColdStart && (
+          <div className="topic-filter-v2-pills">
+            <button
+              className={`filter-v2-pill ${topicFilterTab === "needs_attention" ? "active" : ""}`}
+              onClick={() => setTopicFilterTab("needs_attention")}
+            >
+              Needs Attention ({needsAttentionList.length})
+            </button>
+            <button
+              className={`filter-v2-pill ${topicFilterTab === "weak" ? "active" : ""}`}
+              onClick={() => setTopicFilterTab("weak")}
+            >
+              Weak ({weakList.length})
+            </button>
+            <button
+              className={`filter-v2-pill ${topicFilterTab === "strong" ? "active" : ""}`}
+              onClick={() => setTopicFilterTab("strong")}
+            >
+              Strong ({strongList.length})
+            </button>
+          </div>
+        )}
 
-        {/* Focus Queue Items (Capped at top 3) */}
+        {/* Focus Queue Items */}
         <div className="topic-v2-list">
-          {currentFilteredList.length === 0 ? (
+          {isColdStart ? (
+            <div className="topic-v2-empty" style={{ padding: "1.2rem 0" }}>
+              <p style={{ fontWeight: 600, color: "var(--t)" }}>No focus areas recorded yet</p>
+              <p style={{ marginTop: "0.25rem", fontSize: "0.82rem", color: "var(--t2)" }}>
+                Your personalized focus queue will appear here as you complete quizzes and build learning evidence.
+              </p>
+              <button
+                className="topic-action-pill-btn"
+                style={{ marginTop: "0.85rem", padding: "0.4rem 0.9rem" }}
+                onClick={() => navigate("/subjects")}
+              >
+                Browse Subjects →
+              </button>
+            </div>
+          ) : currentFilteredList.length === 0 ? (
             <div className="topic-v2-empty">
-              <p>No topics in this category right now.</p>
+              <p>No topics currently require attention in this category.</p>
             </div>
           ) : (
             currentFilteredList.slice(0, 3).map((item, idx) => {
@@ -344,7 +390,7 @@ export default function AnalyticsDashboard() {
           className="explore-weak-v2-btn"
           onClick={() => navigate("/subjects")}
         >
-          <span>View all {currentFilteredList.length} topics</span>
+          <span>{isColdStart ? "Explore Subject Catalog" : `View all ${currentFilteredList.length} topics`}</span>
           <span className="explore-v2-chevron">→</span>
         </button>
       </div>
@@ -366,63 +412,72 @@ export default function AnalyticsDashboard() {
 
         {showCognitiveDetails && (
           <div className="cognitive-v2-body">
-            {/* Evidence Confidence Tag */}
-            <div className="deep-evidence-meta" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "0.6rem" }}>
-              <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
-                Evidence Confidence: <strong style={{ color: "#1d6bf3" }}>{overview.evidenceConfidence}</strong>
-              </span>
-              <span style={{ fontSize: "0.75rem", color: "var(--t3, #94a3b8)" }}>Measured from attempt history</span>
-            </div>
-
-            {totalQuizzes > 0 && (
-              <div className="cbc-v2-box">
-                <span
-                  style={{
-                    background: cbc.badgeBg,
-                    color: cbc.badgeText,
-                    padding: "0.25rem 0.6rem",
-                    borderRadius: "6px",
-                    fontWeight: 700,
-                    fontSize: "0.78rem",
-                  }}
-                >
-                  CBC {cbc.level} · {cbc.points}/8 pts
-                </span>
-                <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
-                  {cbc.category} — {cbc.description}
-                </span>
+            {isColdStart ? (
+              <div style={{ padding: "1.2rem 0", textAlign: "center", color: "var(--t2)", fontSize: "0.85rem" }}>
+                Learning evidence and cognitive dimension scores will appear here after your first topic quiz.
               </div>
-            )}
+            ) : (
+              <>
+                {/* Evidence Confidence Tag */}
+                <div className="deep-evidence-meta" style={{ display: "flex", justifyContent: "space-between", alignItems: "center", paddingTop: "0.6rem" }}>
+                  <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
+                    Evidence Confidence: <strong style={{ color: "#1d6bf3" }}>{overview.evidenceConfidence}</strong>
+                  </span>
+                  <span style={{ fontSize: "0.75rem", color: "var(--t3, #94a3b8)" }}>Measured from attempt history</span>
+                </div>
 
-            <div className="cognitive-v2-grid">
-              <div style={{ fontSize: "0.84rem", fontWeight: 700, color: "var(--t)", marginTop: "0.4rem", marginBottom: "0.2rem" }}>
-                Cognitive Mastery Dimensions
-              </div>
-              {cognitiveDimensions.map((dim) => (
-                <div key={dim.label} className="cognitive-v2-row">
-                  <div className="cognitive-v2-label">
-                    <span>{dim.label}</span>
-                    <span style={{ fontWeight: 700, color: dim.color }}>
-                      {dim.val !== null ? `${dim.val}%` : "No evidence"}
+                {totalQuizzes > 0 && (
+                  <div className="cbc-v2-box">
+                    <span
+                      style={{
+                        background: cbc.badgeBg,
+                        color: cbc.badgeText,
+                        padding: "0.25rem 0.6rem",
+                        borderRadius: "6px",
+                        fontWeight: 700,
+                        fontSize: "0.78rem",
+                      }}
+                    >
+                      CBC {cbc.level} · {cbc.points}/8 pts
+                    </span>
+                    <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
+                      {cbc.category} — {cbc.description}
                     </span>
                   </div>
-                  <div className="cognitive-v2-track">
-                    <div
-                      className="cognitive-v2-fill"
-                      style={{
-                        width: `${dim.val || 0}%`,
-                        background: dim.color,
-                      }}
-                    />
+                )}
+
+                <div className="cognitive-v2-grid">
+                  <div style={{ fontSize: "0.84rem", fontWeight: 700, color: "var(--t)", marginTop: "0.4rem", marginBottom: "0.2rem" }}>
+                    Cognitive Mastery Dimensions
                   </div>
+                  {cognitiveDimensions.map((dim) => (
+                    <div key={dim.label} className="cognitive-v2-row">
+                      <div className="cognitive-v2-label">
+                        <span>{dim.label}</span>
+                        <span style={{ fontWeight: 700, color: dim.color }}>
+                          {dim.val !== null ? `${dim.val}%` : "No evidence"}
+                        </span>
+                      </div>
+                      <div className="cognitive-v2-track">
+                        <div
+                          className="cognitive-v2-fill"
+                          style={{
+                            width: `${dim.val || 0}%`,
+                            background: dim.color,
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+              </>
+            )}
           </div>
         )}
       </div>
     </div>
   );
 }
+
 
 

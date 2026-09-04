@@ -505,7 +505,19 @@ app.get("/api/analytics", async (req, res) => {
     const userId = await resolveUserId(req);
 
     if (!userId) {
-      return res.json({ mostVisited: [], mostPassed: [], mostFailed: [], unvisited: [] });
+      return res.json({
+        coldStart: true,
+        intelligenceState: "cold_start",
+        totalAttempts: 0,
+        mostVisited: [],
+        mostPassed: [],
+        mostFailed: [],
+        unvisited: [],
+        weakTopics: [],
+        strongTopics: [],
+        unresolvedMistakes: [],
+        dueReviews: [],
+      });
     }
 
     // Fetch full topics list from content_view
@@ -587,14 +599,26 @@ app.get("/api/analytics", async (req, res) => {
     const mostFailed = [...rows].filter((r) => r.fail_count > 0).sort((a, b) => b.fail_count - a.fail_count).slice(0, 10);
     const unvisited = rows.filter((r) => r.visit_count === 0 && r.pass_count === 0);
 
+    const hasLearningEvidence = mostVisited.length > 0 || mostPassed.length > 0 || mostFailed.length > 0;
+    const isColdStart = !hasLearningEvidence;
+
     logger.action("ANALYTICS_FETCHED", "success", {
       userId,
       totalTopics: rows.length,
       visitedCount: mostVisited.length,
       unvisitedCount: unvisited.length,
+      isColdStart,
     });
 
-    res.json({ mostVisited, mostPassed, mostFailed, unvisited });
+    res.json({
+      coldStart: isColdStart,
+      intelligenceState: isColdStart ? "cold_start" : "active_learning",
+      totalAttempts: (events || []).length + (progressRows || []).length,
+      mostVisited: isColdStart ? [] : mostVisited,
+      mostPassed: isColdStart ? [] : mostPassed,
+      mostFailed: isColdStart ? [] : mostFailed,
+      unvisited,
+    });
   } catch (err) {
     logger.error("ANALYTICS_FETCH", err);
     res.status(500).json({ error: "Internal server error" });
