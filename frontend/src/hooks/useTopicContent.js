@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { useLiveQuery } from "./useLiveQuery";
 import { topicRepo } from "../repository/topicRepo";
 import { syncEngine } from "../sync/syncEngine";
@@ -9,6 +9,7 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
   const hasParams = !!(subject?.id && chapter?.id && topic);
   const [error, setError] = useState(null);
   const [prevTopicKey, setPrevTopicKey] = useState(null);
+  const recordedTopicRef = useRef(null);
 
   const topicKey = `${subject?.id}|${chapter?.id}|${topic}`;
   if (topicKey !== prevTopicKey) {
@@ -32,6 +33,12 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
   useEffect(() => {
     if (!hasParams) return;
 
+    // Defense-in-depth: Prevent duplicate visit event recordings during same topic component lifecycle
+    if (recordedTopicRef.current === topicKey) {
+      return;
+    }
+    recordedTopicRef.current = topicKey;
+
     console.log(`useTopicContent: Requested ${subject.id}/${chapter.id}/${topic}`);
 
     // If we have content, we don't technically NEED to prefetch unless we want the absolute latest.
@@ -49,7 +56,7 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
           toast.error("Failed to load notes. Please check your internet connection.");
         }
       });
-  }, [subject?.id, chapter?.id, topic, userId, hasParams]);
+  }, [subject?.id, chapter?.id, topic, userId, hasParams, topicKey]);
 
   return { content, loading, error };
 }
