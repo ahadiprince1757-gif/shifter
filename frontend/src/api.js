@@ -132,13 +132,18 @@ export async function fetchAnalytics() {
 // Returns empty fallback when unauthenticated or offline.
 // ─────────────────────────────────────────────────────────────
 
+import { getActiveUserId } from "./supabase";
+
 /** Save a missed question to Supabase user_mistakes table. */
 export async function saveMistake({ sid, cid, topicTitle, questionIndex, questionText, correctAnswer, solution }) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return false;
+  const userId = getActiveUserId();
+  if (!userId || !supabase) {
+    console.warn("[Supabase API] saveMistake skipped: No authenticated session.");
+    return false;
+  }
 
   const payload = {
-    user_id: session.user.id,
+    user_id: userId,
     subject_id: sid || null,
     chapter_key: cid || null,
     topic_title: topicTitle || "",
@@ -156,25 +161,25 @@ export async function saveMistake({ sid, cid, topicTitle, questionIndex, questio
   try {
     const { error } = await supabase.from("user_mistakes").insert(payload);
     if (error) {
-      console.warn("[Supabase] user_mistakes insert warning:", error.message);
+      console.warn("[Supabase API] user_mistakes insert error:", error.message);
       return false;
     }
     return true;
   } catch (err) {
-    console.warn("[Supabase] user_mistakes error:", err);
+    console.error("[Supabase API] user_mistakes exception:", err);
     return false;
   }
 }
 
 /** Mark a mistake as resolved in Supabase. */
 export async function resolveMistake({ cid, topicTitle, questionIndex }) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return false;
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return false;
   try {
     let query = supabase
       .from("user_mistakes")
       .update({ resolved: true })
-      .eq("user_id", session.user.id)
+      .eq("user_id", userId)
       .eq("question_index", questionIndex);
 
     if (typeof topicTitle === "number" || /^\d+$/.test(topicTitle)) {
@@ -184,35 +189,40 @@ export async function resolveMistake({ cid, topicTitle, questionIndex }) {
     }
 
     const { error } = await query;
+    if (error) console.warn("[Supabase API] resolveMistake warning:", error.message);
     return !error;
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] resolveMistake exception:", err);
     return false;
   }
 }
 
 /** Fetch all unresolved mistakes from Supabase for current user. */
 export async function fetchMistakes() {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return [];
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return [];
   try {
     const { data, error } = await supabase
       .from("user_mistakes")
       .select("*")
-      .eq("user_id", session.user.id)
+      .eq("user_id", userId)
       .eq("resolved", false);
-    if (error) return [];
+    if (error) {
+      console.warn("[Supabase API] fetchMistakes warning:", error.message);
+      return [];
+    }
     return data || [];
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] fetchMistakes exception:", err);
     return [];
   }
 }
 
 /** Upsert an SM-2 spaced review schedule for a topic in Supabase. */
 export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, intervalDays, easeFactor, repetitions }) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return false;
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return false;
 
-  const userId = session.user.id;
   const topicTitleStr = topicTitle || "";
 
   const payload = {
@@ -245,45 +255,48 @@ export async function saveSpacedReview({ sid, cid, topicTitle, nextReviewAt, int
         .update(payload)
         .eq("id", existing[0].id);
       if (error) {
-        console.warn("[Supabase] spaced_reviews update warning:", error.message);
+        console.warn("[Supabase API] spaced_reviews update warning:", error.message);
         return false;
       }
     } else {
       const { error } = await supabase.from("spaced_reviews").insert(payload);
       if (error) {
-        console.warn("[Supabase] spaced_reviews insert warning:", error.message);
+        console.warn("[Supabase API] spaced_reviews insert warning:", error.message);
         return false;
       }
     }
     return true;
   } catch (err) {
-    console.warn("[Supabase] spaced_reviews error:", err);
+    console.error("[Supabase API] spaced_reviews exception:", err);
     return false;
   }
 }
 
 /** Fetch all due spaced reviews from Supabase for current user. */
 export async function fetchSpacedReviews() {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return [];
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return [];
   try {
     const { data, error } = await supabase
       .from("spaced_reviews")
       .select("*")
-      .eq("user_id", session.user.id);
-    if (error) return [];
+      .eq("user_id", userId);
+    if (error) {
+      console.warn("[Supabase API] fetchSpacedReviews warning:", error.message);
+      return [];
+    }
     return data || [];
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] fetchSpacedReviews exception:", err);
     return [];
   }
 }
 
 /** Save or update a personal synthesis note for a topic in Supabase. */
 export async function saveNote({ sid, cid, topicTitle, noteText }) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return false;
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return false;
 
-  const userId = session.user.id;
   const topicTitleStr = topicTitle || "";
 
   const payload = {
@@ -313,79 +326,85 @@ export async function saveNote({ sid, cid, topicTitle, noteText }) {
         .update(payload)
         .eq("id", existing[0].id);
       if (error) {
-        console.warn("[Supabase] user_notes update warning:", error.message);
+        console.warn("[Supabase API] user_notes update warning:", error.message);
         return false;
       }
     } else {
       const { error } = await supabase.from("user_notes").insert(payload);
       if (error) {
-        console.warn("[Supabase] user_notes insert warning:", error.message);
+        console.warn("[Supabase API] user_notes insert warning:", error.message);
         return false;
       }
     }
     return true;
   } catch (err) {
-    console.warn("[Supabase] user_notes error:", err);
+    console.error("[Supabase API] user_notes exception:", err);
     return false;
   }
 }
 
 /** Fetch personal note text for a specific topic from Supabase. */
 export async function fetchNote(sid, cid, topicTitle) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return "";
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return "";
   try {
     const { data, error } = await supabase
       .from("user_notes")
       .select("note_text")
-      .eq("user_id", session.user.id)
+      .eq("user_id", userId)
       .or(`topic_title.eq.${topicTitle},topic_id.eq.${parseInt(topicTitle, 10) || 0}`)
       .limit(1);
     if (error || !data || data.length === 0) return "";
     return data[0].note_text || "";
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] fetchNote exception:", err);
     return "";
   }
 }
 
 /** Enroll the current user in a subject in Supabase. */
 export async function enroll(subjectId) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return false;
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return false;
   try {
     const { error } = await supabase.from("enrollments").upsert({
-      user_id: session.user.id,
+      user_id: userId,
       subject_id: subjectId,
       created_at: new Date().toISOString(),
     }, { onConflict: "user_id, subject_id" });
+    if (error) console.warn("[Supabase API] enroll warning:", error.message);
     return !error;
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] enroll exception:", err);
     return false;
   }
 }
 
 /** Fetch all enrolled subjects for the current user from Supabase. */
 export async function fetchEnrollments() {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return [];
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return [];
   try {
     const { data, error } = await supabase
       .from("enrollments")
       .select("*")
-      .eq("user_id", session.user.id);
-    if (error) return [];
+      .eq("user_id", userId);
+    if (error) {
+      console.warn("[Supabase API] fetchEnrollments warning:", error.message);
+      return [];
+    }
     return data || [];
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] fetchEnrollments exception:", err);
     return [];
   }
 }
 
 /** Save topic progress to Supabase. */
 export async function saveProgress({ sid, cid, topicTitle, completed, score, mastered, confidenceLevel }) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return false;
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return false;
 
-  const userId = session.user.id;
   const topicTitleStr = topicTitle || "";
 
   const payload = {
@@ -416,78 +435,88 @@ export async function saveProgress({ sid, cid, topicTitle, completed, score, mas
         .update(payload)
         .eq("id", existing[0].id);
       if (error) {
-        console.warn("[Supabase] progress update warning:", error.message);
+        console.warn("[Supabase API] progress update warning:", error.message);
         return false;
       }
     } else {
       // Insert new row
       const { error } = await supabase.from("progress").insert(payload);
       if (error) {
-        console.warn("[Supabase] progress insert warning:", error.message);
+        console.warn("[Supabase API] progress insert warning:", error.message);
         return false;
       }
     }
     return true;
   } catch (err) {
-    console.warn("[Supabase] progress error:", err);
+    console.error("[Supabase API] progress exception:", err);
     return false;
   }
 }
 
 /** Fetch all progress records for the current user from Supabase. */
 export async function fetchProgress() {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return [];
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return [];
   try {
     const { data, error } = await supabase
       .from("progress")
       .select("*")
-      .eq("user_id", session.user.id);
-    if (error) return [];
+      .eq("user_id", userId);
+    if (error) {
+      console.warn("[Supabase API] fetchProgress warning:", error.message);
+      return [];
+    }
     return data || [];
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] fetchProgress exception:", err);
     return [];
   }
 }
 
 /** Unlock/save an achievement in Supabase. */
 export async function saveAchievement(achievementName) {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return false;
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return false;
   try {
     // Check if already exists to avoid duplicates (no unique constraint required)
     const { data: existing } = await supabase
       .from("achievements")
       .select("id")
-      .eq("user_id", session.user.id)
+      .eq("user_id", userId)
       .eq("achievement_name", achievementName)
       .limit(1);
 
     if (existing && existing.length > 0) return true; // Already unlocked
 
     const { error } = await supabase.from("achievements").insert({
-      user_id: session.user.id,
+      user_id: userId,
       achievement_name: achievementName,
       unlocked_at: new Date().toISOString(),
     });
+    if (error) console.warn("[Supabase API] saveAchievement warning:", error.message);
     return !error;
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] saveAchievement exception:", err);
     return false;
   }
 }
 
 /** Fetch all achievements for the current user. */
 export async function fetchAchievements() {
-  const session = getActiveSession();
-  if (!session?.user?.id || !supabase) return [];
+  const userId = getActiveUserId();
+  if (!userId || !supabase) return [];
   try {
     const { data, error } = await supabase
       .from("achievements")
       .select("*")
-      .eq("user_id", session.user.id);
-    if (error) return [];
+      .eq("user_id", userId);
+    if (error) {
+      console.warn("[Supabase API] fetchAchievements warning:", error.message);
+      return [];
+    }
     return data || [];
-  } catch {
+  } catch (err) {
+    console.error("[Supabase API] fetchAchievements exception:", err);
     return [];
   }
 }

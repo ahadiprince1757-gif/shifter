@@ -55,7 +55,7 @@ export function AuthProvider({ children }) {
           const prevUserId = localStorage.getItem(CURRENT_USER_ID_KEY);
           const newUserId = existingSession.user?.id;
           if (prevUserId && newUserId && prevUserId !== newUserId) {
-            await clearUserDataForUserSwitch();
+            await handleUserSwitch({ previousUserId: prevUserId, nextUserId: newUserId });
           }
           if (newUserId) {
             localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
@@ -84,7 +84,6 @@ export function AuthProvider({ children }) {
         if (newSession) {
           if (prevUserId && newUserId && prevUserId !== newUserId) {
             await handleUserSwitch({ previousUserId: prevUserId, nextUserId: newUserId });
-            await clearUserDataForUserSwitch();
           }
           if (newUserId) {
             localStorage.setItem(CURRENT_USER_ID_KEY, newUserId);
@@ -116,7 +115,6 @@ export function AuthProvider({ children }) {
         } else if (event === "SIGNED_OUT" || !newSession) {
           if (event === "SIGNED_OUT") {
             await handleUserSwitch({ previousUserId: prevUserId, nextUserId: null });
-            await clearUserDataForUserSwitch();
             cacheSession(null);
             setSession(null);
             setSessionLoading(false);
@@ -141,10 +139,13 @@ export function AuthProvider({ children }) {
 
   const logout = async () => {
     try {
-      await clearUserDataForUserSwitch();
-      await supabase.auth.signOut();
+      const currentUserId = session?.user?.id || localStorage.getItem(CURRENT_USER_ID_KEY);
+      if (currentUserId) {
+        await handleUserSwitch({ previousUserId: currentUserId, nextUserId: null });
+      }
       cacheSession(null); // Clear offline cache on explicit logout
       setSession(null);
+      await supabase.auth.signOut();
       toast.success("Logged out successfully");
       navigate("/");
     } catch (err) {

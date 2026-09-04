@@ -55,12 +55,11 @@ db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
 
-// Auto-recovery if database connection ever gets stuck or corrupted during migration
+// Database connection error handler — preserve local offline student data
 db.open().catch(async (err) => {
   if (err.name === "UpgradeError" || err.name === "DatabaseClosedError") {
-    console.warn("ShifterLocalDB_v2 upgrade error detected, auto-resetting database...", err);
-    await Dexie.delete("ShifterLocalDB_v2");
-    await db.open();
+    console.error("[Tixar DB] Database upgrade/connection warning detected:", err);
+    // Note: Automatic Dexie.delete("ShifterLocalDB_v2") removed to protect student offline learning history.
   }
 });
 

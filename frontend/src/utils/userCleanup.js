@@ -4,22 +4,24 @@ import { clearQueuedEvents } from "./analytics";
 
 const CURRENT_USER_ID_KEY = "shifter_current_user_id";
 
-/** Wipe all local storage & IndexedDB user-scoped caches when switching accounts or logging out. */
-export async function clearUserDataForUserSwitch(userId) {
+/** Clear local storage & IndexedDB user-scoped caches for a specific user when switching accounts. */
+export async function clearUserDataForUserSwitch(userId = null) {
   try {
-    await Promise.all([
-      shifterDb.user_progress.clear().catch(() => {}),
-      shifterDb.user_mistakes.clear().catch(() => {}),
-      shifterDb.user_notes.clear().catch(() => {}),
-      shifterDb.spaced_reviews.clear().catch(() => {}),
-      shifterDb.change_log.clear().catch(() => {}),
-      tixarDb.mastered.clear().catch(() => {}),
-    ]);
+    // If a specific userId is passed, delete only records belonging to that user
+    if (userId) {
+      await Promise.all([
+        shifterDb.user_progress.where("user_id").equals(userId).delete().catch(() => {}),
+        shifterDb.user_mistakes.where("user_id").equals(userId).delete().catch(() => {}),
+        shifterDb.user_notes.where("user_id").equals(userId).delete().catch(() => {}),
+        shifterDb.spaced_reviews.where("user_id").equals(userId).delete().catch(() => {}),
+      ]);
+      console.log(`[Tixar] Cleared local IndexedDB data for user: ${userId}`);
+    }
 
-    // Clear local telemetry queue
+    // Clear local telemetry queue for guest and active session
     clearQueuedEvents();
 
-    // Remove all known user-scoped localStorage keys
+    // Remove user-scoped localStorage keys
     localStorage.removeItem("Tixar_mastered");
     localStorage.removeItem("lastTopic");          // legacy unscoped key
     localStorage.removeItem("shifter_guest_quiz_count");

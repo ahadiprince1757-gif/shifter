@@ -2,6 +2,7 @@ import { db } from "../db/db";
 import { calculateNextReview, convertToQualityRating } from "../utils/spacedRepetition";
 import { saveSpacedReview as apiSaveSpacedReview, fetchSpacedReviews } from "../api";
 import { networkService } from "../services/networkService";
+import { getActiveUserId } from "../supabase";
 
 export const spacedRepo = {
   /**
@@ -16,7 +17,7 @@ export const spacedRepo = {
   async updateReviewSchedule(topicId, isCorrect, confidence = "medium", meta = {}) {
     try {
       const { sid, cid, userId } = meta;
-      const uid = userId || null;
+      const uid = userId || getActiveUserId();
 
       const existing = await db.spaced_reviews.get([uid, topicId]).catch(() => null);
 
@@ -28,9 +29,10 @@ export const spacedRepo = {
         user_id: uid,
         topic_id: topicId,
         ...nextData,
+        updated_at: new Date().toISOString(),
       });
 
-      // 2. Sync to Supabase (fire-and-forget)
+      // 2. Sync to Supabase with visible status logging
       if (sid && cid && networkService.isOnline) {
         apiSaveSpacedReview({
           sid,
@@ -40,7 +42,17 @@ export const spacedRepo = {
           intervalDays: nextData.interval_days,
           easeFactor: nextData.ease_factor,
           repetitions: nextData.repetitions,
-        }).catch(() => {});
+        })
+        .then((success) => {
+          if (success) {
+            console.log(`[Tixar Sync] Spaced review synced successfully for topic ${topicId}`);
+          } else {
+            console.warn(`[Tixar Sync] Spaced review sync returned false for topic ${topicId}`);
+          }
+        })
+        .catch((err) => {
+          console.error(`[Tixar Sync] Failed to sync spaced review for ${topicId}:`, err);
+        });
       }
 
       return nextData;
@@ -55,7 +67,7 @@ export const spacedRepo = {
    */
   async getDueReviews(userId) {
     try {
-      const uid = userId || null;
+      const uid = userId || getActiveUserId();
 
       // Hydrate from Supabase if online and authenticated
       if (uid && networkService.isOnline) {
@@ -106,7 +118,7 @@ export const spacedRepo = {
    */
   async getTopicReviewInfo(topicId, userId = null) {
     try {
-      const uid = userId || null;
+      const uid = userId || getActiveUserId();
       return await db.spaced_reviews.get([uid, topicId]).catch(() => null);
     } catch (err) {
       console.error("Failed to get topic review info:", err);
@@ -114,3 +126,4 @@ export const spacedRepo = {
     }
   },
 };
+

@@ -1,6 +1,7 @@
 import { db } from "../db/db";
 import { saveMistake as apiSaveMistake, resolveMistake as apiResolveMistake, fetchMistakes } from "../api";
 import { networkService } from "../services/networkService";
+import { getActiveUserId } from "../supabase";
 
 export const mistakeRepo = {
   /**
@@ -8,7 +9,7 @@ export const mistakeRepo = {
    */
   async saveMistake({ userId, topicId, subjectId, chapterId, questionIndex, questionText, correctAnswer, solution }) {
     try {
-      const uid = userId || null;
+      const uid = userId || getActiveUserId();
 
       // 1. Write to IndexedDB using compound user index
       const existing = await db.user_mistakes
@@ -41,7 +42,7 @@ export const mistakeRepo = {
         });
       }
 
-      // 2. Sync to Supabase (fire-and-forget, requires auth + network)
+      // 2. Sync to Supabase with visible status logging
       if (uid && networkService.isOnline) {
         apiSaveMistake({
           sid: subjectId,
@@ -51,7 +52,17 @@ export const mistakeRepo = {
           questionText: questionText || "",
           correctAnswer: correctAnswer || "",
           solution: solution || "",
-        }).catch(() => {});
+        })
+        .then((success) => {
+          if (success) {
+            console.log(`[Tixar Sync] Mistake synced successfully: ${topicId} [Q#${questionIndex}]`);
+          } else {
+            console.warn(`[Tixar Sync] Mistake sync returned false: ${topicId} [Q#${questionIndex}]`);
+          }
+        })
+        .catch((err) => {
+          console.error(`[Tixar Sync] Failed to sync mistake for ${topicId}:`, err);
+        });
       }
     } catch (err) {
       console.error("Failed to save mistake:", err);
@@ -64,7 +75,7 @@ export const mistakeRepo = {
    */
   async getUnresolvedMistakes(userId) {
     try {
-      const uid = userId || null;
+      const uid = userId || getActiveUserId();
 
       // Try to hydrate from Supabase if online and authenticated
       if (uid && networkService.isOnline) {
@@ -121,7 +132,7 @@ export const mistakeRepo = {
    */
   async resolveMistake(topicId, questionIndex, { subjectId, chapterId, userId = null } = {}) {
     try {
-      const uid = userId || null;
+      const uid = userId || getActiveUserId();
       const existing = await db.user_mistakes
         .where("[user_id+topic_id+question_index]")
         .equals([uid, topicId, questionIndex])
@@ -143,7 +154,17 @@ export const mistakeRepo = {
             cid,
             topicTitle: topicId,
             questionIndex,
-          }).catch(() => {});
+          })
+          .then((success) => {
+            if (success) {
+              console.log(`[Tixar Sync] Mistake resolution synced for ${topicId} [Q#${questionIndex}]`);
+            } else {
+              console.warn(`[Tixar Sync] Mistake resolution sync returned false for ${topicId}`);
+            }
+          })
+          .catch((err) => {
+            console.error(`[Tixar Sync] Failed to sync mistake resolution:`, err);
+          });
         }
       }
     } catch (err) {
@@ -156,7 +177,7 @@ export const mistakeRepo = {
    */
   async cleanupOldResolved(userId = null) {
     try {
-      const uid = userId || null;
+      const uid = userId || getActiveUserId();
       const cutoff = new Date(Date.now() - 30 * 24 * 60 * 60 * 1000).toISOString();
       const old = await db.user_mistakes
         .where("user_id")
@@ -174,3 +195,4 @@ export const mistakeRepo = {
     }
   },
 };
+

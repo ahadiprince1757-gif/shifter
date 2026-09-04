@@ -1,6 +1,7 @@
 import { db } from "../db/db";
 import { saveProgress as apiSaveProgress } from "../api";
 import { networkService } from "../services/networkService";
+import { getActiveUserId } from "../supabase";
 
 export const progressRepo = {
   /**
@@ -19,7 +20,7 @@ export const progressRepo = {
    * @param {string}      [progressData.confidenceLevel] - 'low'|'medium'|'high'
    */
   async saveProgress(progressData) {
-    const userId = progressData.userId || null;
+    const userId = progressData.userId || getActiveUserId();
     const topicId = progressData.topicId;
 
     const progressRecord = {
@@ -39,13 +40,13 @@ export const progressRepo = {
       await db.change_log.add({
         type: "progress_update",
         entity_id: progressRecord.id,
-        payload: progressData, // store full payload with sid, cid, etc.
+        payload: { ...progressData, userId }, // store full payload with resolved userId
         timestamp: Date.now(),
         synced: false,
       });
     });
 
-    // 2. Sync to Supabase (fire-and-forget if authenticated + online)
+    // 2. Sync to Supabase with visible status logging
     const { sid, cid, completed, score, mastered, confidenceLevel } = progressData;
     if (sid && cid && topicId && networkService.isOnline) {
       apiSaveProgress({
@@ -56,7 +57,17 @@ export const progressRepo = {
         score: score ?? null,
         mastered: mastered ?? false,
         confidenceLevel: confidenceLevel ?? null,
-      }).catch(() => {}); // silently ignore if not logged in or offline
+      })
+      .then((success) => {
+        if (success) {
+          console.log(`[Tixar Sync] Topic progress synced successfully for ${topicId}`);
+        } else {
+          console.warn(`[Tixar Sync] Topic progress sync returned false for ${topicId}`);
+        }
+      })
+      .catch((err) => {
+        console.error(`[Tixar Sync] Failed to sync progress for ${topicId}:`, err);
+      });
     }
 
     return progressRecord;

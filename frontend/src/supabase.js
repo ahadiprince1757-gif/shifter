@@ -67,3 +67,23 @@ export function getActiveSession() {
   return currentSession;
 }
 
+/** Canonical helper to retrieve active user UUID across Supabase session and local identity cache */
+export function getActiveUserId() {
+  const session = getActiveSession();
+  return (
+    session?.user?.id ||
+    session?.user_id ||
+    (typeof localStorage !== "undefined" ? localStorage.getItem("shifter_current_user_id") : null) ||
+    null
+  );
+}
+
+/** Identity enforcement helper that throws if no authenticated user is present */
+export function requireUserId(userId = null) {
+  const resolvedId = userId || getActiveUserId();
+  if (!resolvedId) {
+    throw new Error("[Tixar Identity] A valid user ID is required for this operation.");
+  }
+  return resolvedId;
+}
+
