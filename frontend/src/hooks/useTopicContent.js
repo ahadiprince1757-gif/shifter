@@ -31,7 +31,7 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
   const content = contentRecord ? contentRecord.data : null;
 
   useEffect(() => {
-    if (!hasParams || !subject?.id || !chapter?.id || !topic) return;
+    if (!hasParams || !subject?.id || !chapter?.id || !topic || !userId) return;
 
     const currentTopicKey = `${subject.id}|${chapter.id}|${topic}`;
 
