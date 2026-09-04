@@ -1,4 +1,4 @@
-import { getActiveSession } from "../supabase";
+import { getActiveSession, getActiveUserId } from "../supabase";
 import { getScopedStorageKey } from "./userDataScope";
 
 const QUEUE_BASE_KEY = "tixar_learning_events";
@@ -45,7 +45,7 @@ function generateId() {
  * Calculates storage key scoped strictly to userId
  */
 function getQueueStorageKey(userId) {
-  return getScopedStorageKey(QUEUE_BASE_KEY, userId || null);
+  return getScopedStorageKey(QUEUE_BASE_KEY, userId || getActiveUserId());
 }
 
 /**
@@ -53,13 +53,13 @@ function getQueueStorageKey(userId) {
  */
 export function getQueuedEvents(userId = null) {
   try {
-    const key = getQueueStorageKey(userId);
+    const activeUserId = userId || getActiveUserId();
+    const key = getQueueStorageKey(activeUserId);
     const data = localStorage.getItem(key);
     const events = data ? JSON.parse(data) : [];
 
     // Defensive filtering: ensure only events belonging to target userId are returned
-    const targetUserId = userId || null;
-    return events.filter((evt) => (evt.user_id || null) === targetUserId);
+    return events.filter((evt) => (evt.user_id || null) === (activeUserId || null));
   } catch (e) {
     console.error("[Telemetry] Failed to read event queue from localStorage", e);
     return [];
@@ -71,9 +71,9 @@ export function getQueuedEvents(userId = null) {
  */
 export function saveQueuedEvents(userId, events) {
   try {
-    const key = getQueueStorageKey(userId);
-    const targetUserId = userId || null;
-    const safeEvents = events.filter((evt) => (evt.user_id || null) === targetUserId);
+    const targetUserId = userId || getActiveUserId();
+    const key = getQueueStorageKey(targetUserId);
+    const safeEvents = events.filter((evt) => (evt.user_id || null) === (targetUserId || null));
     localStorage.setItem(key, JSON.stringify(safeEvents));
   } catch (e) {
     console.error("[Telemetry] Failed to save event queue to localStorage", e);
@@ -94,9 +94,10 @@ export function haltSyncForUser(userId) {
  */
 export function clearQueuedEventsForUser(userId = null) {
   try {
-    const key = getQueueStorageKey(userId);
+    const activeUserId = userId || getActiveUserId();
+    const key = getQueueStorageKey(activeUserId);
     localStorage.removeItem(key);
-    console.log(`[Telemetry] Cleared telemetry event queue for ${userId || "guest"}`);
+    console.log(`[Telemetry] Cleared telemetry event queue for ${activeUserId || "guest"}`);
   } catch (e) {
     console.error("[Telemetry] Failed to clear telemetry event queue", e);
   }
@@ -106,8 +107,7 @@ export function clearQueuedEventsForUser(userId = null) {
  * Backward compatible clearQueuedEvents (clears guest and active session events)
  */
 export function clearQueuedEvents() {
-  const session = getActiveSession();
-  const userId = session?.user?.id || session?.user_id || null;
+  const userId = getActiveUserId();
   clearQueuedEventsForUser(userId);
   clearQueuedEventsForUser(null);
 }
@@ -146,8 +146,7 @@ export function recordLearningEvent({
     return;
   }
 
-  const session = getActiveSession();
-  const activeUserId = userId || session?.user?.id || session?.user_id || null;
+  const activeUserId = userId || getActiveUserId();
   const events = getQueuedEvents(activeUserId);
 
   const newEvent = {
