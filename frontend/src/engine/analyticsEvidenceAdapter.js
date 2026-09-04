@@ -63,12 +63,23 @@ export function adaptAnalyticsToEvidence(rawAnalytics = null) {
       ? "early_evidence"
       : "established");
 
+  const authority = rawAnalytics.authority || (rawAnalytics.decision ? "SERVER_VERIFIED" : "LOCAL_PROVISIONAL");
+  const engineVersion = rawAnalytics.engineVersion || "2.0.0";
+  const ruleVersion = rawAnalytics.ruleVersion || 1;
+  const schemaVersion = rawAnalytics.schemaVersion || 1;
+  const authoritativeDecision = rawAnalytics.decision || null;
+
   return {
     attempts,
     totalQuestionsAnswered,
     totalVisits: Number(rawEvidence.totalVisits) || 0,
     coldStart,
     intelligenceState,
+    authority,
+    engineVersion,
+    ruleVersion,
+    schemaVersion,
+    authoritativeDecision,
     rawTopics: rawAnalytics.topics || [],
     mostVisited: rawAnalytics.mostVisited || [],
     unvisited: rawAnalytics.unvisited || [],

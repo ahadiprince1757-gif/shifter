@@ -11,6 +11,7 @@ import {
   calculateCognitiveMastery,
 } from "../engine/learningIntelligenceEngine";
 import { adaptAnalyticsToEvidence } from "../engine/analyticsEvidenceAdapter";
+import ExplainabilityDrawer from "./ExplainabilityDrawer";
 
 /** Helper to convert raw IDs/slugs into clean human Title Case */
 function formatTitle(str) {
@@ -89,6 +90,7 @@ export default function AnalyticsDashboard() {
   const [dueReviews, setDueReviews] = useState([]);
   const [unresolvedMistakes, setUnresolvedMistakes] = useState([]);
   const [showCognitiveDetails, setShowCognitiveDetails] = useState(false);
+  const [showExplainability, setShowExplainability] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -141,6 +143,8 @@ export default function AnalyticsDashboard() {
     attempts,
     dueReviews,
     unresolvedMistakes,
+    authoritativeDecision: evidence.authoritativeDecision,
+    authority: evidence.authority,
   });
 
   const { overview, masteryMap, recommendation } = intelligence;
@@ -246,12 +250,20 @@ export default function AnalyticsDashboard() {
           {/* Human-Centered Next Step Banner */}
           <div className="primary-bottleneck-v2-banner">
             <div className="bottleneck-v2-content">
-              <div className="bottleneck-v2-tag">
-                {recommendation.type === "critical_gap"
-                  ? "FOUNDATIONAL FOCUS"
-                  : recommendation.type === "calibrating"
-                  ? "CALIBRATING"
-                  : "RECOMMENDED NEXT STEP"}
+              <div className="bottleneck-v2-tag-row">
+                <span className="bottleneck-v2-tag">
+                  {recommendation.type === "critical_gap"
+                    ? "FOUNDATIONAL FOCUS"
+                    : recommendation.type === "calibrating"
+                    ? "CALIBRATING"
+                    : recommendation.action === "NO_ACTION"
+                    ? "PROGRESSING SMOOTHLY"
+                    : "RECOMMENDED NEXT STEP"}
+                </span>
+                <span className={`authority-v2-pill ${recommendation.authority === "SERVER_VERIFIED" ? "verified" : "provisional"}`}>
+                  <span className="authority-pill-dot" />
+                  {recommendation.authority === "SERVER_VERIFIED" ? "Server Verified" : "Offline Provisional"}
+                </span>
               </div>
               <div className="bottleneck-v2-title">
                 {formatTitle(recommendation.title || "Continue Practice")}
@@ -259,6 +271,13 @@ export default function AnalyticsDashboard() {
               <div className="bottleneck-v2-desc">
                 {recommendation.reason || "Complete additional practice to build your readiness profile."}
               </div>
+              <button
+                type="button"
+                className="why-am-i-seeing-this-link"
+                onClick={() => setShowExplainability(true)}
+              >
+                Why am I seeing this? (View Evidence & Rules) →
+              </button>
             </div>
             <button className="repair-gap-v2-btn" onClick={handlePrimaryAction}>
               {recommendation.buttonLabel || "Practice Now"} →
@@ -468,6 +487,13 @@ export default function AnalyticsDashboard() {
           </div>
         )}
       </div>
+
+      <ExplainabilityDrawer
+        isOpen={showExplainability}
+        onClose={() => setShowExplainability(false)}
+        recommendation={recommendation}
+        overview={overview}
+      />
     </div>
   );
 }

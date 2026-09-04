@@ -228,6 +228,8 @@ export function buildLearningIntelligence({
   dueReviews = [],
   unresolvedMistakes = [],
   diagnosticMemory = null,
+  authoritativeDecision = null,
+  authority = "LOCAL_PROVISIONAL",
 } = {}) {
   const totalAttempts = attempts.length;
   const correctAttempts = attempts.filter(
@@ -247,14 +249,74 @@ export function buildLearningIntelligence({
     totalAttempts,
   });
 
-  const recommendation = generatePrimaryRecommendation({
-    totalAttempts,
-    readiness,
-    masteryMap,
-    dueReviews,
-    unresolvedMistakes,
-    isColdStart,
-  });
+  let recommendation;
+  if (authoritativeDecision) {
+    recommendation = {
+      authority: "SERVER_VERIFIED",
+      decisionId: authoritativeDecision.decisionId,
+      supersedesDecisionId: authoritativeDecision.supersedesDecisionId,
+      type: authoritativeDecision.decisionType,
+      action: authoritativeDecision.actionType,
+      title: authoritativeDecision.explanation?.title || `Let's Practice: ${authoritativeDecision.targetTopicTitle}`,
+      reason: authoritativeDecision.explanation?.reason || "Recommendation from server intelligence.",
+      pedagogicalWhy: authoritativeDecision.explanation?.pedagogicalWhy,
+      buttonLabel: authoritativeDecision.explanation?.actionText || "Practice Now",
+      targetTopic: authoritativeDecision.targetTopicTitle,
+      engineVersion: authoritativeDecision.engineVersion || "2.0.0",
+      ruleVersion: authoritativeDecision.ruleVersion || 1,
+      schemaVersion: authoritativeDecision.schemaVersion || 1,
+      why: {
+        evidenceStrength: authoritativeDecision.evidenceStrength,
+        confidence: authoritativeDecision.confidenceLevel,
+        masteryState: authoritativeDecision.masteryState,
+        readinessState: authoritativeDecision.readinessState,
+        rulesTriggered: authoritativeDecision.inferenceRules || [],
+        evidenceRefs: authoritativeDecision.evidenceRefs || [],
+        contributingHypotheses: authoritativeDecision.contributingHypotheses || [],
+        evidenceSnapshot: authoritativeDecision.evidenceSnapshot || {
+          totalAttempts,
+          correctAttempts,
+          accuracy
+        }
+      }
+    };
+  } else {
+    const localRec = generatePrimaryRecommendation({
+      totalAttempts,
+      readiness,
+      masteryMap,
+      dueReviews,
+      unresolvedMistakes,
+      isColdStart,
+    });
+
+    recommendation = {
+      ...localRec,
+      authority: "LOCAL_PROVISIONAL",
+      decisionId: `local-${Date.now()}`,
+      engineVersion: "2.0.0",
+      ruleVersion: 1,
+      schemaVersion: 1,
+      why: {
+        evidenceStrength: Math.min(100, totalAttempts * 10),
+        confidence: totalAttempts >= 10 ? "HIGH" : totalAttempts >= 5 ? "MODERATE" : "LOW",
+        masteryState: totalAttempts >= 5 ? (accuracy >= 70 ? "ESTABLISHED" : "EMERGING") : "INSUFFICIENT_EVIDENCE",
+        readinessState: readiness.ready ? "READY" : "NOT_READY",
+        rulesTriggered: localRec.type === "critical_gap"
+          ? ["MIN_ATTEMPTS_5", "ACCURACY_LT_40", "PREREQUISITE_WEAKNESS_SUSPECTED"]
+          : localRec.type === "calibrating"
+          ? ["INSUFFICIENT_TOTAL_EVIDENCE", "CALIBRATION_RECOMMENDED"]
+          : ["LOCAL_HEURISTIC_ACTIVE"],
+        evidenceRefs: attempts.map((a) => a.clientEventId).filter(Boolean).slice(-6),
+        contributingHypotheses: [],
+        evidenceSnapshot: {
+          totalAttempts,
+          correctAttempts,
+          accuracy
+        }
+      }
+    };
+  }
 
   return {
     overview: {

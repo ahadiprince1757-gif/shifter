@@ -9957,6 +9957,13 @@ html.dark-mode .hint-footer {
   flex: 1;
   min-width: 180px;
 }
+.bottleneck-v2-tag-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 0.25rem;
+}
 
 .bottleneck-v2-tag {
   font-size: 0.68rem;
@@ -9964,6 +9971,37 @@ html.dark-mode .hint-footer {
   color: #1d6bf3;
   letter-spacing: 0.05em;
   text-transform: uppercase;
+}
+
+.authority-v2-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.15rem 0.5rem;
+  border-radius: 9999px;
+}
+
+.authority-v2-pill.verified {
+  background: rgba(16, 185, 129, 0.12);
+  color: #059669;
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.authority-v2-pill.provisional {
+  background: rgba(245, 158, 11, 0.12);
+  color: #d97706;
+  border: 1px solid rgba(245, 158, 11, 0.25);
+}
+
+.authority-pill-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: currentColor;
 }
 
 .bottleneck-v2-title {
@@ -9979,6 +10017,43 @@ html.dark-mode .hint-footer {
   color: var(--t2, #475569);
   margin-top: 0.2rem;
   line-height: 1.35;
+}
+
+.why-am-i-seeing-this-link {
+  background: none;
+  border: none;
+  padding: 0;
+  margin-top: 0.5rem;
+  font-size: 0.76rem;
+  font-weight: 600;
+  color: #1d6bf3;
+  cursor: pointer;
+  text-align: left;
+  display: inline-block;
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+.why-am-i-seeing-this-link:hover {
+  color: #1551b8;
+  text-decoration: underline;
+}
+
+html.dark-mode .authority-v2-pill.verified {
+  background: rgba(16, 185, 129, 0.2);
+  color: #34d399;
+}
+
+html.dark-mode .authority-v2-pill.provisional {
+  background: rgba(245, 158, 11, 0.2);
+  color: #fbbf24;
+}
+
+html.dark-mode .why-am-i-seeing-this-link {
+  color: #60a5fa;
+}
+
+html.dark-mode .why-am-i-seeing-this-link:hover {
+  color: #93c5fd;
 }
 
 .repair-gap-v2-btn {

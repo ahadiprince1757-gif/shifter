@@ -2,6 +2,8 @@ const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
 const logger = require('./logger');
+const { validateEventsBatch } = require('./validators/telemetryValidator');
+const intelligenceService = require('./services/intelligenceService');
 
 const app = express();
 // Configure CORS using an allowlist from `ALLOWED_ORIGINS` env (comma-separated).
@@ -444,9 +446,34 @@ app.post("/api/analytics/events", async (req, res) => {
       return res.status(401).json({ error: "Unauthorized" });
     }
 
-    // 1. Bulk resolution: extract unique sid::cid::topic keys to prevent N+1 queries
+    // 1. Strict Runtime Validation & Batch Deduplication (Tixar Intelligence Law)
+    const { validEvents, rejectedEvents, duplicatesCount, stats } = validateEventsBatch(events);
+
+    if (validEvents.length === 0) {
+      try {
+        await supabase.from("telemetry_health_logs").insert({
+          batch_size: stats.total,
+          valid_events_count: 0,
+          rejected_events_count: stats.rejected,
+          duplicates_suppressed: duplicatesCount,
+          unresolved_topics_count: 0,
+          user_id: authUserId,
+          rejection_reasons: rejectedEvents.slice(0, 10).map((r) => r.error),
+        });
+      } catch (logErr) {
+        logger.warn("TELEMETRY_HEALTH_LOG_WARN", { error: logErr.message });
+      }
+
+      return res.status(400).json({
+        error: "All events in batch failed schema validation",
+        rejectedCount: stats.rejected,
+        reasons: rejectedEvents.map((r) => r.error),
+      });
+    }
+
+    // 2. Bulk resolution: extract unique sid::cid::topic keys to prevent N+1 queries
     const keysToResolve = new Map();
-    for (const evt of events) {
+    for (const evt of validEvents) {
       const sid = evt.sid || evt.subject_id;
       const cid = evt.cid || evt.chapter_id;
       const topic = evt.topic;
@@ -476,9 +503,11 @@ app.post("/api/analytics/events", async (req, res) => {
       }
     }
 
-    // 2. Build rowsToInsert with server-enforced identity and idempotency key
+    // 3. Build rowsToInsert with server-enforced identity and idempotency key
     const rowsToInsert = [];
-    for (const evt of events) {
+    let unresolvedTopicsCount = 0;
+
+    for (const evt of validEvents) {
       const sid = evt.sid || evt.subject_id;
       const cid = evt.cid || evt.chapter_id;
       const topic = evt.topic;
@@ -488,9 +517,12 @@ app.post("/api/analytics/events", async (req, res) => {
 
       const lookupKey = `${String(sid).toLowerCase().trim()}::${String(cid).toLowerCase().trim()}::${String(topic).toLowerCase().trim()}`;
       const topic_id = topicIdLookup.get(lookupKey) || null;
-      if (!topic_id) continue;
+      if (!topic_id) {
+        unresolvedTopicsCount++;
+        continue;
+      }
 
-      const client_event_id = evt.id || evt.client_event_id || null;
+      const client_event_id = evt.client_event_id || evt.id || null;
 
       const metadata = evt.metadata || {};
       if (evt.cognitive_level || evt.cognitiveLevel) {
@@ -510,38 +542,59 @@ app.post("/api/analytics/events", async (req, res) => {
       });
     }
 
-    if (rowsToInsert.length === 0) {
-      return res.json({ inserted: 0 });
+    // 4. Batch upsert with ON CONFLICT (client_event_id) for retry safety
+    let totalInserted = 0;
+    if (rowsToInsert.length > 0) {
+      const batchSize = 100;
+      for (let i = 0; i < rowsToInsert.length; i += batchSize) {
+        const chunk = rowsToInsert.slice(i, i + batchSize);
+        const { error: insertErr } = await supabase
+          .from("learning_events")
+          .upsert(chunk, { onConflict: "client_event_id", ignoreDuplicates: true });
+
+        if (insertErr) {
+          logger.warn("UPSERT_FALLBACK_TO_INSERT", { error: insertErr.message });
+          const fallbackRows = chunk.map(({ client_event_id, ...rest }) => rest);
+          const { error: fallbackErr } = await supabase.from("learning_events").insert(fallbackRows);
+          if (fallbackErr) {
+            logger.db("INSERT", "learning_events", "error", { error: fallbackErr.message });
+            continue;
+          }
+        }
+        totalInserted += chunk.length;
+      }
     }
 
-    // 3. Batch upsert with ON CONFLICT (client_event_id) for retry safety
-    const batchSize = 100;
-    let totalInserted = 0;
-    for (let i = 0; i < rowsToInsert.length; i += batchSize) {
-      const chunk = rowsToInsert.slice(i, i + batchSize);
-      const { error: insertErr } = await supabase
-        .from("learning_events")
-        .upsert(chunk, { onConflict: "client_event_id", ignoreDuplicates: true });
-
-      if (insertErr) {
-        // Fallback for deployments where client_event_id index is still applying
-        logger.warn("UPSERT_FALLBACK_TO_INSERT", { error: insertErr.message });
-        const fallbackRows = chunk.map(({ client_event_id, ...rest }) => rest);
-        const { error: fallbackErr } = await supabase.from("learning_events").insert(fallbackRows);
-        if (fallbackErr) {
-          logger.db("INSERT", "learning_events", "error", { error: fallbackErr.message });
-          continue;
-        }
-      }
-      totalInserted += chunk.length;
+    // 5. Telemetry Ingestion Observability Log
+    try {
+      await supabase.from("telemetry_health_logs").insert({
+        batch_size: stats.total,
+        valid_events_count: validEvents.length,
+        rejected_events_count: rejectedEvents.length,
+        duplicates_suppressed: duplicatesCount,
+        unresolved_topics_count: unresolvedTopicsCount,
+        user_id: authUserId,
+        rejection_reasons: rejectedEvents.slice(0, 10).map((r) => r.error),
+      });
+    } catch (healthLogErr) {
+      logger.warn("TELEMETRY_HEALTH_LOG_INSERT_FAILED", { error: healthLogErr.message });
     }
 
     logger.action("ANALYTICS_EVENTS_SYNCED", "success", {
       receivedCount: events.length,
+      validCount: validEvents.length,
+      rejectedCount: rejectedEvents.length,
+      duplicatesSuppressed: duplicatesCount,
       insertedCount: totalInserted,
       userId: authUserId,
     });
-    res.json({ inserted: totalInserted });
+
+    res.json({
+      inserted: totalInserted,
+      accepted: validEvents.length,
+      rejected: rejectedEvents.length,
+      duplicatesSuppressed: duplicatesCount,
+    });
   } catch (err) {
     logger.error("ANALYTICS_EVENTS_SYNC", err);
     res.status(500).json({ error: "Internal server error" });
@@ -555,6 +608,11 @@ app.get("/api/analytics", async (req, res) => {
 
     if (!userId) {
       return res.json({
+        authority: "LOCAL_PROVISIONAL",
+        engineVersion: intelligenceService.ENGINE_VERSION,
+        ruleVersion: intelligenceService.RULE_VERSION,
+        schemaVersion: intelligenceService.SCHEMA_VERSION,
+        decision: null,
         coldStart: true,
         intelligenceState: "no_evidence",
         evidence: {
@@ -704,6 +762,21 @@ app.get("/api/analytics", async (req, res) => {
         ? "early_evidence"
         : "established";
 
+    // 3. Fetch Spaced Reviews for retention evaluation
+    const { data: spacedReviews } = await supabase
+      .from("spaced_reviews")
+      .select("id, user_id, topic_id, topic_title, next_review_at, interval_days, repetitions")
+      .eq("user_id", userId);
+
+    // 4. Compute and record Authoritative Intelligence Decision (Immutable Ledger)
+    const authoritativeDecision = await intelligenceService.computeAndRecordDecision(
+      supabase,
+      userId,
+      attempts,
+      rows,
+      spacedReviews || []
+    );
+
     logger.action("ANALYTICS_FETCHED", "success", {
       userId,
       totalTopics: rows.length,
@@ -711,9 +784,16 @@ app.get("/api/analytics", async (req, res) => {
       totalVisits,
       isColdStart,
       intelligenceState,
+      decisionId: authoritativeDecision.decisionId,
+      decisionType: authoritativeDecision.decisionType,
     });
 
     res.json({
+      authority: "SERVER_VERIFIED",
+      engineVersion: authoritativeDecision.engineVersion,
+      ruleVersion: authoritativeDecision.ruleVersion,
+      schemaVersion: authoritativeDecision.schemaVersion,
+      decision: authoritativeDecision,
       coldStart: isColdStart,
       intelligenceState,
       evidence: {
@@ -732,6 +812,52 @@ app.get("/api/analytics", async (req, res) => {
   } catch (err) {
     logger.error("ANALYTICS_FETCH", err);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Endpoint: Internal Intelligence & Telemetry Health Observability (Phase P0)
+app.get("/api/admin/intelligence-health", async (req, res) => {
+  try {
+    const { data: healthLogs } = await supabase
+      .from("telemetry_health_logs")
+      .select("*")
+      .order("recorded_at", { ascending: false })
+      .limit(50);
+
+    const { data: decisions } = await supabase
+      .from("intelligence_decisions")
+      .select("id, decision_type, action_type, engine_version, rule_version, created_at, supersedes_decision_id")
+      .order("created_at", { ascending: false })
+      .limit(50);
+
+    const totalBatches = (healthLogs || []).length;
+    const totalValid = (healthLogs || []).reduce((acc, h) => acc + (h.valid_events_count || 0), 0);
+    const totalRejected = (healthLogs || []).reduce((acc, h) => acc + (h.rejected_events_count || 0), 0);
+    const totalDuplicates = (healthLogs || []).reduce((acc, h) => acc + (h.duplicates_suppressed || 0), 0);
+
+    res.json({
+      status: "healthy",
+      engineVersion: intelligenceService.ENGINE_VERSION,
+      ruleVersion: intelligenceService.RULE_VERSION,
+      schemaVersion: intelligenceService.SCHEMA_VERSION,
+      telemetryObservability: {
+        batchesObserved: totalBatches,
+        totalValidEvents: totalValid,
+        totalRejectedEvents: totalRejected,
+        totalDuplicatesSuppressed: totalDuplicates,
+        rejectionRatePct: totalValid + totalRejected > 0
+          ? ((totalRejected / (totalValid + totalRejected)) * 100).toFixed(2)
+          : "0.00",
+        recentLogs: healthLogs || []
+      },
+      decisionsObservability: {
+        recentDecisionsCount: (decisions || []).length,
+        recentDecisions: decisions || []
+      }
+    });
+  } catch (err) {
+    logger.error("INTELLIGENCE_HEALTH_FETCH", err);
+    res.status(500).json({ error: "Failed fetching intelligence health" });
   }
 });
 
