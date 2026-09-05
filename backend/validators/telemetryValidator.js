@@ -58,6 +58,9 @@ function validateEvent(event) {
   if (!isValidIdentifier) {
     return { valid: false, error: `Malformed event_type identifier: "${event.event_type}"` };
   }
+  if (!ALLOWED_EVENT_TYPES.has(normalizedEventType)) {
+    return { valid: false, error: `Unrecognized or non-telemetry event_type: "${event.event_type}"` };
+  }
 
   // 3. Timestamp verification
   const rawTs = event.created_at || event.timestamp;

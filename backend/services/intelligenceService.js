@@ -24,6 +24,22 @@ const {
   getPrerequisiteHypotheses,
   computeGraphSnapshotHash
 } = require('./skillGraph');
+const {
+  CALIBRATION_VERSION,
+  MIN_DIFFICULTY_OBSERVATIONS,
+  EVIDENCE_LEVELS,
+  EVIDENCE_LEVEL_SOURCES,
+  EVIDENCE_LEVEL_WEIGHTS,
+  INDEPENDENCE_FACTORS,
+  NOVELTY_FACTORS,
+  SKILL_ROLE_WEIGHTS,
+  computeCalibrationSnapshotHash,
+  calculateIndependenceFactor,
+  calculateNoveltyFactor,
+  calibrateItemDifficulty,
+  qualifyEvidenceContribution,
+  distributeEvidenceContributions
+} = require('./evidenceModel');
 
 const ENGINE_VERSION = '2.0.0';
 const RULE_VERSION = 1;
@@ -596,6 +612,8 @@ async function computeAndRecordDecision(supabase, userId, attempts = [], topics 
       ontologyVersion: reusedDecision.ontology_version || ONTOLOGY_VERSION,
       graphVersion: reusedDecision.graph_version || GRAPH_VERSION,
       graphSnapshotHash: reusedDecision.graph_snapshot_hash || computeGraphSnapshotHash(GRAPH_VERSION, SKILL_RELATIONSHIPS),
+      calibrationVersion: reusedDecision.calibration_version || CALIBRATION_VERSION,
+      calibrationSnapshotHash: reusedDecision.calibration_snapshot_hash || computeCalibrationSnapshotHash(CALIBRATION_VERSION),
       decisionType: reusedDecision.decision_type,
       actionType: reusedDecision.action_type,
       targetSkillId: reusedDecision.target_skill_id,
@@ -631,6 +649,8 @@ async function computeAndRecordDecision(supabase, userId, attempts = [], topics 
     ontologyVersion: ONTOLOGY_VERSION,
     graphVersion: GRAPH_VERSION,
     graphSnapshotHash: computeGraphSnapshotHash(GRAPH_VERSION, SKILL_RELATIONSHIPS),
+    calibrationVersion: CALIBRATION_VERSION,
+    calibrationSnapshotHash: computeCalibrationSnapshotHash(CALIBRATION_VERSION),
     decisionType: rawDecision.decisionType,
     actionType: rawDecision.actionType,
     targetSkillId: rawDecision.targetSkillId,
@@ -655,7 +675,21 @@ module.exports = {
   RULE_VERSION,
   SCHEMA_VERSION,
   GRAPH_VERSION,
+  CALIBRATION_VERSION,
+  MIN_DIFFICULTY_OBSERVATIONS,
+  EVIDENCE_LEVELS,
+  EVIDENCE_LEVEL_SOURCES,
+  EVIDENCE_LEVEL_WEIGHTS,
+  INDEPENDENCE_FACTORS,
+  NOVELTY_FACTORS,
+  SKILL_ROLE_WEIGHTS,
   computeGraphSnapshotHash,
+  computeCalibrationSnapshotHash,
+  calculateIndependenceFactor,
+  calculateNoveltyFactor,
+  calibrateItemDifficulty,
+  qualifyEvidenceContribution,
+  distributeEvidenceContributions,
   calculateEvidenceStrength,
   evaluateTopicMastery,
   determineRecommendation,

@@ -44,6 +44,22 @@ import {
   getDirectDependents,
   getPrerequisiteHypotheses
 } from "./backend/services/skillGraph.js";
+import {
+  CALIBRATION_VERSION,
+  MIN_DIFFICULTY_OBSERVATIONS,
+  EVIDENCE_LEVELS,
+  EVIDENCE_LEVEL_SOURCES,
+  EVIDENCE_LEVEL_WEIGHTS,
+  INDEPENDENCE_FACTORS,
+  NOVELTY_FACTORS,
+  SKILL_ROLE_WEIGHTS,
+  computeCalibrationSnapshotHash,
+  calculateIndependenceFactor,
+  calculateNoveltyFactor,
+  calibrateItemDifficulty,
+  qualifyEvidenceContribution,
+  distributeEvidenceContributions
+} from "./backend/services/evidenceModel.js";
 
 const { validateEvent, validateEventsBatch } = telemetryValidator;
 const {
@@ -994,6 +1010,351 @@ async function runContractTests() {
     assert(expansionHypothesis !== undefined, "Contributing hypotheses includes Expansion as suspected prerequisite");
     assert(expansionHypothesis.isObservedEvidence === false, "Expansion hypothesis carries isObservedEvidence: false");
     assert(expansionHypothesis.requiresDiagnosticQuestion === true, "Expansion hypothesis requires diagnostic questions before claiming student weakness");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 24: Calibration Cannot Mutate Evidence (Immutable Canonical Attempt)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 24: Calibration Cannot Mutate Evidence (attempt_before === attempt_after)");
+  {
+    const originalAttempt = Object.freeze({
+      id: 501,
+      client_event_id: "evt-calib-test-501",
+      question_id: "q_quad_01",
+      topic: "Quadratic Equations",
+      is_correct: true,
+      hints_used: 1,
+      attempt_ordinal: 1,
+      created_at: "2026-09-05T12:00:00Z"
+    });
+
+    const attemptSnapshotBefore = JSON.stringify(originalAttempt);
+
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL,
+      evidenceLevelSource: EVIDENCE_LEVEL_SOURCES.AUTHOR_TAG
+    };
+
+    const contribution = qualifyEvidenceContribution(originalAttempt, attribution, {
+      calibrationVersion: "1.0.0",
+      itemDifficulty: 0.65
+    });
+
+    const attemptSnapshotAfter = JSON.stringify(originalAttempt);
+
+    assert(attemptSnapshotBefore === attemptSnapshotAfter, "Constitutional Law: Canonical attempt is strictly immutable before and after calibration");
+    assert(contribution.attemptId === originalAttempt.client_event_id, "Contribution references attempt ID with provenance");
+    assert(contribution !== originalAttempt, "EvidenceContribution is a qualified derivative, NOT a mutated attempt");
+    assert(contribution.observed.correct === true, "Observed correctness is faithfully preserved");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 25: N=0 Preservation Under Calibration (0 attempts -> UNKNOWN, null difficulty)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 25: N=0 Preservation Under Calibration (Negative knowledge protection under calibration)");
+  {
+    const unattemptedEval = evaluateTopicMastery("Unattempted Skill", []);
+    assert(unattemptedEval.totalAttempts === 0, "Topic has 0 total attempts");
+    assert(unattemptedEval.masteryState === "UNKNOWN", "0 attempts strictly yields UNKNOWN mastery state");
+    assert(unattemptedEval.evidenceStrength === 0, "0 attempts strictly yields 0 evidence strength");
+
+    const zeroObservationsDifficulty = calibrateItemDifficulty([]);
+    assert(zeroObservationsDifficulty === null, "0 observations strictly yields null item difficulty");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 26: Mastery Is Not Evidence (Inference cannot become observation)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 26: Mastery Is Not Evidence (Mastery inference cannot become a student attempt)");
+  {
+    const fakeMasteryAttempt = {
+      client_event_id: "evt-fake-mastery",
+      event_type: "mastery_inference", // Illegal event type for telemetry
+      mastery_state: "VERIFIED",
+      evidence_strength: 90
+    };
+
+    const validation = validateEvent(fakeMasteryAttempt);
+    assert(validation.valid === false, "Telemetry validator strictly rejects synthetic mastery objects as learning events");
+    assert(Boolean(validation.error), "Rejection error is recorded for non-attempt object");
+
+    // Also check that an EvidenceContribution itself cannot be accepted as a raw event
+    const fakeContributionAsAttempt = {
+      attemptId: "evt-123",
+      evidenceLevel: "PROCEDURAL",
+      mastery: { state: "DEVELOPING" }
+    };
+    assert(validateEvent(fakeContributionAsAttempt).valid === false, "EvidenceContribution cannot be accepted as raw telemetry attempt");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 27: Difficulty Null Protection (N < MIN_DIFFICULTY_OBSERVATIONS -> null)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 27: Difficulty Null Protection (N < 30 observations strictly yields difficulty = null)");
+  {
+    assert(MIN_DIFFICULTY_OBSERVATIONS === 30, "MIN_DIFFICULTY_OBSERVATIONS is configured to 30");
+
+    const attempts29 = [];
+    for (let i = 0; i < 29; i++) {
+      attempts29.push({ is_correct: i % 2 === 0 });
+    }
+
+    const difficulty29 = calibrateItemDifficulty(attempts29);
+    assert(difficulty29 === null, "29 observations (< 30) strictly yields difficulty = null (never fabricate difficulty)");
+
+    const attempts1 = [{ is_correct: false }];
+    assert(calibrateItemDifficulty(attempts1) === null, "1 observation strictly yields difficulty = null");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 28: Empirical Difficulty Determinism (Identical observations -> identical difficulty)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 28: Empirical Difficulty Determinism (D(dataset) === D(dataset))");
+  {
+    const attempts35 = [];
+    // 14 incorrect, 21 correct -> failure rate = 14/35 = 0.40
+    for (let i = 0; i < 35; i++) {
+      attempts35.push({ is_correct: i >= 14 });
+    }
+
+    const diffRun1 = calibrateItemDifficulty(attempts35);
+    const diffRun2 = calibrateItemDifficulty(attempts35);
+
+    assert(diffRun1 === 0.40, `Calibrated difficulty for 14/35 incorrect is exactly 0.40 (got ${diffRun1})`);
+    assert(diffRun1 === diffRun2, "Empirical difficulty calculation is completely deterministic");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 29: Calibration Versioning (Parameter changes bump hash, historical snapshot preserved)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 29: Calibration Versioning (Changing calibration parameters bumps snapshot hash)");
+  {
+    const hashV1 = computeCalibrationSnapshotHash("1.0.0");
+    const hashV2 = computeCalibrationSnapshotHash("1.0.1");
+    const hashCustom = computeCalibrationSnapshotHash("1.0.0", { testThreshold: 50 });
+
+    assert(typeof hashV1 === "string" && hashV1.length === 64, "Calibration snapshot hash is a 64-character SHA-256 string");
+    assert(hashV1 !== hashV2, "Changing calibration version bumps calibration snapshot hash");
+    assert(hashV1 !== hashCustom, "Changing calibration parameters bumps calibration snapshot hash");
+
+    const decision = await computeAndRecordDecision(null, "user-test-calib", []);
+
+    assert(decision.calibrationVersion === CALIBRATION_VERSION, `Decision records calibrationVersion: ${decision.calibrationVersion}`);
+    assert(decision.calibrationSnapshotHash === hashV1, "Decision records calibrationSnapshotHash matching active calibration");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 30: Evidence Level Non-Promotion (Constitutional Test: Quality strengthens WITHIN level)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 30: Evidence Level Non-Promotion (Performance quality cannot promote to higher evidence level)");
+  {
+    // A question author tagged as PROCEDURAL
+    const mappedQuestion = mapQuestionToSkills({
+      id: "q_procedural_fact",
+      primary_skill: "math.algebra.quadratic_equations.factorisation",
+      evidence_level: "PROCEDURAL",
+      evidence_level_source: "AUTHOR_TAG"
+    });
+
+    assert(mappedQuestion.evidenceLevel === EVIDENCE_LEVELS.PROCEDURAL, "Question is declared as PROCEDURAL");
+    assert(mappedQuestion.evidenceLevelSource === EVIDENCE_LEVEL_SOURCES.AUTHOR_TAG, "Evidence level source is AUTHOR_TAG");
+
+    // Student has flawless performance: correct, 0 hints, 1st attempt, fast speed
+    const flawlessAttempt = {
+      client_event_id: "evt-flawless-001",
+      question_id: "q_procedural_fact",
+      is_correct: true,
+      hints_used: 0,
+      attempt_ordinal: 1,
+      duration_ms: 3200
+    };
+
+    const contribution = qualifyEvidenceContribution(flawlessAttempt, mappedQuestion.skills[0]);
+
+    assert(contribution.evidenceLevel === EVIDENCE_LEVELS.PROCEDURAL, "Constitutional Law: Evidence level remains strictly PROCEDURAL");
+    assert(contribution.evidenceLevel !== EVIDENCE_LEVELS.TRANSFER, "Constitutional Law: Flawless performance NEVER promotes PROCEDURAL to TRANSFER");
+    assert(contribution.evidenceLevel !== EVIDENCE_LEVELS.APPLICATION, "Constitutional Law: Flawless performance NEVER promotes PROCEDURAL to APPLICATION");
+    assert(contribution.qualification.evidenceStrength > 0.6, `Performance strengthens within level (strength=${contribution.qualification.evidenceStrength})`);
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 31: Hint Contamination (Independence factor discounts strength, NOT correctness)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 31: Hint Contamination (Assistance reduces evidence strength without mutating correctness)");
+  {
+    const baseAttempt = {
+      client_event_id: "evt-hint-test",
+      question_id: "q_calc_01",
+      is_correct: true,
+      attempt_ordinal: 1
+    };
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+    };
+
+    // Case A: Independent
+    const contribA = qualifyEvidenceContribution({ ...baseAttempt, hints_used: 0 }, attribution);
+    assert(contribA.qualification.independenceFactor === 1.00, "0 hints -> independenceFactor = 1.00");
+    assert(contribA.observed.independent === true, "0 hints marked as independent");
+
+    // Case B: 2 hints
+    const contribB = qualifyEvidenceContribution({ ...baseAttempt, hints_used: 2 }, attribution);
+    assert(contribB.qualification.independenceFactor === 0.50, "2 hints -> independenceFactor = 0.50");
+    assert(contribB.observed.independent === false, "2 hints marked as not independent");
+    assert(contribB.observed.correct === true, "Correctness remains true (hints do NOT falsify answer)");
+    assert(contribB.qualification.evidenceStrength < contribA.qualification.evidenceStrength, "Evidence strength is discounted by hints");
+
+    // Case C: Solution revealed
+    const contribC = qualifyEvidenceContribution({ ...baseAttempt, solution_revealed: true }, attribution);
+    assert(contribC.qualification.independenceFactor === 0.00, "Solution revealed -> independenceFactor = 0.00");
+    assert(contribC.qualification.evidenceStrength === 0.00, "Solution revealed -> evidenceStrength = 0.00");
+    assert(contribC.observed.correct === true, "Correctness remains true (not rewritten as wrong)");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 32: Repeated Attempt Independence (Novelty factor discounts repetition)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 32: Repeated Attempt Independence (Repetition discounts novelty to prevent evidence inflation)");
+  {
+    const baseAttempt = {
+      client_event_id: "evt-rep-test",
+      question_id: "q_rep_01",
+      is_correct: true,
+      hints_used: 0
+    };
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.APPLICATION
+    };
+
+    const contrib1 = qualifyEvidenceContribution({ ...baseAttempt, attempt_ordinal: 1 }, attribution);
+    const contrib2 = qualifyEvidenceContribution({ ...baseAttempt, attempt_ordinal: 2 }, attribution);
+    const contrib3 = qualifyEvidenceContribution({ ...baseAttempt, attempt_ordinal: 3 }, attribution);
+    const contrib4 = qualifyEvidenceContribution({ ...baseAttempt, attempt_ordinal: 4 }, attribution);
+
+    assert(contrib1.qualification.noveltyFactor === 1.00, "Attempt 1 has noveltyFactor = 1.00");
+    assert(contrib2.qualification.noveltyFactor === 0.60, "Attempt 2 has noveltyFactor = 0.60");
+    assert(contrib3.qualification.noveltyFactor === 0.35, "Attempt 3 has noveltyFactor = 0.35");
+    assert(contrib4.qualification.noveltyFactor === 0.15, "Attempt 4 has noveltyFactor = 0.15");
+
+    assert(
+      contrib1.qualification.evidenceStrength > contrib2.qualification.evidenceStrength &&
+      contrib2.qualification.evidenceStrength > contrib3.qualification.evidenceStrength &&
+      contrib3.qualification.evidenceStrength > contrib4.qualification.evidenceStrength,
+      "Evidence strength monotonically decreases with repetition on identical item"
+    );
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 36: Multi-Skill Evidence Conservation (1 canonical attempt = 1 canonical attempt)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 36: Multi-Skill Evidence Conservation (Attribution never multiplies canonical attempts)");
+  {
+    const multiSkillQuestion = mapQuestionToSkills({
+      id: "q_multi_01",
+      primary_skill: "math.algebra.quadratic_equations.factorisation",
+      secondary_skills: ["math.numbers.integers.signed_arithmetic"],
+      evidence_level: "PROCEDURAL",
+      evidence_level_source: "AUTHOR_TAG"
+    });
+
+    assert(multiSkillQuestion.skills.length === 2, "Question is attributed to 2 skills");
+
+    const singleAttempt = {
+      client_event_id: "evt-multi-001",
+      question_id: "q_multi_01",
+      is_correct: true,
+      hints_used: 0,
+      attempt_ordinal: 1
+    };
+
+    const distribution = distributeEvidenceContributions(singleAttempt, multiSkillQuestion);
+
+    // Constitutional Invariant: Canonical attempts remains 1!
+    assert(distribution.canonicalAttempts === 1, "Constitutional Law: canonicalAttempts count remains exactly 1");
+    assert(distribution.contributions.length === 2, "Produces 2 qualified evidence contributions");
+
+    const primaryContrib = distribution.contributions.find(c => c.skillRole === SKILL_ROLES.PRIMARY);
+    const supportingContrib = distribution.contributions.find(c => c.skillRole === SKILL_ROLES.SUPPORTING);
+
+    assert(primaryContrib !== undefined, "Primary contribution exists");
+    assert(primaryContrib.qualification.evidenceWeight === 1.00, "Primary skill receives full evidence weight (1.00)");
+    assert(supportingContrib !== undefined, "Supporting contribution exists");
+    assert(supportingContrib.qualification.evidenceWeight === 0.35, "Supporting skill receives discounted evidence weight (0.35)");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 37: Temporal Calibration Integrity (Historical calibration state is immutable)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 37: Temporal Calibration Integrity (Law 14: Historical calibration cannot be rewritten by future states)");
+  {
+    const attemptT1 = {
+      client_event_id: "evt-temp-001",
+      question_id: "q_item_temp",
+      is_correct: true,
+      hints_used: 0,
+      attempt_ordinal: 1,
+      item_difficulty_at_observation: null // At T1, item had insufficient population
+    };
+
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+    };
+
+    // Observation at T1
+    const contribT1 = qualifyEvidenceContribution(attemptT1, attribution, {
+      calibrationVersion: "1.0.0"
+    });
+    assert(contribT1.qualification.itemDifficultyAtObservation === null, "At T1, itemDifficultyAtObservation is null");
+
+    // Later at T2: Population accumulates 50 attempts, difficulty is calibrated to 0.72
+    const currentCalibrationT2 = {
+      calibrationVersion: "1.1.0",
+      itemDifficulty: 0.72
+    };
+
+    // The historical contribution contribT1 was not and CANNOT be mutated
+    assert(contribT1.qualification.itemDifficultyAtObservation === null, "Constitutional Law 14: Historical observation retains null difficulty from observation time");
+
+    // A new observation at T2 receives the new difficulty
+    const attemptT2 = {
+      client_event_id: "evt-temp-002",
+      question_id: "q_item_temp",
+      is_correct: false,
+      hints_used: 0,
+      attempt_ordinal: 1
+    };
+    const contribT2 = qualifyEvidenceContribution(attemptT2, attribution, currentCalibrationT2);
+    assert(contribT2.qualification.itemDifficultyAtObservation === 0.72, "T2 observation correctly captures calibrated difficulty available at T2");
 
     passedTests++;
   }

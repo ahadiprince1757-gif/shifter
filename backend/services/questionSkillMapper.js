@@ -18,6 +18,10 @@ const {
   UNKNOWN_SKILL,
   getSkillById
 } = require('./skillOntology');
+const {
+  EVIDENCE_LEVELS,
+  EVIDENCE_LEVEL_SOURCES
+} = require('./evidenceModel');
 
 /**
  * Generates a deterministic content hash for question text/stem to ensure question versioning integrity.
@@ -44,6 +48,19 @@ function mapQuestionToSkills(question = {}) {
   // Cognitive Level (truthful: null when untagged)
   const rawCognitive = question.cognitive_level || question.cognitiveLevel || null;
   const cognitiveLevel = rawCognitive ? String(rawCognitive).toUpperCase().trim() : null;
+
+  // Evidence Level (truthful: UNKNOWN when untagged/undeclared)
+  const rawEvidenceLevel = question.evidence_level || question.evidenceLevel || null;
+  let evidenceLevel = rawEvidenceLevel ? String(rawEvidenceLevel).toUpperCase().trim() : null;
+  if (!evidenceLevel || !Object.values(EVIDENCE_LEVELS).includes(evidenceLevel)) {
+    evidenceLevel = EVIDENCE_LEVELS.UNKNOWN;
+  }
+
+  const rawEvidenceLevelSource = question.evidence_level_source || question.evidenceLevelSource || null;
+  let evidenceLevelSource = rawEvidenceLevelSource ? String(rawEvidenceLevelSource).toUpperCase().trim() : null;
+  if (!evidenceLevelSource || !Object.values(EVIDENCE_LEVEL_SOURCES).includes(evidenceLevelSource)) {
+    evidenceLevelSource = evidenceLevel === EVIDENCE_LEVELS.UNKNOWN ? EVIDENCE_LEVEL_SOURCES.UNKNOWN : EVIDENCE_LEVEL_SOURCES.AUTHOR_TAG;
+  }
 
   // Blueprint identifier
   const blueprintId = question.blueprint_id || question.blueprintId || null;
@@ -72,6 +89,8 @@ function mapQuestionToSkills(question = {}) {
         role: Object.values(SKILL_ROLES).includes(role) ? role : SKILL_ROLES.SUPPORTING,
         attributionSource: source,
         confidence,
+        evidenceLevel: item.evidenceLevel || evidenceLevel,
+        evidenceLevelSource: item.evidenceLevelSource || evidenceLevelSource,
         ontologyVersion: ONTOLOGY_VERSION
       });
     }
@@ -82,6 +101,8 @@ function mapQuestionToSkills(question = {}) {
       role: SKILL_ROLES.PRIMARY,
       attributionSource: question.mapping_source || MAPPING_SOURCES.AUTHOR_TAG,
       confidence: MAPPING_CONFIDENCE[question.mapping_source || MAPPING_SOURCES.AUTHOR_TAG] || 1.0,
+      evidenceLevel,
+      evidenceLevelSource,
       ontologyVersion: ONTOLOGY_VERSION
     });
 
@@ -93,6 +114,8 @@ function mapQuestionToSkills(question = {}) {
         role: SKILL_ROLES.SUPPORTING,
         attributionSource: MAPPING_SOURCES.AUTHOR_TAG,
         confidence: 0.9,
+        evidenceLevel,
+        evidenceLevelSource,
         ontologyVersion: ONTOLOGY_VERSION
       });
     }
@@ -103,6 +126,8 @@ function mapQuestionToSkills(question = {}) {
       role: SKILL_ROLES.UNKNOWN,
       attributionSource: MAPPING_SOURCES.UNKNOWN,
       confidence: null,
+      evidenceLevel: EVIDENCE_LEVELS.UNKNOWN,
+      evidenceLevelSource: EVIDENCE_LEVEL_SOURCES.UNKNOWN,
       ontologyVersion: ONTOLOGY_VERSION
     });
   }
@@ -122,6 +147,8 @@ function mapQuestionToSkills(question = {}) {
     },
     skills: attributedSkills,
     cognitiveLevel,
+    evidenceLevel,
+    evidenceLevelSource,
     difficulty: null, // Empirical difficulty strictly null until calibrated
     blueprintId
   };
