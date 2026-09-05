@@ -1,24 +1,31 @@
 /**
- * TIXAR LEARNING INTELLIGENCE SYSTEM — PHASE P0
+ * TIXAR LEARNING INTELLIGENCE SYSTEM — PHASE P0 + P1-A
  * Authoritative Intelligence Service (Server-Authoritative Inference & Decision Engine)
- * 
+ *
  * Invariants: Tixar Intelligence Law (Codebase Constitution)
- * 1. Never infer more certainty than the evidence supports.
- * 2. Never fabricate evidence.
- * 3. Never hide uncertainty.
- * 4. Never confuse activity with learning.
- * 5. Never confuse performance with mastery.
- * 6. Never confuse mastery with readiness.
- * 7. Never recommend an intervention without knowing why.
- * 8. Never make a recommendation that cannot be traced back to original evidence.
- * 9. Never overwrite raw observations with interpretations.
+ * 1.  Never infer more certainty than the evidence supports.
+ * 2.  Never fabricate evidence.
+ * 3.  Never hide uncertainty.
+ * 4.  Never confuse activity with learning.
+ * 5.  Never confuse performance with mastery.
+ * 6.  Never confuse mastery with readiness.
+ * 7.  Never recommend an intervention without knowing why.
+ * 8.  Never make a recommendation that cannot be traced back to original evidence.
+ * 9.  Never overwrite raw observations with interpretations.
  * 10. Always remain capable of saying: "I don't know yet."
  * 11. Every intervention must eventually be testable against an outcome.
  */
 
+const crypto = require('crypto');
+const { ONTOLOGY_VERSION } = require('./skillOntology');
+
 const ENGINE_VERSION = '2.0.0';
 const RULE_VERSION = 1;
 const SCHEMA_VERSION = 1;
+
+// ============================================================================
+// EVIDENCE STRENGTH
+// ============================================================================
 
 /**
  * Calculates multi-factor Evidence Strength (0-100).
@@ -38,32 +45,36 @@ function calculateEvidenceStrength(attempts) {
     const t = new Date(a.attempted_at || a.created_at).getTime();
     return isNaN(t) ? max : Math.max(max, t);
   }, 0);
-  
+
   let recencyScore = 15;
   if (latestTs > 0) {
     const daysSince = Math.max(0, (now - latestTs) / (1000 * 60 * 60 * 24));
-    if (daysSince <= 2) recencyScore = 30;
-    else if (daysSince <= 7) recencyScore = 25;
+    if (daysSince <= 2)  recencyScore = 30;
+    else if (daysSince <= 7)  recencyScore = 25;
     else if (daysSince <= 14) recencyScore = 18;
     else if (daysSince <= 30) recencyScore = 10;
     else recencyScore = 5;
   }
 
-  // 3. Consistency Factor (0-30 pts): Stability of response pattern across sessions
+  // 3. Consistency Factor (0-30 pts): Stability of response pattern
   let consistencyScore = 20;
   if (count >= 4) {
     const correctCount = attempts.filter(a => Boolean(a.is_correct)).length;
     const ratio = correctCount / count;
     // Clear polarity (consistently high or consistently struggling) indicates high consistency
-    const divergence = Math.abs(ratio - 0.5) * 2; // 0 (50/50 coinflip) to 1.0 (all correct or all wrong)
+    const divergence = Math.abs(ratio - 0.5) * 2; // 0 → coinflip, 1.0 → all correct or all wrong
     consistencyScore = Math.round(15 + divergence * 15);
   }
 
   return Math.min(100, Math.round(volumeScore + recencyScore + consistencyScore));
 }
 
+// ============================================================================
+// MASTERY EVALUATION
+// ============================================================================
+
 /**
- * Evaluates topic attempts and produces epistemologically sound states:
+ * Evaluates topic attempts and produces epistemologically sound states.
  * Evidence Strength != Mastery != Readiness.
  */
 function evaluateTopicMastery(topicTitle, attempts) {
@@ -97,10 +108,6 @@ function evaluateTopicMastery(topicTitle, attempts) {
   let readinessState = 'NOT_READY';
   if (masteryState === 'VERIFIED' || masteryState === 'ESTABLISHED') {
     readinessState = 'READY';
-  } else if (masteryState === 'CRITICAL_GAP' || masteryState === 'INSUFFICIENT_EVIDENCE') {
-    readinessState = 'NOT_READY';
-  } else {
-    readinessState = 'NOT_READY';
   }
 
   return {
@@ -116,15 +123,20 @@ function evaluateTopicMastery(topicTitle, attempts) {
   };
 }
 
+// ============================================================================
+// RECOMMENDATION POLICY
+// ============================================================================
+
 /**
- * Executes Recommendation Policy Layer:
+ * Executes Recommendation Policy Layer.
  * Separates "What is true?" (Inference) from "What should happen next?" (Policy).
  * Supports first-class NO_ACTION ("You're doing well. Keep going.").
  */
 function determineRecommendation(topicEvaluations, spacedReviews = []) {
-  // Check reviews due
   const now = new Date();
-  const dueReviews = (spacedReviews || []).filter(r => r.next_review_at && new Date(r.next_review_at) <= now);
+  const dueReviews = (spacedReviews || []).filter(
+    r => r.next_review_at && new Date(r.next_review_at) <= now
+  );
 
   const evaluatedTopics = Object.values(topicEvaluations);
   const totalEvidenceCount = evaluatedTopics.reduce((sum, t) => sum + t.totalAttempts, 0);
@@ -147,14 +159,17 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
         accuracy: 0,
         recentScores: []
       },
-      evidenceRefs: evaluatedTopics.flatMap(t => t.attempts.map(a => a.client_event_id).filter(Boolean)),
+      evidenceRefs: evaluatedTopics.flatMap(t =>
+        t.attempts.map(a => a.client_event_id).filter(Boolean)
+      ),
       inferenceRules: ['INSUFFICIENT_TOTAL_EVIDENCE', 'CALIBRATION_RECOMMENDED'],
       contributingHypotheses: [],
       explanationPayload: {
         title: "Let's Get Started: Diagnostic Exploration",
         actionText: "Take Diagnostic",
         reason: "We are still learning your baseline strengths across topics.",
-        pedagogicalWhy: "With fewer than 3 observed attempts, the system cannot reliably diagnose strengths or gaps without risk of false precision."
+        pedagogicalWhy:
+          "With fewer than 3 observed attempts, the system cannot reliably diagnose strengths or gaps without risk of false precision."
       }
     };
   }
@@ -162,11 +177,9 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
   // 2. Critical Gap (≥5 attempts AND <40% accuracy)
   const criticalGaps = evaluatedTopics.filter(t => t.masteryState === 'CRITICAL_GAP');
   if (criticalGaps.length > 0) {
-    // Pick the most severely affected topic
     criticalGaps.sort((a, b) => a.accuracy - b.accuracy || b.totalAttempts - a.totalAttempts);
     const primaryGap = criticalGaps[0];
 
-    // Heuristic contributing hypotheses (evidenceWeight, NOT fake probabilities)
     const contributingHypotheses = [
       {
         factor: "Prerequisite Concept Foundations",
@@ -180,7 +193,10 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
       }
     ];
 
-    const evidenceRefs = primaryGap.attempts.map(a => a.client_event_id).filter(Boolean).slice(-8);
+    const evidenceRefs = primaryGap.attempts
+      .map(a => a.client_event_id)
+      .filter(Boolean)
+      .slice(-8);
 
     return {
       decisionType: 'PREREQUISITE_GAP',
@@ -228,7 +244,10 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
         totalAttempts: due.total_reviews || 1,
         correctAttempts: Math.round((due.total_reviews || 1) * 0.8),
         accuracy: 80,
-        daysOverdue: Math.max(1, Math.round((now - new Date(due.next_review_at)) / (1000 * 60 * 60 * 24)))
+        daysOverdue: Math.max(
+          1,
+          Math.round((now - new Date(due.next_review_at)) / (1000 * 60 * 60 * 24))
+        )
       },
       evidenceRefs: [],
       inferenceRules: ['INTERVAL_ELAPSED', 'SPACED_RETENTION_OPTIMAL_WINDOW'],
@@ -237,7 +256,8 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
         title: `Memory Refresh: ${topicTitle}`,
         actionText: "Quick Review",
         reason: "Scheduled review window is active to reinforce long-term memory.",
-        pedagogicalWhy: "Optimal spacing intervals protect retention before active recall decays below retrieval threshold."
+        pedagogicalWhy:
+          "Optimal spacing intervals protect retention before active recall decays below retrieval threshold."
       }
     };
   }
@@ -271,14 +291,16 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
         title: `Build Momentum: ${topic.topicTitle}`,
         actionText: "Practice Topic",
         reason: `Initial understanding is emerging (${topic.accuracy}% over ${topic.totalAttempts} questions).`,
-        pedagogicalWhy: "Additional practice items are required to establish whether this concept is solidifying or encountering resistance."
+        pedagogicalWhy:
+          "Additional practice items are required to establish whether this concept is solidifying or encountering resistance."
       }
     };
   }
 
   // 5. Consolidated Mastery — First-Class "Do Nothing" (NO_ACTION) Policy
-  // If student has established/verified mastery across topics and no reviews due
-  const verifiedCount = evaluatedTopics.filter(t => t.masteryState === 'VERIFIED' || t.masteryState === 'ESTABLISHED').length;
+  const verifiedCount = evaluatedTopics.filter(
+    t => t.masteryState === 'VERIFIED' || t.masteryState === 'ESTABLISHED'
+  ).length;
   if (verifiedCount > 0) {
     return {
       decisionType: 'CONSOLIDATED_MASTERY',
@@ -293,17 +315,24 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
       evidenceSnapshot: {
         totalAttempts: totalEvidenceCount,
         correctAttempts: evaluatedTopics.reduce((sum, t) => sum + t.correctAttempts, 0),
-        accuracy: Math.round((evaluatedTopics.reduce((sum, t) => sum + t.correctAttempts, 0) / totalEvidenceCount) * 100),
+        accuracy: Math.round(
+          (evaluatedTopics.reduce((sum, t) => sum + t.correctAttempts, 0) / totalEvidenceCount) *
+            100
+        ),
         verifiedTopicsCount: verifiedCount
       },
-      evidenceRefs: evaluatedTopics.flatMap(t => t.attempts.map(a => a.client_event_id).filter(Boolean)).slice(-5),
+      evidenceRefs: evaluatedTopics
+        .flatMap(t => t.attempts.map(a => a.client_event_id).filter(Boolean))
+        .slice(-5),
       inferenceRules: ['ALL_ACTIVE_TOPICS_MASTERY_GE_80', 'NO_DUE_REVIEWS', 'NO_ACTION_CONTINUE'],
       contributingHypotheses: [],
       explanationPayload: {
         title: "You're Doing Great: Keep Going",
         actionText: "Explore Next Topic",
-        reason: "All active concepts have solid evidence of mastery. No remediation or reviews are needed right now.",
-        pedagogicalWhy: "First-class NO_ACTION policy prevents artificial interventions when the learner is already performing solidly."
+        reason:
+          "All active concepts have solid evidence of mastery. No remediation or reviews are needed right now.",
+        pedagogicalWhy:
+          "First-class NO_ACTION policy prevents artificial interventions when the learner is already performing solidly."
       }
     };
   }
@@ -332,15 +361,74 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
   };
 }
 
+// ============================================================================
+// DUAL FINGERPRINTING (P1-A)
+// ============================================================================
+
+/**
+ * Computes deterministic decision fingerprint using stable identifiers only (no display text).
+ * Invariant: One epistemically distinct state → one identifiable decision hash.
+ *
+ * @param {Object} params
+ * @returns {string} SHA-256 hex fingerprint
+ */
+function computeDecisionFingerprint({
+  userId,
+  decisionType,
+  actionType,
+  targetSkillId,
+  targetTopicId,
+  engineVersion = ENGINE_VERSION,
+  ruleVersion = RULE_VERSION,
+  ontologyVersion = ONTOLOGY_VERSION,
+  inferenceRules = []
+}) {
+  const normalizedRules = [...(inferenceRules || [])].sort().join(',');
+  const raw = [
+    userId || 'anonymous',
+    decisionType || '',
+    actionType || '',
+    targetSkillId || '',
+    targetTopicId || '',
+    engineVersion,
+    ruleVersion,
+    ontologyVersion,
+    normalizedRules
+  ].join('|');
+  return crypto.createHash('sha256').update(raw).digest('hex');
+}
+
+/**
+ * Computes deterministic evidence snapshot hash from sorted refs, metrics, and cutoff timestamp.
+ *
+ * @param {Object} params
+ * @returns {string} SHA-256 hex hash
+ */
+function computeEvidenceSnapshotHash({ evidenceRefs = [], evidenceSnapshot = {}, evidenceCutoffAt = '' }) {
+  const sortedRefs = [...(evidenceRefs || [])].sort().join(',');
+  const metrics = [
+    evidenceSnapshot.totalAttempts || 0,
+    evidenceSnapshot.correctAttempts || 0,
+    evidenceSnapshot.accuracy || 0
+  ].join(':');
+  const raw = `${sortedRefs}|${metrics}|${evidenceCutoffAt}`;
+  return crypto.createHash('sha256').update(raw).digest('hex');
+}
+
+// ============================================================================
+// LEDGER PERSISTENCE
+// ============================================================================
+
 /**
  * Authoritatively computes intelligence and persists an append-only decision row.
  * Handles append-only decision lifecycle with supersedes_decision_id.
- * 
- * @param {Object} supabase Supabase client (service or authenticated)
- * @param {string} userId User UUID
- * @param {Array<Object>} attempts Canonical assessment attempts from DB
- * @param {Array<Object>} topics Reference topic list
- * @param {Array<Object>} spacedReviews User's spaced reviews
+ * Includes dual fingerprint deduplication to avoid redundant ledger rows.
+ *
+ * @param {Object} supabase   Supabase client (service or authenticated)
+ * @param {string} userId     User UUID
+ * @param {Array}  attempts   Canonical assessment attempts from DB
+ * @param {Array}  topics     Reference topic list
+ * @param {Array}  spacedReviews User's spaced reviews
  * @returns {Promise<Object>} Authoritative decision record with authority: 'SERVER_VERIFIED'
  */
 async function computeAndRecordDecision(supabase, userId, attempts = [], topics = [], spacedReviews = []) {
@@ -348,9 +436,7 @@ async function computeAndRecordDecision(supabase, userId, attempts = [], topics 
   const attemptsByTopic = {};
   for (const att of attempts) {
     const key = att.topic || (att.topic_id ? `Topic #${att.topic_id}` : 'General Mathematics');
-    if (!attemptsByTopic[key]) {
-      attemptsByTopic[key] = [];
-    }
+    if (!attemptsByTopic[key]) attemptsByTopic[key] = [];
     attemptsByTopic[key].push(att);
   }
 
@@ -363,73 +449,149 @@ async function computeAndRecordDecision(supabase, userId, attempts = [], topics 
   // 3. Formulate authoritative recommendation
   const rawDecision = determineRecommendation(topicEvaluations, spacedReviews);
 
-  // 4. Append-Only Lifecycle: Fetch previous decision ID to set supersedes_decision_id
+  // 4. Calculate Evidence Cutoff Timestamp
+  const latestAttemptTs = attempts.reduce((max, a) => {
+    const t = new Date(a.attempted_at || a.created_at).getTime();
+    return isNaN(t) ? max : Math.max(max, t);
+  }, 0);
+  const evidenceCutoffAt =
+    latestAttemptTs > 0 ? new Date(latestAttemptTs).toISOString() : new Date().toISOString();
+
+  // 5. Compute Dual Fingerprints
+  const candidateDecisionFingerprint = computeDecisionFingerprint({
+    userId,
+    decisionType: rawDecision.decisionType,
+    actionType: rawDecision.actionType,
+    targetSkillId: rawDecision.targetSkillId,
+    targetTopicId: rawDecision.targetTopicId,
+    engineVersion: ENGINE_VERSION,
+    ruleVersion: RULE_VERSION,
+    ontologyVersion: ONTOLOGY_VERSION,
+    inferenceRules: rawDecision.inferenceRules
+  });
+
+  const candidateEvidenceSnapshotHash = computeEvidenceSnapshotHash({
+    evidenceRefs: rawDecision.evidenceRefs,
+    evidenceSnapshot: rawDecision.evidenceSnapshot,
+    evidenceCutoffAt
+  });
+
+  // 6. Append-Only Lifecycle with Decision Deduplication
   let supersedesDecisionId = null;
   let persistedId = null;
+  let reusedDecision = null;
 
   if (supabase && userId) {
     try {
-      // Find previous latest decision
       const { data: prevDecision } = await supabase
         .from('intelligence_decisions')
-        .select('id')
+        .select('*')
         .eq('user_id', userId)
         .order('created_at', { ascending: false })
         .limit(1)
         .maybeSingle();
 
-      if (prevDecision && prevDecision.id) {
-        supersedesDecisionId = prevDecision.id;
+      if (prevDecision) {
+        if (
+          prevDecision.decision_fingerprint === candidateDecisionFingerprint &&
+          prevDecision.evidence_snapshot_hash === candidateEvidenceSnapshotHash
+        ) {
+          reusedDecision = prevDecision;
+        } else {
+          supersedesDecisionId = prevDecision.id;
+        }
       }
 
-      // Insert new immutable decision row
-      const insertPayload = {
-        user_id: userId,
-        decision_type: rawDecision.decisionType,
-        action_type: rawDecision.actionType,
-        target_skill_id: rawDecision.targetSkillId,
-        target_topic_id: rawDecision.targetTopicId,
-        target_topic_title: rawDecision.targetTopicTitle,
-        evidence_strength: rawDecision.evidenceStrength,
-        confidence_level: rawDecision.confidenceLevel,
-        mastery_state: rawDecision.masteryState,
-        readiness_state: rawDecision.readinessState,
-        evidence_snapshot: rawDecision.evidenceSnapshot,
-        evidence_refs: rawDecision.evidenceRefs,
-        inference_rules: rawDecision.inferenceRules,
-        contributing_hypotheses: rawDecision.contributingHypotheses,
-        explanation_payload: rawDecision.explanationPayload,
-        supersedes_decision_id: supersedesDecisionId,
-        engine_version: ENGINE_VERSION,
-        rule_version: RULE_VERSION,
-        schema_version: SCHEMA_VERSION
-      };
+      if (!reusedDecision) {
+        const insertPayload = {
+          user_id: userId,
+          decision_type: rawDecision.decisionType,
+          action_type: rawDecision.actionType,
+          target_skill_id: rawDecision.targetSkillId,
+          target_topic_id: rawDecision.targetTopicId,
+          target_topic_title: rawDecision.targetTopicTitle,
+          evidence_strength: rawDecision.evidenceStrength,
+          confidence_level: rawDecision.confidenceLevel,
+          mastery_state: rawDecision.masteryState,
+          readiness_state: rawDecision.readinessState,
+          evidence_snapshot: rawDecision.evidenceSnapshot,
+          evidence_refs: rawDecision.evidenceRefs,
+          inference_rules: rawDecision.inferenceRules,
+          contributing_hypotheses: rawDecision.contributingHypotheses,
+          explanation_payload: rawDecision.explanationPayload,
+          supersedes_decision_id: supersedesDecisionId,
+          decision_fingerprint: candidateDecisionFingerprint,
+          evidence_snapshot_hash: candidateEvidenceSnapshotHash,
+          evidence_cutoff_at: evidenceCutoffAt,
+          engine_version: ENGINE_VERSION,
+          rule_version: RULE_VERSION,
+          schema_version: SCHEMA_VERSION,
+          ontology_version: ONTOLOGY_VERSION
+        };
 
-      const { data: inserted, error: insertErr } = await supabase
-        .from('intelligence_decisions')
-        .insert(insertPayload)
-        .select('id, created_at')
-        .single();
+        const { data: inserted, error: insertErr } = await supabase
+          .from('intelligence_decisions')
+          .insert(insertPayload)
+          .select('id, created_at')
+          .single();
 
-      if (!insertErr && inserted) {
-        persistedId = inserted.id;
-      } else if (insertErr) {
-        console.warn('[intelligenceService] Could not persist decision ledger row:', insertErr.message);
+        if (!insertErr && inserted) {
+          persistedId = inserted.id;
+        } else if (insertErr) {
+          console.warn('[intelligenceService] Could not persist decision ledger row:', insertErr.message);
+        }
       }
     } catch (err) {
       console.warn('[intelligenceService] Ledger persistence exception:', err.message);
     }
   }
 
+  if (reusedDecision) {
+    return {
+      authority: 'SERVER_VERIFIED',
+      reused: true,
+      decisionId: reusedDecision.id,
+      supersedesDecisionId: reusedDecision.supersedes_decision_id,
+      decisionFingerprint: reusedDecision.decision_fingerprint,
+      evidenceSnapshotHash: reusedDecision.evidence_snapshot_hash,
+      evidenceCutoffAt: reusedDecision.evidence_cutoff_at || evidenceCutoffAt,
+      engineVersion: reusedDecision.engine_version || ENGINE_VERSION,
+      ruleVersion: reusedDecision.rule_version || RULE_VERSION,
+      schemaVersion: reusedDecision.schema_version || SCHEMA_VERSION,
+      ontologyVersion: reusedDecision.ontology_version || ONTOLOGY_VERSION,
+      decisionType: reusedDecision.decision_type,
+      actionType: reusedDecision.action_type,
+      targetSkillId: reusedDecision.target_skill_id,
+      targetTopicId: reusedDecision.target_topic_id,
+      targetTopicTitle: reusedDecision.target_topic_title,
+      evidenceStrength: reusedDecision.evidence_strength,
+      confidenceLevel: reusedDecision.confidence_level,
+      masteryState: reusedDecision.mastery_state,
+      readinessState: reusedDecision.readiness_state,
+      evidenceSnapshot: reusedDecision.evidence_snapshot,
+      evidenceRefs: reusedDecision.evidence_refs,
+      inferenceRules: reusedDecision.inference_rules,
+      contributingHypotheses: reusedDecision.contributing_hypotheses,
+      explanation: reusedDecision.explanation_payload,
+      topicEvaluations,
+      createdAt: reusedDecision.created_at
+    };
+  }
+
   const decisionId = persistedId || (Date.now() % 1000000);
 
   return {
     authority: 'SERVER_VERIFIED',
+    reused: false,
     decisionId,
     supersedesDecisionId,
+    decisionFingerprint: candidateDecisionFingerprint,
+    evidenceSnapshotHash: candidateEvidenceSnapshotHash,
+    evidenceCutoffAt,
     engineVersion: ENGINE_VERSION,
     ruleVersion: RULE_VERSION,
     schemaVersion: SCHEMA_VERSION,
+    ontologyVersion: ONTOLOGY_VERSION,
     decisionType: rawDecision.decisionType,
     actionType: rawDecision.actionType,
     targetSkillId: rawDecision.targetSkillId,
@@ -456,5 +618,7 @@ module.exports = {
   calculateEvidenceStrength,
   evaluateTopicMastery,
   determineRecommendation,
+  computeDecisionFingerprint,
+  computeEvidenceSnapshotHash,
   computeAndRecordDecision
 };

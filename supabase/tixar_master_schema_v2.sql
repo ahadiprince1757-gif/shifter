@@ -292,16 +292,25 @@ CREATE TABLE IF NOT EXISTS public.intelligence_decisions (
     -- Decision Lifecycle: Append-only supersession
     supersedes_decision_id BIGINT REFERENCES public.intelligence_decisions(id) ON DELETE SET NULL,
 
-    -- Engine & Rule Versions
+    -- Engine, Rule & Ontology Versions
     engine_version TEXT NOT NULL DEFAULT '2.0.0',
     rule_version INTEGER NOT NULL DEFAULT 1,
     schema_version INTEGER NOT NULL DEFAULT 1,
+    ontology_version TEXT NOT NULL DEFAULT '1.0.0',
+
+    -- Decision Fingerprint & Evidence Hash for Scientifically Reproducible Deduplication
+    decision_fingerprint TEXT,
+    evidence_snapshot_hash TEXT,
+    evidence_cutoff_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL,
 
     created_at TIMESTAMP WITH TIME ZONE DEFAULT now() NOT NULL
 );
 
 CREATE INDEX IF NOT EXISTS idx_intelligence_decisions_user_created 
 ON public.intelligence_decisions(user_id, created_at DESC);
+
+CREATE INDEX IF NOT EXISTS idx_intelligence_decisions_user_fingerprint 
+ON public.intelligence_decisions(user_id, decision_fingerprint);
 
 CREATE INDEX IF NOT EXISTS idx_intelligence_decisions_superseded 
 ON public.intelligence_decisions(supersedes_decision_id);

@@ -23,6 +23,15 @@ import {
 } from "./frontend/src/engine/learningIntelligenceEngine.js";
 import telemetryValidator from "./backend/validators/telemetryValidator.js";
 import intelligenceService from "./backend/services/intelligenceService.js";
+import {
+  ONTOLOGY_VERSION,
+  CORE_SKILL_REGISTRY,
+  UNKNOWN_SKILL,
+  SKILL_ROLES,
+  validateSkillOntology,
+  getSkillById
+} from "./backend/services/skillOntology.js";
+import { mapQuestionToSkills } from "./backend/services/questionSkillMapper.js";
 
 const { validateEvent, validateEventsBatch } = telemetryValidator;
 const {
@@ -31,6 +40,8 @@ const {
   SCHEMA_VERSION,
   evaluateTopicMastery,
   determineRecommendation,
+  computeDecisionFingerprint,
+  computeEvidenceSnapshotHash,
   computeAndRecordDecision,
 } = intelligenceService;
 
@@ -481,6 +492,237 @@ async function runContractTests() {
     assert(sqlContent.includes("supersedes_decision_id BIGINT"), "Schema has supersedes_decision_id for append-only lifecycle");
     assert(sqlContent.includes("engine_version TEXT"), "Schema has engine_version column");
     assert(sqlContent.includes("rule_version INTEGER"), "Schema has rule_version column");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 11: Dual Fingerprint Deduplication
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 11: Dual Fingerprint Deduplication (decision_fingerprint + evidence_snapshot_hash)");
+  {
+    const attempts = [];
+    for (let i = 1; i <= 7; i++) {
+      attempts.push({
+        id: i,
+        client_event_id: `fp-evt-${i}`,
+        topic_id: 55,
+        topic: "Linear Equations",
+        is_correct: i <= 4,
+        created_at: new Date().toISOString()
+      });
+    }
+
+    const topicEval = evaluateTopicMastery("Linear Equations", attempts);
+    const rec = determineRecommendation({ "Linear Equations": topicEval });
+    const evidenceCutoffAt = new Date().toISOString();
+
+    const fp1 = computeDecisionFingerprint({
+      userId: "user-test-abc",
+      decisionType: rec.decisionType,
+      actionType: rec.actionType,
+      targetSkillId: rec.targetSkillId,
+      targetTopicId: rec.targetTopicId,
+      engineVersion: ENGINE_VERSION,
+      ruleVersion: RULE_VERSION,
+      ontologyVersion: ONTOLOGY_VERSION,
+      inferenceRules: rec.inferenceRules
+    });
+
+    const fp2 = computeDecisionFingerprint({
+      userId: "user-test-abc",
+      decisionType: rec.decisionType,
+      actionType: rec.actionType,
+      targetSkillId: rec.targetSkillId,
+      targetTopicId: rec.targetTopicId,
+      engineVersion: ENGINE_VERSION,
+      ruleVersion: RULE_VERSION,
+      ontologyVersion: ONTOLOGY_VERSION,
+      inferenceRules: [...rec.inferenceRules].reverse() // order should not matter
+    });
+
+    assert(fp1 === fp2, "Decision fingerprint is deterministic (rule order does not affect hash)");
+    assert(typeof fp1 === "string" && fp1.length === 64, "Decision fingerprint is a 64-char SHA-256 hex string");
+
+    const ev1 = computeEvidenceSnapshotHash({
+      evidenceRefs: rec.evidenceRefs,
+      evidenceSnapshot: rec.evidenceSnapshot,
+      evidenceCutoffAt
+    });
+
+    const ev2 = computeEvidenceSnapshotHash({
+      evidenceRefs: [...rec.evidenceRefs].reverse(), // order should not matter
+      evidenceSnapshot: rec.evidenceSnapshot,
+      evidenceCutoffAt
+    });
+
+    assert(ev1 === ev2, "Evidence snapshot hash is deterministic (ref order does not affect hash)");
+    assert(typeof ev1 === "string" && ev1.length === 64, "Evidence snapshot hash is a 64-char SHA-256 hex string");
+
+    // Different evidence should produce a different hash
+    const evDifferent = computeEvidenceSnapshotHash({
+      evidenceRefs: ["different-evt-1"],
+      evidenceSnapshot: { totalAttempts: 99, correctAttempts: 1, accuracy: 1 },
+      evidenceCutoffAt
+    });
+    assert(ev1 !== evDifferent, "Different evidence produces different snapshot hash");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 12: Skill Ontology DAG Integrity & Cycle Detection
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 12: Skill Ontology DAG Integrity & Cycle Detection");
+  {
+    const result = validateSkillOntology(CORE_SKILL_REGISTRY);
+    assert(result.valid === true, "Core skill ontology passes structural validation (no errors)");
+    assert(result.errors.length === 0, "Core skill ontology has zero validation errors");
+
+    // All skills should have non-null IDs matching their registry key
+    const skills = Object.entries(CORE_SKILL_REGISTRY);
+    assert(skills.length >= 8, "Core skill registry has at least 8 canonical skills");
+    for (const [key, skill] of skills) {
+      assert(skill.id === key, `Skill key matches skill.id for: ${key}`);
+      assert(skill.difficulty === null, `Skill '${key}' has difficulty=null (empirical calibration not yet done)`);
+      assert(skill.ontologyVersion === ONTOLOGY_VERSION, `Skill '${key}' carries ontologyVersion ${ONTOLOGY_VERSION}`);
+    }
+
+    // Cycle detection: injecting a cycle must produce an error
+    const registryWithCycle = {
+      ...CORE_SKILL_REGISTRY,
+      "test.cycle.A": {
+        id: "test.cycle.A",
+        name: "Cycle Test A",
+        subjectId: "test",
+        strandId: "cycle",
+        subStrandId: "test_sub",
+        relationships: [{ skillId: "test.cycle.B", relationship: "REQUIRES" }],
+        cognitiveExpectations: [],
+        status: "ACTIVE",
+        difficulty: null,
+        ontologyVersion: ONTOLOGY_VERSION
+      },
+      "test.cycle.B": {
+        id: "test.cycle.B",
+        name: "Cycle Test B",
+        subjectId: "test",
+        strandId: "cycle",
+        subStrandId: "test_sub",
+        relationships: [{ skillId: "test.cycle.A", relationship: "REQUIRES" }],
+        cognitiveExpectations: [],
+        status: "ACTIVE",
+        difficulty: null,
+        ontologyVersion: ONTOLOGY_VERSION
+      }
+    };
+
+    const cycleResult = validateSkillOntology(registryWithCycle);
+    assert(cycleResult.valid === false, "Ontology validator detects circular dependency (cycle A↔B)");
+    assert(cycleResult.errors.some(e => e.includes("Circular")), "Validator error message mentions 'Circular'");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 13: UNKNOWN_SKILL Policy & Boundary Guard
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 13: UNKNOWN_SKILL Policy & Boundary Guard");
+  {
+    // Untagged question → UNKNOWN_SKILL attribution
+    const untaggedQuestion = { id: "q-untagged-001" }; // no skill fields
+    const attribution = mapQuestionToSkills(untaggedQuestion);
+
+    assert(attribution.primarySkill.isUnknown === true, "Untagged question maps to UNKNOWN_SKILL (isUnknown=true)");
+    assert(attribution.skills.length === 1, "Untagged question has exactly 1 skill attribution");
+    assert(attribution.skills[0].skillId === UNKNOWN_SKILL.id, "Untagged attribution skillId equals UNKNOWN_SKILL.id");
+    assert(attribution.skills[0].confidence === null, "Untagged attribution confidence is null (not fabricated)");
+    assert(attribution.difficulty === null, "Untagged question difficulty is null");
+
+    // Policy boundary enforcement
+    assert(UNKNOWN_SKILL.policy.allowedForQuestionEvidence === true, "UNKNOWN_SKILL is allowed for question evidence");
+    assert(UNKNOWN_SKILL.policy.allowedForPrerequisiteDiagnosis === false, "UNKNOWN_SKILL is NOT allowed for prerequisite diagnosis");
+    assert(UNKNOWN_SKILL.policy.allowedForMasteryClaim === false, "UNKNOWN_SKILL is NOT allowed for mastery claims");
+    assert(UNKNOWN_SKILL.policy.allowedAsWeakTopic === false, "UNKNOWN_SKILL is NOT allowed as a weak topic");
+
+    // Known question → known skill attribution
+    const taggedQuestion = {
+      id: "q-tagged-001",
+      primary_skill: "math.algebra.quadratic_equations.factorisation"
+    };
+    const taggedAttribution = mapQuestionToSkills(taggedQuestion);
+    assert(taggedAttribution.primarySkill.isUnknown === false, "Tagged question maps to known skill (isUnknown=false)");
+    assert(taggedAttribution.primarySkill.id === "math.algebra.quadratic_equations.factorisation", "Tagged question maps to correct skill ID");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 14: Attribution Does Not Multiply Evidence
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 14: Attribution Does Not Multiply Evidence (1 attempt = 1 canonical event)");
+  {
+    // A question with both PRIMARY and SUPPORTING skills
+    const multiSkillQuestion = {
+      id: "q-multi-001",
+      version: "1",
+      skills: [
+        { skillId: "math.algebra.quadratic_equations.factorisation", role: SKILL_ROLES.PRIMARY, attributionSource: "AUTHOR_TAG" },
+        { skillId: "math.numbers.integers.signed_arithmetic",        role: SKILL_ROLES.SUPPORTING, attributionSource: "AUTHOR_TAG" }
+      ]
+    };
+
+    const attribution = mapQuestionToSkills(multiSkillQuestion);
+
+    // The attribution registers 2 skills, but the question attempt remains 1
+    assert(attribution.skills.length === 2, "Attribution records 2 skill attributions on the question");
+    assert(attribution.primarySkill.id === "math.algebra.quadratic_equations.factorisation", "Primary skill correctly identified");
+
+    // Now simulate the attempt going into the intelligence layer — it must remain 1 attempt
+    const rawAttempts = [
+      {
+        id: 1,
+        client_event_id: "multi-skill-evt-1",
+        topic: "Quadratic Equations",
+        is_correct: false,
+        created_at: new Date().toISOString()
+      }
+    ];
+
+    const topicEval = evaluateTopicMastery("Quadratic Equations", rawAttempts);
+    assert(topicEval.totalAttempts === 1, "1 question attempt = exactly 1 canonical attempt in intelligence engine (not multiplied by skill count)");
+    assert(topicEval.correctAttempts === 0, "Correct count remains 0 (not inflated by attribution)");
+
+    // The adapter must also not inflate
+    const adapted = adaptAnalyticsToEvidence({
+      coldStart: false,
+      evidence: { attempts: [{ id: 1, client_event_id: "multi-skill-evt-1", topic: "Quadratic Equations", correct: false, event_type: "question_incorrect", created_at: new Date().toISOString() }] }
+    });
+    assert(adapted.attempts.length === 1, "Adapter produces exactly 1 attempt regardless of skill attribution count");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 15: Negative Knowledge Protection (0 attempts = UNKNOWN, never a gap)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 15: Negative Knowledge Protection (N=0 → UNKNOWN, never a gap)");
+  {
+    // Evaluate a topic that has zero attempts
+    const zeroAttempts = evaluateTopicMastery("Trigonometry", []);
+
+    assert(zeroAttempts.totalAttempts === 0, "Topic with 0 attempts has totalAttempts=0");
+    assert(zeroAttempts.masteryState === "UNKNOWN", "Topic with 0 attempts is UNKNOWN (not CRITICAL_GAP)");
+    assert(zeroAttempts.readinessState === "NOT_READY", "Topic with 0 attempts is NOT_READY (appropriately cautious)");
+    assert(zeroAttempts.evidenceStrength === 0, "Topic with 0 attempts has evidenceStrength=0");
+
+    // The recommendation engine must not diagnose absence of evidence as a gap
+    const recommendation = determineRecommendation({ "Trigonometry": zeroAttempts });
+    assert(recommendation.decisionType !== "PREREQUISITE_GAP", "0 attempts never triggers PREREQUISITE_GAP decision");
+    assert(recommendation.actionType !== "REPAIR_PREREQUISITE", "0 attempts never triggers REPAIR_PREREQUISITE action");
+
+    // UNKNOWN_SKILL policy also protects this boundary
+    assert(UNKNOWN_SKILL.policy.allowedAsWeakTopic === false, "UNKNOWN skill cannot be classified as a weak topic");
 
     passedTests++;
   }
