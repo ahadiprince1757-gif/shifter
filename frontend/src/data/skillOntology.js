@@ -1,12 +1,17 @@
 /**
  * TIXAR LEARNING INTELLIGENCE SYSTEM — PHASE P1-A
- * Canonical Skill Ontology & Governance Engine (Client Module)
- * 
+ * Canonical Skill Ontology & Governance Engine (Client Module — ESM)
+ *
  * Invariants: Tixar Intelligence Law (Codebase Constitution)
  * - Never infer more certainty than the evidence supports.
  * - Always remain capable of saying: "I don't know yet."
  * - Ontology versioning preserves historical interpretation integrity.
  * - UNKNOWN_SKILL is never used for root-cause diagnosis or mastery claims.
+ *
+ * P1-B separation of concerns:
+ * - This file defines WHAT SKILLS EXIST (metadata, hierarchy, cognitive expectations).
+ * - HOW SKILLS CONNECT is defined exclusively in skillGraph.js.
+ * - relationships: [] is kept as a structural placeholder but is not the canonical source.
  */
 
 export const ONTOLOGY_VERSION = "1.0.0";
@@ -52,7 +57,7 @@ export const UNKNOWN_SKILL = Object.freeze({
   subjectId: null,
   strandId: null,
   subStrandId: null,
-  relationships: [],
+  relationships: [], // Graph edges are canonical in skillGraph.js — not here
   cognitiveExpectations: [],
   status: "ACTIVE",
   difficulty: null,
@@ -70,7 +75,9 @@ export const UNKNOWN_SKILL = Object.freeze({
 
 /**
  * Core Canonical Skill Registry (v1.0.0)
- * Structured hierarchy: Subject -> Strand -> Sub-Strand (Topic) -> Skill
+ *
+ * NOTE: relationships: [] fields are intentionally empty.
+ * All graph edges between skills are defined in skillGraph.js.
  */
 export const CORE_SKILL_REGISTRY = {
   // --- NUMBERS & OPERATIONS ---
@@ -82,7 +89,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "numbers",
     subStrandId: "integers",
-    relationships: [],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["PROCEDURAL", "APPLICATION"],
     status: "ACTIVE",
     difficulty: null,
@@ -96,9 +103,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "numbers",
     subStrandId: "fractions_decimals",
-    relationships: [
-      { skillId: "math.numbers.integers.signed_arithmetic", relationship: "REQUIRES" }
-    ],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["PROCEDURAL"],
     status: "ACTIVE",
     difficulty: null,
@@ -112,9 +117,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "numbers",
     subStrandId: "fractions_decimals",
-    relationships: [
-      { skillId: "math.numbers.integers.signed_arithmetic", relationship: "REQUIRES" }
-    ],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["PROCEDURAL"],
     status: "ACTIVE",
     difficulty: null,
@@ -130,9 +133,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "algebra",
     subStrandId: "linear_equations",
-    relationships: [
-      { skillId: "math.numbers.integers.signed_arithmetic", relationship: "REQUIRES" }
-    ],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["PROCEDURAL"],
     status: "ACTIVE",
     difficulty: null,
@@ -146,10 +147,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "algebra",
     subStrandId: "linear_equations",
-    relationships: [
-      { skillId: "math.algebra.linear_equations.expansion", relationship: "REQUIRES" },
-      { skillId: "math.numbers.integers.signed_arithmetic", relationship: "REQUIRES" }
-    ],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["PROCEDURAL", "APPLICATION"],
     status: "ACTIVE",
     difficulty: null,
@@ -163,10 +161,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "algebra",
     subStrandId: "quadratic_equations",
-    relationships: [
-      { skillId: "math.algebra.linear_equations.expansion", relationship: "REQUIRES" },
-      { skillId: "math.numbers.integers.signed_arithmetic", relationship: "REQUIRES" }
-    ],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["PROCEDURAL", "APPLICATION"],
     status: "ACTIVE",
     difficulty: null,
@@ -180,10 +175,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "algebra",
     subStrandId: "quadratic_equations",
-    relationships: [
-      { skillId: "math.algebra.quadratic_equations.factorisation", relationship: "REQUIRES" },
-      { skillId: "math.numbers.fractions.addition_subtraction", relationship: "SUPPORTS" }
-    ],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["PROCEDURAL"],
     status: "ACTIVE",
     difficulty: null,
@@ -197,10 +189,7 @@ export const CORE_SKILL_REGISTRY = {
     subjectId: "math",
     strandId: "algebra",
     subStrandId: "quadratic_equations",
-    relationships: [
-      { skillId: "math.algebra.quadratic_equations.completing_square", relationship: "PRECEDES" },
-      { skillId: "math.numbers.integers.signed_arithmetic", relationship: "REQUIRES" }
-    ],
+    relationships: [], // Graph edges are canonical in skillGraph.js — not here
     cognitiveExpectations: ["APPLICATION", "TRANSFER"],
     status: "ACTIVE",
     difficulty: null,
@@ -209,12 +198,14 @@ export const CORE_SKILL_REGISTRY = {
 };
 
 /**
- * Governance: Strict Skill Ontology Graph Validator
+ * Governance: Skill Ontology Structural Validator
+ *
+ * Validates skill identity, metadata completeness, and hierarchy consistency.
+ * Does NOT validate graph edges — that is validateSkillGraph()'s responsibility.
  */
 export function validateSkillOntology(registry = CORE_SKILL_REGISTRY) {
   const errors = [];
   const warnings = [];
-  const skillIds = new Set(Object.keys(registry));
 
   for (const [id, skill] of Object.entries(registry)) {
     if (skill.id !== id) {
@@ -233,57 +224,40 @@ export function validateSkillOntology(registry = CORE_SKILL_REGISTRY) {
       warnings.push(`Skill "${id}" has non-null difficulty (${skill.difficulty}). Invariant: difficulty should remain null until empirical calibration.`);
     }
 
-    if (Array.isArray(skill.relationships)) {
-      for (const rel of skill.relationships) {
-        if (!skillIds.has(rel.skillId)) {
-          errors.push(`Broken reference: Skill "${id}" references unknown prerequisite "${rel.skillId}"`);
-        }
-        if (!Object.values(RELATIONSHIP_TYPES).includes(rel.relationship)) {
-          errors.push(`Invalid relationship type "${rel.relationship}" on skill "${id}"`);
-        }
-      }
+    if (!skill.ontologyVersion) {
+      errors.push(`Skill "${id}" is missing ontologyVersion`);
     }
   }
 
+  // Cycle detection on inline relationships (if present)
+  const skillIds = new Set(Object.keys(registry));
   const visited = new Set();
-  const recursionStack = new Set();
+  const recStack = new Set();
 
-  function checkCycle(currId, path = []) {
-    visited.add(currId);
-    recursionStack.add(currId);
-
-    const skill = registry[currId];
+  function detectCycle(skillId, path = []) {
+    visited.add(skillId);
+    recStack.add(skillId);
+    const skill = registry[skillId];
     if (skill && Array.isArray(skill.relationships)) {
       for (const rel of skill.relationships) {
-        if (rel.relationship === RELATIONSHIP_TYPES.REQUIRES || rel.relationship === RELATIONSHIP_TYPES.PRECEDES) {
-          const neighbor = rel.skillId;
-          if (!visited.has(neighbor)) {
-            if (checkCycle(neighbor, [...path, currId])) {
-              return true;
-            }
-          } else if (recursionStack.has(neighbor)) {
-            errors.push(`Circular prerequisite dependency detected: ${[...path, currId, neighbor].join(' -> ')}`);
-            return true;
-          }
+        const targetId = rel.skillId;
+        if (!visited.has(targetId)) {
+          detectCycle(targetId, [...path, skillId]);
+        } else if (recStack.has(targetId)) {
+          errors.push(`Circular dependency detected in skill ontology: ${[...path, skillId, targetId].join(' -> ')}`);
         }
       }
     }
-
-    recursionStack.delete(currId);
-    return false;
+    recStack.delete(skillId);
   }
 
-  for (const id of skillIds) {
-    if (!visited.has(id)) {
-      checkCycle(id);
+  for (const skillId of skillIds) {
+    if (!visited.has(skillId)) {
+      detectCycle(skillId);
     }
   }
 
-  return {
-    valid: errors.length === 0,
-    errors,
-    warnings
-  };
+  return { valid: errors.length === 0, errors, warnings };
 }
 
 export function getSkillById(id, registry = CORE_SKILL_REGISTRY) {

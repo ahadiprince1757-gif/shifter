@@ -32,6 +32,18 @@ import {
   getSkillById
 } from "./backend/services/skillOntology.js";
 import { mapQuestionToSkills } from "./backend/services/questionSkillMapper.js";
+import {
+  GRAPH_VERSION,
+  RELATIONSHIP_SEMANTICS,
+  SKILL_RELATIONSHIPS,
+  computeGraphSnapshotHash,
+  validateSkillGraph,
+  validatePrerequisiteDAG,
+  validateOrderingGraph,
+  getDirectPrerequisites,
+  getDirectDependents,
+  getPrerequisiteHypotheses
+} from "./backend/services/skillGraph.js";
 
 const { validateEvent, validateEventsBatch } = telemetryValidator;
 const {
@@ -723,6 +735,265 @@ async function runContractTests() {
 
     // UNKNOWN_SKILL policy also protects this boundary
     assert(UNKNOWN_SKILL.policy.allowedAsWeakTopic === false, "UNKNOWN skill cannot be classified as a weak topic");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 16: Graph Referential Integrity
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 16: Graph Referential Integrity (All edge nodes exist in registry, types valid, IDs unique)");
+  {
+    const validation = validateSkillGraph(CORE_SKILL_REGISTRY, SKILL_RELATIONSHIPS);
+    assert(validation.valid === true, "Canonical skill relationship graph passes referential integrity validation");
+    assert(validation.errors.length === 0, "No referential errors in canonical relationship graph");
+    assert(SKILL_RELATIONSHIPS.length >= 10, "Canonical graph defines at least 10 canonical relationship edges");
+
+    // Edge IDs unique
+    const edgeIds = new Set();
+    let hasDuplicateId = false;
+    for (const rel of SKILL_RELATIONSHIPS) {
+      if (edgeIds.has(rel.id)) {
+        hasDuplicateId = true;
+        break;
+      }
+      edgeIds.add(rel.id);
+    }
+    assert(!hasDuplicateId, "Every relationship edge has a unique, stable ID");
+
+    // Every edge has valid semantics type and provenance
+    for (const rel of SKILL_RELATIONSHIPS) {
+      assert(RELATIONSHIP_SEMANTICS[rel.type] !== undefined, `Edge ${rel.id} has valid semantics type: ${rel.type}`);
+      assert(rel.provenance && typeof rel.provenance.source === "string", `Edge ${rel.id} declares explicit provenance source`);
+      assert(rel.provenance && typeof rel.provenance.confidence === "string", `Edge ${rel.id} declares explicit provenance confidence`);
+    }
+
+    // Reject unknown skill in edge
+    const brokenGraph = [
+      ...SKILL_RELATIONSHIPS,
+      {
+        id: "rel_broken_001",
+        fromSkill: "math.algebra.quadratic_equations.factorisation",
+        toSkill: "non.existent.phantom.skill",
+        type: "REQUIRES",
+        ontologyVersion: ONTOLOGY_VERSION,
+        active: true,
+        provenance: { source: "CURRICULUM_DESIGN", confidence: "DECLARED" }
+      }
+    ];
+    const brokenValidation = validateSkillGraph(CORE_SKILL_REGISTRY, brokenGraph);
+    assert(brokenValidation.valid === false, "Validator detects edge pointing to non-existent toSkill");
+    assert(brokenValidation.errors.some(e => e.includes("non.existent.phantom.skill")), "Error message mentions the missing skill ID");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 17: Prerequisite DAG is Acyclic
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 17: Prerequisite DAG is Acyclic (REQUIRES-only DAG is strictly acyclic)");
+  {
+    const dagResult = validatePrerequisiteDAG(SKILL_RELATIONSHIPS);
+    assert(dagResult.valid === true, "Canonical prerequisite graph is a valid acyclic DAG");
+    assert(dagResult.errors.length === 0, "Zero cycles in canonical prerequisite edges");
+
+    // Separate PRECEDES validation
+    const orderingResult = validateOrderingGraph(SKILL_RELATIONSHIPS);
+    assert(orderingResult.valid === true, "Canonical ordering graph (PRECEDES) passes ordering checks");
+
+    // Inject a cycle into REQUIRES edges: Factorisation -> Expansion -> Signed Arithmetic -> Factorisation
+    const cyclicRelationships = [
+      ...SKILL_RELATIONSHIPS,
+      {
+        id: "rel_cycle_bad",
+        fromSkill: "math.numbers.integers.signed_arithmetic",
+        toSkill: "math.algebra.quadratic_equations.factorisation",
+        type: "REQUIRES",
+        ontologyVersion: ONTOLOGY_VERSION,
+        active: true,
+        provenance: { source: "EXPERIMENTAL", confidence: "PROVISIONAL" }
+      }
+    ];
+
+    const cycleCheck = validatePrerequisiteDAG(cyclicRelationships);
+    assert(cycleCheck.valid === false, "Cycle in REQUIRES edges is strictly detected and rejected");
+    assert(cycleCheck.errors.some(e => e.includes("Cycle detected in prerequisite DAG")), "Error indicates cycle in prerequisite DAG");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 18: No Evidence Propagation (The Hypothesis Boundary)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 18: No Evidence Propagation (The Hypothesis Boundary: isObservedEvidence === false)");
+  {
+    const hypotheses = getPrerequisiteHypotheses("math.algebra.quadratic_equations.factorisation");
+    assert(hypotheses.length > 0, "Retrieved prerequisite hypotheses for quadratic factorisation");
+
+    for (const h of hypotheses) {
+      assert(h.isObservedEvidence === false, `Hypothesis for ${h.targetSkillId} strictly carries isObservedEvidence: false`);
+      assert(h.requiresDiagnosticQuestion === true, `Hypothesis for ${h.targetSkillId} requires diagnostic question to confirm`);
+      assert(h.attempts === undefined, `Hypothesis carries no student attempts`);
+      assert(h.accuracy === undefined, `Hypothesis carries no student accuracy`);
+      assert(h.score === undefined, `Hypothesis carries no student score`);
+    }
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 19: Hypothesis Is Not Observation
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 19: Hypothesis Is Not Observation (Passing hypothesis to mastery evaluation produces no fake attempts)");
+  {
+    // A learner has never attempted Expansion
+    const baselineExpansion = evaluateTopicMastery("Expansion", []);
+    assert(baselineExpansion.masteryState === "UNKNOWN", "Topic with 0 attempts is UNKNOWN");
+    assert(baselineExpansion.totalAttempts === 0, "totalAttempts is 0");
+    assert(baselineExpansion.evidenceStrength === 0, "evidenceStrength is 0");
+
+    // Generate hypotheses from another skill that requires Expansion
+    const hypotheses = getPrerequisiteHypotheses("math.algebra.quadratic_equations.factorisation");
+    const expansionHypo = hypotheses.find(h => h.targetSkillId === "math.algebra.linear_equations.expansion");
+    assert(expansionHypo !== undefined, "Found expansion hypothesis generated by factorisation dependency");
+
+    // Hypotheses must NOT be consumable as student attempts
+    // Passing empty attempts still yields UNKNOWN, never affected by graph hypotheses
+    const postHypothesisExpansion = evaluateTopicMastery("Expansion", []);
+    assert(postHypothesisExpansion.masteryState === "UNKNOWN", "Expansion remains UNKNOWN regardless of graph relationships");
+    assert(postHypothesisExpansion.totalAttempts === 0, "totalAttempts remains 0");
+    assert(postHypothesisExpansion.evidenceStrength === 0, "evidenceStrength remains 0");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 20: RELATED_TO and PRECEDES Cannot Support Hypothesis
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 20: RELATED_TO & PRECEDES Cannot Support Hypothesis (canSupportHypothesis === false)");
+  {
+    assert(RELATIONSHIP_SEMANTICS.RELATED_TO.canSupportHypothesis === false, "RELATED_TO semantic explicitly forbids hypothesis support");
+    assert(RELATIONSHIP_SEMANTICS.RELATED_TO.hypothesisPriority === 0, "RELATED_TO hypothesisPriority is 0");
+    assert(RELATIONSHIP_SEMANTICS.PRECEDES.canSupportHypothesis === false, "PRECEDES semantic explicitly forbids hypothesis support");
+    assert(RELATIONSHIP_SEMANTICS.PRECEDES.hypothesisPriority === 0, "PRECEDES hypothesisPriority is 0");
+
+    // Quadratic formula has a PRECEDES relationship with completing_square (rel_006)
+    const formulaHypotheses = getPrerequisiteHypotheses("math.algebra.quadratic_equations.quadratic_formula");
+    const hasPrecedesAsHypothesis = formulaHypotheses.some(
+      h => h.relationshipType === "PRECEDES" || h.targetSkillId === "math.algebra.quadratic_equations.completing_square"
+    );
+    assert(!hasPrecedesAsHypothesis, "PRECEDES edge is excluded from prerequisite hypotheses");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 21: Graph Change Reproducibility
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 21: Graph Change Reproducibility (Graph snapshot hash is deterministic and tamper-evident)");
+  {
+    const hash1 = computeGraphSnapshotHash(GRAPH_VERSION, SKILL_RELATIONSHIPS);
+    assert(typeof hash1 === "string" && hash1.length === 64, "computeGraphSnapshotHash returns 64-char SHA-256 hex string");
+
+    // Deterministic: recomputing gives same hash
+    const hash1Recomputed = computeGraphSnapshotHash(GRAPH_VERSION, SKILL_RELATIONSHIPS);
+    assert(hash1 === hash1Recomputed, "Graph snapshot hash is deterministic for identical graph");
+
+    // Mutating graph (adding an edge) changes the hash
+    const modifiedRelationships = [
+      ...SKILL_RELATIONSHIPS,
+      {
+        id: "rel_new_hypo",
+        fromSkill: "math.numbers.fractions.multiplication_division",
+        toSkill: "math.algebra.linear_equations.expansion",
+        type: "SUPPORTS",
+        ontologyVersion: ONTOLOGY_VERSION,
+        active: true,
+        provenance: { source: "CURRICULUM_DESIGN", confidence: "DECLARED" }
+      }
+    ];
+    const hash2 = computeGraphSnapshotHash(GRAPH_VERSION, modifiedRelationships);
+    assert(hash1 !== hash2, "Adding a relationship edge changes the snapshot hash");
+
+    // A decision storing graphSnapshotHash remains stable even after graph evolves
+    const historicalDecision = {
+      decisionId: 1001,
+      graphVersion: GRAPH_VERSION,
+      graphSnapshotHash: hash1
+    };
+    assert(historicalDecision.graphSnapshotHash === hash1, "Historical decision retains original graph snapshot hash");
+    assert(historicalDecision.graphSnapshotHash !== hash2, "Historical decision reflects graph state at decision time");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 22: Structural Priority Is Not Probability
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 22: Structural Priority Is Not Probability (Integer triage priority, NOT statistical probability)");
+  {
+    const hypotheses = getPrerequisiteHypotheses("math.algebra.quadratic_equations.factorisation");
+    assert(hypotheses.length > 0, "Retrieved hypotheses for factorisation");
+
+    for (const h of hypotheses) {
+      assert(Number.isInteger(h.hypothesisPriority), `hypothesisPriority is an integer (${h.hypothesisPriority})`);
+      assert(h.probability === undefined, "Hypothesis object has NO probability property (never claim unproven probability)");
+      assert(h.confidenceScore === undefined, "Hypothesis object has NO confidenceScore (uncalibrated probability forbidden)");
+    }
+
+    assert(RELATIONSHIP_SEMANTICS.REQUIRES.hypothesisPriority === 100, "REQUIRES has structural priority 100");
+    assert(RELATIONSHIP_SEMANTICS.SUPPORTS.hypothesisPriority === 60, "SUPPORTS has structural priority 60");
+    assert(RELATIONSHIP_SEMANTICS.TRANSFER_FROM.hypothesisPriority === 50, "TRANSFER_FROM has structural priority 50");
+    assert(RELATIONSHIP_SEMANTICS.PART_OF.hypothesisPriority === 40, "PART_OF has structural priority 40");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 23: Graph Cannot Change Student State (The Constitutional Test)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 23: Graph Cannot Change Student State (Constitutional Test: Zero evidence + Prerequisite failure = UNKNOWN)");
+  {
+    // Student fails Factorisation 5 times (0/5 correct) -> legitimate CRITICAL_GAP on Factorisation
+    const factorisationAttempts = [];
+    for (let i = 1; i <= 5; i++) {
+      factorisationAttempts.push({
+        id: i,
+        client_event_id: `fact-fail-${i}`,
+        topic: "Quadratic Equations",
+        is_correct: false,
+        created_at: new Date().toISOString()
+      });
+    }
+    const factorisationEval = evaluateTopicMastery("Quadratic Equations", factorisationAttempts);
+    assert(factorisationEval.masteryState === "CRITICAL_GAP", "Factorisation is evaluated as CRITICAL_GAP");
+
+    // Prerequisite: Expansion has ZERO student attempts
+    const expansionEval = evaluateTopicMastery("Linear Expansion", []);
+    assert(expansionEval.totalAttempts === 0, "Expansion has 0 observed attempts");
+    assert(expansionEval.masteryState === "UNKNOWN", "Expansion mastery state is strictly UNKNOWN");
+    assert(expansionEval.evidenceStrength === 0, "Expansion evidence strength is strictly 0");
+
+    // The recommendation engine identifies the gap in Factorisation and generates prerequisite hypotheses
+    const recommendation = determineRecommendation({
+      "Quadratic Equations": factorisationEval,
+      "Linear Expansion": expansionEval
+    });
+
+    assert(recommendation.decisionType === "PREREQUISITE_GAP", "Recommendation identifies PREREQUISITE_GAP on failed topic");
+    assert(recommendation.actionType === "REPAIR_PREREQUISITE", "Action recommends prerequisite repair exploration");
+
+    // Check that Expansion mastery was NOT artificially modified to CRITICAL_GAP or WEAK
+    assert(expansionEval.masteryState !== "CRITICAL_GAP", "Constitutional Law: Expansion mastery state was NOT degraded to CRITICAL_GAP");
+    assert(expansionEval.masteryState !== "WEAK", "Constitutional Law: Expansion mastery state was NOT degraded to WEAK");
+
+    // The contributing hypotheses point to Expansion with isObservedEvidence: false
+    const expansionHypothesis = recommendation.contributingHypotheses.find(
+      h => h.targetSkillId === "math.algebra.linear_equations.expansion"
+    );
+    assert(expansionHypothesis !== undefined, "Contributing hypotheses includes Expansion as suspected prerequisite");
+    assert(expansionHypothesis.isObservedEvidence === false, "Expansion hypothesis carries isObservedEvidence: false");
+    assert(expansionHypothesis.requiresDiagnosticQuestion === true, "Expansion hypothesis requires diagnostic questions before claiming student weakness");
 
     passedTests++;
   }

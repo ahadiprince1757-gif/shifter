@@ -18,6 +18,12 @@
 
 const crypto = require('crypto');
 const { ONTOLOGY_VERSION } = require('./skillOntology');
+const {
+  GRAPH_VERSION,
+  SKILL_RELATIONSHIPS,
+  getPrerequisiteHypotheses,
+  computeGraphSnapshotHash
+} = require('./skillGraph');
 
 const ENGINE_VERSION = '2.0.0';
 const RULE_VERSION = 1;
@@ -180,18 +186,45 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
     criticalGaps.sort((a, b) => a.accuracy - b.accuracy || b.totalAttempts - a.totalAttempts);
     const primaryGap = criticalGaps[0];
 
-    const contributingHypotheses = [
-      {
-        factor: "Prerequisite Concept Foundations",
-        evidenceWeight: 0.76,
-        status: "NEEDS_REPAIR"
-      },
-      {
-        factor: "Procedural Execution Steps",
-        evidenceWeight: 0.58,
-        status: "MONITOR"
+    // Map topic title to canonical skill coordinate if not directly provided
+    let targetSkillId = primaryGap.targetSkillId || primaryGap.skillId;
+    if (!targetSkillId) {
+      const titleLower = primaryGap.topicTitle.toLowerCase();
+      if (titleLower.includes('quadratic')) {
+        targetSkillId = 'math.algebra.quadratic_equations.factorisation';
+      } else if (titleLower.includes('expansion')) {
+        targetSkillId = 'math.algebra.linear_equations.expansion';
+      } else if (titleLower.includes('linear') && titleLower.includes('single')) {
+        targetSkillId = 'math.algebra.linear_equations.single_variable';
+      } else {
+        targetSkillId = primaryGap.topicTitle.toLowerCase().replace(/[^a-z0-9.]+/g, '_');
       }
-    ];
+    }
+
+    // Retrieve prerequisite hypotheses via Skill Relationship Graph (P1-B)
+    const graphHypotheses = getPrerequisiteHypotheses(targetSkillId, SKILL_RELATIONSHIPS);
+
+    // Enforce Hypothesis Boundary guard: Graph traversal NEVER produces observed evidence
+    if (graphHypotheses.some(h => h.isObservedEvidence !== false)) {
+      throw new Error('Hypothesis Boundary violated: graph hypothesis carries isObservedEvidence !== false');
+    }
+
+    const contributingHypotheses = graphHypotheses.length > 0
+      ? graphHypotheses
+      : [
+          {
+            type: "PREREQUISITE_HYPOTHESIS",
+            targetSkillId: "general_prerequisite",
+            relationshipType: "REQUIRES",
+            relationshipId: "rel_default",
+            hypothesisPriority: 50,
+            provenance: { source: "CURRICULUM_DESIGN", confidence: "DECLARED" },
+            factor: "Prerequisite Concept Foundations",
+            evidenceWeight: 50,
+            isObservedEvidence: false,
+            requiresDiagnosticQuestion: true
+          }
+        ];
 
     const evidenceRefs = primaryGap.attempts
       .map(a => a.client_event_id)
@@ -203,7 +236,7 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
       actionType: 'REPAIR_PREREQUISITE',
       targetTopicTitle: primaryGap.topicTitle,
       targetTopicId: null,
-      targetSkillId: primaryGap.topicTitle.toLowerCase().replace(/[^a-z0-9]+/g, '_'),
+      targetSkillId,
       evidenceStrength: primaryGap.evidenceStrength,
       confidenceLevel: primaryGap.confidenceLevel,
       masteryState: primaryGap.masteryState,
@@ -526,7 +559,9 @@ async function computeAndRecordDecision(supabase, userId, attempts = [], topics 
           engine_version: ENGINE_VERSION,
           rule_version: RULE_VERSION,
           schema_version: SCHEMA_VERSION,
-          ontology_version: ONTOLOGY_VERSION
+          ontology_version: ONTOLOGY_VERSION,
+          graph_version: GRAPH_VERSION,
+          graph_snapshot_hash: computeGraphSnapshotHash(GRAPH_VERSION, SKILL_RELATIONSHIPS)
         };
 
         const { data: inserted, error: insertErr } = await supabase
@@ -559,6 +594,8 @@ async function computeAndRecordDecision(supabase, userId, attempts = [], topics 
       ruleVersion: reusedDecision.rule_version || RULE_VERSION,
       schemaVersion: reusedDecision.schema_version || SCHEMA_VERSION,
       ontologyVersion: reusedDecision.ontology_version || ONTOLOGY_VERSION,
+      graphVersion: reusedDecision.graph_version || GRAPH_VERSION,
+      graphSnapshotHash: reusedDecision.graph_snapshot_hash || computeGraphSnapshotHash(GRAPH_VERSION, SKILL_RELATIONSHIPS),
       decisionType: reusedDecision.decision_type,
       actionType: reusedDecision.action_type,
       targetSkillId: reusedDecision.target_skill_id,
@@ -592,6 +629,8 @@ async function computeAndRecordDecision(supabase, userId, attempts = [], topics 
     ruleVersion: RULE_VERSION,
     schemaVersion: SCHEMA_VERSION,
     ontologyVersion: ONTOLOGY_VERSION,
+    graphVersion: GRAPH_VERSION,
+    graphSnapshotHash: computeGraphSnapshotHash(GRAPH_VERSION, SKILL_RELATIONSHIPS),
     decisionType: rawDecision.decisionType,
     actionType: rawDecision.actionType,
     targetSkillId: rawDecision.targetSkillId,
@@ -615,6 +654,8 @@ module.exports = {
   ENGINE_VERSION,
   RULE_VERSION,
   SCHEMA_VERSION,
+  GRAPH_VERSION,
+  computeGraphSnapshotHash,
   calculateEvidenceStrength,
   evaluateTopicMastery,
   determineRecommendation,
