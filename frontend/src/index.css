@@ -10426,6 +10426,387 @@ html.dark-mode .topic-filter-v2-pills {
 }
 
 
+/* ============================================================
+   ADASH — Minimalist Analytics Dashboard
+   Design contract:
+   - Mobile-first. Every tap target ≥ 48px tall.
+   - Hierarchy: hero → single action → signals → queue → depth
+   - Color carries meaning. No decorative color.
+   - No more than 3 items in any list on-screen at once.
+   - Text only says what it IS, never what the learner should FEEL.
+   ============================================================ */
+
+.adash {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 6rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", Roboto, sans-serif;
+  color: var(--t, #0f172a);
+}
+
+/* ── Hero ─────────────────────────────────────────────────── */
+.adash-hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.4rem 1.2rem 1.2rem;
+  background: var(--sur, #ffffff);
+  border: 1px solid var(--bd, #e2e8f0);
+  border-radius: 20px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+}
+
+.adash-hero-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.adash-hero-right {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Status pill — color-coded, single word */
+.adash-status-pill {
+  display: inline-block;
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  width: fit-content;
+}
+
+/* The number — dominant, no competing elements */
+.adash-big-num {
+  font-size: 3.25rem;
+  font-weight: 900;
+  color: var(--t, #0f172a);
+  line-height: 1;
+  margin: 0;
+  letter-spacing: -0.03em;
+}
+
+.adash-big-pct {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--t2, #64748b);
+}
+
+.adash-hero-sub {
+  font-size: 0.82rem;
+  color: var(--t2, #64748b);
+  margin: 0;
+  font-weight: 500;
+}
+
+/* ── Next action card ─────────────────────────────────────── */
+/*
+   A card is a button. One card. One action.
+   No sub-labels. No authority badges. No "why am I seeing this".
+   Tap it and go.
+*/
+.adash-next-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.1rem 1.2rem;
+  background: #1d6bf3;
+  border-radius: 18px;
+  cursor: pointer;
+  border: none;
+  text-align: left;
+  box-shadow: 0 6px 20px rgba(29, 107, 243, 0.28);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.adash-next-card:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 10px rgba(29, 107, 243, 0.2);
+}
+
+.adash-next-eyebrow {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.65);
+}
+
+.adash-next-topic {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+}
+
+.adash-next-footer {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.1rem;
+}
+
+.adash-next-action-label {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: rgba(255,255,255,0.85);
+}
+
+/* Tiny verified dot — visible but silent */
+.adash-verified-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.5);
+  flex-shrink: 0;
+}
+
+/* ── Signals row ─────────────────────────────────────────── */
+/*
+   Three tappable cells. Number is the signal. Label is the noun.
+   Color = state, not decoration.
+*/
+.adash-signals {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+}
+
+.adash-signal-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  padding: 1rem 0.5rem;
+  background: var(--sur, #ffffff);
+  border: 1px solid var(--bd, #e2e8f0);
+  border-radius: 16px;
+  cursor: pointer;
+  min-height: 80px;
+  transition: transform 0.15s ease, border-color 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.adash-signal-card:active {
+  transform: scale(0.96);
+}
+
+.adash-signal-num {
+  font-size: 1.85rem;
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+.adash-signal-lbl {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--t2, #64748b);
+  text-align: center;
+}
+
+/* ── Priority queue ──────────────────────────────────────── */
+/*
+   Items are buttons. Bar does the talking.
+   Percentage is the only number that matters.
+   Max 3 — never a scrolling list.
+*/
+.adash-queue {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  background: var(--sur, #ffffff);
+  border: 1px solid var(--bd, #e2e8f0);
+  border-radius: 18px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+}
+
+.adash-section-label {
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  color: var(--t2, #94a3b8);
+  margin-bottom: 0.5rem;
+}
+
+.adash-queue-item {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  padding: 0.65rem 0;
+  cursor: pointer;
+  text-align: left;
+  border-bottom: 1px solid var(--bd, #f1f5f9);
+  -webkit-tap-highlight-color: transparent;
+  transition: opacity 0.15s ease;
+}
+
+.adash-queue-item:last-of-type {
+  border-bottom: none;
+}
+
+.adash-queue-item:active {
+  opacity: 0.7;
+}
+
+.adash-queue-item-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.adash-queue-title {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--t, #0f172a);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 70%;
+}
+
+.adash-queue-pct {
+  font-size: 0.82rem;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.adash-queue-more {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1d6bf3;
+  padding: 0.5rem 0 0;
+  text-align: left;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ── Cognitive bars ──────────────────────────────────────── */
+/*
+   Five bars represent the five evidence channels.
+   No paragraph of explanation. Height is progress.
+   Hover/tap reveals the label via title attribute.
+*/
+.adash-cognitive {
+  background: var(--sur, #ffffff);
+  border: 1px solid var(--bd, #e2e8f0);
+  border-radius: 18px;
+  padding: 1rem 1.1rem 0.75rem;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+}
+
+.adash-cognitive-axis {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.adash-cognitive-tick {
+  flex: 1;
+  text-align: center;
+  font-size: 0.62rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  transition: color 0.3s ease;
+}
+
+/* ── CTA buttons ─────────────────────────────────────────── */
+.adash-cta {
+  padding: 0.9rem 1.5rem;
+  border-radius: 14px;
+  border: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, opacity 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.adash-cta:active {
+  transform: scale(0.97);
+}
+
+.adash-cta-primary {
+  background: #1d6bf3;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(29, 107, 243, 0.28);
+}
+
+.adash-cta-full {
+  width: 100%;
+  text-align: center;
+}
+
+/* ── Error / loading states ──────────────────────────────── */
+.adash-skeleton {
+  padding-top: 1rem;
+}
+
+.adash-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 3rem 1rem;
+  text-align: center;
+  color: var(--t2, #64748b);
+  font-size: 0.9rem;
+}
+
+.adash-error button {
+  background: none;
+  border: none;
+  color: #1d6bf3;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+/* ── Dark mode ───────────────────────────────────────────── */
+html.dark-mode .adash-hero,
+html.dark-mode .adash-queue,
+html.dark-mode .adash-cognitive,
+html.dark-mode .adash-signal-card {
+  background: var(--sur, #1e293b);
+  border-color: var(--bd, #334155);
+}
+
+html.dark-mode .adash-next-card {
+  background: #1557d4;
+  box-shadow: 0 6px 20px rgba(21, 87, 212, 0.4);
+}
+
+html.dark-mode .adash-queue-item {
+  border-color: var(--bd, #1e293b);
+}
+
+html.dark-mode .adash-big-num {
+  color: var(--t, #f1f5f9);
+}
+
+
+
 
 
 
