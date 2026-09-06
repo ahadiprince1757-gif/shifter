@@ -1,17 +1,20 @@
 /**
- * TIXAR LEARNING INTELLIGENCE SYSTEM — PHASE P2-A (HARDENED)
+ * TIXAR LEARNING INTELLIGENCE SYSTEM — PHASE P2-A.1 (CONSTITUTIONALLY HARDENED)
  * Evidence Strength Model & Evidence Qualification Engine
  * 
  * Constitutional Invariants (P2 Constitution):
  * 1. Calibration may change how Tixar interprets evidence, but it may never change what evidence actually occurred.
  * 2. Performance quality may strengthen evidence WITHIN an evidence level; it cannot promote evidence to a higher level (Law of Non-Promotion).
- * 3. Strict Boolean Normalization: Coercion rules (e.g. Boolean("false") === true) are prohibited; false is false.
- * 4. Temporal Calibration Integrity (Law 14): itemDifficultyAtObservation is temporally scoped; future calibrations cannot be retroactively injected.
- * 5. UNKNOWN Evidence & UNKNOWN_SKILL Non-Inference: Preserves provenance, but inferenceEligible: false and evidenceStrength: null.
- * 6. Stable Identity Determinism: Canonical attempts require stable identifiers; Date.now() generation is forbidden.
- * 7. Multi-Skill Deduplication & Conservation: 1 canonical attempt = 1 canonical attempt. Duplicate skill attributions are merged to at most one contribution per skill.
+ * 3. Strict Correctness Normalization: Boolean normalization throws on malformed telemetry; "false" is never coerced to true.
+ * 4. Temporal Calibration Integrity (Law 14): itemDifficultyAtObservation is temporally scoped; future calibrations cannot overwrite historical observations.
+ * 5. UNKNOWN Evidence & UNKNOWN_SKILL Non-Inference: Preserves observation provenance, but sets inferenceEligible: false and evidenceStrength: null.
+ * 6. Stable Identity Determinism: Canonical attempts require stable identifiers; Date.now() generation inside inference is strictly forbidden.
+ * 7. Multi-Skill Attribution Law (Model A): Canonical attempt conservation and evidential contribution conservation are distinct concepts.
+ *    A single attempt is conserved as 1 observation, but may inform multiple skill hypotheses independently.
  * 8. Calibration Policy Governance: minDifficultyObservations (30) is governed by CALIBRATION_POLICY.
  * 9. Attribution Confidence Independence: Attribution confidence qualifies the mapping, never student performance evidence strength.
+ * 10. Qualification vs. Interpretation Boundary: evidenceStrength is strictly interpretive strength under CONFIGURED_RULE_MODEL v1.0.0;
+ *     it preserves itemDifficultyAtObservation as an independent dimension for Milestone P2-C (Mastery Estimator).
  */
 
 const crypto = require('crypto');
@@ -58,6 +61,7 @@ const SKILL_ROLE_WEIGHTS = Object.freeze({
 
 /**
  * Normalizes boolean evidence values, preventing JavaScript Boolean("false") coercion bugs.
+ * Soft fallback conversion for non-strict contexts.
  * @param {any} value Input truth value
  * @param {boolean} fallback Default fallback if indeterminate
  * @returns {boolean}
@@ -71,6 +75,42 @@ function normalizeBoolean(value, fallback = false) {
     if (['false', '0', ''].includes(normalized)) return false;
   }
   return fallback;
+}
+
+/**
+ * Strictly normalizes correctness telemetry.
+ * Throws a descriptive error if the value is not a recognizable boolean or boolean equivalent.
+ * 
+ * @param {any} value Input value
+ * @returns {boolean} Strict boolean
+ * @throws {Error} If value cannot be deterministically normalized to boolean
+ */
+function normalizeCorrectness(value) {
+  if (value === true || value === false) return value;
+  if (value === 1) return true;
+  if (value === 0) return false;
+  if (typeof value === 'string') {
+    const normalized = value.trim().toLowerCase();
+    if (normalized === 'true' || normalized === '1') return true;
+    if (normalized === 'false' || normalized === '0') return false;
+  }
+  throw new Error('[evidenceModel] Correctness must be boolean');
+}
+
+/**
+ * Strictly normalizes item difficulty to finite numeric in [0.0, 1.0] or null.
+ * 
+ * @param {any} value Raw difficulty value
+ * @returns {number|null} Normalized difficulty or null
+ * @throws {Error} If value is invalid numeric or outside [0, 1]
+ */
+function normalizeDifficulty(value) {
+  if (value === null || value === undefined) return null;
+  const numeric = Number(value);
+  if (!Number.isFinite(numeric) || numeric < 0 || numeric > 1) {
+    throw new Error('[evidenceModel] Invalid item difficulty');
+  }
+  return Math.round(numeric * 100) / 100;
 }
 
 function canonicalize(obj) {
@@ -163,6 +203,51 @@ function calculateNoveltyFactor(attemptOrdinal = 1) {
 }
 
 /**
+ * Calculates detailed empirical item difficulty metrics separating observed failure rate from calibrated difficulty.
+ * Filters malformed or corrupted observations.
+ * 
+ * @param {Array<Object>} itemObservations Array of student attempts on this item
+ * @returns {Object} { observedFailureRate, difficulty, eligibleObservationCount, totalObservationCount }
+ */
+function calculateItemDifficultyMetrics(itemObservations = []) {
+  if (!Array.isArray(itemObservations)) {
+    return {
+      observedFailureRate: null,
+      difficulty: null,
+      eligibleObservationCount: 0,
+      totalObservationCount: 0
+    };
+  }
+
+  const total = itemObservations.length;
+  let eligibleCount = 0;
+  let incorrectCount = 0;
+
+  for (const obs of itemObservations) {
+    if (!obs || typeof obs !== 'object') continue;
+    const rawVal = obs.is_correct !== undefined ? obs.is_correct : (obs.correct !== undefined ? obs.correct : undefined);
+    if (rawVal === undefined || rawVal === null) continue;
+    try {
+      const isCorrect = normalizeCorrectness(rawVal);
+      eligibleCount++;
+      if (!isCorrect) incorrectCount++;
+    } catch {
+      // Malformed or corrupted telemetry is excluded from population calibration
+    }
+  }
+
+  const failureRate = eligibleCount > 0 ? Math.round((incorrectCount / eligibleCount) * 100) / 100 : null;
+  const difficulty = eligibleCount >= CALIBRATION_POLICY.minDifficultyObservations ? failureRate : null;
+
+  return {
+    observedFailureRate: failureRate,
+    difficulty,
+    eligibleObservationCount: eligibleCount,
+    totalObservationCount: total
+  };
+}
+
+/**
  * Calibrates item difficulty empirically across a population dataset.
  * Governed strictly by CALIBRATION_POLICY.minDifficultyObservations.
  * Invariant: N < 30 strictly yields null (null-protection).
@@ -172,31 +257,20 @@ function calculateNoveltyFactor(attemptOrdinal = 1) {
  * @returns {number|null} Calibrated empirical failure rate in [0, 1] or null
  */
 function calibrateItemDifficulty(itemObservations = []) {
-  if (!Array.isArray(itemObservations) || itemObservations.length < CALIBRATION_POLICY.minDifficultyObservations) {
-    return null;
-  }
-
-  const total = itemObservations.length;
-  const incorrectCount = itemObservations.filter(obs => {
-    const rawVal = obs.is_correct !== undefined ? obs.is_correct : (obs.correct !== undefined ? obs.correct : false);
-    return !normalizeBoolean(rawVal, false);
-  }).length;
-
-  const empiricalFailureRate = incorrectCount / total;
-  return Math.round(empiricalFailureRate * 100) / 100;
+  return calculateItemDifficultyMetrics(itemObservations).difficulty;
 }
 
 /**
  * Transforms an immutable canonical attempt into a qualified EvidenceContribution.
  * 
- * Constitutional Protections Enforced:
- * - Stable Identity: Requires client_event_id or id; never invents IDs with Date.now().
- * - Boolean Normalization: Uses normalizeBoolean to guard against "false" === true.
- * - Non-Promotion: Performance quality strengthens evidence WITHIN level, never promotes level.
- * - Independence & Novelty: Hint/novelty factors discount strength without modifying correctness.
- * - Non-Inference on UNKNOWN: Unknown level or UNKNOWN_SKILL produces inferenceEligible: false & evidenceStrength: null.
- * - Temporal Scoping: itemDifficultyAtObservation comes strictly from attempt or observation-time calibration.
- * - Attribution Confidence: Documented as metadata; not an automatic multiplier of performance strength.
+ * Epistemic Layering (P2-A.1):
+ * - identity: Stable identification (attemptId, questionId, skillId).
+ * - attribution: Versioned skill mapping (role, attributionWeight, confidence).
+ * - observation: Raw student telemetry (correct, hintsUsed, solutionRevealed, assistanceLevel, attemptOrdinal).
+ * - classification: Declared cognitive level and source (evidenceLevel, evidenceLevelSource).
+ * - qualification: Multi-factor evidential qualification (independence, novelty, strengthModel, evidenceStrength).
+ * - eligibility: Explicit inferential gates (countsAsObservedEvidence, countsTowardSkillMastery).
+ * - provenance: Calibration and ontology hashes.
  * 
  * @param {Object} canonicalAttempt Immutable observation
  * @param {Object} skillAttribution Skill mapping containing role, evidenceLevel, confidence
@@ -208,21 +282,22 @@ function qualifyEvidenceContribution(canonicalAttempt = {}, skillAttribution = {
     throw new Error('[evidenceModel] canonicalAttempt is required');
   }
 
-  // 1. Stable Identity Check (Invariant: Date.now() generation is forbidden)
+  // 1. Stable Identity Check (Invariant: Date.now() generation is forbidden in inference)
   const attemptId = canonicalAttempt.client_event_id || canonicalAttempt.id;
   if (!attemptId) {
-    throw new Error('[evidenceModel] Canonical attempt requires a stable attempt ID');
+    throw new Error('[evidenceModel] Canonical attempt requires a stable attempt identity');
   }
 
   const questionId = canonicalAttempt.question_id || canonicalAttempt.questionId || skillAttribution.questionId || 'unknown_item';
 
-  // 2. Strict Boolean Normalization
-  const isCorrect = normalizeBoolean(
-    canonicalAttempt.is_correct !== undefined ? canonicalAttempt.is_correct : canonicalAttempt.correct,
-    false
+  // 2. Strict Correctness Normalization
+  const isCorrect = normalizeCorrectness(
+    canonicalAttempt.is_correct !== undefined ? canonicalAttempt.is_correct : canonicalAttempt.correct
   );
 
   const hintsUsed = Number(canonicalAttempt.hints_used ?? canonicalAttempt.hintsUsed ?? canonicalAttempt.hints ?? 0);
+  const solutionRevealed = Boolean(canonicalAttempt.solution_revealed || canonicalAttempt.answer_revealed);
+  const assistanceLevel = String(canonicalAttempt.assistance_level || canonicalAttempt.assistanceLevel || 'NONE').toUpperCase();
   const attemptOrdinal = Math.max(1, parseInt(canonicalAttempt.attempt_ordinal ?? canonicalAttempt.attemptOrdinal ?? 1, 10) || 1);
 
   // 3. Resolve skill role and weight
@@ -242,40 +317,104 @@ function qualifyEvidenceContribution(canonicalAttempt = {}, skillAttribution = {
   // 5. Calculate qualification factors
   const independenceFactor = calculateIndependenceFactor({
     hintsUsed,
-    solutionRevealed: canonicalAttempt.solution_revealed || canonicalAttempt.answer_revealed,
-    assistanceLevel: canonicalAttempt.assistance_level || canonicalAttempt.assistanceLevel
+    solutionRevealed,
+    assistanceLevel
   });
 
   const noveltyFactor = calculateNoveltyFactor(attemptOrdinal);
 
   // 6. Non-Inference Guard on UNKNOWN evidence or UNKNOWN_SKILL
   // Preserves provenance, but prohibits inferential claims
-  const inferenceEligible = !isUnknownSkill && !isUnknownLevel;
+  const countsTowardSkillMastery = !isUnknownSkill && !isUnknownLevel;
+  const inferenceEligible = countsTowardSkillMastery;
 
+  const baseLevelWeight = EVIDENCE_LEVEL_WEIGHTS[declaredLevel] ?? 0.00;
   let evidenceStrength = null;
   if (inferenceEligible) {
-    const baseLevelWeight = EVIDENCE_LEVEL_WEIGHTS[declaredLevel] ?? 0.00;
     const accuracyMultiplier = isCorrect ? 1.0 : 0.45;
     const rawStrength = baseLevelWeight * accuracyMultiplier * independenceFactor * noveltyFactor * evidenceWeight;
-    evidenceStrength = Math.round(rawStrength * 100) / 100;
+    evidenceStrength = Math.round((rawStrength + Number.EPSILON) * 100) / 100;
   }
 
   // 7. Temporal Calibration Integrity (Law 14)
   // itemDifficultyAtObservation must strictly reflect the difficulty AT OBSERVATION TIME
   let itemDifficultyAtObservation = null;
   if (canonicalAttempt.item_difficulty_at_observation !== undefined) {
-    itemDifficultyAtObservation = canonicalAttempt.item_difficulty_at_observation;
+    itemDifficultyAtObservation = normalizeDifficulty(canonicalAttempt.item_difficulty_at_observation);
   } else if (availableCalibration.itemDifficultyAtObservation !== undefined) {
-    itemDifficultyAtObservation = availableCalibration.itemDifficultyAtObservation;
+    itemDifficultyAtObservation = normalizeDifficulty(availableCalibration.itemDifficultyAtObservation);
   }
 
   const calibVersion = availableCalibration.calibrationVersion || CALIBRATION_VERSION;
   const calibHash = availableCalibration.calibrationSnapshotHash || computeCalibrationSnapshotHash(calibVersion);
-
-  // Attribution confidence qualifies the mapping, NOT student performance
   const attributionConfidence = skillAttribution.confidence !== undefined ? skillAttribution.confidence : null;
 
+  // 8. Epistemic Layering Construction
+  const identityBlock = Object.freeze({
+    attemptId,
+    questionId,
+    skillId
+  });
+
+  const attributionBlock = Object.freeze({
+    skillRole,
+    attributionWeight: evidenceWeight,
+    attributionConfidence,
+    ontologyVersion: skillAttribution.ontologyVersion || ONTOLOGY_VERSION
+  });
+
+  const observationBlock = Object.freeze({
+    correct: isCorrect,
+    hintsUsed,
+    solutionRevealed,
+    assistanceLevel,
+    attemptOrdinal,
+    isFirstAttemptOnItem: attemptOrdinal === 1
+  });
+
+  const classificationBlock = Object.freeze({
+    evidenceLevel: declaredLevel,
+    evidenceLevelSource
+  });
+
+  const qualificationBlock = Object.freeze({
+    independenceFactor,
+    noveltyFactor,
+    configuredLevelWeight: baseLevelWeight,
+    skillAttributionWeight: evidenceWeight,
+    evidenceWeight,
+    itemDifficultyAtObservation,
+    strengthModel: Object.freeze({
+      type: 'CONFIGURED_RULE_MODEL',
+      version: calibVersion
+    }),
+    evidenceStrength
+  });
+
+  const eligibilityBlock = Object.freeze({
+    countsAsObservedEvidence: true,
+    countsTowardSkillMastery,
+    reason: countsTowardSkillMastery
+      ? 'ELIGIBLE'
+      : (isUnknownSkill ? 'UNKNOWN_SKILL' : 'UNKNOWN_LEVEL')
+  });
+
+  const provenanceBlock = Object.freeze({
+    ontologyVersion: skillAttribution.ontologyVersion || ONTOLOGY_VERSION,
+    calibrationVersion: calibVersion,
+    calibrationSnapshotHash: calibHash
+  });
+
   return Object.freeze({
+    identity: identityBlock,
+    attribution: attributionBlock,
+    observation: observationBlock,
+    classification: classificationBlock,
+    qualification: qualificationBlock,
+    eligibility: eligibilityBlock,
+    provenance: provenanceBlock,
+
+    // Flat compatibility accessors for existing consumers and test contracts:
     attemptId,
     questionId,
     skillId,
@@ -289,19 +428,6 @@ function qualifyEvidenceContribution(canonicalAttempt = {}, skillAttribution = {
       hintsUsed,
       attemptOrdinal,
       isFirstAttemptOnItem: attemptOrdinal === 1
-    }),
-    qualification: Object.freeze({
-      evidenceStrength,
-      independenceFactor,
-      noveltyFactor,
-      evidenceWeight,
-      itemDifficultyAtObservation,
-      attributionConfidence
-    }),
-    provenance: Object.freeze({
-      ontologyVersion: skillAttribution.ontologyVersion || ONTOLOGY_VERSION,
-      calibrationVersion: calibVersion,
-      calibrationSnapshotHash: calibHash
     })
   });
 }
@@ -312,6 +438,8 @@ function qualifyEvidenceContribution(canonicalAttempt = {}, skillAttribution = {
  * Constitutional Invariants:
  * - 1 canonical attempt remains 1 canonical attempt in the ledger.
  * - Duplicate skill attributions are deterministically merged to at most one contribution per skill.
+ * - Model A (Independent Attribution): An observation may inform multiple skill hypotheses independently.
+ *   Attribution weights are not sum-normalized across skills.
  * 
  * @param {Object} canonicalAttempt Single student attempt
  * @param {Object} questionMapping Mapped question attribution structure
@@ -372,9 +500,12 @@ module.exports = {
   NOVELTY_FACTORS,
   SKILL_ROLE_WEIGHTS,
   normalizeBoolean,
+  normalizeCorrectness,
+  normalizeDifficulty,
   computeCalibrationSnapshotHash,
   calculateIndependenceFactor,
   calculateNoveltyFactor,
+  calculateItemDifficultyMetrics,
   calibrateItemDifficulty,
   qualifyEvidenceContribution,
   distributeEvidenceContributions

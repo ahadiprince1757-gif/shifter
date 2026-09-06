@@ -55,9 +55,12 @@ import {
   NOVELTY_FACTORS,
   SKILL_ROLE_WEIGHTS,
   normalizeBoolean,
+  normalizeCorrectness,
+  normalizeDifficulty,
   computeCalibrationSnapshotHash,
   calculateIndependenceFactor,
   calculateNoveltyFactor,
+  calculateItemDifficultyMetrics,
   calibrateItemDifficulty,
   qualifyEvidenceContribution,
   distributeEvidenceContributions
@@ -1543,7 +1546,11 @@ async function runContractTests() {
       qualifyEvidenceContribution(headlessAttempt, attribution);
     } catch (err) {
       thrown = true;
-      assert(err.message.includes("requires a stable attempt ID"), "Throws descriptive error for missing attempt ID");
+      assert(
+        err.message.includes("requires a stable attempt identity") ||
+        err.message.includes("requires a stable attempt ID"),
+        "Throws descriptive error for missing attempt ID"
+      );
     }
     assert(thrown === true, "Attempt missing ID is strictly rejected (never invents timestamp IDs)");
 
@@ -1559,6 +1566,185 @@ async function runContractTests() {
     const contribRun2 = qualifyEvidenceContribution(stableAttempt, attribution);
 
     assert(JSON.stringify(contribRun1) === JSON.stringify(contribRun2), "Given identical input, qualifyEvidenceContribution is 100% deterministic");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 43: normalizeCorrectness Strict Validation
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 43: normalizeCorrectness Strict Validation (Invalid non-booleans throw; deterministic conversions)");
+  {
+    // Valid representations
+    assert(normalizeCorrectness(true) === true, "true -> true");
+    assert(normalizeCorrectness(false) === false, "false -> false");
+    assert(normalizeCorrectness(1) === true, "1 -> true");
+    assert(normalizeCorrectness(0) === false, "0 -> false");
+    assert(normalizeCorrectness("true") === true, "'true' -> true");
+    assert(normalizeCorrectness("false") === false, "'false' -> false");
+    assert(normalizeCorrectness("TRUE") === true, "'TRUE' -> true");
+    assert(normalizeCorrectness("FALSE") === false, "'FALSE' -> false");
+    assert(normalizeCorrectness("1") === true, "'1' -> true");
+    assert(normalizeCorrectness("0") === false, "'0' -> false");
+
+    // Invalid inputs MUST throw
+    const invalidInputs = [null, undefined, "maybe", {}, [], "2", -1, NaN, ""];
+    for (const invalid of invalidInputs) {
+      let threw = false;
+      try {
+        normalizeCorrectness(invalid);
+      } catch (err) {
+        threw = true;
+        assert(err.message.includes("Correctness must be boolean"), `Threw for invalid input: ${JSON.stringify(invalid)}`);
+      }
+      assert(threw, `Strict validation threw for: ${JSON.stringify(invalid)}`);
+    }
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 44: normalizeDifficulty Validation & Temporal Scoping (Law 14)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 44: normalizeDifficulty Validation & Temporal Scoping (Strict [0.0, 1.0] range; null handling; Law 14)");
+  {
+    // Valid values
+    assert(normalizeDifficulty(null) === null, "null -> null");
+    assert(normalizeDifficulty(undefined) === null, "undefined -> null");
+    assert(normalizeDifficulty(0.0) === 0, "0.0 -> 0");
+    assert(normalizeDifficulty(0.75) === 0.75, "0.75 -> 0.75");
+    assert(normalizeDifficulty(1.0) === 1, "1.0 -> 1");
+    assert(normalizeDifficulty("0.45") === 0.45, "'0.45' -> 0.45");
+
+    // Invalid values MUST throw
+    const invalidDifficulties = [-0.1, 1.5, "hard", NaN, Infinity, -Infinity];
+    for (const invalid of invalidDifficulties) {
+      let threw = false;
+      try {
+        normalizeDifficulty(invalid);
+      } catch (err) {
+        threw = true;
+        assert(err.message.includes("Invalid item difficulty"), `Threw for invalid difficulty: ${invalid}`);
+      }
+      assert(threw, `Strict validation threw for invalid difficulty: ${invalid}`);
+    }
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 45: Epistemic Layering & Eligibility Schema
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 45: Epistemic Layering & Eligibility Schema (7-layer structure & UNKNOWN_SKILL non-inference)");
+  {
+    const attempt = {
+      client_event_id: "evt-layer-001",
+      question_id: "q_layer_01",
+      is_correct: true,
+      hints_used: 1,
+      assistance_level: "MINOR_HINT",
+      solution_revealed: false,
+      attempt_ordinal: 1,
+      item_difficulty_at_observation: 0.45
+    };
+
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL,
+      evidenceLevelSource: EVIDENCE_LEVEL_SOURCES.AUTHOR_TAG,
+      confidence: 0.95
+    };
+
+    const contribution = qualifyEvidenceContribution(attempt, attribution);
+
+    // 1. Identity Layer
+    assert(contribution.identity.attemptId === "evt-layer-001", "Identity layer records attemptId");
+    assert(contribution.identity.questionId === "q_layer_01", "Identity layer records questionId");
+    assert(contribution.identity.skillId === "math.algebra.quadratic_equations.factorisation", "Identity layer records skillId");
+
+    // 2. Attribution Layer
+    assert(contribution.attribution.skillRole === SKILL_ROLES.PRIMARY, "Attribution layer records skillRole");
+    assert(contribution.attribution.attributionWeight === 1.00, "Attribution layer records attributionWeight");
+    assert(contribution.attribution.attributionConfidence === 0.95, "Attribution layer records attributionConfidence");
+    assert(contribution.attribution.ontologyVersion === ONTOLOGY_VERSION, "Attribution layer records ontologyVersion");
+
+    // 3. Observation Layer (Raw Telemetry)
+    assert(contribution.observation.correct === true, "Observation layer preserves raw correctness");
+    assert(contribution.observation.hintsUsed === 1, "Observation layer preserves hintsUsed");
+    assert(contribution.observation.solutionRevealed === false, "Observation layer preserves solutionRevealed");
+    assert(contribution.observation.assistanceLevel === "MINOR_HINT", "Observation layer preserves assistanceLevel");
+    assert(contribution.observation.attemptOrdinal === 1, "Observation layer preserves attemptOrdinal");
+    assert(contribution.observation.isFirstAttemptOnItem === true, "Observation layer flags first attempt");
+
+    // 4. Classification Layer
+    assert(contribution.classification.evidenceLevel === EVIDENCE_LEVELS.PROCEDURAL, "Classification layer records evidenceLevel");
+    assert(contribution.classification.evidenceLevelSource === EVIDENCE_LEVEL_SOURCES.AUTHOR_TAG, "Classification layer records evidenceLevelSource");
+
+    // 5. Qualification Layer (Interpretation)
+    assert(contribution.qualification.independenceFactor === 0.75, "Qualification records independenceFactor");
+    assert(contribution.qualification.noveltyFactor === 1.00, "Qualification records noveltyFactor");
+    assert(contribution.qualification.configuredLevelWeight === 0.70, "Qualification records configuredLevelWeight");
+    assert(contribution.qualification.skillAttributionWeight === 1.00, "Qualification records skillAttributionWeight");
+    assert(contribution.qualification.itemDifficultyAtObservation === 0.45, "Qualification records itemDifficultyAtObservation");
+    assert(contribution.qualification.strengthModel.type === "CONFIGURED_RULE_MODEL", "Qualification records strengthModel type");
+    assert(contribution.qualification.strengthModel.version === CALIBRATION_VERSION, "Qualification records strengthModel version");
+    assert(contribution.qualification.evidenceStrength === 0.53, `Qualification calculates interpretive strength (expected 0.53, got ${contribution.qualification.evidenceStrength})`);
+
+    // 6. Eligibility Layer
+    assert(contribution.eligibility.countsAsObservedEvidence === true, "Eligibility marks observed attempt");
+    assert(contribution.eligibility.countsTowardSkillMastery === true, "Eligibility confirms mastery eligibility for tagged item");
+    assert(contribution.eligibility.reason === "ELIGIBLE", "Eligibility reason is ELIGIBLE");
+
+    // 7. Provenance Layer
+    assert(contribution.provenance.ontologyVersion === ONTOLOGY_VERSION, "Provenance records ontologyVersion");
+    assert(contribution.provenance.calibrationVersion === CALIBRATION_VERSION, "Provenance records calibrationVersion");
+    assert(typeof contribution.provenance.calibrationSnapshotHash === "string", "Provenance records calibrationSnapshotHash");
+
+    // Non-inference test for UNKNOWN_SKILL
+    const unknownSkillAttribution = {
+      skillId: UNKNOWN_SKILL.id,
+      role: SKILL_ROLES.UNKNOWN,
+      evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+    };
+    const unknownContrib = qualifyEvidenceContribution(attempt, unknownSkillAttribution);
+    assert(unknownContrib.eligibility.countsAsObservedEvidence === true, "UNKNOWN_SKILL counts as observed attempt");
+    assert(unknownContrib.eligibility.countsTowardSkillMastery === false, "UNKNOWN_SKILL does NOT count toward skill mastery");
+    assert(unknownContrib.eligibility.reason === "UNKNOWN_SKILL", "UNKNOWN_SKILL reason flagged");
+    assert(unknownContrib.qualification.evidenceStrength === null, "UNKNOWN_SKILL strictly produces evidenceStrength: null");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 46: Difficulty Semantics & Metric Separation
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 46: Difficulty Semantics & Metric Separation (calculateItemDifficultyMetrics)");
+  {
+    // Dataset with 20 correct, 10 incorrect, and 2 corrupted entries
+    const mixedObservations = [
+      ...Array(20).fill({ is_correct: true }),
+      ...Array(10).fill({ is_correct: false }),
+      { is_correct: "invalid_truth_val" },
+      { is_correct: null }
+    ];
+
+    const metrics = calculateItemDifficultyMetrics(mixedObservations);
+
+    assert(metrics.totalObservationCount === 32, "Records raw observation count of 32");
+    assert(metrics.eligibleObservationCount === 30, "Filters 2 corrupted entries, yielding 30 eligible observations");
+    assert(metrics.observedFailureRate === 0.33, `Computes observedFailureRate as 10/30 = 0.33 (got ${metrics.observedFailureRate})`);
+    assert(metrics.difficulty === 0.33, `Because eligibleCount (30) >= 30, difficulty is calibrated to 0.33 (got ${metrics.difficulty})`);
+
+    // Dataset below threshold
+    const smallObservations = [
+      ...Array(15).fill({ is_correct: true }),
+      ...Array(5).fill({ is_correct: false })
+    ];
+    const smallMetrics = calculateItemDifficultyMetrics(smallObservations);
+    assert(smallMetrics.eligibleObservationCount === 20, "Records 20 eligible observations");
+    assert(smallMetrics.observedFailureRate === 0.25, "Computes observed failure rate 5/20 = 0.25");
+    assert(smallMetrics.difficulty === null, "Under N=20 (< 30), difficulty is strictly null (null-protection)");
 
     passedTests++;
   }
