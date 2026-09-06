@@ -83,7 +83,9 @@ function calculateEvidenceStrength(attempts) {
   // 3. Consistency Factor (0-30 pts): Stability of response pattern
   let consistencyScore = 20;
   if (count >= 4) {
-    const correctCount = attempts.filter(a => Boolean(a.is_correct)).length;
+    const correctCount = attempts.filter(a =>
+      normalizeBoolean(a.is_correct !== undefined ? a.is_correct : a.correct, false)
+    ).length;
     const ratio = correctCount / count;
     // Clear polarity (consistently high or consistently struggling) indicates high consistency
     const divergence = Math.abs(ratio - 0.5) * 2; // 0 → coinflip, 1.0 → all correct or all wrong
@@ -103,7 +105,9 @@ function calculateEvidenceStrength(attempts) {
  */
 function evaluateTopicMastery(topicTitle, attempts) {
   const total = attempts.length;
-  const correct = attempts.filter(a => Boolean(a.is_correct)).length;
+  const correct = attempts.filter(a =>
+    normalizeBoolean(a.is_correct !== undefined ? a.is_correct : a.correct, false)
+  ).length;
   const accuracy = total > 0 ? Math.round((correct / total) * 100) : 0;
   const evidenceStrength = calculateEvidenceStrength(attempts);
 
@@ -263,7 +267,9 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
         totalAttempts: primaryGap.totalAttempts,
         correctAttempts: primaryGap.correctAttempts,
         accuracy: primaryGap.accuracy,
-        recentScores: primaryGap.attempts.slice(-5).map(a => Boolean(a.is_correct))
+        recentScores: primaryGap.attempts
+          .slice(-5)
+          .map(a => normalizeBoolean(a.is_correct !== undefined ? a.is_correct : a.correct, false))
       },
       evidenceRefs,
       inferenceRules: ['MIN_ATTEMPTS_5', 'ACCURACY_LT_40', 'PREREQUISITE_WEAKNESS_SUSPECTED'],
@@ -333,7 +339,9 @@ function determineRecommendation(topicEvaluations, spacedReviews = []) {
         totalAttempts: topic.totalAttempts,
         correctAttempts: topic.correctAttempts,
         accuracy: topic.accuracy,
-        recentScores: topic.attempts.slice(-4).map(a => Boolean(a.is_correct))
+        recentScores: topic.attempts
+          .slice(-4)
+          .map(a => normalizeBoolean(a.is_correct !== undefined ? a.is_correct : a.correct, false))
       },
       evidenceRefs,
       inferenceRules: ['ATTEMPTS_BETWEEN_3_AND_4', 'NEED_ADDITIONAL_EVIDENCE'],
