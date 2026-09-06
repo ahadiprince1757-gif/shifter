@@ -14,23 +14,50 @@ import { adaptAnalyticsToEvidence } from "../engine/analyticsEvidenceAdapter";
 import ExplainabilityDrawer from "./ExplainabilityDrawer";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TIXAR COLOR LAW
-// Every color has exactly one semantic job. Color communicates evidence, not
-// decoration. A learner must never ask "what does this color mean?"
+// TIXAR COLOR LAW + ACCESSIBILITY CONTRACT
 //
-//  slate (#64748b)  → NO_EVIDENCE state. Nothing measured yet.
-//  blue  (#1d6bf3)  → Navigation / primary actions.
-//  green (#22c55e)  → Demonstrated progress or mastery.
-//  amber (#f59e0b)  → Attention recommended. Not an emergency.
-//  red   (#ef4444)  → Genuine problem requiring immediate action.
+// Rule 1: Color is never the only signal channel.
+//         Every colored value is paired with an icon or text label.
+//         Removing all color must leave meaning fully intact.
+//
+// Rule 2: Colors are muted/tinted — not saturated primaries.
+//         People with color aversions, colour blindness, or cultural
+//         associations that differ from the designer's assumptions must
+//         never be confused or distressed by the palette.
+//
+//  neutral (#64748b)  → NO_EVIDENCE. Nothing measured yet. No judgment.
+//  ink     (#1d4ed8)  → Navigation and primary actions.
+//  teal    (#0d9488)  → Demonstrated progress or mastery.   (replaces green — avoids red/green blindness)
+//  ochre   (#b45309)  → Attention recommended.              (replaces amber — less alarming)
+//  crimson (#be123c)  → Genuine problem requiring action.   (replaces red — more muted)
 // ─────────────────────────────────────────────────────────────────────────────
 const COLOR = {
-  slate:  "#64748b",
-  blue:   "#1d6bf3",
-  green:  "#22c55e",
-  amber:  "#f59e0b",
-  red:    "#ef4444",
+  neutral: "#64748b",  // no evidence
+  ink:     "#1d4ed8",  // primary action (blue family)
+  teal:    "#0d9488",  // progress / mastery (distinguishable from crimson for all CVD types)
+  ochre:   "#b45309",  // attention (warm, not alarming)
+  crimson: "#be123c",  // urgent (dark enough to contrast on white, not screamingly saturated)
 };
+
+// ── Signal semantics: each signal has an icon so meaning is not color-only ────
+// icon: ● = neutral/no data  ✓ = good  ▲ = needs action  ✗ = needs resolution
+function signalConfig(value, type) {
+  if (type === "reviews") {
+    if (value === 0) return { color: COLOR.neutral, icon: "●", iconLabel: "none due" };
+    return { color: COLOR.ochre, icon: "▲", iconLabel: `${value} due` };
+  }
+  if (type === "mistakes") {
+    if (value === 0) return { color: COLOR.neutral, icon: "●", iconLabel: "none" };
+    return { color: COLOR.crimson, icon: "✗", iconLabel: `${value} to fix` };
+  }
+  if (type === "accuracy") {
+    if (value === null) return { color: COLOR.neutral, icon: "●", iconLabel: "not measured" };
+    if (value >= 70) return { color: COLOR.teal,    icon: "✓", iconLabel: "strong" };
+    if (value >= 50) return { color: COLOR.ochre,   icon: "▲", iconLabel: "improving" };
+    return { color: COLOR.crimson, icon: "▲", iconLabel: "needs work" };
+  }
+  return { color: COLOR.neutral, icon: "●", iconLabel: "" };
+}
 
 function formatTitle(str) {
   if (!str) return "";
@@ -205,23 +232,25 @@ export default function AnalyticsDashboard() {
   const totalPasses = attempts.filter((a) => a.correct).length;
   const totalQuizzes = attempts.length;
 
-  // ── Color law: each color has one job ────────────────────────────────────
+  // ── Status config: icon + muted color for the hero pill ─────────────────
   const statusConfig = {
-    NOT_STARTED:    { label: "Ready to begin",  color: COLOR.slate, bgAlpha: "0f" },
-    EARLY_EVIDENCE: { label: "Calibrating",     color: COLOR.blue,  bgAlpha: "18" },
-    PROGRESSING:    { label: "On track",        color: COLOR.green, bgAlpha: "18" },
-    NEEDS_SUPPORT:  { label: "Needs attention", color: COLOR.amber, bgAlpha: "18" },
-  }[learnerState] || { label: "Ready to begin", color: COLOR.slate, bgAlpha: "0f" };
+    NOT_STARTED:    { label: "Ready to begin",  icon: "○", color: COLOR.neutral, bgAlpha: "10" },
+    EARLY_EVIDENCE: { label: "Calibrating",     icon: "◐", color: COLOR.ink,     bgAlpha: "12" },
+    PROGRESSING:    { label: "On track",        icon: "✓", color: COLOR.teal,    bgAlpha: "12" },
+    NEEDS_SUPPORT:  { label: "Needs attention", icon: "▲", color: COLOR.ochre,   bgAlpha: "12" },
+  }[learnerState] || { label: "Ready to begin", icon: "○", color: COLOR.neutral, bgAlpha: "10" };
 
   const readiness = overview.readinessScore || 0;
 
-  // ── Cognitive dimensions ─────────────────────────────────────────────────
+  // ── Cognitive dimensions: single ink hue at varying opacity ──────────────
+  // Using one color family avoids the "what does each color mean?" problem
+  // while height of the bar already carries the magnitude signal.
   const cognitiveDimensions = [
-    { key: "REC", label: "Recognition", val: cognitiveMastery.RECOGNITION?.score, color: COLOR.blue  },
-    { key: "RCL", label: "Recall",      val: cognitiveMastery.RECALL?.score,       color: COLOR.blue  },
-    { key: "PRO", label: "Procedure",   val: cognitiveMastery.PROCEDURAL?.score,   color: COLOR.green },
-    { key: "APP", label: "Application", val: cognitiveMastery.APPLICATION?.score,  color: COLOR.amber },
-    { key: "TRF", label: "Transfer",    val: cognitiveMastery.TRANSFER?.score,     color: COLOR.amber },
+    { key: "REC", label: "Recognition", val: cognitiveMastery.RECOGNITION?.score, color: COLOR.ink  },
+    { key: "RCL", label: "Recall",      val: cognitiveMastery.RECALL?.score,       color: COLOR.ink  },
+    { key: "PRO", label: "Procedure",   val: cognitiveMastery.PROCEDURAL?.score,   color: COLOR.teal },
+    { key: "APP", label: "Application", val: cognitiveMastery.APPLICATION?.score,  color: COLOR.teal },
+    { key: "TRF", label: "Transfer",    val: cognitiveMastery.TRANSFER?.score,     color: COLOR.ochre },
   ];
 
   // Evidence-based topic queue (only shown when there is evidence)
@@ -233,14 +262,10 @@ export default function AnalyticsDashboard() {
   const hasInsights  = learnerState === "PROGRESSING" || learnerState === "NEEDS_SUPPORT";
   const nextTopic    = recommendation?.title ? formatTitle(recommendation.title) : null;
 
-  // ── Signal card colors follow the law ────────────────────────────────────
-  const reviewColor   = dueReviews.length > 0       ? COLOR.amber : COLOR.slate;
-  const mistakeColor  = unresolvedMistakes.length > 0 ? COLOR.red   : COLOR.slate;
-  const accuracyColor = !hasEvidence
-    ? COLOR.slate
-    : overview.accuracy >= 70 ? COLOR.green
-    : overview.accuracy >= 50 ? COLOR.amber
-    : COLOR.red;
+  // ── Signal configs: icon + muted color, never color alone ────────────────
+  const reviewSig   = signalConfig(dueReviews.length, "reviews");
+  const mistakeSig  = signalConfig(unresolvedMistakes.length, "mistakes");
+  const accuracySig = signalConfig(hasEvidence ? (overview.accuracy ?? 0) : null, "accuracy");
 
   const handleStudyTopic = (item) => {
     const sid = item.subject_id || item.sid;
@@ -319,6 +344,7 @@ export default function AnalyticsDashboard() {
       )}
 
       {/* ── SIGNALS (only shown when evidence exists) ────────────────────── */}
+      {/* Each card: icon + number + label — meaning intact without any color */}
       {hasEvidence && (
         <div className="adash-signals">
           <button
@@ -326,10 +352,12 @@ export default function AnalyticsDashboard() {
             onClick={() => navigate("/analytics")}
             aria-label={`${dueReviews.length} reviews due`}
           >
-            <div className="adash-signal-num" style={{ color: reviewColor }}>
+            <div className="adash-signal-icon" style={{ color: reviewSig.color }}
+              aria-hidden="true">{reviewSig.icon}</div>
+            <div className="adash-signal-num" style={{ color: reviewSig.color }}>
               {dueReviews.length}
             </div>
-            <div className="adash-signal-lbl">Due reviews</div>
+            <div className="adash-signal-lbl">Reviews</div>
           </button>
 
           <button
@@ -337,7 +365,9 @@ export default function AnalyticsDashboard() {
             onClick={() => navigate("/mistakes")}
             aria-label={`${unresolvedMistakes.length} mistakes`}
           >
-            <div className="adash-signal-num" style={{ color: mistakeColor }}>
+            <div className="adash-signal-icon" style={{ color: mistakeSig.color }}
+              aria-hidden="true">{mistakeSig.icon}</div>
+            <div className="adash-signal-num" style={{ color: mistakeSig.color }}>
               {unresolvedMistakes.length}
             </div>
             <div className="adash-signal-lbl">Mistakes</div>
@@ -346,9 +376,11 @@ export default function AnalyticsDashboard() {
           <button
             className="adash-signal-card"
             onClick={() => navigate("/subjects")}
-            aria-label={`${overview.accuracy ?? 0}% accuracy`}
+            aria-label={`${overview.accuracy ?? 0}% accuracy, ${accuracySig.iconLabel}`}
           >
-            <div className="adash-signal-num" style={{ color: accuracyColor }}>
+            <div className="adash-signal-icon" style={{ color: accuracySig.color }}
+              aria-hidden="true">{accuracySig.icon}</div>
+            <div className="adash-signal-num" style={{ color: accuracySig.color }}>
               {/* Constitutional: never show 0% when NOT_STARTED. hasEvidence guards this. */}
               {overview.accuracy ?? 0}%
             </div>
@@ -362,20 +394,23 @@ export default function AnalyticsDashboard() {
         <div className="adash-queue">
           <div className="adash-section-label">Focus</div>
           {priorityTopics.map((item, idx) => {
-            const title    = formatTitle(item.topic_title || item.topic || "Topic");
-            const score    = item.performanceScore ?? item.mastery ?? 0;
-            // Bar color: green = progress, amber = needs attention, red = urgent
-            const barColor = score >= 70 ? COLOR.green : score >= 40 ? COLOR.amber : COLOR.red;
+            const title = formatTitle(item.topic_title || item.topic || "Topic");
+            const score = item.performanceScore ?? item.mastery ?? 0;
+            // Semantic label carries meaning. Bar fill + muted color is secondary.
+            const scoreLabel = score >= 70 ? "strong" : score >= 40 ? "building" : "needs work";
+            const barColor   = score >= 70 ? COLOR.teal : score >= 40 ? COLOR.ochre : COLOR.crimson;
             return (
               <button
                 key={idx}
                 className="adash-queue-item"
                 onClick={() => handleStudyTopic(item)}
+                aria-label={`${title}: ${score}%, ${scoreLabel}`}
               >
                 <div className="adash-queue-item-inner">
                   <span className="adash-queue-title">{title}</span>
                   <span className="adash-queue-pct" style={{ color: barColor }}>
-                    {score}%
+                    {/* Score + text label — no learner must guess what a color means */}
+                    {score}% <span className="adash-queue-score-label">{scoreLabel}</span>
                   </span>
                 </div>
                 <SparkBar pct={score} color={barColor} />

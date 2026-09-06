@@ -10609,6 +10609,15 @@ html.dark-mode .topic-filter-v2-pills {
   letter-spacing: -0.02em;
 }
 
+/* Icon is the FIRST signal channel — precedes the number */
+/* Its job: carry meaning even when color is not perceived  */
+.adash-signal-icon {
+  font-size: 0.75rem;
+  line-height: 1;
+  margin-bottom: 0.1rem;
+  opacity: 0.85;
+}
+
 .adash-signal-lbl {
   font-size: 0.7rem;
   font-weight: 600;
@@ -10684,6 +10693,18 @@ html.dark-mode .topic-filter-v2-pills {
   font-size: 0.82rem;
   font-weight: 800;
   flex-shrink: 0;
+  white-space: nowrap;
+}
+
+/* Text label after score — second signal channel alongside color */
+/* "strong" / "building" / "needs work" readable without color    */
+.adash-queue-score-label {
+  font-size: 0.68rem;
+  font-weight: 500;
+  opacity: 0.7;
+  margin-left: 0.2em;
+  letter-spacing: 0;
+  text-transform: lowercase;
 }
 
 .adash-queue-more {
