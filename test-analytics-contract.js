@@ -46,6 +46,7 @@ import {
 } from "./backend/services/skillGraph.js";
 import {
   CALIBRATION_VERSION,
+  CALIBRATION_POLICY,
   MIN_DIFFICULTY_OBSERVATIONS,
   EVIDENCE_LEVELS,
   EVIDENCE_LEVEL_SOURCES,
@@ -53,6 +54,7 @@ import {
   INDEPENDENCE_FACTORS,
   NOVELTY_FACTORS,
   SKILL_ROLE_WEIGHTS,
+  normalizeBoolean,
   computeCalibrationSnapshotHash,
   calculateIndependenceFactor,
   calculateNoveltyFactor,
@@ -1339,7 +1341,8 @@ async function runContractTests() {
     // Later at T2: Population accumulates 50 attempts, difficulty is calibrated to 0.72
     const currentCalibrationT2 = {
       calibrationVersion: "1.1.0",
-      itemDifficulty: 0.72
+      itemDifficultyAtObservation: 0.72,
+      currentItemDifficulty: 0.72
     };
 
     // The historical contribution contribT1 was not and CANNOT be mutated
@@ -1355,6 +1358,207 @@ async function runContractTests() {
     };
     const contribT2 = qualifyEvidenceContribution(attemptT2, attribution, currentCalibrationT2);
     assert(contribT2.qualification.itemDifficultyAtObservation === 0.72, "T2 observation correctly captures calibrated difficulty available at T2");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 38: Boolean Evidence Integrity (No ambiguous JavaScript coercion)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 38: Boolean Evidence Integrity (Boolean(\"false\") bug eliminated; strict normalization)");
+  {
+    assert(normalizeBoolean(true) === true, "true -> true");
+    assert(normalizeBoolean(false) === false, "false -> false");
+    assert(normalizeBoolean("true") === true, "\"true\" -> true");
+    assert(normalizeBoolean("false") === false, "\"false\" -> false (NOT coerced to true!)");
+    assert(normalizeBoolean("TRUE") === true, "\"TRUE\" -> true");
+    assert(normalizeBoolean("FALSE") === false, "\"FALSE\" -> false");
+    assert(normalizeBoolean(1) === true, "1 -> true");
+    assert(normalizeBoolean(0) === false, "0 -> false");
+    assert(normalizeBoolean("1") === true, "\"1\" -> true");
+    assert(normalizeBoolean("0") === false, "\"0\" -> false");
+
+    // In qualification engine
+    const stringFalseAttempt = {
+      client_event_id: "evt-bool-001",
+      question_id: "q_bool_test",
+      is_correct: "false", // String "false"
+      hints_used: 0,
+      attempt_ordinal: 1
+    };
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+    };
+
+    const contribution = qualifyEvidenceContribution(stringFalseAttempt, attribution);
+    assert(contribution.observed.correct === false, "String 'false' correctly evaluated to boolean false");
+
+    // In difficulty calibration
+    const observationsWithStringBools = [
+      ...Array(15).fill({ is_correct: "true" }),
+      ...Array(15).fill({ is_correct: "false" })
+    ];
+    const failureRate = calibrateItemDifficulty(observationsWithStringBools);
+    assert(failureRate === 0.50, `Failure rate with string booleans is exactly 0.50 (got ${failureRate})`);
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 39: Duplicate Attribution Protection (Deterministic Deduplication)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 39: Duplicate Attribution Protection (Duplicate skill IDs do not multiply evidence)");
+  {
+    const duplicateQuestion = {
+      questionId: "q_dup_001",
+      primarySkill: { id: "math.algebra.quadratic_equations.factorisation" },
+      skills: [
+        {
+          skillId: "math.algebra.quadratic_equations.factorisation",
+          role: SKILL_ROLES.PRIMARY,
+          evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+        },
+        {
+          skillId: "math.algebra.quadratic_equations.factorisation", // Duplicate!
+          role: SKILL_ROLES.SUPPORTING,
+          evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+        },
+        {
+          skillId: "math.numbers.integers.signed_arithmetic",
+          role: SKILL_ROLES.SUPPORTING,
+          evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+        }
+      ]
+    };
+
+    const singleAttempt = {
+      client_event_id: "evt-dup-att-001",
+      question_id: "q_dup_001",
+      is_correct: true,
+      hints_used: 0,
+      attempt_ordinal: 1
+    };
+
+    const distribution = distributeEvidenceContributions(singleAttempt, duplicateQuestion);
+
+    assert(distribution.canonicalAttempts === 1, "Canonical attempts strictly remains 1");
+    assert(distribution.contributions.length === 2, "Deduplication ensures exactly 2 contributions for 2 unique skills");
+
+    const factorisationContribs = distribution.contributions.filter(
+      c => c.skillId === "math.algebra.quadratic_equations.factorisation"
+    );
+    assert(factorisationContribs.length === 1, "Factorisation has exactly 1 contribution despite duplicate attribution");
+    assert(factorisationContribs[0].skillRole === SKILL_ROLES.PRIMARY, "PRIMARY role took deterministic precedence over duplicate SUPPORTING");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 40: UNKNOWN Evidence Level Non-Inference
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 40: UNKNOWN Evidence Level Non-Inference (Undeclared level yields inferenceEligible: false)");
+  {
+    assert(EVIDENCE_LEVEL_WEIGHTS.UNKNOWN === 0.00, "EVIDENCE_LEVEL_WEIGHTS.UNKNOWN is strictly 0.00");
+
+    const unknownLevelAttempt = {
+      client_event_id: "evt-unknown-level-001",
+      question_id: "q_unclassified",
+      is_correct: true,
+      hints_used: 0,
+      attempt_ordinal: 1
+    };
+
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.UNKNOWN,
+      evidenceLevelSource: EVIDENCE_LEVEL_SOURCES.UNKNOWN
+    };
+
+    const contribution = qualifyEvidenceContribution(unknownLevelAttempt, attribution);
+
+    assert(contribution.observed.correct === true, "Observation correctness is faithfully preserved");
+    assert(contribution.evidenceLevel === EVIDENCE_LEVELS.UNKNOWN, "Evidence level is UNKNOWN");
+    assert(contribution.inferenceEligible === false, "Constitutional Law: UNKNOWN evidence level is strictly inferenceEligible: false");
+    assert(contribution.qualification.evidenceStrength === null, "Constitutional Law: UNKNOWN evidence level yields evidenceStrength: null (no manufactured claims)");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 41: UNKNOWN_SKILL Non-Inference (Provenance preserved, inference prohibited)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 41: UNKNOWN_SKILL Non-Inference (Untagged items yield inferenceEligible: false)");
+  {
+    assert(SKILL_ROLE_WEIGHTS.UNKNOWN === 0.00, "SKILL_ROLE_WEIGHTS.UNKNOWN is strictly 0.00");
+
+    const untaggedQuestion = mapQuestionToSkills({
+      id: "q_untagged_item",
+      text: "Some untagged question"
+    });
+
+    assert(untaggedQuestion.primarySkill.isUnknown === true, "Identified as untagged question");
+    assert(untaggedQuestion.skills[0].skillId === UNKNOWN_SKILL.id, "Attributed to UNKNOWN_SKILL");
+
+    const rawAttempt = {
+      client_event_id: "evt-untagged-001",
+      question_id: "q_untagged_item",
+      is_correct: true,
+      hints_used: 0,
+      attempt_ordinal: 1
+    };
+
+    const distribution = distributeEvidenceContributions(rawAttempt, untaggedQuestion);
+    assert(distribution.canonicalAttempts === 1, "Canonical attempt count is preserved");
+    assert(distribution.contributions.length === 1, "Contribution exists for provenance tracking");
+
+    const contrib = distribution.contributions[0];
+    assert(contrib.skillId === UNKNOWN_SKILL.id, "Contribution records UNKNOWN_SKILL ID");
+    assert(contrib.observed.correct === true, "Observation provenance preserved");
+    assert(contrib.inferenceEligible === false, "Constitutional Law: UNKNOWN_SKILL is strictly inferenceEligible: false");
+    assert(contrib.qualification.evidenceStrength === null, "Constitutional Law: UNKNOWN_SKILL yields evidenceStrength: null (never generates mastery or gap)");
+
+    passedTests++;
+  }
+
+  // --------------------------------------------------------------------------
+  // TEST 42: Stable Attempt Identity Determinism (Date.now() fallback forbidden)
+  // --------------------------------------------------------------------------
+  console.log("\nTEST 42: Stable Attempt Identity Determinism (Missing ID throws; Date.now() generation forbidden)");
+  {
+    const headlessAttempt = {
+      is_correct: true,
+      hints_used: 0
+    };
+    const attribution = {
+      skillId: "math.algebra.quadratic_equations.factorisation",
+      role: SKILL_ROLES.PRIMARY,
+      evidenceLevel: EVIDENCE_LEVELS.PROCEDURAL
+    };
+
+    let thrown = false;
+    try {
+      qualifyEvidenceContribution(headlessAttempt, attribution);
+    } catch (err) {
+      thrown = true;
+      assert(err.message.includes("requires a stable attempt ID"), "Throws descriptive error for missing attempt ID");
+    }
+    assert(thrown === true, "Attempt missing ID is strictly rejected (never invents timestamp IDs)");
+
+    // Deterministic: re-running on identical input produces identical output
+    const stableAttempt = {
+      client_event_id: "evt-stable-001",
+      question_id: "q_quad_01",
+      is_correct: true,
+      hints_used: 1,
+      attempt_ordinal: 1
+    };
+    const contribRun1 = qualifyEvidenceContribution(stableAttempt, attribution);
+    const contribRun2 = qualifyEvidenceContribution(stableAttempt, attribution);
+
+    assert(JSON.stringify(contribRun1) === JSON.stringify(contribRun2), "Given identical input, qualifyEvidenceContribution is 100% deterministic");
 
     passedTests++;
   }

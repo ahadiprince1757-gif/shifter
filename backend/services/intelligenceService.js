@@ -26,6 +26,7 @@ const {
 } = require('./skillGraph');
 const {
   CALIBRATION_VERSION,
+  CALIBRATION_POLICY,
   MIN_DIFFICULTY_OBSERVATIONS,
   EVIDENCE_LEVELS,
   EVIDENCE_LEVEL_SOURCES,
@@ -33,6 +34,7 @@ const {
   INDEPENDENCE_FACTORS,
   NOVELTY_FACTORS,
   SKILL_ROLE_WEIGHTS,
+  normalizeBoolean,
   computeCalibrationSnapshotHash,
   calculateIndependenceFactor,
   calculateNoveltyFactor,
@@ -676,6 +678,7 @@ module.exports = {
   SCHEMA_VERSION,
   GRAPH_VERSION,
   CALIBRATION_VERSION,
+  CALIBRATION_POLICY,
   MIN_DIFFICULTY_OBSERVATIONS,
   EVIDENCE_LEVELS,
   EVIDENCE_LEVEL_SOURCES,
@@ -683,6 +686,7 @@ module.exports = {
   INDEPENDENCE_FACTORS,
   NOVELTY_FACTORS,
   SKILL_ROLE_WEIGHTS,
+  normalizeBoolean,
   computeGraphSnapshotHash,
   computeCalibrationSnapshotHash,
   calculateIndependenceFactor,

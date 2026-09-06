@@ -21,7 +21,7 @@ const {
 const {
   EVIDENCE_LEVELS,
   EVIDENCE_LEVEL_SOURCES
-} = require('./evidenceModel');
+} = require('./evidenceVocabulary');
 
 /**
  * Generates a deterministic content hash for question text/stem to ensure question versioning integrity.
