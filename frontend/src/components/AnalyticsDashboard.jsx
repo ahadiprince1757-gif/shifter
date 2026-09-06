@@ -5,12 +5,32 @@ import SkeletonLoader from "./SkeletonLoader";
 import { spacedRepo } from "../repository/spacedRepo";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import { useAuth } from "../hooks/useAuth";
+import { useCurriculum } from "../hooks/useCurriculum";
 import {
   buildLearningIntelligence,
   calculateCognitiveMastery,
 } from "../engine/learningIntelligenceEngine";
 import { adaptAnalyticsToEvidence } from "../engine/analyticsEvidenceAdapter";
 import ExplainabilityDrawer from "./ExplainabilityDrawer";
+
+// ─────────────────────────────────────────────────────────────────────────────
+// TIXAR COLOR LAW
+// Every color has exactly one semantic job. Color communicates evidence, not
+// decoration. A learner must never ask "what does this color mean?"
+//
+//  slate (#64748b)  → NO_EVIDENCE state. Nothing measured yet.
+//  blue  (#1d6bf3)  → Navigation / primary actions.
+//  green (#22c55e)  → Demonstrated progress or mastery.
+//  amber (#f59e0b)  → Attention recommended. Not an emergency.
+//  red   (#ef4444)  → Genuine problem requiring immediate action.
+// ─────────────────────────────────────────────────────────────────────────────
+const COLOR = {
+  slate:  "#64748b",
+  blue:   "#1d6bf3",
+  green:  "#22c55e",
+  amber:  "#f59e0b",
+  red:    "#ef4444",
+};
 
 function formatTitle(str) {
   if (!str) return "";
@@ -21,127 +41,150 @@ function formatTitle(str) {
     .replace(/[_-]/g, " ")
     .split(" ")
     .filter(Boolean)
-    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
+    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
     .join(" ");
 }
 
-/**
- * Ring gauge — one visual element, zero redundant labels.
- * The number IS the gauge. The ring IS the progress.
- */
-function RingGauge({ score = 0, size = 96 }) {
-  const safe = Math.min(Math.max(score || 0, 0), 100);
-  const r = 38;
+// ── Ring gauge ────────────────────────────────────────────────────────────────
+function RingGauge({ score, size = 88, color }) {
+  const r = 36;
   const circ = 2 * Math.PI * r;
-  const offset = circ * (1 - safe / 100);
-  const color = safe >= 75 ? "#22c55e" : safe >= 50 ? "#f59e0b" : "#ef4444";
-
+  const pct = Math.max(0, Math.min(100, score));
+  const offset = circ - (pct / 100) * circ;
   return (
-    <svg width={size} height={size} viewBox="0 0 96 96" style={{ transform: "rotate(-90deg)" }}>
-      <circle cx="48" cy="48" r={r} fill="none" stroke="var(--bd, #e2e8f0)" strokeWidth="8" />
+    <svg width={size} height={size} viewBox="0 0 80 80" style={{ flexShrink: 0 }}>
+      <circle cx="40" cy="40" r={r} fill="none" stroke="var(--ring-track, rgba(0,0,0,0.06))" strokeWidth="6" />
       <circle
-        cx="48" cy="48" r={r}
-        fill="none"
+        cx="40" cy="40" r={r} fill="none"
         stroke={color}
-        strokeWidth="8"
+        strokeWidth="6"
         strokeLinecap="round"
         strokeDasharray={circ}
         strokeDashoffset={offset}
-        style={{ transition: "stroke-dashoffset 1s cubic-bezier(.4,0,.2,1), stroke 0.5s ease" }}
+        transform="rotate(-90 40 40)"
+        style={{ transition: "stroke-dashoffset 0.6s cubic-bezier(.4,0,.2,1)" }}
       />
-      <text
-        x="48" y="48"
-        dominantBaseline="middle"
-        textAnchor="middle"
-        style={{ transform: "rotate(90deg) translate(0, -96px)", transformOrigin: "48px 48px" }}
-        fill="var(--t, #0f172a)"
-        fontSize="20"
-        fontWeight="800"
-        fontFamily="inherit"
-      >
-        {safe}
-      </text>
     </svg>
   );
 }
 
-/** Inline spark bar — one-line topic state at a glance */
-function SparkBar({ pct = 0, color = "#1d6bf3" }) {
+// ── Spark bar (single horizontal fill) ───────────────────────────────────────
+function SparkBar({ pct, color }) {
   return (
-    <div style={{ height: 3, borderRadius: 99, background: "var(--bd, #e2e8f0)", overflow: "hidden", marginTop: 4 }}>
-      <div style={{ height: "100%", width: `${Math.min(pct, 100)}%`, background: color, borderRadius: 99, transition: "width 0.8s cubic-bezier(.4,0,.2,1)" }} />
+    <div className="adash-spark-track">
+      <div
+        className="adash-spark-fill"
+        style={{ width: `${Math.max(2, pct)}%`, background: color }}
+      />
     </div>
   );
 }
 
-/** Five-channel cognitive visual — no labels that explain nothing */
+// ── Five cognitive bars ───────────────────────────────────────────────────────
 function CognitiveFiveBar({ dimensions }) {
   return (
-    <div style={{ display: "flex", gap: 6, alignItems: "flex-end", height: 40 }}>
-      {dimensions.map((d) => {
-        const h = Math.max(4, ((d.val || 0) / 100) * 40);
-        return (
-          <div key={d.key} style={{ display: "flex", flexDirection: "column", alignItems: "center", flex: 1 }}>
+    <div className="adash-five-bars">
+      {dimensions.map((d) => (
+        <div key={d.key} className="adash-five-bar-col">
+          <div className="adash-five-bar-track">
             <div
+              className="adash-five-bar-fill"
               style={{
-                width: "100%",
-                height: h,
-                borderRadius: "3px 3px 0 0",
-                background: d.val ? d.color : "var(--bd, #e2e8f0)",
-                transition: "height 1s cubic-bezier(.4,0,.2,1)",
-                opacity: d.val ? 1 : 0.4,
+                height: `${d.val || 0}%`,
+                background: d.val ? d.color : "var(--divider, #e2e8f0)",
               }}
-              title={`${d.label}: ${d.val ?? "No data"}%`}
             />
           </div>
-        );
-      })}
+        </div>
+      ))}
     </div>
   );
 }
 
+// ── Curriculum tree (always rendered) ────────────────────────────────────────
+function CurriculumExplorer({ curriculum, onNavigate }) {
+  const [expanded, setExpanded] = useState({});
+
+  if (!curriculum || curriculum.length === 0) return null;
+
+  const toggle = (id) => setExpanded((p) => ({ ...p, [id]: !p[id] }));
+
+  return (
+    <div className="adash-curriculum">
+      <div className="adash-section-label">Ready to explore</div>
+      {curriculum.map((subject) => (
+        <div key={subject.id} className="adash-curriculum-subject">
+          <button
+            className="adash-curriculum-subject-row"
+            onClick={() => toggle(subject.id)}
+            aria-expanded={!!expanded[subject.id]}
+          >
+            <span className="adash-curriculum-subject-name">{subject.label}</span>
+            <span className="adash-curriculum-chevron">
+              {expanded[subject.id] ? "▴" : "▾"}
+            </span>
+          </button>
+          {expanded[subject.id] && (
+            <div className="adash-curriculum-chapters">
+              {subject.chapters.map((ch) => (
+                <button
+                  key={ch.id}
+                  className="adash-curriculum-chapter-row"
+                  onClick={() => onNavigate(`/subjects/${subject.id}`)}
+                >
+                  {formatTitle(ch.label || ch.id)}
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// MAIN COMPONENT
+// ─────────────────────────────────────────────────────────────────────────────
 export default function AnalyticsDashboard() {
+  const navigate = useNavigate();
   const { session } = useAuth();
-  const userId = session?.user?.id || null;
+  const { curriculum } = useCurriculum();
+
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
   const [dueReviews, setDueReviews] = useState([]);
   const [unresolvedMistakes, setUnresolvedMistakes] = useState([]);
   const [showExplainability, setShowExplainability] = useState(false);
-  const navigate = useNavigate();
 
   useEffect(() => {
-    fetchAnalytics()
-      .then((res) => { setData(res); setLoading(false); })
-      .catch(() => { setError(true); setLoading(false); });
-    spacedRepo.getDueReviews(userId).then(setDueReviews).catch(() => {});
-    mistakeRepo.getUnresolvedMistakes(userId).then(setUnresolvedMistakes).catch(() => {});
-  }, [userId]);
+    let live = true;
+    Promise.all([
+      fetchAnalytics(),
+      spacedRepo.getDueItems(session?.user?.id),
+      mistakeRepo.getUnresolved(session?.user?.id),
+    ])
+      .then(([analytics, reviews, mistakes]) => {
+        if (!live) return;
+        setData(analytics);
+        setDueReviews(reviews || []);
+        setUnresolvedMistakes(mistakes || []);
+      })
+      .catch(() => { if (live) setData(null); })
+      .finally(() => { if (live) setLoading(false); });
+    return () => { live = false; };
+  }, [session?.user?.id]);
 
+  // ── Loading ──────────────────────────────────────────────────────────────
   if (loading) {
     return (
       <div className="adash">
-        <div className="adash-skeleton">
-          <SkeletonLoader type="list" count={3} />
-        </div>
+        <SkeletonLoader type="card" count={3} />
       </div>
     );
   }
 
-  if (error) {
-    return (
-      <div className="adash">
-        <div className="adash-error">
-          <svg viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#ef4444" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-          <p>Something went wrong. <button onClick={() => window.location.reload()}>Retry</button></p>
-        </div>
-      </div>
-    );
-  }
-
-  if (!data) return null;
-
+  // ── Build intelligence from evidence ─────────────────────────────────────
   const evidence = adaptAnalyticsToEvidence(data);
   const attempts = evidence.attempts;
   const intelligence = buildLearningIntelligence({
@@ -155,13 +198,49 @@ export default function AnalyticsDashboard() {
   const { overview, masteryMap, recommendation } = intelligence;
   const cognitiveMastery = intelligence.cognitiveMastery || {};
 
+  // ── Constitutional state derivation ──────────────────────────────────────
+  // Always use overview.learnerState. Never re-derive from raw scores.
+  const learnerState = overview.learnerState; // NOT_STARTED | EARLY_EVIDENCE | PROGRESSING | NEEDS_SUPPORT
+
   const totalPasses = attempts.filter((a) => a.correct).length;
   const totalQuizzes = attempts.length;
-  const accuracyRate = overview.accuracy;
 
-  const isColdStart =
-    overview.coldStart ||
-    (attempts.length === 0 && dueReviews.length === 0 && unresolvedMistakes.length === 0);
+  // ── Color law: each color has one job ────────────────────────────────────
+  const statusConfig = {
+    NOT_STARTED:    { label: "Ready to begin",  color: COLOR.slate, bgAlpha: "0f" },
+    EARLY_EVIDENCE: { label: "Calibrating",     color: COLOR.blue,  bgAlpha: "18" },
+    PROGRESSING:    { label: "On track",        color: COLOR.green, bgAlpha: "18" },
+    NEEDS_SUPPORT:  { label: "Needs attention", color: COLOR.amber, bgAlpha: "18" },
+  }[learnerState] || { label: "Ready to begin", color: COLOR.slate, bgAlpha: "0f" };
+
+  const readiness = overview.readinessScore || 0;
+
+  // ── Cognitive dimensions ─────────────────────────────────────────────────
+  const cognitiveDimensions = [
+    { key: "REC", label: "Recognition", val: cognitiveMastery.RECOGNITION?.score, color: COLOR.blue  },
+    { key: "RCL", label: "Recall",      val: cognitiveMastery.RECALL?.score,       color: COLOR.blue  },
+    { key: "PRO", label: "Procedure",   val: cognitiveMastery.PROCEDURAL?.score,   color: COLOR.green },
+    { key: "APP", label: "Application", val: cognitiveMastery.APPLICATION?.score,  color: COLOR.amber },
+    { key: "TRF", label: "Transfer",    val: cognitiveMastery.TRANSFER?.score,     color: COLOR.amber },
+  ];
+
+  // Evidence-based topic queue (only shown when there is evidence)
+  const priorityTopics = learnerState !== "NOT_STARTED"
+    ? [...(masteryMap?.weakTopics || [])].slice(0, 3)
+    : [];
+
+  const hasEvidence  = learnerState !== "NOT_STARTED";
+  const hasInsights  = learnerState === "PROGRESSING" || learnerState === "NEEDS_SUPPORT";
+  const nextTopic    = recommendation?.title ? formatTitle(recommendation.title) : null;
+
+  // ── Signal card colors follow the law ────────────────────────────────────
+  const reviewColor   = dueReviews.length > 0       ? COLOR.amber : COLOR.slate;
+  const mistakeColor  = unresolvedMistakes.length > 0 ? COLOR.red   : COLOR.slate;
+  const accuracyColor = !hasEvidence
+    ? COLOR.slate
+    : overview.accuracy >= 70 ? COLOR.green
+    : overview.accuracy >= 50 ? COLOR.amber
+    : COLOR.red;
 
   const handleStudyTopic = (item) => {
     const sid = item.subject_id || item.sid;
@@ -171,59 +250,35 @@ export default function AnalyticsDashboard() {
     else navigate("/subjects");
   };
 
-  const handlePrimaryAction = () => {
-    navigate(recommendation.route || "/subjects");
-  };
-
-  const allTopicStats = Object.values(masteryMap?.topics || {});
-  const priorityTopics = isColdStart
-    ? []
-    : [...(masteryMap?.weakTopics || [])].slice(0, 3);
-
-  const cognitiveDimensions = [
-    { key: "REC", label: "Recall", val: cognitiveMastery.RECOGNITION?.score, color: "#38bdf8" },
-    { key: "RCL", label: "Recall", val: cognitiveMastery.RECALL?.score, color: "#818cf8" },
-    { key: "PRO", label: "Procedure", val: cognitiveMastery.PROCEDURAL?.score, color: "#10b981" },
-    { key: "APP", label: "Application", val: cognitiveMastery.APPLICATION?.score, color: "#f59e0b" },
-    { key: "TRF", label: "Transfer", val: cognitiveMastery.TRANSFER?.score, color: "#ef4444" },
-  ];
-
-  const readiness = overview.readinessScore || 0;
-  const readinessColor = readiness >= 75 ? "#22c55e" : readiness >= 50 ? "#f59e0b" : "#ef4444";
-
-  // Determine one short, honest status phrase — zero corporate-speak
-  const statusPhrase = isColdStart
-    ? "No data yet"
-    : readiness >= 80
-    ? "On track"
-    : readiness >= 50
-    ? "Building"
-    : "Needs work";
-
-  // The ONE thing the learner should do next
-  const nextTopic = recommendation.title ? formatTitle(recommendation.title) : null;
-  const nextLabel = recommendation.buttonLabel || "Practice";
-
   return (
     <div className="adash">
 
-      {/* ── HERO: Score + Status ─────────────────────────────── */}
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div className="adash-hero">
         <div className="adash-hero-left">
-          <div className="adash-status-pill" style={{ background: `${readinessColor}18`, color: readinessColor }}>
-            {statusPhrase}
+          <div
+            className="adash-status-pill"
+            style={{
+              background: `${statusConfig.color}${statusConfig.bgAlpha}`,
+              color: statusConfig.color,
+            }}
+          >
+            {statusConfig.label}
           </div>
-          {isColdStart ? (
+
+          {learnerState === "NOT_STARTED" ? (
             <>
-              <h1 className="adash-big-num" style={{ color: "var(--t, #0f172a)", fontSize: "1.6rem", lineHeight: 1.2 }}>
-                Start learning
-              </h1>
-              <p className="adash-hero-sub">Complete a quiz to see your progress here.</p>
+              <h1 className="adash-cold-headline">Your learning profile</h1>
+              <p className="adash-cold-sub">
+                Complete an activity to see your personal mastery data here.
+              </p>
             </>
           ) : (
             <>
-              <h1 className="adash-big-num">{readiness}<span className="adash-big-pct">%</span></h1>
-              <p className="adash-hero-sub" style={{ color: "var(--t2, #64748b)" }}>
+              <h1 className="adash-big-num">
+                {readiness}<span className="adash-big-pct">%</span>
+              </h1>
+              <p className="adash-hero-sub">
                 {totalPasses}/{totalQuizzes} correct
               </p>
             </>
@@ -231,39 +286,47 @@ export default function AnalyticsDashboard() {
         </div>
 
         <div className="adash-hero-right">
-          {isColdStart ? (
-            <button className="adash-cta adash-cta-primary" onClick={() => navigate("/subjects")}>
+          {learnerState === "NOT_STARTED" ? (
+            <button
+              className="adash-cta adash-cta-primary"
+              onClick={() => navigate("/subjects")}
+            >
               Browse subjects
             </button>
           ) : (
-            <RingGauge score={readiness} size={88} />
+            <RingGauge score={readiness} size={84} color={statusConfig.color} />
           )}
         </div>
       </div>
 
-      {/* ── NEXT ACTION: Single focused card ────────────────── */}
-      {!isColdStart && nextTopic && (
-        <div className="adash-next-card" onClick={handlePrimaryAction}>
+      {/* ── NEXT ACTION ──────────────────────────────────────────────────── */}
+      {hasEvidence && nextTopic && (
+        <button
+          className="adash-next-card"
+          onClick={() => navigate(recommendation.route || "/subjects")}
+        >
           <div className="adash-next-eyebrow">Up next</div>
           <div className="adash-next-topic">{nextTopic}</div>
           <div className="adash-next-footer">
-            <span className="adash-next-action-label">{nextLabel} →</span>
+            <span className="adash-next-action-label">
+              {recommendation.buttonLabel || "Practice"} →
+            </span>
             {recommendation.authority === "SERVER_VERIFIED" && (
               <span className="adash-verified-dot" title="Server verified" />
             )}
           </div>
-        </div>
+        </button>
       )}
 
-      {/* ── QUICK SIGNALS: 2-column max, tap targets ───────── */}
-      {!isColdStart && (
+      {/* ── SIGNALS (only shown when evidence exists) ────────────────────── */}
+      {hasEvidence && (
         <div className="adash-signals">
           <button
             className="adash-signal-card"
             onClick={() => navigate("/analytics")}
             aria-label={`${dueReviews.length} reviews due`}
           >
-            <div className="adash-signal-num" style={{ color: dueReviews.length > 0 ? "#f59e0b" : "#22c55e" }}>
+            <div className="adash-signal-num" style={{ color: reviewColor }}>
               {dueReviews.length}
             </div>
             <div className="adash-signal-lbl">Due reviews</div>
@@ -272,9 +335,9 @@ export default function AnalyticsDashboard() {
           <button
             className="adash-signal-card"
             onClick={() => navigate("/mistakes")}
-            aria-label={`${unresolvedMistakes.length} mistakes to fix`}
+            aria-label={`${unresolvedMistakes.length} mistakes`}
           >
-            <div className="adash-signal-num" style={{ color: unresolvedMistakes.length > 0 ? "#ef4444" : "#22c55e" }}>
+            <div className="adash-signal-num" style={{ color: mistakeColor }}>
               {unresolvedMistakes.length}
             </div>
             <div className="adash-signal-lbl">Mistakes</div>
@@ -283,22 +346,26 @@ export default function AnalyticsDashboard() {
           <button
             className="adash-signal-card"
             onClick={() => navigate("/subjects")}
-            aria-label={`${accuracyRate}% accuracy`}
+            aria-label={`${overview.accuracy ?? 0}% accuracy`}
           >
-            <div className="adash-signal-num">{accuracyRate}%</div>
+            <div className="adash-signal-num" style={{ color: accuracyColor }}>
+              {/* Constitutional: never show 0% when NOT_STARTED. hasEvidence guards this. */}
+              {overview.accuracy ?? 0}%
+            </div>
             <div className="adash-signal-lbl">Accuracy</div>
           </button>
         </div>
       )}
 
-      {/* ── PRIORITY QUEUE: Max 3 items, no tabs ───────────── */}
-      {!isColdStart && priorityTopics.length > 0 && (
+      {/* ── PRIORITY TOPICS (evidence-based, shown only after calibration) ─ */}
+      {hasInsights && priorityTopics.length > 0 && (
         <div className="adash-queue">
           <div className="adash-section-label">Focus</div>
           {priorityTopics.map((item, idx) => {
-            const title = formatTitle(item.topic_title || item.topic || "Topic");
-            const score = item.performanceScore ?? item.mastery ?? 0;
-            const barColor = score < 40 ? "#ef4444" : score < 70 ? "#f59e0b" : "#22c55e";
+            const title    = formatTitle(item.topic_title || item.topic || "Topic");
+            const score    = item.performanceScore ?? item.mastery ?? 0;
+            // Bar color: green = progress, amber = needs attention, red = urgent
+            const barColor = score >= 70 ? COLOR.green : score >= 40 ? COLOR.amber : COLOR.red;
             return (
               <button
                 key={idx}
@@ -307,7 +374,9 @@ export default function AnalyticsDashboard() {
               >
                 <div className="adash-queue-item-inner">
                   <span className="adash-queue-title">{title}</span>
-                  <span className="adash-queue-pct" style={{ color: barColor }}>{score}%</span>
+                  <span className="adash-queue-pct" style={{ color: barColor }}>
+                    {score}%
+                  </span>
                 </div>
                 <SparkBar pct={score} color={barColor} />
               </button>
@@ -319,26 +388,40 @@ export default function AnalyticsDashboard() {
         </div>
       )}
 
-      {/* ── COGNITIVE BARS: No explanation needed, hover = detail ── */}
-      {!isColdStart && (
-        <div className="adash-cognitive">
-          <div className="adash-section-label">Skill depth</div>
-          <CognitiveFiveBar dimensions={cognitiveDimensions} />
-          <div className="adash-cognitive-axis">
-            {cognitiveDimensions.map((d) => (
-              <div key={d.key} className="adash-cognitive-tick" style={{ color: d.val ? d.color : "var(--t3, #94a3b8)" }}>
-                {d.key}
-              </div>
-            ))}
-          </div>
-        </div>
-      )}
+      {/* ── CURRICULUM EXPLORER — ALWAYS VISIBLE ─────────────────────────── */}
+      {/* A learner should never lose access to "where do I go next?" simply  */}
+      {/* because Tixar does not yet have enough evidence about them.          */}
+      <CurriculumExplorer
+        curriculum={curriculum}
+        onNavigate={navigate}
+      />
 
-      {/* Cold start CTA */}
-      {isColdStart && (
-        <button className="adash-cta adash-cta-primary adash-cta-full" onClick={() => navigate("/subjects")}>
-          Start your first quiz →
-        </button>
+      {/* ── LEARNING INSIGHTS (only shown once calibrated) ───────────────── */}
+      {hasEvidence && (
+        <div className="adash-cognitive">
+          <div className="adash-section-label">Your learning profile</div>
+          {hasInsights ? (
+            <>
+              <CognitiveFiveBar dimensions={cognitiveDimensions} />
+              <div className="adash-cognitive-axis">
+                {cognitiveDimensions.map((d) => (
+                  <div
+                    key={d.key}
+                    className="adash-cognitive-tick"
+                    title={d.label}
+                    style={{ color: d.val ? d.color : "var(--t3, #94a3b8)" }}
+                  >
+                    {d.key}
+                  </div>
+                ))}
+              </div>
+            </>
+          ) : (
+            <p className="adash-no-insights">
+              Complete a few more activities to build your mastery profile.
+            </p>
+          )}
+        </div>
       )}
 
       <ExplainabilityDrawer

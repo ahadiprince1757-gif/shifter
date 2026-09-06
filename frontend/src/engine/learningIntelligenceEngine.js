@@ -318,9 +318,23 @@ export function buildLearningIntelligence({
     };
   }
 
+  // ─────────────────────────────────────────────────────────────────────
+  // TIXAR CONSTITUTIONAL LAW: NOT_STARTED ≠ NEEDS_SUPPORT
+  // Absence of evidence is never treated as evidence of difficulty.
+  // ─────────────────────────────────────────────────────────────────────
+  const learnerState = (() => {
+    if (isColdStart) return "NOT_STARTED";           // No evidence yet. Neutral.
+    if (totalAttempts < 5) return "EARLY_EVIDENCE";  // Some evidence. Calibrating.
+    if (accuracy >= 70) return "PROGRESSING";         // Evidence of strength.
+    return "NEEDS_SUPPORT";                           // Evidence of genuine difficulty.
+  })();
+
   return {
     overview: {
       coldStart: isColdStart,
+      // learnerState is the canonical semantic state of the learner.
+      // Components MUST use this instead of deriving state from raw scores.
+      learnerState,
       intelligenceState: isColdStart
         ? "no_evidence"
         : totalAttempts < 5
@@ -330,6 +344,8 @@ export function buildLearningIntelligence({
         : "active_learning",
       totalAttempts,
       correctAttempts,
+      // Constitutional: Do NOT expose accuracy when NOT_STARTED.
+      // A percentage implies a measurement. With zero attempts there is no measurement.
       accuracy: isColdStart ? null : accuracy,
       reliableMastery: isColdStart ? 0 : reliableMastery.mastery,
       evidenceConfidence: isColdStart ? "UNMEASURED" : reliableMastery.confidence,

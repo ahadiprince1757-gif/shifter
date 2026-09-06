@@ -10783,13 +10783,127 @@ html.dark-mode .topic-filter-v2-pills {
   font-size: 0.9rem;
 }
 
+/* ── Cold-start headline ─────────────────────────────────── */
+.adash-cold-headline {
+  font-size: 1.25rem;
+  font-weight: 750;
+  color: var(--t, #0f172a);
+  margin: 0.5rem 0 0.25rem;
+  line-height: 1.25;
+}
+
+.adash-cold-sub {
+  font-size: 0.82rem;
+  color: var(--t2, #64748b);
+  margin: 0;
+  line-height: 1.45;
+  max-width: 220px;
+}
+
+/* ── No insights state ───────────────────────────────────── */
+.adash-no-insights {
+  font-size: 0.82rem;
+  color: var(--t2, #64748b);
+  margin: 0.5rem 0 0;
+  line-height: 1.5;
+}
+
+/* ──────────────────────────────────────────────────────────
+   CURRICULUM EXPLORER
+   Always visible — curriculum is NOT evidence-gated.
+   A learner should never need to fail before being shown
+   where to go next.
+────────────────────────────────────────────────────────── */
+.adash-curriculum {
+  background: var(--sur, #ffffff);
+  border: 1px solid var(--divider, #e2e8f0);
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.adash-curriculum-subject {
+  border-bottom: 1px solid var(--divider, #e2e8f0);
+}
+.adash-curriculum-subject:last-child {
+  border-bottom: none;
+}
+
+.adash-curriculum-subject-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  gap: 0.5rem;
+  transition: background 0.15s ease;
+}
+.adash-curriculum-subject-row:hover,
+.adash-curriculum-subject-row:focus-visible {
+  background: var(--bg2, #f8fafc);
+}
+
+.adash-curriculum-subject-name {
+  font-size: 0.9rem;
+  font-weight: 650;
+  color: var(--t, #0f172a);
+}
+
+.adash-curriculum-chevron {
+  font-size: 0.65rem;
+  color: var(--t3, #94a3b8);
+  flex-shrink: 0;
+}
+
+.adash-curriculum-chapters {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--divider, #e2e8f0);
+  background: var(--bg2, #f8fafc);
+}
+
+.adash-curriculum-chapter-row {
+  display: block;
+  width: 100%;
+  padding: 0.55rem 1rem 0.55rem 1.5rem;
+  text-align: left;
+  background: none;
+  border: none;
+  border-bottom: 1px solid var(--divider, #e2e8f0);
+  font-size: 0.82rem;
+  color: var(--t2, #64748b);
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+.adash-curriculum-chapter-row:last-child {
+  border-bottom: none;
+}
+.adash-curriculum-chapter-row:hover,
+.adash-curriculum-chapter-row:focus-visible {
+  background: var(--sur, #ffffff);
+  color: #1d6bf3;
+}
+
 /* ── Dark mode ───────────────────────────────────────────── */
 html.dark-mode .adash-hero,
 html.dark-mode .adash-queue,
 html.dark-mode .adash-cognitive,
-html.dark-mode .adash-signal-card {
+html.dark-mode .adash-signal-card,
+html.dark-mode .adash-curriculum {
   background: var(--sur, #1e293b);
   border-color: var(--bd, #334155);
+}
+
+html.dark-mode .adash-curriculum-subject-row:hover,
+html.dark-mode .adash-curriculum-chapter-row:hover {
+  background: var(--bg2, #0f172a);
+}
+
+html.dark-mode .adash-curriculum-chapters {
+  background: var(--bg2, #0f172a);
 }
 
 html.dark-mode .adash-next-card {
@@ -10804,6 +10918,7 @@ html.dark-mode .adash-queue-item {
 html.dark-mode .adash-big-num {
   color: var(--t, #f1f5f9);
 }
+
 
 
 
