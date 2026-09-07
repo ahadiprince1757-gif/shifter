@@ -177,10 +177,27 @@ export default function AnalyticsDashboard() {
 
   useEffect(() => {
     let live = true;
+    const userId = session?.user?.id;
     Promise.all([
-      fetchAnalytics(),
-      spacedRepo.getDueItems(session?.user?.id),
-      mistakeRepo.getUnresolved(session?.user?.id),
+      fetchAnalytics().catch(() => null),
+      (typeof spacedRepo.getDueReviews === "function"
+        ? spacedRepo.getDueReviews(userId)
+        : typeof spacedRepo.getDueItems === "function"
+        ? spacedRepo.getDueItems(userId)
+        : Promise.resolve([])
+      ).catch((err) => {
+        console.warn("[AnalyticsDashboard] Failed to fetch due reviews:", err);
+        return [];
+      }),
+      (typeof mistakeRepo.getUnresolvedMistakes === "function"
+        ? mistakeRepo.getUnresolvedMistakes(userId)
+        : typeof mistakeRepo.getUnresolved === "function"
+        ? mistakeRepo.getUnresolved(userId)
+        : Promise.resolve([])
+      ).catch((err) => {
+        console.warn("[AnalyticsDashboard] Failed to fetch unresolved mistakes:", err);
+        return [];
+      }),
     ])
       .then(([analytics, reviews, mistakes]) => {
         if (!live) return;
@@ -188,8 +205,13 @@ export default function AnalyticsDashboard() {
         setDueReviews(reviews || []);
         setUnresolvedMistakes(mistakes || []);
       })
-      .catch(() => { if (live) setData(null); })
-      .finally(() => { if (live) setLoading(false); });
+      .catch((err) => {
+        console.error("[AnalyticsDashboard] Error loading analytics data:", err);
+        if (live) setData(null);
+      })
+      .finally(() => {
+        if (live) setLoading(false);
+      });
     return () => { live = false; };
   }, [session?.user?.id]);
 

@@ -194,5 +194,12 @@ export const mistakeRepo = {
       console.error("Failed to cleanup old mistakes:", err);
     }
   },
+
+  /**
+   * Alias for getUnresolvedMistakes to satisfy getUnresolved calls
+   */
+  async getUnresolved(userId = null) {
+    return this.getUnresolvedMistakes(userId);
+  },
 };
 
