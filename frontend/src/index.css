@@ -10473,16 +10473,27 @@ html.dark-mode .topic-filter-v2-pills {
   justify-content: center;
 }
 
-/* Status pill — color-coded, single word */
+/* Status pill — monochrome, clean badge */
 .adash-status-pill {
-  display: inline-block;
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
-  padding: 0.2rem 0.6rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 99px;
+  background: var(--bg2, #f8fafc);
+  color: var(--t, #0f172a);
+  border: 1px solid var(--bd, #e2e8f0);
   width: fit-content;
+}
+
+.adash-status-pill-icon {
+  font-size: 0.75rem;
+  line-height: 1;
+  color: var(--t2, #64748b);
 }
 
 /* The number — dominant, no competing elements */
@@ -10511,27 +10522,28 @@ html.dark-mode .topic-filter-v2-pills {
 /* ── Next action card ─────────────────────────────────────── */
 /*
    A card is a button. One card. One action.
-   No sub-labels. No authority badges. No "why am I seeing this".
-   Tap it and go.
+   Pure monochrome inverted treatment: deep obsidian in light mode,
+   sleek elevated card in dark mode. Zero distracting chromatic color.
 */
 .adash-next-card {
   display: flex;
   flex-direction: column;
   gap: 0.35rem;
   padding: 1.1rem 1.2rem;
-  background: #1d6bf3;
+  background: var(--t, #0f172a);
   border-radius: 18px;
   cursor: pointer;
-  border: none;
+  border: 1px solid transparent;
   text-align: left;
-  box-shadow: 0 6px 20px rgba(29, 107, 243, 0.28);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
+  box-shadow: 0 4px 18px rgba(15, 23, 42, 0.12);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, opacity 0.15s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
 .adash-next-card:active {
   transform: scale(0.98);
-  box-shadow: 0 3px 10px rgba(29, 107, 243, 0.2);
+  opacity: 0.92;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.15);
 }
 
 .adash-next-eyebrow {
@@ -10574,7 +10586,7 @@ html.dark-mode .topic-filter-v2-pills {
 /* ── Signals row ─────────────────────────────────────────── */
 /*
    Three tappable cells. Number is the signal. Label is the noun.
-   Color = state, not decoration.
+   Monochrome hierarchy — zero chromatic noise.
 */
 .adash-signals {
   display: grid;
@@ -10602,20 +10614,19 @@ html.dark-mode .topic-filter-v2-pills {
   transform: scale(0.96);
 }
 
+.adash-signal-icon {
+  font-size: 0.75rem;
+  line-height: 1;
+  margin-bottom: 0.1rem;
+  color: var(--t3, #94a3b8);
+}
+
 .adash-signal-num {
   font-size: 1.85rem;
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.02em;
-}
-
-/* Icon is the FIRST signal channel — precedes the number */
-/* Its job: carry meaning even when color is not perceived  */
-.adash-signal-icon {
-  font-size: 0.75rem;
-  line-height: 1;
-  margin-bottom: 0.1rem;
-  opacity: 0.85;
+  color: var(--t, #0f172a);
 }
 
 .adash-signal-lbl {
@@ -10627,9 +10638,8 @@ html.dark-mode .topic-filter-v2-pills {
 
 /* ── Priority queue ──────────────────────────────────────── */
 /*
-   Items are buttons. Bar does the talking.
+   Items are buttons. Bar width communicates magnitude.
    Percentage is the only number that matters.
-   Max 3 — never a scrolling list.
 */
 .adash-queue {
   display: flex;
@@ -10694,17 +10704,31 @@ html.dark-mode .topic-filter-v2-pills {
   font-weight: 800;
   flex-shrink: 0;
   white-space: nowrap;
+  color: var(--t, #0f172a);
 }
 
-/* Text label after score — second signal channel alongside color */
-/* "strong" / "building" / "needs work" readable without color    */
 .adash-queue-score-label {
   font-size: 0.68rem;
   font-weight: 500;
-  opacity: 0.7;
-  margin-left: 0.2em;
+  color: var(--t2, #64748b);
+  margin-left: 0.25em;
   letter-spacing: 0;
   text-transform: lowercase;
+}
+
+.adash-spark-track {
+  height: 4px;
+  background: var(--divider, #f1f5f9);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 0.45rem;
+}
+
+.adash-spark-fill {
+  height: 100%;
+  background: var(--t, #0f172a);
+  border-radius: 99px;
+  transition: width 0.35s ease;
 }
 
 .adash-queue-more {
@@ -10714,11 +10738,15 @@ html.dark-mode .topic-filter-v2-pills {
   border: none;
   font-size: 0.78rem;
   font-weight: 700;
-  color: #1d6bf3;
+  color: var(--t, #0f172a);
   padding: 0.5rem 0 0;
   text-align: left;
   cursor: pointer;
   -webkit-tap-highlight-color: transparent;
+}
+
+.adash-queue-more:hover {
+  text-decoration: underline;
 }
 
 /* ── Cognitive bars ──────────────────────────────────────── */
@@ -10731,13 +10759,45 @@ html.dark-mode .topic-filter-v2-pills {
   background: var(--sur, #ffffff);
   border: 1px solid var(--bd, #e2e8f0);
   border-radius: 18px;
-  padding: 1rem 1.1rem 0.75rem;
+  padding: 1rem 1.1rem 0.85rem;
   box-shadow: 0 2px 12px rgba(0,0,0,0.03);
+}
+
+.adash-five-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+  height: 72px;
+  padding-top: 0.5rem;
+}
+
+.adash-five-bar-col {
+  flex: 1;
+  height: 100%;
+  display: flex;
+  align-items: flex-end;
+}
+
+.adash-five-bar-track {
+  width: 100%;
+  height: 100%;
+  background: var(--divider, #f1f5f9);
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+}
+
+.adash-five-bar-fill {
+  width: 100%;
+  background: var(--t, #0f172a);
+  border-radius: 6px 6px 0 0;
+  transition: height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .adash-cognitive-axis {
   display: flex;
-  gap: 6px;
+  gap: 8px;
   margin-top: 6px;
 }
 
@@ -10748,6 +10808,7 @@ html.dark-mode .topic-filter-v2-pills {
   font-weight: 800;
   letter-spacing: 0.02em;
   text-transform: uppercase;
+  color: var(--t2, #64748b);
   transition: color 0.3s ease;
 }
 
@@ -10768,9 +10829,9 @@ html.dark-mode .topic-filter-v2-pills {
 }
 
 .adash-cta-primary {
-  background: #1d6bf3;
+  background: var(--t, #0f172a);
   color: #ffffff;
-  box-shadow: 0 6px 20px rgba(29, 107, 243, 0.28);
+  box-shadow: 0 4px 14px rgba(15, 23, 42, 0.15);
 }
 
 .adash-cta-full {
@@ -10798,10 +10859,11 @@ html.dark-mode .topic-filter-v2-pills {
 .adash-error button {
   background: none;
   border: none;
-  color: #1d6bf3;
+  color: var(--t, #0f172a);
   font-weight: 700;
   cursor: pointer;
   font-size: 0.9rem;
+  text-decoration: underline;
 }
 
 /* ── Cold-start headline ─────────────────────────────────── */
@@ -10905,7 +10967,8 @@ html.dark-mode .topic-filter-v2-pills {
 .adash-curriculum-chapter-row:hover,
 .adash-curriculum-chapter-row:focus-visible {
   background: var(--sur, #ffffff);
-  color: #1d6bf3;
+  color: var(--t, #0f172a);
+  font-weight: 600;
 }
 
 /* ── Dark mode ───────────────────────────────────────────── */
@@ -10918,6 +10981,16 @@ html.dark-mode .adash-curriculum {
   border-color: var(--bd, #334155);
 }
 
+html.dark-mode .adash-status-pill {
+  background: var(--bg2, #0f172a);
+  border-color: var(--bd, #334155);
+  color: var(--t, #f1f5f9);
+}
+
+html.dark-mode .adash-status-pill-icon {
+  color: var(--t2, #94a3b8);
+}
+
 html.dark-mode .adash-curriculum-subject-row:hover,
 html.dark-mode .adash-curriculum-chapter-row:hover {
   background: var(--bg2, #0f172a);
@@ -10928,15 +11001,46 @@ html.dark-mode .adash-curriculum-chapters {
 }
 
 html.dark-mode .adash-next-card {
-  background: #1557d4;
-  box-shadow: 0 6px 20px rgba(21, 87, 212, 0.4);
+  background: var(--sur, #1e293b);
+  border: 1px solid var(--bd, #334155);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 html.dark-mode .adash-queue-item {
-  border-color: var(--bd, #1e293b);
+  border-color: var(--bd, #334155);
+}
+
+html.dark-mode .adash-queue-pct {
+  color: var(--t, #f1f5f9);
 }
 
 html.dark-mode .adash-big-num {
+  color: var(--t, #f1f5f9);
+}
+
+html.dark-mode .adash-signal-num {
+  color: var(--t, #f1f5f9);
+}
+
+html.dark-mode .adash-spark-track,
+html.dark-mode .adash-five-bar-track {
+  background: var(--bd, #334155);
+}
+
+html.dark-mode .adash-spark-fill,
+html.dark-mode .adash-five-bar-fill {
+  background: var(--t, #f1f5f9);
+}
+
+html.dark-mode .adash-cta-primary {
+  background: #f8fafc;
+  color: #0f172a;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+html.dark-mode .adash-curriculum-chapter-row:hover,
+html.dark-mode .adash-curriculum-chapter-row:focus-visible {
+  background: var(--bg, #090d16);
   color: var(--t, #f1f5f9);
 }
 

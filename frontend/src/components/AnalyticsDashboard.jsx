@@ -14,49 +14,31 @@ import { adaptAnalyticsToEvidence } from "../engine/analyticsEvidenceAdapter";
 import ExplainabilityDrawer from "./ExplainabilityDrawer";
 
 // ─────────────────────────────────────────────────────────────────────────────
-// TIXAR COLOR LAW + ACCESSIBILITY CONTRACT
+// TIXAR MONOCHROME LAW
 //
-// Rule 1: Color is never the only signal channel.
-//         Every colored value is paired with an icon or text label.
-//         Removing all color must leave meaning fully intact.
-//
-// Rule 2: Colors are muted/tinted — not saturated primaries.
-//         People with color aversions, colour blindness, or cultural
-//         associations that differ from the designer's assumptions must
-//         never be confused or distressed by the palette.
-//
-//  neutral (#64748b)  → NO_EVIDENCE. Nothing measured yet. No judgment.
-//  ink     (#1d4ed8)  → Navigation and primary actions.
-//  teal    (#0d9488)  → Demonstrated progress or mastery.   (replaces green — avoids red/green blindness)
-//  ochre   (#b45309)  → Attention recommended.              (replaces amber — less alarming)
-//  crimson (#be123c)  → Genuine problem requiring action.   (replaces red — more muted)
+// Zero chromatic color. Contrast, typography, geometry, and semantic text
+// carry 100% of the meaning. Eliminates cognitive distraction, cultural
+// color misinterpretation, and all forms of color vision deficiency barriers.
 // ─────────────────────────────────────────────────────────────────────────────
-const COLOR = {
-  neutral: "#64748b",  // no evidence
-  ink:     "#1d4ed8",  // primary action (blue family)
-  teal:    "#0d9488",  // progress / mastery (distinguishable from crimson for all CVD types)
-  ochre:   "#b45309",  // attention (warm, not alarming)
-  crimson: "#be123c",  // urgent (dark enough to contrast on white, not screamingly saturated)
-};
 
-// ── Signal semantics: each signal has an icon so meaning is not color-only ────
-// icon: ● = neutral/no data  ✓ = good  ▲ = needs action  ✗ = needs resolution
+// ── Signal semantics: pure typography and clear iconography ───────────────────
+// icon: ○ = none/not measured  ✓ = strong  ▲ = attention  ✗ = items to resolve
 function signalConfig(value, type) {
   if (type === "reviews") {
-    if (value === 0) return { color: COLOR.neutral, icon: "●", iconLabel: "none due" };
-    return { color: COLOR.ochre, icon: "▲", iconLabel: `${value} due` };
+    if (value === 0) return { icon: "○", iconLabel: "none due" };
+    return { icon: "▲", iconLabel: `${value} due` };
   }
   if (type === "mistakes") {
-    if (value === 0) return { color: COLOR.neutral, icon: "●", iconLabel: "none" };
-    return { color: COLOR.crimson, icon: "✗", iconLabel: `${value} to fix` };
+    if (value === 0) return { icon: "○", iconLabel: "none" };
+    return { icon: "✗", iconLabel: `${value} to fix` };
   }
   if (type === "accuracy") {
-    if (value === null) return { color: COLOR.neutral, icon: "●", iconLabel: "not measured" };
-    if (value >= 70) return { color: COLOR.teal,    icon: "✓", iconLabel: "strong" };
-    if (value >= 50) return { color: COLOR.ochre,   icon: "▲", iconLabel: "improving" };
-    return { color: COLOR.crimson, icon: "▲", iconLabel: "needs work" };
+    if (value === null) return { icon: "○", iconLabel: "not measured" };
+    if (value >= 70) return { icon: "✓", iconLabel: "strong" };
+    if (value >= 50) return { icon: "▲", iconLabel: "improving" };
+    return { icon: "▲", iconLabel: "needs work" };
   }
-  return { color: COLOR.neutral, icon: "●", iconLabel: "" };
+  return { icon: "○", iconLabel: "" };
 }
 
 function formatTitle(str) {
@@ -72,18 +54,28 @@ function formatTitle(str) {
     .join(" ");
 }
 
-// ── Ring gauge ────────────────────────────────────────────────────────────────
-function RingGauge({ score, size = 88, color }) {
+// ── Ring gauge: high-contrast monochrome circular track ──────────────────────
+function RingGauge({ score, size = 84 }) {
   const r = 36;
   const circ = 2 * Math.PI * r;
   const pct = Math.max(0, Math.min(100, score));
   const offset = circ - (pct / 100) * circ;
   return (
     <svg width={size} height={size} viewBox="0 0 80 80" style={{ flexShrink: 0 }}>
-      <circle cx="40" cy="40" r={r} fill="none" stroke="var(--ring-track, rgba(0,0,0,0.06))" strokeWidth="6" />
       <circle
-        cx="40" cy="40" r={r} fill="none"
-        stroke={color}
+        cx="40"
+        cy="40"
+        r={r}
+        fill="none"
+        stroke="var(--divider, #e2e8f0)"
+        strokeWidth="6"
+      />
+      <circle
+        cx="40"
+        cy="40"
+        r={r}
+        fill="none"
+        stroke="var(--t, #0f172a)"
         strokeWidth="6"
         strokeLinecap="round"
         strokeDasharray={circ}
@@ -95,19 +87,19 @@ function RingGauge({ score, size = 88, color }) {
   );
 }
 
-// ── Spark bar (single horizontal fill) ───────────────────────────────────────
-function SparkBar({ pct, color }) {
+// ── Spark bar (monochrome horizontal fill) ───────────────────────────────────
+function SparkBar({ pct }) {
   return (
     <div className="adash-spark-track">
       <div
         className="adash-spark-fill"
-        style={{ width: `${Math.max(2, pct)}%`, background: color }}
+        style={{ width: `${Math.max(2, Math.min(100, pct))}%` }}
       />
     </div>
   );
 }
 
-// ── Five cognitive bars ───────────────────────────────────────────────────────
+// ── Five cognitive bars (monochrome vertical progress) ───────────────────────
 function CognitiveFiveBar({ dimensions }) {
   return (
     <div className="adash-five-bars">
@@ -117,8 +109,7 @@ function CognitiveFiveBar({ dimensions }) {
             <div
               className="adash-five-bar-fill"
               style={{
-                height: `${d.val || 0}%`,
-                background: d.val ? d.color : "var(--divider, #e2e8f0)",
+                height: `${Math.max(0, Math.min(100, d.val || 0))}%`,
               }}
             />
           </div>
@@ -232,25 +223,23 @@ export default function AnalyticsDashboard() {
   const totalPasses = attempts.filter((a) => a.correct).length;
   const totalQuizzes = attempts.length;
 
-  // ── Status config: icon + muted color for the hero pill ─────────────────
+  // ── Status config: icon + semantic text in pure monochrome ───────────────
   const statusConfig = {
-    NOT_STARTED:    { label: "Ready to begin",  icon: "○", color: COLOR.neutral, bgAlpha: "10" },
-    EARLY_EVIDENCE: { label: "Calibrating",     icon: "◐", color: COLOR.ink,     bgAlpha: "12" },
-    PROGRESSING:    { label: "On track",        icon: "✓", color: COLOR.teal,    bgAlpha: "12" },
-    NEEDS_SUPPORT:  { label: "Needs attention", icon: "▲", color: COLOR.ochre,   bgAlpha: "12" },
-  }[learnerState] || { label: "Ready to begin", icon: "○", color: COLOR.neutral, bgAlpha: "10" };
+    NOT_STARTED:    { label: "Ready to begin",  icon: "○" },
+    EARLY_EVIDENCE: { label: "Calibrating",     icon: "◐" },
+    PROGRESSING:    { label: "On track",        icon: "●" },
+    NEEDS_SUPPORT:  { label: "Needs attention", icon: "▲" },
+  }[learnerState] || { label: "Ready to begin", icon: "○" };
 
   const readiness = overview.readinessScore || 0;
 
-  // ── Cognitive dimensions: single ink hue at varying opacity ──────────────
-  // Using one color family avoids the "what does each color mean?" problem
-  // while height of the bar already carries the magnitude signal.
+  // ── Cognitive dimensions: unified neutral bars, height carries the signal ──
   const cognitiveDimensions = [
-    { key: "REC", label: "Recognition", val: cognitiveMastery.RECOGNITION?.score, color: COLOR.ink  },
-    { key: "RCL", label: "Recall",      val: cognitiveMastery.RECALL?.score,       color: COLOR.ink  },
-    { key: "PRO", label: "Procedure",   val: cognitiveMastery.PROCEDURAL?.score,   color: COLOR.teal },
-    { key: "APP", label: "Application", val: cognitiveMastery.APPLICATION?.score,  color: COLOR.teal },
-    { key: "TRF", label: "Transfer",    val: cognitiveMastery.TRANSFER?.score,     color: COLOR.ochre },
+    { key: "REC", label: "Recognition", val: cognitiveMastery.RECOGNITION?.score },
+    { key: "RCL", label: "Recall",      val: cognitiveMastery.RECALL?.score },
+    { key: "PRO", label: "Procedure",   val: cognitiveMastery.PROCEDURAL?.score },
+    { key: "APP", label: "Application", val: cognitiveMastery.APPLICATION?.score },
+    { key: "TRF", label: "Transfer",    val: cognitiveMastery.TRANSFER?.score },
   ];
 
   // Evidence-based topic queue (only shown when there is evidence)
@@ -262,7 +251,7 @@ export default function AnalyticsDashboard() {
   const hasInsights  = learnerState === "PROGRESSING" || learnerState === "NEEDS_SUPPORT";
   const nextTopic    = recommendation?.title ? formatTitle(recommendation.title) : null;
 
-  // ── Signal configs: icon + muted color, never color alone ────────────────
+  // ── Signal configs: icon + label, zero color dependencies ────────────────
   const reviewSig   = signalConfig(dueReviews.length, "reviews");
   const mistakeSig  = signalConfig(unresolvedMistakes.length, "mistakes");
   const accuracySig = signalConfig(hasEvidence ? (overview.accuracy ?? 0) : null, "accuracy");
@@ -281,13 +270,8 @@ export default function AnalyticsDashboard() {
       {/* ── HERO ─────────────────────────────────────────────────────────── */}
       <div className="adash-hero">
         <div className="adash-hero-left">
-          <div
-            className="adash-status-pill"
-            style={{
-              background: `${statusConfig.color}${statusConfig.bgAlpha}`,
-              color: statusConfig.color,
-            }}
-          >
+          <div className="adash-status-pill">
+            <span className="adash-status-pill-icon" aria-hidden="true">{statusConfig.icon}</span>
             {statusConfig.label}
           </div>
 
@@ -295,7 +279,7 @@ export default function AnalyticsDashboard() {
             <>
               <h1 className="adash-cold-headline">Your learning profile</h1>
               <p className="adash-cold-sub">
-                Complete an activity to see your personal mastery data here.
+                Complete an activity to establish your personal mastery profile.
               </p>
             </>
           ) : (
@@ -319,7 +303,7 @@ export default function AnalyticsDashboard() {
               Browse subjects
             </button>
           ) : (
-            <RingGauge score={readiness} size={84} color={statusConfig.color} />
+            <RingGauge score={readiness} size={84} />
           )}
         </div>
       </div>
@@ -344,7 +328,6 @@ export default function AnalyticsDashboard() {
       )}
 
       {/* ── SIGNALS (only shown when evidence exists) ────────────────────── */}
-      {/* Each card: icon + number + label — meaning intact without any color */}
       {hasEvidence && (
         <div className="adash-signals">
           <button
@@ -352,11 +335,8 @@ export default function AnalyticsDashboard() {
             onClick={() => navigate("/analytics")}
             aria-label={`${dueReviews.length} reviews due`}
           >
-            <div className="adash-signal-icon" style={{ color: reviewSig.color }}
-              aria-hidden="true">{reviewSig.icon}</div>
-            <div className="adash-signal-num" style={{ color: reviewSig.color }}>
-              {dueReviews.length}
-            </div>
+            <div className="adash-signal-icon" aria-hidden="true">{reviewSig.icon}</div>
+            <div className="adash-signal-num">{dueReviews.length}</div>
             <div className="adash-signal-lbl">Reviews</div>
           </button>
 
@@ -365,11 +345,8 @@ export default function AnalyticsDashboard() {
             onClick={() => navigate("/mistakes")}
             aria-label={`${unresolvedMistakes.length} mistakes`}
           >
-            <div className="adash-signal-icon" style={{ color: mistakeSig.color }}
-              aria-hidden="true">{mistakeSig.icon}</div>
-            <div className="adash-signal-num" style={{ color: mistakeSig.color }}>
-              {unresolvedMistakes.length}
-            </div>
+            <div className="adash-signal-icon" aria-hidden="true">{mistakeSig.icon}</div>
+            <div className="adash-signal-num">{unresolvedMistakes.length}</div>
             <div className="adash-signal-lbl">Mistakes</div>
           </button>
 
@@ -378,9 +355,8 @@ export default function AnalyticsDashboard() {
             onClick={() => navigate("/subjects")}
             aria-label={`${overview.accuracy ?? 0}% accuracy, ${accuracySig.iconLabel}`}
           >
-            <div className="adash-signal-icon" style={{ color: accuracySig.color }}
-              aria-hidden="true">{accuracySig.icon}</div>
-            <div className="adash-signal-num" style={{ color: accuracySig.color }}>
+            <div className="adash-signal-icon" aria-hidden="true">{accuracySig.icon}</div>
+            <div className="adash-signal-num">
               {/* Constitutional: never show 0% when NOT_STARTED. hasEvidence guards this. */}
               {overview.accuracy ?? 0}%
             </div>
@@ -396,9 +372,7 @@ export default function AnalyticsDashboard() {
           {priorityTopics.map((item, idx) => {
             const title = formatTitle(item.topic_title || item.topic || "Topic");
             const score = item.performanceScore ?? item.mastery ?? 0;
-            // Semantic label carries meaning. Bar fill + muted color is secondary.
             const scoreLabel = score >= 70 ? "strong" : score >= 40 ? "building" : "needs work";
-            const barColor   = score >= 70 ? COLOR.teal : score >= 40 ? COLOR.ochre : COLOR.crimson;
             return (
               <button
                 key={idx}
@@ -408,12 +382,11 @@ export default function AnalyticsDashboard() {
               >
                 <div className="adash-queue-item-inner">
                   <span className="adash-queue-title">{title}</span>
-                  <span className="adash-queue-pct" style={{ color: barColor }}>
-                    {/* Score + text label — no learner must guess what a color means */}
+                  <span className="adash-queue-pct">
                     {score}% <span className="adash-queue-score-label">{scoreLabel}</span>
                   </span>
                 </div>
-                <SparkBar pct={score} color={barColor} />
+                <SparkBar pct={score} />
               </button>
             );
           })}
@@ -444,7 +417,6 @@ export default function AnalyticsDashboard() {
                     key={d.key}
                     className="adash-cognitive-tick"
                     title={d.label}
-                    style={{ color: d.val ? d.color : "var(--t3, #94a3b8)" }}
                   >
                     {d.key}
                   </div>
