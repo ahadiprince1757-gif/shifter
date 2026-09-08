@@ -25,14 +25,14 @@ export const SESSION_PHASES = {
   MASTERY: 2,
 };
 
-export function useSessionLoop({ subject, chapter, topic, content, userId, markMastered }) {
+export function useSessionLoop({ subject, chapter, topic, content, userId, markMastered, initialPhase = SESSION_PHASES.NOTES }) {
   const questions = useMemo(
     () => (Array.isArray(content?.qs) ? content.qs : []),
     [content]
   );
 
   // ── Core Phase: 0 = Notes, 1 = Quiz, 2 = Mastery ────────────────────────────
-  const [phase, setPhase] = useState(SESSION_PHASES.NOTES);
+  const [phase, setPhase] = useState(initialPhase);
 
   // ── Quiz State ─────────────────────────────────────────────────────────────
   const [qIdx, setQIdx] = useState(0);
@@ -64,7 +64,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     if (topic === prevTopicRef.current) return;
     prevTopicRef.current = topic;
 
-    setPhase(SESSION_PHASES.NOTES);
+    setPhase(initialPhase);
     setQIdx(0);
     setAnswer("");
     setWork("");

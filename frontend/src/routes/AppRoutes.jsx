@@ -1,5 +1,7 @@
 import React, { Suspense, useState } from "react";
-import { Routes, Route, useNavigate, useParams } from "react-router-dom";
+import { Routes, Route, useNavigate, useParams, useLocation } from "react-router-dom";
+import { LEARNING_MODES } from "../utils/learningNavigation";
+import { SESSION_PHASES } from "../hooks/useSessionLoop";
 import AppLayout from "../components/AppLayout";
 import LandingPage from "../pages/LandingPage";
 import VerificationPage from "../pages/VerificationPage";
@@ -60,10 +62,41 @@ const LearnFlowWrapper = () => {
   const { subjectMap, chapterMap } = useCurriculum();
   const { mastered, markMastered } = useMasteredTopics();
   const navigate = useNavigate();
+  const location = useLocation();
 
   const topic = decodeURIComponent(topicId);
   const subject = subjectMap.get(subjectId);
   const chapter = chapterMap.get(`${subjectId}|${chapterId}`);
+
+  // Read repair context injected by learningNavigation.navigateToTopic()
+  const navState = location.state || {};
+  const isMistakeRepair = navState.mode === LEARNING_MODES.MISTAKE_REPAIR;
+  const isSpacedReview  = navState.mode === LEARNING_MODES.SPACED_REVIEW;
+  const initialPhase =
+    isMistakeRepair || isSpacedReview
+      ? SESSION_PHASES.QUIZ
+      : SESSION_PHASES.NOTES;
+
+  // Build a descriptive back destination:
+  // - Mistake repair  → back to Mistake Journal
+  // - Spaced review   → back to Analytics
+  // - Normal flow     → back to chapter topic list
+  const goBack =
+    isMistakeRepair
+      ? () => navigate("/mistakes")
+      : isSpacedReview
+      ? () => navigate("/analytics")
+      : () => navigate(`/subjects/${subjectId}/chapters/${chapterId}`);
+
+  const repairContext = (isMistakeRepair || isSpacedReview)
+    ? {
+        mode: navState.mode,
+        source: navState.source,
+        mistakeId: navState.mistakeId,
+        questionId: navState.questionId,
+      }
+    : null;
+
   if (!chapter) return <div style={{ padding: "2rem" }}>Topic not found</div>;
   return (
     <LearnFlow
@@ -71,9 +104,11 @@ const LearnFlowWrapper = () => {
       subject={subject}
       chapter={chapter}
       topic={topic}
-      goBack={() => navigate(`/subjects/${subjectId}/chapters/${chapterId}`)}
+      goBack={goBack}
       markMastered={markMastered}
       mastered={mastered}
+      initialPhase={initialPhase}
+      repairContext={repairContext}
       goToTopic={(nextTopic, nextChapterId) =>
         navigate(`/learn/${subjectId}/${nextChapterId}/${encodeURIComponent(nextTopic)}`)
       }

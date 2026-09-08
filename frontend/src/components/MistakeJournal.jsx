@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
+import { navigateToTopic, LEARNING_MODES } from "../utils/learningNavigation";
 
 function formatTitle(str) {
   if (!str) return "";
@@ -48,16 +49,19 @@ export default function MistakeJournal() {
       : mistakes.filter((m) => m.subject_id === filter);
 
   const handlePractice = (mistake) => {
-    const sid = mistake.subject_id || mistake.sid;
-    const cid = mistake.chapter_id || mistake.chapter_key || mistake.cid;
-    const topic = mistake.topic_id || mistake.topic_title;
-    if (sid && cid && topic) {
-      navigate(
-        `/learn/${sid}/${cid}/${encodeURIComponent(topic)}`
-      );
-    } else {
-      navigate("/subjects");
-    }
+    const subjectId = mistake.subject_id || mistake.sid;
+    const chapterId = mistake.chapter_id || mistake.chapter_key || mistake.cid;
+    const topicId   = mistake.topic_id || mistake.topic_title;
+
+    navigateToTopic(navigate, {
+      subjectId,
+      chapterId,
+      topicId,
+      mode: LEARNING_MODES.MISTAKE_REPAIR,
+      source: "mistake_journal",
+      mistakeId: mistake.id,
+      questionId: mistake.question_id || null,
+    });
   };
 
   return (

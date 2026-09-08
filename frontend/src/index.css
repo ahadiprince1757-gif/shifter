@@ -11094,6 +11094,66 @@ html.dark-mode .adash-curriculum-chapter-row:hover {
 
 
 
+/* ═══════════════════════════════════════════════════════════════════════════
+   REPAIR MODE BANNER  — shown in LearnFlow during mistake_repair / spaced_review
+   ═══════════════════════════════════════════════════════════════════════════ */
 
+.repair-mode-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1rem;
+  margin: 0 0 0.5rem 0;
+  background: rgba(245, 158, 11, 0.08);
+  border-left: 3px solid #f59e0b;
+  border-radius: 0 8px 8px 0;
+  font-size: 0.82rem;
+  color: var(--t2, #4a4a6a);
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+}
 
+.repair-mode-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #92400e;
+  background: rgba(245, 158, 11, 0.15);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  padding: 0.15rem 0.5rem;
+  border-radius: 20px;
+  flex-shrink: 0;
+  white-space: nowrap;
+}
 
+.repair-mode-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.repair-mode-notes-link {
+  background: none;
+  border: 1px solid #f59e0b;
+  color: #d97706;
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: 20px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.18s, color 0.18s;
+  flex-shrink: 0;
+}
+
+.repair-mode-notes-link:hover {
+  background: #f59e0b;
+  color: #fff;
+}
+
+@media (max-width: 480px) {
+  .repair-mode-banner {
+    font-size: 0.78rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

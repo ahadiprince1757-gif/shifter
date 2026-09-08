@@ -13,6 +13,7 @@ import {
 } from "../engine/learningIntelligenceEngine";
 import { adaptAnalyticsToEvidence } from "../engine/analyticsEvidenceAdapter";
 import ExplainabilityDrawer from "./ExplainabilityDrawer";
+import { navigateToTopic, LEARNING_MODES } from "../utils/learningNavigation";
 
 /** Helper to convert raw IDs/slugs into clean human Title Case */
 function formatTitle(str) {
@@ -259,15 +260,18 @@ export default function AnalyticsDashboard() {
     ? "Ready to progress"
     : "Not ready yet";
 
-  const handleStudyTopic = (item) => {
-    const sid = item.subject_id || item.sid;
-    const cid = item.chapter_id || item.chapter_key || item.cid;
-    const topic = item.topic_title || item.topic;
-    if (sid && cid && topic) {
-      navigate(`/learn/${sid}/${cid}/${encodeURIComponent(topic)}`);
-    } else {
-      navigate("/subjects");
-    }
+  const handleStudyTopic = (item, mode = LEARNING_MODES.MISTAKE_REPAIR) => {
+    const subjectId = item.subject_id || item.sid;
+    const chapterId = item.chapter_id || item.chapter_key || item.cid;
+    const topicId   = item.topic_title || item.topic;
+
+    navigateToTopic(navigate, {
+      subjectId,
+      chapterId,
+      topicId,
+      mode,
+      source: "analytics_dashboard",
+    });
   };
 
   const handlePrimaryAction = () => {
@@ -473,13 +477,17 @@ export default function AnalyticsDashboard() {
               const subject = formatTitle(item.subject_name || item.subject_id || "Science");
               const chapter = formatTitle(item.chapter_title || item.chapter_id || "Practical Skills");
               const score = item.performanceScore ?? item.mastery ?? 0;
-              const actionLabel = score < 40 ? "Repair" : "Practice";
+              const actionLabel = topicFilterTab === "strong" ? "Review" : score < 40 ? "Repair" : "Practice";
+              // Strong topics don't need repair mode — open Notes normally
+              const navMode = topicFilterTab === "strong"
+                ? LEARNING_MODES.NORMAL
+                : LEARNING_MODES.MISTAKE_REPAIR;
 
               return (
                 <div
                   key={idx}
                   className="topic-v2-item"
-                  onClick={() => handleStudyTopic(item)}
+                  onClick={() => handleStudyTopic(item, navMode)}
                 >
                   <div className="topic-v2-item-main">
                     <div className="topic-v2-item-title">{idx + 1}. {title}</div>
