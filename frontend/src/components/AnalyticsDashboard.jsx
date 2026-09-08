@@ -6,6 +6,7 @@ import { spacedRepo } from "../repository/spacedRepo";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import { useAuth } from "../hooks/useAuth";
 import { useCurriculum } from "../hooks/useCurriculum";
+import { calculateCBCGrade } from "../engine/cbcGrading";
 import {
   buildLearningIntelligence,
   calculateCognitiveMastery,
@@ -13,34 +14,7 @@ import {
 import { adaptAnalyticsToEvidence } from "../engine/analyticsEvidenceAdapter";
 import ExplainabilityDrawer from "./ExplainabilityDrawer";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// TIXAR MONOCHROME LAW
-//
-// Zero chromatic color. Contrast, typography, geometry, and semantic text
-// carry 100% of the meaning. Eliminates cognitive distraction, cultural
-// color misinterpretation, and all forms of color vision deficiency barriers.
-// ─────────────────────────────────────────────────────────────────────────────
-
-// ── Signal semantics: pure typography and clear iconography ───────────────────
-// icon: ○ = none/not measured  ✓ = strong  ▲ = attention  ✗ = items to resolve
-function signalConfig(value, type) {
-  if (type === "reviews") {
-    if (value === 0) return { icon: "○", iconLabel: "none due" };
-    return { icon: "▲", iconLabel: `${value} due` };
-  }
-  if (type === "mistakes") {
-    if (value === 0) return { icon: "○", iconLabel: "none" };
-    return { icon: "✗", iconLabel: `${value} to fix` };
-  }
-  if (type === "accuracy") {
-    if (value === null) return { icon: "○", iconLabel: "not measured" };
-    if (value >= 70) return { icon: "✓", iconLabel: "strong" };
-    if (value >= 50) return { icon: "▲", iconLabel: "improving" };
-    return { icon: "▲", iconLabel: "needs work" };
-  }
-  return { icon: "○", iconLabel: "" };
-}
-
+/** Helper to convert raw IDs/slugs into clean human Title Case */
 function formatTitle(str) {
   if (!str) return "";
   if (!str.includes("_") && !str.includes("-") && /[a-z]/.test(str)) {
@@ -50,76 +24,68 @@ function formatTitle(str) {
     .replace(/[_-]/g, " ")
     .split(" ")
     .filter(Boolean)
-    .map((w) => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase())
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
     .join(" ");
 }
 
-// ── Ring gauge: high-contrast monochrome circular track ──────────────────────
-function RingGauge({ score, size = 84 }) {
-  const r = 36;
-  const circ = 2 * Math.PI * r;
-  const pct = Math.max(0, Math.min(100, score));
-  const offset = circ - (pct / 100) * circ;
-  return (
-    <svg width={size} height={size} viewBox="0 0 80 80" style={{ flexShrink: 0 }}>
-      <circle
-        cx="40"
-        cy="40"
-        r={r}
-        fill="none"
-        stroke="var(--divider, #e2e8f0)"
-        strokeWidth="6"
-      />
-      <circle
-        cx="40"
-        cy="40"
-        r={r}
-        fill="none"
-        stroke="var(--t, #0f172a)"
-        strokeWidth="6"
-        strokeLinecap="round"
-        strokeDasharray={circ}
-        strokeDashoffset={offset}
-        transform="rotate(-90 40 40)"
-        style={{ transition: "stroke-dashoffset 0.6s cubic-bezier(.4,0,.2,1)" }}
-      />
-    </svg>
-  );
-}
+/** Semi-Circle Arc Gauge SVG Component (Clean visual indicator of learning readiness) */
+function ReadinessArcGauge({ score = 0 }) {
+  const radius = 40;
+  const strokeWidth = 8;
+  const circumference = Math.PI * radius; // ~125.66
+  const safeScore = Math.min(Math.max(score || 0, 0), 100);
+  const progressOffset = circumference * (1 - safeScore / 100);
 
-// ── Spark bar (monochrome horizontal fill) ───────────────────────────────────
-function SparkBar({ pct }) {
   return (
-    <div className="adash-spark-track">
-      <div
-        className="adash-spark-fill"
-        style={{ width: `${Math.max(2, Math.min(100, pct))}%` }}
-      />
+    <div className="readiness-gauge-wrapper">
+      <svg viewBox="0 0 100 56" className="readiness-arc-svg" aria-label={`Readiness gauge: ${safeScore}%`}>
+        {/* Background Arc */}
+        <path
+          d="M 10 48 A 40 40 0 0 1 90 48"
+          fill="none"
+          stroke="var(--bd2, #e2e8f0)"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+        />
+        {/* Progress Arc */}
+        <path
+          d="M 10 48 A 40 40 0 0 1 90 48"
+          fill="none"
+          stroke="var(--primary, #1d6bf3)"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={progressOffset}
+          style={{ transition: "stroke-dashoffset 0.8s ease-in-out" }}
+        />
+      </svg>
     </div>
   );
 }
 
-// ── Five cognitive bars (monochrome vertical progress) ───────────────────────
-function CognitiveFiveBar({ dimensions }) {
+/** Dedicated Hero Card for New Users (No learning evidence yet) */
+function ColdStartReadiness({ onBrowseSubjects }) {
   return (
-    <div className="adash-five-bars">
-      {dimensions.map((d) => (
-        <div key={d.key} className="adash-five-bar-col">
-          <div className="adash-five-bar-track">
-            <div
-              className="adash-five-bar-fill"
-              style={{
-                height: `${Math.max(0, Math.min(100, d.val || 0))}%`,
-              }}
-            />
-          </div>
-        </div>
-      ))}
+    <div className="readiness-v2-card cold-start-card">
+      <div className="cold-start-content">
+        <div className="readiness-v2-label">LEARNING READINESS</div>
+        <h2 className="cold-start-title">Start your learning journey</h2>
+        <p className="cold-start-desc">
+          Complete your first topic quiz to begin building your personalized learning profile and readiness diagnosis.
+        </p>
+        <button
+          className="repair-gap-v2-btn"
+          style={{ marginTop: "0.85rem", alignSelf: "flex-start" }}
+          onClick={onBrowseSubjects}
+        >
+          Browse Subjects →
+        </button>
+      </div>
     </div>
   );
 }
 
-// ── Curriculum tree (always rendered) ────────────────────────────────────────
+/** Curriculum tree preview (always rendered for curriculum exploration) */
 function CurriculumExplorer({ curriculum, onNavigate }) {
   const [expanded, setExpanded] = useState({});
 
@@ -129,7 +95,10 @@ function CurriculumExplorer({ curriculum, onNavigate }) {
 
   return (
     <div className="adash-curriculum">
-      <div className="adash-section-label">Ready to explore</div>
+      <div className="adash-curriculum-header">
+        <h3 className="adash-curriculum-title">Curriculum Explorer</h3>
+        <span className="adash-curriculum-sub">Preview all available subjects & chapters</span>
+      </div>
       {curriculum.map((subject) => (
         <div key={subject.id} className="adash-curriculum-subject">
           <button
@@ -161,25 +130,29 @@ function CurriculumExplorer({ curriculum, onNavigate }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// MAIN COMPONENT
-// ─────────────────────────────────────────────────────────────────────────────
 export default function AnalyticsDashboard() {
   const navigate = useNavigate();
   const { session } = useAuth();
   const { curriculum } = useCurriculum();
+  const userId = session?.user?.id || null;
 
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [topicFilterTab, setTopicFilterTab] = useState("needs_attention"); // 'needs_attention' | 'emerging' | 'strong'
   const [dueReviews, setDueReviews] = useState([]);
   const [unresolvedMistakes, setUnresolvedMistakes] = useState([]);
+  const [showCognitiveDetails, setShowCognitiveDetails] = useState(false);
   const [showExplainability, setShowExplainability] = useState(false);
 
   useEffect(() => {
     let live = true;
-    const userId = session?.user?.id;
+
     Promise.all([
-      fetchAnalytics().catch(() => null),
+      fetchAnalytics().catch((err) => {
+        console.error("Failed to load analytics", err);
+        return null;
+      }),
       (typeof spacedRepo.getDueReviews === "function"
         ? spacedRepo.getDueReviews(userId)
         : typeof spacedRepo.getDueItems === "function"
@@ -201,32 +174,61 @@ export default function AnalyticsDashboard() {
     ])
       .then(([analytics, reviews, mistakes]) => {
         if (!live) return;
+        if (!analytics) {
+          setError("Failed to load analytics. Please try again.");
+        }
         setData(analytics);
         setDueReviews(reviews || []);
         setUnresolvedMistakes(mistakes || []);
       })
       .catch((err) => {
         console.error("[AnalyticsDashboard] Error loading analytics data:", err);
-        if (live) setData(null);
+        if (live) setError("Failed to load analytics. Please try again.");
       })
       .finally(() => {
         if (live) setLoading(false);
       });
-    return () => { live = false; };
-  }, [session?.user?.id]);
 
-  // ── Loading ──────────────────────────────────────────────────────────────
+    return () => { live = false; };
+  }, [userId]);
+
   if (loading) {
     return (
-      <div className="adash">
-        <SkeletonLoader type="card" count={3} />
+      <div className="analytics-v2-container">
+        <div className="analytics-v2-header">
+          <h1 className="analytics-v2-title">My Learning</h1>
+          <p className="analytics-v2-sub">Analyzing learning evidence and readiness...</p>
+        </div>
+        <div style={{ marginTop: "1.5rem" }}>
+          <SkeletonLoader type="list" count={3} />
+        </div>
       </div>
     );
   }
 
-  // ── Build intelligence from evidence ─────────────────────────────────────
+  if (error && !data) {
+    return (
+      <div className="analytics-v2-container">
+        <div className="analytics-error-box">
+          <p>{error}</p>
+          <button
+            className="repair-gap-v2-btn"
+            style={{ marginTop: "0.8rem" }}
+            onClick={() => window.location.reload()}
+          >
+            Retry
+          </button>
+        </div>
+      </div>
+    );
+  }
+
+  if (!data) return null;
+
+  // Adapt backend data to canonical evidence (no artificial attempt synthesis)
   const evidence = adaptAnalyticsToEvidence(data);
   const attempts = evidence.attempts;
+
   const intelligence = buildLearningIntelligence({
     attempts,
     dueReviews,
@@ -238,220 +240,383 @@ export default function AnalyticsDashboard() {
   const { overview, masteryMap, recommendation } = intelligence;
   const cognitiveMastery = intelligence.cognitiveMastery || {};
 
-  // ── Constitutional state derivation ──────────────────────────────────────
-  // Always use overview.learnerState. Never re-derive from raw scores.
-  const learnerState = overview.learnerState; // NOT_STARTED | EARLY_EVIDENCE | PROGRESSING | NEEDS_SUPPORT
-
   const totalPasses = attempts.filter((a) => a.correct).length;
   const totalQuizzes = attempts.length;
+  const accuracyRate = overview.accuracy;
+  const cbc = calculateCBCGrade(accuracyRate || 0);
 
-  // ── Status config: icon + semantic text in pure monochrome ───────────────
-  const statusConfig = {
-    NOT_STARTED:    { label: "Ready to begin",  icon: "○" },
-    EARLY_EVIDENCE: { label: "Calibrating",     icon: "◐" },
-    PROGRESSING:    { label: "On track",        icon: "●" },
-    NEEDS_SUPPORT:  { label: "Needs attention", icon: "▲" },
-  }[learnerState] || { label: "Ready to begin", icon: "○" };
+  // Strict Cold-Start Determination from evidence
+  const isColdStart =
+    overview.coldStart ||
+    (attempts.length === 0 && dueReviews.length === 0 && unresolvedMistakes.length === 0);
 
-  const readiness = overview.readinessScore || 0;
-
-  // ── Cognitive dimensions: unified neutral bars, height carries the signal ──
-  const cognitiveDimensions = [
-    { key: "REC", label: "Recognition", val: cognitiveMastery.RECOGNITION?.score },
-    { key: "RCL", label: "Recall",      val: cognitiveMastery.RECALL?.score },
-    { key: "PRO", label: "Procedure",   val: cognitiveMastery.PROCEDURAL?.score },
-    { key: "APP", label: "Application", val: cognitiveMastery.APPLICATION?.score },
-    { key: "TRF", label: "Transfer",    val: cognitiveMastery.TRANSFER?.score },
-  ];
-
-  // Evidence-based topic queue (only shown when there is evidence)
-  const priorityTopics = learnerState !== "NOT_STARTED"
-    ? [...(masteryMap?.weakTopics || [])].slice(0, 3)
-    : [];
-
-  const hasEvidence  = learnerState !== "NOT_STARTED";
-  const hasInsights  = learnerState === "PROGRESSING" || learnerState === "NEEDS_SUPPORT";
-  const nextTopic    = recommendation?.title ? formatTitle(recommendation.title) : null;
-
-  // ── Signal configs: icon + label, zero color dependencies ────────────────
-  const reviewSig   = signalConfig(dueReviews.length, "reviews");
-  const mistakeSig  = signalConfig(unresolvedMistakes.length, "mistakes");
-  const accuracySig = signalConfig(hasEvidence ? (overview.accuracy ?? 0) : null, "accuracy");
+  const readinessScore = overview.readinessScore ?? (isColdStart ? 0 : Math.round((accuracyRate || 0) * 0.9));
+  const readinessLabel = isColdStart
+    ? "Unmeasured"
+    : totalQuizzes < 5
+    ? "We're Still Learning Your Strengths"
+    : overview.isReady
+    ? "Ready to progress"
+    : "Not ready yet";
 
   const handleStudyTopic = (item) => {
     const sid = item.subject_id || item.sid;
     const cid = item.chapter_id || item.chapter_key || item.cid;
     const topic = item.topic_title || item.topic;
-    if (sid && cid && topic) navigate(`/learn/${sid}/${cid}/${encodeURIComponent(topic)}`);
-    else navigate("/subjects");
+    if (sid && cid && topic) {
+      navigate(`/learn/${sid}/${cid}/${encodeURIComponent(topic)}`);
+    } else {
+      navigate("/subjects");
+    }
   };
 
-  return (
-    <div className="adash">
+  const handlePrimaryAction = () => {
+    if (recommendation?.route) {
+      navigate(recommendation.route);
+    } else {
+      navigate("/subjects");
+    }
+  };
 
-      {/* ── HERO ─────────────────────────────────────────────────────────── */}
-      <div className="adash-hero">
-        <div className="adash-hero-left">
-          <div className="adash-status-pill">
-            <span className="adash-status-pill-icon" aria-hidden="true">{statusConfig.icon}</span>
-            {statusConfig.label}
+  // Compile topic lists for "The Focus Queue" using evidence-backed thresholds
+  const allTopicStats = Object.values(masteryMap?.topics || {});
+
+  // Needs Attention: Confirmed weak topics (>= 3 attempts, < 58% score)
+  const needsAttentionList = isColdStart ? [] : (masteryMap?.weakTopics || []);
+
+  // Emerging: Topics with signal but insufficient evidence (1-2 attempts)
+  const emergingList = isColdStart
+    ? []
+    : allTopicStats.filter((t) => t.attempts < 3 && t.performanceScore < 58);
+
+  // Strong: Verified mastery (>= 5 attempts, >= 75% score)
+  const strongList = isColdStart ? [] : (masteryMap?.strongTopics || []);
+
+  let currentFilteredList = needsAttentionList;
+  if (topicFilterTab === "emerging" || topicFilterTab === "weak") {
+    currentFilteredList = emergingList;
+  } else if (topicFilterTab === "strong") {
+    currentFilteredList = strongList;
+  }
+
+  const cognitiveDimensions = [
+    { label: "Recognition", val: cognitiveMastery.RECOGNITION?.score, count: cognitiveMastery.RECOGNITION?.evidenceCount, color: "#38bdf8" },
+    { label: "Recall", val: cognitiveMastery.RECALL?.score, count: cognitiveMastery.RECALL?.evidenceCount, color: "#818cf8" },
+    { label: "Procedure", val: cognitiveMastery.PROCEDURAL?.score, count: cognitiveMastery.PROCEDURAL?.evidenceCount, color: "#10b981" },
+    { label: "Application", val: cognitiveMastery.APPLICATION?.score, count: cognitiveMastery.APPLICATION?.evidenceCount, color: "#f59e0b" },
+    { label: "Transfer", val: cognitiveMastery.TRANSFER?.score, count: cognitiveMastery.TRANSFER?.evidenceCount, color: "#ef4444" },
+  ];
+
+  return (
+    <div className="analytics-v2-container">
+      {/* 0. HEADER */}
+      <header className="analytics-v2-header">
+        <div className="analytics-v2-brand">
+          <div className="analytics-v2-logo-icon">
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+            </svg>
+          </div>
+          <div>
+            <h1 className="analytics-v2-title">My Learning</h1>
+            <p className="analytics-v2-sub">Actionable intelligence for your next step.</p>
+          </div>
+        </div>
+      </header>
+
+      {/* LEVEL 1: READINESS & ACTION HERO CARD */}
+      {isColdStart ? (
+        <ColdStartReadiness onBrowseSubjects={() => navigate("/subjects")} />
+      ) : (
+        <div className="readiness-v2-card">
+          <div className="readiness-v2-top">
+            <div className="readiness-v2-info">
+              <div className="readiness-v2-label">LEARNING READINESS</div>
+              <div className="readiness-v2-score">{readinessScore}%</div>
+              <div className="readiness-v2-status">{readinessLabel}</div>
+              <div className="readiness-v2-subtext">
+                {recommendation?.title
+                  ? `Your biggest gap is: ${formatTitle(recommendation.title)}`
+                  : "All core prerequisites met"}
+              </div>
+            </div>
+
+            <ReadinessArcGauge score={readinessScore} />
           </div>
 
-          {learnerState === "NOT_STARTED" ? (
-            <>
-              <h1 className="adash-cold-headline">Your learning profile</h1>
-              <p className="adash-cold-sub">
-                Complete an activity to establish your personal mastery profile.
-              </p>
-            </>
-          ) : (
-            <>
-              <h1 className="adash-big-num">
-                {readiness}<span className="adash-big-pct">%</span>
-              </h1>
-              <p className="adash-hero-sub">
-                {totalPasses}/{totalQuizzes} correct
-              </p>
-            </>
-          )}
+          {/* Human-Centered Next Step Banner */}
+          <div className="primary-bottleneck-v2-banner">
+            <div className="bottleneck-v2-content">
+              <div className="bottleneck-v2-tag-row">
+                <span className="bottleneck-v2-tag">
+                  {recommendation?.type === "critical_gap"
+                    ? "FOUNDATIONAL FOCUS"
+                    : recommendation?.type === "calibrating"
+                    ? "CALIBRATING"
+                    : recommendation?.action === "NO_ACTION"
+                    ? "PROGRESSING SMOOTHLY"
+                    : "RECOMMENDED NEXT STEP"}
+                </span>
+                <span
+                  className={`authority-v2-pill ${
+                    recommendation?.authority === "SERVER_VERIFIED" ? "verified" : "provisional"
+                  }`}
+                >
+                  <span className="authority-pill-dot" />
+                  {recommendation?.authority === "SERVER_VERIFIED" ? "Server Verified" : "Offline Provisional"}
+                </span>
+              </div>
+              <div className="bottleneck-v2-title">
+                {formatTitle(recommendation?.title || "Continue Practice")}
+              </div>
+              <div className="bottleneck-v2-desc">
+                {recommendation?.reason || "Complete additional practice to build your readiness profile."}
+              </div>
+              <button
+                type="button"
+                className="why-am-i-seeing-this-link"
+                onClick={() => setShowExplainability(true)}
+              >
+                Why am I seeing this? (View Evidence & Rules) →
+              </button>
+            </div>
+            <button className="repair-gap-v2-btn" onClick={handlePrimaryAction}>
+              {recommendation?.buttonLabel || "Practice Now"} →
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* LEVEL 2: ESSENTIAL SIGNALS GRID */}
+      <div className="metrics-v2-grid">
+        <div className="metric-v2-card">
+          <div className="metric-v2-val">{isColdStart ? "—" : `${accuracyRate ?? 0}%`}</div>
+          <div className="metric-v2-lbl">Quiz Accuracy</div>
+          <div className="metric-v2-sub">
+            {isColdStart ? "No attempts yet" : `${totalPasses} / ${totalQuizzes} correct`}
+          </div>
         </div>
 
-        <div className="adash-hero-right">
-          {learnerState === "NOT_STARTED" ? (
-            <button
-              className="adash-cta adash-cta-primary"
-              onClick={() => navigate("/subjects")}
-            >
-              Browse subjects
-            </button>
-          ) : (
-            <RingGauge score={readiness} size={84} />
-          )}
+        <div className="metric-v2-card" onClick={() => navigate("/analytics")}>
+          <div className="metric-v2-val">{dueReviews.length}</div>
+          <div className="metric-v2-lbl">Due Reviews</div>
+          <div className="metric-v2-sub">
+            {dueReviews.length > 0 ? "Review now" : "All clean!"}
+          </div>
+        </div>
+
+        <div className="metric-v2-card" onClick={() => navigate("/mistakes")}>
+          <div className="metric-v2-val">{unresolvedMistakes.length}</div>
+          <div className="metric-v2-lbl">Active Mistakes</div>
+          <div className="metric-v2-sub">
+            {unresolvedMistakes.length > 0 ? "Review now" : "All clean!"}
+          </div>
         </div>
       </div>
 
-      {/* ── NEXT ACTION ──────────────────────────────────────────────────── */}
-      {hasEvidence && nextTopic && (
-        <button
-          className="adash-next-card"
-          onClick={() => navigate(recommendation.route || "/subjects")}
-        >
-          <div className="adash-next-eyebrow">Up next</div>
-          <div className="adash-next-topic">{nextTopic}</div>
-          <div className="adash-next-footer">
-            <span className="adash-next-action-label">
-              {recommendation.buttonLabel || "Practice"} →
-            </span>
-            {recommendation.authority === "SERVER_VERIFIED" && (
-              <span className="adash-verified-dot" title="Server verified" />
-            )}
+      {/* LEVEL 3: THE FOCUS QUEUE (Top 3 Priority Topics) */}
+      <div className="topics-focus-v2-card">
+        <div className="topics-v2-header">
+          <div>
+            <h2 className="topics-v2-title">Your Next Focus</h2>
+            <p className="topics-v2-sub">Top priority steps for maximum score impact</p>
           </div>
-        </button>
-      )}
-
-      {/* ── SIGNALS (only shown when evidence exists) ────────────────────── */}
-      {hasEvidence && (
-        <div className="adash-signals">
-          <button
-            className="adash-signal-card"
-            onClick={() => navigate("/analytics")}
-            aria-label={`${dueReviews.length} reviews due`}
-          >
-            <div className="adash-signal-icon" aria-hidden="true">{reviewSig.icon}</div>
-            <div className="adash-signal-num">{dueReviews.length}</div>
-            <div className="adash-signal-lbl">Reviews</div>
-          </button>
-
-          <button
-            className="adash-signal-card"
-            onClick={() => navigate("/mistakes")}
-            aria-label={`${unresolvedMistakes.length} mistakes`}
-          >
-            <div className="adash-signal-icon" aria-hidden="true">{mistakeSig.icon}</div>
-            <div className="adash-signal-num">{unresolvedMistakes.length}</div>
-            <div className="adash-signal-lbl">Mistakes</div>
-          </button>
-
-          <button
-            className="adash-signal-card"
-            onClick={() => navigate("/subjects")}
-            aria-label={`${overview.accuracy ?? 0}% accuracy, ${accuracySig.iconLabel}`}
-          >
-            <div className="adash-signal-icon" aria-hidden="true">{accuracySig.icon}</div>
-            <div className="adash-signal-num">
-              {/* Constitutional: never show 0% when NOT_STARTED. hasEvidence guards this. */}
-              {overview.accuracy ?? 0}%
-            </div>
-            <div className="adash-signal-lbl">Accuracy</div>
-          </button>
         </div>
-      )}
 
-      {/* ── PRIORITY TOPICS (evidence-based, shown only after calibration) ─ */}
-      {hasInsights && priorityTopics.length > 0 && (
-        <div className="adash-queue">
-          <div className="adash-section-label">Focus</div>
-          {priorityTopics.map((item, idx) => {
-            const title = formatTitle(item.topic_title || item.topic || "Topic");
-            const score = item.performanceScore ?? item.mastery ?? 0;
-            const scoreLabel = score >= 70 ? "strong" : score >= 40 ? "building" : "needs work";
-            return (
+        {/* Filter Tabs (Pill Buttons) */}
+        {!isColdStart && (
+          <div className="topic-filter-v2-pills">
+            <button
+              className={`filter-v2-pill ${topicFilterTab === "needs_attention" ? "active" : ""}`}
+              onClick={() => setTopicFilterTab("needs_attention")}
+            >
+              Needs Attention ({needsAttentionList.length})
+            </button>
+            <button
+              className={`filter-v2-pill ${topicFilterTab === "emerging" ? "active" : ""}`}
+              onClick={() => setTopicFilterTab("emerging")}
+            >
+              Emerging ({emergingList.length})
+            </button>
+            <button
+              className={`filter-v2-pill ${topicFilterTab === "strong" ? "active" : ""}`}
+              onClick={() => setTopicFilterTab("strong")}
+            >
+              Strong ({strongList.length})
+            </button>
+          </div>
+        )}
+
+        {/* Focus Queue Items */}
+        <div className="topic-v2-list">
+          {isColdStart ? (
+            <div className="topic-v2-empty" style={{ padding: "1.2rem 0" }}>
+              <p style={{ fontWeight: 600, color: "var(--t)" }}>No focus areas recorded yet</p>
+              <p style={{ marginTop: "0.25rem", fontSize: "0.82rem", color: "var(--t2)" }}>
+                Your personalized focus queue will appear here as you complete quizzes and build learning evidence.
+              </p>
               <button
-                key={idx}
-                className="adash-queue-item"
-                onClick={() => handleStudyTopic(item)}
-                aria-label={`${title}: ${score}%, ${scoreLabel}`}
+                className="topic-action-pill-btn"
+                style={{ marginTop: "0.85rem", padding: "0.4rem 0.9rem" }}
+                onClick={() => navigate("/subjects")}
               >
-                <div className="adash-queue-item-inner">
-                  <span className="adash-queue-title">{title}</span>
-                  <span className="adash-queue-pct">
-                    {score}% <span className="adash-queue-score-label">{scoreLabel}</span>
+                Browse Subjects →
+              </button>
+            </div>
+          ) : currentFilteredList.length === 0 ? (
+            <div className="topic-v2-empty">
+              <p>No topics currently require attention in this category.</p>
+            </div>
+          ) : (
+            currentFilteredList.slice(0, 3).map((item, idx) => {
+              const title = formatTitle(item.topic_title || item.topic || "Topic");
+              const subject = formatTitle(item.subject_name || item.subject_id || "Science");
+              const chapter = formatTitle(item.chapter_title || item.chapter_id || "Practical Skills");
+              const score = item.performanceScore ?? item.mastery ?? 0;
+              const actionLabel = score < 40 ? "Repair" : "Practice";
+
+              return (
+                <div
+                  key={idx}
+                  className="topic-v2-item"
+                  onClick={() => handleStudyTopic(item)}
+                >
+                  <div className="topic-v2-item-main">
+                    <div className="topic-v2-item-title">{idx + 1}. {title}</div>
+                    <div className="topic-v2-item-sub">
+                      {subject} • {chapter} ({score}% mastery)
+                    </div>
+                  </div>
+                  <div className="topic-v2-item-right">
+                    <button className="topic-action-pill-btn">
+                      {actionLabel} →
+                    </button>
+                  </div>
+                </div>
+              );
+            })
+          )}
+        </div>
+
+        {/* View All Topics Button */}
+        <button
+          className="explore-weak-v2-btn"
+          onClick={() => navigate("/subjects")}
+        >
+          <span>{isColdStart ? "Explore Subject Catalog" : `View all ${currentFilteredList.length} topics`}</span>
+          <span className="explore-v2-chevron">→</span>
+        </button>
+      </div>
+
+      {/* LEVEL 4: DEEP INTELLIGENCE (Collapsed Analytics Drawer) */}
+      <div className="cognitive-collapsible-v2">
+        <button
+          className="cognitive-v2-toggle"
+          onClick={() => setShowCognitiveDetails(!showCognitiveDetails)}
+        >
+          <span style={{ display: "flex", alignItems: "center", gap: "0.5rem" }}>
+            <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+              <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z" />
+            </svg>
+            Deep Learning Intelligence & Evidence
+          </span>
+          <span>{showCognitiveDetails ? "▲" : "▼"}</span>
+        </button>
+
+        {showCognitiveDetails && (
+          <div className="cognitive-v2-body">
+            {isColdStart ? (
+              <div style={{ padding: "1.2rem 0", textAlign: "center", color: "var(--t2)", fontSize: "0.85rem" }}>
+                Learning evidence and cognitive dimension scores will appear here after your first topic quiz.
+              </div>
+            ) : (
+              <>
+                {/* Evidence Confidence Tag */}
+                <div
+                  className="deep-evidence-meta"
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                    paddingTop: "0.6rem",
+                  }}
+                >
+                  <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
+                    Evidence Confidence:{" "}
+                    <strong style={{ color: "var(--primary, #1d6bf3)" }}>
+                      {overview.evidenceConfidence || "CALIBRATING"}
+                    </strong>
+                  </span>
+                  <span style={{ fontSize: "0.75rem", color: "var(--t3, #94a3b8)" }}>
+                    Measured from attempt history
                   </span>
                 </div>
-                <SparkBar pct={score} />
-              </button>
-            );
-          })}
-          <button className="adash-queue-more" onClick={() => navigate("/subjects")}>
-            All topics →
-          </button>
-        </div>
-      )}
 
-      {/* ── CURRICULUM EXPLORER — ALWAYS VISIBLE ─────────────────────────── */}
-      {/* A learner should never lose access to "where do I go next?" simply  */}
-      {/* because Tixar does not yet have enough evidence about them.          */}
+                {totalQuizzes > 0 && (
+                  <div className="cbc-v2-box">
+                    <span
+                      style={{
+                        background: cbc.badgeBg,
+                        color: cbc.badgeText,
+                        padding: "0.25rem 0.6rem",
+                        borderRadius: "6px",
+                        fontWeight: 700,
+                        fontSize: "0.78rem",
+                      }}
+                    >
+                      CBC {cbc.level} · {cbc.points}/8 pts
+                    </span>
+                    <span style={{ fontSize: "0.82rem", color: "var(--t2)" }}>
+                      {cbc.category} — {cbc.description}
+                    </span>
+                  </div>
+                )}
+
+                <div className="cognitive-v2-grid">
+                  <div
+                    style={{
+                      fontSize: "0.84rem",
+                      fontWeight: 700,
+                      color: "var(--t)",
+                      marginTop: "0.4rem",
+                      marginBottom: "0.2rem",
+                    }}
+                  >
+                    Cognitive Mastery Dimensions
+                  </div>
+                  {cognitiveDimensions.map((dim) => (
+                    <div key={dim.label} className="cognitive-v2-row">
+                      <div className="cognitive-v2-label">
+                        <span>{dim.label}</span>
+                        <span style={{ fontWeight: 700, color: "var(--t)" }}>
+                          {dim.val !== null
+                            ? `${dim.val}% (${dim.count} question${dim.count > 1 ? "s" : ""})`
+                            : "No evidence yet"}
+                        </span>
+                      </div>
+                      <div className="cognitive-v2-track">
+                        <div
+                          className="cognitive-v2-fill"
+                          style={{
+                            width: `${dim.val || 0}%`,
+                            background: "var(--primary, #1d6bf3)",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* LEVEL 5: CURRICULUM EXPLORER (Always visible) */}
       <CurriculumExplorer
         curriculum={curriculum}
         onNavigate={navigate}
       />
-
-      {/* ── LEARNING INSIGHTS (only shown once calibrated) ───────────────── */}
-      {hasEvidence && (
-        <div className="adash-cognitive">
-          <div className="adash-section-label">Your learning profile</div>
-          {hasInsights ? (
-            <>
-              <CognitiveFiveBar dimensions={cognitiveDimensions} />
-              <div className="adash-cognitive-axis">
-                {cognitiveDimensions.map((d) => (
-                  <div
-                    key={d.key}
-                    className="adash-cognitive-tick"
-                    title={d.label}
-                  >
-                    {d.key}
-                  </div>
-                ))}
-              </div>
-            </>
-          ) : (
-            <p className="adash-no-insights">
-              Complete a few more activities to build your mastery profile.
-            </p>
-          )}
-        </div>
-      )}
 
       <ExplainabilityDrawer
         isOpen={showExplainability}
