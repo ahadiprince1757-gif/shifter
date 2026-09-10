@@ -41,7 +41,6 @@ export class BiologyMutator {
     };
 
     this.rng = this._createRNG(this.config.seed);
-    this._rng = this.rng;
   }
 
   // ==========================================================
