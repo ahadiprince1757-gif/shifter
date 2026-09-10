@@ -1,10 +1,11 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import logger from "../utils/logger";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import SmartPrompt from "./SmartPrompt";
 import { useNextAction } from "../hooks/useNextAction";
 import { enroll } from "../api";
+import { syncEngine } from "../sync/syncEngine";
 
 const HUMANISTIC_PALETTES = [
   { accent: "#74B8E8", bg: "rgba(116, 184, 232, 0.06)", border: "rgba(116, 184, 232, 0.28)" },
@@ -31,11 +32,33 @@ function formatTitle(str) {
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
+  const [retrying, setRetrying] = useState(false);
+
+  // Auto-retry: if curriculum lands as an empty array, trigger a re-sync
+  // and poll every 3 seconds until data arrives (max 5 attempts).
+  const [retryCount, setRetryCount] = useState(0);
+  useEffect(() => {
+    if (!Array.isArray(curriculum) || curriculum.length > 0) return;
+    if (retryCount >= 5) return; // Give up after 5 automatic retries
+    const timer = setTimeout(() => {
+      setRetryCount((n) => n + 1);
+      syncEngine.syncAll().catch(() => {});
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, [curriculum, retryCount]);
+
+  const handleManualRetry = () => {
+    setRetrying(true);
+    setRetryCount(0);
+    syncEngine.syncAll()
+      .catch(() => {})
+      .finally(() => setRetrying(false));
+  };
 
   // Compute the single most urgent next study action
   const { action: nextAction, loading: nextActionLoading } = useNextAction(userId);
 
-  // localStorage is synchronous → derive lastTopic via useMemo
+  // localStorage is synchronous — derive lastTopic via useMemo
   const lastTopic = useMemo(() => {
     if (!userId) return null;
     try {
@@ -44,11 +67,39 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     } catch { return null; }
   }, [userId]);
 
+  // Null = still loading from Dexie
   if (!curriculum) {
     return (
       <div id="v-subjects" className="view active" style={{ paddingTop: "0.5rem" }}>
         <div className="subj-grid-humanistic">
           <SkeletonLoader type="grid" count={6} />
+        </div>
+      </div>
+    );
+  }
+
+  // Empty array = Dexie resolved but no data yet (sync may still be in-flight)
+  if (curriculum.length === 0) {
+    return (
+      <div id="v-subjects" className="view active" style={{ paddingTop: "2rem", textAlign: "center" }}>
+        <div className="subj-empty-state">
+          <div className="subj-empty-title">Loading your subjects...</div>
+          <p className="subj-empty-desc">
+            {retryCount < 5
+              ? "Syncing your curriculum. This usually takes a moment."
+              : "Could not load subjects. Please check your connection and try again."}
+          </p>
+          {retryCount < 5 ? (
+            <div className="subj-empty-spinner" aria-label="Loading" />
+          ) : (
+            <button
+              className="subj-empty-retry-btn"
+              onClick={handleManualRetry}
+              disabled={retrying}
+            >
+              {retrying ? "Retrying..." : "Retry"}
+            </button>
+          )}
         </div>
       </div>
     );
