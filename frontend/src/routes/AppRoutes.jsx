@@ -1,11 +1,10 @@
-import React, { Suspense, useState } from "react";
+import React, { Suspense } from "react";
 import { Routes, Route, useNavigate, useParams, useLocation } from "react-router-dom";
 import { LEARNING_MODES } from "../utils/learningNavigation";
 import { SESSION_PHASES } from "../hooks/useSessionLoop";
 import AppLayout from "../components/AppLayout";
 import LandingPage from "../pages/LandingPage";
 import VerificationPage from "../pages/VerificationPage";
-import LoadingScreen from "../components/LoadingScreen";
 import SkeletonLoader from "../components/SkeletonLoader";
 import { useCurriculum } from "../hooks/useCurriculum";
 import { useMasteredTopics } from "../hooks/useMasteredTopics";
@@ -143,33 +142,20 @@ const ProtectedLayout = () => {
     }
   }, [session, sessionLoading, navigate, openAuthWithReason]);
 
-  if (sessionLoading || !session) return null;
+  if (sessionLoading) {
+    return (
+      <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+        <SkeletonLoader type="list" count={4} />
+      </div>
+    );
+  }
+
+  if (!session) return null;
 
   return <AppLayout />;
 };
 
 export default function AppRoutes() {
-  const { loading: curriculumLoading } = useCurriculum();
-  const { sessionLoading } = useAuth();
-  const { loading: masteredLoading } = useMasteredTopics();
-  const [loaderDismissed, setLoaderDismissed] = useState(false);
-
-  const dataReady = !sessionLoading && !curriculumLoading && !masteredLoading;
-
-  // Show the asymptotic loading bar until data arrives AND the animation completes
-  if (!loaderDismissed) {
-    return (
-      <LoadingScreen
-        fullScreen={true}
-        isReady={dataReady}
-        sessionLoading={sessionLoading}
-        curriculumLoading={curriculumLoading}
-        masteredLoading={masteredLoading}
-        onComplete={() => setLoaderDismissed(true)}
-      />
-    );
-  }
-
   return (
     <Suspense fallback={
       <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>

@@ -114,7 +114,7 @@ export default function Navbar({
   };
 
   const handleScrollToSubjects = () => {
-    document.getElementById("subjs")?.scrollIntoView({ behavior: "smooth" });
+    navigate("/subjects");
     setMenuOpen(false);
   };
 

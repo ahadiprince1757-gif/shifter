@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Landing from "../components/Landing";
 import AuthModal from "../components/AuthModal";
@@ -10,6 +11,13 @@ export default function LandingPage() {
   const { curriculum } = useCurriculum();
   const [isDark, toggleDark] = useDarkMode();
   const navigate = useNavigate();
+
+  // If already authenticated, proceed directly to subjects
+  useEffect(() => {
+    if (session) {
+      navigate("/subjects", { replace: true });
+    }
+  }, [session, navigate]);
 
   const handleEnterApp = () => {
     if (session) {
