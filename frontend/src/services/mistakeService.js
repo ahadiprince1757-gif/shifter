@@ -45,8 +45,10 @@ export async function recordMistake({
     question_text: questionText || "",
     correct_answer: correctAnswer || "",
     solution: solution || "",
-    mistake_type: mistakeType || "calculation_error",
-    diagnostic_data: diagnosticData || {},
+    diagnostic_data: {
+      mistake_type: mistakeType || "calculation_error",
+      ...(diagnosticData || {}),
+    },
     resolved: false,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),

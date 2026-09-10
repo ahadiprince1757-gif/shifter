@@ -1,4 +1,4 @@
-﻿/**
+/**
  * ============================================================
  * TIXAR BIOLOGY MUTATOR v2
  * ============================================================
@@ -41,6 +41,7 @@ export class BiologyMutator {
     };
 
     this.rng = this._createRNG(this.config.seed);
+    this._rng = this.rng;
   }
 
   // ==========================================================
@@ -1205,25 +1206,31 @@ export class BiologyMutator {
   // UTILITIES
   // ==========================================================
 
-  _choice(array) {
+  _rng() {
+    if (typeof this.rng === "function") {
+      return this.rng();
+    }
+    return Math.random();
+  }
 
+  _choice(array) {
+    const r = typeof this._rng === "function" ? this._rng() : (typeof this.rng === "function" ? this.rng() : Math.random());
     return array[
       Math.floor(
-        this._rng() * array.length
+        r * array.length
       )
     ];
   }
 
   _randInt(min, max) {
-
+    const r = typeof this._rng === "function" ? this._rng() : (typeof this.rng === "function" ? this.rng() : Math.random());
     return Math.floor(
-      this._rng() *
+      r *
       (max - min + 1)
     ) + min;
   }
 
   _shuffle(array) {
-
     const result =
       [...array];
 
@@ -1232,10 +1239,10 @@ export class BiologyMutator {
       i > 0;
       i--
     ) {
-
+      const r = typeof this._rng === "function" ? this._rng() : (typeof this.rng === "function" ? this.rng() : Math.random());
       const j =
         Math.floor(
-          this._rng() * (i + 1)
+          r * (i + 1)
         );
 
       [

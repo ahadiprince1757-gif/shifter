@@ -34,6 +34,7 @@ export class MathMutator {
     };
 
     this.rng = this._createRNG(this.config.seed);
+    this._rng = this.rng;
   }
 
   // ============================================================
@@ -1489,18 +1490,24 @@ export class MathMutator {
   }
 
   // ============================================================
-  // RANDOM UTILITIES
-  // ============================================================
+  _rng() {
+    if (typeof this.rng === "function") {
+      return this.rng();
+    }
+    return Math.random();
+  }
 
   _randInt(min, max) {
+    const r = typeof this._rng === "function" ? this._rng() : (typeof this.rng === "function" ? this.rng() : Math.random());
     return Math.floor(
-      this._rng() * (max - min + 1)
+      r * (max - min + 1)
     ) + min;
   }
 
   _choice(array) {
+    const r = typeof this._rng === "function" ? this._rng() : (typeof this.rng === "function" ? this.rng() : Math.random());
     return array[
-      Math.floor(this._rng() * array.length)
+      Math.floor(r * array.length)
     ];
   }
 
@@ -1508,7 +1515,8 @@ export class MathMutator {
     const result = [...array];
 
     for (let i = result.length - 1; i > 0; i--) {
-      const j = Math.floor(this._rng() * (i + 1));
+      const r = typeof this._rng === "function" ? this._rng() : (typeof this.rng === "function" ? this.rng() : Math.random());
+      const j = Math.floor(r * (i + 1));
 
       [result[i], result[j]] =
         [result[j], result[i]];
