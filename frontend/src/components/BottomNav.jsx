@@ -1,6 +1,27 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import GlobalSearch from "./GlobalSearch";
+// Simple debounce to avoid duplicate rapid clicks
+function debounce(fn, delay = 150) {
+  let timeout;
+  return (...args) => {
+    if (timeout) clearTimeout(timeout);
+    timeout = setTimeout(() => fn(...args), delay);
+  };
+}
+// Prefetch lazy-loaded route components
+const prefetchMap = {
+  "/analytics": () => import("../components/AnalyticsDashboard"),
+  "/mistakes": () => import("../components/MistakeJournal"),
+  "/tutor": () => import("../components/AITutor"),
+  "/ai-tutor": () => import("../components/AITutor"),
+};
+function prefetchRoute(path) {
+  const loader = prefetchMap[path];
+  if (loader) {
+    loader(); // trigger import, ignore result
+  }
+}
 
 const HomeIcon = () => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
@@ -117,7 +138,7 @@ export default function BottomNav({
       <nav className={`bottom-nav ${isNavVisible ? "" : "bn-hidden"}`} role="navigation" aria-label="Mobile navigation">
         <button
           className={`bn-item ${isHome ? "active" : ""}`}
-          onClick={() => navigate("/subjects")}
+          onClick={debounce(() => navigate("/subjects"))}
           aria-label="Home"
         >
           <span className="bn-icon"><HomeIcon /></span>
@@ -126,7 +147,8 @@ export default function BottomNav({
 
         <button
           className={`bn-item ${isTutor ? "active" : ""}`}
-          onClick={() => navigate("/tutor")}
+          onClick={debounce(() => { navigate("/tutor"); prefetchRoute("/tutor"); })}
+          onMouseEnter={() => prefetchRoute("/tutor")}
           aria-label="Ask Quiz"
         >
           <span className="bn-icon"><BotIcon /></span>
@@ -135,7 +157,8 @@ export default function BottomNav({
 
         <button
           className={`bn-item ${isMistakes ? "active" : ""}`}
-          onClick={() => navigate("/mistakes")}
+          onClick={debounce(() => { navigate("/mistakes"); prefetchRoute("/mistakes"); })}
+          onMouseEnter={() => prefetchRoute("/mistakes")}
           aria-label="Mistakes"
         >
           <span className="bn-icon"><MistakesIcon /></span>
@@ -144,7 +167,8 @@ export default function BottomNav({
 
         <button
           className={`bn-item ${isProgress ? "active" : ""}`}
-          onClick={() => navigate("/analytics")}
+          onClick={debounce(() => { navigate("/analytics"); prefetchRoute("/analytics"); })}
+          onMouseEnter={() => prefetchRoute("/analytics")}
           aria-label="Progress"
         >
           <span className="bn-icon"><ProgressIcon /></span>
