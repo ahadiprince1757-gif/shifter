@@ -11522,3 +11522,295 @@ html.dark-mode .adash-curriculum-chapter-row:hover {
   }
 }
 
+/* ============================================================
+   MINIMALIST ANALYTICS / PROGRESS DASHBOARD
+   Direct to the point. Zero clutter. Pure utility.
+   ============================================================ */
+
+.analytics-min-container {
+  max-width: 580px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 4rem 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  color: var(--t);
+  font-family: inherit;
+}
+
+.analytics-min-header {
+  margin-bottom: 0.1rem;
+}
+
+.analytics-min-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--t);
+  margin: 0;
+}
+
+.analytics-min-sub {
+  font-size: 0.85rem;
+  color: var(--t2);
+  margin-top: 0.2rem;
+  margin-bottom: 0;
+}
+
+/* STATS GRID */
+.analytics-min-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.65rem;
+}
+
+.analytics-stat-card {
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 14px;
+  padding: 0.9rem 0.75rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  box-shadow: var(--sh);
+  transition: all 0.18s ease;
+}
+
+.analytics-stat-card--actionable {
+  cursor: pointer;
+}
+
+.analytics-stat-card--actionable:hover {
+  border-color: var(--v);
+  background: var(--bg2);
+  transform: translateY(-1px);
+}
+
+.analytics-stat-val {
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--v);
+  line-height: 1.1;
+  font-variant-numeric: tabular-nums;
+}
+
+.analytics-stat-lbl {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--t);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 0.3rem;
+}
+
+.analytics-stat-sub {
+  font-size: 0.68rem;
+  color: var(--t3);
+  margin-top: 0.15rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* PRIMARY FOCUS HERO CARD */
+.analytics-focus-card {
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 16px;
+  padding: 1.25rem 1.15rem;
+  box-shadow: var(--sh);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.analytics-focus-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--v);
+}
+
+.analytics-focus-card--clean::before {
+  background: #10b981;
+}
+
+.analytics-focus-kicker {
+  font-size: 0.68rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--v);
+}
+
+.analytics-focus-card--clean .analytics-focus-kicker {
+  color: #10b981;
+}
+
+.analytics-focus-title {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--t);
+  margin: 0;
+  letter-spacing: -0.01em;
+  line-height: 1.3;
+}
+
+.analytics-focus-desc {
+  font-size: 0.82rem;
+  color: var(--t2);
+  margin: 0.1rem 0 0.6rem 0;
+  line-height: 1.4;
+}
+
+.analytics-focus-btn {
+  align-self: flex-start;
+  background: var(--v);
+  color: #ffffff;
+  border: none;
+  border-radius: 10px;
+  padding: 0.55rem 1.1rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.18s ease;
+  box-shadow: 0 4px 14px rgba(77, 166, 255, 0.25);
+}
+
+.analytics-focus-btn:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+/* SECTION: TOPICS TO IMPROVE */
+.analytics-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.analytics-section-title {
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--t2);
+}
+
+.analytics-topic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.analytics-topic-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 0.75rem 0.95rem;
+  cursor: pointer;
+  transition: all 0.16s ease;
+  box-shadow: var(--sh);
+}
+
+.analytics-topic-row:hover {
+  border-color: var(--v);
+  background: var(--bg2);
+  transform: translateX(2px);
+}
+
+.analytics-topic-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 0;
+}
+
+.analytics-topic-name {
+  font-size: 0.86rem;
+  font-weight: 700;
+  color: var(--t);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.analytics-topic-sub {
+  font-size: 0.72rem;
+  color: var(--t3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.analytics-row-action {
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: var(--v);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* MASTERED SUMMARY BAR */
+.analytics-mastered-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 99px;
+  padding: 0.45rem 1rem;
+  font-size: 0.78rem;
+  color: var(--t2);
+  align-self: center;
+}
+
+.analytics-mastered-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #10b981;
+  color: #ffffff;
+  font-size: 0.65rem;
+  font-weight: 900;
+}
+
+@media (max-width: 480px) {
+  .analytics-min-container {
+    padding: 1rem 0.75rem 3.5rem 0.75rem;
+    gap: 1rem;
+  }
+  .analytics-min-title {
+    font-size: 1.35rem;
+  }
+  .analytics-stat-val {
+    font-size: 1.35rem;
+  }
+  .analytics-stat-lbl {
+    font-size: 0.64rem;
+  }
+  .analytics-focus-card {
+    padding: 1rem 0.95rem;
+  }
+  .analytics-focus-title {
+    font-size: 1.1rem;
+  }
+}
+
+
