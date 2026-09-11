@@ -98,7 +98,7 @@ export default function BottomNav({
   const isNavVisible = isVisible || searchOpen;
 
   const path = location.pathname;
-  const isHome = path === "/subjects";
+  const isHome = path === "/subjects" || path === "/";
   const isProgress = path === "/analytics";
   const isMistakes = path === "/mistakes";
   const isTutor = path === "/tutor" || path === "/ai-tutor";

@@ -105,15 +105,8 @@ export default function Navbar({
   }, [lastScrollY]);
 
   const isHeaderVisible = isVisible || menuOpen || searchOpen;
-  const isLanding = location.pathname === "/";
-  const isApp = !isLanding;
 
   const handleLogoClick = () => {
-    isLanding ? window.scrollTo({ top: 0, behavior: "smooth" }) : navigate("/subjects");
-    setMenuOpen(false);
-  };
-
-  const handleScrollToSubjects = () => {
     navigate("/subjects");
     setMenuOpen(false);
   };
@@ -142,54 +135,40 @@ export default function Navbar({
         </div>
 
         {/* Desktop: breadcrumbs in app */}
-        {isApp && (
-          <div className="lnav-breadcrumbs">
-            <Breadcrumbs />
-          </div>
-        )}
+        <div className="lnav-breadcrumbs">
+          <Breadcrumbs />
+        </div>
 
         {/* Desktop: search bar in app */}
-        {isApp && curriculum && (
+        {curriculum && (
           <div className="lnav-search-desktop">
             <GlobalSearch curriculum={curriculum} navigateToTopic={handleSearchNavigate} />
           </div>
         )}
 
-        {/* Landing spacer */}
-        {isLanding && <div style={{ flex: 1 }} />}
-
-        {/* Desktop navigation tabs (app only) */}
-        {isApp && (
-          <nav className="lnav-nav-links" aria-label="Main navigation">
-            {APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
-              const isActive = location.pathname === path ||
-                (path === "/tutor" && location.pathname === "/ai-tutor");
-              return (
-                <button
-                  key={path}
-                  className={`lnav-tab-btn ${isActive ? "lnav-tab-btn--active" : ""}`}
-                  onClick={() => { navigate(path); setMenuOpen(false); }}
-                  aria-current={isActive ? "page" : undefined}
-                >
-                  <Icon />
-                  {label}
-                </button>
-              );
-            })}
-          </nav>
-        )}
+        {/* Desktop navigation tabs */}
+        <nav className="lnav-nav-links" aria-label="Main navigation">
+          {APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
+            const isActive = location.pathname === path ||
+              (path === "/tutor" && location.pathname === "/ai-tutor");
+            return (
+              <button
+                key={path}
+                className={`lnav-tab-btn ${isActive ? "lnav-tab-btn--active" : ""}`}
+                onClick={() => { navigate(path); setMenuOpen(false); }}
+                aria-current={isActive ? "page" : undefined}
+              >
+                <Icon />
+                {label}
+              </button>
+            );
+          })}
+        </nav>
 
         {/* Right side controls */}
         <div className="lnav-desktop-controls">
-          {/* Landing: subjects scroll */}
-          {isLanding && (
-            <button className="lnav-link-btn" onClick={handleScrollToSubjects}>
-              Subjects
-            </button>
-          )}
-
           {/* App: search icon (mobile trigger) */}
-          {isApp && curriculum && (
+          {curriculum && (
             <button
               className="lnav-search-icon"
               aria-label={searchOpen ? "Close search" : "Open search"}
@@ -205,13 +184,7 @@ export default function Navbar({
           </button>
 
           {/* Auth / Profile */}
-          {session ? (
-            <ProfileDropdown />
-          ) : (
-            <button className="lnav-guest-pill" onClick={handleSignIn}>
-              <span className="lnav-guest-action" style={{ fontWeight: 600 }}>Sign In</span>
-            </button>
-          )}
+          <ProfileDropdown />
         </div>
 
         {/* Hamburger – shown on mobile */}
@@ -226,7 +199,7 @@ export default function Navbar({
       </nav>
 
       {/* Mobile search panel */}
-      {isApp && curriculum && searchOpen && (
+      {curriculum && searchOpen && (
         <div className="lnav-search-panel">
           <GlobalSearch curriculum={curriculum} navigateToTopic={handleSearchNavigate} />
         </div>
@@ -235,20 +208,12 @@ export default function Navbar({
       {/* Mobile drawer */}
       {menuOpen && (
         <div className="lnav-drawer">
-          {isApp && (
-            <div className="lnav-drawer-breadcrumbs">
-              <Breadcrumbs />
-            </div>
-          )}
-
-          {isLanding && (
-            <button className="lnav-drawer-item" onClick={handleScrollToSubjects}>
-              Subjects
-            </button>
-          )}
+          <div className="lnav-drawer-breadcrumbs">
+            <Breadcrumbs />
+          </div>
 
           {/* App nav links in drawer */}
-          {isApp && APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
+          {APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
             const isActive = location.pathname === path ||
               (path === "/tutor" && location.pathname === "/ai-tutor");
             return (
@@ -271,15 +236,9 @@ export default function Navbar({
             {isDark ? "Light Mode" : "Dark Mode"}
           </button>
 
-          {session ? (
-            <div className="lnav-drawer-profile">
-              <ProfileDropdown />
-            </div>
-          ) : (
-            <button className="lnav-cta lnav-drawer-cta" onClick={handleSignIn}>
-              Sign In
-            </button>
-          )}
+          <div className="lnav-drawer-profile">
+            <ProfileDropdown />
+          </div>
         </div>
       )}
     </>

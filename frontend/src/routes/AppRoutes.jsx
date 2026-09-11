@@ -3,12 +3,12 @@ import { Routes, Route, useNavigate, useParams, useLocation } from "react-router
 import { LEARNING_MODES } from "../utils/learningNavigation";
 import { SESSION_PHASES } from "../hooks/useSessionLoop";
 import AppLayout from "../components/AppLayout";
-import LandingPage from "../pages/LandingPage";
 import VerificationPage from "../pages/VerificationPage";
 import SkeletonLoader from "../components/SkeletonLoader";
 import { useCurriculum } from "../hooks/useCurriculum";
 import { useMasteredTopics } from "../hooks/useMasteredTopics";
 import { useAuth } from "../hooks/useAuth";
+import { Navigate } from "react-router-dom";
 
 const SubjectGrid = React.lazy(() => import("../components/SubjectGrid"));
 const ChapterList = React.lazy(() => import("../components/ChapterList"));
@@ -131,24 +131,6 @@ const SubjectsView = () => {
   );
 };
 
-const ProtectedLayout = () => {
-  const { session, sessionLoading, openAuthWithReason } = useAuth();
-  const navigate = useNavigate();
-
-  React.useEffect(() => {
-    if (!sessionLoading && !session) {
-      openAuthWithReason("Please sign in to access Tixar.");
-      navigate("/");
-    }
-  }, [session, sessionLoading, navigate, openAuthWithReason]);
-
-  // Loading UI removed
-
-  if (!session) return null;
-
-  return <AppLayout />;
-};
-
 export default function AppRoutes() {
   return (
     <Suspense fallback={
@@ -157,9 +139,8 @@ export default function AppRoutes() {
       </div>
     }>
       <Routes>
-        <Route path="/" element={<LandingPage />} />
-        
-        <Route element={<ProtectedLayout />}>
+        <Route element={<AppLayout />}>
+          <Route path="/" element={<SubjectsView />} />
           <Route path="/subjects" element={<SubjectsView />} />
           <Route path="/subjects/:subjectId" element={<ChapterListWrapper />} />
           <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />
@@ -169,6 +150,7 @@ export default function AppRoutes() {
           <Route path="/mistakes" element={<MistakeJournal />} />
           <Route path="/tutor" element={<AITutor />} />
           <Route path="/ai-tutor" element={<AITutor />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>
     </Suspense>
