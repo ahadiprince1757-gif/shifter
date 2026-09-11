@@ -23,6 +23,53 @@ function formatTitle(str) {
     .join(" ");
 }
 
+/** Semi-circle arc gauge for clean, immediate visual readiness */
+function ReadinessGauge({ score, isColdStart }) {
+  const radius = 38;
+  const strokeWidth = 7;
+  const circumference = Math.PI * radius; // ~119.38
+  const safeScore =
+    isColdStart || score === null ? 0 : Math.min(Math.max(score, 0), 100);
+  const progressOffset = circumference * (1 - safeScore / 100);
+
+  return (
+    <div className="analytics-readiness-gauge">
+      <svg
+        viewBox="0 0 96 54"
+        className="analytics-readiness-svg"
+        aria-label={`Readiness: ${safeScore}%`}
+      >
+        <path
+          d="M 10 46 A 38 38 0 0 1 86 46"
+          fill="none"
+          stroke="var(--bd)"
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+        />
+        <path
+          d="M 10 46 A 38 38 0 0 1 86 46"
+          fill="none"
+          stroke={
+            safeScore >= 75
+              ? "#10b981"
+              : safeScore >= 50
+              ? "var(--v)"
+              : "#f59e0b"
+          }
+          strokeWidth={strokeWidth}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={progressOffset}
+          style={{ transition: "stroke-dashoffset 0.6s ease" }}
+        />
+      </svg>
+      <div className="analytics-readiness-val">
+        {isColdStart || score === null ? "—" : `${safeScore}%`}
+      </div>
+    </div>
+  );
+}
+
 export default function AnalyticsDashboard() {
   const navigate = useNavigate();
   const { session } = useAuth();
@@ -61,7 +108,7 @@ export default function AnalyticsDashboard() {
         setDueReviews(reviews || []);
         setUnresolvedMistakes(mistakes || []);
       })
-      .catch((err) => {
+      .catch(() => {
         if (live) setError("Could not load analytics.");
       })
       .finally(() => {
@@ -96,6 +143,7 @@ export default function AnalyticsDashboard() {
     unresolvedMistakes,
   });
 
+  const { overview } = intelligence;
   const totalQuizzes = attempts.length;
   const totalPasses = attempts.filter((a) => a.correct).length;
   const accuracyRate =
@@ -106,7 +154,36 @@ export default function AnalyticsDashboard() {
   const weakTopics = intelligence?.masteryMap?.weakTopics || [];
   const strongTopics = intelligence?.masteryMap?.strongTopics || [];
 
-  // Determine top priority action
+  // Determine readiness score & status
+  const readinessScore =
+    overview.readinessScore ??
+    (isColdStart ? null : Math.round((accuracyRate || 0) * 0.9));
+
+  let statusType = "unmeasured";
+  let readinessLabel = "Not Measured";
+  let readinessDiagnosis =
+    "Complete your first quiz to calculate your learning readiness.";
+
+  if (!isColdStart) {
+    if (totalQuizzes < 5) {
+      statusType = "calibrating";
+      readinessLabel = "Calibrating";
+      readinessDiagnosis = "Complete a few more quizzes to lock in your score.";
+    } else if (overview.isReady || (readinessScore !== null && readinessScore >= 75)) {
+      statusType = "ready";
+      readinessLabel = "Exam Ready";
+      readinessDiagnosis = "Core concepts understood. Ready for higher-level topics.";
+    } else {
+      statusType = "practice";
+      readinessLabel = "Needs Practice";
+      readinessDiagnosis =
+        weakTopics[0]
+          ? `Focus on: ${formatTitle(weakTopics[0].topic_title || weakTopics[0].topic)}.`
+          : "Work on active mistakes to increase readiness.";
+    }
+  }
+
+  // Top priority focus
   const topFocus =
     weakTopics[0] ||
     (intelligence.recommendation?.title ? intelligence.recommendation : null);
@@ -137,7 +214,25 @@ export default function AnalyticsDashboard() {
         </p>
       </header>
 
-      {/* 2. STATS AT A GLANCE */}
+      {/* 2. MINIMALIST READINESS HERO */}
+      <div className="analytics-readiness-card">
+        <div className="analytics-readiness-left">
+          <div className="analytics-readiness-kicker">Exam Readiness</div>
+          <div className="analytics-readiness-status-row">
+            <span
+              className={`analytics-status-pill analytics-status-pill--${statusType}`}
+            >
+              <span className="analytics-status-dot" />
+              {readinessLabel}
+            </span>
+          </div>
+          <p className="analytics-readiness-sub">{readinessDiagnosis}</p>
+        </div>
+
+        <ReadinessGauge score={readinessScore} isColdStart={isColdStart} />
+      </div>
+
+      {/* 3. STATS AT A GLANCE */}
       <div className="analytics-min-grid">
         {/* Accuracy */}
         <div className="analytics-stat-card">
@@ -168,7 +263,7 @@ export default function AnalyticsDashboard() {
           </div>
         </div>
 
-        {/* Due Reviews */}
+        {/* Reviews Due */}
         <div
           className={`analytics-stat-card ${
             dueReviews.length > 0 ? "analytics-stat-card--actionable" : ""
@@ -189,7 +284,7 @@ export default function AnalyticsDashboard() {
         </div>
       </div>
 
-      {/* 3. PRIMARY ACTION: WHAT TO DO NEXT */}
+      {/* 4. PRIMARY ACTION: WHAT TO DO NEXT */}
       {isColdStart ? (
         <div className="analytics-focus-card">
           <div className="analytics-focus-kicker">Next Step</div>
@@ -239,7 +334,7 @@ export default function AnalyticsDashboard() {
         </div>
       )}
 
-      {/* 4. WEAK TOPICS LIST (DIRECT TO THE POINT) */}
+      {/* 5. WEAK TOPICS LIST (DIRECT TO THE POINT) */}
       {weakTopics.length > 0 && (
         <div className="analytics-section">
           <div className="analytics-section-title">Topics Needing Review</div>
@@ -268,7 +363,7 @@ export default function AnalyticsDashboard() {
         </div>
       )}
 
-      {/* 5. MASTERED TOPICS SUMMARY */}
+      {/* 6. MASTERED TOPICS SUMMARY */}
       {strongTopics.length > 0 && (
         <div className="analytics-mastered-bar">
           <span className="analytics-mastered-check">✓</span>
