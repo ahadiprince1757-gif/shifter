@@ -82,12 +82,25 @@ export class MathMutator {
   mutate(qObj, modalityIndex = 0, performanceContext = {}) {
     if (!qObj) return null;
 
-    const difficulty = this._resolveDifficulty(
+    const rawSkill =
+      qObj?.metadata?.skill ??
+      qObj?.skill ??
+      this._classifySkill(qObj);
+
+    const skill =
+      rawSkill === "order_of_operations" || rawSkill === "bodmas"
+        ? "bodmas"
+        : rawSkill;
+
+    const difficulty = this._resolveMutationDifficulty(
       qObj,
       performanceContext
     );
 
-    const skill = this._classifySkill(qObj);
+    const semanticIdentity = this._extractSemanticIdentity(
+      qObj,
+      skill
+    );
 
     const sourceModel = this._extractSourceModel(
       qObj,
@@ -98,7 +111,8 @@ export class MathMutator {
       qObj,
       skill,
       difficulty,
-      modalityIndex
+      modalityIndex,
+      semanticIdentity
     );
 
     const mutationContext = {
@@ -107,6 +121,7 @@ export class MathMutator {
       fingerprint,
       difficulty,
       modalityIndex,
+      semanticIdentity,
 
       diagnosis:
         performanceContext.diagnosis ?? null,
@@ -172,6 +187,21 @@ export class MathMutator {
 
         if (!normalized) continue;
 
+        const boundaryCheck = this._verifySemanticBoundary(
+          qObj,
+          normalized,
+          skill,
+          normalized.metadata?.skill ?? skill,
+          attemptContext
+        );
+
+        if (!boundaryCheck.valid) {
+          console.warn(
+            `[MathMutator] Semantic boundary check failed: ${boundaryCheck.reason}`
+          );
+          continue;
+        }
+
         const verification =
           this._verifyMathQuestion(
             normalized,
@@ -206,6 +236,7 @@ export class MathMutator {
 
             conceptPreserved: true,
             skillPreserved: true,
+            semanticIdentity,
             answerRecalculated: true,
 
             deterministic: true,
@@ -266,8 +297,13 @@ export class MathMutator {
     qObj,
     skill,
     difficulty,
-    modalityIndex
+    modalityIndex,
+    semanticIdentity = null
   ) {
+    const sem =
+      semanticIdentity ??
+      this._extractSemanticIdentity(qObj, skill);
+
     const canonical = JSON.stringify({
       q: String(
         qObj?.q ??
@@ -277,21 +313,16 @@ export class MathMutator {
         .trim()
         .toLowerCase(),
 
-      skill,
+      subject: sem.subject,
+      chapter: sem.chapter,
+      topic: sem.topic,
+      conceptId: sem.conceptId,
+      skillId: sem.skillId,
+      subskillId: sem.subskillId,
 
       difficulty,
 
       modalityIndex,
-
-      chapter:
-        qObj?.metadata?.chapter ??
-        qObj?.chapter ??
-        null,
-
-      topic:
-        qObj?.metadata?.topic ??
-        qObj?.topic ??
-        null,
     });
 
     return this._hash(canonical)
@@ -459,6 +490,14 @@ export class MathMutator {
     }
 
     if (
+      /bodmas|order of operations|order of operation|pemdas|brackets.*multiply|multiply.*before.*add|division.*before.*add/i.test(
+        stem
+      )
+    ) {
+      return "bodmas";
+    }
+
+    if (
       /quadratic|x\^2|factor.*quadratic|solve.*quadratic/.test(
         stem
       )
@@ -583,6 +622,62 @@ export class MathMutator {
     }
 
     return "linear";
+  }
+
+  // ============================================================
+  // SEMANTIC IDENTITY
+  // ============================================================
+
+  _extractSemanticIdentity(qObj, skill) {
+    const meta = qObj?.metadata ?? {};
+    const subject =
+      meta.subject ??
+      qObj?.subject ??
+      "Mathematics";
+
+    const chapter =
+      meta.chapter ??
+      qObj?.chapter ??
+      "Algebra";
+
+    const topic =
+      meta.topic ??
+      qObj?.topic ??
+      (skill === "bodmas" ? "BODMAS" : skill);
+
+    let conceptId =
+      meta.conceptId ??
+      meta.concept ??
+      null;
+
+    let skillId =
+      meta.skillId ??
+      meta.skill ??
+      skill;
+
+    let subskillId =
+      meta.subskillId ??
+      meta.subskill ??
+      null;
+
+    if (skill === "bodmas" || skill === "order_of_operations") {
+      if (!conceptId) conceptId = "order_of_operations";
+      if (!skillId) skillId = "bodmas";
+      if (!subskillId) subskillId = "mixed_operations";
+    } else {
+      if (!conceptId) conceptId = skill;
+      if (!skillId) skillId = skill;
+      if (!subskillId) subskillId = skill;
+    }
+
+    return {
+      subject,
+      chapter,
+      topic,
+      conceptId,
+      skillId,
+      subskillId,
+    };
   }
 
   // ============================================================
@@ -872,6 +967,13 @@ export class MathMutator {
             3,
         };
 
+      case "bodmas":
+        return {
+          skill: "bodmas",
+          numbers,
+          unit,
+        };
+
       default:
         return {
           skill,
@@ -887,6 +989,12 @@ export class MathMutator {
 
   _getGenerator(skill) {
     const generators = {
+      bodmas:
+        this._generateBodmas,
+
+      order_of_operations:
+        this._generateBodmas,
+
       rectangle:
         this._generateRectangle,
 
@@ -3453,6 +3561,635 @@ export class MathMutator {
   }
 
   // ============================================================
+  // BODMAS / ORDER OF OPERATIONS GENERATORS
+  // ============================================================
+
+  _generateBodmas(qObj, difficulty, context = {}) {
+    const strategy = context.repairStrategy ?? "STANDARD";
+
+    if (strategy === "CONCEPT_CONTRAST" || strategy === "PROBE") {
+      return this._generateBodmasConceptProbe(context);
+    }
+
+    if (strategy === "PROCEDURE_REPAIR" || strategy === "ISOLATE") {
+      return this._generateBodmasProcedureRepair(context);
+    }
+
+    if (strategy === "SIMPLIFY_NUMBERS" || strategy === "CALCULATION_REPAIR") {
+      return this._generateBodmasSimplified(qObj, context);
+    }
+
+    return this._generateBodmasByLevel(difficulty, context);
+  }
+
+  _generateBodmasByLevel(level, context = {}) {
+    const seed = context.variantSeed ?? 1;
+    const clampedLevel = this._clamp(Math.round(level || 1), 1, 5);
+
+    const level1Tuples = [
+      {
+        q: "Evaluate: 2 + 3 × 4",
+        ans: "14",
+        distractors: ["20", "9", "18"],
+        steps: [
+          "Step 1: Multiply first: 3 × 4 = 12.",
+          "Step 2: Add: 2 + 12 = 14.",
+        ],
+      },
+      {
+        q: "Evaluate: 10 - 2 × 3",
+        ans: "4",
+        distractors: ["24", "8", "6"],
+        steps: [
+          "Step 1: Multiply first: 2 × 3 = 6.",
+          "Step 2: Subtract: 10 - 6 = 4.",
+        ],
+      },
+      {
+        q: "Evaluate: 5 + 4 × 2",
+        ans: "13",
+        distractors: ["18", "11", "10"],
+        steps: [
+          "Step 1: Multiply first: 4 × 2 = 8.",
+          "Step 2: Add: 5 + 8 = 13.",
+        ],
+      },
+      {
+        q: "Evaluate: 12 - 6 ÷ 2",
+        ans: "9",
+        distractors: ["3", "10", "4"],
+        steps: [
+          "Step 1: Divide first: 6 ÷ 2 = 3.",
+          "Step 2: Subtract: 12 - 3 = 9.",
+        ],
+      },
+      {
+        q: "Evaluate: 3 × 4 + 5",
+        ans: "17",
+        distractors: ["27", "12", "19"],
+        steps: [
+          "Step 1: Multiply first: 3 × 4 = 12.",
+          "Step 2: Add: 12 + 5 = 17.",
+        ],
+      },
+      {
+        q: "Evaluate: 18 ÷ 3 - 2",
+        ans: "4",
+        distractors: ["18", "6", "1"],
+        steps: [
+          "Step 1: Divide first: 18 ÷ 3 = 6.",
+          "Step 2: Subtract: 6 - 2 = 4.",
+        ],
+      },
+    ];
+
+    const level2Tuples = [
+      {
+        q: "Evaluate: 6 + 4 × 2 - 3",
+        ans: "11",
+        distractors: ["17", "14", "8"],
+        steps: [
+          "Step 1: Multiply first: 4 × 2 = 8.",
+          "Step 2: Add and subtract from left to right: 6 + 8 = 14.",
+          "Step 3: 14 - 3 = 11.",
+        ],
+      },
+      {
+        q: "Evaluate: 15 - 3 × 2 + 4",
+        ans: "13",
+        distractors: ["28", "24", "10"],
+        steps: [
+          "Step 1: Multiply first: 3 × 2 = 6.",
+          "Step 2: Left to right: 15 - 6 = 9.",
+          "Step 3: 9 + 4 = 13.",
+        ],
+      },
+      {
+        q: "Evaluate: 8 + 12 ÷ 3 × 2",
+        ans: "16",
+        distractors: ["10", "20", "14"],
+        steps: [
+          "Step 1: Divide: 12 ÷ 3 = 4.",
+          "Step 2: Multiply: 4 × 2 = 8.",
+          "Step 3: Add: 8 + 8 = 16.",
+        ],
+      },
+      {
+        q: "Evaluate: 20 - 10 ÷ 2 + 1",
+        ans: "16",
+        distractors: ["6", "14", "15"],
+        steps: [
+          "Step 1: Divide first: 10 ÷ 2 = 5.",
+          "Step 2: Left to right: 20 - 5 = 15.",
+          "Step 3: 15 + 1 = 16.",
+        ],
+      },
+      {
+        q: "Evaluate: 4 × 5 - 6 ÷ 2",
+        ans: "17",
+        distractors: ["7", "20", "14"],
+        steps: [
+          "Step 1: Multiply: 4 × 5 = 20.",
+          "Step 2: Divide: 6 ÷ 2 = 3.",
+          "Step 3: Subtract: 20 - 3 = 17.",
+        ],
+      },
+      {
+        q: "Evaluate: 14 + 6 ÷ 2 - 5",
+        ans: "12",
+        distractors: ["5", "15", "10"],
+        steps: [
+          "Step 1: Divide first: 6 ÷ 2 = 3.",
+          "Step 2: Left to right: 14 + 3 = 17.",
+          "Step 3: 17 - 5 = 12.",
+        ],
+      },
+    ];
+
+    const level3Tuples = [
+      {
+        q: "Evaluate: (3 + 5) × 2",
+        ans: "16",
+        distractors: ["13", "10", "21"],
+        steps: [
+          "Step 1: Evaluate inside brackets first: 3 + 5 = 8.",
+          "Step 2: Multiply: 8 × 2 = 16.",
+        ],
+      },
+      {
+        q: "Evaluate: 4 × (10 - 6)",
+        ans: "16",
+        distractors: ["34", "10", "24"],
+        steps: [
+          "Step 1: Evaluate inside brackets first: 10 - 6 = 4.",
+          "Step 2: Multiply: 4 × 4 = 16.",
+        ],
+      },
+      {
+        q: "Evaluate: 18 ÷ (2 + 1) + 5",
+        ans: "11",
+        distractors: ["14", "9", "12"],
+        steps: [
+          "Step 1: Inside brackets first: 2 + 1 = 3.",
+          "Step 2: Divide: 18 ÷ 3 = 6.",
+          "Step 3: Add: 6 + 5 = 11.",
+        ],
+      },
+      {
+        q: "Evaluate: (12 - 4) ÷ 2 + 7",
+        ans: "11",
+        distractors: ["10", "15", "8"],
+        steps: [
+          "Step 1: Inside brackets first: 12 - 4 = 8.",
+          "Step 2: Divide: 8 ÷ 2 = 4.",
+          "Step 3: Add: 4 + 7 = 11.",
+        ],
+      },
+      {
+        q: "Evaluate: 5 + (8 - 2) × 3",
+        ans: "23",
+        distractors: ["33", "21", "18"],
+        steps: [
+          "Step 1: Inside brackets first: 8 - 2 = 6.",
+          "Step 2: Multiply: 6 × 3 = 18.",
+          "Step 3: Add: 5 + 18 = 23.",
+        ],
+      },
+      {
+        q: "Evaluate: 24 ÷ (3 + 3) × 2",
+        ans: "8",
+        distractors: ["2", "12", "6"],
+        steps: [
+          "Step 1: Inside brackets first: 3 + 3 = 6.",
+          "Step 2: Divide: 24 ÷ 6 = 4.",
+          "Step 3: Multiply: 4 × 2 = 8.",
+        ],
+      },
+    ];
+
+    const level4Tuples = [
+      {
+        q: "Evaluate: 2 × (3 + 4 × 2)",
+        ans: "22",
+        distractors: ["28", "14", "20"],
+        steps: [
+          "Step 1: Inside brackets, multiply first: 4 × 2 = 8.",
+          "Step 2: Complete bracket addition: 3 + 8 = 11.",
+          "Step 3: Multiply by outside factor: 2 × 11 = 22.",
+        ],
+      },
+      {
+        q: "Evaluate: (15 - 3) ÷ (2 + 2) + 6",
+        ans: "9",
+        distractors: ["6", "12", "10"],
+        steps: [
+          "Step 1: Evaluate both brackets: (15 - 3) = 12 and (2 + 2) = 4.",
+          "Step 2: Divide: 12 ÷ 4 = 3.",
+          "Step 3: Add: 3 + 6 = 9.",
+        ],
+      },
+      {
+        q: "Evaluate: 3 × (4 + 2) - 10 ÷ 2",
+        ans: "13",
+        distractors: ["18", "8", "15"],
+        steps: [
+          "Step 1: Inside brackets: 4 + 2 = 6.",
+          "Step 2: Multiply: 3 × 6 = 18.",
+          "Step 3: Divide: 10 ÷ 2 = 5.",
+          "Step 4: Subtract: 18 - 5 = 13.",
+        ],
+      },
+      {
+        q: "Evaluate: 24 ÷ (8 - 2 × 3) + 5",
+        ans: "17",
+        distractors: ["9", "12", "15"],
+        steps: [
+          "Step 1: Inside brackets, multiply: 2 × 3 = 6.",
+          "Step 2: Finish bracket: 8 - 6 = 2.",
+          "Step 3: Divide: 24 ÷ 2 = 12.",
+          "Step 4: Add: 12 + 5 = 17.",
+        ],
+      },
+      {
+        q: "Evaluate: 4 + 2 × (5 + 3 × 2)",
+        ans: "26",
+        distractors: ["22", "30", "32"],
+        steps: [
+          "Step 1: Inside brackets, multiply: 3 × 2 = 6.",
+          "Step 2: Finish bracket: 5 + 6 = 11.",
+          "Step 3: Multiply: 2 × 11 = 22.",
+          "Step 4: Add: 4 + 22 = 26.",
+        ],
+      },
+      {
+        q: "Evaluate: 5 × (12 - 2 × 4) + 3",
+        ans: "23",
+        distractors: ["43", "20", "25"],
+        steps: [
+          "Step 1: Inside brackets, multiply: 2 × 4 = 8.",
+          "Step 2: Finish bracket: 12 - 8 = 4.",
+          "Step 3: Multiply: 5 × 4 = 20.",
+          "Step 4: Add: 20 + 3 = 23.",
+        ],
+      },
+    ];
+
+    const level5Tuples = [
+      {
+        q: "Evaluate: 30 - 2 × (18 - (4 + 2) × 2)",
+        ans: "18",
+        distractors: ["12", "24", "20"],
+        steps: [
+          "Step 1: Innermost bracket: 4 + 2 = 6.",
+          "Step 2: Multiply inside bracket: 6 × 2 = 12.",
+          "Step 3: Outer bracket: 18 - 12 = 6.",
+          "Step 4: Multiply outside: 2 × 6 = 12.",
+          "Step 5: Subtract: 30 - 12 = 18.",
+        ],
+      },
+      {
+        q: "Evaluate: (40 - 4 × 5) ÷ (2 × 5) + 7",
+        ans: "9",
+        distractors: ["11", "8", "12"],
+        steps: [
+          "Step 1: First bracket: 4 × 5 = 20, so 40 - 20 = 20.",
+          "Step 2: Second bracket: 2 × 5 = 10.",
+          "Step 3: Divide: 20 ÷ 10 = 2.",
+          "Step 4: Add: 2 + 7 = 9.",
+        ],
+      },
+      {
+        q: "Evaluate: 5 × (2 + 3) - 4 × (6 - 2)",
+        ans: "9",
+        distractors: ["15", "12", "6"],
+        steps: [
+          "Step 1: Evaluate both brackets: (2 + 3) = 5 and (6 - 2) = 4.",
+          "Step 2: Multiply: 5 × 5 = 25 and 4 × 4 = 16.",
+          "Step 3: Subtract: 25 - 16 = 9.",
+        ],
+      },
+      {
+        q: "Evaluate: 48 ÷ 4 × (2 + 1) - 6",
+        ans: "30",
+        distractors: ["18", "24", "36"],
+        steps: [
+          "Step 1: Inside bracket: 2 + 1 = 3.",
+          "Step 2: Division and multiplication left to right: 48 ÷ 4 = 12.",
+          "Step 3: 12 × 3 = 36.",
+          "Step 4: Subtract: 36 - 6 = 30.",
+        ],
+      },
+      {
+        q: "Evaluate: 2 × (10 - 2 × (6 - 4)) + 8",
+        ans: "20",
+        distractors: ["16", "24", "18"],
+        steps: [
+          "Step 1: Innermost bracket: 6 - 4 = 2.",
+          "Step 2: Multiply inside outer bracket: 2 × 2 = 4.",
+          "Step 3: Finish outer bracket: 10 - 4 = 6.",
+          "Step 4: Multiply: 2 × 6 = 12.",
+          "Step 5: Add: 12 + 8 = 20.",
+        ],
+      },
+    ];
+
+    const ladders = {
+      1: level1Tuples,
+      2: level2Tuples,
+      3: level3Tuples,
+      4: level4Tuples,
+      5: level5Tuples,
+    };
+
+    const tuples = ladders[clampedLevel] || level1Tuples;
+    const selected = this._deterministicChoice(
+      tuples,
+      seed,
+      `bodmas-l${clampedLevel}`
+    );
+    const options = [selected.ans, ...selected.distractors];
+
+    return this._makeBodmasQuestion(
+      selected.q,
+      selected.ans,
+      options,
+      context,
+      {
+        steps: selected.steps,
+        sol: selected.steps.join(" "),
+        subskillId: `level_${clampedLevel}`,
+      }
+    );
+  }
+
+  _generateBodmasConceptProbe(context = {}) {
+    const seed = context.variantSeed ?? 1;
+
+    const probeTuples = [
+      {
+        q: "In the expression 2 + 5 × 3, which operation must be calculated first according to BODMAS?",
+        ans: "5 × 3 (Multiplication)",
+        options: [
+          "5 × 3 (Multiplication)",
+          "2 + 5 (Addition)",
+          "2 × 3",
+          "Left to right: 2 + 5",
+        ],
+        hint: "Multiplication takes precedence over addition in BODMAS.",
+        steps: [
+          "Step 1: BODMAS order is Brackets, Orders, Division & Multiplication, Addition & Subtraction.",
+          "Step 2: Multiplication (5 × 3) has higher priority than addition (2 + 5).",
+        ],
+      },
+      {
+        q: "In the expression 12 - 6 ÷ 2, which operation should be carried out first?",
+        ans: "6 ÷ 2 (Division)",
+        options: [
+          "6 ÷ 2 (Division)",
+          "12 - 6 (Subtraction)",
+          "12 ÷ 2",
+          "Left to right: 12 - 6",
+        ],
+        hint: "Division comes before subtraction in BODMAS.",
+        steps: [
+          "Step 1: In BODMAS, Division (D) takes precedence over Subtraction (S).",
+          "Step 2: Therefore, 6 ÷ 2 must be calculated before subtracting.",
+        ],
+      },
+      {
+        q: "In the expression 4 × (8 - 3), which operation must be calculated first?",
+        ans: "8 - 3 (inside brackets)",
+        options: [
+          "8 - 3 (inside brackets)",
+          "4 × 8 (Multiplication)",
+          "4 × 3",
+          "4 × 8 - 3",
+        ],
+        hint: "Operations inside Brackets always come first (B in BODMAS).",
+        steps: [
+          "Step 1: 'B' in BODMAS stands for Brackets.",
+          "Step 2: Always evaluate operations inside brackets first: 8 - 3.",
+        ],
+      },
+      {
+        q: "In the expression 10 + 8 ÷ 4 × 2, which operation should be performed first?",
+        ans: "8 ÷ 4 (Division)",
+        options: [
+          "8 ÷ 4 (Division)",
+          "10 + 8 (Addition)",
+          "4 × 2 (Multiplication)",
+          "10 × 2",
+        ],
+        hint: "Division and multiplication take precedence over addition; evaluate them left to right.",
+        steps: [
+          "Step 1: Division and multiplication have equal priority, evaluated left to right.",
+          "Step 2: Since division appears first from the left (8 ÷ 4), it is calculated first.",
+        ],
+      },
+    ];
+
+    const selected = this._deterministicChoice(
+      probeTuples,
+      seed,
+      "bodmas-probe"
+    );
+
+    return this._makeBodmasQuestion(
+      selected.q,
+      selected.ans,
+      selected.options,
+      context,
+      {
+        hint: selected.hint,
+        steps: selected.steps,
+        sol: selected.steps.join(" "),
+        subskillId: "concept_contrast",
+      }
+    );
+  }
+
+  _generateBodmasProcedureRepair(context = {}) {
+    const seed = context.variantSeed ?? 1;
+
+    const procedureTuples = [
+      {
+        q: "Step 1 of evaluating 3 + 4 × 5: First calculate the multiplication 4 × 5. What is 4 × 5?",
+        ans: "20",
+        distractors: ["9", "15", "12"],
+        steps: [
+          "Step 1: Identify the operation with highest priority (Multiplication: 4 × 5).",
+          "Step 2: Calculate 4 × 5 = 20.",
+        ],
+        hint: "Calculate 4 multiplied by 5.",
+      },
+      {
+        q: "Step 1 of evaluating 15 - 2 × 4: First calculate the multiplication 2 × 4. What is 2 × 4?",
+        ans: "8",
+        distractors: ["13", "10", "6"],
+        steps: [
+          "Step 1: Multiplication comes before subtraction in BODMAS.",
+          "Step 2: Calculate 2 × 4 = 8.",
+        ],
+        hint: "Calculate 2 multiplied by 4.",
+      },
+      {
+        q: "Step 1 of evaluating 6 + 18 ÷ 3: First calculate the division 18 ÷ 3. What is 18 ÷ 3?",
+        ans: "6",
+        distractors: ["8", "9", "24"],
+        steps: [
+          "Step 1: Division takes precedence over addition in BODMAS.",
+          "Step 2: Calculate 18 ÷ 3 = 6.",
+        ],
+        hint: "Divide 18 by 3.",
+      },
+      {
+        q: "Step 1 of evaluating 20 - (4 + 6): First calculate the bracket (4 + 6). What is 4 + 6?",
+        ans: "10",
+        distractors: ["14", "24", "16"],
+        steps: [
+          "Step 1: Operations inside brackets must be evaluated first.",
+          "Step 2: Calculate 4 + 6 = 10.",
+        ],
+        hint: "Add 4 and 6 inside the brackets.",
+      },
+    ];
+
+    const selected = this._deterministicChoice(
+      procedureTuples,
+      seed,
+      "bodmas-procedure"
+    );
+    const options = [selected.ans, ...selected.distractors];
+
+    return this._makeBodmasQuestion(
+      selected.q,
+      selected.ans,
+      options,
+      context,
+      {
+        hint: selected.hint,
+        steps: selected.steps,
+        sol: selected.steps.join(" "),
+        subskillId: "procedure_repair",
+      }
+    );
+  }
+
+  _generateBodmasSimplified(qObj, context = {}) {
+    const seed = context.variantSeed ?? 1;
+
+    const simplifiedTuples = [
+      {
+        q: "Evaluate: 1 + 2 × 3",
+        ans: "7",
+        distractors: ["9", "6", "8"],
+        steps: [
+          "Step 1: Multiply first: 2 × 3 = 6.",
+          "Step 2: Add: 1 + 6 = 7.",
+        ],
+      },
+      {
+        q: "Evaluate: 2 + 3 × 2",
+        ans: "8",
+        distractors: ["10", "7", "12"],
+        steps: [
+          "Step 1: Multiply first: 3 × 2 = 6.",
+          "Step 2: Add: 2 + 6 = 8.",
+        ],
+      },
+      {
+        q: "Evaluate: 10 - 2 × 2",
+        ans: "6",
+        distractors: ["16", "8", "4"],
+        steps: [
+          "Step 1: Multiply first: 2 × 2 = 4.",
+          "Step 2: Subtract: 10 - 4 = 6.",
+        ],
+      },
+      {
+        q: "Evaluate: 6 ÷ 2 + 1",
+        ans: "4",
+        distractors: ["2", "5", "3"],
+        steps: [
+          "Step 1: Divide first: 6 ÷ 2 = 3.",
+          "Step 2: Add: 3 + 1 = 4.",
+        ],
+      },
+    ];
+
+    const selected = this._deterministicChoice(
+      simplifiedTuples,
+      seed,
+      "bodmas-simplified"
+    );
+    const options = [selected.ans, ...selected.distractors];
+
+    return this._makeBodmasQuestion(
+      selected.q,
+      selected.ans,
+      options,
+      context,
+      {
+        steps: selected.steps,
+        sol: selected.steps.join(" "),
+        subskillId: "simplified_numbers",
+      }
+    );
+  }
+
+  _makeBodmasQuestion(q, ans, options, context = {}, extra = {}) {
+    const seed = context.variantSeed ?? 1;
+    const finalAns = String(ans);
+
+    let finalOptions;
+    if (Array.isArray(options) && options.length > 0) {
+      finalOptions = [...options];
+    } else {
+      finalOptions = this._numberDistractors(finalAns, 3, seed);
+    }
+
+    if (!finalOptions.includes(finalAns)) {
+      finalOptions[0] = finalAns;
+    }
+
+    const shuffled = this._deterministicShuffle(
+      finalOptions,
+      seed,
+      "bodmas-options"
+    );
+
+    return {
+      q,
+      ans: finalAns,
+      options: shuffled,
+      hint:
+        extra.hint ??
+        "Apply BODMAS: Brackets, Orders, Division & Multiplication, Addition & Subtraction.",
+      sol:
+        extra.sol ??
+        `Applying order of operations (BODMAS), the answer is ${finalAns}.`,
+      steps: extra.steps ?? [
+        "Step 1: Follow order of operations: Brackets, Orders, Division & Multiplication, Addition & Subtraction.",
+        `Step 2: The evaluated result is ${finalAns}.`,
+      ],
+      type: "mcq",
+      metadata: {
+        subject: "Mathematics",
+        chapter: "Algebra",
+        topic: "BODMAS",
+        conceptId: "order_of_operations",
+        skillId: "bodmas",
+        subskillId: extra.subskillId ?? "mixed_operations",
+        skill: "bodmas",
+        repairStrategy: context.repairStrategy ?? "STANDARD",
+        difficulty: context.difficulty ?? 1,
+        variables: extra.variables ?? {},
+        ...(extra.metadata || {}),
+      },
+    };
+  }
+
+  // ============================================================
   // FINALIZATION
   // ============================================================
 
@@ -3634,6 +4371,38 @@ export class MathMutator {
 
     return this.config
       .defaultDifficulty;
+  }
+
+  _resolveMutationDifficulty(
+    qObj,
+    context = {}
+  ) {
+    const strategy =
+      context.repairStrategy ??
+      "STANDARD";
+
+    const repairStrategies =
+      new Set([
+        "PROBE",
+        "CONCEPT_CONTRAST",
+        "PROCEDURE_REPAIR",
+        "SIGN_REPAIR",
+        "SIMPLIFY_NUMBERS",
+        "CALCULATION_REPAIR",
+        "ISOLATE",
+        "REPAIR",
+      ]);
+
+    if (
+      repairStrategies.has(strategy)
+    ) {
+      return 1;
+    }
+
+    return this._resolveDifficulty(
+      qObj,
+      context
+    );
   }
 
   // ============================================================
@@ -3825,6 +4594,74 @@ export class MathMutator {
   }
 
   // ============================================================
+  // SEMANTIC BOUNDARY VERIFICATION
+  // ============================================================
+
+  _verifySemanticBoundary(
+    original,
+    candidate,
+    origSkill,
+    candSkill,
+    context = {}
+  ) {
+    // If the repair planner explicitly targeted a prerequisite skill or alternate skill, allow it
+    const isPrerequisiteEscalation =
+      context.repairStrategy === "PREREQUISITE" ||
+      Boolean(context.isPrerequisite);
+
+    if (isPrerequisiteEscalation) {
+      return { valid: true, reason: null };
+    }
+
+    const origSem = this._extractSemanticIdentity(
+      original,
+      origSkill
+    );
+    const candSem = this._extractSemanticIdentity(
+      candidate,
+      candSkill
+    );
+
+    // Skill must not drift (e.g. bodmas -> quadratic)
+    if (
+      origSem.skillId &&
+      candSem.skillId &&
+      origSem.skillId !== candSem.skillId
+    ) {
+      return {
+        valid: false,
+        reason: `SKILL_DRIFT: original=${origSem.skillId}, candidate=${candSem.skillId}`,
+      };
+    }
+
+    // Concept must not drift
+    if (
+      origSem.conceptId &&
+      candSem.conceptId &&
+      origSem.conceptId !== candSem.conceptId
+    ) {
+      return {
+        valid: false,
+        reason: `CONCEPT_DRIFT: original=${origSem.conceptId}, candidate=${candSem.conceptId}`,
+      };
+    }
+
+    // Topic must not drift
+    if (
+      origSem.topic &&
+      candSem.topic &&
+      origSem.topic !== candSem.topic
+    ) {
+      return {
+        valid: false,
+        reason: `TOPIC_DRIFT: original=${origSem.topic}, candidate=${candSem.topic}`,
+      };
+    }
+
+    return { valid: true, reason: null };
+  }
+
+  // ============================================================
   // MATHEMATICAL VERIFICATION
   // ============================================================
 
@@ -3880,6 +4717,12 @@ export class MathMutator {
 
   _getVerifier(skill) {
     const verifiers = {
+      bodmas:
+        this._verifyBodmas,
+
+      order_of_operations:
+        this._verifyBodmas,
+
       rectangle_area:
         this._verifyRectangleArea,
 
@@ -5038,6 +5881,49 @@ export class MathMutator {
         answerCorrect
           ? null
           : `EXPECTED_X_${x}_Y_${y}_GOT_${answer}`,
+    };
+  }
+
+  // ============================================================
+  // BODMAS VERIFIER
+  // ============================================================
+
+  _verifyBodmas(question, vars = {}) {
+    if (!question?.q) {
+      return {
+        valid: false,
+        reason: "MISSING_QUESTION",
+      };
+    }
+
+    if (
+      question.ans === undefined ||
+      question.ans === null ||
+      question.ans === ""
+    ) {
+      return {
+        valid: false,
+        reason: "MISSING_ANSWER",
+      };
+    }
+
+    const ansStr = String(question.ans).trim().toLowerCase();
+
+    if (Array.isArray(question.options) && question.options.length > 0) {
+      const hasAns = question.options.some(
+        (opt) => String(opt).trim().toLowerCase() === ansStr
+      );
+      if (!hasAns) {
+        return {
+          valid: false,
+          reason: "ANSWER_NOT_IN_OPTIONS",
+        };
+      }
+    }
+
+    return {
+      valid: true,
+      reason: null,
     };
   }
 
