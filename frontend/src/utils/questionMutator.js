@@ -3,6 +3,9 @@
  *
  * Directs incoming question blueprints to domain-specific mutators
  * and enforces strict verification and provenance tracking.
+ *
+ * Pipeline:
+ *   diagnoseMisconception → createRepairPlan → subject mutator → verify → return
  */
 
 import { BiologyMutator } from "./mutators/BiologyMutator.js";
@@ -17,6 +20,7 @@ import { ComputerMutator } from "./mutators/ComputerMutator.js";
 import { EnglishMutator } from "./mutators/EnglishMutator.js";
 import { KiswahiliMutator } from "./mutators/KiswahiliMutator.js";
 import { HomeScienceMutator } from "./mutators/HomeScienceMutator.js";
+import { createRepairPlan, summarizeRepairPlan } from "../engine/repairPlanner.js";
 
 export class QuestionMutator {
   constructor() {
@@ -75,14 +79,22 @@ export class QuestionMutator {
       blueprint
     );
 
+    // Build a structured repair plan from the diagnosis.
+    // This is the key upgrade: mutators now receive a full plan
+    // instead of just a raw strategy string.
+    const repairPlan = createRepairPlan(diagnosis, blueprint, {
+      baseLevel: blueprint?.metadata?.difficulty ?? blueprint?.difficulty ?? 2,
+      attemptCount: blueprint?._attemptCount ?? 0,
+    });
+
     const context = {
       ...feedback,
 
       diagnosis,
+      repairPlan,
 
-      // Subject mutators can use this to decide
-      // how the next question should repair the learner.
-      repairStrategy: diagnosis.strategy,
+      // Legacy compatibility — keep strategy string for mutators that use it
+      repairStrategy: repairPlan.repairMode,
 
       sourceQuestion: blueprint,
 
@@ -129,7 +141,8 @@ export class QuestionMutator {
     return this._applyTargetedDiagnosis(
       variant,
       blueprint,
-      diagnosis
+      diagnosis,
+      context.repairPlan
     );
   }
 
@@ -247,7 +260,8 @@ export class QuestionMutator {
   _applyTargetedDiagnosis(
     variant,
     blueprint,
-    diagnosis
+    diagnosis,
+    repairPlan
   ) {
     const result = structuredClone(variant);
 
@@ -258,6 +272,8 @@ export class QuestionMutator {
         type: diagnosis.type,
         strategy: diagnosis.strategy,
         confidence: diagnosis.confidence,
+        // Attach the full repair plan so the UI / verifier can use it
+        repairPlan: repairPlan || null,
       },
 
       provenance: {
@@ -269,20 +285,20 @@ export class QuestionMutator {
           null,
 
         mutationVerified: true,
-
         conceptPreserved: true,
-
         answerRecalculated: true,
       },
     };
 
     result.hint =
       result.hint ||
+      repairPlan?.hint ||
       this._diagnosticHint(diagnosis);
 
     result.tags = [
       ...(result.tags || []),
-      `repair:${diagnosis.strategy}`,
+      `repair:${repairPlan?.repairMode || diagnosis.strategy}`,
+      `mode:${repairPlan?.questionMode || "FULL_QUESTION"}`,
     ];
 
     return result;
