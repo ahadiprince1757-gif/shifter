@@ -1,74 +1,50 @@
 /**
  * TIXAR BUSINESS STUDIES & ECONOMICS MUTATOR
- * Version 3.0
+ * Version 4.0
  *
- * Design philosophy:
+ * DETERMINISTIC / ZERO-RANDOMNESS ENGINE
  *
- * Question
- *    â†“
- * Detect concept
- *    â†“
- * Extract / generate parameters
- *    â†“
- * Mutate the underlying problem
- *    â†“
- * Solve from first principles
- *    â†“
- * Generate misconception-based distractors
- *    â†“
- * Diagnose understanding
+ * Design:
  *
- * Supports:
+ *                    ORIGINAL QUESTION
+ *                           ↓
+ *                    CONCEPT DETECTION
+ *                           ↓
+ *                 EXTRACT EXISTING DATA
+ *                           ↓
+ *              DETERMINISTIC VARIANT INDEX
+ *                           ↓
+ *              FIXED MUTATION TRANSFORM
+ *                           ↓
+ *                 SOLVE FROM FIRST PRINCIPLES
+ *                           ↓
+ *                MISCONCEPTION DISTRACTORS
+ *                           ↓
+ *                     FINAL QUESTION
  *
- * BUSINESS MATHEMATICS
- * - Cost price
- * - Selling price
- * - Profit / loss
- * - Mark-up
- * - Profit margin
- * - Revenue
- * - Expenses
- * - Gross profit
- * - Net profit
- * - Discounts
- * - Commission
- * - Simple interest
- * - Compound interest
- * - VAT / tax
- * - Break-even
+ * IMPORTANT:
+ * - No Math.random()
+ * - No random number generator
+ * - No pseudo-random hash
+ * - No seed
+ * - No shuffling
+ * - No random selection
  *
- * ECONOMICS
- * - Scarcity
- * - Choice
- * - Opportunity cost
- * - Demand
- * - Supply
- * - Equilibrium
- * - Elasticity
- * - Inflation
- * - Unemployment
- * - Economic resources
- * - Market structures
- * - Government policy
+ * Every mutation is reproducible.
  *
- * BUSINESS STUDIES
- * - Entrepreneurship
- * - Business ownership
- * - Sources of finance
- * - Marketing
- * - Management
- * - Production
- * - Business environment
- * - Risk
- * - Insurance
+ * The mutation sequence is controlled by modalityIndex.
  *
- * The mutator intentionally creates distractors based on common
- * misconceptions instead of random incorrect answers.
+ * modalityIndex 0 → Variant A
+ * modalityIndex 1 → Variant B
+ * modalityIndex 2 → Variant C
+ * modalityIndex 3 → Variant D
+ * modalityIndex 4 → Variant A
+ * ...
  */
 
 export class BusinessMutator {
   constructor() {
-    this.version = "3.0";
+    this.version = "4.0";
 
     this.currency = "KSh";
 
@@ -97,67 +73,102 @@ export class BusinessMutator {
       "Overdraft",
       "Debenture",
     ];
-  }
 
-  // =========================================================
-  // DETERMINISTIC ENGINE
-  // =========================================================
+    /*
+     * Fixed deterministic sequences.
+     *
+     * These are not random.
+     * They are deliberate educational progressions.
+     */
+    this.moneyValues = [
+      2000,
+      3000,
+      4000,
+      5000,
+      6000,
+      8000,
+      10000,
+      12000,
+      15000,
+      20000,
+    ];
 
-  _hash(str) {
-    let hash = 2166136261;
+    this.percentages = [
+      5,
+      10,
+      15,
+      20,
+      25,
+      30,
+      40,
+    ];
 
-    for (let i = 0; i < str.length; i++) {
-      hash ^= str.charCodeAt(i);
-
-      hash +=
-        (hash << 1) +
-        (hash << 4) +
-        (hash << 7) +
-        (hash << 8) +
-        (hash << 24);
-    }
-
-    return Math.abs(hash >>> 0);
-  }
-
-  _seed(stem, qObj = {}) {
-    return this._hash(
-      `${stem}|${qObj.id || ""}|${this.version}`
-    );
-  }
-
-  _number(seed, min, max, step = 1, offset = 0) {
-    const count =
-      Math.floor((max - min) / step) + 1;
-
-    return (
-      min +
-      ((seed + offset) % count) * step
-    );
-  }
-
-  _pick(array, seed, offset = 0) {
-    return array[
-      (seed + offset) % array.length
+    this.quantities = [
+      20,
+      30,
+      40,
+      50,
+      60,
+      80,
+      100,
+      120,
+      150,
+      200,
     ];
   }
 
-  _shuffle(array, seed) {
-    const result = [...array];
+  // =========================================================
+  // DETERMINISTIC CORE
+  // =========================================================
 
-    for (let i = result.length - 1; i > 0; i--) {
-      const j =
-        (seed + i * 31) % (i + 1);
+  /**
+   * Normalize the modality index.
+   *
+   * This is the only selector used by the engine.
+   *
+   * There is deliberately NO seed.
+   */
+  _variant(index = 0) {
+    const value = Number.isFinite(Number(index))
+      ? Math.floor(Number(index))
+      : 0;
 
-      [result[i], result[j]] =
-        [result[j], result[i]];
+    return ((value % 4) + 4) % 4;
+  }
+
+  /**
+   * Deterministically select an item from a fixed sequence.
+   *
+   * This is NOT random selection.
+   */
+  _at(array, index = 0) {
+    if (!array || array.length === 0) {
+      return undefined;
     }
 
-    return result;
+    const normalized =
+      ((Math.floor(index) % array.length) +
+        array.length) %
+      array.length;
+
+    return array[normalized];
+  }
+
+  /**
+   * Deterministically generate a number from a fixed
+   * educational sequence.
+   */
+  _sequenceValue(array, variant, offset = 0) {
+    return this._at(
+      array,
+      variant + offset
+    );
   }
 
   _money(value) {
-    return `${this.currency} ${Math.round(value).toLocaleString()}`;
+    return `${this.currency} ${Math.round(
+      value
+    ).toLocaleString()}`;
   }
 
   _percent(value) {
@@ -171,7 +182,16 @@ export class BusinessMutator {
     );
   }
 
-  _mcq(correct, distractors, seed) {
+  /**
+   * Deterministic MCQ construction.
+   *
+   * IMPORTANT:
+   * Options are deliberately NOT shuffled.
+   *
+   * The correct answer position is controlled by
+   * the variant so it is predictable and reproducible.
+   */
+  _mcq(correct, distractors, variant = 0) {
     const unique = [];
 
     for (
@@ -186,26 +206,50 @@ export class BusinessMutator {
       }
     }
 
-    /*
-     * Never use fake "None of the above" answers.
-     * Instead generate a safe fallback.
-     */
-    let fallback = "Insufficient information";
+    const fallback =
+      "Insufficient information";
 
-    if (!unique.includes(fallback)) {
+    if (
+      unique.length < 4 &&
+      !unique.includes(fallback)
+    ) {
       unique.push(fallback);
     }
 
-    return this._shuffle(
-      unique.slice(0, 4),
-      seed
-    );
-  }
+    const options =
+      unique.slice(0, 4);
 
-  _mode(index = 0) {
-    return (
-      ((Math.floor(index) % 4) + 4) % 4
-    );
+    if (options.length <= 1) {
+      return options;
+    }
+
+    /*
+     * Put the correct answer at a deterministic
+     * position instead of shuffling.
+     */
+    const correctIndex =
+      options.indexOf(correct);
+
+    if (correctIndex === -1) {
+      return options;
+    }
+
+    const target =
+      variant % options.length;
+
+    if (correctIndex === target) {
+      return options;
+    }
+
+    [
+      options[correctIndex],
+      options[target],
+    ] = [
+      options[target],
+      options[correctIndex],
+    ];
+
+    return options;
   }
 
   // =========================================================
@@ -226,19 +270,29 @@ export class BusinessMutator {
 
   _extractPercent(stem) {
     const match =
-      stem.match(/(\d+(?:\.\d+)?)\s*%/);
+      stem.match(
+        /(\d+(?:\.\d+)?)\s*%/
+      );
 
     return match
       ? parseFloat(match[1])
       : null;
   }
 
-  _extractNumber(stem) {
-    const match =
-      stem.match(/\b\d+(?:\.\d+)?\b/);
+  _extractNumbers(stem) {
+    return (
+      stem.match(
+        /\b\d+(?:\.\d+)?\b/g
+      ) || []
+    ).map(Number);
+  }
 
-    return match
-      ? parseFloat(match[0])
+  _extractNumber(stem) {
+    const numbers =
+      this._extractNumbers(stem);
+
+    return numbers.length
+      ? numbers[0]
       : null;
   }
 
@@ -246,26 +300,62 @@ export class BusinessMutator {
   // PROFIT / LOSS / MARKUP / MARGIN
   // =========================================================
 
-  _generateProfit(stem, mode, seed) {
+  _generateProfit(stem, variant) {
+    /*
+     * Deterministic progression:
+     *
+     * Variant 0:
+     * cost 2000, rate 10%
+     *
+     * Variant 1:
+     * cost 4000, rate 15%
+     *
+     * Variant 2:
+     * cost 6000, rate 20%
+     *
+     * Variant 3:
+     * cost 8000, rate 25%
+     */
+
     const cost =
-      this._number(
-        seed,
-        2000,
-        20000,
-        500,
-        11
+      this._sequenceValue(
+        [
+          2000,
+          4000,
+          6000,
+          8000,
+        ],
+        variant
       );
 
     const rate =
-      this._pick(
-        [10, 15, 20, 25, 30, 40],
-        seed,
-        17
+      this._sequenceValue(
+        [10, 15, 20, 25],
+        variant
       );
 
+    const lower =
+      stem.toLowerCase();
+
+    const explicitLoss =
+      lower.includes("loss");
+
+    const explicitProfit =
+      lower.includes("profit");
+
+    /*
+     * If the original question explicitly specifies
+     * loss, preserve loss.
+     *
+     * Otherwise use a deterministic alternating
+     * progression rather than randomness.
+     */
     const isLoss =
-      stem.toLowerCase().includes("loss") ||
-      seed % 5 === 0;
+      explicitLoss
+        ? true
+        : explicitProfit
+        ? false
+        : variant >= 2;
 
     const amount =
       cost * rate / 100;
@@ -279,16 +369,9 @@ export class BusinessMutator {
       this._money(sellingPrice);
 
     const direction =
-      isLoss ? "loss" : "profit";
-
-    /*
-     * Common misconceptions:
-     *
-     * 1. Student gives only profit amount.
-     * 2. Student subtracts when it should add.
-     * 3. Student adds percentage directly to currency.
-     * 4. Student calculates percentage from selling price.
-     */
+      isLoss
+        ? "loss"
+        : "profit";
 
     const distractors = [
       this._money(amount),
@@ -300,11 +383,15 @@ export class BusinessMutator {
       ),
 
       this._money(
-        cost * (1 + rate / 10) / 100
+        cost +
+          (isLoss ? -1 : 1) *
+            cost *
+            rate /
+            1000
       ),
     ];
 
-    if (mode === 0) {
+    if (variant === 0) {
       return {
         q: isLoss
           ? `A trader buys goods for ${this._money(
@@ -322,7 +409,7 @@ export class BusinessMutator {
           } it.`,
 
         why:
-          `${direction} = ${rate}% Ã— ${this._money(
+          `${direction} = ${rate}% × ${this._money(
             cost
           )} = ${this._money(amount)}.`,
 
@@ -332,11 +419,13 @@ export class BusinessMutator {
           `Calculate ${rate}% of ${this._money(
             cost
           )}: ${this._money(amount)}.`,
+
           `${
             isLoss ? "Subtract" : "Add"
           } the ${direction} ${
             isLoss ? "from" : "to"
           } the cost price.`,
+
           `Selling price = ${answer}.`,
         ]),
 
@@ -345,22 +434,21 @@ export class BusinessMutator {
       };
     }
 
-    if (mode === 1) {
+    if (variant === 1) {
       const options =
         this._mcq(
           answer,
           distractors,
-          seed
+          variant
         );
 
       return {
-        q: isLoss
-          ? `A product costing ${this._money(
-              cost
-            )} is sold at a ${rate}% loss. What is its selling price?`
-          : `A product costing ${this._money(
-              cost
-            )} is sold at a ${rate}% profit. What is its selling price?`,
+        q:
+          `A product costing ${this._money(
+            cost
+          )} is sold at a ${rate}% ${
+            isLoss ? "loss" : "profit"
+          }. What is its selling price?`,
 
         ans: answer,
 
@@ -377,12 +465,14 @@ export class BusinessMutator {
         sol: answer,
 
         steps: this._steps([
-          `Profit/loss amount = ${rate}% Ã— ${this._money(
+          `Profit/loss amount = ${rate}% × ${this._money(
             cost
           )}.`,
+
           `Profit/loss amount = ${this._money(
             amount
           )}.`,
+
           `Selling price = ${answer}.`,
         ]),
 
@@ -391,13 +481,11 @@ export class BusinessMutator {
       };
     }
 
-    if (mode === 2) {
+    if (variant === 2) {
       const wrong =
-        sellingPrice +
-        this._pick(
-          [100, 200, 500],
-          seed
-        );
+        isLoss
+          ? sellingPrice + 500
+          : sellingPrice - 500;
 
       return {
         q:
@@ -448,16 +536,12 @@ export class BusinessMutator {
       ans:
         `Selling Price = Cost Price ${
           isLoss ? "-" : "+"
-        } ${
-          rate
-        }% of Cost Price = ${answer}.`,
+        } ${rate}% of Cost Price = ${answer}.`,
 
       hint:
         `Selling Price = Cost Price ${
           isLoss ? "-" : "+"
-        } ${
-          rate
-        }% of Cost Price.`,
+        } ${rate}% of Cost Price.`,
 
       why:
         `The ${rate}% amount is ${this._money(
@@ -469,9 +553,7 @@ export class BusinessMutator {
       steps: this._steps([
         `Calculate ${rate}% of cost price.`,
         `Obtain ${this._money(amount)}.`,
-        `Apply the ${
-          isLoss ? "loss" : "profit"
-        }.`,
+        `Apply the ${direction}.`,
         `Final selling price = ${answer}.`,
       ]),
 
@@ -484,23 +566,17 @@ export class BusinessMutator {
   // REVENUE
   // =========================================================
 
-  _generateRevenue(stem, mode, seed) {
+  _generateRevenue(stem, variant) {
     const quantity =
-      this._number(
-        seed,
-        20,
-        200,
-        10,
-        5
+      this._sequenceValue(
+        [20, 40, 60, 80],
+        variant
       );
 
     const price =
-      this._number(
-        seed,
-        50,
-        1000,
-        50,
-        23
+      this._sequenceValue(
+        [100, 200, 300, 400],
+        variant
       );
 
     const revenue =
@@ -518,10 +594,10 @@ export class BusinessMutator {
       ans: answer,
 
       hint:
-        "Revenue = Quantity sold Ã— Selling price per unit.",
+        "Revenue = Quantity sold × Selling price per unit.",
 
       why:
-        `Revenue = ${quantity} Ã— ${this._money(
+        `Revenue = ${quantity} × ${this._money(
           price
         )} = ${answer}.`,
 
@@ -537,12 +613,12 @@ export class BusinessMutator {
       ]),
 
       type:
-        mode === 0
+        variant === 0
           ? "open_response"
           : "mcq",
 
       options:
-        mode === 0
+        variant === 0
           ? null
           : this._mcq(
               answer,
@@ -550,48 +626,56 @@ export class BusinessMutator {
                 this._money(
                   quantity + price
                 ),
+
                 this._money(
                   quantity * 2 * price
                 ),
+
                 this._money(
                   quantity * price / 2
                 ),
               ],
-              seed
+              variant
             ),
     };
   }
 
   // =========================================================
-  // COST / PROFIT / NET PROFIT
+  // NET PROFIT
   // =========================================================
 
-  _generateNetProfit(stem, mode, seed) {
+  _generateNetProfit(stem, variant) {
     const revenue =
-      this._number(
-        seed,
-        20000,
-        100000,
-        5000,
-        7
+      this._sequenceValue(
+        [
+          20000,
+          30000,
+          40000,
+          50000,
+        ],
+        variant
       );
 
     const cost =
-      this._number(
-        seed,
-        5000,
-        revenue - 5000,
-        5000,
-        19
+      this._sequenceValue(
+        [
+          10000,
+          15000,
+          20000,
+          25000,
+        ],
+        variant
       );
 
     const expenses =
-      this._number(
-        seed,
-        2000,
-        Math.max(2000, cost / 2),
-        1000,
-        31
+      this._sequenceValue(
+        [
+          2000,
+          3000,
+          4000,
+          5000,
+        ],
+        variant
       );
 
     const grossProfit =
@@ -616,14 +700,14 @@ export class BusinessMutator {
       ans: answer,
 
       hint:
-        "Net profit = Revenue âˆ’ Cost of goods sold âˆ’ Operating expenses.",
+        "Net profit = Revenue − Cost of goods sold − Operating expenses.",
 
       why:
         `Net profit = ${this._money(
           revenue
-        )} âˆ’ ${this._money(
+        )} − ${this._money(
           cost
-        )} âˆ’ ${this._money(
+        )} − ${this._money(
           expenses
         )} = ${answer}.`,
 
@@ -632,26 +716,28 @@ export class BusinessMutator {
       steps: this._steps([
         `Calculate gross profit: ${this._money(
           revenue
-        )} âˆ’ ${this._money(
+        )} − ${this._money(
           cost
         )} = ${this._money(
           grossProfit
         )}.`,
+
         `Subtract operating expenses: ${this._money(
           grossProfit
-        )} âˆ’ ${this._money(
+        )} − ${this._money(
           expenses
         )}.`,
+
         `Net profit = ${answer}.`,
       ]),
 
       type:
-        mode === 0
+        variant === 0
           ? "open_response"
           : "mcq",
 
       options:
-        mode === 0
+        variant === 0
           ? null
           : this._mcq(
               answer,
@@ -662,7 +748,7 @@ export class BusinessMutator {
                 ),
                 this._money(cost),
               ],
-              seed
+              variant
             ),
     };
   }
@@ -671,21 +757,22 @@ export class BusinessMutator {
   // DISCOUNT
   // =========================================================
 
-  _generateDiscount(stem, mode, seed) {
+  _generateDiscount(stem, variant) {
     const markedPrice =
-      this._number(
-        seed,
-        1000,
-        20000,
-        500,
-        13
+      this._sequenceValue(
+        [
+          2000,
+          4000,
+          6000,
+          8000,
+        ],
+        variant
       );
 
     const rate =
-      this._pick(
-        [5, 10, 15, 20, 25, 30],
-        seed,
-        29
+      this._sequenceValue(
+        [10, 15, 20, 25],
+        variant
       );
 
     const discount =
@@ -709,7 +796,7 @@ export class BusinessMutator {
         `Calculate ${rate}% of the marked price, then subtract the discount.`,
 
       why:
-        `Discount = ${rate}% Ã— ${this._money(
+        `Discount = ${rate}% × ${this._money(
           markedPrice
         )} = ${this._money(
           discount
@@ -718,36 +805,40 @@ export class BusinessMutator {
       sol: answer,
 
       steps: this._steps([
-        `Calculate discount: ${rate}% Ã— ${this._money(
+        `Calculate discount: ${rate}% × ${this._money(
           markedPrice
         )} = ${this._money(
           discount
         )}.`,
+
         `Subtract discount from marked price.`,
+
         `Amount payable = ${answer}.`,
       ]),
 
       type:
-        mode === 0
+        variant === 0
           ? "open_response"
           : "mcq",
 
       options:
-        mode === 0
+        variant === 0
           ? null
           : this._mcq(
               answer,
               [
                 this._money(discount),
+
                 this._money(
                   markedPrice + discount
                 ),
+
                 this._money(
                   markedPrice -
                     discount / 2
                 ),
               ],
-              seed
+              variant
             ),
     };
   }
@@ -756,45 +847,46 @@ export class BusinessMutator {
   // SIMPLE INTEREST
   // =========================================================
 
-  _generateSimpleInterest(stem, mode, seed) {
+  _generateSimpleInterest(stem, variant) {
     const principal =
-      this._number(
-        seed,
-        5000,
-        100000,
-        5000,
-        3
+      this._sequenceValue(
+        [
+          10000,
+          20000,
+          30000,
+          40000,
+        ],
+        variant
       );
 
     const rate =
-      this._pick(
-        [5, 6, 8, 10, 12, 15],
-        seed,
-        17
+      this._sequenceValue(
+        [5, 6, 8, 10],
+        variant
       );
 
     const years =
-      this._number(
-        seed,
-        1,
-        5,
-        1,
-        29
+      this._sequenceValue(
+        [1, 2, 3, 4],
+        variant
       );
 
     const interest =
-      principal * rate * years / 100;
+      principal *
+      rate *
+      years /
+      100;
 
     const amount =
       principal + interest;
 
-    const answer =
-      mode === 0
-        ? this._money(interest)
-        : this._money(amount);
-
     const askingAmount =
-      mode !== 0;
+      variant !== 0;
+
+    const answer =
+      askingAmount
+        ? this._money(amount)
+        : this._money(interest);
 
     return {
       q:
@@ -812,7 +904,7 @@ export class BusinessMutator {
         "Use I = PRT / 100.",
 
       why:
-        `I = ${principal} Ã— ${rate} Ã— ${years} Ã· 100 = ${this._money(
+        `I = ${principal} × ${rate} × ${years} ÷ 100 = ${this._money(
           interest
         )}.`,
 
@@ -822,22 +914,25 @@ export class BusinessMutator {
         `Identify P = ${this._money(
           principal
         )}.`,
+
         `Identify R = ${rate}% and T = ${years} years.`,
+
         `Interest = PRT/100 = ${this._money(
           interest
         )}.`,
+
         askingAmount
           ? `Total amount = principal + interest = ${answer}.`
           : `Interest charged = ${answer}.`,
       ]),
 
       type:
-        mode === 0
+        variant === 0
           ? "open_response"
           : "mcq",
 
       options:
-        mode === 0
+        variant === 0
           ? null
           : this._mcq(
               answer,
@@ -847,9 +942,11 @@ export class BusinessMutator {
                       principal +
                         interest / 2
                     ),
+
                     this._money(
                       interest
                     ),
+
                     this._money(
                       principal -
                         interest
@@ -859,15 +956,17 @@ export class BusinessMutator {
                     this._money(
                       principal
                     ),
+
                     this._money(
                       interest * 2
                     ),
+
                     this._money(
                       principal +
                         interest
                     ),
                   ],
-              seed
+              variant
             ),
     };
   }
@@ -876,21 +975,22 @@ export class BusinessMutator {
   // VAT / TAX
   // =========================================================
 
-  _generateTax(stem, mode, seed) {
+  _generateTax(stem, variant) {
     const price =
-      this._number(
-        seed,
-        1000,
-        50000,
-        500,
-        41
+      this._sequenceValue(
+        [
+          5000,
+          10000,
+          15000,
+          20000,
+        ],
+        variant
       );
 
     const rate =
-      this._pick(
-        [8, 10, 12, 14, 16],
-        seed,
-        53
+      this._sequenceValue(
+        [8, 10, 12, 16],
+        variant
       );
 
     const tax =
@@ -914,7 +1014,7 @@ export class BusinessMutator {
         `Tax = ${rate}% of the pre-tax price. Add the tax to the original price.`,
 
       why:
-        `Tax = ${rate}% Ã— ${this._money(
+        `Tax = ${rate}% × ${this._money(
           price
         )} = ${this._money(
           tax
@@ -923,35 +1023,39 @@ export class BusinessMutator {
       sol: answer,
 
       steps: this._steps([
-        `Calculate tax: ${rate}% Ã— ${this._money(
+        `Calculate tax: ${rate}% × ${this._money(
           price
         )} = ${this._money(
           tax
         )}.`,
+
         `Add tax to pre-tax price.`,
+
         `Final price = ${answer}.`,
       ]),
 
       type:
-        mode === 0
+        variant === 0
           ? "open_response"
           : "mcq",
 
       options:
-        mode === 0
+        variant === 0
           ? null
           : this._mcq(
               answer,
               [
                 this._money(tax),
+
                 this._money(
                   price - tax
                 ),
+
                 this._money(
                   price + tax * 2
                 ),
               ],
-              seed
+              variant
             ),
     };
   }
@@ -960,40 +1064,48 @@ export class BusinessMutator {
   // BREAK EVEN
   // =========================================================
 
-  _generateBreakEven(stem, mode, seed) {
+  _generateBreakEven(stem, variant) {
     const fixedCost =
-      this._number(
-        seed,
-        10000,
-        100000,
-        5000,
-        7
+      this._sequenceValue(
+        [
+          10000,
+          20000,
+          30000,
+          40000,
+        ],
+        variant
       );
 
     const sellingPrice =
-      this._number(
-        seed,
-        100,
-        1000,
-        50,
-        23
+      this._sequenceValue(
+        [
+          100,
+          200,
+          300,
+          400,
+        ],
+        variant
       );
 
     const variableCost =
-      this._number(
-        seed,
-        20,
-        sellingPrice - 20,
-        10,
-        37
+      this._sequenceValue(
+        [
+          40,
+          80,
+          120,
+          160,
+        ],
+        variant
       );
 
     const contribution =
-      sellingPrice - variableCost;
+      sellingPrice -
+      variableCost;
 
     const units =
       Math.ceil(
-        fixedCost / contribution
+        fixedCost /
+          contribution
       );
 
     const answer =
@@ -1012,12 +1124,12 @@ export class BusinessMutator {
       ans: answer,
 
       hint:
-        "Break-even output = Fixed Costs Ã· Contribution per unit.",
+        "Break-even output = Fixed Costs ÷ Contribution per unit.",
 
       why:
         `Contribution = ${this._money(
           sellingPrice
-        )} âˆ’ ${this._money(
+        )} − ${this._money(
           variableCost
         )} = ${this._money(
           contribution
@@ -1028,17 +1140,20 @@ export class BusinessMutator {
       steps: this._steps([
         `Calculate contribution per unit: ${this._money(
           sellingPrice
-        )} âˆ’ ${this._money(
+        )} − ${this._money(
           variableCost
         )} = ${this._money(
           contribution
         )}.`,
+
         `Divide fixed costs by contribution: ${this._money(
           fixedCost
-        )} Ã· ${this._money(
+        )} ÷ ${this._money(
           contribution
         )}.`,
+
         `Round up because the business must sell a complete number of units.`,
+
         `Break-even output = ${answer}.`,
       ]),
 
@@ -1063,7 +1178,7 @@ export class BusinessMutator {
                 variableCost)
           )} units`,
         ],
-        seed
+        variant
       ),
     };
   }
@@ -1072,32 +1187,38 @@ export class BusinessMutator {
   // SCARCITY / OPPORTUNITY COST
   // =========================================================
 
-  _generateScarcity(stem, mode, seed) {
+  _generateScarcity(stem, variant) {
     const capital =
-      this._number(
-        seed,
-        30000,
-        100000,
-        5000,
-        13
+      this._sequenceValue(
+        [
+          30000,
+          40000,
+          50000,
+          60000,
+        ],
+        variant
       );
 
     const optionA =
-      this._number(
-        seed,
-        20000,
-        capital,
-        5000,
-        17
+      this._sequenceValue(
+        [
+          20000,
+          25000,
+          30000,
+          35000,
+        ],
+        variant
       );
 
     const optionB =
-      this._number(
-        seed,
-        20000,
-        80000,
-        5000,
-        29
+      this._sequenceValue(
+        [
+          20000,
+          25000,
+          30000,
+          35000,
+        ],
+        variant
       );
 
     return {
@@ -1124,16 +1245,19 @@ export class BusinessMutator {
         "Limited resources cannot satisfy all wants, so a choice must be made. The next best alternative forgone is the opportunity cost.",
 
       sol:
-        "Scarcity â†’ choice â†’ opportunity cost",
+        "Scarcity → choice → opportunity cost",
 
       steps: this._steps([
         `Calculate total desired spending: ${this._money(
           optionA + optionB
         )}.`,
+
         `Compare this with available capital of ${this._money(
           capital
         )}.`,
+
         "The resources are insufficient for both wants.",
+
         "The owner must choose, creating an opportunity cost.",
       ]),
 
@@ -1146,7 +1270,7 @@ export class BusinessMutator {
           "Economies of scale caused by increased production",
           "Market equilibrium caused by equal demand and supply",
         ],
-        seed
+        variant
       ),
     };
   }
@@ -1155,13 +1279,15 @@ export class BusinessMutator {
   // DEMAND / SUPPLY
   // =========================================================
 
-  _generateDemandSupply(stem, mode, seed) {
+  _generateDemandSupply(stem, variant) {
     const scenarios = [
       {
         clue:
           "The price of a product rises and consumers buy less of it.",
+
         answer:
           "A contraction in quantity demanded",
+
         explanation:
           "Holding other factors constant, a rise in price normally causes quantity demanded to fall.",
       },
@@ -1169,8 +1295,10 @@ export class BusinessMutator {
       {
         clue:
           "The price of a product falls and consumers buy more of it.",
+
         answer:
           "An expansion in quantity demanded",
+
         explanation:
           "A fall in price normally causes quantity demanded to increase, ceteris paribus.",
       },
@@ -1178,8 +1306,10 @@ export class BusinessMutator {
       {
         clue:
           "The cost of producing a product falls because of cheaper raw materials.",
+
         answer:
           "Supply increases",
+
         explanation:
           "Lower production costs make supplying the product more profitable, shifting supply outward.",
       },
@@ -1187,36 +1317,44 @@ export class BusinessMutator {
       {
         clue:
           "A major drought reduces agricultural production.",
+
         answer:
           "Supply decreases",
+
         explanation:
           "A reduction in productive capacity reduces the amount producers can supply at each price.",
       },
     ];
 
     const scenario =
-      this._pick(
+      this._at(
         scenarios,
-        seed
+        variant
       );
 
     return {
       q:
         `[Market Analysis] ${scenario.clue} What is the most appropriate economic interpretation?`,
 
-      ans: scenario.answer,
+      ans:
+        scenario.answer,
 
       hint:
         "Separate a movement along a curve from a shift of the curve.",
 
-      why: scenario.explanation,
+      why:
+        scenario.explanation,
 
-      sol: scenario.answer,
+      sol:
+        scenario.answer,
 
       steps: this._steps([
         "Identify what changed.",
+
         "Determine whether the change is caused by price or another factor.",
+
         scenario.explanation,
+
         `Conclusion: ${scenario.answer}.`,
       ]),
 
@@ -1229,7 +1367,7 @@ export class BusinessMutator {
           "Market becomes a monopoly",
           "Equilibrium price must immediately become zero",
         ],
-        seed
+        variant
       ),
     };
   }
@@ -1238,7 +1376,7 @@ export class BusinessMutator {
   // INFLATION
   // =========================================================
 
-  _generateInflation(stem, mode, seed) {
+  _generateInflation(stem, variant) {
     const scenarios = [
       {
         q:
@@ -1272,23 +1410,26 @@ export class BusinessMutator {
     ];
 
     const scenario =
-      this._pick(
+      this._at(
         scenarios,
-        seed
+        variant
       );
 
     return {
       q:
         `[Economic Diagnosis] ${scenario.q}`,
 
-      ans: scenario.ans,
+      ans:
+        scenario.ans,
 
       hint:
         "Focus on whether prices rise generally and identify the cause when required.",
 
-      why: scenario.why,
+      why:
+        scenario.why,
 
-      sol: scenario.ans,
+      sol:
+        scenario.ans,
 
       steps: this._steps([
         "Identify the economic symptom.",
@@ -1306,7 +1447,7 @@ export class BusinessMutator {
           "Unemployment",
           "Economic growth",
         ],
-        seed
+        variant
       ),
     };
   }
@@ -1315,7 +1456,7 @@ export class BusinessMutator {
   // MARKET STRUCTURES
   // =========================================================
 
-  _generateMarketStructure(stem, mode, seed) {
+  _generateMarketStructure(stem, variant) {
     const scenarios = [
       {
         clue:
@@ -1359,23 +1500,26 @@ export class BusinessMutator {
     ];
 
     const scenario =
-      this._pick(
+      this._at(
         scenarios,
-        seed
+        variant
       );
 
     return {
       q:
         `[Market Structure] ${scenario.clue} Which market structure best fits this description?`,
 
-      ans: scenario.answer,
+      ans:
+        scenario.answer,
 
       hint:
         "Look at number of firms, product differentiation and barriers to entry.",
 
-      why: scenario.explanation,
+      why:
+        scenario.explanation,
 
-      sol: scenario.answer,
+      sol:
+        scenario.answer,
 
       steps: this._steps([
         "Identify the number of firms.",
@@ -1391,7 +1535,7 @@ export class BusinessMutator {
         this.marketStructures.filter(
           x => x !== scenario.answer
         ),
-        seed
+        variant
       ),
     };
   }
@@ -1400,7 +1544,7 @@ export class BusinessMutator {
   // SOURCES OF FINANCE
   // =========================================================
 
-  _generateFinanceSource(stem, mode, seed) {
+  _generateFinanceSource(stem, variant) {
     const scenarios = [
       {
         q:
@@ -1444,23 +1588,26 @@ export class BusinessMutator {
     ];
 
     const scenario =
-      this._pick(
+      this._at(
         scenarios,
-        seed
+        variant
       );
 
     return {
       q:
         `[Business Finance] ${scenario.q} Identify the source of finance.`,
 
-      ans: scenario.answer,
+      ans:
+        scenario.answer,
 
       hint:
         "Determine where the money comes from and whether it is internal or external.",
 
-      why: scenario.why,
+      why:
+        scenario.why,
 
-      sol: scenario.answer,
+      sol:
+        scenario.answer,
 
       steps: this._steps([
         "Identify the source of the funds.",
@@ -1475,7 +1622,7 @@ export class BusinessMutator {
         this.financeSources.filter(
           x => x !== scenario.answer
         ),
-        seed
+        variant
       ),
     };
   }
@@ -1484,7 +1631,7 @@ export class BusinessMutator {
   // ENTREPRENEURSHIP
   // =========================================================
 
-  _generateEntrepreneurship(stem, mode, seed) {
+  _generateEntrepreneurship(stem, variant) {
     const scenarios = [
       {
         clue:
@@ -1521,23 +1668,26 @@ export class BusinessMutator {
     ];
 
     const scenario =
-      this._pick(
+      this._at(
         scenarios,
-        seed
+        variant
       );
 
     return {
       q:
         `[Entrepreneurship] ${scenario.clue} What concept is being demonstrated?`,
 
-      ans: scenario.answer,
+      ans:
+        scenario.answer,
 
       hint:
         "Focus on the action the entrepreneur is taking.",
 
-      why: scenario.explanation,
+      why:
+        scenario.explanation,
 
-      sol: scenario.answer,
+      sol:
+        scenario.answer,
 
       steps: this._steps([
         "Identify the entrepreneur's action.",
@@ -1554,7 +1704,7 @@ export class BusinessMutator {
           "Depreciation",
           "Specialization",
         ],
-        seed
+        variant
       ),
     };
   }
@@ -1563,7 +1713,7 @@ export class BusinessMutator {
   // BUSINESS ENVIRONMENT
   // =========================================================
 
-  _generateBusinessEnvironment(stem, mode, seed) {
+  _generateBusinessEnvironment(stem, variant) {
     const scenarios = [
       {
         q:
@@ -1600,23 +1750,26 @@ export class BusinessMutator {
     ];
 
     const scenario =
-      this._pick(
+      this._at(
         scenarios,
-        seed
+        variant
       );
 
     return {
       q:
         `[Business Environment] ${scenario.q} How should this factor be classified?`,
 
-      ans: scenario.answer,
+      ans:
+        scenario.answer,
 
       hint:
         "Ask whether management can directly control the source of the change.",
 
-      why: scenario.explanation,
+      why:
+        scenario.explanation,
 
-      sol: scenario.answer,
+      sol:
+        scenario.answer,
 
       steps: this._steps([
         "Identify the source of the change.",
@@ -1634,7 +1787,7 @@ export class BusinessMutator {
           "Always a production objective",
           "A personal financial decision",
         ],
-        seed
+        variant
       ),
     };
   }
@@ -1647,7 +1800,10 @@ export class BusinessMutator {
     const answer =
       String(qObj.ans || "").trim();
 
-    if (!answer || answer.length < 3) {
+    if (
+      !answer ||
+      answer.length < 3
+    ) {
       return null;
     }
 
@@ -1692,14 +1848,12 @@ What business, accounting or economic principle must be understood for this answ
   }
 
   // =========================================================
-  // GENERIC NUMERICAL MUTATION
+  // GENERIC DETERMINISTIC MUTATION
   // =========================================================
 
-  _genericMutation(qObj, stem, seed) {
+  _genericMutation(qObj, stem, variant) {
     const numbers =
-      stem.match(
-        /\b\d+(?:\.\d+)?\b/g
-      );
+      this._extractNumbers(stem);
 
     if (
       !numbers ||
@@ -1725,17 +1879,22 @@ What business, accounting or economic principle must be understood for this answ
     }
 
     const original =
-      parseFloat(numbers[0]);
+      numbers[0];
 
     if (!Number.isFinite(original)) {
       return qObj;
     }
 
+    /*
+     * Deterministic multiplier progression.
+     *
+     * Variant 0 → ×2
+     * Variant 1 → ×3
+     * Variant 2 → ×4
+     * Variant 3 → ×5
+     */
     const multiplier =
-      this._pick(
-        [2, 3, 4, 5],
-        seed
-      );
+      [2, 3, 4, 5][variant];
 
     const mutated =
       Math.round(
@@ -1744,7 +1903,7 @@ What business, accounting or economic principle must be understood for this answ
 
     const mutatedStem =
       stem.replace(
-        numbers[0],
+        String(original),
         String(mutated)
       );
 
@@ -1759,7 +1918,7 @@ What business, accounting or economic principle must be understood for this answ
         "Recalculate using the new business parameter.",
 
       why:
-        `The original parameter ${original} was mutated to ${mutated}.`,
+        `The original parameter ${original} was deterministically changed to ${mutated}.`,
 
       sol:
         qObj.sol ||
@@ -1779,7 +1938,9 @@ What business, accounting or economic principle must be understood for this answ
   // =========================================================
 
   mutate(qObj, modalityIndex = 0) {
-    if (!qObj) return null;
+    if (!qObj) {
+      return null;
+    }
 
     const stem =
       (
@@ -1788,25 +1949,28 @@ What business, accounting or economic principle must be understood for this answ
         ""
       ).trim();
 
-    if (!stem) return qObj;
+    if (!stem) {
+      return qObj;
+    }
 
     const lower =
       stem.toLowerCase();
 
-    const mode =
-      this._mode(
+    /*
+     * THIS IS NOW THE ONLY VARIANT SELECTOR.
+     *
+     * No seed.
+     * No hash.
+     * No random number.
+     */
+    const variant =
+      this._variant(
         modalityIndex
       );
 
-    const seed =
-      this._seed(
-        stem,
-        qObj
-      );
-
-    // -------------------------------------------------------
+    // =======================================================
     // FINANCIAL MATHEMATICS
-    // -------------------------------------------------------
+    // =======================================================
 
     if (
       lowerIncludes(
@@ -1824,8 +1988,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateProfit(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -1841,11 +2004,21 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateRevenue(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
+    /*
+     * IMPORTANT:
+     * Check net/gross profit BEFORE the generic
+     * profit detector.
+     *
+     * Otherwise:
+     *
+     * "Calculate net profit"
+     *
+     * would incorrectly enter _generateProfit().
+     */
     if (
       lowerIncludes(
         lower,
@@ -1859,8 +2032,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateNetProfit(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -1876,8 +2048,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateDiscount(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -1894,8 +2065,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateSimpleInterest(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -1911,8 +2081,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateTax(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -1929,14 +2098,13 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateBreakEven(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
-    // -------------------------------------------------------
+    // =======================================================
     // ECONOMICS
-    // -------------------------------------------------------
+    // =======================================================
 
     if (
       lowerIncludes(
@@ -1952,8 +2120,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateScarcity(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -1971,8 +2138,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateDemandSupply(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -1990,8 +2156,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateInflation(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -2009,14 +2174,13 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateMarketStructure(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
-    // -------------------------------------------------------
+    // =======================================================
     // BUSINESS STUDIES
-    // -------------------------------------------------------
+    // =======================================================
 
     if (
       lowerIncludes(
@@ -2035,8 +2199,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateFinanceSource(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -2054,8 +2217,7 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateEntrepreneurship(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
@@ -2074,34 +2236,32 @@ What business, accounting or economic principle must be understood for this answ
     ) {
       return this._generateBusinessEnvironment(
         stem,
-        mode,
-        seed
+        variant
       );
     }
 
-    // -------------------------------------------------------
+    // =======================================================
     // REVERSE DIAGNOSTIC
-    // -------------------------------------------------------
+    // =======================================================
 
     const reverse =
       this._reverseDiagnostic(
         qObj,
-        stem,
-        seed
+        stem
       );
 
     if (reverse) {
       return reverse;
     }
 
-    // -------------------------------------------------------
+    // =======================================================
     // FALLBACK
-    // -------------------------------------------------------
+    // =======================================================
 
     return this._genericMutation(
       qObj,
       stem,
-      seed
+      variant
     );
   }
 }
