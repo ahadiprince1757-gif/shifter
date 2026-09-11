@@ -1,5 +1,4 @@
-import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Landing from "../components/Landing";
 import AuthModal from "../components/AuthModal";
 import { useAuth } from "../hooks/useAuth";
@@ -12,19 +11,13 @@ export default function LandingPage() {
   const [isDark, toggleDark] = useDarkMode();
   const navigate = useNavigate();
 
-  // If already authenticated, proceed directly to subjects
-  useEffect(() => {
-    if (session) {
-      navigate("/subjects", { replace: true });
-    }
-  }, [session, navigate]);
+  // If already authenticated, skip landing entirely — immediate redirect, no flash
+  if (session) {
+    return <Navigate to="/subjects" replace />;
+  }
 
   const handleEnterApp = () => {
-    if (session) {
-      navigate("/subjects");
-    } else {
-      setShowAuthModal(true);
-    }
+    setShowAuthModal(true);
   };
 
   return (
@@ -44,4 +37,3 @@ export default function LandingPage() {
     </>
   );
 }
-
