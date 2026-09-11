@@ -142,13 +142,7 @@ const ProtectedLayout = () => {
     }
   }, [session, sessionLoading, navigate, openAuthWithReason]);
 
-  if (sessionLoading) {
-    return (
-      <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
-        <SkeletonLoader type="list" count={4} />
-      </div>
-    );
-  }
+  // Loading UI removed
 
   if (!session) return null;
 
