@@ -4646,19 +4646,137 @@ export class MathMutator {
       };
     }
 
-    // Topic must not drift
+    // Topic must not drift — but sub-topics within a chapter ARE compatible.
+    // e.g. original="algebra" and candidate="linear" is NOT a drift,
+    //      it means the mutator chose a specific algebra sub-skill.
     if (
       origSem.topic &&
       candSem.topic &&
       origSem.topic !== candSem.topic
     ) {
-      return {
-        valid: false,
-        reason: `TOPIC_DRIFT: original=${origSem.topic}, candidate=${candSem.topic}`,
-      };
+      if (!this._mathTopicsCompatible(origSem.topic, candSem.topic)) {
+        return {
+          valid: false,
+          reason: `TOPIC_DRIFT: original=${origSem.topic}, candidate=${candSem.topic}`,
+        };
+      }
     }
 
     return { valid: true, reason: null };
+  }
+
+  // ============================================================
+  // TOPIC ALIAS TABLE
+  // ============================================================
+
+  /**
+   * Returns true when two topic strings refer to the same or
+   * compatible math concept.
+   *
+   * This handles cases where:
+   *  - The original question uses a broad chapter name ("algebra")
+   *    while the mutator correctly narrows to a sub-skill ("linear").
+   *  - Legacy question metadata uses alternate spellings.
+   */
+  _mathTopicsCompatible(a, b) {
+    if (!a || !b) return true;  // Missing topic = no constraint
+    if (a === b) return true;
+
+    const norm = (s) =>
+      String(s)
+        .toLowerCase()
+        .replace(/[\s_-]+/g, "_")
+        .trim();
+
+    const na = norm(a);
+    const nb = norm(b);
+
+    if (na === nb) return true;
+
+    // Algebra family — all of these live under the same chapter.
+    const algebraFamily = new Set([
+      "algebra",
+      "linear",
+      "linear_equations",
+      "linear_equation",
+      "quadratic",
+      "quadratic_equations",
+      "quadratic_equation",
+      "simultaneous",
+      "simultaneous_equations",
+      "inequalities",
+      "expressions",
+      "algebraic_expressions",
+      "factorisation",
+      "factorization",
+      "simplification",
+      "substitution",
+    ]);
+
+    // Number / arithmetic family
+    const arithmeticFamily = new Set([
+      "arithmetic",
+      "number",
+      "numbers",
+      "whole_numbers",
+      "integers",
+      "natural_numbers",
+      "bodmas",
+      "order_of_operations",
+      "pemdas",
+      "brackets",
+    ]);
+
+    // Fraction / ratio family
+    const fractionFamily = new Set([
+      "fractions",
+      "fraction",
+      "ratio",
+      "ratios",
+      "proportion",
+      "percentages",
+      "percentage",
+    ]);
+
+    // Geometry family
+    const geometryFamily = new Set([
+      "geometry",
+      "area",
+      "perimeter",
+      "volume",
+      "surface_area",
+      "shapes",
+      "triangles",
+      "circles",
+      "angles",
+      "pythagoras",
+    ]);
+
+    // Statistics family
+    const statisticsFamily = new Set([
+      "statistics",
+      "data",
+      "mean",
+      "median",
+      "mode",
+      "probability",
+    ]);
+
+    const families = [
+      algebraFamily,
+      arithmeticFamily,
+      fractionFamily,
+      geometryFamily,
+      statisticsFamily,
+    ];
+
+    for (const family of families) {
+      if (family.has(na) && family.has(nb)) {
+        return true;
+      }
+    }
+
+    return false;
   }
 
   // ============================================================
