@@ -121,7 +121,10 @@ export default function AuthModal({ isOpen, onClose }) {
           ✕
         </button>
 
-        <img src="/tixar-logo.png?v=4" alt="Tixar Logo" className="auth-logo" />
+        <picture>
+          <source srcSet="/tixar-logo.webp?v=4" type="image/webp" />
+          <img src="/tixar-logo.png?v=4" alt="Tixar Logo" className="auth-logo" width="48" height="48" />
+        </picture>
 
         {authReason && (
           <div style={{

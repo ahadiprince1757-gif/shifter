@@ -18,7 +18,6 @@
  * ============================================================================
  */
 
-import { CreateMLCEngine } from "@mlc-ai/web-llm";
 import { routeMathQuery } from "../utils/mathRouter";
 import { getLocalRAGContext, buildGuardedSystemPrompt } from "../utils/aiRAGRouter";
 import { verifyGeneratedAnswer } from "../utils/verificationOrchestrator";
@@ -151,6 +150,7 @@ export async function initializeAIEngine(onProgress, modelOverride = null) {
 
   engineState.initPromise = (async () => {
     try {
+      const { CreateMLCEngine } = await import("@mlc-ai/web-llm");
       const engine = await CreateMLCEngine(modelName, {
         initProgressCallback: (report) => {
           if (report?.text?.includes("Fetching") || report?.text?.includes("Loading")) {

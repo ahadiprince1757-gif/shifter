@@ -57,6 +57,16 @@ export function useMasteredTopics() {
         if (!isCancelled && userKeys.size > 0) {
           setMastered(userKeys);
         }
+
+        // Check if remote fetch is fresh (< 5 minutes)
+        const lastFetchKey = `Tixar_mastered_last_fetch_${userId}`;
+        const lastFetch = Number(localStorage.getItem(lastFetchKey) || 0);
+        const isFresh = (Date.now() - lastFetch) < 5 * 60 * 1000;
+
+        if (isFresh && userKeys.size > 0) {
+          if (!isCancelled) setLoading(false);
+          return;
+        }
       } catch (err) {
         console.error("Failed to load mastered topics from IndexedDB", err);
       }
@@ -98,6 +108,7 @@ export function useMasteredTopics() {
           try {
             localStorage.setItem(userStorageKey, JSON.stringify([...masteredKeys]));
             localStorage.setItem("shifter_current_user_id", userId);
+            localStorage.setItem(lastFetchKey, String(Date.now()));
           } catch (err) {
             console.debug("Error writing mastered topics to localStorage", err);
           }

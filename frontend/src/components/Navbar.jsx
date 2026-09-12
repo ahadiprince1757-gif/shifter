@@ -130,7 +130,10 @@ export default function Navbar({
       <nav className={`lnav ${isHeaderVisible ? "" : "lnav-hidden"}`}>
         {/* Logo */}
         <div className="lnav-logo" onClick={handleLogoClick}>
-          <img src="/tixar-logo.png?v=4" alt="Tixar Logo" className="logo-img" />
+          <picture>
+            <source srcSet="/tixar-logo.webp?v=4" type="image/webp" />
+            <img src="/tixar-logo.png?v=4" alt="Tixar Logo" className="logo-img" width="36" height="36" />
+          </picture>
           <span className="lnav-brand">TIXAR</span>
         </div>
 

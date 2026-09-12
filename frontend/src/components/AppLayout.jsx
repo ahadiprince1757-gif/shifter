@@ -1,12 +1,13 @@
-import { Suspense } from "react";
+import { Suspense, lazy } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Navbar from "./Navbar";
 import BottomNav from "./BottomNav";
-import AuthModal from "./AuthModal";
 import { useAuth } from "../hooks/useAuth";
 import { useCurriculum } from "../hooks/useCurriculum";
 import { useDarkMode } from "../hooks/useDarkMode";
 import SkeletonLoader from "./SkeletonLoader";
+
+const AuthModal = lazy(() => import("./AuthModal"));
 
 export default function AppLayout() {
   const { session, showAuthModal, setShowAuthModal } = useAuth();
@@ -43,11 +44,15 @@ export default function AppLayout() {
         setShowAuthModal={setShowAuthModal}
       />
 
-      <AuthModal
-        isOpen={showAuthModal}
-        onClose={() => setShowAuthModal(false)}
-        onGuestAccess={() => navigate("/subjects")}
-      />
+      {showAuthModal && (
+        <Suspense fallback={null}>
+          <AuthModal
+            isOpen={showAuthModal}
+            onClose={() => setShowAuthModal(false)}
+            onGuestAccess={() => navigate("/subjects")}
+          />
+        </Suspense>
+      )}
     </div>
   );
 }

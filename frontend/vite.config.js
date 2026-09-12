@@ -8,6 +8,7 @@ const __dirname = dirname(__filename)
 
 export default defineConfig({
   plugins: [react()],
+
   resolve: {
     alias: {
       '@': resolve(__dirname, 'src'),
@@ -16,6 +17,7 @@ export default defineConfig({
     },
     dedupe: ['react', 'react-dom'],
   },
+
   optimizeDeps: {
     include: [
       'react',
@@ -23,30 +25,88 @@ export default defineConfig({
       'react/jsx-runtime',
       'react/jsx-dev-runtime',
       'dexie',
-      'dexie-react-hooks',
       'react-hot-toast',
       'react-router-dom',
     ],
+    // Exclude the AI model SDK from pre-bundling — it's dynamically imported
+    exclude: ['@mlc-ai/web-llm'],
   },
+
   build: {
-    // Increase warning limit — we're actively splitting below anyway
-    chunkSizeWarningLimit: 600,
+    // Target modern browsers — smaller, faster output
+    target: 'es2020',
+
+    // Don't compute compressed size during build (faster builds, numbers still shown)
+    reportCompressedSize: true,
+
+    // Warn on chunks > 500 kB (down from 600)
+    chunkSizeWarningLimit: 500,
+
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // Supabase into its own chunk (large auth SDK)
-          if (id.includes('@supabase')) return 'supabase';
-          // Dexie (IndexedDB ORM) into its own chunk
-          if (id.includes('dexie')) return 'dexie';
-          // React ecosystem into vendor chunk
-          if (id.includes('react-router') || id.includes('react-hot-toast')) return 'vendor-router';
-          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) return 'vendor-react';
-          // Markdown rendering (only needed on learn pages)
-          if (id.includes('react-markdown') || id.includes('remark') || id.includes('rehype')) return 'vendor-markdown';
+          // ─── @mlc-ai/web-llm ───────────────────────────────────────────────
+          // Isolated entirely — it's 6 MB and only used in AITutor.
+          // Dynamic import in aiEngine.js keeps it out of every other route.
+          if (id.includes('@mlc-ai/web-llm')) return 'vendor-webllm';
+
+          // ─── Supabase ──────────────────────────────────────────────────────
+          if (id.includes('@supabase')) return 'vendor-supabase';
+
+          // ─── Dexie (IndexedDB ORM) ────────────────────────────────────────
+          if (id.includes('dexie')) return 'vendor-dexie';
+
+          // ─── React ecosystem ──────────────────────────────────────────────
+          if (id.includes('node_modules/react-router') || id.includes('node_modules/react-hot-toast')) {
+            return 'vendor-router';
+          }
+          if (id.includes('node_modules/react') || id.includes('node_modules/react-dom')) {
+            return 'vendor-react';
+          }
+
+          // ─── Markdown rendering (only needed in NotesPhase) ───────────────
+          if (
+            id.includes('react-markdown') ||
+            id.includes('remark') ||
+            id.includes('rehype')
+          ) {
+            return 'vendor-markdown';
+          }
+
+          // ─── Heavy AI/grading utils — only needed inside LearnFlow ─────────
+          // These are only imported inside lazy-loaded components so they
+          // naturally land in those chunks, but grouping them avoids
+          // them polluting the main bundle if anything imports them eagerly.
+          if (
+            id.includes('answerAnalyzer') ||
+            id.includes('answerParser') ||
+            id.includes('mathVerifier') ||
+            id.includes('mcqVerifier') ||
+            id.includes('misconceptionDiagnoser') ||
+            id.includes('grader') ||
+            id.includes('diagnosticSelector')
+          ) {
+            return 'vendor-grading';
+          }
+
+          // ─── Large utility modules ────────────────────────────────────────
+          if (
+            id.includes('questionMutator') ||
+            id.includes('LocalSearchEngine') ||
+            id.includes('spacedRepetition') ||
+            id.includes('conceptGraphMapper') ||
+            id.includes('weaknessMap') ||
+            id.includes('nextActionEngine') ||
+            id.includes('studentMemoryModel') ||
+            id.includes('learningPolicyEngine')
+          ) {
+            return 'vendor-learning-engine';
+          }
         },
       },
     },
   },
+
   server: {
     port: 5173,
   },

@@ -4,6 +4,7 @@ import AppRoutes from "./routes/AppRoutes";
 import { Toaster } from "react-hot-toast";
 import { syncEngine } from "./sync/syncEngine";
 import { useAuth } from "./hooks/useAuth";
+import { db } from "./db/db";
 
 /**
  * SyncOnLogin
@@ -30,12 +31,17 @@ function SyncOnLogin() {
 }
 
 function App() {
-  // Best-effort sync on cold app mount (token may not be available yet —
-  // SyncOnLogin above handles the authoritative post-login sync).
+  // Only trigger sync on cold mount if local curriculum is empty (first install/visit).
+  // Returning users render instantly from Dexie IndexedDB cache;
+  // SyncOnLogin handles authoritative post-login sync with staleness guard.
   useEffect(() => {
-    syncEngine.syncAll().catch((err) =>
-      console.warn("[App] Initial mount sync failed:", err)
-    );
+    db.curriculum.count().then((count) => {
+      if (count === 0) {
+        syncEngine.syncAll({ force: true }).catch((err) =>
+          console.warn("[App] Initial first-time sync failed:", err)
+        );
+      }
+    }).catch(() => {});
   }, []);
 
   // Handle global double-tap (mobile) or double-click (desktop) to zoom in/out

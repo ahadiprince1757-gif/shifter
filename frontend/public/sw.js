@@ -1,8 +1,9 @@
-const CACHE_NAME = 'Tixar-v12.0';
+const CACHE_NAME = 'Tixar-v12.1';
 const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/tixar-logo.webp',
   '/tixar-logo.png'
 ];
 

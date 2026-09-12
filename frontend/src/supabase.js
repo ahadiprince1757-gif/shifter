@@ -12,11 +12,6 @@ if (hasValidConfig) {
   try {
     supabaseInstance = createClient(supabaseUrl, supabaseAnonKey);
     
-    // Fetch initial session
-    supabaseInstance.auth.getSession().then(({ data: { session } }) => {
-      currentSession = session;
-    }).catch(err => console.error("Error getting session:", err));
-
     // Listen for auth state changes to keep currentSession updated
     supabaseInstance.auth.onAuthStateChange((_event, session) => {
       if (_event === "SIGNED_OUT") {

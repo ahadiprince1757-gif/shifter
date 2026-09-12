@@ -34,8 +34,26 @@ class SyncEngine {
     });
   }
 
-  async syncAll() {
+  async syncAll(options = {}) {
+    const { force = false, minIntervalMs = 5 * 60 * 1000 } = options;
     if (!navigator.onLine || !networkService.isOnline || this.isSyncing) return;
+
+    // Staleness guard: skip redundant sync if curriculum is fresh (<5 min) and no pending local changes
+    if (!force) {
+      try {
+        const meta = await db.sync_metadata.get("curriculum");
+        if (meta?.last_synced_at && (Date.now() - meta.last_synced_at < minIntervalMs)) {
+          const allChanges = await db.change_log.toArray();
+          const hasPending = allChanges.some(change => !change.synced);
+          if (!hasPending) {
+            return; // Cache is fresh, skip network roundtrip
+          }
+        }
+      } catch (e) {
+        // Fall back to normal sync on check failure
+      }
+    }
+
     this.isSyncing = true;
 
     try {
