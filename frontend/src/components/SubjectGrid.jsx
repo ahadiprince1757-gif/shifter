@@ -1,11 +1,16 @@
-import { useMemo, useState, useEffect } from "react";
+import { useMemo } from "react";
 import logger from "../utils/logger";
-import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import SmartPrompt from "./SmartPrompt";
 import { useNextAction } from "../hooks/useNextAction";
 import { enroll } from "../api";
-import { syncEngine } from "../sync/syncEngine";
+import staticCurriculum from "../data/curriculum.json";
+import { ACTIVE_SUBJECT_IDS } from "../data/subjectRegistry";
+
+// The canonical 6 subjects, immediately accessible without network or database delays
+const CANONICAL_FALLBACK = Object.freeze(
+  staticCurriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id))
+);
 
 const HUMANISTIC_PALETTES = [
   { accent: "#74B8E8", bg: "rgba(116, 184, 232, 0.06)", border: "rgba(116, 184, 232, 0.28)" },
@@ -32,28 +37,15 @@ function formatTitle(str) {
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
-  const [retrying, setRetrying] = useState(false);
 
-  // Auto-retry: if curriculum lands as an empty array, trigger a re-sync
-  // and poll every 3 seconds until data arrives (max 5 attempts).
-  const [retryCount, setRetryCount] = useState(0);
-  useEffect(() => {
-    if (!Array.isArray(curriculum) || curriculum.length > 0) return;
-    if (retryCount >= 5) return; // Give up after 5 automatic retries
-    const timer = setTimeout(() => {
-      setRetryCount((n) => n + 1);
-      syncEngine.syncAll().catch(() => {});
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, [curriculum, retryCount]);
-
-  const handleManualRetry = () => {
-    setRetrying(true);
-    setRetryCount(0);
-    syncEngine.syncAll()
-      .catch(() => {})
-      .finally(() => setRetrying(false));
-  };
+  // Always drop the 6 canonical subjects immediately — zero loading state, zero blank screen
+  const displaySubjects = useMemo(() => {
+    if (Array.isArray(curriculum) && curriculum.length > 0) {
+      const canonical = curriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id));
+      if (canonical.length > 0) return canonical;
+    }
+    return CANONICAL_FALLBACK;
+  }, [curriculum]);
 
   // Compute the single most urgent next study action
   const { action: nextAction, loading: nextActionLoading } = useNextAction(userId);
@@ -66,44 +58,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
   }, [userId]);
-
-  // Null = still loading from Dexie
-  if (!curriculum) {
-    return (
-      <div id="v-subjects" className="view active" style={{ paddingTop: "0.5rem" }}>
-        <div className="subj-grid-humanistic">
-          <SkeletonLoader type="grid" count={6} />
-        </div>
-      </div>
-    );
-  }
-
-  // Empty array = Dexie resolved but no data yet (sync may still be in-flight)
-  if (curriculum.length === 0) {
-    return (
-      <div id="v-subjects" className="view active" style={{ paddingTop: "2rem", textAlign: "center" }}>
-        <div className="subj-empty-state">
-          <div className="subj-empty-title">Loading your subjects...</div>
-          <p className="subj-empty-desc">
-            {retryCount < 5
-              ? "Syncing your curriculum. This usually takes a moment."
-              : "Could not load subjects. Please check your connection and try again."}
-          </p>
-          {retryCount < 5 ? (
-            <div className="subj-empty-spinner" aria-label="Loading" />
-          ) : (
-            <button
-              className="subj-empty-retry-btn"
-              onClick={handleManualRetry}
-              disabled={retrying}
-            >
-              {retrying ? "Retrying..." : "Retry"}
-            </button>
-          )}
-        </div>
-      </div>
-    );
-  }
 
   const handleSubjectClick = (subjectId, label) => {
     logger.action("SUBJECT_SELECTED", "success", { subjectId, subjectLabel: label });
@@ -150,13 +104,14 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {/* Subject Section Header */}
       <div className="sg-section-title">
         <span>Your Subjects</span>
-        <span className="sg-subject-count">{curriculum.length} curated courses</span>
+        <span className="sg-subject-count">{displaySubjects.length} curated courses</span>
       </div>
 
       {/* Humanistic Subject Cards Grid */}
       <div className="subj-grid-humanistic">
-        {curriculum.map((s, idx) => {
-          const totalTopics = s.chapters.reduce((a, c) => a + c.topics.length, 0);
+        {displaySubjects.map((s, idx) => {
+          const chapters = s.chapters || [];
+          const totalTopics = chapters.reduce((a, c) => a + (c && Array.isArray(c.topics) ? c.topics.length : 0), 0);
           const palette = HUMANISTIC_PALETTES[idx % HUMANISTIC_PALETTES.length];
 
           return (
@@ -169,7 +124,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                 "--card-bg-tint": palette.bg,
                 "--card-border-tint": palette.border,
               }}
-              aria-label={`${s.label}, ${s.chapters.length} chapters, ${totalTopics} topics`}
+              aria-label={`${s.label}, ${chapters.length} chapters, ${totalTopics} topics`}
             >
               <div className="subj-notebook-spine" />
               <div className="subj-notebook-body">
@@ -177,7 +132,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                   <div className="subj-notebook-info">
                     <div className="subj-notebook-name">{s.label}</div>
                     <div className="subj-notebook-chapters">
-                      {s.chapters.length} chapter{s.chapters.length !== 1 ? "s" : ""} · {totalTopics} topic{totalTopics !== 1 ? "s" : ""}
+                      {chapters.length} chapter{chapters.length !== 1 ? "s" : ""} · {totalTopics} topic{totalTopics !== 1 ? "s" : ""}
                     </div>
                   </div>
                   <div className="subj-enter-arrow" aria-hidden="true" style={{ color: palette.accent, fontSize: "1.25rem", fontWeight: 700 }}>
@@ -194,3 +149,4 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 }
 
 export default SubjectGrid;
+

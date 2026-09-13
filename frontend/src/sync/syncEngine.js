@@ -45,11 +45,17 @@ class SyncEngine {
    */
   async seedFromStatic() {
     try {
+      const canonical = staticCurriculum.filter(s => CANONICAL_IDS.includes(s.id));
       const count = await db.curriculum.count();
-      if (count === 0 && Array.isArray(staticCurriculum) && staticCurriculum.length > 0) {
-        const canonical = staticCurriculum.filter(s => CANONICAL_IDS.includes(s.id));
+      if (count === 0 && canonical.length > 0) {
         await curriculumRepo.upsertBatch(canonical.map(c => ({ ...c, is_deleted: false })));
         console.log("[Sync] Seeded from static curriculum:", canonical.map(s => s.id).join(", "));
+      }
+      // Purge any dead/non-canonical subjects from Dexie
+      const allLocal = await db.curriculum.toArray();
+      const nonCanonical = allLocal.filter(s => !CANONICAL_IDS.includes(s.id));
+      if (nonCanonical.length > 0) {
+        await Promise.all(nonCanonical.map(s => db.curriculum.delete(s.id)));
       }
     } catch (e) {
       console.warn("[Sync] Static seed failed:", e);
@@ -209,4 +215,6 @@ class SyncEngine {
       throw err;
     }
   }
+}
+
 export const syncEngine = new SyncEngine();

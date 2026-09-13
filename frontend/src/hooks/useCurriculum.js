@@ -1,51 +1,40 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useLiveQuery } from "./useLiveQuery";
 import { curriculumRepo } from "../repository/curriculumRepo";
 import staticCurriculum from "../data/curriculum.json";
+import { ACTIVE_SUBJECT_IDS } from "../data/subjectRegistry";
 
-// Canonical subjects — always shown even if network is unavailable
-const CANONICAL_IDS = ["math", "physics", "chemistry", "biology", "english", "computer"];
+// The frozen 6 canonical subjects
+const DEFAULT_CANONICAL_LIST = Object.freeze(
+  staticCurriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id))
+);
 
 export function useCurriculum() {
-  // useLiveQuery subscribes to the curriculum table and auto-updates when it changes
-  const curriculum = useLiveQuery(
+  // Subscribe to IndexedDB changes
+  const dexieCurriculum = useLiveQuery(
     () => curriculumRepo.getAll(),
-    [], // dependencies
-    null // default result while loading
+    [],
+    null
   );
 
-  // If Dexie hasn't resolved after 2 s (e.g. first-visit + offline), stop blocking the UI
-  const [timedOut, setTimedOut] = useState(false);
+  // Auto-seed Dexie with the canonical 6 if empty
   useEffect(() => {
-    if (curriculum !== null) return; // Data arrived — no timeout needed
-    const id = setTimeout(() => setTimedOut(true), 2000);
-    return () => clearTimeout(id);
-  }, [curriculum]);
+    if (!Array.isArray(dexieCurriculum) || dexieCurriculum.length > 0) return;
+    curriculumRepo.upsertBatch(DEFAULT_CANONICAL_LIST.map(c => ({ ...c, is_deleted: false })))
+      .catch(() => {});
+  }, [dexieCurriculum]);
 
-  // If Dexie is empty (first visit / cleared storage / offline), immediately seed
-  // from the bundled static curriculum so the UI is never blank.
-  useEffect(() => {
-    if (!Array.isArray(curriculum) || curriculum.length > 0) return;
-    // Dexie resolved but returned nothing — seed it now
-    const canonical = staticCurriculum.filter(s => CANONICAL_IDS.includes(s.id));
-    if (canonical.length > 0) {
-      curriculumRepo.upsertBatch(canonical.map(c => ({ ...c, is_deleted: false })))
-        .catch(() => {});
-    }
-  }, [curriculum]);
+  // Clean and filter: only ever return the 6 canonical subjects
+  const validDexieList = Array.isArray(dexieCurriculum)
+    ? dexieCurriculum.filter(s => ACTIVE_SUBJECT_IDS.includes(s.id))
+    : [];
 
-  const loading = curriculum === null && !timedOut;
+  // Always supply the 6 canonical subjects immediately — zero blank flash, zero loading delay
+  const list = validDexieList.length > 0 ? validDexieList : DEFAULT_CANONICAL_LIST;
 
-  // Derive lookups
+  // Build lookups
   const subjectMap = new Map();
   const chapterMap = new Map();
-
-  // If still loading or Dexie is empty, fall back to the static list so UI is never blank
-  const list = Array.isArray(curriculum) && curriculum.length > 0
-    ? curriculum
-    : Array.isArray(curriculum) && curriculum.length === 0
-      ? staticCurriculum.filter(s => CANONICAL_IDS.includes(s.id))
-      : [];
 
   list.forEach((subject) => {
     subjectMap.set(subject.id, subject);
@@ -60,7 +49,7 @@ export function useCurriculum() {
     curriculum: list,
     subjectMap,
     chapterMap,
-    loading,
+    loading: false,
     error: null,
   };
 }
