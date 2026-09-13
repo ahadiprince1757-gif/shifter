@@ -74,18 +74,12 @@
  * ================================================================
  */
 
-import { BiologyMutator } from "./mutators/BiologyMutator.js";
 import { MathMutator } from "./mutators/MathMutator.js";
 import { PhysicsMutator } from "./mutators/PhysicsMutator.js";
 import { ChemistryMutator } from "./mutators/ChemistryMutator.js";
-import { BusinessMutator } from "./mutators/BusinessMutator.js";
-import { HistoryMutator } from "./mutators/HistoryMutator.js";
-import { GeographyMutator } from "./mutators/GeographyMutator.js";
-import { AgricultureMutator } from "./mutators/AgricultureMutator.js";
-import { ComputerMutator } from "./mutators/ComputerMutator.js";
+import { BiologyMutator } from "./mutators/BiologyMutator.js";
 import { EnglishMutator } from "./mutators/EnglishMutator.js";
-import { KiswahiliMutator } from "./mutators/KiswahiliMutator.js";
-import { HomeScienceMutator } from "./mutators/HomeScienceMutator.js";
+import { ComputerMutator } from "./mutators/ComputerMutator.js";
 
 import {
   createRepairPlan,
@@ -159,34 +153,14 @@ const SEMANTIC_FIELDS = Object.freeze([
 export class QuestionMutator {
   constructor() {
     this._mutators = {
-      biology: new BiologyMutator(),
-
       math: new MathMutator(),
       mathematics: new MathMutator(),
-
       physics: new PhysicsMutator(),
-
       chemistry: new ChemistryMutator(),
-
-      business: new BusinessMutator(),
-      "business studies": new BusinessMutator(),
-
-      history: new HistoryMutator(),
-      "history and government": new HistoryMutator(),
-
-      geography: new GeographyMutator(),
-
-      agriculture: new AgricultureMutator(),
-
+      biology: new BiologyMutator(),
+      english: new EnglishMutator(),
       computer: new ComputerMutator(),
       "computer studies": new ComputerMutator(),
-
-      english: new EnglishMutator(),
-
-      kiswahili: new KiswahiliMutator(),
-
-      homescience: new HomeScienceMutator(),
-      "home science": new HomeScienceMutator(),
     };
   }
 
@@ -1614,28 +1588,27 @@ export class QuestionMutator {
         "mathematics",
       ],
 
-      homescience: [
-        "homescience",
-        "home_science",
-        "home science",
+      physics: [
+        "physics",
       ],
 
-      business: [
-        "business",
-        "business_studies",
-        "business studies",
+      chemistry: [
+        "chemistry",
       ],
 
-      history: [
-        "history",
-        "history_and_government",
-        "history and government",
+      biology: [
+        "biology",
+      ],
+
+      english: [
+        "english",
       ],
 
       computer: [
         "computer",
         "computer_studies",
         "computer studies",
+        "swe_se",
       ],
 
       rectangle_area: [

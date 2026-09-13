@@ -16,7 +16,7 @@ const HomeIcon = () => (
   </svg>
 );
 
-const MistakesIcon = () => (
+const GapsIcon = () => (
   <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
   </svg>
@@ -61,7 +61,7 @@ export default function BottomNav() {
 
   const path = location.pathname;
   const isHome = path === "/subjects" || path === "/";
-  const isMistakes = path === "/mistakes";
+  const isGaps = path === "/gaps" || path === "/mistakes";
 
   return (
     <nav
@@ -80,12 +80,12 @@ export default function BottomNav() {
       </button>
 
       <button
-        className={`bn-item ${isMistakes ? "active" : ""}`}
-        onClick={debounce(() => navigate("/mistakes"))}
-        aria-label="Mistakes"
+        className={`bn-item ${isGaps ? "active" : ""}`}
+        onClick={debounce(() => navigate("/gaps"))}
+        aria-label="Gaps"
       >
-        <span className="bn-icon"><MistakesIcon /></span>
-        <span className="bn-label">Mistakes</span>
+        <span className="bn-icon"><GapsIcon /></span>
+        <span className="bn-label">Gaps</span>
       </button>
     </nav>
   );

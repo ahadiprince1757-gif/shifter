@@ -14,7 +14,7 @@ const SubjectGrid = React.lazy(() => import("../components/SubjectGrid"));
 const ChapterList = React.lazy(() => import("../components/ChapterList"));
 const TopicList = React.lazy(() => import("../components/TopicList"));
 const LearnFlow = React.lazy(() => import("../components/LearnFlow"));
-const MistakeJournal = React.lazy(() => import("../components/MistakeJournal"));
+const Gaps = React.lazy(() => import("../components/Gaps"));
 
 const ChapterListWrapper = () => {
   const { subjectId } = useParams();
@@ -74,15 +74,9 @@ const LearnFlowWrapper = () => {
       ? SESSION_PHASES.QUIZ
       : SESSION_PHASES.NOTES;
 
-  // Build a descriptive back destination:
-  // - Mistake repair  → back to Mistake Journal
-  // - Spaced review   → back to Analytics
-  // - Normal flow     → back to chapter topic list
   const goBack =
-    isMistakeRepair
-      ? () => navigate("/mistakes")
-      : isSpacedReview
-      ? () => navigate("/mistakes")
+    isMistakeRepair || isSpacedReview
+      ? () => navigate("/gaps")
       : () => navigate(`/subjects/${subjectId}/chapters/${chapterId}`);
 
   const repairContext = (isMistakeRepair || isSpacedReview)
@@ -144,10 +138,8 @@ export default function AppRoutes() {
           <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />
           <Route path="/learn/:subjectId/:chapterId/:topicId" element={<LearnFlowWrapper />} />
           <Route path="/verification" element={<VerificationPage />} />
-          <Route path="/mistakes" element={<MistakeJournal />} />
-          <Route path="/analytics" element={<Navigate to="/subjects" replace />} />
-          <Route path="/tutor" element={<Navigate to="/subjects" replace />} />
-          <Route path="/ai-tutor" element={<Navigate to="/subjects" replace />} />
+          <Route path="/gaps" element={<Gaps />} />
+          <Route path="/mistakes" element={<Navigate to="/gaps" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

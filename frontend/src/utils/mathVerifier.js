@@ -1804,3 +1804,69 @@ function formatAnswer(value) {
     value.toFixed(6)
   );
 }
+
+/**
+ * Strict Semantic Boundary Verifier for Math Mutations.
+ * Discards any candidate question that violates semantic invariants or mathematical validity.
+ */
+export function verifyMathSemanticBoundary(candidateQuestion, expectedSkillId = "", expectedConceptId = "") {
+  if (!candidateQuestion) {
+    return { isValid: false, reason: "NULL_CANDIDATE" };
+  }
+
+  const text = String(
+    candidateQuestion.q ||
+    candidateQuestion.question ||
+    candidateQuestion.Question ||
+    ""
+  ).trim();
+
+  const ans = String(
+    candidateQuestion.ans ||
+    candidateQuestion.answer ||
+    candidateQuestion.Answer ||
+    ""
+  ).trim();
+
+  // 1. Structural validity
+  if (!text || !ans) {
+    return { isValid: false, reason: "MISSING_TEXT_OR_ANSWER" };
+  }
+
+  const numAns = parseNumber(ans);
+  if (numAns === null || !Number.isFinite(numAns)) {
+    // If it's not a numeric string or algebraic expression, verify non-empty
+    if (ans.length === 0) {
+      return { isValid: false, reason: "INVALID_ANSWER_FORMAT" };
+    }
+  }
+
+  // 2. Semantic drift checks
+  const normSkill = String(expectedSkillId || "").toLowerCase();
+  const normConcept = String(expectedConceptId || "").toLowerCase();
+
+  // Invariant A: BODMAS / Order of Operations must NOT drift into quadratics, linear equations with x, or trigonometry
+  if (normSkill.includes("bodmas") || normSkill.includes("multiplication_before") || normConcept.includes("order_of_operations")) {
+    const forbiddenPatterns = [
+      /x\^2|x²|quadratic/i,
+      /\bsin\b|\bcos\b|\btan\b/i,
+      /\bfind x\b|\bsolve for x\b/i,
+    ];
+
+    for (const pattern of forbiddenPatterns) {
+      if (pattern.test(text)) {
+        return { isValid: false, reason: "SEMANTIC_DRIFT_BODMAS_TO_COMPLEX_TOPIC" };
+      }
+    }
+  }
+
+  // Invariant B: Arithmetic must not drift into calculus or matrices
+  if (normConcept.includes("numbers") || normConcept.includes("arithmetic")) {
+    if (/\bint\b|\bderivative\b|\bmatrix\b/i.test(text)) {
+      return { isValid: false, reason: "SEMANTIC_DRIFT_ARITHMETIC_TO_ADVANCED" };
+    }
+  }
+
+  return { isValid: true, reason: "VERIFIED_SEMANTIC_BOUNDARY" };
+}
+

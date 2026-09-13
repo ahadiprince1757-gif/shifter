@@ -103,9 +103,9 @@
     ]
   },
   {
-    "id": "swe_se",
+    "id": "computer",
     "icon": "",
-    "label": "Software Engineering",
+    "label": "Computer Studies",
     "chapters": [
       {
         "id": "fundamentals",

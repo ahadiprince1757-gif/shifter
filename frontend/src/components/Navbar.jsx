@@ -42,7 +42,7 @@ const HomeIcon = () => (
   </svg>
 );
 
-const MistakesIcon = () => (
+const GapsIcon = () => (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
   </svg>
@@ -51,7 +51,7 @@ const MistakesIcon = () => (
 // Pure 2-destination navigation
 const APP_NAV_ITEMS = [
   { path: "/subjects", label: "Subjects", icon: HomeIcon },
-  { path: "/mistakes", label: "Mistakes", icon: MistakesIcon },
+  { path: "/gaps", label: "Gaps", icon: GapsIcon },
 ];
 
 export default function Navbar({

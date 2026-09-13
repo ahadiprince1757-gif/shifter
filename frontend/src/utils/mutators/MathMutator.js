@@ -82,15 +82,31 @@ export class MathMutator {
   mutate(qObj, modalityIndex = 0, performanceContext = {}) {
     if (!qObj) return null;
 
-    const rawSkill =
+    const sourceSkillId =
+      performanceContext.sourceSkillId ??
+      qObj?.metadata?.skillId ??
       qObj?.metadata?.skill ??
       qObj?.skill ??
       this._classifySkill(qObj);
 
+    const targetSkillId =
+      performanceContext.targetSkillId ??
+      sourceSkillId;
+
+    // Enforce invariant: preserveSkill unless explicit prerequisite transition authorized
+    const isTransitionAuthorized =
+      performanceContext.transitionReason === "PREREQUISITE_REPAIR" ||
+      performanceContext.transitionReason === "SAME_SKILL";
+
+    const effectiveSkill =
+      (targetSkillId && isTransitionAuthorized)
+        ? targetSkillId
+        : sourceSkillId;
+
     const skill =
-      rawSkill === "order_of_operations" || rawSkill === "bodmas"
+      effectiveSkill === "order_of_operations" || effectiveSkill === "bodmas"
         ? "bodmas"
-        : rawSkill;
+        : effectiveSkill;
 
     const difficulty = this._resolveMutationDifficulty(
       qObj,
@@ -117,11 +133,14 @@ export class MathMutator {
 
     const mutationContext = {
       ...performanceContext,
+      sourceSkillId,
+      targetSkillId: effectiveSkill,
       sourceModel,
       fingerprint,
       difficulty,
       modalityIndex,
       semanticIdentity,
+      mode: performanceContext.mode ?? "REPAIR_PROBE",
 
       diagnosis:
         performanceContext.diagnosis ?? null,

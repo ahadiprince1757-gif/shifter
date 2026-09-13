@@ -1199,3 +1199,164 @@ function capitalize(str) {
   if (!str) return "";
   return str.charAt(0).toUpperCase() + str.slice(1);
 }
+
+// ============================================================================
+// 13. CANONICAL BODMAS PRECEDENCE & KNOWLEDGE GAP DIAGNOSIS
+// ============================================================================
+
+export function checkBODMASPrecedenceSignature(questionText = "", studentAnswer = "", correctAnswer = "") {
+  const qStr = String(questionText || "").replace(/×/g, "*").replace(/÷/g, "/").replace(/\s+/g, "");
+  const sAns = parseFloat(String(studentAnswer || "").trim());
+  const cAns = parseFloat(String(correctAnswer || "").trim());
+
+  if (isNaN(sAns)) return null;
+
+  // Pattern 1: a + b * c  (e.g., 3 + 4 * 2)
+  const addMulMatch = qStr.match(/^(-?\d+(?:\.\d+)?)\+(-?\d+(?:\.\d+)?)\*(-?\d+(?:\.\d+)?)/);
+  if (addMulMatch) {
+    const a = parseFloat(addMulMatch[1]);
+    const b = parseFloat(addMulMatch[2]);
+    const c = parseFloat(addMulMatch[3]);
+    const leftToRightAns = (a + b) * c;
+    const correctVal = a + (b * c);
+
+    if (Math.abs(sAns - leftToRightAns) < 1e-5 && Math.abs(sAns - correctVal) > 1e-5) {
+      return {
+        conceptId: "order_of_operations",
+        skillId: "multiplication_before_addition",
+        confidence: 0.96,
+        evidence: ["multiplied_before_adding_without_brackets", `evaluated_${a}+${b}=${a+b}_then_multiplied_by_${c}`],
+      };
+    }
+  }
+
+  // Pattern 2: a - b * c  (e.g., 10 - 2 * 3)
+  const subMulMatch = qStr.match(/^(-?\d+(?:\.\d+)?)\-(-?\d+(?:\.\d+)?)\*(-?\d+(?:\.\d+)?)/);
+  if (subMulMatch) {
+    const a = parseFloat(subMulMatch[1]);
+    const b = parseFloat(subMulMatch[2]);
+    const c = parseFloat(subMulMatch[3]);
+    const leftToRightAns = (a - b) * c;
+    const correctVal = a - (b * c);
+
+    if (Math.abs(sAns - leftToRightAns) < 1e-5 && Math.abs(sAns - correctVal) > 1e-5) {
+      return {
+        conceptId: "order_of_operations",
+        skillId: "multiplication_before_subtraction",
+        confidence: 0.96,
+        evidence: ["subtracted_before_multiplying_without_brackets", `evaluated_${a}-${b}=${a-b}_then_multiplied_by_${c}`],
+      };
+    }
+  }
+
+  // Pattern 3: a + b / c  (e.g., 8 + 6 / 2)
+  const addDivMatch = qStr.match(/^(-?\d+(?:\.\d+)?)\+(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)/);
+  if (addDivMatch) {
+    const a = parseFloat(addDivMatch[1]);
+    const b = parseFloat(addDivMatch[2]);
+    const c = parseFloat(addDivMatch[3]);
+    if (c !== 0) {
+      const leftToRightAns = (a + b) / c;
+      const correctVal = a + (b / c);
+
+      if (Math.abs(sAns - leftToRightAns) < 1e-5 && Math.abs(sAns - correctVal) > 1e-5) {
+        return {
+          conceptId: "order_of_operations",
+          skillId: "division_before_addition",
+          confidence: 0.96,
+          evidence: ["added_before_dividing_without_brackets", `evaluated_${a}+${b}=${a+b}_then_divided_by_${c}`],
+        };
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Authoritative Canonical Diagnoser
+ * Returns either DIAGNOSED (with diagnosisType) or INSUFFICIENT_EVIDENCE.
+ */
+export function diagnoseKnowledgeGap({
+  question = "",
+  studentAnswer = "",
+  correctAnswer = "",
+  steps = [],
+  userWork = "",
+  subject = "math",
+  conceptId = "",
+  skillId = "",
+} = {}) {
+  const sAnswerStr = String(studentAnswer ?? "").trim();
+  const cAnswerStr = String(correctAnswer ?? "").trim();
+
+  // 1. If student answer is empty
+  if (!sAnswerStr && !userWork) {
+    return {
+      status: "INSUFFICIENT_EVIDENCE",
+      confidence: 0,
+      evidence: ["NO_RESPONSE_PROVIDED"],
+    };
+  }
+
+  // 2. Correct answer check
+  const sNum = parseFloat(sAnswerStr);
+  const cNum = parseFloat(cAnswerStr);
+  if (!isNaN(sNum) && !isNaN(cNum) && Math.abs(sNum - cNum) < 1e-5) {
+    return {
+      status: "DIAGNOSED",
+      diagnosisType: "CORRECT",
+      conceptId: conceptId || "mastered",
+      skillId: skillId || "mastered",
+      confidence: 1.0,
+      evidence: ["CORRECT_ANSWER"],
+    };
+  }
+
+  // 3. BODMAS / Precedence Misconception Signature
+  const bodmasCheck = checkBODMASPrecedenceSignature(question, sAnswerStr, cAnswerStr);
+  if (bodmasCheck) {
+    return {
+      status: "DIAGNOSED",
+      diagnosisType: "MISCONCEPTION",
+      conceptId: bodmasCheck.conceptId,
+      skillId: bodmasCheck.skillId,
+      confidence: bodmasCheck.confidence,
+      evidence: bodmasCheck.evidence,
+    };
+  }
+
+  // 4. Mathematical Equivalence & Working Diagnoser (Only diagnose if working steps exist)
+  const hasSubstantialWorking = Boolean(userWork && userWork.trim().length > 0) || (Array.isArray(steps) && steps.length > 1);
+
+  if (hasSubstantialWorking) {
+    const mathDiag = diagnoseMathEquivalence(steps, sAnswerStr, userWork, cAnswerStr);
+    if (mathDiag && mathDiag.type !== "INSUFFICIENT_EVIDENCE" && mathDiag.confidence >= 0.7) {
+      let diagType = "CALCULATION_ERROR";
+      if (mathDiag.type.includes("MISCONCEPTION") || mathDiag.type.includes("OPERATION_SWAP")) {
+        diagType = "MISCONCEPTION";
+      } else if (mathDiag.type.includes("SIGN")) {
+        diagType = "SIGN_ERROR";
+      } else if (mathDiag.type.includes("PROCEDURE") || mathDiag.type.includes("DOMAIN")) {
+        diagType = "PROCEDURE_ERROR";
+      }
+
+      return {
+        status: "DIAGNOSED",
+        diagnosisType: diagType,
+        conceptId: conceptId || "algebra",
+        skillId: skillId || "calculation",
+        confidence: mathDiag.confidence,
+        evidence: [mathDiag.type, mathDiag.message].filter(Boolean),
+      };
+    }
+  }
+
+  // 5. Default to Insufficient Evidence (Never guess without evidence!)
+  return {
+    status: "INSUFFICIENT_EVIDENCE",
+    confidence: 0.25,
+    evidence: ["unmatched_arithmetic_deviation_or_typo"],
+  };
+}
+

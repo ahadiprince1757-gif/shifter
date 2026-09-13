@@ -390,8 +390,52 @@ export function createRepairPlan(diagnosis, blueprint, options = {}) {
 }
 
 // ============================================================================
-// PUBLIC UTILITIES
+// ATOMIC REPAIR CARD REGISTRY (Smallest Useful Repair: 1 Rule + 1 Example)
 // ============================================================================
+
+export const ATOMIC_REPAIR_RULES = Object.freeze({
+  multiplication_before_addition: {
+    rule: "Multiplication must always be evaluated before addition unless brackets explicitly group the terms.",
+    example: "7 + 5 × 3  →  7 + 15 = 22",
+  },
+  multiplication_before_subtraction: {
+    rule: "Multiplication must always be evaluated before subtraction.",
+    example: "10 - 2 × 3  →  10 - 6 = 4",
+  },
+  division_before_addition: {
+    rule: "Division must always be evaluated before addition.",
+    example: "8 + 6 ÷ 2  →  8 + 3 = 11",
+  },
+  expanding_brackets: {
+    rule: "Multiply every term inside the parentheses by the multiplier on the outside.",
+    example: "3(x + 4)  →  3·x + 3·4 = 3x + 12",
+  },
+  common_denominator: {
+    rule: "Fractions must have the same denominator before their numerators can be added or subtracted.",
+    example: "1/3 + 1/2  →  2/6 + 3/6 = 5/6",
+  },
+  linear_equations: {
+    rule: "Apply the same inverse operation to both sides of the equals sign to isolate the unknown variable.",
+    example: "2x + 5 = 11  →  2x = 6  →  x = 3",
+  },
+});
+
+export function getAtomicRepairContent(skillId, conceptId) {
+  const key = String(skillId || conceptId || "").toLowerCase();
+  if (ATOMIC_REPAIR_RULES[key]) {
+    return {
+      skillId: key,
+      rule: ATOMIC_REPAIR_RULES[key].rule,
+      example: ATOMIC_REPAIR_RULES[key].example,
+    };
+  }
+
+  return {
+    skillId: key || "general_rule",
+    rule: "Apply standard mathematical precedence and inverse operations systematically.",
+    example: "Evaluate brackets first, followed by multiplication/division, then addition/subtraction.",
+  };
+}
 
 /** Human-readable summary for logging or debug UI */
 export function summarizeRepairPlan(plan) {
@@ -409,3 +453,4 @@ export function summarizeRepairPlan(plan) {
 export function isAdvancementPlan(plan) {
   return plan?.repairMode === "TRANSFER" && plan?._meta?.failureCategory === "NONE";
 }
+
