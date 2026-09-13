@@ -4,6 +4,10 @@ import { topicRepo } from "../repository/topicRepo";
 import { progressRepo } from "../repository/progressRepo";
 import { fetchCurriculum, fetchTopicContent, saveProgress } from "../api";
 import { networkService } from "../services/networkService";
+import staticCurriculum from "../data/curriculum.json";
+
+// Canonical subject IDs — only these are ever kept in local storage.
+const CANONICAL_IDS = Object.freeze(["math", "physics", "chemistry", "biology", "english", "computer"]);
 
 /**
  * Check if an error is a transient network failure (not a server/logic error).
@@ -34,8 +38,30 @@ class SyncEngine {
     });
   }
 
+  /**
+   * Seed from the bundled static curriculum.json if IndexedDB has no subjects.
+   * This means the app always shows the 6 subjects immediately — even offline
+   * on first load, even if the backend is down.
+   */
+  async seedFromStatic() {
+    try {
+      const count = await db.curriculum.count();
+      if (count === 0 && Array.isArray(staticCurriculum) && staticCurriculum.length > 0) {
+        const canonical = staticCurriculum.filter(s => CANONICAL_IDS.includes(s.id));
+        await curriculumRepo.upsertBatch(canonical.map(c => ({ ...c, is_deleted: false })));
+        console.log("[Sync] Seeded from static curriculum:", canonical.map(s => s.id).join(", "));
+      }
+    } catch (e) {
+      console.warn("[Sync] Static seed failed:", e);
+    }
+  }
+
   async syncAll(options = {}) {
     const { force = false, minIntervalMs = 5 * 60 * 1000 } = options;
+
+    // Always seed from static first so the UI is never blank
+    await this.seedFromStatic();
+
     if (!navigator.onLine || !networkService.isOnline || this.isSyncing) return;
 
     // Staleness guard: skip redundant sync if curriculum is fresh (<5 min) and no pending local changes
@@ -121,11 +147,25 @@ class SyncEngine {
       const curriculumData = await fetchCurriculum();
       
       // Store in DB, assuming the server sends an array of curriculum subjects
-      if (Array.isArray(curriculumData)) {
-        await curriculumRepo.upsertBatch(curriculumData.map(c => ({
+      if (Array.isArray(curriculumData) && curriculumData.length > 0) {
+        // Filter to only canonical subjects before storing
+        const canonical = curriculumData.filter(s => CANONICAL_IDS.includes(s.id));
+
+        await curriculumRepo.upsertBatch(canonical.map(c => ({
           ...c,
           is_deleted: false, 
         })));
+
+        // Soft-delete any subjects in Dexie that are NOT in the canonical list
+        // (handles the case where old subjects were previously synced)
+        const allLocal = await db.curriculum.toArray();
+        const toDelete = allLocal
+          .filter(s => !CANONICAL_IDS.includes(s.id))
+          .map(s => s.id);
+        if (toDelete.length > 0) {
+          await Promise.all(toDelete.map(id => curriculumRepo.softDelete(id)));
+          console.log("[Sync] Purged non-canonical subjects:", toDelete.join(", "));
+        }
         
         await db.sync_metadata.put({
           table_name: "curriculum",
@@ -169,6 +209,4 @@ class SyncEngine {
       throw err;
     }
   }
-}
-
 export const syncEngine = new SyncEngine();

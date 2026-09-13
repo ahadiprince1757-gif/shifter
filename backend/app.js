@@ -142,6 +142,21 @@ app.post("/api/logs", (req, res) => {
   res.status(204).send(); // No content response
 });
 
+// Canonical subject whitelist — the ONLY six subjects Tixar serves.
+// Any subject not in this list is silently excluded from the curriculum response.
+const CANONICAL_SUBJECT_IDS = Object.freeze(["math", "physics", "chemistry", "biology", "english", "computer"]);
+
+// Static fallback curriculum — used when Supabase is unavailable or returns nothing.
+// Only the 6 canonical subjects are exported from this file.
+const STATIC_CURRICULUM = (() => {
+  try {
+    const raw = require("./data/curriculum.json");
+    return raw.filter(s => CANONICAL_SUBJECT_IDS.includes(s.id));
+  } catch (e) {
+    return [];
+  }
+})();
+
 // Endpoint: Get Curriculum Structure
 app.get("/api/curriculum", async (req, res) => {
   try {
@@ -162,40 +177,50 @@ app.get("/api/curriculum", async (req, res) => {
       logger.db("SELECT", "subjects", "error", {
         error: error.message,
       });
-      return res
-        .status(500)
-        .json({ error: "Database query failed fetching curriculum" });
+      // Fall back to static curriculum rather than returning a 500
+      logger.action("CURRICULUM_STATIC_FALLBACK", "warn", { reason: error.message });
+      return res.json(STATIC_CURRICULUM);
     }
     logger.db("SELECT", "subjects", "success", {
       affectedRows: (data || []).length,
     });
-    const formatted = (data || []).map((subj) => {
-      const sortedChapters = (subj.chapters || []).sort(
-        (a, b) => a.position - b.position,
-      );
-      return {
-        id: subj.id,
-        icon: "",
-        label: subj.label,
-        chapters: sortedChapters.map((chap) => {
-          const sortedTopics = (chap.topics || []).sort(
-            (a, b) => a.position - b.position,
-          );
-          return {
-            id: chap.id,
-            label: chap.label,
-            topics: sortedTopics.map((t) => t.title),
-          };
-        }),
-      };
-    });
+    const formatted = (data || [])
+      // Enforce the whitelist: never return a subject not in CANONICAL_SUBJECT_IDS
+      .filter(subj => CANONICAL_SUBJECT_IDS.includes(subj.id))
+      .map((subj) => {
+        const sortedChapters = (subj.chapters || []).sort(
+          (a, b) => a.position - b.position,
+        );
+        return {
+          id: subj.id,
+          icon: "",
+          label: subj.label,
+          chapters: sortedChapters.map((chap) => {
+            const sortedTopics = (chap.topics || []).sort(
+              (a, b) => a.position - b.position,
+            );
+            return {
+              id: chap.id,
+              label: chap.label,
+              topics: sortedTopics.map((t) => t.title),
+            };
+          }),
+        };
+      });
+
+    // If Supabase returned data but none matched our whitelist (e.g. DB not yet seeded),
+    // return the static curriculum so the app is always usable.
+    const result = formatted.length > 0 ? formatted : STATIC_CURRICULUM;
+
     logger.action("CURRICULUM_LOADED", "success", {
-      subjectCount: formatted.length,
+      subjectCount: result.length,
+      source: formatted.length > 0 ? "supabase" : "static",
     });
-    res.json(formatted);
+    res.json(result);
   } catch (err) {
     logger.error("CURRICULUM_LOAD", err);
-    res.status(500).json({ error: "Internal server error" });
+    // Always return something usable rather than a 500
+    res.json(STATIC_CURRICULUM);
   }
 });
 
