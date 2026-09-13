@@ -14,9 +14,7 @@ const SubjectGrid = React.lazy(() => import("../components/SubjectGrid"));
 const ChapterList = React.lazy(() => import("../components/ChapterList"));
 const TopicList = React.lazy(() => import("../components/TopicList"));
 const LearnFlow = React.lazy(() => import("../components/LearnFlow"));
-const AnalyticsDashboard = React.lazy(() => import("../components/AnalyticsDashboard"));
 const MistakeJournal = React.lazy(() => import("../components/MistakeJournal"));
-const AITutor = React.lazy(() => import("../components/AITutor"));
 
 const ChapterListWrapper = () => {
   const { subjectId } = useParams();
@@ -84,7 +82,7 @@ const LearnFlowWrapper = () => {
     isMistakeRepair
       ? () => navigate("/mistakes")
       : isSpacedReview
-      ? () => navigate("/analytics")
+      ? () => navigate("/mistakes")
       : () => navigate(`/subjects/${subjectId}/chapters/${chapterId}`);
 
   const repairContext = (isMistakeRepair || isSpacedReview)
@@ -146,10 +144,10 @@ export default function AppRoutes() {
           <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />
           <Route path="/learn/:subjectId/:chapterId/:topicId" element={<LearnFlowWrapper />} />
           <Route path="/verification" element={<VerificationPage />} />
-          <Route path="/analytics" element={<AnalyticsDashboard />} />
           <Route path="/mistakes" element={<MistakeJournal />} />
-          <Route path="/tutor" element={<AITutor />} />
-          <Route path="/ai-tutor" element={<AITutor />} />
+          <Route path="/analytics" element={<Navigate to="/subjects" replace />} />
+          <Route path="/tutor" element={<Navigate to="/subjects" replace />} />
+          <Route path="/ai-tutor" element={<Navigate to="/subjects" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

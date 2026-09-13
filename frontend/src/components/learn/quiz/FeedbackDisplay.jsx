@@ -100,11 +100,6 @@ function FeedbackDisplay({
           <span className={`fb-status-badge ${isCorrect ? "fb-badge-success" : "fb-badge-review"}`}>
             {isCorrect ? "✓ Mastered" : "Needs Review"}
           </span>
-          {confidenceScore !== null && (
-            <span className="smart-analysis-readiness-pill">
-              Readiness: {confidenceScore}%
-            </span>
-          )}
         </div>
         <span className="fb-progress-pill">
           {qIdx + 1} / {totalQs}
@@ -213,16 +208,70 @@ function FeedbackDisplay({
         </div>
       )}
 
+      {/* Effortless Student Repair Experience: "Here's what went wrong" + "Here's the rule" */}
+      {!isCorrect && (feedback.whatWentWrong || feedback.rule) && (
+        <div
+          style={{
+            marginTop: "1rem",
+            padding: "1rem 1.2rem",
+            borderRadius: "10px",
+            background: "rgba(239, 68, 68, 0.05)",
+            border: "1px solid rgba(239, 68, 68, 0.2)",
+          }}
+        >
+          {feedback.whatWentWrong && (
+            <div style={{ marginBottom: "0.75rem" }}>
+              <div style={{ fontWeight: 700, color: "var(--rd, #ef4444)", fontSize: "0.82rem", textTransform: "uppercase", letterSpacing: "0.03em" }}>
+                Here's what went wrong:
+              </div>
+              <div style={{ marginTop: "0.25rem", color: "var(--t)", fontSize: "0.92rem", lineHeight: "1.5" }}>
+                {feedback.whatWentWrong}
+              </div>
+            </div>
+          )}
+
+          {feedback.rule && (
+            <div>
+              <div style={{ fontWeight: 700, color: "var(--v, #6366f1)", fontSize: "0.82rem", textTransform: "uppercase", letterSpacing: "0.03em" }}>
+                Here's the rule:
+              </div>
+              <div style={{ marginTop: "0.25rem", color: "var(--t)", fontSize: "0.92rem", lineHeight: "1.5" }}>
+                {feedback.rule}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Repaired Confirmation */}
+      {isCorrect && feedback.isRepaired && (
+        <div
+          style={{
+            marginTop: "1rem",
+            padding: "0.8rem 1rem",
+            borderRadius: "10px",
+            background: "rgba(34, 197, 94, 0.06)",
+            border: "1px solid rgba(34, 197, 94, 0.25)",
+            display: "flex",
+            alignItems: "center",
+            gap: "0.5rem",
+          }}
+        >
+          <span style={{ color: "var(--gr, #22c55e)", fontWeight: 700, fontSize: "1.1rem" }}>✓</span>
+          <strong style={{ color: "var(--t)", fontSize: "0.9rem" }}>Fixed. We'll check this again later.</strong>
+        </div>
+      )}
+
       {/* Action Buttons */}
       <div className="fb-actions">
-        {startMutatedRepair && (
+        {!isCorrect && startMutatedRepair && (
           <button
             type="button"
             className="fb-action-btn fb-repair-btn"
             onClick={startMutatedRepair}
             disabled={grading}
           >
-            {nextAction?.btnText || "Try Variant Question"}
+            Try Again (Retest) →
           </button>
         )}
         {goToReview && (

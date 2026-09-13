@@ -42,30 +42,16 @@ const HomeIcon = () => (
   </svg>
 );
 
-const BotIcon = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-    <path d="M12 2a2 2 0 012 2c0 .74-.4 1.39-1 1.73V7h1a7 7 0 017 7v1a2 2 0 01-2 2h-1v1a3 3 0 01-3 3H9a3 3 0 01-3-3v-1H5a2 2 0 01-2-2v-1a7 7 0 017-7h1V5.73A2.001 2.001 0 0112 2zm-3 8a1.5 1.5 0 100 3 1.5 1.5 0 000-3zm6 0a1.5 1.5 0 100 3 1.5 1.5 0 000-3z" />
-  </svg>
-);
-
-const ProgressIcon = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
-    <path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z" />
-  </svg>
-);
-
 const MistakesIcon = () => (
   <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
     <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z" />
   </svg>
 );
 
-// Navigation items used in desktop tabs and mobile drawer
+// Pure 2-destination navigation
 const APP_NAV_ITEMS = [
   { path: "/subjects", label: "Subjects", icon: HomeIcon },
-  { path: "/tutor", label: "Ask Quiz", icon: BotIcon },
   { path: "/mistakes", label: "Mistakes", icon: MistakesIcon },
-  { path: "/analytics", label: "Progress", icon: ProgressIcon },
 ];
 
 export default function Navbar({
@@ -152,8 +138,7 @@ export default function Navbar({
         {/* Desktop navigation tabs */}
         <nav className="lnav-nav-links" aria-label="Main navigation">
           {APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
-            const isActive = location.pathname === path ||
-              (path === "/tutor" && location.pathname === "/ai-tutor");
+            const isActive = location.pathname.startsWith(path) || (path === "/subjects" && location.pathname === "/");
             return (
               <button
                 key={path}
@@ -217,8 +202,7 @@ export default function Navbar({
 
           {/* App nav links in drawer */}
           {APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
-            const isActive = location.pathname === path ||
-              (path === "/tutor" && location.pathname === "/ai-tutor");
+            const isActive = location.pathname.startsWith(path) || (path === "/subjects" && location.pathname === "/");
             return (
               <button
                 key={path}

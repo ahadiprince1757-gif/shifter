@@ -529,7 +529,7 @@ function buildAction({
 
     chapter: chapter || null,
 
-    route: route || "/analytics",
+    route: route || "/mistakes",
 
     reason,
 
@@ -754,7 +754,7 @@ function buildLearningRoute(
     !chapterId ||
     !topicId
   ) {
-    return "/analytics";
+    return "/mistakes";
   }
 
   return `/learn/${encodeURIComponent(

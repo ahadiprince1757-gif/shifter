@@ -1,23 +1,28 @@
 /**
  * useSessionLoop.js
  *
- * Streamlined Session Controller focused on Edge-of-Friction Learning:
+ * Single-responsibility Orchestrator for Tixar's Singular Learning Loop:
  *
- * Step 0: STUDY NOTES (Clean reading & concept preparation)
- * Step 1: PRACTICE QUIZ (Closed-book retrieval + In-quiz Edge-of-Friction Repair with mutated variants)
- * Step 2: MASTERY & REVIEW (Score breakdown, repaired concepts list, spaced repetition scheduling)
+ * TEST ──► CLASSIFY ERROR ──► DIAGNOSE ──► SELECT REPAIR ──► RETEST ──► UPDATE MEMORY
+ *
+ * Invariant:
+ * Diagnosed Skill ≡ Repair Skill ≡ Retest Skill
  */
 
 import { useState, useEffect, useCallback, useRef, useMemo } from "react";
-import { buildWeaknessMap } from "../utils/weaknessMap";
-import { getTransferQuestion } from "../utils/transferQuestion";
-import { spacedRepo } from "../repository/spacedRepo";
 import { evaluateAnswer } from "../utils/grader";
-import { questionMutator } from "../utils/questionMutator";
-import { saveAchievement, saveProgress } from "../api";
 import { mistakeRepo } from "../repository/mistakeRepo";
+import { spacedRepo } from "../repository/spacedRepo";
+import { saveProgress, saveAchievement } from "../api";
 import { getVerifiedQuestionWithOptions } from "../utils/mcqVerifier";
 import { recordErrorAndGetRecurrence } from "../utils/studentMemoryModel";
+import {
+  createRepairPlan as buildRepairPlan,
+  selectRepairIntervention,
+  INTERVENTION_TYPES,
+} from "../utils/repairInterventionSelector";
+import { buildWeaknessMap } from "../utils/weaknessMap";
+import { getTransferQuestion } from "../utils/transferQuestion";
 
 export const SESSION_PHASES = {
   NOTES: 0,
@@ -25,16 +30,22 @@ export const SESSION_PHASES = {
   MASTERY: 2,
 };
 
-export function useSessionLoop({ subject, chapter, topic, content, userId, markMastered, initialPhase = SESSION_PHASES.NOTES }) {
+export function useSessionLoop({
+  subject,
+  chapter,
+  topic,
+  content,
+  userId,
+  markMastered,
+  initialPhase = SESSION_PHASES.NOTES,
+}) {
   const questions = useMemo(
     () => (Array.isArray(content?.qs) ? content.qs : []),
     [content]
   );
 
-  // ── Core Phase: 0 = Notes, 1 = Quiz, 2 = Mastery ────────────────────────────
+  // ── Core State ─────────────────────────────────────────────────────────────
   const [phase, setPhase] = useState(initialPhase);
-
-  // ── Quiz State ─────────────────────────────────────────────────────────────
   const [qIdx, setQIdx] = useState(0);
   const [answer, setAnswer] = useState("");
   const [work, setWork] = useState("");
@@ -46,15 +57,15 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
   const [failedQuestions, setFailedQuestions] = useState([]);
   const [activeQuestion, setActiveQuestion] = useState(null);
 
-  // ── Edge-of-Friction Repair inside quiz ──────────────────────────────────
+  // ── Repair State ───────────────────────────────────────────────────────────
   const [isRepairing, setIsRepairing] = useState(false);
-  const [, setRepairAttempts] = useState(0);
+  const [currentRepairPlan, setCurrentRepairPlan] = useState(null);
   const [repairedConcepts, setRepairedConcepts] = useState(new Set());
 
-  // ── Transfer & Mastery State ──────────────────────────────────────────────
-  const [transferQuestion, setTransferQuestion] = useState(null);
+  // ── Session & Mastery State ────────────────────────────────────────────────
   const [sessionScore, setSessionScore] = useState(0);
   const [weaknessMap, setWeaknessMap] = useState({});
+  const [transferQuestion, setTransferQuestion] = useState(null);
 
   const usedIndicesRef = useRef(new Set());
 
@@ -76,22 +87,169 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     setFailedQuestions([]);
     setActiveQuestion(null);
     setIsRepairing(false);
-    setRepairAttempts(0);
+    setCurrentRepairPlan(null);
     setRepairedConcepts(new Set());
     usedIndicesRef.current = new Set();
     setSessionScore(0);
     setWeaknessMap({});
     setTransferQuestion(null);
-  }, [topic]);
+  }, [topic, initialPhase]);
 
-  // Current question being answered (mutated variant if in repair mode, otherwise standard bank question)
+  // Current question being answered
   const rawQuestion = activeQuestion || questions[qIdx] || null;
   const currentQuestion = useMemo(() => {
     return getVerifiedQuestionWithOptions(rawQuestion);
   }, [rawQuestion]);
   const isLastQuestion = qIdx >= questions.length - 1;
 
-  // ── Submit Answer ──────────────────────────────────────────────────────────
+  // ── 1. startTest ───────────────────────────────────────────────────────────
+  const startTest = useCallback(() => {
+    setPhase(SESSION_PHASES.QUIZ);
+    setQIdx(0);
+    setAnswer("");
+    setWork("");
+    setFeedback(null);
+  }, []);
+
+  // ── 2. diagnoseFailure ─────────────────────────────────────────────────────
+  const diagnoseFailure = useCallback(
+    (evalResult, q) => {
+      const cat = evalResult?.diagnosis?.type || evalResult?.analysis?.diagnosis?.type || "CONCEPTUAL_GAP";
+      const recurrence = recordErrorAndGetRecurrence(topic, cat);
+
+      return {
+        ...evalResult,
+        analysis: {
+          ...(evalResult?.analysis || {}),
+          diagnosisType: cat,
+          recurrence,
+        },
+      };
+    },
+    [topic]
+  );
+
+  // ── 3. createRepairPlan ────────────────────────────────────────────────────
+  const createRepairPlan = useCallback(
+    (q, studentAns, evalResult) => {
+      const plan = buildRepairPlan({
+        question: q,
+        feedback: evalResult,
+        studentAnswer: studentAns,
+        subject,
+        chapter,
+        topic,
+      });
+      setCurrentRepairPlan(plan);
+      return plan;
+    },
+    [subject, chapter, topic]
+  );
+
+  // ── 4. recordMistake ───────────────────────────────────────────────────────
+  const recordMistake = useCallback(
+    (q, index, evalResult) => {
+      setFailedQuestions((prev) => [
+        ...prev,
+        {
+          qIdx: index,
+          question: q.q || q.stem || "",
+          correctAnswer: evalResult.correctAnswer,
+          solution: evalResult.solution,
+          mark: evalResult.mark,
+          originalQ: q,
+        },
+      ]);
+
+      mistakeRepo
+        .saveMistake({
+          userId,
+          topicId: topic,
+          subjectId: subject?.id || null,
+          chapterId: chapter?.id || null,
+          questionIndex: index,
+          questionText: q.q || q.stem || "",
+          correctAnswer: evalResult.correctAnswer || "",
+          solution: evalResult.solution || "",
+        })
+        .catch(() => {});
+    },
+    [userId, topic, subject, chapter]
+  );
+
+  // ── 5. executeRepair / runRetest ───────────────────────────────────────────
+  const executeRepair = useCallback(() => {
+    const q = questions[qIdx];
+    if (!q) return;
+
+    // Use current repair plan or build fresh one
+    const plan = currentRepairPlan || createRepairPlan(q, answer, feedback);
+    const { probe, intervention } = selectRepairIntervention(plan, questions);
+
+    setActiveQuestion(probe);
+    setIsRepairing(true);
+    setAnswer("");
+    setWork("");
+    setFeedback(null);
+    setShowHint(false);
+  }, [questions, qIdx, currentRepairPlan, createRepairPlan, answer, feedback]);
+
+  // ── 6. confirmRepair ───────────────────────────────────────────────────────
+  const confirmRepair = useCallback(
+    (q) => {
+      const conceptTag = q.concept_tag || q.semanticSkill?.conceptId || `q_${qIdx}`;
+      setRepairedConcepts((prev) => new Set([...prev, conceptTag]));
+
+      // Multi-state mistake transition: PROVISIONALLY_FIXED
+      mistakeRepo
+        .markProvisionallyFixed(topic, qIdx, {
+          subjectId: subject?.id,
+          chapterId: chapter?.id,
+          userId,
+        })
+        .catch(() => {});
+    },
+    [qIdx, topic, subject, chapter, userId]
+  );
+
+  // ── 7. scheduleReview ──────────────────────────────────────────────────────
+  const scheduleReview = useCallback(
+    (score, total) => {
+      const isCorrect = score >= 80;
+      const finalConfidence = confidence || "medium";
+
+      spacedRepo
+        .updateReviewSchedule(topic, isCorrect, finalConfidence, {
+          sid: subject?.id,
+          cid: chapter?.id,
+          userId,
+        })
+        .catch(() => {});
+
+      if (subject?.id && chapter?.id) {
+        saveProgress({
+          sid: subject.id,
+          cid: chapter.id,
+          topicTitle: topic,
+          completed: true,
+          score,
+          mastered: failedQuestions.length === 0,
+          confidenceLevel: finalConfidence,
+        }).catch(() => {});
+
+        if (failedQuestions.length === 0 && topic) {
+          saveAchievement(`Mastered: ${topic}`).catch(() => {});
+        }
+      }
+
+      if (score === 100 && markMastered) {
+        markMastered(`${subject?.id}|${chapter?.id}|${topic}`);
+      }
+    },
+    [confidence, topic, subject, chapter, userId, failedQuestions.length, markMastered]
+  );
+
+  // ── 8. submitAnswer ────────────────────────────────────────────────────────
   const submitAnswer = useCallback(() => {
     if (grading) return;
     if (!answer.trim()) {
@@ -109,114 +267,65 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     }
 
     setTimeout(() => {
-      const res = evaluateAnswer(answer, q, work);
-      let enrichedAnalysis = res.analysis || {};
+      const rawRes = evaluateAnswer(answer, q, work);
 
-      if (!res.isCorrect) {
-        const cat = res.diagnosis?.type || res.analysis?.diagnosis?.type || "CONCEPTUAL_GAP";
-        const recurrence = recordErrorAndGetRecurrence(topic, cat);
-        enrichedAnalysis = { ...enrichedAnalysis, recurrence };
-      }
+      if (!rawRes.isCorrect) {
+        // Step A: Diagnose failure
+        const diagnosed = diagnoseFailure(rawRes, q);
 
-      setFeedback({ ...res, analysis: enrichedAnalysis, confidence });
-      setGrading(false);
+        // Step B: Build repair plan
+        const plan = createRepairPlan(q, answer, diagnosed);
 
-      if (!isRepairing) {
-        usedIndicesRef.current.add(qIdx);
-        if (!res.isCorrect) {
-          setFailedQuestions((prev) => [
-            ...prev,
-            {
-              qIdx,
-              question: q.q || "",
-              correctAnswer: res.correctAnswer,
-              solution: res.solution,
-              mark: res.mark,
-              originalQ: q,
-            },
-          ]);
-          // Persist mistake to IndexedDB + Supabase
-          mistakeRepo.saveMistake({
-            userId,
-            topicId: topic,
-            subjectId: subject?.id || null,
-            chapterId: chapter?.id || null,
-            questionIndex: qIdx,
-            questionText: q.q || "",
-            correctAnswer: res.correctAnswer || "",
-            solution: res.solution || "",
-          }).catch(() => {});
+        setFeedback({
+          ...diagnosed,
+          confidence,
+          whatWentWrong: plan.whatWentWrong,
+          rule: plan.rule,
+        });
+        setGrading(false);
+
+        if (!isRepairing) {
+          usedIndicesRef.current.add(qIdx);
+          recordMistake(q, qIdx, diagnosed);
         }
       } else {
-        if (res.isCorrect) {
-          const conceptTag = q.concept_tag || `q_${qIdx}`;
-          setRepairedConcepts((prev) => new Set([...prev, conceptTag]));
+        // Correct answer
+        setFeedback({
+          ...rawRes,
+          confidence,
+          isRepaired: isRepairing,
+        });
+        setGrading(false);
+
+        if (isRepairing) {
+          confirmRepair(q);
+        } else {
+          usedIndicesRef.current.add(qIdx);
         }
       }
     }, 150);
-  }, [grading, answer, work, currentQuestion, confidence, isRepairing, qIdx, userId, topic, subject, chapter]);
+  }, [
+    grading,
+    answer,
+    currentQuestion,
+    work,
+    confidence,
+    diagnoseFailure,
+    createRepairPlan,
+    isRepairing,
+    qIdx,
+    recordMistake,
+    confirmRepair,
+  ]);
 
-  // ── Trigger In-Quiz Mutated Repair (Edge of Friction) ─────────────────────
-  const startMutatedRepair = useCallback(() => {
-    const q = questions[qIdx];
-    if (!q) return;
-
-    const subjectName = subject?.name || subject?.label || subject?.id || "";
-    // Pass feedback (contains studentAnswer, correctAnswer, etc.) for targeted error mutation
-    const mutated = questionMutator.mutate(q, feedback, subjectName) || q;
-
-    setActiveQuestion(mutated);
-    setIsRepairing(true);
-    setAnswer("");
-    setWork("");
-    setFeedback(null);
-    setShowHint(false);
-    setRepairAttempts((a) => a + 1);
-  }, [questions, qIdx, feedback, subject]);
-
-  // ── Finish Quiz → Mastery ──────────────────────────────────────────────────
+  // ── 9. finishQuiz ──────────────────────────────────────────────────────────
   const finishQuiz = useCallback(() => {
     const total = questions.length;
     const failedCount = failedQuestions.length;
     const score = total > 0 ? Math.round(((total - failedCount) / total) * 100) : 100;
     setSessionScore(score);
 
-    const mastered = failedCount === 0;
-    const isCorrect = score >= 80;
-    const finalConfidence = confidence || "medium";
-
-    spacedRepo
-      .updateReviewSchedule(topic, isCorrect, finalConfidence, {
-        sid: subject?.id,
-        cid: chapter?.id,
-        userId,
-      })
-      .catch(() => {});
-
-    // Persist progress and achievements to Supabase
-    if (subject?.id && chapter?.id) {
-      saveProgress({
-        sid: subject.id,
-        cid: chapter.id,
-        topicTitle: topic,
-        completed: true,
-        score,
-        mastered,
-        confidenceLevel: finalConfidence,
-      }).catch(() => {});
-
-      if (mastered && topic) {
-        saveAchievement(`Mastered Topic: ${topic}`).catch(() => {});
-      }
-
-      if (score >= 80 && topic) {
-        saveAchievement(`High Score: ${topic}`).catch(() => {});
-      }
-    }
-
-    if (score === 100 && markMastered) {
-      markMastered(`${subject?.id}|${chapter?.id}|${topic}`);
-    }
+    scheduleReview(score, total);
 
     const map = buildWeaknessMap(failedQuestions, questions);
     setWeaknessMap(map);
@@ -225,13 +334,14 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     setTransferQuestion(tq);
 
     setPhase(SESSION_PHASES.MASTERY);
-  }, [questions, failedQuestions, topic, subject, chapter, userId, confidence, markMastered]);
+  }, [questions, failedQuestions, topic, scheduleReview]);
 
-  // ── Next Question / Finish Quiz ────────────────────────────────────────────
+  // ── 10. nextQuestion ───────────────────────────────────────────────────────
   const nextQuestion = useCallback(() => {
     if (isRepairing) {
       setActiveQuestion(null);
       setIsRepairing(false);
+      setCurrentRepairPlan(null);
     }
 
     const isLast = qIdx >= questions.length - 1;
@@ -246,6 +356,7 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
       setConfidence(null);
       setActiveQuestion(null);
       setIsRepairing(false);
+      setCurrentRepairPlan(null);
     } else {
       finishQuiz();
     }
@@ -255,7 +366,14 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     phase,
     setPhase,
 
-    // Quiz props
+    // Orchestrator Actions
+    startTest,
+    submitAnswer,
+    executeRepair,
+    startMutatedRepair: executeRepair, // Backwards-compatible alias
+    nextQuestion,
+
+    // Quiz Props
     qIdx,
     currentQuestion,
     isLastQuestion,
@@ -271,18 +389,16 @@ export function useSessionLoop({ subject, chapter, topic, content, userId, markM
     confidence,
     setConfidence,
     validationError,
-    submitAnswer,
-    nextQuestion,
 
-    // Edge-of-Friction Repair
+    // Repair & Gap State
     isRepairing,
-    startMutatedRepair,
+    currentRepairPlan,
     repairedConcepts: Array.from(repairedConcepts),
+    failedQuestions,
 
-    // Mastery
+    // Mastery & Spaced Review
     sessionScore,
     weaknessMap,
     transferQuestion,
-    failedQuestions,
   };
 }

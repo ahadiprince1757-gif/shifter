@@ -128,6 +128,39 @@ export const mistakeRepo = {
   },
 
   /**
+   * Transition mistake to PROVISIONALLY_FIXED (immediate retest correct).
+   * Not yet fully resolved — requires future transfer/spaced review.
+   */
+  async markProvisionallyFixed(topicId, questionIndex, { subjectId, chapterId, userId = null } = {}) {
+    try {
+      const uid = userId || getActiveUserId();
+      const existing = await db.user_mistakes
+        .where("[user_id+topic_id+question_index]")
+        .equals([uid, topicId, questionIndex])
+        .first()
+        .catch(() => null);
+
+      if (existing) {
+        await db.user_mistakes.update(existing.id, {
+          status: "PROVISIONALLY_FIXED",
+          provisionally_fixed_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        });
+      }
+    } catch (err) {
+      console.error("Failed to mark mistake provisionally fixed:", err);
+    }
+  },
+
+  /**
+   * Transition mistake to CONFIRMED_FIXED (spaced review probe correct).
+   * Fully resolved and synced with server.
+   */
+  async markConfirmedFixed(topicId, questionIndex, { subjectId, chapterId, userId = null } = {}) {
+    return this.resolveMistake(topicId, questionIndex, { subjectId, chapterId, userId });
+  },
+
+  /**
    * Mark a specific mistake as resolved in IndexedDB and Supabase.
    */
   async resolveMistake(topicId, questionIndex, { subjectId, chapterId, userId = null } = {}) {
@@ -141,6 +174,7 @@ export const mistakeRepo = {
 
       if (existing) {
         await db.user_mistakes.update(existing.id, {
+          status: "CONFIRMED_FIXED",
           resolved: true,
           resolved_at: new Date().toISOString(),
           updated_at: new Date().toISOString(),
@@ -170,6 +204,27 @@ export const mistakeRepo = {
     } catch (err) {
       console.error("Failed to resolve mistake:", err);
     }
+  },
+
+  /**
+   * Get mistakes divided into learner-facing buckets:
+   * 1. needsAttention (OPEN or REPAIRING)
+   * 2. provisionallyFixed (PROVISIONALLY_FIXED — check again later)
+   */
+  async getMistakesByLifecycle(userId) {
+    const unresolved = await this.getUnresolvedMistakes(userId);
+    const needsAttention = [];
+    const provisionallyFixed = [];
+
+    for (const m of unresolved) {
+      if (m.status === "PROVISIONALLY_FIXED") {
+        provisionallyFixed.push(m);
+      } else {
+        needsAttention.push(m);
+      }
+    }
+
+    return { needsAttention, provisionallyFixed };
   },
 
   /**

@@ -157,17 +157,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       <div className="subj-grid-humanistic">
         {curriculum.map((s, idx) => {
           const totalTopics = s.chapters.reduce((a, c) => a + c.topics.length, 0);
-          const masteredCount = s.chapters.reduce(
-            (a, c) => a + c.topics.filter((t) => mastered.has(`${s.id}|${c.id}|${t}`)).length,
-            0
-          );
-          const pct = totalTopics > 0 ? Math.round((masteredCount / totalTopics) * 100) : 0;
           const palette = HUMANISTIC_PALETTES[idx % HUMANISTIC_PALETTES.length];
-
-          // SVG progress circle calculations
-          const radius = 16;
-          const circumference = 2 * Math.PI * radius;
-          const strokeDashoffset = circumference - (pct / 100) * circumference;
 
           return (
             <button
@@ -179,7 +169,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                 "--card-bg-tint": palette.bg,
                 "--card-border-tint": palette.border,
               }}
-              aria-label={`${s.label}, ${masteredCount} of ${totalTopics} topics mastered`}
+              aria-label={`${s.label}, ${s.chapters.length} chapters, ${totalTopics} topics`}
             >
               <div className="subj-notebook-spine" />
               <div className="subj-notebook-body">
@@ -190,27 +180,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                       {s.chapters.length} chapter{s.chapters.length !== 1 ? "s" : ""} · {totalTopics} topic{totalTopics !== 1 ? "s" : ""}
                     </div>
                   </div>
-                  <div className="subj-ring-container" title={`${pct}% complete`}>
-                    <svg className="subj-ring-svg" viewBox="0 0 40 40" style={{ width: "100%", height: "100%" }}>
-                      <circle
-                        cx="20"
-                        cy="20"
-                        r={radius}
-                        className="subj-ring-bg"
-                      />
-                      <circle
-                        cx="20"
-                        cy="20"
-                        r={radius}
-                        className="subj-ring-fill"
-                        style={{
-                          strokeDasharray: circumference,
-                          strokeDashoffset: strokeDashoffset,
-                          stroke: palette.accent,
-                        }}
-                      />
-                    </svg>
-                    <span className="subj-ring-pct">{pct}%</span>
+                  <div className="subj-enter-arrow" aria-hidden="true" style={{ color: palette.accent, fontSize: "1.25rem", fontWeight: 700 }}>
+                    →
                   </div>
                 </div>
               </div>
