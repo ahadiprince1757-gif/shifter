@@ -228,6 +228,10 @@ app.get("/api/curriculum", async (req, res) => {
 app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
   const { sid, cid, topic } = req.params;
   try {
+    const started = performance.now();
+
+    const contentStarted = performance.now();
+
     const { data: contentRow, error: contentErr } = await supabase
       .from("content_view")
       .select("topic_id, notes")
@@ -235,6 +239,9 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
       .eq("cid", cid)
       .eq("topic", topic)
       .maybeSingle();
+
+    const contentMs = performance.now() - contentStarted;
+
     if (contentErr) {
       logger.db("SELECT", "content_view", "error", {
         subject: sid,
@@ -259,6 +266,9 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
       chapter: cid,
       topic,
     });
+
+    const quizStarted = performance.now();
+
     // Fetch quizzes, questions, and answers for this topic
     const { data: quizData, error: quizErr } = await supabase
       .from("quizzes")
@@ -271,8 +281,6 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
           hint,
           explain,
           position,
-          concept_tag,
-          difficulty,
           answers (
             answer_text,
             is_correct
@@ -282,6 +290,16 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
       )
       .eq("topic_id", contentRow.topic_id)
       .maybeSingle();
+
+    const quizMs = performance.now() - quizStarted;
+
+    console.log("[TIXAR CONTENT TIMING]", {
+      topic,
+      contentMs: Math.round(contentMs),
+      quizMs: Math.round(quizMs),
+      totalMs: Math.round(performance.now() - started),
+    });
+
     if (quizErr) {
       logger.db("SELECT", "quizzes", "error", {
         topicId: contentRow.topic_id,
@@ -310,8 +328,6 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
           ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
           explain: qObj.explain || "",
           why: qObj.explain || "",
-          concept_tag: qObj.concept_tag || "",
-          difficulty: qObj.difficulty || "",
         });
       });
     }
