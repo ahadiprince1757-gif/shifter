@@ -124,8 +124,7 @@ app.get("/api/ping", (req, res) => {
 
 // Health check for platform providers (Render, Heroku, etc.)
 app.get("/health", (req, res) => {
-  logger.action("HEALTH_CHECK");
-  res.json({ ok: true });
+  res.status(200).json({ ok: true });
 });
 
 // Endpoint: Receive logs from frontend

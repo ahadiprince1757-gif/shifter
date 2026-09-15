@@ -2,6 +2,13 @@ import { db } from "../db/db";
 
 export const topicRepo = {
   /**
+   * Fetch a specific topic directly by primary key id.
+   */
+  async getById(id) {
+    return db.topics.get(id);
+  },
+
+  /**
    * Fetch a specific topic by its identifiers.
    */
   async getTopic(curriculumId, chapterId, topicId) {

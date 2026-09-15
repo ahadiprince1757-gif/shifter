@@ -41,7 +41,7 @@ db.version(12).stores({
 db.version(15).stores({
   curriculum: "id, is_deleted",
   topics: "id, curriculum_id, chapter_id, is_deleted",
-  user_progress: "[user_id+topic_id], id, user_id, topic_id, sync_status, updated_at",
+  user_progress: "id, user_id, topic_id, sync_status, updated_at",
   change_log: "++id, type, entity_id, synced, timestamp",
   sync_metadata: "table_name, last_synced_at",
   user_mistakes: "++id, [user_id+topic_id+question_index], [user_id+topic_id], user_id, topic_id, subject_id, chapter_id, question_index, resolved, updated_at",
@@ -49,17 +49,19 @@ db.version(15).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
-
-
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
 
-// Database connection error handler — preserve local offline student data
-db.open().catch(async (err) => {
-  if (err.name === "UpgradeError" || err.name === "DatabaseClosedError") {
-    console.error("[Tixar DB] Database upgrade/connection warning detected:", err);
-    // Note: Automatic Dexie.delete("ShifterLocalDB_v2") removed to protect student offline learning history.
+// Database connection error handler — preserve local offline student data and dispatch observable event
+db.open().catch((err) => {
+  console.error("[Tixar DB] Failed to open local database:", err);
+  if (typeof window !== "undefined") {
+    window.dispatchEvent(
+      new CustomEvent("tixar:db-error", {
+        detail: { name: err?.name, message: err?.message },
+      })
+    );
   }
 });
 
