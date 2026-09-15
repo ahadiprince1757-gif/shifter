@@ -5852,7 +5852,6 @@ add(
   "chemistry",
   "organic",
   "Homologous series",
-  "Alkanes",
   `<h2>Alkanes</h2>
 
 <h3> FOUNDATION NOTES</h3>

@@ -111,28 +111,6 @@ const CURRICULUM_DATA = [
         ],
       },
       {
-        id: "non_euclidean_geometry",
-        label: "Non-Euclidean Geometry",
-        topics: [
-          "Introduction to Non-Euclidean Geometry",
-          "Spherical Geometry",
-          "Hyperbolic Geometry",
-          "Geometry in Relativity",
-          "Applications of Non-Euclidean Geometry",
-        ],
-      },
-      {
-        id: "optimization",
-        label: "Optimization",
-        topics: [
-          "Introduction to Optimization",
-          "Maximizing Area Problems",
-          "Minimization Problems",
-          "Cost Optimization Problems",
-          "Applications of Optimization",
-        ],
-      },
-      {
         id: "linear_programming",
         label: "Linear Programming",
         topics: [
@@ -199,39 +177,6 @@ const CURRICULUM_DATA = [
         ],
       },
       {
-        id: "differential_equations",
-        label: "Differential Equations",
-        topics: [
-          "Introduction to Differential Equations",
-          "Growth and Decay Models",
-          "Population Models",
-          "Motion Equations",
-          "First-Order Differential Equations",
-        ],
-      },
-      {
-        id: "proofs",
-        label: "Mathematical Proofs",
-        topics: [
-          "Direct Proof",
-          "Proof by Contradiction",
-          "Proof by Induction",
-          "Logical Argument Structures",
-          "Applications of Mathematical Proofs",
-        ],
-      },
-      {
-        id: "discrete_mathematics",
-        label: "Discrete Mathematics",
-        topics: [
-          "Logic Statements (AND, OR, NOT)",
-          "Truth Tables",
-          "Combinatorics (Counting Methods)",
-          "Graph Theory (Nodes and Edges)",
-          "Basic Algorithms",
-        ],
-      },
-      {
         id: "number_theory",
         label: "Number Theory",
         topics: [
@@ -240,72 +185,6 @@ const CURRICULUM_DATA = [
           "Prime Numbers",
           "Congruence Relations",
           "Cryptography Basics",
-        ],
-      },
-      {
-        id: "abstract_algebra",
-        label: "Abstract Algebra",
-        topics: [
-          "Introduction to Groups",
-          "Rings and Fields",
-          "Symmetry Structures",
-          "Group Operations",
-          "Applications of Abstract Algebra",
-        ],
-      },
-      {
-        id: "cryptography",
-        label: "Cryptography",
-        topics: [
-          "Introduction to Cryptography",
-          "Modular Arithmetic in Encryption",
-          "RSA Encryption System",
-          "Hashing Functions",
-          "Applications of Cryptography",
-        ],
-      },
-      {
-        id: "game_theory",
-        label: "Game Theory",
-        topics: [
-          "Introduction to Game Theory",
-          "Payoff Matrices",
-          "Nash Equilibrium",
-          "Dominant Strategies",
-          "Applications of Game Theory",
-        ],
-      },
-      {
-        id: "fractals_chaos_theory",
-        label: "Fractals & Chaos Theory",
-        topics: [
-          "Introduction to Fractals",
-          "Mandelbrot Set",
-          "Chaos Theory",
-          "Butterfly Effect",
-          "Applications of Fractals and Chaos",
-        ],
-      },
-      {
-        id: "topology",
-        label: "Topology",
-        topics: [
-          "Introduction to Topology",
-          "Topological Deformation",
-          "Connectedness",
-          "Continuous Transformations",
-          "Applications of Topology",
-        ],
-      },
-      {
-        id: "numerical_methods",
-        label: "Numerical Methods",
-        topics: [
-          "Introduction to Numerical Methods",
-          "Iteration Method",
-          "Root Finding Methods",
-          "Error Estimation",
-          "Applications of Numerical Methods",
         ],
       },
     ],
