@@ -642,198 +642,1225 @@ Vitamins → Protection & regulation
   ],
 );
 /* =========================
-   BIOLOGY: HUMAN PHYSIOLOGY DEEP SYSTEMS
+   BIOLOGY: HUMAN PHYSIOLOGY — GRANULAR CHAPTERS
 ========================= */
 
 add(
   "biology",
-  "human_physiology_deep",
-  "Human Physiology Deep Systems (Respiration, Excretion, Immunity, Movement)",
-  `<h2>Human Physiology Deep Systems</h2>
-<p>This phase explains how the body produces energy, removes waste, defends itself, and enables movement at a deeper biological level.</p>
+  "human_physiology_respiration",
+  "Respiration — Releasing Energy from Food",
+  `<h2>Respiration — Releasing Energy from Food</h2>
+
+<p>Cells need energy to carry out activities such as movement, growth, repair and active transport.</p>
+
+<p><b>Respiration</b> is the process by which cells release energy from food, especially glucose.</p>
+
 <hr>
-<h3> 1. RESPIRATION (ENERGY RELEASE SYSTEM)</h3>
-<p>Respiration is the process of releasing energy from glucose.</p>
+
+<h3>Why is respiration important?</h3>
+
+<ul>
+<li>Provides energy for muscle contraction.</li>
+<li>Provides energy for active transport.</li>
+<li>Provides energy needed for growth and repair.</li>
+<li>Provides energy for other activities carried out by cells.</li>
+</ul>
+
 <hr>
-<h4> A. AEROBIC RESPIRATION</h4>
+
+<h3>Glucose as an energy source</h3>
+
+<p>Glucose contains stored chemical energy. During respiration, this energy is released and made available to the cell.</p>
+
 <pre>
-Glucose + Oxygen → Carbon dioxide + Water + Energy (ATP)
+Glucose → Energy (ATP) + Waste products
 </pre>
-<ul>
-<li>Occurs in mitochondria</li>
-<li>Releases large amount of energy</li>
-<li>Efficient process</li>
-</ul>
+
 <hr>
-<h4> B. ANAEROBIC RESPIRATION</h4>
+
+<h3>Types of Respiration</h3>
+
+<ul>
+<li><b>Aerobic respiration</b> — uses oxygen, releases more energy</li>
+<li><b>Anaerobic respiration</b> — no oxygen, releases less energy</li>
+</ul>
+
+<hr>
+
+<h3>Where does respiration occur?</h3>
+
+<p>Respiration occurs in the <b>mitochondria</b> of every living cell.</p>
+
 <pre>
-Glucose → Lactic acid + Small amount of energy
+Mitochondria = "Powerhouse of the Cell"
 </pre>
-<ul>
-<li>Occurs when oxygen is insufficient</li>
-<li>Less energy produced</li>
-<li>Causes muscle fatigue</li>
-</ul>
-<hr>
-<h4> C. OXYGEN DEBT</h4>
-<p>Extra oxygen required after exercise to break down lactic acid.</p>
-<ul>
-<li>Heavy breathing after exercise</li>
-<li>Helps restore normal conditions</li>
-</ul>
-<hr>
-<h3> 2. EXCRETION (WASTE REMOVAL SYSTEM)</h3>
-<p>Excretion removes metabolic waste from the body.</p>
-<hr>
-<h4> A. KIDNEY FUNCTION</h4>
-<ul>
-<li>Filters blood</li>
-<li>Removes urea, excess salts, water</li>
-</ul>
-<hr>
-<h4> B. NEPHRON STRUCTURE (VERY IMPORTANT)</h4>
-<pre>
-Glomerulus → Bowman’s capsule → Tubule → Collecting duct
-</pre>
-<h4> PROCESSES:</h4>
-<ul>
-<li><b>Filtration:</b> removes waste from blood</li>
-<li><b>Reabsorption:</b> returns useful substances</li>
-<li><b>Secretion:</b> removes additional waste</li>
-</ul>
-<hr>
-<h4> C. URINE FORMATION</h4>
-<ul>
-<li>Blood enters kidney</li>
-<li>Filtered in nephron</li>
-<li>Urine formed and stored in bladder</li>
-</ul>
-<hr>
-<h4> D. DIALYSIS (KIDNEY FAILURE TREATMENT)</h4>
-<p>Artificial filtration of blood when kidneys fail.</p>
-<ul>
-<li>Removes waste and excess fluids</li>
-<li>Acts as artificial kidney</li>
-</ul>
-<hr>
-<h3> 3. IMMUNE SYSTEM (DEFENSE SYSTEM)</h3>
-<p>The immune system protects the body from pathogens.</p>
-<hr>
-<h4> A. PHAGOCYTOSIS</h4>
-<ul>
-<li>White blood cells engulf pathogens</li>
-<li>Pathogens are destroyed by enzymes</li>
-</ul>
-<hr>
-<h4> B. ANTIBODIES & ANTIGENS</h4>
-<ul>
-<li><b>Antigens:</b> foreign substances on pathogens</li>
-<li><b>Antibodies:</b> proteins that destroy antigens</li>
-</ul>
-<h4> C. IMMUNITY TYPES</h4>
-<ul>
-<li><b>Active immunity:</b> body produces antibodies (infection or vaccine)</li>
-<li><b>Passive immunity:</b> antibodies received from another source (mother or injection)</li>
-</ul>
-<hr>
-<h3> 4. SKELETAL SYSTEM (SUPPORT SYSTEM)</h3>
-<h4> FUNCTIONS:</h4>
-<ul>
-<li>Support body structure</li>
-<li>Protect organs</li>
-<li>Enable movement</li>
-</ul>
-<hr>
-<h4> TYPES OF JOINTS</h4>
-<ul>
-<li><b>Hinge joint:</b> elbow, knee (one direction)</li>
-<li><b>Ball and socket:</b> shoulder, hip (multi-direction)</li>
-<li><b>Pivot joint:</b> neck rotation</li>
-</ul>
-<hr>
-<h3> 5. MUSCULAR SYSTEM</h3>
-<h4> ANTAGONISTIC MUSCLES</h4>
-<ul>
-<li>Work in pairs</li>
-<li>One contracts, one relaxes</li>
-</ul>
-<pre>
-Biceps contracts → arm bends
-Triceps contracts → arm straightens
-</pre>
-<hr>
-<h3> 6. BODY SYSTEM INTEGRATION</h3>
-<pre>
-Respiration → energy (ATP)
-Excretion → waste removal
-Immunity → protection
-Muscles → movement
-Skeleton → support
-</pre>
-<hr>
 `,
 
   [
     {
-      q: "Differentiate aerobic and anaerobic respiration",
-      hint: "Oxygen vs no oxygen",
-      ans: "Aerobic uses oxygen and produces more energy, anaerobic does not and produces less energy",
-      explain: "Anaerobic produces lactic acid",
-      why: "Energy supply methods differ",
+      q: "What is respiration?",
+      hint: "Energy from food",
+      ans: "The process by which cells release energy from glucose",
+      explain: "Respiration happens in the mitochondria",
+      why: "Cells need energy for all activities",
     },
+    {
+      q: "State four reasons why respiration is important",
+      hint: "Think about what cells do",
+      ans: [
+        "Provides energy for muscle contraction",
+        "Provides energy for active transport",
+        "Provides energy for growth and repair",
+        "Provides energy for cell activities",
+      ],
+      explain: "All life processes need energy from respiration",
+    },
+    {
+      q: "Where does respiration occur in a cell?",
+      hint: "Powerhouse of the cell",
+      ans: "In the mitochondria",
+      explain: "Mitochondria are the site of energy release",
+    },
+    {
+      q: "Name the two types of respiration",
+      hint: "Oxygen or no oxygen",
+      ans: "Aerobic respiration and anaerobic respiration",
+      explain: "Aerobic uses oxygen; anaerobic does not",
+    },
+  ],
+);
 
+/* =========================
+   BIOLOGY: AEROBIC RESPIRATION
+========================= */
+add(
+  "biology",
+  "human_physiology_aerobic_respiration",
+  "Aerobic Respiration",
+  `<h2>Aerobic Respiration</h2>
+
+<p><b>Aerobic respiration</b> is the process of releasing energy from glucose using oxygen.</p>
+
+<hr>
+
+<h3>Word Equation</h3>
+
+<pre>
+Glucose + Oxygen → Carbon dioxide + Water + Energy (ATP)
+</pre>
+
+<h3>Chemical Equation</h3>
+
+<pre>
+C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP
+</pre>
+
+<hr>
+
+<h3>Key Facts</h3>
+
+<ul>
+<li>Occurs in the <b>mitochondria</b>.</li>
+<li>Requires oxygen.</li>
+<li>Produces a <b>large amount of energy (ATP)</b>.</li>
+<li>Produces carbon dioxide and water as waste.</li>
+<li>Efficient process — preferred by the body.</li>
+</ul>
+
+<hr>
+
+<h3>Where the products go</h3>
+
+<ul>
+<li><b>Carbon dioxide</b> → exhaled from lungs</li>
+<li><b>Water</b> → used in cells or excreted</li>
+<li><b>ATP (energy)</b> → used for all cell activities</li>
+</ul>
+
+<hr>
+
+<h3>Conditions needed</h3>
+
+<pre>
+1. Glucose (from food)
+2. Oxygen (from breathing)
+3. Functioning mitochondria
+</pre>
+`,
+
+  [
+    {
+      q: "Write the word equation for aerobic respiration",
+      hint: "Glucose + Oxygen",
+      ans: "Glucose + Oxygen → Carbon dioxide + Water + Energy",
+      explain: "Aerobic means with oxygen",
+      why: "Shows inputs and outputs of the process",
+    },
+    {
+      q: "Where does aerobic respiration occur?",
+      hint: "Powerhouse organelle",
+      ans: "In the mitochondria",
+      explain: "Mitochondria are adapted for energy production",
+    },
+    {
+      q: "What are the products of aerobic respiration?",
+      hint: "Three outputs",
+      ans: ["Carbon dioxide", "Water", "Energy (ATP)"],
+      explain: "CO2 is exhaled, water is used or excreted, ATP powers the cell",
+    },
+    {
+      q: "Why is aerobic respiration more efficient than anaerobic?",
+      hint: "Compare energy output",
+      ans: "Aerobic respiration produces much more ATP (energy) than anaerobic respiration",
+      explain: "Aerobic fully breaks down glucose using oxygen",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: ANAEROBIC RESPIRATION
+========================= */
+add(
+  "biology",
+  "human_physiology_anaerobic_respiration",
+  "Anaerobic Respiration & Oxygen Debt",
+  `<h2>Anaerobic Respiration &amp; Oxygen Debt</h2>
+
+<p><b>Anaerobic respiration</b> is the release of energy from glucose without using oxygen.</p>
+
+<hr>
+
+<h3>Word Equation (in animals/humans)</h3>
+
+<pre>
+Glucose → Lactic acid + Small amount of energy (ATP)
+</pre>
+
+<h3>Word Equation (in yeast/plants)</h3>
+
+<pre>
+Glucose → Ethanol + Carbon dioxide + Small amount of energy
+</pre>
+
+<hr>
+
+<h3>When does anaerobic respiration occur?</h3>
+
+<ul>
+<li>During <b>intense exercise</b> when oxygen supply is insufficient.</li>
+<li>When muscles need energy faster than aerobic respiration can provide.</li>
+</ul>
+
+<hr>
+
+<h3>Effects of Anaerobic Respiration</h3>
+
+<ul>
+<li>Lactic acid builds up in muscles — causes <b>muscle fatigue and cramp</b>.</li>
+<li>Less energy (ATP) produced compared to aerobic respiration.</li>
+</ul>
+
+<hr>
+
+<h3>Oxygen Debt</h3>
+
+<p><b>Oxygen debt</b> is the extra oxygen required after exercise to break down the lactic acid that accumulated during anaerobic respiration.</p>
+
+<pre>
+Lactic acid + Oxygen → Carbon dioxide + Water
+</pre>
+
+<ul>
+<li>Causes <b>heavy breathing</b> after exercise.</li>
+<li>Heart rate stays elevated to deliver more oxygen.</li>
+<li>Lactic acid is transported to the liver for removal.</li>
+</ul>
+
+<hr>
+
+<h3>Comparison: Aerobic vs Anaerobic</h3>
+
+<pre>
+Feature          | Aerobic          | Anaerobic
+Oxygen needed    | Yes              | No
+Energy produced  | Large (many ATP) | Small (few ATP)
+Products         | CO2 + Water      | Lactic acid
+Location         | Mitochondria     | Cytoplasm
+</pre>
+`,
+
+  [
+    {
+      q: "Write the word equation for anaerobic respiration in humans",
+      hint: "No oxygen involved",
+      ans: "Glucose → Lactic acid + Energy",
+      explain: "Lactic acid causes muscle cramp",
+    },
     {
       q: "What is oxygen debt?",
-      hint: "After exercise",
-      ans: "Extra oxygen needed to break down lactic acid after exercise",
-      explain: "Causes heavy breathing",
-      why: "Restores body balance",
-    },
-
-    {
-      q: "Explain nephron function",
-      hint: "Kidney unit",
-      ans: "Filters blood, reabsorbs useful substances, forms urine",
-      explain: "Main functional unit of kidney",
-      why: "Removes waste",
+      hint: "After exercise breathing",
+      ans: "The extra oxygen needed after exercise to break down lactic acid that built up during anaerobic respiration",
+      explain: "This is why you keep breathing heavily after stopping exercise",
     },
     {
-      q: "Explain phagocytosis",
-      hint: "White blood cells",
-      ans: "Process where white blood cells engulf pathogens",
-      explain: "Destroys harmful organisms",
-      why: "Protects body",
-    },
-
-    {
-      q: "Differentiate active and passive immunity",
-      hint: "Own antibodies vs external",
-      ans: "Active immunity produces own antibodies, passive receives antibodies",
-      explain: "Passive is short-term protection",
-      why: "Different protection methods",
+      q: "Why does lactic acid build up during exercise?",
+      hint: "Anaerobic respiration",
+      ans: "Because muscles respire anaerobically when oxygen supply cannot keep up with energy demand",
+      explain: "Lactic acid is a by-product of anaerobic respiration",
     },
     {
-      q: "Explain antagonistic muscles",
-      hint: "Opposing action",
-      ans: "Muscles that work in pairs where one contracts and the other relaxes",
-      explain: "Enables movement",
-      why: "Body movement requires coordination",
-    },
-
-    {
-      q: "Give 10 functions of skeletal system",
+      q: "State two differences between aerobic and anaerobic respiration",
+      hint: "Compare oxygen and energy",
       ans: [
-        "Support body",
-        "Protect organs",
-        "Enable movement",
-        "Produce blood cells",
-        "Store minerals",
-        "Maintain shape",
-        "Assist respiration",
-        "Anchor muscles",
-        "Support posture",
-        "Facilitate locomotion",
+        "Aerobic uses oxygen; anaerobic does not",
+        "Aerobic produces more energy (ATP) than anaerobic",
       ],
+      explain: "These differences determine when each type is used",
+    },
+    {
+      q: "What is the equation for anaerobic respiration in yeast?",
+      hint: "Fermentation products",
+      ans: "Glucose → Ethanol + Carbon dioxide + Energy",
+      explain: "Yeast fermentation is used in making bread and alcohol",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: EXCRETION
+========================= */
+add(
+  "biology",
+  "human_physiology_excretion",
+  "Excretion — Removing Metabolic Waste",
+  `<h2>Excretion — Removing Metabolic Waste</h2>
+
+<p><b>Excretion</b> is the removal of metabolic waste products from the body.</p>
+
+<p>It is different from egestion (removal of undigested food).</p>
+
+<hr>
+
+<h3>Metabolic Waste Products</h3>
+
+<ul>
+<li><b>Carbon dioxide (CO2)</b> — from respiration, excreted by lungs</li>
+<li><b>Urea</b> — from breakdown of excess amino acids in liver, excreted by kidneys</li>
+<li><b>Water</b> — excreted by kidneys, lungs and skin</li>
+<li><b>Salts</b> — excreted by kidneys and skin (sweat)</li>
+</ul>
+
+<hr>
+
+<h3>Organs of Excretion</h3>
+
+<pre>
+Organ     | Waste Excreted
+Lungs     | CO2 and water vapour
+Kidneys   | Urea, excess water, salts
+Skin      | Small amounts of urea, salts (sweat)
+Liver     | Converts excess amino acids into urea (deamination)
+</pre>
+
+<hr>
+
+<h3>Why excretion is important</h3>
+
+<ul>
+<li>Removes toxic waste that could harm cells.</li>
+<li>Maintains correct concentration of substances in the blood.</li>
+<li>Helps regulate body temperature (sweating).</li>
+</ul>
+
+<hr>
+
+<h3>Excretion vs Egestion</h3>
+
+<pre>
+Excretion = removal of METABOLIC waste (produced by body processes)
+Egestion  = removal of UNDIGESTED food through faeces
+</pre>
+`,
+
+  [
+    {
+      q: "Define excretion",
+      hint: "Metabolic waste",
+      ans: "The removal of metabolic waste products from the body",
+      explain: "It removes waste produced by chemical reactions in cells",
+    },
+    {
+      q: "Name four metabolic waste products and where each is excreted",
+      hint: "Think lungs, kidneys, skin",
+      ans: [
+        "Carbon dioxide — excreted by lungs",
+        "Urea — excreted by kidneys",
+        "Water — excreted by kidneys, lungs and skin",
+        "Salts — excreted by kidneys and skin",
+      ],
+      explain: "Different organs handle different waste products",
+    },
+    {
+      q: "Distinguish between excretion and egestion",
+      hint: "Metabolic vs undigested",
+      ans: "Excretion removes metabolic waste produced by body processes; egestion removes undigested food through faeces",
+      explain: "Egestion is not excretion",
+    },
+    {
+      q: "What is deamination and where does it occur?",
+      hint: "Amino acids",
+      ans: "Deamination is the breakdown of excess amino acids in the liver to form urea",
+      explain: "Urea is then transported to the kidneys for excretion",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: THE KIDNEY
+========================= */
+add(
+  "biology",
+  "human_physiology_kidney",
+  "The Kidney",
+  `<h2>The Kidney</h2>
+
+<p>The kidneys are the main organs of excretion. Humans have two kidneys located on either side of the spine.</p>
+
+<hr>
+
+<h3>Functions of the Kidney</h3>
+
+<ul>
+<li>Filter blood to remove urea, excess water and salts.</li>
+<li>Regulate water content of the blood (osmoregulation).</li>
+<li>Maintain salt balance in the body.</li>
+<li>Produce urine.</li>
+</ul>
+
+<hr>
+
+<h3>Structure of the Kidney</h3>
+
+<pre>
+Outer layer → Cortex (contains glomeruli and Bowman's capsules)
+Inner layer → Medulla (contains tubules and collecting ducts)
+Centre      → Pelvis (collects urine)
+Ureter → Bladder → Urethra → Outside body
+</pre>
+
+<hr>
+
+<h3>Blood Supply to the Kidney</h3>
+
+<ul>
+<li><b>Renal artery</b> — carries blood with waste into the kidney.</li>
+<li><b>Renal vein</b> — carries cleaned blood away from the kidney.</li>
+</ul>
+
+<hr>
+
+<h3>Kidney Diseases</h3>
+
+<ul>
+<li><b>Kidney failure</b> — kidneys cannot filter blood properly.</li>
+<li>Treated by <b>dialysis</b> or <b>kidney transplant</b>.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "State four functions of the kidney",
+      hint: "Think filtration and regulation",
+      ans: [
+        "Filter blood to remove urea",
+        "Regulate water content of blood",
+        "Maintain salt balance",
+        "Produce urine",
+      ],
+      explain: "The kidneys are the main organs of osmoregulation and excretion",
+    },
+    {
+      q: "Name the three structural regions of the kidney",
+      hint: "Outer, inner, centre",
+      ans: ["Cortex", "Medulla", "Pelvis"],
+      explain: "The cortex contains nephrons; the medulla has tubules; the pelvis collects urine",
+    },
+    {
+      q: "What is the role of the renal artery and renal vein?",
+      hint: "Blood in and out",
+      ans: "The renal artery carries blood with waste into the kidney; the renal vein carries cleaned blood away",
+      explain: "Blood is filtered as it passes through the kidney",
+    },
+    {
+      q: "Name two treatments for kidney failure",
+      hint: "Machine or operation",
+      ans: ["Dialysis", "Kidney transplant"],
+      explain: "Dialysis is an artificial filtration process; transplant replaces the kidney",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: THE NEPHRON
+========================= */
+add(
+  "biology",
+  "human_physiology_nephron",
+  "The Nephron — Filtration and Reabsorption",
+  `<h2>The Nephron — Filtration and Reabsorption</h2>
+
+<p>The <b>nephron</b> is the functional unit of the kidney. Each kidney contains about one million nephrons.</p>
+
+<hr>
+
+<h3>Structure of the Nephron</h3>
+
+<pre>
+Glomerulus → Bowman's capsule → Proximal convoluted tubule
+→ Loop of Henle → Distal convoluted tubule → Collecting duct → Pelvis
+</pre>
+
+<hr>
+
+<h3>Three Processes in the Nephron</h3>
+
+<h4>1. Ultrafiltration</h4>
+<ul>
+<li>Blood is filtered under high pressure in the <b>glomerulus</b>.</li>
+<li>Small molecules pass into the Bowman's capsule: water, urea, glucose, salts.</li>
+<li>Large molecules stay in blood: proteins, red blood cells.</li>
+</ul>
+
+<h4>2. Selective Reabsorption</h4>
+<ul>
+<li>Useful substances are reabsorbed back into the blood.</li>
+<li>All glucose is reabsorbed in the proximal tubule.</li>
+<li>Water is reabsorbed in the tubules and collecting duct.</li>
+<li>Some salts are reabsorbed.</li>
+</ul>
+
+<h4>3. Secretion</h4>
+<ul>
+<li>Additional waste (e.g. excess hydrogen ions) is secreted into the tubule.</li>
+</ul>
+
+<hr>
+
+<h3>What becomes urine?</h3>
+
+<pre>
+Remaining fluid → concentrated urea, excess water, salts → Urine
+</pre>
+
+<ul>
+<li>Urine drains into the <b>collecting duct → pelvis → ureter → bladder</b>.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "What is a nephron?",
+      hint: "Kidney unit",
+      ans: "The nephron is the functional unit of the kidney responsible for filtering blood and producing urine",
+      explain: "Each kidney contains about one million nephrons",
+    },
+    {
+      q: "State the three processes that occur in the nephron",
+      hint: "Filtration, reabsorption, secretion",
+      ans: ["Ultrafiltration", "Selective reabsorption", "Secretion"],
+      explain: "These three processes together produce urine",
+    },
+    {
+      q: "What happens during ultrafiltration?",
+      hint: "Glomerulus and Bowman's capsule",
+      ans: "Blood is filtered under high pressure in the glomerulus; small molecules (urea, glucose, water, salts) pass into the Bowman's capsule",
+      explain: "Large molecules like proteins and red blood cells remain in the blood",
+    },
+    {
+      q: "What substances are reabsorbed in the nephron?",
+      hint: "Useful substances",
+      ans: ["All glucose", "Water", "Useful salts"],
+      explain: "Reabsorption ensures useful substances are not lost in urine",
+    },
+    {
+      q: "Describe the path of urine from nephron to outside the body",
+      hint: "Follow the route",
+      ans: "Collecting duct → Pelvis → Ureter → Bladder → Urethra → Outside body",
+      explain: "Urine is stored in the bladder before being expelled",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: URINE FORMATION & DIALYSIS
+========================= */
+add(
+  "biology",
+  "human_physiology_urine_dialysis",
+  "Urine Formation & Dialysis",
+  `<h2>Urine Formation &amp; Dialysis</h2>
+
+<hr>
+
+<h3>Composition of Urine</h3>
+
+<ul>
+<li>Water (about 95%)</li>
+<li>Urea (waste from protein breakdown)</li>
+<li>Excess salts</li>
+<li>Small amounts of other waste</li>
+</ul>
+
+<p>Normal urine does <b>NOT</b> contain glucose or proteins.</p>
+
+<hr>
+
+<h3>How Urine Formation Works</h3>
+
+<pre>
+Blood enters kidney via renal artery
+Filtered in glomerulus (ultrafiltration)
+Useful substances reabsorbed in tubules
+Remaining fluid = urine
+Urine → pelvis → ureter → bladder → excreted
+</pre>
+
+<hr>
+
+<h3>Dialysis — Treatment for Kidney Failure</h3>
+
+<p><b>Dialysis</b> is the artificial filtration of blood when kidneys fail to function.</p>
+
+<h4>How dialysis works:</h4>
+<ul>
+<li>Blood is taken out of the body.</li>
+<li>Passed through a machine containing a <b>dialysis membrane</b>.</li>
+<li>Waste (urea, excess salts) diffuses out through the membrane.</li>
+<li>Clean blood is returned to the body.</li>
+</ul>
+
+<pre>
+Blood with waste → Dialysis machine → Cleaned blood returned
+</pre>
+
+<hr>
+
+<h3>Kidney Transplant</h3>
+<ul>
+<li>A healthy donor kidney replaces the failed kidney.</li>
+<li>Permanent solution but requires matching donor.</li>
+<li>Patient must take immunosuppressant drugs to prevent rejection.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "State the composition of normal urine",
+      hint: "What is in urine?",
+      ans: ["Water", "Urea", "Excess salts"],
+      explain: "Normal urine does not contain glucose or proteins",
+    },
+    {
+      q: "What is dialysis?",
+      hint: "Artificial kidney machine",
+      ans: "Dialysis is the artificial filtration of blood through a machine to remove waste when the kidneys fail",
+      explain: "The dialysis membrane allows waste to diffuse out of the blood",
+    },
+    {
+      q: "Explain how dialysis works",
+      hint: "Think diffusion through a membrane",
+      ans: "Blood is taken from the patient, passed through a dialysis machine where waste diffuses through a membrane, and clean blood is returned to the body",
+      explain: "It mimics the filtration function of healthy kidneys",
+    },
+    {
+      q: "Give one advantage and one disadvantage of dialysis",
+      hint: "Life-saving vs inconvenient",
+      ans: [
+        "Advantage: Removes waste and keeps the patient alive",
+        "Disadvantage: Must be done several times per week and is expensive",
+      ],
+      explain: "Dialysis is not a permanent cure unlike a kidney transplant",
+    },
+    {
+      q: "Why is glucose absent from normal urine?",
+      hint: "Selective reabsorption",
+      ans: "Because all glucose is reabsorbed back into the blood during selective reabsorption in the proximal tubule",
+      explain: "Glucose in urine could indicate diabetes",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: IMMUNE SYSTEM — PHAGOCYTOSIS
+========================= */
+add(
+  "biology",
+  "human_physiology_phagocytosis",
+  "Immune System — Phagocytosis",
+  `<h2>Immune System — Phagocytosis</h2>
+
+<p>The <b>immune system</b> protects the body from disease-causing organisms called <b>pathogens</b>.</p>
+
+<hr>
+
+<h3>Lines of Defence</h3>
+
+<pre>
+1st Line → Skin, mucus, cilia (physical barriers — prevent entry)
+2nd Line → Phagocytosis (non-specific — destroys invaders)
+3rd Line → Antibodies (specific — targets exact pathogens)
+</pre>
+
+<hr>
+
+<h3>Phagocytosis</h3>
+
+<p><b>Phagocytosis</b> is the process by which white blood cells (phagocytes) engulf and destroy pathogens.</p>
+
+<h4>Steps of Phagocytosis:</h4>
+<ol>
+<li>Pathogen enters the body.</li>
+<li>Phagocyte detects and moves toward the pathogen.</li>
+<li>Phagocyte engulfs the pathogen into a <b>vacuole</b>.</li>
+<li>Enzymes (lysosomes) are released to destroy the pathogen.</li>
+<li>Digested remains are expelled.</li>
+</ol>
+
+<hr>
+
+<h3>Types of White Blood Cells</h3>
+
+<ul>
+<li><b>Phagocytes</b> — engulf pathogens (non-specific defence)</li>
+<li><b>Lymphocytes</b> — produce antibodies (specific defence)</li>
+</ul>
+
+<hr>
+
+<h3>Why is phagocytosis non-specific?</h3>
+
+<p>Phagocytes engulf any foreign particle — they do not target specific pathogens. This is why it is called non-specific immunity.</p>
+`,
+
+  [
+    {
+      q: "What is phagocytosis?",
+      hint: "White blood cells engulf",
+      ans: "The process by which white blood cells (phagocytes) engulf and destroy pathogens using enzymes",
+      explain: "This is part of the non-specific immune response",
+    },
+    {
+      q: "Describe the steps of phagocytosis",
+      hint: "Engulf and destroy",
+      ans: [
+        "Pathogen enters the body",
+        "Phagocyte detects and moves toward pathogen",
+        "Phagocyte engulfs pathogen into a vacuole",
+        "Lysosomes release enzymes to destroy pathogen",
+        "Digested remains are expelled",
+      ],
+      explain: "Phagocytosis is a key part of the body's second line of defence",
+    },
+    {
+      q: "Why is phagocytosis described as non-specific?",
+      hint: "Targets any pathogen",
+      ans: "Because phagocytes engulf any foreign particle without targeting a specific pathogen",
+      explain: "Antibody production is the specific immune response",
+    },
+    {
+      q: "Name the two types of white blood cells and their roles",
+      hint: "Engulf vs produce antibodies",
+      ans: [
+        "Phagocytes — engulf and destroy pathogens",
+        "Lymphocytes — produce specific antibodies",
+      ],
+      explain: "Both are types of white blood cells but work differently",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: ANTIGENS, ANTIBODIES & IMMUNITY
+========================= */
+add(
+  "biology",
+  "human_physiology_antigens_antibodies",
+  "Antigens, Antibodies & Immunity",
+  `<h2>Antigens, Antibodies &amp; Immunity</h2>
+
+<hr>
+
+<h3>Antigens</h3>
+
+<p>An <b>antigen</b> is a foreign substance (usually a protein) on the surface of a pathogen that triggers an immune response.</p>
+
+<ul>
+<li>Each pathogen has unique antigens.</li>
+<li>The body recognises them as "non-self" and attacks.</li>
+</ul>
+
+<hr>
+
+<h3>Antibodies</h3>
+
+<p>An <b>antibody</b> is a protein produced by lymphocytes in response to a specific antigen.</p>
+
+<ul>
+<li>Each antibody is specific to one antigen.</li>
+<li>Antibodies bind to antigens and neutralise the pathogen.</li>
+</ul>
+
+<pre>
+Antigen (on pathogen) + Antibody → Pathogen destroyed
+</pre>
+
+<hr>
+
+<h3>Types of Immunity</h3>
+
+<h4>Active Immunity</h4>
+<ul>
+<li>Body produces its <b>own antibodies</b>.</li>
+<li>Occurs after infection or vaccination.</li>
+<li><b>Long-lasting</b> — memory cells are formed.</li>
+</ul>
+
+<h4>Passive Immunity</h4>
+<ul>
+<li>Antibodies are <b>received from another source</b>.</li>
+<li>Examples: mother's antibodies to baby (breast milk/placenta), injection.</li>
+<li><b>Short-term</b> — no memory cells formed.</li>
+</ul>
+
+<hr>
+
+<h3>Vaccination</h3>
+
+<p>A vaccine introduces a weakened or dead pathogen into the body, stimulating the immune system to produce antibodies and memory cells without causing disease.</p>
+
+<pre>
+Vaccine → Immune response → Memory cells → Future protection
+</pre>
+
+<hr>
+
+<h3>Memory Cells</h3>
+
+<p>After the first infection, <b>memory cells</b> are produced. If the same pathogen attacks again, the immune response is much faster and stronger.</p>
+`,
+
+  [
+    {
+      q: "What is an antigen?",
+      hint: "Surface of pathogen",
+      ans: "A foreign substance (usually a protein) on the surface of a pathogen that triggers an immune response",
+      explain: "Each pathogen has unique antigens that the immune system recognises",
+    },
+    {
+      q: "What is an antibody?",
+      hint: "Produced by lymphocytes",
+      ans: "A protein produced by lymphocytes that binds to a specific antigen to destroy the pathogen",
+      explain: "Each antibody is specific to one type of antigen",
+    },
+    {
+      q: "Distinguish between active and passive immunity",
+      hint: "Own antibodies vs received antibodies",
+      ans: "Active immunity is when the body produces its own antibodies (long-lasting); passive immunity is when antibodies are received from another source (short-term)",
+      explain: "Active immunity involves memory cells; passive does not",
+    },
+    {
+      q: "How does vaccination protect against disease?",
+      hint: "Weakened pathogen",
+      ans: "A vaccine introduces a weakened or dead pathogen, causing the immune system to produce antibodies and memory cells without causing disease, giving future protection",
+      explain: "Memory cells allow a rapid response if the real pathogen is encountered",
+    },
+    {
+      q: "What are memory cells and why are they important?",
+      hint: "After first infection",
+      ans: "Memory cells are produced after the first immune response; they allow the body to respond much faster and stronger if the same pathogen attacks again",
+      explain: "This is the basis of long-term immunity and vaccination",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: SKELETON
+========================= */
+add(
+  "biology",
+  "human_physiology_skeleton",
+  "Skeleton — Support, Protection & Movement",
+  `<h2>Skeleton — Support, Protection &amp; Movement</h2>
+
+<p>The <b>skeleton</b> is the internal framework of the body, made of bones and cartilage.</p>
+
+<hr>
+
+<h3>Functions of the Skeleton</h3>
+
+<ul>
+<li><b>Support</b> — gives the body its shape and supports tissues.</li>
+<li><b>Protection</b> — protects vital organs (skull → brain, ribs → heart/lungs).</li>
+<li><b>Movement</b> — provides attachment points for muscles.</li>
+<li><b>Blood cell production</b> — red and white blood cells made in bone marrow.</li>
+<li><b>Mineral storage</b> — stores calcium and phosphorus.</li>
+</ul>
+
+<hr>
+
+<h3>Types of Bones</h3>
+
+<pre>
+Long bones  → Femur (thigh bone) — support and movement
+Short bones → Carpals (wrist) — stability
+Flat bones  → Skull, ribs — protection
+Irregular   → Vertebrae — complex shapes
+</pre>
+
+<hr>
+
+<h3>Cartilage</h3>
+
+<ul>
+<li>Flexible connective tissue found at joints.</li>
+<li>Reduces friction between bones.</li>
+<li>Acts as a shock absorber.</li>
+</ul>
+
+<hr>
+
+<h3>Tendons and Ligaments</h3>
+
+<pre>
+Tendon   = connects MUSCLE to BONE
+Ligament = connects BONE to BONE
+</pre>
+
+<ul>
+<li><b>Tendons</b> — inelastic, strong cords that transfer muscle force to bones.</li>
+<li><b>Ligaments</b> — slightly elastic, hold bones together at joints.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "State five functions of the skeleton",
+      hint: "Support, protect, move, blood, minerals",
+      ans: [
+        "Support — gives body shape",
+        "Protection — protects vital organs",
+        "Movement — provides muscle attachment",
+        "Blood cell production — in bone marrow",
+        "Mineral storage — calcium and phosphorus",
+      ],
+      explain: "The skeleton performs many vital roles beyond just support",
+    },
+    {
+      q: "What is the difference between a tendon and a ligament?",
+      hint: "Muscle to bone vs bone to bone",
+      ans: "A tendon connects muscle to bone; a ligament connects bone to bone",
+      explain: "Both are connective tissues but serve different purposes",
+    },
+    {
+      q: "What is the role of cartilage at a joint?",
+      hint: "Smooth movement",
+      ans: "Cartilage reduces friction between bones and acts as a shock absorber at joints",
+      explain: "Without cartilage, bones would grind against each other",
+    },
+    {
+      q: "Name the organ in bone that produces blood cells",
+      hint: "Inside the bone",
+      ans: "Bone marrow",
+      explain: "Bone marrow produces red blood cells, white blood cells and platelets",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: TYPES OF JOINTS
+========================= */
+add(
+  "biology",
+  "human_physiology_joints",
+  "Types of Joints",
+  `<h2>Types of Joints</h2>
+
+<p>A <b>joint</b> is a place where two or more bones meet. Joints allow movement.</p>
+
+<hr>
+
+<h3>Classification of Joints</h3>
+
+<h4>1. Fixed (Immovable) Joints</h4>
+<ul>
+<li>Bones are fused together — no movement.</li>
+<li>Example: <b>skull</b> (cranium sutures), <b>pelvis</b>.</li>
+</ul>
+
+<h4>2. Slightly Movable Joints</h4>
+<ul>
+<li>Limited movement.</li>
+<li>Example: <b>vertebrae</b> in the spine.</li>
+</ul>
+
+<h4>3. Freely Movable (Synovial) Joints</h4>
+<ul>
+<li>Wide range of movement.</li>
+<li>Contain <b>synovial fluid</b> to lubricate the joint.</li>
+</ul>
+
+<hr>
+
+<h3>Types of Synovial Joints</h3>
+
+<pre>
+Joint Type      | Movement           | Example
+Hinge           | One direction only | Elbow, knee
+Ball and socket | All directions     | Shoulder, hip
+Pivot           | Rotation only      | Neck (atlas/axis)
+Gliding         | Sliding motion     | Wrist carpals
+</pre>
+
+<hr>
+
+<h3>Structure of a Synovial Joint</h3>
+
+<ul>
+<li><b>Synovial membrane</b> — produces synovial fluid.</li>
+<li><b>Synovial fluid</b> — lubricates the joint, reduces friction.</li>
+<li><b>Cartilage</b> — covers bone ends, absorbs shock.</li>
+<li><b>Ligaments</b> — hold bones together.</li>
+<li><b>Capsule</b> — surrounds and protects the joint.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "Name three types of freely movable joints and give an example of each",
+      hint: "Hinge, ball and socket, pivot",
+      ans: [
+        "Hinge joint — knee or elbow",
+        "Ball and socket joint — shoulder or hip",
+        "Pivot joint — neck",
+      ],
+      explain: "Each type allows a different range of movement",
+    },
+    {
+      q: "What is the role of synovial fluid?",
+      hint: "Lubrication",
+      ans: "Synovial fluid lubricates the joint and reduces friction between bones during movement",
+      explain: "It is produced by the synovial membrane",
+    },
+    {
+      q: "Give an example of a fixed joint and explain why it does not move",
+      hint: "Skull",
+      ans: "The skull — the bones of the skull are fused together by sutures, allowing no movement",
+      explain: "Fixed joints provide protection rather than movement",
+    },
+    {
+      q: "State the components of a synovial joint",
+      hint: "Think fluid, cartilage, ligaments",
+      ans: ["Synovial membrane", "Synovial fluid", "Cartilage", "Ligaments", "Joint capsule"],
+      explain: "All these components work together to allow smooth, protected movement",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: ANTAGONISTIC MUSCLES
+========================= */
+add(
+  "biology",
+  "human_physiology_antagonistic_muscles",
+  "Muscles — Antagonistic Muscle Pairs",
+  `<h2>Muscles — Antagonistic Muscle Pairs</h2>
+
+<p>Muscles can only <b>pull</b> — they cannot push. This means they must work in pairs to produce movement in opposite directions.</p>
+
+<hr>
+
+<h3>Antagonistic Muscle Pairs</h3>
+
+<p><b>Antagonistic muscles</b> are pairs of muscles that work in opposition — when one contracts, the other relaxes.</p>
+
+<pre>
+Biceps contracts (shortens) → Arm bends (flexion)
+Triceps relaxes (lengthens)
+
+Triceps contracts (shortens) → Arm straightens (extension)
+Biceps relaxes (lengthens)
+</pre>
+
+<hr>
+
+<h3>Key Terms</h3>
+
+<ul>
+<li><b>Flexor</b> — muscle that bends a joint (e.g. biceps)</li>
+<li><b>Extensor</b> — muscle that straightens a joint (e.g. triceps)</li>
+<li><b>Contraction</b> — muscle shortens and pulls on bone</li>
+<li><b>Relaxation</b> — muscle lengthens and returns to resting length</li>
+</ul>
+
+<hr>
+
+<h3>Examples of Antagonistic Pairs</h3>
+
+<pre>
+Body Region | Flexor        | Extensor
+Upper arm   | Biceps        | Triceps
+Thigh       | Hamstring     | Quadriceps
+</pre>
+
+<hr>
+
+<h3>How muscles attach to bones</h3>
+
+<ul>
+<li>Muscles are attached to bones by <b>tendons</b>.</li>
+<li>The <b>origin</b> is the fixed end of the muscle (does not move).</li>
+<li>The <b>insertion</b> is the moving end (attached to the bone that moves).</li>
+</ul>
+`,
+
+  [
+    {
+      q: "What are antagonistic muscles?",
+      hint: "Work in pairs",
+      ans: "Muscles that work in pairs where one contracts while the other relaxes to produce movement",
+      explain: "This is necessary because muscles can only pull, not push",
+    },
+    {
+      q: "Explain how the biceps and triceps work as an antagonistic pair",
+      hint: "Bending and straightening",
+      ans: "When the biceps contracts, the arm bends (flexion) and the triceps relaxes; when the triceps contracts, the arm straightens (extension) and the biceps relaxes",
+      explain: "They produce opposite movements at the elbow joint",
+    },
+    {
+      q: "What is the difference between a flexor and an extensor muscle?",
+      hint: "Bend vs straighten",
+      ans: "A flexor bends a joint (e.g. biceps); an extensor straightens a joint (e.g. triceps)",
+      explain: "Flexors and extensors are always antagonistic pairs",
+    },
+    {
+      q: "Why can muscles only pull and not push?",
+      hint: "Structure of muscle",
+      ans: "Muscle fibres can only shorten (contract) to pull on a bone; they cannot lengthen forcefully to push",
+      explain: "This is why antagonistic pairs are needed for movement in both directions",
+    },
+    {
+      q: "What connects a muscle to a bone?",
+      hint: "Connective tissue cord",
+      ans: "A tendon",
+      explain: "Tendons are strong, inelastic cords that transmit muscle force to bones",
+    },
+  ],
+);
+
+/* =========================
+   BIOLOGY: BODY SYSTEM INTEGRATION
+========================= */
+add(
+  "biology",
+  "human_physiology_system_integration",
+  "Body System Integration",
+  `<h2>Body System Integration</h2>
+
+<p>The body's systems do not work in isolation — they work together (integrate) to maintain life and enable activity.</p>
+
+<hr>
+
+<h3>How Systems Work Together</h3>
+
+<pre>
+System       | Role in Integration
+Respiratory  | Supplies O2 for aerobic respiration; removes CO2
+Circulatory  | Transports O2, CO2, nutrients, hormones, waste
+Digestive    | Breaks down food — glucose and nutrients for cells
+Excretory    | Removes metabolic waste (urea, CO2, water)
+Skeletal     | Framework for movement; blood cell production
+Muscular     | Provides movement using energy from respiration
+Immune       | Protects all systems from pathogens
+Nervous      | Coordinates and controls all systems
+Endocrine    | Hormones regulate long-term processes
+</pre>
+
+<hr>
+
+<h3>Example: During Exercise</h3>
+
+<pre>
+Muscles need more energy (ATP)
+More glucose + O2 needed
+Heart beats faster → Blood delivers more O2 + glucose to muscles
+Lungs breathe faster → More O2 in, more CO2 out
+Anaerobic respiration begins if O2 insufficient
+Lactic acid builds up → Oxygen debt after exercise
+Kidneys excrete excess waste
+Skin sweats to cool body temperature
+</pre>
+
+<hr>
+
+<h3>Homeostasis</h3>
+
+<p><b>Homeostasis</b> is the maintenance of a constant internal environment despite changes in external conditions.</p>
+
+<ul>
+<li>Body temperature maintained at ~37°C</li>
+<li>Blood glucose regulated by insulin and glucagon</li>
+<li>Water content regulated by kidneys (osmoregulation)</li>
+</ul>
+
+<hr>
+
+<h3>Summary</h3>
+
+<pre>
+Respiration → energy (ATP)
+Excretion   → waste removal
+Immunity    → protection from disease
+Muscles     → movement
+Skeleton    → support and protection
+Nerves      → coordination and control
+</pre>
+`,
+
+  [
+    {
+      q: "What is homeostasis?",
+      hint: "Constant internal environment",
+      ans: "The maintenance of a constant internal environment despite changes in external conditions",
+      explain: "Examples include temperature regulation, blood glucose control, and water balance",
+    },
+    {
+      q: "Explain what happens in the body during intense exercise",
+      hint: "Think muscles, heart, lungs, kidneys",
+      ans: [
+        "Muscles need more ATP — respiration increases",
+        "Heart beats faster to deliver more O2 and glucose",
+        "Lungs breathe faster to supply O2 and remove CO2",
+        "Anaerobic respiration occurs if O2 is insufficient",
+        "Lactic acid builds up creating oxygen debt",
+        "Skin sweats to cool the body",
+      ],
+      explain: "This shows how multiple body systems integrate during physical activity",
+    },
+    {
+      q: "State three examples of homeostasis in the human body",
+      hint: "Temperature, glucose, water",
+      ans: [
+        "Body temperature maintained at 37°C",
+        "Blood glucose level regulated by insulin and glucagon",
+        "Water content regulated by kidneys (osmoregulation)",
+      ],
+      explain: "Homeostasis is essential for all enzymes and cells to function properly",
+    },
+    {
+      q: "Name the system that coordinates all other body systems",
+      hint: "Signals and responses",
+      ans: "The nervous system",
+      explain: "The nervous system sends electrical signals to coordinate and control all body systems",
     },
   ],
 );

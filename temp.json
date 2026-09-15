@@ -414,10 +414,94 @@
         ]
       },
       {
-        "id": "human_physiology_deep",
-        "label": "Human Physiology Deep",
+        "id": "human_physiology_respiration",
+        "label": "Respiration",
         "topics": [
-          "Human Physiology Deep Systems (Respiration, Excretion, Immunity, Movement)"
+          "Respiration — Releasing Energy from Food"
+        ]
+      },
+      {
+        "id": "human_physiology_aerobic_respiration",
+        "label": "Aerobic Respiration",
+        "topics": [
+          "Aerobic Respiration"
+        ]
+      },
+      {
+        "id": "human_physiology_anaerobic_respiration",
+        "label": "Anaerobic Respiration",
+        "topics": [
+          "Anaerobic Respiration & Oxygen Debt"
+        ]
+      },
+      {
+        "id": "human_physiology_excretion",
+        "label": "Excretion",
+        "topics": [
+          "Excretion — Removing Metabolic Waste"
+        ]
+      },
+      {
+        "id": "human_physiology_kidney",
+        "label": "The Kidney",
+        "topics": [
+          "The Kidney"
+        ]
+      },
+      {
+        "id": "human_physiology_nephron",
+        "label": "The Nephron",
+        "topics": [
+          "The Nephron — Filtration and Reabsorption"
+        ]
+      },
+      {
+        "id": "human_physiology_urine_dialysis",
+        "label": "Urine Formation & Dialysis",
+        "topics": [
+          "Urine Formation & Dialysis"
+        ]
+      },
+      {
+        "id": "human_physiology_phagocytosis",
+        "label": "Phagocytosis",
+        "topics": [
+          "Immune System — Phagocytosis"
+        ]
+      },
+      {
+        "id": "human_physiology_antigens_antibodies",
+        "label": "Antigens & Antibodies",
+        "topics": [
+          "Antigens, Antibodies & Immunity"
+        ]
+      },
+      {
+        "id": "human_physiology_skeleton",
+        "label": "Skeleton",
+        "topics": [
+          "Skeleton — Support, Protection & Movement"
+        ]
+      },
+      {
+        "id": "human_physiology_joints",
+        "label": "Types of Joints",
+        "topics": [
+          "Types of Joints"
+        ]
+      },
+      {
+        "id": "human_physiology_antagonistic_muscles",
+        "label": "Antagonistic Muscles",
+        "topics": [
+          "Muscles — Antagonistic Muscle Pairs"
+        ]
+      },
+      {
+        "id": "human_physiology_system_integration",
+        "label": "Body System Integration",
+        "topics": [
+          "Body System Integration"
         ]
       },
       {
