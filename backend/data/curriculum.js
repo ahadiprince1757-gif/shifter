@@ -543,6 +543,16 @@ const CURRICULUM_DATA = [
           "Reproduction (Sexual vs Asexual)",
         ],
       },
+      {
+        id: "classification_evolution",
+        label: "Classification Evolution",
+        topics: ["Classification & Evolution"],
+      },
+      {
+        id: "plant_ecology",
+        label: "Plant Ecology",
+        topics: ["Plant Coordination, Nutrition & Ecology"],
+      },
     ],
   },
   {
