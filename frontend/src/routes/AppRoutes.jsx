@@ -15,6 +15,7 @@ const ChapterList = React.lazy(() => import("../components/ChapterList"));
 const TopicList = React.lazy(() => import("../components/TopicList"));
 const LearnFlow = React.lazy(() => import("../components/LearnFlow"));
 const Gaps = React.lazy(() => import("../components/Gaps"));
+const WelcomeAuthScreen = React.lazy(() => import("../components/WelcomeAuthScreen"));
 
 const ChapterListWrapper = () => {
   const { subjectId } = useParams();
@@ -123,6 +124,45 @@ const SubjectsView = () => {
   );
 };
 
+/**
+ * HomeRoute — Serves as the entrance to Tixar.
+ * For new visitors who have never used the app, presents the initial Welcome/Auth screen.
+ * Once authenticated (or if returning/exploring), directly displays the SubjectsView.
+ */
+const HomeRoute = () => {
+  const { session, sessionLoading } = useAuth();
+  const [onboarded, setOnboarded] = React.useState(() => {
+    try {
+      return localStorage.getItem("tixar_onboarded") === "true";
+    } catch {
+      return false;
+    }
+  });
+
+  if (sessionLoading) {
+    return (
+      <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+        <SkeletonLoader type="list" count={4} />
+      </div>
+    );
+  }
+
+  if (session || onboarded) {
+    return <SubjectsView />;
+  }
+
+  return (
+    <WelcomeAuthScreen
+      onContinueAsGuest={() => {
+        try {
+          localStorage.setItem("tixar_onboarded", "true");
+        } catch {}
+        setOnboarded(true);
+      }}
+    />
+  );
+};
+
 export default function AppRoutes() {
   return (
     <Suspense fallback={
@@ -132,7 +172,7 @@ export default function AppRoutes() {
     }>
       <Routes>
         <Route element={<AppLayout />}>
-          <Route path="/" element={<SubjectsView />} />
+          <Route path="/" element={<HomeRoute />} />
           <Route path="/subjects" element={<SubjectsView />} />
           <Route path="/subjects/:subjectId" element={<ChapterListWrapper />} />
           <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />

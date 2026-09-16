@@ -35,7 +35,7 @@ function formatTitle(str) {
 }
 
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
-  const { session, openAuthWithReason } = useAuth();
+  const { session } = useAuth();
   const userId = session?.user?.id || null;
 
   // Always drop the 6 canonical subjects immediately — zero loading state, zero blank screen
@@ -61,13 +61,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   const handleSubjectClick = (subjectId, label) => {
     logger.action("SUBJECT_SELECTED", "success", { subjectId, subjectLabel: label });
-    if (!session) {
-      sessionStorage.setItem("tixar_pending_subject", subjectId);
-      if (openAuthWithReason) {
-        openAuthWithReason(`Sign in to access ${label} and save your learning progress.`);
-      }
-      return;
-    }
     // Silently enroll user in the subject on first visit (fire-and-forget)
     if (userId) enroll(subjectId).catch(() => {});
     openSubject(subjectId);
@@ -101,15 +94,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
           <button
             type="button"
             className="resume-card-action-btn"
-            onClick={() => {
-              if (!session) {
-                if (openAuthWithReason) {
-                  openAuthWithReason("Sign in to pick up where you left off.");
-                }
-                return;
-              }
-              onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic);
-            }}
+            onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
           >
             Continue →
           </button>

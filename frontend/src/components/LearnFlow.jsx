@@ -68,12 +68,6 @@ function LearnFlow({
   });
 
   const handleGoToQuiz = () => {
-    if (!session) {
-      openAuthWithReason(
-        "Please sign in to take quizzes and track your mastery."
-      );
-      return;
-    }
     loop.setPhase(SESSION_PHASES.QUIZ);
   };
 
