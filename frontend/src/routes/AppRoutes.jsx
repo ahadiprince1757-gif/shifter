@@ -126,18 +126,11 @@ const SubjectsView = () => {
 
 /**
  * HomeRoute — Serves as the entrance to Tixar.
- * For new visitors who have never used the app, presents the initial Welcome/Auth screen.
- * Once authenticated (or if returning/exploring), directly displays the SubjectsView.
+ * For users who have never used the app or are unauthenticated, presents the initial Welcome/Auth screen.
+ * Once authenticated, directly displays the SubjectsView to proceed to the learning loops.
  */
 const HomeRoute = () => {
   const { session, sessionLoading } = useAuth();
-  const [onboarded, setOnboarded] = React.useState(() => {
-    try {
-      return localStorage.getItem("tixar_onboarded") === "true";
-    } catch {
-      return false;
-    }
-  });
 
   if (sessionLoading) {
     return (
@@ -147,20 +140,32 @@ const HomeRoute = () => {
     );
   }
 
-  if (session || onboarded) {
+  if (session) {
     return <SubjectsView />;
   }
 
-  return (
-    <WelcomeAuthScreen
-      onContinueAsGuest={() => {
-        try {
-          localStorage.setItem("tixar_onboarded", "true");
-        } catch {}
-        setOnboarded(true);
-      }}
-    />
-  );
+  return <WelcomeAuthScreen />;
+};
+
+/**
+ * Route guard that ensures users authenticate first before accessing learning loops.
+ */
+const RequireAuth = ({ children }) => {
+  const { session, sessionLoading } = useAuth();
+
+  if (sessionLoading) {
+    return (
+      <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+        <SkeletonLoader type="list" count={4} />
+      </div>
+    );
+  }
+
+  if (!session) {
+    return <Navigate to="/" replace />;
+  }
+
+  return children;
 };
 
 export default function AppRoutes() {
@@ -173,12 +178,12 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomeRoute />} />
-          <Route path="/subjects" element={<SubjectsView />} />
-          <Route path="/subjects/:subjectId" element={<ChapterListWrapper />} />
-          <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />
-          <Route path="/learn/:subjectId/:chapterId/:topicId" element={<LearnFlowWrapper />} />
+          <Route path="/subjects" element={<RequireAuth><SubjectsView /></RequireAuth>} />
+          <Route path="/subjects/:subjectId" element={<RequireAuth><ChapterListWrapper /></RequireAuth>} />
+          <Route path="/subjects/:subjectId/chapters/:chapterId" element={<RequireAuth><TopicListWrapper /></RequireAuth>} />
+          <Route path="/learn/:subjectId/:chapterId/:topicId" element={<RequireAuth><LearnFlowWrapper /></RequireAuth>} />
           <Route path="/verification" element={<VerificationPage />} />
-          <Route path="/gaps" element={<Gaps />} />
+          <Route path="/gaps" element={<RequireAuth><Gaps /></RequireAuth>} />
           <Route path="/mistakes" element={<Navigate to="/gaps" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>

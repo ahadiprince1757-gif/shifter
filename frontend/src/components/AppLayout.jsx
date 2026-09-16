@@ -49,7 +49,6 @@ export default function AppLayout() {
           <AuthModal
             isOpen={showAuthModal}
             onClose={() => setShowAuthModal(false)}
-            onGuestAccess={() => navigate("/subjects")}
           />
         </Suspense>
       )}

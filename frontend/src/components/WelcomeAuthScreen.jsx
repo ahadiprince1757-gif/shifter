@@ -3,7 +3,7 @@ import { supabase } from "../supabase";
 import logger from "../utils/logger";
 import toast from "react-hot-toast";
 
-export default function WelcomeAuthScreen({ onContinueAsGuest }) {
+export default function WelcomeAuthScreen() {
   const [mode, setMode] = useState("select"); // 'select' | 'email_signin' | 'email_signup'
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -184,31 +184,6 @@ export default function WelcomeAuthScreen({ onContinueAsGuest }) {
             >
               Continue with Email
             </button>
-
-            {/* Optional Continue as Guest */}
-            {onContinueAsGuest && (
-              <div style={{ marginTop: "1rem", borderTop: "1px solid var(--bd)", paddingTop: "1rem" }}>
-                <button
-                  type="button"
-                  onClick={onContinueAsGuest}
-                  style={{
-                    background: "none",
-                    border: "none",
-                    color: "var(--t2)",
-                    fontSize: "0.85rem",
-                    fontWeight: 600,
-                    cursor: "pointer",
-                    padding: "0.4rem 0.8rem",
-                    borderRadius: "8px",
-                    transition: "color 0.2s",
-                  }}
-                  onMouseEnter={(e) => (e.target.style.color = "var(--t)")}
-                  onMouseLeave={(e) => (e.target.style.color = "var(--t2)")}
-                >
-                  Explore as Guest →
-                </button>
-              </div>
-            )}
           </div>
         ) : (
           <div style={{ width: "100%" }}>
