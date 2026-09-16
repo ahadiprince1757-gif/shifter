@@ -1194,6 +1194,38 @@ add(
 <li><strong>Hybrid Kernel:</strong> Combines aspects of both (e.g., Windows NT, macOS).</li>
 </ul>
 `,
+  [
+    {
+      q: "What is an Operating System (OS)?",
+      a: "A set of system software that manages hardware and software resources and serves as an interface between user and hardware",
+      hint: "system software intermediary",
+      reason: "The OS enables software applications to interact with physical hardware."
+    },
+    {
+      q: "What is the core component of an Operating System that is always loaded in memory?",
+      a: "Kernel",
+      hint: "central core of OS",
+      reason: "The kernel manages CPU, memory, and peripheral devices at the lowest level."
+    },
+    {
+      q: "State three major functions of an Operating System.",
+      a: ["Process management", "Memory management", "File and device management"],
+      hint: "tasks OS performs",
+      reason: "The OS handles CPU scheduling, RAM allocation, and I/O device drivers."
+    },
+    {
+      q: "How does a monolithic kernel differ from a microkernel?",
+      a: "Monolithic runs all OS services in kernel space, while microkernel runs only essential services in kernel space and others in user space",
+      hint: "kernel vs user space execution",
+      reason: "Microkernels provide greater modularity and fault isolation at a slight performance cost."
+    },
+    {
+      q: "What is a system call in an operating system?",
+      a: "The programmatic interface through which a running application requests services from the OS kernel",
+      hint: "program to kernel interface",
+      reason: "User applications use system calls for privileged actions like file I/O or creating processes."
+    }
+  ]
 );
 /*============================================
 File Management

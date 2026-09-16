@@ -647,7 +647,7 @@ Vitamins → Protection & regulation
 
 add(
   "biology",
-  "human_physiology_respiration",
+  "human_physiology",
   "Respiration — Releasing Energy from Food",
   `<h2>Respiration — Releasing Energy from Food</h2>
 
@@ -735,7 +735,7 @@ Mitochondria = "Powerhouse of the Cell"
 ========================= */
 add(
   "biology",
-  "human_physiology_aerobic_respiration",
+  "human_physiology",
   "Aerobic Respiration",
   `<h2>Aerobic Respiration</h2>
 
@@ -822,7 +822,7 @@ C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP
 ========================= */
 add(
   "biology",
-  "human_physiology_anaerobic_respiration",
+  "human_physiology",
   "Anaerobic Respiration & Oxygen Debt",
   `<h2>Anaerobic Respiration &amp; Oxygen Debt</h2>
 
@@ -931,7 +931,7 @@ Location         | Mitochondria     | Cytoplasm
 ========================= */
 add(
   "biology",
-  "human_physiology_excretion",
+  "human_physiology",
   "Excretion — Removing Metabolic Waste",
   `<h2>Excretion — Removing Metabolic Waste</h2>
 
@@ -1020,7 +1020,7 @@ Egestion  = removal of UNDIGESTED food through faeces
 ========================= */
 add(
   "biology",
-  "human_physiology_kidney",
+  "human_physiology",
   "The Kidney",
   `<h2>The Kidney</h2>
 
@@ -1105,7 +1105,7 @@ Ureter → Bladder → Urethra → Outside body
 ========================= */
 add(
   "biology",
-  "human_physiology_nephron",
+  "human_physiology",
   "The Nephron — Filtration and Reabsorption",
   `<h2>The Nephron — Filtration and Reabsorption</h2>
 
@@ -1196,7 +1196,7 @@ Remaining fluid → concentrated urea, excess water, salts → Urine
 ========================= */
 add(
   "biology",
-  "human_physiology_urine_dialysis",
+  "human_physiology",
   "Urine Formation & Dialysis",
   `<h2>Urine Formation &amp; Dialysis</h2>
 
@@ -1295,7 +1295,7 @@ Blood with waste → Dialysis machine → Cleaned blood returned
 ========================= */
 add(
   "biology",
-  "human_physiology_phagocytosis",
+  "human_physiology",
   "Immune System — Phagocytosis",
   `<h2>Immune System — Phagocytosis</h2>
 
@@ -1384,7 +1384,7 @@ add(
 ========================= */
 add(
   "biology",
-  "human_physiology_antigens_antibodies",
+  "human_physiology",
   "Antigens, Antibodies & Immunity",
   `<h2>Antigens, Antibodies &amp; Immunity</h2>
 
@@ -1488,7 +1488,7 @@ Vaccine → Immune response → Memory cells → Future protection
 ========================= */
 add(
   "biology",
-  "human_physiology_skeleton",
+  "Movement",
   "Skeleton — Support, Protection & Movement",
   `<h2>Skeleton — Support, Protection &amp; Movement</h2>
 
@@ -1581,7 +1581,7 @@ Ligament = connects BONE to BONE
 ========================= */
 add(
   "biology",
-  "human_physiology_joints",
+  "Movement",
   "Types of Joints",
   `<h2>Types of Joints</h2>
 
@@ -1671,7 +1671,7 @@ Gliding         | Sliding motion     | Wrist carpals
 ========================= */
 add(
   "biology",
-  "human_physiology_antagonistic_muscles",
+  "Movement",
   "Muscles — Antagonistic Muscle Pairs",
   `<h2>Muscles — Antagonistic Muscle Pairs</h2>
 
@@ -1762,7 +1762,7 @@ Thigh       | Hamstring     | Quadriceps
 ========================= */
 add(
   "biology",
-  "human_physiology_system_integration",
+  "Movement",
   "Body System Integration",
   `<h2>Body System Integration</h2>
 
@@ -2225,7 +2225,7 @@ Selection → survival advantage
 ========================= */
 add(
   "biology",
-  "molecular_genetics",
+  "genetics",
   "Molecular Genetics ",
   `<h2> Molecular Genetics</h2>
 <p>Focus on how genetic information flows to create traits.</p>
@@ -2571,169 +2571,6 @@ add(
 );
 
 /* =========================
-   ECOLOGY & ENVIRONMENT
-========================= */
-add(
-  "biology",
-  "ecology",
-  "Classification & Evolution",
-  `<h2>Classification & Evolution</h2>
-<p>Ecology is the study of relationships between living organisms and their environment.</p>
-<hr>
-<h3> 1. ECOSYSTEM</h3>
-<ul>
-<li>An ecosystem is a community of living organisms interacting with non-living factors.</li>
-<li>Includes biotic (living) and abiotic (non-living) factors.</li>
-</ul>
-<h3> 2. BIOTIC vs ABIOTIC FACTORS</h3>
-<h4>Biotic (Living)</h4>
-<ul>
-<li>Plants</li>
-<li>Animals</li>
-<li>Bacteria</li>
-<li>Fungi</li>
-</ul>
-<h4>Abiotic (Non-living)</h4>
-<ul>
-<li>Sunlight</li>
-<li>Water</li>
-<li>Temperature</li>
-<li>Soil</li>
-<li>Air</li>
-</ul>
-<hr>
-<h3> 3. FOOD CHAIN</h3>
-<p>A food chain shows the flow of energy from one organism to another.</p>
-<pre>
-Grass → Grasshopper → Frog → Snake → Eagle
-</pre>
-<h4>Roles:</h4>
-<ul>
-<li>Producer → Plants</li>
-<li>Primary consumer → Herbivores</li>
-<li>Secondary consumer → Carnivores</li>
-<li>Tertiary consumer → Top predators</li>
-</ul>
-<hr>
-<h3> 4. FOOD WEB</h3>
-<p>A food web is a network of interconnected food chains.</p>
-<ul>
-<li>More realistic than food chains</li>
-<li>Shows multiple feeding relationships</li>
-</ul>
-<hr>
-<h3> 5. ENERGY FLOW</h3>
-<ul>
-<li>Energy flows in one direction only</li>
-<li>Starts from the sun → plants → animals</li>
-<li>Energy is lost at each level as heat</li>
-</ul>
-<h3> 6. NUTRIENT CYCLING</h3>
-<ul>
-<li>Carbon cycle</li>
-<li>Nitrogen cycle</li>
-<li>Water cycle</li>
-</ul>
-<p>These cycles recycle essential nutrients in nature.</p>
-<hr>
-<h3> 7. POPULATION</h3>
-<ul>
-<li>Number of organisms in an area</li>
-<li>Affected by birth, death, migration</li>
-</ul>
-<hr>
-<h3> 8. HUMAN IMPACT ON ENVIRONMENT</h3>
-<ul>
-<li>Deforestation</li>
-<li>Pollution</li>
-<li>Overgrazing</li>
-<li>Climate change</li>
-</ul>
-<hr>
-<h3> 9. CONSERVATION</h3>
-<p>Protection and management of natural resources.</p>
-<ul>
-<li>Afforestation</li>
-<li>Recycling</li>
-<li>Wildlife protection</li>
-<li>Sustainable farming</li>
-</ul>
-<hr>
-<h3> 10. POLLUTION TYPES</h3>
-<ul>
-<li>Air pollution</li>
-<li>Water pollution</li>
-<li>Soil pollution</li>
-<li>Noise pollution</li>
-</ul>
-`,
-  [
-    {
-      q: "What is ecology?",
-      hint: "Think relationships",
-      ans: "Study of relationships between organisms and environment",
-      explain: "Includes living and non-living interactions",
-      why: "Helps understand ecosystems",
-    },
-
-    {
-      q: "Distinguish biotic and abiotic factors",
-      hint: "Living vs non-living",
-      ans: "Biotic are living things, abiotic are non-living factors",
-      explain: "Both affect ecosystems",
-      why: "Determine survival of organisms",
-    },
-    {
-      q: "Give 10 effects of deforestation",
-      ans: [
-        "Loss of habitat",
-        "Soil erosion",
-        "Climate change",
-        "Loss of biodiversity",
-        "Increased CO2",
-        "Reduced rainfall",
-        "Flooding",
-        "Desertification",
-        "Loss of oxygen",
-        "Disruption of ecosystems",
-      ],
-    },
-
-    {
-      q: "Explain energy flow in ecosystems",
-      hint: "Sun → plants → animals",
-      ans: "Energy flows from sun to producers then to consumers",
-      explain: "Energy is lost at each level",
-      why: "Only part of energy is transferred",
-    },
-
-    {
-      q: "Distinguish food chain and food web",
-      hint: "Simple vs complex",
-      ans: "Food chain is single pathway, food web is multiple interconnected chains",
-      explain: "Food web is more realistic",
-      why: "Shows real ecosystem interactions",
-    },
-
-    {
-      q: "Give 10 methods of conservation",
-      ans: [
-        "Afforestation",
-        "Recycling",
-        "Wildlife protection",
-        "Controlled grazing",
-        "Environmental education",
-        "Pollution control",
-        "Sustainable farming",
-        "Water conservation",
-        "Soil conservation",
-        "Use of renewable energy",
-      ],
-    },
-  ],
-);
-
-/* =========================
    MICROBIOLOGY & HEALTH
 ========================= */
 
@@ -2899,7 +2736,7 @@ add(
 ========================= */
 add(
   "biology",
-  "health_microbiology",
+  "microbiology",
   "Microbiology & Health Control",
   `<h2> Microbiology & Health Control</h2>
 <p>Focus on how diseases are prevented, spread, and controlled.</p>

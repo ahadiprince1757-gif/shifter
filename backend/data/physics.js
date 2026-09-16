@@ -5401,8 +5401,8 @@ Solution:<br>
       explanation:
         "When light enters a denser medium, it slows down and bends towards the normal line.",
     },
-  ][
-    ({
+  ,
+    {
       q: "Why does light bend in water?",
       hint: "change of medium",
       ans: "Because its speed changes when entering a different medium.",
@@ -5500,7 +5500,7 @@ Solution:<br>
       ],
       explanation:
         "Light bends towards the normal when entering a denser medium.",
-    })
+    }
   ],
 );
 
@@ -5702,8 +5702,8 @@ Solution:<br>
       explanation:
         "Constructive interference occurs when waves combine in phase, increasing total amplitude.",
     },
-  ][
-    ({
+  ,
+    {
       q: "Two identical waves each have amplitude 3 cm. They meet crest to crest. Find resultant amplitude.",
       hint: "Use constructive interference (add amplitudes)",
       formula: "A_result = A1 + A2",
@@ -5756,8 +5756,9 @@ Solution:<br>
       ans: "170 m/s",
       final_check: "Unit is m/s which is correct for speed",
       common_mistakes: ["Reversing formula (t/d)", "Forgetting units"],
-      explanation: "Wave speed is distance covered per unit time.",
-    })
+      explanation:
+        "Wave speed is distance covered per unit time.",
+    }
   ],
 );
 /* =========================================================

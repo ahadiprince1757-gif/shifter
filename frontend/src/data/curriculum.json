@@ -446,96 +446,30 @@
         ]
       },
       {
-        "id": "human_physiology_respiration",
-        "label": "Respiration",
+        "id": "human_physiology",
+        "label": "Human Physiology",
         "topics": [
-          "Respiration — Releasing Energy from Food"
-        ]
-      },
-      {
-        "id": "human_physiology_aerobic_respiration",
-        "label": "Aerobic Respiration",
-        "topics": [
-          "Aerobic Respiration"
-        ]
-      },
-      {
-        "id": "human_physiology_anaerobic_respiration",
-        "label": "Anaerobic Respiration",
-        "topics": [
-          "Anaerobic Respiration & Oxygen Debt"
-        ]
-      },
-      {
-        "id": "human_physiology_excretion",
-        "label": "Excretion",
-        "topics": [
-          "Excretion — Removing Metabolic Waste"
-        ]
-      },
-      {
-        "id": "human_physiology_kidney",
-        "label": "The Kidney",
-        "topics": [
-          "The Kidney"
-        ]
-      },
-      {
-        "id": "human_physiology_nephron",
-        "label": "The Nephron",
-        "topics": [
-          "The Nephron — Filtration and Reabsorption"
-        ]
-      },
-      {
-        "id": "human_physiology_urine_dialysis",
-        "label": "Urine Formation & Dialysis",
-        "topics": [
-          "Urine Formation & Dialysis"
-        ]
-      },
-      {
-        "id": "human_physiology_phagocytosis",
-        "label": "Phagocytosis",
-        "topics": [
-          "Immune System — Phagocytosis"
-        ]
-      },
-      {
-        "id": "human_physiology_antigens_antibodies",
-        "label": "Antigens & Antibodies",
-        "topics": [
+          "Respiration — Releasing Energy from Food",
+          "Aerobic Respiration",
+          "Anaerobic Respiration & Oxygen Debt",
+          "Excretion — Removing Metabolic Waste",
+          "The Kidney",
+          "The Nephron — Filtration and Reabsorption",
+          "Urine Formation & Dialysis",
+          "Immune System — Phagocytosis",
           "Antigens, Antibodies & Immunity"
         ]
       },
-      {
-        "id": "human_physiology_skeleton",
-        "label": "Skeleton",
+     {
+        "id": "Movement",
+        "label": "Movement",
         "topics": [
-          "Skeleton — Support, Protection & Movement"
-        ]
-      },
-      {
-        "id": "human_physiology_joints",
-        "label": "Types of Joints",
-        "topics": [
-          "Types of Joints"
-        ]
-      },
-      {
-        "id": "human_physiology_antagonistic_muscles",
-        "label": "Antagonistic Muscles",
-        "topics": [
-          "Muscles — Antagonistic Muscle Pairs"
-        ]
-      },
-      {
-        "id": "human_physiology_system_integration",
-        "label": "Body System Integration",
-        "topics": [
+          "Skeleton — Support, Protection & Movement",
+          "Types of Joints",
+          "Muscles — Antagonistic Muscle Pairs",
           "Body System Integration"
         ]
-      },
+     },
       {
         "id": "plant_deep_transport",
         "label": "Plant Deep Transport",
@@ -548,34 +482,15 @@
         "label": "Genetics",
         "topics": [
           "Genetics",
-          "Genetics & Evolution"
-        ]
-      },
-      {
-        "id": "molecular_genetics",
-        "label": "Molecular Genetics",
-        "topics": [
-          "Molecular Genetics "
-        ]
-      },
-      {
-        "id": "ecology",
-        "label": "Ecology",
-        "topics": [
-          "Classification & Evolution"
+          "Genetics & Evolution",
+           "Molecular Genetics "
         ]
       },
       {
         "id": "microbiology",
         "label": "Microbiology",
         "topics": [
-          "Microbiology & Health"
-        ]
-      },
-      {
-        "id": "health_microbiology",
-        "label": "Health Microbiology",
-        "topics": [
+          "Microbiology & Health",
           "Microbiology & Health Control"
         ]
       },
@@ -880,4 +795,5 @@
       }
     ]
   }
-]
+  ]
+  

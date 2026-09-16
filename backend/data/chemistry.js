@@ -5993,7 +5993,6 @@ add(
   "chemistry",
   "organic",
   "Homologous series",
-  "Alkenes",
   `<h2>Alkenes</h2>
 
 <h3> FOUNDATION NOTES</h3>
@@ -6135,7 +6134,6 @@ add(
   "chemistry",
   "organic",
   "Homologous series",
-  "Alkynes",
   `<h2>Alkynes</h2>
 <h3> FOUNDATION NOTES</h3>
 <ul>
@@ -7126,7 +7124,6 @@ add(
   "chemistry",
   "nonmetals",
   "Sulphur and compounds",
-  "sulphur",
   `<h2>Sulphur (S)</h2>
 
 <h3> GENERAL PROPERTIES</h3>
@@ -7257,7 +7254,6 @@ add(
   "chemistry",
   "nonmetals",
   "Sulphur and compounds",
-  "Sulphuric acid",
   `<h2>Sulphuric Acid (H₂SO₄)</h2>
 
 <h3> GENERAL PROPERTIES</h3>
@@ -7380,7 +7376,6 @@ add(
   "chemistry",
   "nonmetals",
   "Carbon and compounds",
-  "Carbon compounds",
   `<h2>Carbon (C)</h2>
 
 <h3> GENERAL PROPERTIES</h3>
@@ -7486,7 +7481,6 @@ add(
   "chemistry",
   "nonmetals",
   "Carbon and compounds",
-  "Carbon allotropes",
   `<h2>Carbon Allotropes: Diamond & Graphite</h2>
 
 <h3> INTRODUCTION</h3>
@@ -7608,7 +7602,6 @@ add(
   "chemistry",
   "nonmetals",
   "Nitrogen and compounds",
-  "Nitrogen",
   `<h2>Nitrogen (N₂)</h2>
 
 <h3> GENERAL PROPERTIES</h3>
@@ -7734,7 +7727,6 @@ add(
   "chemistry",
   "nonmetals",
   "Nitrogen and compounds",
-  "Nitrogen cycle",
   `<h2>Nitrogen Cycle</h2>
 
 <h3> OVERVIEW</h3>
