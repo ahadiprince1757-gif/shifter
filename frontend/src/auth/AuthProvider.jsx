@@ -107,7 +107,11 @@ export function AuthProvider({ children }) {
               `Welcome! Logged in as ${newSession.user.user_metadata?.full_name || newSession.user.email}`
             );
 
-            if (isOnLanding || isAuthCallback) {
+            const pendingSubject = sessionStorage.getItem("tixar_pending_subject");
+            if (pendingSubject) {
+              sessionStorage.removeItem("tixar_pending_subject");
+              setTimeout(() => navigate(`/subjects/${pendingSubject}`), 100);
+            } else if (isOnLanding || isAuthCallback) {
               setTimeout(() => navigate("/subjects"), 100);
             }
             setShowAuthModal(false);

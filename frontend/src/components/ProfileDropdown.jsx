@@ -68,9 +68,8 @@ export default function ProfileDropdown() {
       ) : (
         <button
           className="profile-trigger profile-trigger--guest"
-          onClick={() => setProfileMenuOpen((prev) => !prev)}
-          aria-expanded={profileMenuOpen}
-          aria-label="Sign in or account options"
+          onClick={() => handleOpenAuth("Sign in to save your learning progress, view analytics, and sync across devices.")}
+          aria-label="Sign in"
         >
           <div className="profile-guest-icon">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor">
@@ -80,19 +79,6 @@ export default function ProfileDropdown() {
           <span className="profile-email-lbl profile-email-lbl--guest">
             Sign In
           </span>
-          <svg
-            className={`profile-chevron ${profileMenuOpen ? "profile-chevron--open" : ""}`}
-            viewBox="0 0 20 20"
-            fill="currentColor"
-            width="14"
-            height="14"
-          >
-            <path
-              fillRule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clipRule="evenodd"
-            />
-          </svg>
         </button>
       )}
 

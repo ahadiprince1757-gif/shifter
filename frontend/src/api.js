@@ -264,7 +264,7 @@ export async function enroll(subjectId) {
     const { error } = await supabase.from("enrollments").upsert({
       user_id: userId,
       subject_id: subjectId,
-      created_at: new Date().toISOString(),
+      enrolled_at: new Date().toISOString(),
     }, { onConflict: "user_id, subject_id" });
     if (error) console.warn("[Supabase API] enroll warning:", error.message);
     return !error;
