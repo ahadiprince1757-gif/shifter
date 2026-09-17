@@ -7,7 +7,8 @@ import { networkService } from "../services/networkService";
 import staticCurriculum from "../data/curriculum.json";
 
 // Canonical subject IDs — only these are ever kept in local storage.
-const CANONICAL_IDS = Object.freeze(["math", "physics", "chemistry", "biology", "english", "computer"]);
+const CANONICAL_SUBJECT_IDS = new Set(["math", "physics", "chemistry", "biology", "english", "computer"]);
+const CANONICAL_IDS = Object.freeze(Array.from(CANONICAL_SUBJECT_IDS));
 
 /**
  * Check if an error is a transient network failure (not a server/logic error).
@@ -45,7 +46,7 @@ class SyncEngine {
    */
   async seedFromStatic() {
     try {
-      const canonical = staticCurriculum.filter(s => CANONICAL_IDS.includes(s.id));
+      const canonical = staticCurriculum.filter(s => CANONICAL_SUBJECT_IDS.has(s.id));
       const count = await db.curriculum.count();
       if (count === 0 && canonical.length > 0) {
         await curriculumRepo.upsertBatch(canonical.map(c => ({ ...c, is_deleted: false })));
@@ -53,7 +54,7 @@ class SyncEngine {
       }
       // Purge any dead/non-canonical subjects from Dexie
       const allLocal = await db.curriculum.toArray();
-      const nonCanonical = allLocal.filter(s => !CANONICAL_IDS.includes(s.id));
+      const nonCanonical = allLocal.filter(s => !CANONICAL_SUBJECT_IDS.has(s.id));
       if (nonCanonical.length > 0) {
         await Promise.all(nonCanonical.map(s => db.curriculum.delete(s.id)));
       }
@@ -65,10 +66,19 @@ class SyncEngine {
   async syncAll(options = {}) {
     const { force = false, minIntervalMs = 5 * 60 * 1000 } = options;
 
+    if (this.isSyncing) return;
+
     // Always seed from static first so the UI is never blank
     await this.seedFromStatic();
 
-    if (!navigator.onLine || !networkService.isOnline || this.isSyncing) return;
+    if (!navigator.onLine) return;
+
+    // If network status is CHECKING, wait up to 5s for connectivity check to complete
+    if (networkService.status === "CHECKING") {
+      await networkService.waitForOnline(5000);
+    }
+
+    if (!networkService.isOnline) return;
 
     // Staleness guard: skip redundant sync if curriculum is fresh (<5 min) and no pending local changes
     if (!force) {
@@ -155,7 +165,7 @@ class SyncEngine {
       // Store in DB, assuming the server sends an array of curriculum subjects
       if (Array.isArray(curriculumData) && curriculumData.length > 0) {
         // Filter to only canonical subjects before storing
-        const canonical = curriculumData.filter(s => CANONICAL_IDS.includes(s.id));
+        const canonical = curriculumData.filter((s) => CANONICAL_SUBJECT_IDS.has(s.id));
 
         await curriculumRepo.upsertBatch(canonical.map(c => ({
           ...c,
@@ -166,7 +176,7 @@ class SyncEngine {
         // (handles the case where old subjects were previously synced)
         const allLocal = await db.curriculum.toArray();
         const toDelete = allLocal
-          .filter(s => !CANONICAL_IDS.includes(s.id))
+          .filter(s => !CANONICAL_SUBJECT_IDS.has(s.id))
           .map(s => s.id);
         if (toDelete.length > 0) {
           await Promise.all(toDelete.map(id => curriculumRepo.softDelete(id)));

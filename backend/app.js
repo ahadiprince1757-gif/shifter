@@ -96,25 +96,28 @@ function normalizeQ(q) {
   };
 }
 
-// Initialize Supabase Client
+// Initialize Supabase Client (safe conditional initialization)
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey =
   process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
-  logger.error(
-    "INITIALIZATION",
-    new Error(
-      "SUPABASE_URL or SUPABASE_KEY/SUPABASE_SERVICE_ROLE_KEY not defined",
-    ),
-  );
+let supabase = null;
+if (supabaseUrl && supabaseKey) {
+  try {
+    supabase = createClient(supabaseUrl, supabaseKey, {
+      auth: { persistSession: false },
+    });
+    logger.debug("SUPABASE_INIT", { supabaseUrl });
+  } catch (err) {
+    logger.error("SUPABASE_INIT_ERROR", err);
+    supabase = null;
+  }
+} else {
+  logger.action("SUPABASE_INIT_SKIPPED", "warn", {
+    reason: "SUPABASE_URL or SUPABASE_KEY missing",
+  });
+  console.warn("⚠️ Supabase not configured; using local content fallback.");
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: { persistSession: false },
-});
-
-logger.debug("SUPABASE_INIT", { supabaseUrl });
 
 // Endpoint: Ping
 app.get("/api/ping", (req, res) => {
@@ -142,23 +145,89 @@ app.post("/api/logs", (req, res) => {
 });
 
 // Canonical subject whitelist — the ONLY six subjects Tixar serves.
-// Any subject not in this list is silently excluded from the curriculum response.
-const CANONICAL_SUBJECT_IDS = Object.freeze(["math", "physics", "chemistry", "biology", "english", "computer"]);
+// Any subject not in this set is strictly excluded from curriculum and content responses.
+const CANONICAL_SUBJECT_IDS = new Set([
+  "math",
+  "physics",
+  "chemistry",
+  "biology",
+  "english",
+  "computer",
+]);
 
 // Static fallback curriculum — used when Supabase is unavailable or returns nothing.
 // Only the 6 canonical subjects are exported from this file.
 const STATIC_CURRICULUM = (() => {
   try {
     const raw = require("./data/curriculum.json");
-    return raw.filter(s => CANONICAL_SUBJECT_IDS.includes(s.id));
+    return raw.filter((s) => CANONICAL_SUBJECT_IDS.has(s.id));
   } catch (e) {
     return [];
   }
 })();
 
+// In-memory local content cache for zero-downtime offline fallback
+const LOCAL_CONTENT_MAP = (() => {
+  const contentMap = new Map();
+  const prevAdd = global.add;
+  global.add = (sid, cid, topic, notes = "", qs = []) => {
+    if (!CANONICAL_SUBJECT_IDS.has(sid)) return;
+    const notesStr =
+      typeof notes === "string"
+        ? notes
+        : Array.isArray(notes)
+          ? notes.join("\n")
+          : String(notes || "");
+    const qsArray = (Array.isArray(qs) ? qs : [qs]).map(normalizeQ);
+    const key = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+    contentMap.set(key, {
+      notes: notesStr,
+      qs: qsArray.map((q) => ({
+        q: q.q,
+        hint: q.hint || "",
+        ans: q.ans,
+        explain: q.why || "",
+        why: q.why || "",
+      })),
+    });
+  };
+
+  const path = require("path");
+  const fs = require("fs");
+  const dataDir = path.join(__dirname, "data");
+  const files = [
+    "math.js",
+    "physics.js",
+    "chemistry.js",
+    "biology.js",
+    "english.js",
+    "computer.js",
+  ];
+  for (const file of files) {
+    const fullPath = path.join(dataDir, file);
+    if (fs.existsSync(fullPath)) {
+      try {
+        require(fullPath);
+      } catch (err) {
+        console.warn(`[LocalContent] Error loading ${file}:`, err.message);
+      }
+    }
+  }
+  global.add = prevAdd;
+  return contentMap;
+})();
+
 // Endpoint: Get Curriculum Structure
 app.get("/api/curriculum", async (req, res) => {
   try {
+    if (!supabase) {
+      logger.action("CURRICULUM_LOADED", "success", {
+        subjectCount: STATIC_CURRICULUM.length,
+        source: "static_no_supabase",
+      });
+      return res.json(STATIC_CURRICULUM);
+    }
+
     const { data, error } = await supabase.from("subjects").select(`
         id,
         label:name,
@@ -176,7 +245,6 @@ app.get("/api/curriculum", async (req, res) => {
       logger.db("SELECT", "subjects", "error", {
         error: error.message,
       });
-      // Fall back to static curriculum rather than returning a 500
       logger.action("CURRICULUM_STATIC_FALLBACK", "warn", { reason: error.message });
       return res.json(STATIC_CURRICULUM);
     }
@@ -185,7 +253,7 @@ app.get("/api/curriculum", async (req, res) => {
     });
     const formatted = (data || [])
       // Enforce the whitelist: never return a subject not in CANONICAL_SUBJECT_IDS
-      .filter(subj => CANONICAL_SUBJECT_IDS.includes(subj.id))
+      .filter((subj) => CANONICAL_SUBJECT_IDS.has(subj.id))
       .map((subj) => {
         const sortedChapters = (subj.chapters || []).sort(
           (a, b) => a.position - b.position,
@@ -207,7 +275,7 @@ app.get("/api/curriculum", async (req, res) => {
         };
       });
 
-    // If Supabase returned data but none matched our whitelist (e.g. DB not yet seeded),
+    // If Supabase returned data but none matched our whitelist (or empty topics),
     // return the static curriculum so the app is always usable.
     const result = formatted.length > 0 ? formatted : STATIC_CURRICULUM;
 
@@ -218,7 +286,6 @@ app.get("/api/curriculum", async (req, res) => {
     res.json(result);
   } catch (err) {
     logger.error("CURRICULUM_LOAD", err);
-    // Always return something usable rather than a 500
     res.json(STATIC_CURRICULUM);
   }
 });
@@ -226,211 +293,201 @@ app.get("/api/curriculum", async (req, res) => {
 // Endpoint: Get Content (Notes + Questions without answers)
 app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
   const { sid, cid, topic } = req.params;
-  try {
-    const started = performance.now();
 
-    const contentStarted = performance.now();
+  // 1. Strict validation of canonical subjects
+  if (!CANONICAL_SUBJECT_IDS.has(sid)) {
+    return res.status(404).json({ error: "Subject not recognized" });
+  }
 
-    const { data: contentRow, error: contentErr } = await supabase
-      .from("content_view")
-      .select("topic_id, notes")
-      .eq("sid", sid)
-      .eq("cid", cid)
-      .eq("topic", topic)
-      .maybeSingle();
+  const topicKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+  const localContent = LOCAL_CONTENT_MAP.get(topicKey);
 
-    const contentMs = performance.now() - contentStarted;
+  // 2. If Supabase is configured, attempt remote query
+  if (supabase) {
+    try {
+      const { data: contentRow, error: contentErr } = await supabase
+        .from("content_view")
+        .select("topic_id, notes")
+        .eq("sid", sid)
+        .eq("cid", cid)
+        .eq("topic", topic)
+        .maybeSingle();
 
-    if (contentErr) {
-      logger.db("SELECT", "content_view", "error", {
-        subject: sid,
-        chapter: cid,
-        topic,
-        error: contentErr.message,
-      });
-      return res
-        .status(500)
-        .json({ error: "Database query failed fetching content" });
+      if (!contentErr && contentRow) {
+        const { data: quizData, error: quizErr } = await supabase
+          .from("quizzes")
+          .select(
+            `
+            id,
+            questions (
+              id,
+              question,
+              hint,
+              explain,
+              position,
+              answers (
+                answer_text,
+                is_correct
+              )
+            )
+          `,
+          )
+          .eq("topic_id", contentRow.topic_id)
+          .maybeSingle();
+
+        if (!quizErr) {
+          const qs = [];
+          if (quizData && quizData.questions) {
+            const sortedQuestions = quizData.questions.sort(
+              (a, b) => a.position - b.position,
+            );
+            sortedQuestions.forEach((qObj) => {
+              const correctAnswers = (qObj.answers || [])
+                .filter((a) => a.is_correct)
+                .map((a) => a.answer_text);
+              qs.push({
+                q: qObj.question,
+                hint: qObj.hint || "",
+                ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
+                explain: qObj.explain || "",
+                why: qObj.explain || "",
+              });
+            });
+          }
+
+          logger.action("CONTENT_SERVED", "success", {
+            source: "supabase",
+            subject: sid,
+            chapter: cid,
+            topic,
+          });
+
+          return res.json({
+            notes: contentRow.notes || "",
+            qs,
+          });
+        }
+      }
+    } catch (err) {
+      logger.error("SUPABASE_CONTENT_FETCH_FAILED", err, { subject: sid, chapter: cid, topic });
     }
-    if (!contentRow) {
-      logger.action("CONTENT_NOT_FOUND", "failed", {
-        subject: sid,
-        chapter: cid,
-        topic,
-      });
-      return res.status(404).json({ error: "Content not found" });
-    }
-    logger.db("SELECT", "content_view", "success", {
+  }
+
+  // 3. Supabase unavailable or content not found in Supabase -> Try local fallback
+  if (localContent) {
+    logger.action("CONTENT_SERVED", "success", {
+      source: "local_fallback",
       subject: sid,
       chapter: cid,
       topic,
     });
-
-    const quizStarted = performance.now();
-
-    // Fetch quizzes, questions, and answers for this topic
-    const { data: quizData, error: quizErr } = await supabase
-      .from("quizzes")
-      .select(
-        `
-        id,
-        questions (
-          id,
-          question,
-          hint,
-          explain,
-          position,
-          answers (
-            answer_text,
-            is_correct
-          )
-        )
-      `,
-      )
-      .eq("topic_id", contentRow.topic_id)
-      .maybeSingle();
-
-    const quizMs = performance.now() - quizStarted;
-
-    console.log("[TIXAR CONTENT TIMING]", {
-      topic,
-      contentMs: Math.round(contentMs),
-      quizMs: Math.round(quizMs),
-      totalMs: Math.round(performance.now() - started),
-    });
-
-    if (quizErr) {
-      logger.db("SELECT", "quizzes", "error", {
-        topicId: contentRow.topic_id,
-        error: quizErr.message,
-      });
-      return res
-        .status(500)
-        .json({ error: "Database query failed fetching quiz questions" });
-    }
-    logger.db("SELECT", "quizzes", "success", {
-      topicId: contentRow.topic_id,
-      questionCount: (quizData?.questions || []).length,
-    });
-    const qs = [];
-    if (quizData && quizData.questions) {
-      const sortedQuestions = quizData.questions.sort(
-        (a, b) => a.position - b.position,
-      );
-      sortedQuestions.forEach((qObj) => {
-        const correctAnswers = (qObj.answers || [])
-          .filter((a) => a.is_correct)
-          .map((a) => a.answer_text);
-        qs.push({
-          q: qObj.question,
-          hint: qObj.hint || "",
-          ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
-          explain: qObj.explain || "",
-          why: qObj.explain || "",
-        });
-      });
-    }
-    res.json({
-      notes: contentRow.notes || "",
-      qs,
-    });
-  } catch (err) {
-    logger.error("CONTENT_LOAD", err, { subject: sid, chapter: cid, topic });
-    res.status(500).json({ error: "Internal server error" });
+    return res.json(localContent);
   }
+
+  // 4. Content not found anywhere
+  logger.action("CONTENT_NOT_FOUND", "failed", {
+    subject: sid,
+    chapter: cid,
+    topic,
+  });
+  return res.status(404).json({ error: "Content not found" });
 });
 
 // Endpoint: Grade Answer
 app.post("/api/grade", async (req, res) => {
   const { sid, cid, topic, qId, answer } = req.body || {};
   try {
-    const { data: contentRow, error: contentErr } = await supabase
-      .from("content_view")
-      .select("topic_id")
-      .eq("sid", sid)
-      .eq("cid", cid)
-      .eq("topic", topic)
-      .maybeSingle();
-    if (contentErr) {
-      logger.db("SELECT", "content_view", "error", {
-        operation: "grade",
-        error: contentErr.message,
-      });
-      return res
-        .status(500)
-        .json({ error: "Database query failed grading answer" });
+    if (!CANONICAL_SUBJECT_IDS.has(sid)) {
+      return res.status(404).json({ error: "Subject not recognized" });
     }
-    if (!contentRow) {
-      logger.action("GRADE_ANSWER", "failed", { reason: "content_not_found" });
-      return res.status(404).json({ error: "Content not found" });
-    }
-    const { data: quizData, error: quizErr } = await supabase
-      .from("quizzes")
-      .select(
-        `
-        id,
-        questions (
-          id,
-          question,
-          hint,
-          explain,
-          position,
-          answers (
-            answer_text,
-            is_correct
+
+    const topicKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+    let question = null;
+
+  if (supabase) {
+    try {
+      const { data: contentRow, error: contentErr } = await supabase
+        .from("content_view")
+        .select("topic_id")
+        .eq("sid", sid)
+        .eq("cid", cid)
+        .eq("topic", topic)
+        .maybeSingle();
+
+      if (!contentErr && contentRow) {
+        const { data: quizData, error: quizErr } = await supabase
+          .from("quizzes")
+          .select(
+            `
+            id,
+            questions (
+              id,
+              question,
+              hint,
+              explain,
+              position,
+              answers (
+                answer_text,
+                is_correct
+              )
+            )
+          `,
           )
-        )
-      `,
-      )
-      .eq("topic_id", contentRow.topic_id)
-      .maybeSingle();
-    if (quizErr) {
-      logger.db("SELECT", "quizzes", "error", {
-        operation: "grade",
-        topicId: contentRow.topic_id,
-        error: quizErr.message,
-      });
-      return res.status(500).json({
-        error: "Database query failed fetching quiz questions for grading",
-      });
-    }
-    if (!quizData || !quizData.questions) {
-      return res.status(404).json({ error: "Questions not found" });
-    }
-    const sortedQuestions = quizData.questions.sort(
-      (a, b) => a.position - b.position,
-    );
-    if (!sortedQuestions[qId]) {
-      return res.status(404).json({ error: "Question index not found" });
-    }
-    const questionObj = sortedQuestions[qId];
-    const correctAnswers = (questionObj.answers || [])
-      .filter((a) => a.is_correct)
-      .map((a) => a.answer_text);
-    const question = {
-      q: questionObj.question,
-      hint: questionObj.hint || "",
-      ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
-      why: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-      sol: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-      mark: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-    };
+          .eq("topic_id", contentRow.topic_id)
+          .maybeSingle();
 
-    // ── BACKEND SELF-VERIFICATION (Overrides corrupted DB answers) ───────────
-    const qText = String(question.q || "").toLowerCase();
-    let rawAns = question.ans;
-    const rectMatch =
-      qText.match(/(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i) ||
-      qText.match(/(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i);
-
-    if (rectMatch && /area/i.test(qText)) {
-      const a = parseFloat(rectMatch[1]);
-      const b = parseFloat(rectMatch[2]);
-      const calcArea = a * b;
-      rawAns = String(calcArea);
+        if (!quizErr && quizData && quizData.questions) {
+          const sortedQuestions = quizData.questions.sort(
+            (a, b) => a.position - b.position,
+          );
+          if (sortedQuestions[qId]) {
+            const questionObj = sortedQuestions[qId];
+            const correctAnswers = (questionObj.answers || [])
+              .filter((a) => a.is_correct)
+              .map((a) => a.answer_text);
+            question = {
+              q: questionObj.question,
+              hint: questionObj.hint || "",
+              ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
+              why: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
+              sol: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
+              mark: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
+            };
+          }
+        }
+      }
+    } catch (err) {
+      logger.error("SUPABASE_GRADE_FETCH_FAILED", err, { subject: sid, chapter: cid, topic });
     }
+  }
 
-    const correctAnswer = rawAns;
+  // Fallback to local content questions if Supabase question not found
+  if (!question) {
+    const local = LOCAL_CONTENT_MAP.get(topicKey);
+    if (local && local.qs && local.qs[qId]) {
+      question = local.qs[qId];
+    }
+  }
+
+  if (!question) {
+    return res.status(404).json({ error: "Question not found for grading" });
+  }
+
+  // ── BACKEND SELF-VERIFICATION (Overrides corrupted DB answers) ───────────
+  const qText = String(question.q || "").toLowerCase();
+  let rawAns = question.ans;
+  const rectMatch =
+    qText.match(/(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i) ||
+    qText.match(/(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i);
+
+  if (rectMatch && /area/i.test(qText)) {
+    const a = parseFloat(rectMatch[1]);
+    const b = parseFloat(rectMatch[2]);
+    const calcArea = a * b;
+    rawAns = String(calcArea);
+  }
+
+  const correctAnswer = rawAns;
     const normalize = (s) =>
       String(s || "")
         .toLowerCase()

@@ -31,7 +31,7 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
   const content = contentRecord ? contentRecord.data : null;
 
   useEffect(() => {
-    if (!hasParams || !subject?.id || !chapter?.id || !topic || !userId) return;
+    if (!hasParams || !subject?.id || !chapter?.id || !topic) return;
 
     const currentTopicKey = `${subject.id}|${chapter.id}|${topic}`;
 
@@ -43,10 +43,12 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
 
     console.log(`useTopicContent: Requested ${subject.id}/${chapter.id}/${topic}`);
 
-    // 1. Immediately record student navigation telemetry event (independent of network/prefetch)
-    recordEvent(subject.id, chapter.id, topic, "visit", userId);
+    // 1. Record student navigation telemetry event if authenticated
+    if (userId) {
+      recordEvent(subject.id, chapter.id, topic, "visit", userId);
+    }
 
-    // 2. Asynchronously prepare/prefetch content in background
+    // 2. Asynchronously prepare/prefetch content in background (for all learners)
     syncEngine.prefetchTopic(subject.id, chapter.id, topic)
       .catch((err) => {
         console.error(`useTopicContent: Error prefetching ${subject.id}/${chapter.id}/${topic}:`, err);

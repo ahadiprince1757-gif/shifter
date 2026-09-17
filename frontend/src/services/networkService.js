@@ -86,6 +86,36 @@ class NetworkService {
     };
   }
 
+  /**
+   * Waits for connectivity check to complete when in CHECKING state.
+   * Resolves immediately if already ONLINE or OFFLINE.
+   */
+  async waitForOnline(timeoutMs = 5000) {
+    if (this.isOnline) return true;
+    if (this.isOffline) return false;
+    return new Promise((resolve) => {
+      let timer = null;
+      const listener = (state) => {
+        if (state.status === "ONLINE" || state.status === "DEGRADED") {
+          cleanup();
+          resolve(true);
+        } else if (state.status === "OFFLINE") {
+          cleanup();
+          resolve(false);
+        }
+      };
+      const cleanup = () => {
+        if (timer) clearTimeout(timer);
+        this.listeners.delete(listener);
+      };
+      this.listeners.add(listener);
+      timer = setTimeout(() => {
+        cleanup();
+        resolve(this.isOnline);
+      }, timeoutMs);
+    });
+  }
+
   /* ==========================================================================
      EVENT HANDLERS
   ========================================================================== */

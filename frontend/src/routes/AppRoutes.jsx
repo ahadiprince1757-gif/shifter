@@ -126,11 +126,10 @@ const SubjectsView = () => {
 
 /**
  * HomeRoute — Serves as the entrance to Tixar.
- * For users who have never used the app or are unauthenticated, presents the initial Welcome/Auth screen.
- * Once authenticated, directly displays the SubjectsView to proceed to the learning loops.
+ * Directly renders SubjectsView so all learners immediately see the 6 canonical subjects.
  */
 const HomeRoute = () => {
-  const { session, sessionLoading } = useAuth();
+  const { sessionLoading } = useAuth();
 
   if (sessionLoading) {
     return (
@@ -140,15 +139,11 @@ const HomeRoute = () => {
     );
   }
 
-  if (session) {
-    return <SubjectsView />;
-  }
-
-  return <WelcomeAuthScreen />;
+  return <SubjectsView />;
 };
 
 /**
- * Route guard that ensures users authenticate first before accessing learning loops.
+ * Route guard that ensures users authenticate first before accessing personal sync/gaps views.
  */
 const RequireAuth = ({ children }) => {
   const { session, sessionLoading } = useAuth();
@@ -178,10 +173,10 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomeRoute />} />
-          <Route path="/subjects" element={<RequireAuth><SubjectsView /></RequireAuth>} />
-          <Route path="/subjects/:subjectId" element={<RequireAuth><ChapterListWrapper /></RequireAuth>} />
-          <Route path="/subjects/:subjectId/chapters/:chapterId" element={<RequireAuth><TopicListWrapper /></RequireAuth>} />
-          <Route path="/learn/:subjectId/:chapterId/:topicId" element={<RequireAuth><LearnFlowWrapper /></RequireAuth>} />
+          <Route path="/subjects" element={<SubjectsView />} />
+          <Route path="/subjects/:subjectId" element={<ChapterListWrapper />} />
+          <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />
+          <Route path="/learn/:subjectId/:chapterId/:topicId" element={<LearnFlowWrapper />} />
           <Route path="/verification" element={<VerificationPage />} />
           <Route path="/gaps" element={<RequireAuth><Gaps /></RequireAuth>} />
           <Route path="/mistakes" element={<Navigate to="/gaps" replace />} />

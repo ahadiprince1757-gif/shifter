@@ -31,17 +31,11 @@ function SyncOnLogin() {
 }
 
 function App() {
-  // Only trigger sync on cold mount if local curriculum is empty (first install/visit).
-  // Returning users render instantly from Dexie IndexedDB cache;
-  // SyncOnLogin handles authoritative post-login sync with staleness guard.
+  // Synchronize curriculum on startup (syncEngine handles staleness, debounce, and network readiness)
   useEffect(() => {
-    db.curriculum.count().then((count) => {
-      if (count === 0) {
-        syncEngine.syncAll({ force: true }).catch((err) =>
-          console.warn("[App] Initial first-time sync failed:", err)
-        );
-      }
-    }).catch(() => {});
+    syncEngine.syncAll().catch((err) =>
+      console.warn("[App] Startup sync failed:", err)
+    );
   }, []);
 
   // Handle global double-tap (mobile) or double-click (desktop) to zoom in/out
