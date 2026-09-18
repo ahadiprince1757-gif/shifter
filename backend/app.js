@@ -6,15 +6,20 @@ const { validateEventsBatch } = require('./validators/telemetryValidator');
 const intelligenceService = require('./services/intelligenceService');
 
 const app = express();
-// Configure CORS using an allowlist from `ALLOWED_ORIGINS` env (comma-separated).
-const allowedEnv = (process.env.ALLOWED_ORIGINS || "")
-  .split(',')
+// Configure CORS from the ALLOWED_ORIGINS environment variable (comma-separated list).
+// On Render set:  ALLOWED_ORIGINS=https://tixar-iota.vercel.app,http://localhost:5173
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
+  .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
+
 const corsOptions = {
   origin: (origin, callback) => {
+    // Allow server-to-server / health-check requests (no Origin header)
     if (!origin) return callback(null, true);
-    // Automatically allow local origins in development mode
+
+    // Always allow localhost in non-production so local dev works without
+    // having to add localhost entries to the Render env var.
     if (process.env.NODE_ENV !== "production") {
       if (
         origin.startsWith("http://localhost:") ||
@@ -25,15 +30,20 @@ const corsOptions = {
         return callback(null, true);
       }
     }
-    if (allowedEnv.length === 0) return callback(null, true);
-    if (
-      allowedEnv.includes(origin) ||
-      allowedEnv.some((a) => origin.endsWith(a)) ||
-      origin.endsWith(".vercel.app") ||
-      origin === "https://shifter-iota.vercel.app"
-    )
+
+    // If no allowlist is configured, block unknown origins in production.
+    if (allowedOrigins.length === 0) {
+      if (process.env.NODE_ENV === "production") {
+        return callback(new Error(`CORS: no ALLOWED_ORIGINS configured — blocked origin: ${origin}`));
+      }
       return callback(null, true);
-    return callback(new Error("Not allowed by CORS"));
+    }
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    }
+
+    return callback(new Error(`CORS blocked origin: ${origin}`));
   },
   credentials: true,
 };

@@ -297,8 +297,12 @@ export async function triggerSync(targetUserId = null) {
   if (events.length === 0) return;
 
   activeSyncs.add(activeUserId);
-  const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
-  const syncUrl = `${VITE_API_URL.replace(/\/$/, "")}/api/analytics/events`;
+  const _analyticsBase = import.meta.env.PROD
+    ? ((import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes("localhost"))
+        ? import.meta.env.VITE_API_URL
+        : "https://shifter-i49i.onrender.com")
+    : (import.meta.env.VITE_API_URL || "http://localhost:3001");
+  const syncUrl = `${_analyticsBase.replace(/\/$/, "")}/api/analytics/events`;
 
   const safeEvents = events.filter((e) => e.user_id === activeUserId);
   if (safeEvents.length === 0) {

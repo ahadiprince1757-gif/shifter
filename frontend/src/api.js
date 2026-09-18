@@ -3,9 +3,21 @@ import { supabase, getActiveSession } from "./supabase";
 import { curriculumRepo } from "./repository/curriculumRepo";
 import { topicRepo } from "./repository/topicRepo";
 
-// Base API URL – taken from env or fallback to localhost during dev
-const raw = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "https://shifter-i49i.onrender.com" : "http://localhost:3001");
-const API_BASE = raw.replace(/\/$/, "") + "/api";
+// Base API URL — resolved at build time by Vite.
+//
+// Production:   VITE_API_URL (set in Vercel dashboard) → fallback to Render URL.
+//               This guarantees production NEVER silently calls localhost.
+//
+// Development:  VITE_API_URL (from .env.development) → fallback to localhost:3001.
+//
+const _rawBase = import.meta.env.PROD
+  ? ((import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes("localhost"))
+      ? import.meta.env.VITE_API_URL
+      : "https://shifter-i49i.onrender.com")
+  : (import.meta.env.VITE_API_URL || "http://localhost:3001");
+
+const API_BASE = _rawBase.replace(/\/$/, "") + "/api";
+
 
 /** Helper to retrieve auth headers from Supabase session */
 function getAuthHeaders() {
