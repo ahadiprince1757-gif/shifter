@@ -31,15 +31,25 @@ const corsOptions = {
       }
     }
 
+    const cleanOrigin = origin.replace(/\/$/, "");
+
+    if (
+      allowedOrigins.includes(cleanOrigin) ||
+      allowedOrigins.includes(origin) ||
+      cleanOrigin.endsWith(".vercel.app") ||
+      cleanOrigin.includes("vercel.app") ||
+      cleanOrigin.startsWith("android-app://") ||
+      cleanOrigin.includes("localhost") ||
+      cleanOrigin.includes("127.0.0.1")
+    ) {
+      return callback(null, true);
+    }
+
     // If no allowlist is configured, block unknown origins in production.
     if (allowedOrigins.length === 0) {
       if (process.env.NODE_ENV === "production") {
         return callback(new Error(`CORS: no ALLOWED_ORIGINS configured — blocked origin: ${origin}`));
       }
-      return callback(null, true);
-    }
-
-    if (allowedOrigins.includes(origin)) {
       return callback(null, true);
     }
 
