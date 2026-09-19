@@ -17,7 +17,7 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
     setError(null);
   }
 
-  // useLiveQuery subscribes to the topic table
+  // useLiveQuery subscribes to the topic table in IndexedDB
   const contentRecord = useLiveQuery(
     () => {
       if (!hasParams) return null;
@@ -35,7 +35,7 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
 
     const currentTopicKey = `${subject.id}|${chapter.id}|${topic}`;
 
-    // Defense-in-depth: Prevent duplicate visit event recordings during same topic component lifecycle
+    // Prevent duplicate prefetch calls during same topic component lifecycle
     if (recordedTopicRef.current === currentTopicKey) {
       return;
     }
@@ -48,14 +48,30 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
       recordEvent(subject.id, chapter.id, topic, "visit", userId);
     }
 
-    // 2. Asynchronously prepare/prefetch content in background (for all learners)
-    syncEngine.prefetchTopic(subject.id, chapter.id, topic)
-      .catch((err) => {
-        console.error(`useTopicContent: Error prefetching ${subject.id}/${chapter.id}/${topic}:`, err);
-        if (!contentRecord) {
-          setError("Failed to load content. Check your internet.");
-          toast.error("Failed to load notes. Please check your internet connection.");
+    // 2. Asynchronously prefetch content from server -> store in IndexedDB
+    //    On error: only surface the error message to the user if no locally-cached
+    //    content exists either. This prevents false "check internet" errors when
+    //    the prefetch races or the network service hasn't confirmed online status yet.
+    const sid = subject.id;
+    const cid = chapter.id;
+    const tid = topic;
+
+    syncEngine.prefetchTopic(sid, cid, tid)
+      .catch(async (err) => {
+        console.error(`useTopicContent: Error prefetching ${sid}/${cid}/${tid}:`, err);
+        // Before surfacing an error, check if we have local cache
+        try {
+          const fallback = await topicRepo.getTopic(sid, cid, tid);
+          if (fallback?.data) {
+            // Local cache exists — useLiveQuery will pick it up, no error needed
+            return;
+          }
+        } catch {
+          // ignore
         }
+        // No local cache and prefetch failed — tell the user
+        setError("Failed to load content. Check your internet.");
+        toast.error("Failed to load notes. Please check your internet connection.");
       });
   }, [subject?.id, chapter?.id, topic, userId, hasParams]);
 
