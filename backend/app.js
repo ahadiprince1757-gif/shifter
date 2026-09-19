@@ -176,6 +176,14 @@ const STATIC_CURRICULUM = (() => {
   }
 })();
 
+function normalizeTopicKey(str) {
+  return String(str || "")
+    .replace(/[\u2010-\u2015]/g, "-")
+    .replace(/\s+/g, " ")
+    .toLowerCase()
+    .trim();
+}
+
 // In-memory local content cache for zero-downtime offline fallback
 const LOCAL_CONTENT_MAP = (() => {
   const contentMap = new Map();
@@ -189,8 +197,7 @@ const LOCAL_CONTENT_MAP = (() => {
           ? notes.join("\n")
           : String(notes || "");
     const qsArray = (Array.isArray(qs) ? qs : [qs]).map(normalizeQ);
-    const key = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
-    contentMap.set(key, {
+    const contentObj = {
       notes: notesStr,
       qs: qsArray.map((q) => ({
         q: q.q,
@@ -199,7 +206,11 @@ const LOCAL_CONTENT_MAP = (() => {
         explain: q.why || "",
         why: q.why || "",
       })),
-    });
+    };
+    const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+    const normKey = `${sid}|${cid}|${normalizeTopicKey(topic)}`;
+    contentMap.set(rawKey, contentObj);
+    contentMap.set(normKey, contentObj);
   };
 
   const path = require("path");
@@ -309,19 +320,37 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
     return res.status(404).json({ error: "Subject not recognized" });
   }
 
-  const topicKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
-  const localContent = LOCAL_CONTENT_MAP.get(topicKey);
+  const normKey = `${sid}|${cid}|${normalizeTopicKey(topic)}`;
+  const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+  const localContent = LOCAL_CONTENT_MAP.get(normKey) || LOCAL_CONTENT_MAP.get(rawKey);
 
   // 2. If Supabase is configured, attempt remote query
   if (supabase) {
     try {
-      const { data: contentRow, error: contentErr } = await supabase
+      let { data: contentRow, error: contentErr } = await supabase
         .from("content_view")
         .select("topic_id, notes")
         .eq("sid", sid)
         .eq("cid", cid)
         .eq("topic", topic)
         .maybeSingle();
+
+      // If not found with exact string, try with dash variations (hyphen vs em-dash)
+      if (!contentRow && !contentErr) {
+        const altTopic = topic.includes("-")
+          ? topic.replace(/-/g, "—")
+          : topic.replace(/[\u2010-\u2015]/g, "-");
+        const altRes = await supabase
+          .from("content_view")
+          .select("topic_id, notes")
+          .eq("sid", sid)
+          .eq("cid", cid)
+          .eq("topic", altTopic)
+          .maybeSingle();
+        if (altRes.data) {
+          contentRow = altRes.data;
+        }
+      }
 
       if (!contentErr && contentRow) {
         const { data: quizData, error: quizErr } = await supabase
@@ -365,15 +394,22 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
             });
           }
 
+          // CRITICAL: If Supabase has 0 questions for this topic, fallback to local questions!
+          if (qs.length === 0 && localContent && Array.isArray(localContent.qs) && localContent.qs.length > 0) {
+            qs.push(...localContent.qs);
+          }
+
+          const notes = contentRow.notes || localContent?.notes || "";
+
           logger.action("CONTENT_SERVED", "success", {
-            source: "supabase",
+            source: qs.length > 0 && (!quizData || !quizData.questions?.length) ? "supabase_hybrid_local" : "supabase",
             subject: sid,
             chapter: cid,
             topic,
           });
 
           return res.json({
-            notes: contentRow.notes || "",
+            notes,
             qs,
           });
         }
@@ -411,18 +447,36 @@ app.post("/api/grade", async (req, res) => {
       return res.status(404).json({ error: "Subject not recognized" });
     }
 
-    const topicKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+    const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+    const normKey = `${sid}|${cid}|${normalizeTopicKey(topic)}`;
+    const topicKey = rawKey;
     let question = null;
 
   if (supabase) {
     try {
-      const { data: contentRow, error: contentErr } = await supabase
+      let { data: contentRow, error: contentErr } = await supabase
         .from("content_view")
         .select("topic_id")
         .eq("sid", sid)
         .eq("cid", cid)
         .eq("topic", topic)
         .maybeSingle();
+
+      if (!contentRow && !contentErr) {
+        const altTopic = topic.includes("-")
+          ? topic.replace(/-/g, "—")
+          : topic.replace(/[\u2010-\u2015]/g, "-");
+        const altRes = await supabase
+          .from("content_view")
+          .select("topic_id")
+          .eq("sid", sid)
+          .eq("cid", cid)
+          .eq("topic", altTopic)
+          .maybeSingle();
+        if (altRes.data) {
+          contentRow = altRes.data;
+        }
+      }
 
       if (!contentErr && contentRow) {
         const { data: quizData, error: quizErr } = await supabase
@@ -473,7 +527,7 @@ app.post("/api/grade", async (req, res) => {
 
   // Fallback to local content questions if Supabase question not found
   if (!question) {
-    const local = LOCAL_CONTENT_MAP.get(topicKey);
+    const local = LOCAL_CONTENT_MAP.get(normKey) || LOCAL_CONTENT_MAP.get(topicKey);
     if (local && local.qs && local.qs[qId]) {
       question = local.qs[qId];
     }
