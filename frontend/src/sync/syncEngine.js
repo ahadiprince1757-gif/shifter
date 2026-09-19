@@ -203,18 +203,19 @@ class SyncEngine {
    * if we are online. If offline, the UI will just read what we have in Dexie.
    */
   async prefetchTopic(subjectId, chapterId, topicId) {
-    if (!navigator.onLine || !networkService.isOnline) return;
+    if (typeof navigator !== "undefined" && !navigator.onLine) return;
 
     try {
       const topicData = await fetchTopicContent(subjectId, chapterId, topicId);
-      
-      await topicRepo.upsertBatch([{
-        id: `${subjectId}|${chapterId}|${topicId}`,
-        curriculum_id: subjectId,
-        chapter_id: chapterId,
-        data: topicData,
-        is_deleted: false
-      }]);
+      if (topicData) {
+        await topicRepo.upsertBatch([{
+          id: `${subjectId}|${chapterId}|${topicId}`,
+          curriculum_id: subjectId,
+          chapter_id: chapterId,
+          data: topicData,
+          is_deleted: false
+        }]);
+      }
     } catch (err) {
       if (isNetworkError(err)) {
         console.warn(`[Sync] Topic prefetch skipped (offline): ${topicId}`);

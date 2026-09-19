@@ -49,6 +49,11 @@ db.version(15).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
+// Version 16: Purge stale cached topics to pull freshly seeded quizzes and notes
+db.version(16).upgrade(async (tx) => {
+  await tx.table("topics").clear();
+});
+
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });

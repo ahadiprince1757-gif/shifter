@@ -22,11 +22,16 @@ class NetworkService {
     timeout = 5_000,
     autoStart = true,
   } = {}) {
-    this.healthCheckUrl =
-      healthCheckUrl ||
-      (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL
-        ? `${import.meta.env.VITE_API_URL}/health`
-        : null);
+    const resolvedApiUrl =
+      typeof import.meta !== "undefined" && import.meta.env?.PROD
+        ? ((import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes("localhost"))
+            ? import.meta.env.VITE_API_URL
+            : "https://shifter-i49i.onrender.com")
+        : (typeof import.meta !== "undefined" && import.meta.env?.VITE_API_URL
+            ? import.meta.env.VITE_API_URL
+            : "http://localhost:3001");
+
+    this.healthCheckUrl = healthCheckUrl || `${resolvedApiUrl.replace(/\/$/, "")}/health`;
     this.checkInterval = checkInterval;
     this.timeout = timeout;
 
@@ -229,10 +234,11 @@ class NetworkService {
         lastChecked: new Date().toISOString(),
       });
     } catch {
+      const isBrowserOnline = typeof navigator !== "undefined" ? navigator.onLine : false;
       this.updateState({
-        browserOnline: true,
-        internetReachable: false,
-        status: "OFFLINE",
+        browserOnline: isBrowserOnline,
+        internetReachable: isBrowserOnline,
+        status: isBrowserOnline ? "DEGRADED" : "OFFLINE",
         latency: null,
         lastChecked: new Date().toISOString(),
       });
