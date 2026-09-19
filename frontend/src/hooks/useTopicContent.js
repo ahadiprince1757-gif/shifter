@@ -17,14 +17,14 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
     setError(null);
   }
 
-  // useLiveQuery subscribes to the topic table in IndexedDB
+  // useLiveQuery subscribes to the topic table in IndexedDB and re-renders whenever data changes
   const contentRecord = useLiveQuery(
     () => {
       if (!hasParams) return null;
       return topicRepo.getTopic(subject.id, chapter.id, topic);
     },
     [subject?.id, chapter?.id, topic],
-    undefined // undefined means loading state
+    undefined // undefined = loading
   );
 
   const loading = contentRecord === undefined && hasParams;
@@ -35,44 +35,41 @@ export function useTopicContent(subject, chapter, topic, setPhase, userId = null
 
     const currentTopicKey = `${subject.id}|${chapter.id}|${topic}`;
 
-    // Prevent duplicate prefetch calls during same topic component lifecycle
-    if (recordedTopicRef.current === currentTopicKey) {
-      return;
-    }
+    // Prevent duplicate fetches for the same topic in the same lifecycle
+    if (recordedTopicRef.current === currentTopicKey) return;
     recordedTopicRef.current = currentTopicKey;
 
-    console.log(`useTopicContent: Requested ${subject.id}/${chapter.id}/${topic}`);
-
-    // 1. Record student navigation telemetry event if authenticated
-    if (userId) {
-      recordEvent(subject.id, chapter.id, topic, "visit", userId);
-    }
-
-    // 2. Asynchronously prefetch content from server -> store in IndexedDB
-    //    On error: only surface the error message to the user if no locally-cached
-    //    content exists either. This prevents false "check internet" errors when
-    //    the prefetch races or the network service hasn't confirmed online status yet.
     const sid = subject.id;
     const cid = chapter.id;
     const tid = topic;
 
-    syncEngine.prefetchTopic(sid, cid, tid)
-      .catch(async (err) => {
-        console.error(`useTopicContent: Error prefetching ${sid}/${cid}/${tid}:`, err);
-        // Before surfacing an error, check if we have local cache
-        try {
-          const fallback = await topicRepo.getTopic(sid, cid, tid);
-          if (fallback?.data) {
-            // Local cache exists — useLiveQuery will pick it up, no error needed
-            return;
-          }
-        } catch {
-          // ignore
+    console.log(`useTopicContent: Fetching ${sid}/${cid}/${tid}`);
+
+    // Record telemetry
+    if (userId) {
+      recordEvent(sid, cid, tid, "visit", userId);
+    }
+
+    // Fetch from backend → save to IndexedDB → useLiveQuery reacts automatically.
+    // prefetchTopic never throws (all errors caught internally).
+    // We check content availability in .then() AFTER the fetch completes.
+    syncEngine.prefetchTopic(sid, cid, tid).then(async () => {
+      // After fetch attempt completes, verify content actually landed in IndexedDB
+      try {
+        const record = await topicRepo.getTopic(sid, cid, tid);
+        if (!record?.data) {
+          // Still nothing — show error
+          setError("Failed to load content. Check your internet.");
+          toast.error("Failed to load notes. Please check your internet connection.");
         }
-        // No local cache and prefetch failed — tell the user
+        // If record exists, useLiveQuery has already updated or will update the UI
+      } catch (dbErr) {
+        console.error(`[useTopicContent] IndexedDB read failed for ${tid}:`, dbErr);
         setError("Failed to load content. Check your internet.");
         toast.error("Failed to load notes. Please check your internet connection.");
-      });
+      }
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [subject?.id, chapter?.id, topic, userId, hasParams]);
 
   return { content, loading, error };

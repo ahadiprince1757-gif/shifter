@@ -217,13 +217,9 @@ class SyncEngine {
         }]);
       }
     } catch (err) {
-      if (isNetworkError(err)) {
-        console.warn(`[Sync] Topic prefetch skipped (offline): ${topicId}`);
-        // Don't throw for network errors — the UI will show cached content or a gentle message
-        return;
-      }
-      console.error(`Failed to prefetch topic ${topicId}:`, err);
-      throw err;
+      // Log the error but NEVER re-throw — error visibility is handled by useTopicContent
+      // checking for empty content after this promise resolves
+      console.warn(`[Sync] prefetchTopic failed for "${topicId}":`, err?.message || err);
     }
   }
 }
