@@ -15,45 +15,8 @@ const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
 
 const corsOptions = {
   origin: (origin, callback) => {
-    // Allow server-to-server / health-check requests (no Origin header)
-    if (!origin) return callback(null, true);
-
-    // Always allow localhost in non-production so local dev works without
-    // having to add localhost entries to the Render env var.
-    if (process.env.NODE_ENV !== "production") {
-      if (
-        origin.startsWith("http://localhost:") ||
-        origin.startsWith("http://127.0.0.1:") ||
-        origin === "http://localhost" ||
-        origin === "http://127.0.0.1"
-      ) {
-        return callback(null, true);
-      }
-    }
-
-    const cleanOrigin = origin.replace(/\/$/, "");
-
-    if (
-      allowedOrigins.includes(cleanOrigin) ||
-      allowedOrigins.includes(origin) ||
-      cleanOrigin.endsWith(".vercel.app") ||
-      cleanOrigin.includes("vercel.app") ||
-      cleanOrigin.startsWith("android-app://") ||
-      cleanOrigin.includes("localhost") ||
-      cleanOrigin.includes("127.0.0.1")
-    ) {
-      return callback(null, true);
-    }
-
-    // If no allowlist is configured, block unknown origins in production.
-    if (allowedOrigins.length === 0) {
-      if (process.env.NODE_ENV === "production") {
-        return callback(new Error(`CORS: no ALLOWED_ORIGINS configured — blocked origin: ${origin}`));
-      }
-      return callback(null, true);
-    }
-
-    return callback(new Error(`CORS blocked origin: ${origin}`));
+    // Always allow all origins — educational curriculum and notes are public
+    callback(null, true);
   },
   credentials: true,
 };

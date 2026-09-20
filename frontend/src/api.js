@@ -11,7 +11,10 @@ import { topicRepo } from "./repository/topicRepo";
 // Development:  VITE_API_URL (from .env.development) → fallback to localhost:3001.
 //
 const _rawBase = import.meta.env.PROD
-  ? ((import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes("localhost"))
+  ? ((import.meta.env.VITE_API_URL &&
+      !import.meta.env.VITE_API_URL.includes("localhost") &&
+      !import.meta.env.VITE_API_URL.includes("vercel.app") &&
+      import.meta.env.VITE_API_URL.startsWith("http"))
       ? import.meta.env.VITE_API_URL
       : "https://shifter-i49i.onrender.com")
   : (import.meta.env.VITE_API_URL || "http://localhost:3001");
@@ -49,33 +52,58 @@ export async function fetchCurriculum() {
 }
 
 export async function fetchTopicContent(sid, cid, topic) {
-  const startTime = Date.now();
   const endpoint = `/api/content/${sid}/${cid}/${topic}`;
+  const targetUrl = `${API_BASE}/content/${encodeURIComponent(sid)}/${encodeURIComponent(cid)}/${encodeURIComponent(topic)}`;
 
-  try {
-    const r = await fetch(
-      `${API_BASE}/content/${encodeURIComponent(sid)}/${encodeURIComponent(cid)}/${encodeURIComponent(topic)}`,
-      { headers: getAuthHeaders() }
-    );
-    const responseTime = Date.now() - startTime;
+  // Attempt up to 2 times (handles cold start wakeups on Render)
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const startTime = Date.now();
+    try {
+      const r = await fetch(targetUrl, {
+        headers: getAuthHeaders(),
+      });
+      const responseTime = Date.now() - startTime;
 
-    if (!r.ok) {
-      console.warn(`[API] Remote content unavailable for ${topic}. Using local fallback.`);
-      const cached = await topicRepo.getById(`${sid}|${cid}|${topic}`);
-      return cached?.data || null;
+      if (!r.ok) {
+        console.warn(`[API] Remote content unavailable for ${topic} (Status: ${r.status}, Attempt: ${attempt}).`);
+        if (attempt === 1) {
+          await new Promise((res) => setTimeout(res, 800));
+          continue;
+        }
+        break;
+      }
+
+      const contentType = r.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        console.warn(`[API] Expected JSON for ${topic}, got: ${contentType}`);
+        break;
+      }
+
+      const data = await r.json();
+      if (data && (data.notes || (Array.isArray(data.qs) && data.qs.length > 0))) {
+        logger.api("GET", endpoint, r.status, {
+          responseTime,
+          subject: sid,
+          chapter: cid,
+          topic,
+        });
+        return data;
+      }
+    } catch (err) {
+      console.warn(`[API] Fetch error for ${topic} (Attempt ${attempt}/2):`, err?.message || err);
+      if (attempt === 1) {
+        await new Promise((res) => setTimeout(res, 800));
+      }
     }
+  }
 
-    logger.api("GET", endpoint, r.status, {
-      responseTime,
-      subject: sid,
-      chapter: cid,
-      topic,
-    });
-    return await r.json();
-  } catch {
-    console.warn(`[API] Network offline for topic content (${topic}). Using local fallback.`);
-    const cached = await topicRepo.getById(`${sid}|${cid}|${topic}`);
+  // Fallback to local cache if network attempt failed
+  console.warn(`[API] Network failed for topic (${topic}). Checking local IndexedDB cache.`);
+  try {
+    const cached = await topicRepo.getTopic(sid, cid, topic) || await topicRepo.getById(`${sid}|${cid}|${topic}`);
     return cached?.data || null;
+  } catch {
+    return null;
   }
 }
 

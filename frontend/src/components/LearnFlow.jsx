@@ -48,7 +48,7 @@ function LearnFlow({
   }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic, userId]);
 
   // Load topic content
-  const { content, loading, error } = useTopicContent(
+  const { content, loading, error, reload } = useTopicContent(
     subject,
     chapter,
     topic,
@@ -109,7 +109,45 @@ function LearnFlow({
     }
   };
 
-  if (loading || error || !content) {
+  if (error && !content) {
+    return (
+      <div id="v-learn" className="view active">
+        <LearnHeader
+          goBack={goBack}
+          topic={topic}
+          subject={subject}
+          chapter={chapter}
+        />
+        <PhaseStrip phase={loop.phase} setPhase={loop.setPhase} />
+        <div id="learnFlow">
+          <div className="lc" style={{ padding: "3rem 1.5rem", textAlign: "center", maxWidth: "480px", margin: "0 auto" }}>
+            <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>📡</div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: "0.5rem" }}>Failed to Load Notes</h3>
+            <p style={{ fontSize: "0.9rem", color: "var(--muted, #888)", marginBottom: "1.5rem" }}>
+              We couldn't load content for this topic. Please check your connection and try again.
+            </p>
+            <button
+              onClick={reload}
+              style={{
+                background: "var(--accent, #6366f1)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                padding: "0.75rem 1.75rem",
+                fontSize: "0.95rem",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading || !content) {
     return (
       <div id="v-learn" className="view active">
         <LearnHeader

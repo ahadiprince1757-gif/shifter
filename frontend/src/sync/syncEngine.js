@@ -199,11 +199,14 @@ class SyncEngine {
   }
 
   /**
-   * Lazily fetch specific chapter/topic content when a user navigates to it,
-   * if we are online. If offline, the UI will just read what we have in Dexie.
+   * Lazily fetch specific chapter/topic content when a user navigates to it.
+   * Returns the topic data directly for immediate UI consumption while saving to Dexie.
    */
   async prefetchTopic(subjectId, chapterId, topicId) {
-    if (typeof navigator !== "undefined" && !navigator.onLine) return;
+    if (typeof navigator !== "undefined" && !navigator.onLine) {
+      const local = await topicRepo.getTopic(subjectId, chapterId, topicId).catch(() => null);
+      return local?.data || null;
+    }
 
     try {
       const topicData = await fetchTopicContent(subjectId, chapterId, topicId);
@@ -214,13 +217,17 @@ class SyncEngine {
           chapter_id: chapterId,
           data: topicData,
           is_deleted: false
-        }]);
+        }]).catch((dbErr) => {
+          console.warn("[Sync] Dexie cache write failed:", dbErr?.message || dbErr);
+        });
+        return topicData;
       }
     } catch (err) {
-      // Log the error but NEVER re-throw — error visibility is handled by useTopicContent
-      // checking for empty content after this promise resolves
       console.warn(`[Sync] prefetchTopic failed for "${topicId}":`, err?.message || err);
     }
+
+    const local = await topicRepo.getTopic(subjectId, chapterId, topicId).catch(() => null);
+    return local?.data || null;
   }
 }
 
