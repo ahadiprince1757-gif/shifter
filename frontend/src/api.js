@@ -21,6 +21,13 @@ const _rawBase = import.meta.env.PROD
 
 const API_BASE = _rawBase.replace(/\/$/, "") + "/api";
 
+console.log("=== TIXAR API DEBUG ===");
+console.log("PROD:", import.meta.env.PROD);
+console.log("MODE:", import.meta.env.MODE);
+console.log("VITE_API_URL:", import.meta.env.VITE_API_URL);
+console.log("API_BASE:", API_BASE);
+console.log("ONLINE:", typeof navigator !== "undefined" ? navigator.onLine : "N/A");
+
 
 /** Helper to retrieve auth headers from Supabase session */
 function getAuthHeaders() {
