@@ -10093,120 +10093,80 @@ Integration is used to accumulate small changes into a total result. It is essen
   ]
 );
 
+/* =========================================================
+   NUMBER THEORY CHAPTER
+========================================================= */
+
 add(
   "math",
   "number_theory",
   "Divisibility Rules",
-
-  `
-<h2> Divisibility Rules</h2>
-
-<h3> DEEP NOTES</h3>
+  `<h2>Divisibility Rules</h2>
+<hr>
+<h3>DEEP NOTES</h3>
+<h4>1. Core Concept</h4>
 <p>
-Divisibility rules help determine if a number can be divided exactly by another number without remainder.
-They allow quick checking without long division.
+Divisibility rules are mental shortcuts that allow you to determine whether a given integer is divisible by another integer without performing long division.
 </p>
-
-<pre>
-2 → last digit even  
-3 → sum of digits divisible by 3  
-5 → ends in 0 or 5  
-10 → ends in 0
-</pre>
-
----
-
-<h3> EXAMPLES (WITH WORKING)</h3>
-
-<p><b>Example 1:</b> Is 246 divisible by 2?</p>
-<p><b>Step 1:</b> Last digit is 6</p>
-<p><b>Step 2:</b> 6 is even</p>
-<p><b>Final Answer:</b> Yes, 246 is divisible by 2 </p>
-
-<br>
-
-<p><b>Example 2:</b> Is 123 divisible by 3?</p>
-<p><b>Step 1:</b> Add digits: 1 + 2 + 3 = 6</p>
-<p><b>Step 2:</b> 6 is divisible by 3</p>
-<p><b>Final Answer:</b> Yes, 123 is divisible by 3 </p>
-
-<br>
-
-<p><b>Example 3:</b> Is 125 divisible by 5?</p>
-<p><b>Step 1:</b> Last digit is 5</p>
-<p><b>Final Answer:</b> Yes, 125 is divisible by 5 </p>
-
----
-
-<h3> DIAGRAM</h3>
-
-<pre>
-Number → Rule check → divisible / not divisible
-fast mental test system
-</pre>
-
----
-
-<h3> REAL WORLD APPLICATION</h3>
 <ul>
-<li>Quick mental math checks</li>
-<li>Banking transaction validation</li>
-<li>Programming validation rules</li>
-<li>Error checking in computations</li>
+<li><b>Rule for 2:</b> The last digit is even (0, 2, 4, 6, 8).</li>
+<li><b>Rule for 3:</b> The sum of all digits is divisible by 3.</li>
+<li><b>Rule for 4:</b> The number formed by the last two digits is divisible by 4.</li>
+<li><b>Rule for 5:</b> The last digit is 0 or 5.</li>
+<li><b>Rule for 6:</b> The number is divisible by both 2 and 3.</li>
+<li><b>Rule for 9:</b> The sum of all digits is divisible by 9.</li>
+<li><b>Rule for 10:</b> The last digit is 0.</li>
 </ul>
-
----
+<hr>
+<h4>2. Key Principle</h4>
+<p>
+Every integer <i>n</i> can be expressed in base-10 expansion. The properties of powers of 10 modulo <i>d</i> determine the divisibility test for divisor <i>d</i>.
+</p>
 `,
-
   [
     {
-      "q": "Is 372 divisible by 3?",
-      "hint": "add digits",
-      "steps": [
-        "Step 1: Take digits of 372 → 3, 7, 2",
-        "Step 2: Add them → 3 + 7 + 2 = 12",
-        "Step 3: Check if 12 is divisible by 3",
-        "Step 4: 12 ÷ 3 = 4 (no remainder)",
-        "Step 5: Conclude divisibility"
+      q: "Is 4,572 divisible by 3?",
+      hint: "Sum the digits",
+      steps: [
+        "Step 1: Compute sum of digits: 4 + 5 + 7 + 2 = 18",
+        "Step 2: Check if 18 is divisible by 3: 18 ÷ 3 = 6 (no remainder)",
+        "Step 3: Conclude: 4,572 is divisible by 3"
       ],
-      "ans": "Yes",
-      "why": "If the sum of digits is divisible by 3, the number is divisible by 3"
+      ans: "Yes",
+      why: "A number is divisible by 3 if the sum of its digits is divisible by 3 (4 + 5 + 7 + 2 = 18 = 3 × 6)."
     },
     {
-      "q": "Check if 145 is divisible by 5",
-      "hint": "last digit rule",
-      "steps": [
-        "Step 1: Look at last digit of 145",
-        "Step 2: Last digit is 5",
-        "Step 3: Check rule for divisibility by 5",
-        "Step 4: Numbers ending in 0 or 5 are divisible by 5"
+      q: "Determine if 3,524 is divisible by 4.",
+      hint: "Check last two digits",
+      steps: [
+        "Step 1: Identify the last two digits: 24",
+        "Step 2: Check if 24 is divisible by 4: 24 ÷ 4 = 6",
+        "Step 3: Conclude: 3,524 is divisible by 4"
       ],
-      "ans": "Yes",
-      "why": "Numbers ending in 5 are always divisible by 5"
+      ans: "Yes",
+      why: "A number is divisible by 4 if the number formed by its last two digits is divisible by 4 (24 ÷ 4 = 6)."
     },
     {
-      "q": "Is 638 divisible by 2?",
-      "hint": "check last digit",
-      "steps": [
-        "Step 1: Look at last digit of 638",
-        "Step 2: Last digit is 8",
-        "Step 3: Check if 8 is even",
-        "Step 4: Even numbers are divisible by 2"
+      q: "Is 1,236 divisible by 6?",
+      hint: "Check divisibility by both 2 and 3",
+      steps: [
+        "Step 1: Check divisibility by 2: last digit is 6 (even) → divisible by 2",
+        "Step 2: Check divisibility by 3: 1 + 2 + 3 + 6 = 12, and 12 ÷ 3 = 4 → divisible by 3",
+        "Step 3: Conclude: Since divisible by both 2 and 3, it is divisible by 6"
       ],
-      "ans": "Yes",
-      "why": "Even last digit means number is divisible by 2"
+      ans: "Yes",
+      why: "Divisibility by 6 requires the number to be even and the sum of its digits to be a multiple of 3."
     },
     {
-      "q": "Is 251 divisible by 3?",
-      "hint": "sum of digits",
-      "steps": [
-        "Step 1: Add digits → 2 + 5 + 1 = 8",
-        "Step 2: Check if 8 is divisible by 3",
-        "Step 3: 8 ÷ 3 leaves remainder",
-        "Step 4: Conclude divisibility"
+      q: "Find the smallest single digit x such that 5,3x2 is divisible by 9.",
+      hint: "Sum of digits must be a multiple of 9",
+      steps: [
+        "Step 1: Calculate sum of known digits: 5 + 3 + 2 = 10",
+        "Step 2: Set equation: 10 + x = 18 (next multiple of 9)",
+        "Step 3: Solve for x: x = 18 - 10 = 8"
       ],
-      "ans": "No",
-      "why": "Sum of digits not divisible by 3 means number is not divisible by 3"
+      ans: "8",
+      why: "Sum of digits is 5 + 3 + x + 2 = 10 + x. The smallest single digit making this divisible by 9 is x = 8 (sum = 18)."
     }
   ]
 );
@@ -10215,109 +10175,68 @@ add(
   "math",
   "number_theory",
   "Modular Arithmetic",
-
-  `
-<h2> Modular Arithmetic (Clock Math)</h2>
-
-<h3> DEEP NOTES</h3>
+  `<h2>Modular Arithmetic</h2>
+<hr>
+<h3>DEEP NOTES</h3>
+<h4>1. Concept of Clock Arithmetic</h4>
 <p>
-Modular arithmetic deals with remainders after division.
-It is like clock arithmetic where values “wrap around” after reaching a fixed number.
+Modular arithmetic is a system of arithmetic for integers where numbers 'wrap around' upon reaching a certain value, known as the <b>modulus</b>.
 </p>
-
-<pre>
-a mod n = remainder when a is divided by n
-</pre>
-
----
-
-<h3> EXAMPLES (WITH WORKING)</h3>
-
-<p><b>Example 1:</b> 10 mod 3</p>
-<p><b>Step 1:</b> 10 ÷ 3 = 3 remainder 1</p>
-<p><b>Final Answer:</b> 10 mod 3 = 1</p>
-
-<br>
-
-<p><b>Example 2:</b> 15 mod 4</p>
-<p><b>Step 1:</b> 15 ÷ 4 = 3 remainder 3</p>
-<p><b>Final Answer:</b> 15 mod 4 = 3</p>
-
-<br>
-
-<p><b>Example 3:</b> Clock system</p>
-<p><b>Step 1:</b> Hours repeat after 12</p>
-<p><b>Step 2:</b> After 12 comes 1 again</p>
-<p><b>Final Answer:</b> This is modular arithmetic with mod 12</p>
-
----
-
-<h3> DIAGRAM</h3>
-
-<pre>
-Clock:
-12 → 1 → 2 → 3 → ... → 11 → back to 12
-(repeats cycle)
-</pre>
-
----
-
-<h3> REAL WORLD APPLICATION</h3>
+<p>
+We write: <code>a ≡ b (mod m)</code> if and only if <i>m</i> divides <code>(a - b)</code>. Equivalently, <code>a</code> and <code>b</code> have the same remainder when divided by <code>m</code>.
+</p>
+<hr>
+<h4>2. Fundamental Properties</h4>
 <ul>
-<li>Digital clocks</li>
-<li>Encryption systems (RSA, cryptography)</li>
-<li>Computer hashing functions</li>
-<li>Calendar systems</li>
+<li><b>Addition:</b> (a + b) mod m = [(a mod m) + (b mod m)] mod m</li>
+<li><b>Multiplication:</b> (a × b) mod m = [(a mod m) × (b mod m)] mod m</li>
+<li><b>Exponentiation:</b> (a^k) mod m = [(a mod m)^k] mod m</li>
 </ul>
-
----
 `,
-
   [
     {
-      "q": "Calculate 17 mod 5",
-      "hint": "divide and find remainder",
-      "steps": [
-        "Step 1: Divide 17 by 5 → 17 ÷ 5",
-        "Step 2: Result is 3 with remainder 2",
-        "Step 3: Remainder is the modular result"
+      q: "Calculate 17 mod 5.",
+      hint: "Find remainder when 17 is divided by 5",
+      steps: [
+        "Step 1: Divide 17 by 5: 17 = 5 × 3 + 2",
+        "Step 2: Identify quotient (3) and remainder (2)",
+        "Step 3: Conclude: 17 mod 5 = 2"
       ],
-      "ans": "2",
-      "why": "Modular arithmetic gives remainder of division"
+      ans: "2",
+      why: "17 divided by 5 yields quotient 3 with remainder 2."
     },
     {
-      "q": "What time is it 3 hours after 10 o'clock on a 12-hour clock?",
-      "hint": "clock arithmetic mod 12",
-      "steps": [
-        "Step 1: Start at 10",
-        "Step 2: Add 3 hours → 10 + 3 = 13",
-        "Step 3: Since clock repeats at 12, use mod 12",
-        "Step 4: 13 mod 12 = 1"
+      q: "Evaluate (14 + 23) mod 6.",
+      hint: "Add then take modulo, or take modulo first",
+      steps: [
+        "Step 1: 14 mod 6 = 2, and 23 mod 6 = 5",
+        "Step 2: Add remainders: 2 + 5 = 7",
+        "Step 3: Reduce modulo 6: 7 mod 6 = 1"
       ],
-      "ans": "1 o'clock",
-      "why": "Clock arithmetic is modular (repeats every 12)"
+      ans: "1",
+      why: "14 + 23 = 37. 37 = 6 × 6 + 1, so 37 mod 6 = 1."
     },
     {
-      "q": "Find 22 mod 7",
-      "hint": "division with remainder",
-      "steps": [
-        "Step 1: 22 ÷ 7",
-        "Step 2: 3 × 7 = 21",
-        "Step 3: Remainder = 22 - 21 = 1"
+      q: "Find (7 × 8) mod 5.",
+      hint: "Multiply then divide by 5",
+      steps: [
+        "Step 1: Compute product: 7 × 8 = 56",
+        "Step 2: Divide 56 by 5: 56 = 5 × 11 + 1",
+        "Step 3: Conclude: 56 mod 5 = 1"
       ],
-      "ans": "1",
-      "why": "Remainder is the result in modular arithmetic"
+      ans: "1",
+      why: "56 divided by 5 gives remainder 1."
     },
     {
-      "q": "Is 21 divisible by 3 using mod?",
-      "hint": "check if remainder is 0",
-      "steps": [
-        "Step 1: Calculate 21 mod 3",
-        "Step 2: 21 ÷ 3 = 7 with remainder 0",
-        "Step 3: Remainder = 0 means divisible"
+      q: "Find 3^4 mod 7.",
+      hint: "Compute powers step by step",
+      steps: [
+        "Step 1: 3^2 = 9 ≡ 2 (mod 7)",
+        "Step 2: 3^4 = (3^2)^2 ≡ 2^2 (mod 7)",
+        "Step 3: 2^2 = 4 (mod 7)"
       ],
-      "ans": "Yes",
-      "why": "If remainder is 0, number is divisible by the modulus"
+      ans: "4",
+      why: "3^4 = 81. 81 = 7 × 11 + 4, so 81 mod 7 = 4."
     }
   ]
 );
@@ -10326,115 +10245,65 @@ add(
   "math",
   "number_theory",
   "Prime Numbers",
-
-  `
-<h2> Prime Numbers</h2>
-<h3> DEEP NOTES</h3>
+  `<h2>Prime Numbers</h2>
+<hr>
+<h3>DEEP NOTES</h3>
+<h4>1. Definition</h4>
 <p>
-Prime numbers are numbers greater than 1 with only two factors: 1 and itself.
+A <b>prime number</b> is a whole number greater than 1 whose only positive divisors are 1 and itself. A number greater than 1 that is not prime is called a <b>composite number</b>.
 </p>
-<h3> EXAMPLES</h3>
-<p><b>Example 1:</b> Prime numbers include 2, 3, 5, 7, 11</p>
-<p><b>Step 1:</b> Each has only two factors </p>
-<p><b>Final Answer:</b> These are all prime numbers</p>
-<br>
-<p><b>Example 2:</b> 13, 17, 19 are prime</p>
-<p><b>Step 1:</b> Check divisibility</p>
-<p><b>Step 2:</b> No factors except 1 and itself</p>
-<p><b>Final Answer:</b> They are prime numbers</p>
-<br>
-<p><b>Example 3:</b> Is 4 a prime number?</p>
-<p><b>Step 1:</b> Factors of 4 are 1, 2, 4</p>
-<p><b>Step 2:</b> More than two factors</p>
-<p><b>Final Answer:</b> 4 is NOT prime (it is composite)</p>
-<h3> DIAGRAM</h3>
-
-<pre>
-Numbers:
-1 2 3 4 5 6 7 8 9 10
-   P   C P C P   C
-(P = Prime, C = Composite)
-</pre>
-
----
-
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Cryptography (RSA encryption)</li>
-<li>Computer security keys</li>
-<li>Data encryption systems</li>
-<li>Random number generation</li>
-</ul>
-
----
+<p><b>Note:</b> The number 1 is neither prime nor composite.</p>
+<hr>
+<h4>2. Fundamental Theorem of Arithmetic</h4>
+<p>
+Every integer greater than 1 either is a prime number itself or can be represented as the product of prime numbers in a way that is unique up to the order of the factors.
+</p>
 `,
-
   [
     {
-      "q": "List first 5 prime numbers",
-      "hint": "numbers with only 1 and self as factors",
-      "steps": [
-        "Step 1: Start from 2 (first prime)",
-        "Step 2: Check 3 → prime",
-        "Step 3: Check 4 → composite (2×2)",
-        "Step 4: Check 5 → prime",
-        "Step 5: Check 6 → composite",
-        "Step 6: Check 7 → prime",
-        "Step 7: Continue until 5 primes found"
+      q: "What is the only even prime number?",
+      hint: "Smallest prime",
+      steps: [
+        "Step 1: Check even numbers: 2, 4, 6, 8...",
+        "Step 2: 2 has only divisors 1 and 2 → prime",
+        "Step 3: Any even number > 2 is divisible by 2 → composite. ∴ 2 is the only even prime"
       ],
-      "ans": "2, 3, 5, 7, 11",
-      "why": "These numbers have only two factors: 1 and themselves"
+      ans: "2",
+      why: "2 is the smallest prime and the only even prime number, because any larger even number is divisible by 2."
     },
     {
-      "q": "Why is 9 not a prime number?",
-      "hint": "check factors",
-      "steps": [
-        "Step 1: List factors of 9",
-        "Step 2: Factors are 1, 3, 9",
-        "Step 3: More than two factors found",
-        "Step 4: Conclude it's not prime"
+      q: "Find the prime factorization of 60.",
+      hint: "Break into prime factors",
+      steps: [
+        "Step 1: 60 = 2 × 30",
+        "Step 2: 30 = 2 × 15",
+        "Step 3: 15 = 3 × 5",
+        "Step 4: Combine prime factors: 2 × 2 × 3 × 5 = 2² × 3 × 5"
       ],
-      "ans": "Not prime (has 3 factors)",
-      "why": "Prime numbers must have exactly two factors"
+      ans: "2² × 3 × 5",
+      why: "60 = 4 × 15 = (2 × 2) × (3 × 5) = 2² × 3 × 5."
     },
     {
-      "q": "Find all prime numbers between 10 and 20",
-      "hint": "check each number",
-      "steps": [
-        "Step 1: Check 11 → prime",
-        "Step 2: Check 12 → composite",
-        "Step 3: Check 13 → prime",
-        "Step 4: Check 14 → composite",
-        "Step 5: Check 15 → composite",
-        "Step 6: Check 16 → composite",
-        "Step 7: Check 17 → prime",
-        "Step 8: Check 18 → composite",
-        "Step 9: Check 19 → prime"
+      q: "Is 29 a prime or composite number?",
+      hint: "Check divisibility by primes ≤ √29 ≈ 5.38 (2, 3, 5)",
+      steps: [
+        "Step 1: Check primes up to √29: 2, 3, 5",
+        "Step 2: 29 is not divisible by 2 (odd), 3 (2+9=11), or 5 (ends in 9)",
+        "Step 3: Conclude: 29 has no divisors other than 1 and 29 → Prime"
       ],
-      "ans": "11, 13, 17, 19",
-      "why": "Only these numbers have exactly two factors in this range"
+      ans: "Prime",
+      why: "29 has no divisors other than 1 and itself, making it prime."
     },
     {
-      "q": "How many prime numbers are less than 10?",
-      "hint": "list and count",
-      "steps": [
-        "Step 1: List primes: 2, 3, 5, 7",
-        "Step 2: Count them",
-        "Step 3: Result = 4"
+      q: "Find the greatest common divisor (GCD) of 24 and 36 using prime factorization.",
+      hint: "Take lowest power of common prime factors",
+      steps: [
+        "Step 1: Prime factorize: 24 = 2³ × 3¹, 36 = 2² × 3²",
+        "Step 2: Identify common prime factors: 2 and 3",
+        "Step 3: Take minimum powers: 2² × 3¹ = 4 × 3 = 12"
       ],
-      "ans": "4",
-      "why": "There are four prime numbers less than 10"
-    },
-    {
-      "q": "Is 1 prime?",
-      "hint": "definition of prime",
-      "steps": [
-        "Step 1: Definition → prime has two factors",
-        "Step 2: 1 has only one factor (1)",
-        "Step 3: Not two factors → not prime"
-      ],
-      "ans": "No",
-      "why": "1 is neither prime nor composite"
+      ans: "12",
+      why: "GCD(24, 36) = 2² × 3 = 12."
     }
   ]
 );
@@ -10443,112 +10312,54 @@ add(
   "math",
   "number_theory",
   "Congruence Relations",
-
-  `
-<h2> Congruence Relations</h2>
-
-<h3> DEEP NOTES</h3>
+  `<h2>Congruence Relations</h2>
+<hr>
+<h3>DEEP NOTES</h3>
+<h4>1. Definition of Congruence</h4>
 <p>
-Two numbers are congruent if they give the same remainder when divided by a number.
+Two integers <i>a</i> and <i>b</i> are said to be <b>congruent modulo m</b> (denoted <code>a ≡ b (mod m)</code>) if their difference <code>a - b</code> is an integer multiple of <code>m</code>.
 </p>
-
-<pre>
-a ≡ b (mod n)
-means a and b leave the same remainder when divided by n
-</pre>
-
----
-
-<h3> EXAMPLES</h3>
-
-<p><b>Example 1:</b> 14 ≡ 2 (mod 4)</p>
-<p><b>Step 1:</b> 14 ÷ 4 = 3 remainder 2</p>
-<p><b>Step 2:</b> 2 ÷ 4 = 0 remainder 2</p>
-<p><b>Final Answer:</b> same remainder → congruent </p>
-
-<br>
-
-<p><b>Example 2:</b> 17 ≡ 5 (mod 6)</p>
-<p><b>Step 1:</b> 17 ÷ 6 = 2 remainder 5</p>
-<p><b>Step 2:</b> 5 ÷ 6 = 0 remainder 5</p>
-<p><b>Final Answer:</b> congruent </p>
-
-<br>
-
-<p><b>Example 3:</b> 25 ≡ 1 (mod 12)</p>
-<p><b>Step 1:</b> 25 ÷ 12 = 2 remainder 1</p>
-<p><b>Step 2:</b> 1 ÷ 12 = 0 remainder 1</p>
-<p><b>Final Answer:</b> congruent </p>
-
----
-
-<h3> DIAGRAM</h3>
-
-<pre>
-Divide → same remainder → congruent
-a mod n = b mod n
-</pre>
-
----
-
-<h3> REAL WORLD APPLICATION</h3>
+<hr>
+<h4>2. Equivalence Relation Properties</h4>
 <ul>
-<li>Cryptographic systems (RSA, hashing)</li>
-<li>Error detection in computing</li>
-<li>Clock arithmetic (time cycles)</li>
-<li>Scheduling systems</li>
+<li><b>Reflexive:</b> a ≡ a (mod m)</li>
+<li><b>Symmetric:</b> If a ≡ b (mod m), then b ≡ a (mod m)</li>
+<li><b>Transitive:</b> If a ≡ b (mod m) and b ≡ c (mod m), then a ≡ c (mod m)</li>
 </ul>
-
----
 `,
-
   [
     {
-      "q": "Find 37 ≡ ? (mod 5)",
-      "hint": "divide and find remainder",
-      "steps": [
-        "Step 1: Divide 37 by 5",
-        "Step 2: 37 ÷ 5 = 7 remainder 2",
-        "Step 3: Identify remainder",
-        "Step 4: Write congruence result"
+      q: "Solve the linear congruence: 2x ≡ 6 (mod 8) for 0 ≤ x < 8.",
+      hint: "Check integers 0 through 7 or divide by gcd",
+      steps: [
+        "Step 1: Note gcd(2, 8) = 2. Since 2 divides 6, there are 2 incongruent solutions",
+        "Step 2: Divide congruence by 2: x ≡ 3 (mod 4)",
+        "Step 3: Find values in range 0 ≤ x < 8: x = 3 and x = 3 + 4 = 7"
       ],
-      "ans": "2",
-      "why": "Congruence gives the remainder after division by the modulus"
+      ans: "x = 3, 7",
+      why: "2(3) = 6 ≡ 6 (mod 8) and 2(7) = 14 ≡ 6 (mod 8)."
     },
     {
-      "q": "Check if 18 ≡ 4 (mod 7)",
-      "hint": "compare remainders",
-      "steps": [
-        "Step 1: Find remainder of 18 ÷ 7 → 4",
-        "Step 2: Find remainder of 4 ÷ 7 → 4",
-        "Step 3: Compare remainders",
-        "Step 4: Decide if congruent"
+      q: "Is 38 ≡ 14 (mod 8)?",
+      hint: "Check if (38 - 14) is divisible by 8",
+      steps: [
+        "Step 1: Calculate difference: 38 - 14 = 24",
+        "Step 2: Check divisibility by 8: 24 ÷ 8 = 3 (exact integer)",
+        "Step 3: Conclude: 38 ≡ 14 (mod 8) is True"
       ],
-      "ans": "Yes",
-      "why": "Both numbers leave the same remainder when divided by 7"
+      ans: "Yes",
+      why: "38 - 14 = 24, which is a multiple of 8 (8 × 3 = 24)."
     },
     {
-      "q": "Find x if x ≡ 3 (mod 6) and x < 20",
-      "hint": "list values in sequence",
-      "steps": [
-        "Step 1: Write numbers congruent to 3 mod 6",
-        "Step 2: Sequence: 3, 9, 15, 21...",
-        "Step 3: Select values less than 20",
-        "Step 4: Possible answers: 3, 9, 15"
+      q: "Find the modular inverse of 3 modulo 7.",
+      hint: "Find integer x such that 3x ≡ 1 (mod 7)",
+      steps: [
+        "Step 1: Test multiples of 3 modulo 7: 3(1)=3, 3(2)=6, 3(3)=9 ≡ 2, 3(4)=12",
+        "Step 2: 12 mod 7 = 5; next test 3(5) = 15",
+        "Step 3: 15 mod 7 = 1 (since 15 = 2 × 7 + 1). ∴ inverse is 5"
       ],
-      "ans": "3, 9, 15",
-      "why": "All numbers differ by multiples of 6 from 3"
-    },
-    {
-      "q": "What is 52 mod 9?",
-      "hint": "divide 52 by 9",
-      "steps": [
-        "Step 1: Divide 52 by 9",
-        "Step 2: 52 ÷ 9 = 5 remainder 7",
-        "Step 3: Identify remainder"
-      ],
-      "ans": "7",
-      "why": "Modulus gives the remainder after division"
+      ans: "5",
+      why: "3 × 5 = 15 ≡ 1 (mod 7), so 5 is the modular multiplicative inverse of 3 modulo 7."
     }
   ]
 );
@@ -10557,136 +10368,61 @@ add(
   "math",
   "number_theory",
   "Cryptography Basics",
-
-  `
-<h2> Cryptography Basics</h2>
-<h3> DEEP NOTES</h3>
+  `<h2>Cryptography Basics</h2>
+<hr>
+<h3>DEEP NOTES</h3>
+<h4>1. Introduction to Cryptography</h4>
 <p>
-Cryptography uses modular arithmetic, prime numbers, and number theory to secure communication systems like RSA encryption.
+Cryptography is the practice and study of techniques for secure communication in the presence of adversaries. It relies heavily on number theory, modular arithmetic, and one-way mathematical functions.
 </p>
-
----
-
-<h3> KEY IDEA</h3>
+<hr>
+<h4>2. Symmetric vs Asymmetric Cryptography</h4>
 <ul>
-  <li>Encryption converts readable data into coded form using a mathematical key</li>
-  <li>Decryption reverses the process using a private key</li>
-  <li>Security depends on problems like large prime factorization</li>
+<li><b>Symmetric Encryption:</b> Same secret key used for encryption and decryption (e.g., Caesar cipher, AES).</li>
+<li><b>Asymmetric (Public Key) Encryption:</b> Uses a public key for encryption and a private key for decryption (e.g., RSA).</li>
 </ul>
-
----
-
-<h3> EXAMPLES (WITH EXAM-STYLE MATHEMATICAL WORKING)</h3>
-
-<p><b>Example 1: Simple modular encryption</b></p>
-<p><b>Question:</b> Encrypt message value 7 using rule E(x) = (x + 5) mod 10</p>
-<p><b>Step 1:</b> Substitute x = 7</p>
-<p><b>Step 2:</b> Compute 7 + 5 = 12</p>
-<p><b>Step 3:</b> Apply modulo → 12 mod 10</p>
-<p><b>Step 4:</b> 12 ÷ 10 = remainder 2</p>
-<p><b>Final Answer:</b> 2</p>
-
-<br>
-
-<p><b>Example 2: Modular decryption</b></p>
-<p><b>Question:</b> Decrypt C = 4 using D(x) = (x - 3) mod 10</p>
-<p><b>Step 1:</b> Substitute x = 4</p>
-<p><b>Step 2:</b> Compute 4 - 3 = 1</p>
-<p><b>Step 3:</b> Apply modulo → 1 mod 10 = 1</p>
-<p><b>Final Answer:</b> 1</p>
-
-<br>
-
-<p><b>Example 3: RSA-style idea (conceptual calculation)</b></p>
-<p><b>Question:</b> Why does RSA use large primes?</p>
-<p><b>Step 1:</b> Choose primes p and q</p>
-<p><b>Step 2:</b> Multiply n = p × q (easy)</p>
-<p><b>Step 3:</b> Factorizing n back into p and q is hard</p>
-<p><b>Final Answer:</b> Security comes from difficulty of reverse factorization</p>
-
----
-
-<h3> ORIGINAL EXAMPLES</h3>
-
-<p><b>Example 4:</b> Encrypt using modular arithmetic</p>
-<p><b>Example 5:</b> Public key encoding system</p>
-<p><b>Example 6:</b> Prime-based key generation</p>
-
----
-
-<h3> DIAGRAM</h3>
-
-<pre>
-Plain Text (M)
-      ↓  Encryption (mod / exponent)
-Cipher Text (C)
-      ↓  Decryption (inverse operation)
-Plain Text (M)
-</pre>
-
----
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>WhatsApp message encryption</li>
-<li>Banking security systems</li>
-<li>Online transactions (HTTPS)</li>
-<li>Digital signatures</li>
-</ul>
-
----
+<hr>
+<h4>3. Caesar Cipher</h4>
+<p>
+A substitution cipher where each letter in the plaintext is shifted by a fixed number of positions <i>k</i> down the alphabet:
+<br><code>E(x) = (x + k) mod 26</code>
+<br><code>D(x) = (x - k) mod 26</code>
+</p>
 `,
-
   [
     {
-      "q": "Encrypt a message using a simple shift: E(x) = (x + 7) mod 26. If x = 10, find ciphertext",
-      "hint": "substitute into formula",
-      "steps": [
-        "Step 1: Write formula E(x) = (x + 7) mod 26",
-        "Step 2: Substitute x = 10",
-        "Step 3: Compute 10 + 7 = 17",
-        "Step 4: Apply mod 26 → 17 mod 26 = 17",
-        "Step 5: Final ciphertext = 17"
+      q: "Encrypt the letter 'D' using a Caesar cipher with shift k = 3.",
+      hint: "D is letter 3 (A=0, B=1, C=2, D=3). Add shift modulo 26",
+      steps: [
+        "Step 1: Represent 'D' as an integer: A=0, B=1, C=2, D=3",
+        "Step 2: Apply shift: E(3) = (3 + 3) mod 26 = 6",
+        "Step 3: Convert 6 back to letter: 0=A, 1=B, 2=C, 3=D, 4=E, 5=F, 6=G"
       ],
-      "ans": "17",
-      "why": "Modular addition shifts values within a fixed alphabet range"
+      ans: "G",
+      why: "Shifting 'D' forward by 3 alphabet positions yields 'G'."
     },
     {
-      "q": "Decrypt C = 15 using D(x) = (x - 4) mod 26",
-      "hint": "reverse operation",
-      "steps": [
-        "Step 1: Write formula D(x) = (x - 4) mod 26",
-        "Step 2: Substitute x = 15",
-        "Step 3: Compute 15 - 4 = 11",
-        "Step 4: Apply mod 26 → 11 mod 26 = 11",
-        "Step 5: Final plaintext = 11"
+      q: "What mathematical branch provides the foundation for RSA public key cryptography?",
+      hint: "Study of integers and primes",
+      steps: [
+        "Step 1: RSA relies on the difficulty of factoring large composite numbers into prime factors",
+        "Step 2: It uses Euler's totient theorem and modular arithmetic",
+        "Step 3: Conclude: Number Theory"
       ],
-      "ans": "11",
-      "why": "Decryption reverses the encryption shift"
+      ans: "Number Theory",
+      why: "RSA cryptography is based on number theory principles, specifically modular arithmetic and prime factorization."
     },
     {
-      "q": "If p = 3 and q = 11, find n used in RSA setup",
-      "hint": "multiply primes",
-      "steps": [
-        "Step 1: Identify primes p = 3, q = 11",
-        "Step 2: Compute n = p × q",
-        "Step 3: Multiply 3 × 11",
-        "Step 4: n = 33"
+      q: "Decrypt the letter 'K' with Caesar shift k = 4.",
+      hint: "Shift backward by 4 positions",
+      steps: [
+        "Step 1: Identify alphabet position of 'K': K is the 11th letter (index 10, A=0)",
+        "Step 2: Shift backwards by 4: (10 - 4) mod 26 = 6",
+        "Step 3: Convert index 6 back to letter: Index 6 corresponds to 'G'"
       ],
-      "ans": "33",
-      "why": "RSA security starts by multiplying two primes"
-    },
-    {
-      "q": "Why does RSA rely on prime factorization difficulty?",
-      "hint": "reverse problem",
-      "steps": [
-        "Step 1: Multiply two large primes to get n",
-        "Step 2: Observe that multiplication is easy",
-        "Step 3: Try reversing n into primes",
-        "Step 4: Recognize this is computationally hard",
-        "Step 5: Conclude security comes from difficulty"
-      ],
-      "ans": "Factorization is hard",
-      "why": "Security depends on the difficulty of reversing prime multiplication"
+      ans: "G",
+      why: "Shifting 'K' backward by 4 positions gives 'G' (G, H, I, J, K)."
     }
   ]
 );
+

@@ -338,6 +338,8 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
             questions (
               id,
               question,
+              type,
+              points,
               hint,
               explain,
               position,
@@ -358,18 +360,60 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
               (a, b) => a.position - b.position,
             );
             sortedQuestions.forEach((qObj) => {
-              const correctAnswers = (qObj.answers || [])
+              const answers = qObj.answers || [];
+              const correctAnswers = answers
                 .filter((a) => a.is_correct)
                 .map((a) => a.answer_text);
+
+              let why = qObj.explain || "";
+              let sol = qObj.explain || "";
+              let steps = [];
+              let options = [];
+              let conceptId = null;
+              let skillId = null;
+              let subskillId = null;
+
+              if (qObj.explain && typeof qObj.explain === "string" && qObj.explain.trim().startsWith("{")) {
+                try {
+                  const meta = JSON.parse(qObj.explain);
+                  if (meta && typeof meta === "object") {
+                    why = meta.why || why;
+                    sol = meta.sol || meta.solution || sol;
+                    if (Array.isArray(meta.steps) && meta.steps.length > 0) {
+                      steps = meta.steps;
+                    }
+                    if (Array.isArray(meta.options) && meta.options.length > 0) {
+                      options = meta.options.map((o) => (typeof o === "object" ? o.text : String(o)));
+                    }
+                    conceptId = meta.conceptId || null;
+                    skillId = meta.skillId || null;
+                    subskillId = meta.subskillId || null;
+                  }
+                } catch (e) {}
+              }
+
+              if (options.length === 0 && answers.length > 1) {
+                options = answers.map((a) => a.answer_text);
+              }
+
+              const resolvedAns = correctAnswers.length === 1
+                ? correctAnswers[0]
+                : (correctAnswers.length > 1 ? correctAnswers : (answers[0]?.answer_text || ""));
+
               qs.push({
+                id: qObj.id,
                 q: qObj.question,
                 hint: qObj.hint || "",
-                ans: correctAnswers.length === 1 ? correctAnswers[0] : (correctAnswers.length > 1 ? correctAnswers : ""),
-                explain: qObj.explain || "",
-                why: qObj.explain || "",
-                sol: qObj.explain || "",
-                steps: Array.isArray(qObj.steps) ? qObj.steps : [],
-                type: qObj.type || null,
+                ans: resolvedAns,
+                explain: why,
+                why: why,
+                sol: sol,
+                steps: steps,
+                type: qObj.type || (options.length > 1 ? "mcq" : "text"),
+                options: options,
+                conceptId,
+                skillId,
+                subskillId,
               });
             });
           }
@@ -467,6 +511,8 @@ app.post("/api/grade", async (req, res) => {
             questions (
               id,
               question,
+              type,
+              points,
               hint,
               explain,
               position,
@@ -486,16 +532,61 @@ app.post("/api/grade", async (req, res) => {
           );
           if (sortedQuestions[qId]) {
             const questionObj = sortedQuestions[qId];
-            const correctAnswers = (questionObj.answers || [])
+            const answers = questionObj.answers || [];
+            const correctAnswers = answers
               .filter((a) => a.is_correct)
               .map((a) => a.answer_text);
+
+            let why = questionObj.explain || "Demonstrate clear step-by-step reasoning.";
+            let sol = questionObj.explain || "Demonstrate clear step-by-step reasoning.";
+            let steps = [];
+            let options = [];
+            let conceptId = null;
+            let skillId = null;
+            let subskillId = null;
+
+            if (questionObj.explain && typeof questionObj.explain === "string" && questionObj.explain.trim().startsWith("{")) {
+              try {
+                const meta = JSON.parse(questionObj.explain);
+                if (meta && typeof meta === "object") {
+                  why = meta.why || why;
+                  sol = meta.sol || meta.solution || sol;
+                  if (Array.isArray(meta.steps) && meta.steps.length > 0) {
+                    steps = meta.steps;
+                  }
+                  if (Array.isArray(meta.options) && meta.options.length > 0) {
+                    options = meta.options.map((o) => (typeof o === "object" ? o.text : String(o)));
+                  }
+                  conceptId = meta.conceptId || null;
+                  skillId = meta.skillId || null;
+                  subskillId = meta.subskillId || null;
+                }
+              } catch (e) {}
+            }
+
+            if (options.length === 0 && answers.length > 1) {
+              options = answers.map((a) => a.answer_text);
+            }
+
+            const resolvedAns = correctAnswers.length === 1
+              ? correctAnswers[0]
+              : (correctAnswers.length > 1 ? correctAnswers : (answers[0]?.answer_text || ""));
+
             question = {
+              id: questionObj.id,
               q: questionObj.question,
               hint: questionObj.hint || "",
-              ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
-              why: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-              sol: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-              mark: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
+              ans: resolvedAns,
+              explain: why,
+              why: why,
+              sol: sol,
+              mark: why,
+              steps: steps,
+              type: questionObj.type || (options.length > 1 ? "mcq" : "text"),
+              options: options,
+              conceptId,
+              skillId,
+              subskillId,
             };
           }
         }
