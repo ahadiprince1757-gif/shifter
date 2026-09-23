@@ -195,11 +195,14 @@ function keywordSimilarity(
   const correctTokens =
     tokenize(correctAnswer);
 
+  // Keep tokens that are WORDS (not numbers), with length >= 4.
+  // BUG FIX: was `!Number.isNaN` (inverted) — was keeping only numbers,
+  // discarding all meaningful words. Correct form is `Number.isNaN`.
   const meaningfulCorrectTokens =
     correctTokens.filter(
       (token) =>
         token.length >= 4 &&
-        !Number.isNaN(Number(token))
+        Number.isNaN(Number(token))
     );
 
   if (!meaningfulCorrectTokens.length) {
@@ -640,6 +643,14 @@ export function evaluateAnswer(
   question,
   userWork = ""
 ) {
+  // TIXAR GRADER DEBUG — remove in production
+  if (process.env.NODE_ENV !== "production" || import.meta.env?.DEV) {
+    console.log("[TIXAR GRADER] evaluateAnswer called:", {
+      userAnswer,
+      questionText: question?.q || question?.stem,
+      storedAnswer: question?.ans,
+    });
+  }
   // ----------------------------------------------------------
   // Missing question
   // ----------------------------------------------------------

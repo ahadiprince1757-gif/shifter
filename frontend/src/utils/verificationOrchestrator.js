@@ -429,7 +429,18 @@ function compareNumericOrString(candidate, canonical) {
     return Math.abs(numCand - numCanon) <= 0.01;
   }
 
-  return normCand.includes(normCanon) || normCanon.includes(normCand);
+  // Substring match ONLY when one term is substantially contained in the other
+  // and not trivially short — prevents "cat" matching "catalogue".
+  if (
+    normCand.length >= 6 &&
+    normCanon.length >= 6 &&
+    normCand.length / normCanon.length > 0.6 &&
+    normCanon.length / normCand.length > 0.6
+  ) {
+    return normCand.includes(normCanon) || normCanon.includes(normCand);
+  }
+
+  return false;
 }
 
 function compareLanguageAnswer(candidate, canonical, acceptableAnswers = []) {
