@@ -70,7 +70,9 @@ function MasteredPhase({
             {failedQuestions.map((item, index) => (
               <div key={index} className="m-review-item">
                 <div className="m-review-q">Question {item.qIdx + 1}: {item.question}</div>
-                <div className="m-review-ans">Correct: {item.correctAnswer}</div>
+                {item.correctAnswer && String(item.correctAnswer).trim().toLowerCase() !== "undefined" && (
+                  <div className="m-review-ans">Correct: {item.correctAnswer}</div>
+                )}
                 {item.solution && <div className="m-review-sol">{item.solution}</div>}
               </div>
             ))}

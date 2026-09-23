@@ -1202,6 +1202,75 @@ export class QuestionMutator {
     }
   }
 
+  _isMissingValue(value) {
+    if (value === undefined || value === null) {
+      return true;
+    }
+
+    if (typeof value === "string") {
+      const normalized = value.trim().toLowerCase();
+
+      return (
+        normalized === "" ||
+        normalized === "undefined" ||
+        normalized === "null" ||
+        normalized === "n/a"
+      );
+    }
+
+    return false;
+  }
+
+  _resolveAnswer(question) {
+    return this._firstUsable(
+      question?.ans,
+      question?.answer,
+      question?.correctAnswer,
+      question?.correct_answer
+    );
+  }
+
+  _firstUsable(...values) {
+    for (const value of values) {
+      if (!this._isMissingValue(value)) {
+        return value;
+      }
+    }
+
+    return null;
+  }
+
+  _resolveExplanation(question) {
+    return this._firstUsable(
+      question?.explain,
+      question?.explanation,
+      question?.why,
+      question?.reason,
+      question?.mark
+    );
+  }
+
+  _resolveSolution(question) {
+    return (
+      this._firstUsable(
+        question?.sol,
+        question?.solution,
+        question?.soln
+      ) || this._resolveExplanation(question)
+    );
+  }
+
+  _resolveSteps(question) {
+    if (!Array.isArray(question?.steps)) {
+      return [];
+    }
+
+    return question.steps
+      .filter((step) => !this._isMissingValue(step))
+      .map((step) => String(step).trim())
+      .filter(Boolean);
+  }
+
   /* ===============================================================
    * INDEPENDENT VERIFICATION
    * =============================================================== */
@@ -1248,13 +1317,29 @@ export class QuestionMutator {
      * ---------------------------------------------------------------
      */
 
-    if (
-      candidate.ans === undefined &&
-      candidate.answer === undefined
-    ) {
+    const answer = this._resolveAnswer(candidate);
+
+    if (this._isMissingValue(answer)) {
       return {
         valid: false,
-        reason: "MISSING_ANSWER",
+        reason: "MISSING_AUTHORITATIVE_MUTATION_ANSWER",
+      };
+    }
+
+    /*
+     * ---------------------------------------------------------------
+     * EXPLANATION & STEPS
+     * ---------------------------------------------------------------
+     */
+
+    const explanation = this._resolveExplanation(candidate);
+    const solution = this._resolveSolution(candidate);
+    const steps = this._resolveSteps(candidate);
+
+    if (!explanation && !solution && steps.length === 0) {
+      return {
+        valid: false,
+        reason: "MISSING_MUTATION_EXPLANATION",
       };
     }
 
@@ -1971,6 +2056,44 @@ export class QuestionMutator {
         candidate
       );
 
+    const answer =
+      this._resolveAnswer(result);
+
+    const explanation =
+      this._resolveExplanation(result);
+
+    const solution =
+      this._resolveSolution(result);
+
+    const steps =
+      this._resolveSteps(result);
+
+    result.q =
+      String(
+        result.q ??
+        result.stem ??
+        ""
+      ).trim();
+
+    result.ans = answer;
+
+    result.explain =
+      explanation || "";
+
+    result.why =
+      result.why ||
+      explanation ||
+      "";
+
+    result.sol =
+      solution || "";
+
+    result.steps =
+      steps;
+
+    result.source =
+      "MUTATED";
+
     const existingMetadata =
       result.metadata || {};
 
@@ -2172,6 +2295,13 @@ export class QuestionMutator {
       },
     };
 
+    fallback.ans = this._resolveAnswer(fallback);
+    fallback.explain = this._resolveExplanation(fallback) || "";
+    fallback.why = fallback.why || fallback.explain || "";
+    fallback.sol = this._resolveSolution(fallback) || "";
+    fallback.steps = this._resolveSteps(fallback);
+    fallback.source = blueprint?.source || "CURRICULUM";
+
     return fallback;
   }
 
@@ -2238,18 +2368,12 @@ export class QuestionMutator {
      */
     const aliases = {
       mathematics: "math",
-      "business studies":
-        "business",
-      "history and government":
-        "history",
-      "computer studies":
-        "computer",
-      "home science":
-        "homescience",
+      "computer studies": "computer",
     };
 
     if (
-      aliases[key]
+      aliases[key] &&
+      this._mutators[aliases[key]]
     ) {
       return aliases[key];
     }

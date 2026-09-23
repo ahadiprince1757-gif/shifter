@@ -117,7 +117,7 @@ function SpacedRetestPhase({ dueReviews = [], onComplete }) {
             <div className="retest-feedback-status">
               {feedback.isCorrect ? "✓ Retest Correct" : "✗ Review Needed"}
             </div>
-            {feedback.correctAnswer && !feedback.isCorrect && (
+            {feedback.correctAnswer && String(feedback.correctAnswer).trim().toLowerCase() !== "undefined" && !feedback.isCorrect && (
               <div className="retest-answer">Correct: {feedback.correctAnswer}</div>
             )}
             <button className="btn-p retest-next-btn" onClick={handleNext}>

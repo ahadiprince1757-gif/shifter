@@ -178,6 +178,10 @@ const LOCAL_CONTENT_MAP = (() => {
         ans: q.ans,
         explain: q.why || "",
         why: q.why || "",
+        sol: q.sol || q.why || "",
+        steps: Array.isArray(q.steps) ? q.steps : [],
+        type: q.type || null,
+        mark: q.mark || "",
       })),
     };
     const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
@@ -360,9 +364,12 @@ app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
               qs.push({
                 q: qObj.question,
                 hint: qObj.hint || "",
-                ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
+                ans: correctAnswers.length === 1 ? correctAnswers[0] : (correctAnswers.length > 1 ? correctAnswers : ""),
                 explain: qObj.explain || "",
                 why: qObj.explain || "",
+                sol: qObj.explain || "",
+                steps: Array.isArray(qObj.steps) ? qObj.steps : [],
+                type: qObj.type || null,
               });
             });
           }
@@ -512,7 +519,10 @@ app.post("/api/grade", async (req, res) => {
 
   // ── BACKEND SELF-VERIFICATION (Overrides corrupted DB answers) ───────────
   const qText = String(question.q || "").toLowerCase();
-  let rawAns = question.ans;
+  let rawAns =
+    question.ans !== undefined && question.ans !== null
+      ? question.ans
+      : question.a || question.answer || question.Answer || question.sol || "";
   const rectMatch =
     qText.match(/(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i) ||
     qText.match(/(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i);
@@ -551,7 +561,11 @@ app.post("/api/grade", async (req, res) => {
       isCorrect = normalize(correctAnswer) === uAns;
     }
 
-    const mainCorrectAnswerStr = Array.isArray(correctAnswer) ? correctAnswer.join(" • ") : String(correctAnswer);
+    const mainCorrectAnswerStr = Array.isArray(correctAnswer)
+      ? correctAnswer.filter((c) => c !== undefined && c !== null && String(c).toLowerCase() !== "undefined").join(" • ")
+      : (correctAnswer !== undefined && correctAnswer !== null && String(correctAnswer).toLowerCase() !== "undefined")
+        ? String(correctAnswer)
+        : "";
     logger.action("GRADE_ANSWER", "success", {
       isCorrect,
       questionIndex: qId,
@@ -559,8 +573,9 @@ app.post("/api/grade", async (req, res) => {
     res.json({
       isCorrect,
       correctAnswer: mainCorrectAnswerStr,
-      solution: question.sol || question.why,
-      mark: question.mark,
+      solution: question.sol || question.why || question.explain || "",
+      steps: Array.isArray(question.steps) ? question.steps : [],
+      mark: question.mark || "",
     });
   } catch (err) {
     logger.error("GRADE_ANSWER", err);

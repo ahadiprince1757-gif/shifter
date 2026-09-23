@@ -526,8 +526,11 @@ function verifyQuestion(
 
     let solution =
       question.sol ||
+      question.solution ||
       question.why ||
       question.explain ||
+      question.reason ||
+      question.mark ||
       "Review the answer.";
 
     let steps =
@@ -536,19 +539,27 @@ function verifyQuestion(
         ? question.steps
         : null;
 
+    const isCurriculum =
+      question.source === "CURRICULUM" ||
+      (!question.source && !question.mutation);
+
+    // Curriculum answers are authoritative and never overridden.
+    // Mutated questions can be overridden if verification independently recalculates.
     if (
+      !isCurriculum &&
       verification?.wasOverridden
     ) {
       verifiedAnswer =
         verification.verifiedAnswer;
 
       console.warn(
-        `[Tixar Grader] Question verifier proposed an answer override for: "${questionText}"`
+        `[Tixar Grader] Question verifier proposed an answer override for mutated question: "${questionText}"`
       );
     }
 
     if (
-      verification?.explanation
+      verification?.explanation &&
+      (!question.sol && !question.why && !question.explain && !question.reason)
     ) {
       solution =
         verification.explanation;
@@ -670,7 +681,13 @@ export function evaluateAnswer(
   // ----------------------------------------------------------
 
   let rawAnswer =
-    question.ans;
+    question.ans !== undefined && question.ans !== null
+      ? question.ans
+      : (question.answer ?? question.a ?? question.Answer ?? question.correctAnswer ?? "");
+
+  if (typeof rawAnswer === "string" && rawAnswer.trim().toLowerCase() === "undefined") {
+    rawAnswer = "";
+  }
 
   const questionText =
     question.q ||
@@ -918,13 +935,17 @@ export function evaluateAnswer(
 
   const mainCorrectAnswerStr =
     Array.isArray(rawAnswer)
-      ? rawAnswer.join(" • ")
-      : String(rawAnswer ?? "");
+      ? rawAnswer
+          .filter((v) => v !== undefined && v !== null && String(v).trim().toLowerCase() !== "undefined")
+          .join(" • ")
+      : (rawAnswer !== undefined && rawAnswer !== null && String(rawAnswer).trim().toLowerCase() !== "undefined"
+          ? String(rawAnswer)
+          : "");
 
   const correctAnswerList =
     Array.isArray(rawAnswer)
-      ? rawAnswer
-      : [mainCorrectAnswerStr];
+      ? rawAnswer.filter((v) => v !== undefined && v !== null && String(v).trim().toLowerCase() !== "undefined")
+      : (mainCorrectAnswerStr ? [mainCorrectAnswerStr] : []);
 
   // ----------------------------------------------------------
   // Return structured evaluation

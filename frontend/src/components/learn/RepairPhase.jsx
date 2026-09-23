@@ -284,7 +284,7 @@ function RepairPhase({
                 <div className="repair-feedback-status">
                   {feedback.isCorrect ? "✓ Correct" : attempts >= 2 ? "Moving on" : "✗ Try once more"}
                 </div>
-                {feedback.correctAnswer && !feedback.isCorrect && (
+                {feedback.correctAnswer && String(feedback.correctAnswer).trim().toLowerCase() !== "undefined" && !feedback.isCorrect && (
                   <div className="repair-feedback-answer">
                     Correct: <strong>{feedback.correctAnswer}</strong>
                   </div>

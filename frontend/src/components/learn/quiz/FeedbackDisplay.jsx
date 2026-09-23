@@ -29,68 +29,40 @@ function FeedbackDisplay({
   const confidenceScore = feedback.analysis?.dimensions?.diagnosticConfidence || null;
   const recurrence = feedback.analysis?.recurrence || null;
 
-  // Extract and clean solution & steps to eliminate duplicated headings & text
-  const { displaySteps, displayExplanation } = (() => {
-    let rawSol = String(feedback.solution || "").trim();
-    let stepsList = Array.isArray(feedback.steps) ? [...feedback.steps] : [];
+  // ============================================================================
+  // CANONICAL LEARNING CONTENT
+  // ============================================================================
 
-    // Filter out generic fallback steps
-    stepsList = stepsList.filter((step) => {
-      const s = String(step || "").toLowerCase();
-      return !(
-        s.includes("identify the modified numerical quantity") ||
-        s.includes("determine how the changed quantity affects") ||
-        s.includes("recalculate the result") ||
-        s.includes("check units") ||
-        s.includes("read carefully")
-      );
-    });
+  const displaySteps = Array.isArray(feedback.steps)
+    ? feedback.steps
+        .filter(
+          (step) =>
+            step !== null &&
+            step !== undefined &&
+            String(step).trim() &&
+            String(step).trim().toLowerCase() !== "undefined"
+        )
+        .map((step) => String(step).trim())
+    : [];
 
-    // Extract step lines if stepsList is empty but rawSol contains "Step 1:"
-    if (stepsList.length === 0 && /(?:^|\n)\s*step\s*\d+/i.test(rawSol)) {
-      const lines = rawSol.split(/\r?\n/);
-      const extractedSteps = [];
-      const nonStepLines = [];
+  const displayExplanation =
+    typeof feedback.solution === "string"
+      ? feedback.solution.trim()
+      : feedback.solution
+        ? String(feedback.solution).trim()
+        : "";
 
-      for (let i = 0; i < lines.length; i++) {
-        const line = lines[i].trim();
-        if (/^steps?\s*:/i.test(line)) continue;
-        if (/^correct\s*answer\s*:/i.test(line)) {
-          if (i + 1 < lines.length && lines[i + 1].trim().toLowerCase() === rawAnswer.trim().toLowerCase()) {
-            i++;
-          }
-          continue;
-        }
-        if (/^explanation\s*:/i.test(line)) continue;
+  const hasAnswer =
+    typeof rawAnswer === "string"
+      ? rawAnswer.trim() &&
+        rawAnswer.trim().toLowerCase() !== "undefined"
+      : Boolean(rawAnswer);
 
-        if (/^step\s*\d+/i.test(line)) {
-          extractedSteps.push(line);
-        } else if (extractedSteps.length > 0 && line && !line.toLowerCase().startsWith("explanation:")) {
-          extractedSteps.push(line);
-        } else {
-          nonStepLines.push(line);
-        }
-      }
+  const hasExplanation =
+    Boolean(displayExplanation) && displayExplanation.toLowerCase() !== "undefined";
 
-      if (extractedSteps.length > 0) {
-        stepsList = extractedSteps;
-        rawSol = nonStepLines.join("\n").trim();
-      }
-    }
-
-    // Clean up residual headings from rawSol
-    let cleanSol = rawSol
-      .replace(/(?:^|\n)\s*steps?\s*:\s*/gi, "\n")
-      .replace(/(?:^|\n)\s*correct\s*answer\s*:\s*[^\n]*/gi, "")
-      .replace(/(?:^|\n)\s*explanation\s*:\s*/gi, "\n")
-      .trim();
-
-    if (cleanSol.toLowerCase() === rawAnswer.trim().toLowerCase() || /^\d+$/.test(cleanSol)) {
-      cleanSol = "";
-    }
-
-    return { displaySteps: stepsList, displayExplanation: cleanSol };
-  })();
+  const hasSteps =
+    displaySteps.length > 0;
 
   return (
     <div className={`fb-card ${isCorrect ? "fb-correct" : "fb-needs-review"}`}>
@@ -165,20 +137,20 @@ function FeedbackDisplay({
         </div>
       )}
 
-      {/* Correct Target Answer — Always shown */}
-      {rawAnswer && (
+      {/* Correct Target Answer — Always shown when answer exists */}
+      {hasAnswer && (
         <div className="fb-correct-answer-box">
           <div className="fb-section-title">Correct Answer</div>
           <div className="fb-answer-value">
             <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-              {rawAnswer}
+              {String(rawAnswer)}
             </ReactMarkdown>
           </div>
         </div>
       )}
 
       {/* Step-by-Step Solution — Always shown when steps exist */}
-      {displaySteps.length > 0 && (
+      {hasSteps && (
         <div className="fb-steps-container">
           <div className="fb-section-title">How to Solve It</div>
           <div className="fb-steps-timeline">
@@ -197,7 +169,7 @@ function FeedbackDisplay({
       )}
 
       {/* Explanation — Always shown when explanation exists */}
-      {displayExplanation && (
+      {hasExplanation && (
         <div className="fb-explanation-box">
           <div className="fb-section-title">Explanation</div>
           <div className="fb-explanation-text">
