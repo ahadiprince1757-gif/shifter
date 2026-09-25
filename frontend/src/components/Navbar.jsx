@@ -93,7 +93,11 @@ export default function Navbar({
   const isHeaderVisible = isVisible || menuOpen || searchOpen;
 
   const handleLogoClick = () => {
-    navigate("/subjects");
+    if (session) {
+      navigate("/subjects");
+    } else {
+      navigate("/welcome");
+    }
     setMenuOpen(false);
   };
 
@@ -124,39 +128,43 @@ export default function Navbar({
         </div>
 
         {/* Desktop: breadcrumbs in app */}
-        <div className="lnav-breadcrumbs">
-          <Breadcrumbs />
-        </div>
+        {session && (
+          <div className="lnav-breadcrumbs">
+            <Breadcrumbs />
+          </div>
+        )}
 
         {/* Desktop: search bar in app */}
-        {curriculum && (
+        {session && curriculum && (
           <div className="lnav-search-desktop">
             <GlobalSearch curriculum={curriculum} navigateToTopic={handleSearchNavigate} />
           </div>
         )}
 
         {/* Desktop navigation tabs */}
-        <nav className="lnav-nav-links" aria-label="Main navigation">
-          {APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
-            const isActive = location.pathname.startsWith(path) || (path === "/subjects" && location.pathname === "/");
-            return (
-              <button
-                key={path}
-                className={`lnav-tab-btn ${isActive ? "lnav-tab-btn--active" : ""}`}
-                onClick={() => { navigate(path); setMenuOpen(false); }}
-                aria-current={isActive ? "page" : undefined}
-              >
-                <Icon />
-                {label}
-              </button>
-            );
-          })}
-        </nav>
+        {session && (
+          <nav className="lnav-nav-links" aria-label="Main navigation">
+            {APP_NAV_ITEMS.map(({ path, label, icon: Icon }) => {
+              const isActive = location.pathname.startsWith(path) || (path === "/subjects" && location.pathname === "/");
+              return (
+                <button
+                  key={path}
+                  className={`lnav-tab-btn ${isActive ? "lnav-tab-btn--active" : ""}`}
+                  onClick={() => { navigate(path); setMenuOpen(false); }}
+                  aria-current={isActive ? "page" : undefined}
+                >
+                  <Icon />
+                  {label}
+                </button>
+              );
+            })}
+          </nav>
+        )}
 
         {/* Right side controls */}
         <div className="lnav-desktop-controls">
           {/* App: search icon (mobile trigger) */}
-          {curriculum && (
+          {session && curriculum && (
             <button
               className="lnav-search-icon"
               aria-label={searchOpen ? "Close search" : "Open search"}
@@ -176,25 +184,27 @@ export default function Navbar({
         </div>
 
         {/* Hamburger – shown on mobile */}
-        <button
-          className="lnav-hamburger"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          onClick={() => { setMenuOpen((o) => !o); setSearchOpen(false); }}
-        >
-          {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
-        </button>
+        {session && (
+          <button
+            className="lnav-hamburger"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => { setMenuOpen((o) => !o); setSearchOpen(false); }}
+          >
+            {menuOpen ? <CloseIcon /> : <HamburgerIcon />}
+          </button>
+        )}
       </nav>
 
       {/* Mobile search panel */}
-      {curriculum && searchOpen && (
+      {session && curriculum && searchOpen && (
         <div className="lnav-search-panel">
           <GlobalSearch curriculum={curriculum} navigateToTopic={handleSearchNavigate} />
         </div>
       )}
 
       {/* Mobile drawer */}
-      {menuOpen && (
+      {session && menuOpen && (
         <div className="lnav-drawer">
           <div className="lnav-drawer-breadcrumbs">
             <Breadcrumbs />

@@ -126,10 +126,11 @@ const SubjectsView = () => {
 
 /**
  * HomeRoute — Serves as the entrance to Tixar.
- * Directly renders SubjectsView so all learners immediately see the 6 canonical subjects.
+ * If user has no active session, redirects to /welcome.
+ * If user is authenticated, redirects to /subjects.
  */
 const HomeRoute = () => {
-  const { sessionLoading } = useAuth();
+  const { session, sessionLoading } = useAuth();
 
   if (sessionLoading) {
     return (
@@ -139,11 +140,38 @@ const HomeRoute = () => {
     );
   }
 
-  return <SubjectsView />;
+  if (!session) {
+    return <Navigate to="/welcome" replace />;
+  }
+
+  return <Navigate to="/subjects" replace />;
 };
 
 /**
- * Route guard that ensures users authenticate first before accessing personal sync/gaps views.
+ * WelcomeRoute — Entrance & Authentication Screen.
+ * If already authenticated, redirect straight to /subjects.
+ */
+const WelcomeRoute = () => {
+  const { session, sessionLoading } = useAuth();
+
+  if (sessionLoading) {
+    return (
+      <div style={{ padding: "2rem", maxWidth: "1200px", margin: "0 auto" }}>
+        <SkeletonLoader type="list" count={4} />
+      </div>
+    );
+  }
+
+  if (session) {
+    return <Navigate to="/subjects" replace />;
+  }
+
+  return <WelcomeAuthScreen />;
+};
+
+/**
+ * Route guard that ensures users authenticate first before accessing learning & curriculum views.
+ * If no session, redirects them to /welcome.
  */
 const RequireAuth = ({ children }) => {
   const { session, sessionLoading } = useAuth();
@@ -157,7 +185,7 @@ const RequireAuth = ({ children }) => {
   }
 
   if (!session) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/welcome" replace />;
   }
 
   return children;
@@ -173,11 +201,12 @@ export default function AppRoutes() {
       <Routes>
         <Route element={<AppLayout />}>
           <Route path="/" element={<HomeRoute />} />
-          <Route path="/subjects" element={<SubjectsView />} />
-          <Route path="/subjects/:subjectId" element={<ChapterListWrapper />} />
-          <Route path="/subjects/:subjectId/chapters/:chapterId" element={<TopicListWrapper />} />
-          <Route path="/learn/:subjectId/:chapterId/:topicId" element={<LearnFlowWrapper />} />
-          <Route path="/verification" element={<VerificationPage />} />
+          <Route path="/welcome" element={<WelcomeRoute />} />
+          <Route path="/subjects" element={<RequireAuth><SubjectsView /></RequireAuth>} />
+          <Route path="/subjects/:subjectId" element={<RequireAuth><ChapterListWrapper /></RequireAuth>} />
+          <Route path="/subjects/:subjectId/chapters/:chapterId" element={<RequireAuth><TopicListWrapper /></RequireAuth>} />
+          <Route path="/learn/:subjectId/:chapterId/:topicId" element={<RequireAuth><LearnFlowWrapper /></RequireAuth>} />
+          <Route path="/verification" element={<RequireAuth><VerificationPage /></RequireAuth>} />
           <Route path="/gaps" element={<RequireAuth><Gaps /></RequireAuth>} />
           <Route path="/mistakes" element={<Navigate to="/gaps" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />

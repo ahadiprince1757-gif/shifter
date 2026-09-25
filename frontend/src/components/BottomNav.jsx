@@ -1,5 +1,6 @@
 import { useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useAuth } from "../hooks/useAuth";
 
 // Simple debounce to avoid duplicate rapid clicks
 function debounce(fn, delay = 150) {
@@ -23,8 +24,11 @@ const GapsIcon = () => (
 );
 
 export default function BottomNav() {
+  const { session } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
+
+  if (!session) return null;
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 

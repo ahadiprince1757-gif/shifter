@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase";
 import logger from "../utils/logger";
 import toast from "react-hot-toast";
 
 export default function WelcomeAuthScreen() {
+  const navigate = useNavigate();
   const [mode, setMode] = useState("select"); // 'select' | 'email_signin' | 'email_signup'
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -48,9 +50,10 @@ export default function WelcomeAuthScreen() {
         try {
           localStorage.setItem("tixar_onboarded", "true");
         } catch {}
+        navigate("/subjects");
       } else {
         logger.action("EMAIL_SIGNUP_INITIATED", "pending", { email });
-        const { error } = await supabase.auth.signUp({
+        const { data, error } = await supabase.auth.signUp({
           email,
           password,
           options: {
@@ -62,8 +65,13 @@ export default function WelcomeAuthScreen() {
         });
         if (error) throw error;
         logger.auth("success", "EMAIL_SIGNUP", { email });
-        toast.success("Verification link sent! Please check your email to complete registration.");
-        setMode("email_signin");
+        if (data?.session) {
+          toast.success("Account created successfully!");
+          navigate("/subjects");
+        } else {
+          toast.success("Verification link sent! Please check your email to complete registration.");
+          setMode("email_signin");
+        }
       }
     } catch (err) {
       const authAction = mode === "email_signin" ? "EMAIL_LOGIN" : "EMAIL_SIGNUP";

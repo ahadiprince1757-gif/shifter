@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useClickOutside } from "../hooks/useClickOutside";
 
@@ -7,9 +7,14 @@ export default function ProfileDropdown() {
   const { session, logout, setShowAuthModal, openAuthWithReason } = useAuth();
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
   const dropdownRef = useRef(null);
 
   useClickOutside(dropdownRef, () => setProfileMenuOpen(false));
+
+  if (!session && location.pathname === "/welcome") {
+    return null;
+  }
 
   const handleOpenAuth = (reason) => {
     setProfileMenuOpen(false);

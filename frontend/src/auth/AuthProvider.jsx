@@ -96,7 +96,9 @@ export function AuthProvider({ children }) {
           const isAuthCallback =
             window.location.hash.includes("access_token=") ||
             window.location.search.includes("code=");
-          const isOnLanding = window.location.pathname === "/";
+          const isOnLanding =
+            window.location.pathname === "/" ||
+            window.location.pathname === "/welcome";
 
           setTimeout(() => {
             window.history.replaceState({}, document.title, window.location.pathname);
@@ -122,6 +124,7 @@ export function AuthProvider({ children }) {
             cacheSession(null);
             setSession(null);
             setSessionLoading(false);
+            navigate("/welcome");
           }
         }
 
@@ -151,7 +154,7 @@ export function AuthProvider({ children }) {
       setSession(null);
       await supabase.auth.signOut();
       toast.success("Logged out successfully");
-      navigate("/");
+      navigate("/welcome");
     } catch (err) {
       console.error("Logout error:", err);
       toast.error(`Logout failed: ${err.message}`);
