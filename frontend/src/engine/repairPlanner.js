@@ -227,12 +227,18 @@ function buildDifficultyProfile(baseLevel, delta, failureCat) {
 // SKILL EXTRACTOR
 // ============================================================================
 
-function extractSkill(blueprint) {
+function extractSkill(blueprint, diagnosis = null) {
+  if (diagnosis?.skillId) return diagnosis.skillId;
+  if (diagnosis?.targetSkill) return diagnosis.targetSkill;
   if (!blueprint) return "unknown";
   return (
+    blueprint.skillId ||
     blueprint.skill ||
+    blueprint.metadata?.skillId ||
     blueprint.metadata?.skill ||
+    blueprint.metadata?.conceptId ||
     blueprint.metadata?.concept ||
+    blueprint.conceptId ||
     blueprint.concept ||
     blueprint.topic ||
     "unknown"
@@ -355,8 +361,8 @@ export function createRepairPlan(diagnosis, blueprint, options = {}) {
   const modeSpec    = REPAIR_MODE_TABLE[failureCat] || REPAIR_MODE_TABLE.TRANSFER;
   const escalated   = _escalate(modeSpec, attemptCount);
 
-  const skill       = extractSkill(blueprint);
-  const prerequisite = failureCat === "PREREQUISITE"
+  const skill       = extractSkill(blueprint, diagnosis);
+  const prerequisite = (failureCat === "PREREQUISITE" || failureCat === "CONCEPTUAL")
     ? resolvePrerequisite(skill)
     : null;
 

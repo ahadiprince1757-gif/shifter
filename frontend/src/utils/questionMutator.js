@@ -169,6 +169,44 @@ export class QuestionMutator {
    * =============================================================== */
 
   /**
+   * First-class diagnosis-driven mutation entry point.
+   * Ensures the Invariant of Alignment: Diagnosed Skill ≡ Repair Skill ≡ Retest Skill.
+   */
+  mutateForRepair({
+    originalQuestion,
+    targetSkill = null,
+    diagnosis = null,
+    repairPlan = null,
+    subjectName = "",
+    studentAnswer = "",
+    correctAnswer = "",
+  } = {}) {
+    if (!originalQuestion) return null;
+
+    const skillId = targetSkill || diagnosis?.skillId || originalQuestion.skillId || originalQuestion.skill;
+
+    const enrichedFeedback = {
+      studentAnswer: studentAnswer || "",
+      correctAnswer: correctAnswer || originalQuestion.ans || originalQuestion.answer || "",
+      diagnosis: diagnosis || null,
+      repairPlan: repairPlan || null,
+      targetSkill: skillId,
+      skillId: skillId,
+      analysis: {
+        diagnosis: diagnosis || null,
+        misconceptions: diagnosis?.misconceptions || [],
+      },
+    };
+
+    const blueprint = {
+      ...originalQuestion,
+      ...(skillId ? { skill: skillId, skillId: skillId, metadata: { ...(originalQuestion.metadata || {}), skillId } } : {}),
+    };
+
+    return this.mutate(blueprint, enrichedFeedback, subjectName || originalQuestion.subject || "");
+  }
+
+  /**
    * Main mutation entry point.
    *
    * Supports:

@@ -3,7 +3,6 @@ import { useTopicContent } from "../hooks/useTopicContent";
 import { useSessionLoop, SESSION_PHASES } from "../hooks/useSessionLoop";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
-import { incrementGuestQuizCount } from "../utils/guestSession";
 
 import { isCalculationQuestion } from "../utils/questionTypeHelper";
 
@@ -167,9 +166,6 @@ function LearnFlow({
   }
 
   const handleFinishQuiz = () => {
-    if (!session) {
-      incrementGuestQuizCount();
-    }
     loop.nextQuestion();
   };
 

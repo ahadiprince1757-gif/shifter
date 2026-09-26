@@ -5,6 +5,8 @@ import rehypeRaw from "rehype-raw";
 import { questionMutator } from "../../utils/questionMutator";
 import { evaluateAnswer } from "../../utils/grader";
 import { isCalculationQuestion } from "../../utils/questionTypeHelper";
+import { getAtomicRepairContent } from "../../engine/repairPlanner";
+import { verifyRepair, OUTCOME } from "../../engine/repairVerifier";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import HintBox from "./quiz/HintBox";
 
@@ -95,15 +97,22 @@ function RepairPhase({
     return notes.slice(0, 600) + (notes.length > 600 ? "…" : "");
   };
 
+  const atomicRepair = getAtomicRepairContent(conceptTag);
   const snippet = extractConceptSnippet();
 
   // ── Start retrieval after mini-teach ───────────────────────────────────────
   const handleStartRetrieval = () => {
-    // Generate a mutated variant of the failed question
+    // Generate a mutated variant of the failed question using diagnosis & skill context
     const originalQ = primaryFailed?.originalQ || (content?.qs?.[primaryFailed?.qIdx]);
     const subjectName = subject?.name || subject?.id || "";
     const mutated = originalQ
-      ? questionMutator.mutate(originalQ, subjectName) || originalQ
+      ? questionMutator.mutateForRepair({
+          originalQuestion: originalQ,
+          targetSkill: conceptTag || primaryFailed?.skillId,
+          diagnosis: primaryFailed?.diagnosis || primaryFailed?.analysis?.diagnosis,
+          subjectName,
+          correctAnswer: primaryFailed?.correctAnswer || "",
+        }) || originalQ
       : null;
 
     setRepairQ(mutated);
@@ -123,19 +132,34 @@ function RepairPhase({
     if (!q) return;
 
     const res = evaluateAnswer(answer, q);
-    setFeedback(res);
+    const plan = {
+      repairTarget: conceptTag || "unknown",
+      repairMode: "ISOLATE",
+      questionMode: "ISOLATED_SKILL",
+    };
+    const verification = verifyRepair(plan, q, { answer, timeMs: 0 });
+
+    setFeedback({
+      ...res,
+      verification,
+      isRepaired: verification.outcome === OUTCOME.REPAIRED || res.isCorrect,
+    });
     setAttempts((a) => a + 1);
   };
 
   // ── Advance after feedback ──────────────────────────────────────────────────
   const handleAdvance = () => {
-    if (feedback?.isCorrect) {
+    const isRepaired =
+      feedback?.verification?.outcome === OUTCOME.REPAIRED ||
+      Boolean(feedback?.isCorrect);
+
+    if (isRepaired) {
       if (onPassed) onPassed(conceptTag);
-    } else if (attempts >= 2) {
-      // Two wrong attempts → skip and move on (don't block the session)
+    } else if (attempts >= 2 || feedback?.verification?.shouldEndRepairLoop) {
+      // Two attempts or verifier terminal failure -> advance
       if (onSkip) onSkip(conceptTag);
     } else {
-      // Allow one more attempt with the same question
+      // Allow one more attempt
       setAnswer("");
       setWork("");
       setFeedback(null);
@@ -184,6 +208,22 @@ function RepairPhase({
                     <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
                       {primaryFailed.solution}
                     </ReactMarkdown>
+                  </div>
+                )}
+              </div>
+            )}
+
+            {atomicRepair && (
+              <div className="repair-atomic-card" style={{ background: "rgba(99, 102, 241, 0.08)", border: "1px solid rgba(99, 102, 241, 0.3)", borderRadius: "8px", padding: "1rem", margin: "1rem 0" }}>
+                <div style={{ fontWeight: 600, color: "var(--accent, #6366f1)", marginBottom: "0.4rem" }}>
+                  Key Principle to Apply:
+                </div>
+                <div style={{ marginBottom: "0.4rem", fontSize: "0.95rem", lineHeight: 1.5 }}>
+                  {atomicRepair.rule}
+                </div>
+                {atomicRepair.example && (
+                  <div style={{ fontSize: "0.85rem", opacity: 0.85, fontStyle: "italic" }}>
+                    Example: {atomicRepair.example}
                   </div>
                 )}
               </div>

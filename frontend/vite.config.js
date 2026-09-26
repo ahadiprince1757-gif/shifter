@@ -44,8 +44,6 @@ export default defineConfig(({ mode }) => {
       'react-hot-toast',
       'react-router-dom',
     ],
-    // Exclude the AI model SDK from pre-bundling — it's dynamically imported
-    exclude: ['@mlc-ai/web-llm'],
   },
 
   build: {
@@ -61,11 +59,6 @@ export default defineConfig(({ mode }) => {
     rollupOptions: {
       output: {
         manualChunks(id) {
-          // ─── @mlc-ai/web-llm ───────────────────────────────────────────────
-          // Isolated entirely — it's 6 MB and only used in AITutor.
-          // Dynamic import in aiEngine.js keeps it out of every other route.
-          if (id.includes('@mlc-ai/web-llm')) return 'vendor-webllm';
-
           // ─── Supabase ──────────────────────────────────────────────────────
           if (id.includes('@supabase')) return 'vendor-supabase';
 
