@@ -3660,39 +3660,54 @@ html.dark-mode .btn-g.fb-action-btn {
   opacity: 0.75;
 }
 
-.welcome-legal-footer {
-  margin-top: 1.5rem;
-  font-size: 0.76rem;
-  color: var(--t3);
-  line-height: 1.5;
-  text-align: center;
-  max-width: 380px;
-}
-
-.welcome-legal-links-row {
+.welcome-auth-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.6rem;
-  margin-top: 0.75rem;
-  font-size: 0.76rem;
-  color: var(--t3);
+  min-height: calc(100vh - 120px);
+  padding: 1.5rem 1rem;
 }
 
-.welcome-legal-link-btn {
-  background: none;
-  border: none;
-  padding: 0;
-  font-family: inherit;
-  font-size: inherit;
-  color: var(--t3);
-  cursor: pointer;
-  transition: color 0.2s ease;
+.welcome-auth-card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 24px;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(116, 184, 232, 0.1);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
 }
 
-.welcome-legal-link-btn:hover {
-  color: var(--v);
-  text-decoration: underline;
+.welcome-legal-footer {
+  margin-top: 1.4rem;
+  font-size: 0.74rem;
+  color: var(--t3);
+  line-height: 1.55;
+  text-align: center;
+  max-width: 340px;
+  opacity: 0.9;
+}
+
+@media (max-width: 480px) {
+  .welcome-auth-container {
+    padding: 1rem 0.75rem;
+    min-height: calc(100vh - 80px);
+  }
+  .welcome-auth-card {
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+  .welcome-legal-footer {
+    margin-top: 1.2rem;
+    font-size: 0.72rem;
+    line-height: 1.5;
+    padding: 0 0.25rem;
+  }
 }
 
 /* Landing Footer */

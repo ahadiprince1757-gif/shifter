@@ -85,30 +85,8 @@ export default function WelcomeAuthScreen() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        minHeight: "calc(100vh - 120px)",
-        padding: "1.5rem 1rem",
-      }}
-    >
-      <div
-        style={{
-          width: "100%",
-          maxWidth: "440px",
-          background: "var(--sur)",
-          border: "1px solid var(--bd)",
-          borderRadius: "24px",
-          padding: "2.5rem 2rem",
-          boxShadow: "0 20px 40px -15px rgba(0, 0, 0, 0.12), 0 0 0 1px rgba(116, 184, 232, 0.1)",
-          textAlign: "center",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
+    <div className="welcome-auth-container">
+      <div className="welcome-auth-card">
         <picture>
           <source srcSet="/tixar-logo.webp?v=4" type="image/webp" />
           <img
@@ -293,35 +271,9 @@ export default function WelcomeAuthScreen() {
             className="auth-legal-link"
             onClick={() => setLegalDoc("consent")}
           >
-            AI &amp; Child Safety
+            AI &amp; Safety Framework
           </button>
           .
-        </div>
-
-        <div className="welcome-legal-links-row">
-          <button
-            type="button"
-            className="welcome-legal-link-btn"
-            onClick={() => setLegalDoc("terms")}
-          >
-            Terms of Service
-          </button>
-          <span>•</span>
-          <button
-            type="button"
-            className="welcome-legal-link-btn"
-            onClick={() => setLegalDoc("policy")}
-          >
-            Privacy Policy
-          </button>
-          <span>•</span>
-          <button
-            type="button"
-            className="welcome-legal-link-btn"
-            onClick={() => setLegalDoc("consent")}
-          >
-            AI &amp; Safety
-          </button>
         </div>
       </div>
 

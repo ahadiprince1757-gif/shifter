@@ -175,7 +175,7 @@ export default function ProfileDropdown() {
               <div style={{ marginTop: "0.6rem", borderTop: "1px solid var(--bd)", paddingTop: "0.6rem", textAlign: "center" }}>
                 <button
                   type="button"
-                  className="welcome-legal-link-btn"
+                  className="auth-legal-link"
                   onClick={() => {
                     setLegalDoc("terms");
                     setProfileMenuOpen(false);
