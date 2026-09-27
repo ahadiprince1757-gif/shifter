@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { supabase } from "../supabase";
 import logger from "../utils/logger";
 import toast from "react-hot-toast";
+import LegalModal from "./LegalModal";
 
 export default function WelcomeAuthScreen() {
   const navigate = useNavigate();
@@ -11,6 +12,7 @@ export default function WelcomeAuthScreen() {
   const [password, setPassword] = useState("");
   const [fullName, setFullName] = useState("");
   const [loading, setLoading] = useState(false);
+  const [legalDoc, setLegalDoc] = useState(null);
 
   const handleGoogleLogin = async () => {
     try {
@@ -267,7 +269,67 @@ export default function WelcomeAuthScreen() {
             </form>
           </div>
         )}
+
+        <div className="welcome-legal-footer">
+          By signing in or creating an account, you agree to Tixar&apos;s{" "}
+          <button
+            type="button"
+            className="auth-legal-link"
+            onClick={() => setLegalDoc("terms")}
+          >
+            Terms of Service
+          </button>
+          ,{" "}
+          <button
+            type="button"
+            className="auth-legal-link"
+            onClick={() => setLegalDoc("policy")}
+          >
+            Privacy Policy
+          </button>
+          , and{" "}
+          <button
+            type="button"
+            className="auth-legal-link"
+            onClick={() => setLegalDoc("consent")}
+          >
+            AI &amp; Child Safety
+          </button>
+          .
+        </div>
+
+        <div className="welcome-legal-links-row">
+          <button
+            type="button"
+            className="welcome-legal-link-btn"
+            onClick={() => setLegalDoc("terms")}
+          >
+            Terms of Service
+          </button>
+          <span>•</span>
+          <button
+            type="button"
+            className="welcome-legal-link-btn"
+            onClick={() => setLegalDoc("policy")}
+          >
+            Privacy Policy
+          </button>
+          <span>•</span>
+          <button
+            type="button"
+            className="welcome-legal-link-btn"
+            onClick={() => setLegalDoc("consent")}
+          >
+            AI &amp; Safety
+          </button>
+        </div>
       </div>
+
+      <LegalModal
+        isOpen={Boolean(legalDoc)}
+        initialTab={legalDoc || "terms"}
+        onClose={() => setLegalDoc(null)}
+      />
     </div>
   );
 }

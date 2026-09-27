@@ -2,10 +2,12 @@ import { useState, useRef } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { useClickOutside } from "../hooks/useClickOutside";
+import LegalModal from "./LegalModal";
 
 export default function ProfileDropdown() {
   const { session, logout, setShowAuthModal, openAuthWithReason } = useAuth();
   const [profileMenuOpen, setProfileMenuOpen] = useState(false);
+  const [legalDoc, setLegalDoc] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
   const dropdownRef = useRef(null);
@@ -111,6 +113,18 @@ export default function ProfileDropdown() {
                 Verify Session
               </button>
               <button
+                className="profile-menu-item"
+                onClick={() => {
+                  setLegalDoc("terms");
+                  setProfileMenuOpen(false);
+                }}
+              >
+                <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
+                  <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                </svg>
+                Terms &amp; Privacy
+              </button>
+              <button
                 className="profile-menu-item profile-menu-item--logout"
                 onClick={handleLogout}
               >
@@ -157,10 +171,30 @@ export default function ProfileDropdown() {
                 <span className="profile-guest-dot" />
                 Offline Guest Mode Active
               </div>
+
+              <div style={{ marginTop: "0.6rem", borderTop: "1px solid var(--bd)", paddingTop: "0.6rem", textAlign: "center" }}>
+                <button
+                  type="button"
+                  className="welcome-legal-link-btn"
+                  onClick={() => {
+                    setLegalDoc("terms");
+                    setProfileMenuOpen(false);
+                  }}
+                  style={{ fontSize: "0.74rem" }}
+                >
+                  Terms of Service &amp; Privacy
+                </button>
+              </div>
             </>
           )}
         </div>
       )}
+
+      <LegalModal
+        isOpen={Boolean(legalDoc)}
+        initialTab={legalDoc || "terms"}
+        onClose={() => setLegalDoc(null)}
+      />
     </div>
   );
 }

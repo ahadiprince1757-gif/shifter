@@ -3507,7 +3507,7 @@ html.dark-mode .btn-g.fb-action-btn {
   background: rgba(10, 10, 26, 0.6);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
-  z-index: 1000;
+  z-index: 1200;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3607,6 +3607,92 @@ html.dark-mode .btn-g.fb-action-btn {
   background: #fdfdfe;
   display: flex;
   justify-content: flex-end;
+}
+
+.legal-tabs-bar {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: var(--sur);
+  border-bottom: 1px solid var(--bd);
+  overflow-x: auto;
+}
+
+.legal-tab-btn {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 0.4rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--t2);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.legal-tab-btn:hover {
+  color: var(--t);
+  background: rgba(117, 82, 243, 0.06);
+}
+
+.legal-tab-btn--active {
+  background: var(--v) !important;
+  color: #fff !important;
+  box-shadow: 0 2px 8px rgba(117, 82, 243, 0.3);
+}
+
+.auth-legal-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 600;
+  color: var(--v);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.auth-legal-link:hover {
+  opacity: 0.75;
+}
+
+.welcome-legal-footer {
+  margin-top: 1.5rem;
+  font-size: 0.76rem;
+  color: var(--t3);
+  line-height: 1.5;
+  text-align: center;
+  max-width: 380px;
+}
+
+.welcome-legal-links-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-top: 0.75rem;
+  font-size: 0.76rem;
+  color: var(--t3);
+}
+
+.welcome-legal-link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: var(--t3);
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.welcome-legal-link-btn:hover {
+  color: var(--v);
+  text-decoration: underline;
 }
 
 /* Landing Footer */
