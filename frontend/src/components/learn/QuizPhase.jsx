@@ -39,6 +39,7 @@ function QuizPhase({
   confidence,
   setConfidence,
   startMutatedRepair,
+  refineAnswer,
 }) {
   const { showAnswer, setShowAnswer } = useQuizUI(topic);
   const [drawerOpen, setDrawerOpen] = useState(false);
@@ -249,6 +250,7 @@ function QuizPhase({
             goToReview={goToReview}
             retryState={retryState}
             startMutatedRepair={startMutatedRepair}
+            refineAnswer={refineAnswer}
           />
         </div>
       </div>

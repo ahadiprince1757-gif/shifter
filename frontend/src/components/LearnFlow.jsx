@@ -248,6 +248,7 @@ function LearnFlow({
               setConfidence={loop.setConfidence}
               content={content}
               startMutatedRepair={loop.startMutatedRepair}
+              refineAnswer={loop.refineAnswer}
             />
           ) : (
             <div className="lc" style={{ padding: "2rem" }}>

@@ -311,6 +311,7 @@ function FeedbackDisplay({
   totalQs,
   goToReview,
   startMutatedRepair,
+  refineAnswer,
 }) {
   if (!feedback) {
     return null;
@@ -444,6 +445,8 @@ function FeedbackDisplay({
   // VISUAL STATE
   // ================================================================
 
+  const isPartial = feedback?.grade === "partial" || feedback?.partialCredit === true;
+
   let cardClass = "fb-needs-review";
   let badgeClass = "fb-badge-review";
   let statusText = "Needs Review";
@@ -451,22 +454,18 @@ function FeedbackDisplay({
   if (isCorrect === true) {
     cardClass = "fb-correct";
     badgeClass = "fb-badge-success";
-    statusText = "✓ Correct";
-  }
-
-  if (isCorrect === false) {
+    statusText = feedback?.acceptedAlternative
+      ? "✓ Correct — Phrasing Accepted"
+      : "✓ Correct";
+  } else if (isPartial) {
+    cardClass = "fb-almost-there fb-needs-review";
+    badgeClass = "fb-badge-almost-there";
+    statusText = "⚡ Almost There!";
+  } else if (isCorrect === false) {
     cardClass = "fb-needs-review";
     badgeClass = "fb-badge-review";
     statusText = "✕ Incorrect";
-  }
-
-  /*
-   * UNKNOWN IS DELIBERATELY NOT "Mastered".
-   *
-   * This protects Tixar from falsely telling a learner they have
-   * mastered something when the grading result is missing.
-   */
-  if (!hasReliableGrade) {
+  } else if (!hasReliableGrade) {
     cardClass = "fb-needs-review";
     badgeClass = "fb-badge-review";
     statusText = "Review Result";
@@ -537,7 +536,7 @@ function FeedbackDisplay({
           WRONG ANSWER — MAKE IT OBVIOUS
           ========================================================== */}
 
-      {isCorrect === false && (
+      {isCorrect === false && !isPartial && (
         <div className="fb-incorrect-banner">
 
           <strong>Not quite.</strong>
@@ -545,6 +544,63 @@ function FeedbackDisplay({
           <span>
             Your answer needs another look.
           </span>
+
+        </div>
+      )}
+
+
+      {/* ==========================================================
+          ALMOST THERE BANNER
+          ========================================================== */}
+
+      {isPartial && (
+        <div className="fb-almost-banner">
+
+          <div className="fb-almost-banner-title">
+            ⚡ You're close — just missing a few key concepts!
+          </div>
+
+          {(() => {
+            const matched = feedback?.matchedConcepts || [];
+            const missing = feedback?.missingConcepts || [];
+            const hasChips = matched.length > 0 || missing.length > 0;
+
+            if (!hasChips) {
+              return (
+                <div className="fb-almost-banner-hint">
+                  Your answer captured part of the idea. Refine it to
+                  include the key concepts from the correct answer.
+                </div>
+              );
+            }
+
+            return (
+              <>
+                <div className="fb-almost-banner-hint">
+                  Try to include these concepts in your answer:
+                </div>
+
+                <div className="fb-almost-banner-concepts">
+                  {matched.map((concept, i) => (
+                    <span
+                      key={`hit-${i}`}
+                      className="fb-almost-concept-chip fb-chip-hit"
+                    >
+                      ✓ {concept}
+                    </span>
+                  ))}
+                  {missing.map((concept, i) => (
+                    <span
+                      key={`miss-${i}`}
+                      className="fb-almost-concept-chip fb-chip-miss"
+                    >
+                      ✗ {concept}
+                    </span>
+                  ))}
+                </div>
+              </>
+            );
+          })()}
 
         </div>
       )}
@@ -711,7 +767,18 @@ function FeedbackDisplay({
 
       <div className="fb-actions">
 
-        {isCorrect === false &&
+        {isPartial && refineAnswer && (
+          <button
+            type="button"
+            className="fb-action-btn fb-refine-btn"
+            onClick={refineAnswer}
+            disabled={grading}
+          >
+            ✏️ Refine My Answer
+          </button>
+        )}
+
+        {isCorrect === false && !isPartial &&
           startMutatedRepair && (
             <button
               type="button"

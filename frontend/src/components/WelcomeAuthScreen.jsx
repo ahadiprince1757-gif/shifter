@@ -51,7 +51,7 @@ export default function WelcomeAuthScreen() {
         logger.auth("success", "EMAIL_LOGIN", { email });
         try {
           localStorage.setItem("tixar_onboarded", "true");
-        } catch {}
+        } catch { }
         navigate("/subjects");
       } else {
         logger.action("EMAIL_SIGNUP_INITIATED", "pending", { email });
@@ -126,7 +126,7 @@ export default function WelcomeAuthScreen() {
             maxWidth: "340px",
           }}
         >
-          Adaptive mastery learning across Math, Sciences, and Computing. Sign in to track your progress and sync across devices.
+          Sign in to track your progress and sync across devices.
         </p>
 
         {mode === "select" ? (

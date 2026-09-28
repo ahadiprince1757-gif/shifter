@@ -268,8 +268,16 @@ export function useSessionLoop({
 
     setTimeout(() => {
       const rawRes = evaluateAnswer(answer, q, work);
+      const isPartial = rawRes.grade === "partial" || rawRes.partialCredit === true;
 
-      if (!rawRes.isCorrect) {
+      if (isPartial) {
+        setFeedback({
+          ...rawRes,
+          confidence,
+          isRepaired: isRepairing,
+        });
+        setGrading(false);
+      } else if (!rawRes.isCorrect) {
         // Step A: Diagnose failure
         const diagnosed = diagnoseFailure(rawRes, q);
 
@@ -362,6 +370,12 @@ export function useSessionLoop({
     }
   }, [isRepairing, qIdx, questions.length, finishQuiz]);
 
+  const refineAnswer = useCallback(() => {
+    setFeedback(null);
+    setGrading(false);
+    setValidationError("");
+  }, []);
+
   return {
     phase,
     setPhase,
@@ -369,6 +383,7 @@ export function useSessionLoop({
     // Orchestrator Actions
     startTest,
     submitAnswer,
+    refineAnswer,
     executeRepair,
     startMutatedRepair: executeRepair, // Backwards-compatible alias
     nextQuestion,

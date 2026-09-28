@@ -167,6 +167,12 @@ export function useQuiz(
           // Client-side canonical answer/solution/steps remain together.
           isCorrect: clientRes.isCorrect,
           isAnswerCorrect: clientRes.isAnswerCorrect,
+          grade: clientRes.grade,
+          partialCredit: clientRes.partialCredit,
+          acceptedAlternative: clientRes.acceptedAlternative,
+          shouldRecordMistake: clientRes.shouldRecordMistake,
+          missingConcepts: clientRes.missingConcepts,
+          matchedConcepts: clientRes.matchedConcepts,
           correctAnswer: clientRes.correctAnswer,
           correctAnswerList: clientRes.correctAnswerList,
           solution: clientRes.solution,
@@ -185,16 +191,20 @@ export function useQuiz(
         setFeedback({ ...res, confidence });
         setGrading(false);
 
+        const isPartial = res.grade === "partial" || res.partialCredit === true;
+        const shouldRecord = res.shouldRecordMistake !== false && !isPartial;
+
         logger.action("ANSWER_GRADED", "success", {
           subject: subject.id,
           chapter: chapter.id,
           topic,
           questionIndex: qIdx,
           isCorrect: res.isCorrect,
+          isPartial,
           confidence,
         });
 
-        if (!res.isCorrect) {
+        if (!res.isCorrect && !isPartial) {
           setFailedQuestions((prev) => [
             ...prev,
             {
@@ -224,6 +234,15 @@ export function useQuiz(
           });
           // Record fail event for analytics
           recordEvent(subject.id, chapter.id, topic, "fail", userId);
+        } else if (isPartial) {
+          // Almost There: do not record a hard mistake or trigger penalty loop
+          logger.action("ANSWER_PARTIAL", "result", {
+            subject: subject.id,
+            chapter: chapter.id,
+            topic,
+            questionIndex: qIdx,
+          });
+          recordEvent(subject.id, chapter.id, topic, "partial", userId);
         } else {
           logger.action("ANSWER_CORRECT", "result", {
             subject: subject.id,
@@ -346,6 +365,13 @@ export function useQuiz(
     setFeedback(null);
   };
 
+  const refineAnswer = () => {
+    // Allows the student to refine an Almost-There response without penalty
+    setFeedback(null);
+    setGrading(false);
+    setValidationError("");
+  };
+
   return {
     qIdx,
     setQIdx,
@@ -377,6 +403,7 @@ export function useQuiz(
     failedQuestions,
     quizFinished,
     submitAnswer,
+    refineAnswer,
     nextQuestion,
     finishTopic: finishQuiz, // Map to finishQuiz for backwards compatibility
     finishQuiz,

@@ -83,11 +83,16 @@ const CONFIG = {
   numericTolerance: 1e-5,
 
   /**
-   * We intentionally keep text similarity conservative.
-   *
-   * Text overlap is EVIDENCE, not proof.
+   * Evidence-based semantic threshold for full credit.
+   * Relaxed from 0.9 to 0.65 when combined with morphology,
+   * typo tolerance, and concept clusters.
    */
-  keywordCorrectThreshold: 0.9,
+  keywordCorrectThreshold: 0.65,
+
+  /**
+   * Evidence-based threshold for partial credit ("Almost There").
+   */
+  keywordPartialThreshold: 0.35,
 
   /**
    * Minimum number of meaningful tokens before keyword evidence
@@ -112,6 +117,12 @@ const CONFIG = {
    * parser gives up.
    */
   maximumSimpleNumericParts: 1,
+
+  /**
+   * Minimum token length to be eligible for Damerau-Levenshtein typo tolerance.
+   * Prevents false positives on short words.
+   */
+  typoMinTokenLength: 5,
 };
 
 // ============================================================================
@@ -837,10 +848,199 @@ function phraseMatch(
     return false;
   }
 
-  return (
-    user.includes(correct) ||
-    correct.includes(user)
-  );
+  // Student answer contains the entire expected answer (e.g. conversational wrapping)
+  if (user.includes(correct)) {
+    return true;
+  }
+
+  // If expected answer contains student answer, only accept as full match if nearly the full length
+  if (correct.includes(user) && user.length >= correct.length * 0.85) {
+    return true;
+  }
+
+  return false;
+}
+
+// ============================================================================
+// MORPHOLOGICAL NORMALIZATION (LIGHTWEIGHT STEMMING)
+// ============================================================================
+
+function stemToken(word) {
+  if (!word || typeof word !== "string" || word.length <= 3) {
+    return word;
+  }
+
+  let w = word.toLowerCase();
+
+  // Curricular & domain-specific reductions
+  if (w.endsWith("absorption")) return "absorb";
+  if (w.endsWith("production")) return "produce";
+  if (w.endsWith("respiration")) return "respire";
+  if (w.endsWith("conduction")) return "conduct";
+  if (w.endsWith("photosynthesizing") || w.endsWith("photosynthesis")) return "photosynthes";
+  if (w.endsWith("interconnection") || w.endsWith("interconnected")) return "connect";
+  if (w.endsWith("multiplication")) return "multiply";
+  if (w.endsWith("subtraction")) return "subtract";
+  if (w.endsWith("magnification")) return "magnify";
+  if (w.endsWith("enlargement")) return "enlarge";
+
+  // General suffix reductions
+  if (w.endsWith("sses")) return w.slice(0, -2);
+  if (w.endsWith("ies") && w.length > 4) return w.slice(0, -3) + "y";
+  if (w.endsWith("es") && w.length > 4) return w.slice(0, -2);
+  if (w.endsWith("s") && !w.endsWith("ss") && w.length > 3) return w.slice(0, -1);
+  if (w.endsWith("ational")) return w.slice(0, -7) + "ate";
+  if (w.endsWith("ization") || w.endsWith("isation")) return w.slice(0, -7) + "ize";
+  if (w.endsWith("tion") || w.endsWith("sion")) return w.slice(0, -4);
+  if (w.endsWith("ment") && w.length > 6) return w.slice(0, -4);
+  if (w.endsWith("ing") && w.length > 5) {
+    const base = w.slice(0, -3);
+    if (base.length > 3 && base[base.length - 1] === base[base.length - 2]) {
+      return base.slice(0, -1);
+    }
+    return base;
+  }
+  if (w.endsWith("ed") && w.length > 4) {
+    const base = w.slice(0, -2);
+    if (base.length > 3 && base[base.length - 1] === base[base.length - 2]) {
+      return base.slice(0, -1);
+    }
+    return base;
+  }
+  if (w.endsWith("ivity") && w.length > 6) return w.slice(0, -5);
+  if (w.endsWith("ive") && w.length > 5) return w.slice(0, -3);
+  if (w.endsWith("able") && w.length > 5) return w.slice(0, -4);
+
+  return w;
+}
+
+// ============================================================================
+// DAMERAU-LEVENSHTEIN TYPO TOLERANCE
+// ============================================================================
+
+function damerauLevenshtein(a, b) {
+  if (!a || !b) return (a || b || "").length;
+  if (a === b) return 0;
+
+  const lenA = a.length;
+  const lenB = b.length;
+  const d = [];
+
+  for (let i = 0; i <= lenA; i++) {
+    d[i] = [i];
+  }
+  for (let j = 0; j <= lenB; j++) {
+    d[0][j] = j;
+  }
+
+  for (let i = 1; i <= lenA; i++) {
+    for (let j = 1; j <= lenB; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+      d[i][j] = Math.min(
+        d[i - 1][j] + 1,       // deletion
+        d[i][j - 1] + 1,       // insertion
+        d[i - 1][j - 1] + cost // substitution
+      );
+
+      if (
+        i > 1 &&
+        j > 1 &&
+        a[i - 1] === b[j - 2] &&
+        a[i - 2] === b[j - 1]
+      ) {
+        d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1); // transposition
+      }
+    }
+  }
+
+  return d[lenA][lenB];
+}
+
+function isTypoMatch(wordA, wordB) {
+  if (!wordA || !wordB) return false;
+  if (wordA === wordB) return true;
+
+  const len = Math.max(wordA.length, wordB.length);
+  if (len < (CONFIG.typoMinTokenLength || 5)) return false;
+
+  const dist = damerauLevenshtein(wordA, wordB);
+  if (len <= 7) return dist <= 1;
+  return dist <= 2;
+}
+
+// ============================================================================
+// CONSERVATIVE CONCEPT CLUSTERS
+// ============================================================================
+
+const CONCEPT_CLUSTERS = {
+  instrument: ["instrument", "device", "apparatus", "equipment", "tool", "machine", "gadget"],
+  magnify: ["magnify", "magnification", "enlarge", "enlargement", "amplify", "zoom", "bigger", "larger"],
+  small: ["small", "tiny", "minute", "micro", "microscopic", "little", "miniature"],
+  observe: ["observe", "see", "view", "look", "examine", "visualize", "watch", "inspect"],
+  specimen: ["specimen", "sample", "slide", "material", "tissue", "organism"],
+  transfer: ["transfer", "move", "conduct", "transmit", "carry", "pass", "convey"],
+  current: ["current", "electricity", "flow", "charge", "ampere", "electrons"],
+  bond: ["bond", "link", "join", "connect", "attract", "interconnect"],
+  ionic: ["ionic", "ion", "cation", "anion", "charged", "electrostatic"],
+  covalent: ["covalent", "share", "sharing", "shared", "paired", "pair"],
+  profit: ["profit", "gain", "surplus", "income", "revenue", "earning", "earnings"],
+  loss: ["loss", "deficit", "negative", "shortfall"],
+  divide: ["divide", "division", "quotient", "split", "ratio", "per"],
+  multiply: ["multiply", "multiplication", "product", "times", "factor"],
+  subtract: ["subtract", "subtraction", "minus", "deduct", "reduce"],
+  add: ["add", "addition", "sum", "total", "plus", "increase", "combine"],
+  formula: ["formula", "equation", "expression", "rule", "law"],
+  calculate: ["calculate", "calculation", "compute", "solve", "find", "determine"],
+  increase: ["increase", "increases", "increased", "rise", "rises", "higher", "greater", "escalate"],
+  decrease: ["decrease", "decreases", "decreased", "fall", "falls", "lower", "less", "drop"],
+  conductor: ["conductor", "conductive", "conducts", "conduction"],
+  insulator: ["insulator", "insulating", "insulates", "insulation", "nonconductor"],
+  produce: ["produce", "production", "producing", "make", "making", "manufacture", "synthesize", "generate", "create"],
+  food: ["food", "glucose", "nutrient", "nutrients", "sugar", "sugars", "starch"],
+  sunlight: ["sunlight", "light", "solar", "sun", "sunshine"],
+  absorb: ["absorb", "absorption", "absorbing", "soak", "draw", "uptake"],
+  store: ["store", "storage", "stored", "contain", "hold", "reserve", "retain"],
+  network: ["network", "interconnect", "interconnected", "link"],
+  communicate: ["communicate", "communication", "talk", "exchange"],
+  share: ["share", "sharing", "shared", "pool"],
+  trade: ["trade", "trading", "commerce", "buying", "selling", "exchange", "barter"],
+};
+
+const WORD_TO_CLUSTER = {};
+for (const [clusterKey, words] of Object.entries(CONCEPT_CLUSTERS)) {
+  for (const w of words) {
+    const raw = w.toLowerCase();
+    WORD_TO_CLUSTER[raw] = clusterKey;
+    WORD_TO_CLUSTER[stemToken(raw)] = clusterKey;
+  }
+}
+
+function getConceptKey(token) {
+  const raw = token.toLowerCase();
+  if (WORD_TO_CLUSTER[raw]) return WORD_TO_CLUSTER[raw];
+  const stem = stemToken(raw);
+  if (WORD_TO_CLUSTER[stem]) return WORD_TO_CLUSTER[stem];
+  return stem;
+}
+
+// ============================================================================
+// NEGATION PROTECTION (VETO LAYER)
+// ============================================================================
+
+const NEGATION_WORDS = new Set([
+  "not", "no", "never", "cannot", "cant", "can't",
+  "wont", "won't", "doesnt", "doesn't", "dont", "don't",
+  "isnt", "isn't", "arent", "aren't", "without", "hardly", "neither", "nor"
+]);
+
+function detectNegationMismatch(userText, correctText) {
+  const userTokens = tokenize(userText);
+  const correctTokens = tokenize(correctText);
+
+  const userHasNegation = userTokens.some((t) => NEGATION_WORDS.has(t));
+  const correctHasNegation = correctTokens.some((t) => NEGATION_WORDS.has(t));
+
+  return userHasNegation !== correctHasNegation;
 }
 
 // ============================================================================
@@ -848,54 +1048,19 @@ function phraseMatch(
 // ============================================================================
 
 const STOP_WORDS = new Set([
-  "the",
-  "and",
-  "that",
-  "this",
-  "with",
-  "from",
-  "into",
-  "when",
-  "where",
-  "which",
-  "what",
-  "why",
-  "how",
-  "are",
-  "was",
-  "were",
-  "has",
-  "have",
-  "had",
-  "for",
-  "then",
-  "than",
-  "their",
-  "there",
-  "they",
-  "them",
-  "its",
-  "is",
-  "of",
-  "to",
-  "in",
-  "on",
-  "by",
-  "a",
-  "an",
-  "as",
-  "or",
-  "be",
-  "it",
-  "at",
+  "the", "and", "that", "this", "with", "from", "into", "when", "where",
+  "which", "what", "why", "how", "are", "was", "were", "has", "have",
+  "had", "for", "then", "than", "their", "there", "they", "them", "its",
+  "is", "of", "to", "in", "on", "by", "a", "an", "as", "or", "be", "it", "at"
 ]);
 
 function meaningfulTokens(value) {
   return unique(
     tokenize(value).filter(
       (token) =>
-        token.length >= 4 &&
+        token.length >= 3 &&
         !STOP_WORDS.has(token) &&
+        !NEGATION_WORDS.has(token) &&
         Number.isNaN(Number(token))
     )
   );
@@ -942,6 +1107,63 @@ function keywordEvidence(
   };
 }
 
+function evaluateConceptCoverage(userAnswer, correctAnswer) {
+  const userTokens = meaningfulTokens(userAnswer);
+  const targetTokens = meaningfulTokens(correctAnswer);
+
+  if (targetTokens.length === 0) {
+    return null;
+  }
+
+  if (detectNegationMismatch(userAnswer, correctAnswer)) {
+    return {
+      negationMismatch: true,
+      ratio: 0,
+      matched: 0,
+      total: targetTokens.length,
+      matchedTokens: [],
+      missingTokens: targetTokens,
+    };
+  }
+
+  const matchedTokens = [];
+  const missingTokens = [];
+  const userConceptKeys = new Set(userTokens.map(getConceptKey));
+
+  for (const targetToken of targetTokens) {
+    const targetConceptKey = getConceptKey(targetToken);
+    let found = false;
+
+    if (userConceptKeys.has(targetConceptKey)) {
+      found = true;
+    } else {
+      for (const uToken of userTokens) {
+        if (isTypoMatch(uToken, targetToken)) {
+          found = true;
+          break;
+        }
+      }
+    }
+
+    if (found) {
+      matchedTokens.push(targetToken);
+    } else {
+      missingTokens.push(targetToken);
+    }
+  }
+
+  const ratio = targetTokens.length > 0 ? matchedTokens.length / targetTokens.length : 0;
+
+  return {
+    negationMismatch: false,
+    ratio,
+    matched: matchedTokens.length,
+    total: targetTokens.length,
+    matchedTokens,
+    missingTokens,
+  };
+}
+
 // ============================================================================
 // SINGLE VARIANT EVALUATION
 // ============================================================================
@@ -963,6 +1185,8 @@ function checkSingleVariant(
       grade: "blank",
       method: "blank_answer",
       confidence: 1,
+      acceptedAlternative: false,
+      shouldRecordMistake: false,
     };
   }
 
@@ -976,6 +1200,8 @@ function checkSingleVariant(
       grade: "correct",
       method: "exact",
       confidence: 1,
+      acceptedAlternative: false,
+      shouldRecordMistake: false,
     };
   }
 
@@ -995,6 +1221,8 @@ function checkSingleVariant(
       grade: unitResult.correct
         ? "correct"
         : "incorrect",
+      acceptedAlternative: false,
+      shouldRecordMistake: !unitResult.correct,
     };
   }
 
@@ -1014,6 +1242,8 @@ function checkSingleVariant(
       grade: numericResult.correct
         ? "correct"
         : "incorrect",
+      acceptedAlternative: false,
+      shouldRecordMistake: !numericResult.correct,
     };
   }
 
@@ -1033,6 +1263,8 @@ function checkSingleVariant(
       grade: equationResult.correct
         ? "correct"
         : "incorrect",
+      acceptedAlternative: false,
+      shouldRecordMistake: !equationResult.correct,
     };
   }
 
@@ -1051,35 +1283,54 @@ function checkSingleVariant(
       grade: "correct",
       method: "phrase",
       confidence: 0.95,
+      acceptedAlternative: true,
+      shouldRecordMistake: false,
     };
   }
 
   // --------------------------------------------------------------------------
-  // KEYWORD EVIDENCE
+  // EVIDENCE-BASED FREE-TEXT & CONCEPT MATCHING
   // --------------------------------------------------------------------------
 
-  const keywords =
-    keywordEvidence(
-      userAnswer,
-      correctAnswer
-    );
+  const conceptEv = evaluateConceptCoverage(userAnswer, correctAnswer);
 
-  if (
-    keywords &&
-    keywords.total >=
-      CONFIG.minimumMeaningfulTokens &&
-    keywords.ratio >=
-      CONFIG.keywordCorrectThreshold
-  ) {
-    return {
-      correct: true,
-      grade: "correct",
-      method: "high_keyword_overlap",
-      confidence: 0.76,
-      evidence: keywords,
-      warning:
-        "Correctness inferred from strong lexical overlap; semantic equivalence was not independently established.",
-    };
+  if (conceptEv && !conceptEv.negationMismatch) {
+    // 1. FULL CREDIT: Meets relaxed threshold (0.65) or single-word target with ratio 1.0 (exact typo/stem match)
+    const isSingleWordTarget = conceptEv.total === 1;
+    const qualifiesForFullCredit = isSingleWordTarget
+      ? conceptEv.ratio === 1.0
+      : (conceptEv.total >= CONFIG.minimumMeaningfulTokens && conceptEv.ratio >= CONFIG.keywordCorrectThreshold);
+
+    if (qualifiesForFullCredit) {
+      return {
+        correct: true,
+        grade: "correct",
+        method: "concept_match",
+        confidence: 0.85,
+        acceptedAlternative: true,
+        shouldRecordMistake: false,
+        matchedConcepts: conceptEv.matchedTokens,
+        missingConcepts: conceptEv.missingTokens,
+        evidence: conceptEv,
+      };
+    }
+
+    // 2. PARTIAL CREDIT ("Almost There"): Meets partial threshold (0.35 - 0.64)
+    if (conceptEv.ratio >= CONFIG.keywordPartialThreshold) {
+      return {
+        correct: false,
+        partialCredit: true,
+        grade: "partial",
+        method: "concept_partial",
+        confidence: 0.70,
+        acceptedAlternative: false,
+        shouldRecordMistake: false,
+        requiresReview: false,
+        matchedConcepts: conceptEv.matchedTokens,
+        missingConcepts: conceptEv.missingTokens,
+        evidence: conceptEv,
+      };
+    }
   }
 
   // --------------------------------------------------------------------------
@@ -1088,10 +1339,14 @@ function checkSingleVariant(
 
   return {
     correct: false,
+    partialCredit: false,
     grade: "incorrect",
-    method: "no_sufficient_match",
+    method: conceptEv?.negationMismatch ? "negation_mismatch" : "no_sufficient_match",
     confidence: 0.88,
-    evidence: keywords,
+    shouldRecordMistake: true,
+    matchedConcepts: conceptEv?.matchedTokens || [],
+    missingConcepts: conceptEv?.missingTokens || meaningfulTokens(correctAnswer),
+    evidence: conceptEv,
   };
 }
 
@@ -1552,7 +1807,8 @@ function classifyOverallGrade({
 
   if (
     answerEvaluation?.grade ===
-    "partial"
+    "partial" ||
+    answerEvaluation?.partialCredit === true
   ) {
     return "partial";
   }
@@ -2007,7 +2263,8 @@ export function evaluateAnswer(
     status =
       "blank_answer";
   } else if (
-    partialInfo
+    partialInfo ||
+    grade === "partial"
   ) {
     status =
       "partially_correct";
@@ -2060,9 +2317,15 @@ export function evaluateAnswer(
   }
 
   if (partialInfo) {
-  workingNote =
-    `Partially correct: ${partialInfo.matchedCount}/${partialInfo.totalRequired} required items identified (${partialInfo.percent}%).`;
-}
+    workingNote =
+      `Partially correct: ${partialInfo.matchedCount}/${partialInfo.totalRequired} required items identified (${partialInfo.percent}%).`;
+  } else if (grade === "partial") {
+    const missing = answerEvaluation?.missingConcepts;
+    workingNote =
+      missing && missing.length
+        ? `Almost there! You've got the main idea. Remember to consider: ${missing.join(", ")}.`
+        : "Almost there! You're on the right track.";
+  }
   // --------------------------------------------------------------------------
   // ANSWER FORMAT
   // --------------------------------------------------------------------------
@@ -2196,7 +2459,7 @@ export function evaluateAnswer(
     mark:
       isAnswerCorrect
         ? "Correct"
-        : "Incorrect",
+        : (grade === "partial" ? "Almost There" : "Incorrect"),
 
     analysis,
 
@@ -2207,6 +2470,22 @@ export function evaluateAnswer(
     grade,
 
     status,
+
+    partialCredit:
+      grade === "partial" || Boolean(answerEvaluation?.partialCredit),
+
+    acceptedAlternative:
+      Boolean(answerEvaluation?.acceptedAlternative),
+
+    shouldRecordMistake:
+      answerEvaluation?.shouldRecordMistake ??
+      (grade !== "partial" && !isAnswerCorrect && grade !== "blank"),
+
+    missingConcepts:
+      answerEvaluation?.missingConcepts || [],
+
+    matchedConcepts:
+      answerEvaluation?.matchedConcepts || [],
 
     answerEvaluation,
 
