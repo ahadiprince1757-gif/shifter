@@ -22,9 +22,7 @@ function SyncOnLogin() {
 
   useEffect(() => {
     if (!userId) return;
-    syncEngine.syncAll().catch((err) =>
-      console.warn("[SyncOnLogin] Re-sync after login failed:", err)
-    );
+    syncEngine.syncAll().catch(() => {});
   }, [userId]);
 
   return null;
@@ -33,9 +31,7 @@ function SyncOnLogin() {
 function App() {
   // Synchronize curriculum on startup (syncEngine handles staleness, debounce, and network readiness)
   useEffect(() => {
-    syncEngine.syncAll().catch((err) =>
-      console.warn("[App] Startup sync failed:", err)
-    );
+    syncEngine.syncAll().catch(() => {});
   }, []);
 
   // Handle global double-tap (mobile) or double-click (desktop) to zoom in/out

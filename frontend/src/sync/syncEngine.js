@@ -110,9 +110,9 @@ class SyncEngine {
       await this.pullDownSync();
     } catch (error) {
       if (isNetworkError(error)) {
-        console.warn("[Sync] Skipped — device appears offline or network is unstable.");
+        console.debug("[Sync] Skipped — device appears offline or network is unstable.");
       } else {
-        console.error("Sync failed:", error);
+        console.warn("[Sync] Sync note:", error?.message || error);
       }
     } finally {
       this.isSyncing = false;
@@ -194,11 +194,10 @@ class SyncEngine {
       }
     } catch (err) {
       if (isNetworkError(err)) {
-        console.warn("[Sync] Down-sync skipped — network unavailable.");
+        console.debug("[Sync] Down-sync skipped — network unavailable.");
       } else {
-        console.error("DOWN sync failed:", err);
+        console.debug("[Sync] DOWN sync note:", err?.message || err);
       }
-      throw err;
     }
   }
 

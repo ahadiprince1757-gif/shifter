@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
       })
       .catch((err) => {
         // Offline or Supabase unreachable — rely on cached session loaded above
-        console.warn("Could not reach Supabase for session (offline?)", err.message);
+        console.debug("Note: Could not reach Supabase for session (offline mode):", err?.message);
         setSessionLoading(false);
       });
 

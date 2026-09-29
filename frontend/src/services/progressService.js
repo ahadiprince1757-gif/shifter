@@ -82,6 +82,7 @@ export async function updateProgress({
 export async function fetchUserProgress(userId = null) {
   const activeUserId = userId || getActiveUserId();
   if (!activeUserId || !supabase) return [];
+  if (typeof navigator !== "undefined" && !navigator.onLine) return [];
   try {
     const { data, error } = await supabase
       .from("progress")
@@ -89,12 +90,12 @@ export async function fetchUserProgress(userId = null) {
       .eq("user_id", activeUserId);
 
     if (error) {
-      console.warn("[progressService] Fetch error:", error.message);
+      console.debug("[progressService] Fetch note:", error.message);
       return [];
     }
     return data || [];
   } catch (err) {
-    console.error("[progressService] Exception during progress fetch:", err);
+    console.debug("[progressService] Exception during progress fetch (offline/unreachable):", err.message || err);
     return [];
   }
 }
@@ -105,6 +106,7 @@ export async function fetchUserProgress(userId = null) {
 export async function fetchTopicProgress(topicId, userId = null) {
   const activeUserId = userId || getActiveUserId();
   if (!activeUserId || !supabase || !topicId) return null;
+  if (typeof navigator !== "undefined" && !navigator.onLine) return null;
 
   try {
     let query = supabase.from("progress").select("*").eq("user_id", activeUserId);
@@ -117,12 +119,12 @@ export async function fetchTopicProgress(topicId, userId = null) {
 
     const { data, error } = await query.maybeSingle();
     if (error) {
-      console.warn("[progressService] Topic progress fetch warning:", error.message);
+      console.debug("[progressService] Topic progress fetch note:", error.message);
       return null;
     }
     return data;
   } catch (err) {
-    console.error("[progressService] Exception during topic progress fetch:", err);
+    console.debug("[progressService] Exception during topic progress fetch (offline/unreachable):", err.message || err);
     return null;
   }
 }

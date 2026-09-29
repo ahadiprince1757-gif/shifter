@@ -46,24 +46,27 @@
     <script type="module" src="/src/main.jsx"></script>
     <script>
       if ('serviceWorker' in navigator) {
-        // Automatically reload active page when new service worker takes control
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         let refreshing = false;
-        navigator.serviceWorker.addEventListener('controllerchange', () => {
-          if (!refreshing) {
-            refreshing = true;
-            window.location.reload();
-          }
-        });
+
+        if (!isLocal) {
+          navigator.serviceWorker.addEventListener('controllerchange', () => {
+            if (!refreshing) {
+              refreshing = true;
+              window.location.reload();
+            }
+          });
+        }
 
         window.addEventListener('load', () => {
-          if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+          if (isLocal) {
             navigator.serviceWorker.getRegistrations().then((registrations) => {
               for (const registration of registrations) {
                 registration.unregister();
               }
             });
           } else {
-            navigator.serviceWorker.register('/sw.js?v=16.0').then((reg) => {
+            navigator.serviceWorker.register('/sw.js?v=17.0').then((reg) => {
               reg.update();
             });
           }

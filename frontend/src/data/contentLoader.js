@@ -1,18 +1,30 @@
 import { db } from "../db/db";
+import { mathTopics } from "./math.js";
+import { physicsTopics } from "./physics.js";
+import { chemistryTopics } from "./chemistry.js";
+import { biologyTopics } from "./biology.js";
+import { englishTopics } from "./english.js";
+import { computerTopics } from "./computer.js";
 
 export const CONTENT_VERSION = 2;
 
-export const SUBJECT_TOPIC_LOADERS = {
-  math: () => import("./math.js").then((m) => m.default || m.mathTopics),
-  physics: () => import("./physics.js").then((m) => m.default || m.physicsTopics),
-  chemistry: () => import("./chemistry.js").then((m) => m.default || m.chemistryTopics),
-  biology: () => import("./biology.js").then((m) => m.default || m.biologyTopics),
-  english: () => import("./english.js").then((m) => m.default || m.englishTopics),
-  computer: () => import("./computer.js").then((m) => m.default || m.computerTopics),
+const STATIC_SUBJECT_MAP = {
+  math: mathTopics,
+  physics: physicsTopics,
+  chemistry: chemistryTopics,
+  biology: biologyTopics,
+  english: englishTopics,
+  computer: computerTopics,
 };
 
-// In-memory cache for loaded subject chunks to avoid re-importing
-const loadedChunks = new Map();
+export const SUBJECT_TOPIC_LOADERS = {
+  math: () => Promise.resolve(mathTopics),
+  physics: () => Promise.resolve(physicsTopics),
+  chemistry: () => Promise.resolve(chemistryTopics),
+  biology: () => Promise.resolve(biologyTopics),
+  english: () => Promise.resolve(englishTopics),
+  computer: () => Promise.resolve(computerTopics),
+};
 
 /**
  * Normalizes a topic string for loose comparison (handles dashes and whitespace).
@@ -27,37 +39,38 @@ function normalizeTopicString(str) {
 
 /**
  * Retrieve a specific topic from the bundled static chunks.
+ * Synchronously checks memory with zero network dependencies so offline notes always load.
  */
 export async function getBundledTopic(subjectId, chapterId, topicId) {
   const sid = String(subjectId || "").toLowerCase().trim();
-  const loader = SUBJECT_TOPIC_LOADERS[sid];
-  if (!loader) return null;
+  const chid = String(chapterId || "").trim();
+  const tid = String(topicId || "").trim();
+  const topics = STATIC_SUBJECT_MAP[sid];
+  if (!topics || !Array.isArray(topics)) return null;
 
   try {
-    let topics = loadedChunks.get(sid);
-    if (!topics) {
-      topics = await loader();
-      loadedChunks.set(sid, topics);
-    }
-
-    if (!Array.isArray(topics)) return null;
-
-    const exactId = `${sid}|${chapterId}|${topicId}`;
+    const exactId = `${sid}|${chid}|${tid}`;
     let match = topics.find((t) => t.id === exactId);
     if (match) return match;
 
+    // Direct match with un-trimmed topicId if different
+    if (topicId !== tid) {
+      match = topics.find((t) => t.id === `${sid}|${chid}|${topicId}`);
+      if (match) return match;
+    }
+
     // Fallback: loose comparison for punctuation/spacing differences
-    const normTopic = normalizeTopicString(topicId);
+    const normTopic = normalizeTopicString(tid);
     match = topics.find(
       (t) =>
         t.curriculum_id === sid &&
-        t.chapter_id === chapterId &&
+        t.chapter_id === chid &&
         normalizeTopicString(t.topic) === normTopic
     );
 
     return match || null;
   } catch (err) {
-    console.warn(`[ContentLoader] Failed to load bundled chunk for ${sid}:`, err);
+    console.debug(`[ContentLoader] Note during bundled lookup for ${sid}:`, err);
     return null;
   }
 }
@@ -76,19 +89,7 @@ export async function seedBundledTopics(force = false) {
       return { skipped: true, count: existingCount };
     }
 
-    console.log(`[ContentLoader] Seeding bundled topics (current: ${existingCount}, version: ${CONTENT_VERSION})...`);
-
-    const chunkPromises = Object.entries(SUBJECT_TOPIC_LOADERS).map(async ([sid, loader]) => {
-      let topics = loadedChunks.get(sid);
-      if (!topics) {
-        topics = await loader();
-        loadedChunks.set(sid, topics);
-      }
-      return topics;
-    });
-
-    const results = await Promise.all(chunkPromises);
-    const allTopics = results.flat().filter(Boolean);
+    const allTopics = Object.values(STATIC_SUBJECT_MAP).flat().filter(Boolean);
 
     if (allTopics.length > 0) {
       await db.topics.bulkPut(allTopics);
@@ -97,12 +98,11 @@ export async function seedBundledTopics(force = false) {
         version: CONTENT_VERSION,
         last_synced_at: Date.now(),
       });
-      console.log(`[ContentLoader] Successfully seeded ${allTopics.length} topics into IndexedDB.`);
     }
 
     return { skipped: false, count: allTopics.length };
   } catch (err) {
-    console.error("[ContentLoader] Seeding bundled topics failed:", err);
+    console.debug("[ContentLoader] Seeding note:", err.message || err);
     return { error: err };
   }
 }

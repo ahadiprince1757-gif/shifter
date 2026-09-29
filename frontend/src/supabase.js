@@ -3,7 +3,11 @@ import { createClient } from "@supabase/supabase-js";
 const supabaseUrl = import.meta.env.VITE_SUPABASE_URL || import.meta.env.SUPABASE_URL || "";
 const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || import.meta.env.SUPABASE_ANON_KEY || "";
 
-const hasValidConfig = supabaseUrl && supabaseAnonKey && supabaseAnonKey !== "YOUR_SUPABASE_ANON_KEY";
+const hasValidConfig = Boolean(
+  supabaseUrl &&
+  supabaseAnonKey &&
+  supabaseAnonKey !== "YOUR_SUPABASE_ANON_KEY"
+);
 
 let supabaseInstance = null;
 let currentSession = null;
@@ -21,34 +25,48 @@ if (hasValidConfig) {
       }
     });
   } catch (err) {
-    console.error("Failed to initialize Supabase client:", err);
+    console.warn("Notice: Failed to initialize Supabase client:", err.message || err);
   }
-} else {
-  console.error(
-    "Supabase is not configured properly! " +
-    "Please set VITE_SUPABASE_URL and VITE_SUPABASE_ANON_KEY in your frontend/.env file."
-  );
+}
+
+/**
+ * Creates a graceful, non-crashing query builder for offline / unconfigured environments.
+ */
+function createSafeQueryBuilder() {
+  const handler = {
+    get(target, prop) {
+      if (prop === "then") {
+        return (resolve) => resolve({ data: [], error: null });
+      }
+      if (prop === "catch") {
+        return () => Promise.resolve({ data: [], error: null });
+      }
+      return (..._args) => new Proxy({}, handler);
+    }
+  };
+  return new Proxy({}, handler);
 }
 
 // Export a proxy or safe object to prevent crashes on undefined properties
-export const supabase = supabaseInstance || new Proxy({}, {
-  get(target, prop) {
-    if (prop === "auth") {
-      return new Proxy({}, {
-        get(authTarget, authProp) {
-          return () => {
-            console.error(`Attempted to call supabase.auth.${authProp} without valid config`);
-            return Promise.reject(new Error("Supabase config is invalid or missing"));
-          };
-        }
-      });
-    }
-    return () => {
-      console.error(`Attempted to call supabase.${prop} without valid config`);
-      return Promise.reject(new Error("Supabase config is invalid or missing"));
-    };
-  }
-});
+export const supabase = supabaseInstance || {
+  auth: {
+    getSession: async () => ({ data: { session: getActiveSession() }, error: null }),
+    onAuthStateChange: () => ({ data: { subscription: { unsubscribe: () => {} } }, error: null }),
+    getUser: async () => ({ data: { user: getActiveSession()?.user || null }, error: null }),
+    signInWithOAuth: async () => ({ data: null, error: new Error("Authentication is currently offline.") }),
+    signInWithPassword: async () => ({ data: null, error: new Error("Authentication is currently offline.") }),
+    signUp: async () => ({ data: null, error: new Error("Authentication is currently offline.") }),
+    signOut: async () => {
+      currentSession = null;
+      try {
+        localStorage.removeItem("shifter_cached_session");
+        localStorage.removeItem("shifter_current_user_id");
+      } catch {}
+      return { error: null };
+    },
+  },
+  from: () => createSafeQueryBuilder(),
+};
 
 export function getActiveSession() {
   if (!currentSession) {
@@ -81,4 +99,3 @@ export function requireUserId(userId = null) {
   }
   return resolvedId;
 }
-

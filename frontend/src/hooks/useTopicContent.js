@@ -64,13 +64,11 @@ export function useTopicContent(
     const cid = chapterId;
     const tid = topicId;
 
-    console.log(`[useTopicContent] Loading content for ${sid}/${cid}/${tid}`);
-
     if (userId) {
       try {
         recordEvent(sid, cid, tid, "visit", userId);
       } catch (err) {
-        console.warn("[useTopicContent] Visit telemetry failed:", err);
+        // silent telemetry fallback
       }
     }
 
@@ -106,23 +104,22 @@ export function useTopicContent(
           return;
         }
 
-        // 5. If not found locally or in bundled data, attempt remote fetch as last resort
-        const freshData = await syncEngine.prefetchTopic(sid, cid, tid);
-        if (cancelled) return;
+        // 5. If not found locally or in bundled data and online, attempt remote fetch as last resort
+        if (typeof navigator !== "undefined" && navigator.onLine) {
+          const freshData = await syncEngine.prefetchTopic(sid, cid, tid).catch(() => null);
+          if (cancelled) return;
 
-        if (freshData) {
-          setFetchedContent(freshData);
-          setError(null);
-          return;
+          if (freshData) {
+            setFetchedContent(freshData);
+            setError(null);
+            return;
+          }
         }
 
         // 6. Genuinely unavailable
-        console.warn(`[useTopicContent] Topic not found in local DB, bundle, or remote: ${sid}/${cid}/${tid}`);
         setError("Topic content is currently unavailable. Please check your connection and try again.");
-        toast.error("Topic content is currently unavailable.");
       } catch (err) {
         if (cancelled) return;
-        console.error(`[useTopicContent] Exception loading ${sid}/${cid}/${tid}:`, err);
 
         // Sanity fallback check
         const local = await topicRepo.getTopic(sid, cid, tid).catch(() => null);
@@ -131,7 +128,6 @@ export function useTopicContent(
           setError(null);
         } else {
           setError("Topic content is currently unavailable. Please check your connection and try again.");
-          toast.error("Topic content is currently unavailable.");
         }
       }
     };

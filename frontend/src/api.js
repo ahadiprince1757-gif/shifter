@@ -22,14 +22,6 @@ const _rawBase = import.meta.env.PROD
 
 const API_BASE = _rawBase.replace(/\/$/, "") + "/api";
 
-console.log("=== TIXAR API DEBUG ===");
-console.log("PROD:", import.meta.env.PROD);
-console.log("MODE:", import.meta.env.MODE);
-console.log("VITE_API_URL:", import.meta.env.VITE_API_URL);
-console.log("API_BASE:", API_BASE);
-console.log("ONLINE:", typeof navigator !== "undefined" ? navigator.onLine : "N/A");
-
-
 /** Helper to retrieve auth headers from Supabase session */
 function getAuthHeaders() {
   const session = getActiveSession();
@@ -39,7 +31,6 @@ function getAuthHeaders() {
   return {};
 }
 
-
 export async function fetchCurriculum() {
   const startTime = Date.now();
   try {
@@ -47,14 +38,12 @@ export async function fetchCurriculum() {
     const responseTime = Date.now() - startTime;
 
     if (!r.ok) {
-      console.warn("[API] Remote curriculum endpoint unavailable. Using local database fallback.");
       return await curriculumRepo.getAll();
     }
 
     logger.api("GET", "/api/curriculum", r.status, { responseTime });
     return await r.json();
   } catch {
-    console.warn("[API] Network unavailable for curriculum. Using local IndexedDB fallback.");
     return await curriculumRepo.getAll();
   }
 }
@@ -98,7 +87,6 @@ export async function fetchTopicContent(sid, cid, topic) {
         return data;
       }
     } catch (err) {
-      console.warn(`[API] Fetch error for ${topic} (Attempt ${attempt}/2):`, err?.message || err);
       if (attempt === 1) {
         await new Promise((res) => setTimeout(res, 800));
       }
@@ -106,7 +94,6 @@ export async function fetchTopicContent(sid, cid, topic) {
   }
 
   // Fallback to local cache if network attempt failed
-  console.warn(`[API] Network failed for topic (${topic}). Checking local IndexedDB cache.`);
   try {
     const cached = await topicRepo.getTopic(sid, cid, topic) || await topicRepo.getById(`${sid}|${cid}|${topic}`);
     if (cached?.data) return cached.data;

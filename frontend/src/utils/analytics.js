@@ -341,10 +341,10 @@ export async function triggerSync(targetUserId = null) {
       const remainingEvents = currentEvents.filter((e) => !batchIds.has(e.id));
       saveQueuedEvents(activeUserId, remainingEvents);
     } else {
-      console.warn(`[Telemetry] Sync failed with status: ${res.status}`);
+      console.debug(`[Telemetry] Sync skipped or failed with status: ${res.status}`);
     }
   } catch (err) {
-    console.warn("[Telemetry] Sync failed (offline mode):", err.message);
+    console.debug("[Telemetry] Sync deferred (offline mode):", err.message);
   } finally {
     activeSyncs.delete(activeUserId);
   }
@@ -356,12 +356,12 @@ if (typeof window !== "undefined") {
     const session = getActiveSession();
     const activeUserId = session?.user?.id || session?.user_id || null;
     if (activeUserId) {
-      console.log("[Telemetry] Internet connection restored. Initiating telemetry sync.");
       triggerSync(activeUserId);
     }
   });
 
   setTimeout(() => {
+    if (typeof navigator !== "undefined" && !navigator.onLine) return;
     const session = getActiveSession();
     const activeUserId = session?.user?.id || session?.user_id || null;
     if (activeUserId) triggerSync(activeUserId);

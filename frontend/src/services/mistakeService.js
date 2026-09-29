@@ -129,6 +129,7 @@ export async function markMistakeResolved({ topicId, questionIndex, userId = nul
 export async function fetchUnresolvedMistakes(userId = null) {
   const activeUserId = userId || getActiveUserId();
   if (!activeUserId || !supabase) return [];
+  if (typeof navigator !== "undefined" && !navigator.onLine) return [];
   try {
     const { data, error } = await supabase
       .from("user_mistakes")
@@ -137,12 +138,12 @@ export async function fetchUnresolvedMistakes(userId = null) {
       .eq("resolved", false);
 
     if (error) {
-      console.warn("[mistakeService] Fetch unresolved mistakes warning:", error.message);
+      console.debug("[mistakeService] Fetch unresolved mistakes note:", error.message);
       return [];
     }
     return data || [];
   } catch (err) {
-    console.error("[mistakeService] Exception fetching unresolved mistakes:", err);
+    console.debug("[mistakeService] Exception fetching unresolved mistakes (offline/unreachable):", err.message || err);
     return [];
   }
 }
