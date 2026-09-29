@@ -49,9 +49,9 @@ db.version(15).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
-// Version 16: Purge stale cached topics to pull freshly seeded quizzes and notes
-db.version(16).upgrade(async (tx) => {
-  await tx.table("topics").clear();
+// Version 16: Non-destructive upgrade — topics table is managed via content-versioning
+db.version(16).upgrade(async () => {
+  // Idempotent content versioning manages updates; never clear offline library
 });
 
 db.on("populate", () => {

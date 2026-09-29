@@ -5,6 +5,7 @@ import { progressRepo } from "../repository/progressRepo";
 import { fetchCurriculum, fetchTopicContent, saveProgress } from "../api";
 import { networkService } from "../services/networkService";
 import staticCurriculum from "../data/curriculum.json";
+import { getBundledTopic, seedBundledTopics } from "../data/contentLoader";
 
 // Canonical subject IDs — only these are ever kept in local storage.
 const CANONICAL_SUBJECT_IDS = new Set(["math", "physics", "chemistry", "biology", "english", "computer"]);
@@ -58,6 +59,9 @@ class SyncEngine {
       if (nonCanonical.length > 0) {
         await Promise.all(nonCanonical.map(s => db.curriculum.delete(s.id)));
       }
+
+      // Idempotently seed bundled educational topics into IndexedDB
+      await seedBundledTopics();
     } catch (e) {
       console.warn("[Sync] Static seed failed:", e);
     }
@@ -199,35 +203,53 @@ class SyncEngine {
   }
 
   /**
-   * Lazily fetch specific chapter/topic content when a user navigates to it.
-   * Returns the topic data directly for immediate UI consumption while saving to Dexie.
+   * Lazily ensure specific chapter/topic content is in Dexie.
+   * IndexedDB is the primary local source of truth.
+   * If not yet present in Dexie, it pulls from the bundled chunk and writes to Dexie.
+   * A non-blocking background refresh is triggered if online.
    */
   async prefetchTopic(subjectId, chapterId, topicId) {
-    if (typeof navigator !== "undefined" && !navigator.onLine) {
-      const local = await topicRepo.getTopic(subjectId, chapterId, topicId).catch(() => null);
-      return local?.data || null;
+    // 1. Read IndexedDB first
+    let local = await topicRepo.getTopic(subjectId, chapterId, topicId).catch(() => null);
+
+    // 2. If not in IndexedDB, fall back to bundled chunk immediately
+    if (!local?.data) {
+      const bundled = await getBundledTopic(subjectId, chapterId, topicId);
+      if (bundled?.data) {
+        await topicRepo.upsertBatch([bundled]).catch(() => {});
+        local = bundled;
+      }
     }
 
+    // 3. Trigger background refresh without blocking if online
+    if (typeof navigator !== "undefined" && navigator.onLine) {
+      this.refreshTopicInBackground(subjectId, chapterId, topicId).catch(() => {});
+    }
+
+    return local?.data || null;
+  }
+
+  /**
+   * Non-blocking background sync for a single topic.
+   * Updates Dexie quietly if the server returns fresh content.
+   * Never throws or interrupts user learning.
+   */
+  async refreshTopicInBackground(subjectId, chapterId, topicId) {
     try {
       const topicData = await fetchTopicContent(subjectId, chapterId, topicId);
-      if (topicData) {
+      if (topicData && (topicData.notes || (Array.isArray(topicData.qs) && topicData.qs.length > 0))) {
         await topicRepo.upsertBatch([{
           id: `${subjectId}|${chapterId}|${topicId}`,
           curriculum_id: subjectId,
           chapter_id: chapterId,
           data: topicData,
-          is_deleted: false
-        }]).catch((dbErr) => {
-          console.warn("[Sync] Dexie cache write failed:", dbErr?.message || dbErr);
-        });
-        return topicData;
+          is_deleted: false,
+        }]);
       }
     } catch (err) {
-      console.warn(`[Sync] prefetchTopic failed for "${topicId}":`, err?.message || err);
+      // Quiet background failure — do not log scary error or disrupt user
+      console.debug(`[Sync] Background refresh skipped for "${topicId}":`, err?.message || err);
     }
-
-    const local = await topicRepo.getTopic(subjectId, chapterId, topicId).catch(() => null);
-    return local?.data || null;
   }
 }
 

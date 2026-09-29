@@ -4,6 +4,7 @@ import { topicRepo } from "../repository/topicRepo";
 import { syncEngine } from "../sync/syncEngine";
 import { recordEvent } from "../utils/analytics";
 import { toast } from "react-hot-toast";
+import { getBundledTopic } from "../data/contentLoader";
 
 export function useTopicContent(
   subject,
@@ -75,16 +76,37 @@ export function useTopicContent(
 
     const loadTopic = async () => {
       try {
-        // 1. Check if IndexedDB already has content
-        const existingRecord = await topicRepo.getTopic(sid, cid, tid).catch(() => null);
+        // 1. Read IndexedDB first (Primary Source of Truth)
+        let existingRecord = await topicRepo.getTopic(sid, cid, tid).catch(() => null);
         if (cancelled) return;
 
-        if (existingRecord?.data) {
-          setFetchedContent(existingRecord.data);
-          setError(null);
+        let contentData = existingRecord?.data || null;
+
+        // 2. If not yet in IndexedDB, immediately check bundled static content
+        if (!contentData) {
+          const bundled = await getBundledTopic(sid, cid, tid);
+          if (cancelled) return;
+
+          if (bundled?.data) {
+            contentData = bundled.data;
+            // Write to Dexie in background so future visits read from IndexedDB
+            topicRepo.upsertBatch([bundled]).catch(() => {});
+          }
         }
 
-        // 2. Fetch fresh content from server (and upsert to IndexedDB in background)
+        // 3. If we have content (from IndexedDB or bundled static data), render immediately
+        if (contentData) {
+          setFetchedContent(contentData);
+          setError(null);
+
+          // 4. Trigger quiet non-blocking background refresh if online
+          if (typeof navigator !== "undefined" && navigator.onLine) {
+            syncEngine.refreshTopicInBackground(sid, cid, tid).catch(() => {});
+          }
+          return;
+        }
+
+        // 5. If not found locally or in bundled data, attempt remote fetch as last resort
         const freshData = await syncEngine.prefetchTopic(sid, cid, tid);
         if (cancelled) return;
 
@@ -94,34 +116,22 @@ export function useTopicContent(
           return;
         }
 
-        // 3. If prefetch returned nothing, re-verify IndexedDB
-        if (!existingRecord?.data) {
-          const fallbackRecord = await topicRepo.getTopic(sid, cid, tid).catch(() => null);
-          if (cancelled) return;
-
-          if (fallbackRecord?.data) {
-            setFetchedContent(fallbackRecord.data);
-            setError(null);
-            return;
-          }
-
-          // 4. Truly no content available anywhere
-          console.warn(`[useTopicContent] No content found: ${sid}/${cid}/${tid}`);
-          setError("Failed to load notes. Please check your network connection.");
-          toast.error("Failed to load notes. Please check your internet connection.");
-        }
+        // 6. Genuinely unavailable
+        console.warn(`[useTopicContent] Topic not found in local DB, bundle, or remote: ${sid}/${cid}/${tid}`);
+        setError("Topic content is currently unavailable. Please check your connection and try again.");
+        toast.error("Topic content is currently unavailable.");
       } catch (err) {
         if (cancelled) return;
         console.error(`[useTopicContent] Exception loading ${sid}/${cid}/${tid}:`, err);
-        
-        // Final sanity check of IndexedDB before showing error
+
+        // Sanity fallback check
         const local = await topicRepo.getTopic(sid, cid, tid).catch(() => null);
         if (local?.data) {
           setFetchedContent(local.data);
           setError(null);
         } else {
-          setError("Failed to load notes. Please check your network connection.");
-          toast.error("Failed to load notes. Please check your internet connection.");
+          setError("Topic content is currently unavailable. Please check your connection and try again.");
+          toast.error("Topic content is currently unavailable.");
         }
       }
     };

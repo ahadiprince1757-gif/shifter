@@ -2,6 +2,7 @@ import logger from "./utils/logger";
 import { supabase, getActiveSession } from "./supabase";
 import { curriculumRepo } from "./repository/curriculumRepo";
 import { topicRepo } from "./repository/topicRepo";
+import { getBundledTopic } from "./data/contentLoader";
 
 // Base API URL — resolved at build time by Vite.
 //
@@ -108,7 +109,9 @@ export async function fetchTopicContent(sid, cid, topic) {
   console.warn(`[API] Network failed for topic (${topic}). Checking local IndexedDB cache.`);
   try {
     const cached = await topicRepo.getTopic(sid, cid, topic) || await topicRepo.getById(`${sid}|${cid}|${topic}`);
-    return cached?.data || null;
+    if (cached?.data) return cached.data;
+    const bundled = await getBundledTopic(sid, cid, topic);
+    return bundled?.data || null;
   } catch {
     return null;
   }
