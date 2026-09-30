@@ -5177,1049 +5177,1851 @@ appropriate linear programming method can be used to solve it.
 add(
   "math",
   "fractions",
-  "Fraction basics",
+  "Understanding Fractions",
 
-  `<h2>Fractions Basics</h2>
+  `<h2>Understanding Fractions</h2>
 
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li>A fraction represents a part of a whole.</li>
-<li>A fraction has two parts: <b>numerator</b> and <b>denominator</b>.</li>
-<li><b>Numerator (top):</b> Shows how many parts you have.</li>
-<li><b>Denominator (bottom):</b> Shows total equal parts of the whole.</li>
-<li>The denominator tells the size of each part.</li>
-</ul>
+<h3>WHAT IS A FRACTION?</h3>
 
-<p><b> Key idea:</b> 3/5 means “3 parts out of 5 equal parts”.</p>
+<p>A fraction represents a number using two integers:</p>
 
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Mixing numerator and denominator</li>
-<li>Thinking bigger denominator = bigger fraction (not always true)</li>
-<li>Ignoring that parts must be equal</li>
-<li>Assuming fractions are always whole numbers</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-<ul>
-<li>
-<b>Example 1:</b> Identify numerator in 3/5<br>
-Step 1: Look at top number<br>
-Step 2: Top = 3<br>
-<b>Answer: 3</b>
-</li>
-
-<li>
-<b>Example 2:</b> What does 2/4 mean?<br>
-Step 1: Total parts = 4<br>
-Step 2: Taken parts = 2<br>
-Step 3: Simplify → 2/4 = 1/2<br>
-<b>Answer: Half</b>
-</li>
-
-<li>
-<b>Example 3:</b> Which is bigger: 1/3 or 1/2?<br>
-Step 1: Same numerator (1)<br>
-Step 2: Smaller denominator = bigger part<br>
-<b>Answer: 1/2 is bigger</b>
-</li>
-
-<li>
-<b>Example 4:</b> Identify denominator in 7/9<br>
-Step 1: Look at bottom number<br>
-Step 2: Bottom = 9<br>
-<b>Answer: 9</b>
-</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "Evaluate 7/9 as a decimal",
-      "hint": "division",
-      "steps": [
-        "Step 1: Divide 7 ÷ 9",
-        "Step 2: Perform long division",
-        "Step 3: Obtain repeating decimal",
-        "Step 4: Round to required precision"
-      ],
-      "ans": "0.777…",
-      "why": "Fraction is expressed as division of numerator by denominator"
-    },
-    {
-      "q": "Find the missing denominator if 3/x = 0.6",
-      "hint": "solve equation",
-      "steps": [
-        "Step 1: Write 3/x = 0.6",
-        "Step 2: Multiply both sides by x",
-        "Step 3: 3 = 0.6x",
-        "Step 4: Divide both sides by 0.6",
-        "Step 5: Solve for x"
-      ],
-      "ans": "5",
-      "why": "Denominator is found by rearranging fractional equation"
-    },
-    {
-      "q": "Convert 3/5 into percentage",
-      "hint": "fraction to percent",
-      "steps": [
-        "Step 1: Divide 3 ÷ 5",
-        "Step 2: Multiply result by 100",
-        "Step 3: Compute final percentage"
-      ],
-      "ans": "60%",
-      "why": "Fraction conversion uses multiplication by 100"
-    },
-    {
-      "q": "Find equivalent fraction of 3/5 with denominator 20",
-      "hint": "scaling fractions",
-      "steps": [
-        "Step 1: Determine multiplier from 5 to 20",
-        "Step 2: Multiply numerator by same factor",
-        "Step 3: Form new fraction"
-      ],
-      "ans": "12/20",
-      "why": "Equivalent fractions preserve ratio by scaling numerator and denominator equally"
-    }
-  ]
-);
-
-add(
-  "math",
-  "fractions",
-  "Adding and subtracting fractions",
-
-  `<h2>Add & Subtract Fractions</h2>
-
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li>You can only add or subtract fractions when they have the same denominator.</li>
-<li>If denominators are the same → add/subtract numerators only.</li>
-<li>If different → find a common denominator (LCM).</li>
-<li>Always simplify your answer.</li>
-</ul>
-
-<p><b> Key idea:</b> Denominator must be the same before combining.</p>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Adding denominators directly (wrong)</li>
-<li>Forgetting to find common denominator</li>
-<li>Not simplifying final answer</li>
-<li>Changing only one fraction instead of both when making LCM</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-<ul>
-<li>
-<b>Example 1:</b> 1/4 + 2/4<br>
-Step 1: Same denominator → 4<br>
-Step 2: Add numerators → 1 + 2 = 3<br>
-<b>Answer: 3/4</b>
-</li>
-
-<li>
-<b>Example 2:</b> 1/2 + 1/4<br>
-Step 1: LCM of 2 and 4 = 4<br>
-Step 2: Convert 1/2 = 2/4<br>
-Step 3: 2/4 + 1/4 = 3/4<br>
-<b>Answer: 3/4</b>
-</li>
-
-<li>
-<b>Example 3:</b> 3/5 − 1/5<br>
-Step 1: Same denominator<br>
-Step 2: Subtract → 3 − 1 = 2<br>
-<b>Answer: 2/5</b>
-</li>
-
-<li>
-<b>Example 4:</b> 2/3 + 1/6<br>
-Step 1: LCM of 3 and 6 = 6<br>
-Step 2: Convert 2/3 = 4/6<br>
-Step 3: 4/6 + 1/6 = 5/6<br>
-<b>Answer: 5/6</b>
-</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "2/3 + 1/3",
-      "hint": "Same denominator",
-      "steps": [
-        "Step 1: Add numerators → 2 + 1 = 3",
-        "Step 2: 3/3",
-        "Step 3: Simplify → 1"
-      ],
-      "ans": "1",
-      "why": "Forms a whole"
-    },
-    {
-      "q": "1/2 + 1/4",
-      "hint": "Find LCM",
-      "steps": [
-        "Step 1: LCM of 2 and 4 = 4",
-        "Step 2: Convert 1/2 = 2/4",
-        "Step 3: 2/4 + 1/4 = 3/4"
-      ],
-      "ans": "3/4",
-      "why": "Common denominator method"
-    },
-    {
-      "q": "5/6 - 1/3",
-      "hint": "Convert denominator",
-      "steps": [
-        "Step 1: 1/3 = 2/6",
-        "Step 2: 5/6 - 2/6",
-        "Step 3: 3/6 = 1/2"
-      ],
-      "ans": "1/2",
-      "why": "Subtraction with LCM"
-    }
-  ]
-);
-
-add(
-  "math",
-  "fractions",
-  "Multiplying and dividing fractions",
-
-  `<h2>Multiply & Divide Fractions</h2>
-
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li><b>Multiplication:</b> Multiply numerator × numerator and denominator × denominator.</li>
-<li><b>Division:</b> Change division to multiplication and flip the second fraction (reciprocal).</li>
-<li>Always simplify the final answer.</li>
-</ul>
-
-<p><b> Key idea:</b> Division = multiply by reciprocal.</p>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Forgetting to flip the second fraction when dividing</li>
-<li>Multiplying incorrectly</li>
-<li>Not simplifying answers</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-<ul>
-<li>
-<b>Example 1:</b> 1/2 × 1/3<br>
-Step 1: 1 × 1 = 1<br>
-Step 2: 2 × 3 = 6<br>
-<b>Answer: 1/6</b>
-</li>
-
-<li>
-<b>Example 2:</b> 2/3 × 3/4<br>
-Step 1: 2 × 3 = 6<br>
-Step 2: 3 × 4 = 12<br>
-Step 3: Simplify → 1/2<br>
-<b>Answer: 1/2</b>
-</li>
-
-<li>
-<b>Example 3:</b> 1/2 ÷ 1/4<br>
-Step 1: Flip 1/4 → 4/1<br>
-Step 2: 1/2 × 4/1 = 4/2<br>
-Step 3: Simplify → 2<br>
-<b>Answer: 2</b>
-</li>
-
-<li>
-<b>Example 4:</b> 3/5 × 2/3<br>
-Step 1: 3 × 2 = 6<br>
-Step 2: 5 × 3 = 15<br>
-Step 3: Simplify → 2/5<br>
-<b>Answer: 2/5</b>
-</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "4/7 × 2/3",
-      "hint": "Multiply straight across",
-      "steps": [
-        "Step 1: 4 × 2 = 8",
-        "Step 2: 7 × 3 = 21"
-      ],
-      "ans": "8/21",
-      "why": "Multiply numerators and denominators"
-    },
-    {
-      "q": "5/6 ÷ 1/3",
-      "hint": "Flip second fraction",
-      "steps": [
-        "Step 1: 5/6 × 3/1",
-        "Step 2: 15/6",
-        "Step 3: Simplify → 5/2"
-      ],
-      "ans": "5/2",
-      "why": "Division uses reciprocal"
-    },
-    {
-      "q": "2/5 ÷ 2/5",
-      "hint": "Same fractions",
-      "steps": [
-        "Step 1: Flip → 2/5 × 5/2",
-        "Step 2: Cancel common factors",
-        "Step 3: 1"
-      ],
-      "ans": "1",
-      "why": "Any number divided by itself = 1"
-    }
-  ]
-);
-
-add(
-  "math",
-  "fractions",
-  "Decimals",
-
-  `<h2>Decimals</h2>
-
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li>Decimals are another way of writing fractions using base 10.</li>
-<li>Place value system: 0.1 (tenths), 0.01 (hundredths), 0.001 (thousandths)</li>
-<li>0.5 = 5/10 = 1/2</li>
-<li>0.25 = 25/100 = 1/4</li>
-<li>Line up decimal points when adding/subtracting.</li>
-</ul>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Not aligning decimal points</li>
-<li>Misreading place value</li>
-<li>Forgetting to simplify fractions after conversion</li>
-<li>Dropping zeros incorrectly (e.g. 0.50 ≠ 0.5 mistake in understanding)</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
+<p><b>a/b</b></p>
 
 <ul>
-<li>
-<b>Example 1:</b> Convert 0.5 to fraction<br>
-Step 1: 0.5 = 5/10<br>
-Step 2: Simplify → 1/2<br>
-<b>Answer: 1/2</b>
-</li>
-
-<li>
-<b>Example 2:</b> 0.25 + 0.25<br>
-Step 1: Align decimals<br>
-Step 2: 0.25 + 0.25 = 0.50<br>
-Step 3: Simplify → 0.5<br>
-<b>Answer: 0.5</b>
-</li>
-
-<li>
-<b>Example 3:</b> Convert 0.75 to fraction<br>
-Step 1: 75/100<br>
-Step 2: Simplify → 3/4<br>
-<b>Answer: 3/4</b>
-</li>
-
-<li>
-<b>Example 4:</b> 1.2 + 0.35<br>
-Step 1: Align decimals<br>
-Step 2: 1.20 + 0.35<br>
-Step 3: = 1.55<br>
-<b>Answer: 1.55</b>
-</li>
-
-<li>
-<b>Example 5:</b> 2.5 − 0.75<br>
-Step 1: 2.50 − 0.75<br>
-Step 2: = 1.75<br>
-<b>Answer: 1.75</b>
-</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "0.2 + 0.3",
-      "hint": "Add decimals",
-      "steps": [
-        "Step 1: Align decimal points",
-        "Step 2: 0.2 + 0.3",
-        "Step 3: 0.5"
-      ],
-      "ans": "0.5",
-      "why": "Place value addition"
-    },
-    {
-      "q": "Convert 0.6 to fraction",
-      "hint": "Write over 10",
-      "steps": [
-        "Step 1: 0.6 = 6/10",
-        "Step 2: Simplify",
-        "Step 3: 3/5"
-      ],
-      "ans": "3/5",
-      "why": "Simplifying fractions"
-    },
-    {
-      "q": "1.5 + 2.25",
-      "hint": "Align decimals",
-      "steps": [
-        "Step 1: 1.50 + 2.25",
-        "Step 2: Add",
-        "Step 3: 3.75"
-      ],
-      "ans": "3.75",
-      "why": "Decimal addition rules"
-    }
-  ]
-);
-
-add(
-  "math",
-  "fractions",
-  "Fractions to decimals",
-
-  `<h2>Fractions ↔ Decimals</h2>
-
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li>To convert a fraction to a decimal, divide the numerator by the denominator.</li>
-<li>A decimal is just another way of writing a fraction in base 10.</li>
-<li>If division ends → <b>terminating decimal</b> (e.g. 0.5, 0.75).</li>
-<li>If digits repeat forever → <b>recurring decimal</b> (e.g. 0.333..., 0.666...).</li>
+<li><b>a</b> is the numerator.</li>
+<li><b>b</b> is the denominator.</li>
+<li>The denominator must not be zero.</li>
 </ul>
 
-<p><b> Key idea:</b> Fraction = division problem.</p>
+<p>For example:</p>
 
-<h3> RECURRING DECIMALS (IMPORTANT CONCEPT)</h3>
-
-<p>A recurring decimal is a decimal where digits repeat infinitely.</p>
+<p><b>3/5</b></p>
 
 <ul>
-<li>0.333... = 1/3</li>
-<li>0.666... = 2/3</li>
-<li>0.142857142857... = 1/7</li>
+<li>5 tells us the whole has been divided into 5 equal parts.</li>
+<li>3 tells us that we are considering 3 of those parts.</li>
 </ul>
 
-<h3> CONVERTING RECURRING DECIMALS TO FRACTIONS</h3>
+<p><b>Important:</b> The parts must be equal. A fraction is not simply "some parts out of some parts."</p>
 
-<h4> Steps:</h4>
+<h3>NUMERATOR AND DENOMINATOR</h3>
+
+<p>In <b>7/9</b>:</p>
+
+<ul>
+<li>Numerator = 7</li>
+<li>Denominator = 9</li>
+</ul>
+
+<p>The denominator describes the number of equal parts into which the whole is divided. The numerator tells how many of those parts are being counted.</p>
+
+<h3>PROPER FRACTIONS</h3>
+
+<p>A proper fraction has a numerator smaller than its denominator.</p>
+
+<p>Examples:</p>
+
+<ul>
+<li>2/5</li>
+<li>3/7</li>
+<li>8/11</li>
+</ul>
+
+<p>Proper fractions have values between 0 and 1.</p>
+
+<h3>IMPROPER FRACTIONS</h3>
+
+<p>An improper fraction has a numerator greater than or equal to its denominator.</p>
+
+<p>Examples:</p>
+
+<ul>
+<li>7/5</li>
+<li>9/4</li>
+<li>6/6</li>
+</ul>
+
+<p>An improper fraction can have a value greater than or equal to 1.</p>
+
+<h3>MIXED NUMBERS</h3>
+
+<p>A mixed number contains a whole number and a proper fraction.</p>
+
+<p>Example:</p>
+
+<p><b>2 1/3</b></p>
+
+<p>This means:</p>
+
+<p><b>2 + 1/3</b></p>
+
+<p>To convert a mixed number to an improper fraction:</p>
+
 <ol>
-<li>Let x = recurring decimal</li>
-<li>Multiply to shift repeating digits</li>
-<li>Subtract equations</li>
-<li>Solve for x</li>
+<li>Multiply the whole number by the denominator.</li>
+<li>Add the numerator.</li>
+<li>Keep the same denominator.</li>
 </ol>
 
-<h4> Example 1:</h4>
-<p>x = 0.333...</p>
-<p>10x = 3.333...</p>
-<p>10x − x = 3</p>
-<p>9x = 3 → x = 1/3</p>
+<p>Example:</p>
 
-<h4> Example 2:</h4>
-<p>x = 0.666...</p>
-<p>10x = 6.666...</p>
-<p>9x = 6 → x = 2/3</p>
+<p><b>2 1/3</b></p>
 
-<h3> COMMON MISTAKES</h3>
+<p>2 × 3 = 6</p>
+<p>6 + 1 = 7</p>
+
+<p>Therefore:</p>
+
+<p><b>2 1/3 = 7/3</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
 <ul>
-<li>Stopping division too early</li>
-<li>Confusing terminating and recurring decimals</li>
-<li>Forgetting subtraction step in algebra method</li>
-<li>Not aligning decimal places correctly</li>
+<li>Confusing numerator and denominator.</li>
+<li>Forgetting that the parts represented by the denominator must be equal.</li>
+<li>Thinking every fraction is less than 1.</li>
+<li>Forgetting that the denominator cannot be zero.</li>
 </ul>
 
-<h3> WORKED EXAMPLES (BASIC)</h3>
-<ul>
-<li><b>1/2</b> → 0.5</li>
-<li><b>3/4</b> → 0.75</li>
-<li><b>1/5</b> → 0.2</li>
-</ul>
+<h3>WORKED EXAMPLES</h3>
 
-<h3> PRACTICE QUESTIONS</h3>
-<ul>
-<li>
-<b>Q1:</b> Convert 3/5 to decimal<br>
-Hint: divide numerator by denominator<br>
-Answer: 0.6
-</li>
+<p><b>Example 1:</b> Identify the numerator and denominator in 5/8.</p>
 
-<li>
-<b>Q2:</b> Convert 7/10 to decimal<br>
-Hint: denominator is power of 10<br>
-Answer: 0.7
-</li>
+<p>Numerator = 5</p>
+<p>Denominator = 8</p>
 
-<li>
-<b>Q3:</b> Convert 1/4 to decimal<br>
-Hint: divide carefully<br>
-Answer: 0.25
-</li>
+<p><b>Example 2:</b> Is 3/7 proper or improper?</p>
 
-<li>
-<b>Q4:</b> What type of decimal is 0.125?<br>
-Hint: does it stop or repeat?<br>
-Answer: terminating decimal
-</li>
+<p>3 &lt; 7, so it is a <b>proper fraction</b>.</p>
 
-<li>
-<b>Q5:</b> Convert 5/8 to decimal<br>
-Hint: long division<br>
-Answer: 0.625
-</li>
-</ul>
+<p><b>Example 3:</b> Convert 3 2/5 to an improper fraction.</p>
+
+<p>3 × 5 = 15</p>
+<p>15 + 2 = 17</p>
+
+<p><b>Answer: 17/5</b></p>
 `,
 
   [
     {
-      "q": "Convert 0.666... into fraction form",
-      "hint": "recurring decimal",
+      "q": "In the fraction 7/12, what is the numerator?",
+      "hint": "Look at the top number.",
       "steps": [
-        "Step 1: Let x = 0.666...",
-        "Step 2: Multiply both sides by 10 → 10x = 6.666...",
-        "Step 3: Subtract x from 10x",
-        "Step 4: 9x = 6",
-        "Step 5: Solve for x"
+        "Step 1: Identify the top number.",
+        "Step 2: The top number is 7."
+      ],
+      "ans": "7",
+      "why": "The numerator is the number written above the fraction bar."
+    },
+    {
+      "q": "In the fraction 7/12, what is the denominator?",
+      "hint": "Look at the bottom number.",
+      "steps": [
+        "Step 1: Identify the bottom number.",
+        "Step 2: The bottom number is 12."
+      ],
+      "ans": "12",
+      "why": "The denominator is the number written below the fraction bar."
+    },
+    {
+      "q": "Is 5/8 a proper or improper fraction?",
+      "hint": "Compare numerator and denominator.",
+      "steps": [
+        "Step 1: Numerator = 5.",
+        "Step 2: Denominator = 8.",
+        "Step 3: 5 is smaller than 8."
+      ],
+      "ans": "Proper fraction",
+      "why": "A proper fraction has a numerator smaller than its denominator."
+    },
+    {
+      "q": "Convert 2 3/4 to an improper fraction.",
+      "hint": "Multiply the whole number by the denominator first.",
+      "steps": [
+        "Step 1: 2 × 4 = 8.",
+        "Step 2: 8 + 3 = 11.",
+        "Step 3: Keep denominator 4.",
+        "Step 4: The result is 11/4."
+      ],
+      "ans": "11/4",
+      "why": "A mixed number is converted by multiplying the whole number by the denominator and adding the numerator."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "fractions",
+  "Equivalent Fractions and Simplifying",
+
+  `<h2>Equivalent Fractions and Simplifying</h2>
+
+<h3>WHAT ARE EQUIVALENT FRACTIONS?</h3>
+
+<p>Equivalent fractions have <b>different numbers</b> but represent the <b>same value</b>.</p>
+
+<p>For example:</p>
+
+<p><b>1/2 = 2/4 = 3/6 = 4/8</b></p>
+
+<p>The numerator and denominator can both be multiplied or divided by the same non-zero number without changing the value of the fraction.</p>
+
+<h3>CREATING AN EQUIVALENT FRACTION</h3>
+
+<p>Example:</p>
+
+<p><b>3/5</b></p>
+
+<p>Multiply both numerator and denominator by 4:</p>
+
+<p>3 × 4 = 12</p>
+<p>5 × 4 = 20</p>
+
+<p>Therefore:</p>
+
+<p><b>3/5 = 12/20</b></p>
+
+<p><b>Important:</b> You must multiply or divide both parts by the same number.</p>
+
+<h3>SIMPLIFYING A FRACTION</h3>
+
+<p>Simplifying means writing a fraction in its simplest form without changing its value.</p>
+
+<p>Example:</p>
+
+<p><b>12/18</b></p>
+
+<p>The greatest common factor of 12 and 18 is 6.</p>
+
+<p>Divide both by 6:</p>
+
+<p>12 ÷ 6 = 2</p>
+<p>18 ÷ 6 = 3</p>
+
+<p>Therefore:</p>
+
+<p><b>12/18 = 2/3</b></p>
+
+<h3>HOW TO KNOW WHEN A FRACTION IS FULLY SIMPLIFIED</h3>
+
+<p>A fraction is in simplest form when the numerator and denominator have no common factor greater than 1.</p>
+
+<p>Example:</p>
+
+<p><b>4/9</b> is simplified because 4 and 9 have no common factor greater than 1.</p>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Changing only the numerator.</li>
+<li>Changing only the denominator.</li>
+<li>Multiplying the numerator and dividing the denominator.</li>
+<li>Stopping before the fraction is fully simplified.</li>
+</ul>
+
+<h3>WORKED EXAMPLES</h3>
+
+<p><b>Example 1:</b> Find an equivalent fraction to 2/3 with denominator 15.</p>
+
+<p>3 × 5 = 15</p>
+
+<p>Therefore multiply the numerator by 5:</p>
+
+<p>2 × 5 = 10</p>
+
+<p><b>Answer: 10/15</b></p>
+
+<p><b>Example 2:</b> Simplify 20/30.</p>
+
+<p>Both numbers are divisible by 10.</p>
+
+<p>20 ÷ 10 = 2</p>
+<p>30 ÷ 10 = 3</p>
+
+<p><b>Answer: 2/3</b></p>
+`,
+
+  [
+    {
+      "q": "Find an equivalent fraction to 3/4 with denominator 20.",
+      "hint": "4 must become 20.",
+      "steps": [
+        "Step 1: 4 × 5 = 20.",
+        "Step 2: Multiply the numerator by 5.",
+        "Step 3: 3 × 5 = 15."
+      ],
+      "ans": "15/20",
+      "why": "Both numerator and denominator must be multiplied by the same factor."
+    },
+    {
+      "q": "Simplify 12/18.",
+      "hint": "Find a common factor of 12 and 18.",
+      "steps": [
+        "Step 1: The greatest common factor is 6.",
+        "Step 2: 12 ÷ 6 = 2.",
+        "Step 3: 18 ÷ 6 = 3."
       ],
       "ans": "2/3",
-      "why": "Recurring decimals are solved using elimination of repeating part"
+      "why": "Dividing numerator and denominator by their greatest common factor gives simplest form."
     },
     {
-      "q": "Convert 0.121212... into fraction form",
-      "hint": "two-digit repeating block",
+      "q": "Are 2/3 and 8/12 equivalent?",
+      "hint": "Simplify 8/12.",
       "steps": [
-        "Step 1: Let x = 0.121212...",
-        "Step 2: Multiply both sides by 100 → 100x = 12.121212...",
-        "Step 3: Subtract x from 100x",
-        "Step 4: 99x = 12",
-        "Step 5: Solve for x"
+        "Step 1: Divide 8 and 12 by 4.",
+        "Step 2: 8/12 = 2/3.",
+        "Step 3: Therefore the fractions have the same value."
       ],
-      "ans": "12/99 = 4/33",
-      "why": "Repeating blocks are eliminated using powers of 10"
-    },
-    {
-      "q": "Convert 0.444... into fraction form",
-      "hint": "single repeating digit",
-      "steps": [
-        "Step 1: Let x = 0.444...",
-        "Step 2: Multiply both sides by 10 → 10x = 4.444...",
-        "Step 3: Subtract x from 10x",
-        "Step 4: 9x = 4",
-        "Step 5: Solve for x"
-      ],
-      "ans": "4/9",
-      "why": "Single repeating digits simplify into ninths"
-    },
-    {
-      "q": "Convert 0.777... into fraction form",
-      "hint": "recurring decimal",
-      "steps": [
-        "Step 1: Let x = 0.777...",
-        "Step 2: Multiply both sides by 10 → 10x = 7.777...",
-        "Step 3: Subtract x from 10x",
-        "Step 4: 9x = 7",
-        "Step 5: Solve for x"
-      ],
-      "ans": "7/9",
-      "why": "Recurring decimals convert into fraction using elimination method"
-    },
-    {
-      "q": "Convert 0.090909... into fraction form",
-      "hint": "two-digit repetition",
-      "steps": [
-        "Step 1: Let x = 0.090909...",
-        "Step 2: Multiply both sides by 100 → 100x = 9.090909...",
-        "Step 3: Subtract x from 100x",
-        "Step 4: 99x = 9",
-        "Step 5: Solve for x"
-      ],
-      "ans": "1/11",
-      "why": "Repeating patterns convert into simplified fractions using algebra"
+      "ans": "Yes",
+      "why": "Equivalent fractions represent the same value."
     }
   ]
 );
 
+
 add(
   "math",
-  "measurement",
-  "Area of rectangles and squares",
+  "fractions",
+  "Comparing Fractions",
 
-  `<h2>Area of Rectangles & Squares</h2>
+  `<h2>Comparing Fractions</h2>
 
-<h3> NOTES (EXPLAINED)</h3>
+<h3>WHY COMPARISON CAN BE TRICKY</h3>
+
+<p>You cannot always compare fractions by looking only at the numerator or only at the denominator.</p>
+
+<p>The fraction's value depends on <b>both</b>.</p>
+
+<h3>METHOD 1: SAME DENOMINATOR</h3>
+
+<p>If two fractions have the same denominator, compare their numerators.</p>
+
+<p>Example:</p>
+
+<p><b>5/8 and 3/8</b></p>
+
+<p>Both denominators are 8.</p>
+
+<p>Since 5 &gt; 3:</p>
+
+<p><b>5/8 &gt; 3/8</b></p>
+
+<h3>METHOD 2: SAME NUMERATOR</h3>
+
+<p>If two positive fractions have the same numerator, the fraction with the smaller denominator is larger.</p>
+
+<p>Example:</p>
+
+<p><b>1/3 and 1/5</b></p>
+
+<p>A third is larger than a fifth.</p>
+
+<p>Therefore:</p>
+
+<p><b>1/3 &gt; 1/5</b></p>
+
+<h3>METHOD 3: COMMON DENOMINATOR</h3>
+
+<p>Convert the fractions so that they have the same denominator.</p>
+
+<p>Example:</p>
+
+<p><b>2/3 and 3/4</b></p>
+
+<p>A common denominator is 12.</p>
+
+<p>2/3 = 8/12</p>
+
+<p>3/4 = 9/12</p>
+
+<p>Since 9 &gt; 8:</p>
+
+<p><b>3/4 &gt; 2/3</b></p>
+
+<h3>METHOD 4: CROSS-MULTIPLICATION</h3>
+
+<p>For positive fractions:</p>
+
+<p><b>a/b</b> and <b>c/d</b></p>
+
+<p>Compare:</p>
+
+<p><b>a × d</b> and <b>c × b</b></p>
+
+<p>Example:</p>
+
+<p>Compare 3/5 and 4/7.</p>
+
+<p>3 × 7 = 21</p>
+
+<p>4 × 5 = 20</p>
+
+<p>Since 21 &gt; 20:</p>
+
+<p><b>3/5 &gt; 4/7</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
 <ul>
-<li>Area tells us how much surface is covered inside a shape.</li>
-<li>Rectangle: Area = length × width</li>
-<li>Square: Area = side × side</li>
-<li>Units are always squared (cm², m², km²).</li>
+<li>Assuming a larger denominator always means a larger fraction.</li>
+<li>Comparing only numerators when denominators differ.</li>
+<li>Cross-multiplying but comparing the wrong products.</li>
 </ul>
-
-<p><b> Key idea:</b> Area always multiplies two lengths.</p>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Using addition instead of multiplication</li>
-<li>Forgetting squared units</li>
-<li>Mixing perimeter and area formulas</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-<ul>
-<li>
-<b>Example 1:</b> Rectangle 6 × 4<br>
-Step 1: Area = length × width<br>
-Step 2: 6 × 4 = 24<br>
-<b>Answer: 24 cm²</b>
-</li>
-
-<li>
-<b>Example 2:</b> Square side 5<br>
-Step 1: 5 × 5<br>
-Step 2: 25<br>
-<b>Answer: 25 cm²</b>
-</li>
-
-<li>
-<b>Example 3:</b> Rectangle 10 × 3<br>
-Step 1: 10 × 3<br>
-Step 2: 30<br>
-<b>Answer: 30 cm²</b>
-</li>
-</ul>
-
-<p><b> Key idea:</b> Area uses multiplication of dimensions.</p>
 `,
 
   [
     {
-      "q": "Find area of rectangle 8 × 2",
-      "hint": "Multiply length and width",
+      "q": "Which is greater: 5/9 or 2/9?",
+      "hint": "The denominators are already equal.",
       "steps": [
-        "Step 1: Area = length × width",
-        "Step 2: 8 × 2",
-        "Step 3: 16"
+        "Step 1: Both denominators are 9.",
+        "Step 2: Compare numerators 5 and 2.",
+        "Step 3: 5 > 2."
       ],
-      "ans": "16",
-      "why": "Area formula for rectangle"
+      "ans": "5/9",
+      "why": "With equal positive denominators, the larger numerator gives the larger fraction."
     },
     {
-      "q": "Find area of square with side 7",
-      "hint": "Side × side",
+      "q": "Which is greater: 1/3 or 1/7?",
+      "hint": "The numerators are equal.",
       "steps": [
-        "Step 1: 7 × 7",
-        "Step 2: 49"
+        "Step 1: Both numerators are 1.",
+        "Step 2: Compare denominators.",
+        "Step 3: A third is larger than a seventh."
       ],
-      "ans": "49",
-      "why": "Square area rule"
+      "ans": "1/3",
+      "why": "For positive fractions with the same numerator, the smaller denominator gives the larger value."
     },
     {
-      "q": "Rectangle has length 9 and width 5. Find area",
-      "hint": "Multiply",
+      "q": "Which is greater: 3/4 or 5/8?",
+      "hint": "Use a common denominator.",
       "steps": [
-        "Step 1: 9 × 5",
-        "Step 2: 45"
+        "Step 1: Convert 3/4 to eighths.",
+        "Step 2: 3/4 = 6/8.",
+        "Step 3: Compare 6/8 and 5/8.",
+        "Step 4: 6/8 is greater."
       ],
-      "ans": "45",
-      "why": "Direct formula application"
+      "ans": "3/4",
+      "why": "Converting to a common denominator makes comparison direct."
     },
     {
-      "q": "Square side 10. Find area",
-      "hint": "Square rule",
+      "q": "Which is greater: 4/7 or 5/9?",
+      "hint": "Cross-multiply.",
       "steps": [
-        "Step 1: 10 × 10",
-        "Step 2: 100"
+        "Step 1: 4 × 9 = 36.",
+        "Step 2: 5 × 7 = 35.",
+        "Step 3: 36 > 35."
       ],
-      "ans": "100",
-      "why": "Side squared"
-    },
-    {
-      "q": "Which is correct formula for rectangle area?",
-      "hint": "length and width",
-      "steps": [
-        "Step 1: Identify rectangle formula",
-        "Step 2: Multiply length × width"
-      ],
-      "ans": "length × width",
-      "why": "Definition of rectangle area"
+      "ans": "4/7",
+      "why": "Cross-products can be compared when determining which of two positive fractions is larger."
     }
   ]
 );
 
+
+add(
+  "math",
+  "fractions",
+  "Adding and Subtracting Fractions",
+
+  `<h2>Adding and Subtracting Fractions</h2>
+
+<h3>THE MAIN RULE</h3>
+
+<p>Fractions must have a <b>common denominator</b> before their numerators can be added or subtracted.</p>
+
+<p>The denominator tells us the size of the parts. We cannot directly combine parts of different sizes.</p>
+
+<h3>SAME DENOMINATOR</h3>
+
+<p>Example:</p>
+
+<p><b>2/7 + 3/7</b></p>
+
+<p>The denominators are already equal.</p>
+
+<p>Add the numerators:</p>
+
+<p>2 + 3 = 5</p>
+
+<p>Keep the denominator:</p>
+
+<p><b>5/7</b></p>
+
+<p>Notice that we do <b>not</b> add 7 + 7.</p>
+
+<h3>DIFFERENT DENOMINATORS</h3>
+
+<p>Example:</p>
+
+<p><b>1/2 + 1/3</b></p>
+
+<p>The denominators are different, so find their LCM.</p>
+
+<p>LCM(2,3) = 6</p>
+
+<p>Convert each fraction:</p>
+
+<p>1/2 = 3/6</p>
+
+<p>1/3 = 2/6</p>
+
+<p>Now add:</p>
+
+<p>3/6 + 2/6 = 5/6</p>
+
+<h3>SUBTRACTION</h3>
+
+<p>The same rule applies.</p>
+
+<p>Example:</p>
+
+<p><b>5/6 − 1/4</b></p>
+
+<p>LCM of 6 and 4 = 12.</p>
+
+<p>5/6 = 10/12</p>
+
+<p>1/4 = 3/12</p>
+
+<p>Therefore:</p>
+
+<p>10/12 − 3/12 = 7/12</p>
+
+<h3>THE GENERAL PROCEDURE</h3>
+
+<ol>
+<li>Find a common denominator.</li>
+<li>Rewrite each fraction using that denominator.</li>
+<li>Add or subtract the numerators.</li>
+<li>Keep the common denominator.</li>
+<li>Simplify the answer if possible.</li>
+</ol>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Adding denominators.</li>
+<li>Changing the denominator without changing the numerator.</li>
+<li>Using the wrong LCM.</li>
+<li>Forgetting to simplify.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Calculate 2/5 + 1/5.",
+      "hint": "The denominators are already equal.",
+      "steps": [
+        "Step 1: Add numerators: 2 + 1 = 3.",
+        "Step 2: Keep denominator 5.",
+        "Step 3: Result = 3/5."
+      ],
+      "ans": "3/5",
+      "why": "When denominators are equal, add only the numerators."
+    },
+    {
+      "q": "Calculate 1/2 + 1/4.",
+      "hint": "Change 1/2 into quarters.",
+      "steps": [
+        "Step 1: LCM of 2 and 4 = 4.",
+        "Step 2: 1/2 = 2/4.",
+        "Step 3: 2/4 + 1/4 = 3/4."
+      ],
+      "ans": "3/4",
+      "why": "A common denominator is required before adding fractions."
+    },
+    {
+      "q": "Calculate 5/6 - 1/3.",
+      "hint": "Convert 1/3 to sixths.",
+      "steps": [
+        "Step 1: 1/3 = 2/6.",
+        "Step 2: 5/6 - 2/6 = 3/6.",
+        "Step 3: Simplify 3/6 to 1/2."
+      ],
+      "ans": "1/2",
+      "why": "The fractions are first expressed with the same denominator."
+    },
+    {
+      "q": "Calculate 2/3 + 3/4.",
+      "hint": "Use 12 as the common denominator.",
+      "steps": [
+        "Step 1: 2/3 = 8/12.",
+        "Step 2: 3/4 = 9/12.",
+        "Step 3: 8/12 + 9/12 = 17/12."
+      ],
+      "ans": "17/12",
+      "why": "The LCM of 3 and 4 is 12."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "fractions",
+  "Multiplying Fractions",
+
+  `<h2>Multiplying Fractions</h2>
+
+<h3>THE RULE</h3>
+
+<p>To multiply fractions:</p>
+
+<p><b>Multiply numerator × numerator.</b></p>
+
+<p><b>Multiply denominator × denominator.</b></p>
+
+<p>Unlike addition, the denominators do <b>not</b> need to be equal.</p>
+
+<h3>EXAMPLE 1</h3>
+
+<p><b>2/3 × 4/5</b></p>
+
+<p>Multiply numerators:</p>
+
+<p>2 × 4 = 8</p>
+
+<p>Multiply denominators:</p>
+
+<p>3 × 5 = 15</p>
+
+<p>Therefore:</p>
+
+<p><b>2/3 × 4/5 = 8/15</b></p>
+
+<h3>SIMPLIFYING</h3>
+
+<p>Example:</p>
+
+<p><b>2/3 × 3/4</b></p>
+
+<p>Multiply:</p>
+
+<p>6/12</p>
+
+<p>Simplify:</p>
+
+<p><b>6/12 = 1/2</b></p>
+
+<h3>CANCELLING BEFORE MULTIPLYING</h3>
+
+<p>You can simplify common factors before multiplying.</p>
+
+<p>Example:</p>
+
+<p><b>2/3 × 3/4</b></p>
+
+<p>The 3 in the numerator and the 3 in the denominator cancel.</p>
+
+<p>The 2 and 4 can also be simplified by dividing by 2.</p>
+
+<p>This leaves:</p>
+
+<p><b>1/2</b></p>
+
+<p>This is called <b>cross-cancellation</b>.</p>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Adding instead of multiplying.</li>
+<li>Trying to find an LCM unnecessarily.</li>
+<li>Multiplying correctly but forgetting to simplify.</li>
+<li>Cancelling numbers that are not factors.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Calculate 3/5 × 2/7.",
+      "hint": "Multiply straight across.",
+      "steps": [
+        "Step 1: 3 × 2 = 6.",
+        "Step 2: 5 × 7 = 35.",
+        "Step 3: Write the result as 6/35."
+      ],
+      "ans": "6/35",
+      "why": "Fractions are multiplied by multiplying corresponding numerators and denominators."
+    },
+    {
+      "q": "Calculate 2/3 × 3/4.",
+      "hint": "Multiply and simplify.",
+      "steps": [
+        "Step 1: 2 × 3 = 6.",
+        "Step 2: 3 × 4 = 12.",
+        "Step 3: 6/12 = 1/2."
+      ],
+      "ans": "1/2",
+      "why": "The resulting fraction must be simplified."
+    },
+    {
+      "q": "Calculate 4/9 × 3/8.",
+      "hint": "Cancel common factors first.",
+      "steps": [
+        "Step 1: Cancel 4 with 8 to get 1 and 2.",
+        "Step 2: Cancel 3 with 9 to get 1 and 3.",
+        "Step 3: Multiply 1/3 × 1/2.",
+        "Step 4: Result = 1/6."
+      ],
+      "ans": "1/6",
+      "why": "Common factors can be cancelled before multiplication."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "fractions",
+  "Dividing Fractions",
+
+  `<h2>Dividing Fractions</h2>
+
+<h3>THE KEY RULE</h3>
+
+<p>To divide by a fraction:</p>
+
+<ol>
+<li>Keep the first fraction.</li>
+<li>Change division to multiplication.</li>
+<li>Take the reciprocal of the second fraction.</li>
+</ol>
+
+<p>In short:</p>
+
+<p><b>a/b ÷ c/d = a/b × d/c</b></p>
+
+<h3>WHAT IS A RECIPROCAL?</h3>
+
+<p>The reciprocal of a non-zero fraction is found by swapping the numerator and denominator.</p>
+
+<p>Examples:</p>
+
+<ul>
+<li>2/3 → 3/2</li>
+<li>5/7 → 7/5</li>
+<li>4 → 1/4</li>
+</ul>
+
+<h3>WORKED EXAMPLE</h3>
+
+<p><b>1/2 ÷ 1/4</b></p>
+
+<p>Step 1: Keep 1/2.</p>
+
+<p>Step 2: Change ÷ to ×.</p>
+
+<p>Step 3: Flip 1/4 to 4/1.</p>
+
+<p>Therefore:</p>
+
+<p>1/2 × 4/1 = 4/2 = <b>2</b></p>
+
+<h3>WHY DOES THE RECIPROCAL WORK?</h3>
+
+<p>Division asks:</p>
+
+<p><b>How many times does the divisor fit into the number?</b></p>
+
+<p>For example:</p>
+
+<p>1/2 ÷ 1/4 asks how many quarters fit into one half.</p>
+
+<p>Two quarters fit into one half.</p>
+
+<p>Therefore:</p>
+
+<p><b>1/2 ÷ 1/4 = 2</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Flipping the first fraction instead of the second.</li>
+<li>Forgetting to change division into multiplication.</li>
+<li>Flipping both fractions.</li>
+<li>Forgetting to simplify.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Calculate 3/4 ÷ 1/2.",
+      "hint": "Flip the second fraction.",
+      "steps": [
+        "Step 1: Keep 3/4.",
+        "Step 2: Change ÷ to ×.",
+        "Step 3: Flip 1/2 to 2/1.",
+        "Step 4: 3/4 × 2/1 = 6/4 = 3/2."
+      ],
+      "ans": "3/2",
+      "why": "Dividing by a fraction is equivalent to multiplying by its reciprocal."
+    },
+    {
+      "q": "Calculate 5/6 ÷ 1/3.",
+      "hint": "The reciprocal of 1/3 is 3.",
+      "steps": [
+        "Step 1: 5/6 ÷ 1/3 = 5/6 × 3/1.",
+        "Step 2: Multiply to get 15/6.",
+        "Step 3: Simplify to 5/2."
+      ],
+      "ans": "5/2",
+      "why": "The second fraction is replaced by its reciprocal."
+    },
+    {
+      "q": "Calculate 2/5 ÷ 2/5.",
+      "hint": "A non-zero number divided by itself equals 1.",
+      "steps": [
+        "Step 1: Flip the second fraction: 5/2.",
+        "Step 2: 2/5 × 5/2.",
+        "Step 3: Cancel common factors.",
+        "Step 4: Result = 1."
+      ],
+      "ans": "1",
+      "why": "Any non-zero number divided by itself equals 1."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "fractions",
+  "Decimals and Fractions",
+
+  `<h2>Decimals and Fractions</h2>
+
+<h3>DECIMALS AS FRACTIONS</h3>
+
+<p>A terminating decimal can be written as a fraction whose denominator is a power of 10.</p>
+
+<p>The denominator depends on the number of digits after the decimal point.</p>
+
+<ul>
+<li>1 decimal place → denominator 10</li>
+<li>2 decimal places → denominator 100</li>
+<li>3 decimal places → denominator 1000</li>
+</ul>
+
+<h3>EXAMPLE 1: ONE DECIMAL PLACE</h3>
+
+<p>Convert <b>0.6</b> to a fraction.</p>
+
+<p>There is one digit after the decimal point:</p>
+
+<p><b>0.6 = 6/10</b></p>
+
+<p>Simplify:</p>
+
+<p><b>6/10 = 3/5</b></p>
+
+<h3>EXAMPLE 2: TWO DECIMAL PLACES</h3>
+
+<p>Convert <b>0.25</b> to a fraction.</p>
+
+<p>There are two digits after the decimal point:</p>
+
+<p><b>0.25 = 25/100</b></p>
+
+<p>Simplify by 25:</p>
+
+<p><b>25/100 = 1/4</b></p>
+
+<h3>FRACTION TO DECIMAL</h3>
+
+<p>To convert a fraction to a decimal, divide the numerator by the denominator.</p>
+
+<p>Example:</p>
+
+<p><b>3/4</b></p>
+
+<p>3 ÷ 4 = <b>0.75</b></p>
+
+<p>Therefore:</p>
+
+<p><b>3/4 = 0.75</b></p>
+
+<h3>TERMINATING DECIMALS</h3>
+
+<p>A terminating decimal eventually stops.</p>
+
+<p>Examples:</p>
+
+<ul>
+<li>0.5</li>
+<li>0.25</li>
+<li>0.625</li>
+<li>1.75</li>
+</ul>
+
+<h3>IMPORTANT DISTINCTION</h3>
+
+<p>Not every fraction produces a terminating decimal.</p>
+
+<p>For example:</p>
+
+<p>1/3 = 0.333...</p>
+
+<p>The digits continue repeating. This is a <b>recurring decimal</b>, which is studied separately.</p>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Using 10 as the denominator when there are two or three decimal places.</li>
+<li>Forgetting to simplify the resulting fraction.</li>
+<li>Confusing terminating and recurring decimals.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Convert 0.6 to a fraction in simplest form.",
+      "hint": "Write it over 10.",
+      "steps": [
+        "Step 1: 0.6 = 6/10.",
+        "Step 2: Divide numerator and denominator by 2.",
+        "Step 3: 6/10 = 3/5."
+      ],
+      "ans": "3/5",
+      "why": "One decimal place represents tenths."
+    },
+    {
+      "q": "Convert 0.75 to a fraction in simplest form.",
+      "hint": "Write it over 100.",
+      "steps": [
+        "Step 1: 0.75 = 75/100.",
+        "Step 2: Divide numerator and denominator by 25.",
+        "Step 3: 75/100 = 3/4."
+      ],
+      "ans": "3/4",
+      "why": "Two decimal places represent hundredths."
+    },
+    {
+      "q": "Convert 5/8 to a decimal.",
+      "hint": "Divide 5 by 8.",
+      "steps": [
+        "Step 1: 5 ÷ 8.",
+        "Step 2: 5/8 = 0.625."
+      ],
+      "ans": "0.625",
+      "why": "A fraction can be converted to a decimal by dividing numerator by denominator."
+    },
+    {
+      "q": "Convert 7/10 to a decimal.",
+      "hint": "The denominator is already 10.",
+      "steps": [
+        "Step 1: 7/10 represents seven tenths.",
+        "Step 2: Seven tenths is written as 0.7."
+      ],
+      "ans": "0.7",
+      "why": "A denominator of 10 corresponds directly to one decimal place."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "fractions",
+  "Recurring Decimals",
+
+  `<h2>Recurring Decimals</h2>
+
+<h3>WHAT IS A RECURRING DECIMAL?</h3>
+
+<p>A recurring decimal is a decimal in which one or more digits repeat indefinitely.</p>
+
+<p>Examples:</p>
+
+<ul>
+<li>0.333... = 0.3̅</li>
+<li>0.666... = 0.6̅</li>
+<li>0.121212... = 0.12̅</li>
+</ul>
+
+<p>The dots mean that the pattern continues forever.</p>
+
+<h3>FRACTION TO RECURRING DECIMAL</h3>
+
+<p>Divide the numerator by the denominator.</p>
+
+<p>Example:</p>
+
+<p><b>1/3</b></p>
+
+<p>1 ÷ 3 = 0.333...</p>
+
+<p>Therefore:</p>
+
+<p><b>1/3 = 0.333...</b></p>
+
+<h3>CONVERTING A RECURRING DECIMAL TO A FRACTION</h3>
+
+<p>Use algebra to eliminate the repeating part.</p>
+
+<h3>EXAMPLE 1: 0.333...</h3>
+
+<p>Let:</p>
+
+<p><b>x = 0.333...</b></p>
+
+<p>Multiply both sides by 10:</p>
+
+<p><b>10x = 3.333...</b></p>
+
+<p>Subtract the original equation:</p>
+
+<p><b>10x − x = 3.333... − 0.333...</b></p>
+
+<p>The repeating decimals cancel:</p>
+
+<p><b>9x = 3</b></p>
+
+<p>Divide by 9:</p>
+
+<p><b>x = 3/9 = 1/3</b></p>
+
+<h3>EXAMPLE 2: 0.121212...</h3>
+
+<p>The repeating block contains two digits: <b>12</b>.</p>
+
+<p>Let:</p>
+
+<p><b>x = 0.121212...</b></p>
+
+<p>Because two digits repeat, multiply by 100:</p>
+
+<p><b>100x = 12.121212...</b></p>
+
+<p>Subtract x:</p>
+
+<p><b>100x − x = 12</b></p>
+
+<p>Therefore:</p>
+
+<p><b>99x = 12</b></p>
+
+<p>So:</p>
+
+<p><b>x = 12/99 = 4/33</b></p>
+
+<h3>THE PATTERN</h3>
+
+<p>If one digit repeats, multiply by 10.</p>
+
+<p>If two digits repeat, multiply by 100.</p>
+
+<p>If three digits repeat, multiply by 1000.</p>
+
+<p>The goal is always the same: <b>shift the decimal until the repeating parts line up, then subtract.</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Using 10 when two or more digits repeat.</li>
+<li>Forgetting to subtract the original equation.</li>
+<li>Stopping the decimal instead of treating it as infinite.</li>
+<li>Forgetting to simplify the final fraction.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Convert 0.666... to a fraction.",
+      "hint": "Let x = 0.666... and multiply by 10.",
+      "steps": [
+        "Step 1: x = 0.666...",
+        "Step 2: 10x = 6.666...",
+        "Step 3: 10x − x = 6.",
+        "Step 4: 9x = 6.",
+        "Step 5: x = 6/9 = 2/3."
+      ],
+      "ans": "2/3",
+      "why": "Multiplication by 10 shifts a single repeating digit, allowing subtraction to eliminate the repetition."
+    },
+    {
+      "q": "Convert 0.444... to a fraction.",
+      "hint": "Use x = 0.444... and multiply by 10.",
+      "steps": [
+        "Step 1: x = 0.444...",
+        "Step 2: 10x = 4.444...",
+        "Step 3: 10x − x = 4.",
+        "Step 4: 9x = 4.",
+        "Step 5: x = 4/9."
+      ],
+      "ans": "4/9",
+      "why": "A single repeating digit is eliminated by subtracting x from 10x."
+    },
+    {
+      "q": "Convert 0.121212... to a fraction.",
+      "hint": "Two digits repeat, so use 100.",
+      "steps": [
+        "Step 1: x = 0.121212...",
+        "Step 2: 100x = 12.121212...",
+        "Step 3: 100x − x = 12.",
+        "Step 4: 99x = 12.",
+        "Step 5: x = 12/99 = 4/33."
+      ],
+      "ans": "4/33",
+      "why": "A two-digit repeating block requires multiplication by 100 to align the repeating parts."
+    },
+    {
+      "q": "Convert 0.090909... to a fraction.",
+      "hint": "The repeating block is 09.",
+      "steps": [
+        "Step 1: x = 0.090909...",
+        "Step 2: 100x = 9.090909...",
+        "Step 3: 100x − x = 9.",
+        "Step 4: 99x = 9.",
+        "Step 5: x = 9/99 = 1/11."
+      ],
+      "ans": "1/11",
+      "why": "The repeating block has two digits, so multiplying by 100 aligns the repeating portions."
+    }
+  ]
+);
 add(
   "math",
   "measurement",
-  "Area of triangles",
+  "Area of Rectangles and Squares",
+
+  `<h2>Area of Rectangles and Squares</h2>
+
+<h3>WHAT IS AREA?</h3>
+
+<p>Area measures the amount of <b>flat surface</b> inside a two-dimensional shape.</p>
+
+<p>Area is measured in <b>square units</b> such as cm², m², or km².</p>
+
+<h3>AREA OF A RECTANGLE</h3>
+
+<p>A rectangle has a length and a width.</p>
+
+<p>The area is:</p>
+
+<p><b>A = l × w</b></p>
+
+<ul>
+<li><b>A</b> = area</li>
+<li><b>l</b> = length</li>
+<li><b>w</b> = width</li>
+</ul>
+
+<p>Example:</p>
+
+<p>A rectangle has length 8 cm and width 3 cm.</p>
+
+<p>A = 8 × 3</p>
+
+<p><b>A = 24 cm²</b></p>
+
+<h3>WHY DO WE MULTIPLY?</h3>
+
+<p>Imagine a rectangle divided into equal 1 cm × 1 cm squares.</p>
+
+<p>The length tells us how many squares fit along one direction. The width tells us how many rows of squares there are.</p>
+
+<p>Multiplying the two counts gives the total number of square units.</p>
+
+<p>That is why:</p>
+
+<p><b>Area = length × width</b></p>
+
+<h3>AREA OF A SQUARE</h3>
+
+<p>A square has four equal sides.</p>
+
+<p>Therefore its length and width are the same.</p>
+
+<p>So:</p>
+
+<p><b>A = side × side = side²</b></p>
+
+<p>Example:</p>
+
+<p>A square has side 6 cm.</p>
+
+<p>A = 6 × 6</p>
+
+<p><b>A = 36 cm²</b></p>
+
+<h3>FINDING A MISSING DIMENSION</h3>
+
+<p>If the area and one dimension are known, rearrange the formula.</p>
+
+<p>Since:</p>
+
+<p><b>A = l × w</b></p>
+
+<p>Then:</p>
+
+<p><b>l = A ÷ w</b></p>
+
+<p>and</p>
+
+<p><b>w = A ÷ l</b></p>
+
+<p>Example:</p>
+
+<p>Area = 40 cm² and width = 5 cm.</p>
+
+<p>Length = 40 ÷ 5</p>
+
+<p><b>Length = 8 cm</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Adding length and width instead of multiplying.</li>
+<li>Using the perimeter formula instead of the area formula.</li>
+<li>Forgetting square units.</li>
+<li>Using inconsistent units for the dimensions.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Find the area of a rectangle with length 8 cm and width 3 cm.",
+      "hint": "Use A = l × w.",
+      "steps": [
+        "Step 1: Write the formula: A = l × w.",
+        "Step 2: Substitute l = 8 and w = 3.",
+        "Step 3: A = 8 × 3.",
+        "Step 4: A = 24."
+      ],
+      "ans": "24 cm²",
+      "why": "The area of a rectangle is found by multiplying its length by its width."
+    },
+    {
+      "q": "Find the area of a square with side 7 cm.",
+      "hint": "A = side².",
+      "steps": [
+        "Step 1: A = side × side.",
+        "Step 2: A = 7 × 7.",
+        "Step 3: A = 49."
+      ],
+      "ans": "49 cm²",
+      "why": "All sides of a square are equal, so its area is side × side."
+    },
+    {
+      "q": "A rectangle has area 45 cm² and width 5 cm. Find its length.",
+      "hint": "Length = area ÷ width.",
+      "steps": [
+        "Step 1: A = l × w.",
+        "Step 2: 45 = l × 5.",
+        "Step 3: Divide both sides by 5.",
+        "Step 4: l = 9."
+      ],
+      "ans": "9 cm",
+      "why": "The missing length is found by rearranging A = l × w."
+    },
+    {
+      "q": "A rectangle has length 9 cm and width 5 cm. What is its area?",
+      "hint": "Multiply 9 by 5.",
+      "steps": [
+        "Step 1: A = 9 × 5.",
+        "Step 2: A = 45."
+      ],
+      "ans": "45 cm²",
+      "why": "Area measures the two-dimensional space inside the rectangle."
+    },
+    {
+      "q": "Which formula gives the area of a rectangle?",
+      "hint": "Think about its two dimensions.",
+      "steps": [
+        "Step 1: A rectangle has length and width.",
+        "Step 2: Multiply the two dimensions.",
+        "Step 3: A = l × w."
+      ],
+      "ans": "A = l × w",
+      "why": "Rectangle area is length multiplied by width."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "measurement",
+  "Area of Triangles",
 
   `<h2>Area of Triangles</h2>
 
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-A triangle is half of a rectangle in terms of area logic.
-</p>
+<h3>THE FORMULA</h3>
 
-<h3> NOTES (EXPLAINED)</h3>
+<p>The area of a triangle is:</p>
+
+<p><b>A = 1/2 × b × h</b></p>
+
 <ul>
-<li>Triangle area = 1/2 × base × height</li>
-<li>Base = bottom length</li>
-<li>Height = perpendicular vertical height</li>
-<li>Must use perpendicular height, not slanted side.</li>
+<li><b>A</b> = area</li>
+<li><b>b</b> = base</li>
+<li><b>h</b> = perpendicular height</li>
 </ul>
 
-<p><b> Key idea:</b> Triangle is always half of a rectangle.</p>
+<h3>WHAT DOES HEIGHT MEAN?</h3>
 
-<h3> COMMON MISTAKES</h3>
+<p>The height of a triangle is the <b>perpendicular distance</b> from the chosen base to the opposite vertex.</p>
+
+<p>Perpendicular means that the height meets the base at an angle of <b>90°</b>.</p>
+
+<p><b>Important:</b> The height is not necessarily the sloping side of the triangle.</p>
+
+<h3>WHY IS THERE A 1/2?</h3>
+
+<p>A triangle can be paired with another identical triangle to form a parallelogram or rectangle with the same base and perpendicular height.</p>
+
+<p>The triangle therefore has half the area of that corresponding shape.</p>
+
+<p>That gives:</p>
+
+<p><b>A = 1/2 × base × height</b></p>
+
+<h3>WORKED EXAMPLE</h3>
+
+<p>Find the area of a triangle with base 12 cm and perpendicular height 5 cm.</p>
+
+<p>A = 1/2 × 12 × 5</p>
+
+<p>A = 6 × 5</p>
+
+<p><b>A = 30 cm²</b></p>
+
+<h3>FINDING A MISSING DIMENSION</h3>
+
+<p>Starting with:</p>
+
+<p><b>A = 1/2bh</b></p>
+
+<p>Multiply both sides by 2:</p>
+
+<p><b>2A = bh</b></p>
+
+<p>Therefore:</p>
+
+<p><b>h = 2A ÷ b</b></p>
+
+<p>and:</p>
+
+<p><b>b = 2A ÷ h</b></p>
+
+<p>Example:</p>
+
+<p>Area = 40 cm² and base = 10 cm.</p>
+
+<p>h = (2 × 40) ÷ 10</p>
+
+<p>h = 80 ÷ 10</p>
+
+<p><b>h = 8 cm</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
 <ul>
-<li>Using slanted side instead of height</li>
-<li>Forgetting to multiply by 1/2</li>
-<li>Mixing base and height</li>
-<li>Using wrong units or not squaring units</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-<ul>
-<li>
-<b>Example 1:</b> base 6 height 4<br>
-Step 1: 1/2 × 6 × 4<br>
-Step 2: 12<br>
-<b>Answer: 12 cm²</b>
-</li>
-
-<li>
-<b>Example 2:</b> base 10 height 5<br>
-Step 1: 1/2 × 10 × 5<br>
-Step 2: 25<br>
-<b>Answer: 25 cm²</b>
-</li>
-
-<li>
-<b>Example 3:</b> base 8 height 3<br>
-Step 1: 1/2 × 8 × 3<br>
-Step 2: 12<br>
-<b>Answer: 12 cm²</b>
-</li>
-</ul>
-
-<h3> EXTRA PRACTICE QUESTIONS</h3>
-<ul>
-<li>
-<b>Q1:</b> base = 14 cm, height = 6 cm<br>
-Hint: Use 1/2 × b × h<br>
-Answer: 42 cm²
-</li>
-
-<li>
-<b>Q2:</b> base = 9 cm, height = 7 cm<br>
-Hint: Multiply then divide by 2<br>
-Answer: 31.5 cm²
-</li>
-
-<li>
-<b>Q3:</b> area = 40 cm², base = 10 cm, find height<br>
-Hint: rearrange formula<br>
-Answer: 8 cm
-</li>
-
-<li>
-<b>Q4:</b> area = 24 cm², height = 6 cm, find base<br>
-Hint: 2A ÷ h<br>
-Answer: 8 cm
-</li>
+<li>Forgetting the factor 1/2.</li>
+<li>Using the sloping side as the height.</li>
+<li>Using a height that is not perpendicular to the chosen base.</li>
+<li>Forgetting square units.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Base 12 height 4",
-      "hint": "Half × base × height",
+      "q": "Find the area of a triangle with base 12 cm and height 4 cm.",
+      "hint": "Use A = 1/2 × b × h.",
       "steps": [
-        "Step 1: 1/2 × 12 × 4",
-        "Step 2: 24"
+        "Step 1: A = 1/2 × 12 × 4.",
+        "Step 2: 12 ÷ 2 = 6.",
+        "Step 3: 6 × 4 = 24."
       ],
-      "ans": "24",
-      "why": "Triangle area rule"
+      "ans": "24 cm²",
+      "why": "Triangle area is half the product of its base and perpendicular height."
     },
     {
-      "q": "Base 14 height 6",
-      "hint": "Use formula",
+      "q": "A triangle has base 14 cm and height 6 cm. Find its area.",
+      "hint": "Multiply the base and height, then divide by 2.",
       "steps": [
-        "Step 1: 1/2 × 14 × 6",
-        "Step 2: 7 × 6",
-        "Step 3: 42"
+        "Step 1: A = 1/2 × 14 × 6.",
+        "Step 2: 14 × 6 = 84.",
+        "Step 3: 84 ÷ 2 = 42."
       ],
-      "ans": "42",
-      "why": "Standard area calculation"
+      "ans": "42 cm²",
+      "why": "The factor 1/2 is required because a triangle occupies half the corresponding base-height rectangle."
     },
     {
-      "q": "Area = 40, base = 10 find height",
-      "hint": "Rearrange formula",
+      "q": "A triangle has area 40 cm² and base 10 cm. Find its perpendicular height.",
+      "hint": "h = 2A ÷ b.",
       "steps": [
-        "Step 1: A = 1/2 b h",
-        "Step 2: 40 = 1/2 × 10 × h",
-        "Step 3: 40 = 5h",
-        "Step 4: h = 8"
+        "Step 1: h = 2A ÷ b.",
+        "Step 2: h = (2 × 40) ÷ 10.",
+        "Step 3: h = 80 ÷ 10.",
+        "Step 4: h = 8."
       ],
-      "ans": "8",
-      "why": "Rearranged formula"
+      "ans": "8 cm",
+      "why": "Rearranging A = 1/2bh gives h = 2A ÷ b."
+    },
+    {
+      "q": "A triangle has area 24 cm² and height 6 cm. Find its base.",
+      "hint": "b = 2A ÷ h.",
+      "steps": [
+        "Step 1: b = 2A ÷ h.",
+        "Step 2: b = (2 × 24) ÷ 6.",
+        "Step 3: b = 48 ÷ 6.",
+        "Step 4: b = 8."
+      ],
+      "ans": "8 cm",
+      "why": "The formula can be rearranged to find an unknown base."
     }
   ]
 );
 
+
 add(
   "math",
   "measurement",
-  "Volume of cubes and cuboids",
+  "Volume of Cubes and Cuboids",
 
-  `<h2>Volume of Cubes & Cuboids</h2>
+  `<h2>Volume of Cubes and Cuboids</h2>
 
-<p>Volume measures the space inside a 3D object.</p>
+<h3>WHAT IS VOLUME?</h3>
 
-<h3> NOTES (EXPLAINED)</h3>
+<p>Volume measures the amount of <b>three-dimensional space</b> occupied by a solid.</p>
+
+<p>Volume is measured in <b>cubic units</b>, such as cm³, m³, or km³.</p>
+
+<h3>VOLUME OF A CUBOID</h3>
+
+<p>A cuboid has three dimensions:</p>
+
 <ul>
-<li>Volume = space inside a solid shape.</li>
-<li>Cuboid = length × width × height</li>
-<li>Cube = side³ (side × side × side)</li>
-<li>Units are always cubed (cm³, m³).</li>
+<li>length</li>
+<li>width</li>
+<li>height</li>
 </ul>
 
-<p><b> Key idea:</b> Volume multiplies all three dimensions.</p>
+<p>The formula is:</p>
 
-<h3> COMMON MISTAKES</h3>
+<p><b>V = l × w × h</b></p>
+
+<p>Example:</p>
+
+<p>A cuboid has dimensions 5 cm, 3 cm and 2 cm.</p>
+
+<p>V = 5 × 3 × 2</p>
+
+<p><b>V = 30 cm³</b></p>
+
+<h3>WHY DO WE MULTIPLY THREE DIMENSIONS?</h3>
+
+<p>Area uses two dimensions because it measures a flat surface.</p>
+
+<p>Volume uses three dimensions because a solid extends in three directions.</p>
+
+<p>Therefore:</p>
+
+<p><b>Length × width</b> gives the area of one layer.</p>
+
+<p>Multiplying that layer by the <b>height</b> gives the total volume.</p>
+
+<h3>VOLUME OF A CUBE</h3>
+
+<p>A cube has all three dimensions equal.</p>
+
+<p>If each side has length s:</p>
+
+<p><b>V = s × s × s = s³</b></p>
+
+<p>Example:</p>
+
+<p>A cube has side 4 cm.</p>
+
+<p>V = 4 × 4 × 4</p>
+
+<p><b>V = 64 cm³</b></p>
+
+<h3>FINDING A MISSING DIMENSION</h3>
+
+<p>From:</p>
+
+<p><b>V = lwh</b></p>
+
+<p>We can rearrange:</p>
+
+<p><b>l = V ÷ (wh)</b></p>
+
+<p><b>w = V ÷ (lh)</b></p>
+
+<p><b>h = V ÷ (lw)</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
 <ul>
-<li>Using area formula instead of volume</li>
-<li>Forgetting the third dimension</li>
-<li>Not cubing in cube problems</li>
-<li>Mixing cm² with cm³</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-
-<ul>
-<li>
-<b>Example 1:</b> 4 × 3 × 2<br>
-Step 1: Multiply all sides<br>
-Step 2: 4 × 3 × 2 = 24<br>
-<b>Answer: 24 cm³</b>
-</li>
-
-<li>
-<b>Example 2:</b> Cube side 3<br>
-Step 1: 3 × 3 × 3<br>
-Step 2: 27<br>
-<b>Answer: 27 cm³</b>
-</li>
-
-<li>
-<b>Example 3:</b> 5 × 2 × 1<br>
-Step 1: Multiply all dimensions<br>
-Step 2: 10<br>
-<b>Answer: 10 cm³</b>
-</li>
-</ul>
-
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Water tanks and storage containers</li>
-<li>Room capacity in construction</li>
-<li>Packaging box design</li>
-<li>Shipping and logistics calculations</li>
+<li>Using only two dimensions.</li>
+<li>Confusing volume with surface area.</li>
+<li>Using square units instead of cubic units.</li>
+<li>Forgetting that a cube has three equal dimensions.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Find volume of a cube with side 4",
-      "hint": "side³",
-      "ans": "64 cm³",
-      "why": "4 × 4 × 4 = 64, so the volume is 64 cubic units"
+      "q": "Find the volume of a cuboid measuring 8 cm × 3 cm × 2 cm.",
+      "hint": "Multiply all three dimensions.",
+      "steps": [
+        "Step 1: V = l × w × h.",
+        "Step 2: V = 8 × 3 × 2.",
+        "Step 3: V = 48."
+      ],
+      "ans": "48 cm³",
+      "why": "Cuboid volume is the product of its three dimensions."
     },
     {
-      "q": "What is the formula for cuboid volume?",
-      "hint": "3 dimensions",
-      "ans": "length × width × height",
-      "why": "A cuboid’s volume is found by multiplying its three dimensions"
+      "q": "Find the volume of a cube with side 5 cm.",
+      "hint": "V = s³.",
+      "steps": [
+        "Step 1: V = 5 × 5 × 5.",
+        "Step 2: 5 × 5 = 25.",
+        "Step 3: 25 × 5 = 125."
+      ],
+      "ans": "125 cm³",
+      "why": "A cube has three equal dimensions, so its volume is side cubed."
     },
     {
-      "q": "What does volume measure?",
-      "hint": "inside capacity",
-      "ans": "Space inside a 3D shape",
-      "why": "Volume tells us how much space an object can hold"
+      "q": "A cuboid has volume 60 cm³, length 5 cm and width 3 cm. Find its height.",
+      "hint": "h = V ÷ (lw).",
+      "steps": [
+        "Step 1: h = V ÷ (lw).",
+        "Step 2: h = 60 ÷ (5 × 3).",
+        "Step 3: h = 60 ÷ 15.",
+        "Step 4: h = 4."
+      ],
+      "ans": "4 cm",
+      "why": "Rearranging V = lwh gives h = V ÷ (lw)."
+    },
+    {
+      "q": "Which formula gives the volume of a cuboid?",
+      "hint": "A cuboid has three dimensions.",
+      "steps": [
+        "Step 1: Identify the three dimensions.",
+        "Step 2: Multiply length, width and height."
+      ],
+      "ans": "V = l × w × h",
+      "why": "Volume of a cuboid is the product of its length, width and height."
     }
   ]
 );
 
+
 add(
   "math",
   "measurement",
-  "Surface area basics",
+  "Surface Area of Cubes and Cuboids",
 
-  `<h2>Surface Area</h2>
+  `<h2>Surface Area of Cubes and Cuboids</h2>
 
-<p>Surface area is the total area of all outer faces of a 3D shape.</p>
+<h3>WHAT IS SURFACE AREA?</h3>
 
-<h3> NOTES (EXPLAINED)</h3>
+<p>Surface area is the <b>total area of all the outside faces</b> of a three-dimensional object.</p>
+
+<p>It is measured in <b>square units</b>, such as cm² or m².</p>
+
+<p>Do not confuse surface area with volume:</p>
+
 <ul>
-<li>Surface area = sum of all outside faces.</li>
-<li>Cube has 6 equal square faces.</li>
-<li>Each face = side × side.</li>
-<li>Total surface area = 6 × side²</li>
+<li><b>Surface area</b> measures outside faces.</li>
+<li><b>Volume</b> measures three-dimensional space.</li>
 </ul>
 
-<p><b> Key idea:</b> Surface area is covering, not inside space.</p>
+<h3>SURFACE AREA OF A CUBE</h3>
 
-<h3> COMMON MISTAKES</h3>
+<p>A cube has 6 equal square faces.</p>
+
+<p>Area of one face:</p>
+
+<p><b>s²</b></p>
+
+<p>Since there are 6 faces:</p>
+
+<p><b>SA = 6s²</b></p>
+
+<p>Example:</p>
+
+<p>A cube has side 4 cm.</p>
+
+<p>SA = 6 × 4²</p>
+
+<p>SA = 6 × 16</p>
+
+<p><b>SA = 96 cm²</b></p>
+
+<h3>SURFACE AREA OF A CUBOID</h3>
+
+<p>A cuboid has three pairs of equal faces.</p>
+
+<p>The three different face areas are:</p>
+
 <ul>
-<li>Confusing surface area with volume</li>
-<li>Forgetting all 6 faces in a cube</li>
-<li>Not squaring the side length</li>
-<li>Mixing units (cm² vs cm³)</li>
+<li>lw</li>
+<li>lh</li>
+<li>wh</li>
 </ul>
 
-<h3> WORKED EXAMPLES</h3>
+<p>Each occurs twice.</p>
+
+<p>Therefore:</p>
+
+<p><b>SA = 2(lw + lh + wh)</b></p>
+
+<h3>WORKED EXAMPLE</h3>
+
+<p>Find the surface area of a cuboid with length 5 cm, width 3 cm and height 2 cm.</p>
+
+<p>SA = 2(lw + lh + wh)</p>
+
+<p>SA = 2[(5 × 3) + (5 × 2) + (3 × 2)]</p>
+
+<p>SA = 2(15 + 10 + 6)</p>
+
+<p>SA = 2 × 31</p>
+
+<p><b>SA = 62 cm²</b></p>
+
+<h3>COMMON MISTAKES</h3>
 
 <ul>
-<li>
-<b>Example 1:</b> side 2<br>
-Step 1: 6 × 2²<br>
-Step 2: 6 × 4 = 24<br>
-<b>Answer: 24 cm²</b>
-</li>
-
-<li>
-<b>Example 2:</b> side 3<br>
-Step 1: 3² = 9<br>
-Step 2: 6 × 9 = 54<br>
-<b>Answer: 54 cm²</b>
-</li>
-
-<li>
-<b>Example 3:</b> side 1<br>
-Step 1: 1² = 1<br>
-Step 2: 6 × 1 = 6<br>
-<b>Answer: 6 cm²</b>
-</li>
-</ul>
-
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Painting walls and boxes</li>
-<li>Wrapping gifts and packaging design</li>
-<li>Manufacturing containers</li>
-<li>Construction material estimation</li>
+<li>Calculating volume instead of surface area.</li>
+<li>Forgetting that opposite faces occur in pairs.</li>
+<li>Forgetting the factor 2 in the cuboid formula.</li>
+<li>Using cubic units instead of square units.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Find surface area of a cube with side 5",
-      "hint": "6 × side²",
+      "q": "Find the surface area of a cube with side 5 cm.",
+      "hint": "Use SA = 6s².",
+      "steps": [
+        "Step 1: SA = 6 × 5².",
+        "Step 2: 5² = 25.",
+        "Step 3: 6 × 25 = 150."
+      ],
       "ans": "150 cm²",
-      "why": "6 × 5² = 6 × 25 = 150, so total surface area is 150 cm²"
+      "why": "A cube has six equal square faces."
     },
     {
-      "q": "What does surface area measure?",
-      "hint": "outside faces",
-      "ans": "Outer covering of a 3D shape",
-      "why": "Surface area is the total area of all outer faces of a solid"
+      "q": "Find the surface area of a cube with side 3 cm.",
+      "hint": "Square the side, then multiply by 6.",
+      "steps": [
+        "Step 1: 3² = 9.",
+        "Step 2: 6 × 9 = 54."
+      ],
+      "ans": "54 cm²",
+      "why": "The six faces of the cube each have area 9 cm²."
     },
     {
-      "q": "What is the formula for cube surface area?",
-      "hint": "6 faces",
-      "ans": "6 × side²",
-      "why": "A cube has 6 equal square faces, so we multiply one face area by 6"
+      "q": "Find the surface area of a cuboid with length 4 cm, width 3 cm and height 2 cm.",
+      "hint": "Use SA = 2(lw + lh + wh).",
+      "steps": [
+        "Step 1: lw = 4 × 3 = 12.",
+        "Step 2: lh = 4 × 2 = 8.",
+        "Step 3: wh = 3 × 2 = 6.",
+        "Step 4: Add: 12 + 8 + 6 = 26.",
+        "Step 5: Multiply by 2: 2 × 26 = 52."
+      ],
+      "ans": "52 cm²",
+      "why": "The three different face areas each occur twice."
+    },
+    {
+      "q": "Which formula gives the surface area of a cuboid?",
+      "hint": "There are three pairs of equal faces.",
+      "steps": [
+        "Step 1: Identify the three face areas: lw, lh and wh.",
+        "Step 2: Add them.",
+        "Step 3: Multiply by 2."
+      ],
+      "ans": "2(lw + lh + wh)",
+      "why": "A cuboid has two faces of each of its three different dimensions."
     }
   ]
 );
 
+
 add(
   "math",
   "measurement",
-  "Real life applications",
+  "Measurement Units and Dimensions",
 
-  `<h2>Real Life Applications</h2>
+  `<h2>Measurement Units and Dimensions</h2>
 
-<p>Mathematics is used to measure and design real-world spaces.</p>
+<h3>WHY UNITS MATTER</h3>
 
-<h3> NOTES (EXPLAINED)</h3>
+<p>The numerical answer alone is not enough. The unit tells us <b>what kind of quantity</b> has been measured.</p>
+
+<p>For example:</p>
+
 <ul>
-<li>Area is used in land, farming, and construction.</li>
-<li>Volume is used in water tanks, containers, and storage.</li>
-<li>Surface area is used in painting and wrapping objects.</li>
-<li>Correct units must always be used (cm², m², cm³, m³).</li>
+<li>5 cm measures length.</li>
+<li>5 cm² measures area.</li>
+<li>5 cm³ measures volume.</li>
 </ul>
 
-<p><b> Key idea:</b> Different formulas solve different real-life measurement problems.</p>
+<p>These are different quantities even though the number is the same.</p>
 
-<h3> COMMON MISTAKES</h3>
+<h3>LENGTH</h3>
+
+<p>Length measures one dimension.</p>
+
+<p>Common units include:</p>
+
 <ul>
-<li>Using wrong formula for the situation</li>
-<li>Confusing area (2D) with volume (3D)</li>
-<li>Ignoring units (cm² vs cm³)</li>
-<li>Misreading word problems</li>
+<li>mm</li>
+<li>cm</li>
+<li>m</li>
+<li>km</li>
 </ul>
 
-<h3> WORKED EXAMPLES</h3>
+<p>Length uses ordinary units such as <b>cm</b> or <b>m</b>.</p>
+
+<h3>AREA</h3>
+
+<p>Area measures two dimensions.</p>
+
+<p>Therefore its units are squared:</p>
 
 <ul>
-<li>
-<b>Example 1: Farming land</b><br>
-Step 1: Measure length and width<br>
-Step 2: Find area = L × W<br>
-Step 3: Use result for crop planning<br>
-<b>Answer: Area helps in land usage planning</b>
-</li>
-
-<li>
-<b>Example 2: Water tank</b><br>
-Step 1: Identify shape of tank<br>
-Step 2: Use volume formula<br>
-Step 3: Calculate capacity<br>
-<b>Answer: Volume measures storage capacity</b>
-</li>
-
-<li>
-<b>Example 3: Painting walls</b><br>
-Step 1: Measure wall dimensions<br>
-Step 2: Find surface area<br>
-Step 3: Estimate paint needed<br>
-<b>Answer: Surface area determines paint required</b>
-</li>
+<li>cm²</li>
+<li>m²</li>
+<li>km²</li>
 </ul>
 
-<h3> REAL WORLD APPLICATION</h3>
+<p>For example:</p>
+
+<p>4 cm × 3 cm = 12 cm²</p>
+
+<h3>VOLUME</h3>
+
+<p>Volume measures three dimensions.</p>
+
+<p>Therefore its units are cubed:</p>
+
 <ul>
-<li>Construction and architecture design</li>
-<li>Agriculture land planning</li>
-<li>Manufacturing and packaging</li>
-<li>Interior decoration and painting</li>
+<li>cm³</li>
+<li>m³</li>
+<li>km³</li>
+</ul>
+
+<p>For example:</p>
+
+<p>4 cm × 3 cm × 2 cm = 24 cm³</p>
+
+<h3>AREA VS VOLUME</h3>
+
+<p>Area uses <b>two</b> dimensions:</p>
+
+<p><b>length × width</b></p>
+
+<p>Volume uses <b>three</b> dimensions:</p>
+
+<p><b>length × width × height</b></p>
+
+<h3>CONVERTING SQUARED UNITS</h3>
+
+<p>When converting area units, the conversion factor must also be squared.</p>
+
+<p>For example:</p>
+
+<p>1 m = 100 cm</p>
+
+<p>Therefore:</p>
+
+<p><b>1 m² = 100² cm² = 10,000 cm²</b></p>
+
+<p>It is incorrect to say 1 m² = 100 cm².</p>
+
+<h3>CONVERTING CUBIC UNITS</h3>
+
+<p>When converting volume units, the conversion factor must be cubed.</p>
+
+<p>Since:</p>
+
+<p>1 m = 100 cm</p>
+
+<p>Then:</p>
+
+<p><b>1 m³ = 100³ cm³ = 1,000,000 cm³</b></p>
+
+<h3>COMMON MISTAKES</h3>
+
+<ul>
+<li>Writing cm instead of cm² for area.</li>
+<li>Writing cm² instead of cm³ for volume.</li>
+<li>Using the length conversion factor directly for area.</li>
+<li>Using the length conversion factor directly for volume.</li>
+<li>Forgetting to make units consistent before calculating.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Why is volume important in real life?",
-      "hint": "think containers",
-      "ans": "It measures storage capacity",
-      "why": "Volume tells us how much space an object can hold, such as water in a tank"
+      "q": "What unit should be used for the area of a rectangle measured in centimetres?",
+      "hint": "Area uses squared units.",
+      "steps": [
+        "Step 1: The quantity is area.",
+        "Step 2: Area uses square units.",
+        "Step 3: Therefore the unit is cm²."
+      ],
+      "ans": "cm²",
+      "why": "Area measures two dimensions, so its units are squared."
     },
     {
-      "q": "When do we use area in real life?",
-      "hint": "2D spaces",
-      "ans": "To measure flat surfaces",
-      "why": "Area is used for surfaces like land, floors, and walls"
+      "q": "What unit should be used for the volume of a cuboid measured in centimetres?",
+      "hint": "Volume uses three dimensions.",
+      "steps": [
+        "Step 1: The quantity is volume.",
+        "Step 2: Volume uses cubic units.",
+        "Step 3: Therefore the unit is cm³."
+      ],
+      "ans": "cm³",
+      "why": "Volume measures three dimensions, so its units are cubed."
     },
     {
-      "q": "What is the difference between area and volume?",
-      "hint": "dimensions",
-      "ans": "Area is 2D, volume is 3D",
-      "why": "Area measures flat surfaces, while volume measures space inside objects"
+      "q": "Convert 1 m² to cm².",
+      "hint": "1 m = 100 cm, then square the conversion factor.",
+      "steps": [
+        "Step 1: 1 m = 100 cm.",
+        "Step 2: Square both sides.",
+        "Step 3: 1 m² = 100² cm².",
+        "Step 4: 100² = 10,000."
+      ],
+      "ans": "10,000 cm²",
+      "why": "Area conversion factors must be squared."
+    },
+    {
+      "q": "Convert 1 m³ to cm³.",
+      "hint": "1 m = 100 cm, then cube the conversion factor.",
+      "steps": [
+        "Step 1: 1 m = 100 cm.",
+        "Step 2: Cube both sides.",
+        "Step 3: 1 m³ = 100³ cm³.",
+        "Step 4: 100³ = 1,000,000."
+      ],
+      "ans": "1,000,000 cm³",
+      "why": "Volume conversion factors must be cubed."
+    },
+    {
+      "q": "Which is larger: 1 m² or 100 cm²?",
+      "hint": "Convert 1 m² into cm².",
+      "steps": [
+        "Step 1: 1 m² = 10,000 cm².",
+        "Step 2: Compare 10,000 cm² and 100 cm².",
+        "Step 3: 10,000 cm² is larger."
+      ],
+      "ans": "1 m²",
+      "why": "Squared units require the length conversion factor to be squared."
     }
   ]
 );
-
 add(
   "math",
   "graphs",

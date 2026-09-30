@@ -39,22 +39,25 @@
         "id": "fractions",
         "label": "Fractions & Decimals",
         "topics": [
-          "Fraction basics",
-          "Adding and subtracting fractions",
-          "Multiplying and dividing fractions",
-          "Decimals",
-          "Fractions to decimals"
+          "Understanding Fractions",
+          "Equivalent Fractions and Simplifying",
+          "Comparing Fractions",
+          "Adding and Subtracting Fractions",
+          "Multiplying Fractions",
+          "Dividing Fractions",
+          "Decimals and Fractions",
+          "Recurring Decimals"
         ]
       },
       {
         "id": "measurement",
         "label": "Measurement",
         "topics": [
-          "Area of rectangles and squares",
-          "Area of triangles",
-          "Volume of cubes and cuboids",
-          "Surface area basics",
-          "Real life applications"
+          "Area of Rectangles and Squares",
+          "Area of Triangles",
+          "Volume of Cubes and Cuboids",
+          "Surface Area of Cubes and Cuboids",
+          "Measurement Units and Dimensions"
         ]
       },
       {
