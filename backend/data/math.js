@@ -1,458 +1,1455 @@
 /* =========================================================
    MATH DATA FILE - STANDARDIZED SCHEMA
 ========================================================= */
-
 add(
   "math",
   "numbers",
-  "Number Systems & Basic Operations",
+  "Number Systems",
 
-  `<h2>Number Systems & Basic Operations</h2>
+  `<h2>Number Systems</h2>
 <hr>
-<h3> DEEP NOTES</h3>
-<h4>1. Number Systems</h4>
+
+<h3>DEEP NOTES</h3>
+
+<h4>1. What Is a Number System?</h4>
 <p>
-Number systems are different categories of numbers used to represent quantity, order, and change in mathematics. Each type expands the way we understand values.
+A number system is a way of classifying numbers according to their properties.
+Different types of numbers form groups, and some groups are contained inside others.
 </p>
+
+<p>
+The main number types we use here are:
+</p>
+
 <ul>
-<li><b>Natural Numbers:</b> 1, 2, 3, 4, ...  
-<br> Used for counting objects in real life (no zero included).</li>
-<li><b>Whole Numbers:</b> 0, 1, 2, 3, 4, ...  
-<br> Natural numbers plus zero, used for counting and representing “nothing”.</li>
-<li><b>Integers:</b> ... -3, -2, -1, 0, 1, 2, 3 ...  
-<br> Includes negative numbers, zero, and positives. Used for temperature, debt, and elevation.</li>
-<li><b>Fractions:</b> 1/2, 3/4, 5/8  
-<br> Represent parts of a whole. Used when quantities are divided.</li>
-<li><b>Decimals:</b> 0.5, 2.75, 10.1  
-<br> Another way of showing fractions in base-10 form for precision and measurement.</li>
+<li><b>Natural Numbers</b></li>
+<li><b>Whole Numbers</b></li>
+<li><b>Integers</b></li>
 </ul>
+
 <hr>
-<h4>2. Key Idea</h4>
+
+<h4>2. Natural Numbers</h4>
+
 <p>
-All numbers belong to a structured system, but their behavior changes depending on their type.  
-Despite differences, they all follow the same mathematical rules when used in operations like addition, subtraction, multiplication, and division.
+Natural numbers are the positive counting numbers:
 </p>
+
+<pre>
+1, 2, 3, 4, 5, 6, ...
+</pre>
+
 <p>
- Example:
+They are used when counting from 1 upward.
+In this classification, <b>0 is not a natural number</b>.
+</p>
+
+<p><b>Examples:</b></p>
+
+<pre>
+1, 7, 25, 100
+</pre>
+
+<p>
+are natural numbers.
+</p>
+
+<p>
+Numbers such as <b>-3</b>, <b>0</b>, and <b>1/2</b> are not natural numbers.
+</p>
+
+<hr>
+
+<h4>3. Whole Numbers</h4>
+
+<p>
+Whole numbers are the natural numbers together with zero.
+</p>
+
+<pre>
+0, 1, 2, 3, 4, 5, ...
+</pre>
+
+<p>
+The important difference is that <b>whole numbers include 0</b>.
+</p>
+
+<p><b>Examples:</b></p>
+
+<pre>
+0, 4, 15, 200
+</pre>
+
+<hr>
+
+<h4>4. Integers</h4>
+
+<p>
+Integers include negative numbers, zero, and positive numbers.
+</p>
+
+<pre>
+..., -4, -3, -2, -1, 0, 1, 2, 3, 4, ...
+</pre>
+
+<p>
+Integers do not include fractions or decimals such as
+<code>1/2</code> or <code>2.5</code>.
+</p>
+
+<p>
+The symbol for the set of integers is <b>ℤ</b>.
+</p>
+
+<hr>
+
+<h4>5. How the Number Sets Are Related</h4>
+
+<p>
+The number sets build upon one another:
+</p>
+
+<pre>
+Natural Numbers ⊂ Whole Numbers ⊂ Integers
+</pre>
+
+<p>
+This means every natural number is a whole number, and every whole number is an integer.
+</p>
+
+<p><b>For example:</b></p>
+
+<pre>
+5 → Natural → Whole → Integer
+0 → Whole → Integer
+-5 → Integer
+</pre>
+
+<p>
+However, the reverse is not always true.
+For example, <b>-5</b> is an integer but is not a whole number.
+</p>
+
+<hr>
+
+<h4>6. Positive, Negative and Zero</h4>
+
+<p>
+Numbers greater than zero are <b>positive</b>.
+Numbers less than zero are <b>negative</b>.
+Zero is <b>neither positive nor negative</b>.
+</p>
+
+<pre>
+Positive:  1, 2, 3, 4, ...
+Zero:      0
+Negative: -1, -2, -3, -4, ...
+</pre>
+
+<hr>
+
+<h4>7. Comparing Integers</h4>
+
+<p>
+When comparing integers, a number farther to the right on the number line is greater.
+</p>
+
+<pre>
+-5  -4  -3  -2  -1   0   1   2   3   4   5
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+5 > 2
+2 > -1
+-1 > -4
+-4 > -7
+</pre>
+
+<p>
+A common mistake is thinking that <b>-7 is greater than -3</b> because 7 is greater than 3.
+For negative numbers, the number closer to zero is greater.
+</p>
+
+<hr>
+
+<h4>8. Basic Operations with Integers</h4>
+
+<p>
+Integers can be added, subtracted, multiplied, and divided.
+</p>
+
+<h5>Addition</h5>
+
+<pre>
+5 + 3 = 8
+-5 + 3 = -2
+-5 + (-3) = -8
+</pre>
+
+<h5>Subtraction</h5>
+
+<pre>
+7 - 4 = 3
+4 - 7 = -3
+-3 - 2 = -5
+</pre>
+
+<h5>Multiplication</h5>
+
+<pre>
+4 × 3 = 12
+-4 × 3 = -12
+-4 × -3 = 12
+</pre>
+
+<h5>Division</h5>
+
+<pre>
+12 ÷ 3 = 4
+-12 ÷ 3 = -4
+-12 ÷ -3 = 4
+</pre>
+
+<hr>
+
+<h4>9. Sign Rules for Multiplication and Division</h4>
+
+<p>
+When multiplying or dividing integers:
+</p>
+
+<pre>
+Positive × Positive = Positive
+Negative × Negative = Positive
+Positive × Negative = Negative
+Negative × Positive = Negative
+</pre>
+
+<p>
+The same sign rule applies to division.
+</p>
+
+<hr>
+
+<h4>10. Key Ideas to Remember</h4>
+
 <ul>
-<li>Whole numbers behave predictably in counting.</li>
-<li>Fractions and decimals require place-value understanding.</li>
-<li>Negative numbers introduce direction and loss.</li>
+<li>Natural numbers start at 1.</li>
+<li>Whole numbers include 0.</li>
+<li>Integers include negative numbers, 0, and positive numbers.</li>
+<li>0 is neither positive nor negative.</li>
+<li>Every natural number is a whole number.</li>
+<li>Every whole number is an integer.</li>
+<li>Negative numbers closer to zero are greater.</li>
+<li>For multiplication and division, two equal signs give a positive result and two different signs give a negative result.</li>
 </ul>
-</p>
+`,
+
+  [
+    {
+      "q": "Which of the following is a natural number: -3, 0, 4, or 1/2?",
+      "hint": "Natural numbers start at 1.",
+      "steps": [
+        "Step 1: Natural numbers are 1, 2, 3, 4, ...",
+        "Step 2: -3 is negative.",
+        "Step 3: 0 is not included in this classification.",
+        "Step 4: 1/2 is a fraction.",
+        "Step 5: 4 belongs to the natural numbers."
+      ],
+      "ans": "4",
+      "why": "Natural numbers are positive counting numbers beginning with 1."
+    },
+    {
+      "q": "Is 0 a natural number, whole number, or integer?",
+      "hint": "Remember which sets include zero.",
+      "steps": [
+        "Step 1: 0 is not a natural number in this classification.",
+        "Step 2: Whole numbers include 0.",
+        "Step 3: Integers also include 0."
+      ],
+      "ans": "Whole number and integer",
+      "why": "Whole numbers include 0, and integers include negative numbers, zero, and positive numbers."
+    },
+    {
+      "q": "Which type of number is -8?",
+      "hint": "Look at its sign.",
+      "steps": [
+        "Step 1: -8 is less than zero.",
+        "Step 2: Negative numbers are not natural or whole numbers.",
+        "Step 3: Negative whole-number values belong to the integers."
+      ],
+      "ans": "Integer",
+      "why": "-8 belongs to the set of integers because integers include negative whole-number values."
+    },
+    {
+      "q": "Which is greater: -3 or -7?",
+      "hint": "Think about their positions on the number line.",
+      "steps": [
+        "Step 1: Locate -3 and -7 on the number line.",
+        "Step 2: -3 is to the right of -7.",
+        "Step 3: A number farther right is greater."
+      ],
+      "ans": "-3",
+      "why": "-3 is closer to zero and is therefore greater than -7."
+    },
+    {
+      "q": "Arrange these integers from smallest to largest: 3, -2, 0, -5, 1.",
+      "hint": "Start with the most negative number.",
+      "steps": [
+        "Step 1: The smallest number is -5.",
+        "Step 2: Next is -2.",
+        "Step 3: Then comes 0.",
+        "Step 4: Then 1.",
+        "Step 5: Finally, 3."
+      ],
+      "ans": "-5, -2, 0, 1, 3",
+      "why": "Numbers increase as we move from left to right on the number line."
+    },
+    {
+      "q": "Calculate: -6 + 4",
+      "hint": "Start at -6 and move 4 units to the right.",
+      "steps": [
+        "Step 1: Start with -6.",
+        "Step 2: Add 4.",
+        "Step 3: -6 + 4 = -2."
+      ],
+      "ans": "-2",
+      "why": "Adding 4 to -6 moves four units toward zero, giving -2."
+    },
+    {
+      "q": "Calculate: 5 - 9",
+      "hint": "Subtracting a larger number from a smaller number gives a negative result.",
+      "steps": [
+        "Step 1: Start with 5.",
+        "Step 2: Subtract 9.",
+        "Step 3: 5 - 9 = -4."
+      ],
+      "ans": "-4",
+      "why": "5 is 4 less than 9, so 5 - 9 = -4."
+    },
+    {
+      "q": "Calculate: -4 × -3",
+      "hint": "Look at the signs.",
+      "steps": [
+        "Step 1: The numbers have the same sign.",
+        "Step 2: Negative × Negative gives Positive.",
+        "Step 3: 4 × 3 = 12."
+      ],
+      "ans": "12",
+      "why": "Two negative signs produce a positive result, and 4 × 3 = 12."
+    },
+    {
+      "q": "Calculate: -20 ÷ 5",
+      "hint": "Look at the signs before dividing.",
+      "steps": [
+        "Step 1: Negative ÷ Positive gives Negative.",
+        "Step 2: 20 ÷ 5 = 4.",
+        "Step 3: Therefore, -20 ÷ 5 = -4."
+      ],
+      "ans": "-4",
+      "why": "Different signs give a negative result, and 20 ÷ 5 = 4."
+    },
+    {
+      "q": "Which statement is correct?",
+      "hint": "Think about how the number sets are contained.",
+      "steps": [
+        "Step 1: Natural numbers are contained in whole numbers.",
+        "Step 2: Whole numbers are contained in integers.",
+        "Step 3: Therefore, Natural Numbers ⊂ Whole Numbers ⊂ Integers."
+      ],
+      "ans": "Every natural number is a whole number, and every whole number is an integer.",
+      "why": "The natural-number set is contained inside the whole-number set, which is contained inside the integers."
+    }
+  ]
+);
+add(
+  "math",
+  "numbers",
+  "BODMAS / Order of Operations",
+
+  `<h2>BODMAS / Order of Operations</h2>
 <hr>
-<h4>3. BODMAS Rule</h4>
+
+<h3>DEEP NOTES</h3>
+
+<h4>1. Why Do We Need an Order?</h4>
+
 <p>
-BODMAS defines the correct order in which mathematical operations must be solved to avoid confusion.
+When an expression contains more than one operation, we need a fixed order for performing the operations.
+Otherwise, different people could get different answers from the same expression.
 </p>
+
+<p>
+For example:
+</p>
+
+<pre>
+6 + 2 × 3
+</pre>
+
+<p>
+We do not simply calculate from left to right.
+Multiplication must be performed before addition.
+</p>
+
+<pre>
+6 + 2 × 3
+= 6 + 6
+= 12
+</pre>
+
+<hr>
+
+<h4>2. What Does BODMAS Mean?</h4>
+
 <pre>
 B → Brackets
-O → Orders (powers, squares, roots)
+O → Orders
 D → Division
 M → Multiplication
 A → Addition
 S → Subtraction
 </pre>
-<p><b>Key Principle:</b> Operations are solved from left to right after applying priority rules.</p>
+
+<p>
+BODMAS tells us the priority of operations.
+</p>
+
+<p>
+The order is:
+</p>
+
+<ol>
+<li><b>Brackets</b></li>
+<li><b>Orders</b> such as powers and roots</li>
+<li><b>Division and Multiplication</b></li>
+<li><b>Addition and Subtraction</b></li>
+</ol>
+
+<hr>
+
+<h4>3. Brackets</h4>
+
+<p>
+Operations inside brackets are completed before operations outside the brackets.
+</p>
+
+<pre>
+(5 + 3) × 2
+</pre>
+
+<p>
+First calculate the brackets:
+</p>
+
+<pre>
+(5 + 3) × 2
+= 8 × 2
+= 16
+</pre>
+
+<hr>
+
+<h4>4. Orders</h4>
+
+<p>
+Orders include powers, squares, cubes, and roots.
+They are performed after brackets and before multiplication, division, addition, or subtraction.
+</p>
+
 <p><b>Example:</b></p>
+
+<pre>
+3 + 2²
+</pre>
+
+<p>
+First calculate the order:
+</p>
+
+<pre>
+2² = 4
+</pre>
+
+<p>
+Then add:
+</p>
+
+<pre>
+3 + 4 = 7
+</pre>
+
+<hr>
+
+<h4>5. Division and Multiplication</h4>
+
+<p>
+Division and multiplication have the <b>same priority</b>.
+If both appear in an expression, work from <b>left to right</b>.
+</p>
+
+<p><b>Example:</b></p>
+
+<pre>
+24 ÷ 3 × 2
+</pre>
+
+<p>
+Work from left to right:
+</p>
+
+<pre>
+24 ÷ 3 = 8
+8 × 2 = 16
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+24 ÷ 3 × 2 = 16
+</pre>
+
+<p>
+Do not automatically perform multiplication before division.
+They have equal priority.
+</p>
+
+<hr>
+
+<h4>6. Addition and Subtraction</h4>
+
+<p>
+Addition and subtraction also have the <b>same priority</b>.
+When both appear together, work from <b>left to right</b>.
+</p>
+
+<p><b>Example:</b></p>
+
+<pre>
+15 - 6 + 2
+</pre>
+
+<pre>
+15 - 6 = 9
+9 + 2 = 11
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+15 - 6 + 2 = 11
+</pre>
+
+<hr>
+
+<h4>7. A Complete BODMAS Example</h4>
+
+<p>Consider:</p>
+
 <pre>
 8 + 2 × (5 - 3)²
 </pre>
-<p>Step-by-step idea:</p>
-<ul>
-<li>First solve Brackets: (5 - 3) = 2</li>
-<li>Then Orders: 2² = 4</li>
-<li>Then Multiplication: 2 × 4 = 8</li>
-<li>Then Addition: 8 + 8 = 16</li>
-</ul>
-<hr>
-<h4>4. Core Insight</h4>
+
+<p><b>Step 1: Brackets</b></p>
+
+<pre>
+(5 - 3) = 2
+</pre>
+
+<p>So:</p>
+
+<pre>
+8 + 2 × 2²
+</pre>
+
+<p><b>Step 2: Orders</b></p>
+
+<pre>
+2² = 4
+</pre>
+
+<p>So:</p>
+
+<pre>
+8 + 2 × 4
+</pre>
+
+<p><b>Step 3: Multiplication</b></p>
+
+<pre>
+2 × 4 = 8
+</pre>
+
+<p>So:</p>
+
+<pre>
+8 + 8
+</pre>
+
+<p><b>Step 4: Addition</b></p>
+
+<pre>
+8 + 8 = 16
+</pre>
+
 <p>
-Mathematics is a structured language. Number systems define what we can represent, while rules like BODMAS define how we process them correctly.
+Therefore:
 </p>
+
+<pre>
+8 + 2 × (5 - 3)² = 16
+</pre>
+
+<hr>
+
+<h4>8. Nested Brackets</h4>
+
+<p>
+When brackets appear inside other brackets, solve the innermost brackets first.
+</p>
+
+<p><b>Example:</b></p>
+
+<pre>
+2 × [3 + (4 - 1)]
+</pre>
+
+<p>
+First solve the inner bracket:
+</p>
+
+<pre>
+4 - 1 = 3
+</pre>
+
+<p>
+Then:
+</p>
+
+<pre>
+2 × [3 + 3]
+= 2 × 6
+= 12
+</pre>
+
+<hr>
+
+<h4>9. The Left-to-Right Rule</h4>
+
+<p>
+BODMAS does not mean that multiplication is always done before division.
+It also does not mean that addition is always done before subtraction.
+</p>
+
+<p>
+Operations with the same priority are performed from <b>left to right</b>.
+</p>
+
+<pre>
+Division ↔ Multiplication
+Addition ↔ Subtraction
+</pre>
+
+<p><b>Example:</b></p>
+
+<pre>
+18 ÷ 3 × 2
+</pre>
+
+<p>
+Left to right:
+</p>
+
+<pre>
+18 ÷ 3 = 6
+6 × 2 = 12
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+18 ÷ 3 × 2 = 12
+</pre>
+
+<hr>
+
+<h4>10. Common Mistakes</h4>
+
+<ul>
+<li>Doing everything from left to right without considering priority.</li>
+<li>Adding before multiplying.</li>
+<li>Multiplying before division even when division appears first.</li>
+<li>Adding before subtraction even when subtraction appears first.</li>
+<li>Ignoring brackets.</li>
+<li>Forgetting to calculate powers before multiplication.</li>
+</ul>
+
+<hr>
+
+<h4>11. Key Idea</h4>
+
+<p>
+BODMAS is a method for deciding <b>which operation comes next</b>.
+It does not change the operations themselves.
+</p>
+
+<p>
+Remember:
+</p>
+
+<pre>
+Brackets
+↓
+Orders
+↓
+Division / Multiplication (left to right)
+↓
+Addition / Subtraction (left to right)
+</pre>
 `,
 
   [
     {
       "q": "Solve: 6 + 2 × 3",
-      "hint": "Use BODMAS",
+      "hint": "Multiplication comes before addition.",
       "steps": [
-        "Step 1: 6 + 2 × 3",
-        "Step 2: 6 + (2 × 3) = 6 + 6",
-        "Step 3: = 12"
+        "Step 1: Identify multiplication and addition.",
+        "Step 2: Calculate 2 × 3 = 6.",
+        "Step 3: Calculate 6 + 6 = 12."
       ],
       "ans": "12",
-      "why": "BODMAS: Multiplication before Addition → 2 × 3 = 6, then 6 + 6 = 12"
+      "why": "Multiplication has priority over addition, so 2 × 3 is calculated first."
     },
     {
-      "q": "Find: 15 ÷ 3 + 2",
-      "hint": "Division first",
+      "q": "Solve: 20 - 12 ÷ 3",
+      "hint": "Division comes before subtraction.",
       "steps": [
-        "Step 1: 15 ÷ 3 + 2",
-        "Step 2: (15 ÷ 3) + 2 = 5 + 2",
-        "Step 3: = 7"
-      ],
-      "ans": "7",
-      "why": "BODMAS: Division before Addition → 15 ÷ 3 = 5, then 5 + 2 = 7"
-    },
-    {
-      "q": "What type of number is -5?",
-      "hint": "check sign",
-      "steps": [
-        "Step 1: -5 < 0 → negative number",
-        "Step 2: -5 ∈ {..., -3, -2, -1, 0, 1, 2, 3, ...}",
-        "Step 3: ∴ -5 ∈ ℤ (integers)"
-      ],
-      "ans": "Integer",
-      "why": "ℤ = {..., -3, -2, -1, 0, 1, 2, ...} → -5 ∈ ℤ"
-    },
-    {
-      "q": "Convert 3/4 into a decimal",
-      "hint": "divide",
-      "steps": [
-        "Step 1: 3/4 = 3 ÷ 4",
-        "Step 2: 3 ÷ 4 = 0.75"
-      ],
-      "ans": "0.75",
-      "why": "3/4 = 3 ÷ 4 = 0.75"
-    },
-    {
-      "q": "Solve: (5 + 3) × 2",
-      "hint": "brackets first",
-      "steps": [
-        "Step 1: (5 + 3) × 2",
-        "Step 2: (8) × 2",
-        "Step 3: = 16"
+        "Step 1: Calculate 12 ÷ 3 = 4.",
+        "Step 2: Calculate 20 - 4 = 16."
       ],
       "ans": "16",
-      "why": "BODMAS: Brackets first → (5 + 3) = 8, then 8 × 2 = 16"
+      "why": "Division is performed before subtraction."
+    },
+    {
+      "q": "Solve: (7 + 5) × 2",
+      "hint": "Start with the brackets.",
+      "steps": [
+        "Step 1: Calculate 7 + 5 = 12.",
+        "Step 2: Calculate 12 × 2 = 24."
+      ],
+      "ans": "24",
+      "why": "Brackets are calculated before multiplication."
+    },
+    {
+      "q": "Solve: 3 + 2²",
+      "hint": "Calculate the order before addition.",
+      "steps": [
+        "Step 1: Calculate 2² = 4.",
+        "Step 2: Calculate 3 + 4 = 7."
+      ],
+      "ans": "7",
+      "why": "Orders such as powers are calculated before addition."
+    },
+    {
+      "q": "Solve: 24 ÷ 3 × 2",
+      "hint": "Division and multiplication have equal priority. Work left to right.",
+      "steps": [
+        "Step 1: Start from the left: 24 ÷ 3 = 8.",
+        "Step 2: Continue left to right: 8 × 2 = 16."
+      ],
+      "ans": "16",
+      "why": "Division and multiplication have equal priority, so they are evaluated from left to right."
+    },
+    {
+      "q": "Solve: 15 - 6 + 2",
+      "hint": "Addition and subtraction have equal priority.",
+      "steps": [
+        "Step 1: Start from the left: 15 - 6 = 9.",
+        "Step 2: Continue left to right: 9 + 2 = 11."
+      ],
+      "ans": "11",
+      "why": "Addition and subtraction have equal priority, so they are evaluated from left to right."
+    },
+    {
+      "q": "Solve: 8 + 2 × (5 - 3)²",
+      "hint": "Follow the order: brackets, orders, multiplication, addition.",
+      "steps": [
+        "Step 1: (5 - 3) = 2.",
+        "Step 2: 2² = 4.",
+        "Step 3: 2 × 4 = 8.",
+        "Step 4: 8 + 8 = 16."
+      ],
+      "ans": "16",
+      "why": "The expression follows BODMAS: brackets, orders, multiplication, then addition."
+    },
+    {
+      "q": "Solve: 2 × [3 + (4 - 1)]",
+      "hint": "Solve the innermost brackets first.",
+      "steps": [
+        "Step 1: 4 - 1 = 3.",
+        "Step 2: 3 + 3 = 6.",
+        "Step 3: 2 × 6 = 12."
+      ],
+      "ans": "12",
+      "why": "Nested brackets are solved from the innermost bracket outward."
+    },
+    {
+      "q": "A student solves 10 + 4 × 2 as (10 + 4) × 2. What did the student do wrong?",
+      "hint": "Check which operation should be performed first.",
+      "steps": [
+        "Step 1: Multiplication has priority over addition.",
+        "Step 2: Calculate 4 × 2 = 8.",
+        "Step 3: Calculate 10 + 8 = 18."
+      ],
+      "ans": "The student added before multiplying.",
+      "why": "The multiplication must be performed before the addition, so the correct answer is 18."
+    },
+    {
+      "q": "Solve: 18 ÷ 3 × 2",
+      "hint": "Do not automatically multiply first.",
+      "steps": [
+        "Step 1: Division and multiplication have equal priority.",
+        "Step 2: Work from left to right: 18 ÷ 3 = 6.",
+        "Step 3: 6 × 2 = 12."
+      ],
+      "ans": "12",
+      "why": "Division and multiplication have equal priority and are evaluated from left to right."
     }
   ]
 );
-
 add(
   "math",
   "complex_numbers",
   "Imaginary Unit and Basic Complex Numbers",
 
   `
-<h2> Imaginary Unit and Complex Numbers</h2>
-<h3> DEEP NOTES</h3>
-<p>
-A complex number extends the real number system by introducing the imaginary unit i, where i² = -1.
-It allows us to represent quantities that cannot be described on the real number line alone, especially in rotation, waves, and oscillations.
-</p>
-<pre>
-z = a + bi
-</pre>
-<hr>
-<h3> DEFINITIONS (EXPANDED)</h3>
-<ul>
-<li><b>Real part:</b> a → the measurable quantity on the real number line</li>
-<li><b>Imaginary part:</b> bi → represents a perpendicular dimension to real numbers</li>
-<li><b>Imaginary unit:</b> i = √(-1), a mathematical construct that enables square roots of negative numbers</li>
-<li><b>Complex number:</b> a combination of real + imaginary parts forming a 2D number system</li>
-</ul>
-<hr>
-<h3> KEY IDEA (DEEPER UNDERSTANDING)</h3>
-<pre>
-Complex number = real axis + imaginary axis
-z = a + bi
-Think of it as a coordinate:
-(a, b) in a 2D plane
-</pre>
-<p>
-Instead of existing on a straight line like real numbers, complex numbers exist on a plane called the <b>Argand Plane</b>.
-</p>
-<hr>
-<h3> GEOMETRIC INTERPRETATION</h3>
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
-  
-  <defs>
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
-    </pattern>
-    <marker id="math-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-    <marker id="vector-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
-    </marker>
-  </defs>
+<h2>Imaginary Unit and Basic Complex Numbers</h2>
 
-  <rect width="280" height="200" fill="url(#grid)"/>
-  <line x1="20" y1="100" x2="260" y2="100" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
-  <line x1="140" y1="180" x2="140" y2="20" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
-  <line x1="200" y1="97" x2="200" y2="103" stroke="#888" stroke-width="1"/>
-  <line x1="137" y1="50" x2="143" y2="50" stroke="#888" stroke-width="1"/>
-  <line x1="200" y1="100" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
-  <line x1="140" y1="50" x2="200" y2="50" stroke="#f1c40f" stroke-dasharray="3,3" stroke-width="1"/>
-  <line x1="140" y1="100" x2="195" y2="54" stroke="#3498db" stroke-width="2.5" marker-end="url(#vector-arrow)"/>
-  <circle cx="200" cy="50" r="4.5" fill="#e74c3c"/>
-  <text x="275" y="103" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold" text-anchor="end">Re</text>
-  <text x="140" y="14" fill="#9b59b6" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Im</text>
-  <text x="208" y="44" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = a + bi</text>
-  <text x="208" y="56" fill="#aaa" font-size="8" font-family="monospace">(a, b)</text>
-  <text x="200" y="114" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace">a</text>
-  <text x="130" y="54" fill="#fff" font-size="9" text-anchor="end" font-family="monospace">bi</text>
-  <text x="130" y="112" fill="#888" font-size="8" text-anchor="end" font-family="monospace">O</text>
-</svg>
-</div>
+<h3>DEEP NOTES</h3>
+
+<h4>1. The Imaginary Unit</h4>
+
 <p>
-This means every complex number represents a <b>point or vector in 2D space</b>.
+The imaginary unit is represented by the letter <b>i</b>.
+It is defined by the rule:
 </p>
-<hr>
-<h3> OPERATIONS (EXTENDED UNDERSTANDING)</h3>
-<ul>
-<li><b>Addition:</b> combine real with real, imaginary with imaginary</li>
-<li><b>Subtraction:</b> same structure as addition</li>
-<li><b>Multiplication:</b> uses distributive law and i² = -1</li>
-<li><b>Division:</b> involves multiplying by conjugate to remove i from denominator</li>
-</ul>
-<hr>
-<h3> COMMON MISTAKES (EXPLAINED)</h3>
-<ul>
-<li> Treating i like a variable → i is a defined constant (√-1)</li>
-<li> Ignoring i² = -1 → leads to incorrect simplification</li>
-<li> Mixing real/imaginary parts incorrectly during operations</li>
-<li> Forgetting complex numbers are 2D, not 1D values</li>
-</ul>
-<hr>
-<h3> WORKED EXAMPLE (EXPANDED)</h3>
-<p><b>Question:</b> Simplify (3 + 2i) + (1 + 5i)</p>
-<p><b>Step 1: Group real parts</b></p>
-<p>3 + 1 = 4</p>
-<p><b>Step 2: Group imaginary parts</b></p>
-<p>2i + 5i = 7i</p>
-<p><b>Step 3: Final answer</b></p>
-<p><b>4 + 7i</b></p>
-<p><b>Interpretation:</b> This is a point (4, 7) in the complex plane.</p>
-<hr>
-<h3> ADVANCED INSIGHT</h3>
-<p>
-Complex numbers are not just arithmetic tools—they represent <b>rotation and transformation</b>.
-Multiplying by i rotates a number by 90° in the complex plane.
-</p>
+
 <pre>
-1 → i → -1 → -i → 1 (rotation cycle)
+i² = -1
 </pre>
+
+<p>
+This means that <b>i</b> is a number whose square is -1.
+We also write:
+</p>
+
+<pre>
+i = √(-1)
+</pre>
+
+<p>
+The important rule to remember is:
+</p>
+
+<pre>
+i² = -1
+</pre>
+
+<p>
+Do not treat <b>i</b> as an ordinary variable. It is a special number defined by this property.
+</p>
+
 <hr>
-<h3> REAL WORLD APPLICATION (EXPANDED)</h3>
+
+<h4>2. What Is a Complex Number?</h4>
+
+<p>
+A complex number has the form:
+</p>
+
+<pre>
+z = a + bi
+</pre>
+
+<p>
+where <b>a</b> and <b>b</b> are real numbers and <b>i² = -1</b>.
+</p>
+
+<p>
+The number has two parts:
+</p>
+
+<pre>
+z = a + bi
+    ↓   ↓
+  real imaginary
+  part   part
+</pre>
+
+<p>
+<b>a</b> is called the <b>real part</b>.
+</p>
+
+<p>
+<b>b</b> is called the <b>imaginary coefficient</b>.
+The complete term <b>bi</b> is the imaginary part.
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+z = 5 + 3i
+</pre>
+
+<p>
+Real part = <b>5</b>
+</p>
+
+<p>
+Imaginary part = <b>3i</b>
+</p>
+
+<p>
+Imaginary coefficient = <b>3</b>
+</p>
+
+<hr>
+
+<h4>3. Purely Real and Purely Imaginary Numbers</h4>
+
+<p>
+A complex number does not always have to contain both parts.
+</p>
+
+<p>
+If the imaginary part is zero, the number is purely real.
+</p>
+
+<pre>
+5 + 0i = 5
+</pre>
+
+<p>
+If the real part is zero, the number is purely imaginary.
+</p>
+
+<pre>
+0 + 4i = 4i
+</pre>
+
+<p>
+Therefore:
+</p>
+
 <ul>
-<li> Electrical engineering → alternating current (AC wave behavior)</li>
-<li> Signal processing → encoding and filtering signals</li>
-<li> Quantum mechanics → probability amplitudes</li>
-<li> Physics → wave motion and oscillations</li>
-<li> Computer graphics → rotations and transformations</li>
+<li><b>5</b> is a real number and can also be written as a complex number.</li>
+<li><b>4i</b> is a purely imaginary number.</li>
+<li><b>5 + 4i</b> has both a real and an imaginary part.</li>
 </ul>
-<h3> QUIZ QUESTIONS</h3>
+
+<hr>
+
+<h4>4. Simplifying Powers of i</h4>
+
+<p>
+Because <b>i² = -1</b>, higher powers of i can be simplified.
+</p>
+
+<pre>
+i¹ = i
+
+i² = -1
+
+i³ = i² × i
+   = -1 × i
+   = -i
+
+i⁴ = i² × i²
+   = (-1)(-1)
+   = 1
+</pre>
+
+<p>
+After <b>i⁴ = 1</b>, the pattern repeats:
+</p>
+
+<pre>
+i, -1, -i, 1, i, -1, -i, 1, ...
+</pre>
+
+<p>
+This repeating pattern makes higher powers of <b>i</b> easier to simplify.
+</p>
+
+<hr>
+
+<h4>5. Identifying the Parts of a Complex Number</h4>
+
+<p>
+For a complex number:
+</p>
+
+<pre>
+z = a + bi
+</pre>
+
+<p>
+remember:
+</p>
+
+<pre>
+Real part = a
+Imaginary part = bi
+Imaginary coefficient = b
+</pre>
+
+<p>
+For example:
+</p>
+
+<pre>
+z = -7 + 2i
+</pre>
+
+<p>
+Real part = <b>-7</b>
+</p>
+
+<p>
+Imaginary part = <b>2i</b>
+</p>
+
+<p>
+Imaginary coefficient = <b>2</b>
+</p>
+
+<hr>
+
+<h4>6. Key Ideas</h4>
+
+<ul>
+<li><b>i² = -1</b> is the fundamental rule.</li>
+<li>A complex number is written as <b>a + bi</b>.</li>
+<li><b>a</b> is the real part.</li>
+<li><b>bi</b> is the imaginary part.</li>
+<li>The coefficient of <b>i</b> is the imaginary coefficient.</li>
+<li>A number can be purely real, purely imaginary, or contain both parts.</li>
+<li>Powers of <b>i</b> repeat in a cycle of four.</li>
+</ul>
 `,
 
   [
     {
-      "q": "What is i defined as?",
-      "hint": "square root",
+      "q": "What is i² equal to?",
+      "hint": "Use the definition of the imaginary unit.",
       "steps": [
-        "Step 1: The imaginary unit i satisfies i² = -1",
-        "Step 2: Therefore i = √(-1)"
-      ],
-      "ans": "√(-1)",
-      "why": "It extends the number system beyond real numbers"
-    },
-    {
-      "q": "Find real and imaginary parts of 5 + 3i",
-      "hint": "separate terms",
-      "steps": [
-        "Step 1: Real part = 5",
-        "Step 2: Imaginary part = 3i",
-        "Step 3: Combine as 5 + 3i"
-      ],
-      "ans": "Real = 5, Imaginary = 3i",
-      "why": "Complex number a + bi splits into real part a and imaginary part bi"
-    },
-    {
-      "q": "Simplify 2i + 4i",
-      "hint": "combine like terms",
-      "steps": [
-        "Step 1: Combine like terms: 2i + 4i",
-        "Step 2: Add coefficients: 2 + 4 = 6",
-        "Step 3: Result = 6i"
-      ],
-      "ans": "6i",
-      "why": "Imaginary terms combine by adding coefficients, yielding 6i"
-    },
-    {
-      "q": "What type of number is a + bi?",
-      "hint": "name of system",
-      "steps": [
-        "Step 1: Identify the form a + bi",
-        "Step 2: Recognize that a is the real part and bi is the imaginary part",
-        "Step 3: Any number of the form a + bi belongs to the complex number system",
-        "Step 4: Therefore, a + bi is a complex number"
-      ],
-      "ans": "Complex number",
-      "why": "A complex number combines a real part (a) and an imaginary part (bi) into a single number of the form a + bi."
-    },
-    {
-      "q": "What happens when i² is calculated?",
-      "hint": "negative result",
-      "steps": [
-        "Step 1: Define the imaginary unit: i = √(-1)",
-        "Step 2: Square both sides: i² = (√(-1))²",
-        "Step 3: Simplify the square and square root: (√(-1))² = -1",
-        "Step 4: Therefore, i² = -1"
+        "Step 1: The imaginary unit is defined by i = √(-1).",
+        "Step 2: Squaring gives i² = -1."
       ],
       "ans": "-1",
-      "why": "The imaginary unit i is defined so that i² = -1. This is the fundamental property of complex numbers."
+      "why": "The defining property of the imaginary unit is i² = -1."
+    },
+    {
+      "q": "What is the real part of 7 + 4i?",
+      "hint": "Look at the number without i.",
+      "steps": [
+        "Step 1: Compare 7 + 4i with a + bi.",
+        "Step 2: The value of a is 7."
+      ],
+      "ans": "7",
+      "why": "In a + bi, a is the real part."
+    },
+    {
+      "q": "What is the imaginary part of 7 + 4i?",
+      "hint": "Look for the term containing i.",
+      "steps": [
+        "Step 1: The term containing i is 4i.",
+        "Step 2: Therefore, the imaginary part is 4i."
+      ],
+      "ans": "4i",
+      "why": "The imaginary part is the complete term containing i."
+    },
+    {
+      "q": "What is the imaginary coefficient of -3 + 8i?",
+      "hint": "Find the number multiplying i.",
+      "steps": [
+        "Step 1: Identify the imaginary term: 8i.",
+        "Step 2: The coefficient of i is 8."
+      ],
+      "ans": "8",
+      "why": "The coefficient is the number multiplying i."
+    },
+    {
+      "q": "Simplify i³.",
+      "hint": "Use i² = -1.",
+      "steps": [
+        "Step 1: i³ = i² × i.",
+        "Step 2: Replace i² with -1.",
+        "Step 3: -1 × i = -i."
+      ],
+      "ans": "-i",
+      "why": "i³ = i² × i = -1 × i = -i."
+    },
+    {
+      "q": "Simplify i⁴.",
+      "hint": "Use i² twice.",
+      "steps": [
+        "Step 1: i⁴ = i² × i².",
+        "Step 2: Replace each i² with -1.",
+        "Step 3: (-1)(-1) = 1."
+      ],
+      "ans": "1",
+      "why": "i⁴ = i² × i² = (-1)(-1) = 1."
+    },
+    {
+      "q": "Is 6i a real number, purely imaginary number, or a complex number with both parts?",
+      "hint": "Look at its real part.",
+      "steps": [
+        "Step 1: Write 6i as 0 + 6i.",
+        "Step 2: Its real part is 0.",
+        "Step 3: Therefore, it is purely imaginary."
+      ],
+      "ans": "Purely imaginary number",
+      "why": "6i has no real part, so it is purely imaginary."
+    },
+    {
+      "q": "Write 9 as a complex number in the form a + bi.",
+      "hint": "A real number can have an imaginary part of zero.",
+      "steps": [
+        "Step 1: Write 9 as 9 + 0i.",
+        "Step 2: Therefore a = 9 and b = 0."
+      ],
+      "ans": "9 + 0i",
+      "why": "Every real number can be written as a complex number with zero imaginary part."
     }
   ]
 );
+
 
 add(
   "math",
   "complex_numbers",
-  "Argand Diagram (Complex Plane)",
+  "Argand Diagram",
 
   `
-<h2> Argand Diagram (Complex Plane)</h2>
-<h3> DEEP NOTES</h3>
-<p>
-An Argand diagram represents complex numbers as points on a 2D plane, where each complex number corresponds to a coordinate.
-</p>
-<pre>
-x-axis → real part (Re)
-y-axis → imaginary part (Im)
-</pre>
-<h3> KEY IDEA</h3>
-<ul>
-<li>z = a + bi → point (a, b)</li>
-<li>Horizontal axis = real values</li>
-<li>Vertical axis = imaginary values</li>
-</ul>
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li> Swapping real and imaginary parts</li>
-<li> Plotting i-component on x-axis</li>
-<li> Forgetting sign of imaginary part</li>
-</ul>
-<h3> WORKED EXAMPLE</h3>
-<p><b>Question:</b> Plot z = 3 + 4i</p>
-<p><b>Step 1:</b> Identify real part → 3 (move right)</p>
-<p><b>Step 2:</b> Identify imaginary part → 4 (move up)</p>
-<p><b>Step 3:</b> Plot point (3, 4)</p>
-<p><b>Final Answer:</b> (3, 4)</p>
-<h3> VISUAL DIAGRAM</h3>
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
-  
-  <defs>
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
-    </pattern>
-    <marker id="math-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-    <marker id="vector-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
-    </marker>
-  </defs>
+<h2>Argand Diagram</h2>
 
-  <rect width="280" height="200" fill="url(#grid)"/>
-  <line x1="20" y1="140" x2="260" y2="140" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
-  <line x1="80" y1="180" x2="80" y2="20" stroke="#667" stroke-width="1.5" marker-end="url(#math-arrow)"/>
-  <line x1="120" y1="137" x2="120" y2="143" stroke="#888" stroke-width="1"/>
-  <line x1="160" y1="137" x2="160" y2="143" stroke="#888" stroke-width="1"/>
-  <line x1="200" y1="137" x2="200" y2="143" stroke="#888" stroke-width="1"/>
-  <line x1="77" y1="110" x2="83" y2="110" stroke="#888" stroke-width="1"/>
-  <line x1="77" y1="80" x2="83" y2="80" stroke="#888" stroke-width="1"/>
-  <line x1="77" y1="60" x2="83" y2="60" stroke="#888" stroke-width="1"/>
-  <line x1="200" y1="140" x2="200" y2="60" stroke="#3498db" stroke-dasharray="3,3" stroke-width="1"/>
-  <line x1="80" y1="60" x2="200" y2="60" stroke="#3498db" stroke-dasharray="3,3" stroke-width="1"/>
-  <line x1="80" y1="140" x2="195" y2="64" stroke="#e74c3c" stroke-width="2.5" marker-end="url(#vector-arrow)"/>
-  <circle cx="200" cy="60" r="4.5" fill="#e74c3c"/>
-  <text x="270" y="137" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold">Re</text>
-  <text x="80" y="14" fill="#9b59b6" font-size="9" font-weight="bold" text-anchor="middle" font-family="sans-serif">Im</text>
-  <text x="200" y="152" fill="#fff" font-size="9" text-anchor="middle" font-family="monospace">3</text>
-  <text x="70" y="63" fill="#fff" font-size="9" text-anchor="end" font-family="monospace">4i</text>
-  <text x="72" y="152" fill="#888" font-size="8" text-anchor="end" font-family="monospace">O</text>
-  <text x="208" y="52" fill="#fff" font-size="10" font-family="sans-serif" font-weight="bold">z = 3 + 4i</text>
-  <text x="208" y="65" fill="#aaa" font-size="8" font-family="monospace">(3, 4)</text>
-</svg>
-</div>
-<h3> QUIZ QUESTIONS</h3>
+<h3>DEEP NOTES</h3>
+
+<h4>1. What Is an Argand Diagram?</h4>
+
+<p>
+An Argand diagram is a coordinate plane used to represent complex numbers.
+Instead of writing a complex number only as <b>a + bi</b>, we can represent it as a point.
+</p>
+
+<p>
+For:
+</p>
+
+<pre>
+z = a + bi
+</pre>
+
+<p>
+the corresponding point is:
+</p>
+
+<pre>
+(a, b)
+</pre>
+
+<p>
+The real part gives the horizontal coordinate.
+The imaginary coefficient gives the vertical coordinate.
+</p>
+
+<hr>
+
+<h4>2. The Two Axes</h4>
+
+<pre>
+Horizontal axis → Real axis
+Vertical axis   → Imaginary axis
+</pre>
+
+<p>
+The horizontal axis represents the real part.
+</p>
+
+<p>
+The vertical axis represents the coefficient of the imaginary part.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+a + bi → (a, b)
+</pre>
+
+<p>
+Notice that the coordinate uses <b>b</b>, not <b>bi</b>.
+</p>
+
+<hr>
+
+<h4>3. Plotting a Complex Number</h4>
+
+<p>
+Consider:
+</p>
+
+<pre>
+z = 3 + 4i
+</pre>
+
+<p>
+First identify the two parts:
+</p>
+
+<pre>
+Real part = 3
+Imaginary coefficient = 4
+</pre>
+
+<p>
+Therefore the coordinate is:
+</p>
+
+<pre>
+(3, 4)
+</pre>
+
+<p>
+To locate the point, move 3 units along the real axis and 4 units along the imaginary axis.
+</p>
+
+<hr>
+
+<h4>4. Negative Coordinates</h4>
+
+<p>
+The signs of the real and imaginary parts determine the position of the point.
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+z = -3 + 2i
+</pre>
+
+<p>
+The coordinate is:
+</p>
+
+<pre>
+(-3, 2)
+</pre>
+
+<p>
+The negative real part places the point to the left of the origin.
+The positive imaginary coefficient places it above the real axis.
+</p>
+
+<p>
+Another example:
+</p>
+
+<pre>
+z = 4 - 5i
+</pre>
+
+<p>
+The coordinate is:
+</p>
+
+<pre>
+(4, -5)
+</pre>
+
+<p>
+The positive real part places the point to the right.
+The negative imaginary coefficient places it below the real axis.
+</p>
+
+<hr>
+
+<h4>5. The Origin</h4>
+
+<p>
+The complex number:
+</p>
+
+<pre>
+0 + 0i
+</pre>
+
+<p>
+corresponds to:
+</p>
+
+<pre>
+(0, 0)
+</pre>
+
+<p>
+This is the origin of the Argand diagram.
+</p>
+
+<hr>
+
+<h4>6. The Four Regions</h4>
+
+<p>
+The signs of the real and imaginary parts determine which region contains the point.
+</p>
+
+<pre>
+(+,+) → upper right
+(-,+) → upper left
+(-,-) → lower left
+(+,-) → lower right
+</pre>
+
+<p>
+For example:
+</p>
+
+<pre>
+2 + 3i  → (2,3)   → upper right
+
+-2 + 3i → (-2,3)  → upper left
+
+-2 - 3i → (-2,-3) → lower left
+
+2 - 3i  → (2,-3)  → lower right
+</pre>
+
+<hr>
+
+<h4>7. Key Rule</h4>
+
+<p>
+Whenever you are asked to represent:
+</p>
+
+<pre>
+z = a + bi
+</pre>
+
+<p>
+simply convert it to:
+</p>
+
+<pre>
+(a, b)
+</pre>
+
+<p>
+Then remember:
+</p>
+
+<pre>
+a → horizontal / real axis
+b → vertical / imaginary axis
+</pre>
 `,
 
   [
     {
-      "q": "What axis represents the imaginary part?",
-      "hint": "vertical axis",
+      "q": "Which axis represents the real part?",
+      "hint": "Think horizontally.",
       "steps": [
-        "Step 1: In z = a + bi, the imaginary part is b",
-        "Step 2: On the Argand plane, b is plotted on the vertical axis",
-        "Step 3: ∴ Imaginary part → y-axis"
+        "Step 1: The real part is a in a + bi.",
+        "Step 2: a is plotted horizontally."
       ],
-      "ans": "y-axis",
-      "why": "In z = a + bi, b maps to the y-axis (vertical), a maps to the x-axis (horizontal)"
+      "ans": "Horizontal axis",
+      "why": "The real part is represented on the horizontal axis."
     },
     {
-      "q": "Plot z = 2 + 5i as a point",
-      "hint": "real then imaginary",
+      "q": "Which axis represents the imaginary part?",
+      "hint": "Think vertically.",
       "steps": [
-        "Step 1: z = 2 + 5i → a = 2, b = 5",
-        "Step 2: Plot (a, b) = (2, 5) on the Argand plane",
-        "Step 3: ∴ z = 2 + 5i → point (2, 5)"
+        "Step 1: The imaginary coefficient is b in a + bi.",
+        "Step 2: b is plotted vertically."
       ],
-      "ans": "(2,5)",
-      "why": "z = a + bi maps to the coordinate (a, b), so 2 + 5i → (2, 5)"
+      "ans": "Vertical axis",
+      "why": "The imaginary coefficient is represented on the vertical axis."
     },
     {
-      "q": "What does z = a + bi represent on the Argand plane?",
-      "hint": "coordinate system",
+      "q": "What point represents z = 2 + 5i?",
+      "hint": "Use a + bi → (a,b).",
       "steps": [
-        "Step 1: z = a + bi → real part = a, imaginary part = b",
-        "Step 2: Map a to x-axis, b to y-axis",
-        "Step 3: ∴ z = a + bi ↔ point (a, b) in 2D"
+        "Step 1: a = 2.",
+        "Step 2: b = 5.",
+        "Step 3: Therefore the point is (2,5)."
       ],
-      "ans": "A point (a, b)",
-      "why": "Every complex number z = a + bi corresponds to a unique point (a, b) on the 2D Argand plane"
+      "ans": "(2, 5)",
+      "why": "A complex number a + bi corresponds to the point (a,b)."
     },
     {
-      "q": "Where is the real part plotted?",
-      "hint": "horizontal axis",
+      "q": "What point represents z = -3 + 2i?",
+      "hint": "Keep the negative sign.",
       "steps": [
-        "Step 1: In z = a + bi, the real part is a",
-        "Step 2: On the Argand plane, a is measured along the horizontal axis",
-        "Step 3: ∴ Real part → x-axis"
-      ],
-      "ans": "x-axis",
-      "why": "In z = a + bi, a maps to the x-axis (horizontal), just like the x-coordinate in Cartesian geometry"
-    },
-    {
-      "q": "What is the point for z = -3 + 2i?",
-      "hint": "negative real",
-      "steps": [
-        "Step 1: Real = -3 (left)",
-        "Step 2: Imaginary = 2 (up)",
-        "Step 3: Coordinate = (-3, 2)"
+        "Step 1: Real part = -3.",
+        "Step 2: Imaginary coefficient = 2.",
+        "Step 3: Therefore the point is (-3,2)."
       ],
       "ans": "(-3, 2)",
-      "why": "Negative real moves left, positive imaginary moves up"
+      "why": "The real part gives the first coordinate and the imaginary coefficient gives the second."
     },
     {
-      "q": "Why is Argand diagram useful?",
-      "hint": "visual representation",
+      "q": "What point represents z = 4 - 6i?",
+      "hint": "The coefficient of i is -6.",
       "steps": [
-        "Step 1: z = a + bi is algebraic → hard to visualize",
-        "Step 2: Argand plane maps z → point (a, b) in 2D",
-        "Step 3: Operations like addition become vector addition on the plane",
-        "Step 4: ∴ The diagram turns algebra into geometry"
+        "Step 1: Real part = 4.",
+        "Step 2: Imaginary coefficient = -6.",
+        "Step 3: Therefore the point is (4,-6)."
       ],
-      "ans": "It gives a geometric representation of complex numbers",
-      "why": "Mapping z = a + bi to (a, b) lets us visualize addition as vector sums and multiplication as rotation + scaling"
+      "ans": "(4, -6)",
+      "why": "The minus sign belongs to the imaginary coefficient, giving the second coordinate as -6."
+    },
+    {
+      "q": "Which complex number corresponds to the point (-2, 5)?",
+      "hint": "First coordinate is the real part.",
+      "steps": [
+        "Step 1: The first coordinate gives a = -2.",
+        "Step 2: The second coordinate gives b = 5.",
+        "Step 3: Write a + bi = -2 + 5i."
+      ],
+      "ans": "-2 + 5i",
+      "why": "The point (a,b) corresponds to the complex number a + bi."
+    },
+    {
+      "q": "In which region is the point (-4,-2)?",
+      "hint": "Check the signs of both coordinates.",
+      "steps": [
+        "Step 1: The real coordinate is negative.",
+        "Step 2: The imaginary coordinate is negative.",
+        "Step 3: Both negative coordinates place the point in the lower-left region."
+      ],
+      "ans": "Lower-left region",
+      "why": "A point with negative real and negative imaginary coordinates lies in the lower-left region."
     }
   ]
 );
+
 
 add(
   "math",
@@ -460,394 +1457,650 @@ add(
   "Operations on Complex Numbers",
 
   `
-<h2> Complex Number Operations</h2>
+<h2>Operations on Complex Numbers</h2>
 
-<h3> DEEP NOTES</h3>
+<h3>DEEP NOTES</h3>
+
+<h4>1. Adding Complex Numbers</h4>
+
 <p>
-Complex numbers can be added, subtracted, multiplied, and divided using algebraic rules while remembering that i² = -1.
+To add complex numbers, add the real parts together and add the imaginary parts together.
 </p>
-<h3> KEY IDEA</h3>
-<ul>
-<li>Add/subtract → combine like terms</li>
-<li>Multiply → use FOIL/distributive law</li>
-<li>Always replace i² with -1</li>
-</ul>
-<h3> WORKED EXAMPLE (MULTIPLICATION)</h3>
-<p><b>Question:</b> (2 + i)(3 + 4i)</p>
-<p><b>Step 1: Expand</b></p>
-<p>2×3 = 6</p>
-<p>2×4i = 8i</p>
-<p>i×3 = 3i</p>
-<p>i×4i = 4i²</p>
-<p><b>Step 2: Replace i²</b></p>
-<p>4i² = -4</p>
-<p><b>Step 3: Combine like terms</b></p>
-<p>(6 − 4) + (8i + 3i)</p>
-<p><b>Step 4: Final answer</b></p>
-<p>2 + 11i</p>
-<h3> VISUAL IDEA</h3>
+
+<p>
+For:
+</p>
+
 <pre>
-FOIL:
-First + Outer + Inner + Last
-Then simplify using i² = -1
+(a + bi) + (c + di)
 </pre>
-<h3> REAL WORLD APPLICATION</h3>
+
+<p>
+the result is:
+</p>
+
+<pre>
+(a + c) + (b + d)i
+</pre>
+
+<p><b>Example:</b></p>
+
+<pre>
+(3 + 2i) + (4 + 5i)
+
+= (3 + 4) + (2 + 5)i
+
+= 7 + 7i
+</pre>
+
+<p>
+Only like terms are combined:
+real terms with real terms, and imaginary terms with imaginary terms.
+</p>
+
+<hr>
+
+<h4>2. Subtracting Complex Numbers</h4>
+
+<p>
+Subtraction follows the same idea.
+Subtract the real parts and subtract the imaginary parts.
+</p>
+
+<pre>
+(a + bi) - (c + di)
+= (a - c) + (b - d)i
+</pre>
+
+<p><b>Example:</b></p>
+
+<pre>
+(7 + 5i) - (2 + 3i)
+
+= (7 - 2) + (5 - 3)i
+
+= 5 + 2i
+</pre>
+
+<hr>
+
+<h4>3. Multiplying Complex Numbers</h4>
+
+<p>
+When multiplying complex numbers, use the distributive law.
+FOIL can also be used when both numbers have two terms.
+</p>
+
+<p>
+Consider:
+</p>
+
+<pre>
+(a + bi)(c + di)
+</pre>
+
+<p>
+Expand:
+</p>
+
+<pre>
+ac + adi + bci + bdi²
+</pre>
+
+<p>
+Now use:
+</p>
+
+<pre>
+i² = -1
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+ac + adi + bci - bd
+</pre>
+
+<p>
+Group the real and imaginary terms:
+</p>
+
+<pre>
+(ac - bd) + (ad + bc)i
+</pre>
+
+<hr>
+
+<h4>4. Multiplication Example</h4>
+
+<p>
+Simplify:
+</p>
+
+<pre>
+(2 + i)(3 + 4i)
+</pre>
+
+<p><b>Step 1: Expand.</b></p>
+
+<pre>
+2(3) + 2(4i) + i(3) + i(4i)
+</pre>
+
+<p>
+This gives:
+</p>
+
+<pre>
+6 + 8i + 3i + 4i²
+</pre>
+
+<p><b>Step 2: Replace i² with -1.</b></p>
+
+<pre>
+6 + 8i + 3i - 4
+</pre>
+
+<p><b>Step 3: Combine like terms.</b></p>
+
+<pre>
+(6 - 4) + (8i + 3i)
+
+= 2 + 11i
+</pre>
+
+<hr>
+
+<h4>5. The Main Rule for Operations</h4>
+
 <ul>
-<li> Electrical engineering (impedance)</li>
-<li> Signal processing</li>
-<li> Wave interference systems</li>
-<li> Quantum physics</li>
+<li><b>Addition:</b> combine like terms.</li>
+<li><b>Subtraction:</b> combine like terms with the correct signs.</li>
+<li><b>Multiplication:</b> expand first, then replace i² with -1.</li>
 </ul>
-<h3> QUIZ QUESTIONS</h3>
+
+<p>
+The most important thing during multiplication is not to leave <b>i²</b> in the final answer.
+Always simplify it using:
+</p>
+
+<pre>
+i² = -1
+</pre>
+
+<hr>
+
+<h4>6. Standard Form</h4>
+
+<p>
+The final answer should normally be written in the form:
+</p>
+
+<pre>
+a + bi
+</pre>
+
+<p>
+For example:
+</p>
+
+<pre>
+3 + 7i
+-4 + 2i
+5 - 6i
+</pre>
+
+<p>
+Keep the real part and imaginary part together in this standard form.
+</p>
 `,
 
   [
     {
-      "q": "What is i² equal to?",
-      "hint": "definition of i",
+      "q": "Simplify: (3 + 2i) + (4 + 5i)",
+      "hint": "Add real parts and imaginary parts separately.",
       "steps": [
-        "Step 1: By definition, i = √(−1)",
-        "Step 2: Square both sides: i² = (√(−1))²",
-        "Step 3: (√(−1))² = −1",
-        "Step 4: ∴ i² = −1"
+        "Step 1: Add real parts: 3 + 4 = 7.",
+        "Step 2: Add imaginary parts: 2i + 5i = 7i.",
+        "Step 3: Combine: 7 + 7i."
       ],
-      "ans": "-1",
-      "why": "i = √(−1), so i² = (√(−1))² = −1. This is the foundational identity of complex numbers."
+      "ans": "7 + 7i",
+      "why": "Like terms are combined separately: real with real and imaginary with imaginary."
     },
     {
-      "q": "Simplify i² + 5",
-      "hint": "replace i²",
+      "q": "Simplify: (7 + 5i) - (2 + 3i)",
+      "hint": "Subtract corresponding parts.",
       "steps": [
-        "Step 1: i² + 5",
-        "Step 2: Replace i² with −1: (−1) + 5",
-        "Step 3: −1 + 5 = 4"
+        "Step 1: 7 - 2 = 5.",
+        "Step 2: 5i - 3i = 2i.",
+        "Step 3: Combine: 5 + 2i."
       ],
-      "ans": "4",
-      "why": "i² = −1 by definition, so i² + 5 = −1 + 5 = 4"
+      "ans": "5 + 2i",
+      "why": "Subtract the real parts and imaginary parts separately."
     },
     {
-      "q": "Multiply (1 + i)(1 + i)",
-      "hint": "FOIL method",
+      "q": "Simplify: 4i + 7i",
+      "hint": "Treat i as the common factor.",
       "steps": [
-        "Step 1: (1 + i)(1 + i) → use FOIL",
-        "Step 2: First: 1×1 = 1",
-        "Step 3: Outer: 1×i = i",
-        "Step 4: Inner: i×1 = i",
-        "Step 5: Last: i×i = i² = −1",
-        "Step 6: Combine: 1 + i + i + (−1) = 1 + 2i − 1",
-        "Step 7: = 2i"
+        "Step 1: Add the coefficients: 4 + 7 = 11.",
+        "Step 2: Keep i."
+      ],
+      "ans": "11i",
+      "why": "4i and 7i are like terms, so their coefficients are added."
+    },
+    {
+      "q": "Simplify: (1 + i)(1 + i)",
+      "hint": "Expand and use i² = -1.",
+      "steps": [
+        "Step 1: Expand: 1 + i + i + i².",
+        "Step 2: Replace i² with -1.",
+        "Step 3: 1 + 2i - 1 = 2i."
       ],
       "ans": "2i",
-      "why": "FOIL: (1+i)(1+i) = 1 + 2i + i² = 1 + 2i − 1 = 2i"
+      "why": "(1+i)² = 1 + 2i + i² = 1 + 2i - 1 = 2i."
     },
     {
-      "q": "Find (3 + 2i) + (1 + 4i)",
-      "hint": "add like terms",
+      "q": "Simplify: (2 + i)(3 + 4i)",
+      "hint": "Expand first, then replace i².",
       "steps": [
-        "Step 1: (3 + 2i) + (1 + 4i)",
-        "Step 2: Group real parts: 3 + 1 = 4",
-        "Step 3: Group imaginary parts: 2i + 4i = 6i",
-        "Step 4: ∴ (3 + 2i) + (1 + 4i) = 4 + 6i"
+        "Step 1: Expand: 6 + 8i + 3i + 4i².",
+        "Step 2: Replace i² with -1: 6 + 8i + 3i - 4.",
+        "Step 3: Combine real parts: 6 - 4 = 2.",
+        "Step 4: Combine imaginary parts: 8i + 3i = 11i."
       ],
-      "ans": "4 + 6i",
-      "why": "(a + bi) + (c + di) = (a+c) + (b+d)i, so (3+1) + (2+4)i = 4 + 6i"
+      "ans": "2 + 11i",
+      "why": "Expansion followed by i² = -1 gives 2 + 11i."
     },
     {
-      "q": "Why do we replace i² with -1?",
-      "hint": "definition",
+      "q": "Simplify: (5 + 3i) + (-2 + 4i)",
+      "hint": "Be careful with the negative real number.",
       "steps": [
-        "Step 1: The imaginary unit is defined as i = √(−1)",
-        "Step 2: Squaring: i² = (√(−1))² = −1",
-        "Step 3: So whenever i² appears, substitute −1",
-        "Step 4: This converts imaginary terms into real terms for simplification"
+        "Step 1: Add real parts: 5 + (-2) = 3.",
+        "Step 2: Add imaginary parts: 3i + 4i = 7i.",
+        "Step 3: Combine: 3 + 7i."
       ],
-      "ans": "Because i² = -1 by definition",
-      "why": "i = √(−1) ∴ i² = −1. Replacing i² converts imaginary expressions into real numbers."
+      "ans": "3 + 7i",
+      "why": "The real and imaginary parts are added separately."
     },
     {
-      "q": "What method is used for multiplying complex numbers?",
-      "hint": "FOIL",
+      "q": "Why must i² be replaced with -1 during multiplication?",
+      "hint": "Use the definition of i.",
       "steps": [
-        "Step 1: (a + bi)(c + di) → expand using FOIL",
-        "Step 2: = ac + adi + bci + bdi²",
-        "Step 3: Replace i² = −1: = ac + adi + bci − bd",
-        "Step 4: Group: = (ac − bd) + (ad + bc)i"
+        "Step 1: By definition, i² = -1.",
+        "Step 2: Therefore any i² produced during multiplication can be replaced by -1.",
+        "Step 3: This allows the expression to be simplified into standard form."
       ],
-      "ans": "FOIL / distributive method",
-      "why": "FOIL expands (a+bi)(c+di) = (ac−bd) + (ad+bc)i, then i² = −1 simplifies the result"
+      "ans": "Because i² = -1",
+      "why": "The identity i² = -1 is the fundamental rule used to simplify products of complex numbers."
+    },
+    {
+      "q": "Simplify: (4 - 2i) - (1 + 3i)",
+      "hint": "Distribute the subtraction carefully.",
+      "steps": [
+        "Step 1: 4 - 2i - 1 - 3i.",
+        "Step 2: Combine real parts: 4 - 1 = 3.",
+        "Step 3: Combine imaginary parts: -2i - 3i = -5i.",
+        "Step 4: Result = 3 - 5i."
+      ],
+      "ans": "3 - 5i",
+      "why": "Subtracting the second complex number changes the signs of both its real and imaginary parts."
     }
   ]
 );
 
+
 add(
   "math",
   "complex_numbers",
-  "Polar Form of Complex Numbers",
+  "Polar Form and De Moivre's Theorem",
 
   `
-<h2> Polar Form</h2>
-<h3> DEEP NOTES</h3>
+<h2>Polar Form and De Moivre's Theorem</h2>
+
+<h3>DEEP NOTES</h3>
+
+<h4>1. Polar Form</h4>
+
 <p>
-A complex number can be represented using its magnitude (r) and angle (θ).
+A complex number can be written in two main ways.
 </p>
+
+<p><b>Cartesian form:</b></p>
+
+<pre>
+z = a + bi
+</pre>
+
+<p><b>Polar form:</b></p>
+
 <pre>
 z = r(cosθ + i sinθ)
 </pre>
-<h3> KEY IDEA</h3>
-<ul>
-<li>r = distance from origin</li>
-<li>θ = angle from positive real axis</li>
-<li>Used for rotation and scaling in complex plane</li>
-</ul>
-<h3> WORKED EXAMPLE</h3>
-<p><b>Question:</b> Convert (3,4) into polar form</p>
-<p><b>Step 1: Find r</b></p>
-<p>r = √(3² + 4²) = 5</p>
-<p><b>Step 2: Find θ</b></p>
-<p>θ = tan⁻¹(4/3)</p>
-<p><b>Step 3: Write polar form</b></p>
-<p>z = 5(cosθ + i sinθ)</p>
-<h3> DIAGRAM</h3>
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
-  
-  <defs>
-    <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
-    </pattern>
-    <marker id="math-arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-    <marker id="vector-arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#3498db"/>
-    </marker>
-  </defs>
 
-  <rect width="280" height="200" fill="url(#grid)"/>
-  <line x1="60" y1="140" x2="220" y2="140" stroke="#aaa" stroke-width="2"/>
-  <line x1="220" y1="140" x2="220" y2="40" stroke="#aaa" stroke-width="2"/>
-  <line x1="60" y1="140" x2="220" y2="40" stroke="#3498db" stroke-width="3"/>
-  <path d="M 90,140 A 30,30 0 0,0 85,121" fill="none" stroke="#f1c40f" stroke-width="2"/>
-  <text x="96" y="132" fill="#f1c40f" font-size="11" font-weight="bold" font-family="sans-serif">θ</text>
-  <rect x="208" y="128" width="12" height="12" fill="none" stroke="#fff" stroke-width="1.5" opacity="0.6"/>
-  <text x="140" y="156" fill="#ffa07a" font-size="10" font-weight="bold" text-anchor="middle" font-family="sans-serif">Real part (x = 3)</text>
-  <text x="232" y="95" fill="#2ecc71" font-size="10" font-weight="bold" font-family="sans-serif">Imag part (y = 4i)</text>
-  <text x="125" y="78" fill="#3498db" font-size="10" font-weight="bold" font-family="sans-serif" transform="rotate(-32 125 78)">Modulus r = √(3² + 4²) = 5</text>
-  <circle cx="60" cy="140" r="4.5" fill="#fff"/>
-  <circle cx="220" cy="40" r="4.5" fill="#e74c3c"/>
-  <text x="226" y="34" fill="#fff" font-size="9" font-family="monospace" font-weight="bold">z = 3 + 4i</text>
-</svg>
-</div>
-<h3> REAL WORLD APPLICATION</h3>
+<p>
+In polar form:
+</p>
+
 <ul>
-<li> AC circuit analysis</li>
-<li> Signal processing</li>
-<li> Wave motion representation</li>
-<li> Quantum state modeling</li>
+<li><b>r</b> is the modulus or magnitude of the complex number.</li>
+<li><b>θ</b> is the argument, or angle measured from the positive real axis.</li>
 </ul>
-<h3> QUIZ QUESTIONS</h3>
+
+<hr>
+
+<h4>2. Finding the Modulus</h4>
+
+<p>
+For:
+</p>
+
+<pre>
+z = a + bi
+</pre>
+
+<p>
+the modulus is:
+</p>
+
+<pre>
+r = √(a² + b²)
+</pre>
+
+<p>
+This comes from the Pythagorean theorem applied to the real and imaginary components.
+</p>
+
+<p><b>Example:</b></p>
+
+<pre>
+z = 3 + 4i
+
+r = √(3² + 4²)
+  = √(9 + 16)
+  = √25
+  = 5
+</pre>
+
+<hr>
+
+<h4>3. Finding the Argument</h4>
+
+<p>
+The argument is the angle θ made by the complex number with the positive real axis.
+</p>
+
+<p>
+When the position is in the appropriate quadrant:
+</p>
+
+<pre>
+tanθ = b/a
+</pre>
+
+<p>
+so:
+</p>
+
+<pre>
+θ = tan⁻¹(b/a)
+</pre>
+
+<p>
+The signs of <b>a</b> and <b>b</b> must be considered when determining the correct quadrant.
+</p>
+
+<hr>
+
+<h4>4. Example of Polar Form</h4>
+
+<p>
+Convert:
+</p>
+
+<pre>
+z = 3 + 4i
+</pre>
+
+<p><b>Step 1: Find r.</b></p>
+
+<pre>
+r = √(3² + 4²)
+  = 5
+</pre>
+
+<p><b>Step 2: Find θ.</b></p>
+
+<pre>
+θ = tan⁻¹(4/3)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+z = 5(cosθ + i sinθ)
+</pre>
+
+<p>
+where:
+</p>
+
+<pre>
+θ = tan⁻¹(4/3)
+</pre>
+
+<hr>
+
+<h4>5. De Moivre's Theorem</h4>
+
+<p>
+De Moivre's theorem provides a quick way to raise a complex number in polar form to a power.
+</p>
+
+<p>
+For a complex number of the form:
+</p>
+
+<pre>
+z = r(cosθ + i sinθ)
+</pre>
+
+<p>
+the theorem states:
+</p>
+
+<pre>
+zⁿ = rⁿ[cos(nθ) + i sin(nθ)]
+</pre>
+
+<p>
+There are two changes:
+</p>
+
+<ul>
+<li>The modulus <b>r</b> is raised to the power <b>n</b>.</li>
+<li>The angle <b>θ</b> is multiplied by <b>n</b>.</li>
+</ul>
+
+<hr>
+
+<h4>6. De Moivre Example</h4>
+
+<p>
+Evaluate:
+</p>
+
+<pre>
+(cos30° + i sin30°)²
+</pre>
+
+<p>
+Here:
+</p>
+
+<pre>
+r = 1
+θ = 30°
+n = 2
+</pre>
+
+<p>
+Using De Moivre's theorem:
+</p>
+
+<pre>
+= cos(2 × 30°) + i sin(2 × 30°)
+
+= cos60° + i sin60°
+</pre>
+
+<p>
+Using the exact trigonometric values:
+</p>
+
+<pre>
+= 1/2 + i√3/2
+</pre>
+
+<hr>
+
+<h4>7. Key Pattern</h4>
+
+<p>
+For:
+</p>
+
+<pre>
+z = r(cosθ + i sinθ)
+</pre>
+
+<p>
+raising z to the power n gives:
+</p>
+
+<pre>
+zⁿ = rⁿ(cos nθ + i sin nθ)
+</pre>
+
+<p>
+So remember:
+</p>
+
+<pre>
+Power n
+   ↓
+r → rⁿ
+θ → nθ
+</pre>
+
+<p>
+This is the central idea of De Moivre's theorem.
+</p>
 `,
 
   [
     {
       "q": "What does r represent in polar form?",
-      "hint": "distance from origin",
+      "hint": "It measures the size of the complex number.",
       "steps": [
-        "Step 1: z = r(cosθ + i sinθ), where r = √(a² + b²)",
-        "Step 2: r is the distance from the origin (0,0) to the point (a, b)",
-        "Step 3: ∴ r = |z| = magnitude of z"
+        "Step 1: In z = r(cosθ + i sinθ), r is the modulus.",
+        "Step 2: The modulus is the magnitude of z."
       ],
-      "ans": "Magnitude",
-      "why": "r = √(a² + b²) gives the distance from origin to (a,b), i.e. the modulus |z|"
+      "ans": "Modulus",
+      "why": "r represents the modulus or magnitude of the complex number."
     },
     {
       "q": "What does θ represent in polar form?",
-      "hint": "angle",
+      "hint": "Think about direction.",
       "steps": [
-        "Step 1: z = r(cosθ + i sinθ)",
-        "Step 2: θ = tan⁻¹(b/a), the angle from the positive real axis",
-        "Step 3: ∴ θ = argument of z = direction of z in the complex plane"
+        "Step 1: θ is measured from the positive real axis.",
+        "Step 2: Therefore θ represents the argument of the complex number."
       ],
-      "ans": "Angle",
-      "why": "θ = tan⁻¹(b/a) measures the direction from the positive x-axis to the vector (a, b)"
+      "ans": "Argument",
+      "why": "The argument is the angle made by the complex number with the positive real axis."
     },
     {
-      "q": "Convert (3,4) into polar form: find r",
-      "hint": "use Pythagoras",
+      "q": "Find the modulus of z = 3 + 4i.",
+      "hint": "Use r = √(a² + b²).",
       "steps": [
-        "Step 1: r = √(a² + b²) = √(3² + 4²)",
-        "Step 2: = √(9 + 16) = √25",
-        "Step 3: r = 5"
+        "Step 1: a = 3 and b = 4.",
+        "Step 2: r = √(3² + 4²).",
+        "Step 3: r = √25 = 5."
       ],
       "ans": "5",
-      "why": "r = √(3² + 4²) = √(9+16) = √25 = 5 (Pythagorean theorem)"
+      "why": "The modulus is √(a²+b²), so √(3²+4²) = 5."
     },
     {
-      "q": "Why is polar form useful?",
-      "hint": "simplifies operations",
+      "q": "What is the polar form of z = 3 + 4i if θ = tan⁻¹(4/3)?",
+      "hint": "Use z = r(cosθ + i sinθ).",
       "steps": [
-        "Step 1: In Cartesian form, (a+bi)(c+di) requires FOIL expansion",
-        "Step 2: In polar form: z₁·z₂ = r₁r₂ [cos(θ₁+θ₂) + i sin(θ₁+θ₂)]",
-        "Step 3: Multiplication becomes: multiply magnitudes, add angles",
-        "Step 4: ∴ Polar form simplifies multiplication and division of complex numbers"
+        "Step 1: The modulus is r = 5.",
+        "Step 2: θ = tan⁻¹(4/3).",
+        "Step 3: Substitute into the polar formula."
       ],
-      "ans": "It simplifies multiplication and rotation",
-      "why": "z₁·z₂ = r₁r₂ cis(θ₁+θ₂): just multiply |z| and add angles, no FOIL needed"
+      "ans": "5(cosθ + i sinθ), where θ = tan⁻¹(4/3)",
+      "why": "Polar form is z = r(cosθ+i sinθ), with r = 5 and θ = tan⁻¹(4/3)."
     },
     {
-      "q": "What is the general polar form of a complex number?",
-      "hint": "formula",
+      "q": "State De Moivre's theorem.",
+      "hint": "Think about a complex number raised to n.",
       "steps": [
-        "Step 1: For z = a + bi, compute r = √(a² + b²)",
-        "Step 2: Compute θ = tan⁻¹(b/a)",
-        "Step 3: Write z = r(cosθ + i sinθ)",
-        "Step 4: Also written as z = r cis(θ)"
+        "Step 1: Start with z = r(cosθ + i sinθ).",
+        "Step 2: Raise both sides to power n.",
+        "Step 3: Apply De Moivre's theorem."
       ],
-      "ans": "z = r(cosθ + i sinθ)",
-      "why": "z = a + bi converts to z = r(cosθ + i sinθ) where r = |z| and θ = arg(z)"
+      "ans": "zⁿ = rⁿ[cos(nθ) + i sin(nθ)]",
+      "why": "De Moivre's theorem raises the modulus to n and multiplies the argument by n."
     },
     {
-      "q": "What is the first step when converting to polar form?",
-      "hint": "distance",
+      "q": "Evaluate (cos45° + i sin45°)².",
+      "hint": "Multiply the angle by 2.",
       "steps": [
-        "Step 1: Given z = a + bi, first find r = √(a² + b²)",
-        "Step 2: Then find θ = tan⁻¹(b/a)",
-        "Step 3: Assemble: z = r(cosθ + i sinθ)"
-      ],
-      "ans": "Find r",
-      "why": "r = √(a² + b²) must be calculated first because it defines the magnitude before the angle"
-    }
-  ]
-);
-
-add(
-  "math",
-  "complex_numbers",
-  "De Moivre’s Theorem",
-
-  `
-<h2> De Moivre’s Theorem</h2>
-<p>De Moivre’s Theorem is used to raise complex numbers in trigonometric form to powers quickly by multiplying angles.</p>
-<h3> DEFINITION</h3>
-<pre>
-(cosθ + i sinθ)^n = cos(nθ) + i sin(nθ)
-</pre>
-<h3> KEY IDEA</h3>
-<ul>
-<li>Power → multiply the angle</li>
-<li>Magnitude stays the same (if r = 1)</li>
-<li>Represents rotation on the complex plane</li>
-</ul>
-<h3> GEOMETRIC MEANING</h3>
-<pre>
-Each multiplication rotates the point around the origin
-Angle increases by n × θ
-</pre>
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li> Forgetting to multiply the angle</li>
-<li> Using addition instead of multiplication</li>
-<li> Not converting final trig values</li>
-</ul>
-<h3> WORKED EXAMPLE</h3>
-<p><b>Question:</b> (cos30° + i sin30°)²</p>
-<p><b>Step 1: Multiply angle</b></p>
-<p>2 × 30° = 60°</p>
-<p><b>Step 2: Apply theorem</b></p>
-<p>cos60° + i sin60°</p>
-<p><b>Step 3: Evaluate values</b></p>
-<p>cos60° = 1/2, sin60° = √3/2</p>
-<p><b>Final Answer:</b> 1/2 + i(√3/2)</p>
-<h3> VISUAL IDEA</h3>
-<pre>
-Initial point → rotates on unit circle
-30° → 60° after squaring
-</pre>
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li> Electrical engineering (AC signals)</li>
-<li> Signal processing and wave rotation</li>
-<li> Quantum physics (state transformations)</li>
-<li> Satellite communication modeling</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "What happens to angle in De Moivre’s theorem?",
-      "hint": "power effect",
-      "steps": [
-        "Step 1: De Moivre’s theorem: (cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ)",
-        "Step 2: The angle θ is multiplied by the exponent n",
-        "Step 3: ∴ New angle = nθ"
-      ],
-      "ans": "Angle is multiplied by the exponent",
-      "why": "(cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ) → the angle becomes n×θ"
-    },
-    {
-      "q": "Evaluate (cos45° + i sin45°)^2",
-      "hint": "use De Moivre’s theorem",
-      "steps": [
-        "Step 1: Apply (cosθ + i sinθ)ⁿ = cos(nθ) + i sin(nθ)",
-        "Step 2: n = 2, θ = 45° → nθ = 2 × 45° = 90°",
-        "Step 3: = cos90° + i sin90°",
-        "Step 4: cos90° = 0, sin90° = 1",
-        "Step 5: = 0 + i(1) = i"
+        "Step 1: 2 × 45° = 90°.",
+        "Step 2: cos90° = 0.",
+        "Step 3: sin90° = 1.",
+        "Step 4: Therefore the result is i."
       ],
       "ans": "i",
-      "why": "(cos45° + i sin45°)² = cos(90°) + i sin(90°) = 0 + i = i"
+      "why": "De Moivre's theorem gives cos90° + i sin90° = i."
     },
     {
-      "q": "What does De Moivre’s theorem represent?",
-      "hint": "geometry meaning",
+      "q": "Evaluate (cos60° + i sin60°)³.",
+      "hint": "Multiply 60° by 3.",
       "steps": [
-        "Step 1: z = cosθ + i sinθ is a point on the unit circle at angle θ",
-        "Step 2: zⁿ = cos(nθ) + i sin(nθ) moves to angle nθ",
-        "Step 3: ∴ Raising to power n rotates the point by n×θ on the unit circle"
-      ],
-      "ans": "Rotation of complex numbers on a circle",
-      "why": "zⁿ = cos(nθ) + i sin(nθ): each power rotates the point n times around the unit circle"
-    },
-    {
-      "q": "What is the effect of raising a complex number to a power?",
-      "hint": "think angle",
-      "steps": [
-        "Step 1: Let z = r(cosθ + i sinθ)",
-        "Step 2: zⁿ = rⁿ(cos(nθ) + i sin(nθ))",
-        "Step 3: Magnitude becomes rⁿ, angle becomes nθ",
-        "Step 4: ∴ Power n multiplies the angle by n and raises magnitude to n"
-      ],
-      "ans": "It multiplies the angle by the exponent",
-      "why": "zⁿ = rⁿ cis(nθ): magnitude → rⁿ, angle → n×θ"
-    },
-    {
-      "q": "Evaluate (cos60° + i sin60°)^3",
-      "hint": "multiply angle",
-      "steps": [
-        "Step 1: Apply De Moivre’s: (cosθ + i sinθ)³ = cos(3θ) + i sin(3θ)",
-        "Step 2: θ = 60° → 3 × 60° = 180°",
-        "Step 3: = cos180° + i sin180°",
-        "Step 4: cos180° = −1, sin180° = 0",
-        "Step 5: = −1 + i(0) = −1"
+        "Step 1: 3 × 60° = 180°.",
+        "Step 2: cos180° = -1.",
+        "Step 3: sin180° = 0.",
+        "Step 4: Therefore the result is -1."
       ],
       "ans": "-1",
-      "why": "(cos60° + i sin60°)³ = cos180° + i sin180° = −1 + 0i = −1"
+      "why": "De Moivre's theorem gives cos180° + i sin180° = -1."
     },
     {
-      "q": "Why is De Moivre's theorem useful?",
-      "hint": "It makes powers easier.",
+      "q": "When z = r(cosθ + i sinθ) is raised to power n, what happens to r?",
+      "hint": "Look at the modulus in De Moivre's theorem.",
       "steps": [
-        "Step 1: Finding zⁿ by repeated multiplication is long and difficult.",
-        "Step 2: De Moivre's theorem gives zⁿ = rⁿ(cos nθ + i sin nθ).",
-        "Step 3: Multiply only the angle by n.",
-        "Step 4: This saves time and reduces calculations."
+        "Step 1: De Moivre's theorem gives zⁿ = rⁿ[cos(nθ) + i sin(nθ)].",
+        "Step 2: Therefore the modulus changes from r to rⁿ."
       ],
-      "ans": "It simplifies powers of complex numbers.",
-      "why": "Instead of multiplying a complex number many times, De Moivre's theorem uses a simple formula."
+      "ans": "It becomes rⁿ",
+      "why": "The modulus is raised to the same power as the complex number."
+    },
+    {
+      "q": "When z = r(cosθ + i sinθ) is raised to power n, what happens to θ?",
+      "hint": "Look inside cos and sin.",
+      "steps": [
+        "Step 1: De Moivre's theorem gives cos(nθ) and sin(nθ).",
+        "Step 2: Therefore the angle becomes nθ."
+      ],
+      "ans": "It is multiplied by n",
+      "why": "De Moivre's theorem changes θ to nθ."
     }
   ]
 );
-
 add(
   "math",
   "algebra",
@@ -1527,1053 +2780,2400 @@ Straight: 180°   (line)
     }
   ]
 );
-
 add(
   "math",
   "geometry",
   "Triangles",
 
-  `<h2> Triangles</h2>
-<p>A triangle is a polygon with 3 sides, 3 vertices, and 3 angles.</p>
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li>The sum of interior angles of a triangle is always 180°</li>
-<li>This rule helps find missing angles easily</li>
-<li><b>Formula:</b> Missing angle = 180° − (sum of known angles)</li>
-</ul>
-<h3> KEY IDEA</h3>
+  `<h2>Triangles</h2>
+
+<p>
+A <b>triangle</b> is a polygon with exactly three sides, three vertices,
+and three interior angles.
+</p>
+
+<h3>1. ANGLE SUM OF A TRIANGLE</h3>
+
+<p>
+The three interior angles of every triangle add up to <b>180°</b>.
+</p>
+
 <pre>
-All triangles always add up to 180°
+Angle 1 + Angle 2 + Angle 3 = 180°
 </pre>
-<h3> TYPES OF TRIANGLES</h3>
+
+<p>
+If two angles are known, the third angle can be found by subtracting
+their sum from 180°.
+</p>
+
+<pre>
+Missing angle = 180° − sum of known angles
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+A triangle has angles 45°, 65°, and x.
+</p>
+
+<pre>
+45° + 65° + x = 180°
+
+110° + x = 180°
+
+x = 180° − 110°
+
+x = 70°
+</pre>
+
+<p><b>Answer: x = 70°</b></p>
+
+<h3>2. TYPES OF TRIANGLES BY SIDES</h3>
+
 <ul>
-<li> Equilateral → all sides equal, all angles = 60°</li>
-<li> Isosceles → two sides equal, two equal angles</li>
-<li> Scalene → all sides different, all angles different</li>
-<li> Right-angled → one angle = 90°</li>
+<li>
+<b>Equilateral:</b> all three sides are equal.
+All three angles are 60°.
+</li>
+
+<li>
+<b>Isosceles:</b> two sides are equal.
+The angles opposite those equal sides are also equal.
+</li>
+
+<li>
+<b>Scalene:</b> all three sides have different lengths.
+Its angles are also different.
+</li>
 </ul>
-<h3> WORKED EXAMPLES</h3>
+
+<h3>3. TYPES OF TRIANGLES BY ANGLES</h3>
+
 <ul>
 <li>
-<b>Example 1:</b> 40° + 60° + x = 180°<br>
-Step 1: 40 + 60 = 100<br>
-Step 2: 180 − 100 = 80<br>
-<b>Answer: x = 80°</b>
+<b>Acute triangle:</b> all three angles are less than 90°.
 </li>
+
 <li>
-<b>Example 2:</b> Find total angle sum<br>
-Step 1: Apply triangle rule<br>
-<b>Answer: 180°</b>
+<b>Right-angled triangle:</b> one angle is exactly 90°.
 </li>
+
 <li>
-<b>Example 3:</b> 70° and 50° given<br>
-Step 1: 70 + 50 = 120<br>
-Step 2: 180 − 120 = 60<br>
-<b>Answer: 60°</b>
+<b>Obtuse triangle:</b> one angle is greater than 90°.
 </li>
 </ul>
-<h3> REAL WORLD APPLICATION</h3>
+
+<h3>IMPORTANT CONNECTION</h3>
+
+<p>
+A triangle can be classified in two ways at the same time:
+by its <b>sides</b> and by its <b>angles</b>.
+</p>
+
+<p>
+For example, a triangle can be both <b>isosceles</b> and
+<b>right-angled</b>.
+</p>
+
+<h3>CHECKING A TRIANGLE</h3>
+
+<p>
+If three angles are given, add them. If their sum is not 180°,
+they cannot be the interior angles of an ordinary triangle.
+</p>
+
+<h3>Common Mistakes</h3>
+
 <ul>
-<li> Engineering → bridge and roof design</li>
-<li> Architecture → stable structural shapes</li>
-<li> Navigation → triangulation in mapping</li>
-<li> Technology → signal positioning systems</li>
-<li> Game design → 3D modeling structures</li>
+<li>Using 360° instead of 180°.</li>
+<li>Forgetting to subtract the known angles from 180°.</li>
+<li>Confusing an isosceles triangle with an equilateral triangle.</li>
+<li>Assuming every triangle with unequal angles has unequal sides without checking the angle-side relationship.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Find missing angle: 30° + 80° + x = 180°",
-      "hint": "Use 180° rule",
+      "q": "A triangle has angles 35° and 85°. Find the third angle.",
+      "hint": "The angles of a triangle add to 180°.",
       "steps": [
-        "Step 1: Add known angles → 110°",
-        "Step 2: 180 − 110",
-        "Step 3: x = 70°"
+        "Step 1: Add the known angles: 35° + 85° = 120°",
+        "Step 2: Subtract from 180°: 180° − 120°",
+        "Step 3: The missing angle is 60°"
       ],
-      "ans": "70°",
-      "why": "All triangle angles must sum to 180°"
+      "ans": "60°",
+      "why": "The three interior angles of a triangle always add up to 180°."
     },
+
     {
-      "q": "What is the sum of angles in a triangle?",
-      "hint": "constant rule",
+      "q": "A triangle has angles 90° and 35°. Find the third angle.",
+      "hint": "Use the 180° angle-sum rule.",
       "steps": [
-        "Step 1: Identify shape",
-        "Step 2: Apply rule",
-        "Step 3: State result"
+        "Step 1: Add the known angles: 90° + 35° = 125°",
+        "Step 2: Subtract from 180°: 180° − 125°",
+        "Step 3: The missing angle is 55°"
       ],
-      "ans": "180°",
-      "why": "All triangles have a fixed angle sum of 180°"
+      "ans": "55°",
+      "why": "A triangle containing a 90° angle is right-angled, and its other two angles must add to 90°."
     },
+
     {
-      "q": "Which triangle has all sides equal?",
-      "hint": "equilateral",
+      "q": "What type of triangle has all three sides equal?",
+      "hint": "All sides have the same length.",
       "steps": [
-        "Step 1: Compare sides",
-        "Step 2: Check equality",
-        "Step 3: Identify type"
+        "Step 1: Check the side lengths",
+        "Step 2: All three sides are equal",
+        "Step 3: Identify the triangle"
       ],
       "ans": "Equilateral triangle",
-      "why": "All sides and angles are equal"
+      "why": "An equilateral triangle has three equal sides and three equal angles of 60°."
     },
+
     {
-      "q": "What is special about right-angled triangles?",
-      "hint": "90° angle",
+      "q": "A triangle has two equal sides. What type of triangle is it?",
+      "hint": "Classify it by its sides.",
       "steps": [
-        "Step 1: Identify angle",
-        "Step 2: Check for 90°",
-        "Step 3: Define type"
+        "Step 1: Look at the number of equal sides",
+        "Step 2: Two sides are equal",
+        "Step 3: Identify the triangle"
       ],
-      "ans": "One angle is 90°",
-      "why": "It forms perpendicular sides"
+      "ans": "Isosceles triangle",
+      "why": "An isosceles triangle has exactly two equal sides."
+    },
+
+    {
+      "q": "Can a triangle have angles 70°, 60°, and 50°?",
+      "hint": "Add the three angles.",
+      "steps": [
+        "Step 1: Add 70° + 60° + 50°",
+        "Step 2: The sum is 180°",
+        "Step 3: Therefore the angles can form a triangle"
+      ],
+      "ans": "Yes",
+      "why": "The three angles add up to exactly 180°."
     }
   ]
 );
+
 
 add(
   "math",
   "geometry",
   "Quadrilaterals",
 
-  `<h2>⬛ Quadrilaterals</h2>
-<p>A quadrilateral is any polygon with four sides, four angles, and four vertices.</p>
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li>All quadrilaterals have 4 sides and 4 interior angles</li>
-<li>The sum of interior angles of any quadrilateral = 360°</li>
-<li>To find a missing angle, subtract known angles from 360°</li>
-<li><b>Formula:</b> Missing angle = 360° − (sum of known angles)</li>
-</ul>
-<h3> KEY IDEA</h3>
+  `<h2>Quadrilaterals</h2>
+
+<p>
+A <b>quadrilateral</b> is a polygon with four sides, four vertices,
+and four interior angles.
+</p>
+
+<h3>1. ANGLE SUM</h3>
+
+<p>
+The four interior angles of every quadrilateral add up to <b>360°</b>.
+</p>
+
 <pre>
-Total interior angle sum of quadrilateral = 360°
+Angle 1 + Angle 2 + Angle 3 + Angle 4 = 360°
 </pre>
-<h3> TYPES OF QUADRILATERALS</h3>
+
+<p>
+Therefore, when three angles are known:
+</p>
+
+<pre>
+Missing angle = 360° − sum of known angles
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+A quadrilateral has angles 80°, 90°, 110°, and x.
+</p>
+
+<pre>
+80° + 90° + 110° + x = 360°
+
+280° + x = 360°
+
+x = 360° − 280°
+
+x = 80°
+</pre>
+
+<p><b>Answer: x = 80°</b></p>
+
+<h3>2. IMPORTANT TYPES</h3>
+
 <ul>
-<li>⬜ Square → all sides equal, all angles 90°</li>
-<li>▭ Rectangle → opposite sides equal, all angles 90°</li>
-<li>◇ Rhombus → all sides equal, opposite angles equal</li>
-<li>▱ Parallelogram → opposite sides parallel and equal</li>
-<li>⟋ Trapezium → one pair of parallel sides</li>
+<li>
+<b>Square:</b> four equal sides and four right angles.
+</li>
+
+<li>
+<b>Rectangle:</b> opposite sides are equal and parallel,
+and all four angles are 90°.
+</li>
+
+<li>
+<b>Rhombus:</b> all four sides are equal and opposite angles are equal.
+</li>
+
+<li>
+<b>Parallelogram:</b> both pairs of opposite sides are parallel
+and equal.
+</li>
+
+<li>
+<b>Trapezium:</b> has one pair of parallel sides.
+</li>
 </ul>
-<h3> WORKED EXAMPLES</h3>
+
+<h3>3. SQUARE AND RECTANGLE</h3>
+
+<p>
+A square is also a rectangle because it has four right angles
+and opposite sides are equal.
+</p>
+
+<p>
+The additional property of a square is that <b>all four sides are equal</b>.
+</p>
+
+<h3>4. PARALLELOGRAM ANGLES</h3>
+
+<p>
+In a parallelogram, opposite angles are equal and adjacent angles
+add up to 180°.
+</p>
+
+<pre>
+Opposite angles → equal
+
+Adjacent angles → 180°
+</pre>
+
+<h3>Common Mistakes</h3>
+
 <ul>
-<li>
-<b>Example 1:</b> Sum of angles in quadrilateral<br>
-Step 1: Use rule → 360°<br>
-<b>Answer: 360°</b>
-</li>
-<li>
-<b>Example 2:</b> 90° + 80° + 100° + x = 360°<br>
-Step 1: Add known angles → 270°<br>
-Step 2: 360 − 270 = 90°<br>
-<b>Answer: x = 90°</b>
-</li>
-<li>
-<b>Example 3:</b> Shape with 4 equal sides and 4 right angles<br>
-Step 1: Identify properties<br>
-<b>Answer: Square</b>
-</li>
-</ul>
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li> Building floor plans → rooms and layouts</li>
-<li> Architecture → structural design shapes</li>
-<li> Screen design → rectangular displays</li>
-<li> Land surveying → plotting land boundaries</li>
-<li> Graphic design → layout and framing</li>
+<li>Using 180° instead of 360° for a quadrilateral.</li>
+<li>Assuming every quadrilateral is a square or rectangle.</li>
+<li>Thinking a rectangle has four equal sides. That property belongs to a square.</li>
+<li>Confusing equal sides with parallel sides.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Find missing angle: 100° + 70° + 80° + x = 360°",
-      "hint": "Use 360° rule",
+      "q": "A quadrilateral has angles 75°, 85°, 100°, and x. Find x.",
+      "hint": "The interior angles of a quadrilateral add to 360°.",
       "steps": [
-        "Step 1: Add known angles → 250°",
-        "Step 2: 360 − 250",
-        "Step 3: x = 110°"
+        "Step 1: Add the known angles: 75° + 85° + 100° = 260°",
+        "Step 2: Subtract from 360°: 360° − 260°",
+        "Step 3: x = 100°"
       ],
-      "ans": "110°",
-      "why": "Interior angles of a quadrilateral always sum to 360°"
+      "ans": "100°",
+      "why": "The four interior angles of a quadrilateral always add up to 360°."
     },
+
     {
-      "q": "What is the sum of interior angles of a quadrilateral?",
-      "hint": "constant rule",
+      "q": "What is the sum of the interior angles of a quadrilateral?",
+      "hint": "A quadrilateral has four sides.",
       "steps": [
-        "Step 1: Identify shape",
-        "Step 2: Apply formula",
-        "Step 3: State result"
+        "Step 1: Identify the polygon",
+        "Step 2: Use the quadrilateral angle-sum rule",
+        "Step 3: State the total"
       ],
       "ans": "360°",
-      "why": "All four interior angles always add up to 360°"
+      "why": "Every quadrilateral has an interior angle sum of 360°."
     },
+
     {
-      "q": "Which quadrilateral has all sides equal?",
-      "hint": "rhombus or square",
+      "q": "A quadrilateral has four equal sides and four right angles. What is it?",
+      "hint": "Check both its side and angle properties.",
       "steps": [
-        "Step 1: Check side lengths",
-        "Step 2: Compare properties",
-        "Step 3: Identify shape"
+        "Step 1: Four equal sides",
+        "Step 2: Four right angles",
+        "Step 3: Identify the quadrilateral"
       ],
-      "ans": "Square or Rhombus",
-      "why": "Both have equal side lengths"
+      "ans": "Square",
+      "why": "A square has four equal sides and four angles of 90°."
     },
+
     {
-      "q": "What makes a rectangle different from a square?",
-      "hint": "side lengths",
+      "q": "A quadrilateral has four right angles and opposite sides equal, but its adjacent sides are not equal. What is it?",
+      "hint": "It has four 90° angles but not four equal sides.",
       "steps": [
-        "Step 1: Compare sides",
-        "Step 2: Compare angles",
-        "Step 3: Identify difference"
+        "Step 1: Four right angles indicate a rectangle or square",
+        "Step 2: The sides are not all equal",
+        "Step 3: Therefore it is a rectangle"
       ],
-      "ans": "Rectangle has equal opposite sides, square has all equal sides",
-      "why": "Square is a special type of rectangle"
+      "ans": "Rectangle",
+      "why": "A rectangle has four right angles and equal opposite sides, while a square has four equal sides."
+    },
+
+    {
+      "q": "In a parallelogram, one angle is 65°. What is the adjacent angle?",
+      "hint": "Adjacent angles in a parallelogram add to 180°.",
+      "steps": [
+        "Step 1: Adjacent angles add to 180°",
+        "Step 2: Calculate 180° − 65°",
+        "Step 3: The adjacent angle is 115°"
+      ],
+      "ans": "115°",
+      "why": "Adjacent interior angles of a parallelogram are supplementary."
     }
   ]
 );
 
+
 add(
   "math",
   "geometry",
-  "Circles",
+  "Circle Properties",
 
-  `<h2>⭕ Circles</h2>
-<p>A circle is a closed shape where all points are equally distant from a fixed point called the center.</p>
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li><b>Center:</b> Fixed middle point of a circle</li>
-<li><b>Radius:</b> Distance from center to edge of circle</li>
-<li><b>Diameter:</b> Distance across the circle passing through the center</li>
-<li><b>Key rule:</b> Diameter = 2 × Radius</li>
-<li><b>Circumference:</b> Distance around the circle</li>
-</ul>
-<h3> KEY IDEA</h3>
+  `<h2>Circle Properties</h2>
+
+<p>
+A <b>circle</b> is a set of points that are all the same distance
+from one fixed point called the <b>centre</b>.
+</p>
+
+<h3>1. CENTRE</h3>
+
+<p>
+The <b>centre</b> is the fixed point at the middle of the circle.
+</p>
+
+<h3>2. RADIUS</h3>
+
+<p>
+A <b>radius</b> is the straight-line distance from the centre
+to any point on the circumference.
+</p>
+
+<p>
+Every radius of the same circle has the same length.
+</p>
+
+<h3>3. DIAMETER</h3>
+
+<p>
+A <b>diameter</b> is a straight line passing through the centre
+with both endpoints on the circumference.
+</p>
+
+<p>
+The diameter is made up of two radii.
+</p>
+
 <pre>
-Radius = half of diameter  
-Diameter = twice the radius
+Diameter = 2 × Radius
+
+Radius = Diameter ÷ 2
 </pre>
-<h3> WORKED EXAMPLES</h3>
+
+<h3>Worked Example 1</h3>
+
+<p>
+A circle has a radius of 6 cm. Find its diameter.
+</p>
+
+<pre>
+Diameter = 2 × radius
+
+= 2 × 6
+
+= 12 cm
+</pre>
+
+<p><b>Answer: 12 cm</b></p>
+
+<h3>Worked Example 2</h3>
+
+<p>
+A circle has a diameter of 18 cm. Find its radius.
+</p>
+
+<pre>
+Radius = Diameter ÷ 2
+
+= 18 ÷ 2
+
+= 9 cm
+</pre>
+
+<p><b>Answer: 9 cm</b></p>
+
+<h3>4. CIRCUMFERENCE</h3>
+
+<p>
+The <b>circumference</b> is the total distance around the circle.
+It is the circle's perimeter.
+</p>
+
+<p>
+The circumference can be calculated using either radius or diameter:
+</p>
+
+<pre>
+C = 2πr
+
+or
+
+C = πd
+</pre>
+
+<p>
+where <b>r</b> is the radius and <b>d</b> is the diameter.
+</p>
+
+<h3>IMPORTANT DISTINCTION</h3>
+
 <ul>
-<li>
-<b>Example 1:</b> Diameter = 10 cm<br>
-Step 1: Radius = 10 ÷ 2<br>
-Step 2: = 5 cm<br>
-<b>Answer: 5 cm</b>
-</li>
-<li>
-<b>Example 2:</b> Radius = 7 cm<br>
-Step 1: Diameter = 2 × 7<br>
-Step 2: = 14 cm<br>
-<b>Answer: 14 cm</b>
-</li>
-<li>
-<b>Example 3:</b> What is circumference?<br>
-Step 1: Identify boundary of circle<br>
-Step 2: Understand it is the outer distance<br>
-<b>Answer: Distance around the circle</b>
-</li>
+<li><b>Radius:</b> centre to circumference</li>
+<li><b>Diameter:</b> across the circle through the centre</li>
+<li><b>Circumference:</b> distance around the circle</li>
 </ul>
-<h3> REAL WORLD APPLICATION</h3>
+
+<h3>Common Mistakes</h3>
+
 <ul>
-<li> Bicycle wheels → measuring tire size</li>
-<li> Clocks → circular motion of hands</li>
-<li> Machines → gears and rotating parts</li>
-<li> Stadiums → circular tracks</li>
-<li> Food → pizza and circular cutting designs</li>
+<li>Confusing radius with diameter.</li>
+<li>Forgetting that the diameter is twice the radius.</li>
+<li>Using the radius where the diameter is required.</li>
+<li>Confusing circumference with area.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Diameter 14 cm, find radius",
-      "hint": "Divide by 2",
+      "q": "A circle has a diameter of 14 cm. Find its radius.",
+      "hint": "The radius is half the diameter.",
       "steps": [
-        "Step 1: Identify formula radius = diameter ÷ 2",
-        "Step 2: 14 ÷ 2",
-        "Step 3: = 7 cm"
+        "Step 1: Use radius = diameter ÷ 2",
+        "Step 2: 14 ÷ 2 = 7",
+        "Step 3: The radius is 7 cm"
       ],
       "ans": "7 cm",
-      "why": "Radius is always half the diameter"
+      "why": "A diameter contains two radii, so the radius is half the diameter."
     },
+
     {
-      "q": "Radius 9 cm, find diameter",
-      "hint": "Multiply by 2",
+      "q": "A circle has a radius of 9 cm. Find its diameter.",
+      "hint": "Multiply the radius by 2.",
       "steps": [
-        "Step 1: Use formula diameter = 2 × radius",
-        "Step 2: 2 × 9",
-        "Step 3: = 18 cm"
+        "Step 1: Use diameter = 2 × radius",
+        "Step 2: 2 × 9 = 18",
+        "Step 3: The diameter is 18 cm"
       ],
       "ans": "18 cm",
-      "why": "Diameter is twice the radius"
+      "why": "The diameter is twice the radius."
     },
+
     {
-      "q": "What is a circle?",
-      "hint": "distance from center",
+      "q": "Which part of a circle is the distance from the centre to the circumference?",
+      "hint": "It is half of the diameter.",
       "steps": [
-        "Step 1: Identify center point",
-        "Step 2: All points equal distance",
-        "Step 3: Define shape"
+        "Step 1: Identify the distance from centre to edge",
+        "Step 2: This distance is half the diameter",
+        "Step 3: Name it"
       ],
-      "ans": "A shape where all points are equidistant from the center",
-      "why": "This equal distance defines a perfect circular shape"
+      "ans": "Radius",
+      "why": "A radius joins the centre to a point on the circumference."
     },
+
     {
-      "q": "What is circumference?",
-      "hint": "outer edge",
+      "q": "A straight line joins two points on a circle and passes through the centre. What is this line called?",
+      "hint": "It is the longest chord of a circle.",
       "steps": [
-        "Step 1: Look at boundary",
-        "Step 2: Measure full distance around circle",
-        "Step 3: Define term"
+        "Step 1: The endpoints lie on the circumference",
+        "Step 2: The line passes through the centre",
+        "Step 3: Identify the line"
       ],
-      "ans": "Distance around a circle",
-      "why": "It measures the perimeter of a circle"
+      "ans": "Diameter",
+      "why": "A diameter is a chord that passes through the centre of the circle."
+    },
+
+    {
+      "q": "Which formula gives the circumference of a circle using its radius?",
+      "hint": "Use r for radius.",
+      "steps": [
+        "Step 1: Identify that circumference means distance around",
+        "Step 2: Use the radius form of the formula",
+        "Step 3: State the formula"
+      ],
+      "ans": "C = 2πr",
+      "why": "The circumference of a circle is 2π times its radius."
     }
   ]
 );
 
+
 add(
   "math",
   "geometry",
-  "Area and Perimeter",
+  "Perimeter",
 
-  `<h2> Area & Perimeter</h2>
-<p>These are basic measurements used to describe the size and boundary of shapes.</p>
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li><b>Perimeter:</b> Total distance around a shape (sum of all sides)</li>
-<li><b>Area:</b> Total space inside a shape</li>
-<li><b>Rectangle:</b> Area = length × width</li>
-<li><b>Square:</b> Perimeter = 4 × side</li>
-<li><b>Triangle:</b> Area = ½ × base × height</li>
-</ul>
-<h3> KEY IDEA</h3>
+  `<h2>Perimeter</h2>
+
+<p>
+The <b>perimeter</b> of a shape is the total distance around its outside boundary.
+</p>
+
+<p>
+To find the perimeter of a polygon, add the lengths of all its sides.
+</p>
+
 <pre>
-Perimeter → boundary length (outside)
-Area → surface coverage (inside)
+Perimeter = sum of all outside side lengths
 </pre>
-<h3> WORKED EXAMPLES</h3>
-<ul>
-<li>
-<b>Example 1:</b> Rectangle 5 × 3<br>
-Step 1: Multiply length and width → 5 × 3<br>
-Step 2: = 15<br>
-<b>Answer: 15 square units</b>
-</li>
-<li>
-<b>Example 2:</b> Square side 4<br>
-Step 1: Area = 4 × 4<br>
-Step 2: = 16<br>
-<b>Answer: 16 square units</b>
-</li>
-<li>
-<b>Example 3:</b> Triangle base 6 height 4<br>
-Step 1: Apply formula → ½ × 6 × 4<br>
-Step 2: = 12<br>
-<b>Answer: 12 square units</b>
-</li>
-</ul>
-<h3> VISUAL IDEA</h3>
+
+<h3>1. RECTANGLE</h3>
+
+<p>
+A rectangle has two lengths and two widths.
+Therefore:
+</p>
+
 <pre>
-Perimeter: outline of shape
-Area: filled region inside shape
+P = l + w + l + w
+
+P = 2(l + w)
 </pre>
-<h3> REAL WORLD APPLICATION</h3>
+
+<h3>Worked Example</h3>
+
+<p>
+A rectangle has length 8 cm and width 3 cm.
+</p>
+
+<pre>
+P = 2(l + w)
+
+P = 2(8 + 3)
+
+P = 2(11)
+
+P = 22 cm
+</pre>
+
+<p><b>Answer: 22 cm</b></p>
+
+<h3>2. SQUARE</h3>
+
+<p>
+A square has four equal sides.
+Therefore:
+</p>
+
+<pre>
+P = 4s
+</pre>
+
+<p>
+where <b>s</b> is the side length.
+</p>
+
+<h3>Worked Example</h3>
+
+<p>
+A square has a side length of 5 cm.
+</p>
+
+<pre>
+P = 4 × 5
+
+P = 20 cm
+</pre>
+
+<p><b>Answer: 20 cm</b></p>
+
+<h3>3. TRIANGLE</h3>
+
+<p>
+The perimeter of a triangle is the sum of its three side lengths.
+</p>
+
+<pre>
+P = a + b + c
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+A triangle has sides 5 cm, 7 cm, and 9 cm.
+</p>
+
+<pre>
+P = 5 + 7 + 9
+
+P = 21 cm
+</pre>
+
+<p><b>Answer: 21 cm</b></p>
+
+<h3>UNITS</h3>
+
+<p>
+Perimeter measures <b>length</b>, so its units are ordinary length units:
+cm, m, km, and so on.
+</p>
+
+<p>
+Do not use square units for perimeter.
+</p>
+
+<pre>
+Perimeter → cm, m, km
+
+Area → cm², m², km²
+</pre>
+
+<h3>Common Mistakes</h3>
+
 <ul>
-<li> Construction → measuring floor and wall space</li>
-<li> Agriculture → calculating land area for farming</li>
-<li> Engineering → material estimation</li>
-<li> Design → layout planning</li>
-<li> School planning → classroom space allocation</li>
+<li>Multiplying length × width when asked for perimeter.</li>
+<li>Forgetting one or more sides.</li>
+<li>Using square units such as cm² for perimeter.</li>
+<li>Confusing perimeter with area.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Area of rectangle 8 × 2",
-      "hint": "Multiply length and width",
+      "q": "Find the perimeter of a rectangle with length 10 cm and width 4 cm.",
+      "hint": "Use P = 2(l + w).",
       "steps": [
-        "Step 1: Multiply 8 × 2",
-        "Step 2: Compute result = 16"
+        "Step 1: Add length and width: 10 + 4 = 14",
+        "Step 2: Multiply by 2: 2 × 14",
+        "Step 3: P = 28 cm"
       ],
-      "ans": "16",
-      "why": "Area of rectangle is length × width"
+      "ans": "28 cm",
+      "why": "A rectangle has two lengths and two widths."
     },
+
     {
-      "q": "What is perimeter of a square with side 5?",
-      "hint": "4 × side",
+      "q": "Find the perimeter of a square with side length 7 cm.",
+      "hint": "A square has four equal sides.",
       "steps": [
-        "Step 1: Use formula 4 × side",
-        "Step 2: 4 × 5 = 20"
+        "Step 1: Use P = 4s",
+        "Step 2: Substitute s = 7",
+        "Step 3: 4 × 7 = 28 cm"
       ],
-      "ans": "20",
-      "why": "Perimeter adds all four equal sides"
+      "ans": "28 cm",
+      "why": "The perimeter of a square is four times its side length."
     },
+
     {
-      "q": "Find area of triangle with base 10 and height 6",
-      "hint": "½ × b × h",
+      "q": "A triangle has sides 6 cm, 8 cm, and 10 cm. Find its perimeter.",
+      "hint": "Add all three sides.",
       "steps": [
-        "Step 1: Multiply 10 × 6 = 60",
-        "Step 2: Divide by 2",
-        "Step 3: = 30"
+        "Step 1: Add 6 + 8 + 10",
+        "Step 2: The total is 24",
+        "Step 3: Include the length unit"
       ],
-      "ans": "30",
-      "why": "Triangle area is half of rectangle"
+      "ans": "24 cm",
+      "why": "The perimeter of a triangle is the sum of its three side lengths."
     },
+
     {
-      "q": "What is the difference between area and perimeter?",
-      "hint": "inside vs outside",
+      "q": "Which unit is appropriate for the perimeter of a rectangle?",
+      "hint": "Perimeter measures length, not surface.",
       "steps": [
-        "Step 1: Define area",
-        "Step 2: Define perimeter",
-        "Step 3: Compare meanings"
+        "Step 1: Identify what perimeter measures",
+        "Step 2: It measures length",
+        "Step 3: Choose an ordinary length unit"
       ],
-      "ans": "Area is inside space, perimeter is outside boundary",
-      "why": "They measure different properties of shapes"
+      "ans": "cm",
+      "why": "Perimeter is a length, so it uses units such as cm or m, not cm² or m²."
+    },
+
+    {
+      "q": "A rectangle has perimeter 30 cm and length 10 cm. Find its width.",
+      "hint": "Use P = 2(l + w).",
+      "steps": [
+        "Step 1: Substitute into 30 = 2(10 + w)",
+        "Step 2: Divide both sides by 2: 15 = 10 + w",
+        "Step 3: Subtract 10: w = 5 cm"
+      ],
+      "ans": "5 cm",
+      "why": "The perimeter contains two lengths and two widths."
     }
   ]
 );
 
+
+add(
+  "math",
+  "geometry",
+  "Area",
+
+  `<h2>Area</h2>
+
+<p>
+The <b>area</b> of a shape is the amount of two-dimensional space
+contained inside its boundary.
+</p>
+
+<p>
+Area is measured using <b>square units</b>, such as cm², m², or km².
+</p>
+
+<h3>1. AREA OF A RECTANGLE</h3>
+
+<pre>
+A = length × width
+
+A = lw
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+A rectangle has length 8 cm and width 5 cm.
+</p>
+
+<pre>
+A = l × w
+
+A = 8 × 5
+
+A = 40 cm²
+</pre>
+
+<p><b>Answer: 40 cm²</b></p>
+
+<h3>2. AREA OF A SQUARE</h3>
+
+<p>
+A square has equal length and width, so:
+</p>
+
+<pre>
+A = side × side
+
+A = s²
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+A square has side length 6 cm.
+</p>
+
+<pre>
+A = 6 × 6
+
+A = 36 cm²
+</pre>
+
+<p><b>Answer: 36 cm²</b></p>
+
+<h3>3. AREA OF A TRIANGLE</h3>
+
+<p>
+The area of a triangle is half the area of a rectangle
+with the same base and perpendicular height.
+</p>
+
+<pre>
+A = ½ × base × height
+
+A = ½bh
+</pre>
+
+<p>
+The height must be the <b>perpendicular distance</b> from the base
+to the opposite vertex.
+</p>
+
+<h3>Worked Example</h3>
+
+<p>
+A triangle has base 10 cm and perpendicular height 6 cm.
+</p>
+
+<pre>
+A = ½ × 10 × 6
+
+A = ½ × 60
+
+A = 30 cm²
+</pre>
+
+<p><b>Answer: 30 cm²</b></p>
+
+<h3>4. AREA AND PERIMETER ARE DIFFERENT</h3>
+
+<ul>
+<li><b>Area:</b> measures the space inside a shape.</li>
+<li><b>Perimeter:</b> measures the distance around a shape.</li>
+</ul>
+
+<pre>
+Area → square units
+
+Perimeter → ordinary length units
+</pre>
+
+<h3>Common Mistakes</h3>
+
+<ul>
+<li>Using perimeter instead of area.</li>
+<li>Forgetting the ½ in the triangle formula.</li>
+<li>Using the wrong height for a triangle.</li>
+<li>Writing cm instead of cm² for area.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Find the area of a rectangle with length 9 cm and width 4 cm.",
+      "hint": "Use A = length × width.",
+      "steps": [
+        "Step 1: Write A = l × w",
+        "Step 2: Substitute 9 and 4",
+        "Step 3: 9 × 4 = 36 cm²"
+      ],
+      "ans": "36 cm²",
+      "why": "The area of a rectangle is its length multiplied by its width."
+    },
+
+    {
+      "q": "Find the area of a square with side length 8 cm.",
+      "hint": "Multiply the side by itself.",
+      "steps": [
+        "Step 1: Use A = s²",
+        "Step 2: Substitute s = 8",
+        "Step 3: 8 × 8 = 64 cm²"
+      ],
+      "ans": "64 cm²",
+      "why": "A square has equal length and width, so its area is side × side."
+    },
+
+    {
+      "q": "Find the area of a triangle with base 12 cm and perpendicular height 5 cm.",
+      "hint": "Use A = ½bh.",
+      "steps": [
+        "Step 1: Multiply base by height: 12 × 5 = 60",
+        "Step 2: Take half: 60 ÷ 2 = 30",
+        "Step 3: Include square units"
+      ],
+      "ans": "30 cm²",
+      "why": "The area of a triangle is half the product of its base and perpendicular height."
+    },
+
+    {
+      "q": "Which measurement uses square units?",
+      "hint": "Think about the space inside a shape.",
+      "steps": [
+        "Step 1: Identify what is being measured",
+        "Step 2: Space inside a shape is area",
+        "Step 3: Area uses square units"
+      ],
+      "ans": "Area",
+      "why": "Area measures two-dimensional space and is therefore expressed in square units."
+    },
+
+    {
+      "q": "A rectangle has an area of 48 cm² and a width of 6 cm. Find its length.",
+      "hint": "Use A = l × w and rearrange.",
+      "steps": [
+        "Step 1: Write 48 = l × 6",
+        "Step 2: Divide both sides by 6",
+        "Step 3: l = 8 cm"
+      ],
+      "ans": "8 cm",
+      "why": "Length can be found by dividing the area by the width."
+    }
+  ]
+);
 add(
   "math",
   "linear_programming",
   "Introduction to Linear Programming",
 
-  `
-<h2> Linear Programming</h2>
+  `<h2>Introduction to Linear Programming</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Linear programming is a mathematical method used to find the best possible outcome (maximum or minimum) of a linear function subject to given constraints.
+<b>Linear programming</b> is a method of finding the maximum or minimum
+value of a quantity when there are restrictions on the possible values
+of the variables.
 </p>
+
+<p>
+A linear programming problem has three main parts:
+</p>
+
+<ul>
+<li><b>Variables</b> — the unknown quantities we are trying to determine.</li>
+<li><b>Objective function</b> — the quantity we want to maximize or minimize.</li>
+<li><b>Constraints</b> — inequalities that restrict the possible values of the variables.</li>
+</ul>
+
+<h3>1. VARIABLES</h3>
+
+<p>
+Usually the unknown quantities are represented by <b>x</b> and <b>y</b>.
+</p>
+
+<p>
+For example, if x represents one quantity and y represents another,
+we might have:
+</p>
+
 <pre>
-Objective function: Max/Min Z = ax + by  
-Subject to constraints (inequalities)
+x ≥ 0
+y ≥ 0
 </pre>
-<h3> KEY IDEA</h3>
-<ul>
-<li>Objective function → what you want to optimize (maximize or minimize)</li>
-<li>Constraints → limitations or restrictions</li>
-<li>Feasible region → all possible valid solutions that satisfy constraints</li>
-<li>Corner points → points where optimal solutions occur</li>
-</ul>
-<h3> WORKED EXAMPLE (STEP BY STEP)</h3>
-<p><b>Question:</b> Maximize Z = 3x + 2y subject to x + y ≤ 4, x ≥ 0, y ≥ 0</p>
-<p><b>Step 1: Identify constraints</b></p>
-<p>x + y ≤ 4, x ≥ 0, y ≥ 0</p>
-<p><b>Step 2: Draw boundary line</b></p>
-<p>x + y = 4 → intercepts (4,0) and (0,4)</p>
-<p><b>Step 3: Identify feasible region</b></p>
-<p>Area below the line in the first quadrant</p>
-<p><b>Step 4: Find corner points</b></p>
-<p>(0,0), (4,0), (0,4)</p>
-<p><b>Step 5: Evaluate objective function</b></p>
-<ul>
-<li>Z(0,0) = 0</li>
-<li>Z(4,0) = 12</li>
-<li>Z(0,4) = 8</li>
-</ul>
-<p><b>Step 6: Optimal solution</b></p>
-<p>Maximum Z = 12 at (4,0)</p>
-<h3> DIAGRAM</h3>
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
-  
-  <defs>
-    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
-    </pattern>
-    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-  </defs>
 
-  <rect width="280" height="200" fill="url(#grid-lp)"/>
-  <polygon points="40,160 40,60 180,160" fill="#2ecc71" opacity="0.3" stroke="#2ecc71" stroke-width="1.5"/>
-  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-  <line x1="40" y1="60" x2="180" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-  <line x1="180" y1="157" x2="180" y2="163" stroke="#ccc" stroke-width="1"/>
-  <line x1="37" y1="60" x2="43" y2="60" stroke="#ccc" stroke-width="1"/>
-  <circle cx="40" cy="60" r="4.5" fill="#f1c40f"/>
-  <circle cx="180" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
-  <text x="25" y="64" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
-  <text x="180" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
-  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
-  <text x="85" y="125" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="140" y="85" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 85)">x + y = 4</text>
-  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
-  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
-</svg>
-</div>
-<h3> REAL WORLD APPLICATION</h3>
+<p>
+The condition x ≥ 0 means x cannot be negative.
+The same applies to y.
+</p>
+
+<h3>2. OBJECTIVE FUNCTION</h3>
+
+<p>
+The <b>objective function</b> tells us what we want to optimize.
+It is usually written as:
+</p>
+
+<pre>
+Z = ax + by
+</pre>
+
+<p>
+The problem may ask us to:
+</p>
+
+<pre>
+Maximize Z
+
+or
+
+Minimize Z
+</pre>
+
+<p>
+For example:
+</p>
+
+<pre>
+Maximize Z = 4x + 3y
+</pre>
+
+<p>
+means that we want the largest possible value of Z while still
+obeying all the constraints.
+</p>
+
+<h3>3. CONSTRAINTS</h3>
+
+<p>
+Constraints are inequalities that restrict x and y.
+For example:
+</p>
+
+<pre>
+x + y ≤ 10
+x ≥ 0
+y ≥ 0
+</pre>
+
+<p>
+The first constraint says that x and y together cannot exceed 10.
+The other two prevent negative values.
+</p>
+
+<h3>4. FEASIBLE SOLUTIONS</h3>
+
+<p>
+A point is a <b>feasible solution</b> if it satisfies <b>every constraint</b>.
+</p>
+
+<p>
+A point that satisfies one constraint but violates another is
+<b>not feasible</b>.
+</p>
+
+<h3>Complete Structure</h3>
+
+<pre>
+Variables
+    ↓
+Constraints
+    ↓
+Feasible region
+    ↓
+Objective function
+    ↓
+Maximum or minimum value
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+Maximize:
+</p>
+
+<pre>
+Z = 3x + 2y
+</pre>
+
+<p>
+subject to:
+</p>
+
+<pre>
+x + y ≤ 4
+x ≥ 0
+y ≥ 0
+</pre>
+
+<p>
+Here:
+</p>
+
 <ul>
-<li>Business profit maximization</li>
-<li>Resource allocation in industries</li>
-<li>Production and manufacturing planning</li>
-<li>Transport and logistics optimization</li>
+<li>Variables: x and y</li>
+<li>Objective function: Z = 3x + 2y</li>
+<li>Objective: maximize Z</li>
+<li>Constraints: x + y ≤ 4, x ≥ 0, y ≥ 0</li>
+</ul>
+
+<p>
+The constraints determine which values of x and y are allowed.
+The objective function is then used to find the best feasible solution.
+</p>
+
+<h3>Common Mistakes</h3>
+
+<ul>
+<li>Confusing the objective function with a constraint.</li>
+<li>Forgetting the non-negative constraints.</li>
+<li>Maximizing the wrong expression.</li>
+<li>Choosing a point that does not satisfy every constraint.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Maximize Z = 3x + 2y subject to x + y ≤ 10, x ≥ 0, y ≥ 0",
-      "hint": "corner point method",
+      "q": "In the linear programming problem Maximize Z = 5x + 2y, what is the objective function?",
+      "hint": "The objective function is the expression being maximized or minimized.",
       "steps": [
-        "Step 1: Identify constraints x + y ≤ 10, x ≥ 0, y ≥ 0",
-        "Step 2: Find corner points of feasible region",
-        "Step 3: Corner points are (0,0), (10,0), (0,10)",
-        "Step 4: Evaluate Z at each point",
-        "Step 5: Compute Z(0,0), Z(10,0), Z(0,10)"
+        "Step 1: Identify what is being maximized",
+        "Step 2: The expression is 5x + 2y",
+        "Step 3: Write it as Z = 5x + 2y"
       ],
-      "ans": "Zmax = 30 at (10,0)",
-      "why": "Linear programming solutions occur at vertices of feasible region"
+      "ans": "Z = 5x + 2y",
+      "why": "The objective function is the quantity that the problem asks us to maximize or minimize."
     },
+
     {
-      "q": "Maximize Z = 5x + 4y subject to x + 2y ≤ 8, x ≥ 0, y ≥ 0",
-      "hint": "substitute corner points",
+      "q": "What is the purpose of a constraint in linear programming?",
+      "hint": "Think about restrictions.",
       "steps": [
-        "Step 1: Find intercepts of x + 2y = 8",
-        "Step 2: Set x = 0 → y = 4",
-        "Step 3: Set y = 0 → x = 8",
-        "Step 4: Corner points are (0,0), (8,0), (0,4)",
-        "Step 5: Evaluate Z at each point"
+        "Step 1: Identify what a constraint does",
+        "Step 2: It restricts possible values of the variables",
+        "Step 3: State its purpose"
       ],
-      "ans": "Zmax = 40 at (8,0)",
-      "why": "Maximum occurs at feasible region vertex"
+      "ans": "It restricts the possible values of the variables.",
+      "why": "Constraints define which solutions are allowed."
     },
+
     {
-      "q": "Minimize C = 2x + 3y subject to x + y ≥ 6, x ≥ 0, y ≥ 0",
-      "hint": "corner evaluation",
+      "q": "For Maximize Z = 4x + y subject to x + y ≤ 8, identify the objective function.",
+      "hint": "Look for the expression after Z.",
       "steps": [
-        "Step 1: Convert boundary x + y = 6",
-        "Step 2: Find intercepts (6,0) and (0,6)",
-        "Step 3: Identify feasible corner points",
-        "Step 4: Evaluate C at (6,0) and (0,6)"
+        "Step 1: Locate Z",
+        "Step 2: Read the expression attached to Z",
+        "Step 3: Identify the objective"
       ],
-      "ans": "Cmin = 12 at (6,0)",
-      "why": "Minimum occurs at boundary vertex"
+      "ans": "Z = 4x + y",
+      "why": "Z = 4x + y is the quantity being maximized."
     },
+
     {
-      "q": "Find feasible region corner points for x + y ≤ 5, x ≥ 0, y ≥ 0",
-      "hint": "graph intercepts",
+      "q": "Is the point (3,2) feasible for x + y ≤ 6, x ≥ 0, y ≥ 0?",
+      "hint": "Check every constraint.",
       "steps": [
-        "Step 1: Set x + y = 5",
-        "Step 2: Find x-intercept (5,0)",
-        "Step 3: Find y-intercept (0,5)",
-        "Step 4: Include origin (0,0)",
-        "Step 5: List all vertices"
+        "Step 1: Check x + y ≤ 6: 3 + 2 = 5 ≤ 6",
+        "Step 2: Check x ≥ 0: 3 ≥ 0",
+        "Step 3: Check y ≥ 0: 2 ≥ 0",
+        "Step 4: All constraints are satisfied"
       ],
-      "ans": "(0,0), (5,0), (0,5)",
-      "why": "Feasible region is bounded by axes and constraint line"
+      "ans": "Yes, (3,2) is feasible.",
+      "why": "A feasible point must satisfy every constraint."
     },
+
     {
-      "q": "Evaluate Z = 4x + y at feasible region vertices (0,0), (3,2), (5,0)",
-      "hint": "substitution method",
+      "q": "Is the point (5,3) feasible for x + y ≤ 6, x ≥ 0, y ≥ 0?",
+      "hint": "Check x + y ≤ 6.",
       "steps": [
-        "Step 1: Substitute (0,0) into Z",
-        "Step 2: Substitute (3,2) into Z",
-        "Step 3: Substitute (5,0) into Z",
-        "Step 4: Compare all results"
+        "Step 1: Calculate x + y = 5 + 3 = 8",
+        "Step 2: Compare 8 with 6",
+        "Step 3: 8 ≤ 6 is false",
+        "Step 4: Therefore the point is not feasible"
       ],
-      "ans": "Zmax = 20 at (5,0)",
-      "why": "Optimal solution occurs at vertex with highest value"
+      "ans": "No, (5,3) is not feasible.",
+      "why": "The point violates the constraint x + y ≤ 6."
     }
   ]
 );
+
 
 add(
   "math",
   "linear_programming",
-  "Graphical Method",
+  "Linear Inequality Constraints",
 
-  `
-<h2> Graphical Method</h2>
-<h3> DEEP NOTES</h3>
+  `<h2>Linear Inequality Constraints</h2>
+
 <p>
-The graphical method solves linear programming problems by plotting constraints and finding corner points (vertices) of the feasible region. The optimal value always occurs at one of these corner points.
+A <b>constraint</b> in linear programming is usually written as a
+linear inequality. It tells us which values of the variables are allowed.
 </p>
-<p><b> Key idea:</b> Optimal solutions are found at vertices of the feasible region.</p>
-<h3> WORKED EXAMPLE</h3>
-<p><b>Question:</b> Maximize Z = x + 2y subject to x + y ≤ 6</p>
-<p><b>Step 1:</b> Draw boundary line</p>
-<p>x + y = 6</p>
-<p><b>Step 2:</b> Find intercepts</p>
-<ul>
-<li>If x = 0 → y = 6 → (0,6)</li>
-<li>If y = 0 → x = 6 → (6,0)</li>
-</ul>
-<p><b>Step 3:</b> Identify feasible region</p>
-<p>Region lies in the first quadrant under the line</p>
-<p><b>Step 4:</b> Corner points</p>
-<ul>
-<li>(0,0)</li>
-<li>(6,0)</li>
-<li>(0,6)</li>
-</ul>
-<p><b>Step 5:</b> Evaluate Z = x + 2y</p>
-<ul>
-<li>(0,0) → Z = 0</li>
-<li>(6,0) → Z = 6</li>
-<li>(0,6) → Z = 12</li>
-</ul>
-<p><b>Step 6:</b> Conclusion</p>
-<p>Maximum Z = 12 at (0,6)</p>
-<h3> DIAGRAM</h3>
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
-  
-  <defs>
-    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
-    </pattern>
-    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-  </defs>
 
-  <rect width="280" height="200" fill="url(#grid-lp)"/>
-  <polygon points="40,160 40,50 190,160" fill="#3498db" opacity="0.3" stroke="#3498db" stroke-width="1.5"/>
-  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-  <line x1="40" y1="50" x2="190" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-  <line x1="190" y1="157" x2="190" y2="163" stroke="#ccc" stroke-width="1"/>
-  <line x1="37" y1="50" x2="43" y2="50" stroke="#ccc" stroke-width="1"/>
-  <circle cx="40" cy="50" r="4.5" fill="#f1c40f"/>
-  <circle cx="190" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
-  <text x="25" y="54" fill="#f1c40f" font-size="9" font-family="monospace">(0,6)</text>
-  <text x="190" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(6,0)</text>
-  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
-  <text x="85" y="125" fill="#3498db" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="140" y="80" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 80)">x + y = 6</text>
-  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
-  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
-</svg>
-</div>
-<h3> REAL WORLD APPLICATIONS</h3>
+<h3>1. THE FOUR INEQUALITY SYMBOLS</h3>
+
 <ul>
-<li>Profit maximization in businesses</li>
-<li>Production planning in factories</li>
-<li>Transport and delivery optimization</li>
-<li>Resource allocation under constraints</li>
+<li><b>&lt;</b> means less than</li>
+<li><b>≤</b> means less than or equal to</li>
+<li><b>&gt;</b> means greater than</li>
+<li><b>≥</b> means greater than or equal to</li>
+</ul>
+
+<p>
+For example:
+</p>
+
+<pre>
+x + y ≤ 5
+</pre>
+
+<p>
+means that the sum of x and y can be 5 or anything smaller.
+</p>
+
+<h3>2. BOUNDARY LINE</h3>
+
+<p>
+To graph an inequality such as:
+</p>
+
+<pre>
+x + y ≤ 5
+</pre>
+
+<p>
+first replace the inequality sign with an equality:
+</p>
+
+<pre>
+x + y = 5
+</pre>
+
+<p>
+This gives the <b>boundary line</b>.
+</p>
+
+<h3>3. FINDING INTERCEPTS</h3>
+
+<p>
+For:
+</p>
+
+<pre>
+x + y = 5
+</pre>
+
+<p>
+Find the x-intercept by setting y = 0:
+</p>
+
+<pre>
+x + 0 = 5
+
+x = 5
+
+x-intercept = (5,0)
+</pre>
+
+<p>
+Find the y-intercept by setting x = 0:
+</p>
+
+<pre>
+0 + y = 5
+
+y = 5
+
+y-intercept = (0,5)
+</pre>
+
+<p>
+The line passes through <b>(5,0)</b> and <b>(0,5)</b>.
+</p>
+
+<h3>4. WHICH SIDE OF THE LINE?</h3>
+
+<p>
+The boundary line alone does not tell us which side satisfies
+the inequality.
+</p>
+
+<p>
+Choose a test point, usually <b>(0,0)</b>, and substitute it into
+the original inequality.
+</p>
+
+<p>
+For:
+</p>
+
+<pre>
+x + y ≤ 5
+</pre>
+
+<p>
+test (0,0):
+</p>
+
+<pre>
+0 + 0 ≤ 5
+
+0 ≤ 5
+
+TRUE
+</pre>
+
+<p>
+Therefore the side containing (0,0) is the required region.
+</p>
+
+<h3>5. SOLID AND BROKEN BOUNDARIES</h3>
+
+<p>
+When the boundary is included, use a <b>solid line</b>.
+This occurs with:
+</p>
+
+<pre>
+≤
+≥
+</pre>
+
+<p>
+When the boundary is not included, use a <b>broken/dashed line</b>.
+This occurs with:
+</p>
+
+<pre>
+<
+>
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+Graphically describe:
+</p>
+
+<pre>
+2x + y ≤ 6
+x ≥ 0
+y ≥ 0
+</pre>
+
+<p>
+First find the boundary:
+</p>
+
+<pre>
+2x + y = 6
+</pre>
+
+<p>
+If y = 0:
+</p>
+
+<pre>
+2x = 6
+x = 3
+
+(3,0)
+</pre>
+
+<p>
+If x = 0:
+</p>
+
+<pre>
+y = 6
+
+(0,6)
+</pre>
+
+<p>
+Test (0,0):
+</p>
+
+<pre>
+2(0) + 0 ≤ 6
+
+0 ≤ 6
+
+TRUE
+</pre>
+
+<p>
+Therefore the required region is the side of the line containing
+the origin, restricted further by x ≥ 0 and y ≥ 0.
+</p>
+
+<h3>Common Mistakes</h3>
+
+<ul>
+<li>Using the inequality itself as the boundary line instead of first using equality.</li>
+<li>Choosing the wrong side of the boundary.</li>
+<li>Forgetting to test the original inequality.</li>
+<li>Using a dashed boundary for ≤ or ≥.</li>
+<li>Forgetting that x ≥ 0 and y ≥ 0 restrict the graph to the first quadrant.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Evaluate Z = 3x + 2y at corner points of x + y ≤ 6, x ≥ 0, y ≥ 0",
-      "hint": "vertex evaluation",
+      "q": "Find the x-intercept of x + y = 8.",
+      "hint": "Set y = 0.",
       "steps": [
-        "Step 1: Convert x + y ≤ 6 into x + y = 6",
-        "Step 2: Find intercepts (6,0) and (0,6)",
-        "Step 3: Include origin (0,0)",
-        "Step 4: Evaluate Z at (0,0), (6,0), (0,6)",
-        "Step 5: Compute Z values"
+        "Step 1: Set y = 0",
+        "Step 2: x + 0 = 8",
+        "Step 3: x = 8",
+        "Step 4: Write the coordinate"
       ],
-      "ans": "Zmax = 18 at (6,0)",
-      "why": "Maximum occurs at a vertex of feasible region"
+      "ans": "(8,0)",
+      "why": "The x-intercept occurs where y = 0."
     },
+
     {
-      "q": "Find boundary line equation for x + y ≤ 5",
-      "hint": "convert inequality",
+      "q": "Find the y-intercept of 2x + y = 10.",
+      "hint": "Set x = 0.",
       "steps": [
-        "Step 1: Replace ≤ with =",
-        "Step 2: Write equation x + y = 5",
-        "Step 3: Find intercepts (5,0) and (0,5)",
-        "Step 4: Plot straight line"
+        "Step 1: Set x = 0",
+        "Step 2: 2(0) + y = 10",
+        "Step 3: y = 10",
+        "Step 4: Write the coordinate"
       ],
-      "ans": "x + y = 5",
-      "why": "Boundary is formed by equality case of inequality"
+      "ans": "(0,10)",
+      "why": "The y-intercept occurs where x = 0."
     },
+
     {
-      "q": "Find feasible region for x ≥ 0 and y ≥ 0 in coordinate plane",
-      "hint": "quadrant identification",
+      "q": "Which boundary equation is used to graph 3x + 2y ≤ 12?",
+      "hint": "Replace ≤ with =.",
       "steps": [
-        "Step 1: Set x ≥ 0 (right half-plane)",
-        "Step 2: Set y ≥ 0 (upper half-plane)",
-        "Step 3: Intersect both regions",
-        "Step 4: Identify common region"
+        "Step 1: Start with 3x + 2y ≤ 12",
+        "Step 2: Replace ≤ with =",
+        "Step 3: Write the boundary equation"
       ],
-      "ans": "First quadrant",
-      "why": "Only points with both coordinates non-negative satisfy conditions"
+      "ans": "3x + 2y = 12",
+      "why": "The boundary is obtained by replacing the inequality with equality."
     },
+
     {
-      "q": "Test whether point (0,0) satisfies x + y ≤ 4, 2x + y ≤ 6",
-      "hint": "substitution check",
+      "q": "Does (0,0) satisfy 2x + y ≤ 7?",
+      "hint": "Substitute x = 0 and y = 0.",
       "steps": [
-        "Step 1: Substitute x = 0, y = 0 into x + y ≤ 4",
-        "Step 2: Verify 0 ≤ 4",
-        "Step 3: Substitute into 2x + y ≤ 6",
-        "Step 4: Verify 0 ≤ 6",
-        "Step 5: Confirm validity"
+        "Step 1: Substitute x = 0 and y = 0",
+        "Step 2: Calculate 2(0) + 0 = 0",
+        "Step 3: Check 0 ≤ 7",
+        "Step 4: The statement is true"
       ],
-      "ans": "Yes, (0,0) satisfies both inequalities",
-      "why": "Point lies inside feasible region"
+      "ans": "Yes",
+      "why": "The origin satisfies the inequality."
     },
+
     {
-      "q": "Evaluate Z = 2x + 3y at (0,0), (4,0), (0,4)",
-      "hint": "corner substitution",
+      "q": "Should the boundary for x + y ≥ 4 be solid or dashed?",
+      "hint": "Does ≥ include equality?",
       "steps": [
-        "Step 1: Compute Z(0,0)",
-        "Step 2: Compute Z(4,0)",
-        "Step 3: Compute Z(0,4)",
-        "Step 4: Compare all values"
+        "Step 1: Identify the inequality sign",
+        "Step 2: ≥ includes equality",
+        "Step 3: Use a solid boundary"
       ],
-      "ans": "Zmax = 12 at (0,4)",
-      "why": "Optimal solution occurs at highest vertex value"
+      "ans": "Solid",
+      "why": "The boundary x + y = 4 is included when the inequality is ≥."
     }
   ]
 );
 
-add(
-  "math",
-  "linear_programming",
-  "Inequality Constraints",
-
-  `
-<h2> Inequality Constraints</h2>
-<h3> DEEP NOTES</h3>
-<p>
-Constraints define the limits of a system using inequalities.
-They restrict the possible values of variables to a valid region.
-</p>
-<p><b> Key idea:</b> Constraints act like rules that limit solutions.</p>
-<h3> WORKED EXAMPLE</h3>
-<p><b>Question:</b> Solve x + y ≤ 5 and x ≥ 0, y ≥ 0</p>
-<p><b>Step 1:</b> Convert inequality to boundary line</p>
-<p>x + y = 5</p>
-<p><b>Step 2:</b> Find intercepts</p>
-<ul>
-<li>If x = 0 → y = 5 → (0,5)</li>
-<li>If y = 0 → x = 5 → (5,0)</li>
-</ul>
-<p><b>Step 3:</b> Draw boundary line through (0,5) and (5,0)</p>
-<p><b>Step 4:</b> Choose region</p>
-<p>Test point (0,0): 0 + 0 ≤ 5 → true</p>
-<p><b>Step 5:</b> Shade region</p>
-<p>Below the line in the first quadrant</p>
-<p><b>Final Answer:</b> Triangular feasible region bounded by axes and x + y = 5</p>
-<h3> DIAGRAM</h3>
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
-  
-  <defs>
-    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
-    </pattern>
-    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-  </defs>
-
-  <rect width="280" height="200" fill="url(#grid-lp)"/>
-  <polygon points="40,160 40,55 195,160" fill="#9b59b6" opacity="0.3" stroke="#9b59b6" stroke-width="1.5"/>
-  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-  <line x1="40" y1="55" x2="195" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-  <line x1="195" y1="157" x2="195" y2="163" stroke="#ccc" stroke-width="1"/>
-  <line x1="37" y1="55" x2="43" y2="55" stroke="#ccc" stroke-width="1"/>
-  <circle cx="40" cy="55" r="4.5" fill="#f1c40f"/>
-  <circle cx="195" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
-  <text x="25" y="59" fill="#f1c40f" font-size="9" font-family="monospace">(0,5)</text>
-  <text x="195" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(5,0)</text>
-  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
-  <text x="85" y="125" fill="#9b59b6" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="140" y="82" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 82)">x + y = 5</text>
-  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
-  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
-</svg>
-</div>
-
-<h3> REAL WORLD APPLICATIONS</h3>
-<ul>
-<li>Production limits in factories</li>
-<li>Budget constraints in planning</li>
-<li>Time and workforce scheduling</li>
-<li>Resource allocation problems</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "Find intercepts and boundary points for x + y ≤ 5",
-      "hint": "set variables to zero",
-      "steps": [
-        "Step 1: Convert inequality to equation x + y = 5",
-        "Step 2: Set x = 0 → y = 5",
-        "Step 3: Set y = 0 → x = 5",
-        "Step 4: Write intercept points"
-      ],
-      "ans": "(5,0) and (0,5)",
-      "why": "Boundary line is defined by its intercepts"
-    },
-    {
-      "q": "Determine all points satisfying x ≥ 0 and y ≥ 0 in coordinate plane",
-      "hint": "sign conditions",
-      "steps": [
-        "Step 1: Solve x ≥ 0 → x ∈ [0, ∞)",
-        "Step 2: Solve y ≥ 0 → y ∈ [0, ∞)",
-        "Step 3: Combine conditions using intersection",
-        "Step 4: Express solution set"
-      ],
-      "ans": "{(x,y) | x ≥ 0, y ≥ 0}",
-      "why": "Intersection of non-negative half-planes defines region"
-    },
-    {
-      "q": "Test whether point (0,0) satisfies x + y ≤ 4 and 2x + y ≤ 6",
-      "hint": "substitution",
-      "steps": [
-        "Step 1: Substitute (0,0) into x + y ≤ 4",
-        "Step 2: Evaluate 0 ≤ 4",
-        "Step 3: Substitute into 2x + y ≤ 6",
-        "Step 4: Evaluate 0 ≤ 6",
-        "Step 5: Confirm both conditions"
-      ],
-      "ans": "Yes, (0,0) satisfies both inequalities",
-      "why": "Point lies in feasible solution set"
-    },
-    {
-      "q": "Draw feasible region for x ≥ 0, y ≥ 0, and 2x + 3y ≤ 12",
-      "hint": "graph all constraints",
-      "steps": [
-        "Step 1: Draw axes (x ≥ 0, y ≥ 0)",
-        "Step 2: Convert 2x + 3y ≤ 12 to boundary 2x + 3y = 12",
-        "Step 3: Find intercepts (6,0) and (0,4)",
-        "Step 4: Draw line through intercepts",
-        "Step 5: Shade region below line in first quadrant"
-      ],
-      "ans": "Triangle with vertices (0,0), (6,0), (0,4)",
-      "why": "Region satisfying all inequalities simultaneously"
-    }
-  ]
-);
 
 add(
   "math",
   "linear_programming",
   "Feasible Region",
 
-  `
-<h2> Feasible Region</h2>
-<h3> DEEP NOTES</h3>
+  `<h2>Feasible Region</h2>
+
 <p>
-The feasible region is the set of all possible solutions that satisfy all given constraints in a linear programming problem.
-Only points inside or on this region are valid solutions.
+The <b>feasible region</b> is the set of all points that satisfy
+<b>all</b> the constraints in a linear programming problem.
 </p>
-<h3> WORKED EXAMPLE</h3>
-<p><b>Question:</b> Find feasible region for x ≥ 0, y ≥ 0, x + y ≤ 4</p>
-<p><b>Step 1:</b> Draw x-axis and y-axis</p>
-<p><b>Step 2:</b> Plot the line x + y = 4 using intercepts (4,0) and (0,4)</p>
-<p><b>Step 3:</b> Identify inequalities:
-<ul>
-<li>x ≥ 0 → right side of y-axis</li>
-<li>y ≥ 0 → above x-axis</li>
-<li>x + y ≤ 4 → below the line</li>
-</ul>
+
+<p>
+Think of each constraint as creating a permitted region.
+The feasible region is where all those permitted regions overlap.
 </p>
-<p><b>Step 4:</b> Shade the common overlapping region</p>
-<p><b>Final Answer:</b> A triangular region in the first quadrant bounded by the axes and the line x + y = 4</p>
-<h3> DIAGRAM</h3>
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 280 200" width="280" height="200" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;">
-  
-  <defs>
-    <pattern id="grid-lp" width="20" height="20" patternUnits="userSpaceOnUse">
-      <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#22223b" stroke-width="0.5"/>
-    </pattern>
-    <marker id="arrow-x" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-    <marker id="arrow-y" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4" markerHeight="4" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#888"/>
-    </marker>
-  </defs>
 
-  <rect width="280" height="200" fill="url(#grid-lp)"/>
-  <polygon points="40,160 40,60 180,160" fill="#2ecc71" opacity="0.3" stroke="#2ecc71" stroke-width="1.5"/>
-  <line x1="30" y1="160" x2="250" y2="160" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-x)"/>
-  <line x1="40" y1="170" x2="40" y2="20" stroke="#ccc" stroke-width="1.5" marker-end="url(#arrow-y)"/>
-  <line x1="40" y1="60" x2="180" y2="160" stroke="#e74c3c" stroke-width="2.5"/>
-  <line x1="180" y1="157" x2="180" y2="163" stroke="#ccc" stroke-width="1"/>
-  <line x1="37" y1="60" x2="43" y2="60" stroke="#ccc" stroke-width="1"/>
-  <circle cx="40" cy="60" r="4.5" fill="#f1c40f"/>
-  <circle cx="180" cy="160" r="4.5" fill="#f1c40f"/>
-  <circle cx="40" cy="160" r="4.5" fill="#fff"/>
-  <text x="25" y="64" fill="#f1c40f" font-size="9" font-family="monospace">(0,4)</text>
-  <text x="180" y="174" fill="#f1c40f" font-size="9" text-anchor="middle" font-family="monospace">(4,0)</text>
-  <text x="25" y="172" fill="#aaa" font-size="8" font-family="monospace">(0,0)</text>
-  <text x="85" y="125" fill="#2ecc71" font-size="9" font-family="sans-serif" font-weight="bold">Feasible Region</text>
-  <text x="140" y="85" fill="#e74c3c" font-size="9" font-family="sans-serif" font-weight="bold" transform="rotate(-35 140 85)">x + y = 4</text>
-  <text x="260" y="164" fill="#aaa" font-size="9" font-family="monospace">x</text>
-  <text x="40" y="14" fill="#aaa" font-size="9" text-anchor="middle" font-family="monospace">y</text>
-</svg>
-</div>
+<h3>1. WHY IT MATTERS</h3>
 
-<h3> REAL WORLD APPLICATIONS</h3>
+<p>
+The objective function can only be optimized using feasible points.
+A point outside the feasible region is not an allowed solution.
+</p>
+
+<h3>Worked Example</h3>
+
+<p>
+Find the feasible region for:
+</p>
+
+<pre>
+x ≥ 0
+y ≥ 0
+x + y ≤ 4
+</pre>
+
+<h3>Step 1: Interpret x ≥ 0</h3>
+
+<p>
+x ≥ 0 means we only use points on or to the right of the y-axis.
+</p>
+
+<h3>Step 2: Interpret y ≥ 0</h3>
+
+<p>
+y ≥ 0 means we only use points on or above the x-axis.
+</p>
+
+<p>
+Together:
+</p>
+
+<pre>
+x ≥ 0
+y ≥ 0
+</pre>
+
+<p>
+restrict us to the <b>first quadrant</b>.
+</p>
+
+<h3>Step 3: Find the boundary of x + y ≤ 4</h3>
+
+<pre>
+x + y = 4
+</pre>
+
+<p>
+When x = 0:
+</p>
+
+<pre>
+y = 4
+
+(0,4)
+</pre>
+
+<p>
+When y = 0:
+</p>
+
+<pre>
+x = 4
+
+(4,0)
+</pre>
+
+<h3>Step 4: Find the common region</h3>
+
+<p>
+The required region is the part of the first quadrant satisfying
+x + y ≤ 4.
+</p>
+
+<p>
+Its vertices are:
+</p>
+
+<pre>
+(0,0)
+(4,0)
+(0,4)
+</pre>
+
+<h3>5. VERTICES</h3>
+
+<p>
+A <b>vertex</b> is a corner point of the feasible region.
+These points are especially important because a linear objective
+function reaches its maximum or minimum at a vertex when an optimum
+exists for a bounded feasible region.
+</p>
+
+<h3>6. CHECKING WHETHER A POINT IS FEASIBLE</h3>
+
+<p>
+To check a point, substitute its x and y values into <b>every constraint</b>.
+</p>
+
+<p>
+For example, test (2,1):
+</p>
+
+<pre>
+x + y ≤ 4
+
+2 + 1 ≤ 4
+
+3 ≤ 4  ✓
+
+x ≥ 0 → 2 ≥ 0  ✓
+
+y ≥ 0 → 1 ≥ 0  ✓
+</pre>
+
+<p>
+Therefore (2,1) is feasible.
+</p>
+
+<p>
+Now test (3,3):
+</p>
+
+<pre>
+3 + 3 ≤ 4
+
+6 ≤ 4  ✗
+</pre>
+
+<p>
+Therefore (3,3) is not feasible.
+</p>
+
+<h3>Common Mistakes</h3>
+
 <ul>
-<li>Manufacturing production limits</li>
-<li>Resource allocation in companies</li>
-<li>Investment and budgeting decisions</li>
-<li>Transport and logistics planning</li>
+<li>Calling a point feasible after checking only one constraint.</li>
+<li>Forgetting the axes when x ≥ 0 and y ≥ 0 are present.</li>
+<li>Including a point outside the common region.</li>
+<li>Missing a vertex where two boundaries intersect.</li>
 </ul>
 `,
 
   [
     {
-      "q": "Find the set of all feasible points satisfying x ≥ 0 and y ≥ 0",
-      "hint": "inequality intersection",
+      "q": "What is a feasible region?",
+      "hint": "Think about all the constraints together.",
       "steps": [
-        "Step 1: Solve x ≥ 0 → x ∈ [0, ∞)",
-        "Step 2: Solve y ≥ 0 → y ∈ [0, ∞)",
-        "Step 3: Take intersection of both sets",
-        "Step 4: Write ordered pair form"
+        "Step 1: Consider all constraints",
+        "Step 2: Find the region satisfying each one",
+        "Step 3: Take their common region"
       ],
-      "ans": "{(x,y) | x ≥ 0, y ≥ 0}",
-      "why": "Feasible region is intersection of all constraint sets"
+      "ans": "The region containing all points that satisfy every constraint.",
+      "why": "A feasible solution must satisfy all constraints simultaneously."
     },
+
     {
-      "q": "Find intercept points of boundary line x + y = 4",
-      "hint": "set variables to zero",
+      "q": "Find the vertices of x ≥ 0, y ≥ 0, x + y ≤ 6.",
+      "hint": "Find the intercepts of x + y = 6 and include the origin.",
       "steps": [
-        "Step 1: Set x = 0 → y = 4",
-        "Step 2: Set y = 0 → x = 4",
-        "Step 3: Write coordinate points",
-        "Step 4: Define line segment between points"
+        "Step 1: Boundary is x + y = 6",
+        "Step 2: x-intercept = (6,0)",
+        "Step 3: y-intercept = (0,6)",
+        "Step 4: Include the origin (0,0)"
       ],
-      "ans": "(4,0) and (0,4)",
-      "why": "Intercepts define geometry of boundary line"
+      "ans": "(0,0), (6,0), (0,6)",
+      "why": "The axes and the constraint line form the three corners of the feasible region."
     },
+
     {
-      "q": "Determine region defined by x + y ≤ 4 in first quadrant",
-      "hint": "inequality region",
+      "q": "Is (2,3) feasible for x + y ≤ 6, x ≥ 0, y ≥ 0?",
+      "hint": "Check all three constraints.",
       "steps": [
-        "Step 1: Convert boundary x + y = 4",
-        "Step 2: Identify intercepts (4,0), (0,4)",
-        "Step 3: Restrict to x ≥ 0, y ≥ 0",
-        "Step 4: Describe bounded region"
+        "Step 1: 2 + 3 = 5",
+        "Step 2: Check 5 ≤ 6 → true",
+        "Step 3: Check 2 ≥ 0 → true",
+        "Step 4: Check 3 ≥ 0 → true"
       ],
-      "ans": "Triangular region with vertices (0,0), (4,0), (0,4)",
-      "why": "Intersection of inequality and axes forms triangle"
+      "ans": "Yes",
+      "why": "The point satisfies every constraint."
     },
+
     {
-      "q": "Draw the feasible region for 2x + 3y ≤ 12, x ≥ 0, y ≥ 0",
-      "hint": "graph bounded region",
+      "q": "Is (5,4) feasible for x + y ≤ 6?",
+      "hint": "Substitute x = 5 and y = 4.",
       "steps": [
-        "Step 1: Draw axes",
-        "Step 2: Find intercepts of 2x + 3y = 12: (6,0) and (0,4)",
-        "Step 3: Draw line through intercepts",
-        "Step 4: Shade region satisfying all inequalities",
-        "Step 5: Identify vertices of region"
+        "Step 1: Calculate x + y = 5 + 4",
+        "Step 2: 5 + 4 = 9",
+        "Step 3: Check whether 9 ≤ 6",
+        "Step 4: The inequality is false"
       ],
-      "ans": "Triangle with vertices (0,0), (6,0), (0,4)",
-      "why": "Feasible region is bounded area satisfying all constraints"
+      "ans": "No",
+      "why": "The point violates the constraint because 9 is greater than 6."
     },
+
     {
-      "q": "Determine the feasible region for constraints 3x + 2y ≤ 12, x ≥ 0, y ≥ 0",
-      "hint": "graph bounded triangular region",
+      "q": "Find the vertices of 2x + 3y ≤ 12, x ≥ 0, y ≥ 0.",
+      "hint": "Find both intercepts of 2x + 3y = 12.",
       "steps": [
-        "Step 1: Draw axes for x ≥ 0, y ≥ 0",
-        "Step 2: Find intercepts for 3x + 2y = 12: x=4 when y=0, y=6 when x=0",
-        "Step 3: Draw line connecting (4,0) and (0,6)",
-        "Step 4: Test point (0,0) → 0 ≤ 12 is true",
-        "Step 5: Shade region toward origin (bounded triangle)"
+        "Step 1: Set y = 0: 2x = 12, so x = 6",
+        "Step 2: x-intercept = (6,0)",
+        "Step 3: Set x = 0: 3y = 12, so y = 4",
+        "Step 4: y-intercept = (0,4)",
+        "Step 5: Include the origin"
       ],
-      "ans": "Triangle with vertices (0,0), (4,0), (0,6)",
-      "why": "Region below line 3x + 2y = 12 in the first quadrant"
+      "ans": "(0,0), (6,0), (0,4)",
+      "why": "The axes and the boundary line form the three vertices."
     }
   ]
 );
+
 
 add(
   "math",
   "linear_programming",
-  "Applications of Linear Programming",
+  "Graphical Method",
 
-  `
-<h2> Applications of Linear Programming</h2>
-<h3> DEEP NOTES</h3>
+  `<h2>Graphical Method</h2>
+
 <p>
-Linear programming is used in decision-making to optimize limited resources.
-It helps find the best possible outcome (maximum or minimum) under given restrictions.
+The <b>graphical method</b> solves a two-variable linear programming
+problem by representing its constraints on a coordinate plane,
+finding the feasible region, identifying its vertices, and evaluating
+the objective function at those vertices.
 </p>
-<h3> EXAMPLES</h3>
-<ul>
-<li>Profit maximization in companies</li>
-<li>Transport and delivery optimization</li>
-<li>Diet planning in nutrition science</li>
-<li>Production planning in factories</li>
-</ul>
-<h3> WORKED EXAMPLE</h3>
-<p><b>Question:</b> Why use linear programming?</p>
-<p><b>Step 1:</b> Identify limited resources</p>
-<p><b>Step 2:</b> Set constraints (restrictions)</p>
-<p><b>Step 3:</b> Define objective function</p>
-<p><b>Step 4:</b> Optimize (maximize or minimize result)</p>
-<p><b>Final Answer:</b> To get the best possible outcome under restrictions</p>
-<h3> DIAGRAM</h3>
+
+<h3>THE BASIC PROCEDURE</h3>
+
 <pre>
-Constraints → Feasible region → Optimal solution
+1. Write the constraints
+2. Convert each inequality to a boundary equation
+3. Find intercepts
+4. Draw the boundary lines
+5. Determine the feasible region
+6. Find its vertices
+7. Evaluate the objective function at each vertex
+8. Choose the required maximum or minimum
 </pre>
+
+<h3>Worked Example</h3>
+
+<p>
+Maximize:
+</p>
+
+<pre>
+Z = x + 2y
+</pre>
+
+<p>
+subject to:
+</p>
+
+<pre>
+x + y ≤ 6
+x ≥ 0
+y ≥ 0
+</pre>
+
+<h3>Step 1: Boundary Equation</h3>
+
+<pre>
+x + y = 6
+</pre>
+
+<h3>Step 2: Find Intercepts</h3>
+
+<p>
+Set y = 0:
+</p>
+
+<pre>
+x = 6
+
+(6,0)
+</pre>
+
+<p>
+Set x = 0:
+</p>
+
+<pre>
+y = 6
+
+(0,6)
+</pre>
+
+<h3>Step 3: Determine the Feasible Region</h3>
+
+<p>
+Because x ≥ 0 and y ≥ 0, only the first quadrant is allowed.
+The inequality x + y ≤ 6 selects the region on the origin side
+of the line.
+</p>
+
+<h3>Step 4: Find Vertices</h3>
+
+<pre>
+(0,0)
+(6,0)
+(0,6)
+</pre>
+
+<h3>Step 5: Evaluate Z</h3>
+
+<p>
+Use:
+</p>
+
+<pre>
+Z = x + 2y
+</pre>
+
+<p>At (0,0):</p>
+
+<pre>
+Z = 0 + 2(0)
+Z = 0
+</pre>
+
+<p>At (6,0):</p>
+
+<pre>
+Z = 6 + 2(0)
+Z = 6
+</pre>
+
+<p>At (0,6):</p>
+
+<pre>
+Z = 0 + 2(6)
+Z = 12
+</pre>
+
+<h3>Step 6: Select the Maximum</h3>
+
+<pre>
+0, 6, 12
+
+Largest = 12
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+Maximum Z = 12
+at (0,6)
+</pre>
+
+<h3>WHY THE GRAPHICAL METHOD WORKS</h3>
+
+<p>
+The feasible region contains all allowed solutions. For a linear
+objective function over a bounded polygonal feasible region, an
+optimum occurs at a vertex, so checking the vertices is sufficient.
+</p>
+
+<h3>Common Mistakes</h3>
+
+<ul>
+<li>Finding intercepts incorrectly.</li>
+<li>Shading the wrong side of a constraint.</li>
+<li>Forgetting the origin when x ≥ 0 and y ≥ 0 apply.</li>
+<li>Using points outside the feasible region.</li>
+<li>Finding the minimum when the question asks for the maximum.</li>
+</ul>
 `,
 
   [
     {
-      "q": "Evaluate Z = 3x + 5y at (2,4), (0,6), (5,0)",
-      "hint": "substitute points",
+      "q": "Maximize Z = 2x + y subject to x + y ≤ 6, x ≥ 0, y ≥ 0. What is the maximum value?",
+      "hint": "Evaluate Z at (0,0), (6,0), and (0,6).",
       "steps": [
-        "Step 1: Substitute (2,4) → Z = 3(2) + 5(4)",
-        "Step 2: Compute Z = 6 + 20",
-        "Step 3: Z(2,4) = 26",
-        "Step 4: Substitute (0,6) → Z = 3(0) + 5(6)",
-        "Step 5: Z(0,6) = 30",
-        "Step 6: Substitute (5,0) → Z = 3(5) + 5(0)",
-        "Step 7: Z(5,0) = 15",
-        "Step 8: Compare all values"
+        "Step 1: Vertices are (0,0), (6,0), (0,6)",
+        "Step 2: Z(0,0) = 0",
+        "Step 3: Z(6,0) = 12",
+        "Step 4: Z(0,6) = 6",
+        "Step 5: Choose the largest value"
       ],
-      "ans": "Maximum value = 30 at (0,6)",
-      "why": "Objective function is evaluated at vertices to find optimum"
+      "ans": "Zmax = 12 at (6,0)",
+      "why": "The maximum value of a linear objective over this bounded feasible region occurs at a vertex."
     },
+
     {
-      "q": "Maximize Z = 4x + 2y subject to x + y ≤ 6",
-      "hint": "corner point evaluation",
+      "q": "What is the first step when using the graphical method for x + y ≤ 5?",
+      "hint": "Start with the boundary.",
       "steps": [
-        "Step 1: Convert x + y ≤ 6 to x + y = 6",
-        "Step 2: Find intercepts (6,0) and (0,6)",
-        "Step 3: Include origin (0,0)",
-        "Step 4: Evaluate Z at all points",
-        "Step 5: Compare results"
+        "Step 1: Identify the inequality",
+        "Step 2: Replace ≤ with =",
+        "Step 3: Write the boundary equation"
       ],
-      "ans": "Zmax = 24 at (6,0)",
-      "why": "Linear objective reaches extreme at boundary vertices"
+      "ans": "Write x + y = 5.",
+      "why": "The equality gives the boundary line that is plotted first."
     },
+
     {
-      "q": "Find objective function value for C = 10x + 3y at x = 4, y = 5",
-      "hint": "direct substitution",
+      "q": "Find the vertices of x + y ≤ 8, x ≥ 0, y ≥ 0.",
+      "hint": "Find the two intercepts and include the origin.",
       "steps": [
-        "Step 1: Write C = 10x + 3y",
-        "Step 2: Substitute x = 4, y = 5",
-        "Step 3: Compute 10×4",
-        "Step 4: Compute 3×5",
-        "Step 5: Add results"
+        "Step 1: Boundary is x + y = 8",
+        "Step 2: x-intercept = (8,0)",
+        "Step 3: y-intercept = (0,8)",
+        "Step 4: Include (0,0)"
       ],
-      "ans": "55",
-      "why": "Objective function evaluates performance of given solution"
+      "ans": "(0,0), (8,0), (0,8)",
+      "why": "These are the three corners of the feasible triangular region."
+    },
+
+    {
+      "q": "Evaluate Z = 3x + 2y at (0,0), (4,0), and (0,5).",
+      "hint": "Substitute each point separately.",
+      "steps": [
+        "Step 1: Z(0,0) = 0",
+        "Step 2: Z(4,0) = 3(4) + 2(0) = 12",
+        "Step 3: Z(0,5) = 3(0) + 2(5) = 10",
+        "Step 4: Compare 0, 12, and 10"
+      ],
+      "ans": "Maximum value = 12 at (4,0)",
+      "why": "The largest objective-function value among the given vertices is 12."
+    },
+
+    {
+      "q": "For x + y ≤ 4, x ≥ 0, y ≥ 0, which point is NOT feasible: (1,2), (3,1), or (3,3)?",
+      "hint": "Add x and y for each point.",
+      "steps": [
+        "Step 1: (1,2): 1 + 2 = 3 ≤ 4",
+        "Step 2: (3,1): 3 + 1 = 4 ≤ 4",
+        "Step 3: (3,3): 3 + 3 = 6 > 4",
+        "Step 4: Identify the point that violates the constraint"
+      ],
+      "ans": "(3,3)",
+      "why": "(3,3) violates x + y ≤ 4."
     }
   ]
 );
 
+
+add(
+  "math",
+  "linear_programming",
+  "Optimization at Corner Points",
+
+  `<h2>Optimization at Corner Points</h2>
+
+<p>
+After finding the feasible region, the next task is to determine
+which feasible point gives the required maximum or minimum value
+of the objective function.
+</p>
+
+<h3>1. OBJECTIVE FUNCTION</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+Z = 5x + 3y
+</pre>
+
+<p>
+This function assigns a value of Z to every possible pair (x,y).
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+At (2,1):
+
+Z = 5(2) + 3(1)
+Z = 10 + 3
+Z = 13
+</pre>
+
+<h3>2. WHY CHECK CORNER POINTS?</h3>
+
+<p>
+For a linear objective function on a bounded polygonal feasible
+region, the maximum or minimum occurs at a vertex.
+</p>
+
+<p>
+Therefore, once the vertices are known, calculate the objective
+function at each one and compare the results.
+</p>
+
+<h3>Worked Example: Maximum</h3>
+
+<p>
+Maximize:
+</p>
+
+<pre>
+Z = 4x + 3y
+</pre>
+
+<p>
+Suppose the feasible vertices are:
+</p>
+
+<pre>
+(0,0), (5,0), (0,4)
+</pre>
+
+<p>Evaluate each:</p>
+
+<pre>
+Z(0,0) = 4(0) + 3(0)
+       = 0
+
+Z(5,0) = 4(5) + 3(0)
+       = 20
+
+Z(0,4) = 4(0) + 3(4)
+       = 12
+</pre>
+
+<p>
+The largest value is 20.
+</p>
+
+<pre>
+Maximum Z = 20
+at (5,0)
+</pre>
+
+<h3>Worked Example: Minimum</h3>
+
+<p>
+Minimize:
+</p>
+
+<pre>
+C = 2x + 5y
+</pre>
+
+<p>
+Suppose the feasible vertices are:
+</p>
+
+<pre>
+(2,4), (6,0), (0,5)
+</pre>
+
+<p>Evaluate:</p>
+
+<pre>
+C(2,4) = 2(2) + 5(4)
+       = 24
+
+C(6,0) = 2(6) + 5(0)
+       = 12
+
+C(0,5) = 2(0) + 5(5)
+       = 25
+</pre>
+
+<p>
+The smallest value is 12.
+</p>
+
+<pre>
+Minimum C = 12
+at (6,0)
+</pre>
+
+<h3>IMPORTANT</h3>
+
+<p>
+Do not choose the point simply because its x-value or y-value
+is largest or smallest. You must evaluate the <b>objective function</b>.
+</p>
+
+<p>
+The best vertex depends on the coefficients in the objective function.
+</p>
+
+<h3>Common Mistakes</h3>
+
+<ul>
+<li>Choosing a vertex without calculating the objective function.</li>
+<li>Finding the largest value when the question asks for the minimum.</li>
+<li>Using a point that is not feasible.</li>
+<li>Making arithmetic errors during substitution.</li>
+<li>Reporting only the value and not the coordinates where it occurs.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Evaluate Z = 4x + 3y at (2,5).",
+      "hint": "Substitute x = 2 and y = 5.",
+      "steps": [
+        "Step 1: Z = 4(2) + 3(5)",
+        "Step 2: 4(2) = 8",
+        "Step 3: 3(5) = 15",
+        "Step 4: 8 + 15 = 23"
+      ],
+      "ans": "23",
+      "why": "The objective function is evaluated by substituting the coordinates."
+    },
+
+    {
+      "q": "Evaluate Z = 5x + 2y at (6,1).",
+      "hint": "Substitute both coordinates.",
+      "steps": [
+        "Step 1: Z = 5(6) + 2(1)",
+        "Step 2: 5(6) = 30",
+        "Step 3: 2(1) = 2",
+        "Step 4: 30 + 2 = 32"
+      ],
+      "ans": "32",
+      "why": "Substitution gives the objective-function value at that point."
+    },
+
+    {
+      "q": "Find the maximum of Z = 3x + 2y at (0,0), (5,0), and (0,4).",
+      "hint": "Evaluate Z at all three points.",
+      "steps": [
+        "Step 1: Z(0,0) = 0",
+        "Step 2: Z(5,0) = 15",
+        "Step 3: Z(0,4) = 8",
+        "Step 4: Compare the values"
+      ],
+      "ans": "Zmax = 15 at (5,0)",
+      "why": "15 is the largest objective-function value among the three vertices."
+    },
+
+    {
+      "q": "Find the minimum of C = 2x + 3y at (2,4), (5,1), and (1,5).",
+      "hint": "Calculate C at each point.",
+      "steps": [
+        "Step 1: C(2,4) = 4 + 12 = 16",
+        "Step 2: C(5,1) = 10 + 3 = 13",
+        "Step 3: C(1,5) = 2 + 15 = 17",
+        "Step 4: Choose the smallest value"
+      ],
+      "ans": "Cmin = 13 at (5,1)",
+      "why": "13 is the smallest value among the three points."
+    },
+
+    {
+      "q": "Why must all feasible vertices be checked when optimizing a linear objective?",
+      "hint": "Different vertices can produce different objective values.",
+      "steps": [
+        "Step 1: Identify the objective function",
+        "Step 2: Evaluate it at every relevant vertex",
+        "Step 3: Compare the resulting values",
+        "Step 4: Select the required extreme value"
+      ],
+      "ans": "Because the maximum or minimum may occur at any feasible vertex.",
+      "why": "Checking the vertices ensures that the required optimum is not missed."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Linear Programming Word Problems",
+
+  `<h2>Linear Programming Word Problems</h2>
+
+<p>
+Many linear programming questions begin with a situation described
+in words. The main mathematical skill is translating the words into
+variables, an objective function, and constraints.
+</p>
+
+<h3>THE TRANSLATION PROCESS</h3>
+
+<pre>
+Words
+  ↓
+Choose variables
+  ↓
+Write the objective function
+  ↓
+Write the constraints
+  ↓
+Solve the linear programming problem
+</pre>
+
+<h3>1. CHOOSE THE VARIABLES</h3>
+
+<p>
+First decide what x and y represent.
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+x = number of type A items
+y = number of type B items
+</pre>
+
+<p>
+Always state what each variable means.
+</p>
+
+<h3>2. WRITE THE OBJECTIVE FUNCTION</h3>
+
+<p>
+Look for what the question wants to maximize or minimize.
+</p>
+
+<p>
+Words such as:
+</p>
+
+<ul>
+<li>maximum</li>
+<li>minimum</li>
+<li>greatest</li>
+<li>least</li>
+<li>profit</li>
+<li>cost</li>
+</ul>
+
+<p>
+often indicate the objective.
+</p>
+
+<p>
+For example, if each A contributes 5 units and each B contributes
+3 units:
+</p>
+
+<pre>
+Z = 5x + 3y
+</pre>
+
+<h3>3. TRANSLATE LIMITS INTO CONSTRAINTS</h3>
+
+<p>
+Words such as <b>at most</b>, <b>no more than</b>, and
+<b>cannot exceed</b> usually indicate ≤.
+</p>
+
+<pre>
+At most 20
+
+quantity ≤ 20
+</pre>
+
+<p>
+Words such as <b>at least</b>, <b>not less than</b>, and
+<b>minimum of</b> usually indicate ≥.
+</p>
+
+<pre>
+At least 10
+
+quantity ≥ 10
+</pre>
+
+<h3>Worked Example</h3>
+
+<p>
+A problem requires two quantities, x and y. Their total cannot
+exceed 10. The objective is to maximize:
+</p>
+
+<pre>
+Z = 4x + 3y
+</pre>
+
+<p>
+Neither quantity can be negative.
+</p>
+
+<h3>Step 1: Variables</h3>
+
+<pre>
+x = first quantity
+y = second quantity
+</pre>
+
+<h3>Step 2: Objective</h3>
+
+<pre>
+Maximize Z = 4x + 3y
+</pre>
+
+<h3>Step 3: Total Constraint</h3>
+
+<p>
+"Cannot exceed 10" means:
+</p>
+
+<pre>
+x + y ≤ 10
+</pre>
+
+<h3>Step 4: Non-Negativity</h3>
+
+<p>
+Neither quantity can be negative:
+</p>
+
+<pre>
+x ≥ 0
+y ≥ 0
+</pre>
+
+<h3>Complete Mathematical Model</h3>
+
+<pre>
+Maximize Z = 4x + 3y
+
+subject to:
+
+x + y ≤ 10
+x ≥ 0
+y ≥ 0
+</pre>
+
+<p>
+Once the model has been constructed, the graphical method or another
+appropriate linear programming method can be used to solve it.
+</p>
+
+<h3>IMPORTANT LANGUAGE</h3>
+
+<table>
+<tr>
+<th>Words</th>
+<th>Mathematical meaning</th>
+</tr>
+
+<tr>
+<td>at most</td>
+<td>≤</td>
+</tr>
+
+<tr>
+<td>no more than</td>
+<td>≤</td>
+</tr>
+
+<tr>
+<td>cannot exceed</td>
+<td>≤</td>
+</tr>
+
+<tr>
+<td>at least</td>
+<td>≥</td>
+</tr>
+
+<tr>
+<td>no less than</td>
+<td>≥</td>
+</tr>
+
+<tr>
+<td>minimum of</td>
+<td>≥</td>
+</tr>
+</table>
+
+<h3>Common Mistakes</h3>
+
+<ul>
+<li>Defining variables without stating what they represent.</li>
+<li>Reversing ≤ and ≥.</li>
+<li>Forgetting non-negativity constraints.</li>
+<li>Confusing the objective function with a constraint.</li>
+<li>Trying to solve before correctly translating the words into mathematics.</li>
+</ul>
+`,
+
+  [
+    {
+      "q": "Translate 'x cannot exceed 12' into an inequality.",
+      "hint": "Cannot exceed means at most.",
+      "steps": [
+        "Step 1: Identify the phrase 'cannot exceed'",
+        "Step 2: This means the value can be 12 or less",
+        "Step 3: Write the inequality"
+      ],
+      "ans": "x ≤ 12",
+      "why": "'Cannot exceed' means the value must be less than or equal to 12."
+    },
+
+    {
+      "q": "Translate 'y must be at least 7' into an inequality.",
+      "hint": "At least means the value can equal 7 or be greater.",
+      "steps": [
+        "Step 1: Identify 'at least'",
+        "Step 2: At least 7 means 7 or greater",
+        "Step 3: Write the inequality"
+      ],
+      "ans": "y ≥ 7",
+      "why": "'At least' means greater than or equal to."
+    },
+
+    {
+      "q": "If x represents quantity A and y represents quantity B, and their total cannot exceed 20, write the constraint.",
+      "hint": "Add the quantities and use 'cannot exceed'.",
+      "steps": [
+        "Step 1: Total quantity is x + y",
+        "Step 2: Cannot exceed 20 means ≤ 20",
+        "Step 3: Write the constraint"
+      ],
+      "ans": "x + y ≤ 20",
+      "why": "The total must be 20 or less."
+    },
+
+    {
+      "q": "A problem asks you to maximize 6x + 4y. What is the objective function?",
+      "hint": "Look for the expression being maximized.",
+      "steps": [
+        "Step 1: Identify the quantity to maximize",
+        "Step 2: It is 6x + 4y",
+        "Step 3: Write it using Z"
+      ],
+      "ans": "Z = 6x + 4y",
+      "why": "The objective function is the quantity being optimized."
+    },
+
+    {
+      "q": "A problem states that x and y cannot be negative. Write the non-negativity constraints.",
+      "hint": "Neither variable may be less than zero.",
+      "steps": [
+        "Step 1: x cannot be negative → x ≥ 0",
+        "Step 2: y cannot be negative → y ≥ 0",
+        "Step 3: Write both constraints"
+      ],
+      "ans": "x ≥ 0 and y ≥ 0",
+      "why": "Non-negative variables are restricted to zero or positive values."
+    }
+  ]
+);
 add(
   "math",
   "fractions",

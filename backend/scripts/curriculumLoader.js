@@ -245,7 +245,12 @@ function loadCanonicalCurriculum() {
   });
 
   for (const [key] of contentMap.entries()) {
-    const [sid, cid, top] = key.split("/");
+    // Split only on the first two "/" so topic names containing "/" are preserved
+    const firstSlash = key.indexOf("/");
+    const secondSlash = key.indexOf("/", firstSlash + 1);
+    const sid = key.substring(0, firstSlash);
+    const cid = key.substring(firstSlash + 1, secondSlash);
+    const top = key.substring(secondSlash + 1);
     const subj = activeSubjects.find(s => s.id === sid);
     const chap = subj ? (subj.chapters || []).find(c => c.id === cid) : null;
     const exists = chap ? (chap.topics || []).some(t => String(t).trim().toLowerCase() === top.toLowerCase()) : false;

@@ -8,7 +8,8 @@
         "id": "numbers",
         "label": "Numbers",
         "topics": [
-          "Number Systems & Basic Operations"
+          "Number Systems",
+          "BODMAS / Order of Operations"
         ]
       },
       {
@@ -29,8 +30,9 @@
           "Types of angles",
           "Triangles",
           "Quadrilaterals",
-          "Circles",
-          "Area and Perimeter"
+          "Circle Properties",
+          "Perimeter",
+          "Area"
         ]
       },
       {
@@ -106,10 +108,9 @@
         "label": "Complex Numbers",
         "topics": [
           "Imaginary Unit and Basic Complex Numbers",
-          "Argand Diagram (Complex Plane)",
+          "Argand Diagram",
           "Operations on Complex Numbers",
-          "Polar Form of Complex Numbers",
-          "De Moivre’s Theorem"
+          "Polar Form and De Moivre's Theorem"
         ]
       },
       {
@@ -117,10 +118,11 @@
         "label": "Linear Programming",
         "topics": [
           "Introduction to Linear Programming",
-          "Graphical Method",
-          "Inequality Constraints",
+          "Linear Inequality Constraints",
           "Feasible Region",
-          "Applications of Linear Programming"
+          "Graphical Method",
+          "Optimization at Corner Points",
+          "Linear Programming Word Problems"
         ]
       },
       {
@@ -460,7 +462,7 @@
           "Antigens, Antibodies & Immunity"
         ]
       },
-     {
+      {
         "id": "Movement",
         "label": "Movement",
         "topics": [
@@ -469,7 +471,7 @@
           "Muscles — Antagonistic Muscle Pairs",
           "Body System Integration"
         ]
-     },
+      },
       {
         "id": "plant_deep_transport",
         "label": "Plant Deep Transport",
@@ -483,7 +485,7 @@
         "topics": [
           "Genetics",
           "Genetics & Evolution",
-           "Molecular Genetics"
+          "Molecular Genetics"
         ]
       },
       {
@@ -795,5 +797,4 @@
       }
     ]
   }
-  ]
-  
+]
