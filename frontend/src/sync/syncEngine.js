@@ -2,6 +2,7 @@ import { db } from "../db/db";
 import { curriculumRepo } from "../repository/curriculumRepo";
 import { topicRepo } from "../repository/topicRepo";
 import { progressRepo } from "../repository/progressRepo";
+import { mistakeRepo } from "../repository/mistakeRepo";
 import { fetchCurriculum, fetchTopicContent, saveProgress } from "../api";
 import { networkService } from "../services/networkService";
 import staticCurriculum from "../data/curriculum.json";
@@ -120,7 +121,10 @@ class SyncEngine {
   }
 
   async pushUpSync() {
-    // Get unsynced changes
+    // Flush any pending mistake operations (saved/resolved while offline)
+    await mistakeRepo.flushPendingSync().catch(() => {});
+
+    // Get unsynced progress changes
     const allChanges = await db.change_log.toArray();
     const pendingChanges = allChanges.filter(change => !change.synced);
     if (pendingChanges.length === 0) return;

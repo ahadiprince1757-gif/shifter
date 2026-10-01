@@ -7870,6 +7870,26 @@ html.dark-mode .fb-repair-btn {
   line-height: 1.5;
 }
 
+/* Offline indicator banner */
+.mj-offline-banner {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 10px;
+  padding: 0.6rem 1rem;
+  font-size: 0.82rem;
+  color: #f59e0b;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.mj-offline-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
 .mj-empty {
   text-align: center;
   padding: 3rem 1rem;

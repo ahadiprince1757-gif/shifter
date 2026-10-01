@@ -5,6 +5,7 @@ import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import { navigateToTopic, LEARNING_MODES } from "../utils/learningNavigation";
 import { SUBJECTS } from "../data/subjectRegistry";
+import { networkService } from "../services/networkService";
 
 function formatTitle(str) {
   if (!str) return "";
@@ -25,7 +26,16 @@ export default function Gaps() {
   const [gaps, setGaps] = useState([]);
   const [loading, setLoading] = useState(true);
   const [filter, setFilter] = useState("all");
+  const [isOffline, setIsOffline] = useState(!networkService.isOnline);
   const navigate = useNavigate();
+
+  // Track network status for the offline banner
+  useEffect(() => {
+    const unsubscribe = networkService.subscribe((state) => {
+      setIsOffline(!state.isOnline);
+    });
+    return unsubscribe;
+  }, []);
 
   useEffect(() => {
     let cancelled = false;
@@ -84,6 +94,12 @@ export default function Gaps() {
         </p>
       </div>
 
+      {isOffline && (
+        <div className="mj-offline-banner" role="status" aria-live="polite">
+          <span className="mj-offline-icon">📡</span>
+          <span>You&apos;re offline &mdash; showing locally saved gaps. Changes will sync when you reconnect.</span>
+        </div>
+      )}
       {loading ? (
         <div style={{ marginTop: "1.5rem" }}>
           <SkeletonLoader type="list" count={4} />

@@ -54,6 +54,15 @@ db.version(16).upgrade(async () => {
   // Idempotent content versioning manages updates; never clear offline library
 });
 
+// Version 17: Add pending sync queue for offline mistake mutations
+db.version(17).stores({
+  // Outbox: queued operations that couldn't be pushed to Supabase while offline.
+  // op: 'save' | 'resolve'
+  // payload: serialised args for the API call
+  // created_at: ISO string so the queue can be drained in insertion order
+  pending_mistake_sync: "++id, op, created_at",
+});
+
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
