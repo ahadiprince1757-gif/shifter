@@ -5,8 +5,11 @@ import { chemistryTopics } from "./chemistry.js";
 import { biologyTopics } from "./biology.js";
 import { englishTopics } from "./english.js";
 import { computerTopics } from "./computer.js";
+import staticCurriculum from "./curriculum.json";
+import { ACTIVE_SUBJECT_IDS } from "./subjectRegistry";
+import { curriculumRepo } from "../repository/curriculumRepo";
 
-export const CONTENT_VERSION = 2;
+export const CONTENT_VERSION = 3;
 
 const STATIC_SUBJECT_MAP = {
   math: mathTopics,
@@ -85,14 +88,27 @@ export async function seedBundledTopics(force = false) {
     const existingCount = await db.topics.count().catch(() => 0);
 
     // If already seeded at current content version and has content, skip
-    if (!force && meta?.version === CONTENT_VERSION && existingCount >= 334) {
+    if (!force && meta?.version === CONTENT_VERSION && existingCount >= 341) {
       return { skipped: true, count: existingCount };
     }
 
     const allTopics = Object.values(STATIC_SUBJECT_MAP).flat().filter(Boolean);
 
     if (allTopics.length > 0) {
+      // Remove any deprecated/orphan topics no longer in the static bundle
+      const validIds = new Set(allTopics.map((t) => t.id));
+      const currentStored = await db.topics.toArray().catch(() => []);
+      const orphans = currentStored.filter((t) => !validIds.has(t.id));
+      if (orphans.length > 0) {
+        await db.topics.bulkDelete(orphans.map((t) => t.id)).catch(() => {});
+      }
+
       await db.topics.bulkPut(allTopics);
+
+      // Keep Dexie curriculum table aligned with canonical subjects and chapters
+      const canonical = staticCurriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id));
+      await curriculumRepo.upsertBatch(canonical.map((c) => ({ ...c, is_deleted: false }))).catch(() => {});
+
       await db.sync_metadata.put({
         table_name: "content_version",
         version: CONTENT_VERSION,

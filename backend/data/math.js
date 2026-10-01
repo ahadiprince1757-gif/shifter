@@ -10216,217 +10216,309 @@ Impossible        Uncertain          Certain
     }
   ]
 );
-
 add(
   "math",
   "matrices",
   "Introduction & Notation",
 
   `
-<h2> Introduction & Matrix Notation</h2>
+<h2>Introduction & Matrix Notation</h2>
 
-<h3> DEEP NOTES</h3>
+<h3>1. WHAT IS A MATRIX?</h3>
+
 <p>
-A <b>matrix</b> (plural: <i>matrices</i>) is a structured rectangular array of numbers, symbols, or mathematical expressions arranged in horizontal <b>rows</b> and vertical <b>columns</b>, enclosed within brackets \([ \dots ]\) or parentheses \(( \dots )\). Matrices serve as fundamental building blocks in linear algebra, quantum mechanics, computer graphics, multivariable calculus, and machine learning.
+A <b>matrix</b> is a rectangular arrangement of numbers written in rows and columns.
+For example:
 </p>
-
-<h4>1. Matrix Dimensions & Order</h4>
-<p>
-The size or <b>order</b> of a matrix is specified by the number of its rows ($m$) and columns ($n$), expressed as <b>\(m \times n\)</b> (read <i>"m by n"</i>).
-</p>
-<ul>
-  <li>If a matrix \(A\) has \(m\) rows and \(n\) columns, we write \(A \in \mathbb{R}^{m \times n}\).</li>
-  <li>The total number of elements in an \(m \times n\) matrix is \(m \cdot n\).</li>
-</ul>
-
-<h4>2. Double-Subscript Element Indexing</h4>
-<p>
-Individual entries within a matrix are identified using double-subscript notation <b>\(a_{ij}\)</b> (or \(A_{(i,j)}\)):
-</p>
-<pre>
-A = [ a₁₁  a₁₂  a₁₃  ...  a₁ₙ ]
-    [ a₂₁  a₂₂  a₂₃  ...  a₂ₙ ]
-    [  ⋮    ⋮    ⋮    ⋱    ⋮  ]
-    [ aₘ₁  aₘ₂  aₘ₃  ...  aₘₙ ]
-</pre>
-<ul>
-  <li><b>\(i\)</b> represents the <b>row index</b> (\(1 \le i \le m\)).</li>
-  <li><b>\(j\)</b> represents the <b>column index</b> (\(1 \le j \le n\)).</li>
-  <li>For instance, \(a_{23}\) refers to the element located in <i>row 2, column 3</i>.</li>
-</ul>
-
-<h4>3. Classification of Matrix Types</h4>
-<table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th>Matrix Type</th>
-      <th>Mathematical Definition</th>
-      <th>Example</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>Row Matrix</b></td>
-      <td>Matrix with a single row (\(1 \times n\))</td>
-      <td>\(\begin{pmatrix} 3 & -1 & 5 \end{pmatrix}\)</td>
-    </tr>
-    <tr>
-      <td><b>Column Matrix</b></td>
-      <td>Matrix with a single column (\(m \times 1\))</td>
-      <td>\(\begin{pmatrix} 4 \\ 0 \\ -2 \end{pmatrix}\)</td>
-    </tr>
-    <tr>
-      <td><b>Square Matrix</b></td>
-      <td>Number of rows equals columns (\(m = n\))</td>
-      <td>\(\begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}_{2 \times 2}\)</td>
-    </tr>
-    <tr>
-      <td><b>Zero / Null Matrix (\(O\))</b></td>
-      <td>All entries are zero (\(a_{ij} = 0\) for all \(i,j\))</td>
-      <td>\(\begin{pmatrix} 0 & 0 \\ 0 & 0 \end{pmatrix}\)</td>
-    </tr>
-    <tr>
-      <td><b>Diagonal Matrix</b></td>
-      <td>Square matrix with \(a_{ij} = 0\) for all \(i \neq j\)</td>
-      <td>\(\begin{pmatrix} 5 & 0 \\ 0 & -3 \end{pmatrix}\)</td>
-    </tr>
-    <tr>
-      <td><b>Identity Matrix (\(I_n\))</b></td>
-      <td>Diagonal matrix where \(a_{ii} = 1\) and \(a_{ij} = 0\) (\(i \neq j\))</td>
-      <td>\(\begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix}\)</td>
-    </tr>
-    <tr>
-      <td><b>Symmetric Matrix</b></td>
-      <td>Square matrix where \(A^T = A\), so \(a_{ij} = a_{ji}\)</td>
-      <td>\(\begin{pmatrix} 2 & 7 \\ 7 & 5 \end{pmatrix}\)</td>
-    </tr>
-    <tr>
-      <td><b>Skew-Symmetric</b></td>
-      <td>Square matrix where \(A^T = -A\), so \(a_{ij} = -a_{ji}\) and \(a_{ii} = 0\)</td>
-      <td>\(\begin{pmatrix} 0 & 4 \\ -4 & 0 \end{pmatrix}\)</td>
-    </tr>
-  </tbody>
-</table>
-
----
-
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
-
-<p><b>Example 1: Identifying Matrix Dimensions and Entries</b></p>
-<p>Given the matrix \(M = \begin{pmatrix} 7 & -3 & 0 \\ 4 & 9 & 2 \end{pmatrix}\):</p>
-<p><b>Step 1: Determine the order of matrix \(M\).</b></p>
-<p>\(M\) has 2 horizontal rows and 3 vertical columns. Therefore, the dimension of \(M\) is <b>\(2 \times 3\)</b>.</p>
-<p><b>Step 2: Identify specific elements \(m_{12}\), \(m_{21}\), and \(m_{23}\).</b></p>
-<ul>
-  <li>\(m_{12}\) (Row 1, Col 2) = <b>-3</b></li>
-  <li>\(m_{21}\) (Row 2, Col 1) = <b>4</b></li>
-  <li>\(m_{23}\) (Row 2, Col 3) = <b>2</b></li>
-</ul>
-<p><b>Final Answer:</b> Order is \(2 \times 3\); \(m_{12} = -3, m_{21} = 4, m_{23} = 2\).</p>
-
-<br>
-
-<p><b>Example 2: Constructing a Matrix from a Formula</b></p>
-<p>Construct a \(2 \times 2\) matrix \(A\) whose entries are defined by \(a_{ij} = 3i - 2j\).</p>
-<p><b>Step 1: Compute \(a_{11}\) (\(i=1, j=1\)):</b> \(3(1) - 2(1) = 3 - 2 = 1\)</p>
-<p><b>Step 2: Compute \(a_{12}\) (\(i=1, j=2\)):</b> \(3(1) - 2(2) = 3 - 4 = -1\)</p>
-<p><b>Step 3: Compute \(a_{21}\) (\(i=2, j=1\)):</b> \(3(2) - 2(1) = 6 - 2 = 4\)</p>
-<p><b>Step 4: Compute \(a_{22}\) (\(i=2, j=2\)):</b> \(3(2) - 2(2) = 6 - 4 = 2\)</p>
-<p><b>Final Answer:</b> \(A = \begin{pmatrix} 1 & -1 \\ 4 & 2 \end{pmatrix}\)</p>
-
-<br>
-
-<p><b>Example 3: Matrix Classification</b></p>
-<p>Classify matrix \(K = \begin{pmatrix} 0 & -5 \\ 5 & 0 \end{pmatrix}\).</p>
-<p><b>Step 1: Check diagonal entries.</b> Main diagonal entries are both 0.</p>
-<p><b>Step 2: Compare off-diagonal entries \(k_{12}\) and \(k_{21}\).</b> \(k_{12} = -5\) and \(k_{21} = 5 = -k_{12}\).</p>
-<p><b>Step 3: Test transpose.</b> \(K^T = \begin{pmatrix} 0 & 5 \\ -5 & 0 \end{pmatrix} = -\begin{pmatrix} 0 & -5 \\ 5 & 0 \end{pmatrix} = -K\).</p>
-<p><b>Final Answer:</b> \(K\) is a <b>Skew-Symmetric Matrix</b> of order \(2 \times 2\).</p>
-
----
-
-<h3> DIAGRAM</h3>
 
 <pre>
-       Column 1   Column 2   Column 3
-Row 1 [  a₁₁        a₁₂        a₁₃  ]  ← Dimension: 2 × 3
-Row 2 [  a₂₁        a₂₂        a₂₃  ]  ← Total Elements: 2 × 3 = 6
-         ↑
-    Element a₂₁ (Row 2, Column 1)
+A = [  3   -2   5  ]
+    [  7    4   1  ]
 </pre>
 
----
+<p>
+This matrix has <b>2 rows</b> and <b>3 columns</b>.
+Therefore its order is:
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
+<p><b>2 × 3</b></p>
+
+<p>
+The first number tells us the number of rows and the second number tells us
+the number of columns.
+</p>
+
+<h3>2. ORDER OF A MATRIX</h3>
+
+<p>
+If a matrix has <b>m rows</b> and <b>n columns</b>, its order is:
+</p>
+
+<p><b>m × n</b></p>
+
+<p>Example:</p>
+
+<pre>
+B = [ 2   4   6   8 ]
+    [ 1   3   5   7 ]
+    [ 9   0   2   4 ]
+</pre>
+
+<p>
+There are 3 rows and 4 columns.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p><b>Order of B = 3 × 4</b></p>
+
+<p>
+Number of elements:
+</p>
+
+<p>
+3 × 4 = <b>12 elements</b>
+</p>
+
+<h3>3. POSITION OF AN ELEMENT</h3>
+
+<p>
+The element in row i and column j is written as <b>a<sub>ij</sub></b>.
+</p>
+
+<p>
+The first subscript is always the <b>row</b>.
+The second subscript is always the <b>column</b>.
+</p>
+
+<pre>
+A = [  4   7   2 ]
+    [  9   5   6 ]
+    [  1   8   3 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
 <ul>
-  <li><b>Machine Learning & Data Science:</b> Feature matrices in dataset design, where rows correspond to individual observations/samples and columns represent measured variables/features.</li>
-  <li><b>Computer Graphics & Game Engines:</b> Representation of 2D/3D vertex positions and transformation grids.</li>
-  <li><b>Quantum Physics:</b> Quantum state vectors and density operators in Hilbert space.</li>
+<li>a<sub>11</sub> = 4</li>
+<li>a<sub>12</sub> = 7</li>
+<li>a<sub>23</sub> = 6</li>
+<li>a<sub>31</sub> = 1</li>
+<li>a<sub>33</sub> = 3</li>
 </ul>
 
----
+<h3>4. TYPES OF MATRICES</h3>
+
+<h4>Row Matrix</h4>
+
+<pre>
+[ 3   5   7 ]
+</pre>
+
+<p>It has one row.</p>
+
+<h4>Column Matrix</h4>
+
+<pre>
+[ 3 ]
+[ 5 ]
+[ 7 ]
+</pre>
+
+<p>It has one column.</p>
+
+<h4>Square Matrix</h4>
+
+<pre>
+[ 2   4 ]
+[ 5   7 ]
+</pre>
+
+<p>
+Number of rows = number of columns.
+</p>
+
+<h4>Zero Matrix</h4>
+
+<pre>
+[ 0   0 ]
+[ 0   0 ]
+</pre>
+
+<h4>Diagonal Matrix</h4>
+
+<pre>
+[ 4   0   0 ]
+[ 0   7   0 ]
+[ 0   0   2 ]
+</pre>
+
+<h4>Identity Matrix</h4>
+
+<pre>
+I₂ = [ 1   0 ]
+     [ 0   1 ]
+</pre>
+
+<pre>
+I₃ = [ 1   0   0 ]
+     [ 0   1   0 ]
+     [ 0   0   1 ]
+</pre>
+
+<h4>Scalar Matrix</h4>
+
+<pre>
+[ 5   0   0 ]
+[ 0   5   0 ]
+[ 0   0   5 ]
+</pre>
+
+<p>
+All diagonal elements are equal and all other elements are zero.
+</p>
+
+<h4>Symmetric Matrix</h4>
+
+<pre>
+A = [ 2   5 ]
+    [ 5   8 ]
+</pre>
+
+<p>
+A matrix is symmetric if:
+</p>
+
+<p><b>Aᵀ = A</b></p>
+
+<h3>WORKED EXAMPLE 1</h3>
+
+<p>
+Given:
+</p>
+
+<pre>
+A = [ 7  -3   4 ]
+    [ 2   9   6 ]
+</pre>
+
+<p><b>Find the order and a₂₃.</b></p>
+
+<p><b>Step 1:</b> Count rows.</p>
+
+<p>There are 2 rows.</p>
+
+<p><b>Step 2:</b> Count columns.</p>
+
+<p>There are 3 columns.</p>
+
+<p>Therefore:</p>
+
+<p><b>Order = 2 × 3</b></p>
+
+<p><b>Step 3:</b> Find a₂₃.</p>
+
+<p>
+Row 2:
+</p>
+
+<pre>
+[ 2   9   6 ]
+    ↑       ↑
+   a₂₂     a₂₃
+</pre>
+
+<p>Therefore:</p>
+
+<p><b>a₂₃ = 6</b></p>
+
+<h3>WORKED EXAMPLE 2: CONSTRUCTING A MATRIX</h3>
+
+<p>
+Construct a 2 × 3 matrix where:
+</p>
+
+<p><b>a<sub>ij</sub> = 2i + j</b></p>
+
+<p><b>Step 1:</b></p>
+
+<p>
+a₁₁ = 2(1) + 1 = 3
+</p>
+
+<p><b>Step 2:</b></p>
+
+<p>
+a₁₂ = 2(1) + 2 = 4
+</p>
+
+<p><b>Step 3:</b></p>
+
+<p>
+a₁₃ = 2(1) + 3 = 5
+</p>
+
+<p><b>Step 4:</b></p>
+
+<p>
+a₂₁ = 2(2) + 1 = 5
+</p>
+
+<p><b>Step 5:</b></p>
+
+<p>
+a₂₂ = 2(2) + 2 = 6
+</p>
+
+<p><b>Step 6:</b></p>
+
+<p>
+a₂₃ = 2(2) + 3 = 7
+</p>
+
+<p>Therefore:</p>
+
+<pre>
+A = [ 3   4   5 ]
+    [ 5   6   7 ]
+</pre>
+
+<h3>PRACTICE</h3>
 `,
+
   [
     {
-      "q": "What are the dimensions (order) of a matrix with 4 rows and 3 columns, and how many total elements does it contain?",
-      "hint": "order is written as m × n and total elements = m × n",
-      "steps": [
-        "Step 1: Identify number of rows m = 4",
-        "Step 2: Identify number of columns n = 3",
-        "Step 3: Write dimension in m × n notation → 4 × 3",
-        "Step 4: Calculate total elements = 4 × 3 = 12"
+      q: "Find the order of A = [[4,7,2],[1,5,9],[6,3,8]] and find a23.",
+      hint: "Count rows and columns. Then locate row 2 column 3.",
+      steps: [
+        "Step 1: A has 3 rows.",
+        "Step 2: A has 3 columns.",
+        "Step 3: Therefore its order is 3 × 3.",
+        "Step 4: Row 2 is [1,5,9].",
+        "Step 5: Column 3 gives a23 = 9."
       ],
-      "ans": "4 × 3 dimension, containing 12 elements",
-      "why": "A matrix with m rows and n columns has dimension m × n and holds m × n total entries."
+      ans: "Order = 3 × 3; a23 = 9",
+      why: "Matrix position is identified as row first, then column."
     },
     {
-      "q": "Given A = [[5, -2, 9], [1, 4, 8], [3, 0, -7]], find a₂₃ + a₃₁.",
-      "hint": "a₂₃ is Row 2 Column 3; a₃₁ is Row 3 Column 1",
-      "steps": [
-        "Step 1: Locate a₂₃ in Row 2, Column 3 → a₂₃ = 8",
-        "Step 2: Locate a₃₁ in Row 3, Column 1 → a₃₁ = 3",
-        "Step 3: Add the two values: 8 + 3 = 11"
+      q: "Construct a 2 × 2 matrix if aij = i + 2j.",
+      hint: "Calculate a11, a12, a21 and a22.",
+      steps: [
+        "a11 = 1 + 2(1) = 3",
+        "a12 = 1 + 2(2) = 5",
+        "a21 = 2 + 2(1) = 4",
+        "a22 = 2 + 2(2) = 6"
       ],
-      "ans": "11",
-      "why": "Element indexing uses a_ij where i is row index and j is column index."
-    },
-    {
-      "q": "Construct a 2 × 2 matrix B where b_ij = i² + 2j.",
-      "hint": "evaluate formula for (i,j) ∈ {(1,1),(1,2),(2,1),(2,2)}",
-      "steps": [
-        "Step 1: b₁₁ = 1² + 2(1) = 1 + 2 = 3",
-        "Step 2: b₁₂ = 1² + 2(2) = 1 + 4 = 5",
-        "Step 3: b₂₁ = 2² + 2(1) = 4 + 2 = 6",
-        "Step 4: b₂₂ = 2² + 2(2) = 4 + 4 = 8",
-        "Step 5: Assemble matrix B = [[3, 5], [6, 8]]"
-      ],
-      "ans": "[[3, 5], [6, 8]]",
-      "why": "Matrix entries are calculated by evaluating the algebraic rule b_ij for each row-column index pair."
-    },
-    {
-      "q": "Which type of matrix is square, has 1s on its main diagonal, and 0s everywhere else?",
-      "hint": "it acts as the multiplicative identity in matrix algebra",
-      "steps": [
-        "Step 1: Recall definition of square matrix with a_ii = 1 for all i",
-        "Step 2: Verify non-diagonal elements a_ij = 0 (i ≠ j)",
-        "Step 3: Identify matrix as the Identity Matrix (I)"
-      ],
-      "ans": "Identity Matrix",
-      "why": "An identity matrix is a diagonal matrix whose main diagonal entries are all equal to 1."
-    },
-    {
-      "q": "Why is a 3 × 1 matrix called a column matrix?",
-      "hint": "examine its number of columns",
-      "steps": [
-        "Step 1: Observe that the matrix has 3 rows",
-        "Step 2: Observe that the matrix has only 1 column",
-        "Step 3: Any matrix with exactly 1 column is defined as a column matrix (or column vector)"
-      ],
-      "ans": "It consists of exactly 1 column",
-      "why": "A matrix consisting of a single vertical column is termed a column matrix."
+      ans: "[[3,5],[4,6]]",
+      why: "Each element is obtained by substituting its row and column numbers."
     }
   ]
 );
+
 
 add(
   "math",
@@ -10434,179 +10526,241 @@ add(
   "Basic Matrix Operations",
 
   `
-<h2> Basic Matrix Operations</h2>
+<h2>Basic Matrix Operations</h2>
 
-<h3> DEEP NOTES</h3>
+<h3>1. EQUALITY OF MATRICES</h3>
+
 <p>
-Matrix arithmetic extends traditional algebraic operations into multi-dimensional grids. Understanding matrix equality, addition, subtraction, and scalar multiplication provides the foundation for matrix algebra.
+Two matrices are equal only when:
 </p>
 
-<h4>1. Equality of Matrices</h4>
-<p>
-Two matrices \(A\) and \(B\) are defined as <b>equal</b> (\(A = B\)) if and only if they satisfy two strict criteria:
-</p>
-<ol>
-  <li><b>Identical Dimensions:</b> \(A\) and \(B\) must have the exact same order \(m \times n\).</li>
-  <li><b>Identical Elements:</b> Every corresponding pair of entries must be equal, i.e., \(a_{ij} = b_{ij}\) for all \(1 \le i \le m\) and \(1 \le j \le n\).</li>
-</ol>
-
-<h4>2. Matrix Addition & Subtraction</h4>
-<p>
-Matrix addition and subtraction are <b>element-wise operations</b>.
-</p>
 <ul>
-  <li><b>Requirement:</b> Matrices MUST have identical dimensions (\(m \times n\)). Addition or subtraction of matrices with differing orders is <b>undefined</b>.</li>
-  <li>If \(A, B \in \mathbb{R}^{m \times n}\), then \(C = A \pm B\) is an \(m \times n\) matrix where:
-    \[c_{ij} = a_{ij} \pm b_{ij}\]
-  </li>
+<li>They have the same order.</li>
+<li>Corresponding elements are equal.</li>
 </ul>
 
-<h5>Algebraic Properties of Matrix Addition:</h5>
-<ul>
-  <li><b>Commutative Law:</b> \(A + B = B + A\)</li>
-  <li><b>Associative Law:</b> \((A + B) + C = A + (B + C)\)</li>
-  <li><b>Additive Identity:</b> \(A + O = A\) (where \(O\) is the zero matrix of matching order)</li>
-  <li><b>Additive Inverse:</b> \(A + (-A) = O\)</li>
-</ul>
-
-<h4>3. Scalar Multiplication</h4>
-<p>
-Multiplying a matrix \(A\) by a real number scalar \(k \in \mathbb{R}\) scales <b>every single entry</b> in \(A\) by \(k\):
-\[(k A)_{ij} = k \cdot a_{ij}\]
-</p>
-<pre>
-k × [ a₁₁  a₁₂ ] = [ k·a₁₁  k·a₁₂ ]
-    [ a₂₁  a₂₂ ]   [ k·a₂₁  k·a₂₂ ]
-</pre>
-
-<h5>Properties of Scalar Multiplication:</h5>
-<ul>
-  <li>\(k(A + B) = kA + kB\) (Distributive over matrix addition)</li>
-  <li>\((k + m)A = kA + mA\) (Distributive over scalar addition)</li>
-  <li>\(k(mA) = (km)A\) (Associative property)</li>
-  <li>\(1 \cdot A = A\) and \((-1) \cdot A = -A\)</li>
-</ul>
-
----
-
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
-
-<p><b>Example 1: Solving a Matrix Equation for Unknowns</b></p>
-<p>Find the values of \(x\) and \(y\) given that \(\begin{pmatrix} 2x + 1 & 4 \\ 7 & y - 3 \end{pmatrix} = \begin{pmatrix} 9 & 4 \\ 7 & 5 \end{pmatrix}\).</p>
-<p><b>Step 1: Set corresponding elements equal.</b></p>
-<ul>
-  <li>Element (1,1): \(2x + 1 = 9\)</li>
-  <li>Element (2,2): \(y - 3 = 5\)</li>
-</ul>
-<p><b>Step 2: Solve for \(x\).</b></p>
-<p>\(2x = 9 - 1 \implies 2x = 8 \implies x = 4\)</p>
-<p><b>Step 3: Solve for \(y\).</b></p>
-<p>\(y = 5 + 3 \implies y = 8\)</p>
-<p><b>Final Answer:</b> \(x = 4, y = 8\)</p>
-
-<br>
-
-<p><b>Example 2: Matrix Linear Combination</b></p>
-<p>Given \(A = \begin{pmatrix} 3 & -1 \\ 2 & 5 \end{pmatrix}\) and \(B = \begin{pmatrix} 1 & 4 \\ -3 & 2 \end{pmatrix}\), compute \(3A - 2B\).</p>
-<p><b>Step 1: Calculate scalar product \(3A\).</b></p>
-<p>\(3A = 3 \begin{pmatrix} 3 & -1 \\ 2 & 5 \end{pmatrix} = \begin{pmatrix} 9 & -3 \\ 6 & 15 \end{pmatrix}\)</p>
-<p><b>Step 2: Calculate scalar product \(2B\).</b></p>
-<p>\(2B = 2 \begin{pmatrix} 1 & 4 \\ -3 & 2 \end{pmatrix} = \begin{pmatrix} 2 & 8 \\ -6 & 4 \end{pmatrix}\)</p>
-<p><b>Step 3: Subtract \(2B\) from \(3A\) element-by-element.</b></p>
-<p>\(3A - 2B = \begin{pmatrix} 9 - 2 & -3 - 8 \\ 6 - (-6) & 15 - 4 \end{pmatrix} = \begin{pmatrix} 7 & -11 \\ 12 & 11 \end{pmatrix}\)</p>
-<p><b>Final Answer:</b> \(\begin{pmatrix} 7 & -11 \\ 12 & 11 \end{pmatrix}\)</p>
-
-<br>
-
-<p><b>Example 3: Invalid Operation Analysis</b></p>
-<p>Can matrix \(P = \begin{pmatrix} 1 & 2 \\ 3 & 4 \end{pmatrix}\) be added to matrix \(Q = \begin{pmatrix} 5 & 6 & 7 \\ 8 & 9 & 10 \end{pmatrix}\)? Explain.</p>
-<p><b>Step 1: Check order of \(P\).</b> \(P\) has order \(2 \times 2\).</p>
-<p><b>Step 2: Check order of \(Q\).</b> \(Q\) has order \(2 \times 3\).</p>
-<p><b>Step 3: Compare orders.</b> \(2 \times 2 \neq 2 \times 3\). Dimensions do not match.</p>
-<p><b>Final Answer:</b> No. Matrix addition is undefined because \(P\) and \(Q\) have different dimensions.</p>
-
----
-
-<h3> DIAGRAM</h3>
+<p>For example:</p>
 
 <pre>
-Scalar Multiplication:                Element-wise Matrix Addition:
-      [ 1  2 ]   [ 3×1  3×2 ]             [ a  b ]   [ e  f ]   [ a+e  b+f ]
-  3 × [ 4  5 ] = [ 3×4  3×5 ]             [ c  d ] + [ g  h ] = [ c+g  d+h ]
+A = [ x   4 ]
+    [ 7   y ]
+
+B = [ 3   4 ]
+    [ 7   9 ]
 </pre>
 
----
+<p>If A = B:</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-  <li><b>Digital Image Processing:</b> Adjusting image brightness by scalar multiplying the pixel intensity matrix; image compositing/blending by adding image matrices.</li>
-  <li><b>Financial Portfolio Management:</b> Summing quarterly revenue matrices across regional branches.</li>
-  <li><b>Physics & Structural Mechanics:</b> Superposition of forces in multi-degree-of-freedom structural grids.</li>
-</ul>
+<p>
+x = 3
+</p>
 
----
+<p>
+y = 9
+</p>
+
+<h3>2. ADDITION</h3>
+
+<p>
+Matrices can be added only when they have the <b>same order</b>.
+Add corresponding elements.
+</p>
+
+<pre>
+A = [ 2   5 ]
+    [ 4   7 ]
+
+B = [ 3   1 ]
+    [ 6   2 ]
+</pre>
+
+<p>Then:</p>
+
+<pre>
+A + B
+
+= [ 2+3    5+1 ]
+  [ 4+6    7+2 ]
+
+= [ 5    6 ]
+  [10    9 ]
+</pre>
+
+<h3>3. SUBTRACTION</h3>
+
+<pre>
+A - B
+
+= [ 2-3    5-1 ]
+  [ 4-6    7-2 ]
+
+= [ -1    4 ]
+  [ -2    5 ]
+</pre>
+
+<h3>4. SCALAR MULTIPLICATION</h3>
+
+<p>
+A scalar is an ordinary number multiplying every element of a matrix.
+</p>
+
+<pre>
+A = [ 2   -3 ]
+    [ 5    4 ]
+</pre>
+
+<p>Find 3A.</p>
+
+<pre>
+3A = [ 3(2)    3(-3) ]
+     [ 3(5)    3(4)  ]
+
+   = [ 6    -9 ]
+     [15    12 ]
+</pre>
+
+<h3>5. ADDITION WITH ALGEBRAIC ENTRIES</h3>
+
+<pre>
+A = [ x     4 ]
+    [ 2     y ]
+
+B = [ 3     7 ]
+    [ 5     1 ]
+</pre>
+
+<p>Then:</p>
+
+<pre>
+A + B
+
+= [ x+3    11 ]
+  [ 7      y+1 ]
+</pre>
+
+<h3>WORKED EXAMPLE: FINDING UNKNOWN VALUES</h3>
+
+<p>Given:</p>
+
+<pre>
+[ x+2    5 ] = [ 8    5 ]
+[ 3       y ]   [ 3    11 ]
+</pre>
+
+<p>Compare corresponding elements.</p>
+
+<p>
+x + 2 = 8
+</p>
+
+<p>
+x = 6
+</p>
+
+<p>
+y = 11
+</p>
+
+<p><b>Answer:</b> x = 6, y = 11.</p>
+
+<h3>IMPORTANT</h3>
+
+<p>
+You cannot add matrices of different orders.
+</p>
+
+<pre>
+[ 1  2 ]   +   [ 3 ]
+[ 4  5 ]       [ 6 ]
+
+2×2               2×1
+</pre>
+
+<p>
+This operation is <b>not defined</b>.
+</p>
+
+<h3>WORKED EXAMPLE</h3>
+
+<p>
+Find 2A - 3B where:
+</p>
+
+<pre>
+A = [ 1   4 ]
+    [ 3   2 ]
+
+B = [ 2   1 ]
+    [ 0   5 ]
+</pre>
+
+<p><b>Step 1: Find 2A.</b></p>
+
+<pre>
+2A = [ 2   8 ]
+     [ 6   4 ]
+</pre>
+
+<p><b>Step 2: Find 3B.</b></p>
+
+<pre>
+3B = [ 6    3 ]
+     [ 0   15 ]
+</pre>
+
+<p><b>Step 3: Subtract.</b></p>
+
+<pre>
+2A - 3B
+
+= [ 2-6    8-3 ]
+  [ 6-0    4-15 ]
+
+= [ -4    5 ]
+  [  6   -11 ]
+</pre>
 `,
+
   [
     {
-      "q": "If A = [[4, 1], [-2, 3]] and B = [[1, 5], [6, -1]], find A + B.",
-      "hint": "add corresponding elements at matching row and column positions",
-      "steps": [
-        "Step 1: Verify dimensions → both are 2 × 2 matrices",
-        "Step 2: First row: (4+1, 1+5) = (5, 6)",
-        "Step 3: Second row: (-2+6, 3+(-1)) = (4, 2)",
-        "Step 4: Combine into matrix [[5, 6], [4, 2]]"
+      q: "Find A+B if A=[[2,4],[5,7]] and B=[[3,1],[6,2]].",
+      hint: "Add corresponding entries.",
+      steps: [
+        "2+3=5",
+        "4+1=5",
+        "5+6=11",
+        "7+2=9",
+        "Therefore A+B=[[5,5],[11,9]]."
       ],
-      "ans": "[[5, 6], [4, 2]]",
-      "why": "Matrix addition is performed by adding corresponding entries of equal-dimensional matrices."
+      ans: "[[5,5],[11,9]]",
+      why: "Matrix addition is performed element by element."
     },
     {
-      "q": "Find 4 × [[2, -3], [0, 5]].",
-      "hint": "multiply every entry inside the matrix by scalar 4",
-      "steps": [
-        "Step 1: Multiply row 1 entries: 4 × 2 = 8, 4 × (-3) = -12",
-        "Step 2: Multiply row 2 entries: 4 × 0 = 0, 4 × 5 = 20",
-        "Step 3: Combine into matrix [[8, -12], [0, 20]]"
+      q: "Find 4A if A=[[-2,3],[5,-1]].",
+      hint: "Multiply every entry by 4.",
+      steps: [
+        "4(-2)=-8",
+        "4(3)=12",
+        "4(5)=20",
+        "4(-1)=-4"
       ],
-      "ans": "[[8, -12], [0, 20]]",
-      "why": "Scalar multiplication scales every individual element of the matrix by the scalar factor."
+      ans: "[[-8,12],[20,-4]]",
+      why: "Scalar multiplication affects every matrix entry."
     },
     {
-      "q": "Solve for matrix X in the matrix equation 2X + A = B, where A = [[1, 4], [2, 0]] and B = [[5, 10], [6, 8]].",
-      "hint": "isolate X: 2X = B - A, so X = (1/2)(B - A)",
-      "steps": [
-        "Step 1: Subtract A from B: B - A = [[5-1, 10-4], [6-2, 8-0]] = [[4, 6], [4, 8]]",
-        "Step 2: Divide each element by 2 (multiply by 1/2): X = (1/2)[[4, 6], [4, 8]]",
-        "Step 3: Calculate X = [[2, 3], [2, 4]]"
+      q: "If [[x+3,4],[2,y]]=[[10,4],[2,7]], find x and y.",
+      hint: "Compare corresponding entries.",
+      steps: [
+        "x+3=10",
+        "x=7",
+        "y=7"
       ],
-      "ans": "[[2, 3], [2, 4]]",
-      "why": "Matrix linear equations follow standard algebraic isolation rules, applying element-wise operations."
-    },
-    {
-      "q": "Why is the matrix operation [[1, 2], [3, 4]] - [[5, 6]] invalid?",
-      "hint": "compare matrix dimensions",
-      "steps": [
-        "Step 1: Determine order of first matrix → 2 × 2",
-        "Step 2: Determine order of second matrix → 1 × 2",
-        "Step 3: Check matching condition → 2 × 2 ≠ 1 × 2",
-        "Step 4: Conclude operation is undefined"
-      ],
-      "ans": "The matrices have different dimensions",
-      "why": "Matrix subtraction requires both matrices to possess identical row and column dimensions."
-    },
-    {
-      "q": "Given matrix M, what is the result of M + (-1)M?",
-      "hint": "apply distributive property M - M",
-      "steps": [
-        "Step 1: Recognize (-1)M = -M (the additive inverse)",
-        "Step 2: Perform M + (-M) = M - M",
-        "Step 3: Every entry m_ij - m_ij = 0",
-        "Step 4: The result is the Zero Matrix (O)"
-      ],
-      "ans": "Zero Matrix (O)",
-      "why": "Adding a matrix to its additive inverse yields the zero matrix of matching dimension."
+      ans: "x=7, y=7",
+      why: "Equal matrices have equal corresponding elements."
     }
   ]
 );
+
 
 add(
   "math",
@@ -10614,553 +10768,1991 @@ add(
   "Matrix Multiplication",
 
   `
-<h2> Matrix Multiplication</h2>
+<h2>Matrix Multiplication</h2>
 
-<h3> DEEP NOTES</h3>
+<h3>1. WHEN CAN MATRICES BE MULTIPLIED?</h3>
+
 <p>
-Matrix multiplication is a foundational operation in linear algebra that differs fundamentally from element-wise multiplication. Instead of multiplying matching entries, matrix multiplication computes row-column dot products.
+For:
 </p>
 
-<h4>1. Compatibility & Dimension Condition</h4>
-<p>
-The product matrix \(C = AB\) is <b>defined if and only if</b> the number of columns in the first matrix \(A\) equals the number of rows in the second matrix \(B\).
-</p>
-<pre>
-Matrix A (m × n)   ×   Matrix B (n × p)   =   Matrix C (m × p)
-           └─── Inner Dimensions ───┘
-                    MUST MATCH!
-</pre>
-<ul>
-  <li>If \(A\) is of size \(m \times n\) and \(B\) is of size \(n \times p\), the resulting product \(C = AB\) has size <b>\(m \times p\)</b>.</li>
-  <li>If inner dimensions do not match (\(n_A \neq m_B\)), the multiplication is <b>undefined</b>.</li>
-</ul>
+<p><b>A × B</b></p>
 
-<h4>2. Row-by-Column Computation (Dot Product Mechanic)</h4>
 <p>
-The entry \(c_{ij}\) in row \(i\) and column \(j\) of product matrix \(C = AB\) is calculated by taking the <b>dot product</b> of row \(i\) of matrix \(A\) and column \(j\) of matrix \(B\):
-\[c_{ij} = \sum_{k=1}^{n} a_{ik} b_{kj} = a_{i1}b_{1j} + a_{i2}b_{2j} + \dots + a_{in}b_{nj}\]
+the number of <b>columns of A</b> must equal the number of
+<b>rows of B</b>.
 </p>
 
-<p>For \(2 \times 2\) matrix multiplication:</p>
 <pre>
-[ a  b ] × [ e  f ] = [ (ae + bg)  (af + bh) ]
-[ c  d ]   [ g  h ]   [ (ce + dg)  (cf + dh) ]
+A: 2 × 3
+B: 3 × 4
+
+A × B is possible.
+
+Result: 2 × 4
 </pre>
 
-<h4>3. Fundamental Algebraic Properties</h4>
-<ul>
-  <li><b>Non-Commutative (CRITICAL):</b> In general, \(AB \neq BA\). Matrix order CANNOT be swapped!</li>
-  <li><b>Associative Law:</b> \((AB)C = A(BC)\)</li>
-  <li><b>Distributive Law:</b> \(A(B + C) = AB + AC\) and \((A + B)C = AC + BC\)</li>
-  <li><b>Identity Element Property:</b> \(A I_n = A\) and \(I_m A = A\) (where \(I\) is matching identity matrix)</li>
-  <li><b>Zero Matrix Property:</b> \(A O = O\) and \(O A = O\)</li>
-</ul>
+<h3>2. ROW × COLUMN RULE</h3>
 
----
+<p>
+Each entry in the answer is obtained by multiplying a row of the first
+matrix by a column of the second matrix and adding.
+</p>
 
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
-
-<p><b>Example 1: Multiplying 2 × 2 Matrices</b></p>
-<p>Given \(A = \begin{pmatrix} 2 & 3 \\ 1 & 4 \end{pmatrix}\) and \(B = \begin{pmatrix} 5 & 1 \\ 0 & 2 \end{pmatrix}\), compute \(AB\).</p>
-<p><b>Step 1: Verify compatibility.</b> \(A\) is \(2 \times 2\), \(B\) is \(2 \times 2\). Inner dimensions match (2 = 2). Result is \(2 \times 2\).</p>
-<p><b>Step 2: Compute \(c_{11}\) (Row 1 of A · Col 1 of B).</b></p>
-<p>\(c_{11} = (2 \times 5) + (3 \times 0) = 10 + 0 = 10\)</p>
-<p><b>Step 3: Compute \(c_{12}\) (Row 1 of A · Col 2 of B).</b></p>
-<p>\(c_{12} = (2 \times 1) + (3 \times 2) = 2 + 6 = 8\)</p>
-<p><b>Step 4: Compute \(c_{21}\) (Row 2 of A · Col 1 of B).</b></p>
-<p>\(c_{21} = (1 \times 5) + (4 \times 0) = 5 + 0 = 5\)</p>
-<p><b>Step 5: Compute \(c_{22}\) (Row 2 of A · Col 2 of B).</b></p>
-<p>\(c_{22} = (1 \times 1) + (4 \times 2) = 1 + 8 = 9\)</p>
-<p><b>Final Answer:</b> \(AB = \begin{pmatrix} 10 & 8 \\ 5 & 9 \end{pmatrix}\)</p>
-
-<br>
-
-<p><b>Example 2: Demonstrating Non-Commutativity (\(AB \neq BA\))</b></p>
-<p>Using \(A = \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}\) and \(B = \begin{pmatrix} 2 & 0 \\ 3 & 1 \end{pmatrix}\), compute \(BA\) and compare with \(AB = \begin{pmatrix} 8 & 2 \\ 3 & 1 \end{pmatrix}\).</p>
-<p><b>Step 1: Compute \(BA = \begin{pmatrix} 2 & 0 \\ 3 & 1 \end{pmatrix} \begin{pmatrix} 1 & 2 \\ 0 & 1 \end{pmatrix}\).</b></p>
-<ul>
-  <li>Row 1 · Col 1: \((2 \times 1) + (0 \times 0) = 2\)</li>
-  <li>Row 1 · Col 2: \((2 \times 2) + (0 \times 1) = 4\)</li>
-  <li>Row 2 · Col 1: \((3 \times 1) + (1 \times 0) = 3\)</li>
-  <li>Row 2 · Col 2: \((3 \times 2) + (1 \times 1) = 6 + 1 = 7\)</li>
-</ul>
-<p><b>Step 2: Form \(BA\).</b> \(BA = \begin{pmatrix} 2 & 4 \\ 3 & 7 \end{pmatrix}\).</p>
-<p><b>Step 3: Compare \(AB\) and \(BA\).</b> \(\begin{pmatrix} 8 & 2 \\ 3 & 1 \end{pmatrix} \neq \begin{pmatrix} 2 & 4 \\ 3 & 7 \end{pmatrix}\).</p>
-<p><b>Final Answer:</b> \(BA = \begin{pmatrix} 2 & 4 \\ 3 & 7 \end{pmatrix}\); confirms \(AB \neq BA\).</p>
-
-<br>
-
-<p><b>Example 3: Row Vector by Column Vector Multiplication</b></p>
-<p>Compute \(R \cdot C\) where \(R = \begin{pmatrix} 3 & -2 & 4 \end{pmatrix}\) and \(C = \begin{pmatrix} 1 \\ 5 \\ 2 \end{pmatrix}\).</p>
-<p><b>Step 1: Check dimensions.</b> \(R\) is \(1 \times 3\), \(C\) is \(3 \times 1\). Inner dimensions match (3 = 3). Product is \(1 \times 1\) scalar.</p>
-<p><b>Step 2: Compute dot product.</b></p>
-<p>\(R \cdot C = (3 \times 1) + (-2 \times 5) + (4 \times 2) = 3 - 10 + 8 = 1\)</p>
-<p><b>Final Answer:</b> \(\begin{pmatrix} 1 \end{pmatrix}\) or scalar \(1\).</p>
-
----
-
-<h3> DIAGRAM</h3>
+<p>Example:</p>
 
 <pre>
-        Row 1 of A [  a₁₁   a₁₂  ]  ×  Column 1 of B [ b₁₁ ]
-                                                      [ b₂₁ ]
-        ─────────────────────────────────────────────────────
-        Result entry c₁₁ = (a₁₁ × b₁₁) + (a₁₂ × b₂₁)
+A = [ 2   3 ]
+    [ 4   5 ]
+
+B = [ 6   1 ]
+    [ 2   3 ]
 </pre>
 
----
+<p>Find AB.</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-  <li><b>3D Computer Graphics Pipelines:</b> Concatenating transformation matrices (Translation × Rotation × Scaling) into a single projection matrix.</li>
-  <li><b>Artificial Intelligence & Deep Learning:</b> Neural network forward propagation layers (\(Y = \text{activation}(W X + B)\)).</li>
-  <li><b>Markov Chain Analysis:</b> Predicting state probability distributions across time transitions.</li>
-</ul>
+<p><b>Step 1: First row × first column.</b></p>
 
----
+<p>
+(2)(6) + (3)(2)
+</p>
+
+<p>
+= 12 + 6
+</p>
+
+<p>
+= 18
+</p>
+
+<p><b>Step 2: First row × second column.</b></p>
+
+<p>
+(2)(1) + (3)(3)
+</p>
+
+<p>
+= 2 + 9
+</p>
+
+<p>
+= 11
+</p>
+
+<p><b>Step 3: Second row × first column.</b></p>
+
+<p>
+(4)(6) + (5)(2)
+</p>
+
+<p>
+= 24 + 10
+</p>
+
+<p>
+= 34
+</p>
+
+<p><b>Step 4: Second row × second column.</b></p>
+
+<p>
+(4)(1) + (5)(3)
+</p>
+
+<p>
+= 4 + 15
+</p>
+
+<p>
+= 19
+</p>
+
+<p>Therefore:</p>
+
+<pre>
+AB = [ 18   11 ]
+     [ 34   19 ]
+</pre>
+
+<h3>3. A 2 × 3 BY 3 × 2 EXAMPLE</h3>
+
+<pre>
+A = [ 1   2   3 ]
+    [ 4   5   6 ]
+
+B = [ 2   1 ]
+    [ 3   2 ]
+    [ 4   5 ]
+</pre>
+
+<p>
+A is 2 × 3 and B is 3 × 2.
+The inner numbers are both 3, so multiplication is possible.
+The answer will be 2 × 2.
+</p>
+
+<p><b>Entry 1:</b></p>
+
+<p>
+1(2) + 2(3) + 3(4)
+= 2 + 6 + 12
+= 20
+</p>
+
+<p><b>Entry 2:</b></p>
+
+<p>
+1(1) + 2(2) + 3(5)
+= 1 + 4 + 15
+= 20
+</p>
+
+<p><b>Entry 3:</b></p>
+
+<p>
+4(2) + 5(3) + 6(4)
+= 8 + 15 + 24
+= 47
+</p>
+
+<p><b>Entry 4:</b></p>
+
+<p>
+4(1) + 5(2) + 6(5)
+= 4 + 10 + 30
+= 44
+</p>
+
+<pre>
+AB = [ 20   20 ]
+     [ 47   44 ]
+</pre>
+
+<h3>4. MATRIX MULTIPLICATION IS NOT GENERALLY COMMUTATIVE</h3>
+
+<p>
+In ordinary arithmetic:
+</p>
+
+<p>
+2 × 3 = 3 × 2
+</p>
+
+<p>
+But matrices generally satisfy:
+</p>
+
+<p><b>AB ≠ BA</b></p>
+
+<p>
+Sometimes BA may not even exist.
+</p>
+
+<h3>WORKED EXAMPLE</h3>
+
+<pre>
+A = [ 1   2 ]
+    [ 0   3 ]
+
+B = [ 4   1 ]
+    [ 2   5 ]
+</pre>
+
+<p>Find AB.</p>
+
+<pre>
+AB₁₁ = 1(4)+2(2)
+      = 4+4
+      = 8
+
+AB₁₂ = 1(1)+2(5)
+      = 1+10
+      = 11
+
+AB₂₁ = 0(4)+3(2)
+      = 6
+
+AB₂₂ = 0(1)+3(5)
+      = 15
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+AB = [ 8   11 ]
+     [ 6   15 ]
+</pre>
+
+<h3>IDENTITY MATRIX</h3>
+
+<p>
+The identity matrix behaves like 1 in ordinary multiplication.
+</p>
+
+<pre>
+AI = IA = A
+</pre>
+
+<p>For example:</p>
+
+<pre>
+A = [ 3   5 ]
+    [ 2   7 ]
+
+I = [ 1   0 ]
+    [ 0   1 ]
+</pre>
+
+<p>Then:</p>
+
+<pre>
+AI = [3   5]
+     [2   7]
+</pre>
 `,
+
   [
     {
-      "q": "If matrix A is of order 3 × 2 and matrix B is of order 2 × 4, what is the order of the product matrix AB?",
-      "hint": "check inner dimension match and outer dimension result (m × p)",
-      "steps": [
-        "Step 1: Identify dimensions: A(3 × 2), B(2 × 4)",
-        "Step 2: Compare inner dimensions → 2 = 2 (multiplication valid)",
-        "Step 3: Extract outer dimensions → 3 and 4",
-        "Step 4: Conclude product matrix AB has dimension 3 × 4"
+      q: "Multiply A=[[2,3],[4,5]] by B=[[1,2],[3,4]].",
+      hint: "Use row × column.",
+      steps: [
+        "First entry: 2(1)+3(3)=11",
+        "Second entry: 2(2)+3(4)=16",
+        "Third entry: 4(1)+5(3)=19",
+        "Fourth entry: 4(2)+5(4)=28"
       ],
-      "ans": "3 × 4",
-      "why": "Multiplying an m × n matrix by an n × p matrix yields a product matrix of dimension m × p."
+      ans: "[[11,16],[19,28]]",
+      why: "Each result entry is a dot product of a row and a column."
     },
     {
-      "q": "Multiply A = [[1, 2], [3, 4]] by B = [[2, 0], [1, 3]].",
-      "hint": "compute dot product of each row of A with each column of B",
-      "steps": [
-        "Step 1: c₁₁ = (1×2) + (2×1) = 2 + 2 = 4",
-        "Step 2: c₁₂ = (1×0) + (2×3) = 0 + 6 = 6",
-        "Step 3: c₂₁ = (3×2) + (4×1) = 6 + 4 = 10",
-        "Step 4: c₂₂ = (3×0) + (4×3) = 0 + 12 = 12",
-        "Step 5: Form matrix [[4, 6], [10, 12]]"
+      q: "Can a 2×3 matrix be multiplied by a 2×2 matrix?",
+      hint: "Compare the inner dimensions.",
+      steps: [
+        "First matrix has 3 columns.",
+        "Second matrix has 2 rows.",
+        "3 is not equal to 2.",
+        "Therefore multiplication is not defined."
       ],
-      "ans": "[[4, 6], [10, 12]]",
-      "why": "Matrix multiplication computes row-by-column dot products across all index pairs."
-    },
-    {
-      "q": "Multiply row vector R = [[2, -1, 4]] by column vector C = [[3], [5], [1]].",
-      "hint": "compute (1×3) × (3×1) resulting in a single scalar (1×1)",
-      "steps": [
-        "Step 1: Multiply corresponding entries: 2×3 = 6, (-1)×5 = -5, 4×1 = 4",
-        "Step 2: Sum results: 6 + (-5) + 4 = 5",
-        "Step 3: Write result as 1 × 1 matrix [[5]] or scalar 5"
-      ],
-      "ans": "5",
-      "why": "The dot product of a row vector and column vector yields a single scalar value."
-    },
-    {
-      "q": "Why is matrix multiplication AB generally not equal to BA?",
-      "hint": "matrix multiplication depends on row-column orientation order",
-      "steps": [
-        "Step 1: Observe that swapping matrix order changes row-column pairing",
-        "Step 2: Dimensions of AB and BA may not even be identical",
-        "Step 3: Conclude matrix multiplication is non-commutative"
-      ],
-      "ans": "Matrix multiplication is non-commutative (order matters)",
-      "why": "Unlike real number multiplication, matrix multiplication order dictates row-column combinations, making AB ≠ BA in general."
-    },
-    {
-      "q": "Given matrix M, what is the result of multiplying M by the Identity Matrix I of matching size?",
-      "hint": "identity matrix acts as multiplicative identity",
-      "steps": [
-        "Step 1: Recall identity property M × I = M",
-        "Step 2: Every row dot product with identity columns preserves original row entries",
-        "Step 3: Result equals M unchanged"
-      ],
-      "ans": "Matrix M unchanged",
-      "why": "Multiplying any matrix by the identity matrix leaves the original matrix unchanged."
+      ans: "No",
+      why: "The columns of the first matrix must equal the rows of the second."
     }
   ]
 );
 
+
 add(
   "math",
   "matrices",
-  "Determinants & Inverses (2x2)",
+  "Determinants, Minors, Cofactors & Inverses",
 
   `
-<h2> Determinants & Inverses (2×2)</h2>
+<h2>Determinants, Minors, Cofactors & Inverses</h2>
 
-<h3> DEEP NOTES</h3>
-<p>
-The determinant and inverse matrix are powerful scalar and structural metrics used to analyze transformational properties, invertibility, and linear systems.
-</p>
+<h3>1. DETERMINANT OF A 2 × 2 MATRIX</h3>
 
-<h4>1. Matrix Transpose (\(A^T\))</h4>
-<p>
-The <b>transpose</b> of a matrix \(A\), denoted \(A^T\) (or \(A'\)), is formed by interchanging its rows and columns:
-\[(A^T)_{ij} = a_{ji}\]
-</p>
-<pre>
-If A = [ a  b ]  then  Aᵀ = [ a  c ]
-       [ c  d ]             [ b  d ]
-</pre>
-<h5>Properties of Transpose:</h5>
-<ul>
-  <li>\((A^T)^T = A\)</li>
-  <li>\((A + B)^T = A^T + B^T\)</li>
-  <li>\((kA)^T = k A^T\)</li>
-  <li><b>\((AB)^T = B^T A^T\)</b> (Reverse Order Rule!)</li>
-</ul>
-
-<h4>2. Determinant of a 2 × 2 Matrix</h4>
-<p>
-The <b>determinant</b> of a square matrix \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) is a single scalar numerical value, denoted \(\det(A)\) or \(|A|\), calculated as:
-\[\det(A) = \begin{vmatrix} a & b \\ c & d \end{vmatrix} = ad - bc\]
-</p>
-<ul>
-  <li><b>Geometric Interpretation:</b> The determinant represents the area scaling factor of the transformation mapped by matrix \(A\).</li>
-</ul>
-
-<h4>3. Singularity & Invertibility Criteria</h4>
-<table border="1" cellpadding="8" style="border-collapse: collapse; width: 100%;">
-  <thead>
-    <tr style="background-color: #f2f2f2;">
-      <th>Condition</th>
-      <th>Classification</th>
-      <th>Invertibility</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td><b>\(\det(A) \neq 0\)</b></td>
-      <td><b>Non-Singular (Regular) Matrix</b></td>
-      <td>Inverse \(A^{-1}\) <b>EXISTS</b></td>
-    </tr>
-    <tr>
-      <td><b>\(\det(A) = 0\)</b></td>
-      <td><b>Singular Matrix</b></td>
-      <td>Inverse \(A^{-1}\) <b>DOES NOT EXIST</b></td>
-    </tr>
-  </tbody>
-</table>
-
-<h4>4. Inverse of a 2 × 2 Matrix (\(A^{-1}\))</h4>
-<p>
-The <b>inverse matrix</b> \(A^{-1}\) is the unique matrix satisfying:
-\[A A^{-1} = A^{-1} A = I_2\]
-</p>
-<p>For a non-singular \(2 \times 2\) matrix \(A = \begin{pmatrix} a & b \\ c & d \end{pmatrix}\) (where \(\det(A) = ad - bc \neq 0\)):</p>
-<p>
-\[A^{-1} = \frac{1}{\det(A)} \text{adj}(A) = \frac{1}{ad - bc} \begin{pmatrix} d & -b \\ -c & a \end{pmatrix}\]
-</p>
-<ul>
-  <li><b>Adjugate Method Mechanic:</b> Swap main diagonal entries (\(a \leftrightarrow d\)) and negate off-diagonal entries (\(b \to -b, c \to -c\)). Then scale by \(\frac{1}{\det(A)}\).</li>
-</ul>
-
-<h5>Properties of Matrix Inverses:</h5>
-<ul>
-  <li>\((A^{-1})^{-1} = A\)</li>
-  <li><b>\((AB)^{-1} = B^{-1}A^{-1}\)</b> (Socks-and-Shoes Reverse Order Rule)</li>
-  <li>\(\det(A^{-1}) = \frac{1}{\det(A)}\)</li>
-</ul>
-
----
-
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
-
-<p><b>Example 1: Transpose and Determinant Calculation</b></p>
-<p>Given \(A = \begin{pmatrix} 4 & -2 \\ 5 & 3 \end{pmatrix}\), find \(A^T\) and \(\det(A)\).</p>
-<p><b>Step 1: Compute transpose \(A^T\).</b> Swap rows and columns.</p>
-<p>\(A^T = \begin{pmatrix} 4 & 5 \\ -2 & 3 \end{pmatrix}\)</p>
-<p><b>Step 2: Calculate determinant \(\det(A) = ad - bc\).</b></p>
-<p>\(a = 4, b = -2, c = 5, d = 3\)</p>
-<p>\(\det(A) = (4 \times 3) - (-2 \times 5) = 12 - (-10) = 12 + 10 = 22\)</p>
-<p><b>Final Answer:</b> \(A^T = \begin{pmatrix} 4 & 5 \\ -2 & 3 \end{pmatrix}\); \(\det(A) = 22\).</p>
-
-<br>
-
-<p><b>Example 2: Finding Inverse of a 2 × 2 Matrix</b></p>
-<p>Find the inverse of \(A = \begin{pmatrix} 3 & 5 \\ 1 & 2 \end{pmatrix}\) and verify \(A A^{-1} = I_2\).</p>
-<p><b>Step 1: Calculate \(\det(A)\).</b></p>
-<p>\(\det(A) = (3 \times 2) - (5 \times 1) = 6 - 5 = 1\)</p>
-<p>Since \(\det(A) = 1 \neq 0\), \(A\) is non-singular and inverse exists.</p>
-<p><b>Step 2: Construct adjugate matrix.</b></p>
-<p>Swap diagonal (3 and 2): \(\begin{pmatrix} 2 & \cdot \\ \cdot & 3 \end{pmatrix}\). Negate off-diagonal (5 and 1): \(\begin{pmatrix} 2 & -5 \\ -1 & 3 \end{pmatrix}\).</p>
-<p><b>Step 3: Multiply by \(\frac{1}{\det(A)}\).</b></p>
-<p>\(A^{-1} = \frac{1}{1} \begin{pmatrix} 2 & -5 \\ -1 & 3 \end{pmatrix} = \begin{pmatrix} 2 & -5 \\ -1 & 3 \end{pmatrix}\)</p>
-<p><b>Step 4: Verify \(A A^{-1}\).</b></p>
-<p>\(A A^{-1} = \begin{pmatrix} 3 & 5 \\ 1 & 2 \end{pmatrix} \begin{pmatrix} 2 & -5 \\ -1 & 3 \end{pmatrix} = \begin{pmatrix} 6-5 & -15+15 \\ 2-2 & -5+6 \end{pmatrix} = \begin{pmatrix} 1 & 0 \\ 0 & 1 \end{pmatrix} = I_2\).</p>
-<p><b>Final Answer:</b> \(A^{-1} = \begin{pmatrix} 2 & -5 \\ -1 & 3 \end{pmatrix}\)</p>
-
-<br>
-
-<p><b>Example 3: Singularity Condition Test</b></p>
-<p>Find the value of \(k\) for which matrix \(M = \begin{pmatrix} k & 6 \\ 2 & 3 \end{pmatrix}\) is singular.</p>
-<p><b>Step 1: State singularity condition.</b> Matrix is singular when \(\det(M) = 0\).</p>
-<p><b>Step 2: Calculate \(\det(M)\).</b></p>
-<p>\(\det(M) = (k \times 3) - (6 \times 2) = 3k - 12\)</p>
-<p><b>Step 3: Set \(\det(M) = 0\) and solve for \(k\).</b></p>
-<p>\(3k - 12 = 0 \implies 3k = 12 \implies k = 4\)</p>
-<p><b>Final Answer:</b> \(k = 4\)</p>
-
----
-
-<h3> DIAGRAM</h3>
+<p>For:</p>
 
 <pre>
-  Original Matrix A = [ a  b ]       Formula for Inverse:
-                      [ c  d ]
-                                     A⁻¹ =  1/(ad - bc) × [  d  -b ]
-  Determinant = (a × d) - (b × c)                         [ -c   a ]
+A = [ a   b ]
+    [ c   d ]
 </pre>
 
----
+<p>the determinant is:</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-  <li><b>Cryptography & Encryption:</b> The Hill Cipher encryption scheme relies on matrix multiplication with an key matrix, while decryption requires computing its inverse modulo 26.</li>
-  <li><b>Computer Vision & Robotics:</b> Inverse kinematics and frame orientation reversibility.</li>
-  <li><b>Econometrics:</b> Reversing structural linear transformations in input-output systems.</li>
-</ul>
+<p><b>|A| = ad - bc</b></p>
 
----
+<h3>WORKED EXAMPLE</h3>
+
+<pre>
+A = [ 4   7 ]
+    [ 2   5 ]
+</pre>
+
+<p>
+|A| = (4)(5) - (7)(2)
+</p>
+
+<p>
+= 20 - 14
+</p>
+
+<p>
+= <b>6</b>
+</p>
+
+<h3>2. SINGULAR AND NON-SINGULAR MATRICES</h3>
+
+<p>
+If:
+</p>
+
+<p><b>|A| = 0</b></p>
+
+<p>
+the matrix is <b>singular</b>.
+</p>
+
+<p>
+If:
+</p>
+
+<p><b>|A| ≠ 0</b></p>
+
+<p>
+the matrix is <b>non-singular</b>.
+</p>
+
+<p>
+A non-singular square matrix has an inverse.
+</p>
+
+<h3>3. FINDING AN UNKNOWN VALUE USING A DETERMINANT</h3>
+
+<p>Find k if:</p>
+
+<pre>
+A = [ k   3 ]
+    [ 2   4 ]
+</pre>
+
+<p>is singular.</p>
+
+<p>For a singular matrix:</p>
+
+<p>
+|A| = 0
+</p>
+
+<p>
+( k × 4 ) - (3 × 2) = 0
+</p>
+
+<p>
+4k - 6 = 0
+</p>
+
+<p>
+4k = 6
+</p>
+
+<p>
+<b>k = 3/2</b>
+</p>
+
+<h3>4. TRANSPOSE</h3>
+
+<p>
+The transpose changes rows into columns.
+</p>
+
+<pre>
+A = [ 1   2   3 ]
+    [ 4   5   6 ]
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+Aᵀ = [ 1   4 ]
+     [ 2   5 ]
+     [ 3   6 ]
+</pre>
+
+<h3>5. DETERMINANT OF A 3 × 3 MATRIX</h3>
+
+<p>For:</p>
+
+<pre>
+A = [ a   b   c ]
+    [ d   e   f ]
+    [ g   h   i ]
+</pre>
+
+<p>Using expansion along the first row:</p>
+
+<p>
+|A| =
+a(ei - fh)
+- b(di - fg)
++ c(dh - eg)
+</p>
+
+<h3>WORKED EXAMPLE: 3 × 3 DETERMINANT</h3>
+
+<pre>
+A = [ 1   2   3 ]
+    [ 0   4   5 ]
+    [ 1   0   6 ]
+</pre>
+
+<p><b>Step 1: Expand along the first row.</b></p>
+
+<p>
+|A|
+=
+1[(4)(6)-(5)(0)]
+-
+2[(0)(6)-(5)(1)]
++
+3[(0)(0)-(4)(1)]
+</p>
+
+<p><b>Step 2: Calculate each bracket.</b></p>
+
+<p>
+(4)(6)-(5)(0)=24
+</p>
+
+<p>
+(0)(6)-(5)(1)=-5
+</p>
+
+<p>
+(0)(0)-(4)(1)=-4
+</p>
+
+<p><b>Step 3: Substitute.</b></p>
+
+<p>
+|A| = 1(24) - 2(-5) + 3(-4)
+</p>
+
+<p>
+= 24 + 10 - 12
+</p>
+
+<p>
+= <b>22</b>
+</p>
+
+<h3>6. MINORS</h3>
+
+<p>
+The minor M<sub>ij</sub> is found by deleting row i and column j,
+then taking the determinant of what remains.
+</p>
+
+<p>For:</p>
+
+<pre>
+A = [ 1   2   3 ]
+    [ 4   5   6 ]
+    [ 7   8   9 ]
+</pre>
+
+<p>Find M₁₁.</p>
+
+<p>
+Delete row 1 and column 1:
+</p>
+
+<pre>
+[ 5   6 ]
+[ 8   9 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p>
+M₁₁ = (5)(9)-(6)(8)
+</p>
+
+<p>
+= 45 - 48
+</p>
+
+<p>
+= <b>-3</b>
+</p>
+
+<h3>7. COFACTORS</h3>
+
+<p>
+The cofactor is:
+</p>
+
+<p><b>C<sub>ij</sub> = (-1)<sup>i+j</sup>M<sub>ij</sub></b></p>
+
+<p>The sign pattern is:</p>
+
+<pre>
++   -   +
+-   +   -
++   -   +
+</pre>
+
+<p>
+For example, C₁₂ has a negative sign because:
+</p>
+
+<p>
+(-1)<sup>1+2</sup> = -1
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+C₁₂ = -M₁₂
+</p>
+
+<h3>8. COFACTOR MATRIX</h3>
+
+<p>
+Calculate every cofactor and arrange them in their original positions.
+</p>
+
+<p>
+For:
+</p>
+
+<pre>
+A = [ 1   2   3 ]
+    [ 0   4   5 ]
+    [ 1   0   6 ]
+</pre>
+
+<p>The cofactor matrix is:</p>
+
+<pre>
+C = [ 24    5   -4 ]
+    [ -12   3    2 ]
+    [ -2   -5    4 ]
+</pre>
+
+<h3>9. ADJOINT / ADJUGATE</h3>
+
+<p>
+The adjoint is the transpose of the cofactor matrix.
+</p>
+
+<pre>
+C = [ 24    5   -4 ]
+    [ -12   3    2 ]
+    [ -2   -5    4 ]
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+adj(A) = Cᵀ
+
+       = [ 24   -12   -2 ]
+         [ 5     3    -5 ]
+         [ -4    2     4 ]
+</pre>
+
+<h3>10. INVERSE OF A 2 × 2 MATRIX</h3>
+
+<p>For:</p>
+
+<pre>
+A = [ a   b ]
+    [ c   d ]
+</pre>
+
+<p>the inverse is:</p>
+
+<p>
+<b>
+A⁻¹ = 1/(ad-bc)
+[ d   -b ]
+[ -c   a ]
+</b>
+</p>
+
+<p>
+provided:
+</p>
+
+<p><b>ad-bc ≠ 0</b></p>
+
+<h3>WORKED EXAMPLE: 2 × 2 INVERSE</h3>
+
+<pre>
+A = [ 3   5 ]
+    [ 1   2 ]
+</pre>
+
+<p><b>Step 1: Determinant.</b></p>
+
+<p>
+|A| = (3)(2)-(5)(1)
+</p>
+
+<p>
+= 6-5
+</p>
+
+<p>
+= 1
+</p>
+
+<p><b>Step 2: Form adjoint.</b></p>
+
+<pre>
+[ 2   -5 ]
+[ -1   3 ]
+</pre>
+
+<p><b>Step 3:</b></p>
+
+<p>
+A⁻¹ =
+1/1
+[ 2   -5 ]
+[ -1   3 ]
+</p>
+
+<p>Therefore:</p>
+
+<pre>
+A⁻¹ = [ 2   -5 ]
+      [ -1   3 ]
+</pre>
+
+<h3>11. INVERSE OF A 3 × 3 MATRIX</h3>
+
+<p>The formula is:</p>
+
+<p><b>A⁻¹ = 1/|A| × adj(A)</b></p>
+
+<p>
+provided |A| ≠ 0.
+</p>
+
+<h3>WORKED 3 × 3 INVERSE</h3>
+
+<pre>
+A = [ 1   0   2 ]
+    [ 0   1   3 ]
+    [ 2   3   4 ]
+</pre>
+
+<p><b>Step 1: Find determinant.</b></p>
+
+<p>
+|A|
+=
+1[(1)(4)-(3)(3)]
+-
+0
++
+2[(0)(3)-(1)(2)]
+</p>
+
+<p>
+= 1(4-9) + 2(0-2)
+</p>
+
+<p>
+= -5 - 4
+</p>
+
+<p>
+= <b>-9</b>
+</p>
+
+<p><b>Step 2: Find cofactors.</b></p>
+
+<pre>
+C₁₁ = |1 3; 3 4|
+     = 4-9
+     = -5
+
+C₁₂ = -|0 3; 2 4|
+     = -(0-6)
+     = 6
+
+C₁₃ = |0 1; 2 3|
+     = 0-2
+     = -2
+
+C₂₁ = -|0 2; 3 4|
+     = -(0-6)
+     = 6
+
+C₂₂ = |1 2; 2 4|
+     = 4-4
+     = 0
+
+C₂₃ = -|1 0; 2 3|
+     = -(3)
+     = -3
+
+C₃₁ = |0 2; 1 3|
+     = -2
+
+C₃₂ = -|1 2; 0 3|
+     = -3
+
+C₃₃ = |1 0; 0 1|
+     = 1
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+C = [ -5   6   -2 ]
+    [  6   0   -3 ]
+    [ -2  -3    1 ]
+</pre>
+
+<p><b>Step 3: Transpose to obtain adj(A).</b></p>
+
+<pre>
+adj(A) =
+[ -5   6   -2 ]
+[  6   0   -3 ]
+[ -2  -3    1 ]
+</pre>
+
+<p><b>Step 4: Divide by determinant.</b></p>
+
+<p>
+A⁻¹ = -1/9
+[ -5   6   -2 ]
+[  6   0   -3 ]
+[ -2  -3    1 ]
+</p>
+
+<p>Therefore:</p>
+
+<pre>
+A⁻¹ =
+[ 5/9   -2/3    2/9 ]
+[ -2/3    0      1/3 ]
+[ 2/9     1/3   -1/9 ]
+</pre>
+
+<h3>12. CHECKING AN INVERSE</h3>
+
+<p>
+If B is the inverse of A:
+</p>
+
+<p><b>AB = BA = I</b></p>
+
+<p>
+For a 2 × 2 matrix:
+</p>
+
+<pre>
+A = [ 3   5 ]
+    [ 1   2 ]
+
+A⁻¹ = [ 2   -5 ]
+      [ -1   3 ]
+</pre>
+
+<p>Check:</p>
+
+<pre>
+AA⁻¹
+
+= [ 3(2)+5(-1)      3(-5)+5(3) ]
+  [ 1(2)+2(-1)      1(-5)+2(3) ]
+
+= [ 6-5    -15+15 ]
+  [ 2-2    -5+6   ]
+
+= [ 1   0 ]
+  [ 0   1 ]
+</pre>
+
+<p>
+Therefore the inverse is correct.
+</p>
 `,
+
   [
     {
-      "q": "Calculate the determinant of matrix A = [[6, 4], [2, 5]].",
-      "hint": "apply formula det(A) = ad - bc",
-      "steps": [
-        "Step 1: Identify a = 6, b = 4, c = 2, d = 5",
-        "Step 2: Compute ad = 6 × 5 = 30",
-        "Step 3: Compute bc = 4 × 2 = 8",
-        "Step 4: Subtract 30 - 8 = 22"
+      q: "Find the determinant of [[6,4],[2,5]].",
+      hint: "Use ad-bc.",
+      steps: [
+        "det = (6)(5)-(4)(2)",
+        "det = 30-8",
+        "det = 22"
       ],
-      "ans": "22",
-      "why": "Determinant of a 2 × 2 matrix is computed via ad - bc."
+      ans: "22",
+      why: "The determinant of a 2×2 matrix is ad-bc."
     },
     {
-      "q": "Find the transpose of matrix B = [[1, 7], [-3, 9]].",
-      "hint": "interchange rows into columns",
-      "steps": [
-        "Step 1: Row 1 [1, 7] becomes Column 1 [1; -3]",
-        "Step 2: Row 2 [-3, 9] becomes Column 2 [7; 9]",
-        "Step 3: Form transpose matrix [[1, -3], [7, 9]]"
+      q: "Find k if [[k,6],[2,3]] is singular.",
+      hint: "A singular matrix has determinant zero.",
+      steps: [
+        "3k-12=0",
+        "3k=12",
+        "k=4"
       ],
-      "ans": "[[1, -3], [7, 9]]",
-      "why": "Transposing a matrix swaps its row and column indices (a_ij → a_ji)."
+      ans: "k=4",
+      why: "Singular matrices have determinant equal to zero."
     },
     {
-      "q": "Find the inverse of matrix A = [[4, 7], [1, 2]].",
-      "hint": "det = ad - bc; inverse = (1/det)[[d, -b], [-c, a]]",
-      "steps": [
-        "Step 1: Compute det(A) = (4×2) - (7×1) = 8 - 7 = 1",
-        "Step 2: Swap main diagonal: d=2, a=4",
-        "Step 3: Negate off-diagonal: -b=-7, -c=-1",
-        "Step 4: Inverse = (1/1)[[2, -7], [-1, 4]] = [[2, -7], [-1, 4]]"
+      q: "Find the determinant of [[1,2,3],[0,4,5],[1,0,6]].",
+      hint: "Expand along the first row.",
+      steps: [
+        "1[(4)(6)-(5)(0)] - 2[(0)(6)-(5)(1)] + 3[(0)(0)-(4)(1)]",
+        "=24-2(-5)+3(-4)",
+        "=24+10-12",
+        "=22"
       ],
-      "ans": "[[2, -7], [-1, 4]]",
-      "why": "The inverse of a 2×2 matrix uses the scaled adjugate formula A⁻¹ = (1/det)[[d,-b],[-c,a]]."
+      ans: "22",
+      why: "A 3×3 determinant can be expanded using minors and cofactors."
     },
     {
-      "q": "For what value of x is the matrix [[x, 8], [2, 4]] singular?",
-      "hint": "set determinant ad - bc = 0",
-      "steps": [
-        "Step 1: Set up determinant equation: (x × 4) - (8 × 2) = 0",
-        "Step 2: Simplify: 4x - 16 = 0",
-        "Step 3: Solve for x: 4x = 16 → x = 4"
+      q: "Find the inverse of [[4,7],[1,2]].",
+      hint: "Find determinant first, then use the 2×2 inverse formula.",
+      steps: [
+        "det = (4)(2)-(7)(1)=1",
+        "Adjoint = [[2,-7],[-1,4]]",
+        "A⁻¹ = 1/1 × [[2,-7],[-1,4]]"
       ],
-      "ans": "4",
-      "why": "A matrix is singular if and only if its determinant equals zero."
+      ans: "[[2,-7],[-1,4]]",
+      why: "A 2×2 inverse is the adjoint divided by the determinant."
     },
     {
-      "q": "If det(A) = 5, what is the determinant of A⁻¹?",
-      "hint": "apply det(A⁻¹) = 1 / det(A)",
-      "steps": [
-        "Step 1: Recall property det(A⁻¹) = 1 / det(A)",
-        "Step 2: Substitute det(A) = 5 → 1/5 = 0.2"
+      q: "If det(A)=5, find det(A⁻¹).",
+      hint: "det(A⁻¹)=1/det(A).",
+      steps: [
+        "det(A⁻¹)=1/det(A)",
+        "det(A⁻¹)=1/5"
       ],
-      "ans": "1/5 (or 0.2)",
-      "why": "The determinant of an inverse matrix equals the reciprocal of the original determinant."
+      ans: "1/5",
+      why: "The determinant of an inverse is the reciprocal of the original determinant."
     }
   ]
 );
 
+
 add(
   "math",
   "matrices",
-  "Application to Linear Equations",
+  "Simultaneous Linear Equations Using Matrices",
 
   `
-<h2> Application to Linear Equations</h2>
+<h2>Simultaneous Linear Equations Using Matrices</h2>
 
-<h3> DEEP NOTES</h3>
+<h3>1. WRITING EQUATIONS AS AX = B</h3>
+
+<p>Consider:</p>
+
+<pre>
+2x + y = 5
+x + 3y = 7
+</pre>
+
+<p>Write the coefficient matrix:</p>
+
+<pre>
+A = [ 2   1 ]
+    [ 1   3 ]
+</pre>
+
+<p>The variable matrix is:</p>
+
+<pre>
+X = [ x ]
+    [ y ]
+</pre>
+
+<p>The constant matrix is:</p>
+
+<pre>
+B = [ 5 ]
+    [ 7 ]
+</pre>
+
+<p>Therefore:</p>
+
+<p><b>AX = B</b></p>
+
+<h3>2. SOLVING USING X = A⁻¹B</h3>
+
 <p>
-One of the most practical applications of matrix algebra is solving systems of simultaneous linear equations. Expressing linear systems in matrix form enables systematic solution algorithms via matrix inverses and Gaussian elimination.
+Starting with:
 </p>
 
-<h4>1. Matrix Representation of Linear Systems (\(AX = B\))</h4>
 <p>
-Consider a system of two linear equations in two variables (\(x\) and \(y\)):
+AX = B
 </p>
-\[\begin{cases} a_{11}x + a_{12}y = b_1 \\ a_{21}x + a_{22}y = b_2 \end{cases}\]
 
-<p>This system can be written compactly in matrix form <b>\(AX = B\)</b>:</p>
-\[\begin{pmatrix} a_{11} & a_{12} \\ a_{21} & a_{22} \end{pmatrix} \begin{pmatrix} x \\ y \end{pmatrix} = \begin{pmatrix} b_1 \\ b_2 \end{pmatrix}\]
-<p>Where:</p>
+<p>
+Multiply both sides by A⁻¹:
+</p>
+
+<p>
+A⁻¹AX = A⁻¹B
+</p>
+
+<p>
+Since:
+</p>
+
+<p>
+A⁻¹A = I
+</p>
+
+<p>we obtain:</p>
+
+<p><b>X = A⁻¹B</b></p>
+
+<h3>WORKED EXAMPLE 1</h3>
+
+<p>Solve:</p>
+
+<pre>
+2x + y = 5
+x + 3y = 7
+</pre>
+
+<p><b>Step 1: Form A.</b></p>
+
+<pre>
+A = [ 2   1 ]
+    [ 1   3 ]
+</pre>
+
+<p><b>Step 2: Find determinant.</b></p>
+
+<p>
+|A| = (2)(3)-(1)(1)
+</p>
+
+<p>
+= 6-1
+</p>
+
+<p>
+= 5
+</p>
+
+<p><b>Step 3: Find inverse.</b></p>
+
+<pre>
+A⁻¹ = 1/5 [ 3   -1 ]
+           [ -1   2 ]
+</pre>
+
+<p><b>Step 4: Form B.</b></p>
+
+<pre>
+B = [ 5 ]
+    [ 7 ]
+</pre>
+
+<p><b>Step 5: Multiply.</b></p>
+
+<pre>
+X = 1/5 [ 3   -1 ] [5]
+          [ -1  2 ] [7]
+
+X = 1/5 [ 15-7 ]
+          [ -5+14 ]
+
+X = 1/5 [ 8 ]
+          [ 9 ]
+</pre>
+
+<p>Therefore:</p>
+
+<p><b>x = 8/5</b></p>
+
+<p><b>y = 9/5</b></p>
+
+<h3>3. CHECKING THE ANSWER</h3>
+
+<p>
+Substitute x = 8/5 and y = 9/5.
+</p>
+
+<p>First equation:</p>
+
+<p>
+2(8/5) + 9/5
+</p>
+
+<p>
+= 16/5 + 9/5
+</p>
+
+<p>
+= 25/5
+</p>
+
+<p>
+= 5
+</p>
+
+<p>Correct.</p>
+
+<p>Second equation:</p>
+
+<p>
+8/5 + 3(9/5)
+</p>
+
+<p>
+= 8/5 + 27/5
+</p>
+
+<p>
+= 35/5
+</p>
+
+<p>
+= 7
+</p>
+
+<p>Correct.</p>
+
+<h3>4. WHEN THE DETERMINANT IS ZERO</h3>
+
+<p>
+If:
+</p>
+
+<p><b>|A| = 0</b></p>
+
+<p>
+A⁻¹ does not exist.
+</p>
+
+<p>
+The system may have:
+</p>
+
 <ul>
+<li>no solution, or</li>
+<li>infinitely many solutions.</li>
+</ul>
 
-<p><b>Step 1: Write AX = B</b></p>
-
-<pre>
-A = [ 2  4 ]
-    [ 1  2 ]
-</pre>
-
-<p><b>Step 2: Compute determinant</b></p>
+<h3>WORKED EXAMPLE: INFINITELY MANY SOLUTIONS</h3>
 
 <pre>
-det(A) = (2×2 − 4×1) = 0
+2x + 4y = 6
+x + 2y = 3
 </pre>
 
-<p><b>Step 3: Interpret result</b></p>
+<p>
+The first equation is exactly twice the second:
+</p>
 
-<p>Since det(A) = 0 → matrix is singular → no unique inverse exists</p>
+<p>
+2(x + 2y) = 2(3)
+</p>
 
-<p><b>Step 4: Compare rows</b></p>
+<p>
+Therefore both equations represent the same line.
+</p>
 
-<pre>
-Row2 = (1/2) Row1 AND RHS also matches
-</pre>
+<p><b>Answer: infinitely many solutions.</b></p>
 
-<p><b>Final Answer:</b> Dependent system (infinite solutions)</p>
-
-<br>
-
-<p><b>Example 3</b></p>
-<p><b>Question:</b> Solve system using matrix method</p>
+<h3>WORKED EXAMPLE: NO SOLUTION</h3>
 
 <pre>
 x + y = 2
 x + y = 5
 </pre>
 
-<p><b>Step 1: Write AX = B</b></p>
+<p>
+The left sides are identical but:
+</p>
+
+<p>
+2 ≠ 5
+</p>
+
+<p>
+Therefore no values of x and y can satisfy both equations.
+</p>
+
+<p><b>Answer: no solution.</b></p>
+
+<h3>5. THREE SIMULTANEOUS EQUATIONS</h3>
+
+<p>Consider:</p>
 
 <pre>
-A = [ 1  1 ]
-    [ 1  1 ]
-
-B = [ 2 ]
-    [ 5 ]
+x + y + z = 6
+2x + y + z = 7
+x + 2y + z = 8
 </pre>
 
-<p><b>Step 2: Compute determinant</b></p>
+<p>Matrix form:</p>
 
 <pre>
-det(A) = (1×1 − 1×1) = 0
+[ 1  1  1 ] [x]   [6]
+[ 2  1  1 ] [y] = [7]
+[ 1  2  1 ] [z]   [8]
 </pre>
 
-<p><b>Step 3: Check consistency via matrix comparison</b></p>
+<p>
+This is:
+</p>
 
-<pre>
-Same coefficient matrix but different constants
-</pre>
+<p><b>AX = B</b></p>
 
-<p><b>Step 4: Conclusion</b></p>
+<p>
+For a 3 × 3 system, we may solve using:
+</p>
 
-<p>No inverse exists and system contradicts</p>
-
-<p><b>Final Answer:</b> No solution (inconsistent system)</p>
-
----
-
-<h3> DIAGRAM</h3>
-
-<pre>
-AX = B
-↓
-det(A) ≠ 0 → X = A⁻¹B → Unique solution
-
-det(A) = 0 → check consistency
-        ↓
-   dependent / inconsistent
-</pre>
-<h3> REAL WORLD APPLICATION</h3>
 <ul>
-<li>Economics: supply and demand systems</li>
-<li>Physics: electrical circuit analysis</li>
-<li>Computer science: AI and optimization models</li>
+<li>inverse matrices,</li>
+<li>determinants,</li>
+<li>cofactor/adjoint method,</li>
+<li>row reduction.</li>
 </ul>
 
----
+<h3>WORKED EXAMPLE: 3 EQUATIONS</h3>
+
+<pre>
+x + y + z = 6
+2x + y + z = 7
+x + 2y + z = 8
+</pre>
+
+<p>
+Subtract equation 1 from equation 2:
+</p>
+
+<p>
+(2x+y+z)-(x+y+z)=7-6
+</p>
+
+<p>
+x=1
+</p>
+
+<p>
+Subtract equation 1 from equation 3:
+</p>
+
+<p>
+(x+2y+z)-(x+y+z)=8-6
+</p>
+
+<p>
+y=2
+</p>
+
+<p>
+Substitute into equation 1:
+</p>
+
+<p>
+1+2+z=6
+</p>
+
+<p>
+z=3
+</p>
+
+<p><b>Answer:</b></p>
+
+<p>
+x=1, y=2, z=3
+</p>
+
+<h3>6. WORD PROBLEMS</h3>
+
+<p>
+Suppose two numbers have:
+</p>
+
+<p>
+sum = 17
+</p>
+
+<p>
+difference = 5
+</p>
+
+<p>Let them be x and y.</p>
+
+<pre>
+x + y = 17
+x - y = 5
+</pre>
+
+<p>Matrix form:</p>
+
+<pre>
+[ 1   1 ] [x]   [17]
+[ 1  -1 ] [y] = [ 5]
+</pre>
+
+<p>
+Adding the equations:
+</p>
+
+<p>
+2x = 22
+</p>
+
+<p>
+x = 11
+</p>
+
+<p>
+Then:
+</p>
+
+<p>
+11+y=17
+</p>
+
+<p>
+y=6
+</p>
+
+<p><b>Answer: 11 and 6.</b></p>
 `,
 
   [
     {
-      "q": "What is matrix form of linear equations AX = B and how is X found?",
-      "hint": "use inverse method",
-      "steps": [
-        "Step 1: Write system in matrix form AX = B",
-        "Step 2: Multiply both sides by A⁻¹",
-        "Step 3: A⁻¹AX = A⁻¹B",
-        "Step 4: I·X = A⁻¹B",
-        "Step 5: X = A⁻¹B"
+      q: "Solve 2x+y=5 and x+3y=7 using matrices.",
+      hint: "Use X=A⁻¹B.",
+      steps: [
+        "A=[[2,1],[1,3]]",
+        "det(A)=6-1=5",
+        "A⁻¹=(1/5)[[3,-1],[-1,2]]",
+        "X=(1/5)[[3,-1],[-1,2]][[5],[7]]",
+        "X=(1/5)[[8],[9]]",
+        "Therefore x=8/5 and y=9/5."
       ],
-      "ans": "X = A⁻¹B",
-      "why": "Multiplying by inverse isolates the variable matrix"
+      ans: "x=8/5, y=9/5",
+      why: "For a non-singular coefficient matrix, X=A⁻¹B."
     },
     {
-      "q": "Solve for X when A = [[2,1],[1,3]] and B = [[5],[7]]",
-      "hint": "use inverse of 2×2 matrix",
-      "steps": [
-        "Step 1: Compute determinant of A: (2×3 − 1×1) = 5",
-        "Step 2: Find inverse A⁻¹ = (1/5)[[3, -1],[-1, 2]]",
-        "Step 3: Multiply A⁻¹ by B",
-        "Step 4: [[3, -1],[-1, 2]] × [[5],[7]]",
-        "Step 5: = [[(15 - 7)], [(-5 + 14)]]",
-        "Step 6: Multiply by 1/5",
-        "Step 7: X = [[8/5],[9/5]]"
+      q: "Solve x+y=17 and x-y=5.",
+      hint: "Add the equations.",
+      steps: [
+        "Add: 2x=22",
+        "x=11",
+        "Substitute: 11+y=17",
+        "y=6"
       ],
-      "ans": "X = (8/5, 9/5)",
-      "why": "Inverse matrix converts system into direct computation"
+      ans: "x=11, y=6",
+      why: "The equations form a simultaneous system."
     },
     {
-      "q": "When does a system AX = B have no solution using determinants?",
-      "hint": "determinant condition",
-      "steps": [
-        "Step 1: Compute det(A)",
-        "Step 2: Check if det(A) = 0",
-        "Step 3: If det(A) = 0, check consistency",
-        "Step 4: If inconsistent → no solution"
+      q: "What happens when det(A)=0?",
+      hint: "Think about the inverse.",
+      steps: [
+        "det(A)=0 means A is singular.",
+        "A⁻¹ does not exist.",
+        "The system must be checked for consistency.",
+        "It may have no solution or infinitely many solutions."
       ],
-      "ans": "When det(A) = 0 and equations are inconsistent",
-      "why": "Singular matrices cannot produce unique solutions"
-    },
-    {
-      "q": "What happens when det(A) = 0 in AX = B?",
-      "hint": "singular matrix",
-      "steps": [
-        "Step 1: Compute det(A)",
-        "Step 2: If det(A) = 0, matrix is singular",
-        "Step 3: Try row reduction",
-        "Step 4: Check if system reduces to contradiction or dependency"
-      ],
-      "ans": "No unique solution (either infinite or none)",
-      "why": "Zero determinant removes invertibility"
-    },
-    {
-      "q": "Find X if A⁻¹ = [[1,0],[0,1]] and B = [[4],[6]]",
-      "hint": "identity inverse case",
-      "steps": [
-        "Step 1: Recognize A⁻¹ is identity matrix",
-        "Step 2: Multiply I × B",
-        "Step 3: Result equals B unchanged"
-      ],
-      "ans": "X = [[4],[6]]",
-      "why": "Identity matrix does not change any vector"
+      ans: "No unique solution; either none or infinitely many",
+      why: "A singular coefficient matrix cannot produce a unique inverse-matrix solution."
     }
   ]
 );
 
+
+add(
+  "math",
+  "matrices",
+  "Matrix Transformations",
+
+  `
+<h2>Matrix Transformations</h2>
+
+<h3>1. POINTS AS COLUMN MATRICES</h3>
+
+<p>
+A coordinate point can be written as a column matrix.
+</p>
+
+<p>
+For point P(x,y):
+</p>
+
+<pre>
+P = [ x ]
+    [ y ]
+</pre>
+
+<p>
+This allows a matrix to transform the coordinates.
+</p>
+
+<h3>2. ENLARGEMENT</h3>
+
+<p>
+An enlargement by scale factor k about the origin uses:
+</p>
+
+<pre>
+[ k   0 ]
+[ 0   k ]
+</pre>
+
+<p>Example:</p>
+
+<p>
+P(2,3), scale factor 4.
+</p>
+
+<pre>
+[4  0] [2]   [8]
+[0  4] [3] = [12]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>P'(8,12)</b></p>
+
+<h3>3. REFLECTION IN THE x-AXIS</h3>
+
+<p>The transformation matrix is:</p>
+
+<pre>
+[ 1   0 ]
+[ 0  -1 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p>
+(x,y) → (x,-y)
+</p>
+
+<p>Example:</p>
+
+<p>
+P(4,7)
+</p>
+
+<pre>
+[ 1   0 ] [4]   [ 4]
+[ 0  -1 ] [7] = [-7]
+</pre>
+
+<p>
+P'=(4,-7)
+</p>
+
+<h3>4. REFLECTION IN THE y-AXIS</h3>
+
+<pre>
+[ -1   0 ]
+[  0   1 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p>
+(x,y) → (-x,y)
+</p>
+
+<p>Example:</p>
+
+<p>
+P(5,-2)
+</p>
+
+<pre>
+[-1  0] [ 5]   [-5]
+[ 0  1] [-2] = [-2]
+</pre>
+
+<p>
+P'=(-5,-2)
+</p>
+
+<h3>5. REFLECTION IN y=x</h3>
+
+<pre>
+[ 0   1 ]
+[ 1   0 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p>
+(x,y) → (y,x)
+</p>
+
+<p>Example:</p>
+
+<p>
+P(3,8)
+</p>
+
+<pre>
+[0  1] [3]   [8]
+[1  0] [8] = [3]
+</pre>
+
+<p>
+P'=(8,3)
+</p>
+
+<h3>6. ROTATION 90° ANTICLOCKWISE</h3>
+
+<p>The matrix is:</p>
+
+<pre>
+[ 0  -1 ]
+[ 1   0 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p>
+(x,y) → (-y,x)
+</p>
+
+<p>Example:</p>
+
+<p>
+P(3,2)
+</p>
+
+<pre>
+[0  -1] [3]   [-2]
+[1   0] [2] = [ 3]
+</pre>
+
+<p>
+P'=(-2,3)
+</p>
+
+<h3>7. ROTATION 90° CLOCKWISE</h3>
+
+<pre>
+[ 0   1 ]
+[-1   0 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p>
+(x,y) → (y,-x)
+</p>
+
+<p>Example:</p>
+
+<p>
+P(4,3)
+</p>
+
+<pre>
+[0   1] [4]   [ 3]
+[-1  0] [3] = [-4]
+</pre>
+
+<p>
+P'=(3,-4)
+</p>
+
+<h3>8. ROTATION 180°</h3>
+
+<pre>
+[-1   0]
+[ 0  -1]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p>
+(x,y) → (-x,-y)
+</p>
+
+<p>Example:</p>
+
+<p>
+P(5,-3)
+</p>
+
+<pre>
+[-1  0] [ 5]   [-5]
+[ 0 -1] [-3] = [ 3]
+</pre>
+
+<p>
+P'=(-5,3)
+</p>
+
+<h3>9. COMBINING TRANSFORMATIONS</h3>
+
+<p>
+Suppose a point is first reflected in the x-axis and then enlarged
+by scale factor 2.
+</p>
+
+<p>
+Reflection matrix:
+</p>
+
+<pre>
+R = [1   0]
+    [0  -1]
+</pre>
+
+<p>
+Enlargement matrix:
+</p>
+
+<pre>
+E = [2   0]
+    [0   2]
+</pre>
+
+<p>
+The combined transformation is:
+</p>
+
+<p><b>ER</b></p>
+
+<pre>
+ER =
+[2  0] [1   0]
+[0  2] [0  -1]
+
+= [2   0]
+  [0  -2]
+</pre>
+
+<p>
+Apply to P(3,4):
+</p>
+
+<pre>
+[2   0] [3]   [6]
+[0  -2] [4] = [-8]
+</pre>
+
+<p>
+Final point:
+</p>
+
+<p><b>(6,-8)</b></p>
+
+<h3>10. ORDER MATTERS</h3>
+
+<p>
+When transformations are combined, changing their order can produce
+a different result.
+</p>
+
+<p>
+If transformation A is followed by transformation B:
+</p>
+
+<p><b>Final matrix = B A</b></p>
+
+<p>
+The matrix closest to the point acts first.
+</p>
+
+<h3>11. FINDING THE TRANSFORMATION MATRIX</h3>
+
+<p>
+Suppose:
+</p>
+
+<p>
+(1,0) → (2,3)
+</p>
+
+<p>
+and:
+</p>
+
+<p>
+(0,1) → (4,5)
+</p>
+
+<p>
+The transformation matrix is formed from the transformed basis vectors:
+</p>
+
+<pre>
+T = [ 2   4 ]
+    [ 3   5 ]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+T[1] = [2]
+      [3]
+
+T[0,1] = [4]
+         [5]
+</pre>
+
+<p>
+For P(2,3):
+</p>
+
+<pre>
+T[2] = [2   4] [2]
+       [3   5] [3]
+
+     = [4+12]
+       [6+15]
+
+     = [16]
+       [21]
+</pre>
+
+<p>
+Therefore P'=(16,21).
+</p>
+`,
+
+  [
+    {
+      q: "Find the image of (3,5) after reflection in the x-axis.",
+      hint: "Use [[1,0],[0,-1]].",
+      steps: [
+        "[[1,0],[0,-1]][[3],[5]]",
+        "First coordinate = 1(3)+0(5)=3",
+        "Second coordinate = 0(3)-1(5)=-5"
+      ],
+      ans: "(3,-5)",
+      why: "Reflection in the x-axis changes the sign of the y-coordinate."
+    },
+    {
+      q: "Rotate (4,2) through 90 degrees anticlockwise about the origin.",
+      hint: "Use [[0,-1],[1,0]].",
+      steps: [
+        "First coordinate = 0(4)-1(2)=-2",
+        "Second coordinate = 1(4)+0(2)=4"
+      ],
+      ans: "(-2,4)",
+      why: "A 90° anticlockwise rotation maps (x,y) to (-y,x)."
+    },
+    {
+      q: "Enlarge (3,-2) by scale factor 3 about the origin.",
+      hint: "Multiply both coordinates by 3.",
+      steps: [
+        "x'=3(3)=9",
+        "y'=3(-2)=-6"
+      ],
+      ans: "(9,-6)",
+      why: "An enlargement about the origin multiplies each coordinate by the scale factor."
+    },
+    {
+      q: "Reflect (5,2) in y=x.",
+      hint: "The coordinates exchange positions.",
+      steps: [
+        "(x,y) becomes (y,x)",
+        "(5,2) becomes (2,5)"
+      ],
+      ans: "(2,5)",
+      why: "Reflection in y=x swaps x and y coordinates."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "matrices",
+  "Matrix Diagnostic & Mixed Practice",
+
+  `
+<h2>Matrix Diagnostic & Mixed Practice</h2>
+
+<p>
+These questions combine the major matrix skills. They are designed to reveal
+exactly where a learner makes an error.
+</p>
+
+<h3>QUESTION 1 — ORDER</h3>
+
+<pre>
+A = [ 2   4   6 ]
+    [ 1   3   5 ]
+    [ 7   8   9 ]
+    [ 0   2   4 ]
+</pre>
+
+<p>
+Find the order of A and the total number of elements.
+</p>
+
+<h3>QUESTION 2 — ELEMENTS</h3>
+
+<pre>
+B = [ 5   2   8 ]
+    [ 7   4   1 ]
+    [ 9   6   3 ]
+</pre>
+
+<p>
+Find:
+</p>
+
+<p>
+b₁₃ + b₂₂ + b₃₁
+</p>
+
+<h3>QUESTION 3 — ADDITION</h3>
+
+<pre>
+A = [ 2   -1 ]
+    [ 4    3 ]
+
+B = [ 5    2 ]
+    [ -1   6 ]
+</pre>
+
+<p>Find A+B.</p>
+
+<h3>QUESTION 4 — SCALAR</h3>
+
+<p>Find:</p>
+
+<p>3A - 2B</p>
+
+<p>where:</p>
+
+<pre>
+A = [ 1   2 ]
+    [ 3   4 ]
+
+B = [ 2   0 ]
+    [ 1   5 ]
+</pre>
+
+<h3>QUESTION 5 — MULTIPLICATION</h3>
+
+<pre>
+A = [ 2   1 ]
+    [ 3   4 ]
+
+B = [ 5   2 ]
+    [ 1   3 ]
+</pre>
+
+<p>Find AB.</p>
+
+<h3>QUESTION 6 — DETERMINANT</h3>
+
+<pre>
+A = [ 7   3 ]
+    [ 2   5 ]
+</pre>
+
+<p>Find |A|.</p>
+
+<h3>QUESTION 7 — SINGULAR MATRIX</h3>
+
+<p>
+Find k if:
+</p>
+
+<pre>
+[ k   4 ]
+[ 3   6 ]
+</pre>
+
+<p>is singular.</p>
+
+<h3>QUESTION 8 — 3 × 3 DETERMINANT</h3>
+
+<pre>
+A = [ 2   1   3 ]
+    [ 0   4   2 ]
+    [ 1   0   5 ]
+</pre>
+
+<p>Find |A|.</p>
+
+<h3>QUESTION 9 — INVERSE</h3>
+
+<pre>
+A = [ 2   1 ]
+    [ 3   2 ]
+</pre>
+
+<p>Find A⁻¹.</p>
+
+<h3>QUESTION 10 — SIMULTANEOUS EQUATIONS</h3>
+
+<p>Solve:</p>
+
+<pre>
+2x + y = 8
+x + 3y = 9
+</pre>
+
+<h3>QUESTION 11 — TRANSFORMATION</h3>
+
+<p>
+Find the image of P(4,-3) after a 90° clockwise rotation.
+</p>
+
+<h3>QUESTION 12 — COMBINED SKILL</h3>
+
+<p>
+A matrix is:
+</p>
+
+<pre>
+A = [ 3   2 ]
+    [ 1   1 ]
+</pre>
+
+<p>
+Find:
+</p>
+
+<ol>
+<li>|A|</li>
+<li>A⁻¹</li>
+<li>AA⁻¹</li>
+</ol>
+
+<h3>FULL SOLUTION TO QUESTION 12</h3>
+
+<p><b>Step 1: Determinant.</b></p>
+
+<p>
+|A| = (3)(1)-(2)(1)
+</p>
+
+<p>
+= 3-2
+</p>
+
+<p>
+= 1
+</p>
+
+<p><b>Step 2: Inverse.</b></p>
+
+<pre>
+A⁻¹ = 1/1 [ 1  -2 ]
+           [ -1  3 ]
+
+     = [ 1  -2 ]
+       [ -1  3 ]
+</pre>
+
+<p><b>Step 3: Multiply.</b></p>
+
+<pre>
+AA⁻¹
+
+= [3  2] [ 1  -2]
+  [1  1] [-1   3]
+
+= [3-2   -6+6]
+  [1-1   -2+3]
+
+= [1   0]
+  [0   1]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>AA⁻¹ = I₂</b></p>
+
+<h3>COMMON CALCULATION ERRORS</h3>
+
+<ul>
+<li>Writing rows and columns in the wrong order.</li>
+<li>Adding matrices with different dimensions.</li>
+<li>Multiplying corresponding entries instead of using row × column.</li>
+<li>Forgetting the negative sign in the 3 × 3 determinant expansion.</li>
+<li>Using the inverse formula when the determinant is zero.</li>
+<li>Forgetting to transpose the cofactor matrix when finding the adjoint.</li>
+<li>Applying combined transformations in the wrong order.</li>
+<li>Failing to substitute an answer back into simultaneous equations.</li>
+</ul>
+
+<h3>MATRIX SKILL CHECKLIST</h3>
+
+<ul>
+<li>✓ Identify order.</li>
+<li>✓ Locate elements.</li>
+<li>✓ Construct matrices from formulas.</li>
+<li>✓ Identify matrix types.</li>
+<li>✓ Add matrices.</li>
+<li>✓ Subtract matrices.</li>
+<li>✓ Multiply by scalars.</li>
+<li>✓ Multiply matrices.</li>
+<li>✓ Find transpose.</li>
+<li>✓ Find 2 × 2 determinants.</li>
+<li>✓ Find 3 × 3 determinants.</li>
+<li>✓ Find minors.</li>
+<li>✓ Find cofactors.</li>
+<li>✓ Find adjoint.</li>
+<li>✓ Find 2 × 2 inverse.</li>
+<li>✓ Find 3 × 3 inverse.</li>
+<li>✓ Check an inverse.</li>
+<li>✓ Solve simultaneous equations using matrices.</li>
+<li>✓ Recognise singular systems.</li>
+<li>✓ Apply transformation matrices.</li>
+<li>✓ Combine transformations.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "Given A=[[2,1],[3,4]], find |A|.",
+      hint: "Use ad-bc.",
+      steps: [
+        "det(A)=2(4)-1(3)",
+        "det(A)=8-3",
+        "det(A)=5"
+      ],
+      ans: "5",
+      why: "The determinant of a 2×2 matrix is ad-bc."
+    },
+    {
+      q: "Multiply [[2,1],[3,4]] by [[5,2],[1,3]].",
+      hint: "Use row × column.",
+      steps: [
+        "Entry 1: 2(5)+1(1)=11",
+        "Entry 2: 2(2)+1(3)=7",
+        "Entry 3: 3(5)+4(1)=19",
+        "Entry 4: 3(2)+4(3)=18"
+      ],
+      ans: "[[11,7],[19,18]]",
+      why: "Matrix multiplication uses dot products of rows and columns."
+    },
+    {
+      q: "Rotate (4,-3) 90 degrees clockwise.",
+      hint: "(x,y) becomes (y,-x).",
+      steps: [
+        "x'=y=-3",
+        "y'=-x=-4"
+      ],
+      ans: "(-3,-4)",
+      why: "A clockwise 90° rotation maps (x,y) to (y,-x)."
+    }
+  ]
+);
 add(
   "math",
   "vectors",

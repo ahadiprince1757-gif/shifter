@@ -135,8 +135,10 @@
           "Introduction & Notation",
           "Basic Matrix Operations",
           "Matrix Multiplication",
-          "Determinants & Inverses (2x2)",
-          "Application to Linear Equations"
+          "Determinants, Minors, Cofactors & Inverses",
+          "Simultaneous Linear Equations Using Matrices",
+          "Matrix Transformations",
+          "Matrix Diagnostic & Mixed Practice"
         ]
       },
       {
