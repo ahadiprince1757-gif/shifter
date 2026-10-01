@@ -1900,21 +1900,22 @@ export const mathTopics = [
     "chapter_id": "geometry",
     "topic": "Circle Properties",
     "data": {
-      "notes": "<h2>Circle Properties</h2>\n\n<p>\nA <b>circle</b> is a set of points that are all the same distance\nfrom one fixed point called the <b>centre</b>.\n</p>\n\n<h3>1. CENTRE</h3>\n\n<p>\nThe <b>centre</b> is the fixed point at the middle of the circle.\n</p>\n\n<h3>2. RADIUS</h3>\n\n<p>\nA <b>radius</b> is the straight-line distance from the centre\nto any point on the circumference.\n</p>\n\n<p>\nEvery radius of the same circle has the same length.\n</p>\n\n<h3>3. DIAMETER</h3>\n\n<p>\nA <b>diameter</b> is a straight line passing through the centre\nwith both endpoints on the circumference.\n</p>\n\n<p>\nThe diameter is made up of two radii.\n</p>\n\n<pre>\nDiameter = 2 × Radius\n\nRadius = Diameter ÷ 2\n</pre>\n\n<h3>Worked Example 1</h3>\n\n<p>\nA circle has a radius of 6 cm. Find its diameter.\n</p>\n\n<pre>\nDiameter = 2 × radius\n\n= 2 × 6\n\n= 12 cm\n</pre>\n\n<p><b>Answer: 12 cm</b></p>\n\n<h3>Worked Example 2</h3>\n\n<p>\nA circle has a diameter of 18 cm. Find its radius.\n</p>\n\n<pre>\nRadius = Diameter ÷ 2\n\n= 18 ÷ 2\n\n= 9 cm\n</pre>\n\n<p><b>Answer: 9 cm</b></p>\n\n<h3>4. CIRCUMFERENCE</h3>\n\n<p>\nThe <b>circumference</b> is the total distance around the circle.\nIt is the circle's perimeter.\n</p>\n\n<p>\nThe circumference can be calculated using either radius or diameter:\n</p>\n\n<pre>\nC = 2πr\n\nor\n\nC = πd\n</pre>\n\n<p>\nwhere <b>r</b> is the radius and <b>d</b> is the diameter.\n</p>\n\n<h3>IMPORTANT DISTINCTION</h3>\n\n<ul>\n<li><b>Radius:</b> centre to circumference</li>\n<li><b>Diameter:</b> across the circle through the centre</li>\n<li><b>Circumference:</b> distance around the circle</li>\n</ul>\n\n<h3>Common Mistakes</h3>\n\n<ul>\n<li>Confusing radius with diameter.</li>\n<li>Forgetting that the diameter is twice the radius.</li>\n<li>Using the radius where the diameter is required.</li>\n<li>Confusing circumference with area.</li>\n</ul>\n",
+      "notes": "<h2>Circle Properties</h2>\n\n<p>\nA circle has a few important measurements that you must be able to\n<strong>identify, calculate and use in problems</strong>.\n</p>\n\n<h3>1. The Important Parts of a Circle</h3>\n\n<ul>\n  <li><b>Centre:</b> the point exactly in the middle of the circle.</li>\n  <li><b>Radius (r):</b> the distance from the centre to the circumference.</li>\n  <li><b>Diameter (d):</b> the distance across the circle through the centre.</li>\n  <li><b>Circumference (C):</b> the distance all the way around the circle.</li>\n</ul>\n\n<h3>2. Radius and Diameter</h3>\n\n<p>\nThe diameter goes across the entire circle, while the radius goes from\nthe centre to the edge.\n</p>\n\n<p>\nTherefore, one diameter contains <b>two radii</b>.\n</p>\n\n<pre>\nd = 2r\n\nr = d ÷ 2\n</pre>\n\n<h3>Worked Example 1: Find the Diameter</h3>\n\n<p>\nA circle has a radius of <b>7 cm</b>. Find its diameter.\n</p>\n\n<p><b>Step 1: Write the formula.</b></p>\n\n<pre>\nd = 2r\n</pre>\n\n<p><b>Step 2: Substitute the radius.</b></p>\n\n<pre>\nd = 2 × 7\n</pre>\n\n<p><b>Step 3: Calculate.</b></p>\n\n<pre>\nd = 14 cm\n</pre>\n\n<p><b>Answer: The diameter is 14 cm.</b></p>\n\n<p>\nNotice that the answer is twice the radius:\n7 + 7 = 14.\n</p>\n\n<h3>Worked Example 2: Find the Radius</h3>\n\n<p>\nA circle has a diameter of <b>24 cm</b>. Find its radius.\n</p>\n\n<p><b>Step 1: Write the formula.</b></p>\n\n<pre>\nr = d ÷ 2\n</pre>\n\n<p><b>Step 2: Substitute the diameter.</b></p>\n\n<pre>\nr = 24 ÷ 2\n</pre>\n\n<p><b>Step 3: Calculate.</b></p>\n\n<pre>\nr = 12 cm\n</pre>\n\n<p><b>Answer: The radius is 12 cm.</b></p>\n\n<h3>3. Circumference</h3>\n\n<p>\nThe circumference is the distance around the outside of a circle.\nIt is the circle's perimeter.\n</p>\n\n<p>\nThere are two useful formulas:\n</p>\n\n<pre>\nC = 2πr\n\nC = πd\n</pre>\n\n<p>\nUse whichever formula matches the information given.\n</p>\n\n<ul>\n  <li>If you are given the <b>radius</b>, use <b>C = 2πr</b>.</li>\n  <li>If you are given the <b>diameter</b>, use <b>C = πd</b>.</li>\n</ul>\n\n<h3>Using π</h3>\n\n<p>\nUnless a question tells you to use a particular value, use:\n</p>\n\n<pre>\nπ ≈ 3.142\n</pre>\n\n<p>\nYour final answer should normally be given to the required number of\ndecimal places if the question asks for rounding.\n</p>\n\n<h3>Worked Example 3: Circumference from Radius</h3>\n\n<p>\nA circular plate has a radius of <b>5 cm</b>. Find its circumference.\nUse π = 3.142.\n</p>\n\n<p><b>Step 1: Identify what is given.</b></p>\n\n<pre>\nr = 5 cm\n</pre>\n\n<p>\nWe know the radius, so use:\n</p>\n\n<pre>\nC = 2πr\n</pre>\n\n<p><b>Step 2: Substitute the values.</b></p>\n\n<pre>\nC = 2 × 3.142 × 5\n</pre>\n\n<p><b>Step 3: Multiply.</b></p>\n\n<pre>\n2 × 3.142 = 6.284\n\n6.284 × 5 = 31.42\n</pre>\n\n<p><b>Therefore:</b></p>\n\n<pre>\nC = 31.42 cm\n</pre>\n\n<p><b>Answer: The circumference is 31.42 cm.</b></p>\n\n<h3>Worked Example 4: Circumference from Diameter</h3>\n\n<p>\nA circular wheel has a diameter of <b>20 cm</b>. Find its circumference.\nUse π = 3.142.\n</p>\n\n<p><b>Step 1: Identify the information given.</b></p>\n\n<pre>\nd = 20 cm\n</pre>\n\n<p>\nThe diameter is given, so use:\n</p>\n\n<pre>\nC = πd\n</pre>\n\n<p><b>Step 2: Substitute.</b></p>\n\n<pre>\nC = 3.142 × 20\n</pre>\n\n<p><b>Step 3: Calculate.</b></p>\n\n<pre>\nC = 62.84 cm\n</pre>\n\n<p><b>Answer: The circumference is 62.84 cm.</b></p>\n\n<h3>4. Finding a Missing Radius from Circumference</h3>\n\n<p>\nSometimes the radius is not given. Instead, you are given the\ncircumference.\n</p>\n\n<p>\nStart with:\n</p>\n\n<pre>\nC = 2πr\n</pre>\n\n<p>\nTo find r, divide both sides by 2π:\n</p>\n\n<pre>\nr = C ÷ 2π\n</pre>\n\n<h3>Worked Example 5: Find the Radius</h3>\n\n<p>\nA circle has a circumference of <b>62.84 cm</b>.\nFind its radius. Use π = 3.142.\n</p>\n\n<p><b>Step 1: Write the formula.</b></p>\n\n<pre>\nr = C ÷ 2π\n</pre>\n\n<p><b>Step 2: Substitute.</b></p>\n\n<pre>\nr = 62.84 ÷ (2 × 3.142)\n</pre>\n\n<p><b>Step 3: Calculate the denominator.</b></p>\n\n<pre>\n2 × 3.142 = 6.284\n</pre>\n\n<p>So:</p>\n\n<pre>\nr = 62.84 ÷ 6.284\n\nr = 10 cm\n</pre>\n\n<p><b>Answer: The radius is 10 cm.</b></p>\n\n<h3>5. Finding a Missing Diameter from Circumference</h3>\n\n<p>\nIf the circumference and diameter formula are:\n</p>\n\n<pre>\nC = πd\n</pre>\n\n<p>\nthen divide by π to find the diameter:\n</p>\n\n<pre>\nd = C ÷ π\n</pre>\n\n<h3>Worked Example 6: Find the Diameter</h3>\n\n<p>\nA circular garden has a circumference of <b>31.42 m</b>.\nFind its diameter. Use π = 3.142.\n</p>\n\n<p><b>Step 1: Write the formula.</b></p>\n\n<pre>\nd = C ÷ π\n</pre>\n\n<p><b>Step 2: Substitute.</b></p>\n\n<pre>\nd = 31.42 ÷ 3.142\n</pre>\n\n<p><b>Step 3: Calculate.</b></p>\n\n<pre>\nd = 10 m\n</pre>\n\n<p><b>Answer: The diameter is 10 m.</b></p>\n\n<h3>6. Choosing the Correct Formula</h3>\n\n<p>\nBefore calculating, ask yourself:\n<b>\"What information have I been given?\"</b>\n</p>\n\n<ul>\n  <li>Given radius → use <b>C = 2πr</b>.</li>\n  <li>Given diameter → use <b>C = πd</b>.</li>\n  <li>Given circumference and finding radius → use <b>r = C ÷ 2π</b>.</li>\n  <li>Given circumference and finding diameter → use <b>d = C ÷ π</b>.</li>\n</ul>\n\n<h3>7. Worked Multi-Step Example</h3>\n\n<p>\nA circular running track has a radius of <b>14 m</b>.\nFind its circumference using π = 22/7.\n</p>\n\n<p><b>Step 1: Write the formula.</b></p>\n\n<pre>\nC = 2πr\n</pre>\n\n<p><b>Step 2: Substitute π = 22/7 and r = 14.</b></p>\n\n<pre>\nC = 2 × (22/7) × 14\n</pre>\n\n<p><b>Step 3: Simplify 14 ÷ 7.</b></p>\n\n<pre>\nC = 2 × 22 × 2\n</pre>\n\n<p><b>Step 4: Multiply.</b></p>\n\n<pre>\n2 × 22 = 44\n\n44 × 2 = 88\n</pre>\n\n<p><b>Answer:</b></p>\n\n<pre>\nC = 88 m\n</pre>\n\n<p>\nThe runner travels <b>88 m</b> after completing one full lap.\n</p>\n\n<h3>8. Real-Life Application</h3>\n\n<p>\nA bicycle wheel has a diameter of <b>70 cm</b>.\nApproximately how far does the bicycle travel when the wheel makes\none complete revolution? Use π = 22/7.\n</p>\n\n<p><b>Step 1: Understand what one revolution means.</b></p>\n\n<p>\nOne complete revolution means the wheel has travelled exactly one\ncircumference.\n</p>\n\n<p><b>Step 2: Use the diameter formula.</b></p>\n\n<pre>\nC = πd\n</pre>\n\n<p><b>Step 3: Substitute.</b></p>\n\n<pre>\nC = (22/7) × 70\n</pre>\n\n<p><b>Step 4: Simplify.</b></p>\n\n<pre>\n70 ÷ 7 = 10\n\nC = 22 × 10\n</pre>\n\n<p><b>Step 5: Calculate.</b></p>\n\n<pre>\nC = 220 cm\n</pre>\n\n<p><b>Answer: The bicycle travels 220 cm per revolution.</b></p>\n\n<p>\nSince 100 cm = 1 m:\n</p>\n\n<pre>\n220 cm = 2.2 m\n</pre>\n\n<p>\nTherefore, the wheel moves <b>2.2 m</b> for every complete revolution.\n</p>\n\n<h3>Common Mistakes</h3>\n\n<ul>\n  <li>Using the radius as the diameter.</li>\n  <li>Using C = πd when you have actually been given the radius.</li>\n  <li>Forgetting that d = 2r.</li>\n  <li>Confusing circumference with area.</li>\n  <li>Forgetting units in the final answer.</li>\n  <li>Rounding too early during calculations.</li>\n</ul>\n\n<h3>Quick Check Before You Answer</h3>\n\n<ol>\n  <li>What information has been given?</li>\n  <li>What am I being asked to find?</li>\n  <li>Which formula connects those quantities?</li>\n  <li>Have I substituted the values correctly?</li>\n  <li>Have I included the correct unit?</li>\n</ol>\n",
       "qs": [
         {
-          "q": "A circle has a diameter of 14 cm. Find its radius.",
-          "ans": "7 cm",
+          "q": "A circle has a radius of 8 cm. Find its diameter.",
+          "ans": "16 cm",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Use radius = diameter ÷ 2",
-            "Step 2: 14 ÷ 2 = 7",
-            "Step 3: The radius is 7 cm"
+            "Step 1: Use d = 2r.",
+            "Step 2: Substitute r = 8: d = 2 × 8.",
+            "Step 3: Calculate: d = 16.",
+            "Step 4: Include the unit: 16 cm."
           ],
-          "why": "A diameter contains two radii, so the radius is half the diameter.",
-          "sol": "Step 1: Use radius = diameter ÷ 2\nStep 2: 14 ÷ 2 = 7\nStep 3: The radius is 7 cm",
-          "hint": "The radius is half the diameter.",
+          "why": "A diameter contains two radii, so d = 2 × 8 = 16 cm.",
+          "sol": "Step 1: Use d = 2r.\nStep 2: Substitute r = 8: d = 2 × 8.\nStep 3: Calculate: d = 16.\nStep 4: Include the unit: 16 cm.",
+          "hint": "The diameter is twice the radius.",
           "subject": "math",
           "chapter": "geometry",
           "topic": "Circle Properties",
@@ -1923,18 +1924,19 @@ export const mathTopics = [
           "subskillId": "math_geometry_q1"
         },
         {
-          "q": "A circle has a radius of 9 cm. Find its diameter.",
-          "ans": "18 cm",
+          "q": "A circle has a diameter of 30 cm. Find its radius.",
+          "ans": "15 cm",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Use diameter = 2 × radius",
-            "Step 2: 2 × 9 = 18",
-            "Step 3: The diameter is 18 cm"
+            "Step 1: Use r = d ÷ 2.",
+            "Step 2: Substitute d = 30: r = 30 ÷ 2.",
+            "Step 3: Calculate: r = 15.",
+            "Step 4: Include the unit: 15 cm."
           ],
-          "why": "The diameter is twice the radius.",
-          "sol": "Step 1: Use diameter = 2 × radius\nStep 2: 2 × 9 = 18\nStep 3: The diameter is 18 cm",
-          "hint": "Multiply the radius by 2.",
+          "why": "The diameter contains two equal radii, so 30 ÷ 2 = 15 cm.",
+          "sol": "Step 1: Use r = d ÷ 2.\nStep 2: Substitute d = 30: r = 30 ÷ 2.\nStep 3: Calculate: r = 15.\nStep 4: Include the unit: 15 cm.",
+          "hint": "The radius is half the diameter.",
           "subject": "math",
           "chapter": "geometry",
           "topic": "Circle Properties",
@@ -1943,18 +1945,20 @@ export const mathTopics = [
           "subskillId": "math_geometry_q2"
         },
         {
-          "q": "Which part of a circle is the distance from the centre to the circumference?",
-          "ans": "Radius",
+          "q": "A circle has a radius of 7 cm. Find its circumference using π = 22/7.",
+          "ans": "44 cm",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify the distance from centre to edge",
-            "Step 2: This distance is half the diameter",
-            "Step 3: Name it"
+            "Step 1: Write C = 2πr.",
+            "Step 2: Substitute π = 22/7 and r = 7: C = 2 × (22/7) × 7.",
+            "Step 3: Cancel 7: C = 2 × 22.",
+            "Step 4: Calculate: C = 44.",
+            "Step 5: Include the unit: 44 cm."
           ],
-          "why": "A radius joins the centre to a point on the circumference.",
-          "sol": "Step 1: Identify the distance from centre to edge\nStep 2: This distance is half the diameter\nStep 3: Name it",
-          "hint": "It is half of the diameter.",
+          "why": "The circumference is C = 2πr. Therefore C = 2 × 22/7 × 7 = 44 cm.",
+          "sol": "Step 1: Write C = 2πr.\nStep 2: Substitute π = 22/7 and r = 7: C = 2 × (22/7) × 7.\nStep 3: Cancel 7: C = 2 × 22.\nStep 4: Calculate: C = 44.\nStep 5: Include the unit: 44 cm.",
+          "hint": "Use C = 2πr.",
           "subject": "math",
           "chapter": "geometry",
           "topic": "Circle Properties",
@@ -1963,18 +1967,20 @@ export const mathTopics = [
           "subskillId": "math_geometry_q3"
         },
         {
-          "q": "A straight line joins two points on a circle and passes through the centre. What is this line called?",
-          "ans": "Diameter",
+          "q": "A circular plate has a diameter of 14 cm. Find its circumference using π = 22/7.",
+          "ans": "44 cm",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The endpoints lie on the circumference",
-            "Step 2: The line passes through the centre",
-            "Step 3: Identify the line"
+            "Step 1: Use C = πd.",
+            "Step 2: Substitute π = 22/7 and d = 14.",
+            "Step 3: C = (22/7) × 14.",
+            "Step 4: 14 ÷ 7 = 2.",
+            "Step 5: C = 22 × 2 = 44 cm."
           ],
-          "why": "A diameter is a chord that passes through the centre of the circle.",
-          "sol": "Step 1: The endpoints lie on the circumference\nStep 2: The line passes through the centre\nStep 3: Identify the line",
-          "hint": "It is the longest chord of a circle.",
+          "why": "The circumference is π times the diameter, so C = 22/7 × 14 = 44 cm.",
+          "sol": "Step 1: Use C = πd.\nStep 2: Substitute π = 22/7 and d = 14.\nStep 3: C = (22/7) × 14.\nStep 4: 14 ÷ 7 = 2.\nStep 5: C = 22 × 2 = 44 cm.",
+          "hint": "Because the diameter is given, use C = πd.",
           "subject": "math",
           "chapter": "geometry",
           "topic": "Circle Properties",
@@ -1983,24 +1989,166 @@ export const mathTopics = [
           "subskillId": "math_geometry_q4"
         },
         {
-          "q": "Which formula gives the circumference of a circle using its radius?",
-          "ans": "C = 2πr",
+          "q": "A circle has a radius of 10 cm. Find its circumference using π = 3.142.",
+          "ans": "62.84 cm",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify that circumference means distance around",
-            "Step 2: Use the radius form of the formula",
-            "Step 3: State the formula"
+            "Step 1: Use C = 2πr.",
+            "Step 2: Substitute r = 10 and π = 3.142.",
+            "Step 3: C = 2 × 3.142 × 10.",
+            "Step 4: 2 × 3.142 = 6.284.",
+            "Step 5: 6.284 × 10 = 62.84."
           ],
-          "why": "The circumference of a circle is 2π times its radius.",
-          "sol": "Step 1: Identify that circumference means distance around\nStep 2: Use the radius form of the formula\nStep 3: State the formula",
-          "hint": "Use r for radius.",
+          "why": "Using C = 2πr gives C = 2 × 3.142 × 10 = 62.84 cm.",
+          "sol": "Step 1: Use C = 2πr.\nStep 2: Substitute r = 10 and π = 3.142.\nStep 3: C = 2 × 3.142 × 10.\nStep 4: 2 × 3.142 = 6.284.\nStep 5: 6.284 × 10 = 62.84.",
+          "hint": "Use C = 2πr.",
           "subject": "math",
           "chapter": "geometry",
           "topic": "Circle Properties",
           "conceptId": "math_geometry_circle_properties",
           "skillId": "math_geometry",
           "subskillId": "math_geometry_q5"
+        },
+        {
+          "q": "A circle has a circumference of 62.84 cm. Find its radius using π = 3.142.",
+          "ans": "10 cm",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Start with C = 2πr.",
+            "Step 2: Rearrange: r = C ÷ 2π.",
+            "Step 3: Substitute: r = 62.84 ÷ (2 × 3.142).",
+            "Step 4: Calculate 2 × 3.142 = 6.284.",
+            "Step 5: Calculate 62.84 ÷ 6.284 = 10.",
+            "Step 6: The radius is 10 cm."
+          ],
+          "why": "Dividing the circumference by 2π gives the radius.",
+          "sol": "Step 1: Start with C = 2πr.\nStep 2: Rearrange: r = C ÷ 2π.\nStep 3: Substitute: r = 62.84 ÷ (2 × 3.142).\nStep 4: Calculate 2 × 3.142 = 6.284.\nStep 5: Calculate 62.84 ÷ 6.284 = 10.\nStep 6: The radius is 10 cm.",
+          "hint": "Rearrange C = 2πr to get r = C ÷ 2π.",
+          "subject": "math",
+          "chapter": "geometry",
+          "topic": "Circle Properties",
+          "conceptId": "math_geometry_circle_properties",
+          "skillId": "math_geometry",
+          "subskillId": "math_geometry_q6"
+        },
+        {
+          "q": "A circular garden has a diameter of 21 m. Find its circumference using π = 22/7.",
+          "ans": "66 m",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Use C = πd.",
+            "Step 2: Substitute π = 22/7 and d = 21.",
+            "Step 3: C = (22/7) × 21.",
+            "Step 4: 21 ÷ 7 = 3.",
+            "Step 5: C = 22 × 3 = 66 m."
+          ],
+          "why": "The circumference is π times the diameter, giving 66 m.",
+          "sol": "Step 1: Use C = πd.\nStep 2: Substitute π = 22/7 and d = 21.\nStep 3: C = (22/7) × 21.\nStep 4: 21 ÷ 7 = 3.\nStep 5: C = 22 × 3 = 66 m.",
+          "hint": "The diameter is already given, so use C = πd.",
+          "subject": "math",
+          "chapter": "geometry",
+          "topic": "Circle Properties",
+          "conceptId": "math_geometry_circle_properties",
+          "skillId": "math_geometry",
+          "subskillId": "math_geometry_q7"
+        },
+        {
+          "q": "A bicycle wheel has a diameter of 70 cm. How far does it travel in one complete revolution? Use π = 22/7.",
+          "ans": "2.2 m",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: One revolution means one circumference.",
+            "Step 2: Use C = πd.",
+            "Step 3: Substitute: C = (22/7) × 70.",
+            "Step 4: 70 ÷ 7 = 10.",
+            "Step 5: C = 22 × 10 = 220 cm.",
+            "Step 6: Convert to metres: 220 ÷ 100 = 2.2 m."
+          ],
+          "why": "One complete revolution covers one circumference, which is 220 cm or 2.2 m.",
+          "sol": "Step 1: One revolution means one circumference.\nStep 2: Use C = πd.\nStep 3: Substitute: C = (22/7) × 70.\nStep 4: 70 ÷ 7 = 10.\nStep 5: C = 22 × 10 = 220 cm.\nStep 6: Convert to metres: 220 ÷ 100 = 2.2 m.",
+          "hint": "One complete revolution covers one circumference.",
+          "subject": "math",
+          "chapter": "geometry",
+          "topic": "Circle Properties",
+          "conceptId": "math_geometry_circle_properties",
+          "skillId": "math_geometry",
+          "subskillId": "math_geometry_q8"
+        },
+        {
+          "q": "A circular track has a radius of 14 m. A runner completes 3 full laps. How far does the runner travel? Use π = 22/7.",
+          "ans": "264 m",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: One lap is one circumference.",
+            "Step 2: Use C = 2πr.",
+            "Step 3: C = 2 × (22/7) × 14.",
+            "Step 4: 14 ÷ 7 = 2, so C = 2 × 22 × 2 = 88 m.",
+            "Step 5: The runner completes 3 laps, so distance = 3 × 88.",
+            "Step 6: 3 × 88 = 264 m."
+          ],
+          "why": "One lap is 88 m, so 3 laps are 3 × 88 = 264 m.",
+          "sol": "Step 1: One lap is one circumference.\nStep 2: Use C = 2πr.\nStep 3: C = 2 × (22/7) × 14.\nStep 4: 14 ÷ 7 = 2, so C = 2 × 22 × 2 = 88 m.\nStep 5: The runner completes 3 laps, so distance = 3 × 88.\nStep 6: 3 × 88 = 264 m.",
+          "hint": "First find the circumference of one lap, then multiply by 3.",
+          "subject": "math",
+          "chapter": "geometry",
+          "topic": "Circle Properties",
+          "conceptId": "math_geometry_circle_properties",
+          "skillId": "math_geometry",
+          "subskillId": "math_geometry_q9"
+        },
+        {
+          "q": "A circular field has a circumference of 88 m. Find its radius using π = 22/7.",
+          "ans": "14 m",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Start with C = 2πr.",
+            "Step 2: Rearrange: r = C ÷ 2π.",
+            "Step 3: Substitute: r = 88 ÷ [2 × (22/7)].",
+            "Step 4: r = 88 ÷ (44/7).",
+            "Step 5: Dividing by 44/7 is the same as multiplying by 7/44.",
+            "Step 6: r = 88 × 7/44.",
+            "Step 7: 88 ÷ 44 = 2.",
+            "Step 8: r = 2 × 7 = 14 m."
+          ],
+          "why": "Rearranging C = 2πr gives r = C ÷ 2π, which gives 14 m.",
+          "sol": "Step 1: Start with C = 2πr.\nStep 2: Rearrange: r = C ÷ 2π.\nStep 3: Substitute: r = 88 ÷ [2 × (22/7)].\nStep 4: r = 88 ÷ (44/7).\nStep 5: Dividing by 44/7 is the same as multiplying by 7/44.\nStep 6: r = 88 × 7/44.\nStep 7: 88 ÷ 44 = 2.\nStep 8: r = 2 × 7 = 14 m.",
+          "hint": "Use C = 2πr and rearrange to r = C ÷ 2π.",
+          "subject": "math",
+          "chapter": "geometry",
+          "topic": "Circle Properties",
+          "conceptId": "math_geometry_circle_properties",
+          "skillId": "math_geometry",
+          "subskillId": "math_geometry_q10"
+        },
+        {
+          "q": "A wheel has a radius of 35 cm. How many complete revolutions are needed for the wheel to travel 220 m? Use π = 22/7.",
+          "ans": "100 complete revolutions",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Find the circumference: C = 2πr.",
+            "Step 2: C = 2 × (22/7) × 35.",
+            "Step 3: 35 ÷ 7 = 5.",
+            "Step 4: C = 2 × 22 × 5 = 220 cm.",
+            "Step 5: Convert 220 m to centimetres: 220 × 100 = 22,000 cm.",
+            "Step 6: Number of revolutions = 22,000 ÷ 220.",
+            "Step 7: 22,000 ÷ 220 = 100."
+          ],
+          "why": "Each revolution covers 220 cm. Since 220 m = 22,000 cm, the wheel needs 22,000 ÷ 220 = 100 revolutions.",
+          "sol": "Step 1: Find the circumference: C = 2πr.\nStep 2: C = 2 × (22/7) × 35.\nStep 3: 35 ÷ 7 = 5.\nStep 4: C = 2 × 22 × 5 = 220 cm.\nStep 5: Convert 220 m to centimetres: 220 × 100 = 22,000 cm.\nStep 6: Number of revolutions = 22,000 ÷ 220.\nStep 7: 22,000 ÷ 220 = 100.",
+          "hint": "Find the distance travelled in one revolution first, then divide the total distance by that distance.",
+          "subject": "math",
+          "chapter": "geometry",
+          "topic": "Circle Properties",
+          "conceptId": "math_geometry_circle_properties",
+          "skillId": "math_geometry",
+          "subskillId": "math_geometry_q11"
         }
       ]
     },
