@@ -2668,115 +2668,479 @@ Step 2: 5 × 2 = 10<br>
     }
   ]
 );
+add(
+  "math",
+  "geometry",
+  "Angle properties",
+  "Classifying Angles",
+
+  `<h2>Classifying Angles</h2>
+
+<p>An angle measures the turn between two rays meeting at a vertex.
+We classify an angle by comparing its size with 90° and 180°.</p>
+
+<pre>
+Acute:       0° < angle < 90°
+Right:       angle = 90°
+Obtuse:      90° < angle < 180°
+Straight:    angle = 180°
+</pre>
+
+<h3>Worked Example 1: Classify 38°</h3>
+
+<p>Step 1: Compare 38° with 90°.</p>
+<pre>38° < 90°</pre>
+
+<p>Step 2: An angle greater than 0° but less than 90° is acute.</p>
+<p><b>Answer: Acute angle.</b></p>
+
+<h3>Worked Example 2: Classify 90°</h3>
+
+<p>90° is exactly a right angle.</p>
+<p><b>Answer: Right angle.</b></p>
+
+<h3>Worked Example 3: Classify 147°</h3>
+
+<pre>
+90° < 147° < 180°
+</pre>
+
+<p>The angle is larger than 90° but smaller than 180°.</p>
+<p><b>Answer: Obtuse angle.</b></p>
+
+<h3>Worked Example 4: Classify 180°</h3>
+
+<p>An angle of 180° forms a straight line.</p>
+<p><b>Answer: Straight angle.</b></p>`,
+
+  [
+    {
+      q: "Classify an angle of 24°.",
+      hint: "Compare it with 90°.",
+      steps: [
+        "24° is less than 90°.",
+        "An angle between 0° and 90° is acute."
+      ],
+      ans: "Acute",
+      why: "An acute angle is greater than 0° but less than 90°."
+    },
+    {
+      q: "Classify an angle of 112°.",
+      hint: "Is it between 90° and 180°?",
+      steps: [
+        "90° < 112° < 180°.",
+        "An angle between 90° and 180° is obtuse."
+      ],
+      ans: "Obtuse",
+      why: "An obtuse angle is larger than a right angle but smaller than a straight angle."
+    },
+    {
+      q: "An angle measures exactly 90°. What type is it?",
+      hint: "Think of a quarter-turn.",
+      steps: [
+        "The angle measures exactly 90°.",
+        "Therefore, it is a right angle."
+      ],
+      ans: "Right angle",
+      why: "A right angle measures exactly 90°."
+    },
+    {
+      q: "Can an angle of 180° be acute?",
+      hint: "An acute angle must be smaller than 90°.",
+      steps: [
+        "An acute angle is less than 90°.",
+        "180° is a straight angle.",
+        "Therefore, it cannot be acute."
+      ],
+      ans: "No; it is a straight angle.",
+      why: "Angle classification depends on the measured size."
+    }
+  ]
+);
+
 
 add(
   "math",
   "geometry",
-  "Types of angles",
+  "Angle properties",
+  "Angles on a Straight Line",
 
-  `<h2> Types of Angles</h2>
-<p>An angle is formed when two lines meet at a common point called a vertex.</p>
-<h3> NOTES (EXPLAINED)</h3>
-<ul>
-<li>Angles are measured in degrees (°)</li>
-<li>Angle size depends on how open the two lines are</li>
-<li><b>Acute angle:</b> Less than 90° (small opening)</li>
-<li><b>Right angle:</b> Exactly 90° (perfect corner, like a square)</li>
-<li><b>Obtuse angle:</b> Greater than 90° but less than 180° (wide opening)</li>
-<li><b>Straight angle:</b> Exactly 180° (forms a straight line)</li>
-</ul>
-<h3> KEY IDEA</h3>
+  `<h2>Angles on a Straight Line</h2>
+
+<p>Angles that lie next to each other on a straight line add up to
+<b>180°</b>.</p>
+
 <pre>
-Use 90° and 180° as reference points to classify angles
+x + known angle = 180°
+
+x = 180° - known angle
 </pre>
-<h3> ANGLE CLASSIFICATION GUIDE</h3>
-<ul>
-<li>0° – 90° → Acute angle</li>
-<li>90° → Right angle</li>
-<li>90° – 180° → Obtuse angle</li>
-<li>180° → Straight angle</li>
-</ul>
-<h3> WORKED EXAMPLES</h3>
-<ul>
-<li>
-<b>Example 1:</b> Classify 35°<br>
-Step 1: Compare with 90°<br>
-Step 2: 35° < 90°<br>
-<b>Answer: Acute angle</b>
-</li>
-<li>
-<b>Example 2:</b> Classify 90°<br>
-Step 1: Check exact value<br>
-Step 2: It equals 90°<br>
-<b>Answer: Right angle</b>
-</li>
-<li>
-<b>Example 3:</b> Classify 150°<br>
-Step 1: Compare with 90° and 180°<br>
-Step 2: 150° lies between them<br>
-<b>Answer: Obtuse angle</b>
-</li>
-</ul>
-<h3> VISUAL IDEA</h3>
+
+<h3>Worked Example 1</h3>
+
+<p>Two adjacent angles are 64° and x°. Find x.</p>
+
 <pre>
-Acute:   < 90°   (small)
-Right:   90°     (corner)
-Obtuse:  > 90°   (wide)
-Straight: 180°   (line)
+64° + x = 180°
+
+x = 180° - 64°
+
+x = 116°
 </pre>
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li> Construction → building corners and structures</li>
-<li> Navigation → direction and turning angles</li>
-<li> Engineering → machine joint movement</li>
-<li> Game design → character rotation and motion</li>
-<li> Design → architecture and blueprint layouts</li>
-</ul>
-`,
+
+<p><b>Answer: x = 116°.</b></p>
+
+<h3>Worked Example 2</h3>
+
+<p>The angles are 3x° and 60°. Find x.</p>
+
+<pre>
+3x + 60 = 180
+
+3x = 180 - 60
+
+3x = 120
+
+x = 120 / 3
+
+x = 40
+</pre>
+
+<p>The angle represented by 3x is 3 × 40° = 120°.</p>
+
+<h3>Worked Example 3</h3>
+
+<p>Three adjacent angles on a straight line are 35°, 82° and x°.</p>
+
+<pre>
+35° + 82° + x = 180°
+
+117° + x = 180°
+
+x = 180° - 117°
+
+x = 63°
+</pre>
+
+<p><b>Answer: x = 63°.</b></p>`,
 
   [
     {
-      "q": "Classify 60°",
-      "hint": "Compare with 90°",
-      "steps": [
-        "Step 1: 60° is less than 90°",
-        "Step 2: Therefore it is acute"
+      q: "Two adjacent angles on a straight line are 127° and x°. Find x.",
+      hint: "Their sum is 180°.",
+      steps: [
+        "127° + x = 180°",
+        "x = 180° - 127°",
+        "x = 53°."
       ],
-      "ans": "Acute angle",
-      "why": "Angles less than 90° are acute"
+      ans: "53°",
+      why: "Angles forming a straight line total 180°."
     },
     {
-      "q": "Classify 120°",
-      "hint": "Between 90° and 180°",
-      "steps": [
-        "Step 1: Compare with 90°",
-        "Step 2: Compare with 180°",
-        "Step 3: Determine range"
+      q: "Angles 2x° and 70° lie on a straight line. Find x.",
+      hint: "Write 2x + 70 = 180.",
+      steps: [
+        "2x + 70 = 180",
+        "2x = 110",
+        "x = 110 / 2",
+        "x = 55."
       ],
-      "ans": "Obtuse angle",
-      "why": "Angles between 90° and 180° are obtuse"
+      ans: "55",
+      why: "Use the straight-line angle sum to form an equation."
     },
     {
-      "q": "What is a right angle?",
-      "hint": "corner",
-      "steps": [
-        "Step 1: Identify angle size",
-        "Step 2: Check if exactly 90°",
-        "Step 3: Define type"
+      q: "Three angles on a straight line are 42°, 91° and x°. Find x.",
+      hint: "Add the known angles, then subtract from 180°.",
+      steps: [
+        "42° + 91° = 133°",
+        "133° + x = 180°",
+        "x = 180° - 133°",
+        "x = 47°."
       ],
-      "ans": "An angle of exactly 90°",
-      "why": "It forms a perfect square corner"
+      ans: "47°",
+      why: "All adjacent angles forming the straight angle sum to 180°."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "geometry",
+  "Angle properties",
+  "Angles Around a Point",
+
+  `<h2>Angles Around a Point</h2>
+
+<p>All angles making one complete turn around a point add up to
+<b>360°</b>.</p>
+
+<pre>
+Missing angle = 360° - sum of known angles
+</pre>
+
+<h3>Worked Example 1</h3>
+
+<p>Angles around a point are 80°, 110° and x°.</p>
+
+<pre>
+80° + 110° + x = 360°
+
+190° + x = 360°
+
+x = 360° - 190°
+
+x = 170°
+</pre>
+
+<h3>Worked Example 2</h3>
+
+<p>Four equal angles meet at a point. Find each angle.</p>
+
+<pre>
+Total = 360°
+
+Each angle = 360° / 4
+
+Each angle = 90°
+</pre>
+
+<h3>Worked Example 3</h3>
+
+<p>Angles x°, 2x° and 90° meet at a point.</p>
+
+<pre>
+x + 2x + 90 = 360
+
+3x + 90 = 360
+
+3x = 270
+
+x = 90°
+</pre>
+
+<p><b>Answer: x = 90°.</b></p>`,
+
+  [
+    {
+      q: "Angles around a point are 75°, 125° and x°. Find x.",
+      hint: "A complete turn is 360°.",
+      steps: [
+        "75° + 125° = 200°",
+        "x = 360° - 200°",
+        "x = 160°."
+      ],
+      ans: "160°",
+      why: "Angles around a point make one complete turn of 360°."
     },
     {
-      "q": "What is a straight angle?",
-      "hint": "line",
-      "steps": [
-        "Step 1: Observe full line",
-        "Step 2: Measure angle",
-        "Step 3: Identify value"
+      q: "Five equal angles meet at a point. Find each angle.",
+      hint: "Divide 360° equally among five angles.",
+      steps: [
+        "Total angle = 360°",
+        "Each angle = 360° / 5",
+        "Each angle = 72°."
       ],
-      "ans": "180°",
-      "why": "It forms a straight line"
+      ans: "72°",
+      why: "Equal angles share the complete turn equally."
+    },
+    {
+      q: "Angles x°, 2x°, 3x° and 60° meet at a point. Find x.",
+      hint: "Their sum is 360°.",
+      steps: [
+        "x + 2x + 3x + 60 = 360",
+        "6x + 60 = 360",
+        "6x = 300",
+        "x = 50."
+      ],
+      ans: "50",
+      why: "Use the 360° total to form an equation."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "geometry",
+  "Angle properties",
+  "Vertically Opposite Angles",
+
+  `<h2>Vertically Opposite Angles</h2>
+
+<p>When two straight lines cross, the angles directly opposite each
+other are equal.</p>
+
+<h3>Worked Example 1</h3>
+
+<p>Two lines cross. One angle is 48°. Find the angle directly opposite it.</p>
+
+<pre>
+Opposite angle = 48°
+</pre>
+
+<p><b>Answer: 48°.</b></p>
+
+<h3>Worked Example 2</h3>
+
+<p>Opposite angles are (3x + 10)° and 70°. Find x.</p>
+
+<p>Since vertically opposite angles are equal:</p>
+
+<pre>
+3x + 10 = 70
+
+3x = 70 - 10
+
+3x = 60
+
+x = 20
+</pre>
+
+<h3>Worked Example 3</h3>
+
+<p>One angle at an intersection is 132°. Find the opposite angle and
+the smaller adjacent angle.</p>
+
+<pre>
+Opposite angle = 132°
+
+Adjacent angle = 180° - 132°
+
+Adjacent angle = 48°
+</pre>
+
+<p><b>Opposite angle: 132°; adjacent angle: 48°.</b></p>`,
+
+  [
+    {
+      q: "Two straight lines cross. One angle is 83°. Find the vertically opposite angle.",
+      hint: "Opposite angles formed by intersecting lines are equal.",
+      steps: [
+        "The given angle is 83°.",
+        "The opposite angle equals it.",
+        "Answer = 83°."
+      ],
+      ans: "83°",
+      why: "Vertically opposite angles are equal."
+    },
+    {
+      q: "Opposite angles are (5x - 8)° and 72°. Find x.",
+      hint: "Set the two angle expressions equal.",
+      steps: [
+        "5x - 8 = 72",
+        "5x = 80",
+        "x = 16."
+      ],
+      ans: "16",
+      why: "Equal vertically opposite angles give an equation."
+    },
+    {
+      q: "An angle at an intersection is 121°. Find the smaller adjacent angle.",
+      hint: "Adjacent angles on a straight line total 180°.",
+      steps: [
+        "Adjacent angle = 180° - 121°",
+        "Adjacent angle = 59°."
+      ],
+      ans: "59°",
+      why: "The adjacent angle and 121° form a straight angle."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "geometry",
+  "Angle properties",
+  "Parallel Lines and a Transversal",
+
+  `<h2>Parallel Lines and a Transversal</h2>
+
+<p>A transversal is a line that crosses two other lines. When those
+two lines are parallel, three important angle relationships apply.</p>
+
+<ul>
+<li><b>Corresponding angles:</b> equal.</li>
+<li><b>Alternate interior angles:</b> equal.</li>
+<li><b>Co-interior angles:</b> add up to 180°.</li>
+</ul>
+
+<h3>Worked Example 1: Corresponding Angles</h3>
+
+<p>One corresponding angle is 68°.</p>
+
+<pre>
+Other corresponding angle = 68°
+</pre>
+
+<h3>Worked Example 2: Alternate Interior Angles</h3>
+
+<p>One alternate interior angle is 113°.</p>
+
+<pre>
+Other alternate interior angle = 113°
+</pre>
+
+<h3>Worked Example 3: Co-interior Angles</h3>
+
+<p>One co-interior angle is 72°. Find the other.</p>
+
+<pre>
+72° + x = 180°
+
+x = 180° - 72°
+
+x = 108°
+</pre>
+
+<p><b>Important:</b> These relationships apply when the two lines
+are parallel.</p>`,
+
+  [
+    {
+      q: "Two parallel lines are crossed by a transversal. A corresponding angle is 74°. Find its partner.",
+      hint: "Corresponding angles are equal for parallel lines.",
+      steps: [
+        "The lines are parallel.",
+        "Corresponding angles are equal.",
+        "The required angle is 74°."
+      ],
+      ans: "74°",
+      why: "Corresponding angles are equal when the lines are parallel."
+    },
+    {
+      q: "One alternate interior angle is 126°. Find the other alternate interior angle.",
+      hint: "Alternate interior angles are equal.",
+      steps: [
+        "The lines are parallel.",
+        "Alternate interior angles are equal.",
+        "The required angle is 126°."
+      ],
+      ans: "126°",
+      why: "The alternate interior angle rule applies to parallel lines."
+    },
+    {
+      q: "Co-interior angles are (2x + 10)° and 110°. Find x.",
+      hint: "Co-interior angles add up to 180°.",
+      steps: [
+        "2x + 10 + 110 = 180",
+        "2x + 120 = 180",
+        "2x = 60",
+        "x = 30."
+      ],
+      ans: "30",
+      why: "Co-interior angles on parallel lines are supplementary."
+    },
+    {
+      q: "A co-interior angle is 97°. Find the other angle.",
+      hint: "Subtract 97° from 180°.",
+      steps: [
+        "Other angle = 180° - 97°",
+        "Other angle = 83°."
+      ],
+      ans: "83°",
+      why: "The two co-interior angles add up to 180°."
     }
   ]
 );
@@ -2784,959 +3148,1060 @@ add(
   "math",
   "geometry",
   "Triangles",
+  "Triangle Angle Sum",
 
-  `<h2>Triangles</h2>
+  `<h2>Triangle Angle Sum</h2>
 
-<p>
-A <b>triangle</b> is a polygon with exactly three sides, three vertices,
-and three interior angles.
-</p>
+<p><b>One concept:</b> The three interior angles of every triangle add up to 180°.</p>
 
-<h3>1. ANGLE SUM OF A TRIANGLE</h3>
+<h3>Why does this matter?</h3>
+<p>If we know two interior angles of a triangle, we can calculate the third angle without measuring it.</p>
 
-<p>
-The three interior angles of every triangle add up to <b>180°</b>.
-</p>
+<p><b>Rule:</b></p>
+<p style="text-align:center;font-size:1.2em;"><b>A + B + C = 180°</b></p>
 
-<pre>
-Angle 1 + Angle 2 + Angle 3 = 180°
-</pre>
+<h3>Worked Example 1: Find the missing angle</h3>
+<p>A triangle has angles 50°, 60° and x°.</p>
 
-<p>
-If two angles are known, the third angle can be found by subtracting
-their sum from 180°.
-</p>
+<p><b>Step 1:</b> Write the triangle angle sum.</p>
+<p>50° + 60° + x = 180°</p>
 
-<pre>
-Missing angle = 180° − sum of known angles
-</pre>
+<p><b>Step 2:</b> Add the known angles.</p>
+<p>110° + x = 180°</p>
 
-<h3>Worked Example</h3>
+<p><b>Step 3:</b> Subtract 110° from both sides.</p>
+<p>x = 180° - 110°</p>
 
-<p>
-A triangle has angles 45°, 65°, and x.
-</p>
+<p><b>Answer: x = 70°.</b></p>
 
-<pre>
-45° + 65° + x = 180°
+<h3>Worked Example 2: Find an angle when the other angles are different</h3>
+<p>A triangle has angles 35° and 85°. Find the third angle.</p>
 
-110° + x = 180°
+<p><b>Step 1:</b> Add the known angles.</p>
+<p>35° + 85° = 120°</p>
 
-x = 180° − 110°
+<p><b>Step 2:</b> Subtract their sum from 180°.</p>
+<p>x = 180° - 120°</p>
 
-x = 70°
-</pre>
+<p><b>Answer: x = 60°.</b></p>
 
-<p><b>Answer: x = 70°</b></p>
+<h3>Worked Example 3: Find an angle containing an unknown</h3>
+<p>The angles of a triangle are x°, (x + 20)° and 60°. Find x.</p>
 
-<h3>2. TYPES OF TRIANGLES BY SIDES</h3>
+<p><b>Step 1:</b> Add the three angles.</p>
+<p>x + (x + 20) + 60 = 180</p>
 
-<ul>
-<li>
-<b>Equilateral:</b> all three sides are equal.
-All three angles are 60°.
-</li>
+<p><b>Step 2:</b> Remove the brackets and collect like terms.</p>
+<p>2x + 80 = 180</p>
 
-<li>
-<b>Isosceles:</b> two sides are equal.
-The angles opposite those equal sides are also equal.
-</li>
+<p><b>Step 3:</b> Subtract 80 from both sides.</p>
+<p>2x = 100</p>
 
-<li>
-<b>Scalene:</b> all three sides have different lengths.
-Its angles are also different.
-</li>
-</ul>
+<p><b>Step 4:</b> Divide both sides by 2.</p>
+<p>x = 50°</p>
 
-<h3>3. TYPES OF TRIANGLES BY ANGLES</h3>
+<p>The angles are 50°, 70° and 60°. Check: 50 + 70 + 60 = 180°.</p>
 
-<ul>
-<li>
-<b>Acute triangle:</b> all three angles are less than 90°.
-</li>
-
-<li>
-<b>Right-angled triangle:</b> one angle is exactly 90°.
-</li>
-
-<li>
-<b>Obtuse triangle:</b> one angle is greater than 90°.
-</li>
-</ul>
-
-<h3>IMPORTANT CONNECTION</h3>
-
-<p>
-A triangle can be classified in two ways at the same time:
-by its <b>sides</b> and by its <b>angles</b>.
-</p>
-
-<p>
-For example, a triangle can be both <b>isosceles</b> and
-<b>right-angled</b>.
-</p>
-
-<h3>CHECKING A TRIANGLE</h3>
-
-<p>
-If three angles are given, add them. If their sum is not 180°,
-they cannot be the interior angles of an ordinary triangle.
-</p>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Using 360° instead of 180°.</li>
-<li>Forgetting to subtract the known angles from 180°.</li>
-<li>Confusing an isosceles triangle with an equilateral triangle.</li>
-<li>Assuming every triangle with unequal angles has unequal sides without checking the angle-side relationship.</li>
-</ul>
-`,
+<h3>Common mistake</h3>
+<p>Do not subtract only one known angle when two angles are given. First add all known angles, then subtract their total from 180°.</p>`,
 
   [
     {
-      "q": "A triangle has angles 35° and 85°. Find the third angle.",
-      "hint": "The angles of a triangle add to 180°.",
-      "steps": [
-        "Step 1: Add the known angles: 35° + 85° = 120°",
-        "Step 2: Subtract from 180°: 180° − 120°",
-        "Step 3: The missing angle is 60°"
+      q: "A triangle has angles 45°, 65° and x°. Find x.",
+      hint: "Add 45° and 65°, then subtract their sum from 180°.",
+      steps: [
+        "The interior angles of a triangle add up to 180°.",
+        "45° + 65° + x = 180°.",
+        "110° + x = 180°.",
+        "x = 180° - 110° = 70°."
       ],
-      "ans": "60°",
-      "why": "The three interior angles of a triangle always add up to 180°."
+      ans: "70°",
+      why: "The missing angle is the difference between 180° and the sum of the two known angles."
     },
-
     {
-      "q": "A triangle has angles 90° and 35°. Find the third angle.",
-      "hint": "Use the 180° angle-sum rule.",
-      "steps": [
-        "Step 1: Add the known angles: 90° + 35° = 125°",
-        "Step 2: Subtract from 180°: 180° − 125°",
-        "Step 3: The missing angle is 55°"
+      q: "Two angles of a triangle are 28° and 92°. Calculate the third angle.",
+      hint: "Find 28° + 92° first.",
+      steps: [
+        "Add the known angles: 28° + 92° = 120°.",
+        "Subtract their sum from 180°.",
+        "x = 180° - 120° = 60°."
       ],
-      "ans": "55°",
-      "why": "A triangle containing a 90° angle is right-angled, and its other two angles must add to 90°."
+      ans: "60°",
+      why: "The three interior angles must total exactly 180°."
     },
-
     {
-      "q": "What type of triangle has all three sides equal?",
-      "hint": "All sides have the same length.",
-      "steps": [
-        "Step 1: Check the side lengths",
-        "Step 2: All three sides are equal",
-        "Step 3: Identify the triangle"
+      q: "The angles of a triangle are x°, 2x° and 30°. Find x.",
+      hint: "Form the equation x + 2x + 30 = 180.",
+      steps: [
+        "Write the angle-sum equation: x + 2x + 30 = 180.",
+        "Collect like terms: 3x + 30 = 180.",
+        "Subtract 30: 3x = 150.",
+        "Divide by 3: x = 50°."
       ],
-      "ans": "Equilateral triangle",
-      "why": "An equilateral triangle has three equal sides and three equal angles of 60°."
-    },
-
-    {
-      "q": "A triangle has two equal sides. What type of triangle is it?",
-      "hint": "Classify it by its sides.",
-      "steps": [
-        "Step 1: Look at the number of equal sides",
-        "Step 2: Two sides are equal",
-        "Step 3: Identify the triangle"
-      ],
-      "ans": "Isosceles triangle",
-      "why": "An isosceles triangle has exactly two equal sides."
-    },
-
-    {
-      "q": "Can a triangle have angles 70°, 60°, and 50°?",
-      "hint": "Add the three angles.",
-      "steps": [
-        "Step 1: Add 70° + 60° + 50°",
-        "Step 2: The sum is 180°",
-        "Step 3: Therefore the angles can form a triangle"
-      ],
-      "ans": "Yes",
-      "why": "The three angles add up to exactly 180°."
+      ans: "50°",
+      why: "The equation represents all three angles. Substituting x = 50° gives 50°, 100° and 30°, which total 180°."
     }
   ]
 );
+add(
+  "math",
+  "geometry",
+  "Triangles",
+  "Isosceles Triangle Base Angles",
 
+  `<h2>Isosceles Triangle Base Angles</h2>
 
+<p><b>One concept:</b> The two angles opposite the equal sides of an isosceles triangle are equal.</p>
+
+<h3>Recognising the information</h3>
+<p>An isosceles triangle has at least two equal sides. The angles opposite those sides are equal too.</p>
+
+<p>If the two base angles are x° each, and the top angle is A°, then:</p>
+<p><b>x + x + A = 180°</b></p>
+
+<h3>Worked Example 1: Find the base angles</h3>
+<p>An isosceles triangle has a top angle of 40°. Find each base angle.</p>
+
+<p><b>Step 1:</b> Subtract the top angle from 180°.</p>
+<p>180° - 40° = 140°</p>
+
+<p><b>Step 2:</b> The two base angles are equal, so divide 140° by 2.</p>
+<p>140° ÷ 2 = 70°</p>
+
+<p><b>Answer:</b> Each base angle is 70°.</p>
+
+<h3>Worked Example 2: Find the top angle</h3>
+<p>The base angles are each 65°. Find the top angle.</p>
+
+<p><b>Step 1:</b> Add the equal base angles.</p>
+<p>65° + 65° = 130°</p>
+
+<p><b>Step 2:</b> Subtract from 180°.</p>
+<p>180° - 130° = 50°</p>
+
+<p><b>Answer:</b> The top angle is 50°.</p>
+
+<h3>Worked Example 3: Find an unknown angle</h3>
+<p>An isosceles triangle has angles x°, x° and (x + 30)°. Find x.</p>
+
+<p><b>Step 1:</b> Use the angle sum.</p>
+<p>x + x + (x + 30) = 180</p>
+
+<p><b>Step 2:</b> Collect like terms.</p>
+<p>3x + 30 = 180</p>
+
+<p><b>Step 3:</b> Subtract 30 and divide by 3.</p>
+<p>3x = 150</p>
+<p>x = 50°</p>
+
+<p><b>Check:</b> The angles are 50°, 50° and 80°. Their sum is 180°.</p>
+
+<h3>Common mistake</h3>
+<p>Do not divide the top angle by 2. Divide the remaining angle sum by 2 because the two base angles are equal.</p>`,
+
+  [
+    {
+      q: "An isosceles triangle has a top angle of 36°. Find each base angle.",
+      hint: "Subtract 36° from 180°, then divide the result by 2.",
+      steps: [
+        "The two base angles share the remaining angle sum.",
+        "180° - 36° = 144°.",
+        "144° ÷ 2 = 72°.",
+        "Each base angle is 72°."
+      ],
+      ans: "72°",
+      why: "The base angles are equal and together they must total 144°."
+    },
+    {
+      q: "Each base angle of an isosceles triangle is 48°. Find its top angle.",
+      hint: "Add the base angles before subtracting from 180°.",
+      steps: [
+        "Add the base angles: 48° + 48° = 96°.",
+        "Subtract from 180°: 180° - 96° = 84°."
+      ],
+      ans: "84°",
+      why: "The top angle is the remaining part of the triangle's 180° angle sum."
+    },
+    {
+      q: "An isosceles triangle has angles x°, x° and 4x°. Find x.",
+      hint: "Write x + x + 4x = 180.",
+      steps: [
+        "Combine the angles: x + x + 4x = 180.",
+        "Simplify: 6x = 180.",
+        "Divide by 6: x = 30°.",
+        "The angles are 30°, 30° and 120°."
+      ],
+      ans: "30°",
+      why: "The two equal base angles are both 30°, while the third angle is four times x."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Triangles",
+  "Exterior Angle of a Triangle",
+
+  `<h2>Exterior Angle of a Triangle</h2>
+
+<p><b>One concept:</b> An exterior angle of a triangle equals the sum of the two opposite interior angles.</p>
+
+<p><b>Rule:</b></p>
+<p style="text-align:center;"><b>Exterior angle = opposite interior angle 1 + opposite interior angle 2</b></p>
+
+<h3>Worked Example 1: Find the exterior angle</h3>
+<p>The two opposite interior angles are 45° and 65°.</p>
+
+<p><b>Step 1:</b> Add them.</p>
+<p>45° + 65° = 110°</p>
+
+<p><b>Answer:</b> The exterior angle is 110°.</p>
+
+<h3>Worked Example 2: Find a missing interior angle</h3>
+<p>An exterior angle is 125°. One opposite interior angle is 50°. Find the other opposite interior angle.</p>
+
+<p><b>Step 1:</b> Let the missing angle be x°.</p>
+<p>125° = 50° + x</p>
+
+<p><b>Step 2:</b> Subtract 50° from both sides.</p>
+<p>x = 125° - 50°</p>
+
+<p><b>Answer:</b> x = 75°.</p>
+
+<h3>Worked Example 3: Use the straight-line relationship</h3>
+<p>An exterior angle is 140°. Find the interior angle directly next to it.</p>
+
+<p><b>Step 1:</b> These two angles form a straight line.</p>
+<p>Interior angle + 140° = 180°</p>
+
+<p><b>Step 2:</b> Subtract 140°.</p>
+<p>Interior angle = 180° - 140° = 40°</p>
+
+<p><b>Answer:</b> 40°.</p>
+
+<h3>Important distinction</h3>
+<p>The exterior angle equals the sum of the two <b>opposite</b> interior angles. The interior angle next to it is supplementary to the exterior angle: the two add up to 180°.</p>`,
+
+  [
+    {
+      q: "The two opposite interior angles of a triangle are 38° and 72°. Find the exterior angle.",
+      hint: "Add the two opposite interior angles.",
+      steps: [
+        "Use the exterior angle rule.",
+        "Exterior angle = 38° + 72°.",
+        "Exterior angle = 110°."
+      ],
+      ans: "110°",
+      why: "An exterior angle equals the sum of the two opposite interior angles."
+    },
+    {
+      q: "An exterior angle is 132°. One opposite interior angle is 57°. Find the other opposite interior angle.",
+      hint: "Subtract 57° from 132°.",
+      steps: [
+        "Let the missing angle be x.",
+        "132° = 57° + x.",
+        "x = 132° - 57°.",
+        "x = 75°."
+      ],
+      ans: "75°",
+      why: "The two opposite interior angles together equal the exterior angle."
+    },
+    {
+      q: "An exterior angle of a triangle is 118°. Calculate the interior angle next to it.",
+      hint: "The two adjacent angles on a straight line add up to 180°.",
+      steps: [
+        "Let the adjacent interior angle be x.",
+        "x + 118° = 180°.",
+        "x = 180° - 118°.",
+        "x = 62°."
+      ],
+      ans: "62°",
+      why: "The adjacent interior and exterior angles form a straight line, so they add up to 180°."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Triangles",
+  "Classifying Triangles by Sides",
+
+  `<h2>Classifying Triangles by Their Sides</h2>
+
+<p><b>One concept:</b> Classify a triangle by comparing the lengths of its three sides.</p>
+
+<h3>Three classifications</h3>
+<ul>
+<li><b>Equilateral:</b> all three sides are equal.</li>
+<li><b>Isosceles:</b> exactly two sides are equal in this classification scheme.</li>
+<li><b>Scalene:</b> all three sides have different lengths.</li>
+</ul>
+
+<h3>Worked Example 1: All sides equal</h3>
+<p>A triangle has sides 5 cm, 5 cm and 5 cm.</p>
+
+<p><b>Step 1:</b> Compare the side lengths.</p>
+<p>5 = 5 = 5</p>
+
+<p><b>Conclusion:</b> All three sides are equal, so the triangle is equilateral.</p>
+
+<h3>Worked Example 2: Two sides equal</h3>
+<p>A triangle has sides 7 cm, 7 cm and 4 cm.</p>
+
+<p><b>Step 1:</b> Compare the lengths.</p>
+<p>Two sides are 7 cm, while the third is 4 cm.</p>
+
+<p><b>Conclusion:</b> Exactly two sides are equal, so it is isosceles.</p>
+
+<h3>Worked Example 3: All sides different</h3>
+<p>A triangle has sides 4 cm, 6 cm and 7 cm.</p>
+
+<p><b>Step 1:</b> Compare the lengths.</p>
+<p>4 ≠ 6, 6 ≠ 7 and 4 ≠ 7.</p>
+
+<p><b>Conclusion:</b> All sides differ, so the triangle is scalene.</p>
+
+<h3>Important check: Can these lengths form a triangle?</h3>
+<p>The sum of any two sides must be greater than the third side.</p>
+<p>For sides 4 cm, 6 cm and 7 cm:</p>
+<ul>
+<li>4 + 6 = 10, which is greater than 7.</li>
+<li>4 + 7 = 11, which is greater than 6.</li>
+<li>6 + 7 = 13, which is greater than 4.</li>
+</ul>
+<p>All three conditions hold, so these lengths can form a triangle.</p>`,
+
+  [
+    {
+      q: "A triangle has sides 9 cm, 9 cm and 9 cm. Classify it by its sides.",
+      hint: "Check whether all three lengths are equal.",
+      steps: [
+        "Compare the three side lengths.",
+        "All three sides are 9 cm.",
+        "Therefore, the triangle is equilateral."
+      ],
+      ans: "Equilateral",
+      why: "An equilateral triangle has three equal sides."
+    },
+    {
+      q: "A triangle has sides 8 cm, 8 cm and 5 cm. Classify it by its sides.",
+      hint: "Count how many sides have the same length.",
+      steps: [
+        "Two sides are 8 cm.",
+        "The third side is 5 cm.",
+        "Exactly two sides are equal, so it is isosceles."
+      ],
+      ans: "Isosceles",
+      why: "An isosceles triangle has two equal sides."
+    },
+    {
+      q: "A learner says a triangle with sides 3 cm, 4 cm and 8 cm is scalene. Is the learner correct?",
+      hint: "Before classifying, check whether the lengths can form a triangle.",
+      steps: [
+        "Add the two shorter sides: 3 + 4 = 7.",
+        "Compare this sum with the longest side, 8.",
+        "Since 7 is not greater than 8, the triangle inequality fails.",
+        "These lengths cannot form a triangle, so classifying them as a scalene triangle is incorrect."
+      ],
+      ans: "No. These lengths cannot form a triangle.",
+      why: "Having three different lengths is not enough. The sum of the two shorter sides must be greater than the longest side."
+    }
+  ]
+);
 add(
   "math",
   "geometry",
   "Quadrilaterals",
+  "Quadrilateral Interior Angle Sum",
 
-  `<h2>Quadrilaterals</h2>
+  `<h2>Quadrilateral Interior Angle Sum</h2>
 
-<p>
-A <b>quadrilateral</b> is a polygon with four sides, four vertices,
-and four interior angles.
-</p>
+<p><b>One concept:</b> The four interior angles of a quadrilateral add up to 360°.</p>
 
-<h3>1. ANGLE SUM</h3>
+<p><b>Rule:</b></p>
+<p style="text-align:center;font-size:1.2em;"><b>A + B + C + D = 360°</b></p>
 
-<p>
-The four interior angles of every quadrilateral add up to <b>360°</b>.
-</p>
+<h3>Why is the total 360°?</h3>
+<p>A diagonal can divide a quadrilateral into two triangles.</p>
+<p>Each triangle has an angle sum of 180°.</p>
+<p>Therefore, 180° + 180° = 360°.</p>
 
-<pre>
-Angle 1 + Angle 2 + Angle 3 + Angle 4 = 360°
-</pre>
+<h3>Worked Example 1: Find one missing angle</h3>
+<p>A quadrilateral has angles 80°, 90°, 100° and x°.</p>
 
-<p>
-Therefore, when three angles are known:
-</p>
+<p><b>Step 1:</b> Add the known angles.</p>
+<p>80° + 90° + 100° = 270°</p>
 
-<pre>
-Missing angle = 360° − sum of known angles
-</pre>
+<p><b>Step 2:</b> Subtract from 360°.</p>
+<p>x = 360° - 270° = 90°</p>
 
-<h3>Worked Example</h3>
+<p><b>Answer:</b> 90°.</p>
 
-<p>
-A quadrilateral has angles 80°, 90°, 110°, and x.
-</p>
+<h3>Worked Example 2: Find an angle with a different set of values</h3>
+<p>Three angles of a quadrilateral are 75°, 85° and 110°. Find the fourth angle.</p>
 
-<pre>
-80° + 90° + 110° + x = 360°
+<p><b>Step 1:</b> Add the known angles.</p>
+<p>75° + 85° + 110° = 270°</p>
 
-280° + x = 360°
+<p><b>Step 2:</b> Calculate the remaining angle.</p>
+<p>360° - 270° = 90°</p>
 
-x = 360° − 280°
+<p><b>Answer:</b> 90°.</p>
 
-x = 80°
-</pre>
+<h3>Worked Example 3: Find x algebraically</h3>
+<p>The angles of a quadrilateral are x°, (x + 10)°, 2x° and 90°. Find x.</p>
 
-<p><b>Answer: x = 80°</b></p>
+<p><b>Step 1:</b> Add the four angles.</p>
+<p>x + (x + 10) + 2x + 90 = 360</p>
 
-<h3>2. IMPORTANT TYPES</h3>
+<p><b>Step 2:</b> Collect like terms.</p>
+<p>4x + 100 = 360</p>
 
-<ul>
-<li>
-<b>Square:</b> four equal sides and four right angles.
-</li>
+<p><b>Step 3:</b> Subtract 100.</p>
+<p>4x = 260</p>
 
-<li>
-<b>Rectangle:</b> opposite sides are equal and parallel,
-and all four angles are 90°.
-</li>
+<p><b>Step 4:</b> Divide by 4.</p>
+<p>x = 65°</p>
 
-<li>
-<b>Rhombus:</b> all four sides are equal and opposite angles are equal.
-</li>
+<p><b>Check:</b> The angles are 65°, 75°, 130° and 90°. Their sum is 360°.</p>
 
-<li>
-<b>Parallelogram:</b> both pairs of opposite sides are parallel
-and equal.
-</li>
-
-<li>
-<b>Trapezium:</b> has one pair of parallel sides.
-</li>
-</ul>
-
-<h3>3. SQUARE AND RECTANGLE</h3>
-
-<p>
-A square is also a rectangle because it has four right angles
-and opposite sides are equal.
-</p>
-
-<p>
-The additional property of a square is that <b>all four sides are equal</b>.
-</p>
-
-<h3>4. PARALLELOGRAM ANGLES</h3>
-
-<p>
-In a parallelogram, opposite angles are equal and adjacent angles
-add up to 180°.
-</p>
-
-<pre>
-Opposite angles → equal
-
-Adjacent angles → 180°
-</pre>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Using 180° instead of 360° for a quadrilateral.</li>
-<li>Assuming every quadrilateral is a square or rectangle.</li>
-<li>Thinking a rectangle has four equal sides. That property belongs to a square.</li>
-<li>Confusing equal sides with parallel sides.</li>
-</ul>
-`,
+<h3>Common mistake</h3>
+<p>Do not use 180° for a quadrilateral. Its four interior angles add up to 360°.</p>`,
 
   [
     {
-      "q": "A quadrilateral has angles 75°, 85°, 100°, and x. Find x.",
-      "hint": "The interior angles of a quadrilateral add to 360°.",
-      "steps": [
-        "Step 1: Add the known angles: 75° + 85° + 100° = 260°",
-        "Step 2: Subtract from 360°: 360° − 260°",
-        "Step 3: x = 100°"
+      q: "Three angles of a quadrilateral are 70°, 110° and 95°. Find the fourth angle.",
+      hint: "Add the three known angles and subtract from 360°.",
+      steps: [
+        "Add the known angles: 70° + 110° + 95° = 275°.",
+        "Subtract from 360°: 360° - 275° = 85°."
       ],
-      "ans": "100°",
-      "why": "The four interior angles of a quadrilateral always add up to 360°."
+      ans: "85°",
+      why: "The four interior angles of a quadrilateral total 360°."
     },
-
     {
-      "q": "What is the sum of the interior angles of a quadrilateral?",
-      "hint": "A quadrilateral has four sides.",
-      "steps": [
-        "Step 1: Identify the polygon",
-        "Step 2: Use the quadrilateral angle-sum rule",
-        "Step 3: State the total"
+      q: "A quadrilateral has angles 90°, 90°, 90° and x°. Find x.",
+      hint: "Three right angles total 270°.",
+      steps: [
+        "Add the known angles: 90° + 90° + 90° = 270°.",
+        "Subtract from 360°: x = 360° - 270°.",
+        "Therefore, x = 90°."
       ],
-      "ans": "360°",
-      "why": "Every quadrilateral has an interior angle sum of 360°."
+      ans: "90°",
+      why: "The missing angle must complete the quadrilateral's 360° total."
     },
-
     {
-      "q": "A quadrilateral has four equal sides and four right angles. What is it?",
-      "hint": "Check both its side and angle properties.",
-      "steps": [
-        "Step 1: Four equal sides",
-        "Step 2: Four right angles",
-        "Step 3: Identify the quadrilateral"
+      q: "The angles of a quadrilateral are x°, 2x°, 3x° and 60°. Find x.",
+      hint: "Form the equation x + 2x + 3x + 60 = 360.",
+      steps: [
+        "Add the angles: x + 2x + 3x + 60 = 360.",
+        "Collect like terms: 6x + 60 = 360.",
+        "Subtract 60: 6x = 300.",
+        "Divide by 6: x = 50°."
       ],
-      "ans": "Square",
-      "why": "A square has four equal sides and four angles of 90°."
-    },
-
-    {
-      "q": "A quadrilateral has four right angles and opposite sides equal, but its adjacent sides are not equal. What is it?",
-      "hint": "It has four 90° angles but not four equal sides.",
-      "steps": [
-        "Step 1: Four right angles indicate a rectangle or square",
-        "Step 2: The sides are not all equal",
-        "Step 3: Therefore it is a rectangle"
-      ],
-      "ans": "Rectangle",
-      "why": "A rectangle has four right angles and equal opposite sides, while a square has four equal sides."
-    },
-
-    {
-      "q": "In a parallelogram, one angle is 65°. What is the adjacent angle?",
-      "hint": "Adjacent angles in a parallelogram add to 180°.",
-      "steps": [
-        "Step 1: Adjacent angles add to 180°",
-        "Step 2: Calculate 180° − 65°",
-        "Step 3: The adjacent angle is 115°"
-      ],
-      "ans": "115°",
-      "why": "Adjacent interior angles of a parallelogram are supplementary."
+      ans: "50°",
+      why: "The four angles must total 360°. Substitution gives 50°, 100°, 150° and 60°, which total 360°."
     }
   ]
 );
 add(
   "math",
   "geometry",
-  "Circle Properties",
+  "Quadrilaterals",
+  "Parallelogram",
+  "Parallelogram: Opposite Sides Are Equal",
 
-  `<h2>Circle Properties</h2>
+  `<h2>Opposite Sides of a Parallelogram</h2>
 
-<p>
-A circle has a few important measurements that you must be able to
-<strong>identify, calculate and use in problems</strong>.
-</p>
+<p><b>One concept:</b> In a parallelogram, opposite sides have equal lengths.</p>
 
-<h3>1. The Important Parts of a Circle</h3>
-
+<p>If ABCD is a parallelogram:</p>
 <ul>
-  <li><b>Centre:</b> the point exactly in the middle of the circle.</li>
-  <li><b>Radius (r):</b> the distance from the centre to the circumference.</li>
-  <li><b>Diameter (d):</b> the distance across the circle through the centre.</li>
-  <li><b>Circumference (C):</b> the distance all the way around the circle.</li>
+<li>AB = CD</li>
+<li>BC = AD</li>
 </ul>
 
-<h3>2. Radius and Diameter</h3>
-
-<p>
-The diameter goes across the entire circle, while the radius goes from
-the centre to the edge.
-</p>
-
-<p>
-Therefore, one diameter contains <b>two radii</b>.
-</p>
-
-<pre>
-d = 2r
-
-r = d ÷ 2
-</pre>
-
-<h3>Worked Example 1: Find the Diameter</h3>
-
-<p>
-A circle has a radius of <b>7 cm</b>. Find its diameter.
-</p>
-
-<p><b>Step 1: Write the formula.</b></p>
-
-<pre>
-d = 2r
-</pre>
-
-<p><b>Step 2: Substitute the radius.</b></p>
-
-<pre>
-d = 2 × 7
-</pre>
-
-<p><b>Step 3: Calculate.</b></p>
-
-<pre>
-d = 14 cm
-</pre>
-
-<p><b>Answer: The diameter is 14 cm.</b></p>
-
-<p>
-Notice that the answer is twice the radius:
-7 + 7 = 14.
-</p>
-
-<h3>Worked Example 2: Find the Radius</h3>
-
-<p>
-A circle has a diameter of <b>24 cm</b>. Find its radius.
-</p>
-
-<p><b>Step 1: Write the formula.</b></p>
-
-<pre>
-r = d ÷ 2
-</pre>
-
-<p><b>Step 2: Substitute the diameter.</b></p>
-
-<pre>
-r = 24 ÷ 2
-</pre>
-
-<p><b>Step 3: Calculate.</b></p>
-
-<pre>
-r = 12 cm
-</pre>
-
-<p><b>Answer: The radius is 12 cm.</b></p>
-
-<h3>3. Circumference</h3>
-
-<p>
-The circumference is the distance around the outside of a circle.
-It is the circle's perimeter.
-</p>
-
-<p>
-There are two useful formulas:
-</p>
-
-<pre>
-C = 2πr
-
-C = πd
-</pre>
-
-<p>
-Use whichever formula matches the information given.
-</p>
-
-<ul>
-  <li>If you are given the <b>radius</b>, use <b>C = 2πr</b>.</li>
-  <li>If you are given the <b>diameter</b>, use <b>C = πd</b>.</li>
-</ul>
-
-<h3>Using π</h3>
-
-<p>
-Unless a question tells you to use a particular value, use:
-</p>
-
-<pre>
-π ≈ 3.142
-</pre>
-
-<p>
-Your final answer should normally be given to the required number of
-decimal places if the question asks for rounding.
-</p>
-
-<h3>Worked Example 3: Circumference from Radius</h3>
-
-<p>
-A circular plate has a radius of <b>5 cm</b>. Find its circumference.
-Use π = 3.142.
-</p>
-
-<p><b>Step 1: Identify what is given.</b></p>
-
-<pre>
-r = 5 cm
-</pre>
-
-<p>
-We know the radius, so use:
-</p>
-
-<pre>
-C = 2πr
-</pre>
-
-<p><b>Step 2: Substitute the values.</b></p>
-
-<pre>
-C = 2 × 3.142 × 5
-</pre>
-
-<p><b>Step 3: Multiply.</b></p>
-
-<pre>
-2 × 3.142 = 6.284
-
-6.284 × 5 = 31.42
-</pre>
-
-<p><b>Therefore:</b></p>
-
-<pre>
-C = 31.42 cm
-</pre>
-
-<p><b>Answer: The circumference is 31.42 cm.</b></p>
-
-<h3>Worked Example 4: Circumference from Diameter</h3>
-
-<p>
-A circular wheel has a diameter of <b>20 cm</b>. Find its circumference.
-Use π = 3.142.
-</p>
-
-<p><b>Step 1: Identify the information given.</b></p>
-
-<pre>
-d = 20 cm
-</pre>
-
-<p>
-The diameter is given, so use:
-</p>
-
-<pre>
-C = πd
-</pre>
-
-<p><b>Step 2: Substitute.</b></p>
-
-<pre>
-C = 3.142 × 20
-</pre>
-
-<p><b>Step 3: Calculate.</b></p>
-
-<pre>
-C = 62.84 cm
-</pre>
-
-<p><b>Answer: The circumference is 62.84 cm.</b></p>
-
-<h3>4. Finding a Missing Radius from Circumference</h3>
-
-<p>
-Sometimes the radius is not given. Instead, you are given the
-circumference.
-</p>
-
-<p>
-Start with:
-</p>
-
-<pre>
-C = 2πr
-</pre>
-
-<p>
-To find r, divide both sides by 2π:
-</p>
-
-<pre>
-r = C ÷ 2π
-</pre>
-
-<h3>Worked Example 5: Find the Radius</h3>
-
-<p>
-A circle has a circumference of <b>62.84 cm</b>.
-Find its radius. Use π = 3.142.
-</p>
-
-<p><b>Step 1: Write the formula.</b></p>
-
-<pre>
-r = C ÷ 2π
-</pre>
-
-<p><b>Step 2: Substitute.</b></p>
-
-<pre>
-r = 62.84 ÷ (2 × 3.142)
-</pre>
-
-<p><b>Step 3: Calculate the denominator.</b></p>
-
-<pre>
-2 × 3.142 = 6.284
-</pre>
-
-<p>So:</p>
-
-<pre>
-r = 62.84 ÷ 6.284
-
-r = 10 cm
-</pre>
-
-<p><b>Answer: The radius is 10 cm.</b></p>
-
-<h3>5. Finding a Missing Diameter from Circumference</h3>
-
-<p>
-If the circumference and diameter formula are:
-</p>
-
-<pre>
-C = πd
-</pre>
-
-<p>
-then divide by π to find the diameter:
-</p>
-
-<pre>
-d = C ÷ π
-</pre>
-
-<h3>Worked Example 6: Find the Diameter</h3>
-
-<p>
-A circular garden has a circumference of <b>31.42 m</b>.
-Find its diameter. Use π = 3.142.
-</p>
-
-<p><b>Step 1: Write the formula.</b></p>
-
-<pre>
-d = C ÷ π
-</pre>
-
-<p><b>Step 2: Substitute.</b></p>
-
-<pre>
-d = 31.42 ÷ 3.142
-</pre>
-
-<p><b>Step 3: Calculate.</b></p>
-
-<pre>
-d = 10 m
-</pre>
-
-<p><b>Answer: The diameter is 10 m.</b></p>
-
-<h3>6. Choosing the Correct Formula</h3>
-
-<p>
-Before calculating, ask yourself:
-<b>"What information have I been given?"</b>
-</p>
-
-<ul>
-  <li>Given radius → use <b>C = 2πr</b>.</li>
-  <li>Given diameter → use <b>C = πd</b>.</li>
-  <li>Given circumference and finding radius → use <b>r = C ÷ 2π</b>.</li>
-  <li>Given circumference and finding diameter → use <b>d = C ÷ π</b>.</li>
-</ul>
-
-<h3>7. Worked Multi-Step Example</h3>
-
-<p>
-A circular running track has a radius of <b>14 m</b>.
-Find its circumference using π = 22/7.
-</p>
-
-<p><b>Step 1: Write the formula.</b></p>
-
-<pre>
-C = 2πr
-</pre>
-
-<p><b>Step 2: Substitute π = 22/7 and r = 14.</b></p>
-
-<pre>
-C = 2 × (22/7) × 14
-</pre>
-
-<p><b>Step 3: Simplify 14 ÷ 7.</b></p>
-
-<pre>
-C = 2 × 22 × 2
-</pre>
-
-<p><b>Step 4: Multiply.</b></p>
-
-<pre>
-2 × 22 = 44
-
-44 × 2 = 88
-</pre>
-
-<p><b>Answer:</b></p>
-
-<pre>
-C = 88 m
-</pre>
-
-<p>
-The runner travels <b>88 m</b> after completing one full lap.
-</p>
-
-<h3>8. Real-Life Application</h3>
-
-<p>
-A bicycle wheel has a diameter of <b>70 cm</b>.
-Approximately how far does the bicycle travel when the wheel makes
-one complete revolution? Use π = 22/7.
-</p>
-
-<p><b>Step 1: Understand what one revolution means.</b></p>
-
-<p>
-One complete revolution means the wheel has travelled exactly one
-circumference.
-</p>
-
-<p><b>Step 2: Use the diameter formula.</b></p>
-
-<pre>
-C = πd
-</pre>
-
-<p><b>Step 3: Substitute.</b></p>
-
-<pre>
-C = (22/7) × 70
-</pre>
-
-<p><b>Step 4: Simplify.</b></p>
-
-<pre>
-70 ÷ 7 = 10
-
-C = 22 × 10
-</pre>
-
-<p><b>Step 5: Calculate.</b></p>
-
-<pre>
-C = 220 cm
-</pre>
-
-<p><b>Answer: The bicycle travels 220 cm per revolution.</b></p>
-
-<p>
-Since 100 cm = 1 m:
-</p>
-
-<pre>
-220 cm = 2.2 m
-</pre>
-
-<p>
-Therefore, the wheel moves <b>2.2 m</b> for every complete revolution.
-</p>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-  <li>Using the radius as the diameter.</li>
-  <li>Using C = πd when you have actually been given the radius.</li>
-  <li>Forgetting that d = 2r.</li>
-  <li>Confusing circumference with area.</li>
-  <li>Forgetting units in the final answer.</li>
-  <li>Rounding too early during calculations.</li>
-</ul>
-
-<h3>Quick Check Before You Answer</h3>
-
-<ol>
-  <li>What information has been given?</li>
-  <li>What am I being asked to find?</li>
-  <li>Which formula connects those quantities?</li>
-  <li>Have I substituted the values correctly?</li>
-  <li>Have I included the correct unit?</li>
-</ol>
-`,
+<p>Opposite sides are across from each other, not next to each other.</p>
+
+<h3>Worked Example 1: Find a missing side</h3>
+<p>ABCD is a parallelogram. AB = 12 cm and CD = x cm. Find x.</p>
+<p><b>Step 1:</b> AB and CD are opposite sides.</p>
+<p><b>Step 2:</b> Opposite sides are equal, so AB = CD.</p>
+<p>12 = x</p>
+<p><b>Answer: x = 12 cm.</b></p>
+
+<h3>Worked Example 2: Find an unknown expression</h3>
+<p>The opposite sides of a parallelogram are labelled (3x + 2) cm and 17 cm. Find x.</p>
+<p><b>Step 1:</b> Set the opposite sides equal.</p>
+<p>3x + 2 = 17</p>
+<p><b>Step 2:</b> Subtract 2 from both sides.</p>
+<p>3x = 15</p>
+<p><b>Step 3:</b> Divide by 3.</p>
+<p>x = 5</p>
+<p><b>Check:</b> 3(5) + 2 = 17 cm.</p>
+
+<h3>Worked Example 3: Find the perimeter</h3>
+<p>A parallelogram has adjacent sides of 8 cm and 5 cm. Find its perimeter.</p>
+<p><b>Step 1:</b> Opposite sides equal the adjacent sides respectively.</p>
+<p>The four sides are 8 cm, 5 cm, 8 cm and 5 cm.</p>
+<p><b>Step 2:</b> Add all four sides.</p>
+<p>8 + 5 + 8 + 5 = 26 cm.</p>
+<p><b>Answer: 26 cm.</b></p>
+
+<h3>Common mistake</h3>
+<p>Opposite sides are equal; adjacent sides are not necessarily equal. Do not assume all four sides have the same length.</p>`,
 
   [
     {
-      "q": "A circle has a radius of 8 cm. Find its diameter.",
-      "hint": "The diameter is twice the radius.",
-      "steps": [
-        "Step 1: Use d = 2r.",
-        "Step 2: Substitute r = 8: d = 2 × 8.",
-        "Step 3: Calculate: d = 16.",
-        "Step 4: Include the unit: 16 cm."
+      q: "A parallelogram has AB = 14 cm. If CD is opposite AB, find CD.",
+      hint: "Opposite sides of a parallelogram are equal.",
+      steps: [
+        "AB and CD are opposite sides.",
+        "Therefore, AB = CD.",
+        "CD = 14 cm."
       ],
-      "ans": "16 cm",
-      "why": "A diameter contains two radii, so d = 2 × 8 = 16 cm."
+      ans: "14 cm",
+      why: "Opposite sides of a parallelogram have equal lengths."
     },
-
     {
-      "q": "A circle has a diameter of 30 cm. Find its radius.",
-      "hint": "The radius is half the diameter.",
-      "steps": [
-        "Step 1: Use r = d ÷ 2.",
-        "Step 2: Substitute d = 30: r = 30 ÷ 2.",
-        "Step 3: Calculate: r = 15.",
-        "Step 4: Include the unit: 15 cm."
+      q: "Opposite sides of a parallelogram are (4x - 3) cm and 21 cm. Find x.",
+      hint: "Set 4x - 3 equal to 21.",
+      steps: [
+        "Set the opposite sides equal: 4x - 3 = 21.",
+        "Add 3 to both sides: 4x = 24.",
+        "Divide both sides by 4: x = 6."
       ],
-      "ans": "15 cm",
-      "why": "The diameter contains two equal radii, so 30 ÷ 2 = 15 cm."
+      ans: "6",
+      why: "The two expressions describe opposite sides, which must have equal lengths."
     },
-
     {
-      "q": "A circle has a radius of 7 cm. Find its circumference using π = 22/7.",
-      "hint": "Use C = 2πr.",
-      "steps": [
-        "Step 1: Write C = 2πr.",
-        "Step 2: Substitute π = 22/7 and r = 7: C = 2 × (22/7) × 7.",
-        "Step 3: Cancel 7: C = 2 × 22.",
-        "Step 4: Calculate: C = 44.",
-        "Step 5: Include the unit: 44 cm."
+      q: "A parallelogram has adjacent sides of 11 cm and 7 cm. A learner says every side must be 11 cm. Explain the error and calculate the perimeter.",
+      hint: "Only opposite sides must be equal. Add all four sides.",
+      steps: [
+        "The side lengths are 11 cm, 7 cm, 11 cm and 7 cm.",
+        "The sides of length 11 cm are opposite each other.",
+        "The sides of length 7 cm are also opposite each other.",
+        "Perimeter = 11 + 7 + 11 + 7 = 36 cm."
       ],
-      "ans": "44 cm",
-      "why": "The circumference is C = 2πr. Therefore C = 2 × 22/7 × 7 = 44 cm."
+      ans: "The learner is incorrect; perimeter = 36 cm.",
+      why: "A parallelogram has equal opposite sides, not necessarily four equal sides."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Quadrilaterals",
+  "Parallelogram",
+  "Parallelogram: Opposite Angles Are Equal",
+
+  `<h2>Opposite Angles of a Parallelogram</h2>
+
+<p><b>One concept:</b> Opposite angles in a parallelogram are equal.</p>
+
+<p>For parallelogram ABCD:</p>
+<ul>
+<li>Angle A = angle C</li>
+<li>Angle B = angle D</li>
+</ul>
+
+<h3>Worked Example 1: Find an opposite angle</h3>
+<p>Angle A = 68°. Find angle C.</p>
+<p><b>Step 1:</b> A and C are opposite angles.</p>
+<p><b>Step 2:</b> Opposite angles are equal.</p>
+<p>Angle C = 68°.</p>
+
+<h3>Worked Example 2: Find an unknown</h3>
+<p>Opposite angles are labelled (3x + 10)° and 100°. Find x.</p>
+<p><b>Step 1:</b> Set the opposite angles equal.</p>
+<p>3x + 10 = 100</p>
+<p><b>Step 2:</b> Subtract 10.</p>
+<p>3x = 90</p>
+<p><b>Step 3:</b> Divide by 3.</p>
+<p>x = 30</p>
+<p><b>Check:</b> 3(30) + 10 = 100°.</p>
+
+<h3>Worked Example 3: Find all four angles</h3>
+<p>One angle of a parallelogram is 75°. Find all its interior angles.</p>
+<p><b>Step 1:</b> The opposite angle is equal to it.</p>
+<p>Opposite angle = 75°.</p>
+<p><b>Step 2:</b> Each adjacent angle adds to 180° with the 75° angle.</p>
+<p>180° - 75° = 105°.</p>
+<p><b>Step 3:</b> The other adjacent angle is also 105°.</p>
+<p><b>Answer:</b> 75°, 105°, 75°, 105°.</p>
+
+<h3>Common mistake</h3>
+<p>Opposite angles are equal. Adjacent angles generally are not equal; they add up to 180°.</p>`,
+
+  [
+    {
+      q: "One angle of a parallelogram is 112°. Find its opposite angle.",
+      hint: "Opposite angles are equal.",
+      steps: [
+        "Identify the angle opposite 112°.",
+        "Opposite angles are equal.",
+        "The missing angle is 112°."
+      ],
+      ans: "112°",
+      why: "Opposite angles of a parallelogram have equal measures."
     },
-
     {
-      "q": "A circular plate has a diameter of 14 cm. Find its circumference using π = 22/7.",
-      "hint": "Because the diameter is given, use C = πd.",
-      "steps": [
-        "Step 1: Use C = πd.",
-        "Step 2: Substitute π = 22/7 and d = 14.",
-        "Step 3: C = (22/7) × 14.",
-        "Step 4: 14 ÷ 7 = 2.",
-        "Step 5: C = 22 × 2 = 44 cm."
+      q: "Opposite angles are (5x - 20)° and 80°. Find x.",
+      hint: "Set 5x - 20 equal to 80.",
+      steps: [
+        "Write 5x - 20 = 80.",
+        "Add 20 to both sides: 5x = 100.",
+        "Divide by 5: x = 20."
       ],
-      "ans": "44 cm",
-      "why": "The circumference is π times the diameter, so C = 22/7 × 14 = 44 cm."
+      ans: "20",
+      why: "The angles are opposite, so their expressions must have equal values."
     },
-
     {
-      "q": "A circle has a radius of 10 cm. Find its circumference using π = 3.142.",
-      "hint": "Use C = 2πr.",
-      "steps": [
-        "Step 1: Use C = 2πr.",
-        "Step 2: Substitute r = 10 and π = 3.142.",
-        "Step 3: C = 2 × 3.142 × 10.",
-        "Step 4: 2 × 3.142 = 6.284.",
-        "Step 5: 6.284 × 10 = 62.84."
+      q: "A parallelogram has one angle of 64°. Find the other three angles.",
+      hint: "The opposite angle equals 64°. Each adjacent angle is 180° - 64°.",
+      steps: [
+        "The opposite angle is 64°.",
+        "Calculate each adjacent angle: 180° - 64° = 116°.",
+        "The four angles are 64°, 116°, 64° and 116°."
       ],
-      "ans": "62.84 cm",
-      "why": "Using C = 2πr gives C = 2 × 3.142 × 10 = 62.84 cm."
+      ans: "116°, 64°, 116°",
+      why: "Opposite angles are equal, while adjacent angles are supplementary."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Quadrilaterals",
+  "Parallelogram",
+  "Parallelogram: Adjacent Angles",
+
+  `<h2>Adjacent Angles in a Parallelogram</h2>
+
+<p><b>One concept:</b> Adjacent interior angles of a parallelogram add up to 180°.</p>
+
+<p><b>Rule:</b></p>
+<p>Adjacent angle 1 + adjacent angle 2 = 180°</p>
+
+<h3>Worked Example 1: Find a missing angle</h3>
+<p>Two adjacent angles are 70° and x°. Find x.</p>
+<p><b>Step 1:</b> Write their sum.</p>
+<p>70° + x = 180°</p>
+<p><b>Step 2:</b> Subtract 70°.</p>
+<p>x = 180° - 70° = 110°.</p>
+
+<h3>Worked Example 2: Solve an expression</h3>
+<p>Two adjacent angles are (2x + 10)° and 90°. Find x.</p>
+<p><b>Step 1:</b> Set their sum to 180°.</p>
+<p>2x + 10 + 90 = 180</p>
+<p><b>Step 2:</b> Simplify.</p>
+<p>2x + 100 = 180</p>
+<p><b>Step 3:</b> Subtract 100.</p>
+<p>2x = 80</p>
+<p><b>Step 4:</b> Divide by 2.</p>
+<p>x = 40</p>
+
+<h3>Worked Example 3: Compare two adjacent angles</h3>
+<p>Two adjacent angles are in the ratio 2:3. Find the angles.</p>
+<p><b>Step 1:</b> Represent the angles as 2x and 3x.</p>
+<p><b>Step 2:</b> Their sum is 180°.</p>
+<p>2x + 3x = 180</p>
+<p>5x = 180</p>
+<p>x = 36</p>
+<p><b>Step 3:</b> Calculate each angle.</p>
+<p>2x = 72° and 3x = 108°.</p>
+<p><b>Answer:</b> 72° and 108°.</p>
+
+<h3>Common mistake</h3>
+<p>Do not set adjacent angles equal unless additional information proves they are equal. Their general relationship is that their sum is 180°.</p>`,
+
+  [
+    {
+      q: "One angle of a parallelogram is 83°. Find an adjacent angle.",
+      hint: "Subtract 83° from 180°.",
+      steps: [
+        "Adjacent angles add to 180°.",
+        "83° + x = 180°.",
+        "x = 180° - 83° = 97°."
+      ],
+      ans: "97°",
+      why: "The adjacent angle must complete the 180° total."
     },
-
     {
-      "q": "A circle has a circumference of 62.84 cm. Find its radius using π = 3.142.",
-      "hint": "Rearrange C = 2πr to get r = C ÷ 2π.",
-      "steps": [
-        "Step 1: Start with C = 2πr.",
-        "Step 2: Rearrange: r = C ÷ 2π.",
-        "Step 3: Substitute: r = 62.84 ÷ (2 × 3.142).",
-        "Step 4: Calculate 2 × 3.142 = 6.284.",
-        "Step 5: Calculate 62.84 ÷ 6.284 = 10.",
-        "Step 6: The radius is 10 cm."
+      q: "Adjacent angles are (4x + 5)° and 95°. Find x.",
+      hint: "Their sum is 180°.",
+      steps: [
+        "Write 4x + 5 + 95 = 180.",
+        "Simplify: 4x + 100 = 180.",
+        "Subtract 100: 4x = 80.",
+        "Divide by 4: x = 20."
       ],
-      "ans": "10 cm",
-      "why": "Dividing the circumference by 2π gives the radius."
+      ans: "20",
+      why: "Adjacent angles in a parallelogram are supplementary."
     },
-
     {
-      "q": "A circular garden has a diameter of 21 m. Find its circumference using π = 22/7.",
-      "hint": "The diameter is already given, so use C = πd.",
-      "steps": [
-        "Step 1: Use C = πd.",
-        "Step 2: Substitute π = 22/7 and d = 21.",
-        "Step 3: C = (22/7) × 21.",
-        "Step 4: 21 ÷ 7 = 3.",
-        "Step 5: C = 22 × 3 = 66 m."
+      q: "Two adjacent angles of a parallelogram are in the ratio 4:5. Find both angles.",
+      hint: "Represent the angles as 4x and 5x and use their 180° sum.",
+      steps: [
+        "Let the angles be 4x and 5x.",
+        "4x + 5x = 180.",
+        "9x = 180, so x = 20.",
+        "The angles are 4(20) = 80° and 5(20) = 100°."
       ],
-      "ans": "66 m",
-      "why": "The circumference is π times the diameter, giving 66 m."
+      ans: "80° and 100°",
+      why: "The ratio gives the relative sizes, and the supplementary-angle rule supplies their total."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Circles",
+  "Circle: Radius and Diameter",
+
+  `<h2>Radius and Diameter of a Circle</h2>
+
+<p><b>One concept:</b> The diameter is twice the radius.</p>
+
+<p><b>Rules:</b></p>
+<ul>
+<li>Diameter = 2 × radius</li>
+<li>Radius = diameter ÷ 2</li>
+</ul>
+
+<p>The <b>radius</b> is the distance from the centre of the circle to its circumference. The <b>diameter</b> is a straight line across the circle through its centre, joining two points on the circumference.</p>
+
+<h3>Worked Example 1: Find the diameter</h3>
+<p>A circle has radius 6 cm. Find its diameter.</p>
+<p><b>Step 1:</b> Use diameter = 2 × radius.</p>
+<p>Diameter = 2 × 6</p>
+<p><b>Answer: 12 cm.</b></p>
+
+<h3>Worked Example 2: Find the radius</h3>
+<p>A circle has diameter 18 cm. Find its radius.</p>
+<p><b>Step 1:</b> Divide the diameter by 2.</p>
+<p>Radius = 18 ÷ 2 = 9 cm.</p>
+
+<h3>Worked Example 3: Find the diameter from an expression</h3>
+<p>The radius of a circle is (x + 3) cm and its diameter is 20 cm. Find x.</p>
+<p><b>Step 1:</b> The radius is half the diameter.</p>
+<p>Radius = 20 ÷ 2 = 10 cm.</p>
+<p><b>Step 2:</b> Form an equation.</p>
+<p>x + 3 = 10</p>
+<p><b>Step 3:</b> Subtract 3.</p>
+<p>x = 7</p>
+
+<h3>Common mistake</h3>
+<p>Do not confuse radius and diameter. The diameter goes all the way across the circle through its centre; the radius goes only from the centre to the circumference.</p>`,
+
+  [
+    {
+      q: "A circle has radius 7 cm. Calculate its diameter.",
+      hint: "Multiply the radius by 2.",
+      steps: [
+        "Diameter = 2 × radius.",
+        "Diameter = 2 × 7.",
+        "Diameter = 14 cm."
+      ],
+      ans: "14 cm",
+      why: "A diameter consists of two radii placed end to end through the centre."
     },
-
     {
-      "q": "A bicycle wheel has a diameter of 70 cm. How far does it travel in one complete revolution? Use π = 22/7.",
-      "hint": "One complete revolution covers one circumference.",
-      "steps": [
-        "Step 1: One revolution means one circumference.",
-        "Step 2: Use C = πd.",
-        "Step 3: Substitute: C = (22/7) × 70.",
-        "Step 4: 70 ÷ 7 = 10.",
-        "Step 5: C = 22 × 10 = 220 cm.",
-        "Step 6: Convert to metres: 220 ÷ 100 = 2.2 m."
+      q: "The diameter of a circle is 26 cm. Find its radius.",
+      hint: "Divide the diameter by 2.",
+      steps: [
+        "Radius = diameter ÷ 2.",
+        "Radius = 26 ÷ 2.",
+        "Radius = 13 cm."
       ],
-      "ans": "2.2 m",
-      "why": "One complete revolution covers one circumference, which is 220 cm or 2.2 m."
+      ans: "13 cm",
+      why: "The radius is half the diameter."
     },
-
     {
-      "q": "A circular track has a radius of 14 m. A runner completes 3 full laps. How far does the runner travel? Use π = 22/7.",
-      "hint": "First find the circumference of one lap, then multiply by 3.",
-      "steps": [
-        "Step 1: One lap is one circumference.",
-        "Step 2: Use C = 2πr.",
-        "Step 3: C = 2 × (22/7) × 14.",
-        "Step 4: 14 ÷ 7 = 2, so C = 2 × 22 × 2 = 88 m.",
-        "Step 5: The runner completes 3 laps, so distance = 3 × 88.",
-        "Step 6: 3 × 88 = 264 m."
+      q: "A learner says a circle with radius 8 cm has diameter 8 cm. Identify the error and give the correct diameter.",
+      hint: "The learner has treated the radius and diameter as the same length.",
+      steps: [
+        "The radius is 8 cm.",
+        "Diameter = 2 × radius.",
+        "Diameter = 2 × 8 = 16 cm.",
+        "The learner forgot that the diameter is twice the radius."
       ],
-      "ans": "264 m",
-      "why": "One lap is 88 m, so 3 laps are 3 × 88 = 264 m."
+      ans: "The correct diameter is 16 cm.",
+      why: "The diameter passes through the centre and spans two radii."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Circles",
+  "Circumference of a Circle",
+
+  `<h2>Circumference of a Circle</h2>
+
+<p><b>One concept:</b> Circumference is the distance around a circle.</p>
+
+<p>Use either formula:</p>
+<ul>
+<li><b>C = 2πr</b>, when the radius is known.</li>
+<li><b>C = πd</b>, when the diameter is known.</li>
+</ul>
+
+<p>Here, π is approximately 3.142. Unless a question specifies otherwise, leave answers in terms of π or use 3.142 and state the approximation.</p>
+
+<h3>Worked Example 1: Radius given</h3>
+<p>A circle has radius 7 cm. Find its circumference in terms of π.</p>
+<p><b>Step 1:</b> Choose C = 2πr because the radius is given.</p>
+<p><b>Step 2:</b> Substitute r = 7.</p>
+<p>C = 2 × π × 7</p>
+<p><b>Answer: C = 14π cm.</b></p>
+
+<h3>Worked Example 2: Diameter given</h3>
+<p>A circle has diameter 10 cm. Find its circumference in terms of π.</p>
+<p><b>Step 1:</b> Choose C = πd.</p>
+<p><b>Step 2:</b> Substitute d = 10.</p>
+<p>C = π × 10</p>
+<p><b>Answer: C = 10π cm, approximately 31.42 cm.</b></p>
+
+<h3>Worked Example 3: Find the radius from the circumference</h3>
+<p>A circle has circumference 20π cm. Find its radius.</p>
+<p><b>Step 1:</b> Use C = 2πr.</p>
+<p>20π = 2πr</p>
+<p><b>Step 2:</b> Divide both sides by 2π.</p>
+<p>r = 20π ÷ 2π = 10 cm.</p>
+<p><b>Answer: 10 cm.</b></p>
+
+<h3>Common mistake</h3>
+<p>Circumference measures distance around the circle, so the answer uses units such as cm or m, not square units such as cm².</p>`,
+
+  [
+    {
+      q: "A circle has radius 5 cm. Find its circumference in terms of π.",
+      hint: "Use C = 2πr.",
+      steps: [
+        "Use C = 2πr.",
+        "Substitute r = 5.",
+        "C = 2 × π × 5 = 10π cm."
+      ],
+      ans: "10π cm",
+      why: "The radius formula multiplies the radius by 2π."
     },
-
     {
-      "q": "A circular field has a circumference of 88 m. Find its radius using π = 22/7.",
-      "hint": "Use C = 2πr and rearrange to r = C ÷ 2π.",
-      "steps": [
-        "Step 1: Start with C = 2πr.",
-        "Step 2: Rearrange: r = C ÷ 2π.",
-        "Step 3: Substitute: r = 88 ÷ [2 × (22/7)].",
-        "Step 4: r = 88 ÷ (44/7).",
-        "Step 5: Dividing by 44/7 is the same as multiplying by 7/44.",
-        "Step 6: r = 88 × 7/44.",
-        "Step 7: 88 ÷ 44 = 2.",
-        "Step 8: r = 2 × 7 = 14 m."
+      q: "A circle has diameter 14 m. Find its circumference in terms of π.",
+      hint: "Use C = πd because the diameter is given.",
+      steps: [
+        "Use C = πd.",
+        "Substitute d = 14.",
+        "C = 14π m."
       ],
-      "ans": "14 m",
-      "why": "Rearranging C = 2πr gives r = C ÷ 2π, which gives 14 m."
+      ans: "14π m",
+      why: "The circumference equals π multiplied by the diameter."
     },
-
     {
-      "q": "A wheel has a radius of 35 cm. How many complete revolutions are needed for the wheel to travel 220 m? Use π = 22/7.",
-      "hint": "Find the distance travelled in one revolution first, then divide the total distance by that distance.",
-      "steps": [
-        "Step 1: Find the circumference: C = 2πr.",
-        "Step 2: C = 2 × (22/7) × 35.",
-        "Step 3: 35 ÷ 7 = 5.",
-        "Step 4: C = 2 × 22 × 5 = 220 cm.",
-        "Step 5: Convert 220 m to centimetres: 220 × 100 = 22,000 cm.",
-        "Step 6: Number of revolutions = 22,000 ÷ 220.",
-        "Step 7: 22,000 ÷ 220 = 100."
+      q: "A learner calculates the circumference of a circle with radius 4 cm as 16π cm². Identify the error and give the correct answer.",
+      hint: "Check both the formula and the unit.",
+      steps: [
+        "Use C = 2πr.",
+        "Substitute r = 4: C = 2 × π × 4.",
+        "C = 8π cm.",
+        "Circumference is a length, so the unit is cm, not cm²."
       ],
-      "ans": "100 complete revolutions",
-      "why": "Each revolution covers 220 cm. Since 220 m = 22,000 cm, the wheel needs 22,000 ÷ 220 = 100 revolutions."
+      ans: "8π cm",
+      why: "The learner used an incorrect calculation and a square unit. Circumference is a one-dimensional length."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Circles",
+  "Area of a Circle",
+
+  `<h2>Area of a Circle</h2>
+
+<p><b>One concept:</b> The area of a circle is the amount of space inside the circle.</p>
+
+<p><b>Formula:</b></p>
+
+<p>A = πr²</p>
+
+<p>Here:</p>
+
+<ul>
+<li><b>A</b> = area of the circle</li>
+<li><b>π</b> = pi, approximately 3.142</li>
+<li><b>r</b> = radius of the circle</li>
+</ul>
+
+<p>The radius is the distance from the <b>centre of the circle</b> to its edge.</p>
+
+<p>The radius is <b>squared</b>, so you multiply the radius by itself:</p>
+
+<p>r² = r × r</p>
+
+<h3>Worked Example 1: Find the area</h3>
+
+<p>A circle has a radius of 7 cm. Find its area. Use π = 22/7.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>A = πr²</p>
+
+<p><b>Step 2:</b> Substitute r = 7.</p>
+
+<p>A = 22/7 × 7²</p>
+
+<p><b>Step 3:</b> Square the radius.</p>
+
+<p>7² = 49</p>
+
+<p>Therefore:</p>
+
+<p>A = 22/7 × 49</p>
+
+<p><b>Step 4:</b> Simplify.</p>
+
+<p>A = 22 × 7</p>
+
+<p><b>Step 5:</b> Calculate.</p>
+
+<p><b>A = 154 cm²</b></p>
+
+<h3>Worked Example 2: Using π = 3.142</h3>
+
+<p>A circular garden has a radius of 5 m. Find its area. Use π = 3.142.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>A = πr²</p>
+
+<p><b>Step 2:</b> Substitute.</p>
+
+<p>A = 3.142 × 5²</p>
+
+<p><b>Step 3:</b> Square the radius.</p>
+
+<p>5² = 25</p>
+
+<p>Therefore:</p>
+
+<p>A = 3.142 × 25</p>
+
+<p><b>Step 4:</b> Multiply.</p>
+
+<p><b>A = 78.55 m²</b></p>
+
+<h3>Worked Example 3: Find the radius</h3>
+
+<p>A circle has an area of 154 cm². Find its radius. Use π = 22/7.</p>
+
+<p><b>Step 1:</b> Start with the formula.</p>
+
+<p>A = πr²</p>
+
+<p><b>Step 2:</b> Substitute the known values.</p>
+
+<p>154 = 22/7 × r²</p>
+
+<p><b>Step 3:</b> Multiply both sides by 7.</p>
+
+<p>154 × 7 = 22r²</p>
+
+<p>1078 = 22r²</p>
+
+<p><b>Step 4:</b> Divide by 22.</p>
+
+<p>r² = 1078 ÷ 22</p>
+
+<p>r² = 49</p>
+
+<p><b>Step 5:</b> Find the square root.</p>
+
+<p>r = √49</p>
+
+<p><b>r = 7 cm</b></p>
+
+<h3>Important distinction</h3>
+
+<p>If the question gives the <b>diameter</b> instead of the radius, the diameter must first be converted to a radius:</p>
+
+<p><b>radius = diameter ÷ 2</b></p>
+
+<p>For example, if the diameter is 10 cm:</p>
+
+<p>r = 10 ÷ 2 = 5 cm</p>
+
+<p>Then use r = 5 cm in A = πr².</p>
+
+<h3>Common mistakes</h3>
+
+<p><b>Mistake 1:</b> Using the diameter directly in A = πr².</p>
+
+<p>The formula requires the <b>radius</b>.</p>
+
+<p><b>Mistake 2:</b> Forgetting to square the radius.</p>
+
+<p>For r = 6:</p>
+
+<p>r² = 6 × 6 = 36, not 12.</p>
+
+<p><b>Mistake 3:</b> Giving the answer in units instead of square units.</p>
+
+<p>Area is measured in units such as cm², m² or km².</p>`,
+
+  [
+    {
+      q: "A circle has a radius of 6 cm. Find its area. Use π = 3.142.",
+      hint: "Use A = πr² and remember to square the radius.",
+      steps: [
+        "A = πr².",
+        "A = 3.142 × 6².",
+        "6² = 36.",
+        "A = 3.142 × 36.",
+        "A = 113.112 cm²."
+      ],
+      ans: "113.112 cm²",
+      why: "The area of a circle is found by multiplying π by the square of its radius."
+    },
+    {
+      q: "A circle has a diameter of 14 cm. Find its area. Use π = 22/7.",
+      hint: "Find the radius first.",
+      steps: [
+        "Radius = diameter ÷ 2.",
+        "r = 14 ÷ 2 = 7 cm.",
+        "A = πr².",
+        "A = 22/7 × 7².",
+        "A = 22/7 × 49.",
+        "A = 154 cm²."
+      ],
+      ans: "154 cm²",
+      why: "The area formula requires the radius, so the diameter must first be divided by 2."
+    },
+    {
+      q: "A circle has a radius of 8 m. Find its area using π = 3.142.",
+      hint: "Square 8 before multiplying by π.",
+      steps: [
+        "A = πr².",
+        "A = 3.142 × 8².",
+        "8² = 64.",
+        "A = 3.142 × 64.",
+        "A = 201.088 m²."
+      ],
+      ans: "201.088 m²",
+      why: "The radius is squared before multiplying by π."
+    },
+    {
+      q: "A learner says that the area of a circle with radius 5 cm is 31.42 cm². Identify the error and calculate the correct area using π = 3.142.",
+      hint: "Check whether the radius was squared.",
+      steps: [
+        "A = πr².",
+        "A = 3.142 × 5².",
+        "5² = 25.",
+        "A = 3.142 × 25.",
+        "A = 78.55 cm²."
+      ],
+      ans: "78.55 cm²",
+      why: "The learner multiplied π by 5 instead of multiplying π by 5²."
     }
   ]
 );
@@ -3744,413 +4209,1576 @@ add(
   "math",
   "geometry",
   "Perimeter",
+  "Perimeter of a Rectangle",
 
-  `<h2>Perimeter</h2>
+  `<h2>Perimeter of a Rectangle</h2>
 
-<p>
-The <b>perimeter</b> of a shape is the total distance around its outside boundary.
-</p>
+<p><b>One concept:</b> Perimeter is the total distance around a shape.</p>
 
-<p>
-To find the perimeter of a polygon, add the lengths of all its sides.
-</p>
+<p>A rectangle has two equal lengths and two equal widths.</p>
 
-<pre>
-Perimeter = sum of all outside side lengths
-</pre>
+<p><b>Formula:</b> P = 2l + 2w = 2(l + w)</p>
 
-<h3>1. RECTANGLE</h3>
+<h3>Worked Example 1: Find the perimeter</h3>
+<p>A rectangle is 8 cm long and 3 cm wide.</p>
+<p><b>Step 1:</b> Write the formula.</p>
+<p>P = 2(l + w)</p>
+<p><b>Step 2:</b> Substitute the measurements.</p>
+<p>P = 2(8 + 3)</p>
+<p><b>Step 3:</b> Calculate.</p>
+<p>P = 2 × 11 = 22 cm.</p>
 
-<p>
-A rectangle has two lengths and two widths.
-Therefore:
-</p>
+<h3>Worked Example 2: Find a missing width</h3>
+<p>A rectangle has perimeter 30 cm and length 9 cm. Find its width.</p>
+<p><b>Step 1:</b> Use P = 2(l + w).</p>
+<p>30 = 2(9 + w)</p>
+<p><b>Step 2:</b> Divide both sides by 2.</p>
+<p>15 = 9 + w</p>
+<p><b>Step 3:</b> Subtract 9.</p>
+<p>w = 6 cm.</p>
 
-<pre>
-P = l + w + l + w
+<h3>Worked Example 3: Find the perimeter from an algebraic width</h3>
+<p>A rectangle has length 10 cm and width (x + 2) cm. If x = 4, find its perimeter.</p>
+<p><b>Step 1:</b> Calculate the width.</p>
+<p>w = 4 + 2 = 6 cm.</p>
+<p><b>Step 2:</b> Substitute into the perimeter formula.</p>
+<p>P = 2(10 + 6)</p>
+<p>P = 2 × 16 = 32 cm.</p>
 
-P = 2(l + w)
-</pre>
-
-<h3>Worked Example</h3>
-
-<p>
-A rectangle has length 8 cm and width 3 cm.
-</p>
-
-<pre>
-P = 2(l + w)
-
-P = 2(8 + 3)
-
-P = 2(11)
-
-P = 22 cm
-</pre>
-
-<p><b>Answer: 22 cm</b></p>
-
-<h3>2. SQUARE</h3>
-
-<p>
-A square has four equal sides.
-Therefore:
-</p>
-
-<pre>
-P = 4s
-</pre>
-
-<p>
-where <b>s</b> is the side length.
-</p>
-
-<h3>Worked Example</h3>
-
-<p>
-A square has a side length of 5 cm.
-</p>
-
-<pre>
-P = 4 × 5
-
-P = 20 cm
-</pre>
-
-<p><b>Answer: 20 cm</b></p>
-
-<h3>3. TRIANGLE</h3>
-
-<p>
-The perimeter of a triangle is the sum of its three side lengths.
-</p>
-
-<pre>
-P = a + b + c
-</pre>
-
-<h3>Worked Example</h3>
-
-<p>
-A triangle has sides 5 cm, 7 cm, and 9 cm.
-</p>
-
-<pre>
-P = 5 + 7 + 9
-
-P = 21 cm
-</pre>
-
-<p><b>Answer: 21 cm</b></p>
-
-<h3>UNITS</h3>
-
-<p>
-Perimeter measures <b>length</b>, so its units are ordinary length units:
-cm, m, km, and so on.
-</p>
-
-<p>
-Do not use square units for perimeter.
-</p>
-
-<pre>
-Perimeter → cm, m, km
-
-Area → cm², m², km²
-</pre>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Multiplying length × width when asked for perimeter.</li>
-<li>Forgetting one or more sides.</li>
-<li>Using square units such as cm² for perimeter.</li>
-<li>Confusing perimeter with area.</li>
-</ul>
-`,
+<h3>Common mistake</h3>
+<p>Perimeter is measured in ordinary units such as cm or m. Do not use cm², because that is a unit of area.</p>`,
 
   [
     {
-      "q": "Find the perimeter of a rectangle with length 10 cm and width 4 cm.",
-      "hint": "Use P = 2(l + w).",
-      "steps": [
-        "Step 1: Add length and width: 10 + 4 = 14",
-        "Step 2: Multiply by 2: 2 × 14",
-        "Step 3: P = 28 cm"
+      q: "A rectangle has length 12 cm and width 5 cm. Find its perimeter.",
+      hint: "Use P = 2(l + w).",
+      steps: [
+        "Write P = 2(l + w).",
+        "Substitute: P = 2(12 + 5).",
+        "P = 2 × 17 = 34 cm."
       ],
-      "ans": "28 cm",
-      "why": "A rectangle has two lengths and two widths."
+      ans: "34 cm",
+      why: "The formula adds the length and width and doubles their sum to include all four sides."
     },
-
     {
-      "q": "Find the perimeter of a square with side length 7 cm.",
-      "hint": "A square has four equal sides.",
-      "steps": [
-        "Step 1: Use P = 4s",
-        "Step 2: Substitute s = 7",
-        "Step 3: 4 × 7 = 28 cm"
+      q: "A rectangle has perimeter 40 m and length 13 m. Find its width.",
+      hint: "Start with 40 = 2(13 + w).",
+      steps: [
+        "40 = 2(13 + w).",
+        "Divide by 2: 20 = 13 + w.",
+        "Subtract 13: w = 7 m."
       ],
-      "ans": "28 cm",
-      "why": "The perimeter of a square is four times its side length."
+      ans: "7 m",
+      why: "Half the perimeter equals one length plus one width."
     },
-
     {
-      "q": "A triangle has sides 6 cm, 8 cm, and 10 cm. Find its perimeter.",
-      "hint": "Add all three sides.",
-      "steps": [
-        "Step 1: Add 6 + 8 + 10",
-        "Step 2: The total is 24",
-        "Step 3: Include the length unit"
+      q: "A learner calculates the perimeter of a 7 cm by 4 cm rectangle as 28 cm. Explain the mistake and give the correct perimeter.",
+      hint: "Check whether the learner multiplied the dimensions instead of adding all four sides.",
+      steps: [
+        "Multiplying 7 × 4 gives 28, which is the area in cm².",
+        "Perimeter = 2(7 + 4).",
+        "Perimeter = 2 × 11 = 22 cm."
       ],
-      "ans": "24 cm",
-      "why": "The perimeter of a triangle is the sum of its three side lengths."
-    },
-
-    {
-      "q": "Which unit is appropriate for the perimeter of a rectangle?",
-      "hint": "Perimeter measures length, not surface.",
-      "steps": [
-        "Step 1: Identify what perimeter measures",
-        "Step 2: It measures length",
-        "Step 3: Choose an ordinary length unit"
-      ],
-      "ans": "cm",
-      "why": "Perimeter is a length, so it uses units such as cm or m, not cm² or m²."
-    },
-
-    {
-      "q": "A rectangle has perimeter 30 cm and length 10 cm. Find its width.",
-      "hint": "Use P = 2(l + w).",
-      "steps": [
-        "Step 1: Substitute into 30 = 2(10 + w)",
-        "Step 2: Divide both sides by 2: 15 = 10 + w",
-        "Step 3: Subtract 10: w = 5 cm"
-      ],
-      "ans": "5 cm",
-      "why": "The perimeter contains two lengths and two widths."
+      ans: "22 cm",
+      why: "Perimeter adds boundary lengths; multiplying length by width calculates area."
     }
   ]
 );
+add(
+  "math",
+  "geometry",
+  "Perimeter",
+  "Perimeter of a Square",
 
+  `<h2>Perimeter of a Square</h2>
 
+<p><b>One concept:</b> All four sides of a square are equal.</p>
+
+<p><b>Formula:</b> P = 4s, where s is the side length.</p>
+
+<h3>Worked Example 1: Find the perimeter</h3>
+<p>A square has side length 6 cm.</p>
+<p><b>Step 1:</b> Use P = 4s.</p>
+<p><b>Step 2:</b> Substitute s = 6.</p>
+<p>P = 4 × 6 = 24 cm.</p>
+
+<h3>Worked Example 2: Find the side length</h3>
+<p>A square has perimeter 36 cm. Find its side length.</p>
+<p><b>Step 1:</b> Start with P = 4s.</p>
+<p>36 = 4s</p>
+<p><b>Step 2:</b> Divide both sides by 4.</p>
+<p>s = 36 ÷ 4 = 9 cm.</p>
+
+<h3>Worked Example 3: Find an unknown side</h3>
+<p>A square has side length (2x + 1) cm and perimeter 28 cm. Find x.</p>
+<p><b>Step 1:</b> Find one side by dividing the perimeter by 4.</p>
+<p>28 ÷ 4 = 7 cm.</p>
+<p><b>Step 2:</b> Set the side expression equal to 7.</p>
+<p>2x + 1 = 7</p>
+<p><b>Step 3:</b> Subtract 1, then divide by 2.</p>
+<p>2x = 6</p>
+<p>x = 3.</p>
+
+<h3>Common mistake</h3>
+<p>Do not multiply the side by itself when finding perimeter. The expression s × s is used for the area of a square, not its perimeter.</p>`,
+
+  [
+    {
+      q: "A square has sides of 11 cm. Find its perimeter.",
+      hint: "Multiply one side by 4.",
+      steps: [
+        "P = 4s.",
+        "P = 4 × 11.",
+        "P = 44 cm."
+      ],
+      ans: "44 cm",
+      why: "A square has four equal sides."
+    },
+    {
+      q: "The perimeter of a square is 52 m. Find the length of one side.",
+      hint: "Divide the perimeter by 4.",
+      steps: [
+        "P = 4s.",
+        "52 = 4s.",
+        "s = 52 ÷ 4 = 13 m."
+      ],
+      ans: "13 m",
+      why: "The total perimeter is shared equally among the four sides."
+    },
+    {
+      q: "A learner says a square with side 8 cm has perimeter 64 cm. Identify the error and calculate the correct perimeter.",
+      hint: "Compare 4 × side with side × side.",
+      steps: [
+        "The learner calculated 8 × 8 = 64, which is the area in cm².",
+        "Perimeter = 4 × 8.",
+        "Perimeter = 32 cm."
+      ],
+      ans: "32 cm",
+      why: "Perimeter uses four times the side length; squaring the side gives area."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Perimeter",
+  "Perimeter of a Triangle",
+
+  `<h2>Perimeter of a Triangle</h2>
+
+<p><b>One concept:</b> The perimeter of a triangle is the sum of its three side lengths.</p>
+
+<p><b>Formula:</b> P = a + b + c</p>
+
+<h3>Worked Example 1: Three known sides</h3>
+<p>A triangle has sides 5 cm, 7 cm and 9 cm.</p>
+<p><b>Step 1:</b> Add all three sides.</p>
+<p>P = 5 + 7 + 9</p>
+<p><b>Step 2:</b> Calculate.</p>
+<p><b>Answer: 21 cm.</b></p>
+
+<h3>Worked Example 2: Find a missing side</h3>
+<p>A triangle has perimeter 25 cm. Two sides are 8 cm and 10 cm. Find the third side.</p>
+<p><b>Step 1:</b> Let the missing side be x.</p>
+<p>8 + 10 + x = 25</p>
+<p><b>Step 2:</b> Add the known sides.</p>
+<p>18 + x = 25</p>
+<p><b>Step 3:</b> Subtract 18.</p>
+<p>x = 7 cm.</p>
+
+<h3>Worked Example 3: An equilateral triangle</h3>
+<p>An equilateral triangle has perimeter 42 cm. Find each side.</p>
+<p><b>Step 1:</b> Its three sides are equal.</p>
+<p>3s = 42</p>
+<p><b>Step 2:</b> Divide by 3.</p>
+<p>s = 14 cm.</p>
+
+<h3>Common mistake</h3>
+<p>Do not assume a triangle has equal sides unless the question says so or gives enough information to establish it.</p>`,
+
+  [
+    {
+      q: "A triangle has sides 6 cm, 8 cm and 11 cm. Find its perimeter.",
+      hint: "Add all three side lengths.",
+      steps: [
+        "P = 6 + 8 + 11.",
+        "P = 25 cm."
+      ],
+      ans: "25 cm",
+      why: "The perimeter is the total distance around the triangle."
+    },
+    {
+      q: "A triangle has perimeter 31 cm. Two sides measure 9 cm and 13 cm. Find the third side.",
+      hint: "Subtract the two known sides from the perimeter.",
+      steps: [
+        "Let the missing side be x.",
+        "9 + 13 + x = 31.",
+        "22 + x = 31.",
+        "x = 9 cm."
+      ],
+      ans: "9 cm",
+      why: "The missing side is the total perimeter minus the two known sides."
+    },
+    {
+      q: "An equilateral triangle has perimeter 57 cm. A learner says each side is 19 cm². Correct the answer and explain the unit.",
+      hint: "Divide by 3, and remember that side length is a distance.",
+      steps: [
+        "All three sides are equal.",
+        "Side length = 57 ÷ 3 = 19.",
+        "The correct side length is 19 cm, not 19 cm².",
+        "Centimetres measure length; square centimetres measure area."
+      ],
+      ans: "19 cm",
+      why: "Dividing the perimeter by three gives one side, which is a length."
+    }
+  ]
+);
 add(
   "math",
   "geometry",
   "Area",
+  "Area of a Rectangle",
 
-  `<h2>Area</h2>
+  `<h2>Area of a Rectangle</h2>
 
-<p>
-The <b>area</b> of a shape is the amount of two-dimensional space
-contained inside its boundary.
-</p>
+<p><b>One concept:</b> Area measures the surface covered inside a shape.</p>
 
-<p>
-Area is measured using <b>square units</b>, such as cm², m², or km².
-</p>
+<p><b>Formula:</b> A = length × width</p>
 
-<h3>1. AREA OF A RECTANGLE</h3>
+<p>Area uses square units, such as cm² or m², because it measures a two-dimensional surface.</p>
 
-<pre>
-A = length × width
+<h3>Worked Example 1: Find the area</h3>
+<p>A rectangle has length 9 cm and width 4 cm.</p>
+<p><b>Step 1:</b> Write the formula.</p>
+<p>A = l × w</p>
+<p><b>Step 2:</b> Substitute the measurements.</p>
+<p>A = 9 × 4</p>
+<p><b>Answer: 36 cm².</b></p>
 
-A = lw
-</pre>
+<h3>Worked Example 2: Find the missing width</h3>
+<p>A rectangle has area 72 cm² and length 12 cm. Find its width.</p>
+<p><b>Step 1:</b> Use A = l × w.</p>
+<p>72 = 12 × w</p>
+<p><b>Step 2:</b> Divide both sides by 12.</p>
+<p>w = 72 ÷ 12 = 6 cm.</p>
 
-<h3>Worked Example</h3>
+<h3>Worked Example 3: Find area with an unknown</h3>
+<p>A rectangle has length (x + 2) cm and width 5 cm. If x = 6, find its area.</p>
+<p><b>Step 1:</b> Calculate the length.</p>
+<p>Length = 6 + 2 = 8 cm.</p>
+<p><b>Step 2:</b> Multiply length by width.</p>
+<p>A = 8 × 5</p>
+<p><b>Answer: 40 cm².</b></p>
 
-<p>
-A rectangle has length 8 cm and width 5 cm.
-</p>
-
-<pre>
-A = l × w
-
-A = 8 × 5
-
-A = 40 cm²
-</pre>
-
-<p><b>Answer: 40 cm²</b></p>
-
-<h3>2. AREA OF A SQUARE</h3>
-
-<p>
-A square has equal length and width, so:
-</p>
-
-<pre>
-A = side × side
-
-A = s²
-</pre>
-
-<h3>Worked Example</h3>
-
-<p>
-A square has side length 6 cm.
-</p>
-
-<pre>
-A = 6 × 6
-
-A = 36 cm²
-</pre>
-
-<p><b>Answer: 36 cm²</b></p>
-
-<h3>3. AREA OF A TRIANGLE</h3>
-
-<p>
-The area of a triangle is half the area of a rectangle
-with the same base and perpendicular height.
-</p>
-
-<pre>
-A = ½ × base × height
-
-A = ½bh
-</pre>
-
-<p>
-The height must be the <b>perpendicular distance</b> from the base
-to the opposite vertex.
-</p>
-
-<h3>Worked Example</h3>
-
-<p>
-A triangle has base 10 cm and perpendicular height 6 cm.
-</p>
-
-<pre>
-A = ½ × 10 × 6
-
-A = ½ × 60
-
-A = 30 cm²
-</pre>
-
-<p><b>Answer: 30 cm²</b></p>
-
-<h3>4. AREA AND PERIMETER ARE DIFFERENT</h3>
-
-<ul>
-<li><b>Area:</b> measures the space inside a shape.</li>
-<li><b>Perimeter:</b> measures the distance around a shape.</li>
-</ul>
-
-<pre>
-Area → square units
-
-Perimeter → ordinary length units
-</pre>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Using perimeter instead of area.</li>
-<li>Forgetting the ½ in the triangle formula.</li>
-<li>Using the wrong height for a triangle.</li>
-<li>Writing cm instead of cm² for area.</li>
-</ul>
-`,
+<h3>Common mistake</h3>
+<p>Do not add the length and width to calculate area. Adding dimensions is associated with perimeter; area requires multiplication.</p>`,
 
   [
     {
-      "q": "Find the area of a rectangle with length 9 cm and width 4 cm.",
-      "hint": "Use A = length × width.",
-      "steps": [
-        "Step 1: Write A = l × w",
-        "Step 2: Substitute 9 and 4",
-        "Step 3: 9 × 4 = 36 cm²"
+      q: "A rectangle is 13 m long and 4 m wide. Find its area.",
+      hint: "Multiply length by width.",
+      steps: [
+        "A = l × w.",
+        "A = 13 × 4.",
+        "A = 52 m²."
       ],
-      "ans": "36 cm²",
-      "why": "The area of a rectangle is its length multiplied by its width."
+      ans: "52 m²",
+      why: "The rectangle's surface is measured by multiplying its length by its width."
     },
-
     {
-      "q": "Find the area of a square with side length 8 cm.",
-      "hint": "Multiply the side by itself.",
-      "steps": [
-        "Step 1: Use A = s²",
-        "Step 2: Substitute s = 8",
-        "Step 3: 8 × 8 = 64 cm²"
+      q: "A rectangle has area 96 cm² and width 8 cm. Find its length.",
+      hint: "Divide the area by the width.",
+      steps: [
+        "A = l × w.",
+        "96 = l × 8.",
+        "l = 96 ÷ 8.",
+        "l = 12 cm."
       ],
-      "ans": "64 cm²",
-      "why": "A square has equal length and width, so its area is side × side."
+      ans: "12 cm",
+      why: "Dividing area by one dimension gives the other dimension."
     },
-
     {
-      "q": "Find the area of a triangle with base 12 cm and perpendicular height 5 cm.",
-      "hint": "Use A = ½bh.",
-      "steps": [
-        "Step 1: Multiply base by height: 12 × 5 = 60",
-        "Step 2: Take half: 60 ÷ 2 = 30",
-        "Step 3: Include square units"
+      q: "A learner finds the area of a rectangle measuring 10 cm by 6 cm as 32 cm². Identify the likely mistake and calculate the correct area.",
+      hint: "Check whether the learner added the dimensions.",
+      steps: [
+        "Adding the dimensions gives 10 + 6 = 16, not 32.",
+        "Area must be calculated by multiplication.",
+        "A = 10 × 6.",
+        "A = 60 cm²."
       ],
-      "ans": "30 cm²",
-      "why": "The area of a triangle is half the product of its base and perpendicular height."
+      ans: "60 cm²",
+      why: "The area formula is length multiplied by width, not their sum."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Area",
+  "Area of a Square",
+
+  `<h2>Area of a Square</h2>
+
+<p><b>One concept:</b> The area of a square is its side length multiplied by itself.</p>
+
+<p><b>Formula:</b> A = s² = s × s</p>
+
+<h3>Worked Example 1: Find the area</h3>
+<p>A square has side length 7 cm.</p>
+<p><b>Step 1:</b> Use A = s × s.</p>
+<p>A = 7 × 7</p>
+<p><b>Answer: 49 cm².</b></p>
+
+<h3>Worked Example 2: Find the side from the area</h3>
+<p>A square has area 81 m². Find its side length.</p>
+<p><b>Step 1:</b> Find the number that multiplied by itself gives 81.</p>
+<p>9 × 9 = 81.</p>
+<p><b>Step 2:</b> Take the positive square root.</p>
+<p>s = √81 = 9 m.</p>
+
+<h3>Worked Example 3: Find the area from an expression</h3>
+<p>A square has side length (x + 1) cm. If x = 5, find the area.</p>
+<p><b>Step 1:</b> Calculate the side.</p>
+<p>s = 5 + 1 = 6 cm.</p>
+<p><b>Step 2:</b> Square the side length.</p>
+<p>A = 6 × 6 = 36 cm².</p>
+
+<h3>Common mistake</h3>
+<p>Do not confuse side length with area. If the side is 7 cm, the area is 49 cm², not 7 cm² or 28 cm².</p>`,
+
+  [
+    {
+      q: "A square has side length 12 cm. Find its area.",
+      hint: "Multiply 12 by 12.",
+      steps: [
+        "A = s².",
+        "A = 12 × 12.",
+        "A = 144 cm²."
+      ],
+      ans: "144 cm²",
+      why: "The area of a square is its side length multiplied by itself."
     },
-
     {
-      "q": "Which measurement uses square units?",
-      "hint": "Think about the space inside a shape.",
-      "steps": [
-        "Step 1: Identify what is being measured",
-        "Step 2: Space inside a shape is area",
-        "Step 3: Area uses square units"
+      q: "A square has area 121 cm². Find its side length.",
+      hint: "Find the positive square root of 121.",
+      steps: [
+        "A = s².",
+        "121 = s².",
+        "s = √121 = 11 cm."
       ],
-      "ans": "Area",
-      "why": "Area measures two-dimensional space and is therefore expressed in square units."
+      ans: "11 cm",
+      why: "The side length is the positive number whose square equals the area."
     },
-
     {
-      "q": "A rectangle has an area of 48 cm² and a width of 6 cm. Find its length.",
-      "hint": "Use A = l × w and rearrange.",
-      "steps": [
-        "Step 1: Write 48 = l × 6",
-        "Step 2: Divide both sides by 6",
-        "Step 3: l = 8 cm"
+      q: "A learner says a square with side 9 m has area 36 m² because 4 × 9 = 36. Explain the error and calculate the correct area.",
+      hint: "The learner used the perimeter calculation instead of the area formula.",
+      steps: [
+        "4 × 9 calculates the perimeter, which is 36 m.",
+        "Area = side × side.",
+        "Area = 9 × 9 = 81 m²."
       ],
-      "ans": "8 cm",
-      "why": "Length can be found by dividing the area by the width."
+      ans: "81 m²",
+      why: "Area squares the side length; multiplying by four calculates the perimeter."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Area",
+  "Area of a Triangle",
+
+  `<h2>Area of a Triangle</h2>
+
+<p><b>One concept:</b> The area of a triangle is half the product of its base and perpendicular height.</p>
+
+<p><b>Formula:</b> A = ½ × base × perpendicular height</p>
+
+<p>The perpendicular height meets the base at 90°. It is not necessarily the length of a sloping side.</p>
+
+<h3>Worked Example 1: Find the area</h3>
+<p>A triangle has base 10 cm and perpendicular height 6 cm.</p>
+<p><b>Step 1:</b> Write the formula.</p>
+<p>A = ½ × b × h</p>
+<p><b>Step 2:</b> Substitute.</p>
+<p>A = ½ × 10 × 6</p>
+<p><b>Step 3:</b> Multiply, then take half.</p>
+<p>A = ½ × 60 = 30 cm².</p>
+
+<h3>Worked Example 2: Find the height</h3>
+<p>A triangle has area 42 cm² and base 12 cm. Find its perpendicular height.</p>
+<p><b>Step 1:</b> Substitute into the formula.</p>
+<p>42 = ½ × 12 × h</p>
+<p><b>Step 2:</b> Simplify.</p>
+<p>42 = 6h</p>
+<p><b>Step 3:</b> Divide by 6.</p>
+<p>h = 42 ÷ 6 = 7 cm.</p>
+
+<h3>Worked Example 3: Find the base</h3>
+<p>A triangle has area 35 m² and perpendicular height 10 m. Find its base.</p>
+<p><b>Step 1:</b> Write the equation.</p>
+<p>35 = ½ × b × 10</p>
+<p><b>Step 2:</b> Simplify.</p>
+<p>35 = 5b</p>
+<p><b>Step 3:</b> Divide by 5.</p>
+<p>b = 7 m.</p>
+
+<h3>Common mistake</h3>
+<p>Do not forget the ½. Multiplying base by height without dividing by 2 gives the area of a rectangle with those dimensions, not the triangle.</p>`,
+
+  [
+    {
+      q: "A triangle has base 14 cm and perpendicular height 8 cm. Find its area.",
+      hint: "Multiply 14 by 8, then divide by 2.",
+      steps: [
+        "A = ½ × b × h.",
+        "A = ½ × 14 × 8.",
+        "A = ½ × 112 = 56 cm²."
+      ],
+      ans: "56 cm²",
+      why: "The triangle occupies half the area of a rectangle with the same base and perpendicular height."
+    },
+    {
+      q: "A triangle has area 54 m² and base 12 m. Find its perpendicular height.",
+      hint: "Start with 54 = ½ × 12 × h.",
+      steps: [
+        "54 = ½ × 12 × h.",
+        "Simplify: 54 = 6h.",
+        "Divide by 6: h = 9 m."
+      ],
+      ans: "9 m",
+      why: "Rearranging the area formula gives height = 2 × area ÷ base."
+    },
+    {
+      q: "A learner calculates the area of a triangle with base 9 cm and perpendicular height 4 cm as 36 cm². Identify the error and calculate the correct area.",
+      hint: "The learner multiplied base by height but forgot to take half.",
+      steps: [
+        "Multiply base by height: 9 × 4 = 36.",
+        "Take half: 36 ÷ 2 = 18.",
+        "The correct area is 18 cm²."
+      ],
+      ans: "18 cm²",
+      why: "The area formula includes the factor ½."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Area",
+  "Area of a Parallelogram",
+
+  `<h2>Area of a Parallelogram</h2>
+
+<p><b>One concept:</b> The area of a parallelogram is the product of its base and perpendicular height.</p>
+
+<p><b>Formula:</b> A = base × perpendicular height</p>
+
+<p>The perpendicular height is the shortest distance from the base to the opposite parallel side. It meets the base at 90°.</p>
+
+<p>The sloping side is <b>not</b> the perpendicular height unless it happens to meet the base at 90°.</p>
+
+<h3>Why does the formula work?</h3>
+
+<p>A parallelogram can be rearranged into a rectangle with the same base and perpendicular height.</p>
+
+<p>Since the area of a rectangle is:</p>
+
+<p><b>Area = length × width</b></p>
+
+<p>the area of the parallelogram is:</p>
+
+<p><b>A = base × perpendicular height</b></p>
+
+<h3>Worked Example 1: Find the area</h3>
+
+<p>A parallelogram has a base of 12 cm and a perpendicular height of 7 cm. Find its area.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>A = b × h</p>
+
+<p><b>Step 2:</b> Substitute the values.</p>
+
+<p>A = 12 × 7</p>
+
+<p><b>Step 3:</b> Calculate.</p>
+
+<p>A = 84 cm²</p>
+
+<h3>Worked Example 2: Find the height</h3>
+
+<p>A parallelogram has an area of 96 m² and a base of 12 m. Find its perpendicular height.</p>
+
+<p><b>Step 1:</b> Start with the formula.</p>
+
+<p>A = b × h</p>
+
+<p><b>Step 2:</b> Substitute the known values.</p>
+
+<p>96 = 12 × h</p>
+
+<p><b>Step 3:</b> Divide both sides by 12.</p>
+
+<p>h = 96 ÷ 12</p>
+
+<p><b>Step 4:</b> Calculate.</p>
+
+<p>h = 8 m</p>
+
+<h3>Worked Example 3: Find the base</h3>
+
+<p>A parallelogram has an area of 135 cm² and a perpendicular height of 9 cm. Find its base.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>A = b × h</p>
+
+<p><b>Step 2:</b> Substitute.</p>
+
+<p>135 = b × 9</p>
+
+<p><b>Step 3:</b> Divide both sides by 9.</p>
+
+<p>b = 135 ÷ 9</p>
+
+<p><b>Step 4:</b> Calculate.</p>
+
+<p>b = 15 cm</p>
+
+<h3>Common mistake</h3>
+
+<p>Do not use the sloping side as the height unless it is perpendicular to the base.</p>
+
+<p>For example, if the base is 10 cm and the sloping side is 8 cm, you cannot automatically use 8 cm as the height.</p>`,
+
+  [
+    {
+      q: "A parallelogram has a base of 15 cm and a perpendicular height of 6 cm. Find its area.",
+      hint: "Use A = base × perpendicular height.",
+      steps: [
+        "A = b × h.",
+        "A = 15 × 6.",
+        "A = 90 cm²."
+      ],
+      ans: "90 cm²",
+      why: "The area of a parallelogram is found by multiplying its base by its perpendicular height."
+    },
+    {
+      q: "A parallelogram has an area of 72 m² and a base of 9 m. Find its perpendicular height.",
+      hint: "Start with 72 = 9 × h.",
+      steps: [
+        "A = b × h.",
+        "72 = 9 × h.",
+        "h = 72 ÷ 9.",
+        "h = 8 m."
+      ],
+      ans: "8 m",
+      why: "When the area and base are known, divide the area by the base to find the perpendicular height."
+    },
+    {
+      q: "A parallelogram has an area of 120 cm² and a perpendicular height of 8 cm. Find its base.",
+      hint: "Start with 120 = b × 8.",
+      steps: [
+        "A = b × h.",
+        "120 = b × 8.",
+        "b = 120 ÷ 8.",
+        "b = 15 cm."
+      ],
+      ans: "15 cm",
+      why: "When the area and perpendicular height are known, divide the area by the height to find the base."
+    },
+    {
+      q: "A learner uses the sloping side of a parallelogram as its height. Explain why this can give the wrong area.",
+      hint: "Think about what the word perpendicular means.",
+      steps: [
+        "The height must meet the base at 90°.",
+        "A sloping side may not meet the base at 90°.",
+        "Therefore, the sloping side cannot automatically be used as the height.",
+        "The perpendicular height must be used."
+      ],
+      ans: "The height must be perpendicular to the base.",
+      why: "The formula A = base × height requires the perpendicular height, not simply any side length."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Area",
+  "Area of a Trapezium",
+
+  `<h2>Area of a Trapezium</h2>
+
+<p><b>One concept:</b> The area of a trapezium is half the sum of its two parallel sides multiplied by its perpendicular height.</p>
+
+<p><b>Formula:</b></p>
+
+<p>A = ½ × (a + b) × h</p>
+
+<p>Here, <b>a</b> and <b>b</b> are the lengths of the two parallel sides, and <b>h</b> is the perpendicular height.</p>
+
+<p>The two parallel sides are sometimes called the <b>parallel sides</b> or <b>bases</b>.</p>
+
+<p>The height must meet the parallel sides at <b>90°</b>.</p>
+
+<h3>Why does the formula work?</h3>
+
+<p>The expression <b>½ × (a + b)</b> finds the average length of the two parallel sides.</p>
+
+<p>Multiplying that average by the perpendicular height gives the area.</p>
+
+<h3>Worked Example 1: Find the area</h3>
+
+<p>A trapezium has parallel sides of 8 cm and 14 cm. Its perpendicular height is 5 cm. Find its area.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>A = ½ × (a + b) × h</p>
+
+<p><b>Step 2:</b> Substitute the values.</p>
+
+<p>A = ½ × (8 + 14) × 5</p>
+
+<p><b>Step 3:</b> Add the parallel sides.</p>
+
+<p>A = ½ × 22 × 5</p>
+
+<p><b>Step 4:</b> Multiply.</p>
+
+<p>A = 11 × 5</p>
+
+<p><b>Step 5:</b> Calculate.</p>
+
+<p><b>A = 55 cm²</b></p>
+
+<h3>Worked Example 2: Find the height</h3>
+
+<p>A trapezium has parallel sides of 10 m and 16 m. Its area is 104 m². Find its perpendicular height.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>A = ½ × (a + b) × h</p>
+
+<p><b>Step 2:</b> Substitute the known values.</p>
+
+<p>104 = ½ × (10 + 16) × h</p>
+
+<p><b>Step 3:</b> Add the parallel sides.</p>
+
+<p>104 = ½ × 26 × h</p>
+
+<p>104 = 13h</p>
+
+<p><b>Step 4:</b> Divide both sides by 13.</p>
+
+<p>h = 104 ÷ 13</p>
+
+<p><b>h = 8 m</b></p>
+
+<h3>Worked Example 3: Find a parallel side</h3>
+
+<p>A trapezium has an area of 90 cm². One parallel side is 8 cm and the perpendicular height is 6 cm. Find the other parallel side.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>A = ½ × (a + b) × h</p>
+
+<p><b>Step 2:</b> Substitute the known values.</p>
+
+<p>90 = ½ × (8 + b) × 6</p>
+
+<p><b>Step 3:</b> Simplify.</p>
+
+<p>90 = 3(8 + b)</p>
+
+<p><b>Step 4:</b> Divide by 3.</p>
+
+<p>30 = 8 + b</p>
+
+<p><b>Step 5:</b> Subtract 8 from both sides.</p>
+
+<p>b = 22 cm</p>
+
+<p><b>Answer: 22 cm</b></p>
+
+<h3>Common mistake</h3>
+
+<p>Do not add all four sides.</p>
+
+<p>Only the <b>two parallel sides</b> are added in the formula.</p>
+
+<p>Also, do not use a sloping side as the height unless it is perpendicular to the parallel sides.</p>`,
+
+  [
+    {
+      q: "A trapezium has parallel sides of 7 cm and 13 cm and a perpendicular height of 6 cm. Find its area.",
+      hint: "Add the two parallel sides first, then multiply by half the height.",
+      steps: [
+        "A = ½ × (a + b) × h.",
+        "A = ½ × (7 + 13) × 6.",
+        "A = ½ × 20 × 6.",
+        "A = 10 × 6.",
+        "A = 60 cm²."
+      ],
+      ans: "60 cm²",
+      why: "The area is half the sum of the two parallel sides multiplied by the perpendicular height."
+    },
+    {
+      q: "A trapezium has parallel sides of 12 m and 18 m and an area of 150 m². Find its perpendicular height.",
+      hint: "Substitute into 150 = ½ × (12 + 18) × h.",
+      steps: [
+        "150 = ½ × (12 + 18) × h.",
+        "150 = ½ × 30 × h.",
+        "150 = 15h.",
+        "h = 150 ÷ 15.",
+        "h = 10 m."
+      ],
+      ans: "10 m",
+      why: "After adding the parallel sides and taking half, divide the area by that value to find the height."
+    },
+    {
+      q: "A trapezium has parallel sides of 9 cm and 15 cm and a perpendicular height of 8 cm. A learner calculates its area as 192 cm². Identify the error and find the correct area.",
+      hint: "Check whether the learner added the parallel sides and then multiplied by the height without taking half.",
+      steps: [
+        "A = ½ × (9 + 15) × 8.",
+        "A = ½ × 24 × 8.",
+        "A = 12 × 8.",
+        "A = 96 cm²."
+      ],
+      ans: "96 cm²",
+      why: "The learner forgot the factor ½. Without taking half, the result is twice the correct area."
+    },
+    {
+      q: "A trapezium has parallel sides of 10 cm and 20 cm and a perpendicular height of 7 cm. Find its area.",
+      hint: "Use A = ½ × (a + b) × h.",
+      steps: [
+        "A = ½ × (10 + 20) × 7.",
+        "A = ½ × 30 × 7.",
+        "A = 15 × 7.",
+        "A = 105 cm²."
+      ],
+      ans: "105 cm²",
+      why: "The average of the parallel sides is 15 cm, and 15 × 7 gives the area."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Triangles",
+  "Pythagoras' Theorem",
+
+  `<h2>Pythagoras' Theorem</h2>
+
+<p><b>One concept:</b> In a right-angled triangle, the square of the hypotenuse equals the sum of the squares of the other two sides.</p>
+
+<p><b>Formula:</b></p>
+
+<p>c² = a² + b²</p>
+
+<p>Here, <b>c</b> is the <b>hypotenuse</b>.</p>
+
+<p>The hypotenuse is always the side <b>opposite the 90° angle</b>.</p>
+
+<p>It is also the <b>longest side</b> of a right-angled triangle.</p>
+
+<h3>What does the formula mean?</h3>
+
+<p>Suppose the two shorter sides are 3 cm and 4 cm.</p>
+
+<p>The theorem says:</p>
+
+<p>c² = 3² + 4²</p>
+
+<p>c² = 9 + 16</p>
+
+<p>c² = 25</p>
+
+<p>Therefore:</p>
+
+<p>c = √25 = 5 cm</p>
+
+<p>So a right-angled triangle with sides 3 cm, 4 cm and 5 cm satisfies Pythagoras' theorem.</p>
+
+<h3>Worked Example 1: Find the hypotenuse</h3>
+
+<p>A right-angled triangle has two shorter sides of 6 cm and 8 cm. Find the hypotenuse.</p>
+
+<p><b>Step 1:</b> Write Pythagoras' theorem.</p>
+
+<p>c² = a² + b²</p>
+
+<p><b>Step 2:</b> Substitute the known sides.</p>
+
+<p>c² = 6² + 8²</p>
+
+<p><b>Step 3:</b> Square the numbers.</p>
+
+<p>c² = 36 + 64</p>
+
+<p><b>Step 4:</b> Add.</p>
+
+<p>c² = 100</p>
+
+<p><b>Step 5:</b> Take the square root.</p>
+
+<p>c = √100</p>
+
+<p><b>c = 10 cm</b></p>
+
+<h3>Worked Example 2: Find a shorter side</h3>
+
+<p>A right-angled triangle has a hypotenuse of 13 m and one shorter side of 5 m. Find the other shorter side.</p>
+
+<p><b>Step 1:</b> Write the formula.</p>
+
+<p>c² = a² + b²</p>
+
+<p><b>Step 2:</b> Substitute the known values.</p>
+
+<p>13² = 5² + b²</p>
+
+<p><b>Step 3:</b> Square the known numbers.</p>
+
+<p>169 = 25 + b²</p>
+
+<p><b>Step 4:</b> Subtract 25 from both sides.</p>
+
+<p>169 - 25 = b²</p>
+
+<p>144 = b²</p>
+
+<p><b>Step 5:</b> Take the square root.</p>
+
+<p>b = √144</p>
+
+<p><b>b = 12 m</b></p>
+
+<h3>Worked Example 3: Identify the hypotenuse first</h3>
+
+<p>A right-angled triangle has sides of 9 cm, 12 cm and 15 cm. Show that Pythagoras' theorem is satisfied.</p>
+
+<p><b>Step 1:</b> Identify the hypotenuse.</p>
+
+<p>The longest side is 15 cm, so c = 15.</p>
+
+<p><b>Step 2:</b> Square the hypotenuse.</p>
+
+<p>c² = 15² = 225</p>
+
+<p><b>Step 3:</b> Square the other two sides.</p>
+
+<p>9² + 12² = 81 + 144</p>
+
+<p>9² + 12² = 225</p>
+
+<p><b>Step 4:</b> Compare both sides.</p>
+
+<p>15² = 9² + 12²</p>
+
+<p>225 = 225</p>
+
+<p>Therefore, Pythagoras' theorem is satisfied.</p>
+
+<h3>Common mistakes</h3>
+
+<p><b>Mistake 1:</b> Choosing the longest side without checking that the triangle is right-angled.</p>
+
+<p>Pythagoras' theorem applies specifically to <b>right-angled triangles</b>.</p>
+
+<p><b>Mistake 2:</b> Forgetting to take the square root at the end.</p>
+
+<p>If c² = 100, then c = √100 = 10, not 100.</p>
+
+<p><b>Mistake 3:</b> Subtracting when finding the hypotenuse.</p>
+
+<p>When finding the hypotenuse:</p>
+
+<p>c² = a² + b²</p>
+
+<p>When finding a shorter side:</p>
+
+<p>a² = c² - b²</p>`,
+
+  [
+    {
+      q: "A right-angled triangle has shorter sides of 9 cm and 12 cm. Find the hypotenuse.",
+      hint: "Use c² = 9² + 12².",
+      steps: [
+        "c² = 9² + 12².",
+        "c² = 81 + 144.",
+        "c² = 225.",
+        "c = √225.",
+        "c = 15 cm."
+      ],
+      ans: "15 cm",
+      why: "The hypotenuse is found by adding the squares of the two shorter sides and then taking the square root."
+    },
+    {
+      q: "A right-angled triangle has a hypotenuse of 17 m and one shorter side of 8 m. Find the other shorter side.",
+      hint: "Use b² = c² - a².",
+      steps: [
+        "17² = 8² + b².",
+        "289 = 64 + b².",
+        "289 - 64 = b².",
+        "225 = b².",
+        "b = √225.",
+        "b = 15 m."
+      ],
+      ans: "15 m",
+      why: "When finding a shorter side, subtract the square of the known shorter side from the square of the hypotenuse."
+    },
+    {
+      q: "A learner uses 10² = 6² - 8² to find the hypotenuse of a triangle with shorter sides 6 cm and 8 cm. Identify the error and find the correct hypotenuse.",
+      hint: "When finding the hypotenuse, the two shorter-side squares are added.",
+      steps: [
+        "The hypotenuse is found using c² = a² + b².",
+        "c² = 6² + 8².",
+        "c² = 36 + 64.",
+        "c² = 100.",
+        "c = √100.",
+        "c = 10 cm."
+      ],
+      ans: "10 cm",
+      why: "The learner subtracted the squares. To find the hypotenuse, the squares of the two shorter sides must be added."
+    },
+    {
+      q: "The sides of a triangle are 7 cm, 24 cm and 25 cm. The triangle is right-angled. Verify Pythagoras' theorem.",
+      hint: "The longest side is the hypotenuse.",
+      steps: [
+        "The hypotenuse is 25 cm.",
+        "25² = 625.",
+        "7² + 24² = 49 + 576.",
+        "7² + 24² = 625.",
+        "Therefore, 25² = 7² + 24²."
+      ],
+      ans: "Pythagoras' theorem is satisfied.",
+      why: "The square of the hypotenuse equals the sum of the squares of the two shorter sides."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "Polygons",
+  "Interior Angle Sum of Polygons",
+
+  `<h2>Interior Angle Sum of Polygons</h2>
+
+<p><b>One concept:</b> The sum of the interior angles of a polygon depends on the number of sides it has.</p>
+
+<p><b>Formula:</b></p>
+
+<p><b>Sum of interior angles = (n − 2) × 180°</b></p>
+
+<p>Here, <b>n</b> is the number of sides of the polygon.</p>
+
+<h3>Why does the formula work?</h3>
+
+<p>A polygon can be divided into triangles by drawing diagonals from one vertex.</p>
+
+<p>A polygon with <b>n</b> sides can be divided into:</p>
+
+<p><b>n − 2 triangles</b></p>
+
+<p>Every triangle has an angle sum of 180°.</p>
+
+<p>Therefore:</p>
+
+<p><b>Interior angle sum = (n − 2) × 180°</b></p>
+
+<h3>Worked Example 1: Find the angle sum of a pentagon</h3>
+
+<p>A pentagon has 5 sides. Find the sum of its interior angles.</p>
+
+<p><b>Step 1:</b> Identify the number of sides.</p>
+
+<p>n = 5</p>
+
+<p><b>Step 2:</b> Use the formula.</p>
+
+<p>Sum = (n − 2) × 180°</p>
+
+<p><b>Step 3:</b> Substitute n = 5.</p>
+
+<p>Sum = (5 − 2) × 180°</p>
+
+<p><b>Step 4:</b> Simplify.</p>
+
+<p>Sum = 3 × 180°</p>
+
+<p><b>Step 5:</b> Calculate.</p>
+
+<p><b>Sum = 540°</b></p>
+
+<h3>Worked Example 2: Find the angle sum of a hexagon</h3>
+
+<p>A hexagon has 6 sides. Find the sum of its interior angles.</p>
+
+<p><b>Step 1:</b> Identify n.</p>
+
+<p>n = 6</p>
+
+<p><b>Step 2:</b> Substitute into the formula.</p>
+
+<p>Sum = (6 − 2) × 180°</p>
+
+<p><b>Step 3:</b> Simplify.</p>
+
+<p>Sum = 4 × 180°</p>
+
+<p><b>Step 4:</b> Calculate.</p>
+
+<p><b>Sum = 720°</b></p>
+
+<h3>Worked Example 3: Find the number of sides</h3>
+
+<p>A polygon has an interior angle sum of 900°. How many sides does it have?</p>
+
+<p><b>Step 1:</b> Start with the formula.</p>
+
+<p>900° = (n − 2) × 180°</p>
+
+<p><b>Step 2:</b> Divide both sides by 180°.</p>
+
+<p>900 ÷ 180 = n − 2</p>
+
+<p>5 = n − 2</p>
+
+<p><b>Step 3:</b> Add 2 to both sides.</p>
+
+<p>n = 7</p>
+
+<p><b>Answer: The polygon has 7 sides.</b></p>
+
+<h3>Useful values</h3>
+
+<p><b>Triangle:</b> (3 − 2) × 180° = 180°</p>
+
+<p><b>Quadrilateral:</b> (4 − 2) × 180° = 360°</p>
+
+<p><b>Pentagon:</b> (5 − 2) × 180° = 540°</p>
+
+<p><b>Hexagon:</b> (6 − 2) × 180° = 720°</p>
+
+<p><b>Heptagon:</b> (7 − 2) × 180° = 900°</p>
+
+<h3>Common mistake</h3>
+
+<p>Do not use <b>n × 180°</b>.</p>
+
+<p>The correct formula is:</p>
+
+<p><b>(n − 2) × 180°</b></p>
+
+<p>For example, a pentagon does not have an interior angle sum of 5 × 180°.</p>
+
+<p>It has:</p>
+
+<p>(5 − 2) × 180° = 540°</p>`,
+
+  [
+    {
+      q: "Find the sum of the interior angles of an octagon.",
+      hint: "An octagon has 8 sides. Use (n − 2) × 180°.",
+      steps: [
+        "n = 8.",
+        "Sum = (8 − 2) × 180°.",
+        "Sum = 6 × 180°.",
+        "Sum = 1080°."
+      ],
+      ans: "1080°",
+      why: "An octagon can be divided into 6 triangles, and each triangle has an angle sum of 180°."
+    },
+    {
+      q: "A polygon has 10 sides. Find the sum of its interior angles.",
+      hint: "Substitute n = 10 into (n − 2) × 180°.",
+      steps: [
+        "n = 10.",
+        "Sum = (10 − 2) × 180°.",
+        "Sum = 8 × 180°.",
+        "Sum = 1440°."
+      ],
+      ans: "1440°",
+      why: "A 10-sided polygon can be divided into 8 triangles."
+    },
+    {
+      q: "A polygon has an interior angle sum of 1260°. How many sides does it have?",
+      hint: "Start with 1260 = (n − 2) × 180.",
+      steps: [
+        "1260 = (n − 2) × 180.",
+        "1260 ÷ 180 = n − 2.",
+        "7 = n − 2.",
+        "n = 9."
+      ],
+      ans: "9 sides",
+      why: "A polygon with 9 sides has 7 triangles, giving an interior angle sum of 7 × 180° = 1260°."
+    },
+    {
+      q: "A learner says that the interior angle sum of a hexagon is 1080°. Identify the error and find the correct answer.",
+      hint: "Check the number of triangles formed using n − 2.",
+      steps: [
+        "A hexagon has 6 sides.",
+        "Number of triangles = 6 − 2 = 4.",
+        "Interior angle sum = 4 × 180°.",
+        "Interior angle sum = 720°."
+      ],
+      ans: "720°",
+      why: "The learner did not use the correct number of triangles. A hexagon forms 4 triangles, not 6."
+    }
+  ]
+);
+add(
+  "math",
+  "geometry",
+  "polygons",
+  "Exterior Angles of a Polygon",
+
+  `<h2>Exterior Angles of a Polygon</h2>
+
+<p><b>One concept:</b> The sum of one exterior angle at each vertex of any polygon is always 360°.</p>
+
+<p><b>Rule:</b></p>
+
+<p><b>Sum of exterior angles = 360°</b></p>
+
+<p>This rule works for every polygon, regardless of the number of sides.</p>
+
+<h3>What is an exterior angle?</h3>
+
+<p>An exterior angle is formed when one side of a polygon is extended beyond a vertex.</p>
+
+<p>The exterior angle and the interior angle at the same vertex form a straight line.</p>
+
+<p>Therefore:</p>
+
+<p><b>Interior angle + exterior angle = 180°</b></p>
+
+<h3>Why is the exterior angle sum 360°?</h3>
+
+<p>Imagine walking around the outside of a polygon.</p>
+
+<p>At every vertex, you turn through an exterior angle.</p>
+
+<p>After going all the way around the polygon, you have made one complete turn.</p>
+
+<p>One complete turn is:</p>
+
+<p><b>360°</b></p>
+
+<p>Therefore, the exterior angles add up to 360°.</p>
+
+<h3>Worked Example 1: Find a missing exterior angle</h3>
+
+<p>A polygon has exterior angles of 80°, 100°, 70° and 60°. Find the fifth exterior angle.</p>
+
+<p><b>Step 1:</b> The exterior angles must add up to 360°.</p>
+
+<p>Sum = 360°</p>
+
+<p><b>Step 2:</b> Add the known angles.</p>
+
+<p>80° + 100° + 70° + 60° = 310°</p>
+
+<p><b>Step 3:</b> Subtract from 360°.</p>
+
+<p>Missing angle = 360° − 310°</p>
+
+<p><b>Missing angle = 50°</b></p>
+
+<h3>Worked Example 2: Find each exterior angle of a regular polygon</h3>
+
+<p>A regular hexagon has 6 equal exterior angles. Find each exterior angle.</p>
+
+<p><b>Step 1:</b> The exterior angles add up to 360°.</p>
+
+<p><b>Step 2:</b> Because the hexagon is regular, all 6 exterior angles are equal.</p>
+
+<p>Each exterior angle = 360° ÷ 6</p>
+
+<p><b>Step 3:</b> Calculate.</p>
+
+<p><b>Each exterior angle = 60°</b></p>
+
+<h3>Worked Example 3: Find the number of sides</h3>
+
+<p>A regular polygon has an exterior angle of 45°. Find the number of sides.</p>
+
+<p><b>Step 1:</b> The exterior angles add up to 360°.</p>
+
+<p><b>Step 2:</b> Because the polygon is regular, all exterior angles are equal.</p>
+
+<p>Number of sides = 360° ÷ exterior angle</p>
+
+<p><b>Step 3:</b> Substitute 45°.</p>
+
+<p>n = 360° ÷ 45°</p>
+
+<p><b>n = 8</b></p>
+
+<p>Therefore, the polygon has <b>8 sides</b>.</p>
+
+<h3>Important relationship</h3>
+
+<p>At the same vertex, the interior and exterior angles form a straight line.</p>
+
+<p>Therefore:</p>
+
+<p><b>Interior angle + exterior angle = 180°</b></p>
+
+<p>For example, if an interior angle is 120°:</p>
+
+<p>Exterior angle = 180° − 120°</p>
+
+<p><b>Exterior angle = 60°</b></p>
+
+<h3>Common mistakes</h3>
+
+<p><b>Mistake 1:</b> Using 180° as the total exterior-angle sum.</p>
+
+<p>The total exterior-angle sum is <b>360°</b>.</p>
+
+<p><b>Mistake 2:</b> Dividing 180° by the number of sides to find each exterior angle.</p>
+
+<p>For a regular polygon:</p>
+
+<p><b>Each exterior angle = 360° ÷ n</b></p>
+
+<p><b>Mistake 3:</b> Assuming every polygon has equal exterior angles.</p>
+
+<p>Only a <b>regular polygon</b> has equal exterior angles.</p>`,
+
+  [
+    {
+      q: "The exterior angles of a polygon are 90°, 80°, 70° and 60°. Find the fifth exterior angle.",
+      hint: "All exterior angles together add to 360°.",
+      steps: [
+        "Total exterior angle sum = 360°.",
+        "90° + 80° + 70° + 60° = 300°.",
+        "Missing angle = 360° − 300°.",
+        "Missing angle = 60°."
+      ],
+      ans: "60°",
+      why: "The exterior angles of a polygon make one complete turn, which is 360°."
+    },
+    {
+      q: "Find each exterior angle of a regular pentagon.",
+      hint: "Divide 360° by the number of sides.",
+      steps: [
+        "A pentagon has 5 sides.",
+        "Each exterior angle = 360° ÷ 5.",
+        "Each exterior angle = 72°."
+      ],
+      ans: "72°",
+      why: "A regular polygon has equal exterior angles, and together they total 360°."
+    },
+    {
+      q: "Each exterior angle of a regular polygon is 30°. How many sides does the polygon have?",
+      hint: "Use n = 360° ÷ exterior angle.",
+      steps: [
+        "n = 360° ÷ 30°.",
+        "n = 12."
+      ],
+      ans: "12 sides",
+      why: "There are 360° in one complete turn, so 30° exterior angles require 12 equal turns."
+    },
+    {
+      q: "A regular polygon has an interior angle of 135°. Find each exterior angle.",
+      hint: "Interior angle + exterior angle = 180°.",
+      steps: [
+        "Interior angle + exterior angle = 180°.",
+        "135° + exterior angle = 180°.",
+        "Exterior angle = 180° − 135°.",
+        "Exterior angle = 45°."
+      ],
+      ans: "45°",
+      why: "The interior and exterior angles at the same vertex form a straight line."
+    },
+    {
+      q: "A learner says that each exterior angle of a regular hexagon is 30°. Identify the error and find the correct angle.",
+      hint: "A hexagon has 6 equal exterior angles whose total is 360°.",
+      steps: [
+        "A hexagon has 6 sides.",
+        "Each exterior angle = 360° ÷ 6.",
+        "Each exterior angle = 60°.",
+        "The learner used 180° ÷ 6 instead of 360° ÷ 6."
+      ],
+      ans: "60°",
+      why: "The sum of the exterior angles is 360°, not 180°."
     }
   ]
 );
 add(
   "math",
   "linear_programming",
-  "Introduction to Linear Programming",
+  "Meaning of a Variable in Linear Programming",
 
-  `<h2>Introduction to Linear Programming</h2>
+  `<h2>Meaning of a Variable in Linear Programming</h2>
 
 <p>
-<b>Linear programming</b> is a method of finding the maximum or minimum
-value of a quantity when there are restrictions on the possible values
-of the variables.
+A <b>variable</b> represents an unknown quantity that can change.
+In linear programming, variables usually represent quantities that
+we need to determine.
 </p>
 
 <p>
-A linear programming problem has three main parts:
+We commonly use letters such as <b>x</b> and <b>y</b> to represent
+these unknown quantities.
 </p>
 
-<ul>
-<li><b>Variables</b> — the unknown quantities we are trying to determine.</li>
-<li><b>Objective function</b> — the quantity we want to maximize or minimize.</li>
-<li><b>Constraints</b> — inequalities that restrict the possible values of the variables.</li>
-</ul>
-
-<h3>1. VARIABLES</h3>
+<h3>Example 1</h3>
 
 <p>
-Usually the unknown quantities are represented by <b>x</b> and <b>y</b>.
+A shop sells two types of bags. Let:
+</p>
+
+<pre>
+x = number of small bags
+y = number of large bags
+</pre>
+
+<p>
+Here, <b>x</b> and <b>y</b> are variables because their values are
+not known yet.
+</p>
+
+<h3>Example 2</h3>
+
+<p>
+A farmer keeps chickens and goats. Let:
+</p>
+
+<pre>
+x = number of chickens
+y = number of goats
+</pre>
+
+<p>
+The variables represent the quantities we want to determine.
+</p>
+
+<h3>Example 3</h3>
+
+<p>
+A school produces desks and chairs. Let:
+</p>
+
+<pre>
+x = number of desks produced
+y = number of chairs produced
+</pre>
+
+<p>
+The values of x and y can change depending on the available
+resources and the requirements of the problem.
+</p>
+
+<h3>Important</h3>
+
+<p>
+Always state what each variable represents before using it.
+Writing only <b>x</b> and <b>y</b> without defining them makes the
+mathematical model unclear.
 </p>
 
 <p>
-For example, if x represents one quantity and y represents another,
-we might have:
+<b>Key idea:</b> A variable represents an unknown quantity whose
+value we are trying to determine.
+</p>
+`,
+
+  [
+    {
+      "q": "In a problem, x represents the number of books sold. What does x represent?",
+      "hint": "Look at the meaning given to x.",
+      "steps": [
+        "Step 1: Read what x represents.",
+        "Step 2: x represents the number of books sold."
+      ],
+      "ans": "The number of books sold.",
+      "why": "A variable represents the quantity assigned to it."
+    },
+
+    {
+      "q": "A farmer produces maize and beans. If x represents maize bags and y represents bean bags, what do the variables represent?",
+      "hint": "Read the definitions of x and y.",
+      "steps": [
+        "Step 1: x represents maize bags.",
+        "Step 2: y represents bean bags.",
+        "Step 3: Therefore x and y represent the two quantities being considered."
+      ],
+      "ans": "x represents maize bags and y represents bean bags.",
+      "why": "Variables are symbols used to represent unknown quantities."
+    },
+
+    {
+      "q": "A business sells pens and books. Choose suitable variables and state what they represent.",
+      "hint": "Use x and y.",
+      "steps": [
+        "Step 1: Let x represent the number of pens.",
+        "Step 2: Let y represent the number of books.",
+        "Step 3: State both definitions clearly."
+      ],
+      "ans": "x = number of pens; y = number of books.",
+      "why": "Variables must be connected to the quantities they represent."
+    },
+
+    {
+      "q": "Why should variables be defined before solving a linear programming problem?",
+      "hint": "Think about what x and y need to mean.",
+      "steps": [
+        "Step 1: A variable is only a symbol.",
+        "Step 2: Its definition gives the symbol meaning.",
+        "Step 3: Therefore the variables must be defined clearly."
+      ],
+      "ans": "To make clear what each unknown quantity represents.",
+      "why": "A mathematical model cannot be interpreted correctly if its variables have no defined meaning."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Identifying Variables from a Problem",
+
+  `<h2>Identifying Variables from a Problem</h2>
+
+<p>
+In a word problem, the first task is to identify the quantities that
+are unknown and need to be determined.
+These quantities become the <b>variables</b>.
+</p>
+
+<p>
+A good variable definition tells us exactly what is being counted or
+measured.
+</p>
+
+<h3>Example 1</h3>
+
+<p>
+A bakery makes cakes and bread. The number of cakes and loaves of
+bread produced is unknown.
+</p>
+
+<pre>
+x = number of cakes
+y = number of loaves of bread
+</pre>
+
+<h3>Example 2</h3>
+
+<p>
+A farmer keeps cows and goats. The numbers of cows and goats are
+unknown.
+</p>
+
+<pre>
+x = number of cows
+y = number of goats
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+A company produces tables and chairs.
+</p>
+
+<pre>
+x = number of tables produced
+y = number of chairs produced
+</pre>
+
+<p>
+Notice that the variables describe the <b>quantities being decided</b>.
+They are not the prices, profits, or available resources unless the
+problem specifically makes those quantities unknown.
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+Ask:
+</p>
+
+<pre>
+"What quantities do I need to find?"
+</pre>
+
+<p>
+Those quantities are the natural candidates for the variables.
+</p>
+`,
+
+  [
+    {
+      "q": "A factory produces shirts and trousers. What two variables could represent the quantities produced?",
+      "hint": "The variables should represent the two products.",
+      "steps": [
+        "Step 1: Identify the first unknown quantity: shirts.",
+        "Step 2: Identify the second unknown quantity: trousers.",
+        "Step 3: Assign variables."
+      ],
+      "ans": "x = number of shirts; y = number of trousers.",
+      "why": "The variables represent the quantities whose values need to be determined."
+    },
+
+    {
+      "q": "A farmer grows maize and beans. Let x represent maize. What should y represent?",
+      "hint": "Look at the other quantity.",
+      "steps": [
+        "Step 1: The first quantity is maize.",
+        "Step 2: The second quantity is beans.",
+        "Step 3: Therefore y represents beans."
+      ],
+      "ans": "y represents the amount or number of beans.",
+      "why": "Each variable should represent one of the unknown quantities."
+    },
+
+    {
+      "q": "A shop sells phones and laptops. If x is the number of phones, choose a suitable meaning for y.",
+      "hint": "Use the second product.",
+      "steps": [
+        "Step 1: x already represents phones.",
+        "Step 2: The other quantity is laptops.",
+        "Step 3: Let y represent laptops."
+      ],
+      "ans": "y = number of laptops.",
+      "why": "The variables should represent the quantities being decided."
+    },
+
+    {
+      "q": "A school wants to determine how many desks and chairs to make. What should the variables represent?",
+      "hint": "Identify the two unknown quantities.",
+      "steps": [
+        "Step 1: Identify the desk quantity.",
+        "Step 2: Identify the chair quantity.",
+        "Step 3: Assign one variable to each."
+      ],
+      "ans": "One variable represents the number of desks and the other represents the number of chairs.",
+      "why": "Variables represent the unknown quantities in the problem."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Non-Negativity Constraints",
+
+  `<h2>Non-Negativity Constraints</h2>
+
+<p>
+When a variable represents a quantity such as the number of products,
+people, animals, or hours, it normally cannot be negative.
+</p>
+
+<p>
+This is expressed using a <b>non-negativity constraint</b>.
 </p>
 
 <pre>
@@ -4159,15 +5787,139 @@ y ≥ 0
 </pre>
 
 <p>
-The condition x ≥ 0 means x cannot be negative.
-The same applies to y.
+These statements mean that x and y can be zero or positive, but not
+negative.
 </p>
 
-<h3>2. OBJECTIVE FUNCTION</h3>
+<h3>Example 1</h3>
 
 <p>
-The <b>objective function</b> tells us what we want to optimize.
-It is usually written as:
+If x represents the number of desks produced:
+</p>
+
+<pre>
+x ≥ 0
+</pre>
+
+<p>
+We cannot produce −3 desks.
+</p>
+
+<h3>Example 2</h3>
+
+<p>
+If y represents the number of workers assigned to a task:
+</p>
+
+<pre>
+y ≥ 0
+</pre>
+
+<p>
+A negative number of workers has no physical meaning.
+</p>
+
+<h3>Example 3</h3>
+
+<p>
+If x represents chairs and y represents tables:
+</p>
+
+<pre>
+x ≥ 0
+y ≥ 0
+</pre>
+
+<p>
+Both quantities must be zero or greater.
+</p>
+
+<h3>Important</h3>
+
+<p>
+The condition <b>x ≥ 0</b> does not mean that x must be positive.
+Zero is allowed.
+</p>
+
+<pre>
+x = 0 ✓
+x = 4 ✓
+x = 10 ✓
+x = -2 ✗
+</pre>
+
+<p>
+<b>Key idea:</b> Quantities that cannot be negative are represented
+using non-negativity constraints such as x ≥ 0 and y ≥ 0.
+</p>
+`,
+
+  [
+    {
+      "q": "If x represents the number of tables produced, write its non-negativity constraint.",
+      "hint": "The number of tables cannot be negative.",
+      "steps": [
+        "Step 1: x represents a quantity.",
+        "Step 2: The quantity cannot be negative.",
+        "Step 3: Write x ≥ 0."
+      ],
+      "ans": "x ≥ 0",
+      "why": "A physical quantity represented by x cannot be negative."
+    },
+
+    {
+      "q": "Write the non-negativity constraints for x and y.",
+      "hint": "Both variables cannot be negative.",
+      "steps": [
+        "Step 1: x cannot be negative → x ≥ 0.",
+        "Step 2: y cannot be negative → y ≥ 0.",
+        "Step 3: Write both constraints."
+      ],
+      "ans": "x ≥ 0 and y ≥ 0",
+      "why": "Both variables represent non-negative quantities."
+    },
+
+    {
+      "q": "Is x = -3 allowed if x represents the number of products made?",
+      "hint": "Check x ≥ 0.",
+      "steps": [
+        "Step 1: The constraint is x ≥ 0.",
+        "Step 2: Substitute x = -3.",
+        "Step 3: -3 ≥ 0 is false."
+      ],
+      "ans": "No.",
+      "why": "A negative quantity violates the non-negativity constraint."
+    },
+
+    {
+      "q": "Is x = 0 allowed under x ≥ 0?",
+      "hint": "Does ≥ include equality?",
+      "steps": [
+        "Step 1: The constraint is x ≥ 0.",
+        "Step 2: Substitute x = 0.",
+        "Step 3: 0 ≥ 0 is true."
+      ],
+      "ans": "Yes.",
+      "why": "The symbol ≥ includes equality, so zero is allowed."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Meaning of an Objective Function",
+
+  `<h2>Meaning of an Objective Function</h2>
+
+<p>
+The <b>objective function</b> is the mathematical expression that
+tells us what quantity we want to <b>maximize</b> or <b>minimize</b>.
+</p>
+
+<p>
+It is commonly written using <b>Z</b>.
 </p>
 
 <pre>
@@ -4175,180 +5927,108 @@ Z = ax + by
 </pre>
 
 <p>
-The problem may ask us to:
+The values of x and y determine the value of Z.
 </p>
 
+<h3>Example 1</h3>
+
 <pre>
-Maximize Z
-
-or
-
-Minimize Z
+Z = 5x + 3y
 </pre>
 
 <p>
-For example:
+If the question says "maximize profit", then this expression represents
+the profit being maximized.
 </p>
 
+<h3>Example 2</h3>
+
 <pre>
-Maximize Z = 4x + 3y
+C = 4x + 2y
 </pre>
 
 <p>
-means that we want the largest possible value of Z while still
-obeying all the constraints.
+If C represents cost and the problem asks for the minimum cost, then
+C is the objective function.
 </p>
 
-<h3>3. CONSTRAINTS</h3>
-
-<p>
-Constraints are inequalities that restrict x and y.
-For example:
-</p>
+<h3>Example 3</h3>
 
 <pre>
-x + y ≤ 10
-x ≥ 0
-y ≥ 0
+Z = 8x + 5y
 </pre>
 
 <p>
-The first constraint says that x and y together cannot exceed 10.
-The other two prevent negative values.
+If Z represents total revenue and the problem asks for the greatest
+possible revenue, then Z is the objective function.
 </p>
 
-<h3>4. FEASIBLE SOLUTIONS</h3>
+<h3>Recognizing It</h3>
 
 <p>
-A point is a <b>feasible solution</b> if it satisfies <b>every constraint</b>.
-</p>
-
-<p>
-A point that satisfies one constraint but violates another is
-<b>not feasible</b>.
-</p>
-
-<h3>Complete Structure</h3>
-
-<pre>
-Variables
-    ↓
-Constraints
-    ↓
-Feasible region
-    ↓
-Objective function
-    ↓
-Maximum or minimum value
-</pre>
-
-<h3>Worked Example</h3>
-
-<p>
-Maximize:
+Look for the quantity the problem wants to make as large or as small
+as possible.
 </p>
 
 <pre>
-Z = 3x + 2y
+maximize → largest possible value
+
+minimize → smallest possible value
 </pre>
 
 <p>
-subject to:
+<b>Key idea:</b> The objective function is what we are trying to
+optimize.
 </p>
-
-<pre>
-x + y ≤ 4
-x ≥ 0
-y ≥ 0
-</pre>
-
-<p>
-Here:
-</p>
-
-<ul>
-<li>Variables: x and y</li>
-<li>Objective function: Z = 3x + 2y</li>
-<li>Objective: maximize Z</li>
-<li>Constraints: x + y ≤ 4, x ≥ 0, y ≥ 0</li>
-</ul>
-
-<p>
-The constraints determine which values of x and y are allowed.
-The objective function is then used to find the best feasible solution.
-</p>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Confusing the objective function with a constraint.</li>
-<li>Forgetting the non-negative constraints.</li>
-<li>Maximizing the wrong expression.</li>
-<li>Choosing a point that does not satisfy every constraint.</li>
-</ul>
 `,
 
   [
     {
-      "q": "In the linear programming problem Maximize Z = 5x + 2y, what is the objective function?",
-      "hint": "The objective function is the expression being maximized or minimized.",
+      "q": "In Maximize Z = 6x + 4y, what is the objective function?",
+      "hint": "Find the expression being maximized.",
       "steps": [
-        "Step 1: Identify what is being maximized",
-        "Step 2: The expression is 5x + 2y",
-        "Step 3: Write it as Z = 5x + 2y"
+        "Step 1: Identify the quantity being maximized.",
+        "Step 2: It is Z.",
+        "Step 3: Therefore the objective function is Z = 6x + 4y."
       ],
-      "ans": "Z = 5x + 2y",
-      "why": "The objective function is the quantity that the problem asks us to maximize or minimize."
+      "ans": "Z = 6x + 4y",
+      "why": "The objective function is the expression being maximized."
     },
 
     {
-      "q": "What is the purpose of a constraint in linear programming?",
-      "hint": "Think about restrictions.",
+      "q": "In Minimize C = 3x + 7y, what is the objective function?",
+      "hint": "Find the expression being minimized.",
       "steps": [
-        "Step 1: Identify what a constraint does",
-        "Step 2: It restricts possible values of the variables",
-        "Step 3: State its purpose"
+        "Step 1: Identify the quantity being minimized.",
+        "Step 2: It is C.",
+        "Step 3: Therefore the objective function is C = 3x + 7y."
       ],
-      "ans": "It restricts the possible values of the variables.",
-      "why": "Constraints define which solutions are allowed."
+      "ans": "C = 3x + 7y",
+      "why": "The objective function is the quantity being optimized."
     },
 
     {
-      "q": "For Maximize Z = 4x + y subject to x + y ≤ 8, identify the objective function.",
-      "hint": "Look for the expression after Z.",
+      "q": "What does the objective function tell us?",
+      "hint": "Think about maximize and minimize.",
       "steps": [
-        "Step 1: Locate Z",
-        "Step 2: Read the expression attached to Z",
-        "Step 3: Identify the objective"
+        "Step 1: Identify the role of the objective.",
+        "Step 2: It gives the quantity being optimized.",
+        "Step 3: The quantity is maximized or minimized."
       ],
-      "ans": "Z = 4x + y",
-      "why": "Z = 4x + y is the quantity being maximized."
+      "ans": "It tells us what quantity is to be maximized or minimized.",
+      "why": "The objective function defines the goal of the linear programming problem."
     },
 
     {
-      "q": "Is the point (3,2) feasible for x + y ≤ 6, x ≥ 0, y ≥ 0?",
-      "hint": "Check every constraint.",
+      "q": "A company wants to maximize profit P = 10x + 6y. What is being optimized?",
+      "hint": "Look at what P represents.",
       "steps": [
-        "Step 1: Check x + y ≤ 6: 3 + 2 = 5 ≤ 6",
-        "Step 2: Check x ≥ 0: 3 ≥ 0",
-        "Step 3: Check y ≥ 0: 2 ≥ 0",
-        "Step 4: All constraints are satisfied"
+        "Step 1: P represents profit.",
+        "Step 2: The problem says maximize.",
+        "Step 3: Therefore profit is being maximized."
       ],
-      "ans": "Yes, (3,2) is feasible.",
-      "why": "A feasible point must satisfy every constraint."
-    },
-
-    {
-      "q": "Is the point (5,3) feasible for x + y ≤ 6, x ≥ 0, y ≥ 0?",
-      "hint": "Check x + y ≤ 6.",
-      "steps": [
-        "Step 1: Calculate x + y = 5 + 3 = 8",
-        "Step 2: Compare 8 with 6",
-        "Step 3: 8 ≤ 6 is false",
-        "Step 4: Therefore the point is not feasible"
-      ],
-      "ans": "No, (5,3) is not feasible.",
-      "why": "The point violates the constraint x + y ≤ 6."
+      "ans": "Profit.",
+      "why": "The objective function represents the quantity that the problem wants to optimize."
     }
   ]
 );
@@ -4357,137 +6037,2133 @@ The objective function is then used to find the best feasible solution.
 add(
   "math",
   "linear_programming",
-  "Linear Inequality Constraints",
+  "Identifying the Objective Function",
 
-  `<h2>Linear Inequality Constraints</h2>
+  `<h2>Identifying the Objective Function</h2>
 
 <p>
-A <b>constraint</b> in linear programming is usually written as a
-linear inequality. It tells us which values of the variables are allowed.
+To identify the objective function, look for the quantity that the
+problem asks you to <b>maximize</b> or <b>minimize</b>.
 </p>
 
-<h3>1. THE FOUR INEQUALITY SYMBOLS</h3>
+<p>
+The wording of the question is important.
+</p>
 
-<ul>
-<li><b>&lt;</b> means less than</li>
-<li><b>≤</b> means less than or equal to</li>
-<li><b>&gt;</b> means greater than</li>
-<li><b>≥</b> means greater than or equal to</li>
-</ul>
+<h3>Example 1</h3>
+
+<p>
+A company wants to obtain the greatest profit:
+</p>
+
+<pre>
+Profit = 8x + 5y
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+Maximize P = 8x + 5y
+</pre>
+
+<p>
+The objective function is:
+</p>
+
+<pre>
+P = 8x + 5y
+</pre>
+
+<h3>Example 2</h3>
+
+<p>
+A manufacturer wants the lowest production cost:
+</p>
+
+<pre>
+Cost = 6x + 4y
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+Minimize C = 6x + 4y
+</pre>
+
+<p>
+The objective function is:
+</p>
+
+<pre>
+C = 6x + 4y
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+A farmer wants to maximize the total income:
+</p>
+
+<pre>
+Income = 12x + 9y
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+Maximize I = 12x + 9y
+</pre>
+
+<h3>Key Question</h3>
+
+<p>
+When reading a word problem, ask:
+</p>
+
+<pre>
+"What does the problem want me to make
+as large as possible or as small as possible?"
+</pre>
+
+<p>
+That quantity forms the objective function.
+</p>
+`,
+
+  [
+    {
+      "q": "A business wants to maximize profit P = 7x + 4y. Identify the objective function.",
+      "hint": "Profit is the quantity being maximized.",
+      "steps": [
+        "Step 1: Identify the quantity being optimized: profit.",
+        "Step 2: Profit is P = 7x + 4y.",
+        "Step 3: Write the objective function."
+      ],
+      "ans": "P = 7x + 4y",
+      "why": "Profit is the quantity being maximized."
+    },
+
+    {
+      "q": "A factory wants to minimize cost C = 9x + 2y. What is the objective function?",
+      "hint": "Look at the quantity being minimized.",
+      "steps": [
+        "Step 1: Identify the quantity: cost.",
+        "Step 2: Cost is C = 9x + 2y.",
+        "Step 3: This is the objective function."
+      ],
+      "ans": "C = 9x + 2y",
+      "why": "Cost is the quantity being minimized."
+    },
+
+    {
+      "q": "A farmer wants the greatest possible income I = 15x + 10y. Is I = 15x + 10y the objective function?",
+      "hint": "Is income being optimized?",
+      "steps": [
+        "Step 1: I represents income.",
+        "Step 2: The problem asks for the greatest income.",
+        "Step 3: Therefore I is the objective function."
+      ],
+      "ans": "Yes.",
+      "why": "The objective function represents the quantity being maximized or minimized."
+    },
+
+    {
+      "q": "A problem gives x + y ≤ 20 and asks for maximum profit P = 5x + 3y. Which expression is the objective function?",
+      "hint": "One expression is a restriction and the other is the quantity being maximized.",
+      "steps": [
+        "Step 1: x + y ≤ 20 is a restriction.",
+        "Step 2: P = 5x + 3y represents profit.",
+        "Step 3: Profit is being maximized.",
+        "Step 4: Therefore P = 5x + 3y is the objective function."
+      ],
+      "ans": "P = 5x + 3y",
+      "why": "The objective function is the quantity being optimized, while x + y ≤ 20 is a constraint."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Maximization",
+
+  `<h2>Maximization</h2>
+
+<p>
+<b>Maximization</b> means finding the largest possible value of a
+quantity while satisfying all the required restrictions.
+</p>
+
+<p>
+In linear programming, the quantity being maximized is represented by
+the objective function.
+</p>
+
+<h3>Example 1</h3>
+
+<pre>
+Z = 4x + 3y
+</pre>
+
+<p>
+If the problem says:
+</p>
+
+<pre>
+Maximize Z
+</pre>
+
+<p>
+our goal is to find the feasible values of x and y that produce the
+largest possible value of Z.
+</p>
+
+<h3>Example 2</h3>
+
+<p>
+Suppose the possible values of Z at three allowed points are:
+</p>
+
+<pre>
+Point A: Z = 10
+Point B: Z = 16
+Point C: Z = 13
+</pre>
+
+<p>
+Compare the values:
+</p>
+
+<pre>
+10, 16, 13
+</pre>
+
+<p>
+The largest value is 16.
+</p>
+
+<pre>
+Maximum Z = 16
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+Z = 5x + 2y
+</pre>
+
+<p>
+At three feasible points:
+</p>
+
+<pre>
+(1,2): Z = 5(1) + 2(2) = 9
+
+(2,3): Z = 5(2) + 2(3) = 16
+
+(4,1): Z = 5(4) + 2(1) = 22
+</pre>
+
+<p>
+The largest value is 22.
+</p>
+
+<pre>
+Maximum Z = 22 at (4,1)
+</pre>
+
+<p>
+<b>Key idea:</b> Maximization means selecting the largest objective
+value among the allowed solutions.
+</p>
+`,
+
+  [
+    {
+      "q": "What does maximize mean?",
+      "hint": "Think about size.",
+      "steps": [
+        "Step 1: Maximization asks for an extreme value.",
+        "Step 2: The required value must be the largest."
+      ],
+      "ans": "Find the largest possible value.",
+      "why": "To maximize means to make a quantity as large as possible."
+    },
+
+    {
+      "q": "Which is the maximum of 7, 12, and 9?",
+      "hint": "Choose the largest number.",
+      "steps": [
+        "Step 1: Compare 7 and 12.",
+        "Step 2: 12 is larger than 7.",
+        "Step 3: Compare 12 and 9.",
+        "Step 4: 12 is the largest."
+      ],
+      "ans": "12",
+      "why": "The maximum is the largest value."
+    },
+
+    {
+      "q": "If Z has values 14, 21, and 18 at three feasible points, what is the maximum value?",
+      "hint": "Choose the largest value.",
+      "steps": [
+        "Step 1: Compare 14, 21, and 18.",
+        "Step 2: 21 is the largest."
+      ],
+      "ans": "21",
+      "why": "Maximization requires the largest feasible objective value."
+    },
+
+    {
+      "q": "For Z = 3x + 2y, Z = 20 at one feasible point and Z = 17 at another. Which point gives the larger objective value?",
+      "hint": "Compare 20 and 17.",
+      "steps": [
+        "Step 1: Compare the objective values.",
+        "Step 2: 20 > 17.",
+        "Step 3: Therefore the point with Z = 20 gives the larger value."
+      ],
+      "ans": "The point where Z = 20.",
+      "why": "A maximum requires the largest objective-function value."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Minimization",
+
+  `<h2>Minimization</h2>
+
+<p>
+<b>Minimization</b> means finding the smallest possible value of a
+quantity while satisfying all the required restrictions.
+</p>
+
+<p>
+The quantity being minimized is represented by the objective function.
+</p>
+
+<h3>Example 1</h3>
+
+<pre>
+C = 6x + 4y
+</pre>
+
+<p>
+If the problem says:
+</p>
+
+<pre>
+Minimize C
+</pre>
+
+<p>
+our goal is to find the feasible values of x and y that produce the
+smallest possible value of C.
+</p>
+
+<h3>Example 2</h3>
+
+<p>
+Suppose the possible values of C are:
+</p>
+
+<pre>
+C = 15
+C = 9
+C = 12
+</pre>
+
+<p>
+The smallest value is:
+</p>
+
+<pre>
+Minimum C = 9
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+C = 4x + 3y
+</pre>
+
+<p>
+At three feasible points:
+</p>
+
+<pre>
+(1,2): C = 4(1) + 3(2) = 10
+
+(2,1): C = 4(2) + 3(1) = 11
+
+(3,2): C = 4(3) + 3(2) = 18
+</pre>
+
+<p>
+The smallest value is 10.
+</p>
+
+<pre>
+Minimum C = 10 at (1,2)
+</pre>
+
+<p>
+<b>Key idea:</b> Minimization means selecting the smallest objective
+value among the allowed solutions.
+</p>
+`,
+
+  [
+    {
+      "q": "What does minimize mean?",
+      "hint": "Think about size.",
+      "steps": [
+        "Step 1: Minimization asks for an extreme value.",
+        "Step 2: The required value must be the smallest."
+      ],
+      "ans": "Find the smallest possible value.",
+      "why": "To minimize means to make a quantity as small as possible."
+    },
+
+    {
+      "q": "Which is the minimum of 8, 5, and 11?",
+      "hint": "Choose the smallest number.",
+      "steps": [
+        "Step 1: Compare 8, 5, and 11.",
+        "Step 2: 5 is smaller than both 8 and 11."
+      ],
+      "ans": "5",
+      "why": "The minimum is the smallest value."
+    },
+
+    {
+      "q": "If C has values 18, 7, and 12 at three feasible points, what is the minimum?",
+      "hint": "Choose the smallest value.",
+      "steps": [
+        "Step 1: Compare 18, 7, and 12.",
+        "Step 2: 7 is the smallest."
+      ],
+      "ans": "7",
+      "why": "Minimization requires the smallest feasible objective value."
+    },
+
+    {
+      "q": "For C = 2x + 5y, one feasible point gives C = 14 and another gives C = 19. Which gives the smaller objective value?",
+      "hint": "Compare 14 and 19.",
+      "steps": [
+        "Step 1: Compare the objective values.",
+        "Step 2: 14 < 19.",
+        "Step 3: Therefore the point giving C = 14 has the smaller value."
+      ],
+      "ans": "The point where C = 14.",
+      "why": "A minimum requires the smallest objective-function value."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Meaning of a Constraint",
+
+  `<h2>Meaning of a Constraint</h2>
+
+<p>
+A <b>constraint</b> is a mathematical restriction on the values that
+the variables are allowed to take.
+</p>
+
+<p>
+Constraints describe the limits imposed by the situation.
+They are usually written as inequalities.
+</p>
+
+<h3>Example 1</h3>
+
+<pre>
+x + y ≤ 20
+</pre>
+
+<p>
+This means the combined value of x and y cannot be greater than 20.
+</p>
 
 <p>
 For example:
 </p>
 
 <pre>
-x + y ≤ 5
+x = 8, y = 10
+
+8 + 10 = 18 ≤ 20 ✓
+</pre>
+
+<h3>Example 2</h3>
+
+<pre>
+2x + y ≤ 12
 </pre>
 
 <p>
-means that the sum of x and y can be 5 or anything smaller.
+The weighted combination 2x + y cannot exceed 12.
 </p>
 
-<h3>2. BOUNDARY LINE</h3>
-
 <p>
-To graph an inequality such as:
+For example:
 </p>
 
 <pre>
-x + y ≤ 5
+x = 4, y = 3
+
+2(4) + 3 = 11 ≤ 12 ✓
+</pre>
+
+<h3>Example 3</h3>
+
+<pre>
+x ≥ 5
 </pre>
 
 <p>
-first replace the inequality sign with an equality:
+This constraint requires x to be at least 5.
+Therefore values such as 5, 6, and 10 are allowed, while 4 is not.
+</p>
+
+<h3>Important Distinction</h3>
+
+<p>
+The <b>objective function</b> tells us what we want to optimize.
+A <b>constraint</b> tells us what we are allowed to do.
 </p>
 
 <pre>
-x + y = 5
+Objective → What we want
+Constraint → What is allowed
 </pre>
 
 <p>
-This gives the <b>boundary line</b>.
+<b>Key idea:</b> A constraint limits the possible values of the
+variables.
 </p>
+`,
 
-<h3>3. FINDING INTERCEPTS</h3>
+  [
+    {
+      "q": "What is the purpose of a constraint?",
+      "hint": "Think about restrictions.",
+      "steps": [
+        "Step 1: Identify what a constraint does.",
+        "Step 2: It restricts possible variable values."
+      ],
+      "ans": "It restricts the possible values of the variables.",
+      "why": "Constraints describe the limits that solutions must obey."
+    },
+
+    {
+      "q": "Does x + y ≤ 10 restrict the possible values of x and y?",
+      "hint": "Ask whether every pair of values is allowed.",
+      "steps": [
+        "Step 1: The inequality requires x + y to be at most 10.",
+        "Step 2: Therefore some pairs are allowed and others are not."
+      ],
+      "ans": "Yes.",
+      "why": "A constraint limits which variable values are permitted."
+    },
+
+    {
+      "q": "Is (4,3) allowed by x + y ≤ 10?",
+      "hint": "Substitute the values.",
+      "steps": [
+        "Step 1: Calculate x + y = 4 + 3.",
+        "Step 2: 4 + 3 = 7.",
+        "Step 3: Check 7 ≤ 10.",
+        "Step 4: The inequality is true."
+      ],
+      "ans": "Yes.",
+      "why": "The point satisfies the constraint."
+    },
+
+    {
+      "q": "Is (8,5) allowed by x + y ≤ 10?",
+      "hint": "Calculate x + y.",
+      "steps": [
+        "Step 1: Calculate 8 + 5 = 13.",
+        "Step 2: Check 13 ≤ 10.",
+        "Step 3: The inequality is false."
+      ],
+      "ans": "No.",
+      "why": "The point violates the constraint."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Translating 'At Most' into an Inequality",
+
+  `<h2>Translating "At Most" into an Inequality</h2>
 
 <p>
-For:
+The phrase <b>"at most"</b> means that a quantity cannot be greater
+than a stated value.
+</p>
+
+<p>
+Therefore:
 </p>
 
 <pre>
-x + y = 5
+at most N  →  ≤ N
 </pre>
 
 <p>
-Find the x-intercept by setting y = 0:
+The value N itself is allowed.
+</p>
+
+<h3>Example 1</h3>
+
+<p>
+x is at most 10.
 </p>
 
 <pre>
-x + 0 = 5
+x ≤ 10
+</pre>
 
+<p>
+This allows 10 and values below 10.
+</p>
+
+<h3>Example 2</h3>
+
+<p>
+The total number of products is at most 50.
+If x and y represent two types of products:
+</p>
+
+<pre>
+x + y ≤ 50
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+A worker can spend at most 8 hours on two activities.
+If x and y are the hours spent:
+</p>
+
+<pre>
+x + y ≤ 8
+</pre>
+
+<h3>Important</h3>
+
+<p>
+"At most" includes the limiting value.
+</p>
+
+<pre>
+at most 10
+
+10 is allowed ✓
+11 is not allowed ✗
+</pre>
+
+<p>
+<b>Key idea:</b> "At most" translates to <b>less than or equal to
+(≤)</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Translate 'x is at most 15' into an inequality.",
+      "hint": "At most means the value cannot exceed 15.",
+      "steps": [
+        "Step 1: Identify 'at most'.",
+        "Step 2: Use ≤.",
+        "Step 3: Write x ≤ 15."
+      ],
+      "ans": "x ≤ 15",
+      "why": "'At most' means less than or equal to."
+    },
+
+    {
+      "q": "Translate 'the total of x and y is at most 20'.",
+      "hint": "The total is x + y.",
+      "steps": [
+        "Step 1: Write the total: x + y.",
+        "Step 2: 'At most 20' means ≤ 20.",
+        "Step 3: Combine them."
+      ],
+      "ans": "x + y ≤ 20",
+      "why": "The total cannot exceed 20."
+    },
+
+    {
+      "q": "Is x = 10 allowed if x is at most 10?",
+      "hint": "Does ≤ include equality?",
+      "steps": [
+        "Step 1: Write the condition x ≤ 10.",
+        "Step 2: Test x = 10.",
+        "Step 3: 10 ≤ 10 is true."
+      ],
+      "ans": "Yes.",
+      "why": "'At most' includes the limiting value."
+    },
+
+    {
+      "q": "Which inequality correctly represents 'y is at most 7': y < 7 or y ≤ 7?",
+      "hint": "The value 7 itself should be allowed.",
+      "steps": [
+        "Step 1: 'At most 7' includes 7.",
+        "Step 2: ≤ includes 7.",
+        "Step 3: Therefore y ≤ 7."
+      ],
+      "ans": "y ≤ 7",
+      "why": "'At most' means less than or equal to, not strictly less than."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Translating 'At Least' into an Inequality",
+
+  `<h2>Translating "At Least" into an Inequality</h2>
+
+<p>
+The phrase <b>"at least"</b> means that a quantity cannot be smaller
+than a stated value.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+at least N  →  ≥ N
+</pre>
+
+<p>
+The value N itself is allowed.
+</p>
+
+<h3>Example 1</h3>
+
+<p>
+x is at least 5.
+</p>
+
+<pre>
+x ≥ 5
+</pre>
+
+<p>
+This allows 5 and values greater than 5.
+</p>
+
+<h3>Example 2</h3>
+
+<p>
+A company must produce at least 100 units.
+If x represents the number of units:
+</p>
+
+<pre>
+x ≥ 100
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+A school requires at least 30 students in two groups.
+If x and y are the numbers of students:
+</p>
+
+<pre>
+x + y ≥ 30
+</pre>
+
+<h3>Important</h3>
+
+<p>
+"At least" includes the limiting value.
+</p>
+
+<pre>
+at least 10
+
+10 is allowed ✓
+9 is not allowed ✗
+</pre>
+
+<p>
+<b>Key idea:</b> "At least" translates to <b>greater than or equal to
+(≥)</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Translate 'x is at least 12' into an inequality.",
+      "hint": "At least means the value cannot be below 12.",
+      "steps": [
+        "Step 1: Identify 'at least'.",
+        "Step 2: Use ≥.",
+        "Step 3: Write x ≥ 12."
+      ],
+      "ans": "x ≥ 12",
+      "why": "'At least' means greater than or equal to."
+    },
+
+    {
+      "q": "Translate 'the total of x and y is at least 25'.",
+      "hint": "The total is x + y.",
+      "steps": [
+        "Step 1: Write the total: x + y.",
+        "Step 2: 'At least 25' means ≥ 25.",
+        "Step 3: Combine them."
+      ],
+      "ans": "x + y ≥ 25",
+      "why": "The total must be 25 or greater."
+    },
+
+    {
+      "q": "Is x = 8 allowed if x is at least 8?",
+      "hint": "Does ≥ include equality?",
+      "steps": [
+        "Step 1: Write x ≥ 8.",
+        "Step 2: Test x = 8.",
+        "Step 3: 8 ≥ 8 is true."
+      ],
+      "ans": "Yes.",
+      "why": "'At least' includes the limiting value."
+    },
+
+    {
+      "q": "Which inequality represents 'y is at least 6': y > 6 or y ≥ 6?",
+      "hint": "The value 6 itself should be allowed.",
+      "steps": [
+        "Step 1: 'At least 6' includes 6.",
+        "Step 2: ≥ includes equality.",
+        "Step 3: Therefore y ≥ 6."
+      ],
+      "ans": "y ≥ 6",
+      "why": "'At least' means greater than or equal to, not strictly greater than."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Translating 'Cannot Exceed' into an Inequality",
+
+  `<h2>Translating "Cannot Exceed" into an Inequality</h2>
+
+<p>
+The phrase <b>"cannot exceed"</b> means that a quantity must not be
+greater than a stated value.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+cannot exceed N  →  ≤ N
+</pre>
+
+<p>
+The limiting value N is allowed.
+</p>
+
+<h3>Example 1</h3>
+
+<p>
+x cannot exceed 20.
+</p>
+
+<pre>
+x ≤ 20
+</pre>
+
+<h3>Example 2</h3>
+
+<p>
+The total number of items cannot exceed 100.
+If x and y represent two types of items:
+</p>
+
+<pre>
+x + y ≤ 100
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+The total time cannot exceed 12 hours.
+If x and y are two time periods:
+</p>
+
+<pre>
+x + y ≤ 12
+</pre>
+
+<h3>Check the Meaning</h3>
+
+<p>
+If:
+</p>
+
+<pre>
+x ≤ 20
+</pre>
+
+<p>
+then:
+</p>
+
+<pre>
+x = 20 ✓
+x = 19 ✓
+x = 21 ✗
+</pre>
+
+<p>
+The phrase "cannot exceed" is therefore another way of saying
+"less than or equal to."
+</p>
+
+<p>
+<b>Key idea:</b> "Cannot exceed" translates to <b>≤</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Translate 'x cannot exceed 30' into an inequality.",
+      "hint": "Cannot exceed means the value cannot be greater than 30.",
+      "steps": [
+        "Step 1: Identify 'cannot exceed'.",
+        "Step 2: Use ≤.",
+        "Step 3: Write x ≤ 30."
+      ],
+      "ans": "x ≤ 30",
+      "why": "'Cannot exceed' means less than or equal to."
+    },
+
+    {
+      "q": "Translate 'the total of x and y cannot exceed 40'.",
+      "hint": "The total is x + y.",
+      "steps": [
+        "Step 1: Write the total: x + y.",
+        "Step 2: Cannot exceed 40 means ≤ 40.",
+        "Step 3: Write the complete inequality."
+      ],
+      "ans": "x + y ≤ 40",
+      "why": "The total cannot be greater than 40."
+    },
+
+    {
+      "q": "Is x = 25 allowed if x cannot exceed 25?",
+      "hint": "Test x ≤ 25.",
+      "steps": [
+        "Step 1: Write x ≤ 25.",
+        "Step 2: Substitute x = 25.",
+        "Step 3: 25 ≤ 25 is true."
+      ],
+      "ans": "Yes.",
+      "why": "The limiting value is included."
+    },
+
+    {
+      "q": "A truck can carry a maximum of 500 kg. If x is the load, write the constraint.",
+      "hint": "Maximum of 500 means the load cannot exceed 500.",
+      "steps": [
+        "Step 1: Identify the maximum load: 500 kg.",
+        "Step 2: Maximum means the load cannot exceed 500.",
+        "Step 3: Write x ≤ 500."
+      ],
+      "ans": "x ≤ 500",
+      "why": "The load must be 500 kg or less."
+    }
+  ]
+);
+add(
+  "math",
+  "linear_programming",
+  "Translating 'No More Than' into an Inequality",
+
+  `<h2>Translating "No More Than" into an Inequality</h2>
+
+<p>
+The phrase <b>"no more than"</b> means that a quantity cannot be
+greater than a stated value.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+no more than N  →  ≤ N
+</pre>
+
+<p>
+The limiting value is included.
+</p>
+
+<h3>Example 1</h3>
+
+<p>
+x is no more than 15.
+</p>
+
+<pre>
+x ≤ 15
+</pre>
+
+<h3>Example 2</h3>
+
+<p>
+A factory can produce no more than 200 items.
+If x represents the number of items:
+</p>
+
+<pre>
+x ≤ 200
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+The total number of products is no more than 50.
+If x and y represent two types of products:
+</p>
+
+<pre>
+x + y ≤ 50
+</pre>
+
+<h3>Check the Meaning</h3>
+
+<pre>
+x ≤ 20
+
+x = 20 ✓
+x = 18 ✓
+x = 21 ✗
+</pre>
+
+<p>
+<b>Key idea:</b> "No more than" means <b>less than or equal to
+(≤)</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Translate 'x is no more than 12' into an inequality.",
+      "hint": "No more than means the value cannot be greater than 12.",
+      "steps": [
+        "Step 1: Identify 'no more than'.",
+        "Step 2: Use ≤.",
+        "Step 3: Write x ≤ 12."
+      ],
+      "ans": "x ≤ 12",
+      "why": "'No more than' means less than or equal to."
+    },
+
+    {
+      "q": "Translate 'y is no more than 30' into an inequality.",
+      "hint": "The value cannot exceed 30.",
+      "steps": [
+        "Step 1: Identify the limiting value: 30.",
+        "Step 2: 'No more than' means ≤.",
+        "Step 3: Write the inequality."
+      ],
+      "ans": "y ≤ 30",
+      "why": "The value can be 30 or any value below 30."
+    },
+
+    {
+      "q": "The total of x and y is no more than 100. Write the constraint.",
+      "hint": "The total is x + y.",
+      "steps": [
+        "Step 1: Write the total as x + y.",
+        "Step 2: 'No more than 100' means ≤ 100.",
+        "Step 3: Combine them."
+      ],
+      "ans": "x + y ≤ 100",
+      "why": "The total cannot be greater than 100."
+    },
+
+    {
+      "q": "Is x = 25 allowed if x is no more than 25?",
+      "hint": "Test x ≤ 25.",
+      "steps": [
+        "Step 1: Write x ≤ 25.",
+        "Step 2: Substitute x = 25.",
+        "Step 3: 25 ≤ 25 is true."
+      ],
+      "ans": "Yes.",
+      "why": "'No more than' includes the limiting value."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Translating 'Not Less Than' into an Inequality",
+
+  `<h2>Translating "Not Less Than" into an Inequality</h2>
+
+<p>
+The phrase <b>"not less than"</b> means that a quantity cannot be
+smaller than a stated value.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+not less than N  →  ≥ N
+</pre>
+
+<h3>Example 1</h3>
+
+<p>
+x is not less than 8.
+</p>
+
+<pre>
+x ≥ 8
+</pre>
+
+<h3>Example 2</h3>
+
+<p>
+A company must produce not less than 100 units.
+If x represents the number of units:
+</p>
+
+<pre>
+x ≥ 100
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+The total number of students is not less than 40.
+If x and y represent two groups:
+</p>
+
+<pre>
+x + y ≥ 40
+</pre>
+
+<h3>Check the Meaning</h3>
+
+<pre>
+x ≥ 10
+
+x = 10 ✓
+x = 12 ✓
+x = 9 ✗
+</pre>
+
+<p>
+<b>Key idea:</b> "Not less than" means <b>greater than or equal to
+(≥)</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Translate 'x is not less than 15' into an inequality.",
+      "hint": "The value cannot be below 15.",
+      "steps": [
+        "Step 1: Identify 'not less than'.",
+        "Step 2: Use ≥.",
+        "Step 3: Write x ≥ 15."
+      ],
+      "ans": "x ≥ 15",
+      "why": "'Not less than' means greater than or equal to."
+    },
+
+    {
+      "q": "Translate 'y is not less than 6' into an inequality.",
+      "hint": "Think of 6 or greater.",
+      "steps": [
+        "Step 1: 'Not less than 6' means 6 or greater.",
+        "Step 2: Use ≥.",
+        "Step 3: Write y ≥ 6."
+      ],
+      "ans": "y ≥ 6",
+      "why": "The value cannot be below 6."
+    },
+
+    {
+      "q": "The total of x and y is not less than 50. Write the constraint.",
+      "hint": "The total is x + y.",
+      "steps": [
+        "Step 1: Write the total: x + y.",
+        "Step 2: 'Not less than 50' means ≥ 50.",
+        "Step 3: Write the complete inequality."
+      ],
+      "ans": "x + y ≥ 50",
+      "why": "The total must be 50 or greater."
+    },
+
+    {
+      "q": "Is x = 9 allowed if x is not less than 10?",
+      "hint": "Test x ≥ 10.",
+      "steps": [
+        "Step 1: Write x ≥ 10.",
+        "Step 2: Substitute x = 9.",
+        "Step 3: 9 ≥ 10 is false."
+      ],
+      "ans": "No.",
+      "why": "9 is less than the required minimum of 10."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Translating 'Minimum of' into an Inequality",
+
+  `<h2>Translating "Minimum of" into an Inequality</h2>
+
+<p>
+In a constraint, the phrase <b>"a minimum of N"</b> means that the
+quantity must be at least N.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+minimum of N  →  ≥ N
+</pre>
+
+<h3>Example 1</h3>
+
+<p>
+A factory must produce a minimum of 20 units.
+If x represents the number of units:
+</p>
+
+<pre>
+x ≥ 20
+</pre>
+
+<h3>Example 2</h3>
+
+<p>
+A school requires a minimum of 50 students in two groups.
+If x and y represent the numbers of students:
+</p>
+
+<pre>
+x + y ≥ 50
+</pre>
+
+<h3>Example 3</h3>
+
+<p>
+A farmer must keep a minimum of 30 animals.
+If x represents the number of animals:
+</p>
+
+<pre>
+x ≥ 30
+</pre>
+
+<h3>Important</h3>
+
+<p>
+The minimum value itself is allowed.
+</p>
+
+<pre>
+x ≥ 30
+
+x = 30 ✓
+x = 35 ✓
+x = 29 ✗
+</pre>
+
+<p>
+<b>Key idea:</b> A minimum requirement translates to
+<b>greater than or equal to (≥)</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Translate 'a minimum of 10 units' into an inequality if x represents the units.",
+      "hint": "Minimum means at least.",
+      "steps": [
+        "Step 1: Identify the minimum value: 10.",
+        "Step 2: Minimum means ≥.",
+        "Step 3: Write x ≥ 10."
+      ],
+      "ans": "x ≥ 10",
+      "why": "A minimum of 10 means 10 or more."
+    },
+
+    {
+      "q": "A business must make a minimum of 100 products. If x is the number of products, write the constraint.",
+      "hint": "The number must be 100 or greater.",
+      "steps": [
+        "Step 1: Identify the minimum: 100.",
+        "Step 2: Use ≥.",
+        "Step 3: Write x ≥ 100."
+      ],
+      "ans": "x ≥ 100",
+      "why": "The number of products cannot be below 100."
+    },
+
+    {
+      "q": "The total number of items must be a minimum of 40. If x and y are two types of items, write the constraint.",
+      "hint": "The total is x + y.",
+      "steps": [
+        "Step 1: Write the total: x + y.",
+        "Step 2: A minimum of 40 means ≥ 40.",
+        "Step 3: Write x + y ≥ 40."
+      ],
+      "ans": "x + y ≥ 40",
+      "why": "The total must be at least 40."
+    },
+
+    {
+      "q": "Is x = 25 allowed if x must be a minimum of 25?",
+      "hint": "Check whether 25 ≥ 25 is true.",
+      "steps": [
+        "Step 1: Write x ≥ 25.",
+        "Step 2: Test x = 25.",
+        "Step 3: 25 ≥ 25 is true."
+      ],
+      "ans": "Yes.",
+      "why": "The minimum value itself is included."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Converting an Inequality to Its Boundary Equation",
+
+  `<h2>Converting an Inequality to Its Boundary Equation</h2>
+
+<p>
+When graphing a linear inequality, the <b>boundary</b> is the line
+that separates the allowed region from the rest of the plane.
+</p>
+
+<p>
+To obtain the boundary equation, replace the inequality symbol with
+an <b>equal sign</b>.
+</p>
+
+<pre>
+≤  →  =
+≥  →  =
+<  →  =
+>  →  =
+</pre>
+
+<h3>Example 1</h3>
+
+<pre>
+x + y ≤ 6
+</pre>
+
+<p>
+Replace ≤ with =:
+</p>
+
+<pre>
+x + y = 6
+</pre>
+
+<h3>Example 2</h3>
+
+<pre>
+2x + y ≥ 8
+</pre>
+
+<p>
+Replace ≥ with =:
+</p>
+
+<pre>
+2x + y = 8
+</pre>
+
+<h3>Example 3</h3>
+
+<pre>
+3x + 4y < 12
+</pre>
+
+<p>
+Replace < with =:
+</p>
+
+<pre>
+3x + 4y = 12
+</pre>
+
+<h3>Important</h3>
+
+<p>
+The boundary equation is used to draw the line.
+The original inequality is still needed later to determine which side
+of the line satisfies the condition.
+</p>
+
+<p>
+<b>Key idea:</b> Replace the inequality sign with <b>=</b> to obtain
+the boundary equation.
+</p>
+`,
+
+  [
+    {
+      "q": "Find the boundary equation of x + y ≤ 10.",
+      "hint": "Replace ≤ with =.",
+      "steps": [
+        "Step 1: Start with x + y ≤ 10.",
+        "Step 2: Replace ≤ with =.",
+        "Step 3: Write the boundary."
+      ],
+      "ans": "x + y = 10",
+      "why": "The boundary is obtained by replacing the inequality with equality."
+    },
+
+    {
+      "q": "Find the boundary equation of 2x + 3y ≥ 12.",
+      "hint": "Replace ≥ with =.",
+      "steps": [
+        "Step 1: Start with 2x + 3y ≥ 12.",
+        "Step 2: Replace ≥ with =.",
+        "Step 3: Write 2x + 3y = 12."
+      ],
+      "ans": "2x + 3y = 12",
+      "why": "The equality gives the boundary line."
+    },
+
+    {
+      "q": "Find the boundary equation of 5x - y < 20.",
+      "hint": "Only change the inequality symbol.",
+      "steps": [
+        "Step 1: Start with 5x - y < 20.",
+        "Step 2: Replace < with =.",
+        "Step 3: Write the boundary equation."
+      ],
+      "ans": "5x - y = 20",
+      "why": "The boundary is found by replacing the inequality with equality."
+    },
+
+    {
+      "q": "Why do we use an equality when finding the boundary of an inequality?",
+      "hint": "Think about the line separating the regions.",
+      "steps": [
+        "Step 1: A boundary is a line.",
+        "Step 2: A line can be represented by an equation.",
+        "Step 3: Therefore replace the inequality with equality."
+      ],
+      "ans": "Because the equality gives the line forming the boundary.",
+      "why": "The boundary consists of points where the two sides meet."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Finding the x-Intercept of a Boundary",
+
+  `<h2>Finding the x-Intercept of a Boundary</h2>
+
+<p>
+The <b>x-intercept</b> is the point where a graph crosses the
+x-axis.
+</p>
+
+<p>
+Every point on the x-axis has:
+</p>
+
+<pre>
+y = 0
+</pre>
+
+<p>
+Therefore, to find the x-intercept of a boundary equation:
+</p>
+
+<pre>
+1. Set y = 0.
+2. Solve for x.
+3. Write the coordinate (x,0).
+</pre>
+
+<h3>Example 1</h3>
+
+<pre>
+x + y = 6
+</pre>
+
+<p>
+Set y = 0:
+</p>
+
+<pre>
+x + 0 = 6
+x = 6
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+x-intercept = (6,0)
+</pre>
+
+<h3>Example 2</h3>
+
+<pre>
+2x + y = 10
+</pre>
+
+<p>
+Set y = 0:
+</p>
+
+<pre>
+2x + 0 = 10
+2x = 10
 x = 5
+</pre>
 
+<pre>
 x-intercept = (5,0)
 </pre>
 
-<p>
-Find the y-intercept by setting x = 0:
-</p>
+<h3>Example 3</h3>
 
 <pre>
-0 + y = 5
-
-y = 5
-
-y-intercept = (0,5)
+3x + 2y = 12
 </pre>
 
 <p>
-The line passes through <b>(5,0)</b> and <b>(0,5)</b>.
-</p>
-
-<h3>4. WHICH SIDE OF THE LINE?</h3>
-
-<p>
-The boundary line alone does not tell us which side satisfies
-the inequality.
-</p>
-
-<p>
-Choose a test point, usually <b>(0,0)</b>, and substitute it into
-the original inequality.
-</p>
-
-<p>
-For:
+Set y = 0:
 </p>
 
 <pre>
-x + y ≤ 5
+3x + 2(0) = 12
+3x = 12
+x = 4
+</pre>
+
+<pre>
+x-intercept = (4,0)
 </pre>
 
 <p>
-test (0,0):
+<b>Key idea:</b> To find the x-intercept, set <b>y = 0</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Find the x-intercept of x + y = 8.",
+      "hint": "Set y = 0.",
+      "steps": [
+        "Step 1: Set y = 0.",
+        "Step 2: x + 0 = 8.",
+        "Step 3: x = 8.",
+        "Step 4: Write (8,0)."
+      ],
+      "ans": "(8,0)",
+      "why": "The x-axis has y = 0."
+    },
+
+    {
+      "q": "Find the x-intercept of 2x + y = 14.",
+      "hint": "Set y = 0.",
+      "steps": [
+        "Step 1: Set y = 0.",
+        "Step 2: 2x = 14.",
+        "Step 3: x = 7.",
+        "Step 4: Write (7,0)."
+      ],
+      "ans": "(7,0)",
+      "why": "Setting y = 0 locates the point where the line crosses the x-axis."
+    },
+
+    {
+      "q": "Find the x-intercept of 4x + 3y = 20.",
+      "hint": "Set y = 0.",
+      "steps": [
+        "Step 1: Set y = 0.",
+        "Step 2: 4x + 0 = 20.",
+        "Step 3: 4x = 20.",
+        "Step 4: x = 5.",
+        "Step 5: Write (5,0)."
+      ],
+      "ans": "(5,0)",
+      "why": "The x-intercept occurs where y equals zero."
+    },
+
+    {
+      "q": "Why do we set y = 0 when finding the x-intercept?",
+      "hint": "What is true about every point on the x-axis?",
+      "steps": [
+        "Step 1: The x-intercept lies on the x-axis.",
+        "Step 2: Every point on the x-axis has y = 0.",
+        "Step 3: Therefore set y = 0."
+      ],
+      "ans": "Because every point on the x-axis has y = 0.",
+      "why": "Setting y to zero locates the point where the line meets the x-axis."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Finding the y-Intercept of a Boundary",
+
+  `<h2>Finding the y-Intercept of a Boundary</h2>
+
+<p>
+The <b>y-intercept</b> is the point where a graph crosses the
+y-axis.
+</p>
+
+<p>
+Every point on the y-axis has:
 </p>
 
 <pre>
-0 + 0 ≤ 5
+x = 0
+</pre>
 
-0 ≤ 5
+<p>
+Therefore, to find the y-intercept:
+</p>
 
+<pre>
+1. Set x = 0.
+2. Solve for y.
+3. Write the coordinate (0,y).
+</pre>
+
+<h3>Example 1</h3>
+
+<pre>
+x + y = 6
+</pre>
+
+<p>
+Set x = 0:
+</p>
+
+<pre>
+0 + y = 6
+y = 6
+</pre>
+
+<pre>
+y-intercept = (0,6)
+</pre>
+
+<h3>Example 2</h3>
+
+<pre>
+2x + y = 10
+</pre>
+
+<p>
+Set x = 0:
+</p>
+
+<pre>
+2(0) + y = 10
+y = 10
+</pre>
+
+<pre>
+y-intercept = (0,10)
+</pre>
+
+<h3>Example 3</h3>
+
+<pre>
+3x + 2y = 12
+</pre>
+
+<p>
+Set x = 0:
+</p>
+
+<pre>
+3(0) + 2y = 12
+2y = 12
+y = 6
+</pre>
+
+<pre>
+y-intercept = (0,6)
+</pre>
+
+<p>
+<b>Key idea:</b> To find the y-intercept, set <b>x = 0</b>.
+</p>
+`,
+
+  [
+    {
+      "q": "Find the y-intercept of x + y = 8.",
+      "hint": "Set x = 0.",
+      "steps": [
+        "Step 1: Set x = 0.",
+        "Step 2: 0 + y = 8.",
+        "Step 3: y = 8.",
+        "Step 4: Write (0,8)."
+      ],
+      "ans": "(0,8)",
+      "why": "The y-axis has x = 0."
+    },
+
+    {
+      "q": "Find the y-intercept of 2x + y = 14.",
+      "hint": "Set x = 0.",
+      "steps": [
+        "Step 1: Set x = 0.",
+        "Step 2: 0 + y = 14.",
+        "Step 3: y = 14.",
+        "Step 4: Write (0,14)."
+      ],
+      "ans": "(0,14)",
+      "why": "Setting x = 0 locates the point where the line crosses the y-axis."
+    },
+
+    {
+      "q": "Find the y-intercept of 4x + 3y = 20.",
+      "hint": "Set x = 0.",
+      "steps": [
+        "Step 1: Set x = 0.",
+        "Step 2: 3y = 20.",
+        "Step 3: y = 20/3.",
+        "Step 4: Write the coordinate."
+      ],
+      "ans": "(0,20/3)",
+      "why": "The y-intercept occurs where x equals zero."
+    },
+
+    {
+      "q": "Why do we set x = 0 when finding the y-intercept?",
+      "hint": "What is true about every point on the y-axis?",
+      "steps": [
+        "Step 1: The y-intercept lies on the y-axis.",
+        "Step 2: Every point on the y-axis has x = 0.",
+        "Step 3: Therefore set x = 0."
+      ],
+      "ans": "Because every point on the y-axis has x = 0.",
+      "why": "Setting x to zero locates the point where the line meets the y-axis."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Finding Both Intercepts of a Boundary",
+
+  `<h2>Finding Both Intercepts of a Boundary</h2>
+
+<p>
+A straight-line boundary can be plotted using its <b>x-intercept</b>
+and <b>y-intercept</b>.
+</p>
+
+<p>
+Remember:
+</p>
+
+<pre>
+x-intercept → set y = 0
+
+y-intercept → set x = 0
+</pre>
+
+<h3>Example 1</h3>
+
+<pre>
+x + y = 8
+</pre>
+
+<p>
+Find the x-intercept:</p>
+
+<pre>
+y = 0
+
+x = 8
+
+(8,0)
+</pre>
+
+<p>
+Find the y-intercept:</p>
+
+<pre>
+x = 0
+
+y = 8
+
+(0,8)
+</pre>
+
+<p>
+The line therefore passes through:
+</p>
+
+<pre>
+(8,0) and (0,8)
+</pre>
+
+<h3>Example 2</h3>
+
+<pre>
+2x + y = 12
+</pre>
+
+<p>
+x-intercept:</p>
+
+<pre>
+y = 0
+
+2x = 12
+x = 6
+
+(6,0)
+</pre>
+
+<p>
+y-intercept:</p>
+
+<pre>
+x = 0
+
+y = 12
+
+(0,12)
+</pre>
+
+<h3>Example 3</h3>
+
+<pre>
+3x + 2y = 12
+</pre>
+
+<p>
+x-intercept:</p>
+
+<pre>
+y = 0
+
+3x = 12
+x = 4
+
+(4,0)
+</pre>
+
+<p>
+y-intercept:</p>
+
+<pre>
+x = 0
+
+2y = 12
+y = 6
+
+(0,6)
+</pre>
+
+<p>
+The two intercepts give two points through which the boundary line
+passes.
+</p>
+
+<p>
+<b>Key idea:</b> Set one variable to zero at a time to find the two
+intercepts.
+</p>
+`,
+
+  [
+    {
+      "q": "Find both intercepts of x + y = 10.",
+      "hint": "Set y = 0 for the x-intercept and x = 0 for the y-intercept.",
+      "steps": [
+        "Step 1: Set y = 0 → x = 10 → (10,0).",
+        "Step 2: Set x = 0 → y = 10 → (0,10)."
+      ],
+      "ans": "x-intercept = (10,0); y-intercept = (0,10)",
+      "why": "Each intercept is found by setting the other coordinate to zero."
+    },
+
+    {
+      "q": "Find both intercepts of 2x + y = 8.",
+      "hint": "Use y = 0 and x = 0.",
+      "steps": [
+        "Step 1: y = 0 → 2x = 8 → x = 4 → (4,0).",
+        "Step 2: x = 0 → y = 8 → (0,8)."
+      ],
+      "ans": "x-intercept = (4,0); y-intercept = (0,8)",
+      "why": "The two intercepts provide two points on the boundary."
+    },
+
+    {
+      "q": "Find both intercepts of 3x + 2y = 12.",
+      "hint": "Set each variable to zero separately.",
+      "steps": [
+        "Step 1: Set y = 0: 3x = 12, so x = 4.",
+        "Step 2: x-intercept = (4,0).",
+        "Step 3: Set x = 0: 2y = 12, so y = 6.",
+        "Step 4: y-intercept = (0,6)."
+      ],
+      "ans": "x-intercept = (4,0); y-intercept = (0,6)",
+      "why": "The intercept method gives the two points needed to plot the boundary."
+    },
+
+    {
+      "q": "For 5x + y = 15, which value should be set to zero to find the x-intercept?",
+      "hint": "Think about the x-axis.",
+      "steps": [
+        "Step 1: The x-intercept lies on the x-axis.",
+        "Step 2: On the x-axis, y = 0."
+      ],
+      "ans": "Set y = 0.",
+      "why": "Every point on the x-axis has y-coordinate zero."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Testing a Point in a Linear Inequality",
+
+  `<h2>Testing a Point in a Linear Inequality</h2>
+
+<p>
+A point can be tested to determine whether it satisfies a linear
+inequality.
+</p>
+
+<p>
+The method is simple:
+</p>
+
+<pre>
+1. Take the coordinates of the point.
+2. Substitute them into the inequality.
+3. Calculate both sides.
+4. Decide whether the inequality is true or false.
+</pre>
+
+<h3>Example 1</h3>
+
+<p>
+Test (2,3) in:
+</p>
+
+<pre>
+x + y ≤ 7
+</pre>
+
+<p>
+Substitute x = 2 and y = 3:
+</p>
+
+<pre>
+2 + 3 ≤ 7
+5 ≤ 7
 TRUE
 </pre>
 
 <p>
-Therefore the side containing (0,0) is the required region.
+Therefore (2,3) satisfies the inequality.
 </p>
 
-<h3>5. SOLID AND BROKEN BOUNDARIES</h3>
+<h3>Example 2</h3>
 
 <p>
-When the boundary is included, use a <b>solid line</b>.
-This occurs with:
+Test (5,4) in:
+</p>
+
+<pre>
+x + y ≤ 7
+</pre>
+
+<pre>
+5 + 4 ≤ 7
+9 ≤ 7
+FALSE
+</pre>
+
+<p>
+Therefore (5,4) does not satisfy the inequality.
+</p>
+
+<h3>Example 3</h3>
+
+<p>
+Test (3,2) in:
+</p>
+
+<pre>
+2x + y ≥ 8
+</pre>
+
+<pre>
+2(3) + 2 ≥ 8
+6 + 2 ≥ 8
+8 ≥ 8
+TRUE
+</pre>
+
+<p>
+Therefore (3,2) satisfies the inequality.
+</p>
+
+<p>
+<b>Key idea:</b> Substitute the coordinates into the original
+inequality and check whether the statement is true.
+</p>
+`,
+
+  [
+    {
+      "q": "Does (2,4) satisfy x + y ≤ 7?",
+      "hint": "Substitute x = 2 and y = 4.",
+      "steps": [
+        "Step 1: 2 + 4 = 6.",
+        "Step 2: Check 6 ≤ 7.",
+        "Step 3: The statement is true."
+      ],
+      "ans": "Yes.",
+      "why": "The point satisfies the inequality."
+    },
+
+    {
+      "q": "Does (4,5) satisfy x + y ≤ 7?",
+      "hint": "Calculate 4 + 5.",
+      "steps": [
+        "Step 1: 4 + 5 = 9.",
+        "Step 2: Check 9 ≤ 7.",
+        "Step 3: The statement is false."
+      ],
+      "ans": "No.",
+      "why": "The point does not satisfy the inequality."
+    },
+
+    {
+      "q": "Does (2,3) satisfy 2x + y ≥ 7?",
+      "hint": "Substitute x = 2 and y = 3.",
+      "steps": [
+        "Step 1: 2(2) + 3 = 4 + 3.",
+        "Step 2: 4 + 3 = 7.",
+        "Step 3: Check 7 ≥ 7.",
+        "Step 4: The statement is true."
+      ],
+      "ans": "Yes.",
+      "why": "The point satisfies the inequality, including its boundary."
+    },
+
+    {
+      "q": "Does (1,2) satisfy 3x + y > 6?",
+      "hint": "Substitute the coordinates.",
+      "steps": [
+        "Step 1: 3(1) + 2 = 5.",
+        "Step 2: Check 5 > 6.",
+        "Step 3: The statement is false."
+      ],
+      "ans": "No.",
+      "why": "The point gives 5, which is not greater than 6."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Solid and Dashed Boundary Lines",
+
+  `<h2>Solid and Dashed Boundary Lines</h2>
+
+<p>
+When graphing an inequality, the boundary line may be included or
+excluded.
+</p>
+
+<p>
+The type of boundary tells us whether points on the boundary are
+allowed.
+</p>
+
+<h3>Solid Boundary</h3>
+
+<p>
+Use a <b>solid line</b> when the inequality includes equality:
 </p>
 
 <pre>
@@ -4496,8 +8172,30 @@ This occurs with:
 </pre>
 
 <p>
-When the boundary is not included, use a <b>broken/dashed line</b>.
-This occurs with:
+For example:
+</p>
+
+<pre>
+x + y ≤ 6
+</pre>
+
+<p>
+The boundary is:
+</p>
+
+<pre>
+x + y = 6
+</pre>
+
+<p>
+Because equality is included, the boundary is solid.
+</p>
+
+<h3>Dashed Boundary</h3>
+
+<p>
+Use a <b>dashed line</b> when the inequality does not include
+equality:
 </p>
 
 <pre>
@@ -4505,596 +8203,251 @@ This occurs with:
 >
 </pre>
 
-<h3>Worked Example</h3>
-
 <p>
-Graphically describe:
+For example:
 </p>
 
 <pre>
-2x + y ≤ 6
-x ≥ 0
-y ≥ 0
+x + y < 6
 </pre>
 
 <p>
-First find the boundary:
+The boundary is:
 </p>
-
-<pre>
-2x + y = 6
-</pre>
-
-<p>
-If y = 0:
-</p>
-
-<pre>
-2x = 6
-x = 3
-
-(3,0)
-</pre>
-
-<p>
-If x = 0:
-</p>
-
-<pre>
-y = 6
-
-(0,6)
-</pre>
-
-<p>
-Test (0,0):
-</p>
-
-<pre>
-2(0) + 0 ≤ 6
-
-0 ≤ 6
-
-TRUE
-</pre>
-
-<p>
-Therefore the required region is the side of the line containing
-the origin, restricted further by x ≥ 0 and y ≥ 0.
-</p>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Using the inequality itself as the boundary line instead of first using equality.</li>
-<li>Choosing the wrong side of the boundary.</li>
-<li>Forgetting to test the original inequality.</li>
-<li>Using a dashed boundary for ≤ or ≥.</li>
-<li>Forgetting that x ≥ 0 and y ≥ 0 restrict the graph to the first quadrant.</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "Find the x-intercept of x + y = 8.",
-      "hint": "Set y = 0.",
-      "steps": [
-        "Step 1: Set y = 0",
-        "Step 2: x + 0 = 8",
-        "Step 3: x = 8",
-        "Step 4: Write the coordinate"
-      ],
-      "ans": "(8,0)",
-      "why": "The x-intercept occurs where y = 0."
-    },
-
-    {
-      "q": "Find the y-intercept of 2x + y = 10.",
-      "hint": "Set x = 0.",
-      "steps": [
-        "Step 1: Set x = 0",
-        "Step 2: 2(0) + y = 10",
-        "Step 3: y = 10",
-        "Step 4: Write the coordinate"
-      ],
-      "ans": "(0,10)",
-      "why": "The y-intercept occurs where x = 0."
-    },
-
-    {
-      "q": "Which boundary equation is used to graph 3x + 2y ≤ 12?",
-      "hint": "Replace ≤ with =.",
-      "steps": [
-        "Step 1: Start with 3x + 2y ≤ 12",
-        "Step 2: Replace ≤ with =",
-        "Step 3: Write the boundary equation"
-      ],
-      "ans": "3x + 2y = 12",
-      "why": "The boundary is obtained by replacing the inequality with equality."
-    },
-
-    {
-      "q": "Does (0,0) satisfy 2x + y ≤ 7?",
-      "hint": "Substitute x = 0 and y = 0.",
-      "steps": [
-        "Step 1: Substitute x = 0 and y = 0",
-        "Step 2: Calculate 2(0) + 0 = 0",
-        "Step 3: Check 0 ≤ 7",
-        "Step 4: The statement is true"
-      ],
-      "ans": "Yes",
-      "why": "The origin satisfies the inequality."
-    },
-
-    {
-      "q": "Should the boundary for x + y ≥ 4 be solid or dashed?",
-      "hint": "Does ≥ include equality?",
-      "steps": [
-        "Step 1: Identify the inequality sign",
-        "Step 2: ≥ includes equality",
-        "Step 3: Use a solid boundary"
-      ],
-      "ans": "Solid",
-      "why": "The boundary x + y = 4 is included when the inequality is ≥."
-    }
-  ]
-);
-
-
-add(
-  "math",
-  "linear_programming",
-  "Feasible Region",
-
-  `<h2>Feasible Region</h2>
-
-<p>
-The <b>feasible region</b> is the set of all points that satisfy
-<b>all</b> the constraints in a linear programming problem.
-</p>
-
-<p>
-Think of each constraint as creating a permitted region.
-The feasible region is where all those permitted regions overlap.
-</p>
-
-<h3>1. WHY IT MATTERS</h3>
-
-<p>
-The objective function can only be optimized using feasible points.
-A point outside the feasible region is not an allowed solution.
-</p>
-
-<h3>Worked Example</h3>
-
-<p>
-Find the feasible region for:
-</p>
-
-<pre>
-x ≥ 0
-y ≥ 0
-x + y ≤ 4
-</pre>
-
-<h3>Step 1: Interpret x ≥ 0</h3>
-
-<p>
-x ≥ 0 means we only use points on or to the right of the y-axis.
-</p>
-
-<h3>Step 2: Interpret y ≥ 0</h3>
-
-<p>
-y ≥ 0 means we only use points on or above the x-axis.
-</p>
-
-<p>
-Together:
-</p>
-
-<pre>
-x ≥ 0
-y ≥ 0
-</pre>
-
-<p>
-restrict us to the <b>first quadrant</b>.
-</p>
-
-<h3>Step 3: Find the boundary of x + y ≤ 4</h3>
-
-<pre>
-x + y = 4
-</pre>
-
-<p>
-When x = 0:
-</p>
-
-<pre>
-y = 4
-
-(0,4)
-</pre>
-
-<p>
-When y = 0:
-</p>
-
-<pre>
-x = 4
-
-(4,0)
-</pre>
-
-<h3>Step 4: Find the common region</h3>
-
-<p>
-The required region is the part of the first quadrant satisfying
-x + y ≤ 4.
-</p>
-
-<p>
-Its vertices are:
-</p>
-
-<pre>
-(0,0)
-(4,0)
-(0,4)
-</pre>
-
-<h3>5. VERTICES</h3>
-
-<p>
-A <b>vertex</b> is a corner point of the feasible region.
-These points are especially important because a linear objective
-function reaches its maximum or minimum at a vertex when an optimum
-exists for a bounded feasible region.
-</p>
-
-<h3>6. CHECKING WHETHER A POINT IS FEASIBLE</h3>
-
-<p>
-To check a point, substitute its x and y values into <b>every constraint</b>.
-</p>
-
-<p>
-For example, test (2,1):
-</p>
-
-<pre>
-x + y ≤ 4
-
-2 + 1 ≤ 4
-
-3 ≤ 4  ✓
-
-x ≥ 0 → 2 ≥ 0  ✓
-
-y ≥ 0 → 1 ≥ 0  ✓
-</pre>
-
-<p>
-Therefore (2,1) is feasible.
-</p>
-
-<p>
-Now test (3,3):
-</p>
-
-<pre>
-3 + 3 ≤ 4
-
-6 ≤ 4  ✗
-</pre>
-
-<p>
-Therefore (3,3) is not feasible.
-</p>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Calling a point feasible after checking only one constraint.</li>
-<li>Forgetting the axes when x ≥ 0 and y ≥ 0 are present.</li>
-<li>Including a point outside the common region.</li>
-<li>Missing a vertex where two boundaries intersect.</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "What is a feasible region?",
-      "hint": "Think about all the constraints together.",
-      "steps": [
-        "Step 1: Consider all constraints",
-        "Step 2: Find the region satisfying each one",
-        "Step 3: Take their common region"
-      ],
-      "ans": "The region containing all points that satisfy every constraint.",
-      "why": "A feasible solution must satisfy all constraints simultaneously."
-    },
-
-    {
-      "q": "Find the vertices of x ≥ 0, y ≥ 0, x + y ≤ 6.",
-      "hint": "Find the intercepts of x + y = 6 and include the origin.",
-      "steps": [
-        "Step 1: Boundary is x + y = 6",
-        "Step 2: x-intercept = (6,0)",
-        "Step 3: y-intercept = (0,6)",
-        "Step 4: Include the origin (0,0)"
-      ],
-      "ans": "(0,0), (6,0), (0,6)",
-      "why": "The axes and the constraint line form the three corners of the feasible region."
-    },
-
-    {
-      "q": "Is (2,3) feasible for x + y ≤ 6, x ≥ 0, y ≥ 0?",
-      "hint": "Check all three constraints.",
-      "steps": [
-        "Step 1: 2 + 3 = 5",
-        "Step 2: Check 5 ≤ 6 → true",
-        "Step 3: Check 2 ≥ 0 → true",
-        "Step 4: Check 3 ≥ 0 → true"
-      ],
-      "ans": "Yes",
-      "why": "The point satisfies every constraint."
-    },
-
-    {
-      "q": "Is (5,4) feasible for x + y ≤ 6?",
-      "hint": "Substitute x = 5 and y = 4.",
-      "steps": [
-        "Step 1: Calculate x + y = 5 + 4",
-        "Step 2: 5 + 4 = 9",
-        "Step 3: Check whether 9 ≤ 6",
-        "Step 4: The inequality is false"
-      ],
-      "ans": "No",
-      "why": "The point violates the constraint because 9 is greater than 6."
-    },
-
-    {
-      "q": "Find the vertices of 2x + 3y ≤ 12, x ≥ 0, y ≥ 0.",
-      "hint": "Find both intercepts of 2x + 3y = 12.",
-      "steps": [
-        "Step 1: Set y = 0: 2x = 12, so x = 6",
-        "Step 2: x-intercept = (6,0)",
-        "Step 3: Set x = 0: 3y = 12, so y = 4",
-        "Step 4: y-intercept = (0,4)",
-        "Step 5: Include the origin"
-      ],
-      "ans": "(0,0), (6,0), (0,4)",
-      "why": "The axes and the boundary line form the three vertices."
-    }
-  ]
-);
-
-
-add(
-  "math",
-  "linear_programming",
-  "Graphical Method",
-
-  `<h2>Graphical Method</h2>
-
-<p>
-The <b>graphical method</b> solves a two-variable linear programming
-problem by representing its constraints on a coordinate plane,
-finding the feasible region, identifying its vertices, and evaluating
-the objective function at those vertices.
-</p>
-
-<h3>THE BASIC PROCEDURE</h3>
-
-<pre>
-1. Write the constraints
-2. Convert each inequality to a boundary equation
-3. Find intercepts
-4. Draw the boundary lines
-5. Determine the feasible region
-6. Find its vertices
-7. Evaluate the objective function at each vertex
-8. Choose the required maximum or minimum
-</pre>
-
-<h3>Worked Example</h3>
-
-<p>
-Maximize:
-</p>
-
-<pre>
-Z = x + 2y
-</pre>
-
-<p>
-subject to:
-</p>
-
-<pre>
-x + y ≤ 6
-x ≥ 0
-y ≥ 0
-</pre>
-
-<h3>Step 1: Boundary Equation</h3>
 
 <pre>
 x + y = 6
 </pre>
 
-<h3>Step 2: Find Intercepts</h3>
-
 <p>
-Set y = 0:
+But points exactly on the line are not included, so the boundary is
+dashed.
 </p>
 
-<pre>
-x = 6
+<h3>Example 1</h3>
 
-(6,0)
+<pre>
+2x + y ≥ 8
+
+→ solid boundary
 </pre>
 
-<p>
-Set x = 0:
-</p>
+<h3>Example 2</h3>
 
 <pre>
-y = 6
+2x + y ≤ 8
 
-(0,6)
+→ solid boundary
 </pre>
 
-<h3>Step 3: Determine the Feasible Region</h3>
-
-<p>
-Because x ≥ 0 and y ≥ 0, only the first quadrant is allowed.
-The inequality x + y ≤ 6 selects the region on the origin side
-of the line.
-</p>
-
-<h3>Step 4: Find Vertices</h3>
+<h3>Example 3</h3>
 
 <pre>
-(0,0)
-(6,0)
-(0,6)
-</pre>
+2x + y > 8
 
-<h3>Step 5: Evaluate Z</h3>
-
-<p>
-Use:
-</p>
-
-<pre>
-Z = x + 2y
-</pre>
-
-<p>At (0,0):</p>
-
-<pre>
-Z = 0 + 2(0)
-Z = 0
-</pre>
-
-<p>At (6,0):</p>
-
-<pre>
-Z = 6 + 2(0)
-Z = 6
-</pre>
-
-<p>At (0,6):</p>
-
-<pre>
-Z = 0 + 2(6)
-Z = 12
-</pre>
-
-<h3>Step 6: Select the Maximum</h3>
-
-<pre>
-0, 6, 12
-
-Largest = 12
+→ dashed boundary
 </pre>
 
 <p>
-Therefore:
+<b>Key idea:</b>
 </p>
 
 <pre>
-Maximum Z = 12
-at (0,6)
+≤ or ≥ → solid
+
+< or > → dashed
 </pre>
-
-<h3>WHY THE GRAPHICAL METHOD WORKS</h3>
-
-<p>
-The feasible region contains all allowed solutions. For a linear
-objective function over a bounded polygonal feasible region, an
-optimum occurs at a vertex, so checking the vertices is sufficient.
-</p>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Finding intercepts incorrectly.</li>
-<li>Shading the wrong side of a constraint.</li>
-<li>Forgetting the origin when x ≥ 0 and y ≥ 0 apply.</li>
-<li>Using points outside the feasible region.</li>
-<li>Finding the minimum when the question asks for the maximum.</li>
-</ul>
 `,
 
   [
     {
-      "q": "Maximize Z = 2x + y subject to x + y ≤ 6, x ≥ 0, y ≥ 0. What is the maximum value?",
-      "hint": "Evaluate Z at (0,0), (6,0), and (0,6).",
+      "q": "Should x + y ≤ 5 have a solid or dashed boundary?",
+      "hint": "Does ≤ include equality?",
       "steps": [
-        "Step 1: Vertices are (0,0), (6,0), (0,6)",
-        "Step 2: Z(0,0) = 0",
-        "Step 3: Z(6,0) = 12",
-        "Step 4: Z(0,6) = 6",
-        "Step 5: Choose the largest value"
+        "Step 1: Identify the symbol ≤.",
+        "Step 2: ≤ includes equality.",
+        "Step 3: Use a solid boundary."
       ],
-      "ans": "Zmax = 12 at (6,0)",
-      "why": "The maximum value of a linear objective over this bounded feasible region occurs at a vertex."
+      "ans": "Solid.",
+      "why": "The boundary is included when the inequality contains equality."
     },
 
     {
-      "q": "What is the first step when using the graphical method for x + y ≤ 5?",
-      "hint": "Start with the boundary.",
+      "q": "Should 2x + y > 7 have a solid or dashed boundary?",
+      "hint": "Does > include equality?",
       "steps": [
-        "Step 1: Identify the inequality",
-        "Step 2: Replace ≤ with =",
-        "Step 3: Write the boundary equation"
+        "Step 1: Identify >.",
+        "Step 2: > does not include equality.",
+        "Step 3: Use a dashed boundary."
       ],
-      "ans": "Write x + y = 5.",
-      "why": "The equality gives the boundary line that is plotted first."
+      "ans": "Dashed.",
+      "why": "Points exactly on the boundary are excluded."
     },
 
     {
-      "q": "Find the vertices of x + y ≤ 8, x ≥ 0, y ≥ 0.",
-      "hint": "Find the two intercepts and include the origin.",
+      "q": "Should 3x - y ≥ 4 have a solid or dashed boundary?",
+      "hint": "Look at ≥.",
       "steps": [
-        "Step 1: Boundary is x + y = 8",
-        "Step 2: x-intercept = (8,0)",
-        "Step 3: y-intercept = (0,8)",
-        "Step 4: Include (0,0)"
+        "Step 1: Identify ≥.",
+        "Step 2: ≥ includes equality.",
+        "Step 3: Use a solid line."
       ],
-      "ans": "(0,0), (8,0), (0,8)",
-      "why": "These are the three corners of the feasible triangular region."
+      "ans": "Solid.",
+      "why": "The boundary is included."
     },
 
     {
-      "q": "Evaluate Z = 3x + 2y at (0,0), (4,0), and (0,5).",
-      "hint": "Substitute each point separately.",
+      "q": "Why is the boundary dashed for x + y < 10?",
+      "hint": "Check whether equality is allowed.",
       "steps": [
-        "Step 1: Z(0,0) = 0",
-        "Step 2: Z(4,0) = 3(4) + 2(0) = 12",
-        "Step 3: Z(0,5) = 3(0) + 2(5) = 10",
-        "Step 4: Compare 0, 12, and 10"
+        "Step 1: The boundary is x + y = 10.",
+        "Step 2: The original inequality is x + y < 10.",
+        "Step 3: Equality is not included.",
+        "Step 4: Therefore the boundary is dashed."
       ],
-      "ans": "Maximum value = 12 at (4,0)",
-      "why": "The largest objective-function value among the given vertices is 12."
-    },
+      "ans": "Because points on x + y = 10 are not included.",
+      "why": "A strict inequality excludes its boundary."
+    }
+  ]
+);
+// ============================================================
+// LINEAR PROGRAMMING — BATCH 3
+// ONE SCREEN = ONE CONCEPT
+// ============================================================
 
+
+add(
+  "math",
+  "linear_programming",
+  "Intersection of Two Boundary Lines",
+
+  `<h2>Intersection of Two Boundary Lines</h2>
+
+<p><b>One concept:</b> The intersection of two boundary lines is the point where the two lines meet.</p>
+
+<p>In linear programming, this point is important because it can form a <b>corner point (vertex)</b> of the feasible region.</p>
+
+<h3>Example 1</h3>
+
+<p>Consider:</p>
+
+<pre>
+x + y = 6
+x - y = 2
+</pre>
+
+<p>The two equations describe two lines.</p>
+
+<p>At their intersection, the same values of <b>x</b> and <b>y</b> satisfy both equations.</p>
+
+<p>Add the equations:</p>
+
+<pre>
+x + y = 6
+x - y = 2
+---------
+2x = 8
+
+x = 4
+</pre>
+
+<p>Substitute x = 4:</p>
+
+<pre>
+4 + y = 6
+y = 2
+</pre>
+
+<p>Therefore, the lines intersect at:</p>
+
+<p><b>(4, 2)</b></p>
+
+<h3>Example 2</h3>
+
+<pre>
+x + y = 10
+x - y = 4
+</pre>
+
+<p>Add:</p>
+
+<pre>
+2x = 14
+x = 7
+</pre>
+
+<p>Then:</p>
+
+<pre>
+7 + y = 10
+y = 3
+</pre>
+
+<p>Intersection = <b>(7, 3)</b>.</p>
+
+<h3>Example 3</h3>
+
+<pre>
+2x + y = 9
+x + y = 6
+</pre>
+
+<p>Subtract the second equation from the first:</p>
+
+<pre>
+(2x + y) - (x + y) = 9 - 6
+
+x = 3
+</pre>
+
+<p>Substitute:</p>
+
+<pre>
+3 + y = 6
+y = 3
+</pre>
+
+<p>Intersection = <b>(3, 3)</b>.</p>`,
+
+  [
     {
-      "q": "For x + y ≤ 4, x ≥ 0, y ≥ 0, which point is NOT feasible: (1,2), (3,1), or (3,3)?",
-      "hint": "Add x and y for each point.",
-      "steps": [
-        "Step 1: (1,2): 1 + 2 = 3 ≤ 4",
-        "Step 2: (3,1): 3 + 1 = 4 ≤ 4",
-        "Step 3: (3,3): 3 + 3 = 6 > 4",
-        "Step 4: Identify the point that violates the constraint"
+      q: "Find the intersection of x + y = 8 and x - y = 2.",
+      hint: "Add the two equations to eliminate y.",
+      steps: [
+        "x + y = 8",
+        "x - y = 2",
+        "Adding gives 2x = 10.",
+        "Therefore x = 5.",
+        "Substitute into x + y = 8: 5 + y = 8.",
+        "Therefore y = 3."
       ],
-      "ans": "(3,3)",
-      "why": "(3,3) violates x + y ≤ 4."
+      ans: "(5, 3)",
+      why: "The intersection must satisfy both equations."
+    },
+    {
+      q: "Find the intersection of 2x + y = 11 and x + y = 7.",
+      hint: "Subtract the second equation from the first.",
+      steps: [
+        "2x + y = 11",
+        "x + y = 7",
+        "Subtracting gives x = 4.",
+        "Substitute: 4 + y = 7.",
+        "Therefore y = 3."
+      ],
+      ans: "(4, 3)",
+      why: "Both boundary equations are satisfied by x = 4 and y = 3."
+    },
+    {
+      q: "Find the intersection of x + y = 12 and x - y = 4.",
+      hint: "Add the equations.",
+      steps: [
+        "2x = 16",
+        "x = 8",
+        "8 + y = 12",
+        "y = 4"
+      ],
+      ans: "(8, 4)",
+      why: "The point (8, 4) lies on both boundary lines."
     }
   ]
 );
@@ -5103,220 +8456,710 @@ optimum occurs at a vertex, so checking the vertices is sufficient.
 add(
   "math",
   "linear_programming",
-  "Optimization at Corner Points",
+  "Substitution Method for Finding an Intersection",
 
-  `<h2>Optimization at Corner Points</h2>
+  `<h2>Substitution Method</h2>
 
-<p>
-After finding the feasible region, the next task is to determine
-which feasible point gives the required maximum or minimum value
-of the objective function.
-</p>
+<p><b>One concept:</b> Substitution finds the intersection of two equations by expressing one variable in terms of the other and replacing it in the second equation.</p>
 
-<h3>1. OBJECTIVE FUNCTION</h3>
-
-<p>
-Suppose:
-</p>
+<h3>Example 1</h3>
 
 <pre>
-Z = 5x + 3y
+y = x + 1
+2x + y = 7
 </pre>
 
-<p>
-This function assigns a value of Z to every possible pair (x,y).
-</p>
-
-<p>
-For example:
-</p>
+<p>Since y = x + 1, replace y in the second equation:</p>
 
 <pre>
-At (2,1):
+2x + (x + 1) = 7
 
-Z = 5(2) + 3(1)
-Z = 10 + 3
-Z = 13
+3x + 1 = 7
+
+3x = 6
+
+x = 2
 </pre>
 
-<h3>2. WHY CHECK CORNER POINTS?</h3>
-
-<p>
-For a linear objective function on a bounded polygonal feasible
-region, the maximum or minimum occurs at a vertex.
-</p>
-
-<p>
-Therefore, once the vertices are known, calculate the objective
-function at each one and compare the results.
-</p>
-
-<h3>Worked Example: Maximum</h3>
-
-<p>
-Maximize:
-</p>
+<p>Now substitute x = 2:</p>
 
 <pre>
-Z = 4x + 3y
+y = 2 + 1
+y = 3
 </pre>
 
-<p>
-Suppose the feasible vertices are:
-</p>
+<p>Intersection = <b>(2, 3)</b>.</p>
+
+<h3>Example 2</h3>
 
 <pre>
-(0,0), (5,0), (0,4)
+y = 2x
+x + y = 9
 </pre>
 
-<p>Evaluate each:</p>
+<p>Replace y with 2x:</p>
 
 <pre>
-Z(0,0) = 4(0) + 3(0)
-       = 0
+x + 2x = 9
 
-Z(5,0) = 4(5) + 3(0)
-       = 20
+3x = 9
 
-Z(0,4) = 4(0) + 3(4)
-       = 12
+x = 3
 </pre>
 
-<p>
-The largest value is 20.
-</p>
+<p>Therefore:</p>
 
 <pre>
-Maximum Z = 20
-at (5,0)
+y = 2(3)
+y = 6
 </pre>
 
-<h3>Worked Example: Minimum</h3>
+<p>Intersection = <b>(3, 6)</b>.</p>
 
-<p>
-Minimize:
-</p>
+<h3>Example 3</h3>
+
+<pre>
+x = y + 2
+x + 2y = 8
+</pre>
+
+<p>Replace x with y + 2:</p>
+
+<pre>
+(y + 2) + 2y = 8
+
+3y + 2 = 8
+
+3y = 6
+
+y = 2
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+x = 2 + 2
+x = 4
+</pre>
+
+<p>Intersection = <b>(4, 2)</b>.</p>`,
+
+  [
+    {
+      q: "Use substitution to solve y = x + 2 and x + y = 8.",
+      hint: "Replace y in the second equation with x + 2.",
+      steps: [
+        "x + (x + 2) = 8",
+        "2x + 2 = 8",
+        "2x = 6",
+        "x = 3",
+        "y = 3 + 2 = 5"
+      ],
+      ans: "(3, 5)",
+      why: "Substitution produces values satisfying both equations."
+    },
+    {
+      q: "Use substitution to solve y = 3x and x + y = 12.",
+      hint: "Replace y with 3x.",
+      steps: [
+        "x + 3x = 12",
+        "4x = 12",
+        "x = 3",
+        "y = 3(3) = 9"
+      ],
+      ans: "(3, 9)",
+      why: "The point satisfies both original equations."
+    },
+    {
+      q: "Use substitution to solve x = y + 1 and x + y = 9.",
+      hint: "Replace x with y + 1.",
+      steps: [
+        "(y + 1) + y = 9",
+        "2y + 1 = 9",
+        "2y = 8",
+        "y = 4",
+        "x = 4 + 1 = 5"
+      ],
+      ans: "(5, 4)",
+      why: "Substitution gives the unique pair satisfying both equations."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Elimination Method for Finding an Intersection",
+
+  `<h2>Elimination Method</h2>
+
+<p><b>One concept:</b> Elimination finds the intersection by adding or subtracting equations so that one variable disappears.</p>
+
+<h3>Example 1</h3>
+
+<pre>
+x + y = 9
+x - y = 3
+</pre>
+
+<p>Add the equations:</p>
+
+<pre>
+2x = 12
+
+x = 6
+</pre>
+
+<p>Substitute into the first equation:</p>
+
+<pre>
+6 + y = 9
+
+y = 3
+</pre>
+
+<p>Intersection = <b>(6, 3)</b>.</p>
+
+<h3>Example 2</h3>
+
+<pre>
+2x + y = 10
+2x - y = 4
+</pre>
+
+<p>Add:</p>
+
+<pre>
+4x = 14
+
+x = 3.5
+</pre>
+
+<p>Then:</p>
+
+<pre>
+2(3.5) + y = 10
+7 + y = 10
+y = 3
+</pre>
+
+<p>Intersection = <b>(3.5, 3)</b>.</p>
+
+<h3>Example 3</h3>
+
+<pre>
+3x + 2y = 16
+3x - 2y = 8
+</pre>
+
+<p>Add:</p>
+
+<pre>
+6x = 24
+
+x = 4
+</pre>
+
+<p>Then:</p>
+
+<pre>
+3(4) + 2y = 16
+
+12 + 2y = 16
+
+2y = 4
+
+y = 2
+</pre>
+
+<p>Intersection = <b>(4, 2)</b>.</p>`,
+
+  [
+    {
+      q: "Use elimination to solve x + y = 11 and x - y = 5.",
+      hint: "Add the equations.",
+      steps: [
+        "2x = 16",
+        "x = 8",
+        "8 + y = 11",
+        "y = 3"
+      ],
+      ans: "(8, 3)",
+      why: "Adding eliminates y."
+    },
+    {
+      q: "Use elimination to solve 2x + y = 13 and 2x - y = 5.",
+      hint: "Add the equations.",
+      steps: [
+        "4x = 18",
+        "x = 4.5",
+        "2(4.5) + y = 13",
+        "9 + y = 13",
+        "y = 4"
+      ],
+      ans: "(4.5, 4)",
+      why: "The y terms cancel when the equations are added."
+    },
+    {
+      q: "Use elimination to solve 4x + 3y = 18 and 4x - 3y = 6.",
+      hint: "Add the equations.",
+      steps: [
+        "8x = 24",
+        "x = 3",
+        "12 + 3y = 18",
+        "3y = 6",
+        "y = 2"
+      ],
+      ans: "(3, 2)",
+      why: "Adding eliminates y and leaves one equation in x."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "A Vertex Is an Intersection Point",
+
+  `<h2>A Vertex Is an Intersection Point</h2>
+
+<p><b>One concept:</b> A vertex of a feasible region can occur where two boundary lines meet.</p>
+
+<p>A vertex is therefore found by locating the intersection of the relevant boundary lines.</p>
+
+<h3>Example 1</h3>
+
+<p>Suppose two boundaries are:</p>
+
+<pre>
+x + y = 8
+x = 2
+</pre>
+
+<p>Substitute x = 2:</p>
+
+<pre>
+2 + y = 8
+y = 6
+</pre>
+
+<p>So the vertex formed by these two boundaries is:</p>
+
+<p><b>(2, 6)</b></p>
+
+<h3>Example 2</h3>
+
+<pre>
+2x + y = 10
+x + y = 7
+</pre>
+
+<p>Subtract:</p>
+
+<pre>
+x = 3
+</pre>
+
+<p>Then:</p>
+
+<pre>
+3 + y = 7
+y = 4
+</pre>
+
+<p>The intersection vertex is <b>(3, 4)</b>.</p>
+
+<h3>Example 3</h3>
+
+<pre>
+x + 2y = 12
+x = 4
+</pre>
+
+<p>Substitute:</p>
+
+<pre>
+4 + 2y = 12
+2y = 8
+y = 4
+</pre>
+
+<p>The vertex is <b>(4, 4)</b>.</p>`,
+
+  [
+    {
+      q: "The boundaries x + y = 9 and x = 3 meet at which point?",
+      hint: "Put x = 3 into x + y = 9.",
+      steps: [
+        "3 + y = 9",
+        "y = 6"
+      ],
+      ans: "(3, 6)",
+      why: "The point satisfies both boundary equations."
+    },
+    {
+      q: "The boundaries 2x + y = 12 and x + y = 8 meet at which point?",
+      hint: "Subtract the second equation from the first.",
+      steps: [
+        "2x + y - x - y = 12 - 8",
+        "x = 4",
+        "4 + y = 8",
+        "y = 4"
+      ],
+      ans: "(4, 4)",
+      why: "Their common point is the vertex formed by the two boundaries."
+    },
+    {
+      q: "The boundaries x + 2y = 14 and x = 6 meet at which point?",
+      hint: "Substitute x = 6.",
+      steps: [
+        "6 + 2y = 14",
+        "2y = 8",
+        "y = 4"
+      ],
+      ans: "(6, 4)",
+      why: "The point lies on both boundaries."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Checking Whether an Intersection Is Feasible",
+
+  `<h2>Checking Whether an Intersection Is Feasible</h2>
+
+<p><b>One concept:</b> An intersection point is feasible only if it satisfies <b>all</b> the constraints.</p>
+
+<p>Finding the intersection is not enough. We must substitute the point into each inequality.</p>
+
+<h3>Example 1</h3>
+
+<p>Consider:</p>
+
+<pre>
+x + y ≤ 8
+x ≥ 2
+y ≥ 1
+</pre>
+
+<p>Suppose the candidate point is <b>(3, 4)</b>.</p>
+
+<p>Check each constraint:</p>
+
+<pre>
+3 + 4 ≤ 8
+7 ≤ 8 ✓
+
+3 ≥ 2 ✓
+
+4 ≥ 1 ✓
+</pre>
+
+<p>All constraints are satisfied.</p>
+
+<p>Therefore <b>(3, 4) is feasible</b>.</p>
+
+<h3>Example 2</h3>
+
+<p>Consider:</p>
+
+<pre>
+x + y ≤ 10
+x ≥ 4
+y ≥ 2
+</pre>
+
+<p>Test <b>(3, 5)</b>:</p>
+
+<pre>
+3 + 5 ≤ 10 ✓
+
+3 ≥ 4 ✗
+</pre>
+
+<p>One constraint fails.</p>
+
+<p>Therefore <b>(3, 5) is not feasible</b>.</p>
+
+<h3>Example 3</h3>
+
+<p>Consider:</p>
+
+<pre>
+2x + y ≤ 12
+x ≥ 1
+y ≥ 3
+</pre>
+
+<p>Test <b>(4, 4)</b>:</p>
+
+<pre>
+2(4) + 4 ≤ 12
+12 ≤ 12 ✓
+
+4 ≥ 1 ✓
+
+4 ≥ 3 ✓
+</pre>
+
+<p>The point is feasible.</p>`,
+
+  [
+    {
+      q: "Is (3,4) feasible for x + y ≤ 9, x ≥ 2, y ≥ 1?",
+      hint: "Check all three constraints.",
+      steps: [
+        "3 + 4 = 7, and 7 ≤ 9.",
+        "3 ≥ 2.",
+        "4 ≥ 1.",
+        "All constraints are satisfied."
+      ],
+      ans: "Yes",
+      why: "A feasible point must satisfy every constraint."
+    },
+    {
+      q: "Is (2,6) feasible for x + y ≤ 7, x ≥ 1, y ≥ 2?",
+      hint: "Start with x + y ≤ 7.",
+      steps: [
+        "2 + 6 = 8.",
+        "8 ≤ 7 is false.",
+        "Therefore the point fails a constraint."
+      ],
+      ans: "No",
+      why: "Failing even one constraint makes a point infeasible."
+    },
+    {
+      q: "Is (5,3) feasible for 2x + y ≤ 13, x ≥ 2, y ≥ 1?",
+      hint: "Evaluate 2x + y first.",
+      steps: [
+        "2(5) + 3 = 13.",
+        "13 ≤ 13 ✓.",
+        "5 ≥ 2 ✓.",
+        "3 ≥ 1 ✓."
+      ],
+      ans: "Yes",
+      why: "The point satisfies every constraint."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Objective Function Value at a Point",
+
+  `<h2>Objective Function Value at a Point</h2>
+
+<p><b>One concept:</b> To find the value of an objective function at a point, substitute the point's x- and y-values into the objective function.</p>
+
+<h3>Example 1</h3>
+
+<p>Let:</p>
+
+<pre>
+P = 3x + 2y
+</pre>
+
+<p>Find P at (4, 5).</p>
+
+<pre>
+P = 3(4) + 2(5)
+
+P = 12 + 10
+
+P = 22
+</pre>
+
+<p>Therefore, the objective value is <b>22</b>.</p>
+
+<h3>Example 2</h3>
+
+<pre>
+C = 5x + 4y
+</pre>
+
+<p>At (2, 6):</p>
+
+<pre>
+C = 5(2) + 4(6)
+
+C = 10 + 24
+
+C = 34
+</pre>
+
+<h3>Example 3</h3>
+
+<pre>
+P = 7x + 3y
+</pre>
+
+<p>At (5, 2):</p>
+
+<pre>
+P = 7(5) + 3(2)
+
+P = 35 + 6
+
+P = 41
+</pre>`,
+
+  [
+    {
+      q: "Find P = 4x + 3y at (2,5).",
+      hint: "Replace x with 2 and y with 5.",
+      steps: [
+        "P = 4(2) + 3(5)",
+        "P = 8 + 15",
+        "P = 23"
+      ],
+      ans: "23",
+      why: "The objective value is obtained by direct substitution."
+    },
+    {
+      q: "Find C = 6x + 2y at (3,4).",
+      hint: "Substitute x = 3 and y = 4.",
+      steps: [
+        "C = 6(3) + 2(4)",
+        "C = 18 + 8",
+        "C = 26"
+      ],
+      ans: "26",
+      why: "The coordinates determine the value of the objective function."
+    },
+    {
+      q: "Find P = 5x + 7y at (4,3).",
+      hint: "Calculate 5(4) + 7(3).",
+      steps: [
+        "P = 5(4) + 7(3)",
+        "P = 20 + 21",
+        "P = 41"
+      ],
+      ans: "41",
+      why: "Substituting the coordinates gives the objective value."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Comparing Objective Values",
+
+  `<h2>Comparing Objective Values</h2>
+
+<p><b>One concept:</b> To compare two candidate points, calculate the objective function at each point and compare the resulting numbers.</p>
+
+<h3>Example 1</h3>
+
+<p>Let:</p>
+
+<pre>
+P = 4x + 3y
+</pre>
+
+<p>Compare A(2, 4) and B(5, 1).</p>
+
+<p>At A:</p>
+
+<pre>
+P = 4(2) + 3(4)
+P = 8 + 12
+P = 20
+</pre>
+
+<p>At B:</p>
+
+<pre>
+P = 4(5) + 3(1)
+P = 20 + 3
+P = 23
+</pre>
+
+<p>The objective value at B is greater.</p>
+
+<h3>Example 2</h3>
 
 <pre>
 C = 2x + 5y
 </pre>
 
-<p>
-Suppose the feasible vertices are:
-</p>
+<p>At A(3,2):</p>
 
 <pre>
-(2,4), (6,0), (0,5)
+C = 2(3) + 5(2)
+C = 16
 </pre>
 
-<p>Evaluate:</p>
+<p>At B(1,5):</p>
 
 <pre>
-C(2,4) = 2(2) + 5(4)
-       = 24
-
-C(6,0) = 2(6) + 5(0)
-       = 12
-
-C(0,5) = 2(0) + 5(5)
-       = 25
+C = 2(1) + 5(5)
+C = 27
 </pre>
 
-<p>
-The smallest value is 12.
-</p>
+<p>The values are 16 and 27.</p>
+
+<h3>Example 3</h3>
 
 <pre>
-Minimum C = 12
-at (6,0)
+P = 6x + y
 </pre>
 
-<h3>IMPORTANT</h3>
+<p>At A(2,3):</p>
 
-<p>
-Do not choose the point simply because its x-value or y-value
-is largest or smallest. You must evaluate the <b>objective function</b>.
-</p>
+<pre>
+P = 12 + 3 = 15
+</pre>
 
-<p>
-The best vertex depends on the coefficients in the objective function.
-</p>
+<p>At B(1,8):</p>
 
-<h3>Common Mistakes</h3>
+<pre>
+P = 6 + 8 = 14
+</pre>
 
-<ul>
-<li>Choosing a vertex without calculating the objective function.</li>
-<li>Finding the largest value when the question asks for the minimum.</li>
-<li>Using a point that is not feasible.</li>
-<li>Making arithmetic errors during substitution.</li>
-<li>Reporting only the value and not the coordinates where it occurs.</li>
-</ul>
-`,
+<p>The values are 15 and 14.</p>`,
 
   [
     {
-      "q": "Evaluate Z = 4x + 3y at (2,5).",
-      "hint": "Substitute x = 2 and y = 5.",
-      "steps": [
-        "Step 1: Z = 4(2) + 3(5)",
-        "Step 2: 4(2) = 8",
-        "Step 3: 3(5) = 15",
-        "Step 4: 8 + 15 = 23"
+      q: "For P = 3x + 4y, which point has the greater objective value: A(2,3) or B(4,1)?",
+      hint: "Calculate P at both points.",
+      steps: [
+        "At A: P = 3(2) + 4(3) = 6 + 12 = 18.",
+        "At B: P = 3(4) + 4(1) = 12 + 4 = 16.",
+        "18 is greater than 16."
       ],
-      "ans": "23",
-      "why": "The objective function is evaluated by substituting the coordinates."
+      ans: "A(2,3)",
+      why: "A gives the larger objective value."
     },
-
     {
-      "q": "Evaluate Z = 5x + 2y at (6,1).",
-      "hint": "Substitute both coordinates.",
-      "steps": [
-        "Step 1: Z = 5(6) + 2(1)",
-        "Step 2: 5(6) = 30",
-        "Step 3: 2(1) = 2",
-        "Step 4: 30 + 2 = 32"
+      q: "For P = 5x + 2y, compare A(2,5) and B(3,2).",
+      hint: "Find both objective values.",
+      steps: [
+        "A: P = 5(2) + 2(5) = 20.",
+        "B: P = 5(3) + 2(2) = 19.",
+        "20 is greater than 19."
       ],
-      "ans": "32",
-      "why": "Substitution gives the objective-function value at that point."
+      ans: "A(2,5)",
+      why: "The objective value at A is larger."
     },
-
     {
-      "q": "Find the maximum of Z = 3x + 2y at (0,0), (5,0), and (0,4).",
-      "hint": "Evaluate Z at all three points.",
-      "steps": [
-        "Step 1: Z(0,0) = 0",
-        "Step 2: Z(5,0) = 15",
-        "Step 3: Z(0,4) = 8",
-        "Step 4: Compare the values"
+      q: "For C = 2x + 3y, compare A(4,1) and B(1,4).",
+      hint: "Substitute both coordinate pairs.",
+      steps: [
+        "A: C = 2(4) + 3(1) = 11.",
+        "B: C = 2(1) + 3(4) = 14.",
+        "14 is greater than 11."
       ],
-      "ans": "Zmax = 15 at (5,0)",
-      "why": "15 is the largest objective-function value among the three vertices."
-    },
-
-    {
-      "q": "Find the minimum of C = 2x + 3y at (2,4), (5,1), and (1,5).",
-      "hint": "Calculate C at each point.",
-      "steps": [
-        "Step 1: C(2,4) = 4 + 12 = 16",
-        "Step 2: C(5,1) = 10 + 3 = 13",
-        "Step 3: C(1,5) = 2 + 15 = 17",
-        "Step 4: Choose the smallest value"
-      ],
-      "ans": "Cmin = 13 at (5,1)",
-      "why": "13 is the smallest value among the three points."
-    },
-
-    {
-      "q": "Why must all feasible vertices be checked when optimizing a linear objective?",
-      "hint": "Different vertices can produce different objective values.",
-      "steps": [
-        "Step 1: Identify the objective function",
-        "Step 2: Evaluate it at every relevant vertex",
-        "Step 3: Compare the resulting values",
-        "Step 4: Select the required extreme value"
-      ],
-      "ans": "Because the maximum or minimum may occur at any feasible vertex.",
-      "why": "Checking the vertices ensures that the required optimum is not missed."
+      ans: "B(1,4)",
+      why: "B produces the larger objective value."
     }
   ]
 );
@@ -5325,280 +9168,326 @@ The best vertex depends on the coefficients in the objective function.
 add(
   "math",
   "linear_programming",
-  "Linear Programming Word Problems",
+  "Maximum Objective Value",
 
-  `<h2>Linear Programming Word Problems</h2>
+  `<h2>Maximum Objective Value</h2>
 
-<p>
-Many linear programming questions begin with a situation described
-in words. The main mathematical skill is translating the words into
-variables, an objective function, and constraints.
-</p>
+<p><b>One concept:</b> A maximum occurs when the objective function has its greatest value among the feasible candidate points being considered.</p>
 
-<h3>THE TRANSLATION PROCESS</h3>
+<h3>Example 1</h3>
+
+<p>Suppose the feasible vertices are:</p>
 
 <pre>
-Words
-  ↓
-Choose variables
-  ↓
-Write the objective function
-  ↓
-Write the constraints
-  ↓
-Solve the linear programming problem
+A(0,0)
+B(4,0)
+C(4,3)
+D(0,5)
 </pre>
 
-<h3>1. CHOOSE THE VARIABLES</h3>
-
-<p>
-First decide what x and y represent.
-</p>
-
-<p>
-For example:
-</p>
+<p>Let:</p>
 
 <pre>
-x = number of type A items
-y = number of type B items
+P = 3x + 2y
 </pre>
 
-<p>
-Always state what each variable means.
-</p>
-
-<h3>2. WRITE THE OBJECTIVE FUNCTION</h3>
-
-<p>
-Look for what the question wants to maximize or minimize.
-</p>
-
-<p>
-Words such as:
-</p>
-
-<ul>
-<li>maximum</li>
-<li>minimum</li>
-<li>greatest</li>
-<li>least</li>
-<li>profit</li>
-<li>cost</li>
-</ul>
-
-<p>
-often indicate the objective.
-</p>
-
-<p>
-For example, if each A contributes 5 units and each B contributes
-3 units:
-</p>
+<p>Calculate:</p>
 
 <pre>
-Z = 5x + 3y
+A: P = 0
+
+B: P = 3(4) + 2(0) = 12
+
+C: P = 3(4) + 2(3) = 18
+
+D: P = 3(0) + 2(5) = 10
 </pre>
 
-<h3>3. TRANSLATE LIMITS INTO CONSTRAINTS</h3>
+<p>The greatest value is <b>18</b>.</p>
 
-<p>
-Words such as <b>at most</b>, <b>no more than</b>, and
-<b>cannot exceed</b> usually indicate ≤.
-</p>
+<h3>Example 2</h3>
 
 <pre>
-At most 20
-
-quantity ≤ 20
+P = 5x + y
 </pre>
 
-<p>
-Words such as <b>at least</b>, <b>not less than</b>, and
-<b>minimum of</b> usually indicate ≥.
-</p>
+<p>For points A(0,0), B(2,4), C(5,1):</p>
 
 <pre>
-At least 10
-
-quantity ≥ 10
+A: 0
+B: 5(2) + 4 = 14
+C: 5(5) + 1 = 26
 </pre>
 
-<h3>Worked Example</h3>
+<p>The greatest value is <b>26</b>.</p>
 
-<p>
-A problem requires two quantities, x and y. Their total cannot
-exceed 10. The objective is to maximize:
-</p>
+<h3>Example 3</h3>
 
 <pre>
-Z = 4x + 3y
+P = 2x + 6y
 </pre>
 
-<p>
-Neither quantity can be negative.
-</p>
-
-<h3>Step 1: Variables</h3>
+<p>For A(1,1), B(5,1), C(2,4):</p>
 
 <pre>
-x = first quantity
-y = second quantity
+A: 2 + 6 = 8
+B: 10 + 6 = 16
+C: 4 + 24 = 28
 </pre>
 
-<h3>Step 2: Objective</h3>
-
-<pre>
-Maximize Z = 4x + 3y
-</pre>
-
-<h3>Step 3: Total Constraint</h3>
-
-<p>
-"Cannot exceed 10" means:
-</p>
-
-<pre>
-x + y ≤ 10
-</pre>
-
-<h3>Step 4: Non-Negativity</h3>
-
-<p>
-Neither quantity can be negative:
-</p>
-
-<pre>
-x ≥ 0
-y ≥ 0
-</pre>
-
-<h3>Complete Mathematical Model</h3>
-
-<pre>
-Maximize Z = 4x + 3y
-
-subject to:
-
-x + y ≤ 10
-x ≥ 0
-y ≥ 0
-</pre>
-
-<p>
-Once the model has been constructed, the graphical method or another
-appropriate linear programming method can be used to solve it.
-</p>
-
-<h3>IMPORTANT LANGUAGE</h3>
-
-<table>
-<tr>
-<th>Words</th>
-<th>Mathematical meaning</th>
-</tr>
-
-<tr>
-<td>at most</td>
-<td>≤</td>
-</tr>
-
-<tr>
-<td>no more than</td>
-<td>≤</td>
-</tr>
-
-<tr>
-<td>cannot exceed</td>
-<td>≤</td>
-</tr>
-
-<tr>
-<td>at least</td>
-<td>≥</td>
-</tr>
-
-<tr>
-<td>no less than</td>
-<td>≥</td>
-</tr>
-
-<tr>
-<td>minimum of</td>
-<td>≥</td>
-</tr>
-</table>
-
-<h3>Common Mistakes</h3>
-
-<ul>
-<li>Defining variables without stating what they represent.</li>
-<li>Reversing ≤ and ≥.</li>
-<li>Forgetting non-negativity constraints.</li>
-<li>Confusing the objective function with a constraint.</li>
-<li>Trying to solve before correctly translating the words into mathematics.</li>
-</ul>
-`,
+<p>The greatest value is <b>28</b>.</p>`,
 
   [
     {
-      "q": "Translate 'x cannot exceed 12' into an inequality.",
-      "hint": "Cannot exceed means at most.",
-      "steps": [
-        "Step 1: Identify the phrase 'cannot exceed'",
-        "Step 2: This means the value can be 12 or less",
-        "Step 3: Write the inequality"
+      q: "For P = 2x + 3y, which point gives the greatest value: A(1,2), B(4,1), C(2,4)?",
+      hint: "Calculate P at all three points.",
+      steps: [
+        "A: 2(1) + 3(2) = 8.",
+        "B: 2(4) + 3(1) = 11.",
+        "C: 2(2) + 3(4) = 16.",
+        "The greatest value is 16."
       ],
-      "ans": "x ≤ 12",
-      "why": "'Cannot exceed' means the value must be less than or equal to 12."
+      ans: "C(2,4), with maximum value 16",
+      why: "The maximum is the greatest objective value among the candidates."
     },
-
     {
-      "q": "Translate 'y must be at least 7' into an inequality.",
-      "hint": "At least means the value can equal 7 or be greater.",
-      "steps": [
-        "Step 1: Identify 'at least'",
-        "Step 2: At least 7 means 7 or greater",
-        "Step 3: Write the inequality"
+      q: "For P = 4x + y, compare A(3,2), B(1,8), and C(5,1).",
+      hint: "Evaluate P at each point.",
+      steps: [
+        "A: 4(3) + 2 = 14.",
+        "B: 4(1) + 8 = 12.",
+        "C: 4(5) + 1 = 21.",
+        "21 is greatest."
       ],
-      "ans": "y ≥ 7",
-      "why": "'At least' means greater than or equal to."
+      ans: "C(5,1), with maximum value 21",
+      why: "C gives the largest objective value."
     },
-
     {
-      "q": "If x represents quantity A and y represents quantity B, and their total cannot exceed 20, write the constraint.",
-      "hint": "Add the quantities and use 'cannot exceed'.",
-      "steps": [
-        "Step 1: Total quantity is x + y",
-        "Step 2: Cannot exceed 20 means ≤ 20",
-        "Step 3: Write the constraint"
+      q: "For P = 3x + 5y, find the maximum among A(2,1), B(1,5), and C(4,2).",
+      hint: "Evaluate all three.",
+      steps: [
+        "A: 3(2) + 5(1) = 11.",
+        "B: 3(1) + 5(5) = 28.",
+        "C: 3(4) + 5(2) = 22.",
+        "28 is greatest."
       ],
-      "ans": "x + y ≤ 20",
-      "why": "The total must be 20 or less."
+      ans: "B(1,5), with maximum value 28",
+      why: "The maximum is the greatest of the three objective values."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Minimum Objective Value",
+
+  `<h2>Minimum Objective Value</h2>
+
+<p><b>One concept:</b> A minimum occurs when the objective function has its smallest value among the feasible candidate points being considered.</p>
+
+<h3>Example 1</h3>
+
+<p>Let:</p>
+
+<pre>
+C = 4x + 3y
+</pre>
+
+<p>Consider:</p>
+
+<pre>
+A(1,4)
+B(3,2)
+C(5,1)
+</pre>
+
+<p>Evaluate:</p>
+
+<pre>
+A: 4(1) + 3(4) = 16
+
+B: 4(3) + 3(2) = 18
+
+C: 4(5) + 3(1) = 23
+</pre>
+
+<p>The smallest value is <b>16</b>.</p>
+
+<h3>Example 2</h3>
+
+<pre>
+C = 2x + 5y
+</pre>
+
+<pre>
+A(2,2): 2(2) + 5(2) = 14
+
+B(4,1): 2(4) + 5(1) = 13
+
+C(1,4): 2(1) + 5(4) = 22
+</pre>
+
+<p>The minimum value is <b>13</b>.</p>
+
+<h3>Example 3</h3>
+
+<pre>
+C = 6x + 2y
+</pre>
+
+<pre>
+A(1,3): 6 + 6 = 12
+
+B(2,2): 12 + 4 = 16
+
+C(4,1): 24 + 2 = 26
+</pre>
+
+<p>The minimum value is <b>12</b>.</p>`,
+
+  [
+    {
+      q: "For C = 3x + 2y, which point gives the smallest value: A(1,4), B(3,2), C(2,5)?",
+      hint: "Calculate C at all three points.",
+      steps: [
+        "A: 3(1) + 2(4) = 11.",
+        "B: 3(3) + 2(2) = 13.",
+        "C: 3(2) + 2(5) = 16.",
+        "11 is smallest."
+      ],
+      ans: "A(1,4), with minimum value 11",
+      why: "The minimum is the smallest objective value."
     },
-
     {
-      "q": "A problem asks you to maximize 6x + 4y. What is the objective function?",
-      "hint": "Look for the expression being maximized.",
-      "steps": [
-        "Step 1: Identify the quantity to maximize",
-        "Step 2: It is 6x + 4y",
-        "Step 3: Write it using Z"
+      q: "For C = 5x + 2y, find the minimum among A(2,3), B(1,4), and C(3,1).",
+      hint: "Evaluate C at each point.",
+      steps: [
+        "A: 5(2) + 2(3) = 16.",
+        "B: 5(1) + 2(4) = 13.",
+        "C: 5(3) + 2(1) = 17.",
+        "13 is smallest."
       ],
-      "ans": "Z = 6x + 4y",
-      "why": "The objective function is the quantity being optimized."
+      ans: "B(1,4), with minimum value 13",
+      why: "B gives the smallest objective value."
     },
-
     {
-      "q": "A problem states that x and y cannot be negative. Write the non-negativity constraints.",
-      "hint": "Neither variable may be less than zero.",
-      "steps": [
-        "Step 1: x cannot be negative → x ≥ 0",
-        "Step 2: y cannot be negative → y ≥ 0",
-        "Step 3: Write both constraints"
+      q: "For C = 4x + 3y, compare A(1,5), B(2,2), and C(4,1).",
+      hint: "Calculate all three values.",
+      steps: [
+        "A: 4 + 15 = 19.",
+        "B: 8 + 6 = 14.",
+        "C: 16 + 3 = 19.",
+        "14 is smallest."
       ],
-      "ans": "x ≥ 0 and y ≥ 0",
-      "why": "Non-negative variables are restricted to zero or positive values."
+      ans: "B(2,2), with minimum value 14",
+      why: "The smallest objective value occurs at B."
+    }
+  ]
+);
+
+
+add(
+  "math",
+  "linear_programming",
+  "Optimal Solution Coordinates",
+
+  `<h2>Optimal Solution Coordinates</h2>
+
+<p><b>One concept:</b> The optimal solution includes both the coordinates of the point and the corresponding optimum value of the objective function.</p>
+
+<h3>Example 1</h3>
+
+<p>Suppose:</p>
+
+<pre>
+P = 4x + 3y
+</pre>
+
+<p>After evaluating the candidate points, suppose the largest value occurs at:</p>
+
+<pre>
+(5, 2)
+</pre>
+
+<p>Calculate:</p>
+
+<pre>
+P = 4(5) + 3(2)
+P = 20 + 6
+P = 26
+</pre>
+
+<p>The optimal solution is:</p>
+
+<p><b>x = 5, y = 2, maximum P = 26.</b></p>
+
+<h3>Example 2</h3>
+
+<pre>
+C = 3x + 5y
+</pre>
+
+<p>Suppose the smallest value occurs at:</p>
+
+<pre>
+(2, 4)
+</pre>
+
+<p>Then:</p>
+
+<pre>
+C = 3(2) + 5(4)
+C = 6 + 20
+C = 26
+</pre>
+
+<p>The minimum cost is <b>26</b>, occurring at <b>(2,4)</b>.</p>
+
+<h3>What to report</h3>
+
+<p>A complete answer should identify:</p>
+
+<ol>
+<li>The values of x and y.</li>
+<li>Whether the objective is a maximum or minimum.</li>
+<li>The corresponding objective value.</li>
+</ol>`,
+
+  [
+    {
+      q: "If P = 5x + 2y is maximized at (4,3), what is the optimal solution?",
+      hint: "Calculate P at (4,3).",
+      steps: [
+        "P = 5(4) + 2(3)",
+        "P = 20 + 6",
+        "P = 26"
+      ],
+      ans: "x = 4, y = 3, maximum P = 26",
+      why: "An optimal solution states both the coordinates and the optimum objective value."
+    },
+    {
+      q: "If C = 4x + 3y is minimized at (2,5), find the minimum cost.",
+      hint: "Substitute x = 2 and y = 5.",
+      steps: [
+        "C = 4(2) + 3(5)",
+        "C = 8 + 15",
+        "C = 23"
+      ],
+      ans: "x = 2, y = 5, minimum C = 23",
+      why: "The coordinates identify where the optimum occurs, while substitution gives its value."
+    },
+    {
+      q: "A maximum profit occurs at (6,2) for P = 3x + 4y. Find the maximum profit value.",
+      hint: "Evaluate 3x + 4y at (6,2).",
+      steps: [
+        "P = 3(6) + 4(2)",
+        "P = 18 + 8",
+        "P = 26"
+      ],
+      ans: "x = 6, y = 2, maximum P = 26",
+      why: "The optimal solution reports both the production coordinates and the maximum objective value."
     }
   ]
 );
@@ -10219,6 +14108,7 @@ Impossible        Uncertain          Certain
 add(
   "math",
   "matrices",
+  "Matrix 1",
   "Introduction to Matrices",
 
   `
@@ -10451,6 +14341,7 @@ A matrix is simply numbers organised in a rectangular pattern.
 add(
   "math",
   "matrices",
+  "Matrix 1",
   "Order of a Matrix",
 
   `
@@ -10646,6 +14537,7 @@ It is not 5 × 2.
 add(
   "math",
   "matrices",
+  "Matrix 1",
   "Elements of a Matrix",
 
   `
@@ -10862,6 +14754,7 @@ It always means:
 add(
   "math",
   "matrices",
+  "Matrix 1",
   "Types of Matrices",
 
   `
@@ -11091,6 +14984,7 @@ Aᵀ = A           → Symmetric matrix
 add(
   "math",
   "matrices",
+  "Matrix 1",
   "Equality of Matrices",
 
   `
@@ -11257,6 +15151,7 @@ For two matrices to be equal:
 add(
   "math",
   "matrices",
+  "Matrix Arithemetic",
   "Matrix Addition",
 
   `
@@ -11430,6 +15325,7 @@ Therefore <b>A+B is not defined</b>.
 add(
   "math",
   "matrices",
+  "Matrix Arithemetic",
   "Matrix Subtraction",
 
   `
@@ -11561,6 +15457,7 @@ A-B
 add(
   "math",
   "matrices",
+  "Matrix Arithemetic",
   "Scalar Multiplication",
 
   `
@@ -11711,6 +15608,7 @@ kA = [ ka   kb ]
 add(
   "math",
   "matrices",
+  "Matrix of transformation",
   "Reflection in the x-axis",
 
   `
@@ -11894,6 +15792,7 @@ Only the sign of the y-coordinate changes.
 add(
   "math",
   "matrices",
+  "Matrix of transformation",
   "Reflection in the y-axis",
 
   `
@@ -12060,6 +15959,7 @@ Only the sign of the x-coordinate changes.
 add(
   "math",
   "matrices",
+  "Matrix of transformation",
   "Reflection in the Line y = x",
 
   `
@@ -12236,7 +16136,6 @@ They simply <b>swap positions</b>.
     }
   ]
 );
-
 add(
   "math",
   "vectors",
@@ -13498,6 +17397,7 @@ Right side: ●●●●●
 
 add(
   "math",
+  "Calculus",
   "limits",
   "Applications of Limits",
 
@@ -13587,6 +17487,7 @@ Smooth curve → tangent at a point = limit concept
 
 add(
   "math",
+  "Calculus",
   "differentiation",
   "Gradient of a Curve",
 
@@ -13709,6 +17610,7 @@ dy/dx = gradient at a point
 
 add(
   "math",
+  "Calculus",
   "differentiation",
   "Rate of Change",
 
@@ -13830,6 +17732,7 @@ Slope shows speed
 
 add(
   "math",
+  "Calculus",
   "differentiation",
   "Maxima and Minima",
 
@@ -13952,6 +17855,7 @@ dy/dx = 0 → critical point
 
 add(
   "math",
+  "Calculus",
   "differentiation",
   "Tangents and Normals",
 
@@ -14185,6 +18089,7 @@ Slope of normal = -1 / (dy/dx)
 
 add(
   "math",
+  "Calculus",
   "differentiation",
   "Applications of Differentiation",
 
@@ -14288,6 +18193,7 @@ Peak point → slope = 0
 
 add(
   "math",
+  "Calculus",
   "integration",
   "Area Under a Curve",
 
@@ -14446,6 +18352,7 @@ For positive functions, this area is directly given by a definite integral.
 
 add(
   "math",
+  "Calculus",
   "integration",
   "Indefinite Integrals",
 
@@ -14591,6 +18498,7 @@ Same shape, different vertical shifts (C)
 
 add(
   "math",
+  "Calculus",
   "integration",
   "Definite Integrals",
 
@@ -14752,6 +18660,7 @@ Definite integrals have limits and give a NUMERICAL value representing the total
 
 add(
   "math",
+  "Calculus",
   "integration",
   "Integration as Reverse of Differentiation",
 
@@ -14880,6 +18789,7 @@ Integration ↑ (reverse process)
 
 add(
   "math",
+  "Calculus",
   "integration",
   "Applications of Integration",
 

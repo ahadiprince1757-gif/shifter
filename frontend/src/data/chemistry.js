@@ -5273,6 +5273,46 @@ export const chemistryTopics = [
           "conceptId": "chemistry_organic_introduction_to_organic_chemistry",
           "skillId": "chemistry_organic",
           "subskillId": "chemistry_organic_q4"
+        },
+        {
+          "q": "What is ethene and why is it reactive?",
+          "ans": "An alkene with a double bond that makes it reactive",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify formula C₂H₄",
+            "Step 2: Contains C=C double bond",
+            "Step 3: Double bond breaks easily in reactions"
+          ],
+          "why": "unsaturation increases reactivity",
+          "sol": "Step 1: Identify formula C₂H₄\nStep 2: Contains C=C double bond\nStep 3: Double bond breaks easily in reactions",
+          "hint": "double bond",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Introduction to organic chemistry",
+          "conceptId": "chemistry_organic_introduction_to_organic_chemistry",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "Differentiate alkanes and alkenes",
+          "ans": "Alkanes are saturated, alkenes are unsaturated",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Check bonding type",
+            "Step 2: Alkanes = single bonds",
+            "Step 3: Alkenes = double bonds"
+          ],
+          "why": "bond structure difference",
+          "sol": "Step 1: Check bonding type\nStep 2: Alkanes = single bonds\nStep 3: Alkenes = double bonds",
+          "hint": "bond type",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Introduction to organic chemistry",
+          "conceptId": "chemistry_organic_introduction_to_organic_chemistry",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
         }
       ]
     },
@@ -5366,6 +5406,47 @@ export const chemistryTopics = [
           "subskillId": "chemistry_organic_q4"
         },
         {
+          "q": "Explain why alkanes are less reactive",
+          "ans": "Strong single bonds make them stable and less reactive",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: identify bond type (C–C, C–H)",
+            "Step 2: strong covalent bonds",
+            "Step 3: no double bonds to break easily"
+          ],
+          "why": "bond stability",
+          "sol": "Step 1: identify bond type (C–C, C–H)\nStep 2: strong covalent bonds\nStep 3: no double bonds to break easily",
+          "hint": "bond strength",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Homologous series",
+          "conceptId": "chemistry_organic_homologous_series",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "Balance combustion of ethane",
+          "ans": "2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: write C2H6 + O2 → CO2 + H2O",
+            "Step 2: balance carbon (2 CO2)",
+            "Step 3: balance hydrogen (3 H2O)",
+            "Step 4: balance oxygen (7/2 O2 → 7 O2 after multiplying)"
+          ],
+          "why": "combustion balancing method",
+          "sol": "Step 1: write C2H6 + O2 → CO2 + H2O\nStep 2: balance carbon (2 CO2)\nStep 3: balance hydrogen (3 H2O)\nStep 4: balance oxygen (7/2 O2 → 7 O2 after multiplying)",
+          "hint": "CO2 and H2O formation",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Homologous series",
+          "conceptId": "chemistry_organic_homologous_series",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
+        },
+        {
           "q": "What are alkenes?",
           "ans": "Unsaturated hydrocarbons with at least one double bond",
           "type": "text",
@@ -5383,7 +5464,7 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q5"
+          "subskillId": "chemistry_organic_q7"
         },
         {
           "q": "What is the general formula of alkenes?",
@@ -5402,7 +5483,7 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q6"
+          "subskillId": "chemistry_organic_q8"
         },
         {
           "q": "Why are alkenes more reactive than alkanes?",
@@ -5422,7 +5503,7 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q7"
+          "subskillId": "chemistry_organic_q9"
         },
         {
           "q": "What happens when ethene reacts with bromine water?",
@@ -5442,7 +5523,49 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q8"
+          "subskillId": "chemistry_organic_q10"
+        },
+        {
+          "q": "Explain hydrogenation of ethene step by step",
+          "ans": "Ethene reacts with hydrogen to form ethane",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: identify C=C bond",
+            "Step 2: break pi bond",
+            "Step 3: add hydrogen atoms",
+            "Step 4: form ethane"
+          ],
+          "why": "Addition reaction mechanism",
+          "sol": "Step 1: identify C=C bond\nStep 2: break pi bond\nStep 3: add hydrogen atoms\nStep 4: form ethane",
+          "hint": "addition reaction",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Homologous series",
+          "conceptId": "chemistry_organic_homologous_series",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q11"
+        },
+        {
+          "q": "Balance combustion of ethene",
+          "ans": "C₂H₄ + 3O₂ → 2CO₂ + 2H₂O",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: write equation C₂H₄ + O₂ → CO₂ + H₂O",
+            "Step 2: balance carbon (2 CO₂)",
+            "Step 3: balance hydrogen (2 H₂O)",
+            "Step 4: balance oxygen (3 O₂)"
+          ],
+          "why": "Standard combustion balancing method",
+          "sol": "Step 1: write equation C₂H₄ + O₂ → CO₂ + H₂O\nStep 2: balance carbon (2 CO₂)\nStep 3: balance hydrogen (2 H₂O)\nStep 4: balance oxygen (3 O₂)",
+          "hint": "oxygen balance",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Homologous series",
+          "conceptId": "chemistry_organic_homologous_series",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q12"
         },
         {
           "q": "What are alkynes?",
@@ -5462,7 +5585,7 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q9"
+          "subskillId": "chemistry_organic_q13"
         },
         {
           "q": "What is the general formula of alkynes?",
@@ -5482,7 +5605,7 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q10"
+          "subskillId": "chemistry_organic_q14"
         },
         {
           "q": "Why are alkynes very reactive?",
@@ -5502,7 +5625,7 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q11"
+          "subskillId": "chemistry_organic_q15"
         },
         {
           "q": "What happens when ethyne reacts with bromine?",
@@ -5522,7 +5645,49 @@ export const chemistryTopics = [
           "topic": "Homologous series",
           "conceptId": "chemistry_organic_homologous_series",
           "skillId": "chemistry_organic",
-          "subskillId": "chemistry_organic_q12"
+          "subskillId": "chemistry_organic_q16"
+        },
+        {
+          "q": "Explain hydrogenation of ethyne step by step",
+          "ans": "Ethyne reacts with hydrogen to form ethane",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: identify triple bond",
+            "Step 2: break pi bonds",
+            "Step 3: add hydrogen stepwise",
+            "Step 4: form ethane"
+          ],
+          "why": "complete hydrogenation process",
+          "sol": "Step 1: identify triple bond\nStep 2: break pi bonds\nStep 3: add hydrogen stepwise\nStep 4: form ethane",
+          "hint": "addition reaction",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Homologous series",
+          "conceptId": "chemistry_organic_homologous_series",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q17"
+        },
+        {
+          "q": "Balance combustion of ethyne",
+          "ans": "2C₂H₂ + 5O₂ → 4CO₂ + 2H₂O",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: write equation C₂H₂ + O₂ → CO₂ + H₂O",
+            "Step 2: balance carbon (2 CO₂)",
+            "Step 3: balance hydrogen (1 H₂O per C₂H₂ → 2 H₂O after scaling)",
+            "Step 4: balance oxygen (5/2 O₂ → 5 O₂ after multiplying)"
+          ],
+          "why": "combustion balancing method",
+          "sol": "Step 1: write equation C₂H₂ + O₂ → CO₂ + H₂O\nStep 2: balance carbon (2 CO₂)\nStep 3: balance hydrogen (1 H₂O per C₂H₂ → 2 H₂O after scaling)\nStep 4: balance oxygen (5/2 O₂ → 5 O₂ after multiplying)",
+          "hint": "oxygen balance",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Homologous series",
+          "conceptId": "chemistry_organic_homologous_series",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q18"
         }
       ]
     },
@@ -5616,6 +5781,47 @@ export const chemistryTopics = [
           "conceptId": "chemistry_organic_combustion_of_fuels",
           "skillId": "chemistry_organic",
           "subskillId": "chemistry_organic_q4"
+        },
+        {
+          "q": "Balance combustion of propane step by step",
+          "ans": "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: write equation C₃H₈ + O₂ → CO₂ + H₂O",
+            "Step 2: balance carbon (3 CO₂)",
+            "Step 3: balance hydrogen (4 H₂O)",
+            "Step 4: balance oxygen (5 O₂)"
+          ],
+          "why": "Systematic equation balancing method",
+          "sol": "Step 1: write equation C₃H₈ + O₂ → CO₂ + H₂O\nStep 2: balance carbon (3 CO₂)\nStep 3: balance hydrogen (4 H₂O)\nStep 4: balance oxygen (5 O₂)",
+          "hint": "oxygen balance",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Combustion of Fuels",
+          "conceptId": "chemistry_organic_combustion_of_fuels",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "Why does incomplete combustion produce less energy?",
+          "ans": "Because fuel is not fully oxidized",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: incomplete oxidation",
+            "Step 2: formation of CO instead of CO₂",
+            "Step 3: less energy released in bonds"
+          ],
+          "why": "Less energy is released when oxidation is incomplete",
+          "sol": "Step 1: incomplete oxidation\nStep 2: formation of CO instead of CO₂\nStep 3: less energy released in bonds",
+          "hint": "carbon monoxide",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Combustion of Fuels",
+          "conceptId": "chemistry_organic_combustion_of_fuels",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
         }
       ]
     },
@@ -5708,6 +5914,46 @@ export const chemistryTopics = [
           "conceptId": "chemistry_organic_alcohols_alkanols",
           "skillId": "chemistry_organic",
           "subskillId": "chemistry_organic_q4"
+        },
+        {
+          "q": "Explain oxidation of ethanol step by step",
+          "ans": "Ethanol oxidizes to ethanal then ethanoic acid",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: ethanol loses hydrogen",
+            "Step 2: forms ethanal",
+            "Step 3: further oxidation forms ethanoic acid"
+          ],
+          "why": "Stepwise oxidation process in organic chemistry",
+          "sol": "Step 1: ethanol loses hydrogen\nStep 2: forms ethanal\nStep 3: further oxidation forms ethanoic acid",
+          "hint": "ethanol → acid",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Alcohols (Alkanols)",
+          "conceptId": "chemistry_organic_alcohols_alkanols",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "Why are short-chain alcohols soluble in water?",
+          "ans": "Because the –OH group forms hydrogen bonds with water",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: check polarity of –OH group",
+            "Step 2: hydrogen bonding with water",
+            "Step 3: small hydrocarbon chain helps solubility"
+          ],
+          "why": "Intermolecular hydrogen bonding increases solubility",
+          "sol": "Step 1: check polarity of –OH group\nStep 2: hydrogen bonding with water\nStep 3: small hydrocarbon chain helps solubility",
+          "hint": "hydrogen bonding",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Alcohols (Alkanols)",
+          "conceptId": "chemistry_organic_alcohols_alkanols",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
         }
       ]
     },
@@ -5800,6 +6046,46 @@ export const chemistryTopics = [
           "conceptId": "chemistry_organic_carboxylic_acids_organic_acids",
           "skillId": "chemistry_organic",
           "subskillId": "chemistry_organic_q4"
+        },
+        {
+          "q": "Why are carboxylic acids weak acids?",
+          "ans": "They only partially ionize in water",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: check ion formation",
+            "Step 2: partial dissociation in water",
+            "Step 3: not all H⁺ released"
+          ],
+          "why": "They do not fully dissociate into ions",
+          "sol": "Step 1: check ion formation\nStep 2: partial dissociation in water\nStep 3: not all H⁺ released",
+          "hint": "ionization",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Carboxylic Acids (Organic Acids)",
+          "conceptId": "chemistry_organic_carboxylic_acids_organic_acids",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "Explain reaction of ethanoic acid with sodium carbonate",
+          "ans": "Produces sodium ethanoate, carbon dioxide and water",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: acid reacts with carbonate",
+            "Step 2: CO₂ gas is released",
+            "Step 3: salt and water form"
+          ],
+          "why": "Acid-carbonate reactions release CO₂ gas",
+          "sol": "Step 1: acid reacts with carbonate\nStep 2: CO₂ gas is released\nStep 3: salt and water form",
+          "hint": "gas formation",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Carboxylic Acids (Organic Acids)",
+          "conceptId": "chemistry_organic_carboxylic_acids_organic_acids",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
         }
       ]
     },
@@ -5893,6 +6179,47 @@ export const chemistryTopics = [
           "conceptId": "chemistry_organic_cracking",
           "skillId": "chemistry_organic",
           "subskillId": "chemistry_organic_q4"
+        },
+        {
+          "q": "Why are alkenes produced during cracking?",
+          "ans": "Because breaking chains creates unsaturated molecules",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: break long carbon chains",
+            "Step 2: hydrogen atoms are redistributed",
+            "Step 3: some molecules form double bonds"
+          ],
+          "why": "Some products lose hydrogen and form double bonds",
+          "sol": "Step 1: break long carbon chains\nStep 2: hydrogen atoms are redistributed\nStep 3: some molecules form double bonds",
+          "hint": "unsaturation",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Cracking",
+          "conceptId": "chemistry_organic_cracking",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "Explain catalytic cracking step by step",
+          "ans": "Large hydrocarbons break into smaller ones using a catalyst",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: hydrocarbon vapor enters catalyst chamber",
+            "Step 2: molecules adsorb on catalyst surface",
+            "Step 3: C–C bonds break",
+            "Step 4: smaller hydrocarbons form"
+          ],
+          "why": "Catalysts lower activation energy for bond breaking",
+          "sol": "Step 1: hydrocarbon vapor enters catalyst chamber\nStep 2: molecules adsorb on catalyst surface\nStep 3: C–C bonds break\nStep 4: smaller hydrocarbons form",
+          "hint": "zeolite",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Cracking",
+          "conceptId": "chemistry_organic_cracking",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
         }
       ]
     },
@@ -5985,6 +6312,46 @@ export const chemistryTopics = [
           "conceptId": "chemistry_organic_isomerism",
           "skillId": "chemistry_organic",
           "subskillId": "chemistry_organic_q4"
+        },
+        {
+          "q": "Draw and explain structural isomerism in C4H10",
+          "ans": "C4H10 exists as butane and isobutane with different structures",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: write straight chain (butane)",
+            "Step 2: write branched structure (isobutane)",
+            "Step 3: compare arrangement of carbon atoms"
+          ],
+          "why": "Different arrangements of atoms create isomers",
+          "sol": "Step 1: write straight chain (butane)\nStep 2: write branched structure (isobutane)\nStep 3: compare arrangement of carbon atoms",
+          "hint": "butane vs branched",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Isomerism",
+          "conceptId": "chemistry_organic_isomerism",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "How does branching affect boiling point?",
+          "ans": "Branched isomers have lower boiling points",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: check shape difference",
+            "Step 2: branched molecules are more compact",
+            "Step 3: weaker intermolecular forces"
+          ],
+          "why": "Reduced surface area lowers intermolecular attraction",
+          "sol": "Step 1: check shape difference\nStep 2: branched molecules are more compact\nStep 3: weaker intermolecular forces",
+          "hint": "surface area",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Isomerism",
+          "conceptId": "chemistry_organic_isomerism",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
         }
       ]
     },
@@ -6077,6 +6444,46 @@ export const chemistryTopics = [
           "conceptId": "chemistry_organic_importance_of_organic_chemistry",
           "skillId": "chemistry_organic",
           "subskillId": "chemistry_organic_q4"
+        },
+        {
+          "q": "Why are hydrocarbons important as fuels?",
+          "ans": "Because they release large amounts of energy when burned",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: combustion occurs",
+            "Step 2: energy released as heat",
+            "Step 3: used in engines and electricity"
+          ],
+          "why": "Their combustion produces usable energy",
+          "sol": "Step 1: combustion occurs\nStep 2: energy released as heat\nStep 3: used in engines and electricity",
+          "hint": "energy release",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Importance of Organic Chemistry",
+          "conceptId": "chemistry_organic_importance_of_organic_chemistry",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q5"
+        },
+        {
+          "q": "Explain the link between crude oil and organic chemistry",
+          "ans": "Crude oil provides hydrocarbons used in organic chemistry",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: crude oil contains hydrocarbons",
+            "Step 2: separated by fractional distillation",
+            "Step 3: used as fuels and raw materials"
+          ],
+          "why": "It is the main source of organic compounds for industry",
+          "sol": "Step 1: crude oil contains hydrocarbons\nStep 2: separated by fractional distillation\nStep 3: used as fuels and raw materials",
+          "hint": "fractional distillation",
+          "subject": "chemistry",
+          "chapter": "organic",
+          "topic": "Importance of Organic Chemistry",
+          "conceptId": "chemistry_organic_importance_of_organic_chemistry",
+          "skillId": "chemistry_organic",
+          "subskillId": "chemistry_organic_q6"
         }
       ]
     },
@@ -6171,6 +6578,42 @@ export const chemistryTopics = [
           "subskillId": "chemistry_nonmetals_q4"
         },
         {
+          "q": "What gas is produced when sulphur burns in air?",
+          "ans": "Sulphur dioxide (SO₂)",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Sulphur reacts with oxygen"
+          ],
+          "why": "It is the main product of sulphur combustion",
+          "sol": "Step 1: Sulphur reacts with oxygen",
+          "hint": "Think of combustion product",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Sulphur and compounds",
+          "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q5"
+        },
+        {
+          "q": "What is the final product of the contact process?",
+          "ans": "Sulphuric acid (H₂SO₄)",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: SO₃ reacts with water"
+          ],
+          "why": "SO₃ hydration produces H₂SO₄",
+          "sol": "Step 1: SO₃ reacts with water",
+          "hint": "Strong acid used in industry",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Sulphur and compounds",
+          "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q6"
+        },
+        {
           "q": "What type of acid is H₂SO₄?",
           "ans": "Strong acid",
           "type": "text",
@@ -6188,7 +6631,7 @@ export const chemistryTopics = [
           "topic": "Sulphur and compounds",
           "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q5"
+          "subskillId": "chemistry_nonmetals_q7"
         },
         {
           "q": "Why is sulphuric acid important in industry?",
@@ -6208,7 +6651,7 @@ export const chemistryTopics = [
           "topic": "Sulphur and compounds",
           "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q6"
+          "subskillId": "chemistry_nonmetals_q8"
         },
         {
           "q": "What does it mean that H₂SO₄ is hygroscopic?",
@@ -6228,7 +6671,7 @@ export const chemistryTopics = [
           "topic": "Sulphur and compounds",
           "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q7"
+          "subskillId": "chemistry_nonmetals_q9"
         },
         {
           "q": "Why must acid be added to water and not water to acid?",
@@ -6248,7 +6691,43 @@ export const chemistryTopics = [
           "topic": "Sulphur and compounds",
           "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q8"
+          "subskillId": "chemistry_nonmetals_q10"
+        },
+        {
+          "q": "Why is sulphuric acid called a dehydrating agent?",
+          "ans": "It removes water from substances",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Observe reaction with organic matter"
+          ],
+          "why": "It has a strong affinity for water molecules",
+          "sol": "Step 1: Observe reaction with organic matter",
+          "hint": "removes water",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Sulphur and compounds",
+          "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q11"
+        },
+        {
+          "q": "What happens when concentrated H₂SO₄ is exposed to air?",
+          "ans": "It absorbs water vapour from the air",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Check interaction with moisture"
+          ],
+          "why": "It is hygroscopic in nature",
+          "sol": "Step 1: Check interaction with moisture",
+          "hint": "water absorption",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Sulphur and compounds",
+          "conceptId": "chemistry_nonmetals_sulphur_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q12"
         }
       ]
     },
@@ -6341,6 +6820,24 @@ export const chemistryTopics = [
           "subskillId": "chemistry_nonmetals_q4"
         },
         {
+          "q": "Which gas is more dangerous, CO or CO₂?",
+          "ans": "Carbon monoxide (CO)",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Compare biological effect"
+          ],
+          "why": "It binds strongly with haemoglobin",
+          "sol": "Step 1: Compare biological effect",
+          "hint": "blood oxygen transport",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Carbon and compounds",
+          "conceptId": "chemistry_nonmetals_carbon_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q5"
+        },
+        {
           "q": "Why is diamond extremely hard?",
           "ans": "Because it has a strong 3D covalent lattice structure",
           "type": "text",
@@ -6358,7 +6855,7 @@ export const chemistryTopics = [
           "topic": "Carbon and compounds",
           "conceptId": "chemistry_nonmetals_carbon_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q5"
+          "subskillId": "chemistry_nonmetals_q6"
         },
         {
           "q": "Why does graphite conduct electricity?",
@@ -6378,7 +6875,7 @@ export const chemistryTopics = [
           "topic": "Carbon and compounds",
           "conceptId": "chemistry_nonmetals_carbon_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q6"
+          "subskillId": "chemistry_nonmetals_q7"
         },
         {
           "q": "Why is graphite soft and slippery?",
@@ -6398,7 +6895,7 @@ export const chemistryTopics = [
           "topic": "Carbon and compounds",
           "conceptId": "chemistry_nonmetals_carbon_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q7"
+          "subskillId": "chemistry_nonmetals_q8"
         },
         {
           "q": "State two differences between diamond and graphite",
@@ -6418,7 +6915,43 @@ export const chemistryTopics = [
           "topic": "Carbon and compounds",
           "conceptId": "chemistry_nonmetals_carbon_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q8"
+          "subskillId": "chemistry_nonmetals_q9"
+        },
+        {
+          "q": "Which allotrope of carbon is used in pencils?",
+          "ans": "Graphite",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify soft carbon form"
+          ],
+          "why": "Its layers slide easily on paper",
+          "sol": "Step 1: Identify soft carbon form",
+          "hint": "layered structure",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Carbon and compounds",
+          "conceptId": "chemistry_nonmetals_carbon_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q10"
+        },
+        {
+          "q": "Which is the hardest natural substance?",
+          "ans": "Diamond",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Compare allotropes"
+          ],
+          "why": "Strong 3D covalent bonding",
+          "sol": "Step 1: Compare allotropes",
+          "hint": "3D structure",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Carbon and compounds",
+          "conceptId": "chemistry_nonmetals_carbon_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q11"
         }
       ]
     },
@@ -6514,6 +7047,42 @@ export const chemistryTopics = [
           "subskillId": "chemistry_nonmetals_q4"
         },
         {
+          "q": "Which bond makes nitrogen stable?",
+          "ans": "Triple bond (N≡N)",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify bond type"
+          ],
+          "why": "It is the strongest common covalent bond in nitrogen",
+          "sol": "Step 1: Identify bond type",
+          "hint": "three shared pairs of electrons",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Nitrogen and compounds",
+          "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q5"
+        },
+        {
+          "q": "What percentage of air is nitrogen?",
+          "ans": "About 78%",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Recall composition of air"
+          ],
+          "why": "Nitrogen is the dominant atmospheric gas",
+          "sol": "Step 1: Recall composition of air",
+          "hint": "major gas",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Nitrogen and compounds",
+          "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q6"
+        },
+        {
           "q": "What is the nitrogen cycle?",
           "ans": "The continuous circulation of nitrogen through the atmosphere, soil, plants, and animals",
           "type": "text",
@@ -6531,7 +7100,7 @@ export const chemistryTopics = [
           "topic": "Nitrogen and compounds",
           "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q5"
+          "subskillId": "chemistry_nonmetals_q7"
         },
         {
           "q": "Why are bacteria important in the nitrogen cycle?",
@@ -6551,7 +7120,7 @@ export const chemistryTopics = [
           "topic": "Nitrogen and compounds",
           "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q6"
+          "subskillId": "chemistry_nonmetals_q8"
         },
         {
           "q": "Why do plants need nitrogen?",
@@ -6571,7 +7140,7 @@ export const chemistryTopics = [
           "topic": "Nitrogen and compounds",
           "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q7"
+          "subskillId": "chemistry_nonmetals_q9"
         },
         {
           "q": "What is nitrogen fixation?",
@@ -6591,7 +7160,43 @@ export const chemistryTopics = [
           "topic": "Nitrogen and compounds",
           "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
           "skillId": "chemistry_nonmetals",
-          "subskillId": "chemistry_nonmetals_q8"
+          "subskillId": "chemistry_nonmetals_q10"
+        },
+        {
+          "q": "What form of nitrogen do plants absorb?",
+          "ans": "Nitrate ions (NO₃⁻)",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify soil nutrients"
+          ],
+          "why": "Plants cannot use nitrogen gas directly",
+          "sol": "Step 1: Identify soil nutrients",
+          "hint": "soil ions",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Nitrogen and compounds",
+          "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q11"
+        },
+        {
+          "q": "Which process returns nitrogen to the atmosphere?",
+          "ans": "Denitrification",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify final stage of cycle"
+          ],
+          "why": "Bacteria convert nitrates back into nitrogen gas",
+          "sol": "Step 1: Identify final stage of cycle",
+          "hint": "bacteria role",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Nitrogen and compounds",
+          "conceptId": "chemistry_nonmetals_nitrogen_and_compounds",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q12"
         }
       ]
     },
@@ -6684,6 +7289,42 @@ export const chemistryTopics = [
           "conceptId": "chemistry_nonmetals_air_pollution",
           "skillId": "chemistry_nonmetals",
           "subskillId": "chemistry_nonmetals_q4"
+        },
+        {
+          "q": "Which gas is mainly responsible for acid rain?",
+          "ans": "Sulphur dioxide (SO₂)",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify combustion gas"
+          ],
+          "why": "It forms acids when reacting with water",
+          "sol": "Step 1: Identify combustion gas",
+          "hint": "sulphur compound",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Air pollution",
+          "conceptId": "chemistry_nonmetals_air_pollution",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q5"
+        },
+        {
+          "q": "Which gas causes global warming?",
+          "ans": "Carbon dioxide (CO₂)",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify greenhouse gases"
+          ],
+          "why": "It traps heat in the atmosphere",
+          "sol": "Step 1: Identify greenhouse gases",
+          "hint": "carbon gas",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Air pollution",
+          "conceptId": "chemistry_nonmetals_air_pollution",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q6"
         }
       ]
     },
@@ -6777,6 +7418,42 @@ export const chemistryTopics = [
           "conceptId": "chemistry_nonmetals_importance",
           "skillId": "chemistry_nonmetals",
           "subskillId": "chemistry_nonmetals_q4"
+        },
+        {
+          "q": "Which non-metal gas is most abundant in air?",
+          "ans": "Nitrogen",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Recall atmospheric composition"
+          ],
+          "why": "It makes up the largest portion of air",
+          "sol": "Step 1: Recall atmospheric composition",
+          "hint": "78%",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Importance",
+          "conceptId": "chemistry_nonmetals_importance",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q5"
+        },
+        {
+          "q": "Which non-metal is the basis of organic chemistry?",
+          "ans": "Carbon",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify biomolecules"
+          ],
+          "why": "It forms all organic compounds",
+          "sol": "Step 1: Identify biomolecules",
+          "hint": "life element",
+          "subject": "chemistry",
+          "chapter": "nonmetals",
+          "topic": "Importance",
+          "conceptId": "chemistry_nonmetals_importance",
+          "skillId": "chemistry_nonmetals",
+          "subskillId": "chemistry_nonmetals_q6"
         }
       ]
     },

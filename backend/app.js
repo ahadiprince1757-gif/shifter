@@ -161,17 +161,37 @@ function normalizeTopicKey(str) {
 const LOCAL_CONTENT_MAP = (() => {
   const contentMap = new Map();
   const prevAdd = global.add;
-  global.add = (sid, cid, topic, notes = "", qs = []) => {
+  global.add = (...args) => {
+    const sid = String(args[0] || "").toLowerCase().trim();
     if (!CANONICAL_SUBJECT_IDS.has(sid)) return;
-    const notesStr =
-      typeof notes === "string"
-        ? notes
-        : Array.isArray(notes)
-          ? notes.join("\n")
-          : String(notes || "");
-    const qsArray = (Array.isArray(qs) ? qs : [qs]).map(normalizeQ);
+    let cid, topic, notes, qs;
+
+    if (sid === "math") {
+      const rawQs = args[args.length - 1];
+      const rawNotes = args[args.length - 2];
+      topic = String(args[args.length - 3] || "").trim();
+      if (args[1] === "Calculus") {
+        cid = String(args[2] || "").trim();
+      } else {
+        cid = String(args[1] || "").trim();
+      }
+      notes = typeof rawNotes === "string" ? rawNotes : "";
+      qs = Array.isArray(rawQs) ? rawQs : (rawQs ? [rawQs] : []);
+    } else {
+      cid = String(args[1] || "").trim();
+      topic = String(args[2] || "").trim();
+      notes = typeof args[3] === "string" ? args[3] : (Array.isArray(args[3]) ? args[3].join("\n") : String(args[3] || ""));
+      let rawQs = args[4] || [];
+      if (!Array.isArray(rawQs) && rawQs) rawQs = [rawQs];
+      if (Array.isArray(args[5])) {
+        rawQs = rawQs.concat(args[5]);
+      }
+      qs = rawQs;
+    }
+
+    const qsArray = qs.map(normalizeQ);
     const contentObj = {
-      notes: notesStr,
+      notes: notes,
       qs: qsArray.map((q) => ({
         q: q.q,
         hint: q.hint || "",

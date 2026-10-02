@@ -69,6 +69,25 @@ export const englishTopics = [
           "conceptId": "english_grammar_parts_of_speech",
           "skillId": "english_grammar",
           "subskillId": "english_grammar_q3"
+        },
+        {
+          "q": "Identify adverb: He runs quickly.",
+          "ans": "quickly",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: find verb",
+            "Step 2: how he runs"
+          ],
+          "why": "adverb rule",
+          "sol": "Step 1: find verb\nStep 2: how he runs",
+          "hint": "how action is done",
+          "subject": "english",
+          "chapter": "grammar",
+          "topic": "Parts of speech",
+          "conceptId": "english_grammar_parts_of_speech",
+          "skillId": "english_grammar",
+          "subskillId": "english_grammar_q4"
         }
       ]
     },
@@ -227,6 +246,24 @@ export const englishTopics = [
           "conceptId": "english_grammar_tenses",
           "skillId": "english_grammar",
           "subskillId": "english_grammar_q3"
+        },
+        {
+          "q": "Convert: I go → past tense",
+          "ans": "I went",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: change verb"
+          ],
+          "why": "tense transformation",
+          "sol": "Step 1: change verb",
+          "hint": "went",
+          "subject": "english",
+          "chapter": "grammar",
+          "topic": "Tenses",
+          "conceptId": "english_grammar_tenses",
+          "skillId": "english_grammar",
+          "subskillId": "english_grammar_q4"
         }
       ]
     },
@@ -297,6 +334,24 @@ export const englishTopics = [
           "conceptId": "english_grammar_punctuation",
           "skillId": "english_grammar",
           "subskillId": "english_grammar_q3"
+        },
+        {
+          "q": "Correct: i am fine",
+          "ans": "I am fine.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: capitalize I"
+          ],
+          "why": "punctuation rule",
+          "sol": "Step 1: capitalize I",
+          "hint": "capital letter",
+          "subject": "english",
+          "chapter": "grammar",
+          "topic": "Punctuation",
+          "conceptId": "english_grammar_punctuation",
+          "skillId": "english_grammar",
+          "subskillId": "english_grammar_q4"
         }
       ]
     },
@@ -367,6 +422,24 @@ export const englishTopics = [
           "conceptId": "english_grammar_active_passive",
           "skillId": "english_grammar",
           "subskillId": "english_grammar_q3"
+        },
+        {
+          "q": "Why passive voice used?",
+          "ans": "To focus on object",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: emphasize action receiver"
+          ],
+          "why": "usage reason",
+          "sol": "Step 1: emphasize action receiver",
+          "hint": "focus object",
+          "subject": "english",
+          "chapter": "grammar",
+          "topic": "Active & Passive",
+          "conceptId": "english_grammar_active_passive",
+          "skillId": "english_grammar",
+          "subskillId": "english_grammar_q4"
         }
       ]
     },
@@ -437,6 +510,24 @@ export const englishTopics = [
           "conceptId": "english_grammar_common_errors",
           "skillId": "english_grammar",
           "subskillId": "english_grammar_q3"
+        },
+        {
+          "q": "Fix: He eat rice",
+          "ans": "He eats rice",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: add -s"
+          ],
+          "why": "grammar correction",
+          "sol": "Step 1: add -s",
+          "hint": "verb agreement",
+          "subject": "english",
+          "chapter": "grammar",
+          "topic": "Common errors",
+          "conceptId": "english_grammar_common_errors",
+          "skillId": "english_grammar",
+          "subskillId": "english_grammar_q4"
         }
       ]
     },
@@ -504,6 +595,24 @@ export const englishTopics = [
           "conceptId": "english_grammar_sentence_types",
           "skillId": "english_grammar",
           "subskillId": "english_grammar_q3"
+        },
+        {
+          "q": "What type: Close the door.",
+          "ans": "Imperative",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: imperative action"
+          ],
+          "why": "structure rule",
+          "sol": "Step 1: imperative action",
+          "hint": "command",
+          "subject": "english",
+          "chapter": "grammar",
+          "topic": "Sentence types",
+          "conceptId": "english_grammar_sentence_types",
+          "skillId": "english_grammar",
+          "subskillId": "english_grammar_q4"
         }
       ]
     },
@@ -574,6 +683,24 @@ export const englishTopics = [
           "conceptId": "english_grammar_importance_of_grammar",
           "skillId": "english_grammar",
           "subskillId": "english_grammar_q3"
+        },
+        {
+          "q": "What improves communication?",
+          "ans": "Grammar",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: language rules"
+          ],
+          "why": "language system",
+          "sol": "Step 1: language rules",
+          "hint": "grammar",
+          "subject": "english",
+          "chapter": "grammar",
+          "topic": "Importance of grammar",
+          "conceptId": "english_grammar_importance_of_grammar",
+          "skillId": "english_grammar",
+          "subskillId": "english_grammar_q4"
         }
       ]
     },
@@ -644,6 +771,24 @@ export const englishTopics = [
           "conceptId": "english_comprehension_comprehension_skills",
           "skillId": "english_comprehension",
           "subskillId": "english_comprehension_q3"
+        },
+        {
+          "q": "What is first step in comprehension?",
+          "ans": "Reading the passage",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: start reading"
+          ],
+          "why": "process order",
+          "sol": "Step 1: start reading",
+          "hint": "read",
+          "subject": "english",
+          "chapter": "comprehension",
+          "topic": "Comprehension skills",
+          "conceptId": "english_comprehension_comprehension_skills",
+          "skillId": "english_comprehension",
+          "subskillId": "english_comprehension_q4"
         }
       ]
     },
@@ -714,6 +859,24 @@ export const englishTopics = [
           "conceptId": "english_comprehension_inference_questions",
           "skillId": "english_comprehension",
           "subskillId": "english_comprehension_q3"
+        },
+        {
+          "q": "If a boy is smiling after exam, what can you infer?",
+          "ans": "He did well",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: interpret behavior"
+          ],
+          "why": "logical inference",
+          "sol": "Step 1: interpret behavior",
+          "hint": "emotion",
+          "subject": "english",
+          "chapter": "comprehension",
+          "topic": "Inference questions",
+          "conceptId": "english_comprehension_inference_questions",
+          "skillId": "english_comprehension",
+          "subskillId": "english_comprehension_q4"
         }
       ]
     },
@@ -784,6 +947,24 @@ export const englishTopics = [
           "conceptId": "english_comprehension_vocabulary_in_context",
           "skillId": "english_comprehension",
           "subskillId": "english_comprehension_q3"
+        },
+        {
+          "q": "Meaning of 'bright' in 'bright student'?",
+          "ans": "Intelligent",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: adjective use"
+          ],
+          "why": "context meaning",
+          "sol": "Step 1: adjective use",
+          "hint": "intelligent",
+          "subject": "english",
+          "chapter": "comprehension",
+          "topic": "Vocabulary in context",
+          "conceptId": "english_comprehension_vocabulary_in_context",
+          "skillId": "english_comprehension",
+          "subskillId": "english_comprehension_q4"
         }
       ]
     },
@@ -854,6 +1035,24 @@ export const englishTopics = [
           "conceptId": "english_comprehension_factual_questions",
           "skillId": "english_comprehension",
           "subskillId": "english_comprehension_q3"
+        },
+        {
+          "q": "Where do factual answers come from?",
+          "ans": "From the passage",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: scan passage"
+          ],
+          "why": "exam rule",
+          "sol": "Step 1: scan passage",
+          "hint": "text",
+          "subject": "english",
+          "chapter": "comprehension",
+          "topic": "Factual questions",
+          "conceptId": "english_comprehension_factual_questions",
+          "skillId": "english_comprehension",
+          "subskillId": "english_comprehension_q4"
         }
       ]
     },
@@ -924,6 +1123,24 @@ export const englishTopics = [
           "conceptId": "english_summary_summary_writing_rules",
           "skillId": "english_summary",
           "subskillId": "english_summary_q3"
+        },
+        {
+          "q": "What is first step in summary?",
+          "ans": "Reading",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: understand passage"
+          ],
+          "why": "process step",
+          "sol": "Step 1: understand passage",
+          "hint": "read",
+          "subject": "english",
+          "chapter": "summary",
+          "topic": "Summary writing rules",
+          "conceptId": "english_summary_summary_writing_rules",
+          "skillId": "english_summary",
+          "subskillId": "english_summary_q4"
         }
       ]
     },
@@ -994,6 +1211,24 @@ export const englishTopics = [
           "conceptId": "english_summary_paraphrasing",
           "skillId": "english_summary",
           "subskillId": "english_summary_q3"
+        },
+        {
+          "q": "What must remain same in paraphrasing?",
+          "ans": "Meaning",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: change words only"
+          ],
+          "why": "rule",
+          "sol": "Step 1: change words only",
+          "hint": "meaning",
+          "subject": "english",
+          "chapter": "summary",
+          "topic": "Paraphrasing",
+          "conceptId": "english_summary_paraphrasing",
+          "skillId": "english_summary",
+          "subskillId": "english_summary_q4"
         }
       ]
     },
@@ -1064,6 +1299,24 @@ export const englishTopics = [
           "conceptId": "english_comprehension_answering_techniques",
           "skillId": "english_comprehension",
           "subskillId": "english_comprehension_q3"
+        },
+        {
+          "q": "What makes good answer?",
+          "ans": "Concise answer",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: remove extra words"
+          ],
+          "why": "exam standard",
+          "sol": "Step 1: remove extra words",
+          "hint": "clear and short",
+          "subject": "english",
+          "chapter": "comprehension",
+          "topic": "Answering techniques",
+          "conceptId": "english_comprehension_answering_techniques",
+          "skillId": "english_comprehension",
+          "subskillId": "english_comprehension_q4"
         }
       ]
     },
@@ -1134,6 +1387,24 @@ export const englishTopics = [
           "conceptId": "english_comprehension_importance",
           "skillId": "english_comprehension",
           "subskillId": "english_comprehension_q3"
+        },
+        {
+          "q": "What skill is improved by reading passages?",
+          "ans": "Vocabulary",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: exposure to words"
+          ],
+          "why": "language development",
+          "sol": "Step 1: exposure to words",
+          "hint": "vocabulary",
+          "subject": "english",
+          "chapter": "comprehension",
+          "topic": "Importance",
+          "conceptId": "english_comprehension_importance",
+          "skillId": "english_comprehension",
+          "subskillId": "english_comprehension_q4"
         }
       ]
     },
@@ -1206,6 +1477,24 @@ export const englishTopics = [
           "subskillId": "english_writing_q3"
         },
         {
+          "q": "What should paragraph contain?",
+          "ans": "One main idea",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: focus point"
+          ],
+          "why": "writing rule",
+          "sol": "Step 1: focus point",
+          "hint": "one idea",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Paragraph writing",
+          "conceptId": "english_writing_paragraph_writing",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
+        },
+        {
           "q": "What is paragraph?",
           "ans": "Unit of writing with one idea",
           "type": "text",
@@ -1222,7 +1511,7 @@ export const englishTopics = [
           "topic": "Paragraph writing",
           "conceptId": "english_writing_paragraph_writing",
           "skillId": "english_writing",
-          "subskillId": "english_writing_q4"
+          "subskillId": "english_writing_q5"
         },
         {
           "q": "What is topic sentence?",
@@ -1241,7 +1530,7 @@ export const englishTopics = [
           "topic": "Paragraph writing",
           "conceptId": "english_writing_paragraph_writing",
           "skillId": "english_writing",
-          "subskillId": "english_writing_q5"
+          "subskillId": "english_writing_q6"
         },
         {
           "q": "Why paragraphs are important?",
@@ -1260,7 +1549,25 @@ export const englishTopics = [
           "topic": "Paragraph writing",
           "conceptId": "english_writing_paragraph_writing",
           "skillId": "english_writing",
-          "subskillId": "english_writing_q6"
+          "subskillId": "english_writing_q7"
+        },
+        {
+          "q": "What should paragraph contain?",
+          "ans": "One main idea",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: focus point"
+          ],
+          "why": "writing rule",
+          "sol": "Step 1: focus point",
+          "hint": "one idea",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Paragraph writing",
+          "conceptId": "english_writing_paragraph_writing",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q8"
         }
       ]
     },
@@ -1331,6 +1638,24 @@ export const englishTopics = [
           "conceptId": "english_writing_coherence_and_cohesion",
           "skillId": "english_writing",
           "subskillId": "english_writing_q3"
+        },
+        {
+          "q": "What improves essay flow?",
+          "ans": "Cohesion",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: connect ideas"
+          ],
+          "why": "writing skill",
+          "sol": "Step 1: connect ideas",
+          "hint": "linking words",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Coherence and cohesion",
+          "conceptId": "english_writing_coherence_and_cohesion",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
         }
       ]
     },
@@ -1401,6 +1726,24 @@ export const englishTopics = [
           "conceptId": "english_writing_essay_marking",
           "skillId": "english_writing",
           "subskillId": "english_writing_q3"
+        },
+        {
+          "q": "Which part gives highest marks?",
+          "ans": "Content",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: ideas quality"
+          ],
+          "why": "marking weight",
+          "sol": "Step 1: ideas quality",
+          "hint": "content",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Essay marking",
+          "conceptId": "english_writing_essay_marking",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
         }
       ]
     },
@@ -1471,6 +1814,24 @@ export const englishTopics = [
           "conceptId": "english_writing_importance_of_essay_writing",
           "skillId": "english_writing",
           "subskillId": "english_writing_q3"
+        },
+        {
+          "q": "What improves writing skills?",
+          "ans": "Essay writing practice",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: regular writing"
+          ],
+          "why": "skill development",
+          "sol": "Step 1: regular writing",
+          "hint": "practice essays",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Importance of essay writing",
+          "conceptId": "english_writing_importance_of_essay_writing",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
         }
       ]
     },
@@ -1541,6 +1902,24 @@ export const englishTopics = [
           "conceptId": "english_writing_essay_structure",
           "skillId": "english_writing",
           "subskillId": "english_writing_q3"
+        },
+        {
+          "q": "What comes first in essay?",
+          "ans": "Introduction",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: opening section"
+          ],
+          "why": "order rule",
+          "sol": "Step 1: opening section",
+          "hint": "introduction",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Essay structure",
+          "conceptId": "english_writing_essay_structure",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
         }
       ]
     },
@@ -1611,6 +1990,24 @@ export const englishTopics = [
           "conceptId": "english_writing_narrative_essay",
           "skillId": "english_writing",
           "subskillId": "english_writing_q3"
+        },
+        {
+          "q": "Write structure of narrative essay",
+          "ans": "Beginning, Middle, End",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: arrange events"
+          ],
+          "why": "format rule",
+          "sol": "Step 1: arrange events",
+          "hint": "beginning middle end",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Narrative essay",
+          "conceptId": "english_writing_narrative_essay",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
         }
       ]
     },
@@ -1681,6 +2078,24 @@ export const englishTopics = [
           "conceptId": "english_writing_descriptive_essay",
           "skillId": "english_writing",
           "subskillId": "english_writing_q3"
+        },
+        {
+          "q": "Give example of descriptive writing",
+          "ans": "A beautiful sunny beach",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: describe scene"
+          ],
+          "why": "example skill",
+          "sol": "Step 1: describe scene",
+          "hint": "imagery",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Descriptive essay",
+          "conceptId": "english_writing_descriptive_essay",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
         }
       ]
     },
@@ -1751,6 +2166,24 @@ export const englishTopics = [
           "conceptId": "english_writing_argumentative_essay",
           "skillId": "english_writing",
           "subskillId": "english_writing_q3"
+        },
+        {
+          "q": "What is main purpose of argument essay?",
+          "ans": "To persuade reader",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: express opinion"
+          ],
+          "why": "writing goal",
+          "sol": "Step 1: express opinion",
+          "hint": "persuade",
+          "subject": "english",
+          "chapter": "writing",
+          "topic": "Argumentative essay",
+          "conceptId": "english_writing_argumentative_essay",
+          "skillId": "english_writing",
+          "subskillId": "english_writing_q4"
         }
       ]
     },
