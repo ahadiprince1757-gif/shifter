@@ -70,12 +70,25 @@ function LearnFlow({
     loop.setPhase(SESSION_PHASES.QUIZ);
   };
 
+  // Flatten all subtopics from a chapter's topics array
+  const flattenChapterSubtopics = (chap) => {
+    return (chap.topics || []).flatMap((t) => {
+      if (typeof t === "object" && t !== null && Array.isArray(t.subtopics)) {
+        return t.subtopics;
+      }
+      return [typeof t === "string" ? t : (t.name || "")];
+    });
+  };
+
   // Calculate next topic in curriculum
   const findNextTopic = () => {
     if (!subject || !chapter || !topic) return null;
-    const currentTopicIndex = chapter.topics?.indexOf(topic);
+
+    const allSubtopics = flattenChapterSubtopics(chapter);
+    const currentTopicIndex = allSubtopics.indexOf(topic);
+
     if (currentTopicIndex >= 0) {
-      const nextInChapter = chapter.topics
+      const nextInChapter = allSubtopics
         .slice(currentTopicIndex + 1)
         .find((t) => !mastered?.has(`${subject.id}|${chapter.id}|${t}`));
       if (nextInChapter) {
@@ -91,11 +104,13 @@ function LearnFlow({
       i < (subject.chapters?.length || 0);
       i += 1
     ) {
-      const nextTopic = subject.chapters[i].topics?.find(
-        (t) => !mastered?.has(`${subject.id}|${subject.chapters[i].id}|${t}`)
+      const chap = subject.chapters[i];
+      const chapSubtopics = flattenChapterSubtopics(chap);
+      const nextTopic = chapSubtopics.find(
+        (t) => !mastered?.has(`${subject.id}|${chap.id}|${t}`)
       );
       if (nextTopic) {
-        return { chapterId: subject.chapters[i].id, topic: nextTopic };
+        return { chapterId: chap.id, topic: nextTopic };
       }
     }
     return null;

@@ -8,241 +8,599 @@
         "id": "numbers",
         "label": "Numbers",
         "topics": [
-          "Number Systems",
-          "BODMAS / Order of Operations"
+          {
+            "name": "Number Systems",
+            "subtopics": [
+              "Number Systems"
+            ]
+          },
+          {
+            "name": "BODMAS / Order of Operations",
+            "subtopics": [
+              "BODMAS / Order of Operations"
+            ]
+          }
         ]
       },
       {
         "id": "algebra",
         "label": "Algebra",
         "topics": [
-          "Algebraic expressions",
-          "Simplifying expressions",
-          "Linear equations",
-          "Substitution",
-          "Expanding brackets"
+          {
+            "name": "Algebraic Expressions",
+            "subtopics": [
+              "Algebraic expressions"
+            ]
+          },
+          {
+            "name": "Simplifying Expressions",
+            "subtopics": [
+              "Simplifying expressions"
+            ]
+          },
+          {
+            "name": "Linear Equations",
+            "subtopics": [
+              "Linear equations"
+            ]
+          },
+          {
+            "name": "Substitution",
+            "subtopics": [
+              "Substitution"
+            ]
+          },
+          {
+            "name": "Expanding Brackets",
+            "subtopics": [
+              "Expanding brackets"
+            ]
+          }
         ]
       },
       {
         "id": "geometry",
         "label": "Geometry",
         "topics": [
-          "Classifying Angles",
-          "Angles on a Straight Line",
-          "Angles Around a Point",
-          "Vertically Opposite Angles",
-          "Parallel Lines and a Transversal",
-          "Triangle Angle Sum",
-          "Isosceles Triangle Base Angles",
-          "Exterior Angle of a Triangle",
-          "Classifying Triangles by Sides",
-          "Quadrilateral Interior Angle Sum",
-          "Parallelogram: Opposite Sides Are Equal",
-          "Parallelogram: Opposite Angles Are Equal",
-          "Parallelogram: Adjacent Angles",
-          "Circle: Radius and Diameter",
-          "Circumference of a Circle",
-          "Area of a Circle",
-          "Perimeter of a Rectangle",
-          "Perimeter of a Square",
-          "Perimeter of a Triangle",
-          "Area of a Rectangle",
-          "Area of a Square",
-          "Area of a Triangle",
-          "Area of a Parallelogram",
-          "Area of a Trapezium",
-          "Pythagoras' Theorem",
-          "Interior Angle Sum of Polygons",
-          "Exterior Angles of a Polygon"
+          {
+            "name": "Angle Properties",
+            "subtopics": [
+              "Classifying Angles",
+              "Angles on a Straight Line",
+              "Angles Around a Point",
+              "Vertically Opposite Angles",
+              "Parallel Lines and a Transversal"
+            ]
+          },
+          {
+            "name": "Triangles",
+            "subtopics": [
+              "Triangle Angle Sum",
+              "Isosceles Triangle Base Angles",
+              "Exterior Angle of a Triangle",
+              "Classifying Triangles by Sides",
+              "Pythagoras' Theorem"
+            ]
+          },
+          {
+            "name": "Quadrilaterals",
+            "subtopics": [
+              "Quadrilateral Interior Angle Sum",
+              "Parallelogram: Opposite Sides Are Equal",
+              "Parallelogram: Opposite Angles Are Equal",
+              "Parallelogram: Adjacent Angles"
+            ]
+          },
+          {
+            "name": "Circles",
+            "subtopics": [
+              "Circle: Radius and Diameter",
+              "Circumference of a Circle",
+              "Area of a Circle"
+            ]
+          },
+          {
+            "name": "Perimeter",
+            "subtopics": [
+              "Perimeter of a Rectangle",
+              "Perimeter of a Square",
+              "Perimeter of a Triangle"
+            ]
+          },
+          {
+            "name": "Area",
+            "subtopics": [
+              "Area of a Rectangle",
+              "Area of a Square",
+              "Area of a Triangle",
+              "Area of a Parallelogram",
+              "Area of a Trapezium"
+            ]
+          },
+          {
+            "name": "Polygons",
+            "subtopics": [
+              "Interior Angle Sum of Polygons",
+              "Exterior Angles of a Polygon"
+            ]
+          }
         ]
       },
       {
         "id": "fractions",
         "label": "Fractions & Decimals",
         "topics": [
-          "Understanding Fractions",
-          "Equivalent Fractions and Simplifying",
-          "Comparing Fractions",
-          "Adding and Subtracting Fractions",
-          "Multiplying Fractions",
-          "Dividing Fractions",
-          "Decimals and Fractions",
-          "Recurring Decimals"
+          {
+            "name": "Understanding Fractions",
+            "subtopics": [
+              "Understanding Fractions"
+            ]
+          },
+          {
+            "name": "Equivalent Fractions and Simplifying",
+            "subtopics": [
+              "Equivalent Fractions and Simplifying"
+            ]
+          },
+          {
+            "name": "Comparing Fractions",
+            "subtopics": [
+              "Comparing Fractions"
+            ]
+          },
+          {
+            "name": "Adding and Subtracting Fractions",
+            "subtopics": [
+              "Adding and Subtracting Fractions"
+            ]
+          },
+          {
+            "name": "Multiplying Fractions",
+            "subtopics": [
+              "Multiplying Fractions"
+            ]
+          },
+          {
+            "name": "Dividing Fractions",
+            "subtopics": [
+              "Dividing Fractions"
+            ]
+          },
+          {
+            "name": "Decimals and Fractions",
+            "subtopics": [
+              "Decimals and Fractions"
+            ]
+          },
+          {
+            "name": "Recurring Decimals",
+            "subtopics": [
+              "Recurring Decimals"
+            ]
+          }
         ]
       },
       {
         "id": "measurement",
         "label": "Measurement",
         "topics": [
-          "Area of Rectangles and Squares",
-          "Area of Triangles",
-          "Volume of Cubes and Cuboids",
-          "Surface Area of Cubes and Cuboids",
-          "Measurement Units and Dimensions"
+          {
+            "name": "Area of Rectangles and Squares",
+            "subtopics": [
+              "Area of Rectangles and Squares"
+            ]
+          },
+          {
+            "name": "Area of Triangles",
+            "subtopics": [
+              "Area of Triangles"
+            ]
+          },
+          {
+            "name": "Volume of Cubes and Cuboids",
+            "subtopics": [
+              "Volume of Cubes and Cuboids"
+            ]
+          },
+          {
+            "name": "Surface Area of Cubes and Cuboids",
+            "subtopics": [
+              "Surface Area of Cubes and Cuboids"
+            ]
+          },
+          {
+            "name": "Measurement Units and Dimensions",
+            "subtopics": [
+              "Measurement Units and Dimensions"
+            ]
+          }
         ]
       },
       {
         "id": "graphs",
         "label": "Graphs",
         "topics": [
-          "Coordinate plane basics",
-          "Plotting points",
-          "Line graphs",
-          "Gradient",
-          "Applications of graphs"
+          {
+            "name": "Coordinate Plane Basics",
+            "subtopics": [
+              "Coordinate plane basics"
+            ]
+          },
+          {
+            "name": "Plotting Points",
+            "subtopics": [
+              "Plotting points"
+            ]
+          },
+          {
+            "name": "Line Graphs",
+            "subtopics": [
+              "Line graphs"
+            ]
+          },
+          {
+            "name": "Gradient",
+            "subtopics": [
+              "Gradient"
+            ]
+          },
+          {
+            "name": "Applications of Graphs",
+            "subtopics": [
+              "Applications of graphs"
+            ]
+          }
         ]
       },
       {
         "id": "ratio",
         "label": "Ratio & Proportion",
         "topics": [
-          "Ratio basics",
-          "Dividing in ratio",
-          "Proportion",
-          "Direct proportion",
-          "Inverse proportion"
+          {
+            "name": "Ratio Basics",
+            "subtopics": [
+              "Ratio basics"
+            ]
+          },
+          {
+            "name": "Dividing in Ratio",
+            "subtopics": [
+              "Dividing in ratio"
+            ]
+          },
+          {
+            "name": "Proportion",
+            "subtopics": [
+              "Proportion"
+            ]
+          },
+          {
+            "name": "Direct Proportion",
+            "subtopics": [
+              "Direct proportion"
+            ]
+          },
+          {
+            "name": "Inverse Proportion",
+            "subtopics": [
+              "Inverse proportion"
+            ]
+          }
         ]
       },
       {
         "id": "statistics",
         "label": "Statistics",
         "topics": [
-          "Data & frequency tables",
-          "Mean",
-          "Median",
-          "Mode",
-          "Bar graphs"
+          {
+            "name": "Data & Frequency Tables",
+            "subtopics": [
+              "Data & frequency tables"
+            ]
+          },
+          {
+            "name": "Mean",
+            "subtopics": [
+              "Mean"
+            ]
+          },
+          {
+            "name": "Median",
+            "subtopics": [
+              "Median"
+            ]
+          },
+          {
+            "name": "Mode",
+            "subtopics": [
+              "Mode"
+            ]
+          },
+          {
+            "name": "Bar Graphs",
+            "subtopics": [
+              "Bar graphs"
+            ]
+          }
         ]
       },
       {
         "id": "probability",
         "label": "Probability",
         "topics": [
-          "Basic probability",
-          "Dice probability",
-          "Coin probability",
-          "Combined events",
-          "Bayes Theorem",
-          "Expected Value",
-          "Real life probability"
+          {
+            "name": "Basic Probability",
+            "subtopics": [
+              "Basic probability"
+            ]
+          },
+          {
+            "name": "Dice Probability",
+            "subtopics": [
+              "Dice probability"
+            ]
+          },
+          {
+            "name": "Coin Probability",
+            "subtopics": [
+              "Coin probability"
+            ]
+          },
+          {
+            "name": "Combined Events",
+            "subtopics": [
+              "Combined events"
+            ]
+          },
+          {
+            "name": "Bayes Theorem",
+            "subtopics": [
+              "Bayes Theorem"
+            ]
+          },
+          {
+            "name": "Expected Value",
+            "subtopics": [
+              "Expected Value"
+            ]
+          },
+          {
+            "name": "Real Life Probability",
+            "subtopics": [
+              "Real life probability"
+            ]
+          }
         ]
       },
       {
         "id": "complex_numbers",
         "label": "Complex Numbers",
         "topics": [
-          "Imaginary Unit and Basic Complex Numbers",
-          "Argand Diagram",
-          "Operations on Complex Numbers",
-          "Polar Form and De Moivre's Theorem"
+          {
+            "name": "Imaginary Unit and Basic Complex Numbers",
+            "subtopics": [
+              "Imaginary Unit and Basic Complex Numbers"
+            ]
+          },
+          {
+            "name": "Argand Diagram",
+            "subtopics": [
+              "Argand Diagram"
+            ]
+          },
+          {
+            "name": "Operations on Complex Numbers",
+            "subtopics": [
+              "Operations on Complex Numbers"
+            ]
+          },
+          {
+            "name": "Polar Form and De Moivre's Theorem",
+            "subtopics": [
+              "Polar Form and De Moivre's Theorem"
+            ]
+          }
         ]
       },
       {
         "id": "linear_programming",
         "label": "Linear Programming",
         "topics": [
-          "Meaning of a Variable in Linear Programming",
-          "Identifying Variables from a Problem",
-          "Non-Negativity Constraints",
-          "Meaning of an Objective Function",
-          "Identifying the Objective Function",
-          "Maximization",
-          "Minimization",
-          "Meaning of a Constraint",
-          "Translating 'At Most' into an Inequality",
-          "Translating 'At Least' into an Inequality",
-          "Translating 'Cannot Exceed' into an Inequality",
-          "Translating 'No More Than' into an Inequality",
-          "Translating 'Not Less Than' into an Inequality",
-          "Translating 'Minimum of' into an Inequality",
-          "Converting an Inequality to Its Boundary Equation",
-          "Finding the x-Intercept of a Boundary",
-          "Finding the y-Intercept of a Boundary",
-          "Finding Both Intercepts of a Boundary",
-          "Testing a Point in a Linear Inequality",
-          "Solid and Dashed Boundary Lines",
-          "Intersection of Two Boundary Lines",
-          "Substitution Method for Finding an Intersection",
-          "Elimination Method for Finding an Intersection",
-          "A Vertex Is an Intersection Point",
-          "Checking Whether an Intersection Is Feasible",
-          "Objective Function Value at a Point",
-          "Comparing Objective Values",
-          "Maximum Objective Value",
-          "Minimum Objective Value",
-          "Optimal Solution Coordinates"
+          {
+            "name": "Introduction to Linear Programming",
+            "subtopics": [
+              "Meaning of a Variable in Linear Programming",
+              "Identifying Variables from a Problem",
+              "Meaning of an Objective Function",
+              "Identifying the Objective Function",
+              "Maximization",
+              "Minimization"
+            ]
+          },
+          {
+            "name": "Linear Inequality Constraints",
+            "subtopics": [
+              "Non-Negativity Constraints",
+              "Meaning of a Constraint",
+              "Translating 'At Most' into an Inequality",
+              "Translating 'At Least' into an Inequality",
+              "Translating 'Cannot Exceed' into an Inequality",
+              "Translating 'No More Than' into an Inequality",
+              "Translating 'Not Less Than' into an Inequality",
+              "Translating 'Minimum of' into an Inequality"
+            ]
+          },
+          {
+            "name": "Graphical Method & Boundaries",
+            "subtopics": [
+              "Converting an Inequality to Its Boundary Equation",
+              "Finding the x-Intercept of a Boundary",
+              "Finding the y-Intercept of a Boundary",
+              "Finding Both Intercepts of a Boundary",
+              "Testing a Point in a Linear Inequality",
+              "Solid and Dashed Boundary Lines"
+            ]
+          },
+          {
+            "name": "Feasible Region & Vertices",
+            "subtopics": [
+              "Intersection of Two Boundary Lines",
+              "Substitution Method for Finding an Intersection",
+              "Elimination Method for Finding an Intersection",
+              "A Vertex Is an Intersection Point",
+              "Checking Whether an Intersection Is Feasible"
+            ]
+          },
+          {
+            "name": "Optimization at Corner Points",
+            "subtopics": [
+              "Objective Function Value at a Point",
+              "Comparing Objective Values",
+              "Maximum Objective Value",
+              "Minimum Objective Value",
+              "Optimal Solution Coordinates"
+            ]
+          }
         ]
       },
       {
         "id": "matrices",
         "label": "Matrices",
         "topics": [
-          "Introduction to Matrices",
-          "Order of a Matrix",
-          "Elements of a Matrix",
-          "Types of Matrices",
-          "Equality of Matrices",
-          "Matrix Addition",
-          "Matrix Subtraction",
-          "Scalar Multiplication",
-          "Reflection in the x-axis",
-          "Reflection in the y-axis",
-          "Reflection in the Line y = x"
+          {
+            "name": "Matrix 1: Fundamentals",
+            "subtopics": [
+              "Introduction to Matrices",
+              "Order of a Matrix",
+              "Elements of a Matrix",
+              "Types of Matrices",
+              "Equality of Matrices"
+            ]
+          },
+          {
+            "name": "Matrix Arithmetic",
+            "subtopics": [
+              "Matrix Addition",
+              "Matrix Subtraction",
+              "Scalar Multiplication"
+            ]
+          },
+          {
+            "name": "Matrix Transformations",
+            "subtopics": [
+              "Reflection in the x-axis",
+              "Reflection in the y-axis",
+              "Reflection in the Line y = x"
+            ]
+          }
         ]
       },
       {
         "id": "vectors",
         "label": "Vectors",
         "topics": [
-          "Vector Notation",
-          "Magnitude and Direction",
-          "Vector Addition and Subtraction",
-          "Dot Product (Scalar Product)",
-          "Applications of Vectors"
+          {
+            "name": "Vector Notation",
+            "subtopics": [
+              "Vector Notation"
+            ]
+          },
+          {
+            "name": "Magnitude and Direction",
+            "subtopics": [
+              "Magnitude and Direction"
+            ]
+          },
+          {
+            "name": "Vector Addition and Subtraction",
+            "subtopics": [
+              "Vector Addition and Subtraction"
+            ]
+          },
+          {
+            "name": "Dot Product (Scalar Product)",
+            "subtopics": [
+              "Dot Product (Scalar Product)"
+            ]
+          },
+          {
+            "name": "Applications of Vectors",
+            "subtopics": [
+              "Applications of Vectors"
+            ]
+          }
         ]
       },
       {
-        "id": "limits",
-        "label": "Limits",
+        "id": "calculus",
+        "label": "Calculus",
         "topics": [
-          "Concept of Limits",
-          "Left-Hand and Right-Hand Limits",
-          "Indeterminate Forms",
-          "One-Sided Limit Problems",
-          "Applications of Limits"
-        ]
-      },
-      {
-        "id": "differentiation",
-        "label": "Differentiation",
-        "topics": [
-          "Gradient of a Curve",
-          "Rate of Change",
-          "Maxima and Minima",
-          "Tangents and Normals",
-          "Applications of Differentiation"
-        ]
-      },
-      {
-        "id": "integration",
-        "label": "Integration",
-        "topics": [
-          "Area Under a Curve",
-          "Indefinite Integrals",
-          "Definite Integrals",
-          "Integration as Reverse of Differentiation",
-          "Applications of Integration"
+          {
+            "name": "Limits",
+            "subtopics": [
+              "Concept of Limits",
+              "Left-Hand and Right-Hand Limits",
+              "Indeterminate Forms",
+              "One-Sided Limit Problems",
+              "Applications of Limits"
+            ]
+          },
+          {
+            "name": "Differentiation",
+            "subtopics": [
+              "Gradient of a Curve",
+              "Rate of Change",
+              "Maxima and Minima",
+              "Tangents and Normals",
+              "Applications of Differentiation"
+            ]
+          },
+          {
+            "name": "Integration",
+            "subtopics": [
+              "Area Under a Curve",
+              "Indefinite Integrals",
+              "Definite Integrals",
+              "Integration as Reverse of Differentiation",
+              "Applications of Integration"
+            ]
+          }
         ]
       },
       {
         "id": "number_theory",
         "label": "Number Theory",
         "topics": [
-          "Divisibility Rules",
-          "Modular Arithmetic",
-          "Prime Numbers",
-          "Congruence Relations",
-          "Cryptography Basics"
+          {
+            "name": "Divisibility Rules",
+            "subtopics": [
+              "Divisibility Rules"
+            ]
+          },
+          {
+            "name": "Modular Arithmetic",
+            "subtopics": [
+              "Modular Arithmetic"
+            ]
+          },
+          {
+            "name": "Prime Numbers",
+            "subtopics": [
+              "Prime Numbers"
+            ]
+          },
+          {
+            "name": "Congruence Relations",
+            "subtopics": [
+              "Congruence Relations"
+            ]
+          },
+          {
+            "name": "Cryptography Basics",
+            "subtopics": [
+              "Cryptography Basics"
+            ]
+          }
         ]
       }
     ]

@@ -205,22 +205,42 @@ function loadCanonicalCurriculum() {
 
   global.add = (...args) => {
     const sid = String(args[0] || "").toLowerCase().trim();
-    let cid, topic, notes, qs;
+    if (!CANONICAL_SUBJECT_IDS.includes(sid)) return;
+
+    let cid, topic, notes, qs, topicGroup;
 
     if (sid === "math") {
       const rawQs = args[args.length - 1];
       const rawNotes = args[args.length - 2];
-      topic = String(args[args.length - 3] || "").trim();
-      if (args[1] === "Calculus") {
-        cid = String(args[2] || "").trim();
-      } else {
-        cid = String(args[1] || "").trim();
+      const pathParts = args.slice(1, args.length - 2).map((s) => String(s).trim());
+
+      cid = (pathParts[0] || "").toLowerCase();
+      if (cid === "calculus" || cid === "limits") {
+        cid = "calculus";
+        if (pathParts[0] === "limits") {
+          topicGroup = "Limits";
+          topic = pathParts[1];
+        } else {
+          topicGroup = pathParts[1];
+          topic = pathParts[2];
+        }
+      } else if (pathParts.length === 2) {
+        topic = pathParts[1];
+        topicGroup = pathParts[1];
+      } else if (pathParts.length === 3) {
+        topicGroup = pathParts[1];
+        topic = pathParts[2];
+      } else if (pathParts.length >= 4) {
+        topicGroup = pathParts[1];
+        topic = pathParts[pathParts.length - 1];
       }
+
       notes = typeof rawNotes === "string" ? rawNotes : "";
       qs = Array.isArray(rawQs) ? rawQs : (rawQs ? [rawQs] : []);
     } else {
       cid = String(args[1] || "").trim();
       topic = String(args[2] || "").trim();
+      topicGroup = topic;
       notes = typeof args[3] === "string" ? args[3] : (Array.isArray(args[3]) ? args[3].join("\n") : String(args[3] || ""));
       let rawQs = args[4] || [];
       if (!Array.isArray(rawQs) && rawQs) rawQs = [rawQs];
@@ -237,7 +257,7 @@ function loadCanonicalCurriculum() {
       existing.notes = existing.notes + "\n<hr>\n" + notes;
       existing.rawQs = existing.rawQs.concat(qs);
     } else {
-      contentMap.set(key, { sid, cid, topic, notes, rawQs: qs });
+      contentMap.set(key, { sid, cid, topic, topicGroup, notes, rawQs: qs });
     }
   };
 
@@ -255,15 +275,22 @@ function loadCanonicalCurriculum() {
   let totalTopics = 0;
   const auditErrors = [];
 
-  activeSubjects.forEach(subj => {
-    (subj.chapters || []).forEach(chap => {
+  activeSubjects.forEach((subj) => {
+    (subj.chapters || []).forEach((chap) => {
       totalChapters++;
-      (chap.topics || []).forEach(top => {
-        totalTopics++;
-        const key = `${subj.id}/${chap.id}/${String(top).trim()}`;
-        if (!contentMap.has(key)) {
-          auditErrors.push(`MISSING CONTENT: Canonical topic [${key}] has no content defined in subject JS files.`);
-        }
+      (chap.topics || []).forEach((topItem) => {
+        const subtopics =
+          typeof topItem === "object" && topItem !== null && Array.isArray(topItem.subtopics)
+            ? topItem.subtopics
+            : [typeof topItem === "object" && topItem !== null ? (topItem.name || "") : String(topItem)];
+
+        subtopics.forEach((sub) => {
+          totalTopics++;
+          const key = `${subj.id}/${chap.id}/${String(sub).trim()}`;
+          if (!contentMap.has(key)) {
+            auditErrors.push(`MISSING CONTENT: Canonical topic [${key}] has no content defined in subject JS files.`);
+          }
+        });
       });
     });
   });
@@ -274,10 +301,22 @@ function loadCanonicalCurriculum() {
     const secondSlash = key.indexOf("/", firstSlash + 1);
     const sid = key.substring(0, firstSlash);
     const cid = key.substring(firstSlash + 1, secondSlash);
-    const top = key.substring(secondSlash + 1);
-    const subj = activeSubjects.find(s => s.id === sid);
-    const chap = subj ? (subj.chapters || []).find(c => c.id === cid) : null;
-    const exists = chap ? (chap.topics || []).some(t => String(t).trim().toLowerCase() === top.toLowerCase()) : false;
+    const sub = key.substring(secondSlash + 1);
+    const subj = activeSubjects.find((s) => s.id === sid);
+    const chap = subj ? (subj.chapters || []).find((c) => c.id === cid) : null;
+    let exists = false;
+    if (chap && chap.topics) {
+      for (const topItem of chap.topics) {
+        const subtopics =
+          typeof topItem === "object" && topItem !== null && Array.isArray(topItem.subtopics)
+            ? topItem.subtopics
+            : [typeof topItem === "object" && topItem !== null ? (topItem.name || "") : String(topItem)];
+        if (subtopics.some((s) => String(s).trim().toLowerCase() === sub.toLowerCase())) {
+          exists = true;
+          break;
+        }
+      }
+    }
     if (!exists) {
       auditErrors.push(`ORPHAN CONTENT: [${key}] is present in subject JS files but not declared in canonical curriculum.json.`);
     }

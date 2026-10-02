@@ -9,6 +9,7 @@ export const mathTopics = [
     "id": "math|numbers|Number Systems",
     "curriculum_id": "math",
     "chapter_id": "numbers",
+    "topic_group": "Number Systems",
     "topic": "Number Systems",
     "data": {
       "notes": "<h2>Number Systems</h2>\n<hr>\n\n<h3>DEEP NOTES</h3>\n\n<h4>1. What Is a Number System?</h4>\n<p>\nA number system is a way of classifying numbers according to their properties.\nDifferent types of numbers form groups, and some groups are contained inside others.\n</p>\n\n<p>\nThe main number types we use here are:\n</p>\n\n<ul>\n<li><b>Natural Numbers</b></li>\n<li><b>Whole Numbers</b></li>\n<li><b>Integers</b></li>\n</ul>\n\n<hr>\n\n<h4>2. Natural Numbers</h4>\n\n<p>\nNatural numbers are the positive counting numbers:\n</p>\n\n<pre>\n1, 2, 3, 4, 5, 6, ...\n</pre>\n\n<p>\nThey are used when counting from 1 upward.\nIn this classification, <b>0 is not a natural number</b>.\n</p>\n\n<p><b>Examples:</b></p>\n\n<pre>\n1, 7, 25, 100\n</pre>\n\n<p>\nare natural numbers.\n</p>\n\n<p>\nNumbers such as <b>-3</b>, <b>0</b>, and <b>1/2</b> are not natural numbers.\n</p>\n\n<hr>\n\n<h4>3. Whole Numbers</h4>\n\n<p>\nWhole numbers are the natural numbers together with zero.\n</p>\n\n<pre>\n0, 1, 2, 3, 4, 5, ...\n</pre>\n\n<p>\nThe important difference is that <b>whole numbers include 0</b>.\n</p>\n\n<p><b>Examples:</b></p>\n\n<pre>\n0, 4, 15, 200\n</pre>\n\n<hr>\n\n<h4>4. Integers</h4>\n\n<p>\nIntegers include negative numbers, zero, and positive numbers.\n</p>\n\n<pre>\n..., -4, -3, -2, -1, 0, 1, 2, 3, 4, ...\n</pre>\n\n<p>\nIntegers do not include fractions or decimals such as\n<code>1/2</code> or <code>2.5</code>.\n</p>\n\n<p>\nThe symbol for the set of integers is <b>ℤ</b>.\n</p>\n\n<hr>\n\n<h4>5. How the Number Sets Are Related</h4>\n\n<p>\nThe number sets build upon one another:\n</p>\n\n<pre>\nNatural Numbers ⊂ Whole Numbers ⊂ Integers\n</pre>\n\n<p>\nThis means every natural number is a whole number, and every whole number is an integer.\n</p>\n\n<p><b>For example:</b></p>\n\n<pre>\n5 → Natural → Whole → Integer\n0 → Whole → Integer\n-5 → Integer\n</pre>\n\n<p>\nHowever, the reverse is not always true.\nFor example, <b>-5</b> is an integer but is not a whole number.\n</p>\n\n<hr>\n\n<h4>6. Positive, Negative and Zero</h4>\n\n<p>\nNumbers greater than zero are <b>positive</b>.\nNumbers less than zero are <b>negative</b>.\nZero is <b>neither positive nor negative</b>.\n</p>\n\n<pre>\nPositive:  1, 2, 3, 4, ...\nZero:      0\nNegative: -1, -2, -3, -4, ...\n</pre>\n\n<hr>\n\n<h4>7. Comparing Integers</h4>\n\n<p>\nWhen comparing integers, a number farther to the right on the number line is greater.\n</p>\n\n<pre>\n-5  -4  -3  -2  -1   0   1   2   3   4   5\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\n5 > 2\n2 > -1\n-1 > -4\n-4 > -7\n</pre>\n\n<p>\nA common mistake is thinking that <b>-7 is greater than -3</b> because 7 is greater than 3.\nFor negative numbers, the number closer to zero is greater.\n</p>\n\n<hr>\n\n<h4>8. Basic Operations with Integers</h4>\n\n<p>\nIntegers can be added, subtracted, multiplied, and divided.\n</p>\n\n<h5>Addition</h5>\n\n<pre>\n5 + 3 = 8\n-5 + 3 = -2\n-5 + (-3) = -8\n</pre>\n\n<h5>Subtraction</h5>\n\n<pre>\n7 - 4 = 3\n4 - 7 = -3\n-3 - 2 = -5\n</pre>\n\n<h5>Multiplication</h5>\n\n<pre>\n4 × 3 = 12\n-4 × 3 = -12\n-4 × -3 = 12\n</pre>\n\n<h5>Division</h5>\n\n<pre>\n12 ÷ 3 = 4\n-12 ÷ 3 = -4\n-12 ÷ -3 = 4\n</pre>\n\n<hr>\n\n<h4>9. Sign Rules for Multiplication and Division</h4>\n\n<p>\nWhen multiplying or dividing integers:\n</p>\n\n<pre>\nPositive × Positive = Positive\nNegative × Negative = Positive\nPositive × Negative = Negative\nNegative × Positive = Negative\n</pre>\n\n<p>\nThe same sign rule applies to division.\n</p>\n\n<hr>\n\n<h4>10. Key Ideas to Remember</h4>\n\n<ul>\n<li>Natural numbers start at 1.</li>\n<li>Whole numbers include 0.</li>\n<li>Integers include negative numbers, 0, and positive numbers.</li>\n<li>0 is neither positive nor negative.</li>\n<li>Every natural number is a whole number.</li>\n<li>Every whole number is an integer.</li>\n<li>Negative numbers closer to zero are greater.</li>\n<li>For multiplication and division, two equal signs give a positive result and two different signs give a negative result.</li>\n</ul>\n",
@@ -226,6 +227,7 @@ export const mathTopics = [
     "id": "math|numbers|BODMAS / Order of Operations",
     "curriculum_id": "math",
     "chapter_id": "numbers",
+    "topic_group": "BODMAS / Order of Operations",
     "topic": "BODMAS / Order of Operations",
     "data": {
       "notes": "<h2>BODMAS / Order of Operations</h2>\n<hr>\n\n<h3>DEEP NOTES</h3>\n\n<h4>1. Why Do We Need an Order?</h4>\n\n<p>\nWhen an expression contains more than one operation, we need a fixed order for performing the operations.\nOtherwise, different people could get different answers from the same expression.\n</p>\n\n<p>\nFor example:\n</p>\n\n<pre>\n6 + 2 × 3\n</pre>\n\n<p>\nWe do not simply calculate from left to right.\nMultiplication must be performed before addition.\n</p>\n\n<pre>\n6 + 2 × 3\n= 6 + 6\n= 12\n</pre>\n\n<hr>\n\n<h4>2. What Does BODMAS Mean?</h4>\n\n<pre>\nB → Brackets\nO → Orders\nD → Division\nM → Multiplication\nA → Addition\nS → Subtraction\n</pre>\n\n<p>\nBODMAS tells us the priority of operations.\n</p>\n\n<p>\nThe order is:\n</p>\n\n<ol>\n<li><b>Brackets</b></li>\n<li><b>Orders</b> such as powers and roots</li>\n<li><b>Division and Multiplication</b></li>\n<li><b>Addition and Subtraction</b></li>\n</ol>\n\n<hr>\n\n<h4>3. Brackets</h4>\n\n<p>\nOperations inside brackets are completed before operations outside the brackets.\n</p>\n\n<pre>\n(5 + 3) × 2\n</pre>\n\n<p>\nFirst calculate the brackets:\n</p>\n\n<pre>\n(5 + 3) × 2\n= 8 × 2\n= 16\n</pre>\n\n<hr>\n\n<h4>4. Orders</h4>\n\n<p>\nOrders include powers, squares, cubes, and roots.\nThey are performed after brackets and before multiplication, division, addition, or subtraction.\n</p>\n\n<p><b>Example:</b></p>\n\n<pre>\n3 + 2²\n</pre>\n\n<p>\nFirst calculate the order:\n</p>\n\n<pre>\n2² = 4\n</pre>\n\n<p>\nThen add:\n</p>\n\n<pre>\n3 + 4 = 7\n</pre>\n\n<hr>\n\n<h4>5. Division and Multiplication</h4>\n\n<p>\nDivision and multiplication have the <b>same priority</b>.\nIf both appear in an expression, work from <b>left to right</b>.\n</p>\n\n<p><b>Example:</b></p>\n\n<pre>\n24 ÷ 3 × 2\n</pre>\n\n<p>\nWork from left to right:\n</p>\n\n<pre>\n24 ÷ 3 = 8\n8 × 2 = 16\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\n24 ÷ 3 × 2 = 16\n</pre>\n\n<p>\nDo not automatically perform multiplication before division.\nThey have equal priority.\n</p>\n\n<hr>\n\n<h4>6. Addition and Subtraction</h4>\n\n<p>\nAddition and subtraction also have the <b>same priority</b>.\nWhen both appear together, work from <b>left to right</b>.\n</p>\n\n<p><b>Example:</b></p>\n\n<pre>\n15 - 6 + 2\n</pre>\n\n<pre>\n15 - 6 = 9\n9 + 2 = 11\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\n15 - 6 + 2 = 11\n</pre>\n\n<hr>\n\n<h4>7. A Complete BODMAS Example</h4>\n\n<p>Consider:</p>\n\n<pre>\n8 + 2 × (5 - 3)²\n</pre>\n\n<p><b>Step 1: Brackets</b></p>\n\n<pre>\n(5 - 3) = 2\n</pre>\n\n<p>So:</p>\n\n<pre>\n8 + 2 × 2²\n</pre>\n\n<p><b>Step 2: Orders</b></p>\n\n<pre>\n2² = 4\n</pre>\n\n<p>So:</p>\n\n<pre>\n8 + 2 × 4\n</pre>\n\n<p><b>Step 3: Multiplication</b></p>\n\n<pre>\n2 × 4 = 8\n</pre>\n\n<p>So:</p>\n\n<pre>\n8 + 8\n</pre>\n\n<p><b>Step 4: Addition</b></p>\n\n<pre>\n8 + 8 = 16\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\n8 + 2 × (5 - 3)² = 16\n</pre>\n\n<hr>\n\n<h4>8. Nested Brackets</h4>\n\n<p>\nWhen brackets appear inside other brackets, solve the innermost brackets first.\n</p>\n\n<p><b>Example:</b></p>\n\n<pre>\n2 × [3 + (4 - 1)]\n</pre>\n\n<p>\nFirst solve the inner bracket:\n</p>\n\n<pre>\n4 - 1 = 3\n</pre>\n\n<p>\nThen:\n</p>\n\n<pre>\n2 × [3 + 3]\n= 2 × 6\n= 12\n</pre>\n\n<hr>\n\n<h4>9. The Left-to-Right Rule</h4>\n\n<p>\nBODMAS does not mean that multiplication is always done before division.\nIt also does not mean that addition is always done before subtraction.\n</p>\n\n<p>\nOperations with the same priority are performed from <b>left to right</b>.\n</p>\n\n<pre>\nDivision ↔ Multiplication\nAddition ↔ Subtraction\n</pre>\n\n<p><b>Example:</b></p>\n\n<pre>\n18 ÷ 3 × 2\n</pre>\n\n<p>\nLeft to right:\n</p>\n\n<pre>\n18 ÷ 3 = 6\n6 × 2 = 12\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\n18 ÷ 3 × 2 = 12\n</pre>\n\n<hr>\n\n<h4>10. Common Mistakes</h4>\n\n<ul>\n<li>Doing everything from left to right without considering priority.</li>\n<li>Adding before multiplying.</li>\n<li>Multiplying before division even when division appears first.</li>\n<li>Adding before subtraction even when subtraction appears first.</li>\n<li>Ignoring brackets.</li>\n<li>Forgetting to calculate powers before multiplication.</li>\n</ul>\n\n<hr>\n\n<h4>11. Key Idea</h4>\n\n<p>\nBODMAS is a method for deciding <b>which operation comes next</b>.\nIt does not change the operations themselves.\n</p>\n\n<p>\nRemember:\n</p>\n\n<pre>\nBrackets\n↓\nOrders\n↓\nDivision / Multiplication (left to right)\n↓\nAddition / Subtraction (left to right)\n</pre>\n",
@@ -435,6 +437,7 @@ export const mathTopics = [
     "id": "math|complex_numbers|Imaginary Unit and Basic Complex Numbers",
     "curriculum_id": "math",
     "chapter_id": "complex_numbers",
+    "topic_group": "Imaginary Unit and Basic Complex Numbers",
     "topic": "Imaginary Unit and Basic Complex Numbers",
     "data": {
       "notes": "\n<h2>Imaginary Unit and Basic Complex Numbers</h2>\n\n<h3>DEEP NOTES</h3>\n\n<h4>1. The Imaginary Unit</h4>\n\n<p>\nThe imaginary unit is represented by the letter <b>i</b>.\nIt is defined by the rule:\n</p>\n\n<pre>\ni² = -1\n</pre>\n\n<p>\nThis means that <b>i</b> is a number whose square is -1.\nWe also write:\n</p>\n\n<pre>\ni = √(-1)\n</pre>\n\n<p>\nThe important rule to remember is:\n</p>\n\n<pre>\ni² = -1\n</pre>\n\n<p>\nDo not treat <b>i</b> as an ordinary variable. It is a special number defined by this property.\n</p>\n\n<hr>\n\n<h4>2. What Is a Complex Number?</h4>\n\n<p>\nA complex number has the form:\n</p>\n\n<pre>\nz = a + bi\n</pre>\n\n<p>\nwhere <b>a</b> and <b>b</b> are real numbers and <b>i² = -1</b>.\n</p>\n\n<p>\nThe number has two parts:\n</p>\n\n<pre>\nz = a + bi\n    ↓   ↓\n  real imaginary\n  part   part\n</pre>\n\n<p>\n<b>a</b> is called the <b>real part</b>.\n</p>\n\n<p>\n<b>b</b> is called the <b>imaginary coefficient</b>.\nThe complete term <b>bi</b> is the imaginary part.\n</p>\n\n<p>\nFor example:\n</p>\n\n<pre>\nz = 5 + 3i\n</pre>\n\n<p>\nReal part = <b>5</b>\n</p>\n\n<p>\nImaginary part = <b>3i</b>\n</p>\n\n<p>\nImaginary coefficient = <b>3</b>\n</p>\n\n<hr>\n\n<h4>3. Purely Real and Purely Imaginary Numbers</h4>\n\n<p>\nA complex number does not always have to contain both parts.\n</p>\n\n<p>\nIf the imaginary part is zero, the number is purely real.\n</p>\n\n<pre>\n5 + 0i = 5\n</pre>\n\n<p>\nIf the real part is zero, the number is purely imaginary.\n</p>\n\n<pre>\n0 + 4i = 4i\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<ul>\n<li><b>5</b> is a real number and can also be written as a complex number.</li>\n<li><b>4i</b> is a purely imaginary number.</li>\n<li><b>5 + 4i</b> has both a real and an imaginary part.</li>\n</ul>\n\n<hr>\n\n<h4>4. Simplifying Powers of i</h4>\n\n<p>\nBecause <b>i² = -1</b>, higher powers of i can be simplified.\n</p>\n\n<pre>\ni¹ = i\n\ni² = -1\n\ni³ = i² × i\n   = -1 × i\n   = -i\n\ni⁴ = i² × i²\n   = (-1)(-1)\n   = 1\n</pre>\n\n<p>\nAfter <b>i⁴ = 1</b>, the pattern repeats:\n</p>\n\n<pre>\ni, -1, -i, 1, i, -1, -i, 1, ...\n</pre>\n\n<p>\nThis repeating pattern makes higher powers of <b>i</b> easier to simplify.\n</p>\n\n<hr>\n\n<h4>5. Identifying the Parts of a Complex Number</h4>\n\n<p>\nFor a complex number:\n</p>\n\n<pre>\nz = a + bi\n</pre>\n\n<p>\nremember:\n</p>\n\n<pre>\nReal part = a\nImaginary part = bi\nImaginary coefficient = b\n</pre>\n\n<p>\nFor example:\n</p>\n\n<pre>\nz = -7 + 2i\n</pre>\n\n<p>\nReal part = <b>-7</b>\n</p>\n\n<p>\nImaginary part = <b>2i</b>\n</p>\n\n<p>\nImaginary coefficient = <b>2</b>\n</p>\n\n<hr>\n\n<h4>6. Key Ideas</h4>\n\n<ul>\n<li><b>i² = -1</b> is the fundamental rule.</li>\n<li>A complex number is written as <b>a + bi</b>.</li>\n<li><b>a</b> is the real part.</li>\n<li><b>bi</b> is the imaginary part.</li>\n<li>The coefficient of <b>i</b> is the imaginary coefficient.</li>\n<li>A number can be purely real, purely imaginary, or contain both parts.</li>\n<li>Powers of <b>i</b> repeat in a cycle of four.</li>\n</ul>\n",
@@ -603,6 +606,7 @@ export const mathTopics = [
     "id": "math|complex_numbers|Argand Diagram",
     "curriculum_id": "math",
     "chapter_id": "complex_numbers",
+    "topic_group": "Argand Diagram",
     "topic": "Argand Diagram",
     "data": {
       "notes": "\n<h2>Argand Diagram</h2>\n\n<h3>DEEP NOTES</h3>\n\n<h4>1. What Is an Argand Diagram?</h4>\n\n<p>\nAn Argand diagram is a coordinate plane used to represent complex numbers.\nInstead of writing a complex number only as <b>a + bi</b>, we can represent it as a point.\n</p>\n\n<p>\nFor:\n</p>\n\n<pre>\nz = a + bi\n</pre>\n\n<p>\nthe corresponding point is:\n</p>\n\n<pre>\n(a, b)\n</pre>\n\n<p>\nThe real part gives the horizontal coordinate.\nThe imaginary coefficient gives the vertical coordinate.\n</p>\n\n<hr>\n\n<h4>2. The Two Axes</h4>\n\n<pre>\nHorizontal axis → Real axis\nVertical axis   → Imaginary axis\n</pre>\n\n<p>\nThe horizontal axis represents the real part.\n</p>\n\n<p>\nThe vertical axis represents the coefficient of the imaginary part.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<pre>\na + bi → (a, b)\n</pre>\n\n<p>\nNotice that the coordinate uses <b>b</b>, not <b>bi</b>.\n</p>\n\n<hr>\n\n<h4>3. Plotting a Complex Number</h4>\n\n<p>\nConsider:\n</p>\n\n<pre>\nz = 3 + 4i\n</pre>\n\n<p>\nFirst identify the two parts:\n</p>\n\n<pre>\nReal part = 3\nImaginary coefficient = 4\n</pre>\n\n<p>\nTherefore the coordinate is:\n</p>\n\n<pre>\n(3, 4)\n</pre>\n\n<p>\nTo locate the point, move 3 units along the real axis and 4 units along the imaginary axis.\n</p>\n\n<hr>\n\n<h4>4. Negative Coordinates</h4>\n\n<p>\nThe signs of the real and imaginary parts determine the position of the point.\n</p>\n\n<p>\nFor example:\n</p>\n\n<pre>\nz = -3 + 2i\n</pre>\n\n<p>\nThe coordinate is:\n</p>\n\n<pre>\n(-3, 2)\n</pre>\n\n<p>\nThe negative real part places the point to the left of the origin.\nThe positive imaginary coefficient places it above the real axis.\n</p>\n\n<p>\nAnother example:\n</p>\n\n<pre>\nz = 4 - 5i\n</pre>\n\n<p>\nThe coordinate is:\n</p>\n\n<pre>\n(4, -5)\n</pre>\n\n<p>\nThe positive real part places the point to the right.\nThe negative imaginary coefficient places it below the real axis.\n</p>\n\n<hr>\n\n<h4>5. The Origin</h4>\n\n<p>\nThe complex number:\n</p>\n\n<pre>\n0 + 0i\n</pre>\n\n<p>\ncorresponds to:\n</p>\n\n<pre>\n(0, 0)\n</pre>\n\n<p>\nThis is the origin of the Argand diagram.\n</p>\n\n<hr>\n\n<h4>6. The Four Regions</h4>\n\n<p>\nThe signs of the real and imaginary parts determine which region contains the point.\n</p>\n\n<pre>\n(+,+) → upper right\n(-,+) → upper left\n(-,-) → lower left\n(+,-) → lower right\n</pre>\n\n<p>\nFor example:\n</p>\n\n<pre>\n2 + 3i  → (2,3)   → upper right\n\n-2 + 3i → (-2,3)  → upper left\n\n-2 - 3i → (-2,-3) → lower left\n\n2 - 3i  → (2,-3)  → lower right\n</pre>\n\n<hr>\n\n<h4>7. Key Rule</h4>\n\n<p>\nWhenever you are asked to represent:\n</p>\n\n<pre>\nz = a + bi\n</pre>\n\n<p>\nsimply convert it to:\n</p>\n\n<pre>\n(a, b)\n</pre>\n\n<p>\nThen remember:\n</p>\n\n<pre>\na → horizontal / real axis\nb → vertical / imaginary axis\n</pre>\n",
@@ -754,6 +758,7 @@ export const mathTopics = [
     "id": "math|complex_numbers|Operations on Complex Numbers",
     "curriculum_id": "math",
     "chapter_id": "complex_numbers",
+    "topic_group": "Operations on Complex Numbers",
     "topic": "Operations on Complex Numbers",
     "data": {
       "notes": "\n<h2>Operations on Complex Numbers</h2>\n\n<h3>DEEP NOTES</h3>\n\n<h4>1. Adding Complex Numbers</h4>\n\n<p>\nTo add complex numbers, add the real parts together and add the imaginary parts together.\n</p>\n\n<p>\nFor:\n</p>\n\n<pre>\n(a + bi) + (c + di)\n</pre>\n\n<p>\nthe result is:\n</p>\n\n<pre>\n(a + c) + (b + d)i\n</pre>\n\n<p><b>Example:</b></p>\n\n<pre>\n(3 + 2i) + (4 + 5i)\n\n= (3 + 4) + (2 + 5)i\n\n= 7 + 7i\n</pre>\n\n<p>\nOnly like terms are combined:\nreal terms with real terms, and imaginary terms with imaginary terms.\n</p>\n\n<hr>\n\n<h4>2. Subtracting Complex Numbers</h4>\n\n<p>\nSubtraction follows the same idea.\nSubtract the real parts and subtract the imaginary parts.\n</p>\n\n<pre>\n(a + bi) - (c + di)\n= (a - c) + (b - d)i\n</pre>\n\n<p><b>Example:</b></p>\n\n<pre>\n(7 + 5i) - (2 + 3i)\n\n= (7 - 2) + (5 - 3)i\n\n= 5 + 2i\n</pre>\n\n<hr>\n\n<h4>3. Multiplying Complex Numbers</h4>\n\n<p>\nWhen multiplying complex numbers, use the distributive law.\nFOIL can also be used when both numbers have two terms.\n</p>\n\n<p>\nConsider:\n</p>\n\n<pre>\n(a + bi)(c + di)\n</pre>\n\n<p>\nExpand:\n</p>\n\n<pre>\nac + adi + bci + bdi²\n</pre>\n\n<p>\nNow use:\n</p>\n\n<pre>\ni² = -1\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nac + adi + bci - bd\n</pre>\n\n<p>\nGroup the real and imaginary terms:\n</p>\n\n<pre>\n(ac - bd) + (ad + bc)i\n</pre>\n\n<hr>\n\n<h4>4. Multiplication Example</h4>\n\n<p>\nSimplify:\n</p>\n\n<pre>\n(2 + i)(3 + 4i)\n</pre>\n\n<p><b>Step 1: Expand.</b></p>\n\n<pre>\n2(3) + 2(4i) + i(3) + i(4i)\n</pre>\n\n<p>\nThis gives:\n</p>\n\n<pre>\n6 + 8i + 3i + 4i²\n</pre>\n\n<p><b>Step 2: Replace i² with -1.</b></p>\n\n<pre>\n6 + 8i + 3i - 4\n</pre>\n\n<p><b>Step 3: Combine like terms.</b></p>\n\n<pre>\n(6 - 4) + (8i + 3i)\n\n= 2 + 11i\n</pre>\n\n<hr>\n\n<h4>5. The Main Rule for Operations</h4>\n\n<ul>\n<li><b>Addition:</b> combine like terms.</li>\n<li><b>Subtraction:</b> combine like terms with the correct signs.</li>\n<li><b>Multiplication:</b> expand first, then replace i² with -1.</li>\n</ul>\n\n<p>\nThe most important thing during multiplication is not to leave <b>i²</b> in the final answer.\nAlways simplify it using:\n</p>\n\n<pre>\ni² = -1\n</pre>\n\n<hr>\n\n<h4>6. Standard Form</h4>\n\n<p>\nThe final answer should normally be written in the form:\n</p>\n\n<pre>\na + bi\n</pre>\n\n<p>\nFor example:\n</p>\n\n<pre>\n3 + 7i\n-4 + 2i\n5 - 6i\n</pre>\n\n<p>\nKeep the real part and imaginary part together in this standard form.\n</p>\n",
@@ -928,6 +933,7 @@ export const mathTopics = [
     "id": "math|complex_numbers|Polar Form and De Moivre's Theorem",
     "curriculum_id": "math",
     "chapter_id": "complex_numbers",
+    "topic_group": "Polar Form and De Moivre's Theorem",
     "topic": "Polar Form and De Moivre's Theorem",
     "data": {
       "notes": "\n<h2>Polar Form and De Moivre's Theorem</h2>\n\n<h3>DEEP NOTES</h3>\n\n<h4>1. Polar Form</h4>\n\n<p>\nA complex number can be written in two main ways.\n</p>\n\n<p><b>Cartesian form:</b></p>\n\n<pre>\nz = a + bi\n</pre>\n\n<p><b>Polar form:</b></p>\n\n<pre>\nz = r(cosθ + i sinθ)\n</pre>\n\n<p>\nIn polar form:\n</p>\n\n<ul>\n<li><b>r</b> is the modulus or magnitude of the complex number.</li>\n<li><b>θ</b> is the argument, or angle measured from the positive real axis.</li>\n</ul>\n\n<hr>\n\n<h4>2. Finding the Modulus</h4>\n\n<p>\nFor:\n</p>\n\n<pre>\nz = a + bi\n</pre>\n\n<p>\nthe modulus is:\n</p>\n\n<pre>\nr = √(a² + b²)\n</pre>\n\n<p>\nThis comes from the Pythagorean theorem applied to the real and imaginary components.\n</p>\n\n<p><b>Example:</b></p>\n\n<pre>\nz = 3 + 4i\n\nr = √(3² + 4²)\n  = √(9 + 16)\n  = √25\n  = 5\n</pre>\n\n<hr>\n\n<h4>3. Finding the Argument</h4>\n\n<p>\nThe argument is the angle θ made by the complex number with the positive real axis.\n</p>\n\n<p>\nWhen the position is in the appropriate quadrant:\n</p>\n\n<pre>\ntanθ = b/a\n</pre>\n\n<p>\nso:\n</p>\n\n<pre>\nθ = tan⁻¹(b/a)\n</pre>\n\n<p>\nThe signs of <b>a</b> and <b>b</b> must be considered when determining the correct quadrant.\n</p>\n\n<hr>\n\n<h4>4. Example of Polar Form</h4>\n\n<p>\nConvert:\n</p>\n\n<pre>\nz = 3 + 4i\n</pre>\n\n<p><b>Step 1: Find r.</b></p>\n\n<pre>\nr = √(3² + 4²)\n  = 5\n</pre>\n\n<p><b>Step 2: Find θ.</b></p>\n\n<pre>\nθ = tan⁻¹(4/3)\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nz = 5(cosθ + i sinθ)\n</pre>\n\n<p>\nwhere:\n</p>\n\n<pre>\nθ = tan⁻¹(4/3)\n</pre>\n\n<hr>\n\n<h4>5. De Moivre's Theorem</h4>\n\n<p>\nDe Moivre's theorem provides a quick way to raise a complex number in polar form to a power.\n</p>\n\n<p>\nFor a complex number of the form:\n</p>\n\n<pre>\nz = r(cosθ + i sinθ)\n</pre>\n\n<p>\nthe theorem states:\n</p>\n\n<pre>\nzⁿ = rⁿ[cos(nθ) + i sin(nθ)]\n</pre>\n\n<p>\nThere are two changes:\n</p>\n\n<ul>\n<li>The modulus <b>r</b> is raised to the power <b>n</b>.</li>\n<li>The angle <b>θ</b> is multiplied by <b>n</b>.</li>\n</ul>\n\n<hr>\n\n<h4>6. De Moivre Example</h4>\n\n<p>\nEvaluate:\n</p>\n\n<pre>\n(cos30° + i sin30°)²\n</pre>\n\n<p>\nHere:\n</p>\n\n<pre>\nr = 1\nθ = 30°\nn = 2\n</pre>\n\n<p>\nUsing De Moivre's theorem:\n</p>\n\n<pre>\n= cos(2 × 30°) + i sin(2 × 30°)\n\n= cos60° + i sin60°\n</pre>\n\n<p>\nUsing the exact trigonometric values:\n</p>\n\n<pre>\n= 1/2 + i√3/2\n</pre>\n\n<hr>\n\n<h4>7. Key Pattern</h4>\n\n<p>\nFor:\n</p>\n\n<pre>\nz = r(cosθ + i sinθ)\n</pre>\n\n<p>\nraising z to the power n gives:\n</p>\n\n<pre>\nzⁿ = rⁿ(cos nθ + i sin nθ)\n</pre>\n\n<p>\nSo remember:\n</p>\n\n<pre>\nPower n\n   ↓\nr → rⁿ\nθ → nθ\n</pre>\n\n<p>\nThis is the central idea of De Moivre's theorem.\n</p>\n",
@@ -1119,6 +1125,7 @@ export const mathTopics = [
     "id": "math|algebra|Algebraic expressions",
     "curriculum_id": "math",
     "chapter_id": "algebra",
+    "topic_group": "Algebraic expressions",
     "topic": "Algebraic expressions",
     "data": {
       "notes": "<h2> Algebraic Expressions</h2>\n\n<p>Algebra uses letters (variables) to represent unknown numbers and helps describe mathematical relationships.</p>\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li><b>Variable:</b> A letter (x, y, a) representing an unknown value</li>\n<li><b>Constant:</b> A fixed number (e.g. 3, 7, 10)</li>\n<li><b>Coefficient:</b> Number multiplying a variable (e.g. 2 in 2x)</li>\n<li><b>Expression:</b> Combination of numbers, variables, and operations (+, −, ×, ÷)</li>\n<li><b>Important:</b> Expressions do NOT contain an equals sign (=)</li>\n</ul>\n<h3> KEY IDEA</h3>\n<pre>\nExpression = mathematical phrase (no equals sign)\nEquation = mathematical sentence (has equals sign)\n</pre>\n<h3> EXAMPLE BREAKDOWN</h3>\n<p>In 2x + 3:</p>\n<ul>\n<li>2 → coefficient</li>\n<li>x → variable</li>\n<li>3 → constant</li>\n</ul>\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li> Confusing expression with equation</li>\n<li> Adding unlike terms incorrectly</li>\n<li> Forgetting substitution rules</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> Evaluate 2x + 3 when x = 4<br>\nStep 1: Substitute → 2(4) + 3<br>\nStep 2: Multiply → 8 + 3<br>\nStep 3: Add → 11<br>\n<b>Answer: 11</b>\n</li>\n<li>\n<b>Example 2:</b> Identify parts of 5y − 7<br>\nStep 1: y is variable<br>\nStep 2: 5 is coefficient<br>\nStep 3: 7 is constant<br>\n<b>Answer: Algebraic expression</b>\n</li>\n<li>\n<b>Example 3:</b> Translate “3 more than a number x”<br>\nStep 1: number x → x<br>\nStep 2: 3 more → +3<br>\n<b>Answer: x + 3</b>\n</li>\n</ul>\n<h3> VISUAL IDEA</h3>\n<pre>\nExpression: 2x + 3\n→ x = unknown value\n→ 2x = scaled unknown\n→ +3 = constant shift\n</pre>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li> Finance → calculating unknown costs</li>\n<li> Data science → modeling relationships</li>\n<li> Programming → symbolic computation</li>\n<li> Engineering → formula representation</li>\n<li> Shopping → pricing formulas</li>\n</ul>\n",
@@ -1212,6 +1219,7 @@ export const mathTopics = [
     "id": "math|algebra|Simplifying expressions",
     "curriculum_id": "math",
     "chapter_id": "algebra",
+    "topic_group": "Simplifying expressions",
     "topic": "Simplifying expressions",
     "data": {
       "notes": "<h2> Simplifying Expressions</h2>\n\n<p>Simplifying expressions means rewriting them in a shorter and clearer form by combining like terms.</p>\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li><b>Like terms:</b> Terms with same variable and exponent (e.g., 2x and 5x)</li>\n<li><b>Unlike terms:</b> Different variables (e.g., x and y) cannot be combined</li>\n<li>Only coefficients (numbers in front) are added or subtracted</li>\n</ul>\n<h3> KEY IDEA</h3>\n<pre>\nCombine only like terms:\n2x + 3x = 5x\n</pre>\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li> Mixing unlike terms (x + y ≠ xy)</li>\n<li> Changing variables instead of coefficients</li>\n<li> Forgetting to keep remaining terms</li>\n</ul>\n<h3> STRATEGY</h3>\n<ul>\n<li>Step 1: Group like terms</li>\n<li>Step 2: Add or subtract coefficients</li>\n<li>Step 3: Keep unlike terms unchanged</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> 2x + 3x<br>\nStep 1: Like terms → 2x + 3x<br>\nStep 2: Add coefficients → 5x<br>\n<b>Answer: 5x</b>\n</li>\n<li>\n<b>Example 2:</b> 4a − 2a<br>\nStep 1: Same variable (a)<br>\nStep 2: 4 − 2 = 2<br>\n<b>Answer: 2a</b>\n</li>\n<li>\n<b>Example 3:</b> x + y + x<br>\nStep 1: Group x terms → x + x = 2x<br>\nStep 2: Keep y<br>\n<b>Answer: 2x + y</b>\n</li>\n</ul>\n<h3> VISUAL IDEA</h3>\n<pre>\n3x + 4x + y\n↓ group like terms\n(3x + 4x) + y\n↓ simplify\n7x + y\n</pre>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li> Finance → combining costs or income sources</li>\n<li> Data analysis → grouping categories</li>\n<li> Programming → simplifying expressions in logic</li>\n<li> Engineering → combining measurement terms</li>\n<li> Business → aggregating sales or profits</li>\n</ul>\n",
@@ -1302,6 +1310,7 @@ export const mathTopics = [
     "id": "math|algebra|Linear equations",
     "curriculum_id": "math",
     "chapter_id": "algebra",
+    "topic_group": "Linear equations",
     "topic": "Linear equations",
     "data": {
       "notes": "<h2> Linear Equations</h2>\n<p>A linear equation is a mathematical statement that contains an equals sign and can be solved to find the value of a variable.</p>\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li>An equation always has an equals sign (=)</li>\n<li>The goal is to isolate the variable (usually x)</li>\n<li><b>Golden rule:</b> Whatever you do to one side, do to the other side</li>\n<li>Use inverse operations: + ↔ −, × ↔ ÷</li>\n</ul>\n<h3> KEY IDEA</h3>\n<pre>\nKeep both sides of the equation balanced at all times\n</pre>\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li> Moving terms without changing both sides</li>\n<li> Wrong operation (adding instead of subtracting)</li>\n<li> Forgetting to divide after multiplication</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> x + 3 = 7<br>\nStep 1: Subtract 3 from both sides → x = 7 − 3<br>\nStep 2: x = 4<br>\n<b>Answer: 4</b>\n</li>\n<li>\n<b>Example 2:</b> 2x = 8<br>\nStep 1: Divide both sides by 2<br>\nStep 2: x = 4<br>\n<b>Answer: 4</b>\n</li>\n<li>\n<b>Example 3:</b> 3x + 2 = 11<br>\nStep 1: Subtract 2 → 3x = 9<br>\nStep 2: Divide by 3 → x = 3<br>\n<b>Answer: 3</b>\n</li>\n</ul>\n<h3> VISUAL IDEA</h3>\n<pre>\n3x + 2 = 11\n   ↓ subtract 2\n3x = 9\n   ↓ divide by 3\nx = 3\n</pre>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li> Budget calculations → finding unknown costs</li>\n<li> Data modeling → solving unknown variables</li>\n<li> Engineering → balancing equations in design</li>\n<li> Programming → solving logical conditions</li>\n<li> Shopping → calculating discounts and totals</li>\n</ul>\n",
@@ -1394,6 +1403,7 @@ export const mathTopics = [
     "id": "math|algebra|Substitution",
     "curriculum_id": "math",
     "chapter_id": "algebra",
+    "topic_group": "Substitution",
     "topic": "Substitution",
     "data": {
       "notes": "<h2> Substitution</h2>\n<p>Substitution means replacing a variable (like x or y) with a given numerical value and then simplifying the expression.</p>\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li>Substitution = replacing letters with numbers</li>\n<li>Always replace ALL occurrences of the variable</li>\n<li>Follow order of operations: multiplication before addition/subtraction</li>\n<li>Be careful with brackets after substitution</li>\n</ul>\n<h3> KEY IDEA</h3>\n<pre>\nVariable → Number → Simplify expression\n</pre>\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li> Forgetting to replace all variables</li>\n<li> Ignoring multiplication rules</li>\n<li> Wrong order of operations</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> If x = 2, find x + 3<br>\nStep 1: Substitute → 2 + 3<br>\nStep 2: Simplify → 5<br>\n<b>Answer: 5</b>\n</li>\n<li>\n<b>Example 2:</b> If x = 4, find 2x<br>\nStep 1: Substitute → 2 × 4<br>\nStep 2: Multiply → 8<br>\n<b>Answer: 8</b>\n</li>\n<li>\n<b>Example 3:</b> If x = 1, y = 2, find x + y<br>\nStep 1: Substitute → 1 + 2<br>\nStep 2: Simplify → 3<br>\n<b>Answer: 3</b>\n</li>\n</ul>\n<h3> VISUAL IDEA</h3>\n<pre>\nExpression: 2x + 3\nIf x = 5:\n→ 2(5) + 3\n→ 10 + 3\n→ 13\n</pre>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li> Finance → calculating costs and profits</li>\n<li> Data analysis → replacing variables with values</li>\n<li> Programming → evaluating expressions</li>\n<li> Engineering → formula calculations</li>\n<li> Business → forecasting outcomes</li>\n</ul>\n",
@@ -1487,6 +1497,7 @@ export const mathTopics = [
     "id": "math|algebra|Expanding brackets",
     "curriculum_id": "math",
     "chapter_id": "algebra",
+    "topic_group": "Expanding brackets",
     "topic": "Expanding brackets",
     "data": {
       "notes": "<h2> Expanding Brackets</h2>\n\n<p>Expanding brackets means multiplying the term outside the bracket with every term inside using the distributive law.</p>\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li>Expanding uses the <b>distributive law</b>: a(b + c) = ab + ac</li>\n<li>Multiply the outside term by EVERY term inside the bracket</li>\n<li>Be careful with signs (+ and −)</li>\n</ul>\n<h3> KEY IDEA</h3>\n<pre>\na(b + c) = ab + ac\nMultiply everything inside the bracket\n</pre>\n<h3> COMMON MISTAKE</h3>\n<ul>\n<li> Only multiplying the first term</li>\n<li> Forgetting signs</li>\n<li> Skipping a term inside the bracket</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> 2(x + 3)<br>\nStep 1: 2 × x = 2x<br>\nStep 2: 2 × 3 = 6<br>\n<b>Answer: 2x + 6</b>\n</li>\n<li>\n<b>Example 2:</b> 3(a + 4)<br>\nStep 1: 3 × a = 3a<br>\nStep 2: 3 × 4 = 12<br>\n<b>Answer: 3a + 12</b>\n</li>\n<li>\n<b>Example 3:</b> 5(x + 2)<br>\nStep 1: 5 × x = 5x<br>\nStep 2: 5 × 2 = 10<br>\n<b>Answer: 5x + 10</b>\n</li>\n</ul>\n<h3> VISUAL IDEA</h3>\n<pre>\n2(x + 3)\n= 2×x + 2×3\n= 2x + 6\n</pre>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li> Budget calculations (multiplying costs)</li>\n<li> Engineering formulas</li>\n<li> Data scaling in statistics</li>\n<li> Programming logic expansion</li>\n<li> Resource distribution problems</li>\n</ul>\n",
@@ -1580,6 +1591,7 @@ export const mathTopics = [
     "id": "math|geometry|Classifying Angles",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Angle properties",
     "topic": "Classifying Angles",
     "data": {
       "notes": "<h2>Classifying Angles</h2>\n\n<p>An angle measures the turn between two rays meeting at a vertex.\nWe classify an angle by comparing its size with 90° and 180°.</p>\n\n<pre>\nAcute:       0° < angle < 90°\nRight:       angle = 90°\nObtuse:      90° < angle < 180°\nStraight:    angle = 180°\n</pre>\n\n<h3>Worked Example 1: Classify 38°</h3>\n\n<p>Step 1: Compare 38° with 90°.</p>\n<pre>38° < 90°</pre>\n\n<p>Step 2: An angle greater than 0° but less than 90° is acute.</p>\n<p><b>Answer: Acute angle.</b></p>\n\n<h3>Worked Example 2: Classify 90°</h3>\n\n<p>90° is exactly a right angle.</p>\n<p><b>Answer: Right angle.</b></p>\n\n<h3>Worked Example 3: Classify 147°</h3>\n\n<pre>\n90° < 147° < 180°\n</pre>\n\n<p>The angle is larger than 90° but smaller than 180°.</p>\n<p><b>Answer: Obtuse angle.</b></p>\n\n<h3>Worked Example 4: Classify 180°</h3>\n\n<p>An angle of 180° forms a straight line.</p>\n<p><b>Answer: Straight angle.</b></p>",
@@ -1670,6 +1682,7 @@ export const mathTopics = [
     "id": "math|geometry|Angles on a Straight Line",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Angle properties",
     "topic": "Angles on a Straight Line",
     "data": {
       "notes": "<h2>Angles on a Straight Line</h2>\n\n<p>Angles that lie next to each other on a straight line add up to\n<b>180°</b>.</p>\n\n<pre>\nx + known angle = 180°\n\nx = 180° - known angle\n</pre>\n\n<h3>Worked Example 1</h3>\n\n<p>Two adjacent angles are 64° and x°. Find x.</p>\n\n<pre>\n64° + x = 180°\n\nx = 180° - 64°\n\nx = 116°\n</pre>\n\n<p><b>Answer: x = 116°.</b></p>\n\n<h3>Worked Example 2</h3>\n\n<p>The angles are 3x° and 60°. Find x.</p>\n\n<pre>\n3x + 60 = 180\n\n3x = 180 - 60\n\n3x = 120\n\nx = 120 / 3\n\nx = 40\n</pre>\n\n<p>The angle represented by 3x is 3 × 40° = 120°.</p>\n\n<h3>Worked Example 3</h3>\n\n<p>Three adjacent angles on a straight line are 35°, 82° and x°.</p>\n\n<pre>\n35° + 82° + x = 180°\n\n117° + x = 180°\n\nx = 180° - 117°\n\nx = 63°\n</pre>\n\n<p><b>Answer: x = 63°.</b></p>",
@@ -1745,6 +1758,7 @@ export const mathTopics = [
     "id": "math|geometry|Angles Around a Point",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Angle properties",
     "topic": "Angles Around a Point",
     "data": {
       "notes": "<h2>Angles Around a Point</h2>\n\n<p>All angles making one complete turn around a point add up to\n<b>360°</b>.</p>\n\n<pre>\nMissing angle = 360° - sum of known angles\n</pre>\n\n<h3>Worked Example 1</h3>\n\n<p>Angles around a point are 80°, 110° and x°.</p>\n\n<pre>\n80° + 110° + x = 360°\n\n190° + x = 360°\n\nx = 360° - 190°\n\nx = 170°\n</pre>\n\n<h3>Worked Example 2</h3>\n\n<p>Four equal angles meet at a point. Find each angle.</p>\n\n<pre>\nTotal = 360°\n\nEach angle = 360° / 4\n\nEach angle = 90°\n</pre>\n\n<h3>Worked Example 3</h3>\n\n<p>Angles x°, 2x° and 90° meet at a point.</p>\n\n<pre>\nx + 2x + 90 = 360\n\n3x + 90 = 360\n\n3x = 270\n\nx = 90°\n</pre>\n\n<p><b>Answer: x = 90°.</b></p>",
@@ -1819,6 +1833,7 @@ export const mathTopics = [
     "id": "math|geometry|Vertically Opposite Angles",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Angle properties",
     "topic": "Vertically Opposite Angles",
     "data": {
       "notes": "<h2>Vertically Opposite Angles</h2>\n\n<p>When two straight lines cross, the angles directly opposite each\nother are equal.</p>\n\n<h3>Worked Example 1</h3>\n\n<p>Two lines cross. One angle is 48°. Find the angle directly opposite it.</p>\n\n<pre>\nOpposite angle = 48°\n</pre>\n\n<p><b>Answer: 48°.</b></p>\n\n<h3>Worked Example 2</h3>\n\n<p>Opposite angles are (3x + 10)° and 70°. Find x.</p>\n\n<p>Since vertically opposite angles are equal:</p>\n\n<pre>\n3x + 10 = 70\n\n3x = 70 - 10\n\n3x = 60\n\nx = 20\n</pre>\n\n<h3>Worked Example 3</h3>\n\n<p>One angle at an intersection is 132°. Find the opposite angle and\nthe smaller adjacent angle.</p>\n\n<pre>\nOpposite angle = 132°\n\nAdjacent angle = 180° - 132°\n\nAdjacent angle = 48°\n</pre>\n\n<p><b>Opposite angle: 132°; adjacent angle: 48°.</b></p>",
@@ -1891,6 +1906,7 @@ export const mathTopics = [
     "id": "math|geometry|Parallel Lines and a Transversal",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Angle properties",
     "topic": "Parallel Lines and a Transversal",
     "data": {
       "notes": "<h2>Parallel Lines and a Transversal</h2>\n\n<p>A transversal is a line that crosses two other lines. When those\ntwo lines are parallel, three important angle relationships apply.</p>\n\n<ul>\n<li><b>Corresponding angles:</b> equal.</li>\n<li><b>Alternate interior angles:</b> equal.</li>\n<li><b>Co-interior angles:</b> add up to 180°.</li>\n</ul>\n\n<h3>Worked Example 1: Corresponding Angles</h3>\n\n<p>One corresponding angle is 68°.</p>\n\n<pre>\nOther corresponding angle = 68°\n</pre>\n\n<h3>Worked Example 2: Alternate Interior Angles</h3>\n\n<p>One alternate interior angle is 113°.</p>\n\n<pre>\nOther alternate interior angle = 113°\n</pre>\n\n<h3>Worked Example 3: Co-interior Angles</h3>\n\n<p>One co-interior angle is 72°. Find the other.</p>\n\n<pre>\n72° + x = 180°\n\nx = 180° - 72°\n\nx = 108°\n</pre>\n\n<p><b>Important:</b> These relationships apply when the two lines\nare parallel.</p>",
@@ -1984,6 +2000,7 @@ export const mathTopics = [
     "id": "math|geometry|Triangle Angle Sum",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Triangles",
     "topic": "Triangle Angle Sum",
     "data": {
       "notes": "<h2>Triangle Angle Sum</h2>\n\n<p><b>One concept:</b> The three interior angles of every triangle add up to 180°.</p>\n\n<h3>Why does this matter?</h3>\n<p>If we know two interior angles of a triangle, we can calculate the third angle without measuring it.</p>\n\n<p><b>Rule:</b></p>\n<p style=\"text-align:center;font-size:1.2em;\"><b>A + B + C = 180°</b></p>\n\n<h3>Worked Example 1: Find the missing angle</h3>\n<p>A triangle has angles 50°, 60° and x°.</p>\n\n<p><b>Step 1:</b> Write the triangle angle sum.</p>\n<p>50° + 60° + x = 180°</p>\n\n<p><b>Step 2:</b> Add the known angles.</p>\n<p>110° + x = 180°</p>\n\n<p><b>Step 3:</b> Subtract 110° from both sides.</p>\n<p>x = 180° - 110°</p>\n\n<p><b>Answer: x = 70°.</b></p>\n\n<h3>Worked Example 2: Find an angle when the other angles are different</h3>\n<p>A triangle has angles 35° and 85°. Find the third angle.</p>\n\n<p><b>Step 1:</b> Add the known angles.</p>\n<p>35° + 85° = 120°</p>\n\n<p><b>Step 2:</b> Subtract their sum from 180°.</p>\n<p>x = 180° - 120°</p>\n\n<p><b>Answer: x = 60°.</b></p>\n\n<h3>Worked Example 3: Find an angle containing an unknown</h3>\n<p>The angles of a triangle are x°, (x + 20)° and 60°. Find x.</p>\n\n<p><b>Step 1:</b> Add the three angles.</p>\n<p>x + (x + 20) + 60 = 180</p>\n\n<p><b>Step 2:</b> Remove the brackets and collect like terms.</p>\n<p>2x + 80 = 180</p>\n\n<p><b>Step 3:</b> Subtract 80 from both sides.</p>\n<p>2x = 100</p>\n\n<p><b>Step 4:</b> Divide both sides by 2.</p>\n<p>x = 50°</p>\n\n<p>The angles are 50°, 70° and 60°. Check: 50 + 70 + 60 = 180°.</p>\n\n<h3>Common mistake</h3>\n<p>Do not subtract only one known angle when two angles are given. First add all known angles, then subtract their total from 180°.</p>",
@@ -2059,6 +2076,7 @@ export const mathTopics = [
     "id": "math|geometry|Isosceles Triangle Base Angles",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Triangles",
     "topic": "Isosceles Triangle Base Angles",
     "data": {
       "notes": "<h2>Isosceles Triangle Base Angles</h2>\n\n<p><b>One concept:</b> The two angles opposite the equal sides of an isosceles triangle are equal.</p>\n\n<h3>Recognising the information</h3>\n<p>An isosceles triangle has at least two equal sides. The angles opposite those sides are equal too.</p>\n\n<p>If the two base angles are x° each, and the top angle is A°, then:</p>\n<p><b>x + x + A = 180°</b></p>\n\n<h3>Worked Example 1: Find the base angles</h3>\n<p>An isosceles triangle has a top angle of 40°. Find each base angle.</p>\n\n<p><b>Step 1:</b> Subtract the top angle from 180°.</p>\n<p>180° - 40° = 140°</p>\n\n<p><b>Step 2:</b> The two base angles are equal, so divide 140° by 2.</p>\n<p>140° ÷ 2 = 70°</p>\n\n<p><b>Answer:</b> Each base angle is 70°.</p>\n\n<h3>Worked Example 2: Find the top angle</h3>\n<p>The base angles are each 65°. Find the top angle.</p>\n\n<p><b>Step 1:</b> Add the equal base angles.</p>\n<p>65° + 65° = 130°</p>\n\n<p><b>Step 2:</b> Subtract from 180°.</p>\n<p>180° - 130° = 50°</p>\n\n<p><b>Answer:</b> The top angle is 50°.</p>\n\n<h3>Worked Example 3: Find an unknown angle</h3>\n<p>An isosceles triangle has angles x°, x° and (x + 30)°. Find x.</p>\n\n<p><b>Step 1:</b> Use the angle sum.</p>\n<p>x + x + (x + 30) = 180</p>\n\n<p><b>Step 2:</b> Collect like terms.</p>\n<p>3x + 30 = 180</p>\n\n<p><b>Step 3:</b> Subtract 30 and divide by 3.</p>\n<p>3x = 150</p>\n<p>x = 50°</p>\n\n<p><b>Check:</b> The angles are 50°, 50° and 80°. Their sum is 180°.</p>\n\n<h3>Common mistake</h3>\n<p>Do not divide the top angle by 2. Divide the remaining angle sum by 2 because the two base angles are equal.</p>",
@@ -2133,6 +2151,7 @@ export const mathTopics = [
     "id": "math|geometry|Exterior Angle of a Triangle",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Triangles",
     "topic": "Exterior Angle of a Triangle",
     "data": {
       "notes": "<h2>Exterior Angle of a Triangle</h2>\n\n<p><b>One concept:</b> An exterior angle of a triangle equals the sum of the two opposite interior angles.</p>\n\n<p><b>Rule:</b></p>\n<p style=\"text-align:center;\"><b>Exterior angle = opposite interior angle 1 + opposite interior angle 2</b></p>\n\n<h3>Worked Example 1: Find the exterior angle</h3>\n<p>The two opposite interior angles are 45° and 65°.</p>\n\n<p><b>Step 1:</b> Add them.</p>\n<p>45° + 65° = 110°</p>\n\n<p><b>Answer:</b> The exterior angle is 110°.</p>\n\n<h3>Worked Example 2: Find a missing interior angle</h3>\n<p>An exterior angle is 125°. One opposite interior angle is 50°. Find the other opposite interior angle.</p>\n\n<p><b>Step 1:</b> Let the missing angle be x°.</p>\n<p>125° = 50° + x</p>\n\n<p><b>Step 2:</b> Subtract 50° from both sides.</p>\n<p>x = 125° - 50°</p>\n\n<p><b>Answer:</b> x = 75°.</p>\n\n<h3>Worked Example 3: Use the straight-line relationship</h3>\n<p>An exterior angle is 140°. Find the interior angle directly next to it.</p>\n\n<p><b>Step 1:</b> These two angles form a straight line.</p>\n<p>Interior angle + 140° = 180°</p>\n\n<p><b>Step 2:</b> Subtract 140°.</p>\n<p>Interior angle = 180° - 140° = 40°</p>\n\n<p><b>Answer:</b> 40°.</p>\n\n<h3>Important distinction</h3>\n<p>The exterior angle equals the sum of the two <b>opposite</b> interior angles. The interior angle next to it is supplementary to the exterior angle: the two add up to 180°.</p>",
@@ -2208,6 +2227,7 @@ export const mathTopics = [
     "id": "math|geometry|Classifying Triangles by Sides",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Triangles",
     "topic": "Classifying Triangles by Sides",
     "data": {
       "notes": "<h2>Classifying Triangles by Their Sides</h2>\n\n<p><b>One concept:</b> Classify a triangle by comparing the lengths of its three sides.</p>\n\n<h3>Three classifications</h3>\n<ul>\n<li><b>Equilateral:</b> all three sides are equal.</li>\n<li><b>Isosceles:</b> exactly two sides are equal in this classification scheme.</li>\n<li><b>Scalene:</b> all three sides have different lengths.</li>\n</ul>\n\n<h3>Worked Example 1: All sides equal</h3>\n<p>A triangle has sides 5 cm, 5 cm and 5 cm.</p>\n\n<p><b>Step 1:</b> Compare the side lengths.</p>\n<p>5 = 5 = 5</p>\n\n<p><b>Conclusion:</b> All three sides are equal, so the triangle is equilateral.</p>\n\n<h3>Worked Example 2: Two sides equal</h3>\n<p>A triangle has sides 7 cm, 7 cm and 4 cm.</p>\n\n<p><b>Step 1:</b> Compare the lengths.</p>\n<p>Two sides are 7 cm, while the third is 4 cm.</p>\n\n<p><b>Conclusion:</b> Exactly two sides are equal, so it is isosceles.</p>\n\n<h3>Worked Example 3: All sides different</h3>\n<p>A triangle has sides 4 cm, 6 cm and 7 cm.</p>\n\n<p><b>Step 1:</b> Compare the lengths.</p>\n<p>4 ≠ 6, 6 ≠ 7 and 4 ≠ 7.</p>\n\n<p><b>Conclusion:</b> All sides differ, so the triangle is scalene.</p>\n\n<h3>Important check: Can these lengths form a triangle?</h3>\n<p>The sum of any two sides must be greater than the third side.</p>\n<p>For sides 4 cm, 6 cm and 7 cm:</p>\n<ul>\n<li>4 + 6 = 10, which is greater than 7.</li>\n<li>4 + 7 = 11, which is greater than 6.</li>\n<li>6 + 7 = 13, which is greater than 4.</li>\n</ul>\n<p>All three conditions hold, so these lengths can form a triangle.</p>",
@@ -2282,6 +2302,7 @@ export const mathTopics = [
     "id": "math|geometry|Quadrilateral Interior Angle Sum",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Quadrilaterals",
     "topic": "Quadrilateral Interior Angle Sum",
     "data": {
       "notes": "<h2>Quadrilateral Interior Angle Sum</h2>\n\n<p><b>One concept:</b> The four interior angles of a quadrilateral add up to 360°.</p>\n\n<p><b>Rule:</b></p>\n<p style=\"text-align:center;font-size:1.2em;\"><b>A + B + C + D = 360°</b></p>\n\n<h3>Why is the total 360°?</h3>\n<p>A diagonal can divide a quadrilateral into two triangles.</p>\n<p>Each triangle has an angle sum of 180°.</p>\n<p>Therefore, 180° + 180° = 360°.</p>\n\n<h3>Worked Example 1: Find one missing angle</h3>\n<p>A quadrilateral has angles 80°, 90°, 100° and x°.</p>\n\n<p><b>Step 1:</b> Add the known angles.</p>\n<p>80° + 90° + 100° = 270°</p>\n\n<p><b>Step 2:</b> Subtract from 360°.</p>\n<p>x = 360° - 270° = 90°</p>\n\n<p><b>Answer:</b> 90°.</p>\n\n<h3>Worked Example 2: Find an angle with a different set of values</h3>\n<p>Three angles of a quadrilateral are 75°, 85° and 110°. Find the fourth angle.</p>\n\n<p><b>Step 1:</b> Add the known angles.</p>\n<p>75° + 85° + 110° = 270°</p>\n\n<p><b>Step 2:</b> Calculate the remaining angle.</p>\n<p>360° - 270° = 90°</p>\n\n<p><b>Answer:</b> 90°.</p>\n\n<h3>Worked Example 3: Find x algebraically</h3>\n<p>The angles of a quadrilateral are x°, (x + 10)°, 2x° and 90°. Find x.</p>\n\n<p><b>Step 1:</b> Add the four angles.</p>\n<p>x + (x + 10) + 2x + 90 = 360</p>\n\n<p><b>Step 2:</b> Collect like terms.</p>\n<p>4x + 100 = 360</p>\n\n<p><b>Step 3:</b> Subtract 100.</p>\n<p>4x = 260</p>\n\n<p><b>Step 4:</b> Divide by 4.</p>\n<p>x = 65°</p>\n\n<p><b>Check:</b> The angles are 65°, 75°, 130° and 90°. Their sum is 360°.</p>\n\n<h3>Common mistake</h3>\n<p>Do not use 180° for a quadrilateral. Its four interior angles add up to 360°.</p>",
@@ -2355,6 +2376,7 @@ export const mathTopics = [
     "id": "math|geometry|Parallelogram: Opposite Sides Are Equal",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Quadrilaterals",
     "topic": "Parallelogram: Opposite Sides Are Equal",
     "data": {
       "notes": "<h2>Opposite Sides of a Parallelogram</h2>\n\n<p><b>One concept:</b> In a parallelogram, opposite sides have equal lengths.</p>\n\n<p>If ABCD is a parallelogram:</p>\n<ul>\n<li>AB = CD</li>\n<li>BC = AD</li>\n</ul>\n\n<p>Opposite sides are across from each other, not next to each other.</p>\n\n<h3>Worked Example 1: Find a missing side</h3>\n<p>ABCD is a parallelogram. AB = 12 cm and CD = x cm. Find x.</p>\n<p><b>Step 1:</b> AB and CD are opposite sides.</p>\n<p><b>Step 2:</b> Opposite sides are equal, so AB = CD.</p>\n<p>12 = x</p>\n<p><b>Answer: x = 12 cm.</b></p>\n\n<h3>Worked Example 2: Find an unknown expression</h3>\n<p>The opposite sides of a parallelogram are labelled (3x + 2) cm and 17 cm. Find x.</p>\n<p><b>Step 1:</b> Set the opposite sides equal.</p>\n<p>3x + 2 = 17</p>\n<p><b>Step 2:</b> Subtract 2 from both sides.</p>\n<p>3x = 15</p>\n<p><b>Step 3:</b> Divide by 3.</p>\n<p>x = 5</p>\n<p><b>Check:</b> 3(5) + 2 = 17 cm.</p>\n\n<h3>Worked Example 3: Find the perimeter</h3>\n<p>A parallelogram has adjacent sides of 8 cm and 5 cm. Find its perimeter.</p>\n<p><b>Step 1:</b> Opposite sides equal the adjacent sides respectively.</p>\n<p>The four sides are 8 cm, 5 cm, 8 cm and 5 cm.</p>\n<p><b>Step 2:</b> Add all four sides.</p>\n<p>8 + 5 + 8 + 5 = 26 cm.</p>\n<p><b>Answer: 26 cm.</b></p>\n\n<h3>Common mistake</h3>\n<p>Opposite sides are equal; adjacent sides are not necessarily equal. Do not assume all four sides have the same length.</p>",
@@ -2429,6 +2451,7 @@ export const mathTopics = [
     "id": "math|geometry|Parallelogram: Opposite Angles Are Equal",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Quadrilaterals",
     "topic": "Parallelogram: Opposite Angles Are Equal",
     "data": {
       "notes": "<h2>Opposite Angles of a Parallelogram</h2>\n\n<p><b>One concept:</b> Opposite angles in a parallelogram are equal.</p>\n\n<p>For parallelogram ABCD:</p>\n<ul>\n<li>Angle A = angle C</li>\n<li>Angle B = angle D</li>\n</ul>\n\n<h3>Worked Example 1: Find an opposite angle</h3>\n<p>Angle A = 68°. Find angle C.</p>\n<p><b>Step 1:</b> A and C are opposite angles.</p>\n<p><b>Step 2:</b> Opposite angles are equal.</p>\n<p>Angle C = 68°.</p>\n\n<h3>Worked Example 2: Find an unknown</h3>\n<p>Opposite angles are labelled (3x + 10)° and 100°. Find x.</p>\n<p><b>Step 1:</b> Set the opposite angles equal.</p>\n<p>3x + 10 = 100</p>\n<p><b>Step 2:</b> Subtract 10.</p>\n<p>3x = 90</p>\n<p><b>Step 3:</b> Divide by 3.</p>\n<p>x = 30</p>\n<p><b>Check:</b> 3(30) + 10 = 100°.</p>\n\n<h3>Worked Example 3: Find all four angles</h3>\n<p>One angle of a parallelogram is 75°. Find all its interior angles.</p>\n<p><b>Step 1:</b> The opposite angle is equal to it.</p>\n<p>Opposite angle = 75°.</p>\n<p><b>Step 2:</b> Each adjacent angle adds to 180° with the 75° angle.</p>\n<p>180° - 75° = 105°.</p>\n<p><b>Step 3:</b> The other adjacent angle is also 105°.</p>\n<p><b>Answer:</b> 75°, 105°, 75°, 105°.</p>\n\n<h3>Common mistake</h3>\n<p>Opposite angles are equal. Adjacent angles generally are not equal; they add up to 180°.</p>",
@@ -2502,6 +2525,7 @@ export const mathTopics = [
     "id": "math|geometry|Parallelogram: Adjacent Angles",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Quadrilaterals",
     "topic": "Parallelogram: Adjacent Angles",
     "data": {
       "notes": "<h2>Adjacent Angles in a Parallelogram</h2>\n\n<p><b>One concept:</b> Adjacent interior angles of a parallelogram add up to 180°.</p>\n\n<p><b>Rule:</b></p>\n<p>Adjacent angle 1 + adjacent angle 2 = 180°</p>\n\n<h3>Worked Example 1: Find a missing angle</h3>\n<p>Two adjacent angles are 70° and x°. Find x.</p>\n<p><b>Step 1:</b> Write their sum.</p>\n<p>70° + x = 180°</p>\n<p><b>Step 2:</b> Subtract 70°.</p>\n<p>x = 180° - 70° = 110°.</p>\n\n<h3>Worked Example 2: Solve an expression</h3>\n<p>Two adjacent angles are (2x + 10)° and 90°. Find x.</p>\n<p><b>Step 1:</b> Set their sum to 180°.</p>\n<p>2x + 10 + 90 = 180</p>\n<p><b>Step 2:</b> Simplify.</p>\n<p>2x + 100 = 180</p>\n<p><b>Step 3:</b> Subtract 100.</p>\n<p>2x = 80</p>\n<p><b>Step 4:</b> Divide by 2.</p>\n<p>x = 40</p>\n\n<h3>Worked Example 3: Compare two adjacent angles</h3>\n<p>Two adjacent angles are in the ratio 2:3. Find the angles.</p>\n<p><b>Step 1:</b> Represent the angles as 2x and 3x.</p>\n<p><b>Step 2:</b> Their sum is 180°.</p>\n<p>2x + 3x = 180</p>\n<p>5x = 180</p>\n<p>x = 36</p>\n<p><b>Step 3:</b> Calculate each angle.</p>\n<p>2x = 72° and 3x = 108°.</p>\n<p><b>Answer:</b> 72° and 108°.</p>\n\n<h3>Common mistake</h3>\n<p>Do not set adjacent angles equal unless additional information proves they are equal. Their general relationship is that their sum is 180°.</p>",
@@ -2577,6 +2601,7 @@ export const mathTopics = [
     "id": "math|geometry|Circle: Radius and Diameter",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Circles",
     "topic": "Circle: Radius and Diameter",
     "data": {
       "notes": "<h2>Radius and Diameter of a Circle</h2>\n\n<p><b>One concept:</b> The diameter is twice the radius.</p>\n\n<p><b>Rules:</b></p>\n<ul>\n<li>Diameter = 2 × radius</li>\n<li>Radius = diameter ÷ 2</li>\n</ul>\n\n<p>The <b>radius</b> is the distance from the centre of the circle to its circumference. The <b>diameter</b> is a straight line across the circle through its centre, joining two points on the circumference.</p>\n\n<h3>Worked Example 1: Find the diameter</h3>\n<p>A circle has radius 6 cm. Find its diameter.</p>\n<p><b>Step 1:</b> Use diameter = 2 × radius.</p>\n<p>Diameter = 2 × 6</p>\n<p><b>Answer: 12 cm.</b></p>\n\n<h3>Worked Example 2: Find the radius</h3>\n<p>A circle has diameter 18 cm. Find its radius.</p>\n<p><b>Step 1:</b> Divide the diameter by 2.</p>\n<p>Radius = 18 ÷ 2 = 9 cm.</p>\n\n<h3>Worked Example 3: Find the diameter from an expression</h3>\n<p>The radius of a circle is (x + 3) cm and its diameter is 20 cm. Find x.</p>\n<p><b>Step 1:</b> The radius is half the diameter.</p>\n<p>Radius = 20 ÷ 2 = 10 cm.</p>\n<p><b>Step 2:</b> Form an equation.</p>\n<p>x + 3 = 10</p>\n<p><b>Step 3:</b> Subtract 3.</p>\n<p>x = 7</p>\n\n<h3>Common mistake</h3>\n<p>Do not confuse radius and diameter. The diameter goes all the way across the circle through its centre; the radius goes only from the centre to the circumference.</p>",
@@ -2651,6 +2676,7 @@ export const mathTopics = [
     "id": "math|geometry|Circumference of a Circle",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Circles",
     "topic": "Circumference of a Circle",
     "data": {
       "notes": "<h2>Circumference of a Circle</h2>\n\n<p><b>One concept:</b> Circumference is the distance around a circle.</p>\n\n<p>Use either formula:</p>\n<ul>\n<li><b>C = 2πr</b>, when the radius is known.</li>\n<li><b>C = πd</b>, when the diameter is known.</li>\n</ul>\n\n<p>Here, π is approximately 3.142. Unless a question specifies otherwise, leave answers in terms of π or use 3.142 and state the approximation.</p>\n\n<h3>Worked Example 1: Radius given</h3>\n<p>A circle has radius 7 cm. Find its circumference in terms of π.</p>\n<p><b>Step 1:</b> Choose C = 2πr because the radius is given.</p>\n<p><b>Step 2:</b> Substitute r = 7.</p>\n<p>C = 2 × π × 7</p>\n<p><b>Answer: C = 14π cm.</b></p>\n\n<h3>Worked Example 2: Diameter given</h3>\n<p>A circle has diameter 10 cm. Find its circumference in terms of π.</p>\n<p><b>Step 1:</b> Choose C = πd.</p>\n<p><b>Step 2:</b> Substitute d = 10.</p>\n<p>C = π × 10</p>\n<p><b>Answer: C = 10π cm, approximately 31.42 cm.</b></p>\n\n<h3>Worked Example 3: Find the radius from the circumference</h3>\n<p>A circle has circumference 20π cm. Find its radius.</p>\n<p><b>Step 1:</b> Use C = 2πr.</p>\n<p>20π = 2πr</p>\n<p><b>Step 2:</b> Divide both sides by 2π.</p>\n<p>r = 20π ÷ 2π = 10 cm.</p>\n<p><b>Answer: 10 cm.</b></p>\n\n<h3>Common mistake</h3>\n<p>Circumference measures distance around the circle, so the answer uses units such as cm or m, not square units such as cm².</p>",
@@ -2725,6 +2751,7 @@ export const mathTopics = [
     "id": "math|geometry|Area of a Circle",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Circles",
     "topic": "Area of a Circle",
     "data": {
       "notes": "<h2>Area of a Circle</h2>\n\n<p><b>One concept:</b> The area of a circle is the amount of space inside the circle.</p>\n\n<p><b>Formula:</b></p>\n\n<p>A = πr²</p>\n\n<p>Here:</p>\n\n<ul>\n<li><b>A</b> = area of the circle</li>\n<li><b>π</b> = pi, approximately 3.142</li>\n<li><b>r</b> = radius of the circle</li>\n</ul>\n\n<p>The radius is the distance from the <b>centre of the circle</b> to its edge.</p>\n\n<p>The radius is <b>squared</b>, so you multiply the radius by itself:</p>\n\n<p>r² = r × r</p>\n\n<h3>Worked Example 1: Find the area</h3>\n\n<p>A circle has a radius of 7 cm. Find its area. Use π = 22/7.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>A = πr²</p>\n\n<p><b>Step 2:</b> Substitute r = 7.</p>\n\n<p>A = 22/7 × 7²</p>\n\n<p><b>Step 3:</b> Square the radius.</p>\n\n<p>7² = 49</p>\n\n<p>Therefore:</p>\n\n<p>A = 22/7 × 49</p>\n\n<p><b>Step 4:</b> Simplify.</p>\n\n<p>A = 22 × 7</p>\n\n<p><b>Step 5:</b> Calculate.</p>\n\n<p><b>A = 154 cm²</b></p>\n\n<h3>Worked Example 2: Using π = 3.142</h3>\n\n<p>A circular garden has a radius of 5 m. Find its area. Use π = 3.142.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>A = πr²</p>\n\n<p><b>Step 2:</b> Substitute.</p>\n\n<p>A = 3.142 × 5²</p>\n\n<p><b>Step 3:</b> Square the radius.</p>\n\n<p>5² = 25</p>\n\n<p>Therefore:</p>\n\n<p>A = 3.142 × 25</p>\n\n<p><b>Step 4:</b> Multiply.</p>\n\n<p><b>A = 78.55 m²</b></p>\n\n<h3>Worked Example 3: Find the radius</h3>\n\n<p>A circle has an area of 154 cm². Find its radius. Use π = 22/7.</p>\n\n<p><b>Step 1:</b> Start with the formula.</p>\n\n<p>A = πr²</p>\n\n<p><b>Step 2:</b> Substitute the known values.</p>\n\n<p>154 = 22/7 × r²</p>\n\n<p><b>Step 3:</b> Multiply both sides by 7.</p>\n\n<p>154 × 7 = 22r²</p>\n\n<p>1078 = 22r²</p>\n\n<p><b>Step 4:</b> Divide by 22.</p>\n\n<p>r² = 1078 ÷ 22</p>\n\n<p>r² = 49</p>\n\n<p><b>Step 5:</b> Find the square root.</p>\n\n<p>r = √49</p>\n\n<p><b>r = 7 cm</b></p>\n\n<h3>Important distinction</h3>\n\n<p>If the question gives the <b>diameter</b> instead of the radius, the diameter must first be converted to a radius:</p>\n\n<p><b>radius = diameter ÷ 2</b></p>\n\n<p>For example, if the diameter is 10 cm:</p>\n\n<p>r = 10 ÷ 2 = 5 cm</p>\n\n<p>Then use r = 5 cm in A = πr².</p>\n\n<h3>Common mistakes</h3>\n\n<p><b>Mistake 1:</b> Using the diameter directly in A = πr².</p>\n\n<p>The formula requires the <b>radius</b>.</p>\n\n<p><b>Mistake 2:</b> Forgetting to square the radius.</p>\n\n<p>For r = 6:</p>\n\n<p>r² = 6 × 6 = 36, not 12.</p>\n\n<p><b>Mistake 3:</b> Giving the answer in units instead of square units.</p>\n\n<p>Area is measured in units such as cm², m² or km².</p>",
@@ -2827,6 +2854,7 @@ export const mathTopics = [
     "id": "math|geometry|Perimeter of a Rectangle",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Perimeter",
     "topic": "Perimeter of a Rectangle",
     "data": {
       "notes": "<h2>Perimeter of a Rectangle</h2>\n\n<p><b>One concept:</b> Perimeter is the total distance around a shape.</p>\n\n<p>A rectangle has two equal lengths and two equal widths.</p>\n\n<p><b>Formula:</b> P = 2l + 2w = 2(l + w)</p>\n\n<h3>Worked Example 1: Find the perimeter</h3>\n<p>A rectangle is 8 cm long and 3 cm wide.</p>\n<p><b>Step 1:</b> Write the formula.</p>\n<p>P = 2(l + w)</p>\n<p><b>Step 2:</b> Substitute the measurements.</p>\n<p>P = 2(8 + 3)</p>\n<p><b>Step 3:</b> Calculate.</p>\n<p>P = 2 × 11 = 22 cm.</p>\n\n<h3>Worked Example 2: Find a missing width</h3>\n<p>A rectangle has perimeter 30 cm and length 9 cm. Find its width.</p>\n<p><b>Step 1:</b> Use P = 2(l + w).</p>\n<p>30 = 2(9 + w)</p>\n<p><b>Step 2:</b> Divide both sides by 2.</p>\n<p>15 = 9 + w</p>\n<p><b>Step 3:</b> Subtract 9.</p>\n<p>w = 6 cm.</p>\n\n<h3>Worked Example 3: Find the perimeter from an algebraic width</h3>\n<p>A rectangle has length 10 cm and width (x + 2) cm. If x = 4, find its perimeter.</p>\n<p><b>Step 1:</b> Calculate the width.</p>\n<p>w = 4 + 2 = 6 cm.</p>\n<p><b>Step 2:</b> Substitute into the perimeter formula.</p>\n<p>P = 2(10 + 6)</p>\n<p>P = 2 × 16 = 32 cm.</p>\n\n<h3>Common mistake</h3>\n<p>Perimeter is measured in ordinary units such as cm or m. Do not use cm², because that is a unit of area.</p>",
@@ -2900,6 +2928,7 @@ export const mathTopics = [
     "id": "math|geometry|Perimeter of a Square",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Perimeter",
     "topic": "Perimeter of a Square",
     "data": {
       "notes": "<h2>Perimeter of a Square</h2>\n\n<p><b>One concept:</b> All four sides of a square are equal.</p>\n\n<p><b>Formula:</b> P = 4s, where s is the side length.</p>\n\n<h3>Worked Example 1: Find the perimeter</h3>\n<p>A square has side length 6 cm.</p>\n<p><b>Step 1:</b> Use P = 4s.</p>\n<p><b>Step 2:</b> Substitute s = 6.</p>\n<p>P = 4 × 6 = 24 cm.</p>\n\n<h3>Worked Example 2: Find the side length</h3>\n<p>A square has perimeter 36 cm. Find its side length.</p>\n<p><b>Step 1:</b> Start with P = 4s.</p>\n<p>36 = 4s</p>\n<p><b>Step 2:</b> Divide both sides by 4.</p>\n<p>s = 36 ÷ 4 = 9 cm.</p>\n\n<h3>Worked Example 3: Find an unknown side</h3>\n<p>A square has side length (2x + 1) cm and perimeter 28 cm. Find x.</p>\n<p><b>Step 1:</b> Find one side by dividing the perimeter by 4.</p>\n<p>28 ÷ 4 = 7 cm.</p>\n<p><b>Step 2:</b> Set the side expression equal to 7.</p>\n<p>2x + 1 = 7</p>\n<p><b>Step 3:</b> Subtract 1, then divide by 2.</p>\n<p>2x = 6</p>\n<p>x = 3.</p>\n\n<h3>Common mistake</h3>\n<p>Do not multiply the side by itself when finding perimeter. The expression s × s is used for the area of a square, not its perimeter.</p>",
@@ -2973,6 +3002,7 @@ export const mathTopics = [
     "id": "math|geometry|Perimeter of a Triangle",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Perimeter",
     "topic": "Perimeter of a Triangle",
     "data": {
       "notes": "<h2>Perimeter of a Triangle</h2>\n\n<p><b>One concept:</b> The perimeter of a triangle is the sum of its three side lengths.</p>\n\n<p><b>Formula:</b> P = a + b + c</p>\n\n<h3>Worked Example 1: Three known sides</h3>\n<p>A triangle has sides 5 cm, 7 cm and 9 cm.</p>\n<p><b>Step 1:</b> Add all three sides.</p>\n<p>P = 5 + 7 + 9</p>\n<p><b>Step 2:</b> Calculate.</p>\n<p><b>Answer: 21 cm.</b></p>\n\n<h3>Worked Example 2: Find a missing side</h3>\n<p>A triangle has perimeter 25 cm. Two sides are 8 cm and 10 cm. Find the third side.</p>\n<p><b>Step 1:</b> Let the missing side be x.</p>\n<p>8 + 10 + x = 25</p>\n<p><b>Step 2:</b> Add the known sides.</p>\n<p>18 + x = 25</p>\n<p><b>Step 3:</b> Subtract 18.</p>\n<p>x = 7 cm.</p>\n\n<h3>Worked Example 3: An equilateral triangle</h3>\n<p>An equilateral triangle has perimeter 42 cm. Find each side.</p>\n<p><b>Step 1:</b> Its three sides are equal.</p>\n<p>3s = 42</p>\n<p><b>Step 2:</b> Divide by 3.</p>\n<p>s = 14 cm.</p>\n\n<h3>Common mistake</h3>\n<p>Do not assume a triangle has equal sides unless the question says so or gives enough information to establish it.</p>",
@@ -3047,6 +3077,7 @@ export const mathTopics = [
     "id": "math|geometry|Area of a Rectangle",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Area",
     "topic": "Area of a Rectangle",
     "data": {
       "notes": "<h2>Area of a Rectangle</h2>\n\n<p><b>One concept:</b> Area measures the surface covered inside a shape.</p>\n\n<p><b>Formula:</b> A = length × width</p>\n\n<p>Area uses square units, such as cm² or m², because it measures a two-dimensional surface.</p>\n\n<h3>Worked Example 1: Find the area</h3>\n<p>A rectangle has length 9 cm and width 4 cm.</p>\n<p><b>Step 1:</b> Write the formula.</p>\n<p>A = l × w</p>\n<p><b>Step 2:</b> Substitute the measurements.</p>\n<p>A = 9 × 4</p>\n<p><b>Answer: 36 cm².</b></p>\n\n<h3>Worked Example 2: Find the missing width</h3>\n<p>A rectangle has area 72 cm² and length 12 cm. Find its width.</p>\n<p><b>Step 1:</b> Use A = l × w.</p>\n<p>72 = 12 × w</p>\n<p><b>Step 2:</b> Divide both sides by 12.</p>\n<p>w = 72 ÷ 12 = 6 cm.</p>\n\n<h3>Worked Example 3: Find area with an unknown</h3>\n<p>A rectangle has length (x + 2) cm and width 5 cm. If x = 6, find its area.</p>\n<p><b>Step 1:</b> Calculate the length.</p>\n<p>Length = 6 + 2 = 8 cm.</p>\n<p><b>Step 2:</b> Multiply length by width.</p>\n<p>A = 8 × 5</p>\n<p><b>Answer: 40 cm².</b></p>\n\n<h3>Common mistake</h3>\n<p>Do not add the length and width to calculate area. Adding dimensions is associated with perimeter; area requires multiplication.</p>",
@@ -3122,6 +3153,7 @@ export const mathTopics = [
     "id": "math|geometry|Area of a Square",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Area",
     "topic": "Area of a Square",
     "data": {
       "notes": "<h2>Area of a Square</h2>\n\n<p><b>One concept:</b> The area of a square is its side length multiplied by itself.</p>\n\n<p><b>Formula:</b> A = s² = s × s</p>\n\n<h3>Worked Example 1: Find the area</h3>\n<p>A square has side length 7 cm.</p>\n<p><b>Step 1:</b> Use A = s × s.</p>\n<p>A = 7 × 7</p>\n<p><b>Answer: 49 cm².</b></p>\n\n<h3>Worked Example 2: Find the side from the area</h3>\n<p>A square has area 81 m². Find its side length.</p>\n<p><b>Step 1:</b> Find the number that multiplied by itself gives 81.</p>\n<p>9 × 9 = 81.</p>\n<p><b>Step 2:</b> Take the positive square root.</p>\n<p>s = √81 = 9 m.</p>\n\n<h3>Worked Example 3: Find the area from an expression</h3>\n<p>A square has side length (x + 1) cm. If x = 5, find the area.</p>\n<p><b>Step 1:</b> Calculate the side.</p>\n<p>s = 5 + 1 = 6 cm.</p>\n<p><b>Step 2:</b> Square the side length.</p>\n<p>A = 6 × 6 = 36 cm².</p>\n\n<h3>Common mistake</h3>\n<p>Do not confuse side length with area. If the side is 7 cm, the area is 49 cm², not 7 cm² or 28 cm².</p>",
@@ -3195,6 +3227,7 @@ export const mathTopics = [
     "id": "math|geometry|Area of a Triangle",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Area",
     "topic": "Area of a Triangle",
     "data": {
       "notes": "<h2>Area of a Triangle</h2>\n\n<p><b>One concept:</b> The area of a triangle is half the product of its base and perpendicular height.</p>\n\n<p><b>Formula:</b> A = ½ × base × perpendicular height</p>\n\n<p>The perpendicular height meets the base at 90°. It is not necessarily the length of a sloping side.</p>\n\n<h3>Worked Example 1: Find the area</h3>\n<p>A triangle has base 10 cm and perpendicular height 6 cm.</p>\n<p><b>Step 1:</b> Write the formula.</p>\n<p>A = ½ × b × h</p>\n<p><b>Step 2:</b> Substitute.</p>\n<p>A = ½ × 10 × 6</p>\n<p><b>Step 3:</b> Multiply, then take half.</p>\n<p>A = ½ × 60 = 30 cm².</p>\n\n<h3>Worked Example 2: Find the height</h3>\n<p>A triangle has area 42 cm² and base 12 cm. Find its perpendicular height.</p>\n<p><b>Step 1:</b> Substitute into the formula.</p>\n<p>42 = ½ × 12 × h</p>\n<p><b>Step 2:</b> Simplify.</p>\n<p>42 = 6h</p>\n<p><b>Step 3:</b> Divide by 6.</p>\n<p>h = 42 ÷ 6 = 7 cm.</p>\n\n<h3>Worked Example 3: Find the base</h3>\n<p>A triangle has area 35 m² and perpendicular height 10 m. Find its base.</p>\n<p><b>Step 1:</b> Write the equation.</p>\n<p>35 = ½ × b × 10</p>\n<p><b>Step 2:</b> Simplify.</p>\n<p>35 = 5b</p>\n<p><b>Step 3:</b> Divide by 5.</p>\n<p>b = 7 m.</p>\n\n<h3>Common mistake</h3>\n<p>Do not forget the ½. Multiplying base by height without dividing by 2 gives the area of a rectangle with those dimensions, not the triangle.</p>",
@@ -3268,6 +3301,7 @@ export const mathTopics = [
     "id": "math|geometry|Area of a Parallelogram",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Area",
     "topic": "Area of a Parallelogram",
     "data": {
       "notes": "<h2>Area of a Parallelogram</h2>\n\n<p><b>One concept:</b> The area of a parallelogram is the product of its base and perpendicular height.</p>\n\n<p><b>Formula:</b> A = base × perpendicular height</p>\n\n<p>The perpendicular height is the shortest distance from the base to the opposite parallel side. It meets the base at 90°.</p>\n\n<p>The sloping side is <b>not</b> the perpendicular height unless it happens to meet the base at 90°.</p>\n\n<h3>Why does the formula work?</h3>\n\n<p>A parallelogram can be rearranged into a rectangle with the same base and perpendicular height.</p>\n\n<p>Since the area of a rectangle is:</p>\n\n<p><b>Area = length × width</b></p>\n\n<p>the area of the parallelogram is:</p>\n\n<p><b>A = base × perpendicular height</b></p>\n\n<h3>Worked Example 1: Find the area</h3>\n\n<p>A parallelogram has a base of 12 cm and a perpendicular height of 7 cm. Find its area.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>A = b × h</p>\n\n<p><b>Step 2:</b> Substitute the values.</p>\n\n<p>A = 12 × 7</p>\n\n<p><b>Step 3:</b> Calculate.</p>\n\n<p>A = 84 cm²</p>\n\n<h3>Worked Example 2: Find the height</h3>\n\n<p>A parallelogram has an area of 96 m² and a base of 12 m. Find its perpendicular height.</p>\n\n<p><b>Step 1:</b> Start with the formula.</p>\n\n<p>A = b × h</p>\n\n<p><b>Step 2:</b> Substitute the known values.</p>\n\n<p>96 = 12 × h</p>\n\n<p><b>Step 3:</b> Divide both sides by 12.</p>\n\n<p>h = 96 ÷ 12</p>\n\n<p><b>Step 4:</b> Calculate.</p>\n\n<p>h = 8 m</p>\n\n<h3>Worked Example 3: Find the base</h3>\n\n<p>A parallelogram has an area of 135 cm² and a perpendicular height of 9 cm. Find its base.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>A = b × h</p>\n\n<p><b>Step 2:</b> Substitute.</p>\n\n<p>135 = b × 9</p>\n\n<p><b>Step 3:</b> Divide both sides by 9.</p>\n\n<p>b = 135 ÷ 9</p>\n\n<p><b>Step 4:</b> Calculate.</p>\n\n<p>b = 15 cm</p>\n\n<h3>Common mistake</h3>\n\n<p>Do not use the sloping side as the height unless it is perpendicular to the base.</p>\n\n<p>For example, if the base is 10 cm and the sloping side is 8 cm, you cannot automatically use 8 cm as the height.</p>",
@@ -3364,6 +3398,7 @@ export const mathTopics = [
     "id": "math|geometry|Area of a Trapezium",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Area",
     "topic": "Area of a Trapezium",
     "data": {
       "notes": "<h2>Area of a Trapezium</h2>\n\n<p><b>One concept:</b> The area of a trapezium is half the sum of its two parallel sides multiplied by its perpendicular height.</p>\n\n<p><b>Formula:</b></p>\n\n<p>A = ½ × (a + b) × h</p>\n\n<p>Here, <b>a</b> and <b>b</b> are the lengths of the two parallel sides, and <b>h</b> is the perpendicular height.</p>\n\n<p>The two parallel sides are sometimes called the <b>parallel sides</b> or <b>bases</b>.</p>\n\n<p>The height must meet the parallel sides at <b>90°</b>.</p>\n\n<h3>Why does the formula work?</h3>\n\n<p>The expression <b>½ × (a + b)</b> finds the average length of the two parallel sides.</p>\n\n<p>Multiplying that average by the perpendicular height gives the area.</p>\n\n<h3>Worked Example 1: Find the area</h3>\n\n<p>A trapezium has parallel sides of 8 cm and 14 cm. Its perpendicular height is 5 cm. Find its area.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>A = ½ × (a + b) × h</p>\n\n<p><b>Step 2:</b> Substitute the values.</p>\n\n<p>A = ½ × (8 + 14) × 5</p>\n\n<p><b>Step 3:</b> Add the parallel sides.</p>\n\n<p>A = ½ × 22 × 5</p>\n\n<p><b>Step 4:</b> Multiply.</p>\n\n<p>A = 11 × 5</p>\n\n<p><b>Step 5:</b> Calculate.</p>\n\n<p><b>A = 55 cm²</b></p>\n\n<h3>Worked Example 2: Find the height</h3>\n\n<p>A trapezium has parallel sides of 10 m and 16 m. Its area is 104 m². Find its perpendicular height.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>A = ½ × (a + b) × h</p>\n\n<p><b>Step 2:</b> Substitute the known values.</p>\n\n<p>104 = ½ × (10 + 16) × h</p>\n\n<p><b>Step 3:</b> Add the parallel sides.</p>\n\n<p>104 = ½ × 26 × h</p>\n\n<p>104 = 13h</p>\n\n<p><b>Step 4:</b> Divide both sides by 13.</p>\n\n<p>h = 104 ÷ 13</p>\n\n<p><b>h = 8 m</b></p>\n\n<h3>Worked Example 3: Find a parallel side</h3>\n\n<p>A trapezium has an area of 90 cm². One parallel side is 8 cm and the perpendicular height is 6 cm. Find the other parallel side.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>A = ½ × (a + b) × h</p>\n\n<p><b>Step 2:</b> Substitute the known values.</p>\n\n<p>90 = ½ × (8 + b) × 6</p>\n\n<p><b>Step 3:</b> Simplify.</p>\n\n<p>90 = 3(8 + b)</p>\n\n<p><b>Step 4:</b> Divide by 3.</p>\n\n<p>30 = 8 + b</p>\n\n<p><b>Step 5:</b> Subtract 8 from both sides.</p>\n\n<p>b = 22 cm</p>\n\n<p><b>Answer: 22 cm</b></p>\n\n<h3>Common mistake</h3>\n\n<p>Do not add all four sides.</p>\n\n<p>Only the <b>two parallel sides</b> are added in the formula.</p>\n\n<p>Also, do not use a sloping side as the height unless it is perpendicular to the parallel sides.</p>",
@@ -3463,6 +3498,7 @@ export const mathTopics = [
     "id": "math|geometry|Pythagoras' Theorem",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Triangles",
     "topic": "Pythagoras' Theorem",
     "data": {
       "notes": "<h2>Pythagoras' Theorem</h2>\n\n<p><b>One concept:</b> In a right-angled triangle, the square of the hypotenuse equals the sum of the squares of the other two sides.</p>\n\n<p><b>Formula:</b></p>\n\n<p>c² = a² + b²</p>\n\n<p>Here, <b>c</b> is the <b>hypotenuse</b>.</p>\n\n<p>The hypotenuse is always the side <b>opposite the 90° angle</b>.</p>\n\n<p>It is also the <b>longest side</b> of a right-angled triangle.</p>\n\n<h3>What does the formula mean?</h3>\n\n<p>Suppose the two shorter sides are 3 cm and 4 cm.</p>\n\n<p>The theorem says:</p>\n\n<p>c² = 3² + 4²</p>\n\n<p>c² = 9 + 16</p>\n\n<p>c² = 25</p>\n\n<p>Therefore:</p>\n\n<p>c = √25 = 5 cm</p>\n\n<p>So a right-angled triangle with sides 3 cm, 4 cm and 5 cm satisfies Pythagoras' theorem.</p>\n\n<h3>Worked Example 1: Find the hypotenuse</h3>\n\n<p>A right-angled triangle has two shorter sides of 6 cm and 8 cm. Find the hypotenuse.</p>\n\n<p><b>Step 1:</b> Write Pythagoras' theorem.</p>\n\n<p>c² = a² + b²</p>\n\n<p><b>Step 2:</b> Substitute the known sides.</p>\n\n<p>c² = 6² + 8²</p>\n\n<p><b>Step 3:</b> Square the numbers.</p>\n\n<p>c² = 36 + 64</p>\n\n<p><b>Step 4:</b> Add.</p>\n\n<p>c² = 100</p>\n\n<p><b>Step 5:</b> Take the square root.</p>\n\n<p>c = √100</p>\n\n<p><b>c = 10 cm</b></p>\n\n<h3>Worked Example 2: Find a shorter side</h3>\n\n<p>A right-angled triangle has a hypotenuse of 13 m and one shorter side of 5 m. Find the other shorter side.</p>\n\n<p><b>Step 1:</b> Write the formula.</p>\n\n<p>c² = a² + b²</p>\n\n<p><b>Step 2:</b> Substitute the known values.</p>\n\n<p>13² = 5² + b²</p>\n\n<p><b>Step 3:</b> Square the known numbers.</p>\n\n<p>169 = 25 + b²</p>\n\n<p><b>Step 4:</b> Subtract 25 from both sides.</p>\n\n<p>169 - 25 = b²</p>\n\n<p>144 = b²</p>\n\n<p><b>Step 5:</b> Take the square root.</p>\n\n<p>b = √144</p>\n\n<p><b>b = 12 m</b></p>\n\n<h3>Worked Example 3: Identify the hypotenuse first</h3>\n\n<p>A right-angled triangle has sides of 9 cm, 12 cm and 15 cm. Show that Pythagoras' theorem is satisfied.</p>\n\n<p><b>Step 1:</b> Identify the hypotenuse.</p>\n\n<p>The longest side is 15 cm, so c = 15.</p>\n\n<p><b>Step 2:</b> Square the hypotenuse.</p>\n\n<p>c² = 15² = 225</p>\n\n<p><b>Step 3:</b> Square the other two sides.</p>\n\n<p>9² + 12² = 81 + 144</p>\n\n<p>9² + 12² = 225</p>\n\n<p><b>Step 4:</b> Compare both sides.</p>\n\n<p>15² = 9² + 12²</p>\n\n<p>225 = 225</p>\n\n<p>Therefore, Pythagoras' theorem is satisfied.</p>\n\n<h3>Common mistakes</h3>\n\n<p><b>Mistake 1:</b> Choosing the longest side without checking that the triangle is right-angled.</p>\n\n<p>Pythagoras' theorem applies specifically to <b>right-angled triangles</b>.</p>\n\n<p><b>Mistake 2:</b> Forgetting to take the square root at the end.</p>\n\n<p>If c² = 100, then c = √100 = 10, not 100.</p>\n\n<p><b>Mistake 3:</b> Subtracting when finding the hypotenuse.</p>\n\n<p>When finding the hypotenuse:</p>\n\n<p>c² = a² + b²</p>\n\n<p>When finding a shorter side:</p>\n\n<p>a² = c² - b²</p>",
@@ -3566,6 +3602,7 @@ export const mathTopics = [
     "id": "math|geometry|Interior Angle Sum of Polygons",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "Polygons",
     "topic": "Interior Angle Sum of Polygons",
     "data": {
       "notes": "<h2>Interior Angle Sum of Polygons</h2>\n\n<p><b>One concept:</b> The sum of the interior angles of a polygon depends on the number of sides it has.</p>\n\n<p><b>Formula:</b></p>\n\n<p><b>Sum of interior angles = (n − 2) × 180°</b></p>\n\n<p>Here, <b>n</b> is the number of sides of the polygon.</p>\n\n<h3>Why does the formula work?</h3>\n\n<p>A polygon can be divided into triangles by drawing diagonals from one vertex.</p>\n\n<p>A polygon with <b>n</b> sides can be divided into:</p>\n\n<p><b>n − 2 triangles</b></p>\n\n<p>Every triangle has an angle sum of 180°.</p>\n\n<p>Therefore:</p>\n\n<p><b>Interior angle sum = (n − 2) × 180°</b></p>\n\n<h3>Worked Example 1: Find the angle sum of a pentagon</h3>\n\n<p>A pentagon has 5 sides. Find the sum of its interior angles.</p>\n\n<p><b>Step 1:</b> Identify the number of sides.</p>\n\n<p>n = 5</p>\n\n<p><b>Step 2:</b> Use the formula.</p>\n\n<p>Sum = (n − 2) × 180°</p>\n\n<p><b>Step 3:</b> Substitute n = 5.</p>\n\n<p>Sum = (5 − 2) × 180°</p>\n\n<p><b>Step 4:</b> Simplify.</p>\n\n<p>Sum = 3 × 180°</p>\n\n<p><b>Step 5:</b> Calculate.</p>\n\n<p><b>Sum = 540°</b></p>\n\n<h3>Worked Example 2: Find the angle sum of a hexagon</h3>\n\n<p>A hexagon has 6 sides. Find the sum of its interior angles.</p>\n\n<p><b>Step 1:</b> Identify n.</p>\n\n<p>n = 6</p>\n\n<p><b>Step 2:</b> Substitute into the formula.</p>\n\n<p>Sum = (6 − 2) × 180°</p>\n\n<p><b>Step 3:</b> Simplify.</p>\n\n<p>Sum = 4 × 180°</p>\n\n<p><b>Step 4:</b> Calculate.</p>\n\n<p><b>Sum = 720°</b></p>\n\n<h3>Worked Example 3: Find the number of sides</h3>\n\n<p>A polygon has an interior angle sum of 900°. How many sides does it have?</p>\n\n<p><b>Step 1:</b> Start with the formula.</p>\n\n<p>900° = (n − 2) × 180°</p>\n\n<p><b>Step 2:</b> Divide both sides by 180°.</p>\n\n<p>900 ÷ 180 = n − 2</p>\n\n<p>5 = n − 2</p>\n\n<p><b>Step 3:</b> Add 2 to both sides.</p>\n\n<p>n = 7</p>\n\n<p><b>Answer: The polygon has 7 sides.</b></p>\n\n<h3>Useful values</h3>\n\n<p><b>Triangle:</b> (3 − 2) × 180° = 180°</p>\n\n<p><b>Quadrilateral:</b> (4 − 2) × 180° = 360°</p>\n\n<p><b>Pentagon:</b> (5 − 2) × 180° = 540°</p>\n\n<p><b>Hexagon:</b> (6 − 2) × 180° = 720°</p>\n\n<p><b>Heptagon:</b> (7 − 2) × 180° = 900°</p>\n\n<h3>Common mistake</h3>\n\n<p>Do not use <b>n × 180°</b>.</p>\n\n<p>The correct formula is:</p>\n\n<p><b>(n − 2) × 180°</b></p>\n\n<p>For example, a pentagon does not have an interior angle sum of 5 × 180°.</p>\n\n<p>It has:</p>\n\n<p>(5 − 2) × 180° = 540°</p>",
@@ -3663,6 +3700,7 @@ export const mathTopics = [
     "id": "math|geometry|Exterior Angles of a Polygon",
     "curriculum_id": "math",
     "chapter_id": "geometry",
+    "topic_group": "polygons",
     "topic": "Exterior Angles of a Polygon",
     "data": {
       "notes": "<h2>Exterior Angles of a Polygon</h2>\n\n<p><b>One concept:</b> The sum of one exterior angle at each vertex of any polygon is always 360°.</p>\n\n<p><b>Rule:</b></p>\n\n<p><b>Sum of exterior angles = 360°</b></p>\n\n<p>This rule works for every polygon, regardless of the number of sides.</p>\n\n<h3>What is an exterior angle?</h3>\n\n<p>An exterior angle is formed when one side of a polygon is extended beyond a vertex.</p>\n\n<p>The exterior angle and the interior angle at the same vertex form a straight line.</p>\n\n<p>Therefore:</p>\n\n<p><b>Interior angle + exterior angle = 180°</b></p>\n\n<h3>Why is the exterior angle sum 360°?</h3>\n\n<p>Imagine walking around the outside of a polygon.</p>\n\n<p>At every vertex, you turn through an exterior angle.</p>\n\n<p>After going all the way around the polygon, you have made one complete turn.</p>\n\n<p>One complete turn is:</p>\n\n<p><b>360°</b></p>\n\n<p>Therefore, the exterior angles add up to 360°.</p>\n\n<h3>Worked Example 1: Find a missing exterior angle</h3>\n\n<p>A polygon has exterior angles of 80°, 100°, 70° and 60°. Find the fifth exterior angle.</p>\n\n<p><b>Step 1:</b> The exterior angles must add up to 360°.</p>\n\n<p>Sum = 360°</p>\n\n<p><b>Step 2:</b> Add the known angles.</p>\n\n<p>80° + 100° + 70° + 60° = 310°</p>\n\n<p><b>Step 3:</b> Subtract from 360°.</p>\n\n<p>Missing angle = 360° − 310°</p>\n\n<p><b>Missing angle = 50°</b></p>\n\n<h3>Worked Example 2: Find each exterior angle of a regular polygon</h3>\n\n<p>A regular hexagon has 6 equal exterior angles. Find each exterior angle.</p>\n\n<p><b>Step 1:</b> The exterior angles add up to 360°.</p>\n\n<p><b>Step 2:</b> Because the hexagon is regular, all 6 exterior angles are equal.</p>\n\n<p>Each exterior angle = 360° ÷ 6</p>\n\n<p><b>Step 3:</b> Calculate.</p>\n\n<p><b>Each exterior angle = 60°</b></p>\n\n<h3>Worked Example 3: Find the number of sides</h3>\n\n<p>A regular polygon has an exterior angle of 45°. Find the number of sides.</p>\n\n<p><b>Step 1:</b> The exterior angles add up to 360°.</p>\n\n<p><b>Step 2:</b> Because the polygon is regular, all exterior angles are equal.</p>\n\n<p>Number of sides = 360° ÷ exterior angle</p>\n\n<p><b>Step 3:</b> Substitute 45°.</p>\n\n<p>n = 360° ÷ 45°</p>\n\n<p><b>n = 8</b></p>\n\n<p>Therefore, the polygon has <b>8 sides</b>.</p>\n\n<h3>Important relationship</h3>\n\n<p>At the same vertex, the interior and exterior angles form a straight line.</p>\n\n<p>Therefore:</p>\n\n<p><b>Interior angle + exterior angle = 180°</b></p>\n\n<p>For example, if an interior angle is 120°:</p>\n\n<p>Exterior angle = 180° − 120°</p>\n\n<p><b>Exterior angle = 60°</b></p>\n\n<h3>Common mistakes</h3>\n\n<p><b>Mistake 1:</b> Using 180° as the total exterior-angle sum.</p>\n\n<p>The total exterior-angle sum is <b>360°</b>.</p>\n\n<p><b>Mistake 2:</b> Dividing 180° by the number of sides to find each exterior angle.</p>\n\n<p>For a regular polygon:</p>\n\n<p><b>Each exterior angle = 360° ÷ n</b></p>\n\n<p><b>Mistake 3:</b> Assuming every polygon has equal exterior angles.</p>\n\n<p>Only a <b>regular polygon</b> has equal exterior angles.</p>",
@@ -3778,6 +3816,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Meaning of a Variable in Linear Programming",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Meaning of a Variable in Linear Programming",
     "topic": "Meaning of a Variable in Linear Programming",
     "data": {
       "notes": "<h2>Meaning of a Variable in Linear Programming</h2>\n\n<p>\nA <b>variable</b> represents an unknown quantity that can change.\nIn linear programming, variables usually represent quantities that\nwe need to determine.\n</p>\n\n<p>\nWe commonly use letters such as <b>x</b> and <b>y</b> to represent\nthese unknown quantities.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nA shop sells two types of bags. Let:\n</p>\n\n<pre>\nx = number of small bags\ny = number of large bags\n</pre>\n\n<p>\nHere, <b>x</b> and <b>y</b> are variables because their values are\nnot known yet.\n</p>\n\n<h3>Example 2</h3>\n\n<p>\nA farmer keeps chickens and goats. Let:\n</p>\n\n<pre>\nx = number of chickens\ny = number of goats\n</pre>\n\n<p>\nThe variables represent the quantities we want to determine.\n</p>\n\n<h3>Example 3</h3>\n\n<p>\nA school produces desks and chairs. Let:\n</p>\n\n<pre>\nx = number of desks produced\ny = number of chairs produced\n</pre>\n\n<p>\nThe values of x and y can change depending on the available\nresources and the requirements of the problem.\n</p>\n\n<h3>Important</h3>\n\n<p>\nAlways state what each variable represents before using it.\nWriting only <b>x</b> and <b>y</b> without defining them makes the\nmathematical model unclear.\n</p>\n\n<p>\n<b>Key idea:</b> A variable represents an unknown quantity whose\nvalue we are trying to determine.\n</p>\n",
@@ -3870,6 +3909,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Identifying Variables from a Problem",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Identifying Variables from a Problem",
     "topic": "Identifying Variables from a Problem",
     "data": {
       "notes": "<h2>Identifying Variables from a Problem</h2>\n\n<p>\nIn a word problem, the first task is to identify the quantities that\nare unknown and need to be determined.\nThese quantities become the <b>variables</b>.\n</p>\n\n<p>\nA good variable definition tells us exactly what is being counted or\nmeasured.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nA bakery makes cakes and bread. The number of cakes and loaves of\nbread produced is unknown.\n</p>\n\n<pre>\nx = number of cakes\ny = number of loaves of bread\n</pre>\n\n<h3>Example 2</h3>\n\n<p>\nA farmer keeps cows and goats. The numbers of cows and goats are\nunknown.\n</p>\n\n<pre>\nx = number of cows\ny = number of goats\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nA company produces tables and chairs.\n</p>\n\n<pre>\nx = number of tables produced\ny = number of chairs produced\n</pre>\n\n<p>\nNotice that the variables describe the <b>quantities being decided</b>.\nThey are not the prices, profits, or available resources unless the\nproblem specifically makes those quantities unknown.\n</p>\n\n<h3>Key Rule</h3>\n\n<p>\nAsk:\n</p>\n\n<pre>\n\"What quantities do I need to find?\"\n</pre>\n\n<p>\nThose quantities are the natural candidates for the variables.\n</p>\n",
@@ -3963,6 +4003,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Non-Negativity Constraints",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Non-Negativity Constraints",
     "topic": "Non-Negativity Constraints",
     "data": {
       "notes": "<h2>Non-Negativity Constraints</h2>\n\n<p>\nWhen a variable represents a quantity such as the number of products,\npeople, animals, or hours, it normally cannot be negative.\n</p>\n\n<p>\nThis is expressed using a <b>non-negativity constraint</b>.\n</p>\n\n<pre>\nx ≥ 0\ny ≥ 0\n</pre>\n\n<p>\nThese statements mean that x and y can be zero or positive, but not\nnegative.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nIf x represents the number of desks produced:\n</p>\n\n<pre>\nx ≥ 0\n</pre>\n\n<p>\nWe cannot produce −3 desks.\n</p>\n\n<h3>Example 2</h3>\n\n<p>\nIf y represents the number of workers assigned to a task:\n</p>\n\n<pre>\ny ≥ 0\n</pre>\n\n<p>\nA negative number of workers has no physical meaning.\n</p>\n\n<h3>Example 3</h3>\n\n<p>\nIf x represents chairs and y represents tables:\n</p>\n\n<pre>\nx ≥ 0\ny ≥ 0\n</pre>\n\n<p>\nBoth quantities must be zero or greater.\n</p>\n\n<h3>Important</h3>\n\n<p>\nThe condition <b>x ≥ 0</b> does not mean that x must be positive.\nZero is allowed.\n</p>\n\n<pre>\nx = 0 ✓\nx = 4 ✓\nx = 10 ✓\nx = -2 ✗\n</pre>\n\n<p>\n<b>Key idea:</b> Quantities that cannot be negative are represented\nusing non-negativity constraints such as x ≥ 0 and y ≥ 0.\n</p>\n",
@@ -4056,6 +4097,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Meaning of an Objective Function",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Meaning of an Objective Function",
     "topic": "Meaning of an Objective Function",
     "data": {
       "notes": "<h2>Meaning of an Objective Function</h2>\n\n<p>\nThe <b>objective function</b> is the mathematical expression that\ntells us what quantity we want to <b>maximize</b> or <b>minimize</b>.\n</p>\n\n<p>\nIt is commonly written using <b>Z</b>.\n</p>\n\n<pre>\nZ = ax + by\n</pre>\n\n<p>\nThe values of x and y determine the value of Z.\n</p>\n\n<h3>Example 1</h3>\n\n<pre>\nZ = 5x + 3y\n</pre>\n\n<p>\nIf the question says \"maximize profit\", then this expression represents\nthe profit being maximized.\n</p>\n\n<h3>Example 2</h3>\n\n<pre>\nC = 4x + 2y\n</pre>\n\n<p>\nIf C represents cost and the problem asks for the minimum cost, then\nC is the objective function.\n</p>\n\n<h3>Example 3</h3>\n\n<pre>\nZ = 8x + 5y\n</pre>\n\n<p>\nIf Z represents total revenue and the problem asks for the greatest\npossible revenue, then Z is the objective function.\n</p>\n\n<h3>Recognizing It</h3>\n\n<p>\nLook for the quantity the problem wants to make as large or as small\nas possible.\n</p>\n\n<pre>\nmaximize → largest possible value\n\nminimize → smallest possible value\n</pre>\n\n<p>\n<b>Key idea:</b> The objective function is what we are trying to\noptimize.\n</p>\n",
@@ -4149,6 +4191,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Identifying the Objective Function",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Identifying the Objective Function",
     "topic": "Identifying the Objective Function",
     "data": {
       "notes": "<h2>Identifying the Objective Function</h2>\n\n<p>\nTo identify the objective function, look for the quantity that the\nproblem asks you to <b>maximize</b> or <b>minimize</b>.\n</p>\n\n<p>\nThe wording of the question is important.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nA company wants to obtain the greatest profit:\n</p>\n\n<pre>\nProfit = 8x + 5y\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nMaximize P = 8x + 5y\n</pre>\n\n<p>\nThe objective function is:\n</p>\n\n<pre>\nP = 8x + 5y\n</pre>\n\n<h3>Example 2</h3>\n\n<p>\nA manufacturer wants the lowest production cost:\n</p>\n\n<pre>\nCost = 6x + 4y\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nMinimize C = 6x + 4y\n</pre>\n\n<p>\nThe objective function is:\n</p>\n\n<pre>\nC = 6x + 4y\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nA farmer wants to maximize the total income:\n</p>\n\n<pre>\nIncome = 12x + 9y\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nMaximize I = 12x + 9y\n</pre>\n\n<h3>Key Question</h3>\n\n<p>\nWhen reading a word problem, ask:\n</p>\n\n<pre>\n\"What does the problem want me to make\nas large as possible or as small as possible?\"\n</pre>\n\n<p>\nThat quantity forms the objective function.\n</p>\n",
@@ -4243,6 +4286,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Maximization",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Maximization",
     "topic": "Maximization",
     "data": {
       "notes": "<h2>Maximization</h2>\n\n<p>\n<b>Maximization</b> means finding the largest possible value of a\nquantity while satisfying all the required restrictions.\n</p>\n\n<p>\nIn linear programming, the quantity being maximized is represented by\nthe objective function.\n</p>\n\n<h3>Example 1</h3>\n\n<pre>\nZ = 4x + 3y\n</pre>\n\n<p>\nIf the problem says:\n</p>\n\n<pre>\nMaximize Z\n</pre>\n\n<p>\nour goal is to find the feasible values of x and y that produce the\nlargest possible value of Z.\n</p>\n\n<h3>Example 2</h3>\n\n<p>\nSuppose the possible values of Z at three allowed points are:\n</p>\n\n<pre>\nPoint A: Z = 10\nPoint B: Z = 16\nPoint C: Z = 13\n</pre>\n\n<p>\nCompare the values:\n</p>\n\n<pre>\n10, 16, 13\n</pre>\n\n<p>\nThe largest value is 16.\n</p>\n\n<pre>\nMaximum Z = 16\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nSuppose:\n</p>\n\n<pre>\nZ = 5x + 2y\n</pre>\n\n<p>\nAt three feasible points:\n</p>\n\n<pre>\n(1,2): Z = 5(1) + 2(2) = 9\n\n(2,3): Z = 5(2) + 2(3) = 16\n\n(4,1): Z = 5(4) + 2(1) = 22\n</pre>\n\n<p>\nThe largest value is 22.\n</p>\n\n<pre>\nMaximum Z = 22 at (4,1)\n</pre>\n\n<p>\n<b>Key idea:</b> Maximization means selecting the largest objective\nvalue among the allowed solutions.\n</p>\n",
@@ -4335,6 +4379,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Minimization",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Minimization",
     "topic": "Minimization",
     "data": {
       "notes": "<h2>Minimization</h2>\n\n<p>\n<b>Minimization</b> means finding the smallest possible value of a\nquantity while satisfying all the required restrictions.\n</p>\n\n<p>\nThe quantity being minimized is represented by the objective function.\n</p>\n\n<h3>Example 1</h3>\n\n<pre>\nC = 6x + 4y\n</pre>\n\n<p>\nIf the problem says:\n</p>\n\n<pre>\nMinimize C\n</pre>\n\n<p>\nour goal is to find the feasible values of x and y that produce the\nsmallest possible value of C.\n</p>\n\n<h3>Example 2</h3>\n\n<p>\nSuppose the possible values of C are:\n</p>\n\n<pre>\nC = 15\nC = 9\nC = 12\n</pre>\n\n<p>\nThe smallest value is:\n</p>\n\n<pre>\nMinimum C = 9\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nSuppose:\n</p>\n\n<pre>\nC = 4x + 3y\n</pre>\n\n<p>\nAt three feasible points:\n</p>\n\n<pre>\n(1,2): C = 4(1) + 3(2) = 10\n\n(2,1): C = 4(2) + 3(1) = 11\n\n(3,2): C = 4(3) + 3(2) = 18\n</pre>\n\n<p>\nThe smallest value is 10.\n</p>\n\n<pre>\nMinimum C = 10 at (1,2)\n</pre>\n\n<p>\n<b>Key idea:</b> Minimization means selecting the smallest objective\nvalue among the allowed solutions.\n</p>\n",
@@ -4425,6 +4470,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Meaning of a Constraint",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Meaning of a Constraint",
     "topic": "Meaning of a Constraint",
     "data": {
       "notes": "<h2>Meaning of a Constraint</h2>\n\n<p>\nA <b>constraint</b> is a mathematical restriction on the values that\nthe variables are allowed to take.\n</p>\n\n<p>\nConstraints describe the limits imposed by the situation.\nThey are usually written as inequalities.\n</p>\n\n<h3>Example 1</h3>\n\n<pre>\nx + y ≤ 20\n</pre>\n\n<p>\nThis means the combined value of x and y cannot be greater than 20.\n</p>\n\n<p>\nFor example:\n</p>\n\n<pre>\nx = 8, y = 10\n\n8 + 10 = 18 ≤ 20 ✓\n</pre>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y ≤ 12\n</pre>\n\n<p>\nThe weighted combination 2x + y cannot exceed 12.\n</p>\n\n<p>\nFor example:\n</p>\n\n<pre>\nx = 4, y = 3\n\n2(4) + 3 = 11 ≤ 12 ✓\n</pre>\n\n<h3>Example 3</h3>\n\n<pre>\nx ≥ 5\n</pre>\n\n<p>\nThis constraint requires x to be at least 5.\nTherefore values such as 5, 6, and 10 are allowed, while 4 is not.\n</p>\n\n<h3>Important Distinction</h3>\n\n<p>\nThe <b>objective function</b> tells us what we want to optimize.\nA <b>constraint</b> tells us what we are allowed to do.\n</p>\n\n<pre>\nObjective → What we want\nConstraint → What is allowed\n</pre>\n\n<p>\n<b>Key idea:</b> A constraint limits the possible values of the\nvariables.\n</p>\n",
@@ -4517,6 +4563,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Translating 'At Most' into an Inequality",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Translating 'At Most' into an Inequality",
     "topic": "Translating 'At Most' into an Inequality",
     "data": {
       "notes": "<h2>Translating \"At Most\" into an Inequality</h2>\n\n<p>\nThe phrase <b>\"at most\"</b> means that a quantity cannot be greater\nthan a stated value.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nat most N  →  ≤ N\n</pre>\n\n<p>\nThe value N itself is allowed.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nx is at most 10.\n</p>\n\n<pre>\nx ≤ 10\n</pre>\n\n<p>\nThis allows 10 and values below 10.\n</p>\n\n<h3>Example 2</h3>\n\n<p>\nThe total number of products is at most 50.\nIf x and y represent two types of products:\n</p>\n\n<pre>\nx + y ≤ 50\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nA worker can spend at most 8 hours on two activities.\nIf x and y are the hours spent:\n</p>\n\n<pre>\nx + y ≤ 8\n</pre>\n\n<h3>Important</h3>\n\n<p>\n\"At most\" includes the limiting value.\n</p>\n\n<pre>\nat most 10\n\n10 is allowed ✓\n11 is not allowed ✗\n</pre>\n\n<p>\n<b>Key idea:</b> \"At most\" translates to <b>less than or equal to\n(≤)</b>.\n</p>\n",
@@ -4610,6 +4657,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Translating 'At Least' into an Inequality",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Translating 'At Least' into an Inequality",
     "topic": "Translating 'At Least' into an Inequality",
     "data": {
       "notes": "<h2>Translating \"At Least\" into an Inequality</h2>\n\n<p>\nThe phrase <b>\"at least\"</b> means that a quantity cannot be smaller\nthan a stated value.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nat least N  →  ≥ N\n</pre>\n\n<p>\nThe value N itself is allowed.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nx is at least 5.\n</p>\n\n<pre>\nx ≥ 5\n</pre>\n\n<p>\nThis allows 5 and values greater than 5.\n</p>\n\n<h3>Example 2</h3>\n\n<p>\nA company must produce at least 100 units.\nIf x represents the number of units:\n</p>\n\n<pre>\nx ≥ 100\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nA school requires at least 30 students in two groups.\nIf x and y are the numbers of students:\n</p>\n\n<pre>\nx + y ≥ 30\n</pre>\n\n<h3>Important</h3>\n\n<p>\n\"At least\" includes the limiting value.\n</p>\n\n<pre>\nat least 10\n\n10 is allowed ✓\n9 is not allowed ✗\n</pre>\n\n<p>\n<b>Key idea:</b> \"At least\" translates to <b>greater than or equal to\n(≥)</b>.\n</p>\n",
@@ -4703,6 +4751,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Translating 'Cannot Exceed' into an Inequality",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Translating 'Cannot Exceed' into an Inequality",
     "topic": "Translating 'Cannot Exceed' into an Inequality",
     "data": {
       "notes": "<h2>Translating \"Cannot Exceed\" into an Inequality</h2>\n\n<p>\nThe phrase <b>\"cannot exceed\"</b> means that a quantity must not be\ngreater than a stated value.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<pre>\ncannot exceed N  →  ≤ N\n</pre>\n\n<p>\nThe limiting value N is allowed.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nx cannot exceed 20.\n</p>\n\n<pre>\nx ≤ 20\n</pre>\n\n<h3>Example 2</h3>\n\n<p>\nThe total number of items cannot exceed 100.\nIf x and y represent two types of items:\n</p>\n\n<pre>\nx + y ≤ 100\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nThe total time cannot exceed 12 hours.\nIf x and y are two time periods:\n</p>\n\n<pre>\nx + y ≤ 12\n</pre>\n\n<h3>Check the Meaning</h3>\n\n<p>\nIf:\n</p>\n\n<pre>\nx ≤ 20\n</pre>\n\n<p>\nthen:\n</p>\n\n<pre>\nx = 20 ✓\nx = 19 ✓\nx = 21 ✗\n</pre>\n\n<p>\nThe phrase \"cannot exceed\" is therefore another way of saying\n\"less than or equal to.\"\n</p>\n\n<p>\n<b>Key idea:</b> \"Cannot exceed\" translates to <b>≤</b>.\n</p>\n",
@@ -4796,6 +4845,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Translating 'No More Than' into an Inequality",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Translating 'No More Than' into an Inequality",
     "topic": "Translating 'No More Than' into an Inequality",
     "data": {
       "notes": "<h2>Translating \"No More Than\" into an Inequality</h2>\n\n<p>\nThe phrase <b>\"no more than\"</b> means that a quantity cannot be\ngreater than a stated value.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nno more than N  →  ≤ N\n</pre>\n\n<p>\nThe limiting value is included.\n</p>\n\n<h3>Example 1</h3>\n\n<p>\nx is no more than 15.\n</p>\n\n<pre>\nx ≤ 15\n</pre>\n\n<h3>Example 2</h3>\n\n<p>\nA factory can produce no more than 200 items.\nIf x represents the number of items:\n</p>\n\n<pre>\nx ≤ 200\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nThe total number of products is no more than 50.\nIf x and y represent two types of products:\n</p>\n\n<pre>\nx + y ≤ 50\n</pre>\n\n<h3>Check the Meaning</h3>\n\n<pre>\nx ≤ 20\n\nx = 20 ✓\nx = 18 ✓\nx = 21 ✗\n</pre>\n\n<p>\n<b>Key idea:</b> \"No more than\" means <b>less than or equal to\n(≤)</b>.\n</p>\n",
@@ -4889,6 +4939,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Translating 'Not Less Than' into an Inequality",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Translating 'Not Less Than' into an Inequality",
     "topic": "Translating 'Not Less Than' into an Inequality",
     "data": {
       "notes": "<h2>Translating \"Not Less Than\" into an Inequality</h2>\n\n<p>\nThe phrase <b>\"not less than\"</b> means that a quantity cannot be\nsmaller than a stated value.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nnot less than N  →  ≥ N\n</pre>\n\n<h3>Example 1</h3>\n\n<p>\nx is not less than 8.\n</p>\n\n<pre>\nx ≥ 8\n</pre>\n\n<h3>Example 2</h3>\n\n<p>\nA company must produce not less than 100 units.\nIf x represents the number of units:\n</p>\n\n<pre>\nx ≥ 100\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nThe total number of students is not less than 40.\nIf x and y represent two groups:\n</p>\n\n<pre>\nx + y ≥ 40\n</pre>\n\n<h3>Check the Meaning</h3>\n\n<pre>\nx ≥ 10\n\nx = 10 ✓\nx = 12 ✓\nx = 9 ✗\n</pre>\n\n<p>\n<b>Key idea:</b> \"Not less than\" means <b>greater than or equal to\n(≥)</b>.\n</p>\n",
@@ -4982,6 +5033,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Translating 'Minimum of' into an Inequality",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Translating 'Minimum of' into an Inequality",
     "topic": "Translating 'Minimum of' into an Inequality",
     "data": {
       "notes": "<h2>Translating \"Minimum of\" into an Inequality</h2>\n\n<p>\nIn a constraint, the phrase <b>\"a minimum of N\"</b> means that the\nquantity must be at least N.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nminimum of N  →  ≥ N\n</pre>\n\n<h3>Example 1</h3>\n\n<p>\nA factory must produce a minimum of 20 units.\nIf x represents the number of units:\n</p>\n\n<pre>\nx ≥ 20\n</pre>\n\n<h3>Example 2</h3>\n\n<p>\nA school requires a minimum of 50 students in two groups.\nIf x and y represent the numbers of students:\n</p>\n\n<pre>\nx + y ≥ 50\n</pre>\n\n<h3>Example 3</h3>\n\n<p>\nA farmer must keep a minimum of 30 animals.\nIf x represents the number of animals:\n</p>\n\n<pre>\nx ≥ 30\n</pre>\n\n<h3>Important</h3>\n\n<p>\nThe minimum value itself is allowed.\n</p>\n\n<pre>\nx ≥ 30\n\nx = 30 ✓\nx = 35 ✓\nx = 29 ✗\n</pre>\n\n<p>\n<b>Key idea:</b> A minimum requirement translates to\n<b>greater than or equal to (≥)</b>.\n</p>\n",
@@ -5075,6 +5127,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Converting an Inequality to Its Boundary Equation",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Converting an Inequality to Its Boundary Equation",
     "topic": "Converting an Inequality to Its Boundary Equation",
     "data": {
       "notes": "<h2>Converting an Inequality to Its Boundary Equation</h2>\n\n<p>\nWhen graphing a linear inequality, the <b>boundary</b> is the line\nthat separates the allowed region from the rest of the plane.\n</p>\n\n<p>\nTo obtain the boundary equation, replace the inequality symbol with\nan <b>equal sign</b>.\n</p>\n\n<pre>\n≤  →  =\n≥  →  =\n<  →  =\n>  →  =\n</pre>\n\n<h3>Example 1</h3>\n\n<pre>\nx + y ≤ 6\n</pre>\n\n<p>\nReplace ≤ with =:\n</p>\n\n<pre>\nx + y = 6\n</pre>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y ≥ 8\n</pre>\n\n<p>\nReplace ≥ with =:\n</p>\n\n<pre>\n2x + y = 8\n</pre>\n\n<h3>Example 3</h3>\n\n<pre>\n3x + 4y < 12\n</pre>\n\n<p>\nReplace < with =:\n</p>\n\n<pre>\n3x + 4y = 12\n</pre>\n\n<h3>Important</h3>\n\n<p>\nThe boundary equation is used to draw the line.\nThe original inequality is still needed later to determine which side\nof the line satisfies the condition.\n</p>\n\n<p>\n<b>Key idea:</b> Replace the inequality sign with <b>=</b> to obtain\nthe boundary equation.\n</p>\n",
@@ -5168,6 +5221,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Finding the x-Intercept of a Boundary",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Finding the x-Intercept of a Boundary",
     "topic": "Finding the x-Intercept of a Boundary",
     "data": {
       "notes": "<h2>Finding the x-Intercept of a Boundary</h2>\n\n<p>\nThe <b>x-intercept</b> is the point where a graph crosses the\nx-axis.\n</p>\n\n<p>\nEvery point on the x-axis has:\n</p>\n\n<pre>\ny = 0\n</pre>\n\n<p>\nTherefore, to find the x-intercept of a boundary equation:\n</p>\n\n<pre>\n1. Set y = 0.\n2. Solve for x.\n3. Write the coordinate (x,0).\n</pre>\n\n<h3>Example 1</h3>\n\n<pre>\nx + y = 6\n</pre>\n\n<p>\nSet y = 0:\n</p>\n\n<pre>\nx + 0 = 6\nx = 6\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<pre>\nx-intercept = (6,0)\n</pre>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y = 10\n</pre>\n\n<p>\nSet y = 0:\n</p>\n\n<pre>\n2x + 0 = 10\n2x = 10\nx = 5\n</pre>\n\n<pre>\nx-intercept = (5,0)\n</pre>\n\n<h3>Example 3</h3>\n\n<pre>\n3x + 2y = 12\n</pre>\n\n<p>\nSet y = 0:\n</p>\n\n<pre>\n3x + 2(0) = 12\n3x = 12\nx = 4\n</pre>\n\n<pre>\nx-intercept = (4,0)\n</pre>\n\n<p>\n<b>Key idea:</b> To find the x-intercept, set <b>y = 0</b>.\n</p>\n",
@@ -5265,6 +5319,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Finding the y-Intercept of a Boundary",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Finding the y-Intercept of a Boundary",
     "topic": "Finding the y-Intercept of a Boundary",
     "data": {
       "notes": "<h2>Finding the y-Intercept of a Boundary</h2>\n\n<p>\nThe <b>y-intercept</b> is the point where a graph crosses the\ny-axis.\n</p>\n\n<p>\nEvery point on the y-axis has:\n</p>\n\n<pre>\nx = 0\n</pre>\n\n<p>\nTherefore, to find the y-intercept:\n</p>\n\n<pre>\n1. Set x = 0.\n2. Solve for y.\n3. Write the coordinate (0,y).\n</pre>\n\n<h3>Example 1</h3>\n\n<pre>\nx + y = 6\n</pre>\n\n<p>\nSet x = 0:\n</p>\n\n<pre>\n0 + y = 6\ny = 6\n</pre>\n\n<pre>\ny-intercept = (0,6)\n</pre>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y = 10\n</pre>\n\n<p>\nSet x = 0:\n</p>\n\n<pre>\n2(0) + y = 10\ny = 10\n</pre>\n\n<pre>\ny-intercept = (0,10)\n</pre>\n\n<h3>Example 3</h3>\n\n<pre>\n3x + 2y = 12\n</pre>\n\n<p>\nSet x = 0:\n</p>\n\n<pre>\n3(0) + 2y = 12\n2y = 12\ny = 6\n</pre>\n\n<pre>\ny-intercept = (0,6)\n</pre>\n\n<p>\n<b>Key idea:</b> To find the y-intercept, set <b>x = 0</b>.\n</p>\n",
@@ -5361,6 +5416,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Finding Both Intercepts of a Boundary",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Finding Both Intercepts of a Boundary",
     "topic": "Finding Both Intercepts of a Boundary",
     "data": {
       "notes": "<h2>Finding Both Intercepts of a Boundary</h2>\n\n<p>\nA straight-line boundary can be plotted using its <b>x-intercept</b>\nand <b>y-intercept</b>.\n</p>\n\n<p>\nRemember:\n</p>\n\n<pre>\nx-intercept → set y = 0\n\ny-intercept → set x = 0\n</pre>\n\n<h3>Example 1</h3>\n\n<pre>\nx + y = 8\n</pre>\n\n<p>\nFind the x-intercept:</p>\n\n<pre>\ny = 0\n\nx = 8\n\n(8,0)\n</pre>\n\n<p>\nFind the y-intercept:</p>\n\n<pre>\nx = 0\n\ny = 8\n\n(0,8)\n</pre>\n\n<p>\nThe line therefore passes through:\n</p>\n\n<pre>\n(8,0) and (0,8)\n</pre>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y = 12\n</pre>\n\n<p>\nx-intercept:</p>\n\n<pre>\ny = 0\n\n2x = 12\nx = 6\n\n(6,0)\n</pre>\n\n<p>\ny-intercept:</p>\n\n<pre>\nx = 0\n\ny = 12\n\n(0,12)\n</pre>\n\n<h3>Example 3</h3>\n\n<pre>\n3x + 2y = 12\n</pre>\n\n<p>\nx-intercept:</p>\n\n<pre>\ny = 0\n\n3x = 12\nx = 4\n\n(4,0)\n</pre>\n\n<p>\ny-intercept:</p>\n\n<pre>\nx = 0\n\n2y = 12\ny = 6\n\n(0,6)\n</pre>\n\n<p>\nThe two intercepts give two points through which the boundary line\npasses.\n</p>\n\n<p>\n<b>Key idea:</b> Set one variable to zero at a time to find the two\nintercepts.\n</p>\n",
@@ -5452,6 +5508,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Testing a Point in a Linear Inequality",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Testing a Point in a Linear Inequality",
     "topic": "Testing a Point in a Linear Inequality",
     "data": {
       "notes": "<h2>Testing a Point in a Linear Inequality</h2>\n\n<p>\nA point can be tested to determine whether it satisfies a linear\ninequality.\n</p>\n\n<p>\nThe method is simple:\n</p>\n\n<pre>\n1. Take the coordinates of the point.\n2. Substitute them into the inequality.\n3. Calculate both sides.\n4. Decide whether the inequality is true or false.\n</pre>\n\n<h3>Example 1</h3>\n\n<p>\nTest (2,3) in:\n</p>\n\n<pre>\nx + y ≤ 7\n</pre>\n\n<p>\nSubstitute x = 2 and y = 3:\n</p>\n\n<pre>\n2 + 3 ≤ 7\n5 ≤ 7\nTRUE\n</pre>\n\n<p>\nTherefore (2,3) satisfies the inequality.\n</p>\n\n<h3>Example 2</h3>\n\n<p>\nTest (5,4) in:\n</p>\n\n<pre>\nx + y ≤ 7\n</pre>\n\n<pre>\n5 + 4 ≤ 7\n9 ≤ 7\nFALSE\n</pre>\n\n<p>\nTherefore (5,4) does not satisfy the inequality.\n</p>\n\n<h3>Example 3</h3>\n\n<p>\nTest (3,2) in:\n</p>\n\n<pre>\n2x + y ≥ 8\n</pre>\n\n<pre>\n2(3) + 2 ≥ 8\n6 + 2 ≥ 8\n8 ≥ 8\nTRUE\n</pre>\n\n<p>\nTherefore (3,2) satisfies the inequality.\n</p>\n\n<p>\n<b>Key idea:</b> Substitute the coordinates into the original\ninequality and check whether the statement is true.\n</p>\n",
@@ -5546,6 +5603,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Solid and Dashed Boundary Lines",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Solid and Dashed Boundary Lines",
     "topic": "Solid and Dashed Boundary Lines",
     "data": {
       "notes": "<h2>Solid and Dashed Boundary Lines</h2>\n\n<p>\nWhen graphing an inequality, the boundary line may be included or\nexcluded.\n</p>\n\n<p>\nThe type of boundary tells us whether points on the boundary are\nallowed.\n</p>\n\n<h3>Solid Boundary</h3>\n\n<p>\nUse a <b>solid line</b> when the inequality includes equality:\n</p>\n\n<pre>\n≤\n≥\n</pre>\n\n<p>\nFor example:\n</p>\n\n<pre>\nx + y ≤ 6\n</pre>\n\n<p>\nThe boundary is:\n</p>\n\n<pre>\nx + y = 6\n</pre>\n\n<p>\nBecause equality is included, the boundary is solid.\n</p>\n\n<h3>Dashed Boundary</h3>\n\n<p>\nUse a <b>dashed line</b> when the inequality does not include\nequality:\n</p>\n\n<pre>\n<\n>\n</pre>\n\n<p>\nFor example:\n</p>\n\n<pre>\nx + y < 6\n</pre>\n\n<p>\nThe boundary is:\n</p>\n\n<pre>\nx + y = 6\n</pre>\n\n<p>\nBut points exactly on the line are not included, so the boundary is\ndashed.\n</p>\n\n<h3>Example 1</h3>\n\n<pre>\n2x + y ≥ 8\n\n→ solid boundary\n</pre>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y ≤ 8\n\n→ solid boundary\n</pre>\n\n<h3>Example 3</h3>\n\n<pre>\n2x + y > 8\n\n→ dashed boundary\n</pre>\n\n<p>\n<b>Key idea:</b>\n</p>\n\n<pre>\n≤ or ≥ → solid\n\n< or > → dashed\n</pre>\n",
@@ -5640,6 +5698,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Intersection of Two Boundary Lines",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Intersection of Two Boundary Lines",
     "topic": "Intersection of Two Boundary Lines",
     "data": {
       "notes": "<h2>Intersection of Two Boundary Lines</h2>\n\n<p><b>One concept:</b> The intersection of two boundary lines is the point where the two lines meet.</p>\n\n<p>In linear programming, this point is important because it can form a <b>corner point (vertex)</b> of the feasible region.</p>\n\n<h3>Example 1</h3>\n\n<p>Consider:</p>\n\n<pre>\nx + y = 6\nx - y = 2\n</pre>\n\n<p>The two equations describe two lines.</p>\n\n<p>At their intersection, the same values of <b>x</b> and <b>y</b> satisfy both equations.</p>\n\n<p>Add the equations:</p>\n\n<pre>\nx + y = 6\nx - y = 2\n---------\n2x = 8\n\nx = 4\n</pre>\n\n<p>Substitute x = 4:</p>\n\n<pre>\n4 + y = 6\ny = 2\n</pre>\n\n<p>Therefore, the lines intersect at:</p>\n\n<p><b>(4, 2)</b></p>\n\n<h3>Example 2</h3>\n\n<pre>\nx + y = 10\nx - y = 4\n</pre>\n\n<p>Add:</p>\n\n<pre>\n2x = 14\nx = 7\n</pre>\n\n<p>Then:</p>\n\n<pre>\n7 + y = 10\ny = 3\n</pre>\n\n<p>Intersection = <b>(7, 3)</b>.</p>\n\n<h3>Example 3</h3>\n\n<pre>\n2x + y = 9\nx + y = 6\n</pre>\n\n<p>Subtract the second equation from the first:</p>\n\n<pre>\n(2x + y) - (x + y) = 9 - 6\n\nx = 3\n</pre>\n\n<p>Substitute:</p>\n\n<pre>\n3 + y = 6\ny = 3\n</pre>\n\n<p>Intersection = <b>(3, 3)</b>.</p>",
@@ -5719,6 +5778,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Substitution Method for Finding an Intersection",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Substitution Method for Finding an Intersection",
     "topic": "Substitution Method for Finding an Intersection",
     "data": {
       "notes": "<h2>Substitution Method</h2>\n\n<p><b>One concept:</b> Substitution finds the intersection of two equations by expressing one variable in terms of the other and replacing it in the second equation.</p>\n\n<h3>Example 1</h3>\n\n<pre>\ny = x + 1\n2x + y = 7\n</pre>\n\n<p>Since y = x + 1, replace y in the second equation:</p>\n\n<pre>\n2x + (x + 1) = 7\n\n3x + 1 = 7\n\n3x = 6\n\nx = 2\n</pre>\n\n<p>Now substitute x = 2:</p>\n\n<pre>\ny = 2 + 1\ny = 3\n</pre>\n\n<p>Intersection = <b>(2, 3)</b>.</p>\n\n<h3>Example 2</h3>\n\n<pre>\ny = 2x\nx + y = 9\n</pre>\n\n<p>Replace y with 2x:</p>\n\n<pre>\nx + 2x = 9\n\n3x = 9\n\nx = 3\n</pre>\n\n<p>Therefore:</p>\n\n<pre>\ny = 2(3)\ny = 6\n</pre>\n\n<p>Intersection = <b>(3, 6)</b>.</p>\n\n<h3>Example 3</h3>\n\n<pre>\nx = y + 2\nx + 2y = 8\n</pre>\n\n<p>Replace x with y + 2:</p>\n\n<pre>\n(y + 2) + 2y = 8\n\n3y + 2 = 8\n\n3y = 6\n\ny = 2\n</pre>\n\n<p>Therefore:</p>\n\n<pre>\nx = 2 + 2\nx = 4\n</pre>\n\n<p>Intersection = <b>(4, 2)</b>.</p>",
@@ -5797,6 +5857,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Elimination Method for Finding an Intersection",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Elimination Method for Finding an Intersection",
     "topic": "Elimination Method for Finding an Intersection",
     "data": {
       "notes": "<h2>Elimination Method</h2>\n\n<p><b>One concept:</b> Elimination finds the intersection by adding or subtracting equations so that one variable disappears.</p>\n\n<h3>Example 1</h3>\n\n<pre>\nx + y = 9\nx - y = 3\n</pre>\n\n<p>Add the equations:</p>\n\n<pre>\n2x = 12\n\nx = 6\n</pre>\n\n<p>Substitute into the first equation:</p>\n\n<pre>\n6 + y = 9\n\ny = 3\n</pre>\n\n<p>Intersection = <b>(6, 3)</b>.</p>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y = 10\n2x - y = 4\n</pre>\n\n<p>Add:</p>\n\n<pre>\n4x = 14\n\nx = 3.5\n</pre>\n\n<p>Then:</p>\n\n<pre>\n2(3.5) + y = 10\n7 + y = 10\ny = 3\n</pre>\n\n<p>Intersection = <b>(3.5, 3)</b>.</p>\n\n<h3>Example 3</h3>\n\n<pre>\n3x + 2y = 16\n3x - 2y = 8\n</pre>\n\n<p>Add:</p>\n\n<pre>\n6x = 24\n\nx = 4\n</pre>\n\n<p>Then:</p>\n\n<pre>\n3(4) + 2y = 16\n\n12 + 2y = 16\n\n2y = 4\n\ny = 2\n</pre>\n\n<p>Intersection = <b>(4, 2)</b>.</p>",
@@ -5875,6 +5936,7 @@ export const mathTopics = [
     "id": "math|linear_programming|A Vertex Is an Intersection Point",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "A Vertex Is an Intersection Point",
     "topic": "A Vertex Is an Intersection Point",
     "data": {
       "notes": "<h2>A Vertex Is an Intersection Point</h2>\n\n<p><b>One concept:</b> A vertex of a feasible region can occur where two boundary lines meet.</p>\n\n<p>A vertex is therefore found by locating the intersection of the relevant boundary lines.</p>\n\n<h3>Example 1</h3>\n\n<p>Suppose two boundaries are:</p>\n\n<pre>\nx + y = 8\nx = 2\n</pre>\n\n<p>Substitute x = 2:</p>\n\n<pre>\n2 + y = 8\ny = 6\n</pre>\n\n<p>So the vertex formed by these two boundaries is:</p>\n\n<p><b>(2, 6)</b></p>\n\n<h3>Example 2</h3>\n\n<pre>\n2x + y = 10\nx + y = 7\n</pre>\n\n<p>Subtract:</p>\n\n<pre>\nx = 3\n</pre>\n\n<p>Then:</p>\n\n<pre>\n3 + y = 7\ny = 4\n</pre>\n\n<p>The intersection vertex is <b>(3, 4)</b>.</p>\n\n<h3>Example 3</h3>\n\n<pre>\nx + 2y = 12\nx = 4\n</pre>\n\n<p>Substitute:</p>\n\n<pre>\n4 + 2y = 12\n2y = 8\ny = 4\n</pre>\n\n<p>The vertex is <b>(4, 4)</b>.</p>",
@@ -5948,6 +6010,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Checking Whether an Intersection Is Feasible",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Checking Whether an Intersection Is Feasible",
     "topic": "Checking Whether an Intersection Is Feasible",
     "data": {
       "notes": "<h2>Checking Whether an Intersection Is Feasible</h2>\n\n<p><b>One concept:</b> An intersection point is feasible only if it satisfies <b>all</b> the constraints.</p>\n\n<p>Finding the intersection is not enough. We must substitute the point into each inequality.</p>\n\n<h3>Example 1</h3>\n\n<p>Consider:</p>\n\n<pre>\nx + y ≤ 8\nx ≥ 2\ny ≥ 1\n</pre>\n\n<p>Suppose the candidate point is <b>(3, 4)</b>.</p>\n\n<p>Check each constraint:</p>\n\n<pre>\n3 + 4 ≤ 8\n7 ≤ 8 ✓\n\n3 ≥ 2 ✓\n\n4 ≥ 1 ✓\n</pre>\n\n<p>All constraints are satisfied.</p>\n\n<p>Therefore <b>(3, 4) is feasible</b>.</p>\n\n<h3>Example 2</h3>\n\n<p>Consider:</p>\n\n<pre>\nx + y ≤ 10\nx ≥ 4\ny ≥ 2\n</pre>\n\n<p>Test <b>(3, 5)</b>:</p>\n\n<pre>\n3 + 5 ≤ 10 ✓\n\n3 ≥ 4 ✗\n</pre>\n\n<p>One constraint fails.</p>\n\n<p>Therefore <b>(3, 5) is not feasible</b>.</p>\n\n<h3>Example 3</h3>\n\n<p>Consider:</p>\n\n<pre>\n2x + y ≤ 12\nx ≥ 1\ny ≥ 3\n</pre>\n\n<p>Test <b>(4, 4)</b>:</p>\n\n<pre>\n2(4) + 4 ≤ 12\n12 ≤ 12 ✓\n\n4 ≥ 1 ✓\n\n4 ≥ 3 ✓\n</pre>\n\n<p>The point is feasible.</p>",
@@ -6023,6 +6086,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Objective Function Value at a Point",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Objective Function Value at a Point",
     "topic": "Objective Function Value at a Point",
     "data": {
       "notes": "<h2>Objective Function Value at a Point</h2>\n\n<p><b>One concept:</b> To find the value of an objective function at a point, substitute the point's x- and y-values into the objective function.</p>\n\n<h3>Example 1</h3>\n\n<p>Let:</p>\n\n<pre>\nP = 3x + 2y\n</pre>\n\n<p>Find P at (4, 5).</p>\n\n<pre>\nP = 3(4) + 2(5)\n\nP = 12 + 10\n\nP = 22\n</pre>\n\n<p>Therefore, the objective value is <b>22</b>.</p>\n\n<h3>Example 2</h3>\n\n<pre>\nC = 5x + 4y\n</pre>\n\n<p>At (2, 6):</p>\n\n<pre>\nC = 5(2) + 4(6)\n\nC = 10 + 24\n\nC = 34\n</pre>\n\n<h3>Example 3</h3>\n\n<pre>\nP = 7x + 3y\n</pre>\n\n<p>At (5, 2):</p>\n\n<pre>\nP = 7(5) + 3(2)\n\nP = 35 + 6\n\nP = 41\n</pre>",
@@ -6096,6 +6160,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Comparing Objective Values",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Comparing Objective Values",
     "topic": "Comparing Objective Values",
     "data": {
       "notes": "<h2>Comparing Objective Values</h2>\n\n<p><b>One concept:</b> To compare two candidate points, calculate the objective function at each point and compare the resulting numbers.</p>\n\n<h3>Example 1</h3>\n\n<p>Let:</p>\n\n<pre>\nP = 4x + 3y\n</pre>\n\n<p>Compare A(2, 4) and B(5, 1).</p>\n\n<p>At A:</p>\n\n<pre>\nP = 4(2) + 3(4)\nP = 8 + 12\nP = 20\n</pre>\n\n<p>At B:</p>\n\n<pre>\nP = 4(5) + 3(1)\nP = 20 + 3\nP = 23\n</pre>\n\n<p>The objective value at B is greater.</p>\n\n<h3>Example 2</h3>\n\n<pre>\nC = 2x + 5y\n</pre>\n\n<p>At A(3,2):</p>\n\n<pre>\nC = 2(3) + 5(2)\nC = 16\n</pre>\n\n<p>At B(1,5):</p>\n\n<pre>\nC = 2(1) + 5(5)\nC = 27\n</pre>\n\n<p>The values are 16 and 27.</p>\n\n<h3>Example 3</h3>\n\n<pre>\nP = 6x + y\n</pre>\n\n<p>At A(2,3):</p>\n\n<pre>\nP = 12 + 3 = 15\n</pre>\n\n<p>At B(1,8):</p>\n\n<pre>\nP = 6 + 8 = 14\n</pre>\n\n<p>The values are 15 and 14.</p>",
@@ -6169,6 +6234,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Maximum Objective Value",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Maximum Objective Value",
     "topic": "Maximum Objective Value",
     "data": {
       "notes": "<h2>Maximum Objective Value</h2>\n\n<p><b>One concept:</b> A maximum occurs when the objective function has its greatest value among the feasible candidate points being considered.</p>\n\n<h3>Example 1</h3>\n\n<p>Suppose the feasible vertices are:</p>\n\n<pre>\nA(0,0)\nB(4,0)\nC(4,3)\nD(0,5)\n</pre>\n\n<p>Let:</p>\n\n<pre>\nP = 3x + 2y\n</pre>\n\n<p>Calculate:</p>\n\n<pre>\nA: P = 0\n\nB: P = 3(4) + 2(0) = 12\n\nC: P = 3(4) + 2(3) = 18\n\nD: P = 3(0) + 2(5) = 10\n</pre>\n\n<p>The greatest value is <b>18</b>.</p>\n\n<h3>Example 2</h3>\n\n<pre>\nP = 5x + y\n</pre>\n\n<p>For points A(0,0), B(2,4), C(5,1):</p>\n\n<pre>\nA: 0\nB: 5(2) + 4 = 14\nC: 5(5) + 1 = 26\n</pre>\n\n<p>The greatest value is <b>26</b>.</p>\n\n<h3>Example 3</h3>\n\n<pre>\nP = 2x + 6y\n</pre>\n\n<p>For A(1,1), B(5,1), C(2,4):</p>\n\n<pre>\nA: 2 + 6 = 8\nB: 10 + 6 = 16\nC: 4 + 24 = 28\n</pre>\n\n<p>The greatest value is <b>28</b>.</p>",
@@ -6245,6 +6311,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Minimum Objective Value",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Minimum Objective Value",
     "topic": "Minimum Objective Value",
     "data": {
       "notes": "<h2>Minimum Objective Value</h2>\n\n<p><b>One concept:</b> A minimum occurs when the objective function has its smallest value among the feasible candidate points being considered.</p>\n\n<h3>Example 1</h3>\n\n<p>Let:</p>\n\n<pre>\nC = 4x + 3y\n</pre>\n\n<p>Consider:</p>\n\n<pre>\nA(1,4)\nB(3,2)\nC(5,1)\n</pre>\n\n<p>Evaluate:</p>\n\n<pre>\nA: 4(1) + 3(4) = 16\n\nB: 4(3) + 3(2) = 18\n\nC: 4(5) + 3(1) = 23\n</pre>\n\n<p>The smallest value is <b>16</b>.</p>\n\n<h3>Example 2</h3>\n\n<pre>\nC = 2x + 5y\n</pre>\n\n<pre>\nA(2,2): 2(2) + 5(2) = 14\n\nB(4,1): 2(4) + 5(1) = 13\n\nC(1,4): 2(1) + 5(4) = 22\n</pre>\n\n<p>The minimum value is <b>13</b>.</p>\n\n<h3>Example 3</h3>\n\n<pre>\nC = 6x + 2y\n</pre>\n\n<pre>\nA(1,3): 6 + 6 = 12\n\nB(2,2): 12 + 4 = 16\n\nC(4,1): 24 + 2 = 26\n</pre>\n\n<p>The minimum value is <b>12</b>.</p>",
@@ -6321,6 +6388,7 @@ export const mathTopics = [
     "id": "math|linear_programming|Optimal Solution Coordinates",
     "curriculum_id": "math",
     "chapter_id": "linear_programming",
+    "topic_group": "Optimal Solution Coordinates",
     "topic": "Optimal Solution Coordinates",
     "data": {
       "notes": "<h2>Optimal Solution Coordinates</h2>\n\n<p><b>One concept:</b> The optimal solution includes both the coordinates of the point and the corresponding optimum value of the objective function.</p>\n\n<h3>Example 1</h3>\n\n<p>Suppose:</p>\n\n<pre>\nP = 4x + 3y\n</pre>\n\n<p>After evaluating the candidate points, suppose the largest value occurs at:</p>\n\n<pre>\n(5, 2)\n</pre>\n\n<p>Calculate:</p>\n\n<pre>\nP = 4(5) + 3(2)\nP = 20 + 6\nP = 26\n</pre>\n\n<p>The optimal solution is:</p>\n\n<p><b>x = 5, y = 2, maximum P = 26.</b></p>\n\n<h3>Example 2</h3>\n\n<pre>\nC = 3x + 5y\n</pre>\n\n<p>Suppose the smallest value occurs at:</p>\n\n<pre>\n(2, 4)\n</pre>\n\n<p>Then:</p>\n\n<pre>\nC = 3(2) + 5(4)\nC = 6 + 20\nC = 26\n</pre>\n\n<p>The minimum cost is <b>26</b>, occurring at <b>(2,4)</b>.</p>\n\n<h3>What to report</h3>\n\n<p>A complete answer should identify:</p>\n\n<ol>\n<li>The values of x and y.</li>\n<li>Whether the objective is a maximum or minimum.</li>\n<li>The corresponding objective value.</li>\n</ol>",
@@ -6394,6 +6462,7 @@ export const mathTopics = [
     "id": "math|fractions|Understanding Fractions",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Understanding Fractions",
     "topic": "Understanding Fractions",
     "data": {
       "notes": "<h2>Understanding Fractions</h2>\n\n<h3>WHAT IS A FRACTION?</h3>\n\n<p>A fraction represents a number using two integers:</p>\n\n<p><b>a/b</b></p>\n\n<ul>\n<li><b>a</b> is the numerator.</li>\n<li><b>b</b> is the denominator.</li>\n<li>The denominator must not be zero.</li>\n</ul>\n\n<p>For example:</p>\n\n<p><b>3/5</b></p>\n\n<ul>\n<li>5 tells us the whole has been divided into 5 equal parts.</li>\n<li>3 tells us that we are considering 3 of those parts.</li>\n</ul>\n\n<p><b>Important:</b> The parts must be equal. A fraction is not simply \"some parts out of some parts.\"</p>\n\n<h3>NUMERATOR AND DENOMINATOR</h3>\n\n<p>In <b>7/9</b>:</p>\n\n<ul>\n<li>Numerator = 7</li>\n<li>Denominator = 9</li>\n</ul>\n\n<p>The denominator describes the number of equal parts into which the whole is divided. The numerator tells how many of those parts are being counted.</p>\n\n<h3>PROPER FRACTIONS</h3>\n\n<p>A proper fraction has a numerator smaller than its denominator.</p>\n\n<p>Examples:</p>\n\n<ul>\n<li>2/5</li>\n<li>3/7</li>\n<li>8/11</li>\n</ul>\n\n<p>Proper fractions have values between 0 and 1.</p>\n\n<h3>IMPROPER FRACTIONS</h3>\n\n<p>An improper fraction has a numerator greater than or equal to its denominator.</p>\n\n<p>Examples:</p>\n\n<ul>\n<li>7/5</li>\n<li>9/4</li>\n<li>6/6</li>\n</ul>\n\n<p>An improper fraction can have a value greater than or equal to 1.</p>\n\n<h3>MIXED NUMBERS</h3>\n\n<p>A mixed number contains a whole number and a proper fraction.</p>\n\n<p>Example:</p>\n\n<p><b>2 1/3</b></p>\n\n<p>This means:</p>\n\n<p><b>2 + 1/3</b></p>\n\n<p>To convert a mixed number to an improper fraction:</p>\n\n<ol>\n<li>Multiply the whole number by the denominator.</li>\n<li>Add the numerator.</li>\n<li>Keep the same denominator.</li>\n</ol>\n\n<p>Example:</p>\n\n<p><b>2 1/3</b></p>\n\n<p>2 × 3 = 6</p>\n<p>6 + 1 = 7</p>\n\n<p>Therefore:</p>\n\n<p><b>2 1/3 = 7/3</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Confusing numerator and denominator.</li>\n<li>Forgetting that the parts represented by the denominator must be equal.</li>\n<li>Thinking every fraction is less than 1.</li>\n<li>Forgetting that the denominator cannot be zero.</li>\n</ul>\n\n<h3>WORKED EXAMPLES</h3>\n\n<p><b>Example 1:</b> Identify the numerator and denominator in 5/8.</p>\n\n<p>Numerator = 5</p>\n<p>Denominator = 8</p>\n\n<p><b>Example 2:</b> Is 3/7 proper or improper?</p>\n\n<p>3 &lt; 7, so it is a <b>proper fraction</b>.</p>\n\n<p><b>Example 3:</b> Convert 3 2/5 to an improper fraction.</p>\n\n<p>3 × 5 = 15</p>\n<p>15 + 2 = 17</p>\n\n<p><b>Answer: 17/5</b></p>\n",
@@ -6486,6 +6555,7 @@ export const mathTopics = [
     "id": "math|fractions|Equivalent Fractions and Simplifying",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Equivalent Fractions and Simplifying",
     "topic": "Equivalent Fractions and Simplifying",
     "data": {
       "notes": "<h2>Equivalent Fractions and Simplifying</h2>\n\n<h3>WHAT ARE EQUIVALENT FRACTIONS?</h3>\n\n<p>Equivalent fractions have <b>different numbers</b> but represent the <b>same value</b>.</p>\n\n<p>For example:</p>\n\n<p><b>1/2 = 2/4 = 3/6 = 4/8</b></p>\n\n<p>The numerator and denominator can both be multiplied or divided by the same non-zero number without changing the value of the fraction.</p>\n\n<h3>CREATING AN EQUIVALENT FRACTION</h3>\n\n<p>Example:</p>\n\n<p><b>3/5</b></p>\n\n<p>Multiply both numerator and denominator by 4:</p>\n\n<p>3 × 4 = 12</p>\n<p>5 × 4 = 20</p>\n\n<p>Therefore:</p>\n\n<p><b>3/5 = 12/20</b></p>\n\n<p><b>Important:</b> You must multiply or divide both parts by the same number.</p>\n\n<h3>SIMPLIFYING A FRACTION</h3>\n\n<p>Simplifying means writing a fraction in its simplest form without changing its value.</p>\n\n<p>Example:</p>\n\n<p><b>12/18</b></p>\n\n<p>The greatest common factor of 12 and 18 is 6.</p>\n\n<p>Divide both by 6:</p>\n\n<p>12 ÷ 6 = 2</p>\n<p>18 ÷ 6 = 3</p>\n\n<p>Therefore:</p>\n\n<p><b>12/18 = 2/3</b></p>\n\n<h3>HOW TO KNOW WHEN A FRACTION IS FULLY SIMPLIFIED</h3>\n\n<p>A fraction is in simplest form when the numerator and denominator have no common factor greater than 1.</p>\n\n<p>Example:</p>\n\n<p><b>4/9</b> is simplified because 4 and 9 have no common factor greater than 1.</p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Changing only the numerator.</li>\n<li>Changing only the denominator.</li>\n<li>Multiplying the numerator and dividing the denominator.</li>\n<li>Stopping before the fraction is fully simplified.</li>\n</ul>\n\n<h3>WORKED EXAMPLES</h3>\n\n<p><b>Example 1:</b> Find an equivalent fraction to 2/3 with denominator 15.</p>\n\n<p>3 × 5 = 15</p>\n\n<p>Therefore multiply the numerator by 5:</p>\n\n<p>2 × 5 = 10</p>\n\n<p><b>Answer: 10/15</b></p>\n\n<p><b>Example 2:</b> Simplify 20/30.</p>\n\n<p>Both numbers are divisible by 10.</p>\n\n<p>20 ÷ 10 = 2</p>\n<p>30 ÷ 10 = 3</p>\n\n<p><b>Answer: 2/3</b></p>\n",
@@ -6559,6 +6629,7 @@ export const mathTopics = [
     "id": "math|fractions|Comparing Fractions",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Comparing Fractions",
     "topic": "Comparing Fractions",
     "data": {
       "notes": "<h2>Comparing Fractions</h2>\n\n<h3>WHY COMPARISON CAN BE TRICKY</h3>\n\n<p>You cannot always compare fractions by looking only at the numerator or only at the denominator.</p>\n\n<p>The fraction's value depends on <b>both</b>.</p>\n\n<h3>METHOD 1: SAME DENOMINATOR</h3>\n\n<p>If two fractions have the same denominator, compare their numerators.</p>\n\n<p>Example:</p>\n\n<p><b>5/8 and 3/8</b></p>\n\n<p>Both denominators are 8.</p>\n\n<p>Since 5 &gt; 3:</p>\n\n<p><b>5/8 &gt; 3/8</b></p>\n\n<h3>METHOD 2: SAME NUMERATOR</h3>\n\n<p>If two positive fractions have the same numerator, the fraction with the smaller denominator is larger.</p>\n\n<p>Example:</p>\n\n<p><b>1/3 and 1/5</b></p>\n\n<p>A third is larger than a fifth.</p>\n\n<p>Therefore:</p>\n\n<p><b>1/3 &gt; 1/5</b></p>\n\n<h3>METHOD 3: COMMON DENOMINATOR</h3>\n\n<p>Convert the fractions so that they have the same denominator.</p>\n\n<p>Example:</p>\n\n<p><b>2/3 and 3/4</b></p>\n\n<p>A common denominator is 12.</p>\n\n<p>2/3 = 8/12</p>\n\n<p>3/4 = 9/12</p>\n\n<p>Since 9 &gt; 8:</p>\n\n<p><b>3/4 &gt; 2/3</b></p>\n\n<h3>METHOD 4: CROSS-MULTIPLICATION</h3>\n\n<p>For positive fractions:</p>\n\n<p><b>a/b</b> and <b>c/d</b></p>\n\n<p>Compare:</p>\n\n<p><b>a × d</b> and <b>c × b</b></p>\n\n<p>Example:</p>\n\n<p>Compare 3/5 and 4/7.</p>\n\n<p>3 × 7 = 21</p>\n\n<p>4 × 5 = 20</p>\n\n<p>Since 21 &gt; 20:</p>\n\n<p><b>3/5 &gt; 4/7</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Assuming a larger denominator always means a larger fraction.</li>\n<li>Comparing only numerators when denominators differ.</li>\n<li>Cross-multiplying but comparing the wrong products.</li>\n</ul>\n",
@@ -6653,6 +6724,7 @@ export const mathTopics = [
     "id": "math|fractions|Adding and Subtracting Fractions",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Adding and Subtracting Fractions",
     "topic": "Adding and Subtracting Fractions",
     "data": {
       "notes": "<h2>Adding and Subtracting Fractions</h2>\n\n<h3>THE MAIN RULE</h3>\n\n<p>Fractions must have a <b>common denominator</b> before their numerators can be added or subtracted.</p>\n\n<p>The denominator tells us the size of the parts. We cannot directly combine parts of different sizes.</p>\n\n<h3>SAME DENOMINATOR</h3>\n\n<p>Example:</p>\n\n<p><b>2/7 + 3/7</b></p>\n\n<p>The denominators are already equal.</p>\n\n<p>Add the numerators:</p>\n\n<p>2 + 3 = 5</p>\n\n<p>Keep the denominator:</p>\n\n<p><b>5/7</b></p>\n\n<p>Notice that we do <b>not</b> add 7 + 7.</p>\n\n<h3>DIFFERENT DENOMINATORS</h3>\n\n<p>Example:</p>\n\n<p><b>1/2 + 1/3</b></p>\n\n<p>The denominators are different, so find their LCM.</p>\n\n<p>LCM(2,3) = 6</p>\n\n<p>Convert each fraction:</p>\n\n<p>1/2 = 3/6</p>\n\n<p>1/3 = 2/6</p>\n\n<p>Now add:</p>\n\n<p>3/6 + 2/6 = 5/6</p>\n\n<h3>SUBTRACTION</h3>\n\n<p>The same rule applies.</p>\n\n<p>Example:</p>\n\n<p><b>5/6 − 1/4</b></p>\n\n<p>LCM of 6 and 4 = 12.</p>\n\n<p>5/6 = 10/12</p>\n\n<p>1/4 = 3/12</p>\n\n<p>Therefore:</p>\n\n<p>10/12 − 3/12 = 7/12</p>\n\n<h3>THE GENERAL PROCEDURE</h3>\n\n<ol>\n<li>Find a common denominator.</li>\n<li>Rewrite each fraction using that denominator.</li>\n<li>Add or subtract the numerators.</li>\n<li>Keep the common denominator.</li>\n<li>Simplify the answer if possible.</li>\n</ol>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Adding denominators.</li>\n<li>Changing the denominator without changing the numerator.</li>\n<li>Using the wrong LCM.</li>\n<li>Forgetting to simplify.</li>\n</ul>\n",
@@ -6746,6 +6818,7 @@ export const mathTopics = [
     "id": "math|fractions|Multiplying Fractions",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Multiplying Fractions",
     "topic": "Multiplying Fractions",
     "data": {
       "notes": "<h2>Multiplying Fractions</h2>\n\n<h3>THE RULE</h3>\n\n<p>To multiply fractions:</p>\n\n<p><b>Multiply numerator × numerator.</b></p>\n\n<p><b>Multiply denominator × denominator.</b></p>\n\n<p>Unlike addition, the denominators do <b>not</b> need to be equal.</p>\n\n<h3>EXAMPLE 1</h3>\n\n<p><b>2/3 × 4/5</b></p>\n\n<p>Multiply numerators:</p>\n\n<p>2 × 4 = 8</p>\n\n<p>Multiply denominators:</p>\n\n<p>3 × 5 = 15</p>\n\n<p>Therefore:</p>\n\n<p><b>2/3 × 4/5 = 8/15</b></p>\n\n<h3>SIMPLIFYING</h3>\n\n<p>Example:</p>\n\n<p><b>2/3 × 3/4</b></p>\n\n<p>Multiply:</p>\n\n<p>6/12</p>\n\n<p>Simplify:</p>\n\n<p><b>6/12 = 1/2</b></p>\n\n<h3>CANCELLING BEFORE MULTIPLYING</h3>\n\n<p>You can simplify common factors before multiplying.</p>\n\n<p>Example:</p>\n\n<p><b>2/3 × 3/4</b></p>\n\n<p>The 3 in the numerator and the 3 in the denominator cancel.</p>\n\n<p>The 2 and 4 can also be simplified by dividing by 2.</p>\n\n<p>This leaves:</p>\n\n<p><b>1/2</b></p>\n\n<p>This is called <b>cross-cancellation</b>.</p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Adding instead of multiplying.</li>\n<li>Trying to find an LCM unnecessarily.</li>\n<li>Multiplying correctly but forgetting to simplify.</li>\n<li>Cancelling numbers that are not factors.</li>\n</ul>\n",
@@ -6820,6 +6893,7 @@ export const mathTopics = [
     "id": "math|fractions|Dividing Fractions",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Dividing Fractions",
     "topic": "Dividing Fractions",
     "data": {
       "notes": "<h2>Dividing Fractions</h2>\n\n<h3>THE KEY RULE</h3>\n\n<p>To divide by a fraction:</p>\n\n<ol>\n<li>Keep the first fraction.</li>\n<li>Change division to multiplication.</li>\n<li>Take the reciprocal of the second fraction.</li>\n</ol>\n\n<p>In short:</p>\n\n<p><b>a/b ÷ c/d = a/b × d/c</b></p>\n\n<h3>WHAT IS A RECIPROCAL?</h3>\n\n<p>The reciprocal of a non-zero fraction is found by swapping the numerator and denominator.</p>\n\n<p>Examples:</p>\n\n<ul>\n<li>2/3 → 3/2</li>\n<li>5/7 → 7/5</li>\n<li>4 → 1/4</li>\n</ul>\n\n<h3>WORKED EXAMPLE</h3>\n\n<p><b>1/2 ÷ 1/4</b></p>\n\n<p>Step 1: Keep 1/2.</p>\n\n<p>Step 2: Change ÷ to ×.</p>\n\n<p>Step 3: Flip 1/4 to 4/1.</p>\n\n<p>Therefore:</p>\n\n<p>1/2 × 4/1 = 4/2 = <b>2</b></p>\n\n<h3>WHY DOES THE RECIPROCAL WORK?</h3>\n\n<p>Division asks:</p>\n\n<p><b>How many times does the divisor fit into the number?</b></p>\n\n<p>For example:</p>\n\n<p>1/2 ÷ 1/4 asks how many quarters fit into one half.</p>\n\n<p>Two quarters fit into one half.</p>\n\n<p>Therefore:</p>\n\n<p><b>1/2 ÷ 1/4 = 2</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Flipping the first fraction instead of the second.</li>\n<li>Forgetting to change division into multiplication.</li>\n<li>Flipping both fractions.</li>\n<li>Forgetting to simplify.</li>\n</ul>\n",
@@ -6895,6 +6969,7 @@ export const mathTopics = [
     "id": "math|fractions|Decimals and Fractions",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Decimals and Fractions",
     "topic": "Decimals and Fractions",
     "data": {
       "notes": "<h2>Decimals and Fractions</h2>\n\n<h3>DECIMALS AS FRACTIONS</h3>\n\n<p>A terminating decimal can be written as a fraction whose denominator is a power of 10.</p>\n\n<p>The denominator depends on the number of digits after the decimal point.</p>\n\n<ul>\n<li>1 decimal place → denominator 10</li>\n<li>2 decimal places → denominator 100</li>\n<li>3 decimal places → denominator 1000</li>\n</ul>\n\n<h3>EXAMPLE 1: ONE DECIMAL PLACE</h3>\n\n<p>Convert <b>0.6</b> to a fraction.</p>\n\n<p>There is one digit after the decimal point:</p>\n\n<p><b>0.6 = 6/10</b></p>\n\n<p>Simplify:</p>\n\n<p><b>6/10 = 3/5</b></p>\n\n<h3>EXAMPLE 2: TWO DECIMAL PLACES</h3>\n\n<p>Convert <b>0.25</b> to a fraction.</p>\n\n<p>There are two digits after the decimal point:</p>\n\n<p><b>0.25 = 25/100</b></p>\n\n<p>Simplify by 25:</p>\n\n<p><b>25/100 = 1/4</b></p>\n\n<h3>FRACTION TO DECIMAL</h3>\n\n<p>To convert a fraction to a decimal, divide the numerator by the denominator.</p>\n\n<p>Example:</p>\n\n<p><b>3/4</b></p>\n\n<p>3 ÷ 4 = <b>0.75</b></p>\n\n<p>Therefore:</p>\n\n<p><b>3/4 = 0.75</b></p>\n\n<h3>TERMINATING DECIMALS</h3>\n\n<p>A terminating decimal eventually stops.</p>\n\n<p>Examples:</p>\n\n<ul>\n<li>0.5</li>\n<li>0.25</li>\n<li>0.625</li>\n<li>1.75</li>\n</ul>\n\n<h3>IMPORTANT DISTINCTION</h3>\n\n<p>Not every fraction produces a terminating decimal.</p>\n\n<p>For example:</p>\n\n<p>1/3 = 0.333...</p>\n\n<p>The digits continue repeating. This is a <b>recurring decimal</b>, which is studied separately.</p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Using 10 as the denominator when there are two or three decimal places.</li>\n<li>Forgetting to simplify the resulting fraction.</li>\n<li>Confusing terminating and recurring decimals.</li>\n</ul>\n",
@@ -6986,6 +7061,7 @@ export const mathTopics = [
     "id": "math|fractions|Recurring Decimals",
     "curriculum_id": "math",
     "chapter_id": "fractions",
+    "topic_group": "Recurring Decimals",
     "topic": "Recurring Decimals",
     "data": {
       "notes": "<h2>Recurring Decimals</h2>\n\n<h3>WHAT IS A RECURRING DECIMAL?</h3>\n\n<p>A recurring decimal is a decimal in which one or more digits repeat indefinitely.</p>\n\n<p>Examples:</p>\n\n<ul>\n<li>0.333... = 0.3̅</li>\n<li>0.666... = 0.6̅</li>\n<li>0.121212... = 0.12̅</li>\n</ul>\n\n<p>The dots mean that the pattern continues forever.</p>\n\n<h3>FRACTION TO RECURRING DECIMAL</h3>\n\n<p>Divide the numerator by the denominator.</p>\n\n<p>Example:</p>\n\n<p><b>1/3</b></p>\n\n<p>1 ÷ 3 = 0.333...</p>\n\n<p>Therefore:</p>\n\n<p><b>1/3 = 0.333...</b></p>\n\n<h3>CONVERTING A RECURRING DECIMAL TO A FRACTION</h3>\n\n<p>Use algebra to eliminate the repeating part.</p>\n\n<h3>EXAMPLE 1: 0.333...</h3>\n\n<p>Let:</p>\n\n<p><b>x = 0.333...</b></p>\n\n<p>Multiply both sides by 10:</p>\n\n<p><b>10x = 3.333...</b></p>\n\n<p>Subtract the original equation:</p>\n\n<p><b>10x − x = 3.333... − 0.333...</b></p>\n\n<p>The repeating decimals cancel:</p>\n\n<p><b>9x = 3</b></p>\n\n<p>Divide by 9:</p>\n\n<p><b>x = 3/9 = 1/3</b></p>\n\n<h3>EXAMPLE 2: 0.121212...</h3>\n\n<p>The repeating block contains two digits: <b>12</b>.</p>\n\n<p>Let:</p>\n\n<p><b>x = 0.121212...</b></p>\n\n<p>Because two digits repeat, multiply by 100:</p>\n\n<p><b>100x = 12.121212...</b></p>\n\n<p>Subtract x:</p>\n\n<p><b>100x − x = 12</b></p>\n\n<p>Therefore:</p>\n\n<p><b>99x = 12</b></p>\n\n<p>So:</p>\n\n<p><b>x = 12/99 = 4/33</b></p>\n\n<h3>THE PATTERN</h3>\n\n<p>If one digit repeats, multiply by 10.</p>\n\n<p>If two digits repeat, multiply by 100.</p>\n\n<p>If three digits repeat, multiply by 1000.</p>\n\n<p>The goal is always the same: <b>shift the decimal until the repeating parts line up, then subtract.</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Using 10 when two or more digits repeat.</li>\n<li>Forgetting to subtract the original equation.</li>\n<li>Stopping the decimal instead of treating it as infinite.</li>\n<li>Forgetting to simplify the final fraction.</li>\n</ul>\n",
@@ -7087,6 +7163,7 @@ export const mathTopics = [
     "id": "math|measurement|Area of Rectangles and Squares",
     "curriculum_id": "math",
     "chapter_id": "measurement",
+    "topic_group": "Area of Rectangles and Squares",
     "topic": "Area of Rectangles and Squares",
     "data": {
       "notes": "<h2>Area of Rectangles and Squares</h2>\n\n<h3>WHAT IS AREA?</h3>\n\n<p>Area measures the amount of <b>flat surface</b> inside a two-dimensional shape.</p>\n\n<p>Area is measured in <b>square units</b> such as cm², m², or km².</p>\n\n<h3>AREA OF A RECTANGLE</h3>\n\n<p>A rectangle has a length and a width.</p>\n\n<p>The area is:</p>\n\n<p><b>A = l × w</b></p>\n\n<ul>\n<li><b>A</b> = area</li>\n<li><b>l</b> = length</li>\n<li><b>w</b> = width</li>\n</ul>\n\n<p>Example:</p>\n\n<p>A rectangle has length 8 cm and width 3 cm.</p>\n\n<p>A = 8 × 3</p>\n\n<p><b>A = 24 cm²</b></p>\n\n<h3>WHY DO WE MULTIPLY?</h3>\n\n<p>Imagine a rectangle divided into equal 1 cm × 1 cm squares.</p>\n\n<p>The length tells us how many squares fit along one direction. The width tells us how many rows of squares there are.</p>\n\n<p>Multiplying the two counts gives the total number of square units.</p>\n\n<p>That is why:</p>\n\n<p><b>Area = length × width</b></p>\n\n<h3>AREA OF A SQUARE</h3>\n\n<p>A square has four equal sides.</p>\n\n<p>Therefore its length and width are the same.</p>\n\n<p>So:</p>\n\n<p><b>A = side × side = side²</b></p>\n\n<p>Example:</p>\n\n<p>A square has side 6 cm.</p>\n\n<p>A = 6 × 6</p>\n\n<p><b>A = 36 cm²</b></p>\n\n<h3>FINDING A MISSING DIMENSION</h3>\n\n<p>If the area and one dimension are known, rearrange the formula.</p>\n\n<p>Since:</p>\n\n<p><b>A = l × w</b></p>\n\n<p>Then:</p>\n\n<p><b>l = A ÷ w</b></p>\n\n<p>and</p>\n\n<p><b>w = A ÷ l</b></p>\n\n<p>Example:</p>\n\n<p>Area = 40 cm² and width = 5 cm.</p>\n\n<p>Length = 40 ÷ 5</p>\n\n<p><b>Length = 8 cm</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Adding length and width instead of multiplying.</li>\n<li>Using the perimeter formula instead of the area formula.</li>\n<li>Forgetting square units.</li>\n<li>Using inconsistent units for the dimensions.</li>\n</ul>\n",
@@ -7201,6 +7278,7 @@ export const mathTopics = [
     "id": "math|measurement|Area of Triangles",
     "curriculum_id": "math",
     "chapter_id": "measurement",
+    "topic_group": "Area of Triangles",
     "topic": "Area of Triangles",
     "data": {
       "notes": "<h2>Area of Triangles</h2>\n\n<h3>THE FORMULA</h3>\n\n<p>The area of a triangle is:</p>\n\n<p><b>A = 1/2 × b × h</b></p>\n\n<ul>\n<li><b>A</b> = area</li>\n<li><b>b</b> = base</li>\n<li><b>h</b> = perpendicular height</li>\n</ul>\n\n<h3>WHAT DOES HEIGHT MEAN?</h3>\n\n<p>The height of a triangle is the <b>perpendicular distance</b> from the chosen base to the opposite vertex.</p>\n\n<p>Perpendicular means that the height meets the base at an angle of <b>90°</b>.</p>\n\n<p><b>Important:</b> The height is not necessarily the sloping side of the triangle.</p>\n\n<h3>WHY IS THERE A 1/2?</h3>\n\n<p>A triangle can be paired with another identical triangle to form a parallelogram or rectangle with the same base and perpendicular height.</p>\n\n<p>The triangle therefore has half the area of that corresponding shape.</p>\n\n<p>That gives:</p>\n\n<p><b>A = 1/2 × base × height</b></p>\n\n<h3>WORKED EXAMPLE</h3>\n\n<p>Find the area of a triangle with base 12 cm and perpendicular height 5 cm.</p>\n\n<p>A = 1/2 × 12 × 5</p>\n\n<p>A = 6 × 5</p>\n\n<p><b>A = 30 cm²</b></p>\n\n<h3>FINDING A MISSING DIMENSION</h3>\n\n<p>Starting with:</p>\n\n<p><b>A = 1/2bh</b></p>\n\n<p>Multiply both sides by 2:</p>\n\n<p><b>2A = bh</b></p>\n\n<p>Therefore:</p>\n\n<p><b>h = 2A ÷ b</b></p>\n\n<p>and:</p>\n\n<p><b>b = 2A ÷ h</b></p>\n\n<p>Example:</p>\n\n<p>Area = 40 cm² and base = 10 cm.</p>\n\n<p>h = (2 × 40) ÷ 10</p>\n\n<p>h = 80 ÷ 10</p>\n\n<p><b>h = 8 cm</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Forgetting the factor 1/2.</li>\n<li>Using the sloping side as the height.</li>\n<li>Using a height that is not perpendicular to the chosen base.</li>\n<li>Forgetting square units.</li>\n</ul>\n",
@@ -7296,6 +7374,7 @@ export const mathTopics = [
     "id": "math|measurement|Volume of Cubes and Cuboids",
     "curriculum_id": "math",
     "chapter_id": "measurement",
+    "topic_group": "Volume of Cubes and Cuboids",
     "topic": "Volume of Cubes and Cuboids",
     "data": {
       "notes": "<h2>Volume of Cubes and Cuboids</h2>\n\n<h3>WHAT IS VOLUME?</h3>\n\n<p>Volume measures the amount of <b>three-dimensional space</b> occupied by a solid.</p>\n\n<p>Volume is measured in <b>cubic units</b>, such as cm³, m³, or km³.</p>\n\n<h3>VOLUME OF A CUBOID</h3>\n\n<p>A cuboid has three dimensions:</p>\n\n<ul>\n<li>length</li>\n<li>width</li>\n<li>height</li>\n</ul>\n\n<p>The formula is:</p>\n\n<p><b>V = l × w × h</b></p>\n\n<p>Example:</p>\n\n<p>A cuboid has dimensions 5 cm, 3 cm and 2 cm.</p>\n\n<p>V = 5 × 3 × 2</p>\n\n<p><b>V = 30 cm³</b></p>\n\n<h3>WHY DO WE MULTIPLY THREE DIMENSIONS?</h3>\n\n<p>Area uses two dimensions because it measures a flat surface.</p>\n\n<p>Volume uses three dimensions because a solid extends in three directions.</p>\n\n<p>Therefore:</p>\n\n<p><b>Length × width</b> gives the area of one layer.</p>\n\n<p>Multiplying that layer by the <b>height</b> gives the total volume.</p>\n\n<h3>VOLUME OF A CUBE</h3>\n\n<p>A cube has all three dimensions equal.</p>\n\n<p>If each side has length s:</p>\n\n<p><b>V = s × s × s = s³</b></p>\n\n<p>Example:</p>\n\n<p>A cube has side 4 cm.</p>\n\n<p>V = 4 × 4 × 4</p>\n\n<p><b>V = 64 cm³</b></p>\n\n<h3>FINDING A MISSING DIMENSION</h3>\n\n<p>From:</p>\n\n<p><b>V = lwh</b></p>\n\n<p>We can rearrange:</p>\n\n<p><b>l = V ÷ (wh)</b></p>\n\n<p><b>w = V ÷ (lh)</b></p>\n\n<p><b>h = V ÷ (lw)</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Using only two dimensions.</li>\n<li>Confusing volume with surface area.</li>\n<li>Using square units instead of cubic units.</li>\n<li>Forgetting that a cube has three equal dimensions.</li>\n</ul>\n",
@@ -7389,6 +7468,7 @@ export const mathTopics = [
     "id": "math|measurement|Surface Area of Cubes and Cuboids",
     "curriculum_id": "math",
     "chapter_id": "measurement",
+    "topic_group": "Surface Area of Cubes and Cuboids",
     "topic": "Surface Area of Cubes and Cuboids",
     "data": {
       "notes": "<h2>Surface Area of Cubes and Cuboids</h2>\n\n<h3>WHAT IS SURFACE AREA?</h3>\n\n<p>Surface area is the <b>total area of all the outside faces</b> of a three-dimensional object.</p>\n\n<p>It is measured in <b>square units</b>, such as cm² or m².</p>\n\n<p>Do not confuse surface area with volume:</p>\n\n<ul>\n<li><b>Surface area</b> measures outside faces.</li>\n<li><b>Volume</b> measures three-dimensional space.</li>\n</ul>\n\n<h3>SURFACE AREA OF A CUBE</h3>\n\n<p>A cube has 6 equal square faces.</p>\n\n<p>Area of one face:</p>\n\n<p><b>s²</b></p>\n\n<p>Since there are 6 faces:</p>\n\n<p><b>SA = 6s²</b></p>\n\n<p>Example:</p>\n\n<p>A cube has side 4 cm.</p>\n\n<p>SA = 6 × 4²</p>\n\n<p>SA = 6 × 16</p>\n\n<p><b>SA = 96 cm²</b></p>\n\n<h3>SURFACE AREA OF A CUBOID</h3>\n\n<p>A cuboid has three pairs of equal faces.</p>\n\n<p>The three different face areas are:</p>\n\n<ul>\n<li>lw</li>\n<li>lh</li>\n<li>wh</li>\n</ul>\n\n<p>Each occurs twice.</p>\n\n<p>Therefore:</p>\n\n<p><b>SA = 2(lw + lh + wh)</b></p>\n\n<h3>WORKED EXAMPLE</h3>\n\n<p>Find the surface area of a cuboid with length 5 cm, width 3 cm and height 2 cm.</p>\n\n<p>SA = 2(lw + lh + wh)</p>\n\n<p>SA = 2[(5 × 3) + (5 × 2) + (3 × 2)]</p>\n\n<p>SA = 2(15 + 10 + 6)</p>\n\n<p>SA = 2 × 31</p>\n\n<p><b>SA = 62 cm²</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Calculating volume instead of surface area.</li>\n<li>Forgetting that opposite faces occur in pairs.</li>\n<li>Forgetting the factor 2 in the cuboid formula.</li>\n<li>Using cubic units instead of square units.</li>\n</ul>\n",
@@ -7483,6 +7563,7 @@ export const mathTopics = [
     "id": "math|measurement|Measurement Units and Dimensions",
     "curriculum_id": "math",
     "chapter_id": "measurement",
+    "topic_group": "Measurement Units and Dimensions",
     "topic": "Measurement Units and Dimensions",
     "data": {
       "notes": "<h2>Measurement Units and Dimensions</h2>\n\n<h3>WHY UNITS MATTER</h3>\n\n<p>The numerical answer alone is not enough. The unit tells us <b>what kind of quantity</b> has been measured.</p>\n\n<p>For example:</p>\n\n<ul>\n<li>5 cm measures length.</li>\n<li>5 cm² measures area.</li>\n<li>5 cm³ measures volume.</li>\n</ul>\n\n<p>These are different quantities even though the number is the same.</p>\n\n<h3>LENGTH</h3>\n\n<p>Length measures one dimension.</p>\n\n<p>Common units include:</p>\n\n<ul>\n<li>mm</li>\n<li>cm</li>\n<li>m</li>\n<li>km</li>\n</ul>\n\n<p>Length uses ordinary units such as <b>cm</b> or <b>m</b>.</p>\n\n<h3>AREA</h3>\n\n<p>Area measures two dimensions.</p>\n\n<p>Therefore its units are squared:</p>\n\n<ul>\n<li>cm²</li>\n<li>m²</li>\n<li>km²</li>\n</ul>\n\n<p>For example:</p>\n\n<p>4 cm × 3 cm = 12 cm²</p>\n\n<h3>VOLUME</h3>\n\n<p>Volume measures three dimensions.</p>\n\n<p>Therefore its units are cubed:</p>\n\n<ul>\n<li>cm³</li>\n<li>m³</li>\n<li>km³</li>\n</ul>\n\n<p>For example:</p>\n\n<p>4 cm × 3 cm × 2 cm = 24 cm³</p>\n\n<h3>AREA VS VOLUME</h3>\n\n<p>Area uses <b>two</b> dimensions:</p>\n\n<p><b>length × width</b></p>\n\n<p>Volume uses <b>three</b> dimensions:</p>\n\n<p><b>length × width × height</b></p>\n\n<h3>CONVERTING SQUARED UNITS</h3>\n\n<p>When converting area units, the conversion factor must also be squared.</p>\n\n<p>For example:</p>\n\n<p>1 m = 100 cm</p>\n\n<p>Therefore:</p>\n\n<p><b>1 m² = 100² cm² = 10,000 cm²</b></p>\n\n<p>It is incorrect to say 1 m² = 100 cm².</p>\n\n<h3>CONVERTING CUBIC UNITS</h3>\n\n<p>When converting volume units, the conversion factor must be cubed.</p>\n\n<p>Since:</p>\n\n<p>1 m = 100 cm</p>\n\n<p>Then:</p>\n\n<p><b>1 m³ = 100³ cm³ = 1,000,000 cm³</b></p>\n\n<h3>COMMON MISTAKES</h3>\n\n<ul>\n<li>Writing cm instead of cm² for area.</li>\n<li>Writing cm² instead of cm³ for volume.</li>\n<li>Using the length conversion factor directly for area.</li>\n<li>Using the length conversion factor directly for volume.</li>\n<li>Forgetting to make units consistent before calculating.</li>\n</ul>\n",
@@ -7598,6 +7679,7 @@ export const mathTopics = [
     "id": "math|graphs|Coordinate plane basics",
     "curriculum_id": "math",
     "chapter_id": "graphs",
+    "topic_group": "Coordinate plane basics",
     "topic": "Coordinate plane basics",
     "data": {
       "notes": "<h2>Coordinate Plane Basics</h2>\n\n<p>The coordinate plane is used to locate points using numbers.</p>\n\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li>The plane has two number lines: X-axis (horizontal) and Y-axis (vertical).</li>\n<li>Points are written as (x, y).</li>\n<li>X value shows left/right movement.</li>\n<li>Y value shows up/down movement.</li>\n<li>The center point is called the origin (0,0).</li>\n</ul>\n\n<p><b> Key idea:</b> Every point is a location made from two numbers.</p>\n\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li>Reversing (x, y) as (y, x)</li>\n<li>Confusing axis directions</li>\n<li>Forgetting origin is (0,0)</li>\n<li>Mixing up horizontal and vertical axes</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<ul>\n<li>\n<b>Example 1:</b> Identify origin<br>\nStep 1: Locate center point<br>\nStep 2: Coordinates are (0,0)<br>\n<b>Answer: (0,0)</b>\n</li>\n\n<li>\n<b>Example 2:</b> Horizontal axis<br>\nStep 1: Identify left-right line<br>\nStep 2: This is the X-axis<br>\n<b>Answer: X-axis</b>\n</li>\n\n<li>\n<b>Example 3:</b> Vertical axis<br>\nStep 1: Identify up-down line<br>\nStep 2: This is the Y-axis<br>\n<b>Answer: Y-axis</b>\n</li>\n</ul>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>GPS and map navigation systems</li>\n<li>Computer graphics positioning</li>\n<li>Game development movement systems</li>\n<li>Engineering design layouts</li>\n</ul>\n",
@@ -7720,6 +7802,7 @@ export const mathTopics = [
     "id": "math|graphs|Plotting points",
     "curriculum_id": "math",
     "chapter_id": "graphs",
+    "topic_group": "Plotting points",
     "topic": "Plotting points",
     "data": {
       "notes": "<h2>Plotting Points</h2>\n\n<p>Plotting means marking a point on the coordinate plane using (x, y).</p>\n\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li>Always start from origin (0,0).</li>\n<li>Move along X-axis first (left/right).</li>\n<li>Then move along Y-axis (up/down).</li>\n<li>Positive x → right, negative x → left.</li>\n<li>Positive y → up, negative y → down.</li>\n</ul>\n\n<p><b> Key idea:</b> X always comes before Y.</p>\n\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li>Moving Y before X</li>\n<li>Mixing negative directions</li>\n<li>Plotting wrong quadrant</li>\n<li>Confusing (x, y) order</li>\n</ul>\n<h3> WORKED EXAMPLES (WITH CARTESIAN PLANE)</h3>\n\n<ul>\n\n<li>\n<b>Example 1:</b> (2,3)<br>\n\nStep 1: Move 2 units right<br>\nStep 2: Move 3 units up<br>\n\n<pre>\n          y\n          ↑\n     4    |\n     3    |      ● (2,3)\n     2    |     /\n     1    |    /\n  -------O----------------→ x\n     0    |  1  2  3\n</pre>\n\n<b>Answer: (2,3)</b>\n</li>\n\n<li>\n<b>Example 2:</b> (-2,1)<br>\n\nStep 1: Move 2 units left<br>\nStep 2: Move 1 unit up<br>\n\n<pre>\n          y\n          ↑\n     3    |\n     2    |\n     1    |   ● (-2,1)\n     0    |\n  -------O----------------→ x\n        -3  -2  -1\n</pre>\n\n<b>Answer: (-2,1)</b>\n</li>\n\n<li>\n<b>Example 3:</b> (0,4)<br>\n\nStep 1: Stay on Y-axis<br>\nStep 2: Move 4 units up<br>\n\n<pre>\n          y\n          ↑\n     5    |\n     4    |   ● (0,4)\n     3    |\n     2    |\n     1    |\n  -------O----------------→ x\n     0\n</pre>\n\n<b>Answer: (0,4)</b>\n</li>\n\n</ul>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>GPS location mapping</li>\n<li>Computer graphics positioning</li>\n<li>Game character movement</li>\n<li>Engineering design layouts</li>\n</ul>\n",
@@ -7837,6 +7920,7 @@ export const mathTopics = [
     "id": "math|graphs|Line graphs",
     "curriculum_id": "math",
     "chapter_id": "graphs",
+    "topic_group": "Line graphs",
     "topic": "Line graphs",
     "data": {
       "notes": "<h2>Line Graphs</h2>\n\n<p>A line graph shows how values change over time or sequence.</p>\n\n<h3> NOTES (EXPLAINED)</h3>\n<ul>\n<li>Used to show trends (increase/decrease).</li>\n<li>Points are plotted first, then joined with straight lines.</li>\n<li>X-axis usually shows time or order.</li>\n<li>Y-axis shows values (sales, temperature, etc).</li>\n</ul>\n\n<p><b> Key idea:</b> Line graphs show change over time.</p>\n\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li>Not labeling axes</li>\n<li>Skipping scale</li>\n<li>Joining wrong points</li>\n</ul>\n<h3> WORKED EXAMPLES (GRAPH + VISUAL)</h3>\n\n<ul>\n\n<li>\n<b>Example 1:</b> Steps to draw a line graph from data points<br>\n\nStep 1: Draw x-axis (horizontal) and y-axis (vertical)<br>\nStep 2: Mark equal scale on both axes<br>\nStep 3: Plot each coordinate point accurately<br>\nStep 4: Connect points in correct order<br>\n\n<pre>\n          y\n          ↑\n     5    |\n     4    |        ● (3,4)\n     3    |      ● (2,3)\n     2    |    ● (1,2)\n     1    |  ● (0,1)\n  -------O------------------------→ x\n     0    1    2    3\n</pre>\n\n<b>Answer: A plotted coordinate line graph showing change between points</b>\n</li>\n\n<br>\n\n<li>\n<b>Example 2:</b> What information does a line graph represent?<br>\n\nStep 1: Observe plotted coordinates<br>\nStep 2: Follow direction of connected line<br>\nStep 3: Compare rise or fall in values<br>\nStep 4: Identify pattern behavior over time or variable change<br>\n\n<pre>\n          y\n          ↑\n     5    |        ●\n     4    |      ●\n     3    |    ●\n     2    |  ●\n     1    |●\n  -------O------------------------→ x\n     0\n</pre>\n\n<b>Answer: It represents a pattern or trend in data (increase or decrease)</b>\n</li>\n\n<br>\n\n<li>\n<b>Example 3:</b> Why are points connected in a graph?<br>\n\nStep 1: Identify separate data values<br>\nStep 2: Observe order of values on x-axis<br>\nStep 3: Connect points to show continuous change<br>\nStep 4: Form a relationship model between variables<br>\n\n<pre>\n          y\n          ↑\n     5    |        ●──────●\n     4    |      ●\n     3    |    ●\n     2    |  ●\n     1    |●\n  -------O------------------------→ x\n     0\n</pre>\n\n<b>Answer: To show continuity and relationship between data points</b>\n</li>\n\n</ul>\n",
@@ -7956,6 +8040,7 @@ export const mathTopics = [
     "id": "math|graphs|Gradient",
     "curriculum_id": "math",
     "chapter_id": "graphs",
+    "topic_group": "Gradient",
     "topic": "Gradient",
     "data": {
       "notes": "<h2>Gradient (Slope)</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nGradient measures how steep a line is on a graph.\nIt shows how much the vertical value changes compared to the horizontal change.\n</p>\n<h3> GRADIENT (SLOPE) — CALCULATION VIEW</h3>\n\n<pre>\nGradient = rise ÷ run\nm = (y₂ − y₁) / (x₂ − x₁)\n</pre>\n\n<ul>\n<li><b>Rise</b> = y₂ − y₁ (vertical change)</li>\n<li><b>Run</b> = x₂ − x₁ (horizontal change)</li>\n<li><b>Gradient (m)</b> = rate of change of y with respect to x</li>\n</ul>\n\n<p><b>Direction rules:</b></p>\n<p>\nm &gt; 0 → line rises upward<br>\nm &lt; 0 → line falls downward<br>\nm = 0 → horizontal line<br>\nUndefined → vertical line\n</p>\n\n<p><b> Key idea:</b> Larger absolute value of m = steeper line</p>\n\n<h3> KEY FACTS (CALCULATION BASED)</h3>\n<ul>\n<li>Gradient compares change between two points</li>\n<li>Uses subtraction of coordinates</li>\n<li>Always simplifies to a number or fraction</li>\n<li>Same gradient → parallel lines</li>\n</ul>\n\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li>Using x₂ − x₁ in wrong order</li>\n<li>Using y₂ − y₁ incorrectly swapped</li>\n<li>Forgetting negative signs</li>\n<li>Dividing run by rise instead of rise by run</li>\n</ul>\n\n<h3> WORKED EXAMPLES (STEP-BY-STEP CALCULATION)</h3>\n\n<ul>\n\n<li>\n<b>Example 1:</b> (2,3) and (6,11)<br>\n\nStep 1: y₂ − y₁ = 11 − 3 = 8<br>\nStep 2: x₂ − x₁ = 6 − 2 = 4<br>\nStep 3: m = 8 ÷ 4<br>\n<b>Answer: m = 2</b>\n</li>\n\n<br>\n\n<li>\n<b>Example 2:</b> (1,5) and (4,11)<br>\n\nStep 1: y₂ − y₁ = 11 − 5 = 6<br>\nStep 2: x₂ − x₁ = 4 − 1 = 3<br>\nStep 3: m = 6 ÷ 3<br>\n<b>Answer: m = 2</b>\n</li>\n\n<br>\n\n<li>\n<b>Example 3:</b> (3,10) and (7,2)<br>\n\nStep 1: y₂ − y₁ = 2 − 10 = −8<br>\nStep 2: x₂ − x₁ = 7 − 3 = 4<br>\nStep 3: m = −8 ÷ 4<br>\n<b>Answer: m = −2</b>\n</li>\n\n</ul>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Road slope design (hills and ramps)</li>\n<li>Building construction angles</li>\n<li>Physics: speed vs time graphs</li>\n<li>Economics: rate of change in profit</li>\n</ul>\n",
@@ -8054,6 +8139,7 @@ export const mathTopics = [
     "id": "math|graphs|Applications of graphs",
     "curriculum_id": "math",
     "chapter_id": "graphs",
+    "topic_group": "Applications of graphs",
     "topic": "Applications of graphs",
     "data": {
       "notes": "<h2>Applications of Graphs</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nGraphs help represent real-world data clearly and quickly.\nThey transform numbers into visual patterns that are easier to understand.\n</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Graphs simplify large sets of data</li>\n<li>Used in science, business, weather, and population studies</li>\n<li>Help in comparing values and identifying trends</li>\n<li>Useful for prediction and decision-making</li>\n</ul>\n\n<p><b> Key idea:</b> Graphs turn data into visual meaning.</p>\n\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li>Ignoring axis labels</li>\n<li>Misinterpreting upward/downward trends</li>\n<li>Confusing bar graphs, line graphs, and pie charts</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<ul>\n<li>\n<b>Example 1: Weather</b><br>\nStep 1: Record daily temperature<br>\nStep 2: Plot values over time<br>\nStep 3: Observe trend<br>\n<b>Answer: Weather pattern becomes visible</b>\n</li>\n\n<li>\n<b>Example 2: Business</b><br>\nStep 1: Collect sales data<br>\nStep 2: Plot graph over months<br>\nStep 3: Identify increase or decrease<br>\n<b>Answer: Sales trend analysis</b>\n</li>\n\n<li>\n<b>Example 3: Population</b><br>\nStep 1: Record yearly population<br>\nStep 2: Plot growth graph<br>\nStep 3: Analyze increase rate<br>\n<b>Answer: Population growth pattern</b>\n</li>\n</ul>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Weather forecasting systems</li>\n<li>Business performance tracking</li>\n<li>Population growth studies</li>\n<li>Scientific experiment analysis</li>\n</ul>\n",
@@ -8127,6 +8213,7 @@ export const mathTopics = [
     "id": "math|ratio|Ratio basics",
     "curriculum_id": "math",
     "chapter_id": "ratio",
+    "topic_group": "Ratio basics",
     "topic": "Ratio basics",
     "data": {
       "notes": "<h2>Ratio Basics</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nA ratio compares two or more quantities of the same type.\nIt shows how much of one thing exists compared to another.\n</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>A ratio shows relative size, not actual total value</li>\n<li>Written as a : b, where order matters</li>\n<li>All quantities must be in the same unit before comparing</li>\n<li>Simplify ratios using the highest common factor (HCF)</li>\n</ul>\n\n<p><b> Key idea:</b> Ratio is a comparison, not a total amount.</p>\n\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li>Not converting units before forming ratio</li>\n<li>Reversing order of terms (a:b ≠ b:a)</li>\n<li>Failing to simplify completely</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<ul>\n<li>\n<b>Example 1:</b> 10:20<br>\nStep 1: HCF = 10<br>\nStep 2: 10 ÷ 10 : 20 ÷ 10<br>\n<b>Answer: 1:2</b>\n</li>\n\n<li>\n<b>Example 2:</b> 6 apples : 3 apples<br>\nStep 1: 6:3<br>\nStep 2: Divide by 3<br>\n<b>Answer: 2:1</b>\n</li>\n\n<li>\n<b>Example 3:</b> 15:5<br>\nStep 1: HCF = 5<br>\nStep 2: 15 ÷ 5 : 5 ÷ 5<br>\n<b>Answer: 3:1</b>\n</li>\n</ul>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Mixing ingredients in cooking</li>\n<li>Map scaling and models</li>\n<li>Financial comparisons</li>\n<li>Population comparisons in statistics</li>\n</ul>\n",
@@ -8226,6 +8313,7 @@ export const mathTopics = [
     "id": "math|ratio|Dividing in ratio",
     "curriculum_id": "math",
     "chapter_id": "ratio",
+    "topic_group": "Dividing in ratio",
     "topic": "Dividing in ratio",
     "data": {
       "notes": "<h2>Dividing in Ratio</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nA quantity is shared into parts according to a given ratio.\nEach part of the ratio represents a proportional share of the total.\n</p>\n\n<h3> STEP-BY-STEP METHOD</h3>\n<ul>\n  <li><b>Step 1:</b> Add all parts of the ratio</li>\n  <li><b>Step 2:</b> Divide the total by the sum of parts (unit value)</li>\n  <li><b>Step 3:</b> Multiply each ratio part by the unit value</li>\n</ul>\n\n<p><b> Key idea:</b> Each ratio part represents a share of the total.</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n  <li>Ratios split quantities into proportional parts</li>\n  <li>The total must always be preserved</li>\n  <li>Each part is scaled using the unit value</li>\n  <li>Used in sharing money, resources, and quantities</li>\n</ul>\n\n<h3> COMMON MISTAKES</h3>\n<ul>\n  <li>Forgetting to add ratio parts</li>\n  <li>Dividing incorrectly before finding unit value</li>\n  <li>Mixing up final shares</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<ul>\n<li>\n<b>Example 1:</b> 50 in 1:1<br>\nStep 1: 1 + 1 = 2<br>\nStep 2: 50 ÷ 2 = 25<br>\nStep 3: 1×25 = 25, 1×25 = 25<br>\n<b>Answer: 25 and 25</b>\n</li>\n\n<li>\n<b>Example 2:</b> 60 in 2:1<br>\nStep 1: 2 + 1 = 3<br>\nStep 2: 60 ÷ 3 = 20<br>\nStep 3: 40 and 20<br>\n<b>Answer: 40 and 20</b>\n</li>\n\n<li>\n<b>Example 3:</b> 90 in 3:2<br>\nStep 1: 3 + 2 = 5<br>\nStep 2: 90 ÷ 5 = 18<br>\nStep 3: 54 and 36<br>\n<b>Answer: 54 and 36</b>\n</li>\n</ul>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Sharing profits in business partnerships</li>\n<li>Dividing inheritance or property</li>\n<li>Splitting resources in teamwork</li>\n<li>Cooking recipe adjustments</li>\n</ul>\n",
@@ -8328,6 +8416,7 @@ export const mathTopics = [
     "id": "math|ratio|Proportion",
     "curriculum_id": "math",
     "chapter_id": "ratio",
+    "topic_group": "Proportion",
     "topic": "Proportion",
     "data": {
       "notes": "<h2>Proportion</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nA proportion shows that two ratios are equal.\nIt helps us compare quantities and solve missing values.\n</p>\n<pre>a : b = c : d  →  a/b = c/\n</pre>\n<p>Using cross multiplication:</p>\n<pre>a × d = b × c</pre>\n<p><b> Key idea:</b> Proportion means two equal ratios.</p>\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Proportion compares two equal ratios</li>\n<li>Cross multiplication is used to find unknown values</li>\n<li>Always simplify final answers</li>\n<li>Useful in scaling and comparison problems</li>\n</ul>\n<h3> COMMON MISTAKES</h3>\n<ul>\n<li>Mixing up numerator and denominator</li>\n<li>Incorrect cross multiplication</li>\n<li>Forgetting to simplify final result</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> 2:4 = x:8<br>\nStep 1: 2 × 8 = 4x<br>\nStep 2: 16 = 4x<br>\nStep 3: x = 4<br>\n<b>Answer: 4</b>\n</li>\n<li>\n<b>Example 2:</b> 3:5 = x:10<br>\nStep 1: 3 × 10 = 5x<br>\nStep 2: 30 = 5x<br>\nStep 3: x = 6<br>\n<b>Answer: 6</b>\n</li>\n<li>\n<b>Example 3:</b> 4:6 = 2:x<br>\nStep 1: 4x = 12<br>\nStep 2: x = 3<br>\n<b>Answer: 3</b>\n</li>\n</ul>\n",
@@ -8426,6 +8515,7 @@ export const mathTopics = [
     "id": "math|ratio|Direct proportion",
     "curriculum_id": "math",
     "chapter_id": "ratio",
+    "topic_group": "Direct proportion",
     "topic": "Direct proportion",
     "data": {
       "notes": "<h2>Direct Proportion</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nIn direct proportion, when one quantity increases, the other increases at the same rate.\nThey maintain a constant ratio.\n</p>\n<pre>y ∝ x  →  y = kx</pre>\n<p><b> Key idea:</b> Same direction change (increase → increase, decrease → decrease)</p>\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Direct proportion means both variables change together</li>\n<li>The ratio y/x is always constant</li>\n<li>Find unit value first for easier solving</li>\n<li>Used in pricing, speed, and scaling problems</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> 2 pens = 10<br>\nStep 1: 1 pen = 10 ÷ 2 = 5<br>\nStep 2: 4 pens = 5 × 4 = 20<br>\n<b>Answer: 20</b>\n</li>\n<li>\n<b>Example 2:</b> 3 kg = 30<br>\nStep 1: 1 kg = 10<br>\nStep 2: 6 kg = 60<br>\n<b>Answer: 60</b>\n</li>\n<li>\n<b>Example 3:</b> 5 items = 25<br>\nStep 1: 1 item = 5<br>\nStep 2: 10 items = 50<br>\n<b>Answer: 50</b>\n</li>\n</ul>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Shopping cost calculations</li>\n<li>Fuel consumption vs distance</li>\n<li>Work and wage calculations</li>\n<li>Recipe scaling in cooking</li>\n</ul>\n",
@@ -8523,6 +8613,7 @@ export const mathTopics = [
     "id": "math|ratio|Inverse proportion",
     "curriculum_id": "math",
     "chapter_id": "ratio",
+    "topic_group": "Inverse proportion",
     "topic": "Inverse proportion",
     "data": {
       "notes": "<h2>Inverse Proportion</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nIn inverse proportion, when one quantity increases, the other decreases.\nTheir product remains constant.\n</p>\n<pre>x × y = k (constant)</pre>\n<p><b> Key idea:</b> More workers → less time needed.</p>\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Inverse means opposite movement between variables</li>\n<li>Used in work-rate problems, speed-time, and efficiency tasks</li>\n<li>If one doubles, the other halves (if perfectly inverse)</li>\n<li>Always keep the product constant</li>\n</ul>\n<h3> WORKED EXAMPLES</h3>\n<ul>\n<li>\n<b>Example 1:</b> 2 workers = 10 days<br>\nStep 1: 2 × 10 = 20<br>\nStep 2: 20 ÷ 4 = 5<br>\n<b>Answer: 5 days</b>\n</li>\n<li>\n<b>Example 2:</b> 3 workers = 12 days<br>\nStep 1: 3 × 12 = 36<br>\nStep 2: 36 ÷ 6 = 6<br>\n<b>Answer: 6 days</b>\n</li>\n<li>\n<b>Example 3:</b> 4 workers = 8 days<br>\nStep 1: 4 × 8 = 32<br>\nStep 2: 32 ÷ 8 = 4<br>\n<b>Answer: 4 days</b>\n</li>\n</ul>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Construction work scheduling</li>\n<li>Machine efficiency in factories</li>\n<li>Speed vs travel time in transport</li>\n<li>Teamwork task distribution</li>\n</ul>\n",
@@ -8636,6 +8727,7 @@ export const mathTopics = [
     "id": "math|statistics|Data & frequency tables",
     "curriculum_id": "math",
     "chapter_id": "statistics",
+    "topic_group": "Data & frequency tables",
     "topic": "Data & frequency tables",
     "data": {
       "notes": "<h2>Data & Frequency Tables</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nStatistics starts with <b>data</b>. Data is simply information we collect.\nRaw data is often messy and difficult to interpret, so we organize it.\nOne of the simplest tools is a <b>frequency table</b>.\n</p>\n\n<p>\nA frequency table helps us answer:\n<b>\"How many times does each value appear?\"</b>\n</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li><b>Data</b> = collected information (numbers or categories)</li>\n<li><b>Frequency</b> = number of times a value appears</li>\n<li><b>Frequency table</b> = organized display of values and their counts</li>\n<li>Helps identify patterns, repetition, and trends</li>\n<li>Foundation for mean, median, and mode</li>\n</ul>\n\n<h3> WORKED EXAMPLE</h3>\n\n<pre>\nData: 2, 3, 3, 4, 4, 4, 5\n\nStep 1: List unique values → 2, 3, 4, 5\nStep 2: Count occurrences\n\nValue | Frequency\n  2   | 1\n  3   | 2\n  4   | 3\n  5   | 1\n\nConclusion:\n- 4 has the highest frequency\n- It is the mode of the data\n</pre>\n\n<h3> VISUAL IDEA</h3>\n<pre>\n2 → █\n3 → ██\n4 → ███\n5 → █\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Survey results analysis</li>\n<li>Exam score distribution</li>\n<li>Business sales tracking</li>\n<li>Population studies</li>\n</ul>\n",
@@ -8754,6 +8846,7 @@ export const mathTopics = [
     "id": "math|statistics|Mean",
     "curriculum_id": "math",
     "chapter_id": "statistics",
+    "topic_group": "Mean",
     "topic": "Mean",
     "data": {
       "notes": "<h2>Mean (Average)</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nThe mean is what we call the <b>average</b>.\nImagine sharing items equally among people — that final equal share is the mean.\nIt represents a balanced value of a dataset.\n</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Mean = total sum ÷ number of values</li>\n<li>Represents a \"fair share\" value</li>\n<li>All values contribute to the final result</li>\n<li>Highly affected by extreme values (outliers)</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<pre>\nExample 1:\nFind mean of: 2, 4, 6\n\nStep 1: Sum = 2 + 4 + 6 = 12\nStep 2: Count = 3\nStep 3: Mean = 12 ÷ 3 = 4\n</pre>\n\n<pre>\nExample 2:\nFind mean of: 5, 5, 10\n\nStep 1: Sum = 20\nStep 2: Count = 3\nStep 3: Mean = 20 ÷ 3 = 6.67\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Average exam scores in schools</li>\n<li>Weather temperature averages</li>\n<li>Business profit analysis</li>\n<li>Sports performance statistics</li>\n</ul>\n",
@@ -8876,6 +8969,7 @@ export const mathTopics = [
     "id": "math|statistics|Median",
     "curriculum_id": "math",
     "chapter_id": "statistics",
+    "topic_group": "Median",
     "topic": "Median",
     "data": {
       "notes": "<h2>Median</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nThe median is the <b>middle value</b> when data is arranged in order.\nIt shows the center of the dataset and is not affected by extreme values (outliers).\n</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Always arrange data in ascending order first</li>\n<li>Odd number of values → pick the middle one</li>\n<li>Even number of values → average the two middle values</li>\n<li>Median is a measure of central tendency</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<pre>\nExample 1:\nFind median of: 7, 1, 3\n\nStep 1: Arrange → 1, 3, 7\nStep 2: Middle value = 3\n\nMedian = 3\n</pre>\n\n<pre>\nExample 2:\nFind median of: 2, 4, 6, 8\n\nStep 1: Arrange → 2, 4, 6, 8\nStep 2: Middle values = 4 and 6\nStep 3: Median = (4 + 6) ÷ 2 = 5\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Median income in economics (fair average earnings)</li>\n<li>House prices in real estate analysis</li>\n<li>Weather data analysis</li>\n<li>Performance ranking in exams</li>\n</ul>\n",
@@ -8975,6 +9069,7 @@ export const mathTopics = [
     "id": "math|statistics|Mode",
     "curriculum_id": "math",
     "chapter_id": "statistics",
+    "topic_group": "Mode",
     "topic": "Mode",
     "data": {
       "notes": "<h2>Mode</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nMode tells us which value appears the most.\nIt answers the question: <b>\"What is the most common value?\"</b>\n</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Mode = value with highest frequency</li>\n<li>A dataset can have one mode, more than one mode, or no mode</li>\n<li>Useful for categorical and numerical data</li>\n</ul>\n\n<h3> WORKED EXAMPLE</h3>\n\n<pre>\nFind mode of: 1, 2, 2, 3\n\nStep 1: Count frequency\n1 → 1 time\n2 → 2 times\n3 → 1 time\n\nStep 2: Highest frequency = 2\n\nMode = 2\n</pre>\n\n<h3> WORKED EXAMPLE 2</h3>\n\n<pre>\nFind mode of: 5, 5, 6, 6\n\nStep 1: Count frequency\n5 → 2 times\n6 → 2 times\n\nStep 2: Two highest equal frequencies\n\nMode = 5 and 6 (bimodal)\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Most common shoe size in a shop</li>\n<li>Popular vote choice in elections</li>\n<li>Most frequently sold product</li>\n<li>Customer preference analysis</li>\n</ul>\n",
@@ -9073,6 +9168,7 @@ export const mathTopics = [
     "id": "math|statistics|Bar graphs",
     "curriculum_id": "math",
     "chapter_id": "statistics",
+    "topic_group": "Bar graphs",
     "topic": "Bar graphs",
     "data": {
       "notes": "<h2>Bar Graphs</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nBar graphs turn numbers into pictures.\nInstead of reading numbers, we <b>see</b> the data.\nEach bar represents a category, and its height shows the value.\n</p>\n\n<h3> WELL EXPLAINED NOTES</h3>\n<ul>\n<li>Bars represent categories</li>\n<li>Height or length shows value</li>\n<li>Used for comparison between groups</li>\n<li>Easy to interpret at a glance</li>\n</ul>\n\n<h3> WORKED EXAMPLE</h3>\n\n<pre>\nFruit Sales:\n\nApples → 5\nBananas → 8\nMangoes → 3\n\nStep 1: Assign each fruit a bar\nStep 2: Set bar height equal to value\n\nConclusion:\n- Bananas highest (8)\n- Apples medium (5)\n- Mangoes lowest (3)\n</pre>\n\n<h3> VISUAL INTERPRETATION IDEA</h3>\n<pre>\nBananas  ████████ (8)\nApples   █████     (5)\nMangoes  ███       (3)\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>School performance comparison</li>\n<li>Business sales analysis</li>\n<li>Weather comparisons (rainfall, temperature)</li>\n<li>Survey result visualization</li>\n</ul>\n",
@@ -9190,6 +9286,7 @@ export const mathTopics = [
     "id": "math|probability|Basic probability",
     "curriculum_id": "math",
     "chapter_id": "probability",
+    "topic_group": "Basic probability",
     "topic": "Basic probability",
     "data": {
       "notes": "<h2>Basic Probability</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nProbability measures how likely an event is to occur.\nIt compares favorable outcomes to total possible outcomes in a sample space.\n</p>\n\n<h3> WELL DETAILED NOTES</h3>\n<ul>\n<li>Probability = favorable outcomes ÷ total outcomes</li>\n<li>Values range from 0 (impossible) to 1 (certain)</li>\n<li>All outcomes must be equally likely</li>\n<li>Always simplify fractions</li>\n<li>Careful counting is the most important step</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<pre>\nExample 1:\nA bag contains 2 red balls and 3 blue balls.\nP(red)?\n\nStep 1: Total = 2 + 3 = 5\nStep 2: Favorable = 2\nStep 3: P = 2/5\n</pre>\n\n<pre>\nExample 2:\nA bag contains 3 red balls and 2 blue balls.\nP(blue)?\n\nStep 1: Total = 5\nStep 2: Favorable = 2\nStep 3: P = 2/5\n</pre>\n\n<pre>\nExample 3:\nA bag contains 4 red balls and 1 blue ball.\nP(not red)?\n\nStep 1: Total = 5\nStep 2: Not red = 1\nStep 3: P = 1/5\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Weather forecasting predictions</li>\n<li>Insurance risk calculations</li>\n<li>Games of chance (lottery, dice)</li>\n<li>Decision making under uncertainty</li>\n</ul>\n",
@@ -9312,6 +9409,7 @@ export const mathTopics = [
     "id": "math|probability|Dice probability",
     "curriculum_id": "math",
     "chapter_id": "probability",
+    "topic_group": "Dice probability",
     "topic": "Dice probability",
     "data": {
       "notes": "<h2>Dice Probability</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nA fair die has 6 equally likely outcomes: 1, 2, 3, 4, 5, 6.\nEach outcome has the same probability.\n</p>\n\n<h3> WELL DETAILED NOTES</h3>\n<ul>\n<li>Total outcomes = 6</li>\n<li>Each outcome has probability = 1/6</li>\n<li>Group outcomes when required (even, odd, greater than, etc.)</li>\n<li>Probability = favorable outcomes / total outcomes</li>\n</ul>\n\n<h3> WORKED EXAMPLES</h3>\n\n<pre>\nExample 1:\nA fair die is rolled.\nP(getting 4)?\n\nFavorable = 1\nTotal = 6\nP = 1/6\n</pre>\n\n<pre>\nExample 2:\nA fair die is rolled.\nP(even number)?\n\nEven = {2,4,6}\nFavorable = 3\nP = 3/6 = 1/2\n</pre>\n\n<pre>\nExample 3:\nA fair die is rolled.\nP(number > 4)?\n\nNumbers = {5,6}\nFavorable = 2\nP = 2/6 = 1/3\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Board games (Ludo, Monopoly)</li>\n<li>Simulation models in gaming</li>\n<li>Random sampling in statistics</li>\n</ul>\n",
@@ -9440,6 +9538,7 @@ export const mathTopics = [
     "id": "math|probability|Coin probability",
     "curriculum_id": "math",
     "chapter_id": "probability",
+    "topic_group": "Coin probability",
     "topic": "Coin probability",
     "data": {
       "notes": "<h2>Coin Probability</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nA coin is one of the simplest probability experiments.\nWhen you toss a fair coin, there are only two possible outcomes:\n<b>Head (H)</b> or <b>Tail (T)</b>.\n</p>\n\n<p>\nBecause the coin is fair, both outcomes have an <b>equal chance</b>.\n</p>\n\n<h3> WELL DETAILED NOTES</h3>\n<ul>\n<li>Total possible outcomes = 2 (H, T)</li>\n<li>P(Head) = 1/2</li>\n<li>P(Tail) = 1/2</li>\n<li>Sum of probabilities = 1</li>\n<li>Multiple tosses are independent events</li>\n</ul>\n\n<h3> DIAGRAM</h3>\n<pre>\nSample space:\nH | T\n</pre>\n\n<h3> WORKED EXAMPLES</h3>\n\n<pre>\nExample 1:\nA coin is tossed once.\nP(Head)?\n\nTotal = 2\nFavorable = 1\nP(H) = 1/2\n</pre>\n\n<pre>\nExample 2:\nA coin is tossed once.\nP(Tail)?\n\nTotal = 2\nFavorable = 1\nP(T) = 1/2\n</pre>\n\n<pre>\nExample 3:\nA coin is tossed twice.\nP(HH)?\n\nP(H) × P(H)\n= 1/2 × 1/2\n= 1/4\n</pre>\n\n<pre>\nExample 4:\nA coin is tossed twice.\nP(one head)?\n\nSample space:\nHH, HT, TH, TT\n\nFavorable = HT, TH = 2\nTotal = 4\n\nP = 2/4 = 1/2\n</pre>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Decision-making models</li>\n<li>Game theory simulations</li>\n<li>Random event modeling</li>\n</ul>\n",
@@ -9563,6 +9662,7 @@ export const mathTopics = [
     "id": "math|probability|Combined events",
     "curriculum_id": "math",
     "chapter_id": "probability",
+    "topic_group": "Combined events",
     "topic": "Combined events",
     "data": {
       "notes": "<h2>Combined Events</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nWhen two independent events happen together, we multiply their probabilities.\nIndependent means one event does NOT affect the other.\n</p>\n\n---\n\n<h3> WELL DETAILED NOTES</h3>\n<ul>\n<li>P(A and B) = P(A) × P(B)</li>\n<li>Used only when events are independent</li>\n<li>If events are dependent, multiplication is modified (advanced case)</li>\n</ul>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<pre>\nExample 1:\nA coin is tossed and a die is rolled.\nWhat is the probability of getting a head and a 4?\n\nStep 1: P(head) = 1/2\nStep 2: P(4) = 1/6\nStep 3: Multiply → (1/2) × (1/6) = 1/12\nFinal Answer: 1/12\n</pre>\n\n<pre>\nExample 2:\nA coin is tossed and a die is rolled.\nWhat is the probability of getting a tail and an even number?\n\nStep 1: P(tail) = 1/2\nStep 2: Even numbers = {2,4,6} → 3/6 = 1/2\nStep 3: Multiply → (1/2) × (1/2) = 1/4\nFinal Answer: 1/4\n</pre>\n\n<pre>\nExample 3:\nA coin is tossed and a die is rolled.\nWhat is the probability of getting a head and a number greater than 4?\n\nStep 1: P(head) = 1/2\nStep 2: Numbers > 4 = {5,6} → 2/6 = 1/3\nStep 3: Multiply → (1/2) × (1/3) = 1/6\nFinal Answer: 1/6\n</pre>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nEvent A (coin)     Event B (die)\n   1/2  ×            1/6\n        ↓\n   Combined probability = multiplication\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Gaming systems (multiple random outcomes)</li>\n<li>Security systems (independent risk factors)</li>\n<li>Quality control in manufacturing</li>\n<li>AI random sampling models</li>\n</ul>\n\n---\n",
@@ -9702,6 +9802,7 @@ export const mathTopics = [
     "id": "math|probability|Bayes Theorem",
     "curriculum_id": "math",
     "chapter_id": "probability",
+    "topic_group": "Bayes Theorem",
     "topic": "Bayes Theorem",
     "data": {
       "notes": "\n<h2> Bayes Theorem</h2>\n<h3> DEEP NOTES</h3>\n<p>\nBayes theorem updates probability based on new information.\nIt reverses conditional probability: instead of P(B|A), we find P(A|B).\n</p>\n<pre>\nP(A|B) = P(B|A)P(A) / P(B)\n</pre>\n It is used when we already have evidence and want to revise beliefs.\n<h3> WORKED EXAMPLE (STEP BY STEP)</h3>\n\n<p><b>Question:</b> A disease affects 1% of population. Test is 90% accurate. If a person tests positive, what is probability they are actually sick?</p>\n<p><b>Step 1: Define probabilities</b></p>\n<pre>\nP(D) = 0.01\nP(¬D) = 0.99\n</pre>\n\n<p><b>Step 2: Test accuracy</b></p>\n<pre>\nP(+ | D) = 0.9\nP(+ | ¬D) = 0.1\n</pre>\n\n<p><b>Step 3: Total probability of positive test</b></p>\n<pre>\nP(+) = (0.9 × 0.01) + (0.1 × 0.99)\n     = 0.009 + 0.099\n     = 0.108\n</pre>\n\n<p><b>Step 4: Apply Bayes theorem</b></p>\n<pre>\nP(D | +) = (0.9 × 0.01) / 0.108\n         = 0.009 / 0.108\n</pre>\n\n<p><b>Step 5: Final Answer</b></p>\n<pre>\nP(D | +) ≈ 0.083 = 8.3%\n</pre>\n Even with a positive test, probability is still low due to rarity of disease.\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Medical diagnosis systems (disease testing)</li>\n<li>Spam email filtering (spam vs not spam)</li>\n<li>Artificial intelligence decision-making</li>\n<li>Forensic and legal probability reasoning</li>\n</ul>\n\n---\n",
@@ -9822,6 +9923,7 @@ export const mathTopics = [
     "id": "math|probability|Expected Value",
     "curriculum_id": "math",
     "chapter_id": "probability",
+    "topic_group": "Expected Value",
     "topic": "Expected Value",
     "data": {
       "notes": "\n<h2> Expected Value</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nExpected value is the long-term average outcome of a random process if it is repeated many times.\nIt does not guarantee what will happen in a single trial.\n</p>\n<pre>\nE(X) = Σ (x × P(x))\n</pre>\n It is a weighted average of all possible outcomes.\n<h3> WORKED EXAMPLE (STEP BY STEP)</h3>\n<p><b>Question:</b> A game gives: +10 (50%), +0 (50%). Find expected value.</p>\n<p><b>Step 1: Identify outcomes and probabilities</b></p>\n<pre>\n10 with probability 0.5\n0 with probability 0.5\n</pre>\n<p><b>Step 2: Multiply each outcome by probability</b></p>\n<pre>\n10 × 0.5 = 5\n0 × 0.5 = 0\n</pre>\n<p><b>Step 3: Add results</b></p>\n<pre>\nE(X) = 5 + 0 = 5\n</pre>\n<p><b>Final Answer:</b> Expected value = 5</p>\n<h3> DIAGRAM</h3>\n<pre>\nOutcome      Probability      Contribution\nWin 10   →      0.5        →      5\nWin 0    →      0.5        →      0\n---------------------------------------\nExpected Value = 5\n</pre>\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Casino games and gambling risk analysis</li>\n<li>Insurance premium calculation</li>\n<li>Investment profit forecasting</li>\n<li>Decision making under uncertainty</li>\n</ul>\n",
@@ -9901,6 +10003,7 @@ export const mathTopics = [
     "id": "math|probability|Real life probability",
     "curriculum_id": "math",
     "chapter_id": "probability",
+    "topic_group": "Real life probability",
     "topic": "Real life probability",
     "data": {
       "notes": "\n<h2>Real World Applications of Probability</h2>\n\n<h3> FOUNDATION EXPLANATION</h3>\n<p>\nProbability is not just theory — it is used in real life to make decisions under uncertainty.\nIt tells us how likely an event is to happen.\n</p>\n\n---\n\n<h3> WELL DETAILED NOTES</h3>\n<ul>\n<li>Used in weather forecasting to predict rain, storms, or sunshine</li>\n<li>Used in insurance to calculate risk of accidents or illness</li>\n<li>Used in games and sports predictions (winning chances)</li>\n<li>Used in business for decision making under uncertainty</li>\n</ul>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<pre>\nExample 1:\nWeather forecast says 70% chance of rain.\n\nStep 1: Convert → 70%\nStep 2: Interpretation → likely to rain\nStep 3: Decision → carry umbrella\n</pre>\n\n<pre>\nExample 2:\nA player has probability 0.8 of scoring a goal.\n\nStep 1: Convert → 0.8 = 80%\nStep 2: Interpretation → very high chance\nStep 3: Conclusion → strong performer\n</pre>\n\n<pre>\nExample 3:\nProbability of accident is 0.01.\n\nStep 1: Convert → 1%\nStep 2: Interpretation → very rare event\nStep 3: Conclusion → low risk\n</pre>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\n0 ─────────────── 0.5 ─────────────── 1\nImpossible        Uncertain          Certain\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Weather forecasting systems</li>\n<li>Insurance risk modeling</li>\n<li>Sports analytics and predictions</li>\n<li>Financial market forecasting</li>\n</ul>\n\n---\n",
@@ -10014,6 +10117,7 @@ export const mathTopics = [
     "id": "math|matrices|Introduction to Matrices",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix 1",
     "topic": "Introduction to Matrices",
     "data": {
       "notes": "\n<h2>Introduction to Matrices</h2>\n\n<p>\nA <b>matrix</b> is a rectangular arrangement of numbers.\nThe numbers are arranged in <b>rows</b> and <b>columns</b>.\n</p>\n\n<p>For example:</p>\n\n<pre>\nA = [ 3   -2   5 ]\n    [ 7    4   1 ]\n</pre>\n\n<p>\nThis matrix has two horizontal rows:\n</p>\n\n<pre>\n[ 3   -2   5 ]   ← Row 1\n[ 7    4   1 ]   ← Row 2\n</pre>\n\n<p>\nand three vertical columns:\n</p>\n\n<pre>\n[ 3   -2   5 ]\n  ↓    ↓    ↓\n  1    2    3\n columns\n</pre>\n\n<h3>WHAT IS A ROW?</h3>\n\n<p>\nA <b>row</b> is a horizontal line of entries.\n</p>\n\n<pre>\n[ 3   8   5 ]\n</pre>\n\n<p>\nThe three numbers are in one row.\n</p>\n\n<h3>WHAT IS A COLUMN?</h3>\n\n<p>\nA <b>column</b> is a vertical line of entries.\n</p>\n\n<pre>\n[ 3 ]\n[ 8 ]\n[ 5 ]\n</pre>\n\n<p>\nThe three numbers are in one column.\n</p>\n\n<h3>WORKED EXAMPLE 1</h3>\n\n<p>Consider:</p>\n\n<pre>\nA = [ 4   7 ]\n    [ 2   9 ]\n</pre>\n\n<p>\nRead across the first horizontal line:\n</p>\n\n<pre>\n[ 4   7 ]\n</pre>\n\n<p>\nThat is <b>row 1</b>.\n</p>\n\n<p>\nRead across the second horizontal line:\n</p>\n\n<pre>\n[ 2   9 ]\n</pre>\n\n<p>\nThat is <b>row 2</b>.\n</p>\n\n<p>\nTherefore A has <b>2 rows</b>.\n</p>\n\n<h3>WORKED EXAMPLE 2</h3>\n\n<p>Consider:</p>\n\n<pre>\nB = [ 1   5   8 ]\n    [ 3   6   2 ]\n    [ 7   4   9 ]\n</pre>\n\n<p>\nThere are three horizontal rows:\n</p>\n\n<pre>\nRow 1: [1   5   8]\n\nRow 2: [3   6   2]\n\nRow 3: [7   4   9]\n</pre>\n\n<p>\nTherefore B has <b>3 rows</b>.\n</p>\n\n<h3>WORKED EXAMPLE 3</h3>\n\n<p>Consider:</p>\n\n<pre>\nC = [ 2   4   6   8 ]\n    [ 1   3   5   7 ]\n</pre>\n\n<p>\nThe rows are:\n</p>\n\n<pre>\n[ 2   4   6   8 ]\n\n[ 1   3   5   7 ]\n</pre>\n\n<p>\nTherefore C has <b>2 rows</b>.\n</p>\n\n<p>\nThe columns are:\n</p>\n\n<pre>\n[2]   [4]   [6]   [8]\n[1]   [3]   [5]   [7]\n</pre>\n\n<p>\nTherefore C has <b>4 columns</b>.\n</p>\n\n<h3>KEY IDEA</h3>\n\n<p>\nA matrix is simply numbers organised in a rectangular pattern.\n</p>\n\n<p>\n<b>Rows go across.</b>\n</p>\n\n<p>\n<b>Columns go down.</b>\n</p>\n",
@@ -10106,6 +10210,7 @@ export const mathTopics = [
     "id": "math|matrices|Order of a Matrix",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix 1",
     "topic": "Order of a Matrix",
     "data": {
       "notes": "\n<h2>Order of a Matrix</h2>\n\n<p>\nThe <b>order</b> of a matrix tells us its size in terms of\n<b>rows and columns</b>.\n</p>\n\n<p>\nWe write the order as:\n</p>\n\n<p><b>number of rows × number of columns</b></p>\n\n<p>\nRemember:\n</p>\n\n<p><b>Rows come first. Columns come second.</b></p>\n\n<h3>WORKED EXAMPLE 1</h3>\n\n<pre>\nA = [ 3   5   7 ]\n    [ 2   4   6 ]\n</pre>\n\n<p>\nCount the rows:\n</p>\n\n<pre>\nRow 1: [3   5   7]\nRow 2: [2   4   6]\n</pre>\n\n<p>\nThere are <b>2 rows</b>.\n</p>\n\n<p>\nNow count the columns:\n</p>\n\n<pre>\n[3] [5] [7]\n[2] [4] [6]\n</pre>\n\n<p>\nThere are <b>3 columns</b>.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>Order = 2 × 3</b></p>\n\n<h3>WORKED EXAMPLE 2</h3>\n\n<pre>\nB = [ 1   4 ]\n    [ 2   5 ]\n    [ 3   6 ]\n    [ 7   8 ]\n</pre>\n\n<p>\nThere are 4 rows and 2 columns.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>Order = 4 × 2</b></p>\n\n<h3>WORKED EXAMPLE 3</h3>\n\n<pre>\nC = [ 2   4   6   8 ]\n    [ 1   3   5   7 ]\n    [ 9   0   2   4 ]\n</pre>\n\n<p>\nThere are 3 rows.\n</p>\n\n<p>\nThere are 4 columns.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>Order = 3 × 4</b></p>\n\n<h3>NUMBER OF ELEMENTS</h3>\n\n<p>\nThe order also allows us to find the total number of entries.\n</p>\n\n<p>\nMultiply:\n</p>\n\n<p>\n<b>number of rows × number of columns</b>\n</p>\n\n<p>For example:</p>\n\n<pre>\n3 × 4 = 12\n</pre>\n\n<p>\nTherefore a 3 × 4 matrix contains <b>12 elements</b>.\n</p>\n\n<h3>IMPORTANT</h3>\n\n<p>\nDo not reverse the order.\n</p>\n\n<p>\nA matrix with 2 rows and 5 columns is:\n</p>\n\n<p><b>2 × 5</b></p>\n\n<p>\nIt is not 5 × 2.\n</p>\n",
@@ -10199,6 +10304,7 @@ export const mathTopics = [
     "id": "math|matrices|Elements of a Matrix",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix 1",
     "topic": "Elements of a Matrix",
     "data": {
       "notes": "\n<h2>Elements of a Matrix</h2>\n\n<p>\nThe individual numbers inside a matrix are called\n<b>elements</b> or <b>entries</b>.\n</p>\n\n<p>\nWe identify an element using its <b>row</b> and <b>column</b>.\n</p>\n\n<h3>THE POSITION RULE</h3>\n\n<p>\nFor a matrix A, the element in:\n</p>\n\n<p>\n<b>row i, column j</b>\n</p>\n\n<p>\nis written as:\n</p>\n\n<p><b>a<sub>ij</sub></b></p>\n\n<p>\nThe first number tells us the <b>row</b>.\n</p>\n\n<p>\nThe second number tells us the <b>column</b>.\n</p>\n\n<p>\nThink:\n</p>\n\n<p><b>row first → column second</b></p>\n\n<h3>WORKED EXAMPLE 1</h3>\n\n<pre>\nA = [ 4   7   2 ]\n    [ 9   5   6 ]\n    [ 1   8   3 ]\n</pre>\n\n<p>\nFind a<sub>23</sub>.\n</p>\n\n<p>\nThe first number is 2, so go to <b>row 2</b>.\n</p>\n\n<pre>\n[ 9   5   6 ]\n</pre>\n\n<p>\nThe second number is 3, so take <b>column 3</b>.\n</p>\n\n<pre>\n[ 9   5   6 ]\n          ↑\n       column 3\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>a<sub>23</sub> = 6</b></p>\n\n<h3>WORKED EXAMPLE 2</h3>\n\n<p>\nUsing the same matrix, find a<sub>31</sub>.\n</p>\n\n<p>\nFirst go to row 3:\n</p>\n\n<pre>\n[ 1   8   3 ]\n</pre>\n\n<p>\nThen go to column 1:\n</p>\n\n<pre>\n[ 1   8   3 ]\n  ↑\ncolumn 1\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<p><b>a<sub>31</sub> = 1</b></p>\n\n<h3>WORKED EXAMPLE 3</h3>\n\n<p>\nFind a<sub>12</sub>.\n</p>\n\n<p>\nGo to row 1:\n</p>\n\n<pre>\n[ 4   7   2 ]\n</pre>\n\n<p>\nThen column 2:\n</p>\n\n<pre>\n[ 4   7   2 ]\n      ↑\n   column 2\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<p><b>a<sub>12</sub> = 7</b></p>\n\n<h3>ANOTHER WAY TO SEE IT</h3>\n\n<pre>\nA = [ 4   7   2 ]\n    [ 9   5   6 ]\n    [ 1   8   3 ]\n\n     ↑\n     |\n   a₁₁\n\na₂₃ is the entry in\nrow 2, column 3.\n</pre>\n\n<h3>IMPORTANT</h3>\n\n<p>\nNever read a<sub>23</sub> as column 2, row 3.\n</p>\n\n<p>\nIt always means:\n</p>\n\n<p><b>row 2, column 3.</b></p>\n",
@@ -10289,6 +10395,7 @@ export const mathTopics = [
     "id": "math|matrices|Types of Matrices",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix 1",
     "topic": "Types of Matrices",
     "data": {
       "notes": "\n<h2>Types of Matrices</h2>\n\n<p>\nMatrices can be classified according to their shape or the arrangement\nof their elements.\n</p>\n\n<h3>1. ROW MATRIX</h3>\n\n<p>\nA matrix with exactly <b>one row</b> is called a row matrix.\n</p>\n\n<pre>\nA = [ 3   5   7   9 ]\n</pre>\n\n<p>\nThere is one row and four columns.\n</p>\n\n<p><b>Order = 1 × 4</b></p>\n\n<h3>2. COLUMN MATRIX</h3>\n\n<p>\nA matrix with exactly <b>one column</b> is called a column matrix.\n</p>\n\n<pre>\nB = [ 3 ]\n    [ 5 ]\n    [ 7 ]\n</pre>\n\n<p>\nThere are three rows and one column.\n</p>\n\n<p><b>Order = 3 × 1</b></p>\n\n<h3>3. SQUARE MATRIX</h3>\n\n<p>\nA matrix with the same number of rows and columns is called a\n<b>square matrix</b>.\n</p>\n\n<pre>\nC = [ 2   4 ]\n    [ 7   9 ]\n</pre>\n\n<p>\nThere are 2 rows and 2 columns.\n</p>\n\n<p><b>Order = 2 × 2</b></p>\n\n<h3>4. ZERO MATRIX</h3>\n\n<p>\nA matrix in which every element is zero is called a\n<b>zero matrix</b>.\n</p>\n\n<pre>\nD = [ 0   0 ]\n    [ 0   0 ]\n</pre>\n\n<h3>5. IDENTITY MATRIX</h3>\n\n<p>\nA square matrix with 1s on the main diagonal and 0s everywhere else\nis called an <b>identity matrix</b>.\n</p>\n\n<pre>\nI₂ = [ 1   0 ]\n     [ 0   1 ]\n</pre>\n\n<p>\nThe identity matrix is important in matrix multiplication and inverses.\n</p>\n\n<h3>6. DIAGONAL MATRIX</h3>\n\n<p>\nA square matrix is diagonal when every element outside the main\ndiagonal is zero.\n</p>\n\n<pre>\nE = [ 4   0   0 ]\n    [ 0   7   0 ]\n    [ 0   0   2 ]\n</pre>\n\n<h3>7. SCALAR MATRIX</h3>\n\n<p>\nA scalar matrix is a diagonal matrix whose main diagonal elements\nare all equal.\n</p>\n\n<pre>\nF = [ 5   0   0 ]\n    [ 0   5   0 ]\n    [ 0   0   5 ]\n</pre>\n\n<h3>8. SYMMETRIC MATRIX</h3>\n\n<p>\nA square matrix is symmetric when reflecting its elements across the\nmain diagonal gives the same matrix.\n</p>\n\n<p>\nEquivalently:\n</p>\n\n<p><b>Aᵀ = A</b></p>\n\n<p>For example:</p>\n\n<pre>\nG = [ 2   5 ]\n    [ 5   8 ]\n</pre>\n\n<p>\nThe entries on opposite sides of the main diagonal match.\n</p>\n\n<h3>HOW TO IDENTIFY THE TYPE</h3>\n\n<p>\nLook at the structure rather than memorising the names.\n</p>\n\n<pre>\nOne row          → Row matrix\n\nOne column       → Column matrix\n\nRows = columns   → Square matrix\n\nAll entries 0    → Zero matrix\n\nDiagonal 1s,\nothers 0        → Identity matrix\n\nOff-diagonal\nentries 0        → Diagonal matrix\n\nEqual diagonal\nentries          → Scalar matrix\n\nAᵀ = A           → Symmetric matrix\n</pre>\n",
@@ -10400,6 +10507,7 @@ export const mathTopics = [
     "id": "math|matrices|Equality of Matrices",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix 1",
     "topic": "Equality of Matrices",
     "data": {
       "notes": "\n<h2>Equality of Matrices</h2>\n\n<p>\nTwo matrices are <b>equal</b> when they have:\n</p>\n\n<ul>\n<li>the same order, and</li>\n<li>the same corresponding elements.</li>\n</ul>\n\n<h3>THE IDEA</h3>\n\n<p>\nCorresponding elements occupy the same position.\n</p>\n\n<pre>\nA = [ 2   5 ]\n    [ 7   9 ]\n\nB = [ 2   5 ]\n    [ 7   9 ]\n</pre>\n\n<p>\nEvery corresponding element is equal.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>A = B</b></p>\n\n<h3>WORKED EXAMPLE 1</h3>\n\n<pre>\n[ x   4 ] = [ 7   4 ]\n[ 3   y ]   [ 3   9 ]\n</pre>\n\n<p>\nCompare the first positions:\n</p>\n\n<p>\nx = 7\n</p>\n\n<p>\nCompare the last positions:\n</p>\n\n<p>\ny = 9\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>x = 7, y = 9</b></p>\n\n<h3>WORKED EXAMPLE 2</h3>\n\n<pre>\n[ 2   x ] = [ 2   8 ]\n[ y   5 ]   [ 6   5 ]\n</pre>\n\n<p>\nCompare corresponding positions:\n</p>\n\n<p>\nx = 8\n</p>\n\n<p>\ny = 6\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>x = 8, y = 6</b></p>\n\n<h3>WORKED EXAMPLE 3</h3>\n\n<pre>\n[ 3   4 ] = [ 3   4   5 ]\n[ 6   7 ]   [ 6   7   8 ]\n</pre>\n\n<p>\nThe first matrix is 2 × 2.\n</p>\n\n<p>\nThe second matrix is 2 × 3.\n</p>\n\n<p>\nTheir orders are different.\n</p>\n\n<p>\nTherefore they cannot be equal.\n</p>\n\n<h3>KEY RULE</h3>\n\n<p>\nFor two matrices to be equal:\n</p>\n\n<p>\n<b>Same order + same corresponding elements.</b>\n</p>\n",
@@ -10472,6 +10580,7 @@ export const mathTopics = [
     "id": "math|matrices|Matrix Addition",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix Arithemetic",
     "topic": "Matrix Addition",
     "data": {
       "notes": "\n<h2>Matrix Addition</h2>\n\n<p>\nMatrix addition means adding the <b>corresponding elements</b> of two\nmatrices.\n</p>\n\n<h3>WHEN IS ADDITION POSSIBLE?</h3>\n\n<p>\nTwo matrices can be added only when they have the\n<b>same order</b>.\n</p>\n\n<h3>WORKED EXAMPLE 1</h3>\n\n<pre>\nA = [ 2   5 ]\n    [ 4   7 ]\n\nB = [ 3   1 ]\n    [ 6   2 ]\n</pre>\n\n<p>\nBoth matrices are 2 × 2, so addition is possible.\n</p>\n\n<p>\nAdd corresponding elements:\n</p>\n\n<pre>\nA+B\n\n= [ 2+3    5+1 ]\n  [ 4+6    7+2 ]\n\n= [ 5    6 ]\n  [10    9 ]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>A+B = [[5,6],[10,9]]</b></p>\n\n<h3>WORKED EXAMPLE 2</h3>\n\n<pre>\nA = [ 5   -2 ]\n    [ 3    4 ]\n\nB = [ -1   6 ]\n    [ 2    5 ]\n</pre>\n\n<p>Then:</p>\n\n<pre>\nA+B\n\n= [ 5+(-1)   -2+6 ]\n  [ 3+2        4+5 ]\n\n= [ 4   4 ]\n  [ 5   9 ]\n</pre>\n\n<h3>WORKED EXAMPLE 3</h3>\n\n<pre>\nA = [ 1   2   3 ]\n    [ 4   5   6 ]\n\nB = [ 7   8   9 ]\n    [ 1   2   3 ]\n</pre>\n\n<p>\nBoth matrices are 2 × 3.\n</p>\n\n<pre>\nA+B\n\n= [ 1+7   2+8   3+9 ]\n  [ 4+1   5+2   6+3 ]\n\n= [ 8   10   12 ]\n  [ 5    7    9  ]\n</pre>\n\n<h3>ADDITION IS NOT POSSIBLE</h3>\n\n<pre>\nA = [ 1   2 ]\n    [ 3   4 ]\n\nB = [ 5 ]\n    [ 6 ]\n</pre>\n\n<p>\nA is 2 × 2.\n</p>\n\n<p>\nB is 2 × 1.\n</p>\n\n<p>\nThe orders are different.\n</p>\n\n<p>\nTherefore <b>A+B is not defined</b>.\n</p>\n\n<h3>KEY RULE</h3>\n\n<p>\n<b>Same order → add corresponding elements.</b>\n</p>\n",
@@ -10548,6 +10657,7 @@ export const mathTopics = [
     "id": "math|matrices|Matrix Subtraction",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix Arithemetic",
     "topic": "Matrix Subtraction",
     "data": {
       "notes": "\n<h2>Matrix Subtraction</h2>\n\n<p>\nMatrix subtraction means subtracting the\n<b>corresponding elements</b> of two matrices.\n</p>\n\n<h3>WHEN IS SUBTRACTION POSSIBLE?</h3>\n\n<p>\nThe two matrices must have the <b>same order</b>.\n</p>\n\n<h3>WORKED EXAMPLE 1</h3>\n\n<pre>\nA = [ 8   6 ]\n    [ 5   9 ]\n\nB = [ 3   2 ]\n    [ 1   4 ]\n</pre>\n\n<p>Subtract corresponding elements:</p>\n\n<pre>\nA-B\n\n= [ 8-3    6-2 ]\n  [ 5-1    9-4 ]\n\n= [ 5   4 ]\n  [ 4   5 ]\n</pre>\n\n<h3>WORKED EXAMPLE 2</h3>\n\n<pre>\nA = [ 5   -2 ]\n    [ 7    3 ]\n\nB = [ 8    4 ]\n    [ 2   -1 ]\n</pre>\n\n<pre>\nA-B\n\n= [ 5-8     -2-4 ]\n  [ 7-2      3-(-1) ]\n\n= [ -3   -6 ]\n  [  5    4 ]\n</pre>\n\n<h3>WORKED EXAMPLE 3</h3>\n\n<pre>\nA = [ 10   8   6 ]\n    [  4   2   0 ]\n\nB = [ 3   1   5 ]\n    [ 2   4   7 ]\n</pre>\n\n<pre>\nA-B\n\n= [ 10-3   8-1   6-5 ]\n  [  4-2   2-4   0-7 ]\n\n= [ 7   7    1 ]\n  [ 2  -2   -7 ]\n</pre>\n\n<h3>KEY RULE</h3>\n\n<p>\n<b>Same order → subtract corresponding elements.</b>\n</p>\n",
@@ -10626,6 +10736,7 @@ export const mathTopics = [
     "id": "math|matrices|Scalar Multiplication",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix Arithemetic",
     "topic": "Scalar Multiplication",
     "data": {
       "notes": "\n<h2>Scalar Multiplication</h2>\n\n<p>\nA <b>scalar</b> is an ordinary number.\n</p>\n\n<p>\nScalar multiplication means multiplying <b>every element</b> of a\nmatrix by the scalar.\n</p>\n\n<h3>WORKED EXAMPLE 1</h3>\n\n<pre>\nA = [ 2   -3 ]\n    [ 5    4 ]\n</pre>\n\n<p>\nFind 3A.\n</p>\n\n<p>\nMultiply every entry by 3:\n</p>\n\n<pre>\n3A\n\n= [ 3(2)     3(-3) ]\n  [ 3(5)      3(4) ]\n\n= [ 6    -9 ]\n  [15    12 ]\n</pre>\n\n<h3>WORKED EXAMPLE 2</h3>\n\n<pre>\nA = [ -2   4 ]\n    [  3   5 ]\n</pre>\n\n<p>\nFind -2A.\n</p>\n\n<pre>\n-2A\n\n= [ -2(-2)   -2(4) ]\n  [ -2(3)    -2(5) ]\n\n= [ 4   -8 ]\n  [ -6  -10 ]\n</pre>\n\n<p>\nNotice that the negative scalar changes the signs of the entries.\n</p>\n\n<h3>WORKED EXAMPLE 3</h3>\n\n<pre>\nA = [ 6   4   2 ]\n    [ 8   10  12 ]\n</pre>\n\n<p>\nFind 1/2 A.\n</p>\n\n<pre>\n1/2 A\n\n= [ 1/2(6)   1/2(4)   1/2(2) ]\n  [ 1/2(8)   1/2(10)  1/2(12) ]\n\n= [ 3   2   1 ]\n  [ 4   5   6 ]\n</pre>\n\n<h3>IMPORTANT</h3>\n\n<p>\nThe scalar multiplies <b>every element</b>.\n</p>\n\n<p>\nFor example, if:\n</p>\n\n<pre>\nA = [ a   b ]\n    [ c   d ]\n</pre>\n\n<p>\nthen:\n</p>\n\n<pre>\nkA = [ ka   kb ]\n     [ kc   kd ]\n</pre>\n",
@@ -10700,6 +10811,7 @@ export const mathTopics = [
     "id": "math|matrices|Reflection in the x-axis",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix of transformation",
     "topic": "Reflection in the x-axis",
     "data": {
       "notes": "\n<h2>Reflection in the x-axis</h2>\n\n<p>\nA reflection in the <b>x-axis</b> flips a point across the horizontal\nx-axis.\n</p>\n\n<h3>1. WHAT CHANGES?</h3>\n\n<p>\nWhen a point is reflected in the x-axis, its\n<b>x-coordinate stays the same</b>.\n</p>\n\n<p>\nIts <b>y-coordinate changes sign</b>.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>(x,y) → (x,-y)</b></p>\n\n<h3>2. TRANSFORMATION MATRIX</h3>\n\n<p>\nThe matrix for reflection in the x-axis is:\n</p>\n\n<pre>\n[ 1   0 ]\n[ 0  -1 ]\n</pre>\n\n<p>\nApply it to:\n</p>\n\n<pre>\n[ x ]\n[ y ]\n</pre>\n\n<p>\nWe get:\n</p>\n\n<pre>\n[1  0] [x]   [x]\n[0 -1] [y] = [-y]\n</pre>\n\n<p>\nThis gives:\n</p>\n\n<p><b>(x,y) → (x,-y)</b></p>\n\n<h3>3. WORKED EXAMPLE 1</h3>\n\n<p>\nReflect <b>P(4,7)</b> in the x-axis.\n</p>\n\n<pre>\n[1   0] [4]   [4]\n[0  -1] [7] = [-7]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>P'(4,-7)</b></p>\n\n<h3>4. WORKED EXAMPLE 2</h3>\n\n<p>\nReflect <b>A(-3,5)</b> in the x-axis.\n</p>\n\n<pre>\n[1   0] [-3]   [-3]\n[0  -1] [ 5] = [-5]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>A'(-3,-5)</b></p>\n\n<h3>5. WORKED EXAMPLE 3</h3>\n\n<p>\nReflect <b>B(6,-2)</b> in the x-axis.\n</p>\n\n<pre>\n[1   0] [ 6]   [ 6]\n[0  -1] [-2] = [ 2]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>B'(6,2)</b></p>\n\n<h3>6. THE PATTERN</h3>\n\n<p>\nLook carefully at the examples:\n</p>\n\n<pre>\n(4,7)   → (4,-7)\n\n(-3,5)  → (-3,-5)\n\n(6,-2)  → (6,2)\n</pre>\n\n<p>\nThe x-coordinate never changes.\n</p>\n\n<p>\nOnly the sign of the y-coordinate changes.\n</p>\n\n<p><b>Reflection in x-axis: (x,y) → (x,-y)</b></p>\n",
@@ -10789,6 +10901,7 @@ export const mathTopics = [
     "id": "math|matrices|Reflection in the y-axis",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix of transformation",
     "topic": "Reflection in the y-axis",
     "data": {
       "notes": "\n<h2>Reflection in the y-axis</h2>\n\n<p>\nA reflection in the <b>y-axis</b> flips a point across the vertical\ny-axis.\n</p>\n\n<h3>1. WHAT CHANGES?</h3>\n\n<p>\nWhen a point is reflected in the y-axis, its\n<b>y-coordinate stays the same</b>.\n</p>\n\n<p>\nIts <b>x-coordinate changes sign</b>.\n</p>\n\n<p>\nTherefore:\n</p>\n\n<p><b>(x,y) → (-x,y)</b></p>\n\n<h3>2. TRANSFORMATION MATRIX</h3>\n\n<pre>\n[-1   0]\n[ 0   1]\n</pre>\n\n<p>\nApplying this matrix gives:\n</p>\n\n<pre>\n[-1  0] [x]   [-x]\n[ 0  1] [y] = [ y]\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<p><b>(x,y) → (-x,y)</b></p>\n\n<h3>3. WORKED EXAMPLE 1</h3>\n\n<p>\nReflect <b>P(5,2)</b> in the y-axis.\n</p>\n\n<pre>\n[-1   0] [5]   [-5]\n[ 0   1] [2] = [ 2]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>P'(-5,2)</b></p>\n\n<h3>4. WORKED EXAMPLE 2</h3>\n\n<p>\nReflect <b>A(-4,6)</b> in the y-axis.\n</p>\n\n<pre>\n[-1   0] [-4]   [4]\n[ 0   1] [ 6] = [6]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>A'(4,6)</b></p>\n\n<h3>5. WORKED EXAMPLE 3</h3>\n\n<p>\nReflect <b>B(3,-7)</b> in the y-axis.\n</p>\n\n<pre>\n[-1   0] [ 3]   [-3]\n[ 0   1] [-7] = [-7]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>B'(-3,-7)</b></p>\n\n<h3>6. THE PATTERN</h3>\n\n<pre>\n(5,2)    → (-5,2)\n\n(-4,6)   → (4,6)\n\n(3,-7)   → (-3,-7)\n</pre>\n\n<p>\nThe y-coordinate stays unchanged.\n</p>\n\n<p>\nOnly the sign of the x-coordinate changes.\n</p>\n\n<p><b>Reflection in y-axis: (x,y) → (-x,y)</b></p>\n",
@@ -10878,6 +10991,7 @@ export const mathTopics = [
     "id": "math|matrices|Reflection in the Line y = x",
     "curriculum_id": "math",
     "chapter_id": "matrices",
+    "topic_group": "Matrix of transformation",
     "topic": "Reflection in the Line y = x",
     "data": {
       "notes": "\n<h2>Reflection in the Line y = x</h2>\n\n<p>\nA reflection in the line <b>y = x</b> changes the position of a point\nby swapping its x- and y-coordinates.\n</p>\n\n<h3>1. THE MAIN RULE</h3>\n\n<p>\nFor a point:\n</p>\n\n<pre>\n(x,y)\n</pre>\n\n<p>\nreflection in y = x gives:\n</p>\n\n<p><b>(x,y) → (y,x)</b></p>\n\n<p>\nThe two coordinates simply exchange positions.\n</p>\n\n<h3>2. TRANSFORMATION MATRIX</h3>\n\n<p>\nThe transformation matrix is:\n</p>\n\n<pre>\n[0  1]\n[1  0]\n</pre>\n\n<p>\nApply it to:\n</p>\n\n<pre>\n[x]\n[y]\n</pre>\n\n<pre>\n[0  1] [x]   [y]\n[1  0] [y] = [x]\n</pre>\n\n<p>\nTherefore:\n</p>\n\n<p><b>(x,y) → (y,x)</b></p>\n\n<h3>3. WORKED EXAMPLE 1</h3>\n\n<p>\nReflect <b>P(3,8)</b> in y = x.\n</p>\n\n<pre>\n[0  1] [3]   [8]\n[1  0] [8] = [3]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>P'(8,3)</b></p>\n\n<h3>4. WORKED EXAMPLE 2</h3>\n\n<p>\nReflect <b>A(-2,5)</b> in y = x.\n</p>\n\n<pre>\n[0  1] [-2]   [ 5]\n[1  0] [ 5] = [-2]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>A'(5,-2)</b></p>\n\n<h3>5. WORKED EXAMPLE 3</h3>\n\n<p>\nReflect <b>B(7,-4)</b> in y = x.\n</p>\n\n<pre>\n[0  1] [ 7]   [-4]\n[1  0] [-4] = [ 7]\n</pre>\n\n<p>\nTherefore:</p>\n\n<p><b>B'(-4,7)</b></p>\n\n<h3>6. THE PATTERN</h3>\n\n<pre>\n(3,8)    → (8,3)\n\n(-2,5)   → (5,-2)\n\n(7,-4)   → (-4,7)\n</pre>\n\n<p>\nThe numbers do not change.\n</p>\n\n<p>\nThey simply <b>swap positions</b>.\n</p>\n\n<p><b>Reflection in y = x: (x,y) → (y,x)</b></p>\n",
@@ -10970,6 +11084,7 @@ export const mathTopics = [
     "id": "math|vectors|Vector Notation",
     "curriculum_id": "math",
     "chapter_id": "vectors",
+    "topic_group": "Vector Notation",
     "topic": "Vector Notation",
     "data": {
       "notes": "\n<h2> Vector Notation</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nA vector is a quantity with BOTH magnitude and direction. It can be represented in multiple equivalent forms.\n</p>\n\n<pre>\na = (x, y)\na = xi + yj\n</pre>\n\n i = unit vector in horizontal direction  \n j = unit vector in vertical direction  \n\n---\n\n<h3> WORKED EXAMPLES (STEP BY STEP)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Write (3, 4) in i, j form</p>\n<p><b>Step 1:</b> x-component = 3 → 3i</p>\n<p><b>Step 2:</b> y-component = 4 → 4j</p>\n<p><b>Final Answer:</b> 3i + 4j</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Convert (−2, 5) to i, j form</p>\n<p><b>Step 1:</b> x = −2 → −2i</p>\n<p><b>Step 2:</b> y = 5 → 5j</p>\n<p><b>Final Answer:</b> −2i + 5j</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Convert 7i − 3j into coordinate form</p>\n<p><b>Step 1:</b> x-component = 7</p>\n<p><b>Step 2:</b> y-component = −3</p>\n<p><b>Final Answer:</b> (7, −3)</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\n          j ↑\n            |\n            |     • (x, y)\n            |\n------------•--------------→ i\n          origin\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>GPS navigation directions</li>\n<li>Airplane movement tracking</li>\n<li>Game character motion (2D/3D)</li>\n</ul>\n\n---\n",
@@ -11111,6 +11226,7 @@ export const mathTopics = [
     "id": "math|vectors|Magnitude and Direction",
     "curriculum_id": "math",
     "chapter_id": "vectors",
+    "topic_group": "Magnitude and Direction",
     "topic": "Magnitude and Direction",
     "data": {
       "notes": "\n<h2> Magnitude and Direction</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nMagnitude is the length of a vector, while direction shows where the vector is pointing.\n</p>\n\n<pre>\n|a| = √(x² + y²)\n</pre>\n\n Direction can be found using angle:\n<pre>\nθ = tan⁻¹(y/x)\n</pre>\n\n---\n\n<h3> WORKED EXAMPLES (STEP BY STEP)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find magnitude of (3,4)</p>\n<p><b>Step 1:</b> Square components → 3² = 9, 4² = 16</p>\n<p><b>Step 2:</b> Add → 9 + 16 = 25</p>\n<p><b>Step 3:</b> Square root → √25 = 5</p>\n<p><b>Final Answer:</b> 5</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find magnitude of (6,8)</p>\n<p><b>Step 1:</b> 6² = 36, 8² = 64</p>\n<p><b>Step 2:</b> Add → 100</p>\n<p><b>Step 3:</b> √100 = 10</p>\n<p><b>Final Answer:</b> 10</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Find direction of vector (3,4)</p>\n<p><b>Step 1:</b> Use θ = tan⁻¹(y/x)</p>\n<p><b>Step 2:</b> θ = tan⁻¹(4/3)</p>\n<p><b>Step 3:</b> θ ≈ 53°</p>\n<p><b>Final Answer:</b> ≈ 53°</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\n      ↑ y\n      |\n      |   • (x,y)\n      |  /\n      | /\n      |/ θ\n------•------------→ x\n     origin\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Distance between two GPS points</li>\n<li>Speed calculation in physics</li>\n<li>Robotics movement length</li>\n</ul>\n\n---\n",
@@ -11257,6 +11373,7 @@ export const mathTopics = [
     "id": "math|vectors|Vector Addition and Subtraction",
     "curriculum_id": "math",
     "chapter_id": "vectors",
+    "topic_group": "Vector Addition and Subtraction",
     "topic": "Vector Addition and Subtraction",
     "data": {
       "notes": "\n<h2> Vector Addition & Subtraction</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nVectors are added or subtracted by combining corresponding components.\n</p>\n\n<pre>\na = (x₁, y₁)\nb = (x₂, y₂)\n\na + b = (x₁ + x₂, y₁ + y₂)\na − b = (x₁ − x₂, y₁ − y₂)\n</pre>\n\n---\n\n<h3> WORKED EXAMPLES (STEP BY STEP)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Add (2,3) + (4,5)</p>\n<p><b>Step 1:</b> Add x-components → 2 + 4 = 6</p>\n<p><b>Step 2:</b> Add y-components → 3 + 5 = 8</p>\n<p><b>Final Answer:</b> (6,8)</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Subtract (7,1) − (2,3)</p>\n<p><b>Step 1:</b> Subtract x-components → 7 − 2 = 5</p>\n<p><b>Step 2:</b> Subtract y-components → 1 − 3 = −2</p>\n<p><b>Final Answer:</b> (5, −2)</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Add (−3,6) + (3,−6)</p>\n<p><b>Step 1:</b> x-components → −3 + 3 = 0</p>\n<p><b>Step 2:</b> y-components → 6 − 6 = 0</p>\n<p><b>Final Answer:</b> (0,0) → zero vector</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nA →→→\n      ↘\n        A + B (resultant)\n      ↗\nB →→→\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Wind + airplane direction</li>\n<li>Force combination in physics</li>\n<li>Navigation systems</li>\n</ul>\n\n---\n",
@@ -11390,6 +11507,7 @@ export const mathTopics = [
     "id": "math|vectors|Dot Product (Scalar Product)",
     "curriculum_id": "math",
     "chapter_id": "vectors",
+    "topic_group": "Dot Product (Scalar Product)",
     "topic": "Dot Product (Scalar Product)",
     "data": {
       "notes": "\n<h2> Dot Product</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nDot product gives a SCALAR (single number), not a vector.\nIt measures how much two vectors align with each other.\n</p>\n\n<pre>\na · b = x₁x₂ + y₁y₂\n</pre>\n\n If result is:\n<ul>\n<li>Positive → vectors point in similar direction</li>\n<li>Zero → vectors are perpendicular</li>\n<li>Negative → vectors point in opposite directions</li>\n</ul>\n\n---\n\n<h3> WORKED EXAMPLES (STEP-BY-STEP)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find (1,2) · (3,4)</p>\n<p><b>Step 1:</b> Multiply components → (1×3) + (2×4)</p>\n<p><b>Step 2:</b> 3 + 8 = 11</p>\n<p><b>Final Answer:</b> 11</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find (2,0) · (5,1)</p>\n<p><b>Step 1:</b> (2×5) + (0×1)</p>\n<p><b>Step 2:</b> 10 + 0 = 10</p>\n<p><b>Final Answer:</b> 10</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Are vectors (1,2) and (2,-1) perpendicular?</p>\n<p><b>Step 1:</b> Compute dot product</p>\n<p>(1×2) + (2×-1) = 2 - 2 = 0</p>\n<p><b>Step 2:</b> Dot product = 0</p>\n<p><b>Final Answer:</b> Yes, they are perpendicular</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nVector A →→\nVector B ↗\n\nDot product measures overlap (projection)\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Physics: work done = force × distance</li>\n<li>AI: similarity between data points</li>\n<li>Graphics: lighting and shading</li>\n</ul>\n\n---\n",
@@ -11528,6 +11646,7 @@ export const mathTopics = [
     "id": "math|vectors|Applications of Vectors",
     "curriculum_id": "math",
     "chapter_id": "vectors",
+    "topic_group": "Applications of Vectors",
     "topic": "Applications of Vectors",
     "data": {
       "notes": "\n<h2> Applications of Vectors</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nVectors represent quantities that have both magnitude and direction.\nThey are essential in describing motion, forces, and spatial relationships.\n</p>\n\n---\n\n<h3> EXAMPLE SCENARIOS</h3>\n\n<p><b>Example 1:</b> Plane flying north-east with wind effect</p>\n<p><b>Example 2:</b> Car moving on sloped road</p>\n<p><b>Example 3:</b> Force pushing object diagonally</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Why does a plane not move exactly in the direction it points?</p>\n<p><b>Step 1:</b> Wind adds another vector</p>\n<p><b>Step 2:</b> Combine plane velocity + wind velocity</p>\n<p><b>Final Answer:</b> Resultant vector determines actual direction</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> What happens when two forces act on an object?</p>\n<p><b>Step 1:</b> Represent forces as vectors</p>\n<p><b>Step 2:</b> Add vectors</p>\n<p><b>Final Answer:</b> Resultant force determines motion</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nWind →→→\nPlane ↗ movement\nResult → diagonal path\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Aviation navigation</li>\n<li>Game physics engines</li>\n<li>Engineering force systems</li>\n</ul>\n\n---\n",
@@ -11643,9 +11762,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|limits|Concept of Limits",
+    "id": "math|calculus|Concept of Limits",
     "curriculum_id": "math",
-    "chapter_id": "limits",
+    "chapter_id": "calculus",
+    "topic_group": "Limits",
     "topic": "Concept of Limits",
     "data": {
       "notes": "\n<h2> Concept of Limits</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nA limit describes the value a function approaches as the input approaches a certain point.  \nThe function does not always have to reach that value.\n</p>\n\n<pre>\nlim x→a f(x) = L\n</pre>\n\n As x gets closer to a, f(x) gets closer to L.\n\n---\n\n<h3> EXAMPLES (Exam Style)</h3>\n\n<p><b>Example 1:</b> f(x)=x+2, x→3 → 5</p>\n<p><b>Example 2:</b> f(x)=x², x→2 → 4</p>\n<p><b>Example 3:</b> f(x)=1/x, x→1 → 1</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find lim (x → 3) (x + 2)</p>\n<p><b>Step 1:</b> Substitute x = 3</p>\n<p><b>Step 2:</b> 3 + 2 = 5</p>\n<p><b>Final Answer:</b> 5</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find lim (x → 2) x²</p>\n<p><b>Step 1:</b> Substitute x = 2</p>\n<p><b>Step 2:</b> 2² = 4</p>\n<p><b>Final Answer:</b> 4</p>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Speed of a moving car at a precise instant</li>\n<li>Computer simulations (approximations)</li>\n<li>Physics: motion prediction before collision</li>\n</ul>\n\n---\n",
@@ -11665,11 +11785,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify the function f(x) = 2x + 1\nStep 2: Substitute x = 3 into the expression\nStep 3: Compute 2(3) + 1\nStep 4: Simplify result",
           "hint": "direct substitution",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Concept of Limits",
-          "conceptId": "math_limits_concept_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q1"
+          "conceptId": "math_calculus_concept_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Evaluate lim x→5 of (x² - 9)",
@@ -11686,11 +11806,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify expression f(x) = x² - 9\nStep 2: Substitute x = 5\nStep 3: Compute 5² - 9\nStep 4: Simplify result",
           "hint": "substitute directly",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Concept of Limits",
-          "conceptId": "math_limits_concept_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q2"
+          "conceptId": "math_calculus_concept_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Find lim x→2 of (3x - 4)",
@@ -11707,11 +11827,11 @@ export const mathTopics = [
           "sol": "Step 1: Write function f(x) = 3x - 4\nStep 2: Substitute x = 2\nStep 3: Compute 3(2) - 4\nStep 4: Simplify",
           "hint": "plug in value",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Concept of Limits",
-          "conceptId": "math_limits_concept_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q3"
+          "conceptId": "math_calculus_concept_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Find lim x→4 of (x² + 2x)",
@@ -11728,11 +11848,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify function f(x) = x² + 2x\nStep 2: Substitute x = 4\nStep 3: Compute 4² + 2(4)\nStep 4: Simplify expression",
           "hint": "substitute x",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Concept of Limits",
-          "conceptId": "math_limits_concept_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q4"
+          "conceptId": "math_calculus_concept_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         },
         {
           "q": "Evaluate lim x→1 of (5x + 3)",
@@ -11749,11 +11869,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify function f(x) = 5x + 3\nStep 2: Substitute x = 1\nStep 3: Compute 5(1) + 3\nStep 4: Simplify",
           "hint": "direct substitution method",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Concept of Limits",
-          "conceptId": "math_limits_concept_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q5"
+          "conceptId": "math_calculus_concept_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q5"
         }
       ]
     },
@@ -11761,9 +11881,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|limits|Left-Hand and Right-Hand Limits",
+    "id": "math|calculus|Left-Hand and Right-Hand Limits",
     "curriculum_id": "math",
-    "chapter_id": "limits",
+    "chapter_id": "calculus",
+    "topic_group": "Limits",
     "topic": "Left-Hand and Right-Hand Limits",
     "data": {
       "notes": "\n<h2> Left-Hand & Right-Hand Limits</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nLimits can be approached from two directions:\n</p>\n\n<pre>\nlim x→a⁻ f(x) = left-hand limit  \nlim x→a⁺ f(x) = right-hand limit\n</pre>\n\n A limit exists only if both sides are equal.\n<h3> WORKED EXAMPLES (MATHEMATICAL CALCULATION FORMAT)</h3>\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Given lim x→a⁻ f(x) = 4 and lim x→a⁺ f(x) = 4, evaluate the limit.</p>\n<p><b>Step 1:</b> Let LHL = 4</p>\n<p><b>Step 2:</b> Let RHL = 4</p>\n<p><b>Step 3:</b> Compare LHL and RHL</p>\n<p><b>Step 4:</b> 4 = 4</p>\n<p><b>Step 5:</b> Since both sides are equal, limit exists</p>\n<p><b>Final Answer:</b> lim x→a f(x) = 4</p>\n<br>\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Given lim x→a⁻ f(x) = 2 and lim x→a⁺ f(x) = 5, determine the limit.</p>\n<p><b>Step 1:</b> Let LHL = 2</p>\n<p><b>Step 2:</b> Let RHL = 5</p>\n<p><b>Step 3:</b> Compare values</p>\n<p><b>Step 4:</b> 2 ≠ 5</p>\n<p><b>Step 5:</b> Since LHL ≠ RHL, limit does not exist</p>\n<p><b>Final Answer:</b> Limit does not exist (DNE)</p>\n<br>\n<p><b>Example 3</b></p>\n<p><b>Question:</b> A function has a jump: left side = 7, right side = 3. Determine limit behavior.</p>\n<p><b>Step 1:</b> LHL = 7</p>\n<p><b>Step 2:</b> RHL = 3</p>\n<p><b>Step 3:</b> Compare values</p>\n<p><b>Step 4:</b> 7 ≠ 3</p>\n<p><b>Step 5:</b> No single approaching value exists</p>\n<p><b>Final Answer:</b> Limit does not exist due to discontinuity</p>\n<h3> DIAGRAM</h3>\n\n<pre>\n   3 |      ● (right side)\n     |\n   5 |  ● (approach point)\n     |\n   7 |● (left side)\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Digital signals (on/off behavior)</li>\n<li>Traffic systems switching states</li>\n<li>Computer logic transitions</li>\n</ul>\n\n---\n",
@@ -11785,11 +11906,11 @@ export const mathTopics = [
           "sol": "Step 1: Compute lim x→2⁻ (3x + 1)\nStep 2: Substitute x = 2 → 3(2) + 1\nStep 3: Compute left-hand limit = 7\nStep 4: Compute lim x→2⁺ (3x + 1)\nStep 5: Substitute x = 2 → 3(2) + 1 = 7\nStep 6: Compare both sides",
           "hint": "check both sides",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Left-Hand and Right-Hand Limits",
-          "conceptId": "math_limits_left_hand_and_right_hand_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q1"
+          "conceptId": "math_calculus_left_hand_and_right_hand_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Determine if lim x→1 exists for f(x) = {2x if x<1, x+1 if x>1}",
@@ -11806,11 +11927,11 @@ export const mathTopics = [
           "sol": "Step 1: Compute left-hand limit → 2(1) = 2\nStep 2: Compute right-hand limit → 1 + 1 = 2\nStep 3: Compare LHL and RHL\nStep 4: Check equality condition",
           "hint": "piecewise function",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Left-Hand and Right-Hand Limits",
-          "conceptId": "math_limits_left_hand_and_right_hand_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q2"
+          "conceptId": "math_calculus_left_hand_and_right_hand_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Find lim x→4 of f(x) = {x² if x<4, 10 if x>4}",
@@ -11827,11 +11948,11 @@ export const mathTopics = [
           "sol": "Step 1: Compute LHL → 4² = 16\nStep 2: Compute RHL → 10\nStep 3: Compare 16 and 10\nStep 4: Check equality condition",
           "hint": "check discontinuity",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Left-Hand and Right-Hand Limits",
-          "conceptId": "math_limits_left_hand_and_right_hand_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q3"
+          "conceptId": "math_calculus_left_hand_and_right_hand_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Find lim x→0 of (x² + 5x) using substitution check",
@@ -11849,11 +11970,11 @@ export const mathTopics = [
           "sol": "Step 1: Compute lim x→0⁻ (x² + 5x)\nStep 2: Substitute values close to 0 → result approaches 0\nStep 3: Compute lim x→0⁺ (x² + 5x)\nStep 4: Substitute values close to 0 → result approaches 0\nStep 5: Compare both sides",
           "hint": "approach from both sides",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Left-Hand and Right-Hand Limits",
-          "conceptId": "math_limits_left_hand_and_right_hand_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q4"
+          "conceptId": "math_calculus_left_hand_and_right_hand_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         },
         {
           "q": "Evaluate lim x→3 of (x² - 9)/(x - 3)",
@@ -11871,11 +11992,11 @@ export const mathTopics = [
           "sol": "Step 1: Factor numerator → (x - 3)(x + 3)\nStep 2: Simplify expression → cancel (x - 3)\nStep 3: New expression becomes (x + 3)\nStep 4: Substitute x = 3\nStep 5: Compute 3 + 3",
           "hint": "factorization needed",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Left-Hand and Right-Hand Limits",
-          "conceptId": "math_limits_left_hand_and_right_hand_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q5"
+          "conceptId": "math_calculus_left_hand_and_right_hand_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q5"
         },
         {
           "q": "Check if lim x→2 exists for f(x) = {x+2 if x<2, 5 if x>2}",
@@ -11892,11 +12013,11 @@ export const mathTopics = [
           "sol": "Step 1: Compute LHL → 2 + 2 = 4\nStep 2: Compute RHL → 5\nStep 3: Compare 4 and 5\nStep 4: Determine continuity",
           "hint": "compare LHL and RHL",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Left-Hand and Right-Hand Limits",
-          "conceptId": "math_limits_left_hand_and_right_hand_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q6"
+          "conceptId": "math_calculus_left_hand_and_right_hand_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q6"
         }
       ]
     },
@@ -11904,9 +12025,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|limits|Indeterminate Forms",
+    "id": "math|calculus|Indeterminate Forms",
     "curriculum_id": "math",
-    "chapter_id": "limits",
+    "chapter_id": "calculus",
+    "topic_group": "Limits",
     "topic": "Indeterminate Forms",
     "data": {
       "notes": "\n<h2> Indeterminate Forms</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nIndeterminate forms occur when direct substitution in limits gives unclear or undefined results.\n</p>\n\n<pre>\n0/0, ∞/∞, ∞ - ∞\n</pre>\n\n These do not give a final answer directly and require simplification.\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> (x² - 4)/(x - 2)</p>\n<p><b>Example 2:</b> (x² - 1)/(x - 1)</p>\n<p><b>Example 3:</b> complex fraction simplification</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Evaluate lim (x → 2) (x² - 4)/(x - 2)</p>\n<p><b>Step 1:</b> Direct substitution → 0/0 (indeterminate)</p>\n<p><b>Step 2:</b> Factor numerator</p>\n<p>x² - 4 = (x - 2)(x + 2)</p>\n<p><b>Step 3:</b> Cancel (x - 2)</p>\n<p><b>Step 4:</b> Substitute x = 2</p>\n<p><b>Final Answer:</b> 4</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Evaluate lim (x → 1) (x² - 1)/(x - 1)</p>\n<p><b>Step 1:</b> Direct substitution → 0/0</p>\n<p><b>Step 2:</b> Factor numerator</p>\n<p>x² - 1 = (x - 1)(x + 1)</p>\n<p><b>Step 3:</b> Cancel (x - 1)</p>\n<p><b>Step 4:</b> Substitute x = 1</p>\n<p><b>Final Answer:</b> 2</p>\n\n---\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Physics near-zero calculations</li>\n<li>Computer numerical stability</li>\n<li>Engineering system limits</li>\n</ul>\n\n---\n",
@@ -11928,11 +12050,11 @@ export const mathTopics = [
           "sol": "Step 1: Substitute x = 2 → (4 - 4)/(0) = 0/0 (indeterminate form)\nStep 2: Factor numerator → x² - 4 = (x - 2)(x + 2)\nStep 3: Rewrite expression → [(x - 2)(x + 2)] / (x - 2)\nStep 4: Cancel common factor (x - 2)\nStep 5: Simplify → x + 2\nStep 6: Substitute x = 2 → 2 + 2",
           "hint": "factor and cancel",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Indeterminate Forms",
-          "conceptId": "math_limits_indeterminate_forms",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q1"
+          "conceptId": "math_calculus_indeterminate_forms",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Evaluate lim (x → 1) (x² - 1)/(x - 1)",
@@ -11951,11 +12073,11 @@ export const mathTopics = [
           "sol": "Step 1: Substitute x = 1 → (1 - 1)/(0) = 0/0\nStep 2: Factor numerator → x² - 1 = (x - 1)(x + 1)\nStep 3: Rewrite → [(x - 1)(x + 1)] / (x - 1)\nStep 4: Cancel (x - 1)\nStep 5: Simplify → x + 1\nStep 6: Substitute x = 1 → 1 + 1",
           "hint": "difference of squares",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Indeterminate Forms",
-          "conceptId": "math_limits_indeterminate_forms",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q2"
+          "conceptId": "math_calculus_indeterminate_forms",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Evaluate lim (x → 3) (x² - 9)/(x - 3)",
@@ -11974,11 +12096,11 @@ export const mathTopics = [
           "sol": "Step 1: Substitute x = 3 → (9 - 9)/(0) = 0/0\nStep 2: Factor numerator → x² - 9 = (x - 3)(x + 3)\nStep 3: Rewrite → [(x - 3)(x + 3)] / (x - 3)\nStep 4: Cancel (x - 3)\nStep 5: Simplify → x + 3\nStep 6: Substitute x = 3 → 3 + 3",
           "hint": "factor quadratic",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Indeterminate Forms",
-          "conceptId": "math_limits_indeterminate_forms",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q3"
+          "conceptId": "math_calculus_indeterminate_forms",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Evaluate lim (x → 4) (x² - 16)/(x - 4)",
@@ -11996,11 +12118,11 @@ export const mathTopics = [
           "sol": "Step 1: Substitute x = 4 → (16 - 16)/(0) = 0/0\nStep 2: Factor numerator → x² - 16 = (x - 4)(x + 4)\nStep 3: Cancel (x - 4)\nStep 4: Simplify → x + 4\nStep 5: Substitute x = 4 → 4 + 4",
           "hint": "difference of squares",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Indeterminate Forms",
-          "conceptId": "math_limits_indeterminate_forms",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q4"
+          "conceptId": "math_calculus_indeterminate_forms",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         },
         {
           "q": "Evaluate lim (x → 5) (x² - 25)/(x - 5)",
@@ -12018,11 +12140,11 @@ export const mathTopics = [
           "sol": "Step 1: Substitute x = 5 → (25 - 25)/(0) = 0/0\nStep 2: Factor numerator → x² - 25 = (x - 5)(x + 5)\nStep 3: Cancel (x - 5)\nStep 4: Simplify → x + 5\nStep 5: Substitute x = 5 → 5 + 5",
           "hint": "factorization",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Indeterminate Forms",
-          "conceptId": "math_limits_indeterminate_forms",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q5"
+          "conceptId": "math_calculus_indeterminate_forms",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q5"
         }
       ]
     },
@@ -12030,9 +12152,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|limits|One-Sided Limit Problems",
+    "id": "math|calculus|One-Sided Limit Problems",
     "curriculum_id": "math",
-    "chapter_id": "limits",
+    "chapter_id": "calculus",
+    "topic_group": "Limits",
     "topic": "One-Sided Limit Problems",
     "data": {
       "notes": "\n<h2> One-Sided Limits (Advanced)</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nOne-sided limits describe the value a function approaches from one direction only.\n</p>\n\n<pre>\nlim (x → a⁻) f(x)  → left-hand limit  \nlim (x → a⁺) f(x)  → right-hand limit\n</pre>\n\n If both sides are equal → limit exists  \n If different → discontinuity\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> step function jump</p>\n<p><b>Example 2:</b> absolute value function</p>\n<p><b>Example 3:</b> piecewise function</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Evaluate one-sided limits of f(x) = |x| at x = 0</p>\n<p><b>Step 1:</b> Left side (x → 0⁻) → f(x) = -x → 0</p>\n<p><b>Step 2:</b> Right side (x → 0⁺) → f(x) = x → 0</p>\n<p><b>Final Answer:</b> both equal → limit exists = 0</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> What happens if left ≠ right?</p>\n<p><b>Step 1:</b> Compare both sides</p>\n<p><b>Step 2:</b> If values differ → no single limit</p>\n<p><b>Final Answer:</b> limit does not exist</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nx → 0\nLeft side: ●●●\nJump\nRight side: ●●●●●\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Computer graphics edge detection</li>\n<li>Digital signal switching</li>\n<li>Economics sudden price changes</li>\n</ul>\n\n---\n",
@@ -12054,11 +12177,11 @@ export const mathTopics = [
           "sol": "Step 1: Compute lim x→a⁻ f(x)\nStep 2: Compute lim x→a⁺ f(x)\nStep 3: Let left-hand limit = L\nStep 4: Let right-hand limit = R\nStep 5: Compare L and R\nStep 6: If L = R, limit exists",
           "hint": "compare both sides",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "One-Sided Limit Problems",
-          "conceptId": "math_limits_one_sided_limit_problems",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q1"
+          "conceptId": "math_calculus_one_sided_limit_problems",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Determine whether a limit exists if lim x→2⁻ f(x) = 5 and lim x→2⁺ f(x) = 5",
@@ -12076,11 +12199,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify left-hand limit = 5\nStep 2: Identify right-hand limit = 5\nStep 3: Compare both values\nStep 4: Check equality condition\nStep 5: Conclude result",
           "hint": "compare values",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "One-Sided Limit Problems",
-          "conceptId": "math_limits_one_sided_limit_problems",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q2"
+          "conceptId": "math_calculus_one_sided_limit_problems",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Determine limit existence if lim x→3⁻ f(x) = 4 and lim x→3⁺ f(x) = 7",
@@ -12098,11 +12221,11 @@ export const mathTopics = [
           "sol": "Step 1: Left-hand limit = 4\nStep 2: Right-hand limit = 7\nStep 3: Compare 4 and 7\nStep 4: Identify inequality\nStep 5: Conclude limit behavior",
           "hint": "check discontinuity",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "One-Sided Limit Problems",
-          "conceptId": "math_limits_one_sided_limit_problems",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q3"
+          "conceptId": "math_calculus_one_sided_limit_problems",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Find result when lim x→5⁻ f(x) = 10 and lim x→5⁺ f(x) = 10",
@@ -12120,11 +12243,11 @@ export const mathTopics = [
           "sol": "Step 1: Left-hand limit = 10\nStep 2: Right-hand limit = 10\nStep 3: Compare values\nStep 4: Confirm equality\nStep 5: State final result",
           "hint": "equal sides",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "One-Sided Limit Problems",
-          "conceptId": "math_limits_one_sided_limit_problems",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q4"
+          "conceptId": "math_calculus_one_sided_limit_problems",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         }
       ]
     },
@@ -12132,9 +12255,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|limits|Applications of Limits",
+    "id": "math|calculus|Applications of Limits",
     "curriculum_id": "math",
-    "chapter_id": "limits",
+    "chapter_id": "calculus",
+    "topic_group": "limits",
     "topic": "Applications of Limits",
     "data": {
       "notes": "\n<h2> Applications of Limits</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nLimits describe the value a function approaches as the input gets closer to a certain point.  \nThey are the foundation of differentiation and integration.\n</p>\n\n<pre>\nlim (x → a) f(x)\n</pre>\n\n Used to define instantaneous change and continuity.\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> instantaneous velocity</p>\n<p><b>Example 2:</b> population growth prediction</p>\n<p><b>Example 3:</b> machine learning gradient estimation</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Why is limit used in velocity?</p>\n<p><b>Step 1:</b> Average speed = distance/time</p>\n<p><b>Step 2:</b> Make time interval very small</p>\n<p><b>Step 3:</b> Use limit</p>\n<p><b>Final Answer:</b> To find instantaneous velocity</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> What happens as x → 2 in f(x) = x²?</p>\n<p><b>Step 1:</b> Substitute value</p>\n<p>f(2) = 4</p>\n<p><b>Final Answer:</b> limit = 4</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nDistance vs Time curve:\nSmooth curve → tangent at a point = limit concept\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Physics motion analysis</li>\n<li>AI optimization models</li>\n<li>Financial forecasting</li>\n</ul>\n\n",
@@ -12153,11 +12277,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify key concept: Define the required principles for Applications of Limits.\nStep 2: Apply governing rule: Limits define both differentiation and integration, forming the core of calculus.\nStep 3: State the final conclusion: foundation of calculus",
           "hint": "used in derivatives and integrals",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Applications of Limits",
-          "conceptId": "math_limits_applications_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q1"
+          "conceptId": "math_calculus_applications_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Give one real-world use of limits",
@@ -12173,11 +12297,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify key concept: Define the required principles for Applications of Limits.\nStep 2: Apply governing rule: Limits are used to calculate velocity at a specific moment in time.\nStep 3: State the final conclusion: instantaneous speed",
           "hint": "motion",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Applications of Limits",
-          "conceptId": "math_limits_applications_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q2"
+          "conceptId": "math_calculus_applications_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "What does lim x→a f(x) mean?",
@@ -12193,11 +12317,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify key concept: Define the required principles for Applications of Limits.\nStep 2: Apply governing rule: It represents the value a function gets close to near a specific input.\nStep 3: State the final conclusion: value f(x) approaches as x nears a",
           "hint": "approaching value",
           "subject": "math",
-          "chapter": "limits",
+          "chapter": "calculus",
           "topic": "Applications of Limits",
-          "conceptId": "math_limits_applications_of_limits",
-          "skillId": "math_limits",
-          "subskillId": "math_limits_q3"
+          "conceptId": "math_calculus_applications_of_limits",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         }
       ]
     },
@@ -12205,9 +12329,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|differentiation|Gradient of a Curve",
+    "id": "math|calculus|Gradient of a Curve",
     "curriculum_id": "math",
-    "chapter_id": "differentiation",
+    "chapter_id": "calculus",
+    "topic_group": "differentiation",
     "topic": "Gradient of a Curve",
     "data": {
       "notes": "\n<h2> Gradient of a Curve</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nThe gradient of a curve shows how steep the curve is at a specific point. It is calculated using differentiation and represents the instantaneous rate of change.\n</p>\n\n<pre>\ndy/dx = gradient at a point\n</pre>\n\n It represents the slope of the tangent at that point.\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> y = x² → gradient at x = 2 is 4</p>\n<p><b>Example 2:</b> y = x³ → gradient at x = 1 is 3</p>\n<p><b>Example 3:</b> y = 2x + 5 → gradient is constant = 2</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find gradient of y = x² at x = 3</p>\n<p><b>Step 1:</b> Differentiate</p>\n<p>dy/dx = 2x</p>\n<p><b>Step 2:</b> Substitute x = 3</p>\n<p>dy/dx = 6</p>\n<p><b>Final Answer:</b> gradient = 6</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find gradient of y = 5x at any point</p>\n<p><b>Step 1:</b> Differentiate</p>\n<p>dy/dx = 5</p>\n<p><b>Final Answer:</b> gradient is constant = 5</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\n      /\n     /  ← tangent line (gradient here)\n    /\n---•---------- curve point\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Road slope measurement</li>\n<li>Mountain incline calculation</li>\n<li>Engineering design of ramps</li>\n</ul>\n\n---\n",
@@ -12227,11 +12352,11 @@ export const mathTopics = [
           "sol": "Step 1: Start with function y = f(x)\nStep 2: Differentiate to find dy/dx\nStep 3: Substitute the given x-value\nStep 4: Compute gradient at that point",
           "hint": "differentiate then substitute",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Gradient of a Curve",
-          "conceptId": "math_differentiation_gradient_of_a_curve",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q1"
+          "conceptId": "math_calculus_gradient_of_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Find dy/dx for y = x² and evaluate at x = 3",
@@ -12248,11 +12373,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = x² → dy/dx = 2x\nStep 2: Substitute x = 3\nStep 3: Compute 2 × 3\nStep 4: Get final gradient",
           "hint": "power rule",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Gradient of a Curve",
-          "conceptId": "math_differentiation_gradient_of_a_curve",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q2"
+          "conceptId": "math_calculus_gradient_of_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Find gradient of y = 2x + 3",
@@ -12269,11 +12394,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify equation y = mx + c\nStep 2: Recognize coefficient of x\nStep 3: Extract m value\nStep 4: State gradient",
           "hint": "linear function rule",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Gradient of a Curve",
-          "conceptId": "math_differentiation_gradient_of_a_curve",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q3"
+          "conceptId": "math_calculus_gradient_of_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Find dy/dx of y = 3x² at x = 2",
@@ -12290,11 +12415,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = 3x² → dy/dx = 6x\nStep 2: Substitute x = 2\nStep 3: Multiply 6 × 2\nStep 4: Compute gradient",
           "hint": "power rule",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Gradient of a Curve",
-          "conceptId": "math_differentiation_gradient_of_a_curve",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q4"
+          "conceptId": "math_calculus_gradient_of_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         }
       ]
     },
@@ -12302,9 +12427,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|differentiation|Rate of Change",
+    "id": "math|calculus|Rate of Change",
     "curriculum_id": "math",
-    "chapter_id": "differentiation",
+    "chapter_id": "calculus",
+    "topic_group": "differentiation",
     "topic": "Rate of Change",
     "data": {
       "notes": "\n<h2> Rate of Change</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nRate of change describes how one quantity changes with respect to another. It is the foundation of differentiation.\n</p>\n\n<pre>\ndy/dx = rate of change\n</pre>\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> distance vs time = speed</p>\n<p><b>Example 2:</b> y = x² → rate = 2x</p>\n<p><b>Example 3:</b> population growth curve</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> If s = t², find rate of change of distance.</p>\n<p><b>Step 1:</b> Differentiate</p>\n<p>ds/dt = 2t</p>\n<p><b>Final Answer:</b> rate = 2t</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find rate of change of y = x² at x = 3</p>\n<p><b>Step 1:</b> Differentiate</p>\n<p>dy/dx = 2x</p>\n<p><b>Step 2:</b> Substitute x = 3</p>\n<p>dy/dx = 6</p>\n<p><b>Final Answer:</b> 6</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nTime →\nDistance curve rising ↑\nSlope shows speed\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Speed of cars (physics)</li>\n<li>Stock market growth rate</li>\n<li>Population increase models</li>\n</ul>\n\n---\n",
@@ -12325,11 +12451,11 @@ export const mathTopics = [
           "sol": "Step 1: Start with y = 3x²\nStep 2: Differentiate → dy/dx = 6x\nStep 3: Substitute x = 2\nStep 4: Compute 6 × 2\nStep 5: Final value of rate of change",
           "hint": "differentiate then substitute",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Rate of Change",
-          "conceptId": "math_differentiation_rate_of_change",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q1"
+          "conceptId": "math_calculus_rate_of_change",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Find dy/dx for y = 5x at any point",
@@ -12346,11 +12472,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify y = mx form\nStep 2: Differentiate → dy/dx = 5\nStep 3: Note constant slope\nStep 4: State rate of change",
           "hint": "linear rule",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Rate of Change",
-          "conceptId": "math_differentiation_rate_of_change",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q2"
+          "conceptId": "math_calculus_rate_of_change",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "A car travels distance s = 4t². Find speed at t = 3",
@@ -12368,11 +12494,11 @@ export const mathTopics = [
           "sol": "Step 1: Start with s = 4t²\nStep 2: Differentiate → ds/dt = 8t\nStep 3: Substitute t = 3\nStep 4: Compute 8 × 3\nStep 5: Final speed value",
           "hint": "differentiate distance",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Rate of Change",
-          "conceptId": "math_differentiation_rate_of_change",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q3"
+          "conceptId": "math_calculus_rate_of_change",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Find rate of change of y = x³ at x = 1",
@@ -12389,11 +12515,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = x³ → dy/dx = 3x²\nStep 2: Substitute x = 1\nStep 3: Compute 3 × 1²\nStep 4: Final value",
           "hint": "power rule",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Rate of Change",
-          "conceptId": "math_differentiation_rate_of_change",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q4"
+          "conceptId": "math_calculus_rate_of_change",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         }
       ]
     },
@@ -12401,9 +12527,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|differentiation|Maxima and Minima",
+    "id": "math|calculus|Maxima and Minima",
     "curriculum_id": "math",
-    "chapter_id": "differentiation",
+    "chapter_id": "calculus",
+    "topic_group": "differentiation",
     "topic": "Maxima and Minima",
     "data": {
       "notes": "\n<h2> Maxima and Minima</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nMaxima are highest points and minima are lowest points of a curve.  \nThey occur where the derivative equals zero.\n</p>\n\n<pre>\ndy/dx = 0 → critical point\n</pre>\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> y = x² has minimum at x = 0</p>\n<p><b>Example 2:</b> y = −x² has maximum at x = 0</p>\n<p><b>Example 3:</b> profit optimization in business models</p>\n\n---\n\n<h3> WORKED EXAMPLES</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find stationary point of y = x²</p>\n<p><b>Step 1:</b> dy/dx = 2x</p>\n<p><b>Step 2:</b> 2x = 0 → x = 0</p>\n<p><b>Final Answer:</b> minimum at x = 0</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find maxima of y = −x²</p>\n<p><b>Step 1:</b> dy/dx = −2x</p>\n<p><b>Step 2:</b> −2x = 0 → x = 0</p>\n<p><b>Final Answer:</b> maximum at x = 0</p>\n\n---\n",
@@ -12425,11 +12552,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = -x² + 6x - 5 → dy/dx = -2x + 6\nStep 2: Set dy/dx = 0 → -2x + 6 = 0\nStep 3: Solve → 2x = 6\nStep 4: x = 3\nStep 5: Since coefficient of x² is negative, curve opens downward\nStep 6: Therefore turning point is a maximum",
           "hint": "differentiate and classify",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Maxima and Minima",
-          "conceptId": "math_differentiation_maxima_and_minima",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q1"
+          "conceptId": "math_calculus_maxima_and_minima",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Find maximum point of y = -2x² + 8x + 1",
@@ -12448,11 +12575,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate → dy/dx = -4x + 8\nStep 2: Set dy/dx = 0 → -4x + 8 = 0\nStep 3: Solve → 4x = 8\nStep 4: x = 2\nStep 5: Substitute into original function → y = -2(2²) + 8(2) + 1\nStep 6: y = -8 + 16 + 1 = 9",
           "hint": "dy/dx = 0",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Maxima and Minima",
-          "conceptId": "math_differentiation_maxima_and_minima",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q2"
+          "conceptId": "math_calculus_maxima_and_minima",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Find minimum point of y = x² + 8x + 12",
@@ -12471,11 +12598,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate → dy/dx = 2x + 8\nStep 2: Set dy/dx = 0 → 2x + 8 = 0\nStep 3: Solve → 2x = -8\nStep 4: x = -4\nStep 5: Substitute into function → y = (-4)² + 8(-4) + 12\nStep 6: y = 16 - 32 + 12 = -4",
           "hint": "complete or differentiate",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Maxima and Minima",
-          "conceptId": "math_differentiation_maxima_and_minima",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q3"
+          "conceptId": "math_calculus_maxima_and_minima",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Find stationary point of y = x² - 10x + 25 and classify it",
@@ -12494,11 +12621,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate → dy/dx = 2x - 10\nStep 2: Set dy/dx = 0 → 2x - 10 = 0\nStep 3: Solve → 2x = 10\nStep 4: x = 5\nStep 5: Substitute → y = 25 - 50 + 25 = 0\nStep 6: Since coefficient of x² is positive, it is a minimum",
           "hint": "perfect square form",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Maxima and Minima",
-          "conceptId": "math_differentiation_maxima_and_minima",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q4"
+          "conceptId": "math_calculus_maxima_and_minima",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         },
         {
           "q": "Find maximum value of y = 3x - x²",
@@ -12518,11 +12645,11 @@ export const mathTopics = [
           "sol": "Step 1: Rewrite y = -x² + 3x\nStep 2: Differentiate → dy/dx = -2x + 3\nStep 3: Set dy/dx = 0 → -2x + 3 = 0\nStep 4: Solve → 2x = 3\nStep 5: x = 3/2\nStep 6: Substitute → y = 3(3/2) - (3/2)²\nStep 7: y = 9/2 - 9/4 = 9/4",
           "hint": "rearrange quadratic",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Maxima and Minima",
-          "conceptId": "math_differentiation_maxima_and_minima",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q5"
+          "conceptId": "math_calculus_maxima_and_minima",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q5"
         }
       ]
     },
@@ -12530,9 +12657,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|differentiation|Tangents and Normals",
+    "id": "math|calculus|Tangents and Normals",
     "curriculum_id": "math",
-    "chapter_id": "differentiation",
+    "chapter_id": "calculus",
+    "topic_group": "differentiation",
     "topic": "Tangents and Normals",
     "data": {
       "notes": "\n<h2> Tangents and Normals</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nA tangent is a straight line that touches a curve at exactly one point without crossing it locally.\nA normal is a line perpendicular to the tangent at the same point.\n</p>\n\n<pre>\nSlope of tangent = dy/dx  \nSlope of normal = -1 / (dy/dx)\n</pre>\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> slope of tangent = dy/dx</p>\n<p><b>Example 2:</b> slope of normal = -1/(dy/dx)</p>\n<p><b>Example 3:</b> curve intersection point analysis</p>\n\n---\n\n<h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find slope of tangent to y = x² at x = 2</p>\n<p><b>Step 1:</b> Differentiate</p>\n<p>dy/dx = 2x</p>\n<p><b>Step 2:</b> Substitute x = 2</p>\n<p>dy/dx = 4</p>\n<p><b>Final Answer:</b> slope of tangent = 4</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find slope of normal when slope of tangent is 3</p>\n<p><b>Step 1:</b> Use formula</p>\n<p>slope(normal) = -1/3</p>\n<p><b>Final Answer:</b> -1/3</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Why are tangent and normal perpendicular?</p>\n<p><b>Step 1:</b> They intersect at 90°</p>\n<p><b>Step 2:</b> Product of slopes = -1</p>\n<p><b>Final Answer:</b> Because perpendicular lines satisfy m₁·m₂ = -1</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\n      tangent /\n             /\n   curve •---\n                           normal ⟂\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Road design angles</li>\n<li>Reflection of light in physics</li>\n<li>Engineering stress directions</li>\n</ul>\n\n---\n",
@@ -12552,11 +12680,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = x² → dy/dx = 2x\nStep 2: Substitute x = 4\nStep 3: Compute 2 × 4\nStep 4: Final slope value",
           "hint": "differentiate and substitute",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q1"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "If tangent slope is 3, what is slope of normal?",
@@ -12573,11 +12701,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify tangent slope m = 3\nStep 2: Use formula slope(normal) = -1/m\nStep 3: Compute -1/3\nStep 4: Final result",
           "hint": "negative reciprocal",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q2"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Find equation of tangent to y = x² at (2, 4)",
@@ -12595,11 +12723,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate to find slope at x = 2\nStep 2: dy/dx = 2x → slope = 4\nStep 3: Use point (2, 4) and slope 4\nStep 4: Equation: y - 4 = 4(x - 2)\nStep 5: Simplify → y = 4x - 4",
           "hint": "point-slope form",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q3"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Find equation of tangent slope for y = x² at x = 2",
@@ -12616,11 +12744,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = x² → dy/dx = 2x\nStep 2: Substitute x = 2\nStep 3: Compute 2 × 2\nStep 4: Tangent slope = 4",
           "hint": "differentiate then substitute",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q4"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         },
         {
           "q": "Find equation of normal slope if tangent slope is 3",
@@ -12637,11 +12765,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify tangent slope m = 3\nStep 2: Apply normal formula = -1/m\nStep 3: Substitute values → -1/3\nStep 4: Simplify result",
           "hint": "negative reciprocal",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q5"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q5"
         },
         {
           "q": "Find slope of tangent for y = 3x² + 2x at x = 1",
@@ -12658,11 +12786,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y → dy/dx = 6x + 2\nStep 2: Substitute x = 1\nStep 3: Compute 6(1) + 2\nStep 4: Final slope = 8",
           "hint": "differentiate first",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q6"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q6"
         },
         {
           "q": "Find normal slope if tangent slope is -5",
@@ -12679,11 +12807,11 @@ export const mathTopics = [
           "sol": "Step 1: Tangent slope m = -5\nStep 2: Apply formula -1/m\nStep 3: Compute -1 / (-5)\nStep 4: Simplify result",
           "hint": "negative reciprocal rule",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q7"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q7"
         },
         {
           "q": "Find equation of tangent to y = x² at point (2, 4)",
@@ -12701,11 +12829,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = x² → dy/dx = 2x\nStep 2: Substitute x = 2 → slope m = 4\nStep 3: Use point (2, 4) in y - y₁ = m(x - x₁)\nStep 4: Equation becomes y - 4 = 4(x - 2)\nStep 5: Simplify → y = 4x - 4",
           "hint": "first find slope, then use point-slope form",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q8"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q8"
         },
         {
           "q": "Find equation of normal to y = x² at (2, 4)",
@@ -12723,11 +12851,11 @@ export const mathTopics = [
           "sol": "Step 1: Slope of tangent at x = 2 is m = 4\nStep 2: Normal slope is perpendicular → -1/4\nStep 3: Use point (2, 4) in y - y₁ = m(x - x₁)\nStep 4: Equation: y - 4 = -1/4(x - 2)\nStep 5: Simplify to standard form",
           "hint": "use perpendicular slope",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q9"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q9"
         },
         {
           "q": "Find x-intercept of tangent to y = x² at x = 3",
@@ -12746,11 +12874,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate y = x² → dy/dx = 2x\nStep 2: At x = 3, slope m = 2(3) = 6\nStep 3: Point is (3, 3²) = (3, 9)\nStep 4: Tangent equation: y - 9 = 6(x - 3)\nStep 5: Set y = 0 to find x-intercept → -9 = 6x - 18\nStep 6: Solve for x → x = 9/6 = 3/2",
           "hint": "first find tangent equation",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q10"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q10"
         },
         {
           "q": "At what x-value is tangent to y = x² parallel to line y = 4x + 1?",
@@ -12767,11 +12895,11 @@ export const mathTopics = [
           "sol": "Step 1: Slope of given line is 4\nStep 2: Slope of tangent is derivative dy/dx = 2x\nStep 3: Set slopes equal → 2x = 4\nStep 4: Solve for x → x = 2",
           "hint": "slopes must be equal",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q11"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q11"
         },
         {
           "q": "Find the perpendicular distance from origin (0, 0) to tangent of y = x² at x = 4",
@@ -12790,11 +12918,11 @@ export const mathTopics = [
           "sol": "Step 1: At x = 4, slope m = 2(4) = 8\nStep 2: Point is (4, 4²) = (4, 16)\nStep 3: Tangent equation: y - 16 = 8(x - 4) → 8x - y - 16 = 0\nStep 4: Use distance formula from point (x₀, y₀) to line Ax + By + C = 0: distance = |Ax₀ + By₀ + C| / sqrt(A² + B²)\nStep 5: For origin (0, 0) and line 8x - y - 16 = 0 → distance = |-16| / sqrt(8² + (-1)²)\nStep 6: Simplify → distance = 16 / sqrt(65)",
           "hint": "find tangent equation first",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Tangents and Normals",
-          "conceptId": "math_differentiation_tangents_and_normals",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q12"
+          "conceptId": "math_calculus_tangents_and_normals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q12"
         }
       ]
     },
@@ -12802,9 +12930,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|differentiation|Applications of Differentiation",
+    "id": "math|calculus|Applications of Differentiation",
     "curriculum_id": "math",
-    "chapter_id": "differentiation",
+    "chapter_id": "calculus",
+    "topic_group": "differentiation",
     "topic": "Applications of Differentiation",
     "data": {
       "notes": "\n<h2> Applications of Differentiation</h2>\n\n\n<h3> DEEP NOTES</h3>\n<p>\nDifferentiation is used to model change in real systems. It tells how fast one quantity changes with respect to another.\n</p>\n\n<p>\nGeometrically, the derivative represents the slope of a curve at a point.\n</p>\n\n<pre>\nf'(x) = rate of change\n</pre>\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> speed of moving object</p>\n<p><b>Example 2:</b> maximizing profit function</p>\n<p><b>Example 3:</b> minimizing cost of production</p>\n\n---\n\n<h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> A position is given by s(t) = t². Find velocity.</p>\n<p><b>Step 1:</b> Differentiate position</p>\n<p>v(t) = ds/dt = 2t</p>\n<p><b>Step 2:</b> Interpret result</p>\n<p>Velocity increases with time</p>\n<p><b>Final Answer:</b> v(t) = 2t</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find stationary points of f(x) = x² - 4x</p>\n<p><b>Step 1:</b> Differentiate</p>\n<p>f'(x) = 2x - 4</p>\n<p><b>Step 2:</b> Set derivative to zero</p>\n<p>2x - 4 = 0 → x = 2</p>\n<p><b>Final Answer:</b> x = 2 is a stationary point</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Why is differentiation used in optimization?</p>\n<p><b>Step 1:</b> Identify maximum/minimum points</p>\n<p><b>Step 2:</b> These occur when slope = 0</p>\n<p><b>Final Answer:</b> Because derivatives help locate maxima and minima</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nCurve → slope at each point = change rate\nPeak point → slope = 0\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Physics motion equations</li>\n<li>AI gradient descent learning</li>\n<li>Economics optimization models</li>\n</ul>\n\n---\n",
@@ -12823,11 +12952,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify key concept: Define the required principles for Applications of Differentiation.\nStep 2: Apply governing rule: It quantifies how one variable changes with respect to another\nStep 3: State the final conclusion: measures change",
           "hint": "rate of change",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Applications of Differentiation",
-          "conceptId": "math_differentiation_applications_of_differentiation",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q1"
+          "conceptId": "math_calculus_applications_of_differentiation",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Give real-life use",
@@ -12843,11 +12972,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify key concept: Define the required principles for Applications of Differentiation.\nStep 2: Apply governing rule: Used in physics for velocity and in economics for maximizing profit\nStep 3: State the final conclusion: speed or profit optimization",
           "hint": "motion or business",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Applications of Differentiation",
-          "conceptId": "math_differentiation_applications_of_differentiation",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q2"
+          "conceptId": "math_calculus_applications_of_differentiation",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "What does f'(x) represent?",
@@ -12863,11 +12992,11 @@ export const mathTopics = [
           "sol": "Step 1: Identify key concept: Define the required principles for Applications of Differentiation.\nStep 2: Apply governing rule: It represents instantaneous rate of change of a function\nStep 3: State the final conclusion: rate of change or slope",
           "hint": "derivative meaning",
           "subject": "math",
-          "chapter": "differentiation",
+          "chapter": "calculus",
           "topic": "Applications of Differentiation",
-          "conceptId": "math_differentiation_applications_of_differentiation",
-          "skillId": "math_differentiation",
-          "subskillId": "math_differentiation_q3"
+          "conceptId": "math_calculus_applications_of_differentiation",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         }
       ]
     },
@@ -12875,9 +13004,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|integration|Area Under a Curve",
+    "id": "math|calculus|Area Under a Curve",
     "curriculum_id": "math",
-    "chapter_id": "integration",
+    "chapter_id": "calculus",
+    "topic_group": "integration",
     "topic": "Area Under a Curve",
     "data": {
       "notes": "\n<h2> Area Under a Curve</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nIntegration is used to calculate the area between a curve and the x-axis over a given interval.\nFor positive functions, this area is directly given by a definite integral.\n</p>\n\n<pre>\n∫ f(x) dx = area under curve\n</pre>\n\n It is the reverse process of differentiation and accumulates infinitely small slices into a total area.\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> ∫ x dx = x²/2</p>\n<p><b>Example 2:</b> ∫ x² dx = x³/3</p>\n<p><b>Example 3:</b> ∫ 2x dx = x²</p>\n\n---\n\n<h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find ∫₀¹ x dx</p>\n<p><b>Step 1:</b> Antiderivative of x</p>\n<p>x²/2</p>\n<p><b>Step 2:</b> Apply limits</p>\n<p>(1²/2) - (0²/2)</p>\n<p><b>Final Answer:</b> 1/2 (area under curve)</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find ∫₀² x² dx</p>\n<p><b>Step 1:</b> Antiderivative</p>\n<p>x³/3</p>\n<p><b>Step 2:</b> Apply limits</p>\n<p>(2³/3) - (0³/3)</p>\n<p><b>Final Answer:</b> 8/3</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> What does a definite integral represent geometrically?</p>\n<p><b>Step 1:</b> It sums infinitely small rectangles under curve</p>\n<p><b>Step 2:</b> Total gives enclosed region</p>\n<p><b>Final Answer:</b> The area under a curve over an interval</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<div style=\"text-align:center;margin:1rem 0;\">\n<svg viewBox=\"0 0 280 180\" width=\"280\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;\">\n  \n  <defs>\n    <pattern id=\"grid-lp\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"#22223b\" stroke-width=\"0.5\"/>\n    </pattern>\n    <marker id=\"arrow-x\" viewBox=\"0 0 10 10\" refX=\"5\" refY=\"5\" markerWidth=\"4\" markerHeight=\"4\" orient=\"auto\">\n      <path d=\"M 0 0 L 10 5 L 0 10 z\" fill=\"#888\"/>\n    </marker>\n    <marker id=\"arrow-y\" viewBox=\"0 0 10 10\" refX=\"5\" refY=\"5\" markerWidth=\"4\" markerHeight=\"4\" orient=\"auto\">\n      <path d=\"M 0 0 L 10 5 L 0 10 z\" fill=\"#888\"/>\n    </marker>\n  </defs>\n\n  <rect width=\"280\" height=\"180\" fill=\"url(#grid-lp)\"/>\n  <path d=\"M 60,140 L 60,110 C 100,60 180,40 220,100 L 220,140 Z\" fill=\"#2ecc71\" opacity=\"0.3\"/>\n  <line x1=\"30\" y1=\"140\" x2=\"260\" y2=\"140\" stroke=\"#ccc\" stroke-width=\"1.5\" marker-end=\"url(#arrow-x)\"/>\n  <line x1=\"40\" y1=\"160\" x2=\"40\" y2=\"20\" stroke=\"#ccc\" stroke-width=\"1.5\" marker-end=\"url(#arrow-y)\"/>\n  <path d=\"M 50,115 C 100,50 180,30 230,115\" fill=\"none\" stroke=\"#2ecc71\" stroke-width=\"2.5\"/>\n  <line x1=\"60\" y1=\"140\" x2=\"60\" y2=\"108\" stroke=\"#fff\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"220\" y1=\"140\" x2=\"220\" y2=\"101\" stroke=\"#fff\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n  <text x=\"140\" y=\"115\" fill=\"#2ecc71\" font-size=\"9\" font-family=\"sans-serif\" font-weight=\"bold\" text-anchor=\"middle\">Area Under Curve</text>\n  <text x=\"140\" y=\"127\" fill=\"#2ecc71\" font-size=\"8\" font-family=\"monospace\" text-anchor=\"middle\">A = ∫ f(x) dx</text>\n  <text x=\"180\" y=\"45\" fill=\"#fff\" font-size=\"9\" font-family=\"monospace\" font-weight=\"bold\">y = f(x)</text>\n  <text x=\"260\" y=\"144\" fill=\"#aaa\" font-size=\"8\" font-family=\"monospace\">x</text>\n  <text x=\"40\" y=\"14\" fill=\"#aaa\" font-size=\"8\" text-anchor=\"middle\" font-family=\"monospace\">y</text>\n</svg>\n</div>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Calculating land area with curved boundaries</li>\n<li>Physics: distance from velocity-time graph</li>\n<li>Engineering material distribution</li>\n</ul>\n\n---\n",
@@ -12897,11 +13027,11 @@ export const mathTopics = [
           "sol": "Step 1: Increase power of x by 1 → x¹ becomes x²\nStep 2: Divide by new power → x² / 2\nStep 3: Add constant of integration C\nStep 4: Final expression",
           "hint": "power rule integration",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Area Under a Curve",
-          "conceptId": "math_integration_area_under_a_curve",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q1"
+          "conceptId": "math_calculus_area_under_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Evaluate ∫ x² dx",
@@ -12918,11 +13048,11 @@ export const mathTopics = [
           "sol": "Step 1: Increase exponent → x² becomes x³\nStep 2: Divide by new exponent → x³ / 3\nStep 3: Add constant C\nStep 4: Write final result",
           "hint": "increase power",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Area Under a Curve",
-          "conceptId": "math_integration_area_under_a_curve",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q2"
+          "conceptId": "math_calculus_area_under_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Evaluate definite integral ∫ from 0 to 2 of x dx",
@@ -12940,11 +13070,11 @@ export const mathTopics = [
           "sol": "Step 1: Find integral of x → x²/2\nStep 2: Substitute upper limit 2 → (2²)/2 = 4/2 = 2\nStep 3: Substitute lower limit 0 → 0²/2 = 0\nStep 4: Subtract upper - lower → 2 - 0\nStep 5: Final answer",
           "hint": "area under curve",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Area Under a Curve",
-          "conceptId": "math_integration_area_under_a_curve",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q3"
+          "conceptId": "math_calculus_area_under_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Evaluate ∫ 3x² dx",
@@ -12962,11 +13092,11 @@ export const mathTopics = [
           "sol": "Step 1: Keep constant 3 outside\nStep 2: Integrate x² → x³/3\nStep 3: Multiply → 3 × (x³/3)\nStep 4: Simplify expression\nStep 5: Add +C",
           "hint": "constant multiple rule",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Area Under a Curve",
-          "conceptId": "math_integration_area_under_a_curve",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q4"
+          "conceptId": "math_calculus_area_under_a_curve",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         }
       ]
     },
@@ -12974,9 +13104,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|integration|Indefinite Integrals",
+    "id": "math|calculus|Indefinite Integrals",
     "curriculum_id": "math",
-    "chapter_id": "integration",
+    "chapter_id": "calculus",
+    "topic_group": "integration",
     "topic": "Indefinite Integrals",
     "data": {
       "notes": "\n<h2> Indefinite Integrals</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nIndefinite integrals have NO limits and include a constant C because differentiation removes constants.\n</p>\n\n<pre>\n∫ f(x) dx = F(x) + C\n</pre>\n\n They represent a FAMILY of functions, not a single value.\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> ∫ x dx = x²/2 + C</p>\n<p><b>Example 2:</b> ∫ 3x² dx = x³ + C</p>\n<p><b>Example 3:</b> ∫ 5 dx = 5x + C</p>\n\n---\n\n<h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Evaluate ∫ x dx</p>\n<p><b>Step 1:</b> Increase power by 1</p>\n<p>x → x²</p>\n<p><b>Step 2:</b> Divide by new power</p>\n<p>x²/2</p>\n<p><b>Step 3:</b> Add constant</p>\n<p><b>Final Answer:</b> x²/2 + C</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Evaluate ∫ 3x² dx</p>\n<p><b>Step 1:</b> Apply power rule</p>\n<p>3x² → x³</p>\n<p><b>Step 2:</b> Add constant</p>\n<p><b>Final Answer:</b> x³ + C</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Why is +C required in integration?</p>\n<p><b>Step 1:</b> Differentiation removes constants</p>\n<p><b>Step 2:</b> Many functions share same derivative</p>\n<p><b>Final Answer:</b> +C represents all possible vertical shifts of the function</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nFamily of curves:\nSame shape, different vertical shifts (C)\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Reconstructing motion from acceleration</li>\n<li>Physics energy systems</li>\n<li>Economics cumulative growth</li>\n</ul>\n\n---\n",
@@ -12996,11 +13127,11 @@ export const mathTopics = [
           "sol": "Step 1: Increase power of x by 1 → x¹ becomes x²\nStep 2: Divide by new power → x² / 2\nStep 3: Add constant of integration C\nStep 4: Final expression",
           "hint": "power rule integration",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Indefinite Integrals",
-          "conceptId": "math_integration_indefinite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q1"
+          "conceptId": "math_calculus_indefinite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Evaluate ∫ x² dx",
@@ -13017,11 +13148,11 @@ export const mathTopics = [
           "sol": "Step 1: Increase exponent → x² becomes x³\nStep 2: Divide by new exponent → x³ / 3\nStep 3: Add constant C\nStep 4: Write final result",
           "hint": "increase power",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Indefinite Integrals",
-          "conceptId": "math_integration_indefinite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q2"
+          "conceptId": "math_calculus_indefinite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Evaluate definite integral ∫ from 0 to 2 of x dx",
@@ -13039,11 +13170,11 @@ export const mathTopics = [
           "sol": "Step 1: Find integral of x → x²/2\nStep 2: Substitute upper limit 2 → (2²)/2 = 4/2 = 2\nStep 3: Substitute lower limit 0 → 0²/2 = 0\nStep 4: Subtract upper - lower → 2 - 0\nStep 5: Final answer",
           "hint": "area under curve",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Indefinite Integrals",
-          "conceptId": "math_integration_indefinite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q3"
+          "conceptId": "math_calculus_indefinite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "Evaluate ∫ 3x² dx",
@@ -13061,11 +13192,11 @@ export const mathTopics = [
           "sol": "Step 1: Keep constant 3 outside\nStep 2: Integrate x² → x³/3\nStep 3: Multiply → 3 × (x³/3)\nStep 4: Simplify expression\nStep 5: Add +C",
           "hint": "constant multiple rule",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Indefinite Integrals",
-          "conceptId": "math_integration_indefinite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q4"
+          "conceptId": "math_calculus_indefinite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         },
         {
           "q": "Why does integration represent area under a curve?",
@@ -13083,11 +13214,11 @@ export const mathTopics = [
           "sol": "Step 1: Divide area under curve into small rectangles\nStep 2: Approximate each rectangle’s area\nStep 3: Increase number of rectangles\nStep 4: Make width approach zero\nStep 5: Sum becomes exact area",
           "hint": "limit of rectangles",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Indefinite Integrals",
-          "conceptId": "math_integration_indefinite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q5"
+          "conceptId": "math_calculus_indefinite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q5"
         }
       ]
     },
@@ -13095,9 +13226,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|integration|Definite Integrals",
+    "id": "math|calculus|Definite Integrals",
     "curriculum_id": "math",
-    "chapter_id": "integration",
+    "chapter_id": "calculus",
+    "topic_group": "integration",
     "topic": "Definite Integrals",
     "data": {
       "notes": "\n<h2> Definite Integrals</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nDefinite integrals have limits and give a NUMERICAL value representing the total accumulation (often area under a curve).\n</p>\n\n<pre>\n∫[a to b] f(x) dx\n</pre>\n\n Unlike indefinite integrals, they do NOT include +C because limits remove the constant.\n\n---\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> ∫₀¹ x dx = 1/2</p>\n<p><b>Example 2:</b> ∫₁² x dx = 3/2</p>\n<p><b>Example 3:</b> area between curves</p>\n\n---\n\n<h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Evaluate ∫₀¹ x dx</p>\n<p><b>Step 1:</b> Find antiderivative</p>\n<p>∫x dx = x²/2</p>\n<p><b>Step 2:</b> Apply limits</p>\n<p>(1²/2) - (0²/2)</p>\n<p><b>Final Answer:</b> 1/2</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Evaluate ∫₁² x dx</p>\n<p><b>Step 1:</b> Antiderivative</p>\n<p>x²/2</p>\n<p><b>Step 2:</b> Apply limits</p>\n<p>(2²/2) - (1²/2)</p>\n<p>= (4/2 - 1/2)</p>\n<p><b>Final Answer:</b> 3/2</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> What does a definite integral represent?</p>\n<p><b>Step 1:</b> It accumulates values over an interval</p>\n<p><b>Step 2:</b> It measures total area under curve</p>\n<p><b>Final Answer:</b> Total accumulated quantity over a range</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<div style=\"text-align:center;margin:1rem 0;\">\n<svg viewBox=\"0 0 280 180\" width=\"280\" height=\"180\" xmlns=\"http://www.w3.org/2000/svg\" style=\"max-width:100%;height:auto;border-radius:10px;background:#0d0d1e;box-shadow: 0 4px 15px rgba(0,0,0,0.45);border: 1px solid #1e1e2f;\">\n  \n  <defs>\n    <pattern id=\"grid-lp\" width=\"20\" height=\"20\" patternUnits=\"userSpaceOnUse\">\n      <path d=\"M 20 0 L 0 0 0 20\" fill=\"none\" stroke=\"#22223b\" stroke-width=\"0.5\"/>\n    </pattern>\n    <marker id=\"arrow-x\" viewBox=\"0 0 10 10\" refX=\"5\" refY=\"5\" markerWidth=\"4\" markerHeight=\"4\" orient=\"auto\">\n      <path d=\"M 0 0 L 10 5 L 0 10 z\" fill=\"#888\"/>\n    </marker>\n    <marker id=\"arrow-y\" viewBox=\"0 0 10 10\" refX=\"5\" refY=\"5\" markerWidth=\"4\" markerHeight=\"4\" orient=\"auto\">\n      <path d=\"M 0 0 L 10 5 L 0 10 z\" fill=\"#888\"/>\n    </marker>\n  </defs>\n\n  <rect width=\"280\" height=\"180\" fill=\"url(#grid-lp)\"/>\n  <path d=\"M 80,140 L 80,105 C 120,60 160,50 200,95 L 200,140 Z\" fill=\"#3498db\" opacity=\"0.3\"/>\n  <line x1=\"30\" y1=\"140\" x2=\"260\" y2=\"140\" stroke=\"#ccc\" stroke-width=\"1.5\" marker-end=\"url(#arrow-x)\"/>\n  <line x1=\"40\" y1=\"160\" x2=\"40\" y2=\"20\" stroke=\"#ccc\" stroke-width=\"1.5\" marker-end=\"url(#arrow-y)\"/>\n  <path d=\"M 50,120 C 100,50 160,30 230,120\" fill=\"none\" stroke=\"#3498db\" stroke-width=\"2.5\"/>\n  <line x1=\"80\" y1=\"140\" x2=\"80\" y2=\"103\" stroke=\"#fff\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n  <line x1=\"200\" y1=\"140\" x2=\"200\" y2=\"95\" stroke=\"#fff\" stroke-width=\"1\" stroke-dasharray=\"3,3\"/>\n  <text x=\"80\" y=\"152\" fill=\"#fff\" font-size=\"9\" text-anchor=\"middle\" font-family=\"monospace\" font-weight=\"bold\">a</text>\n  <text x=\"200\" y=\"152\" fill=\"#fff\" font-size=\"9\" text-anchor=\"middle\" font-family=\"monospace\" font-weight=\"bold\">b</text>\n  <text x=\"140\" y=\"115\" fill=\"#3498db\" font-size=\"9\" font-family=\"sans-serif\" font-weight=\"bold\" text-anchor=\"middle\">Area = ∫ₐᵇ f(x) dx</text>\n  <text x=\"180\" y=\"45\" fill=\"#fff\" font-size=\"9\" font-family=\"monospace\" font-weight=\"bold\">y = f(x)</text>\n  <text x=\"260\" y=\"144\" fill=\"#aaa\" font-size=\"8\" font-family=\"monospace\">x</text>\n  <text x=\"40\" y=\"14\" fill=\"#aaa\" font-size=\"8\" text-anchor=\"middle\" font-family=\"monospace\">y</text>\n</svg>\n</div>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Total distance from velocity graph</li>\n<li>Rainfall accumulation over time</li>\n<li>Energy consumption calculation</li>\n</ul>\n\n---\n",
@@ -13118,11 +13250,11 @@ export const mathTopics = [
           "sol": "Step 1: Find antiderivative of x → x²/2\nStep 2: Substitute upper limit 2 → (2²)/2 = 4/2 = 2\nStep 3: Substitute lower limit 1 → (1²)/2 = 1/2\nStep 4: Subtract upper limit value from lower limit value\nStep 5: Result = 2 - 1/2 = 3/2",
           "hint": "definite integral with limits",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Definite Integrals",
-          "conceptId": "math_integration_definite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q1"
+          "conceptId": "math_calculus_definite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Find area under y = x² from 0 to 3",
@@ -13140,11 +13272,11 @@ export const mathTopics = [
           "sol": "Step 1: Set up integral ∫ from 0 to 3 of x² dx\nStep 2: Integrate x² → x³/3\nStep 3: Apply limits → (3³/3) - (0³/3)\nStep 4: Simplify → 27/3 - 0\nStep 5: Final area = 9",
           "hint": "use definite integral",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Definite Integrals",
-          "conceptId": "math_integration_definite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q2"
+          "conceptId": "math_calculus_definite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Evaluate ∫ from 0 to 1 of (2x + 1) dx",
@@ -13162,11 +13294,11 @@ export const mathTopics = [
           "sol": "Step 1: Integrate 2x → x²\nStep 2: Integrate 1 → x\nStep 3: Combine → x² + x\nStep 4: Apply limits [0, 1] → (1² + 1) - (0² + 0)\nStep 5: Result = 2 - 0 = 2",
           "hint": "integrate term by term",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Definite Integrals",
-          "conceptId": "math_integration_definite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q3"
+          "conceptId": "math_calculus_definite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "What is difference between ∫ x dx and ∫₀¹ x dx?",
@@ -13184,11 +13316,11 @@ export const mathTopics = [
           "sol": "Step 1: ∫ x dx has no limits\nStep 2: Result is family of functions → x²/2 + C\nStep 3: ∫₀¹ x dx has limits\nStep 4: Result is numerical value → 1/2\nStep 5: Compare both results",
           "hint": "limits vs no limits",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Definite Integrals",
-          "conceptId": "math_integration_definite_integrals",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q4"
+          "conceptId": "math_calculus_definite_integrals",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         }
       ]
     },
@@ -13196,9 +13328,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|integration|Integration as Reverse of Differentiation",
+    "id": "math|calculus|Integration as Reverse of Differentiation",
     "curriculum_id": "math",
-    "chapter_id": "integration",
+    "chapter_id": "calculus",
+    "topic_group": "integration",
     "topic": "Integration as Reverse of Differentiation",
     "data": {
       "notes": "\n  \n<h2> Reverse of Differentiation</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nIntegration reverses differentiation.\nIf dy/dx = f(x), then ∫f(x) dx = original function.\n</p>\n\n<h3> EXAMPLES</h3>\n\n<p><b>Example 1:</b> derivative x² → integral gives x³/3</p>\n<p><b>Example 2:</b> derivative 2x → integral gives x²</p>\n<p><b>Example 3:</b> checking correctness of solutions</p>\n\n---\n\n<h3> WORKED EXAMPLES (3 EXAM-STYLE)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Find ∫2x dx</p>\n<p><b>Step 1:</b> Apply power rule in reverse</p>\n<p>∫2x dx = x² + C</p>\n<p><b>Step 2:</b> Add constant of integration</p>\n<p><b>Final Answer:</b> x² + C</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find ∫3x² dx</p>\n<p><b>Step 1:</b> Increase power by 1</p>\n<p>3x² → x³</p>\n<p><b>Step 2:</b> Divide by new power</p>\n<p>∫3x² dx = x³ + C</p>\n<p><b>Final Answer:</b> x³ + C</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> If dy/dx = 4x³, find y</p>\n<p><b>Step 1:</b> Integrate both sides</p>\n<p>y = ∫4x³ dx</p>\n<p><b>Step 2:</b> Apply rule</p>\n<p>y = x⁴ + C</p>\n<p><b>Final Answer:</b> y = x⁴ + C</p>\n\n---\n\n<h3> DIAGRAM</h3>\n\n<pre>\nDifferentiation ↓\nIntegration ↑ (reverse process)\n</pre>\n\n---\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Recovering position from velocity</li>\n<li>Signal reconstruction in electronics</li>\n<li>AI model inversion problems</li>\n</ul>\n\n---\n",
@@ -13219,11 +13352,11 @@ export const mathTopics = [
           "sol": "Step 1: Recognize 2x as derivative of x²\nStep 2: Apply integration rule → increase power of x\nStep 3: ∫ 2x dx = x² + C\nStep 4: Differentiate result → d/dx(x² + C)\nStep 5: Get 2x (original function)",
           "hint": "reverse of derivative",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Integration as Reverse of Differentiation",
-          "conceptId": "math_integration_integration_as_reverse_of_differentiation",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q1"
+          "conceptId": "math_calculus_integration_as_reverse_of_differentiation",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Find function if ∫ f(x) dx = x³/3 + C",
@@ -13241,11 +13374,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate both sides\nStep 2: d/dx (x³/3 + C)\nStep 3: Apply power rule → (3x²)/3\nStep 4: Simplify result\nStep 5: Get f(x)",
           "hint": "differentiate result",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Integration as Reverse of Differentiation",
-          "conceptId": "math_integration_integration_as_reverse_of_differentiation",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q2"
+          "conceptId": "math_calculus_integration_as_reverse_of_differentiation",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Show that integration adds a constant using ∫ 0 dx",
@@ -13263,11 +13396,11 @@ export const mathTopics = [
           "sol": "Step 1: Integrate 0 → ∫ 0 dx\nStep 2: Result is constant C\nStep 3: Differentiate C\nStep 4: d/dx(C) = 0\nStep 5: Confirm relationship",
           "hint": "constant rule",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Integration as Reverse of Differentiation",
-          "conceptId": "math_integration_integration_as_reverse_of_differentiation",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q3"
+          "conceptId": "math_calculus_integration_as_reverse_of_differentiation",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "If d/dx (x² + 5) = 2x, find integral of 2x",
@@ -13284,11 +13417,11 @@ export const mathTopics = [
           "sol": "Step 1: Recognize 2x as derivative of x²\nStep 2: Integrate 2x → x²\nStep 3: Add constant C\nStep 4: Final expression",
           "hint": "inverse process",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Integration as Reverse of Differentiation",
-          "conceptId": "math_integration_integration_as_reverse_of_differentiation",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q4"
+          "conceptId": "math_calculus_integration_as_reverse_of_differentiation",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         }
       ]
     },
@@ -13296,9 +13429,10 @@ export const mathTopics = [
     "is_deleted": false
   },
   {
-    "id": "math|integration|Applications of Integration",
+    "id": "math|calculus|Applications of Integration",
     "curriculum_id": "math",
-    "chapter_id": "integration",
+    "chapter_id": "calculus",
+    "topic_group": "integration",
     "topic": "Applications of Integration",
     "data": {
       "notes": "\n<h2> Applications of Integration</h2>\n\n<h3> DEEP NOTES</h3>\n<p>\nIntegration is used to accumulate small changes into a total result. It is essentially the reverse process of differentiation.\n</p>\n\n<pre>\n∫ f(x) dx → total accumulation\n</pre>\n<h3> WORKED EXAMPLES (MATHEMATICAL CALCULATION STYLE)</h3>\n\n<p><b>Example 1</b></p>\n<p><b>Question:</b> Show why ∫ v(t) dt gives displacement</p>\n<p><b>Hint:</b> velocity = rate of change of displacement</p>\n<p><b>Steps:</b></p>\n<p>Step 1: Let v(t) = ds/dt</p>\n<p>Step 2: Multiply both sides by dt → ds = v(t)dt</p>\n<p>Step 3: Integrate both sides → ∫ ds = ∫ v(t)dt</p>\n<p>Step 4: Left side becomes displacement s(t)</p>\n<p>Step 5: Final result → s(t) = ∫ v(t)dt</p>\n<p><b>Answer:</b> Integration of velocity gives displacement</p>\n<p><b>Explanation:</b> Integration reverses differentiation and accumulates total change</p>\n\n<br>\n\n<p><b>Example 2</b></p>\n<p><b>Question:</b> Find area under curve using integration idea</p>\n<p><b>Hint:</b> sum of rectangles</p>\n<p><b>Steps:</b></p>\n<p>Step 1: Divide area into small width Δx</p>\n<p>Step 2: Height of each rectangle = f(x)</p>\n<p>Step 3: Area of one strip = f(x)Δx</p>\n<p>Step 4: Sum all strips → Σ f(x)Δx</p>\n<p>Step 5: Take limit as Δx → 0</p>\n<p><b>Final expression:</b> ∫ f(x) dx</p>\n<p><b>Answer:</b> Integration gives total area</p>\n\n<br>\n\n<p><b>Example 3</b></p>\n<p><b>Question:</b> Show why ∫ F dx gives work done in physics</p>\n<p><b>Hint:</b> force × distance</p>\n<p><b>Steps:</b></p>\n<p>Step 1: Small work done dW = F dx</p>\n<p>Step 2: Add all small work contributions</p>\n<p>Step 3: ∫ dW = ∫ F dx</p>\n<p>Step 4: Total work W = ∫ F dx</p>\n<p>Step 5: Result gives accumulated energy transfer</p>\n<p><b>Answer:</b> W = ∫ F dx</p>\n<p><b>Explanation:</b> Integration sums continuous force over distance</p>\n\n<h3> REAL WORLD APPLICATION</h3>\n<ul>\n<li>Engineering design (volume of irregular objects)</li>\n<li>Physics motion tracking</li>\n<li>Economics cumulative profit analysis</li>\n</ul>\n",
@@ -13319,11 +13453,11 @@ export const mathTopics = [
           "sol": "Step 1: Recognize 2x as derivative of x²\nStep 2: Apply integration rule → increase power of x\nStep 3: ∫ 2x dx = x² + C\nStep 4: Differentiate result → d/dx(x² + C)\nStep 5: Get 2x (original function)",
           "hint": "reverse of derivative",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Applications of Integration",
-          "conceptId": "math_integration_applications_of_integration",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q1"
+          "conceptId": "math_calculus_applications_of_integration",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q1"
         },
         {
           "q": "Find function if ∫ f(x) dx = x³/3 + C",
@@ -13341,11 +13475,11 @@ export const mathTopics = [
           "sol": "Step 1: Differentiate both sides\nStep 2: d/dx (x³/3 + C)\nStep 3: Apply power rule → (3x²)/3\nStep 4: Simplify result\nStep 5: Get f(x)",
           "hint": "differentiate result",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Applications of Integration",
-          "conceptId": "math_integration_applications_of_integration",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q2"
+          "conceptId": "math_calculus_applications_of_integration",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q2"
         },
         {
           "q": "Show that integration adds a constant using ∫ 0 dx",
@@ -13363,11 +13497,11 @@ export const mathTopics = [
           "sol": "Step 1: Integrate 0 → ∫ 0 dx\nStep 2: Result is constant C\nStep 3: Differentiate C\nStep 4: d/dx(C) = 0\nStep 5: Confirm relationship",
           "hint": "constant rule",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Applications of Integration",
-          "conceptId": "math_integration_applications_of_integration",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q3"
+          "conceptId": "math_calculus_applications_of_integration",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q3"
         },
         {
           "q": "If d/dx (x² + 5) = 2x, find integral of 2x",
@@ -13384,11 +13518,11 @@ export const mathTopics = [
           "sol": "Step 1: Recognize 2x as derivative of x²\nStep 2: Integrate 2x → x²\nStep 3: Add constant C\nStep 4: Final expression",
           "hint": "inverse process",
           "subject": "math",
-          "chapter": "integration",
+          "chapter": "calculus",
           "topic": "Applications of Integration",
-          "conceptId": "math_integration_applications_of_integration",
-          "skillId": "math_integration",
-          "subskillId": "math_integration_q4"
+          "conceptId": "math_calculus_applications_of_integration",
+          "skillId": "math_calculus",
+          "subskillId": "math_calculus_q4"
         }
       ]
     },
@@ -13399,6 +13533,7 @@ export const mathTopics = [
     "id": "math|number_theory|Divisibility Rules",
     "curriculum_id": "math",
     "chapter_id": "number_theory",
+    "topic_group": "Divisibility Rules",
     "topic": "Divisibility Rules",
     "data": {
       "notes": "<h2>Divisibility Rules</h2>\n<hr>\n<h3>DEEP NOTES</h3>\n<h4>1. Core Concept</h4>\n<p>\nDivisibility rules are mental shortcuts that allow you to determine whether a given integer is divisible by another integer without performing long division.\n</p>\n<ul>\n<li><b>Rule for 2:</b> The last digit is even (0, 2, 4, 6, 8).</li>\n<li><b>Rule for 3:</b> The sum of all digits is divisible by 3.</li>\n<li><b>Rule for 4:</b> The number formed by the last two digits is divisible by 4.</li>\n<li><b>Rule for 5:</b> The last digit is 0 or 5.</li>\n<li><b>Rule for 6:</b> The number is divisible by both 2 and 3.</li>\n<li><b>Rule for 9:</b> The sum of all digits is divisible by 9.</li>\n<li><b>Rule for 10:</b> The last digit is 0.</li>\n</ul>\n<hr>\n<h4>2. Key Principle</h4>\n<p>\nEvery integer <i>n</i> can be expressed in base-10 expansion. The properties of powers of 10 modulo <i>d</i> determine the divisibility test for divisor <i>d</i>.\n</p>\n",
@@ -13492,6 +13627,7 @@ export const mathTopics = [
     "id": "math|number_theory|Modular Arithmetic",
     "curriculum_id": "math",
     "chapter_id": "number_theory",
+    "topic_group": "Modular Arithmetic",
     "topic": "Modular Arithmetic",
     "data": {
       "notes": "<h2>Modular Arithmetic</h2>\n<hr>\n<h3>DEEP NOTES</h3>\n<h4>1. Concept of Clock Arithmetic</h4>\n<p>\nModular arithmetic is a system of arithmetic for integers where numbers 'wrap around' upon reaching a certain value, known as the <b>modulus</b>.\n</p>\n<p>\nWe write: <code>a ≡ b (mod m)</code> if and only if <i>m</i> divides <code>(a - b)</code>. Equivalently, <code>a</code> and <code>b</code> have the same remainder when divided by <code>m</code>.\n</p>\n<hr>\n<h4>2. Fundamental Properties</h4>\n<ul>\n<li><b>Addition:</b> (a + b) mod m = [(a mod m) + (b mod m)] mod m</li>\n<li><b>Multiplication:</b> (a × b) mod m = [(a mod m) × (b mod m)] mod m</li>\n<li><b>Exponentiation:</b> (a^k) mod m = [(a mod m)^k] mod m</li>\n</ul>\n",
@@ -13585,6 +13721,7 @@ export const mathTopics = [
     "id": "math|number_theory|Prime Numbers",
     "curriculum_id": "math",
     "chapter_id": "number_theory",
+    "topic_group": "Prime Numbers",
     "topic": "Prime Numbers",
     "data": {
       "notes": "<h2>Prime Numbers</h2>\n<hr>\n<h3>DEEP NOTES</h3>\n<h4>1. Definition</h4>\n<p>\nA <b>prime number</b> is a whole number greater than 1 whose only positive divisors are 1 and itself. A number greater than 1 that is not prime is called a <b>composite number</b>.\n</p>\n<p><b>Note:</b> The number 1 is neither prime nor composite.</p>\n<hr>\n<h4>2. Fundamental Theorem of Arithmetic</h4>\n<p>\nEvery integer greater than 1 either is a prime number itself or can be represented as the product of prime numbers in a way that is unique up to the order of the factors.\n</p>\n",
@@ -13679,6 +13816,7 @@ export const mathTopics = [
     "id": "math|number_theory|Congruence Relations",
     "curriculum_id": "math",
     "chapter_id": "number_theory",
+    "topic_group": "Congruence Relations",
     "topic": "Congruence Relations",
     "data": {
       "notes": "<h2>Congruence Relations</h2>\n<hr>\n<h3>DEEP NOTES</h3>\n<h4>1. Definition of Congruence</h4>\n<p>\nTwo integers <i>a</i> and <i>b</i> are said to be <b>congruent modulo m</b> (denoted <code>a ≡ b (mod m)</code>) if their difference <code>a - b</code> is an integer multiple of <code>m</code>.\n</p>\n<hr>\n<h4>2. Equivalence Relation Properties</h4>\n<ul>\n<li><b>Reflexive:</b> a ≡ a (mod m)</li>\n<li><b>Symmetric:</b> If a ≡ b (mod m), then b ≡ a (mod m)</li>\n<li><b>Transitive:</b> If a ≡ b (mod m) and b ≡ c (mod m), then a ≡ c (mod m)</li>\n</ul>\n",
@@ -13752,6 +13890,7 @@ export const mathTopics = [
     "id": "math|number_theory|Cryptography Basics",
     "curriculum_id": "math",
     "chapter_id": "number_theory",
+    "topic_group": "Cryptography Basics",
     "topic": "Cryptography Basics",
     "data": {
       "notes": "<h2>Cryptography Basics</h2>\n<hr>\n<h3>DEEP NOTES</h3>\n<h4>1. Introduction to Cryptography</h4>\n<p>\nCryptography is the practice and study of techniques for secure communication in the presence of adversaries. It relies heavily on number theory, modular arithmetic, and one-way mathematical functions.\n</p>\n<hr>\n<h4>2. Symmetric vs Asymmetric Cryptography</h4>\n<ul>\n<li><b>Symmetric Encryption:</b> Same secret key used for encryption and decryption (e.g., Caesar cipher, AES).</li>\n<li><b>Asymmetric (Public Key) Encryption:</b> Uses a public key for encryption and a private key for decryption (e.g., RSA).</li>\n</ul>\n<hr>\n<h4>3. Caesar Cipher</h4>\n<p>\nA substitution cipher where each letter in the plaintext is shifted by a fixed number of positions <i>k</i> down the alphabet:\n<br><code>E(x) = (x + k) mod 26</code>\n<br><code>D(x) = (x - k) mod 26</code>\n</p>\n",

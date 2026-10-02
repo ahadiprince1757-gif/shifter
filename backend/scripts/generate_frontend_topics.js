@@ -25,6 +25,7 @@ for (const [key, val] of contentMap.entries()) {
     id: `${val.sid}|${val.cid}|${val.topic}`,
     curriculum_id: val.sid,
     chapter_id: val.cid,
+    topic_group: val.topicGroup || val.topic,
     topic: val.topic,
     data: {
       notes: val.notes,

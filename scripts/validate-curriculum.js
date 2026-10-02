@@ -115,25 +115,30 @@ function validate() {
       const bTopics = bChap.topics || [];
       const fTopics = fChap.topics || [];
 
+      const serializeTopic = (t) => (typeof t === "object" && t !== null ? JSON.stringify(t) : String(t));
+
       // Duplicate topics
-      const bTopicDupes = bTopics.filter((t, idx) => bTopics.indexOf(t) !== idx);
+      const bTopicKeys = bTopics.map(serializeTopic);
+      const fTopicKeys = fTopics.map(serializeTopic);
+
+      const bTopicDupes = bTopicKeys.filter((k, idx) => bTopicKeys.indexOf(k) !== idx);
       if (bTopicDupes.length > 0) {
         console.error(`  [DUPLICATE ID] Backend ${subId}/${chapId} has duplicate topics: ${bTopicDupes.join(", ")}`);
         errors++;
       }
 
       // Missing topics in frontend
-      for (const t of bTopics) {
-        if (!fTopics.includes(t)) {
-          console.error(`  [MISSING FROM FRONTEND] Topic "${t}" in ${subId}/${chapId}`);
+      for (let i = 0; i < bTopics.length; i++) {
+        if (!fTopicKeys.includes(bTopicKeys[i])) {
+          console.error(`  [MISSING FROM FRONTEND] Topic "${bTopicKeys[i]}" in ${subId}/${chapId}`);
           errors++;
         }
       }
 
       // Extra topics in frontend
-      for (const t of fTopics) {
-        if (!bTopics.includes(t)) {
-          console.error(`  [EXTRA TOPIC IN FRONTEND] Topic "${t}" in ${subId}/${chapId}`);
+      for (let i = 0; i < fTopics.length; i++) {
+        if (!bTopicKeys.includes(fTopicKeys[i])) {
+          console.error(`  [EXTRA TOPIC IN FRONTEND] Topic "${fTopicKeys[i]}" in ${subId}/${chapId}`);
           errors++;
         }
       }

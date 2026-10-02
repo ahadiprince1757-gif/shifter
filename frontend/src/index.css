@@ -9420,6 +9420,124 @@ html.dark-mode .ai-msg-bubble--assistant {
   color: var(--t3);
 }
 
+/* ── Chapter Progress Bar ── */
+.chapter-progress-track {
+  width: 100%;
+  max-width: 480px;
+  height: 6px;
+  background: var(--bd);
+  border-radius: 99px;
+  overflow: hidden;
+  margin-top: 0.75rem;
+}
+
+.chapter-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #6366f1, #3b82f6, #10b981);
+  border-radius: 99px;
+  transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ── Topic Group Section ── */
+.topic-hierarchy-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  margin-top: 1rem;
+}
+
+.topic-group-section {
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 18px;
+  padding: 1.25rem 1.5rem 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.topic-group-section:hover {
+  border-color: var(--bd2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.topic-group-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 1px solid var(--bd);
+}
+
+.topic-group-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.topic-group-index {
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.topic-group-title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--t);
+  letter-spacing: -0.01em;
+}
+
+.topic-group-badge {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--t2);
+  background: var(--bg);
+  border: 1px solid var(--bd);
+  padding: 0.25rem 0.75rem;
+  border-radius: 99px;
+}
+
+.topic-group-badge.badge-all-done {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.subtopic-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.subtopic-card {
+  background: var(--bg) !important;
+  border: 1px solid var(--bd) !important;
+  border-radius: 12px !important;
+  padding: 0.9rem 1.25rem !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.subtopic-card:hover {
+  transform: translateY(-2px) !important;
+  border-color: #6366f1 !important;
+  box-shadow: 0 4px 14px rgba(99, 102, 241, 0.08) !important;
+}
+
+.subtopic-index {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--t3);
+  font-variant-numeric: tabular-nums;
+  min-width: 30px;
+}
+
 /* ── Empty AI State Styles ── */
 .ai-empty-title {
   font-family: 'Newsreader', Georgia, serif;
