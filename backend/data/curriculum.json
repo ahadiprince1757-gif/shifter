@@ -132,13 +132,17 @@
         "id": "matrices",
         "label": "Matrices",
         "topics": [
-          "Introduction & Notation",
-          "Basic Matrix Operations",
-          "Matrix Multiplication",
-          "Determinants, Minors, Cofactors & Inverses",
-          "Simultaneous Linear Equations Using Matrices",
-          "Matrix Transformations",
-          "Matrix Diagnostic & Mixed Practice"
+          "Introduction to Matrices",
+          "Order of a Matrix",
+          "Elements of a Matrix",
+          "Types of Matrices",
+          "Equality of Matrices",
+          "Matrix Addition",
+          "Matrix Subtraction",
+          "Scalar Multiplication",
+          "Reflection in the x-axis",
+          "Reflection in the y-axis",
+          "Reflection in the Line y = x"
         ]
       },
       {

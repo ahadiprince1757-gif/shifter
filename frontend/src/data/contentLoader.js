@@ -9,7 +9,7 @@ import staticCurriculum from "./curriculum.json";
 import { ACTIVE_SUBJECT_IDS } from "./subjectRegistry";
 import { curriculumRepo } from "../repository/curriculumRepo";
 
-export const CONTENT_VERSION = 3;
+export const CONTENT_VERSION = 4;
 
 const STATIC_SUBJECT_MAP = {
   math: mathTopics,
@@ -88,7 +88,7 @@ export async function seedBundledTopics(force = false) {
     const existingCount = await db.topics.count().catch(() => 0);
 
     // If already seeded at current content version and has content, skip
-    if (!force && meta?.version === CONTENT_VERSION && existingCount >= 341) {
+    if (!force && meta?.version === CONTENT_VERSION && existingCount >= 345) {
       return { skipped: true, count: existingCount };
     }
 
