@@ -23,23 +23,53 @@
         ]
       },
       {
+        "id": "complex_numbers",
+        "label": "Complex Numbers",
+        "topics": [
+          {
+            "name": "Imaginary Unit and Basic Complex Numbers",
+            "subtopics": [
+              "Imaginary Unit and Basic Complex Numbers"
+            ]
+          },
+          {
+            "name": "Argand Diagram",
+            "subtopics": [
+              "Argand Diagram"
+            ]
+          },
+          {
+            "name": "Operations on Complex Numbers",
+            "subtopics": [
+              "Operations on Complex Numbers"
+            ]
+          },
+          {
+            "name": "Polar Form and De Moivre's Theorem",
+            "subtopics": [
+              "Polar Form and De Moivre's Theorem"
+            ]
+          }
+        ]
+      },
+      {
         "id": "algebra",
         "label": "Algebra",
         "topics": [
           {
-            "name": "Algebraic Expressions",
+            "name": "Algebraic expressions",
             "subtopics": [
               "Algebraic expressions"
             ]
           },
           {
-            "name": "Simplifying Expressions",
+            "name": "Simplifying expressions",
             "subtopics": [
               "Simplifying expressions"
             ]
           },
           {
-            "name": "Linear Equations",
+            "name": "Linear equations",
             "subtopics": [
               "Linear equations"
             ]
@@ -51,7 +81,7 @@
             ]
           },
           {
-            "name": "Expanding Brackets",
+            "name": "Expanding brackets",
             "subtopics": [
               "Expanding brackets"
             ]
@@ -63,7 +93,7 @@
         "label": "Geometry",
         "topics": [
           {
-            "name": "Angle Properties",
+            "name": "Angle properties",
             "subtopics": [
               "Classifying Angles",
               "Angles on a Straight Line",
@@ -86,9 +116,7 @@
             "name": "Quadrilaterals",
             "subtopics": [
               "Quadrilateral Interior Angle Sum",
-              "Parallelogram: Opposite Sides Are Equal",
-              "Parallelogram: Opposite Angles Are Equal",
-              "Parallelogram: Adjacent Angles"
+              "Parallelogram"
             ]
           },
           {
@@ -118,10 +146,196 @@
             ]
           },
           {
-            "name": "Polygons",
+            "name": "polygons",
             "subtopics": [
               "Interior Angle Sum of Polygons",
               "Exterior Angles of a Polygon"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "linear_programming",
+        "label": "Linear Programming",
+        "topics": [
+          {
+            "name": "Meaning of a Variable in Linear Programming",
+            "subtopics": [
+              "Meaning of a Variable in Linear Programming"
+            ]
+          },
+          {
+            "name": "Identifying Variables from a Problem",
+            "subtopics": [
+              "Identifying Variables from a Problem"
+            ]
+          },
+          {
+            "name": "Non-Negativity Constraints",
+            "subtopics": [
+              "Non-Negativity Constraints"
+            ]
+          },
+          {
+            "name": "Meaning of an Objective Function",
+            "subtopics": [
+              "Meaning of an Objective Function"
+            ]
+          },
+          {
+            "name": "Identifying the Objective Function",
+            "subtopics": [
+              "Identifying the Objective Function"
+            ]
+          },
+          {
+            "name": "Maximization",
+            "subtopics": [
+              "Maximization"
+            ]
+          },
+          {
+            "name": "Minimization",
+            "subtopics": [
+              "Minimization"
+            ]
+          },
+          {
+            "name": "Meaning of a Constraint",
+            "subtopics": [
+              "Meaning of a Constraint"
+            ]
+          },
+          {
+            "name": "Translating 'At Most' into an Inequality",
+            "subtopics": [
+              "Translating 'At Most' into an Inequality"
+            ]
+          },
+          {
+            "name": "Translating 'At Least' into an Inequality",
+            "subtopics": [
+              "Translating 'At Least' into an Inequality"
+            ]
+          },
+          {
+            "name": "Translating 'Cannot Exceed' into an Inequality",
+            "subtopics": [
+              "Translating 'Cannot Exceed' into an Inequality"
+            ]
+          },
+          {
+            "name": "Translating 'No More Than' into an Inequality",
+            "subtopics": [
+              "Translating 'No More Than' into an Inequality"
+            ]
+          },
+          {
+            "name": "Translating 'Not Less Than' into an Inequality",
+            "subtopics": [
+              "Translating 'Not Less Than' into an Inequality"
+            ]
+          },
+          {
+            "name": "Translating 'Minimum of' into an Inequality",
+            "subtopics": [
+              "Translating 'Minimum of' into an Inequality"
+            ]
+          },
+          {
+            "name": "Converting an Inequality to Its Boundary Equation",
+            "subtopics": [
+              "Converting an Inequality to Its Boundary Equation"
+            ]
+          },
+          {
+            "name": "Finding the x-Intercept of a Boundary",
+            "subtopics": [
+              "Finding the x-Intercept of a Boundary"
+            ]
+          },
+          {
+            "name": "Finding the y-Intercept of a Boundary",
+            "subtopics": [
+              "Finding the y-Intercept of a Boundary"
+            ]
+          },
+          {
+            "name": "Finding Both Intercepts of a Boundary",
+            "subtopics": [
+              "Finding Both Intercepts of a Boundary"
+            ]
+          },
+          {
+            "name": "Testing a Point in a Linear Inequality",
+            "subtopics": [
+              "Testing a Point in a Linear Inequality"
+            ]
+          },
+          {
+            "name": "Solid and Dashed Boundary Lines",
+            "subtopics": [
+              "Solid and Dashed Boundary Lines"
+            ]
+          },
+          {
+            "name": "Intersection of Two Boundary Lines",
+            "subtopics": [
+              "Intersection of Two Boundary Lines"
+            ]
+          },
+          {
+            "name": "Substitution Method for Finding an Intersection",
+            "subtopics": [
+              "Substitution Method for Finding an Intersection"
+            ]
+          },
+          {
+            "name": "Elimination Method for Finding an Intersection",
+            "subtopics": [
+              "Elimination Method for Finding an Intersection"
+            ]
+          },
+          {
+            "name": "A Vertex Is an Intersection Point",
+            "subtopics": [
+              "A Vertex Is an Intersection Point"
+            ]
+          },
+          {
+            "name": "Checking Whether an Intersection Is Feasible",
+            "subtopics": [
+              "Checking Whether an Intersection Is Feasible"
+            ]
+          },
+          {
+            "name": "Objective Function Value at a Point",
+            "subtopics": [
+              "Objective Function Value at a Point"
+            ]
+          },
+          {
+            "name": "Comparing Objective Values",
+            "subtopics": [
+              "Comparing Objective Values"
+            ]
+          },
+          {
+            "name": "Maximum Objective Value",
+            "subtopics": [
+              "Maximum Objective Value"
+            ]
+          },
+          {
+            "name": "Minimum Objective Value",
+            "subtopics": [
+              "Minimum Objective Value"
+            ]
+          },
+          {
+            "name": "Optimal Solution Coordinates",
+            "subtopics": [
+              "Optimal Solution Coordinates"
             ]
           }
         ]
@@ -221,19 +435,19 @@
         "label": "Graphs",
         "topics": [
           {
-            "name": "Coordinate Plane Basics",
+            "name": "Coordinate plane basics",
             "subtopics": [
               "Coordinate plane basics"
             ]
           },
           {
-            "name": "Plotting Points",
+            "name": "Plotting points",
             "subtopics": [
               "Plotting points"
             ]
           },
           {
-            "name": "Line Graphs",
+            "name": "Line graphs",
             "subtopics": [
               "Line graphs"
             ]
@@ -245,7 +459,7 @@
             ]
           },
           {
-            "name": "Applications of Graphs",
+            "name": "Applications of graphs",
             "subtopics": [
               "Applications of graphs"
             ]
@@ -257,13 +471,13 @@
         "label": "Ratio & Proportion",
         "topics": [
           {
-            "name": "Ratio Basics",
+            "name": "Ratio basics",
             "subtopics": [
               "Ratio basics"
             ]
           },
           {
-            "name": "Dividing in Ratio",
+            "name": "Dividing in ratio",
             "subtopics": [
               "Dividing in ratio"
             ]
@@ -275,13 +489,13 @@
             ]
           },
           {
-            "name": "Direct Proportion",
+            "name": "Direct proportion",
             "subtopics": [
               "Direct proportion"
             ]
           },
           {
-            "name": "Inverse Proportion",
+            "name": "Inverse proportion",
             "subtopics": [
               "Inverse proportion"
             ]
@@ -293,7 +507,7 @@
         "label": "Statistics",
         "topics": [
           {
-            "name": "Data & Frequency Tables",
+            "name": "Data & frequency tables",
             "subtopics": [
               "Data & frequency tables"
             ]
@@ -317,7 +531,7 @@
             ]
           },
           {
-            "name": "Bar Graphs",
+            "name": "Bar graphs",
             "subtopics": [
               "Bar graphs"
             ]
@@ -329,33 +543,219 @@
         "label": "Probability",
         "topics": [
           {
-            "name": "Basic Probability",
+            "name": "Sample Space",
             "subtopics": [
-              "Basic probability"
+              "Sample Space"
             ]
           },
           {
-            "name": "Dice Probability",
+            "name": "Counting the Number of Outcomes in a Sample Space",
             "subtopics": [
-              "Dice probability"
+              "Counting the Number of Outcomes in a Sample Space"
             ]
           },
           {
-            "name": "Coin Probability",
+            "name": "Identifying Favourable Outcomes",
             "subtopics": [
-              "Coin probability"
+              "Identifying Favourable Outcomes"
             ]
           },
           {
-            "name": "Combined Events",
+            "name": "Calculating Probability from Counts",
             "subtopics": [
-              "Combined events"
+              "Calculating Probability from Counts"
             ]
           },
           {
-            "name": "Bayes Theorem",
+            "name": "Writing Probability as a Fraction",
             "subtopics": [
-              "Bayes Theorem"
+              "Writing Probability as a Fraction"
+            ]
+          },
+          {
+            "name": "Simplifying a Probability Fraction",
+            "subtopics": [
+              "Simplifying a Probability Fraction"
+            ]
+          },
+          {
+            "name": "Probability Between 0 and 1",
+            "subtopics": [
+              "Probability Between 0 and 1"
+            ]
+          },
+          {
+            "name": "Probability of an Impossible Event",
+            "subtopics": [
+              "Probability of an Impossible Event"
+            ]
+          },
+          {
+            "name": "Probability of a Certain Event",
+            "subtopics": [
+              "Probability of a Certain Event"
+            ]
+          },
+          {
+            "name": "Complement of an Event",
+            "subtopics": [
+              "Complement of an Event"
+            ]
+          },
+          {
+            "name": "Probability of the Complement of an Event",
+            "subtopics": [
+              "Probability of the Complement of an Event"
+            ]
+          },
+          {
+            "name": "Single-Outcome Probability with a Die",
+            "subtopics": [
+              "Single-Outcome Probability with a Die"
+            ]
+          },
+          {
+            "name": "Probability of a Category of Outcomes",
+            "subtopics": [
+              "Probability of a Category of Outcomes"
+            ]
+          },
+          {
+            "name": "Probability from a Two-Colour Bag",
+            "subtopics": [
+              "Probability from a Two-Colour Bag"
+            ]
+          },
+          {
+            "name": "Probability from a Table",
+            "subtopics": [
+              "Probability from a Table"
+            ]
+          },
+          {
+            "name": "Probability from a Diagram",
+            "subtopics": [
+              "Probability from a Diagram"
+            ]
+          },
+          {
+            "name": "Experimental Probability",
+            "subtopics": [
+              "Experimental Probability"
+            ]
+          },
+          {
+            "name": "Theoretical and Experimental Probability",
+            "subtopics": [
+              "Theoretical and Experimental Probability"
+            ]
+          },
+          {
+            "name": "Expected Frequency",
+            "subtopics": [
+              "Expected Frequency"
+            ]
+          },
+          {
+            "name": "Probability of A or B",
+            "subtopics": [
+              "Probability of A or B"
+            ]
+          },
+          {
+            "name": "Mutually Exclusive Events",
+            "subtopics": [
+              "Mutually Exclusive Events"
+            ]
+          },
+          {
+            "name": "Addition Rule for Mutually Exclusive Events",
+            "subtopics": [
+              "Addition Rule for Mutually Exclusive Events"
+            ]
+          },
+          {
+            "name": "Probability of A and B",
+            "subtopics": [
+              "Probability of A and B"
+            ]
+          },
+          {
+            "name": "Independent Events",
+            "subtopics": [
+              "Independent Events"
+            ]
+          },
+          {
+            "name": "Multiplication Rule for Independent Events",
+            "subtopics": [
+              "Multiplication Rule for Independent Events"
+            ]
+          },
+          {
+            "name": "Two-Stage Experiments",
+            "subtopics": [
+              "Two-Stage Experiments"
+            ]
+          },
+          {
+            "name": "Tree Diagrams",
+            "subtopics": [
+              "Tree Diagrams"
+            ]
+          },
+          {
+            "name": "Sampling With Replacement",
+            "subtopics": [
+              "Sampling With Replacement"
+            ]
+          },
+          {
+            "name": "Sampling Without Replacement",
+            "subtopics": [
+              "Sampling Without Replacement"
+            ]
+          },
+          {
+            "name": "Dependent Events",
+            "subtopics": [
+              "Dependent Events"
+            ]
+          },
+          {
+            "name": "Conditional Probability",
+            "subtopics": [
+              "Conditional Probability"
+            ]
+          },
+          {
+            "name": "Reading a Two-Way Table",
+            "subtopics": [
+              "Reading a Two-Way Table"
+            ]
+          },
+          {
+            "name": "Conditional Probability from a Two-Way Table",
+            "subtopics": [
+              "Conditional Probability from a Two-Way Table"
+            ]
+          },
+          {
+            "name": "Venn Diagrams",
+            "subtopics": [
+              "Venn Diagrams"
+            ]
+          },
+          {
+            "name": "Intersection of Two Events",
+            "subtopics": [
+              "Intersection of Two Events"
+            ]
+          },
+          {
+            "name": "General Addition Rule",
+            "subtopics": [
+              "General Addition Rule"
             ]
           },
           {
@@ -365,100 +765,27 @@
             ]
           },
           {
-            "name": "Real Life Probability",
+            "name": "Expected Value from a Table",
             "subtopics": [
-              "Real life probability"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "complex_numbers",
-        "label": "Complex Numbers",
-        "topics": [
-          {
-            "name": "Imaginary Unit and Basic Complex Numbers",
-            "subtopics": [
-              "Imaginary Unit and Basic Complex Numbers"
+              "Expected Value from a Table"
             ]
           },
           {
-            "name": "Argand Diagram",
+            "name": "Probability Distribution",
             "subtopics": [
-              "Argand Diagram"
+              "Probability Distribution"
             ]
           },
           {
-            "name": "Operations on Complex Numbers",
+            "name": "Checking a Probability Distribution",
             "subtopics": [
-              "Operations on Complex Numbers"
+              "Checking a Probability Distribution"
             ]
           },
           {
-            "name": "Polar Form and De Moivre's Theorem",
+            "name": "Finding a Missing Probability",
             "subtopics": [
-              "Polar Form and De Moivre's Theorem"
-            ]
-          }
-        ]
-      },
-      {
-        "id": "linear_programming",
-        "label": "Linear Programming",
-        "topics": [
-          {
-            "name": "Introduction to Linear Programming",
-            "subtopics": [
-              "Meaning of a Variable in Linear Programming",
-              "Identifying Variables from a Problem",
-              "Meaning of an Objective Function",
-              "Identifying the Objective Function",
-              "Maximization",
-              "Minimization"
-            ]
-          },
-          {
-            "name": "Linear Inequality Constraints",
-            "subtopics": [
-              "Non-Negativity Constraints",
-              "Meaning of a Constraint",
-              "Translating 'At Most' into an Inequality",
-              "Translating 'At Least' into an Inequality",
-              "Translating 'Cannot Exceed' into an Inequality",
-              "Translating 'No More Than' into an Inequality",
-              "Translating 'Not Less Than' into an Inequality",
-              "Translating 'Minimum of' into an Inequality"
-            ]
-          },
-          {
-            "name": "Graphical Method & Boundaries",
-            "subtopics": [
-              "Converting an Inequality to Its Boundary Equation",
-              "Finding the x-Intercept of a Boundary",
-              "Finding the y-Intercept of a Boundary",
-              "Finding Both Intercepts of a Boundary",
-              "Testing a Point in a Linear Inequality",
-              "Solid and Dashed Boundary Lines"
-            ]
-          },
-          {
-            "name": "Feasible Region & Vertices",
-            "subtopics": [
-              "Intersection of Two Boundary Lines",
-              "Substitution Method for Finding an Intersection",
-              "Elimination Method for Finding an Intersection",
-              "A Vertex Is an Intersection Point",
-              "Checking Whether an Intersection Is Feasible"
-            ]
-          },
-          {
-            "name": "Optimization at Corner Points",
-            "subtopics": [
-              "Objective Function Value at a Point",
-              "Comparing Objective Values",
-              "Maximum Objective Value",
-              "Minimum Objective Value",
-              "Optimal Solution Coordinates"
+              "Finding a Missing Probability"
             ]
           }
         ]
@@ -468,7 +795,7 @@
         "label": "Matrices",
         "topics": [
           {
-            "name": "Matrix 1: Fundamentals",
+            "name": "Matrix 1",
             "subtopics": [
               "Introduction to Matrices",
               "Order of a Matrix",
@@ -478,7 +805,7 @@
             ]
           },
           {
-            "name": "Matrix Arithmetic",
+            "name": "Matrix Arithemetic",
             "subtopics": [
               "Matrix Addition",
               "Matrix Subtraction",
@@ -486,11 +813,18 @@
             ]
           },
           {
-            "name": "Matrix Transformations",
+            "name": "Matrix of transformation",
             "subtopics": [
               "Reflection in the x-axis",
               "Reflection in the y-axis",
-              "Reflection in the Line y = x"
+              "Reflection in the Line y = x",
+              "Rotation Through 90 Degrees Anticlockwise",
+              "Rotation Through 90 Degrees Clockwise",
+              "Rotation Through 180 Degrees",
+              "Rotation Through 270 Degrees Anticlockwise",
+              "Rotation Through 270 Degrees Clockwise",
+              "Rotating a Triangle Using a Transformation Matrix",
+              "Rotation About a Point Other Than the Origin"
             ]
           }
         ]
@@ -500,33 +834,147 @@
         "label": "Vectors",
         "topics": [
           {
-            "name": "Vector Notation",
+            "name": "Vector From One Point to Another",
             "subtopics": [
-              "Vector Notation"
+              "Vector From One Point to Another"
             ]
           },
           {
-            "name": "Magnitude and Direction",
+            "name": "Equal Vectors",
             "subtopics": [
-              "Magnitude and Direction"
+              "Equal Vectors"
             ]
           },
           {
-            "name": "Vector Addition and Subtraction",
+            "name": "Opposite Vectors",
             "subtopics": [
-              "Vector Addition and Subtraction"
+              "Opposite Vectors"
             ]
           },
           {
-            "name": "Dot Product (Scalar Product)",
+            "name": "Scalar Multiplication of a Vector",
             "subtopics": [
-              "Dot Product (Scalar Product)"
+              "Scalar Multiplication of a Vector"
             ]
           },
           {
-            "name": "Applications of Vectors",
+            "name": "Parallel Vectors",
             "subtopics": [
-              "Applications of Vectors"
+              "Parallel Vectors"
+            ]
+          },
+          {
+            "name": "Position Vector",
+            "subtopics": [
+              "Position Vector"
+            ]
+          },
+          {
+            "name": "Vector Addition",
+            "subtopics": [
+              "Vector Addition"
+            ]
+          },
+          {
+            "name": "Vector Subtraction",
+            "subtopics": [
+              "Vector Subtraction"
+            ]
+          },
+          {
+            "name": "Magnitude of a Vector",
+            "subtopics": [
+              "Magnitude of a Vector"
+            ]
+          },
+          {
+            "name": "Unit Vector",
+            "subtopics": [
+              "Unit Vector"
+            ]
+          },
+          {
+            "name": "Midpoint Using Vectors",
+            "subtopics": [
+              "Midpoint Using Vectors"
+            ]
+          },
+          {
+            "name": "Section Formula Using Vectors",
+            "subtopics": [
+              "Section Formula Using Vectors"
+            ]
+          },
+          {
+            "name": "Finding an Unknown Using Vector Equations",
+            "subtopics": [
+              "Finding an Unknown Using Vector Equations"
+            ]
+          },
+          {
+            "name": "Geometric Vector Problems",
+            "subtopics": [
+              "Geometric Vector Problems"
+            ]
+          },
+          {
+            "name": "Resultant Vector",
+            "subtopics": [
+              "Resultant Vector"
+            ]
+          },
+          {
+            "name": "Direction of a Vector",
+            "subtopics": [
+              "Direction of a Vector"
+            ]
+          },
+          {
+            "name": "Scalar Product of Vectors",
+            "subtopics": [
+              "Scalar Product of Vectors"
+            ]
+          },
+          {
+            "name": "Proving Points Are Collinear Using Vectors",
+            "subtopics": [
+              "Proving Points Are Collinear Using Vectors"
+            ]
+          },
+          {
+            "name": "Vector Equation of a Line",
+            "subtopics": [
+              "Vector Equation of a Line"
+            ]
+          },
+          {
+            "name": "Intersection of Two Vector Lines",
+            "subtopics": [
+              "Intersection of Two Vector Lines"
+            ]
+          },
+          {
+            "name": "Vector Proof of the Midpoint Theorem",
+            "subtopics": [
+              "Vector Proof of the Midpoint Theorem"
+            ]
+          },
+          {
+            "name": "Vector Proof of a Parallelogram",
+            "subtopics": [
+              "Vector Proof of a Parallelogram"
+            ]
+          },
+          {
+            "name": "Finding the Fourth Vertex of a Parallelogram",
+            "subtopics": [
+              "Finding the Fourth Vertex of a Parallelogram"
+            ]
+          },
+          {
+            "name": "Vector Proof of Collinearity",
+            "subtopics": [
+              "Vector Proof of Collinearity"
             ]
           }
         ]
@@ -536,17 +984,7 @@
         "label": "Calculus",
         "topics": [
           {
-            "name": "Limits",
-            "subtopics": [
-              "Concept of Limits",
-              "Left-Hand and Right-Hand Limits",
-              "Indeterminate Forms",
-              "One-Sided Limit Problems",
-              "Applications of Limits"
-            ]
-          },
-          {
-            "name": "Differentiation",
+            "name": "differentiation",
             "subtopics": [
               "Gradient of a Curve",
               "Rate of Change",
@@ -556,7 +994,7 @@
             ]
           },
           {
-            "name": "Integration",
+            "name": "integration",
             "subtopics": [
               "Area Under a Curve",
               "Indefinite Integrals",
@@ -593,12 +1031,6 @@
             "name": "Congruence Relations",
             "subtopics": [
               "Congruence Relations"
-            ]
-          },
-          {
-            "name": "Cryptography Basics",
-            "subtopics": [
-              "Cryptography Basics"
             ]
           }
         ]

@@ -5161,7 +5161,7 @@ add(
 add(
   "math",
   "geometry",
-  "Polygons",
+  "polygons",
   "Interior Angle Sum of Polygons",
 
   `<h2>Interior Angle Sum of Polygons</h2>
@@ -13193,713 +13193,5804 @@ Mangoes  ███       (3)
     }
   ]
 );
-
 add(
   "math",
   "probability",
-  "Basic probability",
-
-  `<h2>Basic Probability</h2>
-
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-Probability measures how likely an event is to occur.
-It compares favorable outcomes to total possible outcomes in a sample space.
-</p>
-
-<h3> WELL DETAILED NOTES</h3>
-<ul>
-<li>Probability = favorable outcomes ÷ total outcomes</li>
-<li>Values range from 0 (impossible) to 1 (certain)</li>
-<li>All outcomes must be equally likely</li>
-<li>Always simplify fractions</li>
-<li>Careful counting is the most important step</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-
-<pre>
-Example 1:
-A bag contains 2 red balls and 3 blue balls.
-P(red)?
-
-Step 1: Total = 2 + 3 = 5
-Step 2: Favorable = 2
-Step 3: P = 2/5
-</pre>
-
-<pre>
-Example 2:
-A bag contains 3 red balls and 2 blue balls.
-P(blue)?
-
-Step 1: Total = 5
-Step 2: Favorable = 2
-Step 3: P = 2/5
-</pre>
-
-<pre>
-Example 3:
-A bag contains 4 red balls and 1 blue ball.
-P(not red)?
-
-Step 1: Total = 5
-Step 2: Not red = 1
-Step 3: P = 1/5
-</pre>
-
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Weather forecasting predictions</li>
-<li>Insurance risk calculations</li>
-<li>Games of chance (lottery, dice)</li>
-<li>Decision making under uncertainty</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "A bag contains 5 red balls and 3 blue balls. What is the probability of picking a blue ball?",
-      "hint": "favorable ÷ total",
-      "steps": [
-        "Step 1: Identify total number of balls = 5 + 3 = 8",
-        "Step 2: Identify favorable outcomes (blue balls) = 3",
-        "Step 3: Write probability formula P = favorable / total",
-        "Step 4: Substitute P = 3 / 8",
-        "Step 5: Simplify if possible"
-      ],
-      "ans": "3/8",
-      "why": "Probability is calculated as favorable outcomes divided by total outcomes"
-    },
-    {
-      "q": "A bag has 6 red balls and 4 blue balls. What is the probability of NOT picking red?",
-      "hint": "complement rule",
-      "steps": [
-        "Step 1: Find total balls = 6 + 4 = 10",
-        "Step 2: Identify non-red outcomes = blue balls = 4",
-        "Step 3: Write probability P = favorable / total",
-        "Step 4: Substitute P = 4 / 10",
-        "Step 5: Simplify fraction"
-      ],
-      "ans": "2/5",
-      "why": "Not picking red means selecting from all non-red outcomes"
-    },
-    {
-      "q": "A fair dice is rolled. What is the probability of getting an even number?",
-      "hint": "count favorable outcomes",
-      "steps": [
-        "Step 1: List sample space = {1,2,3,4,5,6}",
-        "Step 2: Identify even numbers = {2,4,6}",
-        "Step 3: Count favorable outcomes = 3",
-        "Step 4: Count total outcomes = 6",
-        "Step 5: Compute probability = 3/6"
-      ],
-      "ans": "1/2",
-      "why": "Probability depends on ratio of favorable to total outcomes"
-    },
-    {
-      "q": "What is the probability of getting a number greater than 4 on a fair dice?",
-      "hint": "sample space filtering",
-      "steps": [
-        "Step 1: List outcomes = {1,2,3,4,5,6}",
-        "Step 2: Identify numbers > 4 = {5,6}",
-        "Step 3: Count favorable outcomes = 2",
-        "Step 4: Total outcomes = 6",
-        "Step 5: Write probability = 2/6"
-      ],
-      "ans": "1/3",
-      "why": "Probability is favorable outcomes divided by total outcomes"
-    },
-    {
-      "q": "What is the probability range of any event?",
-      "hint": "limits",
-      "steps": [
-        "Step 1: Identify impossible event = 0",
-        "Step 2: Identify certain event = 1",
-        "Step 3: Understand probability scale",
-        "Step 4: Define range"
-      ],
-      "ans": "0 to 1",
-      "why": "Probability values always lie between impossible (0) and certain (1)"
-    }
-  ]
-);
-
-add(
-  "math",
-  "probability",
-  "Dice probability",
-
-  `<h2>Dice Probability</h2>
-
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-A fair die has 6 equally likely outcomes: 1, 2, 3, 4, 5, 6.
-Each outcome has the same probability.
-</p>
-
-<h3> WELL DETAILED NOTES</h3>
-<ul>
-<li>Total outcomes = 6</li>
-<li>Each outcome has probability = 1/6</li>
-<li>Group outcomes when required (even, odd, greater than, etc.)</li>
-<li>Probability = favorable outcomes / total outcomes</li>
-</ul>
-
-<h3> WORKED EXAMPLES</h3>
-
-<pre>
-Example 1:
-A fair die is rolled.
-P(getting 4)?
-
-Favorable = 1
-Total = 6
-P = 1/6
-</pre>
-
-<pre>
-Example 2:
-A fair die is rolled.
-P(even number)?
-
-Even = {2,4,6}
-Favorable = 3
-P = 3/6 = 1/2
-</pre>
-
-<pre>
-Example 3:
-A fair die is rolled.
-P(number > 4)?
-
-Numbers = {5,6}
-Favorable = 2
-P = 2/6 = 1/3
-</pre>
-
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Board games (Ludo, Monopoly)</li>
-<li>Simulation models in gaming</li>
-<li>Random sampling in statistics</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "A fair die is rolled. What is the probability of getting a number less than 4?",
-      "hint": "filter outcomes",
-      "steps": [
-        "Step 1: Write sample space S = {1,2,3,4,5,6}",
-        "Step 2: Identify outcomes < 4 = {1,2,3}",
-        "Step 3: Count favorable outcomes = 3",
-        "Step 4: Total outcomes = 6",
-        "Step 5: Compute probability = 3/6",
-        "Step 6: Simplify fraction"
-      ],
-      "ans": "1/2",
-      "why": "Probability is favorable outcomes divided by total outcomes"
-    },
-    {
-      "q": "A fair die is rolled. What is the probability of getting an even number?",
-      "hint": "even numbers",
-      "steps": [
-        "Step 1: Write sample space S = {1,2,3,4,5,6}",
-        "Step 2: Identify even outcomes = {2,4,6}",
-        "Step 3: Count favorable outcomes = 3",
-        "Step 4: Total outcomes = 6",
-        "Step 5: Compute probability = 3/6",
-        "Step 6: Simplify fraction"
-      ],
-      "ans": "1/2",
-      "why": "Even numbers are half of all outcomes on a fair die"
-    },
-    {
-      "q": "A fair die is rolled. What is the probability of getting a multiple of 3?",
-      "hint": "multiples",
-      "steps": [
-        "Step 1: Write sample space S = {1,2,3,4,5,6}",
-        "Step 2: Identify multiples of 3 = {3,6}",
-        "Step 3: Count favorable outcomes = 2",
-        "Step 4: Total outcomes = 6",
-        "Step 5: Compute probability = 2/6",
-        "Step 6: Simplify fraction"
-      ],
-      "ans": "1/3",
-      "why": "Probability is based on count of favorable outcomes over total outcomes"
-    },
-    {
-      "q": "A fair die is rolled. What is the probability of getting a number that is not a prime?",
-      "hint": "complement",
-      "steps": [
-        "Step 1: Write sample space S = {1,2,3,4,5,6}",
-        "Step 2: Identify primes = {2,3,5}",
-        "Step 3: Identify non-primes = {1,4,6}",
-        "Step 4: Count favorable outcomes = 3",
-        "Step 5: Total outcomes = 6",
-        "Step 6: Compute probability = 3/6",
-        "Step 7: Simplify fraction"
-      ],
-      "ans": "1/2",
-      "why": "Non-prime outcomes are the complement of prime outcomes"
-    },
-    {
-      "q": "A fair die is rolled. What is the probability of getting 6?",
-      "hint": "single outcome",
-      "steps": [
-        "Step 1: Write sample space S = {1,2,3,4,5,6}",
-        "Step 2: Identify favorable outcome = {6}",
-        "Step 3: Count favorable outcomes = 1",
-        "Step 4: Total outcomes = 6",
-        "Step 5: Compute probability = 1/6"
-      ],
-      "ans": "1/6",
-      "why": "Single outcomes have probability 1 over total sample space"
-    }
-  ]
-);
-
-add(
-  "math",
-  "probability",
-  "Coin probability",
-
-  `<h2>Coin Probability</h2>
-
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-A coin is one of the simplest probability experiments.
-When you toss a fair coin, there are only two possible outcomes:
-<b>Head (H)</b> or <b>Tail (T)</b>.
-</p>
-
-<p>
-Because the coin is fair, both outcomes have an <b>equal chance</b>.
-</p>
-
-<h3> WELL DETAILED NOTES</h3>
-<ul>
-<li>Total possible outcomes = 2 (H, T)</li>
-<li>P(Head) = 1/2</li>
-<li>P(Tail) = 1/2</li>
-<li>Sum of probabilities = 1</li>
-<li>Multiple tosses are independent events</li>
-</ul>
-
-<h3> DIAGRAM</h3>
-<pre>
-Sample space:
-H | T
-</pre>
-
-<h3> WORKED EXAMPLES</h3>
-
-<pre>
-Example 1:
-A coin is tossed once.
-P(Head)?
-
-Total = 2
-Favorable = 1
-P(H) = 1/2
-</pre>
-
-<pre>
-Example 2:
-A coin is tossed once.
-P(Tail)?
-
-Total = 2
-Favorable = 1
-P(T) = 1/2
-</pre>
-
-<pre>
-Example 3:
-A coin is tossed twice.
-P(HH)?
-
-P(H) × P(H)
-= 1/2 × 1/2
-= 1/4
-</pre>
-
-<pre>
-Example 4:
-A coin is tossed twice.
-P(one head)?
-
-Sample space:
-HH, HT, TH, TT
-
-Favorable = HT, TH = 2
-Total = 4
-
-P = 2/4 = 1/2
-</pre>
-
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Decision-making models</li>
-<li>Game theory simulations</li>
-<li>Random event modeling</li>
-</ul>
-`,
-
-  [
-    {
-      "q": "A coin is tossed once. Find the probability of getting a head",
-      "hint": "equally likely outcomes",
-      "steps": [
-        "Step 1: Write sample space S = {H, T}",
-        "Step 2: Identify favorable outcome = {H}",
-        "Step 3: Count favorable outcomes = 1",
-        "Step 4: Count total outcomes = 2",
-        "Step 5: Compute probability = 1/2"
-      ],
-      "ans": "1/2",
-      "why": "Probability is favorable outcomes divided by total equally likely outcomes"
-    },
-    {
-      "q": "A coin is tossed twice. Find the probability of getting two heads",
-      "hint": "independent events",
-      "steps": [
-        "Step 1: List sample space = {HH, HT, TH, TT}",
-        "Step 2: Identify favorable outcome = {HH}",
-        "Step 3: Count favorable outcomes = 1",
-        "Step 4: Count total outcomes = 4",
-        "Step 5: Compute probability = 1/4"
-      ],
-      "ans": "1/4",
-      "why": "Independent events multiply probabilities: 1/2 × 1/2"
-    },
-    {
-      "q": "A coin is tossed twice. Find the probability of getting exactly one head",
-      "hint": "favorable outcomes",
-      "steps": [
-        "Step 1: List sample space = {HH, HT, TH, TT}",
-        "Step 2: Identify outcomes with one head = {HT, TH}",
-        "Step 3: Count favorable outcomes = 2",
-        "Step 4: Count total outcomes = 4",
-        "Step 5: Compute probability = 2/4",
-        "Step 6: Simplify fraction"
-      ],
-      "ans": "1/2",
-      "why": "Exactly one head occurs in two of the four equally likely outcomes"
-    },
-    {
-      "q": "What is the probability of getting at least one tail in two coin tosses?",
-      "hint": "complement method",
-      "steps": [
-        "Step 1: List sample space = {HH, HT, TH, TT}",
-        "Step 2: Identify complement event = no tails = {HH}",
-        "Step 3: Compute P(no tail) = 1/4",
-        "Step 4: Use complement rule 1 − P(no tail)",
-        "Step 5: Calculate 1 − 1/4"
-      ],
-      "ans": "3/4",
-      "why": "Complement rule simplifies probability of complex events"
-    },
-    {
-      "q": "Why is probability of head in a fair coin 1/2?",
-      "hint": "symmetry",
-      "steps": [
-        "Step 1: Identify outcomes = {H, T}",
-        "Step 2: Check fairness (equal likelihood)",
-        "Step 3: Assign equal probability to each outcome",
-        "Step 4: Divide 1 outcome by 2 total outcomes"
-      ],
-      "ans": "1/2",
-      "why": "A fair coin has symmetric outcomes with equal probability"
-    }
-  ]
-);
-
-add(
-  "math",
-  "probability",
-  "Combined events",
-
-  `<h2>Combined Events</h2>
-
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-When two independent events happen together, we multiply their probabilities.
-Independent means one event does NOT affect the other.
-</p>
-
----
-
-<h3> WELL DETAILED NOTES</h3>
-<ul>
-<li>P(A and B) = P(A) × P(B)</li>
-<li>Used only when events are independent</li>
-<li>If events are dependent, multiplication is modified (advanced case)</li>
-</ul>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<pre>
-Example 1:
-A coin is tossed and a die is rolled.
-What is the probability of getting a head and a 4?
-
-Step 1: P(head) = 1/2
-Step 2: P(4) = 1/6
-Step 3: Multiply → (1/2) × (1/6) = 1/12
-Final Answer: 1/12
-</pre>
-
-<pre>
-Example 2:
-A coin is tossed and a die is rolled.
-What is the probability of getting a tail and an even number?
-
-Step 1: P(tail) = 1/2
-Step 2: Even numbers = {2,4,6} → 3/6 = 1/2
-Step 3: Multiply → (1/2) × (1/2) = 1/4
-Final Answer: 1/4
-</pre>
-
-<pre>
-Example 3:
-A coin is tossed and a die is rolled.
-What is the probability of getting a head and a number greater than 4?
-
-Step 1: P(head) = 1/2
-Step 2: Numbers > 4 = {5,6} → 2/6 = 1/3
-Step 3: Multiply → (1/2) × (1/3) = 1/6
-Final Answer: 1/6
-</pre>
-
----
-
-<h3> DIAGRAM</h3>
-
-<pre>
-Event A (coin)     Event B (die)
-   1/2  ×            1/6
-        ↓
-   Combined probability = multiplication
-</pre>
-
----
-
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Gaming systems (multiple random outcomes)</li>
-<li>Security systems (independent risk factors)</li>
-<li>Quality control in manufacturing</li>
-<li>AI random sampling models</li>
-</ul>
-
----
-`,
-
-  [
-    {
-      "q": "A coin is tossed and a die is rolled. Find P(tail and 3)",
-      "hint": "independent events multiply",
-      "steps": [
-        "Step 1: P(tail) = 1/2",
-        "Step 2: P(3 on die) = 1/6",
-        "Step 3: Multiply 1/2 × 1/6",
-        "Step 4: Compute result = 1/12"
-      ],
-      "ans": "1/12",
-      "why": "Coin toss and die roll are independent events"
-    },
-    {
-      "q": "A coin is tossed and a die is rolled. Find P(head and even number)",
-      "hint": "find even probability first",
-      "steps": [
-        "Step 1: P(head) = 1/2",
-        "Step 2: Even numbers = {2,4,6} so P(even) = 3/6 = 1/2",
-        "Step 3: Multiply 1/2 × 1/2",
-        "Step 4: Compute result = 1/4"
-      ],
-      "ans": "1/4",
-      "why": "Independent events are multiplied"
-    },
-    {
-      "q": "A coin is tossed and a die is rolled. Find P(head and number greater than 4)",
-      "hint": "identify sample space",
-      "steps": [
-        "Step 1: P(head) = 1/2",
-        "Step 2: Numbers > 4 = {5,6} so P = 2/6 = 1/3",
-        "Step 3: Multiply 1/2 × 1/3",
-        "Step 4: Compute result = 1/6"
-      ],
-      "ans": "1/6",
-      "why": "Each event is independent so probabilities multiply"
-    },
-    {
-      "q": "A coin is tossed twice. Find P(head on first toss and tail on second toss)",
-      "hint": "list outcomes",
-      "steps": [
-        "Step 1: P(head) = 1/2",
-        "Step 2: P(tail) = 1/2",
-        "Step 3: Multiply 1/2 × 1/2",
-        "Step 4: Compute result = 1/4"
-      ],
-      "ans": "1/4",
-      "why": "Each coin toss is independent"
-    },
-    {
-      "q": "A coin is tossed and a die is rolled. Find P(tail and prime number)",
-      "hint": "prime numbers on a die",
-      "steps": [
-        "Step 1: P(tail) = 1/2",
-        "Step 2: Prime numbers = {2,3,5} so P = 3/6 = 1/2",
-        "Step 3: Multiply 1/2 × 1/2",
-        "Step 4: Compute result = 1/4"
-      ],
-      "ans": "1/4",
-      "why": "Both events are independent"
-    },
-    {
-      "q": "A coin is tossed and a die is rolled. Find P(head and not 6)",
-      "hint": "complement on die",
-      "steps": [
-        "Step 1: P(head) = 1/2",
-        "Step 2: P(not 6) = 5/6",
-        "Step 3: Multiply 1/2 × 5/6",
-        "Step 4: Compute result = 5/12"
-      ],
-      "ans": "5/12",
-      "why": "Independent events multiply probabilities"
-    }
-  ]
-);
-
-add(
-  "math",
-  "probability",
-  "Bayes Theorem",
+  "Sample Space",
 
   `
-<h2> Bayes Theorem</h2>
-<h3> DEEP NOTES</h3>
+<h2>Sample Space</h2>
+
+<p><b>One concept:</b> Identify and write every possible outcome of a probability experiment.</p>
+
+<h3>What is a sample space?</h3>
+
 <p>
-Bayes theorem updates probability based on new information.
-It reverses conditional probability: instead of P(B|A), we find P(A|B).
+A <b>sample space</b> is the complete list of all possible outcomes of an experiment.
 </p>
-<pre>
-P(A|B) = P(B|A)P(A) / P(B)
-</pre>
- It is used when we already have evidence and want to revise beliefs.
-<h3> WORKED EXAMPLE (STEP BY STEP)</h3>
 
-<p><b>Question:</b> A disease affects 1% of population. Test is 90% accurate. If a person tests positive, what is probability they are actually sick?</p>
-<p><b>Step 1: Define probabilities</b></p>
-<pre>
-P(D) = 0.01
-P(¬D) = 0.99
-</pre>
+<p>
+We usually represent the sample space using the symbol:
+</p>
 
-<p><b>Step 2: Test accuracy</b></p>
-<pre>
-P(+ | D) = 0.9
-P(+ | ¬D) = 0.1
-</pre>
+<p>
+\\[
+\\boxed{S}
+\\]
+</p>
 
-<p><b>Step 3: Total probability of positive test</b></p>
-<pre>
-P(+) = (0.9 × 0.01) + (0.1 × 0.99)
-     = 0.009 + 0.099
-     = 0.108
-</pre>
+<h3>Example 1: Tossing a Coin</h3>
 
-<p><b>Step 4: Apply Bayes theorem</b></p>
-<pre>
-P(D | +) = (0.9 × 0.01) / 0.108
-         = 0.009 / 0.108
-</pre>
+<p>A coin is tossed once.</p>
 
-<p><b>Step 5: Final Answer</b></p>
-<pre>
-P(D | +) ≈ 0.083 = 8.3%
-</pre>
- Even with a positive test, probability is still low due to rarity of disease.
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Medical diagnosis systems (disease testing)</li>
-<li>Spam email filtering (spam vs not spam)</li>
-<li>Artificial intelligence decision-making</li>
-<li>Forensic and legal probability reasoning</li>
-</ul>
+<p>The only possible outcomes are:</p>
 
----
+<p>
+\\[
+H,T
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{S=\\{H,T\\}}
+\\]
+</p>
+
+<p>There are no other possible outcomes for one toss.</p>
+
+<h3>Example 2: Rolling a Die</h3>
+
+<p>A standard six-sided die is rolled once.</p>
+
+<p>The possible outcomes are:</p>
+
+<p>
+\\[
+1,2,3,4,5,6
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{S=\\{1,2,3,4,5,6\\}}
+\\]
+</p>
+
+<h3>Example 3: Tossing a Coin Twice</h3>
+
+<p>A coin is tossed twice.</p>
+
+<p>We must consider what happens on the <b>first toss</b> and the <b>second toss</b>.</p>
+
+<p>Start with H on the first toss:</p>
+
+<p>
+\\[
+HH,HT
+\\]
+</p>
+
+<p>Start with T on the first toss:</p>
+
+<p>
+\\[
+TH,TT
+\\]
+</p>
+
+<p>Therefore the complete sample space is:</p>
+
+<p>
+\\[
+\\boxed{S=\\{HH,HT,TH,TT\\}}
+\\]
+</p>
+
+<h3>Example 4: Choosing a Letter</h3>
+
+<p>A card contains the letters:</p>
+
+<p>
+\\[
+A,B,C,D
+\\]
+</p>
+
+<p>One letter is selected.</p>
+
+<p>The possible outcomes are:</p>
+
+<p>
+\\[
+\\boxed{S=\\{A,B,C,D\\}}
+\\]
+</p>
+
+<h3>Example 5: Choosing a Number</h3>
+
+<p>A number is randomly selected from 1 to 5.</p>
+
+<p>The possible outcomes are:</p>
+
+<p>
+\\[
+\\boxed{S=\\{1,2,3,4,5\\}}
+\\]
+</p>
+
+<h3>The Important Skill</h3>
+
+<p>
+Before calculating any probability, first ask:
+</p>
+
+<p>
+<b>"What are all the possible outcomes?"</b>
+</p>
+
+<p>
+Writing the complete list of possible outcomes gives the <b>sample space</b>.
+</p>
+
+<p>
+Do not leave out an outcome and do not add an outcome that cannot happen.
+</p>
 `,
 
   [
     {
-      "q": "A disease affects 1% of a population. A test has 90% accuracy for detecting the disease when it is present. What is P(Disease ∩ Positive)?",
-      "hint": "use multiplication rule",
-      "steps": [
-        "Step 1: P(Disease) = 0.01",
-        "Step 2: P(Positive | Disease) = 0.90",
-        "Step 3: Apply Bayes building block: P(A ∩ B) = P(A) × P(B|A)",
-        "Step 4: Multiply 0.01 × 0.90",
-        "Step 5: Compute result = 0.009"
+      q: "A coin is tossed once. Write the sample space.",
+      hint: "List every possible result of one coin toss.",
+      steps: [
+        "A coin can land on Head or Tail.",
+        "Therefore the complete set of outcomes is {H,T}."
       ],
-      "ans": "0.009",
-      "why": "Joint probability combines prior probability with likelihood of evidence"
+      ans: "S = {H,T}",
+      why: "A sample space contains every possible outcome of the experiment."
     },
+
     {
-      "q": "A test detects a condition with probability 0.8 if the condition is present. If 5% of people have the condition, find P(Condition ∩ Positive)",
-      "hint": "joint probability",
-      "steps": [
-        "Step 1: P(C) = 0.05",
-        "Step 2: P(P+ | C) = 0.8",
-        "Step 3: Multiply P(C) × P(P+ | C)",
-        "Step 4: 0.05 × 0.8",
-        "Step 5: Compute result = 0.04"
+      q: "A standard die is rolled once. Write the sample space.",
+      hint: "A standard die has six faces.",
+      steps: [
+        "The possible numbers are 1, 2, 3, 4, 5 and 6.",
+        "Therefore S = {1,2,3,4,5,6}."
       ],
-      "ans": "0.04",
-      "why": "Bayes framework starts with prior probability then updates using evidence likelihood"
+      ans: "S = {1,2,3,4,5,6}",
+      why: "These are all the outcomes that can occur when the die is rolled once."
     },
+
     {
-      "q": "In a system, 2% of items are defective. A detector correctly flags defective items 95% of the time. Find probability of defective AND flagged",
-      "hint": "conditional probability",
-      "steps": [
-        "Step 1: P(D) = 0.02",
-        "Step 2: P(Flag | D) = 0.95",
-        "Step 3: Multiply 0.02 × 0.95",
-        "Step 4: Compute result = 0.019"
+      q: "A coin is tossed twice. Write the complete sample space.",
+      hint: "Consider both the first and second toss.",
+      steps: [
+        "If the first toss is H, the outcomes are HH and HT.",
+        "If the first toss is T, the outcomes are TH and TT.",
+        "Therefore S = {HH,HT,TH,TT}."
       ],
-      "ans": "0.019",
-      "why": "We combine prior defect rate with detection accuracy"
+      ans: "S = {HH,HT,TH,TT}",
+      why: "Each outcome records the result of both tosses."
     },
+
     {
-      "q": "A rare condition occurs in 1 out of 200 people. A test detects it with 98% accuracy. Find P(Condition ∩ Positive)",
-      "hint": "convert fraction to probability",
-      "steps": [
-        "Step 1: P(C) = 1/200 = 0.005",
-        "Step 2: P(Pos | C) = 0.98",
-        "Step 3: Multiply 0.005 × 0.98",
-        "Step 4: Compute result = 0.0049"
+      q: "A card is chosen from cards numbered 2, 4, 6 and 8. Write the sample space.",
+      hint: "List every number that can actually be selected.",
+      steps: [
+        "The cards available are 2, 4, 6 and 8.",
+        "Therefore S = {2,4,6,8}."
       ],
-      "ans": "0.0049",
-      "why": "Rare prior probability is updated using strong evidence likelihood"
+      ans: "S = {2,4,6,8}",
+      why: "The sample space contains exactly the outcomes available in the experiment."
     },
+
     {
-      "q": "A spam filter correctly identifies spam emails 85% of the time. If 30% of emails are spam, find P(Spam ∩ Detected)",
-      "hint": "multiply probability and accuracy",
-      "steps": [
-        "Step 1: P(Spam) = 0.30",
-        "Step 2: P(Detected | Spam) = 0.85",
-        "Step 3: Multiply 0.30 × 0.85",
-        "Step 4: Compute result = 0.255"
+      q: "A student randomly chooses one of three colours: red, blue or green. Write the sample space.",
+      hint: "List all three possible choices.",
+      steps: [
+        "The possible choices are red, blue and green.",
+        "Therefore S = {red, blue, green}."
       ],
-      "ans": "0.255",
-      "why": "Bayes reasoning combines base rate with detection likelihood"
+      ans: "S = {red, blue, green}",
+      why: "Every possible choice must appear in the sample space."
     }
   ]
 );
+// ============================================================
+// SCREEN 2 — COUNTING OUTCOMES IN A SAMPLE SPACE
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Counting the Number of Outcomes in a Sample Space",
+
+  `
+<h2>Counting the Number of Outcomes in a Sample Space</h2>
+
+<p><b>One concept:</b> Count how many outcomes are contained in a sample space.</p>
+
+<p>
+If a sample space is:
+</p>
+
+<p>
+\\[
+S=\\{H,T\\}
+\\]
+</p>
+
+<p>there are two outcomes.</p>
+
+<p>We can write:</p>
+
+<p>
+\\[
+\\boxed{n(S)=2}
+\\]
+</p>
+
+<p>
+The symbol <b>n(S)</b> means "the number of outcomes in the sample space".
+</p>
+
+<h3>Example 1</h3>
+
+<p>For:</p>
+
+<p>
+\\[
+S=\\{H,T\\}
+\\]
+</p>
+
+<p>Count the outcomes:</p>
+
+<p>
+\\[
+H,T
+\\]
+</p>
+
+<p>There are 2.</p>
+
+<p>
+\\[
+\\boxed{n(S)=2}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A die has sample space:</p>
+
+<p>
+\\[
+S=\\{1,2,3,4,5,6\\}
+\\]
+</p>
+
+<p>Count them:</p>
+
+<p>
+\\[
+1,2,3,4,5,6
+\\]
+</p>
+
+<p>There are 6 outcomes.</p>
+
+<p>
+\\[
+\\boxed{n(S)=6}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>Two coin tosses have:</p>
+
+<p>
+\\[
+S=\\{HH,HT,TH,TT\\}
+\\]
+</p>
+
+<p>Count the outcomes:</p>
+
+<p>
+\\[
+HH,HT,TH,TT
+\\]
+</p>
+
+<p>There are 4 outcomes.</p>
+
+<p>
+\\[
+\\boxed{n(S)=4}
+\\]
+</p>
+
+<h3>Example 4</h3>
+
+<p>A box contains cards numbered 2, 4, 6, 8 and 10.</p>
+
+<p>The sample space is:</p>
+
+<p>
+\\[
+S=\\{2,4,6,8,10\\}
+\\]
+</p>
+
+<p>There are 5 possible outcomes.</p>
+
+<p>
+\\[
+\\boxed{n(S)=5}
+\\]
+</p>
+
+<h3>Example 5</h3>
+
+<p>A student chooses one colour from:</p>
+
+<p>
+\\[
+S=\\{Red,Blue,Green,Yellow\\}
+\\]
+</p>
+
+<p>There are 4 possible outcomes.</p>
+
+<p>
+\\[
+\\boxed{n(S)=4}
+\\]
+</p>
+
+<p><b>Key idea:</b> Do not calculate probability yet. At this stage, only count the possible outcomes.</p>
+`,
+
+  [
+    {
+      q: "Given S = {H,T}, find n(S).",
+      hint: "Count the outcomes in the set.",
+      steps: [
+        "The outcomes are H and T.",
+        "There are 2 outcomes.",
+        "Therefore n(S) = 2."
+      ],
+      ans: "n(S) = 2",
+      why: "The sample space contains two possible outcomes."
+    },
+
+    {
+      q: "Given S = {1,2,3,4,5,6}, find n(S).",
+      hint: "Count the numbers.",
+      steps: [
+        "There are six numbers in the set.",
+        "Therefore n(S) = 6."
+      ],
+      ans: "n(S) = 6",
+      why: "The six numbers represent six possible outcomes."
+    },
+
+    {
+      q: "Given S = {HH,HT,TH,TT}, find n(S).",
+      hint: "Count each two-letter outcome.",
+      steps: [
+        "The outcomes are HH, HT, TH and TT.",
+        "There are 4 outcomes.",
+        "Therefore n(S) = 4."
+      ],
+      ans: "n(S) = 4",
+      why: "Each listed result is one possible outcome."
+    },
+
+    {
+      q: "A box contains cards numbered 3, 5, 7 and 9. Find n(S).",
+      hint: "Count the cards.",
+      steps: [
+        "The possible outcomes are 3, 5, 7 and 9.",
+        "There are 4 outcomes."
+      ],
+      ans: "n(S) = 4",
+      why: "There are four possible cards that can be selected."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3 — IDENTIFYING FAVOURABLE OUTCOMES
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Identifying Favourable Outcomes",
+
+  `
+<h2>Identifying Favourable Outcomes</h2>
+
+<p><b>One concept:</b> Identify the outcomes that satisfy a stated condition.</p>
+
+<p>
+A <b>favourable outcome</b> is an outcome that satisfies the event we are interested in.
+</p>
+
+<h3>Example 1</h3>
+
+<p>A die is rolled.</p>
+
+<p>We want an even number.</p>
+
+<p>The sample space is:</p>
+
+<p>
+\\[
+S=\\{1,2,3,4,5,6\\}
+\\]
+</p>
+
+<p>The even outcomes are:</p>
+
+<p>
+\\[
+2,4,6
+\\]
+</p>
+
+<p>Therefore the favourable outcomes are:</p>
+
+<p>
+\\[
+\\boxed{\\{2,4,6\\}}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A card is selected from:</p>
+
+<p>
+\\[
+S=\\{1,2,3,4,5\\}
+\\]
+</p>
+
+<p>We want a number greater than 3.</p>
+
+<p>Check each outcome:</p>
+
+<p>
+\\[
+1\\not>3
+\\]
+</p>
+
+<p>
+\\[
+2\\not>3
+\\]
+</p>
+
+<p>
+\\[
+3\\not>3
+\\]
+</p>
+
+<p>
+\\[
+4>3
+\\]
+</p>
+
+<p>
+\\[
+5>3
+\\]
+</p>
+
+<p>Therefore the favourable outcomes are:</p>
+
+<p>
+\\[
+\\boxed{\\{4,5\\}}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A letter is selected from:</p>
+
+<p>
+\\[
+S=\\{A,B,C,D,E\\}
+\\]
+</p>
+
+<p>We want a vowel.</p>
+
+<p>The vowels in the sample space are:</p>
+
+<p>
+\\[
+A,E
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{\\{A,E\\}}
+\\]
+</p>
+
+<h3>Important</h3>
+
+<p>
+The favourable outcomes are not necessarily all the outcomes.
+</p>
+
+<p>
+They are only the outcomes that satisfy the condition in the question.
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. Identify the favourable outcomes for getting an odd number.",
+      hint: "Which numbers from 1 to 6 are odd?",
+      steps: [
+        "The odd numbers are 1, 3 and 5.",
+        "Therefore the favourable outcomes are {1,3,5}."
+      ],
+      ans: "{1,3,5}",
+      why: "These are the outcomes that satisfy the condition of being odd."
+    },
+
+    {
+      q: "A number is selected from {1,2,3,4,5}. Identify the favourable outcomes for getting a number less than 3.",
+      hint: "Check which numbers are smaller than 3.",
+      steps: [
+        "1 is less than 3.",
+        "2 is less than 3.",
+        "3, 4 and 5 are not less than 3.",
+        "Therefore the favourable outcomes are {1,2}."
+      ],
+      ans: "{1,2}",
+      why: "Only 1 and 2 satisfy the condition."
+    },
+
+    {
+      q: "A letter is selected from {A,B,C,D,E}. Identify the favourable outcomes for selecting a consonant.",
+      hint: "A and E are vowels.",
+      steps: [
+        "A and E are vowels.",
+        "B, C and D are consonants.",
+        "Therefore the favourable outcomes are {B,C,D}."
+      ],
+      ans: "{B,C,D}",
+      why: "These letters satisfy the condition of being consonants."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4 — CALCULATING PROBABILITY FROM COUNTS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Calculating Probability from Counts",
+
+  `
+<h2>Calculating Probability from Counts</h2>
+
+<p><b>One concept:</b> Calculate probability by comparing favourable outcomes with total possible outcomes.</p>
+
+<p>
+For equally likely outcomes:
+</p>
+
+<p>
+\\[
+\\boxed{P(A)=\\frac{n(A)}{n(S)}}
+\\]
+</p>
+
+<p>where:</p>
+
+<ul>
+<li><b>n(A)</b> = number of favourable outcomes</li>
+<li><b>n(S)</b> = total number of possible outcomes</li>
+</ul>
+
+<h3>Example 1</h3>
+
+<p>A die is rolled. Find the probability of getting a 4.</p>
+
+<p>Total outcomes:</p>
+
+<p>
+\\[
+n(S)=6
+\\]
+</p>
+
+<p>Favourable outcomes:</p>
+
+<p>
+\\[
+n(A)=1
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A)=\\frac{1}{6}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(4)=\\frac16}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled. Find the probability of getting an even number.</p>
+
+<p>Favourable outcomes:</p>
+
+<p>
+\\[
+\\{2,4,6\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+n(A)=3
+\\]
+</p>
+
+<p>The die has 6 possible outcomes:</p>
+
+<p>
+\\[
+n(S)=6
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A)=\\frac{3}{6}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A card is selected from {1,2,3,4,5}.</p>
+
+<p>Find the probability of selecting a number greater than 3.</p>
+
+<p>Favourable outcomes:</p>
+
+<p>
+\\[
+\\{4,5\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+n(A)=2
+\\]
+</p>
+
+<p>Total outcomes:</p>
+
+<p>
+\\[
+n(S)=5
+\\]
+</p>
+
+<p>Hence:</p>
+
+<p>
+\\[
+P(A)=\\frac25
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(A)=\\frac25}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. Find the probability of getting a 2.",
+      hint: "There is one favourable outcome and six total outcomes.",
+      steps: [
+        "There are 6 possible outcomes.",
+        "Only 2 is favourable.",
+        "Therefore P(2) = 1/6."
+      ],
+      ans: "1/6",
+      why: "Probability compares favourable outcomes with total outcomes."
+    },
+
+    {
+      q: "A die is rolled. Find the probability of getting an odd number.",
+      hint: "The odd outcomes are 1, 3 and 5.",
+      steps: [
+        "There are 3 favourable outcomes.",
+        "There are 6 total outcomes.",
+        "P(odd) = 3/6."
+      ],
+      ans: "3/6",
+      why: "Three of the six equally likely outcomes are odd."
+    },
+
+    {
+      q: "A number is selected from {1,2,3,4,5}. Find the probability of selecting 5.",
+      hint: "How many favourable outcomes are there?",
+      steps: [
+        "There are 5 total outcomes.",
+        "Only 5 is favourable.",
+        "P(5) = 1/5."
+      ],
+      ans: "1/5",
+      why: "One of the five possible outcomes is 5."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5 — WRITING PROBABILITY AS A FRACTION
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Writing Probability as a Fraction",
+
+  `
+<h2>Writing Probability as a Fraction</h2>
+
+<p><b>One concept:</b> Express a probability as a fraction.</p>
+
+<p>
+Probability can be written as a fraction:
+</p>
+
+<p>
+\\[
+P(A)=\\frac{\\text{favourable outcomes}}{\\text{total outcomes}}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>A die is rolled and the probability of getting a 3 is:</p>
+
+<p>
+\\[
+P(3)=\\frac16
+\\]
+</p>
+
+<p>The numerator 1 represents the one favourable outcome: 3.</p>
+
+<p>The denominator 6 represents all six possible outcomes.</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled and an even number is required.</p>
+
+<p>Favourable outcomes:</p>
+
+<p>
+\\[
+2,4,6
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(\\text{even})=\\frac36
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A bag contains 8 cards numbered 1 to 8.</p>
+
+<p>Find the probability of selecting 7.</p>
+
+<p>There is one favourable outcome.</p>
+
+<p>There are 8 total outcomes.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{P(7)=\\frac18}
+\\]
+</p>
+
+<h3>What the fraction means</h3>
+
+<p>
+The numerator tells us <b>how many outcomes we want</b>.
+</p>
+
+<p>
+The denominator tells us <b>how many outcomes are possible altogether</b>.
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. Write the probability of getting 6 as a fraction.",
+      hint: "There is one favourable outcome out of six.",
+      steps: [
+        "Favourable outcomes = 1.",
+        "Total outcomes = 6.",
+        "Therefore P(6) = 1/6."
+      ],
+      ans: "1/6",
+      why: "The fraction has favourable outcomes on top and total outcomes below."
+    },
+
+    {
+      q: "A die is rolled. Write the probability of getting an even number as a fraction.",
+      hint: "There are three even outcomes.",
+      steps: [
+        "The even outcomes are 2, 4 and 6.",
+        "There are 3 favourable outcomes.",
+        "There are 6 total outcomes.",
+        "Therefore P(even) = 3/6."
+      ],
+      ans: "3/6",
+      why: "Three of the six possible outcomes are even."
+    },
+
+    {
+      q: "A card numbered 1 to 10 is selected. Write the probability of selecting 4.",
+      hint: "Only one card is numbered 4.",
+      steps: [
+        "There is 1 favourable outcome.",
+        "There are 10 possible cards.",
+        "Therefore P(4) = 1/10."
+      ],
+      ans: "1/10",
+      why: "One favourable card exists among ten possible cards."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 6 — SIMPLIFYING A PROBABILITY FRACTION
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Simplifying a Probability Fraction",
+
+  `
+<h2>Simplifying a Probability Fraction</h2>
+
+<p><b>One concept:</b> Simplify a probability fraction by dividing the numerator and denominator by their common factor.</p>
+
+<h3>Example 1</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+P(A)=\\frac36
+\\]
+</p>
+
+<p>Both 3 and 6 can be divided by 3.</p>
+
+<p>
+\\[
+\\frac36=\\frac{3\\div3}{6\\div3}
+\\]
+</p>
+
+<p>
+\\[
+=\\frac12
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{P(A)=\\frac12}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+P(A)=\\frac{4}{8}
+\\]
+</p>
+
+<p>Divide both numbers by 4:</p>
+
+<p>
+\\[
+\\frac{4}{8}=\\frac{4\\div4}{8\\div4}
+\\]
+</p>
+
+<p>
+\\[
+=\\frac12
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+P(A)=\\frac{6}{10}
+\\]
+</p>
+
+<p>Both numbers can be divided by 2:</p>
+
+<p>
+\\[
+\\frac{6}{10}=\\frac{6\\div2}{10\\div2}
+\\]
+</p>
+
+<p>
+\\[
+=\\frac35
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{\\frac{6}{10}=\\frac35}
+\\]
+</p>
+
+<h3>Important</h3>
+
+<p>
+Simplifying does not change the probability.
+</p>
+
+<p>
+For example:
+</p>
+
+<p>
+\\[
+\\frac36=\\frac12
+\\]
+</p>
+
+<p>They represent the same probability.</p>
+`,
+
+  [
+    {
+      q: "Simplify 3/6.",
+      hint: "Divide both numbers by 3.",
+      steps: [
+        "3 ÷ 3 = 1.",
+        "6 ÷ 3 = 2.",
+        "Therefore 3/6 = 1/2."
+      ],
+      ans: "1/2",
+      why: "The numerator and denominator were divided by the same common factor."
+    },
+
+    {
+      q: "Simplify 4/8.",
+      hint: "Divide both numbers by 4.",
+      steps: [
+        "4 ÷ 4 = 1.",
+        "8 ÷ 4 = 2.",
+        "Therefore 4/8 = 1/2."
+      ],
+      ans: "1/2",
+      why: "Dividing both parts of a fraction by the same non-zero number gives an equivalent fraction."
+    },
+
+    {
+      q: "Simplify 6/10.",
+      hint: "Both numbers are divisible by 2.",
+      steps: [
+        "6 ÷ 2 = 3.",
+        "10 ÷ 2 = 5.",
+        "Therefore 6/10 = 3/5."
+      ],
+      ans: "3/5",
+      why: "3/5 is the simplified form of 6/10."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 7 — PROBABILITY BETWEEN 0 AND 1
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability Between 0 and 1",
+
+  `
+<h2>Probability Between 0 and 1</h2>
+
+<p><b>One concept:</b> Understand that probability has a value from 0 to 1.</p>
+
+<p>
+For any event A:
+</p>
+
+<p>
+\\[
+\\boxed{0\\leq P(A)\\leq1}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>Consider:</p>
+
+<p>
+\\[
+P(A)=\\frac12
+\\]
+</p>
+
+<p>Since:</p>
+
+<p>
+\\[
+0<\\frac12<1
+\\]
+</p>
+
+<p>this is a possible probability.</p>
+
+<h3>Example 2</h3>
+
+<p>Consider:</p>
+
+<p>
+\\[
+P(A)=\\frac34
+\\]
+</p>
+
+<p>Since:</p>
+
+<p>
+\\[
+0<\\frac34<1
+\\]
+</p>
+
+<p>this can be a probability.</p>
+
+<h3>Example 3</h3>
+
+<p>Consider:</p>
+
+<p>
+\\[
+P(A)=1
+\\]
+</p>
+
+<p>This is also allowed because:</p>
+
+<p>
+\\[
+0\\leq1\\leq1
+\\]
+</p>
+
+<h3>Example 4</h3>
+
+<p>Consider:</p>
+
+<p>
+\\[
+P(A)=-0.2
+\\]
+</p>
+
+<p>This cannot be a probability because it is less than 0.</p>
+
+<h3>Example 5</h3>
+
+<p>Consider:</p>
+
+<p>
+\\[
+P(A)=1.4
+\\]
+</p>
+
+<p>This cannot be a probability because it is greater than 1.</p>
+
+<h3>Rule</h3>
+
+<p>
+Every probability must satisfy:
+</p>
+
+<p>
+\\[
+\\boxed{0\\leq P(A)\\leq1}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "Can 0.6 be a probability?",
+      hint: "Check whether it is between 0 and 1.",
+      steps: [
+        "0 < 0.6 < 1.",
+        "Therefore 0.6 can be a probability."
+      ],
+      ans: "Yes",
+      why: "It lies between 0 and 1."
+    },
+
+    {
+      q: "Can -0.4 be a probability?",
+      hint: "A probability cannot be less than 0.",
+      steps: [
+        "-0.4 is less than 0.",
+        "Therefore it cannot be a probability."
+      ],
+      ans: "No",
+      why: "Probabilities cannot be negative."
+    },
+
+    {
+      q: "Can 1.2 be a probability?",
+      hint: "Compare it with 1.",
+      steps: [
+        "1.2 is greater than 1.",
+        "Therefore it cannot be a probability."
+      ],
+      ans: "No",
+      why: "A probability cannot be greater than 1."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 8 — IMPOSSIBLE EVENT
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability of an Impossible Event",
+
+  `
+<h2>Probability of an Impossible Event</h2>
+
+<p><b>One concept:</b> Recognise an event that cannot happen.</p>
+
+<p>
+An <b>impossible event</b> is an event that has no possible favourable outcome.
+</p>
+
+<p>
+Its probability is:
+</p>
+
+<p>
+\\[
+\\boxed{P(A)=0}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>A standard die is rolled.</p>
+
+<p>Find the probability of getting 8.</p>
+
+<p>The sample space is:</p>
+
+<p>
+\\[
+\\{1,2,3,4,5,6\\}
+\\]
+</p>
+
+<p>8 is not in the sample space.</p>
+
+<p>Therefore there are zero favourable outcomes.</p>
+
+<p>
+\\[
+P(8)=\\frac06
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(8)=0}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A coin is tossed once.</p>
+
+<p>Find the probability of getting both Head and Tail on the same single toss.</p>
+
+<p>A single toss produces only one result.</p>
+
+<p>It cannot produce both H and T at the same time.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{P(\\text{both H and T})=0}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A card is selected from:</p>
+
+<p>
+\\[
+\\{2,4,6,8\\}
+\\]
+</p>
+
+<p>Find the probability of selecting 5.</p>
+
+<p>5 is not available.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(5)=\\frac04=0
+\\]
+</p>
+
+<h3>Key idea</h3>
+
+<p>
+No favourable outcomes means probability 0.
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. What is the probability of getting 9?",
+      hint: "Is 9 a possible result on a standard die?",
+      steps: [
+        "A standard die has outcomes 1 to 6.",
+        "9 is not possible.",
+        "Therefore P(9) = 0."
+      ],
+      ans: "0",
+      why: "There are no favourable outcomes."
+    },
+
+    {
+      q: "A card is selected from {1,2,3,4}. What is the probability of selecting 7?",
+      hint: "Check whether 7 is in the sample space.",
+      steps: [
+        "The available cards are 1, 2, 3 and 4.",
+        "7 is not available.",
+        "Therefore the probability is 0."
+      ],
+      ans: "0",
+      why: "Selecting 7 is impossible in this experiment."
+    },
+
+    {
+      q: "A coin is tossed once. What is the probability of getting three Heads?",
+      hint: "How many results can one toss produce?",
+      steps: [
+        "One toss produces only one result.",
+        "Three Heads cannot occur in one toss.",
+        "Therefore the probability is 0."
+      ],
+      ans: "0",
+      why: "The event cannot happen in the stated experiment."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 9 — CERTAIN EVENT
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability of a Certain Event",
+
+  `
+<h2>Probability of a Certain Event</h2>
+
+<p><b>One concept:</b> Recognise an event that must happen.</p>
+
+<p>
+A <b>certain event</b> is an event that is guaranteed to happen.
+</p>
+
+<p>
+Its probability is:
+</p>
+
+<p>
+\\[
+\\boxed{P(A)=1}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>A standard die is rolled.</p>
+
+<p>Find the probability of getting a number from 1 to 6.</p>
+
+<p>The sample space is:</p>
+
+<p>
+\\[
+\\{1,2,3,4,5,6\\}
+\\]
+</p>
+
+<p>Every possible outcome satisfies the condition.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(1\\text{ to }6)=\\frac66
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(1\\text{ to }6)=1}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A card is selected from:</p>
+
+<p>
+\\[
+\\{2,4,6,8\\}
+\\]
+</p>
+
+<p>Find the probability of selecting an even number.</p>
+
+<p>Every card is even.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(\\text{even})=\\frac44=1
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A bag contains only red balls.</p>
+
+<p>One ball is selected.</p>
+
+<p>It must be red.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{P(\\text{red})=1}
+\\]
+</p>
+
+<h3>Key idea</h3>
+
+<p>
+If every possible outcome satisfies the condition, the probability is 1.
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. What is the probability of getting a number from 1 to 6?",
+      hint: "Can a standard die produce anything outside 1 to 6?",
+      steps: [
+        "Every possible die outcome is from 1 to 6.",
+        "Therefore all 6 outcomes are favourable.",
+        "P = 6/6 = 1."
+      ],
+      ans: "1",
+      why: "The event is certain to happen."
+    },
+
+    {
+      q: "A card is selected from {2,4,6,8}. What is the probability of getting an even number?",
+      hint: "Look at every card.",
+      steps: [
+        "2, 4, 6 and 8 are all even.",
+        "There are 4 favourable outcomes out of 4.",
+        "P = 4/4 = 1."
+      ],
+      ans: "1",
+      why: "Every possible outcome is even."
+    },
+
+    {
+      q: "A bag contains only blue balls. One ball is selected. What is the probability that it is blue?",
+      hint: "Can any other colour be selected?",
+      steps: [
+        "Every ball in the bag is blue.",
+        "Therefore the selected ball must be blue.",
+        "The probability is 1."
+      ],
+      ans: "1",
+      why: "The event is guaranteed."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 10 — COMPLEMENT OF AN EVENT
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Complement of an Event",
+
+  `
+<h2>Complement of an Event</h2>
+
+<p><b>One concept:</b> Identify the outcomes where an event does not happen.</p>
+
+<p>
+The <b>complement</b> of an event A means:
+</p>
+
+<p>
+<b>"A does not happen."</b>
+</p>
+
+<p>
+The complement is commonly written as:
+</p>
+
+<p>
+\\[
+\\boxed{A'}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let A be the event "getting an even number".</p>
+
+<p>The even outcomes are:</p>
+
+<p>
+\\[
+A=\\{2,4,6\\}
+\\]
+</p>
+
+<p>The outcomes where A does not happen are the odd numbers:</p>
+
+<p>
+\\[
+\\boxed{A'=\\{1,3,5\\}}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A number is selected from:</p>
+
+<p>
+\\[
+\\{1,2,3,4,5\\}
+\\]
+</p>
+
+<p>Let A be "selecting a number greater than 3".</p>
+
+<p>Then:</p>
+
+<p>
+\\[
+A=\\{4,5\\}
+\\]
+</p>
+
+<p>The outcomes where A does not happen are:</p>
+
+<p>
+\\[
+\\boxed{A'=\\{1,2,3\\}}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A letter is selected from:</p>
+
+<p>
+\\[
+\\{A,B,C,D,E\\}
+\\]
+</p>
+
+<p>Let A be "selecting a vowel".</p>
+
+<p>The vowels are:</p>
+
+<p>
+\\[
+A=\\{A,E\\}
+\\]
+</p>
+
+<p>The complement is:</p>
+
+<p>
+\\[
+\\boxed{A'=\\{B,C,D\\}}
+\\]
+</p>
+
+<h3>Key idea</h3>
+
+<p>
+The complement contains every outcome in the sample space that is <b>not</b> in the event.
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. A = getting an even number. Find A'.",
+      hint: "A' contains the outcomes that are not even.",
+      steps: [
+        "Even outcomes are 2, 4 and 6.",
+        "The remaining outcomes are 1, 3 and 5.",
+        "Therefore A' = {1,3,5}."
+      ],
+      ans: "A' = {1,3,5}",
+      why: "The complement contains outcomes where the original event does not occur."
+    },
+
+    {
+      q: "A number is selected from {1,2,3,4,5}. A = selecting a number less than 3. Find A'.",
+      hint: "First identify the numbers less than 3.",
+      steps: [
+        "A = {1,2}.",
+        "The remaining outcomes are 3, 4 and 5.",
+        "Therefore A' = {3,4,5}."
+      ],
+      ans: "A' = {3,4,5}",
+      why: "These are exactly the outcomes where A does not occur."
+    },
+
+    {
+      q: "A letter is selected from {A,B,C,D,E}. A = selecting a vowel. Find A'.",
+      hint: "The vowels are A and E.",
+      steps: [
+        "A = {A,E}.",
+        "The remaining letters are B, C and D.",
+        "Therefore A' = {B,C,D}."
+      ],
+      ans: "A' = {B,C,D}",
+      why: "The complement contains the non-vowel outcomes."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 11 — COMPLEMENT PROBABILITY
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability of the Complement of an Event",
+
+  `
+<h2>Probability of the Complement of an Event</h2>
+
+<p><b>One concept:</b> Find the probability that an event does not happen.</p>
+
+<p>
+If A is an event and A' is its complement, then:
+</p>
+
+<p>
+\\[
+\\boxed{P(A')=1-P(A)}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+P(A)=\\frac12
+\\]
+</p>
+
+<p>We want the probability that A does not happen.</p>
+
+<p>Use:</p>
+
+<p>
+\\[
+P(A')=1-P(A)
+\\]
+</p>
+
+<p>Substitute:</p>
+
+<p>
+\\[
+P(A')=1-\\frac12
+\\]
+</p>
+
+<p>
+\\[
+=\\frac22-\\frac12
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(A')=\\frac12}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled.</p>
+
+<p>Find the probability of <b>not</b> getting an even number.</p>
+
+<p>The probability of getting an even number is:</p>
+
+<p>
+\\[
+P(\\text{even})=\\frac36=\\frac12
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(\\text{not even})=1-\\frac12
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(\\text{not even})=\\frac12}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A card is selected from 1 to 5.</p>
+
+<p>Let A be selecting a number greater than 3.</p>
+
+<p>There are two favourable outcomes:</p>
+
+<p>
+\\[
+P(A)=\\frac25
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A')=1-\\frac25
+\\]
+</p>
+
+<p>
+\\[
+=\\frac55-\\frac25
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(A')=\\frac35}
+\\]
+</p>
+
+<h3>Why this works</h3>
+
+<p>
+Either A happens or A does not happen.
+</p>
+
+<p>
+Together they account for every possible outcome.
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{P(A)+P(A')=1}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "If P(A) = 1/4, find P(A').",
+      hint: "Use P(A') = 1 - P(A).",
+      steps: [
+        "P(A') = 1 - 1/4.",
+        "Write 1 as 4/4.",
+        "4/4 - 1/4 = 3/4."
+      ],
+      ans: "3/4",
+      why: "The event and its complement together have probability 1."
+    },
+
+    {
+      q: "If P(A) = 0.7, find P(A').",
+      hint: "Subtract 0.7 from 1.",
+      steps: [
+        "P(A') = 1 - 0.7.",
+        "1 - 0.7 = 0.3."
+      ],
+      ans: "0.3",
+      why: "The probability of A and the probability of A not happening must add to 1."
+    },
+
+    {
+      q: "A die is rolled. Find the probability of not getting a 6.",
+      hint: "First find P(6).",
+      steps: [
+        "P(6) = 1/6.",
+        "P(not 6) = 1 - 1/6.",
+        "1 = 6/6.",
+        "6/6 - 1/6 = 5/6."
+      ],
+      ans: "5/6",
+      why: "Five of the six possible outcomes are not 6."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 12 — SINGLE-OUTCOME PROBABILITY WITH A DIE
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Single-Outcome Probability with a Die",
+
+  `
+<h2>Single-Outcome Probability with a Die</h2>
+
+<p><b>One concept:</b> Find the probability of one specified number appearing on a fair die.</p>
+
+<p>
+A standard die has six equally likely outcomes:
+</p>
+
+<p>
+\\[
+S=\\{1,2,3,4,5,6\\}
+\\]
+</p>
+
+<p>
+If we want one particular number, there is exactly <b>1 favourable outcome</b>.
+</p>
+
+<h3>Example 1: Getting 1</h3>
+
+<p>There are 6 possible outcomes.</p>
+
+<p>Only 1 is favourable.</p>
+
+<p>
+\\[
+P(1)=\\frac{1}{6}
+\\]
+</p>
+
+<h3>Example 2: Getting 4</h3>
+
+<p>Again, only one outcome is favourable.</p>
+
+<p>
+\\[
+P(4)=\\frac{1}{6}
+\\]
+</p>
+
+<h3>Example 3: Getting 6</h3>
+
+<p>There is one favourable outcome: 6.</p>
+
+<p>There are six possible outcomes.</p>
+
+<p>
+\\[
+P(6)=\\frac16
+\\]
+</p>
+
+<h3>Important Observation</h3>
+
+<p>
+For a fair six-sided die, every individual number has the same probability.
+</p>
+
+<p>
+\\[
+\\boxed{
+P(1)=P(2)=P(3)=P(4)=P(5)=P(6)=\\frac16
+}
+\\]
+</p>
+
+<p>
+The important skill here is recognising that a single specified number represents <b>one favourable outcome</b>.
+</p>
+`,
+
+  [
+    {
+      q: "A fair die is rolled. Find P(2).",
+      hint: "There are six possible outcomes and only one is 2.",
+      steps: [
+        "There are 6 possible outcomes.",
+        "Only one outcome is 2.",
+        "Therefore P(2) = 1/6."
+      ],
+      ans: "1/6",
+      why: "One specified number is one favourable outcome out of six."
+    },
+
+    {
+      q: "A fair die is rolled. Find P(5).",
+      hint: "Count the favourable outcome and total outcomes.",
+      steps: [
+        "The die has 6 possible outcomes.",
+        "Only 5 is favourable.",
+        "Therefore P(5) = 1/6."
+      ],
+      ans: "1/6",
+      why: "Each individual face of a fair die has equal probability."
+    },
+
+    {
+      q: "A fair die is rolled. Find P(3).",
+      hint: "How many outcomes are favourable?",
+      steps: [
+        "There are 6 total outcomes.",
+        "Only 3 is favourable.",
+        "Therefore P(3) = 1/6."
+      ],
+      ans: "1/6",
+      why: "The specified number represents one favourable outcome."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 13 — PROBABILITY OF A CATEGORY OF OUTCOMES
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability of a Category of Outcomes",
+
+  `
+<h2>Probability of a Category of Outcomes</h2>
+
+<p><b>One concept:</b> Find the probability of an event containing several favourable outcomes.</p>
+
+<p>
+Sometimes an event is not one outcome. It can contain several outcomes.
+</p>
+
+<h3>Example 1: Even Number</h3>
+
+<p>A die is rolled.</p>
+
+<p>The event "getting an even number" contains:</p>
+
+<p>
+\\[
+\\{2,4,6\\}
+\\]
+</p>
+
+<p>There are 3 favourable outcomes.</p>
+
+<p>There are 6 total outcomes.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(\\text{even})=\\frac36
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(\\text{even})=\\frac12}
+\\]
+</p>
+
+<h3>Example 2: Number Greater Than 4</h3>
+
+<p>The outcomes greater than 4 are:</p>
+
+<p>
+\\[
+\\{5,6\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(>4)=\\frac26
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(>4)=\\frac13}
+\\]
+</p>
+
+<h3>Example 3: Number Less Than 5</h3>
+
+<p>The favourable outcomes are:</p>
+
+<p>
+\\[
+\\{1,2,3,4\\}
+\\]
+</p>
+
+<p>There are 4 favourable outcomes.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(<5)=\\frac46
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(<5)=\\frac23}
+\\]
+</p>
+
+<h3>The Action</h3>
+
+<p>
+When an event contains several outcomes:
+</p>
+
+<p>
+<b>1. List the outcomes that satisfy the condition.</b>
+</p>
+
+<p>
+<b>2. Count them.</b>
+</p>
+
+<p>
+<b>3. Compare that count with the total number of outcomes.</b>
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. Find the probability of getting an odd number.",
+      hint: "List the odd numbers first.",
+      steps: [
+        "The odd outcomes are 1, 3 and 5.",
+        "There are 3 favourable outcomes.",
+        "There are 6 total outcomes.",
+        "P(odd) = 3/6 = 1/2."
+      ],
+      ans: "1/2",
+      why: "Three of the six possible outcomes are odd."
+    },
+
+    {
+      q: "A die is rolled. Find the probability of getting a number greater than 3.",
+      hint: "Which numbers are greater than 3?",
+      steps: [
+        "The favourable outcomes are 4, 5 and 6.",
+        "There are 3 favourable outcomes.",
+        "There are 6 total outcomes.",
+        "P(>3) = 3/6 = 1/2."
+      ],
+      ans: "1/2",
+      why: "Three outcomes satisfy the condition."
+    },
+
+    {
+      q: "A die is rolled. Find the probability of getting a number less than 3.",
+      hint: "List the numbers below 3.",
+      steps: [
+        "The favourable outcomes are 1 and 2.",
+        "There are 2 favourable outcomes.",
+        "There are 6 total outcomes.",
+        "P(<3) = 2/6 = 1/3."
+      ],
+      ans: "1/3",
+      why: "Only 1 and 2 satisfy the condition."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 14 — PROBABILITY FROM A TWO-COLOUR BAG
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability from a Two-Colour Bag",
+
+  `
+<h2>Probability from a Two-Colour Bag</h2>
+
+<p><b>One concept:</b> Find the probability of selecting a colour from a bag.</p>
+
+<h3>Example 1</h3>
+
+<p>A bag contains:</p>
+
+<p>
+\\[
+3\\text{ red balls and }2\\text{ blue balls}
+\\]
+</p>
+
+<p>Total balls:</p>
+
+<p>
+\\[
+3+2=5
+\\]
+</p>
+
+<p>Probability of selecting red:</p>
+
+<p>
+\\[
+P(R)=\\frac{3}{5}
+\\]
+</p>
+
+<p>Probability of selecting blue:</p>
+
+<p>
+\\[
+P(B)=\\frac25
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A bag contains 7 green balls and 3 yellow balls.</p>
+
+<p>Total:</p>
+
+<p>
+\\[
+7+3=10
+\\]
+</p>
+
+<p>Probability of green:</p>
+
+<p>
+\\[
+P(G)=\\frac7{10}
+\\]
+</p>
+
+<p>Probability of yellow:</p>
+
+<p>
+\\[
+P(Y)=\\frac3{10}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A bag contains 4 red balls and 6 blue balls.</p>
+
+<p>Total:</p>
+
+<p>
+\\[
+4+6=10
+\\]
+</p>
+
+<p>Probability of red:</p>
+
+<p>
+\\[
+P(R)=\\frac4{10}=\\frac25
+\\]
+</p>
+
+<p>Probability of blue:</p>
+
+<p>
+\\[
+P(B)=\\frac6{10}=\\frac35
+\\]
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+For one selection:
+</p>
+
+<p>
+\\[
+\\boxed{
+P(\\text{colour})=
+\\frac{\\text{number of balls of that colour}}
+{\\text{total number of balls}}
+}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "A bag contains 4 red balls and 6 blue balls. Find P(red).",
+      hint: "First find the total number of balls.",
+      steps: [
+        "Total = 4 + 6 = 10.",
+        "There are 4 red balls.",
+        "P(red) = 4/10 = 2/5."
+      ],
+      ans: "2/5",
+      why: "Four of the ten possible selections are red."
+    },
+
+    {
+      q: "A bag contains 2 green balls and 8 yellow balls. Find P(green).",
+      hint: "There are 10 balls altogether.",
+      steps: [
+        "Total = 2 + 8 = 10.",
+        "There are 2 green balls.",
+        "P(green) = 2/10 = 1/5."
+      ],
+      ans: "1/5",
+      why: "Two of the ten possible selections are green."
+    },
+
+    {
+      q: "A bag contains 5 red balls and 5 blue balls. Find P(blue).",
+      hint: "Find the total first.",
+      steps: [
+        "Total = 5 + 5 = 10.",
+        "There are 5 blue balls.",
+        "P(blue) = 5/10 = 1/2."
+      ],
+      ans: "1/2",
+      why: "Five of the ten balls are blue."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 15 — PROBABILITY FROM A TABLE
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability from a Table",
+
+  `
+<h2>Probability from a Table</h2>
+
+<p><b>One concept:</b> Read the number of favourable outcomes from a frequency table and calculate probability.</p>
+
+<h3>Example</h3>
+
+<p>A class records the favourite fruit of 20 students.</p>
+
+<table border="1" cellpadding="8">
+<tr>
+<th>Fruit</th>
+<th>Number of Students</th>
+</tr>
+<tr>
+<td>Apple</td>
+<td>8</td>
+</tr>
+<tr>
+<td>Banana</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Orange</td>
+<td>4</td>
+</tr>
+<tr>
+<td>Mango</td>
+<td>3</td>
+</tr>
+</table>
+
+<p>The total number of students is:</p>
+
+<p>
+\\[
+8+5+4+3=20
+\\]
+</p>
+
+<h3>Example 1: Apple</h3>
+
+<p>There are 8 students who chose apple.</p>
+
+<p>
+\\[
+P(Apple)=\\frac8{20}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(Apple)=\\frac25}
+\\]
+</p>
+
+<h3>Example 2: Mango</h3>
+
+<p>There are 3 students who chose mango.</p>
+
+<p>
+\\[
+P(Mango)=\\frac3{20}
+\\]
+</p>
+
+<h3>Example 3: Banana</h3>
+
+<p>There are 5 students who chose banana.</p>
+
+<p>
+\\[
+P(Banana)=\\frac5{20}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(Banana)=\\frac14}
+\\]
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+Read the frequency for the required category and divide it by the total frequency.
+</p>
+`,
+
+  [
+    {
+      q: "A table shows 12 students chose football, 8 chose basketball and 5 chose volleyball. Find the probability that a randomly selected student chose football.",
+      hint: "Add all students first.",
+      steps: [
+        "Total = 12 + 8 + 5 = 25.",
+        "Football has 12 students.",
+        "P(football) = 12/25."
+      ],
+      ans: "12/25",
+      why: "The favourable frequency is 12 and the total frequency is 25."
+    },
+
+    {
+      q: "A table shows 7 students chose tea, 5 chose juice and 8 chose water. Find P(juice).",
+      hint: "Find the total number of students.",
+      steps: [
+        "Total = 7 + 5 + 8 = 20.",
+        "Juice has frequency 5.",
+        "P(juice) = 5/20 = 1/4."
+      ],
+      ans: "1/4",
+      why: "Five of the twenty students chose juice."
+    },
+
+    {
+      q: "A table contains frequencies 6, 9 and 5. Find the probability of selecting an outcome from the category with frequency 9.",
+      hint: "Add the three frequencies.",
+      steps: [
+        "Total = 6 + 9 + 5 = 20.",
+        "The required category has 9 outcomes.",
+        "P = 9/20."
+      ],
+      ans: "9/20",
+      why: "The favourable frequency is 9 out of a total frequency of 20."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 16 — PROBABILITY FROM A DIAGRAM
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability from a Diagram",
+
+  `
+<h2>Probability from a Diagram</h2>
+
+<p><b>One concept:</b> Extract the number of favourable objects from a visual diagram and use it to calculate probability.</p>
+
+<p>
+A diagram can represent physical objects such as balls, shapes or counters.
+</p>
+
+<h3>Example</h3>
+
+<p>Imagine a box represented by these counters:</p>
+
+<p>
+Red: ● ● ● ●
+</p>
+
+<p>
+Blue: ● ● ●
+</p>
+
+<p>
+Green: ● ●
+</p>
+
+<p>Count all counters:</p>
+
+<p>
+\\[
+4+3+2=9
+\\]
+</p>
+
+<h3>Example 1: Red</h3>
+
+<p>There are 4 red counters.</p>
+
+<p>
+\\[
+P(Red)=\\frac49
+\\]
+</p>
+
+<h3>Example 2: Blue</h3>
+
+<p>There are 3 blue counters.</p>
+
+<p>
+\\[
+P(Blue)=\\frac39
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(Blue)=\\frac13}
+\\]
+</p>
+
+<h3>Example 3: Green</h3>
+
+<p>There are 2 green counters.</p>
+
+<p>
+\\[
+P(Green)=\\frac29
+\\]
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+Do not estimate from the picture.
+</p>
+
+<p>
+<b>Count the favourable objects and count all the objects.</b>
+</p>
+
+<p>Then:</p>
+
+<p>
+\\[
+P(A)=\\frac{\\text{favourable objects}}
+{\\text{all objects}}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "A diagram represents 5 red counters and 3 blue counters. Find P(red).",
+      hint: "Count all counters.",
+      steps: [
+        "Total = 5 + 3 = 8.",
+        "Red counters = 5.",
+        "P(red) = 5/8."
+      ],
+      ans: "5/8",
+      why: "Five of the eight counters are red."
+    },
+
+    {
+      q: "A diagram represents 2 green, 4 yellow and 4 black counters. Find P(yellow).",
+      hint: "Add all counters.",
+      steps: [
+        "Total = 2 + 4 + 4 = 10.",
+        "Yellow counters = 4.",
+        "P(yellow) = 4/10 = 2/5."
+      ],
+      ans: "2/5",
+      why: "Four of the ten counters are yellow."
+    },
+
+    {
+      q: "A diagram contains 3 circles, 2 squares and 5 triangles. Find P(triangle).",
+      hint: "Find the total number of shapes.",
+      steps: [
+        "Total = 3 + 2 + 5 = 10.",
+        "Triangles = 5.",
+        "P(triangle) = 5/10 = 1/2."
+      ],
+      ans: "1/2",
+      why: "Five of the ten shapes are triangles."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 17 — EXPERIMENTAL PROBABILITY
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Experimental Probability",
+
+  `
+<h2>Experimental Probability</h2>
+
+<p><b>One concept:</b> Calculate probability from results actually observed in an experiment.</p>
+
+<p>
+Experimental probability uses what happened when an experiment was performed.
+</p>
+
+<p>
+The formula is:
+</p>
+
+<p>
+\\[
+\\boxed{
+P(A)=
+\\frac{\\text{number of times A occurred}}
+{\\text{total number of trials}}
+}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>A coin is tossed 20 times.</p>
+
+<p>Heads occurs 11 times.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(Heads)=\\frac{11}{20}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled 30 times.</p>
+
+<p>The number 6 appears 7 times.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(6)=\\frac7{30}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A spinner is spun 50 times.</p>
+
+<p>Red occurs 18 times.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(Red)=\\frac{18}{50}
+\\]
+</p>
+
+<p>Simplify:</p>
+
+<p>
+\\[
+\\frac{18}{50}=\\frac9{25}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{P(Red)=\\frac9{25}}
+\\]
+</p>
+
+<h3>Important</h3>
+
+<p>
+Experimental probability comes from <b>observed results</b>, not from simply listing all theoretical outcomes.
+</p>
+`,
+
+  [
+    {
+      q: "A coin is tossed 40 times and Heads occurs 22 times. Find the experimental probability of Heads.",
+      hint: "Use occurrences ÷ trials.",
+      steps: [
+        "Heads occurred 22 times.",
+        "There were 40 trials.",
+        "P(Heads) = 22/40.",
+        "Simplify: 22/40 = 11/20."
+      ],
+      ans: "11/20",
+      why: "Experimental probability uses observed frequency divided by total trials."
+    },
+
+    {
+      q: "A die is rolled 50 times and 3 appears 9 times. Find the experimental probability of getting 3.",
+      hint: "Use 9 occurrences out of 50 trials.",
+      steps: [
+        "Number 3 occurred 9 times.",
+        "Total trials = 50.",
+        "P(3) = 9/50."
+      ],
+      ans: "9/50",
+      why: "Nine of the fifty observed rolls produced 3."
+    },
+
+    {
+      q: "A spinner is spun 20 times and blue occurs 6 times. Find the experimental probability of blue.",
+      hint: "Divide occurrences by total trials.",
+      steps: [
+        "Blue occurred 6 times.",
+        "Total trials = 20.",
+        "P(blue) = 6/20.",
+        "Simplify to 3/10."
+      ],
+      ans: "3/10",
+      why: "Six out of twenty observed spins were blue."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 18 — THEORETICAL VS EXPERIMENTAL PROBABILITY
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Theoretical and Experimental Probability",
+
+  `
+<h2>Theoretical and Experimental Probability</h2>
+
+<p><b>One concept:</b> Distinguish between probability calculated from possible outcomes and probability calculated from observed results.</p>
+
+<h3>Theoretical Probability</h3>
+
+<p>
+Theoretical probability is calculated from the possible outcomes of an experiment.
+</p>
+
+<p>
+For a fair die:
+</p>
+
+<p>
+\\[
+P(6)=\\frac16
+\\]
+</p>
+
+<p>
+This is based on the six possible outcomes, not on an actual experiment.
+</p>
+
+<h3>Experimental Probability</h3>
+
+<p>
+Experimental probability is calculated from actual results.
+</p>
+
+<p>
+Suppose a die is rolled 60 times and 6 appears 8 times.
+</p>
+
+<p>
+Then:
+</p>
+
+<p>
+\\[
+P(6)=\\frac8{60}=\\frac2{15}
+\\]
+</p>
+
+<h3>Compare Them</h3>
+
+<p>Theoretical:</p>
+
+<p>
+\\[
+\\frac16
+\\]
+</p>
+
+<p>Experimental:</p>
+
+<p>
+\\[
+\\frac2{15}
+\\]
+</p>
+
+<p>
+They are different because the experiment produced a particular set of results.
+</p>
+
+<h3>Important</h3>
+
+<p>
+<b>Theoretical:</b> What should be expected from the model.</p>
+
+<p>
+<b>Experimental:</b> What was actually observed.
+</p>
+`,
+
+  [
+    {
+      q: "A fair die is rolled 30 times and 4 appears 7 times. Is 1/6 theoretical or experimental probability?",
+      hint: "Was it calculated from possible outcomes or observed results?",
+      steps: [
+        "The result came from actually rolling the die.",
+        "Therefore it is experimental probability."
+      ],
+      ans: "Experimental probability",
+      why: "It is based on observed results from an experiment."
+    },
+
+    {
+      q: "For a fair die, P(2) = 1/6 before any rolls are made. Is this theoretical or experimental?",
+      hint: "Was an experiment already performed?",
+      steps: [
+        "The value comes from the six equally likely faces.",
+        "It does not depend on observed rolls.",
+        "Therefore it is theoretical probability."
+      ],
+      ans: "Theoretical probability",
+      why: "It is calculated from the possible outcomes."
+    },
+
+    {
+      q: "A coin is tossed 100 times and Heads occurs 54 times. Find the experimental probability of Heads.",
+      hint: "Use observed Heads ÷ total tosses.",
+      steps: [
+        "Heads occurred 54 times.",
+        "There were 100 tosses.",
+        "Experimental probability = 54/100 = 27/50."
+      ],
+      ans: "27/50",
+      why: "The probability is based on the actual experiment."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 19 — EXPECTED FREQUENCY
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Expected Frequency",
+
+  `
+<h2>Expected Frequency</h2>
+
+<p><b>One concept:</b> Use probability to estimate how many times an event should occur in a given number of trials.</p>
+
+<p>
+The expected frequency is found using:
+</p>
+
+<p>
+\\[
+\\boxed{
+\\text{Expected frequency}
+=
+\\text{probability}\\times\\text{number of trials}
+}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>A fair coin is tossed 100 times.</p>
+
+<p>The probability of Heads is:</p>
+
+<p>
+\\[
+P(H)=\\frac12
+\\]
+</p>
+
+<p>Expected number of Heads:</p>
+
+<p>
+\\[
+\\frac12\\times100
+\\]
+</p>
+
+<p>
+\\[
+=50
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{50}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A fair die is rolled 60 times.</p>
+
+<p>The probability of getting a 6 is:</p>
+
+<p>
+\\[
+P(6)=\\frac16
+\\]
+</p>
+
+<p>Expected number of sixes:</p>
+
+<p>
+\\[
+\\frac16\\times60
+\\]
+</p>
+
+<p>
+\\[
+=10
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{10}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A spinner has probability:</p>
+
+<p>
+\\[
+P(Red)=\\frac25
+\\]
+</p>
+
+<p>It is spun 100 times.</p>
+
+<p>Expected red results:</p>
+
+<p>
+\\[
+\\frac25\\times100
+\\]
+</p>
+
+<p>
+=40
+</p>
+
+<p>
+\\[
+\\boxed{40}
+\\]
+</p>
+
+<h3>Important</h3>
+
+<p>
+Expected frequency is a prediction based on probability. It does not guarantee that the exact number will occur.
+</p>
+`,
+
+  [
+    {
+      q: "A fair coin is tossed 80 times. Find the expected number of Heads.",
+      hint: "P(Heads) = 1/2.",
+      steps: [
+        "Expected frequency = probability × trials.",
+        "Expected Heads = 1/2 × 80.",
+        "Expected Heads = 40."
+      ],
+      ans: "40",
+      why: "Half of 80 is 40."
+    },
+
+    {
+      q: "A fair die is rolled 120 times. Find the expected number of 5s.",
+      hint: "P(5) = 1/6.",
+      steps: [
+        "Expected frequency = 1/6 × 120.",
+        "120 ÷ 6 = 20.",
+        "Expected number of 5s = 20."
+      ],
+      ans: "20",
+      why: "Each individual face has probability 1/6."
+    },
+
+    {
+      q: "An event has probability 3/10. It is repeated 200 times. Find the expected frequency.",
+      hint: "Multiply 3/10 by 200.",
+      steps: [
+        "Expected frequency = 3/10 × 200.",
+        "200 ÷ 10 = 20.",
+        "20 × 3 = 60."
+      ],
+      ans: "60",
+      why: "The probability predicts about 60 occurrences in 200 trials."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 20 — PROBABILITY OF A OR B
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability of A or B",
+
+  `
+<h2>Probability of A or B</h2>
+
+<p><b>One concept:</b> Understand that "A or B" means the outcome belongs to at least one of the two events.</p>
+
+<p>
+The word <b>or</b> means we include outcomes satisfying A, outcomes satisfying B, or both.
+</p>
+
+<h3>Example 1</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let:</p>
+
+<p>
+\\[
+A=\\{1,2\\}
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+B=\\{5,6\\}
+\\]
+</p>
+
+<p>For "A or B", combine the outcomes:</p>
+
+<p>
+\\[
+\\{1,2,5,6\\}
+\\]
+</p>
+
+<p>There are 4 favourable outcomes.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\text{ or }B)=\\frac46=\\frac23
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let A = getting 1.</p>
+
+<p>Let B = getting 6.</p>
+
+<p>For A or B:</p>
+
+<p>
+\\[
+\\{1,6\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\text{ or }B)=\\frac26=\\frac13
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A number is selected from:</p>
+
+<p>
+\\[
+\\{1,2,3,4,5\\}
+\\]
+</p>
+
+<p>Let A = number less than 3:</p>
+
+<p>
+\\[
+A=\\{1,2\\}
+\\]
+</p>
+
+<p>Let B = number greater than 4:</p>
+
+<p>
+\\[
+B=\\{5\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+A\\text{ or }B=\\{1,2,5\\}
+\\]
+</p>
+
+<p>So:</p>
+
+<p>
+\\[
+P(A\\text{ or }B)=\\frac35
+\\]
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+For now, focus only on what <b>"or"</b> means:
+</p>
+
+<p>
+<b>Include outcomes belonging to A or B.</b>
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. A = {1} and B = {6}. List the outcomes for A or B.",
+      hint: "Include both 1 and 6.",
+      steps: [
+        "A contains 1.",
+        "B contains 6.",
+        "Therefore A or B = {1,6}."
+      ],
+      ans: "{1,6}",
+      why: "An outcome is included if it belongs to A or B."
+    },
+
+    {
+      q: "A number is selected from {1,2,3,4,5}. A = {1,2} and B = {4,5}. Find A or B.",
+      hint: "Combine the two sets.",
+      steps: [
+        "A contains 1 and 2.",
+        "B contains 4 and 5.",
+        "Therefore A or B = {1,2,4,5}."
+      ],
+      ans: "{1,2,4,5}",
+      why: "All outcomes belonging to either event are included."
+    },
+
+    {
+      q: "A die is rolled. A = {2,4} and B = {5}. Find P(A or B).",
+      hint: "First count the outcomes in A or B.",
+      steps: [
+        "A or B = {2,4,5}.",
+        "There are 3 favourable outcomes.",
+        "There are 6 total outcomes.",
+        "P(A or B) = 3/6 = 1/2."
+      ],
+      ans: "1/2",
+      why: "Three die outcomes satisfy at least one of the two events."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 21 — MUTUALLY EXCLUSIVE EVENTS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Mutually Exclusive Events",
+
+  `
+<h2>Mutually Exclusive Events</h2>
+
+<p><b>One concept:</b> Identify two events that cannot happen at the same time.</p>
+
+<p>
+Two events are <b>mutually exclusive</b> if they have no outcome in common.
+</p>
+
+<h3>Example 1</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let:</p>
+
+<p>
+\\[
+A=\\{1,2\\}
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+B=\\{5,6\\}
+\\]
+</p>
+
+<p>There is no common outcome.</p>
+
+<p>
+\\[
+A\\cap B=\\varnothing
+\\]
+</p>
+
+<p>Therefore A and B are mutually exclusive.</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let A = getting an even number:</p>
+
+<p>
+\\[
+A=\\{2,4,6\\}
+\\]
+</p>
+
+<p>Let B = getting an odd number:</p>
+
+<p>
+\\[
+B=\\{1,3,5\\}
+\\]
+</p>
+
+<p>No number is both even and odd.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{A\\text{ and }B\\text{ are mutually exclusive}}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A card is selected from:</p>
+
+<p>
+\\[
+\\{1,2,3,4,5\\}
+\\]
+</p>
+
+<p>Let A = selecting 1.</p>
+
+<p>Let B = selecting 3.</p>
+
+<p>You cannot select both 1 and 3 in one selection.</p>
+
+<p>Therefore A and B are mutually exclusive.</p>
+
+<h3>Counterexample</h3>
+
+<p>Consider:</p>
+
+<p>
+\\[
+A=\\{1,2,3\\}
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+B=\\{3,4,5\\}
+\\]
+</p>
+
+<p>Both contain 3.</p>
+
+<p>Therefore they are <b>not</b> mutually exclusive.</p>
+
+<h3>Key Test</h3>
+
+<p>
+Ask:
+</p>
+
+<p>
+<b>"Can one outcome belong to both events?"</b>
+</p>
+
+<p>
+If no, the events are mutually exclusive.
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. A = {1,2} and B = {5,6}. Are A and B mutually exclusive?",
+      hint: "Look for a common outcome.",
+      steps: [
+        "A contains 1 and 2.",
+        "B contains 5 and 6.",
+        "There is no common outcome.",
+        "Therefore they are mutually exclusive."
+      ],
+      ans: "Yes",
+      why: "The two events cannot occur at the same time."
+    },
+
+    {
+      q: "A die is rolled. A = {2,4,6} and B = {1,3,5}. Are they mutually exclusive?",
+      hint: "Can a number be both even and odd?",
+      steps: [
+        "A contains the even outcomes.",
+        "B contains the odd outcomes.",
+        "There is no common outcome.",
+        "Therefore they are mutually exclusive."
+      ],
+      ans: "Yes",
+      why: "No die outcome is both even and odd."
+    },
+
+    {
+      q: "A die is rolled. A = {1,2,3} and B = {3,4,5}. Are they mutually exclusive?",
+      hint: "Check whether the two sets share an outcome.",
+      steps: [
+        "A contains 3.",
+        "B also contains 3.",
+        "Therefore the events have a common outcome.",
+        "They are not mutually exclusive."
+      ],
+      ans: "No",
+      why: "The outcome 3 can belong to both events."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 22 — ADDITION RULE FOR MUTUALLY EXCLUSIVE EVENTS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Addition Rule for Mutually Exclusive Events",
+
+  `
+<h2>Addition Rule for Mutually Exclusive Events</h2>
+
+<p><b>One concept:</b> Add the probabilities of two mutually exclusive events.</p>
+
+<p>
+If A and B are mutually exclusive, they cannot happen at the same time.
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{P(A\\text{ or }B)=P(A)+P(B)}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let A = getting 1.</p>
+
+<p>Let B = getting 6.</p>
+
+<p>These events are mutually exclusive.</p>
+
+<p>
+\\[
+P(A)=\\frac16
+\\]
+</p>
+
+<p>
+\\[
+P(B)=\\frac16
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\text{ or }B)
+=
+\\frac16+\\frac16
+\\]
+</p>
+
+<p>
+\\[
+=\\frac26
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(A\\text{ or }B)=\\frac13}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let A = getting 2.</p>
+
+<p>Let B = getting 4.</p>
+
+<p>
+\\[
+P(A)=\\frac16
+\\]
+</p>
+
+<p>
+\\[
+P(B)=\\frac16
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\text{ or }B)
+=
+\\frac16+\\frac16
+=
+\\frac13
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A bag contains 3 red balls and 7 blue balls.</p>
+
+<p>One ball is selected.</p>
+
+<p>Let A = red.</p>
+
+<p>Let B = blue.</p>
+
+<p>These events cannot happen together.</p>
+
+<p>
+\\[
+P(A)=\\frac3{10}
+\\]
+</p>
+
+<p>
+\\[
+P(B)=\\frac7{10}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\text{ or }B)
+=
+\\frac3{10}+\\frac7{10}
+=
+1
+\\]
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+Only use this simple addition rule when the events are <b>mutually exclusive</b>.
+</p>
+`,
+
+  [
+    {
+      q: "A die is rolled. Find the probability of getting 1 or 5.",
+      hint: "The two outcomes cannot happen on the same roll.",
+      steps: [
+        "P(1) = 1/6.",
+        "P(5) = 1/6.",
+        "P(1 or 5) = 1/6 + 1/6.",
+        "Therefore P(1 or 5) = 1/3."
+      ],
+      ans: "1/3",
+      why: "The events are mutually exclusive, so their probabilities are added."
+    },
+
+    {
+      q: "A bag contains 4 red balls and 6 blue balls. Find P(red or blue).",
+      hint: "A single ball cannot be both red and blue.",
+      steps: [
+        "P(red) = 4/10.",
+        "P(blue) = 6/10.",
+        "P(red or blue) = 4/10 + 6/10.",
+        "Therefore P(red or blue) = 1."
+      ],
+      ans: "1",
+      why: "Every ball is either red or blue."
+    },
+
+    {
+      q: "A die is rolled. P(A) = 2/6 and P(B) = 1/6. A and B are mutually exclusive. Find P(A or B).",
+      hint: "Add the two probabilities.",
+      steps: [
+        "P(A or B) = P(A) + P(B).",
+        "P(A or B) = 2/6 + 1/6.",
+        "P(A or B) = 3/6.",
+        "P(A or B) = 1/2."
+      ],
+      ans: "1/2",
+      why: "Mutually exclusive probabilities can be added directly."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 23 — PROBABILITY OF A AND B
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Probability of A and B",
+
+  `
+<h2>Probability of A and B</h2>
+
+<p><b>One concept:</b> Understand that "A and B" requires both conditions to occur.</p>
+
+<p>
+The word <b>and</b> means that both events must happen.
+</p>
+
+<h3>Example 1</h3>
+
+<p>A coin is tossed twice.</p>
+
+<p>Let A = getting Head on the first toss.</p>
+
+<p>Let B = getting Head on the second toss.</p>
+
+<p>For A and B to happen:</p>
+
+<p>
+\\[
+HH
+\\]
+</p>
+
+<p>Only HH satisfies both conditions.</p>
+
+<p>The sample space is:</p>
+
+<p>
+\\[
+\\{HH,HT,TH,TT\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\text{ and }B)=\\frac14
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A die is rolled.</p>
+
+<p>Let A = getting an even number.</p>
+
+<p>Let B = getting a number greater than 4.</p>
+
+<p>A:</p>
+
+<p>
+\\[
+\\{2,4,6\\}
+\\]
+</p>
+
+<p>B:</p>
+
+<p>
+\\[
+\\{5,6\\}
+\\]
+</p>
+
+<p>The outcome satisfying both is:</p>
+
+<p>
+\\[
+\\{6\\}
+\\]
+</p>
+
+<p>Therefore the event "A and B" contains only 6.</p>
+
+<h3>Example 3</h3>
+
+<p>A number is selected from 1 to 10.</p>
+
+<p>Let A = an even number.</p>
+
+<p>Let B = a number greater than 7.</p>
+
+<p>A:</p>
+
+<p>
+\\[
+\\{2,4,6,8,10\\}
+\\]
+</p>
+
+<p>B:</p>
+
+<p>
+\\[
+\\{8,9,10\\}
+\\]
+</p>
+
+<p>Both conditions are satisfied by:</p>
+
+<p>
+\\[
+\\{8,10\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\text{ and }B)=\\frac2{10}=\\frac15
+\\]
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+For <b>AND</b>, find the outcomes that satisfy <b>both conditions simultaneously</b>.
+</p>
+`,
+
+  [
+    {
+      q: "A number is selected from 1 to 6. A = even and B = greater than 4. Find A and B.",
+      hint: "Find numbers that are both even and greater than 4.",
+      steps: [
+        "Even numbers are 2, 4 and 6.",
+        "Numbers greater than 4 are 5 and 6.",
+        "The common outcome is 6.",
+        "Therefore A and B = {6}."
+      ],
+      ans: "{6}",
+      why: "The outcome must satisfy both conditions."
+    },
+
+    {
+      q: "A number is selected from 1 to 10. A = multiple of 2 and B = greater than 7. Find A and B.",
+      hint: "List the even numbers greater than 7.",
+      steps: [
+        "Even numbers greater than 7 are 8 and 10.",
+        "Therefore A and B = {8,10}."
+      ],
+      ans: "{8,10}",
+      why: "Both conditions are satisfied by 8 and 10."
+    },
+
+    {
+      q: "A coin is tossed twice. What outcome represents Head on both tosses?",
+      hint: "Both tosses must be H.",
+      steps: [
+        "The first toss must be H.",
+        "The second toss must also be H.",
+        "Therefore the outcome is HH."
+      ],
+      ans: "HH",
+      why: "Both conditions must happen."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 24 — INDEPENDENT EVENTS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Independent Events",
+
+  `
+<h2>Independent Events</h2>
+
+<p><b>One concept:</b> Recognise events where the occurrence of one event does not change the probability of the other.</p>
+
+<p>
+Two events are <b>independent</b> when the result of one does not affect the result of the other.
+</p>
+
+<h3>Example 1: Two Coin Tosses</h3>
+
+<p>A coin is tossed twice.</p>
+
+<p>The first toss does not change the coin.</p>
+
+<p>Therefore the result of the first toss does not affect the probabilities on the second toss.</p>
+
+<p>For example:</p>
+
+<p>
+\\[
+P(H\\text{ on first})=\\frac12
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+P(H\\text{ on second})=\\frac12
+\\]
+</p>
+
+<p>The events are independent.</p>
+
+<h3>Example 2: Die Rolls</h3>
+
+<p>A die is rolled twice.</p>
+
+<p>Suppose the first roll is 2.</p>
+
+<p>The die is rolled again.</p>
+
+<p>The probability of getting 6 on the second roll is still:</p>
+
+<p>
+\\[
+\\frac16
+\\]
+</p>
+
+<p>The first roll did not change the second roll.</p>
+
+<p>Therefore the rolls are independent.</p>
+
+<h3>Example 3: Two Separate Coins</h3>
+
+<p>One coin is tossed and another separate coin is tossed.</p>
+
+<p>The result of the first coin does not change the second coin.</p>
+
+<p>Therefore the events are independent.</p>
+
+<h3>Contrast</h3>
+
+<p>
+Suppose a ball is taken from a bag and <b>not replaced</b>.
+</p>
+
+<p>
+The number of balls remaining changes.
+</p>
+
+<p>
+Therefore the probability on the next selection can change.
+</p>
+
+<p>
+That situation is not independent.
+</p>
+
+<h3>Key Test</h3>
+
+<p>
+Ask:
+</p>
+
+<p>
+<b>"Does the first event change the probability of the second event?"</b>
+</p>
+
+<p>
+If it does not, the events are independent.
+</p>
+`,
+
+  [
+    {
+      q: "A coin is tossed twice. Are the two tosses independent?",
+      hint: "Does the first toss change the second toss?",
+      steps: [
+        "The first result does not change the coin.",
+        "The second toss still has the same probabilities.",
+        "Therefore the tosses are independent."
+      ],
+      ans: "Yes",
+      why: "The first toss does not affect the second toss."
+    },
+
+    {
+      q: "A die is rolled twice. Does getting 6 on the first roll change the probability of getting 6 on the second roll?",
+      hint: "The die is reset naturally after each roll.",
+      steps: [
+        "The first roll does not change the die.",
+        "The second roll still has six possible outcomes.",
+        "Therefore the probability remains 1/6."
+      ],
+      ans: "No",
+      why: "The two rolls are independent."
+    },
+
+    {
+      q: "A ball is removed from a bag and not replaced. Does the first selection potentially change the probability of the second selection?",
+      hint: "Think about how many balls remain.",
+      steps: [
+        "One ball is removed.",
+        "The contents of the bag change.",
+        "Therefore the probability of the second selection can change."
+      ],
+      ans: "Yes",
+      why: "Removing the first ball changes the experiment."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 25 — MULTIPLICATION RULE FOR INDEPENDENT EVENTS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Multiplication Rule for Independent Events",
+
+  `
+<h2>Multiplication Rule for Independent Events</h2>
+
+<p><b>One concept:</b> Multiply probabilities when independent events must both happen.</p>
+
+<p>
+For independent events A and B:
+</p>
+
+<p>
+\\[
+\\boxed{
+P(A\\text{ and }B)=P(A)\\times P(B)
+}
+\\]
+</p>
+
+<h3>Example 1: Two Heads</h3>
+
+<p>A fair coin is tossed twice.</p>
+
+<p>Probability of Head on the first toss:</p>
+
+<p>
+\\[
+\\frac12
+\\]
+</p>
+
+<p>Probability of Head on the second toss:</p>
+
+<p>
+\\[
+\\frac12
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(HH)=\\frac12\\times\\frac12
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(HH)=\\frac14}
+\\]
+</p>
+
+<h3>Example 2: Two Sixes</h3>
+
+<p>A die is rolled twice.</p>
+
+<p>Probability of 6 on each roll:</p>
+
+<p>
+\\[
+\\frac16
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(6\\text{ and }6)
+=
+\\frac16\\times\\frac16
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\frac1{36}}
+\\]
+</p>
+
+<h3>Example 3: Head then Tail</h3>
+
+<p>A fair coin is tossed twice.</p>
+
+<p>
+\\[
+P(H)=\\frac12
+\\]
+</p>
+
+<p>
+\\[
+P(T)=\\frac12
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(H\\text{ then }T)
+=
+\\frac12\\times\\frac12
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\frac14}
+\\]
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+If independent events must <b>both</b> occur, multiply their probabilities.
+</p>
+`,
+
+  [
+    {
+      q: "A fair coin is tossed twice. Find P(HH).",
+      hint: "Multiply the probability of Head on each toss.",
+      steps: [
+        "P(H) = 1/2 on the first toss.",
+        "P(H) = 1/2 on the second toss.",
+        "P(HH) = 1/2 × 1/2 = 1/4."
+      ],
+      ans: "1/4",
+      why: "The tosses are independent and both Heads must occur."
+    },
+
+    {
+      q: "A die is rolled twice. Find the probability of getting 3 on both rolls.",
+      hint: "Each 3 has probability 1/6.",
+      steps: [
+        "P(3) = 1/6 on the first roll.",
+        "P(3) = 1/6 on the second roll.",
+        "Multiply: 1/6 × 1/6 = 1/36."
+      ],
+      ans: "1/36",
+      why: "The two rolls are independent."
+    },
+
+    {
+      q: "A fair coin is tossed twice. Find P(HT).",
+      hint: "Multiply P(H) by P(T).",
+      steps: [
+        "P(H) = 1/2.",
+        "P(T) = 1/2.",
+        "P(HT) = 1/2 × 1/2 = 1/4."
+      ],
+      ans: "1/4",
+      why: "Both independent events must happen in the specified order."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 26 — TWO-STAGE EXPERIMENTS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Two-Stage Experiments",
+
+  `
+<h2>Two-Stage Experiments</h2>
+
+<p><b>One concept:</b> Identify the two stages of a probability experiment.</p>
+
+<p>
+A <b>two-stage experiment</b> is an experiment performed in two steps.
+</p>
+
+<h3>Example 1: Two Coin Tosses</h3>
+
+<p>The experiment has two stages:</p>
+
+<p>
+<b>Stage 1:</b> Toss the coin.
+</p>
+
+<p>
+<b>Stage 2:</b> Toss the coin again.
+</p>
+
+<p>The possible outcomes are:</p>
+
+<p>
+\\[
+HH,HT,TH,TT
+\\]
+</p>
+
+<h3>Example 2: Coin and Die</h3>
+
+<p>Suppose a coin is tossed and then a die is rolled.</p>
+
+<p>Stage 1:</p>
+
+<p>
+\\[
+H\\text{ or }T
+\\]
+</p>
+
+<p>Stage 2:</p>
+
+<p>
+\\[
+1,2,3,4,5,6
+\\]
+</p>
+
+<p>Each first-stage result can be followed by each second-stage result.</p>
+
+<p>For example:</p>
+
+<p>
+\\[
+H1,H2,H3,H4,H5,H6
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+T1,T2,T3,T4,T5,T6
+\\]
+</p>
+
+<h3>Example 3: Selecting Two Items</h3>
+
+<p>A ball is selected from a bag, then another ball is selected.</p>
+
+<p>Stage 1:</p>
+
+<p>
+First selection
+</p>
+
+<p>Stage 2:</p>
+
+<p>
+Second selection
+</p>
+
+<p>
+Whether the second stage has the same probabilities as the first depends on whether the first item is replaced.
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+Before solving a multi-step probability problem, identify:
+</p>
+
+<p>
+<b>What happens first?</b>
+</p>
+
+<p>
+<b>What happens second?</b>
+</p>
+`,
+
+  [
+    {
+      q: "A coin is tossed twice. Identify the two stages.",
+      hint: "Think about what happens first and second.",
+      steps: [
+        "Stage 1 is the first toss.",
+        "Stage 2 is the second toss."
+      ],
+      ans: "First toss, then second toss",
+      why: "The experiment consists of two consecutive actions."
+    },
+
+    {
+      q: "A die is rolled and then a coin is tossed. What is Stage 1?",
+      hint: "Which action happens first?",
+      steps: [
+        "The die is rolled first.",
+        "Therefore the die roll is Stage 1."
+      ],
+      ans: "Rolling the die",
+      why: "Stage 1 is the first action in the experiment."
+    },
+
+    {
+      q: "A coin is tossed and then a die is rolled. What is Stage 2?",
+      hint: "Which action happens second?",
+      steps: [
+        "The coin is tossed first.",
+        "The die is rolled second.",
+        "Therefore the die roll is Stage 2."
+      ],
+      ans: "Rolling the die",
+      why: "Stage 2 is the second action."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 27 — TREE DIAGRAMS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Tree Diagrams",
+
+  `
+<h2>Tree Diagrams</h2>
+
+<p><b>One concept:</b> Represent the possible outcomes of a multi-stage experiment using branches.</p>
+
+<p>
+A <b>tree diagram</b> shows each possible result at each stage of an experiment.
+</p>
+
+<h3>Example: Two Coin Tosses</h3>
+
+<p>First toss:</p>
+
+<p>
+\\[
+H\\quad T
+\\]
+</p>
+
+<p>From H, the second toss can be H or T:</p>
+
+<p>
+\\[
+HH\\quad HT
+\\]
+</p>
+
+<p>From T, the second toss can also be H or T:</p>
+
+<p>
+\\[
+TH\\quad TT
+\\]
+</p>
+
+<p>The four final outcomes are:</p>
+
+<p>
+\\[
+\\boxed{HH,HT,TH,TT}
+\\]
+</p>
+
+<h3>Example 2: Coin Then Die</h3>
+
+<p>The first stage has two branches:</p>
+
+<p>
+\\[
+H,T
+\\]
+</p>
+
+<p>Each branch then has six possible die results:</p>
+
+<p>
+\\[
+1,2,3,4,5,6
+\\]
+</p>
+
+<p>The H branch gives:</p>
+
+<p>
+\\[
+H1,H2,H3,H4,H5,H6
+\\]
+</p>
+
+<p>The T branch gives:</p>
+
+<p>
+\\[
+T1,T2,T3,T4,T5,T6
+\\]
+</p>
+
+<p>There are:</p>
+
+<p>
+\\[
+2\\times6=12
+\\]
+</p>
+
+<p>final outcomes.</p>
+
+<h3>Key Action</h3>
+
+<p>
+At each stage, draw a branch for every possible result.
+</p>
+
+<p>
+Each complete path from the beginning to the end represents one final outcome.
+</p>
+`,
+
+  [
+    {
+      q: "A coin is tossed twice. How many final branches/outcomes does the tree diagram have?",
+      hint: "Each toss has 2 possible results.",
+      steps: [
+        "The first toss has 2 possibilities.",
+        "Each possibility leads to 2 second-stage possibilities.",
+        "Therefore there are 2 × 2 = 4 final outcomes."
+      ],
+      ans: "4",
+      why: "The four paths are HH, HT, TH and TT."
+    },
+
+    {
+      q: "A coin is tossed and then a die is rolled. How many final outcomes are there?",
+      hint: "Multiply the number of first-stage outcomes by second-stage outcomes.",
+      steps: [
+        "The coin has 2 outcomes.",
+        "The die has 6 outcomes.",
+        "Total = 2 × 6 = 12."
+      ],
+      ans: "12",
+      why: "Each coin result can be followed by each of the six die results."
+    },
+
+    {
+      q: "A die is rolled twice. How many final outcomes would a complete tree diagram contain?",
+      hint: "Each stage has 6 possibilities.",
+      steps: [
+        "First roll = 6 possibilities.",
+        "Second roll = 6 possibilities.",
+        "Total = 6 × 6 = 36."
+      ],
+      ans: "36",
+      why: "Every first-roll outcome can be followed by every second-roll outcome."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 28 — WITH REPLACEMENT
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Sampling With Replacement",
+
+  `
+<h2>Sampling With Replacement</h2>
+
+<p><b>One concept:</b> Understand that replacing an item keeps the contents of the collection unchanged.</p>
+
+<p>
+When an item is selected and then <b>returned</b> before the next selection, the experiment is called <b>with replacement</b>.
+</p>
+
+<h3>Example 1</h3>
+
+<p>A bag contains:</p>
+
+<p>
+\\[
+3\\text{ red balls and }2\\text{ blue balls}
+\\]
+</p>
+
+<p>Total:</p>
+
+<p>
+\\[
+5
+\\]
+</p>
+
+<p>A red ball is selected.</p>
+
+<p>It is returned to the bag.</p>
+
+<p>The bag again contains:</p>
+
+<p>
+\\[
+3\\text{ red and }2\\text{ blue}
+\\]
+</p>
+
+<p>The total is still:</p>
+
+<p>
+\\[
+5
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A bag contains 4 green and 6 yellow balls.</p>
+
+<p>A green ball is selected and replaced.</p>
+
+<p>Before the second selection:</p>
+
+<p>
+\\[
+4\\text{ green},6\\text{ yellow}
+\\]
+</p>
+
+<p>The total is still 10.</p>
+
+<h3>Example 3</h3>
+
+<p>A card numbered 1 to 5 is selected.</p>
+
+<p>The card is returned before another selection.</p>
+
+<p>The same five cards are available again.</p>
+
+<p>Therefore the contents have not changed.</p>
+
+<h3>Key Idea</h3>
+
+<p>
+<b>With replacement:</b> select → return → select again.
+</p>
+
+<p>
+The collection returns to its original composition before the next selection.
+</p>
+`,
+
+  [
+    {
+      q: "A red ball is selected from a bag and returned before another selection. Is this with replacement?",
+      hint: "Was the item returned?",
+      steps: [
+        "The ball was selected.",
+        "The ball was returned.",
+        "Therefore this is sampling with replacement."
+      ],
+      ans: "Yes",
+      why: "The selected item is put back before the next selection."
+    },
+
+    {
+      q: "A bag contains 5 red and 3 blue balls. A red ball is replaced after selection. How many balls are in the bag before the second selection?",
+      hint: "The selected ball was returned.",
+      steps: [
+        "Initially there are 5 + 3 = 8 balls.",
+        "The red ball is returned.",
+        "Therefore 8 balls remain."
+      ],
+      ans: "8",
+      why: "Replacement restores the original total."
+    },
+
+    {
+      q: "A card is selected and returned before another card is selected. Does the first selection remove a card permanently?",
+      hint: "What does replacement mean?",
+      steps: [
+        "The card is returned.",
+        "Therefore it is available again.",
+        "No card is permanently removed."
+      ],
+      ans: "No",
+      why: "With replacement restores the selected item."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 29 — WITHOUT REPLACEMENT
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Sampling Without Replacement",
+
+  `
+<h2>Sampling Without Replacement</h2>
+
+<p><b>One concept:</b> Understand that an item is not returned after selection.</p>
+
+<p>
+When an item is selected and <b>not returned</b>, the experiment is called <b>without replacement</b>.
+</p>
+
+<h3>Example 1</h3>
+
+<p>A bag contains:</p>
+
+<p>
+\\[
+3\\text{ red balls and }2\\text{ blue balls}
+\\]
+</p>
+
+<p>Total:</p>
+
+<p>
+\\[
+5
+\\]
+</p>
+
+<p>A red ball is selected and not returned.</p>
+
+<p>The bag now contains:</p>
+
+<p>
+\\[
+2\\text{ red and }2\\text{ blue}
+\\]
+</p>
+
+<p>Total:</p>
+
+<p>
+\\[
+4
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A bag contains 4 green and 6 yellow balls.</p>
+
+<p>A green ball is selected and not replaced.</p>
+
+<p>Before:</p>
+
+<p>
+\\[
+4G+6Y=10
+\\]
+</p>
+
+<p>After removing green:</p>
+
+<p>
+\\[
+3G+6Y=9
+\\]
+</p>
+
+<p>The contents have changed.</p>
+
+<h3>Example 3</h3>
+
+<p>There are 5 cards numbered 1 to 5.</p>
+
+<p>Card 3 is selected and not returned.</p>
+
+<p>The cards remaining are:</p>
+
+<p>
+\\[
+\\{1,2,4,5\\}
+\\]
+</p>
+
+<p>There are now 4 cards instead of 5.</p>
+
+<h3>Key Idea</h3>
+
+<p>
+<b>Without replacement:</b> select → keep it out → select again.
+</p>
+
+<p>
+The number and composition of available items changes.
+</p>
+`,
+
+  [
+    {
+      q: "A blue ball is selected and kept out of the bag. Is this with or without replacement?",
+      hint: "Was the ball returned?",
+      steps: [
+        "The ball was kept out.",
+        "Therefore it was not returned.",
+        "This is without replacement."
+      ],
+      ans: "Without replacement",
+      why: "The selected item is not returned."
+    },
+
+    {
+      q: "A bag has 4 red and 6 blue balls. One red ball is removed without replacement. How many balls remain?",
+      hint: "Start with 10 balls and remove 1.",
+      steps: [
+        "Total initially = 4 + 6 = 10.",
+        "One ball is removed.",
+        "10 - 1 = 9."
+      ],
+      ans: "9",
+      why: "Without replacement reduces the total number of available items."
+    },
+
+    {
+      q: "Five cards are available. One is selected and not returned. How many cards remain?",
+      hint: "Remove one from five.",
+      steps: [
+        "There are 5 cards initially.",
+        "One card is removed.",
+        "5 - 1 = 4."
+      ],
+      ans: "4",
+      why: "The selected card is no longer available."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 30 — DEPENDENT EVENTS
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Dependent Events",
+
+  `
+<h2>Dependent Events</h2>
+
+<p><b>One concept:</b> Recognise when the first event changes the probability of the second event.</p>
+
+<p>
+Two events are <b>dependent</b> when the result of one event affects the probability of the other.
+</p>
+
+<h3>Example 1</h3>
+
+<p>A bag contains 3 red balls and 2 blue balls.</p>
+
+<p>A red ball is selected <b>without replacement</b>.</p>
+
+<p>Before the first selection:</p>
+
+<p>
+\\[
+3R+2B=5
+\\]
+</p>
+
+<p>After a red ball is removed:</p>
+
+<p>
+\\[
+2R+2B=4
+\\]
+</p>
+
+<p>The probability of red has changed.</p>
+
+<p>Before:</p>
+
+<p>
+\\[
+P(R)=\\frac35
+\\]
+</p>
+
+<p>After a red ball is removed:</p>
+
+<p>
+\\[
+P(R)=\\frac24=\\frac12
+\\]
+</p>
+
+<p>Therefore the events are dependent.</p>
+
+<h3>Example 2</h3>
+
+<p>A bag contains 5 green balls and 5 yellow balls.</p>
+
+<p>A green ball is removed and not replaced.</p>
+
+<p>Initially:</p>
+
+<p>
+\\[
+P(G)=\\frac5{10}=\\frac12
+\\]
+</p>
+
+<p>After removal:</p>
+
+<p>
+\\[
+P(G)=\\frac49
+\\]
+</p>
+
+<p>The probability changed.</p>
+
+<p>Therefore the selections are dependent.</p>
+
+<h3>Example 3</h3>
+
+<p>A card is selected from a deck and kept out.</p>
+
+<p>Another card is then selected.</p>
+
+<p>The number of available cards has changed.</p>
+
+<p>Therefore the second selection depends on the first.</p>
+
+<h3>Key Test</h3>
+
+<p>
+Ask:
+</p>
+
+<p>
+<b>"Did the first event change the probability of the second?"</b>
+</p>
+
+<p>
+If yes, the events are dependent.
+</p>
+`,
+
+  [
+    {
+      q: "A bag has 4 red and 6 blue balls. A red ball is removed without replacement. Are the first and second selections dependent?",
+      hint: "Does removing the red ball change the bag?",
+      steps: [
+        "The first red ball is removed.",
+        "The contents of the bag change.",
+        "Therefore the probability on the second selection changes.",
+        "The events are dependent."
+      ],
+      ans: "Yes",
+      why: "The first selection changes the conditions for the second."
+    },
+
+    {
+      q: "A card is selected and not returned. Is the next card selection dependent on the first selection?",
+      hint: "Does the number of cards remain the same?",
+      steps: [
+        "The first card is removed.",
+        "The number of available cards decreases.",
+        "Therefore the second selection is affected."
+      ],
+      ans: "Yes",
+      why: "Without replacement changes the sample for the next selection."
+    },
+
+    {
+      q: "A bag contains 3 red and 2 blue balls. One red ball is removed without replacement. Find the probability of red on the second selection.",
+      hint: "After removing one red, how many red and total balls remain?",
+      steps: [
+        "Initially there are 3 red and 2 blue.",
+        "One red is removed.",
+        "Red remaining = 2.",
+        "Total remaining = 4.",
+        "Therefore P(red on second selection) = 2/4 = 1/2."
+      ],
+      ans: "1/2",
+      why: "The first selection changed the contents of the bag."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 31 — CONDITIONAL PROBABILITY
+// ============================================================
+
+add(
+  "math",
+  "probability",
+  "Conditional Probability",
+
+  `
+<h2>Conditional Probability</h2>
+
+<p><b>One concept:</b> Find the probability of an event when we already know that another event has happened.</p>
+
+<p>
+< b>Conditional probability</b> means finding a probability under a condition.
+</p>
+
+<p>
+We write:
+</p>
+
+<p>
+\\[
+\\boxed{P(A\\mid B)}
+\\]
+</p>
+
+<p>
+This means:
+</p>
+
+<p>
+<b>"The probability of A given that B has happened."</b>
+</p>
+
+<h3>Example 1</h3>
+
+<p>A bag contains 3 red balls and 2 blue balls.</p>
+
+<p>Suppose we are told that the first ball selected was red and it was not replaced.</p>
+
+<p>Originally:</p>
+
+<p>
+\\[
+3R+2B=5
+\\]
+</p>
+
+<p>After a red ball is removed:</p>
+
+<p>
+\\[
+2R+2B=4
+\\]
+</p>
+
+<p>Now find the probability that the second ball is red.</p>
+
+<p>Given that a red ball has already been removed:</p>
+
+<p>
+\\[
+P(R\\mid R\\text{ first})=\\frac24
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(R\\mid R\\text{ first})=\\frac12}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>There are 5 boys and 7 girls in a group.</p>
+
+<p>Suppose we are told that the selected student is from the group of girls.</p>
+
+<p>Among the girls, there are 7 possible students.</p>
+
+<p>If 3 of those girls wear glasses, then:</p>
+
+<p>
+\\[
+P(\\text{glasses}\\mid\\text{girl})
+=
+\\frac37
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A class contains 10 students who play football and 6 of these students are boys.</p>
+
+<p>If we already know that the selected student plays football, then the relevant group is the football players.</p>
+
+<p>The conditional probability of selecting a boy is:</p>
+
+<p>
+\\[
+P(\\text{boy}\\mid\\text{football})
+=
+\\frac6{10}
+=
+\\frac35
+\\]
+</p>
+
+<h3>Key Action</h3>
+
+<p>
+The condition tells you which group to work inside.
+</p>
+
+<p>
+Instead of using the whole original sample, restrict your attention to the group described by the condition.
+</p>
+`,
+
+  [
+    {
+      q: "A class has 8 boys and 12 girls. Among the girls, 4 wear glasses. Find P(glasses | girl).",
+      hint: "The condition says the student is a girl, so use the 12 girls as the relevant group.",
+      steps: [
+        "The condition restricts us to the girls.",
+        "There are 12 girls.",
+        "4 girls wear glasses.",
+        "P(glasses | girl) = 4/12 = 1/3."
+      ],
+      ans: "1/3",
+      why: "Conditional probability uses the group specified by the condition."
+    },
+
+    {
+      q: "A group contains 5 boys and 7 girls. Three of the boys wear glasses. Find P(glasses | boy).",
+      hint: "Work only within the boys.",
+      steps: [
+        "The condition says the person is a boy.",
+        "There are 5 boys.",
+        "3 boys wear glasses.",
+        "P(glasses | boy) = 3/5."
+      ],
+      ans: "3/5",
+      why: "The relevant sample is the group of boys."
+    },
+
+    {
+      q: "A bag contains 3 red and 2 blue balls. A red ball is removed without replacement. Find the probability that the second ball is blue, given that the first was red.",
+      hint: "After removing one red, what remains?",
+      steps: [
+        "Initially there are 3 red and 2 blue.",
+        "One red is removed.",
+        "There are now 2 red and 2 blue balls.",
+        "There are 4 balls remaining.",
+        "P(blue | first was red) = 2/4 = 1/2."
+      ],
+      ans: "1/2",
+      why: "The known first result changes the group of possible outcomes for the second selection."
+    }
+  ]
+);// ============================================================
+// PROBABILITY — BATCH 5
+// SCREENS 32–41
+// ============================================================
+
+
+// ------------------------------------------------------------
+// SCREEN 32 — TWO-WAY TABLES
+// ONE ACTION: READ A VALUE FROM A TWO-WAY TABLE
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "Reading a Two-Way Table",
+
+  `
+<h2>Reading a Two-Way Table</h2>
+
+<p><b>One concept:</b> Read information from a table where two categories are compared.</p>
+
+<h3>Example 1</h3>
+
+<p>A class records whether students are boys or girls and whether they play football.</p>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th></th>
+  <th>Football</th>
+  <th>No Football</th>
+  <th>Total</th>
+</tr>
+<tr>
+  <th>Boys</th>
+  <td>12</td>
+  <td>8</td>
+  <td>20</td>
+</tr>
+<tr>
+  <th>Girls</th>
+  <td>6</td>
+  <td>14</td>
+  <td>20</td>
+</tr>
+<tr>
+  <th>Total</th>
+  <td>18</td>
+  <td>22</td>
+  <td>40</td>
+</tr>
+</table>
+
+<p>How many boys play football?</p>
+
+<p>Find the row <b>Boys</b> and the column <b>Football</b>.</p>
+
+<p>
+\\[
+\\boxed{12}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>How many girls do not play football?</p>
+
+<p>Find the row <b>Girls</b> and the column <b>No Football</b>.</p>
+
+<p>
+\\[
+\\boxed{14}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>How many students play football altogether?</p>
+
+<p>Look at the total under the Football column.</p>
+
+<p>
+\\[
+\\boxed{18}
+\\]
+</p>
+
+<h3>The Skill</h3>
+
+<p>
+To read a two-way table:
+</p>
+
+<ol>
+<li>Find the correct row.</li>
+<li>Find the correct column.</li>
+<li>Read the number where they meet.</li>
+</ol>
+`,
+
+  [
+    {
+      q: "How many boys play football?",
+      hint: "Use the Boys row and Football column.",
+      steps: [
+        "Find the Boys row.",
+        "Move to the Football column.",
+        "The value is 12."
+      ],
+      ans: "12",
+      why: "The intersection of the Boys row and Football column contains 12."
+    },
+
+    {
+      q: "How many girls do not play football?",
+      hint: "Find the Girls row and No Football column.",
+      steps: [
+        "Find the Girls row.",
+        "Move to the No Football column.",
+        "The value is 14."
+      ],
+      ans: "14",
+      why: "The table shows that 14 girls do not play football."
+    },
+
+    {
+      q: "How many students play football altogether?",
+      hint: "Look at the Football column total.",
+      steps: [
+        "Find the Football column.",
+        "Look at its total.",
+        "The total is 18."
+      ],
+      ans: "18",
+      why: "The Football column total represents all students who play football."
+    },
+
+    {
+      q: "How many boys are there altogether?",
+      hint: "Look at the Boys row total.",
+      steps: [
+        "Find the Boys row.",
+        "Look at the Total column.",
+        "The value is 20."
+      ],
+      ans: "20",
+      why: "The row total represents all boys in the class."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 33 — CONDITIONAL PROBABILITY FROM A TWO-WAY TABLE
+// ONE ACTION: CALCULATE P(A|B)
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "Conditional Probability from a Two-Way Table",
+
+  `
+<h2>Conditional Probability from a Two-Way Table</h2>
+
+<p><b>One concept:</b> Calculate the probability of one event when we already know that another condition is true.</p>
+
+<p>The notation is:</p>
+
+<p>
+\\[
+\\boxed{P(A|B)}
+\\]
+</p>
+
+<p>This means:</p>
+
+<p>
+<b>Probability of A given that B has happened.</b>
+</p>
+
+<h3>Example 1</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th></th>
+  <th>Football</th>
+  <th>No Football</th>
+  <th>Total</th>
+</tr>
+<tr>
+  <th>Boys</th>
+  <td>12</td>
+  <td>8</td>
+  <td>20</td>
+</tr>
+<tr>
+  <th>Girls</th>
+  <td>6</td>
+  <td>14</td>
+  <td>20</td>
+</tr>
+<tr>
+  <th>Total</th>
+  <td>18</td>
+  <td>22</td>
+  <td>40</td>
+</tr>
+</table>
+
+<p>Find the probability that a student plays football, given that the student is a boy.</p>
+
+<p>We are told the student is a <b>boy</b>.</p>
+
+<p>Therefore, we only consider the 20 boys.</p>
+
+<p>Of those 20 boys, 12 play football.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(\\text{Football}|\\text{Boy})
+=
+\\frac{12}{20}
+\\]
+</p>
+
+<p>Simplify:</p>
+
+<p>
+\\[
+\\frac{12}{20}=\\frac{3}{5}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(\\text{Football}|\\text{Boy})=\\frac35}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>Find the probability that a student is a girl, given that the student plays football.</p>
+
+<p>There are 18 football players.</p>
+
+<p>Of them, 6 are girls.</p>
+
+<p>
+\\[
+P(\\text{Girl}|\\text{Football})
+=
+\\frac{6}{18}
+=
+\\frac13
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\frac13}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>Find the probability that a student does not play football, given that the student is a girl.</p>
+
+<p>There are 20 girls.</p>
+
+<p>14 girls do not play football.</p>
+
+<p>
+\\[
+P(\\text{No Football}|\\text{Girl})
+=
+\\frac{14}{20}
+=
+\\frac{7}{10}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\frac7{10}}
+\\]
+</p>
+
+<h3>The Key Idea</h3>
+
+<p>
+The condition tells you which group becomes the <b>new total</b>.
+</p>
+
+<p>
+For example:
+</p>
+
+<p>
+<b>Given that the student is a boy</b>
+</p>
+
+<p>
+means the denominator is the number of boys.
+</p>
+`,
+
+  [
+    {
+      q: "Using the table, find P(Football | Boy).",
+      hint: "Once you know the student is a boy, use the total number of boys.",
+      steps: [
+        "There are 20 boys.",
+        "12 boys play football.",
+        "P(Football | Boy) = 12/20.",
+        "12/20 = 3/5."
+      ],
+      ans: "3/5",
+      why: "The condition Boy restricts the possible students to the 20 boys."
+    },
+
+    {
+      q: "Find P(Girl | Football).",
+      hint: "The student is already known to play football.",
+      steps: [
+        "There are 18 football players.",
+        "6 football players are girls.",
+        "P(Girl | Football) = 6/18.",
+        "6/18 = 1/3."
+      ],
+      ans: "1/3",
+      why: "The denominator must be the number of football players because Football is the given condition."
+    },
+
+    {
+      q: "Find P(No Football | Girl).",
+      hint: "The denominator is the number of girls.",
+      steps: [
+        "There are 20 girls.",
+        "14 girls do not play football.",
+        "P(No Football | Girl) = 14/20.",
+        "14/20 = 7/10."
+      ],
+      ans: "7/10",
+      why: "The condition Girl restricts the sample to the 20 girls."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 34 — VENN DIAGRAMS
+// ONE ACTION: PLACE/IDENTIFY EVENTS IN REGIONS
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "Venn Diagrams",
+
+  `
+<h2>Venn Diagrams</h2>
+
+<p><b>One concept:</b> Represent events as regions inside circles.</p>
+
+<p>A Venn diagram uses circles to represent sets or events.</p>
+
+<h3>Example 1</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+A=\\{1,2,3\\}
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+B=\\{3,4,5\\}
+\\]
+</p>
+
+<p>The numbers belonging to A are placed inside circle A.</p>
+
+<p>The numbers belonging to B are placed inside circle B.</p>
+
+<p>The number 3 belongs to both sets, so it goes in the region where the circles overlap.</p>
+
+<h3>Example 2</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+A=\\{2,4,6\\}
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+B=\\{1,3,5\\}
+\\]
+</p>
+
+<p>There are no common numbers.</p>
+
+<p>Therefore the circles do not need an overlapping member.</p>
+
+<h3>Example 3</h3>
+
+<p>Let:</p>
+
+<p>
+\\[
+A=\\{1,2,3,4\\}
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+B=\\{3,4,5,6\\}
+\\]
+</p>
+
+<p>The common values are:</p>
+
+<p>
+\\[
+3,4
+\\]
+</p>
+
+<p>So 3 and 4 belong in the overlapping part of the two circles.</p>
+
+<h3>The Important Idea</h3>
+
+<p>
+A number that belongs to <b>both</b> events goes in the overlapping region.
+</p>
+
+<p>
+A number belonging to only one event goes in that event's own region.
+</p>
+`,
+
+  [
+    {
+      q: "A = {1,2,3} and B = {3,4,5}. Which number belongs to both events?",
+      hint: "Find the value appearing in both sets.",
+      steps: [
+        "A contains 1, 2 and 3.",
+        "B contains 3, 4 and 5.",
+        "The common value is 3."
+      ],
+      ans: "3",
+      why: "3 appears in both sets, so it belongs in the overlapping region."
+    },
+
+    {
+      q: "A = {2,4,6} and B = {1,3,5}. Which numbers belong only to A?",
+      hint: "Look for values in A that are not in B.",
+      steps: [
+        "A contains 2, 4 and 6.",
+        "None of these values appears in B.",
+        "Therefore all three belong only to A."
+      ],
+      ans: "{2,4,6}",
+      why: "None of the elements of A is shared with B."
+    },
+
+    {
+      q: "A = {1,2,3,4} and B = {3,4,5,6}. Which values belong in the overlapping region?",
+      hint: "Find values appearing in both sets.",
+      steps: [
+        "A contains 1, 2, 3 and 4.",
+        "B contains 3, 4, 5 and 6.",
+        "The common values are 3 and 4."
+      ],
+      ans: "{3,4}",
+      why: "The overlap contains elements belonging to both events."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 35 — INTERSECTION OF TWO EVENTS
+// ONE ACTION: IDENTIFY A ∩ B
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "Intersection of Two Events",
+
+  `
+<h2>Intersection of Two Events</h2>
+
+<p><b>One concept:</b> Identify the outcomes that belong to both events.</p>
+
+<p>The intersection of A and B is written:</p>
+
+<p>
+\\[
+\\boxed{A\\cap B}
+\\]
+</p>
+
+<p>It means:</p>
+
+<p>
+<b>A and B at the same time.</b>
+</p>
+
+<h3>Example 1</h3>
+
+<p>Let:</p>
+
+<p>
+\\[
+A=\\{1,2,3,4\\}
+\\]
+</p>
+
+<p>
+\\[
+B=\\{3,4,5,6\\}
+\\]
+</p>
+
+<p>The common values are 3 and 4.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+A\\cap B=\\{3,4\\}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>On a die:</p>
+
+<p>
+A = even numbers
+</p>
+
+<p>
+\\[
+A=\\{2,4,6\\}
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+B = numbers greater than 3
+</p>
+
+<p>
+\\[
+B=\\{4,5,6\\}
+\\]
+</p>
+
+<p>The values satisfying both conditions are 4 and 6.</p>
+
+<p>
+\\[
+\\boxed{A\\cap B=\\{4,6\\}}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>Numbers from 1 to 10:</p>
+
+<p>
+A = multiples of 2
+</p>
+
+<p>
+\\[
+A=\\{2,4,6,8,10\\}
+\\]
+</p>
+
+<p>
+B = numbers greater than 7
+</p>
+
+<p>
+\\[
+B=\\{8,9,10\\}
+\\]
+</p>
+
+<p>Common values:</p>
+
+<p>
+\\[
+\\boxed{A\\cap B=\\{8,10\\}}
+\\]
+</p>
+
+<h3>Key Question</h3>
+
+<p>
+Whenever you see:
+</p>
+
+<p>
+\\[
+A\\cap B
+\\]
+</p>
+
+<p>ask:</p>
+
+<p>
+<b>"Which outcomes satisfy A AND B?"</b>
+</p>
+`,
+
+  [
+    {
+      q: "A = {1,2,3,4} and B = {3,4,5,6}. Find A ∩ B.",
+      hint: "Find the values appearing in both sets.",
+      steps: [
+        "Compare the two sets.",
+        "3 appears in both.",
+        "4 appears in both.",
+        "Therefore A ∩ B = {3,4}."
+      ],
+      ans: "{3,4}",
+      why: "The intersection contains only outcomes common to both events."
+    },
+
+    {
+      q: "A = {2,4,6} and B = {4,5,6}. Find A ∩ B.",
+      hint: "Which numbers occur in both sets?",
+      steps: [
+        "4 occurs in A and B.",
+        "6 occurs in A and B.",
+        "Therefore A ∩ B = {4,6}."
+      ],
+      ans: "{4,6}",
+      why: "Both 4 and 6 satisfy both event conditions."
+    },
+
+    {
+      q: "A = {2,4,6,8,10} and B = {8,9,10}. Find A ∩ B.",
+      hint: "Find the common values.",
+      steps: [
+        "8 occurs in both sets.",
+        "10 occurs in both sets.",
+        "Therefore A ∩ B = {8,10}."
+      ],
+      ans: "{8,10}",
+      why: "The intersection contains the outcomes shared by A and B."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 36 — GENERAL ADDITION RULE
+// ONE ACTION: CALCULATE P(A OR B) FOR OVERLAPPING EVENTS
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "General Addition Rule",
+
+  `
+<h2>General Addition Rule</h2>
+
+<p><b>One concept:</b> Calculate the probability of A or B when the events can overlap.</p>
+
+<p>When A and B overlap:</p>
+
+<p>
+\\[
+\\boxed{
+P(A\\cup B)
+=
+P(A)+P(B)-P(A\\cap B)
+}
+\\]
+</p>
+
+<p>We subtract the intersection because it was counted twice.</p>
+
+<h3>Example 1: A Die</h3>
+
+<p>Let A be an even number:</p>
+
+<p>
+\\[
+A=\\{2,4,6\\}
+\\]
+</p>
+
+<p>Let B be greater than 3:</p>
+
+<p>
+\\[
+B=\\{4,5,6\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A)=\\frac36
+\\]
+</p>
+
+<p>
+\\[
+P(B)=\\frac36
+\\]
+</p>
+
+<p>The intersection is:</p>
+
+<p>
+\\[
+A\\cap B=\\{4,6\\}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(A\\cap B)=\\frac26
+\\]
+</p>
+
+<p>Apply the rule:</p>
+
+<p>
+\\[
+P(A\\cup B)
+=
+\\frac36+\\frac36-\\frac26
+\\]
+</p>
+
+<p>
+\\[
+=\\frac46
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(A\\cup B)=\\frac23}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+P(A)=\\frac12
+\\]
+</p>
+
+<p>
+\\[
+P(B)=\\frac25
+\\]
+</p>
+
+<p>
+\\[
+P(A\\cap B)=\\frac15
+\\]
+</p>
+
+<p>Then:</p>
+
+<p>
+\\[
+P(A\\cup B)
+=
+\\frac12+\\frac25-\\frac15
+\\]
+</p>
+
+<p>
+\\[
+=\\frac12+\\frac15
+\\]
+</p>
+
+<p>
+\\[
+=\\frac5{10}+\\frac2{10}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\frac7{10}}
+\\]
+</p>
+
+<h3>Why subtract?</h3>
+
+<p>
+The overlapping outcomes are included in both P(A) and P(B).
+</p>
+
+<p>
+Without subtracting the overlap, those outcomes would be counted twice.
+</p>
+`,
+
+  [
+    {
+      q: "A = {2,4,6} and B = {4,5,6} on a fair die. Find P(A ∪ B).",
+      hint: "Use P(A ∪ B) = P(A) + P(B) - P(A ∩ B).",
+      steps: [
+        "P(A) = 3/6.",
+        "P(B) = 3/6.",
+        "A ∩ B = {4,6}, so P(A ∩ B) = 2/6.",
+        "P(A ∪ B) = 3/6 + 3/6 - 2/6.",
+        "P(A ∪ B) = 4/6 = 2/3."
+      ],
+      ans: "2/3",
+      why: "The two events overlap, so their intersection must be subtracted once."
+    },
+
+    {
+      q: "P(A) = 1/2, P(B) = 2/5 and P(A ∩ B) = 1/5. Find P(A ∪ B).",
+      hint: "Substitute directly into the general addition rule.",
+      steps: [
+        "P(A ∪ B) = 1/2 + 2/5 - 1/5.",
+        "2/5 - 1/5 = 1/5.",
+        "Therefore P(A ∪ B) = 1/2 + 1/5.",
+        "1/2 = 5/10 and 1/5 = 2/10.",
+        "Therefore P(A ∪ B) = 7/10."
+      ],
+      ans: "7/10",
+      why: "The intersection is subtracted to avoid counting the overlap twice."
+    },
+
+    {
+      q: "P(A) = 3/4, P(B) = 1/2 and P(A ∩ B) = 1/4. Find P(A ∪ B).",
+      hint: "Use the general addition rule.",
+      steps: [
+        "P(A ∪ B) = 3/4 + 1/2 - 1/4.",
+        "1/2 = 2/4.",
+        "Therefore P(A ∪ B) = 3/4 + 2/4 - 1/4.",
+        "P(A ∪ B) = 4/4.",
+        "Therefore P(A ∪ B) = 1."
+      ],
+      ans: "1",
+      why: "Together the two events cover the entire sample space."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 37 — EXPECTED VALUE
+// ONE ACTION: CALCULATE E(X)
+// ------------------------------------------------------------
 
 add(
   "math",
@@ -13907,201 +18998,997 @@ add(
   "Expected Value",
 
   `
-<h2> Expected Value</h2>
+<h2>Expected Value</h2>
 
-<h3> DEEP NOTES</h3>
+<p><b>One concept:</b> Calculate the long-run average outcome of a probability experiment.</p>
+
+<p>Expected value is written as:</p>
+
 <p>
-Expected value is the long-term average outcome of a random process if it is repeated many times.
-It does not guarantee what will happen in a single trial.
+\\[
+\\boxed{E(X)}
+\\]
 </p>
-<pre>
-E(X) = Σ (x × P(x))
-</pre>
- It is a weighted average of all possible outcomes.
-<h3> WORKED EXAMPLE (STEP BY STEP)</h3>
-<p><b>Question:</b> A game gives: +10 (50%), +0 (50%). Find expected value.</p>
-<p><b>Step 1: Identify outcomes and probabilities</b></p>
-<pre>
-10 with probability 0.5
-0 with probability 0.5
-</pre>
-<p><b>Step 2: Multiply each outcome by probability</b></p>
-<pre>
-10 × 0.5 = 5
-0 × 0.5 = 0
-</pre>
-<p><b>Step 3: Add results</b></p>
-<pre>
-E(X) = 5 + 0 = 5
-</pre>
-<p><b>Final Answer:</b> Expected value = 5</p>
-<h3> DIAGRAM</h3>
-<pre>
-Outcome      Probability      Contribution
-Win 10   →      0.5        →      5
-Win 0    →      0.5        →      0
----------------------------------------
-Expected Value = 5
-</pre>
-<h3> REAL WORLD APPLICATION</h3>
+
+<p>For possible values x with probabilities P(x):</p>
+
+<p>
+\\[
+\\boxed{E(X)=\\sum xP(x)}
+\\]
+</p>
+
+<p>This means:</p>
+
+<p>
+<b>Multiply each outcome by its probability, then add.</b>
+</p>
+
+<h3>Example 1</h3>
+
+<p>A game gives:</p>
+
 <ul>
-<li>Casino games and gambling risk analysis</li>
-<li>Insurance premium calculation</li>
-<li>Investment profit forecasting</li>
-<li>Decision making under uncertainty</li>
+<li>KSh 0 with probability 1/2</li>
+<li>KSh 10 with probability 1/2</li>
 </ul>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+E(X)
+=
+0\\left(\\frac12\\right)
++
+10\\left(\\frac12\\right)
+\\]
+</p>
+
+<p>
+\\[
+=0+5
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{E(X)=5}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>A game gives:</p>
+
+<ul>
+<li>0 points with probability 1/4</li>
+<li>4 points with probability 3/4</li>
+</ul>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+E(X)
+=
+0\\left(\\frac14\\right)
++
+4\\left(\\frac34\\right)
+\\]
+</p>
+
+<p>
+\\[
+=0+3
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{E(X)=3}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A fair die is rolled.</p>
+
+<p>The possible values are 1, 2, 3, 4, 5 and 6.</p>
+
+<p>Each has probability 1/6.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+E(X)
+=
+1\\left(\\frac16\\right)
++2\\left(\\frac16\\right)
++3\\left(\\frac16\\right)
++4\\left(\\frac16\\right)
++5\\left(\\frac16\\right)
++6\\left(\\frac16\\right)
+\\]
+</p>
+
+<p>
+\\[
+=
+\\frac{1+2+3+4+5+6}{6}
+\\]
+</p>
+
+<p>
+\\[
+=\\frac{21}{6}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{E(X)=3.5}
+\\]
+</p>
+
+<p>
+Expected value does not have to be one of the actual outcomes.
+</p>
 `,
 
   [
     {
-      "q": "A game gives you 10 if you win with probability 0.3 and 0 if you lose with probability 0.7. Find the expected value",
-      "hint": "use E(X) = Σ xP(x)",
-      "steps": [
-        "Step 1: List outcomes: win = 10, lose = 0",
-        "Step 2: Assign probabilities: P(win)=0.3, P(lose)=0.7",
-        "Step 3: Multiply outcomes: 10 × 0.3 = 3",
-        "Step 4: Multiply loss outcome: 0 × 0.7 = 0",
-        "Step 5: Add results: 3 + 0"
+      q: "A game pays KSh 0 with probability 1/2 and KSh 10 with probability 1/2. Find the expected value.",
+      hint: "Multiply each amount by its probability and add.",
+      steps: [
+        "E(X) = 0(1/2) + 10(1/2).",
+        "0(1/2) = 0.",
+        "10(1/2) = 5.",
+        "E(X) = 5."
       ],
-      "ans": "3",
-      "why": "Expected value is the weighted average of all possible outcomes"
+      ans: "5",
+      why: "Expected value is the probability-weighted average of the possible outcomes."
     },
+
     {
-      "q": "A dice game pays 6 when you roll a 6 and 0 otherwise. Find expected value",
-      "hint": "probability of 6 is 1/6",
-      "steps": [
-        "Step 1: Outcome 6 pays 6, probability = 1/6",
-        "Step 2: All other outcomes pay 0, probability = 5/6",
-        "Step 3: Compute 6 × 1/6 = 1",
-        "Step 4: Compute 0 × 5/6 = 0",
-        "Step 5: Add results = 1"
+      q: "A game gives 0 points with probability 1/4 and 4 points with probability 3/4. Find E(X).",
+      hint: "Use E(X) = ΣxP(x).",
+      steps: [
+        "E(X) = 0(1/4) + 4(3/4).",
+        "0(1/4) = 0.",
+        "4(3/4) = 3.",
+        "Therefore E(X) = 3."
       ],
-      "ans": "1",
-      "why": "Expected value combines all outcomes weighted by probability"
+      ans: "3",
+      why: "Each outcome contributes its value multiplied by its probability."
     },
+
     {
-      "q": "A lottery gives 100 with probability 0.05 and 0 otherwise. Find expected value",
-      "hint": "weighted mean",
-      "steps": [
-        "Step 1: Identify outcomes: 100 and 0",
-        "Step 2: Assign probabilities: 0.05 and 0.95",
-        "Step 3: Compute 100 × 0.05 = 5",
-        "Step 4: Compute 0 × 0.95 = 0",
-        "Step 5: Add results"
+      q: "A fair die is rolled. Find the expected value.",
+      hint: "Add 1 through 6 and divide by 6.",
+      steps: [
+        "Each outcome has probability 1/6.",
+        "E(X) = (1+2+3+4+5+6)/6.",
+        "The sum is 21.",
+        "21/6 = 3.5."
       ],
-      "ans": "5",
-      "why": "Expected value represents long-term average winnings"
+      ans: "3.5",
+      why: "The expected value of a fair die is the probability-weighted average of all six outcomes."
     }
   ]
 );
 
+
+// ------------------------------------------------------------
+// SCREEN 38 — EXPECTED VALUE FROM A TABLE
+// ONE ACTION: CALCULATE E(X) USING TABLE VALUES
+// ------------------------------------------------------------
+
 add(
   "math",
   "probability",
-  "Real life probability",
+  "Expected Value from a Table",
 
   `
-<h2>Real World Applications of Probability</h2>
+<h2>Expected Value from a Probability Table</h2>
 
-<h3> FOUNDATION EXPLANATION</h3>
+<p><b>One concept:</b> Calculate expected value when outcomes and probabilities are given in a table.</p>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th>X</th>
+  <th>P(X)</th>
+</tr>
+<tr>
+  <td>0</td>
+  <td>0.2</td>
+</tr>
+<tr>
+  <td>5</td>
+  <td>0.5</td>
+</tr>
+<tr>
+  <td>10</td>
+  <td>0.3</td>
+</tr>
+</table>
+
+<h3>Example 1</h3>
+
+<p>Use:</p>
+
 <p>
-Probability is not just theory — it is used in real life to make decisions under uncertainty.
-It tells us how likely an event is to happen.
+\\[
+E(X)=\\sum xP(x)
+\\]
 </p>
 
----
+<p>Multiply each value by its probability:</p>
 
-<h3> WELL DETAILED NOTES</h3>
-<ul>
-<li>Used in weather forecasting to predict rain, storms, or sunshine</li>
-<li>Used in insurance to calculate risk of accidents or illness</li>
-<li>Used in games and sports predictions (winning chances)</li>
-<li>Used in business for decision making under uncertainty</li>
-</ul>
+<p>
+\\[
+0(0.2)=0
+\\]
+</p>
 
----
+<p>
+\\[
+5(0.5)=2.5
+\\]
+</p>
 
-<h3> WORKED EXAMPLES</h3>
+<p>
+\\[
+10(0.3)=3
+\\]
+</p>
 
-<pre>
-Example 1:
-Weather forecast says 70% chance of rain.
+<p>Add:</p>
 
-Step 1: Convert → 70%
-Step 2: Interpretation → likely to rain
-Step 3: Decision → carry umbrella
-</pre>
+<p>
+\\[
+E(X)=0+2.5+3
+\\]
+</p>
 
-<pre>
-Example 2:
-A player has probability 0.8 of scoring a goal.
+<p>
+\\[
+\\boxed{E(X)=5.5}
+\\]
+</p>
 
-Step 1: Convert → 0.8 = 80%
-Step 2: Interpretation → very high chance
-Step 3: Conclusion → strong performer
-</pre>
+<h3>Example 2</h3>
 
-<pre>
-Example 3:
-Probability of accident is 0.01.
+<table border="1" cellpadding="8">
+<tr>
+  <th>X</th>
+  <th>P(X)</th>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0.4</td>
+</tr>
+<tr>
+  <td>4</td>
+  <td>0.3</td>
+</tr>
+<tr>
+  <td>8</td>
+  <td>0.3</td>
+</tr>
+</table>
 
-Step 1: Convert → 1%
-Step 2: Interpretation → very rare event
-Step 3: Conclusion → low risk
-</pre>
+<p>Multiply:</p>
 
----
+<p>
+\\[
+2(0.4)=0.8
+\\]
+</p>
 
-<h3> DIAGRAM</h3>
+<p>
+\\[
+4(0.3)=1.2
+\\]
+</p>
 
-<pre>
-0 ─────────────── 0.5 ─────────────── 1
-Impossible        Uncertain          Certain
-</pre>
+<p>
+\\[
+8(0.3)=2.4
+\\]
+</p>
 
----
+<p>Add:</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Weather forecasting systems</li>
-<li>Insurance risk modeling</li>
-<li>Sports analytics and predictions</li>
-<li>Financial market forecasting</li>
-</ul>
+<p>
+\\[
+E(X)=0.8+1.2+2.4
+\\]
+</p>
 
----
+<p>
+\\[
+\\boxed{E(X)=4.4}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th>X</th>
+  <th>P(X)</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td>0.5</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>0.3</td>
+</tr>
+<tr>
+  <td>6</td>
+  <td>0.2</td>
+</tr>
+</table>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+E(X)
+=
+1(0.5)+3(0.3)+6(0.2)
+\\]
+</p>
+
+<p>
+\\[
+=0.5+0.9+1.2
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{E(X)=2.6}
+\\]
+</p>
+
+<h3>The Procedure</h3>
+
+<ol>
+<li>Take each outcome.</li>
+<li>Multiply it by its probability.</li>
+<li>Add all the products.</li>
+</ol>
 `,
 
   [
     {
-      "q": "What does probability measure?",
-      "hint": "chance",
-      "ans": "likelihood of an event happening",
-      "why": "Probability tells how likely something is to occur, from 0 (impossible) to 1 (certain)"
+      q: "Using X = 0,5,10 with probabilities 0.2,0.5,0.3, find E(X).",
+      hint: "Multiply each X by its probability.",
+      steps: [
+        "0 × 0.2 = 0.",
+        "5 × 0.5 = 2.5.",
+        "10 × 0.3 = 3.",
+        "Add: 0 + 2.5 + 3 = 5.5."
+      ],
+      ans: "5.5",
+      why: "Expected value is found by adding all xP(x) products."
     },
+
     {
-      "q": "What does 0.7 probability mean?",
-      "hint": "convert to percentage",
-      "ans": "70% chance of occurrence",
-      "why": "0.7 means 70 out of 100 chances the event will happen"
+      q: "X takes values 2,4,8 with probabilities 0.4,0.3,0.3. Find E(X).",
+      hint: "Calculate 2(0.4) + 4(0.3) + 8(0.3).",
+      steps: [
+        "2(0.4) = 0.8.",
+        "4(0.3) = 1.2.",
+        "8(0.3) = 2.4.",
+        "Add: 0.8 + 1.2 + 2.4 = 4.4."
+      ],
+      ans: "4.4",
+      why: "Each possible outcome is weighted by how likely it is."
     },
+
     {
-      "q": "Where is probability used in real life?",
-      "hint": "prediction systems",
-      "ans": "weather, insurance, sports, business",
-      "why": "It helps model uncertainty in real-world decisions"
+      q: "X takes values 1,3,6 with probabilities 0.5,0.3,0.2. Find E(X).",
+      hint: "Multiply and add.",
+      steps: [
+        "1(0.5) = 0.5.",
+        "3(0.3) = 0.9.",
+        "6(0.2) = 1.2.",
+        "Add: 0.5 + 0.9 + 1.2 = 2.6."
+      ],
+      ans: "2.6",
+      why: "The expected value is the sum of the probability-weighted outcomes."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 39 — PROBABILITY DISTRIBUTION
+// ONE ACTION: READ A DISTRIBUTION
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "Probability Distribution",
+
+  `
+<h2>Probability Distribution</h2>
+
+<p><b>One concept:</b> Understand a table that assigns a probability to every possible value of a random variable.</p>
+
+<p>A probability distribution shows:</p>
+
+<ul>
+<li>each possible value of X</li>
+<li>the probability of each value</li>
+</ul>
+
+<h3>Example 1</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th>X</th>
+  <th>P(X)</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td>0.2</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0.5</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>0.3</td>
+</tr>
+</table>
+
+<p>This means:</p>
+
+<p>
+\\[
+P(X=1)=0.2
+\\]
+</p>
+
+<p>
+\\[
+P(X=2)=0.5
+\\]
+</p>
+
+<p>
+\\[
+P(X=3)=0.3
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th>X</th>
+  <th>P(X)</th>
+</tr>
+<tr>
+  <td>0</td>
+  <td>0.4</td>
+</tr>
+<tr>
+  <td>1</td>
+  <td>0.4</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0.2</td>
+</tr>
+</table>
+
+<p>The probability of X = 2 is:</p>
+
+<p>
+\\[
+\\boxed{P(X=2)=0.2}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th>X</th>
+  <th>P(X)</th>
+</tr>
+<tr>
+  <td>10</td>
+  <td>0.1</td>
+</tr>
+<tr>
+  <td>20</td>
+  <td>0.6</td>
+</tr>
+<tr>
+  <td>30</td>
+  <td>0.3</td>
+</tr>
+</table>
+
+<p>The probability that X is 20 is:</p>
+
+<p>
+\\[
+\\boxed{P(X=20)=0.6}
+\\]
+</p>
+
+<h3>The Key Idea</h3>
+
+<p>
+A probability distribution connects every possible outcome with its probability.
+</p>
+
+<p>
+It answers the question:
+</p>
+
+<p>
+<b>"How likely is each possible value of X?"</b>
+</p>
+`,
+
+  [
+    {
+      q: "In the distribution X = 1,2,3 with probabilities 0.2,0.5,0.3, find P(X=2).",
+      hint: "Find the row where X = 2.",
+      steps: [
+        "Locate X = 2.",
+        "Its probability is 0.5."
+      ],
+      ans: "0.5",
+      why: "The probability distribution assigns 0.5 to the outcome X = 2."
     },
+
     {
-      "q": "What does probability close to 1 mean?",
-      "hint": "almost certain",
-      "ans": "very likely event",
-      "why": "Values near 1 indicate high chance of happening"
+      q: "In the distribution X = 0,1,2 with probabilities 0.4,0.4,0.2, find P(X=0).",
+      hint: "Read the probability beside X = 0.",
+      steps: [
+        "Locate X = 0.",
+        "Its probability is 0.4."
+      ],
+      ans: "0.4",
+      why: "The table states that X = 0 has probability 0.4."
     },
+
     {
-      "q": "What does probability close to 0 mean?",
-      "hint": "rare event",
-      "ans": "very unlikely event",
-      "why": "Values near 0 indicate low chance of happening"
+      q: "In the distribution X = 10,20,30 with probabilities 0.1,0.6,0.3, find P(X=30).",
+      hint: "Find the probability paired with 30.",
+      steps: [
+        "Locate X = 30.",
+        "Its probability is 0.3."
+      ],
+      ans: "0.3",
+      why: "The probability paired with X = 30 is 0.3."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 40 — CHECKING A PROBABILITY DISTRIBUTION
+// ONE ACTION: TEST WHETHER A TABLE CAN BE A DISTRIBUTION
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "Checking a Probability Distribution",
+
+  `
+<h2>Checking a Probability Distribution</h2>
+
+<p><b>One concept:</b> Determine whether a table satisfies the rules for a probability distribution.</p>
+
+<p>A valid probability distribution must satisfy two conditions:</p>
+
+<p><b>Condition 1:</b> Every probability must be between 0 and 1.</p>
+
+<p>
+\\[
+0\\leq P(X)\\leq1
+\\]
+</p>
+
+<p><b>Condition 2:</b> All probabilities must add to 1.</p>
+
+<p>
+\\[
+\\sum P(X)=1
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<table border="1" cellpadding="8">
+<tr>
+  <th>X</th>
+  <th>P(X)</th>
+</tr>
+<tr>
+  <td>1</td>
+  <td>0.2</td>
+</tr>
+<tr>
+  <td>2</td>
+  <td>0.5</td>
+</tr>
+<tr>
+  <td>3</td>
+  <td>0.3</td>
+</tr>
+</table>
+
+<p>Check the probabilities:</p>
+
+<p>
+\\[
+0.2+0.5+0.3=1
+\\]
+</p>
+
+<p>All probabilities are between 0 and 1.</p>
+
+<p>Therefore this is a valid distribution.</p>
+
+<h3>Example 2</h3>
+
+<p>Probabilities:</p>
+
+<p>
+\\[
+0.3,0.4,0.5
+\\]
+</p>
+
+<p>Add them:</p>
+
+<p>
+\\[
+0.3+0.4+0.5=1.2
+\\]
+</p>
+
+<p>Since:</p>
+
+<p>
+\\[
+1.2\\neq1
+\\]
+</p>
+
+<p>It is <b>not</b> a valid probability distribution.</p>
+
+<h3>Example 3</h3>
+
+<p>Probabilities:</p>
+
+<p>
+\\[
+0.2,0.5,-0.3,0.6
+\\]
+</p>
+
+<p>The value:</p>
+
+<p>
+\\[
+-0.3
+\\]
+</p>
+
+<p>is less than 0.</p>
+
+<p>Therefore it cannot be a probability.</p>
+
+<p>So the table is not a valid probability distribution.</p>
+
+<h3>The Two Checks</h3>
+
+<ol>
+<li>Check every probability is between 0 and 1.</li>
+<li>Check that all probabilities add to 1.</li>
+</ol>
+`,
+
+  [
+    {
+      q: "Are 0.2, 0.5 and 0.3 valid probabilities for a probability distribution?",
+      hint: "Add them.",
+      steps: [
+        "0.2 + 0.5 + 0.3 = 1.",
+        "Each value is between 0 and 1.",
+        "Therefore the distribution is valid."
+      ],
+      ans: "Yes",
+      why: "All probabilities are valid and their total is exactly 1."
+    },
+
+    {
+      q: "Are 0.3, 0.4 and 0.5 a valid probability distribution?",
+      hint: "Check their total.",
+      steps: [
+        "0.3 + 0.4 + 0.5 = 1.2.",
+        "A probability distribution must total 1.",
+        "Therefore it is not valid."
+      ],
+      ans: "No",
+      why: "The probabilities add to 1.2 instead of 1."
+    },
+
+    {
+      q: "Are 0.2, 0.5, -0.3 and 0.6 a valid probability distribution?",
+      hint: "Check whether every probability is at least 0.",
+      steps: [
+        "A probability cannot be negative.",
+        "-0.3 is less than 0.",
+        "Therefore the distribution is invalid."
+      ],
+      ans: "No",
+      why: "Every probability must lie between 0 and 1."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// SCREEN 41 — FINDING A MISSING PROBABILITY
+// ONE ACTION: USE THE TOTAL OF 1
+// ------------------------------------------------------------
+
+add(
+  "math",
+  "probability",
+  "Finding a Missing Probability",
+
+  `
+<h2>Finding a Missing Probability</h2>
+
+<p><b>One concept:</b> Find an unknown probability when the other probabilities are known.</p>
+
+<p>The probabilities in a complete distribution must add to 1.</p>
+
+<p>
+\\[
+\\boxed{\\sum P(X)=1}
+\\]
+</p>
+
+<h3>Example 1</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+P(A)=0.2
+\\]
+</p>
+
+<p>
+\\[
+P(B)=0.5
+\\]
+</p>
+
+<p>
+\\[
+P(C)=?
+\\]
+</p>
+
+<p>All probabilities must total 1.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+0.2+0.5+P(C)=1
+\\]
+</p>
+
+<p>Add the known probabilities:</p>
+
+<p>
+\\[
+0.7+P(C)=1
+\\]
+</p>
+
+<p>Subtract 0.7:</p>
+
+<p>
+\\[
+P(C)=1-0.7
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(C)=0.3}
+\\]
+</p>
+
+<h3>Example 2</h3>
+
+<p>Suppose:</p>
+
+<p>
+\\[
+P(A)=\\frac14
+\\]
+</p>
+
+<p>
+\\[
+P(B)=\\frac12
+\\]
+</p>
+
+<p>
+\\[
+P(C)=?
+\\]
+</p>
+
+<p>Since the total is 1:</p>
+
+<p>
+\\[
+\\frac14+\\frac12+P(C)=1
+\\]
+</p>
+
+<p>Convert to quarters:</p>
+
+<p>
+\\[
+\\frac14+\\frac24+P(C)=\\frac44
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(C)=\\frac44-\\frac34
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(C)=\\frac14}
+\\]
+</p>
+
+<h3>Example 3</h3>
+
+<p>A probability distribution has:</p>
+
+<p>
+\\[
+P(X=1)=0.1
+\\]
+</p>
+
+<p>
+\\[
+P(X=2)=0.2
+\\]
+</p>
+
+<p>
+\\[
+P(X=3)=0.4
+\\]
+</p>
+
+<p>
+\\[
+P(X=4)=?
+\\]
+</p>
+
+<p>Set the total equal to 1:</p>
+
+<p>
+\\[
+0.1+0.2+0.4+P(X=4)=1
+\\]
+</p>
+
+<p>Add:</p>
+
+<p>
+\\[
+0.7+P(X=4)=1
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+P(X=4)=1-0.7
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{P(X=4)=0.3}
+\\]
+</p>
+
+<h3>The Rule</h3>
+
+<p>
+To find a missing probability:
+</p>
+
+<p>
+\\[
+\\boxed{
+\\text{Missing probability}
+=
+1-\\text{sum of known probabilities}
+}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "P(A)=0.2 and P(B)=0.5. Find P(C).",
+      hint: "All probabilities must add to 1.",
+      steps: [
+        "0.2 + 0.5 + P(C) = 1.",
+        "0.7 + P(C) = 1.",
+        "P(C) = 1 - 0.7.",
+        "P(C) = 0.3."
+      ],
+      ans: "0.3",
+      why: "The probabilities in a complete distribution must add to 1."
+    },
+
+    {
+      q: "P(A)=1/4 and P(B)=1/2. Find P(C).",
+      hint: "Convert 1/2 into quarters.",
+      steps: [
+        "1/2 = 2/4.",
+        "Known total = 1/4 + 2/4 = 3/4.",
+        "P(C) = 1 - 3/4.",
+        "P(C) = 1/4."
+      ],
+      ans: "1/4",
+      why: "The missing probability must make the total equal to 1."
+    },
+
+    {
+      q: "A distribution has probabilities 0.1, 0.2, 0.4 and P(X=4). Find P(X=4).",
+      hint: "Add the three known probabilities first.",
+      steps: [
+        "0.1 + 0.2 + 0.4 = 0.7.",
+        "The complete total must be 1.",
+        "P(X=4) = 1 - 0.7.",
+        "P(X=4) = 0.3."
+      ],
+      ans: "0.3",
+      why: "The missing probability is whatever amount is needed to make the total probability 1."
     }
   ]
 );
@@ -16138,1349 +22025,11445 @@ They simply <b>swap positions</b>.
 );
 add(
   "math",
-  "vectors",
-  "Vector Notation",
+  "matrices",
+  "Matrix of transformation",
+  "Rotation Through 90 Degrees Anticlockwise",
 
   `
-<h2> Vector Notation</h2>
+<h2>Rotation Through 90° Anticlockwise</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-A vector is a quantity with BOTH magnitude and direction. It can be represented in multiple equivalent forms.
+A <b>rotation</b> turns a point around a fixed centre.
+In this screen, the centre of rotation is the origin, O(0,0),
+and the point turns through <b>90° anticlockwise</b>.
+</p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+When a point rotates through 90° anticlockwise about the origin,
+its coordinates change according to this rule:
+</p>
+
+<p><b>(x,y) → (-y,x)</b></p>
+
+<p>
+Notice what happens:
+</p>
+
+<ul>
+<li>The old y-coordinate moves to the first position.</li>
+<li>The old x-coordinate moves to the second position.</li>
+<li>The old y-coordinate becomes negative.</li>
+</ul>
+
+<h3>2. TRANSFORMATION MATRIX</h3>
+
+<p>
+The transformation matrix for a 90° anticlockwise rotation is:
 </p>
 
 <pre>
-a = (x, y)
-a = xi + yj
+[ 0  -1]
+[ 1   0]
 </pre>
 
- i = unit vector in horizontal direction  
- j = unit vector in vertical direction  
-
----
-
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
-
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Write (3, 4) in i, j form</p>
-<p><b>Step 1:</b> x-component = 3 → 3i</p>
-<p><b>Step 2:</b> y-component = 4 → 4j</p>
-<p><b>Final Answer:</b> 3i + 4j</p>
-
-<br>
-
-<p><b>Example 2</b></p>
-<p><b>Question:</b> Convert (−2, 5) to i, j form</p>
-<p><b>Step 1:</b> x = −2 → −2i</p>
-<p><b>Step 2:</b> y = 5 → 5j</p>
-<p><b>Final Answer:</b> −2i + 5j</p>
-
-<br>
-
-<p><b>Example 3</b></p>
-<p><b>Question:</b> Convert 7i − 3j into coordinate form</p>
-<p><b>Step 1:</b> x-component = 7</p>
-<p><b>Step 2:</b> y-component = −3</p>
-<p><b>Final Answer:</b> (7, −3)</p>
-
----
-
-<h3> DIAGRAM</h3>
+<p>
+To transform a point (x,y), multiply the matrix by its
+coordinate column:
+</p>
 
 <pre>
-          j ↑
-            |
-            |     • (x, y)
-            |
-------------•--------------→ i
-          origin
+[ 0  -1] [x]   [-y]
+[ 1   0] [y] = [ x]
 </pre>
 
----
+<p>
+The first coordinate is:
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>GPS navigation directions</li>
-<li>Airplane movement tracking</li>
-<li>Game character motion (2D/3D)</li>
-</ul>
+<p><b>0x + (-1)y = -y</b></p>
 
----
+<p>
+The second coordinate is:
+</p>
+
+<p><b>1x + 0y = x</b></p>
+
+<p>
+Therefore, the transformation is:
+</p>
+
+<p><b>(x,y) → (-y,x)</b></p>
+
+<h3>3. WORKED EXAMPLE 1</h3>
+
+<p>
+Rotate P(3,2) through 90° anticlockwise about the origin.
+</p>
+
+<p>Step 1: Write the original coordinates.</p>
+
+<pre>
+P = (3,2)
+</pre>
+
+<p>Step 2: Apply the rule (x,y) → (-y,x).</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(3,2) → (-2,3)
+</pre>
+
+<p>Step 3: State the image.</p>
+
+<p><b>P' = (-2,3)</b></p>
+
+<h3>4. WORKED EXAMPLE 2</h3>
+
+<p>
+Rotate A(-4,5) through 90° anticlockwise about the origin.
+</p>
+
+<p>Step 1: Identify x and y.</p>
+
+<pre>
+x = -4
+y = 5
+</pre>
+
+<p>Step 2: Apply the rule.</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(-4,5) → (-5,-4)
+</pre>
+
+<p>Step 3: State the image.</p>
+
+<p><b>A' = (-5,-4)</b></p>
+
+<p>
+Remember that the new first coordinate is the negative of the
+old y-coordinate. The old y-coordinate is 5, so the new one is -5.
+</p>
+
+<h3>5. WORKED EXAMPLE 3</h3>
+
+<p>
+Rotate B(2,-6) through 90° anticlockwise about the origin.
+</p>
+
+<p>Step 1: Identify the coordinates.</p>
+
+<pre>
+x = 2
+y = -6
+</pre>
+
+<p>Step 2: Apply the rule.</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(2,-6) → (6,2)
+</pre>
+
+<p>Step 3: State the image.</p>
+
+<p><b>B' = (6,2)</b></p>
+
+<p>
+Because the original y-coordinate was -6, its negative is
+-(-6) = 6.
+</p>
+
+<h3>6. THE PATTERN</h3>
+
+<pre>
+(3,2)    → (-2,3)
+
+(-4,5)   → (-5,-4)
+
+(2,-6)   → (6,2)
+</pre>
+
+<p>
+For every point, the same rule applies:
+</p>
+
+<p><b>90° anticlockwise: (x,y) → (-y,x)</b></p>
+
+<p>
+The centre must be the origin for this rule to apply directly.
+</p>
 `,
 
   [
     {
-      "q": "Convert (-3, 7) into i and j vector form",
-      "hint": "split components",
-      "steps": [
-        "Step 1: Identify x-component = -3",
-        "Step 2: Identify y-component = 7",
-        "Step 3: Multiply x by i → -3i",
-        "Step 4: Multiply y by j → 7j",
-        "Step 5: Combine components"
+      q: "Rotate (3,2) through 90° anticlockwise about the origin.",
+      hint: "Use (x,y) → (-y,x).",
+      steps: [
+        "Original point = (3,2)",
+        "The new first coordinate is -y = -2",
+        "The new second coordinate is x = 3",
+        "Image = (-2,3)"
       ],
-      "ans": "-3i + 7j",
-      "why": "Each coordinate is written along its axis direction"
+      ans: "(-2,3)",
+      why: "A 90° anticlockwise rotation maps (x,y) to (-y,x)."
     },
     {
-      "q": "Convert (0, 6) into i and j form",
-      "hint": "x is zero",
-      "steps": [
-        "Step 1: Identify x-component = 0",
-        "Step 2: Identify y-component = 6",
-        "Step 3: 0i contributes nothing",
-        "Step 4: Write remaining j component"
+      q: "Rotate (-4,5) through 90° anticlockwise about the origin.",
+      hint: "Negate the old y-coordinate, then use the old x-coordinate.",
+      steps: [
+        "Original point = (-4,5)",
+        "New first coordinate = -5",
+        "New second coordinate = -4",
+        "Image = (-5,-4)"
       ],
-      "ans": "6j",
-      "why": "Zero x-component removes i term"
+      ans: "(-5,-4)",
+      why: "The new coordinates are (-y,x), so (-4,5) becomes (-5,-4)."
     },
     {
-      "q": "Convert 8i - 5j into coordinate form",
-      "hint": "extract components",
-      "steps": [
-        "Step 1: Identify i coefficient = 8",
-        "Step 2: Identify j coefficient = -5",
-        "Step 3: Write x = 8",
-        "Step 4: Write y = -5",
-        "Step 5: Form coordinate pair"
+      q: "Rotate (2,-6) through 90° anticlockwise about the origin.",
+      hint: "Remember that -(-6) = 6.",
+      steps: [
+        "Original point = (2,-6)",
+        "New first coordinate = -(-6) = 6",
+        "New second coordinate = 2",
+        "Image = (6,2)"
       ],
-      "ans": "(8, -5)",
-      "why": "i corresponds to x-axis and j corresponds to y-axis"
+      ans: "(6,2)",
+      why: "Negating the original y-coordinate changes -6 to 6, while x remains the second coordinate."
     },
     {
-      "q": "Add vectors (2i + 3j) + (4i - j)",
-      "hint": "combine like terms",
-      "steps": [
-        "Step 1: Group i terms → 2i + 4i",
-        "Step 2: Group j terms → 3j - j",
-        "Step 3: Add i components → 6i",
-        "Step 4: Add j components → 2j"
+      q: "Use the transformation matrix to rotate (4,3) through 90° anticlockwise.",
+      hint: "Multiply [[0,-1],[1,0]] by [4,3].",
+      steps: [
+        "First coordinate = 0(4) - 1(3) = -3",
+        "Second coordinate = 1(4) + 0(3) = 4",
+        "Image = (-3,4)"
       ],
-      "ans": "6i + 2j",
-      "why": "Vector addition is done component-wise"
+      ans: "(-3,4)",
+      why: "The matrix [[0,-1],[1,0]] produces the coordinates (-y,x)."
     },
     {
-      "q": "Subtract vectors (7i + 2j) - (3i + 5j)",
-      "hint": "distribute minus sign",
-      "steps": [
-        "Step 1: Expand subtraction → 7i + 2j - 3i - 5j",
-        "Step 2: Group i terms → 7i - 3i",
-        "Step 3: Group j terms → 2j - 5j",
-        "Step 4: Simplify components"
+      q: "A point Q has image Q' = (-7,3) after a 90° anticlockwise rotation about the origin. Find the original point Q.",
+      hint: "If (x,y) → (-y,x), compare each coordinate of the image.",
+      steps: [
+        "The image is (-y,x) = (-7,3)",
+        "-y = -7, so y = 7",
+        "x = 3",
+        "Original point Q = (3,7)"
       ],
-      "ans": "4i - 3j",
-      "why": "Subtraction changes signs of second vector"
+      ans: "(3,7)",
+      why: "The second image coordinate gives x = 3, while the first gives y = 7."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix of transformation",
+  "Rotation Through 90 Degrees Clockwise",
+
+  `
+<h2>Rotation Through 90° Clockwise</h2>
+
+<p>
+A <b>rotation</b> turns a point around a fixed centre.
+In this screen, the centre is the origin O(0,0), and the point
+turns through <b>90° clockwise</b>.
+</p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+A 90° clockwise rotation changes the coordinates according to:
+</p>
+
+<p><b>(x,y) → (y,-x)</b></p>
+
+<p>
+This means:
+</p>
+
+<ul>
+<li>The old y-coordinate becomes the new first coordinate.</li>
+<li>The old x-coordinate becomes the new second coordinate.</li>
+<li>The old x-coordinate changes sign.</li>
+</ul>
+
+<h3>2. TRANSFORMATION MATRIX</h3>
+
+<p>
+The transformation matrix for a 90° clockwise rotation is:
+</p>
+
+<pre>
+[ 0   1]
+[-1   0]
+</pre>
+
+<p>
+Write the original point as a column vector:
+</p>
+
+<pre>
+[x]
+[y]
+</pre>
+
+<p>Multiply the matrix by the column vector:</p>
+
+<pre>
+[ 0   1] [x]   [ y]
+[-1   0] [y] = [-x]
+</pre>
+
+<p>The first coordinate is:</p>
+
+<p><b>0x + 1y = y</b></p>
+
+<p>The second coordinate is:</p>
+
+<p><b>-1x + 0y = -x</b></p>
+
+<p>Therefore:</p>
+
+<p><b>(x,y) → (y,-x)</b></p>
+
+<h3>3. WORKED EXAMPLE 1</h3>
+
+<p>
+Rotate P(3,2) through 90° clockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the original coordinates.</p>
+
+<pre>
+x = 3
+y = 2
+</pre>
+
+<p><b>Step 2:</b> Apply the rule (x,y) → (y,-x).</p>
+
+<pre>
+(3,2) → (2,-3)
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>P' = (2,-3)</b></p>
+
+<h3>4. WORKED EXAMPLE 2</h3>
+
+<p>
+Rotate A(-4,5) through 90° clockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = -4
+y = 5
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (y,-x)
+
+(-4,5) → (5,4)
+</pre>
+
+<p>
+The new second coordinate is -(-4) = 4.
+</p>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>A' = (5,4)</b></p>
+
+<h3>5. WORKED EXAMPLE 3</h3>
+
+<p>
+Rotate B(2,-6) through 90° clockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = 2
+y = -6
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (y,-x)
+
+(2,-6) → (-6,-2)
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>B' = (-6,-2)</b></p>
+
+<h3>6. THE PATTERN</h3>
+
+<pre>
+(3,2)    → (2,-3)
+
+(-4,5)   → (5,4)
+
+(2,-6)   → (-6,-2)
+</pre>
+
+<p>
+Notice that the first coordinate becomes the negative of the
+original x-coordinate in the second position, while the original
+y-coordinate moves to the first position.
+</p>
+
+<p><b>90° clockwise: (x,y) → (y,-x)</b></p>
+
+<p>
+This rule applies directly when the centre of rotation is the origin.
+</p>
+`,
+
+  [
+    {
+      q: "Rotate (3,2) through 90° clockwise about the origin.",
+      hint: "Use (x,y) → (y,-x).",
+      steps: [
+        "Original point = (3,2)",
+        "New first coordinate = y = 2",
+        "New second coordinate = -x = -3",
+        "Image = (2,-3)"
+      ],
+      ans: "(2,-3)",
+      why: "A 90° clockwise rotation maps (x,y) to (y,-x)."
     },
     {
-      "q": "Find resultant of (5i + 1j) + (-2i + 6j)",
-      "hint": "component addition",
-      "steps": [
-        "Step 1: Add i components → 5 + (-2)",
-        "Step 2: Add j components → 1 + 6",
-        "Step 3: Simplify each component",
-        "Step 4: Write final vector form"
+      q: "Rotate (-4,5) through 90° clockwise about the origin.",
+      hint: "Keep y first and change the sign of x.",
+      steps: [
+        "Original point = (-4,5)",
+        "New first coordinate = 5",
+        "New second coordinate = -(-4) = 4",
+        "Image = (5,4)"
       ],
-      "ans": "3i + 7j",
-      "why": "Resultant vector is sum of components"
+      ans: "(5,4)",
+      why: "The old y-coordinate becomes the first coordinate, and the negative of the old x-coordinate becomes the second."
+    },
+    {
+      q: "Rotate (2,-6) through 90° clockwise about the origin.",
+      hint: "The new coordinates are (y,-x).",
+      steps: [
+        "Original point = (2,-6)",
+        "New first coordinate = -6",
+        "New second coordinate = -2",
+        "Image = (-6,-2)"
+      ],
+      ans: "(-6,-2)",
+      why: "Substituting x = 2 and y = -6 into (y,-x) gives (-6,-2)."
+    },
+    {
+      q: "Use the transformation matrix to rotate (4,3) through 90° clockwise about the origin.",
+      hint: "Use [[0,1],[-1,0]].",
+      steps: [
+        "First coordinate = 0(4) + 1(3) = 3",
+        "Second coordinate = -1(4) + 0(3) = -4",
+        "Image = (3,-4)"
+      ],
+      ans: "(3,-4)",
+      why: "Matrix multiplication gives (y,-x)."
+    },
+    {
+      q: "A point Q has image Q' = (7,-3) after a 90° clockwise rotation about the origin. Find the original point Q.",
+      hint: "The image coordinates are (y,-x).",
+      steps: [
+        "Compare (y,-x) with (7,-3)",
+        "y = 7",
+        "-x = -3, so x = 3",
+        "Original point Q = (3,7)"
+      ],
+      ans: "(3,7)",
+      why: "The first image coordinate gives y = 7, and the second gives x = 3."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix of transformation",
+  "Rotation Through 180 Degrees",
+
+  `
+<h2>Rotation Through 180° About the Origin</h2>
+
+<p>
+A <b>180° rotation</b> turns a point halfway around the origin.
+The centre of rotation is O(0,0).
+</p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+When a point rotates through 180° about the origin,
+both coordinates change sign.
+</p>
+
+<p><b>(x,y) → (-x,-y)</b></p>
+
+<p>
+This means:
+</p>
+
+<ul>
+<li>The x-coordinate changes sign.</li>
+<li>The y-coordinate changes sign.</li>
+<li>The order of the coordinates stays the same.</li>
+</ul>
+
+<p>
+For example:
+</p>
+
+<pre>
+(3,2) → (-3,-2)
+</pre>
+
+<p>
+The 3 becomes -3, and the 2 becomes -2.
+</p>
+
+<h3>2. TRANSFORMATION MATRIX</h3>
+
+<p>
+The transformation matrix for a 180° rotation is:
+</p>
+
+<pre>
+[-1   0]
+[ 0  -1]
+</pre>
+
+<p>
+Write the point as a column vector:
+</p>
+
+<pre>
+[x]
+[y]
+</pre>
+
+<p>Multiply the matrix by the column vector:</p>
+
+<pre>
+[-1   0] [x]   [-x]
+[ 0  -1] [y] = [-y]
+</pre>
+
+<p>The first coordinate is:</p>
+
+<p><b>-1x + 0y = -x</b></p>
+
+<p>The second coordinate is:</p>
+
+<p><b>0x + (-1)y = -y</b></p>
+
+<p>Therefore, the transformation is:</p>
+
+<p><b>(x,y) → (-x,-y)</b></p>
+
+<h3>3. WORKED EXAMPLE 1</h3>
+
+<p>
+Rotate P(3,2) through 180° about the origin.
+</p>
+
+<p><b>Step 1:</b> Write the original coordinates.</p>
+
+<pre>
+x = 3
+y = 2
+</pre>
+
+<p><b>Step 2:</b> Change the sign of each coordinate.</p>
+
+<pre>
+x = 3  → -3
+y = 2  → -2
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>P' = (-3,-2)</b></p>
+
+<h3>4. WORKED EXAMPLE 2</h3>
+
+<p>
+Rotate A(-4,5) through 180° about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = -4
+y = 5
+</pre>
+
+<p><b>Step 2:</b> Change both signs.</p>
+
+<pre>
+-4 → 4
+ 5 → -5
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>A' = (4,-5)</b></p>
+
+<p>
+Remember: changing a negative number's sign makes it positive.
+</p>
+
+<h3>5. WORKED EXAMPLE 3</h3>
+
+<p>
+Rotate B(-2,-6) through 180° about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = -2
+y = -6
+</pre>
+
+<p><b>Step 2:</b> Change both signs.</p>
+
+<pre>
+-2 → 2
+-6 → 6
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>B' = (2,6)</b></p>
+
+<h3>6. THE PATTERN</h3>
+
+<pre>
+( 3, 2) → (-3,-2)
+
+(-4, 5) → ( 4,-5)
+
+(-2,-6) → ( 2, 6)
+</pre>
+
+<p>
+The coordinates stay in the same order, but both signs change.
+</p>
+
+<p><b>180° rotation: (x,y) → (-x,-y)</b></p>
+
+<p>
+This rule applies directly when the centre of rotation is the origin.
+</p>
+`,
+
+  [
+    {
+      q: "Rotate (3,2) through 180° about the origin.",
+      hint: "Change the signs of both coordinates.",
+      steps: [
+        "Original point = (3,2)",
+        "Change 3 to -3",
+        "Change 2 to -2",
+        "Image = (-3,-2)"
+      ],
+      ans: "(-3,-2)",
+      why: "A 180° rotation about the origin maps (x,y) to (-x,-y)."
+    },
+    {
+      q: "Rotate (-4,5) through 180° about the origin.",
+      hint: "A negative x-coordinate becomes positive, and a positive y-coordinate becomes negative.",
+      steps: [
+        "Original point = (-4,5)",
+        "-4 becomes 4",
+        "5 becomes -5",
+        "Image = (4,-5)"
+      ],
+      ans: "(4,-5)",
+      why: "Both coordinates change sign, giving (-x,-y)."
+    },
+    {
+      q: "Rotate (-2,-6) through 180° about the origin.",
+      hint: "Change both negative coordinates to positive.",
+      steps: [
+        "Original point = (-2,-6)",
+        "-2 becomes 2",
+        "-6 becomes 6",
+        "Image = (2,6)"
+      ],
+      ans: "(2,6)",
+      why: "Negating each original coordinate gives (-(-2),-(-6)) = (2,6)."
+    },
+    {
+      q: "Use the transformation matrix to rotate (4,-3) through 180° about the origin.",
+      hint: "Use [[-1,0],[0,-1]].",
+      steps: [
+        "First coordinate = -1(4) + 0(-3) = -4",
+        "Second coordinate = 0(4) + (-1)(-3) = 3",
+        "Image = (-4,3)"
+      ],
+      ans: "(-4,3)",
+      why: "Matrix multiplication produces (-x,-y)."
+    },
+    {
+      q: "A point P has image P' = (-7,4) after a 180° rotation about the origin. Find the original point P.",
+      hint: "Change both image coordinates' signs to recover the original point.",
+      steps: [
+        "Image = (-x,-y) = (-7,4)",
+        "-x = -7, so x = 7",
+        "-y = 4, so y = -4",
+        "Original point P = (7,-4)"
+      ],
+      ans: "(7,-4)",
+      why: "A 180° rotation reverses both coordinate signs. Applying the same sign reversal again recovers the original point."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix of transformation",
+  "Rotation Through 270 Degrees Anticlockwise",
+
+  `
+<h2>Rotation Through 270° Anticlockwise</h2>
+
+<p>
+A <b>270° anticlockwise rotation</b> turns a point through
+three-quarters of a complete turn about the origin O(0,0).
+</p>
+
+<h3>1. UNDERSTANDING THE ROTATION</h3>
+
+<p>
+A complete turn is 360°. Therefore:
+</p>
+
+<pre>
+360° - 270° = 90°
+</pre>
+
+<p>
+Turning 270° anticlockwise gives the same final position as
+turning 90° clockwise.
+</p>
+
+<p>
+We can therefore use the coordinate rule for a 90° clockwise rotation.
+</p>
+
+<h3>2. THE MAIN RULE</h3>
+
+<p>
+The coordinate rule is:
+</p>
+
+<p><b>(x,y) → (y,-x)</b></p>
+
+<p>
+This means:
+</p>
+
+<ul>
+<li>The original y-coordinate becomes the first coordinate.</li>
+<li>The original x-coordinate becomes the second coordinate.</li>
+<li>The original x-coordinate changes sign.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre>
+(3,2) → (2,-3)
+</pre>
+
+<h3>3. TRANSFORMATION MATRIX</h3>
+
+<p>
+The transformation matrix for a 270° anticlockwise rotation is:
+</p>
+
+<pre>
+[ 0   1]
+[-1   0]
+</pre>
+
+<p>
+Write the original point as a column vector:
+</p>
+
+<pre>
+[x]
+[y]
+</pre>
+
+<p>Multiply the matrix by the vector:</p>
+
+<pre>
+[ 0   1] [x]   [ y]
+[-1   0] [y] = [-x]
+</pre>
+
+<p>The first coordinate is:</p>
+
+<p><b>0x + 1y = y</b></p>
+
+<p>The second coordinate is:</p>
+
+<p><b>-1x + 0y = -x</b></p>
+
+<p>Therefore:</p>
+
+<p><b>(x,y) → (y,-x)</b></p>
+
+<h3>4. WORKED EXAMPLE 1</h3>
+
+<p>
+Rotate P(3,2) through 270° anticlockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = 3
+y = 2
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (y,-x)
+
+(3,2) → (2,-3)
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>P' = (2,-3)</b></p>
+
+<h3>5. WORKED EXAMPLE 2</h3>
+
+<p>
+Rotate A(-4,5) through 270° anticlockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = -4
+y = 5
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (y,-x)
+
+(-4,5) → (5,4)
+</pre>
+
+<p>
+The new second coordinate is -(-4) = 4.
+</p>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>A' = (5,4)</b></p>
+
+<h3>6. WORKED EXAMPLE 3</h3>
+
+<p>
+Rotate B(2,-6) through 270° anticlockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = 2
+y = -6
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (y,-x)
+
+(2,-6) → (-6,-2)
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>B' = (-6,-2)</b></p>
+
+<h3>7. THE PATTERN</h3>
+
+<pre>
+( 3, 2) → ( 2,-3)
+
+(-4, 5) → ( 5, 4)
+
+( 2,-6) → (-6,-2)
+</pre>
+
+<p>
+A 270° anticlockwise rotation has the same final result as a
+90° clockwise rotation.
+</p>
+
+<p><b>270° anticlockwise: (x,y) → (y,-x)</b></p>
+
+<p>
+This rule applies directly when the centre of rotation is the origin.
+</p>
+`,
+
+  [
+    {
+      q: "Rotate (3,2) through 270° anticlockwise about the origin.",
+      hint: "Use (x,y) → (y,-x).",
+      steps: [
+        "Original point = (3,2)",
+        "New first coordinate = y = 2",
+        "New second coordinate = -x = -3",
+        "Image = (2,-3)"
+      ],
+      ans: "(2,-3)",
+      why: "A 270° anticlockwise rotation is equivalent to a 90° clockwise rotation."
+    },
+    {
+      q: "Rotate (-4,5) through 270° anticlockwise about the origin.",
+      hint: "Place y first and use -x for the second coordinate.",
+      steps: [
+        "Original point = (-4,5)",
+        "New first coordinate = 5",
+        "New second coordinate = -(-4) = 4",
+        "Image = (5,4)"
+      ],
+      ans: "(5,4)",
+      why: "The coordinate rule is (x,y) → (y,-x)."
+    },
+    {
+      q: "Rotate (2,-6) through 270° anticlockwise about the origin.",
+      hint: "The original y-coordinate is negative.",
+      steps: [
+        "Original point = (2,-6)",
+        "New first coordinate = -6",
+        "New second coordinate = -2",
+        "Image = (-6,-2)"
+      ],
+      ans: "(-6,-2)",
+      why: "Substituting x = 2 and y = -6 into (y,-x) gives (-6,-2)."
+    },
+    {
+      q: "Use the transformation matrix to rotate (4,3) through 270° anticlockwise.",
+      hint: "Multiply [[0,1],[-1,0]] by [4,3].",
+      steps: [
+        "First coordinate = 0(4) + 1(3) = 3",
+        "Second coordinate = -1(4) + 0(3) = -4",
+        "Image = (3,-4)"
+      ],
+      ans: "(3,-4)",
+      why: "The transformation matrix produces (y,-x), the rule for a 270° anticlockwise rotation."
+    },
+    {
+      q: "A point Q has image Q' = (6,-2) after a 270° anticlockwise rotation about the origin. Find Q.",
+      hint: "The image coordinates are (y,-x).",
+      steps: [
+        "Compare (y,-x) with (6,-2)",
+        "y = 6",
+        "-x = -2, so x = 2",
+        "Original point Q = (2,6)"
+      ],
+      ans: "(2,6)",
+      why: "Reversing the coordinate rule (x,y) → (y,-x) gives the original point (2,6)."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix of transformation",
+  "Rotation Through 270 Degrees Clockwise",
+
+  `
+<h2>Rotation Through 270° Clockwise</h2>
+
+<p>
+A <b>270° clockwise rotation</b> turns a point through
+three-quarters of a complete turn about the origin O(0,0).
+</p>
+
+<h3>1. UNDERSTANDING THE ROTATION</h3>
+
+<p>
+A complete turn is 360°. Therefore:
+</p>
+
+<pre>
+360° - 270° = 90°
+</pre>
+
+<p>
+Turning 270° clockwise gives the same final position as
+turning 90° anticlockwise.
+</p>
+
+<p>
+We can therefore use the coordinate rule for a 90° anticlockwise rotation.
+</p>
+
+<h3>2. THE MAIN RULE</h3>
+
+<p>
+The coordinate rule is:
+</p>
+
+<p><b>(x,y) → (-y,x)</b></p>
+
+<p>This means:</p>
+
+<ul>
+<li>The original y-coordinate becomes the first coordinate and changes sign.</li>
+<li>The original x-coordinate becomes the second coordinate.</li>
+</ul>
+
+<p>For example:</p>
+
+<pre>
+(3,2) → (-2,3)
+</pre>
+
+<h3>3. TRANSFORMATION MATRIX</h3>
+
+<p>
+The transformation matrix for a 270° clockwise rotation is:
+</p>
+
+<pre>
+[ 0  -1]
+[ 1   0]
+</pre>
+
+<p>
+Write the original point as a column vector:
+</p>
+
+<pre>
+[x]
+[y]
+</pre>
+
+<p>Multiply the matrix by the vector:</p>
+
+<pre>
+[ 0  -1] [x]   [-y]
+[ 1   0] [y] = [ x]
+</pre>
+
+<p>The first coordinate is:</p>
+
+<p><b>0x + (-1)y = -y</b></p>
+
+<p>The second coordinate is:</p>
+
+<p><b>1x + 0y = x</b></p>
+
+<p>Therefore:</p>
+
+<p><b>(x,y) → (-y,x)</b></p>
+
+<h3>4. WORKED EXAMPLE 1</h3>
+
+<p>
+Rotate P(3,2) through 270° clockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = 3
+y = 2
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(3,2) → (-2,3)
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>P' = (-2,3)</b></p>
+
+<h3>5. WORKED EXAMPLE 2</h3>
+
+<p>
+Rotate A(-4,5) through 270° clockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = -4
+y = 5
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(-4,5) → (-5,-4)
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>A' = (-5,-4)</b></p>
+
+<h3>6. WORKED EXAMPLE 3</h3>
+
+<p>
+Rotate B(2,-6) through 270° clockwise about the origin.
+</p>
+
+<p><b>Step 1:</b> Identify the coordinates.</p>
+
+<pre>
+x = 2
+y = -6
+</pre>
+
+<p><b>Step 2:</b> Apply the rule.</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(2,-6) → (6,2)
+</pre>
+
+<p><b>Step 3:</b> State the image.</p>
+
+<p><b>B' = (6,2)</b></p>
+
+<h3>7. THE PATTERN</h3>
+
+<pre>
+( 3, 2) → (-2, 3)
+
+(-4, 5) → (-5,-4)
+
+( 2,-6) → ( 6, 2)
+</pre>
+
+<p>
+A 270° clockwise rotation has the same final result as a
+90° anticlockwise rotation.
+</p>
+
+<p><b>270° clockwise: (x,y) → (-y,x)</b></p>
+
+<p>
+This rule applies directly when the centre of rotation is the origin.
+</p>
+`,
+
+  [
+    {
+      q: "Rotate (3,2) through 270° clockwise about the origin.",
+      hint: "Use (x,y) → (-y,x).",
+      steps: [
+        "Original point = (3,2)",
+        "New first coordinate = -y = -2",
+        "New second coordinate = x = 3",
+        "Image = (-2,3)"
+      ],
+      ans: "(-2,3)",
+      why: "A 270° clockwise rotation is equivalent to a 90° anticlockwise rotation."
+    },
+    {
+      q: "Rotate (-4,5) through 270° clockwise about the origin.",
+      hint: "Change the sign of y, then place x second.",
+      steps: [
+        "Original point = (-4,5)",
+        "New first coordinate = -5",
+        "New second coordinate = -4",
+        "Image = (-5,-4)"
+      ],
+      ans: "(-5,-4)",
+      why: "The coordinate rule is (x,y) → (-y,x)."
+    },
+    {
+      q: "Rotate (2,-6) through 270° clockwise about the origin.",
+      hint: "Remember that -(-6) = 6.",
+      steps: [
+        "Original point = (2,-6)",
+        "New first coordinate = -(-6) = 6",
+        "New second coordinate = 2",
+        "Image = (6,2)"
+      ],
+      ans: "(6,2)",
+      why: "Substituting x = 2 and y = -6 into (-y,x) gives (6,2)."
+    },
+    {
+      q: "Use the transformation matrix to rotate (4,3) through 270° clockwise.",
+      hint: "Multiply [[0,-1],[1,0]] by [4,3].",
+      steps: [
+        "First coordinate = 0(4) - 1(3) = -3",
+        "Second coordinate = 1(4) + 0(3) = 4",
+        "Image = (-3,4)"
+      ],
+      ans: "(-3,4)",
+      why: "The transformation matrix produces (-y,x), the rule for a 270° clockwise rotation."
+    },
+    {
+      q: "A point Q has image Q' = (-6,2) after a 270° clockwise rotation about the origin. Find Q.",
+      hint: "The image coordinates are (-y,x).",
+      steps: [
+        "Compare (-y,x) with (-6,2)",
+        "-y = -6, so y = 6",
+        "x = 2",
+        "Original point Q = (2,6)"
+      ],
+      ans: "(2,6)",
+      why: "Reversing the transformation (x,y) → (-y,x) gives the original point (2,6)."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix of transformation",
+  "Rotating a Triangle Using a Transformation Matrix",
+
+  `
+<h2>Rotating a Triangle Using a Transformation Matrix</h2>
+
+<p>
+A transformation is applied to <b>every vertex</b> of a shape.
+The same transformation matrix must be used for every point.
+</p>
+
+<p>
+In this example, we will rotate a triangle through
+<b>90° anticlockwise about the origin</b>.
+</p>
+
+<h3>1. THE TRANSFORMATION MATRIX</h3>
+
+<p>
+For a 90° anticlockwise rotation, the matrix is:
+</p>
+
+<pre>
+[ 0  -1]
+[ 1   0]
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+(x,y) → (-y,x)
+</pre>
+
+<h3>2. THE TRIANGLE</h3>
+
+<p>
+Consider triangle ABC with vertices:
+</p>
+
+<pre>
+A(2,1)
+B(5,1)
+C(2,4)
+</pre>
+
+<p>
+We must rotate <b>each vertex</b>.
+</p>
+
+<p>
+We do not rotate the whole triangle using only one point.
+Instead, we transform A, B and C separately.
+</p>
+
+<h3>3. TRANSFORMING A</h3>
+
+<p>
+A = (2,1)
+</p>
+
+<p>
+Apply:
+</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(2,1) → (-1,2)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>A' = (-1,2)</b></p>
+
+<h3>4. TRANSFORMING B</h3>
+
+<p>
+B = (5,1)
+</p>
+
+<p>
+Apply the same rule:
+</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(5,1) → (-1,5)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>B' = (-1,5)</b></p>
+
+<h3>5. TRANSFORMING C</h3>
+
+<p>
+C = (2,4)
+</p>
+
+<p>
+Apply the same rule:
+</p>
+
+<pre>
+(x,y) → (-y,x)
+
+(2,4) → (-4,2)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>C' = (-4,2)</b></p>
+
+<h3>6. THE TRANSFORMED TRIANGLE</h3>
+
+<pre>
+Original        Image
+
+A(2,1)    →     A'(-1,2)
+
+B(5,1)    →     B'(-1,5)
+
+C(2,4)    →     C'(-4,2)
+</pre>
+
+<p>
+The three transformed points form the image triangle
+<b>A'B'C'</b>.
+</p>
+
+<h3>7. USING THE MATRIX DIRECTLY</h3>
+
+<p>
+We can also transform each vertex using matrix multiplication.
+</p>
+
+<p>For A(2,1):</p>
+
+<pre>
+[ 0  -1] [2]   [-1]
+[ 1   0] [1] = [ 2]
+</pre>
+
+<p>Therefore:</p>
+
+<p><b>A' = (-1,2)</b></p>
+
+<p>For B(5,1):</p>
+
+<pre>
+[ 0  -1] [5]   [-1]
+[ 1   0] [1] = [ 5]
+</pre>
+
+<p>Therefore:</p>
+
+<p><b>B' = (-1,5)</b></p>
+
+<p>For C(2,4):</p>
+
+<pre>
+[ 0  -1] [2]   [-4]
+[ 1   0] [4] = [ 2]
+</pre>
+
+<p>Therefore:</p>
+
+<p><b>C' = (-4,2)</b></p>
+
+<h3>8. THE IMPORTANT IDEA</h3>
+
+<p>
+When transforming a shape:
+</p>
+
+<ol>
+<li>List every vertex.</li>
+<li>Apply the same transformation to each vertex.</li>
+<li>Write the new coordinates.</li>
+<li>Join the transformed vertices in the same order.</li>
+</ol>
+
+<p>
+For a 90° anticlockwise rotation:
+</p>
+
+<p><b>(x,y) → (-y,x)</b></p>
+
+<p>
+The rule is applied to <b>every vertex</b>.
+`,
+  [
+    {
+      q: "Triangle ABC has vertices A(2,1), B(5,1) and C(2,4). Rotate the triangle 90° anticlockwise about the origin. Find A'.",
+      hint: "Use (x,y) → (-y,x).",
+      steps: [
+        "A = (2,1)",
+        "Apply the rule: (x,y) → (-y,x)",
+        "(2,1) → (-1,2)"
+      ],
+      ans: "(-1,2)",
+      why: "A 90° anticlockwise rotation maps (x,y) to (-y,x)."
+    },
+    {
+      q: "Using the same triangle, find B' after a 90° anticlockwise rotation.",
+      hint: "Apply the same rule to B(5,1).",
+      steps: [
+        "B = (5,1)",
+        "Apply the rule: (x,y) → (-y,x)",
+        "(5,1) → (-1,5)"
+      ],
+      ans: "(-1,5)",
+      why: "Every vertex of the shape must undergo the same transformation."
+    },
+    {
+      q: "Using the same triangle, find C' after a 90° anticlockwise rotation.",
+      hint: "Apply (x,y) → (-y,x) to C(2,4).",
+      steps: [
+        "C = (2,4)",
+        "New first coordinate = -4",
+        "New second coordinate = 2",
+        "C' = (-4,2)"
+      ],
+      ans: "(-4,2)",
+      why: "The same transformation matrix must be applied to every vertex."
+    },
+    {
+      q: "A triangle has vertices P(1,2), Q(4,2) and R(1,5). Rotate it 90° anticlockwise about the origin. Find P', Q' and R'.",
+      hint: "Transform each vertex separately using (x,y) → (-y,x).",
+      steps: [
+        "P(1,2) → (-2,1)",
+        "Q(4,2) → (-2,4)",
+        "R(1,5) → (-5,1)"
+      ],
+      ans: "P'(-2,1), Q'(-2,4), R'(-5,1)",
+      why: "A transformation of a shape is found by transforming each of its vertices."
     }
   ]
 );
 
 add(
   "math",
-  "vectors",
-  "Magnitude and Direction",
+  "matrices",
+  "Matrix of transformation",
+  "Rotation About a Point Other Than the Origin",
 
   `
-<h2> Magnitude and Direction</h2>
+<h2>Rotation About a Point Other Than the Origin</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Magnitude is the length of a vector, while direction shows where the vector is pointing.
+The rotation rules we have used so far work directly when the
+centre of rotation is the <b>origin O(0,0)</b>.
 </p>
+
+<p>
+But a point can also be rotated about another centre, such as
+<b>C(1,1)</b>.
+</p>
+
+<p>
+When the centre is not the origin, we use three steps:
+</p>
+
+<ol>
+<li>Move the centre to the origin.</li>
+<li>Perform the rotation.</li>
+<li>Move everything back.</li>
+</ol>
+
+<h3>1. THE THREE-STEP METHOD</h3>
+
+<p>
+Suppose we want to rotate point P about centre C.
+</p>
+
+<p>
+For a 90° anticlockwise rotation:
+</p>
+
+<pre>
+1. Translate the centre to the origin.
+
+2. Use:
+   (x,y) → (-y,x)
+
+3. Translate the point back to the original centre.
+</pre>
+
+<p>
+The important idea is that the rotation itself is still performed
+around the origin.
+We first change the position of the coordinates so that the
+chosen centre becomes the origin.
+</p>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Rotate <b>P(3,1)</b> through 90° anticlockwise about
+<b>C(1,1)</b>.
+</p>
+
+<p><b>Step 1: Move the centre to the origin.</b></p>
+
+<p>
+Subtract the centre coordinates from P:
+</p>
+
+<pre>
+P = (3,1)
+C = (1,1)
+
+(3-1, 1-1)
+= (2,0)
+</pre>
+
+<p>
+So relative to the centre C, the point is:
+</p>
+
+<p><b>(2,0)</b></p>
+
+<p><b>Step 2: Rotate 90° anticlockwise.</b></p>
+
+<p>
+Use:
+</p>
+
+<pre>
+(x,y) → (-y,x)
+</pre>
+
+<pre>
+(2,0) → (0,2)
+</pre>
+
+<p><b>Step 3: Move the point back.</b></p>
+
+<p>
+Add the centre coordinates:
+</p>
+
+<pre>
+(0+1, 2+1)
+= (1,3)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>P' = (1,3)</b></p>
+
+<h3>3. WORKED EXAMPLE 2</h3>
+
+<p>
+Rotate <b>A(4,3)</b> through 90° anticlockwise about
+<b>C(2,1)</b>.
+</p>
+
+<p><b>Step 1: Move the centre to the origin.</b></p>
+
+<pre>
+A = (4,3)
+C = (2,1)
+
+(4-2, 3-1)
+= (2,2)
+</pre>
+
+<p><b>Step 2: Rotate 90° anticlockwise.</b></p>
+
+<pre>
+(x,y) → (-y,x)
+
+(2,2) → (-2,2)
+</pre>
+
+<p><b>Step 3: Move the point back.</b></p>
+
+<pre>
+(-2+2, 2+1)
+= (0,3)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>A' = (0,3)</b></p>
+
+<h3>4. WORKED EXAMPLE 3</h3>
+
+<p>
+Rotate <b>B(2,5)</b> through 90° anticlockwise about
+<b>C(2,2)</b>.
+</p>
+
+<p><b>Step 1: Move the centre to the origin.</b></p>
+
+<pre>
+B = (2,5)
+C = (2,2)
+
+(2-2, 5-2)
+= (0,3)
+</pre>
+
+<p><b>Step 2: Rotate 90° anticlockwise.</b></p>
+
+<pre>
+(0,3) → (-3,0)
+</pre>
+
+<p><b>Step 3: Move the point back.</b></p>
+
+<pre>
+(-3+2, 0+2)
+= (-1,2)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>B' = (-1,2)</b></p>
+
+<h3>5. THE METHOD TO REMEMBER</h3>
+
+<pre>
+ROTATE ABOUT A NON-ORIGIN CENTRE
+
+        ↓
+
+Subtract the centre
+
+        ↓
+
+Rotate about the origin
+
+        ↓
+
+Add the centre back
+</pre>
+
+<p>
+For a 90° anticlockwise rotation, the middle step is:
+</p>
+
+<p><b>(x,y) → (-y,x)</b></p>
+
+<p>
+The centre is not rotated.
+It remains fixed throughout the transformation.
+</p>
+`,
+
+  [
+    {
+      q: "Rotate P(3,1) through 90° anticlockwise about C(1,1).",
+      hint: "Subtract the centre, rotate, then add the centre back.",
+      steps: [
+        "Move relative to the centre: (3-1, 1-1) = (2,0)",
+        "Rotate 90° anticlockwise: (2,0) → (0,2)",
+        "Move back: (0+1, 2+1) = (1,3)"
+      ],
+      ans: "(1,3)",
+      why: "When rotating about a non-origin centre, first translate the centre to the origin, rotate, then translate back."
+    },
+    {
+      q: "Rotate A(4,3) through 90° anticlockwise about C(2,1).",
+      hint: "First find the coordinates of A relative to C.",
+      steps: [
+        "Relative position: (4-2, 3-1) = (2,2)",
+        "Rotate: (2,2) → (-2,2)",
+        "Move back: (-2+2, 2+1) = (0,3)"
+      ],
+      ans: "(0,3)",
+      why: "The rotation is performed around the chosen centre after temporarily moving that centre to the origin."
+    },
+    {
+      q: "Rotate B(2,5) through 90° anticlockwise about C(2,2).",
+      hint: "Subtract (2,2), rotate, then add (2,2).",
+      steps: [
+        "Relative position: (2-2, 5-2) = (0,3)",
+        "Rotate: (0,3) → (-3,0)",
+        "Move back: (-3+2, 0+2) = (-1,2)"
+      ],
+      ans: "(-1,2)",
+      why: "The point is rotated relative to the centre and then returned to the original coordinate system."
+    },
+    {
+      q: "A point P(5,2) is rotated 90° anticlockwise about C(2,2). Find P'.",
+      hint: "Find P's position relative to C before rotating.",
+      steps: [
+        "Relative position: (5-2, 2-2) = (3,0)",
+        "Rotate: (3,0) → (0,3)",
+        "Move back: (0+2, 3+2) = (2,5)"
+      ],
+      ans: "(2,5)",
+      why: "The point is 3 units to the right of the centre, so after a 90° anticlockwise rotation it is 3 units above the centre."
+    },
+    {
+      q: "Why can we not directly use (x,y) → (-y,x) when the centre of rotation is C(2,1)?",
+      hint: "Ask yourself what point the rule assumes is the centre.",
+      steps: [
+        "The rule (x,y) → (-y,x) assumes the centre is the origin",
+        "C(2,1) is not the origin",
+        "The point must first be expressed relative to C",
+        "After rotating, the centre must be added back"
+      ],
+      ans: "Because the rule (x,y) → (-y,x) rotates about the origin.",
+      why: "A standard 2×2 rotation matrix acts about the origin. A different centre requires translation before and after the rotation."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Vector From One Point to Another",
+
+  `
+<h2>Vector From One Point to Another</h2>
+
+<p>
+A vector can describe the movement from one point to another.
+</p>
+
+<p>
+If a point moves from <b>A</b> to <b>B</b>, the vector is written:
+</p>
+
+<p><b>\\vec{AB}</b></p>
+
+<p>
+The important idea is:
+</p>
+
+<p><b>Vector = final position − initial position</b></p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+A(x₁,y₁)
+B(x₂,y₂)
+</pre>
+
+<p>
+Then the vector from A to B is:
+</p>
+
+<pre>
+→       (x₂ - x₁)
+AB  =
+        (y₂ - y₁)
+</pre>
+
+<p>
+So we subtract the coordinates of the starting point
+from the coordinates of the finishing point.
+</p>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find the vector <b>AB</b> if:
+</p>
+
+<pre>
+A(2,3)
+B(7,5)
+</pre>
+
+<p><b>Step 1:</b> Subtract the x-coordinates.</p>
+
+<pre>
+7 - 2 = 5
+</pre>
+
+<p><b>Step 2:</b> Subtract the y-coordinates.</p>
+
+<pre>
+5 - 3 = 2
+</pre>
+
+<p><b>Step 3:</b> Combine the components.</p>
+
+<pre>
+→
+AB = (5,2)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>AB = 5i + 2j</b></p>
+
+<h3>3. WORKED EXAMPLE 2</h3>
+
+<p>
+Find the vector <b>PQ</b> if:
+</p>
+
+<pre>
+P(-3,4)
+Q(2,-1)
+</pre>
+
+<p><b>Step 1:</b> Subtract the x-coordinates.</p>
+
+<pre>
+2 - (-3) = 5
+</pre>
+
+<p><b>Step 2:</b> Subtract the y-coordinates.</p>
+
+<pre>
+-1 - 4 = -5
+</pre>
+
+<p><b>Step 3:</b> Write the vector.</p>
+
+<pre>
+→
+PQ = (5,-5)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>PQ = 5i - 5j</b></p>
+
+<h3>4. WORKED EXAMPLE 3</h3>
+
+<p>
+Find the vector <b>CD</b> if:
+</p>
+
+<pre>
+C(6,-2)
+D(1,4)
+</pre>
+
+<p><b>Step 1:</b> Subtract the x-coordinates.</p>
+
+<pre>
+1 - 6 = -5
+</pre>
+
+<p><b>Step 2:</b> Subtract the y-coordinates.</p>
+
+<pre>
+4 - (-2) = 6
+</pre>
+
+<p><b>Step 3:</b> Write the vector.</p>
+
+<pre>
+→
+CD = (-5,6)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>CD = -5i + 6j</b></p>
+
+<h3>5. THE DIRECTION MATTERS</h3>
+
+<p>
+The order of the letters tells us the direction.
+</p>
+
+<p>
+For example, if:
+</p>
+
+<pre>
+A(2,3)
+B(7,5)
+</pre>
+
+<p>
+then:
+</p>
+
+<pre>
+→
+AB = (5,2)
+</pre>
+
+<p>
+But if we move in the opposite direction:
+</p>
+
+<pre>
+→
+BA = (2-7, 3-5)
+   = (-5,-2)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<p><b>BA = -AB</b></p>
+
+<p>
+Changing the direction changes the signs of both components.
+</p>
+
+<h3>6. THE RULE TO REMEMBER</h3>
+
+<pre>
+       FINAL POINT
+            -
+      STARTING POINT
+            =
+          VECTOR
+</pre>
+
+<p>
+Therefore, if:
+</p>
+
+<pre>
+A(x₁,y₁)
+B(x₂,y₂)
+</pre>
+
+<p>
+then:
+</p>
+
+<p><b>AB = (x₂-x₁, y₂-y₁)</b></p>
+
+<p>
+The first point is always the <b>starting point</b>.
+The second point is always the <b>finishing point</b>.
+</p>
+`,
+
+  [
+    {
+      q: "Find the vector AB if A(2,3) and B(7,5).",
+      hint: "Final point minus starting point.",
+      steps: [
+        "Starting point A = (2,3)",
+        "Final point B = (7,5)",
+        "Subtract x-coordinates: 7 - 2 = 5",
+        "Subtract y-coordinates: 5 - 3 = 2",
+        "Therefore AB = (5,2)"
+      ],
+      ans: "(5,2)",
+      why: "The vector from A to B is found by subtracting the coordinates of A from the coordinates of B."
+    },
+    {
+      q: "Find the vector PQ if P(-3,4) and Q(2,-1).",
+      hint: "Subtract P from Q.",
+      steps: [
+        "Starting point P = (-3,4)",
+        "Final point Q = (2,-1)",
+        "x-component: 2 - (-3) = 5",
+        "y-component: -1 - 4 = -5",
+        "Therefore PQ = (5,-5)"
+      ],
+      ans: "(5,-5)",
+      why: "Vector PQ describes the movement from P to Q."
+    },
+    {
+      q: "Find the vector CD if C(6,-2) and D(1,4).",
+      hint: "Use final point minus starting point.",
+      steps: [
+        "Starting point C = (6,-2)",
+        "Final point D = (1,4)",
+        "x-component: 1 - 6 = -5",
+        "y-component: 4 - (-2) = 6",
+        "Therefore CD = (-5,6)"
+      ],
+      ans: "(-5,6)",
+      why: "Subtracting the starting coordinates from the final coordinates gives the vector."
+    },
+    {
+      q: "If A(2,3) and B(7,5), find BA.",
+      hint: "BA moves from B back to A.",
+      steps: [
+        "Starting point B = (7,5)",
+        "Final point A = (2,3)",
+        "x-component: 2 - 7 = -5",
+        "y-component: 3 - 5 = -2",
+        "Therefore BA = (-5,-2)"
+      ],
+      ans: "(-5,-2)",
+      why: "Reversing the direction of a vector changes the signs of both components."
+    },
+    {
+      q: "If AB = (4,-3), what is BA?",
+      hint: "The reverse vector is the negative of the original.",
+      steps: [
+        "AB = (4,-3)",
+        "Reverse the direction",
+        "Change both signs",
+        "BA = (-4,3)"
+      ],
+      ans: "(-4,3)",
+      why: "BA = -AB, so reversing a vector changes the signs of both components."
+    },
+    {
+      q: "A point A is (1,2). A vector AB is (5,3). Find the coordinates of B.",
+      hint: "Move from A by the vector AB.",
+      steps: [
+        "Start at A = (1,2)",
+        "Add the x-component: 1 + 5 = 6",
+        "Add the y-component: 2 + 3 = 5",
+        "Therefore B = (6,5)"
+      ],
+      ans: "(6,5)",
+      why: "The vector tells us how far and in which direction to move from A to reach B."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Equal Vectors",
+
+  `
+<h2>Equal Vectors</h2>
+
+<p>
+Two vectors are <b>equal</b> when they have the same
+<b>magnitude</b> and the same <b>direction</b>.
+</p>
+
+<p>
+They do <b>not</b> have to start from the same point.
+</p>
+
+<h3>1. THE MAIN IDEA</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+→        (4,2)
+a   =
+</pre>
+
+<p>
+and
+</p>
+
+<pre>
+→        (4,2)
+b   =
+</pre>
+
+<p>
+The two vectors are equal because their corresponding
+components are the same.
+</p>
+
+<pre>
+4 = 4
+2 = 2
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→   →
+a = b
+</pre>
+
+<h3>2. HOW TO CHECK IF TWO VECTORS ARE EQUAL</h3>
+
+<p>
+Compare their corresponding components.
+</p>
+
+<pre>
+(x₁,y₁) = (x₂,y₂)
+</pre>
+
+<p>
+For the vectors to be equal:
+</p>
+
+<pre>
+x₁ = x₂
+
+y₁ = y₂
+</pre>
+
+<p>
+Both components must match.
+</p>
+
+<h3>3. WORKED EXAMPLE 1</h3>
+
+<p>
+Determine whether the following vectors are equal:
+</p>
+
+<pre>
+→        (5,3)
+a   =
+
+→        (5,3)
+b   =
+</pre>
+
+<p><b>Step 1:</b> Compare the x-components.</p>
+
+<pre>
+5 = 5
+</pre>
+
+<p><b>Step 2:</b> Compare the y-components.</p>
+
+<pre>
+3 = 3
+</pre>
+
+<p>
+Both components are equal.
+</p>
+
+<pre>
+→   →
+a = b
+</pre>
+
+<p>
+Therefore, the vectors are equal.
+</p>
+
+<h3>4. WORKED EXAMPLE 2: USING POINTS</h3>
+
+<p>
+Given:
+</p>
+
+<pre>
+A(1,2)
+B(5,4)
+
+C(-2,3)
+D(2,5)
+</pre>
+
+<p>
+Determine whether <b>AB</b> and <b>CD</b> are equal.
+</p>
+
+<p><b>Step 1: Find AB.</b></p>
+
+<pre>
+AB = B - A
+
+   = (5,4) - (1,2)
+
+   = (5-1, 4-2)
+
+   = (4,2)
+</pre>
+
+<p><b>Step 2: Find CD.</b></p>
+
+<pre>
+CD = D - C
+
+   = (2,5) - (-2,3)
+
+   = (2+2, 5-3)
+
+   = (4,2)
+</pre>
+
+<p><b>Step 3: Compare.</b></p>
+
+<pre>
+AB = (4,2)
+
+CD = (4,2)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→   →
+AB = CD
+</pre>
+
+<p>
+The two directed line segments represent the same vector,
+even though they start at different points.
+</p>
+
+<h3>5. WORKED EXAMPLE 3: SAME LENGTH DOES NOT ALWAYS MEAN EQUAL</h3>
+
+<p>
+Consider:
+</p>
+
+<pre>
+→        (3,4)
+a   =
+
+→        (-3,-4)
+b   =
+</pre>
+
+<p>
+The components have the same sizes, but their signs are different.
+</p>
+
+<pre>
+a = (3,4)
+
+b = (-3,-4)
+</pre>
+
+<p>
+The second vector points in the opposite direction.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→   →
+a ≠ b
+</pre>
+
+<p>
+So two vectors can have the same magnitude but still
+be different vectors if their directions are different.
+</p>
+
+<h3>6. FINDING AN UNKNOWN USING EQUAL VECTORS</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+→        (6,y)
+a   =
+
+→        (6,4)
+b   =
+</pre>
+
+<p>
+If <b>a = b</b>, corresponding components must be equal.
+</p>
+
+<pre>
+y = 4
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→        (6,4)
+a   =
+</pre>
+
+<h3>7. THE KEY RULE</h3>
+
+<pre>
+Two vectors are equal
+if and only if
+their corresponding components are equal.
+
+(x₁,y₁) = (x₂,y₂)
+
+when:
+
+x₁ = x₂
+and
+y₁ = y₂
+</pre>
+
+<p>
+<b>Remember:</b> The starting point does not determine whether
+two vectors are equal. Their magnitude and direction do.
+</p>
+`,
+
+  [
+    {
+      q: "Determine whether the vectors a = (4,7) and b = (4,7) are equal.",
+      hint: "Compare the x-components and then the y-components.",
+      steps: [
+        "Compare the x-components: 4 = 4.",
+        "Compare the y-components: 7 = 7.",
+        "Both components are equal.",
+        "Therefore, a = b."
+      ],
+      ans: "Yes, the vectors are equal.",
+      why: "Equal vectors must have identical corresponding components."
+    },
+
+    {
+      q: "Determine whether a = (3,-5) and b = (-3,5) are equal.",
+      hint: "Look carefully at the signs of both components.",
+      steps: [
+        "Compare the x-components: 3 ≠ -3.",
+        "The corresponding components are not equal.",
+        "Therefore, the vectors are not equal."
+      ],
+      ans: "No, a ≠ b.",
+      why: "The vectors point in opposite directions."
+    },
+
+    {
+      q: "A(2,1), B(7,4), C(-3,5), and D(2,8). Determine whether AB and CD are equal.",
+      hint: "Find both vectors first.",
+      steps: [
+        "AB = B - A = (7-2, 4-1) = (5,3).",
+        "CD = D - C = (2-(-3), 8-5) = (5,3).",
+        "Both vectors have the same components.",
+        "Therefore, AB = CD."
+      ],
+      ans: "AB = CD = (5,3).",
+      why: "Although the vectors start at different points, they have the same magnitude and direction."
+    },
+
+    {
+      q: "Given a = (8,x) and b = (8,6), find x if a = b.",
+      hint: "Equal vectors have equal corresponding components.",
+      steps: [
+        "Compare the first components: 8 = 8.",
+        "Compare the second components: x = 6.",
+        "Therefore, x = 6."
+      ],
+      ans: "x = 6",
+      why: "The corresponding components of equal vectors must be equal."
+    },
+
+    {
+      q: "A(1,4), B(6,9), and C(3,2). Point D is such that AB = CD. Find D.",
+      hint: "First find AB, then add that vector to C.",
+      steps: [
+        "AB = B - A = (6-1, 9-4) = (5,5).",
+        "Since AB = CD, CD = (5,5).",
+        "Start at C(3,2) and move by (5,5).",
+        "D = (3+5, 2+5).",
+        "D = (8,7)."
+      ],
+      ans: "D = (8,7)",
+      why: "The vector CD must have exactly the same components as AB."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Opposite Vectors",
+
+  `
+<h2>Opposite Vectors</h2>
+
+<p>
+Two vectors are <b>opposite vectors</b> when they have the
+same magnitude but point in exactly opposite directions.
+</p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+To find the opposite of a vector, change the sign of
+<b>every component</b>.
+</p>
+
+<pre>
+→        (x,y)
+a   =
+
+→        (-x,-y)
+-a  =
+</pre>
+
+<p>
+For example:
+</p>
+
+<pre>
+→        (4,3)
+a   =
+
+→        (-4,-3)
+-a  =
+</pre>
+
+<p>
+The direction has been reversed.
+</p>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find the opposite of:
+</p>
+
+<pre>
+→
+a = (5,2)
+</pre>
+
+<p><b>Step 1:</b> Change the sign of the x-component.</p>
+
+<pre>
+5 → -5
+</pre>
+
+<p><b>Step 2:</b> Change the sign of the y-component.</p>
+
+<pre>
+2 → -2
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→        (5,2)
+a   =
+
+→         (-5,-2)
+-a  =
+</pre>
+
+<h3>3. WORKED EXAMPLE 2</h3>
+
+<p>
+Find the opposite of:
+</p>
+
+<pre>
+→
+b = (-7,4)
+</pre>
+
+<p>
+Change both signs:
+</p>
+
+<pre>
+-7 → 7
+4  → -4
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→         (-7,4)
+b   =
+
+→         (7,-4)
+-b  =
+</pre>
+
+<h3>4. WORKED EXAMPLE 3: USING POINTS</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+A(2,3)
+B(8,6)
+</pre>
+
+<p>
+Find the opposite of vector <b>AB</b>.
+</p>
+
+<p><b>Step 1: Find AB.</b></p>
+
+<pre>
+AB = B - A
+
+   = (8,6) - (2,3)
+
+   = (6,3)
+</pre>
+
+<p><b>Step 2: Change both signs.</b></p>
+
+<pre>
+(6,3) → (-6,-3)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→
+-AB = (-6,-3)
+</pre>
+
+<p>
+Notice that the opposite vector is exactly what we get
+when we reverse the direction:
+</p>
+
+<pre>
+→         (6,3)
+AB   =
+
+→         (-6,-3)
+BA   =
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→     → 
+BA = -AB
+</pre>
+
+<h3>5. WHY THE SIGNS CHANGE</h3>
+
+<p>
+Consider the vector:
+</p>
+
+<pre>
+→
+a = (4,2)
+</pre>
+
+<p>
+It means:
+</p>
+
+<pre>
+4 units horizontally
+2 units vertically
+</pre>
+
+<p>
+Its opposite vector is:
+</p>
+
+<pre>
+→
+-a = (-4,-2)
+</pre>
+
+<p>
+This means:
+</p>
+
+<pre>
+4 units in the opposite horizontal direction
+2 units in the opposite vertical direction
+</pre>
+
+<p>
+So changing both signs reverses the direction.
+</p>
+
+<h3>6. A VERY IMPORTANT RESULT</h3>
+
+<p>
+A vector and its opposite cancel each other.
+</p>
+
+<pre>
+→   → 
+a + (-a) = (0,0)
+</pre>
+
+<p>
+For example:
+</p>
+
+<pre>
+(5,3) + (-5,-3)
+
+= (5-5, 3-3)
+
+= (0,0)
+</pre>
+
+<p>
+The result is the <b>zero vector</b>.
+</p>
+
+<h3>7. THE KEY RULE</h3>
+
+<pre>
+Opposite of:
+
+(x,y)
+
+is:
+
+(-x,-y)
+</pre>
+
+<p>
+<b>Remember:</b> To reverse a vector, change the sign of
+every component.
+</p>
+`,
+
+  [
+    {
+      q: "Find the opposite of the vector a = (6,4).",
+      hint: "Change the sign of both components.",
+      steps: [
+        "Change 6 to -6.",
+        "Change 4 to -4.",
+        "Therefore, -a = (-6,-4)."
+      ],
+      ans: "-a = (-6,-4)",
+      why: "The opposite vector has the same magnitude but the opposite direction."
+    },
+
+    {
+      q: "Find the opposite of b = (-3,7).",
+      hint: "Change both signs.",
+      steps: [
+        "Change -3 to 3.",
+        "Change 7 to -7.",
+        "Therefore, -b = (3,-7)."
+      ],
+      ans: "-b = (3,-7)",
+      why: "Both components must change sign when the direction is reversed."
+    },
+
+    {
+      q: "Given a = (8,-5), find a + (-a).",
+      hint: "First find -a.",
+      steps: [
+        "a = (8,-5).",
+        "-a = (-8,5).",
+        "Add the components: (8,-5) + (-8,5).",
+        "x-component: 8 + (-8) = 0.",
+        "y-component: -5 + 5 = 0.",
+        "Therefore, a + (-a) = (0,0)."
+      ],
+      ans: "(0,0)",
+      why: "A vector and its opposite cancel each other."
+    },
+
+    {
+      q: "A(2,1) and B(9,5). Find the opposite of AB.",
+      hint: "First find AB using final point minus initial point.",
+      steps: [
+        "AB = B - A.",
+        "AB = (9-2, 5-1).",
+        "AB = (7,4).",
+        "Change both signs.",
+        "-AB = (-7,-4)."
+      ],
+      ans: "-AB = (-7,-4)",
+      why: "Reversing the direction of AB changes both component signs."
+    },
+
+    {
+      q: "If -a = (4,-6), find a.",
+      hint: "The opposite of the opposite gives the original vector.",
+      steps: [
+        "The vector opposite to (4,-6) is (-4,6).",
+        "Therefore, a = (-4,6)."
+      ],
+      ans: "a = (-4,6)",
+      why: "Taking the opposite twice returns the original vector."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Scalar Multiplication of a Vector",
+
+  `
+<h2>Scalar Multiplication of a Vector</h2>
+
+<p>
+A <b>scalar</b> is an ordinary number.
+</p>
+
+<p>
+When a vector is multiplied by a scalar, the scalar multiplies
+<b>every component</b> of the vector.
+</p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+If:
+</p>
+
+<pre>
+→        (x,y)
+a   =
+</pre>
+
+<p>
+then:
+</p>
+
+<pre>
+→
+ka = (kx, ky)
+</pre>
+
+<p>
+where <b>k</b> is the scalar.
+</p>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find:
+</p>
+
+<pre>
+3(2,4)
+</pre>
+
+<p><b>Step 1:</b> Multiply the x-component by 3.</p>
+
+<pre>
+3 × 2 = 6
+</pre>
+
+<p><b>Step 2:</b> Multiply the y-component by 3.</p>
+
+<pre>
+3 × 4 = 12
+</pre>
+
+<p><b>Step 3:</b> Write the new vector.</p>
+
+<pre>
+3(2,4) = (6,12)
+</pre>
+
+<h3>3. WORKED EXAMPLE 2</h3>
+
+<p>
+Find:
+</p>
+
+<pre>
+-2(3,-5)
+</pre>
+
+<p><b>Step 1:</b> Multiply the first component.</p>
+
+<pre>
+-2 × 3 = -6
+</pre>
+
+<p><b>Step 2:</b> Multiply the second component.</p>
+
+<pre>
+-2 × (-5) = 10
+</pre>
+
+<p><b>Step 3:</b> Combine the components.</p>
+
+<pre>
+-2(3,-5) = (-6,10)
+</pre>
+
+<p>
+Notice that the negative scalar changes the direction
+of the vector as well as its size.
+</p>
+
+<h3>4. WORKED EXAMPLE 3</h3>
+
+<p>
+Given:
+</p>
+
+<pre>
+→        (4,-3)
+a   =
+</pre>
+
+<p>
+Find <b>5a</b>.
+</p>
+
+<p><b>Step 1:</b></p>
+
+<pre>
+5 × 4 = 20
+</pre>
+
+<p><b>Step 2:</b></p>
+
+<pre>
+5 × (-3) = -15
+</pre>
+
+<p><b>Step 3:</b></p>
+
+<pre>
+5a = (20,-15)
+</pre>
+
+<h3>5. WHAT HAPPENS WHEN THE SCALAR IS NEGATIVE?</h3>
+
+<p>
+Consider:
+</p>
+
+<pre>
+→        (2,3)
+a   =
+</pre>
+
+<p>
+Multiply by <b>-1</b>:
+</p>
+
+<pre>
+-a = -1(2,3)
+
+   = (-2,-3)
+</pre>
+
+<p>
+This produces the <b>opposite vector</b>.
+</p>
+
+<p>
+So:
+</p>
+
+<pre>
+-a = (-2,-3)
+</pre>
+
+<p>
+A negative scalar reverses the direction.
+</p>
+
+<h3>6. WHAT HAPPENS WHEN THE SCALAR IS ZERO?</h3>
+
+<p>
+If:
+</p>
+
+<pre>
+→        (4,7)
+a   =
+</pre>
+
+<p>
+then:
+</p>
+
+<pre>
+0a = 0(4,7)
+
+   = (0,0)
+</pre>
+
+<p>
+The result is the <b>zero vector</b>.
+</p>
+
+<h3>7. WHAT HAPPENS WHEN THE SCALAR IS BETWEEN 0 AND 1?</h3>
+
+<p>
+Consider:
+</p>
+
+<pre>
+→        (8,6)
+a   =
+</pre>
+
+<p>
+Multiply by <b>1/2</b>:
+</p>
+
+<pre>
+1/2 a = 1/2(8,6)
+
+      = (4,3)
+</pre>
+
+<p>
+The direction stays the same, but the vector becomes
+shorter.
+</p>
+
+<h3>8. SCALAR MULTIPLICATION IN i AND j FORM</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+→
+a = 3i + 4j
+</pre>
+
+<p>
+Find <b>2a</b>.
+</p>
+
+<pre>
+2a = 2(3i + 4j)
+
+   = 6i + 8j
+</pre>
+
+<p>
+The scalar multiplies the coefficient of both <b>i</b> and <b>j</b>.
+</p>
+
+<h3>9. THE KEY RULE</h3>
+
+<pre>
+k(x,y) = (kx,ky)
+</pre>
+
+<p>
+<b>Positive scalar:</b> same direction.
+</p>
+
+<p>
+<b>Negative scalar:</b> opposite direction.
+</p>
+
+<p>
+<b>Scalar between 0 and 1:</b> same direction, shorter vector.
+</p>
+
+<p>
+<b>Scalar greater than 1:</b> same direction, longer vector.
+</p>
+
+<p>
+<b>Zero scalar:</b> zero vector.
+</p>
+`,
+
+  [
+    {
+      q: "Find 4(3,2).",
+      hint: "Multiply both components by 4.",
+      steps: [
+        "4 × 3 = 12.",
+        "4 × 2 = 8.",
+        "Therefore, 4(3,2) = (12,8)."
+      ],
+      ans: "(12,8)",
+      why: "A scalar multiplies every component of the vector."
+    },
+
+    {
+      q: "Find -3(2,-4).",
+      hint: "Multiply -3 by each component.",
+      steps: [
+        "-3 × 2 = -6.",
+        "-3 × (-4) = 12.",
+        "Therefore, -3(2,-4) = (-6,12)."
+      ],
+      ans: "(-6,12)",
+      why: "The negative scalar changes the direction as well as scaling the vector."
+    },
+
+    {
+      q: "Given a = (6,-8), find 1/2 a.",
+      hint: "Multiply each component by 1/2.",
+      steps: [
+        "1/2 × 6 = 3.",
+        "1/2 × (-8) = -4.",
+        "Therefore, 1/2 a = (3,-4)."
+      ],
+      ans: "(3,-4)",
+      why: "Multiplying by a scalar between 0 and 1 keeps the direction but reduces the size."
+    },
+
+    {
+      q: "Given a = (-2,5), find -a.",
+      hint: "Multiply the vector by -1.",
+      steps: [
+        "-1 × (-2) = 2.",
+        "-1 × 5 = -5.",
+        "Therefore, -a = (2,-5)."
+      ],
+      ans: "(2,-5)",
+      why: "Multiplying by -1 gives the opposite vector."
+    },
+
+    {
+      q: "Given a = (7,-3), find 0a.",
+      hint: "Multiply both components by zero.",
+      steps: [
+        "0 × 7 = 0.",
+        "0 × (-3) = 0.",
+        "Therefore, 0a = (0,0)."
+      ],
+      ans: "(0,0)",
+      why: "Multiplying any vector by zero produces the zero vector."
+    },
+
+    {
+      q: "Given a = 2i - 5j, find 3a.",
+      hint: "Multiply both coefficients by 3.",
+      steps: [
+        "3 × 2 = 6.",
+        "3 × (-5) = -15.",
+        "Therefore, 3a = 6i - 15j."
+      ],
+      ans: "6i - 15j",
+      why: "Scalar multiplication applies to both vector components."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Parallel Vectors",
+
+  `
+<h2>Parallel Vectors</h2>
+
+<p>
+Two vectors are <b>parallel</b> when they act in the same direction
+or in exactly opposite directions.
+</p>
+
+<p>
+The key test is:
+</p>
+
+<pre>
+→     →
+b = ka
+</pre>
+
+<p>
+where <b>k</b> is a scalar.
+</p>
+
+<p>
+In other words, one vector must be a multiple of the other.
+</p>
+
+<h3>1. SAME DIRECTION</h3>
+
+<p>
+Consider:
+</p>
+
+<pre>
+→        (2,3)
+a   =
+
+→        (6,9)
+b   =
+</pre>
+
+<p>
+Check whether <b>b</b> is a multiple of <b>a</b>.
+</p>
+
+<pre>
+3(2,3)
+
+= (6,9)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→     →
+b = 3a
+</pre>
+
+<p>
+So <b>a</b> and <b>b</b> are parallel and point in
+the same direction.
+</p>
+
+<h3>2. OPPOSITE DIRECTIONS</h3>
+
+<p>
+Consider:
+</p>
+
+<pre>
+→        (4,-2)
+a   =
+
+→        (-8,4)
+b   =
+</pre>
+
+<p>
+Multiply <b>a</b> by -2:
+</p>
+
+<pre>
+-2(4,-2)
+
+= (-8,4)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→      →
+b = -2a
+</pre>
+
+<p>
+The vectors are parallel, but they point in opposite directions.
+</p>
+
+<h3>3. WORKED EXAMPLE 1</h3>
+
+<p>
+Determine whether:
+</p>
+
+<pre>
+→        (3,5)
+a   =
+
+→        (9,15)
+b   =
+</pre>
+
+<p>
+are parallel.
+</p>
+
+<p><b>Step 1:</b> Compare the x-components.</p>
+
+<pre>
+9 ÷ 3 = 3
+</pre>
+
+<p><b>Step 2:</b> Compare the y-components.</p>
+
+<pre>
+15 ÷ 5 = 3
+</pre>
+
+<p>
+The same multiplier is obtained:
+</p>
+
+<pre>
+3 = 3
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→     →
+b = 3a
+</pre>
+
+<p>
+So the vectors are parallel.
+</p>
+
+<h3>4. WORKED EXAMPLE 2</h3>
+
+<p>
+Determine whether:
+</p>
+
+<pre>
+→        (4,6)
+a   =
+
+→        (10,15)
+b   =
+</pre>
+
+<p>
+are parallel.
+</p>
+
+<p><b>Step 1:</b> Compare the x-components.</p>
+
+<pre>
+10 ÷ 4 = 2.5
+</pre>
+
+<p><b>Step 2:</b> Compare the y-components.</p>
+
+<pre>
+15 ÷ 6 = 2.5
+</pre>
+
+<p>
+The multipliers are the same.
+</p>
+
+<pre>
+b = 2.5a
+</pre>
+
+<p>
+Therefore, the vectors are parallel.
+</p>
+
+<h3>5. WORKED EXAMPLE 3: NOT PARALLEL</h3>
+
+<p>
+Determine whether:
+</p>
+
+<pre>
+→        (2,3)
+a   =
+
+→        (8,10)
+b   =
+</pre>
+
+<p>
+are parallel.
+</p>
+
+<p><b>Step 1:</b> Compare the x-components.</p>
+
+<pre>
+8 ÷ 2 = 4
+</pre>
+
+<p><b>Step 2:</b> Compare the y-components.</p>
+
+<pre>
+10 ÷ 3 ≈ 3.33
+</pre>
+
+<p>
+The multipliers are different:
+</p>
+
+<pre>
+4 ≠ 3.33
+</pre>
+
+<p>
+Therefore, there is no single scalar that changes
+<b>a</b> into <b>b</b>.
+</p>
+
+<p>
+So the vectors are <b>not parallel</b>.
+</p>
+
+<h3>6. FINDING AN UNKNOWN VALUE</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+→        (4,6)
+a   =
+
+→        (x,15)
+b   =
+</pre>
+
+<p>
+If <b>a</b> and <b>b</b> are parallel, the same multiplier
+must work for both components.
+</p>
+
+<p>
+From the y-components:
+</p>
+
+<pre>
+15 ÷ 6 = 2.5
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+x = 2.5 × 4
+
+x = 10
+</pre>
+
+<p>
+So:
+</p>
+
+<pre>
+→        (10,15)
+b   =
+</pre>
+
+<p>
+and:
+</p>
+
+<pre>
+b = 2.5a
+</pre>
+
+<h3>7. PARALLEL VECTORS FROM POINTS</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+A(1,2)
+B(5,5)
+
+C(3,1)
+D(11,7)
+</pre>
+
+<p>
+Find AB and CD.
+</p>
+
+<p><b>Step 1: Find AB.</b></p>
+
+<pre>
+AB = (5-1, 5-2)
+
+   = (4,3)
+</pre>
+
+<p><b>Step 2: Find CD.</b></p>
+
+<pre>
+CD = (11-3, 7-1)
+
+   = (8,6)
+</pre>
+
+<p><b>Step 3: Compare.</b></p>
+
+<pre>
+(8,6) = 2(4,3)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→     →
+CD = 2AB
+</pre>
+
+<p>
+So <b>AB</b> and <b>CD</b> are parallel.
+</p>
+
+<h3>8. THE KEY TEST</h3>
+
+<pre>
+Two vectors are parallel
+if one is a scalar multiple
+of the other.
+
+→     →
+b = ka
+</pre>
+
+<p>
+<b>k &gt; 0:</b> same direction.
+</p>
+
+<p>
+<b>k &lt; 0:</b> opposite directions.
+</p>
+
+<p>
+<b>No single k:</b> not parallel.
+</p>
+`,
+
+  [
+    {
+      q: "Determine whether a = (2,5) and b = (6,15) are parallel.",
+      hint: "Find the multiplier from both components.",
+      steps: [
+        "6 ÷ 2 = 3.",
+        "15 ÷ 5 = 3.",
+        "The same multiplier works for both components.",
+        "Therefore, b = 3a.",
+        "The vectors are parallel."
+      ],
+      ans: "Yes, the vectors are parallel.",
+      why: "One vector is 3 times the other."
+    },
+
+    {
+      q: "Determine whether a = (3,4) and b = (-6,-8) are parallel.",
+      hint: "Check whether the same negative multiplier works for both components.",
+      steps: [
+        "-6 ÷ 3 = -2.",
+        "-8 ÷ 4 = -2.",
+        "The same multiplier works for both components.",
+        "Therefore, b = -2a.",
+        "The vectors are parallel but point in opposite directions."
+      ],
+      ans: "Yes, they are parallel.",
+      why: "A negative scalar multiple produces a vector in the opposite direction."
+    },
+
+    {
+      q: "Determine whether a = (4,7) and b = (12,20) are parallel.",
+      hint: "Compare 12 ÷ 4 with 20 ÷ 7.",
+      steps: [
+        "12 ÷ 4 = 3.",
+        "20 ÷ 7 ≈ 2.86.",
+        "The multipliers are not equal.",
+        "Therefore, there is no single scalar relating the two vectors."
+      ],
+      ans: "No, the vectors are not parallel.",
+      why: "Parallel vectors must have the same scalar multiplier for every component."
+    },
+
+    {
+      q: "Given a = (5,2) and b = (x,6), find x if a and b are parallel.",
+      hint: "Use the y-components to find the multiplier.",
+      steps: [
+        "6 ÷ 2 = 3.",
+        "Therefore, b = 3a.",
+        "x = 3 × 5.",
+        "x = 15."
+      ],
+      ans: "x = 15",
+      why: "The same scalar must multiply both components."
+    },
+
+    {
+      q: "A(2,1), B(6,4), C(3,5), and D(11,11). Determine whether AB and CD are parallel.",
+      hint: "Find both vectors first.",
+      steps: [
+        "AB = (6-2, 4-1) = (4,3).",
+        "CD = (11-3, 11-5) = (8,6).",
+        "CD = 2(4,3).",
+        "Therefore, CD = 2AB.",
+        "So AB and CD are parallel."
+      ],
+      ans: "Yes, AB and CD are parallel.",
+      why: "CD is a scalar multiple of AB."
+    },
+
+    {
+      q: "If b = -3a and a = (2,-4), find b.",
+      hint: "Multiply every component of a by -3.",
+      steps: [
+        "b = -3(2,-4).",
+        "-3 × 2 = -6.",
+        "-3 × (-4) = 12.",
+        "Therefore, b = (-6,12)."
+      ],
+      ans: "b = (-6,12)",
+      why: "A negative scalar multiple produces a parallel vector in the opposite direction."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Position Vector",
+
+  `
+<h2>Position Vector</h2>
+
+<p>
+A <b>position vector</b> describes the position of a point
+relative to the origin.
+</p>
+
+<p>
+The origin is:
+</p>
+
+<pre>
+O(0,0)
+</pre>
+
+<p>
+If a point is:
+</p>
+
+<pre>
+A(x,y)
+</pre>
+
+<p>
+then its position vector is:
+</p>
+
+<pre>
+→        (x)
+OA  =
+         (y)
+</pre>
+
+<p>
+or, in <b>i and j</b> form:
+</p>
+
+<pre>
+→
+OA = xi + yj
+</pre>
+
+<h3>1. THE MAIN IDEA</h3>
+
+<p>
+The position vector starts at the origin and ends at
+the point being described.
+</p>
+
+<pre>
+O(0,0) ─────────→ A(x,y)
+             →
+             OA
+</pre>
+
+<p>
+So the coordinates of the point become the components
+of its position vector.
+</p>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find the position vector of:
+</p>
+
+<pre>
+A(4,7)
+</pre>
+
+<p>
+The point is 4 units horizontally and 7 units vertically
+from the origin.
+</p>
+
+<pre>
+→
+OA = (4,7)
+</pre>
+
+<p>
+In i and j form:
+</p>
+
+<pre>
+→
+OA = 4i + 7j
+</pre>
+
+<h3>3. WORKED EXAMPLE 2</h3>
+
+<p>
+Find the position vector of:
+</p>
+
+<pre>
+B(-3,5)
+</pre>
+
+<p>
+The x-coordinate is -3 and the y-coordinate is 5.
+</p>
+
+<pre>
+→
+OB = (-3,5)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→
+OB = -3i + 5j
+</pre>
+
+<p>
+The negative x-component means that B lies to the
+left of the origin.
+</p>
+
+<h3>4. WORKED EXAMPLE 3</h3>
+
+<p>
+Find the coordinates of point C if:
+</p>
+
+<pre>
+→
+OC = (6,-4)
+</pre>
+
+<p>
+The components of the position vector are simply the
+coordinates of the point.
+</p>
+
+<pre>
+x = 6
+y = -4
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+C(6,-4)
+</pre>
+
+<h3>5. POSITION VECTOR AND A VECTOR BETWEEN TWO POINTS</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+A(2,3)
+B(7,8)
+</pre>
+
+<p>
+Their position vectors are:
+</p>
+
+<pre>
+→        (2,3)
+OA  =
+
+→        (7,8)
+OB  =
+</pre>
+
+<p>
+To find <b>AB</b>, subtract the position vector of A
+from the position vector of B.
+</p>
+
+<pre>
+→     →     →
+AB = OB - OA
+</pre>
+
+<p>
+Substitute:
+</p>
+
+<pre>
+AB = (7,8) - (2,3)
+
+   = (5,5)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→
+AB = (5,5)
+</pre>
+
+<p>
+This gives the important relationship:
+</p>
+
+<pre>
+→     →     →
+AB = OB - OA
+</pre>
+
+<p>
+So:
+</p>
+
+<p>
+<b>Vector from A to B = position vector of B − position vector of A.</b>
+</p>
+
+<h3>6. POSITION VECTOR IN i AND j FORM</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+→
+OA = 3i - 2j
+</pre>
+
+<p>
+The coefficient of <b>i</b> gives the x-coordinate.
+The coefficient of <b>j</b> gives the y-coordinate.
+</p>
+
+<pre>
+x = 3
+y = -2
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+A(3,-2)
+</pre>
+
+<h3>7. A COMMON MISTAKE</h3>
+
+<p>
+Do not confuse a <b>position vector</b> with a vector
+between two arbitrary points.
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+A(2,3)
+B(7,5)
+</pre>
+
+<p>
+Position vector of A:
+</p>
+
+<pre>
+→
+OA = (2,3)
+</pre>
+
+<p>
+Position vector of B:
+</p>
+
+<pre>
+→
+OB = (7,5)
+</pre>
+
+<p>
+But:
+</p>
+
+<pre>
+→
+AB = (5,2)
+</pre>
+
+<p>
+They are different vectors because they describe different
+movements.
+</p>
+
+<h3>8. THE KEY RULE</h3>
+
+<pre>
+Point:
+A(x,y)
+
+Position vector:
+→
+OA = (x,y)
+
+or:
+
+→
+OA = xi + yj
+</pre>
+
+<p>
+And for two points:
+</p>
+
+<pre>
+→     →     →
+AB = OB - OA
+</pre>
+
+<p>
+<b>Remember:</b> A position vector always starts at the origin.
+</p>
+`,
+
+  [
+    {
+      q: "Find the position vector of A(5,3).",
+      hint: "The coordinates of the point become the components of its position vector.",
+      steps: [
+        "A has x-coordinate 5.",
+        "A has y-coordinate 3.",
+        "Therefore, OA = (5,3)."
+      ],
+      ans: "OA = (5,3)",
+      why: "A position vector gives the coordinates of a point relative to the origin."
+    },
+
+    {
+      q: "Find the position vector of B(-4,6) in i and j form.",
+      hint: "The x-coordinate multiplies i and the y-coordinate multiplies j.",
+      steps: [
+        "The x-coordinate is -4.",
+        "The y-coordinate is 6.",
+        "Therefore, OB = -4i + 6j."
+      ],
+      ans: "OB = -4i + 6j",
+      why: "The position vector components are the point's x- and y-coordinates."
+    },
+
+    {
+      q: "The position vector of C is OC = (7,-2). Find the coordinates of C.",
+      hint: "Read the x- and y-components directly.",
+      steps: [
+        "The x-component is 7.",
+        "The y-component is -2.",
+        "Therefore, C = (7,-2)."
+      ],
+      ans: "C(7,-2)",
+      why: "The components of a position vector are the coordinates of its endpoint."
+    },
+
+    {
+      q: "A(2,4) and B(9,7). Find AB using their position vectors.",
+      hint: "Use AB = OB - OA.",
+      steps: [
+        "OA = (2,4).",
+        "OB = (9,7).",
+        "AB = OB - OA.",
+        "AB = (9,7) - (2,4).",
+        "AB = (7,3)."
+      ],
+      ans: "AB = (7,3)",
+      why: "The vector from A to B is found by subtracting A's position vector from B's."
+    },
+
+    {
+      q: "Given OA = 4i + 3j and OB = 9i + 8j, find AB.",
+      hint: "Use AB = OB - OA and subtract corresponding components.",
+      steps: [
+        "AB = OB - OA.",
+        "AB = (9,8) - (4,3).",
+        "AB = (9-4, 8-3).",
+        "AB = (5,5).",
+        "Therefore, AB = 5i + 5j."
+      ],
+      ans: "AB = 5i + 5j",
+      why: "Subtracting the two position vectors gives the displacement from A to B."
+    },
+
+    {
+      q: "Point P has position vector OP = -6i + 2j. In which quadrant is P?",
+      hint: "Convert the position vector into coordinates first.",
+      steps: [
+        "OP = (-6,2).",
+        "The x-coordinate is negative.",
+        "The y-coordinate is positive.",
+        "A point with x negative and y positive lies in Quadrant II."
+      ],
+      ans: "P lies in Quadrant II.",
+      why: "Quadrant II contains points with negative x-coordinates and positive y-coordinates."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Vector Addition",
+
+  `
+<h2>Vector Addition</h2>
+
+<p>
+Vector addition combines two vectors to produce a
+<b>resultant vector</b>.
+</p>
+
+<p>
+When vectors are written in component form, add
+corresponding components.
+</p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+If:
+</p>
+
+<pre>
+→        (x₁,y₁)
+a   =
+
+→        (x₂,y₂)
+b   =
+</pre>
+
+<p>
+then:
+</p>
+
+<pre>
+→   →
+a + b = (x₁+x₂, y₁+y₂)
+</pre>
+
+<p>
+So:
+</p>
+
+<pre>
+x-component + x-component
+
+y-component + y-component
+</pre>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find:
+</p>
+
+<pre>
+(3,2) + (4,5)
+</pre>
+
+<p><b>Step 1:</b> Add the x-components.</p>
+
+<pre>
+3 + 4 = 7
+</pre>
+
+<p><b>Step 2:</b> Add the y-components.</p>
+
+<pre>
+2 + 5 = 7
+</pre>
+
+<p><b>Step 3:</b> Write the resultant vector.</p>
+
+<pre>
+(3,2) + (4,5) = (7,7)
+</pre>
+
+<h3>3. WORKED EXAMPLE 2: NEGATIVE COMPONENTS</h3>
+
+<p>
+Find:
+</p>
+
+<pre>
+(6,-3) + (-2,5)
+</pre>
+
+<p><b>Step 1:</b> Add the x-components.</p>
+
+<pre>
+6 + (-2) = 4
+</pre>
+
+<p><b>Step 2:</b> Add the y-components.</p>
+
+<pre>
+-3 + 5 = 2
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+(6,-3) + (-2,5) = (4,2)
+</pre>
+
+<h3>4. WORKED EXAMPLE 3: i AND j FORM</h3>
+
+<p>
+Given:
+</p>
+
+<pre>
+→
+a = 3i + 4j
+
+→
+b = 5i - 2j
+</pre>
+
+<p>
+Find <b>a + b</b>.
+</p>
+
+<p><b>Step 1:</b> Add the i-components.</p>
+
+<pre>
+3i + 5i = 8i
+</pre>
+
+<p><b>Step 2:</b> Add the j-components.</p>
+
+<pre>
+4j + (-2j) = 2j
+</pre>
+
+<p><b>Step 3:</b> Combine them.</p>
+
+<pre>
+→   →
+a + b = 8i + 2j
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→   →
+a + b = (8,2)
+</pre>
+
+<h3>5. VECTOR ADDITION AS MOVEMENT</h3>
+
+<p>
+Suppose a student walks:
+</p>
+
+<pre>
+4 m east
+</pre>
+
+<p>
+and then:
+</p>
+
+<pre>
+3 m north
+</pre>
+
+<p>
+Represent these movements as:
+</p>
+
+<pre>
+→        (4,0)
+a   =
+
+→        (0,3)
+b   =
+</pre>
+
+<p>
+The total displacement is:
+</p>
+
+<pre>
+a + b
+
+= (4,0) + (0,3)
+
+= (4,3)
+</pre>
+
+<p>
+So the student's final displacement from the starting
+point is represented by <b>(4,3)</b>.
+</p>
+
+<h3>6. ADDING THREE VECTORS</h3>
+
+<p>
+The same rule applies when there are three or more vectors.
+</p>
+
+<p>
+Find:
+</p>
+
+<pre>
+(2,3) + (4,-1) + (-3,5)
+</pre>
+
+<p><b>Step 1:</b> Add the x-components.</p>
+
+<pre>
+2 + 4 + (-3) = 3
+</pre>
+
+<p><b>Step 2:</b> Add the y-components.</p>
+
+<pre>
+3 + (-1) + 5 = 7
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+(2,3) + (4,-1) + (-3,5)
+
+= (3,7)
+</pre>
+
+<h3>7. A USEFUL CHECK</h3>
+
+<p>
+When adding vectors, never mix the x-component of one
+vector with the y-component of another.
+</p>
+
+<p>
+Always work in pairs:
+</p>
+
+<pre>
+x + x
+
+y + y
+</pre>
+
+<p>
+For example:
+</p>
+
+<pre>
+(5,2) + (3,7)
+
+x: 5 + 3 = 8
+
+y: 2 + 7 = 9
+
+answer: (8,9)
+</pre>
+
+<h3>8. THE KEY RULE</h3>
+
+<pre>
+→        (x₁,y₁)
+a   =
+
+→        (x₂,y₂)
+b   =
+
+→   →
+a + b = (x₁+x₂, y₁+y₂)
+</pre>
+
+<p>
+<b>Remember:</b> Add corresponding components.
+</p>
+`,
+
+  [
+    {
+      q: "Find (4,3) + (2,5).",
+      hint: "Add the x-components together and the y-components together.",
+      steps: [
+        "x-components: 4 + 2 = 6.",
+        "y-components: 3 + 5 = 8.",
+        "Therefore, (4,3) + (2,5) = (6,8)."
+      ],
+      ans: "(6,8)",
+      why: "Vector addition is performed component by component."
+    },
+
+    {
+      q: "Find (7,-2) + (-3,6).",
+      hint: "Be careful with the negative signs.",
+      steps: [
+        "x-components: 7 + (-3) = 4.",
+        "y-components: -2 + 6 = 4.",
+        "Therefore, the resultant is (4,4)."
+      ],
+      ans: "(4,4)",
+      why: "Each component is added to the corresponding component of the other vector."
+    },
+
+    {
+      q: "Given a = 5i + 2j and b = -3i + 4j, find a + b.",
+      hint: "Combine the i terms and then the j terms.",
+      steps: [
+        "i-components: 5i + (-3i) = 2i.",
+        "j-components: 2j + 4j = 6j.",
+        "Therefore, a + b = 2i + 6j."
+      ],
+      ans: "2i + 6j",
+      why: "Like components of vectors are added together."
+    },
+
+    {
+      q: "A person walks 5 m east and then 2 m west. Represent the total displacement as a vector.",
+      hint: "Take east as positive and west as negative.",
+      steps: [
+        "5 m east = (5,0).",
+        "2 m west = (-2,0).",
+        "Add the vectors: (5,0) + (-2,0).",
+        "5 + (-2) = 3.",
+        "Therefore, the displacement is (3,0)."
+      ],
+      ans: "(3,0), meaning 3 m east.",
+      why: "Opposite movements along the same direction axis partially cancel."
+    },
+
+    {
+      q: "Find (2,4) + (3,-2) + (-1,5).",
+      hint: "Add all x-components separately from all y-components.",
+      steps: [
+        "x-components: 2 + 3 + (-1) = 4.",
+        "y-components: 4 + (-2) + 5 = 7.",
+        "Therefore, the resultant vector is (4,7)."
+      ],
+      ans: "(4,7)",
+      why: "Every corresponding component is added to obtain the resultant."
+    },
+
+    {
+      q: "Two vectors are a = (6,2) and b = (-6,-2). Find a + b and explain what the result means.",
+      hint: "Notice the relationship between the two vectors.",
+      steps: [
+        "Add the x-components: 6 + (-6) = 0.",
+        "Add the y-components: 2 + (-2) = 0.",
+        "Therefore, a + b = (0,0).",
+        "The two vectors are opposites and cancel each other."
+      ],
+      ans: "(0,0)",
+      why: "A vector and its opposite produce the zero vector when added."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Vector Subtraction",
+
+  `
+<h2>Vector Subtraction</h2>
+
+<p>
+Vector subtraction finds the difference between two vectors.
+</p>
+
+<p>
+The important idea is:
+</p>
+
+<pre>
+→   →     →     →
+a - b = a + (-b)
+</pre>
+
+<p>
+So subtracting a vector is the same as
+<b>adding its opposite</b>.
+</p>
+
+<h3>1. THE MAIN RULE</h3>
+
+<p>
+If:
+</p>
+
+<pre>
+→        (x₁,y₁)
+a   =
+
+→        (x₂,y₂)
+b   =
+</pre>
+
+<p>
+then:
+</p>
+
+<pre>
+→   → 
+a - b = (x₁-x₂, y₁-y₂)
+</pre>
+
+<p>
+Subtract corresponding components.
+</p>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find:
+</p>
+
+<pre>
+(7,5) - (3,2)
+</pre>
+
+<p><b>Step 1:</b> Subtract the x-components.</p>
+
+<pre>
+7 - 3 = 4
+</pre>
+
+<p><b>Step 2:</b> Subtract the y-components.</p>
+
+<pre>
+5 - 2 = 3
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+(7,5) - (3,2) = (4,3)
+</pre>
+
+<h3>3. WORKED EXAMPLE 2: NEGATIVE COMPONENTS</h3>
+
+<p>
+Find:
+</p>
+
+<pre>
+(4,-3) - (-2,5)
+</pre>
+
+<p><b>Step 1:</b> Subtract the x-components.</p>
+
+<pre>
+4 - (-2)
+
+= 4 + 2
+
+= 6
+</pre>
+
+<p><b>Step 2:</b> Subtract the y-components.</p>
+
+<pre>
+-3 - 5
+
+= -8
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+(4,-3) - (-2,5)
+
+= (6,-8)
+</pre>
+
+<h3>4. WORKED EXAMPLE 3: USING THE OPPOSITE VECTOR</h3>
+
+<p>
+Find:
+</p>
+
+<pre>
+(6,4) - (2,7)
+</pre>
+
+<p>
+Instead of subtracting directly, find the opposite
+of <b>(2,7)</b>.
+</p>
+
+<pre>
+-(2,7) = (-2,-7)
+</pre>
+
+<p>
+Now add:
+</p>
+
+<pre>
+(6,4) + (-2,-7)
+
+= (4,-3)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+(6,4) - (2,7) = (4,-3)
+</pre>
+
+<p>
+This confirms:
+</p>
+
+<pre>
+→   →     →     →
+a - b = a + (-b)
+</pre>
+
+<h3>5. WORKED EXAMPLE 4: i AND j FORM</h3>
+
+<p>
+Given:
+</p>
+
+<pre>
+→
+a = 7i + 3j
+
+→
+b = 2i - 5j
+</pre>
+
+<p>
+Find <b>a - b</b>.
+</p>
+
+<p><b>Step 1:</b> Subtract the i-components.</p>
+
+<pre>
+7i - 2i = 5i
+</pre>
+
+<p><b>Step 2:</b> Subtract the j-components.</p>
+
+<pre>
+3j - (-5j)
+
+= 3j + 5j
+
+= 8j
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→   →
+a - b = 5i + 8j
+</pre>
+
+<h3>6. VECTOR SUBTRACTION USING POINTS</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+A(2,3)
+B(8,7)
+</pre>
+
+<p>
+Find <b>AB</b>.
+</p>
+
+<p>
+The vector from A to B is:
+</p>
+
+<pre>
+→     →     →
+AB = OB - OA
+</pre>
+
+<p>
+Substitute:
+</p>
+
+<pre>
+AB = (8,7) - (2,3)
+
+   = (8-2, 7-3)
+
+   = (6,4)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→
+AB = (6,4)
+</pre>
+
+<p>
+This shows why the rule for a vector from one point
+to another is <b>final position − initial position</b>.
+</p>
+
+<h3>7. ORDER MATTERS</h3>
+
+<p>
+Vector subtraction is <b>not</b> interchangeable.
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+a = (5,3)
+b = (2,1)
+</pre>
+
+<p>
+Then:
+</p>
+
+<pre>
+a - b
+
+= (5,3) - (2,1)
+
+= (3,2)
+</pre>
+
+<p>
+But:
+</p>
+
+<pre>
+b - a
+
+= (2,1) - (5,3)
+
+= (-3,-2)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+a - b ≠ b - a
+</pre>
+
+<p>
+In fact:
+</p>
+
+<pre>
+→     →
+b - a = -(a - b)
+</pre>
+
+<p>
+Reversing the order reverses the direction of the result.
+</p>
+
+<h3>8. THE KEY RULE</h3>
+
+<pre>
+→   → 
+a - b
+
+= (x₁-x₂, y₁-y₂)
+</pre>
+
+<p>
+or:
+</p>
+
+<pre>
+→   →     →     →
+a - b = a + (-b)
+</pre>
+
+<p>
+<b>Remember:</b> Subtract corresponding components,
+and be especially careful when subtracting negative numbers.
+</p>
+`,
+
+  [
+    {
+      q: "Find (8,6) - (3,2).",
+      hint: "Subtract the corresponding components.",
+      steps: [
+        "x-component: 8 - 3 = 5.",
+        "y-component: 6 - 2 = 4.",
+        "Therefore, (8,6) - (3,2) = (5,4)."
+      ],
+      ans: "(5,4)",
+      why: "Vector subtraction is performed component by component."
+    },
+
+    {
+      q: "Find (5,-2) - (-3,4).",
+      hint: "Remember that subtracting a negative number becomes addition.",
+      steps: [
+        "x-component: 5 - (-3) = 8.",
+        "y-component: -2 - 4 = -6.",
+        "Therefore, the result is (8,-6)."
+      ],
+      ans: "(8,-6)",
+      why: "Subtracting -3 is the same as adding 3."
+    },
+
+    {
+      q: "Given a = 6i + 4j and b = 2i - 3j, find a - b.",
+      hint: "Subtract the i-components and the j-components separately.",
+      steps: [
+        "i-components: 6 - 2 = 4.",
+        "j-components: 4 - (-3) = 7.",
+        "Therefore, a - b = 4i + 7j."
+      ],
+      ans: "4i + 7j",
+      why: "Corresponding vector components are subtracted."
+    },
+
+    {
+      q: "Given a = (7,4) and b = (2,1), find both a - b and b - a.",
+      hint: "Do not assume subtraction works the same way in reverse order.",
+      steps: [
+        "a - b = (7-2, 4-1) = (5,3).",
+        "b - a = (2-7, 1-4) = (-5,-3).",
+        "The two answers are opposites."
+      ],
+      ans: "a - b = (5,3), and b - a = (-5,-3).",
+      why: "Changing the order of vector subtraction reverses the direction of the result."
+    },
+
+    {
+      q: "A(3,2) and B(9,8). Find AB using vector subtraction.",
+      hint: "Use AB = OB - OA.",
+      steps: [
+        "OA = (3,2).",
+        "OB = (9,8).",
+        "AB = OB - OA.",
+        "AB = (9-3, 8-2).",
+        "AB = (6,6)."
+      ],
+      ans: "AB = (6,6)",
+      why: "The displacement from A to B is found by subtracting the initial position from the final position."
+    },
+
+    {
+      q: "If a = (4,7) and a - b = (1,3), find b.",
+      hint: "Rearrange the vector equation or use b = a - (a-b).",
+      steps: [
+        "a - b = (1,3).",
+        "Therefore, b = a - (1,3).",
+        "b = (4,7) - (1,3).",
+        "b = (3,4)."
+      ],
+      ans: "b = (3,4)",
+      why: "The missing vector can be found by rearranging the vector subtraction equation."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Magnitude of a Vector",
+
+  `
+<h2>Magnitude of a Vector</h2>
+
+<p>
+The <b>magnitude</b> of a vector is its size or length.
+</p>
+
+<p>
+If:
+</p>
+
+<pre>
+→
+a = (x,y)
+</pre>
+
+<p>
+then its magnitude is written:
+</p>
+
+<pre>
+→
+|a| = √(x² + y²)
+</pre>
+
+<p>
+This comes from the <b>Pythagorean theorem</b>.
+</p>
+
+<h3>1. WHY THE FORMULA WORKS</h3>
+
+<p>
+Suppose a vector is:
+</p>
+
+<pre>
+→
+a = (3,4)
+</pre>
+
+<p>
+The vector moves:
+</p>
+
+<pre>
+3 units horizontally
+4 units vertically
+</pre>
+
+<p>
+These form a right-angled triangle.
+The vector itself is the hypotenuse.
+</p>
+
+<pre>
+       4
+       |
+       |\
+       | \
+       |  \  |a|
+       |   \
+       |____\
+          3
+</pre>
+
+<p>
+Using Pythagoras:
+</p>
+
+<pre>
+|a|² = 3² + 4²
+
+|a|² = 9 + 16
+
+|a|² = 25
+
+|a| = √25
+
+|a| = 5
+</pre>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find the magnitude of:
+</p>
+
+<pre>
+→
+a = (6,8)
+</pre>
+
+<p><b>Step 1:</b> Use the formula.</p>
 
 <pre>
 |a| = √(x² + y²)
 </pre>
 
- Direction can be found using angle:
-<pre>
-θ = tan⁻¹(y/x)
-</pre>
-
----
-
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
-
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Find magnitude of (3,4)</p>
-<p><b>Step 1:</b> Square components → 3² = 9, 4² = 16</p>
-<p><b>Step 2:</b> Add → 9 + 16 = 25</p>
-<p><b>Step 3:</b> Square root → √25 = 5</p>
-<p><b>Final Answer:</b> 5</p>
-
-<br>
-
-<p><b>Example 2</b></p>
-<p><b>Question:</b> Find magnitude of (6,8)</p>
-<p><b>Step 1:</b> 6² = 36, 8² = 64</p>
-<p><b>Step 2:</b> Add → 100</p>
-<p><b>Step 3:</b> √100 = 10</p>
-<p><b>Final Answer:</b> 10</p>
-
-<br>
-
-<p><b>Example 3</b></p>
-<p><b>Question:</b> Find direction of vector (3,4)</p>
-<p><b>Step 1:</b> Use θ = tan⁻¹(y/x)</p>
-<p><b>Step 2:</b> θ = tan⁻¹(4/3)</p>
-<p><b>Step 3:</b> θ ≈ 53°</p>
-<p><b>Final Answer:</b> ≈ 53°</p>
-
----
-
-<h3> DIAGRAM</h3>
+<p><b>Step 2:</b> Substitute.</p>
 
 <pre>
-      ↑ y
-      |
-      |   • (x,y)
-      |  /
-      | /
-      |/ θ
-------•------------→ x
-     origin
+|a| = √(6² + 8²)
 </pre>
 
----
+<p><b>Step 3:</b> Square the components.</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Distance between two GPS points</li>
-<li>Speed calculation in physics</li>
-<li>Robotics movement length</li>
-</ul>
+<pre>
+= √(36 + 64)
+</pre>
 
----
+<p><b>Step 4:</b> Add.</p>
+
+<pre>
+= √100
+</pre>
+
+<p><b>Step 5:</b> Take the square root.</p>
+
+<pre>
+|a| = 10
+</pre>
+
+<h3>3. WORKED EXAMPLE 2: NEGATIVE COMPONENTS</h3>
+
+<p>
+Find the magnitude of:
+</p>
+
+<pre>
+→
+b = (-5,12)
+</pre>
+
+<p>
+Substitute into the formula:
+</p>
+
+<pre>
+|b| = √((-5)² + 12²)
+
+     = √(25 + 144)
+
+     = √169
+
+     = 13
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+|b| = 13
+</pre>
+
+<p>
+Notice that the negative sign disappears when the
+component is squared.
+</p>
+
+<h3>4. WORKED EXAMPLE 3: A VECTOR BETWEEN TWO POINTS</h3>
+
+<p>
+Find the distance between:
+</p>
+
+<pre>
+A(2,3)
+B(8,11)
+</pre>
+
+<p>
+First find vector AB.
+</p>
+
+<pre>
+AB = B - A
+
+   = (8-2, 11-3)
+
+   = (6,8)
+</pre>
+
+<p>
+The distance from A to B is the magnitude of AB.
+</p>
+
+<pre>
+|AB| = √(6² + 8²)
+
+     = √(36 + 64)
+
+     = √100
+
+     = 10
+</pre>
+
+<p>
+Therefore, the distance between A and B is:
+</p>
+
+<pre>
+10 units
+</pre>
+
+<h3>5. WORKED EXAMPLE 4: WHEN THE ANSWER IS NOT A WHOLE NUMBER</h3>
+
+<p>
+Find the magnitude of:
+</p>
+
+<pre>
+→
+c = (2,3)
+</pre>
+
+<p>
+Substitute:
+</p>
+
+<pre>
+|c| = √(2² + 3²)
+
+     = √(4 + 9)
+
+     = √13
+</pre>
+
+<p>
+So the exact answer is:
+</p>
+
+<pre>
+|c| = √13
+</pre>
+
+<p>
+If a decimal answer is required:
+</p>
+
+<pre>
+√13 ≈ 3.61
+</pre>
+
+<h3>6. MAGNITUDE IS NEVER NEGATIVE</h3>
+
+<p>
+Magnitude represents a length.
+A length cannot be negative.
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+→        (-6,-8)
+a   =
+
+|a| = √((-6)² + (-8)²)
+
+    = √(36 + 64)
+
+    = √100
+
+    = 10
+</pre>
+
+<p>
+The vector has negative components, but its magnitude
+is still positive.
+</p>
+
+<h3>7. THE KEY RULE</h3>
+
+<pre>
+For:
+
+→
+a = (x,y)
+
+Magnitude:
+
+→
+|a| = √(x² + y²)
+</pre>
+
+<p>
+For a vector between two points:
+</p>
+
+<pre>
+A(x₁,y₁)
+B(x₂,y₂)
+
+→
+AB = (x₂-x₁, y₂-y₁)
+
+Therefore:
+
+|AB| = √[(x₂-x₁)² + (y₂-y₁)²]
+</pre>
+
+<p>
+<b>Remember:</b> Find the components first, square them,
+add them, then take the square root.
+</p>
 `,
 
   [
     {
-      "q": "Find magnitude of vector v = 3i - 4j",
-      "hint": "Pythagoras theorem",
-      "steps": [
-        "Step 1: Identify components: x = 3, y = -4",
-        "Step 2: Square each component: 3² = 9, (-4)² = 16",
-        "Step 3: Add the squares: 9 + 16 = 25",
-        "Step 4: Take square root of sum",
-        "Step 5: Final magnitude = √25"
+      q: "Find the magnitude of a = (3,4).",
+      hint: "Use |a| = √(x²+y²).",
+      steps: [
+        "|a| = √(3² + 4²).",
+        "|a| = √(9 + 16).",
+        "|a| = √25.",
+        "|a| = 5."
       ],
-      "ans": "5 units",
-      "why": "Magnitude is the length of vector, calculated using Pythagorean theorem"
+      ans: "5",
+      why: "The magnitude is the length of the vector."
     },
+
     {
-      "q": "Find direction angle of vector v = 1i + 1j",
-      "hint": "tan inverse",
-      "steps": [
-        "Step 1: Identify components: x = 1, y = 1",
-        "Step 2: Calculate tangent: tan(θ) = y/x = 1/1 = 1",
-        "Step 3: Use arctan to find angle",
-        "Step 4: θ = tan⁻¹(1)",
-        "Step 5: Final angle = 45°"
+      q: "Find the magnitude of b = (-8,6).",
+      hint: "Remember to square the negative component.",
+      steps: [
+        "|b| = √((-8)² + 6²).",
+        "|b| = √(64 + 36).",
+        "|b| = √100.",
+        "|b| = 10."
       ],
-      "ans": "45° or π/4 radians",
-      "why": "Direction angle shows orientation from positive x-axis"
+      ans: "10",
+      why: "Squaring removes the effect of the negative sign, because magnitude measures length."
     },
+
     {
-      "q": "What is magnitude of a vector that goes 3 units right and 4 units down?",
-      "hint": "direct Pythagorean application",
-      "steps": [
-        "Step 1: Interpret \"right\" as +x → 3",
-        "Step 2: Interpret \"down\" as -y → -4",
-        "Step 3: Square components: 3² = 9, (-4)² = 16",
-        "Step 4: Add squared values: 9 + 16 = 25",
-        "Step 5: Take square root"
+      q: "Find the magnitude of c = (5,12).",
+      hint: "Apply the Pythagorean relationship.",
+      steps: [
+        "|c| = √(5² + 12²).",
+        "|c| = √(25 + 144).",
+        "|c| = √169.",
+        "|c| = 13."
       ],
-      "ans": "5 units",
-      "why": "Same as Example 1, just phrased differently"
+      ans: "13",
+      why: "The magnitude is the hypotenuse of the right triangle formed by the vector components."
     },
+
     {
-      "q": "Why is magnitude always positive?",
-      "hint": "square root property",
-      "steps": [
-        "Step 1: Recall magnitude formula: √(x² + y²)",
-        "Step 2: x² and y² are always ≥ 0",
-        "Step 3: Their sum is also ≥ 0",
-        "Step 4: Square root of non-negative is always non-negative",
-        "Step 5: Therefore magnitude is always positive"
+      q: "Find the distance between A(1,2) and B(7,10).",
+      hint: "First find AB, then find its magnitude.",
+      steps: [
+        "AB = (7-1, 10-2).",
+        "AB = (6,8).",
+        "|AB| = √(6² + 8²).",
+        "|AB| = √100.",
+        "|AB| = 10."
       ],
-      "ans": "Because square roots of positive numbers are positive",
-      "why": "Mathematical definition ensures magnitude represents length"
+      ans: "10 units",
+      why: "The distance between two points is the magnitude of the vector joining them."
     },
+
     {
-      "q": "Find magnitude and direction of vector v = 2i + 2√3 j",
-      "hint": "special triangle 1:√3:2",
-      "steps": [
-        "Step 1: Identify components: x = 2, y = 2√3",
-        "Step 2: Square components: 2² = 4, (2√3)² = 12",
-        "Step 3: Add: 4 + 12 = 16",
-        "Step 4: Take square root: √16 = 4 (magnitude)",
-        "Step 5: Calculate angle: tan(θ) = 2√3 / 2 = √3",
-        "Step 6: θ = 60° (recognize 30-60-90 triangle)"
+      q: "Find the magnitude of a = (2,3), giving the exact answer.",
+      hint: "Do not round the square root unless asked.",
+      steps: [
+        "|a| = √(2² + 3²).",
+        "|a| = √(4 + 9).",
+        "|a| = √13."
       ],
-      "ans": "Magnitude = 4, Direction = 60°",
-      "why": "Components form a 30-60-90 triangle with sides 2, 2√3, and hypotenuse 4"
+      ans: "√13",
+      why: "√13 is the exact magnitude; a decimal approximation is only needed if requested."
     },
+
     {
-      "q": "If magnitude is 5 and direction is 0°, what is vector form?",
-      "hint": "cosine and sine",
-      "steps": [
-        "Step 1: Use formulas: x = |v|cos(θ), y = |v|sin(θ)",
-        "Step 2: Substitute values: x = 5cos(0°), y = 5sin(0°)",
-        "Step 3: Evaluate trigonometric functions: cos(0°) = 1, sin(0°) = 0",
-        "Step 4: Calculate components: x = 5×1 = 5, y = 5×0 = 0",
-        "Step 5: Write vector form"
+      q: "A vector has magnitude 5 and one component is 3. If the other component is positive, find the other component.",
+      hint: "Use |a|² = x² + y².",
+      steps: [
+        "Let the unknown component be y.",
+        "5² = 3² + y².",
+        "25 = 9 + y².",
+        "y² = 16.",
+        "y = 4 because the question says the component is positive."
       ],
-      "ans": "5i + 0j or 5i",
-      "why": "0° direction means vector points purely along positive x-axis"
+      ans: "4",
+      why: "The magnitude formula can also be rearranged to find an unknown component."
     }
   ]
 );
-
 add(
   "math",
   "vectors",
-  "Vector Addition and Subtraction",
+  "Unit Vector",
 
   `
-<h2> Vector Addition & Subtraction</h2>
+<h2>Unit Vector</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Vectors are added or subtracted by combining corresponding components.
+A <b>unit vector</b> is a vector whose magnitude is exactly
+<b>1</b>.
 </p>
 
 <pre>
-a = (x₁, y₁)
-b = (x₂, y₂)
-
-a + b = (x₁ + x₂, y₁ + y₂)
-a − b = (x₁ − x₂, y₁ − y₂)
+|unit vector| = 1
 </pre>
 
----
+<p>
+A unit vector is useful when we want to describe
+<b>direction without changing the size of the direction vector</b>.
+</p>
 
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
+<h3>1. THE MAIN RULE</h3>
 
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Add (2,3) + (4,5)</p>
-<p><b>Step 1:</b> Add x-components → 2 + 4 = 6</p>
-<p><b>Step 2:</b> Add y-components → 3 + 5 = 8</p>
-<p><b>Final Answer:</b> (6,8)</p>
-
-<br>
-
-<p><b>Example 2</b></p>
-<p><b>Question:</b> Subtract (7,1) − (2,3)</p>
-<p><b>Step 1:</b> Subtract x-components → 7 − 2 = 5</p>
-<p><b>Step 2:</b> Subtract y-components → 1 − 3 = −2</p>
-<p><b>Final Answer:</b> (5, −2)</p>
-
-<br>
-
-<p><b>Example 3</b></p>
-<p><b>Question:</b> Add (−3,6) + (3,−6)</p>
-<p><b>Step 1:</b> x-components → −3 + 3 = 0</p>
-<p><b>Step 2:</b> y-components → 6 − 6 = 0</p>
-<p><b>Final Answer:</b> (0,0) → zero vector</p>
-
----
-
-<h3> DIAGRAM</h3>
+<p>
+Suppose:
+</p>
 
 <pre>
-A →→→
-      ↘
-        A + B (resultant)
-      ↗
-B →→→
+→
+a = (x,y)
 </pre>
 
----
+<p>
+First find its magnitude:
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Wind + airplane direction</li>
-<li>Force combination in physics</li>
-<li>Navigation systems</li>
-</ul>
+<pre>
+→
+|a| = √(x²+y²)
+</pre>
 
----
+<p>
+Then the unit vector in the direction of <b>a</b> is:
+</p>
+
+<pre>
+→
+a
+──────
+|a|
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+Unit vector = vector ÷ magnitude
+</pre>
+
+<h3>2. WORKED EXAMPLE 1</h3>
+
+<p>
+Find the unit vector in the direction of:
+</p>
+
+<pre>
+→
+a = (3,4)
+</pre>
+
+<p><b>Step 1: Find the magnitude.</b></p>
+
+<pre>
+|a| = √(3²+4²)
+
+    = √(9+16)
+
+    = √25
+
+    = 5
+</pre>
+
+<p><b>Step 2: Divide the vector by its magnitude.</b></p>
+
+<pre>
+Unit vector = (3,4)/5
+</pre>
+
+<p><b>Step 3: Divide each component by 5.</b></p>
+
+<pre>
+Unit vector = (3/5,4/5)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→
+(3/5,4/5)
+</pre>
+
+<p>
+Check its magnitude:
+</p>
+
+<pre>
+√[(3/5)²+(4/5)²]
+
+= √(9/25+16/25)
+
+= √(25/25)
+
+= √1
+
+= 1
+</pre>
+
+<h3>3. WORKED EXAMPLE 2</h3>
+
+<p>
+Find the unit vector in the direction of:
+</p>
+
+<pre>
+→
+b = (6,8)
+</pre>
+
+<p><b>Step 1: Find the magnitude.</b></p>
+
+<pre>
+|b| = √(6²+8²)
+
+    = √(36+64)
+
+    = √100
+
+    = 10
+</pre>
+
+<p><b>Step 2: Divide by the magnitude.</b></p>
+
+<pre>
+Unit vector = (6,8)/10
+</pre>
+
+<p><b>Step 3: Simplify.</b></p>
+
+<pre>
+Unit vector = (3/5,4/5)
+</pre>
+
+<p>
+Notice something important:
+</p>
+
+<pre>
+(3,4) → (3/5,4/5)
+
+(6,8) → (3/5,4/5)
+</pre>
+
+<p>
+Both vectors point in the same direction, so they have
+the same unit vector.
+</p>
+
+<h3>4. WORKED EXAMPLE 3: NEGATIVE COMPONENTS</h3>
+
+<p>
+Find the unit vector in the direction of:
+</p>
+
+<pre>
+→
+c = (-5,12)
+</pre>
+
+<p><b>Step 1: Find the magnitude.</b></p>
+
+<pre>
+|c| = √[(-5)²+12²]
+
+    = √(25+144)
+
+    = √169
+
+    = 13
+</pre>
+
+<p><b>Step 2: Divide each component by 13.</b></p>
+
+<pre>
+Unit vector = (-5/13,12/13)
+</pre>
+
+<p>
+The negative sign remains because the unit vector must
+point in the same direction as the original vector.
+</p>
+
+<h3>5. UNIT VECTORS i AND j</h3>
+
+<p>
+The standard unit vectors along the coordinate axes are:
+</p>
+
+<pre>
+i = (1,0)
+
+j = (0,1)
+</pre>
+
+<p>
+Their magnitudes are:
+</p>
+
+<pre>
+|i| = √(1²+0²)
+   = 1
+
+|j| = √(0²+1²)
+   = 1
+</pre>
+
+<p>
+Therefore, both <b>i</b> and <b>j</b> are unit vectors.
+</p>
+
+<h3>6. WRITING A VECTOR USING ITS UNIT VECTOR</h3>
+
+<p>
+Suppose:
+</p>
+
+<pre>
+→
+a = (3,4)
+</pre>
+
+<p>
+Its magnitude is 5 and its unit vector is:
+</p>
+
+<pre>
+(3/5,4/5)
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+→
+a = 5(3/5,4/5)
+</pre>
+
+<p>
+This means:
+</p>
+
+<pre>
+Vector = magnitude × unit vector
+</pre>
+
+<p>
+So:
+</p>
+
+<pre>
+→
+a = |a| × unit vector
+</pre>
+
+<h3>7. THE KEY RULE</h3>
+
+<pre>
+For a non-zero vector:
+
+→
+a
+
+Unit vector = ────
+              |a|
+
+where:
+
+→
+|a| = √(x²+y²)
+</pre>
+
+<p>
+<b>Remember:</b> To turn a vector into a unit vector,
+divide every component by the vector's magnitude.
+</p>
 `,
 
   [
     {
-      "q": "Add vectors (3,4) + (1,2)",
-      "hint": "add x and y separately",
-      "steps": [
-        "Step 1: Add x-components: 3 + 1",
-        "Step 2: Add y-components: 4 + 2",
-        "Step 3: Combine results"
+      q: "Find the unit vector in the direction of a = (3,4).",
+      hint: "First find the magnitude of a.",
+      steps: [
+        "|a| = √(3²+4²) = 5.",
+        "Divide each component by 5.",
+        "Unit vector = (3/5,4/5)."
       ],
-      "ans": "(4, 6)",
-      "why": "Vector addition combines corresponding components"
+      ans: "(3/5,4/5)",
+      why: "Dividing a vector by its magnitude gives a vector of magnitude 1 in the same direction."
     },
+
     {
-      "q": "Subtract vectors (6,8) - (2,3)",
-      "hint": "subtract components",
-      "steps": [
-        "Step 1: Subtract x-components: 6 - 2",
-        "Step 2: Subtract y-components: 8 - 3",
-        "Step 3: Combine results"
+      q: "Find the unit vector in the direction of b = (5,12).",
+      hint: "Find √(5²+12²) first.",
+      steps: [
+        "|b| = √(25+144).",
+        "|b| = √169 = 13.",
+        "Divide both components by 13.",
+        "Unit vector = (5/13,12/13)."
       ],
-      "ans": "(4, 5)",
-      "why": "Subtraction works same way as addition but with minus signs"
+      ans: "(5/13,12/13)",
+      why: "The vector is divided by its magnitude."
     },
+
     {
-      "q": "Find resultant of (2i + 3j) + (4i - 2j)",
-      "hint": "group i and j",
-      "steps": [
-        "Step 1: Combine i terms: 2i + 4i",
-        "Step 2: Combine j terms: 3j - 2j",
-        "Step 3: Write final vector"
+      q: "Find the unit vector in the direction of c = (-8,6).",
+      hint: "The negative sign must remain on the x-component.",
+      steps: [
+        "|c| = √[(-8)²+6²].",
+        "|c| = √(64+36) = 10.",
+        "Divide each component by 10.",
+        "Unit vector = (-8/10,6/10).",
+        "Simplify to (-4/5,3/5)."
       ],
-      "ans": "6i + 1j or 6i + j",
-      "why": "Like terms are added together just like regular algebra"
+      ans: "(-4/5,3/5)",
+      why: "The unit vector keeps the original direction, including the negative x-component."
     },
+
     {
-      "q": "Subtract vectors in i,j form: (8i - 3j) - (4i + 5j)",
-      "hint": "distribute negative",
-      "steps": [
-        "Step 1: Expand: 8i - 3j - 4i - 5j",
-        "Step 2: Group i terms: 8i - 4i",
-        "Step 3: Group j terms: -3j - 5j",
-        "Step 4: Simplify"
+      q: "Find the magnitude of the vector (6/10,8/10). Is it a unit vector?",
+      hint: "A unit vector must have magnitude exactly 1.",
+      steps: [
+        "|a| = √[(6/10)²+(8/10)²].",
+        "|a| = √(36/100+64/100).",
+        "|a| = √(100/100).",
+        "|a| = √1 = 1."
       ],
-      "ans": "4i - 8j",
-      "why": "Distributing the subtraction changes signs of second vector"
+      ans: "Its magnitude is 1, so it is a unit vector.",
+      why: "A vector is a unit vector precisely when its magnitude is 1."
     },
+
     {
-      "q": "Add three vectors: (1,1) + (2,2) + (3,3)",
-      "hint": "add all x, all y",
-      "steps": [
-        "Step 1: Add all x-components: 1 + 2 + 3",
-        "Step 2: Add all y-components: 1 + 2 + 3",
-        "Step 3: Combine"
+      q: "Find the unit vector in the direction of a = 4i + 3j.",
+      hint: "Treat 4i + 3j as the vector (4,3).",
+      steps: [
+        "|a| = √(4²+3²).",
+        "|a| = √25 = 5.",
+        "Divide each component by 5.",
+        "Unit vector = (4/5,3/5).",
+        "Therefore, the unit vector is 4/5 i + 3/5 j."
       ],
-      "ans": "(6,6)",
-      "why": "Can add any number of vectors by summing components"
+      ans: "4/5 i + 3/5 j",
+      why: "The vector is divided by its magnitude while keeping its direction."
     },
+
     {
-      "q": "If v = (x,y), what is v - v?",
-      "hint": "same vector subtracted from itself",
-      "steps": [
-        "Step 1: Set up subtraction: (x-x, y-y)",
-        "Step 2: Simplify components"
+      q: "A vector has magnitude 10 and points in the direction of (6,8). Find the vector itself.",
+      hint: "First find the unit vector in the direction of (6,8), then multiply it by 10.",
+      steps: [
+        "The magnitude of (6,8) is 10.",
+        "Therefore its unit vector is (6/10,8/10) = (3/5,4/5).",
+        "Multiply the unit vector by the required magnitude 10.",
+        "10(3/5,4/5) = (6,8)."
       ],
-      "ans": "(0,0)",
-      "why": "Any vector subtracted from itself equals zero vector"
+      ans: "(6,8)",
+      why: "A vector can be reconstructed by multiplying its unit direction vector by its magnitude."
     }
   ]
 );
-
 add(
   "math",
   "vectors",
-  "Dot Product (Scalar Product)",
+  "Midpoint Using Vectors",
 
   `
-<h2> Dot Product</h2>
+<h2>Midpoint Using Vectors</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Dot product gives a SCALAR (single number), not a vector.
-It measures how much two vectors align with each other.
+The <b>midpoint</b> of a line segment is the point exactly halfway between its two endpoints.
 </p>
 
-<pre>
-a · b = x₁x₂ + y₁y₂
-</pre>
+<p>
+If the position vectors of A and B are
+<b>a</b> and <b>b</b>, then the position vector of their midpoint M is:
+</p>
 
- If result is:
-<ul>
-<li>Positive → vectors point in similar direction</li>
-<li>Zero → vectors are perpendicular</li>
-<li>Negative → vectors point in opposite directions</li>
-</ul>
+<p style="text-align:center;">
+<b>OM = (a + b) / 2</b>
+</p>
 
----
+<p>
+In coordinates, if
+<b>A(x₁, y₁)</b> and <b>B(x₂, y₂)</b>, then:
+</p>
 
-<h3> WORKED EXAMPLES (STEP-BY-STEP)</h3>
+<p style="text-align:center;">
+<b>M = ((x₁ + x₂)/2, (y₁ + y₂)/2)</b>
+</p>
 
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Find (1,2) · (3,4)</p>
-<p><b>Step 1:</b> Multiply components → (1×3) + (2×4)</p>
-<p><b>Step 2:</b> 3 + 8 = 11</p>
-<p><b>Final Answer:</b> 11</p>
+<h3>Example 1: Midpoint of Two Points</h3>
 
-<br>
+<p>
+Find the midpoint of A(2, 4) and B(8, 10).
+</p>
 
-<p><b>Example 2</b></p>
-<p><b>Question:</b> Find (2,0) · (5,1)</p>
-<p><b>Step 1:</b> (2×5) + (0×1)</p>
-<p><b>Step 2:</b> 10 + 0 = 10</p>
-<p><b>Final Answer:</b> 10</p>
+<p>
+Step 1: Add the x-coordinates:
+</p>
 
-<br>
+<p>
+2 + 8 = 10
+</p>
 
-<p><b>Example 3</b></p>
-<p><b>Question:</b> Are vectors (1,2) and (2,-1) perpendicular?</p>
-<p><b>Step 1:</b> Compute dot product</p>
-<p>(1×2) + (2×-1) = 2 - 2 = 0</p>
-<p><b>Step 2:</b> Dot product = 0</p>
-<p><b>Final Answer:</b> Yes, they are perpendicular</p>
+<p>
+Step 2: Add the y-coordinates:
+</p>
 
----
+<p>
+4 + 10 = 14
+</p>
 
-<h3> DIAGRAM</h3>
+<p>
+Step 3: Divide both by 2:
+</p>
 
-<pre>
-Vector A →→
-Vector B ↗
+<p>
+M = (10/2, 14/2)
+</p>
 
-Dot product measures overlap (projection)
-</pre>
+<p>
+<b>M = (5, 7)</b>
+</p>
 
----
+<h3>Example 2: Negative Coordinates</h3>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Physics: work done = force × distance</li>
-<li>AI: similarity between data points</li>
-<li>Graphics: lighting and shading</li>
-</ul>
+<p>
+Find the midpoint of P(-6, 4) and Q(2, -8).
+</p>
 
----
+<p>
+Step 1:
+</p>
+
+<p>
+x-coordinate = (-6 + 2)/2 = -4/2 = -2
+</p>
+
+<p>
+Step 2:
+</p>
+
+<p>
+y-coordinate = (4 + (-8))/2 = -4/2 = -2
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>M = (-2, -2)</b>
+</p>
+
+<h3>Example 3: Using Position Vectors</h3>
+
+<p>
+Suppose:
+</p>
+
+<p>
+<b>OA = 4i + 2j</b>
+</p>
+
+<p>
+and
+</p>
+
+<p>
+<b>OB = 10i + 8j</b>
+</p>
+
+<p>
+The midpoint M has position vector:
+</p>
+
+<p>
+OM = (OA + OB)/2
+</p>
+
+<p>
+OM = ((4i + 2j) + (10i + 8j))/2
+</p>
+
+<p>
+OM = (14i + 10j)/2
+</p>
+
+<p>
+<b>OM = 7i + 5j</b>
+</p>
+
+<h3>Example 4: Finding an Unknown Endpoint</h3>
+
+<p>
+The midpoint of A(2, 5) and B(x, 9) is M(6, 7).
+Find x.
+</p>
+
+<p>
+Use the x-coordinate of the midpoint:
+</p>
+
+<p>
+6 = (2 + x)/2
+</p>
+
+<p>
+Multiply both sides by 2:
+</p>
+
+<p>
+12 = 2 + x
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>x = 10</b>
+</p>
+
+<p>
+So B = <b>(10, 9)</b>.
+</p>
+
+<h3>Example 5: Finding the Missing Point</h3>
+
+<p>
+A(3, -2) and B are endpoints of a line.
+The midpoint is M(7, 4).
+Find B.
+</p>
+
+<p>
+For the x-coordinate:
+</p>
+
+<p>
+7 = (3 + x)/2
+</p>
+
+<p>
+14 = 3 + x
+</p>
+
+<p>
+<b>x = 11</b>
+</p>
+
+<p>
+For the y-coordinate:
+</p>
+
+<p>
+4 = (-2 + y)/2
+</p>
+
+<p>
+8 = -2 + y
+</p>
+
+<p>
+<b>y = 10</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>B = (11, 10)</b>
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+To find the midpoint, <b>add corresponding coordinates and divide by 2</b>.
+</p>
+
+<p style="text-align:center;">
+<b>M = ((x₁ + x₂)/2, (y₁ + y₂)/2)</b>
+</p>
 `,
 
   [
     {
-      "q": "Find dot product of (2,3) · (4,5)",
-      "hint": "multiply corresponding components then add",
-      "steps": [
-        "Step 1: Multiply x-components: 2 × 4",
-        "Step 2: Multiply y-components: 3 × 5",
-        "Step 3: Add the products",
-        "Step 4: Final result is scalar"
+      q: "Find the midpoint of A(4, 6) and B(10, 14).",
+      hint: "Add the corresponding coordinates, then divide each by 2.",
+      steps: [
+        "x = (4 + 10)/2 = 14/2 = 7",
+        "y = (6 + 14)/2 = 20/2 = 10",
+        "Therefore M = (7, 10)."
       ],
-      "ans": "23",
-      "why": "Dot product measures alignment of vectors"
+      ans: "(7, 10)",
+      why: "The midpoint is halfway between the two endpoints, so each coordinate is the average of the corresponding endpoint coordinates."
     },
+
     {
-      "q": "Are vectors (1,2) and (-2,1) perpendicular?",
-      "hint": "check if dot product is zero",
-      "steps": [
-        "Step 1: Compute dot product of (1,2) and (-2,1)",
-        "Step 2: (1×-2) + (2×1) = -2 + 2 = 0",
-        "Step 3: Result is 0, so they're perpendicular"
+      q: "Find the midpoint of P(-4, 8) and Q(6, -2).",
+      hint: "Be careful with the negative signs.",
+      steps: [
+        "x = (-4 + 6)/2 = 2/2 = 1",
+        "y = (8 + (-2))/2 = 6/2 = 3",
+        "Therefore M = (1, 3)."
       ],
-      "ans": "Yes",
-      "why": "Perpendicular vectors have zero dot product"
+      ans: "(1, 3)",
+      why: "The midpoint coordinates are the averages of the corresponding coordinates."
     },
+
     {
-      "q": "Calculate dot product for v = 3i - 4j and w = 4i + 3j",
-      "hint": "convert to coordinate form first",
-      "steps": [
-        "Step 1: Convert to coordinate form: v=(3,-4), w=(4,3)",
-        "Step 2: Multiply components: (3×4) + (-4×3)",
-        "Step 3: 12 - 12 = 0",
-        "Step 4: Final result is scalar"
+      q: "The position vectors of A and B are 2i + 6j and 8i + 10j respectively. Find the position vector of their midpoint.",
+      hint: "Use OM = (OA + OB)/2.",
+      steps: [
+        "OM = ((2i + 6j) + (8i + 10j))/2",
+        "OM = (10i + 16j)/2",
+        "OM = 5i + 8j"
       ],
-      "ans": "0",
-      "why": "Vectors are perpendicular (opposite directions)"
+      ans: "5i + 8j",
+      why: "The midpoint position vector is the average of the two endpoint position vectors."
     },
+
     {
-      "q": "How does dot product change if one vector is doubled?",
-      "hint": "multiply both components by 2",
-      "steps": [
-        "Step 1: Let original be (x,y)",
-        "Step 2: New vector is (2x, 2y)",
-        "Step 3: Dot product becomes x(2x) + y(2y) = 2(x²+y²)",
-        "Step 4: Result is doubled"
+      q: "The midpoint of A(4, 3) and B(x, 9) is M(7, 6). Find x.",
+      hint: "Use the x-coordinate equation.",
+      steps: [
+        "7 = (4 + x)/2",
+        "14 = 4 + x",
+        "x = 10"
       ],
-      "ans": "Doubles",
-      "why": "Linear property: a(u·v) = (au)·v"
+      ans: "10",
+      why: "The midpoint's x-coordinate is the average of the two endpoint x-coordinates."
     },
+
     {
-      "q": "Find dot product of zero vector (0,0) with any vector",
-      "hint": "multiply by zero",
-      "steps": [
-        "Step 1: Let vector be (x,y)",
-        "Step 2: Dot product is (0×x) + (0×y)",
-        "Step 3: 0 + 0 = 0",
-        "Step 4: Result is always zero"
+      q: "A(2, -5) and B are endpoints of a line segment. Its midpoint is M(8, 3). Find B.",
+      hint: "Find the missing x-coordinate and y-coordinate separately.",
+      steps: [
+        "8 = (2 + x)/2, so 16 = 2 + x, giving x = 14.",
+        "3 = (-5 + y)/2, so 6 = -5 + y, giving y = 11.",
+        "Therefore B = (14, 11)."
       ],
-      "ans": "0",
-      "why": "Zero vector has no magnitude, so dot product is always zero"
+      ans: "(14, 11)",
+      why: "The midpoint must be halfway between A and B in both the horizontal and vertical directions."
     },
+
     {
-      "q": "If a · b = 0, what is angle between vectors?",
-      "hint": "perpendicular condition",
-      "steps": [
-        "Step 1: Recall dot product formula: |a||b|cos(θ) = 0",
-        "Step 2: If |a| and |b| are nonzero, then cos(θ) must be 0",
-        "Step 3: cos(θ) = 0 when θ = 90° or 270°",
-        "Step 4: These correspond to perpendicular vectors"
+      q: "The position vectors of A and B are 6i - 4j and -2i + 8j. Find the position vector of their midpoint.",
+      hint: "Add the vectors first, then divide every component by 2.",
+      steps: [
+        "OM = ((6i - 4j) + (-2i + 8j))/2",
+        "OM = (4i + 4j)/2",
+        "OM = 2i + 2j"
       ],
-      "ans": "90° (or 270°)",
-      "why": "Zero dot product means vectors are perpendicular"
+      ans: "2i + 2j",
+      why: "The midpoint vector is the average of the two position vectors."
     }
   ]
 );
-
 add(
   "math",
   "vectors",
-  "Applications of Vectors",
+  "Section Formula Using Vectors",
 
   `
-<h2> Applications of Vectors</h2>
+<h2>Dividing a Line Segment in a Given Ratio</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Vectors represent quantities that have both magnitude and direction.
-They are essential in describing motion, forces, and spatial relationships.
+A point can divide a line segment into two parts in a specified ratio.
 </p>
 
----
+<p>
+If A and B have position vectors <b>a</b> and <b>b</b>, and point P divides AB internally in the ratio:
+</p>
 
-<h3> EXAMPLE SCENARIOS</h3>
+<p style="text-align:center;">
+<b>AP : PB = m : n</b>
+</p>
 
-<p><b>Example 1:</b> Plane flying north-east with wind effect</p>
-<p><b>Example 2:</b> Car moving on sloped road</p>
-<p><b>Example 3:</b> Force pushing object diagonally</p>
+<p>
+then the position vector of P is:
+</p>
 
----
+<p style="text-align:center;">
+<b>OP = (n a + m b)/(m + n)</b>
+</p>
 
-<h3> WORKED EXAMPLES</h3>
+<p>
+Notice that the coefficient of A is <b>n</b>, while the coefficient of B is <b>m</b>.
+</p>
 
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Why does a plane not move exactly in the direction it points?</p>
-<p><b>Step 1:</b> Wind adds another vector</p>
-<p><b>Step 2:</b> Combine plane velocity + wind velocity</p>
-<p><b>Final Answer:</b> Resultant vector determines actual direction</p>
+<h3>Example 1: Ratio 1 : 2</h3>
 
-<br>
+<p>
+A = (2, 3), B = (8, 9).
+Find P if:
+</p>
 
-<p><b>Example 2</b></p>
-<p><b>Question:</b> What happens when two forces act on an object?</p>
-<p><b>Step 1:</b> Represent forces as vectors</p>
-<p><b>Step 2:</b> Add vectors</p>
-<p><b>Final Answer:</b> Resultant force determines motion</p>
+<p>
+<b>AP : PB = 1 : 2</b>
+</p>
 
----
+<p>
+Use:
+</p>
 
-<h3> DIAGRAM</h3>
+<p>
+P = (2A + 1B)/(1 + 2)
+</p>
 
-<pre>
-Wind →→→
-Plane ↗ movement
-Result → diagonal path
-</pre>
+<p>
+P = (2(2,3) + (8,9))/3
+</p>
 
----
+<p>
+P = ((4,6) + (8,9))/3
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Aviation navigation</li>
-<li>Game physics engines</li>
-<li>Engineering force systems</li>
-</ul>
+<p>
+P = (12,15)/3
+</p>
 
----
+<p>
+<b>P = (4,5)</b>
+</p>
+
+<h3>Example 2: Ratio 2 : 1</h3>
+
+<p>
+A = (1, 2), B = (10, 8).
+Find P if:
+</p>
+
+<p>
+<b>AP : PB = 2 : 1</b>
+</p>
+
+<p>
+P = (1A + 2B)/(2 + 1)
+</p>
+
+<p>
+P = ((1,2) + 2(10,8))/3
+</p>
+
+<p>
+P = ((1,2) + (20,16))/3
+</p>
+
+<p>
+P = (21,18)/3
+</p>
+
+<p>
+<b>P = (7,6)</b>
+</p>
+
+<p>
+Because P is closer to B, its coordinates are pulled more toward B.
+</p>
+
+<h3>Example 3: Using Position Vectors</h3>
+
+<p>
+Suppose:
+</p>
+
+<p>
+OA = 3i + 2j
+</p>
+
+<p>
+OB = 9i + 8j
+</p>
+
+<p>
+P divides AB in the ratio:
+</p>
+
+<p>
+<b>AP : PB = 1 : 2</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+OP = (2OA + OB)/3
+</p>
+
+<p>
+OP = (2(3i + 2j) + (9i + 8j))/3
+</p>
+
+<p>
+OP = (6i + 4j + 9i + 8j)/3
+</p>
+
+<p>
+OP = (15i + 12j)/3
+</p>
+
+<p>
+<b>OP = 5i + 4j</b>
+</p>
+
+<h3>Example 4: Finding a Point That Divides a Line</h3>
+
+<p>
+A = (-2, 4) and B = (7, -5).
+Find P if:
+</p>
+
+<p>
+<b>AP : PB = 2 : 1</b>
+</p>
+
+<p>
+P = (1A + 2B)/3
+</p>
+
+<p>
+P = ((-2,4) + 2(7,-5))/3
+</p>
+
+<p>
+P = ((-2,4) + (14,-10))/3
+</p>
+
+<p>
+P = (12,-6)/3
+</p>
+
+<p>
+<b>P = (4,-2)</b>
+</p>
+
+<h3>Example 5: Checking the Ratio</h3>
+
+<p>
+A = (0,0), B = (12,6), and P = (4,2).
+</p>
+
+<p>
+Find the ratio AP : PB.
+</p>
+
+<p>
+First find AP:
+</p>
+
+<p>
+AP = (4,2) - (0,0) = (4,2)
+</p>
+
+<p>
+Then find PB:
+</p>
+
+<p>
+PB = (12,6) - (4,2) = (8,4)
+</p>
+
+<p>
+Since:
+</p>
+
+<p>
+(8,4) = 2(4,2)
+</p>
+
+<p>
+PB is twice AP.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>AP : PB = 1 : 2</b>
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+For:
+</p>
+
+<p style="text-align:center;">
+<b>AP : PB = m : n</b>
+</p>
+
+<p>
+the point P is:
+</p>
+
+<p style="text-align:center;">
+<b>P = (nA + mB)/(m + n)</b>
+</p>
+
+<p>
+The same formula works with coordinates or position vectors.
+</p>
 `,
 
   [
     {
-      "q": "How do you add two vectors (2i + 3j) + (4i + 5j)?",
-      "hint": "add like components",
-      "steps": [
-        "Step 1: Group i components → 2i + 4i",
-        "Step 2: Group j components → 3j + 5j",
-        "Step 3: Add i components → 6i",
-        "Step 4: Add j components → 8j",
-        "Step 5: Combine results"
+      q: "A(2, 4) and B(8, 10). Find P if AP : PB = 1 : 2.",
+      hint: "Use P = (2A + B)/3.",
+      steps: [
+        "P = (2(2,4) + (8,10))/3",
+        "P = ((4,8) + (8,10))/3",
+        "P = (12,18)/3",
+        "P = (4,6)"
       ],
-      "ans": "6i + 8j",
-      "why": "Vector addition is performed component-wise"
+      ans: "(4,6)",
+      why: "The ratio 1:2 means P is one-third of the way from A toward B."
     },
+
     {
-      "q": "How do you subtract vectors (6i + 7j) - (2i + 3j)?",
-      "hint": "distribute minus sign",
-      "steps": [
-        "Step 1: Expand subtraction → 6i + 7j - 2i - 3j",
-        "Step 2: Group i components → 6i - 2i",
-        "Step 3: Group j components → 7j - 3j",
-        "Step 4: Simplify components"
+      q: "A(-3, 2) and B(9, 8). Find P if AP : PB = 2 : 1.",
+      hint: "Use P = (A + 2B)/3.",
+      steps: [
+        "P = ((-3,2) + 2(9,8))/3",
+        "P = ((-3,2) + (18,16))/3",
+        "P = (15,18)/3",
+        "P = (5,6)"
       ],
-      "ans": "4i + 4j",
-      "why": "Subtraction is done component-wise after distributing minus"
+      ans: "(5,6)",
+      why: "For the ratio 2:1, P is closer to B, so B receives the larger weight."
     },
+
     {
-      "q": "Find resultant of vectors (5i + 2j) + (-3i + 6j)",
-      "hint": "combine components",
-      "steps": [
-        "Step 1: Add i components → 5 + (-3)",
-        "Step 2: Add j components → 2 + 6",
-        "Step 3: Simplify each component",
-        "Step 4: Write final vector"
+      q: "OA = 2i + 5j and OB = 8i + 11j. Find OP if AP : PB = 1 : 2.",
+      hint: "Use OP = (2OA + OB)/3.",
+      steps: [
+        "OP = (2(2i + 5j) + (8i + 11j))/3",
+        "OP = (4i + 10j + 8i + 11j)/3",
+        "OP = (12i + 21j)/3",
+        "OP = 4i + 7j"
       ],
-      "ans": "2i + 8j",
-      "why": "Resultant is obtained by adding corresponding components"
+      ans: "4i + 7j",
+      why: "The position vector of the dividing point is the weighted average of the two endpoint position vectors."
     },
+
     {
-      "q": "What is the zero vector in i and j form?",
-      "hint": "no magnitude",
-      "steps": [
-        "Step 1: Identify zero movement in x-direction → 0i",
-        "Step 2: Identify zero movement in y-direction → 0j",
-        "Step 3: Combine both components"
+      q: "A(1, 3) and B(11, 13). A point P divides AB in the ratio AP : PB = 3 : 2. Find P.",
+      hint: "Use P = (2A + 3B)/5.",
+      steps: [
+        "P = (2(1,3) + 3(11,13))/5",
+        "P = ((2,6) + (33,39))/5",
+        "P = (35,45)/5",
+        "P = (7,9)"
       ],
-      "ans": "0i + 0j",
-      "why": "Zero vector has no magnitude or direction"
+      ans: "(7,9)",
+      why: "The ratio 3:2 places P three-fifths of the way from A to B."
     },
+
     {
-      "q": "Find the resultant of (3i - 4j) and (-3i + 4j)",
-      "hint": "opposites cancel",
-      "steps": [
-        "Step 1: Add i components → 3 + (-3)",
-        "Step 2: Add j components → -4 + 4",
-        "Step 3: Simplify both results",
-        "Step 4: Write final vector"
+      q: "A(0,0), B(15,10), and P(6,4). What ratio does P divide AB in?",
+      hint: "Compare AP with PB.",
+      steps: [
+        "AP = (6,4) - (0,0) = (6,4)",
+        "PB = (15,10) - (6,4) = (9,6)",
+        "PB = (3/2)AP",
+        "Therefore AP : PB = 2 : 3"
       ],
-      "ans": "0i + 0j",
-      "why": "Opposite vectors cancel each other out completely"
+      ans: "2 : 3",
+      why: "The second section is 1.5 times the first, so the lengths are in the ratio 2:3."
+    },
+
+    {
+      q: "A(2, -1) and B(12, 9). Find P if AP : PB = 3 : 1.",
+      hint: "Use P = (A + 3B)/4.",
+      steps: [
+        "P = ((2,-1) + 3(12,9))/4",
+        "P = ((2,-1) + (36,27))/4",
+        "P = (38,26)/4",
+        "P = (19/2, 13/2)"
+      ],
+      ans: "(19/2, 13/2)",
+      why: "A ratio of 3:1 places P three-quarters of the way from A toward B."
     }
   ]
 );
-
 add(
   "math",
-  "limits",
-  "Concept of Limits",
+  "vectors",
+  "Section Formula Using Vectors",
 
   `
-<h2> Concept of Limits</h2>
+<h2>Dividing a Line Segment in a Given Ratio</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-A limit describes the value a function approaches as the input approaches a certain point.  
-The function does not always have to reach that value.
+A point can divide a line segment into two parts in a specified ratio.
 </p>
 
-<pre>
-lim x→a f(x) = L
-</pre>
+<p>
+If A and B have position vectors <b>a</b> and <b>b</b>, and point P divides AB internally in the ratio:
+</p>
 
- As x gets closer to a, f(x) gets closer to L.
+<p style="text-align:center;">
+<b>AP : PB = m : n</b>
+</p>
 
----
+<p>
+then the position vector of P is:
+</p>
 
-<h3> EXAMPLES (Exam Style)</h3>
+<p style="text-align:center;">
+<b>OP = (n a + m b)/(m + n)</b>
+</p>
 
-<p><b>Example 1:</b> f(x)=x+2, x→3 → 5</p>
-<p><b>Example 2:</b> f(x)=x², x→2 → 4</p>
-<p><b>Example 3:</b> f(x)=1/x, x→1 → 1</p>
+<p>
+Notice that the coefficient of A is <b>n</b>, while the coefficient of B is <b>m</b>.
+</p>
 
----
+<h3>Example 1: Ratio 1 : 2</h3>
 
-<h3> WORKED EXAMPLES</h3>
+<p>
+A = (2, 3), B = (8, 9).
+Find P if:
+</p>
 
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Find lim (x → 3) (x + 2)</p>
-<p><b>Step 1:</b> Substitute x = 3</p>
-<p><b>Step 2:</b> 3 + 2 = 5</p>
-<p><b>Final Answer:</b> 5</p>
+<p>
+<b>AP : PB = 1 : 2</b>
+</p>
 
-<br>
+<p>
+Use:
+</p>
 
-<p><b>Example 2</b></p>
-<p><b>Question:</b> Find lim (x → 2) x²</p>
-<p><b>Step 1:</b> Substitute x = 2</p>
-<p><b>Step 2:</b> 2² = 4</p>
-<p><b>Final Answer:</b> 4</p>
+<p>
+P = (2A + 1B)/(1 + 2)
+</p>
 
----
+<p>
+P = (2(2,3) + (8,9))/3
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Speed of a moving car at a precise instant</li>
-<li>Computer simulations (approximations)</li>
-<li>Physics: motion prediction before collision</li>
-</ul>
+<p>
+P = ((4,6) + (8,9))/3
+</p>
 
----
+<p>
+P = (12,15)/3
+</p>
+
+<p>
+<b>P = (4,5)</b>
+</p>
+
+<h3>Example 2: Ratio 2 : 1</h3>
+
+<p>
+A = (1, 2), B = (10, 8).
+Find P if:
+</p>
+
+<p>
+<b>AP : PB = 2 : 1</b>
+</p>
+
+<p>
+P = (1A + 2B)/(2 + 1)
+</p>
+
+<p>
+P = ((1,2) + 2(10,8))/3
+</p>
+
+<p>
+P = ((1,2) + (20,16))/3
+</p>
+
+<p>
+P = (21,18)/3
+</p>
+
+<p>
+<b>P = (7,6)</b>
+</p>
+
+<p>
+Because P is closer to B, its coordinates are pulled more toward B.
+</p>
+
+<h3>Example 3: Using Position Vectors</h3>
+
+<p>
+Suppose:
+</p>
+
+<p>
+OA = 3i + 2j
+</p>
+
+<p>
+OB = 9i + 8j
+</p>
+
+<p>
+P divides AB in the ratio:
+</p>
+
+<p>
+<b>AP : PB = 1 : 2</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+OP = (2OA + OB)/3
+</p>
+
+<p>
+OP = (2(3i + 2j) + (9i + 8j))/3
+</p>
+
+<p>
+OP = (6i + 4j + 9i + 8j)/3
+</p>
+
+<p>
+OP = (15i + 12j)/3
+</p>
+
+<p>
+<b>OP = 5i + 4j</b>
+</p>
+
+<h3>Example 4: Finding a Point That Divides a Line</h3>
+
+<p>
+A = (-2, 4) and B = (7, -5).
+Find P if:
+</p>
+
+<p>
+<b>AP : PB = 2 : 1</b>
+</p>
+
+<p>
+P = (1A + 2B)/3
+</p>
+
+<p>
+P = ((-2,4) + 2(7,-5))/3
+</p>
+
+<p>
+P = ((-2,4) + (14,-10))/3
+</p>
+
+<p>
+P = (12,-6)/3
+</p>
+
+<p>
+<b>P = (4,-2)</b>
+</p>
+
+<h3>Example 5: Checking the Ratio</h3>
+
+<p>
+A = (0,0), B = (12,6), and P = (4,2).
+</p>
+
+<p>
+Find the ratio AP : PB.
+</p>
+
+<p>
+First find AP:
+</p>
+
+<p>
+AP = (4,2) - (0,0) = (4,2)
+</p>
+
+<p>
+Then find PB:
+</p>
+
+<p>
+PB = (12,6) - (4,2) = (8,4)
+</p>
+
+<p>
+Since:
+</p>
+
+<p>
+(8,4) = 2(4,2)
+</p>
+
+<p>
+PB is twice AP.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>AP : PB = 1 : 2</b>
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+For:
+</p>
+
+<p style="text-align:center;">
+<b>AP : PB = m : n</b>
+</p>
+
+<p>
+the point P is:
+</p>
+
+<p style="text-align:center;">
+<b>P = (nA + mB)/(m + n)</b>
+</p>
+
+<p>
+The same formula works with coordinates or position vectors.
+</p>
 `,
 
   [
     {
-      "q": "Evaluate lim x→3 of (2x + 1)",
-      "hint": "direct substitution",
-      "steps": [
-        "Step 1: Identify the function f(x) = 2x + 1",
-        "Step 2: Substitute x = 3 into the expression",
-        "Step 3: Compute 2(3) + 1",
-        "Step 4: Simplify result"
+      q: "A(2, 4) and B(8, 10). Find P if AP : PB = 1 : 2.",
+      hint: "Use P = (2A + B)/3.",
+      steps: [
+        "P = (2(2,4) + (8,10))/3",
+        "P = ((4,8) + (8,10))/3",
+        "P = (12,18)/3",
+        "P = (4,6)"
       ],
-      "ans": "7",
-      "why": "Polynomials are continuous, so limit equals direct substitution"
+      ans: "(4,6)",
+      why: "The ratio 1:2 means P is one-third of the way from A toward B."
     },
+
     {
-      "q": "Evaluate lim x→5 of (x² - 9)",
-      "hint": "substitute directly",
-      "steps": [
-        "Step 1: Identify expression f(x) = x² - 9",
-        "Step 2: Substitute x = 5",
-        "Step 3: Compute 5² - 9",
-        "Step 4: Simplify result"
+      q: "A(-3, 2) and B(9, 8). Find P if AP : PB = 2 : 1.",
+      hint: "Use P = (A + 2B)/3.",
+      steps: [
+        "P = ((-3,2) + 2(9,8))/3",
+        "P = ((-3,2) + (18,16))/3",
+        "P = (15,18)/3",
+        "P = (5,6)"
       ],
-      "ans": "16",
-      "why": "Continuous functions allow direct substitution in limits"
+      ans: "(5,6)",
+      why: "For the ratio 2:1, P is closer to B, so B receives the larger weight."
     },
+
     {
-      "q": "Find lim x→2 of (3x - 4)",
-      "hint": "plug in value",
-      "steps": [
-        "Step 1: Write function f(x) = 3x - 4",
-        "Step 2: Substitute x = 2",
-        "Step 3: Compute 3(2) - 4",
-        "Step 4: Simplify"
+      q: "OA = 2i + 5j and OB = 8i + 11j. Find OP if AP : PB = 1 : 2.",
+      hint: "Use OP = (2OA + OB)/3.",
+      steps: [
+        "OP = (2(2i + 5j) + (8i + 11j))/3",
+        "OP = (4i + 10j + 8i + 11j)/3",
+        "OP = (12i + 21j)/3",
+        "OP = 4i + 7j"
       ],
-      "ans": "2",
-      "why": "Linear functions are continuous, so limit equals function value"
+      ans: "4i + 7j",
+      why: "The position vector of the dividing point is the weighted average of the two endpoint position vectors."
     },
+
     {
-      "q": "Find lim x→4 of (x² + 2x)",
-      "hint": "substitute x",
-      "steps": [
-        "Step 1: Identify function f(x) = x² + 2x",
-        "Step 2: Substitute x = 4",
-        "Step 3: Compute 4² + 2(4)",
-        "Step 4: Simplify expression"
+      q: "A(1, 3) and B(11, 13). A point P divides AB in the ratio AP : PB = 3 : 2. Find P.",
+      hint: "Use P = (2A + 3B)/5.",
+      steps: [
+        "P = (2(1,3) + 3(11,13))/5",
+        "P = ((2,6) + (33,39))/5",
+        "P = (35,45)/5",
+        "P = (7,9)"
       ],
-      "ans": "24",
-      "why": "Polynomials are continuous so direct substitution applies"
+      ans: "(7,9)",
+      why: "The ratio 3:2 places P three-fifths of the way from A to B."
     },
+
     {
-      "q": "Evaluate lim x→1 of (5x + 3)",
-      "hint": "direct substitution method",
-      "steps": [
-        "Step 1: Identify function f(x) = 5x + 3",
-        "Step 2: Substitute x = 1",
-        "Step 3: Compute 5(1) + 3",
-        "Step 4: Simplify"
+      q: "A(0,0), B(15,10), and P(6,4). What ratio does P divide AB in?",
+      hint: "Compare AP with PB.",
+      steps: [
+        "AP = (6,4) - (0,0) = (6,4)",
+        "PB = (15,10) - (6,4) = (9,6)",
+        "PB = (3/2)AP",
+        "Therefore AP : PB = 2 : 3"
       ],
-      "ans": "8",
-      "why": "Linear functions are continuous at all points"
+      ans: "2 : 3",
+      why: "The second section is 1.5 times the first, so the lengths are in the ratio 2:3."
+    },
+
+    {
+      q: "A(2, -1) and B(12, 9). Find P if AP : PB = 3 : 1.",
+      hint: "Use P = (A + 3B)/4.",
+      steps: [
+        "P = ((2,-1) + 3(12,9))/4",
+        "P = ((2,-1) + (36,27))/4",
+        "P = (38,26)/4",
+        "P = (19/2, 13/2)"
+      ],
+      ans: "(19/2, 13/2)",
+      why: "A ratio of 3:1 places P three-quarters of the way from A toward B."
     }
   ]
 );
-
 add(
   "math",
-  "limits",
-  "Left-Hand and Right-Hand Limits",
+  "vectors",
+  "Finding an Unknown Using Vector Equations",
 
   `
-<h2> Left-Hand & Right-Hand Limits</h2>
+<h2>Finding an Unknown Using Vector Equations</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Limits can be approached from two directions:
+A vector equation can contain an unknown number or unknown vector.
+We can find the unknown by comparing corresponding components.
 </p>
 
-<pre>
-lim x→a⁻ f(x) = left-hand limit  
-lim x→a⁺ f(x) = right-hand limit
-</pre>
+<p>
+The key idea is:
+</p>
 
- A limit exists only if both sides are equal.
-<h3> WORKED EXAMPLES (MATHEMATICAL CALCULATION FORMAT)</h3>
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Given lim x→a⁻ f(x) = 4 and lim x→a⁺ f(x) = 4, evaluate the limit.</p>
-<p><b>Step 1:</b> Let LHL = 4</p>
-<p><b>Step 2:</b> Let RHL = 4</p>
-<p><b>Step 3:</b> Compare LHL and RHL</p>
-<p><b>Step 4:</b> 4 = 4</p>
-<p><b>Step 5:</b> Since both sides are equal, limit exists</p>
-<p><b>Final Answer:</b> lim x→a f(x) = 4</p>
-<br>
-<p><b>Example 2</b></p>
-<p><b>Question:</b> Given lim x→a⁻ f(x) = 2 and lim x→a⁺ f(x) = 5, determine the limit.</p>
-<p><b>Step 1:</b> Let LHL = 2</p>
-<p><b>Step 2:</b> Let RHL = 5</p>
-<p><b>Step 3:</b> Compare values</p>
-<p><b>Step 4:</b> 2 ≠ 5</p>
-<p><b>Step 5:</b> Since LHL ≠ RHL, limit does not exist</p>
-<p><b>Final Answer:</b> Limit does not exist (DNE)</p>
-<br>
-<p><b>Example 3</b></p>
-<p><b>Question:</b> A function has a jump: left side = 7, right side = 3. Determine limit behavior.</p>
-<p><b>Step 1:</b> LHL = 7</p>
-<p><b>Step 2:</b> RHL = 3</p>
-<p><b>Step 3:</b> Compare values</p>
-<p><b>Step 4:</b> 7 ≠ 3</p>
-<p><b>Step 5:</b> No single approaching value exists</p>
-<p><b>Final Answer:</b> Limit does not exist due to discontinuity</p>
-<h3> DIAGRAM</h3>
+<p style="text-align:center;">
+<b>Equal vectors have equal corresponding components.</b>
+</p>
 
-<pre>
-   3 |      ● (right side)
-     |
-   5 |  ● (approach point)
-     |
-   7 |● (left side)
-</pre>
+<h3>Example 1: One Unknown Component</h3>
 
----
+<p>
+Given:
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Digital signals (on/off behavior)</li>
-<li>Traffic systems switching states</li>
-<li>Computer logic transitions</li>
-</ul>
+<p style="text-align:center;">
+(3, x) + (5, 4) = (8, 10)
+</p>
 
----
+<p>
+Add the vectors:
+</p>
+
+<p style="text-align:center;">
+(3 + 5, x + 4) = (8, 10)
+</p>
+
+<p>
+Compare the y-components:
+</p>
+
+<p>
+x + 4 = 10
+</p>
+
+<p>
+x = 6
+</p>
+
+<p>
+<b>Therefore x = 6.</b>
+</p>
+
+<h3>Example 2: Unknown in a Subtraction</h3>
+
+<p>
+Given:
+</p>
+
+<p style="text-align:center;">
+(x, 7) - (2, 3) = (5, 4)
+</p>
+
+<p>
+Subtract the vectors:
+</p>
+
+<p style="text-align:center;">
+(x - 2, 7 - 3) = (5, 4)
+</p>
+
+<p>
+Compare the x-components:
+</p>
+
+<p>
+x - 2 = 5
+</p>
+
+<p>
+x = 7
+</p>
+
+<p>
+Check the y-component:
+</p>
+
+<p>
+7 - 3 = 4
+</p>
+
+<p>
+The equation is correct.
+</p>
+
+<h3>Example 3: Unknown Vector</h3>
+
+<p>
+Given:
+</p>
+
+<p style="text-align:center;">
+a + (4, -2) = (10, 5)
+</p>
+
+<p>
+We want to find a.
+</p>
+
+<p>
+Subtract (4, -2) from both sides:
+</p>
+
+<p style="text-align:center;">
+a = (10,5) - (4,-2)
+</p>
+
+<p>
+Calculate each component:
+</p>
+
+<p>
+a = (10 - 4, 5 - (-2))
+</p>
+
+<p>
+a = (6, 7)
+</p>
+
+<p>
+<b>a = (6,7)</b>
+</p>
+
+<h3>Example 4: Unknown Scalar</h3>
+
+<p>
+Given:
+</p>
+
+<p style="text-align:center;">
+k(2,3) = (8,12)
+</p>
+
+<p>
+Multiply:
+</p>
+
+<p style="text-align:center;">
+(2k, 3k) = (8,12)
+</p>
+
+<p>
+Using the first component:
+</p>
+
+<p>
+2k = 8
+</p>
+
+<p>
+k = 4
+</p>
+
+<p>
+Check the second component:
+</p>
+
+<p>
+3(4) = 12
+</p>
+
+<p>
+So:
+</p>
+
+<p>
+<b>k = 4</b>
+</p>
+
+<h3>Example 5: Unknowns in Both Components</h3>
+
+<p>
+Given:
+</p>
+
+<p style="text-align:center;">
+(x, y) + (3, -4) = (9, 6)
+</p>
+
+<p>
+Compare the x-components:
+</p>
+
+<p>
+x + 3 = 9
+</p>
+
+<p>
+<b>x = 6</b>
+</p>
+
+<p>
+Compare the y-components:
+</p>
+
+<p>
+y - 4 = 6
+</p>
+
+<p>
+<b>y = 10</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>(x,y) = (6,10)</b>
+</p>
+
+<h3>Example 6: Vector Equation in i and j Form</h3>
+
+<p>
+Given:
+</p>
+
+<p style="text-align:center;">
+(2x + 1)i + (y - 3)j = 7i + 5j
+</p>
+
+<p>
+Equal vectors have equal components.
+</p>
+
+<p>
+Compare the i-components:
+</p>
+
+<p>
+2x + 1 = 7
+</p>
+
+<p>
+2x = 6
+</p>
+
+<p>
+<b>x = 3</b>
+</p>
+
+<p>
+Compare the j-components:
+</p>
+
+<p>
+y - 3 = 5
+</p>
+
+<p>
+<b>y = 8</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>x = 3 and y = 8.</b>
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+When two vectors are equal:
+</p>
+
+<p style="text-align:center;">
+<b>(a,b) = (c,d)</b>
+</p>
+
+<p>
+then:
+</p>
+
+<p style="text-align:center;">
+<b>a = c</b>
+</p>
+
+<p style="text-align:center;">
+<b>b = d</b>
+</p>
+
+<p>
+So, to solve a vector equation, compare the horizontal components separately from the vertical components.
+</p>
 `,
 
   [
     {
-      "q": "Find lim x→2 of (3x + 1) using one-sided limits",
-      "hint": "check both sides",
-      "steps": [
-        "Step 1: Compute lim x→2⁻ (3x + 1)",
-        "Step 2: Substitute x = 2 → 3(2) + 1",
-        "Step 3: Compute left-hand limit = 7",
-        "Step 4: Compute lim x→2⁺ (3x + 1)",
-        "Step 5: Substitute x = 2 → 3(2) + 1 = 7",
-        "Step 6: Compare both sides"
+      q: "(4, x) + (3, 5) = (7, 12). Find x.",
+      hint: "Compare the y-components.",
+      steps: [
+        "x + 5 = 12",
+        "x = 7"
       ],
-      "ans": "7",
-      "why": "Both one-sided limits are equal, so limit exists"
+      ans: "7",
+      why: "Equal vectors must have equal corresponding components."
     },
+
     {
-      "q": "Determine if lim x→1 exists for f(x) = {2x if x<1, x+1 if x>1}",
-      "hint": "piecewise function",
-      "steps": [
-        "Step 1: Compute left-hand limit → 2(1) = 2",
-        "Step 2: Compute right-hand limit → 1 + 1 = 2",
-        "Step 3: Compare LHL and RHL",
-        "Step 4: Check equality condition"
+      q: "(x, 8) - (3, 2) = (5, 6). Find x.",
+      hint: "Compare the x-components.",
+      steps: [
+        "x - 3 = 5",
+        "x = 8"
       ],
-      "ans": "Limit exists and equals 2",
-      "why": "Both sides give same approaching value"
+      ans: "8",
+      why: "The horizontal components must be equal."
     },
+
     {
-      "q": "Find lim x→4 of f(x) = {x² if x<4, 10 if x>4}",
-      "hint": "check discontinuity",
-      "steps": [
-        "Step 1: Compute LHL → 4² = 16",
-        "Step 2: Compute RHL → 10",
-        "Step 3: Compare 16 and 10",
-        "Step 4: Check equality condition"
+      q: "a + (5, -3) = (12, 4). Find vector a.",
+      hint: "Subtract (5, -3) from (12, 4).",
+      steps: [
+        "a = (12,4) - (5,-3)",
+        "a = (12 - 5, 4 - (-3))",
+        "a = (7,7)"
       ],
-      "ans": "Limit does not exist",
-      "why": "Left and right limits are not equal"
+      ans: "(7,7)",
+      why: "The unknown vector is what remains after removing the known vector from the resultant."
     },
+
     {
-      "q": "Find lim x→0 of (x² + 5x) using substitution check",
-      "hint": "approach from both sides",
-      "steps": [
-        "Step 1: Compute lim x→0⁻ (x² + 5x)",
-        "Step 2: Substitute values close to 0 → result approaches 0",
-        "Step 3: Compute lim x→0⁺ (x² + 5x)",
-        "Step 4: Substitute values close to 0 → result approaches 0",
-        "Step 5: Compare both sides"
+      q: "k(3, 4) = (15, 20). Find k.",
+      hint: "Compare either component.",
+      steps: [
+        "3k = 15",
+        "k = 5",
+        "Check: 4(5) = 20"
       ],
-      "ans": "0",
-      "why": "Both sides approach same value"
+      ans: "5",
+      why: "Scalar multiplication multiplies every component by the same scalar."
     },
+
     {
-      "q": "Evaluate lim x→3 of (x² - 9)/(x - 3)",
-      "hint": "factorization needed",
-      "steps": [
-        "Step 1: Factor numerator → (x - 3)(x + 3)",
-        "Step 2: Simplify expression → cancel (x - 3)",
-        "Step 3: New expression becomes (x + 3)",
-        "Step 4: Substitute x = 3",
-        "Step 5: Compute 3 + 3"
+      q: "(x, y) + (4, -2) = (11, 7). Find x and y.",
+      hint: "Compare the two components separately.",
+      steps: [
+        "x + 4 = 11, so x = 7",
+        "y - 2 = 7, so y = 9"
       ],
-      "ans": "6",
-      "why": "After simplification, direct substitution is possible"
+      ans: "x = 7, y = 9",
+      why: "The horizontal and vertical components form two separate equations."
     },
+
     {
-      "q": "Check if lim x→2 exists for f(x) = {x+2 if x<2, 5 if x>2}",
-      "hint": "compare LHL and RHL",
-      "steps": [
-        "Step 1: Compute LHL → 2 + 2 = 4",
-        "Step 2: Compute RHL → 5",
-        "Step 3: Compare 4 and 5",
-        "Step 4: Determine continuity"
+      q: "(2x - 1)i + (y + 4)j = 9i + 10j. Find x and y.",
+      hint: "Compare the coefficients of i and j.",
+      steps: [
+        "2x - 1 = 9",
+        "2x = 10",
+        "x = 5",
+        "y + 4 = 10",
+        "y = 6"
       ],
-      "ans": "Limit does not exist",
-      "why": "Left and right limits are different"
+      ans: "x = 5, y = 6",
+      why: "Equal vectors written in i and j form have equal coefficients of i and equal coefficients of j."
     }
   ]
 );
-
 add(
   "math",
-  "limits",
-  "Indeterminate Forms",
+  "vectors",
+  "Geometric Vector Problems",
 
   `
-<h2> Indeterminate Forms</h2>
+<h2>Geometric Vector Problems</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Indeterminate forms occur when direct substitution in limits gives unclear or undefined results.
+Vectors can describe the sides and movements inside geometric figures.
+The main skill here is to use known vectors to find an unknown side or diagonal.
 </p>
 
-<pre>
-0/0, ∞/∞, ∞ - ∞
-</pre>
+<h3>Example 1: Triangle</h3>
 
- These do not give a final answer directly and require simplification.
+<p>
+Suppose a triangle has points A, B and C.
+</p>
 
----
+<p>
+Given:
+</p>
 
-<h3> EXAMPLES</h3>
+<p style="text-align:center;">
+<b>AB = (5,2)</b>
+</p>
 
-<p><b>Example 1:</b> (x² - 4)/(x - 2)</p>
-<p><b>Example 2:</b> (x² - 1)/(x - 1)</p>
-<p><b>Example 3:</b> complex fraction simplification</p>
+<p style="text-align:center;">
+<b>AC = (8,6)</b>
+</p>
 
----
+<p>
+Find BC.
+</p>
 
-<h3> WORKED EXAMPLES</h3>
+<p>
+Traveling from B to C is the same as:
+</p>
 
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Evaluate lim (x → 2) (x² - 4)/(x - 2)</p>
-<p><b>Step 1:</b> Direct substitution → 0/0 (indeterminate)</p>
-<p><b>Step 2:</b> Factor numerator</p>
-<p>x² - 4 = (x - 2)(x + 2)</p>
-<p><b>Step 3:</b> Cancel (x - 2)</p>
-<p><b>Step 4:</b> Substitute x = 2</p>
-<p><b>Final Answer:</b> 4</p>
+<p>
+B → A → C
+</p>
 
-<br>
+<p>
+Therefore:
+</p>
 
-<p><b>Example 2</b></p>
-<p><b>Question:</b> Evaluate lim (x → 1) (x² - 1)/(x - 1)</p>
-<p><b>Step 1:</b> Direct substitution → 0/0</p>
-<p><b>Step 2:</b> Factor numerator</p>
-<p>x² - 1 = (x - 1)(x + 1)</p>
-<p><b>Step 3:</b> Cancel (x - 1)</p>
-<p><b>Step 4:</b> Substitute x = 1</p>
-<p><b>Final Answer:</b> 2</p>
+<p>
+BC = BA + AC
+</p>
 
----
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Physics near-zero calculations</li>
-<li>Computer numerical stability</li>
-<li>Engineering system limits</li>
-</ul>
+<p>
+Since:
+</p>
 
----
+<p>
+BA = -AB = (-5,-2)
+</p>
+
+<p>
+Then:
+</p>
+
+<p>
+BC = (-5,-2) + (8,6)
+</p>
+
+<p>
+BC = (3,4)
+</p>
+
+<p>
+<b>BC = (3,4)</b>
+</p>
+
+<h3>Example 2: Parallelogram</h3>
+
+<p>
+In parallelogram ABCD, suppose:
+</p>
+
+<p style="text-align:center;">
+<b>AB = (6,2)</b>
+</p>
+
+<p style="text-align:center;">
+<b>AD = (3,5)</b>
+</p>
+
+<p>
+Opposite sides of a parallelogram are equal and parallel.
+Therefore:
+</p>
+
+<p>
+<b>DC = AB = (6,2)</b>
+</p>
+
+<p>
+and:
+</p>
+
+<p>
+<b>BC = AD = (3,5)</b>
+</p>
+
+<p>
+To find the diagonal AC:
+</p>
+
+<p>
+AC = AB + BC
+</p>
+
+<p>
+AC = (6,2) + (3,5)
+</p>
+
+<p>
+<b>AC = (9,7)</b>
+</p>
+
+<h3>Example 3: Finding a Missing Side of a Triangle</h3>
+
+<p>
+In triangle ABC:
+</p>
+
+<p>
+<b>AB = (4,7)</b>
+</p>
+
+<p>
+<b>BC = (6,-2)</b>
+</p>
+
+<p>
+Find AC.
+</p>
+
+<p>
+First find the vector from A to C:
+</p>
+
+<p>
+AC = AB + BC
+</p>
+
+<p>
+AC = (4,7) + (6,-2)
+</p>
+
+<p>
+AC = (10,5)
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>AC = (10,5)</b>
+</p>
+
+<h3>Example 4: A Closed Triangle</h3>
+
+<p>
+Suppose:
+</p>
+
+<p>
+<b>AB = (7,3)</b>
+</p>
+
+<p>
+<b>BC = (-2,5)</b>
+</p>
+
+<p>
+Find CA.
+</p>
+
+<p>
+A complete trip around a triangle returns to the starting point.
+Therefore:
+</p>
+
+<p style="text-align:center;">
+<b>AB + BC + CA = (0,0)</b>
+</p>
+
+<p>
+Substitute the known vectors:
+</p>
+
+<p>
+(7,3) + (-2,5) + CA = (0,0)
+</p>
+
+<p>
+First add the known vectors:
+</p>
+
+<p>
+(7,3) + (-2,5) = (5,8)
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+(5,8) + CA = (0,0)
+</p>
+
+<p>
+CA = (-5,-8)
+</p>
+
+<p>
+<b>CA = (-5,-8)</b>
+</p>
+
+<h3>Example 5: Finding a Vertex of a Parallelogram</h3>
+
+<p>
+Three vertices of a parallelogram are:
+</p>
+
+<p>
+A(1,2), B(6,4), and D(3,7).
+</p>
+
+<p>
+Find C.
+</p>
+
+<p>
+The two sides from A are:
+</p>
+
+<p>
+AB = (6,4) - (1,2)
+</p>
+
+<p>
+AB = (5,2)
+</p>
+
+<p>
+AD = (3,7) - (1,2)
+</p>
+
+<p>
+AD = (2,5)
+</p>
+
+<p>
+Since:
+</p>
+
+<p>
+AC = AB + AD
+</p>
+
+<p>
+AC = (5,2) + (2,5)
+</p>
+
+<p>
+AC = (7,7)
+</p>
+
+<p>
+Starting from A:
+</p>
+
+<p>
+C = A + AC
+</p>
+
+<p>
+C = (1,2) + (7,7)
+</p>
+
+<p>
+<b>C = (8,9)</b>
+</p>
+
+<h3>Key Idea</h3>
+
+<p>
+For geometric vector problems, think about the <b>route</b> between two points.
+</p>
+
+<p>
+If:
+</p>
+
+<p>
+A → B → C
+</p>
+
+<p>
+then:
+</p>
+
+<p style="text-align:center;">
+<b>AC = AB + BC</b>
+</p>
+
+<p>
+If a path goes in the opposite direction, reverse the vector:
+</p>
+
+<p style="text-align:center;">
+<b>BA = -AB</b>
+</p>
+
+<p>
+For a closed triangle:
+</p>
+
+<p style="text-align:center;">
+<b>AB + BC + CA = (0,0)</b>
+</p>
 `,
 
   [
     {
-      "q": "Evaluate lim (x → 2) (x² - 4)/(x - 2)",
-      "hint": "factor and cancel",
-      "steps": [
-        "Step 1: Substitute x = 2 → (4 - 4)/(0) = 0/0 (indeterminate form)",
-        "Step 2: Factor numerator → x² - 4 = (x - 2)(x + 2)",
-        "Step 3: Rewrite expression → [(x - 2)(x + 2)] / (x - 2)",
-        "Step 4: Cancel common factor (x - 2)",
-        "Step 5: Simplify → x + 2",
-        "Step 6: Substitute x = 2 → 2 + 2"
+      q: "In a triangle, AB = (4,3) and BC = (5,-1). Find AC.",
+      hint: "Travel from A to C through B.",
+      steps: [
+        "AC = AB + BC",
+        "AC = (4,3) + (5,-1)",
+        "AC = (9,2)"
       ],
-      "ans": "4",
-      "why": "Factoring removes the indeterminate form and reveals the simplified function"
+      ans: "(9,2)",
+      why: "Going from A to C can be done by going from A to B and then from B to C."
     },
+
     {
-      "q": "Evaluate lim (x → 1) (x² - 1)/(x - 1)",
-      "hint": "difference of squares",
-      "steps": [
-        "Step 1: Substitute x = 1 → (1 - 1)/(0) = 0/0",
-        "Step 2: Factor numerator → x² - 1 = (x - 1)(x + 1)",
-        "Step 3: Rewrite → [(x - 1)(x + 1)] / (x - 1)",
-        "Step 4: Cancel (x - 1)",
-        "Step 5: Simplify → x + 1",
-        "Step 6: Substitute x = 1 → 1 + 1"
+      q: "In a triangle, AB = (6,4) and AC = (10,7). Find BC.",
+      hint: "Use BC = BA + AC and remember that BA = -AB.",
+      steps: [
+        "BA = (-6,-4)",
+        "BC = BA + AC",
+        "BC = (-6,-4) + (10,7)",
+        "BC = (4,3)"
       ],
-      "ans": "2",
-      "why": "The expression simplifies after cancelling the common factor"
+      ans: "(4,3)",
+      why: "The route from B to C can be made by going from B to A and then A to C."
     },
+
     {
-      "q": "Evaluate lim (x → 3) (x² - 9)/(x - 3)",
-      "hint": "factor quadratic",
-      "steps": [
-        "Step 1: Substitute x = 3 → (9 - 9)/(0) = 0/0",
-        "Step 2: Factor numerator → x² - 9 = (x - 3)(x + 3)",
-        "Step 3: Rewrite → [(x - 3)(x + 3)] / (x - 3)",
-        "Step 4: Cancel (x - 3)",
-        "Step 5: Simplify → x + 3",
-        "Step 6: Substitute x = 3 → 3 + 3"
+      q: "In a triangle, AB = (8,5) and BC = (-3,2). Find CA.",
+      hint: "Use AB + BC + CA = (0,0).",
+      steps: [
+        "AB + BC = (8,5) + (-3,2)",
+        "AB + BC = (5,7)",
+        "(5,7) + CA = (0,0)",
+        "CA = (-5,-7)"
       ],
-      "ans": "6",
-      "why": "Indeterminate form resolves after factoring and cancellation"
+      ans: "(-5,-7)",
+      why: "The three vectors around a closed triangle must add to the zero vector."
     },
+
     {
-      "q": "Evaluate lim (x → 4) (x² - 16)/(x - 4)",
-      "hint": "difference of squares",
-      "steps": [
-        "Step 1: Substitute x = 4 → (16 - 16)/(0) = 0/0",
-        "Step 2: Factor numerator → x² - 16 = (x - 4)(x + 4)",
-        "Step 3: Cancel (x - 4)",
-        "Step 4: Simplify → x + 4",
-        "Step 5: Substitute x = 4 → 4 + 4"
+      q: "In parallelogram ABCD, AB = (7,3) and AD = (2,6). Find AC.",
+      hint: "The diagonal AC is the sum of the two adjacent sides.",
+      steps: [
+        "AC = AB + AD",
+        "AC = (7,3) + (2,6)",
+        "AC = (9,9)"
       ],
-      "ans": "8",
-      "why": "Canceling the common factor removes the indeterminate form"
+      ans: "(9,9)",
+      why: "To travel from A to C, travel along AB and then parallel to AD."
     },
+
     {
-      "q": "Evaluate lim (x → 5) (x² - 25)/(x - 5)",
-      "hint": "factorization",
-      "steps": [
-        "Step 1: Substitute x = 5 → (25 - 25)/(0) = 0/0",
-        "Step 2: Factor numerator → x² - 25 = (x - 5)(x + 5)",
-        "Step 3: Cancel (x - 5)",
-        "Step 4: Simplify → x + 5",
-        "Step 5: Substitute x = 5 → 5 + 5"
+      q: "A(2,1), B(7,4), and D(5,8) are three vertices of a parallelogram ABCD. Find C.",
+      hint: "Find AB and AD, then use AC = AB + AD.",
+      steps: [
+        "AB = (7,4) - (2,1) = (5,3)",
+        "AD = (5,8) - (2,1) = (3,7)",
+        "AC = (5,3) + (3,7) = (8,10)",
+        "C = A + AC = (2,1) + (8,10)",
+        "C = (10,11)"
       ],
-      "ans": "10",
-      "why": "Factorization resolves the indeterminate expression"
+      ans: "(10,11)",
+      why: "In a parallelogram, the diagonal from A is formed by adding the two adjacent side vectors."
+    },
+
+    {
+      q: "A person moves 6 km east and then 8 km north. Represent the total displacement as a vector and find its magnitude.",
+      hint: "East is positive x and north is positive y.",
+      steps: [
+        "East movement = (6,0)",
+        "North movement = (0,8)",
+        "Resultant = (6,0) + (0,8) = (6,8)",
+        "Magnitude = √(6² + 8²)",
+        "Magnitude = √100 = 10 km"
+      ],
+      ans: "Displacement = (6,8), magnitude = 10 km",
+      why: "The two movements combine to form one resultant displacement vector."
     }
   ]
 );
-
 add(
   "math",
-  "limits",
-  "One-Sided Limit Problems",
+  "vectors",
+  "Resultant Vector",
 
   `
-<h2> One-Sided Limits (Advanced)</h2>
+<h2>Resultant Vector</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-One-sided limits describe the value a function approaches from one direction only.
+When two or more vectors act together, they can be replaced by one vector that has the same overall effect.
 </p>
 
-<pre>
-lim (x → a⁻) f(x)  → left-hand limit  
-lim (x → a⁺) f(x)  → right-hand limit
-</pre>
+<p>
+This single vector is called the <b>resultant vector</b>.
+</p>
 
- If both sides are equal → limit exists  
- If different → discontinuity
+<p>
+For vectors <b>a</b> and <b>b</b>:
+</p>
 
----
+<p style="text-align:center;">
+<b>Resultant = a + b</b>
+</p>
 
-<h3> EXAMPLES</h3>
+<p>
+Add the corresponding components.
+</p>
 
-<p><b>Example 1:</b> step function jump</p>
-<p><b>Example 2:</b> absolute value function</p>
-<p><b>Example 3:</b> piecewise function</p>
+<h3>Example 1: Two Simple Vectors</h3>
 
----
+<p>
+Suppose a person moves:
+</p>
 
-<h3> WORKED EXAMPLES</h3>
+<p>
+<b>4 km east</b> and then <b>3 km north</b>.
+</p>
 
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Evaluate one-sided limits of f(x) = |x| at x = 0</p>
-<p><b>Step 1:</b> Left side (x → 0⁻) → f(x) = -x → 0</p>
-<p><b>Step 2:</b> Right side (x → 0⁺) → f(x) = x → 0</p>
-<p><b>Final Answer:</b> both equal → limit exists = 0</p>
+<p>
+Represent east as the positive x-direction and north as the positive y-direction.
+</p>
 
-<br>
+<p>
+First movement:
+</p>
 
-<p><b>Example 2</b></p>
-<p><b>Question:</b> What happens if left ≠ right?</p>
-<p><b>Step 1:</b> Compare both sides</p>
-<p><b>Step 2:</b> If values differ → no single limit</p>
-<p><b>Final Answer:</b> limit does not exist</p>
+<p>
+(4,0)
+</p>
 
----
+<p>
+Second movement:
+</p>
 
-<h3> DIAGRAM</h3>
+<p>
+(0,3)
+</p>
 
-<pre>
-x → 0
-Left side: ●●●
-Jump
-Right side: ●●●●●
-</pre>
+<p>
+Resultant:
+</p>
 
----
+<p>
+(4,0) + (0,3)
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Computer graphics edge detection</li>
-<li>Digital signal switching</li>
-<li>Economics sudden price changes</li>
-</ul>
+<p>
+= (4,3)
+</p>
 
----
+<p>
+Therefore the resultant displacement is:
+</p>
+
+<p>
+<b>(4,3) km</b>
+</p>
+
+<h3>Example 2: Vectors in the Same Direction</h3>
+
+<p>
+A force of 5 N acts east and another force of 7 N acts east.
+</p>
+
+<p>
+Represent them as:
+</p>
+
+<p>
+(5,0) and (7,0)
+</p>
+
+<p>
+Resultant:
+</p>
+
+<p>
+(5,0) + (7,0)
+</p>
+
+<p>
+= (12,0)
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>Resultant = 12 N east</b>
+</p>
+
+<h3>Example 3: Opposite Directions</h3>
+
+<p>
+A force of 10 N acts east while a force of 6 N acts west.
+</p>
+
+<p>
+Take east as positive.
+</p>
+
+<p>
+East force:
+</p>
+
+<p>
+(10,0)
+</p>
+
+<p>
+West force:
+</p>
+
+<p>
+(-6,0)
+</p>
+
+<p>
+Resultant:
+</p>
+
+<p>
+(10,0) + (-6,0)
+</p>
+
+<p>
+= (4,0)
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>Resultant = 4 N east</b>
+</p>
+
+<h3>Example 4: Two-Dimensional Forces</h3>
+
+<p>
+A force of 6 N acts east and a force of 8 N acts north.
+</p>
+
+<p>
+Write the forces as vectors:
+</p>
+
+<p>
+F₁ = (6,0)
+</p>
+
+<p>
+F₂ = (0,8)
+</p>
+
+<p>
+Add them:
+</p>
+
+<p>
+R = (6,0) + (0,8)
+</p>
+
+<p>
+R = (6,8)
+</p>
+
+<p>
+The resultant vector is:
+</p>
+
+<p>
+<b>R = (6,8) N</b>
+</p>
+
+<p>
+Its magnitude is:
+</p>
+
+<p>
+|R| = √(6² + 8²)
+</p>
+
+<p>
+|R| = √(36 + 64)
+</p>
+
+<p>
+|R| = √100
+</p>
+
+<p>
+<b>|R| = 10 N</b>
+</p>
+
+<h3>Example 5: Three Vectors</h3>
+
+<p>
+Three movements are:
+</p>
+
+<p>
+a = (3,4)
+</p>
+
+<p>
+b = (-2,1)
+</p>
+
+<p>
+c = (5,-3)
+</p>
+
+<p>
+Find the resultant.
+</p>
+
+<p>
+R = a + b + c
+</p>
+
+<p>
+R = (3,4) + (-2,1) + (5,-3)
+</p>
+
+<p>
+Add the x-components:
+</p>
+
+<p>
+3 - 2 + 5 = 6
+</p>
+
+<p>
+Add the y-components:
+</p>
+
+<p>
+4 + 1 - 3 = 2
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>R = (6,2)</b>
+</p>
+
+<h3>Example 6: Resultant That Becomes Zero</h3>
+
+<p>
+Suppose:
+</p>
+
+<p>
+a = (7,4)
+</p>
+
+<p>
+b = (-7,-4)
+</p>
+
+<p>
+Then:
+</p>
+
+<p>
+R = a + b
+</p>
+
+<p>
+R = (7,4) + (-7,-4)
+</p>
+
+<p>
+R = (0,0)
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>R = (0,0)</b>
+</p>
+
+<p>
+The vectors completely cancel each other.
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+To find a resultant vector:
+</p>
+
+<ol>
+<li>Write each vector in component form.</li>
+<li>Add all x-components.</li>
+<li>Add all y-components.</li>
+<li>Write the two results as one vector.</li>
+</ol>
+
+<p style="text-align:center;">
+<b>R = (Σx, Σy)</b>
+</p>
 `,
 
   [
     {
-      "q": "When does lim x→a f(x) exist using one-sided limits?",
-      "hint": "compare both sides",
-      "steps": [
-        "Step 1: Compute lim x→a⁻ f(x)",
-        "Step 2: Compute lim x→a⁺ f(x)",
-        "Step 3: Let left-hand limit = L",
-        "Step 4: Let right-hand limit = R",
-        "Step 5: Compare L and R",
-        "Step 6: If L = R, limit exists"
+      q: "Find the resultant of (3,4) and (5,2).",
+      hint: "Add the x-components and y-components separately.",
+      steps: [
+        "x-component: 3 + 5 = 8",
+        "y-component: 4 + 2 = 6",
+        "Resultant = (8,6)"
       ],
-      "ans": "When lim x→a⁻ f(x) = lim x→a⁺ f(x)",
-      "why": "A limit exists only when both directional values are equal"
+      ans: "(8,6)",
+      why: "A resultant is found by adding corresponding vector components."
     },
+
     {
-      "q": "Determine whether a limit exists if lim x→2⁻ f(x) = 5 and lim x→2⁺ f(x) = 5",
-      "hint": "compare values",
-      "steps": [
-        "Step 1: Identify left-hand limit = 5",
-        "Step 2: Identify right-hand limit = 5",
-        "Step 3: Compare both values",
-        "Step 4: Check equality condition",
-        "Step 5: Conclude result"
+      q: "A force of 12 N acts east and another force of 7 N acts west. Find the resultant force.",
+      hint: "Take east as positive.",
+      steps: [
+        "East force = (12,0)",
+        "West force = (-7,0)",
+        "Resultant = (12,0) + (-7,0)",
+        "Resultant = (5,0)"
       ],
-      "ans": "Limit exists and equals 5",
-      "why": "Both one-sided limits are equal"
+      ans: "5 N east",
+      why: "Opposing forces subtract because they act in opposite directions."
     },
+
     {
-      "q": "Determine limit existence if lim x→3⁻ f(x) = 4 and lim x→3⁺ f(x) = 7",
-      "hint": "check discontinuity",
-      "steps": [
-        "Step 1: Left-hand limit = 4",
-        "Step 2: Right-hand limit = 7",
-        "Step 3: Compare 4 and 7",
-        "Step 4: Identify inequality",
-        "Step 5: Conclude limit behavior"
+      q: "A person walks 5 km east and 12 km north. Find the resultant displacement vector and its magnitude.",
+      hint: "First find the vector, then use the magnitude formula.",
+      steps: [
+        "East movement = (5,0)",
+        "North movement = (0,12)",
+        "Resultant = (5,12)",
+        "Magnitude = √(5² + 12²)",
+        "Magnitude = √169 = 13 km"
       ],
-      "ans": "Limit does not exist",
-      "why": "Unequal one-sided limits indicate a jump discontinuity"
+      ans: "Resultant = (5,12), magnitude = 13 km",
+      why: "The two perpendicular movements combine into one resultant displacement."
     },
+
     {
-      "q": "Find result when lim x→5⁻ f(x) = 10 and lim x→5⁺ f(x) = 10",
-      "hint": "equal sides",
-      "steps": [
-        "Step 1: Left-hand limit = 10",
-        "Step 2: Right-hand limit = 10",
-        "Step 3: Compare values",
-        "Step 4: Confirm equality",
-        "Step 5: State final result"
+      q: "Find the resultant of (4,-2), (-3,5), and (6,1).",
+      hint: "Add all three x-components and all three y-components.",
+      steps: [
+        "x = 4 - 3 + 6 = 7",
+        "y = -2 + 5 + 1 = 4",
+        "Resultant = (7,4)"
       ],
-      "ans": "Limit exists and equals 10",
-      "why": "Equal one-sided limits confirm continuity at that point"
+      ans: "(7,4)",
+      why: "Each component of the resultant is the sum of the corresponding components of all the vectors."
+    },
+
+    {
+      q: "Two forces are represented by (8,6) and (-8,-6). Find their resultant.",
+      hint: "Add the two vectors directly.",
+      steps: [
+        "R = (8,6) + (-8,-6)",
+        "R = (8 - 8, 6 - 6)",
+        "R = (0,0)"
+      ],
+      ans: "(0,0)",
+      why: "The two vectors are opposites, so they completely cancel."
+    },
+
+    {
+      q: "A boat moves with displacement (9,4) km and is then pushed by a current with displacement (-2,3) km. Find the total displacement.",
+      hint: "Add the two displacement vectors.",
+      steps: [
+        "R = (9,4) + (-2,3)",
+        "x = 9 - 2 = 7",
+        "y = 4 + 3 = 7",
+        "R = (7,7) km"
+      ],
+      ans: "(7,7) km",
+      why: "The total displacement is obtained by adding the displacement vectors."
     }
   ]
 );
-
 add(
   "math",
-  "Calculus",
-  "limits",
-  "Applications of Limits",
+  "vectors",
+  "Direction of a Vector",
 
   `
-<h2> Applications of Limits</h2>
+<h2>Direction of a Vector</h2>
 
-<h3> DEEP NOTES</h3>
 <p>
-Limits describe the value a function approaches as the input gets closer to a certain point.  
-They are the foundation of differentiation and integration.
+The <b>direction</b> of a vector tells us the angle the vector makes with the positive x-axis.
 </p>
 
-<pre>
-lim (x → a) f(x)
-</pre>
+<p>
+For a vector:
+</p>
 
- Used to define instantaneous change and continuity.
+<p style="text-align:center;">
+<b>a = (x,y)</b>
+</p>
 
----
+<p>
+the direction angle θ is found from:
+</p>
 
-<h3> EXAMPLES</h3>
+<p style="text-align:center;">
+<b>tan θ = y/x</b>
+</p>
 
-<p><b>Example 1:</b> instantaneous velocity</p>
-<p><b>Example 2:</b> population growth prediction</p>
-<p><b>Example 3:</b> machine learning gradient estimation</p>
+<p>
+Therefore:
+</p>
 
----
+<p style="text-align:center;">
+<b>θ = tan⁻¹(y/x)</b>
+</p>
 
-<h3> WORKED EXAMPLES</h3>
+<p>
+The signs of x and y are important because they tell us which quadrant the vector lies in.
+</p>
 
-<p><b>Example 1</b></p>
-<p><b>Question:</b> Why is limit used in velocity?</p>
-<p><b>Step 1:</b> Average speed = distance/time</p>
-<p><b>Step 2:</b> Make time interval very small</p>
-<p><b>Step 3:</b> Use limit</p>
-<p><b>Final Answer:</b> To find instantaneous velocity</p>
+<h3>Example 1: Vector in the First Quadrant</h3>
 
-<br>
+<p>
+Find the direction of:
+</p>
 
-<p><b>Example 2</b></p>
-<p><b>Question:</b> What happens as x → 2 in f(x) = x²?</p>
-<p><b>Step 1:</b> Substitute value</p>
-<p>f(2) = 4</p>
-<p><b>Final Answer:</b> limit = 4</p>
+<p>
+<b>a = (3,4)</b>
+</p>
 
----
+<p>
+Both components are positive, so the vector is in the first quadrant.
+</p>
 
-<h3> DIAGRAM</h3>
+<p>
+Use:
+</p>
 
-<pre>
-Distance vs Time curve:
-Smooth curve → tangent at a point = limit concept
-</pre>
+<p>
+θ = tan⁻¹(4/3)
+</p>
 
----
+<p>
+θ ≈ 53.13°
+</p>
 
-<h3> REAL WORLD APPLICATION</h3>
-<ul>
-<li>Physics motion analysis</li>
-<li>AI optimization models</li>
-<li>Financial forecasting</li>
-</ul>
+<p>
+Therefore:
+</p>
 
+<p>
+<b>Direction = 53.13°</b>
+</p>
+
+<h3>Example 2: Vector in the Second Quadrant</h3>
+
+<p>
+Find the direction of:
+</p>
+
+<p>
+<b>a = (-3,4)</b>
+</p>
+
+<p>
+The x-component is negative and the y-component is positive.
+Therefore, the vector lies in the second quadrant.
+</p>
+
+<p>
+First find the reference angle:
+</p>
+
+<p>
+α = tan⁻¹(4/3)
+</p>
+
+<p>
+α ≈ 53.13°
+</p>
+
+<p>
+For the second quadrant:
+</p>
+
+<p>
+θ = 180° - 53.13°
+</p>
+
+<p>
+<b>θ ≈ 126.87°</b>
+</p>
+
+<h3>Example 3: Vector in the Third Quadrant</h3>
+
+<p>
+Find the direction of:
+</p>
+
+<p>
+<b>a = (-5,-5)</b>
+</p>
+
+<p>
+Both components are negative, so the vector lies in the third quadrant.
+</p>
+
+<p>
+Find the reference angle:
+</p>
+
+<p>
+α = tan⁻¹(5/5)
+</p>
+
+<p>
+α = 45°
+</p>
+
+<p>
+For the third quadrant:
+</p>
+
+<p>
+θ = 180° + 45°
+</p>
+
+<p>
+<b>θ = 225°</b>
+</p>
+
+<h3>Example 4: Vector in the Fourth Quadrant</h3>
+
+<p>
+Find the direction of:
+</p>
+
+<p>
+<b>a = (4,-3)</b>
+</p>
+
+<p>
+The x-component is positive and the y-component is negative.
+Therefore, the vector lies in the fourth quadrant.
+</p>
+
+<p>
+Find the reference angle:
+</p>
+
+<p>
+α = tan⁻¹(3/4)
+</p>
+
+<p>
+α ≈ 36.87°
+</p>
+
+<p>
+For the fourth quadrant:
+</p>
+
+<p>
+θ = 360° - 36.87°
+</p>
+
+<p>
+<b>θ ≈ 323.13°</b>
+</p>
+
+<h3>Example 5: Horizontal Vector</h3>
+
+<p>
+Consider:
+</p>
+
+<p>
+<b>a = (6,0)</b>
+</p>
+
+<p>
+The vector points directly along the positive x-axis.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>θ = 0°</b>
+</p>
+
+<p>
+If the vector is:
+</p>
+
+<p>
+<b>a = (-6,0)</b>
+</p>
+
+<p>
+it points along the negative x-axis:
+</p>
+
+<p>
+<b>θ = 180°</b>
+</p>
+
+<h3>Example 6: Vertical Vector</h3>
+
+<p>
+Consider:
+</p>
+
+<p>
+<b>a = (0,5)</b>
+</p>
+
+<p>
+The vector points directly upward.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>θ = 90°</b>
+</p>
+
+<p>
+If:
+</p>
+
+<p>
+<b>a = (0,-5)</b>
+</p>
+
+<p>
+the vector points downward:
+</p>
+
+<p>
+<b>θ = 270°</b>
+</p>
+
+<h3>Direction Checklist</h3>
+
+<ol>
+<li>Look at the signs of x and y.</li>
+<li>Identify the quadrant.</li>
+<li>Find the reference angle using tan⁻¹(|y|/|x|).</li>
+<li>Adjust the angle according to the quadrant.</li>
+</ol>
+
+<table>
+<tr>
+<th>Quadrant</th>
+<th>Signs</th>
+<th>Direction</th>
+</tr>
+<tr>
+<td>I</td>
+<td>+,+</td>
+<td>θ = α</td>
+</tr>
+<tr>
+<td>II</td>
+<td>-,+</td>
+<td>θ = 180° - α</td>
+</tr>
+<tr>
+<td>III</td>
+<td>-,-</td>
+<td>θ = 180° + α</td>
+</tr>
+<tr>
+<td>IV</td>
+<td>+,-</td>
+<td>θ = 360° - α</td>
+</tr>
+</table>
+
+<p>
+The direction angle is normally measured <b>anticlockwise from the positive x-axis</b>.
+</p>
 `,
 
   [
     {
-      "q": "Why are limits important?",
-      "hint": "used in derivatives and integrals",
-      "ans": "foundation of calculus",
-      "why": "Limits define both differentiation and integration, forming the core of calculus."
+      q: "Find the direction of the vector (3,4), measured anticlockwise from the positive x-axis.",
+      hint: "Both components are positive, so the vector is in Quadrant I.",
+      steps: [
+        "θ = tan⁻¹(4/3)",
+        "θ ≈ 53.13°"
+      ],
+      ans: "53.13°",
+      why: "The vector lies in the first quadrant, so the reference angle is already the direction angle."
     },
+
     {
-      "q": "Give one real-world use of limits",
-      "hint": "motion",
-      "ans": "instantaneous speed",
-      "why": "Limits are used to calculate velocity at a specific moment in time."
+      q: "Find the direction of (-3,4).",
+      hint: "The vector is in Quadrant II.",
+      steps: [
+        "Reference angle = tan⁻¹(4/3) ≈ 53.13°",
+        "θ = 180° - 53.13°",
+        "θ ≈ 126.87°"
+      ],
+      ans: "126.87°",
+      why: "A negative x-component and positive y-component place the vector in Quadrant II."
     },
+
     {
-      "q": "What does lim x→a f(x) mean?",
-      "hint": "approaching value",
-      "ans": "value f(x) approaches as x nears a",
-      "why": "It represents the value a function gets close to near a specific input."
+      q: "Find the direction of (-5,-5).",
+      hint: "Both components are negative, so use Quadrant III.",
+      steps: [
+        "Reference angle = tan⁻¹(5/5) = 45°",
+        "θ = 180° + 45°",
+        "θ = 225°"
+      ],
+      ans: "225°",
+      why: "The vector lies in Quadrant III, so the reference angle is added to 180°."
+    },
+
+    {
+      q: "Find the direction of (4,-3).",
+      hint: "The vector is in Quadrant IV.",
+      steps: [
+        "Reference angle = tan⁻¹(3/4) ≈ 36.87°",
+        "θ = 360° - 36.87°",
+        "θ ≈ 323.13°"
+      ],
+      ans: "323.13°",
+      why: "A positive x-component and negative y-component place the vector in Quadrant IV."
+    },
+
+    {
+      q: "What is the direction of the vector (-7,0)?",
+      hint: "It lies directly on the negative x-axis.",
+      steps: [
+        "The vector points directly left.",
+        "The negative x-axis corresponds to 180°."
+      ],
+      ans: "180°",
+      why: "A vector pointing along the negative x-axis has a direction of 180°."
+    },
+
+    {
+      q: "What is the direction of the vector (0,-8)?",
+      hint: "It points directly downward.",
+      steps: [
+        "The vector lies on the negative y-axis.",
+        "The negative y-axis corresponds to 270°."
+      ],
+      ans: "270°",
+      why: "A downward vector has a direction angle of 270° measured anticlockwise from the positive x-axis."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Scalar Product of Vectors",
+
+  `
+<h2>Scalar Product of Vectors</h2>
+
+<p>
+The <b>scalar product</b>, also called the <b>dot product</b>, combines two vectors to give a single number.
+</p>
+
+<p>
+For:
+</p>
+
+<p style="text-align:center;">
+<b>a = (x₁,y₁)</b>
+</p>
+
+<p style="text-align:center;">
+<b>b = (x₂,y₂)</b>
+</p>
+
+<p>
+the scalar product is:
+</p>
+
+<p style="text-align:center;">
+<b>a · b = x₁x₂ + y₁y₂</b>
+</p>
+
+<p>
+The symbol <b>·</b> means dot product.
+</p>
+
+<h3>Example 1: Basic Dot Product</h3>
+
+<p>
+Find the scalar product of:
+</p>
+
+<p>
+<b>a = (3,4)</b>
+</p>
+
+<p>
+<b>b = (2,5)</b>
+</p>
+
+<p>
+Use:
+</p>
+
+<p>
+a · b = (3)(2) + (4)(5)
+</p>
+
+<p>
+= 6 + 20
+</p>
+
+<p>
+<b>a · b = 26</b>
+</p>
+
+<h3>Example 2: Negative Components</h3>
+
+<p>
+Find:
+</p>
+
+<p>
+<b>a · b</b>
+</p>
+
+<p>
+where:
+</p>
+
+<p>
+a = (-2,5)
+</p>
+
+<p>
+b = (4,-3)
+</p>
+
+<p>
+Multiply corresponding components:
+</p>
+
+<p>
+a · b = (-2)(4) + (5)(-3)
+</p>
+
+<p>
+= -8 - 15
+</p>
+
+<p>
+<b>a · b = -23</b>
+</p>
+
+<h3>Example 3: Dot Product Equal to Zero</h3>
+
+<p>
+Consider:
+</p>
+
+<p>
+a = (2,3)
+</p>
+
+<p>
+b = (3,-2)
+</p>
+
+<p>
+Find a · b.
+</p>
+
+<p>
+a · b = (2)(3) + (3)(-2)
+</p>
+
+<p>
+= 6 - 6
+</p>
+
+<p>
+<b>a · b = 0</b>
+</p>
+
+<p>
+When the scalar product of two non-zero vectors is zero, the vectors are <b>perpendicular</b>.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>(2,3) is perpendicular to (3,-2).</b>
+</p>
+
+<h3>Example 4: Checking Whether Two Vectors Are Perpendicular</h3>
+
+<p>
+Determine whether:
+</p>
+
+<p>
+a = (4,6)
+</p>
+
+<p>
+b = (3,-2)
+</p>
+
+<p>
+are perpendicular.
+</p>
+
+<p>
+Calculate the dot product:
+</p>
+
+<p>
+a · b = (4)(3) + (6)(-2)
+</p>
+
+<p>
+= 12 - 12
+</p>
+
+<p>
+= 0
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>a ⟂ b</b>
+</p>
+
+<p>
+The vectors are perpendicular.
+</p>
+
+<h3>Example 5: Showing That Vectors Are Not Perpendicular</h3>
+
+<p>
+Consider:
+</p>
+
+<p>
+a = (2,5)
+</p>
+
+<p>
+b = (3,4)
+</p>
+
+<p>
+Calculate:
+</p>
+
+<p>
+a · b = (2)(3) + (5)(4)
+</p>
+
+<p>
+= 6 + 20
+</p>
+
+<p>
+= 26
+</p>
+
+<p>
+Since:
+</p>
+
+<p>
+<b>26 ≠ 0</b>
+</p>
+
+<p>
+the vectors are <b>not perpendicular</b>.
+</p>
+
+<h3>Example 6: Finding an Unknown</h3>
+
+<p>
+Find x if:
+</p>
+
+<p>
+(2,x) · (3,4) = 14
+</p>
+
+<p>
+Apply the dot product:
+</p>
+
+<p>
+(2)(3) + (x)(4) = 14
+</p>
+
+<p>
+6 + 4x = 14
+</p>
+
+<p>
+4x = 8
+</p>
+
+<p>
+<b>x = 2</b>
+</p>
+
+<p>
+Check:
+</p>
+
+<p>
+(2,2) · (3,4)
+</p>
+
+<p>
+= 6 + 8
+</p>
+
+<p>
+= 14
+</p>
+
+<h3>Dot Product and the Angle Between Vectors</h3>
+
+<p>
+The scalar product can also be related to the angle θ between two vectors:
+</p>
+
+<p style="text-align:center;">
+<b>a · b = |a||b|cosθ</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p style="text-align:center;">
+<b>cosθ = (a · b)/(|a||b|)</b>
+</p>
+
+<p>
+For perpendicular vectors:
+</p>
+
+<p>
+θ = 90°
+</p>
+
+<p>
+and:
+</p>
+
+<p>
+cos90° = 0
+</p>
+
+<p>
+so:
+</p>
+
+<p>
+<b>a · b = 0</b>
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+For two-dimensional vectors:
+</p>
+
+<p style="text-align:center;">
+<b>(x₁,y₁) · (x₂,y₂) = x₁x₂ + y₁y₂</b>
+</p>
+
+<p>
+Remember: the dot product produces a <b>scalar</b>, not another vector.
+</p>
+`,
+
+  [
+    {
+      q: "Find the scalar product of (4,3) and (2,5).",
+      hint: "Multiply corresponding components and add.",
+      steps: [
+        "(4,3) · (2,5) = (4)(2) + (3)(5)",
+        "= 8 + 15",
+        "= 23"
+      ],
+      ans: "23",
+      why: "The scalar product is found by multiplying corresponding components and adding the results."
+    },
+
+    {
+      q: "Find the scalar product of (-3,4) and (2,-5).",
+      hint: "Keep the negative signs when multiplying.",
+      steps: [
+        "(-3,4) · (2,-5) = (-3)(2) + (4)(-5)",
+        "= -6 - 20",
+        "= -26"
+      ],
+      ans: "-26",
+      why: "The signs of the component products determine the sign of the final scalar product."
+    },
+
+    {
+      q: "Determine whether (3,4) and (4,-3) are perpendicular.",
+      hint: "Calculate their dot product.",
+      steps: [
+        "(3,4) · (4,-3) = (3)(4) + (4)(-3)",
+        "= 12 - 12",
+        "= 0"
+      ],
+      ans: "Yes, they are perpendicular.",
+      why: "Two non-zero vectors are perpendicular when their scalar product is zero."
+    },
+
+    {
+      q: "Determine whether (2,5) and (4,3) are perpendicular.",
+      hint: "A perpendicular pair must have a dot product of zero.",
+      steps: [
+        "(2,5) · (4,3) = (2)(4) + (5)(3)",
+        "= 8 + 15",
+        "= 23",
+        "Since 23 is not zero, the vectors are not perpendicular."
+      ],
+      ans: "No, they are not perpendicular.",
+      why: "Their scalar product is not zero."
+    },
+
+    {
+      q: "Find x if (x,3) · (2,4) = 20.",
+      hint: "Form an equation using the dot product formula.",
+      steps: [
+        "(x)(2) + (3)(4) = 20",
+        "2x + 12 = 20",
+        "2x = 8",
+        "x = 4"
+      ],
+      ans: "4",
+      why: "The unknown component can be found by turning the scalar-product equation into an ordinary algebraic equation."
+    },
+
+    {
+      q: "Find the angle between a = (1,0) and b = (0,1).",
+      hint: "First calculate the dot product, then use a · b = |a||b|cosθ.",
+      steps: [
+        "a · b = (1)(0) + (0)(1) = 0",
+        "|a| = 1 and |b| = 1",
+        "0 = (1)(1)cosθ",
+        "cosθ = 0",
+        "θ = 90°"
+      ],
+      ans: "90°",
+      why: "The horizontal and vertical unit vectors are perpendicular."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Proving Points Are Collinear Using Vectors",
+
+  `
+<h2>Proving Points Are Collinear Using Vectors</h2>
+
+<p>
+Points are <b>collinear</b> if they lie on the same straight line.
+</p>
+
+<p>
+We can use vectors to test this.
+</p>
+
+<p>
+If two vectors lie along the same straight line, one must be a scalar multiple of the other.
+</p>
+
+<p>
+Therefore, to prove that A, B and C are collinear, we can show that:
+</p>
+
+<p style="text-align:center;">
+<b>AB = kBC</b>
+</p>
+
+<p>
+for some scalar <b>k</b>.
+</p>
+
+<h3>Example 1: Simple Collinearity</h3>
+
+<p>
+Show that A(1,2), B(3,4) and C(5,6) are collinear.
+</p>
+
+<p>
+Find AB:
+</p>
+
+<p>
+AB = B - A
+</p>
+
+<p>
+AB = (3,4) - (1,2)
+</p>
+
+<p>
+<b>AB = (2,2)</b>
+</p>
+
+<p>
+Now find BC:
+</p>
+
+<p>
+BC = C - B
+</p>
+
+<p>
+BC = (5,6) - (3,4)
+</p>
+
+<p>
+<b>BC = (2,2)</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+AB = BC
+</p>
+
+<p>
+The vectors have the same direction.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>A, B and C are collinear.</b>
+</p>
+
+<h3>Example 2: One Vector Is a Multiple of the Other</h3>
+
+<p>
+Show that A(2,1), B(5,3) and C(11,7) are collinear.
+</p>
+
+<p>
+Find AB:
+</p>
+
+<p>
+AB = (5,3) - (2,1)
+</p>
+
+<p>
+AB = (3,2)
+</p>
+
+<p>
+Find BC:
+</p>
+
+<p>
+BC = (11,7) - (5,3)
+</p>
+
+<p>
+BC = (6,4)
+</p>
+
+<p>
+Compare:
+</p>
+
+<p>
+BC = 2(3,2)
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>BC = 2AB</b>
+</p>
+
+<p>
+Since one vector is a scalar multiple of the other, they have the same direction.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>A, B and C are collinear.</b>
+</p>
+
+<h3>Example 3: Opposite Directions</h3>
+
+<p>
+Show that A(1,4), B(4,6) and C(-2,2) are collinear.
+</p>
+
+<p>
+Find AB:
+</p>
+
+<p>
+AB = (4,6) - (1,4)
+</p>
+
+<p>
+AB = (3,2)
+</p>
+
+<p>
+Find BC:
+</p>
+
+<p>
+BC = (-2,2) - (4,6)
+</p>
+
+<p>
+BC = (-6,-4)
+</p>
+
+<p>
+Compare:
+</p>
+
+<p>
+BC = -2(3,2)
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>BC = -2AB</b>
+</p>
+
+<p>
+The negative scalar means the vectors point in opposite directions, but they are still parallel.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>A, B and C are collinear.</b>
+</p>
+
+<h3>Example 4: Showing Points Are Not Collinear</h3>
+
+<p>
+Determine whether A(1,2), B(4,5) and C(7,9) are collinear.
+</p>
+
+<p>
+Find AB:
+</p>
+
+<p>
+AB = (4,5) - (1,2)
+</p>
+
+<p>
+AB = (3,3)
+</p>
+
+<p>
+Find BC:
+</p>
+
+<p>
+BC = (7,9) - (4,5)
+</p>
+
+<p>
+BC = (3,4)
+</p>
+
+<p>
+Check whether one is a scalar multiple of the other.
+</p>
+
+<p>
+For the x-components:
+</p>
+
+<p>
+3/3 = 1
+</p>
+
+<p>
+For the y-components:
+</p>
+
+<p>
+4/3 ≠ 1
+</p>
+
+<p>
+The same scalar cannot multiply both components.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>AB and BC are not parallel.</b>
+</p>
+
+<p>
+Hence:
+</p>
+
+<p>
+<b>A, B and C are not collinear.</b>
+</p>
+
+<h3>Example 5: Finding an Unknown Coordinate</h3>
+
+<p>
+Find x if A(1,2), B(4,5) and C(x,8) are collinear.
+</p>
+
+<p>
+First find AB:
+</p>
+
+<p>
+AB = (4,5) - (1,2)
+</p>
+
+<p>
+AB = (3,3)
+</p>
+
+<p>
+Find BC:
+</p>
+
+<p>
+BC = (x,8) - (4,5)
+</p>
+
+<p>
+BC = (x-4,3)
+</p>
+
+<p>
+Because the points are collinear, BC must be a scalar multiple of AB.
+</p>
+
+<p>
+The y-component of AB is 3 and the y-component of BC is 3.
+Therefore the scalar is:
+</p>
+
+<p>
+k = 3/3 = 1
+</p>
+
+<p>
+So:
+</p>
+
+<p>
+x - 4 = 1(3)
+</p>
+
+<p>
+x - 4 = 3
+</p>
+
+<p>
+<b>x = 7</b>
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+To test whether A, B and C are collinear:
+</p>
+
+<ol>
+<li>Find AB.</li>
+<li>Find BC.</li>
+<li>Check whether one vector is a scalar multiple of the other.</li>
+</ol>
+
+<p style="text-align:center;">
+<b>BC = kAB</b>
+</p>
+
+<p>
+If such a scalar <b>k</b> exists, the three points are collinear.
+</p>
+`,
+
+  [
+    {
+      q: "Show that A(1,1), B(3,4) and C(5,7) are collinear.",
+      hint: "Find AB and BC and compare them.",
+      steps: [
+        "AB = (3,4) - (1,1) = (2,3)",
+        "BC = (5,7) - (3,4) = (2,3)",
+        "Therefore AB = BC.",
+        "Hence A, B and C are collinear."
+      ],
+      ans: "They are collinear.",
+      why: "AB and BC are equal vectors, so they have the same direction."
+    },
+
+    {
+      q: "Determine whether A(2,3), B(6,5) and C(14,9) are collinear.",
+      hint: "Check whether BC is a scalar multiple of AB.",
+      steps: [
+        "AB = (6,5) - (2,3) = (4,2)",
+        "BC = (14,9) - (6,5) = (8,4)",
+        "BC = 2(4,2)",
+        "Therefore BC = 2AB.",
+        "Hence the points are collinear."
+      ],
+      ans: "They are collinear.",
+      why: "One vector is twice the other, so the two vectors are parallel."
+    },
+
+    {
+      q: "Determine whether A(0,0), B(2,3) and C(4,7) are collinear.",
+      hint: "Find AB and BC.",
+      steps: [
+        "AB = (2,3) - (0,0) = (2,3)",
+        "BC = (4,7) - (2,3) = (2,4)",
+        "2/2 = 1, but 4/3 ≠ 1",
+        "Therefore BC is not a scalar multiple of AB."
+      ],
+      ans: "They are not collinear.",
+      why: "The two vectors do not have the same direction."
+    },
+
+    {
+      q: "Show that A(3,5), B(7,8) and C(1,2) are collinear.",
+      hint: "The vectors may point in opposite directions.",
+      steps: [
+        "AB = (7,8) - (3,5) = (4,3)",
+        "BC = (1,2) - (7,8) = (-6,-6)",
+        "BC is not a scalar multiple of AB.",
+        "Therefore the points are not collinear."
+      ],
+      ans: "They are not collinear.",
+      why: "Although both components of BC are negative, the required scalar would have to be -6/4 and -6/3 at the same time, which is impossible."
+    },
+
+    {
+      q: "Find x if A(1,2), B(4,5) and C(x,8) are collinear.",
+      hint: "Find AB and BC, then compare corresponding components.",
+      steps: [
+        "AB = (4,5) - (1,2) = (3,3)",
+        "BC = (x,8) - (4,5) = (x-4,3)",
+        "Since the y-components are both 3, the scalar is 1.",
+        "x - 4 = 3",
+        "x = 7"
+      ],
+      ans: "x = 7",
+      why: "For the points to be collinear, BC must have the same direction as AB."
+    },
+
+    {
+      q: "Find y if A(2,1), B(5,3) and C(11,y) are collinear.",
+      hint: "First find AB, then express BC as a multiple of AB.",
+      steps: [
+        "AB = (5,3) - (2,1) = (3,2)",
+        "BC = (11,y) - (5,3) = (6,y-3)",
+        "The x-component shows the scalar is 6/3 = 2.",
+        "Therefore y - 3 = 2(2) = 4",
+        "y = 7"
+      ],
+      ans: "y = 7",
+      why: "The second vector must be twice the first vector for the three points to lie on one straight line."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Vector Equation of a Line",
+
+  `
+<h2>Vector Equation of a Line</h2>
+
+<p>
+A straight line can be described using a <b>position vector</b> and a <b>direction vector</b>.
+</p>
+
+<p>
+If a line passes through a point A with position vector <b>a</b>, and has direction vector <b>d</b>, then every point P on the line has position vector:
+</p>
+
+<p style="text-align:center;">
+<b>r = a + λd</b>
+</p>
+
+<p>
+Here:
+</p>
+
+<ul>
+<li><b>r</b> is the position vector of any point P on the line.</li>
+<li><b>a</b> is the position vector of a known point on the line.</li>
+<li><b>d</b> is the direction vector of the line.</li>
+<li><b>λ</b> is a scalar that tells us how far we move along the line.</li>
+</ul>
+
+<h3>Example 1: Writing a Vector Equation</h3>
+
+<p>
+A line passes through A(2,3) and has direction vector:
+</p>
+
+<p>
+<b>d = (4,5)</b>
+</p>
+
+<p>
+The position vector of A is:
+</p>
+
+<p>
+<b>a = (2,3)</b>
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+r = a + λd
+</p>
+
+<p>
+<b>r = (2,3) + λ(4,5)</b>
+</p>
+
+<h3>Example 2: Finding Points on the Line</h3>
+
+<p>
+The line is:
+</p>
+
+<p>
+<b>r = (1,2) + λ(3,4)</b>
+</p>
+
+<p>
+Find the point when λ = 2.
+</p>
+
+<p>
+Substitute λ = 2:
+</p>
+
+<p>
+r = (1,2) + 2(3,4)
+</p>
+
+<p>
+r = (1,2) + (6,8)
+</p>
+
+<p>
+<b>r = (7,10)</b>
+</p>
+
+<p>
+Therefore, (7,10) lies on the line.
+</p>
+
+<h3>Example 3: Finding Another Point</h3>
+
+<p>
+Given:
+</p>
+
+<p>
+<b>r = (5,1) + λ(-2,3)</b>
+</p>
+
+<p>
+Find the point when λ = 3.
+</p>
+
+<p>
+r = (5,1) + 3(-2,3)
+</p>
+
+<p>
+r = (5,1) + (-6,9)
+</p>
+
+<p>
+<b>r = (-1,10)</b>
+</p>
+
+<p>
+So the point is:
+</p>
+
+<p>
+<b>(-1,10)</b>
+</p>
+
+<h3>Example 4: Finding the Direction Vector From Two Points</h3>
+
+<p>
+A line passes through:
+</p>
+
+<p>
+A(2,4)
+</p>
+
+<p>
+and:
+</p>
+
+<p>
+B(8,10)
+</p>
+
+<p>
+The direction vector can be found using:
+</p>
+
+<p>
+AB = B - A
+</p>
+
+<p>
+AB = (8,10) - (2,4)
+</p>
+
+<p>
+<b>AB = (6,6)</b>
+</p>
+
+<p>
+Therefore one vector equation of the line is:
+</p>
+
+<p>
+<b>r = (2,4) + λ(6,6)</b>
+</p>
+
+<p>
+We could also use any non-zero scalar multiple of (6,6), such as (1,1), as a direction vector.
+</p>
+
+<p>
+So an equivalent equation is:
+</p>
+
+<p>
+<b>r = (2,4) + λ(1,1)</b>
+</p>
+
+<h3>Example 5: Checking Whether a Point Lies on a Line</h3>
+
+<p>
+The line is:
+</p>
+
+<p>
+<b>r = (2,1) + λ(3,4)</b>
+</p>
+
+<p>
+Determine whether P(11,13) lies on the line.
+</p>
+
+<p>
+We need:
+</p>
+
+<p>
+(11,13) = (2,1) + λ(3,4)
+</p>
+
+<p>
+Compare the x-components:
+</p>
+
+<p>
+11 = 2 + 3λ
+</p>
+
+<p>
+9 = 3λ
+</p>
+
+<p>
+<b>λ = 3</b>
+</p>
+
+<p>
+Check the y-component:
+</p>
+
+<p>
+1 + 4(3) = 13
+</p>
+
+<p>
+The y-coordinate is also correct.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>P(11,13) lies on the line.</b>
+</p>
+
+<h3>Example 6: Showing a Point Is Not on a Line</h3>
+
+<p>
+The line is:
+</p>
+
+<p>
+<b>r = (1,2) + λ(2,3)</b>
+</p>
+
+<p>
+Test P(7,10).
+</p>
+
+<p>
+Using the x-coordinate:
+</p>
+
+<p>
+7 = 1 + 2λ
+</p>
+
+<p>
+6 = 2λ
+</p>
+
+<p>
+λ = 3
+</p>
+
+<p>
+Now check the y-coordinate:
+</p>
+
+<p>
+2 + 3(3) = 11
+</p>
+
+<p>
+But P has y-coordinate 10.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<p>
+<b>P(7,10) does not lie on the line.</b>
+</p>
+
+<h3>Key Rule</h3>
+
+<p>
+The vector equation of a straight line is:
+</p>
+
+<p style="text-align:center;">
+<b>r = a + λd</b>
+</p>
+
+<p>
+Think of it as:
+</p>
+
+<p style="text-align:center;">
+<b>starting point + amount of movement × direction</b>
+</p>
+
+<p>
+Changing λ moves you to different points on the same straight line.
+</p>
+`,
+
+  [
+    {
+      q: "Write the vector equation of the line passing through A(3,2) with direction vector (4,1).",
+      hint: "Use r = a + λd.",
+      steps: [
+        "Position vector of A = (3,2)",
+        "Direction vector = (4,1)",
+        "r = (3,2) + λ(4,1)"
+      ],
+      ans: "r = (3,2) + λ(4,1)",
+      why: "A line is determined by a point on the line and a direction vector."
+    },
+
+    {
+      q: "For r = (2,5) + λ(3,-1), find the point when λ = 4.",
+      hint: "Substitute λ = 4.",
+      steps: [
+        "r = (2,5) + 4(3,-1)",
+        "r = (2,5) + (12,-4)",
+        "r = (14,1)"
+      ],
+      ans: "(14,1)",
+      why: "The scalar λ tells us how many times the direction vector is added to the starting point."
+    },
+
+    {
+      q: "A line passes through A(1,3) and B(6,9). Find a direction vector and write the vector equation of the line.",
+      hint: "Find AB = B - A.",
+      steps: [
+        "AB = (6,9) - (1,3)",
+        "AB = (5,6)",
+        "A position vector = (1,3)",
+        "Therefore r = (1,3) + λ(5,6)"
+      ],
+      ans: "Direction vector = (5,6); r = (1,3) + λ(5,6)",
+      why: "The vector from one known point to another gives a direction vector for the line."
+    },
+
+    {
+      q: "Determine whether P(8,9) lies on r = (2,1) + λ(2,2).",
+      hint: "Find λ from one component and check the other.",
+      steps: [
+        "8 = 2 + 2λ",
+        "6 = 2λ",
+        "λ = 3",
+        "Check y: 1 + 2(3) = 7",
+        "But P has y = 9."
+      ],
+      ans: "No, P(8,9) does not lie on the line.",
+      why: "The same value of λ must satisfy both coordinate equations."
+    },
+
+    {
+      q: "Determine whether P(14,17) lies on r = (2,5) + λ(4,3).",
+      hint: "Find λ using the x-coordinate, then check the y-coordinate.",
+      steps: [
+        "14 = 2 + 4λ",
+        "12 = 4λ",
+        "λ = 3",
+        "Check y: 5 + 3(3) = 14",
+        "The given y-coordinate is 17."
+      ],
+      ans: "No, P(14,17) does not lie on the line.",
+      why: "Although the x-coordinate gives λ = 3, that value does not produce the required y-coordinate."
+    },
+
+    {
+      q: "Find the point on r = (4,-2) + λ(2,5) when λ = -2.",
+      hint: "Multiply the direction vector by -2.",
+      steps: [
+        "r = (4,-2) + (-2)(2,5)",
+        "r = (4,-2) + (-4,-10)",
+        "r = (0,-12)"
+      ],
+      ans: "(0,-12)",
+      why: "A negative value of λ moves in the opposite direction along the same straight line."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Intersection of Two Vector Lines",
+
+  `
+<h2>Intersection of Two Vector Lines</h2>
+
+<p><b>One concept:</b> Find the point where two vector equations of lines meet by making their coordinates equal.</p>
+
+<p>Suppose two lines are:</p>
+
+<p>
+<b>Line 1:</b> 
+\\[
+\\mathbf r=\\mathbf a+\\lambda\\mathbf d
+\\]
+</p>
+
+<p>
+<b>Line 2:</b>
+\\[
+\\mathbf r=\\mathbf b+\\mu\\mathbf e
+\\]
+</p>
+
+<p>
+At their intersection, both equations describe the <b>same point</b>.
+Therefore, their x-coordinates are equal and their y-coordinates are equal.
+</p>
+
+<h3>Example 1: Basic Intersection</h3>
+
+<p>Find the intersection of:</p>
+
+<p>
+\\[
+\\mathbf r=(1,2)+\\lambda(2,1)
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+\\mathbf r=(7,5)+\\mu(-1,1)
+\\]
+</p>
+
+<p><b>Step 1: Write each line in coordinate form.</b></p>
+
+<p>Line 1:</p>
+
+<p>
+\\[
+(x,y)=(1+2\\lambda,\\ 2+\\lambda)
+\\]
+</p>
+
+<p>Line 2:</p>
+
+<p>
+\\[
+(x,y)=(7-\\mu,\\ 5+\\mu)
+\\]
+</p>
+
+<p><b>Step 2: Equate the x-coordinates.</b></p>
+
+<p>
+\\[
+1+2\\lambda=7-\\mu
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+2\\lambda+\\mu=6
+\\]
+</p>
+
+<p><b>Step 3: Equate the y-coordinates.</b></p>
+
+<p>
+\\[
+2+\\lambda=5+\\mu
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\lambda-\\mu=3
+\\]
+</p>
+
+<p><b>Step 4: Solve the two equations.</b></p>
+
+<p>
+\\[
+2\\lambda+\\mu=6
+\\]
+</p>
+
+<p>
+\\[
+\\lambda-\\mu=3
+\\]
+</p>
+
+<p>Add them:</p>
+
+<p>
+\\[
+3\\lambda=9
+\\]</p>
+
+<p>
+\\[
+\\lambda=3
+\\]
+</p>
+
+<p>Substitute into:</p>
+
+<p>
+\\[
+\\lambda-\\mu=3
+\\]
+</p>
+
+<p>
+\\[
+3-\\mu=3
+\\]</p>
+
+<p>
+\\[
+\\mu=0
+\\]
+</p>
+
+<p><b>Step 5: Find the intersection point.</b></p>
+
+<p>Use Line 1:</p>
+
+<p>
+\\[
+(x,y)=(1+2(3),\\ 2+3)
+\\]</p>
+
+<p>
+\\[
+(x,y)=(7,5)
+\\]
+</p>
+
+<p><b>Intersection = (7,5)</b></p>
+
+<h3>Example 2: Intersection with Negative Values</h3>
+
+<p>Find the intersection of:</p>
+
+<p>
+\\[
+\\mathbf r=(4,-1)+\\lambda(-2,3)
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+\\mathbf r=(-2,8)+\\mu(1,-1)
+\\]
+</p>
+
+<p><b>Step 1: Convert to coordinates.</b></p>
+
+<p>First line:</p>
+
+<p>
+\\[
+(x,y)=(4-2\\lambda,\\ -1+3\\lambda)
+\\]
+</p>
+
+<p>Second line:</p>
+
+<p>
+\\[
+(x,y)=(-2+\\mu,\\ 8-\\mu)
+\\]
+</p>
+
+<p><b>Step 2: Equate x-coordinates.</b></p>
+
+<p>
+\\[
+4-2\\lambda=-2+\\mu
+\\]
+</p>
+
+<p>
+\\[
+2\\lambda+\\mu=6
+\\]
+</p>
+
+<p><b>Step 3: Equate y-coordinates.</b></p>
+
+<p>
+\\[
+-1+3\\lambda=8-\\mu
+\\]
+</p>
+
+<p>
+\\[
+3\\lambda+\\mu=9
+\\]
+</p>
+
+<p><b>Step 4: Subtract the equations.</b></p>
+
+<p>
+\\[
+(3\\lambda+\\mu)-(2\\lambda+\\mu)=9-6
+\\]
+</p>
+
+<p>
+\\[
+\\lambda=3
+\\]
+</p>
+
+<p>Substitute:</p>
+
+<p>
+\\[
+2(3)+\\mu=6
+\\]</p>
+
+<p>
+\\[
+\\mu=0
+\\]
+</p>
+
+<p><b>Step 5: Find the point.</b></p>
+
+<p>
+\\[
+(x,y)=(4-2(3),\\ -1+3(3))
+\\]</p>
+
+<p>
+\\[
+(x,y)=(-2,8)
+\\]
+</p>
+
+<p><b>Intersection = (-2,8)</b></p>
+
+<h3>Example 3: Finding the Parameters First</h3>
+
+<p>Two lines are:</p>
+
+<p>
+\\[
+\\mathbf r=(2,1)+\\lambda(3,2)
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+\\mathbf r=(11,7)+\\mu(-1,-1)
+\\]
+</p>
+
+<p>At the intersection:</p>
+
+<p>
+\\[
+(2+3\\lambda,\\ 1+2\\lambda)
+=
+(11-\\mu,\\ 7-\\mu)
+\\]
+</p>
+
+<p>Equate x:</p>
+
+<p>
+\\[
+2+3\\lambda=11-\\mu
+\\]
+</p>
+
+<p>
+\\[
+3\\lambda+\\mu=9
+\\]
+</p>
+
+<p>Equate y:</p>
+
+<p>
+\\[
+1+2\\lambda=7-\\mu
+\\]
+</p>
+
+<p>
+\\[
+2\\lambda+\\mu=6
+\\]
+</p>
+
+<p>Subtract:</p>
+
+<p>
+\\[
+(3\\lambda+\\mu)-(2\\lambda+\\mu)=9-6
+\\]</p>
+
+<p>
+\\[
+\\lambda=3
+\\]
+</p>
+
+<p>Then:</p>
+
+<p>
+\\[
+2(3)+\\mu=6
+\\]</p>
+
+<p>
+\\[
+\\mu=0
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+(x,y)=(2+3(3),\\ 1+2(3))
+\\]</p>
+
+<p>
+\\[
+(x,y)=(11,7)
+\\]
+</p>
+
+<p><b>Intersection = (11,7)</b></p>
+
+<h3>Example 4: Checking Whether a Given Point Is the Intersection</h3>
+
+<p>Consider:</p>
+
+<p>
+\\[
+\\mathbf r=(1,2)+\\lambda(2,1)
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+\\mathbf r=(7,5)+\\mu(-1,1)
+\\]
+</p>
+
+<p>Suppose we claim that <b>(7,5)</b> is their intersection.</p>
+
+<p>For Line 1:</p>
+
+<p>
+\\[
+(7,5)=(1,2)+\\lambda(2,1)
+\\]
+</p>
+
+<p>From the x-coordinate:</p>
+
+<p>
+\\[
+7=1+2\\lambda
+\\]</p>
+
+<p>
+\\[
+\\lambda=3
+\\]
+</p>
+
+<p>Check the y-coordinate:</p>
+
+<p>
+\\[
+5=2+3
+\\]
+</p>
+
+<p>This is true.</p>
+
+<p>For Line 2:</p>
+
+<p>
+\\[
+(7,5)=(7,5)+\\mu(-1,1)
+\\]
+</p>
+
+<p>This happens when:</p>
+
+<p>
+\\[
+\\mu=0
+\\]
+</p>
+
+<p>Therefore <b>(7,5)</b> lies on both lines, so it is their intersection.</p>
+
+<h3>Key Idea</h3>
+
+<p>
+At an intersection, the two vector equations describe <b>one identical point</b>.
+So:
+</p>
+
+<p>
+\\[
+\\boxed{\\text{Equate x-coordinates and y-coordinates, then solve for the parameters.}}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "Find the intersection of r = (1,1) + λ(2,1) and r = (7,4) + μ(-1,0).",
+      hint: "Write both equations as (x,y), then equate x and y.",
+      steps: [
+        "Line 1: (x,y) = (1+2λ, 1+λ).",
+        "Line 2: (x,y) = (7-μ, 4).",
+        "Equate y: 1+λ = 4, so λ = 3.",
+        "Equate x: 1+2(3) = 7-μ.",
+        "7 = 7-μ, so μ = 0.",
+        "The intersection is (7,4)."
+      ],
+      ans: "(7,4)",
+      why: "At the intersection, both vector equations must produce exactly the same coordinates."
+    },
+
+    {
+      q: "Find the intersection of r = (2,3) + λ(1,2) and r = (8,15) + μ(-2,-1).",
+      hint: "Equate the x-components and y-components separately.",
+      steps: [
+        "x: 2+λ = 8-2μ, so λ+2μ=6.",
+        "y: 3+2λ = 15-μ, so 2λ+μ=12.",
+        "From the first equation, λ = 6-2μ.",
+        "Substitute: 2(6-2μ)+μ=12.",
+        "12-4μ+μ=12.",
+        "-3μ=0, so μ=0.",
+        "Therefore λ=6.",
+        "Use the first line: (x,y)=(2+6, 3+12)=(8,15)."
+      ],
+      ans: "(8,15)",
+      why: "The parameter values identify the same point on both lines."
+    },
+
+    {
+      q: "Two lines are r = (3,2) + λ(2,3) and r = (13,17) + μ(-1,-2). Find their intersection.",
+      hint: "Set the x-components equal and then the y-components equal.",
+      steps: [
+        "x: 3+2λ = 13-μ, so 2λ+μ=10.",
+        "y: 2+3λ = 17-2μ, so 3λ+2μ=15.",
+        "From the first equation, μ=10-2λ.",
+        "Substitute: 3λ+2(10-2λ)=15.",
+        "3λ+20-4λ=15.",
+        "-λ=-5, so λ=5.",
+        "μ=10-2(5)=0.",
+        "Intersection: (3+2(5), 2+3(5))=(13,17)."
+      ],
+      ans: "(13,17)",
+      why: "Both equations produce the same coordinates when λ=5 and μ=0."
+    },
+
+    {
+      q: "Does the point (5,7) lie on both lines r = (1,1) + λ(2,3) and r = (5,7) + μ(1,1)?",
+      hint: "First check whether (5,7) can be produced by the first line.",
+      steps: [
+        "For the first line, 5=1+2λ.",
+        "Therefore 2λ=4 and λ=2.",
+        "Check the y-coordinate: 1+3(2)=7.",
+        "So (5,7) lies on the first line.",
+        "For the second line, μ=0 gives (5,7).",
+        "Therefore the point lies on both lines."
+      ],
+      ans: "Yes, (5,7) is the intersection.",
+      why: "A point is the intersection when it lies on both lines."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Vector Proof of the Midpoint Theorem",
+
+  `
+<h2>Vector Proof of the Midpoint Theorem</h2>
+
+<p><b>One concept:</b> Use vectors to prove that the line joining the midpoints of two sides of a triangle is parallel to the third side and half its length.</p>
+
+<h3>The Triangle</h3>
+
+<p>Consider triangle ABC.</p>
+
+<p>Let:</p>
+
+<ul>
+<li>D be the midpoint of AB.</li>
+<li>E be the midpoint of AC.</li>
+</ul>
+
+<p>We want to prove that:</p>
+
+<p>
+\\[
+DE \\parallel BC
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+|DE|=\\frac12|BC|
+\\]
+</p>
+
+<h3>Step 1: Represent the Points</h3>
+
+<p>Take A as the origin.</p>
+
+<p>Let:</p>
+
+<p>
+\\[
+\\vec{AB}=\\mathbf b
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+\\vec{AC}=\\mathbf c
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+B=\\mathbf b
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+C=\\mathbf c
+\\]
+</p>
+
+<h3>Step 2: Find the Position Vector of D</h3>
+
+<p>D is the midpoint of AB.</p>
+
+<p>Therefore D is halfway from A to B:</p>
+
+<p>
+\\[
+\\vec{AD}=\\frac12\\vec{AB}
+\\]
+</p>
+
+<p>Since:</p>
+
+<p>
+\\[
+\\vec{AB}=\\mathbf b
+\\]
+</p>
+
+<p>we get:</p>
+
+<p>
+\\[
+\\boxed{\\vec{AD}=\\frac12\\mathbf b}
+\\]
+</p>
+
+<h3>Step 3: Find the Position Vector of E</h3>
+
+<p>E is the midpoint of AC.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\vec{AE}=\\frac12\\vec{AC}
+\\]
+</p>
+
+<p>Since:</p>
+
+<p>
+\\[
+\\vec{AC}=\\mathbf c
+\\]
+</p>
+
+<p>we get:</p>
+
+<p>
+\\[
+\\boxed{\\vec{AE}=\\frac12\\mathbf c}
+\\]
+</p>
+
+<h3>Step 4: Find DE</h3>
+
+<p>The vector from D to E is:</p>
+
+<p>
+\\[
+\\vec{DE}=\\vec{AE}-\\vec{AD}
+\\]
+</p>
+
+<p>Substitute:</p>
+
+<p>
+\\[
+\\vec{DE}
+=
+\\frac12\\mathbf c-\\frac12\\mathbf b
+\\]
+</p>
+
+<p>Factor out \\(\\frac12\\):</p>
+
+<p>
+\\[
+\\vec{DE}
+=
+\\frac12(\\mathbf c-\\mathbf b)
+\\]
+</p>
+
+<h3>Step 5: Find BC</h3>
+
+<p>The vector from B to C is:</p>
+
+<p>
+\\[
+\\vec{BC}=\\vec{AC}-\\vec{AB}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\vec{BC}=\\mathbf c-\\mathbf b
+\\]
+</p>
+
+<h3>Step 6: Compare DE and BC</h3>
+
+<p>We found:</p>
+
+<p>
+\\[
+\\vec{DE}=\\frac12(\\mathbf c-\\mathbf b)
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+\\vec{BC}=\\mathbf c-\\mathbf b
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{\\vec{DE}=\\frac12\\vec{BC}}
+\\]
+</p>
+
+<p>Since DE is a scalar multiple of BC, the two vectors are parallel.</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{DE\\parallel BC}
+\\]
+</p>
+
+<p>And because DE is half of BC:</p>
+
+<p>
+\\[
+\\boxed{|DE|=\\frac12|BC|}
+\\]
+</p>
+
+<h3>Numerical Example</h3>
+
+<p>Let:</p>
+
+<p>
+\\[
+A=(0,0),\\quad B=(8,2),\\quad C=(4,10)
+\\]
+</p>
+
+<p>D is the midpoint of AB:</p>
+
+<p>
+\\[
+D=
+\\left(
+\\frac{0+8}{2},
+\\frac{0+2}{2}
+\\right)
+\\]
+</p>
+
+<p>
+\\[
+D=(4,1)
+\\]
+</p>
+
+<p>E is the midpoint of AC:</p>
+
+<p>
+\\[
+E=
+\\left(
+\\frac{0+4}{2},
+\\frac{0+10}{2}
+\\right)
+\\]
+</p>
+
+<p>
+\\[
+E=(2,5)
+\\]
+</p>
+
+<p>Now find DE:</p>
+
+<p>
+\\[
+\\vec{DE}=E-D
+\\]
+</p>
+
+<p>
+\\[
+=(2-4,5-1)
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\vec{DE}=(-2,4)}
+\\]
+</p>
+
+<p>Now find BC:</p>
+
+<p>
+\\[
+\\vec{BC}=C-B
+\\]
+</p>
+
+<p>
+\\[
+=(4-8,10-2)
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\vec{BC}=(-4,8)}
+\\]
+</p>
+
+<p>Compare:</p>
+
+<p>
+\\[
+(-2,4)=\\frac12(-4,8)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{\\vec{DE}=\\frac12\\vec{BC}}
+\\]
+</p>
+
+<p>So DE is parallel to BC and has half its length.</p>
+
+<h3>What the Proof Shows</h3>
+
+<p>For any triangle, if D and E are the midpoints of two sides, then:</p>
+
+<p>
+\\[
+\\boxed{\\vec{DE}=\\frac12\\vec{BC}}
+\\]
+</p>
+
+<p>This single vector relationship proves both facts:</p>
+
+<ul>
+<li>DE is parallel to BC.</li>
+<li>DE is half the length of BC.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "In triangle ABC, D and E are the midpoints of AB and AC. If AB = b and AC = c, express DE in terms of b and c.",
+      hint: "First find AD and AE, then use DE = AE - AD.",
+      steps: [
+        "Since D is the midpoint of AB, AD = 1/2 b.",
+        "Since E is the midpoint of AC, AE = 1/2 c.",
+        "DE = AE - AD.",
+        "DE = 1/2 c - 1/2 b.",
+        "Therefore DE = 1/2(c-b)."
+      ],
+      ans: "DE = 1/2(c-b)",
+      why: "The vector from D to E is obtained by subtracting the position vector of D from that of E."
+    },
+
+    {
+      q: "If BC = (10,-6), find the vector DE when D and E are the midpoints of AB and AC.",
+      hint: "The midpoint theorem gives DE = 1/2 BC.",
+      steps: [
+        "Use DE = 1/2 BC.",
+        "DE = 1/2(10,-6).",
+        "Multiply each component by 1/2.",
+        "DE = (5,-3)."
+      ],
+      ans: "DE = (5,-3)",
+      why: "The vector joining the two midpoints is half the vector of the third side."
+    },
+
+    {
+      q: "A=(0,0), B=(6,4), and C=(10,8). D and E are the midpoints of AB and AC. Find DE and BC, then verify the midpoint theorem.",
+      hint: "Find D and E first, then subtract coordinates.",
+      steps: [
+        "D = ((0+6)/2, (0+4)/2) = (3,2).",
+        "E = ((0+10)/2, (0+8)/2) = (5,4).",
+        "DE = (5-3,4-2) = (2,2).",
+        "BC = (10-6,8-4) = (4,4).",
+        "Therefore DE = 1/2 BC."
+      ],
+      ans: "DE=(2,2) and BC=(4,4), so DE=1/2 BC.",
+      why: "Because DE is exactly half of BC, the two vectors are parallel and DE has half the length of BC."
+    },
+
+    {
+      q: "If DE = 1/2 BC, what does this tell you about the direction of DE compared with BC?",
+      hint: "A positive scalar multiple preserves direction.",
+      steps: [
+        "DE = 1/2 BC.",
+        "The scalar 1/2 is positive.",
+        "A positive scalar multiple gives a vector in the same direction.",
+        "Therefore DE and BC are parallel and point in the same direction."
+      ],
+      ans: "DE is parallel to BC and has the same direction.",
+      why: "A positive scalar multiple changes magnitude but does not reverse direction."
+    },
+
+    {
+      q: "Why does DE = 1/2 BC prove that DE is parallel to BC?",
+      hint: "Recall the condition for two vectors to be parallel.",
+      steps: [
+        "Two vectors are parallel if one is a scalar multiple of the other.",
+        "DE = 1/2 BC.",
+        "Therefore DE is a scalar multiple of BC.",
+        "Hence DE is parallel to BC."
+      ],
+      ans: "Because DE is a scalar multiple of BC.",
+      why: "Parallel vectors have the same or opposite direction, which occurs when one is a scalar multiple of the other."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Vector Proof of a Parallelogram",
+
+  `
+<h2>Vector Proof of a Parallelogram</h2>
+
+<p><b>One concept:</b> Use vectors to prove that the diagonals of a parallelogram bisect each other.</p>
+
+<h3>Set Up the Parallelogram</h3>
+
+<p>Consider parallelogram ABCD.</p>
+
+<p>Take A as the origin.</p>
+
+<p>Let:</p>
+
+<p>
+\\[
+\\vec{AB}=\\mathbf b
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+\\vec{AD}=\\mathbf d
+\\]
+</p>
+
+<p>Because opposite sides of a parallelogram are equal and parallel:</p>
+
+<p>
+\\[
+\\vec{BC}=\\mathbf d
+\\]
+</p>
+
+<p>Therefore the position vector of C is:</p>
+
+<p>
+\\[
+\\vec{AC}=\\vec{AB}+\\vec{BC}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\vec{AC}=\\mathbf b+\\mathbf d}
+\\]
+</p>
+
+<h3>Find the Midpoint of AC</h3>
+
+<p>Let M be the midpoint of AC.</p>
+
+<p>The position vector of M is the average of the position vectors of A and C:</p>
+
+<p>
+\\[
+\\vec{AM}
+=
+\\frac{\\vec{AA}+\\vec{AC}}{2}
+\\]
+</p>
+
+<p>Since A is the origin:</p>
+
+<p>
+\\[
+\\vec{AA}=\\mathbf 0
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\vec{AM}
+=
+\\frac{\\mathbf 0+(\\mathbf b+\\mathbf d)}{2}
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{\\vec{AM}=\\frac12(\\mathbf b+\\mathbf d)}
+\\]
+</p>
+
+<h3>Find the Midpoint of BD</h3>
+
+<p>Let N be the midpoint of BD.</p>
+
+<p>The position vectors of B and D are:</p>
+
+<p>
+\\[
+\\vec{AB}=\\mathbf b
+\\]
+</p>
+
+<p>and</p>
+
+<p>
+\\[
+\\vec{AD}=\\mathbf d
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\vec{AN}
+=
+\\frac{\\mathbf b+\\mathbf d}{2}
+\\]
+</p>
+
+<p>So:</p>
+
+<p>
+\\[
+\\boxed{\\vec{AN}=\\frac12(\\mathbf b+\\mathbf d)}
+\\]
+</p>
+
+<h3>Compare the Two Midpoints</h3>
+
+<p>We found:</p>
+
+<p>
+\\[
+\\vec{AM}=\\frac12(\\mathbf b+\\mathbf d)
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+\\vec{AN}=\\frac12(\\mathbf b+\\mathbf d)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{\\vec{AM}=\\vec{AN}}
+\\]
+</p>
+
+<p>So M and N are the same point.</p>
+
+<p>Therefore the diagonals AC and BD have the same midpoint.</p>
+
+<p>Hence:</p>
+
+<p>
+\\[
+\\boxed{\\text{The diagonals of a parallelogram bisect each other.}}
+\\]
+</p>
+
+<h3>Numerical Example</h3>
+
+<p>Consider parallelogram ABCD:</p>
+
+<p>
+\\[
+A=(0,0),\\quad B=(8,2),\\quad D=(4,6)
+\\]
+</p>
+
+<p>First find C.</p>
+
+<p>Since:</p>
+
+<p>
+\\[
+\\vec{AC}=\\vec{AB}+\\vec{AD}
+\\]
+</p>
+
+<p>we have:</p>
+
+<p>
+\\[
+\\vec{AB}=(8,2)
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+\\vec{AD}=(4,6)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+C=(8,2)+(4,6)
+\\]
+</p>
+
+<p>
+\\[
+\boxed{C=(12,8)}
+\\]
+</p>
+
+<h3>Midpoint of AC</h3>
+
+<p>
+\\[
+M=
+\\left(
+\\frac{0+12}{2},
+\\frac{0+8}{2}
+\\right)
+\\]
+</p>
+
+<p>
+\\[
+\boxed{M=(6,4)}
+\\]
+</p>
+
+<h3>Midpoint of BD</h3>
+
+<p>
+\\[
+N=
+\\left(
+\\frac{8+4}{2},
+\\frac{2+6}{2}
+\\right)
+\\]
+</p>
+
+<p>
+\\[
+\boxed{N=(6,4)}
+\\]
+</p>
+
+<p>Since:</p>
+
+<p>
+\\[
+M=N=(6,4)
+\\]
+</p>
+
+<p>the diagonals bisect each other.</p>
+
+<h3>Key Result</h3>
+
+<p>For parallelogram ABCD:</p>
+
+<p>
+\\[
+\\boxed{\\text{Midpoint of AC}=\\text{Midpoint of BD}}
+\\]
+</p>
+
+<p>This is the vector proof that the diagonals of a parallelogram bisect each other.</p>
+`,
+
+  [
+    {
+      q: "In parallelogram ABCD, A is the origin, AB=b and AD=d. Find the position vector of C.",
+      hint: "Move from A to B and then from B to C.",
+      steps: [
+        "AB = b.",
+        "Because ABCD is a parallelogram, BC = AD = d.",
+        "AC = AB + BC.",
+        "Therefore AC = b + d."
+      ],
+      ans: "AC = b + d",
+      why: "The diagonal AC is the sum of the two adjacent side vectors AB and AD."
+    },
+
+    {
+      q: "A=(0,0), B=(6,2), and D=(4,8) are three vertices of parallelogram ABCD. Find C.",
+      hint: "Use AC = AB + AD.",
+      steps: [
+        "AB = (6,2).",
+        "AD = (4,8).",
+        "AC = (6,2) + (4,8).",
+        "AC = (10,10).",
+        "Since A is (0,0), C=(10,10)."
+      ],
+      ans: "C=(10,10)",
+      why: "The fourth vertex is obtained by adding the two adjacent side vectors."
+    },
+
+    {
+      q: "For the parallelogram above, find the midpoint of AC and the midpoint of BD.",
+      hint: "Use the midpoint formula for each diagonal.",
+      steps: [
+        "A=(0,0), C=(10,10).",
+        "Midpoint of AC = ((0+10)/2,(0+10)/2) = (5,5).",
+        "B=(6,2), D=(4,8).",
+        "Midpoint of BD = ((6+4)/2,(2+8)/2) = (5,5)."
+      ],
+      ans: "Both diagonals have midpoint (5,5).",
+      why: "Having the same midpoint means the diagonals bisect each other."
+    },
+
+    {
+      q: "A parallelogram has A=(2,1), B=(8,5), and D=(5,7). Find C.",
+      hint: "C = B + D - A.",
+      steps: [
+        "AB = B-A = (8-2,5-1) = (6,4).",
+        "AD = D-A = (5-2,7-1) = (3,6).",
+        "AC = AB + AD = (6,4)+(3,6) = (9,10).",
+        "Starting from A=(2,1), add AC: C=(11,11)."
+      ],
+      ans: "C=(11,11)",
+      why: "The two adjacent side vectors from A determine the fourth vertex."
+    },
+
+    {
+      q: "What vector relationship proves that the diagonals of a parallelogram bisect each other?",
+      hint: "Compare the position vectors of their midpoints.",
+      steps: [
+        "Let M be the midpoint of AC.",
+        "Let N be the midpoint of BD.",
+        "Both midpoints have position vector 1/2(b+d) when A is the origin.",
+        "Therefore AM=AN.",
+        "Hence M and N are the same point."
+      ],
+      ans: "The two diagonals have the same midpoint.",
+      why: "If both diagonals have the same midpoint, each diagonal divides the other into two equal parts."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Finding the Fourth Vertex of a Parallelogram",
+
+  `
+<h2>Finding the Fourth Vertex of a Parallelogram</h2>
+
+<p><b>One concept:</b> Find a missing vertex of a parallelogram when the other three vertices are known.</p>
+
+<h3>The Key Relationship</h3>
+
+<p>Consider parallelogram ABCD, where A, B, C, D are in order.</p>
+
+<p>The opposite sides are equal and parallel:</p>
+
+<p>
+\\[
+\\vec{AB}=\\vec{DC}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+B-A=C-D
+\\]
+</p>
+
+<p>Rearrange to find D:</p>
+
+<p>
+\\[
+\\boxed{D=A+C-B}
+\\]
+</p>
+
+<p>Similarly, if B is the missing vertex:</p>
+
+<p>
+\\[
+\\boxed{B=A+C-D}
+\\]
+</p>
+
+<h3>Example 1: Find D</h3>
+
+<p>Given:</p>
+
+<p>
+\\[
+A=(1,2),\\quad B=(5,4),\\quad C=(9,8)
+\\]
+</p>
+
+<p>Find D.</p>
+
+<p>Use:</p>
+
+<p>
+\\[
+D=A+C-B
+\\]
+</p>
+
+<p>Substitute:</p>
+
+<p>
+\\[
+D=(1,2)+(9,8)-(5,4)
+\\]
+</p>
+
+<p>Add A and C:</p>
+
+<p>
+\\[
+(1,2)+(9,8)=(10,10)
+\\]
+</p>
+
+<p>Subtract B:</p>
+
+<p>
+\\[
+(10,10)-(5,4)=(5,6)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{D=(5,6)}
+\\]
+</p>
+
+<h3>Check Using Vectors</h3>
+
+<p>Find AB:</p>
+
+<p>
+\\[
+\\vec{AB}=B-A
+\\]
+</p>
+
+<p>
+\\[
+=(5-1,4-2)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AB}=(4,2)
+\\]
+</p>
+
+<p>Find DC:</p>
+
+<p>
+\\[
+\\vec{DC}=C-D
+\\]
+</p>
+
+<p>
+\\[
+=(9-5,8-6)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{DC}=(4,2)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\vec{AB}=\\vec{DC}
+\\]
+</p>
+
+<p>The answer is correct.</p>
+
+<h3>Example 2: Find B</h3>
+
+<p>Given:</p>
+
+<p>
+\\[
+A=(2,1),\\quad C=(8,7),\\quad D=(4,5)
+\\]
+</p>
+
+<p>Find B.</p>
+
+<p>Use:</p>
+
+<p>
+\\[
+B=A+C-D
+\\]
+</p>
+
+<p>Substitute:</p>
+
+<p>
+\\[
+B=(2,1)+(8,7)-(4,5)
+\\]
+</p>
+
+<p>Add:</p>
+
+<p>
+\\[
+(2,1)+(8,7)=(10,8)
+\\]
+</p>
+
+<p>Subtract:</p>
+
+<p>
+\\[
+(10,8)-(4,5)=(6,3)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{B=(6,3)}
+\\]
+</p>
+
+<h3>Example 3: Negative Coordinates</h3>
+
+<p>Given:</p>
+
+<p>
+\\[
+A=(-2,3),\\quad B=(4,-1),\\quad C=(7,5)
+\\]
+</p>
+
+<p>Find D.</p>
+
+<p>Use:</p>
+
+<p>
+\\[
+D=A+C-B
+\\]
+</p>
+
+<p>Substitute:</p>
+
+<p>
+\\[
+D=(-2,3)+(7,5)-(4,-1)
+\\]
+</p>
+
+<p>First add A and C:</p>
+
+<p>
+\\[
+(-2,3)+(7,5)=(5,8)
+\\]
+</p>
+
+<p>Now subtract B:</p>
+
+<p>
+\\[
+(5,8)-(4,-1)
+\\]
+</p>
+
+<p>Remember that subtracting a negative means adding:</p>
+
+<p>
+\\[
+=(5-4,8-(-1))
+\\]
+</p>
+
+<p>
+\\[
+=(1,9)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\boxed{D=(1,9)}
+\\]
+</p>
+
+<h3>Example 4: Find a Missing Vertex Using a Vector Route</h3>
+
+<p>Given:</p>
+
+<p>
+\\[
+A=(3,2),\\quad B=(7,5),\\quad C=(10,11)
+\\]
+</p>
+
+<p>Find D.</p>
+
+<p>First find the vector from B to C:</p>
+
+<p>
+\\[
+\\vec{BC}=C-B
+\\]
+</p>
+
+<p>
+\\[
+=(10-7,11-5)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{BC}=(3,6)
+\\]
+</p>
+
+<p>In a parallelogram:</p>
+
+<p>
+\\[
+\\vec{AD}=\\vec{BC}
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+D=A+\\vec{BC}
+\\]
+</p>
+
+<p>
+\\[
+D=(3,2)+(3,6)
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{D=(6,8)}
+\\]
+</p>
+
+<h3>The Rule to Remember</h3>
+
+<p>For vertices written in order A → B → C → D:</p>
+
+<p>
+\\[
+\\boxed{D=A+C-B}
+\\]
+</p>
+
+<p>The important idea is not memorising the formula. Think of the movement:</p>
+
+<p>
+\\[
+A\\rightarrow B
+\\]
+</p>
+
+<p>must be the same as:</p>
+
+<p>
+\\[
+D\\rightarrow C
+\\]
+</p>
+
+<p>So:</p>
+
+<p>
+\\[
+\\boxed{\\vec{AB}=\\vec{DC}}
+\\]
+</p>
+
+<p>That relationship allows the missing vertex to be found.</p>
+`,
+
+  [
+    {
+      q: "A=(2,3), B=(6,5), and C=(10,9) are consecutive vertices of a parallelogram. Find D.",
+      hint: "Use D=A+C-B.",
+      steps: [
+        "D = A+C-B.",
+        "D = (2,3)+(10,9)-(6,5).",
+        "(2,3)+(10,9)=(12,12).",
+        "(12,12)-(6,5)=(6,7)."
+      ],
+      ans: "D=(6,7)",
+      why: "The fourth vertex must make AB equal and parallel to DC."
+    },
+
+    {
+      q: "A=(1,4), C=(9,10), and D=(3,6) are three consecutive vertices of a parallelogram. Find B.",
+      hint: "For B as the missing vertex, use B=A+C-D.",
+      steps: [
+        "B = A+C-D.",
+        "B = (1,4)+(9,10)-(3,6).",
+        "(1,4)+(9,10)=(10,14).",
+        "(10,14)-(3,6)=(7,8)."
+      ],
+      ans: "B=(7,8)",
+      why: "The missing vertex must make the opposite sides equal and parallel."
+    },
+
+    {
+      q: "A=(-3,2), B=(4,6), and C=(8,-1) are consecutive vertices of a parallelogram. Find D.",
+      hint: "Carefully handle the negative coordinates.",
+      steps: [
+        "D=A+C-B.",
+        "D=(-3,2)+(8,-1)-(4,6).",
+        "(-3,2)+(8,-1)=(5,1).",
+        "(5,1)-(4,6)=(1,-5)."
+      ],
+      ans: "D=(1,-5)",
+      why: "The coordinate calculation gives the only fourth vertex consistent with the parallelogram's opposite sides."
+    },
+
+    {
+      q: "A=(2,1), B=(7,4), and C=(11,9). Find D and verify your answer using vectors.",
+      hint: "After finding D, compare AB with DC.",
+      steps: [
+        "D=A+C-B.",
+        "D=(2,1)+(11,9)-(7,4).",
+        "D=(13,10)-(7,4)=(6,6).",
+        "AB=B-A=(7-2,4-1)=(5,3).",
+        "DC=C-D=(11-6,9-6)=(5,3).",
+        "Therefore AB=DC."
+      ],
+      ans: "D=(6,6), and AB=DC=(5,3).",
+      why: "Equal opposite side vectors confirm that the four points form the required parallelogram."
+    },
+
+    {
+      q: "Why does D=A+C-B work when A, B, C are consecutive vertices of a parallelogram?",
+      hint: "Start with the opposite-side vector relationship.",
+      steps: [
+        "In a parallelogram, AB=DC.",
+        "Therefore B-A=C-D.",
+        "Rearrange: D=A+C-B.",
+        "So the formula comes directly from equal opposite side vectors."
+      ],
+      ans: "It follows from AB=DC.",
+      why: "The formula is derived from the defining vector relationship between opposite sides."
+    }
+  ]
+);
+add(
+  "math",
+  "vectors",
+  "Vector Proof of Collinearity",
+
+  `
+<h2>Vector Proof of Collinearity</h2>
+
+<p><b>One concept:</b> Prove that three points lie on the same straight line by showing that the vectors between them are scalar multiples.</p>
+
+<h3>The Main Idea</h3>
+
+<p>Suppose we have three points A, B and C.</p>
+
+<p>Find:</p>
+
+<p>
+\\[
+\\vec{AB}=B-A
+\\]
+</p>
+
+<p>and:</p>
+
+<p>
+\\[
+\\vec{AC}=C-A
+\\]
+</p>
+
+<p>If one vector is a scalar multiple of the other, then they have the same direction or opposite directions.</p>
+
+<p>Therefore the three points lie on the same straight line.</p>
+
+<p>The test is:</p>
+
+<p>
+\\[
+\\boxed{\\vec{AC}=k\\vec{AB}}
+\\]
+</p>
+
+<p>for some scalar k.</p>
+
+<h3>Example 1: Prove Three Points Are Collinear</h3>
+
+<p>Given:</p>
+
+<p>
+\\[
+A=(1,2),\\quad B=(4,6),\\quad C=(7,10)
+\\]
+</p>
+
+<p>Find AB:</p>
+
+<p>
+\\[
+\\vec{AB}=B-A
+\\]
+</p>
+
+<p>
+\\[
+=(4-1,6-2)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AB}=(3,4)
+\\]
+</p>
+
+<p>Find AC:</p>
+
+<p>
+\\[
+\\vec{AC}=C-A
+\\]
+</p>
+
+<p>
+\\[
+=(7-1,10-2)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AC}=(6,8)
+\\]
+</p>
+
+<p>Compare:</p>
+
+<p>
+\\[
+(6,8)=2(3,4)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\vec{AC}=2\\vec{AB}
+\\]
+</p>
+
+<p>Since one vector is a scalar multiple of the other:</p>
+
+<p>
+\\[
+\\boxed{A,B,C\\text{ are collinear}}
+\\]
+</p>
+
+<h3>Example 2: Prove Points Are Not Collinear</h3>
+
+<p>Given:</p>
+
+<p>
+\\[
+A=(2,1),\\quad B=(5,5),\\quad C=(8,6)
+\\]
+</p>
+
+<p>Find AB:</p>
+
+<p>
+\\[
+\\vec{AB}=(5-2,5-1)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AB}=(3,4)
+\\]
+</p>
+
+<p>Find AC:</p>
+
+<p>
+\\[
+\\vec{AC}=(8-2,6-1)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AC}=(6,5)
+\\]
+</p>
+
+<p>Check whether AC is a scalar multiple of AB.</p>
+
+<p>If:</p>
+
+<p>
+\\[
+(6,5)=k(3,4)
+\\]
+</p>
+
+<p>the first component gives:</p>
+
+<p>
+\\[
+6=3k
+\\]</p>
+
+<p>
+\\[
+k=2
+\\]
+</p>
+
+<p>But the second component would require:</p>
+
+<p>
+\\[
+5=4(2)=8
+\\]
+</p>
+
+<p>This is false.</p>
+
+<p>Therefore the vectors are not scalar multiples.</p>
+
+<p>Hence:</p>
+
+<p>
+\\[
+\\boxed{A,B,C\\text{ are not collinear}}
+\\]
+</p>
+
+<h3>Example 3: Find the Unknown Coordinate</h3>
+
+<p>Point A is:</p>
+
+<p>
+\\[
+A=(1,2)
+\\]
+</p>
+
+<p>Point B is:</p>
+
+<p>
+\\[
+B=(4,6)
+\\]
+</p>
+
+<p>Point C is:</p>
+
+<p>
+\\[
+C=(7,y)
+\\]
+</p>
+
+<p>Find y if A, B and C are collinear.</p>
+
+<p>First find AB:</p>
+
+<p>
+\\[
+\\vec{AB}=(4-1,6-2)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AB}=(3,4)
+\\]
+</p>
+
+<p>Find AC:</p>
+
+<p>
+\\[
+\\vec{AC}=(7-1,y-2)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AC}=(6,y-2)
+\\]
+</p>
+
+<p>Because the points are collinear, AC must be a multiple of AB.</p>
+
+<p>The x-component tells us:</p>
+
+<p>
+\\[
+6=2(3)
+\\]
+</p>
+
+<p>Therefore the same multiplier must be 2 for the y-component:</p>
+
+<p>
+\\[
+y-2=2(4)
+\\]
+</p>
+
+<p>
+\\[
+y-2=8
+\\]
+</p>
+
+<p>
+\\[
+\\boxed{y=10}
+\\]
+</p>
+
+<h3>Example 4: Using a Different Starting Point</h3>
+
+<p>Given:</p>
+
+<p>
+\\[
+A=(8,7),\\quad B=(2,1),\\quad C=(-4,-5)
+\\]
+</p>
+
+<p>Find AB:</p>
+
+<p>
+\\[
+\\vec{AB}=(2-8,1-7)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{AB}=(-6,-6)
+\\]
+</p>
+
+<p>Find BC:</p>
+
+<p>
+\\[
+\\vec{BC}=(-4-2,-5-1)
+\\]
+</p>
+
+<p>
+\\[
+\\vec{BC}=(-6,-6)
+\\]
+</p>
+
+<p>Therefore:</p>
+
+<p>
+\\[
+\\vec{AB}=\\vec{BC}
+\\]
+</p>
+
+<p>The two vectors have the same direction.</p>
+
+<p>Hence:</p>
+
+<p>
+\\[
+\\boxed{A,B,C\\text{ are collinear}}
+\\]
+</p>
+
+<h3>Important Distinction</h3>
+
+<p>Do not confuse <b>equal vectors</b> with <b>parallel vectors</b>.</p>
+
+<p>For collinearity, the vectors only need to be scalar multiples:</p>
+
+<p>
+\\[
+\\boxed{\\vec{AC}=k\\vec{AB}}
+\\]
+</p>
+
+<p>The scalar can be positive or negative.</p>
+
+<p>For example:</p>
+
+<p>
+\\[
+\\vec{AC}=-2\\vec{AB}
+\\]
+</p>
+
+<p>still means the vectors are parallel, so the points are collinear.</p>
+
+<h3>Final Test</h3>
+
+<p>To prove A, B and C are collinear:</p>
+
+<p>
+\\[
+\\boxed{
+\\text{Find two vectors connecting the points and show one is a scalar multiple of the other.}
+}
+\\]
+</p>
+`,
+
+  [
+    {
+      q: "Prove that A=(2,3), B=(5,7), and C=(8,11) are collinear.",
+      hint: "Find AB and AC and compare them.",
+      steps: [
+        "AB=(5-2,7-3)=(3,4).",
+        "AC=(8-2,11-3)=(6,8).",
+        "AC=2AB.",
+        "Therefore A, B and C are collinear."
+      ],
+      ans: "A, B and C are collinear.",
+      why: "AC is a scalar multiple of AB."
+    },
+
+    {
+      q: "Determine whether A=(1,2), B=(4,8), and C=(7,13) are collinear.",
+      hint: "Compare AB and AC.",
+      steps: [
+        "AB=(4-1,8-2)=(3,6).",
+        "AC=(7-1,13-2)=(6,11).",
+        "If they were collinear, AC would have to be k(3,6).",
+        "The x-components give k=2.",
+        "But 2(6)=12, not 11.",
+        "Therefore the vectors are not scalar multiples."
+      ],
+      ans: "They are not collinear.",
+      why: "The two vectors do not have the same direction."
+    },
+
+    {
+      q: "A=(2,1), B=(5,5), and C=(8,y). Find y if the three points are collinear.",
+      hint: "Find AB first, then make AC a scalar multiple of AB.",
+      steps: [
+        "AB=(5-2,5-1)=(3,4).",
+        "AC=(8-2,y-1)=(6,y-1).",
+        "Since 6=2(3), the scalar multiple is 2.",
+        "Therefore y-1=2(4)=8.",
+        "y=9."
+      ],
+      ans: "y=9",
+      why: "The value y makes AC exactly twice AB."
+    },
+
+    {
+      q: "If AB=(4,-3) and AC=(-8,6), are A, B and C collinear?",
+      hint: "Check whether AC is a scalar multiple of AB.",
+      steps: [
+        "Compare AC with AB.",
+        "(-8,6)=-2(4,-3).",
+        "Therefore AC is a scalar multiple of AB.",
+        "Hence the points are collinear."
+      ],
+      ans: "Yes, A, B and C are collinear.",
+      why: "A negative scalar multiple means the vectors are parallel but point in opposite directions."
+    },
+
+    {
+      q: "What condition involving two vectors can be used to prove that three points are collinear?",
+      hint: "Think about parallel vectors.",
+      steps: [
+        "Take two vectors connecting the three points.",
+        "If one vector equals a scalar multiple of the other, they are parallel.",
+        "Therefore the points lie on one straight line."
+      ],
+      ans: "One connecting vector must be a scalar multiple of the other.",
+      why: "Scalar multiples of a vector have the same or opposite direction."
     }
   ]
 );
@@ -19179,66 +35162,3 @@ Two integers <i>a</i> and <i>b</i> are said to be <b>congruent modulo m</b> (den
     }
   ]
 );
-
-add(
-  "math",
-  "number_theory",
-  "Cryptography Basics",
-  `<h2>Cryptography Basics</h2>
-<hr>
-<h3>DEEP NOTES</h3>
-<h4>1. Introduction to Cryptography</h4>
-<p>
-Cryptography is the practice and study of techniques for secure communication in the presence of adversaries. It relies heavily on number theory, modular arithmetic, and one-way mathematical functions.
-</p>
-<hr>
-<h4>2. Symmetric vs Asymmetric Cryptography</h4>
-<ul>
-<li><b>Symmetric Encryption:</b> Same secret key used for encryption and decryption (e.g., Caesar cipher, AES).</li>
-<li><b>Asymmetric (Public Key) Encryption:</b> Uses a public key for encryption and a private key for decryption (e.g., RSA).</li>
-</ul>
-<hr>
-<h4>3. Caesar Cipher</h4>
-<p>
-A substitution cipher where each letter in the plaintext is shifted by a fixed number of positions <i>k</i> down the alphabet:
-<br><code>E(x) = (x + k) mod 26</code>
-<br><code>D(x) = (x - k) mod 26</code>
-</p>
-`,
-  [
-    {
-      q: "Encrypt the letter 'D' using a Caesar cipher with shift k = 3.",
-      hint: "D is letter 3 (A=0, B=1, C=2, D=3). Add shift modulo 26",
-      steps: [
-        "Step 1: Represent 'D' as an integer: A=0, B=1, C=2, D=3",
-        "Step 2: Apply shift: E(3) = (3 + 3) mod 26 = 6",
-        "Step 3: Convert 6 back to letter: 0=A, 1=B, 2=C, 3=D, 4=E, 5=F, 6=G"
-      ],
-      ans: "G",
-      why: "Shifting 'D' forward by 3 alphabet positions yields 'G'."
-    },
-    {
-      q: "What mathematical branch provides the foundation for RSA public key cryptography?",
-      hint: "Study of integers and primes",
-      steps: [
-        "Step 1: RSA relies on the difficulty of factoring large composite numbers into prime factors",
-        "Step 2: It uses Euler's totient theorem and modular arithmetic",
-        "Step 3: Conclude: Number Theory"
-      ],
-      ans: "Number Theory",
-      why: "RSA cryptography is based on number theory principles, specifically modular arithmetic and prime factorization."
-    },
-    {
-      q: "Decrypt the letter 'K' with Caesar shift k = 4.",
-      hint: "Shift backward by 4 positions",
-      steps: [
-        "Step 1: Identify alphabet position of 'K': K is the 11th letter (index 10, A=0)",
-        "Step 2: Shift backwards by 4: (10 - 4) mod 26 = 6",
-        "Step 3: Convert index 6 back to letter: Index 6 corresponds to 'G'"
-      ],
-      ans: "G",
-      why: "Shifting 'K' backward by 4 positions gives 'G' (G, H, I, J, K)."
-    }
-  ]
-);
-
