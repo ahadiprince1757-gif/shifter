@@ -9350,7 +9350,29 @@ html.dark-mode .ai-msg-bubble--assistant {
   color: var(--t);
 }
 
-/* ── Topic Cards ── */
+/* ── Completed chapter/topic card ── */
+.chap-card-humanistic.done {
+  border-color: rgba(52, 199, 89, 0.35);
+  background: rgba(52, 199, 89, 0.04);
+}
+.chap-card-humanistic.done .chap-badge-number {
+  color: #34C759;
+}
+.chap-card-humanistic.done .chap-arrow {
+  color: #34C759;
+  font-size: 1rem;
+}
+
+/* ── Suggested (Up Next) chapter/topic card ── */
+.chap-card-humanistic.suggested {
+  border-color: rgba(116, 184, 232, 0.5);
+  background: rgba(116, 184, 232, 0.06);
+}
+.chap-card-humanistic.suggested .chap-badge-number {
+  color: #74B8E8;
+}
+
+
 .topic-card-humanistic {
   background: var(--sur);
   border: 1px solid var(--bd);

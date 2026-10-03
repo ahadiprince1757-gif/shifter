@@ -13,6 +13,7 @@ import { Navigate } from "react-router-dom";
 const SubjectGrid = React.lazy(() => import("../components/SubjectGrid"));
 const ChapterList = React.lazy(() => import("../components/ChapterList"));
 const TopicList = React.lazy(() => import("../components/TopicList"));
+const SubtopicList = React.lazy(() => import("../components/SubtopicList"));
 const LearnFlow = React.lazy(() => import("../components/LearnFlow"));
 const Gaps = React.lazy(() => import("../components/Gaps"));
 const WelcomeAuthScreen = React.lazy(() => import("../components/WelcomeAuthScreen"));
@@ -49,7 +50,43 @@ const TopicListWrapper = () => {
       openTopic={(topic) =>
         navigate(`/learn/${subjectId}/${chapterId}/${encodeURIComponent(topic)}`)
       }
+      openTopicGroup={(topicGroupName) =>
+        navigate(
+          `/subjects/${subjectId}/chapters/${chapterId}/topics/${encodeURIComponent(topicGroupName)}`
+        )
+      }
       goBack={() => navigate(`/subjects/${subjectId}`)}
+      mastered={mastered}
+    />
+  );
+};
+
+const SubtopicListWrapper = () => {
+  const { subjectId, chapterId, topicGroupId } = useParams();
+  const { subjectMap, chapterMap } = useCurriculum();
+  const { mastered } = useMasteredTopics();
+  const navigate = useNavigate();
+
+  const subject = subjectMap.get(subjectId);
+  const chapter = chapterMap.get(`${subjectId}|${chapterId}`);
+  const topicGroupName = decodeURIComponent(topicGroupId);
+
+  if (!chapter) return <div style={{ padding: "2rem" }}>Chapter not found</div>;
+
+  // Find the topic group object inside the chapter
+  const topicGroup = (chapter.topics || []).find(
+    (t) => typeof t === "object" && t !== null && t.name === topicGroupName
+  ) || { name: topicGroupName, subtopics: [] };
+
+  return (
+    <SubtopicList
+      subject={subject}
+      chapter={chapter}
+      topicGroup={topicGroup}
+      openSubtopic={(subtopic) =>
+        navigate(`/learn/${subjectId}/${chapterId}/${encodeURIComponent(subtopic)}`)
+      }
+      goBack={() => navigate(`/subjects/${subjectId}/chapters/${chapterId}`)}
       mastered={mastered}
     />
   );
@@ -205,6 +242,7 @@ export default function AppRoutes() {
           <Route path="/subjects" element={<RequireAuth><SubjectsView /></RequireAuth>} />
           <Route path="/subjects/:subjectId" element={<RequireAuth><ChapterListWrapper /></RequireAuth>} />
           <Route path="/subjects/:subjectId/chapters/:chapterId" element={<RequireAuth><TopicListWrapper /></RequireAuth>} />
+          <Route path="/subjects/:subjectId/chapters/:chapterId/topics/:topicGroupId" element={<RequireAuth><SubtopicListWrapper /></RequireAuth>} />
           <Route path="/learn/:subjectId/:chapterId/:topicId" element={<RequireAuth><LearnFlowWrapper /></RequireAuth>} />
           <Route path="/verification" element={<RequireAuth><VerificationPage /></RequireAuth>} />
           <Route path="/gaps" element={<RequireAuth><Gaps /></RequireAuth>} />
