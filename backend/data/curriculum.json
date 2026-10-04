@@ -116,7 +116,9 @@
             "name": "Quadrilaterals",
             "subtopics": [
               "Quadrilateral Interior Angle Sum",
-              "Parallelogram"
+              "Parallelogram: Opposite Sides Are Equal",
+              "Parallelogram: Opposite Angles Are Equal",
+              "Parallelogram: Adjacent Angles"
             ]
           },
           {
@@ -800,31 +802,42 @@
               "Introduction to Matrices",
               "Order of a Matrix",
               "Elements of a Matrix",
-              "Types of Matrices",
+              "Row Matrix",
+              "Column Matrix",
+              "Square Matrix",
+              "Zero Matrix",
+              "Diagonal Matrix",
+              "Identity Matrix",
               "Equality of Matrices"
             ]
           },
           {
-            "name": "Matrix Arithemetic",
+            "name": "Matrix 2",
             "subtopics": [
               "Matrix Addition",
               "Matrix Subtraction",
-              "Scalar Multiplication"
+              "Scalar Multiplication",
+              "Matrix Multiplication",
+              "Transpose of a Matrix"
             ]
           },
           {
-            "name": "Matrix of transformation",
+            "name": "Matrix 3",
             "subtopics": [
-              "Reflection in the x-axis",
-              "Reflection in the y-axis",
-              "Reflection in the Line y = x",
-              "Rotation Through 90 Degrees Anticlockwise",
-              "Rotation Through 90 Degrees Clockwise",
-              "Rotation Through 180 Degrees",
-              "Rotation Through 270 Degrees Anticlockwise",
-              "Rotation Through 270 Degrees Clockwise",
-              "Rotating a Triangle Using a Transformation Matrix",
-              "Rotation About a Point Other Than the Origin"
+              "Addition of Matrices",
+              "Subtraction of Matrices",
+              "Scalar Multiplication of a Matrix",
+              "Multiplication of Matrices",
+              "Determinant of a 2 × 2 Matrix"
+            ]
+          },
+          {
+            "name": "Matrix 4",
+            "subtopics": [
+              "Determinant of a 3 × 3 Matrix",
+              "Singular and Non-Singular Matrices",
+              "Inverse of a 2 × 2 Matrix",
+              "Solving Matrix Equations"
             ]
           }
         ]

@@ -3608,7 +3608,6 @@ add(
   "math",
   "geometry",
   "Quadrilaterals",
-  "Parallelogram",
   "Parallelogram: Opposite Sides Are Equal",
 
   `<h2>Opposite Sides of a Parallelogram</h2>
@@ -3692,7 +3691,6 @@ add(
   "math",
   "geometry",
   "Quadrilaterals",
-  "Parallelogram",
   "Parallelogram: Opposite Angles Are Equal",
 
   `<h2>Opposite Angles of a Parallelogram</h2>
@@ -3773,7 +3771,6 @@ add(
   "math",
   "geometry",
   "Quadrilaterals",
-  "Parallelogram",
   "Parallelogram: Adjacent Angles",
 
   `<h2>Adjacent Angles in a Parallelogram</h2>
@@ -20001,230 +19998,137 @@ add(
   `
 <h2>Introduction to Matrices</h2>
 
-<p>
-A <b>matrix</b> is a rectangular arrangement of numbers.
-The numbers are arranged in <b>rows</b> and <b>columns</b>.
-</p>
+<p><b>One concept:</b> A matrix is a rectangular arrangement of numbers in rows and columns.</p>
 
-<p>For example:</p>
+<h3>Understand the arrangement</h3>
 
-<pre>
-A = [ 3   -2   5 ]
-    [ 7    4   1 ]
-</pre>
-
-<p>
-This matrix has two horizontal rows:
-</p>
+<p>Consider the matrix:</p>
 
 <pre>
-[ 3   -2   5 ]   ← Row 1
-[ 7    4   1 ]   ← Row 2
+       [ 4   7   2 ]
+A  =   [ 9   5   6 ]
 </pre>
 
-<p>
-and three vertical columns:
-</p>
+<p>A <b>row</b> runs horizontally, from left to right.</p>
 
 <pre>
-[ 3   -2   5 ]
-  ↓    ↓    ↓
-  1    2    3
- columns
+Row 1: [ 4   7   2 ]
+Row 2: [ 9   5   6 ]
 </pre>
 
-<h3>WHAT IS A ROW?</h3>
+<p>There are two horizontal lines, so the matrix has <b>2 rows</b>.</p>
 
-<p>
-A <b>row</b> is a horizontal line of entries.
-</p>
+<p>A <b>column</b> runs vertically, from top to bottom.</p>
 
 <pre>
-[ 3   8   5 ]
+Column 1    Column 2    Column 3
+    4           7           2
+    9           5           6
 </pre>
 
-<p>
-The three numbers are in one row.
-</p>
+<p>The first column contains 4 and 9. The second contains 7 and 5. The third contains 2 and 6.</p>
 
-<h3>WHAT IS A COLUMN?</h3>
+<p>Therefore, the matrix has <b>3 columns</b>.</p>
 
-<p>
-A <b>column</b> is a vertical line of entries.
-</p>
+<h3>Worked Example 1: Identify the rows</h3>
+
+<p>Given:</p>
 
 <pre>
-[ 3 ]
-[ 8 ]
-[ 5 ]
+B = [ 3   8 ]
+    [ 1   6 ]
+    [ 5   9 ]
 </pre>
 
-<p>
-The three numbers are in one column.
-</p>
+<p><b>Step 1:</b> Read the first horizontal line: [3, 8]. This is row 1.</p>
+<p><b>Step 2:</b> Read the second horizontal line: [1, 6]. This is row 2.</p>
+<p><b>Step 3:</b> Read the third horizontal line: [5, 9]. This is row 3.</p>
 
-<h3>WORKED EXAMPLE 1</h3>
+<p>There are three horizontal lines.</p>
+<p><b>Answer: 3 rows.</b></p>
 
-<p>Consider:</p>
+<h3>Worked Example 2: Identify the columns</h3>
+
+<p>Given:</p>
 
 <pre>
-A = [ 4   7 ]
-    [ 2   9 ]
+C = [ 2   4   6 ]
+    [ 7   9   1 ]
 </pre>
 
-<p>
-Read across the first horizontal line:
-</p>
+<p><b>Step 1:</b> Read down the first position: 2, 7. That is column 1.</p>
+<p><b>Step 2:</b> Read down the second position: 4, 9. That is column 2.</p>
+<p><b>Step 3:</b> Read down the third position: 6, 1. That is column 3.</p>
+
+<p>There are three vertical positions.</p>
+<p><b>Answer: 3 columns.</b></p>
+
+<h3>Worked Example 3: Count rows and columns</h3>
+
+<p>Given:</p>
 
 <pre>
-[ 4   7 ]
+D = [ 5   2   8   4 ]
+    [ 1   7   3   9 ]
 </pre>
 
-<p>
-That is <b>row 1</b>.
-</p>
+<p><b>Step 1:</b> Count the horizontal lines. There are 2, so there are 2 rows.</p>
+<p><b>Step 2:</b> Count the entries across the first row. There are 4 entries, so there are 4 columns.</p>
 
-<p>
-Read across the second horizontal line:
-</p>
+<p><b>Answer: 2 rows and 4 columns.</b></p>
 
-<pre>
-[ 2   9 ]
-</pre>
+<h3>Common mistake</h3>
 
-<p>
-That is <b>row 2</b>.
-</p>
-
-<p>
-Therefore A has <b>2 rows</b>.
-</p>
-
-<h3>WORKED EXAMPLE 2</h3>
-
-<p>Consider:</p>
-
-<pre>
-B = [ 1   5   8 ]
-    [ 3   6   2 ]
-    [ 7   4   9 ]
-</pre>
-
-<p>
-There are three horizontal rows:
-</p>
-
-<pre>
-Row 1: [1   5   8]
-
-Row 2: [3   6   2]
-
-Row 3: [7   4   9]
-</pre>
-
-<p>
-Therefore B has <b>3 rows</b>.
-</p>
-
-<h3>WORKED EXAMPLE 3</h3>
-
-<p>Consider:</p>
-
-<pre>
-C = [ 2   4   6   8 ]
-    [ 1   3   5   7 ]
-</pre>
-
-<p>
-The rows are:
-</p>
-
-<pre>
-[ 2   4   6   8 ]
-
-[ 1   3   5   7 ]
-</pre>
-
-<p>
-Therefore C has <b>2 rows</b>.
-</p>
-
-<p>
-The columns are:
-</p>
-
-<pre>
-[2]   [4]   [6]   [8]
-[1]   [3]   [5]   [7]
-</pre>
-
-<p>
-Therefore C has <b>4 columns</b>.
-</p>
-
-<h3>KEY IDEA</h3>
-
-<p>
-A matrix is simply numbers organised in a rectangular pattern.
-</p>
-
-<p>
-<b>Rows go across.</b>
-</p>
-
-<p>
-<b>Columns go down.</b>
-</p>
+<p>Do not confuse rows with columns. Rows go across; columns go down. Count the horizontal lines for rows and the vertical positions for columns.</p>
 `,
 
   [
     {
-      q: "How many rows are in [[4,7,2],[1,5,9]]?",
-      hint: "Count the horizontal lines.",
+      q: "How many rows are in A = [[4,7,2],[1,5,9]]?",
+      hint: "Count the horizontal lines, not the individual numbers.",
       steps: [
-        "First row = [4,7,2]",
-        "Second row = [1,5,9]",
-        "There are 2 rows."
+        "The first row is [4,7,2].",
+        "The second row is [1,5,9].",
+        "There are 2 horizontal rows."
       ],
       ans: "2",
-      why: "Rows are the horizontal lines of entries."
+      why: "Each horizontal line of entries forms one row."
     },
     {
-      q: "How many columns are in [[2,4,6],[1,3,5]]?",
-      hint: "Count the vertical positions.",
+      q: "How many columns are in B = [[3,8],[1,6],[5,9]]?",
+      hint: "Count the vertical positions from left to right.",
       steps: [
-        "Column 1 contains 2 and 1.",
-        "Column 2 contains 4 and 3.",
-        "Column 3 contains 6 and 5.",
-        "There are 3 columns."
+        "The first column contains 3, 1 and 5.",
+        "The second column contains 8, 6 and 9.",
+        "There are 2 vertical columns."
       ],
-      ans: "3",
-      why: "Columns are the vertical lines of entries."
+      ans: "2",
+      why: "Entries directly above and below one another occupy the same column."
     },
     {
-      q: "How many rows and columns are in [[1,2,3],[4,5,6],[7,8,9]]?",
-      hint: "Count across and then down.",
+      q: "A = [[2,4,6,8],[1,3,5,7]]. State the number of rows and columns.",
+      hint: "Count horizontal lines first, then entries across a row.",
       steps: [
-        "There are 3 horizontal rows.",
-        "There are 3 vertical columns."
+        "There are 2 horizontal lines, so there are 2 rows.",
+        "Each row has 4 entries.",
+        "The matrix therefore has 4 columns."
       ],
-      ans: "3 rows and 3 columns",
-      why: "The matrix contains three horizontal rows and three vertical columns."
+      ans: "2 rows and 4 columns",
+      why: "Rows are counted horizontally and columns vertically."
     },
     {
       q: "Which is a row: [2,5,8] or [[2],[5],[8]]?",
-      hint: "A row goes horizontally.",
+      hint: "A row is arranged horizontally.",
       steps: [
-        "[2,5,8] is horizontal.",
-        "Therefore it is a row."
+        "[2,5,8] places the entries side by side.",
+        "The entries in [[2],[5],[8]] are arranged vertically.",
+        "Therefore [2,5,8] is a row."
       ],
       ans: "[2,5,8]",
-      why: "Rows are written horizontally."
+      why: "A row is a horizontal arrangement of entries."
     }
   ]
 );
-
-
 add(
   "math",
   "matrices",
@@ -20234,63 +20138,26 @@ add(
   `
 <h2>Order of a Matrix</h2>
 
-<p>
-The <b>order</b> of a matrix tells us its size in terms of
-<b>rows and columns</b>.
-</p>
+<p><b>One concept:</b> The order of a matrix is the number of rows followed by the number of columns.</p>
 
-<p>
-We write the order as:
-</p>
+<p><b>Rule:</b> Order = rows × columns.</p>
 
-<p><b>number of rows × number of columns</b></p>
+<p>The multiplication sign here separates the two dimensions. It does not mean that we multiply the dimensions when writing the order.</p>
 
-<p>
-Remember:
-</p>
-
-<p><b>Rows come first. Columns come second.</b></p>
-
-<h3>WORKED EXAMPLE 1</h3>
+<h3>Worked Example 1: A matrix with 2 rows and 3 columns</h3>
 
 <pre>
 A = [ 3   5   7 ]
     [ 2   4   6 ]
 </pre>
 
-<p>
-Count the rows:
-</p>
+<p><b>Step 1:</b> Count the horizontal lines. There are 2 rows.</p>
+<p><b>Step 2:</b> Count the entries across one row. There are 3 columns.</p>
+<p><b>Step 3:</b> Write rows first and columns second.</p>
 
-<pre>
-Row 1: [3   5   7]
-Row 2: [2   4   6]
-</pre>
+<p><b>Order of A = 2 × 3.</b></p>
 
-<p>
-There are <b>2 rows</b>.
-</p>
-
-<p>
-Now count the columns:
-</p>
-
-<pre>
-[3] [5] [7]
-[2] [4] [6]
-</pre>
-
-<p>
-There are <b>3 columns</b>.
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p><b>Order = 2 × 3</b></p>
-
-<h3>WORKED EXAMPLE 2</h3>
+<h3>Worked Example 2: A matrix with 4 rows and 2 columns</h3>
 
 <pre>
 B = [ 1   4 ]
@@ -20299,128 +20166,94 @@ B = [ 1   4 ]
     [ 7   8 ]
 </pre>
 
-<p>
-There are 4 rows and 2 columns.
-</p>
+<p><b>Step 1:</b> Count the horizontal lines. There are 4 rows.</p>
+<p><b>Step 2:</b> Each row has 2 entries, so there are 2 columns.</p>
+<p><b>Step 3:</b> Write rows before columns.</p>
 
-<p>
-Therefore:
-</p>
+<p><b>Order of B = 4 × 2.</b></p>
 
-<p><b>Order = 4 × 2</b></p>
-
-<h3>WORKED EXAMPLE 3</h3>
+<h3>Worked Example 3: Avoid reversing the order</h3>
 
 <pre>
-C = [ 2   4   6   8 ]
-    [ 1   3   5   7 ]
-    [ 9   0   2   4 ]
+C = [ 8   1   5   3 ]
+    [ 2   6   4   9 ]
+    [ 7   0   3   1 ]
 </pre>
 
-<p>
-There are 3 rows.
-</p>
+<p><b>Step 1:</b> Count the horizontal lines: 3 rows.</p>
+<p><b>Step 2:</b> Count the entries across a row: 4 columns.</p>
+<p><b>Step 3:</b> The order must begin with 3 because there are 3 rows.</p>
 
-<p>
-There are 4 columns.
-</p>
+<p><b>Order of C = 3 × 4, not 4 × 3.</b></p>
 
-<p>
-Therefore:
-</p>
+<h3>Worked Example 4: Find the total number of entries</h3>
 
-<p><b>Order = 3 × 4</b></p>
+<p>A matrix has order 3 × 5. How many entries does it contain?</p>
 
-<h3>NUMBER OF ELEMENTS</h3>
-
-<p>
-The order also allows us to find the total number of entries.
-</p>
-
-<p>
-Multiply:
-</p>
-
-<p>
-<b>number of rows × number of columns</b>
-</p>
-
-<p>For example:</p>
+<p><b>Step 1:</b> The first number tells us there are 3 rows.</p>
+<p><b>Step 2:</b> The second number tells us there are 5 columns.</p>
+<p><b>Step 3:</b> Each of the 3 rows has 5 entries. Add the entries row by row:</p>
 
 <pre>
-3 × 4 = 12
+5 + 5 + 5 = 15
 </pre>
 
-<p>
-Therefore a 3 × 4 matrix contains <b>12 elements</b>.
-</p>
+<p>Equivalently, calculate 3 × 5 = 15.</p>
+<p><b>Answer: 15 entries.</b></p>
 
-<h3>IMPORTANT</h3>
+<h3>Common mistake</h3>
 
-<p>
-Do not reverse the order.
-</p>
-
-<p>
-A matrix with 2 rows and 5 columns is:
-</p>
-
-<p><b>2 × 5</b></p>
-
-<p>
-It is not 5 × 2.
-</p>
+<p>Writing 4 × 2 for a matrix with 2 rows and 4 columns reverses the order. Always count rows first.</p>
 `,
 
   [
     {
-      q: "Find the order of [[4,7,2],[1,5,9]].",
-      hint: "Count rows first, then columns.",
+      q: "Find the order of A = [[4,7,2],[1,5,9]].",
+      hint: "Count the rows first and the columns second.",
       steps: [
-        "There are 2 rows.",
-        "There are 3 columns.",
-        "Order = 2 × 3."
+        "There are 2 horizontal rows.",
+        "There are 3 entries across each row, so there are 3 columns.",
+        "Write rows first: 2 × 3."
       ],
       ans: "2 × 3",
-      why: "The order is written as rows × columns."
+      why: "The order of a matrix is written as rows × columns."
     },
     {
-      q: "Find the order of [[1,2],[3,4],[5,6],[7,8]].",
-      hint: "Count the horizontal rows.",
+      q: "Find the order of B = [[1,2],[3,4],[5,6],[7,8]].",
+      hint: "Count the horizontal lines before the vertical positions.",
       steps: [
-        "There are 4 rows.",
+        "There are 4 horizontal rows.",
         "There are 2 columns.",
-        "Order = 4 × 2."
+        "Write the row count first: 4 × 2."
       ],
       ans: "4 × 2",
-      why: "There are four rows and two columns."
+      why: "The first number in the order always gives the number of rows."
     },
     {
-      q: "How many elements are in a 3 × 5 matrix?",
-      hint: "Multiply rows by columns.",
+      q: "A matrix has 5 rows and 3 columns. State its order.",
+      hint: "Do not reverse the two numbers.",
       steps: [
-        "Rows = 3",
-        "Columns = 5",
-        "3 × 5 = 15"
+        "Rows = 5.",
+        "Columns = 3.",
+        "Order = 5 × 3."
       ],
-      ans: "15",
-      why: "The total number of elements is rows × columns."
+      ans: "5 × 3",
+      why: "Rows are written first and columns second."
     },
     {
-      q: "A matrix has 6 rows and 2 columns. What is its order?",
-      hint: "Order = rows × columns.",
+      q: "How many entries are in a matrix of order 4 × 3?",
+      hint: "Each of the 4 rows contains 3 entries.",
       steps: [
-        "Rows = 6",
-        "Columns = 2",
-        "Order = 6 × 2"
+        "There are 4 rows.",
+        "Each row contains 3 entries.",
+        "Total entries = 3 + 3 + 3 + 3 = 12.",
+        "Equivalently, 4 × 3 = 12."
       ],
-      ans: "6 × 2",
-      why: "Rows are written first in the order of a matrix."
+      ans: "12",
+      why: "The total number of entries is the number of rows multiplied by the number of columns."
     }
   ]
 );
-
-
 add(
   "math",
   "matrices",
@@ -20430,46 +20263,20 @@ add(
   `
 <h2>Elements of a Matrix</h2>
 
-<p>
-The individual numbers inside a matrix are called
-<b>elements</b> or <b>entries</b>.
-</p>
+<p><b>One concept:</b> Locate an element using its row number first and column number second.</p>
 
-<p>
-We identify an element using its <b>row</b> and <b>column</b>.
-</p>
+<p>The numbers inside a matrix are called <b>elements</b> or <b>entries</b>.</p>
 
-<h3>THE POSITION RULE</h3>
+<p>For a matrix A, the symbol a<sub>ij</sub> identifies the entry in row i, column j.</p>
 
-<p>
-For a matrix A, the element in:
-</p>
+<ul>
+<li>The first subscript tells you the row.</li>
+<li>The second subscript tells you the column.</li>
+</ul>
 
-<p>
-<b>row i, column j</b>
-</p>
+<h3>Worked Example 1: Find a₂₃</h3>
 
-<p>
-is written as:
-</p>
-
-<p><b>a<sub>ij</sub></b></p>
-
-<p>
-The first number tells us the <b>row</b>.
-</p>
-
-<p>
-The second number tells us the <b>column</b>.
-</p>
-
-<p>
-Think:
-</p>
-
-<p><b>row first → column second</b></p>
-
-<h3>WORKED EXAMPLE 1</h3>
+<p>Given:</p>
 
 <pre>
 A = [ 4   7   2 ]
@@ -20477,397 +20284,1190 @@ A = [ 4   7   2 ]
     [ 1   8   3 ]
 </pre>
 
-<p>
-Find a<sub>23</sub>.
-</p>
+<p>Find a₂₃.</p>
 
-<p>
-The first number is 2, so go to <b>row 2</b>.
-</p>
+<p><b>Step 1:</b> Read the first subscript, 2. This means go to row 2.</p>
 
 <pre>
-[ 9   5   6 ]
+Row 2: [ 9   5   6 ]
 </pre>
 
-<p>
-The second number is 3, so take <b>column 3</b>.
-</p>
+<p><b>Step 2:</b> Read the second subscript, 3. Count across to column 3.</p>
 
 <pre>
-[ 9   5   6 ]
-          ↑
-       column 3
+Column 1 = 9
+Column 2 = 5
+Column 3 = 6
 </pre>
 
-<p>
-Therefore:</p>
+<p><b>Answer: a₂₃ = 6.</b></p>
 
-<p><b>a<sub>23</sub> = 6</b></p>
+<p>The answer is 6 because the entry at the intersection of row 2 and column 3 is 6.</p>
 
-<h3>WORKED EXAMPLE 2</h3>
+<h3>Worked Example 2: Find a₃₁</h3>
 
-<p>
-Using the same matrix, find a<sub>31</sub>.
-</p>
+<p>Use the same matrix A and find a₃₁.</p>
 
-<p>
-First go to row 3:
-</p>
+<p><b>Step 1:</b> The first subscript is 3, so select row 3.</p>
 
 <pre>
-[ 1   8   3 ]
+Row 3: [ 1   8   3 ]
 </pre>
 
-<p>
-Then go to column 1:
-</p>
+<p><b>Step 2:</b> The second subscript is 1, so select the first entry in that row.</p>
+
+<p>The first entry in row 3 is 1.</p>
+
+<p><b>Answer: a₃₁ = 1.</b></p>
+
+<h3>Worked Example 3: Find a₁₂</h3>
+
+<p>Use the same matrix A and find a₁₂.</p>
+
+<p><b>Step 1:</b> The first subscript is 1. Select row 1.</p>
 
 <pre>
-[ 1   8   3 ]
-  ↑
-column 1
+Row 1: [ 4   7   2 ]
 </pre>
 
-<p>
-Therefore:
-</p>
+<p><b>Step 2:</b> The second subscript is 2. Select the second entry in row 1.</p>
 
-<p><b>a<sub>31</sub> = 1</b></p>
+<p>The second entry is 7.</p>
 
-<h3>WORKED EXAMPLE 3</h3>
+<p><b>Answer: a₁₂ = 7.</b></p>
 
-<p>
-Find a<sub>12</sub>.
-</p>
+<h3>Worked Example 4: Locate a negative element</h3>
 
-<p>
-Go to row 1:
-</p>
+<p>Given:</p>
 
 <pre>
-[ 4   7   2 ]
+B = [ 2  -1   5 ]
+    [ 4   3   7 ]
 </pre>
 
-<p>
-Then column 2:
-</p>
+<p>Find b₁₂.</p>
 
-<pre>
-[ 4   7   2 ]
-      ↑
-   column 2
-</pre>
+<p><b>Step 1:</b> The first subscript is 1, so select row 1: [2, -1, 5].</p>
+<p><b>Step 2:</b> The second subscript is 2, so select the second entry.</p>
+<p><b>Step 3:</b> The second entry is -1. Keep the negative sign because it is part of the element.</p>
 
-<p>
-Therefore:
-</p>
+<p><b>Answer: b₁₂ = -1.</b></p>
 
-<p><b>a<sub>12</sub> = 7</b></p>
+<h3>Common mistake</h3>
 
-<h3>ANOTHER WAY TO SEE IT</h3>
-
-<pre>
-A = [ 4   7   2 ]
-    [ 9   5   6 ]
-    [ 1   8   3 ]
-
-     ↑
-     |
-   a₁₁
-
-a₂₃ is the entry in
-row 2, column 3.
-</pre>
-
-<h3>IMPORTANT</h3>
-
-<p>
-Never read a<sub>23</sub> as column 2, row 3.
-</p>
-
-<p>
-It always means:
-</p>
-
-<p><b>row 2, column 3.</b></p>
+<p>a₂₃ does not mean column 2, row 3. It means <b>row 2, column 3</b>. Select the row first, then count across to the column.</p>
 `,
 
   [
     {
-      q: "Given A=[[4,7,2],[9,5,6],[1,8,3]], find a23.",
-      hint: "Go to row 2, then column 3.",
+      q: "Given A = [[4,7,2],[9,5,6],[1,8,3]], find a₂₃.",
+      hint: "Select row 2 first, then the third entry in that row.",
       steps: [
-        "Row 2 = [9,5,6]",
-        "Column 3 gives 6",
-        "Therefore a23=6."
+        "Row 2 is [9,5,6].",
+        "The first entry is 9, the second is 5 and the third is 6.",
+        "Therefore a₂₃ = 6."
       ],
       ans: "6",
-      why: "The first subscript identifies the row and the second identifies the column."
+      why: "The subscripts mean row 2, column 3."
     },
     {
-      q: "Given A=[[4,7,2],[9,5,6],[1,8,3]], find a31.",
-      hint: "Find row 3, column 1.",
+      q: "Given A = [[4,7,2],[9,5,6],[1,8,3]], find a₃₁.",
+      hint: "Go to the third row and choose its first entry.",
       steps: [
-        "Row 3 = [1,8,3]",
-        "Column 1 gives 1"
+        "Row 3 is [1,8,3].",
+        "Column 1 is the first entry in that row.",
+        "The first entry is 1."
       ],
       ans: "1",
-      why: "a31 means row 3, column 1."
+      why: "The first subscript identifies row 3; the second identifies column 1."
     },
     {
-      q: "Given A=[[4,7,2],[9,5,6],[1,8,3]], find a12.",
-      hint: "Find row 1, column 2.",
+      q: "Given A = [[4,7,2],[9,5,6],[1,8,3]], find a₁₂.",
+      hint: "Select row 1 and then count to column 2.",
       steps: [
-        "Row 1 = [4,7,2]",
-        "Column 2 gives 7"
+        "Row 1 is [4,7,2].",
+        "The second entry in row 1 is 7.",
+        "Therefore a₁₂ = 7."
       ],
       ans: "7",
-      why: "a12 means row 1, column 2."
+      why: "a₁₂ refers to the entry in row 1, column 2."
     },
     {
-      q: "Given A=[[2,-1,5],[4,3,7]], find a22.",
-      hint: "Go to row 2 and then column 2.",
+      q: "Given B = [[2,-1,5],[4,3,7]], find b₁₂.",
+      hint: "Do not drop the negative sign from an entry.",
       steps: [
-        "Row 2 = [4,3,7]",
-        "Column 2 gives 3"
+        "Row 1 is [2,-1,5].",
+        "Column 2 selects the second entry.",
+        "The second entry is -1."
       ],
-      ans: "3",
-      why: "The element a22 is found at row 2, column 2."
+      ans: "-1",
+      why: "The element is -1, and its negative sign is part of its value."
     }
   ]
 );
-
-
 add(
   "math",
   "matrices",
   "Matrix 1",
-  "Types of Matrices",
+  "Row Matrix",
 
   `
-<h2>Types of Matrices</h2>
+<h2>Row Matrix</h2>
 
-<p>
-Matrices can be classified according to their shape or the arrangement
-of their elements.
-</p>
+<p><b>One concept:</b> A row matrix has exactly one row.</p>
 
-<h3>1. ROW MATRIX</h3>
+<p>A row matrix can contain any positive number of entries, provided all entries are arranged in one horizontal line.</p>
 
-<p>
-A matrix with exactly <b>one row</b> is called a row matrix.
-</p>
+<h3>Worked Example 1: Identify a row matrix</h3>
 
 <pre>
-A = [ 3   5   7   9 ]
+A = [ 3   5   7 ]
 </pre>
 
-<p>
-There is one row and four columns.
-</p>
+<p><b>Step 1:</b> Count the horizontal lines. There is only one.</p>
+<p><b>Step 2:</b> The three entries are arranged side by side on that single line.</p>
+<p><b>Conclusion:</b> A is a row matrix.</p>
 
-<p><b>Order = 1 × 4</b></p>
+<p>Its order is 1 × 3 because it has 1 row and 3 columns.</p>
 
-<h3>2. COLUMN MATRIX</h3>
-
-<p>
-A matrix with exactly <b>one column</b> is called a column matrix.
-</p>
+<h3>Worked Example 2: A row matrix with four entries</h3>
 
 <pre>
-B = [ 3 ]
-    [ 5 ]
-    [ 7 ]
+B = [ 2  -4   6   8 ]
 </pre>
 
-<p>
-There are three rows and one column.
-</p>
+<p><b>Step 1:</b> There is one horizontal line, so there is 1 row.</p>
+<p><b>Step 2:</b> Count the entries: 2, -4, 6 and 8. There are 4 entries, so there are 4 columns.</p>
+<p><b>Step 3:</b> Since there is exactly one row, B is a row matrix.</p>
 
-<p><b>Order = 3 × 1</b></p>
+<p><b>Order = 1 × 4.</b></p>
 
-<h3>3. SQUARE MATRIX</h3>
+<h3>Worked Example 3: Distinguish a row matrix from other shapes</h3>
 
-<p>
-A matrix with the same number of rows and columns is called a
-<b>square matrix</b>.
-</p>
+<p>Consider:</p>
 
 <pre>
-C = [ 2   4 ]
-    [ 7   9 ]
+C = [ 1   2 ]
+    [ 3   4 ]
 </pre>
 
-<p>
-There are 2 rows and 2 columns.
-</p>
+<p><b>Step 1:</b> Count the horizontal lines. There are 2 rows.</p>
+<p><b>Step 2:</b> A row matrix must have exactly 1 row.</p>
+<p><b>Conclusion:</b> C is not a row matrix because it has 2 rows.</p>
 
-<p><b>Order = 2 × 2</b></p>
+<p>Having numbers in the first row does not make the entire matrix a row matrix. The whole matrix must have exactly one row.</p>
 
-<h3>4. ZERO MATRIX</h3>
+<h3>Worked Example 4: Write a row matrix from given entries</h3>
 
-<p>
-A matrix in which every element is zero is called a
-<b>zero matrix</b>.
-</p>
+<p>Write a row matrix containing the entries 5, -2 and 9.</p>
+
+<p><b>Step 1:</b> A row matrix requires one horizontal line.</p>
+<p><b>Step 2:</b> Place the three entries side by side, keeping their values and signs unchanged.</p>
 
 <pre>
-D = [ 0   0 ]
-    [ 0   0 ]
+D = [ 5  -2   9 ]
 </pre>
 
-<h3>5. IDENTITY MATRIX</h3>
+<p><b>Check:</b> There is 1 row and 3 columns. Therefore, D is a row matrix of order 1 × 3.</p>
 
-<p>
-A square matrix with 1s on the main diagonal and 0s everywhere else
-is called an <b>identity matrix</b>.
-</p>
+<h3>Common mistake</h3>
 
-<pre>
-I₂ = [ 1   0 ]
-     [ 0   1 ]
-</pre>
-
-<p>
-The identity matrix is important in matrix multiplication and inverses.
-</p>
-
-<h3>6. DIAGONAL MATRIX</h3>
-
-<p>
-A square matrix is diagonal when every element outside the main
-diagonal is zero.
-</p>
-
-<pre>
-E = [ 4   0   0 ]
-    [ 0   7   0 ]
-    [ 0   0   2 ]
-</pre>
-
-<h3>7. SCALAR MATRIX</h3>
-
-<p>
-A scalar matrix is a diagonal matrix whose main diagonal elements
-are all equal.
-</p>
-
-<pre>
-F = [ 5   0   0 ]
-    [ 0   5   0 ]
-    [ 0   0   5 ]
-</pre>
-
-<h3>8. SYMMETRIC MATRIX</h3>
-
-<p>
-A square matrix is symmetric when reflecting its elements across the
-main diagonal gives the same matrix.
-</p>
-
-<p>
-Equivalently:
-</p>
-
-<p><b>Aᵀ = A</b></p>
-
-<p>For example:</p>
-
-<pre>
-G = [ 2   5 ]
-    [ 5   8 ]
-</pre>
-
-<p>
-The entries on opposite sides of the main diagonal match.
-</p>
-
-<h3>HOW TO IDENTIFY THE TYPE</h3>
-
-<p>
-Look at the structure rather than memorising the names.
-</p>
-
-<pre>
-One row          → Row matrix
-
-One column       → Column matrix
-
-Rows = columns   → Square matrix
-
-All entries 0    → Zero matrix
-
-Diagonal 1s,
-others 0        → Identity matrix
-
-Off-diagonal
-entries 0        → Diagonal matrix
-
-Equal diagonal
-entries          → Scalar matrix
-
-Aᵀ = A           → Symmetric matrix
-</pre>
+<p>A matrix is not a row matrix just because its first line is horizontal. Check the number of rows in the entire matrix: it must be exactly one.</p>
 `,
 
   [
     {
-      q: "What type of matrix is [[3,5,7]]?",
-      hint: "Count the rows.",
+      q: "What type of matrix is A = [[3,5,7]]?",
+      hint: "Count the rows in the entire matrix.",
       steps: [
-        "There is exactly one row.",
-        "Therefore it is a row matrix."
+        "The entries 3, 5 and 7 are on one horizontal line.",
+        "There is exactly 1 row.",
+        "Therefore A is a row matrix."
       ],
       ans: "Row matrix",
       why: "A row matrix has exactly one row."
     },
     {
-      q: "What type of matrix is [[4],[6],[8]]?",
-      hint: "Count the columns.",
+      q: "Find the order of B = [[2,-4,6,8]].",
+      hint: "Count rows first and entries across second.",
       steps: [
-        "There is exactly one column.",
-        "Therefore it is a column matrix."
+        "There is 1 horizontal row.",
+        "There are 4 entries across the row.",
+        "Order = 1 × 4."
+      ],
+      ans: "1 × 4",
+      why: "The order is the number of rows followed by the number of columns."
+    },
+    {
+      q: "Is C = [[1,2],[3,4]] a row matrix?",
+      hint: "A row matrix must have exactly one row.",
+      steps: [
+        "The first horizontal line is [1,2].",
+        "The second horizontal line is [3,4].",
+        "There are 2 rows, not 1.",
+        "Therefore C is not a row matrix."
+      ],
+      ans: "No",
+      why: "A matrix with two rows does not meet the definition of a row matrix."
+    },
+    {
+      q: "Write a row matrix containing 6, -3 and 10.",
+      hint: "Place all three entries on one horizontal line.",
+      steps: [
+        "A row matrix has one row.",
+        "Place 6, -3 and 10 side by side.",
+        "The resulting matrix is [6,-3,10]."
+      ],
+      ans: "[6,-3,10]",
+      why: "All entries are arranged in one horizontal row."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 1",
+  "Column Matrix",
+
+  `
+<h2>Column Matrix</h2>
+
+<p><b>One concept:</b> A column matrix has exactly one column.</p>
+
+<p>Its entries are arranged vertically, one below another.</p>
+
+<h3>Worked Example 1: Identify a column matrix</h3>
+
+<pre>
+A = [ 3 ]
+    [ 5 ]
+    [ 7 ]
+</pre>
+
+<p><b>Step 1:</b> Count the vertical positions. There is only 1 column.</p>
+<p><b>Step 2:</b> Count the horizontal lines. There are 3 rows.</p>
+<p><b>Conclusion:</b> A is a column matrix.</p>
+
+<p>Its order is 3 × 1 because it has 3 rows and 1 column.</p>
+
+<h3>Worked Example 2: A column matrix with four entries</h3>
+
+<pre>
+B = [ 2  ]
+    [ -4 ]
+    [ 6  ]
+    [ 8  ]
+</pre>
+
+<p><b>Step 1:</b> Read the entries from top to bottom: 2, -4, 6 and 8.</p>
+<p><b>Step 2:</b> There are 4 horizontal positions, so there are 4 rows.</p>
+<p><b>Step 3:</b> All entries occupy one vertical position, so there is 1 column.</p>
+
+<p><b>Order = 4 × 1.</b></p>
+
+<h3>Worked Example 3: Distinguish a column matrix from other shapes</h3>
+
+<p>Consider:</p>
+
+<pre>
+C = [ 1   2 ]
+    [ 3   4 ]
+    [ 5   6 ]
+</pre>
+
+<p><b>Step 1:</b> Count the vertical positions. There are 2 columns.</p>
+<p><b>Step 2:</b> A column matrix must have exactly 1 column.</p>
+<p><b>Conclusion:</b> C is not a column matrix because it has 2 columns.</p>
+
+<h3>Worked Example 4: Write a column matrix from given entries</h3>
+
+<p>Write a column matrix containing -2, 4 and 9 in that order.</p>
+
+<p><b>Step 1:</b> A column matrix needs one vertical column.</p>
+<p><b>Step 2:</b> Place -2 at the top, 4 below it and 9 at the bottom.</p>
+
+<pre>
+D = [ -2 ]
+    [  4 ]
+    [  9 ]
+</pre>
+
+<p><b>Check:</b> There are 3 rows and 1 column. Therefore, D is a column matrix of order 3 × 1.</p>
+
+<h3>Common mistake</h3>
+
+<p>Do not call a matrix a column matrix merely because its entries appear in columns. The entire matrix must have exactly one column.</p>
+`,
+
+  [
+    {
+      q: "What type of matrix is A = [[3],[5],[7]]?",
+      hint: "Count the vertical columns.",
+      steps: [
+        "The entries 3, 5 and 7 are arranged vertically.",
+        "There is exactly 1 column.",
+        "Therefore A is a column matrix."
       ],
       ans: "Column matrix",
       why: "A column matrix has exactly one column."
     },
     {
-      q: "What type of matrix is [[2,0],[0,5]]?",
-      hint: "Look at the entries away from the main diagonal.",
+      q: "Find the order of B = [[2],[-4],[6],[8]].",
+      hint: "Count the horizontal rows first.",
       steps: [
-        "The entries outside the main diagonal are zero.",
-        "Therefore it is a diagonal matrix."
+        "There are 4 horizontal positions, so there are 4 rows.",
+        "There is only 1 vertical column.",
+        "Order = 4 × 1."
       ],
-      ans: "Diagonal matrix",
-      why: "A diagonal matrix has zeros everywhere outside its main diagonal."
+      ans: "4 × 1",
+      why: "The order records rows first and columns second."
     },
     {
-      q: "Is [[1,0],[0,1]] an identity matrix?",
-      hint: "Look at the main diagonal and the other entries.",
+      q: "Is C = [[1,2],[3,4],[5,6]] a column matrix?",
+      hint: "Count the columns, not the rows.",
       steps: [
-        "Main diagonal = 1,1",
-        "All other entries = 0",
-        "Therefore it is an identity matrix."
+        "The first column contains 1, 3 and 5.",
+        "The second column contains 2, 4 and 6.",
+        "There are 2 columns.",
+        "A column matrix must have exactly 1 column."
       ],
-      ans: "Yes",
-      why: "An identity matrix has 1s on the main diagonal and 0s elsewhere."
+      ans: "No",
+      why: "C has two columns, so it is not a column matrix."
     },
     {
-      q: "Is [[2,5],[5,8]] symmetric?",
-      hint: "Compare the entries on opposite sides of the main diagonal.",
+      q: "Write a column matrix containing 7, -1 and 5 in that order.",
+      hint: "Put each entry on a new line, keeping the given order.",
       steps: [
-        "Entry above the diagonal = 5",
-        "Corresponding entry below the diagonal = 5",
-        "They are equal.",
-        "Therefore the matrix is symmetric."
+        "Place 7 in the first row.",
+        "Place -1 in the second row.",
+        "Place 5 in the third row.",
+        "Use one vertical column."
       ],
-      ans: "Yes",
-      why: "A symmetric matrix satisfies Aᵀ=A."
+      ans: "[[7],[-1],[5]]",
+      why: "The entries are arranged vertically in one column."
     }
   ]
 );
+add(
+  "math",
+  "matrices",
+  "Matrix 1",
+  "Square Matrix",
 
+  `
+<h2>Square Matrix</h2>
 
+<p><b>One concept:</b> A square matrix has the same number of rows as columns.</p>
+
+<p>That means its order has the form:</p>
+
+<pre>
+n × n
+</pre>
+
+<p>For example, a 2 × 2 matrix is square, a 3 × 3 matrix is square, and a 4 × 4 matrix is square.</p>
+
+<p>The important test is simple:</p>
+
+<p><b>Number of rows = number of columns.</b></p>
+
+<h3>Worked Example 1: Is the matrix square?</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 4   7 ]
+A   =   [ 2   5 ]
+</pre>
+
+<p><b>Step 1: Count the rows.</b></p>
+
+<p>There are two horizontal rows:</p>
+
+<pre>
+Row 1: [ 4   7 ]
+Row 2: [ 2   5 ]
+</pre>
+
+<p>So there are <b>2 rows</b>.</p>
+
+<p><b>Step 2: Count the columns.</b></p>
+
+<pre>
+Column 1: 4, 2
+Column 2: 7, 5
+</pre>
+
+<p>There are <b>2 columns</b>.</p>
+
+<p><b>Step 3: Compare.</b></p>
+
+<pre>
+Rows    = 2
+Columns = 2
+</pre>
+
+<p>The numbers are equal.</p>
+
+<p>Therefore, A is a <b>square matrix</b>.</p>
+
+<p>Its order is:</p>
+
+<pre>
+2 × 2
+</pre>
+
+<h3>Worked Example 2: A matrix that is not square</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 3   8   1 ]
+B   =   [ 5   2   7 ]
+</pre>
+
+<p><b>Step 1:</b> Count the rows.</p>
+
+<p>There are 2 rows.</p>
+
+<p><b>Step 2:</b> Count the columns.</p>
+
+<p>There are 3 columns.</p>
+
+<p>Therefore:</p>
+
+<pre>
+Rows    = 2
+Columns = 3
+</pre>
+
+<p>Since 2 is not equal to 3, B is <b>not</b> a square matrix.</p>
+
+<p>Its order is 2 × 3.</p>
+
+<h3>Worked Example 3: A larger square matrix</h3>
+
+<p>Determine whether the following matrix is square:</p>
+
+<pre>
+        [ 1   4   6 ]
+C   =   [ 2   7   3 ]
+        [ 5   8   9 ]
+</pre>
+
+<p><b>Step 1:</b> Count the rows.</p>
+
+<p>There are 3 rows.</p>
+
+<p><b>Step 2:</b> Count the columns.</p>
+
+<p>There are 3 columns.</p>
+
+<p><b>Step 3:</b> Compare the two numbers.</p>
+
+<pre>
+3 rows = 3 columns
+</pre>
+
+<p>Therefore C is a <b>3 × 3 square matrix</b>.</p>
+
+<h3>Worked Example 4: Construct a square matrix</h3>
+
+<p>A student is asked to write a square matrix of order 3 × 3.</p>
+
+<p>What must the student produce?</p>
+
+<p><b>Step 1:</b> The first number, 3, means there must be 3 rows.</p>
+
+<p><b>Step 2:</b> The second number, 3, means there must be 3 columns.</p>
+
+<p><b>Step 3:</b> Therefore the matrix must contain 3 entries in each of its 3 rows.</p>
+
+<pre>
+        [ a   b   c ]
+A   =   [ d   e   f ]
+        [ g   h   i ]
+</pre>
+
+<p>The actual values do not determine whether the matrix is square. Its <b>shape</b> does.</p>
+
+<h3>Important distinction</h3>
+
+<p>A square matrix is defined by its dimensions, not by the values inside it.</p>
+
+<p>For example:</p>
+
+<pre>
+[ 1   1 ]       [ 8  -4 ]
+[ 1   1 ]       [ 0   3 ]
+</pre>
+
+<p>Both are square because both have 2 rows and 2 columns.</p>
+
+<h3>Common mistake</h3>
+
+<p>Do not look at the numbers and decide whether a matrix is square. Count its rows and columns.</p>
+`,
+
+  [
+    {
+      q: "Determine whether A = [[4,7],[2,5]] is a square matrix.",
+      hint: "Compare the number of rows with the number of columns.",
+      steps: [
+        "A has 2 rows.",
+        "A has 2 columns.",
+        "Since the number of rows equals the number of columns, A is square."
+      ],
+      ans: "Yes, it is a square matrix.",
+      why: "A square matrix has an equal number of rows and columns."
+    },
+
+    {
+      q: "Determine whether B = [[3,8,1],[5,2,7]] is a square matrix.",
+      hint: "Count both dimensions.",
+      steps: [
+        "B has 2 rows.",
+        "B has 3 columns.",
+        "2 is not equal to 3.",
+        "Therefore B is not square."
+      ],
+      ans: "No, it is not a square matrix.",
+      why: "The matrix has 2 rows but 3 columns."
+    },
+
+    {
+      q: "A matrix has order 4 × 4. Is it a square matrix?",
+      hint: "For a square matrix, the two dimensions must be equal.",
+      steps: [
+        "The matrix has 4 rows.",
+        "The matrix has 4 columns.",
+        "4 equals 4.",
+        "Therefore the matrix is square."
+      ],
+      ans: "Yes",
+      why: "A 4 × 4 matrix has the same number of rows and columns."
+    },
+
+    {
+      q: "A student says [[1,2,3],[4,5,6]] is square because it contains 6 numbers arranged evenly. Is the student correct?",
+      hint: "The number of entries is not the test for being square.",
+      steps: [
+        "The matrix has 2 rows.",
+        "It has 3 columns.",
+        "A square matrix requires the number of rows to equal the number of columns.",
+        "2 is not equal to 3.",
+        "Therefore the student is incorrect."
+      ],
+      ans: "No. It is not square.",
+      why: "Being square depends on equal rows and columns, not on the total number of entries."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 1",
+  "Zero Matrix",
+
+  `
+<h2>Zero Matrix</h2>
+
+<p><b>One concept:</b> A zero matrix is a matrix in which every element is zero.</p>
+
+<p>The matrix can have different dimensions. What makes it a zero matrix is not its shape, but the value of <b>every entry</b>.</p>
+
+<h3>Worked Example 1: Recognising a zero matrix</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 0   0 ]
+A   =   [ 0   0 ]
+</pre>
+
+<p><b>Step 1:</b> Inspect every entry.</p>
+
+<p>The first row contains:</p>
+
+<pre>
+0   0
+</pre>
+
+<p>The second row contains:</p>
+
+<pre>
+0   0
+</pre>
+
+<p><b>Step 2:</b> Check whether any entry is different from zero.</p>
+
+<p>There is no non-zero entry.</p>
+
+<p>Therefore A is a <b>zero matrix</b>.</p>
+
+<h3>Worked Example 2: A rectangular zero matrix</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 0   0   0 ]
+B   =   [ 0   0   0 ]
+</pre>
+
+<p><b>Step 1:</b> There are 2 rows and 3 columns.</p>
+
+<p><b>Step 2:</b> Look at every position:</p>
+
+<pre>
+Row 1: 0, 0, 0
+Row 2: 0, 0, 0
+</pre>
+
+<p>Every element is zero.</p>
+
+<p>Therefore B is a <b>zero matrix of order 2 × 3</b>.</p>
+
+<p>Notice that a zero matrix does <b>not</b> have to be square.</p>
+
+<h3>Worked Example 3: Is this a zero matrix?</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 0   0   0 ]
+C   =   [ 0   5   0 ]
+        [ 0   0   0 ]
+</pre>
+
+<p>At first glance, most entries are zero.</p>
+
+<p>But we must inspect <b>every</b> entry.</p>
+
+<p>The middle entry is:</p>
+
+<pre>
+5
+</pre>
+
+<p>Since 5 is not zero, not every element is zero.</p>
+
+<p>Therefore C is <b>not</b> a zero matrix.</p>
+
+<h3>Worked Example 4: Write a zero matrix</h3>
+
+<p>Write a zero matrix of order 3 × 2.</p>
+
+<p><b>Step 1:</b> We need 3 rows.</p>
+
+<p><b>Step 2:</b> We need 2 columns.</p>
+
+<p><b>Step 3:</b> Every position must contain zero.</p>
+
+<pre>
+        [ 0   0 ]
+A   =   [ 0   0 ]
+        [ 0   0 ]
+</pre>
+
+<p>There are 3 rows, 2 columns, and every element is zero.</p>
+
+<p>Therefore this is a <b>3 × 2 zero matrix</b>.</p>
+
+<h3>The key test</h3>
+
+<p>When deciding whether a matrix is a zero matrix, ask:</p>
+
+<p><b>"Is every single entry equal to zero?"</b></p>
+
+<p>If even one entry is non-zero, the matrix is not a zero matrix.</p>
+
+<h3>Common mistake</h3>
+
+<p>Do not decide based on the majority of entries. One non-zero element is enough to make the matrix non-zero.</p>
+`,
+
+  [
+    {
+      q: "Is [[0,0],[0,0]] a zero matrix?",
+      hint: "Check every entry.",
+      steps: [
+        "The first row contains only zeros.",
+        "The second row contains only zeros.",
+        "Every element is zero.",
+        "Therefore it is a zero matrix."
+      ],
+      ans: "Yes",
+      why: "Every element of the matrix is zero."
+    },
+
+    {
+      q: "Is [[0,0,0],[0,0,0]] a zero matrix?",
+      hint: "The matrix does not have to be square.",
+      steps: [
+        "There are 2 rows and 3 columns.",
+        "Every entry is zero.",
+        "The dimensions do not affect whether it is a zero matrix.",
+        "Therefore it is a zero matrix."
+      ],
+      ans: "Yes",
+      why: "A zero matrix can be rectangular; all that matters is that every entry is zero."
+    },
+
+    {
+      q: "Is [[0,0],[0,4]] a zero matrix?",
+      hint: "Look carefully at every entry.",
+      steps: [
+        "Three entries are zero.",
+        "The bottom-right entry is 4.",
+        "4 is not zero.",
+        "Therefore not every entry is zero."
+      ],
+      ans: "No",
+      why: "A single non-zero element means the matrix is not a zero matrix."
+    },
+
+    {
+      q: "Write a zero matrix of order 2 × 3.",
+      hint: "Use 2 rows, 3 columns, and put zero in every position.",
+      steps: [
+        "Create 2 horizontal rows.",
+        "Put 3 entries in each row.",
+        "Make every entry zero.",
+        "The matrix is [[0,0,0],[0,0,0]]."
+      ],
+      ans: "[[0,0,0],[0,0,0]]",
+      why: "It has the required dimensions and every element is zero."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 1",
+  "Diagonal Matrix",
+
+  `
+<h2>Diagonal Matrix</h2>
+
+<p><b>One concept:</b> A diagonal matrix is a square matrix in which every element outside the main diagonal is zero.</p>
+
+<p>The <b>main diagonal</b> runs from the top-left corner to the bottom-right corner.</p>
+
+<pre>
+        [ a   0   0 ]
+A   =   [ 0   b   0 ]
+        [ 0   0   c ]
+
+          ↑   ↑   ↑
+       main diagonal
+</pre>
+
+<p>The entries a, b and c may be any numbers, including zero. What matters is that every entry <b>outside</b> the main diagonal is zero.</p>
+
+<h3>Worked Example 1: Identify the main diagonal</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 4   0   0 ]
+A   =   [ 0   7   0 ]
+        [ 0   0   9 ]
+</pre>
+
+<p>Start at the top-left corner.</p>
+
+<p><b>Step 1:</b> The first diagonal entry is 4.</p>
+
+<p><b>Step 2:</b> Move one row down and one column right. The next diagonal entry is 7.</p>
+
+<p><b>Step 3:</b> Move one row down and one column right again. The final diagonal entry is 9.</p>
+
+<p>Therefore the main diagonal is:</p>
+
+<pre>
+4, 7, 9
+</pre>
+
+<p>Every entry outside this diagonal is zero.</p>
+
+<p>Therefore A is a <b>diagonal matrix</b>.</p>
+
+<h3>Worked Example 2: A diagonal matrix does not need zeros on the diagonal</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 5    0    0 ]
+B   =   [ 0   -2    0 ]
+        [ 0    0    8 ]
+</pre>
+
+<p>The main diagonal contains:</p>
+
+<pre>
+5, -2, 8
+</pre>
+
+<p>These numbers are allowed to be non-zero.</p>
+
+<p>Now inspect everything outside the main diagonal:</p>
+
+<pre>
+0   0
+0   0
+0   0
+</pre>
+
+<p>All are zero.</p>
+
+<p>Therefore B is diagonal.</p>
+
+<h3>Worked Example 3: Find the mistake</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 3   0   0 ]
+C   =   [ 0   4   2 ]
+        [ 0   0   7 ]
+</pre>
+
+<p>Is C diagonal?</p>
+
+<p><b>Step 1:</b> Identify the main diagonal:</p>
+
+<pre>
+3, 4, 7
+</pre>
+
+<p><b>Step 2:</b> Inspect entries outside the diagonal.</p>
+
+<p>The entry in row 2, column 3 is:</p>
+
+<pre>
+2
+</pre>
+
+<p>This entry is outside the main diagonal.</p>
+
+<p>For a diagonal matrix, it must be zero.</p>
+
+<p>But 2 ≠ 0.</p>
+
+<p>Therefore C is <b>not</b> diagonal.</p>
+
+<h3>Worked Example 4: A diagonal matrix can contain zero on its diagonal</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 4   0   0 ]
+D   =   [ 0   0   0 ]
+        [ 0   0   6 ]
+</pre>
+
+<p>The main diagonal is:</p>
+
+<pre>
+4, 0, 6
+</pre>
+
+<p>The zero in the middle does not cause a problem.</p>
+
+<p>Now inspect all entries outside the diagonal. They are all zero.</p>
+
+<p>Therefore D is a <b>diagonal matrix</b>.</p>
+
+<h3>The key test</h3>
+
+<p>Do not ask:</p>
+
+<p>"Are all the numbers on the diagonal non-zero?"</p>
+
+<p>Instead ask:</p>
+
+<p><b>"Are all entries outside the main diagonal zero?"</b></p>
+
+<h3>Common mistake</h3>
+
+<p>A diagonal matrix does not require non-zero diagonal entries. Only the entries <b>outside</b> the main diagonal must be zero.</p>
+`,
+
+  [
+    {
+      q: "Is [[4,0,0],[0,7,0],[0,0,9]] a diagonal matrix?",
+      hint: "Check the entries outside the main diagonal.",
+      steps: [
+        "The main diagonal is 4, 7, 9.",
+        "Every entry outside that diagonal is zero.",
+        "Therefore the matrix satisfies the definition of a diagonal matrix."
+      ],
+      ans: "Yes",
+      why: "Every off-diagonal entry is zero."
+    },
+
+    {
+      q: "Is [[3,0,0],[0,4,2],[0,0,7]] diagonal?",
+      hint: "Look at row 2, column 3.",
+      steps: [
+        "The main diagonal is 3, 4, 7.",
+        "The entry in row 2, column 3 is 2.",
+        "That entry is outside the main diagonal.",
+        "A diagonal matrix requires it to be zero.",
+        "Therefore the matrix is not diagonal."
+      ],
+      ans: "No",
+      why: "The off-diagonal entry 2 violates the definition."
+    },
+
+    {
+      q: "Is [[5,0],[0,0]] a diagonal matrix?",
+      hint: "A zero is allowed on the main diagonal.",
+      steps: [
+        "The main diagonal contains 5 and 0.",
+        "The only entry outside the main diagonal is 0.",
+        "Therefore all off-diagonal entries are zero.",
+        "The matrix is diagonal."
+      ],
+      ans: "Yes",
+      why: "Diagonal entries may be zero; only off-diagonal entries must be zero."
+    },
+
+    {
+      q: "A student says [[0,0],[0,0]] cannot be diagonal because the diagonal entries are zero. Is the student correct?",
+      hint: "The definition places the restriction on entries outside the diagonal.",
+      steps: [
+        "The main diagonal contains 0 and 0.",
+        "Both entries outside the main diagonal are also zero.",
+        "There is no requirement that diagonal entries be non-zero.",
+        "Therefore the matrix is diagonal."
+      ],
+      ans: "No. The student is incorrect.",
+      why: "A zero matrix is also a diagonal matrix because all of its off-diagonal entries are zero."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 1",
+  "Identity Matrix",
+
+  `
+<h2>Identity Matrix</h2>
+
+<p><b>One concept:</b> An identity matrix is a square matrix with 1s on the main diagonal and 0s everywhere else.</p>
+
+<p>The identity matrix of order 2 is:</p>
+
+<pre>
+        [ 1   0 ]
+I₂  =   [ 0   1 ]
+</pre>
+
+<p>The identity matrix of order 3 is:</p>
+
+<pre>
+        [ 1   0   0 ]
+I₃  =   [ 0   1   0 ]
+        [ 0   0   1 ]
+</pre>
+
+<p>Notice the two conditions:</p>
+
+<ol>
+<li>Every entry on the main diagonal is <b>1</b>.</li>
+<li>Every entry outside the main diagonal is <b>0</b>.</li>
+</ol>
+
+<p>Both conditions must be satisfied.</p>
+
+<h3>Worked Example 1: Recognise I₂</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 1   0 ]
+A   =   [ 0   1 ]
+</pre>
+
+<p><b>Step 1:</b> Check the main diagonal.</p>
+
+<pre>
+1
+  \
+   1
+</pre>
+
+<p>Both diagonal entries are 1.</p>
+
+<p><b>Step 2:</b> Check outside the diagonal.</p>
+
+<p>The other two entries are both 0.</p>
+
+<p><b>Step 3:</b> Check that the matrix is square.</p>
+
+<p>It has 2 rows and 2 columns.</p>
+
+<p>Therefore A is the <b>2 × 2 identity matrix</b>, written I₂.</p>
+
+<h3>Worked Example 2: Recognise I₃</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 1   0   0 ]
+B   =   [ 0   1   0 ]
+        [ 0   0   1 ]
+</pre>
+
+<p><b>Step 1:</b> The matrix has 3 rows and 3 columns, so it is square.</p>
+
+<p><b>Step 2:</b> The main diagonal is:</p>
+
+<pre>
+1, 1, 1
+</pre>
+
+<p>Every diagonal entry is 1.</p>
+
+<p><b>Step 3:</b> Every entry outside the diagonal is 0.</p>
+
+<p>Therefore B is the identity matrix I₃.</p>
+
+<h3>Worked Example 3: Why this is NOT an identity matrix</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 1   0 ]
+C   =   [ 0   2 ]
+</pre>
+
+<p>It looks almost like I₂.</p>
+
+<p><b>Step 1:</b> Check the main diagonal.</p>
+
+<pre>
+1, 2
+</pre>
+
+<p><b>Step 2:</b> The second diagonal entry is 2.</p>
+
+<p>For an identity matrix, it must be 1.</p>
+
+<p>Therefore C is <b>not</b> an identity matrix.</p>
+
+<p>It is a diagonal matrix, but it is not an identity matrix.</p>
+
+<h3>Worked Example 4: Why this is NOT an identity matrix</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 1   0 ]
+D   =   [ 1   1 ]
+</pre>
+
+<p><b>Step 1:</b> The main diagonal contains 1 and 1.</p>
+
+<p>So the diagonal condition is satisfied.</p>
+
+<p><b>Step 2:</b> Inspect the entry below the main diagonal.</p>
+
+<p>That entry is 1.</p>
+
+<p>For an identity matrix, every off-diagonal entry must be zero.</p>
+
+<p>But:</p>
+
+<pre>
+1 ≠ 0
+</pre>
+
+<p>Therefore D is <b>not</b> an identity matrix.</p>
+
+<h3>Identity versus diagonal</h3>
+
+<p>Every identity matrix is a diagonal matrix, because its off-diagonal entries are zero.</p>
+
+<p>But not every diagonal matrix is an identity matrix.</p>
+
+<p>For example:</p>
+
+<pre>
+[ 4   0 ]
+[ 0   7 ]
+</pre>
+
+<p>is diagonal, but it is not an identity matrix because the diagonal contains 4 and 7 instead of 1 and 1.</p>
+
+<h3>The key test</h3>
+
+<p>To identify an identity matrix, check:</p>
+
+<pre>
+Main diagonal → ALL 1
+Outside diagonal → ALL 0
+</pre>
+
+<p>Both conditions must be true.</p>
+`,
+
+  [
+    {
+      q: "Is [[1,0],[0,1]] an identity matrix?",
+      hint: "Check the diagonal and the entries outside it.",
+      steps: [
+        "The matrix is square: 2 rows and 2 columns.",
+        "The main diagonal contains 1 and 1.",
+        "The off-diagonal entries are both 0.",
+        "Therefore it is I₂."
+      ],
+      ans: "Yes",
+      why: "It satisfies both identity-matrix conditions."
+    },
+
+    {
+      q: "Is [[1,0],[0,2]] an identity matrix?",
+      hint: "Check every entry on the main diagonal.",
+      steps: [
+        "The main diagonal contains 1 and 2.",
+        "An identity matrix requires every diagonal entry to be 1.",
+        "The second diagonal entry is 2.",
+        "Therefore it is not an identity matrix."
+      ],
+      ans: "No",
+      why: "The diagonal must contain only 1s."
+    },
+
+    {
+      q: "Is [[1,0],[1,1]] an identity matrix?",
+      hint: "The diagonal is correct, but check outside the diagonal.",
+      steps: [
+        "The main diagonal contains 1 and 1.",
+        "The bottom-left entry is outside the main diagonal.",
+        "That entry is 1, but it must be 0.",
+        "Therefore the matrix is not an identity matrix."
+      ],
+      ans: "No",
+      why: "Every off-diagonal entry must be zero."
+    },
+
+    {
+      q: "Which matrix is I₃: A = [[1,0,0],[0,1,0],[0,0,1]] or B = [[1,0,0],[0,2,0],[0,0,1]]?",
+      hint: "The diagonal of an identity matrix must contain only 1s.",
+      steps: [
+        "For A, the main diagonal is 1, 1, 1 and all other entries are zero.",
+        "For B, the main diagonal is 1, 2, 1.",
+        "The 2 in B violates the identity-matrix condition.",
+        "Therefore A is I₃."
+      ],
+      ans: "A",
+      why: "A has 1s on the entire main diagonal and zeros everywhere else."
+    }
+  ]
+);
 add(
   "math",
   "matrices",
@@ -20877,572 +21477,2973 @@ add(
   `
 <h2>Equality of Matrices</h2>
 
-<p>
-Two matrices are <b>equal</b> when they have:
-</p>
+<p><b>One concept:</b> Two matrices are equal only when they have the same order and corresponding elements are equal.</p>
+
+<p>There are therefore <b>two conditions</b> to check:</p>
+
+<ol>
+<li>The matrices must have the same number of rows and columns.</li>
+<li>Every corresponding pair of elements must have the same value.</li>
+</ol>
+
+<p>Both conditions are necessary.</p>
+
+<h3>Worked Example 1: Two equal matrices</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 2   5 ]             [ 2   5 ]
+A   =   [ 7   9 ]     and B = [ 7   9 ]
+</pre>
+
+<p><b>Step 1: Compare the orders.</b></p>
+
+<p>A has 2 rows and 2 columns.</p>
+
+<p>B has 2 rows and 2 columns.</p>
+
+<p>Therefore both are 2 × 2.</p>
+
+<p><b>Step 2: Compare corresponding elements.</b></p>
+
+<pre>
+A₁₁ = 2    B₁₁ = 2
+A₁₂ = 5    B₁₂ = 5
+A₂₁ = 7    B₂₁ = 7
+A₂₂ = 9    B₂₂ = 9
+</pre>
+
+<p>Every corresponding pair is equal.</p>
+
+<p>Therefore:</p>
+
+<pre>
+A = B
+</pre>
+
+<h3>Worked Example 2: Same order but not equal</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 2   5 ]             [ 2   5 ]
+A   =   [ 7   9 ]     and B = [ 7   4 ]
+</pre>
+
+<p><b>Step 1:</b> Both matrices have order 2 × 2.</p>
+
+<p>So the first condition is satisfied.</p>
+
+<p><b>Step 2:</b> Compare corresponding elements.</p>
+
+<p>The first three corresponding pairs agree:</p>
+
+<pre>
+2 = 2
+5 = 5
+7 = 7
+</pre>
+
+<p>But compare the bottom-right entries:</p>
+
+<pre>
+9 ≠ 4
+</pre>
+
+<p>Therefore the matrices are <b>not equal</b>.</p>
+
+<p>One unequal corresponding element is enough to make the matrices unequal.</p>
+
+<h3>Worked Example 3: Same entries but different arrangement</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 1   2 ]             [ 2   1 ]
+A   =   [ 3   4 ]     and B = [ 4   3 ]
+</pre>
+
+<p>Both matrices have order 2 × 2.</p>
+
+<p>However, equality requires the entries to occupy the same corresponding positions.</p>
+
+<p>Compare the top-left entries:</p>
+
+<pre>
+A₁₁ = 1
+B₁₁ = 2
+</pre>
+
+<p>Since:</p>
+
+<pre>
+1 ≠ 2
+</pre>
+
+<p>the matrices are not equal.</p>
+
+<p>Having the same numbers somewhere in the matrices is not enough. They must be in the same corresponding positions.</p>
+
+<h3>Worked Example 4: Can we find an unknown?</h3>
+
+<p>Given:</p>
+
+<pre>
+        [ x   4 ]             [ 7   4 ]
+A   =   [ 2   9 ]     and B = [ 2   9 ]
+</pre>
+
+<p>If A = B, find x.</p>
+
+<p><b>Step 1:</b> Because A and B are equal, corresponding elements must be equal.</p>
+
+<p><b>Step 2:</b> Compare the top-left entries.</p>
+
+<pre>
+A₁₁ = x
+B₁₁ = 7
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+x = 7
+</pre>
+
+<p><b>Step 3:</b> Check the other corresponding entries:</p>
+
+<pre>
+4 = 4
+2 = 2
+9 = 9
+</pre>
+
+<p>Everything agrees.</p>
+
+<p>Therefore:</p>
+
+<pre>
+x = 7
+</pre>
+
+<h3>Worked Example 5: Different orders cannot be equal</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 1   2   3 ]
+A   =   [ 4   5   6 ]
+
+        [ 1   2 ]
+B   =   [ 4   5 ]
+        [ 6   3 ]
+</pre>
+
+<p>A has order:</p>
+
+<pre>
+2 × 3
+</pre>
+
+<p>B has order:</p>
+
+<pre>
+3 × 2
+</pre>
+
+<p>The orders are different.</p>
+
+<p>Therefore the matrices cannot be equal, regardless of the numbers inside them.</p>
+
+<h3>The equality test</h3>
+
+<p>When asked whether A = B, use this exact process:</p>
+
+<pre>
+1. Compare the orders.
+        ↓
+2. If the orders differ → NOT equal.
+        ↓
+3. If the orders agree → compare corresponding entries.
+        ↓
+4. Every pair must be equal.
+</pre>
+
+<p>Do not compare numbers randomly. Compare entries occupying the same position.</p>
+
+<h3>Common mistakes</h3>
 
 <ul>
-<li>the same order, and</li>
-<li>the same corresponding elements.</li>
+<li>Checking only whether the matrices have the same order.</li>
+<li>Checking whether they contain the same numbers without checking positions.</li>
+<li>Ignoring one unequal entry.</li>
+<li>Comparing entries from different positions.</li>
 </ul>
-
-<h3>THE IDEA</h3>
-
-<p>
-Corresponding elements occupy the same position.
-</p>
-
-<pre>
-A = [ 2   5 ]
-    [ 7   9 ]
-
-B = [ 2   5 ]
-    [ 7   9 ]
-</pre>
-
-<p>
-Every corresponding element is equal.
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p><b>A = B</b></p>
-
-<h3>WORKED EXAMPLE 1</h3>
-
-<pre>
-[ x   4 ] = [ 7   4 ]
-[ 3   y ]   [ 3   9 ]
-</pre>
-
-<p>
-Compare the first positions:
-</p>
-
-<p>
-x = 7
-</p>
-
-<p>
-Compare the last positions:
-</p>
-
-<p>
-y = 9
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p><b>x = 7, y = 9</b></p>
-
-<h3>WORKED EXAMPLE 2</h3>
-
-<pre>
-[ 2   x ] = [ 2   8 ]
-[ y   5 ]   [ 6   5 ]
-</pre>
-
-<p>
-Compare corresponding positions:
-</p>
-
-<p>
-x = 8
-</p>
-
-<p>
-y = 6
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p><b>x = 8, y = 6</b></p>
-
-<h3>WORKED EXAMPLE 3</h3>
-
-<pre>
-[ 3   4 ] = [ 3   4   5 ]
-[ 6   7 ]   [ 6   7   8 ]
-</pre>
-
-<p>
-The first matrix is 2 × 2.
-</p>
-
-<p>
-The second matrix is 2 × 3.
-</p>
-
-<p>
-Their orders are different.
-</p>
-
-<p>
-Therefore they cannot be equal.
-</p>
-
-<h3>KEY RULE</h3>
-
-<p>
-For two matrices to be equal:
-</p>
-
-<p>
-<b>Same order + same corresponding elements.</b>
-</p>
 `,
 
   [
     {
-      q: "If [[x,4],[3,y]]=[[7,4],[3,9]], find x and y.",
-      hint: "Compare corresponding positions.",
+      q: "Are A = [[2,5],[7,9]] and B = [[2,5],[7,9]] equal?",
+      hint: "First compare their orders, then compare corresponding entries.",
       steps: [
-        "x corresponds to 7, so x=7",
-        "y corresponds to 9, so y=9"
+        "Both matrices have order 2 × 2.",
+        "Compare 2 with 2: equal.",
+        "Compare 5 with 5: equal.",
+        "Compare 7 with 7: equal.",
+        "Compare 9 with 9: equal.",
+        "All corresponding elements are equal."
       ],
-      ans: "x=7, y=9",
-      why: "Equal matrices have equal corresponding elements."
+      ans: "Yes, A = B.",
+      why: "The matrices have the same order and all corresponding elements are equal."
     },
+
     {
-      q: "If [[2,x],[y,5]]=[[2,8],[6,5]], find x and y.",
-      hint: "Compare each position.",
+      q: "Are A = [[2,5],[7,9]] and B = [[2,5],[7,4]] equal?",
+      hint: "Look for even one corresponding pair that is different.",
       steps: [
-        "x=8",
-        "y=6"
-      ],
-      ans: "x=8, y=6",
-      why: "Each unknown must equal the element in the same position."
-    },
-    {
-      q: "Can a 2×2 matrix equal a 2×3 matrix?",
-      hint: "Compare their orders.",
-      steps: [
-        "First order = 2×2",
-        "Second order = 2×3",
-        "The orders are different.",
-        "Therefore they cannot be equal."
+        "Both matrices have order 2 × 2.",
+        "The first three corresponding entries agree.",
+        "Compare the bottom-right entries: 9 and 4.",
+        "Since 9 is not equal to 4, the matrices are not equal."
       ],
       ans: "No",
-      why: "Equal matrices must have the same order."
+      why: "All corresponding elements must be equal; one mismatch makes the matrices unequal."
+    },
+
+    {
+      q: "If [[x,4],[2,9]] = [[7,4],[2,9]], find x.",
+      hint: "Equal matrices have equal corresponding elements.",
+      steps: [
+        "Compare the top-left entries.",
+        "The first matrix has x there.",
+        "The second matrix has 7 there.",
+        "Therefore x = 7.",
+        "The remaining corresponding entries already agree."
+      ],
+      ans: "7",
+      why: "Corresponding elements of equal matrices must have the same value."
+    },
+
+    {
+      q: "Can a 2 × 3 matrix be equal to a 3 × 2 matrix?",
+      hint: "Compare the orders before looking at the entries.",
+      steps: [
+        "The first matrix has order 2 × 3.",
+        "The second matrix has order 3 × 2.",
+        "Their orders are different.",
+        "Matrices with different orders cannot be equal."
+      ],
+      ans: "No",
+      why: "Equal matrices must have exactly the same number of rows and columns."
+    },
+
+    {
+      q: "A student says [[1,2],[3,4]] and [[2,1],[4,3]] are equal because they contain the same four numbers. Is the student correct?",
+      hint: "Equality depends on corresponding positions, not merely the numbers present.",
+      steps: [
+        "Both matrices have order 2 × 2.",
+        "Compare the top-left entries: 1 and 2.",
+        "They are different.",
+        "Therefore the matrices are not equal."
+      ],
+      ans: "No",
+      why: "The same numbers must also occur in the same corresponding positions."
     }
   ]
 );
-
-
 add(
   "math",
   "matrices",
-  "Matrix Arithemetic",
+  "Matrix 2",
   "Matrix Addition",
 
   `
 <h2>Matrix Addition</h2>
 
-<p>
-Matrix addition means adding the <b>corresponding elements</b> of two
-matrices.
-</p>
+<p><b>One concept:</b> To add two matrices, add corresponding elements — entries occupying the same position.</p>
 
-<h3>WHEN IS ADDITION POSSIBLE?</h3>
+<p>Before adding, the two matrices must have the <b>same order</b>.</p>
 
-<p>
-Two matrices can be added only when they have the
-<b>same order</b>.
-</p>
+<h3>Why do we add corresponding elements?</h3>
 
-<h3>WORKED EXAMPLE 1</h3>
+<p>Suppose:</p>
 
 <pre>
-A = [ 2   5 ]
-    [ 4   7 ]
+        [ 2   5 ]
+A   =   [ 7   3 ]
 
-B = [ 3   1 ]
-    [ 6   2 ]
+        [ 4   1 ]
+B   =   [ 6   8 ]
 </pre>
 
-<p>
-Both matrices are 2 × 2, so addition is possible.
-</p>
+<p>The top-left entry of A is 2 and the top-left entry of B is 4.</p>
 
-<p>
-Add corresponding elements:
-</p>
+<p>Those two entries occupy the same position, so they are corresponding elements.</p>
+
+<p>Therefore:</p>
 
 <pre>
-A+B
-
-= [ 2+3    5+1 ]
-  [ 4+6    7+2 ]
-
-= [ 5    6 ]
-  [10    9 ]
+2 + 4 = 6
 </pre>
 
-<p>
-Therefore:</p>
+<p>We do the same thing at every position.</p>
 
-<p><b>A+B = [[5,6],[10,9]]</b></p>
+<h3>Worked Example 1: Add two 2 × 2 matrices</h3>
 
-<h3>WORKED EXAMPLE 2</h3>
+<p><b>Question:</b> Given</p>
 
 <pre>
-A = [ 5   -2 ]
-    [ 3    4 ]
+        [ 2   5 ]             [ 4   1 ]
+A   =   [ 7   3 ]     and B = [ 6   8 ]
 
-B = [ -1   6 ]
-    [ 2    5 ]
+find A + B.
 </pre>
 
-<p>Then:</p>
+<p><b>Step 1: Check the orders.</b></p>
+
+<p>A has 2 rows and 2 columns.</p>
+
+<p>B also has 2 rows and 2 columns.</p>
+
+<p>Therefore addition is possible.</p>
+
+<p><b>Step 2: Add the top-left elements.</b></p>
 
 <pre>
-A+B
-
-= [ 5+(-1)   -2+6 ]
-  [ 3+2        4+5 ]
-
-= [ 4   4 ]
-  [ 5   9 ]
+2 + 4 = 6
 </pre>
 
-<h3>WORKED EXAMPLE 3</h3>
+<p><b>Step 3: Add the top-right elements.</b></p>
 
 <pre>
-A = [ 1   2   3 ]
-    [ 4   5   6 ]
-
-B = [ 7   8   9 ]
-    [ 1   2   3 ]
+5 + 1 = 6
 </pre>
 
-<p>
-Both matrices are 2 × 3.
-</p>
+<p><b>Step 4: Add the bottom-left elements.</b></p>
 
 <pre>
-A+B
-
-= [ 1+7   2+8   3+9 ]
-  [ 4+1   5+2   6+3 ]
-
-= [ 8   10   12 ]
-  [ 5    7    9  ]
+7 + 6 = 13
 </pre>
 
-<h3>ADDITION IS NOT POSSIBLE</h3>
+<p><b>Step 5: Add the bottom-right elements.</b></p>
 
 <pre>
-A = [ 1   2 ]
-    [ 3   4 ]
-
-B = [ 5 ]
-    [ 6 ]
+3 + 8 = 11
 </pre>
 
-<p>
-A is 2 × 2.
-</p>
+<p>Put each answer back into the position from which it came:</p>
 
-<p>
-B is 2 × 1.
-</p>
+<pre>
+A + B = [ 2+4   5+1 ]
+        [ 7+6   3+8 ]
 
-<p>
-The orders are different.
-</p>
+      = [  6    6  ]
+        [ 13   11  ]
+</pre>
 
-<p>
-Therefore <b>A+B is not defined</b>.
-</p>
+<p><b>Answer:</b></p>
 
-<h3>KEY RULE</h3>
+<pre>
+[ 6    6  ]
+[ 13  11  ]
+</pre>
 
-<p>
-<b>Same order → add corresponding elements.</b>
-</p>
+<h3>Worked Example 2: Addition involving negative numbers</h3>
+
+<p><b>Question:</b> Find A + B if</p>
+
+<pre>
+        [ 5   -3 ]             [ -2   7 ]
+A   =   [ 4    6 ]     and B = [  8  -1 ]
+</pre>
+
+<p><b>Step 1:</b> Check the orders.</p>
+
+<p>Both matrices are 2 × 2, so addition is possible.</p>
+
+<p><b>Step 2:</b> Add corresponding elements.</p>
+
+<pre>
+Top-left:
+5 + (-2) = 3
+
+Top-right:
+-3 + 7 = 4
+
+Bottom-left:
+4 + 8 = 12
+
+Bottom-right:
+6 + (-1) = 5
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+A + B = [  3   4 ]
+        [ 12   5 ]
+</pre>
+
+<h3>Worked Example 3: Adding 3 × 2 matrices</h3>
+
+<p><b>Question:</b> Find A + B:</p>
+
+<pre>
+        [ 1   4 ]             [ 5   2 ]
+A   =   [ 3   0 ]     B   =   [ 1   7 ]
+        [ 6   2 ]             [ 4   3 ]
+</pre>
+
+<p><b>Step 1:</b> Both matrices are 3 × 2.</p>
+
+<p><b>Step 2:</b> Add each corresponding pair.</p>
+
+<pre>
+1 + 5 = 6
+4 + 2 = 6
+
+3 + 1 = 4
+0 + 7 = 7
+
+6 + 4 = 10
+2 + 3 = 5
+</pre>
+
+<p><b>Step 3:</b> Preserve the original positions.</p>
+
+<pre>
+A + B = [  6   6 ]
+        [  4   7 ]
+        [ 10   5 ]
+</pre>
+
+<h3>Worked Example 4: When addition is impossible</h3>
+
+<p><b>Question:</b> Can we calculate A + B?</p>
+
+<pre>
+        [ 1   2   3 ]
+A   =   [ 4   5   6 ]
+
+        [ 7   8 ]
+B   =   [ 9   10 ]
+        [ 11  12 ]
+</pre>
+
+<p><b>Step 1:</b> Determine the order of A.</p>
+
+<p>A is 2 × 3.</p>
+
+<p><b>Step 2:</b> Determine the order of B.</p>
+
+<p>B is 3 × 2.</p>
+
+<p><b>Step 3:</b> Compare them.</p>
+
+<pre>
+A → 2 × 3
+B → 3 × 2
+</pre>
+
+<p>The orders are different.</p>
+
+<p>Therefore corresponding positions cannot be matched throughout the matrices.</p>
+
+<p><b>A + B is not defined.</b></p>
+
+<h3>How to check your addition</h3>
+
+<p>After adding, check every position against the original matrices.</p>
+
+<p>For example, if the top-right answer is 6, verify that:</p>
+
+<pre>
+original top-right of A = 5
+original top-right of B = 1
+
+5 + 1 = 6
+</pre>
+
+<p>This catches errors where an answer is accidentally placed in the wrong position.</p>
+
+<h3>Common mistakes</h3>
+
+<ul>
+<li>Adding numbers from different positions.</li>
+<li>Adding matrices with different orders.</li>
+<li>Changing the position of an answer after calculating it.</li>
+<li>Making errors with negative numbers.</li>
+</ul>
 `,
 
   [
     {
-      q: "Find [[2,5],[4,7]] + [[3,1],[6,2]].",
-      hint: "Add corresponding elements.",
+      q: "Find [[2,5],[7,3]] + [[4,1],[6,8]].",
+      hint: "Add entries occupying the same position.",
       steps: [
-        "2+3=5",
-        "5+1=6",
-        "4+6=10",
-        "7+2=9"
+        "Top-left: 2 + 4 = 6.",
+        "Top-right: 5 + 1 = 6.",
+        "Bottom-left: 7 + 6 = 13.",
+        "Bottom-right: 3 + 8 = 11.",
+        "Place each result in its original position."
       ],
-      ans: "[[5,6],[10,9]]",
-      why: "Matrix addition is performed element by element."
+      ans: "[[6,6],[13,11]]",
+      why: "Matrix addition is performed element-by-element at corresponding positions."
     },
+
     {
-      q: "Find [[5,-2],[3,4]] + [[-1,6],[2,5]].",
-      hint: "Remember that adding a negative number is ordinary addition.",
+      q: "Find [[5,-3],[4,6]] + [[-2,7],[8,-1]].",
+      hint: "Treat each negative number as part of the calculation.",
       steps: [
-        "5+(-1)=4",
-        "-2+6=4",
-        "3+2=5",
-        "4+5=9"
+        "5 + (-2) = 3.",
+        "-3 + 7 = 4.",
+        "4 + 8 = 12.",
+        "6 + (-1) = 5.",
+        "Therefore the result is [[3,4],[12,5]]."
       ],
-      ans: "[[4,4],[5,9]]",
-      why: "Corresponding elements are added."
+      ans: "[[3,4],[12,5]]",
+      why: "Corresponding elements are added, including their signs."
     },
+
     {
-      q: "Can a 2×2 matrix be added to a 2×1 matrix?",
-      hint: "Compare the orders.",
+      q: "Can a 2 × 3 matrix be added to a 3 × 2 matrix?",
+      hint: "Matrix addition requires the same order.",
       steps: [
-        "First matrix = 2×2",
-        "Second matrix = 2×1",
-        "The orders are different.",
-        "Therefore addition is not defined."
+        "The first matrix has order 2 × 3.",
+        "The second has order 3 × 2.",
+        "Their orders are different.",
+        "Therefore corresponding positions cannot be matched."
       ],
       ans: "No",
-      why: "Matrix addition requires both matrices to have the same order."
+      why: "Matrices must have the same order before they can be added."
+    },
+
+    {
+      q: "A student calculates [[1,2],[3,4]] + [[5,6],[7,8]] as [[6,8],[10,12]]. Explain whether the answer is correct.",
+      hint: "Check each corresponding position.",
+      steps: [
+        "Top-left: 1 + 5 = 6.",
+        "Top-right: 2 + 6 = 8.",
+        "Bottom-left: 3 + 7 = 10.",
+        "Bottom-right: 4 + 8 = 12.",
+        "Every entry is correct."
+      ],
+      ans: "Correct",
+      why: "Every corresponding pair has been added correctly and placed in the correct position."
     }
   ]
 );
-
-
 add(
   "math",
   "matrices",
-  "Matrix Arithemetic",
+  "Matrix 2",
   "Matrix Subtraction",
 
   `
 <h2>Matrix Subtraction</h2>
 
-<p>
-Matrix subtraction means subtracting the
-<b>corresponding elements</b> of two matrices.
-</p>
+<p><b>One concept:</b> To subtract matrices, subtract corresponding elements in the same positions.</p>
 
-<h3>WHEN IS SUBTRACTION POSSIBLE?</h3>
+<p>The order of the matrices must be the same.</p>
 
-<p>
-The two matrices must have the <b>same order</b>.
-</p>
-
-<h3>WORKED EXAMPLE 1</h3>
+<p>Unlike addition, <b>order matters</b>:</p>
 
 <pre>
-A = [ 8   6 ]
-    [ 5   9 ]
-
-B = [ 3   2 ]
-    [ 1   4 ]
+A - B ≠ B - A
 </pre>
 
-<p>Subtract corresponding elements:</p>
+<p>because the first matrix supplies the first number in every subtraction.</p>
+
+<h3>Worked Example 1: Basic subtraction</h3>
+
+<p><b>Question:</b> Given</p>
 
 <pre>
-A-B
+        [ 9   7 ]             [ 4   2 ]
+A   =   [ 6   5 ]     and B = [ 1   3 ]
 
-= [ 8-3    6-2 ]
-  [ 5-1    9-4 ]
-
-= [ 5   4 ]
-  [ 4   5 ]
+find A - B.
 </pre>
 
-<h3>WORKED EXAMPLE 2</h3>
+<p><b>Step 1:</b> Both matrices have order 2 × 2, so subtraction is possible.</p>
+
+<p><b>Step 2:</b> Subtract the top-left elements:</p>
 
 <pre>
-A = [ 5   -2 ]
-    [ 7    3 ]
-
-B = [ 8    4 ]
-    [ 2   -1 ]
+9 - 4 = 5
 </pre>
+
+<p><b>Step 3:</b> Subtract the top-right elements:</p>
 
 <pre>
-A-B
-
-= [ 5-8     -2-4 ]
-  [ 7-2      3-(-1) ]
-
-= [ -3   -6 ]
-  [  5    4 ]
+7 - 2 = 5
 </pre>
 
-<h3>WORKED EXAMPLE 3</h3>
+<p><b>Step 4:</b> Subtract the bottom-left elements:</p>
 
 <pre>
-A = [ 10   8   6 ]
-    [  4   2   0 ]
-
-B = [ 3   1   5 ]
-    [ 2   4   7 ]
+6 - 1 = 5
 </pre>
+
+<p><b>Step 5:</b> Subtract the bottom-right elements:</p>
 
 <pre>
-A-B
-
-= [ 10-3   8-1   6-5 ]
-  [  4-2   2-4   0-7 ]
-
-= [ 7   7    1 ]
-  [ 2  -2   -7 ]
+5 - 3 = 2
 </pre>
 
-<h3>KEY RULE</h3>
+<p>Therefore:</p>
 
-<p>
-<b>Same order → subtract corresponding elements.</b>
-</p>
+<pre>
+A - B = [ 5   5 ]
+        [ 5   2 ]
+</pre>
+
+<h3>Worked Example 2: Subtracting negative numbers</h3>
+
+<p><b>Question:</b> Find A - B:</p>
+
+<pre>
+        [ 4   -2 ]             [ 7   -5 ]
+A   =   [ 3    8 ]     B   =   [ 1    4 ]
+</pre>
+
+<p><b>Step 1:</b> Top-left:</p>
+
+<pre>
+4 - 7 = -3
+</pre>
+
+<p><b>Step 2:</b> Top-right:</p>
+
+<pre>
+-2 - (-5)
+
+= -2 + 5
+
+= 3
+</pre>
+
+<p>Subtracting a negative number changes the operation to addition.</p>
+
+<p><b>Step 3:</b> Bottom-left:</p>
+
+<pre>
+3 - 1 = 2
+</pre>
+
+<p><b>Step 4:</b> Bottom-right:</p>
+
+<pre>
+8 - 4 = 4
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+A - B = [ -3   3 ]
+        [  2   4 ]
+</pre>
+
+<h3>Worked Example 3: Why order matters</h3>
+
+<p>Consider:</p>
+
+<pre>
+        [ 8   5 ]             [ 3   2 ]
+A   =   [ 6   4 ]     and B = [ 1   7 ]
+</pre>
+
+<p>Calculate A - B.</p>
+
+<pre>
+A - B = [ 8-3   5-2 ]
+        [ 6-1   4-7 ]
+
+      = [ 5   3 ]
+        [ 5  -3 ]
+</pre>
+
+<p>Now calculate B - A.</p>
+
+<pre>
+B - A = [ 3-8   2-5 ]
+        [ 1-6   7-4 ]
+
+      = [ -5  -3 ]
+        [ -5   3 ]
+</pre>
+
+<p>The results are different.</p>
+
+<p>This demonstrates:</p>
+
+<pre>
+A - B ≠ B - A
+</pre>
+
+<h3>Worked Example 4: When subtraction is impossible</h3>
+
+<p>Consider:</p>
+
+<pre>
+A = [ 1   2 ]
+    [ 3   4 ]
+
+B = [ 5   6   7 ]
+    [ 8   9   1 ]
+</pre>
+
+<p>A has order 2 × 2.</p>
+
+<p>B has order 2 × 3.</p>
+
+<p>The number of columns is different.</p>
+
+<p>Therefore corresponding positions cannot be matched.</p>
+
+<p><b>A - B is not defined.</b></p>
+
+<h3>How to check subtraction</h3>
+
+<p>Take one result and reverse the subtraction.</p>
+
+<p>For example:</p>
+
+<pre>
+9 - 4 = 5
+</pre>
+
+<p>Check:</p>
+
+<pre>
+5 + 4 = 9
+</pre>
+
+<p>If this works for every position, your subtraction is consistent.</p>
+
+<h3>Common mistakes</h3>
+
+<ul>
+<li>Reversing A - B into B - A.</li>
+<li>Ignoring negative signs.</li>
+<li>Subtracting numbers from different positions.</li>
+<li>Subtracting matrices with different orders.</li>
+</ul>
 `,
 
   [
     {
-      q: "Find [[8,6],[5,9]] - [[3,2],[1,4]].",
-      hint: "Subtract corresponding entries.",
+      q: "Find [[9,7],[6,5]] - [[4,2],[1,3]].",
+      hint: "Subtract the second matrix from the first at each corresponding position.",
       steps: [
-        "8-3=5",
-        "6-2=4",
-        "5-1=4",
-        "9-4=5"
+        "9 - 4 = 5.",
+        "7 - 2 = 5.",
+        "6 - 1 = 5.",
+        "5 - 3 = 2.",
+        "Therefore the result is [[5,5],[5,2]]."
       ],
-      ans: "[[5,4],[4,5]]",
-      why: "Matrix subtraction is performed element by element."
+      ans: "[[5,5],[5,2]]",
+      why: "Matrix subtraction is performed position by position."
     },
+
     {
-      q: "Find [[5,-2],[7,3]] - [[8,4],[2,-1]].",
-      hint: "Be careful when subtracting a negative number.",
+      q: "Find [[4,-2],[3,8]] - [[7,-5],[1,4]].",
+      hint: "Pay special attention to -2 - (-5).",
       steps: [
-        "5-8=-3",
-        "-2-4=-6",
-        "7-2=5",
-        "3-(-1)=4"
+        "4 - 7 = -3.",
+        "-2 - (-5) = -2 + 5 = 3.",
+        "3 - 1 = 2.",
+        "8 - 4 = 4."
       ],
-      ans: "[[-3,-6],[5,4]]",
-      why: "Corresponding elements are subtracted, including the correct treatment of negative numbers."
+      ans: "[[-3,3],[2,4]]",
+      why: "Subtracting a negative number is equivalent to adding its positive value."
     },
+
     {
-      q: "Find [[10,8,6],[4,2,0]] - [[3,1,5],[2,4,7]].",
-      hint: "Subtract each corresponding entry.",
+      q: "Given A = [[8,5],[6,4]] and B = [[3,2],[1,7]], find A - B.",
+      hint: "The first matrix always supplies the number being subtracted from.",
       steps: [
-        "10-3=7",
-        "8-1=7",
-        "6-5=1",
-        "4-2=2",
-        "2-4=-2",
-        "0-7=-7"
+        "8 - 3 = 5.",
+        "5 - 2 = 3.",
+        "6 - 1 = 5.",
+        "4 - 7 = -3."
       ],
-      ans: "[[7,7,1],[2,-2,-7]]",
-      why: "Every element is subtracted from the corresponding element."
+      ans: "[[5,3],[5,-3]]",
+      why: "A - B means corresponding elements of B are subtracted from corresponding elements of A."
+    },
+
+    {
+      q: "Can a 2 × 2 matrix be subtracted from a 2 × 3 matrix?",
+      hint: "Compare their orders.",
+      steps: [
+        "The first matrix has 2 rows and 2 columns.",
+        "The second has 2 rows and 3 columns.",
+        "Their orders are different.",
+        "Therefore subtraction is not defined."
+      ],
+      ans: "No",
+      why: "Both matrices must have the same order."
     }
   ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 2",
+  "Scalar Multiplication",
+
+  `
+<h2>Scalar Multiplication</h2>
+
+<p><b>One concept:</b> To multiply a matrix by a scalar, multiply every element of the matrix by that number.</p>
+
+<p>A <b>scalar</b> is simply a single number.</p>
+
+<p>For example, in:</p>
+
+<pre>
+3A
+</pre>
+
+<p>the number 3 is the scalar.</p>
+
+<h3>Worked Example 1: Multiply by a positive scalar</h3>
+
+<p><b>Question:</b> Given</p>
+
+<pre>
+        [ 2   4 ]
+A   =   [ 3   5 ]
+</pre>
+
+<p>find 3A.</p>
+
+<p><b>Step 1:</b> The scalar is 3.</p>
+
+<p><b>Step 2:</b> Multiply the top-left element by 3:</p>
+
+<pre>
+3 × 2 = 6
+</pre>
+
+<p><b>Step 3:</b> Multiply the top-right element:</p>
+
+<pre>
+3 × 4 = 12
+</pre>
+
+<p><b>Step 4:</b> Multiply the bottom-left element:</p>
+
+<pre>
+3 × 3 = 9
+</pre>
+
+<p><b>Step 5:</b> Multiply the bottom-right element:</p>
+
+<pre>
+3 × 5 = 15
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+3A = [  6   12 ]
+     [  9   15 ]
+</pre>
+
+<h3>Worked Example 2: Multiply by a negative scalar</h3>
+
+<p><b>Question:</b> Find -2B if</p>
+
+<pre>
+        [ 3   -4 ]
+B   =   [ 5    1 ]
+</pre>
+
+<p><b>Step 1:</b> Multiply 3 by -2:</p>
+
+<pre>
+-2 × 3 = -6
+</pre>
+
+<p><b>Step 2:</b> Multiply -4 by -2:</p>
+
+<pre>
+-2 × (-4) = 8
+</pre>
+
+<p>Two negative signs produce a positive result.</p>
+
+<p><b>Step 3:</b> Multiply 5 by -2:</p>
+
+<pre>
+-2 × 5 = -10
+</pre>
+
+<p><b>Step 4:</b> Multiply 1 by -2:</p>
+
+<pre>
+-2 × 1 = -2
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+-2B = [ -6    8 ]
+      [ -10  -2 ]
+</pre>
+
+<h3>Worked Example 3: Scalar multiplication does not change the order</h3>
+
+<p><b>Question:</b> If</p>
+
+<pre>
+        [ 1   3   5 ]
+C   =   [ 2   4   6 ]
+</pre>
+
+<p>find 4C.</p>
+
+<p>C has order 2 × 3.</p>
+
+<p>Multiplication by 4 changes the values, but it does not add or remove rows or columns.</p>
+
+<p>Calculate:</p>
+
+<pre>
+4 × 1 = 4
+4 × 3 = 12
+4 × 5 = 20
+
+4 × 2 = 8
+4 × 4 = 16
+4 × 6 = 24
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+4C = [  4   12   20 ]
+     [  8   16   24 ]
+</pre>
+
+<p>The result is still 2 × 3.</p>
+
+<h3>Worked Example 4: Multiplication by zero</h3>
+
+<p><b>Question:</b> Find 0A if</p>
+
+<pre>
+        [ 7   -2 ]
+A   =   [ 4    9 ]
+</pre>
+
+<p>Multiply every element by zero:</p>
+
+<pre>
+0 × 7  = 0
+0 × -2 = 0
+0 × 4  = 0
+0 × 9  = 0
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+0A = [ 0   0 ]
+     [ 0   0 ]
+</pre>
+
+<p>The result is the zero matrix of the same order.</p>
+
+<h3>The key rule</h3>
+
+<p>If:</p>
+
+<pre>
+A = [ a   b ]
+    [ c   d ]
+</pre>
+
+<p>then:</p>
+
+<pre>
+kA = [ ka   kb ]
+     [ kc   kd ]
+</pre>
+
+<p>The scalar multiplies <b>every entry</b>.</p>
+
+<h3>Common mistakes</h3>
+
+<ul>
+<li>Multiplying only some of the entries.</li>
+<li>Multiplying rows instead of individual entries.</li>
+<li>Forgetting the negative sign of the scalar.</li>
+<li>Changing the order of the matrix.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "Find 3[[2,4],[3,5]].",
+      hint: "Multiply every entry by 3.",
+      steps: [
+        "3 × 2 = 6.",
+        "3 × 4 = 12.",
+        "3 × 3 = 9.",
+        "3 × 5 = 15.",
+        "Keep the results in their original positions."
+      ],
+      ans: "[[6,12],[9,15]]",
+      why: "A scalar multiplies every element of the matrix."
+    },
+
+    {
+      q: "Find -2[[3,-4],[5,1]].",
+      hint: "Apply -2 separately to each entry.",
+      steps: [
+        "-2 × 3 = -6.",
+        "-2 × (-4) = 8.",
+        "-2 × 5 = -10.",
+        "-2 × 1 = -2."
+      ],
+      ans: "[[-6,8],[-10,-2]]",
+      why: "The negative scalar changes the sign of positive entries and must also be applied to negative entries."
+    },
+
+    {
+      q: "If A is a 2 × 3 matrix, what is the order of 5A?",
+      hint: "Scalar multiplication changes values, not dimensions.",
+      steps: [
+        "A has 2 rows and 3 columns.",
+        "Multiplying each entry by 5 does not create or remove entries.",
+        "Therefore 5A still has 2 rows and 3 columns."
+      ],
+      ans: "2 × 3",
+      why: "Scalar multiplication does not change the order of a matrix."
+    },
+
+    {
+      q: "Find 0[[7,-2],[4,9]].",
+      hint: "Every number multiplied by zero becomes zero.",
+      steps: [
+        "0 × 7 = 0.",
+        "0 × (-2) = 0.",
+        "0 × 4 = 0.",
+        "0 × 9 = 0.",
+        "Therefore every element becomes zero."
+      ],
+      ans: "[[0,0],[0,0]]",
+      why: "Multiplying every element by zero produces the zero matrix."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 2",
+  "Matrix Multiplication",
+
+  `
+<h2>Matrix Multiplication</h2>
+
+<p><b>One concept:</b> To multiply matrices, each entry in the answer is found by multiplying corresponding entries from a row of the first matrix and a column of the second matrix, then adding those products.</p>
+
+<p>This is different from matrix addition.</p>
+
+<p>We do <b>not</b> multiply entries in the same position.</p>
+
+<h3>First: when is multiplication possible?</h3>
+
+<p>Suppose:</p>
+
+<pre>
+A has order m × n
+B has order n × p
+</pre>
+
+<p>The number of columns in A must equal the number of rows in B.</p>
+
+<p>For example:</p>
+
+<pre>
+A → 2 × 3
+B → 3 × 2
+</pre>
+
+<p>These can be multiplied because:</p>
+
+<pre>
+A columns = 3
+B rows    = 3
+</pre>
+
+<p>The answer will have order:</p>
+
+<pre>
+2 × 2
+</pre>
+
+<p>The outside numbers determine the answer's order.</p>
+
+<h3>Worked Example 1: 2 × 2 multiplication</h3>
+
+<p><b>Question:</b> Given</p>
+
+<pre>
+        [ 2   3 ]             [ 4   1 ]
+A   =   [ 1   5 ]     and B = [ 2   3 ]
+
+find AB.
+</pre>
+
+<p><b>Step 1: Check whether multiplication is possible.</b></p>
+
+<p>A is 2 × 2.</p>
+
+<p>B is 2 × 2.</p>
+
+<p>The number of columns in A is 2, and the number of rows in B is 2.</p>
+
+<p>Therefore multiplication is possible.</p>
+
+<p>The answer will be 2 × 2.</p>
+
+<h3>Finding the top-left entry</h3>
+
+<p>To find the top-left entry, use:</p>
+
+<p><b>Row 1 of A × Column 1 of B.</b></p>
+
+<pre>
+Row 1 of A = [ 2   3 ]
+
+Column 1 of B =
+[ 4 ]
+[ 2 ]
+</pre>
+
+<p>Multiply matching positions and add:</p>
+
+<pre>
+(2 × 4) + (3 × 2)
+
+= 8 + 6
+
+= 14
+</pre>
+
+<p>Therefore the top-left entry is 14.</p>
+
+<h3>Finding the top-right entry</h3>
+
+<p>Use row 1 of A and column 2 of B:</p>
+
+<pre>
+Row 1 of A = [ 2   3 ]
+
+Column 2 of B =
+[ 1 ]
+[ 3 ]
+</pre>
+
+<p>Calculate:</p>
+
+<pre>
+(2 × 1) + (3 × 3)
+
+= 2 + 9
+
+= 11
+</pre>
+
+<p>So the top-right entry is 11.</p>
+
+<h3>Finding the bottom-left entry</h3>
+
+<p>Use row 2 of A and column 1 of B:</p>
+
+<pre>
+Row 2 of A = [ 1   5 ]
+
+Column 1 of B =
+[ 4 ]
+[ 2 ]
+</pre>
+
+<p>Calculate:</p>
+
+<pre>
+(1 × 4) + (5 × 2)
+
+= 4 + 10
+
+= 14
+</pre>
+
+<p>So the bottom-left entry is 14.</p>
+
+<h3>Finding the bottom-right entry</h3>
+
+<p>Use row 2 of A and column 2 of B:</p>
+
+<pre>
+Row 2 of A = [ 1   5 ]
+
+Column 2 of B =
+[ 1 ]
+[ 3 ]
+</pre>
+
+<p>Calculate:</p>
+
+<pre>
+(1 × 1) + (5 × 3)
+
+= 1 + 15
+
+= 16
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+AB = [ 14   11 ]
+     [ 14   16 ]
+</pre>
+
+<h3>Worked Example 2: 2 × 3 multiplied by 3 × 2</h3>
+
+<p><b>Question:</b> Find AB if</p>
+
+<pre>
+        [ 1   2   3 ]             [ 2   1 ]
+A   =   [ 4   5   6 ]     B   =   [ 0   3 ]
+                                  [ 1   2 ]
+</pre>
+
+<p><b>Step 1: Check the orders.</b></p>
+
+<pre>
+A → 2 × 3
+B → 3 × 2
+</pre>
+
+<p>The inner dimensions are both 3, so multiplication is possible.</p>
+
+<p>The result will have order:</p>
+
+<pre>
+2 × 2
+</pre>
+
+<h3>Top-left entry</h3>
+
+<p>Use row 1 of A and column 1 of B:</p>
+
+<pre>
+(1 × 2) + (2 × 0) + (3 × 1)
+
+= 2 + 0 + 3
+
+= 5
+</pre>
+
+<h3>Top-right entry</h3>
+
+<p>Use row 1 of A and column 2 of B:</p>
+
+<pre>
+(1 × 1) + (2 × 3) + (3 × 2)
+
+= 1 + 6 + 6
+
+= 13
+</pre>
+
+<h3>Bottom-left entry</h3>
+
+<p>Use row 2 of A and column 1 of B:</p>
+
+<pre>
+(4 × 2) + (5 × 0) + (6 × 1)
+
+= 8 + 0 + 6
+
+= 14
+</pre>
+
+<h3>Bottom-right entry</h3>
+
+<p>Use row 2 of A and column 2 of B:</p>
+
+<pre>
+(4 × 1) + (5 × 3) + (6 × 2)
+
+= 4 + 15 + 12
+
+= 31
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+AB = [  5   13 ]
+     [ 14   31 ]
+</pre>
+
+<h3>Worked Example 3: Multiplication that is impossible</h3>
+
+<p><b>Question:</b> Can AB be calculated if:</p>
+
+<pre>
+A → 2 × 3
+B → 2 × 2
+</pre>
+
+<p><b>Step 1:</b> Look at the number of columns in A:</p>
+
+<pre>
+3 columns
+</pre>
+
+<p><b>Step 2:</b> Look at the number of rows in B:</p>
+
+<pre>
+2 rows
+</pre>
+
+<p>These numbers are different.</p>
+
+<pre>
+3 ≠ 2
+</pre>
+
+<p>Therefore the inner dimensions do not match.</p>
+
+<p><b>AB is not defined.</b></p>
+
+<h3>Worked Example 4: Why AB and BA may be different</h3>
+
+<p>Using:</p>
+
+<pre>
+A = [ 2   3 ]
+    [ 1   5 ]
+
+B = [ 4   1 ]
+    [ 2   3 ]
+</pre>
+
+<p>We already found:</p>
+
+<pre>
+AB = [ 14   11 ]
+     [ 14   16 ]
+</pre>
+
+<p>Now calculate BA.</p>
+
+<p>Top-left:</p>
+
+<pre>
+(4 × 2) + (1 × 1)
+= 8 + 1
+= 9
+</pre>
+
+<p>Top-right:</p>
+
+<pre>
+(4 × 3) + (1 × 5)
+= 12 + 5
+= 17
+</pre>
+
+<p>Bottom-left:</p>
+
+<pre>
+(2 × 2) + (3 × 1)
+= 4 + 3
+= 7
+</pre>
+
+<p>Bottom-right:</p>
+
+<pre>
+(2 × 3) + (3 × 5)
+= 6 + 15
+= 21
+</pre>
+
+<p>Therefore:</p>
+
+<pre>
+BA = [ 9   17 ]
+     [ 7   21 ]
+</pre>
+
+<p>Compare:</p>
+
+<pre>
+AB ≠ BA
+</pre>
+
+<p>Therefore matrix multiplication is generally <b>not commutative</b>.</p>
+
+<h3>The safest multiplication method</h3>
+
+<p>For every entry, ask yourself:</p>
+
+<pre>
+Which row am I using?
+        +
+Which column am I using?
+        ↓
+Multiply corresponding pairs.
+        ↓
+Add the products.
+</pre>
+
+<p>Never multiply entries simply because they occupy the same position.</p>
+
+<h3>Common mistakes</h3>
+
+<ul>
+<li>Multiplying corresponding entries as if this were scalar multiplication.</li>
+<li>Using a column from the first matrix instead of a row.</li>
+<li>Using the wrong column from the second matrix.</li>
+<li>Forgetting to add the products.</li>
+<li>Ignoring the inner-dimension rule.</li>
+<li>Assuming AB = BA.</li>
+</ul>
+`,
+
+  [
+    {
+      q: "Find AB where A = [[2,3],[1,5]] and B = [[4,1],[2,3]].",
+      hint: "For each answer entry, use a row from A and a column from B.",
+      steps: [
+        "Top-left: (2×4) + (3×2) = 8 + 6 = 14.",
+        "Top-right: (2×1) + (3×3) = 2 + 9 = 11.",
+        "Bottom-left: (1×4) + (5×2) = 4 + 10 = 14.",
+        "Bottom-right: (1×1) + (5×3) = 1 + 15 = 16.",
+        "Therefore AB = [[14,11],[14,16]]."
+      ],
+      ans: "[[14,11],[14,16]]",
+      why: "Each result entry comes from the dot product of a row of A with a column of B."
+    },
+
+    {
+      q: "Can a 2 × 3 matrix be multiplied by a 2 × 2 matrix?",
+      hint: "Compare the columns of the first matrix with the rows of the second.",
+      steps: [
+        "The first matrix has 3 columns.",
+        "The second matrix has 2 rows.",
+        "The inner dimensions are 3 and 2.",
+        "Since 3 is not equal to 2, multiplication is not possible."
+      ],
+      ans: "No",
+      why: "For AB to exist, the number of columns in A must equal the number of rows in B."
+    },
+
+    {
+      q: "Find the top-left entry of AB if A = [[1,2,3],[4,5,6]] and B = [[2,1],[0,3],[1,2]].",
+      hint: "Use row 1 of A and column 1 of B.",
+      steps: [
+        "Row 1 of A is [1,2,3].",
+        "Column 1 of B is [2,0,1].",
+        "Multiply corresponding values: (1×2), (2×0), (3×1).",
+        "Add: 2 + 0 + 3 = 5."
+      ],
+      ans: "5",
+      why: "The top-left entry is the dot product of the first row of A and first column of B."
+    },
+
+    {
+      q: "A student calculates the top-left entry of [[2,3],[1,5]] × [[4,1],[2,3]] as 2 × 4 = 8. What is wrong?",
+      hint: "One product is not enough.",
+      steps: [
+        "The top-left entry requires row 1 of the first matrix and column 1 of the second.",
+        "Those values are [2,3] and [4,2].",
+        "Calculate both products: 2×4 = 8 and 3×2 = 6.",
+        "Add the products: 8 + 6 = 14.",
+        "Therefore 8 is incomplete."
+      ],
+      ans: "The correct top-left entry is 14.",
+      why: "Matrix multiplication requires multiplying all corresponding row-column pairs and adding the products."
+    }
+  ]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 2",
+  "Transpose of a Matrix",
+
+  `
+<h2>Transpose of a Matrix</h2>
+
+<p>
+The <b>transpose</b> of a matrix is formed by changing its
+<b>rows into columns</b>.
+</p>
+
+<p>
+The transpose of matrix <b>A</b> is written as <b>A<sup>T</sup></b>.
+The superscript T means "transpose".
+</p>
+
+<h3>THE ONE ACTION TO LEARN</h3>
+
+<p>
+To transpose a matrix:
+</p>
+
+<ol>
+  <li>Take the first row and make it the first column.</li>
+  <li>Take the second row and make it the second column.</li>
+  <li>Continue until all rows have become columns.</li>
+</ol>
+
+<p>
+<b>Important:</b> The numbers themselves do not change.
+Only their positions change.
+</p>
+
+<h3>Example 1: Transpose a 2 × 3 Matrix</h3>
+
+<p><b>Question:</b> Find the transpose of</p>
+
+<pre>
+A = [ 2  5  7
+      1  4  6 ]
+</pre>
+
+<h4>Step 1: Look at the first row</h4>
+
+<p>
+The first row is:
+</p>
+
+<pre>
+2   5   7
+</pre>
+
+<p>
+This row becomes the <b>first column</b> of the transpose.
+</p>
+
+<pre>
+[ 2
+  5
+  7 ]
+</pre>
+
+<h4>Step 2: Look at the second row</h4>
+
+<p>
+The second row is:
+</p>
+
+<pre>
+1   4   6
+</pre>
+
+<p>
+This row becomes the <b>second column</b>.
+</p>
+
+<pre>
+[ 2  1
+  5  4
+  7  6 ]
+</pre>
+
+<h4>Therefore:</h4>
+
+<pre>
+Aᵀ = [ 2  1
+       5  4
+       7  6 ]
+</pre>
+
+<p>
+Check the movement:
+</p>
+
+<pre>
+Original row 1:  2  5  7
+                 ↓  ↓  ↓
+
+Transpose:       2
+                 5
+                 7
+</pre>
+
+<pre>
+Original row 2:  1  4  6
+                 ↓  ↓  ↓
+
+Transpose:       1
+                 4
+                 6
+</pre>
+
+<p>
+So:
+</p>
+
+<pre>
+Row 1 → Column 1
+Row 2 → Column 2
+</pre>
+
+<h3>Example 2: Transpose a 3 × 2 Matrix</h3>
+
+<p><b>Question:</b> Find the transpose of</p>
+
+<pre>
+B = [ 3  8
+      5  1
+      7  4 ]
+</pre>
+
+<h4>Step 1: Take row 1</h4>
+
+<pre>
+3   8
+</pre>
+
+<p>
+This becomes column 1:
+</p>
+
+<pre>
+[ 3
+  8 ]
+</pre>
+
+<h4>Step 2: Take row 2</h4>
+
+<pre>
+5   1
+</pre>
+
+<p>
+This becomes column 2:
+</p>
+
+<pre>
+[ 5
+  1 ]
+</pre>
+
+<h4>Step 3: Take row 3</h4>
+
+<pre>
+7   4
+</pre>
+
+<p>
+This becomes column 3.
+</p>
+
+<pre>
+[ 7
+  4 ]
+</pre>
+
+<h4>Put the columns together</h4>
+
+<pre>
+Bᵀ = [ 3  5  7
+       8  1  4 ]
+</pre>
+
+<p>
+Notice what happened:
+</p>
+
+<pre>
+Original B        Transpose Bᵀ
+
+3  8              3  5  7
+5  1       →      8  1  4
+7  4
+</pre>
+
+<p>
+The first row became the first column,
+the second row became the second column,
+and the third row became the third column.
+</p>
+
+<h3>Example 3: Transpose a Matrix Containing Negative Numbers</h3>
+
+<p><b>Question:</b> Find the transpose of</p>
+
+<pre>
+C = [ -2   4
+       6  -5 ]
+</pre>
+
+<h4>Step 1: First row</h4>
+
+<pre>
+-2   4
+</pre>
+
+<p>
+becomes the first column:
+</p>
+
+<pre>
+[ -2
+   4 ]
+</pre>
+
+<h4>Step 2: Second row</h4>
+
+<pre>
+6   -5
+</pre>
+
+<p>
+becomes the second column:
+</p>
+
+<pre>
+[  6
+  -5 ]
+</pre>
+
+<h4>Therefore:</h4>
+
+<pre>
+Cᵀ = [ -2   6
+        4  -5 ]
+</pre>
+
+<p>
+Notice that <b>-5 remains -5</b>.
+The sign does not change.
+It only moves to a new position.
+</p>
+
+<h3>Example 4: Transpose a 3 × 3 Matrix</h3>
+
+<p><b>Question:</b> Find the transpose of</p>
+
+<pre>
+D = [ 1  2  3
+      4  5  6
+      7  8  9 ]
+</pre>
+
+<h4>Step 1: Turn row 1 into column 1</h4>
+
+<pre>
+1  2  3
+
+↓
+
+[ 1
+  2
+  3 ]
+</pre>
+
+<h4>Step 2: Turn row 2 into column 2</h4>
+
+<pre>
+4  5  6
+
+↓
+
+[ 4
+  5
+  6 ]
+</pre>
+
+<h4>Step 3: Turn row 3 into column 3</h4>
+
+<pre>
+7  8  9
+
+↓
+
+[ 7
+  8
+  9 ]
+</pre>
+
+<h4>Final answer</h4>
+
+<pre>
+Dᵀ = [ 1  4  7
+       2  5  8
+       3  6  9 ]
+</pre>
+
+<h3>THE PATTERN</h3>
+
+<p>
+Look carefully at the positions:
+</p>
+
+<pre>
+Original:          Transpose:
+
+1  2  3             1  4  7
+4  5  6      →      2  5  8
+7  8  9             3  6  9
+</pre>
+
+<p>
+The first row <b>1, 2, 3</b> became the first column.
+</p>
+
+<p>
+The second row <b>4, 5, 6</b> became the second column.
+</p>
+
+<p>
+The third row <b>7, 8, 9</b> became the third column.
+</p>
+
+<h3>A SIMPLE WAY TO REMEMBER IT</h3>
+
+<p>
+<b>Read across → write down.</b>
+</p>
+
+<p>
+Read each row from left to right, then write that row vertically as a column.
+</p>
+
+<h3>COMMON MISTAKE</h3>
+
+<p>
+A student may think that transposing means changing the numbers themselves.
+That is wrong.
+</p>
+
+<p>
+For example:
+</p>
+
+<pre>
+A = [ 2  5
+      7  9 ]
+</pre>
+
+<p>
+The transpose is:
+</p>
+
+<pre>
+Aᵀ = [ 2  7
+        5  9 ]
+</pre>
+
+<p>
+The numbers <b>2, 5, 7, 9</b> are exactly the same.
+Only their positions have changed.
+</p>
+
+<h3>SELF-CHECK</h3>
+
+<p>
+After transposing, ask yourself:
+</p>
+
+<ul>
+  <li>Did every original row become a column?</li>
+  <li>Did I keep every number?</li>
+  <li>Did I accidentally change any sign or value?</li>
+  <li>Did I put the first row into the first column?</li>
+  <li>Did I put the second row into the second column?</li>
+</ul>
+`,
+
+[
+  {
+    q: "Find the transpose of A = [2 5 7; 1 4 6].",
+    hint: "Turn the first row into the first column and the second row into the second column.",
+    steps: [
+      "The first row is 2, 5, 7.",
+      "Write 2, 5, 7 vertically as the first column.",
+      "The second row is 1, 4, 6.",
+      "Write 1, 4, 6 vertically as the second column.",
+      "Therefore Aᵀ = [2 1; 5 4; 7 6]."
+    ],
+    ans: "[2 1; 5 4; 7 6]",
+    why: "Each row of the original matrix becomes the corresponding column of its transpose."
+  },
+
+  {
+    q: "Find the transpose of B = [3 8; 5 1; 7 4].",
+    hint: "There are three rows, so each of the three rows becomes a column.",
+    steps: [
+      "Row 1 is 3, 8, so it becomes column 1.",
+      "Row 2 is 5, 1, so it becomes column 2.",
+      "Row 3 is 7, 4, so it becomes column 3.",
+      "Therefore Bᵀ = [3 5 7; 8 1 4]."
+    ],
+    ans: "[3 5 7; 8 1 4]",
+    why: "The transpose changes the orientation of every row from horizontal to vertical."
+  },
+
+  {
+    q: "Find the transpose of C = [-2 4; 6 -5].",
+    hint: "Do not change the negative signs. Only move the entries.",
+    steps: [
+      "The first row is -2, 4.",
+      "It becomes the first column: -2, 4.",
+      "The second row is 6, -5.",
+      "It becomes the second column: 6, -5.",
+      "Therefore Cᵀ = [-2 6; 4 -5]."
+    ],
+    ans: "[-2 6; 4 -5]",
+    why: "Transposition changes positions, not values or signs."
+  },
+
+  {
+    q: "Find the transpose of D = [1 2 3; 4 5 6; 7 8 9].",
+    hint: "Move row 1 to column 1, row 2 to column 2, and row 3 to column 3.",
+    steps: [
+      "Row 1, 1 2 3, becomes column 1.",
+      "Row 2, 4 5 6, becomes column 2.",
+      "Row 3, 7 8 9, becomes column 3.",
+      "Therefore Dᵀ = [1 4 7; 2 5 8; 3 6 9]."
+    ],
+    ans: "[1 4 7; 2 5 8; 3 6 9]",
+    why: "Every row becomes the corresponding column."
+  },
+
+  {
+    q: "A = [4 7; 2 9]. Which matrix is Aᵀ?",
+    hint: "The 4 stays in the top-left position. The 7 and 2 exchange their positions.",
+    steps: [
+      "The first row 4, 7 becomes the first column.",
+      "The second row 2, 9 becomes the second column.",
+      "So the transpose is [4 2; 7 9]."
+    ],
+    ans: "[4 2; 7 9]",
+    why: "Transposition swaps the row and column position of each entry."
+  }
+]
+);
+add(
+  "math",
+  "matrices",
+  "Matrix 3",
+  "Addition of Matrices",
+
+  `
+<h2>Addition of Matrices</h2>
+
+<p>
+<b>Matrix addition</b> means adding corresponding entries of two matrices.
+Corresponding entries are entries that occupy the same position.
+</p>
+
+<p>
+Before adding two matrices, they must have the <b>same size</b>.
+For example, a 2 × 2 matrix can be added to another 2 × 2 matrix.
+</p>
+
+<h3>THE ONE ACTION</h3>
+
+<p>
+To add two matrices:
+</p>
+
+<ol>
+  <li>Take the entry in the first position of the first matrix.</li>
+  <li>Add it to the entry in the same position of the second matrix.</li>
+  <li>Repeat this for every position.</li>
+</ol>
+
+<h3>Example 1: Adding Two 2 × 2 Matrices</h3>
+
+<p><b>Question:</b> Find A + B if</p>
+
+<pre>
+A = [ 2  5
+      7  1 ]
+
+B = [ 4  3
+      6  8 ]
+</pre>
+
+<h4>Step 1: Add the top-left entries</h4>
+
+<p>
+The top-left entry of A is 2.
+The top-left entry of B is 4.
+</p>
+
+<pre>
+2 + 4 = 6
+</pre>
+
+<h4>Step 2: Add the top-right entries</h4>
+
+<pre>
+5 + 3 = 8
+</pre>
+
+<h4>Step 3: Add the bottom-left entries</h4>
+
+<pre>
+7 + 6 = 13
+</pre>
+
+<h4>Step 4: Add the bottom-right entries</h4>
+
+<pre>
+1 + 8 = 9
+</pre>
+
+<h4>Put the answers in their original positions</h4>
+
+<pre>
+A + B = [ 6   8
+         13   9 ]
+</pre>
+
+<p>
+Nothing moves during addition.
+Each position is calculated independently.
+</p>
+
+<h3>Example 2: Addition with Negative Numbers</h3>
+
+<p><b>Question:</b> Find P + Q if</p>
+
+<pre>
+P = [  6  -3
+      -2   5 ]
+
+Q = [ -4   7
+       8  -1 ]
+</pre>
+
+<h4>Top-left</h4>
+
+<pre>
+6 + (-4) = 2
+</pre>
+
+<h4>Top-right</h4>
+
+<pre>
+-3 + 7 = 4
+</pre>
+
+<h4>Bottom-left</h4>
+
+<pre>
+-2 + 8 = 6
+</pre>
+
+<h4>Bottom-right</h4>
+
+<pre>
+5 + (-1) = 4
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+P + Q = [ 2  4
+          6  4 ]
+</pre>
+
+<h3>Example 3: Adding 2 × 3 Matrices</h3>
+
+<p><b>Question:</b> Find X + Y if</p>
+
+<pre>
+X = [ 1  4  7
+      2  5  8 ]
+
+Y = [ 3  2  1
+      6  4  2 ]
+</pre>
+
+<p>
+The matrices have the same size, so corresponding entries can be added.
+</p>
+
+<pre>
+Top row:
+
+1 + 3 = 4
+4 + 2 = 6
+7 + 1 = 8
+</pre>
+
+<pre>
+Bottom row:
+
+2 + 6 = 8
+5 + 4 = 9
+8 + 2 = 10
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+X + Y = [ 4   6   8
+           8   9  10 ]
+</pre>
+
+<h3>Example 4: Why Different-Sized Matrices Cannot Be Added</h3>
+
+<p><b>Question:</b> Can the following matrices be added?</p>
+
+<pre>
+A = [ 1  2
+      3  4 ]
+
+B = [ 5  6  7
+      8  9  10 ]
+</pre>
+
+<p>
+A has 2 columns, while B has 3 columns.
+Therefore, there is no corresponding entry for every position.
+</p>
+
+<p>
+So:
+</p>
+
+<pre>
+A + B = NOT DEFINED
+</pre>
+
+<p>
+The important rule is:
+<b>same size is required before addition.</b>
+</p>
+
+<h3>COMMON MISTAKE</h3>
+
+<p>
+Do not add entries diagonally or randomly.
+For example, do not calculate 2 + 8 just because both numbers appear in the matrices.
+</p>
+
+<p>
+You must add entries occupying the <b>same position</b>.
+</p>
+`,
+
+[
+  {
+    q: "Find A + B if A = [2 5; 7 1] and B = [4 3; 6 8].",
+    hint: "Add entries occupying the same positions.",
+    steps: [
+      "Top-left: 2 + 4 = 6.",
+      "Top-right: 5 + 3 = 8.",
+      "Bottom-left: 7 + 6 = 13.",
+      "Bottom-right: 1 + 8 = 9.",
+      "Therefore A + B = [6 8; 13 9]."
+    ],
+    ans: "[6 8; 13 9]",
+    why: "Matrix addition is performed entry-by-entry using corresponding positions."
+  },
+
+  {
+    q: "Find P + Q if P = [6 -3; -2 5] and Q = [-4 7; 8 -1].",
+    hint: "Remember that adding a negative number is ordinary integer addition.",
+    steps: [
+      "6 + (-4) = 2.",
+      "-3 + 7 = 4.",
+      "-2 + 8 = 6.",
+      "5 + (-1) = 4.",
+      "Therefore P + Q = [2 4; 6 4]."
+    ],
+    ans: "[2 4; 6 4]",
+    why: "Each corresponding pair of entries is added independently."
+  },
+
+  {
+    q: "Can [1 2; 3 4] be added to [5 6 7; 8 9 10]?",
+    hint: "Compare the sizes of the two matrices.",
+    steps: [
+      "The first matrix has 2 rows and 2 columns.",
+      "The second matrix has 2 rows and 3 columns.",
+      "Their sizes are different.",
+      "Therefore corresponding positions cannot be matched throughout.",
+      "The matrices cannot be added."
+    ],
+    ans: "No",
+    why: "Two matrices must have the same size before matrix addition is possible."
+  },
+
+  {
+    q: "Find X + Y if X = [1 4 7; 2 5 8] and Y = [3 2 1; 6 4 2].",
+    hint: "Add each position separately.",
+    steps: [
+      "1 + 3 = 4.",
+      "4 + 2 = 6.",
+      "7 + 1 = 8.",
+      "2 + 6 = 8.",
+      "5 + 4 = 9.",
+      "8 + 2 = 10.",
+      "Therefore X + Y = [4 6 8; 8 9 10]."
+    ],
+    ans: "[4 6 8; 8 9 10]",
+    why: "Corresponding entries are added while their positions remain unchanged."
+  }
+]
 );
 
 
 add(
   "math",
   "matrices",
-  "Matrix Arithemetic",
-  "Scalar Multiplication",
+  "Matrix 3",
+  "Subtraction of Matrices",
 
   `
-<h2>Scalar Multiplication</h2>
+<h2>Subtraction of Matrices</h2>
+
+<p>
+<b>Matrix subtraction</b> means subtracting corresponding entries of one matrix
+from the corresponding entries of another matrix.
+</p>
+
+<p>
+The two matrices must have the <b>same size</b>.
+</p>
+
+<h3>THE ONE ACTION</h3>
+
+<p>
+For A − B:
+</p>
+
+<p>
+Take each entry of A and subtract the entry in the <b>same position</b> in B.
+</p>
+
+<h3>Example 1: Basic Subtraction</h3>
+
+<p><b>Question:</b> Find A − B if</p>
+
+<pre>
+A = [ 9  7
+      5  3 ]
+
+B = [ 4  2
+      1  6 ]
+</pre>
+
+<h4>Top-left</h4>
+
+<pre>
+9 - 4 = 5
+</pre>
+
+<h4>Top-right</h4>
+
+<pre>
+7 - 2 = 5
+</pre>
+
+<h4>Bottom-left</h4>
+
+<pre>
+5 - 1 = 4
+</pre>
+
+<h4>Bottom-right</h4>
+
+<pre>
+3 - 6 = -3
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+A - B = [ 5   5
+          4  -3 ]
+</pre>
+
+<h3>Example 2: Subtracting Negative Numbers</h3>
+
+<p><b>Question:</b> Find P − Q if</p>
+
+<pre>
+P = [  6  -2
+      -4   7 ]
+
+Q = [ -3   5
+       2  -1 ]
+</pre>
+
+<h4>Top-left</h4>
+
+<pre>
+6 - (-3)
+= 6 + 3
+= 9
+</pre>
+
+<h4>Top-right</h4>
+
+<pre>
+-2 - 5 = -7
+</pre>
+
+<h4>Bottom-left</h4>
+
+<pre>
+-4 - 2 = -6
+</pre>
+
+<h4>Bottom-right</h4>
+
+<pre>
+7 - (-1)
+= 7 + 1
+= 8
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+P - Q = [ 9  -7
+         -6   8 ]
+</pre>
+
+<h3>Example 3: The Order Matters</h3>
+
+<p><b>Question:</b> Given</p>
+
+<pre>
+A = [ 8  5
+      3  1 ]
+
+B = [ 2  4
+      6  7 ]
+</pre>
+
+<p>Find both A − B and B − A.</p>
+
+<h4>First calculate A − B</h4>
+
+<pre>
+8 - 2 = 6
+5 - 4 = 1
+3 - 6 = -3
+1 - 7 = -6
+</pre>
+
+<pre>
+A - B = [ 6   1
+         -3  -6 ]
+</pre>
+
+<h4>Now calculate B − A</h4>
+
+<pre>
+2 - 8 = -6
+4 - 5 = -1
+6 - 3 = 3
+7 - 1 = 6
+</pre>
+
+<pre>
+B - A = [ -6  -1
+           3   6 ]
+</pre>
+
+<p>
+The answers are different.
+Therefore, reversing the order changes the result.
+</p>
+
+<h3>Example 4: Different Sizes</h3>
+
+<p><b>Question:</b> Can these matrices be subtracted?</p>
+
+<pre>
+A = [ 1  2
+      3  4 ]
+
+B = [ 5  6  7
+      8  9  10 ]
+</pre>
+
+<p>
+A has 2 columns.
+B has 3 columns.
+Their sizes are different.
+</p>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+A - B = NOT DEFINED
+</pre>
+
+<h3>COMMON MISTAKE</h3>
+
+<p>
+In A − B, do not reverse the subtraction.
+The operation is:
+</p>
+
+<pre>
+entry from A - corresponding entry from B
+</pre>
+
+<p>
+It is not:
+</p>
+
+<pre>
+entry from B - corresponding entry from A
+</pre>
+`,
+
+[
+  {
+    q: "Find A - B if A = [9 7; 5 3] and B = [4 2; 1 6].",
+    hint: "Subtract corresponding entries: A entry minus B entry.",
+    steps: [
+      "9 - 4 = 5.",
+      "7 - 2 = 5.",
+      "5 - 1 = 4.",
+      "3 - 6 = -3.",
+      "Therefore A - B = [5 5; 4 -3]."
+    ],
+    ans: "[5 5; 4 -3]",
+    why: "Matrix subtraction is performed position by position."
+  },
+
+  {
+    q: "Find P - Q if P = [6 -2; -4 7] and Q = [-3 5; 2 -1].",
+    hint: "Be especially careful when subtracting negative numbers.",
+    steps: [
+      "6 - (-3) = 9.",
+      "-2 - 5 = -7.",
+      "-4 - 2 = -6.",
+      "7 - (-1) = 8.",
+      "Therefore P - Q = [9 -7; -6 8]."
+    ],
+    ans: "[9 -7; -6 8]",
+    why: "The subtraction follows the order P minus Q at every corresponding position."
+  },
+
+  {
+    q: "Using A = [8 5; 3 1] and B = [2 4; 6 7], find A - B.",
+    hint: "Keep A first throughout the calculation.",
+    steps: [
+      "8 - 2 = 6.",
+      "5 - 4 = 1.",
+      "3 - 6 = -3.",
+      "1 - 7 = -6.",
+      "Therefore A - B = [6 1; -3 -6]."
+    ],
+    ans: "[6 1; -3 -6]",
+    why: "Changing the order of subtraction changes the signs of the corresponding differences."
+  },
+
+  {
+    q: "Can a 2 × 2 matrix be subtracted from a 2 × 3 matrix?",
+    hint: "Check whether the two matrices have the same size.",
+    steps: [
+      "The first matrix has 2 rows and 2 columns.",
+      "The second matrix has 2 rows and 3 columns.",
+      "Their sizes are different.",
+      "Therefore matrix subtraction is not defined."
+    ],
+    ans: "No",
+    why: "Matrices must have the same size for subtraction."
+  }
+]
+);
+
+
+add(
+  "math",
+  "matrices",
+  "Matrix 3",
+  "Scalar Multiplication of a Matrix",
+
+  `
+<h2>Scalar Multiplication of a Matrix</h2>
 
 <p>
 A <b>scalar</b> is an ordinary number.
+Scalar multiplication means multiplying <b>every entry</b> of a matrix by that number.
 </p>
 
 <p>
-Scalar multiplication means multiplying <b>every element</b> of a
-matrix by the scalar.
+If a number k multiplies matrix A, we write:
 </p>
 
-<h3>WORKED EXAMPLE 1</h3>
-
 <pre>
-A = [ 2   -3 ]
-    [ 5    4 ]
+kA
 </pre>
 
 <p>
-Find 3A.
+The number k must multiply every entry.
 </p>
+
+<h3>THE ONE ACTION</h3>
 
 <p>
-Multiply every entry by 3:
+To calculate kA:
 </p>
 
-<pre>
-3A
+<ol>
+  <li>Take the scalar k.</li>
+  <li>Multiply it by the first entry.</li>
+  <li>Multiply it by the second entry.</li>
+  <li>Continue until every entry has been multiplied.</li>
+</ol>
 
-= [ 3(2)     3(-3) ]
-  [ 3(5)      3(4) ]
+<h3>Example 1: Multiplying by 3</h3>
 
-= [ 6    -9 ]
-  [15    12 ]
-</pre>
-
-<h3>WORKED EXAMPLE 2</h3>
-
-<pre>
-A = [ -2   4 ]
-    [  3   5 ]
-</pre>
-
-<p>
-Find -2A.
-</p>
+<p><b>Question:</b> Find 3A if</p>
 
 <pre>
--2A
-
-= [ -2(-2)   -2(4) ]
-  [ -2(3)    -2(5) ]
-
-= [ 4   -8 ]
-  [ -6  -10 ]
+A = [ 2  4
+      5  1 ]
 </pre>
 
 <p>
-Notice that the negative scalar changes the signs of the entries.
+Multiply every entry by 3.
 </p>
 
-<h3>WORKED EXAMPLE 3</h3>
+<pre>
+3(2) = 6
+3(4) = 12
+3(5) = 15
+3(1) = 3
+</pre>
+
+<p><b>Therefore:</b></p>
 
 <pre>
-A = [ 6   4   2 ]
-    [ 8   10  12 ]
+3A = [  6  12
+        15   3 ]
+</pre>
+
+<h3>Example 2: Multiplying by a Negative Scalar</h3>
+
+<p><b>Question:</b> Find -2B if</p>
+
+<pre>
+B = [  3  -4
+      -5   2 ]
+</pre>
+
+<h4>Multiply each entry</h4>
+
+<pre>
+-2(3)  = -6
+-2(-4) = 8
+-2(-5) = 10
+-2(2)  = -4
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+-2B = [ -6   8
+         10  -4 ]
 </pre>
 
 <p>
-Find 1/2 A.
+Notice that multiplying a negative number by a negative entry produces a positive result.
 </p>
 
+<h3>Example 3: Multiplying by a Fraction</h3>
+
+<p><b>Question:</b> Find 1/2 C if</p>
+
 <pre>
-1/2 A
-
-= [ 1/2(6)   1/2(4)   1/2(2) ]
-  [ 1/2(8)   1/2(10)  1/2(12) ]
-
-= [ 3   2   1 ]
-  [ 4   5   6 ]
+C = [ 6  10
+      4   8 ]
 </pre>
 
-<h3>IMPORTANT</h3>
-
 <p>
-The scalar multiplies <b>every element</b>.
-</p>
-
-<p>
-For example, if:
+Multiply every entry by 1/2.
 </p>
 
 <pre>
-A = [ a   b ]
-    [ c   d ]
+1/2(6)  = 3
+1/2(10) = 5
+1/2(4)  = 2
+1/2(8)  = 4
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+1/2 C = [ 3  5
+          2  4 ]
+</pre>
+
+<h3>Example 4: Multiplying a 2 × 3 Matrix</h3>
+
+<p><b>Question:</b> Find 4D if</p>
+
+<pre>
+D = [ 1  -2   3
+      0   5  -1 ]
+</pre>
+
+<p>
+Multiply all six entries by 4.
+</p>
+
+<pre>
+4(1)  = 4
+4(-2) = -8
+4(3)  = 12
+
+4(0)  = 0
+4(5)  = 20
+4(-1) = -4
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+4D = [ 4  -8  12
+        0  20  -4 ]
+</pre>
+
+<h3>COMMON MISTAKE</h3>
+
+<p>
+Do not multiply only one row or one column.
+The scalar must multiply <b>every entry</b>.
+</p>
+
+<p>
+For example, 3A does not mean multiply only the 3rd entry.
+It means multiply the entire matrix by 3.
+</p>
+`,
+
+[
+  {
+    q: "Find 3A if A = [2 4; 5 1].",
+    hint: "Multiply every entry by 3.",
+    steps: [
+      "3 × 2 = 6.",
+      "3 × 4 = 12.",
+      "3 × 5 = 15.",
+      "3 × 1 = 3.",
+      "Therefore 3A = [6 12; 15 3]."
+    ],
+    ans: "[6 12; 15 3]",
+    why: "Scalar multiplication applies the scalar to every entry of the matrix."
+  },
+
+  {
+    q: "Find -2B if B = [3 -4; -5 2].",
+    hint: "Multiply each entry by -2 and carefully handle the signs.",
+    steps: [
+      "-2 × 3 = -6.",
+      "-2 × (-4) = 8.",
+      "-2 × (-5) = 10.",
+      "-2 × 2 = -4.",
+      "Therefore -2B = [-6 8; 10 -4]."
+    ],
+    ans: "[-6 8; 10 -4]",
+    why: "The negative scalar changes the sign of each non-zero entry according to multiplication rules."
+  },
+
+  {
+    q: "Find 1/2 C if C = [6 10; 4 8].",
+    hint: "Half of each entry is the same as multiplying each entry by 1/2.",
+    steps: [
+      "Half of 6 is 3.",
+      "Half of 10 is 5.",
+      "Half of 4 is 2.",
+      "Half of 8 is 4.",
+      "Therefore 1/2 C = [3 5; 2 4]."
+    ],
+    ans: "[3 5; 2 4]",
+    why: "A scalar multiplies every entry independently."
+  },
+
+  {
+    q: "Find 4D if D = [1 -2 3; 0 5 -1].",
+    hint: "There are six entries, so all six must be multiplied by 4.",
+    steps: [
+      "4 × 1 = 4.",
+      "4 × (-2) = -8.",
+      "4 × 3 = 12.",
+      "4 × 0 = 0.",
+      "4 × 5 = 20.",
+      "4 × (-1) = -4.",
+      "Therefore 4D = [4 -8 12; 0 20 -4]."
+    ],
+    ans: "[4 -8 12; 0 20 -4]",
+    why: "Every entry receives the same scalar multiplication."
+  }
+]
+);
+
+
+add(
+  "math",
+  "matrices",
+  "Matrix 3",
+  "Multiplication of Matrices",
+
+  `
+<h2>Multiplication of Matrices</h2>
+
+<p>
+Matrix multiplication is different from matrix addition.
+You do <b>not</b> simply multiply entries in the same positions.
+</p>
+
+<p>
+To multiply matrices, we combine a <b>row from the first matrix</b>
+with a <b>column from the second matrix</b>.
+</p>
+
+<h3>THE ONE ACTION</h3>
+
+<p>
+For each entry in the answer:
+</p>
+
+<ol>
+  <li>Take one row from the first matrix.</li>
+  <li>Take one column from the second matrix.</li>
+  <li>Multiply matching numbers.</li>
+  <li>Add those products.</li>
+</ol>
+
+<h3>Example 1: 2 × 2 Matrix Multiplication</h3>
+
+<p><b>Question:</b> Find AB if</p>
+
+<pre>
+A = [ 2  3
+      1  4 ]
+
+B = [ 5  2
+      6  1 ]
+</pre>
+
+<h4>Find the top-left entry</h4>
+
+<p>
+Use row 1 of A and column 1 of B:
+</p>
+
+<pre>
+[2  3]    [5
+           6]
+</pre>
+
+<p>
+Multiply matching numbers and add:
+</p>
+
+<pre>
+(2 × 5) + (3 × 6)
+= 10 + 18
+= 28
+</pre>
+
+<p>
+So the top-left entry is 28.
+</p>
+
+<h4>Find the top-right entry</h4>
+
+<p>
+Use row 1 of A and column 2 of B:
+</p>
+
+<pre>
+(2 × 2) + (3 × 1)
+= 4 + 3
+= 7
+</pre>
+
+<h4>Find the bottom-left entry</h4>
+
+<p>
+Use row 2 of A and column 1 of B:
+</p>
+
+<pre>
+(1 × 5) + (4 × 6)
+= 5 + 24
+= 29
+</pre>
+
+<h4>Find the bottom-right entry</h4>
+
+<pre>
+(1 × 2) + (4 × 1)
+= 2 + 4
+= 6
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+AB = [ 28   7
+        29   6 ]
+</pre>
+
+<h3>Example 2: Understanding Where One Answer Comes From</h3>
+
+<p><b>Question:</b> Find the top-left entry of AB where</p>
+
+<pre>
+A = [ 4  1
+      2  3 ]
+
+B = [ 7  5
+      6  8 ]
+</pre>
+
+<p>
+The top-left position requires:
+</p>
+
+<ul>
+  <li>Row 1 from A</li>
+  <li>Column 1 from B</li>
+</ul>
+
+<pre>
+[4  1]    [7
+           6]
+</pre>
+
+<p>
+Now multiply matching positions:
+</p>
+
+<pre>
+4 × 7 = 28
+1 × 6 = 6
+</pre>
+
+<p>
+Add the products:
+</p>
+
+<pre>
+28 + 6 = 34
+</pre>
+
+<p>
+Therefore, the top-left entry of AB is <b>34</b>.
+</p>
+
+<h3>Example 3: Multiplying a 2 × 2 Matrix by a 2 × 1 Matrix</h3>
+
+<p><b>Question:</b> Find AB if</p>
+
+<pre>
+A = [ 3  2
+      1  4 ]
+
+B = [ 5
+      6 ]
+</pre>
+
+<h4>First answer entry</h4>
+
+<p>
+Use row 1 of A and the only column of B:
+</p>
+
+<pre>
+(3 × 5) + (2 × 6)
+= 15 + 12
+= 27
+</pre>
+
+<h4>Second answer entry</h4>
+
+<p>
+Use row 2 of A:
+</p>
+
+<pre>
+(1 × 5) + (4 × 6)
+= 5 + 24
+= 29
+</pre>
+
+<p><b>Therefore:</b></p>
+
+<pre>
+AB = [ 27
+       29 ]
+</pre>
+
+<h3>Example 4: When Multiplication Is Not Defined</h3>
+
+<p><b>Question:</b> Can these matrices be multiplied in the order AB?</p>
+
+<pre>
+A = [ 1  2  3
+      4  5  6 ]
+
+B = [ 7  8
+      9  10 ]
+</pre>
+
+<p>
+A has <b>3 columns</b>.
+B has <b>2 rows</b>.
+</p>
+
+<p>
+For AB to be possible, the number of columns of A must equal
+the number of rows of B.
+</p>
+
+<pre>
+3 ≠ 2
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+AB is NOT DEFINED.
+</pre>
+
+<h3>THE MOST IMPORTANT RULE</h3>
+
+<p>
+If:
+</p>
+
+<pre>
+A is m × n
+B is n × p
 </pre>
 
 <p>
@@ -21450,2334 +24451,1086 @@ then:
 </p>
 
 <pre>
-kA = [ ka   kb ]
-     [ kc   kd ]
+AB is m × p
 </pre>
+
+<p>
+The <b>inside numbers must match</b>.
+</p>
+
+<h3>COMMON MISTAKE</h3>
+
+<p>
+Do not calculate matrix multiplication by multiplying corresponding
+entries like matrix addition.
+</p>
+
+<p>
+For example, the top-left entry is not:
+</p>
+
+<pre>
+2 × 5
+</pre>
+
+<p>
+It is:
+</p>
+
+<pre>
+(2 × 5) + (3 × 6)
+</pre>
+
+<p>
+The entire row must interact with the entire column.
 `,
 
-  [
-    {
-      q: "Find 3[[2,-3],[5,4]].",
-      hint: "Multiply every element by 3.",
-      steps: [
-        "3(2)=6",
-        "3(-3)=-9",
-        "3(5)=15",
-        "3(4)=12"
-      ],
-      ans: "[[6,-9],[15,12]]",
-      why: "Scalar multiplication multiplies every element by the scalar."
-    },
-    {
-      q: "Find -2[[-2,4],[3,5]].",
-      hint: "Multiply every entry by -2.",
-      steps: [
-        "-2(-2)=4",
-        "-2(4)=-8",
-        "-2(3)=-6",
-        "-2(5)=-10"
-      ],
-      ans: "[[4,-8],[-6,-10]]",
-      why: "A negative scalar changes the signs as well as the magnitudes."
-    },
-    {
-      q: "Find 1/2[[6,4,2],[8,10,12]].",
-      hint: "Divide every element by 2.",
-      steps: [
-        "6/2=3, 4/2=2, 2/2=1",
-        "8/2=4, 10/2=5, 12/2=6"
-      ],
-      ans: "[[3,2,1],[4,5,6]]",
-      why: "Multiplying by 1/2 is the same as dividing every element by 2."
-    }
-  ]
-);
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Reflection in the x-axis",
+[
+  {
+    q: "Find AB if A = [2 3; 1 4] and B = [5 2; 6 1].",
+    hint: "For each answer position, use a row from A and a column from B.",
+    steps: [
+      "Top-left: (2 × 5) + (3 × 6) = 10 + 18 = 28.",
+      "Top-right: (2 × 2) + (3 × 1) = 4 + 3 = 7.",
+      "Bottom-left: (1 × 5) + (4 × 6) = 5 + 24 = 29.",
+      "Bottom-right: (1 × 2) + (4 × 1) = 2 + 4 = 6.",
+      "Therefore AB = [28 7; 29 6]."
+    ],
+    ans: "[28 7; 29 6]",
+    why: "Each entry is formed by multiplying corresponding entries of one row and one column, then adding the products."
+  },
 
-  `
-<h2>Reflection in the x-axis</h2>
+  {
+    q: "Find the top-left entry of AB if A = [4 1; 2 3] and B = [7 5; 6 8].",
+    hint: "Use row 1 of A and column 1 of B.",
+    steps: [
+      "Row 1 of A is [4 1].",
+      "Column 1 of B is [7; 6].",
+      "Multiply: 4 × 7 = 28 and 1 × 6 = 6.",
+      "Add: 28 + 6 = 34.",
+      "Therefore the top-left entry is 34."
+    ],
+    ans: "34",
+    why: "A matrix product entry is obtained from a row-column multiplication."
+  },
 
-<p>
-A reflection in the <b>x-axis</b> flips a point across the horizontal
-x-axis.
-</p>
+  {
+    q: "Find AB if A = [3 2; 1 4] and B = [5; 6].",
+    hint: "There is only one column in B, so each row of A produces one answer.",
+    steps: [
+      "First row: (3 × 5) + (2 × 6) = 15 + 12 = 27.",
+      "Second row: (1 × 5) + (4 × 6) = 5 + 24 = 29.",
+      "Therefore AB = [27; 29]."
+    ],
+    ans: "[27; 29]",
+    why: "Each row of A is combined with the single column of B."
+  },
 
-<h3>1. WHAT CHANGES?</h3>
-
-<p>
-When a point is reflected in the x-axis, its
-<b>x-coordinate stays the same</b>.
-</p>
-
-<p>
-Its <b>y-coordinate changes sign</b>.
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p><b>(x,y) → (x,-y)</b></p>
-
-<h3>2. TRANSFORMATION MATRIX</h3>
-
-<p>
-The matrix for reflection in the x-axis is:
-</p>
-
-<pre>
-[ 1   0 ]
-[ 0  -1 ]
-</pre>
-
-<p>
-Apply it to:
-</p>
-
-<pre>
-[ x ]
-[ y ]
-</pre>
-
-<p>
-We get:
-</p>
-
-<pre>
-[1  0] [x]   [x]
-[0 -1] [y] = [-y]
-</pre>
-
-<p>
-This gives:
-</p>
-
-<p><b>(x,y) → (x,-y)</b></p>
-
-<h3>3. WORKED EXAMPLE 1</h3>
-
-<p>
-Reflect <b>P(4,7)</b> in the x-axis.
-</p>
-
-<pre>
-[1   0] [4]   [4]
-[0  -1] [7] = [-7]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>P'(4,-7)</b></p>
-
-<h3>4. WORKED EXAMPLE 2</h3>
-
-<p>
-Reflect <b>A(-3,5)</b> in the x-axis.
-</p>
-
-<pre>
-[1   0] [-3]   [-3]
-[0  -1] [ 5] = [-5]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>A'(-3,-5)</b></p>
-
-<h3>5. WORKED EXAMPLE 3</h3>
-
-<p>
-Reflect <b>B(6,-2)</b> in the x-axis.
-</p>
-
-<pre>
-[1   0] [ 6]   [ 6]
-[0  -1] [-2] = [ 2]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>B'(6,2)</b></p>
-
-<h3>6. THE PATTERN</h3>
-
-<p>
-Look carefully at the examples:
-</p>
-
-<pre>
-(4,7)   → (4,-7)
-
-(-3,5)  → (-3,-5)
-
-(6,-2)  → (6,2)
-</pre>
-
-<p>
-The x-coordinate never changes.
-</p>
-
-<p>
-Only the sign of the y-coordinate changes.
-</p>
-
-<p><b>Reflection in x-axis: (x,y) → (x,-y)</b></p>
-`,
-
-  [
-    {
-      q: "Reflect (3,5) in the x-axis.",
-      hint: "Change the sign of y only.",
-      steps: [
-        "x stays 3",
-        "y changes from 5 to -5"
-      ],
-      ans: "(3,-5)",
-      why: "Reflection in the x-axis changes the sign of the y-coordinate."
-    },
-    {
-      q: "Reflect (-4,7) in the x-axis.",
-      hint: "The x-coordinate stays unchanged.",
-      steps: [
-        "x stays -4",
-        "y changes from 7 to -7"
-      ],
-      ans: "(-4,-7)",
-      why: "Only the y-coordinate changes sign."
-    },
-    {
-      q: "Reflect (6,-3) in the x-axis.",
-      hint: "A negative y-coordinate becomes positive.",
-      steps: [
-        "x stays 6",
-        "y changes from -3 to 3"
-      ],
-      ans: "(6,3)",
-      why: "Reflection in the x-axis changes y to -y."
-    },
-    {
-      q: "Use the transformation matrix to reflect (2,-8) in the x-axis.",
-      hint: "Use [[1,0],[0,-1]].",
-      steps: [
-        "First coordinate = 1(2)+0(-8)=2",
-        "Second coordinate = 0(2)-1(-8)=8"
-      ],
-      ans: "(2,8)",
-      why: "The x-axis reflection matrix leaves x unchanged and reverses the sign of y."
-    }
-  ]
+  {
+    q: "Can A = [1 2 3; 4 5 6] be multiplied by B = [7 8; 9 10] in the order AB?",
+    hint: "Compare the number of columns in A with the number of rows in B.",
+    steps: [
+      "A has 3 columns.",
+      "B has 2 rows.",
+      "For AB to exist, these two numbers must be equal.",
+      "Since 3 is not equal to 2, AB cannot be formed."
+    ],
+    ans: "No",
+    why: "Matrix multiplication requires the number of columns of the first matrix to equal the number of rows of the second matrix."
+  }
+]
 );
 
 
 add(
   "math",
   "matrices",
-  "Matrix of transformation",
-  "Reflection in the y-axis",
+  "Matrix 3",
+  "Determinant of a 2 × 2 Matrix",
 
   `
-<h2>Reflection in the y-axis</h2>
+<h2>Determinant of a 2 × 2 Matrix</h2>
 
 <p>
-A reflection in the <b>y-axis</b> flips a point across the vertical
-y-axis.
-</p>
-
-<h3>1. WHAT CHANGES?</h3>
-
-<p>
-When a point is reflected in the y-axis, its
-<b>y-coordinate stays the same</b>.
+The <b>determinant</b> is a single number calculated from a square matrix.
+For a 2 × 2 matrix, there is a specific calculation pattern.
 </p>
 
 <p>
-Its <b>x-coordinate changes sign</b>.
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p><b>(x,y) → (-x,y)</b></p>
-
-<h3>2. TRANSFORMATION MATRIX</h3>
-
-<pre>
-[-1   0]
-[ 0   1]
-</pre>
-
-<p>
-Applying this matrix gives:
+If:
 </p>
 
 <pre>
-[-1  0] [x]   [-x]
-[ 0  1] [y] = [ y]
+A = [ a  b
+      c  d ]
 </pre>
 
 <p>
-Therefore:
-</p>
-
-<p><b>(x,y) → (-x,y)</b></p>
-
-<h3>3. WORKED EXAMPLE 1</h3>
-
-<p>
-Reflect <b>P(5,2)</b> in the y-axis.
+then:
 </p>
 
 <pre>
-[-1   0] [5]   [-5]
-[ 0   1] [2] = [ 2]
+det(A) = ad - bc
 </pre>
-
-<p>
-Therefore:</p>
-
-<p><b>P'(-5,2)</b></p>
-
-<h3>4. WORKED EXAMPLE 2</h3>
-
-<p>
-Reflect <b>A(-4,6)</b> in the y-axis.
-</p>
-
-<pre>
-[-1   0] [-4]   [4]
-[ 0   1] [ 6] = [6]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>A'(4,6)</b></p>
-
-<h3>5. WORKED EXAMPLE 3</h3>
-
-<p>
-Reflect <b>B(3,-7)</b> in the y-axis.
-</p>
-
-<pre>
-[-1   0] [ 3]   [-3]
-[ 0   1] [-7] = [-7]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>B'(-3,-7)</b></p>
-
-<h3>6. THE PATTERN</h3>
-
-<pre>
-(5,2)    → (-5,2)
-
-(-4,6)   → (4,6)
-
-(3,-7)   → (-3,-7)
-</pre>
-
-<p>
-The y-coordinate stays unchanged.
-</p>
-
-<p>
-Only the sign of the x-coordinate changes.
-</p>
-
-<p><b>Reflection in y-axis: (x,y) → (-x,y)</b></p>
-`,
-
-  [
-    {
-      q: "Reflect (5,2) in the y-axis.",
-      hint: "Change the sign of x only.",
-      steps: [
-        "x changes from 5 to -5",
-        "y stays 2"
-      ],
-      ans: "(-5,2)",
-      why: "Reflection in the y-axis changes the sign of the x-coordinate."
-    },
-    {
-      q: "Reflect (-4,6) in the y-axis.",
-      hint: "The y-coordinate remains unchanged.",
-      steps: [
-        "x changes from -4 to 4",
-        "y stays 6"
-      ],
-      ans: "(4,6)",
-      why: "Only the x-coordinate changes sign."
-    },
-    {
-      q: "Reflect (3,-7) in the y-axis.",
-      hint: "Change x, not y.",
-      steps: [
-        "x changes from 3 to -3",
-        "y stays -7"
-      ],
-      ans: "(-3,-7)",
-      why: "Reflection in the y-axis maps (x,y) to (-x,y)."
-    },
-    {
-      q: "Use the transformation matrix to reflect (-2,5) in the y-axis.",
-      hint: "Use [[-1,0],[0,1]].",
-      steps: [
-        "First coordinate = -1(-2)+0(5)=2",
-        "Second coordinate = 0(-2)+1(5)=5"
-      ],
-      ans: "(2,5)",
-      why: "The y-axis reflection matrix reverses x while leaving y unchanged."
-    }
-  ]
-);
-
-
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Reflection in the Line y = x",
-
-  `
-<h2>Reflection in the Line y = x</h2>
-
-<p>
-A reflection in the line <b>y = x</b> changes the position of a point
-by swapping its x- and y-coordinates.
-</p>
-
-<h3>1. THE MAIN RULE</h3>
-
-<p>
-For a point:
-</p>
-
-<pre>
-(x,y)
-</pre>
-
-<p>
-reflection in y = x gives:
-</p>
-
-<p><b>(x,y) → (y,x)</b></p>
-
-<p>
-The two coordinates simply exchange positions.
-</p>
-
-<h3>2. TRANSFORMATION MATRIX</h3>
-
-<p>
-The transformation matrix is:
-</p>
-
-<pre>
-[0  1]
-[1  0]
-</pre>
-
-<p>
-Apply it to:
-</p>
-
-<pre>
-[x]
-[y]
-</pre>
-
-<pre>
-[0  1] [x]   [y]
-[1  0] [y] = [x]
-</pre>
-
-<p>
-Therefore:
-</p>
-
-<p><b>(x,y) → (y,x)</b></p>
-
-<h3>3. WORKED EXAMPLE 1</h3>
-
-<p>
-Reflect <b>P(3,8)</b> in y = x.
-</p>
-
-<pre>
-[0  1] [3]   [8]
-[1  0] [8] = [3]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>P'(8,3)</b></p>
-
-<h3>4. WORKED EXAMPLE 2</h3>
-
-<p>
-Reflect <b>A(-2,5)</b> in y = x.
-</p>
-
-<pre>
-[0  1] [-2]   [ 5]
-[1  0] [ 5] = [-2]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>A'(5,-2)</b></p>
-
-<h3>5. WORKED EXAMPLE 3</h3>
-
-<p>
-Reflect <b>B(7,-4)</b> in y = x.
-</p>
-
-<pre>
-[0  1] [ 7]   [-4]
-[1  0] [-4] = [ 7]
-</pre>
-
-<p>
-Therefore:</p>
-
-<p><b>B'(-4,7)</b></p>
-
-<h3>6. THE PATTERN</h3>
-
-<pre>
-(3,8)    → (8,3)
-
-(-2,5)   → (5,-2)
-
-(7,-4)   → (-4,7)
-</pre>
-
-<p>
-The numbers do not change.
-</p>
-
-<p>
-They simply <b>swap positions</b>.
-</p>
-
-<p><b>Reflection in y = x: (x,y) → (y,x)</b></p>
-`,
-
-  [
-    {
-      q: "Reflect (3,8) in the line y = x.",
-      hint: "Swap x and y.",
-      steps: [
-        "Original point = (3,8)",
-        "Swap the coordinates",
-        "Image = (8,3)"
-      ],
-      ans: "(8,3)",
-      why: "Reflection in y=x exchanges the x- and y-coordinates."
-    },
-    {
-      q: "Reflect (-2,5) in the line y = x.",
-      hint: "Exchange the two coordinates.",
-      steps: [
-        "Original point = (-2,5)",
-        "Swap the coordinates",
-        "Image = (5,-2)"
-      ],
-      ans: "(5,-2)",
-      why: "The transformation maps (x,y) to (y,x)."
-    },
-    {
-      q: "Reflect (7,-4) in the line y = x.",
-      hint: "Swap the positions of 7 and -4.",
-      steps: [
-        "Original point = (7,-4)",
-        "Swap the coordinates",
-        "Image = (-4,7)"
-      ],
-      ans: "(-4,7)",
-      why: "Reflection in y=x swaps the x- and y-coordinates."
-    },
-    {
-      q: "Use the transformation matrix to reflect (6,2) in y=x.",
-      hint: "Use [[0,1],[1,0]].",
-      steps: [
-        "First coordinate = 0(6)+1(2)=2",
-        "Second coordinate = 1(6)+0(2)=6"
-      ],
-      ans: "(2,6)",
-      why: "The matrix [[0,1],[1,0]] exchanges the two coordinates."
-    }
-  ]
-);
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Rotation Through 90 Degrees Anticlockwise",
-
-  `
-<h2>Rotation Through 90° Anticlockwise</h2>
-
-<p>
-A <b>rotation</b> turns a point around a fixed centre.
-In this screen, the centre of rotation is the origin, O(0,0),
-and the point turns through <b>90° anticlockwise</b>.
-</p>
-
-<h3>1. THE MAIN RULE</h3>
-
-<p>
-When a point rotates through 90° anticlockwise about the origin,
-its coordinates change according to this rule:
-</p>
-
-<p><b>(x,y) → (-y,x)</b></p>
-
-<p>
-Notice what happens:
-</p>
-
-<ul>
-<li>The old y-coordinate moves to the first position.</li>
-<li>The old x-coordinate moves to the second position.</li>
-<li>The old y-coordinate becomes negative.</li>
-</ul>
-
-<h3>2. TRANSFORMATION MATRIX</h3>
-
-<p>
-The transformation matrix for a 90° anticlockwise rotation is:
-</p>
-
-<pre>
-[ 0  -1]
-[ 1   0]
-</pre>
-
-<p>
-To transform a point (x,y), multiply the matrix by its
-coordinate column:
-</p>
-
-<pre>
-[ 0  -1] [x]   [-y]
-[ 1   0] [y] = [ x]
-</pre>
-
-<p>
-The first coordinate is:
-</p>
-
-<p><b>0x + (-1)y = -y</b></p>
-
-<p>
-The second coordinate is:
-</p>
-
-<p><b>1x + 0y = x</b></p>
-
-<p>
-Therefore, the transformation is:
-</p>
-
-<p><b>(x,y) → (-y,x)</b></p>
-
-<h3>3. WORKED EXAMPLE 1</h3>
-
-<p>
-Rotate P(3,2) through 90° anticlockwise about the origin.
-</p>
-
-<p>Step 1: Write the original coordinates.</p>
-
-<pre>
-P = (3,2)
-</pre>
-
-<p>Step 2: Apply the rule (x,y) → (-y,x).</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(3,2) → (-2,3)
-</pre>
-
-<p>Step 3: State the image.</p>
-
-<p><b>P' = (-2,3)</b></p>
-
-<h3>4. WORKED EXAMPLE 2</h3>
-
-<p>
-Rotate A(-4,5) through 90° anticlockwise about the origin.
-</p>
-
-<p>Step 1: Identify x and y.</p>
-
-<pre>
-x = -4
-y = 5
-</pre>
-
-<p>Step 2: Apply the rule.</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(-4,5) → (-5,-4)
-</pre>
-
-<p>Step 3: State the image.</p>
-
-<p><b>A' = (-5,-4)</b></p>
-
-<p>
-Remember that the new first coordinate is the negative of the
-old y-coordinate. The old y-coordinate is 5, so the new one is -5.
-</p>
-
-<h3>5. WORKED EXAMPLE 3</h3>
-
-<p>
-Rotate B(2,-6) through 90° anticlockwise about the origin.
-</p>
-
-<p>Step 1: Identify the coordinates.</p>
-
-<pre>
-x = 2
-y = -6
-</pre>
-
-<p>Step 2: Apply the rule.</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(2,-6) → (6,2)
-</pre>
-
-<p>Step 3: State the image.</p>
-
-<p><b>B' = (6,2)</b></p>
-
-<p>
-Because the original y-coordinate was -6, its negative is
--(-6) = 6.
-</p>
-
-<h3>6. THE PATTERN</h3>
-
-<pre>
-(3,2)    → (-2,3)
-
-(-4,5)   → (-5,-4)
-
-(2,-6)   → (6,2)
-</pre>
-
-<p>
-For every point, the same rule applies:
-</p>
-
-<p><b>90° anticlockwise: (x,y) → (-y,x)</b></p>
-
-<p>
-The centre must be the origin for this rule to apply directly.
-</p>
-`,
-
-  [
-    {
-      q: "Rotate (3,2) through 90° anticlockwise about the origin.",
-      hint: "Use (x,y) → (-y,x).",
-      steps: [
-        "Original point = (3,2)",
-        "The new first coordinate is -y = -2",
-        "The new second coordinate is x = 3",
-        "Image = (-2,3)"
-      ],
-      ans: "(-2,3)",
-      why: "A 90° anticlockwise rotation maps (x,y) to (-y,x)."
-    },
-    {
-      q: "Rotate (-4,5) through 90° anticlockwise about the origin.",
-      hint: "Negate the old y-coordinate, then use the old x-coordinate.",
-      steps: [
-        "Original point = (-4,5)",
-        "New first coordinate = -5",
-        "New second coordinate = -4",
-        "Image = (-5,-4)"
-      ],
-      ans: "(-5,-4)",
-      why: "The new coordinates are (-y,x), so (-4,5) becomes (-5,-4)."
-    },
-    {
-      q: "Rotate (2,-6) through 90° anticlockwise about the origin.",
-      hint: "Remember that -(-6) = 6.",
-      steps: [
-        "Original point = (2,-6)",
-        "New first coordinate = -(-6) = 6",
-        "New second coordinate = 2",
-        "Image = (6,2)"
-      ],
-      ans: "(6,2)",
-      why: "Negating the original y-coordinate changes -6 to 6, while x remains the second coordinate."
-    },
-    {
-      q: "Use the transformation matrix to rotate (4,3) through 90° anticlockwise.",
-      hint: "Multiply [[0,-1],[1,0]] by [4,3].",
-      steps: [
-        "First coordinate = 0(4) - 1(3) = -3",
-        "Second coordinate = 1(4) + 0(3) = 4",
-        "Image = (-3,4)"
-      ],
-      ans: "(-3,4)",
-      why: "The matrix [[0,-1],[1,0]] produces the coordinates (-y,x)."
-    },
-    {
-      q: "A point Q has image Q' = (-7,3) after a 90° anticlockwise rotation about the origin. Find the original point Q.",
-      hint: "If (x,y) → (-y,x), compare each coordinate of the image.",
-      steps: [
-        "The image is (-y,x) = (-7,3)",
-        "-y = -7, so y = 7",
-        "x = 3",
-        "Original point Q = (3,7)"
-      ],
-      ans: "(3,7)",
-      why: "The second image coordinate gives x = 3, while the first gives y = 7."
-    }
-  ]
-);
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Rotation Through 90 Degrees Clockwise",
-
-  `
-<h2>Rotation Through 90° Clockwise</h2>
-
-<p>
-A <b>rotation</b> turns a point around a fixed centre.
-In this screen, the centre is the origin O(0,0), and the point
-turns through <b>90° clockwise</b>.
-</p>
-
-<h3>1. THE MAIN RULE</h3>
-
-<p>
-A 90° clockwise rotation changes the coordinates according to:
-</p>
-
-<p><b>(x,y) → (y,-x)</b></p>
 
 <p>
 This means:
-</p>
-
-<ul>
-<li>The old y-coordinate becomes the new first coordinate.</li>
-<li>The old x-coordinate becomes the new second coordinate.</li>
-<li>The old x-coordinate changes sign.</li>
-</ul>
-
-<h3>2. TRANSFORMATION MATRIX</h3>
-
-<p>
-The transformation matrix for a 90° clockwise rotation is:
-</p>
-
-<pre>
-[ 0   1]
-[-1   0]
-</pre>
-
-<p>
-Write the original point as a column vector:
-</p>
-
-<pre>
-[x]
-[y]
-</pre>
-
-<p>Multiply the matrix by the column vector:</p>
-
-<pre>
-[ 0   1] [x]   [ y]
-[-1   0] [y] = [-x]
-</pre>
-
-<p>The first coordinate is:</p>
-
-<p><b>0x + 1y = y</b></p>
-
-<p>The second coordinate is:</p>
-
-<p><b>-1x + 0y = -x</b></p>
-
-<p>Therefore:</p>
-
-<p><b>(x,y) → (y,-x)</b></p>
-
-<h3>3. WORKED EXAMPLE 1</h3>
-
-<p>
-Rotate P(3,2) through 90° clockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the original coordinates.</p>
-
-<pre>
-x = 3
-y = 2
-</pre>
-
-<p><b>Step 2:</b> Apply the rule (x,y) → (y,-x).</p>
-
-<pre>
-(3,2) → (2,-3)
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>P' = (2,-3)</b></p>
-
-<h3>4. WORKED EXAMPLE 2</h3>
-
-<p>
-Rotate A(-4,5) through 90° clockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = -4
-y = 5
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (y,-x)
-
-(-4,5) → (5,4)
-</pre>
-
-<p>
-The new second coordinate is -(-4) = 4.
-</p>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>A' = (5,4)</b></p>
-
-<h3>5. WORKED EXAMPLE 3</h3>
-
-<p>
-Rotate B(2,-6) through 90° clockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = 2
-y = -6
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (y,-x)
-
-(2,-6) → (-6,-2)
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>B' = (-6,-2)</b></p>
-
-<h3>6. THE PATTERN</h3>
-
-<pre>
-(3,2)    → (2,-3)
-
-(-4,5)   → (5,4)
-
-(2,-6)   → (-6,-2)
-</pre>
-
-<p>
-Notice that the first coordinate becomes the negative of the
-original x-coordinate in the second position, while the original
-y-coordinate moves to the first position.
-</p>
-
-<p><b>90° clockwise: (x,y) → (y,-x)</b></p>
-
-<p>
-This rule applies directly when the centre of rotation is the origin.
-</p>
-`,
-
-  [
-    {
-      q: "Rotate (3,2) through 90° clockwise about the origin.",
-      hint: "Use (x,y) → (y,-x).",
-      steps: [
-        "Original point = (3,2)",
-        "New first coordinate = y = 2",
-        "New second coordinate = -x = -3",
-        "Image = (2,-3)"
-      ],
-      ans: "(2,-3)",
-      why: "A 90° clockwise rotation maps (x,y) to (y,-x)."
-    },
-    {
-      q: "Rotate (-4,5) through 90° clockwise about the origin.",
-      hint: "Keep y first and change the sign of x.",
-      steps: [
-        "Original point = (-4,5)",
-        "New first coordinate = 5",
-        "New second coordinate = -(-4) = 4",
-        "Image = (5,4)"
-      ],
-      ans: "(5,4)",
-      why: "The old y-coordinate becomes the first coordinate, and the negative of the old x-coordinate becomes the second."
-    },
-    {
-      q: "Rotate (2,-6) through 90° clockwise about the origin.",
-      hint: "The new coordinates are (y,-x).",
-      steps: [
-        "Original point = (2,-6)",
-        "New first coordinate = -6",
-        "New second coordinate = -2",
-        "Image = (-6,-2)"
-      ],
-      ans: "(-6,-2)",
-      why: "Substituting x = 2 and y = -6 into (y,-x) gives (-6,-2)."
-    },
-    {
-      q: "Use the transformation matrix to rotate (4,3) through 90° clockwise about the origin.",
-      hint: "Use [[0,1],[-1,0]].",
-      steps: [
-        "First coordinate = 0(4) + 1(3) = 3",
-        "Second coordinate = -1(4) + 0(3) = -4",
-        "Image = (3,-4)"
-      ],
-      ans: "(3,-4)",
-      why: "Matrix multiplication gives (y,-x)."
-    },
-    {
-      q: "A point Q has image Q' = (7,-3) after a 90° clockwise rotation about the origin. Find the original point Q.",
-      hint: "The image coordinates are (y,-x).",
-      steps: [
-        "Compare (y,-x) with (7,-3)",
-        "y = 7",
-        "-x = -3, so x = 3",
-        "Original point Q = (3,7)"
-      ],
-      ans: "(3,7)",
-      why: "The first image coordinate gives y = 7, and the second gives x = 3."
-    }
-  ]
-);
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Rotation Through 180 Degrees",
-
-  `
-<h2>Rotation Through 180° About the Origin</h2>
-
-<p>
-A <b>180° rotation</b> turns a point halfway around the origin.
-The centre of rotation is O(0,0).
-</p>
-
-<h3>1. THE MAIN RULE</h3>
-
-<p>
-When a point rotates through 180° about the origin,
-both coordinates change sign.
-</p>
-
-<p><b>(x,y) → (-x,-y)</b></p>
-
-<p>
-This means:
-</p>
-
-<ul>
-<li>The x-coordinate changes sign.</li>
-<li>The y-coordinate changes sign.</li>
-<li>The order of the coordinates stays the same.</li>
-</ul>
-
-<p>
-For example:
-</p>
-
-<pre>
-(3,2) → (-3,-2)
-</pre>
-
-<p>
-The 3 becomes -3, and the 2 becomes -2.
-</p>
-
-<h3>2. TRANSFORMATION MATRIX</h3>
-
-<p>
-The transformation matrix for a 180° rotation is:
-</p>
-
-<pre>
-[-1   0]
-[ 0  -1]
-</pre>
-
-<p>
-Write the point as a column vector:
-</p>
-
-<pre>
-[x]
-[y]
-</pre>
-
-<p>Multiply the matrix by the column vector:</p>
-
-<pre>
-[-1   0] [x]   [-x]
-[ 0  -1] [y] = [-y]
-</pre>
-
-<p>The first coordinate is:</p>
-
-<p><b>-1x + 0y = -x</b></p>
-
-<p>The second coordinate is:</p>
-
-<p><b>0x + (-1)y = -y</b></p>
-
-<p>Therefore, the transformation is:</p>
-
-<p><b>(x,y) → (-x,-y)</b></p>
-
-<h3>3. WORKED EXAMPLE 1</h3>
-
-<p>
-Rotate P(3,2) through 180° about the origin.
-</p>
-
-<p><b>Step 1:</b> Write the original coordinates.</p>
-
-<pre>
-x = 3
-y = 2
-</pre>
-
-<p><b>Step 2:</b> Change the sign of each coordinate.</p>
-
-<pre>
-x = 3  → -3
-y = 2  → -2
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>P' = (-3,-2)</b></p>
-
-<h3>4. WORKED EXAMPLE 2</h3>
-
-<p>
-Rotate A(-4,5) through 180° about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = -4
-y = 5
-</pre>
-
-<p><b>Step 2:</b> Change both signs.</p>
-
-<pre>
--4 → 4
- 5 → -5
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>A' = (4,-5)</b></p>
-
-<p>
-Remember: changing a negative number's sign makes it positive.
-</p>
-
-<h3>5. WORKED EXAMPLE 3</h3>
-
-<p>
-Rotate B(-2,-6) through 180° about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = -2
-y = -6
-</pre>
-
-<p><b>Step 2:</b> Change both signs.</p>
-
-<pre>
--2 → 2
--6 → 6
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>B' = (2,6)</b></p>
-
-<h3>6. THE PATTERN</h3>
-
-<pre>
-( 3, 2) → (-3,-2)
-
-(-4, 5) → ( 4,-5)
-
-(-2,-6) → ( 2, 6)
-</pre>
-
-<p>
-The coordinates stay in the same order, but both signs change.
-</p>
-
-<p><b>180° rotation: (x,y) → (-x,-y)</b></p>
-
-<p>
-This rule applies directly when the centre of rotation is the origin.
-</p>
-`,
-
-  [
-    {
-      q: "Rotate (3,2) through 180° about the origin.",
-      hint: "Change the signs of both coordinates.",
-      steps: [
-        "Original point = (3,2)",
-        "Change 3 to -3",
-        "Change 2 to -2",
-        "Image = (-3,-2)"
-      ],
-      ans: "(-3,-2)",
-      why: "A 180° rotation about the origin maps (x,y) to (-x,-y)."
-    },
-    {
-      q: "Rotate (-4,5) through 180° about the origin.",
-      hint: "A negative x-coordinate becomes positive, and a positive y-coordinate becomes negative.",
-      steps: [
-        "Original point = (-4,5)",
-        "-4 becomes 4",
-        "5 becomes -5",
-        "Image = (4,-5)"
-      ],
-      ans: "(4,-5)",
-      why: "Both coordinates change sign, giving (-x,-y)."
-    },
-    {
-      q: "Rotate (-2,-6) through 180° about the origin.",
-      hint: "Change both negative coordinates to positive.",
-      steps: [
-        "Original point = (-2,-6)",
-        "-2 becomes 2",
-        "-6 becomes 6",
-        "Image = (2,6)"
-      ],
-      ans: "(2,6)",
-      why: "Negating each original coordinate gives (-(-2),-(-6)) = (2,6)."
-    },
-    {
-      q: "Use the transformation matrix to rotate (4,-3) through 180° about the origin.",
-      hint: "Use [[-1,0],[0,-1]].",
-      steps: [
-        "First coordinate = -1(4) + 0(-3) = -4",
-        "Second coordinate = 0(4) + (-1)(-3) = 3",
-        "Image = (-4,3)"
-      ],
-      ans: "(-4,3)",
-      why: "Matrix multiplication produces (-x,-y)."
-    },
-    {
-      q: "A point P has image P' = (-7,4) after a 180° rotation about the origin. Find the original point P.",
-      hint: "Change both image coordinates' signs to recover the original point.",
-      steps: [
-        "Image = (-x,-y) = (-7,4)",
-        "-x = -7, so x = 7",
-        "-y = 4, so y = -4",
-        "Original point P = (7,-4)"
-      ],
-      ans: "(7,-4)",
-      why: "A 180° rotation reverses both coordinate signs. Applying the same sign reversal again recovers the original point."
-    }
-  ]
-);
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Rotation Through 270 Degrees Anticlockwise",
-
-  `
-<h2>Rotation Through 270° Anticlockwise</h2>
-
-<p>
-A <b>270° anticlockwise rotation</b> turns a point through
-three-quarters of a complete turn about the origin O(0,0).
-</p>
-
-<h3>1. UNDERSTANDING THE ROTATION</h3>
-
-<p>
-A complete turn is 360°. Therefore:
-</p>
-
-<pre>
-360° - 270° = 90°
-</pre>
-
-<p>
-Turning 270° anticlockwise gives the same final position as
-turning 90° clockwise.
-</p>
-
-<p>
-We can therefore use the coordinate rule for a 90° clockwise rotation.
-</p>
-
-<h3>2. THE MAIN RULE</h3>
-
-<p>
-The coordinate rule is:
-</p>
-
-<p><b>(x,y) → (y,-x)</b></p>
-
-<p>
-This means:
-</p>
-
-<ul>
-<li>The original y-coordinate becomes the first coordinate.</li>
-<li>The original x-coordinate becomes the second coordinate.</li>
-<li>The original x-coordinate changes sign.</li>
-</ul>
-
-<p>For example:</p>
-
-<pre>
-(3,2) → (2,-3)
-</pre>
-
-<h3>3. TRANSFORMATION MATRIX</h3>
-
-<p>
-The transformation matrix for a 270° anticlockwise rotation is:
-</p>
-
-<pre>
-[ 0   1]
-[-1   0]
-</pre>
-
-<p>
-Write the original point as a column vector:
-</p>
-
-<pre>
-[x]
-[y]
-</pre>
-
-<p>Multiply the matrix by the vector:</p>
-
-<pre>
-[ 0   1] [x]   [ y]
-[-1   0] [y] = [-x]
-</pre>
-
-<p>The first coordinate is:</p>
-
-<p><b>0x + 1y = y</b></p>
-
-<p>The second coordinate is:</p>
-
-<p><b>-1x + 0y = -x</b></p>
-
-<p>Therefore:</p>
-
-<p><b>(x,y) → (y,-x)</b></p>
-
-<h3>4. WORKED EXAMPLE 1</h3>
-
-<p>
-Rotate P(3,2) through 270° anticlockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = 3
-y = 2
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (y,-x)
-
-(3,2) → (2,-3)
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>P' = (2,-3)</b></p>
-
-<h3>5. WORKED EXAMPLE 2</h3>
-
-<p>
-Rotate A(-4,5) through 270° anticlockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = -4
-y = 5
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (y,-x)
-
-(-4,5) → (5,4)
-</pre>
-
-<p>
-The new second coordinate is -(-4) = 4.
-</p>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>A' = (5,4)</b></p>
-
-<h3>6. WORKED EXAMPLE 3</h3>
-
-<p>
-Rotate B(2,-6) through 270° anticlockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = 2
-y = -6
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (y,-x)
-
-(2,-6) → (-6,-2)
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>B' = (-6,-2)</b></p>
-
-<h3>7. THE PATTERN</h3>
-
-<pre>
-( 3, 2) → ( 2,-3)
-
-(-4, 5) → ( 5, 4)
-
-( 2,-6) → (-6,-2)
-</pre>
-
-<p>
-A 270° anticlockwise rotation has the same final result as a
-90° clockwise rotation.
-</p>
-
-<p><b>270° anticlockwise: (x,y) → (y,-x)</b></p>
-
-<p>
-This rule applies directly when the centre of rotation is the origin.
-</p>
-`,
-
-  [
-    {
-      q: "Rotate (3,2) through 270° anticlockwise about the origin.",
-      hint: "Use (x,y) → (y,-x).",
-      steps: [
-        "Original point = (3,2)",
-        "New first coordinate = y = 2",
-        "New second coordinate = -x = -3",
-        "Image = (2,-3)"
-      ],
-      ans: "(2,-3)",
-      why: "A 270° anticlockwise rotation is equivalent to a 90° clockwise rotation."
-    },
-    {
-      q: "Rotate (-4,5) through 270° anticlockwise about the origin.",
-      hint: "Place y first and use -x for the second coordinate.",
-      steps: [
-        "Original point = (-4,5)",
-        "New first coordinate = 5",
-        "New second coordinate = -(-4) = 4",
-        "Image = (5,4)"
-      ],
-      ans: "(5,4)",
-      why: "The coordinate rule is (x,y) → (y,-x)."
-    },
-    {
-      q: "Rotate (2,-6) through 270° anticlockwise about the origin.",
-      hint: "The original y-coordinate is negative.",
-      steps: [
-        "Original point = (2,-6)",
-        "New first coordinate = -6",
-        "New second coordinate = -2",
-        "Image = (-6,-2)"
-      ],
-      ans: "(-6,-2)",
-      why: "Substituting x = 2 and y = -6 into (y,-x) gives (-6,-2)."
-    },
-    {
-      q: "Use the transformation matrix to rotate (4,3) through 270° anticlockwise.",
-      hint: "Multiply [[0,1],[-1,0]] by [4,3].",
-      steps: [
-        "First coordinate = 0(4) + 1(3) = 3",
-        "Second coordinate = -1(4) + 0(3) = -4",
-        "Image = (3,-4)"
-      ],
-      ans: "(3,-4)",
-      why: "The transformation matrix produces (y,-x), the rule for a 270° anticlockwise rotation."
-    },
-    {
-      q: "A point Q has image Q' = (6,-2) after a 270° anticlockwise rotation about the origin. Find Q.",
-      hint: "The image coordinates are (y,-x).",
-      steps: [
-        "Compare (y,-x) with (6,-2)",
-        "y = 6",
-        "-x = -2, so x = 2",
-        "Original point Q = (2,6)"
-      ],
-      ans: "(2,6)",
-      why: "Reversing the coordinate rule (x,y) → (y,-x) gives the original point (2,6)."
-    }
-  ]
-);
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Rotation Through 270 Degrees Clockwise",
-
-  `
-<h2>Rotation Through 270° Clockwise</h2>
-
-<p>
-A <b>270° clockwise rotation</b> turns a point through
-three-quarters of a complete turn about the origin O(0,0).
-</p>
-
-<h3>1. UNDERSTANDING THE ROTATION</h3>
-
-<p>
-A complete turn is 360°. Therefore:
-</p>
-
-<pre>
-360° - 270° = 90°
-</pre>
-
-<p>
-Turning 270° clockwise gives the same final position as
-turning 90° anticlockwise.
-</p>
-
-<p>
-We can therefore use the coordinate rule for a 90° anticlockwise rotation.
-</p>
-
-<h3>2. THE MAIN RULE</h3>
-
-<p>
-The coordinate rule is:
-</p>
-
-<p><b>(x,y) → (-y,x)</b></p>
-
-<p>This means:</p>
-
-<ul>
-<li>The original y-coordinate becomes the first coordinate and changes sign.</li>
-<li>The original x-coordinate becomes the second coordinate.</li>
-</ul>
-
-<p>For example:</p>
-
-<pre>
-(3,2) → (-2,3)
-</pre>
-
-<h3>3. TRANSFORMATION MATRIX</h3>
-
-<p>
-The transformation matrix for a 270° clockwise rotation is:
-</p>
-
-<pre>
-[ 0  -1]
-[ 1   0]
-</pre>
-
-<p>
-Write the original point as a column vector:
-</p>
-
-<pre>
-[x]
-[y]
-</pre>
-
-<p>Multiply the matrix by the vector:</p>
-
-<pre>
-[ 0  -1] [x]   [-y]
-[ 1   0] [y] = [ x]
-</pre>
-
-<p>The first coordinate is:</p>
-
-<p><b>0x + (-1)y = -y</b></p>
-
-<p>The second coordinate is:</p>
-
-<p><b>1x + 0y = x</b></p>
-
-<p>Therefore:</p>
-
-<p><b>(x,y) → (-y,x)</b></p>
-
-<h3>4. WORKED EXAMPLE 1</h3>
-
-<p>
-Rotate P(3,2) through 270° clockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = 3
-y = 2
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(3,2) → (-2,3)
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>P' = (-2,3)</b></p>
-
-<h3>5. WORKED EXAMPLE 2</h3>
-
-<p>
-Rotate A(-4,5) through 270° clockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = -4
-y = 5
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(-4,5) → (-5,-4)
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>A' = (-5,-4)</b></p>
-
-<h3>6. WORKED EXAMPLE 3</h3>
-
-<p>
-Rotate B(2,-6) through 270° clockwise about the origin.
-</p>
-
-<p><b>Step 1:</b> Identify the coordinates.</p>
-
-<pre>
-x = 2
-y = -6
-</pre>
-
-<p><b>Step 2:</b> Apply the rule.</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(2,-6) → (6,2)
-</pre>
-
-<p><b>Step 3:</b> State the image.</p>
-
-<p><b>B' = (6,2)</b></p>
-
-<h3>7. THE PATTERN</h3>
-
-<pre>
-( 3, 2) → (-2, 3)
-
-(-4, 5) → (-5,-4)
-
-( 2,-6) → ( 6, 2)
-</pre>
-
-<p>
-A 270° clockwise rotation has the same final result as a
-90° anticlockwise rotation.
-</p>
-
-<p><b>270° clockwise: (x,y) → (-y,x)</b></p>
-
-<p>
-This rule applies directly when the centre of rotation is the origin.
-</p>
-`,
-
-  [
-    {
-      q: "Rotate (3,2) through 270° clockwise about the origin.",
-      hint: "Use (x,y) → (-y,x).",
-      steps: [
-        "Original point = (3,2)",
-        "New first coordinate = -y = -2",
-        "New second coordinate = x = 3",
-        "Image = (-2,3)"
-      ],
-      ans: "(-2,3)",
-      why: "A 270° clockwise rotation is equivalent to a 90° anticlockwise rotation."
-    },
-    {
-      q: "Rotate (-4,5) through 270° clockwise about the origin.",
-      hint: "Change the sign of y, then place x second.",
-      steps: [
-        "Original point = (-4,5)",
-        "New first coordinate = -5",
-        "New second coordinate = -4",
-        "Image = (-5,-4)"
-      ],
-      ans: "(-5,-4)",
-      why: "The coordinate rule is (x,y) → (-y,x)."
-    },
-    {
-      q: "Rotate (2,-6) through 270° clockwise about the origin.",
-      hint: "Remember that -(-6) = 6.",
-      steps: [
-        "Original point = (2,-6)",
-        "New first coordinate = -(-6) = 6",
-        "New second coordinate = 2",
-        "Image = (6,2)"
-      ],
-      ans: "(6,2)",
-      why: "Substituting x = 2 and y = -6 into (-y,x) gives (6,2)."
-    },
-    {
-      q: "Use the transformation matrix to rotate (4,3) through 270° clockwise.",
-      hint: "Multiply [[0,-1],[1,0]] by [4,3].",
-      steps: [
-        "First coordinate = 0(4) - 1(3) = -3",
-        "Second coordinate = 1(4) + 0(3) = 4",
-        "Image = (-3,4)"
-      ],
-      ans: "(-3,4)",
-      why: "The transformation matrix produces (-y,x), the rule for a 270° clockwise rotation."
-    },
-    {
-      q: "A point Q has image Q' = (-6,2) after a 270° clockwise rotation about the origin. Find Q.",
-      hint: "The image coordinates are (-y,x).",
-      steps: [
-        "Compare (-y,x) with (-6,2)",
-        "-y = -6, so y = 6",
-        "x = 2",
-        "Original point Q = (2,6)"
-      ],
-      ans: "(2,6)",
-      why: "Reversing the transformation (x,y) → (-y,x) gives the original point (2,6)."
-    }
-  ]
-);
-add(
-  "math",
-  "matrices",
-  "Matrix of transformation",
-  "Rotating a Triangle Using a Transformation Matrix",
-
-  `
-<h2>Rotating a Triangle Using a Transformation Matrix</h2>
-
-<p>
-A transformation is applied to <b>every vertex</b> of a shape.
-The same transformation matrix must be used for every point.
-</p>
-
-<p>
-In this example, we will rotate a triangle through
-<b>90° anticlockwise about the origin</b>.
-</p>
-
-<h3>1. THE TRANSFORMATION MATRIX</h3>
-
-<p>
-For a 90° anticlockwise rotation, the matrix is:
-</p>
-
-<pre>
-[ 0  -1]
-[ 1   0]
-</pre>
-
-<p>
-Therefore:
-</p>
-
-<pre>
-(x,y) → (-y,x)
-</pre>
-
-<h3>2. THE TRIANGLE</h3>
-
-<p>
-Consider triangle ABC with vertices:
-</p>
-
-<pre>
-A(2,1)
-B(5,1)
-C(2,4)
-</pre>
-
-<p>
-We must rotate <b>each vertex</b>.
-</p>
-
-<p>
-We do not rotate the whole triangle using only one point.
-Instead, we transform A, B and C separately.
-</p>
-
-<h3>3. TRANSFORMING A</h3>
-
-<p>
-A = (2,1)
-</p>
-
-<p>
-Apply:
-</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(2,1) → (-1,2)
-</pre>
-
-<p>
-Therefore:
-</p>
-
-<p><b>A' = (-1,2)</b></p>
-
-<h3>4. TRANSFORMING B</h3>
-
-<p>
-B = (5,1)
-</p>
-
-<p>
-Apply the same rule:
-</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(5,1) → (-1,5)
-</pre>
-
-<p>
-Therefore:
-</p>
-
-<p><b>B' = (-1,5)</b></p>
-
-<h3>5. TRANSFORMING C</h3>
-
-<p>
-C = (2,4)
-</p>
-
-<p>
-Apply the same rule:
-</p>
-
-<pre>
-(x,y) → (-y,x)
-
-(2,4) → (-4,2)
-</pre>
-
-<p>
-Therefore:
-</p>
-
-<p><b>C' = (-4,2)</b></p>
-
-<h3>6. THE TRANSFORMED TRIANGLE</h3>
-
-<pre>
-Original        Image
-
-A(2,1)    →     A'(-1,2)
-
-B(5,1)    →     B'(-1,5)
-
-C(2,4)    →     C'(-4,2)
-</pre>
-
-<p>
-The three transformed points form the image triangle
-<b>A'B'C'</b>.
-</p>
-
-<h3>7. USING THE MATRIX DIRECTLY</h3>
-
-<p>
-We can also transform each vertex using matrix multiplication.
-</p>
-
-<p>For A(2,1):</p>
-
-<pre>
-[ 0  -1] [2]   [-1]
-[ 1   0] [1] = [ 2]
-</pre>
-
-<p>Therefore:</p>
-
-<p><b>A' = (-1,2)</b></p>
-
-<p>For B(5,1):</p>
-
-<pre>
-[ 0  -1] [5]   [-1]
-[ 1   0] [1] = [ 5]
-</pre>
-
-<p>Therefore:</p>
-
-<p><b>B' = (-1,5)</b></p>
-
-<p>For C(2,4):</p>
-
-<pre>
-[ 0  -1] [2]   [-4]
-[ 1   0] [4] = [ 2]
-</pre>
-
-<p>Therefore:</p>
-
-<p><b>C' = (-4,2)</b></p>
-
-<h3>8. THE IMPORTANT IDEA</h3>
-
-<p>
-When transforming a shape:
 </p>
 
 <ol>
-<li>List every vertex.</li>
-<li>Apply the same transformation to each vertex.</li>
-<li>Write the new coordinates.</li>
-<li>Join the transformed vertices in the same order.</li>
+  <li>Multiply the top-left entry by the bottom-right entry.</li>
+  <li>Multiply the top-right entry by the bottom-left entry.</li>
+  <li>Subtract the second product from the first.</li>
 </ol>
 
+<h3>THE ONE ACTION</h3>
+
 <p>
-For a 90° anticlockwise rotation:
+Think:
 </p>
 
-<p><b>(x,y) → (-y,x)</b></p>
+<pre>
+main diagonal product
+MINUS
+other diagonal product
+</pre>
+
+<h3>Example 1: Basic Determinant</h3>
+
+<p><b>Question:</b> Find the determinant of</p>
+
+<pre>
+A = [ 3  2
+      5  4 ]
+</pre>
 
 <p>
-The rule is applied to <b>every vertex</b>.
+First multiply the main diagonal entries:
+</p>
+
+<pre>
+3 × 4 = 12
+</pre>
+
+<p>
+Now multiply the other diagonal entries:
+</p>
+
+<pre>
+2 × 5 = 10
+</pre>
+
+<p>
+Subtract:
+</p>
+
+<pre>
+det(A) = 12 - 10
+       = 2
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+det(A) = 2
+</pre>
+
+<h3>Example 2: A Negative Determinant</h3>
+
+<p><b>Question:</b> Find the determinant of</p>
+
+<pre>
+B = [ 2  7
+      5  3 ]
+</pre>
+
+<p>
+First product:
+</p>
+
+<pre>
+2 × 3 = 6
+</pre>
+
+<p>
+Second product:
+</p>
+
+<pre>
+7 × 5 = 35
+</pre>
+
+<p>
+Subtract:
+</p>
+
+<pre>
+det(B) = 6 - 35
+       = -29
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+det(B) = -29
+</pre>
+
+<h3>Example 3: Determinant with Negative Entries</h3>
+
+<p><b>Question:</b> Find the determinant of</p>
+
+<pre>
+C = [ -2   4
+       3  -5 ]
+</pre>
+
+<p>
+Multiply the main diagonal:
+</p>
+
+<pre>
+(-2)(-5) = 10
+</pre>
+
+<p>
+Multiply the other diagonal:
+</p>
+
+<pre>
+4 × 3 = 12
+</pre>
+
+<p>
+Subtract:
+</p>
+
+<pre>
+det(C) = 10 - 12
+       = -2
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+det(C) = -2
+</pre>
+
+<h3>Example 4: Determinant Equal to Zero</h3>
+
+<p><b>Question:</b> Find the determinant of</p>
+
+<pre>
+D = [ 2  4
+      1  2 ]
+</pre>
+
+<p>
+First product:
+</p>
+
+<pre>
+2 × 2 = 4
+</pre>
+
+<p>
+Second product:
+</p>
+
+<pre>
+4 × 1 = 4
+</pre>
+
+<p>
+Subtract:
+</p>
+
+<pre>
+det(D) = 4 - 4
+       = 0
+</pre>
+
+<p>
+Therefore:
+</p>
+
+<pre>
+det(D) = 0
+</pre>
+
+<h3>COMMON MISTAKE</h3>
+
+<p>
+The formula is:
+</p>
+
+<pre>
+ad - bc
+</pre>
+
+<p>
+not:
+</p>
+
+<pre>
+ad + bc
+</pre>
+
+<p>
+The subtraction is essential.
+</p>
+
+<p>
+For:
+</p>
+
+<pre>
+[ a  b
+  c  d ]
+</pre>
+
+<p>
+always identify the four positions before calculating.
+</p>
 `,
-  [
-    {
-      q: "Triangle ABC has vertices A(2,1), B(5,1) and C(2,4). Rotate the triangle 90° anticlockwise about the origin. Find A'.",
-      hint: "Use (x,y) → (-y,x).",
-      steps: [
-        "A = (2,1)",
-        "Apply the rule: (x,y) → (-y,x)",
-        "(2,1) → (-1,2)"
-      ],
-      ans: "(-1,2)",
-      why: "A 90° anticlockwise rotation maps (x,y) to (-y,x)."
-    },
-    {
-      q: "Using the same triangle, find B' after a 90° anticlockwise rotation.",
-      hint: "Apply the same rule to B(5,1).",
-      steps: [
-        "B = (5,1)",
-        "Apply the rule: (x,y) → (-y,x)",
-        "(5,1) → (-1,5)"
-      ],
-      ans: "(-1,5)",
-      why: "Every vertex of the shape must undergo the same transformation."
-    },
-    {
-      q: "Using the same triangle, find C' after a 90° anticlockwise rotation.",
-      hint: "Apply (x,y) → (-y,x) to C(2,4).",
-      steps: [
-        "C = (2,4)",
-        "New first coordinate = -4",
-        "New second coordinate = 2",
-        "C' = (-4,2)"
-      ],
-      ans: "(-4,2)",
-      why: "The same transformation matrix must be applied to every vertex."
-    },
-    {
-      q: "A triangle has vertices P(1,2), Q(4,2) and R(1,5). Rotate it 90° anticlockwise about the origin. Find P', Q' and R'.",
-      hint: "Transform each vertex separately using (x,y) → (-y,x).",
-      steps: [
-        "P(1,2) → (-2,1)",
-        "Q(4,2) → (-2,4)",
-        "R(1,5) → (-5,1)"
-      ],
-      ans: "P'(-2,1), Q'(-2,4), R'(-5,1)",
-      why: "A transformation of a shape is found by transforming each of its vertices."
-    }
-  ]
+
+[
+  {
+    q: "Find the determinant of A = [3 2; 5 4].",
+    hint: "Use ad - bc.",
+    steps: [
+      "Multiply the main diagonal: 3 × 4 = 12.",
+      "Multiply the other diagonal: 2 × 5 = 10.",
+      "Subtract: 12 - 10 = 2.",
+      "Therefore det(A) = 2."
+    ],
+    ans: "2",
+    why: "For a 2 × 2 matrix [a b; c d], the determinant is ad - bc."
+  },
+
+  {
+    q: "Find the determinant of B = [2 7; 5 3].",
+    hint: "Calculate 2 × 3 first, then subtract 7 × 5.",
+    steps: [
+      "2 × 3 = 6.",
+      "7 × 5 = 35.",
+      "6 - 35 = -29.",
+      "Therefore det(B) = -29."
+    ],
+    ans: "-29",
+    why: "The determinant uses the difference between the two diagonal products."
+  },
+
+  {
+    q: "Find the determinant of C = [-2 4; 3 -5].",
+    hint: "Be careful with the two negative entries.",
+    steps: [
+      "(-2) × (-5) = 10.",
+      "4 × 3 = 12.",
+      "10 - 12 = -2.",
+      "Therefore det(C) = -2."
+    ],
+    ans: "-2",
+    why: "The negative signs are handled during ordinary multiplication before the final subtraction."
+  },
+
+  {
+    q: "Find the determinant of D = [2 4; 1 2].",
+    hint: "Multiply the two diagonal pairs and subtract.",
+    steps: [
+      "2 × 2 = 4.",
+      "4 × 1 = 4.",
+      "4 - 4 = 0.",
+      "Therefore det(D) = 0."
+    ],
+    ans: "0",
+    why: "The two diagonal products are equal, so their difference is zero."
+  },
+
+  {
+    q: "Which calculation gives the determinant of [5 2; 3 4]?",
+    hint: "Identify a, b, c and d before applying ad - bc.",
+    steps: [
+      "a = 5, b = 2, c = 3, d = 4.",
+      "ad = 5 × 4 = 20.",
+      "bc = 2 × 3 = 6.",
+      "Therefore det(A) = 20 - 6 = 14."
+    ],
+    ans: "14",
+    why: "The determinant is ad - bc, so the second diagonal product must be subtracted."
+  }
+]
 );
+add(
+  "math",
+  "matrices",
+  "Matrix 4",
+  "Determinant of a 3 × 3 Matrix",
+
+  `
+<h2>Determinant of a 3 × 3 Matrix</h2>
+
+<p>
+A determinant of a 3 × 3 matrix can be found by expanding along a row.
+In this lesson, we will use the <b>first row only</b>.
+</p>
+
+<p>
+Consider:
+</p>
+
+<pre>
+A = [ a  b  c
+      d  e  f
+      g  h  i ]
+</pre>
+
+<p>
+The determinant is:
+</p>
+
+<pre>
+det(A) = a(ei - fh) - b(di - fg) + c(dh - eg)
+</pre>
+
+<h3>The Method</h3>
+
+<p>
+Look at the first row:
+</p>
+
+<pre>
+a    b    c
+</pre>
+
+<p>
+The signs are:
+</p>
+
+<pre>
++    -    +
+</pre>
+
+<p>
+For each first-row number:
+</p>
+
+<ol>
+  <li>Remove its row and column.</li>
+  <li>Use the remaining 2 × 2 matrix.</li>
+  <li>Find that 2 × 2 determinant.</li>
+  <li>Multiply by the original first-row number.</li>
+  <li>Apply the correct sign.</li>
+</ol>
+
+<h3>Worked Example 1</h3>
+
+<p><b>Question:</b> Find the determinant of:</p>
+
+<pre>
+A = [ 1  2  3
+      0  4  5
+      1  0  6 ]
+</pre>
+
+<h4>Step 1: Start with the first number, 1</h4>
+
+<p>
+The number 1 is in the first position of the first row.
+Remove its row and its column.
+</p>
+
+<pre>
+[ 1  2  3
+  X  X  X
+  X  X  X ]
+
+Remove the row and column containing 1.
+
+Remaining matrix:
+
+[ 4  5
+  0  6 ]
+</pre>
+
+<p>
+Find its determinant:
+</p>
+
+<pre>
+(4 × 6) - (5 × 0)
+= 24 - 0
+= 24
+</pre>
+
+<p>
+The contribution from 1 is:
+</p>
+
+<pre>
++1(24) = 24
+</pre>
+
+<h4>Step 2: Use the second number, 2</h4>
+
+<p>
+The sign for the second position is negative.
+Remove the row and column containing 2.
+</p>
+
+<pre>
+Remaining matrix:
+
+[ 0  5
+  1  6 ]
+</pre>
+
+<p>
+Find its determinant:
+</p>
+
+<pre>
+(0 × 6) - (5 × 1)
+= 0 - 5
+= -5
+</pre>
+
+<p>
+Now include the negative sign:
+</p>
+
+<pre>
+-2(-5)
+= +10
+</pre>
+
+<h4>Step 3: Use the third number, 3</h4>
+
+<p>
+The sign for the third position is positive.
+Remove the row and column containing 3.
+</p>
+
+<pre>
+Remaining matrix:
+
+[ 0  4
+  1  0 ]
+</pre>
+
+<p>
+Find its determinant:
+</p>
+
+<pre>
+(0 × 0) - (4 × 1)
+= 0 - 4
+= -4
+</pre>
+
+<p>
+The contribution is:
+</p>
+
+<pre>
++3(-4)
+= -12
+</pre>
+
+<h4>Step 4: Add the three contributions</h4>
+
+<pre>
+det(A)
+= 24 + 10 - 12
+= 22
+</pre>
+
+<p><b>Answer:</b></p>
+
+<pre>
+det(A) = 22
+</pre>
+
+<h3>Worked Example 2</h3>
+
+<p><b>Question:</b> Find the determinant of:</p>
+
+<pre>
+B = [ 2  0  1
+      3  4  5
+      1  2  6 ]
+</pre>
+
+<p>
+Expand along the first row.
+The signs are:
+</p>
+
+<pre>
++    -    +
+</pre>
+
+<h4>First term</h4>
+
+<p>
+The first number is 2.
+Remove its row and column.
+</p>
+
+<pre>
+[ 4  5
+  2  6 ]
+</pre>
+
+<p>
+Calculate:
+</p>
+
+<pre>
+(4 × 6) - (5 × 2)
+= 24 - 10
+= 14
+</pre>
+
+<p>
+Multiply by 2:
+</p>
+
+<pre>
+2 × 14 = 28
+</pre>
+
+<h4>Second term</h4>
+
+<p>
+The second number is 0.
+Anything multiplied by zero is zero.
+Therefore this whole term is:
+</p>
+
+<pre>
+-0( ... ) = 0
+</pre>
+
+<h4>Third term</h4>
+
+<p>
+The third number is 1.
+Remove its row and column.
+</p>
+
+<pre>
+[ 3  4
+  1  2 ]
+</pre>
+
+<p>
+Calculate:
+</p>
+
+<pre>
+(3 × 2) - (4 × 1)
+= 6 - 4
+= 2
+</pre>
+
+<p>
+Multiply by 1:
+</p>
+
+<pre>
+1 × 2 = 2
+</pre>
+
+<h4>Final calculation</h4>
+
+<pre>
+det(B)
+= 28 + 0 + 2
+= 30
+</pre>
+
+<p><b>Answer:</b></p>
+
+<pre>
+det(B) = 30
+</pre>
+
+<h3>Worked Example 3</h3>
+
+<p><b>Question:</b> Find the determinant of:</p>
+
+<pre>
+C = [ 1  2  0
+      3  4  5
+      6  7  8 ]
+</pre>
+
+<h4>First term</h4>
+
+<pre>
+1 × [(4 × 8) - (5 × 7)]
+
+= 1 × (32 - 35)
+
+= 1 × (-3)
+
+= -3
+</pre>
+
+<h4>Second term</h4>
+
+<p>
+Remember that the second term has a negative sign.
+</p>
+
+<pre>
+-2 × [(3 × 8) - (5 × 6)]
+
+= -2 × (24 - 30)
+
+= -2 × (-6)
+
+= +12
+</pre>
+
+<h4>Third term</h4>
+
+<p>
+The third number is 0, so its contribution is zero.
+</p>
+
+<pre>
++0( ... ) = 0
+</pre>
+
+<h4>Final calculation</h4>
+
+<pre>
+det(C)
+= -3 + 12 + 0
+= 9
+</pre>
+
+<p><b>Answer:</b></p>
+
+<pre>
+det(C) = 9
+</pre>
+
+<h3>Common Mistake</h3>
+
+<p>
+The most common mistake is forgetting the signs:
+</p>
+
+<pre>
++    -    +
+</pre>
+
+<p>
+The second term must be subtracted.
+</p>
+`,
+
+[
+  {
+    q: "Find the determinant of A = [1 2 3; 0 4 5; 1 0 6].",
+    hint: "Expand along the first row using the signs +, -, +.",
+    steps: [
+      "First minor: (4 × 6) - (5 × 0) = 24.",
+      "First contribution: 1 × 24 = 24.",
+      "Second minor: (0 × 6) - (5 × 1) = -5.",
+      "Second contribution: -2 × (-5) = 10.",
+      "Third minor: (0 × 0) - (4 × 1) = -4.",
+      "Third contribution: 3 × (-4) = -12.",
+      "det(A) = 24 + 10 - 12 = 22."
+    ],
+    ans: "22",
+    why: "The determinant is obtained by expanding along the first row and calculating each 2 × 2 minor."
+  },
+
+  {
+    q: "Find the determinant of B = [2 0 1; 3 4 5; 1 2 6].",
+    hint: "The middle first-row entry is zero, so its entire contribution is zero.",
+    steps: [
+      "First minor: (4 × 6) - (5 × 2) = 14.",
+      "First contribution: 2 × 14 = 28.",
+      "Second contribution: 0.",
+      "Third minor: (3 × 2) - (4 × 1) = 2.",
+      "Third contribution: 1 × 2 = 2.",
+      "det(B) = 28 + 0 + 2 = 30."
+    ],
+    ans: "30",
+    why: "Each first-row entry is combined with the determinant of the 2 × 2 matrix left after removing its row and column."
+  },
+
+  {
+    q: "Find the determinant of C = [1 2 0; 3 4 5; 6 7 8].",
+    hint: "Use +, -, + across the first row.",
+    steps: [
+      "First contribution: 1[(4 × 8) - (5 × 7)] = -3.",
+      "Second contribution: -2[(3 × 8) - (5 × 6)] = -2(-6) = 12.",
+      "Third contribution is zero.",
+      "det(C) = -3 + 12 = 9."
+    ],
+    ans: "9",
+    why: "The signs in the first-row expansion are positive, negative, positive."
+  }
+]
+);
+
 
 add(
   "math",
   "matrices",
-  "Matrix of transformation",
-  "Rotation About a Point Other Than the Origin",
+  "Matrix 4",
+  "Singular and Non-Singular Matrices",
 
   `
-<h2>Rotation About a Point Other Than the Origin</h2>
+<h2>Singular and Non-Singular Matrices</h2>
 
 <p>
-The rotation rules we have used so far work directly when the
-centre of rotation is the <b>origin O(0,0)</b>.
+A square matrix can be classified as either <b>singular</b> or
+<b>non-singular</b>.
 </p>
 
-<p>
-But a point can also be rotated about another centre, such as
-<b>C(1,1)</b>.
-</p>
+<h3>The One Rule</h3>
 
 <p>
-When the centre is not the origin, we use three steps:
-</p>
-
-<ol>
-<li>Move the centre to the origin.</li>
-<li>Perform the rotation.</li>
-<li>Move everything back.</li>
-</ol>
-
-<h3>1. THE THREE-STEP METHOD</h3>
-
-<p>
-Suppose we want to rotate point P about centre C.
-</p>
-
-<p>
-For a 90° anticlockwise rotation:
+First calculate the determinant.
+Then use this rule:
 </p>
 
 <pre>
-1. Translate the centre to the origin.
+det(A) = 0
+→ Singular
 
-2. Use:
-   (x,y) → (-y,x)
-
-3. Translate the point back to the original centre.
+det(A) ≠ 0
+→ Non-singular
 </pre>
 
 <p>
-The important idea is that the rotation itself is still performed
-around the origin.
-We first change the position of the coordinates so that the
-chosen centre becomes the origin.
+So the determinant is what decides the classification.
 </p>
 
-<h3>2. WORKED EXAMPLE 1</h3>
+<h3>Worked Example 1</h3>
 
-<p>
-Rotate <b>P(3,1)</b> through 90° anticlockwise about
-<b>C(1,1)</b>.
-</p>
-
-<p><b>Step 1: Move the centre to the origin.</b></p>
-
-<p>
-Subtract the centre coordinates from P:
-</p>
+<p><b>Question:</b> Determine whether the matrix is singular or non-singular.</p>
 
 <pre>
-P = (3,1)
-C = (1,1)
-
-(3-1, 1-1)
-= (2,0)
+A = [ 2  4
+      1  2 ]
 </pre>
 
-<p>
-So relative to the centre C, the point is:
-</p>
-
-<p><b>(2,0)</b></p>
-
-<p><b>Step 2: Rotate 90° anticlockwise.</b></p>
-
-<p>
-Use:
-</p>
+<h4>Step 1: Find the determinant</h4>
 
 <pre>
-(x,y) → (-y,x)
+det(A)
+= (2 × 2) - (4 × 1)
+= 4 - 4
+= 0
 </pre>
+
+<h4>Step 2: Apply the rule</h4>
 
 <pre>
-(2,0) → (0,2)
-</pre>
+det(A) = 0
+<p> Therefore A is <b>singular</b>. </p> <h3>Worked Example 2</h3> <p><b>Question:</b> Determine whether the matrix is singular or non-singular.</p> <pre> B = [ 3 2 5 4 ] </pre> <h4>Find the determinant</h4> <pre> det(B) = (3 × 4) - (2 × 5) = 12 - 10 = 2 </pre> <p> Since: </p> <pre> 2 ≠ 0 </pre> <p> B is <b>non-singular</b>. </p> <h3>Worked Example 3</h3> <p><b>Question:</b> Find x if the matrix below is singular.</p> <pre> A = [ x 2 3 6 ] </pre> <p> A singular matrix has determinant zero. </p> <pre> det(A) = 0 </pre> <p> Calculate the determinant: </p> <pre> (x × 6) - (2 × 3) = 0 6x - 6 = 0 </pre> <p> Add 6 to both sides: </p> <pre> 6x = 6 </pre> <p> Divide both sides by 6: </p> <pre> x = 1 </pre> <h3>Worked Example 4</h3> <p><b>Question:</b> Find x if the matrix below is singular.</p> <pre> B = [ x 1 2 3 ] </pre> <p> Because the matrix is singular: </p> <pre> det(B) = 0 </pre> <p> Therefore: </p> <pre> (x × 3) - (1 × 2) = 0 3x - 2 = 0 </pre> <p> Add 2: </p> <pre> 3x = 2 </pre> <p> Divide by 3: </p> <pre> x = 2/3 </pre> <h3>Common Mistake</h3> <p> Do not decide that a matrix is singular just because its entries look similar. Always calculate its determinant. </p> `,
 
-<p><b>Step 3: Move the point back.</b></p>
+[
+{
+q: "Determine whether A = [2 4; 1 2] is singular or non-singular.",
+hint: "Find the determinant first.",
+steps: [
+"det(A) = (2 × 2) - (4 × 1).",
+"det(A) = 4 - 4 = 0.",
+"A determinant of zero means the matrix is singular."
+],
+ans: "Singular",
+why: "A square matrix is singular when its determinant is zero."
+},
 
-<p>
-Add the centre coordinates:
-</p>
+{
+q: "Determine whether B = [3 2; 5 4] is singular or non-singular.",
+hint: "Calculate 3 × 4 - 2 × 5.",
+steps: [
+"det(B) = (3 × 4) - (2 × 5).",
+"det(B) = 12 - 10 = 2.",
+"2 is not zero.",
+"Therefore B is non-singular."
+],
+ans: "Non-singular",
+why: "A non-zero determinant means the matrix is non-singular."
+},
 
-<pre>
-(0+1, 2+1)
-= (1,3)
-</pre>
+{
+q: "Find x if [x 2; 3 6] is singular.",
+hint: "Set the determinant equal to zero.",
+steps: [
+"det(A) = (x × 6) - (2 × 3).",
+"6x - 6 = 0.",
+"6x = 6.",
+"x = 1."
+],
+ans: "1",
+why: "Singularity requires the determinant to equal zero."
+},
 
-<p>
-Therefore:
-</p>
+{
+q: "Find x if [x 1; 2 3] is singular.",
+hint: "Set 3x - 2 equal to zero.",
+steps: [
+"det(A) = 3x - 2.",
+"3x - 2 = 0.",
+"3x = 2.",
+"x = 2/3."
+],
+ans: "2/3",
+why: "The value of x must make the determinant equal to zero."
+}
+]
+);
 
-<p><b>P' = (1,3)</b></p>
+add(
+"math",
+"matrices",
+"Matrix 4",
+"Inverse of a 2 × 2 Matrix",
 
-<h3>3. WORKED EXAMPLE 2</h3>
+`
 
-<p>
-Rotate <b>A(4,3)</b> through 90° anticlockwise about
-<b>C(2,1)</b>.
-</p>
+<h2>Inverse of a 2 × 2 Matrix</h2> <p> The inverse of a matrix A is written as: </p> <pre> A⁻¹ </pre> <p> For: </p> <pre> A = [ a b c d ] </pre> <p> the inverse is: </p> <pre> A⁻¹ = 1/(ad - bc) [ d -b -c a ] </pre> <p> The inverse exists only when: </p> <pre> ad - bc ≠ 0 </pre> <h3>The Four Actions</h3> <ol> <li>Find the determinant.</li> <li>Swap the top-left and bottom-right entries.</li> <li>Change the signs of the other two entries.</li> <li>Multiply by the reciprocal of the determinant.</li> </ol> <h3>Worked Example 1</h3> <p><b>Question:</b> Find the inverse of:</p> <pre> A = [ 3 2 1 4 ] </pre> <h4>Step 1: Find the determinant</h4> <pre> det(A) = (3 × 4) - (2 × 1) = 12 - 2 = 10 </pre> <p> The determinant is not zero, so the inverse exists. </p> <h4>Step 2: Swap the diagonal entries</h4> <pre> [ 4 2 1 3 ] </pre> <h4>Step 3: Change the signs of the other entries</h4> <pre> [ 4 -2 -1 3 ] </pre> <h4>Step 4: Multiply by 1/10</h4> <pre> A⁻¹ = 1/10 [ 4 -2 -1 3 ] </pre> <p> Therefore: </p> <pre> A⁻¹ = [ 2/5 -1/5 -1/10 3/10 ] </pre> <h3>Worked Example 2</h3> <p><b>Question:</b> Find the inverse of:</p> <pre> B = [ 2 1 5 3 ] </pre> <h4>Find the determinant</h4> <pre> det(B) = (2 × 3) - (1 × 5) = 6 - 5 = 1 </pre> <h4>Rearrange the entries</h4> <pre> [ 3 -1 -5 2 ] </pre> <p> Because the determinant is 1: </p> <pre> 1/1 = 1 </pre> <p> Therefore: </p> <pre> B⁻¹ = [ 3 -1 -5 2 ] </pre> <h3>Worked Example 3: An Inverse Does Not Exist</h3> <p><b>Question:</b> Does the following matrix have an inverse?</p> <pre> C = [ 2 4 1 2 ] </pre> <h4>Find the determinant</h4> <pre> det(C) = (2 × 2) - (4 × 1) = 4 - 4 = 0 </pre> <p> The determinant is zero. The inverse formula would require division by zero. </p> <p> Therefore C has <b>no inverse</b>. </p> <h3>Worked Example 4</h3> <p><b>Question:</b> Find the inverse of:</p> <pre> D = [ 4 1 2 1 ] </pre> <h4>Find the determinant</h4> <pre> det(D) = (4 × 1) - (1 × 2) = 4 - 2 = 2 </pre> <h4>Swap the diagonal entries</h4> <pre> [ 1 1 2 4 ] </pre> <h4>Change the signs of the other entries</h4> <pre> [ 1 -1 -2 4 ] </pre> <h4>Multiply by 1/2</h4> <pre> D⁻¹ = 1/2 [ 1 -1 -2 4 ] </pre> <p> Therefore: </p> <pre> D⁻¹ = [ 1/2 -1/2 -1 2 ] </pre> <h3>Common Mistake</h3> <p> Do not swap all four entries. Only the top-left and bottom-right entries are exchanged. The other two entries change signs. </p> `,
 
-<p><b>Step 1: Move the centre to the origin.</b></p>
+[
+{
+q: "Find the inverse of A = [3 2; 1 4].",
+hint: "First calculate the determinant.",
+steps: [
+"det(A) = 3 × 4 - 2 × 1 = 10.",
+"Swap 3 and 4.",
+"Change 2 to -2 and 1 to -1.",
+"Multiply the resulting matrix by 1/10.",
+"A⁻¹ = [2/5 -1/5; -1/10 3/10]."
+],
+ans: "[2/5 -1/5; -1/10 3/10]",
+why: "The inverse of a 2 × 2 matrix follows the fixed inverse formula."
+},
 
-<pre>
-A = (4,3)
-C = (2,1)
+{
+q: "Find the inverse of B = [2 1; 5 3].",
+hint: "The determinant is 1.",
+steps: [
+"det(B) = 2 × 3 - 1 × 5 = 1.",
+"Swap 2 and 3.",
+"Change 1 to -1 and 5 to -5.",
+"Multiply by 1/1.",
+"B⁻¹ = [3 -1; -5 2]."
+],
+ans: "[3 -1; -5 2]",
+why: "The determinant is 1, so the reciprocal factor is also 1."
+},
 
-(4-2, 3-1)
-= (2,2)
-</pre>
+{
+q: "Does C = [2 4; 1 2] have an inverse?",
+hint: "Calculate its determinant.",
+steps: [
+"det(C) = 2 × 2 - 4 × 1.",
+"det(C) = 0.",
+"An inverse requires a non-zero determinant.",
+"Therefore C has no inverse."
+],
+ans: "No",
+why: "A 2 × 2 matrix cannot have an inverse when its determinant is zero."
+},
 
-<p><b>Step 2: Rotate 90° anticlockwise.</b></p>
+{
+q: "Find the inverse of D = [4 1; 2 1].",
+hint: "The determinant is 2.",
+steps: [
+"det(D) = 4 × 1 - 1 × 2 = 2.",
+"Swap 4 and 1.",
+"Change 1 to -1 and 2 to -2.",
+"Multiply by 1/2.",
+"D⁻¹ = [1/2 -1/2; -1 2]."
+],
+ans: "[1/2 -1/2; -1 2]",
+why: "The inverse is obtained by rearranging the entries and multiplying by the reciprocal of the determinant."
+}
+]
+);
 
-<pre>
-(x,y) → (-y,x)
+add(
+"math",
+"matrices",
+"Matrix 4",
+"Solving Matrix Equations",
 
-(2,2) → (-2,2)
-</pre>
+`
 
-<p><b>Step 3: Move the point back.</b></p>
+<h2>Solving Matrix Equations</h2> <p> A matrix equation can contain an unknown matrix. The aim is to isolate the unknown matrix. </p> <h3>Worked Example 1</h3> <p><b>Question:</b> Find X if:</p> <pre> X + [ 2 3 4 5 ] = [ 7 9 10 12 ] </pre> <p> We need X by itself. The matrix added to X must therefore be removed by subtraction. </p> <pre> X = [ 7 9 10 12 ] - [ 2 3 4 5 ] </pre> <p> Subtract corresponding entries: </p> <pre> 7 - 2 = 5 9 - 3 = 6 10 - 4 = 6 12 - 5 = 7 </pre> <p> Therefore: </p> <pre> X = [ 5 6 6 7 ] </pre> <h3>Worked Example 2</h3> <p><b>Question:</b> Find X if:</p> <pre> 3X = [ 12 15 9 18 ] </pre> <p> Every entry of X has been multiplied by 3. Therefore divide every entry by 3. </p> <pre> 12 ÷ 3 = 4 15 ÷ 3 = 5 9 ÷ 3 = 3 18 ÷ 3 = 6 </pre> <p> Therefore: </p> <pre> X = [ 4 5 3 6 ] </pre> <h3>Worked Example 3</h3> <p><b>Question:</b> Find X if:</p> <pre> X - [ 3 1 2 4 ] = [ 5 7 8 6 ] </pre> <p> The matrix is being subtracted from X. To undo subtraction, add the same matrix to both sides. </p> <pre> X = [ 5 7 8 6 ] + [ 3 1 2 4 ] </pre> <p> Calculate each position: </p> <pre> 5 + 3 = 8 7 + 1 = 8 8 + 2 = 10 6 + 4 = 10 </pre> <p> Therefore: </p> <pre> X = [ 8 8 10 10 ] </pre> <h3>Worked Example 4</h3> <p><b>Question:</b> Find x and y if:</p> <pre> [ x 4 7 y ] + [ 3 2 1 5 ] = [ 8 6 8 12 ] </pre> <h4>Find x</h4> <p> Look at the top-left position. </p> <pre> x + 3 = 8 </pre> <p> Subtract 3: </p> <pre> x = 5 </pre> <h4>Find y</h4> <p> Look at the bottom-right position. </p> <pre> y + 5 = 12 </pre> <p> Subtract 5: </p> <pre> y = 7 </pre> <p> Therefore: </p> <pre> x = 5 y = 7 </pre> <h3>Common Mistake</h3> <p> Always compare entries occupying the same position. Do not compare numbers simply because they appear in the same row or column. </p> `,
 
-<pre>
-(-2+2, 2+1)
-= (0,3)
-</pre>
+[
+{
+q: "Find X if X + [2 3; 4 5] = [7 9; 10 12].",
+hint: "Subtract the known matrix from both sides.",
+steps: [
+"7 - 2 = 5.",
+"9 - 3 = 6.",
+"10 - 4 = 6.",
+"12 - 5 = 7.",
+"Therefore X = [5 6; 6 7]."
+],
+ans: "[5 6; 6 7]",
+why: "Subtracting the known matrix isolates X."
+},
 
-<p>
-Therefore:
-</p>
+{
+q: "Find X if 3X = [12 15; 9 18].",
+hint: "Divide every entry by 3.",
+steps: [
+"12 ÷ 3 = 4.",
+"15 ÷ 3 = 5.",
+"9 ÷ 3 = 3.",
+"18 ÷ 3 = 6.",
+"Therefore X = [4 5; 3 6]."
+],
+ans: "[4 5; 3 6]",
+why: "The scalar 3 affects every entry, so every entry is divided by 3 to isolate X."
+},
 
-<p><b>A' = (0,3)</b></p>
+{
+q: "Find X if X - [3 1; 2 4] = [5 7; 8 6].",
+hint: "Add the known matrix to both sides.",
+steps: [
+"5 + 3 = 8.",
+"7 + 1 = 8.",
+"8 + 2 = 10.",
+"6 + 4 = 10.",
+"Therefore X = [8 8; 10 10]."
+],
+ans: "[8 8; 10 10]",
+why: "Adding the subtracted matrix reverses the subtraction and isolates X."
+},
 
-<h3>4. WORKED EXAMPLE 3</h3>
-
-<p>
-Rotate <b>B(2,5)</b> through 90° anticlockwise about
-<b>C(2,2)</b>.
-</p>
-
-<p><b>Step 1: Move the centre to the origin.</b></p>
-
-<pre>
-B = (2,5)
-C = (2,2)
-
-(2-2, 5-2)
-= (0,3)
-</pre>
-
-<p><b>Step 2: Rotate 90° anticlockwise.</b></p>
-
-<pre>
-(0,3) → (-3,0)
-</pre>
-
-<p><b>Step 3: Move the point back.</b></p>
-
-<pre>
-(-3+2, 0+2)
-= (-1,2)
-</pre>
-
-<p>
-Therefore:
-</p>
-
-<p><b>B' = (-1,2)</b></p>
-
-<h3>5. THE METHOD TO REMEMBER</h3>
-
-<pre>
-ROTATE ABOUT A NON-ORIGIN CENTRE
-
-        ↓
-
-Subtract the centre
-
-        ↓
-
-Rotate about the origin
-
-        ↓
-
-Add the centre back
-</pre>
-
-<p>
-For a 90° anticlockwise rotation, the middle step is:
-</p>
-
-<p><b>(x,y) → (-y,x)</b></p>
-
-<p>
-The centre is not rotated.
-It remains fixed throughout the transformation.
-</p>
-`,
-
-  [
-    {
-      q: "Rotate P(3,1) through 90° anticlockwise about C(1,1).",
-      hint: "Subtract the centre, rotate, then add the centre back.",
-      steps: [
-        "Move relative to the centre: (3-1, 1-1) = (2,0)",
-        "Rotate 90° anticlockwise: (2,0) → (0,2)",
-        "Move back: (0+1, 2+1) = (1,3)"
-      ],
-      ans: "(1,3)",
-      why: "When rotating about a non-origin centre, first translate the centre to the origin, rotate, then translate back."
-    },
-    {
-      q: "Rotate A(4,3) through 90° anticlockwise about C(2,1).",
-      hint: "First find the coordinates of A relative to C.",
-      steps: [
-        "Relative position: (4-2, 3-1) = (2,2)",
-        "Rotate: (2,2) → (-2,2)",
-        "Move back: (-2+2, 2+1) = (0,3)"
-      ],
-      ans: "(0,3)",
-      why: "The rotation is performed around the chosen centre after temporarily moving that centre to the origin."
-    },
-    {
-      q: "Rotate B(2,5) through 90° anticlockwise about C(2,2).",
-      hint: "Subtract (2,2), rotate, then add (2,2).",
-      steps: [
-        "Relative position: (2-2, 5-2) = (0,3)",
-        "Rotate: (0,3) → (-3,0)",
-        "Move back: (-3+2, 0+2) = (-1,2)"
-      ],
-      ans: "(-1,2)",
-      why: "The point is rotated relative to the centre and then returned to the original coordinate system."
-    },
-    {
-      q: "A point P(5,2) is rotated 90° anticlockwise about C(2,2). Find P'.",
-      hint: "Find P's position relative to C before rotating.",
-      steps: [
-        "Relative position: (5-2, 2-2) = (3,0)",
-        "Rotate: (3,0) → (0,3)",
-        "Move back: (0+2, 3+2) = (2,5)"
-      ],
-      ans: "(2,5)",
-      why: "The point is 3 units to the right of the centre, so after a 90° anticlockwise rotation it is 3 units above the centre."
-    },
-    {
-      q: "Why can we not directly use (x,y) → (-y,x) when the centre of rotation is C(2,1)?",
-      hint: "Ask yourself what point the rule assumes is the centre.",
-      steps: [
-        "The rule (x,y) → (-y,x) assumes the centre is the origin",
-        "C(2,1) is not the origin",
-        "The point must first be expressed relative to C",
-        "After rotating, the centre must be added back"
-      ],
-      ans: "Because the rule (x,y) → (-y,x) rotates about the origin.",
-      why: "A standard 2×2 rotation matrix acts about the origin. A different centre requires translation before and after the rotation."
-    }
-  ]
+{
+q: "Find x and y if [x 4; 7 y] + [3 2; 1 5] = [8 6; 8 12].",
+hint: "Use the top-left position to find x and the bottom-right position to find y.",
+steps: [
+"Top-left: x + 3 = 8.",
+"Therefore x = 5.",
+"Bottom-right: y + 5 = 12.",
+"Therefore y = 7."
+],
+ans: "x = 5, y = 7",
+why: "Each unknown is determined by comparing the corresponding entries."
+}
+]
 );
 add(
   "math",
@@ -27840,334 +29593,6 @@ To find the midpoint, <b>add corresponding coordinates and divide by 2</b>.
       ],
       ans: "2i + 2j",
       why: "The midpoint vector is the average of the two position vectors."
-    }
-  ]
-);
-add(
-  "math",
-  "vectors",
-  "Section Formula Using Vectors",
-
-  `
-<h2>Dividing a Line Segment in a Given Ratio</h2>
-
-<p>
-A point can divide a line segment into two parts in a specified ratio.
-</p>
-
-<p>
-If A and B have position vectors <b>a</b> and <b>b</b>, and point P divides AB internally in the ratio:
-</p>
-
-<p style="text-align:center;">
-<b>AP : PB = m : n</b>
-</p>
-
-<p>
-then the position vector of P is:
-</p>
-
-<p style="text-align:center;">
-<b>OP = (n a + m b)/(m + n)</b>
-</p>
-
-<p>
-Notice that the coefficient of A is <b>n</b>, while the coefficient of B is <b>m</b>.
-</p>
-
-<h3>Example 1: Ratio 1 : 2</h3>
-
-<p>
-A = (2, 3), B = (8, 9).
-Find P if:
-</p>
-
-<p>
-<b>AP : PB = 1 : 2</b>
-</p>
-
-<p>
-Use:
-</p>
-
-<p>
-P = (2A + 1B)/(1 + 2)
-</p>
-
-<p>
-P = (2(2,3) + (8,9))/3
-</p>
-
-<p>
-P = ((4,6) + (8,9))/3
-</p>
-
-<p>
-P = (12,15)/3
-</p>
-
-<p>
-<b>P = (4,5)</b>
-</p>
-
-<h3>Example 2: Ratio 2 : 1</h3>
-
-<p>
-A = (1, 2), B = (10, 8).
-Find P if:
-</p>
-
-<p>
-<b>AP : PB = 2 : 1</b>
-</p>
-
-<p>
-P = (1A + 2B)/(2 + 1)
-</p>
-
-<p>
-P = ((1,2) + 2(10,8))/3
-</p>
-
-<p>
-P = ((1,2) + (20,16))/3
-</p>
-
-<p>
-P = (21,18)/3
-</p>
-
-<p>
-<b>P = (7,6)</b>
-</p>
-
-<p>
-Because P is closer to B, its coordinates are pulled more toward B.
-</p>
-
-<h3>Example 3: Using Position Vectors</h3>
-
-<p>
-Suppose:
-</p>
-
-<p>
-OA = 3i + 2j
-</p>
-
-<p>
-OB = 9i + 8j
-</p>
-
-<p>
-P divides AB in the ratio:
-</p>
-
-<p>
-<b>AP : PB = 1 : 2</b>
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p>
-OP = (2OA + OB)/3
-</p>
-
-<p>
-OP = (2(3i + 2j) + (9i + 8j))/3
-</p>
-
-<p>
-OP = (6i + 4j + 9i + 8j)/3
-</p>
-
-<p>
-OP = (15i + 12j)/3
-</p>
-
-<p>
-<b>OP = 5i + 4j</b>
-</p>
-
-<h3>Example 4: Finding a Point That Divides a Line</h3>
-
-<p>
-A = (-2, 4) and B = (7, -5).
-Find P if:
-</p>
-
-<p>
-<b>AP : PB = 2 : 1</b>
-</p>
-
-<p>
-P = (1A + 2B)/3
-</p>
-
-<p>
-P = ((-2,4) + 2(7,-5))/3
-</p>
-
-<p>
-P = ((-2,4) + (14,-10))/3
-</p>
-
-<p>
-P = (12,-6)/3
-</p>
-
-<p>
-<b>P = (4,-2)</b>
-</p>
-
-<h3>Example 5: Checking the Ratio</h3>
-
-<p>
-A = (0,0), B = (12,6), and P = (4,2).
-</p>
-
-<p>
-Find the ratio AP : PB.
-</p>
-
-<p>
-First find AP:
-</p>
-
-<p>
-AP = (4,2) - (0,0) = (4,2)
-</p>
-
-<p>
-Then find PB:
-</p>
-
-<p>
-PB = (12,6) - (4,2) = (8,4)
-</p>
-
-<p>
-Since:
-</p>
-
-<p>
-(8,4) = 2(4,2)
-</p>
-
-<p>
-PB is twice AP.
-</p>
-
-<p>
-Therefore:
-</p>
-
-<p>
-<b>AP : PB = 1 : 2</b>
-</p>
-
-<h3>Key Rule</h3>
-
-<p>
-For:
-</p>
-
-<p style="text-align:center;">
-<b>AP : PB = m : n</b>
-</p>
-
-<p>
-the point P is:
-</p>
-
-<p style="text-align:center;">
-<b>P = (nA + mB)/(m + n)</b>
-</p>
-
-<p>
-The same formula works with coordinates or position vectors.
-</p>
-`,
-
-  [
-    {
-      q: "A(2, 4) and B(8, 10). Find P if AP : PB = 1 : 2.",
-      hint: "Use P = (2A + B)/3.",
-      steps: [
-        "P = (2(2,4) + (8,10))/3",
-        "P = ((4,8) + (8,10))/3",
-        "P = (12,18)/3",
-        "P = (4,6)"
-      ],
-      ans: "(4,6)",
-      why: "The ratio 1:2 means P is one-third of the way from A toward B."
-    },
-
-    {
-      q: "A(-3, 2) and B(9, 8). Find P if AP : PB = 2 : 1.",
-      hint: "Use P = (A + 2B)/3.",
-      steps: [
-        "P = ((-3,2) + 2(9,8))/3",
-        "P = ((-3,2) + (18,16))/3",
-        "P = (15,18)/3",
-        "P = (5,6)"
-      ],
-      ans: "(5,6)",
-      why: "For the ratio 2:1, P is closer to B, so B receives the larger weight."
-    },
-
-    {
-      q: "OA = 2i + 5j and OB = 8i + 11j. Find OP if AP : PB = 1 : 2.",
-      hint: "Use OP = (2OA + OB)/3.",
-      steps: [
-        "OP = (2(2i + 5j) + (8i + 11j))/3",
-        "OP = (4i + 10j + 8i + 11j)/3",
-        "OP = (12i + 21j)/3",
-        "OP = 4i + 7j"
-      ],
-      ans: "4i + 7j",
-      why: "The position vector of the dividing point is the weighted average of the two endpoint position vectors."
-    },
-
-    {
-      q: "A(1, 3) and B(11, 13). A point P divides AB in the ratio AP : PB = 3 : 2. Find P.",
-      hint: "Use P = (2A + 3B)/5.",
-      steps: [
-        "P = (2(1,3) + 3(11,13))/5",
-        "P = ((2,6) + (33,39))/5",
-        "P = (35,45)/5",
-        "P = (7,9)"
-      ],
-      ans: "(7,9)",
-      why: "The ratio 3:2 places P three-fifths of the way from A to B."
-    },
-
-    {
-      q: "A(0,0), B(15,10), and P(6,4). What ratio does P divide AB in?",
-      hint: "Compare AP with PB.",
-      steps: [
-        "AP = (6,4) - (0,0) = (6,4)",
-        "PB = (15,10) - (6,4) = (9,6)",
-        "PB = (3/2)AP",
-        "Therefore AP : PB = 2 : 3"
-      ],
-      ans: "2 : 3",
-      why: "The second section is 1.5 times the first, so the lengths are in the ratio 2:3."
-    },
-
-    {
-      q: "A(2, -1) and B(12, 9). Find P if AP : PB = 3 : 1.",
-      hint: "Use P = (A + 3B)/4.",
-      steps: [
-        "P = ((2,-1) + 3(12,9))/4",
-        "P = ((2,-1) + (36,27))/4",
-        "P = (38,26)/4",
-        "P = (19/2, 13/2)"
-      ],
-      ans: "(19/2, 13/2)",
-      why: "A ratio of 3:1 places P three-quarters of the way from A toward B."
     }
   ]
 );

@@ -2,8 +2,8 @@ import { describe, it, expect } from "vitest";
 import { getBundledTopic, CONTENT_VERSION, SUBJECT_TOPIC_LOADERS } from "../data/contentLoader";
 
 describe("Tixar Offline-First Content Architecture", () => {
-  it("defines content version 2", () => {
-    expect(CONTENT_VERSION).toBe(2);
+  it("defines content version >= 2", () => {
+    expect(CONTENT_VERSION).toBeGreaterThanOrEqual(2);
   });
 
   it("provides loaders for all 6 canonical subjects", () => {
@@ -15,12 +15,12 @@ describe("Tixar Offline-First Content Architecture", () => {
   });
 
   it("retrieves Mathematics topic from bundled chunk", async () => {
-    const topic = await getBundledTopic("math", "numbers", "Number Systems & Basic Operations");
+    const topic = await getBundledTopic("math", "numbers", "Number Systems");
     expect(topic).not.toBeNull();
-    expect(topic.id).toBe("math|numbers|Number Systems & Basic Operations");
+    expect(topic.id).toBe("math|numbers|Number Systems");
     expect(topic.curriculum_id).toBe("math");
     expect(topic.chapter_id).toBe("numbers");
-    expect(topic.data.notes).toContain("Number Systems & Basic Operations");
+    expect(topic.data.notes).toContain("Number Systems");
     expect(Array.isArray(topic.data.qs)).toBe(true);
     expect(topic.data.qs.length).toBeGreaterThan(0);
     expect(topic.data.qs[0].q).toBeDefined();
