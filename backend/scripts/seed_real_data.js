@@ -144,12 +144,20 @@ async function seedCurriculum(canonical) {
   curriculum.forEach((subj) => {
     (subj.chapters || []).forEach((chap) => {
       const chapterId = chapterIdMap.get(`${subj.id}|${chap.id}`);
-      (chap.topics || []).forEach((topTitle, tIdx) => {
-        topicsToInsert.push({
-          chapter_id: chapterId,
-          title: topTitle,
-          position: tIdx,
-          difficulty: "standard",
+      let tIdx = 0;
+      (chap.topics || []).forEach((topItem) => {
+        const subtopics =
+          typeof topItem === "object" && topItem !== null && Array.isArray(topItem.subtopics)
+            ? topItem.subtopics
+            : [typeof topItem === "object" && topItem !== null ? (topItem.name || "") : String(topItem)];
+
+        subtopics.forEach((sub) => {
+          topicsToInsert.push({
+            chapter_id: chapterId,
+            title: String(sub).trim(),
+            position: tIdx++,
+            difficulty: "standard",
+          });
         });
       });
     });

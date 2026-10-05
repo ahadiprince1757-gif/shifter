@@ -9,7 +9,7 @@ import staticCurriculum from "./curriculum.json";
 import { ACTIVE_SUBJECT_IDS } from "./subjectRegistry";
 import { curriculumRepo } from "../repository/curriculumRepo";
 
-export const CONTENT_VERSION = 9;
+export const CONTENT_VERSION = 10;
 
 const STATIC_SUBJECT_MAP = {
   math: mathTopics,

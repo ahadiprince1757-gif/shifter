@@ -75,22 +75,29 @@ curriculum.forEach((subj) => {
       position: cIdx,
     });
 
-    (chap.topics || []).forEach((topTitle, tIdx) => {
-      const currentTopicId = topicIdSeq++;
-      topicRows.push({
-        id: currentTopicId,
-        chapter_id: currentChapId,
-        title: topTitle,
-        position: tIdx,
-        difficulty: "standard",
-      });
+    let tIdx = 0;
+    (chap.topics || []).forEach((topItem) => {
+      const subtopics =
+        typeof topItem === "object" && topItem !== null && Array.isArray(topItem.subtopics)
+          ? topItem.subtopics
+          : [typeof topItem === "object" && topItem !== null ? (topItem.name || "") : String(topItem)];
 
-      const trimmedTitle = String(topTitle).trim();
-      const key = `${subj.id}/${chap.id}/${trimmedTitle}`;
-      const content = contentMap.get(key) || contentMap.get(`${subj.id}/${chap.id}/${topTitle}`);
-      if (!content) {
-        throw new Error(`Content not found for topic: ${key}`);
-      }
+      subtopics.forEach((sub) => {
+        const topTitle = String(sub).trim();
+        const currentTopicId = topicIdSeq++;
+        topicRows.push({
+          id: currentTopicId,
+          chapter_id: currentChapId,
+          title: topTitle,
+          position: tIdx++,
+          difficulty: "standard",
+        });
+
+        const key = `${subj.id}/${chap.id}/${topTitle}`;
+        const content = contentMap.get(key) || contentMap.get(`${subj.id}/${chap.id}/${sub}`);
+        if (!content) {
+          throw new Error(`Content not found for topic: ${key}`);
+        }
 
       // Lesson
       const currentLessonId = lessonIdSeq++;
@@ -157,6 +164,7 @@ curriculum.forEach((subj) => {
         }
       });
     });
+  });
   });
 });
 
