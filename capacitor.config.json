@@ -3,7 +3,7 @@
   "appName": "Tixar",
   "webDir": "frontend/dist",
   "server": {
-    "androidScheme": "https",
+    "url": "https://tixar-iota.vercel.app",
     "cleartext": true
   }
 }
