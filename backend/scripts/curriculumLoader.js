@@ -91,6 +91,12 @@ function normalizeQuestion(q, { sid, cid, topic, qIdx }) {
   let type = q.type === "mcq" || (Array.isArray(rawOptions) && rawOptions.length > 0) ? "mcq" : "text";
 
   if (type === "mcq" && Array.isArray(rawOptions) && rawOptions.length > 0) {
+    // First pass: try exact match
+    const hasExactMatch = rawOptions.some(opt => {
+      if (typeof opt === "object" && opt !== null) return Boolean(opt.is_correct || opt.correct);
+      return String(opt).trim() === ansStr;
+    });
+
     options = rawOptions.map(opt => {
       if (typeof opt === "object" && opt !== null) {
         return {
@@ -99,16 +105,28 @@ function normalizeQuestion(q, { sid, cid, topic, qIdx }) {
         };
       }
       const optText = String(opt).trim();
-      return {
-        text: optText,
-        is_correct: optText.toLowerCase() === ansStr.toLowerCase()
-      };
+      // Use exact match if possible; fall back to case-insensitive only when no exact match exists
+      const isCorrect = hasExactMatch
+        ? optText === ansStr
+        : optText.toLowerCase() === ansStr.toLowerCase();
+      return { text: optText, is_correct: isCorrect };
     });
 
-    // Ensure exactly 1 correct option matching ansStr
+    // If still no correct option (e.g. answer text differs from all options), append answer as hidden correct
     const correctCount = options.filter(o => o.is_correct).length;
     if (correctCount === 0 && ansStr) {
       options.push({ text: ansStr, is_correct: true });
+    }
+    // If multiple correct options due to case-insensitive fallback, keep only the first match
+    if (options.filter(o => o.is_correct).length > 1) {
+      let foundFirst = false;
+      options = options.map(o => {
+        if (o.is_correct) {
+          if (!foundFirst) { foundFirst = true; return o; }
+          return { ...o, is_correct: false };
+        }
+        return o;
+      });
     }
   } else {
     type = "text";
@@ -168,8 +186,11 @@ function validateQuestion(norm, context = "") {
     if (correctOpts.length !== 1) {
       throw new Error(`[${context}] MCQ Question '${norm.q}' must have exactly 1 correct option, found ${correctOpts.length}`);
     }
-    if (correctOpts[0].text.toLowerCase() !== norm.ans.toLowerCase()) {
-      throw new Error(`[${context}] MCQ Question '${norm.q}' correct option '${correctOpts[0].text}' does not match canonical ans '${norm.ans}'`);
+    // Accept exact match OR case-insensitive match (for biology answers like "Two" vs "two")
+    const optText = correctOpts[0].text;
+    const ansText = norm.ans;
+    if (optText !== ansText && optText.toLowerCase() !== ansText.toLowerCase()) {
+      throw new Error(`[${context}] MCQ Question '${norm.q}' correct option '${optText}' does not match canonical ans '${ansText}'`);
     }
   } else {
     if (norm.options.length !== 0) {
@@ -209,7 +230,7 @@ function loadCanonicalCurriculum() {
 
     let cid, topic, notes, qs, topicGroup;
 
-    if (sid === "math") {
+    if (sid === "math" || sid === "biology") {
       const rawQs = args[args.length - 1];
       const rawNotes = args[args.length - 2];
       const pathParts = args.slice(1, args.length - 2).map((s) => String(s).trim());
