@@ -2,18 +2,18 @@
 <html lang="en">
   <head>
     <meta http-equiv="Content-Security-Policy" content="
-      default-src 'self';
-      script-src 'self' 'unsafe-inline' 'unsafe-eval' blob:;
+      default-src 'self' capacitor: https: http:;
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' blob: capacitor:;
       worker-src 'self' blob:;
       style-src 'self' 'unsafe-inline' https://fonts.googleapis.com;
-      font-src 'self' https://fonts.gstatic.com;
-      img-src 'self' data: blob: https://*.googleusercontent.com https://avatars.githubusercontent.com;
-      connect-src 'self' *;
+      font-src 'self' https://fonts.gstatic.com data:;
+      img-src 'self' data: blob: https: content: capacitor:;
+      connect-src 'self' * blob: data: capacitor: https: http:;
       manifest-src 'self';
     ">
     <meta charset="UTF-8" />
     <link rel="icon" type="image/png" href="/tixar-logo.png?v=4" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Tixar — Stop forgeting</title>
     <meta name="description" content="Tixar pinpoints where your memory breaks and fixes it ." />
     <!-- DNS prefetch & preconnect for external resources -->
@@ -40,12 +40,32 @@
 
 
     <link rel="apple-touch-icon" href="/tixar-logo.png?v=4" />
+    <script>
+      // Startup error visualizer — prevents silent blank white screens on mobile webview
+      window.addEventListener('error', function (e) {
+        var root = document.getElementById('root');
+        if (root && (!root.innerHTML || root.innerHTML.trim() === '')) {
+          root.innerHTML = '<div style="padding:24px;font-family:sans-serif;background:#0b0a12;color:#f1effa;min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">' +
+            '<h2 style="color:#ff6b6b;margin-bottom:12px;">App Failed to Start</h2>' +
+            '<p style="max-width:400px;font-size:14px;color:rgba(255,255,255,0.7);">' + (e.message || 'JavaScript error occurred on load') + '</p>' +
+            '<p style="font-size:11px;color:rgba(255,255,255,0.4);word-break:break-all;margin-top:8px;">' + (e.filename || '') + ':' + (e.lineno || '') + '</p>' +
+            '<button onclick="window.location.reload()" style="margin-top:16px;padding:8px 18px;border-radius:8px;border:none;background:#287ce0;color:#fff;font-weight:600;">Reload</button>' +
+            '</div>';
+        }
+      });
+    </script>
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
     <script>
-      if ('serviceWorker' in navigator) {
+      // Disable service worker in native Capacitor apps to avoid WebView caching collisions
+      const isNativeApp = window.Capacitor !== undefined || 
+                          window.location.protocol === 'capacitor:' || 
+                          navigator.userAgent.includes('wv') ||
+                          navigator.userAgent.includes('Capacitor');
+
+      if (!isNativeApp && 'serviceWorker' in navigator) {
         const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
         let refreshing = false;
 
@@ -64,11 +84,11 @@
               for (const registration of registrations) {
                 registration.unregister();
               }
-            });
+            }).catch(() => {});
           } else {
             navigator.serviceWorker.register('/sw.js?v=17.0').then((reg) => {
               reg.update();
-            });
+            }).catch(() => {});
           }
         });
       }

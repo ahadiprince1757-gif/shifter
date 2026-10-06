@@ -8,6 +8,8 @@
     "dev:backend": "npm --prefix ./backend run dev",
     "dev": "concurrently \"npm:dev:backend\" \"npm:dev:frontend\"",
     "build": "npm --prefix ./frontend run build",
+    "cap:build": "npm --prefix ./frontend run build && npx cap sync android",
+    "cap:open": "npx cap open android",
     "preview": "npm --prefix ./frontend run preview",
     "test:integration": "node test-integration.js",
     "test:curriculum": "node scripts/validate-curriculum.js",
