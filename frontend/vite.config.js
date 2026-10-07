@@ -98,6 +98,14 @@ export default defineConfig(({ mode }) => {
             return 'vendor-grading';
           }
 
+          // ─── Split large content data by subject (each > 100 kB) ──────────
+          if (id.includes('/src/data/biology')) return 'content-biology';
+          if (id.includes('/src/data/math')) return 'content-math';
+          if (id.includes('/src/data/computer')) return 'content-computer';
+          if (id.includes('/src/data/physics')) return 'content-physics';
+          if (id.includes('/src/data/chemistry')) return 'content-chemistry';
+          if (id.includes('/src/data/english')) return 'content-english';
+
           // ─── Large utility modules ────────────────────────────────────────
           if (
             id.includes('questionMutator') ||
