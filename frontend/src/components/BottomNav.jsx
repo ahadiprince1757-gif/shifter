@@ -193,9 +193,7 @@ export default function BottomNav({
             aria-label="Search topics, subtopics and notes"
           >
             <div className="bottom-search-header">
-              <div className="bottom-search-title">
-                Search Topics, Subtopics & Notes
-              </div>
+              <div className="bottom-search-title">Search Topics</div>
               <button
                 className="bottom-search-close"
                 onClick={() => setIsSearchOpen(false)}
@@ -213,8 +211,7 @@ export default function BottomNav({
               }}
               autoFocus={true}
               onClose={() => setIsSearchOpen(false)}
-              placeholder="Type any topic, subtopic, formula or concept..."
-              isModal={true}
+              placeholder="Type a topic or subtopic..."
             />
           </div>
         </div>

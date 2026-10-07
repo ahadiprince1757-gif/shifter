@@ -7,39 +7,17 @@ const ClearIcon = () => (
   </svg>
 );
 
-const SUGGESTED_SUBJECTS = [
-  "Mathematics",
-  "Physics",
-  "Chemistry",
-  "Biology",
-  "English",
-  "Computer Studies",
-];
-
-const POPULAR_SEARCHES = [
-  "BODMAS",
-  "Ohm's Law",
-  "What is a Cell",
-  "Meaning of Chemistry",
-  "Kinetic Energy",
-  "Linear Motion",
-];
-
 function GlobalSearch({
   curriculum = [],
   navigateToTopic,
   autoFocus = false,
   onClose,
-  placeholder = "Search topics, subtopics, formulas & notes... (Press '/' to focus)",
-  isModal = false,
+  placeholder = "Search topics and subtopics...",
 }) {
   const [query, setQuery] = useState("");
-  const [isOpen, setIsOpen] = useState(isModal);
+  const [isOpen, setIsOpen] = useState(false);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [prevQuery, setPrevQuery] = useState("");
-  const [activeTab, setActiveTab] = useState("all");
-  const [copiedId, setCopiedId] = useState(null);
-  const [onlineDbResults, setOnlineDbResults] = useState([]);
   const containerRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -59,9 +37,8 @@ function GlobalSearch({
     return () => document.removeEventListener("keydown", handleGlobalKeyDown);
   }, []);
 
-  // Close when clicking outside (unless inside a managed modal)
+  // Close when clicking outside
   useEffect(() => {
-    if (isModal) return;
     function handleClickOutside(event) {
       if (containerRef.current && !containerRef.current.contains(event.target)) {
         setIsOpen(false);
@@ -69,42 +46,13 @@ function GlobalSearch({
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, [isModal]);
+  }, []);
 
-  // Async query for online Supabase & local IndexedDB records
-  useEffect(() => {
-    if (!query.trim() || query.length < 2) {
-      const resetTimer = setTimeout(() => setOnlineDbResults([]), 0);
-      return () => clearTimeout(resetTimer);
-    }
-
-    let isMounted = true;
-    const timer = setTimeout(async () => {
-      try {
-        const results = await localSearchEngine.searchOnlineDatabase(query);
-        if (isMounted) {
-          setOnlineDbResults(results);
-        }
-      } catch (err) {
-        console.warn("Online DB search error:", err);
-      }
-    }, 200);
-
-    return () => {
-      isMounted = false;
-      clearTimeout(timer);
-    };
-  }, [query]);
-
-  // Hybrid Search: In-Browser Knowledge Base + Curriculum Matching (Topics & Subtopics)
-  const { conceptResults, curriculumResults } = useMemo(() => {
-    if (!query.trim()) return { conceptResults: [], curriculumResults: [] };
+  // Hybrid Search: Matching Topics & Subtopics
+  const { curriculumResults, conceptResults } = useMemo(() => {
     const q = query.toLowerCase().trim();
+    if (!q) return { curriculumResults: [], conceptResults: [] };
 
-    // 1. In-Browser Instant Knowledge Search & Live Value Calculations (<5ms)
-    const concepts = localSearchEngine.search(q);
-
-    // 2. Curriculum Topic & Subtopic Matching (handles object and string topics)
     const topicMatches = [];
     const seenTopicKeys = new Set();
 
@@ -177,31 +125,15 @@ function GlobalSearch({
       });
     }
 
+    const concepts = localSearchEngine.search(q);
+
     return {
-      conceptResults: concepts,
-      curriculumResults: topicMatches.sort((a, b) => b.score - a.score).slice(0, 20),
+      curriculumResults: topicMatches.sort((a, b) => b.score - a.score).slice(0, 25),
+      conceptResults: concepts.slice(0, 3),
     };
   }, [query, curriculum]);
 
-  const allConceptResults = useMemo(() => {
-    return [...conceptResults, ...onlineDbResults];
-  }, [conceptResults, onlineDbResults]);
-
-  // Filter items by active tab
-  const filteredConceptResults = useMemo(() => {
-    if (activeTab === "topics") return [];
-    if (activeTab === "calc") return allConceptResults.filter((c) => c.isLiveCalculated || c.formula);
-    if (activeTab === "concepts") return allConceptResults.filter((c) => !c.isLiveCalculated && !c.isOnlineDatabaseRecord);
-    if (activeTab === "db") return allConceptResults.filter((c) => c.isOnlineDatabaseRecord);
-    return allConceptResults;
-  }, [allConceptResults, activeTab]);
-
-  const filteredCurriculumResults = useMemo(() => {
-    if (activeTab === "calc" || activeTab === "db" || activeTab === "concepts") return [];
-    return curriculumResults;
-  }, [curriculumResults, activeTab]);
-
-  const totalResultsCount = filteredConceptResults.length + filteredCurriculumResults.length;
+  const totalResultsCount = curriculumResults.length + conceptResults.length;
 
   // Reset selection when query changes
   if (query !== prevQuery) {
@@ -226,7 +158,7 @@ function GlobalSearch({
       navigateToTopic(match.subject.id, match.chapter.id, match.topic);
     }
     setQuery("");
-    setIsOpen(isModal);
+    setIsOpen(false);
     setSelectedIndex(-1);
     if (onClose) onClose();
   };
@@ -271,22 +203,13 @@ function GlobalSearch({
     }
 
     setQuery("");
-    setIsOpen(isModal);
+    setIsOpen(false);
     setSelectedIndex(-1);
     if (onClose) onClose();
   };
 
-  const handleCopyFormula = (e, formula, id) => {
-    e.stopPropagation();
-    if (navigator.clipboard && formula) {
-      navigator.clipboard.writeText(formula);
-      setCopiedId(id);
-      setTimeout(() => setCopiedId(null), 1500);
-    }
-  };
-
   const handleKeyDown = (e) => {
-    if (!isOpen) return;
+    if (!isOpen || totalResultsCount === 0) return;
 
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -296,12 +219,14 @@ function GlobalSearch({
       setSelectedIndex((prev) => (prev > 0 ? prev - 1 : prev));
     } else if (e.key === "Enter") {
       e.preventDefault();
-      if (selectedIndex >= 0 && selectedIndex < filteredConceptResults.length) {
-        const item = filteredConceptResults[selectedIndex];
-        handleSelectConcept(item);
-      } else if (selectedIndex >= filteredConceptResults.length) {
-        const currItem = filteredCurriculumResults[selectedIndex - filteredConceptResults.length];
-        if (currItem) handleSelectTopic(currItem);
+      const effectiveIndex = selectedIndex >= 0 ? selectedIndex : 0;
+      if (effectiveIndex < curriculumResults.length) {
+        handleSelectTopic(curriculumResults[effectiveIndex]);
+      } else {
+        const conceptIdx = effectiveIndex - curriculumResults.length;
+        if (conceptResults[conceptIdx]) {
+          handleSelectConcept(conceptResults[conceptIdx]);
+        }
       }
     } else if (e.key === "Escape") {
       setIsOpen(false);
@@ -311,11 +236,12 @@ function GlobalSearch({
 
   const handleClear = () => {
     setQuery("");
-    if (!isModal) setIsOpen(false);
+    setIsOpen(false);
     inputRef.current?.focus();
   };
 
-  const showDropdown = isModal || (isOpen && query);
+  // Only show results when the user has actually started typing
+  const showResults = Boolean(isOpen && query.trim().length > 0);
 
   return (
     <div className="global-search" ref={containerRef}>
@@ -341,7 +267,7 @@ function GlobalSearch({
           }}
           onFocus={() => setIsOpen(true)}
           onKeyDown={handleKeyDown}
-          aria-expanded={isOpen}
+          aria-expanded={showResults}
           aria-haspopup="listbox"
           aria-controls="search-dropdown-list"
         />
@@ -357,180 +283,69 @@ function GlobalSearch({
         )}
       </div>
 
-      {showDropdown && (
+      {showResults && (
         <div className="search-dropdown" id="search-dropdown-list" role="listbox">
-          {query ? (
-            <>
-              {/* Filter Bar */}
-              <div className="search-filter-bar">
-                <button
-                  className={`sfb-btn ${activeTab === "all" ? "active" : ""}`}
-                  onClick={() => setActiveTab("all")}
-                >
-                  All ({totalResultsCount})
-                </button>
-                <button
-                  className={`sfb-btn ${activeTab === "topics" ? "active" : ""}`}
-                  onClick={() => setActiveTab("topics")}
-                >
-                  Topics & Notes ({curriculumResults.length})
-                </button>
-                <button
-                  className={`sfb-btn ${activeTab === "concepts" ? "active" : ""}`}
-                  onClick={() => setActiveTab("concepts")}
-                >
-                  Concepts
-                </button>
-                <button
-                  className={`sfb-btn ${activeTab === "calc" ? "active" : ""}`}
-                  onClick={() => setActiveTab("calc")}
-                >
-                  Calculations
-                </button>
-                {onlineDbResults.length > 0 && (
-                  <button
-                    className={`sfb-btn ${activeTab === "db" ? "active" : ""}`}
-                    onClick={() => setActiveTab("db")}
+          {/* Matching Topics and Subtopics */}
+          {curriculumResults.length > 0 ? (
+            <div className="search-section">
+              {curriculumResults.map((r, idx) => {
+                const isSelected = idx === selectedIndex;
+                return (
+                  <div
+                    key={`topic_${r.subject.id}_${r.chapter.id}_${r.topic}`}
+                    className={`search-item ${isSelected ? "selected" : ""}`}
+                    onClick={() => handleSelectTopic(r)}
                   >
-                    Database ({onlineDbResults.length})
-                  </button>
-                )}
-              </div>
-
-              {/* Section 1: Instant Answers, Live Calculations & DB Records */}
-              {filteredConceptResults.length > 0 && (
-                <div className="search-section">
-                  <div className="search-section-header">Instant Concepts & Live Calculations</div>
-                  {filteredConceptResults.map((item, i) => {
-                    const isSelected = i === selectedIndex;
-                    return (
-                      <div
-                        key={`concept_${item.id}`}
-                        className={`search-concept-card ${isSelected ? "selected" : ""} ${
-                          item.isLiveCalculated ? "live-calc-card" : ""
-                        }`}
-                        onClick={() => handleSelectConcept(item)}
-                      >
-                        <div className="scc-header">
-                          <span className="scc-title">{item.title}</span>
-                          <span className="scc-badge">{item.subject}</span>
-                        </div>
-
-                        {item.formula && (
-                          <div className="scc-formula-wrap">
-                            <div className="scc-formula">
-                              <code>{item.formula}</code>
-                            </div>
-                            <button
-                              className="scc-copy-btn"
-                              onClick={(e) => handleCopyFormula(e, item.formula, item.id)}
-                              title="Copy formula"
-                            >
-                              {copiedId === item.id ? "✓ Copied" : "Copy"}
-                            </button>
-                          </div>
-                        )}
-
-                        <div className="scc-explanation">{item.explanation}</div>
-
-                        {item.steps && (
-                          <div className="scc-steps">
-                            {(Array.isArray(item.steps) ? item.steps : item.steps.split("."))
-                              .filter(Boolean)
-                              .map((st, sIdx) => (
-                                <div key={sIdx} className="scc-step-item">
-                                  {st.trim()}
-                                </div>
-                              ))}
-                          </div>
-                        )}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-
-              {/* Section 2: Curriculum Topics & Subtopics */}
-              {filteredCurriculumResults.length > 0 && (
-                <div className="search-section">
-                  <div className="search-section-header">Curriculum Topics, Subtopics & Notes</div>
-                  {filteredCurriculumResults.map((r, idx) => {
-                    const globalIdx = filteredConceptResults.length + idx;
-                    const isSelected = globalIdx === selectedIndex;
-                    return (
-                      <div
-                        key={`topic_${r.subject.id}_${r.chapter.id}_${r.topic}`}
-                        className={`search-item ${isSelected ? "selected" : ""}`}
-                        onClick={() => handleSelectTopic(r)}
-                      >
-                        <div className="si-title-row">
-                          <span className="si-title">{r.topic}</span>
-                          {r.isSubtopic ? (
-                            <span className="si-badge si-badge--subtopic">Subtopic</span>
-                          ) : (
-                            <span className="si-badge si-badge--topic">Topic</span>
-                          )}
-                        </div>
-                        <div className="si-path">
-                          {r.subject.label} › {r.chapter.label}
-                          {r.topicGroup && r.topicGroup !== r.topic ? ` › ${r.topicGroup}` : ""}
-                        </div>
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-
-              {totalResultsCount === 0 && (
-                <div className="search-empty">
-                  No matching topics, notes, or calculations found for &ldquo;{query}&rdquo;.
-                  <br />
-                  <small style={{ opacity: 0.75, display: "block", marginTop: "4px" }}>
-                    Try searching for a topic (e.g. &ldquo;Distance&rdquo;), a subject (e.g. &ldquo;Biology&rdquo;), or a formula (&ldquo;V = I * R&rdquo;).
-                  </small>
-                </div>
-              )}
-            </>
+                    <div className="si-title-row">
+                      <span className="si-title">{r.topic}</span>
+                      {r.isSubtopic ? (
+                        <span className="si-badge si-badge--subtopic">Subtopic</span>
+                      ) : (
+                        <span className="si-badge si-badge--topic">Topic</span>
+                      )}
+                    </div>
+                    <div className="si-path">
+                      {r.subject.label} › {r.chapter.label}
+                      {r.topicGroup && r.topicGroup !== r.topic ? ` › ${r.topicGroup}` : ""}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
           ) : (
-            /* Quick Browsing & Suggested Tags when search is opened without query */
-            <div className="search-quick-tags">
-              <div className="search-quick-label">Browse by Subject</div>
-              <div className="search-quick-chips">
-                {SUGGESTED_SUBJECTS.map((subj) => (
-                  <button
-                    key={subj}
-                    type="button"
-                    className="search-quick-chip"
-                    onClick={() => {
-                      setQuery(subj);
-                      setIsOpen(true);
-                      inputRef.current?.focus();
-                    }}
-                  >
-                    {subj}
-                  </button>
-                ))}
-              </div>
+            <div className="search-empty">
+              No topics found matching &ldquo;{query}&rdquo;.
+            </div>
+          )}
 
-              <div className="search-quick-label" style={{ marginTop: "0.85rem" }}>
-                Popular Topics & Notes
-              </div>
-              <div className="search-quick-chips">
-                {POPULAR_SEARCHES.map((pop) => (
-                  <button
-                    key={pop}
-                    type="button"
-                    className="search-quick-chip search-quick-chip--popular"
-                    onClick={() => {
-                      setQuery(pop);
-                      setIsOpen(true);
-                      inputRef.current?.focus();
-                    }}
+          {/* Key Notes / Formulas (if any matched) */}
+          {conceptResults.length > 0 && (
+            <div className="search-section">
+              <div className="search-section-header">Formulas & Definitions</div>
+              {conceptResults.map((item, i) => {
+                const globalIdx = curriculumResults.length + i;
+                const isSelected = globalIdx === selectedIndex;
+                return (
+                  <div
+                    key={`concept_${item.id}`}
+                    className="search-concept-card"
+                    style={{ background: isSelected ? "var(--bg2)" : "transparent" }}
+                    onClick={() => handleSelectConcept(item)}
                   >
-                    ⚡ {pop}
-                  </button>
-                ))}
-              </div>
+                    <div className="scc-header">
+                      <span className="scc-title">{item.title}</span>
+                      <span className="scc-badge">{item.subject}</span>
+                    </div>
+                    {item.formula && (
+                      <div className="scc-formula-wrap" style={{ margin: "0.2rem 0" }}>
+                        <div className="scc-formula">
+                          <code>{item.formula}</code>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           )}
         </div>
