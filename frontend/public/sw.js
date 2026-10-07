@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Tixar-v17.0';
+const CACHE_NAME = 'Tixar-v18.0';
 const ASSETS = [
   '/',
   '/index.html',
@@ -90,6 +90,14 @@ self.addEventListener('fetch', (e) => {
       try {
         const netResponse = await fetch(e.request);
         if (netResponse && netResponse.status === 200) {
+          const contentType = netResponse.headers.get('content-type') || '';
+          // Ensure we don't accidentally treat SPA fallback HTML as a JS/CSS asset
+          if (
+            (url.includes('/assets/') && url.endsWith('.js') && !contentType.includes('javascript')) ||
+            (url.includes('/assets/') && url.endsWith('.css') && !contentType.includes('css'))
+          ) {
+            return new Response('Asset not found', { status: 404, statusText: 'Not Found' });
+          }
           const cache = await caches.open(CACHE_NAME);
           cache.put(e.request, netResponse.clone());
         }

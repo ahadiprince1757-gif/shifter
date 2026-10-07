@@ -10,13 +10,37 @@ import { useMasteredTopics } from "../hooks/useMasteredTopics";
 import { useAuth } from "../hooks/useAuth";
 import { Navigate } from "react-router-dom";
 
-const SubjectGrid = React.lazy(() => import("../components/SubjectGrid"));
-const ChapterList = React.lazy(() => import("../components/ChapterList"));
-const TopicList = React.lazy(() => import("../components/TopicList"));
-const SubtopicList = React.lazy(() => import("../components/SubtopicList"));
-const LearnFlow = React.lazy(() => import("../components/LearnFlow"));
-const Gaps = React.lazy(() => import("../components/Gaps"));
-const WelcomeAuthScreen = React.lazy(() => import("../components/WelcomeAuthScreen"));
+import SubjectGrid from "../components/SubjectGrid";
+
+function lazyWithRetry(componentImport) {
+  return React.lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      const msg = error?.message || "";
+      if (
+        msg.includes("dynamically imported module") ||
+        msg.includes("Failed to fetch") ||
+        msg.includes("error loading dynamically imported module")
+      ) {
+        const retryKey = "retry_" + window.location.pathname;
+        if (!window.sessionStorage.getItem(retryKey)) {
+          window.sessionStorage.setItem(retryKey, "1");
+          window.location.reload();
+          return { default: () => null };
+        }
+      }
+      throw error;
+    }
+  });
+}
+
+const ChapterList = lazyWithRetry(() => import("../components/ChapterList"));
+const TopicList = lazyWithRetry(() => import("../components/TopicList"));
+const SubtopicList = lazyWithRetry(() => import("../components/SubtopicList"));
+const LearnFlow = lazyWithRetry(() => import("../components/LearnFlow"));
+const Gaps = lazyWithRetry(() => import("../components/Gaps"));
+const WelcomeAuthScreen = lazyWithRetry(() => import("../components/WelcomeAuthScreen"));
 
 const ChapterListWrapper = () => {
   const { subjectId } = useParams();
