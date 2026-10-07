@@ -7,9 +7,34 @@ const ClearIcon = () => (
   </svg>
 );
 
-function GlobalSearch({ curriculum, navigateToTopic }) {
+const SUGGESTED_SUBJECTS = [
+  "Mathematics",
+  "Physics",
+  "Chemistry",
+  "Biology",
+  "English",
+  "Computer Studies",
+];
+
+const POPULAR_SEARCHES = [
+  "BODMAS",
+  "Ohm's Law",
+  "What is a Cell",
+  "Meaning of Chemistry",
+  "Kinetic Energy",
+  "Linear Motion",
+];
+
+function GlobalSearch({
+  curriculum = [],
+  navigateToTopic,
+  autoFocus = false,
+  onClose,
+  placeholder = "Search topics, subtopics, formulas & notes... (Press '/' to focus)",
+  isModal = false,
+}) {
   const [query, setQuery] = useState("");
-  const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(isModal);
   const [selectedIndex, setSelectedIndex] = useState(-1);
   const [prevQuery, setPrevQuery] = useState("");
   const [activeTab, setActiveTab] = useState("all");
@@ -21,7 +46,10 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
   // Global Keyboard Shortcut: '/' or 'Ctrl+K' to focus search
   useEffect(() => {
     function handleGlobalKeyDown(e) {
-      if ((e.key === "/" && document.activeElement !== inputRef.current) || ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k")) {
+      if (
+        (e.key === "/" && document.activeElement !== inputRef.current) ||
+        ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k")
+      ) {
         e.preventDefault();
         inputRef.current?.focus();
         setIsOpen(true);
@@ -31,19 +59,17 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     return () => document.removeEventListener("keydown", handleGlobalKeyDown);
   }, []);
 
-  // Close when clicking outside
+  // Close when clicking outside (unless inside a managed modal)
   useEffect(() => {
+    if (isModal) return;
     function handleClickOutside(event) {
-      if (
-        containerRef.current &&
-        !containerRef.current.contains(event.target)
-      ) {
+      if (containerRef.current && !containerRef.current.contains(event.target)) {
         setIsOpen(false);
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
     return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
+  }, [isModal]);
 
   // Async query for online Supabase & local IndexedDB records
   useEffect(() => {
@@ -70,7 +96,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     };
   }, [query]);
 
-  // Hybrid Search: In-Browser Knowledge Base + Curriculum Matching
+  // Hybrid Search: In-Browser Knowledge Base + Curriculum Matching (Topics & Subtopics)
   const { conceptResults, curriculumResults } = useMemo(() => {
     if (!query.trim()) return { conceptResults: [], curriculumResults: [] };
     const q = query.toLowerCase().trim();
@@ -78,35 +104,82 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     // 1. In-Browser Instant Knowledge Search & Live Value Calculations (<5ms)
     const concepts = localSearchEngine.search(q);
 
-    // 2. Curriculum Topic Matching
+    // 2. Curriculum Topic & Subtopic Matching (handles object and string topics)
     const topicMatches = [];
-    curriculum.forEach((subj) => {
-      const subjMatch = subj.label.toLowerCase().includes(q);
-      subj.chapters.forEach((chap) => {
-        const chapMatch = chap.label.toLowerCase().includes(q);
-        chap.topics.forEach((t) => {
-          const tLower = t.toLowerCase();
-          const topicMatch = tLower.includes(q);
-          if (topicMatch || subjMatch || chapMatch) {
-            let score = 0;
-            if (tLower.startsWith(q)) {
-              score += 100;
-            } else if (topicMatch) {
-              score += 50;
-            } else if (chapMatch) {
-              score += 25;
-            } else if (subjMatch) {
-              score += 10;
-            }
-            topicMatches.push({ subject: subj, chapter: chap, topic: t, score });
-          }
+    const seenTopicKeys = new Set();
+
+    if (Array.isArray(curriculum)) {
+      curriculum.forEach((subj) => {
+        if (!subj || !Array.isArray(subj.chapters)) return;
+        const subjLabel = subj.label || subj.name || "";
+        const subjMatch = subjLabel.toLowerCase().includes(q);
+
+        subj.chapters.forEach((chap) => {
+          if (!chap || !Array.isArray(chap.topics)) return;
+          const chapLabel = chap.label || "";
+          const chapMatch = chapLabel.toLowerCase().includes(q);
+
+          chap.topics.forEach((t, tIdx) => {
+            const topicGroupName =
+              typeof t === "object" && t !== null
+                ? t.name || `Topic ${tIdx + 1}`
+                : String(t || "");
+            const tGroupLower = topicGroupName.toLowerCase();
+            const groupMatch = tGroupLower.includes(q);
+
+            const subtopics =
+              typeof t === "object" && t !== null && Array.isArray(t.subtopics) && t.subtopics.length > 0
+                ? t.subtopics
+                : [topicGroupName];
+
+            subtopics.forEach((sub) => {
+              const subStr = String(sub || "");
+              const subLower = subStr.toLowerCase();
+              const subMatch = subLower.includes(q);
+
+              if (subMatch || groupMatch || chapMatch || subjMatch) {
+                const uniqueKey = `${subj.id}|${chap.id}|${subStr}`;
+                if (seenTopicKeys.has(uniqueKey)) return;
+                seenTopicKeys.add(uniqueKey);
+
+                let score = 0;
+                if (subLower === q) {
+                  score += 200;
+                } else if (subLower.startsWith(q)) {
+                  score += 120;
+                } else if (subMatch) {
+                  score += 70;
+                }
+
+                if (tGroupLower === q) {
+                  score += 100;
+                } else if (tGroupLower.startsWith(q)) {
+                  score += 50;
+                } else if (groupMatch) {
+                  score += 30;
+                }
+
+                if (chapMatch) score += 20;
+                if (subjMatch) score += 10;
+
+                topicMatches.push({
+                  subject: subj,
+                  chapter: chap,
+                  topicGroup: topicGroupName,
+                  topic: subStr,
+                  isSubtopic: subStr !== topicGroupName,
+                  score,
+                });
+              }
+            });
+          });
         });
       });
-    });
+    }
 
     return {
       conceptResults: concepts,
-      curriculumResults: topicMatches.sort((a, b) => b.score - a.score).slice(0, 5)
+      curriculumResults: topicMatches.sort((a, b) => b.score - a.score).slice(0, 20),
     };
   }, [query, curriculum]);
 
@@ -116,14 +189,15 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
 
   // Filter items by active tab
   const filteredConceptResults = useMemo(() => {
-    if (activeTab === "calc") return allConceptResults.filter(c => c.isLiveCalculated || c.formula);
-    if (activeTab === "concepts") return allConceptResults.filter(c => !c.isLiveCalculated && !c.isOnlineDatabaseRecord);
-    if (activeTab === "db") return allConceptResults.filter(c => c.isOnlineDatabaseRecord);
+    if (activeTab === "topics") return [];
+    if (activeTab === "calc") return allConceptResults.filter((c) => c.isLiveCalculated || c.formula);
+    if (activeTab === "concepts") return allConceptResults.filter((c) => !c.isLiveCalculated && !c.isOnlineDatabaseRecord);
+    if (activeTab === "db") return allConceptResults.filter((c) => c.isOnlineDatabaseRecord);
     return allConceptResults;
   }, [allConceptResults, activeTab]);
 
   const filteredCurriculumResults = useMemo(() => {
-    if (activeTab === "calc" || activeTab === "db") return [];
+    if (activeTab === "calc" || activeTab === "db" || activeTab === "concepts") return [];
     return curriculumResults;
   }, [curriculumResults, activeTab]);
 
@@ -135,11 +209,71 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     setSelectedIndex(-1);
   }
 
+  const getFirstTopicStr = (chap) => {
+    if (!chap || !Array.isArray(chap.topics) || chap.topics.length === 0) return "";
+    const first = chap.topics[0];
+    if (typeof first === "object" && first !== null) {
+      if (Array.isArray(first.subtopics) && first.subtopics.length > 0) {
+        return String(first.subtopics[0]);
+      }
+      return String(first.name || "");
+    }
+    return String(first);
+  };
+
   const handleSelectTopic = (match) => {
-    navigateToTopic(match.subject.id, match.chapter.id, match.topic);
+    if (navigateToTopic) {
+      navigateToTopic(match.subject.id, match.chapter.id, match.topic);
+    }
     setQuery("");
-    setIsOpen(false);
+    setIsOpen(isModal);
     setSelectedIndex(-1);
+    if (onClose) onClose();
+  };
+
+  const handleSelectConcept = (item) => {
+    const subj =
+      (curriculum || []).find(
+        (s) =>
+          s.label?.toLowerCase().includes(String(item.subject).toLowerCase()) ||
+          s.id?.toLowerCase() === String(item.subject).toLowerCase()
+      ) || curriculum[0];
+
+    if (subj && Array.isArray(subj.chapters) && subj.chapters.length > 0) {
+      let targetChap = subj.chapters[0];
+      let targetTopic = getFirstTopicStr(targetChap);
+
+      for (const c of subj.chapters) {
+        if (Array.isArray(c.topics)) {
+          for (const t of c.topics) {
+            const tName = typeof t === "object" && t !== null ? t.name : String(t);
+            const subs =
+              typeof t === "object" && t !== null && Array.isArray(t.subtopics)
+                ? t.subtopics
+                : [tName];
+            const matchedSub = subs.find(
+              (s) =>
+                String(s).toLowerCase().includes(String(item.topic || "").toLowerCase()) ||
+                String(item.topic || "").toLowerCase().includes(String(s).toLowerCase())
+            );
+            if (matchedSub) {
+              targetChap = c;
+              targetTopic = matchedSub;
+              break;
+            }
+          }
+        }
+      }
+
+      if (navigateToTopic) {
+        navigateToTopic(subj.id, targetChap.id, targetTopic);
+      }
+    }
+
+    setQuery("");
+    setIsOpen(isModal);
+    setSelectedIndex(-1);
+    if (onClose) onClose();
   };
 
   const handleCopyFormula = (e, formula, id) => {
@@ -152,7 +286,7 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
   };
 
   const handleKeyDown = (e) => {
-    if (!isOpen || totalResultsCount === 0) return;
+    if (!isOpen) return;
 
     if (e.key === "ArrowDown") {
       e.preventDefault();
@@ -163,29 +297,25 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
     } else if (e.key === "Enter") {
       e.preventDefault();
       if (selectedIndex >= 0 && selectedIndex < filteredConceptResults.length) {
-        // Concept / DB item selected
         const item = filteredConceptResults[selectedIndex];
-        const subj = curriculum.find(s => s.label.toLowerCase().includes(String(item.subject).toLowerCase())) || curriculum[0];
-        if (subj && subj.chapters.length > 0) {
-          const chap = subj.chapters[0];
-          navigateToTopic(subj.id, chap.id, chap.topics[0] || item.topic);
-        }
-        setIsOpen(false);
+        handleSelectConcept(item);
       } else if (selectedIndex >= filteredConceptResults.length) {
-        // Curriculum item selected
         const currItem = filteredCurriculumResults[selectedIndex - filteredConceptResults.length];
         if (currItem) handleSelectTopic(currItem);
       }
     } else if (e.key === "Escape") {
       setIsOpen(false);
+      if (onClose) onClose();
     }
   };
 
   const handleClear = () => {
     setQuery("");
-    setIsOpen(false);
+    if (!isModal) setIsOpen(false);
     inputRef.current?.focus();
   };
+
+  const showDropdown = isModal || (isOpen && query);
 
   return (
     <div className="global-search" ref={containerRef}>
@@ -196,9 +326,9 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
         <input
           ref={inputRef}
           type="search"
-          placeholder="Search formulas, live values & topics... (Press '/' to focus)"
+          placeholder={placeholder}
           value={query}
-          autoFocus
+          autoFocus={autoFocus}
           autoComplete="off"
           autoCorrect="off"
           autoCapitalize="off"
@@ -227,126 +357,180 @@ function GlobalSearch({ curriculum, navigateToTopic }) {
         )}
       </div>
 
-      {isOpen && query && (
-        <div
-          className="search-dropdown"
-          id="search-dropdown-list"
-          role="listbox"
-        >
-          {/* Filter Bar */}
-          <div className="search-filter-bar">
-            <button
-              className={`sfb-btn ${activeTab === "all" ? "active" : ""}`}
-              onClick={() => setActiveTab("all")}
-            >
-              All
-            </button>
-            <button
-              className={`sfb-btn ${activeTab === "calc" ? "active" : ""}`}
-              onClick={() => setActiveTab("calc")}
-            >
-              Calculations
-            </button>
-            <button
-              className={`sfb-btn ${activeTab === "concepts" ? "active" : ""}`}
-              onClick={() => setActiveTab("concepts")}
-            >
-              Concepts
-            </button>
-            {onlineDbResults.length > 0 && (
-              <button
-                className={`sfb-btn ${activeTab === "db" ? "active" : ""}`}
-                onClick={() => setActiveTab("db")}
-              >
-                Database ({onlineDbResults.length})
-              </button>
-            )}
-          </div>
+      {showDropdown && (
+        <div className="search-dropdown" id="search-dropdown-list" role="listbox">
+          {query ? (
+            <>
+              {/* Filter Bar */}
+              <div className="search-filter-bar">
+                <button
+                  className={`sfb-btn ${activeTab === "all" ? "active" : ""}`}
+                  onClick={() => setActiveTab("all")}
+                >
+                  All ({totalResultsCount})
+                </button>
+                <button
+                  className={`sfb-btn ${activeTab === "topics" ? "active" : ""}`}
+                  onClick={() => setActiveTab("topics")}
+                >
+                  Topics & Notes ({curriculumResults.length})
+                </button>
+                <button
+                  className={`sfb-btn ${activeTab === "concepts" ? "active" : ""}`}
+                  onClick={() => setActiveTab("concepts")}
+                >
+                  Concepts
+                </button>
+                <button
+                  className={`sfb-btn ${activeTab === "calc" ? "active" : ""}`}
+                  onClick={() => setActiveTab("calc")}
+                >
+                  Calculations
+                </button>
+                {onlineDbResults.length > 0 && (
+                  <button
+                    className={`sfb-btn ${activeTab === "db" ? "active" : ""}`}
+                    onClick={() => setActiveTab("db")}
+                  >
+                    Database ({onlineDbResults.length})
+                  </button>
+                )}
+              </div>
 
-          {/* Section 1: In-Browser Instant Answers, Live Calculations & DB Records */}
-          {filteredConceptResults.length > 0 && (
-            <div className="search-section">
-              <div className="search-section-header">Instant Concepts & Live Calculations</div>
-              {filteredConceptResults.map((item, i) => {
-                const isSelected = i === selectedIndex;
-                return (
-                  <div
-                    key={`concept_${item.id}`}
-                    className={`search-concept-card ${isSelected ? "selected" : ""} ${item.isLiveCalculated ? "live-calc-card" : ""}`}
+              {/* Section 1: Instant Answers, Live Calculations & DB Records */}
+              {filteredConceptResults.length > 0 && (
+                <div className="search-section">
+                  <div className="search-section-header">Instant Concepts & Live Calculations</div>
+                  {filteredConceptResults.map((item, i) => {
+                    const isSelected = i === selectedIndex;
+                    return (
+                      <div
+                        key={`concept_${item.id}`}
+                        className={`search-concept-card ${isSelected ? "selected" : ""} ${
+                          item.isLiveCalculated ? "live-calc-card" : ""
+                        }`}
+                        onClick={() => handleSelectConcept(item)}
+                      >
+                        <div className="scc-header">
+                          <span className="scc-title">{item.title}</span>
+                          <span className="scc-badge">{item.subject}</span>
+                        </div>
+
+                        {item.formula && (
+                          <div className="scc-formula-wrap">
+                            <div className="scc-formula">
+                              <code>{item.formula}</code>
+                            </div>
+                            <button
+                              className="scc-copy-btn"
+                              onClick={(e) => handleCopyFormula(e, item.formula, item.id)}
+                              title="Copy formula"
+                            >
+                              {copiedId === item.id ? "✓ Copied" : "Copy"}
+                            </button>
+                          </div>
+                        )}
+
+                        <div className="scc-explanation">{item.explanation}</div>
+
+                        {item.steps && (
+                          <div className="scc-steps">
+                            {(Array.isArray(item.steps) ? item.steps : item.steps.split("."))
+                              .filter(Boolean)
+                              .map((st, sIdx) => (
+                                <div key={sIdx} className="scc-step-item">
+                                  {st.trim()}
+                                </div>
+                              ))}
+                          </div>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {/* Section 2: Curriculum Topics & Subtopics */}
+              {filteredCurriculumResults.length > 0 && (
+                <div className="search-section">
+                  <div className="search-section-header">Curriculum Topics, Subtopics & Notes</div>
+                  {filteredCurriculumResults.map((r, idx) => {
+                    const globalIdx = filteredConceptResults.length + idx;
+                    const isSelected = globalIdx === selectedIndex;
+                    return (
+                      <div
+                        key={`topic_${r.subject.id}_${r.chapter.id}_${r.topic}`}
+                        className={`search-item ${isSelected ? "selected" : ""}`}
+                        onClick={() => handleSelectTopic(r)}
+                      >
+                        <div className="si-title-row">
+                          <span className="si-title">{r.topic}</span>
+                          {r.isSubtopic ? (
+                            <span className="si-badge si-badge--subtopic">Subtopic</span>
+                          ) : (
+                            <span className="si-badge si-badge--topic">Topic</span>
+                          )}
+                        </div>
+                        <div className="si-path">
+                          {r.subject.label} › {r.chapter.label}
+                          {r.topicGroup && r.topicGroup !== r.topic ? ` › ${r.topicGroup}` : ""}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              )}
+
+              {totalResultsCount === 0 && (
+                <div className="search-empty">
+                  No matching topics, notes, or calculations found for &ldquo;{query}&rdquo;.
+                  <br />
+                  <small style={{ opacity: 0.75, display: "block", marginTop: "4px" }}>
+                    Try searching for a topic (e.g. &ldquo;Distance&rdquo;), a subject (e.g. &ldquo;Biology&rdquo;), or a formula (&ldquo;V = I * R&rdquo;).
+                  </small>
+                </div>
+              )}
+            </>
+          ) : (
+            /* Quick Browsing & Suggested Tags when search is opened without query */
+            <div className="search-quick-tags">
+              <div className="search-quick-label">Browse by Subject</div>
+              <div className="search-quick-chips">
+                {SUGGESTED_SUBJECTS.map((subj) => (
+                  <button
+                    key={subj}
+                    type="button"
+                    className="search-quick-chip"
                     onClick={() => {
-                      const subj = curriculum.find(s => s.label.toLowerCase().includes(String(item.subject).toLowerCase())) || curriculum[0];
-                      if (subj && subj.chapters.length > 0) {
-                        const chap = subj.chapters[0];
-                        navigateToTopic(subj.id, chap.id, chap.topics[0] || item.topic);
-                      }
-                      setIsOpen(false);
+                      setQuery(subj);
+                      setIsOpen(true);
+                      inputRef.current?.focus();
                     }}
                   >
-                    <div className="scc-header">
-                      <span className="scc-title">{item.title}</span>
-                      <span className="scc-badge">{item.subject}</span>
-                    </div>
+                    {subj}
+                  </button>
+                ))}
+              </div>
 
-                    {item.formula && (
-                      <div className="scc-formula-wrap">
-                        <div className="scc-formula">
-                          <code>{item.formula}</code>
-                        </div>
-                        <button
-                          className="scc-copy-btn"
-                          onClick={(e) => handleCopyFormula(e, item.formula, item.id)}
-                          title="Copy formula"
-                        >
-                          {copiedId === item.id ? "✓ Copied" : "Copy"}
-                        </button>
-                      </div>
-                    )}
-
-                    <div className="scc-explanation">{item.explanation}</div>
-
-                    {item.steps && (
-                       <div className="scc-steps">
-                         {(Array.isArray(item.steps) ? item.steps : item.steps.split('.')).filter(Boolean).map((st, sIdx) => (
-                           <div key={sIdx} className="scc-step-item">{st.trim()}</div>
-                         ))}
-                       </div>
-                      )}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {/* Section 2: Curriculum Topics */}
-          {filteredCurriculumResults.length > 0 && (
-            <div className="search-section">
-              <div className="search-section-header">Curriculum Topics</div>
-              {filteredCurriculumResults.map((r, idx) => {
-                const globalIdx = filteredConceptResults.length + idx;
-                const isSelected = globalIdx === selectedIndex;
-                return (
-                  <div
-                    key={`topic_${idx}`}
-                    className={`search-item ${isSelected ? "selected" : ""}`}
-                    onClick={() => handleSelectTopic(r)}
+              <div className="search-quick-label" style={{ marginTop: "0.85rem" }}>
+                Popular Topics & Notes
+              </div>
+              <div className="search-quick-chips">
+                {POPULAR_SEARCHES.map((pop) => (
+                  <button
+                    key={pop}
+                    type="button"
+                    className="search-quick-chip search-quick-chip--popular"
+                    onClick={() => {
+                      setQuery(pop);
+                      setIsOpen(true);
+                      inputRef.current?.focus();
+                    }}
                   >
-                    <div className="si-title">{r.topic}</div>
-                    <div className="si-path">
-                      {r.subject.label} › {r.chapter.label}
-                    </div>
-                  </div>
-                );
-              })}
-            </div>
-          )}
-
-          {totalResultsCount === 0 && (
-            <div className="search-empty">
-              No answers, calculated values, or DB records found for &ldquo;{query}&rdquo;.
-              <br />
-              <small style={{ opacity: 0.75, display: "block", marginTop: "4px" }}>
-                Try searching for values ("12V 3A"), formulas ("V = I * R"), or topics ("algebra").
-              </small>
+                    ⚡ {pop}
+                  </button>
+                ))}
+              </div>
             </div>
           )}
         </div>

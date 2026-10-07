@@ -70,6 +70,16 @@ export async function getBundledTopic(subjectId, chapterId, topicId) {
         t.chapter_id === chid &&
         normalizeTopicString(t.topic) === normTopic
     );
+    if (!match) {
+      const topicAsChapter = normTopic.replace(/\s+/g, "_");
+      match = topics.find(
+        (t) =>
+          t.curriculum_id === sid &&
+          (t.chapter_id === topicAsChapter ||
+           t.chapter_id.includes(topicAsChapter) ||
+           topicAsChapter.includes(t.chapter_id))
+      );
+    }
 
     return match || null;
   } catch (err) {
