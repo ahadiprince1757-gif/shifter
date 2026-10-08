@@ -83,9 +83,32 @@ db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
 
-// Database connection error handler — preserve local offline student data and dispatch observable event
-db.open().catch((err) => {
+// Robust open with auto-recovery:
+// If ANY UpgradeError occurs (e.g. missing version in chain, primary key change on legacy client),
+// the safest path is to delete the local cache and start fresh.
+// All persistent progress is stored in Supabase — IndexedDB is a local performance cache only.
+db.open().catch(async (err) => {
   console.error("[Tixar DB] Failed to open local database:", err);
+
+  if (err?.name === "UpgradeError" || err?.name === "DatabaseClosedError") {
+    try {
+      console.warn("[Tixar DB] Upgrade conflict detected — resetting local cache and re-opening...");
+      await Dexie.delete("ShifterLocalDB_v2");
+      await db.open();
+      console.log("[Tixar DB] Successfully re-opened after reset.");
+    } catch (reopenErr) {
+      console.error("[Tixar DB] Re-open after reset failed:", reopenErr);
+      if (typeof window !== "undefined") {
+        window.dispatchEvent(
+          new CustomEvent("tixar:db-error", {
+            detail: { name: reopenErr?.name, message: reopenErr?.message },
+          })
+        );
+      }
+    }
+    return;
+  }
+
   if (typeof window !== "undefined") {
     window.dispatchEvent(
       new CustomEvent("tixar:db-error", {
@@ -94,5 +117,6 @@ db.open().catch((err) => {
     );
   }
 });
+
 
 export default db;
