@@ -1031,133 +1031,438 @@
     "label": "Chemistry",
     "chapters": [
       {
-        "id": "introduction",
-        "label": "Introduction",
+        "id": "chemistry_foundations",
+        "label": "Chemistry Foundations",
         "topics": [
           "Meaning of Chemistry",
-          "Laboratory Safety and Apparatus"
+          "Laboratory Safety Rules",
+          "Chemical Hazard Symbols",
+          "Safe Handling of Chemicals",
+          "Measuring Apparatus",
+          "Heating Apparatus",
+          "Separation Apparatus",
+          "Apparatus Used in Titration",
+          "Measuring Mass",
+          "Measuring Volume",
+          "Measuring Temperature",
+          "Reading Measuring Instruments"
         ]
       },
       {
-        "id": "matter",
-        "label": "Matter",
+        "id": "matter_separation",
+        "label": "Matter and Separation",
         "topics": [
-          "States of Matter",
-          "Phase Changes (Advanced)",
-          "Elements compounds mixtures",
-          "Physical and chemical changes"
+          "Meaning of Matter",
+          "Physical Properties",
+          "Chemical Properties",
+          "Solids",
+          "Liquids",
+          "Gases",
+          "Particle Arrangement",
+          "Particle Movement",
+          "Effect of Temperature on Particles",
+          "Melting",
+          "Freezing",
+          "Evaporation",
+          "Boiling",
+          "Condensation",
+          "Sublimation",
+          "Deposition",
+          "Elements",
+          "Compounds",
+          "Mixtures",
+          "Homogeneous Mixtures",
+          "Heterogeneous Mixtures",
+          "Identifying Pure Substances",
+          "Identifying Mixtures",
+          "Filtration",
+          "Crystallisation",
+          "Simple Distillation",
+          "Fractional Distillation",
+          "Chromatography",
+          "Decantation",
+          "Magnetic Separation"
         ]
       },
       {
-        "id": "atoms",
+        "id": "atomic_structure",
         "label": "Atomic Structure",
         "topics": [
-          "Atomic Structure and Electron Arrangement",
-          "Atomic Orbitals and Electron Configurations",
-          "Mass Number and Atomic Number",
+          "Structure of the Atom",
+          "Protons",
+          "Neutrons",
+          "Electrons",
+          "Atomic Number",
+          "Mass Number",
+          "Electron Arrangement",
           "Isotopes",
-          "Ion Formation"
+          "Identifying Isotopes",
+          "Uses of Isotopes",
+          "Ion Formation",
+          "Writing Ion Charges"
         ]
       },
       {
-        "id": "elements",
+        "id": "periodic_table",
         "label": "Periodic Table",
         "topics": [
-          "Periodic Table and Periodicity"
+          "Arrangement of the Periodic Table",
+          "Groups",
+          "Periods",
+          "Electronic Structure and Periodic Position",
+          "Group 1 Elements",
+          "Group 2 Elements",
+          "Group 7 Elements",
+          "Group 0 Elements",
+          "Metals and Non-metals",
+          "Periodic Trends",
+          "Atomic Size"
         ]
       },
       {
-        "id": "bonding",
+        "id": "chemical_bonding",
         "label": "Chemical Bonding",
         "topics": [
-          "Chemical bonding",
-          "Ionic bonding",
-          "Covalent bonding",
-          "Ionic vs covalent"
+          "Why Atoms Bond",
+          "Valency",
+          "Ionic Bonding",
+          "Electron Transfer",
+          "Formation of Positive Ions",
+          "Formation of Negative Ions",
+          "Formation of Ionic Compounds",
+          "Properties of Ionic Compounds",
+          "Covalent Bonding",
+          "Single Covalent Bonds",
+          "Double Covalent Bonds",
+          "Triple Covalent Bonds",
+          "Dot-and-Cross Diagrams",
+          "Properties of Simple Covalent Substances",
+          "Giant Covalent Structures",
+          "Diamond",
+          "Graphite",
+          "Ionic and Covalent Structures",
+          "Metallic Bonding",
+          "Delocalised Electrons in Metals",
+          "Metallic Bonding and Metal Properties"
         ]
       },
       {
-        "id": "mole",
-        "label": "The Mole",
+        "id": "chemical_formulae",
+        "label": "Chemical Formulae",
         "topics": [
-          "Meaning of mole",
-          "Mole relationships",
-          "Molar mass",
-          "Stoichiometry",
+          "Valency and Chemical Formulae",
+          "Writing Chemical Formulae",
+          "Formulae of Ionic Compounds",
+          "Formulae of Covalent Compounds",
+          "Naming Compounds",
+          "State Symbols"
+        ]
+      },
+      {
+        "id": "moles_quantitative_chemistry",
+        "label": "Moles and Quantitative Chemistry",
+        "topics": [
+          "Meaning of Mole",
+          "Avogadro Constant",
+          "Relative Atomic Mass",
+          "Relative Formula Mass",
+          "Molar Mass",
+          "Calculating Moles from Mass",
+          "Calculating Mass from Moles",
+          "Moles and Particles",
+          "Mole Ratios",
+          "Calculating Reactant Amount",
+          "Calculating Product Amount",
           "Empirical Formula",
           "Molecular Formula",
-          "Limiting Reagent",
-          "Gas Volume",
-          "Importance and applications of mole concept"
+          "Percentage Composition",
+          "Limiting Reactant",
+          "Gas Volumes at Room Conditions",
+          "Gas Volume Calculations",
+          "Percentage Yield"
         ]
       },
       {
-        "id": "reactions",
+        "id": "chemical_reactions",
         "label": "Chemical Reactions",
         "topics": [
-          "Balancing equations",
-          "Conservation of mass",
-          "Chemical equations",
-          "Neutralization"
+          "Chemical Reactions",
+          "Reactants",
+          "Products",
+          "Signs of Chemical Reaction",
+          "Conservation of Mass",
+          "Chemical Equations",
+          "Writing Chemical Equations",
+          "State Symbols",
+          "Balancing Chemical Equations",
+          "Balancing Simple Equations",
+          "Balancing More Complex Equations",
+          "Combination Reactions",
+          "Decomposition Reactions",
+          "Displacement Reactions",
+          "Neutralisation Reactions",
+          "Combustion Reactions"
         ]
       },
       {
-        "id": "acids_bases",
-        "label": "Acids, Bases & Salts",
+        "id": "acids_bases_salts",
+        "label": "Acids, Bases and Salts",
         "topics": [
-          "Acids",
-          "Bases and alkalis",
-          "Indicators",
-          "pH scale",
-          "Salts",
-          "Applications",
-          "Strength"
+          "Properties of Acids",
+          "Reactions of Acids with Metals",
+          "Reactions of Acids with Carbonates",
+          "Reactions of Acids with Hydrogen Carbonates",
+          "Reactions of Acids with Metal Oxides",
+          "Bases",
+          "Alkalis",
+          "Litmus",
+          "Universal Indicator",
+          "pH Scale",
+          "Interpreting pH",
+          "Strong and Weak Acids",
+          "Strong and Weak Bases",
+          "Neutralisation",
+          "Soluble Salts",
+          "Insoluble Salts",
+          "Preparing Soluble Salts from Acids and Metals",
+          "Preparing Soluble Salts from Insoluble Bases",
+          "Preparing Soluble Salts from Acids and Carbonates",
+          "Titration"
+        ]
+      },
+      {
+        "id": "energy_rate_reaction",
+        "label": "Energy and Rate of Reaction",
+        "topics": [
+          "Exothermic Reactions",
+          "Endothermic Reactions",
+          "Energy Profile Diagrams",
+          "Activation Energy",
+          "Specific Heat Capacity",
+          "Heat Energy Calculations",
+          "Latent Heat of Fusion",
+          "Latent Heat of Vaporisation",
+          "Rate of Reaction",
+          "Effect of Temperature on Rate",
+          "Effect of Concentration on Rate",
+          "Effect of Surface Area on Rate",
+          "Catalysts"
+        ]
+      },
+      {
+        "id": "metals_extraction",
+        "label": "Metals and Extraction",
+        "topics": [
+          "Physical Properties of Metals",
+          "Electrical Conductivity",
+          "Malleability",
+          "Ductility",
+          "Reactivity Series",
+          "Displacement Reactions",
+          "Ores",
+          "Reduction",
+          "Extraction of Iron",
+          "Rusting",
+          "Conditions for Rusting",
+          "Prevention of Rusting",
+          "Alloys",
+          "Uses of Metals"
+        ]
+      },
+      {
+        "id": "electrochemistry",
+        "label": "Electrochemistry",
+        "topics": [
+          "Electrolytes",
+          "Meaning of Electrolysis",
+          "Electrodes",
+          "Anode",
+          "Cathode",
+          "Electrolysis of Molten Compounds",
+          "Electrolysis of Aqueous Solutions",
+          "Electrolysis of Copper(II) Sulphate",
+          "Electroplating",
+          "Applications of Electrolysis",
+          "Simple Cells",
+          "Chemical Cell Voltage",
+          "Batteries",
+          "Strong Electrolytes",
+          "Weak Electrolytes",
+          "Non-electrolytes"
+        ]
+      },
+      {
+        "id": "organic_chemistry",
+        "label": "Organic Chemistry",
+        "topics": [
+          "Introduction to Organic Chemistry",
+          "Tetravalency of Carbon",
+          "Catenation",
+          "Hydrocarbons",
+          "Alkanes",
+          "Alkenes",
+          "Alkynes",
+          "Homologous Series",
+          "General Formula of Alkanes",
+          "General Formulae of Alkenes and Alkynes",
+          "Structural Formulae",
+          "Condensed Structural Formulae",
+          "Naming Straight-Chain Alkanes",
+          "Naming Branched-Chain Alkanes",
+          "Naming Alkenes",
+          "Naming Alkynes",
+          "Structural Isomerism",
+          "Geometric Isomerism",
+          "Alcohols",
+          "Ethanol",
+          "Properties of Ethanol",
+          "Fermentation",
+          "Oxidation of Ethanol",
+          "Carboxylic Acids",
+          "Ethanoic Acid",
+          "Reactions of Ethanoic Acid",
+          "Addition Reactions",
+          "Ester Formation",
+          "Addition Polymerisation",
+          "Crude Oil",
+          "Cracking"
+        ]
+      },
+      {
+        "id": "nonmetals_compounds",
+        "label": "Nonmetals and Compounds",
+        "topics": [
+          "Properties of Sulphur",
+          "Sulphur Dioxide",
+          "Reactions of Sulphur Dioxide",
+          "Sulphur Trioxide",
+          "Sulphuric Acid",
+          "Manufacture of Sulphuric Acid",
+          "Uses of Sulphuric Acid",
+          "Properties of Carbon",
+          "Carbon Dioxide",
+          "Carbon Monoxide",
+          "Allotropes of Carbon",
+          "Properties of Nitrogen",
+          "Ammonia",
+          "Nitrogen Compounds",
+          "Nitrogen Cycle"
+        ]
+      },
+      {
+        "id": "air_water_environment",
+        "label": "Air, Water and Environment",
+        "topics": [
+          "Composition of Air",
+          "Properties of Oxygen",
+          "Uses of Oxygen",
+          "Properties of Water",
+          "Water as a Solvent",
+          "Hard Water",
+          "Soft Water",
+          "Water Purification",
+          "Carbon Monoxide as an Air Pollutant",
+          "Sulphur Dioxide as an Air Pollutant",
+          "Nitrogen Oxides as Air Pollutants",
+          "Particulate Matter",
+          "Acid Rain",
+          "Greenhouse Effect",
+          "Pollution Control"
+        ]
+      },
+      {
+        "id": "qualitative_analysis",
+        "label": "Qualitative Analysis",
+        "topics": [
+          "Test for Ammonium Ions",
+          "Test for Copper(II) Ions",
+          "Test for Iron(II) Ions",
+          "Test for Iron(III) Ions",
+          "Test for Chloride Ions",
+          "Test for Sulphate Ions",
+          "Test for Carbonate Ions",
+          "Test for Nitrate Ions",
+          "Flame Test for Sodium Ions",
+          "Flame Test for Potassium Ions",
+          "Flame Test for Calcium Ions",
+          "Flame Test for Copper(II) Ions",
+          "Test for Hydrogen",
+          "Test for Oxygen",
+          "Test for Carbon Dioxide",
+          "Test for Ammonia",
+          "Test for Chlorine"
+        ]
+      },
+      {
+        "id": "reversible_equilibrium",
+        "label": "Reversible Reactions and Equilibrium",
+        "topics": [
+          "Reversible Reactions",
+          "Forward and Reverse Reactions",
+          "Dynamic Equilibrium",
+          "Establishing Equilibrium",
+          "Effect of Concentration on Equilibrium",
+          "Effect of Temperature on Equilibrium",
+          "Effect of Pressure on Equilibrium",
+          "Industrial Equilibrium"
+        ]
+      },
+      {
+        "id": "rate_reactions",
+        "label": "Rate of Reactions",
+        "topics": [
+          "Collision Theory",
+          "Activation Energy",
+          "Effective Collisions"
+        ]
+      },
+      {
+        "id": "chemical_energetics",
+        "label": "Chemical Energetics",
+        "topics": [
+          "Breaking Bonds",
+          "Making Bonds",
+          "Bond Energy Calculations",
+          "Combustion of Fuels",
+          "Calorific Value",
+          "Comparing Fuels"
         ]
       },
       {
         "id": "metals",
         "label": "Metals",
         "topics": [
-          "Metals properties",
-          "Non-metals",
-          "Reactivity series",
-          "Displacement reactions",
-          "Corrosion",
-          "Metal extraction",
+          "Bauxite",
+          "Purification of Bauxite",
+          "Electrolysis of Aluminium Oxide",
+          "Chemical Properties of Metals",
+          "Concentration of Ores",
+          "Extraction by Reduction",
+          "Extraction of Iron",
+          "Rusting",
           "Alloys",
           "Uses of Metals"
         ]
       },
       {
-        "id": "air",
-        "label": "Air",
+        "id": "non_metals",
+        "label": "Non-metals",
         "topics": [
-          "Introduction to air, oxygen and water"
+          "Preparation of Hydrogen",
+          "Properties of Hydrogen",
+          "Test for Hydrogen",
+          "Uses of Hydrogen"
         ]
       },
       {
-        "id": "organic",
-        "label": "Organic",
+        "id": "environment",
+        "label": "Environment",
         "topics": [
-          "Introduction to organic chemistry",
-          "Homologous series",
-          "Combustion of Fuels",
-          "Alcohols (Alkanols)",
-          "Carboxylic Acids (Organic Acids)",
-          "Cracking",
-          "Isomerism",
-          "Importance of Organic Chemistry"
-        ]
-      },
-      {
-        "id": "nonmetals",
-        "label": "Nonmetals",
-        "topics": [
-          "Sulphur and compounds",
-          "Carbon and compounds",
-          "Nitrogen and compounds",
-          "Air pollution",
-          "Importance"
+          "Water Pollution",
+          "Ozone Layer",
+          "Ozone Depletion",
+          "Sustainable Chemistry",
+          "Waste Management"
         ]
       }
     ]

@@ -63,6 +63,22 @@ db.version(17).stores({
   pending_mistake_sync: "++id, op, created_at",
 });
 
+// Version 18: Drop all stores that may have an incompatible primary key on older clients.
+// Dexie does not allow changing a primary key in-place — stores must be dropped first.
+// This resolves: UpgradeError: Not yet support for changing primary key
+db.version(18).stores({
+  spaced_reviews: null,
+  user_notes: null,
+  user_mistakes: null,
+});
+
+// Version 19: Re-create learning stores with correct compound primary keys
+db.version(19).stores({
+  user_mistakes: "++id, [user_id+topic_id+question_index], [user_id+topic_id], user_id, topic_id, subject_id, chapter_id, question_index, resolved, updated_at",
+  spaced_reviews: "[user_id+topic_id], user_id, topic_id, next_review_at, interval_days, ease_factor, repetitions, updated_at",
+  user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
+});
+
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
