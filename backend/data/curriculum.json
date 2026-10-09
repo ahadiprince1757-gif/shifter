@@ -2499,79 +2499,335 @@
     "label": "English",
     "chapters": [
       {
-        "id": "grammar",
-        "label": "Grammar",
+        "id": "parts_of_speech",
+        "label": "Parts of Speech",
         "topics": [
-          "Parts of speech",
-          "Sentence structure",
-          "Tenses",
-          "Punctuation",
-          "Active & Passive",
-          "Common errors",
-          "Sentence types",
-          "Importance of grammar"
+          "Nouns",
+          "Pronouns",
+          "Verbs",
+          "Adjectives",
+          "Adverbs",
+          "Determiners",
+          "Prepositions",
+          "Conjunctions",
+          "Interjections"
         ]
       },
       {
-        "id": "comprehension",
-        "label": "Comprehension",
+        "id": "nouns_noun_phrases",
+        "label": "Nouns and Noun Phrases",
         "topics": [
-          "Comprehension skills",
-          "Inference questions",
-          "Vocabulary in context",
-          "Factual questions",
-          "Answering techniques",
-          "Importance"
+          "Common and Proper Nouns",
+          "Concrete and Abstract Nouns",
+          "Countable and Uncountable Nouns",
+          "Collective Nouns",
+          "Singular and Plural Nouns",
+          "Possessive Nouns",
+          "Articles: A, An and The",
+          "Quantifiers",
+          "Formation of Noun Phrases"
         ]
       },
       {
-        "id": "summary",
-        "label": "Summary Writing",
+        "id": "pronouns",
+        "label": "Pronouns",
         "topics": [
-          "Summary writing rules",
-          "Paraphrasing"
+          "Personal Pronouns",
+          "Possessive Pronouns",
+          "Reflexive and Emphatic Pronouns",
+          "Demonstrative Pronouns",
+          "Relative Pronouns",
+          "Indefinite Pronouns",
+          "Pronoun–Antecedent Agreement"
         ]
       },
       {
-        "id": "writing",
-        "label": "Composition",
+        "id": "verbs_verb_phrases",
+        "label": "Verbs and Verb Phrases",
         "topics": [
-          "Paragraph writing",
-          "Coherence and cohesion",
-          "Essay marking",
-          "Importance of essay writing",
-          "Essay structure",
-          "Narrative essay",
-          "Descriptive essay",
-          "Argumentative essay",
-          "Formal letters",
-          "Informal letters",
-          "Report writing",
-          "Speech writing",
-          "Email writing"
+          "Main and Auxiliary Verbs",
+          "Action and Linking Verbs",
+          "Regular and Irregular Verbs",
+          "Transitive and Intransitive Verbs",
+          "Finite and Non-finite Verbs",
+          "Infinitives",
+          "Gerunds",
+          "Participles"
         ]
       },
       {
-        "id": "poetry",
-        "label": "Poetry",
+        "id": "tenses_aspect",
+        "label": "Tenses and Aspect",
         "topics": [
-          "Introduction to poetry",
-          "Rhyme and rhythm",
-          "Tone and mood",
-          "Poetic devices",
-          "Poem analysis method",
-          "Unseen poem strategy",
-          "Themes in poetry",
-          "Importance of poetry"
+          "Present Simple",
+          "Present Continuous",
+          "Past Simple",
+          "Past Continuous",
+          "Present Perfect",
+          "Present Perfect Continuous",
+          "Past Perfect",
+          "Past Perfect Continuous",
+          "Future Forms",
+          "Choosing the Correct Tense",
+          "Tense Consistency"
         ]
       },
       {
-        "id": "language",
-        "label": "Language Use",
+        "id": "subject_verb_agreement",
+        "label": "Subject–Verb Agreement",
         "topics": [
-          "Idioms and proverbs",
-          "Register",
-          "Importance of language use"
+          "Identifying the Subject",
+          "Agreement with Singular Subjects",
+          "Agreement with Plural Subjects",
+          "Agreement with Compound Subjects",
+          "Agreement with Indefinite Pronouns",
+          "Agreement with Collective Nouns",
+          "Common Agreement Errors"
+        ]
+      },
+      {
+        "id": "sentence_structure",
+        "label": "Sentence Structure",
+        "topics": [
+          "Subjects and Predicates",
+          "Objects and Complements",
+          "Phrases",
+          "Main and Subordinate Clauses",
+          "Simple Sentences",
+          "Compound Sentences",
+          "Complex Sentences",
+          "Compound-Complex Sentences",
+          "Statements and Questions",
+          "Commands and Exclamations",
+          "Sentence Fragments and Run-on Sentences"
+        ]
+      },
+      {
+        "id": "modals_voice_reported_speech",
+        "label": "Modals, Voice and Reported Speech",
+        "topics": [
+          "Modal Verbs",
+          "Ability and Permission",
+          "Obligation and Advice",
+          "Possibility and Probability",
+          "Active Voice",
+          "Passive Voice",
+          "Direct Speech",
+          "Reported Speech",
+          "Conditional Sentences"
+        ]
+      },
+      {
+        "id": "adjectives_adverbs",
+        "label": "Adjectives and Adverbs",
+        "topics": [
+          "Types of Adjectives",
+          "Order of Adjectives",
+          "Positive, Comparative and Superlative Forms",
+          "Types of Adverbs",
+          "Adverbs of Time and Place",
+          "Adverbs of Manner and Frequency",
+          "Adverbs of Degree",
+          "Adjective–Adverb Distinction"
+        ]
+      },
+      {
+        "id": "prepositions_conjunctions",
+        "label": "Prepositions and Conjunctions",
+        "topics": [
+          "Prepositions of Time",
+          "Prepositions of Place",
+          "Prepositions of Direction and Movement",
+          "Prepositional Phrases",
+          "Coordinating Conjunctions",
+          "Subordinating Conjunctions",
+          "Correlative Conjunctions",
+          "Linking Words and Logical Relationships"
+        ]
+      },
+      {
+        "id": "vocabulary_word_formation",
+        "label": "Vocabulary and Word Formation",
+        "topics": [
+          "Synonyms",
+          "Antonyms",
+          "Homophones",
+          "Homonyms and Homographs",
+          "Prefixes and Suffixes",
+          "Roots and Word Families",
+          "Compound Words",
+          "Word Classes and Word Forms",
+          "Collocations",
+          "Phrasal Verbs",
+          "Idioms and Expressions",
+          "Commonly Confused Words"
+        ]
+      },
+      {
+        "id": "meaning_figurative_language",
+        "label": "Meaning and Figurative Language",
+        "topics": [
+          "Meaning in Context",
+          "Literal and Figurative Meaning",
+          "Denotation and Connotation",
+          "Similes",
+          "Metaphors",
+          "Personification",
+          "Hyperbole",
+          "Tone and Word Choice",
+          "Ambiguity and Multiple Meanings"
+        ]
+      },
+      {
+        "id": "spelling_punctuation",
+        "label": "Spelling and Punctuation",
+        "topics": [
+          "Capitalisation",
+          "Common Spelling Patterns",
+          "Silent Letters",
+          "Commonly Confused Spellings",
+          "Full Stops and Question Marks",
+          "Commas",
+          "Apostrophes",
+          "Colons and Semicolons",
+          "Quotation Marks",
+          "Hyphens, Dashes and Brackets"
+        ]
+      },
+      {
+        "id": "reading_comprehension",
+        "label": "Reading Comprehension",
+        "topics": [
+          "Skimming",
+          "Scanning",
+          "Main Ideas",
+          "Supporting Details",
+          "Explicit Information",
+          "Inference and Implied Meaning",
+          "Context Clues",
+          "Author's Purpose",
+          "Audience and Tone",
+          "Fact and Opinion",
+          "Bias and Persuasive Language",
+          "Evaluating Claims and Evidence"
+        ]
+      },
+      {
+        "id": "summary_note_making",
+        "label": "Summary and Note-making",
+        "topics": [
+          "Identifying Key Information",
+          "Main Points and Supporting Details",
+          "Selecting Relevant Information",
+          "Removing Unnecessary Details",
+          "Paraphrasing",
+          "Combining Related Ideas",
+          "Writing Concise Summaries",
+          "Organising Notes"
+        ]
+      },
+      {
+        "id": "paragraph_composition_writing",
+        "label": "Paragraph and Composition Writing",
+        "topics": [
+          "Planning and Organising Ideas",
+          "Topic Sentences",
+          "Supporting Sentences",
+          "Paragraph Unity",
+          "Coherence and Cohesion",
+          "Introductions and Conclusions",
+          "Narrative Composition",
+          "Descriptive Composition",
+          "Expository Composition",
+          "Argumentative Composition",
+          "Editing and Proofreading"
+        ]
+      },
+      {
+        "id": "functional_writing",
+        "label": "Functional Writing",
+        "topics": [
+          "Informal Letters",
+          "Formal Letters",
+          "Application Letters",
+          "Emails and Digital Messages",
+          "Curriculum Vitae",
+          "Reports",
+          "Notices and Announcements",
+          "Invitations",
+          "Agendas and Minutes",
+          "Instructions and Procedures",
+          "Speeches and Presentations"
+        ]
+      },
+      {
+        "id": "listening_skills",
+        "label": "Listening Skills",
+        "topics": [
+          "Listening for Main Ideas",
+          "Listening for Specific Details",
+          "Following Instructions",
+          "Identifying Speaker Purpose and Attitude",
+          "Inferring Spoken Meaning",
+          "Note-taking from Spoken Information",
+          "Summarising Spoken Information"
+        ]
+      },
+      {
+        "id": "speaking_oral_communication",
+        "label": "Speaking and Oral Communication",
+        "topics": [
+          "Clear Expression",
+          "Asking and Answering Questions",
+          "Giving Instructions and Explanations",
+          "Turn-taking",
+          "Expressing Opinions and Giving Reasons",
+          "Agreement and Disagreement",
+          "Discussions and Debates",
+          "Oral Presentations",
+          "Interviews",
+          "Non-verbal Communication"
+        ]
+      },
+      {
+        "id": "pronunciation_spoken_english",
+        "label": "Pronunciation and Spoken English",
+        "topics": [
+          "Vowel Sounds",
+          "Consonant Sounds",
+          "Similar and Contrasting Sounds",
+          "Syllables",
+          "Word Stress",
+          "Sentence Stress",
+          "Rhythm",
+          "Intonation"
+        ]
+      },
+      {
+        "id": "language_functions_register",
+        "label": "Language Functions and Register",
+        "topics": [
+          "Formal and Informal Language",
+          "Polite Requests and Responses",
+          "Offers and Invitations",
+          "Advice and Suggestions",
+          "Apologies and Complaints",
+          "Persuasion and Negotiation",
+          "Language for Different Audiences",
+          "Resolving Miscommunication"
+        ]
+      },
+      {
+        "id": "media_digital_literacy",
+        "label": "Media and Digital Literacy",
+        "topics": [
+          "Reading Digital Texts",
+          "Understanding Visual Information",
+          "Identifying Purpose and Audience",
+          "Evaluating Sources",
+          "Recognising Misleading Claims",
+          "Comparing Information from Sources",
+          "Responsible Online Communication"
         ]
       }
     ]
