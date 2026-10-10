@@ -2514,7 +2514,7 @@
         ]
       },
       {
-        "id": "nouns_noun_phrases",
+        "id": "nouns_and_noun_phrases",
         "label": "Nouns and Noun Phrases",
         "topics": [
           "Common and Proper Nouns",
@@ -2542,7 +2542,7 @@
         ]
       },
       {
-        "id": "verbs_verb_phrases",
+        "id": "verbs_and_verb_phrases",
         "label": "Verbs and Verb Phrases",
         "topics": [
           "Main and Auxiliary Verbs",
@@ -2556,7 +2556,7 @@
         ]
       },
       {
-        "id": "tenses_aspect",
+        "id": "tenses_and_aspect",
         "label": "Tenses and Aspect",
         "topics": [
           "Present Simple",
@@ -2568,38 +2568,51 @@
           "Past Perfect",
           "Past Perfect Continuous",
           "Future Forms",
-          "Choosing the Correct Tense",
-          "Tense Consistency"
+          "Choosing the Correct Tense"
         ]
       },
       {
         "id": "subject_verb_agreement",
         "label": "Subject–Verb Agreement",
         "topics": [
-          "Identifying the Subject",
-          "Agreement with Singular Subjects",
+          "Distinguishing the Subject from Nearby Nouns",
+          "Singular Subjects in Present Simple",
+          "Singular Subjects with Auxiliary Verbs",
           "Agreement with Plural Subjects",
-          "Agreement with Compound Subjects",
-          "Agreement with Indefinite Pronouns",
-          "Agreement with Collective Nouns",
-          "Common Agreement Errors"
+          "Plural Subjects with Auxiliary Verbs",
+          "Compound Subjects",
+          "Subjects Joined by And",
+          "Subjects Joined by Or and Nor",
+          "Special Subject Forms",
+          "Indefinite Pronoun Agreement",
+          "Collective Noun Agreement",
+          "Each, Every, Either and Neither",
+          "Agreement with Intervening Phrases",
+          "Correcting Subject–Verb Agreement Errors"
         ]
       },
       {
         "id": "sentence_structure",
         "label": "Sentence Structure",
         "topics": [
+          "Sentence Parts",
           "Subjects and Predicates",
-          "Objects and Complements",
-          "Phrases",
-          "Main and Subordinate Clauses",
+          "Direct and Indirect Objects",
+          "Subject and Object Complements",
+          "Recognising Phrases",
+          "Main Clauses",
+          "Subordinate Clauses",
           "Simple Sentences",
           "Compound Sentences",
           "Complex Sentences",
           "Compound-Complex Sentences",
-          "Statements and Questions",
-          "Commands and Exclamations",
-          "Sentence Fragments and Run-on Sentences"
+          "Sentence Fragments",
+          "Run-on Sentences",
+          "Comma Splices",
+          "Statements",
+          "Questions",
+          "Commands and Requests",
+          "Exclamations"
         ]
       },
       {
@@ -2608,90 +2621,134 @@
         "topics": [
           "Modal Verbs",
           "Ability and Permission",
-          "Obligation and Advice",
-          "Possibility and Probability",
+          "Obligation and Necessity",
+          "Advice and Recommendations",
+          "Possibility, Probability and Deduction",
           "Active Voice",
           "Passive Voice",
+          "Changing Active Sentences to Passive",
           "Direct Speech",
-          "Reported Speech",
-          "Conditional Sentences"
+          "Punctuation in Direct Speech",
+          "Reporting Statements",
+          "Reporting Questions",
+          "Reporting Commands and Requests",
+          "Pronoun Changes in Reported Speech",
+          "Tense Changes in Reported Speech",
+          "Time and Place Expressions in Reported Speech",
+          "Zero Conditional",
+          "First Conditional",
+          "Second Conditional",
+          "Third Conditional"
         ]
       },
       {
-        "id": "adjectives_adverbs",
+        "id": "adjectives_and_adverbs",
         "label": "Adjectives and Adverbs",
         "topics": [
-          "Types of Adjectives",
+          "Adjectives",
+          "Descriptive Adjectives",
+          "Adjectives of Quantity and Number",
+          "Demonstrative Adjectives and Determiners",
           "Order of Adjectives",
-          "Positive, Comparative and Superlative Forms",
-          "Types of Adverbs",
+          "Positive Forms of Adjectives",
+          "Comparative Adjectives",
+          "Superlative Adjectives",
+          "Adverbs of Manner",
           "Adverbs of Time and Place",
-          "Adverbs of Manner and Frequency",
+          "Adverbs of Frequency",
           "Adverbs of Degree",
-          "Adjective–Adverb Distinction"
+          "Comparative Adverbs",
+          "Superlative Adverbs",
+          "Distinguishing Adjectives from Adverbs",
+          "Position and Meaning of Adverbs"
         ]
       },
       {
-        "id": "prepositions_conjunctions",
+        "id": "prepositions_and_conjunctions",
         "label": "Prepositions and Conjunctions",
         "topics": [
           "Prepositions of Time",
           "Prepositions of Place",
           "Prepositions of Direction and Movement",
           "Prepositional Phrases",
+          "Common Verb and Adjective Preposition Patterns",
           "Coordinating Conjunctions",
+          "Joining Equal Words and Clauses",
           "Subordinating Conjunctions",
+          "Cause, Time, Condition and Contrast",
           "Correlative Conjunctions",
-          "Linking Words and Logical Relationships"
+          "Correlative Pairs",
+          "Addition and Contrast",
+          "Cause and Result",
+          "Sequence and Condition"
         ]
       },
       {
-        "id": "vocabulary_word_formation",
+        "id": "vocabulary_and_word_formation",
         "label": "Vocabulary and Word Formation",
         "topics": [
           "Synonyms",
           "Antonyms",
           "Homophones",
-          "Homonyms and Homographs",
-          "Prefixes and Suffixes",
+          "Homonyms",
+          "Homographs",
+          "Prefixes",
+          "Suffixes",
           "Roots and Word Families",
           "Compound Words",
-          "Word Classes and Word Forms",
+          "Noun Forms",
+          "Verb Forms",
+          "Adjective Forms",
+          "Adverb Forms",
           "Collocations",
-          "Phrasal Verbs",
+          "Phrasal Verbs in Context",
           "Idioms and Expressions",
-          "Commonly Confused Words"
+          "Similar Spellings",
+          "Similar Meanings"
         ]
       },
       {
-        "id": "meaning_figurative_language",
+        "id": "meaning_and_figurative_language",
         "label": "Meaning and Figurative Language",
         "topics": [
-          "Meaning in Context",
-          "Literal and Figurative Meaning",
-          "Denotation and Connotation",
+          "Contextual Word Meaning",
+          "Multiple Word Meanings",
+          "Literal Meaning",
+          "Figurative Meaning",
+          "Denotation",
+          "Connotation",
           "Similes",
           "Metaphors",
           "Personification",
           "Hyperbole",
           "Tone and Word Choice",
-          "Ambiguity and Multiple Meanings"
+          "Ambiguity and Double Meaning"
         ]
       },
       {
-        "id": "spelling_punctuation",
+        "id": "spelling_and_punctuation",
         "label": "Spelling and Punctuation",
         "topics": [
-          "Capitalisation",
+          "Sentence Initial Capitals",
+          "Proper Nouns and Names",
+          "Titles, Days, Months and Places",
           "Common Spelling Patterns",
           "Silent Letters",
+          "Adding Endings to Words",
           "Commonly Confused Spellings",
-          "Full Stops and Question Marks",
-          "Commas",
-          "Apostrophes",
-          "Colons and Semicolons",
+          "Full Stops",
+          "Question Marks",
+          "Exclamation Marks",
+          "Commas in Lists",
+          "Commas in Sentences",
+          "Introductory Commas",
+          "Apostrophes for Possession",
+          "Apostrophes in Contractions",
+          "Colons",
+          "Semicolons",
           "Quotation Marks",
-          "Hyphens, Dashes and Brackets"
+          "Hyphens and Dashes",
+          "Brackets and Parentheses"
         ]
       },
       {
@@ -2700,20 +2757,27 @@
         "topics": [
           "Skimming",
           "Scanning",
-          "Main Ideas",
-          "Supporting Details",
+          "Intensive Reading",
+          "Identifying Main Idea",
+          "Identifying Supporting Details",
           "Explicit Information",
-          "Inference and Implied Meaning",
+          "Implied Meaning",
           "Context Clues",
+          "Making Inferences",
           "Author's Purpose",
-          "Audience and Tone",
+          "Identifying Audience",
+          "Recognising Tone",
           "Fact and Opinion",
           "Bias and Persuasive Language",
-          "Evaluating Claims and Evidence"
+          "Claims and Evidence",
+          "Evaluating Information Sources",
+          "Comparing Sources",
+          "Recognising Misleading Claims",
+          "Evidence vs Unsupported Claims"
         ]
       },
       {
-        "id": "summary_note_making",
+        "id": "summary_and_note_making",
         "label": "Summary and Note-making",
         "topics": [
           "Identifying Key Information",
@@ -2722,25 +2786,34 @@
           "Removing Unnecessary Details",
           "Paraphrasing",
           "Combining Related Ideas",
-          "Writing Concise Summaries",
-          "Organising Notes"
+          "Concise Summaries",
+          "Meaning and Accuracy",
+          "Word Limits",
+          "Recording Notes",
+          "Headings and Subheadings",
+          "Organising Revision Notes"
         ]
       },
       {
-        "id": "paragraph_composition_writing",
+        "id": "paragraph_and_composition_writing",
         "label": "Paragraph and Composition Writing",
         "topics": [
-          "Planning and Organising Ideas",
+          "Analysing a Writing Task",
+          "Brainstorming and Selecting Ideas",
+          "Organising Ideas into an Outline",
           "Topic Sentences",
           "Supporting Sentences",
           "Paragraph Unity",
           "Coherence and Cohesion",
-          "Introductions and Conclusions",
+          "Effective Introductions",
+          "Effective Conclusions",
           "Narrative Composition",
           "Descriptive Composition",
           "Expository Composition",
           "Argumentative Composition",
-          "Editing and Proofreading"
+          "Revising Ideas and Structure",
+          "Editing Grammar and Word Choice",
+          "Proofreading"
         ]
       },
       {
@@ -2751,83 +2824,122 @@
           "Formal Letters",
           "Application Letters",
           "Emails and Digital Messages",
-          "Curriculum Vitae",
-          "Reports",
+          "Curriculum Vitae (CV)",
+          "Application Forms",
+          "Report Structure",
+          "Informational Reports",
+          "Investigative Reports",
           "Notices and Announcements",
           "Invitations",
-          "Agendas and Minutes",
-          "Instructions and Procedures",
-          "Speeches and Presentations"
+          "Advertisements",
+          "Meeting Agendas",
+          "Meeting Minutes",
+          "Clear Instructions",
+          "Rules and Procedures",
+          "Preparing a Speech",
+          "Writing and Organising a Speech",
+          "Memoranda",
+          "Proposals",
+          "Project Reports",
+          "Reviews",
+          "Writing Clear Instructions",
+          "Biographies",
+          "Press Releases",
+          "Personal Statements",
+          "Evaluation Reports"
         ]
       },
       {
         "id": "listening_skills",
         "label": "Listening Skills",
         "topics": [
-          "Listening for Main Ideas",
-          "Listening for Specific Details",
-          "Following Instructions",
-          "Identifying Speaker Purpose and Attitude",
+          "Main Ideas",
+          "Specific Details",
+          "Names, Dates and Numbers",
+          "Following Multi-step Instructions",
+          "Speaker Purpose",
+          "Attitude and Emotion",
           "Inferring Spoken Meaning",
-          "Note-taking from Spoken Information",
+          "Note-taking",
           "Summarising Spoken Information"
         ]
       },
       {
-        "id": "speaking_oral_communication",
+        "id": "speaking_and_oral_communication",
         "label": "Speaking and Oral Communication",
         "topics": [
-          "Clear Expression",
-          "Asking and Answering Questions",
-          "Giving Instructions and Explanations",
+          "Organising Spoken Ideas",
+          "Clear Explanations",
+          "Forming Questions",
+          "Relevant Answers",
           "Turn-taking",
-          "Expressing Opinions and Giving Reasons",
-          "Agreement and Disagreement",
+          "Maintaining Conversations",
+          "Checking Understanding",
+          "Opinions with Reasons",
+          "Respectful Agreement and Disagreement",
           "Discussions and Debates",
           "Oral Presentations",
           "Interviews",
-          "Non-verbal Communication"
+          "Facial Expressions and Gestures"
         ]
       },
       {
-        "id": "pronunciation_spoken_english",
+        "id": "pronunciation_and_spoken_english",
         "label": "Pronunciation and Spoken English",
         "topics": [
-          "Vowel Sounds",
-          "Consonant Sounds",
-          "Similar and Contrasting Sounds",
-          "Syllables",
+          "Short Vowel Sounds",
+          "Long Vowel Sounds",
+          "Diphthongs",
+          "Voiced and Voiceless Consonants",
+          "Contrasting Consonant Sounds",
+          "Similar English Sounds",
+          "Identifying Syllables",
           "Word Stress",
           "Sentence Stress",
-          "Rhythm",
-          "Intonation"
+          "Rhythm in Connected Speech",
+          "Intonation in Statements and Questions"
         ]
       },
       {
-        "id": "language_functions_register",
+        "id": "language_functions_and_register",
         "label": "Language Functions and Register",
         "topics": [
-          "Formal and Informal Language",
-          "Polite Requests and Responses",
-          "Offers and Invitations",
-          "Advice and Suggestions",
-          "Apologies and Complaints",
-          "Persuasion and Negotiation",
           "Language for Different Audiences",
-          "Resolving Miscommunication"
+          "Formal Language",
+          "Informal Language",
+          "Polite Requests",
+          "Responding to Requests",
+          "Making Offers",
+          "Responding to Offers",
+          "Invitations and Responses",
+          "Giving and Responding to Advice",
+          "Apologising Appropriately",
+          "Polite Complaints",
+          "Persuading with Reasons",
+          "Negotiating Agreement",
+          "Clarification",
+          "Correcting Misunderstandings"
         ]
       },
       {
-        "id": "media_digital_literacy",
+        "id": "media_and_digital_literacy",
         "label": "Media and Digital Literacy",
         "topics": [
-          "Reading Digital Texts",
-          "Understanding Visual Information",
-          "Identifying Purpose and Audience",
-          "Evaluating Sources",
+          "Navigating Digital Texts",
+          "Links, Headings and Layout",
+          "Interpreting Charts and Graphs",
+          "Interpreting Tables and Diagrams",
+          "Images and Captions",
+          "Identifying Media Purpose and Audience",
+          "Assessing Source Credibility",
+          "Comparing Information Sources",
           "Recognising Misleading Claims",
-          "Comparing Information from Sources",
-          "Responsible Online Communication"
+          "Evidence vs Unsupported Claims",
+          "Respectful Online Communication",
+          "Responsible Information Sharing",
+          "Checking a Claim Across Sources",
+          "Responsible Use of Online Images",
+          "Writing a Responsible Correction"
         ]
       }
     ]
