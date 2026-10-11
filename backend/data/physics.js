@@ -2715,6 +2715,7 @@ add(
 );
 
 add(
+  "physics",
   "equations_of_linear_motion",
   "Uniform Motion",
   `
@@ -2837,6 +2838,7 @@ add(
 );
 
 add(
+  "physics",
   "equations_of_linear_motion",
   "Uniform Acceleration",
   `
@@ -2962,6 +2964,7 @@ add(
 );
 
 add(
+  "physics",
   "equations_of_linear_motion",
   "Selecting the Correct Motion Equation",
   `
@@ -3232,6 +3235,7 @@ add(
 );
 
 add(
+  "physics",
   "newtons_laws_of_motion",
   "Newton’s First Law",
   `
@@ -3344,6 +3348,7 @@ add(
 );
 
 add(
+  "physics",
   "newtons_laws_of_motion",
   "Newton’s Second Law",
   `
@@ -3466,6 +3471,7 @@ add(
 );
 
 add(
+  "physics",
   "newtons_laws_of_motion",
   "Newton’s Third Law",
   `
@@ -3575,6 +3581,7 @@ add(
 );
 
 add(
+  "physics",
   "newtons_laws_of_motion",
   "Mass and Inertia",
   `
@@ -3682,6 +3689,7 @@ add(
 );
 
 add(
+  "physics",
   "newtons_laws_of_motion",
   "Force, Mass and Acceleration Calculations",
   `
@@ -3796,6 +3804,7 @@ add(
 );
 
 add(
+  "physics",
   "mass_weight_and_density",
   "Mass and Weight",
   `
@@ -3920,6 +3929,7 @@ add(
 );
 
 add(
+  "physics",
   "mass_weight_and_density",
   "Gravitational Field Strength",
   `
@@ -4036,6 +4046,7 @@ add(
 );
 
 add(
+  "physics",
   "mass_weight_and_density",
   "Calculating Weight",
   `
@@ -4158,6 +4169,7 @@ add(
 );
 
 add(
+  "physics",
   "mass_weight_and_density",
   "Density",
   `
@@ -5718,7 +5730,7 @@ add(
 );
 
 add(
-  "mechanical_properties_of_materials",
+  "physics",
   "mechanical_properties_of_materials",
   "Elasticity and Plasticity",
   `
@@ -5813,7 +5825,7 @@ add(
 );
 
 add(
-  "mechanical_properties_of_materials",
+  "physics",
   "mechanical_properties_of_materials",
   "Hooke's Law",
   `
@@ -5922,7 +5934,7 @@ add(
 );
 
 add(
-  "mechanical_properties_of_materials",
+  "physics",
   "mechanical_properties_of_materials",
   "Stress and Strain",
   `
@@ -6028,7 +6040,7 @@ add(
 );
 
 add(
-  "mechanical_properties_of_materials",
+  "physics",
   "mechanical_properties_of_materials",
   "Young's Modulus",
   `
@@ -6134,7 +6146,7 @@ add(
 // ============================================================
 
 add(
-  "moments_and_equilibrium",
+  "physics",
   "moments_and_equilibrium",
   "Moment of a Force",
   `
@@ -6244,7 +6256,7 @@ add(
 );
 
 add(
-  "moments_and_equilibrium",
+  "physics",
   "moments_and_equilibrium",
   "Clockwise and Anticlockwise Moments",
   `
@@ -6339,7 +6351,7 @@ add(
 );
 
 add(
-  "moments_and_equilibrium",
+  "physics",
   "moments_and_equilibrium",
   "Principle of Moments",
   `
@@ -6439,7 +6451,7 @@ add(
 );
 
 add(
-  "moments_and_equilibrium",
+  "physics",
   "moments_and_equilibrium",
   "Centre of Gravity",
   `
@@ -6531,7 +6543,7 @@ add(
 );
 
 add(
-  "moments_and_equilibrium",
+  "physics",
   "moments_and_equilibrium",
   "Stability of Objects",
   `
@@ -6627,7 +6639,7 @@ add(
 );
 
 add(
-  "work_energy_power",
+  "physics",
   "work_energy_power",
   "Work Done by a Force",
   `
@@ -6730,7 +6742,7 @@ add(
 );
 
 add(
-  "work_energy_power",
+  "physics",
   "work_energy_power",
   "Gravitational Potential Energy",
   `
@@ -7829,7 +7841,7 @@ add(
 );
 
 add(
-  "pressure",
+  "physics",
   "pressure",
   "Atmospheric Pressure",
   `<h2>Atmospheric Pressure</h2>
@@ -7894,7 +7906,7 @@ add(
 );
 
 add(
-  "pressure",
+  "physics",
   "pressure",
   "Pressure Differences",
   `<h2>Pressure Differences</h2>
@@ -7962,7 +7974,7 @@ add(
 );
 
 add(
-  "pressure",
+  "physics",
   "pressure",
   "Upthrust",
   `<h2>Upthrust</h2>
@@ -8025,7 +8037,7 @@ add(
 );
 
 add(
-  "pressure",
+  "physics",
   "pressure",
   "Floating and Sinking",
   `<h2>Floating and Sinking</h2>
@@ -8090,7 +8102,7 @@ add(
 );
 
 add(
-  "pressure",
+  "physics",
   "pressure",
   "Applications of Upthrust",
   `<h2>Applications of Upthrust</h2>
@@ -8152,7 +8164,7 @@ add(
 );
 
 add(
-  "pressure",
+  "physics",
   "pressure",
   "Pressure in Gases",
   `<h2>Pressure in Gases</h2>
