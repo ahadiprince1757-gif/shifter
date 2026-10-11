@@ -942,7 +942,7 @@
     "chapters": [
       {
         "id": "force",
-        "name": "Force",
+        "label": "Force",
         "topics": [
           "Meaning of Force",
           "Types of Forces",
@@ -954,7 +954,7 @@
       },
       {
         "id": "motion",
-        "name": "Motion",
+        "label": "Motion",
         "topics": [
           "Describing Position and Motion",
           "Distance and Displacement",
@@ -966,7 +966,7 @@
       },
       {
         "id": "equations_of_linear_motion",
-        "name": "Equations Of Linear Motion",
+        "label": "Equations Of Linear Motion",
         "topics": [
           "Solving Motion Problems",
           "Free Fall"
@@ -974,7 +974,7 @@
       },
       {
         "id": "motion_graphs",
-        "name": "Motion Graphs",
+        "label": "Motion Graphs",
         "topics": [
           "Distance–Time Graphs",
           "Displacement–Time Graphs",
@@ -985,7 +985,7 @@
       },
       {
         "id": "mass_weight_and_density",
-        "name": "Mass Weight And Density",
+        "label": "Mass Weight And Density",
         "topics": [
           "Calculating Density",
           "Relative Density"
@@ -993,7 +993,7 @@
       },
       {
         "id": "friction_and_resistance",
-        "name": "Friction And Resistance",
+        "label": "Friction And Resistance",
         "topics": [
           "Causes of Friction",
           "Effects of Friction",
@@ -1004,14 +1004,14 @@
       },
       {
         "id": "pressure_in_solids",
-        "name": "Pressure In Solids",
+        "label": "Pressure In Solids",
         "topics": [
           "Pressure in Solids"
         ]
       },
       {
         "id": "pressure_in_liquids",
-        "name": "Pressure In Liquids",
+        "label": "Pressure In Liquids",
         "topics": [
           "Pressure in Liquids",
           "Applications of Liquid Pressure",
@@ -1020,14 +1020,14 @@
       },
       {
         "id": "atmospheric_pressure",
-        "name": "Atmospheric Pressure",
+        "label": "Atmospheric Pressure",
         "topics": [
           "Atmospheric Pressure"
         ]
       },
       {
         "id": "pressure_in_gases",
-        "name": "Pressure In Gases",
+        "label": "Pressure In Gases",
         "topics": [
           "Pressure in Gases",
           "Pressure and Volume of a Gas"
@@ -1035,7 +1035,7 @@
       },
       {
         "id": "work_energy_power",
-        "name": "Work Energy Power",
+        "label": "Work Energy Power",
         "topics": [
           "Kinetic Energy",
           "Conservation of Energy",
@@ -1045,7 +1045,7 @@
       },
       {
         "id": "simple_machines",
-        "name": "Simple Machines",
+        "label": "Simple Machines",
         "topics": [
           "Simple Machines",
           "Mechanical Advantage",
@@ -1057,7 +1057,7 @@
       },
       {
         "id": "pressure",
-        "name": "Pressure",
+        "label": "Pressure",
         "topics": [
           "Meaning of Pressure",
           "Pressure in Solids",
@@ -1086,7 +1086,7 @@
       },
       {
         "id": "mechanical_properties_of_materials",
-        "name": "Mechanical Properties Of Materials",
+        "label": "Mechanical Properties Of Materials",
         "topics": [
           "Elasticity",
           "Extension and Compression",
@@ -1102,7 +1102,7 @@
       },
       {
         "id": "temperature_and_thermal_physics",
-        "name": "Temperature And Thermal Physics",
+        "label": "Temperature And Thermal Physics",
         "topics": [
           "Temperature",
           "Thermal Expansion",
@@ -1128,7 +1128,7 @@
       },
       {
         "id": "force_motion_and_mechanics",
-        "name": "Force Motion And Mechanics",
+        "label": "Force Motion And Mechanics",
         "topics": [
           "Motion Calculations",
           "Distance–Time Graphs",
@@ -1176,7 +1176,7 @@
       },
       {
         "id": "work_energy_power_machines",
-        "name": "Work Energy Power Machines",
+        "label": "Work Energy Power Machines",
         "topics": [
           "Kinetic Energy",
           "Elastic Potential Energy",
@@ -1192,7 +1192,7 @@
       },
       {
         "id": "moments_and_equilibrium",
-        "name": "Moments And Equilibrium",
+        "label": "Moments And Equilibrium",
         "topics": [
           "Calculating an Unknown Distance Using Moments",
           "Finding an Unknown Force Using Moments",
@@ -1207,7 +1207,7 @@
       },
       {
         "id": "forces",
-        "name": "Forces",
+        "label": "Forces",
         "topics": [
           "Friction",
           "Tension & Weight",
@@ -1218,7 +1218,7 @@
       },
       {
         "id": "energy",
-        "name": "Energy",
+        "label": "Energy",
         "topics": [
           "Work",
           "Power",
@@ -1229,7 +1229,7 @@
       },
       {
         "id": "waves",
-        "name": "Waves",
+        "label": "Waves",
         "topics": [
           "Wave properties",
           "Sound waves",
@@ -1240,7 +1240,7 @@
       },
       {
         "id": "em",
-        "name": "Em",
+        "label": "Em",
         "topics": [
           "Current & Voltage",
           "Series & Parallel Circuits",
@@ -1251,28 +1251,28 @@
       },
       {
         "id": "fluids",
-        "name": "Fluids",
+        "label": "Fluids",
         "topics": [
           "Fluids"
         ]
       },
       {
         "id": "modern_physics",
-        "name": "Modern Physics",
+        "label": "Modern Physics",
         "topics": [
           "Modern Physics"
         ]
       },
       {
         "id": "cathode_rays",
-        "name": "Cathode Rays",
+        "label": "Cathode Rays",
         "topics": [
           "Cathode Rays and Cathode Ray Tube"
         ]
       },
       {
         "id": "photoelectric_emission",
-        "name": "Photoelectric Emission",
+        "label": "Photoelectric Emission",
         "topics": [
           "Photoelectric Emission"
         ]
