@@ -941,10 +941,23 @@
     "label": "Physics",
     "chapters": [
       {
-        "id": "motion",
-        "label": "Motion",
+        "id": "force",
+        "name": "Force",
         "topics": [
-          "Displacement & Distance",
+          "Meaning of Force",
+          "Types of Forces",
+          "Contact and Non-contact Forces",
+          "Effects of Force",
+          "Resultant Force",
+          "Balanced and Unbalanced Forces"
+        ]
+      },
+      {
+        "id": "motion",
+        "name": "Motion",
+        "topics": [
+          "Describing Position and Motion",
+          "Distance and Displacement",
           "Speed",
           "Velocity",
           "Acceleration",
@@ -952,8 +965,249 @@
         ]
       },
       {
+        "id": "equations_of_linear_motion",
+        "name": "Equations Of Linear Motion",
+        "topics": [
+          "Solving Motion Problems",
+          "Free Fall"
+        ]
+      },
+      {
+        "id": "motion_graphs",
+        "name": "Motion Graphs",
+        "topics": [
+          "Distance–Time Graphs",
+          "Displacement–Time Graphs",
+          "Speed–Time Graphs",
+          "Velocity–Time Graphs",
+          "Interpreting Motion Graphs"
+        ]
+      },
+      {
+        "id": "mass_weight_and_density",
+        "name": "Mass Weight And Density",
+        "topics": [
+          "Calculating Density",
+          "Relative Density"
+        ]
+      },
+      {
+        "id": "friction_and_resistance",
+        "name": "Friction And Resistance",
+        "topics": [
+          "Causes of Friction",
+          "Effects of Friction",
+          "Advantages and Disadvantages of Friction",
+          "Reducing and Increasing Friction",
+          "Air Resistance and Terminal Velocity"
+        ]
+      },
+      {
+        "id": "pressure_in_solids",
+        "name": "Pressure In Solids",
+        "topics": [
+          "Pressure in Solids"
+        ]
+      },
+      {
+        "id": "pressure_in_liquids",
+        "name": "Pressure In Liquids",
+        "topics": [
+          "Pressure in Liquids",
+          "Applications of Liquid Pressure",
+          "Pressure Acts in All Directions"
+        ]
+      },
+      {
+        "id": "atmospheric_pressure",
+        "name": "Atmospheric Pressure",
+        "topics": [
+          "Atmospheric Pressure"
+        ]
+      },
+      {
+        "id": "pressure_in_gases",
+        "name": "Pressure In Gases",
+        "topics": [
+          "Pressure in Gases",
+          "Pressure and Volume of a Gas"
+        ]
+      },
+      {
+        "id": "work_energy_power",
+        "name": "Work Energy Power",
+        "topics": [
+          "Kinetic Energy",
+          "Conservation of Energy",
+          "Power",
+          "Efficiency"
+        ]
+      },
+      {
+        "id": "simple_machines",
+        "name": "Simple Machines",
+        "topics": [
+          "Simple Machines",
+          "Mechanical Advantage",
+          "Velocity Ratio",
+          "Mechanical Advantage and Velocity Ratio",
+          "Efficiency of Machines",
+          "Work Input and Work Output"
+        ]
+      },
+      {
+        "id": "pressure",
+        "name": "Pressure",
+        "topics": [
+          "Meaning of Pressure",
+          "Pressure in Solids",
+          "Pressure in Liquids",
+          "Factors Affecting Liquid Pressure",
+          "Pressure and Force",
+          "Calculating Pressure in Solids",
+          "Factors Affecting Pressure in Liquids",
+          "Calculating Pressure in Liquids",
+          "Transmission of Pressure in Fluids",
+          "Hydraulic Machines",
+          "Atmospheric Pressure",
+          "Measuring Atmospheric Pressure with a Barometer",
+          "Pressure Gauges and Siphons",
+          "The U-Tube Manometer",
+          "Interpreting Manometer Readings",
+          "Hydraulic Braking Systems",
+          "The Bicycle Pump",
+          "The Syringe",
+          "The Drinking Straw",
+          "The Force Pump",
+          "The Lift Pump",
+          "Demonstrating Atmospheric Pressure",
+          "Pressure in Gases"
+        ]
+      },
+      {
+        "id": "mechanical_properties_of_materials",
+        "name": "Mechanical Properties Of Materials",
+        "topics": [
+          "Elasticity",
+          "Extension and Compression",
+          "Hooke's Law",
+          "Spring Constant",
+          "Force–Extension Graphs",
+          "Limit of Proportionality",
+          "Elastic and Plastic Deformation",
+          "Stress",
+          "Strain",
+          "Young's Modulus"
+        ]
+      },
+      {
+        "id": "temperature_and_thermal_physics",
+        "name": "Temperature And Thermal Physics",
+        "topics": [
+          "Temperature",
+          "Thermal Expansion",
+          "Linear Expansion of Solids",
+          "Heat Capacity",
+          "Specific Heat Capacity",
+          "Heat Transfer by Conduction",
+          "Heat Transfer by Convection",
+          "Heat Transfer by Radiation",
+          "Comparing Conduction, Convection and Radiation",
+          "Change of State",
+          "Latent Heat",
+          "Specific Latent Heat",
+          "Specific Latent Heat of Fusion",
+          "Specific Latent Heat of Vaporisation",
+          "Heating Curves",
+          "Cooling Curves",
+          "Evaporation",
+          "Factors Affecting Evaporation",
+          "Boiling Point and Pressure",
+          "Thermal Insulation"
+        ]
+      },
+      {
+        "id": "force_motion_and_mechanics",
+        "name": "Force Motion And Mechanics",
+        "topics": [
+          "Motion Calculations",
+          "Distance–Time Graphs",
+          "Displacement–Time Graphs",
+          "Speed–Time Graphs",
+          "Velocity–Time Graphs",
+          "Interpreting Motion Graphs",
+          "Uniform Motion",
+          "Uniform Acceleration",
+          "Selecting the Correct Motion Equation",
+          "Solving Motion Problems",
+          "Free Fall",
+          "Newton's First Law of Motion",
+          "Newton's Second Law of Motion",
+          "Newton's Third Law of Motion",
+          "Mass and Inertia",
+          "Force, Mass and Acceleration Calculations",
+          "Mass and Weight",
+          "Gravitational Field Strength",
+          "Calculating Weight",
+          "Density",
+          "Calculating Density",
+          "Relative Density",
+          "Causes of Friction",
+          "Effects of Friction",
+          "Advantages and Disadvantages of Friction",
+          "Reducing and Increasing Friction",
+          "Air Resistance and Terminal Velocity",
+          "Acceleration Due to Gravity",
+          "Calculating Acceleration from Resultant Force",
+          "Calculating Force and Mass",
+          "Action-Reaction Force Pairs",
+          "Inertia and Safety",
+          "Resultant Force in the Same Direction",
+          "Resultant Force in Opposite Directions",
+          "The Normal Reaction Force",
+          "Tension in a String",
+          "Drawing Force Diagrams",
+          "Forces on an Object in an Elevator",
+          "Braking Force and Deceleration",
+          "Force and Change in Momentum",
+          "Impulse and Impact Forces",
+          "Conservation of Momentum"
+        ]
+      },
+      {
+        "id": "work_energy_power_machines",
+        "name": "Work Energy Power Machines",
+        "topics": [
+          "Kinetic Energy",
+          "Elastic Potential Energy",
+          "Conservation of Energy",
+          "Energy Transformations",
+          "Power",
+          "Efficiency",
+          "Mechanical Advantage",
+          "Velocity Ratio",
+          "Efficiency of a Machine Using MA and VR",
+          "Levers and Their Turning Effect"
+        ]
+      },
+      {
+        "id": "moments_and_equilibrium",
+        "name": "Moments And Equilibrium",
+        "topics": [
+          "Calculating an Unknown Distance Using Moments",
+          "Finding an Unknown Force Using Moments",
+          "Moments from Several Forces",
+          "Equilibrium of a Beam",
+          "Centre of Gravity and Balance",
+          "The Line of Action of Weight",
+          "Increasing the Stability of an Object",
+          "Toppling and the Turning Effect of Weight",
+          "Applying Moments to Everyday Tools"
+        ]
+      },
+      {
         "id": "forces",
-        "label": "Forces",
+        "name": "Forces",
         "topics": [
           "Friction",
           "Tension & Weight",
@@ -964,7 +1218,7 @@
       },
       {
         "id": "energy",
-        "label": "Energy",
+        "name": "Energy",
         "topics": [
           "Work",
           "Power",
@@ -975,7 +1229,7 @@
       },
       {
         "id": "waves",
-        "label": "Waves",
+        "name": "Waves",
         "topics": [
           "Wave properties",
           "Sound waves",
@@ -986,7 +1240,7 @@
       },
       {
         "id": "em",
-        "label": "Em",
+        "name": "Em",
         "topics": [
           "Current & Voltage",
           "Series & Parallel Circuits",
@@ -997,28 +1251,28 @@
       },
       {
         "id": "fluids",
-        "label": "Fluids",
+        "name": "Fluids",
         "topics": [
           "Fluids"
         ]
       },
       {
         "id": "modern_physics",
-        "label": "Modern Physics",
+        "name": "Modern Physics",
         "topics": [
           "Modern Physics"
         ]
       },
       {
         "id": "cathode_rays",
-        "label": "Cathode Rays",
+        "name": "Cathode Rays",
         "topics": [
           "Cathode Rays and Cathode Ray Tube"
         ]
       },
       {
         "id": "photoelectric_emission",
-        "label": "Photoelectric Emission",
+        "name": "Photoelectric Emission",
         "topics": [
           "Photoelectric Emission"
         ]
