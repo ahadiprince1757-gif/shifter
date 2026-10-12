@@ -488,14 +488,14 @@ async function seedLearnerFixtures(canonical, dbMaps = null) {
 
     // C. Authentic Mistake Journal (Real curriculum questions with student misconceptions)
     const mistakeCandidates = [
-      { sid: "math", cid: "numbers", topic: "Number Systems & Basic Operations", qIdx: 0, studentAnswer: "24", misconception: "Calculated left to right (6+2=8, 8×3=24) instead of prioritizing Multiplication before Addition via BODMAS." },
-      { sid: "physics", cid: "motion", topic: "Displacement & Distance", qIdx: 0, studentAnswer: "Distance = 20 m, Displacement = 20 m", misconception: "Confused scalar distance with vector displacement; failed to recognize return to start position gives zero displacement." },
+      { sid: "math", cid: "numbers", topic: "Number Systems", qIdx: 0, studentAnswer: "24", misconception: "Calculated left to right (6+2=8, 8×3=24) instead of prioritizing Multiplication before Addition via BODMAS." },
+      { sid: "physics", cid: "motion", topic: "Distance and Displacement", qIdx: 0, studentAnswer: "Distance = 20 m, Displacement = 20 m", misconception: "Confused scalar distance with vector displacement; failed to recognize return to start position gives zero displacement." },
       { sid: "computer", cid: "basics", topic: "Data vs Information", qIdx: 0, studentAnswer: "Data and information are identical terms for computer storage", misconception: "Failed to distinguish unprocessed raw facts (data) from processed meaningful context (information)." },
-      { sid: "chemistry", cid: "introduction", topic: "Meaning of Chemistry", qIdx: 0, studentAnswer: "Chemistry is the study of laboratory equipment and mixing chemicals", misconception: "Narrow focus on lab activities rather than fundamental study of matter and its transformative changes." },
-      { sid: "english", cid: "grammar", topic: "Parts of speech", qIdx: 0, studentAnswer: "runs", misconception: "Identified the action verb instead of the naming noun (The boy)." },
-      { sid: "math", cid: "algebra", topic: "Linear Equations", qIdx: 0, studentAnswer: "x = 7", misconception: "Sign error when transposing constant term to the right side of the equation." },
+      { sid: "chemistry", cid: "chemistry_foundations", topic: "Meaning of Chemistry", qIdx: 0, studentAnswer: "Chemistry is the study of laboratory equipment and mixing chemicals", misconception: "Narrow focus on lab activities rather than fundamental study of matter and its transformative changes." },
+      { sid: "english", cid: "parts_of_speech", topic: "Nouns", qIdx: 0, studentAnswer: "runs", misconception: "Identified the action verb instead of the naming noun; confused verb and noun functions." },
+      { sid: "math", cid: "algebra", topic: "Linear equations", qIdx: 0, studentAnswer: "x = 7", misconception: "Sign error when transposing constant term to the right side of the equation." },
       { sid: "physics", cid: "forces", topic: "Newton's Laws of Motion", qIdx: 0, studentAnswer: "Heavy objects always fall faster regardless of gravity", misconception: "Common Aristotelian intuition confusing air resistance with gravitational acceleration." },
-      { sid: "computer", cid: "programming", topic: "Control Structures", qIdx: 0, studentAnswer: "while loops always execute at least once", misconception: "Confused 'while' loop (pre-test condition) with 'do-while' loop (post-test condition)." }
+      { sid: "computer", cid: "basics", topic: "Characteristics of Computers", qIdx: 0, studentAnswer: "Computers can think independently like humans", misconception: "Confused automation with sentience; computers execute instructions but do not think independently." }
     ];
 
     const mistakesToInsert = [];
@@ -590,13 +590,13 @@ async function seedLearnerFixtures(canonical, dbMaps = null) {
       {
         sid: "math",
         cid: "numbers",
-        topic: "Number Systems & Basic Operations",
+        topic: "Number Systems",
         notes: "### Key Takeaways: BODMAS & Numbers\n• Always resolve Brackets first, then Orders (powers/roots).\n• Multiplication and Division have equal rank; solve left to right.\n• Negative numbers: Remember subtracting a negative is equivalent to adding: `a - (-b) = a + b`.",
       },
       {
         sid: "physics",
         cid: "motion",
-        topic: "Displacement & Distance",
+        topic: "Distance and Displacement",
         notes: "### Formula Sheet: Motion\n• Distance is scalar (total ground covered).\n• Displacement is vector: `Δx = x_final - x_initial`.\n• Tip: When a runner returns to starting line, displacement is always 0 m regardless of laps run!",
       },
       {
@@ -607,19 +607,19 @@ async function seedLearnerFixtures(canonical, dbMaps = null) {
       },
       {
         sid: "chemistry",
-        cid: "introduction",
+        cid: "chemistry_foundations",
         topic: "Meaning of Chemistry",
         notes: "### Core Chemistry Concepts\n• Matter has mass and occupies volume.\n• Physical changes are reversible (e.g. melting ice).\n• Chemical changes form entirely new chemical bonds (e.g. rusting iron, combustion).",
       },
       {
         sid: "english",
-        cid: "grammar",
-        topic: "Parts of speech",
-        notes: "### Grammar Quick Reference\n• Noun = Person, place, thing, or abstract idea.\n• Adjective = Modifies a noun (e.g., 'the swift fox').\n• Adverb = Modifies a verb, adjective, or other adverb (e.g., 'runs quickly').",
+        cid: "parts_of_speech",
+        topic: "Nouns",
+        notes: "### Parts of Speech Quick Reference\n• Noun = Person, place, thing, or abstract idea (e.g., 'teacher', 'Kenya', 'happiness').\n• Pronoun = Replaces a noun (e.g., he, she, they, it).\n• Adjective = Modifies a noun (e.g., 'the swift fox').\n• Adverb = Modifies a verb, adjective, or other adverb (e.g., 'runs quickly').",
       },
       {
         sid: "math",
-        cid: "number_theory",
+        cid: "numbers",
         topic: "Divisibility Rules",
         notes: "### Number Theory Shortcuts\n• Divisible by 3: Sum of all digits divisible by 3.\n• Divisible by 4: Last 2 digits form a multiple of 4.\n• Divisible by 6: Satisfies both rule for 2 (even) and rule for 3.",
       }
