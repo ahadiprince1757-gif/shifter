@@ -949,7 +949,22 @@
           "Contact and Non-contact Forces",
           "Effects of Force",
           "Resultant Force",
-          "Balanced and Unbalanced Forces"
+          "Balanced and Unbalanced Forces",
+          "Meaning of Weight",
+          "Mass and Weight",
+          "Calculating Weight",
+          "Calculating Mass from Weight",
+          "Weight in Different Gravitational Fields",
+          "Meaning and Direction of Friction",
+          "Static and Sliding Friction",
+          "Resultant Force with Friction",
+          "Newton's First Law and Inertia",
+          "Newton's Second Law: Force, Mass and Acceleration",
+          "Meaning of Circular Motion",
+          "Centripetal Acceleration",
+          "Centripetal Force",
+          "Effect of Speed and Radius on Centripetal Force",
+          "Gravitation and Gravitational Force"
         ]
       },
       {
@@ -1021,37 +1036,6 @@
         ]
       },
       {
-        "id": "pressure_in_solids",
-        "label": "Pressure In Solids",
-        "topics": [
-          "Pressure in Solids"
-        ]
-      },
-      {
-        "id": "pressure_in_liquids",
-        "label": "Pressure In Liquids",
-        "topics": [
-          "Pressure in Liquids",
-          "Applications of Liquid Pressure",
-          "Pressure Acts in All Directions"
-        ]
-      },
-      {
-        "id": "atmospheric_pressure",
-        "label": "Atmospheric Pressure",
-        "topics": [
-          "Atmospheric Pressure"
-        ]
-      },
-      {
-        "id": "pressure_in_gases",
-        "label": "Pressure In Gases",
-        "topics": [
-          "Pressure in Gases",
-          "Pressure and Volume of a Gas"
-        ]
-      },
-      {
         "id": "mechanical_properties_of_materials",
         "label": "Mechanical Properties Of Materials",
         "topics": [
@@ -1098,7 +1082,27 @@
           "Kinetic Energy",
           "Conservation of Energy",
           "Power",
-          "Efficiency"
+          "Efficiency",
+          "Meaning of Work",
+          "Calculating Force or Displacement from Work",
+          "When Work Done Is Zero",
+          "Purpose and Parts of Simple Machines",
+          "Mechanical Advantage",
+          "Meaning and Unit of Power",
+          "Calculating Power from Work and Time",
+          "Calculating Work or Time from Power",
+          "Comparing Power",
+          "Power, Force and Speed",
+          "Meaning of Kinetic Energy",
+          "Calculating Kinetic Energy",
+          "Mass and Speed in Kinetic Energy",
+          "Meaning of Gravitational Potential Energy",
+          "Calculating Gravitational Potential Energy",
+          "Principle of Conservation of Energy",
+          "Energy Transfer and Transformation",
+          "Energy Changes During Falling",
+          "Calculating Speed from Lost Gravitational Potential Energy",
+          "Useful and Wasted Energy"
         ]
       },
       {
@@ -1117,16 +1121,19 @@
         "id": "pressure",
         "label": "Pressure",
         "topics": [
-          "Meaning of Pressure",
           "Pressure in Solids",
           "Pressure in Liquids",
-          "Factors Affecting Liquid Pressure",
           "Atmospheric Pressure",
+          "Applications of Liquid Pressure",
+          "Pressure Acts in All Directions",
+          "Pressure in Gases",
+          "Pressure and Volume of a Gas",
+          "Meaning of Pressure",
+          "Factors Affecting Liquid Pressure",
           "Pressure Differences",
           "Upthrust",
           "Floating and Sinking",
           "Applications of Upthrust",
-          "Pressure in Gases",
           "Pressure and Force",
           "Calculating Pressure in Solids",
           "Factors Affecting Pressure in Liquids",
@@ -1237,75 +1244,180 @@
         ]
       },
       {
-        "id": "forces",
-        "label": "Forces",
-        "topics": [
-          "Friction",
-          "Tension & Weight",
-          "Circular Motion",
-          "Gravitation",
-          "Newton's Laws of Motion"
-        ]
-      },
-      {
-        "id": "energy",
-        "label": "Energy",
-        "topics": [
-          "Work",
-          "Power",
-          "Energy Conversion",
-          "Conservation of Energy",
-          "Kinetic & Potential Energy"
-        ]
-      },
-      {
         "id": "waves",
         "label": "Waves",
         "topics": [
-          "Wave properties",
-          "Sound waves",
-          "Light waves",
-          "Reflection & refraction",
-          "Diffraction & Interference"
+          "Meaning of a Wave",
+          "Energy Transfer by Waves",
+          "Transverse Waves",
+          "Longitudinal Waves",
+          "Particle Motion in a Medium",
+          "Amplitude",
+          "Wavelength",
+          "Frequency",
+          "Period of a Wave",
+          "Wave Speed",
+          "Reflection of Waves",
+          "Direction of a Reflected Wave",
+          "Refraction of Waves",
+          "Diffraction of Waves",
+          "Diffraction and Gap Size",
+          "Superposition of Waves",
+          "Constructive Interference",
+          "Destructive Interference",
+          "Production of Sound",
+          "Sound as a Mechanical Wave",
+          "Compressions in Sound Waves",
+          "Rarefactions in Sound Waves",
+          "Transmission of Sound Through a Medium",
+          "Speed of Sound",
+          "Pitch of Sound",
+          "Loudness of Sound",
+          "Echoes and Reflection of Sound",
+          "Nature of Light",
+          "Transverse Nature of Light",
+          "Propagation of Light Through a Vacuum",
+          "Wavelength of Light",
+          "Frequency of Light",
+          "Light Wave Equation",
+          "Visible Light Spectrum",
+          "Reflection of Light",
+          "The Normal and Angles of Reflection",
+          "Laws of Reflection",
+          "Angle Between Incident and Reflected Rays",
+          "Image Formation in a Plane Mirror",
+          "Properties of a Plane-Mirror Image",
+          "Lateral Inversion in a Plane Mirror",
+          "Refraction of Light",
+          "Refraction Towards the Normal",
+          "Refraction Away from the Normal",
+          "Refraction at Normal Incidence",
+          "Refractive Index",
+          "Snell's Law",
+          "Apparent Depth Due to Refraction",
+          "Effect of Wavelength on Diffraction",
+          "Effect of Gap Width on Diffraction",
+          "Diffraction of Sound Around Obstacles",
+          "Wavefronts After Diffraction",
+          "Coherent Sources",
+          "Path Difference",
+          "Constructive Interference Condition",
+          "Destructive Interference Condition",
+          "Formation of Stationary Waves",
+          "Nodes in Stationary Waves",
+          "Antinodes in Stationary Waves"
         ]
       },
       {
         "id": "em",
         "label": "Em",
         "topics": [
-          "Current & Voltage",
-          "Series & Parallel Circuits",
-          "Magnetic fields",
-          "Electromagnetism",
-          "Ohm’s Law"
+          "Meaning of Electric Charge",
+          "Meaning of Electric Current",
+          "Calculating Electric Current",
+          "Calculating Electric Charge",
+          "Meaning and Calculation of Potential Difference",
+          "Meaning of Electrical Resistance",
+          "Calculating Electrical Resistance",
+          "Calculating Current Using Ohm's Law",
+          "Calculating Potential Difference Using Ohm's Law",
+          "Ohm's Law and Voltage-Current Graphs",
+          "Identifying a Series Circuit",
+          "Current in a Series Circuit",
+          "Potential Difference in a Series Circuit",
+          "Total Resistance in a Series Circuit",
+          "Solving Series Circuit Problems",
+          "Identifying a Parallel Circuit",
+          "Potential Difference in a Parallel Circuit",
+          "Total Current in a Parallel Circuit",
+          "Equivalent Resistance in a Parallel Circuit",
+          "Solving Parallel Circuit Problems",
+          "Magnetic Field Patterns",
+          "Magnetic Field Around a Current-Carrying Wire",
+          "Magnetic Field of a Solenoid",
+          "Factors Affecting Electromagnet Strength",
+          "Applications of Electromagnets"
         ]
       },
       {
         "id": "fluids",
         "label": "Fluids",
         "topics": [
-          "Fluids"
+          "Density",
+          "Pressure",
+          "Pressure in Liquids",
+          "Upthrust and Flotation",
+          "Viscosity"
         ]
       },
       {
         "id": "modern_physics",
         "label": "Modern Physics",
         "topics": [
-          "Modern Physics"
+          "Structure of the Atom",
+          "Radioactivity and Radioactive Decay",
+          "Alpha, Beta and Gamma Radiation",
+          "Half-Life",
+          "Uses and Safety of Radioactivity"
         ]
       },
       {
         "id": "cathode_rays",
         "label": "Cathode Rays",
         "topics": [
-          "Cathode Rays and Cathode Ray Tube"
+          "Meaning of Cathode Rays",
+          "Negative Charge of Cathode Rays",
+          "Straight-Line Travel of Cathode Rays",
+          "Cathode Rays as Particles",
+          "Function of the Cathode",
+          "Electron Emission in a Discharge Tube",
+          "Function of the Anode",
+          "Acceleration of Electrons by Potential Difference",
+          "Fluorescence Caused by Cathode Rays",
+          "Mechanical Effect of Cathode Rays",
+          "Deflection of Cathode Rays by an Electric Field",
+          "Deflection of Cathode Rays by a Magnetic Field",
+          "Energy and Momentum of Cathode Rays",
+          "Main Parts of a Cathode Ray Tube",
+          "Function of the Electron Gun",
+          "Function of the X-Deflection Plates",
+          "Function of the Y-Deflection Plates",
+          "Function of the Fluorescent Screen",
+          "Formation of a Visible Spot on the Screen",
+          "Energy Gained by an Electron",
+          "The Electron-Volt",
+          "Speed of an Accelerated Electron",
+          "Potential Difference from Electron Speed",
+          "The Cathode-Ray Oscilloscope",
+          "Cathode Rays in Older Television Displays"
         ]
       },
       {
         "id": "photoelectric_emission",
         "label": "Photoelectric Emission",
         "topics": [
-          "Photoelectric Emission"
+          "Meaning of Photoelectric Emission",
+          "Meaning of Photoelectrons",
+          "Role of Incident Light in Photoelectric Emission",
+          "Meaning of a Photon",
+          "Relationship Between Photon Energy and Frequency",
+          "Calculating the Energy of a Photon",
+          "Calculating Frequency from Photon Energy",
+          "Meaning of Work Function",
+          "Photon Energy and the Work Function",
+          "Work Function from Threshold Frequency",
+          "Meaning of Threshold Frequency",
+          "Photoelectric Emission Below Threshold Frequency",
+          "Frequency and Intensity of Incident Light",
+          "Einstein's Photoelectric Equation",
+          "Calculating Maximum Kinetic Energy",
+          "Photon Frequency from Maximum Kinetic Energy",
+          "Meaning of Stopping Potential",
+          "Stopping Potential and Maximum Kinetic Energy",
+          "Maximum Kinetic Energy from Stopping Potential",
+          "Photoelectric Cells",
+          "Automatic Light-Control Systems",
+          "Light Beam Detection"
         ]
       }
     ]

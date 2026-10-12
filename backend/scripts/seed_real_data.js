@@ -45,7 +45,7 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 });
 
 // Robust retry wrapper for transient network / TLS drops
-async function sbCall(fn, label = "supabase call", retries = 5) {
+async function sbCall(fn, label = "supabase call", retries = 10) {
   for (let attempt = 1; attempt <= retries; attempt++) {
     try {
       const result = await fn();
@@ -60,7 +60,7 @@ async function sbCall(fn, label = "supabase call", retries = 5) {
       if (attempt === retries) {
         return { error: err, data: null };
       }
-      const delay = 600 * attempt;
+      const delay = 1000 * attempt;
       console.warn(`  [retry ${attempt}/${retries}] ${label}: ${err.message} — waiting ${delay}ms`);
       await new Promise((r) => setTimeout(r, delay));
     }
@@ -494,7 +494,7 @@ async function seedLearnerFixtures(canonical, dbMaps = null) {
       { sid: "chemistry", cid: "chemistry_foundations", topic: "Meaning of Chemistry", qIdx: 0, studentAnswer: "Chemistry is the study of laboratory equipment and mixing chemicals", misconception: "Narrow focus on lab activities rather than fundamental study of matter and its transformative changes." },
       { sid: "english", cid: "parts_of_speech", topic: "Nouns", qIdx: 0, studentAnswer: "runs", misconception: "Identified the action verb instead of the naming noun; confused verb and noun functions." },
       { sid: "math", cid: "algebra", topic: "Linear equations", qIdx: 0, studentAnswer: "x = 7", misconception: "Sign error when transposing constant term to the right side of the equation." },
-      { sid: "physics", cid: "forces", topic: "Newton's Laws of Motion", qIdx: 0, studentAnswer: "Heavy objects always fall faster regardless of gravity", misconception: "Common Aristotelian intuition confusing air resistance with gravitational acceleration." },
+      { sid: "physics", cid: "force", topic: "Newton's First Law and Inertia", qIdx: 0, studentAnswer: "Heavy objects always fall faster regardless of gravity", misconception: "Common Aristotelian intuition confusing air resistance with gravitational acceleration." },
       { sid: "computer", cid: "basics", topic: "Characteristics of Computers", qIdx: 0, studentAnswer: "Computers can think independently like humans", misconception: "Confused automation with sentience; computers execute instructions but do not think independently." }
     ];
 

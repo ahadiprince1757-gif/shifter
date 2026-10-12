@@ -5021,7 +5021,7 @@ add(
 
 add(
   "physics",
-  "pressure_in_solids",
+  "pressure",
   "Pressure in Solids",
   `
   <h2>Pressure in Solids</h2>
@@ -5130,7 +5130,7 @@ add(
 
 add(
   "physics",
-  "pressure_in_liquids",
+  "pressure",
   "Pressure in Liquids",
   `
   <h2>Pressure in Liquids</h2>
@@ -5242,7 +5242,7 @@ add(
 
 add(
   "physics",
-  "atmospheric_pressure",
+  "pressure",
   "Atmospheric Pressure",
   `
   <h2>Atmospheric Pressure</h2>
@@ -5344,7 +5344,7 @@ add(
 
 add(
   "physics",
-  "pressure_in_liquids",
+  "pressure",
   "Applications of Liquid Pressure",
   `
   <h2>Applications of Liquid Pressure</h2>
@@ -5440,7 +5440,7 @@ add(
 
 add(
   "physics",
-  "pressure_in_liquids",
+  "pressure",
   "Pressure Acts in All Directions",
   `
   <h2>Pressure Acts in All Directions</h2>
@@ -5532,7 +5532,7 @@ add(
 
 add(
   "physics",
-  "pressure_in_gases",
+  "pressure",
   "Pressure in Gases",
   `
   <h2>Pressure in Gases</h2>
@@ -5628,7 +5628,7 @@ add(
 
 add(
   "physics",
-  "pressure_in_gases",
+  "pressure",
   "Pressure and Volume of a Gas",
   `
   <h2>Pressure and Volume of a Gas</h2>
@@ -16238,6666 +16238,16651 @@ T = time
     },
   ],
 );
-/* =========================
-   3. FRICTION
-========================= */
 
-add(
-  "physics",
-  "forces",
-  "Friction",
-  `
-   <h2>Friction</h2>
+// =====================================================
+// BATCH 1: NATURE OF CATHODE RAYS
+// Subject: Physics
+// Rule: One concept per screen
+// =====================================================
 
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Friction is a force that opposes the relative motion (or attempted motion) between two surfaces in contact.
-It always acts along the surface and in the opposite direction of motion.
-</p>
+// -----------------------------------------------------
+// SCREEN 1: MEANING OF CATHODE RAYS
+// -----------------------------------------------------
 
-<div class="keyfact"> KEY IDEA: Friction is a resisting force — it tries to slow things down or stop motion.</div>
-
-<h3> CLEAR DEFINITION</h3>
-<p>
-<b>Friction</b> is the force that opposes motion between two surfaces that are touching each other.
-</p>
-
-<h3> KEY POINTS</h3>
-<ul>
-<li>Friction acts <b>opposite to motion</b></li>
-<li>It occurs only when surfaces are in contact</li>
-<li>It depends on surface roughness and normal force</li>
-<li>It converts kinetic energy into heat</li>
-</ul>
-
-<h3> TYPES OF FRICTION</h3>
-<ul>
-<li><b>Static friction</b> → acts when an object is not moving but trying to move</li>
-<li><b>Kinetic (sliding) friction</b> → acts when objects are sliding over each other</li>
-<li><b>Rolling friction</b> → acts when objects roll (usually weaker than sliding friction)</li>
-<li><b>Fluid friction</b> → resistance through air or water</li>
-</ul>
-
-<h3> EVERYDAY EXAMPLES</h3>
-
-<div class="example-box">
-<strong> Example 1: Walking</strong><br><br>
-When you walk, your foot pushes backward on the ground.<br>
-Friction between shoe and ground pushes you forward.<br><br>
-
-<b> Result:</b> You move forward without slipping
-</div>
-
-<div class="example-box">
-<strong> Example 2: Sliding a Book</strong><br><br>
-A book sliding on a table slows down and eventually stops.<br><br>
-
-<b>Step 1:</b> You apply force to move it forward<br>
-<b>Step 2:</b> Friction acts backward opposing motion<br>
-<b>Step 3:</b> Book loses energy and stops<br><br>
-
-<b> Result:</b> Motion reduces due to friction
-</div>
-
-<div class="example-box">
-<strong> Example 3: Car Braking</strong><br><br>
-When a car brakes, tyres grip the road.<br><br>
-
-<b>Step 1:</b> Brake force slows wheels<br>
-<b>Step 2:</b> Friction between tyres and road increases resistance<br>
-<b>Step 3:</b> Car stops safely<br><br>
-
-<b> Result:</b> Friction is essential for stopping motion
-</div>
-
-<div class="example-box">
-<strong> Example 4: Ice Surface (Low Friction)</strong><br><br>
-A person slips easily on ice.<br><br>
-
-<b>Reason:</b> Ice has very low friction, so there is little resistance to motion.<br><br>
-
-<b> Result:</b> Hard to control movement
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Friction always opposes motion or attempted motion.</div>
-<div class="keyfact"> Without friction, walking, driving, and holding objects would be impossible.</div>
-<div class="keyfact"> Friction produces heat energy due to resistance.</div>
-<div class="keyfact"> Rough surfaces → more friction, smooth surfaces → less friction.</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking friction is always useless (it is essential for movement).</li>
-<li>Forgetting friction acts opposite to motion.</li>
-<li>Assuming smooth surfaces have no friction (they still have some).</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Friction = “Fight against motion” <br>
-It always tries to slow things down 
-</div>
-`,
-  [
-    {
-      q: "What is the role of friction when walking?",
-      hint: "grip between surfaces",
-      ans: "It provides grip between shoe and ground, preventing slipping and allowing forward movement.",
-      explanation:
-        "Friction acts opposite to slipping and allows the foot to push against the ground, enabling forward motion.",
-    },
-
-    {
-      q: "Why do smooth surfaces have less friction?",
-      hint: "surface irregularities",
-      ans: "Because they have fewer irregularities, so surfaces slide more easily.",
-      explanation:
-        "Friction is caused by microscopic bumps on surfaces. Smoother surfaces reduce interlocking between these bumps.",
-    },
-
-    {
-      q: "Is friction always bad? Explain.",
-      hint: "useful and harmful effects",
-      ans: "No, friction is necessary for walking, braking, writing, and many daily activities.",
-      explanation:
-        "Friction is both useful (movement control) and harmful (wear and energy loss), depending on the situation.",
-    },
-
-    {
-      q: "A force of 50 N is applied to move a box, and friction force is 20 N. Find the resultant force.",
-      hint: "net force = applied force − friction",
-      formula: "F_net = F_applied − F_friction",
-      steps: [
-        "Step 1: Identify values → applied force = 50 N, friction = 20 N",
-        "Step 2: Apply formula → F_net = 50 − 20",
-        "Step 3: Calculate → F_net = 30 N",
-      ],
-      ans: "30 N",
-      final_check: "Net force is less than applied force",
-      common_mistakes: [
-        "Adding friction instead of subtracting",
-        "Ignoring direction of friction",
-      ],
-      explanation: "Friction opposes motion, reducing the effective force.",
-    },
-
-    {
-      q: "A 10 kg object is pulled with a force of 15 N against friction. Will it move?",
-      hint: "compare forces",
-      formula: "Motion occurs if F_applied > F_friction",
-      steps: [
-        "Step 1: Identify applied force = 15 N",
-        "Step 2: Compare with friction (assume friction = 15 N threshold)",
-        "Step 3: If equal or less → no acceleration",
-        "Step 4: Conclusion → object is just about to move or stays at rest",
-      ],
-      ans: "It will just start to move or remain at rest if equal",
-      final_check: "Motion requires net force greater than zero",
-      common_mistakes: [
-        "Assuming mass determines motion directly",
-        "Ignoring friction threshold",
-      ],
-      explanation: "An object moves only when applied force exceeds friction.",
-    },
-
-    {
-      q: "A box is pushed with 25 N and friction is 10 N. Find net force and motion direction.",
-      hint: "net force = difference",
-      formula: "F_net = F_applied − F_friction",
-      steps: [
-        "Step 1: Applied force = 25 N, friction = 10 N",
-        "Step 2: F_net = 25 − 10",
-        "Step 3: F_net = 15 N",
-        "Step 4: Direction is same as applied force",
-      ],
-      ans: "15 N forward",
-      final_check: "Direction follows larger force",
-      common_mistakes: ["Reversing direction", "Adding forces incorrectly"],
-      explanation:
-        "Net force determines both magnitude and direction of motion.",
-    },
-
-    {
-      q: "A surface has friction of 6 N. A force of 6 N is applied. What happens?",
-      hint: "balanced forces",
-      formula: "F_net = F_applied − F_friction",
-      steps: [
-        "Step 1: Applied = 6 N, friction = 6 N",
-        "Step 2: F_net = 6 − 6",
-        "Step 3: F_net = 0 N",
-        "Step 4: No acceleration occurs",
-      ],
-      ans: "Object does not accelerate",
-      final_check: "Zero net force means equilibrium",
-      common_mistakes: [
-        "Assuming motion always happens",
-        "Ignoring equal forces",
-      ],
-      explanation: "When forces are balanced, there is no change in motion.",
-    },
-
-    {
-      q: "A 5 kg object is pushed with 40 N and friction is 15 N. Find acceleration (take g not needed).",
-      hint: "F = ma and net force first",
-      formula: "F_net = ma",
-      steps: [
-        "Step 1: Find net force → 40 − 15 = 25 N",
-        "Step 2: Use F = ma",
-        "Step 3: a = F/m = 25/5",
-        "Step 4: a = 5 m/s²",
-      ],
-      ans: "5 m/s²",
-      final_check: "Acceleration must be m/s²",
-      common_mistakes: [
-        "Forgetting to subtract friction first",
-        "Dividing wrong values",
-      ],
-      explanation:
-        "Acceleration depends on net force after friction is considered.",
-    },
-  ],
-);
-/* =========================================================
-   PHYSICS: FORCES (MASTER UPGRADE)
-========================================================= */
-
-/* =========================
-   1. TENSION & WEIGHT
-========================= */
-
-add(
-  "physics",
-  "forces",
-  "Tension & Weight",
-  `
-    <h2>Tension & Weight</h2>
-
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Forces can act in different ways. Some act through contact (like ropes), while others act at a distance (like gravity).
-Two very important forces in mechanics are <b>tension</b> and <b>weight</b>.
-</p>
-
-<div class="keyfact"> KEY IDEA: Weight pulls objects downward due to gravity, while tension pulls along a rope or string.</div>
-
-<h3> CLEAR DEFINITIONS</h3>
-<ul>
-<li><b>Tension</b> → The pulling force transmitted through a string, rope, or cable when it is stretched.</li>
-<li><b>Weight</b> → The force exerted on an object due to gravity.</li>
-</ul>
-
-<h3> KEY POINTS</h3>
-<ul>
-<li>Tension acts <b>along the rope</b>, away from the object being pulled</li>
-<li>Weight always acts <b>vertically downward</b></li>
-<li>Weight depends on gravitational field strength</li>
-<li>Mass stays constant, but weight can change depending on location</li>
-<li>SI unit of both forces: <b>Newton (N)</b></li>
-</ul>
-
-<h3> FORMULA</h3>
-<div class="formula">
-Weight (W) = mg<br>
-g ≈ 10 m/s² (on Earth)
-</div>
-
-<h3> MASS VS WEIGHT (IMPORTANT)</h3>
-<ul>
-<li>Mass (kg) → amount of matter, constant everywhere</li>
-<li>Weight (N) → force due to gravity, changes with location</li>
-</ul>
-
-<h3> STEP-BY-STEP WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<strong> Example 1: Finding Weight</strong><br><br>
-
-A mass of <b>5 kg</b> is on Earth.<br><br>
-
-<b>Step 1: Write formula</b><br>
-W = mg<br><br>
-
-<b>Step 2: Substitute values</b><br>
-W = 5 × 10<br><br>
-
-<b>Step 3: Calculate</b><br>
-W = <b>50 N</b><br><br>
-
-<b> Final Answer:</b> 50 N
-</div>
-
-<div class="example-box">
-<strong> Example 2: Hanging Object (Tension)</strong><br><br>
-
-A <b>10 kg</b> object hangs at rest on a rope.<br><br>
-
-<b>Step 1: Find weight</b><br>
-W = mg = 10 × 10 = <b>100 N</b><br><br>
-
-<b>Step 2: Understand forces</b><br>
-Object is stationary → forces are balanced<br><br>
-
-<b>Step 3: Conclusion</b><br>
-Tension = Weight = <b>100 N</b><br><br>
-
-<b> Final Answer:</b> Tension = 100 N
-</div>
-
-<div class="example-box">
-<strong> Example 3: Weight on Different Planets</strong><br><br>
-
-A <b>2 kg</b> object is taken to the Moon where gravity is weaker.<br><br>
-
-<b>Step 1: On Earth</b><br>
-W = 2 × 10 = 20 N<br><br>
-
-<b>Step 2: On Moon</b><br>
-Gravity is smaller → weight decreases<br><br>
-
-<b> Final Conclusion:</b> Mass stays 2 kg, but weight becomes smaller
-</div>
-
-<div class="example-box">
-<strong> Example 4: Understanding Tension Direction</strong><br><br>
-
-A box is pulled upward by a rope.<br><br>
-
-<b>Step 1:</b> Tension acts along the rope upward<br>
-<b>Step 2:</b> Weight acts downward due to gravity<br>
-<b>Step 3:</b> If box is stationary, tension = weight<br><br>
-
-<b> Key Insight:</b> Tension always pulls, it never pushes.
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Weight depends on gravity, not just mass.</div>
-<div class="keyfact"> Tension only exists in strings/ropes under pulling force.</div>
-<div class="keyfact"> If an object is at rest, forces are balanced.</div>
-<div class="keyfact"> Weight acts downward, tension acts along the rope.</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Confusing mass (kg) with weight (N)</li>
-<li>Thinking tension pushes instead of pulling</li>
-<li>Forgetting that weight changes on different planets</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Weight = “Earth pulling down” ⬇<br>
-Tension = “Rope pulling tight” ⬆
-</div>
-`,
-  [
-    {
-      q: "A mass of 8 kg is hanging on a rope. Find its weight.",
-      hint: "Use W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: Identify values → m = 8 kg, g = 10 m/s²",
-        "Step 2: Substitute → W = 8 × 10",
-        "Step 3: Multiply → W = 80 N",
-      ],
-      ans: "80 N",
-      final_check: "Unit must be Newton (N)",
-      common_mistakes: [
-        "Forgetting to multiply by g",
-        "Confusing mass with weight",
-      ],
-      explanation: "Weight is the gravitational force acting on a mass.",
-    },
-
-    {
-      q: "What happens to weight on the Moon?",
-      hint: "gravity is weaker",
-      ans: "Weight decreases because gravitational field strength is lower.",
-      explanation:
-        "Mass stays constant, but weight changes because it depends on gravitational field strength.",
-    },
-
-    {
-      q: "What direction does tension act?",
-      hint: "along rope",
-      ans: "Along the rope, always pulling away from the object.",
-      explanation:
-        "Tension is a pulling force transmitted through a string, rope, or cable.",
-    },
-
-    {
-      q: "A 5 kg object is on Earth. Find its weight.",
-      hint: "W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: m = 5 kg, g = 10 m/s²",
-        "Step 2: W = 5 × 10",
-        "Step 3: W = 50 N",
-      ],
-      ans: "50 N",
-      final_check: "Answer must be in Newtons",
-      common_mistakes: ["Using kg as final unit", "Forgetting gravity"],
-      explanation: "Weight increases directly with mass.",
-    },
-
-    {
-      q: "A 12 kg object is lifted on Earth. Find its weight.",
-      hint: "W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: m = 12 kg, g = 10 m/s²",
-        "Step 2: W = 12 × 10",
-        "Step 3: W = 120 N",
-      ],
-      ans: "120 N",
-      final_check: "Correct unit is Newton (N)",
-      common_mistakes: ["Wrong unit conversion", "Incorrect multiplication"],
-      explanation: "Weight is the force due to gravity acting on a mass.",
-    },
-
-    {
-      q: "A 3 kg object is on the Moon where g = 1.6 m/s². Find its weight.",
-      hint: "use W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: m = 3 kg, g = 1.6 m/s²",
-        "Step 2: W = 3 × 1.6",
-        "Step 3: W = 4.8 N",
-      ],
-      ans: "4.8 N",
-      final_check: "Weight is smaller than Earth value",
-      common_mistakes: ["Using Earth g value", "Wrong multiplication"],
-      explanation: "Weight depends on gravitational field strength.",
-    },
-
-    {
-      q: "A 6 kg object experiences a force of 60 N. Find acceleration.",
-      hint: "Use F = ma",
-      formula: "F = ma",
-      steps: [
-        "Step 1: F = 60 N, m = 6 kg",
-        "Step 2: a = F / m",
-        "Step 3: a = 60 / 6",
-        "Step 4: a = 10 m/s²",
-      ],
-      ans: "10 m/s²",
-      final_check: "Unit must be m/s²",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Wrong formula rearrangement",
-      ],
-      explanation: "Acceleration depends on force and mass.",
-    },
-
-    {
-      q: "A 10 kg object has weight 100 N. Find gravitational field strength.",
-      hint: "g = W / m",
-      formula: "g = W / m",
-      steps: [
-        "Step 1: W = 100 N, m = 10 kg",
-        "Step 2: g = 100 / 10",
-        "Step 3: g = 10 m/s²",
-      ],
-      ans: "10 m/s²",
-      final_check: "Correct Earth value",
-      common_mistakes: ["Using wrong formula", "Confusing weight with mass"],
-      explanation: "Gravitational field strength is weight per unit mass.",
-    },
-
-    {
-      q: "Why do objects fall towards Earth?",
-      hint: "attractive force",
-      ans: "Because Earth exerts a gravitational force on all objects.",
-      explanation:
-        "Gravity pulls all objects with mass toward the center of the Earth.",
-    },
-
-    {
-      q: "A 2 kg object is taken to a planet where g = 5 m/s². Find its weight.",
-      hint: "W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: m = 2 kg, g = 5 m/s²",
-        "Step 2: W = 2 × 5",
-        "Step 3: W = 10 N",
-      ],
-      ans: "10 N",
-      final_check: "Check unit Newton (N)",
-      common_mistakes: ["Using Earth gravity", "Incorrect multiplication"],
-      explanation: "Weight changes with gravitational field strength.",
-    },
-  ],
-);
-/* =========================
-   2. CIRCULAR MOTION
-========================= */
-
-add(
-  "physics",
-  "forces",
-  "Circular Motion",
-  `
-   <h2>Circular Motion</h2>
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Circular motion happens when an object moves along a circular path.
-Even if speed is constant, the object is still accelerating because its <b>direction is continuously changing</b>.
-</p>
-
-<div class="keyfact"> KEY IDEA: Circular motion requires a force toward the center called centripetal force.</div>
-
-<h3> KEY CONCEPTS</h3>
-<ul>
-<li>Circular motion = motion in a circle</li>
-<li><b>Centripetal force</b> always acts toward the center</li>
-<li>Without centripetal force, the object moves in a straight line (Newton’s 1st law)</li>
-<li>Centripetal force can be provided by tension, gravity, friction, or normal reaction</li>
-</ul>
-
-<h3> CENTRIPETAL FORCE FORMULA</h3>
-<div class="formula">
-F = mv² / r
-</div>
-
-<ul>
-<li>F = centripetal force (N)</li>
-<li>m = mass (kg)</li>
-<li>v = speed (m/s)</li>
-<li>r = radius of circular path (m)</li>
-</ul>
-
-<div class="keyfact"> KEY INSIGHT: Higher speed → more force needed. Larger radius → less force needed.</div>
-
-<h3> REAL-LIFE APPLICATIONS</h3>
-
-<div class="example-box">
-<strong> Example 1: Car Turning on a Flat Road</strong><br><br>
-
-A car turns around a bend.<br><br>
-
-<b>Step 1:</b> The car wants to move straight due to inertia<br>
-<b>Step 2:</b> Friction between tyres and road pulls it inward<br>
-<b>Step 3:</b> This friction acts as centripetal force<br><br>
-
-<b> Result:</b> Without friction, the car would skid outward
-</div>
-
-<div class="example-box">
-<strong> Example 2: Banked Roads (Very Important)</strong><br><br>
-
-Roads are tilted on curves (banked) to help vehicles turn safely.<br><br>
-
-<b>Step 1:</b> Normal reaction force is tilted<br>
-<b>Step 2:</b> Part of this force provides centripetal force<br>
-<b>Step 3:</b> Less reliance on friction → safer turning<br><br>
-
-<b> Key Insight:</b> Banking reduces risk of skidding at high speeds
-</div>
-
-<div class="example-box">
-<strong> Example 3: Stone on a String</strong><br><br>
-
-A stone is tied to a string and whirled in a circle.<br><br>
-
-<b>Step 1:</b> The stone wants to fly outward (inertia)<br>
-<b>Step 2:</b> Tension in the string pulls it inward<br>
-<b>Step 3:</b> Tension = centripetal force<br><br>
-
-<b> Result:</b> If string breaks → stone flies in a straight line
-</div>
-
-<div class="example-box">
-<strong> Example 4: Swinging a Bucket of Water</strong><br><br>
-
-A bucket of water is swung in a vertical circle.<br><br>
-
-<b>Step 1:</b> At the top, gravity + motion keep water inside<br>
-<b>Step 2:</b> If speed is high enough, water does not fall out<br>
-<b>Step 3:</b> Centripetal force keeps water moving in a circle<br><br>
-
-<b> Key Insight:</b> Minimum speed is required to prevent falling
-</div>
-
-<div class="example-box">
-<strong> Example 5: Satellite Orbit</strong><br><br>
-
-A satellite moves around Earth in orbit.<br><br>
-
-<b>Step 1:</b> Gravity pulls satellite toward Earth<br>
-<b>Step 2:</b> This gravity provides centripetal force<br>
-<b>Step 3:</b> Continuous free-fall creates orbit<br><br>
-
-<b> Result:</b> Satellite stays in circular motion
-</div>
-
-<h3> SPEED CONDITIONS (IMPORTANT INSIGHT)</h3>
-<ul>
-<li>If speed is too low → object falls inward/out of circular path</li>
-<li>If speed is too high → object flies outward (no centripetal force enough)</li>
-<li>Correct speed → stable circular motion</li>
-</ul>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Centripetal force is not a new force — it is provided by real forces.</div>
-<div class="keyfact"> Circular motion is accelerated motion even if speed is constant.</div>
-<div class="keyfact"> Inertia tries to move objects in straight lines.</div>
-<div class="keyfact"> Faster motion requires stronger centripetal force.</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking “centrifugal force pushes outward” (it is not a real force)</li>
-<li>Confusing speed and velocity in circular motion</li>
-<li>Forgetting that direction is constantly changing</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Centripetal = “Center-seeking force” <br>
-Without it → object flies straight 
-</div>
-`,
-  [
-    {
-      q: "What force keeps a car moving in a circular path?",
-      hint: "towards centre",
-      ans: "Friction provides centripetal force.",
-      explanation:
-        "Friction between the tyres and the road acts towards the centre of the circle, keeping the car in circular motion.",
-    },
-
-    {
-      q: "What provides centripetal force for a satellite?",
-      hint: "Earth attraction",
-      ans: "Gravity.",
-      explanation:
-        "The gravitational force between Earth and the satellite acts as the centripetal force that keeps it in orbit.",
-    },
-
-    {
-      q: "Why are roads banked on curves?",
-      hint: "safe turning",
-      ans: "To reduce reliance on friction and help vehicles turn safely at higher speeds.",
-      explanation:
-        "Banking provides an additional component of normal reaction force towards the centre, reducing dependence on friction.",
-    },
-
-    {
-      q: "What happens if a string holding a rotating stone breaks?",
-      hint: "inertia",
-      ans: "The stone moves in a straight line due to inertia.",
-      explanation:
-        "When the centripetal force is removed, the stone continues in the direction it was moving at that instant.",
-    },
-
-    {
-      q: "A car moves in a circle of radius 10 m at a speed of 5 m/s. Find centripetal acceleration.",
-      hint: "use a = v²/r",
-      formula: "a = v² / r",
-      steps: [
-        "Step 1: Identify values → v = 5 m/s, r = 10 m",
-        "Step 2: Apply formula → a = v² / r",
-        "Step 3: Square velocity → 5² = 25",
-        "Step 4: Substitute → a = 25 / 10",
-        "Step 5: Calculate → a = 2.5 m/s²",
-      ],
-      ans: "2.5 m/s²",
-      explanation:
-        "Centripetal acceleration depends on speed and radius of the circular path.",
-    },
-
-    {
-      q: "A stone of mass 2 kg moves in a circle of radius 4 m at speed 3 m/s. Find centripetal force.",
-      hint: "use F = mv²/r",
-      formula: "F = mv² / r",
-      steps: [
-        "Step 1: m = 2 kg, v = 3 m/s, r = 4 m",
-        "Step 2: Square velocity → 3² = 9",
-        "Step 3: Apply formula → F = (2 × 9) / 4",
-        "Step 4: Multiply → F = 18 / 4",
-        "Step 5: Final answer → F = 4.5 N",
-      ],
-      ans: "4.5 N",
-      explanation:
-        "Centripetal force increases with mass and speed, and decreases with radius.",
-    },
-
-    {
-      type: "calc",
-      q: "A satellite orbits Earth at constant speed. If gravity is 800 N, what force keeps it in orbit?",
-      hint: "centripetal = gravity",
-      formula: "F_c = F_g",
-      steps: [
-        "Step 1: Identify forces acting → gravity acts inward",
-        "Step 2: Recognize circular motion condition",
-        "Step 3: Centripetal force equals gravitational force",
-        "Step 4: Therefore F = 800 N",
-      ],
-      ans: "800 N",
-      explanation:
-        "For satellites, gravity alone provides the centripetal force.",
-    },
-
-    {
-      q: "Why does an object in circular motion need a force?",
-      hint: "changing direction",
-      ans: "Because its direction is constantly changing.",
-      explanation:
-        "Even if speed is constant, velocity changes due to continuous change in direction, requiring centripetal force.",
-    },
-  ],
-);
-
-/* =========================
-   3. GRAVITATION
-========================= */
-
-add(
-  "physics",
-  "forces",
-  "Gravitation",
-  `
-  <h2>Gravitation</h2>
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Gravitation is a universal force of attraction between any two objects that have mass.
-It is one of the fundamental forces of nature and acts everywhere in the universe.
-</p>
-
-<div class="keyfact"> KEY IDEA: Every object with mass attracts every other object with mass.</div>
-
-<h3> KEY CONCEPTS</h3>
-<ul>
-<li>Gravitational force acts between all masses</li>
-<li>It is always attractive (never repulsive)</li>
-<li>It acts over long distances (no contact needed)</li>
-<li>Stronger when masses are large</li>
-<li>Weaker when distance increases</li>
-</ul>
-
-<h3> NEWTON’S LAW OF UNIVERSAL GRAVITATION</h3>
-<div class="formula">
-F = Gm₁m₂ / r²
-</div>
-
-<ul>
-<li>F = gravitational force (N)</li>
-<li>G = gravitational constant</li>
-<li>m₁, m₂ = masses</li>
-<li>r = distance between centers of masses</li>
-</ul>
-
-<h3> NEAR EARTH GRAVITY</h3>
-<div class="formula">
-g ≈ 10 m/s²
-</div>
-
-<ul>
-<li>g = gravitational field strength</li>
-<li>Used to calculate weight near Earth</li>
-</ul>
-
-<div class="formula">
-Weight (W) = mg
-</div>
-
-<h3> STEP-BY-STEP WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<strong> Example 1: Falling Object</strong><br><br>
-
-An object is dropped from rest.<br><br>
-
-<b>Step 1: Identify force</b><br>
-Only force acting is gravity<br><br>
-
-<b>Step 2: Acceleration</b><br>
-Object accelerates downward at <b>g = 10 m/s²</b><br><br>
-
-<b> Final Answer:</b> It falls with constant acceleration due to gravity
-</div>
-
-<div class="example-box">
-<strong> Example 2: Weight Calculation</strong><br><br>
-
-A mass of <b>3 kg</b> is on Earth.<br><br>
-
-<b>Step 1: Formula</b><br>
-W = mg<br><br>
-
-<b>Step 2: Substitute</b><br>
-W = 3 × 10<br><br>
-
-<b>Step 3: Calculate</b><br>
-W = <b>30 N</b><br><br>
-
-<b> Final Answer:</b> 30 N
-</div>
-
-<div class="example-box">
-<strong> Example 3: Distance Effect on Gravity</strong><br><br>
-
-Two objects are moved farther apart.<br><br>
-
-<b>Step 1:</b> Gravitational force depends on distance squared (1/r²)<br>
-<b>Step 2:</b> Increasing distance reduces force rapidly<br><br>
-
-<b> Final Insight:</b> Small increase in distance → big decrease in force
-</div>
-
-<div class="example-box">
-<strong> Example 4: Universal Attraction</strong><br><br>
-
-A book and a table attract each other.<br><br>
-
-<b>Step 1:</b> Both have mass<br>
-<b>Step 2:</b> Therefore both exert gravitational force<br>
-<b>Step 3:</b> Force is extremely small, so we don’t notice it<br><br>
-
-<b> Key Insight:</b> Gravity exists between all objects, not just planets
-</div>
-
-<div class="example-box">
-<strong> Example 5: Orbit Concept</strong><br><br>
-
-The Moon orbits Earth.<br><br>
-
-<b>Step 1:</b> Earth pulls Moon via gravity<br>
-<b>Step 2:</b> This force provides centripetal force<br>
-<b>Step 3:</b> Moon keeps falling around Earth instead of straight into it<br><br>
-
-<b> Final Insight:</b> Orbit = continuous free-fall due to gravity
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Gravity acts between all objects with mass in the universe.</div>
-<div class="keyfact"> It is always attractive, never repulsive.</div>
-<div class="keyfact"> Weight depends on gravity, mass does not.</div>
-<div class="keyfact"> Gravity keeps planets, moons, and satellites in orbit.</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking gravity only exists on Earth</li>
-<li>Confusing mass (kg) with weight (N)</li>
-<li>Forgetting that gravitational force decreases with distance squared</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Gravity = “Invisible pull between all things with mass” ⬇
-</div>
-`,
-  [
-    {
-      q: "What is the value of g on Earth?",
-      hint: "acceleration due to gravity",
-      ans: "10 m/s² (approx)",
-      explanation:
-        "The standard value of gravitational acceleration on Earth is approximately 9.8 m/s², often rounded to 10 m/s² in basic calculations.",
-    },
-
-    {
-      q: "What happens to gravitational force when distance increases?",
-      hint: "inverse square law",
-      ans: "It decreases rapidly (inverse square law).",
-      explanation:
-        "Gravitational force is inversely proportional to the square of the distance between two masses, meaning it becomes weaker as distance increases.",
-    },
-
-    {
-      q: "Is gravity only on Earth? Explain.",
-      hint: "universal force",
-      ans: "No, gravity exists between all objects with mass in the universe.",
-      explanation:
-        "Gravity is a universal force that attracts all objects with mass, not just those on Earth.",
-    },
-
-    {
-      q: "A mass of 2 kg is acted on by gravity. Find its weight on Earth.",
-      hint: "use W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: Identify values → m = 2 kg, g = 10 m/s²",
-        "Step 2: Apply formula → W = m × g",
-        "Step 3: Substitute → W = 2 × 10",
-        "Step 4: Calculate → W = 20 N",
-      ],
-      ans: "20 N",
-      explanation: "Weight is the gravitational force acting on an object.",
-    },
-
-    {
-      q: "A 5 kg object is on Earth. Find its weight.",
-      hint: "W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: m = 5 kg, g = 10 m/s²",
-        "Step 2: W = 5 × 10",
-        "Step 3: W = 50 N",
-      ],
-      ans: "50 N",
-      explanation: "Weight increases with mass.",
-    },
-
-    {
-      q: "A 3 kg object is taken to the Moon where g = 1.6 m/s². Find weight.",
-      hint: "W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: m = 3 kg, g = 1.6 m/s²",
-        "Step 2: W = 3 × 1.6",
-        "Step 3: W = 4.8 N",
-      ],
-      ans: "4.8 N",
-      explanation: "Weight depends on gravitational field strength.",
-    },
-
-    {
-      q: "A planet has g = 20 m/s². Find weight of a 2 kg object.",
-      hint: "W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: m = 2 kg, g = 20 m/s²",
-        "Step 2: W = 2 × 20",
-        "Step 3: W = 40 N",
-      ],
-      ans: "40 N",
-      explanation: "Stronger gravity produces greater weight.",
-    },
-
-    {
-      q: "Why do objects fall towards Earth?",
-      hint: "attractive force",
-      ans: "Because Earth exerts a gravitational force on all objects.",
-      explanation:
-        "Gravity pulls all objects with mass towards the center of Earth.",
-    },
-
-    {
-      q: "What is the difference between mass and weight?",
-      hint: "gravity dependence",
-      ans: "Mass is constant, weight depends on gravity.",
-      explanation:
-        "Mass is the amount of matter, while weight is the force due to gravity.",
-    },
-
-    {
-      q: "A 4 kg object is taken from Earth (g = 10 m/s²) to a planet where g = 5 m/s². Find change in weight.",
-      hint: "W = mg",
-      formula: "W = mg",
-      steps: [
-        "Step 1: Earth weight → W₁ = 4 × 10 = 40 N",
-        "Step 2: New weight → W₂ = 4 × 5 = 20 N",
-        "Step 3: Change in weight → 40 - 20",
-        "Step 4: Result → 20 N decrease",
-      ],
-      ans: "20 N decrease",
-      explanation:
-        "Weight decreases when gravitational field strength decreases.",
-    },
-  ],
-);
-/*======================================================
-NEWTONS LAWS OF MOTION
-=======================================================*/
-add(
-  "physics",
-  "forces",
-  "Newton's Laws of Motion",
-  `
-  <h2>Newton’s Laws of Motion</h2>
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Newton’s Laws explain how and why objects move or stay at rest.
-They describe the relationship between force, mass, and motion.
-</p>
-
-<div class="keyfact"> KEY IDEA: Motion changes only when a net (resultant) force acts.</div>
-
-<h3> NEWTON’S FIRST LAW (LAW OF INERTIA)</h3>
-<p>
-An object remains at rest or continues moving in a straight line at constant speed unless acted upon by an external force.
-</p>
-
-<ul>
-<li>Explains inertia (resistance to change in motion)</li>
-<li>No net force → no change in motion</li>
-<li>Objects “like” to keep doing what they are doing</li>
-</ul>
-
-<div class="example-box">
-<strong> Example:</strong> A book on a table stays still until pushed.
-</div>
-
-<h3> NEWTON’S SECOND LAW</h3>
-<p>
-The acceleration of an object depends on the net force acting on it and its mass.
-</p>
-
-<div class="formula">
-F = ma
-</div>
-
-<ul>
-<li>F = force (N)</li>
-<li>m = mass (kg)</li>
-<li>a = acceleration (m/s²)</li>
-</ul>
-
-<div class="keyfact"> KEY IDEA: More force → more acceleration. More mass → less acceleration.</div>
-
-<h3> WORKED EXAMPLES (2nd LAW)</h3>
-
-<div class="example-box">
-<strong> Example 1:</strong><br><br>
-
-A mass of 5 kg is pushed with a force of 20 N.<br><br>
-
-<b>Step 1:</b> Use formula F = ma<br>
-<b>Step 2:</b> Rearrange → a = F / m<br>
-<b>Step 3:</b> Substitute → a = 20 / 5<br>
-<b>Step 4:</b> Calculate → a = <b>4 m/s²</b><br><br>
-
-<b> Final Answer:</b> 4 m/s²
-</div>
-
-<div class="example-box">
-<strong> Example 2:</strong><br><br>
-
-A 10 kg object accelerates at 3 m/s².<br><br>
-
-<b>Step 1:</b> F = ma<br>
-<b>Step 2:</b> F = 10 × 3<br>
-<b>Step 3:</b> F = <b>30 N</b>
-</div>
-
-<h3> NEWTON’S THIRD LAW</h3>
-<p>
-For every action, there is an equal and opposite reaction.
-</p>
-
-<ul>
-<li>Forces come in pairs</li>
-<li>They act on different objects</li>
-<li>They are equal in size and opposite in direction</li>
-</ul>
-
-<div class="keyfact"> KEY IDEA: Forces always exist in pairs — you cannot have a single force alone.</div>
-
-<h3> WORKED EXAMPLES (3rd LAW)</h3>
-
-<div class="example-box">
-<strong> Example 1: Walking</strong><br><br>
-
-Your foot pushes the ground backward (action).<br>
-The ground pushes you forward (reaction).<br><br>
-
-<b> Result:</b> You move forward
-</div>
-
-<div class="example-box">
-<strong> Example 2: Rocket Launch</strong><br><br>
-
-Rocket pushes gases downward (action).<br>
-Gases push rocket upward (reaction).<br><br>
-
-<b> Result:</b> Rocket moves up
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Newton’s 1st Law → explains inertia (why objects resist change)</div>
-<div class="keyfact"> Newton’s 2nd Law → links force, mass, and acceleration</div>
-<div class="keyfact"> Newton’s 3rd Law → explains interaction between objects</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking action and reaction forces act on the same object</li>
-<li>Forgetting net force is needed for acceleration</li>
-<li>Confusing mass with weight in F = ma problems</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-1st Law → “Stay as you are” <br>
-2nd Law → “Force changes motion” <br>
-3rd Law → “Every action has a reaction” 
-</div>
-`,
-  [
-    {
-      q: "State Newton’s First Law of Motion.",
-      hint: "inertia",
-      ans: "An object remains at rest or in uniform motion unless acted upon by a net external force.",
-      explanation:
-        "This law is also called the law of inertia because objects resist changes in their state of motion.",
-    },
-
-    {
-      q: "What is the formula for Newton’s Second Law?",
-      hint: "force, mass, acceleration",
-      ans: "F = ma",
-      explanation:
-        "Force is directly proportional to mass and acceleration of an object.",
-    },
-
-    {
-      q: "Why do rockets move upward?",
-      hint: "action-reaction",
-      ans: "Because of action-reaction: gases are pushed downward, and the rocket is pushed upward.",
-      explanation:
-        "Newton’s Third Law explains rocket propulsion through equal and opposite forces.",
-    },
-
-    {
-      q: "A force of 10N acts on a mass of 2kg. Find acceleration.",
-      hint: "use F = ma",
-      formula: "a = F / m",
-      steps: [
-        "Step 1: Write values → F = 10N, m = 2kg",
-        "Step 2: Apply formula → a = F/m",
-        "Step 3: Substitute → a = 10/2",
-        "Step 4: Calculate → a = 5 m/s²",
-      ],
-      ans: "5 m/s²",
-      explanation:
-        "Acceleration increases when force increases or mass decreases.",
-    },
-
-    {
-      q: "A 4kg object accelerates at 3 m/s². Find force.",
-      hint: "F = ma",
-      formula: "F = ma",
-      steps: [
-        "Step 1: m = 4kg, a = 3 m/s²",
-        "Step 2: Substitute → F = 4 × 3",
-        "Step 3: Calculate → F = 12N",
-      ],
-      ans: "12N",
-      explanation: "Force depends on both mass and acceleration.",
-    },
-
-    {
-      q: "What does Newton’s Third Law state?",
-      hint: "action-reaction",
-      ans: "For every action, there is an equal and opposite reaction.",
-      explanation: "Forces always occur in pairs acting on different objects.",
-    },
-
-    {
-      q: "A 6kg object is acted on by a 12N force. Find acceleration.",
-      hint: "F = ma",
-      formula: "a = F / m",
-      steps: [
-        "Step 1: F = 12N, m = 6kg",
-        "Step 2: a = F/m",
-        "Step 3: a = 12/6",
-        "Step 4: a = 2 m/s²",
-      ],
-      ans: "2 m/s²",
-      explanation: "Acceleration is directly proportional to force.",
-    },
-
-    {
-      q: "Why do passengers move forward when a bus stops suddenly?",
-      hint: "inertia",
-      ans: "Because of inertia, their bodies continue moving forward.",
-      explanation:
-        "The lower part stops with the bus, but the upper body continues moving.",
-    },
-
-    {
-      q: "A force of 30N produces an acceleration of 5 m/s². Find mass.",
-      hint: "rearrange F = ma",
-      formula: "m = F / a",
-      steps: [
-        "Step 1: F = 30N, a = 5 m/s²",
-        "Step 2: m = F/a",
-        "Step 3: m = 30/5",
-        "Step 4: m = 6kg",
-      ],
-      ans: "6kg",
-      explanation: "Mass is resistance to acceleration.",
-    },
-
-    {
-      q: "What is inertia?",
-      hint: "resistance to change",
-      ans: "The tendency of an object to resist changes in its state of motion.",
-      explanation: "More mass means more inertia.",
-    },
-  ],
-);
-/* =========================================================
-   PHYSICS: ENERGY (MASTER LEVEL UPGRADE)
-========================================================= */
-/* =========================
-   1. WORK & MACHINES
-========================= */
-
-add(
-  "physics",
-  "energy",
-  "Work",
-  `<h2>Work (Advanced + Machines)</h2>
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Work is done when a force causes an object to move in the direction of that force.
-If there is no movement, then no work is done — even if a large force is applied.
-</p>
-
-<div class="keyfact"> KEY IDEA: Work links force and motion — without displacement, work is zero.</div>
-
-<h3> CLEAR DEFINITION</h3>
-<p>
-<b>Work</b> is the product of force and displacement in the direction of the force.
-It represents energy transfer when a force moves an object.
-</p>
-
-<h3> KEY POINTS</h3>
-<ul>
-<li>Work depends on both force and displacement</li>
-<li>If displacement = 0 → work = 0</li>
-<li>Work is a scalar quantity</li>
-<li>SI unit: Joule (J)</li>
-<li>1 Joule = 1 Newton moving an object 1 meter</li>
-</ul>
-
-<div class="formula">
-Work (W) = Force × Distance<br>
-W = F × d
-</div>
-
-<h3> STEP-BY-STEP WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<strong> Example 1: Basic Work Calculation</strong><br><br>
-
-A force of <b>10 N</b> moves an object <b>5 m</b>.<br><br>
-
-<b>Step 1:</b> Write formula<br>
-W = F × d<br><br>
-
-<b>Step 2:</b> Substitute values<br>
-W = 10 × 5<br><br>
-
-<b>Step 3:</b> Calculate<br>
-W = <b>50 J</b><br><br>
-
-<b> Final Answer:</b> 50 J
-</div>
-
-<div class="example-box">
-<strong> Example 2: No Work Done</strong><br><br>
-
-A man pushes a wall but it does not move.<br><br>
-
-<b>Step 1:</b> Identify displacement<br>
-d = 0 m<br><br>
-
-<b>Step 2:</b> Apply formula<br>
-W = F × 0<br><br>
-
-<b> Final Answer:</b> 0 J (no work done)
-</div>
-
-<div class="example-box">
-<strong> Example 3: Higher Force</strong><br><br>
-
-A force of <b>20 N</b> moves an object <b>3 m</b>.<br><br>
-
-<b>Step 1:</b> Formula<br>
-W = F × d<br><br>
-
-<b>Step 2:</b> Substitute<br>
-W = 20 × 3<br><br>
-
-<b>Step 3:</b> Calculate<br>
-W = <b>60 J</b>
-</div>
-
-<h3> MACHINES AND WORK</h3>
-
-<h3> CONCEPT</h3>
-<p>
-Machines make work easier by reducing the force needed,
-but they increase the distance over which the force is applied.
-</p>
-
-<div class="keyfact"> KEY IDEA: Machines do NOT reduce work — they only change how it is done.</div>
-
-<div class="formula">
-Work Input = Work Output + Energy Lost
-</div>
-
-<h3> EFFICIENCY</h3>
-
-<div class="formula">
-Efficiency = (Useful Output Work / Input Work) × 100%
-</div>
-
-<div class="example-box">
-<strong> Example: Efficiency</strong><br><br>
-
-Input work = 200 J<br>
-Output work = 150 J<br><br>
-
-Efficiency = (150 ÷ 200) × 100<br>
-Efficiency = <b>75%</b>
-</div>
-
-<div class="keyfact"> No machine is 100% efficient due to friction and heat loss.</div>
-
-<h3> MACHINES IN REAL LIFE</h3>
-
-<div class="example-box">
-<strong> Inclined Plane</strong><br><br>
-Lifts objects using a slope.<br>
-Reduces force but increases distance.<br><br>
-
-Example: Lifting 10 kg to 2 m<br>
-Work = mgh = 10 × 10 × 2 = <b>200 J</b>
-</div>
-
-<div class="example-box">
-<strong> Pulley</strong><br><br>
-Changes direction of force and reduces effort.<br><br>
-
-Example:<br>
-Lift 100 N load by 2 m<br>
-Work = 100 × 2 = <b>200 J</b>
-</div>
-
-<div class="example-box">
-<strong> Lever</strong><br><br>
-Longer effort arm reduces force needed.<br>
-Distance increases to balance energy.
-</div>
-
-<div class="example-box">
-<strong> Wheel & Axle</strong><br><br>
-Large wheel multiplies force at axle for easier movement.
-</div>
-
-<div class="example-box">
-<strong> Wedge & Screw</strong><br><br>
-Convert force into cutting or tightening action.
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Work is only done when force causes movement.</div>
-<div class="keyfact"> Machines change force and distance, not total work.</div>
-<div class="keyfact"> Energy is always conserved (never created or destroyed).</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking effort always equals work</li>
-<li>Forgetting displacement is required</li>
-<li>Thinking machines reduce total work (they don’t)</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Work = “Force causes movement” <br>
-No movement = No work 
-</div>
-`,
-  [
-    {
-      q: "A force of 20N moves an object 3m. Find work done.",
-      hint: "Use W = F × d",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: Identify values → F = 20 N, d = 3 m",
-        "Step 2: Write formula → W = F × d",
-        "Step 3: Substitute values → W = 20 × 3",
-        "Step 4: Calculate → W = 60 J",
-      ],
-      ans: "60 J",
-      final_check: "Work must be in joules (J)",
-      common_mistakes: [
-        "Dividing instead of multiplying",
-        "Forgetting units (N or m)",
-      ],
-      explanation:
-        "Work is done when a force causes displacement in its direction.",
-    },
-
-    {
-      q: "Why is no work done when pushing a wall?",
-      hint: "no movement",
-      ans: "Because there is no displacement, so work done is zero.",
-      explanation:
-        "Work requires both force and movement in the direction of the force. A wall does not move, so displacement is zero.",
-    },
-
-    {
-      q: "Do machines reduce total work done? Explain.",
-      hint: "energy conservation",
-      ans: "No, machines only change force and distance; total work remains the same (ignoring losses).",
-      explanation:
-        "Machines make work easier by changing force and distance, but they do not reduce total energy required due to conservation of energy.",
-    },
-
-    {
-      q: "A force of 10N moves an object 6m. Find work done.",
-      hint: "W = F × d",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: F = 10 N, d = 6 m",
-        "Step 2: W = 10 × 6",
-        "Step 3: W = 60 J",
-      ],
-      ans: "60 J",
-      final_check: "Answer in joules",
-      common_mistakes: ["Using wrong formula", "Ignoring distance unit"],
-      explanation: "Work increases when force or distance increases.",
-    },
-
-    {
-      q: "A force of 15N moves an object 4m. Find work done.",
-      hint: "W = Fd",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: F = 15 N, d = 4 m",
-        "Step 2: W = 15 × 4",
-        "Step 3: W = 60 J",
-      ],
-      ans: "60 J",
-      final_check: "Correct unit is joules",
-      common_mistakes: ["Adding instead of multiplying", "Forgetting formula"],
-      explanation: "Work depends directly on force and displacement.",
-    },
-
-    {
-      q: "A force of 25N moves an object 2m. Find work done.",
-      hint: "W = F × d",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: F = 25 N, d = 2 m",
-        "Step 2: W = 25 × 2",
-        "Step 3: W = 50 J",
-      ],
-      ans: "50 J",
-      final_check: "Check multiplication",
-      common_mistakes: ["Wrong operation", "Unit confusion"],
-      explanation: "Work increases with force applied.",
-    },
-
-    {
-      q: "A force of 30N moves an object 5m. Find work done.",
-      hint: "W = Fd",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: F = 30 N, d = 5 m",
-        "Step 2: W = 30 × 5",
-        "Step 3: W = 150 J",
-      ],
-      ans: "150 J",
-      final_check: "Unit must be joules",
-      common_mistakes: ["Incorrect multiplication", "Ignoring formula"],
-      explanation: "More force or distance means more work done.",
-    },
-
-    {
-      q: "A force of 40N moves an object 1.5m. Find work done.",
-      hint: "W = Fd",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: F = 40 N, d = 1.5 m",
-        "Step 2: W = 40 × 1.5",
-        "Step 3: W = 60 J",
-      ],
-      ans: "60 J",
-      final_check: "Check decimal multiplication",
-      common_mistakes: ["Ignoring decimal values", "Wrong calculation"],
-      explanation: "Work can involve decimal distances.",
-    },
-
-    {
-      q: "A force of 12N moves an object 8m. Find work done.",
-      hint: "W = Fd",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: F = 12 N, d = 8 m",
-        "Step 2: W = 12 × 8",
-        "Step 3: W = 96 J",
-      ],
-      ans: "96 J",
-      final_check: "Correct unit joules",
-      common_mistakes: ["Wrong multiplication", "Skipping units"],
-      explanation: "Work depends on both force and displacement.",
-    },
-
-    {
-      q: "A force of 50N moves an object 0.5m. Find work done.",
-      hint: "W = Fd",
-      formula: "W = Fd",
-      steps: [
-        "Step 1: F = 50 N, d = 0.5 m",
-        "Step 2: W = 50 × 0.5",
-        "Step 3: W = 25 J",
-      ],
-      ans: "25 J",
-      final_check: "Check decimal multiplication",
-      common_mistakes: ["Ignoring decimal point", "Wrong formula use"],
-      explanation: "Even small distances produce work when force is large.",
-    },
-  ],
-);
-
-/* =========================
-   2. POWER
-========================= */
-
-add(
-  "physics",
-  "energy",
-  "Power",
-  `<h2>Power (Advanced)</h2>
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Power describes how quickly work is done or how fast energy is transferred.
-Two systems can do the same amount of work, but the one that finishes faster has higher power.
-</p>
-
-<div class="keyfact"> KEY IDEA: Power measures the RATE of doing work or transferring energy.</div>
-
-<h3> CLEAR DEFINITION</h3>
-<p>
-<b>Power</b> is the rate of doing work or the rate of energy transfer.
-</p>
-
-<h3> KEY POINTS</h3>
-<ul>
-<li>Power = work ÷ time</li>
-<li>Unit: Watt (W)</li>
-<li>1 Watt = 1 Joule per second</li>
-<li>Higher power → faster energy transfer</li>
-<li>Power is a scalar quantity</li>
-</ul>
-
-<div class="formula">
-P = W / t
-</div>
-
-<h3> STEP-BY-STEP WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<strong> Example 1: Basic Power</strong><br><br>
-
-A machine does <b>200 J</b> of work in <b>10 s</b>.<br><br>
-
-<b>Step 1:</b> Formula<br>
-P = W ÷ t<br><br>
-
-<b>Step 2:</b> Substitute<br>
-P = 200 ÷ 10<br><br>
-
-<b>Step 3:</b> Calculate<br>
-P = <b>20 W</b>
-</div>
-
-<div class="example-box">
-<strong> Example 2: Faster Energy Transfer</strong><br><br>
-
-A machine does <b>500 J</b> in <b>5 s</b>.<br><br>
-
-<b>Step 1:</b> Formula<br>
-P = W ÷ t<br><br>
-
-<b>Step 2:</b> Substitute<br>
-P = 500 ÷ 5<br><br>
-
-<b>Step 3:</b> Calculate<br>
-P = <b>100 W</b>
-</div>
-
-<div class="example-box">
-<strong> Example 3: Key Insight Comparison</strong><br><br>
-
-Machine A: 200 J in 10 s → 20 W<br>
-Machine B: 200 J in 5 s → 40 W<br><br>
-
-<b> Conclusion:</b> Same work, but Machine B is more powerful because it is faster.
-</div>
-
-<h3> OTHER POWER FORMULAS</h3>
-
-<div class="formula">
-Electrical Power: P = IV
-</div>
-
-<ul>
-<li>I = current (A)</li>
-<li>V = voltage (V)</li>
-</ul>
-
-<div class="formula">
-Mechanical Power: P = Fv
-</div>
-
-<ul>
-<li>F = force (N)</li>
-<li>v = velocity (m/s)</li>
-</ul>
-
-<h3> ELECTRICAL POWER INSIGHT</h3>
-<p>
-Electrical power shows how fast electrical energy is used or transferred.
-</p>
-
-<div class="example-box">
-<strong> Example:</strong><br><br>
-
-A device uses 2 A current and 12 V.<br><br>
-
-P = IV = 2 × 12 = <b>24 W</b>
-</div>
-
-<h3> POWER TRANSMISSION (VERY IMPORTANT)</h3>
-
-<div class="formula">
-Power loss = I²R
-</div>
-
-<h3> KEY IDEA</h3>
-<p>
-Electricity is transmitted over long distances using HIGH VOLTAGE and LOW CURRENT.
-</p>
-
-<ul>
-<li>High voltage → low current</li>
-<li>Low current → less heat loss</li>
-<li>Less energy wasted in wires</li>
-</ul>
-
-<div class="keyfact"> KEY INSIGHT: Reducing current is the most effective way to reduce energy loss.</div>
-
-<h3> TRANSFORMERS</h3>
-
-<div class="formula">
-Vp / Vs = Np / Ns
-</div>
-
-<div class="formula">
-Power conservation: VpIp = VsIs
-</div>
-
-<div class="example-box">
-<strong> Example:</strong><br><br>
-
-Np = 100, Ns = 500<br><br>
-
-<b>Step 1:</b> Ns > Np → voltage increases (step-up transformer)<br>
-<b>Step 2:</b> Used in power transmission<br><br>
-
-<b> Result:</b> Voltage increases, current decreases
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Power measures how fast energy is used.</div>
-<div class="keyfact"> Same work done faster = more power.</div>
-<div class="keyfact"> High voltage reduces energy loss in cables.</div>
-<div class="keyfact"> Transformers help control voltage for safe transmission.</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Confusing power with energy</li>
-<li>Thinking power depends only on force or only on work</li>
-<li>Forgetting that time is crucial in power calculations</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Power = “How fast energy is used” ⏱<br>
-Fast work = high power 
-</div>
-`,
-  [
-    {
-      q: "A machine uses 500J in 5s. Find power.",
-      hint: "Use P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: Identify values → W = 500 J, t = 5 s",
-        "Step 2: Write formula → P = W / t",
-        "Step 3: Substitute → P = 500 / 5",
-        "Step 4: Calculate → P = 100 W",
-      ],
-      ans: "100 W",
-      final_check: "Unit must be watts (W)",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Ignoring time unit",
-      ],
-      explanation: "Power is the rate of energy transfer per unit time.",
-    },
-
-    {
-      q: "What is the unit of power?",
-      hint: "SI unit",
-      ans: "Watt (W)",
-      explanation:
-        "Power is measured in watts, where 1 watt = 1 joule per second.",
-    },
-
-    {
-      q: "Why do power companies use high voltage transmission?",
-      hint: "reduce energy loss",
-      ans: "To reduce current and minimize energy loss (I²R losses).",
-      explanation:
-        "Higher voltage reduces current, and since power loss in cables depends on I²R, lower current reduces energy wasted as heat.",
-    },
-
-    {
-      q: "A device uses 1200 J of energy in 6 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 1200 J, t = 6 s",
-        "Step 2: P = 1200 / 6",
-        "Step 3: P = 200 W",
-      ],
-      ans: "200 W",
-      final_check: "Answer in watts",
-      common_mistakes: ["Using wrong formula", "Forgetting division"],
-      explanation: "Power measures how quickly energy is used.",
-    },
-
-    {
-      q: "A motor does 3000 J of work in 10 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 3000 J, t = 10 s",
-        "Step 2: P = 3000 / 10",
-        "Step 3: P = 300 W",
-      ],
-      ans: "300 W",
-      final_check: "Check units",
-      common_mistakes: ["Mixing up work and power", "Incorrect division"],
-      explanation: "Power shows energy transfer rate.",
-    },
-
-    {
-      q: "A bulb uses 600 J in 3 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 600 J, t = 3 s",
-        "Step 2: P = 600 / 3",
-        "Step 3: P = 200 W",
-      ],
-      ans: "200 W",
-      final_check: "Unit is watts",
-      common_mistakes: ["Incorrect division", "Forgetting time unit"],
-      explanation: "Electrical devices convert energy per second.",
-    },
-
-    {
-      q: "A heater uses 4500 J in 15 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 4500 J, t = 15 s",
-        "Step 2: P = 4500 / 15",
-        "Step 3: P = 300 W",
-      ],
-      ans: "300 W",
-      final_check: "Correct unit is watts",
-      common_mistakes: ["Wrong formula application", "Arithmetic errors"],
-      explanation: "Power depends on how fast energy is used.",
-    },
-
-    {
-      q: "A machine uses 9000 J in 30 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 9000 J, t = 30 s",
-        "Step 2: P = 9000 / 30",
-        "Step 3: P = 300 W",
-      ],
-      ans: "300 W",
-      final_check: "Answer in watts",
-      common_mistakes: ["Incorrect division", "Confusing units"],
-      explanation: "Power is energy per unit time.",
-    },
-
-    {
-      q: "A motor transfers 1500 J in 5 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 1500 J, t = 5 s",
-        "Step 2: P = 1500 / 5",
-        "Step 3: P = 300 W",
-      ],
-      ans: "300 W",
-      final_check: "Check unit",
-      common_mistakes: ["Wrong substitution", "Arithmetic mistakes"],
-      explanation:
-        "Power is directly proportional to energy and inversely to time.",
-    },
-
-    {
-      q: "A device uses 2400 J in 8 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 2400 J, t = 8 s",
-        "Step 2: P = 2400 / 8",
-        "Step 3: P = 300 W",
-      ],
-      ans: "300 W",
-      final_check: "Unit is watts",
-      common_mistakes: ["Incorrect division", "Ignoring time"],
-      explanation: "Power tells how fast energy is used.",
-    },
-
-    {
-      type: "calc",
-      q: "A generator produces 10000 J in 20 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W / t",
-      steps: [
-        "Step 1: W = 10000 J, t = 20 s",
-        "Step 2: P = 10000 / 20",
-        "Step 3: P = 500 W",
-      ],
-      ans: "500 W",
-      final_check: "Correct unit watts",
-      common_mistakes: ["Wrong formula", "Calculation errors"],
-      explanation:
-        "Generators convert mechanical energy into electrical power.",
-    },
-  ],
-);
-
-/* =========================
-   3. ENERGY CONVERSION
-========================= */
-
-add(
-  "physics",
-  "energy",
-  "Energy Conversion",
-  `<h2>Energy Conversion</h2>
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Energy cannot be created or destroyed. It can only be transformed from one form into another.
-This is known as the <b>principle of conservation of energy</b>.
-</p>
-
-<div class="keyfact"> KEY IDEA: Energy changes form, but total energy in a system always stays constant.</div>
-
-<h3> KEY POINTS</h3>
-<ul>
-<li>Energy is conserved in all processes</li>
-<li>It only changes from one form to another</li>
-<li>Some energy is often “wasted” as heat or sound</li>
-<li>No system is 100% efficient</li>
-</ul>
-
-<h3> COMMON ENERGY TRANSFORMATIONS</h3>
-
-<ul>
-<li><b>Falling object:</b> Gravitational Potential Energy → Kinetic Energy</li>
-<li><b>Car engine:</b> Chemical Energy → Kinetic Energy + Heat Energy</li>
-<li><b>Electric bulb:</b> Electrical Energy → Light Energy + Heat Energy</li>
-<li><b>Battery:</b> Chemical Energy → Electrical Energy</li>
-<li><b>Wind turbine:</b> Kinetic Energy (wind) → Electrical Energy</li>
-</ul>
-
-<h3> STEP-BY-STEP EXPLANATIONS</h3>
-
-<div class="example-box">
-<strong> Example 1: Falling Object</strong><br><br>
-
-A stone is dropped from a height.<br><br>
-
-<b>Step 1:</b> At the top, it has gravitational potential energy (stored energy)<br>
-<b>Step 2:</b> As it falls, height decreases → GPE reduces<br>
-<b>Step 3:</b> Speed increases → kinetic energy increases<br><br>
-
-<b> Energy conversion:</b> GPE → KE
-</div>
-
-<div class="example-box">
-<strong> Example 2: Car Engine</strong><br><br>
-
-A car burns fuel to move.<br><br>
-
-<b>Step 1:</b> Fuel contains chemical energy<br>
-<b>Step 2:</b> Engine burns fuel → releases energy<br>
-<b>Step 3:</b> Energy turns into motion + heat<br><br>
-
-<b> Energy conversion:</b> Chemical → Kinetic + Heat
-</div>
-
-<div class="example-box">
-<strong> Example 3: Electric Bulb</strong><br><br>
-
-An electric bulb is switched on.<br><br>
-
-<b>Step 1:</b> Electrical energy flows into bulb<br>
-<b>Step 2:</b> Filament heats up<br>
-<b>Step 3:</b> Light is produced<br><br>
-
-<b> Energy conversion:</b> Electrical → Light + Heat
-</div>
-
-<div class="example-box">
-<strong> Example 4: Battery Device</strong><br><br>
-
-A phone battery powers the device.<br><br>
-
-<b>Step 1:</b> Battery stores chemical energy<br>
-<b>Step 2:</b> Chemical energy converts to electrical energy<br>
-<b>Step 3:</b> Electrical energy powers the phone<br><br>
-
-<b> Energy conversion:</b> Chemical → Electrical
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Energy is never lost, only transformed.</div>
-<div class="keyfact"> Some energy is always transferred as heat (wasted energy).</div>
-<div class="keyfact"> Falling objects continuously convert energy between forms.</div>
-<div class="keyfact"> Real systems are never 100% efficient.</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking energy is destroyed (it is only transformed)</li>
-<li>Forgetting heat loss in real systems</li>
-<li>Confusing energy type changes with energy loss</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Energy = “Shape-shifter” <br>
-It never disappears — only changes form
-</div>
-`,
-  [
-    {
-      q: "What happens to energy when a car moves?",
-      hint: "fuel transformation",
-      ans: "Chemical energy is converted into kinetic energy and heat.",
-      explanation:
-        "The fuel in the car contains chemical energy which is released during combustion and transformed into motion (kinetic energy) and heat energy due to engine friction.",
-    },
-
-    {
-      q: "Is energy ever destroyed?",
-      hint: "law of conservation",
-      ans: "No, energy is always conserved and only changes form.",
-      explanation:
-        "According to the law of conservation of energy, energy cannot be created or destroyed, only transformed from one form to another.",
-    },
-
-    {
-      q: "What energy change happens in a falling object?",
-      hint: "height to motion",
-      ans: "Gravitational potential energy → kinetic energy",
-      explanation:
-        "As an object falls, its stored potential energy due to height is converted into kinetic energy as it gains speed.",
-    },
-
-    {
-      q: "A 2 kg object is lifted to a height of 5 m. Find its potential energy (g = 10 m/s²).",
-      hint: "Use PE = mgh",
-      formula: "PE = mgh",
-      steps: [
-        "Step 1: Identify values → m = 2 kg, g = 10 m/s², h = 5 m",
-        "Step 2: Substitute into formula → PE = 2 × 10 × 5",
-        "Step 3: Multiply → PE = 100 J",
-      ],
-      ans: "100 J",
-      final_check: "Energy is in joules (J)",
-      common_mistakes: [
-        "Forgetting to include gravity (g)",
-        "Using wrong height value",
-      ],
-      explanation:
-        "Potential energy depends on mass, height, and gravitational field strength.",
-    },
-
-    {
-      q: "A 3 kg object moves at 4 m/s. Find kinetic energy.",
-      hint: "Use KE = 1/2 mv²",
-      formula: "KE = 1/2 mv²",
-      steps: [
-        "Step 1: m = 3 kg, v = 4 m/s",
-        "Step 2: Square velocity → 4² = 16",
-        "Step 3: Substitute → KE = 1/2 × 3 × 16",
-        "Step 4: Multiply → KE = 24 J",
-      ],
-      ans: "24 J",
-      final_check: "Unit must be joules (J)",
-      common_mistakes: [
-        "Forgetting to square velocity",
-        "Incorrect multiplication",
-      ],
-      explanation: "Kinetic energy increases with velocity squared.",
-    },
-    {
-      q: "A car engine does 5000 J of work in 10 seconds. Find power.",
-      hint: "Use P = W/t",
-      formula: "P = W/t",
-      steps: [
-        "Step 1: W = 5000 J, t = 10 s",
-        "Step 2: Substitute → P = 5000 / 10",
-        "Step 3: Calculate → P = 500 W",
-      ],
-      ans: "500 W",
-      final_check: "Power is in watts (W)",
-      common_mistakes: ["Reversing formula", "Ignoring time unit"],
-      explanation: "Power is the rate of energy transfer per second.",
-    },
-
-    {
-      q: "A 4 kg object is lifted 3 m high. Find potential energy.",
-      hint: "PE = mgh",
-      formula: "PE = mgh",
-      steps: [
-        "Step 1: m = 4 kg, g = 10 m/s², h = 3 m",
-        "Step 2: Substitute → PE = 4 × 10 × 3",
-        "Step 3: Multiply → PE = 120 J",
-      ],
-      ans: "120 J",
-      final_check: "Energy in joules",
-      common_mistakes: ["Forgetting gravity", "Wrong multiplication order"],
-      explanation: "Higher mass or height increases potential energy.",
-    },
-
-    {
-      q: "A 5 kg object moves at 2 m/s. Find kinetic energy.",
-      hint: "KE = 1/2 mv²",
-      formula: "KE = 1/2 mv²",
-      steps: [
-        "Step 1: m = 5 kg, v = 2 m/s",
-        "Step 2: v² = 4",
-        "Step 3: KE = 1/2 × 5 × 4",
-        "Step 4: KE = 10 J",
-      ],
-      ans: "10 J",
-      final_check: "Correct unit is joules",
-      common_mistakes: ["Not squaring velocity", "Wrong multiplication"],
-      explanation:
-        "Even small velocity changes affect kinetic energy significantly.",
-    },
-
-    {
-      q: "A machine converts 2000 J of energy in 4 s. Find power.",
-      hint: "P = W/t",
-      formula: "P = W/t",
-      steps: [
-        "Step 1: W = 2000 J, t = 4 s",
-        "Step 2: P = 2000 / 4",
-        "Step 3: P = 500 W",
-      ],
-      ans: "500 W",
-      final_check: "Power in watts",
-      common_mistakes: ["Confusing work with power", "Incorrect division"],
-      explanation: "Power measures how fast energy is used or transferred.",
-    },
-
-    {
-      q: "A 1 kg object falls from 10 m. Find potential energy before falling.",
-      hint: "PE = mgh",
-      formula: "PE = mgh",
-      steps: [
-        "Step 1: m = 1 kg, g = 10 m/s², h = 10 m",
-        "Step 2: PE = 1 × 10 × 10",
-        "Step 3: PE = 100 J",
-      ],
-      ans: "100 J",
-      final_check: "Energy in joules",
-      common_mistakes: ["Forgetting height", "Using wrong formula"],
-      explanation: "All potential energy becomes kinetic energy during fall.",
-    },
-
-    {
-      q: "A system has 600 J of energy input and 150 J is lost as heat. Find useful energy output.",
-      hint: "useful = input - loss",
-      formula: "Useful energy = Input - Loss",
-      steps: [
-        "Step 1: Input = 600 J",
-        "Step 2: Loss = 150 J",
-        "Step 3: Useful = 600 - 150",
-        "Step 4: Useful = 450 J",
-      ],
-      ans: "450 J",
-      final_check: "Energy conservation applied",
-      common_mistakes: [
-        "Adding instead of subtracting",
-        "Ignoring wasted energy",
-      ],
-      explanation: "Some energy is always lost, usually as heat or sound.",
-    },
-  ],
-);
-
-/* =========================
-   4. CONSERVATION OF ENERGY
-========================= */
-
-add(
-  "physics",
-  "energy",
-  "Conservation of Energy",
-  `<h2>Conservation of Energy</h2>
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-The law of conservation of energy states that energy cannot be created or destroyed.
-It can only change from one form to another, but the total energy in a closed system remains constant.
-</p>
-
-<div class="keyfact"> KEY IDEA: Total energy before = Total energy after (always conserved).</div>
-
-<h3> IMPORTANT PRINCIPLE (MECHANICAL ENERGY)</h3>
-<p>
-In falling objects and many motion systems:
-</p>
-
-<div class="formula">
-Potential Energy = Kinetic Energy<br>
-mgh = ½mv²
-</div>
-
-<ul>
-<li>m = mass (kg)</li>
-<li>g = gravitational field strength (≈ 10 m/s²)</li>
-<li>h = height (m)</li>
-<li>v = velocity (m/s)</li>
-</ul>
-
-<div class="keyfact"> KEY INSIGHT: As height decreases, speed increases — energy is being transferred.</div>
-
-<h3> STEP-BY-STEP WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<strong> Example 1: Energy at Height</strong><br><br>
-
-A <b>2 kg</b> object is dropped from a height of <b>10 m</b>.<br><br>
-
-<b>Step 1: Calculate potential energy</b><br>
-PE = mgh = 2 × 10 × 10<br><br>
-
-<b>Step 2: Solve</b><br>
-PE = <b>200 J</b><br><br>
-
-<b> Interpretation:</b> This is the total energy the object has before falling.
-</div>
-
-<div class="example-box">
-<strong> Example 2: Energy at Ground</strong><br><br>
-
-At the bottom of the fall:<br><br>
-
-<b>Step 1:</b> Height becomes zero → PE = 0<br>
-<b>Step 2:</b> All energy becomes kinetic energy<br>
-<b>Step 3:</b> KE = 200 J<br><br>
-
-<b> Final Conclusion:</b> Energy is transferred, not lost
-</div>
-
-<div class="example-box">
-<strong> Example 3: Partial Height Fall</strong><br><br>
-
-A 2 kg object falls from 5 m.<br><br>
-
-<b>Step 1:</b> Total energy = mgh = 2 × 10 × 5 = <b>100 J</b><br><br>
-
-<b>Step 2:</b> During fall:<br>
-PE decreases while KE increases<br><br>
-
-<b> Final Insight:</b> Total energy remains constant at 100 J
-</div>
-
-<div class="example-box">
-<strong> Example 4: Real-World Losses</strong><br><br>
-
-When an object hits the ground:<br><br>
-
-<b>Step 1:</b> KE does not disappear<br>
-<b>Step 2:</b> It converts into heat, sound, and deformation energy<br><br>
-
-<b> Final Insight:</b> Energy is conserved, but becomes less useful
-</div>
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Energy is always conserved in a closed system.</div>
-<div class="keyfact"> Potential energy transforms into kinetic energy during سقوط (fall).</div>
-<div class="keyfact"> Real systems lose usable energy as heat and sound.</div>
-<div class="keyfact"> Total energy never decreases — it only changes form.</div>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking energy is lost when motion stops</li>
-<li>Forgetting energy converts into heat/sound</li>
-<li>Confusing energy loss with energy transformation</li>
-</ul>
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-Energy = “Never dies, only transforms” <br>
-Total in = Total out 
-</div>
-`,
-  [
-  {
-    q: "A 2kg object falls from 5m. Find total energy.",
-    ans: "100J",
-    sol: "mgh = 2 × 10 × 5 = 100J",
-    steps: [
-      "Step 1: Identify the given values: mass (m) = 2kg, height (h) = 5m, and gravitational acceleration (g) ≈ 10m/s².",
-      "Step 2: Recall the formula for gravitational potential energy: PE = m × g × h.",
-      "Step 3: Substitute the known values into the equation: PE = 2 × 10 × 5.",
-      "Step 4: Calculate the final value to find the total mechanical energy: 100 Joules (100J)."
-    ]
-  },
-
-  {
-    q: "A 5kg object is lifted to a height of 8m. Calculate its potential energy.",
-    ans: "400J",
-    sol: "PE = mgh = 5 × 10 × 8 = 400J",
-    steps: [
-      "Step 1: Identify the values: m = 5kg, h = 8m, g = 10m/s².",
-      "Step 2: Recall the formula PE = m × g × h.",
-      "Step 3: Substitute the values: PE = 5 × 10 × 8.",
-      "Step 4: Calculate the answer: 400 Joules."
-    ]
-  },
-
-  {
-    q: "A 4kg object moves at 6m/s. Find its kinetic energy.",
-    ans: "72J",
-    sol: "KE = ½mv² = ½ × 4 × 6² = 72J",
-    steps: [
-      "Step 1: Identify the mass (4kg) and velocity (6m/s).",
-      "Step 2: Recall the formula KE = ½mv².",
-      "Step 3: Square the velocity: 6² = 36.",
-      "Step 4: Calculate: ½ × 4 × 36 = 72J."
-    ]
-  },
-
-  {
-    q: "A car of mass 1000kg travels at 20m/s. Calculate its kinetic energy.",
-    ans: "200000J",
-    sol: "KE = ½ × 1000 × 20² = 200000J",
-    steps: [
-      "Step 1: Identify m = 1000kg and v = 20m/s.",
-      "Step 2: Recall KE = ½mv².",
-      "Step 3: Square the speed: 20² = 400.",
-      "Step 4: Calculate: ½ × 1000 × 400 = 200000J."
-    ]
-  },
-
-  {
-    q: "A 10N force moves an object through 6m. Calculate the work done.",
-    ans: "60J",
-    sol: "Work = Force × Distance = 10 × 6 = 60J",
-    steps: [
-      "Step 1: Identify force = 10N and distance = 6m.",
-      "Step 2: Recall the formula Work = Force × Distance.",
-      "Step 3: Substitute the values: 10 × 6.",
-      "Step 4: Calculate the work done: 60J."
-    ]
-  },
-
-  {
-    q: "A machine does 500J of work in 10 seconds. Calculate its power.",
-    ans: "50W",
-    sol: "Power = Work ÷ Time = 500 ÷ 10 = 50W",
-    steps: [
-      "Step 1: Identify work = 500J and time = 10s.",
-      "Step 2: Recall the formula Power = Work ÷ Time.",
-      "Step 3: Substitute the values into the formula.",
-      "Step 4: Divide 500 by 10 to obtain 50W."
-    ]
-  },
-
-  {
-    q: "A 3kg object is raised 15m above the ground. Find its potential energy.",
-    ans: "450J",
-    sol: "PE = 3 × 10 × 15 = 450J",
-    steps: [
-      "Step 1: Identify m = 3kg, h = 15m, g = 10m/s².",
-      "Step 2: Recall PE = mgh.",
-      "Step 3: Substitute: 3 × 10 × 15.",
-      "Step 4: Calculate: 450J."
-    ]
-  },
-
-  {
-    q: "A 6kg object moves with a speed of 5m/s. Find its kinetic energy.",
-    ans: "75J",
-    sol: "KE = ½ × 6 × 5² = 75J",
-    steps: [
-      "Step 1: Identify mass and velocity.",
-      "Step 2: Recall KE = ½mv².",
-      "Step 3: Square the velocity: 5² = 25.",
-      "Step 4: Calculate: ½ × 6 × 25 = 75J."
-    ]
-  },
-
-  {
-    q: "A 50N force pushes a box for 12m. Calculate the work done.",
-    ans: "600J",
-    sol: "Work = 50 × 12 = 600J",
-    steps: [
-      "Step 1: Identify force = 50N and distance = 12m.",
-      "Step 2: Recall Work = Force × Distance.",
-      "Step 3: Multiply the given values.",
-      "Step 4: The work done is 600J."
-    ]
-  },
-
-  {
-    q: "A motor produces 2400J of work in 60 seconds. Find its power.",
-    ans: "40W",
-    sol: "Power = 2400 ÷ 60 = 40W",
-    steps: [
-      "Step 1: Identify work = 2400J and time = 60s.",
-      "Step 2: Recall Power = Work ÷ Time.",
-      "Step 3: Substitute the values.",
-      "Step 4: Divide 2400 by 60 to get 40W."
-    ]
-  },
-
-  {
-    q: "A 7kg object is placed 9m above the ground. Calculate its potential energy.",
-    ans: "630J",
-    sol: "PE = 7 × 10 × 9 = 630J",
-    steps: [
-      "Step 1: Identify m = 7kg, h = 9m.",
-      "Step 2: Recall PE = mgh.",
-      "Step 3: Substitute the values using g = 10m/s².",
-      "Step 4: Calculate 630J."
-    ]
-  },
-
-  {
-    q: "A cyclist and bicycle have a combined mass of 80kg and move at 10m/s. Calculate the kinetic energy.",
-    ans: "4000J",
-    sol: "KE = ½ × 80 × 10² = 4000J",
-    steps: [
-      "Step 1: Identify mass = 80kg and velocity = 10m/s.",
-      "Step 2: Recall KE = ½mv².",
-      "Step 3: Square the velocity: 10² = 100.",
-      "Step 4: Calculate: ½ × 80 × 100 = 4000J."
-    ]
-  },
-
-  {
-    q: "A crane lifts a 200kg load by 5m. Calculate the gain in potential energy.",
-    ans: "10000J",
-    sol: "PE = 200 × 10 × 5 = 10000J",
-    steps: [
-      "Step 1: Identify m = 200kg and h = 5m.",
-      "Step 2: Recall PE = mgh.",
-      "Step 3: Substitute the values.",
-      "Step 4: Calculate the gain in potential energy: 10000J."
-    ]
-  },
-
-  {
-    q: "A machine uses 1500J of energy in 30 seconds. Find its power output.",
-    ans: "50W",
-    sol: "Power = 1500 ÷ 30 = 50W",
-    steps: [
-      "Step 1: Identify work = 1500J and time = 30s.",
-      "Step 2: Recall Power = Work ÷ Time.",
-      "Step 3: Substitute the values.",
-      "Step 4: Divide 1500 by 30 to get 50W."
-    ]
-  },
-
-  {
-    q: "A 12N force moves an object 15m. Calculate the work done.",
-    ans: "180J",
-    sol: "Work = 12 × 15 = 180J",
-    steps: [
-      "Step 1: Identify force = 12N and distance = 15m.",
-      "Step 2: Recall Work = Force × Distance.",
-      "Step 3: Substitute the values.",
-      "Step 4: Calculate: 180J."
-    ]
-  }
-],
-);
-add(
-  "physics",
-  "energy",
-  "Kinetic & Potential Energy",
-  `<h2>Kinetic & Potential Energy</h2>
-
-<h3> FOUNDATION UNDERSTANDING</h3>
-<p>
-Energy exists in different forms. Two of the most important forms in mechanics are:
-<b>kinetic energy</b> (energy of motion) and <b>potential energy</b> (stored energy due to position).
-</p>
-
-<div class="keyfact"> KEY IDEA: Energy is either stored (potential) or moving (kinetic).</div>
-
----
-
-<h3> KINETIC ENERGY (KE)</h3>
-
-<h3> DEFINITION</h3>
-<p>
-Kinetic energy is the energy an object has due to its motion.
-Any moving object has kinetic energy.
-</p>
-
-<div class="formula">
-KE = ½mv²
-</div>
-
-<ul>
-<li>m = mass (kg)</li>
-<li>v = velocity (m/s)</li>
-<li>KE = kinetic energy (Joules)</li>
-</ul>
-
-<div class="keyfact"> KEY INSIGHT: If velocity doubles, kinetic energy becomes 4 times bigger (because of v²).</div>
-
-<h3> WORKED EXAMPLE (KE)</h3>
-
-<div class="example-box">
-<strong> Example:</strong> A 2 kg object moves at 3 m/s.<br><br>
-
-<b>Step 1:</b> Write formula<br>
-KE = ½mv²<br><br>
-
-<b>Step 2:</b> Substitute values<br>
-KE = ½ × 2 × 3²<br><br>
-
-<b>Step 3:</b> Calculate<br>
-KE = 1 × 9 = <b>9 J</b><br><br>
-
-<b> Final Answer:</b> 9 Joules
-</div>
-
----
-
-<h3> POTENTIAL ENERGY (PE)</h3>
-
-<h3> DEFINITION</h3>
-<p>
-Potential energy is stored energy due to position or height in a gravitational field.
-</p>
-
-<div class="formula">
-PE = mgh
-</div>
-
-<ul>
-<li>m = mass (kg)</li>
-<li>g = gravitational field strength (≈ 10 m/s²)</li>
-<li>h = height (m)</li>
-<li>PE = potential energy (Joules)</li>
-</ul>
-
-<div class="keyfact"> KEY INSIGHT: The higher the object, the more potential energy it stores.</div>
-
-<h3> WORKED EXAMPLE (PE)</h3>
-
-<div class="example-box">
-<strong> Example:</strong> A 3 kg object is raised to 4 m height.<br><br>
-
-<b>Step 1:</b> Write formula<br>
-PE = mgh<br><br>
-
-<b>Step 2:</b> Substitute values<br>
-PE = 3 × 10 × 4<br><br>
-
-<b>Step 3:</b> Calculate<br>
-PE = <b>120 J</b><br><br>
-
-<b> Final Answer:</b> 120 Joules
-</div>
-
----
-
-<h3> ENERGY TRANSFORMATION (VERY IMPORTANT)</h3>
-
-<div class="example-box">
-<strong> Falling Object</strong><br><br>
-
-At the top:<br>
-PE is high, KE is low<br><br>
-
-During fall:<br>
-PE decreases → KE increases<br><br>
-
-At bottom:<br>
-PE = 0, KE = maximum<br><br>
-
-<b> Key Idea:</b> PE transforms into KE
-</div>
-
----
-
-<h3> IMPORTANT INSIGHTS</h3>
-<div class="keyfact"> Kinetic energy depends on speed (v² effect makes it very powerful).</div>
-<div class="keyfact"> Potential energy depends on height and mass.</div>
-<div class="keyfact"> Energy constantly switches between KE and PE in motion.</div>
-<div class="keyfact"> Total mechanical energy = KE + PE (in ideal systems).</div>
-
----
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Thinking only moving objects have energy (false — stored energy also counts)</li>
-<li>Forgetting velocity is squared in KE formula</li>
-<li>Confusing height direction in PE problems</li>
-</ul>
-
----
-
-<h3> MEMORY TRICK</h3>
-<div class="keyfact">
-KE = “Energy of movement” ‍<br>
-PE = “Energy of position” 
-</div>
-`,
-  [
-    {
-      q: "A 2 kg object moves at 3 m/s. Find kinetic energy.",
-      hint: "Use KE = ½mv²",
-      formula: "KE = 1/2 mv²",
-      steps: [
-        "Step 1: Identify values → m = 2 kg, v = 3 m/s",
-        "Step 2: Substitute into formula → KE = 1/2 × 2 × 3²",
-        "Step 3: Square velocity → 3² = 9",
-        "Step 4: Multiply → KE = 1 × 9",
-        "Step 5: Final answer → KE = 9 J",
-      ],
-      ans: "9 J",
-      final_check: "Energy should be in joules (J)",
-      common_mistakes: [
-        "Forgetting to square velocity",
-        "Using mv instead of mv²",
-      ],
-      explanation: "Kinetic energy depends on mass and the square of velocity.",
-    },
-
-    {
-      q: "A 3 kg object is raised to a height of 4 m. Find potential energy.",
-      hint: "Use PE = mgh",
-      formula: "PE = mgh",
-      steps: [
-        "Step 1: Identify values → m = 3 kg, g = 10 m/s², h = 4 m",
-        "Step 2: Substitute → PE = 3 × 10 × 4",
-        "Step 3: Multiply → PE = 120 J",
-      ],
-      ans: "120 J",
-      final_check: "Unit must be joules (J)",
-      common_mistakes: ["Forgetting gravity (g)", "Using wrong height value"],
-      explanation: "Potential energy depends on mass, height, and gravity.",
-    },
-
-    {
-      q: "What happens to potential energy when an object falls?",
-      hint: "energy conversion",
-      ans: "It is converted into kinetic energy.",
-      explanation:
-        "As height decreases, potential energy is transformed into motion energy.",
-    },
-
-    {
-      q: "A 5 kg object moves at 4 m/s. Find kinetic energy.",
-      hint: "KE = ½mv²",
-      formula: "KE = 1/2 mv²",
-      steps: [
-        "Step 1: m = 5 kg, v = 4 m/s",
-        "Step 2: Substitute → KE = 1/2 × 5 × 4²",
-        "Step 3: 4² = 16",
-        "Step 4: KE = 2.5 × 16",
-        "Step 5: KE = 40 J",
-      ],
-      ans: "40 J",
-      final_check: "Correct unit is joules",
-      common_mistakes: [
-        "Forgetting square of velocity",
-        "Incorrect multiplication",
-      ],
-      explanation: "Kinetic energy increases with mass and velocity squared.",
-    },
-
-    {
-      q: "A 2 kg object is lifted to 6 m. Find potential energy.",
-      hint: "PE = mgh",
-      formula: "PE = mgh",
-      steps: [
-        "Step 1: m = 2 kg, g = 10, h = 6 m",
-        "Step 2: Substitute → PE = 2 × 10 × 6",
-        "Step 3: Calculate → PE = 120 J",
-      ],
-      ans: "120 J",
-      final_check: "Energy in joules",
-      common_mistakes: ["Forgetting gravity", "Wrong multiplication"],
-      explanation: "Higher height increases potential energy.",
-    },
-
-    {
-      q: "A 4 kg object moves at 2 m/s. Find kinetic energy.",
-      hint: "KE = ½mv²",
-      formula: "KE = 1/2 mv²",
-      steps: [
-        "Step 1: m = 4 kg, v = 2 m/s",
-        "Step 2: Substitute → KE = 1/2 × 4 × 2²",
-        "Step 3: 2² = 4",
-        "Step 4: KE = 2 × 4",
-        "Step 5: KE = 8 J",
-      ],
-      ans: "8 J",
-      final_check: "Check squared velocity",
-      common_mistakes: ["Not squaring velocity", "Wrong formula"],
-      explanation: "Kinetic energy depends on velocity squared.",
-    },
-    {
-      q: "A 1 kg object is lifted 10 m high. Find potential energy.",
-      hint: "PE = mgh",
-      formula: "PE = mgh",
-      steps: [
-        "Step 1: Identify values → m = 1 kg, g = 10 m/s², h = 10 m",
-        "Step 2: Substitute into formula → PE = 1 × 10 × 10",
-        "Step 3: Multiply → PE = 100 J",
-      ],
-      ans: "100 J",
-      final_check: "Energy must be in joules (J)",
-      common_mistakes: [
-        "Forgetting to include gravity (g)",
-        "Using wrong height value",
-        "Multiplying incorrectly",
-      ],
-      explanation:
-        "Potential energy increases with both height and mass because more work is needed to lift an object higher in a gravitational field.",
-    },
-  ],
-);
-/* =========================================================
-   PHYSICS: WAVES (MASTER UPGRADE)
-========================================================= */
-
-/* =========================
-   1. WAVE PROPERTIES
-========================= */
-
-add(
-  "physics",
-  "waves",
-  "Wave properties",
-  `<h2>Wave Properties (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-A wave is a disturbance that transfers <b>energy</b> from one place to another without transferring matter permanently.
-Particles in the medium only oscillate (vibrate) around a fixed position.
-</p>
-
-<p>
-There are two main types of waves:
-</p>
-<ul>
-<li><b>Transverse waves:</b> particles vibrate perpendicular to direction of travel (e.g. water waves, light)</li>
-<li><b>Longitudinal waves:</b> particles vibrate parallel to direction of travel (e.g. sound waves)</li>
-</ul>
-
----
-
-<h3> WELL EXPLAINED NOTES</h3>
-<ul>
-<li><b>Wavelength (λ):</b> Distance between two consecutive crests or troughs (meters)</li>
-
-<li><b>Amplitude (A):</b> Maximum displacement of a particle from its rest position. It determines the energy of the wave.</li>
-
-<li><b>Frequency (f):</b> Number of complete waves passing a point per second (measured in Hertz, Hz)</li>
-
-<li><b>Time Period (T):</b> Time taken for one complete wave cycle (seconds)</li>
-
-<li><b>Wave Speed (v):</b> Distance travelled by the wave per second (m/s)</li>
-</ul>
-
----
-
-<h3> KEY FORMULAS</h3>
-
-<div class="formula">
-v = fλ<br>
-f = 1/T<br>
-T = 1/f<br>
-λ = v/f<br>
-λ = vT
-</div>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: What is frequency?</b><br>
-Frequency is the number of complete waves passing a point in one second. It is measured in Hertz (Hz).
-</div>
-
-<div class="example-box">
-<b>Q2: What is amplitude?</b><br>
-Amplitude is the maximum displacement of particles from the equilibrium position. Higher amplitude = more energy.
-</div>
-
-<div class="example-box">
-<b>Q3: What is time period?</b><br>
-Time period is the time taken for one complete wave cycle. It is the inverse of frequency.
-</div>
-
-<div class="example-box">
-<b>Q4: How do we find frequency?</b><br>
-We use the formula: f = 1/T or f = v/λ depending on given data.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-Wave speed = 20 m/s, frequency = 5 Hz<br>
-λ = v/f = 20/5 = 4 m
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-Speed = 10 m/s, period = 2 s<br>
-First find frequency: f = 1/T = 1/2 = 0.5 Hz<br>
-Then wavelength: λ = v/f = 10/0.5 = 20 m
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-Frequency = 8 Hz, wavelength = 3 m<br>
-Wave speed = v = fλ = 8 × 3 = 24 m/s
-</div>
-
-<div class="example-box">
-<b>Example 4:</b><br>
-Time period = 0.25 s<br>
-Frequency = f = 1/T = 1/0.25 = 4 Hz
-</div>
-
-<div class="example-box">
-<b>Example 5 (Amplitude concept):</b><br>
-Wave A has amplitude 2 cm, Wave B has amplitude 5 cm.<br>
-Wave B carries more energy because amplitude is higher.
-</div>
-
----
-
-<h3> CONTINUOUS PROBLEM (EXAM STYLE)</h3>
-
-<div class="example-box">
-A wave travels along a string with speed 30 m/s. It has a wavelength of 6 m.<br><br>
-
-(a) Find the frequency<br>
-(b) Find the time period<br>
-(c) Explain what happens if amplitude increases<br><br>
-
-Solution:<br>
-(a) f = v/λ = 30/6 = 5 Hz<br>
-(b) T = 1/f = 1/5 = 0.2 s<br>
-(c) Increasing amplitude increases energy but does NOT change speed, frequency, or wavelength.
-</div>
-
----
-
-<h3> IMPORTANT SUMMARY</h3>
-<div class="keyfact">
- Frequency ↑ → wavelength ↓ (if speed is constant)<br>
- Amplitude affects energy only<br>
- Speed depends on medium, not amplitude<br>
- f and T are inversely related
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. A wave has speed 15 m/s and frequency 3 Hz. Find wavelength.<br>
-2. A wave has wavelength 4 m and frequency 6 Hz. Find speed.<br>
-3. Time period is 0.5 s. Find frequency.<br>
-4. A wave has amplitude 10 cm. What does this tell us about its energy?<br>
-5. A wave travels 50 m in 10 seconds with frequency 5 Hz. Find wavelength.
-</div>
-
-`,
-  [
-    {
-      q: "A wave travels at 15 m/s and has frequency 3 Hz. Find wavelength.",
-      hint: "Use v = fλ",
-      formula: "λ = v / f",
-      steps: [
-        "Step 1: Identify values → v = 15 m/s, f = 3 Hz",
-        "Step 2: Use formula → λ = v / f",
-        "Step 3: Substitute → λ = 15 / 3",
-        "Step 4: Calculate → λ = 5 m",
-      ],
-      ans: "5 m",
-      final_check: "Units should be in meters (m)",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Confusing frequency with wavelength",
-      ],
-      explanation: "Wavelength is found by dividing wave speed by frequency.",
-    },
-
-    {
-      q: "A wave has wavelength 4 m and frequency 6 Hz. Find wave speed.",
-      hint: "Use v = fλ",
-      formula: "v = f × λ",
-      steps: [
-        "Step 1: Identify values → f = 6 Hz, λ = 4 m",
-        "Step 2: Use formula → v = f × λ",
-        "Step 3: Substitute → v = 6 × 4",
-        "Step 4: Calculate → v = 24 m/s",
-      ],
-      ans: "24 m/s",
-      final_check: "Speed should be in m/s",
-      common_mistakes: ["Dividing instead of multiplying", "Ignoring units"],
-      explanation: "Wave speed is the product of frequency and wavelength.",
-    },
-
-    {
-      q: "Time period is 0.5 s. Find frequency.",
-      hint: "f = 1/T",
-      formula: "f = 1 / T",
-      steps: [
-        "Step 1: Identify time period → T = 0.5 s",
-        "Step 2: Use formula → f = 1 / T",
-        "Step 3: Substitute → f = 1 / 0.5",
-        "Step 4: Calculate → f = 2 Hz",
-      ],
-      ans: "2 Hz",
-      final_check: "Frequency is inverse of time period",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Confusing frequency with time period",
-      ],
-      explanation: "Frequency is the number of waves per second.",
-    },
-
-    {
-      q: "A wave has speed 40 m/s and wavelength 8 m. Find frequency.",
-      hint: "f = v/λ",
-      formula: "f = v / λ",
-      steps: [
-        "Step 1: Identify values → v = 40 m/s, λ = 8 m",
-        "Step 2: Use formula → f = v / λ",
-        "Step 3: Substitute → f = 40 / 8",
-        "Step 4: Calculate → f = 5 Hz",
-      ],
-      ans: "5 Hz",
-      final_check: "Frequency in Hz",
-      common_mistakes: ["Multiplying instead of dividing", "Reversing formula"],
-      explanation: "Frequency equals speed divided by wavelength.",
-    },
-
-    {
-      q: "A wave has frequency 10 Hz and speed 50 m/s. Find wavelength.",
-      hint: "λ = v/f",
-      formula: "λ = v / f",
-      steps: [
-        "Step 1: Identify values → v = 50 m/s, f = 10 Hz",
-        "Step 2: Apply formula → λ = v / f",
-        "Step 3: Substitute → λ = 50 / 10",
-        "Step 4: Calculate → λ = 5 m",
-      ],
-      ans: "5 m",
-      final_check: "Wavelength in meters",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Mixing up variables",
-      ],
-      explanation: "Wavelength is speed divided by frequency.",
-    },
-
-    {
-      q: "A wave takes 2 s to complete 1 cycle. Find frequency.",
-      hint: "T = 1/f",
-      formula: "f = 1 / T",
-      steps: [
-        "Step 1: Identify time period → T = 2 s",
-        "Step 2: Use formula → f = 1 / T",
-        "Step 3: Substitute → f = 1 / 2",
-        "Step 4: Calculate → f = 0.5 Hz",
-      ],
-      ans: "0.5 Hz",
-      final_check: "Frequency decreases when time period increases",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Confusing period and frequency",
-      ],
-      explanation: "Frequency is inversely proportional to time period.",
-    },
-
-    {
-      q: "A wave has wavelength 2 m and speed 12 m/s. Find frequency.",
-      hint: "f = v/λ",
-      formula: "f = v / λ",
-      steps: [
-        "Step 1: Identify values → v = 12 m/s, λ = 2 m",
-        "Step 2: Apply formula → f = v / λ",
-        "Step 3: Substitute → f = 12 / 2",
-        "Step 4: Calculate → f = 6 Hz",
-      ],
-      ans: "6 Hz",
-      final_check: "Units in Hz",
-      common_mistakes: ["Using wrong formula", "Dividing incorrectly"],
-      explanation: "Frequency is found by dividing speed by wavelength.",
-    },
-
-    {
-      q: "A wave has frequency 50 Hz and wavelength 0.2 m. Find speed.",
-      hint: "v = fλ",
-      formula: "v = f × λ",
-      steps: [
-        "Step 1: Identify values → f = 50 Hz, λ = 0.2 m",
-        "Step 2: Apply formula → v = f × λ",
-        "Step 3: Substitute → v = 50 × 0.2",
-        "Step 4: Calculate → v = 10 m/s",
-      ],
-      ans: "10 m/s",
-      final_check: "Speed in m/s",
-      common_mistakes: [
-        "Dividing instead of multiplying",
-        "Ignoring decimal multiplication",
-      ],
-      explanation: "Wave speed equals frequency times wavelength.",
-    },
-
-    {
-      q: "A wave travels 100 m in 5 s. Find its speed.",
-      hint: "speed = distance/time",
-      formula: "v = d / t",
-      steps: [
-        "Step 1: Identify values → d = 100 m, t = 5 s",
-        "Step 2: Use formula → v = d / t",
-        "Step 3: Substitute → v = 100 / 5",
-        "Step 4: Calculate → v = 20 m/s",
-      ],
-      ans: "20 m/s",
-      final_check: "Units m/s",
-      common_mistakes: ["Reversing formula", "Forgetting units"],
-      explanation: "Speed is distance divided by time.",
-    },
-
-    {
-      q: "A wave has speed 30 m/s and frequency 5 Hz. Find wavelength.",
-      hint: "λ = v/f",
-      formula: "λ = v / f",
-      steps: [
-        "Step 1: Identify values → v = 30 m/s, f = 5 Hz",
-        "Step 2: Apply formula → λ = v / f",
-        "Step 3: Substitute → λ = 30 / 5",
-        "Step 4: Calculate → λ = 6 m",
-      ],
-      ans: "6 m",
-      final_check: "Wavelength in meters",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Confusing variables",
-      ],
-      explanation: "Wavelength equals speed divided by frequency.",
-    },
-  ],
-);
-
-/* =========================
-   2. SOUND WAVES
-========================= */
-
-add(
-  "physics",
-  "waves",
-  "Sound waves",
-  `<h2>Sound Waves (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-Sound is a form of energy produced by vibrating objects. It travels through a medium (solid, liquid, or gas) as a <b>longitudinal wave</b>.
-</p>
-
-<p>
-In sound waves, particles of the medium vibrate back and forth in the same direction as the wave travels, forming:
-</p>
-<ul>
-<li><b>Compressions:</b> regions where particles are close together (high pressure)</li>
-<li><b>Rarefactions:</b> regions where particles are spread out (low pressure)</li>
-</ul>
-
----
-
-<h3> WELL EXPLAINED NOTES</h3>
-<ul>
-<li><b>Sound is a longitudinal wave</b></li>
-<li>It requires a medium (solid, liquid, or gas) to travel</li>
-<li>It cannot travel in a vacuum because there are no particles to vibrate</li>
-<li>Speed of sound depends on the medium:
-    <ul>
-        <li>Fastest in solids</li>
-        <li>Slower in liquids</li>
-        <li>Slowest in gases</li>
-    </ul>
-</li>
-<li>Sound energy is transferred through vibrations, not matter movement</li>
-</ul>
-
----
-
-<h3> KEY CONCEPTS</h3>
-
-<div class="example-box">
-<b>Compression:</b> High-pressure region where particles are crowded together
-</div>
-
-<div class="example-box">
-<b>Rarefaction:</b> Low-pressure region where particles are spread apart
-</div>
-
-<div class="example-box">
-<b>Frequency:</b> Determines pitch (high frequency = high pitch sound)
-</div>
-
-<div class="example-box">
-<b>Amplitude:</b> Determines loudness (higher amplitude = louder sound)
-</div>
-
----
-
-<h3> IMPORTANT FORMULA</h3>
-
-<div class="formula">
-v = fλ
-</div>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: Why is sound a longitudinal wave?</b><br>
-Because particles vibrate parallel to the direction of wave travel.
-</div>
-
-<div class="example-box">
-<b>Q2: Why can't sound travel in space?</b><br>
-Because space is a vacuum and has no particles to transmit vibrations.
-</div>
-
-<div class="example-box">
-<b>Q3: What affects loudness?</b><br>
-Amplitude of the wave.
-</div>
-
-<div class="example-box">
-<b>Q4: What affects pitch?</b><br>
-Frequency of the wave.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-A speaker vibrates → it pushes air particles → compressions and rarefactions form → sound travels through air.
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-Thunder is heard after lightning because light travels faster than sound.
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-An echo occurs when sound waves reflect off a hard surface like a wall or cliff.
-</div>
-
-<div class="example-box">
-<b>Example 4 (Calculation):</b><br>
-Frequency = 50 Hz, wavelength = 6 m<br>
-Speed = v = fλ = 50 × 6 = 300 m/s
-</div>
-
-<div class="example-box">
-<b>Example 5 (Time delay concept):</b><br>
-If sound takes 2 seconds to reach a wall and 2 seconds to return, echo delay = 4 seconds total.
-</div>
-
----
-
-<h3> CONTINUOUS EXAM-STYLE QUESTION</h3>
-
-<div class="example-box">
-A sound wave travels through air with a frequency of 120 Hz and wavelength of 2.5 m.<br><br>
-
-(a) Find the speed of sound<br>
-(b) Explain what happens if the sound enters a solid<br>
-(c) State what determines the loudness of the sound<br><br>
-
-Solution:<br>
-(a) v = fλ = 120 × 2.5 = 300 m/s<br>
-(b) Sound travels faster in solids because particles are closer together<br>
-(c) Loudness depends on amplitude
-</div>
-
----
-
-<h3> KEY FACTS</h3>
-
-<div class="keyfact">
- Sound needs a medium to travel<br>
- No medium = no sound (space is silent)<br>
- Frequency → pitch<br>
- Amplitude → loudness<br>
- Speed depends on medium, not frequency
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. Why is sound faster in solids than gases?<br>
-2. What is the difference between compression and rarefaction?<br>
-3. A wave has frequency 200 Hz and wavelength 1.5 m. Find speed.<br>
-4. What happens to sound in a vacuum?<br>
-5. Explain how echo is formed.
-</div>
-
-`,
-  [
-    {
-      q: "A sound wave has frequency 200 Hz and wavelength 1.5 m. Find speed.",
-      hint: "Use v = fλ",
-      formula: "v = fλ",
-      steps: [
-        "Step 1: Identify values → f = 200 Hz, λ = 1.5 m",
-        "Step 2: Apply formula → v = fλ",
-        "Step 3: Substitute → v = 200 × 1.5",
-        "Step 4: Calculate → v = 300 m/s",
-      ],
-      ans: "300 m/s",
-      final_check: "Correct unit is m/s",
-      common_mistakes: [
-        "Using wrong formula",
-        "Forgetting to multiply correctly",
-      ],
-      explanation:
-        "Speed of sound is found by multiplying frequency and wavelength.",
-    },
-
-    {
-      q: "A sound wave has frequency 100 Hz and wavelength 2 m. Find speed.",
-      hint: "v = fλ",
-      formula: "v = fλ",
-      steps: [
-        "Step 1: f = 100 Hz, λ = 2 m",
-        "Step 2: v = fλ",
-        "Step 3: v = 100 × 2",
-        "Step 4: v = 200 m/s",
-      ],
-      ans: "200 m/s",
-      final_check: "Units correctly in m/s",
-      common_mistakes: ["Swapping formula terms", "Incorrect multiplication"],
-      explanation: "Wave speed depends on both frequency and wavelength.",
-    },
-
-    {
-      q: "A sound wave travels at 340 m/s and has frequency 170 Hz. Find wavelength.",
-      hint: "λ = v/f",
-      formula: "λ = v/f",
-      steps: [
-        "Step 1: v = 340 m/s, f = 170 Hz",
-        "Step 2: λ = v/f",
-        "Step 3: λ = 340/170",
-        "Step 4: λ = 2 m",
-      ],
-      ans: "2 m",
-      final_check: "Correct unit is meters",
-      common_mistakes: ["Using wrong rearrangement", "Dividing incorrectly"],
-      explanation: "Wavelength is speed divided by frequency.",
-    },
-
-    {
-      q: "A sound wave has wavelength 0.5 m and speed 150 m/s. Find frequency.",
-      hint: "f = v/λ",
-      formula: "f = v/λ",
-      steps: [
-        "Step 1: v = 150 m/s, λ = 0.5 m",
-        "Step 2: f = v/λ",
-        "Step 3: f = 150/0.5",
-        "Step 4: f = 300 Hz",
-      ],
-      ans: "300 Hz",
-      final_check: "Frequency is in Hz",
-      common_mistakes: ["Wrong division", "Using λ = f/v"],
-      explanation: "Frequency is calculated by dividing speed by wavelength.",
-    },
-
-    {
-      q: "Why can't sound travel in space?",
-      hint: "no particles",
-      ans: "Because there is no medium for sound waves to travel through.",
-      explanation:
-        "Sound needs particles to vibrate, but space is a vacuum with no particles.",
-    },
-
-    {
-      q: "What determines loudness of sound?",
-      hint: "wave height",
-      ans: "Amplitude",
-      explanation:
-        "Greater amplitude means louder sound, lower amplitude means softer sound.",
-    },
-
-    {
-      q: "What determines pitch of sound?",
-      hint: "frequency",
-      ans: "Frequency",
-      explanation:
-        "High frequency produces high pitch sound and low frequency produces low pitch.",
-    },
-
-    {
-      q: "What is a sound wave?",
-      hint: "vibration",
-      ans: "A sound wave is a mechanical wave produced by vibrations of particles.",
-      explanation:
-        "Sound waves travel through air, liquids, or solids by particle vibration.",
-    },
-
-    {
-      q: "What type of wave is sound?",
-      hint: "mechanical",
-      ans: "A mechanical wave",
-      explanation:
-        "Sound requires a medium to travel, so it is a mechanical wave.",
-    },
-
-    {
-      q: "A sound wave has frequency 50 Hz and speed 340 m/s. Find wavelength.",
-      hint: "λ = v/f",
-      formula: "λ = v/f",
-      steps: [
-        "Step 1: v = 340 m/s, f = 50 Hz",
-        "Step 2: λ = v/f",
-        "Step 3: λ = 340/50",
-        "Step 4: λ = 6.8 m",
-      ],
-      ans: "6.8 m",
-      final_check: "Correct unit is meters",
-      common_mistakes: [
-        "Multiplying instead of dividing",
-        "Wrong formula usage",
-      ],
-      explanation: "Wavelength depends on speed and frequency.",
-    },
-
-    {
-      q: "What is echo?",
-      hint: "reflection of sound",
-      ans: "Echo is the reflection of sound waves.",
-      explanation:
-        "Sound reflects off surfaces and returns to the listener after a delay.",
-    },
-
-    {
-      q: "Why is sound faster in solids than in air?",
-      hint: "particle spacing",
-      ans: "Because particles are closer together in solids.",
-      explanation:
-        "Closer particles transfer vibrations faster in solids than in gases.",
-    },
-  ],
-);
-
-/* =========================
-   3. LIGHT WAVES
-========================= */
-
-add(
-  "physics",
-  "waves",
-  "Light waves",
-  `<h2>Light Waves (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-Light is a form of electromagnetic radiation that travels in waves. It does not require a medium and can travel through a vacuum such as space.
-</p>
-
-<p>
-Unlike sound, light is a wave of electric and magnetic fields oscillating perpendicular to each other and to the direction of travel.
-</p>
-
----
-
-<h3> WELL EXPLAINED NOTES</h3>
-<ul>
-<li><b>Light is a transverse wave</b></li>
-<li>It is an electromagnetic wave (no particles required)</li>
-<li>It can travel through vacuum (space)</li>
-<li>Speed of light in vacuum = <b>3 × 10⁸ m/s</b></li>
-<li>Light travels in straight lines in a uniform medium</li>
-</ul>
-
----
-
-<h3> KEY PHENOMENA OF LIGHT</h3>
-
-<div class="example-box">
-<b>Reflection:</b> Bouncing back of light from a surface (e.g., mirror)
-</div>
-
-<div class="example-box">
-<b>Refraction:</b> Bending of light when it moves from one medium to another
-</div>
-
-<div class="example-box">
-<b>Dispersion:</b> Splitting of white light into different colors (rainbow formation)
-</div>
-
-<div class="example-box">
-<b>Absorption:</b> When light energy is taken in by a material
-</div>
-
----
-
-<h3> IMPORTANT FACTS</h3>
-
-<ul>
-<li>Light does NOT need a medium to travel</li>
-<li>Light is the fastest known form of energy transfer</li>
-<li>Speed in air ≈ speed in vacuum (very close)</li>
-<li>Speed decreases in denser materials like glass or water</li>
-</ul>
-
----
-
-<h3> FORMULA</h3>
-
-<div class="formula">
-v = fλ
-</div>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: Why can light travel in space?</b><br>
-Because it is an electromagnetic wave and does not require a medium.
-</div>
-
-<div class="example-box">
-<b>Q2: Why does light bend when entering glass?</b><br>
-Because its speed changes when moving from air to a denser medium.
-</div>
-
-<div class="example-box">
-<b>Q3: What causes a rainbow?</b><br>
-Dispersion of light through water droplets.
-</div>
-
-<div class="example-box">
-<b>Q4: Is light faster than sound?</b><br>
-Yes, light travels much faster than sound.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-Sunlight reaches Earth through space.<br>
-Explanation: Space is a vacuum, but light can travel without a medium.
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-Light passes from air into water and bends.<br>
-This is called refraction due to change in speed.
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-A rainbow appears after rain.<br>
-Water droplets act as prisms that disperse light into colors.
-</div>
-
-<div class="example-box">
-<b>Example 4 (Calculation):</b><br>
-Frequency = 6 × 10¹⁴ Hz, wavelength = 5 × 10⁻⁷ m<br>
-Speed = v = fλ = 3 × 10⁸ m/s
-</div>
-
----
-
-<h3> CONTINUOUS EXAM-STYLE QUESTION</h3>
-
-<div class="example-box">
-A light wave travels in vacuum with frequency 5 × 10¹⁴ Hz.<br><br>
-
-(a) Find its wavelength<br>
-(b) State whether light needs a medium<br>
-(c) Explain why light slows down in glass<br><br>
-
-Solution:<br>
-(a) λ = v/f = (3 × 10⁸) / (5 × 10¹⁴) = 6 × 10⁻⁷ m<br>
-(b) No, light does not need a medium<br>
-(c) Light slows down because it interacts with particles in glass
-</div>
-
----
-
-<h3> KEY FACTS</h3>
-
-<div class="keyfact">
- Light is an electromagnetic wave<br>
- It travels fastest in vacuum<br>
- It slows down in denser media<br>
- It carries energy without needing matter<br>
- It is responsible for vision
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. Why is light called a transverse wave?<br>
-2. What happens when light enters glass?<br>
-3. Calculate speed if f = 4 × 10¹⁴ Hz and λ = 7.5 × 10⁻⁷ m<br>
-4. What causes dispersion of light?<br>
-5. Why is space dark despite sunlight?
-</div>
-
-`,
-  [
-    {
-      q: "A light wave has frequency 4 × 10^14 Hz and wavelength 7.5 × 10^-7 m. Find speed.",
-      hint: "Use v = fλ",
-      formula: "v = fλ",
-      steps: [
-        "Step 1: Identify values → f = 4 × 10^14 Hz, λ = 7.5 × 10^-7 m",
-        "Step 2: Write formula → v = fλ",
-        "Step 3: Substitute → v = (4 × 10^14)(7.5 × 10^-7)",
-        "Step 4: Multiply numbers → 4 × 7.5 = 30",
-        "Step 5: Add powers → 10^14 × 10^-7 = 10^7",
-        "Step 6: Final result → v = 3 × 10^8 m/s",
-      ],
-      ans: "3 × 10^8 m/s",
-      final_check: "Matches speed of light in vacuum",
-      common_mistakes: [
-        "Adding instead of multiplying frequency and wavelength",
-        "Incorrect power of 10 rules",
-      ],
-      explanation: "Wave speed is the product of frequency and wavelength.",
-    },
-
-    {
-      q: "A wave has frequency 2 × 10^6 Hz and wavelength 0.15 m. Find speed.",
-      hint: "v = fλ",
-      formula: "v = fλ",
-      steps: [
-        "Step 1: f = 2 × 10^6 Hz, λ = 0.15 m",
-        "Step 2: v = fλ",
-        "Step 3: v = (2 × 10^6) × 0.15",
-        "Step 4: 2 × 0.15 = 0.3",
-        "Step 5: v = 0.3 × 10^6",
-        "Step 6: v = 3 × 10^5 m/s",
-      ],
-      ans: "3 × 10^5 m/s",
-      final_check: "Correct unit is m/s",
-      common_mistakes: [
-        "Ignoring decimal multiplication",
-        "Wrong exponent handling",
-      ],
-      explanation:
-        "Speed is directly proportional to frequency and wavelength.",
-    },
-
-    {
-      q: "A wave travels at 340 m/s and has frequency 170 Hz. Find wavelength.",
-      hint: "λ = v/f",
-      formula: "λ = v/f",
-      steps: [
-        "Step 1: Identify values → v = 340 m/s, f = 170 Hz",
-        "Step 2: Write formula → λ = v/f",
-        "Step 3: Substitute → λ = 340/170",
-        "Step 4: Calculate → λ = 2 m",
-      ],
-      ans: "2 m",
-      final_check: "Wavelength is reasonable for sound wave",
-      common_mistakes: [
-        "Using v = fλ instead of rearranging",
-        "Dividing incorrectly",
-      ],
-      explanation: "Wavelength is found by dividing speed by frequency.",
-    },
-
-    {
-      q: "A wave has wavelength 0.5 m and speed 200 m/s. Find frequency.",
-      hint: "f = v/λ",
-      formula: "f = v/λ",
-      steps: [
-        "Step 1: v = 200 m/s, λ = 0.5 m",
-        "Step 2: f = v/λ",
-        "Step 3: f = 200/0.5",
-        "Step 4: f = 400 Hz",
-      ],
-      ans: "400 Hz",
-      final_check: "Frequency has unit Hz",
-      common_mistakes: [
-        "Using wrong rearrangement",
-        "Confusing wavelength with speed",
-      ],
-      explanation: "Frequency is speed divided by wavelength.",
-    },
-
-    {
-      q: "A wave has frequency 5 × 10^5 Hz and speed 1 × 10^8 m/s. Find wavelength.",
-      hint: "λ = v/f",
-      formula: "λ = v/f",
-      steps: [
-        "Step 1: v = 1 × 10^8, f = 5 × 10^5",
-        "Step 2: λ = v/f",
-        "Step 3: λ = (1 × 10^8) / (5 × 10^5)",
-        "Step 4: 1/5 = 0.2",
-        "Step 5: 10^8 / 10^5 = 10^3",
-        "Step 6: λ = 0.2 × 10^3 = 200 m",
-      ],
-      ans: "200 m",
-      final_check: "Large wavelength expected for low frequency",
-      common_mistakes: [
-        "Subtracting exponents incorrectly",
-        "Dividing coefficients wrongly",
-      ],
-      explanation: "Wavelength increases when frequency decreases.",
-    },
-
-    {
-      q: "A wave has wavelength 3 m and frequency 50 Hz. Find speed.",
-      hint: "v = fλ",
-      formula: "v = fλ",
-      steps: [
-        "Step 1: f = 50 Hz, λ = 3 m",
-        "Step 2: v = fλ",
-        "Step 3: v = 50 × 3",
-        "Step 4: v = 150 m/s",
-      ],
-      ans: "150 m/s",
-      final_check: "Unit is correct (m/s)",
-      common_mistakes: ["Using wrong formula", "Forgetting multiplication"],
-      explanation: "Wave speed is product of frequency and wavelength.",
-    },
-    {
-      q: "A light wave has frequency 6 × 10^14 Hz and wavelength 5 × 10^-7 m. Find speed.",
-      hint: "v = fλ",
-      formula: "v = fλ",
-      steps: [
-        "Step 1: f = 6 × 10^14, λ = 5 × 10^-7",
-        "Step 2: v = fλ",
-        "Step 3: Multiply → 6 × 5 = 30",
-        "Step 4: Add powers → 10^14 × 10^-7 = 10^7",
-        "Step 5: v = 3 × 10^8 m/s",
-      ],
-      ans: "3 × 10^8 m/s",
-      final_check: "Speed of light confirmed",
-      common_mistakes: ["Wrong exponent handling", "Misplacing decimal point"],
-      explanation: "Light speed in vacuum is constant.",
-    },
-    {
-      q: "A wave travels 600 m in 3 seconds. Find its speed.",
-      hint: "v = d/t",
-      formula: "v = d/t",
-      steps: [
-        "Step 1: d = 600 m, t = 3 s",
-        "Step 2: v = d/t",
-        "Step 3: v = 600/3",
-        "Step 4: v = 200 m/s",
-      ],
-      ans: "200 m/s",
-      final_check: "Speed has correct unit m/s",
-      common_mistakes: ["Reversing formula", "Ignoring division"],
-      explanation: "Speed is distance divided by time.",
-    },
-    {
-      q: "A wave has speed 300 m/s and wavelength 0.6 m. Find frequency.",
-      hint: "f = v/λ",
-      formula: "f = v/λ",
-      steps: [
-        "Step 1: v = 300 m/s, λ = 0.6 m",
-        "Step 2: f = v/λ",
-        "Step 3: f = 300/0.6",
-        "Step 4: f = 500 Hz",
-      ],
-      ans: "500 Hz",
-      final_check: "Frequency unit is Hz",
-      common_mistakes: ["Dividing incorrectly", "Using wrong formula"],
-      explanation: "Frequency depends on speed and wavelength.",
-    },
-
-    {
-      q: "Why can light travel in space?",
-      hint: "no medium required",
-      ans: "Because light is an electromagnetic wave that does not need a medium.",
-      explanation:
-        "Unlike sound, light can travel through a vacuum because it does not rely on particles.",
-    },
-  ],
-);
-/* =========================
-   4. REFLECTION & REFRACTION
-========================= */
-
-add(
-  "physics",
-  "waves",
-  "Reflection & refraction",
-  `<h2>Reflection & Refraction (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-When waves (light or sound) meet a boundary between two media, they interact in different ways depending on the surface and medium change.
-</p>
-
-<p>
-They may either bounce back into the same medium or change direction as they enter a new medium due to a change in speed.
-</p>
-
----
-
-<h3> WELL EXPLAINED NOTES</h3>
-<ul>
-<li><b>Reflection:</b> The bouncing back of a wave when it hits a surface.</li>
-<li><b>Refraction:</b> The bending of a wave when it passes from one medium to another due to change in speed.</li>
-<li>Reflection occurs on smooth or hard surfaces like mirrors and walls.</li>
-<li>Refraction occurs when waves pass between media such as air, water, and glass.</li>
-</ul>
-
----
-
-<h3> LAWS OF REFLECTION</h3>
-
-<div class="example-box">
-1. The angle of incidence is equal to the angle of reflection (i = r)
-</div>
-
-<div class="example-box">
-2. The incident ray, reflected ray, and normal all lie in the same plane
-</div>
-
----
-
-<h3> KEY CONCEPT</h3>
-
-<div class="example-box">
-Refraction happens because the <b>speed of a wave changes</b> when it enters a different medium.
-</div>
-
----
-
-<h3> REAL-LIFE APPLICATIONS</h3>
-
-<ul>
-<li>Mirrors use reflection to form images</li>
-<li>Eyeglasses use refraction to correct vision</li>
-<li>Swimming pools look shallower due to refraction</li>
-<li>Mirages in deserts are caused by refraction of light in hot air layers</li>
-</ul>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: Why does light reflect from a mirror?</b><br>
-Because the smooth surface causes waves to bounce back regularly.
-</div>
-
-<div class="example-box">
-<b>Q2: Why does a straw look bent in water?</b><br>
-Because light changes speed when moving from air to water.
-</div>
-
-<div class="example-box">
-<b>Q3: What causes refraction?</b><br>
-Change in wave speed when entering a different medium.
-</div>
-
-<div class="example-box">
-<b>Q4: Does reflection change speed of light?</b><br>
-No, reflection occurs in the same medium so speed remains constant.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-Light hits a mirror at 30°.<br>
-Angle of reflection = 30° (by law of reflection)
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-A spoon in water appears bent.<br>
-Explanation: light bends as it moves from water to air.
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-Swimming pool appears shallow.<br>
-Explanation: light rays bend away from normal when leaving water.
-</div>
-
-<div class="example-box">
-<b>Example 4:</b><br>
-Light enters glass from air and slows down.<br>
-This causes it to bend towards the normal.
-</div>
-
----
-
-<h3> CONTINUOUS EXAM-STYLE QUESTION</h3>
-
-<div class="example-box">
-A ray of light strikes a plane mirror at an angle of 45°.<br><br>
-
-(a) State the angle of reflection<br>
-(b) Name the law used<br>
-(c) Explain why refraction occurs in water<br><br>
-
-Solution:<br>
-(a) 45°<br>
-(b) Law of reflection (i = r)<br>
-(c) Refraction occurs due to change in speed of light when entering water
-</div>
-
----
-
-<h3> KEY FACTS</h3>
-
-<div class="keyfact">
- Reflection = bouncing back of waves<br>
- Refraction = bending due to speed change<br>
- i = r in reflection<br>
- Refraction depends on medium density<br>
- Light bends towards normal in denser medium
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. State the laws of reflection<br>
-2. Why does light bend when entering glass?<br>
-3. A ray hits a mirror at 60°. Find angle of reflection<br>
-4. Give two real-life examples of refraction<br>
-5. Explain why a stick in water looks bent
-</div>
-
-`,
-  [
-    {
-      q: "Why does light bend in water?",
-      hint: "change of medium",
-      ans: "Because its speed changes when entering a different medium.",
-      explanation:
-        "When light passes from air into water, its speed decreases, causing it to change direction (refraction).",
-    },
-
-    {
-      q: "A ray of light hits a mirror at 60°. Find angle of reflection.",
-      hint: "law of reflection",
-      formula: "i = r",
-      steps: [
-        "Step 1: Identify angle of incidence → i = 60°",
-        "Step 2: Use law of reflection → i = r",
-        "Step 3: Substitute values → r = 60°",
-      ],
-      ans: "60°",
-      final_check: "Angle of incidence equals angle of reflection",
-      common_mistakes: [
-        "Confusing incidence with reflection angle",
-        "Using wrong formula",
-      ],
-      explanation:
-        "The law of reflection states that the angle of incidence equals the angle of reflection.",
-    },
-    {
-      q: "A light ray strikes a mirror at 30°. Calculate the angle of reflection.",
-      hint: "law of reflection",
-      formula: "i = r",
-      steps: [
-        "Step 1: Identify angle of incidence → i = 30°",
-        "Step 2: Apply law of reflection → i = r",
-        "Step 3: Substitute values → r = 30°",
-      ],
-      ans: "30°",
-      final_check: "Reflection angle equals incidence angle",
-      common_mistakes: [
-        "Doubling the angle",
-        "Confusing normal line with mirror surface",
-      ],
-      explanation:
-        "Reflection follows the law i = r, meaning angles are equal.",
-    },
-
-    {
-      q: "A ray hits a mirror at 45°. What is the angle between the incident ray and reflected ray?",
-      hint: "sum of angles",
-      formula: "Angle between rays = i + r",
-      steps: [
-        "Step 1: Identify incidence angle → i = 45°",
-        "Step 2: Reflection angle → r = 45°",
-        "Step 3: Add angles → 45° + 45°",
-        "Step 4: Result = 90°",
-      ],
-      ans: "90°",
-      final_check: "Angle between incident and reflected rays is 2i",
-      common_mistakes: [
-        "Using only one angle",
-        "Subtracting instead of adding",
-      ],
-      explanation:
-        "The angle between incident and reflected rays equals twice the angle of incidence.",
-    },
-    {
-      q: "A light ray travels from air into glass and slows down. What happens to its direction?",
-      hint: "refraction effect",
-      formula: "n1 sin i = n2 sin r (conceptual)",
-      steps: [
-        "Step 1: Light enters denser medium (air → glass)",
-        "Step 2: Speed decreases",
-        "Step 3: Ray bends towards the normal",
-        "Step 4: New direction is closer to normal line",
-      ],
-      ans: "It bends towards the normal",
-      final_check: "Denser medium causes bending towards normal",
-      common_mistakes: [
-        "Thinking it bends away from normal",
-        "Ignoring speed change concept",
-      ],
-      explanation:
-        "When light enters a denser medium, it slows down and bends towards the normal line.",
-    },
-  ,
-    {
-      q: "Why does light bend in water?",
-      hint: "change of medium",
-      ans: "Because its speed changes when entering a different medium.",
-      explanation:
-        "When light passes from air into water, its speed decreases, causing it to change direction (refraction).",
-    },
-    {
-      q: "A ray of light hits a mirror at 60°. Find the angle of reflection.",
-      hint: "law of reflection",
-      formula: "i = r",
-      steps: [
-        "Step 1: Identify angle of incidence → i = 60°",
-        "Step 2: Apply law of reflection → i = r",
-        "Step 3: Substitute values → r = 60°",
-      ],
-      ans: "60°",
-      final_check: "Angle of incidence equals angle of reflection",
-      common_mistakes: [
-        "Confusing incidence with reflection angle",
-        "Using wrong reference line",
-      ],
-      explanation:
-        "The law of reflection states that angle of incidence equals angle of reflection.",
-    },
-    {
-      q: "A ray of light strikes a plane mirror at 35°. Calculate the angle of reflection.",
-      hint: "i = r",
-      formula: "i = r",
-      steps: [
-        "Step 1: Given angle of incidence → i = 35°",
-        "Step 2: Apply law of reflection → r = i",
-        "Step 3: Substitute → r = 35°",
-      ],
-      ans: "35°",
-      final_check: "Angles must always be equal in reflection",
-      common_mistakes: [
-        "Doubling the angle",
-        "Measuring from mirror surface instead of normal",
-      ],
-      explanation: "Reflection obeys i = r at all times.",
-    },
-    {
-      q: "A light ray is incident on a mirror at 40°. Find the angle between the incident ray and reflected ray.",
-      hint: "geometry of reflection",
-      formula: "Angle between rays = 2i",
-      steps: [
-        "Step 1: Identify incidence angle → i = 40°",
-        "Step 2: Use relation → angle between rays = 2i",
-        "Step 3: Substitute → 2 × 40°",
-        "Step 4: Calculate → 80°",
-      ],
-      ans: "80°",
-      final_check: "Angle between rays is always double incidence angle",
-      common_mistakes: ["Adding i and r incorrectly", "Using only one angle"],
-      explanation:
-        "The geometry of reflection gives angle between incident and reflected rays as 2i.",
-    },
-    {
-      q: "A ray passes from air into glass. Refractive index of glass is 1.5. If angle of incidence is 30°, calculate angle of refraction.",
-      hint: "Snell’s law",
-      formula: "n1 sin i = n2 sin r",
-      steps: [
-        "Step 1: Identify values → n1 = 1 (air), n2 = 1.5, i = 30°",
-        "Step 2: Apply Snell’s law → 1 × sin30° = 1.5 × sin r",
-        "Step 3: Substitute → 0.5 = 1.5 sin r",
-        "Step 4: Solve → sin r = 0.333",
-        "Step 5: Find r → r ≈ 19.5°",
-      ],
-      ans: "19.5°",
-      final_check: "Angle of refraction is smaller in denser medium",
-      common_mistakes: [
-        "Reversing formula",
-        "Forgetting sine values",
-        "Incorrect calculator mode (degrees vs radians)",
-      ],
-      explanation:
-        "Snell’s law relates angles of incidence and refraction using refractive indices.",
-    },
-    {
-      q: "A ray enters glass (n = 1.5) from air at 45°. Find angle of refraction.",
-      hint: "Snell’s law",
-      formula: "n1 sin i = n2 sin r",
-      steps: [
-        "Step 1: n1 = 1, n2 = 1.5, i = 45°",
-        "Step 2: Apply formula → sin r = (1 × sin45°)/1.5",
-        "Step 3: sin45° = 0.707",
-        "Step 4: sin r = 0.707/1.5 = 0.471",
-        "Step 5: r ≈ 28.1°",
-      ],
-      ans: "28.1°",
-      final_check: "Refraction angle is smaller than incidence angle",
-      common_mistakes: [
-        "Using wrong sine value",
-        "Not dividing correctly by refractive index",
-      ],
-      explanation:
-        "Light bends towards the normal when entering a denser medium.",
-    }
-  ],
-);
-
-/* =========================
-   5. DIFFRACTION & INTERFERENCE
-========================= */
-
-add(
-  "physics",
-  "waves",
-  "Diffraction & Interference",
-  `<h2>Diffraction & Interference (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-Waves do not always travel in straight lines only. They can spread out, bend around obstacles, and interact with other waves when they meet.
-</p>
-
-<p>
-These behaviors help explain many real-life wave effects such as sound bending around corners and patterns formed by overlapping waves.
-</p>
-
----
-
-<h3> WELL EXPLAINED NOTES</h3>
-<ul>
-<li><b>Diffraction:</b> The spreading of waves when they pass through a narrow gap or around an obstacle.</li>
-<li>Diffraction is more noticeable when the gap is similar in size to the wavelength.</li>
-<li>Smaller gap → greater spreading</li>
-<li><b>Interference:</b> The meeting and superposition of two or more waves.</li>
-</ul>
-
----
-
-<h3> TYPES OF INTERFERENCE</h3>
-
-<div class="example-box">
-<b>Constructive Interference:</b> When waves meet in phase and combine to form a larger amplitude (louder/stronger wave).
-</div>
-
-<div class="example-box">
-<b>Destructive Interference:</b> When waves meet out of phase and cancel each other partially or completely.
-</div>
-
----
-
-<h3> KEY CONDITIONS</h3>
-
-<ul>
-<li>Diffraction is strongest when gap size ≈ wavelength</li>
-<li>Constructive interference occurs when crest meets crest or trough meets trough</li>
-<li>Destructive interference occurs when crest meets trough</li>
-</ul>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: Why does sound bend around corners?</b><br>
-Because sound waves undergo diffraction.
-</div>
-
-<div class="example-box">
-<b>Q2: What is interference?</b><br>
-It is the combination of two or more waves meeting at the same point.
-</div>
-
-<div class="example-box">
-<b>Q3: What causes loud and quiet spots in a room?</b><br>
-Interference between sound waves.
-</div>
-
-<div class="example-box">
-<b>Q4: What happens in destructive interference?</b><br>
-Waves cancel each other reducing amplitude.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-Sound from a radio is heard even behind a wall.<br>
-Explanation: Sound diffracts around the obstacle.
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-Water waves pass through a narrow opening and spread out.<br>
-This is diffraction because the gap is small.
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-Two speakers produce loud and quiet regions in a hall.<br>
-This is due to interference of sound waves.
-</div>
-
-<div class="example-box">
-<b>Example 4:</b><br>
-Noise-cancelling headphones produce sound waves that cancel unwanted noise.<br>
-This is destructive interference.
-</div>
-
----
-
-<h3> CONTINUOUS EXAM-STYLE QUESTION</h3>
-
-<div class="example-box">
-Two sound waves meet at a point in a room.<br>
-One wave has a crest and the other has a trough of equal amplitude.<br><br>
-
-(a) What type of interference occurs?<br>
-(b) What is the result of this interaction?<br>
-(c) Give one real-life application of this effect<br><br>
-
-Solution:<br>
-(a) Destructive interference<br>
-(b) Waves cancel each other producing reduced or zero sound<br>
-(c) Noise-cancelling headphones
-</div>
-
----
-
-<h3> KEY FACTS</h3>
-
-<div class="keyfact">
- Diffraction = bending/spreading of waves<br>
- Interference = overlap of waves<br>
- Constructive = louder/stronger wave<br>
- Destructive = weaker or cancelled wave<br>
- Wave behavior depends on wavelength and obstacles
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. Define diffraction<br>
-2. What condition increases diffraction?<br>
-3. Explain constructive interference<br>
-4. Why do we hear sound behind walls?<br>
-5. Give two examples of interference in real life
-</div>
-
-`,
-  [
-    {
-      q: "Why does sound bend around corners?",
-      hint: "wave spreading",
-      steps: [
-        "Step 1: Identify wave type → sound is a wave",
-        "Step 2: Waves can bend when passing obstacles",
-        "Step 3: This bending is called diffraction",
-        "Step 4: Apply concept → sound spreads around corners",
-      ],
-      ans: "Because of diffraction",
-      final_check: "Occurs when wavelength is comparable to obstacle size",
-      common_mistakes: [
-        "Confusing diffraction with reflection",
-        "Thinking only light waves diffract",
-      ],
-      explanation:
-        "Diffraction is the spreading of waves when they pass around obstacles or through gaps.",
-    },
-    {
-      q: "What happens in destructive interference?",
-      hint: "opposite phases",
-      steps: [
-        "Step 1: Two waves meet",
-        "Step 2: One crest meets a trough",
-        "Step 3: They cancel each other partially or fully",
-        "Step 4: Resulting amplitude decreases",
-      ],
-      ans: "Waves cancel each other",
-      final_check: "Amplitude becomes smaller or zero",
-      common_mistakes: [
-        "Thinking energy is destroyed",
-        "Confusing with constructive interference",
-      ],
-      explanation:
-        "Destructive interference occurs when waves meet out of phase and reduce total amplitude.",
-    },
-    {
-      q: "If two identical waves meet crest to crest, what happens?",
-      hint: "same phase",
-      formula: "Resultant amplitude = A + A = 2A",
-      steps: [
-        "Step 1: Identify phase → crest meets crest",
-        "Step 2: Waves are in phase",
-        "Step 3: Add amplitudes",
-        "Step 4: Result = increased amplitude",
-      ],
-      ans: "Constructive interference (amplitude increases)",
-      final_check: "Amplitude doubles if waves are identical",
-      common_mistakes: ["Thinking waves cancel", "Ignoring phase condition"],
-      explanation:
-        "Constructive interference occurs when waves combine in phase, increasing total amplitude.",
-    },
-  ,
-    {
-      q: "Two identical waves each have amplitude 3 cm. They meet crest to crest. Find resultant amplitude.",
-      hint: "Use constructive interference (add amplitudes)",
-      formula: "A_result = A1 + A2",
-      steps: [
-        "Step 1: Identify amplitudes → A1 = 3 cm, A2 = 3 cm",
-        "Step 2: Waves meet crest to crest → constructive interference",
-        "Step 3: Apply formula → A_result = A1 + A2",
-        "Step 4: Substitute → A_result = 3 + 3",
-        "Step 5: Calculate → A_result = 6 cm",
-      ],
-      ans: "6 cm",
-      final_check: "Amplitude increases because waves are in phase",
-      common_mistakes: [
-        "Subtracting amplitudes instead of adding",
-        "Ignoring phase condition (crest to crest)",
-      ],
-      explanation:
-        "Constructive interference increases amplitude when waves meet in phase.",
-    },
-    {
-      q: "Two waves of amplitude 5 cm and 3 cm meet crest to trough. Find resultant amplitude.",
-      hint: "Use destructive interference (subtract amplitudes)",
-      formula: "A_result = A1 - A2",
-      steps: [
-        "Step 1: Identify amplitudes → A1 = 5 cm, A2 = 3 cm",
-        "Step 2: Crest meets trough → destructive interference",
-        "Step 3: Apply formula → A_result = A1 - A2",
-        "Step 4: Substitute → A_result = 5 - 3",
-        "Step 5: Calculate → A_result = 2 cm",
-      ],
-      ans: "2 cm",
-      final_check: "Amplitude decreases but does not become negative",
-      common_mistakes: [
-        "Adding instead of subtracting",
-        "Forgetting sign change due to phase difference",
-      ],
-      explanation:
-        "Destructive interference reduces amplitude when waves are out of phase.",
-    },
-    {
-      q: "A wave travels 340 m in 2 seconds. Find its speed.",
-      hint: "Use speed = distance ÷ time",
-      formula: "v = d / t",
-      steps: [
-        "Step 1: Identify values → d = 340 m, t = 2 s",
-        "Step 2: Write formula → v = d / t",
-        "Step 3: Substitute → v = 340 / 2",
-        "Step 4: Calculate → v = 170 m/s",
-      ],
-      ans: "170 m/s",
-      final_check: "Unit is m/s which is correct for speed",
-      common_mistakes: ["Reversing formula (t/d)", "Forgetting units"],
-      explanation:
-        "Wave speed is distance covered per unit time.",
-    }
-  ],
-);
-/* =========================================================
-   PHYSICS: ELECTRICITY & MAGNETISM (MASTER UPGRADE)
-========================================================= */
-/* =========================
-   1. CURRENT & VOLTAGE
-========================= */
-
-add(
-  "physics",
-  "em",
-  "Current & Voltage",
-  `<h2>Current & Voltage (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-Electric current and voltage are fundamental concepts in electricity. They explain how electric charges move and what causes them to move in a circuit.
-</p>
-
-<p>
-Electricity is caused by the movement of tiny charged particles called <b>electrons</b> through a conductor such as a metal wire.
-</p>
-
----
-
-<h3> WELL EXPLAINED NOTES</h3>
-<ul>
-<li><b>Electric Current (I):</b> The rate of flow of electric charge through a conductor.</li>
-<li><b>Voltage (V):</b> The electrical energy supplied per unit charge to move electrons in a circuit.</li>
-<li>Current flows from higher potential to lower potential in a circuit.</li>
-<li>Electrons actually flow in the opposite direction (from negative to positive terminal).</li>
-<li>Unit of current = Ampere (A)</li>
-<li>Unit of voltage = Volt (V)</li>
-</ul>
-
----
-
-<h3> KEY IDEA</h3>
-
-<div class="example-box">
-Voltage is the "push" that drives electric charges, while current is the actual flow of charges.
-</div>
-
----
-
-<h3> FORMULA</h3>
-
-<div class="formula">
-I = Q / t
-</div>
-
-Where:
-<ul>
-<li>I = current (A)</li>
-<li>Q = charge (Coulombs)</li>
-<li>t = time (seconds)</li>
-</ul>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: What is electric current?</b><br>
-It is the rate at which electric charge flows in a circuit.
-</div>
-
-<div class="example-box">
-<b>Q2: What is voltage?</b><br>
-It is the energy supplied per unit charge to move electrons.
-</div>
-
-<div class="example-box">
-<b>Q3: What causes current to flow?</b><br>
-A difference in voltage (potential difference).
-</div>
-
-<div class="example-box">
-<b>Q4: What is the difference between current and voltage?</b><br>
-Current is flow of charge, voltage is energy that causes the flow.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-Charge = 10C, Time = 2s<br>
-I = Q/t = 10/2 = 5A
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-Charge = 20C, Time = 4s<br>
-I = 20/4 = 5A
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-Charge = 30C, Time = 6s<br>
-I = 30/6 = 5A
-</div>
-
-<div class="example-box">
-<b>Example 4 (Conceptual):</b><br>
-If voltage increases in a circuit (resistance constant), current increases because more energy is supplied to move electrons.
-</div>
-
----
-
-<h3> CONTINUOUS EXAM-STYLE QUESTION</h3>
-
-<div class="example-box">
-A charge of 24C flows through a wire in 6 seconds.<br><br>
-
-(a) Calculate the current<br>
-(b) Define voltage<br>
-(c) Explain what happens to current if voltage increases<br><br>
-
-Solution:<br>
-(a) I = Q/t = 24/6 = 4A<br>
-(b) Voltage is energy supplied per unit charge<br>
-(c) Current increases because more energy is available to push electrons
-</div>
-
----
-
-<h3> COMMON MISTAKES</h3>
-
-<div class="keyfact">
- Confusing current with voltage<br>
- Thinking electrons flow in direction of current<br>
- Assuming high voltage always means high current (depends on resistance)
-</div>
-
----
-
-<h3> KEY FACTS</h3>
-
-<div class="keyfact">
- Current = flow of charge<br>
- Voltage = energy per charge<br>
- Voltage is the cause, current is the effect<br>
- I = Q/t is the main formula<br>
- Higher voltage increases potential for current flow
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. Define electric current<br>
-2. What is the unit of voltage?<br>
-3. A charge of 18C flows in 3s. Find current.<br>
-4. Explain the role of voltage in a circuit<br>
-5. What is the difference between current and voltage?
-</div>
-
-`,
-  [
-  {
-    q: "A charge of 18C flows in 3s. Find current.",
-    hint: "Use I = Q / t",
-    formula: "I = Q / t",
-    steps: [
-      "Step 1: Identify values → Q = 18C, t = 3s",
-      "Step 2: Write formula → I = Q / t",
-      "Step 3: Substitute values → I = 18 / 3",
-      "Step 4: Calculate → I = 6A",
-    ],
-    ans: "6A",
-    final_check: "Unit is amperes (A), which is correct for current",
-    common_mistakes: [
-      "Using I = t / Q instead of Q / t",
-      "Forgetting units (C and s)",
-      "Incorrect division",
-    ],
-    explanation: "Current is the rate of flow of charge per unit time.",
-  },
-
-  {
-    q: "Find current if V = 12V and R = 3Ω.",
-    hint: "Use Ohm's Law I = V / R",
-    formula: "I = V / R",
-    steps: [
-      "Step 1: Identify values → V = 12V, R = 3Ω",
-      "Step 2: Write formula → I = V / R",
-      "Step 3: Substitute values → I = 12 / 3",
-      "Step 4: Calculate → I = 4A",
-    ],
-    ans: "4A",
-    final_check: "Current decreases when resistance increases.",
-    common_mistakes: [
-      "Using R / V instead of V / R",
-      "Ignoring units",
-      "Dividing incorrectly",
-    ],
-    explanation: "Ohm's Law relates voltage, current, and resistance.",
-  },
-
-  {
-    q: "Find the resistance if V = 24V and I = 6A.",
-    hint: "Use R = V / I",
-    formula: "R = V / I",
-    steps: [
-      "Step 1: Identify values → V = 24V, I = 6A",
-      "Step 2: Write formula → R = V / I",
-      "Step 3: Substitute values → R = 24 / 6",
-      "Step 4: Calculate → R = 4Ω",
-    ],
-    ans: "4Ω",
-    final_check: "Resistance is measured in ohms (Ω).",
-    common_mistakes: [
-      "Using I / V instead of V / I",
-      "Forgetting the Ω unit",
-      "Calculation errors",
-    ],
-    explanation: "Resistance opposes the flow of electric current.",
-  },
-
-  {
-    q: "Find the voltage if I = 5A and R = 8Ω.",
-    hint: "Use V = IR",
-    formula: "V = IR",
-    steps: [
-      "Step 1: Identify values → I = 5A, R = 8Ω",
-      "Step 2: Write formula → V = IR",
-      "Step 3: Substitute values → V = 5 × 8",
-      "Step 4: Calculate → V = 40V",
-    ],
-    ans: "40V",
-    final_check: "Voltage is measured in volts (V).",
-    common_mistakes: [
-      "Adding instead of multiplying",
-      "Using the wrong formula",
-      "Incorrect units",
-    ],
-    explanation: "Voltage is the electrical energy supplied per unit charge.",
-  },
-
-  {
-    q: "A charge of 60C flows in 12s. Find the current.",
-    hint: "Use I = Q / t",
-    formula: "I = Q / t",
-    steps: [
-      "Step 1: Identify values → Q = 60C, t = 12s",
-      "Step 2: Write formula → I = Q / t",
-      "Step 3: Substitute values → I = 60 / 12",
-      "Step 4: Calculate → I = 5A",
-    ],
-    ans: "5A",
-    final_check: "Current is measured in amperes (A).",
-    common_mistakes: [
-      "Dividing incorrectly",
-      "Using the wrong formula",
-      "Leaving out units",
-    ],
-    explanation: "Current tells us how much charge passes a point each second.",
-  },
-
-  {
-    q: "A bulb uses 120W at 240V. Find the current.",
-    hint: "Use P = VI",
-    formula: "I = P / V",
-    steps: [
-      "Step 1: Identify values → P = 120W, V = 240V",
-      "Step 2: Rearrange formula → I = P / V",
-      "Step 3: Substitute values → I = 120 / 240",
-      "Step 4: Calculate → I = 0.5A",
-    ],
-    ans: "0.5A",
-    final_check: "Current should be less than 1A for these values.",
-    common_mistakes: [
-      "Using V / P instead of P / V",
-      "Ignoring decimal answers",
-      "Using the wrong formula",
-    ],
-    explanation: "Power equals voltage multiplied by current.",
-  },
-
-  {
-    q: "A circuit has V = 18V and I = 3A. Find the power.",
-    hint: "Use P = VI",
-    formula: "P = VI",
-    steps: [
-      "Step 1: Identify values → V = 18V, I = 3A",
-      "Step 2: Write formula → P = VI",
-      "Step 3: Substitute values → P = 18 × 3",
-      "Step 4: Calculate → P = 54W",
-    ],
-    ans: "54W",
-    final_check: "Power is measured in watts (W).",
-    common_mistakes: [
-      "Adding V and I",
-      "Using division instead of multiplication",
-      "Wrong unit",
-    ],
-    explanation: "Electrical power is the rate at which electrical energy is used.",
-  },
-
-  {
-    q: "An appliance uses 1000J of energy in 50s. Find the power.",
-    hint: "Use P = E / t",
-    formula: "P = E / t",
-    steps: [
-      "Step 1: Identify values → E = 1000J, t = 50s",
-      "Step 2: Write formula → P = E / t",
-      "Step 3: Substitute values → P = 1000 / 50",
-      "Step 4: Calculate → P = 20W",
-    ],
-    ans: "20W",
-    final_check: "Power is measured in watts (W).",
-    common_mistakes: [
-      "Using t / E",
-      "Calculation mistakes",
-      "Wrong units",
-    ],
-    explanation: "Power measures how quickly energy is transferred.",
-  },
-
-  {
-    q: "A resistor of 5Ω carries a current of 4A. Find the voltage.",
-    hint: "Use V = IR",
-    formula: "V = IR",
-    steps: [
-      "Step 1: Identify values → I = 4A, R = 5Ω",
-      "Step 2: Write formula → V = IR",
-      "Step 3: Substitute values → V = 4 × 5",
-      "Step 4: Calculate → V = 20V",
-    ],
-    ans: "20V",
-    final_check: "Voltage is measured in volts.",
-    common_mistakes: [
-      "Adding instead of multiplying",
-      "Using R / I",
-      "Ignoring units",
-    ],
-    explanation: "Voltage across a resistor depends on current and resistance.",
-  },
-
-  {
-    q: "Find the resistance if V = 30V and I = 5A.",
-    hint: "Use R = V / I",
-    formula: "R = V / I",
-    steps: [
-      "Step 1: Identify values → V = 30V, I = 5A",
-      "Step 2: Write formula → R = V / I",
-      "Step 3: Substitute values → R = 30 / 5",
-      "Step 4: Calculate → R = 6Ω",
-    ],
-    ans: "6Ω",
-    final_check: "Resistance is measured in ohms (Ω).",
-    common_mistakes: [
-      "Using I / V",
-      "Incorrect division",
-      "Leaving out Ω",
-    ],
-    explanation: "Resistance determines how much a material opposes current flow.",
-  },
-
-  {
-    q: "A battery supplies 48V to a 12Ω resistor. Find the current.",
-    hint: "Use I = V / R",
-    formula: "I = V / R",
-    steps: [
-      "Step 1: Identify values → V = 48V, R = 12Ω",
-      "Step 2: Write formula → I = V / R",
-      "Step 3: Substitute values → I = 48 / 12",
-      "Step 4: Calculate → I = 4A",
-    ],
-    ans: "4A",
-    final_check: "Current is measured in amperes.",
-    common_mistakes: [
-      "Using multiplication instead of division",
-      "Using the wrong formula",
-      "Ignoring units",
-    ],
-    explanation: "Current increases when voltage increases or resistance decreases.",
-  }
-]
-);
-
-/* =========================
-   2. SERIES & PARALLEL CIRCUITS
-========================= */
-
-add(
-  "physics",
-  "em",
-  "Series & Parallel Circuits",
-  `<h2>Series & Parallel Circuits (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-Electric circuits can be connected in different ways. The arrangement of components affects how current and voltage behave in the circuit.
-</p>
-
-<p>
-The two main types of circuits are series circuits and parallel circuits.
-</p>
-
----
-
-<h3> SERIES CIRCUITS</h3>
-
-<ul>
-<li>Components are connected end-to-end in a single path</li>
-<li>Current is the same at all points in the circuit</li>
-<li>Voltage is shared between components</li>
-<li>If one component breaks, the whole circuit stops working</li>
-</ul>
-
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 400 100" width="400" height="100" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;background:#12122a;border-radius:8px;">
-  <!-- Wire top -->
-  <line x1="40" y1="30" x2="380" y2="30" stroke="#7cfc00" stroke-width="2"/>
-  <!-- Wire bottom -->
-  <line x1="40" y1="70" x2="380" y2="70" stroke="#7cfc00" stroke-width="2"/>
-  <!-- Battery left side -->
-  <line x1="40" y1="30" x2="40" y2="70" stroke="#7cfc00" stroke-width="2"/>
-  <line x1="30" y1="38" x2="50" y2="38" stroke="#f39c12" stroke-width="3"/>
-  <line x1="35" y1="45" x2="45" y2="45" stroke="#f39c12" stroke-width="1.5"/>
-  <text x="20" y="60" fill="#f39c12" font-size="10" font-family="sans-serif">+</text>
-  <text x="42" y="60" fill="#f39c12" font-size="10" font-family="sans-serif">-</text>
-  <text x="25" y="88" fill="#aaa" font-size="9" font-family="sans-serif">Battery</text>
-  <!-- R1 -->
-  <rect x="90" y="22" width="60" height="16" fill="#1a3a6a" stroke="#3498db" stroke-width="1.5" rx="3"/>
-  <text x="120" y="34" fill="#3498db" font-size="11" text-anchor="middle" font-family="monospace">R1</text>
-  <!-- R2 -->
-  <rect x="180" y="22" width="60" height="16" fill="#1a3a6a" stroke="#3498db" stroke-width="1.5" rx="3"/>
-  <text x="210" y="34" fill="#3498db" font-size="11" text-anchor="middle" font-family="monospace">R2</text>
-  <!-- R3 -->
-  <rect x="270" y="22" width="60" height="16" fill="#1a3a6a" stroke="#3498db" stroke-width="1.5" rx="3"/>
-  <text x="300" y="34" fill="#3498db" font-size="11" text-anchor="middle" font-family="monospace">R3</text>
-  <!-- Right close -->
-  <line x1="380" y1="30" x2="380" y2="70" stroke="#7cfc00" stroke-width="2"/>
-  <!-- Title -->
-  <text x="200" y="90" fill="#aaa" font-size="10" text-anchor="middle" font-family="sans-serif">SERIES CIRCUIT — One path for current</text>
-</svg>
-</div>
-
-<div class="example-box">
-<b>Key Idea:</b> One path for current flow only
-</div>
-
----
-
-<h3> PARALLEL CIRCUITS</h3>
-
-<ul>
-<li>Components are connected in separate branches</li>
-<li>Voltage across each branch is the same</li>
-<li>Current splits between branches</li>
-<li>If one component fails, others still work</li>
-</ul>
-
-<div style="text-align:center;margin:1rem 0;">
-<svg viewBox="0 0 380 160" width="380" height="160" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;background:#12122a;border-radius:8px;">
-  <!-- Battery -->
-  <line x1="40" y1="20" x2="40" y2="140" stroke="#7cfc00" stroke-width="2"/>
-  <line x1="28" y1="60" x2="52" y2="60" stroke="#f39c12" stroke-width="3"/>
-  <line x1="33" y1="72" x2="47" y2="72" stroke="#f39c12" stroke-width="1.5"/>
-  <text x="18" y="68" fill="#f39c12" font-size="10" font-family="sans-serif">+</text>
-  <text x="44" y="82" fill="#f39c12" font-size="10" font-family="sans-serif">-</text>
-  <text x="18" y="150" fill="#aaa" font-size="9" font-family="sans-serif">Battery</text>
-  <!-- Top bus wire -->
-  <line x1="40" y1="20" x2="340" y2="20" stroke="#7cfc00" stroke-width="2"/>
-  <!-- Bottom bus wire -->
-  <line x1="40" y1="140" x2="340" y2="140" stroke="#7cfc00" stroke-width="2"/>
-  <!-- Right close -->
-  <line x1="340" y1="20" x2="340" y2="140" stroke="#7cfc00" stroke-width="2"/>
-  <!-- Branch R1 -->
-  <line x1="120" y1="20" x2="120" y2="45" stroke="#7cfc00" stroke-width="1.5"/>
-  <rect x="98" y="45" width="44" height="18" fill="#1a3a6a" stroke="#e74c3c" stroke-width="1.5" rx="3"/>
-  <text x="120" y="58" fill="#e74c3c" font-size="11" text-anchor="middle" font-family="monospace">R1</text>
-  <line x1="120" y1="63" x2="120" y2="140" stroke="#7cfc00" stroke-width="1.5"/>
-  <!-- Branch R2 -->
-  <line x1="200" y1="20" x2="200" y2="61" stroke="#7cfc00" stroke-width="1.5"/>
-  <rect x="178" y="61" width="44" height="18" fill="#1a3a6a" stroke="#9b59b6" stroke-width="1.5" rx="3"/>
-  <text x="200" y="74" fill="#9b59b6" font-size="11" text-anchor="middle" font-family="monospace">R2</text>
-  <line x1="200" y1="79" x2="200" y2="140" stroke="#7cfc00" stroke-width="1.5"/>
-  <!-- Branch R3 -->
-  <line x1="280" y1="20" x2="280" y2="77" stroke="#7cfc00" stroke-width="1.5"/>
-  <rect x="258" y="77" width="44" height="18" fill="#1a3a6a" stroke="#f39c12" stroke-width="1.5" rx="3"/>
-  <text x="280" y="90" fill="#f39c12" font-size="11" text-anchor="middle" font-family="monospace">R3</text>
-  <line x1="280" y1="95" x2="280" y2="140" stroke="#7cfc00" stroke-width="1.5"/>
-  <!-- Title -->
-  <text x="190" y="158" fill="#aaa" font-size="10" text-anchor="middle" font-family="sans-serif">PARALLEL CIRCUIT — Multiple paths for current</text>
-</svg>
-</div>
-
-<div class="example-box">
-<b>Key Idea:</b> Multiple paths for current flow
-</div>
-
----
-
-<h3> COMPARISON SUMMARY</h3>
-
-<ul>
-<li><b>Series:</b> same current, shared voltage, one path</li>
-<li><b>Parallel:</b> same voltage, split current, multiple paths</li>
-</ul>
-
----
-
-<h3> REAL-LIFE APPLICATIONS</h3>
-
-<div class="example-box">
-Series: Old Christmas lights (if one fails, all go off)
-</div>
-
-<div class="example-box">
-Parallel: Household wiring (each appliance works independently)
-</div>
-
-<div class="example-box">
-Parallel: Car electrical systems
-</div>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: Why is current the same in a series circuit?</b><br>
-Because there is only one path for charge flow.
-</div>
-
-<div class="example-box">
-<b>Q2: Why do parallel circuits work independently?</b><br>
-Because each branch has its own path for current.
-</div>
-
-<div class="example-box">
-<b>Q3: What happens if one bulb breaks in series?</b><br>
-The entire circuit stops working.
-</div>
-
-<div class="example-box">
-<b>Q4: What happens to current in a parallel circuit?</b><br>
-It splits between branches.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-Two bulbs in series share a battery.<br>
-Each bulb receives less voltage → bulbs are dimmer.
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-Two bulbs in parallel each receive full voltage.<br>
-Both bulbs shine brightly.
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-House wiring uses parallel circuits so that turning off one device does not affect others.
-</div>
-
-<div class="example-box">
-<b>Example 4 (Current behavior):</b><br>
-In a parallel circuit, total current = sum of currents in each branch.
-</div>
-
----
-
-<h3> CONTINUOUS EXAM-STYLE QUESTION</h3>
-
-<div class="example-box">
-A circuit has two bulbs connected in series to a battery.<br><br>
-
-(a) What happens if one bulb breaks?<br>
-(b) State one disadvantage of series circuits<br>
-(c) Why are household circuits connected in parallel?<br><br>
-
-Solution:<br>
-(a) The whole circuit stops working<br>
-(b) Voltage is shared making bulbs dimmer<br>
-(c) So each appliance works independently
-</div>
-
----
-
-<h3> KEY FACTS</h3>
-
-<div class="keyfact">
- Series = one path, same current, shared voltage<br>
- Parallel = many paths, same voltage, split current<br>
- Homes use parallel circuits<br>
- Failure in series stops everything<br>
- Parallel circuits are more reliable
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. Define series circuit<br>
-2. Define parallel circuit<br>
-3. Why do bulbs glow brighter in parallel?<br>
-4. What happens when one component fails in series?<br>
-5. State two advantages of parallel circuits
-</div>
-
-`,
-  [
-    {
-      q: "In a parallel circuit, branch currents are 2A, 3A and 5A. Find total current.",
-      hint: "Add all branch currents",
-      ans: "10A",
-      sol: "I(total) = 2 + 3 + 5 = 10A",
-      explanation:
-        "In parallel circuits, total current is the sum of currents in all branches.",
-    },
-    {
-      q: "A series circuit has a current of 3A. What is the current through each resistor?",
-      hint: "Series = same current everywhere",
-      ans: "3A",
-      sol: "I1 = I2 = I3 = 3A",
-      explanation:
-        "In a series circuit, current is the same at all points because there is only one path.",
-    },
-    {
-      q: "A voltage of 12V is applied across a resistor of 4Ω. Find the current.",
-      hint: "Use Ohm’s Law: I = V / R",
-      ans: "3A",
-      sol: "I = 12 / 4 = 3A",
-      explanation:
-        "Ohm’s Law states that current equals voltage divided by resistance.",
-    },
-    {
-      q: "Find resistance if voltage is 20V and current is 5A.",
-      hint: "Use R = V / I",
-      ans: "4Ω",
-      sol: "R = 20 / 5 = 4Ω",
-      explanation: "Resistance is found by dividing voltage by current.",
-    },
-    {
-      q: "A circuit has two branches carrying 1.5A and 2.5A. Find total current.",
-      hint: "Sum branch currents",
-      ans: "4A",
-      sol: "1.5 + 2.5 = 4A",
-      explanation:
-        "Total current in a parallel circuit is the sum of all branch currents.",
-    },
-    {
-      q: "If a 9V battery pushes 3A through a circuit, find resistance.",
-      hint: "R = V / I",
-      ans: "3Ω",
-      sol: "R = 9 / 3 = 3Ω",
-      explanation: "Divide voltage by current to get resistance.",
-    },
-    {
-      q: "In a parallel circuit, total current is 8A. If one branch is 3A, find the other branch current.",
-      hint: "Subtract known current",
-      ans: "5A",
-      sol: "8 - 3 = 5A",
-      explanation:
-        "Total current equals sum of branch currents, so subtract to find missing value.",
-    },
-    {
-      q: "A resistor has 6Ω resistance and current of 2A. Find voltage.",
-      hint: "Use V = IR",
-      ans: "12V",
-      sol: "V = 2 × 6 = 12V",
-      explanation: "Voltage equals current multiplied by resistance.",
-    },
-    {
-      q: "Two identical bulbs in series each carry 1.5A. What is total current?",
-      hint: "Series current rule",
-      ans: "1.5A",
-      sol: "Same current flows in series circuit",
-      explanation:
-        "In series circuits, current is constant throughout the circuit.",
-    },
-
-    {
-      q: "A circuit has 3 parallel branches carrying 2A, 2A and 6A. Find total current.",
-      hint: "Add all values",
-      ans: "10A",
-      sol: "2 + 2 + 6 = 10A",
-      explanation:
-        "Total current in parallel circuits is the sum of branch currents.",
-    },
-  ],
-);
-
-/* =========================
-   3. MAGNETIC FIELDS
-========================= */
-
-add(
-  "physics",
-  "em",
-  "Magnetic fields",
-  `<h2>Magnetic Fields & Magnetism (Full Explanation)</h2>
-<h3> FOUNDATION EXPLANATION</h3>
-<p>
-A magnetic field is the region around a magnet or current-carrying conductor where magnetic forces can be experienced.
-It is invisible but can be represented using magnetic field lines.
-</p>
-
----
-<h3> MAGNETIC FIELD LINES</h3>
-
-<ul>
-<li>Field lines show the direction of magnetic force</li>
-<li>They flow from <b>North pole → South pole</b> outside the magnet</li>
-<li>Inside the magnet, they flow from South → North</li>
-<li>Closer field lines = stronger magnetic field</li>
-<li>Field lines never cross each other</li>
-</ul>
-
----
-
-<h3> MAGNETIC DOMAINS (DIPOLES)</h3>
-
-<p>
-Magnetic materials contain tiny regions called <b>domains</b>.
-Each domain acts like a small magnet (dipole).
-</p>
-
-<div class="example-box">
-<b>Unmagnetised material:</b> domains are randomly arranged → no overall magnetism
-</div>
-
-<div class="example-box">
-<b>Magnetised material:</b> domains are aligned in one direction → strong magnet
-</div>
-
----
-
-<h3> HOW TO MAGNETISE OBJECTS (3 METHODS)</h3>
-
-<div class="example-box">
-<b>1. Stroking Method:</b><br>
-Rub a magnet repeatedly in one direction along a material (like iron).
-</div>
-
-<div class="example-box">
-<b>2. Electrical Method:</b><br>
-Pass electric current through a coil (solenoid) around a metal core.
-</div>
-
-<div class="example-box">
-<b>3. Induction Method:</b><br>
-Place a magnetic material near a strong magnet → it becomes temporarily magnetised.
-</div>
-
----
-
-<h3> DEMAGNETISATION (LOSS OF MAGNETISM)</h3>
-
-<ul>
-<li>Heating the magnet</li>
-<li>Hammering or dropping it</li>
-<li>Applying alternating current (AC)</li>
-</ul>
-
-<div class="example-box">
-<b>Prevention:</b> Avoid heat, shock, and strong opposing magnetic fields
-</div>
-
----
-
-<h3> POLARITY TESTING</h3>
-
-<div class="example-box">
-A known pole of a magnet is brought near an unknown pole.
-If repulsion occurs → same pole is identified.
-</div>
-
-<div class="example-box">
-<b>Key rule:</b> Like poles repel, unlike poles attract
-</div>
-
----
-
-<h3> WHY ATTRACTION IS NOT A RELIABLE TEST</h3>
-
-<div class="example-box">
-Attraction is NOT a valid test for polarity because both poles (N and S) attract an unknown pole.
-Only repulsion confirms the same type of pole.
-</div>
-
----
-
-<h3> CONCEPT CLARITY QUESTIONS</h3>
-
-<div class="example-box">
-<b>Q1: What do magnetic field lines show?</b><br>
-They show direction and strength of magnetic force.
-</div>
-
-<div class="example-box">
-<b>Q2: What are magnetic domains?</b><br>
-Tiny regions in a material that behave like small magnets.
-</div>
-
-<div class="example-box">
-<b>Q3: Why does stroking magnetise a material?</b><br>
-It aligns the domains in one direction.
-</div>
-
-<div class="example-box">
-<b>Q4: Why is attraction not enough to test polarity?</b><br>
-Because both poles attract, so it is not conclusive.
-</div>
-
----
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-Iron filings around a magnet arrange in curved patterns → showing field lines.
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-A steel bar is stroked with a magnet → domains align → bar becomes magnetised.
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-A magnet dropped repeatedly loses strength → demagnetisation due to disturbance of domains.
-</div>
-
-<div class="example-box">
-<b>Example 4:</b><br>
-A compass needle aligns with Earth's magnetic field → showing Earth acts like a giant magnet.
-</div>
-
----
-
-<h3> CONTINUOUS EXAM-STYLE QUESTION</h3>
-
-<div class="example-box">
-A steel rod is magnetised using a bar magnet.<br><br>
-
-(a) Explain how magnetisation occurs<br>
-(b) What happens to domains in the process?<br>
-(c) Why is repulsion used to test polarity?<br><br>
-
-Solution:<br>
-(a) Stroking aligns magnetic domains in one direction<br>
-(b) Domains become ordered and point the same way<br>
-(c) Because attraction occurs for both poles, but repulsion confirms same pole
-</div>
-
----
-
-<h3> KEY FACTS</h3>
-
-<div class="keyfact">
- Magnetic field is invisible but real<br>
- Field lines go N → S outside magnet<br>
- Magnetism depends on domain alignment<br>
- Repulsion is the ONLY sure test of polarity<br>
- Heat, shock, and AC destroy magnetism
-</div>
-
----
-
-<h3> PRACTICE QUESTIONS</h3>
-
-<div class="example-box">
-1. What are magnetic domains?<br>
-2. State 3 methods of magnetisation<br>
-3. Why does heating destroy magnetism?<br>
-4. Why is repulsion a better test than attraction?<br>
-5. Describe how stroking produces a magnet
-</div>
-
-`,
-  [
-    {
-      type: "written",
-      q: "What is a magnetic field?",
-      hint: "region of influence",
-      ans: "A region around a magnet or current-carrying conductor where magnetic forces can be experienced.",
-      explanation:
-        "Magnetic fields are invisible but can be detected through their effects on materials like iron or compass needles.",
-    },
-
-    {
-      type: "written",
-      q: "What do magnetic field lines show?",
-      hint: "direction + strength",
-      ans: "They show the direction and strength of a magnetic field.",
-      explanation:
-        "Closer field lines indicate a stronger magnetic field, and the direction shows how a north pole would move.",
-    },
-
-    {
-      type: "written",
-      q: "In which direction do magnetic field lines flow outside a magnet?",
-      hint: "N to S",
-      ans: "From North pole to South pole.",
-      explanation:
-        "Outside the magnet, field lines always go from North to South, and inside they return from South to North.",
-    },
-
-    {
-      type: "written",
-      q: "What are magnetic domains?",
-      hint: "tiny magnets",
-      ans: "Small regions inside a material that behave like tiny magnets.",
-      explanation:
-        "Each domain acts like a dipole, and their alignment determines whether a material is magnetised.",
-    },
-
-    {
-      type: "written",
-      q: "Why is a material unmagnetised?",
-      hint: "random orientation",
-      ans: "Because its magnetic domains are randomly arranged.",
-      explanation:
-        "Randomly arranged domains cancel each other’s magnetic effects, resulting in no overall magnetism.",
-    },
-
-    {
-      type: "written",
-      q: "What happens to magnetic domains when a material is magnetised?",
-      hint: "alignment",
-      ans: "They align in the same direction.",
-      explanation:
-        "Aligned domains reinforce each other, producing a strong net magnetic field.",
-    },
-
-    {
-      type: "written",
-      q: "Why is repulsion the only sure test for polarity?",
-      hint: "attraction is not enough",
-      ans: "Because attraction can occur with both poles, but repulsion only occurs between like poles.",
-      explanation:
-        "Only repulsion confirms that two poles are the same type (N–N or S–S).",
-    },
-
-    {
-      type: "written",
-      q: "What causes demagnetisation?",
-      hint: "heat, shock, AC",
-      ans: "Heat, hammering, or alternating current.",
-      explanation:
-        "These disturb the alignment of magnetic domains, reducing or removing magnetism.",
-    },
-
-    {
-      type: "written",
-      q: "Why does a compass needle align north-south?",
-      hint: "Earth is a magnet",
-      ans: "Because Earth has a magnetic field.",
-      explanation:
-        "The compass aligns with Earth’s magnetic field, showing that Earth behaves like a giant magnet.",
-    },
-
-    {
-      type: "written",
-      q: "How does stroking magnetise a material?",
-      hint: "domain alignment",
-      ans: "It aligns magnetic domains in one direction.",
-      explanation:
-        "Repeated stroking forces domains to line up, creating a net magnetic field.",
-    },
-  ],
-);
-/* =========================
-   4. ELECTROMAGNETISM
-========================= */
-add(
-  "physics",
-  "em",
-  "Electromagnetism",
-  `<h2> Electromagnetism (Full Structured Master Notes)</h2>
-<h3> WELL ARRANGED NOTES</h3>
-
-<p>
-Electromagnetism is the study of the relationship between electricity and magnetism. 
-Whenever electric current flows through a conductor, it produces a magnetic field around it.
-</p>
-
-<p>
-This discovery shows that electricity and magnetism are connected and form a single force called electromagnetism.
-</p>
-
-<h4> MAGNETIC FIELD AROUND A WIRE</h4>
-<ul>
-<li>A straight wire carrying current produces circular magnetic field lines</li>
-<li>The direction is determined by the right-hand grip rule</li>
-<li>Reversing current reverses magnetic field direction</li>
-</ul>
-
-<h4> SOLENOID (COIL OF WIRE)</h4>
-<ul>
-<li>A solenoid is a long coil of wire</li>
-<li>It produces a strong and uniform magnetic field inside</li>
-<li>It behaves like a bar magnet with north and south poles</li>
-</ul>
-
-<h4> ELECTROMAGNET</h4>
-<ul>
-<li>An electromagnet is a temporary magnet created using electric current</li>
-<li>It becomes magnetic only when current flows</li>
-<li>It uses a soft iron core to increase strength</li>
-</ul>
-
-<h4> FACTORS AFFECTING STRENGTH</h4>
-<ul>
-<li>Current: more current → stronger field</li>
-<li>Number of turns: more turns → stronger field</li>
-<li>Core material: soft iron increases strength</li>
-</ul>
-
----
-
-<h3> WORKED EXAMPLES (STEP BY STEP)</h3>
-
-<h4> Example 1: Wire magnetic field</h4>
-<ul>
-<li>Step 1: Current flows in straight wire</li>
-<li>Step 2: Magnetic field forms around wire</li>
-<li>Step 3: Field lines are circular</li>
-</ul>
-<p><b>Answer:</b> A circular magnetic field is produced around the wire.</p>
-
-<h4> Example 2: Solenoid strength</h4>
-<ul>
-<li>Step 1: Coil has many turns</li>
-<li>Step 2: Fields from each turn combine</li>
-<li>Step 3: Strong magnetic field forms</li>
-</ul>
-<p><b>Answer:</b> A solenoid produces a stronger magnetic field than a single wire.</p>
-
-<h4> Example 3: Electromagnet in crane</h4>
-<ul>
-<li>Step 1: Current is switched on</li>
-<li>Step 2: Magnet attracts iron scrap</li>
-<li>Step 3: Current is switched off</li>
-<li>Step 4: Scrap is released</li>
-</ul>
-<p><b>Answer:</b> The electromagnet can pick and release metals using current control.</p>
-
----
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Confusing electromagnets with permanent magnets</li>
-<li>Thinking magnetism exists without current in electromagnets</li>
-<li>Forgetting that field direction depends on current direction</li>
-<li>Assuming one wire is stronger than a coil (it is weaker)</li>
-</ul>
-
----
-
-<h3> REAL WORLD APPLICATIONS</h3>
-<ul>
-<li>Electric cranes in scrapyards</li>
-<li>Electric bells and buzzers</li>
-<li>Speakers and headphones</li>
-<li>Electric motors</li>
-<li>Magnetic relays in circuits</li>
-</ul>
-
-<h3> WORKED CALCULATION-STYLE QUESTIONS</h3>
-
-<h4> Example 1</h4>
-<p>A coil has 10 turns. If turns are increased to 20, what happens?</p>
-<ul>
-<li>Step 1: Compare turns</li>
-<li>Step 2: 20 > 10</li>
-<li>Step 3: Magnetic field increases</li>
-</ul>
-<p><b>Answer:</b> Magnetic field becomes stronger.</p>
-
-<h4> Example 2</h4>
-<p>Current in a coil is increased from 2A to 4A.</p>
-<ul>
-<li>Step 1: Current doubles</li>
-<li>Step 2: Magnetic field depends on current</li>
-<li>Step 3: Field strength increases</li>
-</ul>
-<p><b>Answer:</b> Magnetic field increases.</p>
-
----
-
-<h3> KEY FACTS</h3>
-<ul>
-<li>Electric current produces magnetism</li>
-<li>Magnetism disappears when current stops</li>
-<li>Coils strengthen magnetic fields</li>
-<li>Soft iron increases electromagnet strength</li>
-<li>Electromagnets are controllable</li>
-</ul>
-`,
-  [
-    {
-      type: "written",
-      q: "What is electromagnetism?",
-      hint: "electricity + magnetism",
-      ans: "Electromagnetism is the relationship between electric current and magnetic fields.",
-      explanation:
-        "Electric current produces a magnetic field around a conductor, showing the link between electricity and magnetism.",
-    },
-
-    {
-      type: "written",
-      q: "What happens when current flows in a wire?",
-      hint: "magnetic field forms",
-      ans: "A magnetic field is produced around the wire.",
-      explanation:
-        "Moving electric charges (current) generate a magnetic field around the conductor.",
-    },
-
-    {
-      type: "written",
-      q: "Why is a solenoid stronger than a straight wire?",
-      hint: "many loops",
-      ans: "Because magnetic fields from each coil turn combine.",
-      explanation:
-        "Each loop produces a magnetic field and they add together, making the overall field stronger.",
-    },
-
-    {
-      type: "written",
-      q: "How do you increase the strength of an electromagnet?",
-      hint: "current, turns, core",
-      ans: "Increase current, increase number of coil turns, and use a soft iron core.",
-      explanation:
-        "All these factors increase the strength of the magnetic field produced.",
-    },
-
-    {
-      type: "written",
-      q: "What is the role of a soft iron core in an electromagnet?",
-      hint: "magnetic enhancement",
-      ans: "It increases the strength of the magnetic field.",
-      explanation:
-        "Soft iron becomes magnetized easily and concentrates magnetic field lines.",
-    },
-
-    {
-      type: "written",
-      q: "Why does reversing current reverse magnetic field direction?",
-      hint: "direction of charge flow",
-      ans: "Because magnetic field direction depends on current direction.",
-      explanation:
-        "Changing current direction changes the motion of charges, reversing the field.",
-    },
-
-    {
-      type: "written",
-      q: "What is produced around a current-carrying conductor?",
-      hint: "invisible force field",
-      ans: "A magnetic field.",
-      explanation:
-        "Electric current generates a circular magnetic field around the conductor.",
-    },
-
-    {
-      type: "written",
-      q: "Why do electromagnets stop working when current is switched off?",
-      hint: "temporary magnet",
-      ans: "Because the magnetic field depends on electric current.",
-      explanation:
-        "Without current, moving charges stop, so the magnetic field disappears.",
-    },
-  ],
-);
-/*==============================================
-Ohm's laws
-==============================================*/
-add(
-  "physics",
-  "em",
-  "Ohm’s Law",
-  `<h2> Ohm’s Law</h2>
-<hr>
-
-<h3> WELL ARRANGED NOTES</h3>
-
-<h4> Definition</h4>
-<p>
-Ohm’s Law states that the current flowing through a conductor is directly proportional to the potential difference across it, provided temperature and physical conditions remain constant.
-</p>
-
-<h4> Main Law</h4>
-<div class="formula">
-V = IR
-</div>
-
-<ul>
-<li>V = Voltage (V)</li>
-<li>I = Current (A)</li>
-<li>R = Resistance (Ω)</li>
-</ul>
-
-<h4> Key Idea</h4>
-<ul>
-<li>Increase voltage → current increases</li>
-<li>Increase resistance → current decreases</li>
-</ul>
-
-<h4> Physical Meaning</h4>
-<p>
-Voltage pushes current, while resistance opposes it.
-</p>
-
-<hr>
-
-<h3> WORKED EXAMPLES</h3>
-
-<div class="example-box">
-<b>Example 1:</b><br>
-V = 12V, I = 3A<br><br>
-Step 1: Use V = IR<br>
-Step 2: R = V/I<br>
-Step 3: R = 12/3<br>
-<b>Answer: 4 Ω</b>
-</div>
-
-<div class="example-box">
-<b>Example 2:</b><br>
-V = 10V, R = 5Ω<br><br>
-Step 1: Use V = IR<br>
-Step 2: I = V/R<br>
-Step 3: I = 10/5<br>
-<b>Answer: 2 A</b>
-</div>
-
-<div class="example-box">
-<b>Example 3:</b><br>
-I = 4A, R = 2Ω<br><br>
-Step 1: Use V = IR<br>
-Step 2: V = 4 × 2<br>
-<b>Answer: 8 V</b>
-</div>
-
-<hr>
-
-<h3> COMMON MISTAKES</h3>
-<ul>
-<li>Confusing current (I) with voltage (V)</li>
-<li>Using wrong formula rearrangement</li>
-<li>Forgetting units (Ω, A, V)</li>
-<li>Assuming all materials obey Ohm’s Law</li>
-<li>Ignoring temperature effect</li>
-</ul>
-
-<hr>
-
-<h3> REAL WORLD APPLICATIONS</h3>
-<ul>
-<li>Electric heaters (control current using resistance)</li>
-<li>House wiring safety design</li>
-<li>Fuses and circuit breakers</li>
-<li>Electronic devices (resistor circuits)</li>
-</ul>
-
-<hr>
-
-<h3> QUESTIONS (WITH HINTS, ANSWERS & EXPLANATIONS)</h3>
-
-<div class="example-box">
-<b>Q1:</b> What is Ohm’s Law?<br>
-<b>Hint:</b> relationship between V and I<br>
-<b>Answer:</b> Current is directly proportional to voltage at constant temperature<br>
-<b>Explanation:</b> Increasing voltage increases current if resistance is constant
-</div>
-
-<div class="example-box">
-<b>Q2:</b> A voltage of 20V produces a current of 5A. Find resistance.<br>
-<b>Hint:</b> use V = IR<br>
-<b>Step:</b> R = V/I = 20/5<br>
-<b>Answer:</b> 4 Ω<br>
-<b>Explanation:</b> Resistance is opposition to current flow
-</div>
-
-<div class="example-box">
-<b>Q3:</b> What happens if resistance increases?<br>
-<b>Hint:</b> think current<br>
-<b>Answer:</b> Current decreases<br>
-<b>Explanation:</b> Higher resistance reduces flow of electrons
-</div>
-
-<div class="example-box">
-<b>Q4:</b> Why is temperature important in Ohm’s Law?<br>
-<b>Hint:</b> particle movement<br>
-<b>Answer:</b> Because resistance changes with temperature<br>
-<b>Explanation:</b> Higher temperature increases vibration of atoms, increasing resistance
-</div>
-
-<hr>
-
-<h3> V–I GRAPH INSIGHT</h3>
-<ul>
-<li>Straight line → Ohmic conductor</li>
-<li>Gradient = resistance</li>
-<li>Curved line → non-ohmic material</li>
-</ul>
-
-<hr>
-
-<h3> KEY FACTS</h3>
-<ul>
-<li>V = IR is the core formula</li>
-<li>Resistance opposes current flow</li>
-<li>Current depends on voltage and resistance</li>
-<li>Ohmic materials have constant resistance</li>
-</ul>
-`,
-  [
-  {
-    type: "calc",
-    q: "A voltage of 20V produces a current of 5A. Find the resistance.",
-    ans: "4Ω",
-    sol: "R = V / I = 20 / 5 = 4Ω",
-    steps: [
-      "Step 1: Identify the given values: V = 20V and I = 5A.",
-      "Step 2: Recall Ohm's Law for resistance: R = V / I.",
-      "Step 3: Substitute the values: R = 20 / 5.",
-      "Step 4: Calculate: R = 4Ω."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "Find the current if V = 12V and R = 3Ω.",
-    ans: "4A",
-    sol: "I = V / R = 12 / 3 = 4A",
-    steps: [
-      "Step 1: Identify the given values: V = 12V and R = 3Ω.",
-      "Step 2: Recall the formula: I = V / R.",
-      "Step 3: Substitute the values: I = 12 / 3.",
-      "Step 4: Calculate: I = 4A."
-    ]
-  },
-
-  {
-    type: "written",
-    q: "State Ohm's Law.",
-    ans: "Current is directly proportional to voltage provided the temperature remains constant."
-  },
-
-  {
-    type: "calc",
-    q: "A battery supplies 24V to a resistor of 6Ω. Find the current.",
-    ans: "4A",
-    sol: "I = V / R = 24 / 6 = 4A",
-    steps: [
-      "Step 1: Identify V = 24V and R = 6Ω.",
-      "Step 2: Use the formula I = V / R.",
-      "Step 3: Substitute the values: I = 24 / 6.",
-      "Step 4: Calculate: I = 4A."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A current of 2A flows through a resistor of 10Ω. Find the voltage.",
-    ans: "20V",
-    sol: "V = IR = 2 × 10 = 20V",
-    steps: [
-      "Step 1: Identify I = 2A and R = 10Ω.",
-      "Step 2: Recall the formula: V = IR.",
-      "Step 3: Substitute the values: V = 2 × 10.",
-      "Step 4: Calculate: V = 20V."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A resistor has a voltage of 18V and a current of 3A. Find its resistance.",
-    ans: "6Ω",
-    sol: "R = V / I = 18 / 3 = 6Ω",
-    steps: [
-      "Step 1: Identify V = 18V and I = 3A.",
-      "Step 2: Recall the formula: R = V / I.",
-      "Step 3: Substitute the values: R = 18 / 3.",
-      "Step 4: Calculate: R = 6Ω."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A charge of 40C passes through a conductor in 8 seconds. Find the current.",
-    ans: "5A",
-    sol: "I = Q / t = 40 / 8 = 5A",
-    steps: [
-      "Step 1: Identify Q = 40C and t = 8s.",
-      "Step 2: Recall the formula: I = Q / t.",
-      "Step 3: Substitute the values: I = 40 / 8.",
-      "Step 4: Calculate: I = 5A."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A charge of 72C flows for 9 seconds. Calculate the current.",
-    ans: "8A",
-    sol: "I = Q / t = 72 / 9 = 8A",
-    steps: [
-      "Step 1: Identify Q = 72C and t = 9s.",
-      "Step 2: Recall the formula: I = Q / t.",
-      "Step 3: Substitute the values: I = 72 / 9.",
-      "Step 4: Calculate: I = 8A."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A current of 5A flows for 12 seconds. Find the charge transferred.",
-    ans: "60C",
-    sol: "Q = It = 5 × 12 = 60C",
-    steps: [
-      "Step 1: Identify I = 5A and t = 12s.",
-      "Step 2: Recall the formula: Q = It.",
-      "Step 3: Substitute the values: Q = 5 × 12.",
-      "Step 4: Calculate: Q = 60C."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A current of 3A flows for 15 seconds. Calculate the charge.",
-    ans: "45C",
-    sol: "Q = It = 3 × 15 = 45C",
-    steps: [
-      "Step 1: Identify I = 3A and t = 15s.",
-      "Step 2: Recall the formula: Q = It.",
-      "Step 3: Substitute the values: Q = 3 × 15.",
-      "Step 4: Calculate: Q = 45C."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "An electric heater operates at 240V and draws a current of 5A. Find the power.",
-    ans: "1200W",
-    sol: "P = VI = 240 × 5 = 1200W",
-    steps: [
-      "Step 1: Identify V = 240V and I = 5A.",
-      "Step 2: Recall the formula: P = VI.",
-      "Step 3: Substitute the values: P = 240 × 5.",
-      "Step 4: Calculate: P = 1200W."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A bulb operates at 12V and draws 2A. Calculate its power.",
-    ans: "24W",
-    sol: "P = VI = 12 × 2 = 24W",
-    steps: [
-      "Step 1: Identify V = 12V and I = 2A.",
-      "Step 2: Recall the formula: P = VI.",
-      "Step 3: Substitute the values: P = 12 × 2.",
-      "Step 4: Calculate: P = 24W."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A motor uses 600W from a 200V supply. Find the current.",
-    ans: "3A",
-    sol: "I = P / V = 600 / 200 = 3A",
-    steps: [
-      "Step 1: Identify P = 600W and V = 200V.",
-      "Step 2: Rearrange the power formula: I = P / V.",
-      "Step 3: Substitute the values: I = 600 / 200.",
-      "Step 4: Calculate: I = 3A."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "An appliance consumes 1000W on a 250V supply. Find the current.",
-    ans: "4A",
-    sol: "I = P / V = 1000 / 250 = 4A",
-    steps: [
-      "Step 1: Identify P = 1000W and V = 250V.",
-      "Step 2: Use the formula: I = P / V.",
-      "Step 3: Substitute the values: I = 1000 / 250.",
-      "Step 4: Calculate: I = 4A."
-    ]
-  },
-
-  {
-    type: "calc",
-    q: "A resistor carries a current of 8A when connected to a 40V supply. Find the resistance.",
-    ans: "5Ω",
-    sol: "R = V / I = 40 / 8 = 5Ω",
-    steps: [
-      "Step 1: Identify V = 40V and I = 8A.",
-      "Step 2: Recall the formula: R = V / I.",
-      "Step 3: Substitute the values: R = 40 / 8.",
-      "Step 4: Calculate: R = 5Ω."
-    ]
-  },
-
-  {
-    type: "written",
-    q: "What is electric current?",
-    ans: "Electric current is the rate of flow of electric charge through a conductor."
-  },
-
-  {
-    type: "written",
-    q: "State the SI unit of electric current.",
-    ans: "The SI unit of electric current is the ampere (A)."
-  },
-
-  {
-    type: "written",
-    q: "State the SI unit of resistance.",
-    ans: "The SI unit of resistance is the ohm (Ω)."
-  },
-
-  {
-    type: "written",
-    q: "State the SI unit of voltage.",
-    ans: "The SI unit of voltage is the volt (V)."
-  },
-
-  {
-    type: "written",
-    q: "What instrument is used to measure electric current?",
-    ans: "An ammeter is used to measure electric current."
-  }
-]
-);
-/* =========================================================
-   PHYSICS MODULE: FLUIDS + MODERN PHYSICS (ADVANCED)
-========================================================= */
-
-/* =========================
-   1. FLUIDS
-========================= */
-add(
-  "physics",
-  "fluids",
-  "Fluids",
-  `<h2> Fluids</h2>
-<h3> WELL DETAILED NOTES</h3>
-<p>
-Fluids are substances that can flow and take the shape of their container. They include both liquids and gases.
-Unlike solids, fluids do not have a fixed shape because their particles are free to move past each other.
-</p>
-
-<p>
-Fluids are essential in everyday life: air is a gas fluid, water is a liquid fluid, and even blood is considered a fluid in the human body.
-</p>
-
-<h3> KEY CONCEPTS OF FLUIDS</h3>
-<ul>
-<li><b>Density (ρ):</b> Mass per unit volume (ρ = m/V)</li>
-<li><b>Pressure (P):</b> Force per unit area (P = F/A)</li>
-<li><b>Upthrust:</b> Upward force exerted by a fluid on a body</li>
-<li><b>Buoyancy:</b> Ability of a fluid to support floating objects</li>
-<li><b>Viscosity:</b> Resistance of a fluid to flow (honey has high viscosity)</li>
-</ul>
-
-<h3> IMPORTANT FORMULAS</h3>
-<pre>
-Density: ρ = m / V
-Pressure: P = F / A
-Fluid pressure: P = ρgh
-</pre>
-
-<ul>
-<li>ρ = density (kg/m³)</li>
-<li>g = gravitational field strength (9.8 m/s²)</li>
-<li>h = height of fluid column (m)</li>
-</ul>
-
-<h3> FLUID PRESSURE IDEA</h3>
-<pre>
-More depth (h) → More pressure (P)
-More density (ρ) → More pressure (P)
-</pre>
-
-<h3> FLOW DIAGRAM</h3>
-<pre>
-Force → Pressure → Fluid motion → Buoyancy effects
-</pre>
-
-<h3> WORKED OUT CALCULATIONS</h3>
-
-<h4>Example 1: Pressure in a fluid</h4>
-<p>Calculate pressure at a depth of 5 m in water (ρ = 1000 kg/m³, g = 9.8 m/s²).</p>
-
-<pre>
-Step 1: Use formula P = ρgh
-
-Step 2: Substitute values
-P = 1000 × 9.8 × 5
-
-Step 3: Multiply
-P = 49000 Pa
-</pre>
-
-<p><b>Answer:</b> 49,000 Pa</p>
-
-<h4>Example 2: Density calculation</h4>
-<p>A substance has mass 2 kg and volume 0.5 m³. Find density.</p>
-
-<pre>
-Step 1: Use ρ = m / V
-
-Step 2: Substitute values
-ρ = 2 / 0.5
-
-Step 3: Calculate
-ρ = 4 kg/m³
-</pre>
-
-<p><b>Answer:</b> 4 kg/m³</p>
-
-<h4>Example 3: Pressure from force</h4>
-<p>A force of 200 N acts on an area of 4 m². Find pressure.</p>
-
-<pre>
-Step 1: Use P = F / A
-
-Step 2: Substitute values
-P = 200 / 4
-
-Step 3: Calculate
-P = 50 Pa
-</pre>
-
-<p><b>Answer:</b> 50 Pa</p>
-
-<h3> ARCHIMEDES’ PRINCIPLE (BASIC IDEA)</h3>
-<ul>
-<li>When an object is placed in a fluid, it experiences an upward force</li>
-<li>This force is equal to the weight of fluid displaced</li>
-</ul>
-
-<h3> REAL-LIFE APPLICATIONS</h3>
-<ul>
-<li>Ships floating in water (buoyancy)</li>
-<li>Hydraulic systems (brakes, lifts)</li>
-<li>Blood circulation in the human body</li>
-<li>Aircraft lift due to air pressure differences</li>
-<li>Swimming and diving physics</li>
-</ul>
-`,
-  [
-  {
-    q: "Why do ships float on water?",
-    steps: [
-      "Step 1: Recall that water exerts an upward force called upthrust (buoyant force).",
-      "Step 2: Compare the ship's weight with the upthrust acting on it.",
-      "Step 3: When the upthrust equals the weight of the ship, the ship floats.",
-      "Step 4: The large hollow shape of a ship displaces enough water to produce sufficient upthrust."
-    ],
-    ans: "Ships float because water provides enough upthrust to balance their weight.",
-    why: "A floating object remains in equilibrium when the buoyant force equals its weight."
-  },
-  {
-    q: "Why does a stone sink in water?",
-    steps: [
-      "Step 1: Identify the weight of the stone acting downward.",
-      "Step 2: Identify the upthrust provided by the water acting upward.",
-      "Step 3: Compare the two forces.",
-      "Step 4: Since the stone's weight is greater than the upthrust, it sinks."
-    ],
-    ans: "A stone sinks because its weight is greater than the upthrust acting on it.",
-    why: "Objects sink when the downward force exceeds the buoyant force."
-  },
-  {
-    q: "State Archimedes' Principle.",
-    steps: [
-      "Step 1: Consider an object immersed in a fluid.",
-      "Step 2: The object displaces some of the fluid.",
-      "Step 3: The displaced fluid has weight.",
-      "Step 4: The upthrust equals the weight of the displaced fluid."
-    ],
-    ans: "A body wholly or partially immersed in a fluid experiences an upthrust equal to the weight of the fluid displaced.",
-    why: "This principle explains floating and sinking."
-  },
-  {
-    q: "Why is it easier to swim in seawater than in fresh water?",
-    steps: [
-      "Step 1: Compare the densities of seawater and fresh water.",
-      "Step 2: Note that seawater is denser because of dissolved salts.",
-      "Step 3: Denser water produces a greater upthrust.",
-      "Step 4: Greater upthrust makes floating easier."
-    ],
-    ans: "Seawater is denser and provides greater upthrust than fresh water.",
-    why: "Greater density increases the buoyant force."
-  },
-  {
-    q: "A force of 200N acts on an area of 4m². Calculate the pressure.",
-    hint: "Pressure = Force ÷ Area",
-    steps: [
-      "Step 1: Identify the values: Force = 200N and Area = 4m².",
-      "Step 2: Write the formula: P = F ÷ A.",
-      "Step 3: Substitute the values: P = 200 ÷ 4.",
-      "Step 4: Calculate: P = 50 Pa."
-    ],
-    ans: "50 Pa",
-    why: "Pressure is the force acting per unit area."
-  },
-  {
-    q: "A force of 150N acts on an area of 3m². Find the pressure.",
-    hint: "Use P = F ÷ A",
-    steps: [
-      "Step 1: Identify Force = 150N and Area = 3m².",
-      "Step 2: Write the formula P = F ÷ A.",
-      "Step 3: Substitute: P = 150 ÷ 3.",
-      "Step 4: Calculate: P = 50 Pa."
-    ],
-    ans: "50 Pa",
-    why: "Pressure increases when force increases or area decreases."
-  },
-  {
-    q: "A pressure of 80Pa acts over an area of 5m². Calculate the force.",
-    hint: "Force = Pressure × Area",
-    steps: [
-      "Step 1: Identify Pressure = 80Pa and Area = 5m².",
-      "Step 2: Write the formula: F = PA.",
-      "Step 3: Substitute: F = 80 × 5.",
-      "Step 4: Calculate: F = 400N."
-    ],
-    ans: "400 N",
-    why: "Force equals pressure multiplied by area."
-  },
-  {
-    q: "A pressure of 300Pa is produced by a force of 600N. Find the area.",
-    hint: "Area = Force ÷ Pressure",
-    steps: [
-      "Step 1: Identify Force = 600N and Pressure = 300Pa.",
-      "Step 2: Rearrange the formula: A = F ÷ P.",
-      "Step 3: Substitute: A = 600 ÷ 300.",
-      "Step 4: Calculate: A = 2m²."
-    ],
-    ans: "2 m²",
-    why: "Area is obtained by dividing force by pressure."
-  },
-  {
-    q: "A force of 900N acts on an area of 9m². Calculate the pressure.",
-    hint: "Use P = F ÷ A",
-    steps: [
-      "Step 1: Identify Force = 900N and Area = 9m².",
-      "Step 2: Write the formula P = F ÷ A.",
-      "Step 3: Substitute: P = 900 ÷ 9.",
-      "Step 4: Calculate: P = 100 Pa."
-    ],
-    ans: "100 Pa",
-    why: "Pressure is directly proportional to force and inversely proportional to area."
-  },
-  {
-    q: "A pressure of 250Pa acts over an area of 8m². Find the force.",
-    hint: "Use F = PA",
-    steps: [
-      "Step 1: Identify Pressure = 250Pa and Area = 8m².",
-      "Step 2: Write the formula F = PA.",
-      "Step 3: Substitute: F = 250 × 8.",
-      "Step 4: Calculate: F = 2000N."
-    ],
-    ans: "2000 N",
-    why: "Increasing either pressure or area increases the force."
-  },
-  {
-    q: "A force of 360N acts on an area of 12m². Find the pressure.",
-    hint: "Use P = F ÷ A",
-    steps: [
-      "Step 1: Identify Force = 360N and Area = 12m².",
-      "Step 2: Write the formula P = F ÷ A.",
-      "Step 3: Substitute: P = 360 ÷ 12.",
-      "Step 4: Calculate: P = 30 Pa."
-    ],
-    ans: "30 Pa",
-    why: "Pressure is measured in pascals (Pa)."
-  }
-]
-);
-
-/* =========================
-   2. MODERN PHYSICS
-========================= */
-add(
-  "physics",
-  "modern_physics",
-  "Modern Physics",
-  `<h2> Modern Physics</h2>
-<h3> WELL DETAILED NOTES</h3>
-<p>
-Modern physics is the branch of physics that studies matter and energy at atomic and subatomic levels.
-It emerged when classical physics could not explain phenomena such as blackbody radiation, atomic spectra, and radioactivity.
-</p>
-
-<p>
-It focuses on the internal structure of atoms, the nucleus, and how energy is released or absorbed in very small systems.
-</p>
-
-<h3> KEY AREAS OF MODERN PHYSICS</h3>
-<ul>
-<li><b>Atomic structure:</b> electrons, nucleus, energy levels</li>
-<li><b>Radioactivity:</b> spontaneous emission of radiation from unstable nuclei</li>
-<li><b>Nuclear reactions:</b> changes in the nucleus (fission and fusion)</li>
-<li><b>Quantum physics:</b> energy is quantized (comes in packets)</li>
-</ul>
-
-<h3> ATOMIC MODEL FLOW</h3>
-<pre>
-Atom
- ↓
-Nucleus (protons + neutrons)
- ↓
-Unstable nucleus
- ↓
-Radiation emitted (α, β, γ)
- ↓
-More stable atom
-</pre>
-
-<h3> TYPES OF RADIATION</h3>
-<ul>
-<li><b>Alpha (α):</b> helium nucleus, low penetration, stopped by paper</li>
-<li><b>Beta (β):</b> fast electrons, medium penetration</li>
-<li><b>Gamma (γ):</b> electromagnetic waves, very high penetration</li>
-</ul>
-
-<h3> NUCLEAR REACTIONS</h3>
-
-<h4> Nuclear Fission</h4>
-<ul>
-<li>Heavy nucleus splits into smaller nuclei</li>
-<li>Releases large amount of energy</li>
-<li>Used in nuclear power plants</li>
-</ul>
-
-<pre>
-U-235 → Ba + Kr + Energy + Neutrons
-</pre>
-
-<h4> Nuclear Fusion</h4>
-<ul>
-<li>Two light nuclei combine</li>
-<li>Produces even more energy than fission</li>
-<li>Occurs in the sun and stars</li>
-</ul>
-
-<pre>
-H + H → He + Energy
-</pre>
-
-<h3> WORKED EXAMPLES</h3>
-
-<h4>Example 1: Identify radiation type</h4>
-<p>A radiation is stopped by paper but strongly ionizing. What is it?</p>
-
-<pre>
-Step 1: Check penetration → low
-Step 2: Check ionization → high
-Step 3: Match properties
-</pre>
-
-<p><b>Answer:</b> Alpha radiation</p>
-
-<h4>Example 2: Compare fission and fusion</h4>
-<pre>
-Step 1: Fission = splitting of heavy nucleus
-Step 2: Fusion = combining light nuclei
-Step 3: Both release energy
-</pre>
-
-<p><b>Answer:</b> Fission splits atoms, fusion joins atoms</p>
-
-<h3> REAL-LIFE APPLICATIONS</h3>
-<ul>
-<li>Nuclear power plants (electricity generation)</li>
-<li>Medical imaging (X-rays, PET scans)</li>
-<li>Cancer radiotherapy</li>
-<li>Energy production in stars (fusion)</li>
-<li>Smoke detectors (radioactive sources)</li>
-</ul>
-`,
-  [
-  {
-    q: "What is radioactivity?",
-    steps: [
-      "Step 1: Recall that some atomic nuclei are unstable.",
-      "Step 2: An unstable nucleus emits radiation without any external influence.",
-      "Step 3: This emission may include alpha particles, beta particles, or gamma rays.",
-      "Step 4: The process continues until the nucleus becomes more stable."
-    ],
-    ans: "Radioactivity is the spontaneous emission of radiation from an unstable nucleus.",
-    why: "Unstable nuclei lose excess energy by emitting radiation to become more stable."
-  },
-  {
-    q: "What is an alpha particle?",
-    steps: [
-      "Step 1: Recall the three common types of radioactive emissions.",
-      "Step 2: Identify that an alpha particle contains protons and neutrons.",
-      "Step 3: State its composition.",
-      "Step 4: Give the definition."
-    ],
-    ans: "An alpha particle is a helium nucleus containing two protons and two neutrons.",
-    why: "Alpha particles are emitted by heavy unstable nuclei."
-  },
-  {
-    q: "What is a beta particle?",
-    steps: [
-      "Step 1: Recall radioactive emissions.",
-      "Step 2: Identify the beta particle as a fast-moving electron.",
-      "Step 3: State that it is emitted from the nucleus.",
-      "Step 4: Give the definition."
-    ],
-    ans: "A beta particle is a high-speed electron emitted from the nucleus of a radioactive atom.",
-    why: "Beta decay helps unstable nuclei achieve greater stability."
-  },
-  {
-    q: "What are gamma rays?",
-    steps: [
-      "Step 1: Recall that gamma rays are a type of radiation.",
-      "Step 2: Identify that they are electromagnetic waves.",
-      "Step 3: Note that they have no mass and no charge.",
-      "Step 4: State the definition."
-    ],
-    ans: "Gamma rays are high-energy electromagnetic waves emitted from radioactive nuclei.",
-    why: "Gamma rays carry excess energy away from unstable nuclei."
-  },
-  {
-    q: "State one property of alpha particles.",
-    steps: [
-      "Step 1: Recall the characteristics of alpha particles.",
-      "Step 2: Identify one property.",
-      "Step 3: State the property clearly."
-    ],
-    ans: "Alpha particles have a positive charge of +2.",
-    why: "They contain two positively charged protons."
-  },
-  {
-    q: "Why are gamma rays more penetrating than alpha particles?",
-    steps: [
-      "Step 1: Compare the masses of alpha particles and gamma rays.",
-      "Step 2: Recall that gamma rays have no mass or charge.",
-      "Step 3: Less interaction with matter allows deeper penetration.",
-      "Step 4: State the conclusion."
-    ],
-    ans: "Gamma rays are more penetrating because they have no mass and no charge.",
-    why: "They interact less with matter than charged particles."
-  },
-  {
-    q: "Name two applications of modern physics.",
-    hint: "Think medicine and energy.",
-    steps: [
-      "Step 1: Identify one medical application.",
-      "Step 2: Identify one energy application.",
-      "Step 3: State both applications."
-    ],
-    ans: "X-ray imaging and nuclear power generation.",
-    why: "Both rely on atomic and nuclear physics."
-  },
-  {
-    q: "State one medical application of radioactivity.",
-    hint: "Think hospitals.",
-    steps: [
-      "Step 1: Recall how radiation is used in medicine.",
-      "Step 2: Identify one example.",
-      "Step 3: State the application."
-    ],
-    ans: "Cancer treatment using radiotherapy.",
-    why: "Radiation destroys cancer cells."
-  },
-  {
-    q: "State one industrial application of radioactivity.",
-    hint: "Think manufacturing.",
-    steps: [
-      "Step 1: Recall industrial uses of radiation.",
-      "Step 2: Identify one example.",
-      "Step 3: State the application."
-    ],
-    ans: "Checking the thickness of paper or metal sheets.",
-    why: "Radiation helps monitor product quality."
-  },
-  {
-    q: "State one agricultural application of radioactivity.",
-    hint: "Think crops.",
-    steps: [
-      "Step 1: Recall how radiation is used in agriculture.",
-      "Step 2: Identify one use.",
-      "Step 3: State the application."
-    ],
-    ans: "Producing improved crop varieties through mutation breeding.",
-    why: "Radiation can produce useful genetic variations."
-  },
-  {
-    q: "State one disadvantage of radioactivity.",
-    hint: "Think health effects.",
-    steps: [
-      "Step 1: Recall the harmful effects of radiation.",
-      "Step 2: Identify one effect.",
-      "Step 3: State the disadvantage."
-    ],
-    ans: "Exposure to radiation can cause cancer.",
-    why: "Ionising radiation damages body cells and DNA."
-  },
-  {
-    q: "Why must radioactive materials be handled carefully?",
-    hint: "Think safety.",
-    steps: [
-      "Step 1: Recall that radiation can damage living tissue.",
-      "Step 2: Consider long-term exposure effects.",
-      "Step 3: State why safety precautions are necessary."
-    ],
-    ans: "They emit harmful radiation that can damage living cells and tissues.",
-    why: "Proper handling reduces exposure and protects human health."
-  }
-]
-);
-
-/* =========================
-   3. CATHODE RAYS & CRT
-========================= */
 add(
   "physics",
   "cathode_rays",
-  "Cathode Rays and Cathode Ray Tube",
-  `<h2> Cathode Rays & Cathode Ray Tube (CRT)</h2>
-<h3> WELL DETAILED NOTES</h3>
-<p>
-Cathode rays are streams of high-speed electrons emitted from the cathode (negative electrode) in a vacuum tube when a high voltage is applied.
-They travel in straight lines toward the anode (positive electrode).
-</p>
+  "Meaning of Cathode Rays",
+  `
+  <h2>Meaning of Cathode Rays</h2>
 
-<p>
-Because they are made of electrons, cathode rays carry a negative charge and can be influenced by electric and magnetic fields.
-</p>
+  <p>
+    Cathode rays are streams of electrons moving through
+    a vacuum in a discharge tube.
+  </p>
 
-<p>
-In a Cathode Ray Tube (CRT), electrons are accelerated through a potential difference, gaining kinetic energy which allows them to produce visible light when they strike a fluorescent screen.
-</p>
+  <h3>Understanding the concept</h3>
 
-<h3> PRODUCTION OF CATHODE RAYS</h3>
+  <p>
+    Electrons are tiny particles that carry negative electric
+    charge. When they are emitted from the cathode and move
+    through the tube, the moving electrons form cathode rays.
+  </p>
+
+  <p>
+    Cathode rays are therefore not ordinary light rays.
+    They consist of moving particles.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> What are cathode rays?</p>
+
+  <p><b>Step 1:</b> Identify the particles involved.</p>
+  <p>They are electrons.</p>
+
+  <p><b>Step 2:</b> Describe their movement.</p>
+  <p>They move through a vacuum in a discharge tube.</p>
+
+  <p><b>Answer:</b> Cathode rays are streams of electrons
+  moving through a vacuum in a discharge tube.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> Are cathode rays made of light or
+  particles?</p>
+
+  <p><b>Step 1:</b> Recall what forms cathode rays.</p>
+  <p>They are streams of electrons.</p>
+
+  <p><b>Step 2:</b> Identify the nature of electrons.</p>
+  <p>Electrons are particles.</p>
+
+  <p><b>Answer:</b> Cathode rays consist of particles,
+  specifically electrons.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> A student says cathode rays are
+  streams of protons. Identify the error.</p>
+
+  <p><b>Step 1:</b> Recall the particles forming cathode rays.</p>
+  <p>They are electrons, not protons.</p>
+
+  <p><b>Step 2:</b> State the correction.</p>
+  <p><b>Answer:</b> Cathode rays are streams of electrons.</p>
+  `,
+  [
+    {
+      q: "What are cathode rays?",
+      hint: "Identify the particles moving through the tube.",
+      steps: [
+        "Recall the particles emitted in a cathode ray tube.",
+        "Identify them as electrons.",
+        "Describe them as a moving stream."
+      ],
+      ans: "Cathode rays are streams of electrons moving through a vacuum in a discharge tube.",
+      why: "Cathode rays consist of moving electrons."
+    },
+    {
+      q: "Are cathode rays streams of electrons or protons?",
+      steps: [
+        "Recall the definition of cathode rays.",
+        "Identify the particles that form the rays.",
+        "Choose electrons rather than protons."
+      ],
+      ans: "Cathode rays are streams of electrons.",
+      why: "Electrons are the particles emitted to form cathode rays."
+    },
+    {
+      q: "A student describes cathode rays as ordinary light. What is wrong with this description?",
+      hint: "Think about the particles that form the rays.",
+      steps: [
+        "Recall what cathode rays consist of.",
+        "Identify electrons as material particles.",
+        "Distinguish the electron beam from light."
+      ],
+      ans: "Cathode rays are streams of electrons, not ordinary light.",
+      why: "Cathode rays have the particle nature of electrons."
+    }
+  ]
+);
+
+// -----------------------------------------------------
+// SCREEN 2: NEGATIVE CHARGE OF CATHODE RAYS
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Negative Charge of Cathode Rays",
+  `
+  <h2>Negative Charge of Cathode Rays</h2>
+
+  <p>
+    Cathode rays carry negative electric charge because
+    they consist of electrons.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    Each electron carries a negative charge. A stream of
+    electrons therefore carries negative charge.
+  </p>
+
+  <p>
+    The charge of one electron is approximately
+    -1.6 × 10⁻¹⁹ C.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> What is the charge of cathode rays?</p>
+
+  <p><b>Step 1:</b> Identify their constituent particles.</p>
+  <p>Cathode rays consist of electrons.</p>
+
+  <p><b>Step 2:</b> Recall the charge of an electron.</p>
+  <p>An electron has a negative charge.</p>
+
+  <p><b>Answer:</b> Cathode rays carry negative charge.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> Explain why cathode rays are negatively
+  charged.</p>
+
+  <p><b>Step 1:</b> Recall that cathode rays are electrons.</p>
+  <p><b>Step 2:</b> Recall that electrons carry negative charge.</p>
+
+  <p><b>Answer:</b> Cathode rays are negatively charged
+  because they consist of negatively charged electrons.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> A particle beam is positively charged.
+  Can it be a cathode ray beam as defined in this topic?</p>
+
+  <p><b>Step 1:</b> Recall the identity of cathode rays.</p>
+  <p>They are streams of electrons.</p>
+
+  <p><b>Step 2:</b> Compare the charges.</p>
+  <p>Electrons carry negative charge, not positive charge.</p>
+
+  <p><b>Answer:</b> No. Cathode rays consist of negatively
+  charged electrons.</p>
+  `,
+  [
+    {
+      q: "Why are cathode rays negatively charged?",
+      hint: "Think about the charge of an electron.",
+      steps: [
+        "Identify the particles forming cathode rays.",
+        "Recall that electrons carry negative charge.",
+        "Apply this property to the electron stream."
+      ],
+      ans: "Cathode rays are negatively charged because they consist of electrons.",
+      why: "Each electron carries negative electric charge."
+    },
+    {
+      q: "State the approximate charge of one electron.",
+      steps: [
+        "Recall the elementary charge magnitude.",
+        "Use the negative sign for an electron.",
+        "Include the SI unit."
+      ],
+      ans: "-1.6 × 10⁻¹⁹ C",
+      why: "An electron carries approximately -1.6 × 10⁻¹⁹ coulombs."
+    },
+    {
+      q: "A beam is positively charged. Why is it not a cathode ray beam?",
+      steps: [
+        "Recall that cathode rays consist of electrons.",
+        "Recall that electrons have negative charge.",
+        "Compare the expected charge with the stated positive charge."
+      ],
+      ans: "Cathode rays consist of negatively charged electrons, so a positively charged beam does not have the stated properties of cathode rays.",
+      why: "The negative charge follows from the identity of the particles."
+    }
+  ]
+);
+
+// -----------------------------------------------------
+// SCREEN 3: STRAIGHT-LINE TRAVEL OF CATHODE RAYS
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Straight-Line Travel of Cathode Rays",
+  `
+  <h2>Straight-Line Travel of Cathode Rays</h2>
+
+  <p>
+    Cathode rays travel in straight lines when they move
+    through a uniform vacuum without deflecting fields.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    An object placed in the path of cathode rays can block
+    the beam. The region behind the object receives no direct
+    rays, producing a shadow on a suitable fluorescent screen.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> State the direction of travel of
+  cathode rays in the absence of deflecting fields.</p>
+
+  <p><b>Step 1:</b> Recall the observed path of cathode rays.</p>
+  <p><b>Step 2:</b> State the path.</p>
+
+  <p><b>Answer:</b> They travel in straight lines.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> Why can an object produce a shadow
+  in the path of cathode rays?</p>
+
+  <p><b>Step 1:</b> Cathode rays travel in straight lines.</p>
+  <p><b>Step 2:</b> The object blocks the rays.</p>
+  <p><b>Step 3:</b> The region behind the object receives
+  no direct rays.</p>
+
+  <p><b>Answer:</b> The object blocks the straight-moving
+  cathode rays, producing a shadow.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> A solid object is placed between a
+  cathode ray source and a fluorescent screen. What observation
+  supports straight-line travel?</p>
+
+  <p><b>Step 1:</b> The object blocks the beam.</p>
+  <p><b>Step 2:</b> The screen does not glow in the blocked
+  region in the same way as the exposed region.</p>
+
+  <p><b>Answer:</b> A shadow forms behind the object.</p>
+  `,
+  [
+    {
+      q: "How do cathode rays travel in the absence of deflecting fields?",
+      steps: [
+        "Recall the observed path of cathode rays.",
+        "State the direction of travel."
+      ],
+      ans: "Cathode rays travel in straight lines.",
+      why: "Their straight-line travel can be demonstrated by shadow formation."
+    },
+    {
+      q: "Why does an opaque object produce a shadow in a cathode ray beam?",
+      hint: "Think about the path of the rays and what the object blocks.",
+      steps: [
+        "Cathode rays travel in straight lines.",
+        "The object blocks rays travelling toward the screen.",
+        "The region behind the object receives no direct rays."
+      ],
+      ans: "The object blocks the straight-moving cathode rays, leaving a shadow behind it.",
+      why: "The shadow demonstrates that the rays do not simply bend around the object."
+    },
+    {
+      q: "Which observation supports the straight-line travel of cathode rays?",
+      steps: [
+        "Consider placing an object in the beam.",
+        "Observe the pattern on a fluorescent screen.",
+        "Identify the dark region behind the object."
+      ],
+      ans: "Formation of a shadow behind the object.",
+      why: "The object blocks the rays travelling directly toward the screen."
+    }
+  ]
+);
+
+// -----------------------------------------------------
+// SCREEN 4: CATHODE RAYS AS PARTICLES
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Cathode Rays as Particles",
+  `
+  <h2>Cathode Rays as Particles</h2>
+
+  <p>
+    Cathode rays can transfer momentum to objects they strike.
+    This provides evidence that they consist of particles.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    In a traditional discharge-tube experiment, cathode rays
+    can cause a light paddle wheel to move. The moving
+    electrons transfer momentum when they interact with the wheel.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> What does the movement of a light
+  paddle wheel in a cathode ray tube demonstrate?</p>
+
+  <p><b>Step 1:</b> Observe that the wheel moves when struck.</p>
+  <p><b>Step 2:</b> Recognize that momentum is transferred.</p>
+  <p><b>Step 3:</b> Relate momentum transfer to particle behaviour.</p>
+
+  <p><b>Answer:</b> The observation provides evidence that
+  cathode rays consist of particles.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> What physical quantity is transferred
+  when cathode rays push a paddle wheel?</p>
+
+  <p><b>Step 1:</b> Identify the interaction between the
+  electron beam and the wheel.</p>
+  <p><b>Step 2:</b> Identify the quantity responsible for
+  the wheel's motion.</p>
+
+  <p><b>Answer:</b> Momentum is transferred to the wheel.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> A paddle wheel does not move when
+  exposed to a cathode ray beam. Does this single observation
+  prove that cathode rays are not particles?</p>
+
+  <p><b>Step 1:</b> Recall the purpose of the experiment.</p>
+  <p><b>Step 2:</b> Recognize that a lack of visible motion
+  does not by itself establish the nature of the beam.</p>
+
+  <p><b>Answer:</b> No. The result alone does not prove that
+  cathode rays are not particles.</p>
+  `,
+  [
+    {
+      q: "What does the movement of a light paddle wheel under cathode ray bombardment demonstrate?",
+      hint: "Think about the motion transferred to the wheel.",
+      steps: [
+        "Observe that the wheel moves.",
+        "Recognize that the beam transfers momentum.",
+        "Relate this observation to particle behaviour."
+      ],
+      ans: "It provides evidence that cathode rays consist of particles.",
+      why: "The electron beam transfers momentum to the paddle wheel."
+    },
+    {
+      q: "What is transferred from cathode rays to a paddle wheel when the beam makes it move?",
+      steps: [
+        "Identify the moving electron beam.",
+        "Identify the wheel's resulting motion.",
+        "Name the physical quantity transferred."
+      ],
+      ans: "Momentum.",
+      why: "The interaction transfers momentum from the beam to the wheel."
+    },
+    {
+      q: "Does a stationary paddle wheel prove that cathode rays are not particles?",
+      steps: [
+        "Recall that the experiment uses wheel movement as evidence.",
+        "Recognize that one unsuccessful observation may have other causes.",
+        "Avoid treating the observation as conclusive proof."
+      ],
+      ans: "No. A stationary wheel alone does not prove that cathode rays are not particles.",
+      why: "A single experimental result is not sufficient to disprove the particle nature of cathode rays."
+    }
+  ]
+);
+// =====================================================
+// BATCH 2: PRODUCTION OF CATHODE RAYS
+// Subject: Physics
+// Chapter: Cathode Rays and Cathode Ray Tube
+// Rule: One concept per screen
+// =====================================================
+
+
+// -----------------------------------------------------
+// SCREEN 5: FUNCTION OF THE CATHODE
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the Cathode",
+  `
+  <h2>Function of the Cathode</h2>
+
+  <p>
+    The cathode is the negative electrode in a discharge
+    tube. In a cathode ray tube, it provides the electrons
+    that form the cathode ray beam.
+  </p>
+
+  <h3>How it works</h3>
+
+  <p>
+    When the electron source is operated under suitable
+    conditions, electrons are released from the cathode.
+    These electrons can then be accelerated through the tube.
+  </p>
+
+  <p>
+    The cathode is therefore the source of the electrons
+    used to produce cathode rays.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> State the function of the cathode
+  in a cathode ray tube.</p>
+
+  <p><b>Step 1:</b> Identify the particles needed to form
+  cathode rays.</p>
+  <p>They are electrons.</p>
+
+  <p><b>Step 2:</b> Identify the electrode that supplies them.</p>
+  <p>The cathode supplies the electrons.</p>
+
+  <p><b>Answer:</b> The cathode provides electrons for
+  the formation of cathode rays.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> Is the cathode positive or negative?</p>
+
+  <p><b>Step 1:</b> Recall the electrode arrangement in
+  a cathode ray tube.</p>
+
+  <p><b>Step 2:</b> Identify the cathode's polarity.</p>
+
+  <p><b>Answer:</b> The cathode is the negative electrode.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> A student says that the cathode
+  supplies protons to form cathode rays. Identify the error.</p>
+
+  <p><b>Step 1:</b> Recall the particles forming cathode rays.</p>
+  <p>They are electrons.</p>
+
+  <p><b>Step 2:</b> Correct the student's statement.</p>
+
+  <p><b>Answer:</b> The cathode supplies electrons, not
+  protons, for the cathode ray beam.</p>
+  `,
+  [
+    {
+      q: "What is the function of the cathode in a cathode ray tube?",
+      hint: "Think about the source of the electrons.",
+      steps: [
+        "Recall the particles that form cathode rays.",
+        "Identify the electrode that supplies these particles.",
+        "State the function of the cathode."
+      ],
+      ans: "The cathode supplies electrons that form the cathode ray beam.",
+      why: "Cathode rays are streams of electrons originating from the electron source."
+    },
+    {
+      q: "What is the electrical polarity of the cathode?",
+      steps: [
+        "Recall the two types of electrode in the tube.",
+        "Identify the cathode's polarity."
+      ],
+      ans: "Negative.",
+      why: "The cathode is the negative electrode in the discharge tube."
+    },
+    {
+      q: "A learner states that the cathode supplies protons to produce cathode rays. Correct the statement.",
+      hint: "Identify the particles that make up cathode rays.",
+      steps: [
+        "Recall the composition of cathode rays.",
+        "Identify the correct particle.",
+        "Replace the incorrect particle in the statement."
+      ],
+      ans: "The cathode supplies electrons, not protons, for the formation of cathode rays.",
+      why: "Cathode rays consist of electrons."
+    }
+  ]
+);
+
+
+// -----------------------------------------------------
+// SCREEN 6: ELECTRON EMISSION IN A DISCHARGE TUBE
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Electron Emission in a Discharge Tube",
+  `
+  <h2>Electron Emission in a Discharge Tube</h2>
+
+  <p>
+    Electron emission is the release of electrons from
+    a material. In a cathode ray tube, the electron source
+    releases electrons that form the beam.
+  </p>
+
+  <h3>Understanding electron emission</h3>
+
+  <p>
+    Electrons are normally held within the material.
+    Under suitable conditions, some electrons can escape
+    from the electron source.
+  </p>
+
+  <p>
+    In a traditional cathode ray tube, the cathode is
+    commonly heated so that it releases electrons. This
+    process is called thermionic emission.
+  </p>
+
+  <p>
+    A potential difference then accelerates the emitted
+    electrons through the tube.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> What is electron emission?</p>
+
+  <p><b>Step 1:</b> Identify the particle involved.</p>
+  <p>The particle is an electron.</p>
+
+  <p><b>Step 2:</b> Describe what happens to the particle.</p>
+  <p>It leaves the material from which it was held.</p>
+
+  <p><b>Answer:</b> Electron emission is the release of
+  electrons from a material.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> What is thermionic emission?</p>
+
+  <p><b>Step 1:</b> Identify the energy supplied to the cathode.</p>
+  <p>The cathode is heated.</p>
+
+  <p><b>Step 2:</b> State the result of heating.</p>
+  <p>Electrons gain enough energy to escape from the material.</p>
+
+  <p><b>Answer:</b> Thermionic emission is the release of
+  electrons from a material due to heating.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> Why must electrons be released from
+  the cathode before they can form a cathode ray beam?</p>
+
+  <p><b>Step 1:</b> Identify what forms the beam.</p>
+  <p>The beam consists of moving electrons.</p>
+
+  <p><b>Step 2:</b> Determine where the electrons come from.</p>
+  <p>They must first leave the electron source.</p>
+
+  <p><b>Answer:</b> Electrons must be released from the
+  cathode so that they can be accelerated to form the beam.</p>
+  `,
+  [
+    {
+      q: "Define electron emission.",
+      steps: [
+        "Identify the particle involved.",
+        "Describe the particle leaving a material.",
+        "State the definition."
+      ],
+      ans: "Electron emission is the release of electrons from a material.",
+      why: "The emitted electrons can move away from the material and form an electron beam."
+    },
+    {
+      q: "What is thermionic emission?",
+      hint: "Think about the effect of heating.",
+      steps: [
+        "Identify the energy supplied to the material.",
+        "Explain that heating allows electrons to escape.",
+        "Name the process."
+      ],
+      ans: "Thermionic emission is the release of electrons from a material due to heating.",
+      why: "Heating provides electrons with energy to escape from the material."
+    },
+    {
+      q: "Why must electrons be emitted before a cathode ray beam can be formed?",
+      steps: [
+        "Recall that cathode rays consist of electrons.",
+        "Identify the need for electrons to leave the source.",
+        "Explain that the released electrons can then be accelerated."
+      ],
+      ans: "Electrons must leave the cathode so they can be accelerated to form the beam.",
+      why: "An electron beam cannot form unless electrons are available to move through the tube."
+    }
+  ]
+);
+
+
+// -----------------------------------------------------
+// SCREEN 7: FUNCTION OF THE ANODE
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the Anode",
+  `
+  <h2>Function of the Anode</h2>
+
+  <p>
+    The anode is the positive electrode in a cathode ray
+    tube. It helps attract and accelerate electrons emitted
+    by the cathode.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    Electrons have negative charge. An electric field
+    between the cathode and the positively charged anode
+    exerts a force on the electrons.
+  </p>
+
+  <p>
+    The electrons gain kinetic energy as they accelerate
+    through the potential difference.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> State the function of the anode in
+  a cathode ray tube.</p>
+
+  <p><b>Step 1:</b> Recall the charge of the anode.</p>
+  <p>It is positive.</p>
+
+  <p><b>Step 2:</b> Identify the effect on electrons.</p>
+  <p>The anode attracts electrons and helps accelerate them.</p>
+
+  <p><b>Answer:</b> The anode attracts and helps accelerate
+  electrons emitted by the cathode.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> Why are electrons attracted towards
+  a positively charged anode?</p>
+
+  <p><b>Step 1:</b> Electrons carry negative charge.</p>
+  <p><b>Step 2:</b> The anode carries positive charge.</p>
+  <p><b>Step 3:</b> Opposite electric charges attract.</p>
+
+  <p><b>Answer:</b> Electrons are attracted towards the
+  positive anode because opposite charges attract.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> What would happen to the acceleration
+  of electrons if the accelerating potential difference
+  were increased?</p>
+
+  <p><b>Step 1:</b> Recall that a potential difference
+  establishes an electric field.</p>
+
+  <p><b>Step 2:</b> A larger accelerating potential
+  difference provides a greater energy gain.</p>
+
+  <p><b>Answer:</b> The electrons gain more kinetic energy
+  and leave the accelerating region at a higher speed,
+  assuming the same initial conditions.</p>
+  `,
+  [
+    {
+      q: "State the function of the anode in a cathode ray tube.",
+      hint: "Consider what the positive electrode does to electrons.",
+      steps: [
+        "Identify the polarity of the anode.",
+        "Recall the charge of electrons.",
+        "Explain the anode's effect on the electrons."
+      ],
+      ans: "The anode attracts and helps accelerate electrons emitted by the cathode.",
+      why: "The electric field between the electrodes accelerates negatively charged electrons towards the positive anode."
+    },
+    {
+      q: "Why are electrons attracted towards the anode?",
+      steps: [
+        "State the charge of an electron.",
+        "State the charge of the anode.",
+        "Apply the rule for opposite electric charges."
+      ],
+      ans: "Electrons are negatively charged and the anode is positive, so they attract.",
+      why: "Opposite electric charges attract."
+    },
+    {
+      q: "What happens to the kinetic energy gained by electrons when the accelerating potential difference increases?",
+      hint: "Consider the energy transferred by the electric field.",
+      steps: [
+        "Recall that an electric potential difference transfers energy to electrons.",
+        "Relate the energy gained to the potential difference.",
+        "State the change in kinetic energy."
+      ],
+      ans: "The electrons gain more kinetic energy.",
+      why: "For an electron accelerated from rest through a potential difference V, the kinetic energy gained is eV."
+    }
+  ]
+);
+
+
+// -----------------------------------------------------
+// SCREEN 8: ACCELERATION OF ELECTRONS BY POTENTIAL DIFFERENCE
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Acceleration of Electrons by Potential Difference",
+  `
+  <h2>Acceleration of Electrons by Potential Difference</h2>
+
+  <p>
+    A potential difference between electrodes transfers
+    electrical energy to electrons. The electrons gain
+    kinetic energy as they accelerate through the electric field.
+  </p>
+
+  <h3>Energy relationship</h3>
+
+  <p>
+    For an electron accelerated from rest through a potential
+    difference V, the kinetic energy gained is:
+  </p>
+
+  <p><b>KE = eV</b></p>
+
+  <p>Where:</p>
+
+  <ul>
+    <li>KE is the kinetic energy gained, in joules.</li>
+    <li>e is the magnitude of the electron charge,
+    1.6 × 10⁻¹⁹ C.</li>
+    <li>V is the accelerating potential difference, in volts.</li>
+  </ul>
+
+  <p>
+    If the electron starts from rest and its speed is much
+    less than the speed of light, its kinetic energy is:
+  </p>
+
+  <p><b>KE = ½mv²</b></p>
+
+  <p>
+    Equating the expressions gives:
+  </p>
+
+  <p><b>eV = ½mv²</b></p>
+
+  <h3>Worked Example 1: Energy gained</h3>
+
+  <p>
+    <b>Question:</b> An electron is accelerated from rest
+    through a potential difference of 200 V. Calculate
+    its kinetic energy gained.
+  </p>
+
+  <p><b>Step 1:</b> Write the formula.</p>
+  <p>KE = eV</p>
+
+  <p><b>Step 2:</b> Substitute the values.</p>
+  <p>KE = (1.6 × 10⁻¹⁹) × 200</p>
+
+  <p><b>Step 3:</b> Calculate.</p>
+  <p>KE = 3.2 × 10⁻¹⁷ J</p>
+
+  <p><b>Answer:</b> 3.2 × 10⁻¹⁷ J</p>
+
+  <h3>Worked Example 2: Comparing energy gains</h3>
+
+  <p>
+    <b>Question:</b> Two electrons start from rest. One
+    passes through 100 V and the other through 300 V.
+    Which gains more kinetic energy?
+  </p>
+
+  <p><b>Step 1:</b> Use KE = eV.</p>
+
+  <p><b>Step 2:</b> Calculate the first energy gain.</p>
+  <p>KE₁ = (1.6 × 10⁻¹⁹) × 100</p>
+  <p>KE₁ = 1.6 × 10⁻¹⁷ J</p>
+
+  <p><b>Step 3:</b> Calculate the second energy gain.</p>
+  <p>KE₂ = (1.6 × 10⁻¹⁹) × 300</p>
+  <p>KE₂ = 4.8 × 10⁻¹⁷ J</p>
+
+  <p><b>Answer:</b> The electron accelerated through
+  300 V gains more kinetic energy.</p>
+
+  <h3>Worked Example 3: Finding electron speed</h3>
+
+  <p>
+    <b>Question:</b> An electron starts from rest and is
+    accelerated through 100 V. Calculate its final speed.
+  </p>
+
+  <p><b>Step 1:</b> Equate the energy expressions.</p>
+  <p>eV = ½mv²</p>
+
+  <p><b>Step 2:</b> Rearrange to make v the subject.</p>
+  <p>v = √(2eV/m)</p>
+
+  <p><b>Step 3:</b> Substitute the values.</p>
+  <p>
+    v = √[(2 × 1.6 × 10⁻¹⁹ × 100) /
+    (9.11 × 10⁻³¹)]
+  </p>
+
+  <p><b>Step 4:</b> Calculate.</p>
+  <p>v ≈ 5.9 × 10⁶ m/s</p>
+
+  <p><b>Answer:</b> Approximately 5.9 × 10⁶ m/s.</p>
+  `,
+  [
+    {
+      q: "An electron starts from rest and passes through an accelerating potential difference of 150 V. Calculate its kinetic energy gained. Use e = 1.6 × 10⁻¹⁹ C.",
+      hint: "Use KE = eV.",
+      steps: [
+        "Write KE = eV.",
+        "Substitute e = 1.6 × 10⁻¹⁹ C and V = 150 V.",
+        "Calculate KE = 1.6 × 10⁻¹⁹ × 150.",
+        "State the answer in joules."
+      ],
+      ans: "2.4 × 10⁻¹⁷ J",
+      why: "The kinetic energy gained by an electron accelerated from rest through a potential difference V is eV."
+    },
+    {
+      q: "An electron is accelerated from rest through 250 V. If e = 1.6 × 10⁻¹⁹ C, calculate its kinetic energy gained.",
+      hint: "Multiply the magnitude of the electron charge by the potential difference.",
+      steps: [
+        "Use KE = eV.",
+        "Substitute KE = (1.6 × 10⁻¹⁹) × 250.",
+        "Multiply 1.6 by 250.",
+        "Express the result in joules."
+      ],
+      ans: "4.0 × 10⁻¹⁷ J",
+      why: "A potential difference of 250 V gives an electron an energy gain of 250 electron-volts, equivalent to 4.0 × 10⁻¹⁷ J."
+    },
+    {
+      q: "An electron starts from rest and gains 3.2 × 10⁻¹⁷ J of kinetic energy. Calculate the potential difference through which it was accelerated. Use e = 1.6 × 10⁻¹⁹ C.",
+      hint: "Rearrange KE = eV to make V the subject.",
+      steps: [
+        "Write KE = eV.",
+        "Rearrange to V = KE/e.",
+        "Substitute V = (3.2 × 10⁻¹⁷)/(1.6 × 10⁻¹⁹).",
+        "Calculate the ratio."
+      ],
+      ans: "200 V",
+      why: "The potential difference is the kinetic energy gained divided by the magnitude of the electron charge."
+    },
+    {
+      q: "An electron starts from rest and is accelerated through 100 V. Calculate its speed. Use e = 1.6 × 10⁻¹⁹ C and m = 9.11 × 10⁻³¹ kg.",
+      hint: "Use eV = ½mv² and rearrange for v.",
+      steps: [
+        "Write eV = ½mv².",
+        "Rearrange to v = √(2eV/m).",
+        "Substitute v = √[(2 × 1.6 × 10⁻¹⁹ × 100)/(9.11 × 10⁻³¹)].",
+        "Evaluate the square root."
+      ],
+      ans: "Approximately 5.9 × 10⁶ m/s",
+      why: "The electric potential energy transferred to the electron becomes kinetic energy. This calculation uses the non-relativistic kinetic energy formula."
+    }
+  ]
+);
+// =====================================================
+// BATCH 3: PROPERTIES OF CATHODE RAYS
+// Subject: Physics
+// Chapter: Cathode Rays and Cathode Ray Tube
+// Rule: One concept per screen
+// =====================================================
+
+
+// -----------------------------------------------------
+// SCREEN 9: FLUORESCENCE CAUSED BY CATHODE RAYS
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Fluorescence Caused by Cathode Rays",
+  `
+  <h2>Fluorescence Caused by Cathode Rays</h2>
+
+  <p>
+    Cathode rays cause certain materials to emit visible
+    light when the rays strike them. This effect is called
+    fluorescence.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    When fast-moving electrons strike a suitable fluorescent
+    material, they transfer energy to it. The material then
+    emits visible light.
+  </p>
+
+  <p>
+    In a cathode ray tube, a fluorescent coating on the screen
+    glows where the electron beam strikes it.
+  </p>
+
+  <p>
+    Example: Zinc sulphide is a material that can fluoresce
+    when struck by cathode rays.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> What is fluorescence?</p>
+
+  <p><b>Step 1:</b> Consider what happens when cathode rays
+  strike a suitable material.</p>
+
+  <p><b>Step 2:</b> Identify the visible effect.</p>
+
+  <p><b>Answer:</b> Fluorescence is the emission of light
+  by a material after it absorbs energy from incident
+  radiation or particles.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> Why does the screen of a cathode
+  ray tube glow when struck by electrons?</p>
+
+  <p><b>Step 1:</b> Electrons strike the fluorescent coating.</p>
+
+  <p><b>Step 2:</b> They transfer energy to the coating.</p>
+
+  <p><b>Step 3:</b> The coating emits visible light.</p>
+
+  <p><b>Answer:</b> The screen glows because the electrons
+  transfer energy to its fluorescent coating, causing it
+  to emit visible light.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> Name one material that can fluoresce
+  when struck by cathode rays.</p>
+
+  <p><b>Step 1:</b> Recall examples of fluorescent materials.</p>
+
+  <p><b>Step 2:</b> Identify a suitable material.</p>
+
+  <p><b>Answer:</b> Zinc sulphide.</p>
+  `,
+  [
+    {
+      q: "What is fluorescence?",
+      hint: "Think about the light emitted by a material.",
+      steps: [
+        "Consider a suitable material struck by energetic particles.",
+        "Identify the energy transfer to the material.",
+        "Describe the resulting emission of visible light."
+      ],
+      ans: "Fluorescence is the emission of light by a material after it absorbs energy.",
+      why: "Energy supplied by the incident particles can cause the material to emit visible light."
+    },
+    {
+      q: "Why does a fluorescent screen glow when struck by cathode rays?",
+      steps: [
+        "The electrons strike the fluorescent coating.",
+        "The electrons transfer energy to the coating.",
+        "The coating emits visible light."
+      ],
+      ans: "The electrons transfer energy to the fluorescent coating, causing it to emit visible light.",
+      why: "The fluorescent material converts some of the energy deposited by the electron beam into light."
+    },
+    {
+      q: "Name one material that can fluoresce when struck by cathode rays.",
+      steps: [
+        "Recall a material used to demonstrate fluorescence.",
+        "State one valid example."
+      ],
+      ans: "Zinc sulphide.",
+      why: "Zinc sulphide is a fluorescent material that can glow when struck by energetic particles."
+    }
+  ]
+);
+
+
+// -----------------------------------------------------
+// SCREEN 10: MECHANICAL EFFECT OF CATHODE RAYS
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Mechanical Effect of Cathode Rays",
+  `
+  <h2>Mechanical Effect of Cathode Rays</h2>
+
+  <p>
+    Cathode rays can exert a force on an object when the
+    electrons transfer momentum to it.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    A traditional experiment uses a light paddle wheel
+    placed in the path of cathode rays. The beam can cause
+    the wheel to move when momentum is transferred to it.
+  </p>
+
+  <p>
+    This observation provides evidence that cathode rays
+    consist of moving particles with momentum.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> What is meant by the mechanical
+  effect of cathode rays?</p>
+
+  <p><b>Step 1:</b> Recall that cathode rays consist of
+  moving electrons.</p>
+
+  <p><b>Step 2:</b> Consider what happens when the electrons
+  strike an object.</p>
+
+  <p><b>Step 3:</b> Identify the transfer of momentum.</p>
+
+  <p><b>Answer:</b> The mechanical effect is the ability
+  of cathode rays to exert a force on an object through
+  momentum transfer.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> What does the movement of a paddle
+  wheel in a cathode ray experiment demonstrate?</p>
+
+  <p><b>Step 1:</b> The electron beam strikes the wheel.</p>
+
+  <p><b>Step 2:</b> Momentum is transferred to the wheel.</p>
+
+  <p><b>Step 3:</b> The wheel begins to move.</p>
+
+  <p><b>Answer:</b> The observation demonstrates momentum
+  transfer and provides evidence of the particle nature
+  of cathode rays.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> Which physical quantity explains
+  how cathode rays can change the motion of a paddle wheel?</p>
+
+  <p><b>Step 1:</b> Identify the moving electrons.</p>
+
+  <p><b>Step 2:</b> Identify the quantity transferred
+  during their interaction with the wheel.</p>
+
+  <p><b>Answer:</b> Momentum.</p>
+  `,
+  [
+    {
+      q: "What is the mechanical effect of cathode rays?",
+      hint: "Think about what the electron beam can do to an object.",
+      steps: [
+        "Recall that cathode rays are moving electrons.",
+        "Consider their interaction with an object.",
+        "Identify the resulting force or motion."
+      ],
+      ans: "The ability of cathode rays to exert a force on an object through momentum transfer.",
+      why: "Electrons carry momentum and can transfer it when they interact with matter."
+    },
+    {
+      q: "What does the movement of a paddle wheel under cathode ray bombardment demonstrate?",
+      steps: [
+        "The electron beam strikes the wheel.",
+        "Momentum is transferred to the wheel.",
+        "The wheel changes its motion."
+      ],
+      ans: "It demonstrates momentum transfer and provides evidence that cathode rays consist of particles.",
+      why: "Moving electrons can transfer momentum to the paddle wheel."
+    },
+    {
+      q: "Which physical quantity is transferred when cathode rays push an object?",
+      steps: [
+        "Identify the moving electron beam.",
+        "Consider the quantity responsible for the change in the object's motion.",
+        "Name the quantity."
+      ],
+      ans: "Momentum.",
+      why: "Momentum is transferred during the interaction between the electrons and the object."
+    }
+  ]
+);
+
+
+// -----------------------------------------------------
+// SCREEN 11: DEFLECTION OF CATHODE RAYS BY AN ELECTRIC FIELD
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Deflection of Cathode Rays by an Electric Field",
+  `
+  <h2>Deflection of Cathode Rays by an Electric Field</h2>
+
+  <p>
+    Cathode rays are deflected by an electric field because
+    they consist of negatively charged electrons.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    When an electron beam passes between oppositely charged
+    parallel plates, the electric field exerts a force on
+    the electrons.
+  </p>
+
+  <p>
+    The electrons are attracted towards the positive plate
+    and repelled by the negative plate.
+  </p>
+
+  <p>
+    Consequently, the beam bends towards the positive plate.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> Why are cathode rays deflected by
+  an electric field?</p>
+
+  <p><b>Step 1:</b> Cathode rays consist of electrons.</p>
+
+  <p><b>Step 2:</b> Electrons carry negative charge.</p>
+
+  <p><b>Step 3:</b> An electric field exerts a force on
+  charged particles.</p>
+
+  <p><b>Answer:</b> Cathode rays are deflected because
+  negatively charged electrons experience a force in
+  an electric field.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> Between which plates does a cathode
+  ray beam bend when placed in an electric field?</p>
+
+  <p><b>Step 1:</b> Identify the charge of the electrons.</p>
+
+  <p><b>Step 2:</b> Apply the rule that opposite charges
+  attract.</p>
+
+  <p><b>Step 3:</b> Identify the direction of deflection.</p>
+
+  <p><b>Answer:</b> The beam bends towards the positive plate.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> An electron beam passes between two
+  parallel plates. The upper plate is positive and the
+  lower plate is negative. In which direction is the beam
+  deflected?</p>
+
+  <p><b>Step 1:</b> Identify the positive plate.</p>
+  <p>It is the upper plate.</p>
+
+  <p><b>Step 2:</b> Recall that electrons are negatively charged.</p>
+
+  <p><b>Step 3:</b> Determine the direction of attraction.</p>
+
+  <p><b>Answer:</b> The beam is deflected upwards towards
+  the positive plate.</p>
+  `,
+  [
+    {
+      q: "Why are cathode rays deflected by an electric field?",
+      hint: "Recall the charge carried by electrons.",
+      steps: [
+        "Identify the particles forming cathode rays.",
+        "Recall their negative charge.",
+        "Explain how an electric field acts on charged particles."
+      ],
+      ans: "Cathode rays are deflected because negatively charged electrons experience a force in an electric field.",
+      why: "An electric field exerts a force on charged particles."
+    },
+    {
+      q: "Towards which plate does a cathode ray beam bend between oppositely charged plates?",
+      steps: [
+        "Recall that electrons have negative charge.",
+        "Apply the rule that opposite charges attract.",
+        "Identify the positive plate."
+      ],
+      ans: "Towards the positive plate.",
+      why: "The negative electrons are attracted towards the positive plate."
+    },
+    {
+      q: "The upper plate is positive and the lower plate is negative. In which direction does the cathode ray beam deflect?",
+      steps: [
+        "Identify the positive plate as the upper plate.",
+        "Recall that electrons are negatively charged.",
+        "Determine the direction of the electric force."
+      ],
+      ans: "Upwards, towards the positive plate.",
+      why: "The electric force on negatively charged electrons is towards the positive plate."
+    }
+  ]
+);
+
+
+// -----------------------------------------------------
+// SCREEN 12: DEFLECTION OF CATHODE RAYS BY A MAGNETIC FIELD
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Deflection of Cathode Rays by a Magnetic Field",
+  `
+  <h2>Deflection of Cathode Rays by a Magnetic Field</h2>
+
+  <p>
+    Cathode rays can be deflected by a magnetic field
+    because they consist of moving charged particles.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    A moving charged particle experiences a magnetic force
+    when its velocity has a component perpendicular to
+    the magnetic field.
+  </p>
+
+  <p>
+    The direction of the force depends on the direction
+    of motion, the magnetic field, and the negative charge
+    of the electrons.
+  </p>
+
+  <p>
+    Reversing the magnetic field reverses the direction
+    of the magnetic force, provided the electron velocity
+    remains unchanged.
+  </p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> Why can a magnetic field deflect
+  cathode rays?</p>
+
+  <p><b>Step 1:</b> Identify cathode rays as moving electrons.</p>
+
+  <p><b>Step 2:</b> Recall that electrons carry electric charge.</p>
+
+  <p><b>Step 3:</b> Apply the effect of a magnetic field
+  on moving charges.</p>
+
+  <p><b>Answer:</b> A magnetic field can exert a force
+  on moving electrons, causing the beam to deflect.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><b>Question:</b> What happens to the direction of
+  magnetic deflection if the magnetic field is reversed
+  while the electron beam continues in the same direction?</p>
+
+  <p><b>Step 1:</b> Recall that the magnetic force depends
+  on the field direction.</p>
+
+  <p><b>Step 2:</b> Reverse the field direction.</p>
+
+  <p><b>Step 3:</b> Determine the effect on the force.</p>
+
+  <p><b>Answer:</b> The magnetic force reverses direction,
+  so the beam deflects in the opposite direction.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p><b>Question:</b> Does a magnetic field always deflect
+  a moving electron?</p>
+
+  <p><b>Step 1:</b> Recall that magnetic force depends on
+  the angle between velocity and magnetic field.</p>
+
+  <p><b>Step 2:</b> Consider an electron moving parallel
+  to the magnetic field.</p>
+
+  <p><b>Step 3:</b> Determine the magnetic force.</p>
+
+  <p><b>Answer:</b> No. When the electron moves parallel
+  or antiparallel to the magnetic field, the magnetic
+  force is zero.</p>
+  `,
+  [
+    {
+      q: "Why can a magnetic field deflect cathode rays?",
+      hint: "Think about moving charged particles.",
+      steps: [
+        "Identify cathode rays as moving electrons.",
+        "Recall that electrons carry charge.",
+        "Explain the action of a magnetic field on moving charges."
+      ],
+      ans: "A magnetic field can exert a force on moving electrons, causing the beam to deflect.",
+      why: "Moving charged particles experience a magnetic force when their motion has a component perpendicular to the field."
+    },
+    {
+      q: "What happens to the magnetic deflection when the magnetic field is reversed but the electron beam direction remains unchanged?",
+      steps: [
+        "Identify the original magnetic force.",
+        "Reverse the magnetic field direction.",
+        "Determine how the force direction changes."
+      ],
+      ans: "The magnetic force reverses direction, so the beam deflects in the opposite direction.",
+      why: "The magnetic force direction depends on both the velocity and magnetic field directions."
+    },
+    {
+      q: "An electron moves parallel to a uniform magnetic field. What is the magnetic force on the electron?",
+      hint: "Consider the angle between the velocity and the magnetic field.",
+      steps: [
+        "Recall that magnetic force magnitude is proportional to qvB sin(theta).",
+        "For parallel motion, theta is zero degrees.",
+        "Evaluate sin(0 degrees)."
+      ],
+      ans: "Zero newtons.",
+      why: "The magnetic force is qvB sin(theta), which is zero when the velocity is parallel to the magnetic field."
+    }
+  ]
+);
+
+
+// -----------------------------------------------------
+// SCREEN 13: ENERGY AND MOMENTUM OF CATHODE RAYS
+// -----------------------------------------------------
+
+add(
+  "physics",
+  "cathode_rays",
+  "Energy and Momentum of Cathode Rays",
+  `
+  <h2>Energy and Momentum of Cathode Rays</h2>
+
+  <p>
+    Cathode rays possess kinetic energy and momentum
+    because they consist of moving electrons.
+  </p>
+
+  <h3>Understanding the concept</h3>
+
+  <p>
+    A moving electron has kinetic energy due to its motion.
+    It also has momentum, which depends on its mass and
+    velocity.
+  </p>
+
+  <p>
+    For speeds much lower than the speed of light, kinetic
+    energy is given by:
+  </p>
+
+  <p><b>KE = 1/2 mv²</b></p>
+
+  <p>Momentum is given by:</p>
+
+  <p><b>p = mv</b></p>
+
+  <p>Where:</p>
+
+  <ul>
+    <li>m is the mass of the electron.</li>
+    <li>v is its speed.</li>
+    <li>KE is its kinetic energy.</li>
+    <li>p is its momentum.</li>
+  </ul>
+
+  <h3>Worked Example 1</h3>
+
+  <p><b>Question:</b> Why do cathode rays possess kinetic energy?</p>
+
+  <p><b>Step 1:</b> Recall that cathode rays consist of electrons.</p>
+
+  <p><b>Step 2:</b> Recognize that the electrons are moving.</p>
+
+  <p><b>Step 3:</b> Apply the definition of kinetic energy.</p>
+
+  <p><b>Answer:</b> Cathode rays possess kinetic energy
+  because their electrons are moving.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p>
+    <b>Question:</b> An electron has mass
+    9.11 × 10⁻³¹ kg and speed 2.0 × 10⁶ m/s.
+    Calculate its momentum.
+  </p>
+
+  <p><b>Step 1:</b> Write the formula.</p>
+  <p>p = mv</p>
+
+  <p><b>Step 2:</b> Substitute the values.</p>
+  <p>p = (9.11 × 10⁻³¹)(2.0 × 10⁶)</p>
+
+  <p><b>Step 3:</b> Multiply the numbers and combine powers.</p>
+  <p>p = 18.22 × 10⁻²⁵</p>
+  <p>p = 1.822 × 10⁻²⁴ kg m/s</p>
+
+  <p><b>Answer:</b> 1.822 × 10⁻²⁴ kg m/s.</p>
+
+  <h3>Worked Example 3</h3>
+
+  <p>
+    <b>Question:</b> An electron has mass
+    9.11 × 10⁻³¹ kg and speed 2.0 × 10⁶ m/s.
+    Calculate its kinetic energy.
+  </p>
+
+  <p><b>Step 1:</b> Write the formula.</p>
+  <p>KE = 1/2 mv²</p>
+
+  <p><b>Step 2:</b> Substitute the values.</p>
+  <p>KE = 1/2 × 9.11 × 10⁻³¹ × (2.0 × 10⁶)²</p>
+
+  <p><b>Step 3:</b> Square the speed.</p>
+  <p>v² = 4.0 × 10¹²</p>
+
+  <p><b>Step 4:</b> Calculate the energy.</p>
+  <p>KE = 1.822 × 10⁻¹⁸ J</p>
+
+  <p><b>Answer:</b> 1.822 × 10⁻¹⁸ J.</p>
+  `,
+  [
+    {
+      q: "Why do cathode rays possess kinetic energy?",
+      steps: [
+        "Recall that cathode rays consist of electrons.",
+        "Identify that the electrons are moving.",
+        "Relate motion to kinetic energy."
+      ],
+      ans: "Cathode rays possess kinetic energy because their electrons are moving.",
+      why: "Kinetic energy is the energy an object has due to its motion."
+    },
+    {
+      q: "An electron of mass 9.11 × 10⁻³¹ kg moves at 2.0 × 10⁶ m/s. Calculate its momentum.",
+      hint: "Use p = mv.",
+      steps: [
+        "Write p = mv.",
+        "Substitute p = (9.11 × 10⁻³¹)(2.0 × 10⁶).",
+        "Multiply 9.11 by 2.0.",
+        "Combine the powers of ten."
+      ],
+      ans: "1.822 × 10⁻²⁴ kg m/s",
+      why: "Momentum is the product of mass and velocity."
+    },
+    {
+      q: "An electron of mass 9.11 × 10⁻³¹ kg moves at 2.0 × 10⁶ m/s. Calculate its kinetic energy.",
+      hint: "Use KE = 1/2 mv².",
+      steps: [
+        "Write KE = 1/2 mv².",
+        "Square the speed to obtain 4.0 × 10¹² m²/s².",
+        "Substitute the mass and squared speed.",
+        "Calculate KE = 1.822 × 10⁻¹⁸ J."
+      ],
+      ans: "1.822 × 10⁻¹⁸ J",
+      why: "For a non-relativistic electron, kinetic energy is half its mass multiplied by the square of its speed."
+    }
+  ]
+);
+
+add("physics", "cathode_rays", "Main Parts of a Cathode Ray Tube", `
+<h3>Main Parts of a Cathode Ray Tube</h3>
+
+A cathode ray tube (CRT) is an evacuated glass tube in which a beam of electrons produces a visible spot on a fluorescent screen.
+
+The main parts are:
+
+1. <b>Electron gun:</b> Produces and directs a beam of electrons.
+2. <b>Control grid:</b> Controls the number of electrons in the beam.
+3. <b>Focusing system:</b> Makes the electron beam narrow.
+4. <b>Accelerating anodes:</b> Increase the speed of the electrons.
+5. <b>Deflection plates:</b> Change the direction of the beam.
+6. <b>Fluorescent screen:</b> Produces a visible spot when struck by the beam.
+
+The tube is evacuated so that electrons can travel with very few collisions with gas particles.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Which part produces the electron beam?</b>
+Step 1: The beam consists of electrons.
+Step 2: The electron gun produces the beam.
+Answer: Electron gun.
+
+<b>Example 2: Which part changes the direction of the beam?</b>
+Step 1: The beam must be moved to a different position.
+Step 2: The deflection plates change its direction.
+Answer: Deflection plates.
+
+<b>Example 3: Which part displays the beam as a visible spot?</b>
+Step 1: The beam strikes the end of the tube.
+Step 2: The fluorescent screen emits light where the beam hits.
+Answer: Fluorescent screen.
+`, [
+  {
+    q: "Which part of a CRT produces the electron beam?",
+    hint: "Look for the component that supplies the electrons.",
+    steps: [
+      "The CRT needs a beam of electrons.",
+      "The electron gun produces this beam."
+    ],
+    ans: "Electron gun",
+    why: "The electron gun produces and directs the electrons."
+  },
+  {
+    q: "Which part of a CRT changes the direction of the electron beam?",
+    hint: "This component moves the beam across the screen.",
+    steps: [
+      "The beam must be directed to different positions.",
+      "The deflection plates change its direction."
+    ],
+    ans: "Deflection plates",
+    why: "The deflection plates control the direction of the beam."
+  },
+  {
+    q: "Which part of a CRT produces a visible spot when struck by electrons?",
+    hint: "It is the display surface at the end of the tube.",
+    steps: [
+      "The electron beam strikes the end of the tube.",
+      "The fluorescent screen emits visible light."
+    ],
+    ans: "Fluorescent screen",
+    why: "The fluorescent screen makes the position of the electron beam visible."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 15. FUNCTION OF THE ELECTRON GUN
+// Skill: Explain the role of the electron gun.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Function of the Electron Gun", `
+<h3>Function of the Electron Gun</h3>
+
+The electron gun produces a narrow beam of electrons inside a cathode ray tube.
+
+Its operation involves several stages:
+
+1. The heated cathode emits electrons.
+2. The control grid regulates the number of electrons passing through.
+3. The focusing system concentrates the electrons into a narrow beam.
+4. Accelerating anodes increase the speed of the electrons.
+
+The electron gun prepares the beam before it reaches the deflection plates.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Why is the cathode heated?</b>
+Step 1: The cathode must release electrons.
+Step 2: Heating provides energy for electron emission.
+Answer: To enable the cathode to emit electrons.
+
+<b>Example 2: Why does the electron gun contain a focusing system?</b>
+Step 1: An unfocused beam spreads out.
+Step 2: The focusing system concentrates the beam.
+Answer: To produce a narrow beam.
+
+<b>Example 3: What is the purpose of the accelerating anodes?</b>
+Step 1: Electrons leave the cathode with relatively low speeds.
+Step 2: The accelerating anodes increase their kinetic energy.
+Answer: To accelerate the electrons.
+`, [
+  {
+    q: "What is the main function of the electron gun in a CRT?",
+    hint: "Think about what must be produced before the beam can be deflected.",
+    steps: [
+      "A CRT operates using electrons.",
+      "The electron gun produces and directs a beam of electrons."
+    ],
+    ans: "To produce and direct a beam of electrons",
+    why: "The electron gun supplies the beam used by the CRT."
+  },
+  {
+    q: "Why is the cathode heated in the electron gun?",
+    hint: "Heating helps electrons leave the cathode.",
+    steps: [
+      "Electrons are released from the cathode.",
+      "Heating supplies energy for their emission."
+    ],
+    ans: "To enable it to emit electrons",
+    why: "Heating the cathode causes thermionic emission."
+  },
+  {
+    q: "What is the function of the focusing system in an electron gun?",
+    hint: "Consider the shape of the beam.",
+    steps: [
+      "The electrons must form a concentrated beam.",
+      "The focusing system reduces the spreading of the beam."
+    ],
+    ans: "To focus the electrons into a narrow beam",
+    why: "A narrow beam produces a more clearly defined spot on the screen."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 16. FUNCTION OF THE X-DEFLECTION PLATES
+// Skill: Relate the X-plates to horizontal movement.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Function of the X-Deflection Plates", `
+<h3>Function of the X-Deflection Plates</h3>
+
+The X-deflection plates control the horizontal position of the electron beam on the fluorescent screen.
+
+They produce a horizontal electric field when a potential difference is applied across them.
+
+The electric field exerts a force on the negatively charged electrons, changing the direction of the beam.
+
+Reversing the polarity of the plates reverses the direction of the horizontal deflection.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Which plates control horizontal movement?</b>
+Step 1: Horizontal movement is movement from left to right.
+Step 2: The X-deflection plates control this movement.
+Answer: X-deflection plates.
+
+<b>Example 2: What happens when the polarity of the X-plates is reversed?</b>
+Step 1: Reversing the polarity reverses the electric field.
+Step 2: The force on the electrons reverses.
+Answer: The beam deflects in the opposite horizontal direction.
+
+<b>Example 3: What happens if no horizontal potential difference is applied?</b>
+Step 1: There is no horizontal electric field due to the X-plates.
+Step 2: There is no horizontal deflection caused by these plates.
+Answer: The beam is not deflected horizontally by the X-plates.
+`, [
+  {
+    q: "Which CRT plates control the horizontal position of the electron beam?",
+    hint: "The X-direction represents horizontal movement.",
+    steps: [
+      "Horizontal movement corresponds to the X-direction.",
+      "The X-deflection plates control this direction."
+    ],
+    ans: "X-deflection plates",
+    why: "The X-plates move the beam horizontally."
+  },
+  {
+    q: "What happens to the horizontal deflection when the polarity of the X-plates is reversed?",
+    hint: "Reversing the polarity reverses the electric field.",
+    steps: [
+      "The direction of the electric field reverses.",
+      "The force on the electrons reverses.",
+      "The horizontal deflection changes direction."
+    ],
+    ans: "The beam deflects in the opposite horizontal direction",
+    why: "The negative charge of the electrons makes the force reverse when the electric field reverses."
+  },
+  {
+    q: "What is the horizontal deflection caused by the X-plates if no potential difference is applied across them?",
+    hint: "Without a potential difference, is there an electric field between the plates?",
+    steps: [
+      "No potential difference means no electric field due to the X-plates.",
+      "The X-plates therefore exert no horizontal electric force."
+    ],
+    ans: "Zero horizontal deflection due to the X-plates",
+    why: "The X-plates need an electric field to cause horizontal deflection."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 17. FUNCTION OF THE Y-DEFLECTION PLATES
+// Skill: Relate the Y-plates to vertical movement.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Function of the Y-Deflection Plates", `
+<h3>Function of the Y-Deflection Plates</h3>
+
+The Y-deflection plates control the vertical position of the electron beam on the fluorescent screen.
+
+They produce a vertical electric field when a potential difference is applied across them.
+
+The electric field exerts a force on the negatively charged electrons, changing the vertical direction of the beam.
+
+Reversing the polarity of the Y-plates reverses the direction of the vertical deflection.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Which plates control vertical movement?</b>
+Step 1: Vertical movement is movement up or down.
+Step 2: The Y-deflection plates control this movement.
+Answer: Y-deflection plates.
+
+<b>Example 2: What happens when the polarity of the Y-plates is reversed?</b>
+Step 1: The electric field reverses.
+Step 2: The force on the electrons reverses.
+Answer: The beam deflects in the opposite vertical direction.
+
+<b>Example 3: What happens if no vertical potential difference is applied?</b>
+Step 1: No vertical electric field is produced by the Y-plates.
+Step 2: The Y-plates cause no vertical deflection.
+Answer: The beam is not deflected vertically by the Y-plates.
+`, [
+  {
+    q: "Which CRT plates control the vertical position of the electron beam?",
+    hint: "The Y-direction represents vertical movement.",
+    steps: [
+      "Vertical movement is movement up or down.",
+      "The Y-deflection plates control this movement."
+    ],
+    ans: "Y-deflection plates",
+    why: "The Y-plates move the beam vertically."
+  },
+  {
+    q: "What happens to the vertical deflection when the polarity of the Y-plates is reversed?",
+    hint: "Think about the direction of the electric field and force.",
+    steps: [
+      "Reversing the polarity reverses the electric field.",
+      "The force on the negatively charged electrons reverses.",
+      "The beam deflects in the opposite vertical direction."
+    ],
+    ans: "The beam deflects in the opposite vertical direction",
+    why: "Reversing the electric field reverses the force on the electrons."
+  },
+  {
+    q: "What is the vertical deflection caused by the Y-plates if no potential difference is applied across them?",
+    hint: "Consider whether the plates produce an electric field.",
+    steps: [
+      "No potential difference means no electric field due to the Y-plates.",
+      "The Y-plates exert no vertical electric force."
+    ],
+    ans: "Zero vertical deflection due to the Y-plates",
+    why: "The Y-plates need an electric field to cause vertical deflection."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 18. FUNCTION OF THE FLUORESCENT SCREEN
+// Skill: Explain why the screen is used.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Function of the Fluorescent Screen", `
+<h3>Function of the Fluorescent Screen</h3>
+
+The fluorescent screen converts the position of the invisible electron beam into a visible spot.
+
+When the electron beam strikes the screen, the screen emits light at the point of impact.
+
+The spot shows where the beam reaches the screen. If the beam changes direction, the spot moves to another position.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Why is a fluorescent screen used in a CRT?</b>
+Step 1: The electron beam cannot normally be seen directly.
+Step 2: The screen emits visible light where the beam strikes it.
+Answer: To make the position of the beam visible.
+
+<b>Example 2: What does the position of the spot show?</b>
+Step 1: The spot forms where the beam strikes the screen.
+Step 2: Its position indicates where the beam reaches the screen.
+Answer: The position of the electron beam.
+
+<b>Example 3: What happens to the spot when the beam is deflected?</b>
+Step 1: Deflection changes the direction of the beam.
+Step 2: The beam reaches a different point on the screen.
+Answer: The spot moves.
+`, [
+  {
+    q: "What is the main function of the fluorescent screen in a CRT?",
+    hint: "The electron beam is not directly visible.",
+    steps: [
+      "The electron beam strikes the screen.",
+      "The screen emits visible light at the point of impact."
+    ],
+    ans: "To make the position of the electron beam visible",
+    why: "The fluorescent screen converts the beam's point of impact into visible light."
+  },
+  {
+    q: "What does the position of the fluorescent spot indicate?",
+    hint: "The spot forms where the beam strikes the screen.",
+    steps: [
+      "The spot is produced at the point of impact.",
+      "That point shows where the beam reaches the screen."
+    ],
+    ans: "The position where the electron beam strikes the screen",
+    why: "The spot represents the position of the beam on the screen."
+  },
+  {
+    q: "What happens to the fluorescent spot when the electron beam is deflected?",
+    hint: "The beam reaches a different point after its direction changes.",
+    steps: [
+      "Deflection changes the beam's direction.",
+      "The beam strikes a different position on the screen."
+    ],
+    ans: "The spot moves to a different position",
+    why: "The visible spot follows the point where the beam hits the screen."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 19. FORMATION OF A VISIBLE SPOT ON THE SCREEN
+// Skill: Explain the sequence from electron emission to visible spot.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Formation of a Visible Spot on the Screen", `
+<h3>Formation of a Visible Spot on the Screen</h3>
+
+A visible spot forms through this sequence:
+
+1. The heated cathode emits electrons.
+2. The electron gun forms the electrons into a beam.
+3. The accelerating anodes increase the electrons' speed.
+4. The deflection plates direct the beam towards a position on the screen.
+5. The beam strikes the fluorescent screen.
+6. The screen emits light at the point of impact, producing a visible spot.
+
+The spot changes position when the direction of the electron beam changes.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: What happens immediately before a visible spot is produced?</b>
+Step 1: The electron beam reaches the screen.
+Step 2: The screen emits light where the beam strikes it.
+Answer: The electron beam strikes the fluorescent screen.
+
+<b>Example 2: Why does a CRT need an electron gun before the deflection plates can control the beam?</b>
+Step 1: The deflection plates act on an electron beam.
+Step 2: The electron gun produces that beam.
+Answer: The electron gun supplies the beam that the plates deflect.
+
+<b>Example 3: Why does the spot move when the voltage across the deflection plates changes?</b>
+Step 1: Changing the voltage changes the electric field.
+Step 2: The field changes the force and direction of the electrons.
+Step 3: The beam strikes a different point on the screen.
+Answer: The spot moves because the beam is deflected to a new position.
+`, [
+  {
+    q: "Which sequence correctly describes how a visible spot is formed in a CRT?",
+    hint: "Start with electron emission and finish with light from the screen.",
+    steps: [
+      "The heated cathode emits electrons.",
+      "The electron gun forms a beam.",
+      "The beam is accelerated and directed.",
+      "The beam strikes the fluorescent screen, which emits light."
+    ],
+    ans: "Electron emission → beam formation → acceleration and deflection → impact on fluorescent screen → visible spot",
+    why: "The spot appears when the electron beam reaches the fluorescent screen."
+  },
+  {
+    q: "What must happen for the fluorescent screen to produce a visible spot?",
+    hint: "Think about what causes the screen to emit light.",
+    steps: [
+      "The screen emits light at the point of impact.",
+      "The electron beam must strike the screen."
+    ],
+    ans: "The electron beam must strike the fluorescent screen",
+    why: "The impact causes the screen to emit light at that position."
+  },
+  {
+    q: "The voltage across the deflection plates is changed and the spot moves. Explain why.",
+    hint: "Connect the voltage to the electric field, force and beam direction.",
+    steps: [
+      "Changing the voltage changes the electric field.",
+      "The field changes the force on the electrons.",
+      "The beam follows a different path and strikes a new position."
+    ],
+    ans: "Changing the voltage changes the electric field and deflects the electron beam to a new position",
+    why: "The spot follows the point where the deflected beam strikes the screen."
+  }
+]);
+add("physics", "cathode_rays", "Energy Gained by an Electron", `
+<h3>Energy Gained by an Electron</h3>
+
+An electron gains kinetic energy when it is accelerated through a potential difference.
+
+The energy gained is:
+
+<b>E = eV</b>
+
+Where:
 <ul>
-<li>A high voltage (potential difference) is applied across electrodes in a vacuum tube</li>
-<li>The cathode emits electrons</li>
-<li>Electrons are accelerated towards the anode</li>
-<li>A narrow beam of electrons (cathode ray beam) is formed</li>
+<li>E = energy gained in joules (J)</li>
+<li>e = magnitude of the electron charge = 1.6 × 10⁻¹⁹ C</li>
+<li>V = potential difference in volts (V)</li>
 </ul>
 
-<h3> KEY PHYSICS RELATIONSHIPS</h3>
-<ul>
-<li>Electric potential energy converts to kinetic energy</li>
-<li>Energy gained by electron: E = eV</li>
-<li>Kinetic energy: KE = ½mv²</li>
-</ul>
+This equation gives the energy transferred to the electron. If the electron starts from rest and all the gained energy becomes kinetic energy, then:
 
-<h3> IMPORTANT FORMULAS</h3>
-<pre>
-Energy gained by electron:
+<b>KE = eV</b>
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: An electron moves through 10 V. Calculate the energy gained.</b>
+
+Step 1: Use E = eV.
+
+Step 2: Substitute:
+E = 1.6 × 10⁻¹⁹ × 10
+
+Step 3: Calculate:
+E = 1.6 × 10⁻¹⁸ J
+
+Answer: 1.6 × 10⁻¹⁸ J.
+
+<b>Example 2: An electron moves through 250 V. Calculate the energy gained.</b>
+
 E = eV
+E = 1.6 × 10⁻¹⁹ × 250
+E = 4.0 × 10⁻¹⁷ J
 
-Kinetic energy:
-KE = ½mv²
+Answer: 4.0 × 10⁻¹⁷ J.
+
+<b>Example 3: An electron gains 8.0 × 10⁻¹⁷ J. Calculate the potential difference.</b>
+
+Step 1: Rearrange E = eV:
+V = E/e
+
+Step 2: Substitute:
+V = (8.0 × 10⁻¹⁷)/(1.6 × 10⁻¹⁹)
+
+Step 3: Calculate:
+V = 500 V
+
+Answer: 500 V.
+`, [
+  {
+    q: "Calculate the energy gained by an electron accelerated through a potential difference of 20 V. Take e = 1.6 × 10⁻¹⁹ C.",
+    hint: "Use E = eV.",
+    steps: [
+      "E = eV",
+      "E = 1.6 × 10⁻¹⁹ × 20",
+      "E = 3.2 × 10⁻¹⁸ J"
+    ],
+    ans: "3.2 × 10⁻¹⁸ J",
+    why: "The energy gained is the electron charge multiplied by the potential difference."
+  },
+  {
+    q: "An electron gains 4.8 × 10⁻¹⁷ J of energy. Calculate the potential difference through which it moved.",
+    hint: "Rearrange E = eV to make V the subject.",
+    steps: [
+      "V = E/e",
+      "V = (4.8 × 10⁻¹⁷)/(1.6 × 10⁻¹⁹)",
+      "V = 300 V"
+    ],
+    ans: "300 V",
+    why: "Dividing the energy gained by the electron charge gives the potential difference."
+  },
+  {
+    q: "An electron is accelerated from rest through 100 V. Assuming all the gained energy becomes kinetic energy, calculate its kinetic energy.",
+    hint: "For an electron starting from rest, KE = eV.",
+    steps: [
+      "KE = eV",
+      "KE = 1.6 × 10⁻¹⁹ × 100",
+      "KE = 1.6 × 10⁻¹⁷ J"
+    ],
+    ans: "1.6 × 10⁻¹⁷ J",
+    why: "The electrical energy gained becomes kinetic energy when the electron starts from rest and energy losses are neglected."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 21. THE ELECTRON-VOLT
+// Skill: Convert between electron-volts and joules.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "The Electron-Volt", `
+<h3>The Electron-Volt</h3>
+
+The electron-volt (eV) is a unit of energy commonly used for particles such as electrons.
+
+<b>One electron-volt</b> is the energy gained by an electron when it moves through a potential difference of one volt.
+
+Since E = eV:
+
+1 eV = 1.6 × 10⁻¹⁹ J
+
+To convert electron-volts to joules, multiply by 1.6 × 10⁻¹⁹.
+
+To convert joules to electron-volts, divide by 1.6 × 10⁻¹⁹.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Convert 5 eV to joules.</b>
+
+E = 5 × 1.6 × 10⁻¹⁹
+E = 8.0 × 10⁻¹⁹ J
+
+Answer: 8.0 × 10⁻¹⁹ J.
+
+<b>Example 2: Convert 2.4 × 10⁻¹⁸ J to eV.</b>
+
+E = (2.4 × 10⁻¹⁸)/(1.6 × 10⁻¹⁹)
+E = 15 eV
+
+Answer: 15 eV.
+
+<b>Example 3: An electron gains 750 eV. Express its energy in joules.</b>
+
+E = 750 × 1.6 × 10⁻¹⁹
+E = 1.2 × 10⁻¹⁶ J
+
+Answer: 1.2 × 10⁻¹⁶ J.
+`, [
+  {
+    q: "Convert 10 eV to joules. Take 1 eV = 1.6 × 10⁻¹⁹ J.",
+    hint: "Multiply the energy in eV by 1.6 × 10⁻¹⁹.",
+    steps: [
+      "E = 10 × 1.6 × 10⁻¹⁹",
+      "E = 1.6 × 10⁻¹⁸ J"
+    ],
+    ans: "1.6 × 10⁻¹⁸ J",
+    why: "Electron-volts are converted to joules by multiplying by 1.6 × 10⁻¹⁹."
+  },
+  {
+    q: "Convert 3.2 × 10⁻¹⁸ J to electron-volts.",
+    hint: "Divide the energy in joules by 1.6 × 10⁻¹⁹.",
+    steps: [
+      "E = (3.2 × 10⁻¹⁸)/(1.6 × 10⁻¹⁹)",
+      "E = 20 eV"
+    ],
+    ans: "20 eV",
+    why: "Dividing by the energy equivalent of one electron-volt gives the energy in eV."
+  },
+  {
+    q: "An electron gains 400 eV. Calculate this energy in joules.",
+    hint: "Use 1 eV = 1.6 × 10⁻¹⁹ J.",
+    steps: [
+      "E = 400 × 1.6 × 10⁻¹⁹",
+      "E = 640 × 10⁻¹⁹ J",
+      "E = 6.4 × 10⁻¹⁷ J"
+    ],
+    ans: "6.4 × 10⁻¹⁷ J",
+    why: "Multiplication by the joule equivalent of one eV gives the energy in joules."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 22. SPEED OF AN ACCELERATED ELECTRON
+// Skill: Calculate electron speed from kinetic energy.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Speed of an Accelerated Electron", `
+<h3>Speed of an Accelerated Electron</h3>
+
+For an electron moving at a speed much less than the speed of light, its kinetic energy is:
+
+<b>KE = ½mv²</b>
+
+Where:
+<ul>
+<li>KE = kinetic energy in joules (J)</li>
+<li>m = electron mass = 9.11 × 10⁻³¹ kg</li>
+<li>v = electron speed in metres per second (m/s)</li>
+</ul>
+
+To calculate speed, rearrange:
+
+<b>v = √(2KE/m)</b>
+
+If the electron starts from rest and is accelerated through a potential difference V, then KE = eV. Therefore:
+
+<b>v = √(2eV/m)</b>
+
+This is a non-relativistic formula. It is suitable when the electron's speed is much less than the speed of light.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: An electron has kinetic energy 1.6 × 10⁻¹⁸ J. Calculate its speed.</b>
+
+Step 1:
+v = √(2KE/m)
+
+Step 2:
+v = √[(2 × 1.6 × 10⁻¹⁸)/(9.11 × 10⁻³¹)]
+
+Step 3:
+v ≈ 1.87 × 10⁶ m/s
+
+Answer: 1.87 × 10⁶ m/s.
+
+<b>Example 2: An electron has kinetic energy 4.0 × 10⁻¹⁷ J. Calculate its speed.</b>
+
+v = √[(2 × 4.0 × 10⁻¹⁷)/(9.11 × 10⁻³¹)]
+
+v ≈ 9.37 × 10⁶ m/s
+
+Answer: 9.37 × 10⁶ m/s.
+
+<b>Example 3: An electron starts from rest and is accelerated through 100 V. Calculate its speed.</b>
+
+Step 1: KE = eV
+KE = 1.6 × 10⁻¹⁹ × 100
+KE = 1.6 × 10⁻¹⁷ J
+
+Step 2:
+v = √(2KE/m)
+
+Step 3:
+v = √[(2 × 1.6 × 10⁻¹⁷)/(9.11 × 10⁻³¹)]
+
+v ≈ 5.93 × 10⁶ m/s
+
+Answer: 5.93 × 10⁶ m/s.
+`, [
+  {
+    q: "An electron has kinetic energy 8.0 × 10⁻¹⁸ J. Calculate its speed. Take its mass as 9.11 × 10⁻³¹ kg.",
+    hint: "Use v = √(2KE/m).",
+    steps: [
+      "v = √(2KE/m)",
+      "v = √[(2 × 8.0 × 10⁻¹⁸)/(9.11 × 10⁻³¹)]",
+      "v ≈ 4.19 × 10⁶ m/s"
+    ],
+    ans: "4.19 × 10⁶ m/s",
+    why: "The kinetic energy equation can be rearranged to calculate speed."
+  },
+  {
+    q: "An electron starts from rest and is accelerated through 50 V. Calculate its kinetic energy in joules.",
+    hint: "First use KE = eV.",
+    steps: [
+      "KE = eV",
+      "KE = 1.6 × 10⁻¹⁹ × 50",
+      "KE = 8.0 × 10⁻¹⁸ J"
+    ],
+    ans: "8.0 × 10⁻¹⁸ J",
+    why: "The electrical energy gained becomes kinetic energy when the electron starts from rest and energy losses are neglected."
+  },
+  {
+    q: "An electron starts from rest and gains 3.2 × 10⁻¹⁸ J of kinetic energy. Calculate its speed. Take m = 9.11 × 10⁻³¹ kg.",
+    hint: "Substitute the kinetic energy and mass into v = √(2KE/m).",
+    steps: [
+      "v = √(2KE/m)",
+      "v = √[(2 × 3.2 × 10⁻¹⁸)/(9.11 × 10⁻³¹)]",
+      "v ≈ 2.65 × 10⁶ m/s"
+    ],
+    ans: "2.65 × 10⁶ m/s",
+    why: "The speed follows from the relationship between kinetic energy, mass and speed."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 23. CALCULATING THE POTENTIAL DIFFERENCE FROM ELECTRON SPEED
+// Skill: Work backwards from speed to accelerating voltage.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Potential Difference from Electron Speed", `
+<h3>Potential Difference from Electron Speed</h3>
+
+An electron accelerated from rest gains kinetic energy from the electrical energy supplied.
 
 Therefore:
+
 eV = ½mv²
-</pre>
 
+Rearranging to make V the subject:
+
+<b>V = mv²/(2e)</b>
+
+Where:
 <ul>
-<li>e = charge of electron = 1.6 × 10⁻¹⁹ C</li>
-<li>V = potential difference (volts)</li>
-<li>m = mass of electron = 9.11 × 10⁻³¹ kg</li>
+<li>m = 9.11 × 10⁻³¹ kg</li>
+<li>v = electron speed in m/s</li>
+<li>e = 1.6 × 10⁻¹⁹ C</li>
+<li>V = accelerating potential difference in volts</li>
 </ul>
 
-<h3> CATHODE RAY TUBE STRUCTURE</h3>
-<figure class="topic-img-container">
-  <img src="/images/cathode_ray_tube.png" alt="Cathode Ray Tube Schematic Diagram" class="topic-img" />
-  <figcaption>Schematic of a Cathode Ray Tube showing electron emission from cathode, anode acceleration, deflection plates, and glowing fluorescent screen.</figcaption>
-</figure>
+Use this relationship when the speed is known but the accelerating potential difference is not.
 
-<h3> WORKED OUT CALCULATIONS</h3>
+<h3>Worked Examples</h3>
 
-<h4>Example 1: Energy gained by an electron</h4>
-<p>An electron is accelerated through a potential difference of 200 V. Find the energy gained.</p>
+<b>Example 1: An electron travels at 2.0 × 10⁶ m/s after acceleration from rest. Calculate the potential difference.</b>
 
-<pre>
-Step 1: Use formula E = eV
+Step 1:
+V = mv²/(2e)
 
-Step 2: Substitute values
-E = (1.6 × 10⁻¹⁹) × 200
+Step 2:
+V = [(9.11 × 10⁻³¹)(2.0 × 10⁶)²]/(2 × 1.6 × 10⁻¹⁹)
 
-Step 3: Multiply
-E = 3.2 × 10⁻¹⁷ J
-</pre>
+Step 3:
+V ≈ 11.4 V
 
-<p><b>Answer:</b> 3.2 × 10⁻¹⁷ J</p>
+Answer: 11.4 V.
 
-<h4>Example 2: Speed of electron</h4>
-<p>An electron is accelerated through 100 V. Calculate its speed.</p>
+<b>Example 2: An electron travels at 4.0 × 10⁶ m/s. Calculate the potential difference.</b>
 
-<pre>
-Step 1: Use eV = ½mv²
+V = [(9.11 × 10⁻³¹)(4.0 × 10⁶)²]/(3.2 × 10⁻¹⁹)
 
-Step 2: Substitute values
-(1.6 × 10⁻¹⁹ × 100) = ½ × (9.11 × 10⁻³¹) × v²
+V ≈ 45.6 V
 
-Step 3: Solve energy
-1.6 × 10⁻¹⁷ = 4.555 × 10⁻³¹ v²
+Answer: 45.6 V.
 
-Step 4: Rearrange
-v² = (1.6 × 10⁻¹⁷) / (4.555 × 10⁻³¹)
+<b>Example 3: An electron travels at 6.0 × 10⁶ m/s. Calculate the potential difference.</b>
 
-Step 5: Calculate
-v² ≈ 3.51 × 10¹³
+V = [(9.11 × 10⁻³¹)(6.0 × 10⁶)²]/(3.2 × 10⁻¹⁹)
 
-Step 6: Square root
-v ≈ 5.9 × 10⁶ m/s
-</pre>
+V ≈ 102.5 V
 
-<p><b>Answer:</b> 5.9 × 10⁶ m/s</p>
-
-<h3> KEY OBSERVATIONS</h3>
-<ul>
-<li>Beam is visible when it hits fluorescent screen</li>
-<li>Beam bends in electric field (towards positive plate)</li>
-<li>Beam bends in magnetic field</li>
-<li>Higher voltage → faster electrons</li>
-</ul>
-
-<h3> EXAMPLE CONCEPT QUESTIONS</h3>
-
-<h4>Why does increasing voltage increase electron speed?</h4>
-<ul>
-<li>Step 1: Voltage increases energy (E = eV)</li>
-<li>Step 2: More energy becomes kinetic energy</li>
-<li>Step 3: Higher KE means higher speed</li>
-</ul>
-
-<p><b>Answer:</b> Because increasing potential difference increases kinetic energy of electrons, making them move faster.</p>
-
-<h3> REAL-LIFE APPLICATIONS</h3>
-<ul>
-<li>Old CRT televisions</li>
-<li>Computer monitors</li>
-<li>Oscilloscopes</li>
-<li>Electron beam experiments</li>
-</ul>
-`,
-  [
+Answer: 102.5 V.
+`, [
   {
-    q: "What are cathode rays?",
+    q: "An electron starts from rest and reaches a speed of 3.0 × 10⁶ m/s. Calculate the accelerating potential difference. Take m = 9.11 × 10⁻³¹ kg and e = 1.6 × 10⁻¹⁹ C.",
+    hint: "Use V = mv²/(2e).",
     steps: [
-      "Step 1: Recall that a cathode ray tube contains a cathode and an anode in a vacuum.",
-      "Step 2: Electrons are emitted from the cathode when a high voltage is applied.",
-      "Step 3: The electrons travel across the vacuum toward the anode.",
-      "Step 4: These moving electrons are called cathode rays."
+      "V = mv²/(2e)",
+      "V = [(9.11 × 10⁻³¹)(3.0 × 10⁶)²]/(3.2 × 10⁻¹⁹)",
+      "V ≈ 25.6 V"
     ],
-    ans: "Cathode rays are streams of electrons moving from the cathode to the anode in a vacuum tube.",
-    why: "Cathode rays consist of negatively charged electrons."
+    ans: "25.6 V",
+    why: "The electrical energy gained equals the kinetic energy when the electron starts from rest and losses are neglected."
   },
   {
-    q: "State two properties of cathode rays.",
+    q: "An electron is accelerated from rest through 100 V. Which equation can be used to find its final speed?",
+    hint: "Combine KE = eV with KE = ½mv².",
     steps: [
-      "Step 1: Recall the characteristics of cathode rays.",
-      "Step 2: Identify that they travel in straight lines.",
-      "Step 3: Identify that they are negatively charged.",
-      "Step 4: State both properties."
+      "eV = ½mv²",
+      "v² = 2eV/m",
+      "v = √(2eV/m)"
     ],
-    ans: "They travel in straight lines and are negatively charged.",
-    why: "These properties were demonstrated using cathode ray tubes."
+    ans: "v = √(2eV/m)",
+    why: "Equating electrical energy gained to kinetic energy gives the speed equation."
   },
   {
-    q: "Why do cathode rays produce shadows?",
+    q: "An electron's speed doubles. By what factor does the potential difference needed to produce that speed change, assuming it starts from rest?",
+    hint: "The equation contains v².",
     steps: [
-      "Step 1: Recall that cathode rays travel in straight lines.",
-      "Step 2: Place an object in their path.",
-      "Step 3: The object blocks the rays.",
-      "Step 4: A shadow forms behind the object."
+      "V = mv²/(2e)",
+      "Potential difference is proportional to speed squared.",
+      "Doubling speed multiplies v² by 2² = 4."
     ],
-    ans: "Because cathode rays travel in straight lines and are blocked by solid objects.",
-    why: "Straight-line motion causes shadow formation."
-  },
-  {
-    q: "Why do cathode rays cause fluorescence?",
-    steps: [
-      "Step 1: Cathode rays strike a fluorescent material.",
-      "Step 2: The electrons transfer energy to the material.",
-      "Step 3: The material emits visible light.",
-      "Step 4: The screen glows."
-    ],
-    ans: "They transfer energy to fluorescent materials, causing them to emit light.",
-    why: "The kinetic energy of electrons is converted into light energy."
-  },
-  {
-    q: "Why can cathode rays turn a light paddle wheel?",
-    steps: [
-      "Step 1: Recall that cathode rays are streams of particles.",
-      "Step 2: The particles strike the paddle wheel.",
-      "Step 3: They transfer momentum to the wheel.",
-      "Step 4: The wheel rotates."
-    ],
-    ans: "Because cathode rays have mass and momentum that can push the paddle wheel.",
-    why: "This demonstrates that cathode rays are particles."
-  },
-  {
-    q: "Why are cathode rays deflected in electric fields?",
-    hint: "Think about their charge.",
-    steps: [
-      "Step 1: Recall that cathode rays are electrons.",
-      "Step 2: Electrons have a negative charge.",
-      "Step 3: Electric fields exert forces on charged particles.",
-      "Step 4: Therefore, cathode rays are deflected toward the positive plate."
-    ],
-    ans: "Because cathode rays are negatively charged electrons.",
-    why: "Charged particles experience forces in electric fields."
-  },
-  {
-    q: "Why are cathode rays deflected by magnetic fields?",
-    hint: "Think about moving charges.",
-    steps: [
-      "Step 1: Recall that cathode rays are moving electrons.",
-      "Step 2: Moving charges experience magnetic forces.",
-      "Step 3: The magnetic field changes their direction.",
-      "Step 4: The rays are deflected."
-    ],
-    ans: "Because moving electrons experience a force in a magnetic field.",
-    why: "Magnetic fields affect moving charged particles."
-  },
-  {
-    q: "What happens when cathode rays strike a metal target?",
-    hint: "Think X-rays.",
-    steps: [
-      "Step 1: Cathode rays move at very high speed.",
-      "Step 2: They collide with the metal target.",
-      "Step 3: They lose energy suddenly.",
-      "Step 4: X-rays are produced."
-    ],
-    ans: "X-rays are produced when cathode rays strike a metal target.",
-    why: "Rapid deceleration of electrons produces X-rays."
-  },
-  {
-    q: "Why is a vacuum needed in a cathode ray tube?",
-    hint: "Think collisions.",
-    steps: [
-      "Step 1: Recall that air contains many particles.",
-      "Step 2: Electrons would collide with air molecules.",
-      "Step 3: These collisions would reduce their energy.",
-      "Step 4: A vacuum allows electrons to travel freely."
-    ],
-    ans: "A vacuum prevents electrons from colliding with air molecules.",
-    why: "The rays can travel efficiently only in a vacuum."
-  },
-  {
-    q: "How do cathode rays demonstrate that electrons are particles?",
-    hint: "Think mass and momentum.",
-    steps: [
-      "Step 1: Observe that cathode rays can move a light paddle wheel.",
-      "Step 2: Only particles with mass can transfer momentum.",
-      "Step 3: The wheel rotates after being struck.",
-      "Step 4: Therefore, cathode rays are particles."
-    ],
-    ans: "They move a light paddle wheel, showing that they have mass and momentum.",
-    why: "Objects with mass behave as particles."
+    ans: "It becomes four times as large",
+    why: "The accelerating potential difference is proportional to the square of the final speed."
   }
-]
+]);
+add("physics", "cathode_rays", "The Cathode-Ray Oscilloscope", `
+<h3>The Cathode-Ray Oscilloscope (CRO)</h3>
+
+A cathode-ray oscilloscope is an instrument that displays electrical signals as a trace on a screen.
+
+In a CRO:
+
+1. The electron gun produces a beam of electrons.
+2. The fluorescent screen makes the beam visible.
+3. The input signal controls the vertical deflection of the beam.
+4. A time-base voltage moves the beam horizontally with time.
+
+The resulting trace can show how a voltage changes with time.
+
+A CRO can be used to investigate the shape, amplitude and time period of a repeating signal.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: What is the main purpose of a CRO?</b>
+
+Step 1: A CRO receives an electrical signal.
+Step 2: It displays the signal as a trace on a screen.
+
+Answer: To display electrical signals as traces.
+
+<b>Example 2: What does the vertical movement of the trace represent?</b>
+
+Step 1: The input signal controls vertical deflection.
+Step 2: The vertical position represents the signal voltage, according to the instrument's settings.
+
+Answer: Changes in the input voltage.
+
+<b>Example 3: What is the purpose of the time-base voltage?</b>
+
+Step 1: The signal must be displayed as it changes over time.
+Step 2: The time-base voltage moves the beam horizontally.
+
+Answer: To move the beam horizontally with time.
+
+<h3>Important distinction</h3>
+
+The vertical deflection represents the input voltage, while the horizontal sweep represents time when the time-base is operating normally.
+`, [
+  {
+    q: "What is the main purpose of a cathode-ray oscilloscope?",
+    hint: "Think about what it displays on its screen.",
+    steps: [
+      "The instrument receives an electrical signal.",
+      "It displays the signal as a trace."
+    ],
+    ans: "To display electrical signals as traces on a screen",
+    why: "The CRO allows changes in an electrical signal to be observed."
+  },
+  {
+    q: "In normal CRO operation, what does the vertical position of the trace represent?",
+    hint: "The input signal controls the vertical deflection.",
+    steps: [
+      "The input voltage affects the vertical deflection.",
+      "The trace position therefore represents the signal voltage."
+    ],
+    ans: "The input voltage",
+    why: "Vertical deflection is controlled by the input signal."
+  },
+  {
+    q: "What is the function of the time-base voltage in a CRO?",
+    hint: "It controls movement along the horizontal direction.",
+    steps: [
+      "The signal must be displayed over time.",
+      "The time-base voltage sweeps the beam horizontally."
+    ],
+    ans: "To move the electron beam horizontally with time",
+    why: "The horizontal sweep allows the signal to be displayed against time."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 25. CATHODE-RAY TUBES IN OLDER TELEVISION DISPLAYS
+// Skill: Explain how a CRT television forms an image.
+// ------------------------------------------------------------
+
+add("physics", "cathode_rays", "Cathode Rays in Older Television Displays", `
+<h3>Cathode Rays in Older Television Displays</h3>
+
+Older television sets used cathode-ray tubes to form pictures on a screen.
+
+The electron beam was directed across the screen in a repeated scanning pattern.
+
+The intensity of the beam was varied according to the picture signal. This changed the brightness of different parts of the screen.
+
+The fluorescent screen emitted light where the beam struck it. By controlling the beam's position and intensity, the television formed a picture.
+
+Colour CRT televisions used separate electron beams and coloured phosphor elements to produce coloured images.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: How did an older CRT television produce a picture?</b>
+
+Step 1: An electron beam scanned across the screen.
+Step 2: The beam's intensity varied with the picture signal.
+Step 3: The screen emitted different amounts of light at different positions.
+
+Answer: By scanning the screen with a controlled electron beam.
+
+<b>Example 2: Why was the beam scanned across the screen?</b>
+
+Step 1: A picture contains information at many positions.
+Step 2: The beam had to reach different positions to reproduce that information.
+
+Answer: To form the picture across the screen.
+
+<b>Example 3: What controlled the brightness of different parts of a CRT television picture?</b>
+
+Step 1: The picture signal controlled the beam's intensity.
+Step 2: The beam caused the screen to emit light.
+Step 3: Changes in beam intensity changed the brightness.
+
+Answer: The intensity of the electron beam.
+
+<h3>Remember</h3>
+
+A CRT television forms an image by controlling the position and intensity of an electron beam on a fluorescent screen.
+`, [
+  {
+    q: "How did an older CRT television form a picture?",
+    hint: "Consider how the electron beam moved and how the screen responded.",
+    steps: [
+      "The electron beam scanned across the screen.",
+      "Its intensity was varied according to the picture signal.",
+      "The screen emitted light to form the picture."
+    ],
+    ans: "By scanning the screen with a controlled electron beam",
+    why: "The beam's position and intensity controlled the light emitted at different parts of the screen."
+  },
+  {
+    q: "Why did the electron beam scan across the screen of a CRT television?",
+    hint: "A complete picture contains information at many positions.",
+    steps: [
+      "The picture contains details across the screen.",
+      "The beam visits different positions to reproduce those details."
+    ],
+    ans: "To reproduce the picture across the screen",
+    why: "Scanning allows the beam to create the picture at different screen positions."
+  },
+  {
+    q: "What controlled the brightness of a point on an older CRT television screen?",
+    hint: "The picture signal changed how strongly the beam struck the screen.",
+    steps: [
+      "The picture signal varied the beam's intensity.",
+      "The beam caused the screen to emit light.",
+      "The intensity affected the brightness."
+    ],
+    ans: "The intensity of the electron beam",
+    why: "A stronger or weaker beam changes the light emitted at the point of impact."
+  }
+]);
+add("physics", "photoelectric_emission", "Meaning of Photoelectric Emission", `
+<h3>Meaning of Photoelectric Emission</h3>
+
+Photoelectric emission is the release of electrons from the surface of a material when light of sufficiently high frequency falls on it.
+
+The material is commonly a metal.
+
+The emitted electrons are called <b>photoelectrons</b>.
+
+Photoelectric emission occurs only when the incident light has a frequency at or above the material's threshold frequency.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Define photoelectric emission.</b>
+
+Step 1: Light falls on a material's surface.
+Step 2: Electrons are released from the surface.
+
+Answer: Photoelectric emission is the release of electrons from a material's surface due to incident light of sufficiently high frequency.
+
+<b>Example 2: Light of sufficient frequency falls on a metal and electrons leave its surface. What phenomenon has occurred?</b>
+
+Step 1: Incident light strikes the metal.
+Step 2: Electrons are released.
+Step 3: This is photoelectric emission.
+
+Answer: Photoelectric emission.
+
+<b>Example 3: A student says photoelectric emission is the reflection of light from a metal. Is the student correct?</b>
+
+Step 1: Reflection means light bounces off a surface.
+Step 2: Photoelectric emission involves electrons leaving a surface.
+
+Answer: No. Photoelectric emission is the release of electrons, not the reflection of light.
+`, [
+  {
+    q: "What is photoelectric emission?",
+    hint: "Focus on what leaves the material when suitable light falls on it.",
+    steps: [
+      "Light of sufficiently high frequency falls on a material.",
+      "Electrons are released from its surface."
+    ],
+    ans: "The release of electrons from a material's surface when light of sufficiently high frequency falls on it",
+    why: "Photoelectric emission describes the release of electrons due to incident light."
+  },
+  {
+    q: "Light of sufficiently high frequency falls on a metal, causing electrons to leave its surface. Name the phenomenon.",
+    hint: "It is the phenomenon defined by the release of electrons due to light.",
+    steps: [
+      "Light strikes the metal.",
+      "Electrons leave the metal's surface.",
+      "This process is photoelectric emission."
+    ],
+    ans: "Photoelectric emission",
+    why: "The release of electrons from a surface due to suitable incident light is photoelectric emission."
+  },
+  {
+    q: "A learner says photoelectric emission means light bouncing off a metal surface. Identify the error.",
+    hint: "Distinguish the behaviour of light from the release of electrons.",
+    steps: [
+      "Bouncing light is reflection.",
+      "Photoelectric emission involves electrons leaving the material."
+    ],
+    ans: "Photoelectric emission is the release of electrons, not the reflection of light",
+    why: "Reflection concerns light; photoelectric emission concerns electrons released from a surface."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 27. MEANING OF PHOTOELECTRONS
+// Skill: Identify the electrons released during photoelectric emission.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Meaning of Photoelectrons", `
+<h3>Meaning of Photoelectrons</h3>
+
+Photoelectrons are electrons emitted from a material's surface during photoelectric emission.
+
+They are electrons that originally belonged to the material but gained enough energy from incident light to escape its surface.
+
+Photoelectrons have a negative electric charge because they are electrons.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: What are photoelectrons?</b>
+
+Step 1: Suitable light falls on a material.
+Step 2: Electrons are released from its surface.
+
+Answer: The released electrons are called photoelectrons.
+
+<b>Example 2: Are photoelectrons positively or negatively charged?</b>
+
+Step 1: A photoelectron is an electron.
+Step 2: Electrons carry negative charge.
+
+Answer: Negatively charged.
+
+<b>Example 3: A metal emits electrons when illuminated by suitable light. What name is given to the emitted electrons?</b>
+
+Step 1: The electrons leave the metal due to incident light.
+Step 2: Electrons emitted in this process are called photoelectrons.
+
+Answer: Photoelectrons.
+`, [
+  {
+    q: "What are photoelectrons?",
+    hint: "They are named according to the process that releases them.",
+    steps: [
+      "Suitable light causes electrons to leave a material.",
+      "These emitted electrons are called photoelectrons."
+    ],
+    ans: "Electrons emitted from a material during photoelectric emission",
+    why: "Photoelectrons are the electrons released by the photoelectric effect."
+  },
+  {
+    q: "What is the electric charge of a photoelectron?",
+    hint: "A photoelectron is still an electron.",
+    steps: [
+      "Photoelectrons are electrons.",
+      "Electrons carry negative charge."
+    ],
+    ans: "Negative",
+    why: "Emission does not change an electron's electric charge."
+  },
+  {
+    q: "A metal releases electrons when illuminated by suitable light. What are those electrons called?",
+    hint: "Use the term for electrons emitted by the photoelectric effect.",
+    steps: [
+      "The electrons are emitted due to incident light.",
+      "Electrons emitted in this process are photoelectrons."
+    ],
+    ans: "Photoelectrons",
+    why: "The name specifically refers to electrons released during photoelectric emission."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 28. ROLE OF INCIDENT LIGHT IN PHOTOELECTRIC EMISSION
+// Skill: Explain why incident light must have suitable frequency.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Role of Incident Light in Photoelectric Emission", `
+<h3>Role of Incident Light in Photoelectric Emission</h3>
+
+Incident light supplies energy to electrons in a material.
+
+However, electrons are emitted only if the light frequency is high enough for the material.
+
+Each material has a minimum required frequency called its <b>threshold frequency</b>.
+
+- If the incident frequency is below the threshold frequency, photoelectric emission does not occur.
+- If the incident frequency is at or above the threshold frequency, emission can occur.
+
+Increasing the brightness of light does not make below-threshold-frequency light cause photoelectric emission.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Why must incident light have a sufficiently high frequency?</b>
+
+Step 1: Electrons need enough energy to escape the material.
+Step 2: The frequency determines the energy of each photon.
+Step 3: The photon energy must be sufficient for emission.
+
+Answer: The light must provide photons with enough energy for electrons to escape.
+
+<b>Example 2: A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Light of frequency 5.0 × 10¹⁴ Hz falls on it. Will photoelectric emission occur?</b>
+
+Step 1: Compare the incident frequency with the threshold frequency.
+Step 2: 5.0 × 10¹⁴ Hz is below 6.0 × 10¹⁴ Hz.
+
+Answer: No, photoelectric emission will not occur.
+
+<b>Example 3: Light below a metal's threshold frequency is made brighter. Will this alone cause photoelectric emission?</b>
+
+Step 1: Brightness changes the intensity of the light.
+Step 2: The frequency remains below the threshold.
+Step 3: The photons still lack the required energy.
+
+Answer: No. Increasing intensity alone does not cause emission if the frequency remains below threshold.
+`, [
+  {
+    q: "What role does incident light play in photoelectric emission?",
+    hint: "Think about the energy needed for electrons to escape the material.",
+    steps: [
+      "Incident light carries energy.",
+      "Electrons absorb energy from the light.",
+      "If the photon energy is sufficient, electrons can escape."
+    ],
+    ans: "It supplies energy that can release electrons from the material",
+    why: "Photoelectric emission occurs when electrons receive sufficient energy from incident light."
+  },
+  {
+    q: "A material has a threshold frequency of 7.0 × 10¹⁴ Hz. Light of frequency 4.0 × 10¹⁴ Hz falls on it. Does photoelectric emission occur?",
+    hint: "Compare the incident frequency with the threshold frequency.",
+    steps: [
+      "Threshold frequency = 7.0 × 10¹⁴ Hz.",
+      "Incident frequency = 4.0 × 10¹⁴ Hz.",
+      "The incident frequency is below the threshold."
+    ],
+    ans: "No",
+    why: "Light below the threshold frequency does not cause photoelectric emission from that material."
+  },
+  {
+    q: "Light below a metal's threshold frequency is made more intense without changing its frequency. Will photoelectric emission begin?",
+    hint: "Intensity and frequency are different properties of light.",
+    steps: [
+      "The frequency remains below the threshold.",
+      "Increasing intensity does not increase the energy of each photon.",
+      "The photons remain insufficient to cause emission."
+    ],
+    ans: "No",
+    why: "Photoelectric emission requires sufficient photon energy, which depends on frequency."
+  }
+]);
+add("physics", "photoelectric_emission", "Meaning of a Photon", `
+<h3>Meaning of a Photon</h3>
+
+A photon is a discrete packet, or quantum, of electromagnetic radiation energy.
+
+Light transfers energy through photons.
+
+Each photon carries an amount of energy determined by the frequency of the radiation.
+
+A photon has no electric charge and has zero rest mass.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: What is a photon?</b>
+
+Step 1: Light transfers energy in discrete packets.
+Step 2: Each packet is called a photon.
+
+Answer: A photon is a discrete packet of electromagnetic radiation energy.
+
+<b>Example 2: Does a photon have an electric charge?</b>
+
+Step 1: A photon is not an electron or proton.
+Step 2: A photon carries no electric charge.
+
+Answer: No. A photon is electrically neutral.
+
+<b>Example 3: What determines the energy carried by a photon?</b>
+
+Step 1: Photons carry electromagnetic radiation energy.
+Step 2: Photon energy depends on radiation frequency.
+
+Answer: The frequency of the radiation.
+`, [
+  {
+    q: "What is a photon?",
+    hint: "Think of how electromagnetic radiation transfers energy.",
+    steps: [
+      "Electromagnetic radiation transfers energy in discrete packets.",
+      "Each packet is called a photon."
+    ],
+    ans: "A discrete packet of electromagnetic radiation energy",
+    why: "A photon is the quantum of electromagnetic radiation."
+  },
+  {
+    q: "What is the electric charge of a photon?",
+    hint: "A photon is electrically neutral.",
+    steps: [
+      "A photon is not a charged particle such as an electron.",
+      "Its electric charge is zero."
+    ],
+    ans: "Zero",
+    why: "Photons carry no electric charge."
+  },
+  {
+    q: "Which property of electromagnetic radiation determines the energy of an individual photon?",
+    hint: "The relevant property appears in E = hf.",
+    steps: [
+      "Photon energy is given by E = hf.",
+      "Here, f represents frequency."
+    ],
+    ans: "Frequency",
+    why: "Photon energy is directly proportional to the frequency of the radiation."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 30. RELATIONSHIP BETWEEN PHOTON ENERGY AND FREQUENCY
+// Skill: Explain and use E = hf.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Relationship Between Photon Energy and Frequency", `
+<h3>Relationship Between Photon Energy and Frequency</h3>
+
+The energy of a photon is given by Planck's equation:
+
+<b>E = hf</b>
+
+Where:
+
+- E = photon energy in joules (J)
+- h = Planck's constant = 6.63 × 10⁻³⁴ J s
+- f = frequency in hertz (Hz)
+
+The equation shows that photon energy is directly proportional to frequency.
+
+Therefore:
+
+- Higher frequency means greater energy per photon.
+- Lower frequency means less energy per photon.
+- Doubling the frequency doubles the photon energy.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: What happens to photon energy when frequency doubles?</b>
+
+Step 1: E = hf.
+Step 2: If f doubles while h stays constant, E doubles.
+
+Answer: The photon energy doubles.
+
+<b>Example 2: Light A has twice the frequency of light B. Compare their photon energies.</b>
+
+Step 1: E = hf.
+Step 2: The energy ratio equals the frequency ratio.
+
+Answer: Each photon of light A has twice the energy of each photon of light B.
+
+<b>Example 3: Light has a frequency of 5.0 × 10¹⁴ Hz. Write the equation needed to calculate the photon energy.</b>
+
+Step 1: Identify the given frequency.
+f = 5.0 × 10¹⁴ Hz.
+
+Step 2: Use Planck's equation.
+E = hf.
+
+Step 3: Substitute h.
+E = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴) J.
+
+Answer: E = hf = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴) J.
+`, [
+  {
+    q: "State the equation for the energy of a photon.",
+    hint: "It relates energy, Planck's constant and frequency.",
+    steps: [
+      "Photon energy is proportional to frequency.",
+      "The relationship is E = hf."
+    ],
+    ans: "E = hf",
+    why: "Planck's equation relates photon energy to its frequency."
+  },
+  {
+    q: "What happens to the energy of each photon when the frequency of light is doubled?",
+    hint: "Use E = hf and keep h constant.",
+    steps: [
+      "E = hf.",
+      "Doubling f doubles hf.",
+      "Therefore, the photon energy doubles."
+    ],
+    ans: "It doubles",
+    why: "Photon energy is directly proportional to frequency."
+  },
+  {
+    q: "Light A has a frequency of 8.0 × 10¹⁴ Hz, while light B has a frequency of 4.0 × 10¹⁴ Hz. Compare the energy of one photon from each light.",
+    hint: "Compare the frequencies before calculating either energy.",
+    steps: [
+      "The frequency ratio is (8.0 × 10¹⁴)/(4.0 × 10¹⁴) = 2.",
+      "Photon energy is proportional to frequency.",
+      "Each photon of light A has twice the energy of each photon of light B."
+    ],
+    ans: "A photon of light A has twice the energy of a photon of light B",
+    why: "The photon energy ratio is equal to the frequency ratio."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 31. CALCULATING THE ENERGY OF A PHOTON
+// Skill: Calculate photon energy using E = hf.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Calculating the Energy of a Photon", `
+<h3>Calculating the Energy of a Photon</h3>
+
+Use Planck's equation:
+
+<b>E = hf</b>
+
+Planck's constant:
+
+<b>h = 6.63 × 10⁻³⁴ J s</b>
+
+The frequency must be in hertz (Hz), and the energy obtained is in joules (J).
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Calculate the energy of a photon with frequency 4.0 × 10¹⁴ Hz.</b>
+
+Step 1: E = hf.
+
+Step 2: Substitute:
+E = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴)
+
+Step 3: Multiply:
+E = 26.52 × 10⁻²⁰ J
+E = 2.652 × 10⁻¹⁹ J
+
+Answer: 2.65 × 10⁻¹⁹ J.
+
+<b>Example 2: Calculate the energy of a photon with frequency 6.0 × 10¹⁴ Hz.</b>
+
+E = hf
+E = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴)
+E = 3.978 × 10⁻¹⁹ J
+
+Answer: 3.98 × 10⁻¹⁹ J.
+
+<b>Example 3: Calculate the energy of a photon with frequency 9.0 × 10¹⁴ Hz.</b>
+
+E = hf
+E = (6.63 × 10⁻³⁴)(9.0 × 10¹⁴)
+E = 5.967 × 10⁻¹⁹ J
+
+Answer: 5.97 × 10⁻¹⁹ J.
+`, [
+  {
+    q: "Calculate the energy of a photon of frequency 3.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Use E = hf and multiply the two values.",
+    steps: [
+      "E = hf",
+      "E = (6.63 × 10⁻³⁴)(3.0 × 10¹⁴)",
+      "E = 1.989 × 10⁻¹⁹ J",
+      "E ≈ 1.99 × 10⁻¹⁹ J"
+    ],
+    ans: "1.99 × 10⁻¹⁹ J",
+    why: "Multiplying Planck's constant by frequency gives photon energy in joules."
+  },
+  {
+    q: "Calculate the energy of a photon of frequency 7.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Substitute the frequency into E = hf.",
+    steps: [
+      "E = hf",
+      "E = (6.63 × 10⁻³⁴)(7.0 × 10¹⁴)",
+      "E = 4.641 × 10⁻¹⁹ J",
+      "E ≈ 4.64 × 10⁻¹⁹ J"
+    ],
+    ans: "4.64 × 10⁻¹⁹ J",
+    why: "Photon energy is found by multiplying frequency by Planck's constant."
+  },
+  {
+    q: "A photon has a frequency of 5.5 × 10¹⁴ Hz. Calculate its energy using h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Use E = hf. Give your final answer in scientific notation.",
+    steps: [
+      "E = hf",
+      "E = (6.63 × 10⁻³⁴)(5.5 × 10¹⁴)",
+      "E = 36.465 × 10⁻²⁰ J",
+      "E = 3.6465 × 10⁻¹⁹ J",
+      "E ≈ 3.65 × 10⁻¹⁹ J"
+    ],
+    ans: "3.65 × 10⁻¹⁹ J",
+    why: "Correct multiplication and conversion to standard scientific notation give the photon energy."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 32. CALCULATING FREQUENCY FROM PHOTON ENERGY
+// Skill: Rearrange E = hf to calculate frequency.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Calculating Frequency from Photon Energy", `
+<h3>Calculating Frequency from Photon Energy</h3>
+
+Planck's equation is:
+
+<b>E = hf</b>
+
+To calculate frequency, rearrange:
+
+<b>f = E/h</b>
+
+Where:
+
+- f = frequency in hertz (Hz)
+- E = photon energy in joules (J)
+- h = 6.63 × 10⁻³⁴ J s
+
+Make sure energy is expressed in joules before using this equation.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: A photon has energy 3.315 × 10⁻¹⁹ J. Calculate its frequency.</b>
+
+Step 1:
+f = E/h
+
+Step 2:
+f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+
+Step 3:
+f = 5.0 × 10¹⁴ Hz
+
+Answer: 5.0 × 10¹⁴ Hz.
+
+<b>Example 2: A photon has energy 1.326 × 10⁻¹⁹ J. Calculate its frequency.</b>
+
+f = (1.326 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+
+f = 2.0 × 10¹⁴ Hz
+
+Answer: 2.0 × 10¹⁴ Hz.
+
+<b>Example 3: A photon has energy 5.304 × 10⁻¹⁹ J. Calculate its frequency.</b>
+
+f = (5.304 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+
+f = 8.0 × 10¹⁴ Hz
+
+Answer: 8.0 × 10¹⁴ Hz.
+`, [
+  {
+    q: "A photon has energy 6.63 × 10⁻¹⁹ J. Calculate its frequency. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Rearrange E = hf to make f the subject.",
+    steps: [
+      "f = E/h",
+      "f = (6.63 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f = 1.0 × 10¹⁵ Hz"
+    ],
+    ans: "1.0 × 10¹⁵ Hz",
+    why: "Dividing photon energy by Planck's constant gives frequency."
+  },
+  {
+    q: "A photon has energy 2.652 × 10⁻¹⁹ J. Calculate its frequency using h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Use f = E/h.",
+    steps: [
+      "f = E/h",
+      "f = (2.652 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f = 4.0 × 10¹⁴ Hz"
+    ],
+    ans: "4.0 × 10¹⁴ Hz",
+    why: "The photon frequency is its energy divided by Planck's constant."
+  },
+  {
+    q: "A photon has energy 4.641 × 10⁻¹⁹ J. Calculate its frequency using h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Divide the energy by Planck's constant and keep the power of ten.",
+    steps: [
+      "f = E/h",
+      "f = (4.641 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f = 7.0 × 10¹⁴ Hz"
+    ],
+    ans: "7.0 × 10¹⁴ Hz",
+    why: "Rearranging Planck's equation allows frequency to be found from photon energy."
+  }
+]);
+add("physics", "photoelectric_emission", "Meaning of Work Function", `
+<h3>Meaning of Work Function</h3>
+
+The work function is the minimum energy required to remove an electron from the surface of a material.
+
+It is usually represented by the symbol φ (phi).
+
+The work function depends on the material's surface.
+
+Its SI unit is the joule (J). It may also be expressed in electron-volts (eV).
+
+For photoelectric emission to occur, the energy supplied by an individual photon must be at least equal to the work function.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Define work function.</b>
+
+Step 1: An electron is held within a material.
+Step 2: Energy must be supplied to release it from the surface.
+
+Answer: The work function is the minimum energy required to remove an electron from a material's surface.
+
+<b>Example 2: What symbol is commonly used for work function?</b>
+
+Step 1: Identify the standard symbol used in photoelectric equations.
+Step 2: Work function is represented by φ.
+
+Answer: φ (phi).
+
+<b>Example 3: A metal has a work function of 2.0 eV. What does this value represent?</b>
+
+Step 1: Work function is the minimum energy required for electron emission.
+Step 2: The value is 2.0 eV.
+
+Answer: An electron requires at least 2.0 eV of energy to escape the metal's surface.
+`, [
+  {
+    q: "What is the work function of a material?",
+    hint: "Think about the minimum energy needed for an electron to escape.",
+    steps: [
+      "An electron is held within the material.",
+      "Energy must be supplied for it to escape the surface.",
+      "The minimum required energy is the work function."
+    ],
+    ans: "The minimum energy required to remove an electron from a material's surface",
+    why: "The work function describes the minimum energy needed for electron emission."
+  },
+  {
+    q: "What symbol is commonly used to represent work function?",
+    hint: "It is the Greek letter phi.",
+    steps: [
+      "Work function is represented by a Greek letter.",
+      "The symbol is φ."
+    ],
+    ans: "φ",
+    why: "The symbol φ is used for work function in photoelectric equations."
+  },
+  {
+    q: "A metal has a work function of 3.0 eV. What does this value mean?",
+    hint: "Interpret the value as a minimum energy.",
+    steps: [
+      "The work function is the minimum energy needed for electron emission.",
+      "For this metal, that energy is 3.0 eV."
+    ],
+    ans: "At least 3.0 eV is required to remove an electron from the metal's surface",
+    why: "The work function specifies the minimum energy required for emission."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 34. PHOTON ENERGY AND THE WORK FUNCTION
+// Skill: Determine whether a photon has enough energy for emission.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Photon Energy and the Work Function", `
+<h3>Photon Energy and the Work Function</h3>
+
+A photon can release an electron only if its energy is at least equal to the material's work function.
+
+The condition for photoelectric emission is:
+
+<b>E ≥ φ</b>
+
+Where:
+- E = energy of an incident photon
+- φ = work function of the material
+
+Since E = hf, the condition can also be written as:
+
+<b>hf ≥ φ</b>
+
+Three cases are possible:
+
+1. If E < φ, photoelectric emission does not occur.
+2. If E = φ, emission can occur, with no excess kinetic energy in the ideal case.
+3. If E > φ, emission can occur and the emitted electron can have kinetic energy.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: A photon has energy 2.5 eV. A metal has a work function of 2.0 eV. Can emission occur?</b>
+
+Step 1: Compare the values.
+2.5 eV > 2.0 eV.
+
+Step 2: The photon energy exceeds the work function.
+
+Answer: Yes, photoelectric emission can occur.
+
+<b>Example 2: A photon has energy 1.5 eV. A metal has a work function of 2.0 eV. Can emission occur?</b>
+
+Step 1: Compare the values.
+1.5 eV < 2.0 eV.
+
+Step 2: The photon does not have enough energy.
+
+Answer: No, photoelectric emission does not occur.
+
+<b>Example 3: A photon has energy 3.0 eV and the metal's work function is 3.0 eV. What is the maximum kinetic energy of the emitted electron?</b>
+
+Step 1: Use KEmax = E − φ.
+Step 2: KEmax = 3.0 − 3.0 eV.
+
+Answer: 0 eV in the ideal limiting case.
+`, [
+  {
+    q: "A photon has energy 4.0 eV and a metal has a work function of 2.5 eV. Can photoelectric emission occur?",
+    hint: "Compare photon energy with the work function.",
+    steps: [
+      "Photon energy = 4.0 eV.",
+      "Work function = 2.5 eV.",
+      "Since 4.0 eV is greater than 2.5 eV, emission can occur."
+    ],
+    ans: "Yes",
+    why: "A photon must have energy at least equal to the work function."
+  },
+  {
+    q: "A photon has energy 1.8 eV and a material has a work function of 2.2 eV. Will the photon release an electron?",
+    hint: "Check whether photon energy reaches the minimum required energy.",
+    steps: [
+      "Photon energy = 1.8 eV.",
+      "Work function = 2.2 eV.",
+      "Since 1.8 eV is less than 2.2 eV, emission cannot occur."
+    ],
+    ans: "No",
+    why: "The photon energy is below the work function."
+  },
+  {
+    q: "A photon has energy 3.5 eV and the metal's work function is 3.5 eV. Calculate the maximum kinetic energy of the emitted electron.",
+    hint: "Use KEmax = E − φ.",
+    steps: [
+      "KEmax = E − φ",
+      "KEmax = 3.5 − 3.5",
+      "KEmax = 0 eV"
+    ],
+    ans: "0 eV",
+    why: "At the threshold energy, all the photon energy is used to overcome the work function."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 35. WORK FUNCTION AND THRESHOLD FREQUENCY
+// Skill: Calculate work function from threshold frequency.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Work Function from Threshold Frequency", `
+<h3>Work Function from Threshold Frequency</h3>
+
+The threshold frequency, f₀, is the minimum frequency of incident light that can cause photoelectric emission from a material.
+
+At the threshold frequency, the photon has exactly the minimum energy needed to release an electron.
+
+Therefore:
+
+<b>φ = hf₀</b>
+
+Where:
+- φ = work function in joules (J)
+- h = Planck's constant = 6.63 × 10⁻³⁴ J s
+- f₀ = threshold frequency in hertz (Hz)
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Calculate its work function in joules.</b>
+
+Step 1: φ = hf₀.
+
+Step 2: Substitute:
+φ = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴).
+
+Step 3: Calculate:
+φ = 3.315 × 10⁻¹⁹ J.
+
+Answer: 3.32 × 10⁻¹⁹ J.
+
+<b>Example 2: A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. Calculate its work function.</b>
+
+φ = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴)
+φ = 2.652 × 10⁻¹⁹ J.
+
+Answer: 2.65 × 10⁻¹⁹ J.
+
+<b>Example 3: A material has a work function of 4.0 × 10⁻¹⁹ J. Calculate its threshold frequency.</b>
+
+Step 1: Rearrange φ = hf₀.
+f₀ = φ/h.
+
+Step 2: Substitute:
+f₀ = (4.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).
+
+Step 3: Calculate:
+f₀ ≈ 6.03 × 10¹⁴ Hz.
+
+Answer: 6.03 × 10¹⁴ Hz.
+`, [
+  {
+    q: "A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Calculate its work function in joules. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Use φ = hf₀.",
+    steps: [
+      "φ = hf₀",
+      "φ = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴)",
+      "φ = 3.978 × 10⁻¹⁹ J",
+      "φ ≈ 3.98 × 10⁻¹⁹ J"
+    ],
+    ans: "3.98 × 10⁻¹⁹ J",
+    why: "At threshold frequency, photon energy equals the work function."
+  },
+  {
+    q: "A metal has a work function of 3.315 × 10⁻¹⁹ J. Calculate its threshold frequency. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Rearrange φ = hf₀ to make f₀ the subject.",
+    steps: [
+      "f₀ = φ/h",
+      "f₀ = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f₀ = 5.0 × 10¹⁴ Hz"
+    ],
+    ans: "5.0 × 10¹⁴ Hz",
+    why: "Dividing work function by Planck's constant gives threshold frequency."
+  },
+  {
+    q: "A metal has a work function of 2.0 × 10⁻¹⁹ J. Calculate its threshold frequency. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Use f₀ = φ/h.",
+    steps: [
+      "f₀ = φ/h",
+      "f₀ = (2.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f₀ ≈ 3.02 × 10¹⁴ Hz"
+    ],
+    ans: "3.02 × 10¹⁴ Hz",
+    why: "The threshold frequency is the work function divided by Planck's constant."
+  }
+]);
+add("physics", "photoelectric_emission", "Meaning of Threshold Frequency", `
+<h3>Meaning of Threshold Frequency</h3>
+
+The threshold frequency is the minimum frequency of incident radiation required to cause photoelectric emission from a particular material.
+
+It is represented by:
+
+<b>f₀</b>
+
+The threshold frequency depends on the material because different materials require different minimum energies to release electrons.
+
+At the threshold frequency, the energy of each photon is exactly equal to the work function:
+
+<b>hf₀ = φ</b>
+
+Where:
+- h = Planck's constant
+- f₀ = threshold frequency
+- φ = work function
+
+At this frequency, the emitted electron has zero maximum kinetic energy in the ideal model.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Define threshold frequency.</b>
+
+Step 1: Electrons require a minimum energy to escape a material.
+Step 2: Photon energy depends on frequency.
+Step 3: The minimum frequency that supplies sufficient photon energy is the threshold frequency.
+
+Answer: The minimum frequency of incident radiation required to cause photoelectric emission from a material.
+
+<b>Example 2: A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. What does this value mean?</b>
+
+Step 1: Identify the minimum frequency.
+Step 2: The threshold frequency is 5.0 × 10¹⁴ Hz.
+
+Answer: Light must have a frequency of at least 5.0 × 10¹⁴ Hz to cause photoelectric emission from the metal.
+
+<b>Example 3: Why can two different metals have different threshold frequencies?</b>
+
+Step 1: Different materials have different work functions.
+Step 2: At threshold, φ = hf₀.
+Step 3: Different work functions therefore correspond to different threshold frequencies.
+
+Answer: Their work functions differ, so the minimum photon energies required for emission differ.
+
+<h3>Key relationship</h3>
+
+A greater work function corresponds to a greater threshold frequency because φ = hf₀.
+`, [
+  {
+    q: "What is the threshold frequency of a material?",
+    hint: "It is the minimum frequency required for photoelectric emission.",
+    steps: [
+      "Electrons require sufficient energy to escape a material.",
+      "Photon energy depends on frequency.",
+      "The minimum frequency that permits emission is the threshold frequency."
+    ],
+    ans: "The minimum frequency of incident radiation required to cause photoelectric emission",
+    why: "Threshold frequency identifies the lowest incident frequency that can release electrons from a particular material."
+  },
+  {
+    q: "A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. What does this value tell you?",
+    hint: "Interpret threshold frequency as a minimum.",
+    steps: [
+      "Threshold frequency = 4.0 × 10¹⁴ Hz.",
+      "Incident light must reach or exceed this frequency for emission."
+    ],
+    ans: "Light must have a frequency of at least 4.0 × 10¹⁴ Hz to cause photoelectric emission",
+    why: "Light below the threshold frequency cannot supply enough energy per photon for emission."
+  },
+  {
+    q: "Metal A has a greater work function than metal B. Which metal has the greater threshold frequency?",
+    hint: "Use φ = hf₀.",
+    steps: [
+      "φ = hf₀.",
+      "Planck's constant is the same for both metals.",
+      "A greater work function requires a greater threshold frequency."
+    ],
+    ans: "Metal A",
+    why: "Threshold frequency is directly proportional to work function."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 37. PHOTOELECTRIC EMISSION BELOW THRESHOLD FREQUENCY
+// Skill: Predict what happens when incident frequency is below threshold.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Photoelectric Emission Below Threshold Frequency", `
+<h3>Photoelectric Emission Below Threshold Frequency</h3>
+
+When incident light has a frequency below a material's threshold frequency, photoelectric emission does not occur.
+
+The energy of each photon is:
+
+<b>E = hf</b>
+
+Below the threshold frequency:
+
+<b>hf < φ</b>
+
+Where:
+- h = Planck's constant
+- f = incident light frequency
+- φ = work function
+
+Each photon has less energy than the minimum required to release an electron.
+
+Increasing the intensity of the same below-threshold-frequency light does not solve this problem. It increases the number of photons arriving per second, but it does not increase the energy of each photon.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Light of frequency 4.0 × 10¹⁴ Hz shines on it. Will electrons be emitted?</b>
+
+Step 1: Threshold frequency = 6.0 × 10¹⁴ Hz.
+Step 2: Incident frequency = 4.0 × 10¹⁴ Hz.
+Step 3: The incident frequency is below the threshold.
+
+Answer: No photoelectric emission occurs.
+
+<b>Example 2: The intensity of the light in Example 1 is increased substantially, without changing its frequency. Will emission begin?</b>
+
+Step 1: The frequency remains 4.0 × 10¹⁴ Hz.
+Step 2: It remains below the threshold of 6.0 × 10¹⁴ Hz.
+Step 3: Each photon still has insufficient energy.
+
+Answer: No. Increasing intensity alone will not cause emission.
+
+<b>Example 3: A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Which light can cause emission: 3.0 × 10¹⁴ Hz or 7.0 × 10¹⁴ Hz?</b>
+
+Step 1: Compare each frequency with the threshold.
+Step 2: 3.0 × 10¹⁴ Hz is below the threshold.
+Step 3: 7.0 × 10¹⁴ Hz is above the threshold.
+
+Answer: Light of frequency 7.0 × 10¹⁴ Hz can cause photoelectric emission.
+
+<h3>Important exam point</h3>
+
+For a given material, increasing intensity cannot cause photoelectric emission if the frequency remains below the threshold frequency.
+`, [
+  {
+    q: "A metal has a threshold frequency of 7.0 × 10¹⁴ Hz. Light of frequency 5.0 × 10¹⁴ Hz falls on it. Will photoelectric emission occur?",
+    hint: "Compare the incident frequency with the threshold frequency.",
+    steps: [
+      "Threshold frequency = 7.0 × 10¹⁴ Hz.",
+      "Incident frequency = 5.0 × 10¹⁴ Hz.",
+      "The incident frequency is below the threshold."
+    ],
+    ans: "No",
+    why: "The photons have insufficient energy to release electrons from the metal."
+  },
+  {
+    q: "Light below a metal's threshold frequency is made more intense without changing its frequency. Will photoelectric emission begin?",
+    hint: "Ask whether intensity changes the energy of an individual photon.",
+    steps: [
+      "Photon energy is E = hf.",
+      "The frequency has not changed.",
+      "Each photon still has insufficient energy to overcome the work function."
+    ],
+    ans: "No",
+    why: "Increasing intensity increases photon arrival rate, not the energy of each photon."
+  },
+  {
+    q: "A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Which of these frequencies can cause photoelectric emission: 3.0 × 10¹⁴ Hz, 5.0 × 10¹⁴ Hz, or 8.0 × 10¹⁴ Hz?",
+    hint: "Emission can occur at or above the threshold frequency.",
+    steps: [
+      "3.0 × 10¹⁴ Hz is below threshold.",
+      "5.0 × 10¹⁴ Hz equals threshold.",
+      "8.0 × 10¹⁴ Hz is above threshold."
+    ],
+    ans: "5.0 × 10¹⁴ Hz and 8.0 × 10¹⁴ Hz",
+    why: "Photoelectric emission can occur when the incident frequency equals or exceeds the threshold frequency."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 38. FREQUENCY AND INTENSITY OF INCIDENT LIGHT
+// Skill: Distinguish the effects of frequency and intensity.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Frequency and Intensity of Incident Light", `
+<h3>Frequency and Intensity of Incident Light</h3>
+
+Frequency and intensity describe different properties of light.
+
+<b>Frequency</b> determines the energy carried by each photon:
+
+<b>E = hf</b>
+
+<b>Intensity</b> describes the rate at which energy is incident on a unit area. For light of a given frequency, increasing intensity generally means more photons arrive per second per unit area.
+
+In the photoelectric effect, these properties have different effects.
+
+- Increasing frequency increases the energy of each photon.
+- Increasing intensity at a fixed frequency increases the photon arrival rate.
+- If frequency is below threshold, increasing intensity alone does not cause emission.
+- If frequency is above threshold, increasing intensity generally increases the photoelectric current, provided other conditions remain unchanged.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: Light above threshold frequency is made more intense. What happens to the energy of each photon?</b>
+
+Step 1: Photon energy is E = hf.
+Step 2: The frequency remains constant.
+Step 3: The energy of each photon therefore remains constant.
+
+Answer: The energy of each photon does not change.
+
+<b>Example 2: Light above threshold frequency is made more intense. What generally happens to the photoelectric current?</b>
+
+Step 1: The photon energy remains sufficient for emission.
+Step 2: Greater intensity means more photons arrive per second per unit area.
+Step 3: More photoelectrons can be emitted per second.
+
+Answer: The photoelectric current generally increases.
+
+<b>Example 3: Two beams have the same intensity, but beam A has a higher frequency than beam B. Compare the energy of their individual photons.</b>
+
+Step 1: Photon energy is E = hf.
+Step 2: Beam A has the higher frequency.
+Step 3: Its individual photons have greater energy.
+
+Answer: Photons in beam A have greater energy.
+
+<h3>Do not confuse these effects</h3>
+
+Frequency controls energy per photon. Intensity relates to the amount of radiation arriving per unit area per second. In the usual school-level photoelectric model, frequency determines whether the threshold condition is met.
+`, [
+  {
+    q: "Light above the threshold frequency is made more intense while its frequency stays constant. What happens to the energy of each photon?",
+    hint: "Use E = hf.",
+    steps: [
+      "E = hf.",
+      "The frequency f remains constant.",
+      "Planck's constant h also remains constant."
+    ],
+    ans: "It remains unchanged",
+    why: "Photon energy depends on frequency, not intensity."
+  },
+  {
+    q: "For light above the threshold frequency, what generally happens to photoelectric current when the light intensity is increased?",
+    hint: "Consider how many photons arrive each second.",
+    steps: [
+      "Greater intensity means more photons arrive per unit area per second.",
+      "The photon energy remains sufficient for emission.",
+      "More electrons can be emitted per second."
+    ],
+    ans: "The photoelectric current generally increases",
+    why: "Under otherwise unchanged conditions, a greater photon arrival rate produces a greater rate of electron emission."
+  },
+  {
+    q: "Two light beams have the same intensity, but beam A has twice the frequency of beam B. How do their individual photon energies compare?",
+    hint: "Compare their frequencies using E = hf.",
+    steps: [
+      "E = hf.",
+      "The frequency of A is twice that of B.",
+      "The energy of each photon in A is twice that of each photon in B."
+    ],
+    ans: "Each photon in beam A has twice the energy of each photon in beam B",
+    why: "Photon energy is directly proportional to frequency, regardless of the beams having equal intensity."
+  }
+]);
+add("physics", "photoelectric_emission", "Einstein's Photoelectric Equation", `
+<h3>Einstein's Photoelectric Equation</h3>
+
+When a photon strikes a suitable material, it can transfer its energy to an electron.
+
+Part of this energy is used to release the electron from the material. Any remaining energy becomes the kinetic energy of the emitted electron.
+
+The energy balance is:
+
+<b>hf = φ + KEmax</b>
+
+Rearranging:
+
+<b>KEmax = hf − φ</b>
+
+Where:
+- h = Planck's constant = 6.63 × 10⁻³⁴ J s
+- f = frequency of incident light in Hz
+- φ = work function of the material in J
+- KEmax = maximum kinetic energy of emitted electrons in J
+
+The equation applies when photoelectric emission occurs.
+
+If the photon energy is exactly equal to the work function, the maximum kinetic energy is zero in the ideal model.
+
+If the photon energy exceeds the work function, the excess energy becomes kinetic energy.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: State Einstein's photoelectric equation.</b>
+
+Step 1: The incident photon supplies energy hf.
+Step 2: Energy is used to overcome the work function φ.
+Step 3: The remaining energy becomes maximum kinetic energy.
+
+Answer: hf = φ + KEmax.
+
+<b>Example 2: A photon has energy 5.0 eV and the work function is 2.0 eV. Explain how the energy is distributed.</b>
+
+Step 1: Energy supplied = 5.0 eV.
+Step 2: Energy used to release the electron = 2.0 eV.
+Step 3: Remaining energy = 5.0 − 2.0 = 3.0 eV.
+
+Answer: 2.0 eV overcomes the work function, and the maximum kinetic energy is 3.0 eV.
+
+<b>Example 3: A photon has energy equal to the work function. What is the maximum kinetic energy?</b>
+
+Step 1: KEmax = E − φ.
+Step 2: E = φ.
+Step 3: KEmax = φ − φ = 0.
+
+Answer: 0 J in the ideal limiting case.
+
+<h3>Important</h3>
+
+Use consistent units. If photon energy and work function are in eV, kinetic energy will be in eV. If they are in joules, kinetic energy will be in joules.
+`, [
+  {
+    q: "State Einstein's photoelectric equation.",
+    hint: "Equate the energy supplied by a photon to the energy used for emission and the remaining kinetic energy.",
+    steps: [
+      "Photon energy = hf.",
+      "Energy is used to overcome the work function φ.",
+      "The remaining energy is KEmax.",
+      "Therefore, hf = φ + KEmax."
+    ],
+    ans: "hf = φ + KEmax",
+    why: "The equation expresses conservation of energy during photoelectric emission."
+  },
+  {
+    q: "A photon has energy 6.0 eV and the material has a work function of 2.5 eV. How much energy remains as the maximum kinetic energy of the emitted electron?",
+    hint: "Subtract the work function from the photon energy.",
+    steps: [
+      "KEmax = E − φ",
+      "KEmax = 6.0 − 2.5",
+      "KEmax = 3.5 eV"
+    ],
+    ans: "3.5 eV",
+    why: "The work function accounts for the minimum energy needed to release the electron; the excess becomes kinetic energy."
+  },
+  {
+    q: "At the threshold frequency, the photon energy equals the work function. What is the maximum kinetic energy of the emitted electron?",
+    hint: "Use KEmax = hf − φ.",
+    steps: [
+      "KEmax = hf − φ",
+      "At threshold, hf = φ.",
+      "KEmax = φ − φ = 0."
+    ],
+    ans: "0 J",
+    why: "At threshold, no energy remains for kinetic energy in the ideal model."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 40. CALCULATING MAXIMUM KINETIC ENERGY
+// Skill: Calculate maximum kinetic energy using photon energy and work function.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Calculating Maximum Kinetic Energy", `
+<h3>Calculating Maximum Kinetic Energy</h3>
+
+The maximum kinetic energy of an emitted photoelectron is calculated using:
+
+<b>KEmax = hf − φ</b>
+
+Alternatively, if photon energy E is already known:
+
+<b>KEmax = E − φ</b>
+
+Where:
+- KEmax = maximum kinetic energy of the emitted electron
+- E = energy of one incident photon
+- φ = work function
+
+Subtract the work function from the photon energy.
+
+The photon energy must be at least equal to the work function for emission to occur.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: A photon has energy 4.5 eV and the work function is 2.0 eV. Calculate the maximum kinetic energy.</b>
+
+Step 1:
+KEmax = E − φ
+
+Step 2:
+KEmax = 4.5 − 2.0
+
+Step 3:
+KEmax = 2.5 eV
+
+Answer: 2.5 eV.
+
+<b>Example 2: A photon has energy 8.0 × 10⁻¹⁹ J and the work function is 3.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy.</b>
+
+Step 1:
+KEmax = E − φ
+
+Step 2:
+KEmax = 8.0 × 10⁻¹⁹ − 3.0 × 10⁻¹⁹
+
+Step 3:
+KEmax = 5.0 × 10⁻¹⁹ J
+
+Answer: 5.0 × 10⁻¹⁹ J.
+
+<b>Example 3: Light of frequency 8.0 × 10¹⁴ Hz falls on a material with a work function of 3.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy. Take h = 6.63 × 10⁻³⁴ J s.</b>
+
+Step 1:
+KEmax = hf − φ
+
+Step 2:
+KEmax = (6.63 × 10⁻³⁴)(8.0 × 10¹⁴) − 3.0 × 10⁻¹⁹
+
+Step 3:
+KEmax = 5.304 × 10⁻¹⁹ − 3.0 × 10⁻¹⁹
+
+Step 4:
+KEmax = 2.304 × 10⁻¹⁹ J
+
+Answer: 2.30 × 10⁻¹⁹ J.
+
+<h3>Calculation check</h3>
+
+If your calculated kinetic energy is negative, the photon energy is below the work function. In that case, photoelectric emission does not occur; do not report a negative kinetic energy for an emitted electron.
+`, [
+  {
+    q: "A photon has energy 5.5 eV and the work function is 2.5 eV. Calculate the maximum kinetic energy of the emitted electron.",
+    hint: "Use KEmax = E − φ.",
+    steps: [
+      "KEmax = E − φ",
+      "KEmax = 5.5 − 2.5",
+      "KEmax = 3.0 eV"
+    ],
+    ans: "3.0 eV",
+    why: "The maximum kinetic energy is the photon energy remaining after overcoming the work function."
+  },
+  {
+    q: "A photon has energy 7.2 × 10⁻¹⁹ J and a material has a work function of 2.8 × 10⁻¹⁹ J. Calculate the maximum kinetic energy.",
+    hint: "Subtract the work function from the photon energy, keeping the powers of ten consistent.",
+    steps: [
+      "KEmax = E − φ",
+      "KEmax = 7.2 × 10⁻¹⁹ − 2.8 × 10⁻¹⁹",
+      "KEmax = 4.4 × 10⁻¹⁹ J"
+    ],
+    ans: "4.4 × 10⁻¹⁹ J",
+    why: "Subtracting the work function from photon energy gives the maximum kinetic energy."
+  },
+  {
+    q: "Light has a frequency of 9.0 × 10¹⁴ Hz and falls on a metal with a work function of 4.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "First calculate photon energy using E = hf, then subtract the work function.",
+    steps: [
+      "E = hf",
+      "E = (6.63 × 10⁻³⁴)(9.0 × 10¹⁴)",
+      "E = 5.967 × 10⁻¹⁹ J",
+      "KEmax = E − φ",
+      "KEmax = 5.967 × 10⁻¹⁹ − 4.0 × 10⁻¹⁹",
+      "KEmax = 1.967 × 10⁻¹⁹ J",
+      "KEmax ≈ 1.97 × 10⁻¹⁹ J"
+    ],
+    ans: "1.97 × 10⁻¹⁹ J",
+    why: "Photon energy is calculated first, and the work function is then subtracted to obtain the maximum kinetic energy."
+  }
+]);
+
+
+// ------------------------------------------------------------
+// 41. CALCULATING PHOTON FREQUENCY FROM MAXIMUM KINETIC ENERGY
+// Skill: Calculate incident frequency from kinetic energy and work function.
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Photon Frequency from Maximum Kinetic Energy", `
+<h3>Photon Frequency from Maximum Kinetic Energy</h3>
+
+Einstein's photoelectric equation is:
+
+<b>hf = φ + KEmax</b>
+
+To calculate the incident frequency, rearrange:
+
+<b>f = (φ + KEmax)/h</b>
+
+Where:
+- f = incident frequency in Hz
+- φ = work function in J
+- KEmax = maximum kinetic energy in J
+- h = Planck's constant = 6.63 × 10⁻³⁴ J s
+
+Before substituting, make sure the work function and kinetic energy use the same energy unit.
+
+If the values are given in eV, convert their sum to joules before dividing by h.
+
+<h3>Worked Examples</h3>
+
+<b>Example 1: A metal has a work function of 2.0 × 10⁻¹⁹ J. The emitted electrons have maximum kinetic energy 1.315 × 10⁻¹⁹ J. Calculate the incident frequency.</b>
+
+Step 1:
+f = (φ + KEmax)/h
+
+Step 2:
+f = [(2.0 × 10⁻¹⁹) + (1.315 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)
+
+Step 3:
+f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+
+Step 4:
+f = 5.0 × 10¹⁴ Hz
+
+Answer: 5.0 × 10¹⁴ Hz.
+
+<b>Example 2: A material has a work function of 3.0 × 10⁻¹⁹ J and the maximum kinetic energy is 2.304 × 10⁻¹⁹ J. Calculate the incident frequency.</b>
+
+f = (φ + KEmax)/h
+
+f = [(3.0 × 10⁻¹⁹) + (2.304 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)
+
+f = (5.304 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+
+f = 8.0 × 10¹⁴ Hz
+
+Answer: 8.0 × 10¹⁴ Hz.
+
+<b>Example 3: A metal has a work function of 2.5 eV and the maximum kinetic energy of emitted electrons is 1.5 eV. Calculate the incident frequency. Take 1 eV = 1.6 × 10⁻¹⁹ J and h = 6.63 × 10⁻³⁴ J s.</b>
+
+Step 1: Add the energies.
+E = 2.5 + 1.5 = 4.0 eV.
+
+Step 2: Convert to joules.
+E = 4.0 × 1.6 × 10⁻¹⁹
+E = 6.4 × 10⁻¹⁹ J.
+
+Step 3: Calculate frequency.
+f = E/h
+f = (6.4 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+f ≈ 9.65 × 10¹⁴ Hz.
+
+Answer: 9.65 × 10¹⁴ Hz.
+`, [
+  {
+    q: "A metal has a work function of 2.0 × 10⁻¹⁹ J. Its emitted electrons have maximum kinetic energy 1.315 × 10⁻¹⁹ J. Calculate the incident frequency. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Use f = (φ + KEmax)/h.",
+    steps: [
+      "f = (φ + KEmax)/h",
+      "f = [(2.0 × 10⁻¹⁹) + (1.315 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)",
+      "f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f = 5.0 × 10¹⁴ Hz"
+    ],
+    ans: "5.0 × 10¹⁴ Hz",
+    why: "The photon energy is the sum of the work function and the maximum kinetic energy."
+  },
+  {
+    q: "A metal has a work function of 3.0 × 10⁻¹⁹ J. The maximum kinetic energy of its photoelectrons is 1.967 × 10⁻¹⁹ J. Calculate the incident frequency. Take h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Add the work function and kinetic energy before dividing by Planck's constant.",
+    steps: [
+      "f = (φ + KEmax)/h",
+      "f = [(3.0 × 10⁻¹⁹) + (1.967 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)",
+      "f = (4.967 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f ≈ 7.49 × 10¹⁴ Hz"
+    ],
+    ans: "7.49 × 10¹⁴ Hz",
+    why: "Adding the work function and maximum kinetic energy gives the energy of the incident photon."
+  },
+  {
+    q: "A material has a work function of 2.5 eV and its photoelectrons have maximum kinetic energy 1.5 eV. Calculate the incident frequency. Take 1 eV = 1.6 × 10⁻¹⁹ J and h = 6.63 × 10⁻³⁴ J s.",
+    hint: "Add the energies in eV, convert the total to joules, then use f = E/h.",
+    steps: [
+      "Photon energy = φ + KEmax = 2.5 + 1.5 = 4.0 eV",
+      "Photon energy = 4.0 × 1.6 × 10⁻¹⁹ = 6.4 × 10⁻¹⁹ J",
+      "f = E/h",
+      "f = (6.4 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
+      "f ≈ 9.65 × 10¹⁴ Hz"
+    ],
+    ans: "9.65 × 10¹⁴ Hz",
+    why: "The incident photon energy equals the work function plus the maximum kinetic energy."
+  }
+]);
+add("physics", "photoelectric_emission", "Meaning of Stopping Potential", {
+  notes: `
+Stopping potential is the minimum reverse potential difference applied across a photoelectric cell that prevents even the fastest emitted photoelectrons from reaching the collector.
+
+When light of sufficient frequency strikes a photosensitive metal, electrons are emitted with different kinetic energies.
+
+A reverse potential difference opposes the motion of these electrons.
+
+As the reverse potential increases, fewer emitted electrons reach the collector. At the stopping potential, even the fastest photoelectrons are prevented from reaching it.
+
+The stopping potential is represented by Vs and is measured in volts (V).
+
+Important:
+- Stopping potential is a reverse potential difference.
+- It opposes the motion of emitted photoelectrons.
+- It depends on the maximum kinetic energy of the emitted electrons.
+- It does not mean that photoelectrons stop being emitted from the metal.
+
+WORKED EXAMPLE 1
+
+Question:
+What is stopping potential in a photoelectric cell?
+
+Solution:
+Stopping potential is the minimum reverse potential difference needed to stop the fastest photoelectrons from reaching the collector.
+
+WORKED EXAMPLE 2
+
+Question:
+What happens to the photocurrent when the reverse potential is increased until it reaches the stopping potential?
+
+Solution:
+1. The reverse potential opposes the emitted electrons.
+2. Increasing it prevents more electrons from reaching the collector.
+3. At the stopping potential, no photoelectrons reach the collector.
+4. The photocurrent becomes zero.
+
+WORKED EXAMPLE 3
+
+Question:
+Does applying the stopping potential mean that the metal stops emitting photoelectrons?
+
+Solution:
+No.
+
+1. Incident light can still eject electrons if its frequency is sufficient.
+2. The reverse potential prevents those electrons from reaching the collector.
+3. Therefore, the photocurrent becomes zero even though emission may continue.
+`,
+  questions: [
+    {
+      q: "What is stopping potential in a photoelectric cell?",
+      hint: "Think about the reverse potential needed to prevent the fastest electrons from reaching the collector.",
+      steps: [
+        "A reverse potential opposes the motion of emitted photoelectrons.",
+        "The stopping potential is the minimum reverse potential that stops even the fastest photoelectrons from reaching the collector."
+      ],
+      ans: "The minimum reverse potential difference that stops the fastest photoelectrons from reaching the collector.",
+      why: "Stopping potential prevents photoelectrons from reaching the collector; it does not necessarily stop their emission."
+    },
+    {
+      q: "What happens to the photocurrent when the stopping potential is reached?",
+      hint: "Consider whether any emitted electrons can still reach the collector.",
+      steps: [
+        "The reverse potential opposes the motion of the photoelectrons.",
+        "At the stopping potential, no photoelectrons reach the collector.",
+        "No photoelectrons reach the collector to produce photocurrent."
+      ],
+      ans: "The photocurrent becomes zero.",
+      why: "The stopping potential prevents emitted photoelectrons from reaching the collector."
+    },
+    {
+      q: "A photoelectric cell is producing photoelectrons. A reverse potential is applied until the photocurrent becomes zero. What is this potential called?",
+      hint: "It is the potential that stops even the fastest photoelectrons from reaching the collector.",
+      steps: [
+        "Identify the reverse potential applied to the cell.",
+        "The photocurrent becomes zero when the fastest photoelectrons can no longer reach the collector.",
+        "This limiting reverse potential is the stopping potential."
+      ],
+      ans: "Stopping potential.",
+      why: "Stopping potential is defined by the point at which the photocurrent becomes zero."
+    }
+  ]
+});
+
+add("physics", "photoelectric_emission", "Stopping Potential and Maximum Kinetic Energy", {
+  notes: `
+The stopping potential is directly related to the maximum kinetic energy of emitted photoelectrons.
+
+The electric field does work against a photoelectron as it moves towards the collector. At the stopping potential, the electric work needed to stop the fastest photoelectrons equals their initial maximum kinetic energy.
+
+The relationship is:
+
+eVs = KEmax
+
+Where:
+e = magnitude of the charge of an electron = 1.6 × 10^-19 C
+Vs = stopping potential in volts
+KEmax = maximum kinetic energy in joules
+
+Rearranging:
+
+Vs = KEmax / e
+
+This means that a greater maximum kinetic energy requires a greater stopping potential.
+
+IMPORTANT UNIT RULE
+
+If KEmax is given in joules, divide by the electron charge in coulombs to obtain stopping potential in volts.
+
+If KEmax is given in electron-volts (eV), its numerical value equals the stopping potential in volts.
+
+For example:
+KEmax = 2.5 eV
+Therefore, Vs = 2.5 V
+
+WORKED EXAMPLE 1
+
+Question:
+The maximum kinetic energy of photoelectrons is 3.0 eV. Find the stopping potential.
+
+Solution:
+For kinetic energy expressed in eV, the numerical value equals the stopping potential in volts.
+
+Vs = 3.0 V
+
+Answer: 3.0 V
+
+WORKED EXAMPLE 2
+
+Question:
+The maximum kinetic energy of photoelectrons is 4.8 × 10^-19 J. Calculate the stopping potential.
+
+Solution:
+Given:
+KEmax = 4.8 × 10^-19 J
+e = 1.6 × 10^-19 C
+
+Formula:
+Vs = KEmax / e
+
+Substitute:
+Vs = (4.8 × 10^-19) / (1.6 × 10^-19)
+
+Vs = 3.0 V
+
+Answer: 3.0 V
+
+WORKED EXAMPLE 3
+
+Question:
+Photoelectrons from metal A have maximum kinetic energy of 2 eV, while those from metal B have maximum kinetic energy of 5 eV. Which metal requires the greater stopping potential, assuming the stated kinetic energies apply?
+
+Solution:
+For metal A:
+Vs = 2 V
+
+For metal B:
+Vs = 5 V
+
+Since 5 V is greater than 2 V, metal B requires the greater stopping potential.
+
+Answer: Metal B.
+`,
+  questions: [
+    {
+      q: "The maximum kinetic energy of photoelectrons is 2.4 eV. Calculate the stopping potential.",
+      hint: "When kinetic energy is expressed in eV, its numerical value equals the stopping potential in volts.",
+      steps: [
+        "Given: KEmax = 2.4 eV.",
+        "For kinetic energy in eV, Vs has the same numerical value.",
+        "Therefore, Vs = 2.4 V."
+      ],
+      ans: "2.4 V",
+      why: "The energy gained or lost by an electron moving through a potential difference of 1 V is 1 eV."
+    },
+    {
+      q: "The maximum kinetic energy of photoelectrons is 8.0 × 10^-19 J. Calculate the stopping potential. Take the electron charge as 1.6 × 10^-19 C.",
+      hint: "Use Vs = KEmax / e.",
+      steps: [
+        "Given: KEmax = 8.0 × 10^-19 J and e = 1.6 × 10^-19 C.",
+        "Use Vs = KEmax / e.",
+        "Vs = (8.0 × 10^-19) / (1.6 × 10^-19).",
+        "Vs = 5.0 V."
+      ],
+      ans: "5.0 V",
+      why: "Dividing the maximum kinetic energy in joules by the electron charge in coulombs gives the stopping potential in volts."
+    },
+    {
+      q: "Photoelectrons from metal A have maximum kinetic energy of 1.5 eV. Those from metal B have maximum kinetic energy of 3.5 eV. Which requires the greater stopping potential, and what is its value?",
+      hint: "Compare the kinetic energies in eV with their corresponding stopping potentials.",
+      steps: [
+        "Metal A: Vs = 1.5 V.",
+        "Metal B: Vs = 3.5 V.",
+        "Since 3.5 V is greater than 1.5 V, metal B requires the greater stopping potential."
+      ],
+      ans: "Metal B; 3.5 V.",
+      why: "Stopping potential is directly proportional to the maximum kinetic energy of the photoelectrons."
+    }
+  ]
+});
+
+
+// ------------------------------------------------------------
+// SCREEN 44: CALCULATING MAXIMUM KINETIC ENERGY FROM
+// STOPPING POTENTIAL
+// One concept: Finding electron energy from measured voltage
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Maximum Kinetic Energy from Stopping Potential", {
+  notes: `
+When the stopping potential is known, the maximum kinetic energy of emitted photoelectrons can be calculated.
+
+The relationship is:
+
+KEmax = eVs
+
+Where:
+KEmax = maximum kinetic energy in joules
+e = 1.6 × 10^-19 C
+Vs = stopping potential in volts
+
+If the answer is required in electron-volts:
+
+KEmax (eV) = Vs (V), numerically.
+
+This calculation is useful when a stopping potential is measured experimentally and the maximum kinetic energy must be determined.
+
+WORKED EXAMPLE 1
+
+Question:
+A photoelectric cell has a stopping potential of 2.0 V. Calculate the maximum kinetic energy of the photoelectrons in joules.
+
+Solution:
+Given:
+Vs = 2.0 V
+e = 1.6 × 10^-19 C
+
+Formula:
+KEmax = eVs
+
+Substitute:
+KEmax = (1.6 × 10^-19)(2.0)
+
+KEmax = 3.2 × 10^-19 J
+
+Answer: 3.2 × 10^-19 J
+
+WORKED EXAMPLE 2
+
+Question:
+The stopping potential of a photoelectric cell is 4.5 V. Find the maximum kinetic energy in electron-volts and joules.
+
+Solution:
+
+In electron-volts:
+KEmax = 4.5 eV
+
+In joules:
+KEmax = eVs
+KEmax = (1.6 × 10^-19)(4.5)
+KEmax = 7.2 × 10^-19 J
+
+Answer:
+4.5 eV or 7.2 × 10^-19 J
+
+WORKED EXAMPLE 3
+
+Question:
+The stopping potential of a photoelectric cell increases from 1.0 V to 3.0 V. Calculate the increase in maximum kinetic energy in joules.
+
+Solution:
+Initial stopping potential = 1.0 V
+Final stopping potential = 3.0 V
+
+Increase in stopping potential:
+ΔVs = 3.0 − 1.0
+ΔVs = 2.0 V
+
+Increase in maximum kinetic energy:
+ΔKEmax = eΔVs
+
+ΔKEmax = (1.6 × 10^-19)(2.0)
+
+ΔKEmax = 3.2 × 10^-19 J
+
+Answer: 3.2 × 10^-19 J
+
+CHECK YOUR UNITS
+
+- Volts × coulombs = joules.
+- An energy in joules must include the appropriate power of ten.
+- An energy in eV is not the same unit as an energy in joules.
+`,
+  questions: [
+    {
+      q: "A photoelectric cell has a stopping potential of 3.0 V. Calculate the maximum kinetic energy of the photoelectrons in joules. Take e = 1.6 × 10^-19 C.",
+      hint: "Use KEmax = eVs.",
+      steps: [
+        "Given: Vs = 3.0 V and e = 1.6 × 10^-19 C.",
+        "Use KEmax = eVs.",
+        "KEmax = (1.6 × 10^-19)(3.0).",
+        "KEmax = 4.8 × 10^-19 J."
+      ],
+      ans: "4.8 × 10^-19 J",
+      why: "Multiplying the electron charge by the stopping potential gives the maximum kinetic energy in joules."
+    },
+    {
+      q: "The stopping potential is 2.5 V. Express the maximum kinetic energy in both eV and joules. Take e = 1.6 × 10^-19 C.",
+      hint: "The numerical value in eV equals the stopping potential in volts. Use KEmax = eVs for joules.",
+      steps: [
+        "In electron-volts: KEmax = 2.5 eV.",
+        "In joules: KEmax = (1.6 × 10^-19)(2.5).",
+        "KEmax = 4.0 × 10^-19 J."
+      ],
+      ans: "2.5 eV; 4.0 × 10^-19 J",
+      why: "The same energy can be expressed in different units. One electron-volt is 1.6 × 10^-19 J."
+    },
+    {
+      q: "The stopping potential increases from 1.5 V to 4.0 V. Calculate the increase in maximum kinetic energy in joules. Take e = 1.6 × 10^-19 C.",
+      hint: "First find the change in stopping potential, then multiply by the electron charge.",
+      steps: [
+        "Change in stopping potential: ΔVs = 4.0 − 1.5 = 2.5 V.",
+        "Use ΔKEmax = eΔVs.",
+        "ΔKEmax = (1.6 × 10^-19)(2.5).",
+        "ΔKEmax = 4.0 × 10^-19 J."
+      ],
+      ans: "4.0 × 10^-19 J",
+      why: "The change in maximum kinetic energy equals the electron charge multiplied by the change in stopping potential."
+    }
+  ]
+});
+add("physics", "photoelectric_emission", "Photoelectric Cells", {
+  notes: `
+A photoelectric cell is a device that uses the photoelectric effect to detect light.
+
+When light of sufficient frequency falls on a photosensitive surface, photoelectrons are emitted. Their movement can produce a photocurrent in the external circuit.
+
+The photocurrent can be used to detect the presence or changes in light.
+
+Main parts of a simple photoelectric cell:
+1. A photosensitive cathode that emits electrons.
+2. An anode that collects the emitted electrons.
+3. An external circuit through which the photocurrent flows.
+
+Working principle:
+1. Light falls on the photosensitive cathode.
+2. Photoelectrons are emitted if the incident light has sufficient frequency.
+3. The electrons move towards the anode when the circuit conditions allow.
+4. The resulting photocurrent provides an electrical signal indicating light detection.
+
+A photoelectric cell does not generate electricity from every kind of incident light. The frequency must be sufficient for the photosensitive material being used.
+
+WORKED EXAMPLE 1
+
+Question:
+What is the main function of a photoelectric cell?
+
+Solution:
+A photoelectric cell detects light by converting the effect of incident light into an electrical signal.
+
+Answer: To detect light and produce an electrical response.
+
+WORKED EXAMPLE 2
+
+Question:
+Name the part of a simple photoelectric cell from which photoelectrons are emitted.
+
+Solution:
+Photoelectrons are emitted from the photosensitive cathode when suitable light falls on it.
+
+Answer: The photosensitive cathode.
+
+WORKED EXAMPLE 3
+
+Question:
+Why might a photoelectric cell fail to produce a photocurrent when illuminated?
+
+Solution:
+1. Photoelectric emission requires light of sufficient frequency.
+2. If the incident light frequency is below the threshold frequency of the cathode material, electrons are not emitted.
+3. Without emitted electrons reaching the collector, there is no photocurrent due to photoelectric emission.
+
+Answer: The light frequency may be below the threshold frequency of the material.
+`,
+  questions: [
+    {
+      q: "What is the main function of a photoelectric cell?",
+      hint: "Think about what the device detects and what it produces.",
+      steps: [
+        "Light falls on the photosensitive surface.",
+        "Suitable light causes photoelectrons to be emitted.",
+        "Their movement produces an electrical response that can be detected."
+      ],
+      ans: "To detect light and produce an electrical signal.",
+      why: "A photoelectric cell uses the photoelectric effect to detect incident light."
+    },
+    {
+      q: "In a simple photoelectric cell, from which electrode are photoelectrons emitted?",
+      hint: "Identify the photosensitive electrode.",
+      steps: [
+        "The photosensitive surface receives the incident light.",
+        "Photoelectrons are emitted from this surface.",
+        "In a simple photoelectric cell, this electrode is the cathode."
+      ],
+      ans: "The photosensitive cathode.",
+      why: "The cathode is the light-sensitive electrode from which photoelectrons are emitted."
+    },
+    {
+      q: "Light falls on a photoelectric cell, but its frequency is below the threshold frequency of the cathode. Explain why no photoelectric current is produced.",
+      hint: "Compare the light frequency with the threshold frequency.",
+      steps: [
+        "The incident light frequency is below the threshold frequency.",
+        "Each photon has insufficient energy to release an electron from the cathode.",
+        "No photoelectrons are emitted by the photoelectric effect.",
+        "Therefore, no photocurrent is produced by this process."
+      ],
+      ans: "The photons have insufficient energy to release photoelectrons, so no photocurrent is produced.",
+      why: "For a given material, photoelectric emission requires the incident light frequency to be at least the threshold frequency."
+    }
+  ]
+});
+
+
+// ------------------------------------------------------------
+// SCREEN 46: AUTOMATIC LIGHT-CONTROL SYSTEMS
+// One concept: Using light detection to control a circuit
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Automatic Light-Control Systems", {
+  notes: `
+Photoelectric devices can be used in automatic systems that respond to changes in light.
+
+For example, an automatic outdoor lighting system can use a light-sensitive detector to help switch lamps on when it becomes dark and off when it becomes bright.
+
+Working principle:
+1. A light-sensitive device detects the light level.
+2. Its electrical output changes in response to the detected light.
+3. A control circuit interprets that signal.
+4. The control circuit switches the lamp on or off.
+
+Important distinction:
+The photoelectric detector senses the light. A control circuit operates the lamp.
+
+A practical system may use a photoelectric detector or another light-sensitive electronic sensor. Not every modern automatic lighting system uses a traditional vacuum photoelectric cell.
+
+WORKED EXAMPLE 1
+
+Question:
+How can a light-sensitive detector help control outdoor security lamps automatically?
+
+Solution:
+1. The detector senses the surrounding light level.
+2. When the environment becomes dark, its output changes.
+3. The control circuit switches the lamps on.
+4. When sufficient daylight returns, the circuit switches them off.
+
+Answer: It detects changes in light and provides a signal to control the lamps.
+
+WORKED EXAMPLE 2
+
+Question:
+In an automatic lighting system, what is the function of the control circuit?
+
+Solution:
+The detector senses light and produces an electrical response. The control circuit uses that response to operate the lamp.
+
+Answer: To use the detector's signal to switch the lamp on or off.
+
+WORKED EXAMPLE 3
+
+Question:
+Why is a light-sensitive detector useful in an automatic lighting system?
+
+Solution:
+1. It responds to changes in the surrounding light.
+2. Its output can be used by a control circuit.
+3. The circuit can operate the lights without someone switching them manually.
+
+Answer: It enables the lights to respond automatically to changes in light level.
+`,
+  questions: [
+    {
+      q: "How can a light-sensitive detector help an outdoor lighting system operate automatically?",
+      hint: "Consider what happens to the lights when the surroundings become dark or bright.",
+      steps: [
+        "The detector senses the surrounding light level.",
+        "Its electrical output changes as the light level changes.",
+        "A control circuit uses the signal to switch the lights on or off."
+      ],
+      ans: "It detects changes in light and signals a control circuit to switch the lights on or off.",
+      why: "Automatic lighting uses light detection to control the lamps without continuous manual operation."
+    },
+    {
+      q: "What is the function of the control circuit in an automatic lighting system?",
+      hint: "The detector senses light; another part operates the lamp.",
+      steps: [
+        "The light-sensitive detector responds to the light level.",
+        "The detector provides an electrical signal.",
+        "The control circuit uses that signal to operate the lamp."
+      ],
+      ans: "To use the detector's signal to switch the lamp on or off.",
+      why: "The detector and control circuit perform different jobs: sensing and controlling."
+    },
+    {
+      q: "Give one reason why automatic lighting can be more convenient than manually operated lighting.",
+      hint: "Think about the need for someone to switch the lamps.",
+      steps: [
+        "A light-sensitive detector responds to the surrounding light level.",
+        "A control circuit switches the lamps according to that signal.",
+        "A person does not need to operate the switch each time the light level changes."
+      ],
+      ans: "The lights can switch on or off in response to changes in light without manual operation.",
+      why: "Automatic control reduces the need for someone to operate the lighting switch."
+    }
+  ]
+});
+
+
+// ------------------------------------------------------------
+// SCREEN 47: LIGHT BEAMS AND OBJECT DETECTION
+// One concept: Detecting an interruption in a beam of light
+// ------------------------------------------------------------
+
+add("physics", "photoelectric_emission", "Light Beam Detection", {
+  notes: `
+A photoelectric detector can be arranged to detect whether a beam of light reaches a sensor.
+
+In a simple beam-detection system:
+1. A light source directs a beam towards a light-sensitive detector.
+2. The detector produces an electrical signal when it receives the beam.
+3. An object passing between the source and detector interrupts the beam.
+4. The detector's output changes, allowing a control circuit to detect the interruption.
+
+Applications include object counters, simple security systems, and automatic door sensors. The exact detector technology varies; many modern systems use semiconductor photodetectors rather than traditional photoelectric cells.
+
+WORKED EXAMPLE 1
+
+Question:
+How can a light beam be used to count objects moving along a conveyor belt?
+
+Solution:
+1. Direct a light beam across the path of the objects.
+2. Place a detector on the opposite side.
+3. Each object interrupts the beam as it passes.
+4. A control circuit detects and counts the interruptions.
+
+Answer: Each interruption of the beam can be detected and counted.
+
+WORKED EXAMPLE 2
+
+Question:
+What happens to the detector signal when an opaque object passes between a light source and its detector?
+
+Solution:
+1. The object blocks the light beam.
+2. Less or no light reaches the detector.
+3. The detector output changes.
+4. The control circuit can register the interruption.
+
+Answer: The detector's output changes because the beam is interrupted.
+
+WORKED EXAMPLE 3
+
+Question:
+Why must the light source and detector be properly aligned in a simple beam-interruption system?
+
+Solution:
+1. The source must direct light towards the detector.
+2. The detector must receive the beam during normal operation.
+3. When an object interrupts the beam, the detector output changes.
+4. Without proper alignment, the detector may fail to distinguish normal operation from an interruption.
+
+Answer: Proper alignment ensures the detector receives the beam normally and can detect when it is interrupted.
+`,
+  questions: [
+    {
+      q: "How can a light beam be used to count objects on a conveyor belt?",
+      hint: "Think about what each passing object does to the beam.",
+      steps: [
+        "Direct a beam across the objects' path.",
+        "Position a detector so it receives the beam.",
+        "Each object interrupts the beam as it passes.",
+        "A control circuit counts the detected interruptions."
+      ],
+      ans: "Count the interruptions caused by objects passing through the beam.",
+      why: "Each detected interruption can represent one passing object."
+    },
+    {
+      q: "An opaque object passes between a light source and a detector. What happens to the light reaching the detector?",
+      hint: "An opaque object blocks light.",
+      steps: [
+        "The object moves into the path of the beam.",
+        "It blocks the beam.",
+        "Less or no light reaches the detector."
+      ],
+      ans: "The amount of light reaching the detector decreases or becomes zero.",
+      why: "An opaque object interrupts the beam between the source and detector."
+    },
+    {
+      q: "Why must the light source be aligned with the detector in a beam-interruption system?",
+      hint: "Consider the detector's normal state before an object passes.",
+      steps: [
+        "The source directs light towards the detector.",
+        "The detector must receive the beam under normal conditions.",
+        "An object then causes a detectable change by interrupting the beam."
+      ],
+      ans: "So the detector receives the beam normally and can detect when it is interrupted.",
+      why: "Correct alignment allows the system to distinguish the normal beam from an interruption."
+    }
+  ]
+});
+
+/* =========================================================
+   PHYSICS: WAVES — BATCH 1
+   WAVE FUNDAMENTALS
+   One concept per screen
+========================================================= */
+
+/* =========================
+   1. MEANING OF A WAVE
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Meaning of a Wave",
+  `<h2>Meaning of a Wave</h2>
+
+<h3>Core idea</h3>
+<p>
+A <b>wave</b> is a disturbance that transfers energy
+from one place to another.
+</p>
+
+<p>
+When a stone falls into still water, ripples spread
+out from the point where the stone enters. The
+disturbance travels across the water, carrying energy
+away from the point of impact.
+</p>
+
+<h3>Worked example 1</h3>
+<p><b>Question:</b> A ripple moves across a pond after
+a stone falls into it. What is travelling across the pond?</p>
+<p><b>Reasoning:</b> The ripple is the travelling
+disturbance. It transfers energy away from the point
+where the stone entered the water.</p>
+<p><b>Answer:</b> A wave disturbance carrying energy.</p>
+
+<h3>Worked example 2</h3>
+<p><b>Question:</b> A loudspeaker produces sound that
+reaches a learner across a classroom. What does the
+sound wave transfer?</p>
+<p><b>Reasoning:</b> The sound wave travels through
+the air and transfers energy from the vibrating
+loudspeaker to the learner's ears.</p>
+<p><b>Answer:</b> Energy.</p>
+
+<h3>Check your understanding</h3>
+<p>A disturbance travels along a rope after one end
+is moved. What is the disturbance an example of?</p>`,
+  [
+    {
+      q: "A disturbance travels along a rope after one end is moved. What is this disturbance an example of?",
+      hint: "Think of a disturbance that travels and transfers energy.",
+      steps: [
+        "Identify what is travelling along the rope: a disturbance.",
+        "A travelling disturbance that transfers energy is called a wave.",
+        "Therefore, the disturbance is a wave."
+      ],
+      ans: "A wave",
+      final_check: "Identify the travelling disturbance, not the rope itself.",
+      common_mistakes: [
+        "Answering 'the rope' instead of naming the disturbance.",
+        "Defining a wave only as movement of matter."
+      ],
+      explanation: "A wave is a disturbance that transfers energy from one place to another."
+    },
+    {
+      q: "Which statement best describes a wave?",
+      hint: "Choose the statement about a travelling disturbance and energy.",
+      options: [
+        "A disturbance that transfers energy",
+        "Matter permanently travelling with the disturbance",
+        "An object that must move from one end to the other",
+        "A force that always moves particles forward"
+      ],
+      ans: "A disturbance that transfers energy",
+      explanation: "A wave is a disturbance that transfers energy."
+    },
+    {
+      q: "A sound travels from a bell to a listener. What travels from the bell towards the listener?",
+      hint: "The sound carries something from the vibrating source.",
+      ans: "A sound wave carrying energy",
+      explanation: "The sound disturbance travels through the medium and transfers energy to the listener."
+    }
+  ]
 );
 
 /* =========================
-   4. PHOTOELECTRIC EMISSION
+   2. ENERGY TRANSFER BY WAVES
 ========================= */
+
 add(
   "physics",
-  "photoelectric_emission",
-  "Photoelectric Emission",
-  `<h2> Photoelectric Emission</h2>
-<h3> WELL DETAILED NOTES</h3>
+  "waves",
+  "Energy Transfer by Waves",
+  `<h2>Energy Transfer by Waves</h2>
+
+<h3>Core idea</h3>
 <p>
-Photoelectric emission is the emission of electrons from a metal surface when electromagnetic radiation (light) of sufficiently high frequency strikes it.
-These emitted electrons are called <b>photoelectrons</b>.
+A wave transfers <b>energy</b> from one place to
+another. In a material medium, particles generally
+oscillate about their equilibrium positions rather
+than travelling permanently with the wave.
 </p>
+
 <p>
-This phenomenon provided strong evidence that light behaves as particles called <b>photons</b>, each carrying discrete energy.
+Imagine a floating cork on water. As ripples pass,
+the cork moves up and down, but it does not travel
+all the way across the pond with each ripple.
 </p>
-<h3> KEY CONCEPTS</h3>
-<ul>
-<li><b>Photon:</b> A packet of light energy</li>
-<li><b>Work function (φ):</b> Minimum energy required to remove an electron from a metal surface</li>
-<li><b>Threshold frequency (f₀):</b> Minimum frequency required to cause emission</li>
-<li><b>Intensity:</b> Affects number of emitted electrons, not their energy</li>
-</ul>
-<h3> EINSTEIN’S PHOTOELECTRIC EQUATION</h3>
-<pre>
-E = hf
-KE(max) = hf − φ
-</pre>
-<ul>
-<li>E = photon energy</li>
-<li>h = Planck’s constant (6.63 × 10⁻³⁴ J·s)</li>
-<li>f = frequency of light</li>
-<li>φ = work function</li>
-<li>KE(max) = maximum kinetic energy of emitted electrons</li>
-</ul>
-<h3> CONDITIONS FOR EMISSION</h3>
-<ul>
-<li>Light frequency must be ≥ threshold frequency</li>
-<li>If f < f₀ → no electrons emitted, no matter how intense the light is</li>
-</ul>
-<h3> PROCESS DIAGRAM</h3>
-<figure class="topic-img-container">
-  <img src="/images/photoelectric_effect_diagram.png" alt="Photoelectric Effect Diagram" class="topic-img" />
-  <figcaption>Illustration of Photoelectric Emission: Light photons striking a metal surface, work function barrier (φ), and emitted photoelectrons.</figcaption>
-</figure>
-<h3> WORKED EXAMPLES</h3>
-<h4>Example 1: Photon Energy</h4>
-<p>Calculate energy of a photon of frequency 5 × 10¹⁴ Hz</p>
-<pre>
-E = hf
-E = 6.63 × 10⁻³⁴ × 5 × 10¹⁴
-E = 3.315 × 10⁻¹⁹ J
-</pre>
-<p><b>Answer:</b> 3.315 × 10⁻¹⁹ J</p>
-<h4>Example 2: Photoelectron Kinetic Energy</h4>
-<p>A metal has work function 2.0 × 10⁻¹⁹ J. Light of energy 5.0 × 10⁻¹⁹ J is incident. Find KE(max).</p>
-<pre>
-KE = hf − φ
-KE = 5.0 × 10⁻¹⁹ − 2.0 × 10⁻¹⁹
-KE = 3.0 × 10⁻¹⁹ J
-</pre>
-<p><b>Answer:</b> 3.0 × 10⁻¹⁹ J</p>
-<h3> REAL-LIFE APPLICATIONS</h3>
-<ul>
-<li>Solar panels (conversion of light to electricity)</li>
-<li>Automatic door sensors</li>
-<li>Camera light detectors</li>
-<li>Night vision devices</li>
-</ul>
-`,
+
+<h3>Worked example 1</h3>
+<p><b>Question:</b> Ripples pass a floating cork. The
+cork bobs up and down. What does this show?</p>
+<p><b>Reasoning:</b> The cork responds to the passing
+disturbance, but it is not carried across the pond
+by the ripple.</p>
+<p><b>Answer:</b> The wave transfers energy while the
+cork oscillates near its position.</p>
+
+<h3>Worked example 2</h3>
+<p><b>Question:</b> A rope pulse reaches a loose ribbon
+tied to the rope. Has the ribbon travelled along the
+rope with the pulse?</p>
+<p><b>Reasoning:</b> The ribbon moves as the pulse
+passes. The pulse travels along the rope, while the
+ribbon does not travel with it from end to end.</p>
+<p><b>Answer:</b> No. The pulse transfers energy along
+the rope while the ribbon moves locally.</p>
+
+<h3>Check your understanding</h3>
+<p>A water wave reaches a floating leaf. Which
+statement best describes the transfer?</p>`,
   [
-  {
-    q: "What is photoelectric emission?",
-    steps: [
-      "Step 1: Identify incident radiation (light of sufficient frequency).",
-      "Step 2: Identify the surface (metal surface).",
-      "Step 3: State the emission of electrons (photoelectrons)."
-    ],
-    ans: "Photoelectric emission is the ejection of electrons from a metal surface when light of sufficient frequency strikes it.",
-    why: "Photons transfer their energy to electrons in the metal, causing them to escape if energy exceeds work function."
-  },
-  {
-    q: "Define threshold frequency (f₀) in photoelectric effect.",
-    steps: [
-      "Step 1: Consider the frequency of incident radiation.",
-      "Step 2: Define the minimum boundary required for emission.",
-      "Step 3: Explain that light below this frequency causes no electron ejection regardless of intensity."
-    ],
-    ans: "Threshold frequency is the minimum frequency of light required to emit photoelectrons from a given metal surface.",
-    why: "If light frequency is below threshold frequency, individual photon energy is less than the work function."
-  },
-  {
-    q: "Define the work function (φ) of a metal.",
-    steps: [
-      "Step 1: Consider the binding energy of electrons in a metal.",
-      "Step 2: Define the minimum energy required.",
-      "Step 3: State that it is the minimum energy needed to free an electron from the metal surface."
-    ],
-    ans: "Work function is the minimum energy required to liberate an electron from a metal surface.",
-    why: "Electrons are bound to metal atoms and require a specific threshold energy to escape."
-  },
-  {
-    q: "State Einstein's photoelectric equation.",
-    hint: "Think energy of photon = work function + max kinetic energy.",
-    steps: [
-      "Step 1: Write photon energy (hf).",
-      "Step 2: Equate to work function (φ) plus maximum kinetic energy (KEmax).",
-      "Step 3: State equation: hf = φ + KEmax or KEmax = hf - φ."
-    ],
-    ans: "hf = φ + KEmax (or KEmax = hf - φ)",
-    why: "Incident photon energy (hf) is used to overcome work function (φ) and any remaining energy becomes kinetic energy of photoelectron."
-  },
-  {
-    q: "What effect does increasing the intensity of incident light have on photoelectric emission?",
-    hint: "Think number of photons vs energy per photon.",
-    steps: [
-      "Step 1: Understand that higher intensity means more photons per second.",
-      "Step 2: State that each photon interacts with one electron.",
-      "Step 3: Conclude that more photoelectrons are emitted per second (photocurrent), but max kinetic energy stays constant."
-    ],
-    ans: "Increasing intensity increases the number of emitted photoelectrons per second (photocurrent), but does not change their maximum kinetic energy.",
-    why: "Intensity determines the photon flux, while light frequency determines individual photon energy."
-  },
-  {
-    q: "Why does light below threshold frequency fail to emit electrons even if intensity is increased?",
-    steps: [
-      "Step 1: Recognize that one photon interacts with one electron.",
-      "Step 2: Note that if individual photon energy (hf) < work function (φ), no energy accumulates.",
-      "Step 3: Conclude that increasing intensity only supplies more low-energy photons."
-    ],
-    ans: "Because individual photon energy depends on frequency; if hf < φ, single photons cannot liberate electrons, no matter how many strike the surface.",
-    why: "Photoelectric absorption is a one-to-one photon-electron interaction."
-  },
-  {
-    q: "Calculate the energy of a photon of light with frequency 6.0 × 10¹⁴ Hz. (Planck's constant h = 6.63 × 10⁻³⁴ J·s)",
-    hint: "Use E = hf",
-    steps: [
-      "Step 1: Identify h = 6.63 × 10⁻³⁴ J·s and f = 6.0 × 10¹⁴ Hz.",
-      "Step 2: Apply formula E = h × f.",
-      "Step 3: Substitute: E = (6.63 × 10⁻³⁴) × (6.0 × 10¹⁴).",
-      "Step 4: Calculate: E = 3.978 × 10⁻¹⁹ J."
-    ],
-    ans: "3.978 × 10⁻¹⁹ J",
-    why: "Photon energy is directly proportional to frequency via Planck's constant."
-  },
-  {
-    q: "A metal has a work function of 2.5 × 10⁻¹⁹ J. If incident light delivers photon energy of 4.2 × 10⁻¹⁹ J, find the maximum kinetic energy of the emitted photoelectrons.",
-    hint: "Use KEmax = hf - φ",
-    steps: [
-      "Step 1: Identify photon energy E = hf = 4.2 × 10⁻¹⁹ J.",
-      "Step 2: Identify work function φ = 2.5 × 10⁻¹⁹ J.",
-      "Step 3: Apply KEmax = hf - φ.",
-      "Step 4: Calculate KEmax = (4.2 × 10⁻¹⁹) - (2.5 × 10⁻¹⁹) = 1.7 × 10⁻¹⁹ J."
-    ],
-    ans: "1.7 × 10⁻¹⁹ J",
-    why: "The excess energy above the work function becomes the maximum kinetic energy of the emitted photoelectron."
-  },
-  {
-    q: "What is stopping potential in the photoelectric effect?",
-    steps: [
-      "Step 1: Define opposing electric potential applied to anode.",
-      "Step 2: State the minimum retarding potential that stops the fastest photoelectrons.",
-      "Step 3: Relate to maximum kinetic energy (eVs = KEmax)."
-    ],
-    ans: "Stopping potential is the minimum negative potential applied to the collector plate that completely stops the flow of photoelectrons (reduces photocurrent to zero).",
-    why: "At stopping potential, work done against electric field equals maximum kinetic energy of photoelectrons (eVs = KEmax)."
-  },
-  {
-    q: "State two practical applications of photoelectric emission.",
-    steps: [
-      "Step 1: Identify technology utilizing light detection.",
-      "Step 2: Give solar cells / solar panels.",
-      "Step 3: Give light sensors in cameras or automatic doors."
-    ],
-    ans: "Solar panels (photovoltaic cells) and light sensors in automatic doors and digital cameras.",
-    why: "These devices convert incident light energy directly into electrical signals using photoelectric principles."
-  }
-],
+    {
+      q: "A water wave passes a floating cork, which bobs up and down. What is transferred across the water by the wave?",
+      hint: "Distinguish what travels with the wave from the cork's local movement.",
+      ans: "Energy",
+      final_check: "The wave transfers energy; the cork mainly oscillates locally.",
+      common_mistakes: [
+        "Saying that the cork is carried across the pond by the wave.",
+        "Saying that no energy is transferred because the cork stays nearby."
+      ],
+      explanation: "The wave transfers energy through the water, while the cork bobs as the disturbance passes."
+    },
+    {
+      q: "A pulse travels from one end of a rope to the other. What happens to a small ribbon attached halfway along the rope?",
+      hint: "Think about the ribbon's motion as the pulse passes.",
+      options: [
+        "It moves locally as the pulse passes.",
+        "It travels to the far end with the pulse.",
+        "It remains completely motionless.",
+        "It disappears when the pulse reaches it."
+      ],
+      ans: "It moves locally as the pulse passes.",
+      explanation: "The rope's particles move as the pulse passes, but the pulse itself travels along the rope."
+    },
+    {
+      q: "Which statement correctly describes energy transfer by a wave in a material medium?",
+      hint: "The disturbance travels; particles generally oscillate about equilibrium.",
+      options: [
+        "Energy is transferred while particles oscillate locally.",
+        "Every particle travels permanently with the wave.",
+        "No energy moves from place to place.",
+        "The medium must move bodily from source to receiver."
+      ],
+      ans: "Energy is transferred while particles oscillate locally.",
+      explanation: "A wave transports energy while particles of the medium generally oscillate about their equilibrium positions."
+    }
+  ]
+);
+
+/* =========================
+   3. TRANSVERSE WAVES
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Transverse Waves",
+  `<h2>Transverse Waves</h2>
+
+<h3>Core idea</h3>
+<p>
+In a <b>transverse wave</b>, the oscillation of the
+medium is perpendicular to the direction in which
+the wave travels.
+</p>
+
+<p>
+Perpendicular means that the two directions are
+at right angles to each other.
+</p>
+
+<p>
+For example, if a pulse travels horizontally along
+a rope while a point on the rope moves up and down,
+the motion is transverse.
+</p>
+
+<h3>Worked example 1</h3>
+<p><b>Question:</b> A wave travels from left to right
+along a rope. A point on the rope moves up and down.
+Classify the wave.</p>
+<p><b>Reasoning:</b> The wave travels horizontally
+while the point moves vertically. These directions
+are perpendicular.</p>
+<p><b>Answer:</b> A transverse wave.</p>
+
+<h3>Worked example 2</h3>
+<p><b>Question:</b> A learner moves one end of a rope
+up and down, producing a pulse that travels along
+the rope. How does the rope move relative to the
+direction of wave travel?</p>
+<p><b>Reasoning:</b> The rope moves vertically while
+the pulse travels horizontally.</p>
+<p><b>Answer:</b> The rope moves perpendicular to
+the direction of wave travel.</p>
+
+<h3>Check your understanding</h3>
+<p>A wave travels horizontally while the medium
+oscillates vertically. What type of wave is it?</p>`,
+  [
+    {
+      q: "A wave travels horizontally along a rope while a point on the rope oscillates vertically. What type of wave is this?",
+      hint: "Compare the directions of travel and oscillation.",
+      ans: "A transverse wave",
+      final_check: "The two directions are perpendicular.",
+      common_mistakes: [
+        "Calling it longitudinal because the wave travels along the rope.",
+        "Ignoring the direction in which the rope oscillates."
+      ],
+      explanation: "A transverse wave has oscillations perpendicular to the direction of wave travel."
+    },
+    {
+      q: "In a transverse wave, the particles of the medium oscillate:",
+      hint: "Perpendicular means at right angles.",
+      options: [
+        "Perpendicular to the direction of wave travel",
+        "Parallel to the direction of wave travel",
+        "Only in the direction of gravity",
+        "In the same direction as permanent matter transfer"
+      ],
+      ans: "Perpendicular to the direction of wave travel",
+      explanation: "The defining feature of a transverse wave is perpendicular oscillation."
+    },
+    {
+      q: "A pulse travels from left to right along a rope. A marked point on the rope moves up and down. Explain why the pulse is transverse.",
+      hint: "Name both directions and compare them.",
+      ans: "The rope point oscillates vertically while the pulse travels horizontally, so the directions are perpendicular.",
+      explanation: "Transverse classification depends on the relationship between the oscillation direction and the direction of wave travel."
+    }
+  ]
+);
+
+/* =========================
+   4. LONGITUDINAL WAVES
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Longitudinal Waves",
+  `<h2>Longitudinal Waves</h2>
+
+<h3>Core idea</h3>
+<p>
+In a <b>longitudinal wave</b>, the particles of the
+medium oscillate parallel to the direction in which
+the wave travels.
+</p>
+
+<p>
+Parallel means that the directions lie along the
+same line. The particles move backwards and forwards
+as the disturbance travels through the medium.
+</p>
+
+<p>
+Sound travelling through air is a common example
+of a longitudinal wave.
+</p>
+
+<h3>Worked example 1</h3>
+<p><b>Question:</b> Sound travels through air from a
+loudspeaker to a listener. The air particles vibrate
+backwards and forwards along the direction of travel.
+Classify the wave.</p>
+<p><b>Reasoning:</b> The particle oscillation is
+parallel to the direction of wave travel.</p>
+<p><b>Answer:</b> A longitudinal wave.</p>
+
+<h3>Worked example 2</h3>
+<p><b>Question:</b> A slinky is pushed and pulled
+along its length, producing a travelling pulse.
+What type of wave is produced?</p>
+<p><b>Reasoning:</b> The coils move back and forth
+along the same direction in which the pulse travels.</p>
+<p><b>Answer:</b> A longitudinal wave.</p>
+
+<h3>Check your understanding</h3>
+<p>A disturbance travels along a spring while its
+coils oscillate back and forth along the spring.
+Classify the wave.</p>`,
+  [
+    {
+      q: "A disturbance travels along a spring while its coils oscillate back and forth along the same direction. What type of wave is produced?",
+      hint: "The oscillation and travel directions are parallel.",
+      ans: "A longitudinal wave",
+      final_check: "Particle oscillation is parallel to wave travel.",
+      common_mistakes: [
+        "Calling it transverse because the coils move.",
+        "Confusing the direction of particle motion with the direction of energy transfer."
+      ],
+      explanation: "A longitudinal wave has particle oscillations parallel to the direction of wave travel."
+    },
+    {
+      q: "In a longitudinal wave, particles of the medium oscillate:",
+      hint: "Parallel means along the same direction.",
+      options: [
+        "Parallel to the direction of wave travel",
+        "Perpendicular to the direction of wave travel",
+        "Only upwards",
+        "Without any movement"
+      ],
+      ans: "Parallel to the direction of wave travel",
+      explanation: "Longitudinal waves are identified by parallel particle oscillation."
+    },
+    {
+      q: "Sound travels through air as a longitudinal wave. What is the relationship between air-particle oscillation and the direction of sound travel?",
+      hint: "Compare the two directions.",
+      ans: "Air particles oscillate parallel to the direction of sound travel.",
+      explanation: "The air particles vibrate backwards and forwards along the direction in which the sound disturbance travels."
+    }
+  ]
+);
+
+/* =========================
+   5. PARTICLE MOTION IN A MEDIUM
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Particle Motion in a Medium",
+  `<h2>Particle Motion in a Medium</h2>
+
+<h3>Core idea</h3>
+<p>
+When a mechanical wave passes through a medium,
+its particles oscillate about their
+<b>equilibrium positions</b>. An equilibrium
+position is the particle's undisturbed position.
+</p>
+
+<p>
+The particles interact with neighbouring particles,
+allowing the disturbance and energy to travel through
+the medium. The particles do not generally travel
+all the way from the source to the receiver with
+the wave.
+</p>
+
+<h3>Worked example 1</h3>
+<p><b>Question:</b> A sound wave travels through a
+classroom. Does an air particle near the door travel
+all the way to a listener's ear?</p>
+<p><b>Reasoning:</b> The air particle oscillates around
+its equilibrium position as the sound disturbance
+passes. The disturbance travels across the classroom.</p>
+<p><b>Answer:</b> No. The particle oscillates locally;
+the sound wave transfers energy across the room.</p>
+
+<h3>Worked example 2</h3>
+<p><b>Question:</b> A pulse travels along a rope.
+A marked point moves away from and then returns
+towards its original position. What does this
+illustrate?</p>
+<p><b>Reasoning:</b> The point moves temporarily as
+the pulse passes, rather than travelling permanently
+along the rope.</p>
+<p><b>Answer:</b> Local oscillation about an
+equilibrium position.</p>
+
+<h3>Check your understanding</h3>
+<p>As a sound wave passes through air, what do the
+air particles do?</p>`,
+  [
+    {
+      q: "As a sound wave passes through air, what do the air particles do?",
+      hint: "Think about their motion relative to their undisturbed positions.",
+      ans: "They oscillate back and forth about their equilibrium positions.",
+      final_check: "The particles do not travel all the way to the listener with the sound wave.",
+      common_mistakes: [
+        "Saying the same air particles travel from the speaker to the listener.",
+        "Saying the particles do not move at all."
+      ],
+      explanation: "Air particles oscillate locally and pass the disturbance to neighbouring particles, allowing sound energy to travel."
+    },
+    {
+      q: "What is an equilibrium position?",
+      hint: "It is the particle's undisturbed position.",
+      ans: "The position about which a particle oscillates when a wave passes.",
+      explanation: "The equilibrium position is the particle's undisturbed position, around which it moves during oscillation."
+    },
+    {
+      q: "A pulse travels along a rope, but a marked point on the rope returns close to its original position after the pulse passes. What does this show?",
+      hint: "Distinguish the travelling pulse from the motion of one point.",
+      ans: "The pulse transfers energy along the rope while the marked point moves locally and returns towards its equilibrium position.",
+      explanation: "The disturbance travels along the rope, while each point of the rope moves locally as the pulse passes."
+    }
+  ]
+);
+// ============================================================
+// PHYSICS: WAVES — BATCH 2
+// Focus: Measuring Waves
+// Rule: One concept per screen
+// ============================================================
+
+
+// ============================================================
+// 6. AMPLITUDE
+// ============================================================
+
+add(
+  "physics",
+  "waves",
+  "Amplitude",
+  `<h2>Amplitude</h2>
+
+  <h3>Meaning</h3>
+  <p>Amplitude is the <b>maximum displacement of a particle from its equilibrium position</b>.</p>
+
+  <p>On a transverse wave, measure amplitude vertically from the equilibrium line to a crest or to a trough. Do not measure from crest to trough.</p>
+
+  <h3>Worked example 1</h3>
+  <p>A wave has a crest 4 cm above its equilibrium position. Find its amplitude.</p>
+  <p><b>Step 1:</b> Identify the maximum displacement from equilibrium.</p>
+  <p><b>Step 2:</b> The displacement is 4 cm.</p>
+  <p><b>Answer:</b> Amplitude = 4 cm.</p>
+
+  <h3>Worked example 2</h3>
+  <p>The vertical distance from a crest to the adjacent trough is 12 cm. Find the amplitude of the wave.</p>
+  <p><b>Step 1:</b> Crest-to-trough distance = 2 × amplitude.</p>
+  <p><b>Step 2:</b> 12 = 2A</p>
+  <p><b>Step 3:</b> A = 12 ÷ 2 = 6 cm.</p>
+  <p><b>Answer:</b> Amplitude = 6 cm.</p>
+
+  <h3>Remember</h3>
+  <p>Amplitude is measured from equilibrium to a crest or trough, not from crest to trough.</p>`,
+  [
+    {
+      q: "A wave crest is 3 cm above the equilibrium position. What is the amplitude?",
+      options: ["1.5 cm", "3 cm", "6 cm", "9 cm"],
+      ans: "3 cm",
+      hint: "Measure from the equilibrium position to the crest.",
+      steps: [
+        "Amplitude is the maximum displacement from equilibrium.",
+        "The crest is 3 cm above equilibrium.",
+        "Therefore, amplitude = 3 cm."
+      ],
+      final_check: "The amplitude is 3 cm.",
+      common_mistakes: [
+        "Doubling the displacement unnecessarily."
+      ],
+      explanation: "Amplitude is the maximum displacement from equilibrium."
+    },
+    {
+      q: "The distance from a crest to the adjacent trough is 10 cm. Find the amplitude.",
+      options: ["5 cm", "10 cm", "20 cm", "2.5 cm"],
+      ans: "5 cm",
+      hint: "The crest-to-trough distance is twice the amplitude.",
+      steps: [
+        "Crest-to-trough distance = 2A.",
+        "10 = 2A.",
+        "A = 10 ÷ 2 = 5 cm."
+      ],
+      final_check: "Twice the amplitude is 10 cm.",
+      common_mistakes: [
+        "Taking the full crest-to-trough distance as the amplitude."
+      ],
+      explanation: "The crest and trough are on opposite sides of equilibrium."
+    },
+    {
+      q: "If the amplitude of a wave increases, what happens to its maximum displacement from equilibrium?",
+      options: [
+        "It increases",
+        "It decreases",
+        "It becomes zero",
+        "It must remain unchanged"
+      ],
+      ans: "It increases",
+      hint: "Amplitude measures maximum displacement.",
+      steps: [
+        "Amplitude is the maximum displacement from equilibrium.",
+        "A larger amplitude means a greater maximum displacement."
+      ],
+      final_check: "Greater amplitude means greater maximum displacement.",
+      common_mistakes: [
+        "Confusing amplitude with wavelength."
+      ],
+      explanation: "Amplitude describes the size of the oscillation, not the distance between successive crests."
+    }
+  ]
+);
+
+
+// ============================================================
+// 7. WAVELENGTH
+// ============================================================
+
+add(
+  "physics",
+  "waves",
+  "Wavelength",
+  `<h2>Wavelength</h2>
+
+  <h3>Meaning</h3>
+  <p>Wavelength is the distance between two successive points on a wave that are in the same phase.</p>
+
+  <p>Examples include:</p>
+  <ul>
+    <li>One crest to the next crest.</li>
+    <li>One trough to the next trough.</li>
+    <li>One compression to the next compression in a longitudinal wave.</li>
+    <li>One rarefaction to the next rarefaction in a longitudinal wave.</li>
+  </ul>
+
+  <p>The symbol for wavelength is <b>λ</b> (lambda). Its SI unit is the metre (m).</p>
+
+  <h3>Worked example 1</h3>
+  <p>The distance between two successive crests is 0.8 m. Find the wavelength.</p>
+  <p><b>Step 1:</b> Successive crests are one wavelength apart.</p>
+  <p><b>Answer:</b> λ = 0.8 m.</p>
+
+  <h3>Worked example 2</h3>
+  <p>Six complete wavelengths occupy a distance of 12 m. Find the wavelength.</p>
+  <p><b>Step 1:</b> Total distance = number of wavelengths × wavelength.</p>
+  <p><b>Step 2:</b> 12 = 6λ.</p>
+  <p><b>Step 3:</b> λ = 12 ÷ 6 = 2 m.</p>
+  <p><b>Answer:</b> Wavelength = 2 m.</p>
+
+  <h3>Remember</h3>
+  <p>Count complete wavelengths, not the number of crests alone. Two successive crests are separated by one wavelength.</p>`,
+  [
+    {
+      q: "The distance between two successive crests is 2.5 m. What is the wavelength?",
+      options: ["1.25 m", "2.5 m", "5 m", "0.4 m"],
+      ans: "2.5 m",
+      hint: "One crest to the next crest is one complete wavelength.",
+      steps: [
+        "Identify two successive crests.",
+        "The distance between them is one wavelength.",
+        "Therefore, λ = 2.5 m."
+      ],
+      final_check: "One crest-to-crest distance equals one wavelength.",
+      common_mistakes: [
+        "Dividing the distance by two."
+      ],
+      explanation: "A complete wave cycle repeats from one crest to the next crest."
+    },
+    {
+      q: "Four complete wavelengths occupy a distance of 20 m. Find the wavelength.",
+      options: ["80 m", "10 m", "5 m", "4 m"],
+      ans: "5 m",
+      hint: "Divide the total distance by the number of complete wavelengths.",
+      steps: [
+        "Total distance = 20 m.",
+        "Number of wavelengths = 4.",
+        "λ = 20 ÷ 4 = 5 m."
+      ],
+      final_check: "Four wavelengths of 5 m each give 20 m.",
+      common_mistakes: [
+        "Multiplying 20 by 4."
+      ],
+      explanation: "Wavelength equals total distance divided by the number of complete wavelengths."
+    },
+    {
+      q: "Which distance represents one wavelength in a longitudinal wave?",
+      options: [
+        "From one compression to the next compression",
+        "From a compression to the nearest rarefaction",
+        "The width of one particle",
+        "The distance travelled by one particle in one second"
+      ],
+      ans: "From one compression to the next compression",
+      hint: "Look for two successive points in the same phase.",
+      steps: [
+        "A wavelength joins successive points in the same phase.",
+        "Successive compressions are in the same phase.",
+        "Their separation is one wavelength."
+      ],
+      final_check: "Successive compressions are one wavelength apart.",
+      common_mistakes: [
+        "Confusing the distance between a compression and a rarefaction with a full wavelength."
+      ],
+      explanation: "A compression and the adjacent rarefaction are approximately half a wavelength apart."
+    }
+  ]
+);
+
+
+// ============================================================
+// 8. FREQUENCY
+// ============================================================
+
+add(
+  "physics",
+  "waves",
+  "Frequency",
+  `<h2>Frequency</h2>
+
+  <h3>Meaning</h3>
+  <p>Frequency is the <b>number of complete oscillations or wave cycles produced per second</b>.</p>
+
+  <p>Its symbol is <b>f</b>. Its SI unit is the <b>hertz (Hz)</b>.</p>
+  <p>1 Hz means one complete oscillation per second.</p>
+
+  <h3>Formula</h3>
+  <p><b>Frequency = Number of complete oscillations ÷ Time taken</b></p>
+  <p>f = N/t</p>
+  <p>Where N is the number of complete oscillations and t is the time in seconds.</p>
+
+  <h3>Worked example 1</h3>
+  <p>A source makes 20 complete oscillations in 5 seconds. Find its frequency.</p>
+  <p><b>Step 1:</b> N = 20, t = 5 s.</p>
+  <p><b>Step 2:</b> f = N/t.</p>
+  <p><b>Step 3:</b> f = 20/5 = 4 Hz.</p>
+  <p><b>Answer:</b> Frequency = 4 Hz.</p>
+
+  <h3>Worked example 2</h3>
+  <p>A tuning fork vibrates at 50 Hz for 4 seconds. How many complete oscillations does it make?</p>
+  <p><b>Step 1:</b> f = N/t, so N = ft.</p>
+  <p><b>Step 2:</b> N = 50 × 4.</p>
+  <p><b>Answer:</b> 200 complete oscillations.</p>
+
+  <h3>Remember</h3>
+  <p>Frequency tells you how many cycles occur each second. It is not the total number of cycles unless the time is one second.</p>`,
+  [
+    {
+      q: "A source makes 30 complete oscillations in 6 seconds. Find its frequency.",
+      options: ["5 Hz", "24 Hz", "36 Hz", "180 Hz"],
+      ans: "5 Hz",
+      hint: "Frequency = number of oscillations ÷ time.",
+      steps: [
+        "N = 30 oscillations.",
+        "t = 6 s.",
+        "f = N/t = 30/6 = 5 Hz."
+      ],
+      final_check: "Five oscillations occur every second.",
+      common_mistakes: [
+        "Multiplying the oscillations by the time."
+      ],
+      explanation: "Frequency is the number of complete oscillations per second."
+    },
+    {
+      q: "A wave source has a frequency of 8 Hz. How many complete oscillations occur in 3 seconds?",
+      options: ["11", "8", "24", "2.67"],
+      ans: "24",
+      hint: "Number of oscillations = frequency × time.",
+      steps: [
+        "f = 8 Hz and t = 3 s.",
+        "N = ft.",
+        "N = 8 × 3 = 24."
+      ],
+      final_check: "Eight oscillations per second for three seconds gives 24 oscillations.",
+      common_mistakes: [
+        "Dividing frequency by time."
+      ],
+      explanation: "Multiplying frequency by elapsed time gives the total number of complete oscillations."
+    },
+    {
+      q: "What is the SI unit of frequency?",
+      options: ["Metre", "Second", "Hertz", "Metre per second"],
+      ans: "Hertz",
+      hint: "Frequency measures cycles per second.",
+      steps: [
+        "Frequency is measured in hertz.",
+        "One hertz is one cycle per second."
+      ],
+      final_check: "The SI unit is hertz (Hz).",
+      common_mistakes: [
+        "Using seconds, which measure time rather than frequency."
+      ],
+      explanation: "Hertz is equivalent to inverse seconds (s⁻¹)."
+    }
+  ]
+);
+
+
+// ============================================================
+// 9. PERIOD
+// ============================================================
+
+add(
+  "physics",
+  "waves",
+  "Period of a Wave",
+  `<h2>Period of a Wave</h2>
+
+  <h3>Meaning</h3>
+  <p>The period is the <b>time taken to complete one full oscillation</b>.</p>
+
+  <p>Its symbol is <b>T</b>, and its SI unit is the second (s).</p>
+
+  <h3>Formula</h3>
+  <p><b>Period = Total time ÷ Number of complete oscillations</b></p>
+  <p>T = t/N</p>
+
+  <p>Frequency and period are related by:</p>
+  <p><b>T = 1/f</b></p>
+  <p><b>f = 1/T</b></p>
+
+  <h3>Worked example 1</h3>
+  <p>A source makes 10 complete oscillations in 5 seconds. Find its period.</p>
+  <p><b>Step 1:</b> Total time = 5 s; number of oscillations = 10.</p>
+  <p><b>Step 2:</b> T = t/N = 5/10.</p>
+  <p><b>Answer:</b> T = 0.5 s.</p>
+
+  <h3>Worked example 2</h3>
+  <p>A wave has a frequency of 20 Hz. Calculate its period.</p>
+  <p><b>Step 1:</b> T = 1/f.</p>
+  <p><b>Step 2:</b> T = 1/20.</p>
+  <p><b>Answer:</b> T = 0.05 s.</p>
+
+  <h3>Remember</h3>
+  <p>Frequency and period are inversely proportional. A higher frequency means a shorter period.</p>`,
+  [
+    {
+      q: "A source completes 12 oscillations in 6 seconds. Find its period.",
+      options: ["2 s", "0.5 s", "72 s", "6 s"],
+      ans: "0.5 s",
+      hint: "Period = total time ÷ number of oscillations.",
+      steps: [
+        "Total time = 6 s.",
+        "Number of oscillations = 12.",
+        "T = 6/12 = 0.5 s."
+      ],
+      final_check: "Each oscillation takes half a second.",
+      common_mistakes: [
+        "Calculating oscillations per second instead of time per oscillation."
+      ],
+      explanation: "The period is the time for one complete oscillation."
+    },
+    {
+      q: "A wave has a frequency of 25 Hz. Calculate its period.",
+      options: ["25 s", "0.25 s", "0.04 s", "2.5 s"],
+      ans: "0.04 s",
+      hint: "Use T = 1/f.",
+      steps: [
+        "f = 25 Hz.",
+        "T = 1/f.",
+        "T = 1/25 = 0.04 s."
+      ],
+      final_check: "The reciprocal of 25 is 0.04.",
+      common_mistakes: [
+        "Writing the period as 25 seconds."
+      ],
+      explanation: "Period is the reciprocal of frequency."
+    },
+    {
+      q: "What happens to the period when the frequency increases?",
+      options: [
+        "The period increases",
+        "The period decreases",
+        "The period stays zero",
+        "The period always doubles"
+      ],
+      ans: "The period decreases",
+      hint: "Use T = 1/f.",
+      steps: [
+        "Period is the reciprocal of frequency.",
+        "Increasing the denominator makes the reciprocal smaller.",
+        "Therefore, the period decreases."
+      ],
+      final_check: "Higher frequency means shorter period.",
+      common_mistakes: [
+        "Assuming frequency and period increase together."
+      ],
+      explanation: "Frequency and period are inversely proportional."
+    }
+  ]
+);
+
+
+// ============================================================
+// 10. WAVE SPEED
+// ============================================================
+
+add(
+  "physics",
+  "waves",
+  "Wave Speed",
+  `<h2>Wave Speed</h2>
+
+  <h3>Meaning</h3>
+  <p>Wave speed is the distance travelled by a wave per unit time.</p>
+
+  <p>Its SI unit is metres per second (m/s).</p>
+
+  <h3>Formula</h3>
+  <p><b>Speed = Distance ÷ Time</b></p>
+  <p>For a periodic wave:</p>
+  <p><b>v = fλ</b></p>
+
+  <p>Where:</p>
+  <ul>
+    <li>v = wave speed in m/s</li>
+    <li>f = frequency in Hz</li>
+    <li>λ = wavelength in m</li>
+  </ul>
+
+  <h3>Worked example 1</h3>
+  <p>A wave has a frequency of 5 Hz and a wavelength of 2 m. Calculate its speed.</p>
+  <p><b>Step 1:</b> v = fλ.</p>
+  <p><b>Step 2:</b> v = 5 × 2.</p>
+  <p><b>Answer:</b> v = 10 m/s.</p>
+
+  <h3>Worked example 2</h3>
+  <p>A wave travels 24 m in 6 seconds. Calculate its speed.</p>
+  <p><b>Step 1:</b> v = distance ÷ time.</p>
+  <p><b>Step 2:</b> v = 24/6.</p>
+  <p><b>Answer:</b> v = 4 m/s.</p>
+
+  <h3>Remember</h3>
+  <p>Use v = fλ when frequency and wavelength are known. Use distance ÷ time when the distance travelled and time taken are known.</p>`,
+  [
+    {
+      q: "A wave has a frequency of 4 Hz and a wavelength of 3 m. Find its speed.",
+      options: ["7 m/s", "12 m/s", "1.33 m/s", "24 m/s"],
+      ans: "12 m/s",
+      hint: "Use v = fλ.",
+      steps: [
+        "f = 4 Hz and λ = 3 m.",
+        "v = fλ.",
+        "v = 4 × 3 = 12 m/s."
+      ],
+      final_check: "Four wavelengths of 3 m pass a point each second, giving 12 m/s.",
+      common_mistakes: [
+        "Adding frequency and wavelength instead of multiplying."
+      ],
+      explanation: "Wave speed equals frequency multiplied by wavelength."
+    },
+    {
+      q: "A wave travels 45 m in 9 seconds. Find its speed.",
+      options: ["5 m/s", "36 m/s", "54 m/s", "0.2 m/s"],
+      ans: "5 m/s",
+      hint: "Speed = distance ÷ time.",
+      steps: [
+        "Distance = 45 m.",
+        "Time = 9 s.",
+        "Speed = 45/9 = 5 m/s."
+      ],
+      final_check: "The wave covers 5 metres each second.",
+      common_mistakes: [
+        "Dividing time by distance."
+      ],
+      explanation: "Speed is the distance travelled divided by the time taken."
+    },
+    {
+      q: "A wave travels at 18 m/s and has a frequency of 6 Hz. Find its wavelength.",
+      options: ["108 m", "24 m", "3 m", "12 m"],
+      ans: "3 m",
+      hint: "Rearrange v = fλ to make λ the subject.",
+      steps: [
+        "v = fλ.",
+        "λ = v/f.",
+        "λ = 18/6 = 3 m."
+      ],
+      final_check: "A frequency of 6 Hz and wavelength of 3 m give a speed of 18 m/s.",
+      common_mistakes: [
+        "Multiplying speed by frequency."
+      ],
+      explanation: "Wavelength is wave speed divided by frequency."
+    }
+  ]
+);
+
+/* =========================================================
+   PHYSICS: WAVES — BATCH 3
+   WAVE BEHAVIOUR
+   One concept per screen
+========================================================= */
+
+
+/* =========================================================
+   11. REFLECTION OF WAVES
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Reflection of Waves",
+  `<h2>Reflection of Waves</h2>
+
+<h3>Core idea</h3>
+<p>
+Reflection occurs when a wave reaches a boundary and
+returns into the medium from which it came.
+</p>
+
+<p>
+For example, a pulse travelling along a rope can
+reach a fixed end and return along the rope. The
+returning pulse is a reflected wave.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+A water wave reaches a wall and travels back across
+the water. Identify the phenomenon.
+</p>
+<p>
+<b>Reasoning:</b> The wave returns after reaching
+the boundary.
+</p>
+<p><b>Answer:</b> Reflection.</p>
+
+<h3>Worked example 2</h3>
+<p>
+A sound wave strikes a distant cliff and returns
+to the listener. What has happened to the sound?
+</p>
+<p>
+The sound wave has been reflected by the cliff.
+The returning sound may be heard as an echo.
+</p>
+
+<h3>Remember</h3>
+<p>
+Reflection means a wave returns from a boundary.
+It does not mean the wave has necessarily been
+completely absorbed or destroyed.
+</p>`,
+  [
+    {
+      q: "A water wave reaches a wall and returns across the water. What phenomenon has occurred?",
+      hint: "The wave has returned after reaching a boundary.",
+      ans: "Reflection",
+      steps: [
+        "The wave travels towards the wall.",
+        "It returns after reaching the boundary.",
+        "This behaviour is called reflection."
+      ],
+      final_check: "The returning wave is the reflected wave.",
+      common_mistakes: [
+        "Calling the return of the wave refraction.",
+        "Assuming the wave must disappear at the wall."
+      ],
+      explanation: "Reflection occurs when a wave returns into the medium after meeting a boundary."
+    },
+    {
+      q: "A sound wave returns to a listener after striking a cliff. What is the returning sound an example of?",
+      options: [
+        "Reflection",
+        "Diffraction",
+        "Absorption only",
+        "Constructive interference only"
+      ],
+      ans: "Reflection",
+      hint: "The sound has bounced back from a surface.",
+      explanation: "An echo results from reflected sound reaching the listener."
+    },
+    {
+      q: "What happens to a wave during reflection?",
+      options: [
+        "It returns from a boundary.",
+        "It must stop permanently.",
+        "It must change into light.",
+        "It must pass through the boundary unchanged."
+      ],
+      ans: "It returns from a boundary.",
+      hint: "Focus on the direction of the returning disturbance.",
+      explanation: "Reflection describes a wave returning from a boundary."
+    }
+  ]
+);
+
+
+/* =========================================================
+   12. DIRECTION OF A REFLECTED WAVE
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Direction of a Reflected Wave",
+  `<h2>Direction of a Reflected Wave</h2>
+
+<h3>Core idea</h3>
+<p>
+For reflection at a plane boundary, angles are
+measured from the <b>normal</b>, an imaginary line
+perpendicular to the boundary at the point of
+incidence.
+</p>
+
+<p>
+The law of reflection states that the angle of
+incidence equals the angle of reflection.
+</p>
+
+<p><b>i = r</b></p>
+
+<p>
+The angle of incidence is measured between the
+incident wave's direction and the normal. The angle
+of reflection is measured between the reflected
+wave's direction and the normal.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+A wave strikes a reflecting boundary at an angle
+of incidence of 35° to the normal. Find the angle
+of reflection.
+</p>
+<p>
+<b>Step 1:</b> Apply the law of reflection: i = r.
+</p>
+<p><b>Step 2:</b> r = 35°.</p>
+<p><b>Answer:</b> 35°.</p>
+
+<h3>Worked example 2</h3>
+<p>
+A ray makes an angle of 20° with the reflecting
+surface. Find its angle of incidence.
+</p>
+<p>
+The normal is perpendicular to the surface.
+Therefore, the angle with the normal is
+90° − 20° = 70°.
+</p>
+<p><b>Answer:</b> Angle of incidence = 70°.</p>
+
+<h3>Remember</h3>
+<p>
+Measure the angle from the normal, not from the
+surface. This law applies to specular reflection
+at a plane boundary.
+</p>`,
+  [
+    {
+      q: "A wave strikes a plane reflecting boundary at 40° to the normal. What is its angle of reflection?",
+      hint: "The angle of incidence equals the angle of reflection.",
+      ans: "40°",
+      steps: [
+        "Angle of incidence i = 40°.",
+        "Use i = r.",
+        "Therefore, r = 40°."
+      ],
+      final_check: "Both angles are measured from the normal.",
+      common_mistakes: [
+        "Subtracting the angle from 90° unnecessarily.",
+        "Measuring the reflection angle from the surface."
+      ],
+      explanation: "The law of reflection states that the angle of incidence equals the angle of reflection."
+    },
+    {
+      q: "A light ray makes an angle of 25° with a plane mirror's surface. What is its angle of incidence?",
+      hint: "The normal is at 90° to the surface.",
+      ans: "65°",
+      steps: [
+        "The ray makes 25° with the surface.",
+        "The normal is perpendicular to the surface.",
+        "Angle of incidence = 90° − 25° = 65°."
+      ],
+      final_check: "25° + 65° = 90°.",
+      common_mistakes: [
+        "Giving 25° as the angle to the normal."
+      ],
+      explanation: "The angle of incidence is measured from the normal, which is perpendicular to the mirror."
+    },
+    {
+      q: "The angle of incidence is 55°. What is the angle between the incident and reflected rays?",
+      hint: "The two rays lie on opposite sides of the normal.",
+      ans: "110°",
+      steps: [
+        "The angle of reflection is 55°.",
+        "The angle between the two rays is 55° + 55°.",
+        "The angle between them is 110°."
+      ],
+      final_check: "Add the two equal angles measured from the normal.",
+      common_mistakes: [
+        "Giving 55° instead of the angle between the two rays."
+      ],
+      explanation: "For a plane reflecting surface, the angle between the incident and reflected rays is twice the angle of incidence."
+    }
+  ]
+);
+
+
+/* =========================================================
+   13. REFRACTION OF WAVES
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Refraction of Waves",
+  `<h2>Refraction of Waves</h2>
+
+<h3>Core idea</h3>
+<p>
+Refraction is the change in direction of a wave
+when it enters a region where its speed changes
+and it meets the boundary at an angle.
+</p>
+
+<p>
+When a water wave enters shallow water at an angle,
+its speed changes. One part of the wavefront changes
+speed before another part, causing the wavefront
+to turn.
+</p>
+
+<p>
+A wave entering a new region straight on may change
+speed without changing direction.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+Water waves enter a shallow region at an angle and
+change direction. Identify the phenomenon.
+</p>
+<p>
+<b>Reasoning:</b> Their speed changes and their
+direction changes at the boundary.
+</p>
+<p><b>Answer:</b> Refraction.</p>
+
+<h3>Worked example 2</h3>
+<p>
+A wave enters a new region perpendicular to the
+boundary. Its speed changes, but it continues in
+the same direction. Has its speed changed?
+</p>
+<p>
+Yes. A change in speed does not always produce
+a change in direction. The wave can still undergo
+a change of propagation speed without bending.
+</p>
+
+<h3>Remember</h3>
+<p>
+Refraction does not mean reflection. During
+refraction, a wave enters a different region.
+For a periodic wave crossing a stationary boundary,
+its frequency remains unchanged while its speed
+and wavelength may change.
+</p>`,
+  [
+    {
+      q: "Water waves enter a shallow region at an angle, change speed and turn. What phenomenon is demonstrated?",
+      hint: "The wave changes direction as its speed changes.",
+      ans: "Refraction",
+      steps: [
+        "The waves enter a region with different water depth.",
+        "Their speed changes.",
+        "Because they enter at an angle, their direction changes.",
+        "This is refraction."
+      ],
+      final_check: "Refraction involves a change of wave direction in this example.",
+      common_mistakes: [
+        "Calling every boundary interaction reflection.",
+        "Claiming that every speed change must cause bending."
+      ],
+      explanation: "A wave refracts when its speed changes across a boundary and its direction changes."
+    },
+    {
+      q: "A wave enters a new region perpendicular to the boundary. Its speed changes. Must its direction change?",
+      options: [
+        "Yes, every speed change causes bending.",
+        "No, it can continue in the same direction.",
+        "Yes, it must reflect completely.",
+        "No, its speed cannot change."
+      ],
+      ans: "No, it can continue in the same direction.",
+      hint: "Consider a wave entering straight on.",
+      explanation: "At normal incidence, a wave may change speed without changing direction."
+    },
+    {
+      q: "A periodic wave crosses into another region through a stationary boundary. Which quantity remains unchanged?",
+      options: [
+        "Frequency",
+        "Speed in every medium",
+        "Wavelength in every medium",
+        "Amplitude in every situation"
+      ],
+      ans: "Frequency",
+      hint: "The source continues producing cycles at the same rate.",
+      explanation: "The frequency is set by the source and remains unchanged across a stationary boundary; speed and wavelength may change."
+    }
+  ]
+);
+
+
+/* =========================================================
+   14. DIFFRACTION OF WAVES
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Diffraction of Waves",
+  `<h2>Diffraction of Waves</h2>
+
+<h3>Core idea</h3>
+<p>
+Diffraction is the spreading of waves as they pass
+through an opening or around an obstacle.
+</p>
+
+<p>
+Diffraction can explain why sound may be heard
+around a doorway even when the source is not
+directly visible.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+Sound from a classroom is heard in a corridor
+around an open doorway. Which wave behaviour helps
+explain this?
+</p>
+<p>
+<b>Reasoning:</b> Sound spreads through the opening
+and into the region beyond it.
+</p>
+<p><b>Answer:</b> Diffraction.</p>
+
+<h3>Worked example 2</h3>
+<p>
+Water waves pass through a narrow opening in a
+barrier and spread into the region beyond it.
+Identify the phenomenon.
+</p>
+<p><b>Answer:</b> Diffraction.</p>
+
+<h3>Remember</h3>
+<p>
+Diffraction does not require a wave to bounce back
+from a boundary. It describes the spreading of a
+wave through an opening or around an obstacle.
+</p>`,
+  [
+    {
+      q: "Water waves pass through an opening and spread into the region beyond it. What is this behaviour called?",
+      hint: "The wave spreads after passing through an opening.",
+      ans: "Diffraction",
+      steps: [
+        "The waves pass through an opening.",
+        "They spread into the region beyond it.",
+        "This spreading is diffraction."
+      ],
+      final_check: "The key feature is spreading through an opening.",
+      common_mistakes: [
+        "Calling it reflection even though the waves spread beyond the opening."
+      ],
+      explanation: "Diffraction is the spreading of waves through openings and around obstacles."
+    },
+    {
+      q: "Which observation is an example of diffraction?",
+      options: [
+        "Sound spreading through a doorway",
+        "A wave returning from a wall",
+        "A wave changing speed at a boundary without spreading",
+        "A wave being produced by a vibrating source"
+      ],
+      ans: "Sound spreading through a doorway",
+      hint: "Look for spreading through an opening or around an obstacle.",
+      explanation: "Sound can diffract through a doorway and spread into the region beyond it."
+    },
+    {
+      q: "Does diffraction require a wave to return to the medium it came from?",
+      options: [
+        "Yes, always",
+        "No, diffraction involves spreading",
+        "Yes, only for sound",
+        "No, because diffraction destroys the wave"
+      ],
+      ans: "No, diffraction involves spreading",
+      hint: "Distinguish spreading from bouncing back.",
+      explanation: "Diffraction is wave spreading, whereas reflection is the return of a wave from a boundary."
+    }
+  ]
+);
+
+
+/* =========================================================
+   15. DIFFRACTION AND GAP SIZE
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Diffraction and Gap Size",
+  `<h2>Diffraction and Gap Size</h2>
+
+<h3>Core idea</h3>
+<p>
+Diffraction is most noticeable when the width of an
+opening is comparable to the wavelength.
+</p>
+
+<p>
+When the gap is much wider than the wavelength,
+spreading is generally less noticeable. When the
+gap is similar to the wavelength, spreading is
+more pronounced.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+Water waves have a wavelength of 5 cm and pass
+through a gap 5 cm wide. Will diffraction be
+noticeable?
+</p>
+<p>
+The gap width is comparable to the wavelength,
+so significant spreading is expected.
+</p>
+
+<h3>Worked example 2</h3>
+<p>
+Waves with a wavelength of 2 cm pass through a
+gap 50 cm wide. Compare the gap width with the
+wavelength.
+</p>
+<p>
+The gap is much wider than the wavelength, so
+spreading is generally less pronounced.
+</p>
+
+<h3>Remember</h3>
+<p>
+Compare the gap width with the wavelength. Do not
+judge diffraction from gap width alone when the
+wavelength is unknown.
+</p>`,
+  [
+    {
+      q: "Water waves have a wavelength of 4 cm and pass through a gap 4 cm wide. What should you expect?",
+      hint: "Compare the gap width with the wavelength.",
+      ans: "Noticeable diffraction",
+      steps: [
+        "Wavelength = 4 cm.",
+        "Gap width = 4 cm.",
+        "The gap is comparable to the wavelength.",
+        "Diffraction should be noticeable."
+      ],
+      final_check: "Gap width and wavelength are equal.",
+      common_mistakes: [
+        "Assuming diffraction is greatest only when the gap is extremely wide."
+      ],
+      explanation: "Diffraction is pronounced when the opening width is comparable to the wavelength."
+    },
+    {
+      q: "A wave of wavelength 2 cm passes through a gap 40 cm wide. Compared with a gap of 2 cm, how pronounced is diffraction generally?",
+      options: [
+        "Less pronounced",
+        "More pronounced",
+        "Always exactly equal",
+        "Impossible because waves cannot pass through wide gaps"
+      ],
+      ans: "Less pronounced",
+      hint: "The gap is much wider than the wavelength.",
+      explanation: "A gap much wider than the wavelength generally produces less noticeable spreading."
+    },
+    {
+      q: "Which gap is most likely to produce pronounced diffraction for waves of wavelength 10 cm?",
+      options: [
+        "A gap 10 cm wide",
+        "A gap 2 m wide",
+        "A gap 5 m wide",
+        "A completely closed barrier"
+      ],
+      ans: "A gap 10 cm wide",
+      hint: "Choose a gap comparable to the wavelength.",
+      explanation: "Diffraction is most noticeable when gap width is comparable to the wavelength."
+    }
+  ]
+);
+
+
+/* =========================================================
+   16. SUPERPOSITION OF WAVES
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Superposition of Waves",
+  `<h2>Superposition of Waves</h2>
+
+<h3>Core idea</h3>
+<p>
+When two or more waves overlap, the resultant
+displacement at a point is the algebraic sum of
+the individual displacements at that point.
+This is the principle of superposition.
+</p>
+
+<p>
+For displacements in the same direction, add their
+values. For displacements in opposite directions,
+use their signs when adding.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+Two pulses produce upward displacements of 2 cm
+and 3 cm at the same point at the same time.
+Find the resultant displacement.
+</p>
+<p>
+<b>Step 1:</b> Both displacements are upward.
+</p>
+<p><b>Step 2:</b> Resultant = 2 + 3 = 5 cm upward.</p>
+
+<h3>Worked example 2</h3>
+<p>
+One pulse produces an upward displacement of 5 cm
+and another produces a downward displacement of
+2 cm at the same point. Find the resultant.
+</p>
+<p>
+Take upward as positive and downward as negative.
+Resultant = +5 + (−2) = +3 cm.
+</p>
+<p><b>Answer:</b> 3 cm upward.</p>
+
+<h3>Remember</h3>
+<p>
+Add signed displacements, not just their magnitudes.
+The result depends on the direction of each
+displacement at the point of overlap.
+</p>`,
+  [
+    {
+      q: "Two pulses produce upward displacements of 3 cm and 4 cm at the same point. Find the resultant displacement.",
+      hint: "Both displacements are in the same direction.",
+      ans: "7 cm upward",
+      steps: [
+        "Both displacements are upward.",
+        "Resultant = 3 + 4.",
+        "Resultant displacement = 7 cm upward."
+      ],
+      final_check: "The resultant is larger because the displacements reinforce one another.",
+      common_mistakes: [
+        "Subtracting displacements that have the same direction."
+      ],
+      explanation: "Superposition requires adding the individual displacements algebraically."
+    },
+    {
+      q: "At a point, one pulse displaces the medium 6 cm upward and another displaces it 2 cm downward. Find the resultant.",
+      hint: "Choose upward as positive and downward as negative.",
+      ans: "4 cm upward",
+      steps: [
+        "Upward displacement = +6 cm.",
+        "Downward displacement = −2 cm.",
+        "Resultant = 6 − 2 = 4 cm upward."
+      ],
+      final_check: "The larger upward displacement determines the resultant direction.",
+      common_mistakes: [
+        "Adding both magnitudes without considering direction."
+      ],
+      explanation: "Opposite displacements subtract when their signed values are added."
+    },
+    {
+      q: "What does the principle of superposition describe?",
+      options: [
+        "The resultant displacement when waves overlap",
+        "The speed of every wave in a vacuum",
+        "The return of waves from a boundary",
+        "The conversion of every wave into heat"
+      ],
+      ans: "The resultant displacement when waves overlap",
+      hint: "Think about the combined effect of overlapping waves.",
+      explanation: "Superposition states that the resultant displacement is the algebraic sum of individual displacements."
+    }
+  ]
+);
+
+
+/* =========================================================
+   17. CONSTRUCTIVE INTERFERENCE
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Constructive Interference",
+  `<h2>Constructive Interference</h2>
+
+<h3>Core idea</h3>
+<p>
+Constructive interference occurs when overlapping
+waves reinforce one another, producing a resultant
+displacement greater than either individual
+displacement when both are in the same direction.
+</p>
+
+<p>
+For two waves of equal frequency arriving in phase,
+their crests align with crests and their troughs
+align with troughs. Their amplitudes add at points
+of complete constructive interference.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+Two upward pulses each have a displacement of 3 cm
+at the same point. Find the resultant displacement.
+</p>
+<p>
+Resultant = 3 + 3 = 6 cm upward.
+</p>
+
+<h3>Worked example 2</h3>
+<p>
+Two equal-amplitude waves arrive in phase at a
+point. What happens to the resultant amplitude?
+</p>
+<p>
+Their displacements reinforce each other. For
+equal amplitudes A, the resultant amplitude at
+complete constructive interference is 2A.
+</p>
+
+<h3>Remember</h3>
+<p>
+Constructive interference is reinforcement caused
+by overlap. It does not create energy from nothing;
+energy is redistributed through the combined wave
+pattern.
+</p>`,
+  [
+    {
+      q: "Two upward pulses each have a displacement of 2 cm at the same point. Find the resultant displacement.",
+      hint: "The displacements reinforce because they point in the same direction.",
+      ans: "4 cm upward",
+      steps: [
+        "First displacement = +2 cm.",
+        "Second displacement = +2 cm.",
+        "Resultant = 2 + 2 = 4 cm upward."
+      ],
+      final_check: "The two displacements add.",
+      common_mistakes: [
+        "Subtracting the displacements despite their common direction."
+      ],
+      explanation: "Constructive overlap increases the resultant displacement when the individual displacements reinforce each other."
+    },
+    {
+      q: "Two equal-amplitude waves meet in phase. What happens at a point of complete constructive interference?",
+      options: [
+        "Their displacements reinforce.",
+        "Their displacements cancel completely.",
+        "Both waves permanently disappear.",
+        "The frequency must become zero."
+      ],
+      ans: "Their displacements reinforce.",
+      hint: "Crests align with crests and troughs with troughs.",
+      explanation: "In-phase waves reinforce each other, producing a larger resultant amplitude."
+    },
+    {
+      q: "Two equal waves each have amplitude 5 cm and meet in phase. What is the resultant amplitude at complete constructive interference?",
+      hint: "Add the two amplitudes at complete reinforcement.",
+      ans: "10 cm",
+      steps: [
+        "First amplitude = 5 cm.",
+        "Second amplitude = 5 cm.",
+        "Resultant amplitude = 5 + 5 = 10 cm."
+      ],
+      final_check: "The resultant amplitude is twice either individual amplitude.",
+      common_mistakes: [
+        "Giving 5 cm because each wave individually has that amplitude."
+      ],
+      explanation: "Equal-amplitude waves in phase produce a resultant amplitude of twice the individual amplitude at complete constructive interference."
+    }
+  ]
+);
+
+
+/* =========================================================
+   18. DESTRUCTIVE INTERFERENCE
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Destructive Interference",
+  `<h2>Destructive Interference</h2>
+
+<h3>Core idea</h3>
+<p>
+Destructive interference occurs when overlapping
+waves oppose one another, reducing the resultant
+displacement compared with the displacement of
+either wave alone.
+</p>
+
+<p>
+For two equal-amplitude waves in opposite phase,
+a crest of one aligns with a trough of the other.
+At complete destructive interference, their
+displacements cancel at that point.
+</p>
+
+<h3>Worked example 1</h3>
+<p>
+One pulse produces a displacement of 4 cm upward.
+Another produces a displacement of 4 cm downward
+at the same point. Find the resultant.
+</p>
+<p>
+Resultant = +4 + (−4) = 0 cm.
+</p>
+<p><b>Answer:</b> Zero resultant displacement.</p>
+
+<h3>Worked example 2</h3>
+<p>
+An upward pulse of 6 cm overlaps a downward pulse
+of 2 cm. Find the resultant displacement.
+</p>
+<p>
+Resultant = +6 + (−2) = +4 cm.
+</p>
+<p><b>Answer:</b> 4 cm upward.</p>
+
+<h3>Remember</h3>
+<p>
+Destructive interference does not always mean
+complete cancellation. Complete cancellation
+requires equal and opposite displacements at the
+point and instant considered.
+</p>`,
+  [
+    {
+      q: "An upward pulse of 5 cm overlaps a downward pulse of 5 cm at the same point. Find the resultant displacement.",
+      hint: "The displacements have equal magnitudes and opposite directions.",
+      ans: "0 cm",
+      steps: [
+        "Upward displacement = +5 cm.",
+        "Downward displacement = −5 cm.",
+        "Resultant = 5 − 5 = 0 cm."
+      ],
+      final_check: "Equal and opposite displacements cancel.",
+      common_mistakes: [
+        "Adding the magnitudes to obtain 10 cm."
+      ],
+      explanation: "Equal and opposite displacements produce zero resultant displacement at that point."
+    },
+    {
+      q: "A 7 cm upward displacement overlaps a 3 cm downward displacement. Find the resultant.",
+      hint: "Subtract the smaller opposite displacement from the larger.",
+      ans: "4 cm upward",
+      steps: [
+        "Upward displacement = +7 cm.",
+        "Downward displacement = −3 cm.",
+        "Resultant = 7 − 3 = 4 cm upward."
+      ],
+      final_check: "The resultant points in the direction of the larger displacement.",
+      common_mistakes: [
+        "Claiming all destructive interference produces zero displacement."
+      ],
+      explanation: "Unequal opposite displacements partially cancel, leaving a non-zero resultant."
+    },
+    {
+      q: "When do two equal-amplitude waves produce complete destructive interference?",
+      options: [
+        "When they arrive in opposite phase",
+        "When both crests arrive together",
+        "When both waves have zero frequency",
+        "Whenever their wavelengths are different"
+      ],
+      ans: "When they arrive in opposite phase",
+      hint: "A crest of one must align with a trough of the other.",
+      explanation: "Equal-amplitude waves in opposite phase have equal and opposite displacements, so they cancel at points of complete destructive interference."
+    }
+  ]
+);
+
+/* =========================================================
+   BATCH 4: SOUND WAVES
+   One concept per screen
+========================================================= */
+
+/* =========================
+   19. SOUND PRODUCTION
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Production of Sound",
+  `<h2>Production of Sound</h2>
+<p>Sound is produced when an object vibrates. A vibration is a repeated movement to and fro about a position of rest.</p>
+
+<h3>How sound is produced</h3>
+<p>When a drum is struck, its stretched skin vibrates. These vibrations disturb the surrounding air, producing a sound wave.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Why does a guitar string produce sound when plucked?</p>
+<p><b>Step 1:</b> Plucking the string makes it vibrate.</p>
+<p><b>Step 2:</b> The vibrating string disturbs the surrounding air.</p>
+<p><b>Conclusion:</b> The disturbance travels through the air as a sound wave.</p>`,
+  [
+    {
+      q: "What produces sound?",
+      hint: "Think about what the source is doing.",
+      steps: [
+        "Sound begins with a vibrating source.",
+        "The vibration disturbs the surrounding medium."
+      ],
+      ans: "Vibration",
+      explanation: "Sound is produced by vibrating objects."
+    },
+    {
+      q: "A student strikes a tuning fork. What must the tuning fork do to produce sound?",
+      hint: "What happens to its prongs after being struck?",
+      steps: [
+        "Striking the fork sets its prongs moving.",
+        "The prongs vibrate about their resting positions."
+      ],
+      ans: "Vibrate",
+      explanation: "The vibrating prongs produce sound."
+    },
+    {
+      q: "A drum is struck, but its skin is prevented from vibrating. What happens to the sound produced by the drum?",
+      hint: "Is the source still vibrating?",
+      steps: [
+        "The drum skin is the vibrating source.",
+        "Preventing its vibration prevents it from producing its normal sound."
+      ],
+      ans: "It produces little or no sound",
+      explanation: "Sound production depends on vibration of the source."
+    }
+  ]
+);
+
+/* =========================
+   20. SOUND AS A MECHANICAL WAVE
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Sound as a Mechanical Wave",
+  `<h2>Sound as a Mechanical Wave</h2>
+<p>Sound is a <b>mechanical wave</b> because it requires a material medium, such as air, water or a solid, to travel.</p>
+
+<p>Sound transfers energy from a vibrating source to a listener. The particles of the medium vibrate about their equilibrium positions; they do not travel all the way from the source to the listener.</p>
+
+<h3>Sound cannot travel through a vacuum</h3>
+<p>A vacuum has no particles to transmit the sound disturbance. Therefore, sound cannot travel through a vacuum.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> An alarm rings inside a sealed bell jar. The air is gradually removed. Why does the sound become fainter?</p>
+<p><b>Step 1:</b> Sound needs particles to transmit its disturbance.</p>
+<p><b>Step 2:</b> Removing air reduces the number of particles available to transmit sound.</p>
+<p><b>Conclusion:</b> Less sound reaches the listener. In a perfect vacuum, sound cannot travel.</p>`,
+  [
+    {
+      q: "Why is sound classified as a mechanical wave?",
+      hint: "What does sound need in order to travel?",
+      steps: [
+        "A mechanical wave requires a material medium.",
+        "Sound travels through particles in that medium."
+      ],
+      ans: "It requires a material medium",
+      explanation: "Sound is mechanical because it cannot travel through a vacuum."
+    },
+    {
+      q: "Can sound travel through a perfect vacuum?",
+      hint: "Are there particles in a vacuum to transmit the disturbance?",
+      steps: [
+        "Sound is transmitted through vibrating particles.",
+        "A perfect vacuum contains no material particles."
+      ],
+      ans: "No",
+      explanation: "Without a material medium, sound cannot propagate."
+    },
+    {
+      q: "When sound travels through air, do the air particles travel all the way from the source to the listener?",
+      hint: "Distinguish movement of particles from movement of the wave.",
+      steps: [
+        "Air particles vibrate about their equilibrium positions.",
+        "The disturbance and its energy travel through the air."
+      ],
+      ans: "No, they vibrate about their equilibrium positions",
+      explanation: "The wave transfers energy; the particles oscillate locally."
+    }
+  ]
+);
+
+/* =========================
+   21. COMPRESSIONS
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Compressions in Sound Waves",
+  `<h2>Compressions in Sound Waves</h2>
+<p>Sound in air normally travels as a longitudinal wave. Air particles vibrate parallel to the direction in which the sound wave travels.</p>
+
+<p>A <b>compression</b> is a region where particles are closer together than normal. It has higher pressure and density than the surrounding undisturbed air.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> What happens to the air particles in a compression?</p>
+<p><b>Step 1:</b> The sound source pushes nearby air particles.</p>
+<p><b>Step 2:</b> Particles become closer together in that region.</p>
+<p><b>Conclusion:</b> A compression is a high-pressure region.</p>`,
+  [
+    {
+      q: "What is a compression in a sound wave?",
+      hint: "Consider the spacing between particles.",
+      steps: [
+        "Compare the particle spacing with that in undisturbed air.",
+        "In a compression, particles are closer together."
+      ],
+      ans: "A region where particles are closer together",
+      explanation: "Compressions have higher particle density and pressure."
+    },
+    {
+      q: "Compared with undisturbed air, what is the pressure in a compression?",
+      hint: "Particles are crowded into a smaller region.",
+      steps: [
+        "A compression contains particles closer together.",
+        "This produces a region of increased pressure."
+      ],
+      ans: "Higher",
+      explanation: "A compression is a high-pressure region."
+    },
+    {
+      q: "In a longitudinal sound wave, how do the air particles vibrate relative to the direction of wave travel?",
+      hint: "The particles move back and forth along which line?",
+      steps: [
+        "Sound in air is longitudinal.",
+        "Longitudinal particle vibrations are parallel to wave travel."
+      ],
+      ans: "Parallel to the direction of wave travel",
+      explanation: "The particle motion is parallel to the direction of propagation."
+    }
+  ]
+);
+
+/* =========================
+   22. RAREFACTIONS
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Rarefactions in Sound Waves",
+  `<h2>Rarefactions in Sound Waves</h2>
+<p>A <b>rarefaction</b> is a region in a longitudinal sound wave where particles are farther apart than normal.</p>
+
+<p>Rarefactions have lower pressure and density than the undisturbed medium. They alternate with compressions as the sound wave travels.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A region of air has particles farther apart than normal as a sound wave passes. Identify the region.</p>
+<p><b>Step 1:</b> The particles are spread farther apart.</p>
+<p><b>Step 2:</b> Such a region has lower pressure and density.</p>
+<p><b>Conclusion:</b> It is a rarefaction.</p>`,
+  [
+    {
+      q: "What is a rarefaction?",
+      hint: "Compare particle spacing with normal spacing.",
+      steps: [
+        "Examine the spacing between particles.",
+        "In a rarefaction, particles are farther apart than normal."
+      ],
+      ans: "A region where particles are farther apart",
+      explanation: "Rarefactions are the spread-out regions of a longitudinal sound wave."
+    },
+    {
+      q: "What is the pressure in a rarefaction compared with the undisturbed medium?",
+      hint: "The particles are less crowded.",
+      steps: [
+        "A rarefaction has lower particle density.",
+        "Its pressure is lower than that of the undisturbed medium."
+      ],
+      ans: "Lower",
+      explanation: "Rarefactions are low-pressure regions."
+    },
+    {
+      q: "What lies between successive compressions in a sound wave?",
+      hint: "A sound wave alternates between crowded and spread-out regions.",
+      steps: [
+        "A compression is followed by a spread-out region.",
+        "That spread-out region is a rarefaction."
+      ],
+      ans: "A rarefaction",
+      explanation: "Compressions and rarefactions alternate along a longitudinal sound wave."
+    }
+  ]
+);
+
+/* =========================
+   23. TRANSMISSION OF SOUND
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Transmission of Sound Through a Medium",
+  `<h2>Transmission of Sound Through a Medium</h2>
+<p>When a vibrating source produces sound, it causes nearby particles in a medium to vibrate. These particles exert forces on neighbouring particles, passing the disturbance along.</p>
+
+<p>The particles oscillate about their equilibrium positions while the sound wave transfers energy through the medium.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> How does sound from a loudspeaker reach a listener through air?</p>
+<p><b>Step 1:</b> The loudspeaker cone vibrates.</p>
+<p><b>Step 2:</b> It creates changing pressure regions in nearby air.</p>
+<p><b>Step 3:</b> The disturbance is passed from particle to particle.</p>
+<p><b>Conclusion:</b> Sound energy travels through the air to the listener.</p>`,
+  [
+    {
+      q: "How is sound transmitted through air?",
+      hint: "Consider how neighbouring air particles interact.",
+      steps: [
+        "The source makes nearby air particles vibrate.",
+        "These particles transmit the disturbance to neighbouring particles."
+      ],
+      ans: "By vibrations passed between neighbouring particles",
+      explanation: "Sound travels through a medium by a propagating disturbance."
+    },
+    {
+      q: "What is transferred from the sound source through the medium?",
+      hint: "The particles do not travel all the way to the listener.",
+      steps: [
+        "Particles vibrate locally.",
+        "The wave carries energy through the medium."
+      ],
+      ans: "Energy",
+      explanation: "Sound transfers energy without transporting the medium as a whole."
+    },
+    {
+      q: "Why can sound travel through a solid?",
+      hint: "Are particles in a solid able to interact with neighbouring particles?",
+      steps: [
+        "A solid contains particles close together.",
+        "Vibrations can be passed between neighbouring particles."
+      ],
+      ans: "Its particles can transmit vibrations to neighbouring particles",
+      explanation: "Sound can travel through solids because they provide a material medium."
+    }
+  ]
+);
+
+/* =========================
+   24. SPEED OF SOUND
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Speed of Sound",
+  `<h2>Speed of Sound</h2>
+<p>The speed of sound is the distance travelled by a sound wave per unit time.</p>
+
+<p><b>Formula:</b></p>
+<p>Speed = Distance ÷ Time</p>
+<p>In symbols: <b>v = d/t</b></p>
+<p>Speed is measured in metres per second (m/s).</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Sound travels 680 m in 2 s. Calculate its speed.</p>
+<p><b>Step 1: Write the formula.</b></p>
+<p>v = d/t</p>
+<p><b>Step 2: Substitute the values.</b></p>
+<p>v = 680/2</p>
+<p><b>Step 3: Calculate.</b></p>
+<p>v = 340 m/s</p>
+<p><b>Answer:</b> 340 m/s.</p>`,
+  [
+    {
+      q: "Sound travels 600 m in 2 s. Calculate its speed.",
+      hint: "Use speed = distance ÷ time.",
+      steps: [
+        "v = d/t",
+        "v = 600/2",
+        "v = 300 m/s"
+      ],
+      ans: "300 m/s",
+      explanation: "Divide the distance travelled by the time taken."
+    },
+    {
+      q: "A sound wave travels at 330 m/s for 4 s. How far does it travel?",
+      hint: "Rearrange v = d/t to make distance the subject.",
+      steps: [
+        "v = d/t",
+        "d = vt",
+        "d = 330 × 4 = 1320 m"
+      ],
+      ans: "1320 m",
+      explanation: "Distance equals speed multiplied by time."
+    },
+    {
+      q: "A sound wave travels 990 m at 330 m/s. How long does it take?",
+      hint: "Time = distance ÷ speed.",
+      steps: [
+        "t = d/v",
+        "t = 990/330",
+        "t = 3 s"
+      ],
+      ans: "3 s",
+      explanation: "Divide the distance by the speed to find the time."
+    }
+  ]
+);
+
+/* =========================
+   25. PITCH AND FREQUENCY
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Pitch of Sound",
+  `<h2>Pitch of Sound</h2>
+<p><b>Pitch</b> describes how high or low a sound seems to a listener. Pitch depends mainly on the frequency of the sound wave.</p>
+
+<ul>
+<li>Higher frequency produces a higher-pitched sound.</li>
+<li>Lower frequency produces a lower-pitched sound.</li>
+</ul>
+
+<p>Frequency is the number of complete vibrations or wave cycles per second. Its unit is the hertz (Hz).</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Two tuning forks produce sounds of 256 Hz and 512 Hz. Which produces the higher pitch?</p>
+<p><b>Step 1:</b> Compare their frequencies.</p>
+<p>512 Hz is greater than 256 Hz.</p>
+<p><b>Conclusion:</b> The 512 Hz tuning fork produces the higher-pitched sound.</p>`,
+  [
+    {
+      q: "Which sound has the higher pitch: 200 Hz or 600 Hz?",
+      hint: "Compare the frequencies.",
+      steps: [
+        "Higher frequency means higher pitch.",
+        "600 Hz is greater than 200 Hz."
+      ],
+      ans: "600 Hz",
+      explanation: "The sound with the higher frequency has the higher pitch."
+    },
+    {
+      q: "A sound's frequency decreases. What happens to its pitch?",
+      hint: "Pitch changes with frequency.",
+      steps: [
+        "Pitch depends on frequency.",
+        "A lower frequency corresponds to a lower pitch."
+      ],
+      ans: "It becomes lower",
+      explanation: "Lower frequency produces a lower-pitched sound."
+    },
+    {
+      q: "A source makes 400 complete vibrations in 2 seconds. Find its frequency.",
+      hint: "Frequency = number of vibrations ÷ time.",
+      steps: [
+        "f = N/t",
+        "f = 400/2",
+        "f = 200 Hz"
+      ],
+      ans: "200 Hz",
+      explanation: "Frequency is the number of complete vibrations per second."
+    }
+  ]
+);
+
+/* =========================
+   26. LOUDNESS AND AMPLITUDE
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Loudness of Sound",
+  `<h2>Loudness of Sound</h2>
+<p>Loudness describes how loud or quiet a sound seems to a listener. For the same general conditions, a sound wave with greater amplitude is usually heard as louder.</p>
+
+<p><b>Amplitude</b> is the maximum displacement of a vibrating particle from its equilibrium position.</p>
+
+<ul>
+<li>Greater amplitude generally means a louder sound.</li>
+<li>Smaller amplitude generally means a quieter sound.</li>
+</ul>
+
+<p>Do not confuse loudness with pitch: pitch is related to frequency, while loudness is related to amplitude and also depends on factors such as distance and the listener's hearing.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Two sounds have the same frequency, but one has a greater amplitude. Which is generally heard as louder?</p>
+<p><b>Step 1:</b> Their frequencies are equal, so their pitches are the same.</p>
+<p><b>Step 2:</b> One sound has a greater amplitude.</p>
+<p><b>Conclusion:</b> The sound with greater amplitude is generally heard as louder.</p>`,
+  [
+    {
+      q: "Two sounds have the same frequency. One has a greater amplitude. Which is generally louder?",
+      hint: "Loudness is associated with amplitude.",
+      steps: [
+        "Compare the amplitudes.",
+        "The sound with greater amplitude is generally louder."
+      ],
+      ans: "The sound with greater amplitude",
+      explanation: "Greater amplitude generally corresponds to greater perceived loudness."
+    },
+    {
+      q: "What happens to the loudness of a sound when its amplitude becomes smaller, all else being equal?",
+      hint: "Compare the size of the vibration.",
+      steps: [
+        "Smaller amplitude means a smaller vibration.",
+        "The sound is generally heard as quieter."
+      ],
+      ans: "It becomes quieter",
+      explanation: "Lower amplitude generally produces a quieter sound."
+    },
+    {
+      q: "A sound becomes louder, but its pitch stays the same. Which wave property most directly changed?",
+      hint: "Pitch relates to frequency; loudness relates to amplitude.",
+      steps: [
+        "Unchanged pitch suggests frequency has stayed the same.",
+        "A change in loudness is associated with a change in amplitude."
+      ],
+      ans: "Amplitude",
+      explanation: "Amplitude affects loudness, while frequency affects pitch."
+    }
+  ]
+);
+
+/* =========================
+   27. ECHOES
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Echoes and Reflection of Sound",
+  `<h2>Echoes and Reflection of Sound</h2>
+<p>An <b>echo</b> is a sound heard again after the original sound has reflected from a surface and returned to the listener.</p>
+
+<p>Large, hard surfaces such as cliffs and walls can reflect sound. A distinct echo is heard when the reflected sound reaches the listener sufficiently later than the original sound.</p>
+
+<h3>Calculating distance using an echo</h3>
+<p>The sound travels from the listener to the reflecting surface and then back again. Therefore, the total distance travelled by sound is twice the distance to the surface.</p>
+
+<p><b>Distance to surface:</b></p>
+<p>d = vt/2</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A person hears an echo 2 seconds after shouting. Take the speed of sound as 340 m/s. How far away is the reflecting surface?</p>
+<p><b>Step 1:</b> Total distance travelled by sound = vt.</p>
+<p>= 340 × 2 = 680 m</p>
+<p><b>Step 2:</b> The sound travels to the surface and back.</p>
+<p>Distance to surface = 680/2 = 340 m</p>
+<p><b>Answer:</b> 340 m.</p>`,
+  [
+    {
+      q: "What causes an echo?",
+      hint: "Think about what happens when sound meets a hard surface.",
+      steps: [
+        "Sound reaches a reflecting surface.",
+        "The sound is reflected back to the listener."
+      ],
+      ans: "Reflection of sound",
+      explanation: "An echo is reflected sound heard again."
+    },
+    {
+      q: "A person hears an echo 1 second after making a sound. If sound travels at 340 m/s, how far away is the reflecting surface?",
+      hint: "The sound makes a return journey, so divide vt by 2.",
+      steps: [
+        "Total distance = vt = 340 × 1 = 340 m",
+        "Distance to surface = 340/2",
+        "Distance = 170 m"
+      ],
+      ans: "170 m",
+      explanation: "The measured time includes the journey to the surface and back."
+    },
+    {
+      q: "Why is the total distance travelled by sound twice the distance to the reflecting surface when an echo returns to the same person?",
+      hint: "Count the outward and return journeys.",
+      steps: [
+        "Sound travels from the person to the surface.",
+        "It then travels from the surface back to the person.",
+        "The two journeys cover the same distance."
+      ],
+      ans: "Because sound travels to the surface and back",
+      explanation: "The echo time measures a round trip, not just the outward journey."
+    }
+  ]
+);
+
+/* =========================================================
+   BATCH 5: LIGHT AS A WAVE
+   One concept per screen
+========================================================= */
+
+/* =========================
+   28. NATURE OF LIGHT
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Nature of Light",
+  `<h2>Nature of Light</h2>
+<p>Light is a form of energy that enables us to see objects. In the wave model, light is a <b>transverse electromagnetic wave</b>.</p>
+
+<p>Unlike sound, light does not require particles of a material medium to travel. It can travel through a vacuum.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Why can sunlight reach Earth through space?</p>
+<p><b>Step 1:</b> Space is nearly a vacuum.</p>
+<p><b>Step 2:</b> Light is an electromagnetic wave and does not require a material medium.</p>
+<p><b>Conclusion:</b> Sunlight can travel through space and reach Earth.</p>`,
+  [
+    {
+      q: "What type of wave is light?",
+      hint: "Think of the two words used to classify light in the wave model.",
+      steps: [
+        "Light can travel through a vacuum.",
+        "It is classified as an electromagnetic wave.",
+        "Its oscillations are transverse."
+      ],
+      ans: "A transverse electromagnetic wave",
+      explanation: "Light is a transverse electromagnetic wave."
+    },
+    {
+      q: "Why can light travel through a vacuum?",
+      hint: "Does light need material particles to transmit it?",
+      steps: [
+        "A vacuum has no material particles.",
+        "Light does not require a material medium."
+      ],
+      ans: "It does not require a material medium",
+      explanation: "Electromagnetic waves can travel through a vacuum."
+    },
+    {
+      q: "Which can travel through a vacuum: sound or light?",
+      hint: "Compare a mechanical wave with an electromagnetic wave.",
+      steps: [
+        "Sound is a mechanical wave and requires a medium.",
+        "Light is electromagnetic and can travel through a vacuum."
+      ],
+      ans: "Light",
+      explanation: "Sound requires a material medium, but light does not."
+    }
+  ]
+);
+
+/* =========================
+   29. TRANSVERSE NATURE OF LIGHT
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Transverse Nature of Light",
+  `<h2>Transverse Nature of Light</h2>
+<p>Light is a transverse wave. In a transverse wave, the oscillations are perpendicular to the direction in which the wave travels.</p>
+
+<p>For electromagnetic waves, the electric and magnetic fields oscillate perpendicular to the direction of propagation. At secondary-school level, remember the defining relationship: <b>oscillation is at right angles to wave travel</b>.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Light travels horizontally. In a transverse wave, how are its oscillations oriented relative to its direction of travel?</p>
+<p><b>Step 1:</b> Identify the direction of propagation: horizontal.</p>
+<p><b>Step 2:</b> Transverse oscillations are perpendicular to propagation.</p>
+<p><b>Answer:</b> At right angles to the direction of travel.</p>`,
+  [
+    {
+      q: "What is the defining feature of a transverse wave?",
+      hint: "Compare the direction of oscillation with the direction of travel.",
+      steps: [
+        "Identify the direction the wave travels.",
+        "In a transverse wave, oscillations are perpendicular to that direction."
+      ],
+      ans: "Oscillations are perpendicular to the direction of travel",
+      explanation: "Perpendicular oscillations define a transverse wave."
+    },
+    {
+      q: "A light wave travels east. What is the relationship between its oscillations and its direction of travel?",
+      hint: "Use the defining property of transverse waves.",
+      steps: [
+        "The wave travels east.",
+        "Its oscillations are at right angles to its direction of travel."
+      ],
+      ans: "Perpendicular",
+      explanation: "Light is transverse, so its oscillations are perpendicular to propagation."
+    },
+    {
+      q: "Is light longitudinal or transverse?",
+      hint: "Remember the relationship between oscillation and propagation.",
+      steps: [
+        "Light is an electromagnetic wave.",
+        "Its oscillations are perpendicular to its direction of propagation."
+      ],
+      ans: "Transverse",
+      explanation: "Light is a transverse electromagnetic wave."
+    }
+  ]
+);
+
+/* =========================
+   30. LIGHT TRAVELLING THROUGH A VACUUM
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Propagation of Light Through a Vacuum",
+  `<h2>Propagation of Light Through a Vacuum</h2>
+<p>A vacuum is a region containing no material particles. Light can travel through a vacuum because it is an electromagnetic wave rather than a mechanical wave.</p>
+
+<p>The speed of light in a vacuum is approximately:</p>
+<p><b>c = 3.0 × 10<sup>8</sup> m/s</b></p>
+
+<p>Light travels more slowly in transparent materials such as glass and water than it does in a vacuum.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Light from a distant star crosses space before reaching Earth. Does it need air to make this journey?</p>
+<p><b>Step 1:</b> Space is nearly a vacuum.</p>
+<p><b>Step 2:</b> Light does not need air or another material medium.</p>
+<p><b>Conclusion:</b> No, light can cross space without air.</p>`,
+  [
+    {
+      q: "What is the approximate speed of light in a vacuum?",
+      hint: "Use the standard value in metres per second.",
+      steps: [
+        "The speed of light in a vacuum is represented by c.",
+        "Its approximate value is 300,000,000 m/s."
+      ],
+      ans: "3.0 × 10^8 m/s",
+      explanation: "The speed of light in a vacuum is approximately 3.0 × 10⁸ m/s."
+    },
+    {
+      q: "Does light require air to travel from the Sun to Earth?",
+      hint: "The space between the Sun and Earth is nearly a vacuum.",
+      steps: [
+        "Light is an electromagnetic wave.",
+        "Electromagnetic waves do not require a material medium."
+      ],
+      ans: "No",
+      explanation: "Sunlight travels through space without requiring air."
+    },
+    {
+      q: "In which does light travel faster: a vacuum or ordinary glass?",
+      hint: "Compare the standard speed in a vacuum with light's speed in a material.",
+      steps: [
+        "Light has its maximum speed in a vacuum.",
+        "It travels more slowly in ordinary glass."
+      ],
+      ans: "A vacuum",
+      explanation: "Light travels more slowly in glass than in a vacuum."
+    }
+  ]
+);
+
+/* =========================
+   31. WAVELENGTH OF LIGHT
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Wavelength of Light",
+  `<h2>Wavelength of Light</h2>
+<p>The <b>wavelength</b> of light is the distance between successive points that are in the same phase of the wave. For example, it is the distance from one crest to the next crest.</p>
+
+<p>Wavelength is represented by the Greek letter lambda (λ). Its SI unit is the metre (m), although very small wavelengths are often expressed in nanometres (nm).</p>
+
+<p><b>1 nm = 1 × 10<sup>-9</sup> m</b></p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A light wave has a wavelength of 600 nm. Express this wavelength in metres.</p>
+<p><b>Step 1:</b> Write the conversion.</p>
+<p>1 nm = 10<sup>-9</sup> m</p>
+<p><b>Step 2:</b> Multiply by 600.</p>
+<p>600 nm = 600 × 10<sup>-9</sup> m</p>
+<p><b>Step 3:</b> Write in standard form.</p>
+<p><b>Answer:</b> 6.0 × 10<sup>-7</sup> m.</p>`,
+  [
+    {
+      q: "What does the wavelength of a light wave measure?",
+      hint: "Consider the distance between two successive points in the same phase.",
+      steps: [
+        "Identify two successive crests or equivalent points.",
+        "Measure the distance between them."
+      ],
+      ans: "The distance between successive points in the same phase",
+      explanation: "Wavelength is the distance between successive points in the same phase."
+    },
+    {
+      q: "Convert 500 nm into metres.",
+      hint: "1 nm = 10^-9 m.",
+      steps: [
+        "500 nm = 500 × 10^-9 m",
+        "Write in standard form.",
+        "500 × 10^-9 = 5.0 × 10^-7 m"
+      ],
+      ans: "5.0 × 10^-7 m",
+      explanation: "Multiply the nanometre value by 10⁻⁹ to convert it to metres."
+    },
+    {
+      q: "Which symbol commonly represents wavelength?",
+      hint: "It is a Greek letter.",
+      steps: [
+        "The standard symbol for wavelength is lambda.",
+        "Lambda is written as λ."
+      ],
+      ans: "λ",
+      explanation: "Wavelength is represented by lambda, λ."
+    }
+  ]
+);
+
+/* =========================
+   32. FREQUENCY OF LIGHT
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Frequency of Light",
+  `<h2>Frequency of Light</h2>
+<p>The <b>frequency</b> of light is the number of complete wave cycles passing a fixed point each second.</p>
+
+<p>Frequency is represented by f and measured in hertz (Hz).</p>
+
+<p>Light with a higher frequency has a higher frequency value in hertz. In the visible spectrum, violet light has a higher frequency than red light.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A light wave completes 6 × 10<sup>14</sup> cycles each second. What is its frequency?</p>
+<p><b>Step 1:</b> Frequency is the number of cycles per second.</p>
+<p><b>Step 2:</b> The wave completes 6 × 10<sup>14</sup> cycles per second.</p>
+<p><b>Answer:</b> 6 × 10<sup>14</sup> Hz.</p>`,
+  [
+    {
+      q: "What does the frequency of light measure?",
+      hint: "Count the cycles passing a fixed point in one second.",
+      steps: [
+        "Frequency counts complete cycles.",
+        "The count is measured per second."
+      ],
+      ans: "The number of complete cycles passing a point per second",
+      explanation: "Frequency measures cycles per second."
+    },
+    {
+      q: "A light wave has a frequency of 4 × 10^14 Hz. How many cycles pass a fixed point in one second?",
+      hint: "The unit hertz means cycles per second.",
+      steps: [
+        "1 Hz means one cycle per second.",
+        "4 × 10^14 Hz means 4 × 10^14 cycles per second."
+      ],
+      ans: "4 × 10^14 cycles",
+      explanation: "The numerical frequency gives the number of cycles passing each second."
+    },
+    {
+      q: "Which visible light has the higher frequency: red or violet?",
+      hint: "Think of the order of colours in the visible spectrum.",
+      steps: [
+        "Visible light ranges from red through to violet.",
+        "Frequency increases towards violet."
+      ],
+      ans: "Violet",
+      explanation: "Violet light has a higher frequency than red light."
+    }
+  ]
+);
+
+/* =========================
+   33. SPEED, FREQUENCY AND WAVELENGTH OF LIGHT
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Light Wave Equation",
+  `<h2>Light Wave Equation</h2>
+<p>Wave speed, frequency and wavelength are related by:</p>
+
+<p><b>v = fλ</b></p>
+
+<ul>
+<li>v = wave speed in metres per second (m/s)</li>
+<li>f = frequency in hertz (Hz)</li>
+<li>λ = wavelength in metres (m)</li>
+</ul>
+
+<p>For light in a vacuum, use <b>c = fλ</b>, where c is approximately 3.0 × 10<sup>8</sup> m/s.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Light travels in a vacuum at 3.0 × 10<sup>8</sup> m/s and has a frequency of 6.0 × 10<sup>14</sup> Hz. Find its wavelength.</p>
+<p><b>Step 1:</b> Start with c = fλ.</p>
+<p><b>Step 2:</b> Rearrange to make wavelength the subject.</p>
+<p>λ = c/f</p>
+<p><b>Step 3:</b> Substitute the values.</p>
+<p>λ = (3.0 × 10<sup>8</sup>)/(6.0 × 10<sup>14</sup>)</p>
+<p><b>Answer:</b> λ = 5.0 × 10<sup>-7</sup> m.</p>`,
+  [
+    {
+      q: "Light travels in a vacuum at 3.0 × 10^8 m/s and has a frequency of 5.0 × 10^14 Hz. Calculate its wavelength.",
+      hint: "Rearrange c = fλ to obtain λ = c/f.",
+      steps: [
+        "λ = c/f",
+        "λ = (3.0 × 10^8)/(5.0 × 10^14)",
+        "λ = 0.6 × 10^-6 m",
+        "λ = 6.0 × 10^-7 m"
+      ],
+      ans: "6.0 × 10^-7 m",
+      explanation: "Divide the speed of light by the frequency to obtain wavelength."
+    },
+    {
+      q: "A light wave in a vacuum has a wavelength of 4.0 × 10^-7 m. Calculate its frequency. Use c = 3.0 × 10^8 m/s.",
+      hint: "Rearrange c = fλ to obtain f = c/λ.",
+      steps: [
+        "f = c/λ",
+        "f = (3.0 × 10^8)/(4.0 × 10^-7)",
+        "f = 0.75 × 10^15 Hz",
+        "f = 7.5 × 10^14 Hz"
+      ],
+      ans: "7.5 × 10^14 Hz",
+      explanation: "Frequency equals wave speed divided by wavelength."
+    },
+    {
+      q: "Light travels from a vacuum into glass. Its frequency remains unchanged while its speed decreases. What happens to its wavelength?",
+      hint: "Use v = fλ and keep frequency constant.",
+      steps: [
+        "v = fλ",
+        "Rearrange to λ = v/f.",
+        "If speed decreases and frequency stays constant, wavelength decreases."
+      ],
+      ans: "It decreases",
+      explanation: "The wavelength changes with speed when the frequency remains constant."
+    }
+  ]
+);
+
+/* =========================
+   34. VISIBLE LIGHT SPECTRUM
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Visible Light Spectrum",
+  `<h2>Visible Light Spectrum</h2>
+<p>Visible light is the part of the electromagnetic spectrum that the human eye can detect.</p>
+
+<p>The visible colours are commonly listed in this order:</p>
+<p><b>Red, Orange, Yellow, Green, Blue, Indigo, Violet</b></p>
+
+<p>From red towards violet:</p>
+<ul>
+<li>Wavelength decreases.</li>
+<li>Frequency increases.</li>
+</ul>
+
+<p>Red light has a longer wavelength and lower frequency than violet light.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Which has a longer wavelength, red light or violet light?</p>
+<p><b>Step 1:</b> Recall the order of the visible spectrum.</p>
+<p><b>Step 2:</b> Wavelength decreases from red towards violet.</p>
+<p><b>Answer:</b> Red light has the longer wavelength.</p>`,
+  [
+    {
+      q: "Which visible colour has the longest wavelength: red or violet?",
+      hint: "Wavelength decreases from red towards violet.",
+      steps: [
+        "Red is at the long-wavelength end of the visible spectrum.",
+        "Violet is at the short-wavelength end."
+      ],
+      ans: "Red",
+      explanation: "Red light has a longer wavelength than violet light."
+    },
+    {
+      q: "Which has the higher frequency: red light or violet light?",
+      hint: "Frequency increases from red towards violet.",
+      steps: [
+        "Red light has a lower frequency.",
+        "Violet light has a higher frequency."
+      ],
+      ans: "Violet",
+      explanation: "Violet light has a higher frequency than red light."
+    },
+    {
+      q: "Name the part of the electromagnetic spectrum that the human eye can detect.",
+      hint: "It includes the colours from red to violet.",
+      steps: [
+        "The eye detects a limited range of electromagnetic radiation.",
+        "That range is called visible light."
+      ],
+      ans: "Visible light",
+      explanation: "Visible light is the electromagnetic radiation detectable by the human eye."
+    }
+  ]
+);
+
+/* =========================================================
+   BATCH 6: REFLECTION OF LIGHT
+   One concept per screen
+========================================================= */
+
+/* =========================
+   35. REFLECTION OF LIGHT
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Reflection of Light",
+  `<h2>Reflection of Light</h2>
+<p><b>Reflection</b> is the bouncing back of light into the original medium after it strikes a surface.</p>
+
+<p>When light strikes a mirror, some of the incident light is reflected. The incoming ray is called the <b>incident ray</b>, and the ray that leaves the surface is called the <b>reflected ray</b>.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A ray of light strikes a plane mirror and bounces back into the air. What process has occurred?</p>
+<p><b>Step 1:</b> Light travels towards the mirror.</p>
+<p><b>Step 2:</b> It returns to the original medium after striking the surface.</p>
+<p><b>Answer:</b> Reflection of light.</p>`,
+  [
+    {
+      q: "What is reflection of light?",
+      hint: "What happens to light when it strikes a reflecting surface?",
+      steps: [
+        "Light travels towards a surface.",
+        "It bounces back into the original medium."
+      ],
+      ans: "The bouncing back of light into the original medium",
+      explanation: "Reflection occurs when light returns into the medium from which it came."
+    },
+    {
+      q: "What is the incoming ray that strikes a reflecting surface called?",
+      hint: "It is the ray before reflection occurs.",
+      steps: [
+        "Identify the ray travelling towards the surface.",
+        "That ray is called the incident ray."
+      ],
+      ans: "Incident ray",
+      explanation: "The incident ray approaches and strikes the reflecting surface."
+    },
+    {
+      q: "What is the ray that leaves a surface after reflection called?",
+      hint: "It is the outgoing ray.",
+      steps: [
+        "Light strikes the surface.",
+        "The ray that leaves after bouncing back is the reflected ray."
+      ],
+      ans: "Reflected ray",
+      explanation: "The reflected ray travels away from the reflecting surface."
+    }
+  ]
+);
+
+/* =========================
+   36. THE NORMAL AND ANGLES
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "The Normal and Angles of Reflection",
+  `<h2>The Normal and Angles of Reflection</h2>
+<p>The <b>normal</b> is an imaginary line drawn perpendicular to a reflecting surface at the point where the incident ray strikes it.</p>
+
+<p>The angle of incidence (i) is the angle between the incident ray and the normal. The angle of reflection (r) is the angle between the reflected ray and the normal.</p>
+
+<p><b>Important:</b> Both angles are measured from the normal, not from the mirror surface.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A ray makes an angle of 30° with the mirror surface. Find its angle of incidence.</p>
+<p><b>Step 1:</b> The normal is perpendicular to the mirror, so it makes an angle of 90° with the surface.</p>
+<p><b>Step 2:</b> The ray's angle with the normal is 90° − 30°.</p>
+<p><b>Answer:</b> 60°.</p>`,
+  [
+    {
+      q: "What is the normal to a reflecting surface?",
+      hint: "Think about the angle it makes with the surface.",
+      steps: [
+        "The normal is drawn at the point of incidence.",
+        "It is perpendicular to the surface."
+      ],
+      ans: "A line perpendicular to the surface at the point of incidence",
+      explanation: "The normal makes an angle of 90° with the reflecting surface."
+    },
+    {
+      q: "A ray makes an angle of 25° with a plane mirror. What is its angle with the normal?",
+      hint: "The mirror and normal form a 90° angle.",
+      steps: [
+        "Angle with normal = 90° − angle with surface.",
+        "Angle with normal = 90° − 25°.",
+        "Angle with normal = 65°."
+      ],
+      ans: "65°",
+      explanation: "The angle measured from the normal is complementary to the angle measured from the surface."
+    },
+    {
+      q: "A ray makes an angle of 40° with the normal. What is its angle with the mirror surface?",
+      hint: "The normal is perpendicular to the mirror.",
+      steps: [
+        "The total angle between the normal and the surface is 90°.",
+        "Angle with surface = 90° − 40°.",
+        "Angle with surface = 50°."
+      ],
+      ans: "50°",
+      explanation: "The angles measured from the normal and the surface add up to 90°."
+    }
+  ]
+);
+
+/* =========================
+   37. LAWS OF REFLECTION
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Laws of Reflection",
+  `<h2>Laws of Reflection</h2>
+<p>Reflection follows two laws:</p>
+
+<ol>
+<li>The angle of incidence equals the angle of reflection: <b>i = r</b>.</li>
+<li>The incident ray, the reflected ray and the normal at the point of incidence lie in the same plane.</li>
+</ol>
+
+<p>Remember that both angles are measured from the normal.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A ray strikes a plane mirror at an angle of incidence of 35°. Find the angle of reflection.</p>
+<p><b>Step 1:</b> Apply the first law of reflection.</p>
+<p>i = r</p>
+<p><b>Step 2:</b> Substitute i = 35°.</p>
+<p>r = 35°</p>
+<p><b>Answer:</b> 35°.</p>`,
+  [
+    {
+      q: "State the first law of reflection.",
+      hint: "Compare the two angles measured from the normal.",
+      steps: [
+        "The angle of incidence is i.",
+        "The angle of reflection is r.",
+        "The first law states that i = r."
+      ],
+      ans: "The angle of incidence equals the angle of reflection",
+      explanation: "For reflection at a surface, i = r."
+    },
+    {
+      q: "The angle of incidence is 48°. Find the angle of reflection.",
+      hint: "Use i = r.",
+      steps: [
+        "i = r",
+        "i = 48°",
+        "Therefore r = 48°."
+      ],
+      ans: "48°",
+      explanation: "The angle of reflection equals the angle of incidence."
+    },
+    {
+      q: "Which three lie in the same plane during reflection?",
+      hint: "Name the two rays and the reference line.",
+      steps: [
+        "Identify the incident ray.",
+        "Identify the reflected ray.",
+        "Include the normal at the point of incidence."
+      ],
+      ans: "The incident ray, reflected ray and normal",
+      explanation: "These three lie in the same plane according to the second law of reflection."
+    }
+  ]
+);
+
+/* =========================
+   38. ANGLE BETWEEN INCIDENT
+   AND REFLECTED RAYS
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Angle Between Incident and Reflected Rays",
+  `<h2>Angle Between Incident and Reflected Rays</h2>
+<p>For reflection at a plane mirror, the angle of incidence equals the angle of reflection.</p>
+
+<p>If the angle of incidence is i, the angle between the incident and reflected rays on the side of the incoming light is:</p>
+
+<p><b>Angle between rays = 2i</b></p>
+
+<p>This relationship applies when i is measured from the normal.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A ray strikes a plane mirror at an angle of incidence of 30°. Find the angle between the incident and reflected rays.</p>
+<p><b>Step 1:</b> Angle of reflection = 30°.</p>
+<p><b>Step 2:</b> Angle between the rays = 30° + 30°.</p>
+<p><b>Answer:</b> 60°.</p>`,
+  [
+    {
+      q: "A ray has an angle of incidence of 20°. Find the angle between the incident and reflected rays.",
+      hint: "The angle between the rays is twice the angle of incidence.",
+      steps: [
+        "Angle between rays = 2i",
+        "= 2 × 20°",
+        "= 40°"
+      ],
+      ans: "40°",
+      explanation: "The incident and reflected rays make equal angles with the normal."
+    },
+    {
+      q: "The angle between the incident and reflected rays is 100°. Find the angle of incidence.",
+      hint: "Divide the angle between the rays by 2.",
+      steps: [
+        "Angle between rays = 2i",
+        "100° = 2i",
+        "i = 100° ÷ 2 = 50°"
+      ],
+      ans: "50°",
+      explanation: "The angle of incidence is half the angle between the two rays."
+    },
+    {
+      q: "A ray has an angle of incidence of 45°. What is its angle of reflection, and what is the angle between the two rays?",
+      hint: "Apply i = r, then add the two angles.",
+      steps: [
+        "Angle of reflection = 45°.",
+        "Angle between rays = 45° + 45°.",
+        "Angle between rays = 90°."
+      ],
+      ans: "Angle of reflection = 45°; angle between rays = 90°",
+      explanation: "The reflection angle equals the incidence angle, so the angle between the rays is 2i."
+    }
+  ]
+);
+
+/* =========================
+   39. IMAGE FORMATION IN A
+   PLANE MIRROR
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Image Formation in a Plane Mirror",
+  `<h2>Image Formation in a Plane Mirror</h2>
+<p>A plane mirror forms an image when light rays from an object reflect from the mirror and appear to come from behind it.</p>
+
+<p>The reflected rays do not actually meet behind the mirror. Their backward extensions appear to meet there, forming a <b>virtual image</b>.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Why can a person see an image behind a plane mirror even though light does not actually travel from the image to the eye?</p>
+<p><b>Step 1:</b> Light from the person reflects from the mirror into the eye.</p>
+<p><b>Step 2:</b> The brain traces the reflected rays backwards in straight lines.</p>
+<p><b>Conclusion:</b> The rays appear to originate behind the mirror, producing a virtual image.</p>`,
+  [
+    {
+      q: "Why is the image in a plane mirror called virtual?",
+      hint: "Do the reflected rays actually meet behind the mirror?",
+      steps: [
+        "The reflected rays enter the observer's eye.",
+        "Their backward extensions appear to meet behind the mirror.",
+        "The rays do not actually meet at the image position."
+      ],
+      ans: "The reflected rays only appear to come from behind the mirror",
+      explanation: "A virtual image is formed where rays appear to originate, rather than where they actually meet."
+    },
+    {
+      q: "Where does the image of an object appear in a plane mirror?",
+      hint: "Consider the apparent position relative to the mirror.",
+      steps: [
+        "Light reflects from the mirror into the observer's eye.",
+        "The reflected rays appear to originate from behind the mirror."
+      ],
+      ans: "Behind the mirror",
+      explanation: "The image appears behind the reflecting surface."
+    },
+    {
+      q: "Do light rays from an object actually pass through the virtual image behind a plane mirror?",
+      hint: "Distinguish a real meeting point from an apparent meeting point.",
+      steps: [
+        "The rays reflect towards the observer.",
+        "Only their backward extensions meet at the apparent image position."
+      ],
+      ans: "No",
+      explanation: "A virtual image is not formed by the actual meeting of light rays."
+    }
+  ]
+);
+
+/* =========================
+   40. PROPERTIES OF A PLANE-
+   MIRROR IMAGE
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Properties of a Plane-Mirror Image",
+  `<h2>Properties of a Plane-Mirror Image</h2>
+<p>The image formed by a plane mirror has these properties:</p>
+
+<ul>
+<li><b>Virtual:</b> it appears behind the mirror.</li>
+<li><b>Upright:</b> it has the same vertical orientation as the object.</li>
+<li><b>Same size:</b> the image height equals the object height.</li>
+<li><b>Same distance:</b> the image is as far behind the mirror as the object is in front.</li>
+<li><b>Laterally inverted:</b> left and right appear reversed.</li>
+</ul>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> An object is 2 m in front of a plane mirror. How far behind the mirror is its image?</p>
+<p><b>Step 1:</b> A plane-mirror image is as far behind the mirror as the object is in front.</p>
+<p><b>Step 2:</b> Object distance = 2 m.</p>
+<p><b>Answer:</b> Image distance = 2 m behind the mirror.</p>`,
+  [
+    {
+      q: "An object is 3 m in front of a plane mirror. How far behind the mirror is its image?",
+      hint: "Image distance equals object distance for a plane mirror.",
+      steps: [
+        "Object distance = 3 m.",
+        "Image distance = object distance.",
+        "Image distance = 3 m."
+      ],
+      ans: "3 m",
+      explanation: "The image is the same distance behind the mirror as the object is in front."
+    },
+    {
+      q: "An object is 12 cm tall in front of a plane mirror. How tall is its image?",
+      hint: "Compare object height and image height.",
+      steps: [
+        "A plane mirror forms an image of the same size as the object.",
+        "Image height = 12 cm."
+      ],
+      ans: "12 cm",
+      explanation: "A plane-mirror image has the same height as the object."
+    },
+    {
+      q: "Which description is correct for the image formed by a plane mirror?",
+      hint: "Recall whether it is real or virtual, and whether it is upright or inverted.",
+      steps: [
+        "The image appears behind the mirror.",
+        "It is virtual and upright.",
+        "It is the same size as the object."
+      ],
+      ans: "Virtual, upright and the same size as the object",
+      explanation: "These are key properties of an image formed by a plane mirror."
+    }
+  ]
+);
+
+/* =========================
+   41. LATERAL INVERSION
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Lateral Inversion in a Plane Mirror",
+  `<h2>Lateral Inversion</h2>
+<p><b>Lateral inversion</b> is the apparent reversal of left and right in the image formed by a plane mirror.</p>
+
+<p>For example, a person's right hand appears on the image's left-hand side when the person faces a mirror. The image is not upside down; it remains upright.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A person raises their right hand while facing a plane mirror. Which hand appears raised on the corresponding side of the image?</p>
+<p><b>Step 1:</b> A plane mirror produces lateral inversion.</p>
+<p><b>Step 2:</b> The person's right side appears reversed in the image.</p>
+<p><b>Answer:</b> The image appears to raise its left hand.</p>`,
+  [
+    {
+      q: "What is lateral inversion?",
+      hint: "Think about how left and right appear in a plane mirror.",
+      steps: [
+        "Look at the image in the mirror.",
+        "The left-right appearance is reversed."
+      ],
+      ans: "The apparent reversal of left and right",
+      explanation: "Lateral inversion is the apparent left-right reversal in a plane-mirror image."
+    },
+    {
+      q: "A person raises their right hand while facing a plane mirror. Which hand appears raised in the image?",
+      hint: "Apply left-right reversal.",
+      steps: [
+        "A plane mirror laterally inverts the image.",
+        "The person's right hand appears as the image's left hand."
+      ],
+      ans: "The left hand",
+      explanation: "The image appears to raise its left hand."
+    },
+    {
+      q: "Does lateral inversion mean that the image in a plane mirror is upside down?",
+      hint: "Distinguish left-right reversal from vertical orientation.",
+      steps: [
+        "Lateral inversion concerns the left-right appearance.",
+        "A plane-mirror image remains upright."
+      ],
+      ans: "No",
+      explanation: "Lateral inversion reverses left and right, not the image's upright orientation."
+    }
+  ]
+);
+
+/* =========================================================
+   BATCH 7: REFRACTION OF LIGHT
+   One concept per screen
+========================================================= */
+
+/* =========================
+   42. MEANING OF REFRACTION
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Refraction of Light",
+  `<h2>Refraction of Light</h2>
+<p><b>Refraction</b> is the change in direction of light as it passes obliquely from one transparent medium into another because its speed changes.</p>
+
+<p>For example, light changes speed when it passes from air into glass. If it enters at an angle to the normal, its direction also changes.</p>
+
+<p><b>Important:</b> Refraction is caused by a change in wave speed. Light does not always bend: when it enters along the normal, its speed changes but its direction remains unchanged.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A ray of light passes obliquely from air into glass and changes direction. What is the phenomenon called?</p>
+<p><b>Step 1:</b> The ray crosses from one medium into another.</p>
+<p><b>Step 2:</b> Its speed changes and, because it enters obliquely, its direction changes.</p>
+<p><b>Answer:</b> Refraction.</p>`,
+  [
+    {
+      q: "What is refraction of light?",
+      hint: "Think about what happens when light crosses into another medium.",
+      steps: [
+        "Light crosses from one medium into another.",
+        "Its speed changes.",
+        "If it enters obliquely, its direction changes."
+      ],
+      ans: "The change in direction of light due to a change in speed when entering another medium obliquely",
+      explanation: "Refraction results from a change in light's speed between media."
+    },
+    {
+      q: "What causes light to refract when it passes obliquely from air into glass?",
+      hint: "Consider whether light travels at the same speed in both media.",
+      steps: [
+        "Light travels at different speeds in air and glass.",
+        "The change in speed at an oblique boundary changes its direction."
+      ],
+      ans: "A change in speed",
+      explanation: "The change in speed causes the ray to change direction at an oblique boundary."
+    },
+    {
+      q: "Does light always change direction when it enters a different medium?",
+      hint: "Consider a ray travelling along the normal.",
+      steps: [
+        "Light changes speed when entering a different optical medium.",
+        "At normal incidence, it does not bend away from its original direction."
+      ],
+      ans: "No",
+      explanation: "At normal incidence, speed changes but direction remains unchanged."
+    }
+  ]
+);
+
+/* =========================
+   43. REFRACTION TOWARDS
+   THE NORMAL
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Refraction Towards the Normal",
+  `<h2>Refraction Towards the Normal</h2>
+<p>When light passes obliquely from a less optically dense medium, such as air, into a more optically dense medium, such as glass, it slows down and bends <b>towards the normal</b>.</p>
+
+<p>The angle of refraction is smaller than the angle of incidence:</p>
+<p><b>r < i</b></p>
+
+<p>Optical density describes how a medium affects light's speed. It does not simply mean how physically dense the material is.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A ray enters glass obliquely from air. Its angle of incidence is 50°. Which way does it bend?</p>
+<p><b>Step 1:</b> Light enters glass from air.</p>
+<p><b>Step 2:</b> It slows down in the glass.</p>
+<p><b>Conclusion:</b> It bends towards the normal, so the refracted angle is less than 50°.</p>`,
+  [
+    {
+      q: "Light enters glass obliquely from air. Towards which does it bend?",
+      hint: "Light slows down when it enters glass from air.",
+      steps: [
+        "Light enters a more optically dense medium.",
+        "Its speed decreases.",
+        "It bends towards the normal."
+      ],
+      ans: "Towards the normal",
+      explanation: "Light slows down and bends towards the normal when entering glass obliquely from air."
+    },
+    {
+      q: "A ray enters glass from air with an angle of incidence of 40°. Which is more likely to be the refracted angle: 25° or 55°?",
+      hint: "The refracted angle is smaller when light bends towards the normal.",
+      steps: [
+        "Light enters glass from air.",
+        "It bends towards the normal.",
+        "The refracted angle must be smaller than 40°."
+      ],
+      ans: "25°",
+      explanation: "A refracted angle of 25° is smaller than the incidence angle of 40°."
+    },
+    {
+      q: "Light slows down as it enters a new medium obliquely. In the usual air-to-glass case, does it bend towards or away from the normal?",
+      hint: "Recall the direction of bending when light enters glass from air.",
+      steps: [
+        "Light slows down in glass.",
+        "The ray bends towards the normal."
+      ],
+      ans: "Towards the normal",
+      explanation: "For oblique incidence from air into glass, light bends towards the normal."
+    }
+  ]
+);
+
+/* =========================
+   44. REFRACTION AWAY FROM
+   THE NORMAL
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Refraction Away from the Normal",
+  `<h2>Refraction Away from the Normal</h2>
+<p>When light passes obliquely from a more optically dense medium, such as glass, into a less optically dense medium, such as air, it speeds up and bends <b>away from the normal</b>.</p>
+
+<p>The angle of refraction is greater than the angle of incidence:</p>
+<p><b>r > i</b></p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A ray travels obliquely from glass into air with an angle of incidence of 30°. Explain how it bends.</p>
+<p><b>Step 1:</b> Light moves from glass into air.</p>
+<p><b>Step 2:</b> Its speed increases.</p>
+<p><b>Conclusion:</b> It bends away from the normal, so the refracted angle is greater than 30° if the ray emerges into air.</p>`,
+  [
+    {
+      q: "Light passes obliquely from glass into air. Which way does it bend?",
+      hint: "Light speeds up when it passes from glass into air.",
+      steps: [
+        "Light enters a less optically dense medium.",
+        "Its speed increases.",
+        "It bends away from the normal."
+      ],
+      ans: "Away from the normal",
+      explanation: "Light speeds up and bends away from the normal when entering air obliquely from glass."
+    },
+    {
+      q: "A ray travels from glass into air at an incidence angle of 35°. Which is more likely to be the refracted angle: 20° or 50°?",
+      hint: "The ray bends away from the normal.",
+      steps: [
+        "Light passes from glass into air.",
+        "It bends away from the normal.",
+        "The refracted angle is greater than 35°."
+      ],
+      ans: "50°",
+      explanation: "The refracted angle is greater than the incidence angle in this case."
+    },
+    {
+      q: "When light passes obliquely from glass into air and emerges, what happens to its speed?",
+      hint: "Compare light's speed in glass with its speed in air.",
+      steps: [
+        "Light travels more slowly in glass than in air.",
+        "On entering air, its speed increases."
+      ],
+      ans: "It increases",
+      explanation: "Light travels faster in air than in glass."
+    }
+  ]
+);
+
+/* =========================
+   45. REFRACTION AT NORMAL
+   INCIDENCE
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Refraction at Normal Incidence",
+  `<h2>Refraction at Normal Incidence</h2>
+<p><b>Normal incidence</b> occurs when light strikes a boundary along the normal, so the angle of incidence is 0°.</p>
+
+<p>At normal incidence, light changes speed when it enters a different medium, but it does not change direction. Its angle in the new medium remains 0° relative to the normal.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A light ray enters a glass block perpendicularly to its surface. What is its angle of refraction?</p>
+<p><b>Step 1:</b> The ray enters along the normal.</p>
+<p><b>Step 2:</b> Its angle of incidence is 0°.</p>
+<p><b>Step 3:</b> It continues along the normal.</p>
+<p><b>Answer:</b> 0°.</p>`,
+  [
+    {
+      q: "What is the angle of incidence when light strikes a boundary along the normal?",
+      hint: "The angle is measured between the ray and the normal.",
+      steps: [
+        "The ray travels in the same direction as the normal.",
+        "The angle between them is 0°."
+      ],
+      ans: "0°",
+      explanation: "At normal incidence, the incident ray and normal lie along the same line."
+    },
+    {
+      q: "A ray enters glass at normal incidence. What is its angle of refraction?",
+      hint: "It continues along the normal.",
+      steps: [
+        "The angle of incidence is 0°.",
+        "The ray does not bend away from the normal.",
+        "The angle of refraction is 0°."
+      ],
+      ans: "0°",
+      explanation: "At normal incidence, the ray continues straight along the normal."
+    },
+    {
+      q: "When light enters glass at normal incidence, does its speed change?",
+      hint: "No bending does not necessarily mean no change in speed.",
+      steps: [
+        "Light travels at different speeds in air and glass.",
+        "At normal incidence, it changes speed without changing direction."
+      ],
+      ans: "Yes",
+      explanation: "The speed changes at the boundary even though the ray does not bend."
+    }
+  ]
+);
+
+/* =========================
+   46. ABSOLUTE REFRACTIVE
+   INDEX
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Refractive Index",
+  `<h2>Refractive Index</h2>
+<p>The absolute refractive index of a medium compares the speed of light in a vacuum with its speed in that medium.</p>
+
+<p><b>Formula:</b></p>
+<p><b>n = c/v</b></p>
+
+<ul>
+<li>n = absolute refractive index (no unit)</li>
+<li>c = speed of light in a vacuum</li>
+<li>v = speed of light in the medium</li>
+</ul>
+
+<p>A higher refractive index means that light travels more slowly in that medium.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Light travels through a material at 2.0 × 10<sup>8</sup> m/s. Calculate its absolute refractive index. Take c = 3.0 × 10<sup>8</sup> m/s.</p>
+<p><b>Step 1:</b> Use n = c/v.</p>
+<p><b>Step 2:</b> Substitute the values.</p>
+<p>n = (3.0 × 10<sup>8</sup>)/(2.0 × 10<sup>8</sup>)</p>
+<p><b>Answer:</b> n = 1.5.</p>`,
+  [
+    {
+      q: "Write the formula for the absolute refractive index of a medium.",
+      hint: "Compare light's speed in a vacuum with its speed in the medium.",
+      steps: [
+        "The speed in a vacuum is c.",
+        "The speed in the medium is v.",
+        "Divide c by v."
+      ],
+      ans: "n = c/v",
+      explanation: "Absolute refractive index equals the speed of light in a vacuum divided by its speed in the medium."
+    },
+    {
+      q: "Light travels in a material at 2.0 × 10^8 m/s. Calculate its refractive index using c = 3.0 × 10^8 m/s.",
+      hint: "Use n = c/v.",
+      steps: [
+        "n = c/v",
+        "n = (3.0 × 10^8)/(2.0 × 10^8)",
+        "n = 1.5"
+      ],
+      ans: "1.5",
+      explanation: "Dividing the vacuum speed by the material speed gives 1.5."
+    },
+    {
+      q: "Light travels more slowly in material A than in material B. Which material has the higher absolute refractive index?",
+      hint: "The refractive index is inversely related to speed in the medium.",
+      steps: [
+        "n = c/v.",
+        "The vacuum speed c is constant.",
+        "A smaller medium speed v gives a larger refractive index."
+      ],
+      ans: "Material A",
+      explanation: "The material in which light travels more slowly has the higher absolute refractive index."
+    }
+  ]
+);
+
+/* =========================
+   47. SNELL'S LAW
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Snell's Law",
+  `<h2>Snell's Law</h2>
+<p>Snell's law relates the angles of incidence and refraction to the refractive indices of two media.</p>
+
+<p><b>n₁ sin i = n₂ sin r</b></p>
+
+<ul>
+<li>n₁ = refractive index of the first medium</li>
+<li>n₂ = refractive index of the second medium</li>
+<li>i = angle of incidence</li>
+<li>r = angle of refraction</li>
+</ul>
+
+<p>Angles are measured from the normal. When light travels from air into a material, the refractive index of air is often approximated as 1.0 for school calculations.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Light travels from air into glass. The angle of incidence is 30° and the angle of refraction is 20°. Calculate the refractive index of the glass, taking the refractive index of air as 1.0.</p>
+<p><b>Step 1:</b> Use n₁ sin i = n₂ sin r.</p>
+<p><b>Step 2:</b> Rearrange: n₂ = n₁ sin i / sin r.</p>
+<p><b>Step 3:</b> Substitute: n₂ = (1.0 × sin 30°) / sin 20°.</p>
+<p>n₂ ≈ 0.5 / 0.342</p>
+<p><b>Answer:</b> n₂ ≈ 1.46.</p>`,
+  [
+    {
+      q: "Write Snell's law for light passing between two media.",
+      hint: "Include both refractive indices and both angles.",
+      steps: [
+        "The first medium has index n₁ and incidence angle i.",
+        "The second medium has index n₂ and refraction angle r.",
+        "Equate the products of index and sine of angle."
+      ],
+      ans: "n₁ sin i = n₂ sin r",
+      explanation: "Snell's law relates refractive indices and the sine of the angles."
+    },
+    {
+      q: "Light travels from air into glass. Take n_air = 1.0, i = 30° and r = 20°. Calculate the refractive index of the glass.",
+      hint: "Rearrange Snell's law to n_glass = n_air sin i / sin r.",
+      steps: [
+        "n_glass = n_air sin i / sin r",
+        "n_glass = sin 30° / sin 20°",
+        "n_glass ≈ 0.500 / 0.342",
+        "n_glass ≈ 1.46"
+      ],
+      ans: "1.46",
+      explanation: "Using Snell's law gives a refractive index of approximately 1.46."
+    },
+    {
+      q: "When applying Snell's law, from which line are the angles of incidence and refraction measured?",
+      hint: "Use the line perpendicular to the boundary.",
+      steps: [
+        "Draw the normal at the point where light meets the boundary.",
+        "Measure both angles from that normal."
+      ],
+      ans: "The normal",
+      explanation: "Snell's law uses angles measured from the normal, not from the surface."
+    }
+  ]
+);
+
+/* =========================
+   48. APPARENT DEPTH
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Apparent Depth Due to Refraction",
+  `<h2>Apparent Depth</h2>
+<p>When an object under water is viewed from air, light refracts as it leaves the water. The object can appear closer to the surface than it really is.</p>
+
+<p>For viewing nearly perpendicular to a flat water surface, the apparent depth is less than the real depth.</p>
+
+<p>For an object in water viewed from air, the approximate relationship is:</p>
+<p><b>Refractive index ≈ real depth / apparent depth</b></p>
+
+<p>This approximation assumes near-normal viewing and a flat boundary.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A pool has a real depth of 2.0 m and appears to be 1.5 m deep when viewed from above. Estimate the refractive index of the water.</p>
+<p><b>Step 1:</b> Use n ≈ real depth / apparent depth.</p>
+<p><b>Step 2:</b> n ≈ 2.0 / 1.5.</p>
+<p><b>Answer:</b> n ≈ 1.33.</p>`,
+  [
+    {
+      q: "When viewed from above the water, does the bottom of a pool usually appear shallower or deeper than it really is?",
+      hint: "Light refracts as it leaves water and enters air.",
+      steps: [
+        "Light from the pool bottom refracts at the surface.",
+        "The bottom appears closer to the surface than its real position."
+      ],
+      ans: "Shallower",
+      explanation: "The apparent depth is less than the real depth when viewed from air near normally."
+    },
+    {
+      q: "A pool's real depth is 3.0 m and its apparent depth is 2.0 m. Estimate the refractive index of the water.",
+      hint: "Use n ≈ real depth ÷ apparent depth.",
+      steps: [
+        "n ≈ real depth / apparent depth",
+        "n ≈ 3.0 / 2.0",
+        "n ≈ 1.5"
+      ],
+      ans: "1.5",
+      explanation: "The approximate refractive index is the real depth divided by the apparent depth."
+    },
+    {
+      q: "An object underwater appears 1.2 m below the surface. If the refractive index of the water is 1.33, estimate its real depth.",
+      hint: "Rearrange n ≈ real depth / apparent depth.",
+      steps: [
+        "Real depth ≈ n × apparent depth",
+        "Real depth ≈ 1.33 × 1.2",
+        "Real depth ≈ 1.596 m",
+        "To 2 significant figures, real depth ≈ 1.6 m."
+      ],
+      ans: "1.6 m",
+      explanation: "Multiply apparent depth by the refractive index to estimate real depth."
+    }
+  ]
+);
+
+/* =========================================================
+   BATCH 8: DIFFRACTION OF WAVES
+   Focus: wavelength, gap width and applications
+========================================================= */
+
+/* =========================
+   49. EFFECT OF WAVELENGTH
+   ON DIFFRACTION
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Effect of Wavelength on Diffraction",
+  `<h2>Effect of Wavelength on Diffraction</h2>
+<p><b>Diffraction</b> is the spreading of waves as they pass through an opening or around an obstacle.</p>
+
+<p>For the same gap width, waves with longer wavelengths generally diffract more noticeably than waves with shorter wavelengths.</p>
+
+<p>Diffraction is especially noticeable when the wavelength is comparable to the gap width.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Two sets of waves pass through the same opening. One has a wavelength of 2 cm and the other 8 cm. Which is expected to spread out more?</p>
+<p><b>Step 1:</b> The opening is the same for both waves.</p>
+<p><b>Step 2:</b> Compare their wavelengths.</p>
+<p>8 cm is the longer wavelength.</p>
+<p><b>Answer:</b> The waves with wavelength 8 cm generally diffract more noticeably.</p>`,
+  [
+    {
+      q: "Two waves pass through the same gap. Which generally diffracts more: the wave with wavelength 3 cm or the wave with wavelength 9 cm?",
+      hint: "Compare wavelength while keeping the gap unchanged.",
+      steps: [
+        "The gap width is the same.",
+        "The 9 cm wavelength is longer.",
+        "The longer wavelength generally produces more noticeable diffraction."
+      ],
+      ans: "The wave with wavelength 9 cm",
+      explanation: "For a fixed gap, diffraction is generally more noticeable when wavelength is longer."
+    },
+    {
+      q: "A wave's wavelength increases while the gap width stays constant. What generally happens to diffraction?",
+      hint: "Consider the ratio of wavelength to gap width.",
+      steps: [
+        "The gap width does not change.",
+        "The wavelength becomes longer relative to the gap.",
+        "Diffraction becomes more noticeable."
+      ],
+      ans: "It becomes more noticeable",
+      explanation: "Increasing wavelength relative to a fixed gap generally increases diffraction."
+    },
+    {
+      q: "Why does a wavelength comparable to the gap width produce noticeable diffraction?",
+      hint: "Think about how the wavelength compares with the size of the opening.",
+      steps: [
+        "Diffraction depends on wavelength relative to gap width.",
+        "When the two are comparable, spreading is pronounced."
+      ],
+      ans: "Because the wavelength is comparable to the gap width",
+      explanation: "Diffraction is most noticeable when wavelength and gap width are of similar size."
+    }
+  ]
+);
+
+/* =========================
+   50. EFFECT OF GAP WIDTH
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Effect of Gap Width on Diffraction",
+  `<h2>Effect of Gap Width on Diffraction</h2>
+<p>The width of an opening affects how much a wave spreads after passing through it.</p>
+
+<ul>
+<li>A narrow gap, comparable to the wavelength, produces noticeable spreading.</li>
+<li>A gap much wider than the wavelength produces less noticeable spreading.</li>
+</ul>
+
+<p>When comparing two openings, keep the wavelength the same so that the effect of gap width can be identified.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Water waves of the same wavelength pass through two gaps. One gap is 5 cm wide and the other is 50 cm wide. Which gap produces more noticeable diffraction?</p>
+<p><b>Step 1:</b> The wavelength is unchanged.</p>
+<p><b>Step 2:</b> Compare the gap widths with that wavelength.</p>
+<p><b>Conclusion:</b> The narrower gap generally produces more noticeable spreading, particularly when its width is comparable to the wavelength.</p>`,
+  [
+    {
+      q: "The same waves pass through a narrow gap and a much wider gap. Which usually produces more noticeable diffraction?",
+      hint: "Compare each gap width with the wavelength.",
+      steps: [
+        "The waves have the same wavelength.",
+        "The narrow gap is smaller relative to the wavelength.",
+        "It generally produces more noticeable spreading."
+      ],
+      ans: "The narrow gap",
+      explanation: "Diffraction is generally more noticeable when the gap width is comparable to the wavelength."
+    },
+    {
+      q: "A gap is much wider than the wavelength of the waves passing through it. Is diffraction generally strong or less noticeable?",
+      hint: "Compare the gap size with the wavelength.",
+      steps: [
+        "The gap is much wider than the wavelength.",
+        "The wave spreads less noticeably across the opening."
+      ],
+      ans: "Less noticeable",
+      explanation: "A gap much wider than the wavelength generally produces less noticeable diffraction."
+    },
+    {
+      q: "To investigate the effect of gap width on diffraction, what should be kept constant?",
+      hint: "Change only the factor being investigated.",
+      steps: [
+        "The investigation is testing gap width.",
+        "Keep the wavelength and other relevant conditions constant.",
+        "Change the gap width and compare the spreading."
+      ],
+      ans: "The wavelength",
+      explanation: "Keeping wavelength constant makes it possible to isolate the effect of gap width."
+    }
+  ]
+);
+
+/* =========================
+   51. DIFFRACTION OF SOUND
+   AROUND OBSTACLES
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Diffraction of Sound Around Obstacles",
+  `<h2>Diffraction of Sound Around Obstacles</h2>
+<p>Sound can spread around obstacles and through doorways. This is why a person can often hear someone speaking from another room without seeing the speaker directly.</p>
+
+<p>Diffraction is more noticeable when the wavelength is not very small compared with the size of the opening or obstacle.</p>
+
+<p>Sound waves often have wavelengths that allow noticeable spreading around everyday obstacles. Light has much shorter wavelengths, so its diffraction around ordinary objects is usually less noticeable.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> A student hears a conversation from around a doorway without seeing the speakers. Which wave behaviour helps explain this?</p>
+<p><b>Step 1:</b> The sound reaches the student despite the doorway blocking a direct line of sight.</p>
+<p><b>Step 2:</b> Sound waves spread through openings and around obstacles.</p>
+<p><b>Answer:</b> Diffraction of sound.</p>`,
+  [
+    {
+      q: "Why can you hear a person speaking around a corner even when the person is not visible?",
+      hint: "Think about the spreading of waves around obstacles.",
+      steps: [
+        "The obstacle blocks a direct path.",
+        "Sound waves can spread around obstacles.",
+        "Some sound reaches the listener."
+      ],
+      ans: "Diffraction of sound",
+      explanation: "Sound can diffract around obstacles and reach listeners outside the direct line of sight."
+    },
+    {
+      q: "Sound passes through a doorway into a room. Which wave behaviour helps sound spread into the room?",
+      hint: "The doorway is an opening.",
+      steps: [
+        "Sound reaches the opening.",
+        "The waves spread after passing through it."
+      ],
+      ans: "Diffraction",
+      explanation: "Diffraction allows sound waves to spread after passing through an opening."
+    },
+    {
+      q: "Why is diffraction around everyday objects usually more noticeable for sound than for visible light?",
+      hint: "Compare the wavelengths of sound and visible light with object sizes.",
+      steps: [
+        "Sound generally has much longer wavelengths than visible light.",
+        "Visible-light wavelengths are extremely small compared with everyday obstacles.",
+        "Sound therefore often diffracts more noticeably around such objects."
+      ],
+      ans: "Sound has a much longer wavelength than visible light",
+      explanation: "Diffraction depends on wavelength relative to the size of the opening or obstacle."
+    }
+  ]
+);
+
+/* =========================
+   52. DIFFRACTION AND
+   WAVEFRONTS
+========================= */
+
+add(
+  "physics",
+  "waves",
+  "Wavefronts After Diffraction",
+  `<h2>Wavefronts After Diffraction</h2>
+<p>A <b>wavefront</b> is a line joining points on a wave that are in the same phase.</p>
+
+<p>When straight wavefronts pass through a narrow opening, the wavefronts beyond the opening spread out. For a small opening compared with the wavelength, the emerging wavefronts are approximately semicircular in a two-dimensional water-wave diagram.</p>
+
+<h3>Worked example</h3>
+<p><b>Question:</b> Straight water-wave fronts approach a narrow gap. What shape do the wavefronts approximately take after passing through the gap?</p>
+<p><b>Step 1:</b> The waves encounter a narrow opening.</p>
+<p><b>Step 2:</b> Diffraction causes the waves to spread from the opening.</p>
+<p><b>Answer:</b> Approximately semicircular wavefronts in a two-dimensional diagram.</p>`,
+  [
+    {
+      q: "What is a wavefront?",
+      hint: "It joins points that are at the same stage of oscillation.",
+      steps: [
+        "Consider several points on a wave.",
+        "Join points that are in the same phase."
+      ],
+      ans: "A line joining points on a wave that are in the same phase",
+      explanation: "A wavefront represents points with the same phase."
+    },
+    {
+      q: "Straight water-wave fronts pass through a narrow gap. What is the approximate shape of the emerging wavefronts in a two-dimensional diagram?",
+      hint: "The waves spread out from the opening.",
+      steps: [
+        "The waves pass through a narrow opening.",
+        "Diffraction makes the wavefronts spread out.",
+        "They are approximately semicircular."
+      ],
+      ans: "Semicircular",
+      explanation: "A narrow opening produces approximately semicircular wavefronts in a two-dimensional representation."
+    },
+    {
+      q: "What happens to straight wavefronts after passing through a narrow opening?",
+      hint: "Focus on their direction and shape beyond the opening.",
+      steps: [
+        "The waves pass through the opening.",
+        "Diffraction causes the wavefronts to spread."
+      ],
+      ans: "They spread out",
+      explanation: "Diffraction causes wavefronts to spread after passing through an opening."
+    }
+  ]
+);
+
+/* =========================================================
+   PHYSICS: WAVES
+   BATCH 9 — INTERFERENCE AND STATIONARY WAVES
+   Screens 53–59
+========================================================= */
+
+
+/* =========================================================
+   SCREEN 53: COHERENT SOURCES
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Coherent Sources",
+  `<h2>Coherent Sources</h2>
+
+  <h3>1. Meaning of coherent sources</h3>
+  <p>Two wave sources are <b>coherent</b> when they produce waves of the same frequency and maintain a constant phase difference.</p>
+
+  <h3>2. Why coherence matters</h3>
+  <p>Coherent sources produce a stable interference pattern. The positions of reinforcement and cancellation remain fixed because the phase relationship between the waves does not continually change.</p>
+
+  <h3>3. Same frequency is not enough</h3>
+  <p>Two sources may have the same frequency but fail to maintain a constant phase difference. For a stable interference pattern, both conditions are required:</p>
+  <ul>
+    <li>Same frequency.</li>
+    <li>Constant phase difference.</li>
+  </ul>
+
+  <h3>Worked example</h3>
+  <p>Two sources produce waves at 20 Hz and maintain a constant phase difference of 90°. Are they coherent?</p>
+  <p><b>Step 1:</b> Their frequencies are equal: both are 20 Hz.</p>
+  <p><b>Step 2:</b> Their phase difference is constant.</p>
+  <p><b>Conclusion:</b> Yes, they are coherent.</p>`,
+  [
+    {
+      q: "Source A produces waves at 15 Hz and source B produces waves at 15 Hz. Their phase difference remains constant. Are the sources coherent?",
+      hint: "Check both the frequency and phase-difference conditions.",
+      steps: [
+        "Both sources produce waves at 15 Hz, so their frequencies are equal.",
+        "Their phase difference remains constant.",
+        "Both conditions for coherence are satisfied."
+      ],
+      ans: "Yes",
+      explanation: "Coherent sources have the same frequency and a constant phase difference."
+    },
+    {
+      q: "Two sources have the same frequency, but their phase difference changes randomly. Are they coherent?",
+      hint: "Equal frequency is only one of the two conditions.",
+      steps: [
+        "The frequencies are equal.",
+        "The phase difference is not constant.",
+        "Therefore, the two required conditions are not both satisfied."
+      ],
+      ans: "No",
+      explanation: "A changing phase difference prevents a stable interference pattern."
+    },
+    {
+      q: "Source A produces waves at 10 Hz and source B at 12 Hz. Can they be coherent?",
+      hint: "Compare the frequencies.",
+      steps: [
+        "Source A has a frequency of 10 Hz.",
+        "Source B has a frequency of 12 Hz.",
+        "The frequencies are unequal."
+      ],
+      ans: "No",
+      explanation: "Coherent sources must have the same frequency as well as a constant phase difference."
+    }
+  ]
+);
+
+
+/* =========================================================
+   SCREEN 54: PATH DIFFERENCE
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Path Difference",
+  `<h2>Path Difference</h2>
+
+  <h3>1. Meaning of path difference</h3>
+  <p><b>Path difference</b> is the difference between the distances travelled by two waves from their sources to the same point.</p>
+
+  <p>If the two distances are d₁ and d₂, the magnitude of the path difference is:</p>
+  <p><b>Path difference = |d₁ − d₂|</b></p>
+
+  <h3>2. Why path difference matters</h3>
+  <p>The path difference helps determine whether two coherent waves arrive in phase or out of phase.</p>
+
+  <ul>
+    <li>A path difference of one wavelength corresponds to waves arriving in phase, if they started in phase.</li>
+    <li>A path difference of half a wavelength corresponds to waves arriving in opposite phase, if they started in phase.</li>
+  </ul>
+
+  <h3>Worked example</h3>
+  <p>Wave A travels 8 m to a point. Wave B travels 11 m to the same point.</p>
+  <p><b>Step 1:</b> Identify the distances: d₁ = 8 m and d₂ = 11 m.</p>
+  <p><b>Step 2:</b> Find their difference: |11 − 8| = 3 m.</p>
+  <p><b>Answer:</b> The path difference is 3 m.</p>`,
+  [
+    {
+      q: "Two waves travel distances of 6 m and 10 m to the same point. Find the path difference.",
+      hint: "Subtract the shorter distance from the longer distance.",
+      steps: [
+        "First distance = 6 m.",
+        "Second distance = 10 m.",
+        "Path difference = |10 − 6| = 4 m."
+      ],
+      ans: "4 m",
+      explanation: "Path difference is the magnitude of the difference between the two travelled distances."
+    },
+    {
+      q: "Two waves travel 12 m and 12 m to the same point. What is their path difference?",
+      hint: "The distances are equal.",
+      steps: [
+        "First distance = 12 m.",
+        "Second distance = 12 m.",
+        "Path difference = |12 − 12| = 0 m."
+      ],
+      ans: "0 m",
+      explanation: "Equal travel distances give zero path difference."
+    },
+    {
+      q: "A wave travels 7 m farther than another wave. What is the path difference?",
+      hint: "The extra distance travelled is the path difference.",
+      steps: [
+        "The difference between the travel distances is given directly.",
+        "Path difference = 7 m."
+      ],
+      ans: "7 m",
+      explanation: "Path difference measures how much farther one wave travels than the other."
+    }
+  ]
+);
+
+
+/* =========================================================
+   SCREEN 55: CONSTRUCTIVE INTERFERENCE CONDITION
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Constructive Interference Condition",
+  `<h2>Constructive Interference Condition</h2>
+
+  <h3>1. When does reinforcement occur?</h3>
+  <p>Constructive interference occurs when two waves meet in phase: crests meet crests and troughs meet troughs. Their displacements reinforce each other.</p>
+
+  <h3>2. Path-difference condition</h3>
+  <p>For two coherent sources that emit waves in phase, constructive interference occurs when:</p>
+  <p><b>Path difference = nλ</b></p>
+
+  <p>Here:</p>
+  <ul>
+    <li><b>n</b> is a whole number: 0, 1, 2, 3, …</li>
+    <li><b>λ</b> is the wavelength.</li>
+  </ul>
+
+  <h3>3. Worked example</h3>
+  <p>Two in-phase sources produce waves of wavelength 0.5 m. A point has a path difference of 1.0 m. Determine whether constructive interference occurs.</p>
+  <p><b>Step 1:</b> Calculate the number of wavelengths: 1.0 ÷ 0.5 = 2.</p>
+  <p><b>Step 2:</b> The path difference is 2λ.</p>
+  <p><b>Answer:</b> Constructive interference occurs because 2 is a whole number.</p>
+
+  <p><b>Important:</b> This path-difference rule assumes the two sources emit waves in phase.</p>`,
+  [
+    {
+      q: "Two in-phase sources produce waves with wavelength 2 m. The path difference at point P is 6 m. Is the interference constructive or destructive?",
+      hint: "Divide the path difference by the wavelength.",
+      steps: [
+        "Path difference = 6 m.",
+        "Wavelength = 2 m.",
+        "6 ÷ 2 = 3, so the path difference is 3λ.",
+        "Three is a whole number, so constructive interference occurs."
+      ],
+      ans: "Constructive",
+      explanation: "For in-phase sources, constructive interference occurs when the path difference is a whole-number multiple of the wavelength."
+    },
+    {
+      q: "Two in-phase sources produce waves of wavelength 0.4 m. The path difference is 0.8 m. Find the type of interference.",
+      hint: "Express 0.8 m in wavelengths.",
+      steps: [
+        "Path difference = 0.8 m.",
+        "Wavelength = 0.4 m.",
+        "0.8 ÷ 0.4 = 2.",
+        "The path difference is 2λ, so the interference is constructive."
+      ],
+      ans: "Constructive",
+      explanation: "A path difference of 2λ satisfies the constructive-interference condition."
+    },
+    {
+      q: "For two in-phase sources, the path difference is 4λ. Does this satisfy the condition for constructive interference?",
+      hint: "Check whether the multiplier is a whole number.",
+      steps: [
+        "The path difference is 4λ.",
+        "The multiplier, 4, is a whole number.",
+        "Therefore, the constructive-interference condition is satisfied."
+      ],
+      ans: "Yes",
+      explanation: "Four wavelengths is a whole-number multiple of the wavelength."
+    }
+  ]
+);
+
+
+/* =========================================================
+   SCREEN 56: DESTRUCTIVE INTERFERENCE CONDITION
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Destructive Interference Condition",
+  `<h2>Destructive Interference Condition</h2>
+
+  <h3>1. When does cancellation occur?</h3>
+  <p>Destructive interference occurs when two waves meet in opposite phase. A crest from one wave meets a trough from the other, so their displacements oppose each other.</p>
+
+  <h3>2. Path-difference condition</h3>
+  <p>For two coherent sources that emit waves in phase, destructive interference occurs when:</p>
+  <p><b>Path difference = (n + ½)λ</b></p>
+
+  <p>Here n is a whole number: 0, 1, 2, 3, …</p>
+
+  <p>The possible path differences include:</p>
+  <ul>
+    <li>½λ</li>
+    <li>1½λ</li>
+    <li>2½λ</li>
+    <li>3½λ</li>
+  </ul>
+
+  <h3>3. Worked example</h3>
+  <p>The wavelength is 0.6 m and the path difference is 0.3 m.</p>
+  <p><b>Step 1:</b> Calculate the path difference in wavelengths: 0.3 ÷ 0.6 = 0.5.</p>
+  <p><b>Step 2:</b> The path difference is ½λ.</p>
+  <p><b>Answer:</b> Destructive interference occurs.</p>
+
+  <p><b>Important:</b> Complete cancellation occurs only when the opposing displacements have equal magnitudes.</p>`,
+  [
+    {
+      q: "Two in-phase sources produce waves with wavelength 2 m. The path difference at point P is 1 m. What type of interference occurs?",
+      hint: "Compare 1 m with half the wavelength.",
+      steps: [
+        "Wavelength = 2 m.",
+        "Half the wavelength = 2 ÷ 2 = 1 m.",
+        "The path difference is ½λ.",
+        "Destructive interference occurs."
+      ],
+      ans: "Destructive",
+      explanation: "A half-wavelength path difference produces opposite-phase arrival for waves emitted in phase."
+    },
+    {
+      q: "The wavelength is 0.8 m and the path difference is 1.2 m. For two in-phase sources, identify the interference.",
+      hint: "Divide the path difference by the wavelength.",
+      steps: [
+        "Path difference = 1.2 m.",
+        "Wavelength = 0.8 m.",
+        "1.2 ÷ 0.8 = 1.5.",
+        "The path difference is 1½λ, so the interference is destructive."
+      ],
+      ans: "Destructive",
+      explanation: "A path difference of 1½ wavelengths satisfies the destructive-interference condition."
+    },
+    {
+      q: "Two waves arrive in opposite phase at a point. Each has a displacement magnitude of 4 cm. Find the resultant displacement at that instant.",
+      hint: "Opposite displacements have opposite signs.",
+      steps: [
+        "Take the first displacement as +4 cm.",
+        "The opposite displacement is −4 cm.",
+        "Resultant displacement = +4 + (−4) = 0 cm."
+      ],
+      ans: "0 cm",
+      explanation: "Equal and opposite displacements cancel completely at that instant."
+    }
+  ]
+);
+
+
+/* =========================================================
+   SCREEN 57: FORMATION OF STATIONARY WAVES
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Formation of Stationary Waves",
+  `<h2>Formation of Stationary Waves</h2>
+
+  <h3>1. How stationary waves form</h3>
+  <p>A <b>stationary wave</b>, also called a standing wave, forms when two waves of the same frequency and wavelength travel in opposite directions and superpose under suitable conditions.</p>
+
+  <p>One common example is a wave travelling along a stretched string and reflecting from a fixed end. The incoming and reflected waves travel in opposite directions.</p>
+
+  <h3>2. Why it is called stationary</h3>
+  <p>The resulting pattern has fixed positions where the displacement is always zero and fixed positions where the displacement is greatest. The pattern does not travel along the medium as a whole.</p>
+
+  <h3>3. Stationary versus progressive waves</h3>
+  <ul>
+    <li><b>Progressive wave:</b> the wave pattern travels through the medium and transfers energy along it.</li>
+    <li><b>Stationary wave:</b> the pattern has fixed nodes and antinodes; there is no net energy transfer along the medium by the ideal stationary pattern.</li>
+  </ul>
+
+  <h3>Worked example</h3>
+  <p>A wave on a string reflects from a fixed end and overlaps with the incoming wave. The two waves have the same frequency and travel in opposite directions.</p>
+  <p><b>Step 1:</b> Identify the two waves: incoming and reflected.</p>
+  <p><b>Step 2:</b> They have the same frequency and travel in opposite directions.</p>
+  <p><b>Conclusion:</b> Their superposition can produce a stationary-wave pattern.</p>`,
+  [
+    {
+      q: "Two waves of the same frequency travel in opposite directions along a string and superpose. What type of wave pattern can form?",
+      hint: "Think of an incoming wave overlapping its reflected wave.",
+      steps: [
+        "The waves have the same frequency.",
+        "They travel in opposite directions.",
+        "Their superposition can produce a stationary-wave pattern."
+      ],
+      ans: "A stationary wave",
+      explanation: "Two suitable waves travelling in opposite directions can form a stationary wave."
+    },
+    {
+      q: "A wave travels along a string and reflects from a fixed end. The reflected wave overlaps the incoming wave. What produces the stationary pattern?",
+      hint: "The two waves overlap rather than acting separately.",
+      steps: [
+        "The incoming wave travels towards the fixed end.",
+        "The reflected wave travels back in the opposite direction.",
+        "The waves superpose to produce a stationary pattern."
+      ],
+      ans: "Superposition of the incoming and reflected waves",
+      explanation: "A stationary wave results from the superposition of suitable waves travelling in opposite directions."
+    },
+    {
+      q: "Which has fixed nodes: a progressive wave or a stationary wave?",
+      hint: "A node is a position that remains at zero displacement.",
+      steps: [
+        "A progressive wave pattern travels along the medium.",
+        "A stationary wave has positions that remain nodes.",
+        "Therefore, the stationary wave has fixed nodes."
+      ],
+      ans: "A stationary wave",
+      explanation: "Nodes are fixed positions in a stationary-wave pattern."
+    }
+  ]
+);
+
+
+/* =========================================================
+   SCREEN 58: NODES IN STATIONARY WAVES
+========================================================= */
+
+add(
+  "physics",
+  "waves",
+  "Nodes in Stationary Waves",
+  `<h2>Nodes in Stationary Waves</h2>
+
+  <h3>1. Meaning of a node</h3>
+  <p>A <b>node</b> is a point on a stationary wave where the resultant displacement is always zero.</p>
+
+  <p>At a node, the two overlapping waves have equal and opposite displacements at corresponding instants, so they cancel.</p>
+
+  <h3>2. Distance between adjacent nodes</h3>
+  <p>For a stationary wave formed from waves of wavelength λ:</p>
+  <p><b>Distance between adjacent nodes = λ/2</b></p>
+
+  <h3>3. Finding the wavelength</h3>
+  <p>If the distance between adjacent nodes is d, then:</p>
+  <p><b>λ = 2d</b></p>
+
+  <h3>Worked example</h3>
+  <p>Adjacent nodes are separated by 0.15 m.</p>
+  <p><b>Step 1:</b> Use d = λ/2.</p>
+  <p><b>Step 2:</b> Rearrange: λ = 2d.</p>
+  <p><b>Step 3:</b> λ = 2 × 0.15 = 0.30 m.</p>
+  <p><b>Answer:</b> The wavelength is 0.30 m.</p>`,
+  [
+    {
+      q: "The distance between adjacent nodes is 0.2 m. Find the wavelength.",
+      hint: "The node separation is half a wavelength.",
+      steps: [
+        "Distance between adjacent nodes = λ/2 = 0.2 m.",
+        "Multiply both sides by 2.",
+        "λ = 2 × 0.2 = 0.4 m."
+      ],
+      ans: "0.4 m",
+      explanation: "Adjacent nodes are separated by half a wavelength."
+    },
+    {
+      q: "A stationary wave has a wavelength of 1.2 m. Find the distance between adjacent nodes.",
+      hint: "Divide the wavelength by 2.",
+      steps: [
+        "Wavelength λ = 1.2 m.",
+        "Adjacent-node distance = λ/2.",
+        "Distance = 1.2 ÷ 2 = 0.6 m."
+      ],
+      ans: "0.6 m",
+      explanation: "The separation of adjacent nodes is half the wavelength."
+    },
+    {
+      q: "What is the displacement of a node at all times in an ideal stationary wave?",
+      hint: "A node is the point where cancellation is complete.",
+      steps: [
+        "At a node, the two wave displacements are equal and opposite.",
+        "Their resultant displacement is zero.",
+        "This remains true throughout the oscillation."
+      ],
+      ans: "Zero",
+      explanation: "A node always has zero resultant displacement."
+    }
+  ]
+);
+
+
+/* =========================================================
+   SCREEN 59: ANTINODES IN STATIONARY WAVES
+========================================================= */
+add(
+  "physics",
+  "waves",
+  "Antinodes in Stationary Waves",
+
+  `
+  <h2>Antinodes in Stationary Waves</h2>
+
+  <h3>Learning objective</h3>
+  <p>
+    By the end of this lesson, you should be able to identify an
+    antinode and calculate distances involving nodes and antinodes.
+  </p>
+
+  <h3>1. What is an antinode?</h3>
+
+  <p>
+    An <b>antinode</b> is a point on a stationary wave where the
+    oscillation amplitude is greatest.
+  </p>
+
+  <p>
+    A <b>node</b> is a point where the resultant displacement remains
+    zero. An antinode is a point where the particles oscillate with
+    maximum amplitude.
+  </p>
+
+  <p>
+    Remember:
+  </p>
+
+  <ul>
+    <li><b>Node:</b> zero oscillation amplitude.</li>
+    <li><b>Antinode:</b> maximum oscillation amplitude.</li>
+  </ul>
+
+  <h3>2. Distance relationships</h3>
+
+  <p>
+    The positions of nodes and antinodes follow fixed wavelength
+    relationships.
+  </p>
+
+  <p>
+    <b>Node to nearest antinode:</b>
+  </p>
+
+  <p style="text-align:center;">
+    <b>d = λ/4</b>
+  </p>
+
+  <p>
+    <b>Distance between adjacent nodes:</b>
+  </p>
+
+  <p style="text-align:center;">
+    <b>d = λ/2</b>
+  </p>
+
+  <p>
+    <b>Distance between adjacent antinodes:</b>
+  </p>
+
+  <p style="text-align:center;">
+    <b>d = λ/2</b>
+  </p>
+
+  <p>
+    Here, <b>d</b> is the distance and <b>λ</b> (lambda) is the
+    wavelength.
+  </p>
+
+  <h3>3. Worked Example 1: Distance from a node to an antinode</h3>
+
+  <p>
+    <b>Question:</b> A stationary wave has a wavelength of 0.8 m.
+    Calculate the distance from a node to its nearest antinode.
+  </p>
+
+  <p><b>Step 1: Identify the relationship.</b></p>
+
+  <p>
+    A node and its nearest antinode are separated by one-quarter
+    of a wavelength.
+  </p>
+
+  <p><b>d = λ/4</b></p>
+
+  <p><b>Step 2: Substitute the wavelength.</b></p>
+
+  <p>
+    d = 0.8/4
+  </p>
+
+  <p><b>Step 3: Calculate.</b></p>
+
+  <p>
+    d = 0.2 m
+  </p>
+
+  <p><b>Answer: 0.2 m</b></p>
+
+  <p>
+    <b>Check:</b> One-quarter of 0.8 m is 0.2 m.
+  </p>
+
+  <h3>4. Worked Example 2: Finding the wavelength</h3>
+
+  <p>
+    <b>Question:</b> Two adjacent antinodes are separated by 0.35 m.
+    Calculate the wavelength of the stationary wave.
+  </p>
+
+  <p><b>Step 1: Identify the relationship.</b></p>
+
+  <p>
+    Adjacent antinodes are separated by half a wavelength.
+  </p>
+
+  <p>
+    d = λ/2
+  </p>
+
+  <p><b>Step 2: Rearrange the formula.</b></p>
+
+  <p>
+    Multiply both sides by 2:
+  </p>
+
+  <p>
+    λ = 2d
+  </p>
+
+  <p><b>Step 3: Substitute the distance.</b></p>
+
+  <p>
+    λ = 2 × 0.35
+  </p>
+
+  <p>
+    λ = 0.70 m
+  </p>
+
+  <p><b>Answer: 0.70 m</b></p>
+
+  <p>
+    <b>Check:</b> Half of 0.70 m is 0.35 m, as given in the question.
+  </p>
+
+  <h3>5. Worked Example 3: Finding the wavelength from a node-antinode distance</h3>
+
+  <p>
+    <b>Question:</b> The distance between a node and its nearest
+    antinode is 0.15 m. Calculate the wavelength.
+  </p>
+
+  <p><b>Step 1: Write the relationship.</b></p>
+
+  <p>
+    d = λ/4
+  </p>
+
+  <p><b>Step 2: Make wavelength the subject.</b></p>
+
+  <p>
+    Multiply both sides by 4:
+  </p>
+
+  <p>
+    λ = 4d
+  </p>
+
+  <p><b>Step 3: Substitute and calculate.</b></p>
+
+  <p>
+    λ = 4 × 0.15
+  </p>
+
+  <p>
+    λ = 0.60 m
+  </p>
+
+  <p><b>Answer: 0.60 m</b></p>
+
+  <p>
+    <b>Check:</b> One-quarter of 0.60 m is 0.15 m.
+  </p>
+
+  <h3>6. Common mistake</h3>
+
+  <p>
+    Do not confuse the distance from a node to its nearest antinode
+    with the distance between adjacent antinodes.
+  </p>
+
+  <ul>
+    <li>Node to nearest antinode: λ/4.</li>
+    <li>Adjacent antinodes: λ/2.</li>
+    <li>Adjacent nodes: λ/2.</li>
+  </ul>
+
+  <p>
+    Before calculating, identify which two points the question
+    describes.
+  </p>
+  `,
+
+  [
+    {
+      q: "A stationary wave has a wavelength of 1.2 m. Find the distance from a node to its nearest antinode.",
+      hint: "A node and its nearest antinode are separated by one-quarter of a wavelength.",
+      steps: [
+        "Identify the relationship: d = λ/4.",
+        "Substitute λ = 1.2 m.",
+        "d = 1.2/4 = 0.3 m."
+      ],
+      ans: "0.3 m",
+      explanation: "The nearest node and antinode are separated by one-quarter of a wavelength.",
+      why: "Use λ/4 because the question asks for the distance between a node and its nearest antinode."
+    },
+    {
+      q: "Adjacent antinodes are 0.45 m apart. Calculate the wavelength.",
+      hint: "The distance between adjacent antinodes is half the wavelength.",
+      steps: [
+        "Write d = λ/2.",
+        "Rearrange to obtain λ = 2d.",
+        "λ = 2 × 0.45 = 0.90 m."
+      ],
+      ans: "0.90 m",
+      explanation: "Adjacent antinodes are separated by half a wavelength.",
+      why: "Multiply the given separation by 2 to obtain the full wavelength."
+    },
+    {
+      q: "The distance from a node to its nearest antinode is 0.08 m. Find the wavelength.",
+      hint: "Start with d = λ/4 and make λ the subject.",
+      steps: [
+        "Write d = λ/4.",
+        "Rearrange to obtain λ = 4d.",
+        "λ = 4 × 0.08 = 0.32 m."
+      ],
+      ans: "0.32 m",
+      explanation: "The node-to-nearest-antinode distance is one-quarter of a wavelength.",
+      why: "Multiplying the distance by 4 gives the full wavelength."
+    },
+    {
+      q: "Which point on a stationary wave has the greatest oscillation amplitude?",
+      hint: "Compare the point with zero amplitude to the point with maximum amplitude.",
+      steps: [
+        "A node has zero oscillation amplitude.",
+        "An antinode has maximum oscillation amplitude.",
+        "Therefore, the antinode has the greatest amplitude."
+      ],
+      ans: "An antinode",
+      explanation: "An antinode is the point of maximum oscillation amplitude.",
+      why: "The defining property of an antinode is its maximum amplitude."
+    },
+    {
+      q: "The wavelength of a stationary wave is 0.8 m. What is the distance between adjacent antinodes?",
+      hint: "Adjacent antinodes are separated by half a wavelength, not a quarter.",
+      steps: [
+        "Identify the relationship: d = λ/2.",
+        "Substitute λ = 0.8 m.",
+        "d = 0.8/2 = 0.4 m."
+      ],
+      ans: "0.4 m",
+      explanation: "Adjacent antinodes are separated by half a wavelength.",
+      why: "Using λ/4 here would confuse adjacent antinodes with a node and its nearest antinode."
+    }
+  ]
+);
+add(
+  "physics",
+  "force",
+  "Meaning of Weight",
+
+  `
+  <h2>Meaning of Weight</h2>
+
+  <h3>Learning objective</h3>
+  <p>Explain what weight is and identify the force responsible for it.</p>
+
+  <h3>1. What is weight?</h3>
+  <p>
+    <b>Weight</b> is the gravitational force acting on an object.
+    Near the Earth's surface, the Earth pulls objects towards its centre.
+    This gravitational pull is the object's weight.
+  </p>
+
+  <p>
+    Weight is a <b>force</b>, so its SI unit is the newton (N).
+    A weighing instrument calibrated in newtons measures weight.
+  </p>
+
+  <h3>2. Worked Example 1: Identifying weight</h3>
+  <p><b>Question:</b> A book rests on a table. What is the weight of the book?</p>
+  <p><b>Step 1:</b> Identify the gravitational force acting on the book.</p>
+  <p><b>Step 2:</b> The Earth attracts the book towards its centre.</p>
+  <p><b>Answer:</b> The weight is the gravitational force exerted by the Earth on the book.</p>
+
+  <h3>3. Worked Example 2: Identifying the direction</h3>
+  <p><b>Question:</b> In which direction does the Earth's gravitational force act on a ball held above the ground?</p>
+  <p><b>Step 1:</b> Weight is caused by the Earth's gravitational attraction.</p>
+  <p><b>Step 2:</b> Near the Earth's surface, this attraction acts towards the Earth's centre.</p>
+  <p><b>Answer:</b> Vertically downwards, towards the Earth's centre.</p>
+
+  <h3>4. Worked Example 3: Identifying the correct unit</h3>
+  <p><b>Question:</b> A learner says a person's weight is 500 kg. Explain the error.</p>
+  <p><b>Step 1:</b> Kilogram (kg) is the SI unit of mass.</p>
+  <p><b>Step 2:</b> Weight is a force.</p>
+  <p><b>Step 3:</b> Force is measured in newtons (N).</p>
+  <p><b>Answer:</b> The unit is incorrect. Weight should be expressed in newtons, not kilograms.</p>
+
+  <h3>Remember</h3>
+  <ul>
+    <li>Weight is gravitational force.</li>
+    <li>Weight is measured in newtons (N).</li>
+    <li>Near Earth, weight acts towards Earth's centre.</li>
+  </ul>
+  `,
+
+  [
+    {
+      q: "What is the weight of an object?",
+      hint: "Think about the force that attracts the object towards Earth.",
+      steps: [
+        "Identify the force caused by gravitational attraction.",
+        "This force acts on the object because of gravity."
+      ],
+      ans: "The gravitational force acting on the object",
+      explanation: "Weight is the gravitational force acting on an object.",
+      why: "Weight is a force, not the amount of matter in an object."
+    },
+    {
+      q: "What is the SI unit of weight?",
+      hint: "Weight is a force. Recall the SI unit of force.",
+      steps: [
+        "Recognise that weight is a force.",
+        "The SI unit of force is the newton."
+      ],
+      ans: "Newton (N)",
+      explanation: "Weight is measured in newtons because it is a force.",
+      why: "The kilogram measures mass, while the newton measures force."
+    },
+    {
+      q: "Near Earth's surface, in which direction does the weight of a freely held object act?",
+      hint: "Consider the direction of Earth's gravitational attraction.",
+      steps: [
+        "Earth attracts the object gravitationally.",
+        "The force acts towards Earth's centre."
+      ],
+      ans: "Towards the centre of the Earth",
+      explanation: "The weight of an object near Earth's surface acts vertically downwards.",
+      why: "Weight follows the direction of the local gravitational field."
+    },
+    {
+      q: "A learner states that weight is measured in kilograms. What is wrong with this statement?",
+      hint: "Separate the units of mass and force.",
+      steps: [
+        "Kilograms measure mass.",
+        "Weight is a force.",
+        "Force is measured in newtons."
+      ],
+      ans: "Weight is measured in newtons, not kilograms",
+      explanation: "Kilograms are units of mass, whereas newtons are units of force.",
+      why: "The statement confuses two different physical quantities."
+    }
+  ]
+);
+add(
+  "physics",
+  "force",
+  "Mass and Weight",
+
+  `
+  <h2>Mass and Weight</h2>
+
+  <h3>Learning objective</h3>
+  <p>Distinguish mass from weight using their meanings, units and behaviour in different gravitational fields.</p>
+
+  <h3>1. Mass versus weight</h3>
+  <p>
+    <b>Mass</b> measures the amount of matter in an object. Its SI unit
+    is the kilogram (kg).
+  </p>
+  <p>
+    <b>Weight</b> is the gravitational force acting on an object.
+    Its SI unit is the newton (N).
+  </p>
+
+  <p>
+    An object's mass remains the same when it moves from Earth to the
+    Moon, but its weight changes because the Moon's gravitational field
+    is weaker.
+  </p>
+
+  <h3>2. Worked Example 1: Classifying quantities</h3>
+  <p><b>Question:</b> A bag has a mass of 4 kg. Is 4 kg its mass or weight?</p>
+  <p><b>Step 1:</b> Identify the given unit.</p>
+  <p><b>Step 2:</b> Kilograms measure mass.</p>
+  <p><b>Answer:</b> 4 kg is the mass of the bag.</p>
+
+  <h3>3. Worked Example 2: Comparing units</h3>
+  <p><b>Question:</b> A force meter reads 30 N when an object is suspended. Is this reading mass or weight?</p>
+  <p><b>Step 1:</b> Identify the unit, newtons.</p>
+  <p><b>Step 2:</b> Newtons measure force.</p>
+  <p><b>Answer:</b> The reading is the object's weight.</p>
+
+  <h3>4. Worked Example 3: Earth and Moon</h3>
+  <p><b>Question:</b> An object has a mass of 6 kg on Earth. What happens to its mass when taken to the Moon?</p>
+  <p><b>Step 1:</b> Mass measures the amount of matter in the object.</p>
+  <p><b>Step 2:</b> Moving the object does not change the amount of matter it contains.</p>
+  <p><b>Answer:</b> Its mass remains 6 kg.</p>
+  <p>
+    Its weight would be smaller on the Moon because the Moon's
+    gravitational field is weaker.
+  </p>
+
+  <h3>Remember</h3>
+  <ul>
+    <li>Mass: kilogram (kg), amount of matter.</li>
+    <li>Weight: newton (N), gravitational force.</li>
+    <li>Mass remains constant when location changes; weight can change.</li>
+  </ul>
+  `,
+
+  [
+    {
+      q: "A parcel has a mass of 8 kg. What physical quantity is measured in kilograms?",
+      hint: "Kilograms are used for the amount of matter in an object.",
+      steps: [
+        "Identify the unit kg.",
+        "Kilograms measure mass."
+      ],
+      ans: "Mass",
+      explanation: "Mass is measured in kilograms.",
+      why: "Weight is a force and is measured in newtons."
+    },
+    {
+      q: "A spring balance calibrated in newtons reads 45 N for a hanging object. What quantity does it measure?",
+      hint: "Newtons are units of force.",
+      steps: [
+        "Recognise that N means newtons.",
+        "Newtons measure force.",
+        "The gravitational force on the object is its weight."
+      ],
+      ans: "Weight",
+      explanation: "A force meter reading in newtons gives the object's weight in this situation.",
+      why: "The unit identifies the reading as a force rather than a mass."
+    },
+    {
+      q: "An astronaut takes a 12 kg object from Earth to the Moon. What is its mass on the Moon?",
+      hint: "Does changing location change the amount of matter?",
+      steps: [
+        "The object's mass on Earth is 12 kg.",
+        "Its amount of matter does not change during the journey."
+      ],
+      ans: "12 kg",
+      explanation: "Mass remains constant when an object moves to a different gravitational field.",
+      why: "It is the weight, not the mass, that changes with gravitational field strength."
+    },
+    {
+      q: "Which quantity can change when the same object is taken from Earth to the Moon: mass or weight?",
+      hint: "Compare amount of matter with gravitational force.",
+      steps: [
+        "Mass measures the amount of matter and remains constant.",
+        "Weight depends on gravitational field strength.",
+        "The Moon's gravitational field is weaker than Earth's."
+      ],
+      ans: "Weight",
+      explanation: "Weight changes because the gravitational field strength changes.",
+      why: "The object's mass remains constant, but the gravitational force on it becomes smaller."
+    }
+  ]
+);
+add(
+  "physics",
+  "force",
+  "Calculating Weight",
+
+  `
+  <h2>Calculating Weight</h2>
+
+  <h3>Learning objective</h3>
+  <p>Calculate an object's weight using its mass and gravitational field strength.</p>
+
+  <h3>1. The formula</h3>
+  <p>
+    Weight depends on an object's mass and the gravitational field
+    strength where it is located.
+  </p>
+
+  <p style="text-align:center;"><b>W = mg</b></p>
+
+  <ul>
+    <li><b>W</b> = weight in newtons (N)</li>
+    <li><b>m</b> = mass in kilograms (kg)</li>
+    <li><b>g</b> = gravitational field strength in N/kg</li>
+  </ul>
+
+  <p>
+    Unless a question specifies otherwise, use the value of g given
+    in the question or required by the examination.
+  </p>
+
+  <h3>2. Worked Example 1: A simple calculation</h3>
+  <p><b>Question:</b> Calculate the weight of a 5 kg object where g = 10 N/kg.</p>
+  <p><b>Step 1:</b> Write the formula: W = mg.</p>
+  <p><b>Step 2:</b> Substitute: W = 5 × 10.</p>
+  <p><b>Step 3:</b> Calculate: W = 50 N.</p>
+  <p><b>Answer: 50 N</b></p>
+
+  <h3>3. Worked Example 2: Using a different field strength</h3>
+  <p><b>Question:</b> Find the weight of a 12 kg object where g = 9.8 N/kg.</p>
+  <p><b>Step 1:</b> W = mg.</p>
+  <p><b>Step 2:</b> W = 12 × 9.8.</p>
+  <p><b>Step 3:</b> W = 117.6 N.</p>
+  <p><b>Answer: 117.6 N</b></p>
+
+  <h3>4. Worked Example 3: Checking the units</h3>
+  <p><b>Question:</b> A 3 kg object is in a gravitational field of 10 N/kg. A learner calculates its weight as 30 kg. Identify and correct the error.</p>
+  <p><b>Step 1:</b> Apply W = mg.</p>
+  <p><b>Step 2:</b> W = 3 × 10 = 30.</p>
+  <p><b>Step 3:</b> The unit is kg × N/kg = N.</p>
+  <p><b>Answer: 30 N.</b> The numerical calculation was correct, but the unit was wrong.</p>
+
+  <h3>Remember</h3>
+  <ul>
+    <li>Multiply mass by gravitational field strength.</li>
+    <li>Use mass in kilograms.</li>
+    <li>Express weight in newtons.</li>
+  </ul>
+  `,
+
+  [
+    {
+      q: "Calculate the weight of a 7 kg object where g = 10 N/kg.",
+      hint: "Use W = mg.",
+      steps: [
+        "W = mg.",
+        "Substitute m = 7 kg and g = 10 N/kg.",
+        "W = 7 × 10 = 70 N."
+      ],
+      ans: "70 N",
+      explanation: "Weight is the product of mass and gravitational field strength.",
+      why: "Multiplying 7 kg by 10 N/kg gives 70 N."
+    },
+    {
+      q: "A 4 kg object is in a gravitational field of 9.8 N/kg. Calculate its weight.",
+      hint: "Multiply 4 by 9.8.",
+      steps: [
+        "W = mg.",
+        "W = 4 × 9.8.",
+        "W = 39.2 N."
+      ],
+      ans: "39.2 N",
+      explanation: "The weight is 39.2 N in this gravitational field.",
+      why: "The calculation uses the field strength provided in the question."
+    },
+    {
+      q: "An object has a mass of 15 kg. Calculate its weight where g = 10 N/kg.",
+      hint: "Substitute the mass and field strength into W = mg.",
+      steps: [
+        "W = mg.",
+        "W = 15 × 10.",
+        "W = 150 N."
+      ],
+      ans: "150 N",
+      explanation: "The object's weight is 150 N.",
+      why: "Weight is calculated by multiplying mass by gravitational field strength."
+    },
+    {
+      q: "A learner calculates the weight of a 2 kg object in a 10 N/kg field as 20 kg. What is the correct answer?",
+      hint: "The numerical answer is 2 × 10, but check the unit of force.",
+      steps: [
+        "W = mg.",
+        "W = 2 × 10 = 20.",
+        "Weight is measured in newtons."
+      ],
+      ans: "20 N",
+      explanation: "The correct weight is 20 N, not 20 kg.",
+      why: "The learner used the correct multiplication but confused the unit of mass with the unit of force."
+    }
+  ]
+);
+add(
+  "physics",
+  "force",
+  "Calculating Mass from Weight",
+
+  `
+  <h2>Calculating Mass from Weight</h2>
+
+  <h3>Learning objective</h3>
+  <p>Calculate mass when weight and gravitational field strength are known.</p>
+
+  <h3>1. Rearranging the weight formula</h3>
+  <p>
+    The starting relationship is:
+  </p>
+
+  <p style="text-align:center;"><b>W = mg</b></p>
+
+  <p>
+    To make mass the subject, divide both sides by g:
+  </p>
+
+  <p style="text-align:center;"><b>m = W/g</b></p>
+
+  <ul>
+    <li>Weight W is measured in newtons (N).</li>
+    <li>Gravitational field strength g is measured in N/kg.</li>
+    <li>Mass m is measured in kilograms (kg).</li>
+  </ul>
+
+  <h3>2. Worked Example 1: Finding mass</h3>
+  <p><b>Question:</b> An object weighs 60 N where g = 10 N/kg. Find its mass.</p>
+  <p><b>Step 1:</b> Use m = W/g.</p>
+  <p><b>Step 2:</b> Substitute: m = 60/10.</p>
+  <p><b>Step 3:</b> Calculate: m = 6 kg.</p>
+  <p><b>Answer: 6 kg</b></p>
+
+  <h3>3. Worked Example 2: A non-integer result</h3>
+  <p><b>Question:</b> An object weighs 49 N in a field of 9.8 N/kg. Calculate its mass.</p>
+  <p><b>Step 1:</b> m = W/g.</p>
+  <p><b>Step 2:</b> m = 49/9.8.</p>
+  <p><b>Step 3:</b> m = 5 kg.</p>
+  <p><b>Answer: 5 kg</b></p>
+
+  <h3>4. Worked Example 3: Checking a student's rearrangement</h3>
+  <p><b>Question:</b> A learner writes m = W × g. Explain the error and find the mass of an object weighing 80 N where g = 10 N/kg.</p>
+  <p><b>Step 1:</b> Start with W = mg.</p>
+  <p><b>Step 2:</b> Divide by g to isolate m: m = W/g.</p>
+  <p><b>Step 3:</b> Substitute: m = 80/10 = 8 kg.</p>
+  <p><b>Answer: 8 kg.</b> Divide weight by field strength; do not multiply them.</p>
+
+  <h3>Remember</h3>
+  <p><b>Mass = Weight ÷ Gravitational field strength</b></p>
+  `,
+
+  [
+    {
+      q: "An object weighs 90 N where g = 10 N/kg. Find its mass.",
+      hint: "Use m = W/g.",
+      steps: [
+        "m = W/g.",
+        "m = 90/10.",
+        "m = 9 kg."
+      ],
+      ans: "9 kg",
+      explanation: "Mass is weight divided by gravitational field strength.",
+      why: "Rearranging W = mg requires dividing both sides by g."
+    },
+    {
+      q: "A stone weighs 19.6 N where g = 9.8 N/kg. Calculate its mass.",
+      hint: "Divide 19.6 N by 9.8 N/kg.",
+      steps: [
+        "m = W/g.",
+        "m = 19.6/9.8.",
+        "m = 2 kg."
+      ],
+      ans: "2 kg",
+      explanation: "The stone has a mass of 2 kg.",
+      why: "The units N divided by N/kg reduce to kg."
+    },
+    {
+      q: "An object weighs 150 N in a field of 10 N/kg. What is its mass?",
+      hint: "Make mass the subject of W = mg.",
+      steps: [
+        "m = W/g.",
+        "m = 150/10.",
+        "m = 15 kg."
+      ],
+      ans: "15 kg",
+      explanation: "The mass is 15 kg.",
+      why: "Dividing the weight by the field strength gives mass."
+    },
+    {
+      q: "Which formula correctly calculates mass from weight and gravitational field strength?",
+      hint: "Start with W = mg and isolate m.",
+      steps: [
+        "Start with W = mg.",
+        "Divide both sides by g.",
+        "Obtain m = W/g."
+      ],
+      ans: "m = W/g",
+      explanation: "Mass equals weight divided by gravitational field strength.",
+      why: "Multiplication by g would not isolate mass from W = mg."
+    }
+  ]
+);
+add(
+  "physics",
+  "force",
+  "Weight in Different Gravitational Fields",
+
+  `
+  <h2>Weight in Different Gravitational Fields</h2>
+
+  <h3>Learning objective</h3>
+  <p>Explain and calculate how an object's weight changes when gravitational field strength changes.</p>
+
+  <h3>1. Why weight changes</h3>
+  <p>
+    Weight is calculated using:
+  </p>
+
+  <p style="text-align:center;"><b>W = mg</b></p>
+
+  <p>
+    For the same object, mass m stays constant. If gravitational field
+    strength g changes, weight W changes in direct proportion to g.
+  </p>
+
+  <p>
+    For example, the Moon's gravitational field is weaker than Earth's,
+    so an object weighs less on the Moon. Its mass does not change.
+  </p>
+
+  <h3>2. Worked Example 1: Comparing Earth and Moon</h3>
+  <p><b>Question:</b> An object has a mass of 6 kg. Take Earth's field strength as 10 N/kg and the Moon's as 1.6 N/kg. Find its weight in each location.</p>
+  <p><b>Step 1: Earth.</b></p>
+  <p>W = mg = 6 × 10 = 60 N.</p>
+  <p><b>Step 2: Moon.</b></p>
+  <p>W = mg = 6 × 1.6 = 9.6 N.</p>
+  <p><b>Answer:</b> Earth: 60 N; Moon: 9.6 N.</p>
+
+  <h3>3. Worked Example 2: Field strength doubles</h3>
+  <p><b>Question:</b> An object weighs 40 N in a field of 5 N/kg. What will it weigh in a field of 10 N/kg?</p>
+  <p><b>Step 1:</b> Find the mass: m = W/g = 40/5 = 8 kg.</p>
+  <p><b>Step 2:</b> Calculate the new weight: W = 8 × 10.</p>
+  <p><b>Answer: 80 N.</b> Doubling the field strength doubles the weight of the same object.</p>
+
+  <h3>4. Worked Example 3: Field strength is halved</h3>
+  <p><b>Question:</b> An object weighs 100 N where g = 10 N/kg. Calculate its weight where g = 5 N/kg.</p>
+  <p><b>Step 1:</b> Find the mass: m = 100/10 = 10 kg.</p>
+  <p><b>Step 2:</b> Calculate the new weight: W = 10 × 5 = 50 N.</p>
+  <p><b>Answer: 50 N.</b> Halving the field strength halves the weight.</p>
+
+  <h3>Remember</h3>
+  <ul>
+    <li>Mass remains constant when location changes.</li>
+    <li>Weight depends on gravitational field strength.</li>
+    <li>For the same mass, doubling g doubles W; halving g halves W.</li>
+  </ul>
+  `,
+
+  [
+    {
+      q: "A 4 kg object is in a gravitational field of 3 N/kg. Calculate its weight.",
+      hint: "Use W = mg.",
+      steps: [
+        "W = mg.",
+        "W = 4 × 3.",
+        "W = 12 N."
+      ],
+      ans: "12 N",
+      explanation: "Weight equals mass multiplied by the local gravitational field strength.",
+      why: "The weight depends on the field strength at the object's location."
+    },
+    {
+      q: "An object has a mass of 5 kg. Calculate its weight where g = 8 N/kg.",
+      hint: "Multiply mass by field strength.",
+      steps: [
+        "W = mg.",
+        "W = 5 × 8.",
+        "W = 40 N."
+      ],
+      ans: "40 N",
+      explanation: "The object's weight in this field is 40 N.",
+      why: "The calculation uses the local field strength, not automatically Earth's usual value."
+    },
+    {
+      q: "An object weighs 70 N where g = 10 N/kg. What is its weight where g = 2 N/kg?",
+      hint: "First find its mass, which does not change.",
+      steps: [
+        "Find mass: m = W/g = 70/10 = 7 kg.",
+        "Use the new field strength: W = mg.",
+        "W = 7 × 2 = 14 N."
+      ],
+      ans: "14 N",
+      explanation: "The mass remains 7 kg, so the weight in the weaker field is 14 N.",
+      why: "Weight changes in proportion to field strength when mass stays constant."
+    },
+    {
+      q: "An object is moved to a location where gravitational field strength is half its original value. What happens to its weight?",
+      hint: "Use W = mg and keep the mass constant.",
+      steps: [
+        "The mass remains unchanged.",
+        "Weight is directly proportional to field strength.",
+        "Halving field strength halves weight."
+      ],
+      ans: "Its weight is halved",
+      explanation: "For a fixed mass, weight changes in direct proportion to gravitational field strength.",
+      why: "Only g changes in W = mg, so W changes by the same factor."
+    }
+  ]
+);
+/* ============================================================
+   1. MEANING AND DIRECTION OF FRICTION
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Meaning and Direction of Friction",
+  `
+  <h2>Meaning and Direction of Friction</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Friction is a force that opposes relative motion, or the tendency
+    for relative motion, between surfaces in contact.
+  </p>
+  <p>
+    Friction acts along the surfaces in contact. Its direction is
+    opposite to the sliding motion or the tendency to slide.
+  </p>
+
+  <h3>Worked Example 1: A box sliding to the right</h3>
+  <p><b>Question:</b> A box slides to the right across a rough floor.
+  In which direction does friction act on the box?</p>
+  <p><b>Step 1:</b> Identify the direction of sliding: right.</p>
+  <p><b>Step 2:</b> Friction opposes the sliding motion.</p>
+  <p><b>Answer:</b> Friction acts to the left.</p>
+  <p><b>Check:</b> The friction force is parallel to the floor and
+  opposite to the sliding direction.</p>
+
+  <h3>Worked Example 2: Pulling a box left</h3>
+  <p><b>Question:</b> A box is pulled to the left and slides across
+  a rough floor. What is the direction of friction?</p>
+  <p><b>Step 1:</b> The box slides left.</p>
+  <p><b>Step 2:</b> Friction opposes that sliding.</p>
+  <p><b>Answer:</b> Friction acts to the right.</p>
+
+  <h3>Worked Example 3: A stationary box</h3>
+  <p><b>Question:</b> A stationary box is pushed to the right but
+  does not move. Which direction does static friction act?</p>
+  <p><b>Step 1:</b> The push tends to move the box right.</p>
+  <p><b>Step 2:</b> Static friction opposes the tendency to slide.</p>
+  <p><b>Answer:</b> Static friction acts to the left, balancing the
+  push if no other horizontal force acts.</p>
+
+  <h3>Remember</h3>
+  <p>Do not automatically say friction acts opposite to the applied
+  force. Determine the direction of actual or impending relative
+  motion first.</p>
+  `,
+  [
+    {
+      q: "A block slides to the right across a rough horizontal floor. Which way does friction act on the block?",
+      options: ["To the right", "To the left", "Vertically upward", "Vertically downward"],
+      ans: "To the left",
+      hint: "Friction opposes the sliding motion.",
+      steps: [
+        "The block's sliding direction is to the right.",
+        "Friction acts opposite to that sliding.",
+        "Therefore, friction acts to the left."
+      ],
+      why: "Friction opposes relative sliding or the tendency to slide between contacting surfaces."
+    },
+    {
+      q: "A box is pulled to the left and slides left. What is the direction of friction?",
+      options: ["Left", "Right", "Upward", "Downward"],
+      ans: "Right",
+      hint: "Identify the direction of sliding before choosing the friction direction.",
+      steps: [
+        "The box slides to the left.",
+        "Friction opposes the sliding.",
+        "Therefore, friction acts to the right."
+      ],
+      why: "The direction of friction is opposite to the direction of sliding in this situation."
+    },
+    {
+      q: "A stationary box is pushed right but remains at rest. If the push is the only applied horizontal force, which way does static friction act?",
+      options: ["Right", "Left", "Upward", "It must be zero"],
+      ans: "Left",
+      hint: "The box tends to move in the direction of the push.",
+      steps: [
+        "The push tends to move the box right.",
+        "Static friction opposes this tendency.",
+        "Static friction acts left, balancing the push while the box remains at rest."
+      ],
+      why: "Static friction can act even when surfaces are not sliding, provided there is a tendency for relative motion."
+    },
+    {
+      q: "Which statement best describes friction?",
+      options: [
+        "It always acts vertically downward.",
+        "It always acts in the direction of motion.",
+        "It opposes relative sliding or the tendency to slide between surfaces.",
+        "It acts only when an object is moving."
+      ],
+      ans: "It opposes relative sliding or the tendency to slide between surfaces.",
+      hint: "Think about what friction resists at the contact between two surfaces.",
+      steps: [
+        "Friction is a contact force.",
+        "It opposes relative sliding or impending sliding.",
+        "It can act on a stationary object when motion is being resisted."
+      ],
+      why: "Friction can act on stationary or moving objects; its direction depends on the relative motion or its tendency."
+    }
+  ]
+);
+
+
+/* ============================================================
+   2. STATIC AND SLIDING FRICTION
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Static and Sliding Friction",
+  `
+  <h2>Static and Sliding Friction</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    <b>Static friction</b> acts between surfaces that are not sliding
+    relative to each other. It adjusts as needed to resist an applied
+    force, up to a maximum value.
+  </p>
+  <p>
+    <b>Sliding friction</b> acts when surfaces slide across each other.
+    In many ordinary situations, the maximum static friction is greater
+    than the sliding friction.
+  </p>
+
+  <h3>Worked Example 1: A small push</h3>
+  <p><b>Question:</b> A box is pushed horizontally with a force of
+  8 N, but it remains stationary. What is the friction force if no
+  other horizontal force acts?</p>
+  <p><b>Step 1:</b> The box remains at rest, so the resultant horizontal
+  force is zero.</p>
+  <p><b>Step 2:</b> Static friction balances the 8 N push.</p>
+  <p><b>Answer:</b> 8 N opposite to the push.</p>
+  <p><b>Check:</b> The horizontal forces balance: 8 N − 8 N = 0 N.</p>
+
+  <h3>Worked Example 2: Increasing the push</h3>
+  <p><b>Question:</b> A stationary box experiences a 12 N push and
+  remains at rest. What is the static friction force?</p>
+  <p><b>Step 1:</b> The box is still at rest.</p>
+  <p><b>Step 2:</b> Static friction balances the push, provided its
+  maximum value has not been exceeded.</p>
+  <p><b>Answer:</b> 12 N opposite to the push.</p>
+
+  <h3>Worked Example 3: Sliding box</h3>
+  <p><b>Question:</b> A box slides right while the friction force is
+  6 N. What type of friction acts, and in which direction?</p>
+  <p><b>Step 1:</b> The surfaces are sliding relative to one another.</p>
+  <p><b>Step 2:</b> Sliding friction acts opposite to the sliding.</p>
+  <p><b>Answer:</b> Sliding friction acts to the left with magnitude 6 N.</p>
+
+  <h3>Remember</h3>
+  <p>Static friction does not always equal its maximum value. It
+  adjusts to the applied force until slipping begins.</p>
+  `,
+  [
+    {
+      q: "A stationary box is pushed with 8 N to the right and remains at rest. What is the friction force?",
+      options: ["0 N", "4 N to the left", "8 N to the left", "8 N to the right"],
+      ans: "8 N to the left",
+      hint: "A stationary box has zero resultant horizontal force.",
+      steps: [
+        "The applied horizontal force is 8 N right.",
+        "Since the box remains at rest, friction must balance this force.",
+        "Friction is 8 N left."
+      ],
+      why: "Static friction adjusts to balance the applied force while the object remains at rest, up to its maximum value."
+    },
+    {
+      q: "Which type of friction acts when a book slides across a table?",
+      options: ["Static friction", "Sliding friction", "Magnetic force", "Upthrust"],
+      ans: "Sliding friction",
+      hint: "The book and table are moving relative to each other.",
+      steps: [
+        "The book slides over the table.",
+        "The surfaces move relative to each other.",
+        "Therefore, sliding friction acts."
+      ],
+      why: "Sliding friction acts between surfaces that are sliding relative to one another."
+    },
+    {
+      q: "A box remains stationary while the horizontal push increases from 3 N to 5 N. What happens to static friction, assuming the box still does not slip?",
+      options: [
+        "It remains at 3 N.",
+        "It becomes 5 N in the opposite direction.",
+        "It becomes zero.",
+        "It acts in the direction of the push."
+      ],
+      ans: "It becomes 5 N in the opposite direction.",
+      hint: "For an object at rest, the horizontal forces must balance.",
+      steps: [
+        "The new push is 5 N.",
+        "The box remains at rest, so the resultant horizontal force is zero.",
+        "Static friction becomes 5 N opposite to the push."
+      ],
+      why: "Static friction adjusts to the applied force until the maximum available static friction is reached."
+    },
+    {
+      q: "Which statement is generally true for many ordinary dry surfaces?",
+      options: [
+        "Sliding friction is always greater than maximum static friction.",
+        "Static friction never acts on a stationary object.",
+        "Maximum static friction is often greater than sliding friction.",
+        "Both types of friction always have the same magnitude."
+      ],
+      ans: "Maximum static friction is often greater than sliding friction.",
+      hint: "Consider why it can take more force to start moving a box than to keep it sliding.",
+      steps: [
+        "A stationary object may resist the start of sliding.",
+        "Once sliding begins, the friction force is often smaller.",
+        "Thus, maximum static friction is often greater than sliding friction."
+      ],
+      why: "This is a common pattern, not a universal rule for every material and condition."
+    }
+  ]
+);
+
+
+/* ============================================================
+   3. RESULTANT FORCE WITH FRICTION
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Resultant Force with Friction",
+  `
+  <h2>Resultant Force with Friction</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    The resultant force is the vector sum of all forces acting on
+    an object. For forces along one straight line, choose a positive
+    direction and add forces with their signs.
+  </p>
+  <p>
+    If two horizontal forces act in opposite directions, subtract
+    the smaller magnitude from the larger. The resultant acts in
+    the direction of the larger force.
+  </p>
+
+  <h3>Worked Example 1: Applied force greater than friction</h3>
+  <p><b>Question:</b> A 20 N force pulls a box right. Friction is
+  7 N left. Find the resultant horizontal force.</p>
+  <p><b>Step 1:</b> Take right as positive.</p>
+  <p><b>Step 2:</b> Resultant force = 20 − 7.</p>
+  <p><b>Answer:</b> 13 N to the right.</p>
+  <p><b>Check:</b> The rightward force is larger, so the resultant
+  must point right.</p>
+
+  <h3>Worked Example 2: Forces balance</h3>
+  <p><b>Question:</b> A box is pulled right by 15 N and experiences
+  15 N friction left. Find the resultant force.</p>
+  <p><b>Step 1:</b> The forces have equal magnitudes.</p>
+  <p><b>Step 2:</b> Resultant = 15 − 15.</p>
+  <p><b>Answer:</b> 0 N.</p>
+  <p><b>Meaning:</b> The box has no acceleration. It may remain at
+  rest or continue at constant velocity.</p>
+
+  <h3>Worked Example 3: Friction greater than the applied force</h3>
+  <p><b>Question:</b> An object has a 9 N force right and a 14 N
+  opposing force left. Find the resultant.</p>
+  <p><b>Step 1:</b> Compare the forces: 14 N is larger than 9 N.</p>
+  <p><b>Step 2:</b> Resultant magnitude = 14 − 9 = 5 N.</p>
+  <p><b>Answer:</b> 5 N to the left.</p>
+
+  <h3>Remember</h3>
+  <p>Zero resultant force means zero acceleration, not necessarily
+  zero velocity.</p>
+  `,
+  [
+    {
+      q: "A 20 N force acts right while friction acts left with a force of 7 N. What is the resultant horizontal force?",
+      options: ["27 N right", "13 N right", "13 N left", "7 N right"],
+      ans: "13 N right",
+      hint: "Opposing forces are subtracted.",
+      steps: [
+        "Take right as the positive direction.",
+        "Resultant = 20 N − 7 N = 13 N.",
+        "The larger force acts right, so the resultant is 13 N right."
+      ],
+      why: "The resultant of opposite forces points in the direction of the larger force and has their difference as its magnitude."
+    },
+    {
+      q: "A box experiences 15 N right and 15 N left. What is the resultant force?",
+      options: ["30 N right", "15 N left", "0 N", "15 N right"],
+      ans: "0 N",
+      hint: "Equal and opposite forces cancel.",
+      steps: [
+        "The forces have equal magnitudes.",
+        "They act in opposite directions.",
+        "Resultant = 15 N − 15 N = 0 N."
+      ],
+      why: "Equal forces in opposite directions produce zero resultant force."
+    },
+    {
+      q: "A 9 N force acts right and a 14 N force acts left. What is the resultant?",
+      options: ["5 N right", "23 N left", "5 N left", "14 N right"],
+      ans: "5 N left",
+      hint: "Subtract the smaller force from the larger.",
+      steps: [
+        "The larger force is 14 N left.",
+        "Resultant magnitude = 14 − 9 = 5 N.",
+        "The resultant points left."
+      ],
+      why: "The resultant points in the direction of the larger force."
+    },
+    {
+      q: "A trolley moves at constant velocity in a straight line. What is its resultant force?",
+      options: ["Always forward", "Zero", "Always backward", "Equal to its weight"],
+      ans: "Zero",
+      hint: "Constant velocity means constant speed and direction.",
+      steps: [
+        "Constant velocity means there is no acceleration.",
+        "Newton's laws connect zero acceleration with zero resultant force.",
+        "Therefore, the resultant force is zero."
+      ],
+      why: "An object can keep moving at constant velocity when its resultant force is zero."
+    }
+  ]
+);
+
+
+/* ============================================================
+   4. NEWTON'S FIRST LAW AND INERTIA
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Newton's First Law and Inertia",
+  `
+  <h2>Newton's First Law and Inertia</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Newton's first law states that an object remains at rest or
+    continues moving with constant velocity in a straight line
+    unless acted on by a non-zero resultant external force.
+  </p>
+  <p>
+    <b>Inertia</b> is the tendency of an object to resist changes
+    in its state of rest or motion. Greater mass means greater inertia.
+  </p>
+
+  <h3>Worked Example 1: A book on a table</h3>
+  <p><b>Question:</b> A book rests on a horizontal table. What does
+  its unchanged state of motion tell us about the resultant force?</p>
+  <p><b>Step 1:</b> The book remains at rest.</p>
+  <p><b>Step 2:</b> Its acceleration is zero.</p>
+  <p><b>Answer:</b> The resultant force on the book is zero.</p>
+  <p><b>Check:</b> The upward support force balances the book's weight,
+  assuming no other vertical forces act.</p>
+
+  <h3>Worked Example 2: A moving trolley</h3>
+  <p><b>Question:</b> A trolley moves in a straight line at constant
+  velocity. What is its acceleration?</p>
+  <p><b>Step 1:</b> Its velocity is unchanged.</p>
+  <p><b>Step 2:</b> Acceleration is the rate of change of velocity.</p>
+  <p><b>Answer:</b> 0 m/s².</p>
+  <p><b>Conclusion:</b> Its resultant force is zero.</p>
+
+  <h3>Worked Example 3: Two objects of different masses</h3>
+  <p><b>Question:</b> A loaded trolley and an empty trolley are at rest.
+  Which has greater inertia?</p>
+  <p><b>Step 1:</b> Inertia depends on mass.</p>
+  <p><b>Step 2:</b> The loaded trolley has greater mass.</p>
+  <p><b>Answer:</b> The loaded trolley has greater inertia.</p>
+
+  <h3>Remember</h3>
+  <p>A force is not required to maintain constant velocity. A
+  resultant force is required to change velocity.</p>
+  `,
+  [
+    {
+      q: "A trolley moves in a straight line at constant velocity. What is its resultant force?",
+      options: ["Zero", "Equal to its mass", "Always forward", "Always backward"],
+      ans: "Zero",
+      hint: "Ask whether its velocity is changing.",
+      steps: [
+        "The velocity is constant.",
+        "Therefore, acceleration is zero.",
+        "From Newton's first law, the resultant force is zero."
+      ],
+      why: "A non-zero resultant force is needed to change velocity, not to maintain constant velocity."
+    },
+    {
+      q: "What is inertia?",
+      options: [
+        "The force that pulls objects downward",
+        "The tendency to resist a change in motion",
+        "The distance travelled per second",
+        "The energy stored in an object"
+      ],
+      ans: "The tendency to resist a change in motion",
+      hint: "Think about an object's resistance to starting, stopping, or changing direction.",
+      steps: [
+        "Inertia describes resistance to changes in motion.",
+        "It is a property of matter.",
+        "Mass is a measure of inertia."
+      ],
+      why: "Objects with greater mass have greater inertia."
+    },
+    {
+      q: "Two stationary trolleys have different masses. Which has greater inertia?",
+      options: [
+        "The lighter trolley",
+        "The heavier trolley",
+        "Both always have equal inertia",
+        "The trolley with the greater speed"
+      ],
+      ans: "The heavier trolley",
+      hint: "Compare their masses.",
+      steps: [
+        "Inertia depends on mass.",
+        "The heavier trolley has greater mass.",
+        "Therefore, it has greater inertia."
+      ],
+      why: "Mass measures an object's inertia."
+    },
+    {
+      q: "A book rests on a table. Its weight is balanced by the table's upward support force. What is the resultant vertical force?",
+      options: ["Its weight downward", "The support force upward", "Zero", "Twice its weight"],
+      ans: "Zero",
+      hint: "Equal forces in opposite directions cancel.",
+      steps: [
+        "Weight acts downward.",
+        "The support force acts upward with equal magnitude.",
+        "The resultant vertical force is zero."
+      ],
+      why: "Balanced vertical forces mean the book has no vertical acceleration."
+    }
+  ]
+);
+
+
+/* ============================================================
+   5. NEWTON'S SECOND LAW: FORCE, MASS AND ACCELERATION
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Newton's Second Law: Force, Mass and Acceleration",
+  `
+  <h2>Newton's Second Law: Force, Mass and Acceleration</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Newton's second law relates the resultant force on an object
+    to its mass and acceleration:
+  </p>
+  <p><b>Resultant force = mass × acceleration</b></p>
+  <p><b>F = ma</b></p>
+  <p>
+    Force is measured in newtons (N), mass in kilograms (kg), and
+    acceleration in metres per second squared (m/s²).
+  </p>
+  <p>
+    For a fixed mass, a greater resultant force produces greater
+    acceleration. For a fixed resultant force, a greater mass
+    produces smaller acceleration.
+  </p>
+
+  <h3>Worked Example 1: Calculating force</h3>
+  <p><b>Question:</b> A 4 kg object accelerates at 3 m/s². Find
+  the resultant force.</p>
+  <p><b>Step 1:</b> Write the formula: F = ma.</p>
+  <p><b>Step 2:</b> Substitute: F = 4 × 3.</p>
+  <p><b>Answer:</b> F = 12 N.</p>
+  <p><b>Check:</b> kg × m/s² is equivalent to a newton.</p>
+
+  <h3>Worked Example 2: Calculating acceleration</h3>
+  <p><b>Question:</b> A resultant force of 20 N acts on a 5 kg
+  trolley. Calculate its acceleration.</p>
+  <p><b>Step 1:</b> F = ma, so a = F/m.</p>
+  <p><b>Step 2:</b> Substitute: a = 20/5.</p>
+  <p><b>Answer:</b> a = 4 m/s².</p>
+
+  <h3>Worked Example 3: Calculating mass</h3>
+  <p><b>Question:</b> A resultant force of 18 N produces an
+  acceleration of 6 m/s². Find the mass.</p>
+  <p><b>Step 1:</b> F = ma, so m = F/a.</p>
+  <p><b>Step 2:</b> Substitute: m = 18/6.</p>
+  <p><b>Answer:</b> m = 3 kg.</p>
+
+  <h3>Remember</h3>
+  <p>Use the <b>resultant force</b>, not automatically the applied
+  force. If friction or other forces act, combine all forces first.</p>
+  `,
+  [
+    {
+      q: "A 4 kg object accelerates at 3 m/s². What is the resultant force?",
+      options: ["7 N", "1.33 N", "12 N", "24 N"],
+      ans: "12 N",
+      hint: "Use F = ma.",
+      steps: [
+        "Formula: F = ma.",
+        "Substitute m = 4 kg and a = 3 m/s².",
+        "F = 4 × 3 = 12 N."
+      ],
+      why: "Newton's second law states that resultant force equals mass multiplied by acceleration."
+    },
+    {
+      q: "A resultant force of 20 N acts on a 5 kg trolley. Calculate its acceleration.",
+      options: ["4 m/s²", "100 m/s²", "25 m/s²", "0.25 m/s²"],
+      ans: "4 m/s²",
+      hint: "Rearrange F = ma to make acceleration the subject.",
+      steps: [
+        "F = ma.",
+        "a = F/m.",
+        "a = 20/5 = 4 m/s²."
+      ],
+      why: "Acceleration equals resultant force divided by mass."
+    },
+    {
+      q: "A resultant force of 18 N produces an acceleration of 6 m/s². What is the mass?",
+      options: ["108 kg", "24 kg", "3 kg", "12 kg"],
+      ans: "3 kg",
+      hint: "Rearrange F = ma to find mass.",
+      steps: [
+        "F = ma.",
+        "m = F/a.",
+        "m = 18/6 = 3 kg."
+      ],
+      why: "Mass equals resultant force divided by acceleration."
+    },
+    {
+      q: "The same resultant force acts on two objects. Object A has mass 2 kg and object B has mass 4 kg. How do their accelerations compare?",
+      options: [
+        "A's acceleration is twice B's.",
+        "B's acceleration is twice A's.",
+        "Their accelerations are equal.",
+        "Both accelerations must be zero."
+      ],
+      ans: "A's acceleration is twice B's.",
+      hint: "For a fixed force, acceleration is inversely proportional to mass.",
+      steps: [
+        "Newton's second law gives a = F/m.",
+        "Object B has twice the mass of object A.",
+        "Therefore, object B has half the acceleration of object A."
+      ],
+      why: "For the same resultant force, doubling the mass halves the acceleration."
+    }
+  ]
+);
+/* ============================================================
+   1. MEANING OF CIRCULAR MOTION
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Meaning of Circular Motion",
+  `
+  <h2>Meaning of Circular Motion</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Circular motion occurs when an object moves along a circular
+    path around a fixed centre or axis.
+  </p>
+  <p>
+    Even if an object moves around the circle at constant speed,
+    its velocity changes because velocity includes both speed
+    and direction. A change in velocity means the object is
+    accelerating.
+  </p>
+
+  <h3>Worked Example 1: A stone on a string</h3>
+  <p><b>Question:</b> A stone is whirled in a horizontal circle
+  at constant speed. Is its velocity constant?</p>
+  <p><b>Step 1:</b> Its speed remains constant.</p>
+  <p><b>Step 2:</b> Its direction changes continuously as it
+  moves around the circle.</p>
+  <p><b>Answer:</b> Its velocity is not constant.</p>
+  <p><b>Check:</b> Constant speed does not mean constant velocity.</p>
+
+  <h3>Worked Example 2: A car on a circular track</h3>
+  <p><b>Question:</b> A car travels around a circular track at
+  constant speed. Does its velocity change?</p>
+  <p><b>Step 1:</b> At one point, the car moves in one direction.</p>
+  <p><b>Step 2:</b> At another point, its direction is different.</p>
+  <p><b>Answer:</b> Yes. Its velocity changes because its
+  direction changes.</p>
+
+  <h3>Worked Example 3: Straight-line motion</h3>
+  <p><b>Question:</b> A trolley moves in a straight line at
+  constant speed and does not change direction. Is it accelerating?</p>
+  <p><b>Step 1:</b> Its speed is constant.</p>
+  <p><b>Step 2:</b> Its direction is also constant.</p>
+  <p><b>Step 3:</b> Its velocity therefore remains constant.</p>
+  <p><b>Answer:</b> No. Its acceleration is zero.</p>
+
+  <h3>Remember</h3>
+  <p>Circular motion at constant speed still involves acceleration
+  because the direction of velocity changes.</p>
+  `,
+  [
+    {
+      q: "A stone moves around a circle at constant speed. Why is its velocity changing?",
+      options: [
+        "Its mass changes.",
+        "Its direction changes continuously.",
+        "Its speed must increase.",
+        "Gravity disappears."
+      ],
+      ans: "Its direction changes continuously.",
+      hint: "Velocity includes both speed and direction.",
+      steps: [
+        "The stone's speed remains constant.",
+        "Its direction changes as it moves around the circle.",
+        "Therefore, its velocity changes."
+      ],
+      why: "Velocity is a vector quantity, so a change in direction is a change in velocity."
+    },
+    {
+      q: "A car moves around a circular track at constant speed. Is it accelerating?",
+      options: [
+        "No, because its speed is constant.",
+        "Yes, because its direction changes.",
+        "No, because its mass is constant.",
+        "Only if its engine produces more power."
+      ],
+      ans: "Yes, because its direction changes.",
+      hint: "Acceleration means a change in velocity, not only a change in speed.",
+      steps: [
+        "The car's direction changes around the track.",
+        "Its velocity therefore changes.",
+        "A change in velocity means acceleration."
+      ],
+      why: "An object can accelerate while maintaining constant speed if its direction changes."
+    },
+    {
+      q: "Which object has zero acceleration, assuming its speed and direction remain unchanged?",
+      options: [
+        "A car turning around a bend",
+        "A stone moving in a circle",
+        "A trolley moving straight at constant velocity",
+        "A car speeding up on a straight road"
+      ],
+      ans: "A trolley moving straight at constant velocity",
+      hint: "Look for motion with no change in speed or direction.",
+      steps: [
+        "Constant velocity means speed and direction are unchanged.",
+        "There is no change in velocity.",
+        "Therefore, acceleration is zero."
+      ],
+      why: "Acceleration is the rate of change of velocity."
+    }
+  ]
+);
+
+
+/* ============================================================
+   2. CENTRIPETAL ACCELERATION
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Centripetal Acceleration",
+  `
+  <h2>Centripetal Acceleration</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    In circular motion, acceleration is directed towards the
+    centre of the circle. This is called centripetal acceleration.
+  </p>
+  <p>
+    For an object moving at speed v in a circle of radius r:
+  </p>
+  <p><b>a = v²/r</b></p>
+  <p>
+    Here, a is centripetal acceleration in m/s², v is speed in m/s,
+    and r is radius in metres.
+  </p>
+
+  <h3>Worked Example 1: Calculating acceleration</h3>
+  <p><b>Question:</b> A car moves at 4 m/s around a circular path
+  of radius 8 m. Calculate its centripetal acceleration.</p>
+  <p><b>Step 1:</b> Write the formula: a = v²/r.</p>
+  <p><b>Step 2:</b> Substitute: a = 4²/8.</p>
+  <p><b>Step 3:</b> Calculate: a = 16/8.</p>
+  <p><b>Answer:</b> 2 m/s² towards the centre.</p>
+  <p><b>Check:</b> The units are m²/s² divided by m, giving m/s².</p>
+
+  <h3>Worked Example 2: Higher speed</h3>
+  <p><b>Question:</b> An object moves at 6 m/s in a circle of
+  radius 3 m. Find its centripetal acceleration.</p>
+  <p><b>Step 1:</b> a = v²/r.</p>
+  <p><b>Step 2:</b> a = 6²/3 = 36/3.</p>
+  <p><b>Answer:</b> 12 m/s² towards the centre.</p>
+
+  <h3>Worked Example 3: Larger radius</h3>
+  <p><b>Question:</b> A vehicle moves at 5 m/s around a circular
+  path of radius 10 m. Find its centripetal acceleration.</p>
+  <p><b>Step 1:</b> a = v²/r.</p>
+  <p><b>Step 2:</b> a = 5²/10 = 25/10.</p>
+  <p><b>Answer:</b> 2.5 m/s² towards the centre.</p>
+
+  <h3>Remember</h3>
+  <p>Speed is squared in the formula. If speed doubles while the
+  radius stays constant, centripetal acceleration becomes four times
+  as large.</p>
+  `,
+  [
+    {
+      q: "An object moves at 4 m/s in a circle of radius 8 m. What is its centripetal acceleration?",
+      options: ["0.5 m/s²", "2 m/s²", "4 m/s²", "32 m/s²"],
+      ans: "2 m/s²",
+      hint: "Use a = v²/r.",
+      steps: [
+        "Formula: a = v²/r.",
+        "Substitute: a = 4²/8.",
+        "a = 16/8 = 2 m/s²."
+      ],
+      why: "Centripetal acceleration is the square of speed divided by the radius."
+    },
+    {
+      q: "An object moves at 6 m/s in a circle of radius 3 m. Calculate its centripetal acceleration.",
+      options: ["2 m/s²", "12 m/s²", "18 m/s²", "36 m/s²"],
+      ans: "12 m/s²",
+      hint: "Square 6 before dividing by 3.",
+      steps: [
+        "a = v²/r.",
+        "a = 6²/3.",
+        "a = 36/3 = 12 m/s²."
+      ],
+      why: "The speed must be squared before dividing by the radius."
+    },
+    {
+      q: "An object moves at 5 m/s in a circle of radius 10 m. What is its centripetal acceleration?",
+      options: ["0.5 m/s²", "2.5 m/s²", "5 m/s²", "25 m/s²"],
+      ans: "2.5 m/s²",
+      hint: "Substitute the speed and radius into a = v²/r.",
+      steps: [
+        "a = v²/r.",
+        "a = 5²/10.",
+        "a = 25/10 = 2.5 m/s²."
+      ],
+      why: "Centripetal acceleration depends on the square of speed and inversely on radius."
+    },
+    {
+      q: "If the speed of an object doubles while the radius stays constant, what happens to its centripetal acceleration?",
+      options: [
+        "It doubles.",
+        "It becomes half.",
+        "It becomes four times as large.",
+        "It remains unchanged."
+      ],
+      ans: "It becomes four times as large.",
+      hint: "The formula contains v², not just v.",
+      steps: [
+        "Initial acceleration: a = v²/r.",
+        "New speed: 2v.",
+        "New acceleration: (2v)²/r = 4v²/r."
+      ],
+      why: "Centripetal acceleration is proportional to the square of speed when radius is fixed."
+    }
+  ]
+);
+
+
+/* ============================================================
+   3. CENTRIPETAL FORCE
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Centripetal Force",
+  `
+  <h2>Centripetal Force</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Centripetal force is the resultant force directed towards the
+    centre of a circular path. It is not a separate new type of force.
+    It describes the role played by the resultant inward force.
+  </p>
+  <p>
+    The required centripetal force is:
+  </p>
+  <p><b>F = mv²/r</b></p>
+  <p>
+    Here, m is mass in kilograms, v is speed in metres per second,
+    and r is radius in metres.
+  </p>
+  <p>
+    Depending on the situation, tension, friction, gravity or a
+    normal contact force can provide the inward resultant force.
+  </p>
+
+  <h3>Worked Example 1: Calculating centripetal force</h3>
+  <p><b>Question:</b> A 2 kg object moves at 3 m/s in a circle of
+  radius 6 m. Calculate the required centripetal force.</p>
+  <p><b>Step 1:</b> F = mv²/r.</p>
+  <p><b>Step 2:</b> F = (2 × 3²)/6.</p>
+  <p><b>Step 3:</b> F = 18/6.</p>
+  <p><b>Answer:</b> 3 N towards the centre.</p>
+
+  <h3>Worked Example 2: A faster object</h3>
+  <p><b>Question:</b> A 4 kg object moves at 5 m/s in a circle of
+  radius 10 m. Find the required centripetal force.</p>
+  <p><b>Step 1:</b> F = mv²/r.</p>
+  <p><b>Step 2:</b> F = (4 × 5²)/10.</p>
+  <p><b>Step 3:</b> F = 100/10.</p>
+  <p><b>Answer:</b> 10 N towards the centre.</p>
+
+  <h3>Worked Example 3: Identifying the source of force</h3>
+  <p><b>Question:</b> A stone moves in a horizontal circle on a
+  string. Which force provides the inward force in the idealised
+  horizontal-circle model?</p>
+  <p><b>Step 1:</b> The stone needs an inward resultant force to
+  follow the circular path.</p>
+  <p><b>Step 2:</b> The string pulls the stone towards the centre.</p>
+  <p><b>Answer:</b> The string's tension provides the inward force
+  in this model.</p>
+
+  <h3>Remember</h3>
+  <p>Always identify the actual physical force supplying the
+  centripetal force. Do not add an extra “centripetal force” to
+  the force diagram if the inward force is already represented.</p>
+  `,
+  [
+    {
+      q: "A 2 kg object moves at 3 m/s in a circle of radius 6 m. What centripetal force is required?",
+      options: ["1 N", "3 N", "6 N", "18 N"],
+      ans: "3 N",
+      hint: "Use F = mv²/r.",
+      steps: [
+        "F = mv²/r.",
+        "F = (2 × 3²)/6.",
+        "F = 18/6 = 3 N towards the centre."
+      ],
+      why: "The inward resultant force required for circular motion is mv²/r."
+    },
+    {
+      q: "A 4 kg object moves at 5 m/s in a circle of radius 10 m. Find the centripetal force.",
+      options: ["2 N", "10 N", "20 N", "100 N"],
+      ans: "10 N",
+      hint: "Square the speed, multiply by mass, then divide by radius.",
+      steps: [
+        "F = mv²/r.",
+        "F = (4 × 25)/10.",
+        "F = 100/10 = 10 N towards the centre."
+      ],
+      why: "The centripetal force depends on mass, the square of speed, and radius."
+    },
+    {
+      q: "A stone moves in a horizontal circle on a string. In the idealised model, which force supplies the inward force?",
+      options: ["Tension in the string", "The stone's mass", "The stone's speed", "Centrifugal force from a second string"],
+      ans: "Tension in the string",
+      hint: "Identify the physical force directed along the string towards the centre.",
+      steps: [
+        "Circular motion requires an inward resultant force.",
+        "The string pulls the stone towards the centre.",
+        "Tension supplies the inward force in this model."
+      ],
+      why: "Centripetal force is the role of the inward resultant force, not an additional type of force."
+    },
+    {
+      q: "Which statement about centripetal force is correct?",
+      options: [
+        "It is always supplied by gravity.",
+        "It is always supplied by friction.",
+        "It is the inward resultant force required for circular motion.",
+        "It always acts away from the centre."
+      ],
+      ans: "It is the inward resultant force required for circular motion.",
+      hint: "The force supplying it depends on the physical situation.",
+      steps: [
+        "Circular motion requires an inward resultant force.",
+        "Different physical forces can provide this force.",
+        "Therefore, centripetal force describes the inward resultant force."
+      ],
+      why: "Tension, friction, gravity or contact forces can supply the inward resultant force in different situations."
+    }
+  ]
+);
+
+
+/* ============================================================
+   4. EFFECT OF SPEED AND RADIUS ON CENTRIPETAL FORCE
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Effect of Speed and Radius on Centripetal Force",
+  `
+  <h2>Effect of Speed and Radius on Centripetal Force</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    The centripetal force needed for circular motion is:
+  </p>
+  <p><b>F = mv²/r</b></p>
+  <p>
+    For constant mass and radius, force is proportional to the
+    square of speed. For constant mass and speed, force is inversely
+    proportional to radius.
+  </p>
+
+  <h3>Worked Example 1: Doubling speed</h3>
+  <p><b>Question:</b> A car requires 100 N of inward force at a
+  particular speed on a bend. If its speed doubles and the radius
+  stays the same, what force is required?</p>
+  <p><b>Step 1:</b> Force is proportional to speed squared.</p>
+  <p><b>Step 2:</b> Doubling speed multiplies force by 2² = 4.</p>
+  <p><b>Step 3:</b> New force = 4 × 100 N.</p>
+  <p><b>Answer:</b> 400 N.</p>
+
+  <h3>Worked Example 2: Doubling radius</h3>
+  <p><b>Question:</b> An object needs 60 N of centripetal force.
+  Its speed and mass stay constant, but its radius doubles. Find
+  the new required force.</p>
+  <p><b>Step 1:</b> Force is inversely proportional to radius.</p>
+  <p><b>Step 2:</b> Doubling radius halves the force.</p>
+  <p><b>Answer:</b> 30 N.</p>
+
+  <h3>Worked Example 3: Tripling speed</h3>
+  <p><b>Question:</b> A body requires 8 N of centripetal force.
+  If its speed triples while mass and radius remain constant,
+  what force is required?</p>
+  <p><b>Step 1:</b> Force is proportional to v².</p>
+  <p><b>Step 2:</b> Tripling speed multiplies force by 3² = 9.</p>
+  <p><b>Step 3:</b> New force = 9 × 8 N.</p>
+  <p><b>Answer:</b> 72 N.</p>
+
+  <h3>Remember</h3>
+  <p>Speed changes have a squared effect. Radius changes have an
+  inverse effect when mass and speed remain fixed.</p>
+  `,
+  [
+    {
+      q: "A car requires 100 N of centripetal force. If its speed doubles and the radius stays constant, what force is required?",
+      options: ["200 N", "300 N", "400 N", "50 N"],
+      ans: "400 N",
+      hint: "Centripetal force is proportional to the square of speed.",
+      steps: [
+        "Initial force is 100 N.",
+        "Doubling speed multiplies force by 2² = 4.",
+        "New force = 4 × 100 = 400 N."
+      ],
+      why: "With constant mass and radius, F is proportional to v²."
+    },
+    {
+      q: "A body requires 60 N of centripetal force. If its radius doubles while mass and speed remain constant, what is the new force?",
+      options: ["120 N", "60 N", "30 N", "15 N"],
+      ans: "30 N",
+      hint: "Force is inversely proportional to radius.",
+      steps: [
+        "The radius doubles.",
+        "For constant mass and speed, doubling radius halves the force.",
+        "New force = 60/2 = 30 N."
+      ],
+      why: "For constant mass and speed, F = mv²/r, so increasing radius decreases the required force."
+    },
+    {
+      q: "A body requires 8 N of centripetal force. If its speed triples while mass and radius stay constant, what force is required?",
+      options: ["24 N", "36 N", "72 N", "8 N"],
+      ans: "72 N",
+      hint: "Tripling speed multiplies the force by 3².",
+      steps: [
+        "The speed becomes three times its original value.",
+        "The required force becomes 3² = 9 times as large.",
+        "New force = 9 × 8 = 72 N."
+      ],
+      why: "Centripetal force depends on the square of speed."
+    },
+    {
+      q: "Which change reduces the required centripetal force if mass remains constant?",
+      options: [
+        "Doubling speed and keeping radius fixed",
+        "Halving radius and keeping speed fixed",
+        "Doubling radius and keeping speed fixed",
+        "Tripling speed and keeping radius fixed"
+      ],
+      ans: "Doubling radius and keeping speed fixed",
+      hint: "Use F = mv²/r and change one quantity at a time.",
+      steps: [
+        "Force increases when speed increases.",
+        "Force increases when radius decreases.",
+        "Increasing radius while keeping speed fixed reduces force."
+      ],
+      why: "Centripetal force is inversely proportional to radius when mass and speed are constant."
+    }
+  ]
+);
+
+
+/* ============================================================
+   5. GRAVITATION AND GRAVITATIONAL FORCE
+============================================================ */
+
+add(
+  "physics",
+  "force",
+  "Gravitation and Gravitational Force",
+  `
+  <h2>Gravitation and Gravitational Force</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Gravitation is the attractive force between objects that have
+    mass. The Earth attracts objects towards its centre, which is
+    why unsupported objects fall towards the ground.
+  </p>
+  <p>
+    Gravitational attraction depends on the masses of the objects
+    and the distance between their centres. In Newton's law of
+    gravitation, the force increases with either mass and decreases
+    with the square of the separation.
+  </p>
+  <p>
+    Near Earth's surface, the weight of an object can usually be
+    calculated using <b>W = mg</b>, where g is gravitational field
+    strength.
+  </p>
+
+  <h3>Worked Example 1: Calculating weight</h3>
+  <p><b>Question:</b> Calculate the weight of a 5 kg object where
+  g = 10 N/kg.</p>
+  <p><b>Step 1:</b> Use W = mg.</p>
+  <p><b>Step 2:</b> W = 5 × 10.</p>
+  <p><b>Answer:</b> 50 N.</p>
+  <p><b>Check:</b> Weight is a force and is measured in newtons.</p>
+
+  <h3>Worked Example 2: Comparing masses</h3>
+  <p><b>Question:</b> Two objects are at the same place. Object A
+  has mass 2 kg and object B has mass 6 kg. Which experiences the
+  greater gravitational force from Earth?</p>
+  <p><b>Step 1:</b> At the same location, g is approximately the same.</p>
+  <p><b>Step 2:</b> Weight = mg.</p>
+  <p><b>Step 3:</b> Object B has three times the mass of object A.</p>
+  <p><b>Answer:</b> Object B experiences three times the weight.</p>
+
+  <h3>Worked Example 3: Weight on a different world</h3>
+  <p><b>Question:</b> An object has mass 4 kg. Its local gravitational
+  field strength is 2 N/kg. Calculate its weight there.</p>
+  <p><b>Step 1:</b> W = mg.</p>
+  <p><b>Step 2:</b> W = 4 × 2.</p>
+  <p><b>Answer:</b> 8 N.</p>
+  <p><b>Check:</b> The mass remains 4 kg, but the weight depends on
+  the local gravitational field strength.</p>
+
+  <h3>Remember</h3>
+  <p>Mass measures the amount of matter and is measured in kilograms.
+  Weight is gravitational force and is measured in newtons.</p>
+  `,
+  [
+    {
+      q: "Calculate the weight of a 5 kg object where g = 10 N/kg.",
+      options: ["0.5 N", "5 N", "50 N", "500 N"],
+      ans: "50 N",
+      hint: "Use W = mg.",
+      steps: [
+        "W = mg.",
+        "Substitute m = 5 kg and g = 10 N/kg.",
+        "W = 5 × 10 = 50 N."
+      ],
+      why: "Weight is mass multiplied by gravitational field strength."
+    },
+    {
+      q: "Two objects are in the same gravitational field. Object A has mass 2 kg and object B has mass 6 kg. How do their weights compare?",
+      options: [
+        "A has three times B's weight.",
+        "B has three times A's weight.",
+        "Their weights must be equal.",
+        "Both have zero weight."
+      ],
+      ans: "B has three times A's weight.",
+      hint: "Weight is proportional to mass when gravitational field strength is the same.",
+      steps: [
+        "W = mg.",
+        "Both objects have the same g.",
+        "Since 6 kg is three times 2 kg, B's weight is three times A's."
+      ],
+      why: "At the same location, weight is directly proportional to mass."
+    },
+    {
+      q: "An object has mass 4 kg in a gravitational field of 2 N/kg. What is its weight?",
+      options: ["2 N", "6 N", "8 N", "16 N"],
+      ans: "8 N",
+      hint: "Multiply mass by gravitational field strength.",
+      steps: [
+        "W = mg.",
+        "W = 4 × 2.",
+        "W = 8 N."
+      ],
+      why: "The weight of an object depends on its mass and the local gravitational field strength."
+    },
+    {
+      q: "Which statement about mass and weight is correct?",
+      options: [
+        "Mass is measured in newtons.",
+        "Weight is measured in kilograms.",
+        "Mass remains the same when gravitational field strength changes, but weight changes.",
+        "Mass and weight always have the same numerical value."
+      ],
+      ans: "Mass remains the same when gravitational field strength changes, but weight changes.",
+      hint: "Compare the units and the formula W = mg.",
+      steps: [
+        "Mass is measured in kilograms.",
+        "Weight is a force measured in newtons.",
+        "Changing g changes W when mass stays constant."
+      ],
+      why: "Mass is an intrinsic property of an object, while weight depends on the gravitational field."
+    }
+  ]
+);
+/* ============================================================
+   1. MEANING OF WORK IN PHYSICS
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Meaning of Work",
+  `
+  <h2>Meaning of Work</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    In physics, work is done when a force causes displacement.
+    When a constant force acts in the direction of displacement:
+  </p>
+  <p><b>Work done = force × displacement</b></p>
+  <p><b>W = Fd</b></p>
+  <p>
+    Work is measured in joules (J), force in newtons (N), and
+    displacement in metres (m).
+  </p>
+
+  <h3>Worked Example 1: Pushing a box</h3>
+  <p><b>Question:</b> A force of 10 N moves a box 3 m in the
+  direction of the force. Calculate the work done.</p>
+  <p><b>Step 1:</b> W = Fd.</p>
+  <p><b>Step 2:</b> W = 10 × 3.</p>
+  <p><b>Answer:</b> 30 J.</p>
+  <p><b>Check:</b> N × m = J.</p>
+
+  <h3>Worked Example 2: Pulling a trolley</h3>
+  <p><b>Question:</b> A student pulls a trolley with a constant
+  force of 15 N through 4 m in the direction of the force. Find
+  the work done by the pulling force.</p>
+  <p><b>Step 1:</b> Identify F = 15 N and d = 4 m.</p>
+  <p><b>Step 2:</b> W = Fd = 15 × 4.</p>
+  <p><b>Answer:</b> 60 J.</p>
+
+  <h3>Worked Example 3: A smaller force</h3>
+  <p><b>Question:</b> A force of 6 N moves an object 5 m in the
+  direction of the force. Calculate the work done.</p>
+  <p><b>Step 1:</b> W = Fd.</p>
+  <p><b>Step 2:</b> W = 6 × 5.</p>
+  <p><b>Answer:</b> 30 J.</p>
+
+  <h3>Remember</h3>
+  <p>Work in physics is not simply the effort someone feels they
+  are making. The force must cause displacement in the relevant
+  direction.</p>
+  `,
+  [
+    {
+      q: "A force of 10 N moves a box 3 m in the direction of the force. How much work is done by the force?",
+      options: ["13 J", "30 J", "3.3 J", "300 J"],
+      ans: "30 J",
+      hint: "Use W = Fd.",
+      steps: [
+        "Write W = Fd.",
+        "Substitute F = 10 N and d = 3 m.",
+        "W = 10 × 3 = 30 J."
+      ],
+      why: "Work done by a constant force acting in the direction of displacement is force multiplied by displacement."
+    },
+    {
+      q: "A student pulls a trolley with a force of 15 N through 4 m in the force's direction. Calculate the work done.",
+      options: ["19 J", "3.75 J", "60 J", "45 J"],
+      ans: "60 J",
+      hint: "Multiply the force by the displacement.",
+      steps: [
+        "W = Fd.",
+        "W = 15 × 4.",
+        "W = 60 J."
+      ],
+      why: "The force and displacement are in the same direction, so W = Fd applies directly."
+    },
+    {
+      q: "A 6 N force moves an object 5 m in its direction. What is the work done?",
+      options: ["11 J", "1.2 J", "30 J", "25 J"],
+      ans: "30 J",
+      hint: "Use the product of force and displacement.",
+      steps: [
+        "W = Fd.",
+        "W = 6 × 5.",
+        "W = 30 J."
+      ],
+      why: "Work done is measured in joules and equals force multiplied by displacement in this situation."
+    },
+    {
+      q: "Which is the SI unit of work?",
+      options: ["Newton", "Watt", "Joule", "Metre per second"],
+      ans: "Joule",
+      hint: "Work is force multiplied by displacement.",
+      steps: [
+        "The unit of force is the newton.",
+        "The unit of displacement is the metre.",
+        "One newton metre is one joule."
+      ],
+      why: "The SI unit of work is the joule (J)."
+    }
+  ]
+);
+
+
+/* ============================================================
+   2. REARRANGING THE WORK FORMULA
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Calculating Force or Displacement from Work",
+  `
+  <h2>Calculating Force or Displacement from Work</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    When a constant force acts in the direction of displacement:
+  </p>
+  <p><b>W = Fd</b></p>
+  <p>Rearrange the formula to find either unknown:</p>
+  <ul>
+    <li><b>Force:</b> F = W/d</li>
+    <li><b>Displacement:</b> d = W/F</li>
+  </ul>
+
+  <h3>Worked Example 1: Finding force</h3>
+  <p><b>Question:</b> A force does 80 J of work while moving an
+  object 4 m in the force's direction. Find the force.</p>
+  <p><b>Step 1:</b> W = Fd, so F = W/d.</p>
+  <p><b>Step 2:</b> F = 80/4.</p>
+  <p><b>Answer:</b> 20 N.</p>
+
+  <h3>Worked Example 2: Finding displacement</h3>
+  <p><b>Question:</b> A 12 N force does 72 J of work. Find the
+  displacement in the direction of the force.</p>
+  <p><b>Step 1:</b> d = W/F.</p>
+  <p><b>Step 2:</b> d = 72/12.</p>
+  <p><b>Answer:</b> 6 m.</p>
+
+  <h3>Worked Example 3: A heavier load</h3>
+  <p><b>Question:</b> A constant force does 150 J of work while
+  moving an object 5 m in its direction. Calculate the force.</p>
+  <p><b>Step 1:</b> F = W/d.</p>
+  <p><b>Step 2:</b> F = 150/5.</p>
+  <p><b>Answer:</b> 30 N.</p>
+
+  <h3>Remember</h3>
+  <p>Choose the rearranged formula that matches the unknown.
+  Convert displacement to metres before substituting if necessary.</p>
+  `,
+  [
+    {
+      q: "A force does 80 J of work while moving an object 4 m in its direction. Find the force.",
+      options: ["20 N", "320 N", "76 N", "16 N"],
+      ans: "20 N",
+      hint: "Rearrange W = Fd to make F the subject.",
+      steps: [
+        "W = Fd.",
+        "F = W/d.",
+        "F = 80/4 = 20 N."
+      ],
+      why: "Force equals work divided by displacement when the force acts along the displacement."
+    },
+    {
+      q: "A 12 N force does 72 J of work in its direction. What displacement does it cause?",
+      options: ["6 m", "60 m", "84 m", "0.17 m"],
+      ans: "6 m",
+      hint: "Use d = W/F.",
+      steps: [
+        "W = Fd.",
+        "d = W/F.",
+        "d = 72/12 = 6 m."
+      ],
+      why: "Displacement equals work divided by force in this situation."
+    },
+    {
+      q: "A force does 150 J of work while moving an object 5 m in its direction. Calculate the force.",
+      options: ["30 N", "750 N", "145 N", "25 N"],
+      ans: "30 N",
+      hint: "Divide the work done by the displacement.",
+      steps: [
+        "F = W/d.",
+        "F = 150/5.",
+        "F = 30 N."
+      ],
+      why: "Rearranging W = Fd gives F = W/d."
+    },
+    {
+      q: "A force of 10 N does 50 J of work in its direction. How far does the object move?",
+      options: ["5 m", "40 m", "500 m", "0.2 m"],
+      ans: "5 m",
+      hint: "Divide work by force.",
+      steps: [
+        "d = W/F.",
+        "d = 50/10.",
+        "d = 5 m."
+      ],
+      why: "The displacement is the work done divided by the force."
+    }
+  ]
+);
+
+
+/* ============================================================
+   3. WHEN WORK DONE IS ZERO
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "When Work Done Is Zero",
+  `
+  <h2>When Work Done Is Zero</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    For a constant force, work depends on the displacement in the
+    direction of the force. If there is no displacement, that force
+    does no work on the object.
+  </p>
+  <p>
+    If the force is perpendicular to the displacement, the work
+    done by that force is also zero.
+  </p>
+
+  <h3>Worked Example 1: Pushing a wall</h3>
+  <p><b>Question:</b> A student pushes a wall with a force of 100 N,
+  but the wall does not move. How much work does the push do on the wall?</p>
+  <p><b>Step 1:</b> The wall has zero displacement.</p>
+  <p><b>Step 2:</b> W = Fd = 100 × 0.</p>
+  <p><b>Answer:</b> 0 J of work is done on the wall by the push.</p>
+  <p><b>Check:</b> The student may use energy physiologically, but
+  the force does no mechanical work on the wall because it does not move.</p>
+
+  <h3>Worked Example 2: Carrying a bag horizontally</h3>
+  <p><b>Question:</b> A student carries a bag horizontally at
+  constant height. The upward supporting force is 40 N. What work
+  does this upward force do during a horizontal displacement of 5 m?</p>
+  <p><b>Step 1:</b> The support force acts upward.</p>
+  <p><b>Step 2:</b> The displacement is horizontal, so it is
+  perpendicular to the support force.</p>
+  <p><b>Answer:</b> The upward supporting force does 0 J of work.</p>
+
+  <h3>Worked Example 3: Lifting a book</h3>
+  <p><b>Question:</b> A book is lifted vertically by 2 m. Its
+  weight is 10 N downward. Find the work done by gravity.</p>
+  <p><b>Step 1:</b> Gravity acts downward, opposite to the upward displacement.</p>
+  <p><b>Step 2:</b> Work done by gravity = − weight × displacement.</p>
+  <p><b>Step 3:</b> W = −10 × 2.</p>
+  <p><b>Answer:</b> −20 J.</p>
+  <p><b>Meaning:</b> The negative sign shows that gravity opposes
+  the displacement.</p>
+
+  <h3>Remember</h3>
+  <p>Distinguish between work done by an individual force and the
+  total work done by all forces. Different forces can do different
+  amounts of work on the same object.</p>
+  `,
+  [
+    {
+      q: "A student pushes a wall with 100 N, but the wall does not move. What work does the push do on the wall?",
+      options: ["100 J", "0 J", "10,000 J", "Cannot be zero because force acts"],
+      ans: "0 J",
+      hint: "Work depends on displacement as well as force.",
+      steps: [
+        "The wall does not move, so displacement is zero.",
+        "W = Fd.",
+        "W = 100 × 0 = 0 J."
+      ],
+      why: "A force does no mechanical work on an object if that object has no displacement."
+    },
+    {
+      q: "A student carries a bag horizontally at constant height. What work does the upward supporting force do during the horizontal movement?",
+      options: ["Positive work", "Negative work", "Zero work", "Work equal to the bag's weight"],
+      ans: "Zero work",
+      hint: "Compare the direction of the force with the direction of displacement.",
+      steps: [
+        "The support force acts vertically upward.",
+        "The displacement is horizontal.",
+        "The force is perpendicular to the displacement, so its work is zero."
+      ],
+      why: "A force perpendicular to displacement does zero work."
+    },
+    {
+      q: "Gravity acts downward with a force of 10 N while a book is lifted upward by 2 m. What work does gravity do?",
+      options: ["20 J", "-20 J", "5 J", "0 J"],
+      ans: "-20 J",
+      hint: "The gravitational force acts opposite to the upward displacement.",
+      steps: [
+        "The magnitude of the work is 10 × 2 = 20 J.",
+        "Gravity acts opposite to the displacement.",
+        "Work done by gravity = −20 J."
+      ],
+      why: "Work done by a force opposing the displacement is negative."
+    },
+    {
+      q: "When does a force do zero work because of the angle between force and displacement?",
+      options: [
+        "When the force is in the same direction as displacement",
+        "When the force is opposite to displacement",
+        "When the force is perpendicular to displacement",
+        "Whenever the force is large"
+      ],
+      ans: "When the force is perpendicular to displacement",
+      hint: "A perpendicular force has no component along the displacement.",
+      steps: [
+        "Work depends on the component of force along displacement.",
+        "A perpendicular force has zero component in that direction.",
+        "Therefore, its work is zero."
+      ],
+      why: "For a constant force, W = Fd cos θ; at 90 degrees, cos θ = 0."
+    }
+  ]
+);
+
+
+/* ============================================================
+   4. PURPOSE AND PARTS OF SIMPLE MACHINES
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Purpose and Parts of Simple Machines",
+  `
+  <h2>Purpose and Parts of Simple Machines</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    A machine helps us perform a task by changing the size or
+    direction of a force, or by changing the distance over which
+    the force acts.
+  </p>
+  <p>Common machine terms:</p>
+  <ul>
+    <li><b>Load:</b> the resistance or object being moved.</li>
+    <li><b>Effort:</b> the force applied to operate the machine.</li>
+    <li><b>Fulcrum:</b> the pivot about which a lever turns.</li>
+  </ul>
+  <p>
+    A machine does not create energy. In real machines, some energy
+    is transferred to the surroundings, often through friction.
+  </p>
+
+  <h3>Worked Example 1: A lever lifting a stone</h3>
+  <p><b>Question:</b> A lever is used to lift a heavy stone. Identify
+  the load and the effort.</p>
+  <p><b>Step 1:</b> The stone is the object being moved.</p>
+  <p><b>Step 2:</b> The force applied by the person operates the lever.</p>
+  <p><b>Answer:</b> The stone is the load; the person's applied
+  force is the effort.</p>
+
+  <h3>Worked Example 2: A seesaw</h3>
+  <p><b>Question:</b> In a seesaw, what is the fulcrum?</p>
+  <p><b>Step 1:</b> A lever rotates around a pivot.</p>
+  <p><b>Step 2:</b> The seesaw turns around its central support.</p>
+  <p><b>Answer:</b> The central support is the fulcrum.</p>
+
+  <h3>Worked Example 3: A ramp</h3>
+  <p><b>Question:</b> A worker uses a ramp to push a load into a
+  truck. How does the ramp help?</p>
+  <p><b>Step 1:</b> The load gains height over a longer distance.</p>
+  <p><b>Step 2:</b> For an ideal ramp, the required effort can be
+  smaller than lifting the load vertically, but it acts over a
+  longer distance.</p>
+  <p><b>Answer:</b> The ramp reduces the effort needed by increasing
+  the distance over which it is applied, ideally without changing
+  the total work required.</p>
+
+  <h3>Remember</h3>
+  <p>Machines make tasks easier by changing force, direction or
+  distance. They do not produce energy from nothing.</p>
+  `,
+  [
+    {
+      q: "A person uses a lever to lift a stone. What is the stone called in machine terminology?",
+      options: ["Effort", "Fulcrum", "Load", "Velocity ratio"],
+      ans: "Load",
+      hint: "Identify the object or resistance being moved.",
+      steps: [
+        "The stone is the object being moved.",
+        "The applied force is the effort.",
+        "Therefore, the stone is the load."
+      ],
+      why: "The load is the resistance or object the machine is intended to move."
+    },
+    {
+      q: "What is the fulcrum of a lever?",
+      options: [
+        "The object being lifted",
+        "The force applied by a person",
+        "The pivot about which the lever turns",
+        "The distance the load moves"
+      ],
+      ans: "The pivot about which the lever turns",
+      hint: "Think of the fixed turning point of a seesaw.",
+      steps: [
+        "A lever turns around a pivot.",
+        "That pivot is called the fulcrum.",
+        "Therefore, the fulcrum is the lever's turning point."
+      ],
+      why: "The fulcrum is the pivot of a lever."
+    },
+    {
+      q: "A worker uses a ramp to push a load into a truck. What is the main mechanical advantage of the ramp in an ideal case?",
+      options: [
+        "It eliminates the need for work.",
+        "It reduces the effort by increasing the distance over which it acts.",
+        "It creates additional energy.",
+        "It makes the load's mass disappear."
+      ],
+      ans: "It reduces the effort by increasing the distance over which it acts.",
+      hint: "Compare a long ramp with lifting the load vertically.",
+      steps: [
+        "The ramp increases the distance over which the load is raised.",
+        "A smaller force can act over that greater distance.",
+        "The ideal work required remains the same."
+      ],
+      why: "An ideal machine trades force for distance rather than creating energy."
+    },
+    {
+      q: "Which statement about machines is correct?",
+      options: [
+        "Machines create energy.",
+        "Machines always reduce both force and distance.",
+        "Machines can change the magnitude or direction of a force.",
+        "Machines have no energy losses in real life."
+      ],
+      ans: "Machines can change the magnitude or direction of a force.",
+      hint: "Consider what a lever, pulley or ramp changes.",
+      steps: [
+        "Machines can alter how a force is applied.",
+        "They can change force magnitude, direction or distance.",
+        "They cannot create energy, and real machines have losses."
+      ],
+      why: "Machines make tasks easier through force and distance trade-offs or changes in force direction."
+    }
+  ]
+);
+
+
+/* ============================================================
+   5. MECHANICAL ADVANTAGE
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Mechanical Advantage",
+  `
+  <h2>Mechanical Advantage</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Mechanical advantage (M.A.) compares the load force produced
+    by a machine with the effort force applied to it.
+  </p>
+  <p><b>M.A. = Load / Effort</b></p>
+  <p>
+    Load and effort must be expressed in the same force units.
+    Mechanical advantage is a ratio and has no unit.
+  </p>
+  <p>
+    If M.A. is greater than 1, the load force is greater than the
+    effort force. If M.A. is less than 1, the effort force is
+    greater than the load force.
+  </p>
+
+  <h3>Worked Example 1: Finding mechanical advantage</h3>
+  <p><b>Question:</b> A machine lifts a load of 200 N using an
+  effort of 50 N. Calculate its mechanical advantage.</p>
+  <p><b>Step 1:</b> M.A. = Load/Effort.</p>
+  <p><b>Step 2:</b> M.A. = 200/50.</p>
+  <p><b>Answer:</b> M.A. = 4.</p>
+
+  <h3>Worked Example 2: Finding effort</h3>
+  <p><b>Question:</b> A machine has a mechanical advantage of 5
+  and lifts a load of 300 N. Find the effort.</p>
+  <p><b>Step 1:</b> M.A. = Load/Effort.</p>
+  <p><b>Step 2:</b> Effort = Load/M.A.</p>
+  <p><b>Step 3:</b> Effort = 300/5.</p>
+  <p><b>Answer:</b> 60 N.</p>
+
+  <h3>Worked Example 3: Finding the load</h3>
+  <p><b>Question:</b> A machine has a mechanical advantage of 3.
+  An effort of 40 N is applied. Calculate the load.</p>
+  <p><b>Step 1:</b> Load = M.A. × Effort.</p>
+  <p><b>Step 2:</b> Load = 3 × 40.</p>
+  <p><b>Answer:</b> 120 N.</p>
+
+  <h3>Remember</h3>
+  <p>Mechanical advantage tells you how the load force compares
+  with the applied effort. It does not by itself tell you how
+  efficient the machine is.</p>
+  `,
+  [
+    {
+      q: "A machine lifts a load of 200 N using an effort of 50 N. What is its mechanical advantage?",
+      options: ["0.25", "4", "150", "250"],
+      ans: "4",
+      hint: "Use M.A. = Load/Effort.",
+      steps: [
+        "M.A. = Load/Effort.",
+        "M.A. = 200/50.",
+        "M.A. = 4."
+      ],
+      why: "Mechanical advantage is the ratio of load force to effort force."
+    },
+    {
+      q: "A machine has a mechanical advantage of 5 and lifts a load of 300 N. Find the effort.",
+      options: ["1,500 N", "305 N", "60 N", "295 N"],
+      ans: "60 N",
+      hint: "Rearrange M.A. = Load/Effort.",
+      steps: [
+        "Effort = Load/M.A.",
+        "Effort = 300/5.",
+        "Effort = 60 N."
+      ],
+      why: "Effort equals load divided by mechanical advantage."
+    },
+    {
+      q: "A machine has a mechanical advantage of 3 and an effort of 40 N. What load does it lift?",
+      options: ["13.3 N", "43 N", "120 N", "1,200 N"],
+      ans: "120 N",
+      hint: "Load = M.A. × Effort.",
+      steps: [
+        "Load = M.A. × Effort.",
+        "Load = 3 × 40.",
+        "Load = 120 N."
+      ],
+      why: "Multiplying mechanical advantage by effort gives the load force."
+    },
+    {
+      q: "A machine has a mechanical advantage of 0.5. What does this mean?",
+      options: [
+        "The load force is half the effort force.",
+        "The load force is twice the effort force.",
+        "The machine creates half its energy.",
+        "The machine has an efficiency of exactly 50%."
+      ],
+      ans: "The load force is half the effort force.",
+      hint: "M.A. = Load/Effort.",
+      steps: [
+        "Mechanical advantage equals load divided by effort.",
+        "A value of 0.5 means load/effort = 0.5.",
+        "Therefore, the load force is half the effort force."
+      ],
+      why: "Mechanical advantage compares forces; it is not the same quantity as efficiency."
+    }
+  ]
+);
+/* ============================================================
+   1. MEANING AND UNIT OF POWER
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Meaning and Unit of Power",
+  `
+  <h2>Meaning and Unit of Power</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Power is the rate at which work is done or energy is transferred.
+    It tells us how quickly work is done, not simply how much work
+    is done.
+  </p>
+  <p><b>Power = Work done / Time taken</b></p>
+  <p><b>P = W/t</b></p>
+  <p>
+    Power is measured in watts (W). One watt is equal to one joule
+    of work done per second.
+  </p>
+  <p><b>1 W = 1 J/s</b></p>
+
+  <h3>Worked Example 1: Work done in one second</h3>
+  <p><b>Question:</b> A machine does 100 J of work in 1 s.
+  What is its average power?</p>
+  <p><b>Step 1:</b> P = W/t.</p>
+  <p><b>Step 2:</b> P = 100/1.</p>
+  <p><b>Answer:</b> 100 W.</p>
+  <p><b>Check:</b> 100 J/s = 100 W.</p>
+
+  <h3>Worked Example 2: A longer time</h3>
+  <p><b>Question:</b> A motor transfers 600 J of energy in 3 s.
+  Calculate its average power.</p>
+  <p><b>Step 1:</b> P = W/t.</p>
+  <p><b>Step 2:</b> P = 600/3.</p>
+  <p><b>Answer:</b> 200 W.</p>
+
+  <h3>Worked Example 3: Same work, different time</h3>
+  <p><b>Question:</b> Two machines each do 400 J of work.
+  Machine A takes 2 s while machine B takes 4 s. Calculate
+  the average power of each machine.</p>
+  <p><b>Step 1:</b> For A, P = 400/2 = 200 W.</p>
+  <p><b>Step 2:</b> For B, P = 400/4 = 100 W.</p>
+  <p><b>Answer:</b> A has average power 200 W; B has average
+  power 100 W.</p>
+  <p><b>Conclusion:</b> For the same work, the machine that takes
+  less time has greater average power.</p>
+
+  <h3>Remember</h3>
+  <p>Power measures how quickly work is done. The SI unit is
+  the watt, equivalent to one joule per second.</p>
+  `,
+  [
+    {
+      q: "A machine does 100 J of work in 1 s. What is its average power?",
+      options: ["1 W", "10 W", "100 W", "100 J"],
+      ans: "100 W",
+      hint: "Use P = W/t.",
+      steps: [
+        "P = W/t.",
+        "P = 100/1.",
+        "P = 100 W."
+      ],
+      why: "Average power is work done divided by the time taken."
+    },
+    {
+      q: "A motor transfers 600 J of energy in 3 s. Calculate its average power.",
+      options: ["200 W", "1,800 W", "603 W", "20 W"],
+      ans: "200 W",
+      hint: "Divide the energy transferred by the time.",
+      steps: [
+        "P = W/t.",
+        "P = 600/3.",
+        "P = 200 W."
+      ],
+      why: "One watt is one joule per second."
+    },
+    {
+      q: "Two machines each do 400 J of work. Machine A takes 2 s and machine B takes 4 s. Which has greater average power?",
+      options: [
+        "Machine A, with 200 W",
+        "Machine B, with 200 W",
+        "Both, with 100 W",
+        "Both, with 400 W"
+      ],
+      ans: "Machine A, with 200 W",
+      hint: "Calculate power separately using P = W/t.",
+      steps: [
+        "Machine A: P = 400/2 = 200 W.",
+        "Machine B: P = 400/4 = 100 W.",
+        "Machine A has the greater average power."
+      ],
+      why: "For equal work, less time means greater average power."
+    },
+    {
+      q: "What is one watt equal to?",
+      options: ["One newton per metre", "One joule per second", "One joule per metre", "One kilogram per second"],
+      ans: "One joule per second",
+      hint: "Use the definition of power.",
+      steps: [
+        "Power is work done per unit time.",
+        "Work is measured in joules and time in seconds.",
+        "Therefore, 1 W = 1 J/s."
+      ],
+      why: "The watt is the SI unit of power."
+    }
+  ]
+);
+
+
+/* ============================================================
+   2. CALCULATING POWER FROM WORK AND TIME
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Calculating Power from Work and Time",
+  `
+  <h2>Calculating Power from Work and Time</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    When the work done and the time taken are known, calculate
+    average power using:
+  </p>
+  <p><b>P = W/t</b></p>
+  <p>
+    Use joules for work and seconds for time to obtain power
+    in watts.
+  </p>
+
+  <h3>Worked Example 1: Lifting a load</h3>
+  <p><b>Question:</b> A worker does 1,200 J of work lifting a load
+  in 6 s. Find the average power.</p>
+  <p><b>Step 1:</b> Identify W = 1,200 J and t = 6 s.</p>
+  <p><b>Step 2:</b> P = W/t = 1,200/6.</p>
+  <p><b>Answer:</b> 200 W.</p>
+
+  <h3>Worked Example 2: A pump</h3>
+  <p><b>Question:</b> A pump does 9,000 J of work in 30 s.
+  Calculate its average power.</p>
+  <p><b>Step 1:</b> P = W/t.</p>
+  <p><b>Step 2:</b> P = 9,000/30.</p>
+  <p><b>Answer:</b> 300 W.</p>
+
+  <h3>Worked Example 3: Converting minutes to seconds</h3>
+  <p><b>Question:</b> A machine does 12,000 J of work in 2 minutes.
+  Calculate its average power in watts.</p>
+  <p><b>Step 1:</b> Convert time to seconds: 2 × 60 = 120 s.</p>
+  <p><b>Step 2:</b> P = W/t = 12,000/120.</p>
+  <p><b>Answer:</b> 100 W.</p>
+  <p><b>Check:</b> Always convert minutes to seconds when using
+  joules and watts.</p>
+
+  <h3>Remember</h3>
+  <p>Power is the rate of work. Convert all quantities to
+  compatible SI units before calculating.</p>
+  `,
+  [
+    {
+      q: "A worker does 1,200 J of work in 6 s. Find the average power.",
+      options: ["200 W", "7,200 W", "1,206 W", "20 W"],
+      ans: "200 W",
+      hint: "Divide work by time.",
+      steps: [
+        "P = W/t.",
+        "P = 1,200/6.",
+        "P = 200 W."
+      ],
+      why: "Average power equals work done divided by time taken."
+    },
+    {
+      q: "A pump does 9,000 J of work in 30 s. Calculate its average power.",
+      options: ["300 W", "270,000 W", "9,030 W", "30 W"],
+      ans: "300 W",
+      hint: "Use P = W/t.",
+      steps: [
+        "P = W/t.",
+        "P = 9,000/30.",
+        "P = 300 W."
+      ],
+      why: "Dividing joules by seconds gives watts."
+    },
+    {
+      q: "A machine does 12,000 J of work in 2 minutes. What is its average power?",
+      options: ["6,000 W", "100 W", "200 W", "12,000 W"],
+      ans: "100 W",
+      hint: "Convert 2 minutes to seconds before using P = W/t.",
+      steps: [
+        "2 minutes = 120 seconds.",
+        "P = 12,000/120.",
+        "P = 100 W."
+      ],
+      why: "Time must be in seconds when work is in joules and power is required in watts."
+    },
+    {
+      q: "A machine does 2,400 J of work in 8 s. What is its average power?",
+      options: ["300 W", "19,200 W", "2,408 W", "30 W"],
+      ans: "300 W",
+      hint: "Use the ratio of work to time.",
+      steps: [
+        "P = W/t.",
+        "P = 2,400/8.",
+        "P = 300 W."
+      ],
+      why: "Average power is calculated by dividing the work done by the time taken."
+    }
+  ]
+);
+
+
+/* ============================================================
+   3. REARRANGING THE POWER FORMULA
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Calculating Work or Time from Power",
+  `
+  <h2>Calculating Work or Time from Power</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    The power formula can be rearranged to calculate work or time:
+  </p>
+  <ul>
+    <li><b>Power:</b> P = W/t</li>
+    <li><b>Work:</b> W = Pt</li>
+    <li><b>Time:</b> t = W/P</li>
+  </ul>
+  <p>
+    Remember that 1 W = 1 J/s, so power multiplied by time
+    gives work in joules.
+  </p>
+
+  <h3>Worked Example 1: Finding work</h3>
+  <p><b>Question:</b> A motor operates at 250 W for 8 s.
+  How much work does it do at that average power?</p>
+  <p><b>Step 1:</b> W = Pt.</p>
+  <p><b>Step 2:</b> W = 250 × 8.</p>
+  <p><b>Answer:</b> 2,000 J.</p>
+
+  <h3>Worked Example 2: Finding time</h3>
+  <p><b>Question:</b> A machine does 3,600 J of work at an
+  average power of 600 W. Find the time taken.</p>
+  <p><b>Step 1:</b> t = W/P.</p>
+  <p><b>Step 2:</b> t = 3,600/600.</p>
+  <p><b>Answer:</b> 6 s.</p>
+
+  <h3>Worked Example 3: A stronger motor</h3>
+  <p><b>Question:</b> A motor operating at 400 W transfers energy
+  for 15 s. How much work is done at that power?</p>
+  <p><b>Step 1:</b> W = Pt.</p>
+  <p><b>Step 2:</b> W = 400 × 15.</p>
+  <p><b>Answer:</b> 6,000 J.</p>
+
+  <h3>Remember</h3>
+  <p>Choose the version of the formula that isolates the unknown.
+  Keep work in joules, power in watts and time in seconds.</p>
+  `,
+  [
+    {
+      q: "A motor operates at 250 W for 8 s. How much work does it do at that average power?",
+      options: ["31.25 J", "258 J", "2,000 J", "2,500 J"],
+      ans: "2,000 J",
+      hint: "Use W = Pt.",
+      steps: [
+        "W = Pt.",
+        "W = 250 × 8.",
+        "W = 2,000 J."
+      ],
+      why: "Work equals average power multiplied by the time interval."
+    },
+    {
+      q: "A machine does 3,600 J of work at an average power of 600 W. Find the time taken.",
+      options: ["6 s", "2,160,000 s", "3,000 s", "600 s"],
+      ans: "6 s",
+      hint: "Rearrange P = W/t to make t the subject.",
+      steps: [
+        "t = W/P.",
+        "t = 3,600/600.",
+        "t = 6 s."
+      ],
+      why: "Time equals work divided by average power."
+    },
+    {
+      q: "A motor operates at 400 W for 15 s. How much work is done at that average power?",
+      options: ["415 J", "6,000 J", "26.7 J", "400 J"],
+      ans: "6,000 J",
+      hint: "Multiply power by time.",
+      steps: [
+        "W = Pt.",
+        "W = 400 × 15.",
+        "W = 6,000 J."
+      ],
+      why: "A watt is one joule per second, so multiplying watts by seconds gives joules."
+    },
+    {
+      q: "A machine does 1,500 J of work at an average power of 300 W. How long does it take?",
+      options: ["5 s", "4,500 s", "1,800 s", "0.2 s"],
+      ans: "5 s",
+      hint: "Use t = W/P.",
+      steps: [
+        "t = W/P.",
+        "t = 1,500/300.",
+        "t = 5 s."
+      ],
+      why: "Dividing work in joules by power in watts gives time in seconds."
+    }
+  ]
+);
+
+
+/* ============================================================
+   4. COMPARING POWER
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Comparing Power",
+  `
+  <h2>Comparing Power</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    Power compares how quickly work is done or energy is transferred.
+    When two machines do the same work, the one taking less time
+    has greater average power.
+  </p>
+  <p>
+    When two machines operate for the same time, the one doing
+    more work has greater average power.
+  </p>
+
+  <h3>Worked Example 1: Same work, different times</h3>
+  <p><b>Question:</b> Machine A does 600 J in 3 s. Machine B does
+  the same 600 J in 6 s. Compare their average powers.</p>
+  <p><b>Step 1:</b> P(A) = 600/3 = 200 W.</p>
+  <p><b>Step 2:</b> P(B) = 600/6 = 100 W.</p>
+  <p><b>Answer:</b> Machine A has twice the average power of B.</p>
+
+  <h3>Worked Example 2: Same time, different work</h3>
+  <p><b>Question:</b> Machine A does 900 J in 3 s. Machine B does
+  1,500 J in the same 3 s. Which has greater average power?</p>
+  <p><b>Step 1:</b> P(A) = 900/3 = 300 W.</p>
+  <p><b>Step 2:</b> P(B) = 1,500/3 = 500 W.</p>
+  <p><b>Answer:</b> Machine B has greater average power.</p>
+
+  <h3>Worked Example 3: Comparing workers</h3>
+  <p><b>Question:</b> Worker A does 2,400 J of work in 12 s.
+  Worker B does 1,800 J in 6 s. Compare their average powers.</p>
+  <p><b>Step 1:</b> P(A) = 2,400/12 = 200 W.</p>
+  <p><b>Step 2:</b> P(B) = 1,800/6 = 300 W.</p>
+  <p><b>Answer:</b> Worker B has the greater average power, even
+  though worker A does more total work.</p>
+
+  <h3>Remember</h3>
+  <p>Do not compare total work alone. Calculate work per unit time
+  when the question asks about power.</p>
+  `,
+  [
+    {
+      q: "Machine A does 600 J in 3 s. Machine B does 600 J in 6 s. Which has greater average power?",
+      options: [
+        "Machine A, at 200 W",
+        "Machine B, at 200 W",
+        "Both, at 100 W",
+        "Both, at 600 W"
+      ],
+      ans: "Machine A, at 200 W",
+      hint: "Calculate P = W/t for both machines.",
+      steps: [
+        "P(A) = 600/3 = 200 W.",
+        "P(B) = 600/6 = 100 W.",
+        "Machine A has greater average power."
+      ],
+      why: "For the same work, completing it in less time requires greater average power."
+    },
+    {
+      q: "Machine A does 900 J in 3 s. Machine B does 1,500 J in the same 3 s. Which has greater average power?",
+      options: [
+        "Machine A, at 300 W",
+        "Machine B, at 500 W",
+        "Both, at 400 W",
+        "Machine A, at 900 W"
+      ],
+      ans: "Machine B, at 500 W",
+      hint: "The times are equal, so compare work done per second.",
+      steps: [
+        "P(A) = 900/3 = 300 W.",
+        "P(B) = 1,500/3 = 500 W.",
+        "Machine B has greater average power."
+      ],
+      why: "For the same time interval, greater work means greater average power."
+    },
+    {
+      q: "Worker A does 2,400 J in 12 s. Worker B does 1,800 J in 6 s. Who has greater average power?",
+      options: [
+        "Worker A, at 200 W",
+        "Worker B, at 300 W",
+        "Worker A, at 2,400 W",
+        "Both have equal power"
+      ],
+      ans: "Worker B, at 300 W",
+      hint: "Calculate each worker's work per second.",
+      steps: [
+        "P(A) = 2,400/12 = 200 W.",
+        "P(B) = 1,800/6 = 300 W.",
+        "Worker B has greater average power."
+      ],
+      why: "Power measures the rate of doing work, not the total amount of work alone."
+    },
+    {
+      q: "Two machines do the same work. Machine A takes 10 s and machine B takes 5 s. How do their average powers compare?",
+      options: [
+        "A has twice B's power.",
+        "B has twice A's power.",
+        "Their powers are equal.",
+        "B has half A's power."
+      ],
+      ans: "B has twice A's power.",
+      hint: "For equal work, power is inversely proportional to time.",
+      steps: [
+        "Both machines do equal work.",
+        "Machine B takes half the time of A.",
+        "Therefore, B's average power is twice A's."
+      ],
+      why: "For fixed work, P = W/t, so halving the time doubles average power."
+    }
+  ]
+);
+
+
+/* ============================================================
+   5. POWER, FORCE AND SPEED
+============================================================ */
+
+add(
+  "physics",
+  "work_energy_power",
+  "Power, Force and Speed",
+  `
+  <h2>Power, Force and Speed</h2>
+
+  <h3>Core idea</h3>
+  <p>
+    When a force acts in the direction of an object's motion,
+    the instantaneous power delivered by that force is:
+  </p>
+  <p><b>P = Fv</b></p>
+  <p>
+    Here, P is power in watts, F is force in newtons and v is
+    speed in metres per second.
+  </p>
+  <p>
+    This relation applies to the component of force in the direction
+    of motion. If force and velocity are not aligned, only the
+    force component along the motion contributes to the power.
+  </p>
+
+  <h3>Worked Example 1: A moving vehicle</h3>
+  <p><b>Question:</b> A vehicle experiences a driving force of
+  500 N while moving at 10 m/s. Calculate the power delivered
+  by that force.</p>
+  <p><b>Step 1:</b> P = Fv.</p>
+  <p><b>Step 2:</b> P = 500 × 10.</p>
+  <p><b>Answer:</b> 5,000 W, or 5 kW.</p>
+
+  <h3>Worked Example 2: A faster vehicle</h3>
+  <p><b>Question:</b> A motor supplies a force of 200 N in the
+  direction of motion of a vehicle travelling at 15 m/s. Find
+  the power delivered by the force.</p>
+  <p><b>Step 1:</b> P = Fv.</p>
+  <p><b>Step 2:</b> P = 200 × 15.</p>
+  <p><b>Answer:</b> 3,000 W, or 3 kW.</p>
+
+  <h3>Worked Example 3: Finding force</h3>
+  <p><b>Question:</b> A motor delivers 6,000 W of power to an
+  object moving at 12 m/s. Assuming the force is in the direction
+  of motion, calculate the force.</p>
+  <p><b>Step 1:</b> P = Fv, so F = P/v.</p>
+  <p><b>Step 2:</b> F = 6,000/12.</p>
+  <p><b>Answer:</b> 500 N.</p>
+
+  <h3>Remember</h3>
+  <p>Use P = Fv when the force and speed are known. Use P = W/t
+  when work and time are known. Make sure the force component
+  along the motion is used.</p>
+  `,
+  [
+    {
+      q: "A vehicle experiences a driving force of 500 N while moving at 10 m/s. Calculate the power delivered by that force.",
+      options: ["50 W", "500 W", "5,000 W", "50,000 W"],
+      ans: "5,000 W",
+      hint: "Use P = Fv.",
+      steps: [
+        "P = Fv.",
+        "P = 500 × 10.",
+        "P = 5,000 W."
+      ],
+      why: "When force acts in the direction of motion, power equals force multiplied by speed."
+    },
+    {
+      q: "A motor supplies a force of 200 N in the direction of motion at 15 m/s. What power does the force deliver?",
+      options: ["215 W", "3,000 W", "750 W", "30,000 W"],
+      ans: "3,000 W",
+      hint: "Multiply force by speed.",
+      steps: [
+        "P = Fv.",
+        "P = 200 × 15.",
+        "P = 3,000 W."
+      ],
+      why: "Power delivered by a force along the direction of motion is force multiplied by speed."
+    },
+    {
+      q: "A motor delivers 6,000 W to an object moving at 12 m/s. If the force is along the motion, what is the force?",
+      options: ["72,000 N", "500 N", "6,012 N", "50 N"],
+      ans: "500 N",
+      hint: "Rearrange P = Fv to make F the subject.",
+      steps: [
+        "F = P/v.",
+        "F = 6,000/12.",
+        "F = 500 N."
+      ],
+      why: "Force equals power divided by speed when force acts along the direction of motion."
+    },
+    {
+      q: "A vehicle moves at constant speed while its driving force in the direction of motion doubles. What happens to the power delivered by that force?",
+      options: [
+        "It halves.",
+        "It doubles.",
+        "It becomes zero.",
+        "It remains unchanged."
+      ],
+      ans: "It doubles.",
+      hint: "Use P = Fv and keep speed constant.",
+      steps: [
+        "Power is P = Fv.",
+        "Speed remains constant.",
+        "Doubling F therefore doubles P."
+      ],
+      why: "At constant speed, power delivered by a force is directly proportional to that force."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 1: MEANING OF KINETIC ENERGY
+// Skill: Identify kinetic energy and use KE = 1/2 mv²
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Meaning of Kinetic Energy",
+  `
+  <h2>Meaning of Kinetic Energy</h2>
+
+  <h3>1. What is kinetic energy?</h3>
+  <p>
+    <b>Kinetic energy</b> is the energy an object possesses because it is moving.
+    A moving car, a rolling ball and a running student all have kinetic energy.
+  </p>
+
+  <p>
+    An object at rest has zero kinetic energy because its speed is zero.
+    The faster a moving object travels, the greater its kinetic energy,
+    provided its mass remains constant.
+  </p>
+
+  <h3>2. The formula</h3>
+  <p>
+    <b>KE = ½mv²</b>
+  </p>
+  <ul>
+    <li>KE = kinetic energy, measured in joules (J)</li>
+    <li>m = mass, measured in kilograms (kg)</li>
+    <li>v = speed, measured in metres per second (m/s)</li>
+  </ul>
+
+  <p>
+    The speed is squared before multiplying by the mass and one-half.
+    This means that doubling speed does not merely double kinetic energy.
+  </p>
+
+  <h3>Worked example 1: A moving ball</h3>
+  <p><b>Question:</b> Explain why a moving ball possesses kinetic energy.</p>
+  <p><b>Step 1:</b> Kinetic energy is energy due to motion.</p>
+  <p><b>Step 2:</b> The ball is moving.</p>
+  <p><b>Answer:</b> The ball possesses kinetic energy because it is in motion.</p>
+
+  <h3>Worked example 2: An object at rest</h3>
+  <p><b>Question:</b> Find the kinetic energy of a 4 kg object at rest.</p>
+  <p><b>Step 1:</b> Write the formula: KE = ½mv².</p>
+  <p><b>Step 2:</b> Substitute m = 4 kg and v = 0 m/s.</p>
+  <p>KE = ½ × 4 × 0²</p>
+  <p>KE = 0 J</p>
+  <p><b>Answer:</b> The kinetic energy is 0 J.</p>
+
+  <h3>Worked example 3: Identifying the quantities</h3>
+  <p><b>Question:</b> A trolley has a mass of 3 kg and moves at 2 m/s. Identify the values needed to calculate its kinetic energy.</p>
+  <p><b>Step 1:</b> Mass, m = 3 kg.</p>
+  <p><b>Step 2:</b> Speed, v = 2 m/s.</p>
+  <p><b>Step 3:</b> The required formula is KE = ½mv².</p>
+  <p><b>Answer:</b> Use m = 3 kg and v = 2 m/s.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Kinetic energy depends on motion. Always identify the mass and speed
+    before using KE = ½mv².
+  </p>
+  `,
+  [
+    {
+      q: "What is kinetic energy?",
+      options: [
+        "Energy due to an object's motion",
+        "Energy stored only in a battery",
+        "Energy due only to an object's height",
+        "The force acting on an object"
+      ],
+      ans: 0,
+      hint: "Think about what a moving object possesses.",
+      steps: [
+        "Kinetic energy is associated with motion.",
+        "A moving object possesses kinetic energy."
+      ],
+      why: "Kinetic energy is the energy an object has because it is moving."
+    },
+    {
+      q: "A 5 kg object is at rest. What is its kinetic energy?",
+      options: ["5 J", "2.5 J", "0 J", "25 J"],
+      ans: 2,
+      hint: "At rest, the speed is zero.",
+      steps: [
+        "Use KE = ½mv².",
+        "Substitute m = 5 kg and v = 0 m/s.",
+        "KE = ½ × 5 × 0² = 0 J."
+      ],
+      why: "An object at rest has zero kinetic energy."
+    },
+    {
+      q: "Which quantity is squared in KE = ½mv²?",
+      options: ["Mass", "Speed", "Kinetic energy", "Time"],
+      ans: 1,
+      hint: "Look at the small 2 in the formula.",
+      steps: [
+        "The formula is KE = ½mv².",
+        "The exponent 2 is attached to v, which represents speed."
+      ],
+      why: "Speed is squared when calculating kinetic energy."
+    },
+    {
+      q: "Which unit is used for kinetic energy?",
+      options: ["Newton", "Watt", "Kilogram", "Joule"],
+      ans: 3,
+      hint: "Choose the SI unit of energy.",
+      steps: [
+        "Energy is measured in joules.",
+        "Therefore, kinetic energy is measured in J."
+      ],
+      why: "The joule (J) is the SI unit of energy."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: CALCULATING KINETIC ENERGY
+// Skill: Calculate KE from mass and speed
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Calculating Kinetic Energy",
+  `
+  <h2>Calculating Kinetic Energy</h2>
+
+  <h3>Formula</h3>
+  <p><b>KE = ½mv²</b></p>
+
+  <p>
+    To calculate kinetic energy:
+  </p>
+  <ol>
+    <li>Write down the mass and speed.</li>
+    <li>Square the speed.</li>
+    <li>Multiply the squared speed by the mass.</li>
+    <li>Multiply the result by one-half.</li>
+    <li>Give the answer in joules.</li>
+  </ol>
+
+  <h3>Worked example 1</h3>
+  <p><b>Question:</b> Calculate the kinetic energy of a 2 kg object moving at 3 m/s.</p>
+  <p><b>Step 1:</b> m = 2 kg, v = 3 m/s.</p>
+  <p><b>Step 2:</b> KE = ½mv².</p>
+  <p>KE = ½ × 2 × 3²</p>
+  <p>KE = 1 × 9</p>
+  <p><b>Answer:</b> KE = 9 J.</p>
+  <p><b>Check:</b> The speed was squared before multiplication.</p>
+
+  <h3>Worked example 2</h3>
+  <p><b>Question:</b> A 5 kg trolley moves at 4 m/s. Find its kinetic energy.</p>
+  <p><b>Step 1:</b> m = 5 kg, v = 4 m/s.</p>
+  <p><b>Step 2:</b> KE = ½ × 5 × 4².</p>
+  <p>KE = 2.5 × 16</p>
+  <p><b>Answer:</b> KE = 40 J.</p>
+  <p><b>Check:</b> 4² = 16, not 8.</p>
+
+  <h3>Worked example 3</h3>
+  <p><b>Question:</b> Calculate the kinetic energy of a 1,200 kg car moving at 10 m/s.</p>
+  <p><b>Step 1:</b> m = 1,200 kg, v = 10 m/s.</p>
+  <p><b>Step 2:</b> KE = ½ × 1,200 × 10².</p>
+  <p>KE = 600 × 100</p>
+  <p><b>Answer:</b> KE = 60,000 J.</p>
+  <p><b>Check:</b> The answer is in joules, not newtons.</p>
+
+  <h3>Common mistake</h3>
+  <p>
+    Do not calculate ½ × mass × speed and stop there.
+    The formula requires speed squared: v × v.
+  </p>
+  `,
+  [
+    {
+      q: "Calculate the kinetic energy of a 2 kg object moving at 5 m/s.",
+      options: ["10 J", "25 J", "50 J", "100 J"],
+      ans: 1,
+      hint: "Square 5 before multiplying.",
+      steps: [
+        "KE = ½mv².",
+        "KE = ½ × 2 × 5².",
+        "KE = 1 × 25 = 25 J."
+      ],
+      why: "The kinetic energy is 25 J."
+    },
+    {
+      q: "A 4 kg object moves at 3 m/s. Find its kinetic energy.",
+      options: ["12 J", "18 J", "24 J", "36 J"],
+      ans: 1,
+      hint: "First calculate 3².",
+      steps: [
+        "KE = ½ × 4 × 3².",
+        "KE = 2 × 9.",
+        "KE = 18 J."
+      ],
+      why: "Squaring the speed gives 9, so the kinetic energy is 18 J."
+    },
+    {
+      q: "A 10 kg object moves at 2 m/s. What is its kinetic energy?",
+      options: ["20 J", "40 J", "10 J", "5 J"],
+      ans: 0,
+      hint: "Use half of the mass multiplied by the squared speed.",
+      steps: [
+        "KE = ½ × 10 × 2².",
+        "KE = 5 × 4.",
+        "KE = 20 J."
+      ],
+      why: "The kinetic energy is 20 J."
+    },
+    {
+      q: "A 3 kg object moves at 6 m/s. Calculate its kinetic energy.",
+      options: ["18 J", "36 J", "54 J", "108 J"],
+      ans: 2,
+      hint: "6² = 36.",
+      steps: [
+        "KE = ½ × 3 × 6².",
+        "KE = 1.5 × 36.",
+        "KE = 54 J."
+      ],
+      why: "The kinetic energy is 54 J."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: HOW MASS AND SPEED AFFECT KINETIC ENERGY
+// Skill: Compare kinetic energy when mass or speed changes
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Mass and Speed in Kinetic Energy",
+  `
+  <h2>Mass and Speed in Kinetic Energy</h2>
+
+  <h3>1. Effect of mass</h3>
+  <p>
+    From KE = ½mv², kinetic energy is directly proportional to mass
+    when speed is constant.
+  </p>
+  <p>
+    If mass doubles while speed stays the same, kinetic energy doubles.
+  </p>
+
+  <h3>2. Effect of speed</h3>
+  <p>
+    Kinetic energy is proportional to the square of speed.
+    This makes speed especially important.
+  </p>
+  <ul>
+    <li>Double the speed: kinetic energy becomes 4 times greater.</li>
+    <li>Triple the speed: kinetic energy becomes 9 times greater.</li>
+    <li>Halve the speed: kinetic energy becomes one-quarter.</li>
+  </ul>
+
+  <h3>Worked example 1: Doubling mass</h3>
+  <p><b>Question:</b> A 2 kg object moving at 4 m/s has a certain kinetic energy. What happens to its kinetic energy if its mass doubles and its speed remains unchanged?</p>
+  <p><b>Step 1:</b> Original KE = ½ × 2 × 4² = 16 J.</p>
+  <p><b>Step 2:</b> The new mass is 4 kg.</p>
+  <p>New KE = ½ × 4 × 4² = 32 J.</p>
+  <p><b>Answer:</b> Kinetic energy doubles from 16 J to 32 J.</p>
+
+  <h3>Worked example 2: Doubling speed</h3>
+  <p><b>Question:</b> An object's speed increases from 3 m/s to 6 m/s while its mass remains constant. By what factor does its kinetic energy change?</p>
+  <p><b>Step 1:</b> Speed factor = 6 ÷ 3 = 2.</p>
+  <p><b>Step 2:</b> Square the factor: 2² = 4.</p>
+  <p><b>Answer:</b> Its kinetic energy becomes four times greater.</p>
+
+  <h3>Worked example 3: Tripling speed</h3>
+  <p><b>Question:</b> The speed of a moving object triples. Its mass does not change. Find the factor by which its kinetic energy changes.</p>
+  <p><b>Step 1:</b> Speed factor = 3.</p>
+  <p><b>Step 2:</b> Kinetic energy factor = 3².</p>
+  <p><b>Answer:</b> Kinetic energy becomes 9 times greater.</p>
+
+  <h3>Remember</h3>
+  <p>
+    When comparing two situations, keep track of what changes.
+    Mass affects kinetic energy directly; speed affects it through its square.
+  </p>
+  `,
+  [
+    {
+      q: "An object's mass doubles while its speed stays constant. What happens to its kinetic energy?",
+      options: [
+        "It halves",
+        "It doubles",
+        "It becomes four times greater",
+        "It remains unchanged"
+      ],
+      ans: 1,
+      hint: "Kinetic energy is directly proportional to mass when speed is constant.",
+      steps: [
+        "KE = ½mv².",
+        "With v constant, doubling m doubles KE."
+      ],
+      why: "Doubling mass doubles kinetic energy if speed is unchanged."
+    },
+    {
+      q: "A car's speed doubles while its mass remains constant. Its kinetic energy becomes:",
+      options: [
+        "Twice as great",
+        "Three times as great",
+        "Four times as great",
+        "Half as great"
+      ],
+      ans: 2,
+      hint: "Square the speed factor.",
+      steps: [
+        "The speed factor is 2.",
+        "The kinetic energy factor is 2² = 4."
+      ],
+      why: "Kinetic energy depends on the square of speed."
+    },
+    {
+      q: "An object's speed triples. By what factor does its kinetic energy increase if its mass is unchanged?",
+      options: ["3", "6", "9", "12"],
+      ans: 2,
+      hint: "Calculate 3².",
+      steps: [
+        "The speed factor is 3.",
+        "The kinetic energy factor is 3² = 9."
+      ],
+      why: "Tripling speed makes kinetic energy nine times greater."
+    },
+    {
+      q: "An object's speed is halved. What fraction of its original kinetic energy remains?",
+      options: [
+        "One-half",
+        "One-quarter",
+        "One-third",
+        "One-eighth"
+      ],
+      ans: 1,
+      hint: "Square the speed factor ½.",
+      steps: [
+        "The speed factor is ½.",
+        "The kinetic energy factor is (½)² = ¼."
+      ],
+      why: "Halving speed leaves one-quarter of the original kinetic energy."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: MEANING OF GRAVITATIONAL POTENTIAL ENERGY
+// Skill: Explain GPE and identify the quantities in GPE = mgh
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Meaning of Gravitational Potential Energy",
+  `
+  <h2>Meaning of Gravitational Potential Energy</h2>
+
+  <h3>1. What is gravitational potential energy?</h3>
+  <p>
+    <b>Gravitational potential energy (GPE)</b> is energy an object has
+    because of its position or height in a gravitational field.
+  </p>
+  <p>
+    For example, a book held above the floor has gravitational potential
+    energy relative to the floor. When it falls, this energy can be
+    transferred into kinetic energy.
+  </p>
+
+  <h3>2. The formula near Earth's surface</h3>
+  <p><b>GPE = mgh</b></p>
+  <ul>
+    <li>GPE = gravitational potential energy in joules (J)</li>
+    <li>m = mass in kilograms (kg)</li>
+    <li>g = gravitational field strength in N/kg</li>
+    <li>h = vertical height above the chosen reference level in metres (m)</li>
+  </ul>
+
+  <p>
+    In many school questions, use g = 10 N/kg when the question instructs
+    you to do so. If a question gives another value, use the supplied value.
+  </p>
+
+  <h3>Worked example 1: Identifying GPE</h3>
+  <p><b>Question:</b> Why does a book resting on a high shelf have gravitational potential energy relative to the floor?</p>
+  <p><b>Step 1:</b> GPE is associated with position in a gravitational field.</p>
+  <p><b>Step 2:</b> The shelf is above the floor.</p>
+  <p><b>Answer:</b> The book has GPE because it is elevated above the chosen reference level.</p>
+
+  <h3>Worked example 2: Identifying the quantities</h3>
+  <p><b>Question:</b> A 3 kg object is held 2 m above the ground where g = 10 N/kg. Identify the quantities needed to calculate its GPE.</p>
+  <p><b>Step 1:</b> Mass, m = 3 kg.</p>
+  <p><b>Step 2:</b> Gravitational field strength, g = 10 N/kg.</p>
+  <p><b>Step 3:</b> Height, h = 2 m.</p>
+  <p><b>Answer:</b> Use GPE = mgh with these three values.</p>
+
+  <h3>Worked example 3: Comparing heights</h3>
+  <p><b>Question:</b> Two identical objects are held at different heights above the same floor. Which has more GPE?</p>
+  <p><b>Step 1:</b> Both objects have the same mass.</p>
+  <p><b>Step 2:</b> The higher object has the greater height h.</p>
+  <p><b>Answer:</b> The higher object has more GPE relative to the floor.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Gravitational potential energy depends on mass, gravitational field
+    strength and vertical height relative to a reference level.
+  </p>
+  `,
+  [
+    {
+      q: "What is gravitational potential energy?",
+      options: [
+        "Energy due to position in a gravitational field",
+        "Energy due only to motion",
+        "The rate of doing work",
+        "The force opposing motion"
+      ],
+      ans: 0,
+      hint: "Think about an object raised above the ground.",
+      steps: [
+        "An elevated object can store energy because of its position.",
+        "This is gravitational potential energy."
+      ],
+      why: "GPE is associated with position in a gravitational field."
+    },
+    {
+      q: "Which formula is used to calculate gravitational potential energy near Earth's surface?",
+      options: ["GPE = ½mv²", "GPE = mgh", "GPE = F/A", "GPE = W/t"],
+      ans: 1,
+      hint: "It uses mass, gravitational field strength and height.",
+      steps: [
+        "Identify m, g and h.",
+        "Use GPE = mgh."
+      ],
+      why: "GPE = mgh is the school-level formula for gravitational potential energy near Earth's surface."
+    },
+    {
+      q: "In GPE = mgh, what does h represent?",
+      options: [
+        "Horizontal distance travelled",
+        "Height above the chosen reference level",
+        "Time taken",
+        "Speed"
+      ],
+      ans: 1,
+      hint: "It is measured vertically in metres.",
+      steps: [
+        "The symbol h represents height.",
+        "Use the vertical height relative to the reference level."
+      ],
+      why: "The height used in the formula is vertical height."
+    },
+    {
+      q: "Two equal masses are held above the same floor. Which has greater GPE?",
+      options: [
+        "The lower object",
+        "The higher object",
+        "Both always have zero GPE",
+        "Neither can have GPE"
+      ],
+      ans: 1,
+      hint: "Compare their heights above the same reference level.",
+      steps: [
+        "The masses and gravitational field strength are the same.",
+        "GPE = mgh, so the greater height gives greater GPE."
+      ],
+      why: "For equal masses in the same gravitational field, the higher object has more GPE relative to the same reference level."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: CALCULATING GRAVITATIONAL POTENTIAL ENERGY
+// Skill: Calculate GPE using GPE = mgh
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Calculating Gravitational Potential Energy",
+  `
+  <h2>Calculating Gravitational Potential Energy</h2>
+
+  <h3>Formula</h3>
+  <p><b>GPE = mgh</b></p>
+
+  <p>
+    To calculate GPE:
+  </p>
+  <ol>
+    <li>Identify the mass, m.</li>
+    <li>Identify gravitational field strength, g.</li>
+    <li>Identify the vertical height, h.</li>
+    <li>Multiply the three values.</li>
+    <li>Give the answer in joules.</li>
+  </ol>
+
+  <h3>Worked example 1</h3>
+  <p><b>Question:</b> Calculate the GPE of a 2 kg object held 5 m above the ground. Take g = 10 N/kg.</p>
+  <p><b>Step 1:</b> m = 2 kg, g = 10 N/kg, h = 5 m.</p>
+  <p><b>Step 2:</b> GPE = mgh.</p>
+  <p>GPE = 2 × 10 × 5</p>
+  <p><b>Answer:</b> GPE = 100 J.</p>
+
+  <h3>Worked example 2</h3>
+  <p><b>Question:</b> A 4 kg bag is lifted to a height of 3 m. Calculate the gain in GPE using g = 10 N/kg.</p>
+  <p><b>Step 1:</b> m = 4 kg, g = 10 N/kg, h = 3 m.</p>
+  <p><b>Step 2:</b> Gain in GPE = mgh.</p>
+  <p>Gain in GPE = 4 × 10 × 3</p>
+  <p><b>Answer:</b> The gain in GPE is 120 J.</p>
+
+  <h3>Worked example 3</h3>
+  <p><b>Question:</b> A 6 kg object is raised vertically by 2 m where g = 9.8 N/kg. Calculate its gain in GPE.</p>
+  <p><b>Step 1:</b> m = 6 kg, g = 9.8 N/kg, h = 2 m.</p>
+  <p><b>Step 2:</b> Gain in GPE = mgh.</p>
+  <p>Gain in GPE = 6 × 9.8 × 2</p>
+  <p>Gain in GPE = 117.6 J</p>
+  <p><b>Answer:</b> 117.6 J.</p>
+
+  <h3>Common mistakes</h3>
+  <ul>
+    <li>Do not use speed in the GPE formula.</li>
+    <li>Use mass in kilograms, not grams.</li>
+    <li>Use vertical height, not the distance travelled along a slope.</li>
+    <li>Use the value of g given in the question.</li>
+  </ul>
+  `,
+  [
+    {
+      q: "Calculate the GPE of a 3 kg object raised 4 m. Take g = 10 N/kg.",
+      options: ["12 J", "30 J", "120 J", "240 J"],
+      ans: 2,
+      hint: "Multiply mass × g × height.",
+      steps: [
+        "GPE = mgh.",
+        "GPE = 3 × 10 × 4.",
+        "GPE = 120 J."
+      ],
+      why: "The gravitational potential energy is 120 J."
+    },
+    {
+      q: "A 5 kg object is 2 m above the ground. Take g = 10 N/kg. Find its GPE.",
+      options: ["25 J", "50 J", "100 J", "200 J"],
+      ans: 2,
+      hint: "Use GPE = mgh.",
+      steps: [
+        "GPE = 5 × 10 × 2.",
+        "GPE = 100 J."
+      ],
+      why: "The object's GPE relative to the ground is 100 J."
+    },
+    {
+      q: "Calculate the GPE of a 2 kg object at a height of 6 m where g = 10 N/kg.",
+      options: ["12 J", "60 J", "120 J", "180 J"],
+      ans: 2,
+      hint: "Substitute all three values into mgh.",
+      steps: [
+        "GPE = 2 × 10 × 6.",
+        "GPE = 120 J."
+      ],
+      why: "The gravitational potential energy is 120 J."
+    },
+    {
+      q: "A 4 kg object is raised 5 m. If g = 10 N/kg, what is its gain in GPE?",
+      options: ["20 J", "100 J", "200 J", "400 J"],
+      ans: 2,
+      hint: "The gain in GPE is mgh for a vertical rise of 5 m.",
+      steps: [
+        "Gain in GPE = mgh.",
+        "Gain in GPE = 4 × 10 × 5.",
+        "Gain in GPE = 200 J."
+      ],
+      why: "The object's gravitational potential energy increases by 200 J."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: THE PRINCIPLE OF CONSERVATION OF ENERGY
+// Skill: Apply the principle of conservation of energy
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Principle of Conservation of Energy",
+  `
+  <h2>Principle of Conservation of Energy</h2>
+
+  <h3>1. The principle</h3>
+  <p>
+    The <b>principle of conservation of energy</b> states that energy
+    cannot be created or destroyed. It can only be transferred from
+    one object or place to another, or transformed from one form to another.
+  </p>
+
+  <p>
+    In a closed system, the total energy remains constant when all forms
+    of energy are included.
+  </p>
+
+  <h3>2. What happens in real situations?</h3>
+  <p>
+    When a moving object slows down because of friction, its kinetic energy
+    decreases. Energy is transferred mainly to the thermal energy of the
+    object and its surroundings, with some possibly transferred as sound.
+    The energy has not disappeared.
+  </p>
+
+  <h3>Worked example 1: A falling stone</h3>
+  <p><b>Question:</b> A stone falls from a height. Describe the energy change, ignoring air resistance.</p>
+  <p><b>Step 1:</b> Before falling, the stone has gravitational potential energy.</p>
+  <p><b>Step 2:</b> As it falls, its height decreases and its speed increases.</p>
+  <p><b>Answer:</b> Gravitational potential energy is transformed into kinetic energy. The total mechanical energy remains constant if air resistance is ignored.</p>
+
+  <h3>Worked example 2: A braking bicycle</h3>
+  <p><b>Question:</b> A bicycle slows down when its brakes are applied. Has its kinetic energy been destroyed?</p>
+  <p><b>Step 1:</b> The bicycle's speed decreases.</p>
+  <p><b>Step 2:</b> Its kinetic energy decreases.</p>
+  <p><b>Step 3:</b> Friction in the brakes and between surfaces transfers energy to thermal energy and the surroundings.</p>
+  <p><b>Answer:</b> No. The energy is transferred and transformed; it is not destroyed.</p>
+
+  <h3>Worked example 3: An electric lamp</h3>
+  <p><b>Question:</b> A lamp receives 100 J of electrical energy. The energy is eventually transferred as 15 J of light and 85 J of thermal energy. Verify conservation of energy.</p>
+  <p><b>Step 1:</b> Total energy supplied = 100 J.</p>
+  <p><b>Step 2:</b> Total energy transferred out = 15 J + 85 J.</p>
+  <p>Total = 100 J.</p>
+  <p><b>Answer:</b> The energy is conserved because 100 J supplied equals 100 J transferred out.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Always account for all energy forms. A decrease in one form does not
+    mean that energy has been destroyed.
+  </p>
+  `,
+  [
+    {
+      q: "Which statement expresses the principle of conservation of energy?",
+      options: [
+        "Energy is destroyed whenever an object stops moving",
+        "Energy can be created whenever work is done",
+        "Energy cannot be created or destroyed, only transferred or transformed",
+        "Only kinetic energy is conserved in every situation"
+      ],
+      ans: 2,
+      hint: "Think about what happens to energy when its form changes.",
+      steps: [
+        "Energy can change form or move between objects.",
+        "The total energy is conserved when all forms are accounted for."
+      ],
+      why: "Energy is not created or destroyed; it is transferred or transformed."
+    },
+    {
+      q: "A moving bicycle slows down because of friction. What happens to most of its lost kinetic energy?",
+      options: [
+        "It disappears",
+        "It is transferred mainly into thermal energy",
+        "It becomes mass",
+        "It is destroyed by friction"
+      ],
+      ans: 1,
+      hint: "Consider the warming of surfaces during friction.",
+      steps: [
+        "Friction opposes the bicycle's motion.",
+        "Kinetic energy decreases and is transferred mainly into thermal energy and the surroundings."
+      ],
+      why: "Friction transfers energy into thermal energy; it does not destroy energy."
+    },
+    {
+      q: "A device receives 200 J of energy. A total of 200 J is transferred to its surroundings in different forms. What does this show?",
+      options: [
+        "Energy has been created",
+        "Energy has been destroyed",
+        "Energy has been conserved",
+        "The device has no energy transfers"
+      ],
+      ans: 2,
+      hint: "Compare the total energy supplied with the total transferred out.",
+      steps: [
+        "Energy supplied = 200 J.",
+        "Energy transferred out = 200 J.",
+        "The totals are equal."
+      ],
+      why: "The total energy supplied equals the total energy transferred out."
+    },
+    {
+      q: "When air resistance is ignored, what happens to the total mechanical energy of a falling object?",
+      options: [
+        "It continually increases",
+        "It continually decreases",
+        "It remains constant",
+        "It becomes zero halfway down"
+      ],
+      ans: 2,
+      hint: "Mechanical energy includes kinetic and gravitational potential energy.",
+      steps: [
+        "GPE decreases as the object falls.",
+        "KE increases by the corresponding amount.",
+        "Their sum remains constant when air resistance is ignored."
+      ],
+      why: "Without energy losses to air resistance, total mechanical energy remains constant."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: ENERGY TRANSFER AND ENERGY TRANSFORMATION
+// Skill: Distinguish transfer from transformation
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Energy Transfer and Transformation",
+  `
+  <h2>Energy Transfer and Transformation</h2>
+
+  <h3>1. Energy transfer</h3>
+  <p>
+    An <b>energy transfer</b> occurs when energy moves from one object
+    or place to another. The energy may remain in the same form during
+    the transfer.
+  </p>
+  <p>
+    Example: thermal energy moves from hot water to a cooler metal spoon.
+  </p>
+
+  <h3>2. Energy transformation</h3>
+  <p>
+    An <b>energy transformation</b> occurs when energy changes from one
+    form to another.
+  </p>
+  <ul>
+    <li>Electrical energy to light and thermal energy in a lamp.</li>
+    <li>Chemical energy to kinetic energy in a moving person.</li>
+    <li>Gravitational potential energy to kinetic energy in a falling object.</li>
+  </ul>
+
+  <p>
+    A single process can involve both transfer and transformation.
+  </p>
+
+  <h3>Worked example 1: A lamp</h3>
+  <p><b>Question:</b> State the main energy transformation in an electric lamp.</p>
+  <p><b>Step 1:</b> The lamp receives electrical energy.</p>
+  <p><b>Step 2:</b> It produces light and thermal energy.</p>
+  <p><b>Answer:</b> Electrical energy is transformed into light and thermal energy.</p>
+
+  <h3>Worked example 2: A hot spoon</h3>
+  <p><b>Question:</b> A metal spoon is placed in hot tea. Thermal energy moves from the tea into the spoon. Is this a transfer or transformation?</p>
+  <p><b>Step 1:</b> The energy moves from the tea to the spoon.</p>
+  <p><b>Step 2:</b> The energy remains thermal energy during this transfer.</p>
+  <p><b>Answer:</b> This is an energy transfer.</p>
+
+  <h3>Worked example 3: A falling object</h3>
+  <p><b>Question:</b> Identify the main energy transformation as a stone falls, ignoring air resistance.</p>
+  <p><b>Step 1:</b> The stone initially has gravitational potential energy.</p>
+  <p><b>Step 2:</b> Its speed increases as it falls.</p>
+  <p><b>Answer:</b> Gravitational potential energy is transformed into kinetic energy.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Ask two separate questions: Has energy moved between objects or places?
+    Has energy changed form? Some processes involve both.
+  </p>
+  `,
+  [
+    {
+      q: "Electrical energy changes into light and thermal energy in a lamp. What is this process?",
+      options: [
+        "Energy transformation",
+        "Energy destruction",
+        "Energy creation",
+        "No energy change"
+      ],
+      ans: 0,
+      hint: "The energy changes from one form into other forms.",
+      steps: [
+        "The lamp receives electrical energy.",
+        "It produces light and thermal energy.",
+        "A change of energy form is a transformation."
+      ],
+      why: "The lamp transforms electrical energy into light and thermal energy."
+    },
+    {
+      q: "Thermal energy moves from hot tea into a cooler spoon. What is this?",
+      options: [
+        "Energy creation",
+        "Energy transfer",
+        "Energy destruction",
+        "A change into nuclear energy"
+      ],
+      ans: 1,
+      hint: "The energy moves between objects.",
+      steps: [
+        "The tea is hotter than the spoon.",
+        "Thermal energy moves from the tea into the spoon."
+      ],
+      why: "Energy moving from one object to another is an energy transfer."
+    },
+    {
+      q: "Which energy transformation occurs when a battery powers a simple electric motor?",
+      options: [
+        "Kinetic to gravitational potential only",
+        "Chemical to electrical to mechanical energy",
+        "Thermal to nuclear energy",
+        "Sound to chemical energy only"
+      ],
+      ans: 1,
+      hint: "Follow the energy from the battery through the motor.",
+      steps: [
+        "The battery stores chemical energy.",
+        "The circuit transfers energy electrically.",
+        "The motor produces movement, giving mechanical energy."
+      ],
+      why: "A battery-powered motor transforms chemical energy into electrical energy and then mainly into mechanical energy, with some losses."
+    },
+    {
+      q: "As a stone falls freely with air resistance ignored, which transformation occurs?",
+      options: [
+        "Kinetic energy to chemical energy",
+        "Thermal energy to electrical energy",
+        "Gravitational potential energy to kinetic energy",
+        "Sound energy to gravitational potential energy"
+      ],
+      ans: 2,
+      hint: "The stone loses height and gains speed.",
+      steps: [
+        "The stone's gravitational potential energy decreases.",
+        "Its kinetic energy increases."
+      ],
+      why: "The falling stone transforms gravitational potential energy into kinetic energy."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: ENERGY CHANGES DURING FALLING
+// Skill: Describe energy changes in a falling object
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Energy Changes During Falling",
+  `
+  <h2>Energy Changes During Falling</h2>
+
+  <h3>1. Before the object falls</h3>
+  <p>
+    An object held above the ground has gravitational potential energy
+    relative to the ground. If it is at rest, its kinetic energy is zero.
+  </p>
+
+  <h3>2. As the object falls</h3>
+  <p>
+    Its height decreases, so its gravitational potential energy decreases.
+    Its speed increases, so its kinetic energy increases.
+  </p>
+
+  <p>
+    If air resistance is ignored, the decrease in GPE equals the increase
+    in KE. If air resistance is significant, some mechanical energy is
+    transferred to the surroundings, mainly as thermal energy.
+  </p>
+
+  <h3>Worked example 1: Identifying the energy change</h3>
+  <p><b>Question:</b> A ball is released from rest above the ground. Describe its energy changes as it falls, ignoring air resistance.</p>
+  <p><b>Step 1:</b> Initially, the ball has GPE and zero KE.</p>
+  <p><b>Step 2:</b> As it falls, GPE decreases and KE increases.</p>
+  <p><b>Answer:</b> GPE is transformed into KE. The total mechanical energy remains constant.</p>
+
+  <h3>Worked example 2: Comparing the top and bottom</h3>
+  <p><b>Question:</b> A ball falls from a height. Compare its GPE and KE at the top and just before reaching the ground. Ignore air resistance.</p>
+  <p><b>Step 1:</b> At the top, the ball has maximum GPE relative to the ground and zero KE if released from rest.</p>
+  <p><b>Step 2:</b> Just before reaching the ground, its GPE relative to the ground is approximately zero and its KE is greatest.</p>
+  <p><b>Answer:</b> GPE decreases while KE increases. Their total remains constant.</p>
+
+  <h3>Worked example 3: Effect of air resistance</h3>
+  <p><b>Question:</b> A paper sheet falls through air. Why might its kinetic energy not equal the GPE it has lost?</p>
+  <p><b>Step 1:</b> Air resistance acts against the sheet's motion.</p>
+  <p><b>Step 2:</b> Some energy is transferred to the surroundings through the interaction with air.</p>
+  <p><b>Answer:</b> Some of the lost GPE is transferred to the surroundings, so not all of it becomes the sheet's kinetic energy.</p>
+
+  <h3>Remember</h3>
+  <p>
+    For a falling object, always state whether air resistance is ignored.
+    This determines whether the lost GPE equals the gain in KE.
+  </p>
+  `,
+  [
+    {
+      q: "A stone falls from rest, with air resistance ignored. What happens to its GPE and KE?",
+      options: [
+        "Both decrease",
+        "GPE decreases and KE increases",
+        "GPE increases and KE decreases",
+        "Both remain zero"
+      ],
+      ans: 1,
+      hint: "The stone loses height and gains speed.",
+      steps: [
+        "Decreasing height means decreasing GPE.",
+        "Increasing speed means increasing KE."
+      ],
+      why: "As the stone falls, GPE is transformed into KE."
+    },
+    {
+      q: "A ball is released from rest. What is its kinetic energy at the instant it is released?",
+      options: [
+        "Zero",
+        "Equal to its mass",
+        "Always 10 J",
+        "Equal to its height"
+      ],
+      ans: 0,
+      hint: "Use KE = ½mv² and consider the initial speed.",
+      steps: [
+        "The ball is released from rest, so v = 0.",
+        "KE = ½m × 0² = 0 J."
+      ],
+      why: "At the instant of release from rest, the ball's kinetic energy is zero."
+    },
+    {
+      q: "A falling object experiences significant air resistance. What happens to some of the gravitational potential energy it loses?",
+      options: [
+        "It is destroyed",
+        "It becomes mass",
+        "It is transferred to the surroundings, mainly as thermal energy",
+        "It all remains as gravitational potential energy"
+      ],
+      ans: 2,
+      hint: "Air resistance opposes motion and causes energy transfers.",
+      steps: [
+        "Air resistance acts against the object's motion.",
+        "Some mechanical energy is transferred to the surroundings."
+      ],
+      why: "With air resistance, not all lost GPE becomes kinetic energy."
+    },
+    {
+      q: "Ignoring air resistance, which statement is correct as a ball falls?",
+      options: [
+        "Its total mechanical energy remains constant",
+        "Its GPE increases continuously",
+        "Its KE must remain zero",
+        "Energy is destroyed at every point"
+      ],
+      ans: 0,
+      hint: "Consider the sum of GPE and KE.",
+      steps: [
+        "GPE decreases as the ball loses height.",
+        "KE increases as it gains speed.",
+        "Their sum remains constant when air resistance is ignored."
+      ],
+      why: "The total mechanical energy remains constant in this ideal situation."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: CALCULATING SPEED FROM LOST GPE
+// Skill: Calculate speed using conservation of mechanical energy
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Calculating Speed from Lost Gravitational Potential Energy",
+  `
+  <h2>Calculating Speed from Lost Gravitational Potential Energy</h2>
+
+  <h3>1. The energy relationship</h3>
+  <p>
+    When an object falls from rest and air resistance is ignored,
+    its loss of gravitational potential energy equals its gain in
+    kinetic energy.
+  </p>
+
+  <p><b>Loss in GPE = Gain in KE</b></p>
+  <p><b>mgh = ½mv²</b></p>
+
+  <p>
+    Cancelling the common mass gives:
+  </p>
+  <p><b>v² = 2gh</b></p>
+  <p><b>v = √(2gh)</b></p>
+
+  <p>
+    This simplified formula applies when the object starts from rest,
+    falls vertically through height h, and air resistance is ignored.
+  </p>
+
+  <h3>Worked example 1: Falling through 5 m</h3>
+  <p><b>Question:</b> An object falls from rest through 5 m. Calculate its speed just before reaching the ground. Take g = 10 m/s² and ignore air resistance.</p>
+  <p><b>Step 1:</b> v = √(2gh).</p>
+  <p><b>Step 2:</b> v = √(2 × 10 × 5).</p>
+  <p>v = √100</p>
+  <p><b>Answer:</b> v = 10 m/s.</p>
+
+  <h3>Worked example 2: Falling through 20 m</h3>
+  <p><b>Question:</b> A stone falls from rest through 20 m. Calculate its speed just before impact, taking g = 10 m/s².</p>
+  <p><b>Step 1:</b> v = √(2gh).</p>
+  <p><b>Step 2:</b> v = √(2 × 10 × 20).</p>
+  <p>v = √400</p>
+  <p><b>Answer:</b> v = 20 m/s.</p>
+
+  <h3>Worked example 3: A smaller drop</h3>
+  <p><b>Question:</b> A ball falls from rest through 1.8 m. Calculate its speed just before reaching the ground. Take g = 10 m/s².</p>
+  <p><b>Step 1:</b> v = √(2gh).</p>
+  <p><b>Step 2:</b> v = √(2 × 10 × 1.8).</p>
+  <p>v = √36</p>
+  <p><b>Answer:</b> v = 6 m/s.</p>
+
+  <h3>Common mistakes</h3>
+  <ul>
+    <li>Do not forget the square root when finding v.</li>
+    <li>Use height lost, not total path length along a curved route.</li>
+    <li>Do not use this simplified formula if the stated assumptions do not apply.</li>
+  </ul>
+  `,
+  [
+    {
+      q: "An object falls from rest through 5 m. Take g = 10 m/s² and ignore air resistance. What is its final speed?",
+      options: ["5 m/s", "10 m/s", "25 m/s", "50 m/s"],
+      ans: 1,
+      hint: "Use v = √(2gh).",
+      steps: [
+        "v = √(2 × 10 × 5).",
+        "v = √100.",
+        "v = 10 m/s."
+      ],
+      why: "The final speed is 10 m/s."
+    },
+    {
+      q: "A stone falls from rest through 20 m. Take g = 10 m/s² and ignore air resistance. Find its final speed.",
+      options: ["10 m/s", "15 m/s", "20 m/s", "40 m/s"],
+      ans: 2,
+      hint: "Substitute the height into v = √(2gh).",
+      steps: [
+        "v = √(2 × 10 × 20).",
+        "v = √400.",
+        "v = 20 m/s."
+      ],
+      why: "The final speed is 20 m/s."
+    },
+    {
+      q: "A ball falls from rest through 1.8 m. Take g = 10 m/s² and ignore air resistance. What is its final speed?",
+      options: ["3 m/s", "6 m/s", "9 m/s", "18 m/s"],
+      ans: 1,
+      hint: "Calculate √(2 × 10 × 1.8).",
+      steps: [
+        "v = √(2gh).",
+        "v = √36.",
+        "v = 6 m/s."
+      ],
+      why: "The final speed is 6 m/s."
+    },
+    {
+      q: "Why does the mass cancel when deriving v = √(2gh) from mgh = ½mv²?",
+      options: [
+        "Mass is always zero during falling",
+        "The same non-zero mass appears on both sides",
+        "Gravity does not act on mass",
+        "Kinetic energy does not depend on mass"
+      ],
+      ans: 1,
+      hint: "Look at the factor m on each side of the equation.",
+      steps: [
+        "Start with mgh = ½mv².",
+        "Divide both sides by the same non-zero mass.",
+        "This gives gh = ½v², so v = √(2gh)."
+      ],
+      why: "Mass cancels because it appears as a common factor on both sides."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: USEFUL AND WASTED ENERGY
+// Skill: Identify useful and wasted energy in a device
+// ============================================================
+
+add(
+  "physics",
+  "work_energy_power",
+  "Useful and Wasted Energy",
+  `
+  <h2>Useful and Wasted Energy</h2>
+
+  <h3>1. Useful energy</h3>
+  <p>
+    <b>Useful energy</b> is the energy transferred in the form needed
+    to achieve a device's intended purpose.
+  </p>
+
+  <h3>2. Wasted energy</h3>
+  <p>
+    <b>Wasted energy</b> is energy transferred into forms or places that
+    are not useful for the intended purpose. It is often transferred
+    to the surroundings as thermal energy or sound.
+  </p>
+
+  <p>
+    Wasted energy has not been destroyed. It is usually less useful
+    because it spreads into the surroundings and becomes harder to use.
+  </p>
+
+  <h3>3. Energy efficiency</h3>
+  <p>
+    Efficiency compares the useful energy output with the total energy input.
+  </p>
+  <p><b>Efficiency = (Useful energy output ÷ Total energy input) × 100%</b></p>
+
+  <p>
+    When all energy outputs are accounted for:
+    total energy input = useful energy output + wasted energy output.
+  </p>
+
+  <h3>Worked example 1: An electric lamp</h3>
+  <p><b>Question:</b> An electric lamp receives 100 J of electrical energy. It produces 20 J of useful light energy. Calculate its efficiency.</p>
+  <p><b>Step 1:</b> Useful output = 20 J; total input = 100 J.</p>
+  <p><b>Step 2:</b> Efficiency = (20 ÷ 100) × 100%.</p>
+  <p><b>Answer:</b> Efficiency = 20%.</p>
+
+  <h3>Worked example 2: Finding wasted energy</h3>
+  <p><b>Question:</b> A motor receives 500 J of energy and transfers 350 J usefully into mechanical energy. Calculate the wasted energy if these are the only two output categories.</p>
+  <p><b>Step 1:</b> Wasted energy = total input − useful output.</p>
+  <p><b>Step 2:</b> Wasted energy = 500 J − 350 J.</p>
+  <p><b>Answer:</b> Wasted energy = 150 J.</p>
+
+  <h3>Worked example 3: Comparing efficiencies</h3>
+  <p><b>Question:</b> Device A receives 200 J and produces 100 J of useful energy. Device B receives 200 J and produces 150 J of useful energy. Calculate both efficiencies and identify the more efficient device.</p>
+  <p><b>Step 1:</b> Efficiency of A = (100 ÷ 200) × 100% = 50%.</p>
+  <p><b>Step 2:</b> Efficiency of B = (150 ÷ 200) × 100% = 75%.</p>
+  <p><b>Answer:</b> Device B is more efficient because its efficiency is 75%, compared with 50% for A.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Efficiency is a percentage of the energy input. For ordinary devices,
+    it cannot exceed 100% when all energy inputs and outputs are correctly
+    accounted for.
+  </p>
+  `,
+  [
+    {
+      q: "An electric lamp produces light for illumination. Which output is useful for that purpose?",
+      options: [
+        "All thermal energy escaping into the room",
+        "Light energy",
+        "Sound from a loose component",
+        "Energy transferred to unwanted heating"
+      ],
+      ans: 1,
+      hint: "Identify the lamp's intended purpose.",
+      steps: [
+        "The lamp is intended to provide illumination.",
+        "Light energy provides that illumination."
+      ],
+      why: "Light is the useful energy output for a lamp intended to illuminate a room."
+    },
+    {
+      q: "A device receives 200 J and produces 50 J of useful energy. Calculate its efficiency.",
+      options: ["25%", "50%", "75%", "150%"],
+      ans: 0,
+      hint: "Efficiency = useful output ÷ total input × 100%.",
+      steps: [
+        "Efficiency = (50 ÷ 200) × 100%.",
+        "Efficiency = 0.25 × 100%.",
+        "Efficiency = 25%."
+      ],
+      why: "The device converts 25% of its input energy into useful output."
+    },
+    {
+      q: "A motor receives 400 J and provides 280 J of useful energy. How much energy is wasted, assuming these are the only output categories?",
+      options: ["120 J", "280 J", "400 J", "680 J"],
+      ans: 0,
+      hint: "Subtract the useful output from the total input.",
+      steps: [
+        "Wasted energy = total input − useful output.",
+        "Wasted energy = 400 J − 280 J.",
+        "Wasted energy = 120 J."
+      ],
+      why: "The wasted energy is 120 J."
+    },
+    {
+      q: "Why is energy described as wasted when it is transferred into unwanted heating?",
+      options: [
+        "It has been destroyed",
+        "It no longer exists",
+        "It is less useful for the device's intended purpose",
+        "It has become negative energy"
+      ],
+      ans: 2,
+      hint: "Consider whether the energy is still present but less useful.",
+      steps: [
+        "Energy is conserved.",
+        "Some energy is transferred to the surroundings as thermal energy.",
+        "That energy may not help the device achieve its intended purpose."
+      ],
+      why: "Wasted energy still exists, but it is transferred into forms or places that are less useful."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: ELECTRIC CHARGE
+// Skill: Understand electric charge and its unit
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Meaning of Electric Charge",
+  `
+  <h2>Meaning of Electric Charge</h2>
+
+  <h3>1. What is electric charge?</h3>
+  <p>
+    <b>Electric charge</b> is a property of matter responsible for
+    electrical interactions. There are two types of charge:
+    positive and negative.
+  </p>
+
+  <ul>
+    <li>Protons have positive charge.</li>
+    <li>Electrons have negative charge.</li>
+    <li>Neutrons have no net electric charge.</li>
+  </ul>
+
+  <p>
+    In a metal wire, some electrons can move through the material.
+    Their movement makes electric current possible.
+  </p>
+
+  <h3>2. Unit of charge</h3>
+  <p>
+    Electric charge is measured in <b>coulombs (C)</b>.
+    The symbol for charge is <b>Q</b>.
+  </p>
+
+  <p>
+    The magnitude of the charge of one electron is approximately
+    1.6 × 10⁻¹⁹ C. An electron's charge is negative, while a proton's
+    charge is positive with the same magnitude.
+  </p>
+
+  <h3>Worked example 1: Identifying charge</h3>
+  <p><b>Question:</b> What type of charge does an electron carry?</p>
+  <p><b>Step 1:</b> An electron is a subatomic particle.</p>
+  <p><b>Step 2:</b> Electrons carry negative electric charge.</p>
+  <p><b>Answer:</b> Negative charge.</p>
+
+  <h3>Worked example 2: Choosing the unit</h3>
+  <p><b>Question:</b> A body carries 8 C of charge. What does C represent?</p>
+  <p><b>Step 1:</b> The quantity is electric charge.</p>
+  <p><b>Step 2:</b> Its SI unit is the coulomb.</p>
+  <p><b>Answer:</b> C represents coulombs.</p>
+
+  <h3>Worked example 3: Positive and negative particles</h3>
+  <p><b>Question:</b> A body gains some electrons. Explain the change in its net charge.</p>
+  <p><b>Step 1:</b> Electrons have negative charge.</p>
+  <p><b>Step 2:</b> Gaining electrons adds negative charge to the body.</p>
+  <p><b>Answer:</b> The body becomes negatively charged, assuming no other charge transfer occurs.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Charge is measured in coulombs. Do not confuse charge, Q,
+    with current, I: charge is a quantity, while current describes
+    the rate at which charge flows.
+  </p>
+  `,
+  [
+    {
+      q: "What is the SI unit of electric charge?",
+      options: ["Ampere", "Volt", "Coulomb", "Ohm"],
+      ans: 2,
+      hint: "The symbol for this unit is C.",
+      steps: [
+        "Electric charge is represented by Q.",
+        "Its SI unit is the coulomb (C)."
+      ],
+      why: "The coulomb is the SI unit of electric charge."
+    },
+    {
+      q: "Which particle carries a negative electric charge?",
+      options: ["Proton", "Electron", "Neutron", "Nucleus as a whole in every case"],
+      ans: 1,
+      hint: "It is the particle that moves through a metal wire.",
+      steps: [
+        "Protons are positively charged.",
+        "Electrons are negatively charged.",
+        "Neutrons have no net charge."
+      ],
+      why: "Electrons carry negative electric charge."
+    },
+    {
+      q: "A body gains electrons. What happens to its net charge?",
+      options: [
+        "It becomes more positive",
+        "It becomes more negative",
+        "It must become neutral",
+        "Its charge cannot change"
+      ],
+      ans: 1,
+      hint: "Consider the sign of an electron's charge.",
+      steps: [
+        "Each electron carries negative charge.",
+        "Gaining electrons adds negative charge."
+      ],
+      why: "A body that gains electrons becomes more negatively charged."
+    },
+    {
+      q: "Which symbol represents electric charge in the equation I = Q/t?",
+      options: ["I", "Q", "t", "V"],
+      ans: 1,
+      hint: "It is the quantity measured in coulombs.",
+      steps: [
+        "I represents current.",
+        "Q represents charge.",
+        "t represents time."
+      ],
+      why: "Q is the symbol for electric charge."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: MEANING OF ELECTRIC CURRENT
+// Skill: Explain current as the rate of flow of charge
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Meaning of Electric Current",
+  `
+  <h2>Meaning of Electric Current</h2>
+
+  <h3>1. What is electric current?</h3>
+  <p>
+    <b>Electric current</b> is the rate of flow of electric charge
+    through a conductor.
+  </p>
+
+  <p><b>I = Q/t</b></p>
+
+  <ul>
+    <li>I = current in amperes (A)</li>
+    <li>Q = charge passing a point in coulombs (C)</li>
+    <li>t = time in seconds (s)</li>
+  </ul>
+
+  <p>
+    One ampere means that one coulomb of charge passes a point
+    in the circuit every second.
+  </p>
+
+  <h3>2. What makes current flow?</h3>
+  <p>
+    In a metal wire, electrons can move through the material.
+    A potential difference across the wire can drive their movement
+    around a complete circuit.
+  </p>
+
+  <p>
+    <b>Conventional current</b> is defined as flowing from the positive
+    terminal towards the negative terminal through the external circuit.
+    In a metal wire, electrons drift in the opposite direction.
+  </p>
+
+  <h3>Worked example 1: Interpreting one ampere</h3>
+  <p><b>Question:</b> What does a current of 1 A mean?</p>
+  <p><b>Step 1:</b> Current is charge flowing per unit time.</p>
+  <p><b>Step 2:</b> For 1 A, one coulomb flows each second.</p>
+  <p><b>Answer:</b> 1 A = 1 C/s.</p>
+
+  <h3>Worked example 2: Interpreting a larger current</h3>
+  <p><b>Question:</b> A wire carries a current of 3 A. How much charge passes a point each second?</p>
+  <p><b>Step 1:</b> A = C/s.</p>
+  <p><b>Step 2:</b> A current of 3 A means 3 C/s.</p>
+  <p><b>Answer:</b> 3 coulombs pass each second.</p>
+
+  <h3>Worked example 3: Conventional current and electrons</h3>
+  <p><b>Question:</b> In a metal wire connected to a battery, which way do electrons move compared with conventional current?</p>
+  <p><b>Step 1:</b> Conventional current is defined from the positive terminal towards the negative terminal in the external circuit.</p>
+  <p><b>Step 2:</b> Electrons are negatively charged and drift in the opposite direction.</p>
+  <p><b>Answer:</b> Electron drift is opposite to conventional current in the metal wire.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Current is not the same as charge. Current tells you how much charge
+    passes a point per second.
+  </p>
+  `,
+  [
+    {
+      q: "What is electric current?",
+      options: [
+        "The amount of energy stored in a battery",
+        "The rate of flow of electric charge",
+        "The resistance of a wire",
+        "The total charge in every atom"
+      ],
+      ans: 1,
+      hint: "Current tells you how quickly charge passes a point.",
+      steps: [
+        "Current measures charge flow per unit time.",
+        "Therefore, it is the rate of flow of electric charge."
+      ],
+      why: "Electric current is charge passing a point per unit time."
+    },
+    {
+      q: "A current of 1 A is equivalent to:",
+      options: ["1 C/s", "1 J/C", "1 C × s", "1 V/s"],
+      ans: 0,
+      hint: "Use I = Q/t.",
+      steps: [
+        "I = Q/t.",
+        "One ampere means one coulomb divided by one second."
+      ],
+      why: "One ampere equals one coulomb per second."
+    },
+    {
+      q: "A current of 4 A flows through a wire. How much charge passes a point in one second?",
+      options: ["0.25 C", "1 C", "4 C", "8 C"],
+      ans: 2,
+      hint: "Each ampere represents one coulomb per second.",
+      steps: [
+        "4 A = 4 C/s.",
+        "In 1 s, charge passing = 4 × 1 = 4 C."
+      ],
+      why: "Four coulombs pass the point each second."
+    },
+    {
+      q: "In a metal wire, electron drift is in which direction relative to conventional current?",
+      options: [
+        "The same direction",
+        "The opposite direction",
+        "Always perpendicular",
+        "Electrons do not move"
+      ],
+      ans: 1,
+      hint: "Remember that electrons have negative charge.",
+      steps: [
+        "Conventional current is defined in the direction positive charge would move.",
+        "Electrons carry negative charge and drift in the opposite direction."
+      ],
+      why: "Electron drift is opposite to conventional current in a metal wire."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: CALCULATING CURRENT
+// Skill: Calculate current using I = Q/t
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Calculating Electric Current",
+  `
+  <h2>Calculating Electric Current</h2>
+
+  <h3>Formula</h3>
+  <p><b>I = Q/t</b></p>
+
+  <p>
+    Divide the charge passing a point by the time taken.
+    Charge must be in coulombs and time in seconds to obtain current in amperes.
+  </p>
+
+  <h3>Worked example 1</h3>
+  <p><b>Question:</b> A charge of 12 C passes a point in 3 s. Calculate the current.</p>
+  <p><b>Step 1:</b> Q = 12 C, t = 3 s.</p>
+  <p><b>Step 2:</b> I = Q/t = 12/3.</p>
+  <p><b>Answer:</b> I = 4 A.</p>
+
+  <h3>Worked example 2</h3>
+  <p><b>Question:</b> A charge of 45 C passes through a conductor in 15 s. Find the current.</p>
+  <p><b>Step 1:</b> Q = 45 C, t = 15 s.</p>
+  <p><b>Step 2:</b> I = 45/15.</p>
+  <p><b>Answer:</b> I = 3 A.</p>
+
+  <h3>Worked example 3</h3>
+  <p><b>Question:</b> A charge of 600 C passes through a device in 2 minutes. Calculate the current.</p>
+  <p><b>Step 1:</b> Convert time to seconds: 2 × 60 = 120 s.</p>
+  <p><b>Step 2:</b> I = Q/t = 600/120.</p>
+  <p><b>Answer:</b> I = 5 A.</p>
+
+  <h3>Common mistake</h3>
+  <p>
+    Convert minutes to seconds before calculating current.
+    For example, 2 minutes is 120 seconds, not 2 seconds.
+  </p>
+  `,
+  [
+    {
+      q: "A charge of 20 C passes a point in 5 s. Calculate the current.",
+      options: ["2 A", "4 A", "5 A", "100 A"],
+      ans: 1,
+      hint: "Use I = Q/t.",
+      steps: [
+        "I = Q/t.",
+        "I = 20/5.",
+        "I = 4 A."
+      ],
+      why: "The current is 4 A."
+    },
+    {
+      q: "A charge of 36 C passes through a wire in 12 s. What is the current?",
+      options: ["2 A", "3 A", "4 A", "6 A"],
+      ans: 1,
+      hint: "Divide 36 C by 12 s.",
+      steps: [
+        "I = Q/t.",
+        "I = 36/12.",
+        "I = 3 A."
+      ],
+      why: "The current is 3 A."
+    },
+    {
+      q: "A charge of 240 C passes a point in 2 minutes. Calculate the current.",
+      options: ["1 A", "2 A", "4 A", "120 A"],
+      ans: 1,
+      hint: "Convert 2 minutes to seconds first.",
+      steps: [
+        "2 minutes = 120 seconds.",
+        "I = 240/120.",
+        "I = 2 A."
+      ],
+      why: "The current is 2 A."
+    },
+    {
+      q: "A charge of 15 C passes a point in 0.5 s. What is the current?",
+      options: ["7.5 A", "15 A", "30 A", "45 A"],
+      ans: 2,
+      hint: "Divide 15 by 0.5.",
+      steps: [
+        "I = Q/t.",
+        "I = 15/0.5.",
+        "I = 30 A."
+      ],
+      why: "The current is 30 A."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: CALCULATING CHARGE FROM CURRENT AND TIME
+// Skill: Calculate charge using Q = It
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Calculating Electric Charge",
+  `
+  <h2>Calculating Electric Charge</h2>
+
+  <h3>Formula</h3>
+  <p><b>Q = It</b></p>
+
+  <p>
+    Since current is charge divided by time, multiplying current
+    by time gives the total charge that passes a point.
+  </p>
+
+  <ul>
+    <li>Q is charge in coulombs (C).</li>
+    <li>I is current in amperes (A).</li>
+    <li>t is time in seconds (s).</li>
+  </ul>
+
+  <h3>Worked example 1</h3>
+  <p><b>Question:</b> A current of 2 A flows for 10 s. Calculate the charge transferred.</p>
+  <p><b>Step 1:</b> I = 2 A, t = 10 s.</p>
+  <p><b>Step 2:</b> Q = It = 2 × 10.</p>
+  <p><b>Answer:</b> Q = 20 C.</p>
+
+  <h3>Worked example 2</h3>
+  <p><b>Question:</b> A current of 0.5 A flows for 40 s. Find the charge transferred.</p>
+  <p><b>Step 1:</b> I = 0.5 A, t = 40 s.</p>
+  <p><b>Step 2:</b> Q = 0.5 × 40.</p>
+  <p><b>Answer:</b> Q = 20 C.</p>
+
+  <h3>Worked example 3</h3>
+  <p><b>Question:</b> A current of 3 A flows for 2 minutes. Calculate the charge transferred.</p>
+  <p><b>Step 1:</b> Convert time: 2 minutes = 120 s.</p>
+  <p><b>Step 2:</b> Q = It = 3 × 120.</p>
+  <p><b>Answer:</b> Q = 360 C.</p>
+
+  <h3>Common mistake</h3>
+  <p>
+    Do not divide current by time when calculating charge.
+    Use Q = It, and convert time to seconds first.
+  </p>
+  `,
+  [
+    {
+      q: "A current of 3 A flows for 5 s. Calculate the charge transferred.",
+      options: ["8 C", "15 C", "1.7 C", "30 C"],
+      ans: 1,
+      hint: "Use Q = It.",
+      steps: [
+        "Q = It.",
+        "Q = 3 × 5.",
+        "Q = 15 C."
+      ],
+      why: "The total charge transferred is 15 C."
+    },
+    {
+      q: "A current of 0.2 A flows for 30 s. What charge passes the point?",
+      options: ["0.15 C", "6 C", "15 C", "150 C"],
+      ans: 1,
+      hint: "Multiply 0.2 by 30.",
+      steps: [
+        "Q = It.",
+        "Q = 0.2 × 30.",
+        "Q = 6 C."
+      ],
+      why: "The charge transferred is 6 C."
+    },
+    {
+      q: "A current of 4 A flows for 2 minutes. Calculate the charge transferred.",
+      options: ["8 C", "120 C", "240 C", "480 C"],
+      ans: 3,
+      hint: "Convert 2 minutes to 120 seconds.",
+      steps: [
+        "t = 2 × 60 = 120 s.",
+        "Q = It = 4 × 120.",
+        "Q = 480 C."
+      ],
+      why: "The charge transferred is 480 C."
+    },
+    {
+      q: "A charge of 50 C passes through a conductor carrying 5 A. How long does the transfer take?",
+      options: ["5 s", "10 s", "25 s", "250 s"],
+      ans: 1,
+      hint: "Rearrange Q = It to make t the subject.",
+      steps: [
+        "Q = It.",
+        "t = Q/I.",
+        "t = 50/5 = 10 s."
+      ],
+      why: "The transfer takes 10 seconds."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: POTENTIAL DIFFERENCE
+// Skill: Understand and calculate potential difference using V = E/Q
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Meaning and Calculation of Potential Difference",
+  `
+  <h2>Meaning and Calculation of Potential Difference</h2>
+
+  <h3>1. What is potential difference?</h3>
+  <p>
+    <b>Potential difference (voltage)</b> between two points is the
+    energy transferred per unit charge as charge moves between those points.
+  </p>
+
+  <p><b>V = E/Q</b></p>
+
+  <ul>
+    <li>V = potential difference in volts (V)</li>
+    <li>E = energy transferred in joules (J)</li>
+    <li>Q = charge in coulombs (C)</li>
+  </ul>
+
+  <p>
+    A potential difference of 1 V means that 1 J of energy is transferred
+    per coulomb of charge.
+  </p>
+
+  <h3>Worked example 1: Interpreting voltage</h3>
+  <p><b>Question:</b> What does a potential difference of 6 V mean?</p>
+  <p><b>Step 1:</b> One volt equals one joule per coulomb.</p>
+  <p><b>Step 2:</b> At 6 V, each coulomb transfers 6 J of energy between the points.</p>
+  <p><b>Answer:</b> 6 J of energy is transferred per coulomb.</p>
+
+  <h3>Worked example 2: Calculating potential difference</h3>
+  <p><b>Question:</b> A device transfers 24 J of energy to 4 C of charge. Calculate the potential difference across it.</p>
+  <p><b>Step 1:</b> E = 24 J, Q = 4 C.</p>
+  <p><b>Step 2:</b> V = E/Q = 24/4.</p>
+  <p><b>Answer:</b> V = 6 V.</p>
+
+  <h3>Worked example 3: Finding energy transferred</h3>
+  <p><b>Question:</b> A charge of 3 C passes through a component with a potential difference of 12 V. Calculate the energy transferred.</p>
+  <p><b>Step 1:</b> Start with V = E/Q.</p>
+  <p><b>Step 2:</b> Rearrange to E = VQ.</p>
+  <p><b>Step 3:</b> E = 12 × 3.</p>
+  <p><b>Answer:</b> E = 36 J.</p>
+
+  <h3>Distinguish current from potential difference</h3>
+  <ul>
+    <li>Current tells you the rate of charge flow.</li>
+    <li>Potential difference tells you the energy transferred per unit charge.</li>
+  </ul>
+
+  <h3>Remember</h3>
+  <p>
+    Use V = E/Q when energy and charge are given.
+    Use E = VQ when voltage and charge are given.
+  </p>
+  `,
+  [
+    {
+      q: "What does a potential difference of 1 V mean?",
+      options: [
+        "1 C flows every second",
+        "1 J of energy is transferred per coulomb",
+        "1 Ω of resistance is present",
+        "1 A flows through every component"
+      ],
+      ans: 1,
+      hint: "Use V = E/Q.",
+      steps: [
+        "Potential difference is energy transferred per unit charge.",
+        "One volt equals one joule per coulomb."
+      ],
+      why: "A potential difference of 1 V corresponds to 1 J of energy transferred per coulomb."
+    },
+    {
+      q: "A component transfers 30 J of energy to 5 C of charge. Calculate the potential difference.",
+      options: ["5 V", "6 V", "25 V", "150 V"],
+      ans: 1,
+      hint: "Use V = E/Q.",
+      steps: [
+        "V = E/Q.",
+        "V = 30/5.",
+        "V = 6 V."
+      ],
+      why: "The potential difference is 6 V."
+    },
+    {
+      q: "A charge of 4 C passes through a component with a potential difference of 8 V. Calculate the energy transferred.",
+      options: ["2 J", "12 J", "32 J", "64 J"],
+      ans: 2,
+      hint: "Rearrange V = E/Q to E = VQ.",
+      steps: [
+        "E = VQ.",
+        "E = 8 × 4.",
+        "E = 32 J."
+      ],
+      why: "The energy transferred is 32 J."
+    },
+    {
+      q: "Which quantity describes the rate of flow of electric charge?",
+      options: [
+        "Potential difference",
+        "Resistance",
+        "Electric current",
+        "Energy"
+      ],
+      ans: 2,
+      hint: "It is measured in amperes.",
+      steps: [
+        "Current is charge transferred per unit time.",
+        "Its SI unit is the ampere."
+      ],
+      why: "Electric current measures the rate of flow of charge."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: MEANING OF ELECTRICAL RESISTANCE
+// Skill: Explain resistance and identify its unit
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Meaning of Electrical Resistance",
+  `
+  <h2>Meaning of Electrical Resistance</h2>
+
+  <h3>1. What is resistance?</h3>
+  <p>
+    <b>Electrical resistance</b> is the opposition a material or component
+    offers to the flow of electric current.
+  </p>
+
+  <p>
+    Resistance is represented by <b>R</b> and measured in <b>ohms (Ω)</b>.
+    A component with greater resistance carries less current than a
+    component with lower resistance when the potential difference across
+    each is the same and both obey Ohm's law.
+  </p>
+
+  <h3>2. The relationship between voltage, current and resistance</h3>
+  <p><b>V = IR</b></p>
+  <ul>
+    <li>V = potential difference in volts (V)</li>
+    <li>I = current in amperes (A)</li>
+    <li>R = resistance in ohms (Ω)</li>
+  </ul>
+
+  <h3>Worked example 1: Identifying the unit</h3>
+  <p><b>Question:</b> A component has a resistance of 8 Ω. What does Ω represent?</p>
+  <p><b>Step 1:</b> R represents electrical resistance.</p>
+  <p><b>Step 2:</b> The SI unit of resistance is the ohm.</p>
+  <p><b>Answer:</b> Ω represents ohms.</p>
+
+  <h3>Worked example 2: Comparing two resistors</h3>
+  <p><b>Question:</b> Two resistors have resistances of 2 Ω and 10 Ω. If the same potential difference is applied across each, which carries the smaller current, assuming both obey Ohm's law?</p>
+  <p><b>Step 1:</b> Use I = V/R.</p>
+  <p><b>Step 2:</b> At the same voltage, current decreases as resistance increases.</p>
+  <p><b>Answer:</b> The 10 Ω resistor carries the smaller current.</p>
+
+  <h3>Worked example 3: Identifying the quantities</h3>
+  <p><b>Question:</b> A resistor carries 3 A when a potential difference of 12 V is applied. Identify the quantities needed to calculate its resistance.</p>
+  <p><b>Step 1:</b> V = 12 V.</p>
+  <p><b>Step 2:</b> I = 3 A.</p>
+  <p><b>Step 3:</b> Use R = V/I.</p>
+  <p><b>Answer:</b> Divide the potential difference by the current.</p>
+
+  <h3>Remember</h3>
+  <p>
+    Resistance describes opposition to current. Do not confuse resistance
+    in ohms with current in amperes or potential difference in volts.
+  </p>
+  `,
+  [
+    {
+      q: "What is electrical resistance?",
+      options: [
+        "The rate of flow of charge",
+        "The opposition a component offers to current",
+        "Energy transferred per coulomb",
+        "The total charge in a wire"
+      ],
+      ans: 1,
+      hint: "It describes how much a component opposes current.",
+      steps: [
+        "Resistance opposes the flow of electric current.",
+        "Its symbol is R."
+      ],
+      why: "Electrical resistance is the opposition a material or component offers to current."
+    },
+    {
+      q: "What is the SI unit of resistance?",
+      options: ["Ampere", "Volt", "Ohm", "Coulomb"],
+      ans: 2,
+      hint: "Its symbol is Ω.",
+      steps: [
+        "Resistance is represented by R.",
+        "Resistance is measured in ohms (Ω)."
+      ],
+      why: "The ohm is the SI unit of electrical resistance."
+    },
+    {
+      q: "Two resistors have the same potential difference across them. Which carries less current if both obey Ohm's law?",
+      options: [
+        "The resistor with greater resistance",
+        "The resistor with smaller resistance",
+        "Both must carry zero current",
+        "Resistance does not affect current"
+      ],
+      ans: 0,
+      hint: "Use I = V/R.",
+      steps: [
+        "The potential difference is the same.",
+        "Current equals voltage divided by resistance.",
+        "Greater resistance therefore gives smaller current."
+      ],
+      why: "At the same potential difference, a larger resistance produces a smaller current for an ohmic component."
+    },
+    {
+      q: "Which symbol represents electrical resistance?",
+      options: ["Q", "R", "I", "t"],
+      ans: 1,
+      hint: "It appears in V = IR.",
+      steps: [
+        "In V = IR, V is voltage and I is current.",
+        "R represents resistance."
+      ],
+      why: "The symbol for resistance is R."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: CALCULATING RESISTANCE
+// Skill: Calculate resistance using R = V/I
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Calculating Electrical Resistance",
+  `
+  <h2>Calculating Electrical Resistance</h2>
+
+  <h3>Formula</h3>
+  <p><b>R = V/I</b></p>
+
+  <p>
+    Resistance equals the potential difference across a component
+    divided by the current through it.
+  </p>
+
+  <p>
+    Use volts for potential difference and amperes for current.
+    The resulting resistance is in ohms.
+  </p>
+
+  <h3>Worked example 1</h3>
+  <p><b>Question:</b> A resistor has a potential difference of 12 V across it and carries a current of 3 A. Calculate its resistance.</p>
+  <p><b>Step 1:</b> V = 12 V, I = 3 A.</p>
+  <p><b>Step 2:</b> R = V/I.</p>
+  <p>R = 12/3</p>
+  <p><b>Answer:</b> R = 4 Ω.</p>
+
+  <h3>Worked example 2</h3>
+  <p><b>Question:</b> A lamp operates at 6 V and carries a current of 0.5 A. Calculate its resistance at that operating condition.</p>
+  <p><b>Step 1:</b> V = 6 V, I = 0.5 A.</p>
+  <p><b>Step 2:</b> R = 6/0.5.</p>
+  <p><b>Answer:</b> R = 12 Ω.</p>
+
+  <h3>Worked example 3</h3>
+  <p><b>Question:</b> A component has 24 V across it and carries 0.2 A. Find its resistance at that operating condition.</p>
+  <p><b>Step 1:</b> V = 24 V, I = 0.2 A.</p>
+  <p><b>Step 2:</b> R = 24/0.2.</p>
+  <p><b>Answer:</b> R = 120 Ω.</p>
+
+  <h3>Common mistake</h3>
+  <p>
+    Do not calculate I/V when finding resistance.
+    The correct formula is R = V/I.
+  </p>
+  `,
+  [
+    {
+      q: "A resistor has 10 V across it and carries 2 A. Calculate its resistance.",
+      options: ["2 Ω", "5 Ω", "8 Ω", "20 Ω"],
+      ans: 1,
+      hint: "Use R = V/I.",
+      steps: [
+        "R = V/I.",
+        "R = 10/2.",
+        "R = 5 Ω."
+      ],
+      why: "The resistance is 5 Ω."
+    },
+    {
+      q: "A component has a potential difference of 9 V and a current of 0.3 A. Find its resistance.",
+      options: ["3 Ω", "27 Ω", "30 Ω", "90 Ω"],
+      ans: 2,
+      hint: "Divide 9 by 0.3.",
+      steps: [
+        "R = V/I.",
+        "R = 9/0.3.",
+        "R = 30 Ω."
+      ],
+      why: "The resistance is 30 Ω."
+    },
+    {
+      q: "A resistor carries 4 A when the potential difference is 20 V. What is its resistance?",
+      options: ["4 Ω", "5 Ω", "16 Ω", "80 Ω"],
+      ans: 1,
+      hint: "Resistance equals voltage divided by current.",
+      steps: [
+        "R = 20/4.",
+        "R = 5 Ω."
+      ],
+      why: "The resistance is 5 Ω."
+    },
+    {
+      q: "A component has 12 V across it and carries 0.5 A. Calculate its resistance.",
+      options: ["6 Ω", "12 Ω", "24 Ω", "36 Ω"],
+      ans: 2,
+      hint: "Calculate 12 ÷ 0.5.",
+      steps: [
+        "R = V/I.",
+        "R = 12/0.5.",
+        "R = 24 Ω."
+      ],
+      why: "The resistance is 24 Ω."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: CALCULATING CURRENT USING OHM'S LAW
+// Skill: Calculate current using I = V/R
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Calculating Current Using Ohm's Law",
+  `
+  <h2>Calculating Current Using Ohm's Law</h2>
+
+  <h3>Formula</h3>
+  <p><b>I = V/R</b></p>
+
+  <p>
+    Rearrange V = IR by dividing both sides by R.
+    Current equals potential difference divided by resistance.
+  </p>
+
+  <h3>Worked example 1</h3>
+  <p><b>Question:</b> A 6 Ω resistor is connected across a 12 V supply. Calculate the current.</p>
+  <p><b>Step 1:</b> V = 12 V, R = 6 Ω.</p>
+  <p><b>Step 2:</b> I = V/R.</p>
+  <p>I = 12/6</p>
+  <p><b>Answer:</b> I = 2 A.</p>
+
+  <h3>Worked example 2</h3>
+  <p><b>Question:</b> A 20 Ω resistor is connected across 10 V. Calculate the current.</p>
+  <p><b>Step 1:</b> V = 10 V, R = 20 Ω.</p>
+  <p><b>Step 2:</b> I = 10/20.</p>
+  <p><b>Answer:</b> I = 0.5 A.</p>
+
+  <h3>Worked example 3</h3>
+  <p><b>Question:</b> A 4 Ω resistor is connected across 18 V. Find the current.</p>
+  <p><b>Step 1:</b> V = 18 V, R = 4 Ω.</p>
+  <p><b>Step 2:</b> I = 18/4.</p>
+  <p><b>Answer:</b> I = 4.5 A.</p>
+
+  <h3>Check your answer</h3>
+  <p>
+    For a fixed resistance, increasing the potential difference increases
+    the current in the same proportion, provided the component's resistance
+    remains constant.
+  </p>
+  `,
+  [
+    {
+      q: "A 5 Ω resistor is connected across 15 V. Calculate the current.",
+      options: ["2 A", "3 A", "5 A", "75 A"],
+      ans: 1,
+      hint: "Use I = V/R.",
+      steps: [
+        "I = V/R.",
+        "I = 15/5.",
+        "I = 3 A."
+      ],
+      why: "The current is 3 A."
+    },
+    {
+      q: "A 40 Ω resistor is connected across 12 V. Find the current.",
+      options: ["0.3 A", "3.3 A", "28 A", "480 A"],
+      ans: 0,
+      hint: "Divide 12 by 40.",
+      steps: [
+        "I = 12/40.",
+        "I = 0.3 A."
+      ],
+      why: "The current is 0.3 A."
+    },
+    {
+      q: "A 3 Ω resistor has a potential difference of 9 V across it. Calculate the current.",
+      options: ["2 A", "3 A", "6 A", "27 A"],
+      ans: 1,
+      hint: "Current equals voltage divided by resistance.",
+      steps: [
+        "I = V/R.",
+        "I = 9/3.",
+        "I = 3 A."
+      ],
+      why: "The current is 3 A."
+    },
+    {
+      q: "A 12 Ω resistor is connected across 6 V. What current flows through it?",
+      options: ["0.5 A", "2 A", "6 A", "72 A"],
+      ans: 0,
+      hint: "Use I = 6/12.",
+      steps: [
+        "I = V/R.",
+        "I = 6/12.",
+        "I = 0.5 A."
+      ],
+      why: "The current is 0.5 A."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: CALCULATING POTENTIAL DIFFERENCE USING OHM'S LAW
+// Skill: Calculate voltage using V = IR
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Calculating Potential Difference Using Ohm's Law",
+  `
+  <h2>Calculating Potential Difference Using Ohm's Law</h2>
+
+  <h3>Formula</h3>
+  <p><b>V = IR</b></p>
+
+  <p>
+    Multiply current by resistance to calculate the potential difference
+    across a component that follows Ohm's law.
+  </p>
+
+  <h3>Worked example 1</h3>
+  <p><b>Question:</b> A 4 Ω resistor carries a current of 2 A. Calculate the potential difference across it.</p>
+  <p><b>Step 1:</b> I = 2 A, R = 4 Ω.</p>
+  <p><b>Step 2:</b> V = IR = 2 × 4.</p>
+  <p><b>Answer:</b> V = 8 V.</p>
+
+  <h3>Worked example 2</h3>
+  <p><b>Question:</b> A 15 Ω resistor carries 0.4 A. Find the potential difference across it.</p>
+  <p><b>Step 1:</b> I = 0.4 A, R = 15 Ω.</p>
+  <p><b>Step 2:</b> V = 0.4 × 15.</p>
+  <p><b>Answer:</b> V = 6 V.</p>
+
+  <h3>Worked example 3</h3>
+  <p><b>Question:</b> A 2.5 Ω resistor carries a current of 6 A. Calculate the potential difference.</p>
+  <p><b>Step 1:</b> I = 6 A, R = 2.5 Ω.</p>
+  <p><b>Step 2:</b> V = 6 × 2.5.</p>
+  <p><b>Answer:</b> V = 15 V.</p>
+
+  <h3>Check your answer</h3>
+  <p>
+    The unit is volts. Do not divide current by resistance when calculating
+    potential difference; use V = IR.
+  </p>
+  `,
+  [
+    {
+      q: "A 6 Ω resistor carries 3 A. Calculate the potential difference.",
+      options: ["2 V", "9 V", "18 V", "36 V"],
+      ans: 2,
+      hint: "Use V = IR.",
+      steps: [
+        "V = IR.",
+        "V = 3 × 6.",
+        "V = 18 V."
+      ],
+      why: "The potential difference is 18 V."
+    },
+    {
+      q: "A 10 Ω resistor carries 0.2 A. What is the potential difference?",
+      options: ["0.02 V", "2 V", "5 V", "50 V"],
+      ans: 1,
+      hint: "Multiply 10 by 0.2.",
+      steps: [
+        "V = IR.",
+        "V = 10 × 0.2.",
+        "V = 2 V."
+      ],
+      why: "The potential difference is 2 V."
+    },
+    {
+      q: "A resistor of 2.5 Ω carries 4 A. Calculate the potential difference.",
+      options: ["1.6 V", "6.5 V", "10 V", "16 V"],
+      ans: 2,
+      hint: "Use V = 4 × 2.5.",
+      steps: [
+        "V = IR.",
+        "V = 4 × 2.5.",
+        "V = 10 V."
+      ],
+      why: "The potential difference is 10 V."
+    },
+    {
+      q: "A 20 Ω resistor carries a current of 0.5 A. Find the voltage across it.",
+      options: ["10 V", "20 V", "40 V", "100 V"],
+      ans: 0,
+      hint: "Multiply current by resistance.",
+      steps: [
+        "V = IR.",
+        "V = 0.5 × 20.",
+        "V = 10 V."
+      ],
+      why: "The potential difference is 10 V."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: OHM'S LAW AND VOLTAGE-CURRENT GRAPHS
+// Skill: Identify an ohmic conductor and interpret its V-I graph
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Ohm's Law and Voltage-Current Graphs",
+  `
+  <h2>Ohm's Law and Voltage-Current Graphs</h2>
+
+  <h3>1. Statement of Ohm's law</h3>
+  <p>
+    Ohm's law states that, for a conductor at constant temperature,
+    the current through it is directly proportional to the potential
+    difference across it.
+  </p>
+
+  <p>
+    This means that doubling the potential difference doubles the current
+    if the conductor's resistance remains constant.
+  </p>
+
+  <h3>2. Ohmic conductors</h3>
+  <p>
+    An <b>ohmic conductor</b> obeys Ohm's law under the stated conditions.
+    Its resistance remains constant as the potential difference changes,
+    provided its temperature and other relevant conditions remain constant.
+  </p>
+
+  <h3>3. Interpreting a graph</h3>
+  <p>
+    On a graph with potential difference V on the vertical axis and
+    current I on the horizontal axis:
+  </p>
+  <ul>
+    <li>A straight line through the origin indicates constant resistance.</li>
+    <li>The gradient equals V/I, which is the resistance R.</li>
+    <li>A steeper line means greater resistance when the axes are V against I.</li>
+  </ul>
+
+  <p>
+    Always check which quantity is on each axis before interpreting
+    the gradient.
+  </p>
+
+  <h3>Worked example 1: Identifying an ohmic conductor</h3>
+  <p><b>Question:</b> A conductor's current doubles whenever the potential difference doubles, while its temperature stays constant. Does it obey Ohm's law?</p>
+  <p><b>Step 1:</b> Ohm's law requires current to be directly proportional to potential difference at constant temperature.</p>
+  <p><b>Step 2:</b> The current doubles when the voltage doubles.</p>
+  <p><b>Answer:</b> Yes, this behaviour is consistent with Ohm's law.</p>
+
+  <h3>Worked example 2: Calculating graph gradient</h3>
+  <p><b>Question:</b> On a V-I graph, a straight line passes through (I = 2 A, V = 6 V). Calculate its resistance if the line passes through the origin.</p>
+  <p><b>Step 1:</b> Resistance = gradient = change in V ÷ change in I.</p>
+  <p><b>Step 2:</b> R = 6/2.</p>
+  <p><b>Answer:</b> R = 3 Ω.</p>
+
+  <h3>Worked example 3: Comparing graph gradients</h3>
+  <p><b>Question:</b> Two ohmic resistors are represented on V-I graphs with voltage on the vertical axis. Resistor A has a gradient of 2 V/A, and resistor B has a gradient of 5 V/A. Which has the greater resistance?</p>
+  <p><b>Step 1:</b> For this graph, gradient = V/I = R.</p>
+  <p><b>Step 2:</b> A has resistance 2 Ω and B has resistance 5 Ω.</p>
+  <p><b>Answer:</b> Resistor B has the greater resistance.</p>
+
+  <h3>Remember</h3>
+  <p>
+    A straight-line V-I graph through the origin indicates constant resistance.
+    The gradient represents resistance only when voltage is plotted vertically
+    against current horizontally.
+  </p>
+  `,
+  [
+    {
+      q: "Which condition is required when stating Ohm's law?",
+      options: [
+        "The conductor must be at constant temperature",
+        "The current must always be zero",
+        "The resistance must always be infinite",
+        "The conductor must contain no electrons"
+      ],
+      ans: 0,
+      hint: "Temperature changes can affect resistance.",
+      steps: [
+        "Ohm's law relates current and voltage.",
+        "The proportionality holds when temperature and other relevant conditions remain constant."
+      ],
+      why: "Ohm's law is stated for a conductor under constant physical conditions, particularly constant temperature."
+    },
+    {
+      q: "A conductor has a straight-line V-I graph through the origin. What does this indicate under constant conditions?",
+      options: [
+        "Its resistance is constant",
+        "Its current is always zero",
+        "Its resistance must be zero",
+        "Its voltage never changes"
+      ],
+      ans: 0,
+      hint: "A straight line through the origin shows direct proportionality.",
+      steps: [
+        "A straight line through the origin means V is proportional to I.",
+        "Therefore V/I is constant.",
+        "Since R = V/I, resistance is constant."
+      ],
+      why: "The graph indicates constant resistance under the stated conditions."
+    },
+    {
+      q: "On a graph with V on the vertical axis and I on the horizontal axis, what does the gradient represent for an ohmic resistor?",
+      options: ["Current", "Charge", "Resistance", "Time"],
+      ans: 2,
+      hint: "Gradient = change in V divided by change in I.",
+      steps: [
+        "Gradient = ΔV/ΔI.",
+        "For an ohmic resistor, V = IR.",
+        "Therefore the gradient equals R."
+      ],
+      why: "The gradient of a V-I graph is resistance."
+    },
+    {
+      q: "Two resistors have V-I graph gradients of 3 V/A and 8 V/A. Which has the greater resistance?",
+      options: [
+        "The resistor with gradient 3 V/A",
+        "The resistor with gradient 8 V/A",
+        "Both must have equal resistance",
+        "Neither has resistance"
+      ],
+      ans: 1,
+      hint: "With voltage vertical and current horizontal, gradient equals resistance.",
+      steps: [
+        "Resistance equals the V-I graph gradient.",
+        "The gradients correspond to 3 Ω and 8 Ω.",
+        "8 Ω is greater than 3 Ω."
+      ],
+      why: "The resistor with gradient 8 V/A has the greater resistance."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: IDENTIFYING A SERIES CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Identifying a Series Circuit",
+  `<h2>Identifying a Series Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Identify a series circuit by recognising that its components are connected along one continuous path for electric current.</p>
+
+<h3>1. What is a series circuit?</h3>
+<p>A <b>series circuit</b> is a circuit in which components are connected one after another along a single path.</p>
+
+<p>For example, imagine a cell connected to a switch, then a lamp, and finally back to the cell. The current has only one path to follow.</p>
+
+<p><b>Key features:</b></p>
+<ul>
+<li>There is only one path for current through the components.</li>
+<li>The components are connected one after another.</li>
+<li>If a break occurs anywhere along the only path, the circuit becomes incomplete and current stops throughout it.</li>
+</ul>
+
+<h3>2. Worked example 1: Recognising a series circuit</h3>
+<p><b>Question:</b> A cell, switch and two lamps are connected one after another in one closed loop. What type of circuit is this?</p>
+<p><b>Step 1:</b> Identify the number of paths available to the current.</p>
+<p>There is only one path.</p>
+<p><b>Step 2:</b> Identify how the components are connected.</p>
+<p>They are connected one after another.</p>
+<p><b>Answer:</b> It is a series circuit.</p>
+
+<h3>3. Worked example 2: Finding the number of paths</h3>
+<p><b>Question:</b> Three resistors are connected in series. How many separate paths are available for current through those resistors?</p>
+<p><b>Step 1:</b> Series components share one continuous route.</p>
+<p><b>Step 2:</b> No branch provides an alternative route.</p>
+<p><b>Answer:</b> One path.</p>
+
+<h3>4. Worked example 3: Predicting the effect of a break</h3>
+<p><b>Question:</b> Two lamps are connected in series. One lamp is removed, leaving a gap. What happens to the other lamp?</p>
+<p><b>Step 1:</b> Removing the lamp creates a break in the only path.</p>
+<p><b>Step 2:</b> The circuit is now incomplete, so current cannot flow around the loop.</p>
+<p><b>Answer:</b> The other lamp goes out.</p>
+
+<h3>Remember</h3>
+<p><b>Series = one path.</b> A break anywhere in that path stops the current through the entire series circuit.</p>`,
+  [
+    {
+      q: "A cell and three resistors are connected one after another in one closed loop. What type of circuit is formed?",
+      options: ["Parallel circuit", "Series circuit", "Open circuit", "Short circuit"],
+      ans: 1,
+      hint: "Look at how many paths the current can take.",
+      steps: [
+        "The components are connected one after another.",
+        "There is only one path through them.",
+        "A circuit with one path is a series circuit."
+      ],
+      why: "A series circuit has one continuous path for current."
+    },
+    {
+      q: "How many paths are available for current through components connected in series?",
+      options: ["One", "Two", "Three", "An unlimited number"],
+      ans: 0,
+      hint: "Series components share one route.",
+      steps: [
+        "Identify the connection: series.",
+        "A series arrangement has no branching path.",
+        "Therefore, there is one path."
+      ],
+      why: "Current has only one route through a series arrangement."
+    },
+    {
+      q: "Two lamps are connected in series. One is removed, leaving a gap. What happens to the other lamp?",
+      options: ["It becomes brighter", "It remains unchanged", "It goes out", "It doubles its brightness"],
+      ans: 2,
+      hint: "Can current still complete the circuit?",
+      steps: [
+        "Removing the lamp creates a break.",
+        "The only path is now incomplete.",
+        "Current stops, so the other lamp goes out."
+      ],
+      why: "An open circuit prevents current from flowing around the series loop."
+    },
+    {
+      q: "Which feature identifies a series circuit?",
+      options: [
+        "Each component has its own separate branch",
+        "There is one path through the components",
+        "There is no source of electrical energy",
+        "Current cannot flow in a closed circuit"
+      ],
+      ans: 1,
+      hint: "Focus on the number of current paths.",
+      steps: [
+        "A series circuit connects components one after another.",
+        "There is one continuous path.",
+        "Therefore, option B identifies a series circuit."
+      ],
+      why: "The single path is the defining feature of a series circuit."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: CURRENT IN A SERIES CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Current in a Series Circuit",
+  `<h2>Current in a Series Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Use the rule that current is the same at every point in a series circuit to determine unknown current values.</p>
+
+<h3>1. The current rule</h3>
+<p>In a series circuit, the current is the same through every component.</p>
+
+<p>If an ammeter measures 0.4 A before the first resistor, the current through the second resistor is also 0.4 A, provided the circuit is a single series path.</p>
+
+<p>This is because charge cannot split between branches in a series circuit. The same rate of charge flow passes through every component.</p>
+
+<p><b>Rule:</b></p>
+<p>I₁ = I₂ = I₃</p>
+<p>Here, I₁, I₂ and I₃ represent current at different points in the series path.</p>
+
+<h3>2. Worked example 1: Finding current after a resistor</h3>
+<p><b>Question:</b> A series circuit carries a current of 0.6 A through the first resistor. Find the current through the second resistor.</p>
+<p><b>Step 1:</b> Recall that current is the same throughout a series circuit.</p>
+<p><b>Step 2:</b> The current through the second resistor equals the current through the first resistor.</p>
+<p><b>Answer:</b> 0.6 A.</p>
+
+<h3>3. Worked example 2: Reading an ammeter</h3>
+<p><b>Question:</b> An ammeter reads 250 mA at one point in a series circuit. What current should another ideal ammeter measure elsewhere in the same series path?</p>
+<p><b>Step 1:</b> Current is the same at every point in a series circuit.</p>
+<p><b>Step 2:</b> Keep the same unit: 250 mA.</p>
+<p><b>Answer:</b> 250 mA.</p>
+
+<h3>4. Worked example 3: Finding an unknown reading</h3>
+<p><b>Question:</b> Three ammeters are placed at different points in a series circuit. The readings are 0.8 A, I and 0.8 A. Find I.</p>
+<p><b>Step 1:</b> In series, all current readings are equal.</p>
+<p><b>Step 2:</b> Therefore, I = 0.8 A.</p>
+<p><b>Answer:</b> 0.8 A.</p>
+
+<h3>Remember</h3>
+<p>In a series circuit, current is the same everywhere. Do not add the current readings together.</p>`,
+  [
+    {
+      q: "A series circuit carries 0.7 A through the first resistor. What current flows through the second resistor?",
+      options: ["0.35 A", "0.7 A", "1.4 A", "7.0 A"],
+      ans: 1,
+      hint: "Current is the same through every component in series.",
+      steps: [
+        "The first resistor carries 0.7 A.",
+        "Current remains the same along the single path.",
+        "The second resistor also carries 0.7 A."
+      ],
+      why: "There are no branches in which the current can divide."
+    },
+    {
+      q: "An ammeter reads 350 mA in a series circuit. What should an ideal ammeter elsewhere in the same path read?",
+      options: ["175 mA", "700 mA", "350 mA", "0 mA"],
+      ans: 2,
+      hint: "Keep the same current value and unit.",
+      steps: [
+        "Current is equal at all points in series.",
+        "The first reading is 350 mA.",
+        "The second reading is also 350 mA."
+      ],
+      why: "Current does not split in a series circuit."
+    },
+    {
+      q: "Three current readings in a series circuit are 1.2 A, I and 1.2 A. Find I.",
+      options: ["0.6 A", "1.2 A", "2.4 A", "3.6 A"],
+      ans: 1,
+      hint: "All readings along a series path are equal.",
+      steps: [
+        "The first reading is 1.2 A.",
+        "The current is the same throughout the series path.",
+        "Therefore, I = 1.2 A."
+      ],
+      why: "The unknown current must equal the known readings."
+    },
+    {
+      q: "Why is current the same through all components in a series circuit?",
+      options: [
+        "Every resistor has the same resistance",
+        "The supply voltage is zero",
+        "There is only one path for charge flow",
+        "Each component has its own branch"
+      ],
+      ans: 2,
+      hint: "Think about whether charge can divide into different paths.",
+      steps: [
+        "A series circuit has one path.",
+        "Charge cannot split between branches.",
+        "The same rate of charge flow passes through every component."
+      ],
+      why: "The single path makes the current equal throughout the series circuit."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: POTENTIAL DIFFERENCE IN A SERIES CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Potential Difference in a Series Circuit",
+  `<h2>Potential Difference in a Series Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Calculate the supply potential difference or an unknown voltage drop using the rule that the supply voltage equals the sum of the voltage drops across series components.</p>
+
+<h3>1. How voltage is shared</h3>
+<p>Potential difference is the energy transferred per unit charge between two points.</p>
+
+<p>In a series circuit, the supply potential difference is shared between the components. The voltage drops across all components add up to the supply voltage.</p>
+
+<p><b>Rule:</b></p>
+<p>V<sub>supply</sub> = V₁ + V₂ + V₃</p>
+
+<p>The voltage drops do not have to be equal. They depend on the resistance of each component and the current flowing through it.</p>
+
+<h3>2. Worked example 1: Finding the supply voltage</h3>
+<p><b>Question:</b> Two series resistors have voltage drops of 3 V and 5 V. Find the supply voltage.</p>
+<p><b>Step 1:</b> Write the rule: supply voltage = sum of voltage drops.</p>
+<p><b>Step 2:</b> Substitute the values: V = 3 + 5.</p>
+<p><b>Step 3:</b> Calculate: V = 8 V.</p>
+<p><b>Answer:</b> 8 V.</p>
+
+<h3>3. Worked example 2: Finding an unknown voltage drop</h3>
+<p><b>Question:</b> A 12 V supply is connected to two series resistors. The first resistor has a voltage drop of 7 V. Find the voltage drop across the second resistor.</p>
+<p><b>Step 1:</b> The two voltage drops must add to 12 V.</p>
+<p><b>Step 2:</b> Let the unknown voltage be V₂.</p>
+<p>12 = 7 + V₂</p>
+<p><b>Step 3:</b> Rearrange: V₂ = 12 − 7 = 5 V.</p>
+<p><b>Answer:</b> 5 V.</p>
+
+<h3>4. Worked example 3: Three components</h3>
+<p><b>Question:</b> Three series components have voltage drops of 2 V, 4 V and 6 V. Find the supply voltage.</p>
+<p><b>Step 1:</b> Add the voltage drops.</p>
+<p>V = 2 + 4 + 6</p>
+<p><b>Step 2:</b> Calculate: V = 12 V.</p>
+<p><b>Answer:</b> 12 V.</p>
+
+<h3>Remember</h3>
+<p><b>Supply voltage = total of the voltage drops.</b> A component with a larger resistance generally has a larger voltage drop when the same current flows through the series components.</p>`,
+  [
+    {
+      q: "Two series resistors have voltage drops of 4 V and 6 V. What is the supply voltage?",
+      options: ["2 V", "6 V", "10 V", "24 V"],
+      ans: 2,
+      hint: "Add the voltage drops.",
+      steps: [
+        "Supply voltage equals the sum of the drops.",
+        "V = 4 + 6.",
+        "V = 10 V."
+      ],
+      why: "The supply voltage accounts for the energy transferred across all series components."
+    },
+    {
+      q: "A 9 V supply is connected to two series resistors. One has a voltage drop of 3 V. Find the other voltage drop.",
+      options: ["3 V", "6 V", "9 V", "12 V"],
+      ans: 1,
+      hint: "Subtract the known drop from the supply voltage.",
+      steps: [
+        "Supply voltage = first drop + second drop.",
+        "9 = 3 + V₂.",
+        "V₂ = 9 − 3 = 6 V."
+      ],
+      why: "The two voltage drops must add to the 9 V supply."
+    },
+    {
+      q: "Three series components have voltage drops of 1.5 V, 2.5 V and 4 V. Find the supply voltage.",
+      options: ["4 V", "6 V", "8 V", "10 V"],
+      ans: 2,
+      hint: "Add all three voltage drops.",
+      steps: [
+        "V = 1.5 + 2.5 + 4.",
+        "1.5 + 2.5 = 4.",
+        "V = 4 + 4 = 8 V."
+      ],
+      why: "The supply voltage equals the total of all component voltage drops."
+    },
+    {
+      q: "A series circuit has a 15 V supply. The voltage drops across two components are 5 V and 4 V. What is the voltage drop across the third component?",
+      options: ["4 V", "5 V", "6 V", "9 V"],
+      ans: 2,
+      hint: "Add the known drops, then subtract their total from 15 V.",
+      steps: [
+        "Known drops: 5 + 4 = 9 V.",
+        "Unknown drop = 15 − 9.",
+        "Unknown drop = 6 V."
+      ],
+      why: "All voltage drops in the series circuit must total 15 V."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: TOTAL RESISTANCE IN A SERIES CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Total Resistance in a Series Circuit",
+  `<h2>Total Resistance in a Series Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Calculate the combined resistance of resistors connected in series.</p>
+
+<h3>1. The series resistance rule</h3>
+<p>When resistors are connected in series, the total resistance is the sum of their individual resistances.</p>
+
+<p><b>Rule:</b></p>
+<p>R<sub>T</sub> = R₁ + R₂ + R₃</p>
+
+<p>Adding a resistor in series increases the total resistance because it adds more opposition to current along the single path.</p>
+
+<h3>2. Worked example 1: Two resistors</h3>
+<p><b>Question:</b> Resistors of 2 Ω and 5 Ω are connected in series. Find the total resistance.</p>
+<p><b>Step 1:</b> Use R<sub>T</sub> = R₁ + R₂.</p>
+<p><b>Step 2:</b> Substitute: R<sub>T</sub> = 2 + 5.</p>
+<p><b>Step 3:</b> Calculate: R<sub>T</sub> = 7 Ω.</p>
+<p><b>Answer:</b> 7 Ω.</p>
+
+<h3>3. Worked example 2: Three resistors</h3>
+<p><b>Question:</b> Three resistors of 4 Ω, 6 Ω and 10 Ω are connected in series. Find the total resistance.</p>
+<p><b>Step 1:</b> Add all three resistances.</p>
+<p>R<sub>T</sub> = 4 + 6 + 10</p>
+<p><b>Step 2:</b> Calculate: R<sub>T</sub> = 20 Ω.</p>
+<p><b>Answer:</b> 20 Ω.</p>
+
+<h3>4. Worked example 3: Finding an unknown resistance</h3>
+<p><b>Question:</b> Two resistors in series have a total resistance of 18 Ω. One resistor is 11 Ω. Find the resistance of the other resistor.</p>
+<p><b>Step 1:</b> Write: R<sub>T</sub> = R₁ + R₂.</p>
+<p><b>Step 2:</b> Substitute: 18 = 11 + R₂.</p>
+<p><b>Step 3:</b> Rearrange: R₂ = 18 − 11 = 7 Ω.</p>
+<p><b>Answer:</b> 7 Ω.</p>
+
+<h3>Remember</h3>
+<p>For resistors in series, <b>add the resistances</b>. The total resistance is greater than any one positive individual resistance.</p>`,
+  [
+    {
+      q: "Resistors of 3 Ω and 8 Ω are connected in series. Find their total resistance.",
+      options: ["5 Ω", "11 Ω", "24 Ω", "2.4 Ω"],
+      ans: 1,
+      hint: "Add the individual resistances.",
+      steps: [
+        "Rₜ = R₁ + R₂.",
+        "Rₜ = 3 + 8.",
+        "Rₜ = 11 Ω."
+      ],
+      why: "Series resistances add directly."
+    },
+    {
+      q: "Three resistors of 2 Ω, 7 Ω and 9 Ω are connected in series. Find the total resistance.",
+      options: ["9 Ω", "14 Ω", "18 Ω", "126 Ω"],
+      ans: 2,
+      hint: "Add all three resistance values.",
+      steps: [
+        "Rₜ = 2 + 7 + 9.",
+        "2 + 7 = 9.",
+        "Rₜ = 9 + 9 = 18 Ω."
+      ],
+      why: "The total resistance is the sum of all resistances in series."
+    },
+    {
+      q: "Two series resistors have a total resistance of 20 Ω. One is 12 Ω. Find the other.",
+      options: ["8 Ω", "12 Ω", "20 Ω", "32 Ω"],
+      ans: 0,
+      hint: "Subtract the known resistance from the total.",
+      steps: [
+        "Rₜ = R₁ + R₂.",
+        "20 = 12 + R₂.",
+        "R₂ = 20 − 12 = 8 Ω."
+      ],
+      why: "The unknown resistance is the total minus the known resistance."
+    },
+    {
+      q: "What happens to total resistance when another positive resistance is added in series?",
+      options: [
+        "It decreases",
+        "It becomes zero",
+        "It increases",
+        "It always stays the same"
+      ],
+      ans: 2,
+      hint: "Use the rule Rₜ = R₁ + R₂ + ...",
+      steps: [
+        "Total resistance is the sum of the resistances.",
+        "Adding another positive resistance adds to the sum.",
+        "Therefore, total resistance increases."
+      ],
+      why: "Every additional series resistor increases the combined resistance."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: SOLVING SERIES CIRCUIT PROBLEMS
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Solving Series Circuit Problems",
+  `<h2>Solving Series Circuit Problems</h2>
+
+<h3>Learning objective</h3>
+<p>Solve a series-circuit calculation by finding total resistance first, then current, then voltage drops where required.</p>
+
+<h3>1. The solving sequence</h3>
+<p>For a series circuit with a known supply voltage and resistances:</p>
+<ol>
+<li>Add the resistances to find total resistance.</li>
+<li>Use Ohm's law to calculate current: I = V/R.</li>
+<li>Use V = IR to calculate the voltage drop across each resistor if required.</li>
+</ol>
+
+<p>Remember: current is the same through every resistor in series, and the voltage drops add up to the supply voltage.</p>
+
+<h3>2. Worked example 1: Finding total resistance and current</h3>
+<p><b>Question:</b> A 12 V battery is connected to 2 Ω and 4 Ω resistors in series. Find the total resistance and current.</p>
+<p><b>Step 1: Find total resistance.</b></p>
+<p>R<sub>T</sub> = 2 + 4 = 6 Ω.</p>
+<p><b>Step 2: Apply Ohm's law.</b></p>
+<p>I = V/R<sub>T</sub> = 12/6.</p>
+<p><b>Answer:</b> Total resistance = 6 Ω; current = 2 A.</p>
+
+<h3>3. Worked example 2: Finding voltage drops</h3>
+<p><b>Question:</b> A 10 V supply is connected to 2 Ω and 3 Ω resistors in series. Find the current and the voltage drop across each resistor.</p>
+<p><b>Step 1: Total resistance.</b></p>
+<p>R<sub>T</sub> = 2 + 3 = 5 Ω.</p>
+<p><b>Step 2: Calculate current.</b></p>
+<p>I = 10/5 = 2 A.</p>
+<p><b>Step 3: Voltage across the 2 Ω resistor.</b></p>
+<p>V₁ = IR₁ = 2 × 2 = 4 V.</p>
+<p><b>Step 4: Voltage across the 3 Ω resistor.</b></p>
+<p>V₂ = IR₂ = 2 × 3 = 6 V.</p>
+<p><b>Check:</b> 4 + 6 = 10 V, which equals the supply.</p>
+<p><b>Answer:</b> Current = 2 A; voltage drops = 4 V and 6 V.</p>
+
+<h3>4. Worked example 3: Finding an unknown resistor</h3>
+<p><b>Question:</b> A 12 V supply drives a current of 2 A through two resistors in series. One resistor is 4 Ω. Find the other resistance.</p>
+<p><b>Step 1: Find total resistance using Ohm's law.</b></p>
+<p>R<sub>T</sub> = V/I = 12/2 = 6 Ω.</p>
+<p><b>Step 2: Subtract the known resistance.</b></p>
+<p>R₂ = R<sub>T</sub> − R₁ = 6 − 4 = 2 Ω.</p>
+<p><b>Answer:</b> The unknown resistor is 2 Ω.</p>
+
+<h3>Remember</h3>
+<p>Follow the order: <b>total resistance → current → individual voltage drops.</b> Check that all voltage drops add up to the supply voltage.</p>`,
+  [
+    {
+      q: "A 12 V supply is connected to 2 Ω and 4 Ω resistors in series. What is the current?",
+      options: ["1 A", "2 A", "3 A", "6 A"],
+      ans: 1,
+      hint: "Add the resistances, then use I = V/R.",
+      steps: [
+        "Total resistance: Rₜ = 2 + 4 = 6 Ω.",
+        "Use I = V/Rₜ.",
+        "I = 12/6 = 2 A."
+      ],
+      why: "The current is determined by the supply voltage divided by total series resistance."
+    },
+    {
+      q: "A 15 V supply is connected to 3 Ω and 2 Ω resistors in series. Find the voltage drop across the 3 Ω resistor.",
+      options: ["3 V", "6 V", "9 V", "15 V"],
+      ans: 2,
+      hint: "Find current first, then use V = IR.",
+      steps: [
+        "Total resistance: Rₜ = 3 + 2 = 5 Ω.",
+        "Current: I = 15/5 = 3 A.",
+        "Voltage across 3 Ω: V = 3 × 3 = 9 V."
+      ],
+      why: "The voltage drop across a resistor equals the current multiplied by its resistance."
+    },
+    {
+      q: "A 12 V supply produces a current of 2 A through two series resistors. One resistor is 4 Ω. Find the other resistance.",
+      options: ["2 Ω", "4 Ω", "6 Ω", "8 Ω"],
+      ans: 0,
+      hint: "Calculate total resistance using R = V/I, then subtract 4 Ω.",
+      steps: [
+        "Total resistance: Rₜ = 12/2 = 6 Ω.",
+        "The two resistances add to 6 Ω.",
+        "Unknown resistance = 6 − 4 = 2 Ω."
+      ],
+      why: "The total series resistance equals the sum of the two resistances."
+    },
+    {
+      q: "A 9 V supply is connected to 1 Ω and 2 Ω resistors in series. Which pair gives the correct current and voltage drop across the 2 Ω resistor?",
+      options: [
+        "Current 3 A; voltage drop 6 V",
+        "Current 9 A; voltage drop 18 V",
+        "Current 1 A; voltage drop 2 V",
+        "Current 3 A; voltage drop 3 V"
+      ],
+      ans: 0,
+      hint: "Find total resistance first, then current, then use V = IR for the 2 Ω resistor.",
+      steps: [
+        "Total resistance: Rₜ = 1 + 2 = 3 Ω.",
+        "Current: I = 9/3 = 3 A.",
+        "Voltage across 2 Ω: V = 3 × 2 = 6 V."
+      ],
+      why: "The current is 3 A throughout the series circuit, so the 2 Ω resistor has a 6 V voltage drop."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: IDENTIFYING A PARALLEL CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Identifying a Parallel Circuit",
+  `<h2>Identifying a Parallel Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Identify a parallel circuit by recognising components connected on separate branches between the same two junctions.</p>
+
+<h3>1. What is a parallel circuit?</h3>
+<p>A <b>parallel circuit</b> has two or more branches through which electric current can flow.</p>
+
+<p>At a junction, current can divide between the available branches. The branches join again at another junction.</p>
+
+<p><b>Key features:</b></p>
+<ul>
+<li>There is more than one path for current.</li>
+<li>Each branch connects across the same two junctions.</li>
+<li>If one branch breaks, current may still flow through the other complete branches.</li>
+</ul>
+
+<h3>2. Worked example 1: Identifying the arrangement</h3>
+<p><b>Question:</b> Two lamps are connected on separate branches between the same two junctions. What type of circuit is this?</p>
+<p><b>Step 1:</b> Observe whether the lamps share one path or occupy separate branches.</p>
+<p><b>Step 2:</b> Each lamp has its own branch between the junctions.</p>
+<p><b>Answer:</b> It is a parallel circuit.</p>
+
+<h3>3. Worked example 2: Counting branches</h3>
+<p><b>Question:</b> Three resistors are connected on three separate branches across a battery. How many branches contain resistors?</p>
+<p><b>Step 1:</b> Each resistor occupies a separate branch.</p>
+<p><b>Step 2:</b> Count the branches: one, two, three.</p>
+<p><b>Answer:</b> Three branches.</p>
+
+<h3>4. Worked example 3: One branch breaks</h3>
+<p><b>Question:</b> Two lamps are connected in parallel. One lamp is removed, leaving its branch open. What happens to the other lamp, assuming its branch remains complete?</p>
+<p><b>Step 1:</b> Removing one lamp breaks only its branch.</p>
+<p><b>Step 2:</b> The other lamp still has a complete path through the supply.</p>
+<p><b>Answer:</b> The other lamp can remain lit.</p>
+
+<h3>Remember</h3>
+<p><b>Parallel = separate branches.</b> A break in one branch does not necessarily stop current in the other branches.</p>`,
+  [
+    {
+      q: "Two lamps are connected on separate branches between the same two junctions. What type of circuit is this?",
+      options: ["Series circuit", "Parallel circuit", "Open circuit", "Single-component circuit"],
+      ans: 1,
+      hint: "Look for separate paths between junctions.",
+      steps: [
+        "The lamps are on separate branches.",
+        "Each branch connects between the same two junctions.",
+        "This is a parallel circuit."
+      ],
+      why: "A parallel arrangement provides separate paths for current."
+    },
+    {
+      q: "Three resistors are connected on three separate branches in a parallel arrangement. How many resistor branches are there?",
+      options: ["One", "Two", "Three", "Six"],
+      ans: 2,
+      hint: "Each resistor occupies its own branch.",
+      steps: [
+        "Each resistor is on a separate branch.",
+        "There are three resistors.",
+        "Therefore, there are three resistor branches."
+      ],
+      why: "The number of branches containing resistors is three."
+    },
+    {
+      q: "One lamp in a parallel circuit is disconnected. The other lamp's branch is still complete. What happens to the other lamp?",
+      options: [
+        "It must go out",
+        "It can remain lit",
+        "It must have zero voltage",
+        "The battery stops supplying energy immediately"
+      ],
+      ans: 1,
+      hint: "Does the other lamp still have a complete path?",
+      steps: [
+        "The disconnected lamp breaks its own branch.",
+        "The other branch remains complete.",
+        "Current can continue through the other lamp."
+      ],
+      why: "Parallel branches provide separate paths for current."
+    },
+    {
+      q: "Which description best identifies a parallel circuit?",
+      options: [
+        "Every component is connected one after another in one path",
+        "Components are connected on separate branches between the same two junctions",
+        "There is no complete path for current",
+        "All components must have equal resistance"
+      ],
+      ans: 1,
+      hint: "Think about the connection points and branches.",
+      steps: [
+        "A parallel circuit has multiple branches.",
+        "The branches connect across the same two junctions.",
+        "Therefore, option B is correct."
+      ],
+      why: "Parallel components share the same two junctions but occupy separate paths."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: POTENTIAL DIFFERENCE IN A PARALLEL CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Potential Difference in a Parallel Circuit",
+  `<h2>Potential Difference in a Parallel Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Determine the potential difference across each branch of a parallel circuit.</p>
+
+<h3>1. The voltage rule</h3>
+<p>In a parallel circuit, each branch is connected across the same two junctions. Therefore, the potential difference across each branch is the same as the supply potential difference for an ideal circuit with connecting wires of negligible resistance.</p>
+
+<p><b>Rule:</b></p>
+<p>V<sub>supply</sub> = V₁ = V₂ = V₃</p>
+
+<p>This does not mean that the current in every branch is the same. Branch currents depend on the resistance of each branch.</p>
+
+<h3>2. Worked example 1: Finding branch voltage</h3>
+<p><b>Question:</b> Two resistors are connected in parallel across a 12 V supply. Find the voltage across the second resistor.</p>
+<p><b>Step 1:</b> Each branch is connected across the supply.</p>
+<p><b>Step 2:</b> The voltage across every branch equals 12 V.</p>
+<p><b>Answer:</b> 12 V.</p>
+
+<h3>3. Worked example 2: Three branches</h3>
+<p><b>Question:</b> Three lamps are connected in parallel across a 9 V battery. Find the potential difference across each lamp.</p>
+<p><b>Step 1:</b> The three lamps occupy separate branches.</p>
+<p><b>Step 2:</b> Each branch has the same potential difference as the supply.</p>
+<p><b>Answer:</b> Each lamp has a potential difference of 9 V.</p>
+
+<h3>4. Worked example 3: Finding an unknown supply voltage</h3>
+<p><b>Question:</b> A resistor in one branch of a parallel circuit has a potential difference of 6 V. The circuit is connected ideally across a battery. Find the supply voltage.</p>
+<p><b>Step 1:</b> In parallel, branch voltage equals supply voltage.</p>
+<p><b>Step 2:</b> V<sub>supply</sub> = V<sub>branch</sub>.</p>
+<p><b>Step 3:</b> V<sub>supply</sub> = 6 V.</p>
+<p><b>Answer:</b> 6 V.</p>
+
+<h3>Remember</h3>
+<p><b>Parallel voltage is the same across each branch.</b> Do not add the branch voltages together to find the supply voltage.</p>`,
+  [
+    {
+      q: "Two resistors are connected in parallel across a 12 V supply. What is the potential difference across the first resistor?",
+      options: ["6 V", "12 V", "24 V", "0 V"],
+      ans: 1,
+      hint: "Every branch is connected across the same supply.",
+      steps: [
+        "The first resistor is connected across the supply.",
+        "The supply voltage is 12 V.",
+        "The branch voltage is 12 V."
+      ],
+      why: "The potential difference across each ideal parallel branch equals the supply voltage."
+    },
+    {
+      q: "Three lamps are connected in parallel across a 9 V battery. What is the voltage across each lamp?",
+      options: ["3 V", "6 V", "9 V", "27 V"],
+      ans: 2,
+      hint: "The voltage is not shared between parallel branches.",
+      steps: [
+        "Each lamp is connected across the same two junctions.",
+        "Each branch has the supply potential difference.",
+        "Each lamp has 9 V across it."
+      ],
+      why: "Parallel branches have the same potential difference."
+    },
+    {
+      q: "A branch in an ideal parallel circuit has a potential difference of 5 V. What is the supply voltage?",
+      options: ["2.5 V", "5 V", "10 V", "15 V"],
+      ans: 1,
+      hint: "Branch voltage equals supply voltage.",
+      steps: [
+        "Vbranch = Vsupply.",
+        "The branch voltage is 5 V.",
+        "The supply voltage is 5 V."
+      ],
+      why: "Each parallel branch is connected across the supply."
+    },
+    {
+      q: "Which statement about voltage in a parallel circuit is correct?",
+      options: [
+        "It is always zero in every branch",
+        "It must be divided equally between branches",
+        "The potential difference is the same across each branch",
+        "The branch voltages must add to twice the supply voltage"
+      ],
+      ans: 2,
+      hint: "Each branch connects across the same two junctions.",
+      steps: [
+        "Both ends of each branch connect to the same pair of junctions.",
+        "The potential difference between those junctions is common to all branches.",
+        "Therefore, branch voltage is the same."
+      ],
+      why: "The same pair of junctions determines the potential difference across each branch."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: TOTAL CURRENT IN A PARALLEL CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Total Current in a Parallel Circuit",
+  `<h2>Total Current in a Parallel Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Calculate the total current supplied to parallel branches by adding the currents in the individual branches.</p>
+
+<h3>1. The current rule</h3>
+<p>At a junction, current divides between the available branches. When the branch currents join again, their total equals the current entering the junction.</p>
+
+<p><b>Rule:</b></p>
+<p>I<sub>total</sub> = I₁ + I₂ + I₃</p>
+
+<p>The current in each branch depends on the branch resistance and the voltage across it. A branch with lower resistance carries more current than a branch with higher resistance when the branch voltages are equal.</p>
+
+<h3>2. Worked example 1: Two branches</h3>
+<p><b>Question:</b> Two parallel branches carry currents of 2 A and 3 A. Find the total current supplied by the battery.</p>
+<p><b>Step 1:</b> Add the branch currents.</p>
+<p>I<sub>total</sub> = 2 + 3.</p>
+<p><b>Step 2:</b> Calculate: I<sub>total</sub> = 5 A.</p>
+<p><b>Answer:</b> 5 A.</p>
+
+<h3>3. Worked example 2: Three branches</h3>
+<p><b>Question:</b> Three branches carry currents of 0.5 A, 0.8 A and 0.7 A. Find the total current.</p>
+<p><b>Step 1:</b> Add all branch currents.</p>
+<p>I<sub>total</sub> = 0.5 + 0.8 + 0.7.</p>
+<p><b>Step 2:</b> Calculate: I<sub>total</sub> = 2.0 A.</p>
+<p><b>Answer:</b> 2.0 A.</p>
+
+<h3>4. Worked example 3: Finding an unknown branch current</h3>
+<p><b>Question:</b> A parallel circuit draws a total current of 4 A. One branch carries 1.5 A. Find the current in the other branch.</p>
+<p><b>Step 1:</b> Write I<sub>total</sub> = I₁ + I₂.</p>
+<p><b>Step 2:</b> Substitute: 4 = 1.5 + I₂.</p>
+<p><b>Step 3:</b> Rearrange: I₂ = 4 − 1.5 = 2.5 A.</p>
+<p><b>Answer:</b> 2.5 A.</p>
+
+<h3>Remember</h3>
+<p><b>Total current = sum of branch currents.</b> Add currents to find the total; subtract a known branch current from the total to find an unknown branch current.</p>`,
+  [
+    {
+      q: "Two parallel branches carry 1.2 A and 0.8 A. Find the total current.",
+      options: ["0.4 A", "1.0 A", "2.0 A", "2.4 A"],
+      ans: 2,
+      hint: "Add the two branch currents.",
+      steps: [
+        "Iₜ = I₁ + I₂.",
+        "Iₜ = 1.2 + 0.8.",
+        "Iₜ = 2.0 A."
+      ],
+      why: "The total current equals the sum of the currents in all branches."
+    },
+    {
+      q: "Three branches carry 0.4 A, 0.6 A and 1.0 A. Find the total current.",
+      options: ["0.6 A", "1.0 A", "1.6 A", "2.0 A"],
+      ans: 3,
+      hint: "Add all three currents.",
+      steps: [
+        "Iₜ = 0.4 + 0.6 + 1.0.",
+        "0.4 + 0.6 = 1.0.",
+        "Iₜ = 1.0 + 1.0 = 2.0 A."
+      ],
+      why: "Current entering the branches equals the sum of the branch currents."
+    },
+    {
+      q: "The total current in a parallel circuit is 5 A. One branch carries 2 A. Find the current in the other branch.",
+      options: ["2 A", "3 A", "5 A", "7 A"],
+      ans: 1,
+      hint: "Subtract the known branch current from the total.",
+      steps: [
+        "Iₜ = I₁ + I₂.",
+        "5 = 2 + I₂.",
+        "I₂ = 5 − 2 = 3 A."
+      ],
+      why: "The unknown branch current is the total current minus the known branch current."
+    },
+    {
+      q: "Two branches in parallel have currents of 1 A and 4 A. What is the current supplied to the junction before the current divides?",
+      options: ["3 A", "4 A", "5 A", "0.25 A"],
+      ans: 2,
+      hint: "The incoming current equals the sum of the outgoing branch currents.",
+      steps: [
+        "Use Iₜ = I₁ + I₂.",
+        "Iₜ = 1 + 4.",
+        "Iₜ = 5 A."
+      ],
+      why: "The total incoming current equals the sum of the branch currents."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: EQUIVALENT RESISTANCE IN A PARALLEL CIRCUIT
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Equivalent Resistance in a Parallel Circuit",
+  `<h2>Equivalent Resistance in a Parallel Circuit</h2>
+
+<h3>Learning objective</h3>
+<p>Calculate the equivalent resistance of two or more resistors connected in parallel.</p>
+
+<h3>1. The parallel resistance rule</h3>
+<p>For resistors in parallel, the reciprocal of the equivalent resistance equals the sum of the reciprocals of the individual resistances.</p>
+
+<p><b>Rule:</b></p>
+<p>1/R<sub>T</sub> = 1/R₁ + 1/R₂</p>
+
+<p>For two resistors, this can also be written as:</p>
+<p>R<sub>T</sub> = (R₁ × R₂)/(R₁ + R₂)</p>
+
+<p>For positive resistances, the equivalent resistance of a parallel combination is always less than the smallest individual resistance. This happens because parallel branches provide additional paths for current.</p>
+
+<h3>2. Worked example 1: Two equal resistors</h3>
+<p><b>Question:</b> Two 6 Ω resistors are connected in parallel. Find the equivalent resistance.</p>
+<p><b>Step 1:</b> Use the two-resistor formula.</p>
+<p>R<sub>T</sub> = (R₁ × R₂)/(R₁ + R₂).</p>
+<p><b>Step 2:</b> Substitute the values.</p>
+<p>R<sub>T</sub> = (6 × 6)/(6 + 6) = 36/12.</p>
+<p><b>Answer:</b> 3 Ω.</p>
+
+<h3>3. Worked example 2: Different resistances</h3>
+<p><b>Question:</b> Resistors of 3 Ω and 6 Ω are connected in parallel. Find the equivalent resistance.</p>
+<p><b>Step 1:</b> Apply the formula.</p>
+<p>R<sub>T</sub> = (3 × 6)/(3 + 6).</p>
+<p><b>Step 2:</b> Calculate.</p>
+<p>R<sub>T</sub> = 18/9 = 2 Ω.</p>
+<p><b>Answer:</b> 2 Ω.</p>
+
+<h3>4. Worked example 3: Three equal resistors</h3>
+<p><b>Question:</b> Three 6 Ω resistors are connected in parallel. Find the equivalent resistance.</p>
+<p><b>Step 1:</b> For n equal resistors in parallel, R<sub>T</sub> = R/n.</p>
+<p><b>Step 2:</b> Substitute: R<sub>T</sub> = 6/3.</p>
+<p><b>Answer:</b> 2 Ω.</p>
+
+<h3>Remember</h3>
+<p>Do not add parallel resistances directly. Use the reciprocal rule or the two-resistor product-over-sum formula. Check that the answer is smaller than the smallest individual resistance.</p>`,
+  [
+    {
+      q: "Two 4 Ω resistors are connected in parallel. Find the equivalent resistance.",
+      options: ["2 Ω", "4 Ω", "8 Ω", "16 Ω"],
+      ans: 0,
+      hint: "For two equal resistors in parallel, divide one resistance by two.",
+      steps: [
+        "The resistors are equal at 4 Ω each.",
+        "Rₜ = R/n = 4/2.",
+        "Rₜ = 2 Ω."
+      ],
+      why: "Two equal resistors in parallel have half the resistance of either resistor."
+    },
+    {
+      q: "Resistors of 3 Ω and 6 Ω are connected in parallel. Find the equivalent resistance.",
+      options: ["2 Ω", "3 Ω", "4.5 Ω", "9 Ω"],
+      ans: 0,
+      hint: "Use Rₜ = (R₁ × R₂)/(R₁ + R₂).",
+      steps: [
+        "Rₜ = (3 × 6)/(3 + 6).",
+        "Rₜ = 18/9.",
+        "Rₜ = 2 Ω."
+      ],
+      why: "The equivalent resistance is 2 Ω, less than the smallest individual resistance of 3 Ω."
+    },
+    {
+      q: "Three 12 Ω resistors are connected in parallel. Find their equivalent resistance.",
+      options: ["4 Ω", "12 Ω", "24 Ω", "36 Ω"],
+      ans: 0,
+      hint: "For equal resistors in parallel, divide the resistance by the number of resistors.",
+      steps: [
+        "Each resistor has a resistance of 12 Ω.",
+        "There are three equal parallel resistors.",
+        "Rₜ = 12/3 = 4 Ω."
+      ],
+      why: "Three equal resistors in parallel have an equivalent resistance equal to one-third of a single resistor."
+    },
+    {
+      q: "Two resistors of 5 Ω and 10 Ω are connected in parallel. Which value is their equivalent resistance?",
+      options: ["3.33 Ω approximately", "5 Ω", "7.5 Ω", "15 Ω"],
+      ans: 0,
+      hint: "Calculate (5 × 10)/(5 + 10).",
+      steps: [
+        "Rₜ = (5 × 10)/(5 + 10).",
+        "Rₜ = 50/15.",
+        "Rₜ ≈ 3.33 Ω."
+      ],
+      why: "The equivalent resistance is less than 5 Ω, the smaller individual resistance."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: SOLVING PARALLEL CIRCUIT PROBLEMS
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Solving Parallel Circuit Problems",
+  `<h2>Solving Parallel Circuit Problems</h2>
+
+<h3>Learning objective</h3>
+<p>Use the voltage rule, Ohm's law and the current rule to solve numerical problems involving parallel branches.</p>
+
+<h3>1. The solving sequence</h3>
+<p>When the supply voltage and branch resistances are known:</p>
+<ol>
+<li>Recognise that the voltage across each branch equals the supply voltage.</li>
+<li>Calculate each branch current using I = V/R.</li>
+<li>Add the branch currents to find the total current.</li>
+</ol>
+
+<p>If the question asks for the equivalent resistance, you can also use R<sub>T</sub> = V/I<sub>T</sub>, or calculate it using the parallel resistance formula.</p>
+
+<h3>2. Worked example 1: Finding branch currents and total current</h3>
+<p><b>Question:</b> A 12 V supply is connected across 6 Ω and 3 Ω resistors in parallel. Find the current in each branch and the total current.</p>
+<p><b>Step 1: Voltage across each branch.</b></p>
+<p>V₁ = V₂ = 12 V.</p>
+<p><b>Step 2: Current through the 6 Ω resistor.</b></p>
+<p>I₁ = V/R₁ = 12/6 = 2 A.</p>
+<p><b>Step 3: Current through the 3 Ω resistor.</b></p>
+<p>I₂ = V/R₂ = 12/3 = 4 A.</p>
+<p><b>Step 4: Total current.</b></p>
+<p>I<sub>T</sub> = I₁ + I₂ = 2 + 4 = 6 A.</p>
+<p><b>Answer:</b> Branch currents are 2 A and 4 A; total current is 6 A.</p>
+
+<h3>3. Worked example 2: Finding total current and equivalent resistance</h3>
+<p><b>Question:</b> A 10 V supply is connected across 5 Ω and 10 Ω resistors in parallel. Find the total current and equivalent resistance.</p>
+<p><b>Step 1: Calculate each branch current.</b></p>
+<p>I₁ = 10/5 = 2 A.</p>
+<p>I₂ = 10/10 = 1 A.</p>
+<p><b>Step 2: Add the branch currents.</b></p>
+<p>I<sub>T</sub> = 2 + 1 = 3 A.</p>
+<p><b>Step 3: Find equivalent resistance.</b></p>
+<p>R<sub>T</sub> = V/I<sub>T</sub> = 10/3 ≈ 3.33 Ω.</p>
+<p><b>Answer:</b> Total current = 3 A; equivalent resistance ≈ 3.33 Ω.</p>
+
+<h3>4. Worked example 3: Finding an unknown branch resistance</h3>
+<p><b>Question:</b> A 12 V supply is connected across two parallel branches. The total current is 5 A, and one branch has a resistance of 4 Ω. Find the resistance of the other branch.</p>
+<p><b>Step 1: Find the current in the known branch.</b></p>
+<p>I₁ = V/R₁ = 12/4 = 3 A.</p>
+<p><b>Step 2: Find the current in the unknown branch.</b></p>
+<p>I₂ = I<sub>T</sub> − I₁ = 5 − 3 = 2 A.</p>
+<p><b>Step 3: Use Ohm's law to find the unknown resistance.</b></p>
+<p>R₂ = V/I₂ = 12/2 = 6 Ω.</p>
+<p><b>Answer:</b> The other branch has a resistance of 6 Ω.</p>
+
+<h3>Remember</h3>
+<p>Follow the sequence: <b>branch voltage → branch currents → total current.</b> Check that the branch currents add up to the total current and that every branch has the supply voltage across it.</p>`,
+  [
+    {
+      q: "A 12 V supply is connected across 6 Ω and 3 Ω resistors in parallel. What is the total current?",
+      options: ["2 A", "4 A", "6 A", "9 A"],
+      ans: 2,
+      hint: "Calculate both branch currents using I = V/R, then add them.",
+      steps: [
+        "The voltage across each branch is 12 V.",
+        "Current in 6 Ω branch: I₁ = 12/6 = 2 A.",
+        "Current in 3 Ω branch: I₂ = 12/3 = 4 A.",
+        "Total current: Iₜ = 2 + 4 = 6 A."
+      ],
+      why: "The total current equals the sum of the currents in the parallel branches."
+    },
+    {
+      q: "A 10 V supply is connected across 5 Ω and 10 Ω resistors in parallel. What is the equivalent resistance?",
+      options: ["3.33 Ω approximately", "5 Ω", "7.5 Ω", "15 Ω"],
+      ans: 0,
+      hint: "Find both branch currents, add them, then use Rₜ = V/Iₜ.",
+      steps: [
+        "I₁ = 10/5 = 2 A.",
+        "I₂ = 10/10 = 1 A.",
+        "Iₜ = 2 + 1 = 3 A.",
+        "Rₜ = 10/3 ≈ 3.33 Ω."
+      ],
+      why: "The equivalent resistance is the supply voltage divided by the total current."
+    },
+    {
+      q: "A 12 V supply feeds two parallel branches. The total current is 5 A, and one branch has a resistance of 4 Ω. Find the resistance of the other branch.",
+      options: ["3 Ω", "4 Ω", "6 Ω", "12 Ω"],
+      ans: 2,
+      hint: "Find the known branch current, subtract it from the total, then use R = V/I.",
+      steps: [
+        "Known branch current: I₁ = 12/4 = 3 A.",
+        "Unknown branch current: I₂ = 5 − 3 = 2 A.",
+        "Unknown resistance: R₂ = 12/2 = 6 Ω."
+      ],
+      why: "The unknown branch carries 2 A, and its voltage is 12 V, giving a resistance of 6 Ω."
+    },
+    {
+      q: "A 6 V supply is connected across 2 Ω and 6 Ω resistors in parallel. What are the total current and the current through the 6 Ω resistor?",
+      options: [
+        "Total 4 A; branch current 1 A",
+        "Total 3 A; branch current 2 A",
+        "Total 1 A; branch current 4 A",
+        "Total 6 A; branch current 3 A"
+      ],
+      ans: 0,
+      hint: "Calculate I = V/R for each branch and add the results.",
+      steps: [
+        "Current through 2 Ω: I₁ = 6/2 = 3 A.",
+        "Current through 6 Ω: I₂ = 6/6 = 1 A.",
+        "Total current: Iₜ = 3 + 1 = 4 A."
+      ],
+      why: "The 6 Ω branch carries 1 A, and the two branch currents add to 4 A."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: MAGNETIC FIELD PATTERNS
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Magnetic Field Patterns",
+  `<h2>Magnetic Field Patterns</h2>
+
+<h3>Learning objective</h3>
+<p>Interpret magnetic field lines to determine the direction and relative strength of a magnetic field.</p>
+
+<h3>1. What is a magnetic field?</h3>
+<p>A <b>magnetic field</b> is the region around a magnet or current-carrying conductor where magnetic forces can be experienced.</p>
+
+<p>We represent a magnetic field using magnetic field lines. These lines help us show the field's direction and relative strength.</p>
+
+<h3>2. Direction of magnetic field lines</h3>
+<p>Outside a bar magnet, magnetic field lines run from the <b>north pole to the south pole</b>. Inside the magnet, they return from south to north, forming closed loops.</p>
+
+<p>The arrows on a field-line diagram show the direction in which the north pole of a small test magnet would point.</p>
+
+<h3>3. Strength of a magnetic field</h3>
+<p>Where field lines are close together, the field is stronger. Where they are farther apart, the field is weaker.</p>
+
+<p>Magnetic field lines do not cross. If they crossed, the field would have two directions at the same point.</p>
+
+<h3>4. Worked example 1: Direction outside a bar magnet</h3>
+<p><b>Question:</b> Outside a bar magnet, in which direction do magnetic field lines run?</p>
+<p><b>Step 1:</b> Identify the poles: north and south.</p>
+<p><b>Step 2:</b> Recall the convention for the field outside a magnet.</p>
+<p><b>Answer:</b> From north to south.</p>
+
+<h3>5. Worked example 2: Comparing field strength</h3>
+<p><b>Question:</b> A diagram shows field lines crowded near one pole and spread farther apart near the other region. Where is the field stronger?</p>
+<p><b>Step 1:</b> Compare the spacing between the field lines.</p>
+<p><b>Step 2:</b> The lines are closer together near the pole.</p>
+<p><b>Answer:</b> The field is stronger near the pole where the lines are closer together.</p>
+
+<h3>6. Worked example 3: Understanding field lines</h3>
+<p><b>Question:</b> Why must magnetic field lines not cross each other?</p>
+<p><b>Step 1:</b> A field line indicates the direction of the magnetic field at a point.</p>
+<p><b>Step 2:</b> Crossing lines would assign two directions to the field at the same point.</p>
+<p><b>Answer:</b> Field lines cannot cross because the magnetic field has one direction at any given point.</p>
+
+<h3>Remember</h3>
+<ul>
+<li>Outside a bar magnet: north to south.</li>
+<li>Closer field lines indicate a stronger field.</li>
+<li>Magnetic field lines never cross.</li>
+</ul>`,
+  [
+    {
+      q: "In which direction do magnetic field lines run outside a bar magnet?",
+      options: [
+        "South pole to north pole",
+        "North pole to south pole",
+        "East pole to west pole",
+        "In no definite direction"
+      ],
+      ans: 1,
+      hint: "Use the conventional direction outside a magnet.",
+      steps: [
+        "Identify the north and south poles.",
+        "Outside the magnet, field lines leave the north pole.",
+        "They enter the south pole."
+      ],
+      why: "The conventional direction of magnetic field lines outside a bar magnet is north to south."
+    },
+    {
+      q: "Two regions of a magnetic field are shown. Region A has closely spaced field lines, while Region B has widely spaced lines. Which region has the stronger field?",
+      options: ["Region A", "Region B", "Both must be zero", "The spacing gives no information"],
+      ans: 0,
+      hint: "Look at the spacing between the lines.",
+      steps: [
+        "Closely spaced field lines represent a stronger field.",
+        "Region A has closer lines than Region B.",
+        "Therefore, Region A has the stronger field."
+      ],
+      why: "The relative density of magnetic field lines represents the relative strength of the field."
+    },
+    {
+      q: "Why do magnetic field lines never cross?",
+      options: [
+        "Magnets cannot attract each other",
+        "A magnetic field has only one direction at a given point",
+        "Magnetic fields exist only inside magnets",
+        "Field lines must always be straight"
+      ],
+      ans: 1,
+      hint: "Consider what two crossing arrows would mean at one point.",
+      steps: [
+        "A field line shows the field direction.",
+        "Crossing lines would imply two directions at one point.",
+        "The field has one direction at that point, so lines cannot cross."
+      ],
+      why: "Crossing field lines would contradict the definition of a unique field direction at a point."
+    },
+    {
+      q: "A small compass is placed in a magnetic field. What does the north-seeking end of its needle indicate?",
+      options: [
+        "The direction of the magnetic field",
+        "The mass of the magnet",
+        "The electrical resistance of the magnet",
+        "The temperature of the surroundings"
+      ],
+      ans: 0,
+      hint: "A compass is used to show magnetic direction.",
+      steps: [
+        "The compass needle aligns with the local magnetic field.",
+        "Its north-seeking end points along the field direction.",
+        "Therefore, it indicates the magnetic field's direction."
+      ],
+      why: "A compass needle aligns with the magnetic field at its location."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: MAGNETIC FIELD AROUND A CURRENT-CARRYING WIRE
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Magnetic Field Around a Current-Carrying Wire",
+  `<h2>Magnetic Field Around a Current-Carrying Wire</h2>
+
+<h3>Learning objective</h3>
+<p>Describe the shape and direction of the magnetic field around a straight current-carrying conductor.</p>
+
+<h3>1. Current produces a magnetic field</h3>
+<p>When electric current flows through a conductor, a magnetic field forms around the conductor.</p>
+
+<p>A straight wire produces circular magnetic field lines centred on the wire. The circles lie in planes perpendicular to the wire.</p>
+
+<p>This effect is called the <b>magnetic effect of electric current</b>.</p>
+
+<h3>2. Direction of the field</h3>
+<p>The direction depends on the direction of the current.</p>
+
+<p>Use the <b>right-hand grip rule</b> for a straight wire:</p>
+<ul>
+<li>Point your right thumb in the direction of conventional current.</li>
+<li>Your curled fingers show the direction of the magnetic field around the wire.</li>
+</ul>
+
+<p>Conventional current is taken to flow from the positive terminal towards the negative terminal through the external circuit.</p>
+
+<h3>3. Strength of the magnetic field</h3>
+<p>For the same straight conductor, increasing the current increases the magnetic field strength. The field becomes weaker as you move farther from the wire.</p>
+
+<h3>4. Worked example 1: Shape of the field</h3>
+<p><b>Question:</b> What is the shape of the magnetic field around a long, straight wire carrying current?</p>
+<p><b>Step 1:</b> Identify the conductor as a straight wire.</p>
+<p><b>Step 2:</b> Recall the field pattern for a straight current-carrying wire.</p>
+<p><b>Answer:</b> Concentric circles centred on the wire.</p>
+
+<h3>5. Worked example 2: Increasing current</h3>
+<p><b>Question:</b> The current through a straight wire is increased while the observation point remains the same distance from the wire. What happens to the magnetic field strength?</p>
+<p><b>Step 1:</b> A current-carrying wire produces a magnetic field.</p>
+<p><b>Step 2:</b> The field strength increases when the current increases.</p>
+<p><b>Answer:</b> The magnetic field becomes stronger.</p>
+
+<h3>6. Worked example 3: Reversing current</h3>
+<p><b>Question:</b> The current in a straight wire is reversed. What happens to the direction of the magnetic field?</p>
+<p><b>Step 1:</b> The right-hand grip rule links current direction to field direction.</p>
+<p><b>Step 2:</b> Reversing the current reverses the direction of the circular field.</p>
+<p><b>Answer:</b> The magnetic field direction reverses.</p>
+
+<h3>Remember</h3>
+<p>A straight current-carrying wire produces circular magnetic field lines. More current produces a stronger field, and reversing the current reverses the field direction.</p>`,
+  [
+    {
+      q: "What is the shape of the magnetic field around a long, straight current-carrying wire?",
+      options: [
+        "Straight parallel lines only",
+        "Concentric circles around the wire",
+        "A single line along the wire",
+        "Random curves with no pattern"
+      ],
+      ans: 1,
+      hint: "Imagine looking at the wire end-on.",
+      steps: [
+        "A current-carrying wire creates a magnetic field.",
+        "For a straight wire, the field surrounds it.",
+        "The field lines form concentric circles."
+      ],
+      why: "The magnetic field around a straight current-carrying conductor forms circular paths centred on the wire."
+    },
+    {
+      q: "What happens to the magnetic field strength near a straight wire when its current increases, with distance unchanged?",
+      options: [
+        "It becomes stronger",
+        "It becomes weaker",
+        "It always becomes zero",
+        "Its direction must reverse"
+      ],
+      ans: 0,
+      hint: "The magnetic effect depends on the current.",
+      steps: [
+        "The current produces the magnetic field.",
+        "Increasing current increases the field strength at the same distance.",
+        "Therefore, the field becomes stronger."
+      ],
+      why: "For a straight wire, magnetic field strength increases with current when distance is fixed."
+    },
+    {
+      q: "The current through a straight wire is reversed. What happens to the direction of the magnetic field?",
+      options: [
+        "It remains unchanged",
+        "It reverses",
+        "It becomes an electric field only",
+        "It permanently disappears"
+      ],
+      ans: 1,
+      hint: "Apply the right-hand grip rule in both current directions.",
+      steps: [
+        "The field direction depends on current direction.",
+        "Reversing the current reverses the direction of the curled fingers.",
+        "Therefore, the magnetic field direction reverses."
+      ],
+      why: "The direction of the magnetic field around a wire depends on the direction of conventional current."
+    },
+    {
+      q: "Which rule can be used to determine the direction of the magnetic field around a straight current-carrying wire?",
+      options: [
+        "The right-hand grip rule",
+        "The law of conservation of mass",
+        "The principle of moments",
+        "The law of reflection"
+      ],
+      ans: 0,
+      hint: "Use the hand rule for a current-carrying conductor.",
+      steps: [
+        "Point the right thumb in the conventional current direction.",
+        "Curl the fingers around the wire.",
+        "The curled fingers indicate the field direction."
+      ],
+      why: "The right-hand grip rule connects current direction with the direction of the magnetic field around the wire."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: MAGNETIC FIELD OF A SOLENOID
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Magnetic Field of a Solenoid",
+  `<h2>Magnetic Field of a Solenoid</h2>
+
+<h3>Learning objective</h3>
+<p>Describe the magnetic field of a solenoid and explain why a current-carrying solenoid behaves like a bar magnet.</p>
+
+<h3>1. What is a solenoid?</h3>
+<p>A <b>solenoid</b> is a long coil of insulated wire wound into many turns. When electric current flows through the coil, it produces a magnetic field.</p>
+
+<p>The field inside a sufficiently long solenoid is approximately uniform: the field lines are nearly parallel and evenly spaced. Outside, the field resembles that of a bar magnet.</p>
+
+<h3>2. Magnetic poles of a solenoid</h3>
+<p>A current-carrying solenoid has a north pole and a south pole. The poles depend on the direction of current around the coil.</p>
+
+<p>Reverse the current, and the north and south poles exchange positions.</p>
+
+<h3>3. Solenoid and bar magnet comparison</h3>
+<ul>
+<li>Both have north and south poles.</li>
+<li>Both produce magnetic fields outside them that run from north to south.</li>
+<li>The solenoid's magnetic field can be switched off by stopping the current.</li>
+<li>Its field can be strengthened by increasing current or adding more turns per unit length.</li>
+</ul>
+
+<h3>4. Worked example 1: Identifying a solenoid</h3>
+<p><b>Question:</b> A wire is wound into many close turns in a cylindrical shape. What is this coil called?</p>
+<p><b>Step 1:</b> Identify the many turns of wire.</p>
+<p><b>Step 2:</b> A long coil of wire is called a solenoid.</p>
+<p><b>Answer:</b> A solenoid.</p>
+
+<h3>5. Worked example 2: Predicting the field inside</h3>
+<p><b>Question:</b> Describe the magnetic field inside a long, current-carrying solenoid.</p>
+<p><b>Step 1:</b> Consider the field pattern inside the coil.</p>
+<p><b>Step 2:</b> Inside a sufficiently long solenoid, the field lines are nearly parallel and evenly spaced.</p>
+<p><b>Answer:</b> The field is approximately uniform and directed along the solenoid's axis.</p>
+
+<h3>6. Worked example 3: Reversing the current</h3>
+<p><b>Question:</b> The current through a solenoid is reversed. What happens to its magnetic poles?</p>
+<p><b>Step 1:</b> The poles depend on current direction.</p>
+<p><b>Step 2:</b> Reversing the current reverses the magnetic field direction.</p>
+<p><b>Answer:</b> The north and south poles swap positions.</p>
+
+<h3>Remember</h3>
+<p>A solenoid is a coil of wire that produces a bar-magnet-like field when current flows. Its field can be controlled by changing the current or the coil's construction.</p>`,
+  [
+    {
+      q: "What is a solenoid?",
+      options: [
+        "A single straight wire with no current",
+        "A coil of wire with many turns",
+        "A device that measures mass",
+        "A non-magnetic insulating sheet"
+      ],
+      ans: 1,
+      hint: "Think of a wire wound into repeated loops.",
+      steps: [
+        "A solenoid consists of many turns of wire.",
+        "The turns form a coil.",
+        "Therefore, it is a coil of wire with many turns."
+      ],
+      why: "A solenoid is a coil of wire that produces a magnetic field when current flows through it."
+    },
+    {
+      q: "What is the magnetic field like inside a sufficiently long solenoid carrying steady current?",
+      options: [
+        "Approximately uniform",
+        "Always zero",
+        "Randomly directed at every point",
+        "Made only of circular lines around each turn"
+      ],
+      ans: 0,
+      hint: "Think about the spacing and direction of field lines inside the coil.",
+      steps: [
+        "The fields from the turns combine inside the coil.",
+        "Inside a sufficiently long solenoid, the field lines are nearly parallel and evenly spaced.",
+        "Therefore, the field is approximately uniform."
+      ],
+      why: "The field inside a long solenoid is approximately uniform, away from its ends."
+    },
+    {
+      q: "What happens to the north and south poles of a solenoid when its current is reversed?",
+      options: [
+        "Both poles disappear permanently",
+        "The poles exchange positions",
+        "The poles stay in the same positions",
+        "The coil becomes a resistor only"
+      ],
+      ans: 1,
+      hint: "Reversing the current reverses the magnetic field direction.",
+      steps: [
+        "The solenoid's poles depend on current direction.",
+        "Reversing current reverses the field direction.",
+        "The north and south poles exchange positions."
+      ],
+      why: "The polarity of a current-carrying solenoid depends on the direction of current through its turns."
+    },
+    {
+      q: "Which feature makes an electromagnet based on a solenoid different from a permanent bar magnet?",
+      options: [
+        "It can be switched off by stopping the current",
+        "It can never attract iron",
+        "It has no magnetic field when current flows",
+        "It has no north or south pole"
+      ],
+      ans: 0,
+      hint: "Consider what produces the solenoid's magnetic field.",
+      steps: [
+        "Current through the solenoid produces its field.",
+        "Stopping the current removes the current-produced field, apart from any residual magnetism in a core.",
+        "Therefore, it can be switched off."
+      ],
+      why: "An electromagnet's field depends on electric current, unlike the field of an ordinary permanent magnet."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: FACTORS AFFECTING ELECTROMAGNET STRENGTH
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Factors Affecting Electromagnet Strength",
+  `<h2>Factors Affecting Electromagnet Strength</h2>
+
+<h3>Learning objective</h3>
+<p>Identify how current, the number of coil turns and the core material affect the strength of an electromagnet.</p>
+
+<h3>1. What is an electromagnet?</h3>
+<p>An <b>electromagnet</b> is a magnet whose magnetic field is produced mainly by electric current. It is commonly made by winding insulated wire around a soft iron core.</p>
+
+<p>Three important factors can increase its strength:</p>
+<ol>
+<li><b>Current:</b> Increasing current generally strengthens the magnetic field.</li>
+<li><b>Number of turns:</b> Increasing the number of turns, with other conditions unchanged, generally strengthens the field.</li>
+<li><b>Core material:</b> A suitable magnetic core, such as soft iron, strengthens the field compared with an air core.</li>
+</ol>
+
+<h3>2. Worked example 1: Increasing current</h3>
+<p><b>Question:</b> Two otherwise identical electromagnets have the same coil and core. One carries a larger current. Which is generally stronger?</p>
+<p><b>Step 1:</b> Compare the currents while keeping the other factors the same.</p>
+<p><b>Step 2:</b> The larger current produces a stronger magnetic field.</p>
+<p><b>Answer:</b> The electromagnet carrying the larger current is generally stronger.</p>
+
+<h3>3. Worked example 2: Increasing the number of turns</h3>
+<p><b>Question:</b> Two coils have the same core and current. Coil A has 100 turns, while Coil B has 200 turns wound over a similar length. Which is generally stronger?</p>
+<p><b>Step 1:</b> Compare the number of turns per unit length.</p>
+<p><b>Step 2:</b> Coil B has more turns over a similar length.</p>
+<p><b>Answer:</b> Coil B is generally stronger.</p>
+
+<h3>4. Worked example 3: Choosing a core</h3>
+<p><b>Question:</b> A coil is tested first with an air core and then with a suitable soft iron core. Which arrangement generally produces the stronger electromagnet?</p>
+<p><b>Step 1:</b> The coil and current are kept the same.</p>
+<p><b>Step 2:</b> Soft iron concentrates and strengthens the magnetic field.</p>
+<p><b>Answer:</b> The coil with the soft iron core generally produces the stronger electromagnet.</p>
+
+<h3>5. A fair test</h3>
+<p>To investigate one factor properly, change only that factor and keep the others constant. For example, to test the effect of current, keep the coil's turns and core the same.</p>
+
+<h3>Remember</h3>
+<p>To strengthen an electromagnet, increase current, increase turns per unit length, or use a suitable magnetic core. A controlled experiment changes one factor at a time.</p>`,
+  [
+    {
+      q: "Two identical electromagnets differ only in current. Electromagnet A carries 1 A and B carries 2 A. Which is generally stronger?",
+      options: [
+        "A, because its current is smaller",
+        "B, because its current is larger",
+        "They must both have zero field",
+        "Current has no effect on field strength"
+      ],
+      ans: 1,
+      hint: "Keep the coil and core unchanged and compare the currents.",
+      steps: [
+        "Both electromagnets have the same coil and core.",
+        "Electromagnet B carries the larger current.",
+        "The larger current generally produces a stronger field."
+      ],
+      why: "With other factors unchanged, increasing current strengthens an electromagnet."
+    },
+    {
+      q: "Two coils have the same current and core. Coil A has 50 turns and Coil B has 150 turns over a similar length. Which is generally stronger?",
+      options: [
+        "Coil A",
+        "Coil B",
+        "Neither can produce a magnetic field",
+        "Both must have identical strength"
+      ],
+      ans: 1,
+      hint: "Compare the number of turns per unit length.",
+      steps: [
+        "Coil B has more turns over a similar length.",
+        "More turns per unit length generally strengthen the field.",
+        "Therefore, Coil B is generally stronger."
+      ],
+      why: "Increasing the number of turns, with other conditions unchanged, increases the solenoid's field strength."
+    },
+    {
+      q: "Which core is commonly used to strengthen an electromagnet?",
+      options: ["Wood", "Soft iron", "Dry paper", "Plastic"],
+      ans: 1,
+      hint: "Choose a material that is easily magnetised.",
+      steps: [
+        "An electromagnet benefits from a magnetic core.",
+        "Soft iron is readily magnetised and strengthens the field.",
+        "Therefore, soft iron is the suitable choice."
+      ],
+      why: "Soft iron is commonly used because it strengthens the field and can be magnetised and demagnetised readily."
+    },
+    {
+      q: "A student wants to test how the number of coil turns affects electromagnet strength. Which method is fairest?",
+      options: [
+        "Change the number of turns and current at the same time",
+        "Change the core, current and turns together",
+        "Change only the number of turns while keeping the current and core the same",
+        "Use a different battery for every trial without measuring current"
+      ],
+      ans: 2,
+      hint: "A fair test changes one independent variable at a time.",
+      steps: [
+        "The factor being investigated is the number of turns.",
+        "Other relevant factors should be kept constant.",
+        "Keep current and core the same while changing the turns."
+      ],
+      why: "Controlling other variables makes it possible to attribute changes in strength to the number of turns."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: APPLICATIONS OF ELECTROMAGNETS
+// ============================================================
+
+add(
+  "physics",
+  "em",
+  "Applications of Electromagnets",
+  `<h2>Applications of Electromagnets</h2>
+
+<h3>Learning objective</h3>
+<p>Explain how electromagnets are used to control movement, attract magnetic materials and operate electrical devices.</p>
+
+<h3>1. Why use an electromagnet?</h3>
+<p>An electromagnet produces a magnetic field when current flows through its coil. This makes it useful when a magnetic force needs to be controlled electrically.</p>
+
+<p>Its field can be switched on or off by controlling the current. Its strength can also be changed by changing the current or the coil.</p>
+
+<h3>2. Electric bells</h3>
+<p>In a typical electric bell, current through a coil magnetises its iron core. The electromagnet attracts an iron armature, causing the hammer to strike the bell. The movement interrupts the circuit, the electromagnet releases the armature, and the circuit can reconnect. This repeated action produces the ringing sound.</p>
+
+<h3>3. Magnetic relays</h3>
+<p>A relay uses an electromagnet to move a switch. A small current in the coil can control a separate circuit, allowing a low-power control circuit to operate another circuit.</p>
+
+<h3>4. Electromagnetic cranes</h3>
+<p>Industrial cranes can use powerful electromagnets to lift iron or steel objects. Switching off the current reduces the magnetic attraction, allowing the load to be released, although residual magnetism may remain.</p>
+
+<h3>5. Worked example 1: Lifting scrap metal</h3>
+<p><b>Question:</b> Why can an electromagnetic crane pick up steel objects and then release them?</p>
+<p><b>Step 1:</b> When current flows, the crane's coil produces a magnetic field.</p>
+<p><b>Step 2:</b> The field attracts suitable ferromagnetic materials such as iron and steel.</p>
+<p><b>Step 3:</b> When current is switched off, the electromagnet loses most of its field.</p>
+<p><b>Answer:</b> It can lift metal when energised and release it when the current is switched off.</p>
+
+<h3>6. Worked example 2: Operating a relay</h3>
+<p><b>Question:</b> What is the purpose of the electromagnet in a relay?</p>
+<p><b>Step 1:</b> Current flows through the relay coil.</p>
+<p><b>Step 2:</b> The coil attracts an armature or moves a magnetic switch mechanism.</p>
+<p><b>Step 3:</b> The movement opens or closes contacts in another circuit.</p>
+<p><b>Answer:</b> The electromagnet allows one circuit to control a switch in another circuit.</p>
+
+<h3>7. Worked example 3: The electric bell</h3>
+<p><b>Question:</b> Why does the hammer in a typical electric bell move repeatedly while the bell is operating?</p>
+<p><b>Step 1:</b> Current magnetises the electromagnet and attracts the armature.</p>
+<p><b>Step 2:</b> The movement interrupts the current through the coil.</p>
+<p><b>Step 3:</b> The electromagnet releases the armature, allowing the circuit to reconnect.</p>
+<p><b>Answer:</b> The make-and-break action repeatedly energises and releases the electromagnet, causing the hammer to vibrate and strike the bell.</p>
+
+<h3>Remember</h3>
+<p>Electromagnets are useful because their magnetic effect can be controlled by electric current. Common applications include electric bells, relays and electromagnetic cranes.</p>`,
+  [
+    {
+      q: "Why can an electromagnetic crane release a load after lifting it?",
+      options: [
+        "It changes the steel into plastic",
+        "Switching off the current reduces the magnetic field",
+        "The steel loses all its mass",
+        "The crane reverses gravity"
+      ],
+      ans: 1,
+      hint: "Think about what produces the electromagnet's field.",
+      steps: [
+        "Current through the coil produces the magnetic field.",
+        "The field attracts the metal load.",
+        "Switching off the current reduces the field, allowing the load to be released."
+      ],
+      why: "An electromagnet's magnetic attraction can be controlled by switching its current off."
+    },
+    {
+      q: "What is the main function of the electromagnet in a relay?",
+      options: [
+        "To measure the mass of a conductor",
+        "To generate sound without moving parts",
+        "To move a switch mechanism using a magnetic force",
+        "To make electrical resistance permanently zero"
+      ],
+      ans: 2,
+      hint: "A relay uses magnetism to control electrical contacts.",
+      steps: [
+        "Current flows through the relay coil.",
+        "The coil becomes an electromagnet.",
+        "It moves an armature that opens or closes contacts."
+      ],
+      why: "A relay uses an electromagnet to control switching in an electrical circuit."
+    },
+    {
+      q: "What causes the hammer in a typical electric bell to strike repeatedly?",
+      options: [
+        "A permanent current-free magnetic field",
+        "A repeated make-and-break action in the electromagnet circuit",
+        "The complete absence of an armature",
+        "The battery changing into a permanent magnet"
+      ],
+      ans: 1,
+      hint: "Trace what happens when the armature moves and the circuit is interrupted.",
+      steps: [
+        "Current energises the electromagnet.",
+        "The armature moves and interrupts the current.",
+        "The magnet releases the armature, the circuit reconnects, and the cycle repeats."
+      ],
+      why: "The repeated energising and releasing of the electromagnet makes the hammer vibrate and strike the bell."
+    },
+    {
+      q: "Which is a major advantage of an electromagnet over a typical permanent magnet?",
+      options: [
+        "Its magnetic effect can be controlled by switching current",
+        "It always attracts every material",
+        "It does not need a magnetic field",
+        "Its strength can never change"
+      ],
+      ans: 0,
+      hint: "Consider what happens when current is switched on or off.",
+      steps: [
+        "An electromagnet's field is produced by current.",
+        "Changing or stopping the current changes the magnetic effect.",
+        "Therefore, the field can be controlled electrically."
+      ],
+      why: "Electromagnets are useful in devices that require controllable magnetic attraction."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: DENSITY
+// ============================================================
+
+add(
+  "physics",
+  "fluids",
+  "Density",
+  `<h2>Density</h2>
+
+<h3>Learning objective</h3>
+<p>Calculate density, mass or volume using the relationship between these three quantities.</p>
+
+<h3>1. What is density?</h3>
+<p><b>Density</b> is the mass of a substance per unit volume. It tells us how much mass is contained in a given volume.</p>
+
+<p><b>Formula:</b></p>
+<p>Density = Mass ÷ Volume</p>
+<p>ρ = m/V</p>
+
+<p>Where:</p>
+<ul>
+<li>ρ is density.</li>
+<li>m is mass.</li>
+<li>V is volume.</li>
+</ul>
+
+<p>The SI unit of density is kg/m³. Another commonly used unit is g/cm³.</p>
+
+<p><b>Useful conversion:</b> 1 g/cm³ = 1000 kg/m³.</p>
+
+<h3>2. Worked example 1: Calculating density</h3>
+<p><b>Question:</b> A metal block has a mass of 600 g and a volume of 200 cm³. Calculate its density.</p>
+<p><b>Step 1: Write the formula.</b></p>
+<p>ρ = m/V</p>
+<p><b>Step 2: Substitute the values.</b></p>
+<p>ρ = 600/200</p>
+<p><b>Step 3: Calculate.</b></p>
+<p>ρ = 3 g/cm³.</p>
+<p><b>Answer:</b> 3 g/cm³.</p>
+
+<h3>3. Worked example 2: Calculating mass</h3>
+<p><b>Question:</b> A liquid has a density of 800 kg/m³ and a volume of 0.5 m³. Find its mass.</p>
+<p><b>Step 1:</b> Rearrange ρ = m/V to obtain m = ρV.</p>
+<p><b>Step 2:</b> Substitute: m = 800 × 0.5.</p>
+<p><b>Step 3:</b> Calculate: m = 400 kg.</p>
+<p><b>Answer:</b> 400 kg.</p>
+
+<h3>4. Worked example 3: Calculating volume</h3>
+<p><b>Question:</b> An object has a mass of 2 kg and a density of 500 kg/m³. Find its volume.</p>
+<p><b>Step 1:</b> Rearrange ρ = m/V to obtain V = m/ρ.</p>
+<p><b>Step 2:</b> Substitute: V = 2/500.</p>
+<p><b>Step 3:</b> Calculate: V = 0.004 m³.</p>
+<p><b>Answer:</b> 0.004 m³.</p>
+
+<h3>Remember</h3>
+<p>Use ρ = m/V. Rearrange it to m = ρV when finding mass and V = m/ρ when finding volume. Always check that the units are consistent.</p>`,
+  [
+    {
+      q: "A block has a mass of 450 g and a volume of 150 cm³. Calculate its density.",
+      options: ["2 g/cm³", "3 g/cm³", "300 g/cm³", "600 g/cm³"],
+      ans: 1,
+      hint: "Density = mass ÷ volume.",
+      steps: [
+        "Write ρ = m/V.",
+        "Substitute: ρ = 450/150.",
+        "Calculate: ρ = 3 g/cm³."
+      ],
+      why: "Density is the mass divided by the volume occupied."
+    },
+    {
+      q: "A liquid has a density of 900 kg/m³ and a volume of 2 m³. Find its mass.",
+      options: ["450 kg", "900 kg", "1800 kg", "2000 kg"],
+      ans: 2,
+      hint: "Mass = density × volume.",
+      steps: [
+        "Use m = ρV.",
+        "Substitute: m = 900 × 2.",
+        "Calculate: m = 1800 kg."
+      ],
+      why: "Multiplying density by volume gives mass."
+    },
+    {
+      q: "An object has a mass of 3 kg and a density of 750 kg/m³. What is its volume?",
+      options: ["0.004 m³", "0.25 m³", "250 m³", "2250 m³"],
+      ans: 0,
+      hint: "Volume = mass ÷ density.",
+      steps: [
+        "Use V = m/ρ.",
+        "Substitute: V = 3/750.",
+        "Calculate: V = 0.004 m³."
+      ],
+      why: "Dividing mass by density gives the volume."
+    },
+    {
+      q: "A substance has a density of 2.5 g/cm³. Express this density in kg/m³.",
+      options: ["25 kg/m³", "250 kg/m³", "2500 kg/m³", "25,000 kg/m³"],
+      ans: 2,
+      hint: "Multiply the value in g/cm³ by 1000.",
+      steps: [
+        "Use 1 g/cm³ = 1000 kg/m³.",
+        "Convert: 2.5 × 1000.",
+        "Density = 2500 kg/m³."
+      ],
+      why: "The conversion factor from g/cm³ to kg/m³ is 1000."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: PRESSURE
+// ============================================================
+
+add(
+  "physics",
+  "fluids",
+  "Pressure",
+  `<h2>Pressure</h2>
+
+<h3>Learning objective</h3>
+<p>Calculate pressure, force or area using the relationship between pressure and the area over which a force acts.</p>
+
+<h3>1. What is pressure?</h3>
+<p><b>Pressure</b> is the force acting normally per unit area of a surface.</p>
+
+<p><b>Formula:</b></p>
+<p>P = F/A</p>
+
+<p>Where:</p>
+<ul>
+<li>P is pressure, measured in pascals (Pa).</li>
+<li>F is the force acting perpendicular to the surface, measured in newtons (N).</li>
+<li>A is the area, measured in square metres (m²).</li>
+</ul>
+
+<p>One pascal is one newton per square metre:</p>
+<p>1 Pa = 1 N/m².</p>
+
+<p>For the same force, a smaller contact area produces greater pressure. A larger contact area produces lower pressure.</p>
+
+<h3>2. Worked example 1: Calculating pressure</h3>
+<p><b>Question:</b> A force of 200 N acts normally on an area of 4 m². Calculate the pressure.</p>
+<p><b>Step 1:</b> Use P = F/A.</p>
+<p><b>Step 2:</b> Substitute: P = 200/4.</p>
+<p><b>Step 3:</b> Calculate: P = 50 Pa.</p>
+<p><b>Answer:</b> 50 Pa.</p>
+
+<h3>3. Worked example 2: Calculating force</h3>
+<p><b>Question:</b> A pressure of 3000 Pa acts over an area of 0.2 m². Find the normal force.</p>
+<p><b>Step 1:</b> Rearrange P = F/A to obtain F = PA.</p>
+<p><b>Step 2:</b> Substitute: F = 3000 × 0.2.</p>
+<p><b>Step 3:</b> Calculate: F = 600 N.</p>
+<p><b>Answer:</b> 600 N.</p>
+
+<h3>4. Worked example 3: Calculating area</h3>
+<p><b>Question:</b> A force of 120 N produces a pressure of 600 Pa. Calculate the area.</p>
+<p><b>Step 1:</b> Rearrange P = F/A to obtain A = F/P.</p>
+<p><b>Step 2:</b> Substitute: A = 120/600.</p>
+<p><b>Step 3:</b> Calculate: A = 0.2 m².</p>
+<p><b>Answer:</b> 0.2 m².</p>
+
+<h3>Remember</h3>
+<p>Pressure depends on both force and area. For a fixed force, reducing the area increases pressure. Convert areas to m² before calculating pressure in pascals.</p>`,
+  [
+    {
+      q: "A force of 500 N acts normally on an area of 2 m². Find the pressure.",
+      options: ["100 Pa", "250 Pa", "500 Pa", "1000 Pa"],
+      ans: 1,
+      hint: "Pressure = force ÷ area.",
+      steps: [
+        "Use P = F/A.",
+        "Substitute: P = 500/2.",
+        "Calculate: P = 250 Pa."
+      ],
+      why: "Pressure is force per unit area."
+    },
+    {
+      q: "A pressure of 4000 Pa acts over an area of 0.5 m². Calculate the force.",
+      options: ["2000 N", "8000 N", "4000 N", "200 N"],
+      ans: 0,
+      hint: "Force = pressure × area.",
+      steps: [
+        "Use F = PA.",
+        "Substitute: F = 4000 × 0.5.",
+        "Calculate: F = 2000 N."
+      ],
+      why: "Multiplying pressure by area gives the normal force."
+    },
+    {
+      q: "A force of 90 N produces a pressure of 300 Pa. What area does the force act on?",
+      options: ["0.03 m²", "0.3 m²", "3.3 m²", "27,000 m²"],
+      ans: 1,
+      hint: "Area = force ÷ pressure.",
+      steps: [
+        "Use A = F/P.",
+        "Substitute: A = 90/300.",
+        "Calculate: A = 0.3 m²."
+      ],
+      why: "Area is found by dividing force by pressure."
+    },
+    {
+      q: "A person stands on soft ground. If the person's weight remains the same but the contact area of the shoes increases, what happens to the pressure on the ground?",
+      options: [
+        "Pressure increases",
+        "Pressure decreases",
+        "Pressure remains infinite",
+        "Pressure must double"
+      ],
+      ans: 1,
+      hint: "Use P = F/A and keep F constant.",
+      steps: [
+        "Pressure equals force divided by area.",
+        "The force remains the same.",
+        "Increasing the area decreases the pressure."
+      ],
+      why: "For a fixed force, pressure is inversely proportional to the contact area."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: PRESSURE IN LIQUIDS
+// ============================================================
+
+add(
+  "physics",
+  "fluids",
+  "Pressure in Liquids",
+  `<h2>Pressure in Liquids</h2>
+
+<h3>Learning objective</h3>
+<p>Explain how liquid pressure changes with depth and calculate the pressure due to a column of liquid.</p>
+
+<h3>1. Why do liquids exert pressure?</h3>
+<p>A liquid has weight. The liquid above a point exerts pressure on the liquid below it and on the container walls.</p>
+
+<p>For a liquid of uniform density, the pressure due to the liquid at depth h is:</p>
+
+<p><b>p = ρgh</b></p>
+
+<p>Where:</p>
+<ul>
+<li>p is the pressure due to the liquid, in pascals (Pa).</li>
+<li>ρ is the liquid density, in kg/m³.</li>
+<li>g is gravitational field strength, in N/kg.</li>
+<li>h is the vertical depth below the liquid surface, in metres (m).</li>
+</ul>
+
+<p>This formula gives the <b>gauge pressure</b> due to the liquid. If the liquid surface is exposed to the atmosphere, the absolute pressure also includes atmospheric pressure.</p>
+
+<h3>2. What affects liquid pressure?</h3>
+<ul>
+<li><b>Depth:</b> Pressure increases with depth.</li>
+<li><b>Density:</b> At the same depth, a denser liquid produces greater pressure.</li>
+<li><b>Gravity:</b> Greater gravitational field strength produces greater liquid pressure.</li>
+</ul>
+
+<p>At the same depth in the same stationary liquid, the pressure is the same. The shape of the container does not by itself determine the pressure at that depth.</p>
+
+<h3>3. Worked example 1: Calculating liquid pressure</h3>
+<p><b>Question:</b> Calculate the pressure due to water at a depth of 2 m. Take water density as 1000 kg/m³ and g = 10 N/kg.</p>
+<p><b>Step 1:</b> Use p = ρgh.</p>
+<p><b>Step 2:</b> Substitute: p = 1000 × 10 × 2.</p>
+<p><b>Step 3:</b> Calculate: p = 20,000 Pa.</p>
+<p><b>Answer:</b> 20,000 Pa.</p>
+
+<h3>4. Worked example 2: Comparing depths</h3>
+<p><b>Question:</b> The pressure due to water at 1 m depth is 10,000 Pa when g = 10 N/kg. Find the pressure at 3 m depth.</p>
+<p><b>Step 1:</b> The liquid and gravitational field are unchanged.</p>
+<p><b>Step 2:</b> Pressure is directly proportional to depth.</p>
+<p><b>Step 3:</b> Tripling the depth triples the pressure: p = 3 × 10,000.</p>
+<p><b>Answer:</b> 30,000 Pa.</p>
+
+<h3>5. Worked example 3: Comparing two liquids</h3>
+<p><b>Question:</b> At a depth of 0.5 m, a liquid has a density of 800 kg/m³. Calculate its pressure due to the liquid. Take g = 10 N/kg.</p>
+<p><b>Step 1:</b> Use p = ρgh.</p>
+<p><b>Step 2:</b> Substitute: p = 800 × 10 × 0.5.</p>
+<p><b>Step 3:</b> Calculate: p = 4000 Pa.</p>
+<p><b>Answer:</b> 4000 Pa.</p>
+
+<h3>Remember</h3>
+<p>Use p = ρgh for pressure due to a liquid. Measure depth vertically from the surface and use density in kg/m³, depth in metres and g in N/kg.</p>`,
+  [
+    {
+      q: "Calculate the pressure due to water at a depth of 3 m. Take ρ = 1000 kg/m³ and g = 10 N/kg.",
+      options: ["3000 Pa", "10,000 Pa", "30,000 Pa", "300,000 Pa"],
+      ans: 2,
+      hint: "Use p = ρgh.",
+      steps: [
+        "Use p = ρgh.",
+        "Substitute: p = 1000 × 10 × 3.",
+        "Calculate: p = 30,000 Pa."
+      ],
+      why: "Liquid pressure due to a uniform liquid column equals density multiplied by gravitational field strength and depth."
+    },
+    {
+      q: "At a depth of 2 m, the pressure due to water is 20,000 Pa. What is the pressure due to the same water at 4 m depth, assuming the same gravitational field?",
+      options: ["10,000 Pa", "20,000 Pa", "40,000 Pa", "80,000 Pa"],
+      ans: 2,
+      hint: "Pressure is directly proportional to depth.",
+      steps: [
+        "The depth doubles from 2 m to 4 m.",
+        "For the same liquid and gravity, pressure doubles.",
+        "p = 2 × 20,000 = 40,000 Pa."
+      ],
+      why: "Liquid pressure increases in direct proportion to depth when density and gravity are unchanged."
+    },
+    {
+      q: "A liquid has density 800 kg/m³. Find the pressure due to the liquid at a depth of 2 m, taking g = 10 N/kg.",
+      options: ["1600 Pa", "8000 Pa", "16,000 Pa", "32,000 Pa"],
+      ans: 2,
+      hint: "Substitute the density, gravity and depth into p = ρgh.",
+      steps: [
+        "Use p = ρgh.",
+        "Substitute: p = 800 × 10 × 2.",
+        "Calculate: p = 16,000 Pa."
+      ],
+      why: "The pressure due to the liquid is determined by its density, depth and gravitational field strength."
+    },
+    {
+      q: "At the same depth in the same stationary liquid, how does pressure compare at two points?",
+      options: [
+        "It is greater at the point closer to the container wall",
+        "It is the same at both points",
+        "It depends only on the width of the container",
+        "It is always zero at the lower point"
+      ],
+      ans: 1,
+      hint: "Liquid pressure depends on depth, density and gravity.",
+      steps: [
+        "The points are at the same depth.",
+        "They are in the same liquid and gravitational field.",
+        "Therefore, the pressure due to the liquid is the same."
+      ],
+      why: "In a stationary liquid, pressure at a given depth is independent of the container's shape."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: UPTHRUST AND FLOTATION
+// ============================================================
+
+add(
+  "physics",
+  "fluids",
+  "Upthrust and Flotation",
+  `<h2>Upthrust and Flotation</h2>
+
+<h3>Learning objective</h3>
+<p>Explain upthrust using pressure differences and apply the principle of flotation to determine whether an object sinks, floats or remains suspended.</p>
+
+<h3>1. What is upthrust?</h3>
+<p><b>Upthrust</b> is the upward force exerted by a fluid on an object that is partly or completely immersed in it.</p>
+
+<p>In a liquid, pressure increases with depth. The bottom of an immersed object experiences greater pressure than the top, producing a resultant upward force.</p>
+
+<h3>2. Archimedes' principle</h3>
+<p>Archimedes' principle states that an immersed object experiences an upthrust equal to the weight of the fluid it displaces.</p>
+
+<p><b>Upthrust = weight of displaced fluid</b></p>
+
+<p>U = ρVg</p>
+
+<p>Here, ρ is the fluid density and V is the volume of fluid displaced.</p>
+
+<h3>3. When does an object float?</h3>
+<ul>
+<li><b>Floats at rest:</b> Upthrust balances the object's weight.</li>
+<li><b>Sinks:</b> Its weight exceeds the available upthrust while it descends.</li>
+<li><b>Suspended in a fluid:</b> Upthrust equals weight, with the object fully immersed and not rising or sinking.</li>
+</ul>
+
+<p>An object can float even if its material is denser than water. A hollow ship displaces a large volume of water, allowing the upthrust to balance its total weight.</p>
+
+<h3>4. Worked example 1: Calculating upthrust</h3>
+<p><b>Question:</b> An object displaces 0.002 m³ of water. Calculate the upthrust. Take water density as 1000 kg/m³ and g = 10 N/kg.</p>
+<p><b>Step 1:</b> Use U = ρVg.</p>
+<p><b>Step 2:</b> Substitute: U = 1000 × 0.002 × 10.</p>
+<p><b>Step 3:</b> Calculate: U = 20 N.</p>
+<p><b>Answer:</b> 20 N.</p>
+
+<h3>5. Worked example 2: Determining whether an object floats at rest</h3>
+<p><b>Question:</b> An object weighs 15 N and experiences an upthrust of 15 N while floating. What is the resultant vertical force?</p>
+<p><b>Step 1:</b> Upthrust acts upwards and weight acts downwards.</p>
+<p><b>Step 2:</b> Resultant force = upthrust − weight.</p>
+<p><b>Step 3:</b> Resultant force = 15 − 15 = 0 N.</p>
+<p><b>Answer:</b> The resultant vertical force is zero, so the object can remain at rest.</p>
+
+<h3>6. Worked example 3: Floating object</h3>
+<p><b>Question:</b> A floating object has a weight of 80 N. What is its upthrust when it is stationary?</p>
+<p><b>Step 1:</b> A stationary floating object is in vertical equilibrium.</p>
+<p><b>Step 2:</b> The upward upthrust balances the downward weight.</p>
+<p><b>Answer:</b> Upthrust = 80 N.</p>
+
+<h3>Remember</h3>
+<p>Upthrust equals the weight of displaced fluid. A floating object at rest has upthrust equal to its weight.</p>`,
+  [
+    {
+      q: "An object displaces 0.003 m³ of water. Calculate the upthrust, taking water density as 1000 kg/m³ and g = 10 N/kg.",
+      options: ["3 N", "30 N", "300 N", "3000 N"],
+      ans: 1,
+      hint: "Use U = ρVg.",
+      steps: [
+        "Use U = ρVg.",
+        "Substitute: U = 1000 × 0.003 × 10.",
+        "Calculate: U = 30 N."
+      ],
+      why: "The upthrust equals the weight of the displaced water."
+    },
+    {
+      q: "An object floats at rest and has a weight of 25 N. What is the upthrust acting on it?",
+      options: ["0 N", "12.5 N", "25 N", "50 N"],
+      ans: 2,
+      hint: "For a floating object at rest, upward and downward forces balance.",
+      steps: [
+        "The object is stationary and floating.",
+        "Its resultant vertical force is zero.",
+        "Upthrust must equal weight: 25 N."
+      ],
+      why: "A floating object at rest is in vertical equilibrium."
+    },
+    {
+      q: "An immersed object displaces 0.001 m³ of a liquid with density 800 kg/m³. Calculate the upthrust using g = 10 N/kg.",
+      options: ["0.8 N", "8 N", "80 N", "8000 N"],
+      ans: 1,
+      hint: "Multiply density, displaced volume and gravitational field strength.",
+      steps: [
+        "Use U = ρVg.",
+        "Substitute: U = 800 × 0.001 × 10.",
+        "Calculate: U = 8 N."
+      ],
+      why: "Upthrust is the weight of the displaced liquid."
+    },
+    {
+      q: "A fully immersed object has a weight of 12 N and an upthrust of 8 N. What happens if these forces remain unchanged?",
+      options: [
+        "It accelerates upwards",
+        "It accelerates downwards",
+        "It remains in vertical equilibrium",
+        "Its weight becomes zero"
+      ],
+      ans: 1,
+      hint: "Compare the downward weight with the upward upthrust.",
+      steps: [
+        "Weight acts downwards with 12 N.",
+        "Upthrust acts upwards with 8 N.",
+        "The resultant force is 12 − 8 = 4 N downwards."
+      ],
+      why: "Since weight exceeds upthrust, the resultant force is downward."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: VISCOSITY
+// ============================================================
+
+add(
+  "physics",
+  "fluids",
+  "Viscosity",
+  `<h2>Viscosity</h2>
+
+<h3>Learning objective</h3>
+<p>Explain viscosity as resistance to flow and compare the flow behaviour of different fluids.</p>
+
+<h3>1. What is viscosity?</h3>
+<p><b>Viscosity</b> is a measure of a fluid's resistance to flow. It describes how strongly a fluid resists layers of the fluid moving past one another.</p>
+
+<p>A fluid with high viscosity flows less readily than a fluid with low viscosity under comparable conditions.</p>
+
+<p>For example, honey generally flows more slowly than water because honey has a higher viscosity under ordinary room-temperature conditions.</p>
+
+<h3>2. Comparing viscosity</h3>
+<ul>
+<li><b>High viscosity:</b> Greater resistance to flow.</li>
+<li><b>Low viscosity:</b> Less resistance to flow.</li>
+</ul>
+
+<p>When comparing fluids, use similar conditions, especially temperature, because viscosity can change with temperature.</p>
+
+<h3>3. Worked example 1: Comparing two liquids</h3>
+<p><b>Question:</b> Under the same conditions, honey flows more slowly than water. Which liquid has the higher viscosity?</p>
+<p><b>Step 1:</b> Identify the liquid that resists flow more strongly.</p>
+<p><b>Step 2:</b> Honey flows less readily.</p>
+<p><b>Answer:</b> Honey has the higher viscosity.</p>
+
+<h3>4. Worked example 2: Choosing a low-viscosity fluid</h3>
+<p><b>Question:</b> Two suitable liquids are available for a process that requires easy flow. Liquid A has lower viscosity than Liquid B. Which liquid should be selected if other relevant properties are equal?</p>
+<p><b>Step 1:</b> Low viscosity means less resistance to flow.</p>
+<p><b>Step 2:</b> Liquid A has the lower viscosity.</p>
+<p><b>Answer:</b> Liquid A should flow more readily and is the appropriate choice.</p>
+
+<h3>5. Worked example 3: Interpreting a flow test</h3>
+<p><b>Question:</b> Equal volumes of two liquids are released through the same suitable apparatus at the same temperature. Liquid X takes longer to flow through than Liquid Y. Which liquid appears more viscous in this test?</p>
+<p><b>Step 1:</b> Both liquids are tested under the same conditions.</p>
+<p><b>Step 2:</b> Liquid X flows less readily because it takes longer.</p>
+<p><b>Answer:</b> Liquid X has the higher apparent viscosity in this comparison.</p>
+
+<h3>Remember</h3>
+<p>Viscosity measures resistance to flow. Higher viscosity means a fluid flows less readily under comparable conditions; lower viscosity means it flows more readily.</p>`,
+  [
+    {
+      q: "Under the same conditions, honey flows more slowly than water. Which generally has the higher viscosity?",
+      options: ["Water", "Honey", "Both must have zero viscosity", "Viscosity cannot be compared"],
+      ans: 1,
+      hint: "The more resistant liquid has the higher viscosity.",
+      steps: [
+        "Honey flows less readily than water.",
+        "Viscosity measures resistance to flow.",
+        "Therefore, honey has the higher viscosity."
+      ],
+      why: "Higher viscosity corresponds to greater resistance to flow."
+    },
+    {
+      q: "Which liquid property makes a fluid flow less readily under comparable conditions?",
+      options: ["Lower viscosity", "Higher viscosity", "Zero density", "Greater transparency"],
+      ans: 1,
+      hint: "Look for the property that measures resistance to flow.",
+      steps: [
+        "Viscosity measures resistance to flow.",
+        "A higher viscosity means greater resistance.",
+        "Therefore, higher viscosity makes flow less readily."
+      ],
+      why: "High viscosity means a fluid resists flow more strongly."
+    },
+    {
+      q: "Two liquids are compared under the same conditions. Liquid A flows more readily than Liquid B. Which conclusion is most appropriate?",
+      options: [
+        "Liquid A has higher viscosity",
+        "Liquid A has lower viscosity",
+        "Liquid B has no mass",
+        "Both liquids have equal viscosity"
+      ],
+      ans: 1,
+      hint: "The liquid that flows more readily has less resistance to flow.",
+      steps: [
+        "Liquid A flows more readily.",
+        "It therefore offers less resistance to flow in this comparison.",
+        "Liquid A has lower viscosity."
+      ],
+      why: "Lower viscosity means less resistance to flow."
+    },
+    {
+      q: "Why should two liquids be compared at the same temperature when investigating their viscosities?",
+      options: [
+        "Temperature can affect viscosity",
+        "Temperature always makes all liquids identical",
+        "Viscosity depends only on the colour of a liquid",
+        "Temperature changes volume into mass"
+      ],
+      ans: 0,
+      hint: "Think about whether temperature can change how readily a liquid flows.",
+      steps: [
+        "Viscosity can change with temperature.",
+        "Different temperatures could affect the flow comparison.",
+        "Keeping temperature the same makes the comparison fairer."
+      ],
+      why: "Controlling temperature helps ensure that observed differences are due to the fluids being compared rather than different test conditions."
+    }
+  ]
+);
+// ============================================================
+// SCREEN 1: STRUCTURE OF THE ATOM
+// ============================================================
+
+add(
+  "physics",
+  "modern_physics",
+  "Structure of the Atom",
+  `<h2>Structure of the Atom</h2>
+
+<h3>1. The three subatomic particles</h3>
+<p>An atom contains a small central nucleus surrounded by electrons.</p>
+
+<ul>
+  <li><b>Proton:</b> has a positive charge (+1) and is found in the nucleus.</li>
+  <li><b>Neutron:</b> has no charge and is found in the nucleus.</li>
+  <li><b>Electron:</b> has a negative charge (-1) and occupies the space around the nucleus.</li>
+</ul>
+
+<p>Nearly all the mass of an atom is concentrated in its nucleus because protons and neutrons are much heavier than electrons.</p>
+
+<h3>2. Atomic number</h3>
+<p>The atomic number, Z, is the number of protons in the nucleus.</p>
+<p>In a neutral atom, the number of electrons equals the number of protons.</p>
+
+<h3>3. Mass number</h3>
+<p>The mass number, A, is the total number of protons and neutrons.</p>
+
+<p><b>Mass number = number of protons + number of neutrons</b></p>
+<p><b>Number of neutrons = mass number - atomic number</b></p>
+
+<p>An atom can be represented as:</p>
+<p><b>ᴬZX</b></p>
+<p>X is the chemical symbol, A is the mass number, and Z is the atomic number.</p>
+
+<h3>Worked example 1: Finding the number of neutrons</h3>
+<p>An atom has atomic number 11 and mass number 23. Find its number of neutrons.</p>
+<p><b>Step 1:</b> Write the relationship.</p>
+<p>Neutrons = mass number - atomic number</p>
+<p><b>Step 2:</b> Substitute.</p>
+<p>Neutrons = 23 - 11</p>
+<p><b>Answer:</b> 12 neutrons.</p>
+
+<h3>Worked example 2: Counting particles</h3>
+<p>A neutral atom has atomic number 8 and mass number 16. Find its protons, electrons and neutrons.</p>
+<p>Protons = atomic number = 8.</p>
+<p>Electrons = protons because the atom is neutral = 8.</p>
+<p>Neutrons = 16 - 8 = 8.</p>
+<p><b>Answer:</b> 8 protons, 8 electrons and 8 neutrons.</p>
+
+<h3>Worked example 3: Interpreting nuclear notation</h3>
+<p>An atom is written as ²⁷₁₃Al. Determine its atomic number, mass number and number of neutrons.</p>
+<p>Atomic number = 13.</p>
+<p>Mass number = 27.</p>
+<p>Neutrons = 27 - 13 = 14.</p>
+<p><b>Answer:</b> Atomic number 13, mass number 27, and 14 neutrons.</p>
+
+<h3>Remember</h3>
+<p>The atomic number counts protons. The mass number counts protons and neutrons together. For a neutral atom, electrons equal protons.</p>`,
+  [
+    {
+      q: "An atom has atomic number 12 and mass number 24. How many neutrons does it contain?",
+      options: ["12", "24", "36", "6"],
+      ans: 0,
+      hint: "Subtract the atomic number from the mass number.",
+      steps: [
+        "Neutrons = mass number - atomic number.",
+        "Neutrons = 24 - 12.",
+        "The atom contains 12 neutrons."
+      ],
+      why: "The mass number is the total of protons and neutrons, while the atomic number counts protons."
+    },
+    {
+      q: "A neutral atom contains 17 protons. How many electrons does it contain?",
+      options: ["34", "17", "0", "18"],
+      ans: 1,
+      hint: "A neutral atom has equal numbers of protons and electrons.",
+      steps: [
+        "The atom is neutral.",
+        "Number of electrons = number of protons.",
+        "Electrons = 17."
+      ],
+      why: "Equal positive and negative charges make the atom electrically neutral."
+    },
+    {
+      q: "What does the mass number of an atom represent?",
+      options: [
+        "The number of electrons only",
+        "The number of neutrons only",
+        "The total number of protons and neutrons",
+        "The total number of protons and electrons"
+      ],
+      ans: 2,
+      hint: "The mass number counts the particles in the nucleus that contribute nearly all the atom's mass.",
+      steps: [
+        "The nucleus contains protons and neutrons.",
+        "Mass number = protons + neutrons."
+      ],
+      why: "Electrons are not included in the mass number."
+    },
+    {
+      q: "An atom is represented by ³⁹₁₉K. How many neutrons does its nucleus contain?",
+      options: ["19", "39", "58", "20"],
+      ans: 3,
+      hint: "Use neutrons = A - Z.",
+      steps: [
+        "Mass number A = 39.",
+        "Atomic number Z = 19.",
+        "Neutrons = 39 - 19 = 20."
+      ],
+      why: "The nucleus contains 19 protons and 20 neutrons, giving a mass number of 39."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: RADIOACTIVITY AND RADIOACTIVE DECAY
+// ============================================================
+
+add(
+  "physics",
+  "modern_physics",
+  "Radioactivity and Radioactive Decay",
+  `<h2>Radioactivity and Radioactive Decay</h2>
+
+<h3>1. What is radioactivity?</h3>
+<p>Radioactivity is the spontaneous and random emission of radiation from an unstable atomic nucleus.</p>
+
+<p>The nucleus of a radioactive atom is unstable. It changes by emitting radiation and may become a different, more stable nucleus.</p>
+
+<h3>2. Important properties</h3>
+<ul>
+  <li><b>Spontaneous:</b> decay occurs without an external trigger.</li>
+  <li><b>Random:</b> it is impossible to predict exactly when a particular unstable nucleus will decay.</li>
+  <li><b>Nuclear:</b> the change takes place in the nucleus, not in the electron arrangement.</li>
+</ul>
+
+<p>Radioactive decay is not the same as ordinary chemical change. Chemical reactions mainly involve electrons, while radioactive decay changes the nucleus.</p>
+
+<h3>3. Activity and count rate</h3>
+<p><b>Activity</b> is the number of nuclear decays per second. Its SI unit is the becquerel (Bq).</p>
+<p>1 Bq = 1 decay per second.</p>
+<p><b>Count rate</b> is the number of radiation counts recorded by a detector per unit time. It may be lower than the activity because not every emitted particle or photon is detected.</p>
+
+<h3>Worked example 1: Interpreting activity</h3>
+<p>A source has an activity of 250 Bq. What does this mean?</p>
+<p><b>Step 1:</b> Remember that 1 Bq means one decay per second.</p>
+<p><b>Step 2:</b> Apply the definition.</p>
+<p><b>Answer:</b> The source undergoes an average of 250 nuclear decays per second.</p>
+
+<h3>Worked example 2: Calculating total decays</h3>
+<p>A source has a constant activity of 40 Bq over a short interval of 5 seconds. Estimate the number of decays in that interval.</p>
+<p>Number of decays = activity × time.</p>
+<p>Number of decays = 40 × 5 = 200.</p>
+<p><b>Answer:</b> Approximately 200 decays.</p>
+<p>This estimate assumes the activity remains approximately constant during the interval.</p>
+
+<h3>Worked example 3: Correcting a detector reading</h3>
+<p>A detector records 90 counts per minute when measuring a source and 10 counts per minute from background radiation. Find the source's net count rate.</p>
+<p><b>Step 1:</b> Identify the total measured count rate: 90 counts/min.</p>
+<p><b>Step 2:</b> Subtract background count rate: 10 counts/min.</p>
+<p>Net count rate = 90 - 10 = 80 counts/min.</p>
+<p><b>Answer:</b> 80 counts per minute.</p>
+
+<h3>Remember</h3>
+<p>Radioactive decay is spontaneous, random and nuclear. Activity measures decays per second; a detector's count rate measures recorded counts.</p>`,
+  [
+    {
+      q: "What is radioactivity?",
+      options: [
+        "The movement of electrons through a wire",
+        "The spontaneous and random emission of radiation from an unstable nucleus",
+        "The heating of an atom until it melts",
+        "The joining of atoms in a chemical reaction"
+      ],
+      ans: 1,
+      hint: "Think about what happens inside an unstable nucleus.",
+      steps: [
+        "Radioactive nuclei are unstable.",
+        "They can emit radiation without an external trigger.",
+        "The process is spontaneous and random."
+      ],
+      why: "Radioactivity originates from changes in unstable atomic nuclei."
+    },
+    {
+      q: "A radioactive source has an activity of 60 Bq. What does this indicate?",
+      options: [
+        "60 atoms are present in the source",
+        "60 particles are always inside the nucleus",
+        "An average of 60 nuclear decays occur per second",
+        "The source lasts for 60 seconds"
+      ],
+      ans: 2,
+      hint: "One becquerel represents one nuclear decay per second.",
+      steps: [
+        "Activity is measured in becquerels.",
+        "1 Bq = 1 decay per second.",
+        "60 Bq corresponds to 60 decays per second on average."
+      ],
+      why: "Activity describes the rate of nuclear decay, not the total number of atoms."
+    },
+    {
+      q: "A detector records 75 counts per minute. Background radiation contributes 15 counts per minute. What is the net count rate?",
+      options: ["90 counts/min", "60 counts/min", "75 counts/min", "5 counts/min"],
+      ans: 1,
+      hint: "Subtract the background reading from the total reading.",
+      steps: [
+        "Total count rate = 75 counts/min.",
+        "Background count rate = 15 counts/min.",
+        "Net count rate = 75 - 15 = 60 counts/min."
+      ],
+      why: "Subtracting background radiation gives the count rate attributable to the source."
+    },
+    {
+      q: "Which statement about radioactive decay is correct?",
+      options: [
+        "Every nucleus decays at a precisely predictable time",
+        "Radioactive decay always requires heating",
+        "Radioactive decay is a change in the electron arrangement only",
+        "The exact time at which one unstable nucleus decays cannot be predicted"
+      ],
+      ans: 3,
+      hint: "Consider the meaning of random decay.",
+      steps: [
+        "Radioactive decay is random.",
+        "Individual decay times cannot be predicted exactly.",
+        "The behaviour of a large sample can still be described statistically."
+      ],
+      why: "Randomness applies to individual nuclei even though large samples follow predictable statistical patterns."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: ALPHA, BETA AND GAMMA RADIATION
+// ============================================================
+
+add(
+  "physics",
+  "modern_physics",
+  "Alpha, Beta and Gamma Radiation",
+  `<h2>Alpha, Beta and Gamma Radiation</h2>
+
+<h3>1. Alpha radiation</h3>
+<p>An alpha particle consists of two protons and two neutrons. It is the same as a helium nucleus.</p>
+<ul>
+  <li>Charge: +2</li>
+  <li>Relative mass: 4</li>
+  <li>Ionising ability: very high</li>
+  <li>Penetrating ability: low; it can be stopped by paper or the outer layer of skin.</li>
+</ul>
+<p>Alpha radiation is particularly dangerous if an alpha-emitting substance enters the body through inhalation, ingestion or a wound.</p>
+
+<h3>2. Beta radiation</h3>
+<p>In the usual school-level example of beta-minus decay, a neutron changes into a proton and an electron is emitted. The emitted electron is called a beta-minus particle.</p>
+<ul>
+  <li>Charge: -1</li>
+  <li>Relative mass: approximately 1/1840</li>
+  <li>Ionising ability: moderate</li>
+  <li>Penetrating ability: greater than alpha; it can be reduced by a thin sheet of aluminium.</li>
+</ul>
+
+<h3>3. Gamma radiation</h3>
+<p>Gamma radiation is high-energy electromagnetic radiation emitted by an excited nucleus.</p>
+<ul>
+  <li>Charge: 0</li>
+  <li>Rest mass: 0</li>
+  <li>Ionising ability: lower than alpha and beta</li>
+  <li>Penetrating ability: very high; thick lead or concrete can reduce its intensity.</li>
+</ul>
+
+<h3>4. Comparing the three</h3>
+<p>Ionising ability: alpha &gt; beta &gt; gamma.</p>
+<p>Penetrating ability: gamma &gt; beta &gt; alpha.</p>
+<p>All three are ionising radiation, but they interact with matter differently.</p>
+
+<h3>Worked example 1: Choosing a suitable absorber</h3>
+<p>A school laboratory needs to reduce a beam of beta radiation. Which material is commonly suitable: paper, thin aluminium, or thick lead?</p>
+<p><b>Step 1:</b> Identify the radiation as beta.</p>
+<p><b>Step 2:</b> Recall that a thin sheet of aluminium can absorb much of the beta radiation.</p>
+<p><b>Answer:</b> Thin aluminium is commonly used.</p>
+
+<h3>Worked example 2: Comparing ionisation</h3>
+<p>Arrange alpha, beta and gamma radiation from strongest to weakest ionising ability.</p>
+<p><b>Step 1:</b> Alpha particles are relatively massive and carry a +2 charge.</p>
+<p><b>Step 2:</b> Beta particles carry a charge but have much smaller mass.</p>
+<p><b>Step 3:</b> Gamma rays have no charge.</p>
+<p><b>Answer:</b> Alpha, beta, gamma.</p>
+
+<h3>Worked example 3: Identifying a neutral radiation</h3>
+<p>Radiation from a source is unaffected by electric and magnetic fields and is highly penetrating. Which type is most likely?</p>
+<p><b>Step 1:</b> Charged alpha and beta particles can be deflected by electric and magnetic fields.</p>
+<p><b>Step 2:</b> Gamma radiation has no charge.</p>
+<p><b>Step 3:</b> Gamma radiation is also highly penetrating.</p>
+<p><b>Answer:</b> Gamma radiation.</p>
+
+<h3>Remember</h3>
+<p>Alpha is strongly ionising but weakly penetrating. Gamma is weakly ionising compared with alpha but highly penetrating. Beta lies between them for these properties.</p>`,
+  [
+    {
+      q: "Which radiation consists of two protons and two neutrons?",
+      options: ["Alpha", "Beta-minus", "Gamma", "X-rays"],
+      ans: 0,
+      hint: "It is identical to a helium nucleus.",
+      steps: [
+        "An alpha particle contains two protons.",
+        "It also contains two neutrons.",
+        "Therefore, it is an alpha particle."
+      ],
+      why: "An alpha particle is a helium nucleus with a charge of +2."
+    },
+    {
+      q: "Which type of radiation has the greatest penetrating ability?",
+      options: ["Alpha", "Beta", "Gamma", "All penetrate equally"],
+      ans: 2,
+      hint: "Which radiation can pass through paper and aluminium and requires substantial shielding to reduce its intensity?",
+      steps: [
+        "Alpha is stopped by paper or the outer layer of skin.",
+        "Beta can be reduced by thin aluminium.",
+        "Gamma is the most penetrating of the three."
+      ],
+      why: "Gamma radiation has high penetrating ability and may require thick lead or concrete to reduce its intensity."
+    },
+    {
+      q: "Which radiation has the greatest ionising ability?",
+      options: ["Gamma", "Beta", "Alpha", "All have zero ionising ability"],
+      ans: 2,
+      hint: "Strong ionisation is associated with alpha particles' charge and interactions with matter.",
+      steps: [
+        "Alpha particles carry a +2 charge.",
+        "They produce many ionisations over a short distance.",
+        "Alpha has the greatest ionising ability."
+      ],
+      why: "Alpha radiation is highly ionising even though it is not very penetrating."
+    },
+    {
+      q: "Which type of radiation has no electric charge and is not deflected by an electric field?",
+      options: ["Alpha", "Beta-minus", "Both alpha and beta-minus", "Gamma"],
+      ans: 3,
+      hint: "Look for electromagnetic radiation rather than a charged particle.",
+      steps: [
+        "Alpha has a positive charge.",
+        "Beta-minus has a negative charge.",
+        "Gamma has no charge, so an electric field does not deflect it."
+      ],
+      why: "Gamma radiation consists of photons, which have no electric charge."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 4: HALF-LIFE
+// ============================================================
+
+add(
+  "physics",
+  "modern_physics",
+  "Half-Life",
+  `<h2>Half-Life</h2>
+
+<h3>1. Meaning of half-life</h3>
+<p>The half-life of a radioactive isotope is the time taken for half the radioactive nuclei in a sample to decay.</p>
+<p>For a sample with a constant half-life, the number of undecayed nuclei halves after each half-life.</p>
+
+<p>The same halving pattern applies to activity, provided the measurement is corrected for background radiation.</p>
+
+<h3>2. The halving pattern</h3>
+<ul>
+  <li>Initially: 100% remains.</li>
+  <li>After one half-life: 50% remains.</li>
+  <li>After two half-lives: 25% remains.</li>
+  <li>After three half-lives: 12.5% remains.</li>
+  <li>After four half-lives: 6.25% remains.</li>
+</ul>
+
+<p><b>Number of half-lives = elapsed time ÷ half-life</b></p>
+
+<p>For simple questions:</p>
+<p><b>Remaining amount = initial amount × (1/2)<sup>number of half-lives</sup></b></p>
+
+<h3>Worked example 1: Finding the remaining mass</h3>
+<p>A radioactive sample has a mass of 80 g. Its half-life is 5 hours. Find the mass of the radioactive isotope remaining after 10 hours.</p>
+<p><b>Step 1:</b> Number of half-lives = 10 ÷ 5 = 2.</p>
+<p><b>Step 2:</b> After 5 hours: 80 ÷ 2 = 40 g.</p>
+<p><b>Step 3:</b> After 10 hours: 40 ÷ 2 = 20 g.</p>
+<p><b>Answer:</b> 20 g remains.</p>
+
+<h3>Worked example 2: Finding elapsed time</h3>
+<p>A sample has an initial activity of 1600 Bq. Its activity falls to 200 Bq. If its half-life is 3 days, find the elapsed time.</p>
+<p><b>Step 1:</b> 1600 Bq → 800 Bq after 3 days.</p>
+<p><b>Step 2:</b> 800 Bq → 400 Bq after 6 days.</p>
+<p><b>Step 3:</b> 400 Bq → 200 Bq after 9 days.</p>
+<p>Three half-lives have passed.</p>
+<p><b>Answer:</b> 9 days.</p>
+
+<h3>Worked example 3: Finding the half-life</h3>
+<p>A sample's activity falls from 600 counts per minute to 300 counts per minute in 8 hours. Assume background has been corrected. Find its half-life.</p>
+<p><b>Step 1:</b> The activity has halved from 600 to 300.</p>
+<p><b>Step 2:</b> One half-life has therefore passed.</p>
+<p><b>Answer:</b> 8 hours.</p>
+
+<h3>Common mistake</h3>
+<p>After two half-lives, 25% remains, not 0%. Radioactive decay reduces the amount in stages; it does not mean the entire sample disappears after one half-life.</p>
+
+<h3>Remember</h3>
+<p>Count how many times the amount halves. Then multiply that number of half-lives by the duration of one half-life to find elapsed time.</p>`,
+  [
+    {
+      q: "A sample contains 120 g of a radioactive isotope. Its half-life is 4 hours. How much remains after 8 hours?",
+      options: ["60 g", "30 g", "15 g", "0 g"],
+      ans: 1,
+      hint: "Eight hours is two half-lives.",
+      steps: [
+        "Number of half-lives = 8 ÷ 4 = 2.",
+        "After 4 hours: 120 ÷ 2 = 60 g.",
+        "After 8 hours: 60 ÷ 2 = 30 g."
+      ],
+      why: "The sample halves once during each 4-hour interval."
+    },
+    {
+      q: "A source's activity decreases from 800 Bq to 100 Bq. How many half-lives have elapsed?",
+      options: ["2", "3", "4", "8"],
+      ans: 1,
+      hint: "Keep halving 800 until you reach 100.",
+      steps: [
+        "800 → 400 is one half-life.",
+        "400 → 200 is two half-lives.",
+        "200 → 100 is three half-lives."
+      ],
+      why: "Three successive halvings reduce the activity from 800 Bq to 100 Bq."
+    },
+    {
+      q: "A sample has a half-life of 6 days. How long does it take for its activity to fall from 400 Bq to 50 Bq?",
+      options: ["6 days", "12 days", "18 days", "24 days"],
+      ans: 2,
+      hint: "Count the halvings, then multiply by 6 days.",
+      steps: [
+        "400 → 200 after one half-life.",
+        "200 → 100 after two half-lives.",
+        "100 → 50 after three half-lives.",
+        "Elapsed time = 3 × 6 = 18 days."
+      ],
+      why: "Three half-lives are needed to reduce the activity to one-eighth of its initial value."
+    },
+    {
+      q: "A radioactive sample has a half-life of 10 minutes. What fraction remains after 30 minutes?",
+      options: ["1/2", "1/4", "1/8", "1/16"],
+      ans: 2,
+      hint: "Thirty minutes contains three half-lives.",
+      steps: [
+        "Number of half-lives = 30 ÷ 10 = 3.",
+        "After one half-life, 1/2 remains.",
+        "After two, 1/4 remains.",
+        "After three, 1/8 remains."
+      ],
+      why: "Each half-life halves the remaining fraction."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 5: USES AND SAFETY OF RADIOACTIVITY
+// ============================================================
+
+add(
+  "physics",
+  "modern_physics",
+  "Uses and Safety of Radioactivity",
+  `<h2>Uses and Safety of Radioactivity</h2>
+
+<h3>1. Medical applications</h3>
+<ul>
+  <li><b>Medical tracers:</b> suitable radioactive isotopes help doctors investigate how organs function.</li>
+  <li><b>Cancer treatment:</b> carefully controlled radiation can damage cancer cells.</li>
+  <li><b>Sterilisation:</b> radiation can kill microorganisms on suitable medical equipment.</li>
+</ul>
+
+<h3>2. Industrial and scientific applications</h3>
+<ul>
+  <li><b>Thickness monitoring:</b> radiation detectors help monitor the thickness of paper or metal sheets.</li>
+  <li><b>Industrial radiography:</b> penetrating radiation can reveal internal defects in some materials.</li>
+  <li><b>Dating:</b> suitable radioactive isotopes can help estimate the age of archaeological or geological samples.</li>
+</ul>
+
+<h3>3. Radiation exposure and contamination</h3>
+<p><b>Irradiation</b> means being exposed to radiation from a source. The radioactive material does not necessarily enter or remain on the person or object.</p>
+<p><b>Contamination</b> means unwanted radioactive material gets onto or into a person or object. The material may continue emitting radiation until it is removed or decays.</p>
+
+<h3>4. Basic radiation protection</h3>
+<ul>
+  <li><b>Reduce time:</b> spend as little time as reasonably possible near a source.</li>
+  <li><b>Increase distance:</b> stay farther away where practical.</li>
+  <li><b>Use shielding:</b> select shielding appropriate for the type and energy of radiation.</li>
+  <li><b>Prevent contamination:</b> use proper containment, protective equipment and handling procedures.</li>
+</ul>
+
+<p>Never handle an unknown radioactive source. Laboratory sources must be controlled by trained personnel and according to safety procedures.</p>
+
+<h3>Worked example 1: Choosing a use</h3>
+<p>A factory needs to monitor whether a sheet of paper is becoming too thick during production. Which application is suitable?</p>
+<p><b>Step 1:</b> The task is to monitor material thickness.</p>
+<p><b>Step 2:</b> A suitable radiation source and detector can measure changes in the radiation reaching the detector.</p>
+<p><b>Answer:</b> Radiation thickness monitoring.</p>
+
+<h3>Worked example 2: Irradiation or contamination?</h3>
+<p>A sealed source is used to irradiate a medical instrument. The source is removed, and no radioactive material is transferred to the instrument. Is this irradiation or contamination?</p>
+<p><b>Step 1:</b> The instrument was exposed to radiation.</p>
+<p><b>Step 2:</b> No radioactive material was transferred onto or into it.</p>
+<p><b>Answer:</b> Irradiation, not contamination.</p>
+
+<h3>Worked example 3: Applying radiation protection</h3>
+<p>A trained worker must take a brief reading near a properly shielded radioactive source. State three general ways to reduce exposure.</p>
+<p><b>Step 1:</b> Reduce the time spent near the source.</p>
+<p><b>Step 2:</b> Increase distance where practical.</p>
+<p><b>Step 3:</b> Use appropriate shielding and follow the approved procedure.</p>
+<p><b>Answer:</b> Reduce time, increase distance and use suitable shielding.</p>
+
+<h3>Remember</h3>
+<p>Radioactivity has useful medical, industrial and scientific applications. Safe use depends on controlling exposure, preventing contamination and following trained procedures.</p>`,
+  [
+    {
+      q: "Which application uses radiation to help treat cancer?",
+      options: [
+        "Measuring the speed of sound",
+        "Radiotherapy",
+        "Measuring electrical resistance",
+        "Determining the density of ordinary water"
+      ],
+      ans: 1,
+      hint: "Look for a medical treatment that uses carefully controlled radiation.",
+      steps: [
+        "Radiotherapy uses radiation in cancer treatment.",
+        "The treatment is planned to target cancer cells while limiting harm to healthy tissue."
+      ],
+      why: "Radiotherapy is an important medical application of ionising radiation."
+    },
+    {
+      q: "Radioactive material is accidentally spilled onto a laboratory bench. What is this called?",
+      options: ["Irradiation only", "Neutralisation", "Contamination", "Half-life"],
+      ans: 2,
+      hint: "The radioactive substance itself has been transferred to the bench.",
+      steps: [
+        "Radioactive material is present on the bench.",
+        "Unwanted radioactive material on a surface is contamination."
+      ],
+      why: "Contamination involves radioactive substances getting onto or into an object or person."
+    },
+    {
+      q: "Which action generally helps reduce radiation exposure?",
+      options: [
+        "Spend longer beside the source",
+        "Move closer to the source",
+        "Remove all shielding",
+        "Increase distance from the source where practical"
+      ],
+      ans: 3,
+      hint: "Consider how distance affects exposure.",
+      steps: [
+        "Increasing distance generally reduces exposure from a point source.",
+        "Reducing time and using appropriate shielding also help."
+      ],
+      why: "Time, distance and suitable shielding are basic principles of radiation protection."
+    },
+    {
+      q: "A sealed radioactive source exposes an object to radiation, but no radioactive material is transferred to the object. What has occurred?",
+      options: ["Contamination", "Irradiation", "Radioactive decay stops", "The object becomes a neutron"],
+      ans: 1,
+      hint: "The object receives radiation, not radioactive material.",
+      steps: [
+        "The object is exposed to radiation.",
+        "No radioactive material is deposited on or inside it.",
+        "This is irradiation rather than contamination."
+      ],
+      why: "Irradiation does not necessarily make an object radioactive; contamination involves radioactive material being present on or in it."
+    }
+  ]
 );
