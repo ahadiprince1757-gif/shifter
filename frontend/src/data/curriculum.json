@@ -1510,16 +1510,16 @@
           "Group 1 Elements",
           "Group 2 Elements",
           "Group 7 Elements",
-          "Group 0 Elements",
-          "Metals and Non-metals",
-          "Periodic Trends",
-          "Atomic Size"
+          "Group 0 Elements"
         ]
       },
       {
         "id": "chemical_bonding",
         "label": "Chemical Bonding",
         "topics": [
+          "Metallic Bonding",
+          "Delocalised Electrons in Metals",
+          "Metallic Bonding and Metal Properties",
           "Why Atoms Bond",
           "Valency",
           "Ionic Bonding",
@@ -1537,21 +1537,19 @@
           "Giant Covalent Structures",
           "Diamond",
           "Graphite",
-          "Ionic and Covalent Structures",
-          "Metallic Bonding",
-          "Delocalised Electrons in Metals",
-          "Metallic Bonding and Metal Properties"
+          "Ionic and Covalent Structures"
         ]
       },
       {
         "id": "chemical_formulae",
         "label": "Chemical Formulae",
         "topics": [
-          "Valency and Chemical Formulae",
+          "Valency",
           "Writing Chemical Formulae",
           "Formulae of Ionic Compounds",
           "Formulae of Covalent Compounds",
-          "Naming Compounds",
+          "Naming Ionic Compounds",
+          "Naming Covalent Compounds",
           "State Symbols"
         ]
       },
@@ -1566,17 +1564,7 @@
           "Molar Mass",
           "Calculating Moles from Mass",
           "Calculating Mass from Moles",
-          "Moles and Particles",
-          "Mole Ratios",
-          "Calculating Reactant Amount",
-          "Calculating Product Amount",
-          "Empirical Formula",
-          "Molecular Formula",
-          "Percentage Composition",
-          "Limiting Reactant",
-          "Gas Volumes at Room Conditions",
-          "Gas Volume Calculations",
-          "Percentage Yield"
+          "Moles and Particles"
         ]
       },
       {
@@ -1635,15 +1623,15 @@
           "Endothermic Reactions",
           "Energy Profile Diagrams",
           "Activation Energy",
-          "Specific Heat Capacity",
-          "Heat Energy Calculations",
-          "Latent Heat of Fusion",
-          "Latent Heat of Vaporisation",
-          "Rate of Reaction",
+          "Meaning of Rate of Reaction",
           "Effect of Temperature on Rate",
           "Effect of Concentration on Rate",
           "Effect of Surface Area on Rate",
-          "Catalysts"
+          "Catalysts",
+          "Specific Heat Capacity",
+          "Heat Energy Calculations",
+          "Latent Heat of Fusion",
+          "Latent Heat of Vaporisation"
         ]
       },
       {
@@ -1678,8 +1666,6 @@
           "Electrolysis of Molten Compounds",
           "Electrolysis of Aqueous Solutions",
           "Electrolysis of Copper(II) Sulphate",
-          "Electroplating",
-          "Applications of Electrolysis",
           "Simple Cells",
           "Chemical Cell Voltage",
           "Batteries",

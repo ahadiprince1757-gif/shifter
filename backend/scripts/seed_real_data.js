@@ -181,18 +181,26 @@ async function seedCurriculum(canonical) {
 
   const topicIdMap = new Map();
   dbTopics.forEach((t) => {
-    const key = `${t.chapter.subject_id}|${t.chapter.chapter_key}|${t.title.trim().toLowerCase()}`;
-    topicIdMap.set(key, { id: t.id, chapter_id: t.chapter_id, title: t.title, sid: t.chapter.subject_id, cid: t.chapter.chapter_key });
+    const exactKey = `${t.chapter.subject_id}|${t.chapter.chapter_key}|${t.title.trim()}`;
+    const lowerKey = `${t.chapter.subject_id}|${t.chapter.chapter_key}|${t.title.trim().toLowerCase()}`;
+    const entry = { id: t.id, chapter_id: t.chapter_id, title: t.title, sid: t.chapter.subject_id, cid: t.chapter.chapter_key };
+    topicIdMap.set(exactKey, entry);
+    if (!topicIdMap.has(lowerKey)) {
+      topicIdMap.set(lowerKey, entry);
+    }
   });
 
   // 5. Insert Lessons & Lesson Versions
   console.log("5. Inserting lessons and lesson versions...");
   const lessonsToInsert = [];
+  const seenLessonTopicIds = new Set();
   for (const [key, content] of contentMap.entries()) {
-    const topicLookup = `${content.sid}|${content.cid}|${content.topic.trim().toLowerCase()}`;
-    const topicInfo = topicIdMap.get(topicLookup);
-    const topicId = topicInfo?.id || topicInfo;
-    if (topicId) {
+    const exactLookup = `${content.sid}|${content.cid}|${content.topic.trim()}`;
+    const lowerLookup = `${content.sid}|${content.cid}|${content.topic.trim().toLowerCase()}`;
+    const topicInfo = topicIdMap.get(exactLookup) || topicIdMap.get(lowerLookup);
+    const topicId = topicInfo?.id;
+    if (topicId && !seenLessonTopicIds.has(topicId)) {
+      seenLessonTopicIds.add(topicId);
       lessonsToInsert.push({
         topic_id: topicId,
         content: content.notes,
@@ -233,11 +241,14 @@ async function seedCurriculum(canonical) {
   // 6. Insert Quizzes
   console.log("6. Inserting quizzes...");
   const quizzesToInsert = [];
+  const seenQuizTopicIds = new Set();
   for (const [key, content] of contentMap.entries()) {
-    const topicLookup = `${content.sid}|${content.cid}|${content.topic.trim().toLowerCase()}`;
-    const topicInfo = topicIdMap.get(topicLookup);
-    const topicId = topicInfo?.id || topicInfo;
-    if (topicId && content.qs && content.qs.length > 0) {
+    const exactLookup = `${content.sid}|${content.cid}|${content.topic.trim()}`;
+    const lowerLookup = `${content.sid}|${content.cid}|${content.topic.trim().toLowerCase()}`;
+    const topicInfo = topicIdMap.get(exactLookup) || topicIdMap.get(lowerLookup);
+    const topicId = topicInfo?.id;
+    if (topicId && !seenQuizTopicIds.has(topicId) && content.qs && content.qs.length > 0) {
+      seenQuizTopicIds.add(topicId);
       quizzesToInsert.push({
         topic_id: topicId,
         title: `${content.topic} Quiz`,
@@ -266,9 +277,10 @@ async function seedCurriculum(canonical) {
   const questionMetaList = []; // Helper to correlate for answers insertion
 
   for (const [key, content] of contentMap.entries()) {
-    const topicLookup = `${content.sid}|${content.cid}|${content.topic.trim().toLowerCase()}`;
-    const topicInfo = topicIdMap.get(topicLookup);
-    const topicId = topicInfo?.id || topicInfo;
+    const exactLookup = `${content.sid}|${content.cid}|${content.topic.trim()}`;
+    const lowerLookup = `${content.sid}|${content.cid}|${content.topic.trim().toLowerCase()}`;
+    const topicInfo = topicIdMap.get(exactLookup) || topicIdMap.get(lowerLookup);
+    const topicId = topicInfo?.id;
     const quizId = quizIdMap.get(topicId);
     if (!quizId) continue;
 
