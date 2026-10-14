@@ -1574,19 +1574,19 @@
           "Chemical Reactions",
           "Reactants",
           "Products",
-          "Signs of Chemical Reaction",
+          "Signs of Chemical Reactions",
           "Conservation of Mass",
           "Chemical Equations",
           "Writing Chemical Equations",
           "State Symbols",
           "Balancing Chemical Equations",
-          "Balancing Simple Equations",
-          "Balancing More Complex Equations",
+          "Balancing Equations with Multiple Elements",
           "Combination Reactions",
           "Decomposition Reactions",
           "Displacement Reactions",
           "Neutralisation Reactions",
-          "Combustion Reactions"
+          "Combustion Reactions",
+          "Precipitation Reactions"
         ]
       },
       {
@@ -1632,26 +1632,6 @@
           "Heat Energy Calculations",
           "Latent Heat of Fusion",
           "Latent Heat of Vaporisation"
-        ]
-      },
-      {
-        "id": "metals_extraction",
-        "label": "Metals and Extraction",
-        "topics": [
-          "Physical Properties of Metals",
-          "Electrical Conductivity",
-          "Malleability",
-          "Ductility",
-          "Reactivity Series",
-          "Displacement Reactions",
-          "Ores",
-          "Reduction",
-          "Extraction of Iron",
-          "Rusting",
-          "Conditions for Rusting",
-          "Prevention of Rusting",
-          "Alloys",
-          "Uses of Metals"
         ]
       },
       {
@@ -1724,9 +1704,6 @@
           "Uses of Sulphuric Acid",
           "Properties of Carbon",
           "Carbon Dioxide",
-          "Carbon Monoxide",
-          "Allotropes of Carbon",
-          "Properties of Nitrogen",
           "Ammonia",
           "Nitrogen Compounds",
           "Nitrogen Cycle"
@@ -1815,16 +1792,25 @@
         "id": "metals",
         "label": "Metals",
         "topics": [
+          "Physical Properties of Metals",
+          "Electrical Conductivity",
+          "Malleability",
+          "Ductility",
+          "Chemical Properties of Metals",
+          "Reactivity Series",
+          "Displacement Reactions",
+          "Ores",
+          "Concentration of Ores",
+          "Reduction",
+          "Extraction of Iron",
+          "Uses of Metals",
+          "Rusting",
+          "Conditions for Rusting",
+          "Prevention of Rusting",
+          "Alloys",
           "Bauxite",
           "Purification of Bauxite",
-          "Electrolysis of Aluminium Oxide",
-          "Chemical Properties of Metals",
-          "Concentration of Ores",
-          "Extraction by Reduction",
-          "Extraction of Iron",
-          "Rusting",
-          "Alloys",
-          "Uses of Metals"
+          "Electrolysis of Aluminium Oxide"
         ]
       },
       {

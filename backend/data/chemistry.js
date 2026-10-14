@@ -18314,1133 +18314,2893 @@ add(
 // ============================================================
 // BATCH 11 — CHEMICAL REACTIONS
 // Chapter: chemical_reactions
-// One concept per screen
-// No multiple-choice questions
-// ============================================================
-
-
-// ============================================================
-// 1. CHEMICAL REACTIONS
 // ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Chemical Reactions",
-  `<h2>Chemical Reactions</h2>
-  <p>A chemical reaction is a process in which one or more substances change to form new substances with different properties.</p>
 
-  <h3>Reactants and products</h3>
-  <p>The substances present before a chemical reaction are called <strong>reactants</strong>.</p>
-  <p>The new substances formed are called <strong>products</strong>.</p>
+  `
+  <h2>Chemical Reactions</h2>
 
-  <p>For example:</p>
-  <p><strong>Magnesium + Oxygen → Magnesium oxide</strong></p>
-  <p>Magnesium and oxygen are the reactants. Magnesium oxide is the product.</p>
+  <h3>What Is a Chemical Reaction?</h3>
 
-  <h3>What happens during a reaction?</h3>
-  <p>Atoms are rearranged. The atoms themselves are not destroyed or created.</p>`,
+  <p>A <strong>chemical reaction</strong> is a process in which one or more substances change into new substances with different chemical compositions and properties.</p>
+
+  <p>During a chemical reaction, the atoms in the starting substances are rearranged to form new substances. In an ordinary chemical reaction, atoms are not created or destroyed; chemical bonds break and new bonds form.</p>
+
+  <h3>Physical Changes and Chemical Changes</h3>
+
+  <p>A <strong>physical change</strong> changes a substance's form, size or state without producing a new substance. For example, ice melting produces liquid water.</p>
+
+  <p>A <strong>chemical change</strong> produces one or more new substances. For example, burning magnesium produces magnesium oxide.</p>
+
+  <h3>Worked Example 1: Burning Magnesium</h3>
+
+  <p><strong>Question:</strong> Magnesium burns in oxygen to form magnesium oxide. Explain why this is a chemical reaction.</p>
+
+  <p><strong>Step 1:</strong> Identify the starting substances: magnesium and oxygen.</p>
+  <p><strong>Step 2:</strong> Identify the substance formed: magnesium oxide.</p>
+  <p><strong>Step 3:</strong> Compare the substances. Magnesium oxide has a different chemical composition and different properties from magnesium and oxygen.</p>
+
+  <p><strong>Answer:</strong> A new substance, magnesium oxide, forms when magnesium reacts with oxygen. Therefore, the process is a chemical reaction.</p>
+
+  <h3>Worked Example 2: Melting Ice</h3>
+
+  <p><strong>Question:</strong> Is melting ice a chemical reaction?</p>
+
+  <p><strong>Step 1:</strong> Identify the substance before the change: solid water (ice).</p>
+  <p><strong>Step 2:</strong> Identify the substance after the change: liquid water.</p>
+  <p><strong>Step 3:</strong> Both forms are water, H₂O. Only the physical state changes; no new substance forms.</p>
+
+  <p><strong>Answer:</strong> No. Melting ice is a physical change, not a chemical reaction.</p>
+
+  <h3>Worked Example 3: Formation of Water</h3>
+
+  <p><strong>Question:</strong> Hydrogen reacts with oxygen to form water. Explain what happens to the atoms.</p>
+
+  <p><strong>Step 1:</strong> Hydrogen and oxygen are the starting substances.</p>
+  <p><strong>Step 2:</strong> Their atoms rearrange as chemical bonds break and new bonds form.</p>
+  <p><strong>Step 3:</strong> The rearranged atoms form water molecules. The atoms themselves are conserved.</p>
+
+  <p><strong>Answer:</strong> Hydrogen and oxygen atoms rearrange to form water molecules; they are not created or destroyed.</p>
+
+  <h3>Evidence of a Chemical Reaction</h3>
+
+  <p>Possible signs include a colour change, gas production, formation of a solid, a temperature change, or light emission. These signs provide evidence, but no single sign automatically proves that a chemical reaction has occurred. The underlying question is whether a new substance has formed.</p>
+
+  <h3>Remember</h3>
+
+  <ul>
+    <li>A chemical reaction forms new substances.</li>
+    <li>Atoms are rearranged during the reaction.</li>
+    <li>A physical change does not produce a new substance.</li>
+    <li>Observe the evidence and determine whether a new substance has formed.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What is a chemical reaction?",
+      q: "Magnesium burns in oxygen and forms magnesium oxide. Why is this a chemical reaction?",
+      hint: "Compare the starting substances with the substance formed.",
       steps: [
-        "Step 1: A chemical reaction involves substances changing.",
-        "Step 2: New substances are formed.",
-        "Step 3: The new substances have different properties from the original substances."
+        "Identify magnesium and oxygen as the starting substances.",
+        "Identify magnesium oxide as the new substance.",
+        "Recognise that magnesium oxide has a different chemical composition from either starting substance."
       ],
-      ans: "A chemical reaction is a process in which substances change to form new substances with different properties.",
-      why: "The formation of new substances distinguishes a chemical reaction from a physical change."
+      ans: "A new substance, magnesium oxide, is formed.",
+      why: "The formation of a substance with a new chemical composition is the defining feature of a chemical reaction."
     },
     {
-      q: "Identify the reactants and product in: magnesium + oxygen → magnesium oxide.",
+      q: "Ice melts to form liquid water. Explain why this is a physical change rather than a chemical reaction.",
+      hint: "Check whether the chemical identity of water changes.",
       steps: [
-        "Step 1: Look at the substances before the arrow.",
-        "Step 2: Magnesium and oxygen are before the arrow, so they are the reactants.",
-        "Step 3: Magnesium oxide is after the arrow, so it is the product."
+        "Identify the substance before melting as H₂O.",
+        "Identify the substance after melting as H₂O.",
+        "Conclude that only the physical state changes."
       ],
-      ans: "Reactants: magnesium and oxygen. Product: magnesium oxide.",
-      why: "Reactants are changed during the reaction, while products are formed."
+      ans: "It is a physical change because water remains H₂O and no new substance forms.",
+      why: "A change of state does not change the chemical composition of water."
     },
     {
-      q: "What happens to atoms during a chemical reaction?",
+      q: "During a chemical reaction, what happens to the atoms in the starting substances?",
+      hint: "Think about the difference between rearranging atoms and creating new atoms.",
       steps: [
-        "Step 1: Atoms in the reactants are present before the reaction.",
-        "Step 2: The atoms become rearranged into new combinations.",
-        "Step 3: The atoms are therefore conserved."
+        "Recognise that atoms are present in the starting substances.",
+        "Chemical bonds break and new bonds form.",
+        "The atoms rearrange into new combinations while the atoms themselves are conserved."
       ],
-      ans: "Atoms are rearranged into new combinations; they are not created or destroyed.",
-      why: "Chemical reactions involve rearrangement of atoms."
+      ans: "The atoms rearrange to form new substances; they are not created or destroyed.",
+      why: "Ordinary chemical reactions change how atoms are bonded, not the identity of the atomic nuclei."
     }
   ],
+
   [
     {
-      q: "A student reacts iron with sulphur to form iron(II) sulphide. Identify the reactants and product.",
-      hint: "Reactants are the substances present before the arrow.",
+      q: "A student heats a blue substance. It becomes black, and analysis shows that a new compound has formed. Is this evidence of a chemical reaction? Explain.",
+      hint: "Use both the observed colour change and the information about the substance formed.",
       steps: [
-        "Step 1: Iron and sulphur are used at the beginning.",
-        "Step 2: Therefore they are the reactants.",
-        "Step 3: Iron(II) sulphide is formed."
+        "Identify the observed colour change.",
+        "Use the analysis result to determine whether a new substance formed.",
+        "Connect the formation of the new compound to the definition of a chemical reaction."
       ],
-      ans: "Reactants: iron and sulphur. Product: iron(II) sulphide.",
-      why: "The starting substances are reactants and the newly formed substance is the product."
+      ans: "Yes. The formation of a new compound shows that a chemical reaction occurred.",
+      why: "The colour change supports the conclusion, but the decisive evidence is the formation of a new substance."
+    },
+    {
+      q: "A candle's wax melts when heated. No new substance is formed during melting. Classify this change.",
+      hint: "Ask whether the chemical composition changes.",
+      steps: [
+        "Identify the change as melting.",
+        "Check whether a new substance forms during this step.",
+        "Classify a change that alters only physical form as a physical change."
+      ],
+      ans: "It is a physical change.",
+      why: "Melting changes the physical state of the wax without, by itself, producing a new substance."
+    },
+    {
+      q: "A student sees bubbles when a liquid is heated and concludes that a chemical reaction must have occurred. What is wrong with this conclusion?",
+      hint: "Can bubbles form when a liquid changes into a gas?",
+      steps: [
+        "Recognise that bubbles can form when a liquid boils.",
+        "Boiling can occur without forming a new substance.",
+        "Conclude that further evidence is needed to establish whether a chemical reaction occurred."
+      ],
+      ans: "Bubbles alone do not prove a chemical reaction because they may be caused by boiling.",
+      why: "Evidence such as gas production must be interpreted in context to distinguish a chemical reaction from a physical change."
+    },
+    {
+      q: "Hydrogen and oxygen react to form water. A student says the atoms disappear and water atoms are created. Correct the student's explanation.",
+      hint: "Think about what is conserved when chemical bonds change.",
+      steps: [
+        "Identify hydrogen and oxygen atoms in the reactants.",
+        "Recognise that the atoms form new bonds.",
+        "Explain that the same atoms are rearranged into water molecules."
+      ],
+      ans: "Hydrogen and oxygen atoms rearrange and bond to form water molecules; the atoms are not created or destroyed.",
+      why: "Chemical reactions involve rearrangement of atoms rather than the creation or destruction of atoms."
+    },
+    {
+      q: "Iron reacts with sulfur to form iron sulfide, which has different properties from iron and sulfur. What does this tell you about the change?",
+      hint: "Focus on the identity and properties of the product.",
+      steps: [
+        "Identify iron and sulfur as the starting substances.",
+        "Identify iron sulfide as the product.",
+        "Recognise that a compound with a different composition and properties has formed."
+      ],
+      ans: "A chemical reaction occurred because iron sulfide, a new substance, formed.",
+      why: "Formation of a new compound indicates a chemical change."
+    },
+    {
+      q: "A piece of paper is cut into smaller pieces. No new substance forms. Explain why this is not a chemical reaction.",
+      hint: "Distinguish a change in size from a change in chemical composition.",
+      steps: [
+        "Identify the change as cutting.",
+        "Check whether a new substance has formed.",
+        "Recognise that the paper's size and shape change, but its chemical identity does not."
+      ],
+      ans: "It is a physical change because cutting changes the paper's size and shape without forming a new substance.",
+      why: "A change in physical dimensions alone does not constitute a chemical reaction."
     }
   ]
 );
 
-
-// ============================================================
-// 2. REACTANTS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Reactants",
-  `<h2>Reactants</h2>
-  <p>Reactants are the substances that take part in a chemical reaction and are changed during the reaction.</p>
 
-  <p>In a chemical equation, reactants are written on the <strong>left-hand side</strong> of the arrow.</p>
+  `
+  <h2>Reactants</h2>
 
-  <p>Example:</p>
-  <p><strong>2Mg + O<sub>2</sub> → 2MgO</strong></p>
+  <h3>Meaning of Reactants</h3>
 
-  <p>Magnesium and oxygen are the reactants.</p>
+  <p><strong>Reactants</strong> are the substances that are present at the start of a chemical reaction and take part in the process of forming products.</p>
+
+  <p>In a chemical equation, reactants are written on the <strong>left-hand side</strong> of the reaction arrow. The arrow points from the reactants towards the products.</p>
+
+  <p>For example:</p>
+
+  <p><strong>2H₂ + O₂ → 2H₂O</strong></p>
+
+  <p>In this equation, hydrogen (H₂) and oxygen (O₂) are the reactants. Water (H₂O) is the product.</p>
+
+  <h3>How to Identify Reactants</h3>
+
+  <ol>
+    <li>Locate the reaction arrow (→).</li>
+    <li>Read the substances on the left-hand side of the arrow.</li>
+    <li>Identify those substances as the reactants.</li>
+  </ol>
+
+  <p>A plus sign between substances on the left means that more than one reactant is involved. It does not mean that the substances have already combined into a single product.</p>
+
+  <h3>Worked Example 1: Formation of Water</h3>
+
+  <p><strong>Question:</strong> Identify the reactants in the equation 2H₂ + O₂ → 2H₂O.</p>
+
+  <p><strong>Step 1:</strong> Locate the arrow.</p>
+  <p><strong>Step 2:</strong> Read the left-hand side: 2H₂ + O₂.</p>
+  <p><strong>Step 3:</strong> The substances represented are hydrogen and oxygen. The coefficient 2 indicates two units of hydrogen molecules for every one unit of oxygen molecules in the balanced equation.</p>
+
+  <p><strong>Answer:</strong> Hydrogen (H₂) and oxygen (O₂) are the reactants.</p>
+
+  <h3>Worked Example 2: Formation of Iron Sulfide</h3>
+
+  <p><strong>Question:</strong> Identify the reactants in Fe + S → FeS.</p>
+
+  <p><strong>Step 1:</strong> Find the arrow in the equation.</p>
+  <p><strong>Step 2:</strong> Inspect the left-hand side: Fe + S.</p>
+  <p><strong>Step 3:</strong> Fe represents iron, and S represents sulfur.</p>
+
+  <p><strong>Answer:</strong> Iron and sulfur are the reactants. FeS, iron sulfide, is the product.</p>
+
+  <h3>Worked Example 3: Thermal Decomposition of Calcium Carbonate</h3>
+
+  <p><strong>Question:</strong> Identify the reactant in CaCO₃ → CaO + CO₂.</p>
+
+  <p><strong>Step 1:</strong> Locate the reaction arrow.</p>
+  <p><strong>Step 2:</strong> Read the left-hand side, which contains CaCO₃ only.</p>
+  <p><strong>Step 3:</strong> CaCO₃ is calcium carbonate. The substances on the right, CaO and CO₂, are the products.</p>
+
+  <p><strong>Answer:</strong> Calcium carbonate (CaCO₃) is the reactant.</p>
+
+  <h3>Reactants and Coefficients</h3>
+
+  <p>A coefficient is the number written before a chemical formula. For example, in 2Mg + O₂ → 2MgO, magnesium and oxygen are the reactants. The coefficient 2 tells us that two magnesium atoms are represented for every oxygen molecule in the equation.</p>
+
+  <p>A coefficient does not change the identity of a substance. The formula H₂ represents hydrogen molecules, while 2H₂ represents two hydrogen molecules.</p>
 
   <h3>Remember</h3>
-  <p><strong>Left of the arrow = reactants.</strong></p>`,
+
+  <ul>
+    <li>Reactants are the starting substances in a chemical reaction.</li>
+    <li>In a chemical equation, reactants are on the left of the arrow.</li>
+    <li>The substances on the right are the products.</li>
+    <li>Read the chemical formula carefully; a coefficient changes the quantity represented, not the substance's identity.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What are reactants?",
+      q: "Identify the reactants in 2H₂ + O₂ → 2H₂O.",
+      hint: "Read the substances on the left-hand side of the arrow.",
       steps: [
-        "Step 1: Identify the substances present before a reaction occurs.",
-        "Step 2: These substances take part in the reaction.",
-        "Step 3: They are called reactants."
-      ],
-      ans: "Reactants are substances that take part in and are changed during a chemical reaction.",
-      why: "Reactants provide the atoms that are rearranged to form products."
-    },
-    {
-      q: "Identify the reactants in: CaCO₃ → CaO + CO₂.",
-      steps: [
-        "Step 1: Look at the left-hand side of the arrow.",
-        "Step 2: CaCO₃ is on the left.",
-        "Step 3: Therefore CaCO₃ is the reactant."
-      ],
-      ans: "Calcium carbonate (CaCO₃).",
-      why: "The substance on the left of the reaction arrow is the reactant."
-    },
-    {
-      q: "Identify all reactants in: 2H₂ + O₂ → 2H₂O.",
-      steps: [
-        "Step 1: Look to the left of the arrow.",
-        "Step 2: H₂ and O₂ are written there.",
-        "Step 3: Both are therefore reactants."
+        "Locate the arrow in the equation.",
+        "Read the left-hand side: 2H₂ + O₂.",
+        "Name the substances represented by H₂ and O₂."
       ],
       ans: "Hydrogen (H₂) and oxygen (O₂).",
-      why: "Both substances participate in forming water."
+      why: "Reactants are the starting substances and are written to the left of the reaction arrow."
+    },
+    {
+      q: "In Fe + S → FeS, which substances are the reactants?",
+      hint: "Do not confuse the substance on the right with the starting substances.",
+      steps: [
+        "Locate the arrow.",
+        "Read the left-hand side: Fe + S.",
+        "Identify Fe as iron and S as sulfur."
+      ],
+      ans: "Iron and sulfur.",
+      why: "Iron and sulfur are on the left of the arrow and combine to form iron sulfide."
+    },
+    {
+      q: "In CaCO₃ → CaO + CO₂, name the reactant and explain how you identified it.",
+      hint: "Check how many substances appear to the left of the arrow.",
+      steps: [
+        "Locate the arrow.",
+        "Inspect the left-hand side, which contains CaCO₃.",
+        "Identify CaCO₃ as calcium carbonate."
+      ],
+      ans: "Calcium carbonate (CaCO₃), because it is on the left-hand side of the arrow.",
+      why: "Reactants are identified by their position before the arrow, even when only one reactant is present."
     }
   ],
+
   [
     {
-      q: "In Zn + 2HCl → ZnCl₂ + H₂, identify the reactants.",
-      hint: "Look at the left side of the arrow.",
+      q: "A learner writes Mg + O₂ → MgO and identifies MgO as a reactant. Explain the error.",
+      hint: "Compare the position of MgO with the position of the arrow.",
       steps: [
-        "Step 1: The left side contains Zn and 2HCl.",
-        "Step 2: These are the substances that react."
+        "Locate the arrow in the equation.",
+        "Identify Mg and O₂ on the left.",
+        "Identify MgO on the right and classify it as the product."
       ],
-      ans: "Zinc and hydrochloric acid.",
-      why: "Reactants are written before the reaction arrow."
+      ans: "MgO is the product because it is on the right of the arrow; magnesium and oxygen are the reactants.",
+      why: "The position relative to the reaction arrow distinguishes reactants from products."
+    },
+    {
+      q: "In 2Mg + O₂ → 2MgO, how many different reactant substances are represented?",
+      hint: "Count different chemical formulas on the left, not the coefficients.",
+      steps: [
+        "Read the left-hand side: 2Mg + O₂.",
+        "Identify the formulas Mg and O₂.",
+        "Count the different substances, ignoring the coefficient when counting substance types."
+      ],
+      ans: "Two different reactant substances: magnesium and oxygen.",
+      why: "The coefficient 2 changes the amount represented, not the identity of magnesium."
+    },
+    {
+      q: "In Zn + 2HCl → ZnCl₂ + H₂, a student says hydrogen gas is a reactant because it contains hydrogen. Is the student correct?",
+      hint: "Use the position of H₂ in the equation rather than the element's name.",
+      steps: [
+        "Locate the arrow.",
+        "Identify Zn and HCl on the left as the reactants.",
+        "Find H₂ on the right and identify it as a product."
+      ],
+      ans: "No. Zinc and hydrochloric acid are the reactants; hydrogen gas is a product.",
+      why: "Reactant or product status depends on the substance's role and position in the equation, not simply on the element it contains."
+    },
+    {
+      q: "In N₂ + 3H₂ → 2NH₃, identify all reactants and state what the coefficient 3 means.",
+      hint: "Separate the names of the substances from the numbers written before their formulas.",
+      steps: [
+        "Read the left-hand side: N₂ + 3H₂.",
+        "Identify N₂ as nitrogen and H₂ as hydrogen.",
+        "Interpret 3H₂ as three hydrogen molecules represented in the balanced equation."
+      ],
+      ans: "The reactants are nitrogen (N₂) and hydrogen (H₂). The coefficient 3 represents three hydrogen molecules for every nitrogen molecule in the equation.",
+      why: "Coefficients describe relative amounts, while the chemical formulas identify the reactant substances."
+    },
+    {
+      q: "For the equation CaCO₃ → CaO + CO₂, a student lists CaO and CO₂ as the reactants. Correct the answer and explain why.",
+      hint: "Trace the arrow from left to right.",
+      steps: [
+        "Identify CaCO₃ on the left of the arrow.",
+        "Identify CaO and CO₂ on the right of the arrow.",
+        "Classify the left-hand substance as the reactant and the right-hand substances as products."
+      ],
+      ans: "CaCO₃ is the reactant. CaO and CO₂ are the products.",
+      why: "Calcium carbonate decomposes to form calcium oxide and carbon dioxide; the arrow separates starting substances from formed substances."
+    },
+    {
+      q: "In C + O₂ → CO₂, a student says there is only one reactant because there is one product. Explain why this is incorrect.",
+      hint: "Count the substances on the left independently of the number on the right.",
+      steps: [
+        "Read the left-hand side: C + O₂.",
+        "Identify carbon and oxygen as two different reactants.",
+        "Read the right-hand side: CO₂, which is one product substance."
+      ],
+      ans: "There are two reactants, carbon and oxygen, and one product, carbon dioxide.",
+      why: "The number of reactants does not have to equal the number of products."
     }
   ]
 );
-
-
-// ============================================================
-// 3. PRODUCTS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Products",
-  `<h2>Products</h2>
-  <p>Products are the new substances formed during a chemical reaction.</p>
 
-  <p>In a chemical equation, products are written on the <strong>right-hand side</strong> of the arrow.</p>
+  `
+  <h2>Products</h2>
 
-  <p>Example:</p>
-  <p><strong>2H₂ + O₂ → 2H₂O</strong></p>
+  <h3>Meaning of Products</h3>
 
-  <p>Water is the product.</p>
+  <p><strong>Products</strong> are the new substances formed during a chemical reaction. They result when the reactant particles rearrange and form new chemical bonds.</p>
+
+  <p>In a chemical equation, products are written on the <strong>right-hand side</strong> of the reaction arrow.</p>
+
+  <p>For example:</p>
+
+  <p><strong>2Mg + O₂ → 2MgO</strong></p>
+
+  <ul>
+    <li>Reactants: magnesium (Mg) and oxygen (O₂).</li>
+    <li>Product: magnesium oxide (MgO).</li>
+  </ul>
+
+  <h3>How to Identify Products</h3>
+
+  <ol>
+    <li>Locate the reaction arrow (→).</li>
+    <li>Read the substances on the right-hand side.</li>
+    <li>Name each substance using its chemical formula.</li>
+  </ol>
+
+  <p>A plus sign on the right separates different product substances. One reaction can produce one product or several products.</p>
+
+  <h3>Worked Example 1: Burning Magnesium</h3>
+
+  <p><strong>Question:</strong> Identify the product in 2Mg + O₂ → 2MgO.</p>
+
+  <p><strong>Step 1:</strong> Locate the arrow.</p>
+  <p><strong>Step 2:</strong> Read the right-hand side: 2MgO.</p>
+  <p><strong>Step 3:</strong> Identify MgO as magnesium oxide. The coefficient 2 indicates two formula units of magnesium oxide in the balanced equation.</p>
+
+  <p><strong>Answer:</strong> Magnesium oxide (MgO) is the product.</p>
+
+  <h3>Worked Example 2: Thermal Decomposition</h3>
+
+  <p><strong>Question:</strong> Identify the products in CaCO₃ → CaO + CO₂.</p>
+
+  <p><strong>Step 1:</strong> Find the arrow.</p>
+  <p><strong>Step 2:</strong> Read the right-hand side: CaO + CO₂.</p>
+  <p><strong>Step 3:</strong> Identify CaO as calcium oxide and CO₂ as carbon dioxide.</p>
+
+  <p><strong>Answer:</strong> Calcium oxide and carbon dioxide are the products.</p>
+
+  <h3>Worked Example 3: Formation of Ammonia</h3>
+
+  <p><strong>Question:</strong> Identify the product in N₂ + 3H₂ → 2NH₃.</p>
+
+  <p><strong>Step 1:</strong> Locate the arrow.</p>
+  <p><strong>Step 2:</strong> Read the right-hand side: 2NH₃.</p>
+  <p><strong>Step 3:</strong> Identify NH₃ as ammonia. The coefficient 2 indicates two ammonia molecules.</p>
+
+  <p><strong>Answer:</strong> Ammonia (NH₃) is the product.</p>
+
+  <h3>One Reactant Can Form Several Products</h3>
+
+  <p>In a decomposition reaction, one reactant can break down into two or more products. For example, calcium carbonate decomposes on heating to form calcium oxide and carbon dioxide:</p>
+
+  <p><strong>CaCO₃ → CaO + CO₂</strong></p>
+
+  <p>Conversely, two or more reactants can combine to form one product, as in the formation of magnesium oxide.</p>
+
+  <h3>Do Not Confuse Products with Reactants</h3>
+
+  <p>The arrow shows the direction from the reactants towards the products in the equation. The substances on the left are the starting substances; those on the right are the substances formed.</p>
 
   <h3>Remember</h3>
-  <p><strong>Right of the arrow = products.</strong></p>`,
+
+  <ul>
+    <li>Products are formed during a chemical reaction.</li>
+    <li>Products are written on the right-hand side of the arrow.</li>
+    <li>A reaction may form one or several products.</li>
+    <li>Coefficients indicate quantities; they do not change a substance's identity.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What are products?",
+      q: "Identify the product in 2Mg + O₂ → 2MgO.",
+      hint: "Read the right-hand side of the arrow.",
       steps: [
-        "Step 1: A chemical reaction produces new substances.",
-        "Step 2: The new substances formed are called products."
-      ],
-      ans: "Products are the new substances formed during a chemical reaction.",
-      why: "They are the substances produced after the reactants have changed."
-    },
-    {
-      q: "Identify the product in: 2Mg + O₂ → 2MgO.",
-      steps: [
-        "Step 1: Look at the right-hand side of the arrow.",
-        "Step 2: MgO is on the right.",
-        "Step 3: Therefore magnesium oxide is the product."
+        "Locate the reaction arrow.",
+        "Read the right-hand side: 2MgO.",
+        "Identify MgO as magnesium oxide."
       ],
       ans: "Magnesium oxide (MgO).",
-      why: "The product is written after the reaction arrow."
+      why: "Magnesium oxide is formed when magnesium reacts with oxygen, so it is the product."
     },
     {
-      q: "Identify the product in: CaCO₃ → CaO + CO₂.",
+      q: "Name all the products in CaCO₃ → CaO + CO₂.",
+      hint: "There are two formulas on the right-hand side.",
       steps: [
-        "Step 1: Look to the right of the arrow.",
-        "Step 2: CaO and CO₂ are on the right.",
-        "Step 3: Both are products."
+        "Locate the arrow.",
+        "Read the right-hand side: CaO + CO₂.",
+        "Name CaO as calcium oxide and CO₂ as carbon dioxide."
       ],
       ans: "Calcium oxide (CaO) and carbon dioxide (CO₂).",
-      why: "A reaction can form more than one product."
+      why: "Both substances are formed when calcium carbonate decomposes."
+    },
+    {
+      q: "In N₂ + 3H₂ → 2NH₃, what is the product, and what does the coefficient 2 indicate?",
+      hint: "Separate the identity of the substance from the quantity represented.",
+      steps: [
+        "Read the right-hand side: 2NH₃.",
+        "Identify NH₃ as ammonia.",
+        "Interpret the coefficient 2 as two ammonia molecules."
+      ],
+      ans: "Ammonia (NH₃); the coefficient 2 represents two ammonia molecules.",
+      why: "The formula identifies the substance, while the coefficient indicates the relative quantity in the balanced equation."
     }
   ],
+
   [
     {
-      q: "In Fe + S → FeS, identify the product.",
-      hint: "Look to the right of the arrow.",
+      q: "A learner identifies oxygen as the product in 2H₂ + O₂ → 2H₂O. Correct the answer.",
+      hint: "Check whether oxygen is to the left or right of the arrow.",
       steps: [
-        "Step 1: FeS is written after the arrow.",
-        "Step 2: Therefore it is the substance formed."
+        "Locate the arrow.",
+        "Identify H₂ and O₂ on the left as reactants.",
+        "Identify H₂O on the right as the product."
       ],
-      ans: "Iron(II) sulphide (FeS).",
-      why: "Products are formed during the reaction and appear on the right."
+      ans: "Water (H₂O) is the product; hydrogen and oxygen are the reactants.",
+      why: "Oxygen is on the left-hand side, so it is a reactant in this equation."
+    },
+    {
+      q: "In Zn + 2HCl → ZnCl₂ + H₂, how many different product substances are formed, and what are their names?",
+      hint: "Count the different formulas to the right of the arrow.",
+      steps: [
+        "Read the right-hand side: ZnCl₂ + H₂.",
+        "Identify ZnCl₂ as zinc chloride.",
+        "Identify H₂ as hydrogen gas."
+      ],
+      ans: "Two products: zinc chloride (ZnCl₂) and hydrogen gas (H₂).",
+      why: "The two different formulas on the right represent two product substances."
+    },
+    {
+      q: "A student says that CaO is a reactant in CaCO₃ → CaO + CO₂ because it contains calcium. Explain the mistake.",
+      hint: "The position in the equation matters more than the element present.",
+      steps: [
+        "Locate the arrow.",
+        "Find CaCO₃ on the left and CaO on the right.",
+        "Classify CaCO₃ as the reactant and CaO as a product."
+      ],
+      ans: "CaO is a product because it appears on the right of the arrow; CaCO₃ is the reactant.",
+      why: "A substance's role is determined by its position and role in the reaction, not simply by which elements it contains."
+    },
+    {
+      q: "In C + O₂ → CO₂, there are two reactants but only one product. Is this possible? Explain.",
+      hint: "Consider whether several starting substances can form one new substance.",
+      steps: [
+        "Identify carbon and oxygen as the two reactants.",
+        "Identify carbon dioxide as the single product.",
+        "Recognise that the atoms combine to form one type of product substance."
+      ],
+      ans: "Yes. Carbon and oxygen combine to form carbon dioxide.",
+      why: "The number of reactants does not have to equal the number of products."
+    },
+    {
+      q: "In 2KClO₃ → 2KCl + 3O₂, identify the products and explain why there are two product substances.",
+      hint: "Read both formulas on the right-hand side.",
+      steps: [
+        "Locate the arrow.",
+        "Identify KCl and O₂ on the right.",
+        "Name them potassium chloride and oxygen gas."
+      ],
+      ans: "Potassium chloride (KCl) and oxygen gas (O₂).",
+      why: "Potassium chlorate decomposes into two different substances under suitable heating conditions."
+    },
+    {
+      q: "A student writes that the product of Fe + S → FeS is sulfur because sulfur appears in the equation. Identify the actual product.",
+      hint: "Find the formula on the right-hand side.",
+      steps: [
+        "Locate the arrow.",
+        "Read the right-hand side: FeS.",
+        "Identify FeS as iron sulfide."
+      ],
+      ans: "Iron sulfide (FeS).",
+      why: "Sulfur is a reactant in this equation. Iron sulfide is the new substance formed."
     }
   ]
 );
 
-
-// ============================================================
-// 4. SIGNS OF CHEMICAL REACTION
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
-  "Signs of Chemical Reaction",
-  `<h2>Signs of a Chemical Reaction</h2>
-  <p>A chemical reaction may be identified by observable changes.</p>
+  "Signs of Chemical Reactions",
 
-  <h3>Common signs</h3>
+  `
+  <h2>Signs of Chemical Reactions</h2>
+
+  <h3>How Can a Chemical Reaction Be Recognised?</h3>
+
+  <p>A chemical reaction forms new substances. During an experiment, several observable changes may provide evidence that a reaction has occurred. However, a visible change alone does not always prove that a new substance formed.</p>
+
+  <h3>1. Colour Change</h3>
+
+  <p>A substance may change colour when it reacts chemically. For example, iron reacts with sulfur on heating to form iron sulfide, a black solid. The colour change is evidence of a new substance.</p>
+
+  <h3>2. Gas Production</h3>
+
+  <p>A reaction may produce a gas, seen as bubbles or effervescence. For example, dilute hydrochloric acid reacts with calcium carbonate to produce carbon dioxide gas.</p>
+
+  <p><strong>CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂</strong></p>
+
+  <p>However, bubbles can also form when a liquid boils. Therefore, bubbles alone do not prove that a chemical reaction occurred.</p>
+
+  <h3>3. Formation of a Precipitate</h3>
+
+  <p>A <strong>precipitate</strong> is an insoluble solid formed when suitable solutions react. For example, mixing aqueous lead(II) nitrate and potassium iodide produces a yellow precipitate of lead(II) iodide.</p>
+
+  <p>The appearance of a new solid from two solutions can provide strong evidence of a chemical reaction.</p>
+
+  <h3>4. Temperature Change</h3>
+
+  <p>Some reactions release heat, causing the surroundings to become warmer. These are <strong>exothermic reactions</strong>. Other reactions absorb heat from their surroundings and are called <strong>endothermic reactions</strong>.</p>
+
+  <p>A temperature change can support the conclusion that a reaction occurred, but temperature can also change for physical reasons, such as heating or cooling a substance.</p>
+
+  <h3>5. Light or Sound</h3>
+
+  <p>Some reactions release energy as light or produce a noticeable sound. Burning magnesium produces a bright white light. These observations can be evidence of a chemical reaction when interpreted alongside the substances involved.</p>
+
+  <h3>Worked Example 1: Acid and Calcium Carbonate</h3>
+
+  <p><strong>Question:</strong> Dilute hydrochloric acid is added to calcium carbonate. Bubbles form, and the gas turns limewater milky. What evidence supports a chemical reaction?</p>
+
+  <p><strong>Step 1:</strong> Bubbles suggest that a gas is being produced.</p>
+  <p><strong>Step 2:</strong> The gas turns limewater milky, which identifies it as carbon dioxide under the test conditions.</p>
+  <p><strong>Step 3:</strong> Carbon dioxide is a new substance produced by the reaction.</p>
+
+  <p><strong>Answer:</strong> Gas production and the positive carbon dioxide test support the conclusion that a chemical reaction occurred.</p>
+
+  <h3>Worked Example 2: Formation of a Precipitate</h3>
+
+  <p><strong>Question:</strong> Two colourless solutions are mixed, and a yellow solid appears. Explain the observation.</p>
+
+  <p><strong>Step 1:</strong> Observe that the starting solutions were colourless.</p>
+  <p><strong>Step 2:</strong> A yellow solid forms after mixing.</p>
+  <p><strong>Step 3:</strong> If the solid is an insoluble product, its formation indicates that a new substance has formed.</p>
+
+  <p><strong>Answer:</strong> The yellow solid is evidence of a chemical reaction because an insoluble product has formed.</p>
+
+  <h3>Worked Example 3: Melting Ice</h3>
+
+  <p><strong>Question:</strong> Ice melts, and the temperature rises as it absorbs heat. Does the temperature change prove that a chemical reaction occurred?</p>
+
+  <p><strong>Step 1:</strong> Identify the process as melting.</p>
+  <p><strong>Step 2:</strong> Compare the substance before and after the change: both are water, H₂O.</p>
+  <p><strong>Step 3:</strong> No new substance forms, so the temperature change is not evidence of a chemical reaction in this case.</p>
+
+  <p><strong>Answer:</strong> No. The process is a physical change because the substance remains water.</p>
+
+  <h3>How to Evaluate the Evidence</h3>
+
+  <ol>
+    <li>Describe exactly what was observed.</li>
+    <li>Consider whether the observation could result from a physical change.</li>
+    <li>Use a suitable test or other evidence to determine whether a new substance formed.</li>
+  </ol>
+
+  <h3>Remember</h3>
+
   <ul>
-    <li>Formation of a new colour</li>
-    <li>Production of a gas</li>
-    <li>Formation of a precipitate</li>
-    <li>Change in temperature</li>
-    <li>Production of light</li>
-    <li>Production of sound</li>
-    <li>A new smell may be produced</li>
+    <li>Possible signs include colour change, gas production, precipitate formation, temperature change, light or sound.</li>
+    <li>One observation may have more than one explanation.</li>
+    <li>Stronger conclusions come from identifying the new substance formed.</li>
   </ul>
+  `,
 
-  <p>A precipitate is an insoluble solid formed when two solutions react.</p>`,
   [
     {
-      q: "State three signs that may indicate that a chemical reaction has occurred.",
+      q: "Dilute hydrochloric acid reacts with calcium carbonate. Bubbles form, and the gas turns limewater milky. What evidence supports a chemical reaction?",
+      hint: "Use both the observation and the gas test result.",
       steps: [
-        "Step 1: Consider observable changes during a reaction.",
-        "Step 2: Examples include gas production, colour change and temperature change.",
-        "Step 3: A precipitate may also form."
+        "Observe the bubbles, which indicate gas production.",
+        "Use the limewater test to identify the gas as carbon dioxide.",
+        "Conclude that a new substance has formed."
       ],
-      ans: "Any three: gas production, colour change, temperature change, precipitate formation, light production or sound production.",
-      why: "Chemical reactions often produce observable changes because new substances are formed."
+      ans: "Gas is produced, and the gas is identified as carbon dioxide, supporting the conclusion that a chemical reaction occurred.",
+      why: "The gas test provides stronger evidence than bubbles alone because boiling can also produce bubbles."
     },
     {
-      q: "What is a precipitate?",
+      q: "Two colourless solutions are mixed, and an insoluble yellow solid forms. Name the sign of a chemical reaction.",
+      hint: "What is an insoluble solid formed from solutions called?",
       steps: [
-        "Step 1: Two solutions may react when mixed.",
-        "Step 2: An insoluble solid may form.",
-        "Step 3: This solid is called a precipitate."
+        "Observe that a solid appears after mixing.",
+        "Recognise that the solid is insoluble in the solution.",
+        "Name this type of solid a precipitate."
       ],
-      ans: "A precipitate is an insoluble solid formed during a chemical reaction in solution.",
-      why: "The formation of an insoluble solid is evidence that a new substance has formed."
+      ans: "Formation of a precipitate.",
+      why: "A precipitate can indicate that new substances formed when the solutions reacted."
     },
     {
-      q: "Why can a temperature change indicate a chemical reaction?",
+      q: "A reaction releases heat, making the surroundings warmer. What type of reaction is indicated by this energy change?",
+      hint: "Distinguish releasing heat from absorbing heat.",
       steps: [
-        "Step 1: Chemical reactions involve energy changes.",
-        "Step 2: Energy may be released or absorbed.",
-        "Step 3: This can cause the temperature of the surroundings to change."
+        "Observe that heat is released.",
+        "Recognise that energy passes from the reacting system to the surroundings.",
+        "Classify the reaction as exothermic."
       ],
-      ans: "Because chemical reactions can release or absorb energy, causing a temperature change.",
-      why: "Energy changes accompany many chemical reactions."
+      ans: "An exothermic reaction.",
+      why: "Exothermic reactions release energy to their surroundings, often causing a temperature rise."
     }
   ],
+
   [
     {
-      q: "A colourless solution produces bubbles when another solution is added. What evidence suggests that a chemical reaction has occurred?",
-      hint: "Look at what is being produced.",
+      q: "A liquid is heated and bubbles appear. A student concludes that a chemical reaction has definitely occurred. Why is this conclusion unreliable?",
+      hint: "Consider what happens when a liquid reaches its boiling point.",
       steps: [
-        "Step 1: Bubbles indicate that a gas is being produced.",
-        "Step 2: Gas production is an observable sign of a chemical reaction."
+        "Recognise that bubbles can be formed by boiling.",
+        "Boiling is a physical change if the substance remains chemically unchanged.",
+        "Conclude that additional evidence is needed to show that a new substance formed."
       ],
-      ans: "The production of gas, observed as bubbles, suggests that a chemical reaction has occurred.",
-      why: "A gas may be a new product formed during the reaction."
+      ans: "Bubbles may result from boiling, so they do not by themselves prove a chemical reaction.",
+      why: "The same observation can result from a physical process or a chemical reaction."
+    },
+    {
+      q: "A reaction mixture becomes warmer without an external flame heating it. Which sign has been observed, and what does it suggest?",
+      hint: "Focus on the temperature of the mixture and its surroundings.",
+      steps: [
+        "Identify the rise in temperature.",
+        "Consider whether the reaction is releasing energy.",
+        "Conclude that the observation is consistent with an exothermic reaction."
+      ],
+      ans: "A temperature rise, suggesting that the reaction may be exothermic.",
+      why: "A reaction that releases heat can warm its surroundings, although the full experimental context should be considered."
+    },
+    {
+      q: "A white solid appears when two solutions are mixed. Explain why the observation is evidence of a chemical reaction but is not, by itself, complete proof.",
+      hint: "Think about the meaning of a precipitate and the need to identify the solid.",
+      steps: [
+        "Observe the appearance of a solid after mixing.",
+        "Consider whether an insoluble product has formed.",
+        "Recognise that further evidence may be needed to confirm the identity and origin of the solid."
+      ],
+      ans: "The solid may be a precipitate formed by a reaction, but further evidence may be needed to confirm that a new substance formed.",
+      why: "Observations suggest explanations; appropriate tests help establish what actually happened."
+    },
+    {
+      q: "Burning magnesium produces a bright white light and a white powder. Identify two observations that support a chemical reaction.",
+      hint: "One observation involves energy, and the other involves a new solid.",
+      steps: [
+        "Identify the bright white light as an energy-related observation.",
+        "Identify the white powder as a product that differs from the original magnesium.",
+        "Connect the observations with the formation of magnesium oxide."
+      ],
+      ans: "Bright light is emitted, and a new white solid, magnesium oxide, forms.",
+      why: "The observations support the conclusion that magnesium reacted with oxygen to form a new substance."
+    },
+    {
+      q: "Ice melts and becomes liquid water. Explain why the change in appearance and temperature does not establish that a chemical reaction occurred.",
+      hint: "Compare the chemical formula before and after melting.",
+      steps: [
+        "Identify ice and liquid water as H₂O.",
+        "Recognise that only the physical state changes.",
+        "Conclude that no new substance forms."
+      ],
+      ans: "It is a physical change because the substance remains H₂O; no new substance forms.",
+      why: "Changes in appearance or temperature alone are not sufficient to establish a chemical reaction."
+    },
+    {
+      q: "A student observes effervescence when an acid is added to a carbonate. What additional evidence could help establish the identity of the gas?",
+      hint: "Recall the laboratory test for carbon dioxide.",
+      steps: [
+        "Recognise that effervescence suggests gas production.",
+        "Pass the gas through limewater.",
+        "Look for limewater turning milky as evidence of carbon dioxide."
+      ],
+      ans: "Pass the gas through limewater; turning milky indicates carbon dioxide.",
+      why: "A specific gas test helps identify the substance produced rather than relying on bubbles alone."
     }
   ]
 );
-
-
-// ============================================================
-// 5. CONSERVATION OF MASS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Conservation of Mass",
-  `<h2>Conservation of Mass</h2>
-  <p>The law of conservation of mass states that mass is neither created nor destroyed during a chemical reaction.</p>
 
-  <p>Therefore:</p>
+  `
+  <h2>Conservation of Mass</h2>
+
+  <h3>The Law of Conservation of Mass</h3>
+
+  <p>The <strong>law of conservation of mass</strong> states that mass is neither created nor destroyed during an ordinary chemical reaction. In a closed system, the total mass of the reactants equals the total mass of the products.</p>
+
+  <p>During a chemical reaction, atoms are rearranged to form new substances. The same atoms are present before and after the reaction, so the total mass remains constant.</p>
+
   <p><strong>Total mass of reactants = Total mass of products</strong></p>
 
-  <h3>Example</h3>
-  <p>If 10 g of substance A reacts with 6 g of substance B:</p>
-  <p>Mass of reactants = 10 + 6 = 16 g</p>
-  <p>Therefore the total mass of products must be <strong>16 g</strong>.</p>
+  <h3>Why Does Mass Remain Constant?</h3>
 
-  <p>If a reaction appears to lose mass, a gas may have escaped from an open system.</p>`,
+  <p>Atoms have mass. When chemical bonds break and new bonds form, the atoms are rearranged rather than created or destroyed. Therefore, if all substances are accounted for, the total mass is conserved.</p>
+
+  <h3>Worked Example 1: Finding the Mass of a Product</h3>
+
+  <p><strong>Question:</strong> Magnesium reacts completely with oxygen. If 12 g of magnesium reacts with 8 g of oxygen, calculate the mass of magnesium oxide formed.</p>
+
+  <p><strong>Step 1:</strong> Write the conservation relationship:</p>
+  <p>Total mass of reactants = Total mass of products.</p>
+
+  <p><strong>Step 2:</strong> Add the masses of the reactants:</p>
+  <p>12 g + 8 g = 20 g.</p>
+
+  <p><strong>Step 3:</strong> Since magnesium oxide is the only product, its mass equals the total mass of the reactants.</p>
+
+  <p><strong>Answer:</strong> 20 g of magnesium oxide.</p>
+
+  <h3>Worked Example 2: Finding an Unknown Reactant Mass</h3>
+
+  <p><strong>Question:</strong> A reaction produces 35 g of product from two reactants. One reactant has a mass of 15 g. Calculate the mass of the other reactant, assuming all reactants and products are accounted for.</p>
+
+  <p><strong>Step 1:</strong> Total mass of reactants = 35 g.</p>
+  <p><strong>Step 2:</strong> Let the unknown mass be x.</p>
+  <p>15 g + x = 35 g.</p>
+  <p><strong>Step 3:</strong> Subtract 15 g from both sides:</p>
+  <p>x = 35 g − 15 g = 20 g.</p>
+
+  <p><strong>Answer:</strong> 20 g.</p>
+
+  <h3>Worked Example 3: Gas Escaping from an Open System</h3>
+
+  <p><strong>Question:</strong> A student reacts 10 g of calcium carbonate with dilute hydrochloric acid in an open flask. The measured mass of the flask and contents decreases as gas escapes. Does this mean mass was destroyed?</p>
+
+  <p><strong>Step 1:</strong> Recognise that the reaction produces carbon dioxide gas.</p>
+  <p><strong>Step 2:</strong> The gas escapes from the open flask and is no longer included in the measurement.</p>
+  <p><strong>Step 3:</strong> If the escaping gas is collected and included, the total mass of all reactants and products is conserved.</p>
+
+  <p><strong>Answer:</strong> No. The measured mass decreases because carbon dioxide escapes from the open system, not because mass is destroyed.</p>
+
+  <h3>Closed and Open Systems</h3>
+
+  <p>A <strong>closed system</strong> prevents matter from entering or leaving during the experiment. When all substances remain accounted for, the total mass remains constant.</p>
+
+  <p>An <strong>open system</strong> allows matter to enter or leave. A measured mass may appear to increase or decrease if a gas enters from the air or escapes from the container.</p>
+
+  <h3>Using Conservation of Mass in Calculations</h3>
+
+  <ol>
+    <li>Identify all reactants and products included in the problem.</li>
+    <li>Write total mass of reactants = total mass of products.</li>
+    <li>Substitute the known masses.</li>
+    <li>Rearrange the equation to calculate the unknown mass.</li>
+    <li>Include the correct mass unit in the answer.</li>
+  </ol>
+
+  <h3>Remember</h3>
+
+  <ul>
+    <li>Mass is conserved in ordinary chemical reactions.</li>
+    <li>In a closed system, total reactant mass equals total product mass.</li>
+    <li>Escaping gas can cause an apparent mass loss in an open system.</li>
+    <li>Always account for every substance when comparing masses.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "State the law of conservation of mass.",
+      q: "12 g of magnesium reacts completely with 8 g of oxygen to form magnesium oxide. Calculate the mass of magnesium oxide formed.",
+      hint: "Add the masses of all reactants.",
       steps: [
-        "Step 1: Consider the total mass before a chemical reaction.",
-        "Step 2: Compare it with the total mass after the reaction.",
-        "Step 3: They are equal in a closed system."
+        "Apply conservation of mass: total reactant mass = total product mass.",
+        "Add the reactant masses: 12 g + 8 g = 20 g.",
+        "Assign the total mass to the only product, magnesium oxide."
       ],
-      ans: "Mass is neither created nor destroyed during a chemical reaction.",
-      why: "The atoms present before the reaction are rearranged rather than created or destroyed."
+      ans: "20 g.",
+      why: "The total mass of the products equals the total mass of the reactants when all substances are accounted for."
     },
     {
-      q: "10 g of calcium carbonate decomposes to form 5.6 g of calcium oxide and carbon dioxide. Calculate the mass of carbon dioxide.",
+      q: "A reaction forms 50 g of products. One reactant has a mass of 18 g. Calculate the mass of the second reactant if these are the only reactants.",
+      hint: "Subtract the known reactant mass from the total product mass.",
       steps: [
-        "Step 1: Total mass of reactants = 10 g.",
-        "Step 2: Total mass of products must also be 10 g.",
-        "Step 3: Mass of carbon dioxide = 10 − 5.6.",
-        "Step 4: Mass of carbon dioxide = 4.4 g."
+        "Write 18 g + x = 50 g.",
+        "Subtract 18 g from both sides.",
+        "Calculate x = 50 g − 18 g = 32 g."
       ],
-      ans: "4.4 g",
-      why: "The total mass of products must equal the total mass of reactants."
+      ans: "32 g.",
+      why: "The combined mass of the reactants must equal the total mass of the products."
     },
     {
-      q: "12 g of magnesium reacts with oxygen to form 20 g of magnesium oxide. Calculate the mass of oxygen that reacted.",
+      q: "A reaction in an open flask produces a gas that escapes. The measured mass of the flask and remaining contents decreases. Has mass been destroyed?",
+      hint: "Consider whether all the products are still being weighed.",
       steps: [
-        "Step 1: Mass of reactants = mass of magnesium + mass of oxygen.",
-        "Step 2: Total mass of reactants must equal 20 g.",
-        "Step 3: Mass of oxygen = 20 − 12.",
-        "Step 4: Mass of oxygen = 8 g."
+        "Identify the escaping gas as matter produced by the reaction.",
+        "Recognise that the gas is no longer included in the measured mass.",
+        "Account for the gas to compare the total mass of all reactants and products."
       ],
-      ans: "8 g",
-      why: "The mass of the product equals the total mass of the reactants."
+      ans: "No. The measured mass decreases because the gas escapes; total mass is conserved when all substances are accounted for.",
+      why: "A balance measures the matter included in the measurement, not matter that has escaped from the container."
     }
   ],
+
   [
     {
-      q: "A reaction has 25 g of reactants and produces 18 g of one product. What is the mass of the other product?",
-      hint: "Use total reactant mass = total product mass.",
+      q: "When 7 g of substance A reacts completely with 13 g of substance B, only one product forms. Calculate the product's mass.",
+      hint: "Use the total mass of both reactants.",
       steps: [
-        "Step 1: Total product mass must be 25 g.",
-        "Step 2: One product has a mass of 18 g.",
-        "Step 3: Other product = 25 − 18.",
-        "Step 4: Other product = 7 g."
+        "Add the reactant masses: 7 g + 13 g.",
+        "Calculate the total: 20 g.",
+        "Since there is one product and all matter is accounted for, its mass is 20 g."
       ],
-      ans: "7 g",
-      why: "Mass is conserved during the reaction."
+      ans: "20 g.",
+      why: "The mass of the single product equals the combined mass of the reactants."
+    },
+    {
+      q: "A student records 24 g of reactants but only 21 g of products in a closed system. Assuming measurement errors are excluded, what should the student investigate?",
+      hint: "Mass should be conserved in a properly accounted-for closed system.",
+      steps: [
+        "Compare the recorded masses: 24 g and 21 g.",
+        "Recognise that they differ by 3 g.",
+        "Check whether the reaction or the mass records omitted a substance or whether the system was truly closed."
+      ],
+      ans: "The student should investigate whether all reactants and products were accounted for and whether the system was actually closed.",
+      why: "A mass difference indicates that the stated measurements or assumptions are incomplete or inconsistent with conservation of mass."
+    },
+    {
+      q: "A product has a total mass of 42 g. The two reactants have masses of 17 g and x g. Calculate x.",
+      hint: "Set the total reactant mass equal to 42 g.",
+      steps: [
+        "Write 17 g + x = 42 g.",
+        "Subtract 17 g from both sides.",
+        "Calculate x = 25 g."
+      ],
+      ans: "25 g.",
+      why: "The missing reactant mass is the total mass minus the known reactant mass."
+    },
+    {
+      q: "A student says mass is lost when wood burns because the ash weighs less than the original wood. Explain the error.",
+      hint: "What happens to gases and vapours during burning?",
+      steps: [
+        "Recognise that burning produces gases and vapours as well as solid ash.",
+        "Identify that many products escape into the air.",
+        "Include all gaseous and solid products when comparing total mass."
+      ],
+      ans: "The student has weighed only the ash and omitted gaseous products; mass is conserved when all products are included.",
+      why: "The apparent mass loss occurs because the measurement excludes matter that has entered the surrounding air."
+    },
+    {
+      q: "In a closed container, 16 g of reactants form two products. One product has a mass of 9 g. Calculate the mass of the second product.",
+      hint: "The combined mass of the products must equal 16 g.",
+      steps: [
+        "Write 9 g + x = 16 g.",
+        "Subtract 9 g from both sides.",
+        "Calculate x = 7 g."
+      ],
+      ans: "7 g.",
+      why: "The combined mass of both products equals the total reactant mass."
+    },
+    {
+      q: "Why must a gas produced during a reaction be collected or accounted for when checking conservation of mass?",
+      hint: "Think about what a balance measures if gas escapes.",
+      steps: [
+        "Recognise that a gas is matter and has mass.",
+        "Understand that escaped gas is not included in the container's measured mass.",
+        "Account for the gas to compare the complete masses before and after the reaction."
+      ],
+      ans: "Because the gas has mass; if it escapes, the measured mass may appear to decrease even though total mass is conserved.",
+      why: "A valid conservation-of-mass comparison must include all reactants and products."
     }
   ]
 );
 
-
-// ============================================================
-// 6. CHEMICAL EQUATIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Chemical Equations",
-  `<h2>Chemical Equations</h2>
-  <p>A chemical equation represents a chemical reaction using chemical formulae and symbols.</p>
 
-  <p>Example:</p>
+  `
+  <h2>Chemical Equations</h2>
+
+  <h3>Meaning of a Chemical Equation</h3>
+
+  <p>A <strong>chemical equation</strong> is a symbolic representation of a chemical reaction using chemical formulae and a reaction arrow.</p>
+
+  <p>Instead of describing a reaction only in words, a chemical equation identifies the substances involved and shows how the reactants change into products.</p>
+
+  <p>For example:</p>
+
+  <p><strong>Mg + O₂ → MgO</strong></p>
+
+  <p>This equation represents magnesium reacting with oxygen to form magnesium oxide. It identifies the substances, but it is not balanced as written.</p>
+
+  <h3>The Main Parts of a Chemical Equation</h3>
+
+  <ul>
+    <li><strong>Reactants:</strong> Starting substances, written on the left of the arrow.</li>
+    <li><strong>Reaction arrow (→):</strong> Means that the reactants form the products under the stated conditions.</li>
+    <li><strong>Products:</strong> Substances formed, written on the right of the arrow.</li>
+    <li><strong>Plus sign (+):</strong> Separates different substances on the same side.</li>
+    <li><strong>Chemical formulae:</strong> Represent substances using element symbols and, where necessary, subscripts.</li>
+  </ul>
+
+  <h3>Worked Example 1: Interpreting a Simple Equation</h3>
+
+  <p><strong>Question:</strong> Interpret Fe + S → FeS.</p>
+
+  <p><strong>Step 1:</strong> Read the left-hand side: Fe + S. These represent iron and sulfur.</p>
+  <p><strong>Step 2:</strong> Read the arrow as meaning that the reactants form a product.</p>
+  <p><strong>Step 3:</strong> Read the right-hand side: FeS, which represents iron sulfide.</p>
+
+  <p><strong>Answer:</strong> Iron reacts with sulfur to form iron sulfide.</p>
+
+  <h3>Worked Example 2: Reading an Equation with Two Products</h3>
+
+  <p><strong>Question:</strong> Interpret CaCO₃ → CaO + CO₂.</p>
+
+  <p><strong>Step 1:</strong> Identify CaCO₃ on the left as calcium carbonate.</p>
+  <p><strong>Step 2:</strong> Identify CaO and CO₂ on the right as calcium oxide and carbon dioxide.</p>
+  <p><strong>Step 3:</strong> Recognise that one reactant forms two product substances.</p>
+
+  <p><strong>Answer:</strong> Calcium carbonate decomposes to form calcium oxide and carbon dioxide.</p>
+
+  <h3>Worked Example 3: Interpreting Coefficients</h3>
+
+  <p><strong>Question:</strong> Interpret 2H₂ + O₂ → 2H₂O.</p>
+
+  <p><strong>Step 1:</strong> Identify hydrogen and oxygen as the reactants.</p>
+  <p><strong>Step 2:</strong> Read the coefficients: 2H₂ represents two hydrogen molecules, and O₂ represents one oxygen molecule.</p>
+  <p><strong>Step 3:</strong> On the right, 2H₂O represents two water molecules.</p>
+
+  <p><strong>Answer:</strong> Two hydrogen molecules react with one oxygen molecule to form two water molecules, as represented by the balanced equation.</p>
+
+  <h3>What Does a Chemical Equation Tell Us?</h3>
+
+  <p>A chemical equation can show:</p>
+
+  <ul>
+    <li>The identities of the reactants and products.</li>
+    <li>The relative quantities represented by coefficients in a balanced equation.</li>
+    <li>Sometimes, physical states and reaction conditions, when these are included.</li>
+  </ul>
+
+  <p>A chemical equation does not automatically show every experimental detail, such as how quickly a reaction occurs or the full procedure for carrying it out.</p>
+
+  <h3>Balanced and Unbalanced Equations</h3>
+
+  <p>A balanced chemical equation has the same number of atoms of each element on both sides. For example, Mg + O₂ → MgO is unbalanced because it has two oxygen atoms on the left but only one on the right.</p>
+
+  <p>The balanced form is:</p>
+
   <p><strong>2Mg + O₂ → 2MgO</strong></p>
 
-  <p>The plus sign separates different substances.</p>
-  <p>The arrow means “reacts to form” or “produces”.</p>
+  <p>Balancing equations is a separate skill. The key skill on this screen is reading what a chemical equation represents.</p>
 
-  <h3>Equation structure</h3>
-  <p><strong>Reactants → Products</strong></p>
+  <h3>Remember</h3>
 
-  <p>A chemical equation should represent the substances involved and the correct proportions in which they react.</p>`,
+  <ul>
+    <li>A chemical equation represents a reaction using formulae and symbols.</li>
+    <li>Reactants appear on the left; products appear on the right.</li>
+    <li>The arrow connects reactants to products.</li>
+    <li>Coefficients show relative quantities; subscripts form part of a chemical formula.</li>
+    <li>A chemical equation must be balanced to represent conservation of atoms correctly.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What is a chemical equation?",
+      q: "Interpret the equation Fe + S → FeS in words.",
+      hint: "Name each formula and identify the product.",
       steps: [
-        "Step 1: A chemical reaction can be represented using symbols and formulae.",
-        "Step 2: The reactants are written on the left.",
-        "Step 3: The products are written on the right."
+        "Identify Fe as iron.",
+        "Identify S as sulfur.",
+        "Identify FeS as iron sulfide."
       ],
-      ans: "A chemical equation is a symbolic representation of a chemical reaction using chemical formulae and symbols.",
-      why: "Chemical equations provide a concise way of representing chemical reactions."
+      ans: "Iron reacts with sulfur to form iron sulfide.",
+      why: "The equation shows iron and sulfur as reactants and iron sulfide as the product."
     },
     {
-      q: "What does the arrow in a chemical equation mean?",
+      q: "In CaCO₃ → CaO + CO₂, name the reactant and both products.",
+      hint: "Read the left and right sides separately.",
       steps: [
-        "Step 1: Look at the direction of the reaction.",
-        "Step 2: Reactants are placed before the arrow.",
-        "Step 3: Products are placed after the arrow."
+        "Identify CaCO₃ as calcium carbonate on the left.",
+        "Identify CaO as calcium oxide on the right.",
+        "Identify CO₂ as carbon dioxide on the right."
       ],
-      ans: "It means 'reacts to form' or 'produces'.",
-      why: "The arrow connects the reactants to the products."
+      ans: "Reactant: calcium carbonate. Products: calcium oxide and carbon dioxide.",
+      why: "The arrow separates the starting substance from the two substances formed."
     },
     {
-      q: "Write the word equation for magnesium reacting with oxygen to form magnesium oxide.",
+      q: "In 2H₂ + O₂ → 2H₂O, what does the coefficient 2 before H₂O represent?",
+      hint: "The coefficient indicates quantity, not a new chemical formula.",
       steps: [
-        "Step 1: Identify the reactants: magnesium and oxygen.",
-        "Step 2: Identify the product: magnesium oxide.",
-        "Step 3: Arrange them as reactants → product."
+        "Identify H₂O as water.",
+        "Notice the coefficient 2 immediately before the formula.",
+        "Interpret it as two water molecules in the equation."
       ],
-      ans: "Magnesium + oxygen → magnesium oxide",
-      why: "A word equation names the substances instead of using chemical formulae."
+      ans: "Two water molecules.",
+      why: "A coefficient states how many molecules or formula units are represented."
     }
   ],
+
   [
     {
-      q: "In the equation H₂ + Cl₂ → 2HCl, identify the reactants and products.",
-      hint: "Use the position relative to the arrow.",
+      q: "A student reads NaOH + HCl → NaCl + H₂O and says that water is a reactant. Correct the interpretation.",
+      hint: "Locate H₂O relative to the arrow.",
       steps: [
-        "Step 1: H₂ and Cl₂ are on the left.",
-        "Step 2: 2HCl is on the right.",
-        "Step 3: Therefore H₂ and Cl₂ are reactants and HCl is the product."
+        "Identify NaOH and HCl on the left.",
+        "Identify NaCl and H₂O on the right.",
+        "Classify the substances on the right as products."
       ],
-      ans: "Reactants: H₂ and Cl₂. Product: HCl.",
-      why: "Reactants are on the left and products are on the right."
+      ans: "Water is a product; sodium hydroxide and hydrochloric acid are the reactants.",
+      why: "The position of a substance relative to the arrow identifies its role in the written equation."
+    },
+    {
+      q: "What does the plus sign mean in C + O₂ → CO₂?",
+      hint: "Consider what the sign separates on the left side.",
+      steps: [
+        "Identify C as carbon.",
+        "Identify O₂ as oxygen.",
+        "Recognise that the plus sign separates the two reactant substances."
+      ],
+      ans: "It separates carbon and oxygen, the two reactants.",
+      why: "A plus sign separates different substances on the same side of a chemical equation."
+    },
+    {
+      q: "A student claims that Mg + O₂ → MgO is balanced because magnesium appears on both sides. Identify the problem.",
+      hint: "Count atoms of every element on both sides.",
+      steps: [
+        "Count magnesium atoms: one on each side.",
+        "Count oxygen atoms: two on the left and one on the right.",
+        "Conclude that the equation is not balanced because oxygen atom counts differ."
+      ],
+      ans: "The equation is unbalanced because there are two oxygen atoms on the left but only one on the right.",
+      why: "Every element must have equal atom counts on both sides of a balanced equation."
+    },
+    {
+      q: "In 2KClO₃ → 2KCl + 3O₂, identify the reactant and products.",
+      hint: "Use the arrow to separate the starting substance from the formed substances.",
+      steps: [
+        "Read the left-hand side: KClO₃.",
+        "Identify it as potassium chlorate.",
+        "Read the right-hand side and identify KCl as potassium chloride and O₂ as oxygen."
+      ],
+      ans: "Reactant: potassium chlorate. Products: potassium chloride and oxygen gas.",
+      why: "The left-hand formula represents the starting substance, while the formulas on the right represent products."
+    },
+    {
+      q: "Explain the difference between 2H₂ and H₂ in a chemical equation.",
+      hint: "Distinguish a coefficient from a subscript.",
+      steps: [
+        "Identify H₂ as one hydrogen molecule containing two hydrogen atoms.",
+        "Recognise the coefficient 2 before H₂ as a quantity indicator.",
+        "Interpret 2H₂ as two hydrogen molecules, containing four hydrogen atoms in total."
+      ],
+      ans: "H₂ represents one hydrogen molecule; 2H₂ represents two hydrogen molecules, containing four hydrogen atoms in total.",
+      why: "The subscript 2 describes the atoms in each molecule, while the coefficient 2 describes the number of molecules."
+    },
+    {
+      q: "A chemical equation has three different formulas on the left and one formula on the right. Must it be incorrect? Explain.",
+      hint: "Consider whether several reactants can form a single product.",
+      steps: [
+        "Recognise that the left side lists the reactants.",
+        "Recognise that the right side lists the products.",
+        "Understand that different numbers of reactant and product substances are possible, provided the equation correctly represents the reaction and is balanced."
+      ],
+      ans: "No. Several reactants can form one product; the equation must correctly represent the reaction and be balanced.",
+      why: "The number of substances on each side does not have to be equal. Atom counts, rather than formula counts, must balance."
     }
   ]
 );
-
-
-// ============================================================
-// 7. WRITING CHEMICAL EQUATIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Writing Chemical Equations",
-  `<h2>Writing Chemical Equations</h2>
-  <p>To write a chemical equation from a word equation:</p>
+
+  `
+  <h2>Writing Chemical Equations</h2>
+
+  <h3>From Word Equations to Chemical Equations</h3>
+
+  <p>A <strong>word equation</strong> describes a chemical reaction using the names of substances. A <strong>chemical equation</strong> represents the same reaction using chemical formulae.</p>
+
+  <p>For example:</p>
+
+  <p><strong>Word equation:</strong> magnesium + oxygen → magnesium oxide</p>
+  <p><strong>Chemical equation:</strong> Mg + O₂ → MgO</p>
+
+  <p>The chemical equation identifies the substances using symbols and formulae. It must then be checked and balanced so that each element has the same number of atoms on both sides.</p>
+
+  <h3>A Reliable Method</h3>
 
   <ol>
-    <li>Identify the reactants.</li>
-    <li>Identify the products.</li>
-    <li>Write the correct chemical formula for each substance.</li>
-    <li>Use an arrow between reactants and products.</li>
-    <li>Balance the equation.</li>
+    <li><strong>Identify the reactants:</strong> Determine which substances are present at the start.</li>
+    <li><strong>Identify the products:</strong> Determine which substances are formed.</li>
+    <li><strong>Write the correct formula for each substance:</strong> Use chemical symbols and formulae, not guessed abbreviations.</li>
+    <li><strong>Place the reactants on the left and products on the right:</strong> Separate different substances on the same side with a plus sign.</li>
+    <li><strong>Check the equation:</strong> Count the atoms of each element on both sides and balance the equation using coefficients.</li>
   </ol>
 
-  <h3>Example</h3>
-  <p>Hydrogen reacts with oxygen to form water.</p>
+  <h3>Worked Example 1: Magnesium Reacting with Oxygen</h3>
 
-  <p>Formulae:</p>
-  <p>H₂ + O₂ → H₂O</p>
+  <p><strong>Question:</strong> Write a balanced chemical equation for magnesium reacting with oxygen to form magnesium oxide.</p>
 
-  <p>This equation is not balanced yet.</p>`,
+  <p><strong>Step 1:</strong> Identify the reactants: magnesium and oxygen.</p>
+  <p><strong>Step 2:</strong> Write their formulae: Mg and O₂.</p>
+  <p><strong>Step 3:</strong> Identify the product and its formula: magnesium oxide, MgO.</p>
+  <p><strong>Step 4:</strong> Write the unbalanced equation: Mg + O₂ → MgO.</p>
+  <p><strong>Step 5:</strong> Oxygen has two atoms on the left but one on the right. Put 2 before MgO, then put 2 before Mg to balance magnesium.</p>
+
+  <p><strong>Answer:</strong> 2Mg + O₂ → 2MgO</p>
+
+  <h3>Worked Example 2: Zinc Reacting with Hydrochloric Acid</h3>
+
+  <p><strong>Question:</strong> Write a balanced chemical equation for zinc reacting with hydrochloric acid to form zinc chloride and hydrogen gas.</p>
+
+  <p><strong>Step 1:</strong> Identify the reactants: zinc and hydrochloric acid.</p>
+  <p><strong>Step 2:</strong> Write the formulae: Zn and HCl.</p>
+  <p><strong>Step 3:</strong> Identify the products: zinc chloride (ZnCl₂) and hydrogen gas (H₂).</p>
+  <p><strong>Step 4:</strong> Write the unbalanced equation: Zn + HCl → ZnCl₂ + H₂.</p>
+  <p><strong>Step 5:</strong> The product contains two chlorine atoms and two hydrogen atoms. Put 2 before HCl.</p>
+
+  <p><strong>Answer:</strong> Zn + 2HCl → ZnCl₂ + H₂</p>
+
+  <h3>Worked Example 3: Calcium Carbonate Decomposing</h3>
+
+  <p><strong>Question:</strong> Write the chemical equation for calcium carbonate decomposing into calcium oxide and carbon dioxide when heated.</p>
+
+  <p><strong>Step 1:</strong> Identify the reactant: calcium carbonate, CaCO₃.</p>
+  <p><strong>Step 2:</strong> Identify the products: calcium oxide, CaO, and carbon dioxide, CO₂.</p>
+  <p><strong>Step 3:</strong> Write the equation: CaCO₃ → CaO + CO₂.</p>
+  <p><strong>Step 4:</strong> Count the atoms. Both sides contain one calcium atom, one carbon atom, and three oxygen atoms.</p>
+
+  <p><strong>Answer:</strong> CaCO₃ → CaO + CO₂. The equation is already balanced.</p>
+
+  <h3>Do Not Guess Chemical Formulae</h3>
+
+  <p>Use the correct formula for each substance. For example, elemental oxygen normally exists as O₂, while water is H₂O and carbon dioxide is CO₂. A wrong formula represents a different composition and can make an otherwise correct equation inaccurate.</p>
+
+  <h3>Coefficients and Subscripts</h3>
+
+  <p>When balancing an equation, change coefficients placed before formulae. Do not change subscripts inside formulae. For example, 2H₂O represents two water molecules; H₂O₂ represents hydrogen peroxide, a different substance.</p>
+
+  <h3>Remember</h3>
+
+  <ul>
+    <li>Translate the names of substances into correct chemical formulae.</li>
+    <li>Put reactants on the left and products on the right.</li>
+    <li>Use plus signs to separate different substances on the same side.</li>
+    <li>Check and balance atom counts using coefficients.</li>
+    <li>Never change a formula's subscripts merely to balance an equation.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "Write the chemical equation for magnesium reacting with oxygen to form magnesium oxide before balancing.",
+      q: "Write a balanced chemical equation for magnesium reacting with oxygen to form magnesium oxide.",
+      hint: "Write the correct formulae first, then balance the oxygen and magnesium atoms.",
       steps: [
-        "Step 1: Magnesium has the formula Mg.",
-        "Step 2: Oxygen gas has the formula O₂.",
-        "Step 3: Magnesium oxide has the formula MgO.",
-        "Step 4: Write the reactants on the left and product on the right."
+        "Write the formulae: Mg, O₂ and MgO.",
+        "Start with Mg + O₂ → MgO.",
+        "Put 2 before MgO to balance oxygen, then put 2 before Mg to balance magnesium."
       ],
-      ans: "Mg + O₂ → MgO",
-      why: "The correct chemical formulae must be used before balancing."
+      ans: "2Mg + O₂ → 2MgO",
+      why: "The balanced equation has two magnesium atoms and two oxygen atoms on each side."
     },
     {
-      q: "Write the chemical equation for hydrogen reacting with chlorine to form hydrogen chloride before balancing.",
+      q: "Write a balanced chemical equation for zinc reacting with hydrochloric acid to form zinc chloride and hydrogen gas.",
+      hint: "Zinc chloride is ZnCl₂ and hydrogen gas is H₂.",
       steps: [
-        "Step 1: Hydrogen gas is H₂.",
-        "Step 2: Chlorine gas is Cl₂.",
-        "Step 3: Hydrogen chloride is HCl.",
-        "Step 4: Arrange them as reactants → product."
+        "Write the unbalanced equation: Zn + HCl → ZnCl₂ + H₂.",
+        "Balance chlorine by putting 2 before HCl.",
+        "Check that hydrogen, zinc and chlorine atoms now balance."
       ],
-      ans: "H₂ + Cl₂ → HCl",
-      why: "The formulae represent the substances taking part in the reaction."
+      ans: "Zn + 2HCl → ZnCl₂ + H₂",
+      why: "Both sides contain one zinc atom, two hydrogen atoms and two chlorine atoms."
     },
     {
-      q: "Write the chemical equation for calcium carbonate decomposing into calcium oxide and carbon dioxide.",
+      q: "Write the chemical equation for calcium carbonate decomposing into calcium oxide and carbon dioxide. Is it balanced?",
+      hint: "Use CaCO₃, CaO and CO₂.",
       steps: [
-        "Step 1: Calcium carbonate is CaCO₃.",
-        "Step 2: Calcium oxide is CaO.",
-        "Step 3: Carbon dioxide is CO₂.",
-        "Step 4: Write the reactant first and products after the arrow."
+        "Write calcium carbonate on the left: CaCO₃.",
+        "Write calcium oxide and carbon dioxide on the right: CaO + CO₂.",
+        "Count calcium, carbon and oxygen atoms on both sides."
       ],
-      ans: "CaCO₃ → CaO + CO₂",
-      why: "The equation represents one compound breaking down into two products."
+      ans: "CaCO₃ → CaO + CO₂. Yes, it is balanced.",
+      why: "Both sides contain one calcium atom, one carbon atom and three oxygen atoms."
     }
   ],
+
   [
     {
-      q: "Write the unbalanced equation for zinc reacting with hydrochloric acid to form zinc chloride and hydrogen.",
-      hint: "Use Zn, HCl, ZnCl₂ and H₂.",
+      q: "A student writes magnesium + oxygen → magnesium oxide as Mg + O → MgO. What is wrong with the formula for elemental oxygen in this reaction?",
+      hint: "Recall the usual molecular formula of oxygen gas.",
       steps: [
-        "Step 1: Zinc = Zn.",
-        "Step 2: Hydrochloric acid = HCl.",
-        "Step 3: Zinc chloride = ZnCl₂.",
-        "Step 4: Hydrogen gas = H₂.",
-        "Step 5: Arrange the substances."
+        "Identify oxygen gas as the elemental reactant.",
+        "Recall that oxygen gas normally exists as O₂ molecules.",
+        "Replace O with O₂ and then balance the equation."
       ],
-      ans: "Zn + HCl → ZnCl₂ + H₂",
-      why: "The correct formulae must be written before balancing."
+      ans: "Elemental oxygen gas should be written as O₂. The balanced equation is 2Mg + O₂ → 2MgO.",
+      why: "Using O instead of O₂ misrepresents the normal molecular form of oxygen gas."
+    },
+    {
+      q: "Write a balanced equation for hydrogen reacting with oxygen to form water.",
+      hint: "Use H₂, O₂ and H₂O.",
+      steps: [
+        "Write the unbalanced equation: H₂ + O₂ → H₂O.",
+        "Put 2 before H₂O to balance oxygen.",
+        "Put 2 before H₂ to balance hydrogen."
+      ],
+      ans: "2H₂ + O₂ → 2H₂O",
+      why: "Each side contains four hydrogen atoms and two oxygen atoms."
+    },
+    {
+      q: "A learner writes Zn + 2HCl → ZnCl + H₂ instead of ZnCl₂ as the zinc chloride formula. Why is this a problem?",
+      hint: "Check the correct chemical formula of zinc chloride.",
+      steps: [
+        "Recall that zinc chloride has the formula ZnCl₂.",
+        "Recognise that ZnCl represents a different atom ratio.",
+        "Use ZnCl₂, then balance the full equation."
+      ],
+      ans: "Zinc chloride is ZnCl₂, not ZnCl. The correct balanced equation is Zn + 2HCl → ZnCl₂ + H₂.",
+      why: "Chemical formulae must correctly represent the composition of substances before an equation can be written accurately."
+    },
+    {
+      q: "Write the equation for iron reacting with sulfur to form iron sulfide. Use Fe, S and FeS.",
+      hint: "Place the starting substances on the left and the product on the right.",
+      steps: [
+        "Identify iron and sulfur as reactants.",
+        "Write Fe + S on the left.",
+        "Write FeS on the right and check the atom counts."
+      ],
+      ans: "Fe + S → FeS",
+      why: "There is one iron atom and one sulfur atom on each side, so the equation is balanced."
+    },
+    {
+      q: "A student balances H₂ + O₂ → H₂O by changing H₂O to H₂O₂. Explain the mistake and give the balanced equation.",
+      hint: "Changing a subscript changes the substance itself.",
+      steps: [
+        "Recognise that H₂O is water and H₂O₂ is hydrogen peroxide.",
+        "Keep the correct product formula H₂O.",
+        "Balance with coefficients: 2H₂ + O₂ → 2H₂O."
+      ],
+      ans: "The student changed water into hydrogen peroxide. The correct balanced equation is 2H₂ + O₂ → 2H₂O.",
+      why: "Balancing must preserve the identity of every substance by changing coefficients rather than subscripts."
+    },
+    {
+      q: "Write a balanced equation for sodium reacting with chlorine to form sodium chloride. Use Na, Cl₂ and NaCl.",
+      hint: "Chlorine gas is diatomic, so start with Na + Cl₂ → NaCl.",
+      steps: [
+        "Write Na + Cl₂ → NaCl.",
+        "Put 2 before NaCl to balance chlorine.",
+        "Put 2 before Na to balance sodium."
+      ],
+      ans: "2Na + Cl₂ → 2NaCl",
+      why: "Both sides contain two sodium atoms and two chlorine atoms."
     }
   ]
 );
 
-
-// ============================================================
-// 8. STATE SYMBOLS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "State Symbols",
-  `<h2>State Symbols</h2>
-  <p>State symbols show the physical state of each substance in a chemical equation.</p>
+
+  `
+  <h2>State Symbols</h2>
+
+  <h3>What Are State Symbols?</h3>
+
+  <p><strong>State symbols</strong> are letters written in brackets after chemical formulae to show the physical state of each substance in a chemical equation under the stated conditions.</p>
 
   <ul>
-    <li><strong>(s)</strong> = solid</li>
-    <li><strong>(l)</strong> = liquid</li>
-    <li><strong>(g)</strong> = gas</li>
-    <li><strong>(aq)</strong> = aqueous, dissolved in water</li>
+    <li><strong>(s)</strong> — solid</li>
+    <li><strong>(l)</strong> — liquid</li>
+    <li><strong>(g)</strong> — gas</li>
+    <li><strong>(aq)</strong> — aqueous: a substance dissolved in water</li>
   </ul>
 
-  <h3>Example</h3>
-  <p><strong>Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)</strong></p>
+  <p>For example, H₂O(l) represents liquid water, while H₂O(g) represents water vapour. Both are water, but they are in different physical states.</p>
 
-  <p>The symbols provide additional information about the physical states of the substances.</p>`,
+  <h3>Why State Symbols Matter</h3>
+
+  <p>State symbols give additional information about the physical state of reactants and products. They can help distinguish a gas from a dissolved substance or an insoluble solid.</p>
+
+  <p>Compare:</p>
+
+  <p><strong>NaCl(s)</strong> — solid sodium chloride.</p>
+  <p><strong>NaCl(aq)</strong> — sodium chloride dissolved in water.</p>
+
+  <p>The substance is sodium chloride in both cases, but its physical state and surroundings differ.</p>
+
+  <h3>Worked Example 1: Burning Magnesium</h3>
+
+  <p><strong>Question:</strong> Interpret the state symbols in 2Mg(s) + O₂(g) → 2MgO(s).</p>
+
+  <p><strong>Step 1:</strong> Mg(s) means solid magnesium.</p>
+  <p><strong>Step 2:</strong> O₂(g) means oxygen gas.</p>
+  <p><strong>Step 3:</strong> MgO(s) means solid magnesium oxide.</p>
+
+  <p><strong>Answer:</strong> Solid magnesium reacts with oxygen gas to form solid magnesium oxide.</p>
+
+  <h3>Worked Example 2: Aqueous Solutions Forming a Precipitate</h3>
+
+  <p><strong>Question:</strong> Interpret AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq).</p>
+
+  <p><strong>Step 1:</strong> AgNO₃(aq) and NaCl(aq) are dissolved in water.</p>
+  <p><strong>Step 2:</strong> AgCl(s) is solid silver chloride. It forms as an insoluble precipitate.</p>
+  <p><strong>Step 3:</strong> NaNO₃(aq) is sodium nitrate remaining dissolved in water.</p>
+
+  <p><strong>Answer:</strong> Two aqueous solutions react to form solid silver chloride and aqueous sodium nitrate.</p>
+
+  <h3>Worked Example 3: Formation of Water</h3>
+
+  <p><strong>Question:</strong> Explain the state symbols in 2H₂(g) + O₂(g) → 2H₂O(l).</p>
+
+  <p><strong>Step 1:</strong> H₂(g) represents hydrogen gas.</p>
+  <p><strong>Step 2:</strong> O₂(g) represents oxygen gas.</p>
+  <p><strong>Step 3:</strong> H₂O(l) represents liquid water.</p>
+
+  <p><strong>Answer:</strong> Hydrogen gas reacts with oxygen gas to form liquid water.</p>
+
+  <h3>How to Choose a State Symbol</h3>
+
+  <ol>
+    <li>Identify the substance in the reaction.</li>
+    <li>Determine its physical state under the stated conditions.</li>
+    <li>Write the correct state symbol in brackets immediately after its formula.</li>
+  </ol>
+
+  <p>Do not assume that every substance containing water is automatically aqueous. The symbol (aq) specifically means that a substance is dissolved in water. Pure liquid water is written H₂O(l).</p>
+
+  <h3>Remember</h3>
+
+  <ul>
+    <li>(s) means solid.</li>
+    <li>(l) means liquid.</li>
+    <li>(g) means gas.</li>
+    <li>(aq) means dissolved in water.</li>
+    <li>State symbols describe physical states; they do not change the chemical identity of the formula.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What does (s) mean in a chemical equation?",
+      q: "Interpret 2Mg(s) + O₂(g) → 2MgO(s), including the physical state of each substance.",
+      hint: "Translate each bracketed letter into its physical state.",
       steps: [
-        "Step 1: Identify the state symbol.",
-        "Step 2: (s) represents a solid."
+        "Mg(s) is solid magnesium.",
+        "O₂(g) is oxygen gas.",
+        "MgO(s) is solid magnesium oxide."
       ],
-      ans: "Solid.",
-      why: "(s) is the standard state symbol for a solid."
+      ans: "Solid magnesium reacts with oxygen gas to form solid magnesium oxide.",
+      why: "State symbols show the physical states of the reactants and product."
     },
     {
-      q: "What does (aq) mean?",
+      q: "In AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq), which product is the solid?",
+      hint: "Look for the product followed by (s).",
       steps: [
-        "Step 1: Recognise that aq means aqueous.",
-        "Step 2: Aqueous means dissolved in water."
+        "Identify the products on the right: AgCl and NaNO₃.",
+        "Read the state symbols.",
+        "Identify AgCl(s) as solid silver chloride."
       ],
-      ans: "A substance dissolved in water.",
-      why: "The symbol (aq) indicates an aqueous solution."
+      ans: "Silver chloride (AgCl), the precipitate.",
+      why: "The state symbol (s) indicates that silver chloride is present as a solid."
     },
     {
-      q: "Identify the physical state of each substance in: Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g).",
+      q: "What is the difference between NaCl(s) and NaCl(aq)?",
+      hint: "The chemical formula is the same, but the state symbol changes.",
       steps: [
-        "Step 1: Mg(s) is a solid.",
-        "Step 2: HCl(aq) is aqueous.",
-        "Step 3: MgCl₂(aq) is aqueous.",
-        "Step 4: H₂(g) is a gas."
+        "Interpret (s) as solid.",
+        "Interpret (aq) as dissolved in water.",
+        "Compare the physical forms of sodium chloride."
       ],
-      ans: "Mg = solid; HCl = aqueous; MgCl₂ = aqueous; H₂ = gas.",
-      why: "Each state symbol describes the physical state of the substance."
+      ans: "NaCl(s) is solid sodium chloride, while NaCl(aq) is sodium chloride dissolved in water.",
+      why: "State symbols identify physical state without changing the identity of sodium chloride."
     }
   ],
+
   [
     {
-      q: "Write the correct state symbol for oxygen gas.",
-      hint: "Oxygen under ordinary conditions is a gas.",
+      q: "A student writes H₂O(aq) to represent pure liquid water. Which symbol is more appropriate, and why?",
+      hint: "Distinguish pure liquid water from a substance dissolved in water.",
       steps: [
-        "Step 1: Oxygen exists as a gas under ordinary conditions.",
-        "Step 2: The state symbol for gas is (g)."
+        "Recall that (l) means liquid.",
+        "Recall that (aq) means dissolved in water.",
+        "Choose the symbol that describes pure liquid water."
       ],
-      ans: "(g)",
-      why: "(g) represents the gaseous state."
+      ans: "H₂O(l), because pure water is a liquid; (aq) is used for substances dissolved in water.",
+      why: "The aqueous symbol does not simply mean that a substance is watery or liquid."
+    },
+    {
+      q: "In CaCO₃(s) → CaO(s) + CO₂(g), identify the state of each substance.",
+      hint: "Translate each state symbol separately.",
+      steps: [
+        "CaCO₃(s) is solid calcium carbonate.",
+        "CaO(s) is solid calcium oxide.",
+        "CO₂(g) is carbon dioxide gas."
+      ],
+      ans: "Solid calcium carbonate forms solid calcium oxide and carbon dioxide gas.",
+      why: "The symbols indicate that the reactant and one product are solids, while carbon dioxide is a gas."
+    },
+    {
+      q: "A reaction uses hydrochloric acid dissolved in water. Which state symbol normally indicates this solution?",
+      hint: "A dissolved substance in water is not represented by (l) merely because the solution flows.",
+      steps: [
+        "Identify hydrochloric acid as a substance dissolved in water in the solution.",
+        "Recall the meaning of (aq).",
+        "Write the formula with the aqueous symbol."
+      ],
+      ans: "HCl(aq).",
+      why: "The aqueous symbol identifies hydrochloric acid dissolved in water."
+    },
+    {
+      q: "A student says (g) means that a substance is dissolved in water. Correct the statement.",
+      hint: "Compare gas with aqueous.",
+      steps: [
+        "Recall that (g) means gas.",
+        "Recall that (aq) means dissolved in water.",
+        "Replace the incorrect meaning with the correct definition."
+      ],
+      ans: "(g) means gas; (aq) means dissolved in water.",
+      why: "The symbols describe different physical conditions and are not interchangeable."
+    },
+    {
+      q: "In 2H₂(g) + O₂(g) → 2H₂O(l), why is the product symbol (l) rather than (g) in this equation?",
+      hint: "The equation specifies the physical state of the water formed under the stated conditions.",
+      steps: [
+        "Identify hydrogen and oxygen as gases.",
+        "Read H₂O(l) as liquid water.",
+        "Explain that state symbols specify the physical state represented in the equation."
+      ],
+      ans: "Because the equation represents the water formed as a liquid under the stated conditions.",
+      why: "A chemical formula identifies the substance, while the state symbol indicates its physical state."
+    },
+    {
+      q: "Two substances are dissolved in water and react to form an insoluble solid. Which state symbols could represent the reactants and the solid product?",
+      hint: "Use one symbol for dissolved substances and another for the solid.",
+      steps: [
+        "Represent each dissolved reactant using (aq).",
+        "Represent the insoluble solid product using (s).",
+        "Combine these symbols with the appropriate formulae in the equation."
+      ],
+      ans: "The reactants can be labelled (aq), and the insoluble solid product is labelled (s).",
+      why: "Aqueous reactants can react in solution to produce a solid precipitate."
     }
   ]
 );
-
-
-// ============================================================
-// 9. BALANCING CHEMICAL EQUATIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Balancing Chemical Equations",
-  `<h2>Balancing Chemical Equations</h2>
-  <p>A chemical equation is balanced when the number of atoms of each element is the same on both sides.</p>
 
-  <p>Only the <strong>coefficients</strong> in front of formulae may be changed.</p>
+  `
+  <h2>Balancing Chemical Equations</h2>
 
-  <p>You must not change the small numbers inside chemical formulae.</p>
+  <h3>What Is a Balanced Chemical Equation?</h3>
 
-  <h3>Example</h3>
-  <p>H₂ + O₂ → H₂O</p>
+  <p>A <strong>balanced chemical equation</strong> has the same number of atoms of each element on both sides of the reaction arrow.</p>
 
-  <p>There are 2 oxygen atoms on the left but only 1 on the right.</p>
+  <p>This follows the law of conservation of mass: atoms are rearranged during an ordinary chemical reaction, but they are not created or destroyed.</p>
 
-  <p>Putting 2 before H₂O gives:</p>
+  <p>For example, the equation H₂ + O₂ → H₂O is not balanced. There are two oxygen atoms on the left but only one on the right.</p>
 
-  <p><strong>H₂ + O₂ → 2H₂O</strong></p>
+  <h3>Coefficients and Subscripts</h3>
 
-  <p>Now hydrogen is unbalanced, so put 2 before H₂:</p>
+  <p>A <strong>coefficient</strong> is the number placed before a chemical formula. It multiplies every atom in that formula.</p>
 
-  <p><strong>2H₂ + O₂ → 2H₂O</strong></p>`,
+  <ul>
+    <li>H₂O contains 2 hydrogen atoms and 1 oxygen atom per molecule.</li>
+    <li>2H₂O represents 2 water molecules, containing 4 hydrogen atoms and 2 oxygen atoms in total.</li>
+  </ul>
+
+  <p>A <strong>subscript</strong> is the small number within a formula. It forms part of the identity of the substance. When balancing equations, change coefficients, not subscripts.</p>
+
+  <h3>A Reliable Balancing Method</h3>
+
+  <ol>
+    <li>Write the correct chemical formulae for all reactants and products.</li>
+    <li>Count the atoms of each element on both sides.</li>
+    <li>Choose a coefficient for a formula to balance an element.</li>
+    <li>Recount all affected atoms and continue until every element balances.</li>
+    <li>Reduce the coefficients to the smallest whole-number ratio, if possible.</li>
+    <li>Check the final atom counts on both sides.</li>
+  </ol>
+
+  <h3>Worked Example 1: Formation of Water</h3>
+
+  <p><strong>Question:</strong> Balance H₂ + O₂ → H₂O.</p>
+
+  <p><strong>Step 1:</strong> Count the atoms.</p>
+  <p>Left: H = 2, O = 2.</p>
+  <p>Right: H = 2, O = 1.</p>
+
+  <p><strong>Step 2:</strong> Balance oxygen by placing 2 before H₂O.</p>
+  <p>H₂ + O₂ → 2H₂O</p>
+
+  <p><strong>Step 3:</strong> Recount hydrogen on the right. There are now 4 hydrogen atoms, so place 2 before H₂.</p>
+  <p>2H₂ + O₂ → 2H₂O</p>
+
+  <p><strong>Step 4:</strong> Check both sides: H = 4 and O = 2.</p>
+
+  <p><strong>Answer:</strong> 2H₂ + O₂ → 2H₂O</p>
+
+  <h3>Worked Example 2: Formation of Magnesium Oxide</h3>
+
+  <p><strong>Question:</strong> Balance Mg + O₂ → MgO.</p>
+
+  <p><strong>Step 1:</strong> Oxygen has 2 atoms on the left and 1 on the right.</p>
+  <p><strong>Step 2:</strong> Put 2 before MgO: Mg + O₂ → 2MgO.</p>
+  <p><strong>Step 3:</strong> There are now 2 magnesium atoms on the right, so put 2 before Mg.</p>
+  <p><strong>Step 4:</strong> Check: Mg = 2 and O = 2 on each side.</p>
+
+  <p><strong>Answer:</strong> 2Mg + O₂ → 2MgO</p>
+
+  <h3>Worked Example 3: Formation of Ammonia</h3>
+
+  <p><strong>Question:</strong> Balance N₂ + H₂ → NH₃.</p>
+
+  <p><strong>Step 1:</strong> There are 2 nitrogen atoms on the left and 1 on the right. Put 2 before NH₃.</p>
+  <p>N₂ + H₂ → 2NH₃</p>
+
+  <p><strong>Step 2:</strong> The right side now contains 6 hydrogen atoms because each NH₃ has 3 hydrogen atoms.</p>
+  <p><strong>Step 3:</strong> Put 3 before H₂ to give 6 hydrogen atoms on the left.</p>
+  <p>N₂ + 3H₂ → 2NH₃</p>
+
+  <p><strong>Step 4:</strong> Check: N = 2 and H = 6 on both sides.</p>
+
+  <p><strong>Answer:</strong> N₂ + 3H₂ → 2NH₃</p>
+
+  <h3>Common Mistakes</h3>
+
+  <ul>
+    <li><strong>Changing subscripts:</strong> Never turn H₂O into H₂O₂ to balance an equation. These are different substances.</li>
+    <li><strong>Balancing only one element:</strong> Recheck every element after changing a coefficient.</li>
+    <li><strong>Forgetting to multiply the whole formula:</strong> In 3H₂O, there are 6 hydrogen atoms and 3 oxygen atoms.</li>
+    <li><strong>Leaving unnecessary large coefficients:</strong> Use the smallest whole-number ratio.</li>
+  </ul>
+
+  <h3>Remember</h3>
+
+  <p>Balance an equation by changing coefficients only. Count atoms carefully, and verify every element before accepting the final equation.</p>
+  `,
+
   [
     {
-      q: "What does it mean for a chemical equation to be balanced?",
+      q: "Balance H₂ + O₂ → H₂O.",
+      hint: "Balance oxygen first, then recount hydrogen.",
       steps: [
-        "Step 1: Count the atoms of each element on the reactant side.",
-        "Step 2: Count the atoms of each element on the product side.",
-        "Step 3: The numbers must be equal for every element."
-      ],
-      ans: "A chemical equation is balanced when the number of atoms of every element is equal on both sides.",
-      why: "Atoms are conserved during a chemical reaction."
-    },
-    {
-      q: "What should be changed when balancing an equation?",
-      steps: [
-        "Step 1: Keep the chemical formulae unchanged.",
-        "Step 2: Add numbers in front of formulae.",
-        "Step 3: These numbers are called coefficients."
-      ],
-      ans: "Only the coefficients in front of chemical formulae should be changed.",
-      why: "Changing subscripts would change the substances themselves."
-    },
-    {
-      q: "Why must the small numbers inside formulae not be changed when balancing?",
-      steps: [
-        "Step 1: The small numbers are subscripts.",
-        "Step 2: They define the composition of a substance.",
-        "Step 3: Changing them would create a different substance."
-      ],
-      ans: "Because changing subscripts changes the chemical formula and therefore changes the substance.",
-      why: "Balancing changes the number of particles, not the identity of the substances."
-    }
-  ],
-  [
-    {
-      q: "Balance: H₂ + O₂ → H₂O.",
-      hint: "First balance oxygen, then hydrogen.",
-      steps: [
-        "Step 1: There are 2 oxygen atoms in O₂ but 1 in H₂O.",
-        "Step 2: Put 2 before H₂O: H₂ + O₂ → 2H₂O.",
-        "Step 3: There are now 4 hydrogen atoms on the right.",
-        "Step 4: Put 2 before H₂.",
-        "Step 5: Final equation: 2H₂ + O₂ → 2H₂O."
+        "Count O: 2 on the left and 1 on the right.",
+        "Put 2 before H₂O: H₂ + O₂ → 2H₂O.",
+        "There are now 4 H atoms on the right, so put 2 before H₂."
       ],
       ans: "2H₂ + O₂ → 2H₂O",
-      why: "Both hydrogen and oxygen now have equal numbers of atoms on both sides."
-    }
-  ]
-);
-
-
-// ============================================================
-// 10. SIMPLE EQUATIONS
-// ============================================================
-
-add(
-  "chemistry",
-  "chemical_reactions",
-  "Balancing Simple Equations",
-  `<h2>Balancing Simple Equations</h2>
-  <p>Simple equations can often be balanced by counting atoms and adjusting coefficients one element at a time.</p>
-
-  <h3>Example 1</h3>
-  <p>Mg + O₂ → MgO</p>
-  <p>Put 2 before MgO:</p>
-  <p>Mg + O₂ → 2MgO</p>
-  <p>Now put 2 before Mg:</p>
-  <p><strong>2Mg + O₂ → 2MgO</strong></p>
-
-  <h3>Example 2</h3>
-  <p>H₂ + Cl₂ → HCl</p>
-  <p><strong>H₂ + Cl₂ → 2HCl</strong></p>`,
-  [
+      why: "Both sides contain 4 hydrogen atoms and 2 oxygen atoms."
+    },
     {
-      q: "Balance: Mg + O₂ → MgO.",
+      q: "Balance Mg + O₂ → MgO.",
+      hint: "The oxygen molecule contains two oxygen atoms.",
       steps: [
-        "Step 1: Oxygen has 2 atoms on the left and 1 on the right.",
-        "Step 2: Put 2 before MgO.",
-        "Step 3: Magnesium now has 2 atoms on the right.",
-        "Step 4: Put 2 before Mg.",
-        "Step 5: Check both elements."
+        "Put 2 before MgO to balance oxygen.",
+        "Put 2 before Mg to balance magnesium.",
+        "Check that both sides have 2 Mg atoms and 2 O atoms."
       ],
       ans: "2Mg + O₂ → 2MgO",
-      why: "There are 2 magnesium atoms and 2 oxygen atoms on both sides."
+      why: "The coefficients make the number of magnesium and oxygen atoms equal on both sides."
     },
     {
-      q: "Balance: H₂ + Cl₂ → HCl.",
+      q: "Balance N₂ + H₂ → NH₃.",
+      hint: "Balance nitrogen first, then hydrogen.",
       steps: [
-        "Step 1: There are 2 hydrogen atoms on the left.",
-        "Step 2: There are 2 chlorine atoms on the left.",
-        "Step 3: Put 2 before HCl.",
-        "Step 4: The equation becomes H₂ + Cl₂ → 2HCl."
+        "Put 2 before NH₃ to balance nitrogen.",
+        "The right side now has 6 H atoms.",
+        "Put 3 before H₂ to give 6 H atoms on the left."
       ],
-      ans: "H₂ + Cl₂ → 2HCl",
-      why: "The coefficient 2 gives two hydrogen atoms and two chlorine atoms in the products."
-    },
-    {
-      q: "Balance: Na + Cl₂ → NaCl.",
-      steps: [
-        "Step 1: Chlorine has 2 atoms on the left.",
-        "Step 2: Put 2 before NaCl.",
-        "Step 3: There are now 2 sodium atoms on the right.",
-        "Step 4: Put 2 before Na."
-      ],
-      ans: "2Na + Cl₂ → 2NaCl",
-      why: "Both sodium and chlorine atoms are equal on both sides."
+      ans: "N₂ + 3H₂ → 2NH₃",
+      why: "Both sides contain 2 nitrogen atoms and 6 hydrogen atoms."
     }
   ],
+
   [
     {
-      q: "Balance: Ca + O₂ → CaO.",
-      hint: "Oxygen occurs as O₂, so balance oxygen first.",
+      q: "A student balances H₂ + Cl₂ → HCl by writing H₂ + Cl₂ → HCl₂. Explain the mistake and give the correct balanced equation.",
+      hint: "Do not change the formula of hydrogen chloride.",
       steps: [
-        "Step 1: O₂ contains 2 oxygen atoms.",
-        "Step 2: Put 2 before CaO.",
-        "Step 3: This gives 2 calcium atoms on the right.",
-        "Step 4: Put 2 before Ca."
+        "Recognise HCl as the formula for hydrogen chloride.",
+        "Count 2 H and 2 Cl atoms on the left but only 1 of each on the right.",
+        "Put 2 before HCl."
       ],
-      ans: "2Ca + O₂ → 2CaO",
-      why: "There are two calcium atoms and two oxygen atoms on both sides."
+      ans: "H₂ + Cl₂ → 2HCl",
+      why: "Balancing changes coefficients, not subscripts. The balanced equation contains 2 hydrogen atoms and 2 chlorine atoms on each side."
+    },
+    {
+      q: "Balance Fe + O₂ → Fe₂O₃.",
+      hint: "Balance oxygen using a common multiple of 2 and 3, then balance iron.",
+      steps: [
+        "Fe₂O₃ contains 3 oxygen atoms; O₂ contains 2.",
+        "Use 2Fe₂O₃ to give 6 oxygen atoms, and 3O₂ to give 6 oxygen atoms.",
+        "The right side now has 4 iron atoms, so put 4 before Fe."
+      ],
+      ans: "4Fe + 3O₂ → 2Fe₂O₃",
+      why: "Each side contains 4 iron atoms and 6 oxygen atoms."
+    },
+    {
+      q: "Balance Na + Cl₂ → NaCl.",
+      hint: "Balance the two chlorine atoms before balancing sodium.",
+      steps: [
+        "Cl₂ contains 2 chlorine atoms on the left.",
+        "Put 2 before NaCl to give 2 chlorine atoms on the right.",
+        "Put 2 before Na to balance sodium."
+      ],
+      ans: "2Na + Cl₂ → 2NaCl",
+      why: "Both sides contain 2 sodium atoms and 2 chlorine atoms."
+    },
+    {
+      q: "Balance Al + O₂ → Al₂O₃.",
+      hint: "Make the oxygen count a common multiple of 2 and 3.",
+      steps: [
+        "Use 2Al₂O₃ to give 6 oxygen atoms on the right.",
+        "Use 3O₂ to give 6 oxygen atoms on the left.",
+        "Balance the 4 aluminium atoms on the right with 4Al on the left."
+      ],
+      ans: "4Al + 3O₂ → 2Al₂O₃",
+      why: "Both sides contain 4 aluminium atoms and 6 oxygen atoms."
+    },
+    {
+      q: "A learner writes 2H₂ + O₂ → H₂O because the equation has hydrogen on both sides. Identify what remains unbalanced.",
+      hint: "Count the hydrogen atoms and oxygen atoms separately.",
+      steps: [
+        "Left side: 4 hydrogen atoms and 2 oxygen atoms.",
+        "Right side: 2 hydrogen atoms and 1 oxygen atom.",
+        "Put 2 before H₂O to balance both elements."
+      ],
+      ans: "The equation is unbalanced. The correct equation is 2H₂ + O₂ → 2H₂O.",
+      why: "Each element must have the same number of atoms on both sides, not merely appear on both sides."
+    },
+    {
+      q: "Balance KClO₃ → KCl + O₂.",
+      hint: "Balance oxygen using 6 oxygen atoms, then balance potassium and chlorine together.",
+      steps: [
+        "Use 2KClO₃ to give 6 oxygen atoms on the left.",
+        "Use 3O₂ to give 6 oxygen atoms on the right.",
+        "Put 2 before KCl to balance both potassium and chlorine."
+      ],
+      ans: "2KClO₃ → 2KCl + 3O₂",
+      why: "Both sides contain 2 potassium atoms, 2 chlorine atoms and 6 oxygen atoms."
     }
   ]
 );
 
-
-// ============================================================
-// 11. BALANCING MORE COMPLEX EQUATIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
-  "Balancing More Complex Equations",
-  `<h2>Balancing More Complex Equations</h2>
-  <p>More complex equations contain several different elements or compounds. Balance one element at a time and check the entire equation at the end.</p>
+  "Balancing Equations with Multiple Elements",
 
-  <h3>Example</h3>
-  <p>Fe + O₂ → Fe₂O₃</p>
+  `
+  <h2>Balancing Equations with Multiple Elements</h2>
 
-  <p>Use coefficients to obtain equal numbers of iron and oxygen atoms:</p>
+  <h3>When an Equation Contains Several Elements</h3>
 
-  <p><strong>4Fe + 3O₂ → 2Fe₂O₃</strong></p>
+  <p>Some equations contain three or more elements. Balancing them requires careful atom counting because changing one coefficient may affect several elements at once.</p>
 
-  <p>Check:</p>
+  <p>The rule remains the same: every element must have the same total number of atoms on both sides. Change coefficients only, never subscripts.</p>
+
+  <h3>Count Every Atom in a Formula</h3>
+
+  <p>For example, one Ca(OH)₂ formula unit contains:</p>
+
   <ul>
-    <li>Iron: 4 on each side</li>
-    <li>Oxygen: 6 on each side</li>
-  </ul>`,
+    <li>1 calcium atom (Ca)</li>
+    <li>2 oxygen atoms (O)</li>
+    <li>2 hydrogen atoms (H)</li>
+  </ul>
+
+  <p>The subscript outside the brackets multiplies everything inside the brackets. Thus, in Ca(OH)₂, the group OH occurs twice.</p>
+
+  <h3>Worked Example 1: Aluminium Oxide Formation</h3>
+
+  <p><strong>Question:</strong> Balance Al + O₂ → Al₂O₃.</p>
+
+  <p><strong>Step 1:</strong> Aluminium oxide contains 2 Al atoms and 3 O atoms per formula unit.</p>
+  <p><strong>Step 2:</strong> Use 2Al₂O₃ to give 4 Al atoms and 6 O atoms on the right.</p>
+  <p><strong>Step 3:</strong> Put 3 before O₂ to give 6 O atoms on the left.</p>
+  <p><strong>Step 4:</strong> Put 4 before Al to balance aluminium.</p>
+
+  <p><strong>Answer:</strong> 4Al + 3O₂ → 2Al₂O₃</p>
+
+  <h3>Worked Example 2: Calcium Hydroxide and Hydrochloric Acid</h3>
+
+  <p><strong>Question:</strong> Balance Ca(OH)₂ + HCl → CaCl₂ + H₂O.</p>
+
+  <p><strong>Step 1:</strong> Calcium is already balanced: 1 atom on each side.</p>
+  <p><strong>Step 2:</strong> CaCl₂ contains 2 chlorine atoms, so put 2 before HCl.</p>
+  <p>Ca(OH)₂ + 2HCl → CaCl₂ + H₂O</p>
+  <p><strong>Step 3:</strong> Count hydrogen on the left: 2 from Ca(OH)₂ and 2 from 2HCl, giving 4 in total. There are also 2 oxygen atoms on the left.</p>
+  <p><strong>Step 4:</strong> Put 2 before H₂O, giving 4 hydrogen atoms and 2 oxygen atoms on the right.</p>
+
+  <p><strong>Answer:</strong> Ca(OH)₂ + 2HCl → CaCl₂ + 2H₂O</p>
+
+  <h3>Worked Example 3: Combustion of Propane</h3>
+
+  <p><strong>Question:</strong> Balance C₃H₈ + O₂ → CO₂ + H₂O.</p>
+
+  <p><strong>Step 1:</strong> Balance carbon. There are 3 carbon atoms in propane, so put 3 before CO₂.</p>
+  <p>C₃H₈ + O₂ → 3CO₂ + H₂O</p>
+
+  <p><strong>Step 2:</strong> Balance hydrogen. Propane has 8 hydrogen atoms, so put 4 before H₂O.</p>
+  <p>C₃H₈ + O₂ → 3CO₂ + 4H₂O</p>
+
+  <p><strong>Step 3:</strong> Count oxygen on the right: 3CO₂ contains 6 oxygen atoms, and 4H₂O contains 4. Total = 10 oxygen atoms.</p>
+
+  <p><strong>Step 4:</strong> Put 5 before O₂ to supply 10 oxygen atoms.</p>
+
+  <p><strong>Answer:</strong> C₃H₈ + 5O₂ → 3CO₂ + 4H₂O</p>
+
+  <h3>Using an Unchanged Polyatomic Group</h3>
+
+  <p>A <strong>polyatomic ion</strong> is a group of bonded atoms carrying an overall charge. In some equations, a group such as SO₄ remains unchanged on both sides. When the group remains intact, it can be counted as a unit to make balancing easier.</p>
+
+  <p>However, this shortcut is only valid when the same group appears on both sides unchanged. If its atoms are rearranged into different substances, count the individual atoms instead.</p>
+
+  <h3>A Reliable Order for Complex Equations</h3>
+
+  <ol>
+    <li>Write correct chemical formulae.</li>
+    <li>Balance elements that appear in only one formula on each side first, where practical.</li>
+    <li>Balance unchanged polyatomic groups as units when appropriate.</li>
+    <li>Balance hydrogen and oxygen later when that makes the counting simpler.</li>
+    <li>Check every element and reduce coefficients to the smallest whole-number ratio.</li>
+  </ol>
+
+  <h3>Remember</h3>
+
+  <ul>
+    <li>Subscripts inside brackets multiply the atoms in the bracketed group.</li>
+    <li>A coefficient multiplies the entire formula that follows it.</li>
+    <li>Balance each element, even when several elements are present.</li>
+    <li>Only treat a polyatomic group as a unit when it remains unchanged on both sides.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "Balance: Fe + O₂ → Fe₂O₃.",
+      q: "Balance Al + O₂ → Al₂O₃.",
+      hint: "Make the oxygen total 6 on both sides before balancing aluminium.",
       steps: [
-        "Step 1: Fe₂O₃ contains 2 Fe atoms and 3 O atoms.",
-        "Step 2: Use 2Fe₂O₃ to give 4 Fe atoms and 6 O atoms.",
-        "Step 3: Put 4 before Fe.",
-        "Step 4: Put 3 before O₂ to give 6 oxygen atoms.",
-        "Step 5: Check both elements."
-      ],
-      ans: "4Fe + 3O₂ → 2Fe₂O₃",
-      why: "There are 4 iron atoms and 6 oxygen atoms on each side."
-    },
-    {
-      q: "Balance: Al + O₂ → Al₂O₃.",
-      steps: [
-        "Step 1: Use 2Al₂O₃ to give 4 aluminium atoms and 6 oxygen atoms.",
-        "Step 2: Put 4 before Al.",
-        "Step 3: Put 3 before O₂.",
-        "Step 4: Check aluminium and oxygen."
+        "Put 2 before Al₂O₃, giving 6 oxygen atoms and 4 aluminium atoms on the right.",
+        "Put 3 before O₂ to give 6 oxygen atoms on the left.",
+        "Put 4 before Al to balance aluminium."
       ],
       ans: "4Al + 3O₂ → 2Al₂O₃",
-      why: "Both elements have equal numbers of atoms on both sides."
+      why: "Both sides contain 4 aluminium atoms and 6 oxygen atoms."
     },
     {
-      q: "Balance: CH₄ + O₂ → CO₂ + H₂O.",
+      q: "Balance Ca(OH)₂ + HCl → CaCl₂ + H₂O.",
+      hint: "Balance chlorine first, then count all hydrogen and oxygen atoms.",
       steps: [
-        "Step 1: Carbon is already balanced with 1 C on each side.",
-        "Step 2: CH₄ contains 4 hydrogen atoms, so put 2 before H₂O.",
-        "Step 3: Products now contain 4 oxygen atoms.",
-        "Step 4: Put 2 before O₂.",
-        "Step 5: Check all elements."
+        "Put 2 before HCl to balance the two chlorine atoms in CaCl₂.",
+        "The left side now contains 4 hydrogen atoms and 2 oxygen atoms.",
+        "Put 2 before H₂O to balance hydrogen and oxygen."
       ],
-      ans: "CH₄ + 2O₂ → CO₂ + 2H₂O",
-      why: "There is 1 carbon, 4 hydrogen and 4 oxygen atoms on each side."
+      ans: "Ca(OH)₂ + 2HCl → CaCl₂ + 2H₂O",
+      why: "Both sides contain 1 calcium, 2 chlorine, 4 hydrogen and 2 oxygen atoms."
+    },
+    {
+      q: "Balance C₃H₈ + O₂ → CO₂ + H₂O.",
+      hint: "Balance carbon, then hydrogen, then oxygen.",
+      steps: [
+        "Put 3 before CO₂ to balance carbon.",
+        "Put 4 before H₂O to balance the 8 hydrogen atoms.",
+        "The products contain 10 oxygen atoms, so put 5 before O₂."
+      ],
+      ans: "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O",
+      why: "Both sides contain 3 carbon atoms, 8 hydrogen atoms and 10 oxygen atoms."
     }
   ],
+
   [
     {
-      q: "Balance: N₂ + H₂ → NH₃.",
-      hint: "Balance nitrogen first, then hydrogen.",
+      q: "Balance Fe₂O₃ + CO → Fe + CO₂.",
+      hint: "Balance iron first, then carbon and oxygen.",
       steps: [
-        "Step 1: N₂ contains 2 nitrogen atoms.",
-        "Step 2: Put 2 before NH₃.",
-        "Step 3: There are now 6 hydrogen atoms on the right.",
-        "Step 4: Put 3 before H₂.",
-        "Step 5: Check nitrogen and hydrogen."
+        "Put 2 before Fe to balance the two iron atoms.",
+        "Choose 3CO and 3CO₂ to balance carbon.",
+        "Check oxygen: the left has 3 + 3 = 6 atoms; the right has 6."
       ],
-      ans: "N₂ + 3H₂ → 2NH₃",
-      why: "There are 2 nitrogen atoms and 6 hydrogen atoms on both sides."
+      ans: "Fe₂O₃ + 3CO → 2Fe + 3CO₂",
+      why: "Both sides contain 2 iron atoms, 3 carbon atoms and 6 oxygen atoms."
+    },
+    {
+      q: "Balance Na₂CO₃ + HCl → NaCl + H₂O + CO₂.",
+      hint: "Balance sodium and chlorine together before checking hydrogen.",
+      steps: [
+        "Na₂CO₃ contains 2 sodium atoms, so put 2 before NaCl.",
+        "Put 2 before HCl to supply 2 chlorine atoms.",
+        "Check hydrogen, carbon and oxygen; the remaining coefficients are 1."
+      ],
+      ans: "Na₂CO₃ + 2HCl → 2NaCl + H₂O + CO₂",
+      why: "Both sides contain 2 sodium, 2 chlorine, 2 hydrogen, 1 carbon and 3 oxygen atoms."
+    },
+    {
+      q: "In Ca(OH)₂, how many oxygen and hydrogen atoms are present in one formula unit?",
+      hint: "The subscript 2 outside the brackets applies to both O and H.",
+      steps: [
+        "Read the bracketed group as OH.",
+        "The subscript 2 means there are two OH groups.",
+        "Count 2 oxygen atoms and 2 hydrogen atoms."
+      ],
+      ans: "2 oxygen atoms and 2 hydrogen atoms.",
+      why: "A subscript outside brackets multiplies every atom inside the brackets."
+    },
+    {
+      q: "Balance KOH + H₂SO₄ → K₂SO₄ + H₂O.",
+      hint: "Balance potassium first. Sulfate remains intact on both sides.",
+      steps: [
+        "K₂SO₄ contains 2 potassium atoms, so put 2 before KOH.",
+        "The left side now has 4 hydrogen atoms in total, so put 2 before H₂O.",
+        "Check that sulfur and oxygen also balance."
+      ],
+      ans: "2KOH + H₂SO₄ → K₂SO₄ + 2H₂O",
+      why: "Both sides contain 2 potassium, 1 sulfur, 4 hydrogen and 6 oxygen atoms."
+    },
+    {
+      q: "Balance C₂H₆ + O₂ → CO₂ + H₂O using the smallest whole-number coefficients.",
+      hint: "Balance carbon and hydrogen first; oxygen may initially give a fraction.",
+      steps: [
+        "Use 2C₂H₆ to give 4 carbon atoms and 12 hydrogen atoms.",
+        "Put 4 before CO₂ and 6 before H₂O.",
+        "The products contain 14 oxygen atoms, so put 7 before O₂."
+      ],
+      ans: "2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O",
+      why: "Both sides contain 4 carbon, 12 hydrogen and 14 oxygen atoms, and the coefficients are in the smallest whole-number ratio."
+    },
+    {
+      q: "A learner balances an equation containing SO₄ on both sides by treating the sulfate group as one unit. When is this shortcut valid?",
+      hint: "Compare whether the group remains chemically unchanged on both sides.",
+      steps: [
+        "Identify the sulfate group as SO₄.",
+        "Check that it appears intact in a formula on each side.",
+        "If the group remains unchanged, balance it as a unit; otherwise count the individual atoms."
+      ],
+      ans: "The shortcut is valid when the SO₄ group remains intact and unchanged on both sides of the equation.",
+      why: "Counting an unchanged polyatomic group as a unit simplifies balancing without changing the atom count."
     }
   ]
 );
-
-
-// ============================================================
-// 12. COMBINATION REACTIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Combination Reactions",
-  `<h2>Combination Reactions</h2>
-  <p>A combination reaction is a reaction in which two or more substances combine to form a single product.</p>
 
-  <p>General pattern:</p>
+  `
+  <h2>Combination Reactions</h2>
+
+  <h3>Meaning</h3>
+  <p>A <strong>combination reaction</strong> is a chemical reaction in which two or more reactants combine to form one product.</p>
+
+  <p>The general pattern is:</p>
   <p><strong>A + B → AB</strong></p>
 
-  <h3>Example</h3>
-  <p><strong>2Mg + O₂ → 2MgO</strong></p>
+  <p>The letters represent substances, not necessarily individual atoms. The important feature is that several reactants form one product.</p>
 
-  <p>Magnesium and oxygen combine to form one product, magnesium oxide.</p>`,
+  <h3>How to Recognise a Combination Reaction</h3>
+  <ol>
+    <li>Count the reactants on the left-hand side of the equation.</li>
+    <li>Count the products on the right-hand side.</li>
+    <li>If two or more reactants form one product, the reaction is a combination reaction.</li>
+  </ol>
+
+  <h3>Worked Example 1: Magnesium Reacting with Oxygen</h3>
+  <p>Magnesium burns in oxygen to form magnesium oxide.</p>
+  <p>Unbalanced equation:</p>
+  <p>Mg + O₂ → MgO</p>
+  <p><strong>Step 1:</strong> The reactants are magnesium and oxygen.</p>
+  <p><strong>Step 2:</strong> The only product is magnesium oxide.</p>
+  <p><strong>Step 3:</strong> Balance the oxygen atoms by placing 2 before MgO. Then balance magnesium by placing 2 before Mg.</p>
+  <p><strong>Balanced equation:</strong> 2Mg + O₂ → 2MgO</p>
+  <p><strong>Conclusion:</strong> Two reactants form one product, so this is a combination reaction.</p>
+
+  <h3>Worked Example 2: Iron Reacting with Sulphur</h3>
+  <p>Iron reacts with sulphur when heated to form iron(II) sulphide.</p>
+  <p>Fe + S → FeS</p>
+  <p><strong>Step 1:</strong> The reactants are iron and sulphur.</p>
+  <p><strong>Step 2:</strong> They form one product, iron(II) sulphide.</p>
+  <p><strong>Step 3:</strong> There is one iron atom and one sulphur atom on each side, so the equation is already balanced.</p>
+  <p><strong>Conclusion:</strong> This is a combination reaction because two reactants form one product.</p>
+
+  <h3>Worked Example 3: Calcium Oxide Reacting with Water</h3>
+  <p>Calcium oxide reacts with water to form calcium hydroxide.</p>
+  <p>CaO + H₂O → Ca(OH)₂</p>
+  <p><strong>Step 1:</strong> The reactants are calcium oxide and water.</p>
+  <p><strong>Step 2:</strong> The only product is calcium hydroxide.</p>
+  <p><strong>Step 3:</strong> Count the atoms: both sides have 1 Ca, 2 H and 2 O atoms. The equation is balanced.</p>
+  <p><strong>Conclusion:</strong> This is a combination reaction because two reactants form one product.</p>
+
+  <h3>Important Distinction</h3>
+  <p>A combination reaction is classified by its reaction pattern, not simply by whether heat is supplied. The defining feature is that two or more reactants produce one product.</p>
+  `,
+
   [
     {
       q: "What is a combination reaction?",
-      steps: [
-        "Step 1: Identify the number of reactants.",
-        "Step 2: Two or more substances react together.",
-        "Step 3: They form one product."
-      ],
-      ans: "A reaction in which two or more substances combine to form one product.",
-      why: "The defining feature is the formation of a single product from multiple reactants."
-    },
-    {
-      q: "Classify: 2Mg + O₂ → 2MgO.",
-      steps: [
-        "Step 1: There are two reactants: Mg and O₂.",
-        "Step 2: There is one product: MgO.",
-        "Step 3: Therefore it is a combination reaction."
-      ],
-      ans: "Combination reaction.",
-      why: "Two reactants combine to form one product."
-    },
-    {
-      q: "Write a balanced equation for iron reacting with sulphur to form iron(II) sulphide.",
-      steps: [
-        "Step 1: Iron = Fe.",
-        "Step 2: Sulphur = S.",
-        "Step 3: Iron(II) sulphide = FeS.",
-        "Step 4: Write Fe + S → FeS.",
-        "Step 5: The atoms are already balanced."
-      ],
-      ans: "Fe + S → FeS",
-      why: "Iron and sulphur combine to form one product."
-    }
-  ],
-  [
-    {
-      q: "Is CaO + H₂O → Ca(OH)₂ a combination reaction?",
       hint: "Count the reactants and products.",
       steps: [
-        "Step 1: CaO and H₂O are two reactants.",
-        "Step 2: Ca(OH)₂ is one product.",
-        "Step 3: Therefore the reaction is a combination reaction."
+        "Identify the substances that react on the left-hand side.",
+        "Identify the substances formed on the right-hand side.",
+        "Check whether two or more reactants form one product."
       ],
-      ans: "Yes, it is a combination reaction.",
-      why: "Two substances combine to form a single product."
+      ans: "A reaction in which two or more reactants combine to form one product.",
+      why: "The defining pattern is multiple reactants producing a single product."
+    },
+    {
+      q: "Classify the reaction: 2Mg + O₂ → 2MgO.",
+      hint: "Count the different substances before and after the arrow.",
+      steps: [
+        "The reactants are magnesium and oxygen.",
+        "The only product is magnesium oxide.",
+        "Two reactants form one product."
+      ],
+      ans: "Combination reaction.",
+      why: "Magnesium and oxygen combine to form magnesium oxide."
+    },
+    {
+      q: "Complete and balance the combination reaction: CaO + H₂O → ?",
+      hint: "Calcium oxide reacts with water to form calcium hydroxide.",
+      steps: [
+        "Write the product formula as Ca(OH)₂.",
+        "Write the equation: CaO + H₂O → Ca(OH)₂.",
+        "Count atoms on both sides: Ca = 1, O = 2 and H = 2."
+      ],
+      ans: "CaO + H₂O → Ca(OH)₂.",
+      why: "The equation is balanced and has two reactants forming one product."
+    }
+  ],
+
+  [
+    {
+      q: "A learner says every reaction involving oxygen is a combination reaction. Is this correct?",
+      hint: "Classification depends on the number of reactants and products, not only on oxygen.",
+      steps: [
+        "Recall that combination reactions form one product from two or more reactants.",
+        "Consider a reaction in which a substance reacts with oxygen but produces two different products.",
+        "Check whether the defining combination pattern is present."
+      ],
+      ans: "No. A reaction involving oxygen is a combination reaction only if two or more reactants form one product.",
+      why: "The presence of oxygen alone does not determine the reaction type."
+    },
+    {
+      q: "Classify: Fe + S → FeS.",
+      hint: "Compare the number of reactants with the number of products.",
+      steps: [
+        "Iron and sulphur are two reactants.",
+        "Iron(II) sulphide is the single product.",
+        "Two reactants form one product."
+      ],
+      ans: "Combination reaction.",
+      why: "The reaction follows the pattern of several reactants forming one product."
+    },
+    {
+      q: "Which equation represents a combination reaction?",
+      hint: "Look for multiple reactants and one product.",
+      steps: [
+        "Examine the reactants on the left.",
+        "Count the products on the right.",
+        "Select the equation with two or more reactants and one product."
+      ],
+      ans: "N₂ + 3H₂ → 2NH₃.",
+      why: "Nitrogen and hydrogen combine to form ammonia as the only product."
+    },
+    {
+      q: "A reaction has three reactants and one product. Can it be a combination reaction?",
+      hint: "The definition does not restrict the reaction to exactly two reactants.",
+      steps: [
+        "Recall that a combination reaction involves two or more reactants.",
+        "Three reactants meet this requirement.",
+        "Check that only one product is formed."
+      ],
+      ans: "Yes, if the three reactants form one product.",
+      why: "Combination reactions can involve more than two reactants."
+    },
+    {
+      q: "Why is Mg + O₂ → MgO not balanced as written?",
+      hint: "Count the oxygen atoms on each side.",
+      steps: [
+        "The left side contains two oxygen atoms in O₂.",
+        "The right side contains one oxygen atom in MgO.",
+        "Place 2 before MgO, then 2 before Mg."
+      ],
+      ans: "2Mg + O₂ → 2MgO.",
+      why: "A balanced equation has equal numbers of each type of atom on both sides."
+    },
+    {
+      q: "A student sees two reactants and two products and labels the reaction a combination reaction. What is wrong with the reasoning?",
+      hint: "A combination reaction must form one product.",
+      steps: [
+        "Count the reactants.",
+        "Count the products.",
+        "Compare the pattern with multiple reactants forming a single product."
+      ],
+      ans: "Two reactants alone are not enough; a combination reaction must produce one product.",
+      why: "Both the reactant count and the product count matter when classifying the reaction."
     }
   ]
 );
 
-
-// ============================================================
-// 13. DECOMPOSITION REACTIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Decomposition Reactions",
-  `<h2>Decomposition Reactions</h2>
-  <p>A decomposition reaction occurs when one compound breaks down into two or more simpler substances.</p>
 
-  <p>General pattern:</p>
+  `
+  <h2>Decomposition Reactions</h2>
+
+  <h3>Meaning</h3>
+  <p>A <strong>decomposition reaction</strong> is a chemical reaction in which one reactant breaks down into two or more products.</p>
+
+  <p>The general pattern is:</p>
   <p><strong>AB → A + B</strong></p>
 
-  <h3>Example</h3>
-  <p><strong>CaCO₃ → CaO + CO₂</strong></p>
+  <p>This is the opposite pattern to a combination reaction: one starting substance produces several products.</p>
 
-  <p>One compound produces two products.</p>`,
+  <h3>Energy in Decomposition</h3>
+  <p>Many decomposition reactions require an energy supply, such as heat, light or electricity.</p>
+  <ul>
+    <li><strong>Thermal decomposition:</strong> breakdown caused by heating.</li>
+    <li><strong>Electrolysis:</strong> breakdown caused by passing an electric current through a suitable substance.</li>
+    <li><strong>Photochemical decomposition:</strong> breakdown caused by light.</li>
+  </ul>
+  <p>These are ways decomposition can occur. Do not assume every decomposition reaction uses the same energy source.</p>
+
+  <h3>Worked Example 1: Thermal Decomposition of Calcium Carbonate</h3>
+  <p>When calcium carbonate is strongly heated, it breaks down into calcium oxide and carbon dioxide.</p>
+  <p>CaCO₃ → CaO + CO₂</p>
+  <p><strong>Step 1:</strong> There is one reactant: calcium carbonate.</p>
+  <p><strong>Step 2:</strong> There are two products: calcium oxide and carbon dioxide.</p>
+  <p><strong>Step 3:</strong> Count atoms. Both sides contain 1 Ca, 1 C and 3 O atoms.</p>
+  <p><strong>Conclusion:</strong> This is a decomposition reaction because one reactant forms two products.</p>
+
+  <h3>Worked Example 2: Decomposition of Potassium Chlorate</h3>
+  <p>On heating, potassium chlorate decomposes to form potassium chloride and oxygen. Manganese(IV) oxide may be used as a catalyst.</p>
+  <p>Unbalanced equation:</p>
+  <p>KClO₃ → KCl + O₂</p>
+  <p><strong>Step 1:</strong> Balance oxygen by using 2KClO₃, giving 6 oxygen atoms.</p>
+  <p><strong>Step 2:</strong> Place 3 before O₂ to give 6 oxygen atoms on the right.</p>
+  <p><strong>Step 3:</strong> Balance potassium and chlorine by placing 2 before KCl.</p>
+  <p><strong>Balanced equation:</strong> 2KClO₃ → 2KCl + 3O₂</p>
+  <p><strong>Conclusion:</strong> One reactant forms two products, so this is a decomposition reaction. A catalyst speeds up the reaction but is not consumed as a reactant in the overall equation.</p>
+
+  <h3>Worked Example 3: Electrolysis of Water</h3>
+  <p>Electricity can decompose water into hydrogen and oxygen gases.</p>
+  <p>Unbalanced equation:</p>
+  <p>H₂O → H₂ + O₂</p>
+  <p><strong>Step 1:</strong> Oxygen occurs as O₂ on the right, so place 2 before H₂O.</p>
+  <p><strong>Step 2:</strong> The left now contains 4 hydrogen atoms, so place 2 before H₂.</p>
+  <p><strong>Balanced equation:</strong> 2H₂O → 2H₂ + O₂</p>
+  <p><strong>Step 3:</strong> Check the atoms: H = 4 and O = 2 on each side.</p>
+  <p><strong>Conclusion:</strong> One reactant forms two products, making this a decomposition reaction.</p>
+
+  <h3>How to Recognise Decomposition</h3>
+  <ol>
+    <li>Identify the reactant on the left-hand side.</li>
+    <li>Count the products on the right-hand side.</li>
+    <li>If one reactant forms two or more products, classify it as decomposition.</li>
+  </ol>
+  `,
+
   [
     {
       q: "What is a decomposition reaction?",
+      hint: "Focus on what happens to one starting substance.",
       steps: [
-        "Step 1: Start with one compound.",
-        "Step 2: The compound breaks down.",
-        "Step 3: Two or more simpler substances are formed."
+        "Identify the starting reactant.",
+        "Check whether it breaks down.",
+        "Count the products formed."
       ],
-      ans: "A reaction in which one compound breaks down into two or more simpler substances.",
-      why: "The reactant is decomposed into simpler products."
+      ans: "A reaction in which one reactant breaks down into two or more products.",
+      why: "Decomposition involves one reactant forming multiple products."
     },
     {
       q: "Classify: CaCO₃ → CaO + CO₂.",
+      hint: "Count the reactants and products.",
       steps: [
-        "Step 1: There is one reactant, CaCO₃.",
-        "Step 2: There are two products, CaO and CO₂.",
-        "Step 3: Therefore it is decomposition."
+        "Calcium carbonate is the single reactant.",
+        "Calcium oxide and carbon dioxide are two products.",
+        "One reactant forms two products."
       ],
       ans: "Decomposition reaction.",
-      why: "One compound breaks down into two products."
+      why: "Calcium carbonate breaks down into two different substances."
     },
     {
-      q: "Write the products formed when copper(II) carbonate decomposes: CuCO₃ → ?",
+      q: "Balance: H₂O → H₂ + O₂.",
+      hint: "Balance oxygen first, then hydrogen.",
       steps: [
-        "Step 1: A metal carbonate decomposes to form the metal oxide and carbon dioxide.",
-        "Step 2: Copper(II) carbonate forms copper(II) oxide.",
-        "Step 3: Carbon dioxide is also produced."
+        "Place 2 before H₂O to balance oxygen.",
+        "There are now 4 hydrogen atoms on the left.",
+        "Place 2 before H₂."
       ],
-      ans: "CuCO₃ → CuO + CO₂",
-      why: "Metal carbonates commonly decompose on heating to form the metal oxide and carbon dioxide."
+      ans: "2H₂O → 2H₂ + O₂.",
+      why: "Both sides contain four hydrogen atoms and two oxygen atoms."
     }
   ],
+
   [
     {
-      q: "Classify: 2KClO₃ → 2KCl + 3O₂.",
-      hint: "Look at the number of reactants and products.",
+      q: "A learner says decomposition means a substance disappears. Explain the mistake.",
+      hint: "Think about what happens to the atoms.",
       steps: [
-        "Step 1: There is one reactant, KClO₃.",
-        "Step 2: Two products are formed.",
-        "Step 3: Therefore it is decomposition."
+        "A reactant breaks down into new substances.",
+        "Its atoms are rearranged into the products.",
+        "The atoms are conserved in an ordinary chemical reaction."
+      ],
+      ans: "The substance does not simply disappear; it forms two or more products containing its atoms.",
+      why: "Chemical decomposition rearranges atoms rather than destroying them."
+    },
+    {
+      q: "Classify: 2KClO₃ → 2KCl + 3O₂.",
+      hint: "Count the starting substances, not the balancing coefficients.",
+      steps: [
+        "Potassium chlorate is the only reactant substance.",
+        "Potassium chloride and oxygen are two product substances.",
+        "One reactant produces two products."
       ],
       ans: "Decomposition reaction.",
-      why: "One compound breaks down into simpler substances."
+      why: "The reaction follows the pattern of one reactant breaking down into multiple products."
+    },
+    {
+      q: "Which energy source is used to decompose water during electrolysis?",
+      hint: "Electrolysis involves a particular form of energy transfer.",
+      steps: [
+        "Identify electrolysis as the process involved.",
+        "Recall that electrolysis uses an electric current.",
+        "The current drives the breakdown of water."
+      ],
+      ans: "Electrical energy.",
+      why: "An electric current causes water to decompose into hydrogen and oxygen under suitable conditions."
+    },
+    {
+      q: "A single reactant forms three products. Can the reaction be classified as decomposition?",
+      hint: "The definition says two or more products.",
+      steps: [
+        "Identify the one reactant.",
+        "Count the three products.",
+        "Compare the pattern with the definition of decomposition."
+      ],
+      ans: "Yes. One reactant forming three products is a decomposition reaction.",
+      why: "Decomposition is not limited to forming exactly two products."
+    },
+    {
+      q: "Why is CaCO₃ → CaO + CO₂ a decomposition reaction rather than a combination reaction?",
+      hint: "Compare the number of starting substances with the number formed.",
+      steps: [
+        "There is one reactant, CaCO₃.",
+        "There are two products, CaO and CO₂.",
+        "One reactant forms multiple products."
+      ],
+      ans: "It is decomposition because one reactant breaks down into two products.",
+      why: "Combination has the opposite pattern: multiple reactants forming one product."
+    },
+    {
+      q: "What is the role of manganese(IV) oxide in the decomposition of potassium chlorate when it is used?",
+      hint: "It changes how quickly the reaction happens.",
+      steps: [
+        "Identify manganese(IV) oxide as a catalyst.",
+        "Recall that a catalyst changes the reaction rate.",
+        "It is not counted as a reactant in the overall balanced equation."
+      ],
+      ans: "It acts as a catalyst, increasing the reaction rate without being consumed in the overall reaction.",
+      why: "A catalyst helps the reaction proceed faster; it does not change the balanced atom count of the overall equation."
     }
   ]
 );
-
-
-// ============================================================
-// 14. DISPLACEMENT REACTIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Displacement Reactions",
-  `<h2>Displacement Reactions</h2>
-  <p>A displacement reaction occurs when a more reactive element displaces a less reactive element from its compound.</p>
 
-  <h3>Example</h3>
-  <p><strong>Zn + CuSO₄ → ZnSO₄ + Cu</strong></p>
+  `
+  <h2>Displacement Reactions</h2>
 
-  <p>Zinc is more reactive than copper, so zinc displaces copper from copper(II) sulphate.</p>
+  <h3>Meaning</h3>
+  <p>A <strong>displacement reaction</strong> occurs when a more reactive element replaces a less reactive element from its compound.</p>
 
-  <p>The reaction can occur because zinc is higher than copper in the reactivity series.</p>`,
+  <p>For displacement of a metal from its compound, the general pattern is:</p>
+  <p><strong>A + BC → AC + B</strong></p>
+  <p>This pattern applies when element A is more reactive than element B and can replace it in compound BC.</p>
+
+  <h3>The Reactivity Series</h3>
+  <p>The reactivity series ranks metals from more reactive to less reactive. A more reactive metal can displace a less reactive metal from a suitable solution of its compound. A less reactive metal cannot displace a more reactive metal from its compound.</p>
+
+  <p>A useful simplified order is:</p>
+  <p><strong>K, Na, Ca, Mg, Al, Zn, Fe, Pb, (H), Cu, Ag, Au</strong></p>
+  <p>Metals higher in this series are generally more reactive than those below them. Hydrogen is included as a reference point for reactions of metals with acids; it is not a metal.</p>
+
+  <h3>Worked Example 1: Zinc and Copper(II) Sulphate</h3>
+  <p>Zinc is more reactive than copper. When zinc is placed in copper(II) sulphate solution, it displaces copper.</p>
+  <p><strong>Equation:</strong> Zn + CuSO₄ → ZnSO₄ + Cu</p>
+  <p><strong>Step 1:</strong> Identify the free metal: zinc.</p>
+  <p><strong>Step 2:</strong> Compare reactivity. Zinc is above copper in the reactivity series.</p>
+  <p><strong>Step 3:</strong> Zinc replaces copper in copper(II) sulphate, forming zinc sulphate and copper.</p>
+  <p><strong>Conclusion:</strong> This is a displacement reaction.</p>
+
+  <h3>Worked Example 2: Iron and Copper(II) Sulphate</h3>
+  <p>Iron is more reactive than copper, so it displaces copper from copper(II) sulphate solution.</p>
+  <p><strong>Equation:</strong> Fe + CuSO₄ → FeSO₄ + Cu</p>
+  <p><strong>Step 1:</strong> The free element is iron.</p>
+  <p><strong>Step 2:</strong> Iron is more reactive than copper.</p>
+  <p><strong>Step 3:</strong> Iron replaces copper, forming iron(II) sulphate and copper.</p>
+  <p><strong>Observation:</strong> The blue solution may turn pale green, and a reddish-brown copper deposit may form.</p>
+
+  <h3>Worked Example 3: Copper and Zinc Sulphate</h3>
+  <p>Consider copper placed in zinc sulphate solution.</p>
+  <p><strong>Proposed equation:</strong> Cu + ZnSO₄ → ?</p>
+  <p><strong>Step 1:</strong> The free metal is copper.</p>
+  <p><strong>Step 2:</strong> Zinc is more reactive than copper.</p>
+  <p><strong>Step 3:</strong> Copper cannot displace zinc from zinc sulphate.</p>
+  <p><strong>Answer:</strong> No displacement reaction occurs under these conditions.</p>
+
+  <h3>Important Rule</h3>
+  <p>Always compare the reactivity of the free element with the element it might replace. A reaction is not guaranteed simply because a metal is placed in a salt solution.</p>
+  `,
+
   [
     {
       q: "What is a displacement reaction?",
+      hint: "Compare the reactivity of the free element with the element in the compound.",
       steps: [
-        "Step 1: An element reacts with a compound.",
-        "Step 2: The more reactive element replaces a less reactive element.",
-        "Step 3: A new compound and displaced element are formed."
+        "Identify the free element and the compound.",
+        "Compare the reactivity of the free element with the element in the compound.",
+        "Determine whether the free element can replace it."
       ],
-      ans: "A reaction in which a more reactive element displaces a less reactive element from its compound.",
-      why: "The relative reactivity of the elements determines whether displacement occurs."
+      ans: "A reaction in which a more reactive element replaces a less reactive element from its compound.",
+      why: "The ability to replace the less reactive element is the defining feature of displacement."
     },
     {
-      q: "Explain why zinc displaces copper from copper(II) sulphate.",
+      q: "Complete the reaction: Zn + CuSO₄ → ?",
+      hint: "Zinc is more reactive than copper.",
       steps: [
-        "Step 1: Zinc is higher than copper in the reactivity series.",
-        "Step 2: Therefore zinc is more reactive than copper.",
-        "Step 3: Zinc can displace copper from CuSO₄."
+        "Zinc replaces copper in copper(II) sulphate.",
+        "The salt formed is zinc sulphate.",
+        "Copper is released as an element."
       ],
-      ans: "Zinc is more reactive than copper, so it displaces copper from copper(II) sulphate.",
-      why: "A more reactive metal can displace a less reactive metal from its compound."
+      ans: "Zn + CuSO₄ → ZnSO₄ + Cu.",
+      why: "Zinc is more reactive than copper and displaces it from the compound."
     },
     {
-      q: "Complete and balance: Zn + CuSO₄ → ?",
+      q: "Will copper displace zinc from zinc sulphate solution? Explain.",
+      hint: "Use the reactivity series.",
       steps: [
-        "Step 1: Zinc displaces copper.",
-        "Step 2: The products are ZnSO₄ and Cu.",
-        "Step 3: Write the equation.",
-        "Step 4: Check the atoms."
+        "Identify copper as the free metal.",
+        "Compare copper with zinc in the reactivity series.",
+        "Copper is less reactive than zinc, so it cannot replace zinc."
       ],
-      ans: "Zn + CuSO₄ → ZnSO₄ + Cu",
-      why: "Zinc replaces copper while the sulphate group remains together."
+      ans: "No. Copper cannot displace zinc because copper is less reactive than zinc.",
+      why: "A metal cannot displace a less reactive metal from its compound if the free metal is less reactive."
     }
   ],
+
   [
     {
-      q: "Will copper displace zinc from zinc sulphate? Explain.",
-      hint: "Compare copper and zinc in the reactivity series.",
+      q: "A learner claims that any metal can displace another metal from its salt solution. What is wrong with this claim?",
+      hint: "Consider the reactivity series.",
       steps: [
-        "Step 1: Zinc is more reactive than copper.",
-        "Step 2: Copper is less reactive than zinc.",
-        "Step 3: A less reactive metal cannot displace a more reactive metal."
+        "Recall that displacement depends on relative reactivity.",
+        "A more reactive metal can replace a less reactive metal.",
+        "A less reactive metal cannot replace a more reactive metal."
       ],
-      ans: "No. Copper cannot displace zinc from zinc sulphate because copper is less reactive than zinc.",
-      why: "Displacement requires the free element to be more reactive than the element it replaces."
+      ans: "Displacement occurs only when the free metal is more reactive than the metal it replaces.",
+      why: "The reactivity series determines whether displacement is possible."
+    },
+    {
+      q: "Predict what happens when magnesium is placed in copper(II) sulphate solution.",
+      hint: "Magnesium is above copper in the reactivity series.",
+      steps: [
+        "Magnesium is more reactive than copper.",
+        "Magnesium replaces copper in copper(II) sulphate.",
+        "The products are magnesium sulphate and copper."
+      ],
+      ans: "Mg + CuSO₄ → MgSO₄ + Cu.",
+      why: "Magnesium can displace copper because it is more reactive."
+    },
+    {
+      q: "Iron is placed in zinc sulphate solution. Will displacement occur?",
+      hint: "Compare iron and zinc.",
+      steps: [
+        "Iron is the free metal.",
+        "Zinc is above iron in the reactivity series.",
+        "Iron is less reactive than zinc and cannot replace it."
+      ],
+      ans: "No displacement reaction occurs.",
+      why: "Iron cannot displace the more reactive zinc from zinc sulphate."
+    },
+    {
+      q: "In Zn + CuSO₄ → ZnSO₄ + Cu, which substance is displaced?",
+      hint: "Identify the element that was originally part of the compound but becomes free.",
+      steps: [
+        "Copper begins in copper(II) sulphate.",
+        "Zinc replaces copper in the compound.",
+        "Copper is released as a free element."
+      ],
+      ans: "Copper.",
+      why: "Copper is the less reactive element replaced by zinc."
+    },
+    {
+      q: "Why can magnesium displace zinc from zinc sulphate, but zinc cannot displace magnesium from magnesium sulphate?",
+      hint: "Compare the positions of magnesium and zinc in the reactivity series.",
+      steps: [
+        "Magnesium is more reactive than zinc.",
+        "Magnesium can replace zinc from its compound.",
+        "Zinc is less reactive than magnesium and cannot replace it."
+      ],
+      ans: "Magnesium is more reactive than zinc, so only magnesium can displace zinc in this comparison.",
+      why: "Displacement depends on which element is higher in the reactivity series."
+    },
+    {
+      q: "A blue copper(II) sulphate solution is placed in contact with iron. The solution becomes pale green and a reddish-brown solid forms. Explain these observations.",
+      hint: "Identify the new salt and the metal deposited.",
+      steps: [
+        "Iron is more reactive than copper.",
+        "Iron displaces copper, forming iron(II) sulphate.",
+        "The iron(II) sulphate solution is pale green, while the deposited copper is reddish-brown."
+      ],
+      ans: "Iron forms pale-green iron(II) sulphate solution and displaces reddish-brown copper.",
+      why: "The observations are consistent with Fe + CuSO₄ → FeSO₄ + Cu."
     }
   ]
 );
 
-
-// ============================================================
-// 15. NEUTRALISATION REACTIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Neutralisation Reactions",
-  `<h2>Neutralisation Reactions</h2>
-  <p>Neutralisation is a reaction between an acid and a base or alkali to form a salt and water.</p>
 
-  <p>General pattern:</p>
+  `
+  <h2>Neutralisation Reactions</h2>
+
+  <h3>Meaning</h3>
+  <p><strong>Neutralisation</strong> is a reaction between an acid and a base in which salt and water are formed.</p>
+
+  <p>For a typical acid reacting with a metal oxide or metal hydroxide, the general word equation is:</p>
   <p><strong>Acid + Base → Salt + Water</strong></p>
 
-  <h3>Example</h3>
-  <p><strong>HCl + NaOH → NaCl + H₂O</strong></p>
+  <p>A base that dissolves in water is called an <strong>alkali</strong>. Therefore, acid–alkali reactions are examples of neutralisation.</p>
 
-  <p>Hydrochloric acid reacts with sodium hydroxide to form sodium chloride and water.</p>`,
+  <h3>How Salts Are Named</h3>
+  <p>The acid helps determine the name of the salt:</p>
+  <ul>
+    <li>Hydrochloric acid forms chloride salts.</li>
+    <li>Sulphuric acid forms sulphate salts.</li>
+    <li>Nitric acid forms nitrate salts.</li>
+  </ul>
+
+  <h3>Worked Example 1: Hydrochloric Acid and Sodium Hydroxide</h3>
+  <p>Hydrochloric acid reacts with sodium hydroxide to form sodium chloride and water.</p>
+  <p><strong>Word equation:</strong> Hydrochloric acid + sodium hydroxide → sodium chloride + water</p>
+  <p><strong>Formula equation:</strong> HCl + NaOH → NaCl + H₂O</p>
+  <p><strong>Step 1:</strong> Identify the acid, HCl, and the base, NaOH.</p>
+  <p><strong>Step 2:</strong> The salt is sodium chloride, NaCl, because hydrochloric acid forms chloride salts.</p>
+  <p><strong>Step 3:</strong> Water is the other product. Count the atoms: H = 2, Na = 1, Cl = 1 and O = 1 on each side.</p>
+  <p><strong>Conclusion:</strong> The equation is balanced and represents neutralisation.</p>
+
+  <h3>Worked Example 2: Sulphuric Acid and Potassium Hydroxide</h3>
+  <p>Sulphuric acid reacts with potassium hydroxide to form potassium sulphate and water.</p>
+  <p><strong>Unbalanced equation:</strong> H₂SO₄ + KOH → K₂SO₄ + H₂O</p>
+  <p><strong>Step 1:</strong> The salt is potassium sulphate, K₂SO₄.</p>
+  <p><strong>Step 2:</strong> Place 2 before KOH to supply the two potassium atoms required.</p>
+  <p><strong>Step 3:</strong> Balance hydrogen and oxygen by placing 2 before H₂O.</p>
+  <p><strong>Balanced equation:</strong> H₂SO₄ + 2KOH → K₂SO₄ + 2H₂O</p>
+  <p><strong>Check:</strong> K = 2, H = 4, S = 1 and O = 6 on each side.</p>
+
+  <h3>Worked Example 3: Hydrochloric Acid and Magnesium Oxide</h3>
+  <p>Magnesium oxide is a basic oxide. It reacts with hydrochloric acid to form magnesium chloride and water.</p>
+  <p><strong>Unbalanced equation:</strong> HCl + MgO → MgCl₂ + H₂O</p>
+  <p><strong>Step 1:</strong> Magnesium chloride contains two chlorine atoms.</p>
+  <p><strong>Step 2:</strong> Place 2 before HCl to balance chlorine.</p>
+  <p><strong>Step 3:</strong> Check hydrogen, magnesium and oxygen. Each is now balanced.</p>
+  <p><strong>Balanced equation:</strong> 2HCl + MgO → MgCl₂ + H₂O</p>
+  <p><strong>Conclusion:</strong> An acid reacts with this basic oxide to form a salt and water.</p>
+
+  <h3>Understanding Neutralisation</h3>
+  <p>In aqueous solution, acids provide hydrogen ions, H⁺, while alkalis provide hydroxide ions, OH⁻. These ions react to form water:</p>
+  <p><strong>H⁺(aq) + OH⁻(aq) → H₂O(l)</strong></p>
+  <p>This ionic equation describes the essential neutralisation process for an acid reacting with an alkali. Neutralisation does not mean every resulting solution must have pH 7 under all conditions; the final pH depends on the substances and quantities involved.</p>
+  `,
+
   [
     {
       q: "What is neutralisation?",
+      hint: "Recall the usual products of an acid reacting with a base.",
       steps: [
-        "Step 1: An acid reacts with a base or alkali.",
-        "Step 2: The reaction forms a salt.",
-        "Step 3: Water is also formed."
+        "Identify the acid and the base.",
+        "Determine the products of their reaction.",
+        "Check whether salt and water are formed."
       ],
-      ans: "Neutralisation is a reaction between an acid and a base or alkali that produces a salt and water.",
-      why: "The acidic and basic properties are neutralised during the reaction."
+      ans: "A reaction between an acid and a base that forms salt and water.",
+      why: "Salt and water are the usual products of the neutralisation reactions studied at this level."
     },
     {
-      q: "Complete: HCl + NaOH → ?",
+      q: "Complete and balance: HCl + NaOH → ?",
+      hint: "Hydrochloric acid forms chloride salts.",
       steps: [
-        "Step 1: HCl is hydrochloric acid.",
-        "Step 2: NaOH is sodium hydroxide.",
-        "Step 3: The salt formed is sodium chloride, NaCl.",
-        "Step 4: Water, H₂O, is also formed."
+        "Combine sodium with chloride to form sodium chloride, NaCl.",
+        "The acid's hydrogen and the hydroxide's OH group form water.",
+        "Write HCl + NaOH → NaCl + H₂O and count the atoms."
       ],
-      ans: "HCl + NaOH → NaCl + H₂O",
-      why: "Hydrochloric acid and sodium hydroxide undergo neutralisation."
+      ans: "HCl + NaOH → NaCl + H₂O.",
+      why: "Sodium chloride and water are formed, and all atoms are balanced."
     },
     {
-      q: "Balance: H₂SO₄ + NaOH → Na₂SO₄ + H₂O.",
+      q: "Balance: H₂SO₄ + KOH → K₂SO₄ + H₂O.",
+      hint: "Balance potassium first.",
       steps: [
-        "Step 1: Na₂SO₄ requires 2 sodium atoms.",
-        "Step 2: Put 2 before NaOH.",
-        "Step 3: There are now 2 OH groups, forming 2H₂O.",
-        "Step 4: Check hydrogen and oxygen."
+        "K₂SO₄ contains two potassium atoms, so place 2 before KOH.",
+        "There are now four hydrogen atoms on the left.",
+        "Place 2 before H₂O and check oxygen."
       ],
-      ans: "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O",
-      why: "The atoms of every element are equal on both sides."
+      ans: "H₂SO₄ + 2KOH → K₂SO₄ + 2H₂O.",
+      why: "Both sides contain K = 2, H = 4, S = 1 and O = 6."
     }
   ],
+
   [
     {
-      q: "What type of reaction occurs between hydrochloric acid and sodium hydroxide?",
-      hint: "An acid reacts with an alkali.",
+      q: "A learner says neutralisation always produces only water. What is missing from the answer?",
+      hint: "Recall the other main product.",
       steps: [
-        "Step 1: Hydrochloric acid is an acid.",
-        "Step 2: Sodium hydroxide is an alkali.",
-        "Step 3: Acid + alkali gives salt + water."
+        "Recall the word equation for neutralisation.",
+        "Identify both products formed when an acid reacts with a suitable base.",
+        "Include the salt as well as water."
       ],
-      ans: "Neutralisation reaction.",
-      why: "An acid reacting with an alkali to form salt and water is neutralisation."
+      ans: "Neutralisation normally forms both a salt and water.",
+      why: "Water is not the only product; the other main product is a salt."
+    },
+    {
+      q: "Which salt forms when hydrochloric acid reacts with sodium hydroxide?",
+      hint: "Hydrochloric acid forms chloride salts.",
+      steps: [
+        "Identify the metal ion from sodium hydroxide: sodium.",
+        "Identify the anion from hydrochloric acid: chloride.",
+        "Combine them to form sodium chloride."
+      ],
+      ans: "Sodium chloride, NaCl.",
+      why: "The sodium ion and chloride ion form sodium chloride."
+    },
+    {
+      q: "Complete and balance: 2HCl + MgO → ?",
+      hint: "A basic metal oxide reacts with an acid to form a salt and water.",
+      steps: [
+        "The salt contains magnesium and chloride, so it is MgCl₂.",
+        "The oxygen in MgO and hydrogen from HCl form H₂O.",
+        "Check that the two chlorine atoms, two hydrogen atoms and one oxygen atom are balanced."
+      ],
+      ans: "2HCl + MgO → MgCl₂ + H₂O.",
+      why: "The products are magnesium chloride and water, and the equation is balanced."
+    },
+    {
+      q: "What happens when hydrogen ions react with hydroxide ions during neutralisation?",
+      hint: "Recall the net ionic equation.",
+      steps: [
+        "Hydrogen ions are represented by H⁺.",
+        "Hydroxide ions are represented by OH⁻.",
+        "They combine to form water."
+      ],
+      ans: "H⁺(aq) + OH⁻(aq) → H₂O(l).",
+      why: "The hydrogen and hydroxide ions combine to form water."
+    },
+    {
+      q: "Which type of salt is formed when nitric acid reacts with potassium hydroxide?",
+      hint: "Nitric acid forms nitrate salts.",
+      steps: [
+        "Identify the metal ion: potassium.",
+        "Identify the salt-forming ion from nitric acid: nitrate.",
+        "Combine them to name the salt."
+      ],
+      ans: "Potassium nitrate, KNO₃.",
+      why: "Nitric acid forms nitrate salts, and potassium supplies the potassium ion."
+    },
+    {
+      q: "A student mixes an acid and an alkali in unequal quantities and assumes the final pH must be exactly 7. Why is this not always correct?",
+      hint: "Consider whether either substance remains in excess.",
+      steps: [
+        "Neutralisation occurs as hydrogen ions react with hydroxide ions.",
+        "If the quantities are unequal, one may remain in excess.",
+        "The excess acid or alkali can affect the final pH."
+      ],
+      ans: "The final pH depends on the substances, their strengths and the quantities mixed; unequal quantities may leave excess acid or alkali.",
+      why: "Neutralisation does not guarantee pH 7 in every mixture."
     }
   ]
 );
-
-
-// ============================================================
-// 16. COMBUSTION REACTIONS
-// ============================================================
 
 add(
   "chemistry",
   "chemical_reactions",
   "Combustion Reactions",
-  `<h2>Combustion Reactions</h2>
-  <p>Combustion is a chemical reaction in which a substance burns in oxygen and releases energy, usually as heat and often as light.</p>
 
-  <h3>Complete combustion of a hydrocarbon</h3>
-  <p>A hydrocarbon contains carbon and hydrogen.</p>
+  `
+  <h2>Combustion Reactions</h2>
 
-  <p>Complete combustion produces:</p>
-  <p><strong>Carbon dioxide + water</strong></p>
+  <h3>Meaning</h3>
+  <p><strong>Combustion</strong> is a chemical reaction in which a substance reacts with an oxidising agent, commonly oxygen in air, releasing energy as heat and often light.</p>
 
-  <h3>Example</h3>
-  <p><strong>CH₄ + 2O₂ → CO₂ + 2H₂O</strong></p>`,
+  <p>In ordinary burning, oxygen supports the reaction. Many fuels contain carbon and hydrogen, so their combustion can produce carbon dioxide and water when oxygen is sufficient.</p>
+
+  <h3>Complete and Incomplete Combustion</h3>
+
+  <p><strong>Complete combustion:</strong> A carbon-containing fuel burns with sufficient oxygen. Carbon is converted mainly to carbon dioxide, while hydrogen is converted to water.</p>
+
+  <p><strong>Incomplete combustion:</strong> When oxygen is insufficient, carbon monoxide and/or solid carbon (soot) may form instead of all the carbon becoming carbon dioxide. Water can still form from the hydrogen in the fuel.</p>
+
+  <p>Carbon monoxide is poisonous because it reduces the blood's ability to transport oxygen. Combustion must therefore take place with adequate ventilation.</p>
+
+  <h3>Worked Example 1: Complete Combustion of Carbon</h3>
+  <p>Carbon burns in sufficient oxygen to form carbon dioxide.</p>
+  <p><strong>Equation:</strong> C + O₂ → CO₂</p>
+  <p><strong>Step 1:</strong> Carbon is the fuel and oxygen is the reactant supporting combustion.</p>
+  <p><strong>Step 2:</strong> Under sufficient oxygen, the carbon forms carbon dioxide.</p>
+  <p><strong>Step 3:</strong> Count the atoms: one carbon and two oxygen atoms occur on each side.</p>
+  <p><strong>Conclusion:</strong> The equation is balanced and represents complete combustion of carbon.</p>
+
+  <h3>Worked Example 2: Complete Combustion of Methane</h3>
+  <p>Methane, CH₄, burns in sufficient oxygen to form carbon dioxide and water.</p>
+  <p><strong>Unbalanced equation:</strong> CH₄ + O₂ → CO₂ + H₂O</p>
+  <p><strong>Step 1:</strong> Carbon is already balanced: one atom on each side.</p>
+  <p><strong>Step 2:</strong> Methane has four hydrogen atoms, so place 2 before H₂O.</p>
+  <p><strong>Step 3:</strong> The products now contain four oxygen atoms in total. Place 2 before O₂.</p>
+  <p><strong>Balanced equation:</strong> CH₄ + 2O₂ → CO₂ + 2H₂O</p>
+  <p><strong>Conclusion:</strong> One carbon atom, four hydrogen atoms and four oxygen atoms occur on each side.</p>
+
+  <h3>Worked Example 3: Complete Combustion of Propane</h3>
+  <p>Propane, C₃H₈, burns in sufficient oxygen to form carbon dioxide and water.</p>
+  <p><strong>Unbalanced equation:</strong> C₃H₈ + O₂ → CO₂ + H₂O</p>
+  <p><strong>Step 1:</strong> Balance carbon by placing 3 before CO₂.</p>
+  <p><strong>Step 2:</strong> Balance hydrogen by placing 4 before H₂O.</p>
+  <p><strong>Step 3:</strong> The products contain 6 + 4 = 10 oxygen atoms. Place 5 before O₂.</p>
+  <p><strong>Balanced equation:</strong> C₃H₈ + 5O₂ → 3CO₂ + 4H₂O</p>
+  <p><strong>Check:</strong> C = 3, H = 8 and O = 10 on each side.</p>
+
+  <h3>Recognising Combustion</h3>
+  <ul>
+    <li>Look for a substance reacting with oxygen.</li>
+    <li>Combustion releases energy to the surroundings.</li>
+    <li>For complete combustion of a hydrocarbon, the products are carbon dioxide and water.</li>
+    <li>Do not assume every combustion reaction produces carbon dioxide and water; the products depend on the substance and conditions.</li>
+  </ul>
+  `,
+
   [
     {
       q: "What is combustion?",
+      hint: "Think about reaction with oxygen and the transfer of energy.",
       steps: [
-        "Step 1: A substance reacts with oxygen.",
-        "Step 2: Energy is released.",
-        "Step 3: This process is called combustion."
+        "Identify a substance reacting with an oxidising agent, commonly oxygen.",
+        "Consider the energy change during the reaction.",
+        "State what happens to energy and, where applicable, light."
       ],
-      ans: "Combustion is a reaction in which a substance burns in oxygen and releases energy.",
-      why: "Burning is a chemical reaction involving oxygen and energy release."
+      ans: "A reaction in which a substance reacts with an oxidising agent, commonly oxygen, releasing energy as heat and often light.",
+      why: "Combustion is an energy-releasing chemical reaction, commonly involving oxygen."
     },
     {
-      q: "What are the products of complete combustion of a hydrocarbon?",
+      q: "Balance the complete combustion equation for methane: CH₄ + O₂ → CO₂ + H₂O.",
+      hint: "Balance carbon, then hydrogen, then oxygen.",
       steps: [
-        "Step 1: A hydrocarbon contains carbon and hydrogen.",
-        "Step 2: In complete combustion, carbon forms carbon dioxide.",
-        "Step 3: Hydrogen forms water."
+        "Carbon is already balanced.",
+        "Place 2 before H₂O to balance four hydrogen atoms.",
+        "There are four oxygen atoms in the products, so place 2 before O₂."
+      ],
+      ans: "CH₄ + 2O₂ → CO₂ + 2H₂O.",
+      why: "Each side contains one carbon, four hydrogen and four oxygen atoms."
+    },
+    {
+      q: "What are the products of complete combustion of a hydrocarbon in sufficient oxygen?",
+      hint: "A hydrocarbon contains carbon and hydrogen.",
+      steps: [
+        "Carbon is converted to carbon dioxide during complete combustion.",
+        "Hydrogen is converted to water.",
+        "State both products."
       ],
       ans: "Carbon dioxide and water.",
-      why: "With sufficient oxygen, carbon is fully oxidised to CO₂ and hydrogen forms H₂O."
-    },
-    {
-      q: "Balance: CH₄ + O₂ → CO₂ + H₂O.",
-      steps: [
-        "Step 1: Carbon is already balanced.",
-        "Step 2: There are 4 hydrogen atoms in CH₄, so put 2 before H₂O.",
-        "Step 3: Products now contain 4 oxygen atoms.",
-        "Step 4: Put 2 before O₂."
-      ],
-      ans: "CH₄ + 2O₂ → CO₂ + 2H₂O",
-      why: "The balanced equation has equal numbers of C, H and O atoms on both sides."
+      why: "With sufficient oxygen, the carbon and hydrogen in a hydrocarbon form carbon dioxide and water."
     }
   ],
+
   [
     {
-      q: "What two substances are needed for combustion to occur?",
-      hint: "Think about what is required for burning.",
+      q: "Why can incomplete combustion be dangerous even when a flame is visible?",
+      hint: "Consider a possible product formed when oxygen is insufficient.",
       steps: [
-        "Step 1: Combustion is burning.",
-        "Step 2: Burning requires a substance that can burn.",
-        "Step 3: It also requires oxygen."
+        "Insufficient oxygen may cause incomplete combustion.",
+        "Incomplete combustion can produce carbon monoxide.",
+        "Carbon monoxide interferes with oxygen transport in the blood."
       ],
-      ans: "A combustible substance and oxygen.",
-      why: "Oxygen supports combustion and reacts with the substance being burned."
+      ans: "It can produce poisonous carbon monoxide, which reduces the blood's ability to transport oxygen.",
+      why: "A visible flame does not guarantee complete combustion or safe conditions."
+    },
+    {
+      q: "Balance the complete combustion of ethane: C₂H₆ + O₂ → CO₂ + H₂O.",
+      hint: "Balance carbon and hydrogen before oxygen.",
+      steps: [
+        "Use 2C₂H₆ to give 4 carbon atoms and 12 hydrogen atoms.",
+        "Place 4 before CO₂ and 6 before H₂O.",
+        "The products contain 8 + 6 = 14 oxygen atoms, so place 7 before O₂."
+      ],
+      ans: "2C₂H₆ + 7O₂ → 4CO₂ + 6H₂O.",
+      why: "Both sides contain C = 4, H = 12 and O = 14."
+    },
+    {
+      q: "A student says incomplete combustion always produces only carbon monoxide. Why is this incorrect?",
+      hint: "Consider another possible carbon-containing product.",
+      steps: [
+        "Incomplete combustion occurs when oxygen is insufficient.",
+        "Carbon monoxide may form.",
+        "Solid carbon (soot) may also form, depending on the conditions."
+      ],
+      ans: "Incomplete combustion can produce carbon monoxide and/or soot; it does not always produce only carbon monoxide.",
+      why: "The products depend on the fuel and combustion conditions."
+    },
+    {
+      q: "Balance: C₃H₈ + O₂ → CO₂ + H₂O.",
+      hint: "Three carbon atoms require three carbon dioxide molecules.",
+      steps: [
+        "Place 3 before CO₂ to balance carbon.",
+        "Place 4 before H₂O to balance eight hydrogen atoms.",
+        "Count ten oxygen atoms in the products and place 5 before O₂."
+      ],
+      ans: "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O.",
+      why: "Both sides contain three carbon, eight hydrogen and ten oxygen atoms."
+    },
+    {
+      q: "Why is oxygen required for ordinary combustion?",
+      hint: "Think of oxygen as a reactant, not merely something that makes a flame visible.",
+      steps: [
+        "Ordinary combustion involves a fuel reacting with oxygen.",
+        "Oxygen participates in the chemical reaction.",
+        "The reaction releases energy as heat and often light."
+      ],
+      ans: "Oxygen acts as a reactant that supports the combustion reaction.",
+      why: "Combustion is a chemical reaction, not simply the presence of a flame."
+    },
+    {
+      q: "A hydrocarbon burns in sufficient oxygen and forms carbon dioxide and water. Is this complete or incomplete combustion? Explain.",
+      hint: "Check the oxygen supply and the carbon-containing product.",
+      steps: [
+        "The fuel is a hydrocarbon containing carbon and hydrogen.",
+        "The oxygen supply is sufficient.",
+        "Carbon dioxide and water are the stated products."
+      ],
+      ans: "Complete combustion, because sufficient oxygen is available and the hydrocarbon forms carbon dioxide and water.",
+      why: "These are the characteristic products of complete combustion of a hydrocarbon under sufficient oxygen."
     }
   ]
 );
+
+
+add(
+  "chemistry",
+  "chemical_reactions",
+  "Precipitation Reactions",
+
+  `
+  <h2>Precipitation Reactions</h2>
+
+  <h3>Meaning</h3>
+  <p>A <strong>precipitation reaction</strong> occurs when two solutions react to form an insoluble solid called a <strong>precipitate</strong>.</p>
+
+  <p>The solutions contain dissolved ions. When the solutions are mixed, some ions combine to form a substance that does not remain dissolved under the reaction conditions. The solid separates from the solution.</p>
+
+  <h3>How to Recognise a Precipitation Reaction</h3>
+  <ol>
+    <li>Start with two suitable aqueous solutions.</li>
+    <li>Consider which positive and negative ions can exchange partners.</li>
+    <li>Use solubility rules to predict whether a product is insoluble.</li>
+    <li>If an insoluble solid forms, that solid is the precipitate.</li>
+  </ol>
+
+  <p>A cloudy mixture or visible solid may indicate precipitation, but the products and their solubilities determine whether the reaction is a precipitation reaction.</p>
+
+  <h3>Worked Example 1: Silver Nitrate and Sodium Chloride</h3>
+  <p>Mixing aqueous silver nitrate and sodium chloride forms a white precipitate of silver chloride.</p>
+  <p><strong>Word equation:</strong> Silver nitrate + sodium chloride → silver chloride + sodium nitrate</p>
+  <p><strong>Formula equation:</strong> AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq)</p>
+  <p><strong>Step 1:</strong> The reactants are aqueous solutions containing Ag⁺, NO₃⁻, Na⁺ and Cl⁻ ions.</p>
+  <p><strong>Step 2:</strong> Silver ions combine with chloride ions to form AgCl, which is insoluble in water under these conditions.</p>
+  <p><strong>Step 3:</strong> AgCl forms a white solid, while sodium nitrate remains dissolved.</p>
+  <p><strong>Conclusion:</strong> This is a precipitation reaction because an insoluble solid forms from aqueous solutions.</p>
+
+  <h3>Worked Example 2: Lead(II) Nitrate and Potassium Iodide</h3>
+  <p>When aqueous lead(II) nitrate is mixed with aqueous potassium iodide, a yellow precipitate of lead(II) iodide forms.</p>
+  <p><strong>Formula equation:</strong> Pb(NO₃)₂(aq) + 2KI(aq) → PbI₂(s) + 2KNO₃(aq)</p>
+  <p><strong>Step 1:</strong> The lead(II) ion is Pb²⁺, while the iodide ion is I⁻.</p>
+  <p><strong>Step 2:</strong> Two iodide ions are needed to balance the +2 charge on one lead(II) ion, giving PbI₂.</p>
+  <p><strong>Step 3:</strong> Place 2 before KI and 2 before KNO₃ to balance potassium and nitrate.</p>
+  <p><strong>Observation:</strong> A yellow solid forms because lead(II) iodide is poorly soluble in water.</p>
+
+  <h3>Worked Example 3: Barium Chloride and Sodium Sulphate</h3>
+  <p>Mixing aqueous barium chloride and sodium sulphate forms a white precipitate of barium sulphate.</p>
+  <p><strong>Formula equation:</strong> BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s) + 2NaCl(aq)</p>
+  <p><strong>Step 1:</strong> Barium ions combine with sulphate ions to form BaSO₄.</p>
+  <p><strong>Step 2:</strong> Barium sulphate is insoluble in water and forms a white precipitate.</p>
+  <p><strong>Step 3:</strong> Place 2 before NaCl to balance the two sodium and two chlorine atoms.</p>
+  <p><strong>Conclusion:</strong> The equation is balanced, and BaSO₄ is the precipitate.</p>
+
+  <h3>Net Ionic Equations</h3>
+  <p>A net ionic equation shows only the ions that actually form the precipitate. Ions that remain unchanged in solution are called spectator ions.</p>
+  <p>For silver chloride formation:</p>
+  <p><strong>Ag⁺(aq) + Cl⁻(aq) → AgCl(s)</strong></p>
+  <p>This equation shows the silver and chloride ions combining to form the solid.</p>
+
+  <h3>State Symbols</h3>
+  <ul>
+    <li><strong>(aq)</strong> means dissolved in water.</li>
+    <li><strong>(s)</strong> means solid.</li>
+    <li><strong>(l)</strong> means liquid.</li>
+    <li><strong>(g)</strong> means gas.</li>
+  </ul>
+  <p>In a precipitation equation, the precipitate is labelled (s), while the dissolved substances are labelled (aq).</p>
+  `,
+
+  [
+    {
+      q: "What is a precipitation reaction?",
+      hint: "Focus on the formation of an insoluble solid.",
+      steps: [
+        "Begin with suitable aqueous solutions.",
+        "Identify the products formed when the ions interact.",
+        "Check whether an insoluble solid forms."
+      ],
+      ans: "A reaction in which aqueous solutions react to form an insoluble solid called a precipitate.",
+      why: "The defining feature is the formation of an insoluble solid from solution."
+    },
+    {
+      q: "What precipitate forms when silver nitrate solution reacts with sodium chloride solution?",
+      hint: "Silver ions combine with chloride ions.",
+      steps: [
+        "Identify Ag⁺ from silver nitrate.",
+        "Identify Cl⁻ from sodium chloride.",
+        "Combine them to form AgCl, which is insoluble in water under these conditions."
+      ],
+      ans: "Silver chloride, AgCl, a white precipitate.",
+      why: "Ag⁺ and Cl⁻ ions form solid silver chloride."
+    },
+    {
+      q: "Complete and balance: BaCl₂(aq) + Na₂SO₄(aq) → ?",
+      hint: "Barium ions combine with sulphate ions.",
+      steps: [
+        "Form BaSO₄ from Ba²⁺ and SO₄²⁻.",
+        "The remaining ions form sodium chloride.",
+        "Place 2 before NaCl to balance sodium and chlorine."
+      ],
+      ans: "BaCl₂(aq) + Na₂SO₄(aq) → BaSO₄(s) + 2NaCl(aq).",
+      why: "Barium sulphate is insoluble and forms a precipitate; the equation is balanced."
+    }
+  ],
+
+  [
+    {
+      q: "A learner says every reaction between two aqueous solutions produces a precipitate. Is this correct?",
+      hint: "Consider whether all possible products are insoluble.",
+      steps: [
+        "Mixing solutions brings dissolved ions together.",
+        "Some combinations form soluble products that remain dissolved.",
+        "A precipitation reaction requires an insoluble solid to form."
+      ],
+      ans: "No. A precipitate forms only when an insoluble product forms under the reaction conditions.",
+      why: "Some reactions between aqueous solutions produce only dissolved products."
+    },
+    {
+      q: "In AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq), identify the precipitate.",
+      hint: "Look for the product labelled (s).",
+      steps: [
+        "Read the products on the right-hand side.",
+        "Identify the product labelled (s).",
+        "Recognise that (s) indicates a solid."
+      ],
+      ans: "Silver chloride, AgCl(s).",
+      why: "Silver chloride is the insoluble solid formed in the reaction."
+    },
+    {
+      q: "Why is the equation Pb(NO₃)₂ + KI → PbI₂ + KNO₃ not balanced as written?",
+      hint: "Count the iodide ions and potassium atoms.",
+      steps: [
+        "PbI₂ contains two iodine atoms.",
+        "One KI supplies only one iodine atom, so place 2 before KI.",
+        "This gives two potassium atoms, so place 2 before KNO₃."
+      ],
+      ans: "Pb(NO₃)₂ + 2KI → PbI₂ + 2KNO₃.",
+      why: "The coefficients balance lead, nitrate groups, potassium and iodine."
+    },
+    {
+      q: "What does the state symbol (aq) mean in a precipitation equation?",
+      hint: "It describes a substance dissolved in water.",
+      steps: [
+        "Recognise that the substance is in solution.",
+        "Identify the solvent as water.",
+        "Distinguish this from (s), which indicates a solid."
+      ],
+      ans: "The substance is dissolved in water.",
+      why: "(aq) identifies an aqueous solution, while (s) identifies a solid."
+    },
+    {
+      q: "Write the net ionic equation for forming silver chloride from silver ions and chloride ions.",
+      hint: "Leave out ions that do not take part in forming the solid.",
+      steps: [
+        "Identify the reacting ions: Ag⁺ and Cl⁻.",
+        "Combine one silver ion with one chloride ion.",
+        "Show the insoluble product as a solid."
+      ],
+      ans: "Ag⁺(aq) + Cl⁻(aq) → AgCl(s).",
+      why: "The net ionic equation includes only the ions that form the precipitate."
+    },
+    {
+      q: "When lead(II) nitrate solution reacts with potassium iodide solution, why is a yellow solid formed?",
+      hint: "Identify the insoluble product and its colour.",
+      steps: [
+        "Lead(II) ions react with iodide ions.",
+        "They form lead(II) iodide, PbI₂.",
+        "Lead(II) iodide is poorly soluble in water and appears as a yellow solid."
+      ],
+      ans: "A yellow precipitate of lead(II) iodide, PbI₂, forms because it is poorly soluble in water.",
+      why: "The insoluble product separates from the solution as a solid."
+    }
+  ]
+);
+
 // ============================================================
 // BATCH 12 — ACIDS, BASES AND SALTS
 // Chapter: acids_bases_salts
@@ -25779,1064 +27539,3239 @@ add(
 );
 
 // ============================================================
-// BATCH 14 — METALS AND EXTRACTION
-// Chapter ID: metals_extraction
+// BATCH 14 —Metals
+// Chapter ID: metals
 // ============================================================
-// ------------------------------------------------------------
-// 1. PHYSICAL PROPERTIES OF METALS
-// ------------------------------------------------------------
 
 add(
   "chemistry",
-  "metals_extraction",
+  "metals",
   "Physical Properties of Metals",
-  `<h2>Physical Properties of Metals</h2>
+  `
+  <h2>Physical Properties of Metals</h2>
 
-  <p>Metals have physical properties that distinguish them from many non-metals.</p>
+  <p><strong>Physical properties</strong> are characteristics of a substance that can be observed or measured without changing it into a different substance. Metals have several characteristic physical properties, although individual metals do not all behave identically.</p>
 
+  <h3>1. Lustre</h3>
+  <p>Many metals have a shiny surface when freshly polished. This property is called metallic lustre. A metal surface may become dull when it reacts with substances in the environment.</p>
+
+  <h3>2. Strength and Hardness</h3>
+  <p>Many metals are strong and can withstand large forces. Hardness describes resistance to scratching or indentation, while strength describes the ability to withstand applied forces without failure. These properties are related but are not identical. For example, sodium is soft, whereas iron is much harder.</p>
+
+  <h3>3. Density</h3>
+  <p>Density is mass per unit volume.</p>
+  <p><strong>Density = mass ÷ volume</strong></p>
+  <p>In symbols, ρ = m/V. The SI unit is kg/m³, although g/cm³ is also commonly used in chemistry.</p>
+
+  <h3>4. Melting and Boiling Points</h3>
+  <p>Many metals have high melting and boiling points because their atoms are held together by metallic bonding. However, there are exceptions: mercury is liquid at room temperature, and some metals have relatively low melting points.</p>
+
+  <h3>5. Thermal Conductivity</h3>
+  <p>Many metals conduct heat efficiently. This is why metals are used in cooking utensils and heat exchangers.</p>
+
+  <h3>6. Other Properties</h3>
   <ul>
-    <li>Most metals are solid at room temperature.</li>
-    <li>They usually have a shiny surface when freshly cut or polished.</li>
-    <li>They are generally good conductors of heat and electricity.</li>
-    <li>They are generally strong and hard.</li>
-    <li>They can usually be shaped without breaking.</li>
+    <li><strong>Sonority:</strong> many metals produce a ringing sound when struck.</li>
+    <li><strong>Malleability:</strong> the ability to be hammered or rolled into sheets.</li>
+    <li><strong>Ductility:</strong> the ability to be drawn into wires.</li>
+    <li><strong>Electrical conductivity:</strong> the ability to conduct electric current.</li>
   </ul>
 
-  <p>Examples of metals include iron, copper, aluminium, zinc, silver and gold.</p>
+  <h3>Worked Examples</h3>
 
-  <h3>Examples</h3>
+  <p><strong>Example 1: Calculate density.</strong></p>
+  <p>A metal sample has a mass of 120 g and a volume of 15 cm³. Calculate its density.</p>
+  <ol>
+    <li>Write the formula: density = mass ÷ volume.</li>
+    <li>Substitute: density = 120 g ÷ 15 cm³.</li>
+    <li>Calculate: density = 8 g/cm³.</li>
+  </ol>
+  <p><strong>Answer: 8 g/cm³.</strong></p>
 
-  <p><strong>Example 1:</strong> State two physical properties of copper.</p>
-  <p>Copper is a good conductor of electricity and is malleable.</p>
+  <p><strong>Example 2: Calculate mass from density.</strong></p>
+  <p>A metal has a density of 7.5 g/cm³ and a volume of 4 cm³. Find its mass.</p>
+  <ol>
+    <li>Start with density = mass ÷ volume.</li>
+    <li>Rearrange: mass = density × volume.</li>
+    <li>Substitute: mass = 7.5 × 4.</li>
+    <li>Calculate: mass = 30 g.</li>
+  </ol>
+  <p><strong>Answer: 30 g.</strong></p>
 
-  <p><strong>Example 2:</strong> Why is copper used for electrical wires?</p>
-  <p>Because copper conducts electricity well and can be drawn into wires.</p>
+  <p><strong>Example 3: Compare two metal samples.</strong></p>
+  <p>Sample A has a mass of 60 g and a volume of 10 cm³. Sample B has a mass of 90 g and a volume of 10 cm³. Which has the greater density?</p>
+  <ol>
+    <li>Density of A = 60 ÷ 10 = 6 g/cm³.</li>
+    <li>Density of B = 90 ÷ 10 = 9 g/cm³.</li>
+    <li>Compare 9 with 6.</li>
+  </ol>
+  <p><strong>Answer: Sample B has the greater density.</strong></p>
 
-  <p><strong>Example 3:</strong> Why can metals be used to make tools?</p>
-  <p>Many metals are strong and hard, allowing them to withstand forces.</p>`,
+  <h3>Key Principle</h3>
+  <p>Do not assume that every metal has every typical metallic property. Identify the property being tested and use measurements or observations to justify your answer.</p>
+  `,
   [
     {
-      q: "State three physical properties of metals.",
+      q: "What is meant by a physical property?",
+      hint: "Consider whether a new substance must form when the property is observed.",
       steps: [
-        "Step 1: Recall the common physical properties of metals.",
-        "Step 2: Select three properties.",
-        "Step 3: Examples include good electrical conductivity, good thermal conductivity and malleability."
+        "Step 1: A physical property describes a characteristic of a substance.",
+        "Step 2: Observing or measuring it does not require changing the substance into a different substance."
       ],
-      ans: "Metals are generally good conductors of electricity, good conductors of heat and malleable.",
-      why: "These are characteristic physical properties of many metals."
+      ans: "A physical property is a characteristic that can be observed or measured without changing a substance into a different substance.",
+      why: "Physical properties describe substances without requiring a chemical reaction."
     },
     {
-      q: "State two physical properties of aluminium.",
+      q: "A metal has a mass of 84 g and a volume of 12 cm³. Calculate its density.",
+      hint: "Density = mass ÷ volume.",
       steps: [
-        "Step 1: Identify aluminium as a metal.",
-        "Step 2: Apply the common physical properties of metals.",
-        "Step 3: Aluminium is malleable and conducts electricity."
+        "Step 1: Write density = mass ÷ volume.",
+        "Step 2: Substitute 84 g and 12 cm³.",
+        "Step 3: Calculate 84 ÷ 12 = 7."
       ],
-      ans: "Aluminium is malleable and conducts electricity.",
-      why: "Aluminium has the characteristic physical properties of metals."
+      ans: "7 g/cm³.",
+      why: "Density is the mass contained in each unit of volume."
+    },
+    {
+      q: "Name two physical properties that make metals useful for cooking utensils.",
+      hint: "Consider how the material transfers heat and withstands use.",
+      steps: [
+        "Step 1: A cooking utensil should transfer heat from the heat source to the food.",
+        "Step 2: It should also withstand handling and use.",
+        "Step 3: Thermal conductivity and strength are useful properties."
+      ],
+      ans: "Good thermal conductivity and suitable strength.",
+      why: "Thermal conductivity helps transfer heat, while strength helps the utensil withstand use."
+    }
+  ],
+  [
+    {
+      q: "A student claims that all metals are hard because iron is hard. Explain why this conclusion is incorrect.",
+      hint: "A property observed in one metal cannot automatically be applied to every metal.",
+      steps: [
+        "Step 1: Iron is one example of a metal.",
+        "Step 2: Different metals have different physical properties.",
+        "Step 3: Sodium, for example, is soft and can be cut with a knife under suitable safe conditions.",
+        "Step 4: Therefore, hardness is not identical in all metals."
+      ],
+      ans: "Metals differ in hardness; iron is hard, but some metals such as sodium are soft.",
+      why: "The physical properties of metals vary from one metal to another."
+    },
+    {
+      q: "A metal block has a mass of 156 g and a volume of 20 cm³. Calculate its density and show the units.",
+      hint: "Divide the mass by the volume, keeping the units.",
+      steps: [
+        "Step 1: Density = mass ÷ volume.",
+        "Step 2: Density = 156 g ÷ 20 cm³.",
+        "Step 3: Density = 7.8 g/cm³."
+      ],
+      ans: "7.8 g/cm³.",
+      why: "Dividing grams by cubic centimetres gives density in g/cm³."
+    },
+    {
+      q: "Two samples have equal volumes. Sample X has a mass of 40 g, while sample Y has a mass of 65 g. Which sample has the greater density? Explain.",
+      hint: "Density compares mass with volume. The volumes are equal.",
+      steps: [
+        "Step 1: Density = mass ÷ volume.",
+        "Step 2: Both samples have the same volume.",
+        "Step 3: The sample with greater mass therefore has greater density.",
+        "Step 4: Sample Y has a mass of 65 g, greater than 40 g."
+      ],
+      ans: "Sample Y has the greater density.",
+      why: "At equal volumes, the sample with greater mass has greater density."
+    },
+    {
+      q: "A student says that a shiny metal surface must remain shiny forever. Explain why the statement is incorrect.",
+      hint: "Think about what may happen when a metal reacts with air or moisture.",
+      steps: [
+        "Step 1: A freshly polished metal may have a shiny surface.",
+        "Step 2: Some metals react with substances in their surroundings.",
+        "Step 3: The products formed on the surface may make it dull."
+      ],
+      ans: "A metal can lose its shine when its surface reacts with substances in the environment.",
+      why: "Surface reactions can form coatings that change a metal's appearance."
+    },
+    {
+      q: "A metal has a density of 8 g/cm³ and a volume of 6 cm³. Calculate its mass.",
+      hint: "Rearrange density = mass ÷ volume to make mass the subject.",
+      steps: [
+        "Step 1: Density = mass ÷ volume.",
+        "Step 2: Rearrange: mass = density × volume.",
+        "Step 3: Mass = 8 × 6.",
+        "Step 4: Mass = 48 g."
+      ],
+      ans: "48 g.",
+      why: "Multiplying density by volume gives mass."
+    },
+    {
+      q: "Why should a scientist distinguish hardness from strength when describing a metal?",
+      hint: "Think about scratching compared with resisting a large applied force.",
+      steps: [
+        "Step 1: Hardness describes resistance to scratching or indentation.",
+        "Step 2: Strength describes the ability to withstand applied forces without failure.",
+        "Step 3: These are different types of mechanical behaviour.",
+        "Step 4: A description of one does not automatically establish the other."
+      ],
+      ans: "Hardness is resistance to scratching or indentation, while strength is the ability to withstand applied forces without failure.",
+      why: "They measure different properties and should not be treated as interchangeable terms."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Electrical Conductivity",
+  `
+  <h2>Electrical Conductivity of Metals</h2>
+
+  <p><strong>Electrical conductivity</strong> is the ability of a material to allow electric charge to flow through it. Most metals conduct electricity well because they contain mobile, delocalised electrons.</p>
+
+  <h3>Why Metals Conduct Electricity</h3>
+  <p>In metallic bonding, positive metal ions are arranged in a lattice surrounded by delocalised electrons. These electrons are not confined to one particular atom. When a potential difference is applied, the electrons can move through the metal and carry electric charge.</p>
+
+  <p>The positive metal ions remain in their lattice positions during ordinary conduction. The mobile electrons are primarily responsible for carrying current through the metal.</p>
+
+  <h3>Conductivity and Resistance</h3>
+  <p>Conductivity describes how readily a material conducts electric current. Resistance describes how strongly a particular conductor opposes current. For a given material and temperature, a longer wire generally has greater resistance, while a thicker wire generally has lower resistance.</p>
+
+  <p>For a uniform wire:</p>
+  <p><strong>R = ρL/A</strong></p>
+  <ul>
+    <li><strong>R</strong> is resistance in ohms (Ω).</li>
+    <li><strong>ρ</strong> is the resistivity of the material in Ω m.</li>
+    <li><strong>L</strong> is the wire length in metres.</li>
+    <li><strong>A</strong> is the cross-sectional area in m².</li>
+  </ul>
+
+  <p>Resistivity is a material property at a specified temperature. Resistance also depends on the dimensions of the conductor.</p>
+
+  <h3>Why Copper Is Used in Electrical Wiring</h3>
+  <ul>
+    <li>Copper has high electrical conductivity.</li>
+    <li>It is ductile and can be drawn into wires.</li>
+    <li>It is sufficiently strong for many wiring applications.</li>
+  </ul>
+
+  <p>Aluminium is also used in electrical transmission lines because it conducts electricity and has a relatively low density.</p>
+
+  <h3>Worked Examples</h3>
+
+  <p><strong>Example 1: Identify the charge carriers.</strong></p>
+  <p>Which particles mainly carry electric current through a metal wire?</p>
+  <ol>
+    <li>Metal ions are arranged in a lattice.</li>
+    <li>Delocalised electrons can move through the lattice.</li>
+    <li>These moving electrons carry electric charge.</li>
+  </ol>
+  <p><strong>Answer: Delocalised electrons.</strong></p>
+
+  <p><strong>Example 2: Calculate resistance using resistivity.</strong></p>
+  <p>A wire has resistivity 2 × 10⁻⁸ Ω m, length 4 m and cross-sectional area 4 × 10⁻⁶ m². Calculate its resistance.</p>
+  <ol>
+    <li>Use R = ρL/A.</li>
+    <li>Substitute: R = (2 × 10⁻⁸ × 4) ÷ (4 × 10⁻⁶).</li>
+    <li>Numerator = 8 × 10⁻⁸.</li>
+    <li>Divide: R = 2 × 10⁻² Ω.</li>
+  </ol>
+  <p><strong>Answer: 0.02 Ω.</strong></p>
+
+  <p><strong>Example 3: Compare wire lengths.</strong></p>
+  <p>Two wires are made of the same material and have equal cross-sectional areas at the same temperature. Wire A is 2 m long and wire B is 6 m long. Compare their resistances.</p>
+  <ol>
+    <li>For the same material and cross-sectional area, R is proportional to L.</li>
+    <li>Resistance ratio A:B = 2:6.</li>
+    <li>Simplify the ratio to 1:3.</li>
+  </ol>
+  <p><strong>Answer: Wire B has three times the resistance of wire A.</strong></p>
+
+  <h3>Key Principle</h3>
+  <p>Metals conduct electricity mainly because of mobile delocalised electrons. Do not confuse electrical conductivity with thermal conductivity: both are common metallic properties, but they describe different processes.</p>
+  `,
+  [
+    {
+      q: "Which particles mainly carry electric current through a metal?",
+      hint: "These particles are mobile and are not confined to individual metal atoms.",
+      steps: [
+        "Step 1: Metal ions form a lattice.",
+        "Step 2: Delocalised electrons can move through the lattice.",
+        "Step 3: Their movement carries electric charge."
+      ],
+      ans: "Delocalised electrons.",
+      why: "Mobile delocalised electrons are responsible for electrical conduction in metals."
     },
     {
       q: "Why is copper suitable for making electrical wires?",
+      hint: "Consider both the flow of electric charge and the ability to form a wire.",
       steps: [
-        "Step 1: Identify the property needed in an electrical wire.",
-        "Step 2: The material must conduct electricity.",
-        "Step 3: Copper is a good electrical conductor."
+        "Step 1: Electrical wires need to conduct current efficiently.",
+        "Step 2: Copper has high electrical conductivity.",
+        "Step 3: Copper is ductile and can be drawn into wires."
       ],
-      ans: "Copper is suitable because it is a good conductor of electricity.",
-      why: "Electrical wires need materials that allow electric current to pass easily."
+      ans: "Copper conducts electricity well and is ductile enough to be drawn into wires.",
+      why: "Its conductivity and ductility make copper useful for electrical wiring."
+    },
+    {
+      q: "A wire has resistance 4 Ω. If its length is doubled while material, temperature and cross-sectional area remain unchanged, what is its new resistance?",
+      hint: "For a uniform wire, resistance is directly proportional to length when the other factors stay constant.",
+      steps: [
+        "Step 1: Original resistance = 4 Ω.",
+        "Step 2: Doubling the length doubles the resistance.",
+        "Step 3: New resistance = 2 × 4 = 8 Ω."
+      ],
+      ans: "8 Ω.",
+      why: "For the same material and cross-sectional area at the same temperature, R is proportional to length."
     }
   ],
   [
     {
-      q: "A student says that metals are all gases at room temperature. Is this correct?",
-      hint: "Think about the physical state of common metals such as iron and copper.",
+      q: "Explain why electrons can move through a metal even though its positive ions remain arranged in a lattice.",
+      hint: "Consider the difference between delocalised electrons and the positive metal ions.",
       steps: [
-        "Step 1: Consider common metals at room temperature.",
-        "Step 2: Iron and copper are solids.",
-        "Step 3: Therefore the statement is incorrect."
+        "Step 1: Positive metal ions occupy positions in a lattice.",
+        "Step 2: Metallic bonding includes delocalised electrons that are not tied to one atom.",
+        "Step 3: These electrons can move through the lattice when a potential difference is applied.",
+        "Step 4: Their movement produces electric current."
       ],
-      ans: "No. Most metals are solids at room temperature.",
-      why: "Most metals exist as solids under ordinary room conditions."
+      ans: "Delocalised electrons can move through the metal lattice, while the positive ions remain in their lattice positions.",
+      why: "The mobile electrons provide the charge carriers needed for electrical conduction."
+    },
+    {
+      q: "A wire has resistivity 3 × 10⁻⁸ Ω m, length 2 m and cross-sectional area 3 × 10⁻⁶ m². Calculate its resistance using R = ρL/A.",
+      hint: "Multiply resistivity by length, then divide by the cross-sectional area.",
+      steps: [
+        "Step 1: R = ρL/A.",
+        "Step 2: R = (3 × 10⁻⁸ × 2) ÷ (3 × 10⁻⁶).",
+        "Step 3: Numerator = 6 × 10⁻⁸.",
+        "Step 4: R = (6 × 10⁻⁸) ÷ (3 × 10⁻⁶) = 2 × 10⁻² Ω."
+      ],
+      ans: "0.02 Ω.",
+      why: "Substitution into R = ρL/A gives a resistance of 0.02 Ω."
+    },
+    {
+      q: "Two wires have the same material, length and temperature. Wire X has twice the cross-sectional area of wire Y. Compare their resistances.",
+      hint: "Resistance is inversely proportional to cross-sectional area when the other quantities are constant.",
+      steps: [
+        "Step 1: Use R = ρL/A.",
+        "Step 2: The resistivity and length are the same for both wires.",
+        "Step 3: Doubling the area halves the resistance.",
+        "Step 4: Therefore, resistance of X is half that of Y."
+      ],
+      ans: "Wire X has half the resistance of wire Y.",
+      why: "A larger cross-sectional area provides more space for charge flow and reduces resistance."
+    },
+    {
+      q: "A student says that metal ions flow from one end of a copper wire to the other when current flows. Correct the statement.",
+      hint: "Identify which charged particles are mobile in a metal lattice.",
+      steps: [
+        "Step 1: The positive copper ions remain arranged in the metallic lattice during ordinary conduction.",
+        "Step 2: Delocalised electrons can move through the lattice.",
+        "Step 3: These electrons carry the current."
+      ],
+      ans: "The delocalised electrons move through the copper; the positive metal ions remain in their lattice positions.",
+      why: "Electrical conduction in a metal is primarily due to mobile electrons, not the movement of the lattice ions along the wire."
+    },
+    {
+      q: "Why can a long, thin wire have greater resistance than a short, thick wire made from the same material at the same temperature?",
+      hint: "Consider the effects of both length and cross-sectional area in R = ρL/A.",
+      steps: [
+        "Step 1: Resistance increases with length.",
+        "Step 2: Resistance decreases as cross-sectional area increases.",
+        "Step 3: A long wire has a greater length, while a thin wire has a smaller area.",
+        "Step 4: Both factors tend to increase its resistance."
+      ],
+      ans: "The longer length increases resistance, and the smaller cross-sectional area also increases resistance.",
+      why: "For a uniform wire, R = ρL/A."
+    },
+    {
+      q: "Distinguish electrical conductivity from thermal conductivity.",
+      hint: "One concerns electric charge; the other concerns the transfer of heat.",
+      steps: [
+        "Step 1: Electrical conductivity describes how readily a material allows electric charge to flow.",
+        "Step 2: Thermal conductivity describes how readily a material transfers heat.",
+        "Step 3: Both are common properties of metals, but they describe different processes."
+      ],
+      ans: "Electrical conductivity is the ability to conduct electric charge; thermal conductivity is the ability to transfer heat.",
+      why: "Electric current and heat transfer are different processes, so the properties must not be confused."
     }
   ]
 );
 
-
-// ------------------------------------------------------------
-// 2. ELECTRICAL CONDUCTIVITY
-// ------------------------------------------------------------
-
 add(
   "chemistry",
-  "metals_extraction",
-  "Electrical Conductivity",
-  `<h2>Electrical Conductivity of Metals</h2>
-
-  <p>Metals conduct electricity because they contain mobile electrons that can move through the metal.</p>
-
-  <p>This makes metals useful for electrical cables, contacts and electrical components.</p>
-
-  <h3>Examples</h3>
-
-  <p><strong>Example 1:</strong> Copper is used for electrical cables because it conducts electricity well.</p>
-
-  <p><strong>Example 2:</strong> Aluminium is also used in electrical transmission because it conducts electricity and has a relatively low density.</p>
-
-  <p><strong>Example 3:</strong> A plastic coating is placed around a copper wire because plastic is an electrical insulator.</p>`,
-  [
-    {
-      q: "Why do metals conduct electricity?",
-      steps: [
-        "Step 1: Metals contain electrons that are able to move through the metal.",
-        "Step 2: Moving electrons carry electric charge.",
-        "Step 3: Therefore metals can conduct electricity."
-      ],
-      ans: "Metals conduct electricity because they contain mobile electrons that can carry electric charge.",
-      why: "The movement of charged electrons allows electric current to pass through a metal."
-    },
-    {
-      q: "Why is copper commonly used for electrical wires?",
-      steps: [
-        "Step 1: Electrical wires need a good electrical conductor.",
-        "Step 2: Copper conducts electricity well.",
-        "Step 3: Copper can also be drawn into thin wires."
-      ],
-      ans: "Copper is used because it is a good electrical conductor and can be drawn into wires.",
-      why: "Both conductivity and the ability to form wires make copper suitable."
-    },
-    {
-      q: "Why is plastic used to cover electrical wires?",
-      steps: [
-        "Step 1: The metal inside the wire conducts electricity.",
-        "Step 2: The outside covering should prevent current from reaching the user.",
-        "Step 3: Plastic is an electrical insulator."
-      ],
-      ans: "Plastic is used because it is an electrical insulator.",
-      why: "An insulating covering reduces the risk of electric shock."
-    }
-  ],
-  [
-    {
-      q: "A metal wire is replaced with a plastic wire. What happens to electrical conduction?",
-      hint: "Compare conductors with insulators.",
-      steps: [
-        "Step 1: Metals are good electrical conductors.",
-        "Step 2: Plastic is generally an electrical insulator.",
-        "Step 3: Therefore the plastic will not conduct electricity effectively."
-      ],
-      ans: "Electrical conduction would be greatly reduced because plastic is an insulator.",
-      why: "Plastic does not have freely moving charge carriers like a metal."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 3. MALLEABILITY
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
+  "metals",
   "Malleability",
-  `<h2>Malleability of Metals</h2>
+  `
+  <h2>Malleability</h2>
 
-  <p><strong>Malleability</strong> is the ability of a material to be hammered or pressed into sheets without breaking.</p>
+  <h3>Meaning of Malleability</h3>
 
-  <p>Many metals are malleable.</p>
+  <p><strong>Malleability</strong> is the ability of a material, especially a metal, to be hammered, pressed or rolled into thin sheets without breaking.</p>
 
-  <h3>Examples</h3>
+  <p>For example, aluminium can be rolled into thin foil, while gold can be hammered into extremely thin sheets used for decoration.</p>
 
-  <p><strong>Example 1:</strong> Aluminium can be rolled into thin sheets.</p>
+  <h3>Why Are Metals Malleable?</h3>
 
-  <p><strong>Example 2:</strong> Gold can be beaten into extremely thin sheets.</p>
+  <p>Metals contain positive metal ions arranged in layers and surrounded by delocalised electrons. When a force is applied, these layers can slide over one another while the metallic bonding remains intact.</p>
 
-  <p><strong>Example 3:</strong> Aluminium foil is possible because aluminium is malleable.</p>`,
+  <p>The delocalised electrons continue to attract the positive ions, helping the metal remain bonded as its shape changes. This allows many metals to change shape without immediately breaking.</p>
+
+  <h3>Examples of Malleability</h3>
+
+  <ul>
+    <li><strong>Aluminium:</strong> rolled into aluminium foil and thin sheets.</li>
+    <li><strong>Gold:</strong> hammered into thin decorative sheets.</li>
+    <li><strong>Copper:</strong> shaped into sheets for roofing and other applications.</li>
+    <li><strong>Iron:</strong> shaped by rolling or forging into useful forms.</li>
+  </ul>
+
+  <h3>Malleability Compared with Brittleness</h3>
+
+  <p>A malleable material can undergo permanent deformation without breaking easily. A brittle material tends to crack or break when subjected to a sufficiently large force, rather than changing shape substantially.</p>
+
+  <p>Do not conclude that every metal is equally malleable. Malleability varies with the metal, temperature and conditions under which force is applied.</p>
+
+  <h3>Worked Example 1: Identifying Malleability</h3>
+
+  <p><strong>Question:</strong> A metal is hammered into a thin sheet without cracking. Which property does this demonstrate?</p>
+
+  <p><strong>Step 1:</strong> Identify the action: the metal is hammered.</p>
+  <p><strong>Step 2:</strong> Identify the result: it becomes a thin sheet without breaking.</p>
+  <p><strong>Step 3:</strong> Match the result to the definition of malleability.</p>
+
+  <p><strong>Answer:</strong> Malleability.</p>
+
+  <h3>Worked Example 2: Explaining the Structure</h3>
+
+  <p><strong>Question:</strong> Explain why a metal can be hammered into a sheet without its particles separating completely.</p>
+
+  <p><strong>Step 1:</strong> Metals contain positive ions and delocalised electrons.</p>
+  <p><strong>Step 2:</strong> The applied force allows layers of metal ions to slide past one another.</p>
+  <p><strong>Step 3:</strong> The attraction between the positive ions and delocalised electrons maintains metallic bonding.</p>
+
+  <p><strong>Answer:</strong> Layers of ions can slide while the metallic bonding remains intact because of the attraction between the ions and delocalised electrons.</p>
+
+  <h3>Worked Example 3: Choosing a Suitable Metal</h3>
+
+  <p><strong>Question:</strong> A manufacturer needs a metal that can be rolled into thin sheets for packaging. Which property is essential?</p>
+
+  <p><strong>Step 1:</strong> The required product is a thin sheet.</p>
+  <p><strong>Step 2:</strong> The metal must change shape under pressure without breaking easily.</p>
+  <p><strong>Step 3:</strong> This property is malleability.</p>
+
+  <p><strong>Answer:</strong> Malleability. Aluminium is a suitable example because it can be rolled into thin foil.</p>
+  `,
   [
     {
       q: "Define malleability.",
+      hint: "Think about what happens when a metal is hammered.",
       steps: [
-        "Step 1: Identify malleability as a physical property.",
-        "Step 2: It describes the ability to be shaped by hammering or pressing.",
-        "Step 3: The material forms sheets instead of breaking."
+        "Identify the action applied to the metal.",
+        "Identify the shape the metal can take.",
+        "Include the fact that it does not break easily."
       ],
-      ans: "Malleability is the ability of a material to be hammered or pressed into sheets without breaking.",
-      why: "Metals can often be shaped into sheets because their particles can shift without the whole structure immediately breaking."
+      ans: "Malleability is the ability of a material to be hammered, pressed or rolled into thin sheets without breaking.",
+      why: "The defining feature is the formation of sheets through permanent deformation without the material breaking easily."
     },
     {
-      q: "Why can aluminium be made into foil?",
+      q: "Name one metal that can be rolled into thin sheets and state one use of the sheets.",
+      hint: "Consider the metal used to make kitchen foil.",
       steps: [
-        "Step 1: Aluminium is a metal.",
-        "Step 2: Aluminium is malleable.",
-        "Step 3: Therefore it can be rolled into thin sheets."
+        "Identify a metal that can be rolled into thin sheets.",
+        "Give a practical use for those sheets."
       ],
-      ans: "Aluminium can be made into foil because it is malleable.",
-      why: "Malleability allows aluminium to be shaped into thin sheets."
+      ans: "Aluminium; it is used to make aluminium foil for packaging or wrapping food.",
+      why: "Aluminium is sufficiently malleable to be rolled into thin foil."
     },
     {
-      q: "Distinguish between malleability and brittleness.",
+      q: "Explain how the structure of a metal allows it to be hammered into a new shape.",
+      hint: "Consider layers of ions and delocalised electrons.",
       steps: [
-        "Step 1: Malleability involves being shaped without breaking.",
-        "Step 2: Brittleness involves breaking when force is applied.",
-        "Step 3: Therefore the properties describe opposite behaviours."
+        "State that metals contain layers of positive ions.",
+        "Explain that the layers can slide when force is applied.",
+        "Explain how delocalised electrons help maintain metallic bonding."
       ],
-      ans: "Malleability is the ability to be shaped into sheets without breaking, while brittleness is the tendency to break when force is applied.",
-      why: "The two properties describe how materials respond to applied force."
+      ans: "The layers of positive metal ions can slide past one another under force. The attraction between the positive ions and delocalised electrons maintains metallic bonding as the shape changes.",
+      why: "The ability of the layers to move without the metallic bonding being lost explains why many metals can be shaped."
     }
   ],
   [
     {
-      q: "A metal is hammered into a sheet without cracking. Which property is demonstrated?",
-      hint: "Think of the property that allows metals to form sheets.",
+      q: "A learner hammers a piece of gold into a thin decorative sheet. Which property is demonstrated?",
+      hint: "Focus on the formation of a sheet, not a wire.",
       steps: [
-        "Step 1: The metal is being hammered.",
-        "Step 2: It forms a sheet without breaking.",
-        "Step 3: This is malleability."
+        "Identify the action: hammering.",
+        "Identify the result: a thin sheet.",
+        "Match this to the relevant physical property."
       ],
       ans: "Malleability.",
-      why: "Malleability is the ability to form sheets without breaking."
+      why: "Malleability is the ability to form thin sheets under pressure without breaking easily."
+    },
+    {
+      q: "A metal rod is hammered repeatedly but cracks instead of flattening. What does this observation suggest about its behaviour under the conditions used?",
+      hint: "Compare permanent shaping with breaking.",
+      steps: [
+        "Observe whether the rod changes shape successfully.",
+        "Identify what happens when force is applied.",
+        "Describe its behaviour using the term brittle."
+      ],
+      ans: "The rod behaves in a brittle manner under those conditions because it cracks instead of flattening substantially.",
+      why: "A brittle material tends to crack or break rather than undergo substantial plastic deformation. The observation alone does not establish that every sample of the metal behaves this way under all conditions."
+    },
+    {
+      q: "Explain why aluminium is suitable for making thin packaging foil.",
+      hint: "Link the required shape to a physical property.",
+      steps: [
+        "Identify the required shape: a very thin sheet.",
+        "Name the property that allows a metal to form sheets.",
+        "Connect the property to aluminium's use."
+      ],
+      ans: "Aluminium is suitable because it is malleable and can be rolled into very thin sheets without breaking easily.",
+      why: "Malleability allows aluminium to be shaped into foil for packaging."
+    },
+    {
+      q: "During hammering, layers of positive ions in a metal move past one another. What helps maintain the bonding between the layers?",
+      hint: "Consider the mobile electrons in metallic bonding.",
+      steps: [
+        "Identify the particles that move in layers.",
+        "Recall that metals contain delocalised electrons.",
+        "State the attraction responsible for metallic bonding."
+      ],
+      ans: "The electrostatic attraction between the positive metal ions and the delocalised electrons helps maintain metallic bonding.",
+      why: "The delocalised electrons are not attached to one particular ion and help hold the metal structure together as layers shift."
+    },
+    {
+      q: "A student says, 'Malleability means a metal can be stretched into a wire.' Identify the error and give the correct definition.",
+      hint: "Distinguish making sheets from making wires.",
+      steps: [
+        "Identify the shape mentioned in the student's statement.",
+        "Recall the property associated with drawing wires.",
+        "Give the correct definition of malleability."
+      ],
+      ans: "The student has confused malleability with ductility. Malleability is the ability of a material to be hammered, pressed or rolled into thin sheets without breaking easily.",
+      why: "Malleability concerns sheet formation; ductility concerns drawing a material into wires."
+    },
+    {
+      q: "A manufacturer must choose between two metals. Metal A can be rolled into sheets without cracking, while Metal B cracks under the same processing conditions. Which metal is more suitable for sheet production, and why?",
+      hint: "Use the observed behaviour rather than guessing from the names.",
+      steps: [
+        "Identify which metal successfully forms sheets.",
+        "Relate this behaviour to malleability.",
+        "Use the comparison to justify the choice."
+      ],
+      ans: "Metal A, because it is more malleable under the conditions tested and can be rolled into sheets without cracking.",
+      why: "A suitable sheet metal must undergo substantial deformation without breaking under the manufacturing conditions."
     }
   ]
 );
 
-
-// ------------------------------------------------------------
-// 4. DUCTILITY
-// ------------------------------------------------------------
-
 add(
   "chemistry",
-  "metals_extraction",
+  "metals",
   "Ductility",
-  `<h2>Ductility of Metals</h2>
+  `
+  <h2>Ductility</h2>
 
-  <p><strong>Ductility</strong> is the ability of a material to be drawn or stretched into wires without breaking.</p>
+  <h3>Meaning of Ductility</h3>
 
-  <p>Many metals are ductile.</p>
+  <p><strong>Ductility</strong> is the ability of a material, especially a metal, to be drawn or stretched into a wire without breaking.</p>
 
-  <h3>Examples</h3>
+  <p>For example, copper is drawn into electrical wires, while some other metals are made into wires for jewellery and industrial applications.</p>
 
-  <p><strong>Example 1:</strong> Copper can be drawn into electrical wires.</p>
+  <h3>Why Are Many Metals Ductile?</h3>
 
-  <p><strong>Example 2:</strong> Aluminium can be formed into wires.</p>
+  <p>Metals consist of positive ions arranged in layers and surrounded by delocalised electrons. When a tensile force pulls a metal, its structure can deform while the metallic bonding continues to hold the particles together.</p>
 
-  <p><strong>Example 3:</strong> The ability to make wires from copper depends partly on its ductility.</p>`,
+  <p>This allows many metals to be drawn into long, thin wires. However, ductility differs between metals and depends on factors such as temperature, composition and processing conditions.</p>
+
+  <h3>Examples of Ductility</h3>
+
+  <ul>
+    <li><strong>Copper:</strong> drawn into wires for electrical circuits because it is ductile and conducts electricity well.</li>
+    <li><strong>Aluminium:</strong> drawn into wires and used in some electrical power cables.</li>
+    <li><strong>Gold:</strong> can be drawn into fine wires for specialised applications and jewellery.</li>
+  </ul>
+
+  <h3>Ductility Compared with Malleability</h3>
+
+  <p><strong>Ductility:</strong> the material can be drawn into wires.</p>
+
+  <p><strong>Malleability:</strong> the material can be hammered, pressed or rolled into sheets.</p>
+
+  <p>Both properties involve permanent deformation without breaking easily, but they describe different forms of shaping. Do not use the terms interchangeably.</p>
+
+  <h3>Worked Example 1: Identifying Ductility</h3>
+
+  <p><strong>Question:</strong> A metal is pulled through a die to produce a long, thin wire without breaking. Name the property demonstrated.</p>
+
+  <p><strong>Step 1:</strong> Identify the process: the metal is drawn through a die.</p>
+  <p><strong>Step 2:</strong> Identify the product: a long, thin wire.</p>
+  <p><strong>Step 3:</strong> Match this behaviour to the definition of ductility.</p>
+
+  <p><strong>Answer:</strong> Ductility.</p>
+
+  <h3>Worked Example 2: Selecting a Wire Material</h3>
+
+  <p><strong>Question:</strong> Why is copper suitable for manufacturing electrical wires?</p>
+
+  <p><strong>Step 1:</strong> Electrical wires need a material that can be formed into long, thin strands.</p>
+  <p><strong>Step 2:</strong> Copper is ductile, so it can be drawn into wires.</p>
+  <p><strong>Step 3:</strong> Copper also conducts electricity well because it contains mobile delocalised electrons.</p>
+
+  <p><strong>Answer:</strong> Copper is ductile and can be drawn into wires. It is also a good electrical conductor.</p>
+
+  <h3>Worked Example 3: Distinguishing Two Properties</h3>
+
+  <p><strong>Question:</strong> A metal is first rolled into a thin sheet. Another metal is drawn into a wire. Name the property demonstrated by each metal.</p>
+
+  <p><strong>Step 1:</strong> Match sheet formation to malleability.</p>
+  <p><strong>Step 2:</strong> Match wire formation to ductility.</p>
+  <p><strong>Step 3:</strong> Keep the two definitions separate.</p>
+
+  <p><strong>Answer:</strong> The first metal demonstrates malleability; the second demonstrates ductility.</p>
+  `,
   [
     {
       q: "Define ductility.",
+      hint: "Think about how a metal is shaped when making wire.",
       steps: [
-        "Step 1: Ductility is a physical property.",
-        "Step 2: It describes the ability of a material to be drawn or stretched.",
-        "Step 3: The material forms a wire without breaking."
+        "Identify the shaping process.",
+        "Identify the product formed.",
+        "Include that the material does not break easily during the process."
       ],
-      ans: "Ductility is the ability of a material to be drawn or stretched into wires without breaking.",
-      why: "Ductile materials can undergo deformation while remaining intact."
+      ans: "Ductility is the ability of a material to be drawn or stretched into a wire without breaking.",
+      why: "Ductility describes a material's ability to undergo the deformation needed to form wires."
     },
     {
-      q: "Why is copper suitable for making wires?",
+      q: "Name one ductile metal commonly used to make electrical wires.",
+      hint: "Consider the reddish-brown metal used in many electrical cables.",
       steps: [
-        "Step 1: Wires need to be formed into long thin shapes.",
-        "Step 2: Copper is ductile.",
-        "Step 3: Therefore copper can be drawn into wires."
-      ],
-      ans: "Copper is suitable because it is ductile and can be drawn into wires.",
-      why: "Ductility allows a metal to be formed into long thin wires."
-    },
-    {
-      q: "Distinguish between ductility and malleability.",
-      steps: [
-        "Step 1: Ductility concerns forming wires.",
-        "Step 2: Malleability concerns forming sheets.",
-        "Step 3: Therefore they describe different ways metals can be shaped."
-      ],
-      ans: "Ductility is the ability to form wires, while malleability is the ability to form sheets.",
-      why: "Both involve shaping metals, but the final forms are different."
-    }
-  ],
-  [
-    {
-      q: "A metal can be pulled into a long thin wire without breaking. What property does it show?",
-      hint: "The answer involves forming wires.",
-      steps: [
-        "Step 1: The metal is being pulled into a wire.",
-        "Step 2: It does not break.",
-        "Step 3: This demonstrates ductility."
-      ],
-      ans: "Ductility.",
-      why: "Ductility is the ability to be drawn into wires."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 5. REACTIVITY SERIES
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Reactivity Series",
-  `<h2>Reactivity Series</h2>
-
-  <p>The reactivity series arranges metals from more reactive to less reactive.</p>
-
-  <p>A commonly used order is:</p>
-
-  <p><strong>Potassium → Sodium → Calcium → Magnesium → Aluminium → Carbon → Zinc → Iron → Hydrogen → Copper → Silver → Gold</strong></p>
-
-  <p>Carbon and hydrogen are included as reference points even though they are not metals.</p>
-
-  <p>A metal higher in the series is generally more reactive than a metal below it.</p>
-
-  <h3>Examples</h3>
-
-  <p><strong>Example 1:</strong> Magnesium is more reactive than copper because magnesium is higher in the series.</p>
-
-  <p><strong>Example 2:</strong> Zinc is more reactive than iron because zinc is above iron.</p>
-
-  <p><strong>Example 3:</strong> Copper is less reactive than iron because copper is below iron.</p>`,
-  [
-    {
-      q: "Which is more reactive, magnesium or copper?",
-      steps: [
-        "Step 1: Locate magnesium in the reactivity series.",
-        "Step 2: Locate copper in the reactivity series.",
-        "Step 3: Magnesium is above copper.",
-        "Step 4: Therefore magnesium is more reactive."
-      ],
-      ans: "Magnesium is more reactive than copper.",
-      why: "A metal higher in the reactivity series is generally more reactive."
-    },
-    {
-      q: "Which is more reactive, zinc or iron?",
-      steps: [
-        "Step 1: Locate zinc in the series.",
-        "Step 2: Locate iron in the series.",
-        "Step 3: Zinc is above iron.",
-        "Step 4: Therefore zinc is more reactive."
-      ],
-      ans: "Zinc is more reactive than iron.",
-      why: "Zinc occurs above iron in the reactivity series."
-    },
-    {
-      q: "Arrange magnesium, copper, zinc and iron from most reactive to least reactive.",
-      steps: [
-        "Step 1: Locate the four metals in the reactivity series.",
-        "Step 2: Magnesium is highest among the four.",
-        "Step 3: Zinc comes next, followed by iron.",
-        "Step 4: Copper is lowest among the four."
-      ],
-      ans: "Magnesium > zinc > iron > copper.",
-      why: "The order follows their positions in the reactivity series."
-    }
-  ],
-  [
-    {
-      q: "A student places copper above zinc in the reactivity series. Is this correct?",
-      hint: "Compare the positions of copper and zinc.",
-      steps: [
-        "Step 1: Zinc is above iron and hydrogen.",
-        "Step 2: Copper is below hydrogen.",
-        "Step 3: Therefore zinc is more reactive than copper."
-      ],
-      ans: "No. Zinc is more reactive than copper.",
-      why: "Zinc is higher than copper in the reactivity series."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 6. DISPLACEMENT REACTIONS
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Displacement Reactions",
-  `<h2>Displacement Reactions</h2>
-
-  <p>A more reactive metal can displace a less reactive metal from a compound of that metal.</p>
-
-  <p>For example:</p>
-
-  <p><strong>Fe + CuSO₄ → FeSO₄ + Cu</strong></p>
-
-  <p>Iron is more reactive than copper, so iron displaces copper from copper(II) sulphate.</p>
-
-  <p>A less reactive metal cannot displace a more reactive metal from its compound.</p>
-
-  <h3>Examples</h3>
-
-  <p><strong>Example 1:</strong></p>
-  <p>Zn + CuSO₄ → ZnSO₄ + Cu</p>
-
-  <p><strong>Example 2:</strong></p>
-  <p>Mg + CuSO₄ → MgSO₄ + Cu</p>
-
-  <p><strong>Example 3:</strong></p>
-  <p>Cu + ZnSO₄ → No reaction</p>`,
-  [
-    {
-      q: "Will iron displace copper from copper(II) sulphate?",
-      steps: [
-        "Step 1: Compare iron and copper in the reactivity series.",
-        "Step 2: Iron is above copper.",
-        "Step 3: Therefore iron is more reactive.",
-        "Step 4: Iron can displace copper."
-      ],
-      ans: "Yes. Fe + CuSO₄ → FeSO₄ + Cu.",
-      why: "Iron is more reactive than copper."
-    },
-    {
-      q: "Write the equation for the reaction between zinc and copper(II) sulphate.",
-      steps: [
-        "Step 1: Zinc is more reactive than copper.",
-        "Step 2: Zinc displaces copper.",
-        "Step 3: The products are zinc sulphate and copper.",
-        "Step 4: Write the balanced equation."
-      ],
-      ans: "Zn + CuSO₄ → ZnSO₄ + Cu.",
-      why: "Zinc is above copper in the reactivity series."
-    },
-    {
-      q: "Will copper displace zinc from zinc sulphate?",
-      steps: [
-        "Step 1: Compare copper and zinc in the reactivity series.",
-        "Step 2: Zinc is more reactive than copper.",
-        "Step 3: Copper is therefore unable to displace zinc."
-      ],
-      ans: "No reaction.",
-      why: "A less reactive metal cannot displace a more reactive metal from its compound."
-    }
-  ],
-  [
-    {
-      q: "A student predicts that Cu + MgSO₄ → CuSO₄ + Mg. Is this correct?",
-      hint: "Compare copper and magnesium in the reactivity series.",
-      steps: [
-        "Step 1: Magnesium is above copper in the reactivity series.",
-        "Step 2: Magnesium is therefore more reactive.",
-        "Step 3: Copper cannot displace magnesium."
-      ],
-      ans: "No. There is no reaction.",
-      why: "Copper is less reactive than magnesium."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 7. ORES
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Ores",
-  `<h2>Ores</h2>
-
-  <p>An <strong>ore</strong> is a naturally occurring mineral or rock containing a metal or metal compound from which the metal can be extracted economically.</p>
-
-  <p>Examples include:</p>
-
-  <ul>
-    <li>Hematite — an important ore of iron</li>
-    <li>Bauxite — the main ore of aluminium</li>
-  </ul>
-
-  <p>The method used to extract a metal depends strongly on its position in the reactivity series.</p>
-
-  <h3>Examples</h3>
-
-  <p><strong>Example 1:</strong> Iron can be extracted from hematite.</p>
-
-  <p><strong>Example 2:</strong> Aluminium is obtained from aluminium oxide derived from bauxite.</p>
-
-  <p><strong>Example 3:</strong> Highly reactive metals require more powerful extraction methods than less reactive metals.</p>`,
-  [
-    {
-      q: "What is an ore?",
-      steps: [
-        "Step 1: An ore occurs naturally in the Earth's crust.",
-        "Step 2: It contains a metal or metal compound.",
-        "Step 3: The metal can be extracted economically from the ore."
-      ],
-      ans: "An ore is a naturally occurring mineral or rock containing a metal or metal compound from which the metal can be extracted economically.",
-      why: "Not every mineral containing a metal is considered an ore; economic extraction is important."
-    },
-    {
-      q: "Name the main ore of aluminium.",
-      steps: [
-        "Step 1: Recall the common ores of important metals.",
-        "Step 2: Aluminium is obtained from bauxite.",
-        "Step 3: Therefore the main ore is bauxite."
-      ],
-      ans: "Bauxite.",
-      why: "Bauxite is the main ore from which aluminium is obtained."
-    },
-    {
-      q: "Name an important ore of iron.",
-      steps: [
-        "Step 1: Recall common iron ores.",
-        "Step 2: Hematite contains iron(III) oxide.",
-        "Step 3: Therefore hematite is an important iron ore."
-      ],
-      ans: "Hematite.",
-      why: "Hematite is an important source of iron."
-    }
-  ],
-  [
-    {
-      q: "A rock contains a small amount of copper, but extracting the copper costs more than the copper is worth. Is the rock necessarily an ore?",
-      hint: "Consider the economic part of the definition.",
-      steps: [
-        "Step 1: An ore must contain a useful metal or metal compound.",
-        "Step 2: The metal must also be economically extractable.",
-        "Step 3: If extraction costs more than the value obtained, it does not satisfy the economic requirement."
-      ],
-      ans: "No. It would not normally be considered an ore because the metal cannot be extracted economically.",
-      why: "Economic extraction is part of the definition of an ore."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 8. REDUCTION
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Reduction",
-  `<h2>Reduction of Metal Compounds</h2>
-
-  <p><strong>Reduction</strong> is the removal of oxygen from a substance, or the gain of electrons.</p>
-
-  <p>During extraction, a metal compound can be reduced to form the metal.</p>
-
-  <p>For example:</p>
-
-  <p><strong>Fe₂O₃ + 3CO → 2Fe + 3CO₂</strong></p>
-
-  <p>Iron(III) oxide loses oxygen and forms iron.</p>
-
-  <h3>Examples</h3>
-
-  <p><strong>Example 1:</strong> Fe₂O₃ → Fe is a reduction because oxygen is removed from the iron compound.</p>
-
-  <p><strong>Example 2:</strong> CuO + H₂ → Cu + H₂O. Copper(II) oxide is reduced to copper.</p>
-
-  <p><strong>Example 3:</strong> A metal oxide that loses oxygen has undergone reduction.</p>`,
-  [
-    {
-      q: "What is reduction in terms of oxygen?",
-      steps: [
-        "Step 1: Look at the oxygen content of the substance.",
-        "Step 2: If oxygen is removed, the substance is reduced.",
-        "Step 3: Therefore reduction can be described as removal of oxygen."
-      ],
-      ans: "Reduction is the removal of oxygen from a substance.",
-      why: "This is the oxygen-based definition commonly used when discussing extraction of metals."
-    },
-    {
-      q: "Identify the substance being reduced in Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
-      steps: [
-        "Step 1: Compare the reactant and product containing iron.",
-        "Step 2: Fe₂O₃ changes into Fe.",
-        "Step 3: Oxygen has been removed from the iron compound."
-      ],
-      ans: "Fe₂O₃, iron(III) oxide, is being reduced.",
-      why: "Iron(III) oxide loses oxygen to form iron."
-    },
-    {
-      q: "In CuO + H₂ → Cu + H₂O, which substance is reduced?",
-      steps: [
-        "Step 1: Identify the copper-containing reactant.",
-        "Step 2: CuO changes into Cu.",
-        "Step 3: Oxygen is removed from CuO."
-      ],
-      ans: "Copper(II) oxide, CuO, is reduced.",
-      why: "CuO loses oxygen and forms copper."
-    }
-  ],
-  [
-    {
-      q: "A student says oxidation is the removal of oxygen. Is this correct?",
-      hint: "Recall the oxygen definitions of oxidation and reduction.",
-      steps: [
-        "Step 1: Oxidation involves gain of oxygen.",
-        "Step 2: Reduction involves loss of oxygen.",
-        "Step 3: Therefore the statement is incorrect."
-      ],
-      ans: "No. Removal of oxygen is reduction; gain of oxygen is oxidation.",
-      why: "These are the oxygen-based definitions of reduction and oxidation."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 9. EXTRACTION OF IRON
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Extraction of Iron",
-  `<h2>Extraction of Iron</h2>
-
-  <p>Iron is extracted from iron ore such as hematite, Fe₂O₃, in a blast furnace.</p>
-
-  <h3>Main raw materials</h3>
-
-  <ul>
-    <li>Hematite — source of iron(III) oxide</li>
-    <li>Coke — provides carbon and produces carbon monoxide</li>
-    <li>Limestone — helps remove impurities</li>
-    <li>Hot air — supplies oxygen for combustion</li>
-  </ul>
-
-  <h3>Important reactions</h3>
-
-  <p>Carbon burns:</p>
-
-  <p><strong>C + O₂ → CO₂</strong></p>
-
-  <p>Carbon dioxide reacts with more carbon:</p>
-
-  <p><strong>CO₂ + C → 2CO</strong></p>
-
-  <p>Carbon monoxide reduces iron(III) oxide:</p>
-
-  <p><strong>Fe₂O₃ + 3CO → 2Fe + 3CO₂</strong></p>
-
-  <p>Molten iron collects at the bottom of the furnace.</p>`,
-  [
-    {
-      q: "Write the equation for the reduction of iron(III) oxide by carbon monoxide.",
-      steps: [
-        "Step 1: Write the reactants: Fe₂O₃ and CO.",
-        "Step 2: The products are Fe and CO₂.",
-        "Step 3: Balance iron: Fe₂O₃ gives 2Fe.",
-        "Step 4: Balance carbon monoxide and carbon dioxide.",
-        "Step 5: The balanced equation is Fe₂O₃ + 3CO → 2Fe + 3CO₂."
-      ],
-      ans: "Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
-      why: "Carbon monoxide removes oxygen from iron(III) oxide, reducing it to iron."
-    },
-    {
-      q: "What is the role of carbon monoxide in the blast furnace?",
-      steps: [
-        "Step 1: Identify the compound that must be changed into iron.",
-        "Step 2: Iron(III) oxide must lose oxygen.",
-        "Step 3: Carbon monoxide removes oxygen from the oxide."
-      ],
-      ans: "Carbon monoxide acts as a reducing agent and reduces iron(III) oxide to iron.",
-      why: "CO removes oxygen from Fe₂O₃."
-    },
-    {
-      q: "What is the role of limestone in the extraction of iron?",
-      steps: [
-        "Step 1: Iron ore contains unwanted impurities such as silica.",
-        "Step 2: Limestone decomposes to form calcium oxide.",
-        "Step 3: Calcium oxide reacts with silica to form calcium silicate slag."
-      ],
-      ans: "Limestone helps remove impurities by forming slag with silica.",
-      why: "The calcium oxide formed from limestone reacts with acidic silica impurity."
-    }
-  ],
-  [
-    {
-      q: "A student writes Fe₂O₃ + CO → Fe + CO₂ as the balanced equation. What is wrong?",
-      hint: "Count iron, carbon and oxygen atoms on both sides.",
-      steps: [
-        "Step 1: Fe₂O₃ contains two iron atoms.",
-        "Step 2: Therefore two Fe atoms are needed on the product side.",
-        "Step 3: Balancing carbon and oxygen then requires three CO and three CO₂."
-      ],
-      ans: "The balanced equation is Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
-      why: "The original equation does not conserve the number of atoms."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 10. RUSTING
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Rusting",
-  `<h2>Rusting of Iron</h2>
-
-  <p><strong>Rusting</strong> is the corrosion of iron in the presence of oxygen and water.</p>
-
-  <p>The rust formed is hydrated iron(III) oxide.</p>
-
-  <p>A simplified representation is:</p>
-
-  <p><strong>4Fe + 3O₂ → 2Fe₂O₃</strong></p>
-
-  <p>In real rust, water is also involved, so rust is commonly represented as hydrated iron(III) oxide.</p>
-
-  <h3>Effects of rusting</h3>
-
-  <ul>
-    <li>Iron objects become weakened.</li>
-    <li>Structures can lose strength.</li>
-    <li>Machines and tools can be damaged.</li>
-    <li>Money is spent replacing or repairing corroded materials.</li>
-  </ul>`,
-  [
-    {
-      q: "What is rusting?",
-      steps: [
-        "Step 1: Identify the metal involved.",
-        "Step 2: Rusting specifically refers to corrosion of iron and steel.",
-        "Step 3: It occurs when iron reacts in the presence of oxygen and water."
-      ],
-      ans: "Rusting is the corrosion of iron or steel in the presence of oxygen and water, producing hydrated iron(III) oxide.",
-      why: "Both oxygen and water are required for ordinary rusting."
-    },
-    {
-      q: "State the two main conditions required for rusting.",
-      steps: [
-        "Step 1: Iron must have access to oxygen.",
-        "Step 2: Iron must also have access to water.",
-        "Step 3: Therefore both oxygen and water are required."
-      ],
-      ans: "Oxygen and water.",
-      why: "Rusting requires both oxygen and water."
-    },
-    {
-      q: "State two effects of rusting.",
-      steps: [
-        "Step 1: Rust forms on iron surfaces.",
-        "Step 2: Continued corrosion removes and weakens the metal.",
-        "Step 3: Therefore iron structures can lose strength and become damaged."
-      ],
-      ans: "Rusting weakens iron structures and damages iron objects.",
-      why: "Corrosion gradually changes and removes useful metal."
-    }
-  ],
-  [
-    {
-      q: "Iron nails are stored completely dry in a sealed container containing no oxygen. Will ordinary rusting occur?",
-      hint: "Rusting needs both water and oxygen.",
-      steps: [
-        "Step 1: Rusting requires water.",
-        "Step 2: Rusting also requires oxygen.",
-        "Step 3: The nails have neither available oxygen nor water.",
-        "Step 4: Ordinary rusting will therefore not occur."
-      ],
-      ans: "No. Ordinary rusting will not occur because oxygen and water are absent.",
-      why: "Both conditions are necessary for ordinary rusting."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 11. CONDITIONS FOR RUSTING
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Conditions for Rusting",
-  `<h2>Conditions for Rusting</h2>
-
-  <p>Rusting requires both <strong>water</strong> and <strong>oxygen</strong>.</p>
-
-  <p>This can be demonstrated using iron nails under different conditions.</p>
-
-  <h3>Experiment</h3>
-
-  <p><strong>Tube A:</strong> Nail exposed to air and water → rust forms.</p>
-
-  <p><strong>Tube B:</strong> Nail kept dry with a drying agent → little or no rust.</p>
-
-  <p><strong>Tube C:</strong> Nail placed in boiled water covered with oil → little or no rust because oxygen is excluded.</p>
-
-  <p>The experiment shows that both oxygen and water are needed for ordinary rusting.</p>`,
-  [
-    {
-      q: "Why does a dry iron nail not rust readily?",
-      steps: [
-        "Step 1: Rusting requires oxygen and water.",
-        "Step 2: A dry nail has little or no water available.",
-        "Step 3: Therefore the rusting reaction is prevented or greatly reduced."
-      ],
-      ans: "A dry iron nail does not rust readily because water is absent.",
-      why: "Water is one of the conditions required for rusting."
-    },
-    {
-      q: "Why can boiled water covered with oil reduce rusting of an iron nail?",
-      steps: [
-        "Step 1: Boiling removes much of the dissolved oxygen from water.",
-        "Step 2: The oil layer prevents oxygen from entering the water easily.",
-        "Step 3: The nail therefore has very little oxygen available."
-      ],
-      ans: "It reduces rusting because the nail has little available oxygen.",
-      why: "The experiment removes or excludes oxygen while water is still present."
-    },
-    {
-      q: "An iron nail is placed in ordinary water exposed to air. Will it rust?",
-      steps: [
-        "Step 1: The nail has access to water.",
-        "Step 2: It also has access to oxygen from the air.",
-        "Step 3: Both conditions for rusting are present."
-      ],
-      ans: "Yes, the nail will rust.",
-      why: "Both water and oxygen are available."
-    }
-  ],
-  [
-    {
-      q: "A nail is placed in dry air. Why is rusting greatly reduced?",
-      hint: "What substance is missing from dry air?",
-      steps: [
-        "Step 1: Dry air provides oxygen.",
-        "Step 2: However, it contains very little water.",
-        "Step 3: Without sufficient water, ordinary rusting is greatly reduced."
-      ],
-      ans: "Rusting is greatly reduced because there is insufficient water.",
-      why: "Rusting requires both oxygen and water."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 12. PREVENTION OF RUSTING
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Prevention of Rusting",
-  `<h2>Prevention of Rusting</h2>
-
-  <p>Rusting can be prevented by stopping iron from coming into contact with water or oxygen.</p>
-
-  <h3>Barrier methods</h3>
-
-  <ul>
-    <li>Painting</li>
-    <li>Oiling</li>
-    <li>Greasing</li>
-    <li>Coating with plastic</li>
-    <li>Galvanising with zinc</li>
-  </ul>
-
-  <p>These methods form a barrier between the iron and the substances needed for rusting.</p>
-
-  <h3>Examples</h3>
-
-  <p><strong>Example 1:</strong> Bicycle chains can be oiled to keep water and oxygen away.</p>
-
-  <p><strong>Example 2:</strong> Iron gates can be painted.</p>
-
-  <p><strong>Example 3:</strong> Iron sheets can be galvanised by coating them with zinc.</p>`,
-  [
-    {
-      q: "How does painting prevent rusting?",
-      steps: [
-        "Step 1: Rusting requires contact with oxygen and water.",
-        "Step 2: Paint forms a protective layer over the iron.",
-        "Step 3: The layer prevents water and oxygen from reaching the iron."
-      ],
-      ans: "Painting forms a barrier that prevents water and oxygen from reaching the iron.",
-      why: "Removing contact with the required conditions reduces rusting."
-    },
-    {
-      q: "Why is grease applied to a bicycle chain?",
-      steps: [
-        "Step 1: A bicycle chain is made largely of iron or steel.",
-        "Step 2: Iron and steel can rust when exposed to water and oxygen.",
-        "Step 3: Grease forms a protective barrier."
-      ],
-      ans: "Grease prevents water and oxygen from reaching the metal surface.",
-      why: "The grease acts as a barrier against the conditions needed for rusting."
-    },
-    {
-      q: "What is galvanising?",
-      steps: [
-        "Step 1: Identify the metal used as the protective coating.",
-        "Step 2: Iron or steel is coated with zinc.",
-        "Step 3: This process is called galvanising."
-      ],
-      ans: "Galvanising is coating iron or steel with zinc to protect it from corrosion.",
-      why: "The zinc coating separates the steel from the environment and also provides sacrificial protection."
-    }
-  ],
-  [
-    {
-      q: "A painted iron gate develops rust after the paint is scratched away. Why?",
-      hint: "Think about what the scratch exposes.",
-      steps: [
-        "Step 1: Paint normally acts as a barrier.",
-        "Step 2: The scratch exposes the iron.",
-        "Step 3: Water and oxygen can reach the exposed iron.",
-        "Step 4: Rusting can therefore begin at the damaged area."
-      ],
-      ans: "The scratch exposes the iron to water and oxygen, allowing rusting to occur.",
-      why: "The protective barrier has been broken."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 13. ALLOYS
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Alloys",
-  `<h2>Alloys</h2>
-
-  <p>An <strong>alloy</strong> is a mixture containing a metal and one or more other elements.</p>
-
-  <p>Alloys are often made to obtain properties that are different from those of the pure metal.</p>
-
-  <h3>Common alloys</h3>
-
-  <ul>
-    <li><strong>Steel:</strong> mainly iron with carbon.</li>
-    <li><strong>Stainless steel:</strong> iron with carbon and other elements such as chromium.</li>
-    <li><strong>Brass:</strong> copper and zinc.</li>
-    <li><strong>Bronze:</strong> copper and tin.</li>
-    <li><strong>Duralumin:</strong> an aluminium-based alloy containing other elements.</li>
-  </ul>
-
-  <p>Alloys are commonly harder or stronger than the pure metals from which they are made.</p>`,
-  [
-    {
-      q: "What is an alloy?",
-      steps: [
-        "Step 1: Identify an alloy as a mixture.",
-        "Step 2: It contains a metal and one or more other elements.",
-        "Step 3: Therefore it is not usually a pure element."
-      ],
-      ans: "An alloy is a mixture containing a metal and one or more other elements.",
-      why: "Alloys are produced by combining elements to obtain useful properties."
-    },
-    {
-      q: "Name the elements that make up brass.",
-      steps: [
-        "Step 1: Recall the common composition of brass.",
-        "Step 2: Brass contains copper.",
-        "Step 3: Brass also contains zinc."
-      ],
-      ans: "Copper and zinc.",
-      why: "Brass is an alloy of copper and zinc."
-    },
-    {
-      q: "Name the main metals in bronze.",
-      steps: [
-        "Step 1: Recall the common composition of bronze.",
-        "Step 2: Bronze contains copper.",
-        "Step 3: Tin is added to copper to form bronze."
-      ],
-      ans: "Copper and tin.",
-      why: "Bronze is mainly an alloy of copper and tin."
-    }
-  ],
-  [
-    {
-      q: "Why are alloys often preferred to pure metals?",
-      hint: "Think about how their properties can change.",
-      steps: [
-        "Step 1: Combining elements changes the structure of the material.",
-        "Step 2: This can change properties such as strength and hardness.",
-        "Step 3: Therefore an alloy can have properties more suitable for a particular use."
-      ],
-      ans: "Alloys are often preferred because they can have improved properties such as greater strength or hardness.",
-      why: "Alloying is used to modify the properties of metals."
-    }
-  ]
-);
-
-
-// ------------------------------------------------------------
-// 14. USES OF METALS
-// ------------------------------------------------------------
-
-add(
-  "chemistry",
-  "metals_extraction",
-  "Uses of Metals",
-  `<h2>Uses of Metals</h2>
-
-  <p>The use of a metal depends on its physical and chemical properties.</p>
-
-  <h3>Common examples</h3>
-
-  <p><strong>Copper:</strong> electrical wires because it conducts electricity well and is ductile.</p>
-
-  <p><strong>Aluminium:</strong> aircraft bodies, cooking utensils and electrical transmission because it is relatively light, conducts electricity and is resistant to corrosion.</p>
-
-  <p><strong>Iron and steel:</strong> buildings, bridges, tools and machines because they are strong.</p>
-
-  <p><strong>Zinc:</strong> galvanising iron and steel because it helps protect them from corrosion.</p>
-
-  <p><strong>Gold:</strong> jewellery because it is attractive and relatively unreactive.</p>
-
-  <p><strong>Silver:</strong> jewellery and electrical contacts because it has very high electrical conductivity.</p>`,
-  [
-    {
-      q: "Why is copper used for electrical wiring?",
-      steps: [
-        "Step 1: Electrical wires need a good conductor.",
-        "Step 2: Copper conducts electricity well.",
-        "Step 3: Copper is also ductile and can be drawn into wires."
-      ],
-      ans: "Copper is used because it conducts electricity well and is ductile.",
-      why: "Its conductivity allows current to flow and its ductility allows wires to be formed."
-    },
-    {
-      q: "Why is aluminium useful for aircraft construction?",
-      steps: [
-        "Step 1: Aircraft construction benefits from materials with low density.",
-        "Step 2: Aluminium is relatively light.",
-        "Step 3: Aluminium also has useful strength and corrosion resistance."
-      ],
-      ans: "Aluminium is useful because it is relatively light and has useful strength and corrosion resistance.",
-      why: "Low mass is especially valuable in aircraft construction."
-    },
-    {
-      q: "Why is steel used to make bridges?",
-      steps: [
-        "Step 1: A bridge must support large loads.",
-        "Step 2: Steel is strong and can be formed into structural shapes.",
-        "Step 3: Therefore steel is suitable for bridges."
-      ],
-      ans: "Steel is used because it is strong and suitable for structural construction.",
-      why: "Strong materials are required to support the loads acting on bridges."
-    }
-  ],
-  [
-    {
-      q: "A manufacturer wants a material for electrical cables that can be drawn into thin wires and conducts electricity well. Which metal is suitable: copper or sulphur?",
-      hint: "Compare their conductivity and ductility.",
-      steps: [
-        "Step 1: Electrical cables need good electrical conductivity.",
-        "Step 2: They also need a material that can form wires.",
-        "Step 3: Copper is a good conductor and is ductile.",
-        "Step 4: Sulphur is a non-metal and is not suitable."
+        "Identify a metal commonly used in electrical wiring.",
+        "Check that it can be drawn into thin strands."
       ],
       ans: "Copper.",
-      why: "Copper has the required electrical conductivity and ductility."
+      why: "Copper is ductile, allowing it to be drawn into wires, and it is also a good electrical conductor."
+    },
+    {
+      q: "State the difference between ductility and malleability.",
+      hint: "Compare wires with sheets.",
+      steps: [
+        "State what ductility allows a material to form.",
+        "State what malleability allows a material to form.",
+        "Contrast the two products."
+      ],
+      ans: "Ductility is the ability to be drawn into wires, whereas malleability is the ability to be hammered, pressed or rolled into sheets without breaking easily.",
+      why: "The two properties describe different ways a material can be permanently shaped."
+    }
+  ],
+  [
+    {
+      q: "A metal is drawn into a long, thin wire without breaking. Which physical property does this demonstrate?",
+      hint: "Look for the property associated with wire formation.",
+      steps: [
+        "Identify the final shape.",
+        "Recall the property associated with drawing wires.",
+        "State the property."
+      ],
+      ans: "Ductility.",
+      why: "Ductility is the ability to be drawn into wires without breaking."
+    },
+    {
+      q: "Explain why copper is suitable for making electrical cables.",
+      hint: "Consider both the shaping process and the movement of charge.",
+      steps: [
+        "State the property that allows copper to be drawn into wires.",
+        "State the property that allows it to carry electric current.",
+        "Connect both properties to its use in cables."
+      ],
+      ans: "Copper is ductile, so it can be drawn into thin wires, and it conducts electricity well because it contains mobile delocalised electrons.",
+      why: "Electrical cables require a material that can be formed into wires and conduct electric current effectively."
+    },
+    {
+      q: "A learner claims that a metal's ability to form sheets proves that it is ductile. Explain why this conclusion is incorrect.",
+      hint: "Identify the property that specifically describes sheet formation.",
+      steps: [
+        "Identify the shape produced.",
+        "Match sheet formation to the correct property.",
+        "State what ductility actually describes."
+      ],
+      ans: "The conclusion is incorrect because forming sheets demonstrates malleability. Ductility describes the ability to be drawn into wires.",
+      why: "The two properties are related forms of deformation but are defined by different shaping outcomes."
+    },
+    {
+      q: "A manufacturer needs a metal for making long, thin wires. What property should the metal possess, and what should happen during wire drawing?",
+      hint: "Consider the desired shape and whether the metal must remain intact.",
+      steps: [
+        "Identify the required product.",
+        "Name the property associated with producing that product.",
+        "Describe the expected behaviour during drawing."
+      ],
+      ans: "The metal should be ductile. It should be drawn into long, thin wires without breaking easily.",
+      why: "Ductility allows a metal to undergo the deformation required for wire production."
+    },
+    {
+      q: "A metal wire breaks when pulled slightly during manufacturing. Does this observation show high ductility under those conditions? Explain.",
+      hint: "Compare the observed behaviour with the definition of ductility.",
+      steps: [
+        "Recall what a ductile material can do.",
+        "Compare the definition with the wire's behaviour.",
+        "State the conclusion limited to the conditions tested."
+      ],
+      ans: "No. Breaking under a small pull suggests the material has low ductility under those manufacturing conditions.",
+      why: "A ductile material should withstand the deformation required for drawing into wire without breaking easily. The result can depend on the metal and processing conditions."
+    },
+    {
+      q: "Metal A can be drawn into a continuous wire, while Metal B breaks before a wire can be formed. Which metal is more ductile under the tested conditions? Explain.",
+      hint: "Use the ability to form a wire as the evidence.",
+      steps: [
+        "Identify which metal forms a continuous wire.",
+        "Relate that behaviour to ductility.",
+        "Compare it with the metal that breaks."
+      ],
+      ans: "Metal A is more ductile under the tested conditions because it can be drawn into a continuous wire without breaking.",
+      why: "The ability to withstand deformation during wire drawing is the defining feature of ductility."
     }
   ]
 );
+
+add(
+  "chemistry",
+  "metals",
+  "Chemical Properties of Metals",
+  `
+  <h2>Chemical Properties of Metals</h2>
+
+  <h3>1. Meaning of Chemical Properties</h3>
+
+  <p>Chemical properties describe how a substance behaves when it undergoes a chemical reaction and forms new substances.</p>
+
+  <p>Metals differ in how readily they react. Some react vigorously with water or oxygen, while others react slowly or hardly react under ordinary conditions.</p>
+
+  <h3>2. Reaction of Metals with Oxygen</h3>
+
+  <p>Many metals react with oxygen to form metal oxides. Metal oxides are compounds containing a metal chemically combined with oxygen.</p>
+
+  <p><strong>General word equation:</strong></p>
+  <p>Metal + Oxygen → Metal oxide</p>
+
+  <p><strong>Example 1: Magnesium</strong></p>
+  <p>When magnesium burns in oxygen, it produces a bright white flame and forms a white solid, magnesium oxide.</p>
+
+  <p>2Mg(s) + O₂(g) → 2MgO(s)</p>
+
+  <p><strong>Example 2: Copper</strong></p>
+  <p>When copper is heated in air, its surface can develop a black coating of copper(II) oxide.</p>
+
+  <p>2Cu(s) + O₂(g) → 2CuO(s)</p>
+
+  <p>The reaction conditions matter: not every metal reacts equally rapidly with oxygen at room temperature.</p>
+
+  <h3>3. Reaction of Metals with Water</h3>
+
+  <p>Some metals react with cold water to form a metal hydroxide and hydrogen gas. Other metals react only with steam, and some do not react appreciably with water under ordinary conditions.</p>
+
+  <p><strong>Example: Sodium and cold water</strong></p>
+  <p>2Na(s) + 2H₂O(l) → 2NaOH(aq) + H₂(g)</p>
+
+  <p>Sodium reacts vigorously with cold water. The reaction produces sodium hydroxide solution and hydrogen gas, releasing heat.</p>
+
+  <p><strong>Example: Calcium and cold water</strong></p>
+  <p>Ca(s) + 2H₂O(l) → Ca(OH)₂(aq) + H₂(g)</p>
+
+  <p>Calcium reacts with cold water less vigorously than sodium. Calcium hydroxide forms and hydrogen gas is released.</p>
+
+  <p><strong>Example: Iron and steam</strong></p>
+  <p>Hot iron reacts with steam to form iron oxide and hydrogen. One possible equation is:</p>
+
+  <p>3Fe(s) + 4H₂O(g) → Fe₃O₄(s) + 4H₂(g)</p>
+
+  <p>Do not assume that all metals react with cold water. The reaction depends on the metal's reactivity and the conditions.</p>
+
+  <h3>4. Reaction of Metals with Dilute Acids</h3>
+
+  <p>Many metals above hydrogen in the reactivity series react with dilute hydrochloric acid or dilute sulfuric acid to form a salt and hydrogen gas.</p>
+
+  <p><strong>General word equation:</strong></p>
+  <p>Metal + Dilute acid → Salt + Hydrogen</p>
+
+  <p><strong>Example: Zinc and dilute hydrochloric acid</strong></p>
+  <p>Zn(s) + 2HCl(aq) → ZnCl₂(aq) + H₂(g)</p>
+
+  <p>Zinc chloride is the salt formed. Hydrogen gas may be observed as bubbles.</p>
+
+  <p><strong>Example: Magnesium and dilute hydrochloric acid</strong></p>
+  <p>Mg(s) + 2HCl(aq) → MgCl₂(aq) + H₂(g)</p>
+
+  <p>Magnesium reacts more vigorously than zinc under comparable conditions because magnesium is more reactive than zinc.</p>
+
+  <p>Copper does not normally release hydrogen when placed in dilute hydrochloric acid because it is below hydrogen in the reactivity series.</p>
+
+  <h3>5. How to Identify Hydrogen Gas</h3>
+
+  <p>Hydrogen can be tested using a lighted splint. When a small sample of hydrogen is exposed to the flame, it burns with a characteristic squeaky pop.</p>
+
+  <p>The test should be performed using a small sample under appropriate laboratory safety procedures. Never test an unknown gas by bringing a flame to a large container.</p>
+
+  <h3>Worked Example 1: Predicting a Metal Oxide</h3>
+
+  <p><strong>Question:</strong> Magnesium burns in oxygen. Name the product and write a balanced equation.</p>
+
+  <p><strong>Step 1:</strong> Recognise that magnesium reacts with oxygen to form magnesium oxide.</p>
+  <p><strong>Step 2:</strong> Write the unbalanced equation: Mg + O₂ → MgO.</p>
+  <p><strong>Step 3:</strong> Balance oxygen by placing 2 before MgO.</p>
+  <p><strong>Step 4:</strong> Balance magnesium by placing 2 before Mg.</p>
+
+  <p><strong>Answer:</strong> 2Mg + O₂ → 2MgO.</p>
+
+  <h3>Worked Example 2: Predicting Products with an Acid</h3>
+
+  <p><strong>Question:</strong> Predict the products when zinc reacts with dilute hydrochloric acid and write the balanced equation.</p>
+
+  <p><strong>Step 1:</strong> Use the pattern: metal + dilute acid → salt + hydrogen.</p>
+  <p><strong>Step 2:</strong> Zinc with hydrochloric acid forms zinc chloride and hydrogen.</p>
+  <p><strong>Step 3:</strong> Write Zn + HCl → ZnCl₂ + H₂.</p>
+  <p><strong>Step 4:</strong> Balance chlorine and hydrogen by placing 2 before HCl.</p>
+
+  <p><strong>Answer:</strong> Zn + 2HCl → ZnCl₂ + H₂.</p>
+
+  <h3>Worked Example 3: Explaining Different Behaviour</h3>
+
+  <p><strong>Question:</strong> Magnesium reacts with dilute hydrochloric acid, but copper does not release hydrogen under the same ordinary conditions. Explain.</p>
+
+  <p><strong>Step 1:</strong> Locate both metals relative to hydrogen in the reactivity series.</p>
+  <p><strong>Step 2:</strong> Magnesium is above hydrogen, so it can displace hydrogen from the dilute acid.</p>
+  <p><strong>Step 3:</strong> Copper is below hydrogen, so it cannot displace hydrogen from dilute hydrochloric acid.</p>
+
+  <p><strong>Answer:</strong> Magnesium is more reactive than hydrogen and releases hydrogen from the acid. Copper is less reactive than hydrogen and does not do so under these conditions.</p>
+  `,
+  [
+    {
+      q: "State the general word equation for the reaction of a metal with oxygen.",
+      hint: "The product is a compound containing the metal and oxygen.",
+      steps: [
+        "Identify the two reactants.",
+        "Identify the compound formed.",
+        "Write the word equation."
+      ],
+      ans: "Metal + Oxygen → Metal oxide.",
+      why: "Many metals combine chemically with oxygen to form metal oxides."
+    },
+    {
+      q: "Write a balanced chemical equation for the reaction between zinc and dilute hydrochloric acid.",
+      hint: "The products are zinc chloride and hydrogen gas.",
+      steps: [
+        "Write Zn + HCl → ZnCl₂ + H₂.",
+        "Balance chlorine by placing 2 before HCl.",
+        "Check that zinc, hydrogen and chlorine atoms balance."
+      ],
+      ans: "Zn + 2HCl → ZnCl₂ + H₂.",
+      why: "Two HCl molecules supply the two chlorine atoms needed for zinc chloride and the two hydrogen atoms needed for hydrogen gas."
+    },
+    {
+      q: "Describe the test for hydrogen gas.",
+      hint: "Use a lighted splint and state the observation.",
+      steps: [
+        "Bring a lighted splint to a small sample of the gas using safe laboratory practice.",
+        "State the characteristic sound if hydrogen is present."
+      ],
+      ans: "Hydrogen burns with a characteristic squeaky pop when tested with a lighted splint.",
+      why: "The squeaky-pop test is the standard laboratory test for hydrogen, using a small sample and suitable safety precautions."
+    }
+  ],
+  [
+    {
+      q: "A student burns magnesium in oxygen and obtains a white powder. Identify the product and write its balanced equation.",
+      hint: "Magnesium forms an oxide when it reacts with oxygen.",
+      steps: [
+        "Identify the metal and the gas reacting.",
+        "Write the formula of magnesium oxide as MgO.",
+        "Balance the oxygen molecule, O₂.",
+        "Balance the magnesium atoms."
+      ],
+      ans: "The product is magnesium oxide. Balanced equation: 2Mg + O₂ → 2MgO.",
+      why: "Two magnesium atoms react with one oxygen molecule to produce two formula units of magnesium oxide."
+    },
+    {
+      q: "Write a balanced equation for sodium reacting with cold water.",
+      hint: "The products are sodium hydroxide and hydrogen gas.",
+      steps: [
+        "Write Na + H₂O → NaOH + H₂.",
+        "Balance sodium by placing 2 before Na and NaOH.",
+        "Balance hydrogen and oxygen by placing 2 before H₂O."
+      ],
+      ans: "2Na + 2H₂O → 2NaOH + H₂.",
+      why: "The balanced equation conserves two sodium atoms, four hydrogen atoms and two oxygen atoms on each side."
+    },
+    {
+      q: "Zinc reacts with dilute hydrochloric acid and produces bubbles. Name the gas and explain how you would confirm its identity.",
+      hint: "Think of the gas produced when a reactive metal reacts with a dilute acid.",
+      steps: [
+        "Recall the general reaction of a metal with a suitable dilute acid.",
+        "Identify the gas produced.",
+        "State the test and its positive observation."
+      ],
+      ans: "The gas is hydrogen. A small sample produces a squeaky pop when tested with a lighted splint.",
+      why: "Many metals above hydrogen in the reactivity series release hydrogen gas from dilute hydrochloric acid."
+    },
+    {
+      q: "Copper is placed in dilute hydrochloric acid, but no hydrogen bubbles appear. Explain the observation using the reactivity series.",
+      hint: "Compare copper with hydrogen in the series.",
+      steps: [
+        "Locate copper relative to hydrogen in the reactivity series.",
+        "Recall which metals can displace hydrogen from dilute acids.",
+        "Use this comparison to explain the observation."
+      ],
+      ans: "Copper is below hydrogen in the reactivity series, so it cannot displace hydrogen from dilute hydrochloric acid under ordinary conditions.",
+      why: "A metal must be more reactive than hydrogen to release hydrogen from a typical dilute, non-oxidising acid."
+    },
+    {
+      q: "A learner writes the equation Mg + O₂ → MgO. Identify the problem and correct the equation.",
+      hint: "Count oxygen atoms on each side before adjusting magnesium.",
+      steps: [
+        "Count the oxygen atoms on each side.",
+        "Place 2 before MgO to balance oxygen.",
+        "Place 2 before Mg to balance magnesium."
+      ],
+      ans: "The equation is not balanced. The correct equation is 2Mg + O₂ → 2MgO.",
+      why: "A balanced equation must have the same number of atoms of each element on both sides."
+    },
+    {
+      q: "Magnesium and zinc are separately reacted with equal volumes and concentrations of dilute hydrochloric acid under comparable conditions. Which metal would generally react more vigorously, and why?",
+      hint: "Compare their positions in the reactivity series.",
+      steps: [
+        "Locate magnesium and zinc in the reactivity series.",
+        "Identify which metal is higher in the series.",
+        "Connect its greater reactivity to the expected reaction rate."
+      ],
+      ans: "Magnesium would generally react more vigorously because it is more reactive than zinc.",
+      why: "Under comparable conditions, the more reactive metal generally reacts faster. The observed rate also depends on factors such as surface area and temperature."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Reactivity Series",
+  `
+  <h2>Reactivity Series</h2>
+
+  <h3>1. Meaning of the Reactivity Series</h3>
+
+  <p>The <strong>reactivity series</strong> is an arrangement of metals in order of decreasing chemical reactivity. It helps predict how metals react with water, dilute acids and compounds of other metals.</p>
+
+  <p>A commonly used school-level series is:</p>
+
+  <p><strong>Potassium → Sodium → Calcium → Magnesium → Aluminium → Zinc → Iron → Lead → (Hydrogen) → Copper → Silver → Gold</strong></p>
+
+  <p>The metals at the beginning are generally more reactive than those further down the list. Hydrogen is included as a reference point for predicting which metals can release hydrogen from dilute acids; it is not a metal.</p>
+
+  <h3>2. What Does the Order Tell Us?</h3>
+
+  <p><strong>Metals near the top:</strong> generally lose electrons readily and react more vigorously. Potassium and sodium react vigorously with cold water.</p>
+
+  <p><strong>Metals in the middle:</strong> their reactions depend on the reactant and conditions. Magnesium reacts with dilute acids, while iron reacts with steam but does not react vigorously with cold water.</p>
+
+  <p><strong>Metals near the bottom:</strong> are less reactive. Copper, silver and gold do not normally release hydrogen from dilute hydrochloric acid.</p>
+
+  <h3>3. Predicting Reactions with Water</h3>
+
+  <p>The series helps predict the general behaviour of metals with water, but the exact reaction depends on the metal and conditions.</p>
+
+  <ul>
+    <li>Potassium and sodium react vigorously with cold water.</li>
+    <li>Calcium reacts with cold water, generally less vigorously than sodium.</li>
+    <li>Magnesium reacts very slowly with cold water but reacts more readily with hot water or steam.</li>
+    <li>Iron reacts with steam when heated.</li>
+    <li>Copper does not react with water or steam under ordinary school-laboratory conditions.</li>
+  </ul>
+
+  <h3>4. Predicting Reactions with Dilute Acids</h3>
+
+  <p>Metals above hydrogen in the series can generally displace hydrogen from dilute hydrochloric acid or dilute sulfuric acid. Metals below hydrogen cannot do so under ordinary conditions.</p>
+
+  <p><strong>Example:</strong></p>
+  <p>Zn + 2HCl → ZnCl₂ + H₂</p>
+
+  <p>Zinc is above hydrogen, so hydrogen gas is produced.</p>
+
+  <p><strong>Counterexample:</strong></p>
+  <p>Copper does not normally produce hydrogen when placed in dilute hydrochloric acid because copper is below hydrogen.</p>
+
+  <h3>5. Displacement Reactions</h3>
+
+  <p>A more reactive metal can displace a less reactive metal from a solution containing that less reactive metal's ions. A less reactive metal cannot displace a more reactive metal from its salt solution.</p>
+
+  <p><strong>Example:</strong> Zinc placed in copper(II) sulfate solution displaces copper:</p>
+
+  <p>Zn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)</p>
+
+  <p>Zinc is more reactive than copper, so zinc enters the solution as zinc ions while copper is deposited.</p>
+
+  <p><strong>Opposite case:</strong> Copper cannot displace zinc from zinc sulfate solution because copper is less reactive than zinc.</p>
+
+  <h3>Worked Example 1: Comparing Reactivity</h3>
+
+  <p><strong>Question:</strong> Which is more reactive, magnesium or copper?</p>
+
+  <p><strong>Step 1:</strong> Locate both metals in the reactivity series.</p>
+  <p><strong>Step 2:</strong> Magnesium appears above copper.</p>
+  <p><strong>Step 3:</strong> Metals higher in the series are generally more reactive.</p>
+
+  <p><strong>Answer:</strong> Magnesium is more reactive than copper.</p>
+
+  <h3>Worked Example 2: Predicting an Acid Reaction</h3>
+
+  <p><strong>Question:</strong> Will iron release hydrogen when placed in dilute hydrochloric acid?</p>
+
+  <p><strong>Step 1:</strong> Locate iron and hydrogen in the series.</p>
+  <p><strong>Step 2:</strong> Iron is above hydrogen.</p>
+  <p><strong>Step 3:</strong> A metal above hydrogen can generally displace it from dilute hydrochloric acid.</p>
+
+  <p><strong>Answer:</strong> Yes. Iron reacts with dilute hydrochloric acid to form iron(II) chloride and hydrogen:</p>
+
+  <p>Fe + 2HCl → FeCl₂ + H₂</p>
+
+  <h3>Worked Example 3: Predicting Displacement</h3>
+
+  <p><strong>Question:</strong> A piece of copper is placed in zinc sulfate solution. Predict whether a displacement reaction occurs.</p>
+
+  <p><strong>Step 1:</strong> Compare copper with zinc in the reactivity series.</p>
+  <p><strong>Step 2:</strong> Zinc is above copper and is therefore more reactive.</p>
+  <p><strong>Step 3:</strong> Copper cannot displace the more reactive zinc from its compound.</p>
+
+  <p><strong>Answer:</strong> No displacement reaction occurs under these conditions.</p>
+  `,
+  [
+    {
+      q: "What is the reactivity series?",
+      hint: "It arranges metals according to how readily they react.",
+      steps: [
+        "Identify what is being compared.",
+        "State that the metals are arranged in order.",
+        "Specify the direction of decreasing reactivity."
+      ],
+      ans: "The reactivity series is an arrangement of metals in order of decreasing chemical reactivity.",
+      why: "The series compares the tendency of metals to react and helps predict chemical reactions."
+    },
+    {
+      q: "Which is more reactive: zinc or copper?",
+      hint: "Find both metals in the reactivity series.",
+      steps: [
+        "Locate zinc in the series.",
+        "Locate copper in the series.",
+        "Compare their positions."
+      ],
+      ans: "Zinc is more reactive than copper.",
+      why: "Zinc is higher than copper in the commonly used reactivity series."
+    },
+    {
+      q: "Can copper displace zinc from zinc sulfate solution? Explain.",
+      hint: "A metal displaces another metal only if it is more reactive.",
+      steps: [
+        "Compare copper and zinc in the series.",
+        "Identify which metal is more reactive.",
+        "Apply the rule for displacement."
+      ],
+      ans: "No. Copper is less reactive than zinc and cannot displace zinc from zinc sulfate solution.",
+      why: "A less reactive metal cannot displace a more reactive metal from its salt solution."
+    }
+  ],
+  [
+    {
+      q: "Arrange magnesium, iron and silver in order of decreasing reactivity.",
+      hint: "Decreasing reactivity means most reactive first.",
+      steps: [
+        "Locate magnesium in the series.",
+        "Locate iron and silver.",
+        "List the metals from highest to lowest reactivity."
+      ],
+      ans: "Magnesium → Iron → Silver.",
+      why: "Magnesium is above iron, and iron is above silver in the commonly used reactivity series."
+    },
+    {
+      q: "Explain why zinc produces hydrogen with dilute hydrochloric acid but copper does not normally do so.",
+      hint: "Use hydrogen as the reference point in the series.",
+      steps: [
+        "Locate zinc relative to hydrogen.",
+        "Locate copper relative to hydrogen.",
+        "Apply the rule for displacement of hydrogen from dilute acids."
+      ],
+      ans: "Zinc is above hydrogen and can displace it from dilute hydrochloric acid. Copper is below hydrogen and cannot normally displace it.",
+      why: "Metals above hydrogen generally release hydrogen from suitable dilute acids; metals below hydrogen do not."
+    },
+    {
+      q: "A strip of magnesium is placed in copper(II) sulfate solution. Predict whether a displacement reaction occurs and name the products.",
+      hint: "Magnesium is above copper in the reactivity series.",
+      steps: [
+        "Compare magnesium with copper.",
+        "Determine whether magnesium can displace copper.",
+        "Write the products formed."
+      ],
+      ans: "A displacement reaction occurs, producing magnesium sulfate and copper: Mg + CuSO₄ → MgSO₄ + Cu.",
+      why: "Magnesium is more reactive than copper and displaces copper from copper(II) sulfate solution."
+    },
+    {
+      q: "A learner places iron in zinc sulfate solution and predicts that zinc will be deposited. Explain why this prediction is incorrect.",
+      hint: "Compare iron and zinc in the reactivity series.",
+      steps: [
+        "Locate zinc and iron in the series.",
+        "Identify which metal is more reactive.",
+        "Apply the displacement rule."
+      ],
+      ans: "The prediction is incorrect because zinc is more reactive than iron. Iron cannot displace zinc from zinc sulfate solution.",
+      why: "A less reactive metal cannot displace a more reactive metal from its salt solution."
+    },
+    {
+      q: "Three metals P, Q and R are tested. P displaces Q from Q's salt solution, and Q displaces R from R's salt solution. Arrange the three metals in decreasing reactivity.",
+      hint: "A metal that displaces another metal is more reactive than the displaced metal.",
+      steps: [
+        "Use the first observation to compare P and Q.",
+        "Use the second observation to compare Q and R.",
+        "Combine the two comparisons."
+      ],
+      ans: "P → Q → R.",
+      why: "P is more reactive than Q, and Q is more reactive than R."
+    },
+    {
+      q: "A student concludes that every metal higher in the reactivity series must react vigorously with cold water. Explain why this is incorrect.",
+      hint: "Consider the different behaviour of magnesium and iron with water.",
+      steps: [
+        "Recall that the series compares general chemical reactivity.",
+        "Consider metals whose reactions with water require heating or steam.",
+        "Explain why the reaction depends on the metal and conditions."
+      ],
+      ans: "The conclusion is incorrect because metals react differently with water. For example, magnesium reacts very slowly with cold water but reacts more readily with hot water or steam, while iron reacts with steam when heated.",
+      why: "The reactivity series helps predict trends, but it does not mean that every metal reacts vigorously with every reactant under the same conditions."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Displacement Reactions",
+  `
+  <h2>Displacement Reactions</h2>
+
+  <h3>Meaning of a Displacement Reaction</h3>
+
+  <p>A <strong>metal displacement reaction</strong> occurs when a more reactive metal replaces a less reactive metal from a compound containing that metal.</p>
+
+  <p>For example, zinc displaces copper from copper(II) sulfate solution because zinc is more reactive than copper.</p>
+
+  <p><strong>Word equation:</strong></p>
+  <p>Zinc + Copper(II) sulfate → Zinc sulfate + Copper</p>
+
+  <p><strong>Balanced chemical equation:</strong></p>
+  <p>Zn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)</p>
+
+  <h3>How to Predict a Displacement Reaction</h3>
+
+  <ol>
+    <li>Identify the metal added and the metal in the compound.</li>
+    <li>Compare their positions in the reactivity series.</li>
+    <li>If the added metal is more reactive, displacement can occur.</li>
+    <li>If the added metal is less reactive, it cannot displace the other metal.</li>
+    <li>Write the correct products and balance the equation.</li>
+  </ol>
+
+  <h3>Example 1: Zinc and Copper(II) Sulfate</h3>
+
+  <p>Zinc is more reactive than copper. When zinc is added to blue copper(II) sulfate solution, copper metal forms and zinc sulfate enters the solution.</p>
+
+  <p>Zn(s) + CuSO₄(aq) → ZnSO₄(aq) + Cu(s)</p>
+
+  <p><strong>Possible observations:</strong></p>
+  <ul>
+    <li>A reddish-brown deposit of copper forms on the zinc.</li>
+    <li>The blue colour of the solution fades as copper(II) ions are removed from the solution.</li>
+    <li>The zinc gradually dissolves as it forms zinc ions.</li>
+  </ul>
+
+  <p>The exact appearance and speed of the changes depend on the experimental conditions.</p>
+
+  <h3>Example 2: Iron and Copper(II) Sulfate</h3>
+
+  <p>Iron is more reactive than copper, so iron displaces copper from copper(II) sulfate.</p>
+
+  <p>Fe(s) + CuSO₄(aq) → FeSO₄(aq) + Cu(s)</p>
+
+  <p>A reddish-brown copper deposit forms. The blue solution may change towards pale green because iron(II) sulfate is formed.</p>
+
+  <h3>Example 3: Copper and Zinc Sulfate</h3>
+
+  <p>Copper is less reactive than zinc. Therefore, copper cannot displace zinc from zinc sulfate solution.</p>
+
+  <p>Cu(s) + ZnSO₄(aq) → <strong>No displacement reaction</strong></p>
+
+  <p>Do not write new products when the reactivity series predicts that no displacement occurs.</p>
+
+  <h3>Why Does Displacement Occur?</h3>
+
+  <p>A more reactive metal generally loses electrons more readily and forms positive ions. The ions of the less reactive metal can gain those electrons and form neutral metal atoms.</p>
+
+  <p>For zinc displacing copper:</p>
+
+  <p><strong>Oxidation:</strong></p>
+  <p>Zn(s) → Zn²⁺(aq) + 2e⁻</p>
+
+  <p><strong>Reduction:</strong></p>
+  <p>Cu²⁺(aq) + 2e⁻ → Cu(s)</p>
+
+  <p>Zinc loses two electrons, while copper(II) ions gain those electrons. This transfer of electrons makes the reaction a redox reaction.</p>
+
+  <h3>Worked Example 1: Predicting Products</h3>
+
+  <p><strong>Question:</strong> Predict the products when magnesium is added to copper(II) sulfate solution.</p>
+
+  <p><strong>Step 1:</strong> Magnesium is more reactive than copper.</p>
+  <p><strong>Step 2:</strong> Magnesium displaces copper from copper(II) sulfate.</p>
+  <p><strong>Step 3:</strong> Magnesium forms magnesium sulfate, while copper forms as a solid.</p>
+
+  <p><strong>Answer:</strong></p>
+  <p>Mg + CuSO₄ → MgSO₄ + Cu</p>
+
+  <h3>Worked Example 2: Deciding Whether a Reaction Occurs</h3>
+
+  <p><strong>Question:</strong> A piece of silver is placed in copper(II) sulfate solution. Predict the outcome.</p>
+
+  <p><strong>Step 1:</strong> Compare silver and copper in the reactivity series.</p>
+  <p><strong>Step 2:</strong> Copper is more reactive than silver.</p>
+  <p><strong>Step 3:</strong> Silver cannot displace copper from its compound.</p>
+
+  <p><strong>Answer:</strong> No displacement reaction occurs.</p>
+
+  <h3>Worked Example 3: Explaining the Observations</h3>
+
+  <p><strong>Question:</strong> Iron is placed in blue copper(II) sulfate solution. Explain why a reddish-brown solid appears.</p>
+
+  <p><strong>Step 1:</strong> Iron is more reactive than copper.</p>
+  <p><strong>Step 2:</strong> Iron displaces copper from copper(II) sulfate.</p>
+  <p><strong>Step 3:</strong> The displaced copper forms solid copper metal on the iron.</p>
+
+  <p><strong>Answer:</strong> A reddish-brown deposit appears because iron displaces copper from the solution, producing copper metal.</p>
+  `,
+  [
+    {
+      q: "Define a metal displacement reaction.",
+      hint: "Compare the reactivity of the metal added with the metal in the compound.",
+      steps: [
+        "Identify the two metals involved.",
+        "Compare their reactivities.",
+        "State what the more reactive metal does."
+      ],
+      ans: "A metal displacement reaction occurs when a more reactive metal replaces a less reactive metal from its compound.",
+      why: "The more reactive metal forms ions while the less reactive metal is produced as the free metal."
+    },
+    {
+      q: "Write a balanced equation for zinc reacting with copper(II) sulfate solution.",
+      hint: "Zinc sulfate and copper are the products.",
+      steps: [
+        "Write zinc and copper(II) sulfate as the reactants.",
+        "Write zinc sulfate and copper as the products.",
+        "Check the number of atoms on both sides."
+      ],
+      ans: "Zn + CuSO₄ → ZnSO₄ + Cu.",
+      why: "The equation is balanced, and zinc displaces the less reactive copper."
+    },
+    {
+      q: "Why does copper not displace zinc from zinc sulfate solution?",
+      hint: "Compare copper and zinc in the reactivity series.",
+      steps: [
+        "Identify which metal is more reactive.",
+        "Recall the rule for displacement.",
+        "Apply the rule to copper and zinc sulfate."
+      ],
+      ans: "Copper is less reactive than zinc, so it cannot displace zinc from zinc sulfate solution.",
+      why: "Only a more reactive metal can displace a less reactive metal from its compound."
+    }
+  ],
+  [
+    {
+      q: "Magnesium is added to copper(II) sulfate solution. Predict the products and write a balanced equation.",
+      hint: "Magnesium is more reactive than copper.",
+      steps: [
+        "Compare magnesium and copper in the reactivity series.",
+        "Identify the metal that will be displaced.",
+        "Write the salt formed by magnesium and the sulfate ion.",
+        "Write and check the equation."
+      ],
+      ans: "Magnesium sulfate and copper form. Mg + CuSO₄ → MgSO₄ + Cu.",
+      why: "Magnesium displaces copper because magnesium is more reactive."
+    },
+    {
+      q: "A student places copper in silver nitrate solution. Predict whether a reaction occurs and write the balanced equation if it does.",
+      hint: "Copper is more reactive than silver.",
+      steps: [
+        "Compare copper and silver in the reactivity series.",
+        "Determine whether copper can displace silver.",
+        "Write the products and balance the equation."
+      ],
+      ans: "A reaction occurs. Copper nitrate and silver form: Cu + 2AgNO₃ → Cu(NO₃)₂ + 2Ag.",
+      why: "Copper displaces silver because copper is more reactive. Two silver ions are needed for each copper atom that forms a copper(II) ion."
+    },
+    {
+      q: "An iron nail is placed in blue copper(II) sulfate solution. State two expected observations and explain the chemical change.",
+      hint: "Think about the solid formed and the ions remaining in solution.",
+      steps: [
+        "Determine whether iron can displace copper.",
+        "Identify the solid deposited on the nail.",
+        "Identify the iron salt formed in solution.",
+        "Connect these products to the observations."
+      ],
+      ans: "A reddish-brown copper deposit forms on the nail, and the blue solution may turn pale green. Iron displaces copper, forming iron(II) sulfate and copper.",
+      why: "Copper metal is deposited while iron enters the solution as iron(II) ions."
+    },
+    {
+      q: "A student writes: Cu + ZnSO₄ → CuSO₄ + Zn. Explain the error.",
+      hint: "Check which metal is higher in the reactivity series.",
+      steps: [
+        "Compare copper and zinc.",
+        "Identify the more reactive metal.",
+        "Apply the displacement rule to the proposed equation."
+      ],
+      ans: "The equation is incorrect because copper is less reactive than zinc and cannot displace zinc from zinc sulfate. No displacement reaction occurs.",
+      why: "The proposed equation predicts a reaction that is not supported by the relative reactivities of copper and zinc."
+    },
+    {
+      q: "In the reaction Zn + CuSO₄ → ZnSO₄ + Cu, identify which metal loses electrons and which ions gain electrons.",
+      hint: "Oxidation is electron loss; reduction is electron gain.",
+      steps: [
+        "Identify the metal that becomes ions.",
+        "Write the electron-loss process.",
+        "Identify the metal ions that become solid atoms.",
+        "Write the electron-gain process."
+      ],
+      ans: "Zinc loses electrons: Zn → Zn²⁺ + 2e⁻. Copper(II) ions gain electrons: Cu²⁺ + 2e⁻ → Cu.",
+      why: "Zinc is oxidised and copper(II) ions are reduced, so the displacement reaction is also a redox reaction."
+    },
+    {
+      q: "Metal P displaces metal Q from Q's salt solution, but Q cannot displace P from P's salt solution. What can you conclude about their relative reactivities?",
+      hint: "Successful displacement identifies the more reactive metal.",
+      steps: [
+        "Interpret what it means for P to displace Q.",
+        "Use the second observation to check the relationship.",
+        "State the relative order."
+      ],
+      ans: "P is more reactive than Q.",
+      why: "A more reactive metal can displace a less reactive metal from its compound, but not the other way around."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Ores",
+  `
+  <h2>Ores</h2>
+
+  <h3>Meaning of an Ore</h3>
+
+  <p>An <strong>ore</strong> is a naturally occurring rock or mineral containing a metal or its compound in a concentration from which the metal can be extracted economically using available methods.</p>
+
+  <p>Not every rock containing a metal is an ore. The amount of the useful metal, the cost of extraction, the energy required and the available technology all influence whether extraction is economically worthwhile.</p>
+
+  <h3>Minerals, Ores and Gangue</h3>
+
+  <p><strong>Mineral:</strong> a naturally occurring substance with a characteristic chemical composition and structure.</p>
+
+  <p><strong>Ore:</strong> a naturally occurring material that contains enough of a valuable metal or metal compound to make extraction economically practical.</p>
+
+  <p><strong>Gangue:</strong> unwanted rocky or earthy material mixed with the valuable mineral in an ore.</p>
+
+  <p>An ore may contain the desired metal compound together with gangue. The valuable compound must be separated from unwanted material and then processed to obtain the metal.</p>
+
+  <h3>Common Examples of Ores</h3>
+
+  <p><strong>1. Haematite</strong></p>
+  <p>Haematite is an important ore of iron. Its main useful compound is iron(III) oxide, Fe₂O₃.</p>
+
+  <p><strong>2. Bauxite</strong></p>
+  <p>Bauxite is the principal ore used to produce aluminium. It contains aluminium-bearing minerals, commonly including hydrated aluminium oxides.</p>
+
+  <p><strong>3. Chalcopyrite</strong></p>
+  <p>Chalcopyrite is an important copper ore. Its chemical formula is CuFeS₂.</p>
+
+  <p><strong>4. Zinc blende</strong></p>
+  <p>Zinc blende, also called sphalerite, is a major ore of zinc. Its main compound is zinc sulfide, ZnS.</p>
+
+  <p><strong>5. Galena</strong></p>
+  <p>Galena is an important ore of lead. Its main compound is lead(II) sulfide, PbS.</p>
+
+  <h3>Why Are Ores Important?</h3>
+
+  <ul>
+    <li>They provide raw materials for extracting useful metals.</li>
+    <li>The extracted metals are used in buildings, electrical equipment, transport and machinery.</li>
+    <li>The composition of an ore helps determine the treatment needed to obtain the metal.</li>
+    <li>The economic value of an ore depends on factors such as metal content, extraction costs, energy requirements and environmental impacts.</li>
+  </ul>
+
+  <h3>Ore Is Not the Same as Pure Metal</h3>
+
+  <p>An ore is a natural material, not necessarily a pure metal. For example, haematite contains iron(III) oxide, not pure iron metal. Chemical processing is required to extract the iron.</p>
+
+  <p>Similarly, bauxite contains aluminium-bearing compounds rather than ready-to-use aluminium metal.</p>
+
+  <h3>Worked Example 1: Identifying an Ore</h3>
+
+  <p><strong>Question:</strong> A rock contains a useful iron compound in a concentration that makes extraction economically practical. What is this material called?</p>
+
+  <p><strong>Step 1:</strong> Identify the material as a naturally occurring rock.</p>
+  <p><strong>Step 2:</strong> Confirm that it contains a useful metal compound.</p>
+  <p><strong>Step 3:</strong> Consider whether extraction is economically practical.</p>
+
+  <p><strong>Answer:</strong> It is an ore.</p>
+
+  <h3>Worked Example 2: Matching an Ore to a Metal</h3>
+
+  <p><strong>Question:</strong> Which metal is mainly extracted from haematite?</p>
+
+  <p><strong>Step 1:</strong> Recall that haematite is mainly iron(III) oxide, Fe₂O₃.</p>
+  <p><strong>Step 2:</strong> Identify the metal present in the compound.</p>
+
+  <p><strong>Answer:</strong> Iron.</p>
+
+  <h3>Worked Example 3: Distinguishing Ore from Gangue</h3>
+
+  <p><strong>Question:</strong> A sample contains valuable copper-bearing minerals mixed with ordinary rocky material. Identify the useful material and the unwanted material.</p>
+
+  <p><strong>Step 1:</strong> Identify the copper-bearing minerals as the valuable part.</p>
+  <p><strong>Step 2:</strong> Identify the unwanted rocky material as gangue.</p>
+  <p><strong>Step 3:</strong> Explain why they are distinguished.</p>
+
+  <p><strong>Answer:</strong> The copper-bearing minerals are the useful part of the ore; the unwanted rocky material is gangue.</p>
+  `,
+  [
+    {
+      q: "Define an ore.",
+      hint: "Include both the presence of a useful metal compound and the practicality of extraction.",
+      steps: [
+        "State that an ore is a naturally occurring material.",
+        "Identify what useful substance it contains.",
+        "Include the economic practicality of extracting the metal."
+      ],
+      ans: "An ore is a naturally occurring rock or mineral containing a metal or its compound in a concentration that makes extraction economically practical.",
+      why: "The presence of a metal alone does not make a material a useful ore; extraction must be economically worthwhile."
+    },
+    {
+      q: "Name the main metal obtained from haematite.",
+      hint: "Haematite is mainly iron(III) oxide, Fe₂O₃.",
+      steps: [
+        "Identify the formula of the useful compound.",
+        "Identify the metal in the formula."
+      ],
+      ans: "Iron.",
+      why: "Haematite is an important ore of iron."
+    },
+    {
+      q: "What is gangue?",
+      hint: "It is the unwanted rocky material mixed with an ore.",
+      steps: [
+        "Identify the valuable mineral in an ore.",
+        "Identify the unwanted material surrounding or mixed with it.",
+        "Name that unwanted material."
+      ],
+      ans: "Gangue is the unwanted rocky or earthy material mixed with the valuable mineral in an ore.",
+      why: "Gangue does not provide the desired metal and is generally separated during ore processing."
+    }
+  ],
+  [
+    {
+      q: "A rock contains copper compounds, but extracting the copper costs more than the value of the copper recovered using available technology. Would it necessarily be classified as an economically workable ore? Explain.",
+      hint: "An ore must be practical to extract economically.",
+      steps: [
+        "Identify whether the rock contains a useful metal compound.",
+        "Compare the cost of extraction with the economic value recovered.",
+        "Decide whether the material meets the economic requirement."
+      ],
+      ans: "No. Under those conditions, it would not be considered an economically workable ore because extraction costs exceed the value recovered.",
+      why: "Ore classification depends not only on metal content but also on whether extraction is economically practical."
+    },
+    {
+      q: "A student claims that haematite is pure iron. Correct the statement.",
+      hint: "Recall the chemical formula of haematite.",
+      steps: [
+        "Identify the main compound in haematite.",
+        "Distinguish a metal compound from the pure metal.",
+        "Correct the statement."
+      ],
+      ans: "Haematite is not pure iron. It is an iron ore whose main useful compound is iron(III) oxide, Fe₂O₃, from which iron can be extracted.",
+      why: "Iron in haematite is chemically combined with oxygen; processing is needed to obtain metallic iron."
+    },
+    {
+      q: "Match each ore to its principal metal: bauxite, zinc blende and galena.",
+      hint: "Bauxite contains aluminium-bearing minerals; the other two are sulfide ores.",
+      steps: [
+        "Recall the metal associated with bauxite.",
+        "Recall the formula ZnS for zinc blende.",
+        "Recall the formula PbS for galena."
+      ],
+      ans: "Bauxite — aluminium; zinc blende — zinc; galena — lead.",
+      why: "These are important natural sources of aluminium, zinc and lead, respectively."
+    },
+    {
+      q: "A sample of ore contains copper-bearing minerals and sand. Identify the useful component and the gangue.",
+      hint: "One component contains the desired metal; the other is unwanted material.",
+      steps: [
+        "Identify which component contains copper.",
+        "Identify the unwanted sand.",
+        "Apply the term gangue to the unwanted material."
+      ],
+      ans: "The copper-bearing minerals are the useful component, and the sand is gangue.",
+      why: "Gangue is the unwanted rocky or earthy material mixed with the valuable mineral."
+    },
+    {
+      q: "Why is it incorrect to say that every rock containing a trace of metal is an ore?",
+      hint: "Consider the amount of metal and the cost of extraction.",
+      steps: [
+        "Recognise that a trace of metal may be present in many rocks.",
+        "Consider whether enough useful material can be recovered.",
+        "Apply the economic requirement in the definition of an ore."
+      ],
+      ans: "A rock containing a trace of metal is not necessarily an ore because the amount may be too small, or extraction may be too expensive to be economically practical.",
+      why: "An ore must contain a useful metal or metal compound in a concentration that makes extraction worthwhile."
+    },
+    {
+      q: "A mineral contains a valuable metal compound and unwanted rocky material. Explain why the mineral-bearing material must be processed before the pure metal can be obtained.",
+      hint: "Distinguish separating unwanted material from chemically extracting the metal.",
+      steps: [
+        "Identify the valuable metal compound.",
+        "Identify the unwanted gangue.",
+        "Explain that unwanted material may need separating and the compound must then be processed to obtain the metal."
+      ],
+      ans: "The material may contain gangue that must be separated, and the metal is chemically combined in the mineral. Processing is therefore needed to separate the unwanted material and extract the metal from its compound.",
+      why: "Ores are naturally occurring materials, not necessarily pure metals. The specific processing method depends on the ore and the metal's chemical reactivity."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Concentration of Ores",
+  `
+  <h2>Concentration of Ores</h2>
+
+  <h3>Meaning of Concentration of Ores</h3>
+
+  <p><strong>Concentration of an ore</strong> is the process of removing unwanted materials, called gangue, from an ore to increase the proportion of the valuable mineral.</p>
+
+  <p>Gangue may include sand, clay, soil and other unwanted rocky materials. Concentration makes later extraction processes more efficient, although the method used depends on the properties of the ore and the gangue.</p>
+
+  <h3>Why Are Ores Concentrated?</h3>
+
+  <ul>
+    <li>To remove unwanted rocky material.</li>
+    <li>To increase the proportion of the valuable mineral before extraction.</li>
+    <li>To reduce the amount of unwanted material processed in later stages.</li>
+    <li>To improve the efficiency of suitable extraction processes.</li>
+  </ul>
+
+  <p>Concentration does not necessarily produce a pure metal. It separates the valuable mineral from some of the unwanted material before the metal is extracted chemically.</p>
+
+  <h3>1. Gravity Separation</h3>
+
+  <p>Gravity separation uses differences in density between the valuable mineral and the gangue. A suitable mixture is moved through water or another medium so that the denser particles separate from the lighter particles.</p>
+
+  <p><strong>Example:</strong> Some heavy ore minerals can be separated from lighter sandy material using flowing water.</p>
+
+  <p><strong>Limitation:</strong> This method works best when the minerals have sufficiently different densities and the particle sizes and conditions allow effective separation.</p>
+
+  <h3>2. Magnetic Separation</h3>
+
+  <p>Magnetic separation uses differences in magnetic properties. A magnet or magnetic separator attracts magnetic particles while non-magnetic particles are separated.</p>
+
+  <p><strong>Example:</strong> If an ore mineral is magnetic but its gangue is not, magnetic separation may be suitable.</p>
+
+  <p><strong>Important:</strong> Magnetic separation cannot be selected simply because an ore contains a metal. The useful mineral must have suitable magnetic properties compared with the unwanted material.</p>
+
+  <h3>3. Froth Flotation</h3>
+
+  <p>Froth flotation is commonly used to concentrate many sulfide ores. The finely ground ore is mixed with water and suitable flotation reagents. Air is introduced to form bubbles.</p>
+
+  <p>Under suitable conditions, valuable mineral particles attach to the bubbles and rise into the froth, while much of the gangue remains in the water and sinks. The froth is collected for further processing.</p>
+
+  <p><strong>Example:</strong> Froth flotation is widely used to concentrate sulfide ores such as copper sulfide ores.</p>
+
+  <p>The process depends on differences in surface properties, and the reagents must be chosen for the particular ore.</p>
+
+  <h3>Choosing a Suitable Method</h3>
+
+  <ul>
+    <li><strong>Gravity separation:</strong> useful when density differences allow the valuable mineral and gangue to separate.</li>
+    <li><strong>Magnetic separation:</strong> useful when the valuable mineral and gangue differ sufficiently in magnetic behaviour.</li>
+    <li><strong>Froth flotation:</strong> useful for many sulfide ores when surface properties allow the valuable particles to attach to bubbles.</li>
+  </ul>
+
+  <p>No single method is suitable for every ore. The mineral's properties, the gangue and the desired degree of concentration determine the appropriate method.</p>
+
+  <h3>Worked Example 1: Selecting Gravity Separation</h3>
+
+  <p><strong>Question:</strong> A valuable mineral is much denser than the sandy gangue mixed with it. Which concentration method may be suitable, and why?</p>
+
+  <p><strong>Step 1:</strong> Identify the property that differs: density.</p>
+  <p><strong>Step 2:</strong> Select a method that uses density differences.</p>
+  <p><strong>Step 3:</strong> Explain how the particles can separate.</p>
+
+  <p><strong>Answer:</strong> Gravity separation may be suitable because the denser mineral particles can be separated from lighter gangue under appropriate conditions.</p>
+
+  <h3>Worked Example 2: Selecting Magnetic Separation</h3>
+
+  <p><strong>Question:</strong> The valuable mineral in an ore is magnetic, but the gangue is non-magnetic. Which method should be considered?</p>
+
+  <p><strong>Step 1:</strong> Identify the difference in magnetic properties.</p>
+  <p><strong>Step 2:</strong> Choose the method that uses magnetic attraction.</p>
+  <p><strong>Step 3:</strong> State how the separation occurs.</p>
+
+  <p><strong>Answer:</strong> Magnetic separation. The magnetic mineral can be attracted by the separator while the non-magnetic gangue is separated.</p>
+
+  <h3>Worked Example 3: Selecting Froth Flotation</h3>
+
+  <p><strong>Question:</strong> A finely ground sulfide ore must be separated from gangue using differences in surface properties. Which method is commonly used?</p>
+
+  <p><strong>Step 1:</strong> Identify the ore as a sulfide ore.</p>
+  <p><strong>Step 2:</strong> Identify that separation depends on surface behaviour and bubbles.</p>
+  <p><strong>Step 3:</strong> Select the method that uses froth.</p>
+
+  <p><strong>Answer:</strong> Froth flotation. Suitable mineral particles attach to air bubbles and rise in the froth for collection.</p>
+  `,
+  [
+    {
+      q: "Define concentration of an ore.",
+      hint: "Consider what is removed from the ore before extraction.",
+      steps: [
+        "Identify the unwanted material in an ore.",
+        "State what the concentration process removes.",
+        "Explain how the valuable mineral proportion changes."
+      ],
+      ans: "Concentration of an ore is the process of removing gangue to increase the proportion of the valuable mineral.",
+      why: "Removing unwanted material enriches the ore before further extraction."
+    },
+    {
+      q: "Name the concentration method that uses a magnet to separate suitable magnetic minerals from non-magnetic gangue.",
+      hint: "The method depends on magnetic properties.",
+      steps: [
+        "Identify the property used for separation.",
+        "Name the method that uses that property."
+      ],
+      ans: "Magnetic separation.",
+      why: "A magnetic separator attracts magnetic particles while non-magnetic material is separated."
+    },
+    {
+      q: "Why is froth flotation used to concentrate many sulfide ores?",
+      hint: "Think about mineral particles attaching to air bubbles.",
+      steps: [
+        "Identify the role of the bubbles.",
+        "Explain where the valuable particles collect.",
+        "State what is achieved by collecting the froth."
+      ],
+      ans: "Suitable sulfide mineral particles attach to air bubbles and rise in the froth, allowing them to be separated from much of the gangue.",
+      why: "Froth flotation uses differences in surface properties to concentrate suitable minerals."
+    }
+  ],
+  [
+    {
+      q: "A sample contains a valuable mineral and large amounts of sand. Explain why the ore may be concentrated before metal extraction.",
+      hint: "Consider the effects of processing unnecessary material.",
+      steps: [
+        "Identify the sand as unwanted material.",
+        "State what concentration removes.",
+        "Explain the benefit for later processing."
+      ],
+      ans: "The ore may be concentrated to remove sand and other gangue, increasing the proportion of valuable mineral and reducing the unwanted material processed later.",
+      why: "Concentration enriches an ore and can improve the efficiency of subsequent extraction stages."
+    },
+    {
+      q: "An ore mineral is magnetic while the gangue is non-magnetic. Describe a suitable method and the principle involved.",
+      hint: "Use the difference in magnetic behaviour.",
+      steps: [
+        "Select the appropriate concentration method.",
+        "Explain what the separator attracts.",
+        "Explain how the gangue is separated."
+      ],
+      ans: "Magnetic separation is suitable. The separator attracts the magnetic mineral while the non-magnetic gangue is separated.",
+      why: "The method relies on a difference in magnetic properties between the valuable mineral and gangue."
+    },
+    {
+      q: "A learner proposes gravity separation for an ore whose valuable mineral and gangue have very similar densities. Explain why the method may be ineffective.",
+      hint: "The method relies on a particular physical difference.",
+      steps: [
+        "State the property used in gravity separation.",
+        "Compare the densities of the two materials.",
+        "Explain how their similar densities affect separation."
+      ],
+      ans: "Gravity separation may be ineffective because the valuable mineral and gangue have similar densities, so they may not separate sufficiently under the chosen conditions.",
+      why: "Gravity separation works best when density differences allow the particles to behave differently."
+    },
+    {
+      q: "Describe how froth flotation can separate suitable sulfide mineral particles from gangue.",
+      hint: "Include grinding, water, air bubbles and froth collection.",
+      steps: [
+        "Explain that the ore is finely ground and mixed with water and suitable reagents.",
+        "State what happens when air is introduced.",
+        "Explain where the valuable particles collect.",
+        "State how the concentrate is recovered."
+      ],
+      ans: "The finely ground ore is mixed with water and suitable reagents. Air forms bubbles, and suitable sulfide mineral particles attach to the bubbles and rise into the froth. The froth is collected as a concentrate.",
+      why: "Froth flotation separates particles through differences in surface properties."
+    },
+    {
+      q: "Does concentrating an ore mean that pure metal has already been obtained? Explain.",
+      hint: "Distinguish separating a mineral from extracting a metal from its compound.",
+      steps: [
+        "State the purpose of concentration.",
+        "Identify what the valuable mineral may still contain.",
+        "Explain why further processing is needed."
+      ],
+      ans: "No. Concentration removes some gangue and increases the proportion of the valuable mineral, but the metal may still be chemically combined in a compound and must be extracted.",
+      why: "Concentration is a physical separation stage, while obtaining a metal from its compound generally requires further processing."
+    },
+    {
+      q: "A mineral-processing plant has three ores: Ore A has a useful density difference, Ore B has a magnetic mineral and non-magnetic gangue, and Ore C is a suitable sulfide ore for which surface properties allow bubble attachment. Match each ore to a likely concentration method.",
+      hint: "Match the property described to the method that uses it.",
+      steps: [
+        "Match density differences to a separation method.",
+        "Match magnetic behaviour to a separation method.",
+        "Match bubble attachment and surface properties to a separation method."
+      ],
+      ans: "Ore A — gravity separation; Ore B — magnetic separation; Ore C — froth flotation.",
+      why: "Each method exploits a different physical property, and suitability depends on the actual ore and gangue."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Reduction",
+  `
+  <h2>Reduction</h2>
+
+  <h3>Meaning of Reduction</h3>
+
+  <p>In metal extraction, <strong>reduction</strong> is a chemical process in which oxygen is removed from a metal oxide to form the metal, or a process in which a substance gains electrons.</p>
+
+  <p>These definitions describe related ideas. In reactions involving electron transfer, reduction means gain of electrons. In many metal-extraction reactions, this occurs alongside the removal of oxygen from a metal compound.</p>
+
+  <h3>1. Reduction Using Carbon</h3>
+
+  <p>Some metal oxides can be reduced by heating them with carbon. Carbon removes oxygen from the metal oxide, allowing the metal to form.</p>
+
+  <p><strong>Example: Zinc oxide</strong></p>
+  <p>ZnO(s) + C(s) → Zn(g) + CO(g)</p>
+
+  <p>Under the conditions represented, carbon combines with oxygen from zinc oxide to form carbon monoxide, while zinc is produced as vapour at the high reaction temperature.</p>
+
+  <p>On cooling, zinc vapour can condense to form liquid or solid zinc depending on the temperature.</p>
+
+  <h3>2. Reduction Using Carbon Monoxide</h3>
+
+  <p>Carbon monoxide can remove oxygen from some metal oxides. It is important in the extraction of iron in a blast furnace.</p>
+
+  <p><strong>Example: Iron(III) oxide</strong></p>
+  <p>Fe₂O₃(s) + 3CO(g) → 2Fe(l) + 3CO₂(g)</p>
+
+  <p>The equation represents the overall reduction of iron(III) oxide to iron. In a blast furnace, iron forms at high temperatures and melts in the furnace.</p>
+
+  <p>Iron(III) oxide loses oxygen, while carbon monoxide gains oxygen and becomes carbon dioxide.</p>
+
+  <h3>3. Reduction and Oxidation</h3>
+
+  <p>Reduction and oxidation occur together in a redox reaction.</p>
+
+  <p><strong>Reduction:</strong> gain of electrons or, in this extraction example, removal of oxygen from a metal oxide.</p>
+
+  <p><strong>Oxidation:</strong> loss of electrons or gain of oxygen.</p>
+
+  <p>In the reaction Fe₂O₃ + 3CO → 2Fe + 3CO₂:</p>
+
+  <ul>
+    <li>Iron(III) oxide is reduced to iron because oxygen is removed.</li>
+    <li>Carbon monoxide is oxidised to carbon dioxide because it gains oxygen.</li>
+  </ul>
+
+  <h3>4. Why Carbon Cannot Reduce Every Metal Oxide</h3>
+
+  <p>Carbon is suitable for extracting some metals that are less reactive than carbon. However, it cannot normally extract very reactive metals such as aluminium from their oxides.</p>
+
+  <p>Aluminium is extracted from purified aluminium oxide by electrolysis. Electrical energy is used to bring about the decomposition of the compound.</p>
+
+  <p>The extraction method therefore depends on the metal's reactivity and the stability of its compound.</p>
+
+  <h3>5. Reduction Is Not the Same as Concentration</h3>
+
+  <p><strong>Concentration</strong> removes unwanted gangue from an ore.</p>
+
+  <p><strong>Reduction</strong> changes a chemical compound, such as a metal oxide, to produce the metal by removing oxygen or gaining electrons.</p>
+
+  <p>These processes serve different purposes and should not be confused.</p>
+
+  <h3>Worked Example 1: Identifying Reduction</h3>
+
+  <p><strong>Question:</strong> Iron(III) oxide reacts with carbon monoxide to form iron and carbon dioxide. Identify the substance being reduced and explain why.</p>
+
+  <p><strong>Step 1:</strong> Identify the reactant containing iron: Fe₂O₃.</p>
+  <p><strong>Step 2:</strong> Compare its oxygen content with that of the iron product.</p>
+  <p><strong>Step 3:</strong> Iron(III) oxide loses oxygen as iron forms.</p>
+
+  <p><strong>Answer:</strong> Iron(III) oxide is reduced because oxygen is removed from it to produce iron.</p>
+
+  <h3>Worked Example 2: Balancing a Reduction Equation</h3>
+
+  <p><strong>Question:</strong> Balance the reduction of iron(III) oxide by carbon monoxide:</p>
+  <p>Fe₂O₃ + CO → Fe + CO₂</p>
+
+  <p><strong>Step 1:</strong> Balance iron by placing 2 before Fe.</p>
+  <p><strong>Step 2:</strong> Balance carbon and oxygen by placing 3 before CO and 3 before CO₂.</p>
+  <p><strong>Step 3:</strong> Check both sides: Fe = 2, C = 3, and O = 6.</p>
+
+  <p><strong>Answer:</strong> Fe₂O₃ + 3CO → 2Fe + 3CO₂.</p>
+
+  <h3>Worked Example 3: Choosing an Extraction Method</h3>
+
+  <p><strong>Question:</strong> Why is aluminium extracted by electrolysis rather than by ordinary reduction with carbon?</p>
+
+  <p><strong>Step 1:</strong> Identify aluminium as a highly reactive metal.</p>
+  <p><strong>Step 2:</strong> Recognise that aluminium oxide is very stable.</p>
+  <p><strong>Step 3:</strong> Explain why carbon reduction is unsuitable and identify the method used.</p>
+
+  <p><strong>Answer:</strong> Aluminium is more reactive than carbon, so carbon cannot normally reduce aluminium oxide. Aluminium is extracted from purified aluminium oxide by electrolysis.</p>
+  `,
+  [
+    {
+      q: "Define reduction in the context of extracting a metal from its oxide.",
+      hint: "Consider what happens to the oxygen in the metal oxide.",
+      steps: [
+        "Identify the starting material as a metal oxide.",
+        "State what happens to its oxygen.",
+        "Connect the change to the metal produced."
+      ],
+      ans: "Reduction is the removal of oxygen from a metal oxide to form the metal.",
+      why: "Removing oxygen from a metal oxide is a common form of reduction in metal extraction."
+    },
+    {
+      q: "Write a balanced equation for the reduction of iron(III) oxide by carbon monoxide.",
+      hint: "The products are iron and carbon dioxide.",
+      steps: [
+        "Write Fe₂O₃ + CO → Fe + CO₂.",
+        "Balance iron by placing 2 before Fe.",
+        "Balance carbon and oxygen by placing 3 before CO and CO₂."
+      ],
+      ans: "Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
+      why: "The equation contains two iron atoms, three carbon atoms and six oxygen atoms on each side."
+    },
+    {
+      q: "Why is aluminium extracted by electrolysis rather than ordinary reduction with carbon?",
+      hint: "Compare aluminium's reactivity with carbon.",
+      steps: [
+        "Identify aluminium as highly reactive.",
+        "Recall that its oxide is very stable.",
+        "State the method used to extract aluminium."
+      ],
+      ans: "Aluminium is more reactive than carbon, so carbon cannot normally reduce aluminium oxide. Aluminium is extracted by electrolysis of purified aluminium oxide.",
+      why: "Very reactive metals generally require electrolysis rather than ordinary carbon reduction."
+    }
+  ],
+  [
+    {
+      q: "In the reaction ZnO + C → Zn + CO, explain why zinc oxide is reduced.",
+      hint: "Compare the oxygen in zinc oxide with the zinc product.",
+      steps: [
+        "Identify zinc oxide as the starting compound.",
+        "Identify where its oxygen goes.",
+        "State how this change defines reduction."
+      ],
+      ans: "Zinc oxide is reduced because it loses oxygen, which combines with carbon to form carbon monoxide.",
+      why: "Removal of oxygen from a metal oxide is reduction."
+    },
+    {
+      q: "Balance this equation: Fe₂O₃ + CO → Fe + CO₂.",
+      hint: "Start by balancing iron, then carbon and oxygen.",
+      steps: [
+        "Place 2 before Fe to balance iron.",
+        "Place 3 before CO₂ to balance carbon dioxide.",
+        "Place 3 before CO to balance carbon and oxygen."
+      ],
+      ans: "Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
+      why: "The balanced equation conserves all iron, carbon and oxygen atoms."
+    },
+    {
+      q: "In Fe₂O₃ + 3CO → 2Fe + 3CO₂, identify the substance reduced and the substance oxidised.",
+      hint: "Reduction removes oxygen; oxidation adds oxygen.",
+      steps: [
+        "Identify which reactant loses oxygen.",
+        "Identify which reactant gains oxygen.",
+        "Name the substance undergoing each change."
+      ],
+      ans: "Iron(III) oxide is reduced to iron, while carbon monoxide is oxidised to carbon dioxide.",
+      why: "Iron(III) oxide loses oxygen, and carbon monoxide gains oxygen. Both changes occur in the same redox reaction."
+    },
+    {
+      q: "A learner states that concentrating an ore and reducing a metal oxide are the same process. Explain the difference.",
+      hint: "One process is physical separation; the other is a chemical change.",
+      steps: [
+        "State what concentration removes.",
+        "State what reduction changes.",
+        "Explain why their purposes differ."
+      ],
+      ans: "Concentration removes gangue to increase the proportion of valuable mineral. Reduction chemically removes oxygen from a metal oxide or involves gain of electrons to produce the metal.",
+      why: "Concentration prepares the ore; reduction converts a suitable metal compound into the metal."
+    },
+    {
+      q: "Why can carbon reduce some metal oxides but not normally aluminium oxide?",
+      hint: "Compare the metals' reactivities with carbon.",
+      steps: [
+        "Recognise that carbon can remove oxygen from some metal oxides.",
+        "Compare aluminium's reactivity with carbon.",
+        "Identify the usual extraction method for aluminium."
+      ],
+      ans: "Carbon can reduce some oxides of metals less reactive than carbon, but aluminium is more reactive than carbon and aluminium oxide is very stable. Aluminium is therefore extracted by electrolysis.",
+      why: "The suitable extraction method depends on the reactivity of the metal and the stability of its compound."
+    },
+    {
+      q: "In a reduction process, a metal oxide loses oxygen while another substance gains that oxygen. Explain why this is a redox reaction.",
+      hint: "Use the definitions of reduction and oxidation together.",
+      steps: [
+        "Identify the substance losing oxygen.",
+        "Identify the substance gaining oxygen.",
+        "Apply the definitions of reduction and oxidation."
+      ],
+      ans: "It is a redox reaction because the metal oxide is reduced by losing oxygen, while the other substance is oxidised by gaining oxygen.",
+      why: "Reduction and oxidation occur together as oxygen is transferred between substances."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Extraction of Iron",
+  `
+  <h2>Extraction of Iron</h2>
+
+  <h3>1. The Main Raw Materials</h3>
+
+  Iron is extracted from iron ore in a blast furnace. A common iron ore is haematite, which contains iron(III) oxide, Fe₂O₃.
+
+  The main materials added to the blast furnace are:
+
+  <ul>
+    <li><b>Haematite (Fe₂O₃):</b> supplies the iron compound.</li>
+    <li><b>Coke (mainly carbon):</b> provides heat and helps produce carbon monoxide, which reduces the iron oxide.</li>
+    <li><b>Limestone (CaCO₃):</b> removes acidic impurities such as silicon dioxide.</li>
+    <li><b>Hot air:</b> supplies oxygen for combustion.</li>
+  </ul>
+
+  <h3>2. How the Blast Furnace Works</h3>
+
+  <p><b>Step 1: Burning coke</b></p>
+
+  Coke burns in the hot air and releases heat.
+
+  C + O₂ → CO₂
+
+  <p><b>Step 2: Formation of carbon monoxide</b></p>
+
+  At high temperatures, carbon dioxide reacts with more hot carbon to form carbon monoxide.
+
+  CO₂ + C → 2CO
+
+  Carbon monoxide is the main reducing agent in the extraction of iron.
+
+  <p><b>Step 3: Reduction of iron(III) oxide</b></p>
+
+  Carbon monoxide removes oxygen from iron(III) oxide, producing iron and carbon dioxide.
+
+  Fe₂O₃ + 3CO → 2Fe + 3CO₂
+
+  The iron formed melts at the high temperature and collects near the bottom of the furnace.
+
+  <p><b>Step 4: Removal of impurities</b></p>
+
+  Limestone decomposes when heated.
+
+  CaCO₃ → CaO + CO₂
+
+  The calcium oxide reacts with silicon dioxide impurity to form calcium silicate slag.
+
+  CaO + SiO₂ → CaSiO₃
+
+  The slag is separated from the molten iron because the two materials form separate layers.
+
+  <h3>3. Important Terms</h3>
+
+  <ul>
+    <li><b>Reduction:</b> removal of oxygen from a substance or gain of electrons.</li>
+    <li><b>Reducing agent:</b> a substance that causes another substance to be reduced. Carbon monoxide reduces iron(III) oxide.</li>
+    <li><b>Flux:</b> a substance added to help remove impurities. Limestone produces calcium oxide, which acts as the flux.</li>
+    <li><b>Slag:</b> the waste material formed when the flux reacts with impurities.</li>
+    <li><b>Haematite:</b> an iron ore containing Fe₂O₃.</li>
+  </ul>
+
+  <h3>4. Worked Examples</h3>
+
+  <p><b>Example 1: Identify the reducing agent</b></p>
+
+  In the reaction Fe₂O₃ + 3CO → 2Fe + 3CO₂, identify the reducing agent.
+
+  <b>Step 1:</b> Identify the substance that removes oxygen from iron(III) oxide.
+
+  <b>Step 2:</b> Carbon monoxide takes oxygen from Fe₂O₃ and becomes CO₂.
+
+  <b>Answer:</b> Carbon monoxide, CO.
+
+  <b>Example 2: Calculate the amount of iron produced</b>
+
+  The equation is:
+
+  Fe₂O₃ + 3CO → 2Fe + 3CO₂
+
+  If 1 mole of Fe₂O₃ reacts completely, how many moles of iron form?
+
+  <b>Step 1:</b> Read the balanced equation.
+
+  <b>Step 2:</b> The coefficient of Fe₂O₃ is 1 and the coefficient of Fe is 2.
+
+  <b>Answer:</b> 2 moles of iron.
+
+  <b>Example 3: Determine the slag formed</b>
+
+  Calcium oxide reacts with silicon dioxide:
+
+  CaO + SiO₂ → CaSiO₃
+
+  Identify the slag and explain its formation.
+
+  <b>Step 1:</b> Limestone decomposes to form calcium oxide.
+
+  <b>Step 2:</b> Calcium oxide reacts with silicon dioxide impurity.
+
+  <b>Answer:</b> Calcium silicate, CaSiO₃, is the slag.
+
+  <h3>5. Core Questions</h3>
+  `,
+  [
+    {
+      q: "Name the iron ore commonly used in the blast furnace and give its formula.",
+      hint: "It contains iron(III) oxide.",
+      steps: [
+        "Recall the common ore used for extracting iron.",
+        "State its chemical formula."
+      ],
+      ans: "Haematite, Fe₂O₃.",
+      why: "Haematite contains iron(III) oxide, which is reduced to iron in the blast furnace."
+    },
+    {
+      q: "Write the balanced equation for the reduction of iron(III) oxide by carbon monoxide.",
+      hint: "The products are iron and carbon dioxide.",
+      steps: [
+        "Write Fe₂O₃ + CO → Fe + CO₂.",
+        "Balance iron: place 2 before Fe.",
+        "Balance oxygen and carbon by placing 3 before CO and 3 before CO₂."
+      ],
+      ans: "Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
+      why: "The balanced equation has 2 iron atoms, 3 carbon atoms, and 6 oxygen atoms on each side."
+    },
+    {
+      q: "Explain how limestone helps remove silicon dioxide impurity from iron ore.",
+      hint: "Limestone forms calcium oxide when heated.",
+      steps: [
+        "State what limestone produces on heating.",
+        "Explain what calcium oxide reacts with.",
+        "Name the product."
+      ],
+      ans: "CaCO₃ decomposes to form CaO. The CaO reacts with SiO₂ to form calcium silicate slag: CaO + SiO₂ → CaSiO₃.",
+      why: "The slag separates from the molten iron and helps remove the unwanted impurity."
+    }
+  ],
+  [
+    {
+      q: "A learner says that carbon monoxide oxidises iron(III) oxide to iron. Identify the error and correct the statement.",
+      hint: "Check whether oxygen is being removed or added.",
+      steps: [
+        "Compare Fe₂O₃ with the iron product.",
+        "Notice that oxygen is removed from Fe₂O₃.",
+        "Name the process and identify the role of CO."
+      ],
+      ans: "Iron(III) oxide is reduced, not oxidised. Carbon monoxide is the reducing agent.",
+      why: "Reduction involves oxygen removal. CO gains oxygen and is converted into CO₂."
+    },
+    {
+      q: "Why is a continuous supply of hot air introduced into a blast furnace?",
+      hint: "Consider what the oxygen does to coke.",
+      steps: [
+        "Identify the gas supplied by air that supports combustion.",
+        "Explain what happens when coke burns.",
+        "State why the heat is useful."
+      ],
+      ans: "Hot air supplies oxygen so coke can burn and release heat needed for the extraction process.",
+      why: "The furnace needs high temperatures for the reactions and for the iron to melt."
+    },
+    {
+      q: "How many moles of iron can theoretically form from 3 moles of Fe₂O₃ if carbon monoxide is in excess?",
+      hint: "Use the ratio from the balanced equation.",
+      steps: [
+        "Write Fe₂O₃ + 3CO → 2Fe + 3CO₂.",
+        "Read the mole ratio: 1 mole Fe₂O₃ produces 2 moles Fe.",
+        "Multiply 3 moles Fe₂O₃ by 2."
+      ],
+      ans: "6 moles of iron.",
+      why: "The ratio of Fe₂O₃ to Fe is 1:2, so 3 × 2 = 6 moles."
+    },
+    {
+      q: "Write the equation for the decomposition of limestone and identify the solid product.",
+      hint: "Calcium carbonate forms calcium oxide and carbon dioxide.",
+      steps: [
+        "Write the formula of calcium carbonate.",
+        "Write the two products formed on heating.",
+        "Check that calcium, carbon, and oxygen atoms balance."
+      ],
+      ans: "CaCO₃ → CaO + CO₂. The solid product is calcium oxide, CaO.",
+      why: "Calcium oxide reacts with acidic silicon dioxide impurity to form slag."
+    },
+    {
+      q: "A furnace produces calcium oxide, but the ore contains silicon dioxide. Write the reaction that removes this impurity and name the product.",
+      hint: "Calcium oxide combines with silicon dioxide.",
+      steps: [
+        "Write the reactants: CaO and SiO₂.",
+        "Combine them to form calcium silicate.",
+        "Check the number of atoms on each side."
+      ],
+      ans: "CaO + SiO₂ → CaSiO₃. The product is calcium silicate slag.",
+      why: "The reaction converts the unwanted silica into slag that can be separated from the molten iron."
+    },
+    {
+      q: "Explain the difference between the reducing agent and the flux in iron extraction.",
+      hint: "One removes oxygen from iron oxide; the other helps remove impurities.",
+      steps: [
+        "Identify the reducing agent in the furnace.",
+        "Identify the material used as the flux source.",
+        "State the different jobs they perform."
+      ],
+      ans: "Carbon monoxide is the reducing agent because it removes oxygen from iron(III) oxide. Limestone supplies calcium oxide, which reacts with silica to form slag.",
+      why: "Reduction produces iron from iron oxide, while slag formation removes unwanted impurities."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Uses of Metals",
+  `
+  <h2>Uses of Metals</h2>
+
+  <h3>1. Why Are Metals Used for Different Purposes?</h3>
+
+  Metals are selected for particular uses because of their physical and chemical properties. A suitable metal should have the properties needed for the job.
+
+  Important properties include:
+
+  <ul>
+    <li><b>Electrical conductivity:</b> allows electric current to pass through a material.</li>
+    <li><b>Thermal conductivity:</b> allows heat to pass through a material.</li>
+    <li><b>Strength:</b> helps a material withstand forces.</li>
+    <li><b>Malleability:</b> allows a metal to be shaped into sheets.</li>
+    <li><b>Ductility:</b> allows a metal to be drawn into wires.</li>
+    <li><b>Low density:</b> makes a material relatively light for its volume.</li>
+    <li><b>Resistance to corrosion:</b> slows damage caused by chemical reactions with the environment.</li>
+  </ul>
+
+  <h3>2. Common Metals and Their Uses</h3>
+
+  <p><b>Aluminium</b></p>
+
+  Aluminium has low density, conducts heat and electricity, and forms a protective oxide layer. It is used in aircraft bodies, cooking utensils, drink cans, and overhead electricity cables when suitable alloys or designs are used.
+
+  <p><b>Copper</b></p>
+
+  Copper is an excellent electrical conductor and is ductile. It is widely used in electrical wiring, motors, transformers, and some plumbing systems.
+
+  <p><b>Iron and steel</b></p>
+
+  Iron is used to make steel. Steel is stronger than pure iron for many structural uses and is widely used in buildings, bridges, tools, vehicles, and machinery. Ordinary iron and many steels can rust when exposed to both oxygen and water.
+
+  <p><b>Zinc</b></p>
+
+  Zinc is used to coat iron or steel to help protect it from corrosion. This process is called galvanising. Zinc is also used in certain alloys and batteries.
+
+  <p><b>Gold</b></p>
+
+  Gold resists corrosion and is malleable. It is used in jewellery and, in suitable forms, electrical contacts and electronic components.
+
+  <p><b>Silver</b></p>
+
+  Silver has very high electrical conductivity and is used in specialised electrical contacts, some electronic components, jewellery, and reflective coatings.
+
+  <p><b>Lead</b></p>
+
+  Lead is dense and can shield against some forms of ionising radiation. It is used in specialised radiation shielding and lead-acid batteries, but its toxicity requires careful handling and controlled use.
+
+  <h3>3. Linking a Property to a Use</h3>
+
+  A good explanation should state both the property and why that property is useful.
+
+  <p><b>Weak answer:</b> Copper is used for wires because it is a metal.</p>
+
+  <p><b>Better answer:</b> Copper is used for electrical wires because it conducts electricity well and is ductile, so it can be drawn into long, thin wires.</p>
+
+  <p><b>Weak answer:</b> Aluminium is used in aircraft because it is strong.</p>
+
+  <p><b>Better answer:</b> Aluminium alloys are used in aircraft structures because they provide useful strength while having relatively low density, helping reduce the aircraft's mass.</p>
+
+  <h3>4. Worked Examples</h3>
+
+  <p><b>Example 1: Choosing a metal for electrical wiring</b></p>
+
+  Choose a suitable metal for ordinary electrical wiring and give two reasons.
+
+  <b>Step 1:</b> The metal must conduct electricity efficiently.
+
+  <b>Step 2:</b> It should be drawable into thin wires.
+
+  <b>Answer:</b> Copper, because it has high electrical conductivity and is ductile.
+
+  <b>Example 2: Choosing a metal for an aircraft structure</b>
+
+  Explain why aluminium alloys are commonly used in aircraft structures instead of making the entire structure from steel.
+
+  <b>Step 1:</b> Aircraft need materials with useful strength.
+
+  <b>Step 2:</b> Lower density reduces the mass of the aircraft.
+
+  <b>Answer:</b> Aluminium alloys offer a useful combination of strength and low density, reducing structural mass.
+
+  <b>Example 3: Protecting a steel roof</b>
+
+  A steel roofing sheet is coated with zinc. Explain how the coating helps protect the steel.
+
+  <b>Step 1:</b> Identify the coating process: galvanising.
+
+  <b>Step 2:</b> Explain that the zinc layer reduces the steel's exposure to air and water.
+
+  <b>Step 3:</b> Zinc can also provide sacrificial protection if the coating is scratched, because zinc is more reactive than iron.
+
+  <b>Answer:</b> Zinc helps protect the steel by acting as a barrier and, in suitable conditions, by corroding preferentially to the iron.
+
+  <h3>5. Core Questions</h3>
+  `,
+  [
+    {
+      q: "Give two properties of copper that make it suitable for electrical wiring.",
+      hint: "Consider electricity and the ability to form wires.",
+      steps: [
+        "Identify the property that allows current to pass easily.",
+        "Identify the property that allows copper to be drawn into thin wires."
+      ],
+      ans: "High electrical conductivity and ductility.",
+      why: "Copper conducts current efficiently and can be drawn into long, thin wires."
+    },
+    {
+      q: "Explain why aluminium alloys are suitable for aircraft structures.",
+      hint: "Think about mass and strength.",
+      steps: [
+        "State the density-related advantage of aluminium alloys.",
+        "Explain why useful strength is also important.",
+        "Connect both properties to aircraft design."
+      ],
+      ans: "They have relatively low density and useful strength, helping produce strong structures with less mass.",
+      why: "Reducing aircraft mass can reduce the energy required for flight."
+    },
+    {
+      q: "What is galvanising, and how does it help protect iron or steel?",
+      hint: "A layer of zinc is applied to the surface.",
+      steps: [
+        "Name the coating process.",
+        "Identify the metal coating.",
+        "Explain barrier protection and, where applicable, sacrificial protection."
+      ],
+      ans: "Galvanising is coating iron or steel with zinc. The zinc acts as a barrier and can corrode preferentially if the coating is damaged.",
+      why: "The coating reduces the exposure of iron to conditions that cause corrosion."
+    }
+  ],
+  [
+    {
+      q: "A student suggests using copper for a saucepan because copper is ductile. Explain why this is not the strongest reason for that use.",
+      hint: "Consider the function of a saucepan.",
+      steps: [
+        "Identify the main job of a saucepan.",
+        "Select the property most directly related to that job.",
+        "Explain the relevance of ductility."
+      ],
+      ans: "Thermal conductivity is a more direct reason because the saucepan must transfer heat to the food. Ductility helps copper be shaped but does not explain heat transfer.",
+      why: "A property's relevance depends on the function being explained."
+    },
+    {
+      q: "A manufacturer must choose between copper and aluminium for a long overhead electricity cable. State one advantage of aluminium and one design consideration.",
+      hint: "Compare density and electrical resistance.",
+      steps: [
+        "Recall that aluminium has lower density than copper.",
+        "Explain why lower mass matters for a long cable.",
+        "Remember that conductivity and cable dimensions also affect performance."
+      ],
+      ans: "Aluminium is lighter, reducing the load on supports. The cable must be designed with a suitable cross-sectional area because aluminium and copper do not have identical electrical conductivity.",
+      why: "Material choice depends on both mass and electrical performance, not on a single property."
+    },
+    {
+      q: "Why is steel commonly used in bridges rather than pure iron?",
+      hint: "Compare the mechanical properties of steel and pure iron.",
+      steps: [
+        "Identify the need for a bridge material to support heavy loads.",
+        "Recall that steel is an alloy of iron with carbon and sometimes other elements.",
+        "Explain the useful mechanical properties of appropriately selected steel."
+      ],
+      ans: "Steel generally provides greater strength and useful mechanical properties than pure iron, making it more suitable for load-bearing structures.",
+      why: "The exact properties depend on the composition and treatment of the steel."
+    },
+    {
+      q: "A steel gate is left outdoors and begins to rust. Explain why painting it can slow rusting and state one limitation of this method.",
+      hint: "Think about what must reach the iron surface.",
+      steps: [
+        "Identify the conditions required for rusting.",
+        "Explain how paint separates the iron from its surroundings.",
+        "Consider what happens when the paint cracks or peels."
+      ],
+      ans: "Paint forms a barrier that limits contact with oxygen and water. If the paint is scratched or damaged, exposed iron can rust.",
+      why: "Barrier protection works only while the coating adequately covers the surface."
+    },
+    {
+      q: "Gold and iron are both metals, but gold is preferred for jewellery that must resist corrosion. Explain why.",
+      hint: "Compare their chemical reactivity.",
+      steps: [
+        "Recall the relative positions of gold and iron in the reactivity series.",
+        "Explain which metal reacts less readily under ordinary conditions.",
+        "Connect this difference to appearance and durability."
+      ],
+      ans: "Gold is much less reactive than iron and resists corrosion under ordinary conditions, so it retains its appearance well.",
+      why: "Iron can react with oxygen and water to form rust, while gold is far less likely to corrode."
+    },
+    {
+      q: "Lead can shield against some ionising radiation. Explain why its use must still be controlled.",
+      hint: "Consider a hazard that is unrelated to its shielding ability.",
+      steps: [
+        "State the useful property of lead for shielding.",
+        "Identify the health hazard associated with lead.",
+        "Explain the need for safe handling and disposal."
+      ],
+      ans: "Lead is dense and useful for certain radiation-shielding applications, but it is toxic. Exposure and contamination must be controlled through suitable handling, containment, and disposal.",
+      why: "A useful physical property does not remove a material's chemical or health hazards."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Rusting",
+  `
+  <h2>Rusting</h2>
+
+  <h3>1. What Is Rusting?</h3>
+
+  Rusting is the slow chemical corrosion of iron in the presence of oxygen and water. It produces a reddish-brown substance called rust.
+
+  Rust is <b>hydrated iron(III) oxide</b>, commonly represented as Fe₂O₃·xH₂O, where x represents a variable amount of water associated with the compound.
+
+  Rusting is a chemical change because iron reacts with substances in its environment to form new substances with different properties.
+
+  <h3>2. The Chemistry of Rusting</h3>
+
+  The overall word equation is:
+
+  Iron + oxygen + water → hydrated iron(III) oxide (rust)
+
+  During rusting, iron loses electrons and is oxidised. Oxygen participates in the reactions, and water provides the medium in which the electrochemical processes occur.
+
+  A simplified oxidation half-equation for iron is:
+
+  Fe → Fe²⁺ + 2e⁻
+
+  This equation shows that an iron atom loses two electrons to form an iron(II) ion.
+
+  Rust formation involves several subsequent reactions. Therefore, the overall rusting process should not be represented by one universal, fixed balanced equation for hydrated rust.
+
+  <h3>3. Recognising Rusting</h3>
+
+  Common observations include:
+
+  <ul>
+    <li>A reddish-brown coating develops on iron.</li>
+    <li>The surface may become rough, flaky or powdery.</li>
+    <li>The iron gradually deteriorates.</li>
+    <li>With prolonged rusting, the metal can lose strength and become unsafe for its intended use.</li>
+  </ul>
+
+  <h3>4. Rusting Compared with Corrosion</h3>
+
+  <b>Corrosion</b> is the deterioration of a material through chemical or electrochemical reactions with its environment.
+
+  <b>Rusting</b> is the specific corrosion of iron that produces rust. Steel also rusts because it contains iron.
+
+  Other metals can corrode without forming rust. For example, aluminium forms a thin aluminium oxide layer that can protect the metal beneath it under suitable conditions.
+
+  <h3>5. Why Rusting Matters</h3>
+
+  Rust can weaken bridges, gates, vehicles, roofing sheets, pipes and machinery. It can also increase maintenance costs and cause equipment to fail.
+
+  Unlike a compact protective oxide layer on some metals, ordinary rust is porous and flaky. It does not reliably seal the underlying iron from further attack.
+
+  <h3>6. Worked Examples</h3>
+
+  <b>Example 1: Identify the product of rusting</b>
+
+  An iron gate develops a reddish-brown coating after months outdoors. Identify the coating.
+
+  <b>Step 1:</b> Recognise the reddish-brown substance formed on iron.
+
+  <b>Step 2:</b> Recall the chemical name of rust.
+
+  <b>Answer:</b> Hydrated iron(III) oxide, commonly represented as Fe₂O₃·xH₂O.
+
+  <b>Example 2: Interpret the oxidation of iron</b>
+
+  Consider the half-equation:
+
+  Fe → Fe²⁺ + 2e⁻
+
+  Explain what happens to the iron atom.
+
+  <b>Step 1:</b> The iron atom forms an iron(II) ion.
+
+  <b>Step 2:</b> Two electrons appear on the product side.
+
+  <b>Step 3:</b> Loss of electrons is oxidation.
+
+  <b>Answer:</b> Iron is oxidised because each iron atom loses two electrons.
+
+  <b>Example 3: Explain damage caused by rusting</b>
+
+  A steel support becomes covered in flaky rust. Explain why this may make the support unsafe.
+
+  <b>Step 1:</b> Rusting converts some of the iron into corrosion products.
+
+  <b>Step 2:</b> The flaky rust does not form a reliable protective seal.
+
+  <b>Step 3:</b> Continued corrosion can reduce the effective amount and strength of the metal.
+
+  <b>Answer:</b> Continued rusting can weaken the steel and eventually make the support unsafe.
+
+  <h3>7. Core Questions</h3>
+  `,
+  [
+    {
+      q: "Define rusting and name the substance formed.",
+      hint: "Include iron, oxygen, water and the name of rust.",
+      steps: [
+        "State that rusting is a form of corrosion of iron.",
+        "Identify the two essential environmental substances.",
+        "Name the product formed."
+      ],
+      ans: "Rusting is the corrosion of iron in the presence of oxygen and water, producing hydrated iron(III) oxide.",
+      why: "Rust is commonly represented as Fe₂O₃·xH₂O."
+    },
+    {
+      q: "What happens to iron in the half-equation Fe → Fe²⁺ + 2e⁻?",
+      hint: "Check whether electrons are gained or lost.",
+      steps: [
+        "Observe that two electrons appear among the products.",
+        "Recognise that the iron atom loses electrons.",
+        "Name the process."
+      ],
+      ans: "Iron loses two electrons and is oxidised to form Fe²⁺ ions.",
+      why: "Oxidation is the loss of electrons."
+    },
+    {
+      q: "Explain why rusting can weaken an iron structure over time.",
+      hint: "Think about the metal being converted into a flaky corrosion product.",
+      steps: [
+        "Explain what happens to the iron during corrosion.",
+        "Describe the nature of ordinary rust.",
+        "Connect continued corrosion to the structure's strength."
+      ],
+      ans: "Iron is converted into rust, which is porous and flaky. Continued corrosion reduces the sound metal available to carry loads and can weaken the structure.",
+      why: "Rust does not reliably protect the iron beneath it from further corrosion."
+    }
+  ],
+  [
+    {
+      q: "A learner describes rust as pure iron oxide with a fixed formula Fe₂O₃. Correct the learner's statement.",
+      hint: "Consider the meaning of the word hydrated.",
+      steps: [
+        "Recall the accepted school-level name for rust.",
+        "Explain what hydrated indicates.",
+        "Write the usual representation."
+      ],
+      ans: "Rust is hydrated iron(III) oxide, commonly represented as Fe₂O₃·xH₂O. The amount of associated water can vary.",
+      why: "Rust is not accurately described by assuming every sample has the same fixed water content."
+    },
+    {
+      q: "Explain why the half-equation Fe → Fe²⁺ + 2e⁻ represents oxidation even though oxygen is not shown.",
+      hint: "Use the electron definition of oxidation.",
+      steps: [
+        "Identify the electrons on the right-hand side.",
+        "Determine whether iron loses or gains electrons.",
+        "Apply the definition of oxidation."
+      ],
+      ans: "Iron loses two electrons, so it is oxidised. Oxidation can be defined as loss of electrons even when oxygen is absent from the half-equation.",
+      why: "Electron transfer provides a general definition of oxidation and reduction."
+    },
+    {
+      q: "An iron nail has a reddish-brown coating, while an aluminium object has a thin, dull oxide coating. Why should the two coatings not automatically be treated as equally protective?",
+      hint: "Compare flaky rust with the oxide layer on aluminium.",
+      steps: [
+        "Identify the substance formed on iron.",
+        "Recall the protective behaviour of aluminium oxide.",
+        "Explain how the nature of each coating affects further corrosion."
+      ],
+      ans: "Ordinary rust is porous and flaky, so it does not reliably protect iron. Aluminium oxide can form a compact, adherent layer that slows further corrosion.",
+      why: "The protective effect of a corrosion product depends on its physical structure and adherence."
+    },
+    {
+      q: "A steel bridge support develops rust, and engineers discover that its cross-section has decreased. Explain the connection.",
+      hint: "The iron is being consumed during corrosion.",
+      steps: [
+        "State what happens to iron as it rusts.",
+        "Explain why the amount of sound metal can decrease.",
+        "Connect the decrease to the ability to carry a load."
+      ],
+      ans: "Some iron is converted into corrosion products, reducing the effective cross-section of sound steel. This can reduce the support's load-bearing capacity.",
+      why: "A reduced cross-section can increase the stress carried by the remaining metal."
+    },
+    {
+      q: "Distinguish between rusting and corrosion using one example of each.",
+      hint: "One term is specific to iron; the other is broader.",
+      steps: [
+        "Define corrosion generally.",
+        "Define rusting specifically.",
+        "Give an example involving iron and another metal."
+      ],
+      ans: "Corrosion is the deterioration of a material through reactions with its environment. Rusting is corrosion of iron that produces rust. An iron nail rusting is rusting; aluminium forming aluminium oxide is corrosion.",
+      why: "Rusting is one type of corrosion, but not all corrosion produces rust."
+    },
+    {
+      q: "Why is the word equation for rusting not enough to specify one exact, balanced chemical equation for every rust sample?",
+      hint: "Think about the composition of hydrated rust.",
+      steps: [
+        "Recall the formula Fe₂O₃·xH₂O.",
+        "Explain what x represents.",
+        "Relate the variable water content to the overall product."
+      ],
+      ans: "The water content represented by x can vary, and rust forms through several reactions. Therefore, one fixed balanced equation does not describe every rust sample precisely.",
+      why: "The word equation communicates the overall substances involved without claiming a universal fixed composition."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Conditions for Rusting",
+  `
+  <h2>Conditions for Rusting</h2>
+
+  <h3>1. The Two Essential Conditions</h3>
+
+  Iron rusts when both of the following are available:
+
+  <ul>
+    <li><b>Oxygen:</b> usually supplied by the air.</li>
+    <li><b>Water:</b> supplied by liquid water or moisture.</li>
+  </ul>
+
+  If either oxygen or water is excluded sufficiently, ordinary rusting does not occur under the tested conditions.
+
+  Salt is not essential for rusting, but salt dissolved in water usually increases the rate of corrosion by making the water a better electrolyte.
+
+  <h3>2. Investigating the Conditions</h3>
+
+  A controlled experiment can demonstrate the roles of oxygen and water using clean iron nails in three test tubes.
+
+  <p><b>Tube A: Air and water</b></p>
+
+  Place a clean iron nail in ordinary water with air available. The nail is exposed to both oxygen and water. Rust should form.
+
+  <p><b>Tube B: Water but very little oxygen</b></p>
+
+  Place a nail in boiled water that has been cooled while avoiding air contact. Add a layer of oil and seal the tube. Boiling removes much of the dissolved oxygen, while the oil limits oxygen from re-entering the water. Little or no rust should form if oxygen is effectively excluded.
+
+  <p><b>Tube C: Air but no water</b></p>
+
+  Place a clean nail in a dry tube with anhydrous calcium chloride, which absorbs moisture. Seal the tube to prevent moist air entering. The nail has access to air but not water vapour in sufficient quantity, so little or no rust should form.
+
+  <h3>3. Expected Results</h3>
+
+  <table>
+    <tr>
+      <th>Tube</th>
+      <th>Oxygen available?</th>
+      <th>Water available?</th>
+      <th>Expected result</th>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>Yes</td>
+      <td>Yes</td>
+      <td>Rust forms</td>
+    </tr>
+    <tr>
+      <td>B</td>
+      <td>Excluded as far as practical</td>
+      <td>Yes</td>
+      <td>Little or no rust</td>
+    </tr>
+    <tr>
+      <td>C</td>
+      <td>Yes</td>
+      <td>No</td>
+      <td>Little or no rust</td>
+    </tr>
+  </table>
+
+  <h3>4. Drawing a Valid Conclusion</h3>
+
+  <p><b>Observation:</b> The nail exposed to both air and water develops rust, while the nails in the oxygen-excluded and dry conditions show little or no rust.</p>
+
+  <p><b>Conclusion:</b> Both oxygen and water are necessary for ordinary rusting of iron.</p>
+
+  The comparison works because the conditions are deliberately varied. For a fair test, use similar clean nails, similar containers, and the same observation period. Make sure the oil layer and seal prevent air from reaching the boiled water, and that the drying agent remains effective.
+
+  <h3>5. Factors That Affect the Rate</h3>
+
+  <ul>
+    <li><b>Salt water:</b> usually speeds up rusting because dissolved ions increase electrical conductivity.</li>
+    <li><b>Moisture:</b> provides the medium needed for the electrochemical reactions.</li>
+    <li><b>Oxygen availability:</b> supports the reactions involved in rust formation.</li>
+    <li><b>Surface condition:</b> scratches or damaged coatings may expose fresh iron to the environment.</li>
+  </ul>
+
+  Salt does not replace oxygen or water. It changes the rate when the necessary conditions for corrosion are present.
+
+  <h3>6. Worked Examples</h3>
+
+  <b>Example 1: Predict the result in dry air</b>
+
+  An iron nail is placed in a sealed tube containing dry air. Will it rust under these conditions?
+
+  <b>Step 1:</b> Oxygen is present in the air.
+
+  <b>Step 2:</b> The air has been dried, so water is absent.
+
+  <b>Step 3:</b> Both essential conditions are not available.
+
+  <b>Answer:</b> Little or no rust should form because water is absent.
+
+  <b>Example 2: Predict the result in boiled water covered with oil</b>
+
+  An iron nail is placed in boiled water and the surface is covered with oil. What is expected if oxygen is effectively excluded?
+
+  <b>Step 1:</b> Water is present.
+
+  <b>Step 2:</b> Boiling removes much of the dissolved oxygen.
+
+  <b>Step 3:</b> The oil limits oxygen from entering the water again.
+
+  <b>Answer:</b> Little or no rust should form because oxygen is effectively excluded.
+
+  <b>Example 3: Compare rusting in fresh water and salt water</b>
+
+  Two similar iron nails are placed in separate containers. One contains fresh water and the other salt water. Both have access to air. Which usually rusts faster?
+
+  <b>Step 1:</b> Both containers provide oxygen and water.
+
+  <b>Step 2:</b> Salt dissolves to form mobile ions in the water.
+
+  <b>Step 3:</b> The ions increase the water's electrical conductivity.
+
+  <b>Answer:</b> The nail in salt water usually rusts faster, although the exact rate depends on the conditions.
+
+  <h3>7. Core Questions</h3>
+  `,
+  [
+    {
+      q: "State the two essential conditions for ordinary rusting of iron.",
+      hint: "One comes from air and the other from moisture.",
+      steps: [
+        "Identify the gas involved in rusting.",
+        "Identify the liquid needed for the process."
+      ],
+      ans: "Oxygen and water.",
+      why: "Both must be available for ordinary rusting of iron to occur."
+    },
+    {
+      q: "Why is an iron nail in dry air expected to show little or no rust?",
+      hint: "One of the essential conditions has been removed.",
+      steps: [
+        "Identify the condition supplied by air.",
+        "Determine whether water is present.",
+        "Apply the two-condition rule."
+      ],
+      ans: "Oxygen is present, but water is absent, so ordinary rusting does not occur.",
+      why: "Oxygen alone is insufficient for ordinary rusting."
+    },
+    {
+      q: "Explain why anhydrous calcium chloride is placed in the test tube containing a nail and dry air.",
+      hint: "It removes something from the air.",
+      steps: [
+        "Identify the substance absorbed by anhydrous calcium chloride.",
+        "Explain what happens to the moisture in the tube.",
+        "Connect this to rusting."
+      ],
+      ans: "It absorbs water vapour, keeping the air dry and preventing the water condition needed for rusting.",
+      why: "The experiment tests whether iron rusts when oxygen is available but water is excluded."
+    }
+  ],
+  [
+    {
+      q: "Three nails are placed in separate tubes: A contains air and water, B contains boiled water covered with oil, and C contains dry air. Predict which nail should rust and explain why.",
+      hint: "Check whether oxygen and water are both available in each tube.",
+      steps: [
+        "Identify the conditions in tube A.",
+        "Identify which condition is excluded in tube B.",
+        "Identify which condition is excluded in tube C.",
+        "Apply the rule that both oxygen and water are required."
+      ],
+      ans: "Nail A should rust. Nail B should show little or no rust because oxygen is excluded, and nail C should show little or no rust because water is excluded.",
+      why: "Only tube A provides both essential conditions."
+    },
+    {
+      q: "Why must boiled water be covered with oil in the experiment investigating rusting?",
+      hint: "Boiling removes dissolved oxygen, but the water can absorb oxygen again.",
+      steps: [
+        "State what boiling does to dissolved gases.",
+        "Explain what could happen when the water contacts air again.",
+        "State the function of the oil layer."
+      ],
+      ans: "Boiling removes much of the dissolved oxygen. The oil layer limits oxygen from re-entering the water.",
+      why: "Without the oil layer, the experiment would not reliably exclude oxygen."
+    },
+    {
+      q: "A student uses anhydrous calcium chloride in a tube but leaves the tube open in a humid laboratory. Explain why the experiment may fail.",
+      hint: "Consider the moisture entering from the surroundings.",
+      steps: [
+        "Identify the purpose of the calcium chloride.",
+        "Consider what humid air introduces.",
+        "Explain how the test condition could change."
+      ],
+      ans: "Moist air can enter the tube and supply water vapour. If the drying agent cannot keep the tube dry, the nail may rust.",
+      why: "A valid test requires the dry condition to be maintained throughout the experiment."
+    },
+    {
+      q: "A nail rusts faster in salt water than in fresh water. Does this prove that salt is essential for rusting? Explain.",
+      hint: "Compare what is necessary with what changes the speed.",
+      steps: [
+        "Recall the two essential conditions.",
+        "Identify the effect of dissolved salt.",
+        "Distinguish the occurrence of rusting from its rate."
+      ],
+      ans: "No. Oxygen and water are essential. Salt water usually increases the rate of rusting but salt is not required for rusting to occur.",
+      why: "Iron can rust in ordinary water exposed to oxygen even when no salt has been added."
+    },
+    {
+      q: "Why should the nails in the three test tubes be cleaned and made as similar as possible before the experiment?",
+      hint: "Think about making a fair comparison.",
+      steps: [
+        "Identify the variable being investigated.",
+        "Consider how existing rust or different nail sizes could affect observations.",
+        "Explain why other conditions should be kept similar."
+      ],
+      ans: "Similar clean nails help ensure that the main difference is the availability of oxygen or water, rather than pre-existing rust, nail size or surface condition.",
+      why: "Controlling other variables makes the conclusion more reliable."
+    },
+    {
+      q: "A learner concludes that oxygen is unnecessary because a nail in water still contains oxygen atoms in its H₂O molecules. Explain the error.",
+      hint: "Distinguish water molecules from oxygen gas.",
+      steps: [
+        "Identify the two conditions being tested.",
+        "Distinguish oxygen gas from oxygen chemically bonded in water.",
+        "Explain what the experiment is designed to establish."
+      ],
+      ans: "The experiment tests the availability of oxygen from air or dissolved oxygen, not merely oxygen atoms chemically bonded in water. Ordinary rusting requires both water and available oxygen.",
+      why: "The presence of oxygen atoms within water molecules does not mean that oxygen gas is available for the rusting process."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Prevention of Rusting",
+  `
+  <h2>Prevention of Rusting</h2>
+
+  <h3>1. Why Must Rusting Be Prevented?</h3>
+
+  Rusting is the corrosion of iron in the presence of oxygen and water. It gradually damages iron objects and can weaken structures, machinery, vehicles, pipes and roofing sheets.
+
+  Rusting can be reduced by:
+  <ul>
+    <li>Preventing water and oxygen from reaching the iron.</li>
+    <li>Coating iron with a metal that provides additional protection.</li>
+    <li>Using electrochemical protection methods.</li>
+    <li>Selecting corrosion-resistant materials for the intended environment.</li>
+  </ul>
+
+  <h3>2. Painting</h3>
+
+  Paint forms a barrier between iron and the environment.
+
+  <b>How it works:</b> An intact paint layer limits contact between the iron, oxygen and water.
+
+  <b>Limitation:</b> If the paint cracks, peels or is scratched, exposed iron can rust. The surface must be prepared properly before painting, and damaged paint should be repaired.
+
+  <b>Uses:</b> Gates, bridges, steel structures, vehicles and metal furniture.
+
+  <h3>3. Oiling and Greasing</h3>
+
+  Oil or grease forms a water-repellent barrier over an iron surface.
+
+  <b>How it works:</b> The coating reduces contact with moisture and oxygen.
+
+  <b>Limitation:</b> Oil and grease can be wiped away, washed off or displaced. They require maintenance and are more suitable for moving parts, tools and machinery than for many exposed structures.
+
+  <h3>4. Galvanising</h3>
+
+  Galvanising is the process of coating iron or steel with zinc.
+
+  Zinc protects iron in two important ways:
+
+  <ul>
+    <li><b>Barrier protection:</b> The zinc layer separates the iron from air and moisture.</li>
+    <li><b>Sacrificial protection:</b> If the coating is scratched, zinc can corrode preferentially to iron because zinc is more reactive than iron. This can protect the exposed iron nearby while zinc remains available and electrically connected.</li>
+  </ul>
+
+  <b>Uses:</b> Galvanised roofing sheets, fencing, steel pipes and outdoor steel components.
+
+  <h3>5. Electroplating</h3>
+
+  Electroplating uses an electric current to deposit a thin layer of one metal onto another object.
+
+  The coating may improve appearance, corrosion resistance or another surface property, depending on the metal used.
+
+  For example, a steel object may be coated with chromium or nickel for decorative appearance and surface protection.
+
+  <b>Important limitation:</b> If a protective coating is damaged, the underlying metal may become exposed. The outcome depends on the coating metal and the environment; not every coating gives sacrificial protection.
+
+  <h3>6. Sacrificial Protection</h3>
+
+  Sacrificial protection uses a more reactive metal to protect iron or steel.
+
+  Zinc and magnesium can be used as sacrificial metals in appropriate systems. The sacrificial metal oxidises preferentially, helping protect the iron.
+
+  <b>Uses:</b> Some buried steel pipelines, ship hulls and other structures exposed to corrosive environments.
+
+  The sacrificial metal is gradually consumed and may need replacement.
+
+  <h3>7. Alloying and Material Selection</h3>
+
+  Some alloys resist corrosion better than ordinary iron or carbon steel. Stainless steel contains chromium, which helps form a protective chromium-rich oxide layer.
+
+  However, corrosion resistance depends on the alloy composition and the conditions of use. Stainless steel is not completely immune to corrosion.
+
+  <h3>8. Choosing a Suitable Method</h3>
+
+  <table>
+    <tr>
+      <th>Method</th>
+      <th>Principle</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>Painting</td>
+      <td>Barrier</td>
+      <td>Iron gate</td>
+    </tr>
+    <tr>
+      <td>Oiling or greasing</td>
+      <td>Barrier</td>
+      <td>Machine parts</td>
+    </tr>
+    <tr>
+      <td>Galvanising</td>
+      <td>Zinc barrier and sacrificial protection</td>
+      <td>Roofing sheets</td>
+    </tr>
+    <tr>
+      <td>Electroplating</td>
+      <td>Deposited metal coating</td>
+      <td>Decorative metal fittings</td>
+    </tr>
+    <tr>
+      <td>Sacrificial protection</td>
+      <td>More reactive metal corrodes preferentially</td>
+      <td>Steel pipeline</td>
+    </tr>
+    <tr>
+      <td>Corrosion-resistant alloy</td>
+      <td>Protective surface film</td>
+      <td>Suitable stainless-steel equipment</td>
+    </tr>
+  </table>
+
+  <h3>9. Worked Examples</h3>
+
+  <b>Example 1: Choosing protection for an iron gate</b>
+
+  An iron gate is exposed to rain and air. Recommend a practical protection method and explain how it works.
+
+  <b>Step 1:</b> Identify the two conditions that cause ordinary rusting: oxygen and water.
+
+  <b>Step 2:</b> Select a method that blocks contact with the environment.
+
+  <b>Step 3:</b> Explain the limitation of the method.
+
+  <b>Answer:</b> Painting is suitable because an intact paint layer acts as a barrier. Scratches must be repaired to prevent rusting of exposed iron.
+
+  <b>Example 2: Explain why zinc can protect scratched galvanised iron</b>
+
+  A small scratch exposes iron beneath a zinc coating. Explain why the iron may still receive protection.
+
+  <b>Step 1:</b> Compare the reactivity of zinc and iron.
+
+  <b>Step 2:</b> Zinc is more reactive and can lose electrons more readily.
+
+  <b>Step 3:</b> Zinc oxidises preferentially while it remains available and electrically connected.
+
+  <b>Answer:</b> Zinc can provide sacrificial protection because it corrodes preferentially to the exposed iron.
+
+  <b>Example 3: Select a method for a machine part</b>
+
+  A steel machine part has moving surfaces that need temporary protection during storage. Recommend a suitable method.
+
+  <b>Step 1:</b> Consider whether a coating can be applied and maintained easily.
+
+  <b>Step 2:</b> Select a method suitable for moving metal surfaces.
+
+  <b>Answer:</b> Oiling or greasing is suitable because it forms a barrier against moisture and air. The coating should be checked and renewed when necessary.
+
+  <h3>10. Core Questions</h3>
+  `,
+  [
+    {
+      q: "Explain how painting prevents rusting of iron.",
+      hint: "Consider what an intact paint layer keeps away from iron.",
+      steps: [
+        "Identify the substances needed for ordinary rusting.",
+        "Explain how paint separates the iron from the environment.",
+        "State one limitation."
+      ],
+      ans: "Paint forms a barrier that limits contact between iron, oxygen and water. If the paint is damaged, exposed iron can rust.",
+      why: "Painting protects iron while the barrier remains intact."
+    },
+    {
+      q: "Define galvanising and state the metal used.",
+      hint: "The coating is more reactive than iron.",
+      steps: [
+        "Name the coating process.",
+        "Identify the coating metal.",
+        "State how the coating protects iron."
+      ],
+      ans: "Galvanising is coating iron or steel with zinc. Zinc acts as a barrier and can also provide sacrificial protection.",
+      why: "Zinc is more reactive than iron and can corrode preferentially."
+    },
+    {
+      q: "What is sacrificial protection?",
+      hint: "A more reactive metal is allowed to corrode instead of the iron.",
+      steps: [
+        "Identify the metal being protected.",
+        "Identify the role of the more reactive metal.",
+        "Explain which metal corrodes preferentially."
+      ],
+      ans: "Sacrificial protection uses a more reactive metal, such as zinc or magnesium, that corrodes preferentially and helps protect iron or steel.",
+      why: "The sacrificial metal supplies the oxidation process that would otherwise damage the protected iron."
+    }
+  ],
+  [
+    {
+      q: "A painted steel gate begins to rust at a deep scratch. Explain why the paint protected the surrounding surface but not the scratched area.",
+      hint: "The paint barrier is no longer continuous at the scratch.",
+      steps: [
+        "State the function of the paint.",
+        "Identify what happens at the scratch.",
+        "Explain why rusting can occur there."
+      ],
+      ans: "The intact paint blocks contact with oxygen and water. The scratch exposes the steel, allowing moisture and oxygen to reach the iron and cause rusting.",
+      why: "Barrier protection depends on the coating covering the metal adequately."
+    },
+    {
+      q: "A learner says zinc protects iron only by forming a barrier. Explain the additional protection zinc can provide.",
+      hint: "Compare the reactivity of zinc with iron.",
+      steps: [
+        "State which metal is more reactive.",
+        "Explain which metal can oxidise preferentially.",
+        "Name the type of protection."
+      ],
+      ans: "Zinc can also provide sacrificial protection. If the coating is damaged, zinc can oxidise preferentially to iron while it remains available and electrically connected.",
+      why: "Sacrificial protection can continue even when a small area of iron is exposed."
+    },
+    {
+      q: "Why might oiling be more suitable for a machine part than for a large outdoor bridge?",
+      hint: "Consider movement, maintenance and how long the coating remains in place.",
+      steps: [
+        "State how oil protects a metal.",
+        "Consider what moving parts do to an oil film.",
+        "Compare the maintenance demands of machine parts and a large structure."
+      ],
+      ans: "Oil forms a barrier and can be reapplied to machine parts during maintenance. On a large exposed bridge, oil may be displaced or washed away and would require impractical frequent maintenance.",
+      why: "A protection method should suit the shape, use and environment of the object."
+    },
+    {
+      q: "A steel water pipe is buried underground in a corrosive environment. Explain how attaching a suitable magnesium block may protect the pipe.",
+      hint: "Magnesium is more reactive than iron.",
+      steps: [
+        "Compare the reactivity of magnesium and iron.",
+        "Identify which metal oxidises preferentially.",
+        "Explain why the magnesium block must remain suitably connected and be checked."
+      ],
+      ans: "Magnesium acts as a sacrificial anode and oxidises preferentially, helping protect the steel. It must be electrically connected as required and replaced when consumed.",
+      why: "Sacrificial protection depends on the electrochemical connection and continued availability of the sacrificial metal."
+    },
+    {
+      q: "A steel object is electroplated with a less reactive metal. Explain why damage to the coating may allow local corrosion.",
+      hint: "The coating may no longer cover the underlying steel, and different metals can behave differently when in contact.",
+      steps: [
+        "Explain the barrier function of an intact coating.",
+        "State what happens when the coating is damaged.",
+        "Avoid assuming every metal coating protects exposed iron sacrificially."
+      ],
+      ans: "Damage can expose steel to oxygen and water. Depending on the coating metal and conditions, contact between dissimilar metals may also accelerate local corrosion rather than provide sacrificial protection.",
+      why: "Electroplating is not automatically equivalent to galvanising; the electrochemical behaviour of the coating matters."
+    },
+    {
+      q: "Why can stainless steel resist corrosion better than ordinary carbon steel, and why is it incorrect to say it can never corrode?",
+      hint: "Consider the role of chromium and its protective oxide layer.",
+      steps: [
+        "Identify an important element in stainless steel.",
+        "Explain the protective surface film it helps form.",
+        "State why environmental conditions still matter."
+      ],
+      ans: "Chromium helps form a thin protective oxide layer that slows further corrosion. Under certain conditions, such as exposure to aggressive chemicals or chlorides, stainless steel can still corrode.",
+      why: "Corrosion resistance depends on the alloy composition and the environment."
+    }
+  ]
+);
+
+add(
+  "chemistry",
+  "metals",
+  "Alloys",
+  `
+  <h2>Alloys</h2>
+
+  <h3>1. Meaning of an Alloy</h3>
+
+  An alloy is a mixture containing a metal and one or more other elements. The added elements may be metals or non-metals.
+
+  Alloys are made to obtain combinations of properties that are more suitable for particular uses than those of the pure metal alone.
+
+  Examples include:
+  <ul>
+    <li>Steel: mainly iron with carbon and sometimes other elements.</li>
+    <li>Brass: mainly copper and zinc.</li>
+    <li>Bronze: mainly copper and tin.</li>
+    <li>Stainless steel: iron-based alloy containing sufficient chromium to improve corrosion resistance, often with other elements.</li>
+    <li>Duralumin: an aluminium-based alloy containing copper and other elements.</li>
+  </ul>
+
+  <h3>2. Why Are Alloys Often Harder Than Pure Metals?</h3>
+
+  In many pure metals, atoms are arranged in regular layers. When a force is applied, these layers can slide over one another.
+
+  In many alloys, atoms of different sizes disturb the regular arrangement of the metal atoms. This can make it harder for the layers to slide.
+
+  As a result, many alloys are harder or stronger than the pure metals from which they are made.
+
+  <b>Important:</b> This is a general explanation, not a rule that every alloy is harder or stronger than every pure metal. The properties depend on the elements present, their proportions and how the material has been processed.
+
+  <h3>3. Common Alloys and Their Properties</h3>
+
+  <p><b>Steel</b></p>
+
+  Steel is mainly iron combined with carbon and sometimes other elements. Its strength and other properties depend on its composition and treatment.
+
+  <b>Uses:</b> Buildings, bridges, tools, vehicles and machinery.
+
+  <p><b>Brass</b></p>
+
+  Brass is mainly copper and zinc. It is useful because it can be shaped, has a characteristic appearance and often resists corrosion reasonably well in suitable environments.
+
+  <b>Uses:</b> Decorative fittings, musical instruments, screws and some plumbing components.
+
+  <p><b>Bronze</b></p>
+
+  Bronze is traditionally mainly copper and tin. Its properties make it useful for certain castings and components.
+
+  <b>Uses:</b> Sculptures, medals, bearings and some marine components, depending on the bronze composition.
+
+  <p><b>Stainless steel</b></p>
+
+  Stainless steel contains chromium, which helps form a protective oxide layer. Many grades also contain nickel or other alloying elements.
+
+  <b>Uses:</b> Cutlery, kitchen equipment, medical instruments and industrial equipment, depending on the grade.
+
+  <p><b>Duralumin</b></p>
+
+  Duralumin is an aluminium-based alloy containing copper and other elements. Certain grades offer a useful combination of low density and strength.
+
+  <b>Uses:</b> Selected aircraft structures and engineering components.
+
+  <h3>4. Choosing an Alloy for a Purpose</h3>
+
+  A suitable material is selected by matching its properties to the job.
+
+  <ul>
+    <li>For a strong structural beam, a suitable structural steel may be chosen.</li>
+    <li>For a component requiring improved corrosion resistance, an appropriate stainless-steel grade may be selected.</li>
+    <li>For decorative fittings, brass may be selected for its appearance and workability.</li>
+    <li>For a lightweight structural component, an appropriate aluminium alloy may be selected.</li>
+  </ul>
+
+  No alloy is best for every purpose. Cost, strength, mass, corrosion resistance, workability and operating conditions all matter.
+
+  <h3>5. Worked Examples</h3>
+
+  <b>Example 1: Identify the alloy</b>
+
+  A component is made mainly from copper and zinc. Identify the alloy.
+
+  <b>Step 1:</b> Identify the main metal: copper.
+
+  <b>Step 2:</b> Identify the second main element: zinc.
+
+  <b>Answer:</b> Brass.
+
+  <b>Example 2: Explain why many alloys are harder than pure metals</b>
+
+  Explain why adding suitable amounts of another element to a pure metal can increase its hardness.
+
+  <b>Step 1:</b> Pure metal atoms often form regular layers.
+
+  <b>Step 2:</b> Different-sized atoms disturb the arrangement of these layers.
+
+  <b>Step 3:</b> Sliding becomes more difficult in many alloys.
+
+  <b>Answer:</b> The different-sized atoms can hinder the movement of atomic layers, increasing hardness in many alloys.
+
+  <b>Example 3: Choose a material for a corrosion-resistant kitchen sink</b>
+
+  Explain why a suitable stainless-steel grade may be chosen for a kitchen sink instead of ordinary carbon steel.
+
+  <b>Step 1:</b> A sink is repeatedly exposed to water and cleaning materials.
+
+  <b>Step 2:</b> Chromium in stainless steel helps form a protective oxide layer.
+
+  <b>Step 3:</b> Select a grade suitable for the actual environment.
+
+  <b>Answer:</b> A suitable stainless-steel grade offers improved corrosion resistance because chromium helps form a protective oxide layer.
+
+  <h3>6. Core Questions</h3>
+  `,
+  [
+    {
+      q: "Define an alloy and give one example.",
+      hint: "It contains a metal mixed with one or more other elements.",
+      steps: [
+        "State that an alloy is a mixture.",
+        "Mention the metal and other element or elements.",
+        "Give a valid example."
+      ],
+      ans: "An alloy is a mixture containing a metal and one or more other elements. For example, brass is mainly copper and zinc.",
+      why: "Alloys combine elements to produce materials with useful properties."
+    },
+    {
+      q: "Explain why many alloys are harder than their pure metals.",
+      hint: "Think about the movement of layers of atoms.",
+      steps: [
+        "Describe the arrangement of atoms in a pure metal.",
+        "Explain how different-sized atoms affect the arrangement.",
+        "Connect the disturbance to the movement of layers."
+      ],
+      ans: "Different-sized atoms can disturb the regular arrangement in a metal and make it harder for atomic layers to slide over one another.",
+      why: "This can increase hardness, although the effect depends on the alloy's composition and treatment."
+    },
+    {
+      q: "Name the main elements in brass and bronze.",
+      hint: "Both are copper-based alloys, but their second main elements differ.",
+      steps: [
+        "Recall the composition of brass.",
+        "Recall the composition of traditional bronze."
+      ],
+      ans: "Brass is mainly copper and zinc. Bronze is traditionally mainly copper and tin.",
+      why: "The names distinguish two different copper-based alloy families."
+    }
+  ],
+  [
+    {
+      q: "A learner states that an alloy is always a compound with a fixed chemical formula. Correct the statement.",
+      hint: "Consider whether alloy compositions can vary.",
+      steps: [
+        "Recall the definition of an alloy.",
+        "Distinguish a mixture from a pure compound.",
+        "Explain whether the proportions must always be fixed."
+      ],
+      ans: "An alloy is a mixture containing a metal and one or more other elements. Its composition can vary, so it does not necessarily have a single fixed chemical formula.",
+      why: "Alloys are generally described by their constituent elements and composition rather than one universal molecular formula."
+    },
+    {
+      q: "A student argues that adding another element must always make a metal harder. Explain why this conclusion is incorrect.",
+      hint: "Alloy properties depend on composition and processing.",
+      steps: [
+        "Explain why different-sized atoms can increase hardness in many alloys.",
+        "Recognise that different alloying elements have different effects.",
+        "Consider composition and heat treatment."
+      ],
+      ans: "Adding another element can change hardness, but the result depends on the elements, their proportions and processing. Not every alloy is harder than its pure metal.",
+      why: "The effect of alloying is not identical for every metal-element combination."
+    },
+    {
+      q: "A workshop needs a copper-based alloy for decorative door fittings. Explain why brass may be suitable and identify its main elements.",
+      hint: "Consider appearance, workability and composition.",
+      steps: [
+        "Identify the main elements in brass.",
+        "State one useful property of brass for decorative fittings.",
+        "Connect the property to the intended use."
+      ],
+      ans: "Brass is mainly copper and zinc. Its appearance and workability can make it suitable for decorative fittings.",
+      why: "Material choice depends on the properties required for the component."
+    },
+    {
+      q: "Explain how chromium improves the corrosion resistance of suitable stainless-steel grades.",
+      hint: "It helps form a thin protective oxide layer.",
+      steps: [
+        "Identify chromium as an alloying element.",
+        "Describe the protective surface film.",
+        "Explain how the film affects further corrosion."
+      ],
+      ans: "Chromium helps form a thin, adherent oxide layer that slows further corrosion of the underlying alloy.",
+      why: "The protective film separates the metal from the environment under suitable conditions."
+    },
+    {
+      q: "A designer must choose between ordinary steel and a suitable aluminium alloy for a lightweight structural component. Explain one reason to choose the aluminium alloy and one consideration before deciding.",
+      hint: "Compare density with the strength and operating requirements.",
+      steps: [
+        "Compare the density of aluminium alloys and steel.",
+        "Explain the benefit of lower mass.",
+        "Identify a performance or cost factor that still needs checking."
+      ],
+      ans: "An aluminium alloy can reduce mass because it has lower density than steel. The designer must still check whether the alloy provides sufficient strength, stiffness, durability and acceptable cost for the application.",
+      why: "A low-density material is not automatically the best choice; it must meet the structural requirements."
+    },
+    {
+      q: "A learner says stainless steel cannot corrode because it contains chromium. Explain why this is an overstatement.",
+      hint: "Protective oxide layers work under suitable conditions, not every possible condition.",
+      steps: [
+        "Explain the role of chromium.",
+        "Recognise that corrosion resistance is not the same as complete immunity.",
+        "Give an example of a challenging environment."
+      ],
+      ans: "Chromium helps form a protective oxide layer, but stainless steel can still corrode under certain conditions, including exposure to aggressive chemicals or chlorides.",
+      why: "The alloy grade, surface condition and environment affect corrosion behaviour."
+    }
+  ]
+);
+
 // ============================================================
 // BATCH 15 — ELECTROCHEMISTRY
 // Chapter ID: electrochemistry
@@ -34373,8 +38308,6 @@ why: "The two processes serve different purposes: separation of a mixture versus
 // BATCH 19 — NON-METALS AND THEIR COMPOUNDS
 // Chapter: nonmetals_compounds
 // ============================================================
-
-
 // ============================================================
 // 1. PROPERTIES OF SULPHUR
 // ============================================================
@@ -34383,70 +38316,158 @@ add(
   "chemistry",
   "nonmetals_compounds",
   "Properties of Sulphur",
-  `<h2>Properties of Sulphur</h2>
 
-  <p>Sulphur is a non-metallic element represented by the symbol <strong>S</strong>.</p>
+  `
+  <h2>Properties of Sulphur</h2>
 
-  <h3>Physical properties</h3>
+  <h3>1. Identity of sulphur</h3>
+
+  <p>Sulphur is a chemical element with the symbol <strong>S</strong>
+  and atomic number 16. It is classified as a non-metal and occurs
+  naturally in the Earth's crust and in some minerals.</p>
+
+  <p>At room temperature, ordinary sulphur is a yellow solid.
+  Its physical properties help distinguish it from metals and
+  other non-metals.</p>
+
+  <h3>2. Physical properties</h3>
 
   <ul>
-    <li>It is a yellow solid at room temperature.</li>
-    <li>It is brittle.</li>
-    <li>It does not conduct electricity well.</li>
-    <li>It is insoluble in water.</li>
+    <li><strong>Colour:</strong> Sulphur is yellow.</li>
+    <li><strong>Physical state:</strong> It is a solid at room temperature.</li>
+    <li><strong>Brittleness:</strong> Solid sulphur breaks into pieces
+    when struck rather than being hammered into sheets.</li>
+    <li><strong>Electrical conductivity:</strong> It is a poor conductor
+    of electricity.</li>
+    <li><strong>Solubility:</strong> It is insoluble in water.</li>
   </ul>
 
-  <h3>Chemical property</h3>
+  <p>These properties are physical because they can be observed
+  without changing sulphur into a different chemical substance.</p>
 
-  <p>Sulphur burns in oxygen to form sulphur dioxide.</p>
+  <h3>3. Burning sulphur in oxygen</h3>
 
-  <p><strong>S + O₂ → SO₂</strong></p>
+  <p>Sulphur undergoes a chemical reaction when heated in oxygen.
+  It burns to form sulphur dioxide, a colourless gas.</p>
 
-  <p>Sulphur dioxide is a gas with a pungent smell.</p>`,
+  <p><strong>Word equation:</strong></p>
+  <p>Sulphur + Oxygen → Sulphur dioxide</p>
+
+  <p><strong>Symbol equation:</strong></p>
+  <p><strong>S(s) + O₂(g) → SO₂(g)</strong></p>
+
+  <p>The equation is balanced. There is one sulphur atom and
+  two oxygen atoms on each side.</p>
+
+  <p>Burning sulphur dioxide-producing materials can release
+  harmful gases. Sulphur dioxide must not be deliberately inhaled.</p>
+
+  <h3>4. Physical change versus chemical change</h3>
+
+  <p>Breaking a piece of sulphur into smaller pieces is a physical
+  change: the substance remains sulphur.</p>
+
+  <p>Burning sulphur is a chemical change because sulphur reacts
+  with oxygen to produce a new substance, sulphur dioxide.</p>
+
+  <h3>Worked examples</h3>
+
+  <p><strong>Example 1: Classifying properties</strong></p>
+
+  <p>A student observes that sulphur is yellow, brittle and a poor
+  conductor of electricity. Classify each observation.</p>
+
+  <p><strong>Step 1:</strong> Yellow describes its colour.</p>
+  <p><strong>Step 2:</strong> Brittle describes how easily the solid breaks.</p>
+  <p><strong>Step 3:</strong> Poor conductivity describes its ability to
+  conduct electric current.</p>
+  <p><strong>Answer:</strong> All three are physical properties.</p>
+
+  <p><strong>Example 2: Writing the combustion equation</strong></p>
+
+  <p>Write the symbol equation for the complete reaction of sulphur
+  with oxygen.</p>
+
+  <p><strong>Step 1:</strong> Write the reactants: S and O₂.</p>
+  <p><strong>Step 2:</strong> Identify the product: SO₂.</p>
+  <p><strong>Step 3:</strong> Check the atoms on both sides.</p>
+  <p><strong>Answer:</strong> S + O₂ → SO₂.</p>
+
+  <p><strong>Example 3: Identifying the type of change</strong></p>
+
+  <p>Explain why burning sulphur is a chemical change but breaking
+  sulphur into powder is a physical change.</p>
+
+  <p><strong>Step 1:</strong> Breaking sulphur changes its size only.</p>
+  <p><strong>Step 2:</strong> The material remains sulphur.</p>
+  <p><strong>Step 3:</strong> Burning produces sulphur dioxide, a new substance.</p>
+  <p><strong>Answer:</strong> Breaking is a physical change; burning is
+  a chemical change.</p>
+  `,
+
   [
     {
-      q: "State two physical properties of sulphur.",
+      q: "A solid element is yellow, brittle and insoluble in water. It is also a poor conductor of electricity. Explain how these observations help identify its non-metallic character.",
       steps: [
-        "Step 1: Sulphur is a yellow solid at room temperature.",
-        "Step 2: It is brittle.",
-        "Step 3: It is also a poor conductor of electricity and insoluble in water.",
-        "Step 4: Any two of these are acceptable."
+        "Step 1: Identify its physical state and colour.",
+        "Step 2: Explain that brittleness means it breaks rather than being hammered into sheets.",
+        "Step 3: Relate poor electrical conductivity to a typical property of non-metals.",
+        "Step 4: Use the combined properties to classify the element."
       ],
-      ans: "For example: sulphur is a yellow solid and is brittle.",
-      why: "These are observable physical properties of sulphur."
+      ans: "These properties are consistent with sulphur, a non-metal. Its brittleness and poor electrical conductivity are characteristic non-metallic properties.",
+      why: "Classification should be based on a pattern of properties, not on colour alone."
     },
     {
-      q: "What happens when sulphur burns in oxygen?",
+      q: "Write the word equation and balanced symbol equation for the burning of sulphur in oxygen.",
       steps: [
-        "Step 1: Sulphur reacts with oxygen.",
-        "Step 2: The product formed is sulphur dioxide.",
-        "Step 3: Write the equation: S + O₂ → SO₂."
+        "Step 1: Identify sulphur and oxygen as the reactants.",
+        "Step 2: Identify sulphur dioxide as the product.",
+        "Step 3: Write the word equation.",
+        "Step 4: Replace the names with their formulae and count the atoms."
       ],
-      ans: "Sulphur dioxide is formed.",
-      why: "Sulphur combines with oxygen during combustion to form sulphur dioxide."
+      ans: "Sulphur + Oxygen → Sulphur dioxide; S + O₂ → SO₂.",
+      why: "One sulphur atom and two oxygen atoms occur on each side, so the equation is balanced."
     },
     {
-      q: "Balance the equation S + O₂ → SO₂.",
+      q: "A learner says that sulphur conducts electricity because it is a solid. Identify the error and correct the statement.",
       steps: [
-        "Step 1: Count sulphur atoms on both sides. There is one on each side.",
-        "Step 2: Count oxygen atoms. There are two on each side.",
-        "Step 3: The equation is already balanced."
+        "Step 1: Separate physical state from electrical conductivity.",
+        "Step 2: Recognise that not every solid conducts electricity.",
+        "Step 3: Apply the known property of sulphur."
       ],
-      ans: "S + O₂ → SO₂",
-      why: "There is one sulphur atom and two oxygen atoms on each side."
-    }
-  ],
-  [
+      ans: "The statement is incorrect. Sulphur is a solid but is a poor conductor of electricity.",
+      why: "Being solid does not automatically make a substance electrically conductive."
+    },
     {
-      q: "Why is sulphur classified as a non-metal?",
-      hint: "Think about its electrical conductivity and physical properties.",
+      q: "Explain why dissolving sulphur in water is not a suitable method for preparing an aqueous solution of sulphur.",
+      hint: "Consider whether sulphur dissolves in water.",
       steps: [
-        "Step 1: Sulphur is brittle rather than malleable.",
-        "Step 2: It is a poor conductor of electricity.",
-        "Step 3: These are characteristic properties of non-metals."
+        "Step 1: Recall the solubility of sulphur in water.",
+        "Step 2: Determine whether enough sulphur dissolves to form a solution.",
+        "Step 3: State the practical consequence."
       ],
-      ans: "Because it has typical non-metallic properties such as brittleness and poor electrical conductivity.",
-      why: "Sulphur lacks the typical metallic properties of good conductivity, malleability and ductility."
+      ans: "Sulphur is insoluble in water, so it does not dissolve to form an ordinary aqueous solution.",
+      why: "Solubility determines whether a substance can form a solution with a particular solvent."
+    },
+    {
+      q: "A piece of sulphur is crushed into powder. Has a new chemical substance formed? Explain your answer.",
+      steps: [
+        "Step 1: Identify what has changed: the size of the pieces.",
+        "Step 2: Determine whether the chemical identity has changed.",
+        "Step 3: Classify the change."
+      ],
+      ans: "No. Crushing sulphur is a physical change because the material remains sulphur.",
+      why: "A change in size alone does not produce a new chemical substance."
+    },
+    {
+      q: "Balance the equation for sulphur combustion: S + O₂ → SO₂. Show how you checked your answer.",
+      steps: [
+        "Step 1: Count sulphur atoms: one on each side.",
+        "Step 2: Count oxygen atoms: two on each side.",
+        "Step 3: Confirm that no coefficients are needed."
+      ],
+      ans: "S + O₂ → SO₂. The equation is already balanced.",
+      why: "A balanced chemical equation has equal numbers of each type of atom on both sides."
     }
   ]
 );
@@ -34460,72 +38481,158 @@ add(
   "chemistry",
   "nonmetals_compounds",
   "Sulphur Dioxide",
-  `<h2>Sulphur Dioxide</h2>
 
-  <p>Sulphur dioxide is a compound containing sulphur and oxygen.</p>
+  `
+  <h2>Sulphur Dioxide</h2>
 
-  <p>Its formula is <strong>SO₂</strong>.</p>
+  <h3>1. Formula and formation</h3>
 
-  <h3>Preparation</h3>
+  <p>Sulphur dioxide is a compound made from sulphur and oxygen.
+  Its chemical formula is <strong>SO₂</strong>.</p>
 
-  <p>It can be prepared by burning sulphur in oxygen:</p>
+  <p>Each molecule contains one sulphur atom and two oxygen atoms.
+  It can form when sulphur burns in oxygen.</p>
 
-  <p><strong>S + O₂ → SO₂</strong></p>
+  <p><strong>S(s) + O₂(g) → SO₂(g)</strong></p>
 
-  <h3>Properties</h3>
+  <h3>2. Physical properties</h3>
 
   <ul>
-    <li>It is a colourless gas.</li>
-    <li>It has a pungent smell.</li>
-    <li>It is soluble in water.</li>
-    <li>It is acidic in nature.</li>
+    <li>It is a colourless gas at room temperature.</li>
+    <li>It has a pungent, irritating smell, but it must never be
+    deliberately smelled directly.</li>
+    <li>It dissolves in water.</li>
+    <li>It is denser than air under comparable conditions.</li>
   </ul>
 
-  <p>Sulphur dioxide is also an important air pollutant.</p>`,
+  <p>Sulphur dioxide is toxic and can irritate the respiratory system.
+  Its colourlessness means it cannot be identified reliably by sight.</p>
+
+  <h3>3. Acidic nature</h3>
+
+  <p>When sulphur dioxide dissolves in water, the resulting solution
+  is acidic. At school level, this is commonly represented as:</p>
+
+  <p><strong>SO₂ + H₂O ⇌ H₂SO₃</strong></p>
+
+  <p>H₂SO₃ is called sulphurous acid. The notation represents the
+  aqueous chemistry of dissolved sulphur dioxide; sulphurous acid
+  is not normally isolated as a stable pure substance.</p>
+
+  <p>The acidic solution turns blue litmus red. This is an indicator
+  of acidity, not a method for identifying the gas by itself.</p>
+
+  <h3>4. Sulphur dioxide as an air pollutant</h3>
+
+  <p>Sulphur dioxide may be released when sulphur-containing fuels
+  burn or when some sulphide ores are processed.</p>
+
+  <p>Its environmental and health effects include:</p>
+
+  <ul>
+    <li>Irritation of the eyes and respiratory system.</li>
+    <li>Worsening of breathing problems, especially in susceptible people.</li>
+    <li>Contribution to acid deposition after reactions in the atmosphere.</li>
+    <li>Damage to vegetation and some building materials through acidic pollution.</li>
+  </ul>
+
+  <p>Appropriate industrial gas treatment and emission controls reduce
+  the amount released into the atmosphere.</p>
+
+  <h3>Worked examples</h3>
+
+  <p><strong>Example 1: Interpreting SO₂</strong></p>
+
+  <p>How many sulphur and oxygen atoms are present in one molecule
+  of sulphur dioxide?</p>
+
+  <p><strong>Step 1:</strong> S has no subscript, so it represents one
+  sulphur atom.</p>
+  <p><strong>Step 2:</strong> O₂ represents two oxygen atoms.</p>
+  <p><strong>Answer:</strong> One sulphur atom and two oxygen atoms.</p>
+
+  <p><strong>Example 2: Preparing the equation</strong></p>
+
+  <p>Write the balanced equation for sulphur reacting with oxygen.</p>
+
+  <p><strong>Step 1:</strong> Write S + O₂ as the reactants.</p>
+  <p><strong>Step 2:</strong> Write SO₂ as the product.</p>
+  <p><strong>Step 3:</strong> Count each atom on both sides.</p>
+  <p><strong>Answer:</strong> S + O₂ → SO₂.</p>
+
+  <p><strong>Example 3: Explaining an indicator result</strong></p>
+
+  <p>Moist blue litmus turns red in an environment containing dissolved
+  sulphur dioxide. Explain the observation.</p>
+
+  <p><strong>Step 1:</strong> Sulphur dioxide dissolves in the moisture.</p>
+  <p><strong>Step 2:</strong> The dissolved gas produces an acidic solution.</p>
+  <p><strong>Step 3:</strong> Acids turn blue litmus red.</p>
+  <p><strong>Answer:</strong> The litmus turns red because the moist
+  surface becomes acidic.</p>
+  `,
+
   [
     {
-      q: "What is the formula of sulphur dioxide?",
+      q: "A molecule of sulphur dioxide has the formula SO₂. Calculate the total number of atoms in one molecule and state how many belong to each element.",
       steps: [
-        "Step 1: Sulphur has the symbol S.",
-        "Step 2: Dioxide means two oxygen atoms.",
-        "Step 3: Therefore, the formula is SO₂."
+        "Step 1: Read S as one sulphur atom.",
+        "Step 2: Read O₂ as two oxygen atoms.",
+        "Step 3: Add the atoms: 1 + 2 = 3."
       ],
-      ans: "SO₂",
-      why: "The name sulphur dioxide indicates one sulphur atom and two oxygen atoms."
+      ans: "There are 3 atoms in total: 1 sulphur atom and 2 oxygen atoms.",
+      why: "A subscript applies to the element symbol immediately before it."
     },
     {
-      q: "How can sulphur dioxide be prepared from sulphur?",
+      q: "Write the balanced chemical equation for the formation of sulphur dioxide from its elements.",
       steps: [
-        "Step 1: React sulphur with oxygen.",
-        "Step 2: The product is sulphur dioxide.",
-        "Step 3: Write the equation: S + O₂ → SO₂."
+        "Step 1: Identify sulphur as S and oxygen gas as O₂.",
+        "Step 2: Write SO₂ as the product.",
+        "Step 3: Count sulphur and oxygen atoms on both sides."
       ],
-      ans: "By burning sulphur in oxygen.",
-      why: "Sulphur combines directly with oxygen to form sulphur dioxide."
+      ans: "S + O₂ → SO₂.",
+      why: "The equation conserves one sulphur atom and two oxygen atoms."
     },
     {
-      q: "State two properties of sulphur dioxide.",
+      q: "Explain why moist blue litmus can turn red when exposed to sulphur dioxide.",
+      hint: "Think about what happens when the gas dissolves in water.",
       steps: [
-        "Step 1: Sulphur dioxide is a colourless gas.",
-        "Step 2: It has a pungent smell.",
-        "Step 3: It is also soluble in water and acidic in nature.",
-        "Step 4: Any two are acceptable."
+        "Step 1: Moist litmus contains water.",
+        "Step 2: Sulphur dioxide dissolves in that water and forms an acidic solution.",
+        "Step 3: Apply the effect of an acid on blue litmus."
       ],
-      ans: "For example: it is a colourless gas and has a pungent smell.",
-      why: "These are characteristic properties of sulphur dioxide."
-    }
-  ],
-  [
+      ans: "Sulphur dioxide dissolves in the moisture to form an acidic solution, which turns blue litmus red.",
+      why: "The indicator responds to the acidity of the moist solution."
+    },
     {
-      q: "Why is sulphur dioxide considered an air pollutant?",
-      hint: "Think about what happens when it enters the atmosphere.",
+      q: "A student claims that sulphur dioxide is safe because it is colourless. Explain why this conclusion is wrong.",
       steps: [
-        "Step 1: Sulphur dioxide can be released when sulphur-containing fuels burn.",
-        "Step 2: It can react with substances in the atmosphere.",
-        "Step 3: It contributes to acid rain and respiratory problems."
+        "Step 1: Recognise that colour describes appearance, not toxicity.",
+        "Step 2: State the health hazard of sulphur dioxide.",
+        "Step 3: Draw a safety conclusion."
       ],
-      ans: "Because it pollutes air and contributes to acid rain and respiratory problems.",
-      why: "Sulphur dioxide is harmful to the environment and human health."
+      ans: "Sulphur dioxide is a toxic, irritating gas even though it is colourless. It must not be deliberately inhaled.",
+      why: "A gas can be dangerous without having a visible colour."
+    },
+    {
+      q: "Describe two ways sulphur dioxide can harm people or the environment.",
+      steps: [
+        "Step 1: Consider direct effects on breathing.",
+        "Step 2: Consider reactions that occur after the gas enters the atmosphere.",
+        "Step 3: Give two distinct effects."
+      ],
+      ans: "It can irritate the respiratory system and contribute to acid deposition that damages vegetation and building materials.",
+      why: "Sulphur dioxide causes both direct health effects and environmental harm."
+    },
+    {
+      q: "Explain why controlling sulphur dioxide emissions from industries is important.",
+      steps: [
+        "Step 1: Identify sources of the gas.",
+        "Step 2: State its health and environmental effects.",
+        "Step 3: Link emission controls to reducing those effects."
+      ],
+      ans: "Emission controls reduce the release of a harmful gas, lowering respiratory exposure and environmental damage caused by sulphur dioxide pollution.",
+      why: "Reducing the amount released into the atmosphere reduces the potential for harm."
     }
   ]
 );
@@ -34539,67 +38646,169 @@ add(
   "chemistry",
   "nonmetals_compounds",
   "Reactions of Sulphur Dioxide",
-  `<h2>Reactions of Sulphur Dioxide</h2>
 
-  <p>Sulphur dioxide reacts with water to form sulphurous acid.</p>
+  `
+  <h2>Reactions of Sulphur Dioxide</h2>
+
+  <h3>1. Reaction with water</h3>
+
+  <p>Sulphur dioxide dissolves in water and produces an acidic
+  solution. The reaction is commonly represented at school level by:</p>
 
   <p><strong>SO₂ + H₂O ⇌ H₂SO₃</strong></p>
 
-  <p>Sulphur dioxide can also be oxidised to sulphur trioxide.</p>
+  <p>H₂SO₃ is called sulphurous acid. The double arrow indicates
+  that the aqueous reaction is reversible. The notation is a
+  simplified representation of dissolved sulphur dioxide chemistry.</p>
 
-  <p><strong>2SO₂ + O₂ → 2SO₃</strong></p>
+  <p>Because the solution is acidic, it turns blue litmus red.</p>
 
-  <p>These reactions are important because sulphur dioxide is an intermediate in the manufacture of sulphuric acid.</p>`,
+  <h3>2. Oxidation to sulphur trioxide</h3>
+
+  <p>Sulphur dioxide can react with oxygen to form sulphur trioxide,
+  SO₃. Oxygen is added to the sulphur dioxide during oxidation.</p>
+
+  <p><strong>2SO₂(g) + O₂(g) ⇌ 2SO₃(g)</strong></p>
+
+  <p>The reaction is reversible under the conditions used in the
+  Contact Process, which manufactures sulphuric acid. Vanadium(V)
+  oxide, V₂O₅, is commonly used as the catalyst, at about 450°C
+  in industrial operation.</p>
+
+  <p>A catalyst increases the rate at which equilibrium is reached.
+  It does not change the equilibrium position.</p>
+
+  <h3>3. Balancing the oxidation equation</h3>
+
+  <p>Begin with the unbalanced equation:</p>
+
+  <p>SO₂ + O₂ ⇌ SO₃</p>
+
+  <p><strong>Step 1:</strong> Balance sulphur by putting 2 before SO₂
+  and SO₃.</p>
+
+  <p>2SO₂ + O₂ ⇌ 2SO₃</p>
+
+  <p><strong>Step 2:</strong> Count oxygen atoms on the left:
+  2 × 2 + 2 = 6.</p>
+
+  <p><strong>Step 3:</strong> Count oxygen atoms on the right:
+  2 × 3 = 6.</p>
+
+  <p>The equation is balanced because both sides contain two
+  sulphur atoms and six oxygen atoms.</p>
+
+  <h3>4. Why these reactions matter</h3>
+
+  <p>The reaction with water explains why dissolved sulphur dioxide
+  produces an acidic solution.</p>
+
+  <p>The oxidation of sulphur dioxide produces sulphur trioxide,
+  an important intermediate in the industrial manufacture of
+  sulphuric acid.</p>
+
+  <p>These are different reactions: one involves water and produces
+  an acidic solution; the other involves oxygen and produces SO₃.</p>
+
+  <h3>Worked examples</h3>
+
+  <p><strong>Example 1: Reaction with water</strong></p>
+
+  <p>State the product represented when sulphur dioxide dissolves
+  in water at school level.</p>
+
+  <p><strong>Step 1:</strong> Write the reactants, SO₂ and H₂O.</p>
+  <p><strong>Step 2:</strong> Identify the represented product, H₂SO₃.</p>
+  <p><strong>Step 3:</strong> Name the product.</p>
+  <p><strong>Answer:</strong> Sulphurous acid, H₂SO₃.</p>
+
+  <p><strong>Example 2: Balancing the oxidation reaction</strong></p>
+
+  <p>Balance SO₂ + O₂ ⇌ SO₃.</p>
+
+  <p><strong>Step 1:</strong> Put 2 before SO₂ to provide two sulphur atoms.</p>
+  <p><strong>Step 2:</strong> Put 2 before SO₃ to match the sulphur atoms.</p>
+  <p><strong>Step 3:</strong> The left now has six oxygen atoms and the
+  right has six.</p>
+  <p><strong>Answer:</strong> 2SO₂ + O₂ ⇌ 2SO₃.</p>
+
+  <p><strong>Example 3: Distinguishing the reactions</strong></p>
+
+  <p>Identify the reactant that reacts with sulphur dioxide in each case:
+  (a) formation of an acidic aqueous solution; (b) formation of SO₃.</p>
+
+  <p><strong>Step 1:</strong> Water reacts with SO₂ in the first case.</p>
+  <p><strong>Step 2:</strong> Oxygen reacts with SO₂ in the second case.</p>
+  <p><strong>Answer:</strong> (a) H₂O; (b) O₂.</p>
+  `,
+
   [
     {
-      q: "What is formed when sulphur dioxide dissolves in water?",
+      q: "Write the school-level equation for sulphur dioxide reacting with water, and name the acid represented.",
       steps: [
-        "Step 1: Sulphur dioxide reacts with water.",
-        "Step 2: The acid formed is sulphurous acid.",
-        "Step 3: The equation is SO₂ + H₂O ⇌ H₂SO₃."
+        "Step 1: Write the reactants SO₂ and H₂O.",
+        "Step 2: Write the represented product H₂SO₃.",
+        "Step 3: Give the correct acid name."
       ],
-      ans: "Sulphurous acid, H₂SO₃",
-      why: "Sulphur dioxide reacts with water to form sulphurous acid."
+      ans: "SO₂ + H₂O ⇌ H₂SO₃; the acid is sulphurous acid.",
+      why: "This equation represents the acidic solution formed when sulphur dioxide dissolves in water."
     },
     {
-      q: "Write the equation for oxidation of sulphur dioxide to sulphur trioxide.",
-      steps: [
-        "Step 1: Sulphur dioxide is SO₂.",
-        "Step 2: Oxygen is the oxidising reactant.",
-        "Step 3: The product is SO₃.",
-        "Step 4: Balance the equation: 2SO₂ + O₂ → 2SO₃."
-      ],
-      ans: "2SO₂ + O₂ → 2SO₃",
-      why: "Two SO₂ molecules provide two sulphur atoms and four oxygen atoms; O₂ supplies the remaining two oxygen atoms."
-    },
-    {
-      q: "What acid is formed when SO₂ reacts with water?",
-      steps: [
-        "Step 1: Write SO₂ + H₂O.",
-        "Step 2: The product is H₂SO₃.",
-        "Step 3: H₂SO₃ is sulphurous acid."
-      ],
-      ans: "Sulphurous acid",
-      why: "SO₂ dissolved in water forms sulphurous acid."
-    }
-  ],
-  [
-    {
-      q: "Balance SO₂ + O₂ → SO₃.",
-      hint: "Start by balancing sulphur atoms.",
+      q: "Balance the equation SO₂ + O₂ ⇌ SO₃ and show the atom count on both sides.",
       steps: [
         "Step 1: Put 2 before SO₂ and 2 before SO₃.",
-        "Step 2: Oxygen atoms on the left are now 4 + 2 = 6.",
-        "Step 3: Oxygen atoms on the right are 2 × 3 = 6.",
-        "Step 4: The balanced equation is 2SO₂ + O₂ → 2SO₃."
+        "Step 2: Count sulphur: two atoms on each side.",
+        "Step 3: Count oxygen on the left: four from 2SO₂ plus two from O₂, giving six.",
+        "Step 4: Count oxygen on the right: six from 2SO₃."
       ],
-      ans: "2SO₂ + O₂ → 2SO₃",
-      why: "The coefficients give equal numbers of sulphur and oxygen atoms on both sides."
+      ans: "2SO₂ + O₂ ⇌ 2SO₃. Each side has 2 sulphur atoms and 6 oxygen atoms.",
+      why: "Balancing ensures that atoms are conserved during the reaction."
+    },
+    {
+      q: "Sulphur dioxide is changed into sulphur trioxide. Explain what happens chemically and write the equation.",
+      steps: [
+        "Step 1: Compare SO₂ and SO₃.",
+        "Step 2: Each SO₃ molecule contains one more oxygen atom than SO₂.",
+        "Step 3: Oxygen reacts with sulphur dioxide.",
+        "Step 4: Balance the equation."
+      ],
+      ans: "Sulphur dioxide is oxidised by oxygen: 2SO₂ + O₂ ⇌ 2SO₃.",
+      why: "Oxidation in this reaction involves the addition of oxygen to sulphur dioxide."
+    },
+    {
+      q: "Explain why the equation for the reaction of sulphur dioxide with water is commonly written with a double arrow.",
+      hint: "Think about whether the reaction can proceed in both directions.",
+      steps: [
+        "Step 1: Identify the reactants and represented product.",
+        "Step 2: Recognise that the aqueous reaction is reversible.",
+        "Step 3: Explain what the double arrow communicates."
+      ],
+      ans: "The double arrow indicates a reversible aqueous reaction in which the forward and reverse processes can occur.",
+      why: "A double arrow distinguishes a reversible reaction from an equation represented as proceeding in one direction only."
+    },
+    {
+      q: "In the Contact Process, why is converting sulphur dioxide into sulphur trioxide an important step?",
+      steps: [
+        "Step 1: Identify the product of the oxidation reaction.",
+        "Step 2: Recall the role of sulphur trioxide in making sulphuric acid.",
+        "Step 3: Link the intermediate to the overall industrial process."
+      ],
+      ans: "Sulphur trioxide is the intermediate that is subsequently used to manufacture sulphuric acid.",
+      why: "The oxidation of SO₂ provides SO₃, which is needed in the next part of the industrial process."
+    },
+    {
+      q: "A learner balances SO₂ + O₂ ⇌ SO₃ as SO₂ + O₂ ⇌ SO₃ and says the equation is balanced. Show why the claim is wrong and correct it.",
+      steps: [
+        "Step 1: Count sulphur atoms: one on each side.",
+        "Step 2: Count oxygen atoms on the left: two plus two, giving four.",
+        "Step 3: Count oxygen atoms on the right: three.",
+        "Step 4: Change the coefficients and recount."
+      ],
+      ans: "The equation is not balanced because it has four oxygen atoms on the left and three on the right. The balanced equation is 2SO₂ + O₂ ⇌ 2SO₃.",
+      why: "A correct equation must conserve every type of atom, not just sulphur."
     }
   ]
 );
-
-
 // ============================================================
 // 4. SULPHUR TRIOXIDE
 // ============================================================
@@ -34608,64 +38817,152 @@ add(
   "chemistry",
   "nonmetals_compounds",
   "Sulphur Trioxide",
-  `<h2>Sulphur Trioxide</h2>
 
-  <p>Sulphur trioxide is a compound of sulphur and oxygen with the formula <strong>SO₃</strong>.</p>
+  `
+  <h2>Sulphur Trioxide</h2>
 
-  <p>It is formed by oxidation of sulphur dioxide:</p>
+  <h3>1. Formula and composition</h3>
 
-  <p><strong>2SO₂ + O₂ → 2SO₃</strong></p>
+  <p>Sulphur trioxide is a compound containing sulphur and oxygen.
+  Its chemical formula is <strong>SO₃</strong>.</p>
 
-  <p>Sulphur trioxide reacts vigorously with water to form sulphuric acid:</p>
+  <p>One molecule of SO₃ contains one sulphur atom and three oxygen
+  atoms. The prefix <strong>tri-</strong> indicates three oxygen
+  atoms in the name sulphur trioxide.</p>
+
+  <h3>2. Formation from sulphur dioxide</h3>
+
+  <p>Sulphur trioxide is formed when sulphur dioxide reacts with
+  oxygen. This reaction is an oxidation reaction because oxygen
+  is added to sulphur dioxide.</p>
+
+  <p><strong>2SO₂(g) + O₂(g) ⇌ 2SO₃(g)</strong></p>
+
+  <p>The reaction is reversible under the conditions used in the
+  Contact Process. In industry, a vanadium(V) oxide catalyst,
+  V₂O₅, is commonly used at about 450°C.</p>
+
+  <p>A catalyst speeds up the reaction, allowing equilibrium to be
+  reached faster. It does not change the equilibrium position.</p>
+
+  <h3>3. Reaction with water</h3>
+
+  <p>Sulphur trioxide reacts vigorously with water to form
+  sulphuric acid.</p>
 
   <p><strong>SO₃ + H₂O → H₂SO₄</strong></p>
 
-  <p>This reaction is important in the manufacture of sulphuric acid.</p>`,
+  <p>This reaction releases a large amount of heat. The formation
+  of fine acid mist can make direct absorption of SO₃ into water
+  difficult to control.</p>
+
+  <p>For this reason, industrial manufacture normally absorbs SO₃
+  into concentrated sulphuric acid to form oleum. The oleum is
+  then carefully diluted with water to obtain sulphuric acid.</p>
+
+  <h3>4. Importance of sulphur trioxide</h3>
+
+  <p>Sulphur trioxide is an important intermediate in the
+  manufacture of sulphuric acid. Its reaction with water gives
+  the overall chemical relationship, while the Contact Process
+  uses controlled absorption to manage the reaction safely
+  and efficiently.</p>
+
+  <h3>Worked examples</h3>
+
+  <p><strong>Example 1: Counting atoms in SO₃</strong></p>
+
+  <p>Determine the total number of atoms in one molecule of SO₃.</p>
+
+  <p><strong>Step 1:</strong> S represents one sulphur atom.</p>
+  <p><strong>Step 2:</strong> O₃ represents three oxygen atoms.</p>
+  <p><strong>Step 3:</strong> Add the atoms: 1 + 3 = 4.</p>
+  <p><strong>Answer:</strong> Four atoms: one sulphur and three oxygen atoms.</p>
+
+  <p><strong>Example 2: Balancing the oxidation equation</strong></p>
+
+  <p>Balance SO₂ + O₂ ⇌ SO₃.</p>
+
+  <p><strong>Step 1:</strong> Put 2 before SO₂ and 2 before SO₃.</p>
+  <p><strong>Step 2:</strong> The left side has 2 sulphur atoms and
+  2(2) + 2 = 6 oxygen atoms.</p>
+  <p><strong>Step 3:</strong> The right side has 2 sulphur atoms
+  and 2(3) = 6 oxygen atoms.</p>
+  <p><strong>Answer:</strong> 2SO₂ + O₂ ⇌ 2SO₃.</p>
+
+  <p><strong>Example 3: Reaction with water</strong></p>
+
+  <p>Write the equation for the reaction of 1 mole of SO₃ with
+  water and identify the acid formed.</p>
+
+  <p><strong>Step 1:</strong> Write the reactants SO₃ and H₂O.</p>
+  <p><strong>Step 2:</strong> Write H₂SO₄ as the product.</p>
+  <p><strong>Step 3:</strong> Check that S, H and O atoms are balanced.</p>
+  <p><strong>Answer:</strong> SO₃ + H₂O → H₂SO₄; sulphuric acid is formed.</p>
+  `,
+
   [
     {
-      q: "What is the formula of sulphur trioxide?",
+      q: "Calculate the total number of atoms in one molecule of SO₃ and state the number of atoms of each element.",
       steps: [
-        "Step 1: Sulphur has the symbol S.",
-        "Step 2: Trioxide means three oxygen atoms.",
-        "Step 3: Therefore, the formula is SO₃."
+        "Step 1: S has no subscript, so it represents one sulphur atom.",
+        "Step 2: O₃ represents three oxygen atoms.",
+        "Step 3: Add 1 + 3 = 4 atoms."
       ],
-      ans: "SO₃",
-      why: "The name indicates one sulphur atom and three oxygen atoms."
+      ans: "Four atoms in total: one sulphur atom and three oxygen atoms.",
+      why: "The subscript 3 applies to oxygen only."
     },
     {
-      q: "How is sulphur trioxide formed from sulphur dioxide?",
+      q: "Balance the equation SO₂ + O₂ ⇌ SO₃ and show the number of sulphur and oxygen atoms on each side.",
       steps: [
-        "Step 1: Sulphur dioxide reacts with oxygen.",
-        "Step 2: The product is sulphur trioxide.",
-        "Step 3: Balance the equation.",
-        "Step 4: 2SO₂ + O₂ → 2SO₃."
+        "Step 1: Put 2 before SO₂ and 2 before SO₃.",
+        "Step 2: Count sulphur: 2 atoms on each side.",
+        "Step 3: Count oxygen on the left: 4 + 2 = 6.",
+        "Step 4: Count oxygen on the right: 6."
       ],
-      ans: "2SO₂ + O₂ → 2SO₃",
-      why: "Sulphur dioxide is oxidised by oxygen to sulphur trioxide."
+      ans: "2SO₂ + O₂ ⇌ 2SO₃. Both sides contain 2 sulphur atoms and 6 oxygen atoms.",
+      why: "The coefficients make the number of each type of atom equal on both sides."
     },
     {
-      q: "What is formed when sulphur trioxide reacts with water?",
+      q: "Write the equation for sulphur trioxide reacting with water. Name the product and explain why the reaction requires care.",
       steps: [
-        "Step 1: Write SO₃ + H₂O.",
-        "Step 2: The product is H₂SO₄.",
-        "Step 3: H₂SO₄ is sulphuric acid."
+        "Step 1: Write SO₃ and H₂O as the reactants.",
+        "Step 2: Write H₂SO₄ as the product.",
+        "Step 3: Check that the equation is balanced.",
+        "Step 4: Recall that the reaction releases considerable heat."
       ],
-      ans: "Sulphuric acid, H₂SO₄",
-      why: "Sulphur trioxide reacts with water to produce sulphuric acid."
-    }
-  ],
-  [
+      ans: "SO₃ + H₂O → H₂SO₄. Sulphuric acid forms, and the reaction releases considerable heat.",
+      why: "The strong heat release and acid mist make direct absorption into water difficult to control."
+    },
     {
-      q: "Write the balanced equation for the reaction between SO₃ and water.",
-      hint: "One SO₃ molecule reacts with one H₂O molecule.",
+      q: "Explain why converting sulphur dioxide into sulphur trioxide is described as oxidation.",
       steps: [
-        "Step 1: Write SO₃ + H₂O.",
-        "Step 2: The product is H₂SO₄.",
-        "Step 3: Check the atoms on both sides.",
-        "Step 4: The equation is already balanced."
+        "Step 1: Compare the formulae SO₂ and SO₃.",
+        "Step 2: Notice that SO₃ contains one more oxygen atom per sulphur atom.",
+        "Step 3: Relate the addition of oxygen to oxidation."
       ],
-      ans: "SO₃ + H₂O → H₂SO₄",
-      why: "One sulphur, two hydrogen and four oxygen atoms occur on both sides."
+      ans: "It is oxidation because sulphur dioxide combines with oxygen to form sulphur trioxide.",
+      why: "At this level, oxidation can be identified as the addition of oxygen."
+    },
+    {
+      q: "State the role of the vanadium(V) oxide catalyst in forming sulphur trioxide in the Contact Process.",
+      steps: [
+        "Step 1: Identify the reaction as the oxidation of SO₂ by O₂.",
+        "Step 2: State what a catalyst does to reaction rate.",
+        "Step 3: Explain what the catalyst does not change."
+      ],
+      ans: "V₂O₅ increases the rate at which the reaction reaches equilibrium; it does not change the equilibrium position.",
+      why: "A catalyst provides a faster reaction pathway without changing the equilibrium composition."
+    },
+    {
+      q: "Explain why industries absorb sulphur trioxide into concentrated sulphuric acid instead of directly absorbing it into water.",
+      steps: [
+        "Step 1: Recognise that SO₃ reacts vigorously with water.",
+        "Step 2: Identify the problems caused by heat release and acid mist.",
+        "Step 3: State the industrial alternative."
+      ],
+      ans: "Direct reaction with water releases much heat and can form acid mist. SO₃ is therefore absorbed into concentrated sulphuric acid to form oleum, which is then carefully diluted.",
+      why: "The industrial method allows the reaction and product formation to be controlled more effectively."
     }
   ]
 );
@@ -34679,72 +38976,172 @@ add(
   "chemistry",
   "nonmetals_compounds",
   "Sulphuric Acid",
-  `<h2>Sulphuric Acid</h2>
 
-  <p>Sulphuric acid has the formula <strong>H₂SO₄</strong>.</p>
+  `
+  <h2>Sulphuric Acid</h2>
 
-  <p>It is a strong mineral acid with many important chemical properties and uses.</p>
+  <h3>1. Formula and composition</h3>
 
-  <h3>Properties</h3>
+  <p>Sulphuric acid is an important mineral acid with the formula
+  <strong>H₂SO₄</strong>.</p>
+
+  <p>One formula unit contains two hydrogen atoms, one sulphur atom
+  and four oxygen atoms.</p>
+
+  <h3>2. Acidic properties</h3>
+
+  <p>Sulphuric acid is a strong acid in its first ionisation in
+  water. An aqueous solution contains hydrogen ions, represented
+  more accurately in water as hydronium ions, and hydrogen
+  sulphate and sulphate species.</p>
+
+  <p>Common school-level indicators of an acidic solution include:</p>
 
   <ul>
-    <li>It is a strong acid.</li>
-    <li>Concentrated sulphuric acid is highly corrosive.</li>
-    <li>It reacts with bases to form sulphates and water.</li>
-    <li>It reacts with carbonates to form sulphates, water and carbon dioxide.</li>
+    <li>Blue litmus turns red.</li>
+    <li>Universal indicator shows a colour associated with low pH,
+    depending on the solution concentration.</li>
+    <li>Aqueous acid solutions conduct electricity because they
+    contain mobile ions.</li>
   </ul>
 
-  <h3>Example: reaction with sodium hydroxide</h3>
+  <h3>3. Reaction with bases</h3>
+
+  <p>Sulphuric acid reacts with suitable bases to form a sulphate
+  salt and water. This is a neutralisation reaction.</p>
 
   <p><strong>H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O</strong></p>
 
-  <p>The salt formed is sodium sulphate.</p>`,
+  <p>In this equation, sulphuric acid reacts with sodium hydroxide
+  to form sodium sulphate and water.</p>
+
+  <h3>4. Concentrated sulphuric acid</h3>
+
+  <p>Concentrated sulphuric acid is highly corrosive. It can also
+  remove water from some substances through its dehydrating action.</p>
+
+  <p>For example, concentrated sulphuric acid can remove water
+  from sugar, leaving a carbon-rich black mass. This is a
+  chemical demonstration that must only be carried out by a
+  properly equipped teacher in a controlled laboratory.</p>
+
+  <p>Concentrated acid must be handled with appropriate protective
+  equipment. Dilution releases substantial heat, so acid should
+  be added slowly to water while stirring, never water poured
+  into concentrated acid.</p>
+
+  <h3>5. Distinguishing strength from concentration</h3>
+
+  <p><strong>Acid strength</strong> describes the extent to which
+  an acid ionises in water.</p>
+
+  <p><strong>Concentration</strong> describes the amount of acid
+  dissolved in a given volume of solution.</p>
+
+  <p>These terms are not interchangeable. A strong acid can be
+  dilute, and a weak acid can be relatively concentrated.</p>
+
+  <h3>Worked examples</h3>
+
+  <p><strong>Example 1: Counting atoms in H₂SO₄</strong></p>
+
+  <p>Find the total number of atoms represented by one formula
+  unit of H₂SO₄.</p>
+
+  <p><strong>Step 1:</strong> H₂ represents 2 hydrogen atoms.</p>
+  <p><strong>Step 2:</strong> S represents 1 sulphur atom.</p>
+  <p><strong>Step 3:</strong> O₄ represents 4 oxygen atoms.</p>
+  <p><strong>Step 4:</strong> Add 2 + 1 + 4 = 7.</p>
+  <p><strong>Answer:</strong> Seven atoms in total.</p>
+
+  <p><strong>Example 2: Neutralisation</strong></p>
+
+  <p>Write the balanced equation for sulphuric acid reacting
+  completely with sodium hydroxide.</p>
+
+  <p><strong>Step 1:</strong> Write H₂SO₄ + NaOH.</p>
+  <p><strong>Step 2:</strong> The salt is Na₂SO₄ and water is H₂O.</p>
+  <p><strong>Step 3:</strong> Put 2 before NaOH to supply two sodium atoms.</p>
+  <p><strong>Step 4:</strong> Put 2 before H₂O to balance hydrogen and oxygen.</p>
+  <p><strong>Answer:</strong> H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O.</p>
+
+  <p><strong>Example 3: Choosing the safe dilution method</strong></p>
+
+  <p>A learner needs to dilute concentrated sulphuric acid. State
+  the correct order of mixing and explain why.</p>
+
+  <p><strong>Step 1:</strong> Place the required amount of water
+  in a suitable container.</p>
+  <p><strong>Step 2:</strong> Add the acid slowly to the water
+  while stirring, using appropriate protective equipment.</p>
+  <p><strong>Step 3:</strong> Allow heat to disperse safely.</p>
+  <p><strong>Answer:</strong> Add acid to water slowly, never water
+  to concentrated acid, because dilution releases considerable heat.</p>
+  `,
+
   [
     {
-      q: "What is the formula of sulphuric acid?",
+      q: "Determine the total number of atoms in one formula unit of H₂SO₄ and show how you obtained your answer.",
       steps: [
-        "Step 1: Identify the chemical formula of sulphuric acid.",
-        "Step 2: It contains two hydrogen atoms, one sulphur atom and four oxygen atoms.",
-        "Step 3: Therefore, the formula is H₂SO₄."
+        "Step 1: Count 2 hydrogen atoms.",
+        "Step 2: Count 1 sulphur atom.",
+        "Step 3: Count 4 oxygen atoms.",
+        "Step 4: Add 2 + 1 + 4 = 7."
       ],
-      ans: "H₂SO₄",
-      why: "Sulphuric acid contains H₂SO₄."
+      ans: "Seven atoms: 2 hydrogen, 1 sulphur and 4 oxygen.",
+      why: "Subscripts indicate how many atoms of each element are represented."
     },
     {
-      q: "What salt is formed when sulphuric acid reacts with sodium hydroxide?",
+      q: "Write and balance the equation for complete neutralisation of sulphuric acid by sodium hydroxide.",
       steps: [
-        "Step 1: Sulphuric acid provides the sulphate ion.",
-        "Step 2: Sodium hydroxide provides sodium ions.",
-        "Step 3: The salt formed is sodium sulphate.",
-        "Step 4: The complete equation is H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O."
+        "Step 1: Write the reactants H₂SO₄ and NaOH.",
+        "Step 2: Identify sodium sulphate and water as the products.",
+        "Step 3: Put 2 before NaOH to balance sodium.",
+        "Step 4: Put 2 before H₂O and check every element."
       ],
-      ans: "Sodium sulphate, Na₂SO₄",
-      why: "The sulphate ion combines with sodium ions to form sodium sulphate."
+      ans: "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O.",
+      why: "The balanced equation conserves hydrogen, sulphur, oxygen and sodium atoms."
     },
     {
-      q: "Balance H₂SO₄ + NaOH → Na₂SO₄ + H₂O.",
+      q: "A student tests an aqueous solution of sulphuric acid with blue litmus. Predict the result and explain it.",
       steps: [
-        "Step 1: Na₂SO₄ contains two sodium atoms.",
-        "Step 2: Place 2 before NaOH.",
-        "Step 3: There are now four hydrogen atoms on the left.",
-        "Step 4: Place 2 before H₂O.",
-        "Step 5: The balanced equation is H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O."
+        "Step 1: Identify sulphuric acid solution as acidic.",
+        "Step 2: Recall the behaviour of blue litmus in an acid.",
+        "Step 3: State the expected colour change."
       ],
-      ans: "H₂SO₄ + 2NaOH → Na₂SO₄ + 2H₂O",
-      why: "The coefficients balance sodium and hydrogen while sulphur and oxygen are already balanced."
-    }
-  ],
-  [
+      ans: "Blue litmus turns red because the solution is acidic.",
+      why: "Acidic solutions change blue litmus to red."
+    },
     {
-      q: "Why must concentrated sulphuric acid be handled carefully?",
-      hint: "Consider its effect on materials and living tissue.",
+      q: "Explain the difference between a strong acid and a concentrated acid. Use sulphuric acid in your explanation.",
       steps: [
-        "Step 1: Concentrated sulphuric acid is highly corrosive.",
-        "Step 2: Corrosive substances can damage skin and other materials.",
-        "Step 3: Therefore, appropriate protective equipment and careful handling are required."
+        "Step 1: Define acid strength in terms of ionisation in water.",
+        "Step 2: Define concentration in terms of amount per volume.",
+        "Step 3: Explain why the terms describe different properties."
       ],
-      ans: "Because it is highly corrosive and can cause serious chemical burns.",
-      why: "Its corrosive nature makes concentrated sulphuric acid hazardous."
+      ans: "Strength describes the extent of ionisation, while concentration describes how much acid is present per volume of solution. Sulphuric acid can be strong yet dilute.",
+      why: "Strength and concentration measure different things and should not be used as synonyms."
+    },
+    {
+      q: "State the safe procedure for diluting concentrated sulphuric acid and explain the main hazard.",
+      steps: [
+        "Step 1: Put water in a suitable container.",
+        "Step 2: Add acid slowly to the water while stirring.",
+        "Step 3: Use suitable protective equipment.",
+        "Step 4: Explain that dilution releases considerable heat."
+      ],
+      ans: "Slowly add acid to water while stirring and wearing appropriate protective equipment. Never pour water into concentrated acid because rapid heating can cause dangerous splashing.",
+      why: "The heat released during dilution can cause local boiling and splashes."
+    },
+    {
+      q: "Concentrated sulphuric acid can act as a dehydrating agent. Explain what this means.",
+      steps: [
+        "Step 1: Identify water as the substance removed.",
+        "Step 2: Explain that the acid removes water from some materials.",
+        "Step 3: Distinguish this action from simply being an acidic solution."
+      ],
+      ans: "It means concentrated sulphuric acid can remove water from certain substances, sometimes causing substantial chemical changes.",
+      why: "Its dehydrating action is a property distinct from its ability to behave as an acid."
     }
   ]
 );
@@ -34758,782 +39155,1845 @@ add(
   "chemistry",
   "nonmetals_compounds",
   "Manufacture of Sulphuric Acid",
-  `<h2>Manufacture of Sulphuric Acid</h2>
 
-  <p>Sulphuric acid is manufactured industrially by the <strong>Contact Process</strong>.</p>
+  `
+  <h2>Manufacture of Sulphuric Acid: The Contact Process</h2>
 
-  <h3>Step 1: Formation of sulphur dioxide</h3>
+  <h3>1. Overview</h3>
 
-  <p>Sulphur is burned in oxygen:</p>
+  <p>Sulphuric acid is manufactured industrially by the
+  <strong>Contact Process</strong>. The process converts a
+  sulphur-containing raw material into sulphur dioxide, then
+  sulphur trioxide, and finally sulphuric acid.</p>
 
-  <p><strong>S + O₂ → SO₂</strong></p>
+  <p>The main stages are:</p>
 
-  <h3>Step 2: Oxidation of sulphur dioxide</h3>
+  <ol>
+    <li>Produce sulphur dioxide.</li>
+    <li>Purify and dry the gases.</li>
+    <li>Oxidise sulphur dioxide to sulphur trioxide.</li>
+    <li>Absorb sulphur trioxide into concentrated sulphuric acid
+    to form oleum.</li>
+    <li>Dilute oleum carefully to obtain sulphuric acid of the
+    required concentration.</li>
+  </ol>
 
-  <p>Sulphur dioxide is oxidised to sulphur trioxide:</p>
+  <h3>2. Stage 1: Production of sulphur dioxide</h3>
 
-  <p><strong>2SO₂ + O₂ ⇌ 2SO₃</strong></p>
+  <p>Sulphur can be burned in oxygen to form sulphur dioxide.</p>
 
-  <p>A vanadium(V) oxide catalyst is used.</p>
+  <p><strong>S(s) + O₂(g) → SO₂(g)</strong></p>
 
-  <h3>Step 3: Formation of sulphuric acid</h3>
+  <p>Sulphur dioxide may also be obtained by roasting certain
+  sulphide ores in air. The gas produced must be suitable for
+  subsequent catalytic processing.</p>
 
-  <p>Sulphur trioxide is processed to produce sulphuric acid.</p>
+  <h3>3. Stage 2: Purification and drying</h3>
 
-  <p>The Contact Process is important because sulphuric acid is required in many industrial processes.</p>`,
+  <p>Impurities must be removed from the gas stream because they
+  can interfere with the catalyst or damage the equipment.
+  Moisture is also removed before the gas enters the conversion
+  stage.</p>
+
+  <h3>4. Stage 3: Conversion to sulphur trioxide</h3>
+
+  <p>Sulphur dioxide reacts reversibly with oxygen:</p>
+
+  <p><strong>2SO₂(g) + O₂(g) ⇌ 2SO₃(g)</strong></p>
+
+  <p>Typical industrial conditions include:</p>
+
+  <ul>
+    <li>A vanadium(V) oxide catalyst, V₂O₅.</li>
+    <li>A temperature of approximately 450°C.</li>
+    <li>A suitable pressure, commonly around atmospheric pressure
+    or only slightly above it.</li>
+  </ul>
+
+  <p>The reaction is exothermic. The chosen temperature balances
+  a favourable equilibrium yield against a sufficiently fast
+  reaction rate.</p>
+
+  <p>The catalyst increases the rate of reaching equilibrium.
+  It does not increase the equilibrium yield by itself.</p>
+
+  <h3>5. Stage 4: Absorption of sulphur trioxide</h3>
+
+  <p>Sulphur trioxide is not normally absorbed directly into
+  water on an industrial scale because the reaction releases
+  considerable heat and produces a fine acid mist.</p>
+
+  <p>Instead, SO₃ is absorbed in concentrated sulphuric acid
+  to form oleum. A simplified equation is:</p>
+
+  <p><strong>SO₃ + H₂SO₄ → H₂S₂O₇</strong></p>
+
+  <p>H₂S₂O₇ represents oleum in this simplified equation.</p>
+
+  <h3>6. Stage 5: Formation of sulphuric acid</h3>
+
+  <p>Oleum reacts with a controlled amount of water to produce
+  sulphuric acid:</p>
+
+  <p><strong>H₂S₂O₇ + H₂O → 2H₂SO₄</strong></p>
+
+  <p>This is the industrial route to the final acid product.
+  The amount of water is controlled to obtain the required
+  concentration safely.</p>
+
+  <h3>7. Overall process and its importance</h3>
+
+  <p>The simplified overall chemical relationship can be written:</p>
+
+  <p><strong>2SO₂ + O₂ + 2H₂O → 2H₂SO₄</strong></p>
+
+  <p>This overall equation summarises the conversion of sulphur
+  dioxide into sulphuric acid. It does not show the intermediate
+  oleum stage used in the industrial process.</p>
+
+  <p>Sulphuric acid is used in the manufacture of fertilisers,
+  chemicals and other industrial products. Efficient conversion,
+  gas purification and emission control are important parts of
+  industrial operation.</p>
+
+  <h3>Worked examples</h3>
+
+  <p><strong>Example 1: Identifying the Contact Process stages</strong></p>
+
+  <p>Arrange these transformations in the correct order:
+  SO₃ formation, SO₂ production, oleum formation, and acid formation.</p>
+
+  <p><strong>Step 1:</strong> Produce SO₂ first.</p>
+  <p><strong>Step 2:</strong> Oxidise SO₂ to SO₃.</p>
+  <p><strong>Step 3:</strong> Absorb SO₃ into concentrated sulphuric acid
+  to form oleum.</p>
+  <p><strong>Step 4:</strong> React oleum with controlled water to
+  form sulphuric acid.</p>
+  <p><strong>Answer:</strong> SO₂ production → SO₃ formation →
+  oleum formation → sulphuric acid formation.</p>
+
+  <p><strong>Example 2: Balancing the conversion stage</strong></p>
+
+  <p>Balance SO₂ + O₂ ⇌ SO₃.</p>
+
+  <p><strong>Step 1:</strong> Put 2 before SO₂ and SO₃.</p>
+  <p><strong>Step 2:</strong> Count oxygen on the left: 4 + 2 = 6.</p>
+  <p><strong>Step 3:</strong> Count oxygen on the right: 6.</p>
+  <p><strong>Answer:</strong> 2SO₂ + O₂ ⇌ 2SO₃.</p>
+
+  <p><strong>Example 3: Explaining the catalyst</strong></p>
+
+  <p>Explain why V₂O₅ is used during the oxidation of sulphur
+  dioxide in the Contact Process.</p>
+
+  <p><strong>Step 1:</strong> Identify the reaction as reversible.</p>
+  <p><strong>Step 2:</strong> Recall that a catalyst increases reaction rate.</p>
+  <p><strong>Step 3:</strong> Explain that it helps the system reach
+  equilibrium faster without changing the equilibrium position.</p>
+  <p><strong>Answer:</strong> V₂O₅ speeds up the conversion of SO₂
+  to SO₃, allowing equilibrium to be reached faster.</p>
+  `,
+
   [
     {
-      q: "Name the industrial process used to manufacture sulphuric acid.",
+      q: "Describe the five main stages of the Contact Process in the correct order.",
       steps: [
-        "Step 1: Identify the industrial manufacture of sulphuric acid.",
-        "Step 2: The process is called the Contact Process."
+        "Step 1: Produce sulphur dioxide from sulphur or a suitable sulphide ore.",
+        "Step 2: Purify and dry the gases.",
+        "Step 3: Oxidise SO₂ to SO₃ using a catalyst.",
+        "Step 4: Absorb SO₃ into concentrated sulphuric acid to form oleum.",
+        "Step 5: Dilute oleum carefully to obtain sulphuric acid."
       ],
-      ans: "Contact Process",
-      why: "The Contact Process is the industrial method used to manufacture sulphuric acid."
+      ans: "SO₂ production → gas purification and drying → catalytic oxidation to SO₃ → absorption to form oleum → controlled dilution to form H₂SO₄.",
+      why: "Each stage prepares the material required by the next stage of the industrial process."
     },
     {
-      q: "Write the equation for formation of sulphur dioxide from sulphur.",
+      q: "Write and balance the equation for converting sulphur dioxide into sulphur trioxide in the Contact Process.",
       steps: [
-        "Step 1: Sulphur reacts with oxygen.",
-        "Step 2: The product is sulphur dioxide.",
-        "Step 3: Write the balanced equation: S + O₂ → SO₂."
+        "Step 1: Write SO₂ + O₂ ⇌ SO₃.",
+        "Step 2: Put 2 before SO₂ to give two sulphur atoms.",
+        "Step 3: Put 2 before SO₃ to balance sulphur.",
+        "Step 4: Check oxygen: six atoms on each side."
       ],
-      ans: "S + O₂ → SO₂",
-      why: "Burning sulphur in oxygen produces sulphur dioxide."
+      ans: "2SO₂ + O₂ ⇌ 2SO₃.",
+      why: "Equal numbers of sulphur and oxygen atoms must appear on both sides."
     },
     {
-      q: "What catalyst is commonly used to oxidise SO₂ to SO₃ in the Contact Process?",
+      q: "State the catalyst and approximate operating temperature used for converting sulphur dioxide to sulphur trioxide.",
       steps: [
-        "Step 1: Identify the oxidation step: 2SO₂ + O₂ ⇌ 2SO₃.",
-        "Step 2: The industrial catalyst used is vanadium(V) oxide.",
-        "Step 3: Therefore, the catalyst is V₂O₅."
+        "Step 1: Identify the Contact Process conversion stage.",
+        "Step 2: Recall the catalyst used in the industrial reaction.",
+        "Step 3: State the approximate operating temperature."
       ],
-      ans: "Vanadium(V) oxide, V₂O₅",
-      why: "Vanadium(V) oxide catalyses the oxidation of sulphur dioxide to sulphur trioxide."
-    }
-  ],
-  [
+      ans: "Vanadium(V) oxide, V₂O₅, at approximately 450°C.",
+      why: "These conditions provide a practical balance between reaction rate and equilibrium yield."
+    },
     {
-      q: "Why is a catalyst used in the Contact Process?",
-      hint: "Think about the effect of a catalyst on reaction rate.",
+      q: "Explain why the gas mixture is purified before it enters the catalytic conversion stage.",
       steps: [
-        "Step 1: A catalyst increases the rate of a reaction.",
-        "Step 2: It does this without being permanently consumed.",
-        "Step 3: Therefore, V₂O₅ is used to increase the rate of oxidation of SO₂ to SO₃."
+        "Step 1: Identify the catalyst as necessary for the conversion reaction.",
+        "Step 2: Recognise that impurities can interfere with the catalyst or equipment.",
+        "Step 3: Explain the benefit of purification."
       ],
-      ans: "To increase the rate of oxidation of sulphur dioxide to sulphur trioxide.",
-      why: "The catalyst makes the industrial reaction proceed faster without being consumed overall."
+      ans: "Purification removes impurities that could interfere with the catalyst or damage equipment, helping the process operate effectively.",
+      why: "Clean gas is important for reliable catalytic conversion and industrial operation."
+    },
+    {
+      q: "Explain why sulphur trioxide is absorbed into concentrated sulphuric acid rather than directly into water in the industrial process.",
+      steps: [
+        "Step 1: Recognise that SO₃ reacts vigorously with water.",
+        "Step 2: Identify the heat release and acid mist as problems.",
+        "Step 3: State how the industrial process avoids these difficulties."
+      ],
+      ans: "SO₃ is absorbed into concentrated sulphuric acid to form oleum because direct absorption in water releases considerable heat and can produce a fine acid mist. Oleum is then carefully diluted.",
+      why: "The absorption stage is designed to manage the reaction and produce sulphuric acid more effectively."
+    },
+    {
+      q: "Write the equation for oleum reacting with water and check whether it is balanced: H₂S₂O₇ + H₂O → 2H₂SO₄.",
+      steps: [
+        "Step 1: Count hydrogen on the left: 2 + 2 = 4.",
+        "Step 2: Count sulphur on the left: 2.",
+        "Step 3: Count oxygen on the left: 7 + 1 = 8.",
+        "Step 4: Count atoms on the right: 4 hydrogen, 2 sulphur and 8 oxygen."
+      ],
+      ans: "H₂S₂O₇ + H₂O → 2H₂SO₄ is balanced. Each side has 4 hydrogen atoms, 2 sulphur atoms and 8 oxygen atoms.",
+      why: "The coefficients conserve all atoms while showing the conversion of oleum to sulphuric acid."
     }
   ]
 );
-
-
-// ============================================================
-// 7. USES OF SULPHURIC ACID
-// ============================================================
+// ------------------------------------------------------------
+// 1. USES OF SULPHURIC ACID
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "nonmetals_compounds",
   "Uses of Sulphuric Acid",
-  `<h2>Uses of Sulphuric Acid</h2>
 
-  <p>Sulphuric acid is one of the most widely used industrial chemicals.</p>
+  `
+  <h2>Uses of Sulphuric Acid</h2>
 
-  <h3>Major uses</h3>
+  <h3>1. Introduction</h3>
 
-  <ul>
-    <li>Manufacture of fertilisers.</li>
-    <li>Manufacture of other chemicals.</li>
-    <li>Processing of petroleum.</li>
-    <li>Manufacture of detergents.</li>
-    <li>Use in lead-acid batteries.</li>
-    <li>Preparation of sulphate salts.</li>
-  </ul>
+  <p>
+    Sulphuric acid, H<sub>2</sub>SO<sub>4</sub>, is an important industrial
+    chemical. It is used in the manufacture of fertilisers, detergents,
+    other chemicals and in lead-acid batteries.
+  </p>
 
-  <p>Its strong acidic properties make it useful in many chemical manufacturing processes.</p>`,
+  <p>
+    Its usefulness comes from its acidic properties and its ability to
+    react with many substances, including metals, bases and metal oxides.
+  </p>
+
+  <h3>2. Manufacture of Fertilisers</h3>
+
+  <p>
+    Sulphuric acid is used to manufacture phosphate fertilisers and
+    ammonium sulphate. These fertilisers supply essential nutrients
+    required for plant growth.
+  </p>
+
+  <p>
+    For example, sulphuric acid reacts with ammonia to form ammonium
+    sulphate:
+  </p>
+
+  <p>
+    H<sub>2</sub>SO<sub>4</sub> + 2NH<sub>3</sub>
+    → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>
+  </p>
+
+  <h3>3. Manufacture of Chemicals</h3>
+
+  <p>
+    Sulphuric acid is used in making other acids, sulphate salts,
+    detergents, dyes and many industrial chemicals. It can also act
+    as a dehydrating agent in suitable chemical processes.
+  </p>
+
+  <h3>4. Lead-Acid Batteries</h3>
+
+  <p>
+    Dilute sulphuric acid acts as the electrolyte in a lead-acid battery.
+    It allows ions to move between the battery's electrodes during
+    charging and discharging.
+  </p>
+
+  <p>
+    Such batteries are commonly used in vehicles and backup power
+    systems. The acid is corrosive and must be handled carefully.
+  </p>
+
+  <h3>5. Petroleum Refining and Industrial Processing</h3>
+
+  <p>
+    Sulphuric acid has been used in certain petroleum-refining processes
+    and in the treatment or manufacture of industrial materials.
+    The exact process depends on the product being made.
+  </p>
+
+  <h3>6. Preparation of Sulphate Salts</h3>
+
+  <p>
+    Sulphuric acid reacts with suitable bases and metal oxides to form
+    sulphates and water.
+  </p>
+
+  <p>
+    Example with copper(II) oxide:
+  </p>
+
+  <p>
+    CuO + H<sub>2</sub>SO<sub>4</sub>
+    → CuSO<sub>4</sub> + H<sub>2</sub>O
+  </p>
+
+  <h3>Worked Examples</h3>
+
+  <p><b>Example 1: Fertiliser manufacture</b></p>
+
+  <p><b>Question:</b> Write an equation for the reaction between
+  sulphuric acid and ammonia to form ammonium sulphate.</p>
+
+  <p><b>Step 1:</b> Write the reactants and product:</p>
+  <p>H<sub>2</sub>SO<sub>4</sub> + NH<sub>3</sub>
+  → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub></p>
+
+  <p><b>Step 2:</b> The product contains two ammonium ions, so use
+  two ammonia molecules.</p>
+
+  <p><b>Balanced equation:</b></p>
+  <p>
+    H<sub>2</sub>SO<sub>4</sub> + 2NH<sub>3</sub>
+    → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>
+  </p>
+
+  <p><b>Example 2: Preparing a sulphate salt</b></p>
+
+  <p><b>Question:</b> What happens when copper(II) oxide reacts
+  with dilute sulphuric acid?</p>
+
+  <p><b>Step 1:</b> Identify the reactants: a metal oxide and an acid.</p>
+  <p><b>Step 2:</b> An acid reacts with a metal oxide to form a salt
+  and water.</p>
+  <p><b>Step 3:</b> The salt formed is copper(II) sulphate.</p>
+
+  <p><b>Equation:</b></p>
+  <p>
+    CuO + H<sub>2</sub>SO<sub>4</sub>
+    → CuSO<sub>4</sub> + H<sub>2</sub>O
+  </p>
+
+  <p><b>Example 3: Identifying the battery application</b></p>
+
+  <p><b>Question:</b> Explain the role of dilute sulphuric acid
+  in a lead-acid battery.</p>
+
+  <p><b>Step 1:</b> Identify the type of substance used: an electrolyte.</p>
+  <p><b>Step 2:</b> An electrolyte permits ions to move within the battery.</p>
+  <p><b>Answer:</b> Dilute sulphuric acid acts as the electrolyte,
+  allowing ionic movement during charging and discharging.</p>
+
+  <h3>Safety</h3>
+
+  <p>
+    Sulphuric acid is corrosive and can cause severe burns. When diluting
+    concentrated acid, add the acid slowly to water while stirring.
+    Never pour water into concentrated acid because the heat produced
+    may cause dangerous splashing.
+  </p>
+  `,
+
   [
     {
-      q: "State two uses of sulphuric acid.",
-      steps: [
-        "Step 1: Sulphuric acid is widely used industrially.",
-        "Step 2: It is used in fertiliser manufacture.",
-        "Step 3: It is also used in petroleum processing, chemical manufacture and lead-acid batteries.",
-        "Step 4: Any two are acceptable."
-      ],
-      ans: "For example: manufacture of fertilisers and use in lead-acid batteries.",
-      why: "Sulphuric acid has many important industrial applications."
+      q: "Write a balanced equation for the reaction between sulphuric acid and ammonia to form ammonium sulphate.",
+      ans: "H2SO4 + 2NH3 → (NH4)2SO4",
+      sol: "H₂SO₄ + 2NH₃ → (NH₄)₂SO₄"
     },
     {
-      q: "Why is sulphuric acid important in fertiliser manufacture?",
-      steps: [
-        "Step 1: Fertiliser production requires compounds containing nutrients such as phosphorus.",
-        "Step 2: Sulphuric acid is used to process phosphate-containing materials.",
-        "Step 3: This helps produce phosphate fertilisers."
-      ],
-      ans: "It is used in the manufacture of phosphate fertilisers.",
-      why: "Sulphuric acid is an important raw material in the industrial production of fertilisers."
+      q: "Copper(II) oxide reacts with dilute sulphuric acid. Name the salt formed and write the balanced equation.",
+      ans: "Copper(II) sulphate; CuO + H2SO4 → CuSO4 + H2O",
+      sol: "CuO + H₂SO₄ → CuSO₄ + H₂O"
     },
     {
-      q: "Which type of battery commonly uses sulphuric acid as its electrolyte?",
-      steps: [
-        "Step 1: Identify the common rechargeable battery used in vehicles.",
-        "Step 2: Lead-acid batteries use dilute sulphuric acid as the electrolyte."
-      ],
-      ans: "Lead-acid battery",
-      why: "Dilute sulphuric acid acts as the electrolyte in lead-acid batteries."
+      q: "Explain why dilute sulphuric acid is used in a lead-acid battery.",
+      ans: "It acts as an electrolyte and allows ions to move during charging and discharging.",
+      sol: "The acid provides mobile ions that enable the battery's electrochemical reactions."
     }
   ],
+
   [
     {
-      q: "State one industrial use of sulphuric acid other than fertiliser manufacture.",
-      hint: "Think about batteries, petroleum or chemical manufacture.",
+      q: "State two uses of sulphuric acid in industry.",
+      hint: "Think about agricultural chemicals and manufactured products.",
       steps: [
-        "Step 1: Recall major industrial applications.",
-        "Step 2: One example is its use in lead-acid batteries.",
-        "Step 3: Other acceptable examples include petroleum processing and chemical manufacture."
+        "Identify one use related to agriculture.",
+        "Identify another use in chemical or industrial production."
       ],
-      ans: "For example, it is used in lead-acid batteries.",
-      why: "Sulphuric acid has several industrial uses beyond fertiliser production."
+      ans: "Manufacture of fertilisers and manufacture of other chemicals.",
+      why: "Sulphuric acid is a major industrial reagent used in fertiliser production and chemical manufacture."
+    },
+    {
+      q: "Write a balanced equation for the reaction of sulphuric acid with ammonia to produce ammonium sulphate.",
+      hint: "The formula of ammonia is NH3 and ammonium sulphate is (NH4)2SO4.",
+      steps: [
+        "Write H2SO4 + NH3 → (NH4)2SO4.",
+        "Count the two NH4 groups in the product.",
+        "Place 2 before NH3 and check all atoms."
+      ],
+      ans: "H2SO4 + 2NH3 → (NH4)2SO4",
+      why: "Two ammonia molecules provide the two nitrogen atoms required in ammonium sulphate."
+    },
+    {
+      q: "A student reacts copper(II) oxide with dilute sulphuric acid. Name the salt and the other product.",
+      hint: "An acid reacting with a metal oxide produces a salt and water.",
+      steps: [
+        "Identify copper(II) oxide as a metal oxide.",
+        "Combine the copper ion with the sulphate ion to identify the salt.",
+        "State the second product."
+      ],
+      ans: "Copper(II) sulphate and water.",
+      why: "The reaction is CuO + H2SO4 → CuSO4 + H2O."
+    },
+    {
+      q: "Explain the function of the electrolyte in a lead-acid battery and identify the electrolyte used.",
+      hint: "Consider the movement of ions.",
+      steps: [
+        "Name the electrolyte.",
+        "Explain how it supports ionic movement during battery operation."
+      ],
+      ans: "Dilute sulphuric acid; it allows ions to move and supports the battery's electrochemical reactions.",
+      why: "An electrolyte enables ionic conduction inside the battery."
+    },
+    {
+      q: "Why must sulphuric acid be handled carefully, and what is the correct procedure for dilution?",
+      hint: "Consider corrosiveness and heat released during dilution.",
+      steps: [
+        "State the danger posed by the acid.",
+        "Explain the order in which acid and water should be mixed."
+      ],
+      ans: "It is corrosive; add acid slowly to water while stirring, never water to concentrated acid.",
+      why: "Dilution releases heat, and adding water to concentrated acid can cause violent heating and splashing."
+    },
+    {
+      q: "Explain how sulphuric acid helps in the manufacture of fertilisers.",
+      hint: "Name a fertiliser that can be formed from ammonia and sulphuric acid.",
+      steps: [
+        "Name a fertiliser made using sulphuric acid.",
+        "Give the reactants involved.",
+        "Write the balanced equation."
+      ],
+      ans: "It is used to manufacture ammonium sulphate: H2SO4 + 2NH3 → (NH4)2SO4.",
+      why: "Ammonium sulphate supplies nitrogen and sulphur to plants."
     }
   ]
 );
 
 
-// ============================================================
-// 8. PROPERTIES OF CARBON
-// ============================================================
+// ------------------------------------------------------------
+// 2. PROPERTIES OF CARBON
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "nonmetals_compounds",
   "Properties of Carbon",
-  `<h2>Properties of Carbon</h2>
 
-  <p>Carbon is a non-metallic element with the symbol <strong>C</strong>.</p>
+  `
+  <h2>Properties of Carbon</h2>
 
-  <p>Carbon is important because it forms a very large number of compounds.</p>
+  <h3>1. Position and Electronic Structure</h3>
 
-  <h3>Important properties</h3>
+  <p>
+    Carbon is a non-metallic element with the chemical symbol C and
+    atomic number 6. A neutral carbon atom has six protons and six
+    electrons.
+  </p>
 
-  <ul>
-    <li>Carbon has four valence electrons.</li>
-    <li>It forms four covalent bonds.</li>
-    <li>It can bond to other carbon atoms.</li>
-    <li>It forms chains, branches and rings.</li>
-    <li>It forms compounds with many other elements.</li>
-  </ul>
+  <p>
+    Its electron arrangement is 2,4. Carbon therefore has four electrons
+    in its outer shell and commonly forms four covalent bonds.
+  </p>
 
-  <p>The ability of carbon atoms to bond to one another is called <strong>catenation</strong>.</p>
+  <h3>2. Carbon Is a Non-Metal</h3>
 
-  <p>Its ability to form four covalent bonds is called <strong>tetravalency</strong>.</p>`,
+  <p>
+    Carbon occurs in different solid forms. Many forms of carbon do not
+    show the typical metallic properties of metals. Its physical
+    properties depend on its structure and allotrope.
+  </p>
+
+  <h3>3. Tetravalency</h3>
+
+  <p>
+    Carbon is tetravalent because one carbon atom can form four covalent
+    bonds. These bonds involve sharing electrons with other atoms.
+  </p>
+
+  <p>
+    For example, methane has the formula CH<sub>4</sub>. One carbon atom
+    forms four single covalent bonds with four hydrogen atoms.
+  </p>
+
+  <h3>4. Catenation</h3>
+
+  <p>
+    Catenation is the ability of an element to form bonds with atoms of
+    the same element, producing chains or rings. Carbon shows extensive
+    catenation because carbon-carbon covalent bonds are strong.
+  </p>
+
+  <p>
+    This property allows carbon to form straight chains, branched chains
+    and rings. It is one reason why a very large number of carbon
+    compounds exist.
+  </p>
+
+  <h3>5. Combustion of Carbon</h3>
+
+  <p>
+    In a plentiful supply of oxygen, carbon burns to form carbon dioxide:
+  </p>
+
+  <p>
+    C + O<sub>2</sub> → CO<sub>2</sub>
+  </p>
+
+  <p>
+    When oxygen is insufficient, incomplete combustion can produce
+    carbon monoxide:
+  </p>
+
+  <p>
+    2C + O<sub>2</sub> → 2CO
+  </p>
+
+  <h3>Worked Examples</h3>
+
+  <p><b>Example 1: Electron arrangement</b></p>
+
+  <p><b>Question:</b> Give the electron arrangement of carbon and state
+  the number of electrons in its outer shell.</p>
+
+  <p><b>Step 1:</b> Carbon has atomic number 6, so a neutral atom has
+  six electrons.</p>
+  <p><b>Step 2:</b> The first shell holds two electrons.</p>
+  <p><b>Step 3:</b> The remaining four occupy the second shell.</p>
+
+  <p><b>Answer:</b> Electron arrangement 2,4; four outer-shell electrons.</p>
+
+  <p><b>Example 2: Tetravalency</b></p>
+
+  <p><b>Question:</b> Explain why carbon is described as tetravalent.</p>
+
+  <p><b>Step 1:</b> Carbon has four electrons in its outer shell.</p>
+  <p><b>Step 2:</b> It can share electrons with other atoms to form
+  four covalent bonds.</p>
+  <p><b>Answer:</b> Carbon is tetravalent because it commonly forms
+  four covalent bonds.</p>
+
+  <p><b>Example 3: Combustion equation</b></p>
+
+  <p><b>Question:</b> Write the balanced equation for complete combustion
+  of carbon.</p>
+
+  <p><b>Step 1:</b> Identify the reactants: carbon and oxygen.</p>
+  <p><b>Step 2:</b> Complete combustion produces carbon dioxide.</p>
+  <p><b>Step 3:</b> Check that there is one carbon atom and two oxygen
+  atoms on each side.</p>
+
+  <p><b>Answer:</b> C + O<sub>2</sub> → CO<sub>2</sub></p>
+
+  <h3>Key Distinction</h3>
+
+  <p>
+    Tetravalency refers to carbon forming four covalent bonds.
+    Catenation refers to carbon bonding to other carbon atoms to form
+    chains or rings. These are related but different properties.
+  </p>
+  `,
+
   [
     {
-      q: "How many valence electrons does carbon have?",
-      steps: [
-        "Step 1: Carbon has atomic number 6.",
-        "Step 2: Its electron arrangement is 2,4.",
-        "Step 3: Therefore, carbon has four electrons in its outer shell."
-      ],
-      ans: "4",
-      why: "Carbon has four electrons in its outermost shell."
+      q: "A neutral carbon atom has atomic number 6. Give its electron arrangement and number of outer-shell electrons.",
+      ans: "2,4; four outer-shell electrons.",
+      sol: "Six electrons are arranged as two in the first shell and four in the second shell."
     },
     {
-      q: "Why can carbon form four covalent bonds?",
-      steps: [
-        "Step 1: Carbon has four valence electrons.",
-        "Step 2: It needs four more electrons to complete its outer shell.",
-        "Step 3: Carbon can share electrons with other atoms.",
-        "Step 4: It can therefore form four covalent bonds."
-      ],
-      ans: "Because carbon has four valence electrons and can share electrons to form four covalent bonds.",
-      why: "Carbon's four outer electrons allow it to form four covalent bonds."
+      q: "Explain why carbon is described as tetravalent.",
+      ans: "It commonly forms four covalent bonds.",
+      sol: "Carbon has four outer-shell electrons and can share electrons to form four covalent bonds."
     },
     {
-      q: "What is catenation?",
-      steps: [
-        "Step 1: Identify the ability involved in carbon-carbon bonding.",
-        "Step 2: Carbon atoms can bond to other carbon atoms.",
-        "Step 3: This allows chains, branches and rings to form.",
-        "Step 4: This property is called catenation."
-      ],
-      ans: "The ability of carbon atoms to bond to one another to form chains, branches and rings.",
-      why: "Catenation is a major reason why carbon forms such a large variety of compounds."
+      q: "Define catenation and explain why it is important in carbon chemistry.",
+      ans: "Catenation is bonding between atoms of the same element to form chains or rings; carbon catenation allows many different carbon compounds.",
+      sol: "Strong carbon-carbon bonds allow carbon atoms to form long chains, branched chains and rings."
     }
   ],
+
   [
     {
-      q: "What is tetravalency of carbon?",
-      hint: "Look at the number of covalent bonds carbon can form.",
+      q: "Carbon has atomic number 6. Determine its electron arrangement and explain how you obtained it.",
+      hint: "A neutral atom has the same number of electrons as its atomic number.",
       steps: [
-        "Step 1: Carbon has four valence electrons.",
-        "Step 2: It can share electrons with other atoms.",
-        "Step 3: It can form four covalent bonds.",
-        "Step 4: This property is called tetravalency."
+        "State the total number of electrons in a neutral carbon atom.",
+        "Place two electrons in the first shell.",
+        "Place the remaining electrons in the second shell."
       ],
-      ans: "The ability of carbon to form four covalent bonds.",
-      why: "Carbon is tetravalent because it can form four covalent bonds."
+      ans: "2,4; carbon has six electrons, with two in the first shell and four in the second.",
+      why: "The atomic number gives the number of protons and, in a neutral atom, the number of electrons."
+    },
+    {
+      q: "What is tetravalency, and how does the structure of methane demonstrate it?",
+      hint: "Consider how many bonds the carbon atom forms in CH4.",
+      steps: [
+        "Define tetravalency.",
+        "Count the bonds formed by carbon in methane.",
+        "Relate the number of bonds to the definition."
+      ],
+      ans: "Tetravalency is the ability to form four covalent bonds; carbon forms four C–H bonds in CH4.",
+      why: "The four C–H bonds demonstrate carbon's ability to share electrons with four hydrogen atoms."
+    },
+    {
+      q: "Define catenation and give two types of carbon structures it can produce.",
+      hint: "Think about how carbon atoms join to other carbon atoms.",
+      steps: [
+        "Define bonding between atoms of the same element.",
+        "Name two structures formed by carbon-carbon bonding."
+      ],
+      ans: "Catenation is bonding between atoms of the same element; it can form straight or branched chains and rings.",
+      why: "Carbon-carbon covalent bonds allow carbon atoms to link in several arrangements."
+    },
+    {
+      q: "Write the balanced equation for the complete combustion of carbon and name the product.",
+      hint: "Complete combustion occurs in plentiful oxygen.",
+      steps: [
+        "Write carbon and oxygen as reactants.",
+        "Identify carbon dioxide as the product.",
+        "Check that carbon and oxygen atoms balance."
+      ],
+      ans: "C + O2 → CO2; carbon dioxide.",
+      why: "One carbon atom reacts with one oxygen molecule to form one carbon dioxide molecule."
+    },
+    {
+      q: "Write the balanced equation for the formation of carbon monoxide when carbon burns in insufficient oxygen.",
+      hint: "The product formula is CO. Balance the oxygen atoms first.",
+      steps: [
+        "Write C + O2 → CO.",
+        "Place 2 before CO to use both oxygen atoms.",
+        "Place 2 before C to balance carbon atoms."
+      ],
+      ans: "2C + O2 → 2CO.",
+      why: "Two carbon atoms combine with one oxygen molecule to form two carbon monoxide molecules."
+    },
+    {
+      q: "Distinguish between tetravalency and catenation in carbon.",
+      hint: "One property describes the number of bonds; the other describes which atoms carbon bonds to.",
+      steps: [
+        "State what tetravalency describes.",
+        "State what catenation describes."
+      ],
+      ans: "Tetravalency is carbon's ability to form four covalent bonds; catenation is its ability to bond to other carbon atoms to form chains or rings.",
+      why: "The terms describe different aspects of carbon bonding."
     }
   ]
 );
 
 
-// ============================================================
-// 9. CARBON DIOXIDE
-// ============================================================
+// ------------------------------------------------------------
+// 3. CARBON DIOXIDE
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "nonmetals_compounds",
   "Carbon Dioxide",
-  `<h2>Carbon Dioxide</h2>
 
-  <p>Carbon dioxide is a compound containing carbon and oxygen.</p>
+  `
+  <h2>Carbon Dioxide</h2>
 
-  <p>Its formula is <strong>CO₂</strong>.</p>
+  <h3>1. Formula and Preparation</h3>
 
-  <h3>Preparation</h3>
+  <p>
+    Carbon dioxide has the chemical formula CO<sub>2</sub>. Each molecule
+    contains one carbon atom and two oxygen atoms.
+  </p>
 
-  <p>Carbon dioxide can be produced by complete combustion of carbon:</p>
+  <p>
+    In the laboratory, carbon dioxide can be prepared by reacting calcium
+    carbonate, such as marble chips, with dilute hydrochloric acid.
+  </p>
 
-  <p><strong>C + O₂ → CO₂</strong></p>
+  <p>
+    CaCO<sub>3</sub> + 2HCl
+    → CaCl<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>
+  </p>
 
-  <p>It is also produced when acids react with carbonates.</p>
+  <p>
+    The gas can be collected by downward delivery because it is denser
+    than air. It is not normally collected over water when a dry sample
+    is required, because some carbon dioxide dissolves in water.
+  </p>
 
-  <h3>Properties</h3>
+  <h3>2. Physical Properties</h3>
 
   <ul>
-    <li>It is a colourless gas.</li>
-    <li>It does not support combustion.</li>
+    <li>Carbon dioxide is a colourless gas.</li>
     <li>It is denser than air.</li>
-    <li>It dissolves in water to some extent.</li>
+    <li>It dissolves slightly in water.</li>
+    <li>It does not support ordinary combustion.</li>
   </ul>
 
-  <p>Carbon dioxide is also produced during respiration and is used by green plants during photosynthesis.</p>`,
+  <h3>3. Chemical Properties</h3>
+
+  <p><b>Reaction with water:</b></p>
+
+  <p>
+    Carbon dioxide dissolves in water and forms a weak acidic solution:
+  </p>
+
+  <p>
+    CO<sub>2</sub> + H<sub>2</sub>O
+    ⇌ H<sub>2</sub>CO<sub>3</sub>
+  </p>
+
+  <p><b>Reaction with limewater:</b></p>
+
+  <p>
+    Carbon dioxide turns limewater milky because insoluble calcium
+    carbonate forms:
+  </p>
+
+  <p>
+    CO<sub>2</sub> + Ca(OH)<sub>2</sub>
+    → CaCO<sub>3</sub> + H<sub>2</sub>O
+  </p>
+
+  <p>
+    If excess carbon dioxide is passed through the mixture, the milkiness
+    can disappear because soluble calcium hydrogencarbonate forms:
+  </p>
+
+  <p>
+    CaCO<sub>3</sub> + CO<sub>2</sub> + H<sub>2</sub>O
+    → Ca(HCO<sub>3</sub>)<sub>2</sub>
+  </p>
+
+  <h3>4. Reaction with Burning Substances</h3>
+
+  <p>
+    Carbon dioxide does not support ordinary combustion, so it is used
+    in some fire extinguishers. It helps smother a fire by displacing
+    oxygen around the burning material.
+  </p>
+
+  <p>
+    However, it is not suitable for every type of fire, and specialised
+    fire-safety guidance must be followed.
+  </p>
+
+  <h3>5. Environmental Importance</h3>
+
+  <p>
+    Carbon dioxide is produced during respiration, combustion and the
+    decomposition of organic matter. Plants use it during photosynthesis.
+  </p>
+
+  <p>
+    It is also a greenhouse gas. Increasing its concentration in the
+    atmosphere contributes to global warming by trapping heat.
+  </p>
+
+  <h3>Worked Examples</h3>
+
+  <p><b>Example 1: Laboratory preparation</b></p>
+
+  <p><b>Question:</b> Write the balanced equation for preparing carbon
+  dioxide using calcium carbonate and dilute hydrochloric acid.</p>
+
+  <p><b>Step 1:</b> Write the reactants: CaCO<sub>3</sub> and HCl.</p>
+  <p><b>Step 2:</b> The products are calcium chloride, water and carbon
+  dioxide.</p>
+  <p><b>Step 3:</b> Place 2 before HCl to balance hydrogen and chlorine.</p>
+
+  <p><b>Answer:</b></p>
+  <p>
+    CaCO<sub>3</sub> + 2HCl
+    → CaCl<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>
+  </p>
+
+  <p><b>Example 2: Limewater test</b></p>
+
+  <p><b>Question:</b> A colourless gas turns limewater milky. Explain
+  the observation when the gas is carbon dioxide.</p>
+
+  <p><b>Step 1:</b> Carbon dioxide reacts with calcium hydroxide in limewater.</p>
+  <p><b>Step 2:</b> Insoluble calcium carbonate forms.</p>
+  <p><b>Answer:</b> The limewater turns milky because a white precipitate
+  of calcium carbonate forms.</p>
+
+  <p><b>Equation:</b></p>
+  <p>
+    CO<sub>2</sub> + Ca(OH)<sub>2</sub>
+    → CaCO<sub>3</sub> + H<sub>2</sub>O
+  </p>
+
+  <p><b>Example 3: Excess carbon dioxide</b></p>
+
+  <p><b>Question:</b> Why can limewater become clear again when excess
+  carbon dioxide is passed through it?</p>
+
+  <p><b>Step 1:</b> Initially, insoluble calcium carbonate forms and
+  makes the solution milky.</p>
+  <p><b>Step 2:</b> Excess carbon dioxide reacts with the calcium
+  carbonate in water.</p>
+  <p><b>Step 3:</b> Soluble calcium hydrogencarbonate forms.</p>
+
+  <p><b>Equation:</b></p>
+  <p>
+    CaCO<sub>3</sub> + CO<sub>2</sub> + H<sub>2</sub>O
+    → Ca(HCO<sub>3</sub>)<sub>2</sub>
+  </p>
+
+  <h3>Key Test</h3>
+
+  <p>
+    The standard test for carbon dioxide is to bubble the gas through
+    limewater. A positive result is that the limewater turns milky.
+    Do not identify the gas from its appearance alone.
+  </p>
+  `,
+
   [
     {
-      q: "What is the formula of carbon dioxide?",
-      steps: [
-        "Step 1: Carbon has the symbol C.",
-        "Step 2: Dioxide means two oxygen atoms.",
-        "Step 3: Therefore, the formula is CO₂."
-      ],
-      ans: "CO₂",
-      why: "Carbon dioxide contains one carbon atom and two oxygen atoms."
+      q: "Write the balanced equation for the reaction between calcium carbonate and dilute hydrochloric acid.",
+      ans: "CaCO3 + 2HCl → CaCl2 + H2O + CO2",
+      sol: "CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂"
     },
     {
-      q: "Write the equation for complete combustion of carbon.",
-      steps: [
-        "Step 1: Carbon reacts with oxygen.",
-        "Step 2: Complete combustion forms carbon dioxide.",
-        "Step 3: The balanced equation is C + O₂ → CO₂."
-      ],
-      ans: "C + O₂ → CO₂",
-      why: "Carbon burns in oxygen to form carbon dioxide."
+      q: "Describe the test for carbon dioxide using limewater and explain the result.",
+      ans: "Bubble the gas through limewater; it turns milky because calcium carbonate forms.",
+      sol: "CO₂ + Ca(OH)₂ → CaCO₃ + H₂O"
     },
     {
-      q: "State two properties of carbon dioxide.",
-      steps: [
-        "Step 1: Carbon dioxide is a colourless gas.",
-        "Step 2: It does not support combustion.",
-        "Step 3: It is also denser than air.",
-        "Step 4: Any two are acceptable."
-      ],
-      ans: "For example: it is colourless and does not support combustion.",
-      why: "These are characteristic physical and chemical properties of carbon dioxide."
+      q: "Explain why limewater may become clear when excess carbon dioxide is passed through it.",
+      ans: "Insoluble calcium carbonate reacts with excess carbon dioxide and water to form soluble calcium hydrogencarbonate.",
+      sol: "CaCO₃ + CO₂ + H₂O → Ca(HCO₃)₂"
     }
   ],
+
   [
     {
-      q: "Why can carbon dioxide be used to extinguish some fires?",
-      hint: "Consider whether it supports combustion.",
+      q: "Write a balanced equation for preparing carbon dioxide from calcium carbonate and dilute hydrochloric acid.",
+      hint: "The products are calcium chloride, water and carbon dioxide.",
       steps: [
-        "Step 1: Combustion requires oxygen.",
-        "Step 2: Carbon dioxide does not support combustion.",
-        "Step 3: A layer of carbon dioxide can reduce contact between the fuel and oxygen.",
-        "Step 4: Therefore, carbon dioxide can help extinguish some fires."
+        "Write CaCO3 + HCl as the reactants.",
+        "Write CaCl2 + H2O + CO2 as the products.",
+        "Balance chlorine and hydrogen by placing 2 before HCl."
       ],
-      ans: "Because carbon dioxide does not support combustion and can displace oxygen around the fire.",
-      why: "Reducing the oxygen available to a fire can stop combustion."
+      ans: "CaCO3 + 2HCl → CaCl2 + H2O + CO2",
+      why: "Two hydrochloric acid molecules provide the two chlorine atoms needed for calcium chloride and balance hydrogen."
+    },
+    {
+      q: "Describe the laboratory test for carbon dioxide and explain the chemical change responsible for the observation.",
+      hint: "Use limewater, which contains calcium hydroxide.",
+      steps: [
+        "Pass the gas through limewater.",
+        "State the visible observation.",
+        "Name the insoluble compound formed."
+      ],
+      ans: "Bubble the gas through limewater; it turns milky because calcium carbonate forms.",
+      why: "Carbon dioxide reacts with calcium hydroxide to produce insoluble calcium carbonate."
+    },
+    {
+      q: "Write the equation for the reaction between carbon dioxide and limewater.",
+      hint: "The reactants are CO2 and Ca(OH)2.",
+      steps: [
+        "Write the two reactants.",
+        "Identify calcium carbonate and water as products.",
+        "Check that all atoms balance."
+      ],
+      ans: "CO2 + Ca(OH)2 → CaCO3 + H2O",
+      why: "The equation represents the formation of a calcium carbonate precipitate."
+    },
+    {
+      q: "Explain why limewater can turn milky first and then become clear when excess carbon dioxide is passed through it.",
+      hint: "Compare the solubility of calcium carbonate with calcium hydrogencarbonate.",
+      steps: [
+        "Explain why calcium carbonate makes the limewater milky.",
+        "Consider what happens when more carbon dioxide and water react with that precipitate.",
+        "Identify the soluble product."
+      ],
+      ans: "Calcium carbonate first forms as an insoluble precipitate. Excess carbon dioxide and water convert it into soluble calcium hydrogencarbonate.",
+      why: "The initial precipitate causes milkiness; its conversion into a soluble substance removes the precipitate."
+    },
+    {
+      q: "State two physical properties of carbon dioxide and one chemical property.",
+      hint: "Separate observations about the gas itself from its reactions.",
+      steps: [
+        "Give two physical properties.",
+        "Give one property involving a chemical reaction."
+      ],
+      ans: "Physical: colourless and denser than air. Chemical: reacts with limewater to form calcium carbonate, turning it milky.",
+      why: "Physical properties can be observed without changing the substance; chemical properties describe its reactions."
+    },
+    {
+      q: "Explain why carbon dioxide is used in some fire extinguishers and state one environmental effect of atmospheric carbon dioxide.",
+      hint: "Think about combustion and the greenhouse effect.",
+      steps: [
+        "Explain how carbon dioxide affects the oxygen supply around a fire.",
+        "State its role in the atmosphere."
+      ],
+      ans: "It helps smother fires by displacing oxygen and does not support ordinary combustion. Atmospheric carbon dioxide is a greenhouse gas that contributes to global warming.",
+      why: "Carbon dioxide reduces oxygen available to a fire and absorbs outgoing infrared radiation in the atmosphere."
     }
   ]
 );
-
-
-// ============================================================
-// 10. CARBON MONOXIDE
-// ============================================================
-
-add(
-  "chemistry",
-  "nonmetals_compounds",
-  "Carbon Monoxide",
-  `<h2>Carbon Monoxide</h2>
-
-  <p>Carbon monoxide is a compound of carbon and oxygen with the formula <strong>CO</strong>.</p>
-
-  <p>It is produced mainly during <strong>incomplete combustion</strong> of carbon-containing fuels.</p>
-
-  <p>For example:</p>
-
-  <p><strong>2C + O₂ → 2CO</strong></p>
-
-  <h3>Properties</h3>
-
-  <ul>
-    <li>It is colourless.</li>
-    <li>It is odourless.</li>
-    <li>It is highly poisonous.</li>
-    <li>It burns in oxygen to form carbon dioxide.</li>
-  </ul>
-
-  <p>Carbon monoxide is dangerous because it reduces the blood's ability to transport oxygen.</p>`,
-  [
-    {
-      q: "What is the formula of carbon monoxide?",
-      steps: [
-        "Step 1: Carbon has the symbol C.",
-        "Step 2: Monoxide means one oxygen atom.",
-        "Step 3: Therefore, the formula is CO."
-      ],
-      ans: "CO",
-      why: "Carbon monoxide contains one carbon atom and one oxygen atom."
-    },
-    {
-      q: "Under what combustion condition is carbon monoxide formed?",
-      steps: [
-        "Step 1: Complete combustion requires sufficient oxygen.",
-        "Step 2: If oxygen is insufficient, combustion is incomplete.",
-        "Step 3: Incomplete combustion can produce carbon monoxide."
-      ],
-      ans: "Incomplete combustion or insufficient oxygen supply.",
-      why: "Carbon monoxide forms when carbon-containing fuels burn without enough oxygen for complete combustion."
-    },
-    {
-      q: "Balance 2C + O₂ → 2CO.",
-      steps: [
-        "Step 1: Count carbon atoms: 2 on both sides.",
-        "Step 2: Count oxygen atoms: 2 on both sides.",
-        "Step 3: The equation is balanced."
-      ],
-      ans: "2C + O₂ → 2CO",
-      why: "There are two carbon atoms and two oxygen atoms on each side."
-    }
-  ],
-  [
-    {
-      q: "Why is carbon monoxide poisonous?",
-      hint: "Think about oxygen transport in the blood.",
-      steps: [
-        "Step 1: Carbon monoxide enters the bloodstream when inhaled.",
-        "Step 2: It binds strongly to haemoglobin.",
-        "Step 3: This reduces the blood's ability to transport oxygen.",
-        "Step 4: Body tissues can therefore become oxygen-starved."
-      ],
-      ans: "Because it binds strongly to haemoglobin and reduces the blood's ability to transport oxygen.",
-      why: "Carbon monoxide interferes with oxygen transport in the body."
-    }
-  ]
-);
-
-
-// ============================================================
-// 11. ALLOTROPES OF CARBON
-// ============================================================
-
-add(
-  "chemistry",
-  "nonmetals_compounds",
-  "Allotropes of Carbon",
-  `<h2>Allotropes of Carbon</h2>
-
-  <p>Allotropes are different structural forms of the same element in the same physical state.</p>
-
-  <p>Important allotropes of carbon include <strong>diamond</strong> and <strong>graphite</strong>.</p>
-
-  <h3>Diamond</h3>
-
-  <p>Each carbon atom is strongly bonded to four other carbon atoms in a giant three-dimensional structure.</p>
-
-  <p>This makes diamond:</p>
-
-  <ul>
-    <li>very hard</li>
-    <li>strong</li>
-    <li>a poor conductor of electricity</li>
-  </ul>
-
-  <h3>Graphite</h3>
-
-  <p>Each carbon atom is bonded to three other carbon atoms in layers.</p>
-
-  <p>The layers can slide over one another.</p>
-
-  <p>Graphite conducts electricity because it has delocalised electrons.</p>`,
-  [
-    {
-      q: "What is an allotrope?",
-      steps: [
-        "Step 1: An allotrope is a form of an element.",
-        "Step 2: Different allotropes have different structures.",
-        "Step 3: Therefore, allotropes are different structural forms of the same element in the same physical state."
-      ],
-      ans: "Different structural forms of the same element in the same physical state.",
-      why: "Different atomic arrangements produce different allotropes."
-    },
-    {
-      q: "Why is diamond very hard?",
-      steps: [
-        "Step 1: Each carbon atom in diamond is strongly bonded to four other carbon atoms.",
-        "Step 2: These bonds form a giant three-dimensional network.",
-        "Step 3: Many strong covalent bonds must be broken to deform the structure.",
-        "Step 4: Therefore, diamond is very hard."
-      ],
-      ans: "Because it has a giant three-dimensional structure containing many strong covalent bonds.",
-      why: "The strong covalent network makes diamond difficult to deform."
-    },
-    {
-      q: "Why does graphite conduct electricity?",
-      steps: [
-        "Step 1: Each carbon atom in graphite bonds to three other carbon atoms.",
-        "Step 2: One electron per carbon is not involved in a localised covalent bond.",
-        "Step 3: These electrons can move through the structure.",
-        "Step 4: Therefore, graphite conducts electricity."
-      ],
-      ans: "Because it has delocalised electrons that can move through the layers.",
-      why: "Mobile delocalised electrons allow graphite to conduct electricity."
-    }
-  ],
-  [
-    {
-      q: "State one structural difference between diamond and graphite.",
-      hint: "Compare the number of carbon atoms bonded directly to each carbon atom.",
-      steps: [
-        "Step 1: In diamond, each carbon bonds to four other carbon atoms.",
-        "Step 2: In graphite, each carbon bonds to three other carbon atoms.",
-        "Step 3: Therefore, their structures are different."
-      ],
-      ans: "Each carbon bonds to four others in diamond but three others in graphite.",
-      why: "The different bonding arrangements give diamond and graphite different properties."
-    }
-  ]
-);
-
-
-// ============================================================
-// 12. PROPERTIES OF NITROGEN
-// ============================================================
-
-add(
-  "chemistry",
-  "nonmetals_compounds",
-  "Properties of Nitrogen",
-  `<h2>Properties of Nitrogen</h2>
-
-  <p>Nitrogen is a non-metallic element with the symbol <strong>N</strong>.</p>
-
-  <p>Nitrogen gas exists mainly as diatomic molecules, <strong>N₂</strong>.</p>
-
-  <h3>Physical properties</h3>
-
-  <ul>
-    <li>It is colourless.</li>
-    <li>It is odourless.</li>
-    <li>It is a gas at room temperature.</li>
-    <li>It is only slightly soluble in water.</li>
-  </ul>
-
-  <p>Nitrogen makes up most of the Earth's atmosphere.</p>
-
-  <h3>Chemical property</h3>
-
-  <p>Nitrogen is relatively unreactive under ordinary conditions because the N≡N bond is very strong.</p>`,
-  [
-    {
-      q: "What is the formula of nitrogen gas?",
-      steps: [
-        "Step 1: Nitrogen exists naturally as diatomic molecules.",
-        "Step 2: A diatomic molecule contains two nitrogen atoms.",
-        "Step 3: Therefore, the formula is N₂."
-      ],
-      ans: "N₂",
-      why: "Nitrogen gas exists as molecules containing two nitrogen atoms."
-    },
-    {
-      q: "State two physical properties of nitrogen gas.",
-      steps: [
-        "Step 1: Nitrogen is a gas at room temperature.",
-        "Step 2: It is colourless.",
-        "Step 3: It is also odourless and only slightly soluble in water.",
-        "Step 4: Any two are acceptable."
-      ],
-      ans: "For example: nitrogen is colourless and odourless.",
-      why: "These are physical properties of nitrogen gas."
-    },
-    {
-      q: "Why is nitrogen relatively unreactive at room temperature?",
-      steps: [
-        "Step 1: Nitrogen molecules contain an N≡N triple bond.",
-        "Step 2: This bond is very strong.",
-        "Step 3: A large amount of energy is required to break it.",
-        "Step 4: Therefore, nitrogen reacts slowly under ordinary conditions."
-      ],
-      ans: "Because the N≡N triple bond is very strong.",
-      why: "The strong nitrogen-nitrogen bond makes nitrogen relatively unreactive."
-    }
-  ],
-  [
-    {
-      q: "What percentage of the atmosphere is approximately nitrogen?",
-      hint: "Nitrogen is the largest component of air.",
-      steps: [
-        "Step 1: Nitrogen makes up about four-fifths of dry air.",
-        "Step 2: Four-fifths is approximately 78%.",
-        "Step 3: Therefore, nitrogen makes up about 78% of the atmosphere."
-      ],
-      ans: "Approximately 78%",
-      why: "Nitrogen is the most abundant gas in Earth's atmosphere."
-    }
-  ]
-);
-
-
-// ============================================================
-// 13. AMMONIA
-// ============================================================
+// ------------------------------------------------------------
+// 1. AMMONIA
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "nonmetals_compounds",
   "Ammonia",
-  `<h2>Ammonia</h2>
 
-  <p>Ammonia is a compound of nitrogen and hydrogen with the formula <strong>NH₃</strong>.</p>
+  `
+  <h2>Ammonia</h2>
 
-  <h3>Properties</h3>
+  <h3>1. Formula and Composition</h3>
+
+  <p>
+    Ammonia is a compound of nitrogen and hydrogen with the chemical
+    formula NH<sub>3</sub>. Each molecule contains one nitrogen atom
+    bonded to three hydrogen atoms.
+  </p>
+
+  <p>
+    Ammonia is a covalent compound. It is an important raw material
+    in the manufacture of fertilisers, nitric acid and other nitrogen
+    compounds.
+  </p>
+
+  <h3>2. Laboratory Preparation of Ammonia</h3>
+
+  <p>
+    In the laboratory, ammonia can be prepared by heating an ammonium
+    salt, such as ammonium chloride, with a suitable alkali, such as
+    calcium hydroxide.
+  </p>
+
+  <p><b>Word equation:</b></p>
+
+  <p>
+    Ammonium chloride + Calcium hydroxide
+    → Calcium chloride + Water + Ammonia
+  </p>
+
+  <p><b>Balanced chemical equation:</b></p>
+
+  <p>
+    2NH<sub>4</sub>Cl + Ca(OH)<sub>2</sub>
+    → CaCl<sub>2</sub> + 2H<sub>2</sub>O + 2NH<sub>3</sub>
+  </p>
+
+  <h3>3. Drying and Collection</h3>
+
+  <p>
+    Ammonia is dried using quicklime, calcium oxide (CaO). It cannot
+    be dried using concentrated sulphuric acid because ammonia reacts
+    with the acid. Anhydrous calcium chloride is also unsuitable
+    because it absorbs ammonia.
+  </p>
+
+  <p>
+    Ammonia is collected by downward displacement of air, also called
+    upward delivery. It is less dense than air and extremely soluble
+    in water, so it cannot be collected over water.
+  </p>
+
+  <h3>4. Physical Properties</h3>
 
   <ul>
     <li>It is a colourless gas.</li>
-    <li>It has a pungent smell.</li>
-    <li>It is very soluble in water.</li>
-    <li>Its aqueous solution is alkaline.</li>
+    <li>It has a sharp, pungent smell.</li>
+    <li>It is less dense than air.</li>
+    <li>It is highly soluble in water.</li>
+    <li>It can be liquefied by cooling and applying pressure.</li>
   </ul>
 
-  <h3>Preparation</h3>
+  <p>
+    Ammonia gas must never be identified by deliberately smelling it
+    directly. Laboratory gases should be handled using approved
+    safety procedures and adequate ventilation.
+  </p>
 
-  <p>Industrially, ammonia is manufactured by the Haber process:</p>
+  <h3>5. Chemical Properties</h3>
 
-  <p><strong>N₂ + 3H₂ ⇌ 2NH₃</strong></p>
+  <p><b>A. Ammonia is alkaline in water</b></p>
 
-  <p>The reaction uses nitrogen and hydrogen and is carried out under suitable industrial conditions.</p>`,
+  <p>
+    When ammonia dissolves in water, a small proportion reacts with
+    water to form ammonium ions and hydroxide ions. This makes the
+    solution alkaline.
+  </p>
+
+  <p>
+    NH<sub>3</sub> + H<sub>2</sub>O
+    ⇌ NH<sub>4</sub><sup>+</sup> + OH<sup>−</sup>
+  </p>
+
+  <p>
+    Ammonia turns damp red litmus paper blue. Dry ammonia does not
+    produce this colour change because water is needed for the
+    alkaline effect.
+  </p>
+
+  <p><b>B. Reaction with acids</b></p>
+
+  <p>
+    Ammonia reacts with hydrogen chloride gas to produce dense white
+    fumes of ammonium chloride.
+  </p>
+
+  <p>
+    NH<sub>3</sub> + HCl → NH<sub>4</sub>Cl
+  </p>
+
+  <p>
+    Ammonia also reacts with nitric acid to form ammonium nitrate
+    and with sulphuric acid to form ammonium sulphate.
+  </p>
+
+  <p>
+    NH<sub>3</sub> + HNO<sub>3</sub> → NH<sub>4</sub>NO<sub>3</sub>
+  </p>
+
+  <p>
+    2NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub>
+    → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>
+  </p>
+
+  <p><b>C. Catalytic oxidation</b></p>
+
+  <p>
+    Ammonia reacts with oxygen in the presence of a platinum catalyst
+    at a high temperature to form nitrogen monoxide and water.
+    This reaction is an important first stage in the manufacture
+    of nitric acid.
+  </p>
+
+  <p>
+    4NH<sub>3</sub> + 5O<sub>2</sub>
+    → 4NO + 6H<sub>2</sub>O
+  </p>
+
+  <h3>6. Industrial Manufacture: The Haber Process</h3>
+
+  <p>
+    Industrial ammonia is manufactured by reacting nitrogen with
+    hydrogen in the Haber process. Nitrogen is obtained mainly from
+    air, while hydrogen is commonly produced from natural gas or
+    other suitable feedstocks.
+  </p>
+
+  <p>
+    N<sub>2</sub> + 3H<sub>2</sub>
+    ⇌ 2NH<sub>3</sub>
+  </p>
+
+  <p>
+    The process uses an iron catalyst, elevated temperature and high
+    pressure. The reaction is reversible and exothermic.
+  </p>
+
+  <h3>7. Uses of Ammonia</h3>
+
+  <ul>
+    <li>Manufacture of nitrogen fertilisers such as ammonium sulphate and ammonium nitrate.</li>
+    <li>Manufacture of nitric acid.</li>
+    <li>Use as a refrigerant in suitable industrial refrigeration systems.</li>
+    <li>Manufacture of other chemicals.</li>
+    <li>Production of certain cleaning products and industrial solutions.</li>
+  </ul>
+
+  <h3>Worked Examples</h3>
+
+  <p><b>Example 1: Balancing the laboratory preparation equation</b></p>
+
+  <p><b>Question:</b> Balance the equation for the preparation of
+  ammonia from ammonium chloride and calcium hydroxide.</p>
+
+  <p><b>Step 1:</b> Write the unbalanced equation:</p>
+
+  <p>
+    NH<sub>4</sub>Cl + Ca(OH)<sub>2</sub>
+    → CaCl<sub>2</sub> + H<sub>2</sub>O + NH<sub>3</sub>
+  </p>
+
+  <p><b>Step 2:</b> Calcium chloride contains two chlorine atoms.
+  Place 2 before NH<sub>4</sub>Cl.</p>
+
+  <p><b>Step 3:</b> This gives two nitrogen atoms, so place 2 before
+  NH<sub>3</sub>. Balance the hydrogen and oxygen atoms by placing
+  2 before H<sub>2</sub>O.</p>
+
+  <p><b>Balanced equation:</b></p>
+
+  <p>
+    2NH<sub>4</sub>Cl + Ca(OH)<sub>2</sub>
+    → CaCl<sub>2</sub> + 2H<sub>2</sub>O + 2NH<sub>3</sub>
+  </p>
+
+  <p><b>Example 2: Identifying ammonia</b></p>
+
+  <p><b>Question:</b> A gas turns damp red litmus paper blue. Explain
+  the observation if the gas is ammonia.</p>
+
+  <p><b>Step 1:</b> Ammonia dissolves in the moisture on the paper.</p>
+
+  <p><b>Step 2:</b> It reacts reversibly with water to produce
+  hydroxide ions.</p>
+
+  <p><b>Step 3:</b> The hydroxide ions make the solution alkaline.</p>
+
+  <p><b>Answer:</b> The paper turns blue because dissolved ammonia
+  produces hydroxide ions.</p>
+
+  <p><b>Example 3: Formation of ammonium sulphate</b></p>
+
+  <p><b>Question:</b> Write the balanced equation for the reaction
+  between ammonia and sulphuric acid.</p>
+
+  <p><b>Step 1:</b> Identify the reactants: NH<sub>3</sub> and
+  H<sub>2</sub>SO<sub>4</sub>.</p>
+
+  <p><b>Step 2:</b> The salt formed is ammonium sulphate,
+  (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>.</p>
+
+  <p><b>Step 3:</b> The product contains two nitrogen atoms, so
+  two ammonia molecules are needed.</p>
+
+  <p><b>Answer:</b></p>
+
+  <p>
+    2NH<sub>3</sub> + H<sub>2</sub>SO<sub>4</sub>
+    → (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>
+  </p>
+
+  <h3>Key Distinctions</h3>
+
+  <ul>
+    <li>Ammonia is NH<sub>3</sub>; the ammonium ion is NH<sub>4</sub><sup>+</sup>.</li>
+    <li>Ammonia is a gas under ordinary laboratory conditions; aqueous ammonia is a solution containing dissolved ammonia.</li>
+    <li>Quicklime is used to dry ammonia; concentrated sulphuric acid is unsuitable because it reacts with ammonia.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What is the formula of ammonia?",
-      steps: [
-        "Step 1: Ammonia contains nitrogen and hydrogen.",
-        "Step 2: One nitrogen atom combines with three hydrogen atoms.",
-        "Step 3: Therefore, the formula is NH₃."
-      ],
-      ans: "NH₃",
-      why: "Ammonia contains one nitrogen atom and three hydrogen atoms."
+      q: "Write the balanced equation for preparing ammonia by heating ammonium chloride with calcium hydroxide.",
+      ans: "2NH4Cl + Ca(OH)2 → CaCl2 + 2H2O + 2NH3",
+      sol: "2NH₄Cl + Ca(OH)₂ → CaCl₂ + 2H₂O + 2NH₃"
     },
     {
-      q: "Write the balanced equation for manufacture of ammonia from nitrogen and hydrogen.",
-      steps: [
-        "Step 1: Write N₂ + H₂ → NH₃.",
-        "Step 2: Balance nitrogen by placing 2 before NH₃.",
-        "Step 3: This gives six hydrogen atoms on the right.",
-        "Step 4: Place 3 before H₂.",
-        "Step 5: The balanced equation is N₂ + 3H₂ ⇌ 2NH₃."
-      ],
-      ans: "N₂ + 3H₂ ⇌ 2NH₃",
-      why: "Two nitrogen atoms and six hydrogen atoms occur on both sides."
+      q: "State the drying agent and collection method used for ammonia gas, explaining why water is unsuitable for collection.",
+      ans: "Quicklime (calcium oxide); downward displacement of air; ammonia is highly soluble in water.",
+      sol: "CaO dries ammonia without reacting with it. Ammonia is less dense than air and dissolves readily in water."
     },
     {
-      q: "What happens to red litmus paper in ammonia solution?",
-      steps: [
-        "Step 1: Ammonia solution is alkaline.",
-        "Step 2: Alkalis turn red litmus blue.",
-        "Step 3: Therefore, red litmus turns blue."
-      ],
-      ans: "It turns blue.",
-      why: "Aqueous ammonia is alkaline."
+      q: "Describe the test for ammonia using damp red litmus paper and explain the result.",
+      ans: "Ammonia turns damp red litmus paper blue because dissolved ammonia produces hydroxide ions.",
+      sol: "NH3 + H2O ⇌ NH4+ + OH−. The hydroxide ions make the solution alkaline."
     }
   ],
+
   [
     {
-      q: "Why is ammonia important in agriculture?",
-      hint: "Think about nitrogen-containing fertilisers.",
+      q: "Write a balanced equation for preparing ammonia from ammonium chloride and calcium hydroxide. Explain how you balance it.",
+      hint: "The products are calcium chloride, water and ammonia.",
       steps: [
-        "Step 1: Plants require nitrogen for healthy growth.",
-        "Step 2: Ammonia contains nitrogen.",
-        "Step 3: Ammonia is used directly or indirectly in fertiliser manufacture.",
-        "Step 4: Therefore, ammonia is important in producing nitrogen fertilisers."
+        "Write NH4Cl + Ca(OH)2 → CaCl2 + H2O + NH3.",
+        "Balance chlorine by placing 2 before NH4Cl.",
+        "Balance nitrogen by placing 2 before NH3.",
+        "Balance hydrogen and oxygen by placing 2 before H2O.",
+        "Check that every element has the same number of atoms on both sides."
       ],
-      ans: "It is used in the manufacture of nitrogen fertilisers.",
-      why: "Ammonia provides nitrogen for producing fertilisers needed by crops."
+      ans: "2NH4Cl + Ca(OH)2 → CaCl2 + 2H2O + 2NH3",
+      why: "Two ammonium chloride units supply two nitrogen atoms and two chlorine atoms, matching the products."
+    },
+    {
+      q: "Explain why ammonia is collected by downward displacement of air and not over water.",
+      hint: "Compare the density of ammonia with air and consider its solubility.",
+      steps: [
+        "State whether ammonia is more or less dense than air.",
+        "Explain how this allows it to displace air.",
+        "State what happens when ammonia comes into contact with water."
+      ],
+      ans: "Ammonia is less dense than air, so it is collected by downward displacement of air. It is highly soluble in water, so collection over water is unsuitable.",
+      why: "Water would dissolve a substantial amount of the gas instead of allowing it to collect."
+    },
+    {
+      q: "A student holds damp red litmus paper in ammonia gas. Predict the observation and explain it using an ionic equation.",
+      hint: "Ammonia reacts reversibly with water.",
+      steps: [
+        "State the colour change.",
+        "Explain that ammonia dissolves in moisture.",
+        "Write the equilibrium equation showing hydroxide ions."
+      ],
+      ans: "The paper turns blue. NH3 + H2O ⇌ NH4+ + OH−.",
+      why: "Hydroxide ions make the moist indicator alkaline. Dry ammonia alone does not produce the same indicator change."
+    },
+    {
+      q: "Write a balanced equation for the reaction between ammonia and hydrogen chloride gas. State the visible observation.",
+      hint: "The product is the ammonium salt containing chloride ions.",
+      steps: [
+        "Write the formulae NH3 and HCl.",
+        "Identify the salt NH4Cl.",
+        "Check that the equation is balanced.",
+        "State the observation."
+      ],
+      ans: "NH3 + HCl → NH4Cl; dense white fumes form.",
+      why: "Ammonia and hydrogen chloride combine to form solid ammonium chloride particles."
+    },
+    {
+      q: "Write the balanced equation for the catalytic oxidation of ammonia to nitrogen monoxide and water.",
+      hint: "The products are NO and H2O. Balance nitrogen first, then hydrogen and oxygen.",
+      steps: [
+        "Write NH3 + O2 → NO + H2O.",
+        "Balance nitrogen by placing 4 before NH3 and 4 before NO.",
+        "Balance hydrogen by placing 6 before H2O.",
+        "Balance oxygen by placing 5 before O2."
+      ],
+      ans: "4NH3 + 5O2 → 4NO + 6H2O",
+      why: "The balanced equation contains four nitrogen atoms, twelve hydrogen atoms and ten oxygen atoms on each side."
+    },
+    {
+      q: "Explain why quicklime is suitable for drying ammonia, while concentrated sulphuric acid is unsuitable.",
+      hint: "A suitable drying agent removes moisture without consuming the gas.",
+      steps: [
+        "Identify quicklime as calcium oxide.",
+        "Explain the requirement for a drying agent.",
+        "Explain how concentrated sulphuric acid reacts with ammonia."
+      ],
+      ans: "Quicklime removes moisture without reacting with ammonia. Concentrated sulphuric acid is unsuitable because it reacts with ammonia to form ammonium salts.",
+      why: "A drying agent must remove water without removing or chemically changing the gas being dried."
     }
   ]
 );
 
 
-// ============================================================
-// 14. NITROGEN COMPOUNDS
-// ============================================================
+// ------------------------------------------------------------
+// 2. NITROGEN COMPOUNDS
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "nonmetals_compounds",
   "Nitrogen Compounds",
-  `<h2>Nitrogen Compounds</h2>
 
-  <p>Nitrogen forms many important compounds.</p>
+  `
+  <h2>Nitrogen Compounds</h2>
 
-  <h3>Ammonia</h3>
+  <h3>1. Introduction</h3>
 
-  <p><strong>NH₃</strong></p>
+  <p>
+    Nitrogen forms many compounds because it can combine with hydrogen,
+    oxygen and other elements. Important nitrogen compounds include
+    ammonia, ammonium salts, nitrates, nitric acid and nitrogen oxides.
+  </p>
 
-  <p>Ammonia is an alkaline gas that dissolves readily in water.</p>
+  <p>
+    Many nitrogen compounds are important in agriculture, industry
+    and biological processes. Their properties depend on their
+    chemical composition and structure.
+  </p>
 
-  <h3>Nitric acid</h3>
+  <h3>2. Ammonium Ions and Ammonium Salts</h3>
 
-  <p><strong>HNO₃</strong></p>
+  <p>
+    The ammonium ion has the formula NH<sub>4</sub><sup>+</sup>.
+    It is formed when ammonia accepts a hydrogen ion (H<sup>+</sup>).
+  </p>
 
-  <p>Nitric acid is a strong acid and an important industrial chemical.</p>
+  <p>
+    NH<sub>3</sub> + H<sup>+</sup> → NH<sub>4</sub><sup>+</sup>
+  </p>
 
-  <h3>Nitrates</h3>
+  <p>
+    An ammonium salt contains ammonium ions and negative ions from
+    an acid. Examples include:
+  </p>
 
-  <p>Nitrates contain the nitrate ion:</p>
+  <ul>
+    <li>Ammonium chloride: NH<sub>4</sub>Cl.</li>
+    <li>Ammonium sulphate: (NH<sub>4</sub>)<sub>2</sub>SO<sub>4</sub>.</li>
+    <li>Ammonium nitrate: NH<sub>4</sub>NO<sub>3</sub>.</li>
+  </ul>
 
-  <p><strong>NO₃⁻</strong></p>
+  <p>
+    Ammonium salts can be prepared by reacting ammonia with acids.
+    For example, ammonia reacts with nitric acid to form ammonium nitrate.
+  </p>
 
-  <p>Examples include sodium nitrate, NaNO₃, and potassium nitrate, KNO₃.</p>
+  <p>
+    NH<sub>3</sub> + HNO<sub>3</sub> → NH<sub>4</sub>NO<sub>3</sub>
+  </p>
 
-  <p>Nitrogen compounds are important in fertilisers, industry and biological processes.</p>`,
+  <h3>3. Nitrates</h3>
+
+  <p>
+    A nitrate contains the nitrate ion, NO<sub>3</sub><sup>−</sup>.
+    Nitrates are salts of nitric acid, HNO<sub>3</sub>.
+  </p>
+
+  <p>Examples include:</p>
+
+  <ul>
+    <li>Sodium nitrate: NaNO<sub>3</sub>.</li>
+    <li>Potassium nitrate: KNO<sub>3</sub>.</li>
+    <li>Ammonium nitrate: NH<sub>4</sub>NO<sub>3</sub>.</li>
+    <li>Calcium nitrate: Ca(NO<sub>3</sub>)<sub>2</sub>.</li>
+  </ul>
+
+  <p>
+    Many nitrates are soluble in water. Nitrate salts are important
+    sources of nitrogen in fertilisers. Plants absorb nitrogen mainly
+    as nitrate ions or ammonium ions, depending on soil conditions.
+  </p>
+
+  <h3>4. Nitric Acid</h3>
+
+  <p>
+    Nitric acid has the formula HNO<sub>3</sub>. It is a strong acid
+    in aqueous solution and reacts with suitable bases and carbonates
+    to form nitrate salts.
+  </p>
+
+  <p><b>Reaction with sodium hydroxide:</b></p>
+
+  <p>
+    HNO<sub>3</sub> + NaOH → NaNO<sub>3</sub> + H<sub>2</sub>O
+  </p>
+
+  <p><b>Reaction with calcium carbonate:</b></p>
+
+  <p>
+    CaCO<sub>3</sub> + 2HNO<sub>3</sub>
+    → Ca(NO<sub>3</sub>)<sub>2</sub> + H<sub>2</sub>O + CO<sub>2</sub>
+  </p>
+
+  <p>
+    Nitric acid is used in the manufacture of fertilisers, dyes and
+    other chemicals. It is corrosive and can cause serious burns.
+  </p>
+
+  <h3>5. Nitrogen Oxides</h3>
+
+  <p>
+    Nitrogen forms several oxides, including nitrogen monoxide,
+    NO, and nitrogen dioxide, NO<sub>2</sub>.
+  </p>
+
+  <p>
+    Nitrogen monoxide is a colourless gas that reacts with oxygen
+    in air to form brown nitrogen dioxide:
+  </p>
+
+  <p>
+    2NO + O<sub>2</sub> → 2NO<sub>2</sub>
+  </p>
+
+  <p>
+    Nitrogen dioxide is a toxic, reddish-brown gas. Nitrogen oxides
+    can be produced by high-temperature combustion in engines and
+    industrial processes. They contribute to air pollution and the
+    formation of acid deposition.
+  </p>
+
+  <h3>6. Tests for Ammonium Ions</h3>
+
+  <p>
+    To test for ammonium ions, add aqueous sodium hydroxide to the
+    sample and warm it gently. If ammonium ions are present, ammonia
+    gas is released.
+  </p>
+
+  <p>
+    NH<sub>4</sub><sup>+</sup> + OH<sup>−</sup>
+    → NH<sub>3</sub> + H<sub>2</sub>O
+  </p>
+
+  <p>
+    The released ammonia turns damp red litmus paper blue. This test
+    must be carried out with appropriate laboratory precautions.
+  </p>
+
+  <h3>Worked Examples</h3>
+
+  <p><b>Example 1: Writing a nitrate formula</b></p>
+
+  <p><b>Question:</b> Write the formula of calcium nitrate.</p>
+
+  <p><b>Step 1:</b> Calcium forms Ca<sup>2+</sup>.</p>
+
+  <p><b>Step 2:</b> Nitrate is NO<sub>3</sub><sup>−</sup>.</p>
+
+  <p><b>Step 3:</b> Two nitrate ions are needed to balance one
+  calcium ion's +2 charge.</p>
+
+  <p><b>Answer:</b> Ca(NO<sub>3</sub>)<sub>2</sub>.</p>
+
+  <p><b>Example 2: Preparing a nitrate</b></p>
+
+  <p><b>Question:</b> Write the balanced equation for the reaction
+  between nitric acid and sodium hydroxide.</p>
+
+  <p><b>Step 1:</b> The reactants are HNO<sub>3</sub> and NaOH.</p>
+
+  <p><b>Step 2:</b> The salt formed is sodium nitrate.</p>
+
+  <p><b>Step 3:</b> Acid-base neutralisation also produces water.</p>
+
+  <p><b>Answer:</b></p>
+
+  <p>
+    HNO<sub>3</sub> + NaOH → NaNO<sub>3</sub> + H<sub>2</sub>O
+  </p>
+
+  <p><b>Example 3: Testing an ammonium salt</b></p>
+
+  <p><b>Question:</b> A salt is warmed with aqueous sodium hydroxide.
+  The gas produced turns damp red litmus paper blue. What ion may
+  be present in the salt?</p>
+
+  <p><b>Step 1:</b> Sodium hydroxide provides hydroxide ions.</p>
+
+  <p><b>Step 2:</b> Hydroxide ions react with ammonium ions to release ammonia.</p>
+
+  <p><b>Step 3:</b> Ammonia produces an alkaline solution in moisture.</p>
+
+  <p><b>Answer:</b> The ammonium ion, NH<sub>4</sub><sup>+</sup>,
+  may be present.</p>
+
+  <h3>Key Distinctions</h3>
+
+  <ul>
+    <li>Ammonium ion: NH<sub>4</sub><sup>+</sup>.</li>
+    <li>Nitrate ion: NO<sub>3</sub><sup>−</sup>.</li>
+    <li>Ammonium nitrate: NH<sub>4</sub>NO<sub>3</sub>, a salt containing both ions.</li>
+    <li>Nitric acid: HNO<sub>3</sub>, an acid rather than a nitrate salt.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What is the formula of the nitrate ion?",
-      steps: [
-        "Step 1: Identify the nitrate ion.",
-        "Step 2: It contains one nitrogen atom and three oxygen atoms.",
-        "Step 3: It carries a charge of −1.",
-        "Step 4: Therefore, the formula is NO₃⁻."
-      ],
-      ans: "NO₃⁻",
-      why: "The nitrate ion contains one nitrogen atom and three oxygen atoms and has a −1 charge."
+      q: "State the formula and charge of the ammonium ion and the nitrate ion.",
+      ans: "Ammonium: NH4+, charge +1; nitrate: NO3−, charge −1.",
+      sol: "The ammonium ion is NH₄⁺ and the nitrate ion is NO₃⁻."
     },
     {
-      q: "Write the formula of sodium nitrate.",
-      steps: [
-        "Step 1: Sodium forms Na⁺.",
-        "Step 2: Nitrate forms NO₃⁻.",
-        "Step 3: The charges are equal and opposite.",
-        "Step 4: Combine them in a 1:1 ratio.",
-        "Step 5: The formula is NaNO₃."
-      ],
-      ans: "NaNO₃",
-      why: "One Na⁺ ion balances one NO₃⁻ ion."
+      q: "Write the formula of calcium nitrate using the charges of calcium and nitrate ions.",
+      ans: "Ca(NO3)2",
+      sol: "Ca²⁺ requires two NO₃⁻ ions to produce a neutral compound: Ca(NO₃)₂."
     },
     {
-      q: "Write the formula of potassium nitrate.",
-      steps: [
-        "Step 1: Potassium forms K⁺.",
-        "Step 2: Nitrate forms NO₃⁻.",
-        "Step 3: A 1:1 ratio gives a neutral compound.",
-        "Step 4: The formula is KNO₃."
-      ],
-      ans: "KNO₃",
-      why: "One K⁺ ion balances one NO₃⁻ ion."
+      q: "Describe the laboratory test for ammonium ions using aqueous sodium hydroxide.",
+      ans: "Add aqueous sodium hydroxide and warm gently; ammonia is released and turns damp red litmus paper blue.",
+      sol: "NH4+ + OH− → NH3 + H2O."
     }
   ],
+
   [
     {
-      q: "What is the formula of nitric acid?",
-      hint: "Nitric acid contains hydrogen and the nitrate group.",
+      q: "Write the formula of calcium nitrate and explain how the ionic charges determine the formula.",
+      hint: "Calcium forms Ca2+ and nitrate is NO3−.",
       steps: [
-        "Step 1: Hydrogen forms H⁺.",
-        "Step 2: Nitrate is NO₃⁻.",
-        "Step 3: Combine them in a 1:1 ratio.",
-        "Step 4: The formula is HNO₃."
+        "Write the calcium ion and its charge.",
+        "Write the nitrate ion and its charge.",
+        "Determine how many nitrate ions are needed to balance one calcium ion.",
+        "Use brackets around the nitrate ion because it occurs twice."
       ],
-      ans: "HNO₃",
-      why: "One H⁺ ion combines with one NO₃⁻ ion to form nitric acid."
+      ans: "Ca(NO3)2; one Ca2+ ion is balanced by two NO3− ions.",
+      why: "The total positive charge of +2 balances the total negative charge of −2."
+    },
+    {
+      q: "Write a balanced equation for the reaction between nitric acid and sodium hydroxide. Name the salt formed.",
+      hint: "An acid reacting with an alkali produces a salt and water.",
+      steps: [
+        "Write HNO3 and NaOH as the reactants.",
+        "Combine Na+ with NO3− to form sodium nitrate.",
+        "Write water as the other product.",
+        "Check the number of atoms on both sides."
+      ],
+      ans: "HNO3 + NaOH → NaNO3 + H2O; sodium nitrate.",
+      why: "The hydrogen ion from the acid and hydroxide ion from the alkali form water."
+    },
+    {
+      q: "Explain how a student can test a sample for ammonium ions and state the positive result.",
+      hint: "Use aqueous sodium hydroxide and test the gas released.",
+      steps: [
+        "Add aqueous sodium hydroxide to the sample.",
+        "Warm gently using safe laboratory technique.",
+        "Test the evolved gas with damp red litmus paper.",
+        "State the observation indicating a positive result."
+      ],
+      ans: "Add aqueous sodium hydroxide and warm gently. Ammonia is released and turns damp red litmus paper blue.",
+      why: "Hydroxide ions react with ammonium ions to produce ammonia and water."
+    },
+    {
+      q: "Write the balanced equation for the reaction of calcium carbonate with nitric acid.",
+      hint: "An acid reacting with a carbonate produces a salt, water and carbon dioxide.",
+      steps: [
+        "Identify calcium nitrate as the salt.",
+        "Write CaCO3 + HNO3 → Ca(NO3)2 + H2O + CO2.",
+        "Place 2 before HNO3 to provide two nitrate groups.",
+        "Check calcium, carbon, hydrogen, nitrogen and oxygen atoms."
+      ],
+      ans: "CaCO3 + 2HNO3 → Ca(NO3)2 + H2O + CO2",
+      why: "Two nitric acid molecules provide the two nitrate groups required by calcium nitrate."
+    },
+    {
+      q: "Nitrogen monoxide reacts with oxygen to form nitrogen dioxide. Write the balanced equation and state the colour of nitrogen dioxide.",
+      hint: "Nitrogen dioxide has the formula NO2.",
+      steps: [
+        "Write NO + O2 → NO2.",
+        "Place 2 before NO and NO2 to balance nitrogen.",
+        "Check oxygen atoms.",
+        "State the characteristic colour of the product."
+      ],
+      ans: "2NO + O2 → 2NO2; nitrogen dioxide is reddish-brown.",
+      why: "Two nitrogen monoxide molecules react with one oxygen molecule to form two nitrogen dioxide molecules."
+    },
+    {
+      q: "Distinguish between ammonium nitrate and nitric acid by formula and chemical classification.",
+      hint: "One is an ionic salt and the other is an acid.",
+      steps: [
+        "Write the formula of ammonium nitrate.",
+        "Write the formula of nitric acid.",
+        "Identify the classification of each substance."
+      ],
+      ans: "Ammonium nitrate is NH4NO3, a salt; nitric acid is HNO3, an acid.",
+      why: "Ammonium nitrate contains ammonium and nitrate ions, while nitric acid is the acid that forms nitrate salts."
     }
   ]
 );
 
 
-// ============================================================
-// 15. NITROGEN CYCLE
-// ============================================================
+// ------------------------------------------------------------
+// 3. NITROGEN CYCLE
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "nonmetals_compounds",
   "Nitrogen Cycle",
-  `<h2>Nitrogen Cycle</h2>
 
-  <p>The nitrogen cycle describes how nitrogen moves between the atmosphere, soil, plants, animals and microorganisms.</p>
+  `
+  <h2>Nitrogen Cycle</h2>
 
-  <h3>Important processes</h3>
+  <h3>1. Why Nitrogen Must Be Recycled</h3>
 
-  <p><strong>Nitrogen fixation:</strong> atmospheric nitrogen is converted into usable nitrogen compounds.</p>
+  <p>
+    Nitrogen is essential for living organisms. Plants and animals
+    need nitrogen to make amino acids, proteins and nucleic acids
+    such as DNA.
+  </p>
 
-  <p><strong>Nitrification:</strong> microorganisms convert ammonium compounds into nitrites and then nitrates.</p>
+  <p>
+    Although the atmosphere contains approximately 78% nitrogen gas,
+    N<sub>2</sub>, most plants cannot use atmospheric nitrogen directly.
+    The strong triple bond in nitrogen molecules makes the gas relatively
+    unreactive under ordinary conditions.
+  </p>
 
-  <p><strong>Assimilation:</strong> plants absorb nitrates and use nitrogen to make compounds such as proteins.</p>
+  <p>
+    The nitrogen cycle describes how nitrogen moves between the
+    atmosphere, soil, plants, animals and decomposing organic matter.
+    Microorganisms carry out many of its essential transformations.
+  </p>
 
-  <p><strong>Ammonification:</strong> decomposers convert nitrogen-containing organic matter into ammonium compounds.</p>
+  <h3>2. Nitrogen Fixation</h3>
 
-  <p><strong>Denitrification:</strong> bacteria convert nitrates back into nitrogen gas.</p>
+  <p>
+    Nitrogen fixation converts atmospheric nitrogen gas into compounds
+    that can enter biological and soil processes.
+  </p>
 
-  <p>The cycle maintains the movement of nitrogen through ecosystems.</p>`,
+  <p><b>A. Biological fixation</b></p>
+
+  <p>
+    Certain bacteria convert atmospheric nitrogen into ammonia or
+    related nitrogen compounds. Some live freely in the soil, while
+    others live in root nodules of leguminous plants such as beans,
+    peas and clover.
+  </p>
+
+  <p>
+    The plants provide the bacteria with carbohydrates and a suitable
+    environment. In return, the bacteria supply fixed nitrogen that
+    supports plant growth.
+  </p>
+
+  <p><b>B. Atmospheric fixation</b></p>
+
+  <p>
+    Lightning provides enough energy for nitrogen and oxygen in the
+    atmosphere to react and form nitrogen oxides. These eventually
+    produce nitrates that rain can carry into the soil.
+  </p>
+
+  <p><b>C. Industrial fixation</b></p>
+
+  <p>
+    The Haber process converts atmospheric nitrogen and hydrogen into
+    ammonia. Industrially produced ammonia is used to make nitrogen
+    fertilisers.
+  </p>
+
+  <p>
+    N<sub>2</sub> + 3H<sub>2</sub>
+    ⇌ 2NH<sub>3</sub>
+  </p>
+
+  <h3>3. Nitrification</h3>
+
+  <p>
+    Nitrification is the microbial conversion of ammonium compounds
+    into nitrites and then nitrates under suitable aerobic conditions.
+  </p>
+
+  <p>
+    In simplified form:
+  </p>
+
+  <p>
+    Ammonium compounds → Nitrites (NO<sub>2</sub><sup>−</sup>)
+    → Nitrates (NO<sub>3</sub><sup>−</sup>)
+  </p>
+
+  <p>
+    Different groups of nitrifying microorganisms carry out the stages.
+    Nitrates are readily absorbed by many plants through their roots.
+  </p>
+
+  <h3>4. Assimilation</h3>
+
+  <p>
+    Assimilation occurs when plants absorb nitrate or ammonium ions
+    from the soil and use the nitrogen to manufacture amino acids,
+    proteins and other nitrogen-containing substances.
+  </p>
+
+  <p>
+    Animals obtain nitrogen by eating plants or other animals.
+    Nitrogen therefore passes through food chains from producers
+    to consumers.
+  </p>
+
+  <h3>5. Ammonification</h3>
+
+  <p>
+    Ammonification is the breakdown of nitrogen-containing organic
+    matter into ammonia or ammonium compounds by decomposers such
+    as certain bacteria and fungi.
+  </p>
+
+  <p>
+    The process occurs when organisms die or release nitrogen-containing
+    waste. Decomposers break down proteins and other organic compounds,
+    returning nitrogen to the soil.
+  </p>
+
+  <h3>6. Denitrification</h3>
+
+  <p>
+    Denitrification is the conversion of nitrates into gaseous nitrogen
+    compounds, including nitrogen gas, by certain microorganisms.
+    It commonly occurs in oxygen-poor or waterlogged soils.
+  </p>
+
+  <p>
+    Denitrification returns nitrogen to the atmosphere and completes
+    an important part of the cycle.
+  </p>
+
+  <p>
+    Nitrification generally requires oxygen, whereas denitrification
+    is favoured by low-oxygen conditions. They are different processes
+    with different effects on soil nitrogen.
+  </p>
+
+  <h3>7. The Main Stages in Sequence</h3>
+
+  <ol>
+    <li><b>Fixation:</b> Atmospheric nitrogen is converted into biologically useful nitrogen compounds.</li>
+    <li><b>Nitrification:</b> Ammonium compounds are converted into nitrites and nitrates.</li>
+    <li><b>Assimilation:</b> Plants absorb nitrogen compounds; animals obtain nitrogen through feeding.</li>
+    <li><b>Ammonification:</b> Decomposers return nitrogen from organic matter to ammonia or ammonium compounds.</li>
+    <li><b>Denitrification:</b> Nitrates are converted into gaseous nitrogen compounds and returned to the atmosphere.</li>
+  </ol>
+
+  <p>
+    These processes interact rather than occurring as one simple,
+    uninterrupted sequence. For example, ammonium compounds released
+    during decomposition may be nitrified, absorbed directly by
+    plants or undergo other soil transformations.
+  </p>
+
+  <h3>8. Importance of the Nitrogen Cycle</h3>
+
+  <ul>
+    <li>Recycles nitrogen between the atmosphere, soil and living organisms.</li>
+    <li>Maintains a supply of usable nitrogen for plant growth.</li>
+    <li>Supports the formation of proteins and nucleic acids.</li>
+    <li>Connects soil microorganisms with plants and animals in ecosystems.</li>
+    <li>Helps explain why nitrogen availability affects agricultural productivity.</li>
+  </ul>
+
+  <h3>Worked Examples</h3>
+
+  <p><b>Example 1: Identifying a nitrogen-cycle process</b></p>
+
+  <p><b>Question:</b> Soil bacteria convert ammonium compounds into
+  nitrates. Name the process.</p>
+
+  <p><b>Step 1:</b> Identify the starting substance: ammonium compounds.</p>
+
+  <p><b>Step 2:</b> Identify the product: nitrate ions.</p>
+
+  <p><b>Step 3:</b> Match the conversion to the correct process.</p>
+
+  <p><b>Answer:</b> Nitrification.</p>
+
+  <p><b>Example 2: Nitrogen entering a food chain</b></p>
+
+  <p><b>Question:</b> A bean plant absorbs nitrate ions and a cow eats
+  the plant. Explain how nitrogen moves between them.</p>
+
+  <p><b>Step 1:</b> The plant absorbs nitrate ions from the soil.</p>
+
+  <p><b>Step 2:</b> The plant uses the nitrogen to make amino acids
+  and proteins.</p>
+
+  <p><b>Step 3:</b> The cow obtains nitrogen by eating the plant's
+  nitrogen-containing tissues.</p>
+
+  <p><b>Answer:</b> Nitrogen is assimilated by the plant and then
+  transferred to the cow through feeding.</p>
+
+  <p><b>Example 3: Explaining nitrogen loss from soil</b></p>
+
+  <p><b>Question:</b> A waterlogged soil loses nitrate nitrogen as
+  nitrogen gas. Identify the process and explain why it matters.</p>
+
+  <p><b>Step 1:</b> Identify the starting substance: nitrate ions.</p>
+
+  <p><b>Step 2:</b> Identify the product: gaseous nitrogen compounds.</p>
+
+  <p><b>Step 3:</b> Link the conversion to the soil conditions.</p>
+
+  <p><b>Answer:</b> Denitrification. It returns nitrogen to the
+  atmosphere and can reduce the amount of nitrate available to plants.</p>
+
+  <h3>Key Distinctions</h3>
+
+  <ul>
+    <li><b>Fixation:</b> Makes atmospheric nitrogen available in compounds.</li>
+    <li><b>Nitrification:</b> Converts ammonium compounds into nitrites and nitrates.</li>
+    <li><b>Assimilation:</b> Incorporates nitrogen into living organisms.</li>
+    <li><b>Ammonification:</b> Returns organic nitrogen to ammonia or ammonium compounds.</li>
+    <li><b>Denitrification:</b> Returns nitrogen from nitrates to the atmosphere as gaseous compounds.</li>
+  </ul>
+  `,
+
   [
     {
-      q: "What is nitrogen fixation?",
-      steps: [
-        "Step 1: Atmospheric nitrogen exists mainly as N₂.",
-        "Step 2: Most plants cannot use atmospheric nitrogen directly.",
-        "Step 3: Nitrogen fixation converts atmospheric nitrogen into nitrogen compounds that can enter the biological nitrogen cycle."
-      ],
-      ans: "The conversion of atmospheric nitrogen into usable nitrogen compounds.",
-      why: "Nitrogen fixation makes atmospheric nitrogen available in forms that can enter biological processes."
+      q: "Why can most plants not use atmospheric nitrogen gas directly, even though it makes up about 78% of the atmosphere?",
+      ans: "Atmospheric nitrogen has a strong triple bond and must first be converted into usable nitrogen compounds.",
+      sol: "Most plants absorb nitrogen mainly as nitrate or ammonium ions rather than directly using N2 gas."
     },
     {
-      q: "What is nitrification?",
-      steps: [
-        "Step 1: Nitrogen-containing compounds in soil can be converted by microorganisms.",
-        "Step 2: Ammonium compounds are converted into nitrites.",
-        "Step 3: Nitrites are then converted into nitrates.",
-        "Step 4: This process is called nitrification."
-      ],
-      ans: "The microbial conversion of ammonium compounds into nitrites and then nitrates.",
-      why: "Nitrifying bacteria convert reduced nitrogen compounds into nitrates that plants can absorb."
+      q: "Name the process in which microorganisms convert ammonium compounds into nitrites and nitrates.",
+      ans: "Nitrification.",
+      sol: "Nitrification is the microbial oxidation of ammonium compounds through nitrites to nitrates."
     },
     {
-      q: "What is denitrification?",
-      steps: [
-        "Step 1: Nitrates are present in soil.",
-        "Step 2: Certain bacteria convert nitrates into nitrogen gas.",
-        "Step 3: Nitrogen gas returns to the atmosphere.",
-        "Step 4: This process is called denitrification."
-      ],
-      ans: "The conversion of nitrates into nitrogen gas by microorganisms.",
-      why: "Denitrification returns nitrogen from soil to the atmosphere."
+      q: "What is denitrification, and under what soil conditions does it commonly occur?",
+      ans: "It is the microbial conversion of nitrates into gaseous nitrogen compounds, commonly in oxygen-poor or waterlogged soils.",
+      sol: "Denitrifying microorganisms return nitrogen from soil nitrates to the atmosphere."
     }
   ],
+
   [
     {
-      q: "Why is the nitrogen cycle important to plants?",
-      hint: "Think about what plants use nitrogen to make.",
+      q: "Explain why atmospheric nitrogen must undergo fixation before most plants can use it.",
+      hint: "Consider the strength of the bond in N2 and the forms of nitrogen absorbed by roots.",
       steps: [
-        "Step 1: Plants need nitrogen for growth.",
-        "Step 2: Nitrogen is required to make proteins and other important compounds.",
-        "Step 3: The nitrogen cycle supplies nitrogen to soil in usable forms.",
-        "Step 4: Plants can absorb nitrogen compounds such as nitrates."
+        "State the approximate percentage of nitrogen in the atmosphere.",
+        "Explain why N2 is relatively unreactive.",
+        "Identify the nitrogen compounds that plants commonly absorb."
       ],
-      ans: "It supplies usable nitrogen compounds required for plant growth and protein formation.",
-      why: "Nitrogen is an essential nutrient for plants."
+      ans: "Atmospheric nitrogen makes up about 78% of air, but its strong triple bond makes it relatively unreactive. Most plants absorb nitrogen mainly as nitrate or ammonium ions, so nitrogen must first be converted into usable compounds.",
+      why: "Nitrogen fixation makes atmospheric nitrogen available to biological and soil processes."
+    },
+    {
+      q: "Describe two ways in which atmospheric nitrogen is fixed and explain how each produces usable nitrogen compounds.",
+      hint: "Consider microorganisms, lightning and industrial manufacture.",
+      steps: [
+        "Describe biological nitrogen fixation by certain bacteria.",
+        "Describe atmospheric fixation by lightning or industrial fixation by the Haber process.",
+        "Explain how the resulting compounds enter the nitrogen supply."
+      ],
+      ans: "Nitrogen-fixing bacteria convert atmospheric nitrogen into ammonia or related compounds. Lightning forms nitrogen oxides that eventually contribute nitrates to the soil. Industrially, the Haber process converts nitrogen and hydrogen into ammonia.",
+      why: "These processes convert relatively unreactive atmospheric nitrogen into compounds that can be used in biological or agricultural systems."
+    },
+    {
+      q: "Distinguish between nitrification and denitrification, including the starting substances and products.",
+      hint: "One process makes soil nitrates; the other removes nitrate nitrogen from the soil.",
+      steps: [
+        "State the starting substance in nitrification.",
+        "Name its main nitrogen-containing products.",
+        "State the starting substance in denitrification.",
+        "Name the gaseous products and typical soil conditions."
+      ],
+      ans: "Nitrification converts ammonium compounds into nitrites and nitrates, generally under aerobic conditions. Denitrification converts nitrates into gaseous nitrogen compounds, commonly under oxygen-poor conditions.",
+      why: "Nitrification generally increases nitrate availability, whereas denitrification can return nitrogen to the atmosphere."
+    },
+    {
+      q: "Explain how nitrogen moves from the soil into a plant and then into an animal that eats the plant.",
+      hint: "Use the terms assimilation and food chain.",
+      steps: [
+        "Explain how the plant obtains nitrogen from the soil.",
+        "State how nitrogen is incorporated into plant tissues.",
+        "Explain how the animal obtains the nitrogen."
+      ],
+      ans: "The plant absorbs nitrate or ammonium ions through its roots and assimilates the nitrogen into amino acids and proteins. An animal obtains that nitrogen by eating the plant.",
+      why: "Assimilation incorporates inorganic nitrogen into organic molecules, and feeding transfers nitrogen between organisms."
+    },
+    {
+      q: "A farmer leaves plant remains in a field. Explain how decomposers return nitrogen from those remains to the soil and name the process.",
+      hint: "Think about the breakdown of proteins and other nitrogen-containing organic substances.",
+      steps: [
+        "Identify the role of bacteria and fungi in decomposition.",
+        "Explain what happens to nitrogen-containing organic compounds.",
+        "Name the process and identify the nitrogen-containing products."
+      ],
+      ans: "Decomposer bacteria and fungi break down nitrogen-containing organic matter and release ammonia or ammonium compounds. This process is called ammonification.",
+      why: "Ammonification returns organic nitrogen to the soil, where it can undergo further transformations or be absorbed by plants."
+    },
+    {
+      q: "Explain how the nitrogen cycle maintains nitrogen availability in an ecosystem and give one reason why denitrification can reduce crop productivity.",
+      hint: "Connect recycling, plant proteins and the removal of soil nitrates.",
+      steps: [
+        "Explain how fixation introduces usable nitrogen compounds.",
+        "Explain how plants and animals incorporate nitrogen into living matter.",
+        "Explain how decomposition returns nitrogen to the soil.",
+        "State the effect of denitrification on soil nitrates."
+      ],
+      ans: "Fixation converts atmospheric nitrogen into usable compounds; plants assimilate nitrogen, and animals obtain it through feeding. Ammonification returns nitrogen from organic matter to the soil. Denitrification converts nitrates into gaseous compounds, reducing nitrate availability to crops.",
+      why: "The cycle recycles nitrogen, but denitrification can remove plant-available nitrogen from soil and contribute to lower yields when nitrogen becomes limiting."
     }
   ]
 );
@@ -35541,8 +41001,6 @@ add(
 // BATCH 20 — AIR, WATER AND ENVIRONMENT
 // Chapter ID: air_water_environment
 // ============================================================
-
-
 // ------------------------------------------------------------
 // 1. COMPOSITION OF AIR
 // ------------------------------------------------------------
@@ -37928,735 +43386,3252 @@ add(
 // Screens 227–234
 // =====================================================
 
+/* ============================================================
+   BATCH 1 — REVERSIBLE REACTION FUNDAMENTALS
+   SCREEN 227: Reversible Reactions
+   SCREEN 228: Forward and Reverse Reactions
 
-// -----------------------------------------------------
+   Subject ID: chemistry
+   Chapter ID: reversible_equilibrium
+
+   Each screen contains:
+   - Detailed HTML notes
+   - 3 worked conceptual examples inside the notes
+   - 3 core questions
+   - 6 diagnostic questions with complete repair guidance
+   ============================================================ */
+
+
+// ------------------------------------------------------------
 // SCREEN 227 — REVERSIBLE REACTIONS
-// -----------------------------------------------------
+// Exact concept: Recognising and interpreting reversible reactions
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Reversible Reactions",
-  `<h2>Reversible Reactions</h2>
 
-  <p>A reversible reaction is a chemical reaction that can proceed in both directions.</p>
+  `
+  <h2>Reversible Reactions</h2>
 
-  <p>The forward reaction forms products from reactants, while the reverse reaction changes products back into reactants.</p>
+  <h3>1. What Is a Chemical Reaction?</h3>
 
-  <h3>Representation</h3>
+  <p>
+    A <strong>chemical reaction</strong> is a process in which one or more
+    substances change into different substances. The starting substances
+    are called <strong>reactants</strong>, while the substances formed are
+    called <strong>products</strong>.
+  </p>
 
-  <pre>
-A + B ⇌ C + D
-  </pre>
+  <p>
+    For example, when hydrogen reacts with oxygen, water is formed:
+  </p>
 
-  <p>The symbol <strong>⇌</strong> shows that the reaction is reversible.</p>
+  <pre>2H₂ + O₂ → 2H₂O</pre>
 
-  <h3>Forward Reaction</h3>
-  <p>The forward reaction changes reactants into products.</p>
+  <p>
+    The arrow points from the reactants towards the products. In this
+    representation, the reaction is written in one direction: hydrogen
+    and oxygen form water.
+  </p>
 
-  <h3>Reverse Reaction</h3>
-  <p>The reverse reaction changes products back into reactants.</p>
+  <p>
+    However, not every chemical reaction is restricted to proceeding
+    in only one direction under the relevant conditions. Some reactions
+    can proceed in both directions.
+  </p>
 
-  <h3>Example</h3>
+  <h3>2. Meaning of a Reversible Reaction</h3>
 
-  <pre>
-N₂ + 3H₂ ⇌ 2NH₃
-  </pre>
+  <p>
+    A <strong>reversible reaction</strong> is a chemical reaction in which
+    the products can react to reform the original reactants under suitable
+    conditions.
+  </p>
 
-  <p>Nitrogen and hydrogen react to form ammonia. Ammonia can also decompose back into nitrogen and hydrogen.</p>
+  <p>
+    This means that the chemical change can proceed in two directions:
+  </p>
 
-  <h3>Important</h3>
   <ul>
-    <li>Not all chemical reactions are reversible.</li>
-    <li>A reversible reaction can proceed in both directions.</li>
-    <li>The two directions are called the forward and reverse reactions.</li>
-  </ul>`,
+    <li><strong>Forward direction:</strong> reactants form products.</li>
+    <li><strong>Reverse direction:</strong> products reform reactants.</li>
+  </ul>
+
+  <p>
+    A reversible reaction is represented by a double arrow:
+  </p>
+
+  <pre>A + B ⇌ C + D</pre>
+
+  <p>
+    The symbol <strong>⇌</strong> indicates that the reaction can proceed
+    from left to right and from right to left. It does not mean that both
+    directions must occur at equal rates at every moment.
+  </p>
+
+  <p>
+    The substances on the left and right represent the two sides of the
+    same reversible chemical change. The actual direction and extent of
+    reaction depend on the substances present and the conditions.
+  </p>
+
+  <h3>3. How Can a Reaction Be Reversible?</h3>
+
+  <p>
+    In a reversible reaction, the products formed in one direction can
+    undergo a chemical change that produces the original reactants.
+    Therefore, the original chemical change is not necessarily permanent
+    under every possible set of conditions.
+  </p>
+
+  <p>
+    Some reversible changes are demonstrated by changing temperature.
+    Other reversible reactions occur in a mixture containing both
+    reactants and products. Reversibility is a property of the chemical
+    process, not simply a matter of whether a visible change can be undone
+    physically.
+  </p>
+
+  <h3>4. Recognising Reversible Reactions</h3>
+
+  <p>
+    Look for evidence that the products can chemically react to regenerate
+    the original reactants. A double arrow in a correctly written chemical
+    equation is the standard symbol used to represent a reversible reaction.
+  </p>
+
+  <p>
+    Do not assume that every reaction is reversible merely because its
+    products can be changed into something else through a different
+    chemical reaction. The reverse direction must regenerate the original
+    reactants.
+  </p>
+
+  <h3>WORKED EXAMPLE 1 — Understanding the Double Arrow</h3>
+
+  <p><strong>Question:</strong> What does the equation below tell us?</p>
+
+  <pre>A + B ⇌ C + D</pre>
+
+  <p><strong>Step 1: Identify the left-hand side.</strong></p>
+
+  <p>
+    A and B are the reactants for the left-to-right direction. They
+    chemically combine or react to form C and D.
+  </p>
+
+  <p><strong>Step 2: Interpret the arrow.</strong></p>
+
+  <p>
+    The double arrow indicates that the chemical change can also proceed
+    from right to left.
+  </p>
+
+  <p><strong>Step 3: Identify the reverse change.</strong></p>
+
+  <p>
+    C and D can react to reform A and B under suitable conditions.
+  </p>
+
+  <p><strong>Final answer:</strong> The equation represents a reversible
+  reaction because the chemical change can proceed in both directions.</p>
+
+  <h3>WORKED EXAMPLE 2 — Recognising Reversibility in a Chemical Change</h3>
+
+  <p>
+    <strong>Question:</strong> Blue hydrated copper(II) sulfate crystals
+    can be heated to form white anhydrous copper(II) sulfate. When water
+    is added to the anhydrous compound under suitable conditions, the blue
+    hydrated compound can form again. Explain why this demonstrates a
+    reversible chemical change.
+  </p>
+
+  <p><strong>Step 1: Identify the forward chemical change.</strong></p>
+
+  <p>
+    Heating removes water of crystallisation from hydrated copper(II)
+    sulfate, producing anhydrous copper(II) sulfate.
+  </p>
+
+  <pre>CuSO₄·5H₂O ⇌ CuSO₄ + 5H₂O</pre>
+
+  <p><strong>Step 2: Identify the reverse chemical change.</strong></p>
+
+  <p>
+    The anhydrous copper(II) sulfate can combine with water to reform
+    hydrated copper(II) sulfate.
+  </p>
+
+  <p><strong>Step 3: Connect the two directions.</strong></p>
+
+  <p>
+    The original hydrated compound is regenerated. The chemical change
+    can therefore proceed in both directions.
+  </p>
+
+  <p><strong>Final answer:</strong> It is a reversible chemical change
+  because dehydration and rehydration connect the same two chemical
+  states in opposite directions.</p>
+
+  <p>
+    <strong>Important:</strong> The colour change helps you observe the
+    process, but the evidence of reversibility is the regeneration of the
+    original compound, not simply the appearance of a different colour.
+  </p>
+
+  <h3>WORKED EXAMPLE 3 — Reversible or Effectively Irreversible?</h3>
+
+  <p><strong>Question:</strong> Compare these two changes:</p>
+
+  <ul>
+    <li>Change A: A reversible reaction represented by
+      <code>A + B ⇌ C + D</code>.</li>
+    <li>Change B: Magnesium burns in oxygen to form magnesium oxide.</li>
+  </ul>
+
+  <p><strong>Step 1: Examine Change A.</strong></p>
+
+  <p>
+    The double arrow represents a reaction that can proceed in both
+    directions. The products can reform the original reactants.
+  </p>
+
+  <p><strong>Step 2: Examine Change B.</strong></p>
+
+  <p>
+    Magnesium burns in oxygen to form magnesium oxide:
+  </p>
+
+  <pre>2Mg + O₂ → 2MgO</pre>
+
+  <p>
+    Under ordinary conditions, magnesium oxide does not simply change
+    back into magnesium and oxygen. Reversing this chemical change
+    requires a different process and substantial energy.
+  </p>
+
+  <p><strong>Step 3: Make the distinction.</strong></p>
+
+  <p>
+    Change A is represented as reversible. Change B is treated as
+    effectively irreversible under ordinary classroom conditions.
+  </p>
+
+  <p><strong>Final answer:</strong> Reversibility means that the original
+  reactants can be regenerated through the reverse chemical reaction
+  under suitable conditions. It does not mean that every product can
+  be converted back by any method whatsoever.</p>
+
+  <h3>5. Common Misconceptions</h3>
+
+  <ul>
+    <li>
+      <strong>Misconception:</strong> A reversible reaction is one that
+      can be undone by any method.
+      <br/>
+      <strong>Correction:</strong> Its reverse direction must regenerate
+      the original reactants through the corresponding chemical change.
+    </li>
+    <li>
+      <strong>Misconception:</strong> The double arrow means the two
+      directions are equally fast.
+      <br/>
+      <strong>Correction:</strong> It indicates two possible reaction
+      directions, not equal reaction rates.
+    </li>
+    <li>
+      <strong>Misconception:</strong> Every reaction is reversible because
+      products can react to form other substances.
+      <br/>
+      <strong>Correction:</strong> Those reactions must regenerate the
+      original reactants to constitute the reverse of the original change.
+    </li>
+    <li>
+      <strong>Misconception:</strong> A colour change alone proves that a
+      reaction is reversible.
+      <br/>
+      <strong>Correction:</strong> The original chemical substances must
+      be regenerated.
+    </li>
+  </ul>
+
+  <h3>6. What You Should Be Able to Do</h3>
+
+  <ul>
+    <li>Define a reversible reaction.</li>
+    <li>Interpret the double arrow, ⇌.</li>
+    <li>Identify the forward and reverse possibilities in an equation.</li>
+    <li>Distinguish reversibility from simply undergoing another reaction.</li>
+    <li>Explain why a chemical change can regenerate its original reactants.</li>
+  </ul>
+  `,
 
   [
     {
-      q: "What is a reversible reaction?",
-      steps: [
-        "Step 1: Identify the direction of the reaction.",
-        "Step 2: Check whether the products can react to form the original reactants.",
-        "Step 3: A reaction that can proceed in both directions is reversible."
-      ],
-      ans: "A reversible reaction is a reaction that can proceed in both the forward and reverse directions.",
-      why: "Both reactants can form products and products can react to reform the reactants."
+      q: "Define a reversible chemical reaction.",
+      ans: "A chemical reaction in which the products can react to reform the original reactants under suitable conditions.",
+      why: "The defining feature is that the original chemical change can proceed in both directions."
     },
     {
       q: "What does the symbol ⇌ mean in a chemical equation?",
-      steps: [
-        "Step 1: Look at the two arrows.",
-        "Step 2: One arrow represents the forward reaction.",
-        "Step 3: The other represents the reverse reaction."
-      ],
-      ans: "It shows that the reaction is reversible.",
-      why: "The reaction can proceed in both directions."
+      ans: "It indicates that the reaction can proceed in both the forward and reverse directions.",
+      why: "The double arrow represents two possible directions of the same reversible chemical change."
     },
     {
-      q: "In N₂ + 3H₂ ⇌ 2NH₃, which substances are the reactants in the forward reaction?",
-      steps: [
-        "Step 1: Read the equation from left to right.",
-        "Step 2: The substances on the left are the reactants.",
-        "Step 3: These are nitrogen and hydrogen."
-      ],
-      ans: "Nitrogen and hydrogen.",
-      why: "They react together in the forward reaction to form ammonia."
+      q: "Hydrated copper(II) sulfate can form anhydrous copper(II) sulfate on heating, and the hydrated compound can form again when water is added. What does this demonstrate?",
+      ans: "It demonstrates a reversible chemical change because the original hydrated compound can be regenerated.",
+      why: "The process connects the hydrated and anhydrous forms through opposite chemical changes."
     }
   ],
 
   [
     {
-      q: "A student writes A + B → C for a reaction that can also produce A and B from C. What should the student change?",
-      hint: "Think about the correct symbol for a reaction that proceeds in both directions.",
+      q: "A learner says that A + B ⇌ C + D means only A and B can react, while C and D are permanent products. Identify the error.",
+      hint: "Interpret both directions of the arrow.",
       steps: [
-        "Step 1: The reaction proceeds forward and backward.",
-        "Step 2: A single arrow does not show this.",
-        "Step 3: Replace → with ⇌."
+        "Read the left-to-right direction: A and B form C and D.",
+        "Read the right-to-left direction: C and D can reform A and B.",
+        "Explain what the double arrow represents."
       ],
-      ans: "Write A + B ⇌ C.",
-      why: "The reversible arrow shows that both the forward and reverse reactions occur."
+      ans: "The learner has ignored the reverse direction. C and D can react to reform A and B under suitable conditions.",
+      why: "A double arrow represents a reversible reaction, not a one-way reaction with permanent products."
+    },
+    {
+      q: "Which equation represents a reversible reaction: (i) P + Q → R, or (ii) P + Q ⇌ R? Explain what the symbol tells you.",
+      hint: "Compare the arrow symbols, not just the letters.",
+      steps: [
+        "Identify the arrow in equation (i).",
+        "Identify the arrow in equation (ii).",
+        "Determine which equation explicitly represents both reaction directions."
+      ],
+      ans: "Equation (ii), P + Q ⇌ R, explicitly represents a reversible reaction.",
+      why: "The double arrow indicates forward and reverse directions. A single arrow conventionally represents a reaction written in one direction."
+    },
+    {
+      q: "A substance changes into product X. In a separate process, X reacts with another substance to produce a different compound Y, but the original reactants are not regenerated. Does this alone prove that the first reaction is reversible?",
+      hint: "Ask whether the original reactants return.",
+      steps: [
+        "Recall the defining feature of a reversible reaction.",
+        "Compare that feature with the stated formation of Y.",
+        "Decide whether the original reactants are regenerated."
+      ],
+      ans: "No. The original reactants are not regenerated, so the separate reaction does not by itself prove that the first reaction is reversible.",
+      why: "A different reaction involving a product is not necessarily the reverse of the original reaction."
+    },
+    {
+      q: "Heating hydrated copper(II) sulfate produces white anhydrous copper(II) sulfate. Adding water can regenerate the blue hydrated compound. Explain the evidence for reversibility.",
+      hint: "Identify the original compound and what happens when water is added.",
+      steps: [
+        "State what heating does to the hydrated compound.",
+        "State what adding water does to the anhydrous compound.",
+        "Connect the two observations."
+      ],
+      ans: "Heating removes water of crystallisation to form anhydrous copper(II) sulfate, while adding water can regenerate hydrated copper(II) sulfate. The original compound is restored.",
+      why: "The same chemical forms are connected by changes in opposite directions."
+    },
+    {
+      q: "A student claims that the symbol ⇌ proves that both directions occur at exactly the same rate. Is the claim correct?",
+      hint: "Separate the meaning of a reaction arrow from the meaning of reaction rate.",
+      steps: [
+        "State what ⇌ represents.",
+        "Identify whether it gives a numerical or comparative rate.",
+        "Decide whether equal rates follow from the symbol alone."
+      ],
+      ans: "No. The symbol indicates that the reaction can proceed in both directions; it does not establish that their rates are equal.",
+      why: "The relative rates depend on the reaction conditions and composition of the reacting mixture."
+    },
+    {
+      q: "Magnesium burns in oxygen to form magnesium oxide. Why is this normally treated as an effectively irreversible reaction under ordinary classroom conditions?",
+      hint: "Consider whether magnesium oxide simply regenerates magnesium and oxygen under the same conditions.",
+      steps: [
+        "Write the reaction: 2Mg + O₂ → 2MgO.",
+        "Consider whether the product readily decomposes back into the original reactants under ordinary conditions.",
+        "Distinguish an effectively one-way reaction from a reversible reaction."
+      ],
+      ans: "Because magnesium oxide does not readily regenerate magnesium and oxygen under ordinary classroom conditions, the reaction is treated as effectively irreversible.",
+      why: "Some chemical changes are strongly favoured in one direction under the conditions used. This does not mean that reversal is impossible under every conceivable condition."
     }
   ]
 );
 
 
-// -----------------------------------------------------
+// ------------------------------------------------------------
 // SCREEN 228 — FORWARD AND REVERSE REACTIONS
-// -----------------------------------------------------
+// Exact concept: Identifying and explaining the two directions
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Forward and Reverse Reactions",
-  `<h2>Forward and Reverse Reactions</h2>
 
-  <p>A reversible reaction consists of two opposing reactions.</p>
+  `
+  <h2>Forward and Reverse Reactions</h2>
 
-  <pre>
-A + B ⇌ C + D
-  </pre>
+  <h3>1. Two Directions of One Reversible Reaction</h3>
 
-  <h3>Forward Reaction</h3>
+  <p>
+    A reversible reaction has two possible directions. These directions
+    describe how the reactants and products change into one another.
+  </p>
 
-  <pre>
-A + B → C + D
-  </pre>
+  <p>Consider the general equation:</p>
 
-  <p>Reactants are converted into products.</p>
+  <pre>A + B ⇌ C + D</pre>
 
-  <h3>Reverse Reaction</h3>
+  <ul>
+    <li>
+      <strong>Forward reaction:</strong> A and B react to form C and D.
+      It proceeds from left to right.
+    </li>
+    <li>
+      <strong>Reverse reaction:</strong> C and D react to reform A and B.
+      It proceeds from right to left.
+    </li>
+  </ul>
 
-  <pre>
-C + D → A + B
-  </pre>
+  <p>
+    The forward and reverse reactions are not two unrelated chemical
+    reactions. They are the opposing directions of the same reversible
+    chemical system.
+  </p>
 
-  <p>Products are converted back into reactants.</p>
+  <h3>2. How to Identify Each Direction</h3>
 
-  <h3>Example</h3>
+  <p>
+    Use the double arrow as your reference point. For the forward
+    direction, read the equation from left to right. For the reverse
+    direction, read it from right to left.
+  </p>
 
-  <pre>
-N₂ + 3H₂ ⇌ 2NH₃
-  </pre>
+  <p>
+    The names <strong>reactants</strong> and <strong>products</strong>
+    depend on the direction being described. A substance that is a
+    product in the forward reaction can be a reactant in the reverse
+    reaction.
+  </p>
 
-  <p>Forward:</p>
+  <p>
+    This is one of the most important ideas in reversible reactions:
+    the substances do not change their chemical identities simply
+    because you describe the reaction in the opposite direction.
+    Their roles as reactants or products change with the direction.
+  </p>
 
-  <pre>
-N₂ + 3H₂ → 2NH₃
-  </pre>
+  <h3>WORKED EXAMPLE 1 — Identifying Both Directions</h3>
 
-  <p>Reverse:</p>
+  <p><strong>Question:</strong> For the equation below, write the forward
+  and reverse reactions in words.</p>
 
-  <pre>
-2NH₃ → N₂ + 3H₂
-  </pre>
+  <pre>A + B ⇌ C + D</pre>
 
-  <p>The two reactions occur in opposite directions.</p>`,
+  <p><strong>Step 1: Read from left to right.</strong></p>
+
+  <p>
+    A reacts with B to form C and D. This is the forward reaction.
+  </p>
+
+  <p><strong>Step 2: Read from right to left.</strong></p>
+
+  <p>
+    C and D react to reform A and B. This is the reverse reaction.
+  </p>
+
+  <p><strong>Step 3: Identify the changing roles.</strong></p>
+
+  <p>
+    A and B are reactants in the forward direction and products in the
+    reverse direction. C and D are products in the forward direction
+    and reactants in the reverse direction.
+  </p>
+
+  <p><strong>Final answer:</strong></p>
+
+  <ul>
+    <li>Forward: A + B → C + D</li>
+    <li>Reverse: C + D → A + B</li>
+  </ul>
+
+  <h3>WORKED EXAMPLE 2 — Using a Balanced Chemical Equation</h3>
+
+  <p>
+    <strong>Question:</strong> Hydrogen reacts with iodine to form
+    hydrogen iodide:
+  </p>
+
+  <pre>H₂ + I₂ ⇌ 2HI</pre>
+
+  <p>Identify the forward and reverse reactions.</p>
+
+  <p><strong>Step 1: Identify the forward direction.</strong></p>
+
+  <p>
+    Hydrogen and iodine react to form hydrogen iodide:
+  </p>
+
+  <pre>H₂ + I₂ → 2HI</pre>
+
+  <p><strong>Step 2: Reverse the direction.</strong></p>
+
+  <p>
+    Hydrogen iodide decomposes to form hydrogen and iodine:
+  </p>
+
+  <pre>2HI → H₂ + I₂</pre>
+
+  <p><strong>Step 3: Preserve the atom balance.</strong></p>
+
+  <p>
+    The forward equation contains two hydrogen atoms and two iodine
+    atoms on each side. The reverse equation must preserve the same
+    atom counts. Reversing the reaction does not change the chemical
+    formulae or remove the coefficient 2.
+  </p>
+
+  <p><strong>Final answer:</strong></p>
+
+  <ul>
+    <li>Forward: H₂ + I₂ → 2HI</li>
+    <li>Reverse: 2HI → H₂ + I₂</li>
+  </ul>
+
+  <p>
+    <strong>Key lesson:</strong> To write the reverse reaction, exchange
+    the two sides of the equation while preserving the chemical formulae
+    and coefficients.
+  </p>
+
+  <h3>WORKED EXAMPLE 3 — Correcting a Reversed Equation</h3>
+
+  <p>
+    <strong>Question:</strong> A learner is given the equation:
+  </p>
+
+  <pre>N₂ + 3H₂ ⇌ 2NH₃</pre>
+
+  <p>
+    The learner writes the reverse reaction as
+    <code>2NH₃ → N₂ + H₂</code>. Identify and correct the error.
+  </p>
+
+  <p><strong>Step 1: Identify the original forward reaction.</strong></p>
+
+  <p>
+    One nitrogen molecule reacts with three hydrogen molecules to form
+    two ammonia molecules.
+  </p>
+
+  <p><strong>Step 2: Reverse the sides.</strong></p>
+
+  <p>
+    The reverse reaction must start with two ammonia molecules and form
+    nitrogen and hydrogen.
+  </p>
+
+  <pre>2NH₃ → N₂ + 3H₂</pre>
+
+  <p><strong>Step 3: Check the atoms.</strong></p>
+
+  <ul>
+    <li>Left: 2 nitrogen atoms and 6 hydrogen atoms.</li>
+    <li>Right: 2 nitrogen atoms and 6 hydrogen atoms.</li>
+  </ul>
+
+  <p>
+    The learner omitted the coefficient 3 before hydrogen, leaving the
+    equation unbalanced.
+  </p>
+
+  <p><strong>Final answer:</strong></p>
+
+  <pre>2NH₃ → N₂ + 3H₂</pre>
+
+  <p>
+    To reverse a reaction correctly, reverse its direction while
+    preserving the balanced relationship between the atoms.
+  </p>
+
+  <h3>3. Reactants and Products Depend on Direction</h3>
+
+  <p>
+    Consider again:
+  </p>
+
+  <pre>A + B ⇌ C + D</pre>
+
+  <p>
+    It is correct to say that A and B are the reactants when describing
+    the forward reaction. It is also correct to say that C and D are
+    the reactants when describing the reverse reaction.
+  </p>
+
+  <p>
+    Therefore, avoid saying that a substance is always a reactant or
+    always a product in a reversible system without specifying the
+    direction being discussed.
+  </p>
+
+  <h3>4. The Difference Between Direction and Rate</h3>
+
+  <p>
+    The forward and reverse directions tell you <strong>which way
+    substances are changing</strong>. Reaction rate tells you
+    <strong>how quickly a reaction is occurring</strong>.
+  </p>
+
+  <p>
+    These are different ideas. Identifying a reaction as forward or
+    reverse does not, by itself, tell you how fast it is proceeding.
+    The rates can change as the conditions and amounts of reactants
+    and products change.
+  </p>
+
+  <h3>5. Common Misconceptions</h3>
+
+  <ul>
+    <li>
+      <strong>Misconception:</strong> Reactants always remain on the
+      left-hand side.
+      <br/>
+      <strong>Correction:</strong> That convention applies to the
+      direction in which the equation is written. In the reverse
+      direction, the original products become reactants.
+    </li>
+    <li>
+      <strong>Misconception:</strong> Reversing a reaction means changing
+      every chemical formula.
+      <br/>
+      <strong>Correction:</strong> Reverse the direction; retain the
+      correct chemical formulae and atom balance.
+    </li>
+    <li>
+      <strong>Misconception:</strong> The reverse reaction has different
+      substances from those shown in the original equation.
+      <br/>
+      <strong>Correction:</strong> It uses the same substances, with
+      reactant and product roles exchanged.
+    </li>
+    <li>
+      <strong>Misconception:</strong> Forward means fast and reverse
+      means slow.
+      <br/>
+      <strong>Correction:</strong> Forward and reverse describe direction,
+      not speed.
+    </li>
+  </ul>
+
+  <h3>6. What You Should Be Able to Do</h3>
+
+  <ul>
+    <li>Identify the forward reaction in a reversible equation.</li>
+    <li>Write the reverse reaction correctly.</li>
+    <li>Identify reactants and products in either direction.</li>
+    <li>Preserve chemical formulae and atom balance when reversing an equation.</li>
+    <li>Distinguish reaction direction from reaction rate.</li>
+  </ul>
+  `,
 
   [
     {
-      q: "What is the forward reaction in A + B ⇌ C?",
-      steps: [
-        "Step 1: Start with the reactants on the left.",
-        "Step 2: Move toward the products on the right.",
-        "Step 3: Write the reaction from A + B to C."
-      ],
-      ans: "A + B → C",
-      why: "The forward reaction proceeds from reactants to products."
+      q: "For A + B ⇌ C + D, write the forward reaction in words.",
+      ans: "A reacts with B to form C and D.",
+      why: "The forward direction proceeds from left to right in the equation."
     },
     {
-      q: "What is the reverse reaction in A + B ⇌ C?",
-      steps: [
-        "Step 1: Start with C.",
-        "Step 2: Move toward A + B.",
-        "Step 3: Write the reaction from C to A + B."
-      ],
-      ans: "C → A + B",
-      why: "The reverse reaction converts products back into reactants."
+      q: "For H₂ + I₂ ⇌ 2HI, write the reverse reaction as a balanced equation.",
+      ans: "2HI → H₂ + I₂",
+      why: "Reversing the reaction exchanges the two sides while preserving the atom balance."
     },
     {
-      q: "For N₂ + 3H₂ ⇌ 2NH₃, write the reverse reaction.",
-      steps: [
-        "Step 1: Start with ammonia.",
-        "Step 2: Move from right to left.",
-        "Step 3: Write ammonia decomposing into nitrogen and hydrogen."
-      ],
-      ans: "2NH₃ → N₂ + 3H₂",
-      why: "The reverse reaction converts ammonia back into nitrogen and hydrogen."
+      q: "In A + B ⇌ C + D, which substances are the reactants in the reverse direction?",
+      ans: "C and D.",
+      why: "The reverse reaction proceeds from right to left, so C and D are consumed to form A and B."
     }
   ],
 
   [
     {
-      q: "For X ⇌ Y, a learner writes X → Y as the reverse reaction. Is this correct?",
-      hint: "The reverse reaction travels from right to left.",
+      q: "For X + Y ⇌ Z, identify the forward and reverse reactions in words.",
+      hint: "Read the equation from left to right, then from right to left.",
       steps: [
-        "Step 1: X is on the left.",
-        "Step 2: Y is on the right.",
-        "Step 3: The reverse reaction must travel from Y to X."
+        "Start with X and Y on the left.",
+        "Follow the arrow to identify the products of the forward reaction.",
+        "Start with Z on the right to describe the reverse reaction."
       ],
-      ans: "No. The reverse reaction is Y → X.",
-      why: "The reverse reaction proceeds in the opposite direction to the forward reaction."
+      ans: "Forward: X reacts with Y to form Z. Reverse: Z reacts to reform X and Y.",
+      why: "The two directions describe the same chemical change proceeding in opposite directions."
+    },
+    {
+      q: "For H₂ + I₂ ⇌ 2HI, a learner writes the reverse reaction as HI → H₂ + I₂. Explain the error and give the balanced reverse equation.",
+      hint: "Check both the number of hydrogen atoms and the number of iodine atoms.",
+      steps: [
+        "Reverse the sides of the original equation.",
+        "Retain the coefficient 2 before HI.",
+        "Count hydrogen and iodine atoms on both sides."
+      ],
+      ans: "The coefficient 2 was omitted. The correct reverse equation is 2HI → H₂ + I₂.",
+      why: "A reversed equation must still conserve every type of atom. Two HI molecules are needed to supply two hydrogen atoms and two iodine atoms."
+    },
+    {
+      q: "For N₂ + 3H₂ ⇌ 2NH₃, identify the reactants and products in the reverse direction.",
+      hint: "In the reverse direction, begin with the substances originally on the right.",
+      steps: [
+        "Identify the right-hand side of the original equation.",
+        "Make that side the starting side of the reverse reaction.",
+        "Identify the substances formed on the other side."
+      ],
+      ans: "The reverse reaction uses 2NH₃ as the reactant and forms N₂ and 3H₂.",
+      why: "Reactant and product roles are determined by the direction of the reaction being described."
+    },
+    {
+      q: "A learner says that C and D in A + B ⇌ C + D can never be called reactants because they are written on the right. Is this correct?",
+      hint: "Think about which direction consumes C and D.",
+      steps: [
+        "Identify the forward direction.",
+        "Identify the reverse direction.",
+        "Determine which substances are consumed in the reverse reaction."
+      ],
+      ans: "No. C and D are reactants in the reverse direction because they react to form A and B.",
+      why: "The left and right positions describe the equation's written direction; they do not make a substance permanently a reactant or product."
+    },
+    {
+      q: "A learner correctly identifies the forward reaction but says that it must be faster than the reverse reaction because it is called forward. Explain why this reasoning is wrong.",
+      hint: "Separate the meaning of direction from the meaning of rate.",
+      steps: [
+        "Define what forward means.",
+        "Define what reaction rate means.",
+        "Decide whether the word forward specifies speed."
+      ],
+      ans: "Forward describes the direction from reactants to products; it does not mean faster. The forward and reverse rates depend on the reaction conditions and composition.",
+      why: "Reaction direction and reaction speed are different properties."
+    },
+    {
+      q: "For the reversible equation P + 2Q ⇌ R, a learner writes the reverse reaction as R → P + Q. Correct the equation and explain why the correction is necessary.",
+      hint: "Reverse the sides and preserve the coefficient of Q.",
+      steps: [
+        "Write the original left-hand side as the products of the reverse reaction.",
+        "Write the original right-hand side as the reactant of the reverse reaction.",
+        "Check that the coefficient 2 remains before Q."
+      ],
+      ans: "R → P + 2Q. The coefficient 2 must be retained to preserve the original atom ratio.",
+      why: "Reversing an equation changes the direction, not the chemical formulae or stoichiometric coefficients."
     }
   ]
 );
 
+/* ============================================================
+   BATCH 2 — UNDERSTANDING CHEMICAL EQUILIBRIUM
 
-// -----------------------------------------------------
+   SCREEN 229: Dynamic Equilibrium
+   SCREEN 230: Establishing Equilibrium
+
+   Subject ID: chemistry
+   Chapter ID: reversible_equilibrium
+
+   Each screen contains:
+   - Detailed HTML notes
+   - 3 worked conceptual examples inside the notes
+   - 3 core questions
+   - 6 diagnostic questions with hint, steps, ans and why
+   ============================================================ */
+
+
+// ------------------------------------------------------------
 // SCREEN 229 — DYNAMIC EQUILIBRIUM
-// -----------------------------------------------------
+// Exact concept: Equal opposing reaction rates in a closed system
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Dynamic Equilibrium",
-  `<h2>Dynamic Equilibrium</h2>
 
-  <p>Dynamic equilibrium is reached in a reversible reaction when the rate of the forward reaction becomes equal to the rate of the reverse reaction.</p>
+  `
+  <h2>Dynamic Equilibrium</h2>
 
-  <pre>
-A + B ⇌ C + D
-  </pre>
+  <h3>1. What Is Chemical Equilibrium?</h3>
 
-  <h3>Conditions for Dynamic Equilibrium</h3>
+  <p>
+    In a reversible reaction, reactants form products through the forward
+    reaction, while products can react to reform the original reactants
+    through the reverse reaction.
+  </p>
+
+  <p>Consider the general reversible reaction:</p>
+
+  <pre>A + B ⇌ C + D</pre>
+
+  <p>
+    If the reaction takes place under suitable conditions in a closed
+    system, it can reach a state called <strong>dynamic chemical
+    equilibrium</strong>.
+  </p>
+
+  <p>
+    <strong>Dynamic equilibrium</strong> is the state in a closed system
+    where the forward and reverse reactions continue at equal rates,
+    causing the concentrations of reactants and products to remain
+    constant at a given temperature.
+  </p>
+
+  <p>
+    This definition contains four essential ideas:
+  </p>
 
   <ul>
-    <li>The reaction must be reversible.</li>
-    <li>The system must be closed so that substances are not continuously lost.</li>
-    <li>The forward and reverse reactions continue to occur.</li>
-    <li>The rates of the forward and reverse reactions become equal.</li>
+    <li>
+      <strong>Closed system:</strong> substances cannot freely enter or
+      escape from the reacting system.
+    </li>
+    <li>
+      <strong>Forward reaction continues:</strong> reactants continue
+      forming products.
+    </li>
+    <li>
+      <strong>Reverse reaction continues:</strong> products continue
+      reforming reactants.
+    </li>
+    <li>
+      <strong>Equal rates:</strong> the two reactions occur at the same
+      rate, so there is no net change in the amounts of the substances.
+    </li>
   </ul>
 
-  <h3>Important</h3>
+  <h3>2. Why Is Equilibrium Called Dynamic?</h3>
 
-  <p>Equilibrium does <strong>not</strong> mean that the reactions have stopped.</p>
+  <p>
+    The word <strong>dynamic</strong> means that activity continues.
+    Equilibrium does not mean that the chemical reactions have stopped.
+    Particles continue to react, bonds continue to break and form, and
+    substances continue to change into one another.
+  </p>
 
-  <p>The reactions continue, but they occur at equal rates.</p>
+  <p>
+    What changes is the overall result that can be observed. At
+    equilibrium, the forward reaction produces substances at exactly
+    the rate at which the reverse reaction consumes them. Consequently,
+    the overall concentrations remain constant.
+  </p>
 
-  <h3>At equilibrium</h3>
+  <p>
+    Imagine that the forward reaction converts 12 units of reactant into
+    products every second, while the reverse reaction converts 12 units
+    of products back into reactants every second. Both reactions are
+    active, but neither direction produces a net change in the amounts
+    of the substances.
+  </p>
 
-  <pre>
-Rate of forward reaction
-        =
-Rate of reverse reaction
-  </pre>
+  <h3>3. Equal Reaction Rates Do Not Mean Equal Concentrations</h3>
 
-  <p>The concentrations of reactants and products remain constant, provided the conditions remain unchanged.</p>`,
+  <p>
+    This is one of the most important distinctions in chemical
+    equilibrium.
+  </p>
+
+  <p>
+    The forward and reverse rates must be equal at equilibrium, but the
+    concentrations of the reactants and products do not have to be equal.
+    A mixture may contain much more product than reactant, or much more
+    reactant than product, while still being at equilibrium.
+  </p>
+
+  <p>
+    The rates describe how quickly reactions occur. Concentrations
+    describe how much of each substance is present per unit volume.
+    These are different quantities.
+  </p>
+
+  <h3>WORKED EXAMPLE 1 — Identifying Dynamic Equilibrium</h3>
+
+  <p>
+    <strong>Question:</strong> A reversible reaction takes place in a
+    sealed container. The forward reaction occurs at 8 units per second,
+    and the reverse reaction also occurs at 8 units per second. Are the
+    reactions at dynamic equilibrium?
+  </p>
+
+  <p><strong>Step 1: Check the system.</strong></p>
+
+  <p>
+    The container is sealed, so substances cannot freely enter or leave.
+    This satisfies the closed-system condition.
+  </p>
+
+  <p><strong>Step 2: Compare the reaction rates.</strong></p>
+
+  <ul>
+    <li>Forward rate = 8 units per second.</li>
+    <li>Reverse rate = 8 units per second.</li>
+  </ul>
+
+  <p>
+    The two rates are equal.
+  </p>
+
+  <p><strong>Step 3: Determine the net change.</strong></p>
+
+  <p>
+    Products form at the same rate as they are consumed by the reverse
+    reaction. Similarly, reactants are consumed at the same rate as
+    they are regenerated.
+  </p>
+
+  <p><strong>Final answer:</strong> Yes. The system is at dynamic
+  equilibrium because it is closed and the forward and reverse rates
+  are equal. Both reactions continue.</p>
+
+  <h3>WORKED EXAMPLE 2 — Unequal Concentrations at Equilibrium</h3>
+
+  <p>
+    <strong>Question:</strong> At equilibrium, a reaction mixture contains
+    0.80 mol/dm³ of reactant A and 0.20 mol/dm³ of product B. The forward
+    and reverse rates are equal. A learner concludes that the mixture
+    cannot be at equilibrium because the concentrations are different.
+    Evaluate the conclusion.
+  </p>
+
+  <p><strong>Step 1: Identify what equilibrium requires.</strong></p>
+
+  <p>
+    Dynamic equilibrium requires equal forward and reverse reaction
+    rates, constant concentrations and a closed system under the
+    relevant conditions.
+  </p>
+
+  <p><strong>Step 2: Examine the concentrations.</strong></p>
+
+  <p>
+    The concentration of A is 0.80 mol/dm³, while that of B is
+    0.20 mol/dm³. They are different, but this does not contradict
+    equilibrium.
+  </p>
+
+  <p><strong>Step 3: Examine the rates.</strong></p>
+
+  <p>
+    The question states that the forward and reverse rates are equal.
+    If the system is closed and the conditions remain constant, the
+    mixture can be at dynamic equilibrium.
+  </p>
+
+  <p><strong>Final answer:</strong> The learner's conclusion is wrong.
+  Different concentrations can exist at equilibrium because equilibrium
+  requires equal reaction rates, not equal concentrations.</p>
+
+  <h3>WORKED EXAMPLE 3 — Constant Concentration or Stopped Reaction?</h3>
+
+  <p>
+    <strong>Question:</strong> In a closed container, the measured
+    concentrations of reactants and products remain unchanged for a
+    period of time. A student claims that no chemical reactions are
+    occurring. Explain why this conclusion is not justified.
+  </p>
+
+  <p><strong>Step 1: Interpret the observation.</strong></p>
+
+  <p>
+    Constant concentrations mean that the overall amounts of the
+    substances are not changing measurably.
+  </p>
+
+  <p><strong>Step 2: Consider a reversible reaction.</strong></p>
+
+  <p>
+    The forward reaction may continue consuming reactants and producing
+    products. At the same time, the reverse reaction may consume products
+    and regenerate reactants.
+  </p>
+
+  <p><strong>Step 3: Compare the opposing effects.</strong></p>
+
+  <p>
+    If both reactions occur at equal rates, each direction balances the
+    overall change caused by the other. The concentrations remain
+    constant even though particles continue reacting.
+  </p>
+
+  <p><strong>Final answer:</strong> Constant concentrations do not mean
+  that the reactions have stopped. In a closed reversible system, they
+  are consistent with dynamic equilibrium when the forward and reverse
+  rates are equal.</p>
+
+  <h3>4. How to Recognise Dynamic Equilibrium</h3>
+
+  <p>
+    When assessing a chemical system, ask:
+  </p>
+
+  <ol>
+    <li>Is the system closed?</li>
+    <li>Can the forward and reverse reactions both occur?</li>
+    <li>Are the forward and reverse reaction rates equal?</li>
+    <li>Do the concentrations remain constant under unchanged conditions?</li>
+  </ol>
+
+  <p>
+    These ideas work together. Constant concentration alone does not
+    establish every condition of dynamic equilibrium: for example, a
+    reaction that has stopped because a necessary reactant is exhausted
+    is not thereby a dynamic equilibrium.
+  </p>
+
+  <h3>5. What Equilibrium Does Not Mean</h3>
+
+  <ul>
+    <li>
+      <strong>It does not mean equal concentrations.</strong> The
+      concentrations of reactants and products may differ considerably.
+    </li>
+    <li>
+      <strong>It does not mean zero reaction rate.</strong> Both
+      opposing reactions continue.
+    </li>
+    <li>
+      <strong>It does not mean equal amounts of reactants and products.</strong>
+      The final composition depends on the reaction and conditions.
+    </li>
+    <li>
+      <strong>It does not mean the system can be open without restriction.</strong>
+      Ordinary chemical equilibrium is established in a closed system.
+    </li>
+    <li>
+      <strong>It does not mean concentrations can never change.</strong>
+      If conditions change, the equilibrium state can be disturbed.
+    </li>
+  </ul>
+
+  <h3>6. Common Misconceptions</h3>
+
+  <ul>
+    <li>
+      <strong>Wrong:</strong> At equilibrium, the forward reaction stops.
+      <br/>
+      <strong>Correct:</strong> The forward reaction continues at the
+      same rate as the reverse reaction.
+    </li>
+    <li>
+      <strong>Wrong:</strong> The amounts of reactants and products must
+      be equal.
+      <br/>
+      <strong>Correct:</strong> Their concentrations remain constant,
+      but they need not be equal.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Constant concentration proves that no
+      particles are reacting.
+      <br/>
+      <strong>Correct:</strong> Opposing reactions can balance one
+      another while particles continue reacting.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Equal reaction rates mean equal numbers of
+      reactant and product particles.
+      <br/>
+      <strong>Correct:</strong> Equal rates describe the speed of the
+      opposing reactions, not the quantities present.
+    </li>
+  </ul>
+
+  <h3>7. What You Should Be Able to Do</h3>
+
+  <ul>
+    <li>Define dynamic chemical equilibrium.</li>
+    <li>Explain why equilibrium is dynamic rather than static.</li>
+    <li>Distinguish reaction rate from concentration.</li>
+    <li>Explain why concentrations can differ at equilibrium.</li>
+    <li>Identify why a closed system is important.</li>
+    <li>Evaluate claims about equilibrium using the correct conditions.</li>
+  </ul>
+  `,
 
   [
     {
-      q: "What is dynamic equilibrium?",
-      steps: [
-        "Step 1: Consider a reversible reaction.",
-        "Step 2: The forward and reverse reactions continue.",
-        "Step 3: At equilibrium, their rates become equal."
-      ],
-      ans: "Dynamic equilibrium is the state in which the forward and reverse reactions occur at equal rates.",
-      why: "Equal reaction rates cause the concentrations of reactants and products to remain constant."
+      q: "Define dynamic chemical equilibrium.",
+      ans: "A state in a closed system where the forward and reverse reactions continue at equal rates and the concentrations of reactants and products remain constant at a given temperature.",
+      why: "Equilibrium involves ongoing opposing reactions whose rates balance, producing no net change in concentration."
     },
     {
-      q: "Do the forward and reverse reactions stop at dynamic equilibrium?",
-      steps: [
-        "Step 1: Recall that the equilibrium is dynamic.",
-        "Step 2: Dynamic means the reactions continue.",
-        "Step 3: Their rates are equal."
-      ],
-      ans: "No. Both reactions continue at equal rates.",
-      why: "Equilibrium is a balance of reaction rates, not a stopping of reactions."
+      q: "At equilibrium, the forward reaction rate is 15 units per second. What is the reverse reaction rate?",
+      ans: "15 units per second.",
+      why: "The forward and reverse rates are equal at dynamic equilibrium."
     },
     {
-      q: "What happens to the concentrations of reactants and products at equilibrium?",
-      steps: [
-        "Step 1: The forward and reverse reactions occur at equal rates.",
-        "Step 2: Reactants are converted to products at the same rate that products form reactants.",
-        "Step 3: The concentrations therefore remain constant."
-      ],
-      ans: "Their concentrations remain constant, provided the conditions remain unchanged.",
-      why: "Equal forward and reverse rates prevent a net change in concentration."
+      q: "Why can the concentrations of reactants and products be different at equilibrium?",
+      ans: "Because equilibrium requires equal forward and reverse reaction rates, not equal concentrations.",
+      why: "Concentration measures the amount of a substance per unit volume, while reaction rate measures how quickly a reaction occurs."
     }
   ],
 
   [
     {
-      q: "A student says equilibrium means that no reaction is taking place. What is wrong with this statement?",
-      hint: "Think about the word dynamic.",
+      q: "A sealed reaction vessel has a forward rate of 6 mol/dm³/s and a reverse rate of 4 mol/dm³/s. Is it at dynamic equilibrium? Explain.",
+      hint: "Compare the two rates directly.",
       steps: [
-        "Step 1: A reversible reaction continues in both directions.",
-        "Step 2: At equilibrium the two rates are equal.",
-        "Step 3: Therefore reactions are still occurring."
+        "State the forward reaction rate.",
+        "State the reverse reaction rate.",
+        "Compare the values with the equal-rate requirement."
       ],
-      ans: "The reactions continue at equal rates; equilibrium does not mean that the reactions have stopped.",
-      why: "Dynamic equilibrium is a balance between two continuing reactions."
+      ans: "No. The forward rate is 6 mol/dm³/s and the reverse rate is 4 mol/dm³/s, so the rates are unequal.",
+      why: "Dynamic equilibrium requires the forward and reverse reaction rates to be equal, even when the system is closed."
+    },
+    {
+      q: "A learner says, 'At equilibrium, the forward reaction stops because the concentrations are no longer changing.' Correct the statement.",
+      hint: "Think about what the reverse reaction is doing at the same time.",
+      steps: [
+        "Identify what constant concentrations tell you.",
+        "Recall whether the forward reaction continues at equilibrium.",
+        "Explain how the reverse reaction balances the forward reaction."
+      ],
+      ans: "At equilibrium, the forward reaction continues, but the reverse reaction occurs at the same rate. Their effects balance, so concentrations remain constant.",
+      why: "Equilibrium is dynamic: the reactions continue even though the overall composition does not change."
+    },
+    {
+      q: "At equilibrium, a mixture contains 0.60 mol/dm³ of A and 1.40 mol/dm³ of B. Does the concentration difference prove that the system is not at equilibrium?",
+      hint: "Identify whether equilibrium requires equal amounts or equal rates.",
+      steps: [
+        "Compare the stated concentrations.",
+        "Recall the defining rate condition for equilibrium.",
+        "Decide whether unequal concentrations violate that condition."
+      ],
+      ans: "No. Unequal concentrations do not rule out equilibrium, provided the closed system has equal forward and reverse rates and constant concentrations.",
+      why: "Equilibrium does not require equal concentrations or equal amounts of reactants and products."
+    },
+    {
+      q: "Why is a closed system important when establishing ordinary chemical equilibrium?",
+      hint: "Consider what could happen if a gaseous product escaped continuously.",
+      steps: [
+        "Consider what happens if a reactant enters or a product escapes.",
+        "Explain how this affects the amounts of substances available for reaction.",
+        "Relate the answer to maintaining a stable equilibrium composition."
+      ],
+      ans: "A closed system prevents substances from freely entering or escaping, allowing the reacting mixture to establish and maintain equilibrium under constant conditions.",
+      why: "Continuous loss or addition of substances can disturb the composition and prevent the ordinary closed-system equilibrium from being maintained."
+    },
+    {
+      q: "A student observes constant concentrations in a container and immediately concludes that dynamic equilibrium has been proved. Why is this evidence alone insufficient?",
+      hint: "Consider whether a reaction could stop without its forward and reverse rates balancing.",
+      steps: [
+        "State what constant concentrations show.",
+        "Consider a reaction that has stopped because a necessary reactant has been exhausted.",
+        "Identify the additional conditions needed for dynamic equilibrium."
+      ],
+      ans: "Constant concentrations show that the overall composition is not changing, but do not alone prove that both reactions are continuing at equal rates. The closed-system and equal-rate conditions must also be satisfied.",
+      why: "A static or exhausted system may show no concentration change without having dynamic equilibrium."
+    },
+    {
+      q: "At equilibrium, the forward reaction converts 20 units of substance per second. The reverse reaction also converts 20 units per second. Explain what happens to the overall concentrations and why.",
+      hint: "Compare the amount produced with the amount consumed in each direction.",
+      steps: [
+        "Identify the forward rate.",
+        "Identify the reverse rate.",
+        "Compare the production and consumption rates.",
+        "State the net effect on the concentrations."
+      ],
+      ans: "The concentrations remain constant because the forward and reverse reactions occur at equal rates of 20 units per second, so neither direction produces a net change.",
+      why: "Equal opposing reaction rates balance the overall changes while both reactions continue."
     }
   ]
 );
 
 
-// -----------------------------------------------------
+// ------------------------------------------------------------
 // SCREEN 230 — ESTABLISHING EQUILIBRIUM
-// -----------------------------------------------------
+// Exact concept: How opposing rates change until they become equal
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Establishing Equilibrium",
-  `<h2>Establishing Equilibrium</h2>
 
-  <p>When a reversible reaction begins, the forward and reverse reaction rates are usually different.</p>
+  `
+  <h2>Establishing Equilibrium</h2>
 
-  <h3>Beginning of the reaction</h3>
+  <h3>1. How Does a Reversible Reaction Reach Equilibrium?</h3>
 
-  <p>If only reactants are initially present:</p>
+  <p>
+    Dynamic equilibrium does not normally exist from the instant a
+    reversible reaction begins. If a mixture initially contains only
+    reactants, the forward and reverse reactions usually begin at
+    different rates.
+  </p>
+
+  <p>Consider the general reaction:</p>
+
+  <pre>A + B ⇌ C + D</pre>
+
+  <p>
+    Suppose the reaction begins with A and B present, but little or no
+    C and D. The forward reaction can produce C and D. As these products
+    accumulate, the reverse reaction becomes increasingly able to occur.
+  </p>
+
+  <p>
+    Eventually, under suitable constant conditions in a closed system,
+    the forward and reverse reaction rates become equal. Dynamic
+    equilibrium has then been established.
+  </p>
+
+  <h3>2. The Three Main Stages</h3>
+
+  <h3>Stage 1 — Beginning of the Reaction</h3>
+
+  <p>
+    If the system initially contains reactants but no products, the
+    forward reaction can begin immediately. The reverse reaction rate
+    is initially zero if none of the products required for that reverse
+    reaction is present.
+  </p>
+
+  <p>
+    The forward rate is often greatest at the beginning because the
+    reactants are most abundant then. However, the precise initial rate
+    depends on the reaction mechanism and conditions.
+  </p>
+
+  <h3>Stage 2 — Products Accumulate</h3>
+
+  <p>
+    As the forward reaction consumes reactants, their concentrations
+    usually decrease. For many reactions, this causes the forward rate
+    to decrease.
+  </p>
+
+  <p>
+    At the same time, the products accumulate. Their increased
+    availability allows the reverse reaction to proceed more rapidly.
+  </p>
+
+  <p>
+    The forward rate therefore commonly decreases while the reverse
+    rate increases. These changes continue until the two rates become
+    equal.
+  </p>
+
+  <h3>Stage 3 — Dynamic Equilibrium</h3>
+
+  <p>
+    At equilibrium, the forward and reverse reactions occur at equal
+    rates. The reactions do not stop. Instead, each direction balances
+    the overall change caused by the other.
+  </p>
+
+  <p>
+    Under constant conditions, the concentrations of reactants and
+    products remain constant. They do not have to be equal.
+  </p>
+
+  <h3>WORKED EXAMPLE 1 — Following the Changes in Reaction Rates</h3>
+
+  <p>
+    <strong>Question:</strong> A reversible reaction begins with
+    reactants only. Describe what happens to the forward and reverse
+    reaction rates as the system approaches equilibrium.
+  </p>
+
+  <p><strong>Step 1: At the beginning.</strong></p>
+
+  <p>
+    The reactants are present, so the forward reaction can occur. If
+    no products are present, the reverse rate is initially zero.
+  </p>
+
+  <p><strong>Step 2: As the reaction proceeds.</strong></p>
+
+  <p>
+    Reactants are consumed and products form. The forward rate commonly
+    decreases as reactant concentrations fall, while the reverse rate
+    increases as products accumulate.
+  </p>
+
+  <p><strong>Step 3: At equilibrium.</strong></p>
+
+  <p>
+    The two reaction rates become equal. Both reactions continue,
+    and the concentrations remain constant under unchanged conditions.
+  </p>
+
+  <p><strong>Final answer:</strong> The forward rate commonly decreases
+  and the reverse rate increases until they become equal. Equilibrium
+  is the state where the opposing rates balance, not the point at which
+  the reactions stop.</p>
+
+  <h3>WORKED EXAMPLE 2 — Interpreting Rate Data</h3>
+
+  <p>
+    <strong>Question:</strong> The following data are recorded for a
+    reversible reaction in a closed vessel at constant temperature.
+  </p>
 
   <ul>
-    <li>The forward reaction starts quickly because many reactant particles are available.</li>
-    <li>The reverse reaction is initially slow because few or no products are present.</li>
+    <li>At time 1: forward rate = 10 units/s; reverse rate = 2 units/s.</li>
+    <li>At time 2: forward rate = 7 units/s; reverse rate = 5 units/s.</li>
+    <li>At time 3: forward rate = 4 units/s; reverse rate = 4 units/s.</li>
   </ul>
 
-  <h3>As the reaction proceeds</h3>
+  <p>At which recorded time has dynamic equilibrium been reached?</p>
+
+  <p><strong>Step 1: State the equilibrium condition.</strong></p>
+
+  <p>
+    Dynamic equilibrium occurs when the forward and reverse rates are
+    equal in the closed system.
+  </p>
+
+  <p><strong>Step 2: Compare the rates at each time.</strong></p>
 
   <ul>
-    <li>Reactants are used up.</li>
-    <li>Products are formed.</li>
-    <li>The forward reaction becomes slower.</li>
-    <li>The reverse reaction becomes faster.</li>
+    <li>
+      Time 1: 10 units/s is not equal to 2 units/s.
+    </li>
+    <li>
+      Time 2: 7 units/s is not equal to 5 units/s.
+    </li>
+    <li>
+      Time 3: 4 units/s equals 4 units/s.
+    </li>
   </ul>
 
-  <h3>At equilibrium</h3>
+  <p><strong>Step 3: Identify the equilibrium time.</strong></p>
 
-  <pre>
-Forward rate = Reverse rate
-  </pre>
+  <p>
+    Only the rates recorded at time 3 are equal.
+  </p>
 
-  <p>The concentrations then remain constant if temperature, pressure and concentration conditions are unchanged.</p>`,
+  <p><strong>Final answer:</strong> Dynamic equilibrium has been reached
+  by time 3, when both rates are 4 units/s.</p>
+
+  <p>
+    <strong>Important:</strong> The numerical rates in this example are
+    illustrative. The defining condition is equality of the rates, not
+    any particular numerical value.
+  </p>
+
+  <h3>WORKED EXAMPLE 3 — Why the Reaction Does Not Stop at Equilibrium</h3>
+
+  <p>
+    <strong>Question:</strong> A student argues that once the forward
+    and reverse rates become equal, no further chemical change occurs.
+    Use a numerical example to correct this claim.
+  </p>
+
+  <p><strong>Step 1: Consider the rates at equilibrium.</strong></p>
+
+  <p>
+    Suppose the forward reaction forms 30 units of product per minute
+    and the reverse reaction consumes 30 units of product per minute.
+  </p>
+
+  <p><strong>Step 2: Calculate the net change in product.</strong></p>
+
+  <pre>Net change = amount formed − amount consumed
+            = 30 − 30
+            = 0 units per minute</pre>
+
+  <p><strong>Step 3: Interpret the result.</strong></p>
+
+  <p>
+    The net change is zero, but both reactions are occurring at
+    30 units per minute. Product molecules are being formed and
+    consumed continuously.
+  </p>
+
+  <p><strong>Final answer:</strong> The student is wrong. The reactions
+  continue at equal rates. The overall concentrations remain constant
+  because the production and consumption balance each other.</p>
+
+  <h3>3. How Concentrations Change During Establishment</h3>
+
+  <p>
+    When a reaction begins with reactants only, the reactant
+    concentrations commonly decrease while product concentrations
+    increase.
+  </p>
+
+  <p>
+    Once equilibrium is established, the concentrations become constant
+    under unchanged conditions. They do not necessarily become equal,
+    and they do not necessarily reach a point where all reactants have
+    been consumed.
+  </p>
+
+  <p>
+    The exact equilibrium concentrations depend on the chemical system,
+    the initial mixture and the conditions. They cannot be determined
+    from the definition of equilibrium alone.
+  </p>
+
+  <h3>4. Reading a Rate-versus-Time Graph</h3>
+
+  <p>
+    A graph of reaction rate against time can help show how equilibrium
+    develops.
+  </p>
+
+  <ul>
+    <li>
+      The forward-rate curve may begin at a high value and decrease.
+    </li>
+    <li>
+      The reverse-rate curve may begin at zero if no products are
+      initially present, then increase as products form.
+    </li>
+    <li>
+      The curves meet when the forward and reverse rates become equal.
+    </li>
+    <li>
+      After equilibrium is established, the rates remain equal while
+      conditions remain unchanged.
+    </li>
+  </ul>
+
+  <p>
+    These are common trends for a system initially containing reactants
+    only. The exact shapes of the curves depend on the reaction and
+    should not be assumed to be perfectly straight lines.
+  </p>
+
+  <h3>5. Common Misconceptions</h3>
+
+  <ul>
+    <li>
+      <strong>Wrong:</strong> Equilibrium exists immediately when
+      reactants are mixed.
+      <br/>
+      <strong>Correct:</strong> The rates must develop until the forward
+      and reverse rates are equal.
+    </li>
+    <li>
+      <strong>Wrong:</strong> The reverse reaction always begins at
+      its maximum rate.
+      <br/>
+      <strong>Correct:</strong> If no products are present initially,
+      the reverse rate is initially zero.
+    </li>
+    <li>
+      <strong>Wrong:</strong> The forward rate must decrease linearly.
+      <br/>
+      <strong>Correct:</strong> The exact rate changes depend on the
+      reaction; a straight-line decrease is not guaranteed.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Equal rates mean that both rates are zero.
+      <br/>
+      <strong>Correct:</strong> The rates can be equal and non-zero.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Reactants must be completely used up
+      before equilibrium can occur.
+      <br/>
+      <strong>Correct:</strong> Equilibrium can be established while
+      both reactants and products remain in the mixture.
+    </li>
+  </ul>
+
+  <h3>6. What You Should Be Able to Do</h3>
+
+  <ul>
+    <li>Describe the stages involved in establishing equilibrium.</li>
+    <li>Explain why the forward rate commonly decreases.</li>
+    <li>Explain why the reverse rate commonly increases.</li>
+    <li>Identify equilibrium from forward and reverse rate data.</li>
+    <li>Interpret common rate-versus-time graph features.</li>
+    <li>Explain why equal reaction rates do not mean the reactions stop.</li>
+  </ul>
+  `,
 
   [
     {
-      q: "Why is the forward reaction usually fast at the beginning when only reactants are present?",
-      steps: [
-        "Step 1: The reactants are present in relatively high concentration.",
-        "Step 2: More reactant particles can collide.",
-        "Step 3: More successful collisions produce products."
-      ],
-      ans: "Because the reactants are present at relatively high concentration, producing many successful collisions.",
-      why: "A high concentration of reactants generally increases the frequency of successful collisions."
+      q: "A reversible reaction begins with reactants only. If no products are initially present, what is the initial reverse reaction rate?",
+      ans: "The initial reverse reaction rate is zero, assuming the reverse reaction requires the products that are initially absent.",
+      why: "Without the necessary products, the reverse reaction cannot initially proceed."
     },
     {
-      q: "What happens to the reverse reaction as products build up?",
-      steps: [
-        "Step 1: Products are formed by the forward reaction.",
-        "Step 2: More product particles become available to react.",
-        "Step 3: The reverse reaction rate increases."
-      ],
-      ans: "The reverse reaction becomes faster.",
-      why: "Increasing product concentration increases the opportunity for the reverse reaction to occur."
+      q: "As products accumulate in a reversible reaction that begins with reactants only, what commonly happens to the forward and reverse rates?",
+      ans: "The forward rate commonly decreases as reactants are consumed, while the reverse rate increases as products accumulate.",
+      why: "The changing concentrations commonly alter the rates of the opposing reactions as the system approaches equilibrium."
     },
     {
-      q: "What condition is reached when the forward and reverse reaction rates become equal?",
-      steps: [
-        "Step 1: Compare the two reaction rates.",
-        "Step 2: Equal rates indicate equilibrium.",
-        "Step 3: This is dynamic equilibrium."
-      ],
-      ans: "Dynamic equilibrium.",
-      why: "Dynamic equilibrium occurs when the forward and reverse reaction rates are equal."
+      q: "A reaction has a forward rate of 5 units/s and a reverse rate of 5 units/s in a closed vessel at constant temperature. What does this indicate?",
+      ans: "The reaction rates satisfy the condition for dynamic equilibrium.",
+      why: "At dynamic equilibrium, the forward and reverse rates are equal and both reactions continue."
     }
   ],
 
   [
     {
-      q: "At the beginning of a reversible reaction, the forward rate is 0.80 mol/s and the reverse rate is 0.10 mol/s. Which reaction is faster?",
-      hint: "Compare the two numerical rates.",
+      q: "A reversible reaction starts with reactants only. Explain why the reverse rate is initially zero if none of the products is present.",
+      hint: "Identify which substances are required for the reverse reaction.",
       steps: [
-        "Step 1: Forward rate = 0.80 mol/s.",
-        "Step 2: Reverse rate = 0.10 mol/s.",
-        "Step 3: 0.80 is greater than 0.10."
+        "Identify the products of the forward reaction.",
+        "Recognise that these products are the reactants for the reverse direction.",
+        "Determine what happens when the required products are absent."
       ],
-      ans: "The forward reaction is faster.",
-      why: "Its rate is 0.80 mol/s compared with 0.10 mol/s for the reverse reaction."
+      ans: "The reverse rate is initially zero because the substances required for the reverse reaction are absent.",
+      why: "The reverse reaction cannot proceed until its required products have formed in the mixture."
+    },
+    {
+      q: "As a reversible reaction approaches equilibrium, the forward rate falls from 12 to 6 units/s. Over the same period, the reverse rate rises from 1 to 6 units/s. What can you conclude when both rates reach 6 units/s?",
+      hint: "Compare the two rates and apply the definition of dynamic equilibrium.",
+      steps: [
+        "Record the forward rate at the final time.",
+        "Record the reverse rate at the final time.",
+        "Check whether the rates are equal.",
+        "State what equality means in the closed system."
+      ],
+      ans: "The system has reached dynamic equilibrium, provided the system is closed and the conditions remain constant.",
+      why: "The forward and reverse rates are equal at 6 units/s, so there is no net change in the concentrations."
+    },
+    {
+      q: "A student says, 'The forward reaction slows down because the reverse reaction has started.' Explain why this is an incomplete explanation.",
+      hint: "Consider what happens to the reactant concentrations during the forward reaction.",
+      steps: [
+        "Identify what the forward reaction consumes.",
+        "Explain how consuming reactants commonly affects the forward rate.",
+        "Explain separately how accumulating products affect the reverse rate."
+      ],
+      ans: "The forward rate commonly decreases as reactants are consumed and their concentrations fall. The reverse rate commonly increases as products accumulate. The reverse reaction starting is not, by itself, the complete explanation for the falling forward rate.",
+      why: "The two rates respond to the changing composition of the reacting mixture."
+    },
+    {
+      q: "A learner believes that all reactants must be used up before equilibrium is established. Correct this misconception.",
+      hint: "Recall what happens to the two reaction rates at equilibrium.",
+      steps: [
+        "State the rate condition for equilibrium.",
+        "Consider whether both reaction directions can continue.",
+        "Determine whether reactants must be completely consumed."
+      ],
+      ans: "Reactants do not have to be completely consumed. Equilibrium occurs when the forward and reverse rates become equal, and reactants and products can both remain present.",
+      why: "Equilibrium is determined by the balance of opposing reaction rates, not by the complete disappearance of reactants."
+    },
+    {
+      q: "At a particular time, the forward rate is 9 units/s and the reverse rate is 3 units/s. Has equilibrium been established? Explain what the rate difference tells you.",
+      hint: "Subtract the reverse rate from the forward rate.",
+      steps: [
+        "Compare the forward and reverse rates.",
+        "Calculate their difference.",
+        "Explain whether the opposing rates balance."
+      ],
+      ans: "No. The forward rate exceeds the reverse rate by 6 units/s, so the rates are not equal and the system is not at dynamic equilibrium.",
+      why: "The defining rate condition for equilibrium has not yet been satisfied."
+    },
+    {
+      q: "At equilibrium, a forward reaction produces 25 units of product per minute and the reverse reaction consumes 25 units per minute. Calculate the net change in product per minute and explain whether the reactions have stopped.",
+      hint: "Net change equals amount formed minus amount consumed.",
+      steps: [
+        "Write the expression for net change.",
+        "Substitute the two rates.",
+        "Calculate the net change.",
+        "Interpret the result in terms of reaction activity."
+      ],
+      ans: "Net change = 25 − 25 = 0 units per minute. The reactions have not stopped; both continue at 25 units per minute.",
+      why: "Equal production and consumption rates cause no net concentration change, even though the opposing reactions remain active."
     }
   ]
 );
 
+/* ============================================================
+   BATCH 3 — HOW CONDITIONS SHIFT EQUILIBRIUM
 
-// -----------------------------------------------------
+   SCREEN 231: Effect of Concentration on Equilibrium
+   SCREEN 232: Effect of Temperature on Equilibrium
+
+   Subject ID: chemistry
+   Chapter ID: reversible_equilibrium
+
+   Each screen contains:
+   - Detailed HTML notes
+   - 3 worked conceptual examples in the notes
+   - 3 core questions
+   - 6 diagnostic questions with hint, steps, ans and why
+   ============================================================ */
+
+
+// ------------------------------------------------------------
 // SCREEN 231 — EFFECT OF CONCENTRATION ON EQUILIBRIUM
-// -----------------------------------------------------
+// Exact concept: Predicting equilibrium shifts after concentration changes
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Effect of Concentration on Equilibrium",
-  `<h2>Effect of Concentration on Equilibrium</h2>
 
-  <p>Changing the concentration of a substance in a reversible reaction can shift the equilibrium position.</p>
+  `
+  <h2>Effect of Concentration on Equilibrium</h2>
 
-  <pre>
-A + B ⇌ C + D
-  </pre>
+  <h3>1. What Is Concentration?</h3>
 
-  <h3>Adding a Reactant</h3>
+  <p>
+    <strong>Concentration</strong> describes how much of a substance is
+    present in a given volume of a mixture. For a solution, concentration
+    is often expressed in mol/dm³.
+  </p>
 
-  <p>If the concentration of A is increased, the system tends to use up some of the added A.</p>
+  <p>
+    For example, a solution containing 2 mol of dissolved substance in
+    1 dm³ has a concentration of 2 mol/dm³. If the same amount is
+    distributed through a larger volume, its concentration is lower.
+  </p>
 
-  <p>The equilibrium therefore shifts to the right, producing more C and D.</p>
+  <p>
+    In a reversible reaction, changing the concentration of a reactant
+    or product can disturb an existing equilibrium. The reaction then
+    responds by changing the relative rates of the forward and reverse
+    reactions until a new equilibrium is established, provided the
+    conditions allow it.
+  </p>
 
-  <h3>Adding a Product</h3>
+  <h3>2. The Principle Behind an Equilibrium Shift</h3>
 
-  <p>If the concentration of C is increased, the system tends to use up some of the added C.</p>
+  <p>
+    When a system at equilibrium experiences a change in concentration,
+    the equilibrium position shifts in the direction that partly opposes
+    that change. This is an application of <strong>Le Châtelier's
+    principle</strong>.
+  </p>
 
-  <p>The equilibrium shifts to the left.</p>
+  <p>Consider the general reaction:</p>
 
-  <h3>General Rule</h3>
+  <pre>A + B ⇌ C + D</pre>
 
-  <p>A system at equilibrium responds to a concentration change by shifting in the direction that tends to oppose that change.</p>`,
+  <ul>
+    <li>
+      <strong>Add A or B:</strong> the system tends to consume some of
+      the added reactant by shifting to the right.
+    </li>
+    <li>
+      <strong>Remove A or B:</strong> the system tends to replace some
+      of the removed reactant by shifting to the left.
+    </li>
+    <li>
+      <strong>Add C or D:</strong> the system tends to consume some of
+      the added product by shifting to the left.
+    </li>
+    <li>
+      <strong>Remove C or D:</strong> the system tends to replace some
+      of the removed product by shifting to the right.
+    </li>
+  </ul>
+
+  <p>
+    A shift to the right means a net movement towards products. A shift
+    to the left means a net movement towards reactants.
+  </p>
+
+  <p>
+    The shift does not necessarily remove all of an added substance or
+    replace everything removed. It is a response that helps establish
+    a new equilibrium.
+  </p>
+
+  <h3>3. Why Does the System Shift?</h3>
+
+  <p>
+    At the original equilibrium, the forward and reverse reaction rates
+    are equal. Changing a concentration changes the reacting mixture
+    and can disturb that balance.
+  </p>
+
+  <p>
+    Immediately after a concentration change, the forward and reverse
+    rates are generally no longer equal. A net reaction then occurs in
+    one direction. As the mixture changes, the rates adjust until they
+    become equal again at the new equilibrium.
+  </p>
+
+  <p>
+    The direction of the shift is a statement about the <strong>net
+    reaction</strong>. It does not mean that the reaction in the
+    opposite direction has stopped.
+  </p>
+
+  <h3>WORKED EXAMPLE 1 — Adding a Reactant</h3>
+
+  <p>
+    <strong>Question:</strong> Consider the equilibrium:
+  </p>
+
+  <pre>H₂(g) + I₂(g) ⇌ 2HI(g)</pre>
+
+  <p>
+    Hydrogen is added to a mixture that is already at equilibrium.
+    Predict the direction of the shift and explain the result.
+  </p>
+
+  <p><strong>Step 1: Identify what has changed.</strong></p>
+
+  <p>
+    Hydrogen, H₂, is a reactant. Its concentration has increased.
+  </p>
+
+  <p><strong>Step 2: Identify the response that opposes the change.</strong></p>
+
+  <p>
+    The system tends to consume some of the additional hydrogen. The
+    forward reaction uses hydrogen and iodine to produce hydrogen iodide.
+  </p>
+
+  <p><strong>Step 3: Predict the direction.</strong></p>
+
+  <p>
+    The equilibrium shifts to the right, towards hydrogen iodide.
+    The net forward reaction consumes some of the added hydrogen and
+    some iodine.
+  </p>
+
+  <p><strong>Final answer:</strong> Adding hydrogen shifts the
+  equilibrium to the right, favouring the formation of HI. The shift
+  does not mean that all the added hydrogen must be consumed.</p>
+
+  <h3>WORKED EXAMPLE 2 — Removing a Product</h3>
+
+  <p>
+    <strong>Question:</strong> For the same equilibrium,
+  </p>
+
+  <pre>H₂(g) + I₂(g) ⇌ 2HI(g)</pre>
+
+  <p>
+    some hydrogen iodide is removed. Explain the direction of the
+    resulting shift.
+  </p>
+
+  <p><strong>Step 1: Identify the substance removed.</strong></p>
+
+  <p>
+    Hydrogen iodide, HI, is a product in the forward direction.
+    Its concentration has decreased.
+  </p>
+
+  <p><strong>Step 2: Identify the response that opposes the change.</strong></p>
+
+  <p>
+    The system tends to produce more HI to replace some of what was
+    removed.
+  </p>
+
+  <p><strong>Step 3: Identify the reaction direction.</strong></p>
+
+  <p>
+    Producing more HI is the forward reaction, so the equilibrium
+    shifts to the right.
+  </p>
+
+  <p><strong>Final answer:</strong> Removing HI shifts the equilibrium
+  to the right, favouring the forward reaction and the formation of
+  additional hydrogen iodide.</p>
+
+  <h3>WORKED EXAMPLE 3 — Removing a Reactant</h3>
+
+  <p>
+    <strong>Question:</strong> Consider the equilibrium:
+  </p>
+
+  <pre>N₂(g) + 3H₂(g) ⇌ 2NH₃(g)</pre>
+
+  <p>
+    Nitrogen is removed from the equilibrium mixture. Predict the
+    direction of the shift and explain why.
+  </p>
+
+  <p><strong>Step 1: Identify the role of nitrogen.</strong></p>
+
+  <p>
+    Nitrogen is a reactant in the forward reaction.
+  </p>
+
+  <p><strong>Step 2: Identify the disturbance.</strong></p>
+
+  <p>
+    Removing nitrogen lowers its concentration. The system responds
+    in a way that tends to replace some of the removed nitrogen.
+  </p>
+
+  <p><strong>Step 3: Determine which direction produces nitrogen.</strong></p>
+
+  <p>
+    The reverse reaction decomposes ammonia to form nitrogen and
+    hydrogen.
+  </p>
+
+  <pre>2NH₃(g) → N₂(g) + 3H₂(g)</pre>
+
+  <p>
+    The net reaction therefore shifts to the left.
+  </p>
+
+  <p><strong>Final answer:</strong> Removing nitrogen shifts the
+  equilibrium to the left, towards the reactants, because the reverse
+  reaction tends to regenerate some nitrogen.</p>
+
+  <h3>4. A Reliable Method for Predicting a Shift</h3>
+
+  <ol>
+    <li>Write or examine the balanced reversible equation.</li>
+    <li>Identify the substance whose concentration changes.</li>
+    <li>Decide whether that substance was added or removed.</li>
+    <li>Ask which direction would consume an added substance or replace a removed substance.</li>
+    <li>State the direction of the shift and explain it using the equation.</li>
+  </ol>
+
+  <p>
+    Do not choose a direction simply because the word concentration
+    appears in the question. You must identify the exact substance and
+    whether its concentration increases or decreases.
+  </p>
+
+  <h3>5. What Happens to Concentrations After a Shift?</h3>
+
+  <p>
+    Suppose a reactant is added. Its concentration rises immediately
+    because it has been introduced into the mixture. The subsequent
+    shift consumes some of that reactant, while changing the
+    concentrations of the other substances.
+  </p>
+
+  <p>
+    Similarly, removing a product causes its concentration to fall
+    immediately. The shift towards products then tends to regenerate
+    some of it.
+  </p>
+
+  <p>
+    It is important to distinguish the immediate effect of the
+    disturbance from the changes that occur as the system moves
+    towards its new equilibrium. The concentration of the substance
+    added or removed need not return to its original value.
+  </p>
+
+  <h3>6. Does a Concentration Change Alter the Equilibrium Constant?</h3>
+
+  <p>
+    For a given reaction, the equilibrium constant depends on
+    temperature. Changing a reactant or product concentration at
+    constant temperature changes the equilibrium position, but it
+    does not change the equilibrium constant.
+  </p>
+
+  <p>
+    The mixture responds by changing its composition until the
+    equilibrium condition is satisfied again at that temperature.
+    This distinction matters: <strong>an equilibrium shift is not
+    the same as a change in the equilibrium constant.</strong>
+  </p>
+
+  <h3>7. Common Misconceptions</h3>
+
+  <ul>
+    <li>
+      <strong>Wrong:</strong> Adding a reactant shifts equilibrium
+      towards reactants.
+      <br/>
+      <strong>Correct:</strong> Adding a reactant generally shifts
+      the equilibrium towards products, consuming some of the added
+      reactant.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Removing a product shifts equilibrium
+      towards reactants.
+      <br/>
+      <strong>Correct:</strong> Removing a product generally shifts
+      equilibrium towards products, tending to replace some of it.
+    </li>
+    <li>
+      <strong>Wrong:</strong> The system completely removes any
+      substance that is added.
+      <br/>
+      <strong>Correct:</strong> The shift opposes the disturbance;
+      it does not guarantee complete removal.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Once the system shifts right, the
+      reverse reaction stops.
+      <br/>
+      <strong>Correct:</strong> Both directions can continue; the
+      net reaction is towards products until the rates become equal
+      again.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Changing concentration changes the
+      equilibrium constant at constant temperature.
+      <br/>
+      <strong>Correct:</strong> Concentration changes can shift the
+      equilibrium position, while the equilibrium constant remains
+      unchanged at the same temperature.
+    </li>
+  </ul>
+
+  <h3>8. What You Should Be Able to Do</h3>
+
+  <ul>
+    <li>State how adding a reactant affects equilibrium.</li>
+    <li>State how removing a reactant affects equilibrium.</li>
+    <li>Predict the effect of adding or removing a product.</li>
+    <li>Use a balanced equation to justify a shift.</li>
+    <li>Distinguish an immediate concentration change from the later response.</li>
+    <li>Distinguish a change in equilibrium position from a change in the equilibrium constant.</li>
+  </ul>
+  `,
 
   [
     {
-      q: "For A + B ⇌ C + D, what happens if the concentration of A is increased?",
-      steps: [
-        "Step 1: A is a reactant.",
-        "Step 2: The system tends to reduce the increased concentration of A.",
-        "Step 3: The equilibrium shifts toward the products."
-      ],
-      ans: "The equilibrium shifts to the right.",
-      why: "The forward reaction uses some of the added A and produces more C and D."
+      q: "For H₂(g) + I₂(g) ⇌ 2HI(g), what happens to the equilibrium position when hydrogen is added at constant temperature?",
+      ans: "The equilibrium shifts to the right, favouring the formation of HI.",
+      why: "The forward reaction consumes some of the added hydrogen and produces hydrogen iodide."
     },
     {
-      q: "For A + B ⇌ C + D, what happens if the concentration of C is increased?",
-      steps: [
-        "Step 1: C is a product.",
-        "Step 2: The system tends to use up some of the added C.",
-        "Step 3: The equilibrium shifts toward the reactants."
-      ],
-      ans: "The equilibrium shifts to the left.",
-      why: "The reverse reaction consumes C and forms A and B."
+      q: "For N₂(g) + 3H₂(g) ⇌ 2NH₃(g), what is the expected shift when ammonia is removed?",
+      ans: "The equilibrium shifts to the right, towards the formation of ammonia.",
+      why: "Removing a product tends to favour the direction that regenerates some of that product."
     },
     {
-      q: "What happens when a product is removed from an equilibrium mixture?",
-      steps: [
-        "Step 1: The concentration of the product decreases.",
-        "Step 2: The system tends to replace the removed product.",
-        "Step 3: The equilibrium shifts toward the products."
-      ],
-      ans: "The equilibrium shifts toward the products.",
-      why: "The forward reaction produces more of the removed product."
+      q: "At constant temperature, does adding a reactant change the equilibrium constant?",
+      ans: "No. It can change the equilibrium position, but the equilibrium constant remains unchanged at the same temperature.",
+      why: "The equilibrium constant for a given reaction depends on temperature, not on a temporary change in concentration."
     }
   ],
 
   [
     {
-      q: "For X + Y ⇌ Z, extra X is added. In which direction will equilibrium shift?",
-      hint: "X is a reactant.",
+      q: "For A + B ⇌ C + D, substance A is added to a mixture at equilibrium. Predict the shift and explain the response.",
+      hint: "Identify whether A is a reactant or product and which direction consumes it.",
       steps: [
-        "Step 1: Identify X as a reactant.",
-        "Step 2: Its concentration has increased.",
-        "Step 3: The system responds by consuming some X."
+        "Identify A as a reactant.",
+        "Recognise that adding A increases its concentration.",
+        "Determine which reaction direction consumes A.",
+        "State the direction of the net shift."
       ],
-      ans: "To the right, toward Z.",
-      why: "The forward reaction consumes the added reactant."
+      ans: "The equilibrium shifts to the right, towards C and D, because the forward reaction consumes some of the added A.",
+      why: "The system responds to the increased reactant concentration by favouring the direction that uses some of that reactant."
+    },
+    {
+      q: "For N₂(g) + 3H₂(g) ⇌ 2NH₃(g), nitrogen is removed. Predict the shift and identify which reaction helps replace the nitrogen.",
+      hint: "Determine which side of the equation contains nitrogen and which direction produces it.",
+      steps: [
+        "Identify nitrogen as a reactant.",
+        "Recognise that its concentration decreases when it is removed.",
+        "Identify the direction that forms nitrogen.",
+        "State the equilibrium shift."
+      ],
+      ans: "The equilibrium shifts to the left. The reverse reaction, 2NH₃(g) → N₂(g) + 3H₂(g), produces nitrogen.",
+      why: "Removing a reactant favours the direction that tends to replace some of the removed reactant."
+    },
+    {
+      q: "For H₂(g) + I₂(g) ⇌ 2HI(g), hydrogen iodide is removed. A student predicts a shift to the left because a product has been removed. Correct the reasoning.",
+      hint: "Ask which direction would produce more HI.",
+      steps: [
+        "Identify HI as a product.",
+        "Recognise that its concentration has decreased.",
+        "Determine which direction produces HI.",
+        "State why that direction is favoured."
+      ],
+      ans: "The equilibrium shifts to the right because the forward reaction produces HI, tending to replace some of the removed product.",
+      why: "Removing a product favours the direction that forms that product, rather than the direction that consumes it."
+    },
+    {
+      q: "For A + B ⇌ C + D, product C is added. Explain what happens to the equilibrium position and why.",
+      hint: "Consider which direction consumes C.",
+      steps: [
+        "Identify C as a product in the forward direction.",
+        "Recognise that adding C increases its concentration.",
+        "Identify the reverse direction as the direction that consumes C.",
+        "State the expected shift."
+      ],
+      ans: "The equilibrium shifts to the left, towards A and B, because the reverse reaction consumes some of the added C.",
+      why: "Adding a product tends to favour the direction that consumes some of that product."
+    },
+    {
+      q: "A student adds a reactant to a system at equilibrium and claims that all the added reactant must be consumed before equilibrium can return. Explain why this claim is incorrect.",
+      hint: "Distinguish opposing a change from completely undoing it.",
+      steps: [
+        "Identify how the added reactant initially changes its concentration.",
+        "Explain the direction favoured by the system.",
+        "Consider whether the definition of an equilibrium shift guarantees complete consumption.",
+        "State what happens when the new equilibrium is reached."
+      ],
+      ans: "The equilibrium shifts towards products and consumes some of the added reactant, but it does not necessarily consume all of it. A new equilibrium is reached when the forward and reverse rates become equal.",
+      why: "An equilibrium shift opposes a disturbance; it does not guarantee that the disturbed concentration returns to its original value."
+    },
+    {
+      q: "A reaction is at equilibrium at a fixed temperature. A learner adds more reactant and claims that the equilibrium constant must increase because more product will form. Explain the error.",
+      hint: "Separate the position of equilibrium from the equilibrium constant.",
+      steps: [
+        "Identify the change imposed on the mixture.",
+        "State how the equilibrium position responds.",
+        "Recall what determines the equilibrium constant.",
+        "State the correct conclusion at constant temperature."
+      ],
+      ans: "Adding the reactant can shift equilibrium towards products, but the equilibrium constant does not change because the temperature remains constant.",
+      why: "The equilibrium constant is determined by temperature for a given reaction. A concentration change alters the mixture's composition and equilibrium position, not the constant."
     }
   ]
 );
 
 
-// -----------------------------------------------------
+// ------------------------------------------------------------
 // SCREEN 232 — EFFECT OF TEMPERATURE ON EQUILIBRIUM
-// -----------------------------------------------------
+// Exact concept: Predicting shifts from the heat effect of a reaction
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Effect of Temperature on Equilibrium",
-  `<h2>Effect of Temperature on Equilibrium</h2>
 
-  <p>Changing temperature affects the position of equilibrium because one direction of a reversible reaction is exothermic and the other is endothermic.</p>
+  `
+  <h2>Effect of Temperature on Equilibrium</h2>
 
-  <h3>Exothermic Forward Reaction</h3>
+  <h3>1. Why Does Temperature Affect Equilibrium?</h3>
 
-  <pre>
-A + B ⇌ C + D + heat
-  </pre>
+  <p>
+    Chemical reactions involve energy changes. Some reactions release
+    heat to their surroundings, while others absorb heat from their
+    surroundings.
+  </p>
 
-  <p>Increasing temperature adds heat to the system.</p>
+  <p>
+    A change in temperature can change the relative favourability of
+    the forward and reverse reactions. Consequently, a system at
+    equilibrium can shift towards reactants or products when its
+    temperature changes.
+  </p>
 
-  <p>The equilibrium shifts in the endothermic direction, which is toward the reactants in this example.</p>
+  <p>
+    To predict the direction correctly, you must first know whether
+    the forward reaction is <strong>exothermic</strong> or
+    <strong>endothermic</strong>.
+  </p>
 
-  <h3>Decreasing Temperature</h3>
+  <h3>2. Exothermic and Endothermic Reactions</h3>
 
-  <p>Removing heat favours the exothermic direction.</p>
+  <p>
+    An <strong>exothermic reaction</strong> releases heat to the
+    surroundings. Its enthalpy change is negative:
+  </p>
 
-  <h3>General Rule</h3>
+  <pre>ΔH &lt; 0</pre>
+
+  <p>
+    An <strong>endothermic reaction</strong> absorbs heat from the
+    surroundings. Its enthalpy change is positive:
+  </p>
+
+  <pre>ΔH &gt; 0</pre>
+
+  <p>
+    In a reversible reaction, the reverse direction has the opposite
+    heat effect to the forward direction. If the forward reaction
+    releases heat, the reverse reaction absorbs heat. If the forward
+    reaction absorbs heat, the reverse reaction releases heat.
+  </p>
+
+  <h3>3. Representing Heat in an Equation</h3>
+
+  <p>
+    Heat can be represented as a product in an exothermic forward
+    reaction:
+  </p>
+
+  <pre>A + B ⇌ C + D + heat</pre>
+
+  <p>
+    Here, the forward reaction releases heat. The reverse reaction
+    consumes heat.
+  </p>
+
+  <p>
+    For an endothermic forward reaction, heat can be represented as
+    a reactant:
+  </p>
+
+  <pre>A + B + heat ⇌ C + D</pre>
+
+  <p>
+    Here, the forward reaction absorbs heat, while the reverse reaction
+    releases heat.
+  </p>
+
+  <p>
+    Treating heat this way is a useful model for predicting temperature
+    effects. It does not mean that heat is a chemical substance like
+    A or B.
+  </p>
+
+  <h3>4. The Temperature Rule</h3>
+
+  <p>
+    Increasing temperature favours the direction that absorbs heat.
+    Decreasing temperature favours the direction that releases heat.
+  </p>
+
+  <p>
+    Apply this rule to the <strong>forward and reverse directions</strong>,
+    not simply to the words reactants and products.
+  </p>
 
   <ul>
-    <li>Increase temperature → favours the endothermic direction.</li>
-    <li>Decrease temperature → favours the exothermic direction.</li>
+    <li>
+      <strong>Exothermic forward reaction:</strong> increasing temperature
+      shifts equilibrium to the left; decreasing temperature shifts it
+      to the right.
+    </li>
+    <li>
+      <strong>Endothermic forward reaction:</strong> increasing temperature
+      shifts equilibrium to the right; decreasing temperature shifts it
+      to the left.
+    </li>
   </ul>
 
-  <p>Temperature changes can therefore alter the equilibrium composition.</p>`,
+  <h3>WORKED EXAMPLE 1 — Increasing Temperature in an Exothermic Reaction</h3>
+
+  <p>
+    <strong>Question:</strong> Consider the exothermic equilibrium:
+  </p>
+
+  <pre>A + B ⇌ C + D + heat</pre>
+
+  <p>
+    Predict the direction of the shift when the temperature is increased.
+  </p>
+
+  <p><strong>Step 1: Identify the heat effect.</strong></p>
+
+  <p>
+    Heat appears on the product side. The forward reaction releases heat
+    and is exothermic.
+  </p>
+
+  <p><strong>Step 2: Identify what the temperature change favours.</strong></p>
+
+  <p>
+    Increasing temperature favours the direction that absorbs heat.
+    In this system, that is the reverse reaction.
+  </p>
+
+  <p><strong>Step 3: State the direction.</strong></p>
+
+  <p>
+    The equilibrium shifts to the left, towards A and B.
+  </p>
+
+  <p><strong>Final answer:</strong> Increasing the temperature shifts
+  the equilibrium to the left because the reverse reaction absorbs heat.</p>
+
+  <h3>WORKED EXAMPLE 2 — Decreasing Temperature in an Endothermic Reaction</h3>
+
+  <p>
+    <strong>Question:</strong> The forward reaction in the equilibrium
+    below is endothermic:
+  </p>
+
+  <pre>A + B + heat ⇌ C + D</pre>
+
+  <p>
+    Predict the direction of the shift when the temperature is decreased.
+  </p>
+
+  <p><strong>Step 1: Identify the forward reaction.</strong></p>
+
+  <p>
+    Heat is on the reactant side, so the forward reaction absorbs heat.
+  </p>
+
+  <p><strong>Step 2: Identify the effect of cooling.</strong></p>
+
+  <p>
+    Decreasing temperature favours the direction that releases heat.
+    In this example, the reverse reaction releases heat.
+  </p>
+
+  <p><strong>Step 3: Identify the direction of the shift.</strong></p>
+
+  <p>
+    The equilibrium shifts to the left, towards A and B.
+  </p>
+
+  <p><strong>Final answer:</strong> Decreasing the temperature shifts
+  the equilibrium to the left because the reverse reaction releases heat.</p>
+
+  <h3>WORKED EXAMPLE 3 — Applying the Rule to the Haber Process</h3>
+
+  <p>
+    <strong>Question:</strong> The Haber process is represented by:
+  </p>
+
+  <pre>N₂(g) + 3H₂(g) ⇌ 2NH₃(g)     ΔH &lt; 0</pre>
+
+  <p>
+    The forward reaction is exothermic. Explain what happens to the
+    equilibrium position when the temperature is increased and when
+    the temperature is decreased.
+  </p>
+
+  <p><strong>Step 1: Identify the forward heat effect.</strong></p>
+
+  <p>
+    Since ΔH is negative, the forward reaction releases heat.
+  </p>
+
+  <p><strong>Step 2: Increase the temperature.</strong></p>
+
+  <p>
+    The system favours the endothermic direction, which is the reverse
+    reaction. Equilibrium shifts to the left, favouring nitrogen and
+    hydrogen and reducing the equilibrium yield of ammonia.
+  </p>
+
+  <p><strong>Step 3: Decrease the temperature.</strong></p>
+
+  <p>
+    The system favours the exothermic direction, which is the forward
+    reaction. Equilibrium shifts to the right, favouring ammonia.
+  </p>
+
+  <p><strong>Final answer:</strong></p>
+
+  <ul>
+    <li>Higher temperature: shift left; lower equilibrium yield of NH₃.</li>
+    <li>Lower temperature: shift right; higher equilibrium yield of NH₃.</li>
+  </ul>
+
+  <p>
+    <strong>Industrial qualification:</strong> A lower temperature
+    favours ammonia formation at equilibrium, but it also slows the
+    reaction. Industry therefore uses a practical compromise between
+    equilibrium yield and reaction rate rather than simply choosing the
+    lowest possible temperature.
+  </p>
+
+  <h3>5. Temperature and Reaction Rate Are Different Effects</h3>
+
+  <p>
+    Increasing temperature generally increases reaction rates because
+    particles have greater average kinetic energy and a larger fraction
+    of collisions can overcome the activation energy.
+  </p>
+
+  <p>
+    However, the direction of the <strong>equilibrium shift</strong>
+    is determined by the heat effect of the reaction. A higher
+    temperature can speed up both directions while shifting the
+    equilibrium position towards the endothermic direction.
+  </p>
+
+  <p>
+    Do not conclude that an equilibrium shifts towards products merely
+    because the reaction becomes faster. Reaction rate and equilibrium
+    position are separate ideas.
+  </p>
+
+  <h3>6. Does Temperature Change the Equilibrium Constant?</h3>
+
+  <p>
+    Yes. For a given reaction, changing temperature changes the
+    equilibrium constant, unlike a simple change in concentration at
+    constant temperature.
+  </p>
+
+  <p>
+    For an exothermic forward reaction, increasing temperature generally
+    decreases the equilibrium constant, while decreasing temperature
+    generally increases it. For an endothermic forward reaction, the
+    opposite trend applies.
+  </p>
+
+  <p>
+    A change in the equilibrium constant reflects a change in the
+    equilibrium composition at the new temperature. It does not mean
+    that equilibrium cannot be established.
+  </p>
+
+  <h3>7. Common Misconceptions</h3>
+
+  <ul>
+    <li>
+      <strong>Wrong:</strong> Increasing temperature always shifts
+      equilibrium towards products.
+      <br/>
+      <strong>Correct:</strong> Increasing temperature favours the
+      endothermic direction, which may be forward or reverse.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Cooling always shifts equilibrium towards
+      reactants.
+      <br/>
+      <strong>Correct:</strong> Cooling favours the exothermic direction.
+    </li>
+    <li>
+      <strong>Wrong:</strong> An exothermic reaction absorbs heat.
+      <br/>
+      <strong>Correct:</strong> An exothermic reaction releases heat;
+      an endothermic reaction absorbs heat.
+    </li>
+    <li>
+      <strong>Wrong:</strong> A higher temperature always increases the
+      equilibrium yield of a product.
+      <br/>
+      <strong>Correct:</strong> The yield depends on whether forming
+      that product is favoured by the endothermic or exothermic direction.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Faster reactions necessarily mean a
+      greater equilibrium yield.
+      <br/>
+      <strong>Correct:</strong> Rate describes how quickly reaction
+      occurs; equilibrium position describes the final composition
+      under specified conditions.
+    </li>
+  </ul>
+
+  <h3>8. What You Should Be Able to Do</h3>
+
+  <ul>
+    <li>Distinguish exothermic and endothermic reactions.</li>
+    <li>Use the heat effect of a reaction to predict temperature shifts.</li>
+    <li>Predict shifts for both increasing and decreasing temperature.</li>
+    <li>Explain the temperature effect using the heat-absorption direction.</li>
+    <li>Distinguish reaction rate from equilibrium position.</li>
+    <li>Explain why temperature changes the equilibrium constant.</li>
+  </ul>
+  `,
 
   [
     {
-      q: "For an exothermic forward reaction, what happens when temperature is increased?",
-      steps: [
-        "Step 1: The forward reaction releases heat.",
-        "Step 2: Increasing temperature adds heat.",
-        "Step 3: The system favours the direction that absorbs heat."
-      ],
-      ans: "The equilibrium shifts toward the reverse, endothermic direction.",
-      why: "The system responds to added heat by favouring the direction that absorbs heat."
+      q: "For A + B ⇌ C + D + heat, what happens to the equilibrium position when temperature is increased?",
+      ans: "The equilibrium shifts to the left, towards A and B.",
+      why: "The forward reaction is exothermic, so the reverse reaction is the heat-absorbing direction favoured by increasing temperature."
     },
     {
-      q: "For an exothermic forward reaction, what happens when temperature is decreased?",
-      steps: [
-        "Step 1: Decreasing temperature removes heat.",
-        "Step 2: The system favours the direction that produces heat.",
-        "Step 3: The exothermic forward reaction is favoured."
-      ],
-      ans: "The equilibrium shifts toward the exothermic forward reaction.",
-      why: "The system responds to the removal of heat by favouring the heat-producing direction."
+      q: "For A + B + heat ⇌ C + D, what happens when temperature is decreased?",
+      ans: "The equilibrium shifts to the left, towards A and B.",
+      why: "The forward reaction is endothermic, so the reverse reaction is exothermic and is favoured by cooling."
     },
     {
-      q: "Which direction is favoured when temperature is increased: exothermic or endothermic?",
-      steps: [
-        "Step 1: Increasing temperature adds heat.",
-        "Step 2: The system tends to absorb the added heat.",
-        "Step 3: Endothermic reactions absorb heat."
-      ],
-      ans: "The endothermic direction.",
-      why: "An endothermic reaction absorbs heat from the surroundings."
+      q: "The forward Haber reaction is exothermic. How does increasing temperature affect the equilibrium yield of ammonia?",
+      ans: "It shifts equilibrium towards nitrogen and hydrogen and reduces the equilibrium yield of ammonia.",
+      why: "Increasing temperature favours the endothermic reverse reaction."
     }
   ],
 
   [
     {
-      q: "A reversible reaction is exothermic in the forward direction. What happens to the equilibrium when temperature is increased?",
-      hint: "An exothermic forward reaction has an endothermic reverse reaction.",
+      q: "For A + B ⇌ C + D + heat, predict the shift when the temperature is decreased. Explain your reasoning.",
+      hint: "Identify which direction releases heat.",
       steps: [
-        "Step 1: The forward direction releases heat.",
-        "Step 2: Increasing temperature adds heat.",
-        "Step 3: The reverse endothermic direction is favoured."
+        "Identify the forward reaction as exothermic because heat is on the product side.",
+        "Recall that decreasing temperature favours the heat-releasing direction.",
+        "Identify that direction as the forward reaction.",
+        "State the equilibrium shift."
       ],
-      ans: "The equilibrium shifts in the reverse direction.",
-      why: "Increasing temperature favours the endothermic direction."
+      ans: "The equilibrium shifts to the right, towards C and D, because the forward reaction releases heat.",
+      why: "Cooling favours the exothermic direction, which in this equation is the forward reaction."
+    },
+    {
+      q: "For A + B + heat ⇌ C + D, predict the shift when temperature is increased.",
+      hint: "The direction that absorbs heat is the endothermic direction.",
+      steps: [
+        "Identify the forward reaction as endothermic.",
+        "Recognise that increasing temperature favours the heat-absorbing direction.",
+        "Identify the forward direction as the direction that absorbs heat.",
+        "State the shift."
+      ],
+      ans: "The equilibrium shifts to the right, towards C and D.",
+      why: "Increasing temperature favours the endothermic forward reaction."
+    },
+    {
+      q: "A learner says, 'The forward reaction is exothermic, so increasing temperature must shift equilibrium forwards because particles move faster.' Correct the explanation.",
+      hint: "Separate the effect of temperature on reaction rate from its effect on equilibrium position.",
+      steps: [
+        "State what increasing temperature generally does to reaction rates.",
+        "Identify the heat effect of the forward reaction.",
+        "Identify which direction absorbs heat.",
+        "Predict the equilibrium shift."
+      ],
+      ans: "Increasing temperature generally speeds up reaction rates, but it favours the endothermic direction at equilibrium. If the forward reaction is exothermic, the reverse reaction is endothermic, so equilibrium shifts backwards.",
+      why: "A higher reaction rate does not imply a greater equilibrium yield of products. Temperature affects reaction rates and equilibrium position in different ways."
+    },
+    {
+      q: "The forward reaction in an equilibrium is endothermic. A student predicts that cooling will favour products. Explain the mistake and give the correct prediction.",
+      hint: "Determine whether the forward reaction releases or absorbs heat.",
+      steps: [
+        "Identify the forward reaction as heat-absorbing.",
+        "Recall that cooling favours the heat-releasing direction.",
+        "Identify the reverse reaction as exothermic.",
+        "State the expected shift."
+      ],
+      ans: "Cooling favours the exothermic reverse reaction, so equilibrium shifts to the left, towards reactants.",
+      why: "The system favours the direction that releases heat when temperature is decreased."
+    },
+    {
+      q: "The forward reaction in a reversible system has ΔH < 0. Predict how increasing and decreasing temperature affect the equilibrium position.",
+      hint: "A negative enthalpy change indicates an exothermic forward reaction.",
+      steps: [
+        "Interpret ΔH < 0 as an exothermic forward reaction.",
+        "Identify the reverse reaction as endothermic.",
+        "Predict the shift when temperature increases.",
+        "Predict the shift when temperature decreases."
+      ],
+      ans: "Increasing temperature shifts equilibrium to the left. Decreasing temperature shifts equilibrium to the right.",
+      why: "Heating favours the endothermic reverse direction, while cooling favours the exothermic forward direction."
+    },
+    {
+      q: "Why can increasing temperature speed up the reactions in a mixture but reduce the equilibrium yield of a product?",
+      hint: "Consider the difference between reaction speed and the direction favoured at equilibrium.",
+      steps: [
+        "Explain the general effect of temperature on reaction rates.",
+        "Identify whether forming the product is exothermic or endothermic.",
+        "Determine which direction is favoured by heating.",
+        "Distinguish the rate effect from the equilibrium-yield effect."
+      ],
+      ans: "Increasing temperature generally speeds up reactions, but it favours the endothermic direction. If product formation is exothermic, heating shifts equilibrium towards reactants and reduces the product's equilibrium yield.",
+      why: "Reaction rate describes how quickly change occurs, whereas equilibrium position describes the composition established under the specified conditions."
     }
   ]
 );
-
-
-// -----------------------------------------------------
-// SCREEN 233 — EFFECT OF PRESSURE ON EQUILIBRIUM
-// -----------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Effect of Pressure on Equilibrium",
-  `<h2>Effect of Pressure on Equilibrium</h2>
 
-  <p>Pressure changes can affect equilibria involving gases when the two sides contain different numbers of gaseous molecules.</p>
+  `
+  <h2>Effect of Pressure on Equilibrium</h2>
 
-  <h3>Increasing Pressure</h3>
+  <h3>1. What pressure means in gaseous equilibrium</h3>
 
-  <p>When pressure is increased, equilibrium tends to shift toward the side with fewer moles of gas.</p>
+  <p>
+    Gas particles move continuously and collide with the walls of their container.
+    These collisions produce pressure. When the volume of a container containing
+    gases is reduced at constant temperature, the gas particles occupy less space,
+    so their pressure increases.
+  </p>
 
-  <h3>Decreasing Pressure</h3>
+  <p>
+    In a reversible reaction involving gases, changing pressure can change the
+    position of equilibrium. The system responds in accordance with
+    <strong>Le Chatelier's principle</strong>: when a system at equilibrium is
+    disturbed, it responds in a way that opposes the disturbance.
+  </p>
 
-  <p>When pressure is decreased, equilibrium tends to shift toward the side with more moles of gas.</p>
+  <p>
+    To predict the effect of pressure, compare the total number of moles of
+    gaseous particles represented by the balanced chemical equation on each side.
+    This is a comparison of the gaseous coefficients, not the number of atoms.
+  </p>
 
-  <h3>Example</h3>
+  <h3>2. The rules for predicting pressure changes</h3>
 
-  <pre>
-N₂(g) + 3H₂(g) ⇌ 2NH₃(g)
-  </pre>
+  <ul>
+    <li>
+      <strong>Increasing pressure:</strong> equilibrium shifts towards the side
+      with fewer moles of gaseous particles.
+    </li>
+    <li>
+      <strong>Decreasing pressure:</strong> equilibrium shifts towards the side
+      with more moles of gaseous particles.
+    </li>
+    <li>
+      <strong>Equal gaseous mole totals:</strong> changing pressure does not shift
+      the equilibrium position if the total gaseous coefficients are equal on
+      both sides.
+    </li>
+  </ul>
 
-  <p>Left side:</p>
-  <pre>
-1 + 3 = 4 moles of gas
-  </pre>
+  <p>
+    In school-level equilibrium questions, pressure is commonly increased by
+    reducing the container's volume and decreased by increasing its volume.
+    Apply these rules while assuming the temperature remains constant.
+  </p>
 
-  <p>Right side:</p>
-  <pre>
-2 moles of gas
-  </pre>
+  <h3>3. How to count gaseous moles correctly</h3>
 
-  <p>Increasing pressure therefore favours the right-hand side.</p>
+  <p>
+    Use the following method every time:
+  </p>
 
-  <h3>Important</h3>
+  <ol>
+    <li>Write the balanced reversible equation.</li>
+    <li>Identify the substances labelled (g).</li>
+    <li>Add their coefficients on the left-hand side.</li>
+    <li>Add their coefficients on the right-hand side.</li>
+    <li>Compare the totals and apply the appropriate pressure rule.</li>
+  </ol>
 
-  <p>If both sides contain the same number of gaseous molecules, changing pressure does not shift the equilibrium position.</p>`,
+  <p>
+    A coefficient represents the relative number of moles of a substance in
+    the balanced equation. A subscript tells you the number of atoms in one
+    formula unit or molecule. Do not confuse the two.
+  </p>
+
+  <p>
+    Pure solids, labelled (s), and pure liquids, labelled (l), are not counted
+    when comparing the total moles of gaseous particles. Their coefficients
+    do not contribute to the gaseous mole totals.
+  </p>
+
+  <h3>Worked Example 1: Increasing pressure in the Haber equilibrium</h3>
+
+  <p><strong>Question:</strong> Predict the effect of increasing pressure on the equilibrium below.</p>
+
+  <p>
+    N₂(g) + 3H₂(g) ⇌ 2NH₃(g)
+  </p>
+
+  <p><strong>Step 1: Count gaseous moles on the left.</strong></p>
+
+  <p>
+    Nitrogen contributes 1 mole and hydrogen contributes 3 moles.
+  </p>
+
+  <p>
+    Total on the left = 1 + 3 = 4 moles of gas.
+  </p>
+
+  <p><strong>Step 2: Count gaseous moles on the right.</strong></p>
+
+  <p>
+    Two moles of ammonia are represented.
+  </p>
+
+  <p>
+    Total on the right = 2 moles of gas.
+  </p>
+
+  <p><strong>Step 3: Compare the totals.</strong></p>
+
+  <p>
+    The left has 4 gaseous moles, while the right has 2. The right-hand side
+    has fewer gaseous moles.
+  </p>
+
+  <p><strong>Conclusion:</strong> Increasing pressure shifts equilibrium to the right, favouring ammonia formation.</p>
+
+  <p>
+    Conversely, decreasing pressure favours the left-hand side and reduces the
+    equilibrium tendency towards ammonia formation.
+  </p>
+
+  <h3>Worked Example 2: When pressure does not shift equilibrium</h3>
+
+  <p><strong>Question:</strong> What happens when pressure increases in this equilibrium?</p>
+
+  <p>
+    H₂(g) + I₂(g) ⇌ 2HI(g)
+  </p>
+
+  <p><strong>Step 1: Count gaseous moles on the left.</strong></p>
+
+  <p>
+    H₂ has a coefficient of 1 and I₂ has a coefficient of 1.
+    Total = 1 + 1 = 2 gaseous moles.
+  </p>
+
+  <p><strong>Step 2: Count gaseous moles on the right.</strong></p>
+
+  <p>
+    HI has a coefficient of 2. Total = 2 gaseous moles.
+  </p>
+
+  <p><strong>Step 3: Compare the totals.</strong></p>
+
+  <p>
+    Both sides have the same total number of gaseous moles.
+  </p>
+
+  <p><strong>Conclusion:</strong> Changing pressure does not shift the equilibrium position.</p>
+
+  <p>
+    Do not conclude that pressure has no physical effect on the gases. A pressure
+    change can affect gas concentrations and reaction rates. The important point
+    is that neither direction is favoured by the gaseous mole-count rule in this
+    example.
+  </p>
+
+  <h3>Worked Example 3: Counting gases when solids are present</h3>
+
+  <p><strong>Question:</strong> Predict the effect of increasing pressure on this equilibrium.</p>
+
+  <p>
+    CaCO₃(s) ⇌ CaO(s) + CO₂(g)
+  </p>
+
+  <p><strong>Step 1: Count gaseous moles on the left.</strong></p>
+
+  <p>
+    Calcium carbonate is a solid. There are no gaseous particles on the left.
+    Total gaseous moles = 0.
+  </p>
+
+  <p><strong>Step 2: Count gaseous moles on the right.</strong></p>
+
+  <p>
+    Calcium oxide is a solid and is ignored. Carbon dioxide is a gas with
+    coefficient 1. Total gaseous moles = 1.
+  </p>
+
+  <p><strong>Step 3: Apply the pressure rule.</strong></p>
+
+  <p>
+    The left side has fewer gaseous moles than the right side.
+  </p>
+
+  <p><strong>Conclusion:</strong> Increasing pressure shifts equilibrium to the left, favouring calcium carbonate. Decreasing pressure favours the right-hand side.</p>
+
+  <h3>4. Pressure, equilibrium position and reaction rate</h3>
+
+  <p>
+    These three ideas must be distinguished:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Pressure change:</strong> a physical disturbance to the gaseous
+      system, commonly produced by changing volume.
+    </li>
+    <li>
+      <strong>Equilibrium position:</strong> the relative composition of the
+      system when equilibrium is re-established.
+    </li>
+    <li>
+      <strong>Reaction rate:</strong> how quickly the forward or reverse reaction
+      proceeds.
+    </li>
+  </ul>
+
+  <p>
+    If volume is suddenly reduced at constant temperature, the partial pressures
+    of the gases increase immediately. The forward and reverse rates may no
+    longer be equal. The system then responds, and the equilibrium composition
+    changes if the two sides have different gaseous mole totals.
+  </p>
+
+  <p>
+    The shift is not a rule that the reaction always moves towards the side with
+    a higher coefficient or a more complicated formula. It depends on the total
+    gaseous mole count on each side.
+  </p>
+
+  <h3>5. Important limitations and misconceptions</h3>
+
+  <ul>
+    <li>
+      Count coefficients of gaseous substances only; do not count solid or
+      liquid substances.
+    </li>
+    <li>
+      Use the balanced equation. An unbalanced equation gives unreliable mole
+      totals.
+    </li>
+    <li>
+      Keep temperature constant when applying the simple pressure comparison
+      rule. Changing temperature can independently shift equilibrium.
+    </li>
+    <li>
+      If gaseous mole totals are equal, pressure does not shift the equilibrium
+      position under the stated conditions.
+    </li>
+    <li>
+      A catalyst does not shift the equilibrium position. It speeds up the
+      attainment of equilibrium by increasing the rates of both directions.
+    </li>
+  </ul>
+
+  <h3>6. A reliable exam method</h3>
+
+  <p>
+    When asked how pressure affects a gaseous equilibrium, do not guess from
+    the formula or memorise the reaction alone. Write the balanced equation,
+    count gaseous moles on both sides, state which side has fewer or more, and
+    then give the direction of the shift.
+  </p>
+
+  <p>
+    A complete answer should connect the disturbance to the predicted shift
+    and, where relevant, identify the substance whose formation is favoured.
+  </p>
+  `,
 
   [
     {
-      q: "For N₂(g) + 3H₂(g) ⇌ 2NH₃(g), which side is favoured when pressure is increased?",
+      q: "For N₂(g) + 3H₂(g) ⇌ 2NH₃(g), predict the effect of increasing pressure at constant temperature.",
       steps: [
-        "Step 1: Count gaseous molecules on the left: 1 + 3 = 4.",
-        "Step 2: Count gaseous molecules on the right: 2.",
-        "Step 3: Higher pressure favours the side with fewer gas molecules."
+        "Count the gaseous coefficients on the left: 1 + 3 = 4.",
+        "Count the gaseous coefficients on the right: 2.",
+        "Identify the side with fewer gaseous moles: the right.",
+        "Increasing pressure favours the side with fewer gaseous moles."
       ],
-      ans: "The right-hand side, producing more ammonia.",
-      why: "The right side contains fewer moles of gas."
+      ans: "Equilibrium shifts to the right, favouring ammonia formation.",
+      why: "The right-hand side has 2 gaseous moles compared with 4 on the left."
     },
     {
-      q: "What happens to equilibrium when pressure is decreased in N₂(g) + 3H₂(g) ⇌ 2NH₃(g)?",
+      q: "For H₂(g) + I₂(g) ⇌ 2HI(g), explain what happens to the equilibrium position when pressure is decreased at constant temperature.",
       steps: [
-        "Step 1: The left side has 4 moles of gas.",
-        "Step 2: The right side has 2 moles of gas.",
-        "Step 3: Lower pressure favours the side with more gaseous molecules."
+        "Count the gaseous moles on the left: 1 + 1 = 2.",
+        "Count the gaseous moles on the right: 2.",
+        "Compare the totals: both sides have 2 gaseous moles.",
+        "A pressure change does not favour either direction through the gaseous mole-count rule."
       ],
-      ans: "The equilibrium shifts to the left.",
-      why: "The left side contains more moles of gas."
+      ans: "There is no shift in the equilibrium position.",
+      why: "The total number of gaseous moles is equal on both sides."
     },
     {
-      q: "When does changing pressure have little or no effect on equilibrium position?",
+      q: "For CaCO₃(s) ⇌ CaO(s) + CO₂(g), explain why increasing pressure favours calcium carbonate.",
       steps: [
-        "Step 1: Compare the number of gaseous molecules on both sides.",
-        "Step 2: If the numbers are equal, neither side is favoured by pressure change.",
-        "Step 3: Therefore the equilibrium position does not shift."
+        "Ignore CaCO₃ and CaO because they are solids.",
+        "Count the gaseous moles on the left: 0.",
+        "Count the gaseous moles on the right: 1 from CO₂.",
+        "Increasing pressure favours the side with fewer gaseous moles."
       ],
-      ans: "When both sides have the same number of moles of gas.",
-      why: "There is no side with fewer or more gaseous molecules to favour."
+      ans: "Equilibrium shifts to the left, favouring CaCO₃.",
+      why: "The left side contains fewer gaseous moles; solids do not count in the gas comparison."
     }
   ],
 
   [
     {
-      q: "For 2SO₂(g) + O₂(g) ⇌ 2SO₃(g), which direction is favoured by increased pressure?",
-      hint: "Count the gaseous molecules on each side.",
+      q: "A learner says increasing pressure always shifts equilibrium to the right. Is this correct? Use N₂(g) + 3H₂(g) ⇌ 2NH₃(g) to explain.",
+      hint: "The direction depends on gaseous mole totals, not on whether a substance is written on the right.",
       steps: [
-        "Step 1: Left side = 2 + 1 = 3 moles of gas.",
-        "Step 2: Right side = 2 moles of gas.",
-        "Step 3: Increased pressure favours the side with fewer gas molecules."
+        "Count the left-hand gaseous moles: 1 + 3 = 4.",
+        "Count the right-hand gaseous moles: 2.",
+        "Increasing pressure favours the side with fewer gaseous moles.",
+        "Identify the side with fewer gaseous moles."
       ],
-      ans: "The forward direction, toward SO₃.",
-      why: "The products contain fewer gaseous molecules than the reactants."
+      ans: "The claim is incorrect as a general rule. In this particular equation, increasing pressure shifts equilibrium to the right.",
+      why: "Pressure favours the side with fewer gaseous moles. That side happens to be the right here, but it is not always the right."
+    },
+    {
+      q: "For 2SO₂(g) + O₂(g) ⇌ 2SO₃(g), calculate the total gaseous moles on each side and predict the effect of increasing pressure.",
+      hint: "Add the coefficients of the gaseous substances on each side.",
+      steps: [
+        "Left-hand total = 2 + 1 = 3 gaseous moles.",
+        "Right-hand total = 2 gaseous moles.",
+        "The right-hand side has fewer gaseous moles.",
+        "Increasing pressure favours the right-hand side."
+      ],
+      ans: "Left = 3 moles; right = 2 moles. Equilibrium shifts to the right, favouring SO₃.",
+      why: "The product side has fewer gaseous moles than the reactant side."
+    },
+    {
+      q: "For H₂(g) + I₂(g) ⇌ 2HI(g), a student counts four gaseous moles on the left because H₂ and I₂ each contain two atoms. Identify the error and give the correct totals.",
+      hint: "Count molecules represented by coefficients, not individual atoms represented by subscripts.",
+      steps: [
+        "H₂ has coefficient 1, so it contributes 1 mole of gas.",
+        "I₂ has coefficient 1, so it contributes 1 mole of gas.",
+        "The left total is 1 + 1 = 2.",
+        "HI has coefficient 2, so the right total is 2."
+      ],
+      ans: "The student counted atoms instead of gaseous moles. The correct totals are 2 on the left and 2 on the right.",
+      why: "Coefficients give the relative mole amounts in the equation. Subscripts show the atoms within each molecule."
+    },
+    {
+      q: "For CaCO₃(s) ⇌ CaO(s) + CO₂(g), predict the effect of decreasing pressure. Explain why the solids are excluded from the calculation.",
+      hint: "First count only substances labelled (g). Decreasing pressure favours the side with more gaseous moles.",
+      steps: [
+        "The left side has no gases, so its total is 0.",
+        "The right side contains 1 gaseous mole of CO₂.",
+        "The right side has more gaseous moles.",
+        "Decreasing pressure favours the side with more gaseous moles."
+      ],
+      ans: "Equilibrium shifts to the right, favouring CaO and CO₂. The solids are excluded because the pressure rule compares gaseous particles.",
+      why: "The right side has one gaseous mole compared with none on the left."
+    },
+    {
+      q: "A gaseous equilibrium has 3 total gaseous moles on the left and 5 on the right. Predict the effect of decreasing pressure and justify your answer.",
+      hint: "Decreasing pressure favours the side with more gaseous moles.",
+      steps: [
+        "Identify the left-hand total: 3 gaseous moles.",
+        "Identify the right-hand total: 5 gaseous moles.",
+        "The right side has more gaseous moles.",
+        "Decreasing pressure favours the right side."
+      ],
+      ans: "Equilibrium shifts to the right.",
+      why: "The right-hand side has the greater total number of gaseous moles."
+    },
+    {
+      q: "When the volume of a reaction vessel is reduced at constant temperature, a learner claims that the equilibrium must shift even if both sides contain equal gaseous mole totals. Correct the claim.",
+      hint: "Separate the immediate physical effect of reducing volume from a shift in equilibrium position.",
+      steps: [
+        "Reducing volume increases the pressure of the gases immediately.",
+        "Compare the total gaseous mole coefficients on both sides.",
+        "If the totals are equal, neither direction is favoured by the pressure rule.",
+        "State the distinction between a pressure change and a shift in equilibrium."
+      ],
+      ans: "The claim is incorrect. Pressure increases, but if the gaseous mole totals are equal on both sides, the equilibrium position does not shift because of that pressure change.",
+      why: "A physical pressure change does not necessarily cause a change in equilibrium composition. Equal gaseous mole totals mean neither direction is favoured by the pressure rule."
     }
   ]
 );
 
-
-// -----------------------------------------------------
-// SCREEN 234 — INDUSTRIAL EQUILIBRIUM
-// -----------------------------------------------------
 
 add(
   "chemistry",
   "reversible_equilibrium",
   "Industrial Equilibrium",
-  `<h2>Industrial Equilibrium</h2>
 
-  <p>Reversible reactions are important in industry because many useful substances are produced through equilibrium processes.</p>
+  `
+  <h2>Industrial Equilibrium</h2>
 
-  <h3>Haber Process</h3>
+  <h3>1. Why equilibrium matters in industry</h3>
 
-  <p>The Haber process produces ammonia.</p>
+  <p>
+    Some industrial chemicals are manufactured using reversible reactions.
+    These reactions may not convert all the reactants into products because
+    the forward and reverse reactions eventually reach dynamic equilibrium
+    under fixed conditions.
+  </p>
 
-  <pre>
-N₂(g) + 3H₂(g) ⇌ 2NH₃(g)
-  </pre>
-
-  <p>The reaction is reversible and exothermic.</p>
-
-  <h3>Important Conditions</h3>
+  <p>
+    Industrial chemists choose conditions that balance several competing
+    requirements:
+  </p>
 
   <ul>
-    <li>High pressure favours ammonia because the product side has fewer gas molecules.</li>
-    <li>A moderate temperature is used as a compromise between rate and yield.</li>
-    <li>Iron is used as a catalyst.</li>
+    <li>
+      <strong>Equilibrium yield:</strong> the amount of product favoured at
+      equilibrium.
+    </li>
+    <li>
+      <strong>Reaction rate:</strong> how quickly the product can be made.
+    </li>
+    <li>
+      <strong>Cost:</strong> the expense of heating, cooling, compressing gases,
+      building equipment, and operating the plant.
+    </li>
+    <li>
+      <strong>Safety and practical operation:</strong> whether the chosen
+      temperature and pressure can be maintained reliably.
+    </li>
   </ul>
 
-  <h3>Contact Process</h3>
+  <p>
+    The conditions that give the highest possible equilibrium yield are not
+    always the most economical conditions for manufacturing a product quickly
+    on a large scale.
+  </p>
 
-  <p>The Contact process is used to manufacture sulphuric acid.</p>
+  <h3>2. The Haber process: manufacturing ammonia</h3>
 
-  <p>An important equilibrium step is:</p>
+  <p>
+    The Haber process manufactures ammonia, NH₃, from nitrogen and hydrogen.
+    The balanced reversible equation is:
+  </p>
 
-  <pre>
-2SO₂(g) + O₂(g) ⇌ 2SO₃(g)
-  </pre>
+  <p>
+    N₂(g) + 3H₂(g) ⇌ 2NH₃(g)     ΔH &lt; 0
+  </p>
 
-  <p>The reaction is exothermic.</p>
+  <p>
+    The negative enthalpy change means the forward reaction is exothermic:
+    it releases heat.
+  </p>
 
-  <p>Vanadium(V) oxide, V₂O₅, is used as a catalyst.</p>
+  <h3>Effect of pressure in the Haber process</h3>
 
-  <h3>Important Principle</h3>
+  <p>
+    There are 4 gaseous moles on the left (1 N₂ + 3 H₂) and 2 gaseous moles
+    on the right (2 NH₃). Increasing pressure favours the side with fewer
+    gaseous moles, so it shifts equilibrium towards ammonia.
+  </p>
 
-  <p>Industrial conditions are chosen as a compromise between obtaining a good yield and achieving a sufficiently fast reaction.</p>`,
+  <p>
+    High pressure improves the equilibrium yield of ammonia. However, very
+    high pressure requires more expensive, stronger equipment and increases
+    operating demands. Industry therefore selects a high but practical pressure
+    rather than increasing pressure without limit.
+  </p>
+
+  <h3>Effect of temperature in the Haber process</h3>
+
+  <p>
+    The forward reaction is exothermic. Lowering the temperature favours the
+    forward direction and improves the equilibrium yield of ammonia. However,
+    low temperatures make the reaction too slow for efficient industrial
+    production.
+  </p>
+
+  <p>
+    A temperature around 450°C is commonly taught as the industrial compromise
+    for the Haber process. It provides a useful reaction rate while retaining
+    a reasonable equilibrium yield. The precise operating conditions can vary
+    with plant design and operating requirements.
+  </p>
+
+  <h3>Why an iron catalyst is used</h3>
+
+  <p>
+    An iron catalyst increases the rates of the forward and reverse reactions.
+    Equilibrium is reached more quickly, allowing more efficient production
+    over time.
+  </p>
+
+  <p>
+    The catalyst does <strong>not</strong> change the equilibrium position,
+    the equilibrium constant, or the theoretical equilibrium yield at a fixed
+    temperature. It helps the system reach equilibrium faster.
+  </p>
+
+  <h3>Removing and recycling materials</h3>
+
+  <p>
+    Ammonia can be separated from the reaction mixture as it forms. Removing
+    ammonia reduces the amount of product in the reacting system, so the
+    equilibrium responds by favouring further ammonia formation.
+  </p>
+
+  <p>
+    Unreacted nitrogen and hydrogen can be recycled into the reactor. Recycling
+    reduces waste and helps make the process more efficient.
+  </p>
+
+  <h3>Worked Example 1: Choosing Haber process conditions</h3>
+
+  <p><strong>Question:</strong> Explain the expected effects of increasing pressure, lowering temperature, and adding an iron catalyst to the Haber process.</p>
+
+  <p><strong>Step 1: Increasing pressure.</strong></p>
+
+  <p>
+    The reactant side has 4 gaseous moles and the product side has 2.
+    Increasing pressure favours the product side, increasing the equilibrium
+    tendency towards ammonia.
+  </p>
+
+  <p><strong>Step 2: Lowering temperature.</strong></p>
+
+  <p>
+    The forward reaction is exothermic. Lowering temperature favours the
+    heat-producing direction, so it favours ammonia at equilibrium. However,
+    the reaction rate decreases at lower temperature.
+  </p>
+
+  <p><strong>Step 3: Adding an iron catalyst.</strong></p>
+
+  <p>
+    The catalyst speeds up both forward and reverse reactions and allows
+    equilibrium to be reached more quickly. It does not shift equilibrium.
+  </p>
+
+  <p><strong>Conclusion:</strong> High pressure and lower temperature favour the equilibrium yield of ammonia, but practical operation uses a compromise temperature and pressure. The catalyst improves the rate of reaching equilibrium.</p>
+
+  <h3>3. The Contact process: manufacturing sulfuric acid</h3>
+
+  <p>
+    In the Contact process, sulfur dioxide reacts with oxygen to form sulfur
+    trioxide. The balanced reversible equation is:
+  </p>
+
+  <p>
+    2SO₂(g) + O₂(g) ⇌ 2SO₃(g)     ΔH &lt; 0
+  </p>
+
+  <p>
+    The forward reaction is exothermic because it releases heat.
+  </p>
+
+  <h3>Effect of pressure in the Contact process</h3>
+
+  <p>
+    The left side contains 3 gaseous moles (2 SO₂ + 1 O₂), while the right
+    side contains 2 gaseous moles (2 SO₃). Increasing pressure therefore
+    favours the formation of sulfur trioxide.
+  </p>
+
+  <p>
+    However, the gain from using substantially higher pressure may not justify
+    the extra cost and complexity of pressure-resistant equipment. The Contact
+    process is commonly operated at a moderate temperature and near atmospheric
+    or slightly elevated pressure, depending on plant design.
+  </p>
+
+  <h3>Effect of temperature and the catalyst</h3>
+
+  <p>
+    Because the forward reaction is exothermic, a lower temperature favours
+    sulfur trioxide at equilibrium. However, the reaction would proceed too
+    slowly at a very low temperature.
+  </p>
+
+  <p>
+    A temperature around 450°C is commonly taught as a compromise between
+    equilibrium yield and reaction rate. Vanadium(V) oxide, V₂O₅, is used as
+    a catalyst to speed up the reaction.
+  </p>
+
+  <p>
+    The catalyst helps the system reach equilibrium faster; it does not increase
+    the equilibrium yield at a fixed temperature.
+  </p>
+
+  <h3>Worked Example 2: Evaluating conditions for the Contact process</h3>
+
+  <p><strong>Question:</strong> Explain why the Contact process uses a catalyst and a compromise temperature rather than simply operating at the lowest possible temperature.</p>
+
+  <p><strong>Step 1: Consider equilibrium yield.</strong></p>
+
+  <p>
+    The forward reaction is exothermic. Lower temperature favours the formation
+    of SO₃ at equilibrium.
+  </p>
+
+  <p><strong>Step 2: Consider reaction rate.</strong></p>
+
+  <p>
+    Lowering the temperature too far makes the reaction slow, reducing the
+    rate of production.
+  </p>
+
+  <p><strong>Step 3: Consider the catalyst.</strong></p>
+
+  <p>
+    V₂O₅ speeds up the reaction so equilibrium can be reached more quickly.
+    It does not change the equilibrium position.
+  </p>
+
+  <p><strong>Conclusion:</strong> A compromise temperature gives a useful rate and equilibrium yield, while the catalyst speeds up the reaction without changing the equilibrium yield.</p>
+
+  <h3>4. Comparing the Haber and Contact processes</h3>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Haber process</th>
+        <th>Contact process</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Product</td>
+        <td>Ammonia, NH₃</td>
+        <td>Sulfur trioxide, SO₃</td>
+      </tr>
+      <tr>
+        <td>Reversible equation</td>
+        <td>N₂ + 3H₂ ⇌ 2NH₃</td>
+        <td>2SO₂ + O₂ ⇌ 2SO₃</td>
+      </tr>
+      <tr>
+        <td>Forward reaction</td>
+        <td>Exothermic</td>
+        <td>Exothermic</td>
+      </tr>
+      <tr>
+        <td>Gaseous moles: left → right</td>
+        <td>4 → 2</td>
+        <td>3 → 2</td>
+      </tr>
+      <tr>
+        <td>Pressure effect</td>
+        <td>Higher pressure favours NH₃</td>
+        <td>Higher pressure favours SO₃</td>
+      </tr>
+      <tr>
+        <td>Commonly taught catalyst</td>
+        <td>Iron</td>
+        <td>Vanadium(V) oxide, V₂O₅</td>
+      </tr>
+      <tr>
+        <td>Temperature consideration</td>
+        <td>Lower temperature favours yield but slows rate</td>
+        <td>Lower temperature favours yield but slows rate</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>5. Why industrial conditions are compromises</h3>
+
+  <p>
+    Industrial equilibrium is not about maximising one factor while ignoring
+    everything else. A condition that improves equilibrium yield may make
+    production too slow or expensive.
+  </p>
+
+  <ul>
+    <li>
+      <strong>Temperature:</strong> choose a compromise between equilibrium
+      yield and reaction rate.
+    </li>
+    <li>
+      <strong>Pressure:</strong> consider the yield benefit alongside equipment
+      costs and practical operating limits.
+    </li>
+    <li>
+      <strong>Catalyst:</strong> use it to increase reaction rates, not to shift
+      equilibrium.
+    </li>
+    <li>
+      <strong>Product removal:</strong> where practical, remove product to
+      encourage further formation.
+    </li>
+    <li>
+      <strong>Recycling:</strong> return suitable unreacted reactants to the
+      reactor to reduce waste.
+    </li>
+  </ul>
+
+  <h3>Worked Example 3: Correcting an industrial chemistry misconception</h3>
+
+  <p><strong>Question:</strong> A learner claims, "Adding more catalyst and lowering the temperature always increases the equilibrium yield of an exothermic industrial reaction." Evaluate the statement.</p>
+
+  <p><strong>Step 1: Evaluate the temperature claim.</strong></p>
+
+  <p>
+    Lowering temperature favours the exothermic forward direction, provided
+    the reaction is considered at equilibrium. It can therefore increase the
+    equilibrium yield of the forward product.
+  </p>
+
+  <p><strong>Step 2: Evaluate the rate consequence.</strong></p>
+
+  <p>
+    Lowering temperature generally reduces reaction rate. The yield advantage
+    may be outweighed by slow production.
+  </p>
+
+  <p><strong>Step 3: Evaluate the catalyst claim.</strong></p>
+
+  <p>
+    A catalyst increases the rates of both directions. It does not change
+    equilibrium composition at a fixed temperature.
+  </p>
+
+  <p><strong>Conclusion:</strong> The statement is incorrect. Lower temperature may favour the exothermic product at equilibrium, but can slow production. Adding a catalyst speeds up the attainment of equilibrium without increasing the equilibrium yield.</p>
+
+  <h3>6. How to answer industrial equilibrium exam questions</h3>
+
+  <p>
+    For a full explanation, identify the reversible equation and whether the
+    forward reaction is exothermic or endothermic. Count gaseous moles if
+    pressure is involved. Then distinguish equilibrium yield from reaction
+    rate and explain why the industrial conditions are practical compromises.
+  </p>
+
+  <p>
+    Never write that a catalyst shifts equilibrium or increases the equilibrium
+    yield. State that it speeds up the forward and reverse reactions and helps
+    equilibrium be reached faster.
+  </p>
+  `,
 
   [
     {
-      q: "Write the balanced equation for the Haber process.",
+      q: "Write the balanced equation for the Haber process and explain why increasing pressure favours ammonia formation.",
       steps: [
-        "Step 1: Identify nitrogen and hydrogen as the reactants.",
-        "Step 2: The product is ammonia.",
-        "Step 3: Balance nitrogen using 2NH₃.",
-        "Step 4: Balance hydrogen using 3H₂."
+        "Write the balanced equation: N₂(g) + 3H₂(g) ⇌ 2NH₃(g).",
+        "Count gaseous moles on the left: 1 + 3 = 4.",
+        "Count gaseous moles on the right: 2.",
+        "Increasing pressure favours the side with fewer gaseous moles."
       ],
-      ans: "N₂(g) + 3H₂(g) ⇌ 2NH₃(g)",
-      why: "The equation contains equal numbers of nitrogen and hydrogen atoms on both sides."
+      ans: "N₂(g) + 3H₂(g) ⇌ 2NH₃(g). Increasing pressure shifts equilibrium to the right because the product side has fewer gaseous moles.",
+      why: "The reactant side contains 4 gaseous moles and the product side contains 2."
     },
     {
-      q: "Why does high pressure favour ammonia production in the Haber process?",
+      q: "Why is a temperature around 450°C commonly used in the Haber process instead of a very low temperature?",
       steps: [
-        "Step 1: Count gaseous molecules on the reactant side: 4.",
-        "Step 2: Count gaseous molecules on the product side: 2.",
-        "Step 3: Increased pressure favours the side with fewer gas molecules."
+        "Identify the forward reaction as exothermic.",
+        "Recognise that lower temperature favours ammonia at equilibrium.",
+        "Recognise that a very low temperature produces a slow reaction rate.",
+        "Explain the need to balance yield and rate."
       ],
-      ans: "High pressure favours ammonia because the product side has fewer gaseous molecules.",
-      why: "The equilibrium shifts toward the side with fewer gas molecules when pressure is increased."
+      ans: "A temperature around 450°C is a compromise: it gives a useful reaction rate while retaining a reasonable equilibrium yield of ammonia.",
+      why: "The lowest temperature is not necessarily the most economical choice because the reaction may proceed too slowly."
     },
     {
-      q: "What catalyst is used in the Haber process?",
+      q: "State the role of the iron catalyst in the Haber process and explain whether it changes the equilibrium yield.",
       steps: [
-        "Step 1: Recall the industrial conditions for ammonia manufacture.",
-        "Step 2: Identify the catalyst used to increase reaction rate.",
-        "Step 3: The catalyst is iron."
+        "Identify iron as the catalyst.",
+        "Explain that a catalyst speeds up the forward reaction.",
+        "Explain that it also speeds up the reverse reaction.",
+        "State whether the equilibrium position changes."
       ],
-      ans: "Iron.",
-      why: "Iron increases the rate at which equilibrium is reached."
+      ans: "Iron speeds up both forward and reverse reactions, allowing equilibrium to be reached faster. It does not change the equilibrium position or equilibrium yield at a fixed temperature.",
+      why: "A catalyst changes reaction rates, not the equilibrium composition."
     }
   ],
 
   [
     {
-      q: "In the Haber process, why is a moderate temperature used instead of simply using a very low temperature?",
-      hint: "Think about the difference between equilibrium yield and reaction rate.",
+      q: "For the Haber process, a manager proposes lowering the temperature to increase ammonia yield. Explain both the benefit and the disadvantage.",
+      hint: "Use the exothermic nature of the forward reaction, then distinguish equilibrium yield from reaction rate.",
       steps: [
-        "Step 1: The forward reaction is exothermic, so lower temperature favours ammonia yield.",
-        "Step 2: Very low temperature makes the reaction too slow.",
-        "Step 3: A moderate temperature provides a practical compromise between rate and yield."
+        "The forward Haber reaction is exothermic.",
+        "Lower temperature favours the forward direction at equilibrium.",
+        "Lower temperature also slows the reaction rate.",
+        "Explain why industry must balance yield and production speed."
       ],
-      ans: "A moderate temperature provides a practical compromise between ammonia yield and reaction rate.",
-      why: "Lower temperature favours equilibrium yield but makes the reaction too slow for economical industrial production."
+      ans: "Lower temperature favours ammonia formation at equilibrium, but it slows the reaction. Industry therefore uses a compromise temperature that provides a practical rate and yield.",
+      why: "Maximising equilibrium yield alone may lead to an uneconomically slow production rate."
+    },
+    {
+      q: "In the Contact process, 2SO₂(g) + O₂(g) ⇌ 2SO₃(g), calculate the gaseous mole totals and predict the effect of increasing pressure.",
+      hint: "Add the gaseous coefficients on each side before applying Le Chatelier's principle.",
+      steps: [
+        "Left-hand total = 2 + 1 = 3 gaseous moles.",
+        "Right-hand total = 2 gaseous moles.",
+        "Increasing pressure favours the side with fewer gaseous moles.",
+        "Identify the product favoured by this shift."
+      ],
+      ans: "The totals are 3 on the left and 2 on the right. Increasing pressure shifts equilibrium to the right, favouring SO₃.",
+      why: "The product side contains fewer gaseous moles, although the practical benefit of very high pressure must be weighed against cost."
+    },
+    {
+      q: "Why is vanadium(V) oxide used in the Contact process, and why does it not increase the equilibrium yield of SO₃ at a fixed temperature?",
+      hint: "Separate the effect of a catalyst on reaction rate from its effect on equilibrium composition.",
+      steps: [
+        "Identify V₂O₅ as the catalyst.",
+        "State that it increases the rates of the forward and reverse reactions.",
+        "Explain that both reactions are accelerated.",
+        "Conclude whether the equilibrium position changes."
+      ],
+      ans: "V₂O₅ speeds up the forward and reverse reactions so equilibrium is reached faster. It does not increase the equilibrium yield of SO₃ at a fixed temperature.",
+      why: "A catalyst provides a faster route to equilibrium but does not favour one direction over the other."
+    },
+    {
+      q: "A student argues that the Contact process should operate at the lowest possible temperature because its forward reaction is exothermic. Explain why this is not the complete industrial answer.",
+      hint: "Think about what happens to the reaction rate as temperature decreases.",
+      steps: [
+        "An exothermic forward reaction is favoured by lower temperature at equilibrium.",
+        "A lower temperature generally reduces the reaction rate.",
+        "Very slow production is undesirable in an industrial plant.",
+        "State the compromise used in practice."
+      ],
+      ans: "Lower temperature improves the equilibrium tendency towards SO₃ but slows production. A compromise temperature, commonly taught as around 450°C, balances yield and rate.",
+      why: "Industrial decisions must account for both equilibrium composition and production rate."
+    },
+    {
+      q: "Compare the pressure effect in the Haber process and Contact process. Explain why increasing pressure favours the desired product in both.",
+      hint: "Compare the gaseous mole totals on the reactant and product sides of each balanced equation.",
+      steps: [
+        "For Haber, count 4 gaseous moles on the left and 2 on the right.",
+        "For Contact, count 3 gaseous moles on the left and 2 on the right.",
+        "In both processes, the product side has fewer gaseous moles.",
+        "Apply the rule for increasing pressure to both reactions."
+      ],
+      ans: "Increasing pressure favours ammonia in the Haber process and sulfur trioxide in the Contact process because each product side has fewer gaseous moles than its reactant side.",
+      why: "Both equilibria shift towards the side with fewer gaseous particles when pressure increases at constant temperature."
+    },
+    {
+      q: "A factory removes ammonia as it forms in the Haber process. Explain how this can increase further ammonia production, and distinguish this from the effect of a catalyst.",
+      hint: "Removing a product and adding a catalyst are two different disturbances; explain what each changes.",
+      steps: [
+        "Removing ammonia lowers the amount of product in the reacting system.",
+        "The equilibrium responds by favouring the forward reaction to replace some of the removed ammonia.",
+        "A catalyst speeds up both forward and reverse reactions.",
+        "State which action shifts equilibrium and which action only speeds up attainment of equilibrium."
+      ],
+      ans: "Removing ammonia shifts equilibrium towards the products, encouraging further ammonia formation. A catalyst speeds up both reaction directions and helps equilibrium be reached faster but does not shift the equilibrium position.",
+      why: "Product removal changes the system's composition; a catalyst changes reaction rates rather than equilibrium composition."
     }
   ]
 );
+
 // =====================================================
 // BATCH 23 — METALLIC BONDING
 // Screens 235–237
 // =====================================================
-
-
 // -----------------------------------------------------
 // SCREEN 235 — METALLIC BONDING
 // -----------------------------------------------------
@@ -38872,138 +46847,761 @@ add(
     }
   ]
 );
+//=======================================
+//Chemical energy
+//=======================================
+
 add(
   "chemistry",
   "chemical_energetics",
   "Breaking Bonds",
-  `<h2>Breaking Bonds</h2>
 
-  <p>When a chemical bond is broken, <strong>energy is absorbed</strong> from the surroundings.</p>
+  `
+  <h2>Breaking Bonds</h2>
 
-  <p>The energy required to break one mole of a particular bond is called its <strong>bond energy</strong>.</p>
+  <h3>1. What is a chemical bond?</h3>
 
-  <p>For example, breaking an H–H bond requires energy:</p>
+  <p>
+    A chemical bond is an attractive interaction that holds atoms or ions
+    together in a substance. In a covalent molecule such as hydrogen, H₂,
+    the two hydrogen atoms are held together by a covalent bond formed from
+    a shared pair of electrons.
+  </p>
 
-  <p><strong>H<sub>2</sub> → 2H</strong></p>
+  <p>
+    Chemical reactions involve changes in the bonds between atoms. Some
+    existing bonds must be broken, and new bonds may form as products are
+    produced.
+  </p>
 
-  <p>The process requires energy because the attraction holding the atoms together must be overcome.</p>
+  <h3>2. Why does breaking a bond require energy?</h3>
 
-  <h3>Key rule</h3>
-  <p><strong>Breaking bonds always absorbs energy.</strong></p>
+  <p>
+    Atoms in a chemical bond attract one another. To separate the bonded
+    atoms, energy must be supplied to overcome the attractive interaction
+    that holds them together.
+  </p>
 
-  <p>The stronger the bond, the more energy is generally required to break it.</p>`,
+  <p>
+    Therefore, <strong>breaking a chemical bond always absorbs energy</strong>.
+    The energy enters the particles being separated. Bond breaking is
+    consequently an endothermic process when considered on its own.
+  </p>
+
+  <p>
+    Consider a hydrogen molecule:
+  </p>
+
+  <p><strong>H₂(g) → 2H(g)</strong></p>
+
+  <p>
+    One hydrogen molecule contains one H–H bond. Energy must be supplied
+    to separate its two bonded hydrogen atoms. The atoms on the right are
+    separate gaseous atoms, not hydrogen molecules.
+  </p>
+
+  <h3>3. What is bond energy?</h3>
+
+  <p>
+    Bond energy is the energy required to break a specified type of chemical
+    bond. In school-level bond-energy calculations, values are commonly
+    expressed in kilojoules per mole (kJ/mol).
+  </p>
+
+  <p>
+    For gaseous covalent substances, a bond enthalpy is commonly defined as
+    the enthalpy change required to break one mole of a specified type of
+    bond in gaseous molecules. Tabulated values are often average bond
+    enthalpies because the energy needed to break a particular type of bond
+    can depend on the molecule in which it occurs.
+  </p>
+
+  <p>
+    For example, a bond energy of 436 kJ/mol for H–H means that approximately
+    436 kJ is required to break one mole of H–H bonds in gaseous hydrogen
+    molecules under the stated convention.
+  </p>
+
+  <p>
+    The unit is important: kJ/mol describes energy per mole of bonds, not
+    the energy required to break just one bond or an entire mole of an
+    unspecified substance.
+  </p>
+
+  <h3>4. Bond energy and the strength of a bond</h3>
+
+  <p>
+    Bond energy provides a way to compare how much energy is required to
+    break bonds. Under comparable conditions, a bond with a higher bond
+    energy generally requires more energy to break than a bond with a
+    lower bond energy.
+  </p>
+
+  <p>
+    For example, if bond A has a bond energy of 350 kJ/mol and bond B has
+    a bond energy of 600 kJ/mol, breaking one mole of bond B requires
+    250 kJ more energy than breaking one mole of bond A.
+  </p>
+
+  <p>
+    Do not assume that every bond between two different atoms has the same
+    energy. Bond energies depend on the types of atoms, the bonding
+    environment and the particular molecule.
+  </p>
+
+  <h3>5. Calculating the energy needed to break bonds</h3>
+
+  <p>
+    When the energy needed to break one mole of a specified bond is known,
+    the energy required for a given amount of those bonds can be calculated
+    using:
+  </p>
+
+  <p><strong>Total energy absorbed = number of moles of bonds × bond energy</strong></p>
+
+  <p>
+    In symbols:
+  </p>
+
+  <p><strong>E = n × BE</strong></p>
+
+  <ul>
+    <li><strong>E</strong> = total energy absorbed, in kJ.</li>
+    <li><strong>n</strong> = amount of bonds broken, in mol.</li>
+    <li><strong>BE</strong> = bond energy, in kJ/mol.</li>
+  </ul>
+
+  <p>
+    The number of moles in this formula refers to moles of the particular
+    bonds being broken. If a molecule contains several bonds of the same
+    type, every bond must be counted.
+  </p>
+
+  <h3>Worked Example 1: Understanding bond breaking</h3>
+
+  <p><strong>Question:</strong> Explain why energy is absorbed when a hydrogen molecule breaks down into hydrogen atoms.</p>
+
+  <p><strong>Step 1: Identify the bond.</strong></p>
+
+  <p>
+    A hydrogen molecule, H₂, contains one covalent H–H bond.
+  </p>
+
+  <p><strong>Step 2: Identify what must happen.</strong></p>
+
+  <p>
+    The two bonded hydrogen atoms must be separated. Energy must be supplied
+    to overcome the attraction associated with the bond.
+  </p>
+
+  <p><strong>Step 3: State the energy change.</strong></p>
+
+  <p>
+    The process is:
+  </p>
+
+  <p><strong>H₂(g) → 2H(g)</strong></p>
+
+  <p>
+    Energy is absorbed, so breaking the H–H bond is endothermic.
+  </p>
+
+  <p><strong>Answer:</strong> Energy is absorbed because energy must be supplied to separate the bonded hydrogen atoms.</p>
+
+  <h3>Worked Example 2: Calculating energy for several moles of bonds</h3>
+
+  <p>
+    <strong>Question:</strong> An H–H bond has a bond energy of 436 kJ/mol.
+    Calculate the energy required to break 3 mol of H–H bonds.
+  </p>
+
+  <p><strong>Step 1: Write the known values.</strong></p>
+
+  <ul>
+    <li>Bond energy = 436 kJ/mol</li>
+    <li>Amount of bonds = 3 mol</li>
+  </ul>
+
+  <p><strong>Step 2: Write the formula.</strong></p>
+
+  <p><strong>E = n × BE</strong></p>
+
+  <p><strong>Step 3: Substitute the values.</strong></p>
+
+  <p><strong>E = 3 × 436</strong></p>
+
+  <p><strong>Step 4: Calculate and include the unit.</strong></p>
+
+  <p><strong>E = 1308 kJ</strong></p>
+
+  <p>
+    <strong>Answer:</strong> 1308 kJ of energy is absorbed to break 3 mol
+    of H–H bonds.
+  </p>
+
+  <h3>Worked Example 3: Correcting a bond-energy misconception</h3>
+
+  <p>
+    <strong>Question:</strong> A learner claims that a bond with an energy
+    of 600 kJ/mol releases 600 kJ when it is broken. Explain the error.
+  </p>
+
+  <p><strong>Step 1: Interpret the unit.</strong></p>
+
+  <p>
+    The value 600 kJ/mol represents the energy required to break one mole
+    of the specified bonds.
+  </p>
+
+  <p><strong>Step 2: Identify the direction of energy transfer.</strong></p>
+
+  <p>
+    Breaking bonds requires an energy input. Therefore, energy is absorbed,
+    not released.
+  </p>
+
+  <p><strong>Step 3: State the correct interpretation.</strong></p>
+
+  <p>
+    Breaking one mole of these bonds absorbs 600 kJ. Forming the corresponding
+    bonds releases approximately the same amount under the same bond-energy
+    convention.
+  </p>
+
+  <p>
+    <strong>Answer:</strong> The learner has reversed the direction of energy
+    transfer. Bond breaking absorbs energy; bond formation releases energy.
+  </p>
+
+  <h3>6. Common mistakes to avoid</h3>
+
+  <ul>
+    <li>
+      <strong>Wrong:</strong> Breaking a bond releases energy.
+      <strong>Correct:</strong> Breaking a bond absorbs energy.
+    </li>
+    <li>
+      <strong>Wrong:</strong> 436 kJ/mol means breaking any amount of H–H
+      bonds always requires 436 kJ.
+      <strong>Correct:</strong> 436 kJ is required per mole of the specified
+      bonds; scale the value according to the amount broken.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Bond energy is the energy change of the whole
+      chemical reaction.
+      <strong>Correct:</strong> Bond energy describes a specified bond.
+      A reaction's overall energy change depends on both bonds broken and
+      bonds formed.
+    </li>
+    <li>
+      <strong>Wrong:</strong> The coefficient of a molecule automatically
+      gives the number of every type of bond without inspecting its formula.
+      <strong>Correct:</strong> Count the actual bonds present in each
+      molecule before calculating total energy.
+    </li>
+  </ul>
+
+  <h3>7. The essential rule</h3>
+
+  <p>
+    <strong>Breaking bonds absorbs energy.</strong> The stronger the bond
+    in terms of bond energy, the more energy is generally required to break
+    one mole of those bonds. This rule is essential for understanding how
+    to calculate the energy changes of chemical reactions.
+  </p>
+  `,
+
   [
     {
-      q: "What happens to energy when a chemical bond is broken?",
+      q: "Explain why breaking a covalent bond requires energy.",
       steps: [
-        "Step 1: A chemical bond holds atoms together.",
-        "Step 2: Energy must be supplied to overcome the attraction between the bonded atoms.",
-        "Step 3: Therefore, breaking a bond absorbs energy."
+        "A covalent bond holds atoms together through an attractive interaction.",
+        "The bonded atoms must be separated when the bond breaks.",
+        "Energy must be supplied to overcome the interaction holding them together.",
+        "Therefore, bond breaking absorbs energy."
       ],
-      ans: "Energy is absorbed when a chemical bond is broken.",
-      why: "Energy is required to overcome the forces holding the bonded atoms together."
+      ans: "Breaking a covalent bond absorbs energy because energy must be supplied to separate the bonded atoms.",
+      why: "The energy input is needed to overcome the attractive interaction associated with the bond."
     },
     {
-      q: "A bond has a bond energy of 436 kJ/mol. What does this value mean?",
+      q: "An H–H bond has a bond energy of 436 kJ/mol. What does this value mean?",
       steps: [
-        "Step 1: The unit is kJ/mol.",
-        "Step 2: Bond energy tells us the energy required to break one mole of the specified bonds.",
-        "Step 3: Therefore, 436 kJ is required to break one mole of these bonds."
+        "Identify the unit: kJ/mol means kilojoules per mole.",
+        "Identify the specified bond: H–H.",
+        "Interpret the value as the energy required to break one mole of H–H bonds in gaseous hydrogen molecules."
       ],
-      ans: "436 kJ of energy is required to break one mole of the specified bonds.",
-      why: "Bond energy is the energy required to break one mole of a particular type of bond."
+      ans: "Approximately 436 kJ is required to break one mole of H–H bonds in gaseous hydrogen molecules.",
+      why: "Bond energy is expressed per mole of the specified bonds, rather than per entire reaction."
     },
     {
-      q: "Which requires more energy to break: a bond with an energy of 350 kJ/mol or one with an energy of 600 kJ/mol?",
+      q: "Bond A has a bond energy of 350 kJ/mol and bond B has a bond energy of 600 kJ/mol. Which requires more energy to break one mole of bonds, and by how much?",
       steps: [
-        "Step 1: Compare the two bond energies.",
-        "Step 2: 600 kJ/mol is greater than 350 kJ/mol.",
-        "Step 3: Therefore, more energy is required to break the 600 kJ/mol bond."
+        "Compare the two bond energies: 600 kJ/mol and 350 kJ/mol.",
+        "Bond B has the higher bond energy.",
+        "Calculate the difference: 600 − 350 = 250 kJ/mol."
       ],
-      ans: "The 600 kJ/mol bond requires more energy to break.",
-      why: "A larger bond energy means more energy is required to break the bond."
+      ans: "Bond B requires 250 kJ more energy per mole of bonds.",
+      why: "The higher bond energy indicates that more energy is required to break the specified bonds."
     }
   ],
+
   [
     {
-      q: "A chemical bond has a bond energy of 410 kJ/mol. How much energy is needed to break 2 mol of these bonds?",
-      hint: "Multiply the bond energy by the number of moles of bonds.",
+      q: "Calculate the energy required to break 2 mol of bonds if the bond energy is 410 kJ/mol.",
+      hint: "Multiply the amount of bonds by the bond energy.",
       steps: [
-        "Step 1: Bond energy = 410 kJ/mol.",
-        "Step 2: Number of moles of bonds = 2 mol.",
-        "Step 3: Energy required = 410 × 2.",
-        "Step 4: Energy required = 820 kJ."
+        "Write the formula: E = n × BE.",
+        "Substitute: E = 2 × 410.",
+        "Calculate: E = 820 kJ.",
+        "State the direction of energy transfer."
       ],
-      ans: "820 kJ.",
-      why: "Breaking 2 mol of bonds requires twice the energy needed to break 1 mol."
+      ans: "820 kJ is absorbed.",
+      why: "Each mole requires 410 kJ, so breaking 2 mol requires 2 × 410 = 820 kJ."
+    },
+    {
+      q: "A learner says that a bond energy of 520 kJ/mol means 520 kJ is needed to break one bond. Correct the statement.",
+      hint: "Pay attention to the words represented by the unit kJ/mol.",
+      steps: [
+        "Recognise that kJ/mol means energy per mole.",
+        "Identify the specified quantity as one mole of bonds.",
+        "Explain that the value is not the energy for a single bond."
+      ],
+      ans: "520 kJ is required to break one mole of the specified bonds, not one individual bond.",
+      why: "The denominator mol indicates that the energy value applies to a mole of bonds."
+    },
+    {
+      q: "Calculate the energy required to break 0.5 mol of bonds with a bond energy of 600 kJ/mol.",
+      hint: "Use E = n × BE, remembering that 0.5 mol is half a mole.",
+      steps: [
+        "Bond energy = 600 kJ/mol.",
+        "Amount of bonds = 0.5 mol.",
+        "Energy = 0.5 × 600.",
+        "Energy = 300 kJ."
+      ],
+      ans: "300 kJ is absorbed.",
+      why: "Half a mole requires half the energy needed to break one mole of the same bonds."
+    },
+    {
+      q: "A reaction step requires 720 kJ to break 2 mol of identical bonds. Calculate the bond energy per mole.",
+      hint: "Rearrange E = n × BE to make BE the subject.",
+      steps: [
+        "Write E = n × BE.",
+        "Rearrange: BE = E ÷ n.",
+        "Substitute: BE = 720 ÷ 2.",
+        "Calculate: BE = 360 kJ/mol."
+      ],
+      ans: "360 kJ/mol.",
+      why: "The total energy is divided by the number of moles of bonds to obtain energy per mole."
+    },
+    {
+      q: "A learner claims that breaking a stronger bond releases more energy because the bond contains more energy. Explain why the claim is incorrect.",
+      hint: "Focus on the energy transfer required to separate bonded atoms.",
+      steps: [
+        "A higher bond energy means more energy is required to break the bond.",
+        "Breaking a bond requires energy to be supplied.",
+        "Therefore, breaking a stronger bond absorbs more energy rather than releasing it."
+      ],
+      ans: "The claim is incorrect. Breaking a bond absorbs energy; a higher bond energy means more energy must be supplied to break the bond.",
+      why: "Bond energy describes the energy required for bond breaking, not energy released during bond breaking."
+    },
+    {
+      q: "How much energy is required to break 4 mol of bonds if breaking 1 mol requires 275 kJ? Show your calculation and state whether energy is absorbed or released.",
+      hint: "Multiply 275 kJ/mol by 4 mol and identify the direction of energy transfer.",
+      steps: [
+        "Bond energy = 275 kJ/mol.",
+        "Amount of bonds = 4 mol.",
+        "Energy = 4 × 275.",
+        "Energy = 1100 kJ.",
+        "Bond breaking absorbs energy."
+      ],
+      ans: "1100 kJ is absorbed.",
+      why: "Four moles require four times the energy required for one mole of the same bonds."
     }
   ]
 );
+
 
 add(
   "chemistry",
   "chemical_energetics",
   "Making Bonds",
-  `<h2>Making Bonds</h2>
 
-  <p>When new chemical bonds are formed, <strong>energy is released</strong> to the surroundings.</p>
+  `
+  <h2>Making Bonds</h2>
 
-  <p>The amount of energy released depends on the bonds being formed.</p>
+  <h3>1. What happens when a chemical bond forms?</h3>
 
-  <p>For example, when hydrogen atoms form hydrogen molecules:</p>
+  <p>
+    A chemical bond is an attractive interaction that holds atoms or ions
+    together. When separate atoms form a stable chemical bond, the resulting
+    bonded arrangement has a lower energy than the separated atoms, under
+    the same conditions.
+  </p>
 
-  <p><strong>2H → H<sub>2</sub></strong></p>
+  <p>
+    The excess energy is transferred to the surroundings. Therefore,
+    <strong>forming a chemical bond releases energy</strong>.
+  </p>
 
-  <p>Energy is released as the new H–H bond forms.</p>
+  <p>
+    Consider the formation of a hydrogen molecule:
+  </p>
 
-  <h3>Key rule</h3>
-  <p><strong>Making bonds always releases energy.</strong></p>
+  <p><strong>2H(g) → H₂(g)</strong></p>
 
-  <p>Strong bonds generally release more energy when they are formed than weaker bonds of the same type.</p>`,
+  <p>
+    Two separate gaseous hydrogen atoms combine to form one hydrogen molecule.
+    As the H–H bond forms, energy is released.
+  </p>
+
+  <h3>2. Why does bond formation release energy?</h3>
+
+  <p>
+    When atoms interact, attractive and repulsive forces act between their
+    nuclei and electrons. At a stable bond length, the bonded arrangement
+    has a lower energy than the separated atoms.
+  </p>
+
+  <p>
+    The difference in energy is released when the bond forms. Conversely,
+    energy must be supplied to separate the atoms again. This is why bond
+    formation and bond breaking have opposite energy changes.
+  </p>
+
+  <ul>
+    <li><strong>Breaking a bond:</strong> energy is absorbed.</li>
+    <li><strong>Forming a bond:</strong> energy is released.</li>
+  </ul>
+
+  <h3>3. Understanding bond energy during formation</h3>
+
+  <p>
+    Bond energy is conventionally described as the energy required to break
+    a specified bond. The corresponding bond-formation process releases
+    approximately the same magnitude of energy when the same gaseous species
+    and bond-energy convention are considered.
+  </p>
+
+  <p>
+    For example, if the H–H bond energy is taken as 436 kJ/mol, forming
+    one mole of H–H bonds from gaseous hydrogen atoms releases approximately
+    436 kJ.
+  </p>
+
+  <p>
+    The direction matters. The magnitude is 436 kJ/mol, but the energy
+    transfer is in the opposite direction:
+  </p>
+
+  <ul>
+    <li>Breaking H–H bonds absorbs energy.</li>
+    <li>Forming H–H bonds releases energy.</li>
+  </ul>
+
+  <h3>4. Calculating energy released when bonds form</h3>
+
+  <p>
+    If the energy released when one mole of a specified bond forms is known,
+    calculate the total energy released using:
+  </p>
+
+  <p><strong>Total energy released = number of moles of bonds formed × bond energy</strong></p>
+
+  <p><strong>E = n × BE</strong></p>
+
+  <ul>
+    <li><strong>E</strong> = total energy released, in kJ.</li>
+    <li><strong>n</strong> = amount of bonds formed, in mol.</li>
+    <li><strong>BE</strong> = bond energy, in kJ/mol.</li>
+  </ul>
+
+  <p>
+    This calculation assumes the specified bond-energy value applies to the
+    bond being formed. In a chemical reaction, the total energy released
+    must be found by counting all the bonds formed.
+  </p>
+
+  <h3>Worked Example 1: Understanding bond formation</h3>
+
+  <p>
+    <strong>Question:</strong> Explain what happens to energy when two
+    gaseous hydrogen atoms form a hydrogen molecule.
+  </p>
+
+  <p><strong>Step 1: Identify the particles.</strong></p>
+
+  <p>
+    The reactants are two separate hydrogen atoms, represented as 2H(g).
+  </p>
+
+  <p><strong>Step 2: Identify the change.</strong></p>
+
+  <p>
+    The atoms come together and form an H–H covalent bond:
+  </p>
+
+  <p><strong>2H(g) → H₂(g)</strong></p>
+
+  <p><strong>Step 3: Determine the direction of energy transfer.</strong></p>
+
+  <p>
+    The bonded molecule has a lower energy than the separated atoms.
+    The energy difference is released to the surroundings.
+  </p>
+
+  <p><strong>Answer:</strong> Energy is released as the H–H bond forms.</p>
+
+  <h3>Worked Example 2: Calculating energy released</h3>
+
+  <p>
+    <strong>Question:</strong> Forming one mole of a specified type of bond
+    releases 250 kJ. Calculate the energy released when 3 mol of these bonds
+    form.
+  </p>
+
+  <p><strong>Step 1: Write the known values.</strong></p>
+
+  <ul>
+    <li>Energy released per mole = 250 kJ/mol</li>
+    <li>Amount of bonds formed = 3 mol</li>
+  </ul>
+
+  <p><strong>Step 2: Write the formula.</strong></p>
+
+  <p><strong>E = n × BE</strong></p>
+
+  <p><strong>Step 3: Substitute the values.</strong></p>
+
+  <p><strong>E = 3 × 250</strong></p>
+
+  <p><strong>Step 4: Calculate.</strong></p>
+
+  <p><strong>E = 750 kJ</strong></p>
+
+  <p>
+    <strong>Answer:</strong> 750 kJ is released when 3 mol of these bonds form.
+  </p>
+
+  <h3>Worked Example 3: Correcting a misconception about bond energy</h3>
+
+  <p>
+    <strong>Question:</strong> A learner states that because breaking one
+    mole of H–H bonds absorbs 436 kJ, forming one mole of H–H bonds must
+    also absorb 436 kJ. Explain the error.
+  </p>
+
+  <p><strong>Step 1: Recall what bond energy represents.</strong></p>
+
+  <p>
+    The value 436 kJ/mol describes the energy required to break one mole
+    of H–H bonds in gaseous hydrogen molecules.
+  </p>
+
+  <p><strong>Step 2: Reverse the process.</strong></p>
+
+  <p>
+    Formation is the reverse of breaking for the same specified bond and
+    corresponding gaseous states.
+  </p>
+
+  <p><strong>Step 3: Reverse the direction of energy transfer.</strong></p>
+
+  <p>
+    If breaking the bonds absorbs approximately 436 kJ/mol, forming those
+    bonds releases approximately 436 kJ/mol.
+  </p>
+
+  <p>
+    <strong>Answer:</strong> The learner has the direction of energy transfer
+    wrong. Bond formation releases energy rather than absorbing it.
+  </p>
+
+  <h3>5. Strong bonds and energy released</h3>
+
+  <p>
+    Under comparable conditions, forming a bond with a higher bond energy
+    releases more energy per mole than forming a bond with a lower bond
+    energy, when the corresponding bond-energy values are applicable.
+  </p>
+
+  <p>
+    For example, forming one mole of bonds with a bond energy of 600 kJ/mol
+    releases approximately 250 kJ more than forming one mole of bonds with
+    a bond energy of 350 kJ/mol.
+  </p>
+
+  <p>
+    Remember that this comparison is about the energy change associated
+    with the specified bonds. The overall energy change of a chemical
+    reaction depends on both the bonds broken and the bonds formed.
+  </p>
+
+  <h3>6. Why bond formation matters in chemical reactions</h3>
+
+  <p>
+    Most chemical reactions involve breaking bonds in reactants and forming
+    bonds in products. Breaking the reactant bonds absorbs energy, while
+    forming the product bonds releases energy.
+  </p>
+
+  <p>
+    If bond formation releases more energy than bond breaking absorbs, the
+    reaction has a net release of energy and is exothermic. If bond breaking
+    absorbs more energy than bond formation releases, the reaction has a
+    net absorption of energy and is endothermic.
+  </p>
+
+  <p>
+    The energy released by forming bonds must therefore be considered
+    alongside the energy absorbed by breaking bonds. Looking at bond
+    formation alone does not determine the energy change of the whole
+    reaction.
+  </p>
+
+  <h3>7. Common mistakes to avoid</h3>
+
+  <ul>
+    <li>
+      <strong>Wrong:</strong> Forming bonds absorbs energy.
+      <strong>Correct:</strong> Forming bonds releases energy.
+    </li>
+    <li>
+      <strong>Wrong:</strong> A bond energy is always energy released.
+      <strong>Correct:</strong> Bond energy is conventionally the energy
+      required to break a specified bond.
+    </li>
+    <li>
+      <strong>Wrong:</strong> If bonds form in a reaction, the whole reaction
+      must be exothermic.
+      <strong>Correct:</strong> The reaction's overall energy change depends
+      on the energy absorbed breaking bonds and released forming bonds.
+    </li>
+    <li>
+      <strong>Wrong:</strong> The number of moles of molecules always equals
+      the number of moles of bonds formed.
+      <strong>Correct:</strong> Count the number of relevant bonds in each
+      molecule and multiply by the amount of molecules.
+    </li>
+  </ul>
+
+  <h3>8. The essential rule</h3>
+
+  <p>
+    <strong>Making bonds releases energy.</strong> The released energy is
+    associated with the formation of a lower-energy bonded arrangement.
+    To determine whether an entire reaction releases or absorbs energy,
+    compare the energy released by all bonds formed with the energy absorbed
+    by all bonds broken.
+  </p>
+  `,
+
   [
     {
-      q: "What happens to energy when a chemical bond is formed?",
+      q: "What happens to energy when two separate hydrogen atoms form an H–H bond?",
       steps: [
-        "Step 1: Separate atoms come together.",
-        "Step 2: A chemical bond forms between them.",
-        "Step 3: Energy is released as the new bond forms."
+        "Two separate gaseous hydrogen atoms approach one another.",
+        "An H–H covalent bond forms.",
+        "The bonded molecule has a lower energy than the separated atoms.",
+        "The energy difference is released to the surroundings."
       ],
-      ans: "Energy is released when a chemical bond is formed.",
-      why: "Bond formation releases energy as the bonded system becomes more stable."
+      ans: "Energy is released when the H–H bond forms.",
+      why: "Bond formation produces a lower-energy bonded arrangement, releasing the energy difference."
     },
     {
-      q: "A bond has a bond energy of 500 kJ/mol. What happens to energy when 1 mol of these bonds is formed?",
+      q: "A specified bond has a bond energy of 500 kJ/mol. Approximately how much energy is released when 1 mol of these bonds forms?",
       steps: [
-        "Step 1: Bond energy = 500 kJ/mol.",
-        "Step 2: Bond formation releases energy.",
-        "Step 3: Therefore, forming 1 mol of these bonds releases 500 kJ."
+        "Bond energy = 500 kJ/mol.",
+        "Amount of bonds formed = 1 mol.",
+        "Energy released = 1 × 500.",
+        "Energy released = 500 kJ."
       ],
-      ans: "500 kJ of energy is released.",
-      why: "The bond energy represents the energy associated with breaking the bond, and the same amount is released when the bond is formed."
+      ans: "Approximately 500 kJ is released.",
+      why: "For the corresponding bond-formation process, the magnitude of the energy released is approximately equal to the bond energy."
     },
     {
-      q: "Why does forming a chemical bond release energy?",
+      q: "Explain why the energy change associated with forming a bond is opposite in direction to that associated with breaking the same bond.",
       steps: [
-        "Step 1: Atoms interact through attractive forces.",
-        "Step 2: Formation of the bond produces a more stable bonded arrangement.",
-        "Step 3: The excess energy is released to the surroundings."
+        "Breaking a bond requires energy to separate the bonded atoms.",
+        "Forming the corresponding bond brings the atoms into a lower-energy bonded arrangement.",
+        "The energy absorbed during breaking is therefore released during the reverse formation process, for the same corresponding states."
       ],
-      ans: "Bond formation releases energy because the atoms form a more stable bonded arrangement.",
-      why: "The formation of the bond lowers the energy of the bonded system, releasing energy."
+      ans: "Bond breaking absorbs energy, while the corresponding bond formation releases energy.",
+      why: "The two processes are opposite changes between the separated and bonded arrangements."
     }
   ],
+
   [
     {
-      q: "A reaction forms 3 mol of bonds, each with a bond energy of 250 kJ/mol. How much energy is released?",
-      hint: "Multiply the energy per mole by the number of moles of bonds formed.",
+      q: "Forming 4 mol of a specified type of bond releases 300 kJ/mol. Calculate the total energy released.",
+      hint: "Multiply the amount of bonds formed by the energy released per mole.",
       steps: [
-        "Step 1: Bond energy = 250 kJ/mol.",
-        "Step 2: Number of moles formed = 3 mol.",
-        "Step 3: Energy released = 250 × 3.",
-        "Step 4: Energy released = 750 kJ."
+        "Amount of bonds formed = 4 mol.",
+        "Energy released per mole = 300 kJ/mol.",
+        "Total energy released = 4 × 300.",
+        "Total energy released = 1200 kJ."
       ],
-      ans: "750 kJ.",
-      why: "Each mole releases 250 kJ, so 3 mol release 750 kJ."
+      ans: "1200 kJ is released.",
+      why: "Each mole releases 300 kJ, so four moles release 4 × 300 = 1200 kJ."
+    },
+    {
+      q: "A learner says, 'A bond energy of 420 kJ/mol means that forming one mole of the bonds absorbs 420 kJ.' Correct the statement.",
+      hint: "Distinguish the direction of energy transfer during bond breaking from that during bond formation.",
+      steps: [
+        "Bond energy conventionally represents the energy required to break a specified bond.",
+        "Breaking one mole of these bonds absorbs approximately 420 kJ.",
+        "Forming the corresponding bonds reverses the process.",
+        "Therefore, forming one mole releases approximately 420 kJ."
+      ],
+      ans: "Forming one mole of the specified bonds releases approximately 420 kJ; it does not absorb that energy.",
+      why: "Bond formation releases energy because the bonded arrangement has a lower energy than the separated atoms."
+    },
+    {
+      q: "Bond A has a bond energy of 350 kJ/mol and bond B has a bond energy of 600 kJ/mol. Which releases more energy per mole when formed, and what is the difference?",
+      hint: "For corresponding bond-formation processes, compare the magnitudes of the bond energies.",
+      steps: [
+        "Bond A releases approximately 350 kJ/mol when formed.",
+        "Bond B releases approximately 600 kJ/mol when formed.",
+        "Difference = 600 − 350.",
+        "Difference = 250 kJ/mol."
+      ],
+      ans: "Bond B releases approximately 250 kJ/mol more energy when formed.",
+      why: "The higher bond energy corresponds to a greater energy release when the corresponding bonds form."
+    },
+    {
+      q: "A reaction forms 2 mol of a specified bond, releasing 180 kJ/mol. Calculate the total energy released and explain why the result is positive as an amount of energy released.",
+      hint: "Calculate the magnitude first, then state the direction of energy transfer.",
+      steps: [
+        "Amount of bonds formed = 2 mol.",
+        "Energy released per mole = 180 kJ/mol.",
+        "Total released = 2 × 180 = 360 kJ.",
+        "State that the energy leaves the reacting system and is transferred to the surroundings."
+      ],
+      ans: "360 kJ is released to the surroundings.",
+      why: "The calculated amount is the magnitude of the energy released. If expressed as the enthalpy change of the bond-formation process, the sign would be negative for the corresponding states."
+    },
+    {
+      q: "A learner claims that because a reaction forms new bonds, the reaction must release energy overall. Explain why this conclusion is not justified.",
+      hint: "Consider the energy required to break reactant bonds as well as the energy released when product bonds form.",
+      steps: [
+        "Breaking bonds in the reactants absorbs energy.",
+        "Forming bonds in the products releases energy.",
+        "Compare the total energy absorbed with the total energy released.",
+        "The overall result depends on which total is greater."
+      ],
+      ans: "The conclusion is not justified. The reaction is exothermic only if bond formation releases more energy than bond breaking absorbs; otherwise, it is endothermic.",
+      why: "Most reactions involve both bond breaking and bond formation, so the overall energy change depends on their balance."
+    },
+    {
+      q: "Forming 0.5 mol of a specified bond releases 720 kJ per mole of bonds formed. Calculate the energy released and state what happens if the same amount of bonds is broken instead.",
+      hint: "First calculate 0.5 × 720. Then reverse the direction of energy transfer for bond breaking.",
+      steps: [
+        "Energy released = amount of bonds × energy per mole.",
+        "Energy released = 0.5 × 720 = 360 kJ.",
+        "Bond formation releases 360 kJ.",
+        "Breaking the same amount of corresponding bonds requires 360 kJ to be absorbed, under the same convention."
+      ],
+      ans: "Forming 0.5 mol releases 360 kJ. Breaking the same amount of corresponding bonds absorbs approximately 360 kJ.",
+      why: "The corresponding bond-formation and bond-breaking processes have opposite energy-transfer directions."
     }
   ]
 );
@@ -39012,171 +47610,832 @@ add(
   "chemistry",
   "chemical_energetics",
   "Bond Energy Calculations",
-  `<h2>Bond Energy Calculations</h2>
 
-  <p>The energy change of a reaction can be estimated from the bond energies of the bonds broken and the bonds formed.</p>
+  `
+  <h2>Bond Energy Calculations</h2>
 
-  <p>The relationship is:</p>
+  <h3>1. What is the energy change of a chemical reaction?</h3>
 
-  <p><strong>Energy change = Energy absorbed breaking bonds − Energy released forming bonds</strong></p>
+  <p>
+    During a chemical reaction, bonds in the reactants are broken and new
+    bonds form in the products. Breaking bonds absorbs energy, while forming
+    bonds releases energy.
+  </p>
 
-  <p>Therefore:</p>
+  <p>
+    The overall enthalpy change, ΔH, depends on the difference between
+    the energy absorbed during bond breaking and the energy released
+    during bond formation.
+  </p>
 
-  <p><strong>ΔH = Σ(bond energies of bonds broken) − Σ(bond energies of bonds formed)</strong></p>
+  <p><strong>ΔH = total bond energy of bonds broken − total bond energy of bonds formed</strong></p>
 
-  <h3>Interpreting the answer</h3>
+  <p>
+    Using the summation symbol:
+  </p>
 
-  <p>If ΔH is negative, the reaction is <strong>exothermic</strong>.</p>
+  <p><strong>ΔH ≈ ΣBE(bonds broken) − ΣBE(bonds formed)</strong></p>
 
-  <p>If ΔH is positive, the reaction is <strong>endothermic</strong>.</p>
+  <p>
+    This method gives an estimate when average bond enthalpies are used.
+    The approximation sign is important because tabulated average bond
+    enthalpies may not exactly represent the bonds in every molecule.
+  </p>
 
-  <h3>Example</h3>
+  <h3>2. What does each part of the formula mean?</h3>
 
-  <p>Suppose:</p>
   <ul>
-    <li>Total energy used to break bonds = 900 kJ</li>
-    <li>Total energy released when bonds form = 1200 kJ</li>
+    <li>
+      <strong>ΣBE(bonds broken):</strong> the total energy absorbed to break
+      all the relevant bonds in the reactants.
+    </li>
+    <li>
+      <strong>ΣBE(bonds formed):</strong> the total energy released when all
+      the relevant bonds in the products form.
+    </li>
+    <li>
+      <strong>ΔH:</strong> the estimated enthalpy change for the reaction
+      as written, using the specified bond-energy data.
+    </li>
   </ul>
 
-  <p>Then:</p>
+  <p>
+    Bond energies are usually expressed in kJ/mol. When calculating the
+    energy change for a balanced reaction as written, count the bonds
+    represented by the equation's coefficients and molecular formulae.
+    The resulting ΔH is in kJ per mole of reaction as written.
+  </p>
 
-  <p><strong>ΔH = 900 − 1200 = −300 kJ</strong></p>
+  <h3>3. How to count bonds correctly</h3>
 
-  <p>The reaction is therefore exothermic.</p>`,
+  <p>
+    A molecular formula tells you how many atoms of each element are
+    present in one molecule. A structural formula shows which atoms are
+    connected and therefore helps you identify the bonds.
+  </p>
+
+  <ul>
+    <li>H₂ contains one H–H bond per molecule.</li>
+    <li>Cl₂ contains one Cl–Cl bond per molecule.</li>
+    <li>H₂O contains two O–H bonds per molecule.</li>
+    <li>NH₃ contains three N–H bonds per molecule.</li>
+    <li>CH₄ contains four C–H bonds per molecule.</li>
+    <li>O₂ contains one O=O double bond per molecule.</li>
+  </ul>
+
+  <p>
+    If an equation contains 2H₂O, there are two water molecules. Together,
+    they contain 2 × 2 = 4 O–H bonds. Counting only one water molecule
+    would underestimate the total energy released during bond formation.
+  </p>
+
+  <h3>4. The correct calculation procedure</h3>
+
+  <ol>
+    <li>Write the balanced chemical equation.</li>
+    <li>Identify every type of bond in the reactants.</li>
+    <li>Count each bond, including the effect of coefficients.</li>
+    <li>Multiply each bond count by its bond energy and add the results.</li>
+    <li>Repeat the process for the product bonds.</li>
+    <li>Subtract total energy of bonds formed from total energy of bonds broken.</li>
+    <li>Use the sign of ΔH to classify the reaction.</li>
+  </ol>
+
+  <h3>5. Interpreting the sign of ΔH</h3>
+
+  <p>
+    <strong>Negative ΔH:</strong> more energy is released forming bonds than
+    is absorbed breaking bonds. The reaction is exothermic and releases
+    energy overall.
+  </p>
+
+  <p>
+    <strong>Positive ΔH:</strong> more energy is absorbed breaking bonds than
+    is released forming bonds. The reaction is endothermic and absorbs
+    energy overall.
+  </p>
+
+  <p>
+    <strong>Zero ΔH:</strong> the calculated energy absorbed and released
+    are equal, giving no net enthalpy change in the calculation.
+  </p>
+
+  <h3>Worked Example 1: Calculating ΔH for hydrogen and chlorine</h3>
+
+  <p><strong>Question:</strong> Estimate ΔH for the reaction:</p>
+
+  <p><strong>H₂(g) + Cl₂(g) → 2HCl(g)</strong></p>
+
+  <p>Use these average bond energies:</p>
+
+  <ul>
+    <li>H–H = 436 kJ/mol</li>
+    <li>Cl–Cl = 243 kJ/mol</li>
+    <li>H–Cl = 431 kJ/mol</li>
+  </ul>
+
+  <p><strong>Step 1: Count bonds broken.</strong></p>
+
+  <p>
+    One H₂ molecule contains one H–H bond. One Cl₂ molecule contains
+    one Cl–Cl bond.
+  </p>
+
+  <p>
+    Energy absorbed = 436 + 243 = 679 kJ.
+  </p>
+
+  <p><strong>Step 2: Count bonds formed.</strong></p>
+
+  <p>
+    The equation produces 2HCl. Each HCl molecule contains one H–Cl bond,
+    so two H–Cl bonds form.
+  </p>
+
+  <p>
+    Energy released = 2 × 431 = 862 kJ.
+  </p>
+
+  <p><strong>Step 3: Apply the formula.</strong></p>
+
+  <p>
+    ΔH ≈ energy of bonds broken − energy of bonds formed
+  </p>
+
+  <p>
+    ΔH ≈ 679 − 862
+  </p>
+
+  <p><strong>ΔH ≈ −183 kJ/mol of reaction</strong></p>
+
+  <p>
+    <strong>Conclusion:</strong> The reaction is exothermic because more
+    energy is released forming H–Cl bonds than is absorbed breaking H–H
+    and Cl–Cl bonds.
+  </p>
+
+  <h3>Worked Example 2: Counting multiple bonds in ammonia formation</h3>
+
+  <p><strong>Question:</strong> Estimate ΔH for:</p>
+
+  <p><strong>N₂(g) + 3H₂(g) → 2NH₃(g)</strong></p>
+
+  <p>Use these average bond energies:</p>
+
+  <ul>
+    <li>N≡N = 945 kJ/mol</li>
+    <li>H–H = 436 kJ/mol</li>
+    <li>N–H = 391 kJ/mol</li>
+  </ul>
+
+  <p><strong>Step 1: Count bonds broken.</strong></p>
+
+  <p>
+    One N₂ molecule contains one N≡N triple bond.
+    Three H₂ molecules contain three H–H bonds.
+  </p>
+
+  <p>
+    Energy absorbed = 945 + (3 × 436)
+  </p>
+
+  <p>
+    Energy absorbed = 945 + 1308 = 2253 kJ.
+  </p>
+
+  <p><strong>Step 2: Count bonds formed.</strong></p>
+
+  <p>
+    Each NH₃ molecule contains three N–H bonds. Two NH₃ molecules contain
+    2 × 3 = 6 N–H bonds.
+  </p>
+
+  <p>
+    Energy released = 6 × 391 = 2346 kJ.
+  </p>
+
+  <p><strong>Step 3: Calculate ΔH.</strong></p>
+
+  <p>
+    ΔH ≈ 2253 − 2346
+  </p>
+
+  <p><strong>ΔH ≈ −93 kJ/mol of reaction</strong></p>
+
+  <p>
+    <strong>Conclusion:</strong> The estimated reaction is exothermic.
+    Counting all six N–H bonds is essential; counting only one NH₃ molecule
+    would give the wrong total.
+  </p>
+
+  <h3>Worked Example 3: Diagnosing a sign error</h3>
+
+  <p>
+    <strong>Question:</strong> A learner calculates that breaking reactant
+    bonds absorbs 1200 kJ and forming product bonds releases 900 kJ.
+    The learner reports ΔH = −300 kJ. Find the error and classify the reaction.
+  </p>
+
+  <p><strong>Step 1: Identify the two totals.</strong></p>
+
+  <ul>
+    <li>Energy absorbed breaking bonds = 1200 kJ.</li>
+    <li>Energy released forming bonds = 900 kJ.</li>
+  </ul>
+
+  <p><strong>Step 2: Apply the correct subtraction order.</strong></p>
+
+  <p>
+    ΔH = energy absorbed − energy released
+  </p>
+
+  <p>
+    ΔH = 1200 − 900 = +300 kJ.
+  </p>
+
+  <p><strong>Step 3: Interpret the sign.</strong></p>
+
+  <p>
+    The result is positive. More energy is absorbed breaking bonds than
+    is released forming bonds.
+  </p>
+
+  <p>
+    <strong>Conclusion:</strong> ΔH = +300 kJ. The reaction is endothermic.
+    The learner reversed the subtraction order.
+  </p>
+
+  <h3>6. Common errors in bond-energy calculations</h3>
+
+  <ul>
+    <li>
+      <strong>Reversing the formula:</strong> always subtract bonds formed
+      from bonds broken.
+    </li>
+    <li>
+      <strong>Ignoring coefficients:</strong> a coefficient multiplies the
+      number of molecules and therefore the number of their bonds.
+    </li>
+    <li>
+      <strong>Counting atoms instead of bonds:</strong> identify the actual
+      connections between atoms.
+    </li>
+    <li>
+      <strong>Forgetting multiple bonds:</strong> a triple bond counts as
+      one N≡N bond, using the triple-bond energy supplied.
+    </li>
+    <li>
+      <strong>Misreading the sign:</strong> negative ΔH means exothermic;
+      positive ΔH means endothermic.
+    </li>
+    <li>
+      <strong>Reporting false precision:</strong> bond-energy calculations
+      give estimates when average bond enthalpies are used.
+    </li>
+  </ul>
+
+  <h3>7. Final method to remember</h3>
+
+  <p>
+    <strong>Count → Multiply → Add → Subtract → Interpret.</strong>
+  </p>
+
+  <p>
+    Count all bonds broken and formed. Multiply each count by its bond
+    energy. Add the totals for each side. Subtract the energy of bonds
+    formed from the energy of bonds broken. Finally, interpret the sign
+    of ΔH.
+  </p>
+  `,
+
   [
     {
-      q: "What is the formula used to calculate energy change from bond energies?",
+      q: "State the formula used to estimate a reaction's enthalpy change from bond energies.",
       steps: [
-        "Step 1: Determine the total energy required to break the reactant bonds.",
-        "Step 2: Determine the total energy released when the product bonds form.",
-        "Step 3: Subtract the energy released from the energy absorbed."
+        "Identify the total energy absorbed breaking reactant bonds.",
+        "Identify the total energy released forming product bonds.",
+        "Subtract the second total from the first."
       ],
-      ans: "ΔH = total energy of bonds broken − total energy of bonds formed.",
-      why: "Breaking bonds absorbs energy while forming bonds releases energy."
+      ans: "ΔH ≈ ΣBE(bonds broken) − ΣBE(bonds formed).",
+      why: "Breaking bonds absorbs energy, while forming bonds releases energy."
     },
     {
-      q: "A reaction requires 750 kJ to break its bonds and releases 950 kJ when new bonds form. Calculate the energy change.",
+      q: "A reaction absorbs 750 kJ breaking bonds and releases 950 kJ forming bonds. Calculate ΔH and classify the reaction.",
       steps: [
-        "Step 1: Energy absorbed = 750 kJ.",
-        "Step 2: Energy released = 950 kJ.",
-        "Step 3: ΔH = energy absorbed − energy released.",
-        "Step 4: ΔH = 750 − 950.",
-        "Step 5: ΔH = −200 kJ."
+        "Energy absorbed = 750 kJ.",
+        "Energy released = 950 kJ.",
+        "ΔH ≈ 750 − 950.",
+        "ΔH ≈ −200 kJ."
       ],
-      ans: "ΔH = −200 kJ.",
-      why: "More energy is released forming bonds than is absorbed breaking bonds, so the reaction is exothermic."
+      ans: "ΔH ≈ −200 kJ; the reaction is exothermic.",
+      why: "More energy is released during bond formation than is absorbed during bond breaking."
     },
     {
-      q: "A reaction absorbs 1400 kJ when bonds are broken and releases 1000 kJ when bonds are formed. Calculate ΔH and state whether the reaction is exothermic or endothermic.",
+      q: "For H₂(g) + Cl₂(g) → 2HCl(g), use H–H = 436 kJ/mol, Cl–Cl = 243 kJ/mol and H–Cl = 431 kJ/mol to estimate ΔH.",
       steps: [
-        "Step 1: Energy absorbed = 1400 kJ.",
-        "Step 2: Energy released = 1000 kJ.",
-        "Step 3: ΔH = 1400 − 1000.",
-        "Step 4: ΔH = +400 kJ.",
-        "Step 5: A positive ΔH indicates an endothermic reaction."
+        "Bonds broken: one H–H and one Cl–Cl.",
+        "Energy absorbed = 436 + 243 = 679 kJ.",
+        "Bonds formed: two H–Cl bonds.",
+        "Energy released = 2 × 431 = 862 kJ.",
+        "ΔH ≈ 679 − 862 = −183 kJ."
       ],
-      ans: "ΔH = +400 kJ; the reaction is endothermic.",
-      why: "More energy is absorbed breaking bonds than is released forming new bonds."
+      ans: "ΔH ≈ −183 kJ/mol of reaction.",
+      why: "The reaction is exothermic because the energy released forming two H–Cl bonds exceeds the energy absorbed breaking the reactant bonds."
     }
   ],
+
   [
     {
-      q: "The total bond energy of bonds broken in a reaction is 1650 kJ and the total bond energy of bonds formed is 1900 kJ. Calculate ΔH.",
-      hint: "Use ΔH = bonds broken − bonds formed.",
+      q: "The energy of bonds broken is 1650 kJ and the energy of bonds formed is 1900 kJ. Calculate ΔH and state the reaction type.",
+      hint: "Subtract the total for bonds formed from the total for bonds broken.",
       steps: [
-        "Step 1: Energy absorbed breaking bonds = 1650 kJ.",
-        "Step 2: Energy released forming bonds = 1900 kJ.",
-        "Step 3: ΔH = 1650 − 1900.",
-        "Step 4: ΔH = −250 kJ."
+        "Write ΔH ≈ bonds broken − bonds formed.",
+        "Substitute: ΔH ≈ 1650 − 1900.",
+        "Calculate: ΔH ≈ −250 kJ.",
+        "A negative ΔH indicates an exothermic reaction."
       ],
-      ans: "ΔH = −250 kJ.",
-      why: "The negative value means more energy is released during bond formation than absorbed during bond breaking."
+      ans: "ΔH ≈ −250 kJ; exothermic.",
+      why: "The energy released forming bonds exceeds the energy absorbed breaking bonds."
     },
     {
-      q: "A reaction has a bond-breaking energy of 2200 kJ and a bond-forming energy of 1800 kJ. Is the reaction exothermic or endothermic?",
-      hint: "First calculate ΔH.",
+      q: "A reaction absorbs 2200 kJ breaking bonds and releases 1800 kJ forming bonds. Calculate ΔH and explain its sign.",
+      hint: "Use the stated subtraction order, then compare the result with zero.",
       steps: [
-        "Step 1: ΔH = 2200 − 1800.",
-        "Step 2: ΔH = +400 kJ.",
-        "Step 3: A positive ΔH indicates an endothermic reaction."
+        "ΔH ≈ 2200 − 1800.",
+        "ΔH ≈ +400 kJ.",
+        "The positive sign means energy is absorbed overall."
       ],
-      ans: "The reaction is endothermic.",
-      why: "The reaction absorbs more energy breaking bonds than it releases forming bonds."
+      ans: "ΔH ≈ +400 kJ; the reaction is endothermic.",
+      why: "More energy is absorbed breaking bonds than is released forming bonds."
+    },
+    {
+      q: "Estimate ΔH for H₂(g) + Cl₂(g) → 2HCl(g) using H–H = 436 kJ/mol, Cl–Cl = 243 kJ/mol and H–Cl = 431 kJ/mol.",
+      hint: "There are two H–Cl bonds in the products because the coefficient of HCl is 2.",
+      steps: [
+        "Bonds broken: one H–H and one Cl–Cl.",
+        "Energy absorbed = 436 + 243 = 679 kJ.",
+        "Energy released = 2 × 431 = 862 kJ.",
+        "ΔH ≈ 679 − 862 = −183 kJ."
+      ],
+      ans: "ΔH ≈ −183 kJ/mol of reaction.",
+      why: "The products' bond formation releases more energy than reactant bond breaking absorbs."
+    },
+    {
+      q: "For N₂(g) + 3H₂(g) → 2NH₃(g), use N≡N = 945 kJ/mol, H–H = 436 kJ/mol and N–H = 391 kJ/mol to estimate ΔH.",
+      hint: "Count one N≡N bond, three H–H bonds and six N–H bonds.",
+      steps: [
+        "Energy absorbed = 945 + (3 × 436).",
+        "Energy absorbed = 945 + 1308 = 2253 kJ.",
+        "Two NH₃ molecules form six N–H bonds.",
+        "Energy released = 6 × 391 = 2346 kJ.",
+        "ΔH ≈ 2253 − 2346 = −93 kJ."
+      ],
+      ans: "ΔH ≈ −93 kJ/mol of reaction; exothermic.",
+      why: "All six N–H bonds must be counted because each NH₃ molecule contains three N–H bonds."
+    },
+    {
+      q: "A learner calculates ΔH by subtracting the energy of bonds broken from the energy of bonds formed. Explain the error and write the correct formula.",
+      hint: "Recall which process absorbs energy and which releases it.",
+      steps: [
+        "Breaking bonds absorbs energy.",
+        "Forming bonds releases energy.",
+        "The total absorbed energy must come first in the subtraction.",
+        "Write the correct relationship."
+      ],
+      ans: "The subtraction order is reversed. The correct formula is ΔH ≈ ΣBE(bonds broken) − ΣBE(bonds formed).",
+      why: "The formula compares the energy input needed to break bonds with the energy released when product bonds form."
+    },
+    {
+      q: "A reaction breaks 4 mol of A–B bonds, each with a bond energy of 300 kJ/mol, and forms 2 mol of C–D bonds, each with a bond energy of 500 kJ/mol. Estimate ΔH and classify the reaction.",
+      hint: "Calculate both totals separately before subtracting.",
+      steps: [
+        "Energy absorbed = 4 × 300 = 1200 kJ.",
+        "Energy released = 2 × 500 = 1000 kJ.",
+        "ΔH ≈ 1200 − 1000 = +200 kJ.",
+        "A positive ΔH indicates an endothermic reaction."
+      ],
+      ans: "ΔH ≈ +200 kJ; the reaction is endothermic.",
+      why: "The total energy absorbed breaking bonds is 200 kJ greater than the total energy released forming bonds."
     }
   ]
 );
+
+
 add(
   "chemistry",
   "chemical_energetics",
   "Combustion of Fuels",
-  `<h2>Combustion of Fuels</h2>
 
-  <p>A <strong>fuel</strong> is a substance that releases useful energy when it undergoes combustion.</p>
+  `
+  <h2>Combustion of Fuels</h2>
 
-  <p><strong>Combustion</strong> is the reaction of a substance with oxygen accompanied by the release of energy, usually as heat.</p>
+  <h3>1. What is a fuel?</h3>
 
-  <h3>Complete Combustion</h3>
+  <p>
+    A fuel is a substance that releases useful energy when it undergoes
+    combustion. Common examples include wood, charcoal, kerosene, petrol,
+    diesel, natural gas and biogas.
+  </p>
 
-  <p>When a hydrocarbon burns in a sufficient supply of oxygen, complete combustion occurs.</p>
+  <p>
+    Combustion is a chemical reaction in which a substance reacts with
+    oxygen and releases energy, commonly as heat and sometimes as light.
+    Many fuels contain carbon and hydrogen, although fuels do not all
+    have the same chemical composition.
+  </p>
 
-  <p>The products are <strong>carbon dioxide and water</strong>.</p>
+  <h3>2. Complete combustion of hydrocarbons</h3>
 
-  <p>For example:</p>
+  <p>
+    A hydrocarbon is a compound containing only carbon and hydrogen.
+    When a hydrocarbon burns in a sufficient supply of oxygen, complete
+    combustion produces carbon dioxide and water.
+  </p>
+
+  <p><strong>Hydrocarbon + oxygen → carbon dioxide + water</strong></p>
+
+  <p>
+    For methane, CH₄, the balanced equation is:
+  </p>
+
+  <p><strong>CH₄(g) + 2O₂(g) → CO₂(g) + 2H₂O(g)</strong></p>
+
+  <p>
+    One carbon atom forms one carbon dioxide molecule. Four hydrogen
+    atoms form two water molecules. The two oxygen molecules provide
+    four oxygen atoms, which balance the products.
+  </p>
+
+  <p>
+    The water may be gaseous in a hot flame and may condense to liquid
+    water when the products cool. The physical state should match the
+    conditions specified in a question.
+  </p>
+
+  <h3>3. Incomplete combustion</h3>
+
+  <p>
+    When oxygen is insufficient for complete combustion, a hydrocarbon
+    may undergo incomplete combustion. Depending on the conditions,
+    products can include carbon monoxide, solid carbon and water.
+  </p>
+
+  <p>
+    <strong>Carbon monoxide:</strong> CO is a poisonous gas. It binds
+    strongly to haemoglobin in the blood and reduces the blood's ability
+    to transport oxygen.
+  </p>
+
+  <p>
+    <strong>Carbon or soot:</strong> Fine particles of carbon can form
+    during incomplete combustion. Soot can dirty surfaces and contribute
+    to air pollution.
+  </p>
+
+  <p>
+    Incomplete combustion does not always produce only one product.
+    The actual mixture depends on oxygen supply and the conditions of
+    combustion.
+  </p>
+
+  <h3>4. Balancing equations for incomplete combustion</h3>
+
+  <p>
+    Incomplete combustion equations must still be balanced. The atoms
+    of each element must be equal on both sides.
+  </p>
+
+  <p>
+    One possible equation for methane forming carbon monoxide is:
+  </p>
+
+  <p><strong>2CH₄(g) + 3O₂(g) → 2CO(g) + 4H₂O(g)</strong></p>
+
+  <p>
+    Check the atoms:
+  </p>
+
+  <ul>
+    <li>Carbon: 2 on each side.</li>
+    <li>Hydrogen: 8 on each side.</li>
+    <li>Oxygen: 6 on each side.</li>
+  </ul>
+
+  <p>
+    Another possible equation, showing the formation of solid carbon, is:
+  </p>
+
+  <p><strong>CH₄(g) + O₂(g) → C(s) + 2H₂O(g)</strong></p>
+
+  <p>
+    Both equations conserve atoms. They represent different possible
+    incomplete-combustion products; neither should be treated as the
+    only outcome whenever oxygen is limited.
+  </p>
+
+  <h3>Worked Example 1: Balancing complete combustion of methane</h3>
+
+  <p>
+    <strong>Question:</strong> Balance the complete combustion equation:
+  </p>
+
+  <p><strong>CH₄ + O₂ → CO₂ + H₂O</strong></p>
+
+  <p><strong>Step 1: Balance carbon.</strong></p>
+
+  <p>
+    There is one carbon atom in CH₄ and one in CO₂. Carbon is already balanced.
+  </p>
+
+  <p><strong>Step 2: Balance hydrogen.</strong></p>
+
+  <p>
+    CH₄ contains four hydrogen atoms. Each H₂O contains two, so place
+    coefficient 2 before H₂O.
+  </p>
+
+  <p>
+    CH₄ + O₂ → CO₂ + 2H₂O
+  </p>
+
+  <p><strong>Step 3: Balance oxygen.</strong></p>
+
+  <p>
+    The products contain two oxygen atoms in CO₂ and two more in 2H₂O.
+    There are four oxygen atoms in total, so place coefficient 2 before O₂.
+  </p>
+
+  <p><strong>Balanced equation:</strong></p>
 
   <p><strong>CH₄ + 2O₂ → CO₂ + 2H₂O</strong></p>
 
-  <h3>Incomplete Combustion</h3>
+  <h3>Worked Example 2: Identifying incomplete combustion</h3>
 
-  <p>When oxygen is insufficient, incomplete combustion may occur.</p>
+  <p>
+    <strong>Question:</strong> A methane burner has an insufficient supply
+    of oxygen and produces carbon monoxide and water. Write a balanced
+    equation for this possible reaction.
+  </p>
 
-  <p>It can produce <strong>carbon monoxide</strong> and/or <strong>carbon</strong> together with water.</p>
+  <p><strong>Step 1: Write the unbalanced equation.</strong></p>
 
-  <p>Carbon monoxide is poisonous because it reduces the blood's ability to transport oxygen.</p>`,
+  <p>
+    CH₄ + O₂ → CO + H₂O
+  </p>
+
+  <p><strong>Step 2: Balance carbon and hydrogen.</strong></p>
+
+  <p>
+    One CH₄ molecule contains one carbon atom and four hydrogen atoms.
+    Use 2CH₄ to give two carbon atoms and eight hydrogen atoms. This requires
+    2CO and 4H₂O.
+  </p>
+
+  <p>
+    2CH₄ + O₂ → 2CO + 4H₂O
+  </p>
+
+  <p><strong>Step 3: Balance oxygen.</strong></p>
+
+  <p>
+    The products contain two oxygen atoms in 2CO and four in 4H₂O,
+    giving six oxygen atoms. Three O₂ molecules supply six oxygen atoms.
+  </p>
+
+  <p><strong>Balanced equation:</strong></p>
+
+  <p><strong>2CH₄ + 3O₂ → 2CO + 4H₂O</strong></p>
+
+  <p>
+    <strong>Conclusion:</strong> Carbon monoxide can form during incomplete
+    combustion. It is dangerous because it reduces the blood's ability to
+    transport oxygen.
+  </p>
+
+  <h3>Worked Example 3: Comparing complete and incomplete combustion of carbon</h3>
+
+  <p>
+    <strong>Question:</strong> Write equations for complete combustion
+    of carbon and incomplete combustion of carbon, and identify the
+    carbon-containing product in each case.
+  </p>
+
+  <p><strong>Step 1: Complete combustion.</strong></p>
+
+  <p>
+    With sufficient oxygen, carbon forms carbon dioxide:
+  </p>
+
+  <p><strong>C(s) + O₂(g) → CO₂(g)</strong></p>
+
+  <p><strong>Step 2: Incomplete combustion.</strong></p>
+
+  <p>
+    With insufficient oxygen, carbon monoxide can form:
+  </p>
+
+  <p><strong>2C(s) + O₂(g) → 2CO(g)</strong></p>
+
+  <p><strong>Step 3: Compare the products.</strong></p>
+
+  <p>
+    Complete combustion produces CO₂, while this incomplete-combustion
+    equation produces CO.
+  </p>
+
+  <p>
+    <strong>Conclusion:</strong> Oxygen supply affects which carbon-containing
+    product forms. Carbon monoxide is poisonous, so incomplete combustion
+    can create a serious safety hazard.
+  </p>
+
+  <h3>5. Why complete combustion is often preferred</h3>
+
+  <p>
+    Complete combustion of a hydrocarbon generally releases more energy
+    per amount of fuel than incomplete combustion because the carbon is
+    oxidised fully to carbon dioxide rather than partly to carbon monoxide
+    or carbon.
+  </p>
+
+  <p>
+    Complete combustion does not mean that the process has no environmental
+    impact. Carbon dioxide is a greenhouse gas, and its release contributes
+    to climate change. The practical environmental effects depend on the
+    fuel, the combustion conditions and the products released.
+  </p>
+
+  <h3>6. Combustion safety</h3>
+
+  <ul>
+    <li>
+      Ensure fuel-burning appliances have adequate air supply and appropriate
+      ventilation.
+    </li>
+    <li>
+      Never use a charcoal stove or other fuel-burning appliance indoors
+      unless the equipment and installation are specifically designed and
+      safely vented for that use.
+    </li>
+    <li>
+      Carbon monoxide has no colour or smell, so it cannot be reliably
+      detected by human senses.
+    </li>
+    <li>
+      A yellow, smoky flame may indicate incomplete combustion, but flame
+      appearance alone is not a reliable test for carbon monoxide.
+    </li>
+  </ul>
+
+  <h3>7. Common mistakes to avoid</h3>
+
+  <ul>
+    <li>
+      <strong>Wrong:</strong> Complete combustion produces carbon monoxide.
+      <strong>Correct:</strong> Complete combustion of a hydrocarbon produces
+      carbon dioxide and water.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Incomplete combustion always produces only soot.
+      <strong>Correct:</strong> Carbon monoxide, carbon and other products
+      may form depending on conditions.
+    </li>
+    <li>
+      <strong>Wrong:</strong> A combustion equation does not need to be balanced.
+      <strong>Correct:</strong> Every chemical equation must conserve atoms.
+    </li>
+    <li>
+      <strong>Wrong:</strong> Carbon monoxide is harmless because it is a gas.
+      <strong>Correct:</strong> Carbon monoxide is poisonous and can be fatal.
+    </li>
+  </ul>
+
+  <h3>8. The essential distinction</h3>
+
+  <p>
+    <strong>Complete combustion:</strong> sufficient oxygen; a hydrocarbon
+    produces carbon dioxide and water.
+  </p>
+
+  <p>
+    <strong>Incomplete combustion:</strong> insufficient oxygen; a hydrocarbon
+    may produce carbon monoxide and/or carbon, together with water.
+  </p>
+
+  <p>
+    Always identify the available oxygen, predict the likely products,
+    and balance the chemical equation.
+  </p>
+  `,
+
   [
     {
-      q: "What is a fuel?",
+      q: "Define complete combustion of a hydrocarbon and name its products.",
       steps: [
-        "Step 1: A fuel is a substance that can undergo combustion.",
-        "Step 2: Combustion releases energy.",
-        "Step 3: The released energy can be used for a useful purpose."
+        "A hydrocarbon contains carbon and hydrogen.",
+        "Complete combustion occurs when sufficient oxygen is available.",
+        "Carbon forms carbon dioxide.",
+        "Hydrogen forms water."
       ],
-      ans: "A fuel is a substance that releases useful energy when it undergoes combustion.",
-      why: "The useful energy released during combustion is the main reason fuels are used."
+      ans: "Complete combustion is the burning of a hydrocarbon in sufficient oxygen to produce carbon dioxide and water.",
+      why: "Sufficient oxygen allows the carbon and hydrogen in the hydrocarbon to be fully oxidised to these products."
     },
     {
-      q: "What are the products of complete combustion of a hydrocarbon?",
+      q: "Balance the complete combustion equation for methane: CH₄ + O₂ → CO₂ + H₂O.",
       steps: [
-        "Step 1: Complete combustion requires a sufficient supply of oxygen.",
-        "Step 2: The carbon in the hydrocarbon forms carbon dioxide.",
-        "Step 3: The hydrogen forms water."
-      ],
-      ans: "Carbon dioxide and water.",
-      why: "A hydrocarbon contains carbon and hydrogen, which form CO₂ and H₂O during complete combustion."
-    },
-    {
-      q: "Write the balanced equation for the complete combustion of methane.",
-      steps: [
-        "Step 1: Start with CH₄ + O₂ → CO₂ + H₂O.",
-        "Step 2: Carbon is already balanced with one CO₂.",
-        "Step 3: Four hydrogen atoms require 2H₂O.",
-        "Step 4: The products now contain four oxygen atoms.",
-        "Step 5: Therefore, 2O₂ are required on the reactant side."
+        "Carbon is already balanced: one C on each side.",
+        "Four hydrogen atoms require 2H₂O.",
+        "The products now contain four oxygen atoms.",
+        "Place coefficient 2 before O₂."
       ],
       ans: "CH₄ + 2O₂ → CO₂ + 2H₂O.",
-      why: "The equation has equal numbers of carbon, hydrogen and oxygen atoms on both sides."
+      why: "Both sides contain one carbon atom, four hydrogen atoms and four oxygen atoms."
+    },
+    {
+      q: "Name one poisonous product that may form during incomplete combustion of a hydrocarbon and explain why it is dangerous.",
+      steps: [
+        "Insufficient oxygen can cause incomplete combustion.",
+        "Carbon monoxide may form.",
+        "Carbon monoxide binds strongly to haemoglobin.",
+        "This reduces the blood's ability to transport oxygen."
+      ],
+      ans: "Carbon monoxide (CO). It reduces the blood's ability to transport oxygen and can be fatal.",
+      why: "Carbon monoxide interferes with oxygen transport in the blood."
     }
   ],
+
   [
     {
-      q: "A hydrocarbon burns with a limited supply of oxygen. Name one poisonous product that may be formed.",
-      hint: "Think about incomplete combustion.",
+      q: "Balance the complete combustion equation for propane: C₃H₈ + O₂ → CO₂ + H₂O.",
+      hint: "Balance carbon first, then hydrogen, and oxygen last.",
       steps: [
-        "Step 1: Limited oxygen can cause incomplete combustion.",
-        "Step 2: Incomplete combustion can produce carbon monoxide.",
-        "Step 3: Carbon monoxide is poisonous."
+        "Three carbon atoms require 3CO₂.",
+        "Eight hydrogen atoms require 4H₂O.",
+        "The products contain 6 + 4 = 10 oxygen atoms.",
+        "Five O₂ molecules supply 10 oxygen atoms."
       ],
-      ans: "Carbon monoxide.",
-      why: "Incomplete combustion of hydrocarbons can produce poisonous carbon monoxide."
+      ans: "C₃H₈ + 5O₂ → 3CO₂ + 4H₂O.",
+      why: "Both sides contain three carbon atoms, eight hydrogen atoms and ten oxygen atoms."
+    },
+    {
+      q: "A methane burner has insufficient oxygen and produces carbon monoxide and water. Balance: CH₄ + O₂ → CO + H₂O.",
+      hint: "Balance carbon and hydrogen first. Use coefficients that give whole-number oxygen molecules.",
+      steps: [
+        "Use 2CH₄ to give 2 carbon atoms and 8 hydrogen atoms.",
+        "Place 2 before CO and 4 before H₂O.",
+        "The products now contain 6 oxygen atoms.",
+        "Place 3 before O₂."
+      ],
+      ans: "2CH₄ + 3O₂ → 2CO + 4H₂O.",
+      why: "Both sides contain two carbon atoms, eight hydrogen atoms and six oxygen atoms."
+    },
+    {
+      q: "Explain two differences between complete and incomplete combustion of hydrocarbons.",
+      hint: "Compare the oxygen supply and the carbon-containing products.",
+      steps: [
+        "Complete combustion occurs with sufficient oxygen.",
+        "Incomplete combustion occurs when oxygen is insufficient.",
+        "Complete combustion produces CO₂ and H₂O.",
+        "Incomplete combustion may produce CO and/or carbon, together with water."
+      ],
+      ans: "Complete combustion occurs with sufficient oxygen and produces carbon dioxide and water. Incomplete combustion occurs with insufficient oxygen and may produce carbon monoxide and/or carbon, as well as water.",
+      why: "The availability of oxygen affects how fully the carbon in the fuel is oxidised."
+    },
+    {
+      q: "Write a balanced equation for incomplete combustion of carbon to carbon monoxide and explain the safety concern associated with the product.",
+      hint: "Carbon monoxide contains one oxygen atom per molecule. Balance the oxygen atoms as well as carbon.",
+      steps: [
+        "Start with C + O₂ → CO.",
+        "Use 2CO to balance the two oxygen atoms from O₂.",
+        "Place 2C on the left to balance carbon.",
+        "Identify the hazard of CO."
+      ],
+      ans: "2C(s) + O₂(g) → 2CO(g). Carbon monoxide is poisonous because it reduces the blood's ability to transport oxygen.",
+      why: "The balanced equation conserves atoms, and the carbon monoxide product is a serious inhalation hazard."
+    },
+    {
+      q: "A learner says that complete combustion of methane produces carbon monoxide because methane contains carbon. Correct the claim and give the balanced equation.",
+      hint: "Complete combustion requires sufficient oxygen. Distinguish carbon dioxide from carbon monoxide.",
+      steps: [
+        "Methane is a hydrocarbon containing carbon and hydrogen.",
+        "Complete combustion in sufficient oxygen produces CO₂ and H₂O.",
+        "Balance hydrogen by placing 2 before H₂O.",
+        "Balance oxygen by placing 2 before O₂."
+      ],
+      ans: "The claim is incorrect. Complete combustion produces carbon dioxide and water: CH₄ + 2O₂ → CO₂ + 2H₂O.",
+      why: "Carbon monoxide may form during incomplete combustion, while sufficient oxygen allows carbon to form carbon dioxide."
+    },
+    {
+      q: "Why can incomplete combustion be dangerous even when a fuel is releasing heat? Give two reasons.",
+      hint: "Think about poisonous gases and particles that can form when oxygen is insufficient.",
+      steps: [
+        "Incomplete combustion can produce carbon monoxide.",
+        "Carbon monoxide is poisonous and interferes with oxygen transport in the blood.",
+        "Incomplete combustion may also produce soot or carbon particles.",
+        "These particles contribute to air pollution and can affect health."
+      ],
+      ans: "It can produce poisonous carbon monoxide and soot or carbon particles that contribute to air pollution and health problems.",
+      why: "The release of useful heat does not mean combustion products are harmless."
     }
   ]
 );
@@ -39185,157 +48444,467 @@ add(
   "chemistry",
   "chemical_energetics",
   "Calorific Value",
-  `<h2>Calorific Value</h2>
+  `
+  <h2>Calorific Value</h2>
 
-  <p><strong>Calorific value</strong> is the amount of energy released when a unit mass of a fuel undergoes complete combustion.</p>
+  <h3>1. Meaning of Calorific Value</h3>
 
-  <p>It is commonly expressed in <strong>kJ/g</strong> or <strong>MJ/kg</strong>.</p>
+  <p><strong>Calorific value</strong> is the amount of heat energy released when a unit mass of a fuel undergoes complete combustion in sufficient oxygen.</p>
 
-  <h3>Calculating Energy Released</h3>
+  <p>It tells us how much energy can be obtained from a given mass of fuel. A fuel with a higher calorific value releases more energy per gram than a fuel with a lower calorific value.</p>
 
-  <p>When calorific value is given:</p>
+  <p>For example, if fuel A has a calorific value of 45 kJ/g and fuel B has a calorific value of 30 kJ/g, burning equal masses of the fuels releases more energy from fuel A.</p>
 
-  <p><strong>Energy released = mass of fuel × calorific value</strong></p>
+  <h3>2. Units of Calorific Value</h3>
 
-  <p>For example, if a fuel has a calorific value of 40 kJ/g and 25 g is completely burned:</p>
+  <p>Calorific value is commonly expressed in:</p>
 
-  <p><strong>Energy = 25 × 40 = 1000 kJ</strong></p>
+  <ul>
+    <li><strong>kJ/g:</strong> kilojoules of energy released per gram of fuel.</li>
+    <li><strong>MJ/kg:</strong> megajoules of energy released per kilogram of fuel.</li>
+  </ul>
 
-  <p>Therefore, 25 g of the fuel releases 1000 kJ of energy.</p>`,
+  <p>The following conversion is useful:</p>
+
+  <p><strong>1 MJ/kg = 1 kJ/g</strong></p>
+
+  <p>This is because 1 MJ = 1,000 kJ and 1 kg = 1,000 g. Both the energy unit and the mass unit are multiplied by 1,000, so their ratio remains unchanged.</p>
+
+  <h3>3. Formulae Involving Calorific Value</h3>
+
+  <p>When a fuel burns completely, the energy released can be calculated using:</p>
+
+  <p><strong>Energy released = Mass of fuel × Calorific value</strong></p>
+
+  <p>Using symbols:</p>
+
+  <p><strong>E = m × CV</strong></p>
+
+  <ul>
+    <li>E = energy released, in kJ.</li>
+    <li>m = mass of fuel burned, in g.</li>
+    <li>CV = calorific value, in kJ/g.</li>
+  </ul>
+
+  <p>The formula can be rearranged to calculate the calorific value:</p>
+
+  <p><strong>CV = Energy released ÷ Mass of fuel</strong></p>
+
+  <p>It can also be rearranged to calculate the mass of fuel required:</p>
+
+  <p><strong>Mass of fuel = Energy required ÷ Calorific value</strong></p>
+
+  <h3>4. Worked Example 1: Calculating Energy Released</h3>
+
+  <p><strong>Question:</strong> A fuel has a calorific value of 40 kJ/g. Calculate the energy released when 25 g of the fuel burns completely.</p>
+
+  <p><strong>Step 1: Write the formula.</strong></p>
+
+  <p>Energy = Mass × Calorific value</p>
+
+  <p><strong>Step 2: Substitute the values.</strong></p>
+
+  <p>Energy = 25 g × 40 kJ/g</p>
+
+  <p><strong>Step 3: Calculate.</strong></p>
+
+  <p>Energy = 1,000 kJ</p>
+
+  <p><strong>Answer: 1,000 kJ.</strong></p>
+
+  <p>The grams cancel out, leaving the answer in kilojoules.</p>
+
+  <h3>5. Worked Example 2: Calculating Calorific Value</h3>
+
+  <p><strong>Question:</strong> Complete combustion of 60 g of a fuel releases 2,400 kJ of energy. Calculate its calorific value.</p>
+
+  <p><strong>Step 1: Identify what is required.</strong></p>
+
+  <p>We need the energy released per gram of fuel.</p>
+
+  <p><strong>Step 2: Write the formula.</strong></p>
+
+  <p>Calorific value = Energy released ÷ Mass of fuel</p>
+
+  <p><strong>Step 3: Substitute and calculate.</strong></p>
+
+  <p>CV = 2,400 kJ ÷ 60 g</p>
+
+  <p>CV = 40 kJ/g</p>
+
+  <p><strong>Answer: 40 kJ/g.</strong></p>
+
+  <p>Always divide the total energy by the mass burned, not the other way around.</p>
+
+  <h3>6. Worked Example 3: Calculating Mass Required</h3>
+
+  <p><strong>Question:</strong> A fuel has a calorific value of 45 kJ/g. What mass is needed to release 900 kJ of energy through complete combustion?</p>
+
+  <p><strong>Step 1: Write the rearranged formula.</strong></p>
+
+  <p>Mass = Energy required ÷ Calorific value</p>
+
+  <p><strong>Step 2: Substitute the values.</strong></p>
+
+  <p>Mass = 900 kJ ÷ 45 kJ/g</p>
+
+  <p><strong>Step 3: Calculate.</strong></p>
+
+  <p>Mass = 20 g</p>
+
+  <p><strong>Answer: 20 g.</strong></p>
+
+  <p>The answer is a mass because energy is divided by energy per gram.</p>
+
+  <h3>7. Why Calorific Value Matters</h3>
+
+  <p>Calorific value helps us compare the energy obtainable from equal masses of different fuels. A fuel with a higher calorific value generally requires less mass to provide the same amount of energy.</p>
+
+  <p>However, calorific value alone does not tell us whether a fuel is cheapest, safest, most available, or least polluting.</p>
+
+  <h3>8. Important Distinction: Energy Released and Useful Energy</h3>
+
+  <p>Calorific value describes the energy released by complete combustion. In practical use, some energy may escape into the surroundings, and combustion may be incomplete. Therefore, the useful energy transferred to a cooking pot or machine may be less than the total energy released by the fuel.</p>
+
+  <p><strong>Remember:</strong> Calorific value is energy per unit mass, not the total energy in any sample of fuel.</p>
+  `,
   [
     {
-      q: "What is calorific value?",
-      steps: [
-        "Step 1: Consider a unit mass of fuel.",
-        "Step 2: Burn the fuel completely.",
-        "Step 3: Measure the energy released.",
-        "Step 4: This energy per unit mass is the calorific value."
-      ],
-      ans: "Calorific value is the amount of energy released when a unit mass of a fuel undergoes complete combustion.",
-      why: "It allows different fuels to be compared according to the energy released per unit mass."
+      q: "Define calorific value.",
+      ans: "The energy released when a unit mass of fuel undergoes complete combustion in sufficient oxygen.",
+      why: "Calorific value measures energy released per unit mass of fuel."
     },
     {
-      q: "A fuel has a calorific value of 35 kJ/g. How much energy is released when 20 g burns completely?",
-      steps: [
-        "Step 1: Calorific value = 35 kJ/g.",
-        "Step 2: Mass of fuel = 20 g.",
-        "Step 3: Energy released = mass × calorific value.",
-        "Step 4: Energy = 20 × 35.",
-        "Step 5: Energy = 700 kJ."
-      ],
-      ans: "700 kJ.",
-      why: "Each gram releases 35 kJ, so 20 g releases 700 kJ."
+      q: "Calculate the energy released when 15 g of a fuel with a calorific value of 32 kJ/g burns completely.",
+      ans: "480 kJ",
+      why: "Energy = mass × calorific value = 15 × 32 = 480 kJ."
     },
     {
-      q: "A fuel releases 2400 kJ when 60 g is completely burned. Calculate its calorific value.",
-      steps: [
-        "Step 1: Energy released = 2400 kJ.",
-        "Step 2: Mass of fuel = 60 g.",
-        "Step 3: Calorific value = energy released ÷ mass.",
-        "Step 4: Calorific value = 2400 ÷ 60.",
-        "Step 5: Calorific value = 40 kJ/g."
-      ],
-      ans: "40 kJ/g.",
-      why: "Calorific value is the energy released per gram of fuel."
+      q: "A fuel releases 3,600 kJ when 90 g burns completely. Calculate its calorific value.",
+      ans: "40 kJ/g",
+      why: "Calorific value = energy ÷ mass = 3,600 ÷ 90 = 40 kJ/g."
     }
   ],
   [
     {
-      q: "A fuel has a calorific value of 45 kJ/g. How much fuel is required to release 900 kJ?",
-      hint: "Rearrange the formula: mass = energy released ÷ calorific value.",
+      q: "A fuel has a calorific value of 35 kJ/g. Calculate the energy released by 12 g of the fuel during complete combustion.",
+      hint: "Multiply the mass burned by the energy released per gram.",
       steps: [
-        "Step 1: Energy required = 900 kJ.",
-        "Step 2: Calorific value = 45 kJ/g.",
-        "Step 3: Mass = 900 ÷ 45.",
-        "Step 4: Mass = 20 g."
+        "Write the formula: E = m × CV.",
+        "Substitute m = 12 g and CV = 35 kJ/g.",
+        "Calculate 12 × 35 = 420.",
+        "State the energy in kJ."
       ],
-      ans: "20 g.",
-      why: "20 g of the fuel releases 900 kJ at a calorific value of 45 kJ/g."
+      ans: "420 kJ",
+      why: "Each gram releases 35 kJ, so 12 g releases 12 × 35 = 420 kJ."
+    },
+    {
+      q: "Complete combustion of 80 g of a fuel releases 3,200 kJ. Calculate the calorific value.",
+      hint: "Divide the total energy by the mass of fuel burned.",
+      steps: [
+        "Write CV = E ÷ m.",
+        "Substitute E = 3,200 kJ and m = 80 g.",
+        "Calculate 3,200 ÷ 80 = 40.",
+        "Include the unit kJ/g."
+      ],
+      ans: "40 kJ/g",
+      why: "The fuel releases 40 kJ for every gram burned."
+    },
+    {
+      q: "How many grams of a fuel with a calorific value of 25 kJ/g are required to release 1,000 kJ?",
+      hint: "Rearrange the energy formula to make mass the subject.",
+      steps: [
+        "Write E = m × CV.",
+        "Rearrange: m = E ÷ CV.",
+        "Substitute m = 1,000 ÷ 25.",
+        "Calculate the result and state it in grams."
+      ],
+      ans: "40 g",
+      why: "Forty grams release 40 × 25 = 1,000 kJ."
+    },
+    {
+      q: "A fuel has a calorific value of 42 MJ/kg. Express this value in kJ/g.",
+      hint: "Convert megajoules to kilojoules and kilograms to grams.",
+      steps: [
+        "Recall that 1 MJ = 1,000 kJ.",
+        "Recall that 1 kg = 1,000 g.",
+        "Convert 42 MJ/kg to 42,000 kJ per 1,000 g.",
+        "Divide 42,000 by 1,000."
+      ],
+      ans: "42 kJ/g",
+      why: "The factors of 1,000 in the energy and mass conversions cancel, so the numerical value remains 42."
+    },
+    {
+      q: "Fuel A has a calorific value of 50 kJ/g while fuel B has a calorific value of 30 kJ/g. How much more energy does 10 g of A release than 10 g of B, assuming complete combustion?",
+      hint: "Calculate the energy from each fuel separately, then subtract.",
+      steps: [
+        "Calculate A: E = 10 × 50 = 500 kJ.",
+        "Calculate B: E = 10 × 30 = 300 kJ.",
+        "Subtract B's energy from A's energy.",
+        "State the difference in kJ."
+      ],
+      ans: "200 kJ more",
+      why: "Fuel A releases 500 kJ and fuel B releases 300 kJ, giving a difference of 200 kJ."
+    },
+    {
+      q: "A learner says, 'A 100 g sample of a fuel with a calorific value of 20 kJ/g has a calorific value of 2,000 kJ.' Identify the error and give the correct values.",
+      hint: "Distinguish energy per gram from the total energy released by the sample.",
+      steps: [
+        "Identify the given calorific value: 20 kJ/g.",
+        "Recognise that multiplying by 100 g gives total energy, not calorific value.",
+        "Calculate total energy = 100 × 20 = 2,000 kJ.",
+        "State both the calorific value and the total energy."
+      ],
+      ans: "The calorific value is 20 kJ/g; the total energy released is 2,000 kJ.",
+      why: "Calorific value is energy per unit mass. Multiplying it by the mass gives the total energy released."
     }
   ]
 );
+
 
 add(
   "chemistry",
   "chemical_energetics",
   "Comparing Fuels",
-  `<h2>Comparing Fuels</h2>
+  `
+  <h2>Comparing Fuels</h2>
 
-  <p>Fuels can be compared using properties such as:</p>
+  <h3>1. Why Do We Compare Fuels?</h3>
+
+  <p>A <strong>fuel</strong> is a substance that releases usable energy when it undergoes a chemical reaction, commonly combustion. Different fuels have different energy outputs, costs, environmental effects, safety requirements, and availability.</p>
+
+  <p>Choosing a suitable fuel requires considering several factors together. The fuel that releases the most energy per gram is not automatically the cheapest, cleanest, safest, or best choice for every purpose.</p>
+
+  <h3>2. Factor One: Calorific Value</h3>
+
+  <p>Calorific value measures the energy released by complete combustion of a unit mass of fuel.</p>
+
+  <p><strong>Energy released = Mass × Calorific value</strong></p>
+
+  <p>For equal masses, the fuel with the higher calorific value releases more energy under the same complete-combustion conditions.</p>
+
+  <p>For example, if fuel A has a calorific value of 45 kJ/g and fuel B has a calorific value of 30 kJ/g, burning 10 g of each releases:</p>
 
   <ul>
-    <li>calorific value,</li>
-    <li>amount of pollution produced,</li>
-    <li>availability,</li>
-    <li>cost,</li>
-    <li>ease of storage and transport,</li>
-    <li>safety, and</li>
-    <li>renewability.</li>
+    <li>Fuel A: 10 × 45 = 450 kJ.</li>
+    <li>Fuel B: 10 × 30 = 300 kJ.</li>
   </ul>
 
-  <h3>Calorific Value</h3>
+  <p>Fuel A releases 150 kJ more energy from the same mass.</p>
 
-  <p>A fuel with a higher calorific value releases more energy per unit mass when completely burned.</p>
+  <h3>3. Factor Two: Cost of Energy</h3>
 
-  <p>For example, if fuel A has a calorific value of 45 kJ/g and fuel B has a calorific value of 30 kJ/g, fuel A releases more energy per gram.</p>
+  <p>The purchase price per kilogram does not always reveal which fuel is more economical. We should compare the cost of obtaining the same amount of energy.</p>
 
-  <h3>Environmental Effects</h3>
+  <p><strong>Cost per unit of energy = Cost of fuel ÷ Energy released</strong></p>
 
-  <p>Fuels should also be assessed according to the substances released during combustion.</p>
+  <p>For example, if a quantity of fuel costs KSh 120 and releases 3,000 kJ, its cost per kilojoule is:</p>
 
-  <p>Incomplete combustion can produce carbon monoxide. Fuels containing sulphur can produce sulphur dioxide, while burning hydrocarbons produces carbon dioxide.</p>
+  <p>Cost per kJ = 120 ÷ 3,000 = KSh 0.04/kJ.</p>
 
-  <p>A good fuel therefore cannot be judged using calorific value alone.</p>`,
+  <p>If another fuel costs KSh 100 and releases 2,000 kJ:</p>
+
+  <p>Cost per kJ = 100 ÷ 2,000 = KSh 0.05/kJ.</p>
+
+  <p>Although the second fuel costs less to purchase, the first fuel provides each kilojoule at a lower cost.</p>
+
+  <p>In practical situations, useful energy efficiency also matters. If different fuels transfer different proportions of their released energy to the intended task, compare the cost per unit of useful energy when that information is available.</p>
+
+  <h3>4. Factor Three: Environmental Effects</h3>
+
+  <p>The environmental effects of a fuel depend on its chemical composition, how it burns, and how it is produced and supplied.</p>
+
+  <ul>
+    <li><strong>Carbon dioxide (CO₂):</strong> Complete combustion of carbon-containing fuels produces carbon dioxide, which contributes to the greenhouse effect.</li>
+    <li><strong>Carbon monoxide (CO):</strong> Incomplete combustion can produce carbon monoxide, a poisonous gas.</li>
+    <li><strong>Sulfur dioxide (SO₂):</strong> Burning sulfur-containing fuels can release sulfur dioxide, which contributes to air pollution and acid rain.</li>
+    <li><strong>Soot and particles:</strong> Some combustion conditions produce smoke and fine particles that pollute the air and harm health.</li>
+  </ul>
+
+  <p>A fuel that burns with little visible smoke is not necessarily free of harmful emissions. For example, carbon dioxide is invisible.</p>
+
+  <h3>5. Factor Four: Availability and Renewability</h3>
+
+  <p><strong>Availability</strong> means how easily a fuel can be obtained where and when it is needed. A fuel may be effective but unsuitable if supply is unreliable or transport is difficult.</p>
+
+  <p><strong>Renewable fuels</strong> come from sources that can be replenished on a human timescale, such as sustainably produced biomass. Fossil fuels such as coal, petroleum, and natural gas form over geological timescales and are non-renewable.</p>
+
+  <p>Renewable does not automatically mean pollution-free. The environmental impact of a renewable fuel depends on how it is produced, transported, and used.</p>
+
+  <h3>6. Factor Five: Storage, Transport, and Safety</h3>
+
+  <p>A suitable fuel should be practical and safe to handle.</p>
+
+  <ul>
+    <li><strong>Storage:</strong> Does it require a special container or large storage space?</li>
+    <li><strong>Transport:</strong> Is it easy and affordable to move?</li>
+    <li><strong>Safety:</strong> Is it highly flammable, toxic, pressurised, or likely to leak?</li>
+    <li><strong>Equipment:</strong> Can the available stove, engine, or burner use the fuel safely and efficiently?</li>
+    <li><strong>Reliability:</strong> Can the fuel supply meet the user's needs consistently?</li>
+  </ul>
+
+  <h3>7. Worked Example 1: Comparing Energy from Equal Masses</h3>
+
+  <p><strong>Question:</strong> Fuel A has a calorific value of 48 kJ/g and fuel B has a calorific value of 32 kJ/g. Calculate the energy released by 15 g of each fuel and identify which releases more energy.</p>
+
+  <p><strong>Step 1: Write the formula.</strong></p>
+
+  <p>Energy = Mass × Calorific value</p>
+
+  <p><strong>Step 2: Calculate the energy from fuel A.</strong></p>
+
+  <p>E(A) = 15 × 48 = 720 kJ</p>
+
+  <p><strong>Step 3: Calculate the energy from fuel B.</strong></p>
+
+  <p>E(B) = 15 × 32 = 480 kJ</p>
+
+  <p><strong>Step 4: Compare the results.</strong></p>
+
+  <p>Difference = 720 − 480 = 240 kJ</p>
+
+  <p><strong>Answer:</strong> Fuel A releases 720 kJ, while fuel B releases 480 kJ. Fuel A releases 240 kJ more from the same mass.</p>
+
+  <h3>8. Worked Example 2: Comparing the Mass Required</h3>
+
+  <p><strong>Question:</strong> A task requires 2,000 kJ of energy. Fuel A has a calorific value of 50 kJ/g and fuel B has a calorific value of 40 kJ/g. Calculate the mass of each fuel needed, assuming complete combustion and that all the released energy is available for the task.</p>
+
+  <p><strong>Step 1: Write the formula.</strong></p>
+
+  <p>Mass = Energy required ÷ Calorific value</p>
+
+  <p><strong>Step 2: Calculate for fuel A.</strong></p>
+
+  <p>Mass(A) = 2,000 ÷ 50 = 40 g</p>
+
+  <p><strong>Step 3: Calculate for fuel B.</strong></p>
+
+  <p>Mass(B) = 2,000 ÷ 40 = 50 g</p>
+
+  <p><strong>Answer:</strong> Fuel A requires 40 g, while fuel B requires 50 g. Fuel A requires 10 g less because it releases more energy per gram.</p>
+
+  <h3>9. Worked Example 3: Comparing Fuel Costs</h3>
+
+  <p><strong>Question:</strong> A quantity of fuel A costs KSh 120 and releases 3,000 kJ. The same comparison quantity of fuel B costs KSh 100 and releases 2,000 kJ. Which fuel provides energy at the lower cost per kilojoule?</p>
+
+  <p><strong>Step 1: Calculate the cost per kJ for fuel A.</strong></p>
+
+  <p>Cost per kJ = 120 ÷ 3,000 = KSh 0.04/kJ</p>
+
+  <p><strong>Step 2: Calculate the cost per kJ for fuel B.</strong></p>
+
+  <p>Cost per kJ = 100 ÷ 2,000 = KSh 0.05/kJ</p>
+
+  <p><strong>Step 3: Compare the unit costs.</strong></p>
+
+  <p>0.04 is less than 0.05.</p>
+
+  <p><strong>Answer:</strong> Fuel A is cheaper per kilojoule, even though its purchase price is higher.</p>
+
+  <h3>10. Making a Balanced Choice</h3>
+
+  <p>Imagine that one fuel has a high calorific value but costs more, while another has a lower calorific value but is cheaper and locally available. The best choice depends on the user's priorities and the actual cost of delivering useful energy.</p>
+
+  <p>For a household, affordability, safe storage, ventilation, and reliable supply may be essential. For an industrial process, energy output, equipment compatibility, operating cost, and emissions may be more important.</p>
+
+  <p><strong>Remember:</strong> Compare fuels using evidence. Consider energy per unit mass, cost per unit of useful energy, emissions, availability, renewability, safety, and practical use. No single factor determines the best fuel in every situation.</p>
+  `,
   [
     {
-      q: "Fuel A has a calorific value of 45 kJ/g while fuel B has a calorific value of 30 kJ/g. Which fuel releases more energy when 10 g of each is completely burned?",
-      steps: [
-        "Step 1: Energy from A = 10 × 45.",
-        "Step 2: Energy from A = 450 kJ.",
-        "Step 3: Energy from B = 10 × 30.",
-        "Step 4: Energy from B = 300 kJ.",
-        "Step 5: Compare the two values."
-      ],
-      ans: "Fuel A. It releases 450 kJ compared with 300 kJ from fuel B.",
-      why: "Fuel A has the higher calorific value."
+      q: "State four factors that should be considered when comparing fuels.",
+      ans: "Calorific value, cost per unit of energy, environmental effects, and availability. Other valid factors include safety, storage, transport, and renewability.",
+      why: "A fuel must be evaluated by its energy output as well as its economic, environmental, and practical effects."
     },
     {
-      q: "Why is calorific value useful when comparing fuels?",
-      steps: [
-        "Step 1: Calorific value measures energy released per unit mass.",
-        "Step 2: Fuels can therefore be compared using the same mass basis.",
-        "Step 3: A higher calorific value means more energy is released per unit mass."
-      ],
-      ans: "It shows how much energy each fuel releases per unit mass, allowing their energy output to be compared.",
-      why: "Calorific value provides a common measure of the energy content of fuels."
+      q: "Fuel A has a calorific value of 45 kJ/g and fuel B has a calorific value of 30 kJ/g. Calculate the energy released by 8 g of each fuel.",
+      ans: "Fuel A: 360 kJ; Fuel B: 240 kJ.",
+      why: "Energy = mass × calorific value. Therefore, A releases 8 × 45 = 360 kJ and B releases 8 × 30 = 240 kJ."
     },
     {
-      q: "Give two factors other than calorific value that should be considered when selecting a fuel.",
-      steps: [
-        "Step 1: Consider the environmental effects of combustion.",
-        "Step 2: Consider practical factors such as cost, availability or safety.",
-        "Step 3: Therefore, fuel selection should consider more than energy output."
-      ],
-      ans: "Examples include pollution produced, cost, availability, safety, ease of storage, transport and renewability.",
-      why: "A fuel with a high calorific value may still be unsuitable if it is expensive, unsafe, unavailable or highly polluting."
+      q: "Explain why a fuel with the highest calorific value is not necessarily the best fuel.",
+      ans: "It may be too expensive, polluting, difficult to obtain, unsafe to store, or unsuitable for the equipment being used.",
+      why: "Calorific value measures energy per unit mass, but fuel selection involves other economic, environmental, and practical factors."
     }
   ],
   [
     {
-      q: "Fuel A has a calorific value of 50 kJ/g and fuel B has a calorific value of 40 kJ/g. Which fuel requires less mass to release 2000 kJ?",
-      hint: "Calculate the mass required for each fuel using mass = energy ÷ calorific value.",
+      q: "Fuel X has a calorific value of 42 kJ/g. Calculate the energy released when 20 g burns completely.",
+      hint: "Multiply the mass of fuel by its calorific value.",
       steps: [
-        "Step 1: Mass of A = 2000 ÷ 50 = 40 g.",
-        "Step 2: Mass of B = 2000 ÷ 40 = 50 g.",
-        "Step 3: Compare the masses.",
-        "Step 4: Fuel A requires less mass."
+        "Write E = m × CV.",
+        "Substitute m = 20 g and CV = 42 kJ/g.",
+        "Calculate 20 × 42 = 840.",
+        "State the answer in kJ."
       ],
-      ans: "Fuel A; it requires 40 g compared with 50 g of fuel B.",
-      why: "Fuel A has the higher calorific value, so less mass is needed to release the same amount of energy."
+      ans: "840 kJ",
+      why: "Twenty grams of fuel X release 20 × 42 = 840 kJ under complete-combustion conditions."
+    },
+    {
+      q: "Fuel P has a calorific value of 36 kJ/g and fuel Q has a calorific value of 24 kJ/g. How much more energy does 5 g of P release than 5 g of Q?",
+      hint: "Calculate the energy from each equal mass, then find the difference.",
+      steps: [
+        "Calculate P: 5 × 36 = 180 kJ.",
+        "Calculate Q: 5 × 24 = 120 kJ.",
+        "Subtract 120 kJ from 180 kJ.",
+        "State the difference."
+      ],
+      ans: "60 kJ more",
+      why: "Fuel P releases 180 kJ and fuel Q releases 120 kJ, so the difference is 60 kJ."
+    },
+    {
+      q: "A task requires 1,500 kJ. Fuel A has a calorific value of 50 kJ/g and fuel B has a calorific value of 30 kJ/g. Calculate the mass of each fuel required, assuming complete combustion and no energy losses.",
+      hint: "Divide the required energy by each fuel's calorific value.",
+      steps: [
+        "Write m = E ÷ CV.",
+        "For A: m = 1,500 ÷ 50 = 30 g.",
+        "For B: m = 1,500 ÷ 30 = 50 g.",
+        "Compare the two masses."
+      ],
+      ans: "Fuel A: 30 g; Fuel B: 50 g.",
+      why: "Fuel A provides more energy per gram, so a smaller mass is needed to supply the same energy."
+    },
+    {
+      q: "Fuel A costs KSh 150 for a quantity that releases 5,000 kJ. Fuel B costs KSh 100 for a quantity that releases 2,500 kJ. Calculate the cost per kJ for each and identify the cheaper source of energy.",
+      hint: "Divide each price by the energy released by that quantity.",
+      steps: [
+        "For A: 150 ÷ 5,000 = KSh 0.03/kJ.",
+        "For B: 100 ÷ 2,500 = KSh 0.04/kJ.",
+        "Compare the two unit costs.",
+        "Identify the lower cost per kJ."
+      ],
+      ans: "Fuel A: KSh 0.03/kJ; Fuel B: KSh 0.04/kJ. Fuel A is cheaper per kJ.",
+      why: "Although fuel B has the lower purchase price, its energy costs more per kilojoule."
+    },
+    {
+      q: "A learner chooses a fuel solely because it has the highest calorific value. Give three other factors the learner should investigate before making the final choice.",
+      hint: "Think about money, pollution, practical access, and safe use.",
+      steps: [
+        "Consider the total cost of obtaining useful energy.",
+        "Consider emissions and effects on human health and the environment.",
+        "Consider availability, storage, transport, or safety.",
+        "Explain briefly why these factors affect the decision."
+      ],
+      ans: "Any three: cost per unit of useful energy, pollution or emissions, availability, renewability, safety, storage requirements, transport cost, or compatibility with the equipment.",
+      why: "A high calorific value does not guarantee affordability, low pollution, reliable supply, or safe use."
+    },
+    {
+      q: "Fuel M is renewable and locally available but has a lower calorific value. Fuel N has a higher calorific value but is expensive and difficult to obtain. Explain why M could still be the better choice for a household.",
+      hint: "Distinguish energy per gram from overall suitability and affordability.",
+      steps: [
+        "Acknowledge that N provides more energy per unit mass.",
+        "Consider the price and cost of obtaining useful energy from each fuel.",
+        "Consider M's local availability and potentially more reliable supply.",
+        "Mention that safety and environmental impacts must also be assessed."
+      ],
+      ans: "M could be better if it provides affordable useful energy, is reliably available, and can be used safely with acceptable environmental impacts. Its lower calorific value means more mass may be required.",
+      why: "The highest calorific value is only one criterion. Overall suitability depends on cost, supply, safety, environmental effects, and the intended use."
     }
   ]
 );
 
+//===============================================
+//Metals
+//===============================================
 add(
   "chemistry",
   "metals",
@@ -39576,1100 +49145,986 @@ add(
 //============================
 //Non_metals
 //============================
+// ============================================================
+// BATCH 1: HYDROGEN
+// Screens:
+// 1. Preparation of Hydrogen
+// 2. Properties of Hydrogen
+// ============================================================
+
+
+// ------------------------------------------------------------
+// SCREEN 1: PREPARATION OF HYDROGEN
+// ------------------------------------------------------------
+
 add(
   "chemistry",
   "non_metals",
   "Preparation of Hydrogen",
-  `<h2>Preparation of Hydrogen</h2>
 
-  <p>Hydrogen gas can be prepared in the laboratory by reacting a suitable metal with a dilute acid.</p>
+  `
+  <h2>Preparation of Hydrogen</h2>
 
-  <p>A common method uses <strong>zinc</strong> and <strong>dilute hydrochloric acid</strong>.</p>
+  <h3>1. Laboratory Preparation of Hydrogen</h3>
 
-  <p><strong>Zn + 2HCl → ZnCl₂ + H₂</strong></p>
+  <p>
+    Hydrogen is a gas that can be prepared in the laboratory by reacting
+    a suitable reactive metal with a dilute, non-oxidising acid.
+    Zinc is commonly used for this preparation.
+  </p>
 
-  <h3>What Happens</h3>
+  <p>
+    When zinc reacts with dilute hydrochloric acid, zinc chloride is
+    formed and hydrogen gas is released.
+  </p>
 
-  <ol>
-    <li>Zinc reacts with dilute hydrochloric acid.</li>
-    <li>Zinc chloride is formed.</li>
-    <li>Hydrogen gas is released.</li>
-  </ol>
+  <p><strong>Word equation:</strong></p>
 
-  <p>The hydrogen can be collected and tested using a suitable test.</p>
+  <p>
+    Zinc + Hydrochloric acid → Zinc chloride + Hydrogen
+  </p>
 
-  <h3>Important Safety Point</h3>
+  <p><strong>Chemical equation:</strong></p>
 
-  <p>Hydrogen is highly flammable. It must be kept away from naked flames except when carrying out the controlled test for the gas.</p>`,
+  <p>
+    Zn(s) + 2HCl(aq) → ZnCl₂(aq) + H₂(g)
+  </p>
+
+  <p>
+    The equation shows that one mole of zinc reacts with two moles
+    of hydrochloric acid to produce one mole of zinc chloride and
+    one mole of hydrogen gas.
+  </p>
+
+  <h3>2. Why Does the Reaction Produce Hydrogen?</h3>
+
+  <p>
+    Zinc is more reactive than hydrogen. It loses electrons to form
+    zinc ions, while hydrogen ions from the acid gain electrons to
+    form hydrogen gas.
+  </p>
+
+  <p><strong>Oxidation half-equation:</strong></p>
+
+  <p>Zn → Zn²⁺ + 2e⁻</p>
+
+  <p><strong>Reduction half-equation:</strong></p>
+
+  <p>2H⁺ + 2e⁻ → H₂</p>
+
+  <p>
+    The electrons lost by zinc are gained by hydrogen ions. This is
+    a redox reaction because oxidation and reduction occur together.
+  </p>
+
+  <h3>3. Apparatus Used</h3>
+
+  <p>A typical school laboratory setup may include:</p>
+
+  <ul>
+    <li>A flask or suitable reaction vessel containing zinc.</li>
+    <li>A dilute acid added under controlled laboratory conditions.</li>
+    <li>A stopper fitted with a delivery tube.</li>
+    <li>A water trough and an inverted gas jar when collecting the gas over water.</li>
+  </ul>
+
+  <p>
+    The reaction vessel allows the reactants to come into contact.
+    The delivery tube directs the hydrogen into a collecting vessel.
+    The exact apparatus depends on the laboratory setup.
+  </p>
+
+  <h3>4. Collection of Hydrogen</h3>
+
+  <p>
+    Hydrogen can be collected over water because it is only slightly
+    soluble in water. As the gas enters an inverted, water-filled gas
+    jar, it displaces the water and occupies the space.
+  </p>
+
+  <p>
+    Hydrogen is also much less dense than air. However, collection
+    methods must be selected carefully because hydrogen mixes with
+    air and forms a flammable mixture.
+  </p>
+
+  <h3>5. Why Is Zinc Suitable?</h3>
+
+  <p>
+    Zinc reacts with dilute hydrochloric acid at a manageable rate
+    under suitable laboratory conditions. This allows hydrogen to
+    be produced and collected in a controlled experiment.
+  </p>
+
+  <p>
+    The metal must be sufficiently reactive to displace hydrogen
+    from the acid. Metals that are less reactive than hydrogen
+    generally do not liberate hydrogen from dilute hydrochloric
+    acid under ordinary conditions.
+  </p>
+
+  <h3>6. Safety Precautions</h3>
+
+  <ul>
+    <li>Carry out the experiment under teacher supervision using the approved laboratory procedure.</li>
+    <li>Wear appropriate eye protection and handle acids carefully.</li>
+    <li>Keep flames and other ignition sources away from the gas-generation apparatus.</li>
+    <li>Never assume that collected hydrogen is pure merely because it has been collected.</li>
+    <li>Do not ignite gas emerging from the apparatus as a routine collection method.</li>
+  </ul>
+
+  <p>
+    Hydrogen is highly flammable. Any identification test involving
+    ignition should be carried out only on a small sample using
+    an approved, supervised procedure.
+  </p>
+
+  <h3>Worked Examples</h3>
+
+  <p><strong>Example 1: Identifying the products</strong></p>
+
+  <p>
+    Zinc reacts with dilute hydrochloric acid. Name the salt formed
+    and the gas released.
+  </p>
+
+  <p><strong>Step 1:</strong> Identify the metal and acid: zinc and hydrochloric acid.</p>
+
+  <p><strong>Step 2:</strong> The salt contains zinc ions and chloride ions, so it is zinc chloride.</p>
+
+  <p><strong>Step 3:</strong> Hydrogen ions from the acid form hydrogen gas.</p>
+
+  <p><strong>Answer:</strong> Zinc chloride and hydrogen gas.</p>
+
+  <p><strong>Example 2: Balancing the equation</strong></p>
+
+  <p>
+    Balance the reaction between zinc and hydrochloric acid.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the unbalanced equation.</p>
+
+  <p>Zn + HCl → ZnCl₂ + H₂</p>
+
+  <p>
+    <strong>Step 2:</strong> The product ZnCl₂ contains two chlorine
+    atoms, so place 2 before HCl.
+  </p>
+
+  <p>Zn + 2HCl → ZnCl₂ + H₂</p>
+
+  <p>
+    <strong>Step 3:</strong> Check each element: Zn = 1 on both sides,
+    Cl = 2 on both sides, and H = 2 on both sides.
+  </p>
+
+  <p><strong>Answer:</strong> Zn + 2HCl → ZnCl₂ + H₂.</p>
+
+  <p><strong>Example 3: Calculating the amount of hydrogen</strong></p>
+
+  <p>
+    If 0.20 mol of zinc reacts completely with excess dilute
+    hydrochloric acid, calculate the amount of hydrogen produced.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the balanced equation.</p>
+
+  <p>Zn + 2HCl → ZnCl₂ + H₂</p>
+
+  <p>
+    <strong>Step 2:</strong> Read the mole ratio from the equation:
+    1 mol Zn produces 1 mol H₂.
+  </p>
+
+  <p>
+    <strong>Step 3:</strong> Apply the ratio:
+    amount of H₂ = 0.20 × (1/1) = 0.20 mol.
+  </p>
+
+  <p>
+    <strong>Answer:</strong> 0.20 mol of hydrogen, assuming complete
+    reaction and excess acid.
+  </p>
+  `,
+
   [
     {
-      q: "Name one metal that can be used to prepare hydrogen gas from a dilute acid.",
+      q: "Zinc reacts with dilute hydrochloric acid. Write the word equation and name the gas produced.",
+      hint: "Identify the metal, acid, salt and gas.",
       steps: [
-        "Step 1: A reactive metal can react with a dilute acid to release hydrogen.",
-        "Step 2: Zinc is a suitable metal for this laboratory preparation.",
-        "Step 3: Therefore, zinc can be used."
+        "Write zinc as the first reactant.",
+        "Add hydrochloric acid as the second reactant.",
+        "The salt formed is zinc chloride.",
+        "The gas released is hydrogen."
       ],
-      ans: "Zinc.",
-      why: "Zinc reacts with dilute acids to produce hydrogen gas."
+      ans: "Zinc + hydrochloric acid → zinc chloride + hydrogen.",
+      why: "Zinc displaces hydrogen from dilute hydrochloric acid, producing zinc chloride and hydrogen gas."
     },
     {
-      q: "Write the balanced equation for the reaction between zinc and dilute hydrochloric acid.",
+      q: "Write and balance the chemical equation for the reaction between zinc and dilute hydrochloric acid.",
+      hint: "Zinc chloride contains two chlorine atoms.",
       steps: [
-        "Step 1: Write the reactants: Zn + HCl.",
-        "Step 2: The products are zinc chloride and hydrogen: ZnCl₂ + H₂.",
-        "Step 3: Zinc is already balanced.",
-        "Step 4: ZnCl₂ requires two chlorine atoms, so use 2HCl.",
-        "Step 5: The two hydrogen atoms then form H₂."
+        "Write Zn + HCl → ZnCl₂ + H₂.",
+        "Place 2 before HCl to balance chlorine.",
+        "Check that hydrogen, zinc and chlorine atoms balance."
       ],
       ans: "Zn + 2HCl → ZnCl₂ + H₂.",
-      why: "The equation has equal numbers of zinc, hydrogen and chlorine atoms on both sides."
+      why: "A balanced chemical equation has equal numbers of each type of atom on both sides."
     },
     {
-      q: "What gas is produced when zinc reacts with dilute hydrochloric acid?",
+      q: "Explain why zinc can liberate hydrogen from dilute hydrochloric acid.",
+      hint: "Consider the relative reactivity of zinc and hydrogen.",
       steps: [
-        "Step 1: Zinc reacts with dilute hydrochloric acid.",
-        "Step 2: The products include zinc chloride and a gas.",
-        "Step 3: The gas is hydrogen."
+        "Zinc is more reactive than hydrogen.",
+        "Zinc atoms lose electrons to form Zn²⁺ ions.",
+        "Hydrogen ions gain electrons and form H₂ gas."
       ],
-      ans: "Hydrogen gas.",
-      why: "The hydrogen ions from the acid are reduced to hydrogen gas."
-    }
-  ],
-  [
+      ans: "Zinc is more reactive than hydrogen, so it displaces hydrogen from the acid.",
+      why: "The reaction involves electron transfer: zinc is oxidised and hydrogen ions are reduced."
+    },
     {
-      q: "A student wants to prepare hydrogen using zinc and hydrochloric acid. Why should the acid be dilute rather than concentrated?",
-      hint: "Think about controlling the reaction and the safety of handling hydrogen.",
+      q: "Explain why hydrogen can be collected over water.",
+      hint: "Consider how much hydrogen dissolves in water.",
       steps: [
-        "Step 1: The reaction produces flammable hydrogen gas.",
-        "Step 2: A controlled reaction is preferred in laboratory preparation.",
-        "Step 3: Dilute acid provides a suitable reaction rate and safer conditions than using a highly concentrated acid."
+        "Hydrogen is only slightly soluble in water.",
+        "The gas enters an inverted gas jar filled with water.",
+        "The hydrogen displaces the water as it accumulates."
       ],
-      ans: "Dilute acid allows the hydrogen-producing reaction to be carried out under more controlled and safer conditions.",
-      why: "Laboratory gas preparation should be controlled, particularly because hydrogen is highly flammable."
+      ans: "Hydrogen is only slightly soluble in water, so it can be collected by displacement of water.",
+      why: "A gas that dissolves readily in water would be difficult to collect using this method."
+    },
+    {
+      q: "Calculate the amount of hydrogen formed when 0.35 mol of zinc reacts completely with excess dilute hydrochloric acid.",
+      hint: "Use the mole ratio between Zn and H₂ in the balanced equation.",
+      steps: [
+        "Write Zn + 2HCl → ZnCl₂ + H₂.",
+        "The mole ratio Zn:H₂ is 1:1.",
+        "Amount of H₂ = 0.35 × 1/1."
+      ],
+      ans: "0.35 mol of H₂.",
+      why: "Each mole of zinc produces one mole of hydrogen when the acid is in excess and the reaction goes to completion."
+    },
+    {
+      q: "State two safety precautions for preparing hydrogen in the laboratory and explain why each is necessary.",
+      hint: "Think about the acid and the flammability of hydrogen.",
+      steps: [
+        "Identify a precaution for handling the acid.",
+        "Explain the risk it reduces.",
+        "Identify a precaution concerning ignition sources.",
+        "Explain the risk associated with hydrogen."
+      ],
+      ans: "Wear eye protection and handle acid carefully to prevent injury from splashes. Keep flames away from the apparatus because hydrogen is highly flammable.",
+      why: "Safe preparation requires control of both corrosive reactants and the flammable gas produced."
     }
   ]
 );
+
+
+// ------------------------------------------------------------
+// SCREEN 2: PROPERTIES OF HYDROGEN
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "non_metals",
   "Properties of Hydrogen",
-  `<h2>Properties of Hydrogen</h2>
 
-  <p>Hydrogen is a non-metal and the lightest element.</p>
+  `
+  <h2>Properties of Hydrogen</h2>
 
-  <h3>Physical Properties</h3>
+  <h3>1. Physical Properties</h3>
+
+  <p>
+    Physical properties can be observed or measured without changing
+    hydrogen into a different chemical substance.
+  </p>
 
   <ul>
-    <li>It is a colourless gas.</li>
-    <li>It is odourless.</li>
-    <li>It is very light.</li>
-    <li>It is only slightly soluble in water.</li>
+    <li><strong>Colour:</strong> Hydrogen is colourless.</li>
+    <li><strong>Odour:</strong> Pure hydrogen is odourless.</li>
+    <li><strong>Density:</strong> Hydrogen is the lightest element and is much less dense than air.</li>
+    <li><strong>Solubility:</strong> Hydrogen is only slightly soluble in water.</li>
+    <li><strong>State at room temperature:</strong> Hydrogen is a gas.</li>
   </ul>
 
-  <h3>Chemical Properties</h3>
+  <p>
+    Its low density and low solubility help explain why hydrogen
+    can be collected over water in an appropriate laboratory setup.
+    These physical properties do not, by themselves, establish
+    that a gas sample is hydrogen.
+  </p>
 
-  <p>Hydrogen is <strong>flammable</strong> and burns in oxygen to form water.</p>
+  <h3>2. Combustibility</h3>
 
-  <p><strong>2H₂ + O₂ → 2H₂O</strong></p>
+  <p>
+    Hydrogen is flammable. When it reacts with sufficient oxygen
+    and is ignited under suitable conditions, it forms water.
+    The reaction releases energy.
+  </p>
 
-  <p>Hydrogen can also act as a reducing agent in some reactions because it can remove oxygen from certain metal oxides.</p>
+  <p><strong>Word equation:</strong></p>
 
-  <p>For example:</p>
+  <p>Hydrogen + Oxygen → Water</p>
 
-  <p><strong>CuO + H₂ → Cu + H₂O</strong></p>`,
+  <p><strong>Balanced chemical equation:</strong></p>
+
+  <p>2H₂(g) + O₂(g) → 2H₂O(l)</p>
+
+  <p>
+    The equation shows that two molecules of hydrogen react with
+    one molecule of oxygen to form two molecules of water.
+    In the balanced equation, hydrogen atoms and oxygen atoms
+    are conserved.
+  </p>
+
+  <p>
+    Hydrogen can form flammable mixtures with air. Therefore,
+    it must be kept away from uncontrolled ignition sources.
+  </p>
+
+  <h3>3. Reducing Property of Hydrogen</h3>
+
+  <p>
+    Hydrogen can act as a reducing agent in certain reactions.
+    For example, when hydrogen passes over suitably heated
+    copper(II) oxide, it reacts to form copper and water.
+  </p>
+
+  <p><strong>Word equation:</strong></p>
+
+  <p>
+    Copper(II) oxide + Hydrogen → Copper + Water
+  </p>
+
+  <p><strong>Chemical equation:</strong></p>
+
+  <p>CuO(s) + H₂(g) → Cu(s) + H₂O(l)</p>
+
+  <p>
+    Copper(II) oxide is a black solid. During the reaction, it
+    is converted to copper, which has a reddish-brown appearance.
+    Water is also formed.
+  </p>
+
+  <p>
+    In this reaction, copper(II) oxide loses oxygen and is reduced
+    to copper. Hydrogen combines with oxygen to form water and is
+    oxidised. Thus, hydrogen acts as the reducing agent.
+  </p>
+
+  <p>
+    This reaction requires suitable heating and a controlled
+    laboratory setup. Hydrogen is flammable, so the demonstration
+    must follow approved laboratory safety procedures.
+  </p>
+
+  <h3>4. Distinguishing Physical and Chemical Properties</h3>
+
+  <p>
+    A physical property describes hydrogen without changing its
+    chemical identity. Colour, odour, density and solubility are
+    physical properties.
+  </p>
+
+  <p>
+    A chemical property describes how hydrogen reacts to form
+    other substances. Combustion in oxygen and reduction of
+    copper(II) oxide are examples of chemical behaviour.
+  </p>
+
+  <h3>Worked Examples</h3>
+
+  <p><strong>Example 1: Classifying properties</strong></p>
+
+  <p>
+    Classify the following properties as physical or chemical:
+    hydrogen is colourless, and hydrogen reacts with oxygen to
+    form water.
+  </p>
+
+  <p>
+    <strong>Step 1:</strong> Being colourless can be observed without
+    changing hydrogen into another substance.
+  </p>
+
+  <p><strong>Step 2:</strong> Reacting with oxygen produces water, a different substance.</p>
+
+  <p><strong>Answer:</strong> Colourless is a physical property; reacting with oxygen is a chemical property.</p>
+
+  <p><strong>Example 2: Balancing the combustion equation</strong></p>
+
+  <p>
+    Balance H₂ + O₂ → H₂O.
+  </p>
+
+  <p><strong>Step 1:</strong> Oxygen occurs as O₂ on the left, but each H₂O contains one oxygen atom.</p>
+
+  <p><strong>Step 2:</strong> Place 2 before H₂O to give two oxygen atoms on the right.</p>
+
+  <p>H₂ + O₂ → 2H₂O</p>
+
+  <p><strong>Step 3:</strong> There are now four hydrogen atoms on the right, so place 2 before H₂.</p>
+
+  <p>2H₂ + O₂ → 2H₂O</p>
+
+  <p><strong>Answer:</strong> 2H₂ + O₂ → 2H₂O.</p>
+
+  <p><strong>Example 3: Explaining reduction</strong></p>
+
+  <p>
+    Hydrogen is passed over heated copper(II) oxide. Explain the
+    change and identify the reducing agent.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the reaction.</p>
+
+  <p>CuO + H₂ → Cu + H₂O</p>
+
+  <p>
+    <strong>Step 2:</strong> Copper(II) oxide loses oxygen and
+    becomes copper.
+  </p>
+
+  <p>
+    <strong>Step 3:</strong> Hydrogen combines with the removed
+    oxygen to form water.
+  </p>
+
+  <p><strong>Answer:</strong> Copper(II) oxide is reduced to copper, and hydrogen is the reducing agent.</p>
+  `,
+
   [
     {
-      q: "State three physical properties of hydrogen gas.",
+      q: "State four physical properties of hydrogen and explain why these are classified as physical properties.",
+      hint: "Consider colour, odour, density and solubility.",
       steps: [
-        "Step 1: Identify its appearance.",
-        "Step 2: Identify its smell.",
-        "Step 3: Consider its density and solubility."
+        "State that hydrogen is colourless.",
+        "State that it is odourless.",
+        "Describe its low density relative to air.",
+        "State that it is only slightly soluble in water.",
+        "Explain that these properties do not change its chemical identity."
       ],
-      ans: "Hydrogen is colourless, odourless, very light and only slightly soluble in water.",
-      why: "These are characteristic physical properties of hydrogen gas."
+      ans: "Hydrogen is colourless, odourless, much less dense than air and only slightly soluble in water. These are physical properties because they can be described without converting hydrogen into another substance.",
+      why: "Physical properties do not require a chemical reaction to be observed."
     },
     {
-      q: "Write the balanced equation for the combustion of hydrogen in oxygen.",
+      q: "Write and balance the chemical equation for the combustion of hydrogen in oxygen.",
+      hint: "The product is water. Balance oxygen before checking hydrogen.",
       steps: [
-        "Step 1: Write H₂ + O₂ → H₂O.",
-        "Step 2: Balance hydrogen by placing 2 before H₂O.",
-        "Step 3: There are now two oxygen atoms on the product side.",
-        "Step 4: Place 2 before H₂.",
-        "Step 5: The balanced equation is 2H₂ + O₂ → 2H₂O."
+        "Write H₂ + O₂ → H₂O.",
+        "Place 2 before H₂O to balance oxygen.",
+        "Place 2 before H₂ to balance hydrogen.",
+        "Check the number of each atom on both sides."
       ],
-      ans: "2H₂ + O₂ → 2H₂O.",
-      why: "Hydrogen reacts with oxygen to form water, and the equation is balanced with two hydrogen molecules and one oxygen molecule."
+      ans: "2H₂(g) + O₂(g) → 2H₂O(l).",
+      why: "The balanced equation conserves four hydrogen atoms and two oxygen atoms on each side."
     },
     {
-      q: "What happens when hydrogen is passed over heated copper(II) oxide?",
+      q: "Hydrogen reacts with oxygen to form water. Explain why this is a chemical property rather than a physical property.",
+      hint: "Consider whether a new substance is formed.",
       steps: [
-        "Step 1: Hydrogen reacts with copper(II) oxide.",
-        "Step 2: Hydrogen removes oxygen from the copper(II) oxide.",
-        "Step 3: Copper is produced.",
-        "Step 4: Water is also formed."
+        "Identify the reactants as hydrogen and oxygen.",
+        "Identify the product as water.",
+        "Explain that the product has a different chemical identity from the reactants."
       ],
-      ans: "Copper and water are formed.",
-      why: "Hydrogen acts as a reducing agent and removes oxygen from copper(II) oxide."
-    }
-  ],
-  [
+      ans: "It is a chemical property because hydrogen reacts with oxygen to form a new substance, water.",
+      why: "Chemical properties describe the ability of a substance to undergo reactions that produce different substances."
+    },
     {
-      q: "A gas is colourless, odourless and highly flammable. Why can these observations alone not prove that the gas is hydrogen?",
-      hint: "Think about identification versus general properties.",
+      q: "Write the equation for the reaction between hydrogen and heated copper(II) oxide. State the visible change expected in the copper(II) oxide.",
+      hint: "Copper(II) oxide is black, and copper is reddish-brown.",
       steps: [
-        "Step 1: Several gases can be colourless and odourless.",
-        "Step 2: A property shared by several gases cannot uniquely identify one gas.",
-        "Step 3: Hydrogen therefore requires a specific chemical test."
+        "Identify the reactants as CuO and H₂.",
+        "Identify the products as Cu and H₂O.",
+        "Write the balanced equation.",
+        "Compare the colours of copper(II) oxide and copper."
       ],
-      ans: "Because those properties are not unique to hydrogen; a specific test is needed to identify it.",
-      why: "Identification of a gas should use a characteristic test rather than relying only on general physical properties."
+      ans: "CuO(s) + H₂(g) → Cu(s) + H₂O(l). The black copper(II) oxide changes to reddish-brown copper.",
+      why: "Hydrogen removes oxygen from copper(II) oxide, producing copper and water."
+    },
+    {
+      q: "Explain why hydrogen is described as a reducing agent in its reaction with copper(II) oxide.",
+      hint: "Identify which reactant loses oxygen and which gains it.",
+      steps: [
+        "Copper(II) oxide changes into copper.",
+        "Copper(II) oxide loses oxygen, so it is reduced.",
+        "Hydrogen combines with the oxygen to form water.",
+        "The substance causing the reduction is the reducing agent."
+      ],
+      ans: "Hydrogen is the reducing agent because it removes oxygen from copper(II) oxide, reducing it to copper.",
+      why: "In this reaction, hydrogen is oxidised to water while copper(II) oxide is reduced to copper."
+    },
+    {
+      q: "A student says, 'Hydrogen is much less dense than air, so it cannot be dangerous.' Explain why this conclusion is incorrect.",
+      hint: "Distinguish density from flammability.",
+      steps: [
+        "Recognise that low density describes how much mass occupies a given volume.",
+        "Recognise that flammability describes the ability to burn.",
+        "Explain that hydrogen can mix with air and form a flammable mixture.",
+        "State the necessary safety implication."
+      ],
+      ans: "Low density does not make hydrogen safe. Hydrogen is highly flammable and can form flammable mixtures with air, so ignition sources must be controlled.",
+      why: "Physical properties such as density do not remove the chemical hazard associated with combustion."
     }
   ]
 );
+// ------------------------------------------------------------
+// SCREEN 3: TEST FOR HYDROGEN
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "non_metals",
   "Test for Hydrogen",
-  `<h2>Test for Hydrogen</h2>
 
-  <p>Hydrogen can be identified using a <strong>lighted splint test</strong>.</p>
+  `
+  <h2>Test for Hydrogen</h2>
 
-  <h3>Procedure</h3>
+  <h3>1. The Laboratory Test for Hydrogen</h3>
 
-  <ol>
-    <li>Collect a small sample of the gas.</li>
-    <li>Bring a lighted splint to the gas.</li>
-    <li>Observe the sound and reaction.</li>
-  </ol>
+  <p>
+    Hydrogen can be identified using a lighted splint applied to a
+    small sample of the gas under an approved laboratory procedure.
+    Hydrogen burns in oxygen to form water.
+  </p>
 
-  <p>Hydrogen burns rapidly and produces a characteristic <strong>squeaky pop</strong>.</p>
+  <p><strong>Observation:</strong></p>
 
-  <p>The reaction is:</p>
+  <p>
+    A small sample of hydrogen produces a characteristic squeaky
+    pop when ignited under suitable test conditions.
+  </p>
 
-  <p><strong>2H₂ + O₂ → 2H₂O</strong></p>
+  <p><strong>Conclusion:</strong></p>
 
-  <h3>Safety</h3>
+  <p>
+    The squeaky pop is evidence that the gas may be hydrogen.
+    The test should be performed correctly on a small sample, under
+    teacher supervision and using appropriate safety precautions.
+  </p>
 
-  <p>Only a small sample should be tested under controlled laboratory conditions because hydrogen is highly flammable.</p>`,
+  <h3>2. Why Does Hydrogen Produce a Pop?</h3>
+
+  <p>
+    Hydrogen is flammable. When it mixes with oxygen in the air and
+    is ignited, combustion occurs rapidly. The rapid release of
+    energy produces the characteristic popping sound.
+  </p>
+
+  <p><strong>Word equation:</strong></p>
+
+  <p>Hydrogen + Oxygen → Water</p>
+
+  <p><strong>Balanced chemical equation:</strong></p>
+
+  <p>2H₂(g) + O₂(g) → 2H₂O(l)</p>
+
+  <p>
+    The equation represents the chemical reaction responsible for
+    the combustion. The popping sound is an observation from the
+    test, not a separate chemical product.
+  </p>
+
+  <h3>3. Why Must Only a Small Sample Be Tested?</h3>
+
+  <p>
+    Hydrogen forms flammable mixtures with air. Igniting a large
+    volume of hydrogen mixed with air can cause a dangerous
+    combustion event.
+  </p>
+
+  <p>
+    For this reason, the test is conducted only on a small sample
+    using an approved laboratory method. Never ignite gas directly
+    from a gas-generation apparatus as a substitute for the
+    prescribed test.
+  </p>
+
+  <h3>4. Interpreting the Test</h3>
+
+  <p>
+    A correct conclusion connects the observation to the property
+    of hydrogen:
+  </p>
+
+  <ul>
+    <li><strong>Observation:</strong> A characteristic squeaky pop is heard.</li>
+    <li><strong>Inference:</strong> The gas is consistent with hydrogen.</li>
+    <li><strong>Reason:</strong> Hydrogen ignites and reacts with oxygen in the air.</li>
+  </ul>
+
+  <p>
+    An observation should not be confused with an explanation.
+    The sound is the observation; the rapid combustion of hydrogen
+    in oxygen explains it.
+  </p>
+
+  <h3>Worked Examples</h3>
+
+  <p><strong>Example 1: Identifying an unknown gas</strong></p>
+
+  <p>
+    A student tests a small gas sample using a lighted splint
+    according to the approved laboratory procedure. A squeaky pop
+    is heard. What conclusion can be drawn?
+  </p>
+
+  <p><strong>Step 1:</strong> Identify the observation: a characteristic squeaky pop.</p>
+
+  <p><strong>Step 2:</strong> Recall the standard laboratory test for hydrogen.</p>
+
+  <p><strong>Step 3:</strong> Connect the observation to the test result.</p>
+
+  <p>
+    <strong>Answer:</strong> The result is consistent with the
+    presence of hydrogen.
+  </p>
+
+  <p><strong>Example 2: Explaining the observation</strong></p>
+
+  <p>
+    Explain why a small sample of hydrogen can produce a pop
+    when ignited.
+  </p>
+
+  <p><strong>Step 1:</strong> Hydrogen is flammable.</p>
+
+  <p><strong>Step 2:</strong> Hydrogen reacts rapidly with oxygen in the air when ignited.</p>
+
+  <p><strong>Step 3:</strong> The rapid combustion produces the characteristic sound.</p>
+
+  <p>
+    <strong>Answer:</strong> Hydrogen reacts rapidly with oxygen
+    in the air, producing the characteristic popping sound.
+  </p>
+
+  <p><strong>Example 3: Writing the reaction equation</strong></p>
+
+  <p>
+    Write the balanced chemical equation for the combustion of
+    hydrogen during the test.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the unbalanced equation: H₂ + O₂ → H₂O.</p>
+
+  <p><strong>Step 2:</strong> Put 2 before H₂O to balance oxygen.</p>
+
+  <p><strong>Step 3:</strong> Put 2 before H₂ to balance hydrogen.</p>
+
+  <p>
+    <strong>Answer:</strong> 2H₂(g) + O₂(g) → 2H₂O(l).
+  </p>
+  `,
+
   [
     {
-      q: "What test is used to identify hydrogen gas?",
+      q: "Describe the standard laboratory test for hydrogen and state the expected observation.",
+      hint: "Mention the lighted splint, a small gas sample and the sound.",
       steps: [
-        "Step 1: Collect a small sample of the gas.",
-        "Step 2: Bring a lighted splint to the sample.",
-        "Step 3: Observe the reaction.",
-        "Step 4: Hydrogen produces a characteristic squeaky pop."
+        "Use an approved procedure to obtain a small gas sample.",
+        "Apply the lighted splint only as directed under laboratory supervision.",
+        "Observe whether a characteristic squeaky pop is produced."
       ],
-      ans: "A lighted splint test; hydrogen produces a squeaky pop.",
-      why: "The rapid combustion of hydrogen in oxygen produces the characteristic pop."
+      ans: "A lighted splint is applied to a small sample using the approved procedure. Hydrogen produces a characteristic squeaky pop.",
+      why: "The test uses hydrogen's flammability and its characteristic combustion behaviour."
     },
     {
-      q: "What causes the squeaky pop when hydrogen is tested?",
+      q: "A gas produces a characteristic squeaky pop during the approved splint test. State the inference and explain the observation.",
+      hint: "Distinguish what was observed from what it suggests.",
       steps: [
-        "Step 1: Hydrogen is brought into contact with oxygen.",
-        "Step 2: The hydrogen burns rapidly.",
-        "Step 3: Water is formed.",
-        "Step 4: The rapid combustion produces the characteristic sound."
+        "State the observation: a characteristic squeaky pop.",
+        "Identify the gas indicated by the standard test.",
+        "Explain that the gas burns in oxygen in the air."
       ],
-      ans: "Rapid combustion of hydrogen with oxygen produces the squeaky pop.",
-      why: "Hydrogen reacts rapidly with oxygen when ignited."
+      ans: "The result is consistent with hydrogen because it reacts with oxygen when ignited, producing the characteristic pop.",
+      why: "A scientific conclusion links the observed evidence to the known behaviour of the substance."
     },
     {
-      q: "Write the balanced equation for the reaction responsible for the hydrogen test.",
+      q: "Write the balanced chemical equation for the combustion of hydrogen during the splint test.",
+      hint: "Hydrogen reacts with oxygen to form water.",
       steps: [
-        "Step 1: Hydrogen reacts with oxygen to form water.",
-        "Step 2: Write H₂ + O₂ → H₂O.",
-        "Step 3: Balance hydrogen using 2H₂ and 2H₂O.",
-        "Step 4: One O₂ molecule then balances the oxygen atoms."
+        "Write H₂ + O₂ → H₂O.",
+        "Balance oxygen by placing 2 before H₂O.",
+        "Balance hydrogen by placing 2 before H₂.",
+        "Check that both elements balance."
       ],
-      ans: "2H₂ + O₂ → 2H₂O.",
-      why: "The equation represents the combustion of hydrogen during the test."
-    }
-  ],
-  [
+      ans: "2H₂(g) + O₂(g) → 2H₂O(l).",
+      why: "The balanced equation shows that hydrogen and oxygen combine to form water."
+    },
     {
-      q: "A gas gives no characteristic pop when a lighted splint is applied. Can it be identified as hydrogen?",
-      hint: "Recall the positive observation for the hydrogen test.",
+      q: "Explain why a student should test only a small sample of hydrogen instead of igniting a large volume mixed with air.",
+      hint: "Consider the flammability of hydrogen-air mixtures.",
       steps: [
-        "Step 1: Hydrogen should produce a characteristic squeaky pop.",
-        "Step 2: The gas did not produce this observation.",
-        "Step 3: Therefore, the test does not identify the gas as hydrogen."
+        "Recognise that hydrogen is highly flammable.",
+        "Recognise that hydrogen can mix with oxygen in air.",
+        "Explain that ignition can cause rapid combustion.",
+        "Connect the risk to the need for a small test sample."
       ],
-      ans: "No. The absence of the characteristic squeaky pop means the test does not identify the gas as hydrogen.",
-      why: "A positive hydrogen test requires the characteristic pop."
+      ans: "A large hydrogen-air mixture can burn rapidly and cause a dangerous combustion event, so only a small sample should be tested using an approved procedure.",
+      why: "The test must demonstrate the gas's property while minimising the risk of fire or injury."
+    },
+    {
+      q: "A student writes, 'The gas produced water, so the observation was a squeaky pop.' Explain the error in this statement.",
+      hint: "Separate an observable event from a chemical product.",
+      steps: [
+        "Identify the stated observation.",
+        "Identify the chemical product of hydrogen combustion.",
+        "Explain why these are different types of information."
+      ],
+      ans: "A squeaky pop is the sound observed during the test, whereas water is a product of the combustion reaction.",
+      why: "Observations describe what is detected; products are substances formed in a chemical reaction."
+    },
+    {
+      q: "Explain why the squeaky-pop test is useful evidence for hydrogen but should still be performed using a controlled laboratory procedure.",
+      hint: "Include both identification and safety.",
+      steps: [
+        "State that hydrogen has characteristic combustion behaviour.",
+        "Explain how the pop supports identification.",
+        "State that hydrogen is flammable and can form flammable mixtures with air.",
+        "Explain why a small sample and supervision are necessary."
+      ],
+      ans: "The characteristic pop supports the identification of hydrogen, but hydrogen is flammable and can form dangerous mixtures with air. The test must therefore use a small sample and an approved supervised procedure.",
+      why: "Reliable identification and safe experimental practice are both essential in laboratory chemistry."
     }
   ]
 );
+
+
+// ------------------------------------------------------------
+// SCREEN 4: USES OF HYDROGEN
+// ------------------------------------------------------------
 
 add(
   "chemistry",
   "non_metals",
   "Uses of Hydrogen",
-  `<h2>Uses of Hydrogen</h2>
 
-  <p>Hydrogen has several important uses because of its chemical properties and its ability to release energy during combustion.</p>
+  `
+  <h2>Uses of Hydrogen</h2>
 
-  <h3>Major Uses</h3>
+  <h3>1. Manufacture of Ammonia</h3>
+
+  <p>
+    One important industrial use of hydrogen is the manufacture
+    of ammonia. Ammonia is used in producing nitrogen-containing
+    fertilisers and other chemicals.
+  </p>
+
+  <p>
+    In the Haber process, nitrogen reacts with hydrogen to form
+    ammonia. The reaction is reversible.
+  </p>
+
+  <p><strong>Balanced equation:</strong></p>
+
+  <p>N₂(g) + 3H₂(g) ⇌ 2NH₃(g)</p>
+
+  <p>
+    One molecule of nitrogen reacts with three molecules of
+    hydrogen to form two molecules of ammonia.
+  </p>
+
+  <h3>2. Hydrogenation of Vegetable Oils</h3>
+
+  <p>
+    Hydrogen is used in the hydrogenation of certain unsaturated
+    vegetable oils. Hydrogen adds across carbon-carbon double
+    bonds in the presence of a suitable catalyst.
+  </p>
+
+  <p>
+    This can increase the saturation of the oil and change its
+    physical properties, such as its melting behaviour and texture.
+    The extent of hydrogenation determines the final properties.
+  </p>
+
+  <p>
+    Hydrogenation is used in the production of some fats and
+    food products. Industrial food processing must control the
+    conditions and product composition carefully.
+  </p>
+
+  <h3>3. Hydrogen as a Fuel</h3>
+
+  <p>
+    Hydrogen can be used as a fuel. When it reacts with oxygen,
+    water is formed and energy is released.
+  </p>
+
+  <p><strong>Balanced equation:</strong></p>
+
+  <p>2H₂(g) + O₂(g) → 2H₂O(l)</p>
+
+  <p>
+    Hydrogen may be used in specialised combustion systems and
+    in fuel cells. A hydrogen fuel cell converts chemical energy
+    into electrical energy through electrochemical reactions.
+  </p>
+
+  <p>
+    Hydrogen is an energy carrier rather than a primary energy
+    source: energy is required to produce it. Its overall
+    environmental impact depends on how it is produced, stored,
+    transported and used.
+  </p>
+
+  <h3>4. Use as a Reducing Agent</h3>
+
+  <p>
+    Hydrogen can reduce certain metal oxides to metals. For example,
+    it reacts with heated copper(II) oxide to produce copper and
+    water.
+  </p>
+
+  <p><strong>Balanced equation:</strong></p>
+
+  <p>CuO(s) + H₂(g) → Cu(s) + H₂O(l)</p>
+
+  <p>
+    Copper(II) oxide loses oxygen and becomes copper. Hydrogen
+    combines with oxygen to form water. Hydrogen is therefore
+    the reducing agent in this reaction.
+  </p>
+
+  <h3>5. Why These Uses Depend on Hydrogen's Properties</h3>
 
   <ul>
-    <li><strong>Manufacture of ammonia:</strong> Hydrogen reacts with nitrogen in the Haber process.</li>
-    <li><strong>Hydrogenation:</strong> Hydrogen is used to add hydrogen to unsaturated compounds in some industrial processes.</li>
-    <li><strong>Fuel:</strong> Hydrogen can be used as a fuel because it releases energy when it reacts with oxygen.</li>
-    <li><strong>Reduction:</strong> Hydrogen can reduce some metal oxides to metals.</li>
+    <li><strong>Ammonia manufacture:</strong> Hydrogen reacts with nitrogen to form ammonia.</li>
+    <li><strong>Hydrogenation:</strong> Hydrogen adds to suitable unsaturated compounds.</li>
+    <li><strong>Fuel:</strong> Hydrogen reacts with oxygen and releases energy.</li>
+    <li><strong>Reduction:</strong> Hydrogen removes oxygen from certain metal oxides.</li>
   </ul>
 
-  <h3>Hydrogen in the Haber Process</h3>
+  <p>
+    Each application relies on a particular chemical behaviour.
+    The usefulness of hydrogen depends on the reaction required,
+    as well as safe handling and suitable industrial conditions.
+  </p>
 
-  <p>Hydrogen reacts with nitrogen to produce ammonia:</p>
+  <h3>Worked Examples</h3>
 
-  <p><strong>N₂ + 3H₂ ⇌ 2NH₃</strong></p>
+  <p><strong>Example 1: Hydrogen in ammonia manufacture</strong></p>
 
-  <p>Ammonia is important in the manufacture of fertilisers and other chemicals.</p>`,
+  <p>
+    State the reactants used to manufacture ammonia in the Haber
+    process and write the balanced equation.
+  </p>
+
+  <p><strong>Step 1:</strong> Identify nitrogen and hydrogen as the reactants.</p>
+
+  <p><strong>Step 2:</strong> Write N₂ + H₂ ⇌ NH₃.</p>
+
+  <p><strong>Step 3:</strong> Balance nitrogen by placing 2 before NH₃.</p>
+
+  <p><strong>Step 4:</strong> Balance hydrogen by placing 3 before H₂.</p>
+
+  <p><strong>Answer:</strong> N₂(g) + 3H₂(g) ⇌ 2NH₃(g).</p>
+
+  <p><strong>Example 2: Hydrogen as a reducing agent</strong></p>
+
+  <p>
+    Explain how hydrogen converts copper(II) oxide into copper.
+  </p>
+
+  <p><strong>Step 1:</strong> Write CuO + H₂ → Cu + H₂O.</p>
+
+  <p><strong>Step 2:</strong> Copper(II) oxide loses oxygen to form copper.</p>
+
+  <p><strong>Step 3:</strong> Hydrogen combines with the oxygen to form water.</p>
+
+  <p><strong>Answer:</strong> Hydrogen reduces copper(II) oxide to copper by removing its oxygen.</p>
+
+  <p><strong>Example 3: Calculating hydrogen needed for ammonia</strong></p>
+
+  <p>
+    According to the balanced Haber-process equation, how many
+    moles of hydrogen are required to react completely with
+    2.0 mol of nitrogen, assuming sufficient reaction conditions
+    and complete conversion for this calculation?
+  </p>
+
+  <p><strong>Step 1:</strong> Write N₂ + 3H₂ ⇌ 2NH₃.</p>
+
+  <p><strong>Step 2:</strong> The mole ratio N₂:H₂ is 1:3.</p>
+
+  <p><strong>Step 3:</strong> Hydrogen required = 2.0 × 3 = 6.0 mol.</p>
+
+  <p><strong>Answer:</strong> 6.0 mol of hydrogen.</p>
+  `,
+
   [
     {
-      q: "State two uses of hydrogen.",
+      q: "Name the two gases used in the Haber process and write the balanced equation for ammonia manufacture.",
+      hint: "Nitrogen reacts with hydrogen to form ammonia.",
       steps: [
-        "Step 1: Hydrogen is used in industrial chemical reactions.",
-        "Step 2: It is used to manufacture ammonia.",
-        "Step 3: It can also be used as a fuel or reducing agent."
+        "Identify nitrogen as one reactant.",
+        "Identify hydrogen as the other reactant.",
+        "Write N₂ + H₂ ⇌ NH₃.",
+        "Balance nitrogen and hydrogen atoms."
       ],
-      ans: "Hydrogen is used in the manufacture of ammonia, as a fuel, in hydrogenation and as a reducing agent.",
-      why: "Hydrogen's chemical properties make it useful in several industrial processes."
+      ans: "Nitrogen and hydrogen; N₂(g) + 3H₂(g) ⇌ 2NH₃(g).",
+      why: "The balanced equation gives the correct ratio of nitrogen and hydrogen used to form ammonia."
     },
     {
-      q: "How is hydrogen used in the Haber process?",
+      q: "Calculate the amount of hydrogen needed to react with 4.0 mol of nitrogen according to the Haber-process equation.",
+      hint: "Use the N₂:H₂ mole ratio of 1:3.",
       steps: [
-        "Step 1: Nitrogen reacts with hydrogen.",
-        "Step 2: The reaction is reversible.",
-        "Step 3: Ammonia is formed.",
-        "Step 4: The balanced equation is N₂ + 3H₂ ⇌ 2NH₃."
+        "Write N₂ + 3H₂ ⇌ 2NH₃.",
+        "Identify the mole ratio: 1 mol N₂ requires 3 mol H₂.",
+        "Calculate hydrogen required: 4.0 × 3."
       ],
-      ans: "Hydrogen reacts with nitrogen to produce ammonia.",
-      why: "Hydrogen is one of the reactants required for industrial ammonia manufacture."
+      ans: "12.0 mol of H₂.",
+      why: "The balanced equation shows that three moles of hydrogen react with every mole of nitrogen."
     },
     {
-      q: "Why can hydrogen be used as a fuel?",
+      q: "Explain how hydrogen is used in the hydrogenation of vegetable oils.",
+      hint: "Consider carbon-carbon double bonds and the effect of adding hydrogen.",
       steps: [
-        "Step 1: Hydrogen is combustible.",
-        "Step 2: It reacts with oxygen.",
-        "Step 3: The reaction releases energy.",
-        "Step 4: The main product is water."
+        "Identify unsaturated oils as containing carbon-carbon double bonds.",
+        "Explain that hydrogen adds across suitable double bonds.",
+        "State that a suitable catalyst is used.",
+        "Describe a possible change in the oil's properties."
       ],
-      ans: "Because hydrogen reacts with oxygen and releases energy during combustion.",
-      why: "The energy released during hydrogen combustion can be harnessed for useful purposes."
-    }
-  ],
-  [
+      ans: "Hydrogen adds across carbon-carbon double bonds in unsaturated oils in the presence of a suitable catalyst. This increases saturation and can change the oil's melting behaviour and texture.",
+      why: "Hydrogenation changes the chemical structure of unsaturated compounds and can alter their physical properties."
+    },
     {
-      q: "Hydrogen is used to reduce copper(II) oxide. What two products are formed?",
-      hint: "Hydrogen removes oxygen from the metal oxide.",
+      q: "Write the balanced equation for the reaction of hydrogen with oxygen and explain why this reaction makes hydrogen useful as a fuel.",
+      hint: "Identify the product and what happens to energy.",
       steps: [
-        "Step 1: Hydrogen reacts with copper(II) oxide.",
-        "Step 2: Hydrogen removes oxygen from CuO.",
-        "Step 3: The remaining metal is copper.",
-        "Step 4: The removed oxygen combines with hydrogen to form water."
+        "Write H₂ + O₂ → H₂O.",
+        "Balance the equation to give 2H₂ + O₂ → 2H₂O.",
+        "State that energy is released during the reaction."
       ],
-      ans: "Copper and water.",
-      why: "Hydrogen reduces copper(II) oxide to copper while forming water."
+      ans: "2H₂(g) + O₂(g) → 2H₂O(l). Hydrogen is useful as a fuel because its reaction with oxygen releases energy.",
+      why: "A fuel releases usable energy through a chemical reaction under suitable conditions."
+    },
+    {
+      q: "Hydrogen is passed over heated copper(II) oxide. Write the balanced equation and identify the reducing agent.",
+      hint: "Copper(II) oxide becomes copper, and water is produced.",
+      steps: [
+        "Write CuO + H₂ → Cu + H₂O.",
+        "Check that Cu, O and H atoms are balanced.",
+        "Identify the substance that removes oxygen from copper(II) oxide."
+      ],
+      ans: "CuO(s) + H₂(g) → Cu(s) + H₂O(l). Hydrogen is the reducing agent.",
+      why: "Hydrogen combines with oxygen from copper(II) oxide, reducing the oxide to copper."
+    },
+    {
+      q: "Explain why using hydrogen as a fuel does not automatically mean that the entire energy system has zero environmental impact.",
+      hint: "Consider how hydrogen is produced and supplied.",
+      steps: [
+        "State that hydrogen requires energy to produce.",
+        "Consider the source of that energy.",
+        "Consider the processes used for storage and transport.",
+        "Distinguish the products at the point of use from the impact of the whole supply chain."
+      ],
+      ans: "Hydrogen requires energy to produce, store and transport. Its overall environmental impact depends on the production method and the energy sources and processes used throughout its supply chain.",
+      why: "The absence of carbon dioxide in the hydrogen-oxygen reaction itself does not establish that producing and delivering the hydrogen has no environmental impact."
     }
   ]
 );
-add(
-  "chemistry",
-  "metals",
-  "Chemical Properties of Metals",
-  `<h2>Chemical Properties of Metals</h2>
 
-  <p>Metals undergo chemical reactions with substances such as oxygen, water and acids. Their reactions depend on the position of the metal in the reactivity series.</p>
-
-  <h3>Reaction with Oxygen</h3>
-
-  <p>Many metals react with oxygen to form metal oxides.</p>
-
-  <p><strong>2Mg + O₂ → 2MgO</strong></p>
-
-  <p>Magnesium reacts with oxygen to form magnesium oxide.</p>
-
-  <h3>Reaction with Water</h3>
-
-  <p>Some metals react with water to form a metal hydroxide and hydrogen gas.</p>
-
-  <p>For example:</p>
-
-  <p><strong>2Na + 2H₂O → 2NaOH + H₂</strong></p>
-
-  <p>More reactive metals generally react more readily with water.</p>
-
-  <h3>Reaction with Dilute Acids</h3>
-
-  <p>Metals above hydrogen in the reactivity series can react with dilute acids to produce a salt and hydrogen gas.</p>
-
-  <p>For example:</p>
-
-  <p><strong>Zn + 2HCl → ZnCl₂ + H₂</strong></p>
-
-  <h3>Key Idea</h3>
-
-  <p>The ease with which a metal reacts depends on its reactivity. A more reactive metal loses electrons more readily than a less reactive metal.</p>`,
-  [
-    {
-      q: "What is formed when magnesium reacts with oxygen?",
-      steps: [
-        "Step 1: Magnesium reacts with oxygen.",
-        "Step 2: Metals commonly form oxides when they react with oxygen.",
-        "Step 3: Therefore, magnesium oxide is formed.",
-        "Step 4: The balanced equation is 2Mg + O₂ → 2MgO."
-      ],
-      ans: "Magnesium oxide, MgO.",
-      why: "Magnesium combines with oxygen to form the metal oxide magnesium oxide."
-    },
-    {
-      q: "What products are formed when sodium reacts with water?",
-      steps: [
-        "Step 1: Sodium is a very reactive metal.",
-        "Step 2: Sodium reacts with water.",
-        "Step 3: The products are sodium hydroxide and hydrogen gas.",
-        "Step 4: The balanced equation is 2Na + 2H₂O → 2NaOH + H₂."
-      ],
-      ans: "Sodium hydroxide and hydrogen gas.",
-      why: "Reactive metals such as sodium react with water to form a metal hydroxide and hydrogen."
-    },
-    {
-      q: "What products are formed when zinc reacts with dilute hydrochloric acid?",
-      steps: [
-        "Step 1: Zinc is above hydrogen in the reactivity series.",
-        "Step 2: Zinc can therefore displace hydrogen from dilute hydrochloric acid.",
-        "Step 3: Zinc chloride is formed as the salt.",
-        "Step 4: Hydrogen gas is released.",
-        "Step 5: The balanced equation is Zn + 2HCl → ZnCl₂ + H₂."
-      ],
-      ans: "Zinc chloride and hydrogen gas.",
-      why: "Zinc reacts with dilute hydrochloric acid to form zinc chloride and hydrogen."
-    }
-  ],
-  [
-    {
-      q: "A metal reacts vigorously with water and produces hydrogen gas. What does this suggest about its reactivity?",
-      hint: "Compare its behaviour with metals that react slowly or not at all with water.",
-      steps: [
-        "Step 1: The metal reacts readily with water.",
-        "Step 2: Vigorous reaction indicates that the metal readily undergoes chemical change.",
-        "Step 3: Therefore, the metal is relatively reactive."
-      ],
-      ans: "It is a relatively reactive metal.",
-      why: "A vigorous reaction with water indicates high chemical reactivity."
-    },
-    {
-      q: "A metal reacts with dilute hydrochloric acid and produces hydrogen gas. What does this tell you about its position relative to hydrogen in the reactivity series?",
-      hint: "A metal must be able to displace hydrogen from the acid.",
-      steps: [
-        "Step 1: The metal reacts with hydrochloric acid and releases hydrogen.",
-        "Step 2: This means the metal displaces hydrogen from the acid.",
-        "Step 3: Metals that displace hydrogen are above hydrogen in the reactivity series."
-      ],
-      ans: "The metal is above hydrogen in the reactivity series.",
-      why: "Only metals more reactive than hydrogen can generally displace hydrogen from dilute acids."
-    }
-  ]
-);
-add(
-  "chemistry",
-  "metals",
-  "Concentration of Ores",
-  `<h2>Concentration of Ores</h2>
-
-  <p>An ore contains a useful mineral together with unwanted materials called <strong>gangue</strong>.</p>
-
-  <p>Before the metal is extracted, the ore is usually concentrated to increase the proportion of the useful mineral.</p>
-
-  <p><strong>Concentration of an ore</strong> is the process of removing unwanted gangue from the ore.</p>
-
-  <h3>Why Ores Are Concentrated</h3>
-
-  <p>Concentrating the ore reduces the amount of unwanted material that must be processed during extraction.</p>
-
-  <p>This makes the subsequent extraction process more efficient.</p>
-
-  <h3>Methods</h3>
-
-  <p>The method used depends on the physical and chemical properties of the ore and the gangue.</p>
-
-  <p>Examples include:</p>
-
-  <ul>
-    <li>gravity separation;</li>
-    <li>magnetic separation;</li>
-    <li>froth flotation.</li>
-  </ul>
-
-  <p>For example, magnetic separation can be used when the desired mineral has magnetic properties that differ from the gangue.</p>`,
-  [
-    {
-      q: "What is an ore?",
-      steps: [
-        "Step 1: An ore contains a naturally occurring mineral from which a metal can be obtained.",
-        "Step 2: The useful mineral occurs together with unwanted materials.",
-        "Step 3: Therefore, an ore is a naturally occurring material from which a metal can be extracted economically."
-      ],
-      ans: "An ore is a naturally occurring material containing a useful mineral from which a metal can be extracted economically.",
-      why: "Ores contain minerals from which metals can be obtained."
-    },
-    {
-      q: "What is gangue?",
-      steps: [
-        "Step 1: An ore contains the useful mineral together with unwanted materials.",
-        "Step 2: These unwanted earthy or rocky materials are called gangue."
-      ],
-      ans: "Gangue is the unwanted earthy or rocky material associated with the useful mineral in an ore.",
-      why: "Gangue has no useful value in the extraction of the desired metal and is removed during ore processing."
-    },
-    {
-      q: "Why is an ore concentrated before the metal is extracted?",
-      steps: [
-        "Step 1: An ore contains useful mineral and unwanted gangue.",
-        "Step 2: Concentration removes some of the gangue.",
-        "Step 3: This increases the proportion of useful mineral.",
-        "Step 4: Less unwanted material then has to be processed during extraction."
-      ],
-      ans: "To remove unwanted gangue and increase the proportion of the useful mineral before extraction.",
-      why: "Concentration makes the subsequent extraction process more efficient."
-    }
-  ],
-  [
-    {
-      q: "An ore contains a magnetic mineral mixed with non-magnetic gangue. Which separation method could be used?",
-      hint: "Think about a method that separates substances according to magnetic properties.",
-      steps: [
-        "Step 1: The useful mineral is magnetic.",
-        "Step 2: The gangue is non-magnetic.",
-        "Step 3: A magnetic field can attract the magnetic material while leaving the non-magnetic material behind.",
-        "Step 4: Therefore, magnetic separation can be used."
-      ],
-      ans: "Magnetic separation.",
-      why: "Magnetic separation works when the useful mineral and gangue have different magnetic properties."
-    },
-    {
-      q: "What happens to the proportion of useful mineral when gangue is removed from an ore?",
-      hint: "Compare the amount of useful mineral with the total mass of the ore.",
-      steps: [
-        "Step 1: Gangue is unwanted material.",
-        "Step 2: Removing gangue decreases the amount of unwanted material.",
-        "Step 3: The useful mineral therefore makes up a greater proportion of the remaining material."
-      ],
-      ans: "The proportion of useful mineral increases.",
-      why: "Removing gangue concentrates the useful mineral in the remaining material."
-    }
-  ]
-);
-add(
-  "chemistry",
-  "metals",
-  "Extraction by Reduction",
-  `<h2>Extraction by Reduction</h2>
-
-  <p>Some metals are extracted from their ores by reducing their metal oxides.</p>
-
-  <p><strong>Reduction</strong> is the removal of oxygen from a metal oxide, or the gain of electrons by the metal ion.</p>
-
-  <h3>Reduction Using Carbon</h3>
-
-  <p>Metals that are less reactive than carbon can often be extracted by heating their oxides with carbon.</p>
-
-  <p>For example, zinc oxide can be reduced by carbon:</p>
-
-  <p><strong>ZnO + C → Zn + CO</strong></p>
-
-  <p>The carbon removes oxygen from zinc oxide, leaving zinc metal.</p>
-
-  <h3>Reduction Using Carbon Monoxide</h3>
-
-  <p>Carbon monoxide can also act as a reducing agent.</p>
-
-  <p>For example:</p>
-
-  <p><strong>Fe₂O₃ + 3CO → 2Fe + 3CO₂</strong></p>
-
-  <p>Iron(III) oxide is reduced to iron while carbon monoxide is oxidised to carbon dioxide.</p>
-
-  <h3>Choosing the Method</h3>
-
-  <p>The extraction method depends on the reactivity of the metal.</p>
-
-  <p>Very reactive metals, such as aluminium, cannot generally be extracted by carbon reduction and require electrolysis.</p>`,
-  [
-    {
-      q: "What is reduction in the extraction of a metal from its oxide?",
-      steps: [
-        "Step 1: A metal oxide contains the metal chemically combined with oxygen.",
-        "Step 2: During reduction, oxygen is removed from the oxide.",
-        "Step 3: The metal is therefore obtained from its oxide."
-      ],
-      ans: "Reduction is the removal of oxygen from a metal oxide.",
-      why: "Removing oxygen from a metal oxide produces the metal."
-    },
-    {
-      q: "How can zinc be extracted from zinc oxide using carbon?",
-      steps: [
-        "Step 1: Zinc oxide is ZnO.",
-        "Step 2: Carbon acts as the reducing agent.",
-        "Step 3: Carbon removes oxygen from zinc oxide.",
-        "Step 4: Zinc metal is produced.",
-        "Step 5: The balanced equation is ZnO + C → Zn + CO."
-      ],
-      ans: "ZnO + C → Zn + CO",
-      why: "Carbon removes oxygen from zinc oxide, reducing ZnO to zinc."
-    },
-    {
-      q: "What happens to carbon monoxide when it reduces iron(III) oxide?",
-      steps: [
-        "Step 1: Carbon monoxide reacts with iron(III) oxide.",
-        "Step 2: It removes oxygen from the iron oxide.",
-        "Step 3: Carbon monoxide gains oxygen.",
-        "Step 4: It is converted into carbon dioxide."
-      ],
-      ans: "Carbon monoxide is oxidised to carbon dioxide.",
-      why: "CO removes oxygen from iron(III) oxide and therefore becomes CO₂."
-    }
-  ],
-  [
-    {
-      q: "A metal oxide reacts with carbon and produces the metal. What role does carbon play?",
-      hint: "Carbon removes oxygen from the metal oxide.",
-      steps: [
-        "Step 1: Carbon removes oxygen from the metal oxide.",
-        "Step 2: Removing oxygen from an oxide is reduction.",
-        "Step 3: Therefore, carbon acts as the reducing agent."
-      ],
-      ans: "Carbon acts as the reducing agent.",
-      why: "The reducing agent removes oxygen from the metal oxide."
-    },
-    {
-      q: "Why is aluminium not normally extracted by heating aluminium oxide with carbon?",
-      hint: "Compare aluminium's position with carbon in the reactivity series.",
-      steps: [
-        "Step 1: Aluminium is more reactive than carbon.",
-        "Step 2: Carbon cannot readily remove oxygen from aluminium oxide.",
-        "Step 3: Therefore, carbon reduction is not suitable for extracting aluminium.",
-        "Step 4: Aluminium oxide is instead extracted by electrolysis."
-      ],
-      ans: "Because aluminium is more reactive than carbon, carbon cannot effectively reduce aluminium oxide.",
-      why: "Highly reactive metals such as aluminium require electrolysis rather than ordinary carbon reduction."
-    }
-  ]
-);
-add(
-  "chemistry",
-  "metals",
-  "Extraction of Iron",
-  `<h2>Extraction of Iron</h2>
-
-  <p>Iron is extracted from iron ore in a <strong>blast furnace</strong>. The main ore used is haematite, which contains iron(III) oxide, Fe₂O₃.</p>
-
-  <h3>Raw Materials</h3>
-
-  <ul>
-    <li><strong>Haematite</strong> — source of iron(III) oxide</li>
-    <li><strong>Coke</strong> — provides heat and produces carbon monoxide</li>
-    <li><strong>Limestone</strong> — removes impurities</li>
-    <li><strong>Hot air</strong> — supplies oxygen for combustion</li>
-  </ul>
-
-  <h3>Formation of Carbon Monoxide</h3>
-
-  <p>Coke burns in the hot air to produce carbon dioxide:</p>
-
-  <p><strong>C + O₂ → CO₂</strong></p>
-
-  <p>Carbon dioxide then reacts with more hot carbon:</p>
-
-  <p><strong>CO₂ + C → 2CO</strong></p>
-
-  <p>The carbon monoxide acts as the reducing agent.</p>
-
-  <h3>Reduction of Iron(III) Oxide</h3>
-
-  <p>Carbon monoxide removes oxygen from iron(III) oxide:</p>
-
-  <p><strong>Fe₂O₃ + 3CO → 2Fe + 3CO₂</strong></p>
-
-  <p>Molten iron collects at the bottom of the furnace.</p>
-
-  <h3>Role of Limestone</h3>
-
-  <p>Limestone decomposes when heated:</p>
-
-  <p><strong>CaCO₃ → CaO + CO₂</strong></p>
-
-  <p>Calcium oxide reacts with silica impurity to form slag:</p>
-
-  <p><strong>CaO + SiO₂ → CaSiO₃</strong></p>
-
-  <p>The slag is separated from the molten iron.</p>
-
-  <h3>Key Sequence</h3>
-
-  <p><strong>Haematite → reduction → molten iron → separation from slag</strong></p>`,
-  [
-    {
-      q: "What is the main ore used to extract iron?",
-      steps: [
-        "Step 1: Iron is extracted from an iron-containing ore.",
-        "Step 2: The main ore used in the blast furnace is haematite.",
-        "Step 3: Haematite contains iron(III) oxide, Fe₂O₃."
-      ],
-      ans: "Haematite.",
-      why: "Haematite is an important iron ore containing iron(III) oxide."
-    },
-    {
-      q: "What is the role of carbon monoxide in the extraction of iron?",
-      steps: [
-        "Step 1: Iron ore contains iron(III) oxide.",
-        "Step 2: Carbon monoxide reacts with iron(III) oxide.",
-        "Step 3: Carbon monoxide removes oxygen from the iron oxide.",
-        "Step 4: Iron is produced.",
-        "Step 5: Fe₂O₃ + 3CO → 2Fe + 3CO₂."
-      ],
-      ans: "Carbon monoxide acts as a reducing agent and removes oxygen from iron(III) oxide.",
-      why: "Carbon monoxide reduces iron(III) oxide to iron."
-    },
-    {
-      q: "What is the purpose of limestone in the blast furnace?",
-      steps: [
-        "Step 1: Limestone decomposes to form calcium oxide.",
-        "Step 2: Calcium oxide reacts with silica impurity.",
-        "Step 3: Calcium silicate, called slag, is formed.",
-        "Step 4: The slag can then be separated from the molten iron."
-      ],
-      ans: "Limestone removes silica impurities by forming slag.",
-      why: "Limestone produces calcium oxide, which reacts with silica to form calcium silicate slag."
-    }
-  ],
-  [
-    {
-      q: "A blast furnace produces iron and slag. What is the function of the slag?",
-      hint: "Think about the impurities removed from the iron ore.",
-      steps: [
-        "Step 1: Iron ore contains impurities such as silica.",
-        "Step 2: Calcium oxide from limestone reacts with silica.",
-        "Step 3: Calcium silicate is formed.",
-        "Step 4: This calcium silicate is slag and can be separated from the iron."
-      ],
-      ans: "Slag is formed by reacting with impurities such as silica, allowing those impurities to be separated from the iron.",
-      why: "Slag carries unwanted impurities away from the iron during extraction."
-    },
-    {
-      q: "Write the equation for the reduction of iron(III) oxide by carbon monoxide.",
-      hint: "Iron(III) oxide is Fe₂O₃ and carbon monoxide is CO.",
-      steps: [
-        "Step 1: Write the reactants: Fe₂O₃ + CO.",
-        "Step 2: Iron(III) oxide is reduced to iron.",
-        "Step 3: Carbon monoxide is oxidised to carbon dioxide.",
-        "Step 4: Balance the equation.",
-        "Step 5: The balanced equation is Fe₂O₃ + 3CO → 2Fe + 3CO₂."
-      ],
-      ans: "Fe₂O₃ + 3CO → 2Fe + 3CO₂",
-      why: "Carbon monoxide removes oxygen from iron(III) oxide to produce iron and carbon dioxide."
-    }
-  ]
-);
-add(
-  "chemistry",
-  "metals",
-  "Rusting",
-  `<h2>Rusting</h2>
-
-  <p><strong>Rusting</strong> is the slow chemical reaction in which iron reacts with oxygen and water to form rust.</p>
-
-  <p>Rust is mainly a hydrated form of iron(III) oxide.</p>
-
-  <h3>Conditions Required for Rusting</h3>
-
-  <p>Iron requires both <strong>oxygen</strong> and <strong>water</strong> for rusting to occur.</p>
-
-  <p><strong>Iron + oxygen + water → rust</strong></p>
-
-  <h3>What Happens During Rusting?</h3>
-
-  <p>Iron atoms lose electrons during the process while oxygen is reduced. The resulting iron compounds eventually form hydrated iron(III) oxide, commonly called rust.</p>
-
-  <h3>Effects of Rusting</h3>
-
-  <p>Rusting gradually weakens iron and steel objects. It can cause:</p>
-
-  <ul>
-    <li>loss of strength;</li>
-    <li>damage to structures;</li>
-    <li>failure of machinery and equipment;</li>
-    <li>economic losses through replacement and repair.</li>
-  </ul>
-
-  <h3>Key Idea</h3>
-
-  <p>Rusting is a chemical change because new substances are formed and the process is not easily reversed by physical means.</p>`,
-  [
-    {
-      q: "What is rusting?",
-      steps: [
-        "Step 1: Iron reacts slowly with substances in its surroundings.",
-        "Step 2: Oxygen and water are required for the process.",
-        "Step 3: A new substance called rust is formed."
-      ],
-      ans: "Rusting is the slow reaction of iron with oxygen and water to form rust.",
-      why: "Rusting is a chemical reaction involving iron, oxygen and water."
-    },
-    {
-      q: "What two substances are required for iron to rust?",
-      steps: [
-        "Step 1: Rusting requires oxygen.",
-        "Step 2: Rusting also requires water.",
-        "Step 3: Therefore, both oxygen and water must be available for normal rusting to occur."
-      ],
-      ans: "Oxygen and water.",
-      why: "Both oxygen and water are necessary for ordinary rusting of iron."
-    },
-    {
-      q: "Why is rusting classified as a chemical change?",
-      steps: [
-        "Step 1: Iron reacts with oxygen and water.",
-        "Step 2: A new substance, rust, is formed.",
-        "Step 3: Formation of a new substance indicates a chemical change."
-      ],
-      ans: "Because a new substance, rust, is formed.",
-      why: "Chemical changes involve the formation of new substances."
-    }
-  ],
-  [
-    {
-      q: "An iron nail is kept in completely dry air. Will it rust normally? Explain.",
-      hint: "Rusting requires both oxygen and water.",
-      steps: [
-        "Step 1: Dry air contains oxygen but essentially no liquid water.",
-        "Step 2: Rusting requires water as well as oxygen.",
-        "Step 3: Therefore, the absence of water prevents normal rusting."
-      ],
-      ans: "No. It will not rust normally because water is required for rusting.",
-      why: "Oxygen alone is not sufficient for ordinary rusting; water is also required."
-    },
-    {
-      q: "Why can rusting cause an iron structure to become weaker?",
-      hint: "Think about what happens to the original iron as rust forms.",
-      steps: [
-        "Step 1: Rusting converts iron into corrosion products.",
-        "Step 2: The original metal is gradually lost.",
-        "Step 3: Continued rusting reduces the effective amount and strength of the iron."
-      ],
-      ans: "Rusting gradually consumes and damages the iron, reducing its strength.",
-      why: "Corrosion can reduce the amount and structural strength of iron."
-    }
-  ]
-);
-add(
-  "chemistry",
-  "metals",
-  "Rusting",
-  `<h2>Rusting</h2>
-
-  <p><strong>Rusting</strong> is the slow chemical reaction in which iron reacts with oxygen and water to form rust.</p>
-
-  <p>Rust is mainly a hydrated form of iron(III) oxide.</p>
-
-  <h3>Conditions Required for Rusting</h3>
-
-  <p>Iron requires both <strong>oxygen</strong> and <strong>water</strong> for rusting to occur.</p>
-
-  <p><strong>Iron + oxygen + water → rust</strong></p>
-
-  <h3>What Happens During Rusting?</h3>
-
-  <p>Iron atoms lose electrons during the process while oxygen is reduced. The resulting iron compounds eventually form hydrated iron(III) oxide, commonly called rust.</p>
-
-  <h3>Effects of Rusting</h3>
-
-  <p>Rusting gradually weakens iron and steel objects. It can cause:</p>
-
-  <ul>
-    <li>loss of strength;</li>
-    <li>damage to structures;</li>
-    <li>failure of machinery and equipment;</li>
-    <li>economic losses through replacement and repair.</li>
-  </ul>
-
-  <h3>Key Idea</h3>
-
-  <p>Rusting is a chemical change because new substances are formed and the process is not easily reversed by physical means.</p>`,
-  [
-    {
-      q: "What is rusting?",
-      steps: [
-        "Step 1: Iron reacts slowly with substances in its surroundings.",
-        "Step 2: Oxygen and water are required for the process.",
-        "Step 3: A new substance called rust is formed."
-      ],
-      ans: "Rusting is the slow reaction of iron with oxygen and water to form rust.",
-      why: "Rusting is a chemical reaction involving iron, oxygen and water."
-    },
-    {
-      q: "What two substances are required for iron to rust?",
-      steps: [
-        "Step 1: Rusting requires oxygen.",
-        "Step 2: Rusting also requires water.",
-        "Step 3: Therefore, both oxygen and water must be available for normal rusting to occur."
-      ],
-      ans: "Oxygen and water.",
-      why: "Both oxygen and water are necessary for ordinary rusting of iron."
-    },
-    {
-      q: "Why is rusting classified as a chemical change?",
-      steps: [
-        "Step 1: Iron reacts with oxygen and water.",
-        "Step 2: A new substance, rust, is formed.",
-        "Step 3: Formation of a new substance indicates a chemical change."
-      ],
-      ans: "Because a new substance, rust, is formed.",
-      why: "Chemical changes involve the formation of new substances."
-    }
-  ],
-  [
-    {
-      q: "An iron nail is kept in completely dry air. Will it rust normally? Explain.",
-      hint: "Rusting requires both oxygen and water.",
-      steps: [
-        "Step 1: Dry air contains oxygen but essentially no liquid water.",
-        "Step 2: Rusting requires water as well as oxygen.",
-        "Step 3: Therefore, the absence of water prevents normal rusting."
-      ],
-      ans: "No. It will not rust normally because water is required for rusting.",
-      why: "Oxygen alone is not sufficient for ordinary rusting; water is also required."
-    },
-    {
-      q: "Why can rusting cause an iron structure to become weaker?",
-      hint: "Think about what happens to the original iron as rust forms.",
-      steps: [
-        "Step 1: Rusting converts iron into corrosion products.",
-        "Step 2: The original metal is gradually lost.",
-        "Step 3: Continued rusting reduces the effective amount and strength of the iron."
-      ],
-      ans: "Rusting gradually consumes and damages the iron, reducing its strength.",
-      why: "Corrosion can reduce the amount and structural strength of iron."
-    }
-  ]
-);
-add(
-  "chemistry",
-  "metals",
-  "Alloys",
-  `<h2>Alloys</h2>
-
-  <p>An <strong>alloy</strong> is a mixture of a metal with one or more other elements, usually made to improve the properties of the metal.</p>
-
-  <h3>Why Alloys Are Made</h3>
-
-  <p>Pure metals may not always have the properties required for a particular use. Mixing a metal with other elements can produce a material with improved properties such as strength, hardness, resistance to corrosion or lower density.</p>
-
-  <h3>Common Alloys</h3>
-
-  <ul>
-    <li><strong>Steel</strong> — mainly iron and carbon.</li>
-    <li><strong>Stainless steel</strong> — mainly iron with chromium and other elements; it has good resistance to corrosion.</li>
-    <li><strong>Brass</strong> — copper and zinc.</li>
-    <li><strong>Bronze</strong> — copper and tin.</li>
-    <li><strong>Duralumin</strong> — mainly aluminium with copper and other elements; it is strong and relatively light.</li>
-  </ul>
-
-  <h3>Why Alloys Are Often Stronger</h3>
-
-  <p>In a pure metal, atoms are arranged in regular layers that can slide over one another relatively easily.</p>
-
-  <p>In an alloy, atoms of different sizes disturb the regular arrangement. This makes it more difficult for the layers to slide, so the alloy is often harder or stronger than the pure metal.</p>
-
-  <h3>Key Idea</h3>
-
-  <p>The composition of an alloy determines its properties and therefore its suitable uses.</p>`,
-  [
-    {
-      q: "What is an alloy?",
-      steps: [
-        "Step 1: An alloy contains a metal mixed with one or more other elements.",
-        "Step 2: The mixture is made to obtain useful properties.",
-        "Step 3: Therefore, an alloy is a mixture containing a metal and other element or elements."
-      ],
-      ans: "An alloy is a mixture of a metal with one or more other elements.",
-      why: "Alloys are produced by combining metals with other elements to obtain useful properties."
-    },
-    {
-      q: "What elements are mainly present in brass?",
-      steps: [
-        "Step 1: Brass is a common copper alloy.",
-        "Step 2: Its main components are copper and zinc."
-      ],
-      ans: "Copper and zinc.",
-      why: "Brass is an alloy mainly composed of copper and zinc."
-    },
-    {
-      q: "What elements are mainly present in bronze?",
-      steps: [
-        "Step 1: Bronze is a copper alloy.",
-        "Step 2: Its main added element is tin."
-      ],
-      ans: "Copper and tin.",
-      why: "Bronze is mainly an alloy of copper and tin."
-    }
-  ],
-  [
-    {
-      q: "Why can an alloy be harder or stronger than the pure metal from which it is made?",
-      hint: "Think about how atoms of different sizes affect the arrangement of metal atoms.",
-      steps: [
-        "Step 1: Pure metal atoms form regular layers.",
-        "Step 2: These layers can slide over one another.",
-        "Step 3: Atoms of different sizes in an alloy disturb the regular arrangement.",
-        "Step 4: The layers therefore find it more difficult to slide.",
-        "Step 5: This can make the alloy harder or stronger."
-      ],
-      ans: "Different-sized atoms disturb the regular arrangement and make it more difficult for layers of atoms to slide.",
-      why: "The disrupted structure of an alloy can resist deformation more effectively than a pure metal."
-    },
-    {
-      q: "A material must be strong, relatively light and suitable for aircraft construction. Why could an aluminium alloy such as duralumin be preferred to pure aluminium?",
-      hint: "Compare the strength of an alloy with the properties of pure aluminium.",
-      steps: [
-        "Step 1: Pure aluminium has the advantage of low density.",
-        "Step 2: An alloy such as duralumin is stronger while remaining relatively light.",
-        "Step 3: Aircraft construction requires materials that combine low mass with sufficient strength.",
-        "Step 4: Therefore, duralumin can be more suitable than pure aluminium."
-      ],
-      ans: "Duralumin is stronger while remaining relatively light, making it suitable for applications such as aircraft construction.",
-      why: "Alloying can improve the strength of aluminium without losing its advantage of relatively low density."
-    }
-  ]
-);
-add(
-  "chemistry",
-  "metals",
-  "Uses of Metals",
-  `<h2>Uses of Metals</h2>
-
-  <p>Metals are used in different applications because of their physical and chemical properties such as strength, electrical conductivity, thermal conductivity, low density and resistance to corrosion.</p>
-
-  <h3>Aluminium</h3>
-
-  <p>Aluminium is light, malleable and resistant to corrosion.</p>
-
-  <p>It is used for:</p>
-
-  <ul>
-    <li>aircraft construction;</li>
-    <li>cooking utensils;</li>
-    <li>food and drink containers;</li>
-    <li>electrical transmission cables.</li>
-  </ul>
-
-  <h3>Copper</h3>
-
-  <p>Copper is a good conductor of electricity and heat and is relatively resistant to corrosion.</p>
-
-  <p>It is used for:</p>
-
-  <ul>
-    <li>electrical wiring;</li>
-    <li>water pipes;</li>
-    <li>heat exchangers;</li>
-    <li>making alloys such as brass and bronze.</li>
-  </ul>
-
-  <h3>Iron and Steel</h3>
-
-  <p>Iron and steel are strong and are widely used in construction and manufacturing.</p>
-
-  <p>They are used for:</p>
-
-  <ul>
-    <li>buildings and bridges;</li>
-    <li>machinery;</li>
-    <li>vehicles;</li>
-    <li>tools and equipment.</li>
-  </ul>
-
-  <h3>Zinc</h3>
-
-  <p>Zinc is used mainly for protecting iron and steel from corrosion and for making alloys such as brass.</p>
-
-  <h3>Gold and Silver</h3>
-
-  <p>Gold and silver are relatively unreactive and are valued for their appearance and resistance to corrosion.</p>
-
-  <p>They are used in:</p>
-
-  <ul>
-    <li>jewellery;</li>
-    <li>electrical and electronic components;</li>
-    <li>specialised industrial applications.</li>
-  </ul>
-
-  <h3>Key Idea</h3>
-
-  <p>The use of a metal depends on the properties that make it suitable for a particular application.</p>`,
-  [
-    {
-      q: "Why is copper commonly used for electrical wiring?",
-      steps: [
-        "Step 1: Electrical wires need a material that allows electric current to pass through easily.",
-        "Step 2: Copper is a good conductor of electricity.",
-        "Step 3: Copper is also ductile, so it can be drawn into wires.",
-        "Step 4: Therefore, copper is suitable for electrical wiring."
-      ],
-      ans: "Because copper conducts electricity well and is ductile enough to be drawn into wires.",
-      why: "Good electrical conductivity and ductility make copper suitable for electrical wiring."
-    },
-    {
-      q: "Why is aluminium suitable for aircraft construction?",
-      steps: [
-        "Step 1: Aircraft construction requires materials with relatively low mass.",
-        "Step 2: Aluminium has a low density.",
-        "Step 3: Aluminium can also be made into strong alloys.",
-        "Step 4: Therefore, aluminium alloys can provide useful strength without excessive mass."
-      ],
-      ans: "Because aluminium has low density and its alloys can provide useful strength while remaining relatively light.",
-      why: "Low density and suitable strength make aluminium alloys useful in aircraft construction."
-    },
-    {
-      q: "Why are iron and steel widely used in construction?",
-      steps: [
-        "Step 1: Construction materials need to withstand large forces.",
-        "Step 2: Iron and steel have high strength.",
-        "Step 3: They can therefore support heavy loads and form strong structures."
-      ],
-      ans: "Because iron and steel are strong and can withstand large forces.",
-      why: "Their strength makes them suitable for structures, machinery and other heavy-duty applications."
-    }
-  ],
-  [
-    {
-      q: "A manufacturer needs a metal for making electrical cables. Which property should be especially important?",
-      hint: "Electrical cables must allow electric current to flow easily.",
-      steps: [
-        "Step 1: Electric current must pass through the cable.",
-        "Step 2: The material should therefore have high electrical conductivity.",
-        "Step 3: Copper has high electrical conductivity and is ductile."
-      ],
-      ans: "High electrical conductivity.",
-      why: "A good electrical conductor allows current to flow through the cable efficiently."
-    },
-    {
-      q: "A cooking utensil needs a material that transfers heat effectively. Which property of metals is useful?",
-      hint: "Think about how heat moves through a metal.",
-      steps: [
-        "Step 1: Heat must move from the heat source through the utensil.",
-        "Step 2: A material with good thermal conductivity transfers heat effectively.",
-        "Step 3: Many metals are good conductors of heat."
-      ],
-      ans: "High thermal conductivity.",
-      why: "Good thermal conductivity allows heat to be transferred efficiently through the material."
-    }
-  ]
-);
 add(
   "chemistry",
   "environment",
