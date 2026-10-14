@@ -1814,16 +1814,6 @@
         ]
       },
       {
-        "id": "non_metals",
-        "label": "Non-metals",
-        "topics": [
-          "Preparation of Hydrogen",
-          "Properties of Hydrogen",
-          "Test for Hydrogen",
-          "Uses of Hydrogen"
-        ]
-      },
-      {
         "id": "environment",
         "label": "Environment",
         "topics": [
