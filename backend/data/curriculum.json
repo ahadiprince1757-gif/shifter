@@ -1768,15 +1768,6 @@
         ]
       },
       {
-        "id": "rate_reactions",
-        "label": "Rate of Reactions",
-        "topics": [
-          "Collision Theory",
-          "Activation Energy",
-          "Effective Collisions"
-        ]
-      },
-      {
         "id": "chemical_energetics",
         "label": "Chemical Energetics",
         "topics": [
