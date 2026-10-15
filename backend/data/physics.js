@@ -16244,409 +16244,752 @@ T = time
 // Subject: Physics
 // Rule: One concept per screen
 // =====================================================
-
-// -----------------------------------------------------
-// SCREEN 1: MEANING OF CATHODE RAYS
-// -----------------------------------------------------
-
 add(
   "physics",
   "cathode_rays",
-  "Meaning of Cathode Rays",
+  "What Cathode Rays Are",
   `
-  <h2>Meaning of Cathode Rays</h2>
+  <h2>What Cathode Rays Are</h2>
 
-  <p>
-    Cathode rays are streams of electrons moving through
-    a vacuum in a discharge tube.
-  </p>
+  <p><strong>Cathode rays are streams of electrons produced in a discharge tube.</strong> Electrons are negatively charged subatomic particles. In the tube, they move from the region of the cathode towards the anode when a suitable potential difference is applied.</p>
 
-  <h3>Understanding the concept</h3>
+  <h3>How cathode rays are produced</h3>
 
-  <p>
-    Electrons are tiny particles that carry negative electric
-    charge. When they are emitted from the cathode and move
-    through the tube, the moving electrons form cathode rays.
-  </p>
+  <p>A discharge tube contains gas at very low pressure. When a sufficiently high potential difference is applied between its electrodes, electrons are released from the cathode and accelerated through the tube. The moving electrons form the cathode-ray beam.</p>
 
-  <p>
-    Cathode rays are therefore not ordinary light rays.
-    They consist of moving particles.
-  </p>
+  <p>The beam is called a ray because it follows a path through the tube. However, cathode rays are not ordinary visible light: they consist of moving electrons.</p>
+
+  <h3>Important distinctions</h3>
+
+  <ul>
+    <li><strong>Cathode:</strong> the electrode from which electrons are emitted.</li>
+    <li><strong>Anode:</strong> the positive electrode towards which electrons are accelerated in the usual discharge-tube arrangement.</li>
+    <li><strong>Cathode rays:</strong> the moving stream of electrons, not the electrode and not the tube itself.</li>
+  </ul>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> What are cathode rays?</p>
+  <p><strong>Question:</strong> Describe cathode rays to a learner who thinks they are a type of light.</p>
 
-  <p><b>Step 1:</b> Identify the particles involved.</p>
-  <p>They are electrons.</p>
+  <p><strong>Step 1:</strong> Identify what forms the beam.</p>
+  <p>The beam consists of electrons.</p>
 
-  <p><b>Step 2:</b> Describe their movement.</p>
-  <p>They move through a vacuum in a discharge tube.</p>
+  <p><strong>Step 2:</strong> Identify the nature of electrons.</p>
+  <p>Electrons are negatively charged particles.</p>
 
-  <p><b>Answer:</b> Cathode rays are streams of electrons
-  moving through a vacuum in a discharge tube.</p>
+  <p><strong>Answer:</strong> Cathode rays are streams of moving electrons, not ordinary light.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> Are cathode rays made of light or
-  particles?</p>
+  <p><strong>Question:</strong> A student says that the cathode rays are the metal cathode itself. Correct the statement.</p>
 
-  <p><b>Step 1:</b> Recall what forms cathode rays.</p>
-  <p>They are streams of electrons.</p>
+  <p><strong>Step 1:</strong> Distinguish the source from what leaves it.</p>
+  <p>The cathode is an electrode in the tube.</p>
 
-  <p><b>Step 2:</b> Identify the nature of electrons.</p>
-  <p>Electrons are particles.</p>
+  <p><strong>Step 2:</strong> Identify what moves away from the cathode.</p>
+  <p>Electrons leave the cathode and form a beam.</p>
 
-  <p><b>Answer:</b> Cathode rays consist of particles,
-  specifically electrons.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> A student says cathode rays are
-  streams of protons. Identify the error.</p>
-
-  <p><b>Step 1:</b> Recall the particles forming cathode rays.</p>
-  <p>They are electrons, not protons.</p>
-
-  <p><b>Step 2:</b> State the correction.</p>
-  <p><b>Answer:</b> Cathode rays are streams of electrons.</p>
+  <p><strong>Answer:</strong> The cathode is the electrode; cathode rays are the stream of electrons emitted from it.</p>
   `,
   [
     {
       q: "What are cathode rays?",
-      hint: "Identify the particles moving through the tube.",
+      hint: "State the particles that form the beam.",
       steps: [
-        "Recall the particles emitted in a cathode ray tube.",
-        "Identify them as electrons.",
+        "Identify what moves through the discharge tube.",
+        "Recall the name of the particles involved.",
         "Describe them as a moving stream."
       ],
-      ans: "Cathode rays are streams of electrons moving through a vacuum in a discharge tube.",
-      why: "Cathode rays consist of moving electrons."
+      ans: "Cathode rays are streams of electrons.",
+      why: "Cathode rays consist of moving electrons, which carry negative electric charge."
     },
     {
-      q: "Are cathode rays streams of electrons or protons?",
+      q: "A learner calls cathode rays ordinary visible light. What is the fundamental error?",
+      hint: "Compare what the beam consists of with what light is.",
+      steps: [
+        "Recall the composition of cathode rays.",
+        "Identify electrons as particles.",
+        "State why the beam is not ordinary light."
+      ],
+      ans: "Cathode rays consist of electrons, not ordinary visible light.",
+      why: "The term ray describes the beam's path; cathode rays are made of electrons."
+    },
+    {
+      q: "Distinguish between the cathode and cathode rays.",
+      hint: "One is an electrode; the other is what moves through the tube.",
+      steps: [
+        "Identify the cathode as part of the apparatus.",
+        "Identify the particles emitted from it.",
+        "State the difference."
+      ],
+      ans: "The cathode is the electrode that emits electrons, while cathode rays are the moving stream of those electrons.",
+      why: "The source and the emitted beam are different things."
+    },
+    {
+      q: "In a discharge tube, which particles form the cathode-ray beam: electrons, protons or neutrons? Explain your choice.",
+      hint: "Think of the particles emitted from the cathode in this experiment.",
       steps: [
         "Recall the definition of cathode rays.",
-        "Identify the particles that form the rays.",
-        "Choose electrons rather than protons."
+        "Select the particles that form the beam.",
+        "Connect the selected particles to the definition."
       ],
-      ans: "Cathode rays are streams of electrons.",
-      why: "Electrons are the particles emitted to form cathode rays."
+      ans: "Electrons form the cathode-ray beam because cathode rays are streams of electrons.",
+      why: "Protons and neutrons are not the particles that constitute cathode rays."
     },
     {
-      q: "A student describes cathode rays as ordinary light. What is wrong with this description?",
-      hint: "Think about the particles that form the rays.",
+      q: "Complete the explanation: Cathode rays are produced when ______ leave the ______ and move through the tube.",
+      hint: "One blank names a particle; the other names an electrode.",
       steps: [
-        "Recall what cathode rays consist of.",
-        "Identify electrons as material particles.",
-        "Distinguish the electron beam from light."
+        "Identify the moving particles.",
+        "Identify the electrode from which they are emitted.",
+        "Place each term in the correct blank."
       ],
-      ans: "Cathode rays are streams of electrons, not ordinary light.",
-      why: "Cathode rays have the particle nature of electrons."
+      ans: "Cathode rays are produced when electrons leave the cathode and move through the tube.",
+      why: "Electrons emitted from the cathode form the beam."
     }
   ]
 );
-
-// -----------------------------------------------------
-// SCREEN 2: NEGATIVE CHARGE OF CATHODE RAYS
-// -----------------------------------------------------
-
 add(
   "physics",
   "cathode_rays",
-  "Negative Charge of Cathode Rays",
+  "Why Cathode Rays Carry Negative Charge",
   `
-  <h2>Negative Charge of Cathode Rays</h2>
+  <h2>Why Cathode Rays Carry Negative Charge</h2>
 
-  <p>
-    Cathode rays carry negative electric charge because
-    they consist of electrons.
-  </p>
+  <p>Cathode rays carry negative electric charge because they consist of electrons, and every electron has a negative charge.</p>
 
-  <h3>Understanding the concept</h3>
+  <h3>Charge of an electron</h3>
 
-  <p>
-    Each electron carries a negative charge. A stream of
-    electrons therefore carries negative charge.
-  </p>
+  <p>The charge of one electron is approximately:</p>
 
-  <p>
-    The charge of one electron is approximately
-    -1.6 × 10⁻¹⁹ C.
-  </p>
+  <p><strong>e = −1.60 × 10⁻¹⁹ C</strong></p>
+
+  <p>The unit C stands for coulomb, the SI unit of electric charge. The negative sign identifies the type of charge; it is not simply a statement that the charge is small.</p>
+
+  <h3>How the charge can be identified experimentally</h3>
+
+  <p>When a cathode-ray beam passes between oppositely charged plates, it bends towards the positively charged plate and away from the negatively charged plate. This behaviour is consistent with the beam carrying negative charge.</p>
+
+  <p>Unlike charges attract and like charges repel. Since the moving particles in cathode rays are electrons, the observed direction of deflection agrees with the known charge of electrons.</p>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> What is the charge of cathode rays?</p>
+  <p><strong>Question:</strong> Explain why a cathode-ray beam is negatively charged.</p>
 
-  <p><b>Step 1:</b> Identify their constituent particles.</p>
+  <p><strong>Step 1:</strong> Identify the particles in the beam.</p>
   <p>Cathode rays consist of electrons.</p>
 
-  <p><b>Step 2:</b> Recall the charge of an electron.</p>
-  <p>An electron has a negative charge.</p>
+  <p><strong>Step 2:</strong> Recall the charge of an electron.</p>
+  <p>An electron carries negative charge.</p>
 
-  <p><b>Answer:</b> Cathode rays carry negative charge.</p>
+  <p><strong>Conclusion:</strong> The beam is negatively charged because it is a stream of negatively charged electrons.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> Explain why cathode rays are negatively
-  charged.</p>
+  <p><strong>Question:</strong> A cathode-ray beam bends towards a positively charged plate. What does this observation indicate about the charge of the beam?</p>
 
-  <p><b>Step 1:</b> Recall that cathode rays are electrons.</p>
-  <p><b>Step 2:</b> Recall that electrons carry negative charge.</p>
+  <p><strong>Step 1:</strong> Recall the interaction of charges.</p>
+  <p>Opposite charges attract.</p>
 
-  <p><b>Answer:</b> Cathode rays are negatively charged
-  because they consist of negatively charged electrons.</p>
+  <p><strong>Step 2:</strong> Interpret the direction.</p>
+  <p>The beam is attracted towards the positive plate.</p>
 
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> A particle beam is positively charged.
-  Can it be a cathode ray beam as defined in this topic?</p>
-
-  <p><b>Step 1:</b> Recall the identity of cathode rays.</p>
-  <p>They are streams of electrons.</p>
-
-  <p><b>Step 2:</b> Compare the charges.</p>
-  <p>Electrons carry negative charge, not positive charge.</p>
-
-  <p><b>Answer:</b> No. Cathode rays consist of negatively
-  charged electrons.</p>
+  <p><strong>Answer:</strong> The observation indicates that the beam carries negative charge.</p>
   `,
   [
     {
-      q: "Why are cathode rays negatively charged?",
-      hint: "Think about the charge of an electron.",
+      q: "Why do cathode rays carry negative electric charge?",
+      hint: "Connect the identity of the particles to their charge.",
       steps: [
-        "Identify the particles forming cathode rays.",
-        "Recall that electrons carry negative charge.",
-        "Apply this property to the electron stream."
+        "Identify the particles that form cathode rays.",
+        "Recall the charge carried by each electron.",
+        "Apply that charge to the stream."
       ],
-      ans: "Cathode rays are negatively charged because they consist of electrons.",
-      why: "Each electron carries negative electric charge."
+      ans: "Cathode rays carry negative charge because they consist of negatively charged electrons.",
+      why: "A stream of electrons carries the negative charge of its constituent particles."
     },
     {
-      q: "State the approximate charge of one electron.",
+      q: "State the approximate charge of one electron, including its sign and unit.",
+      hint: "The magnitude is 1.60 × 10⁻¹⁹; an electron has a negative sign.",
       steps: [
-        "Recall the elementary charge magnitude.",
-        "Use the negative sign for an electron.",
-        "Include the SI unit."
+        "Recall the magnitude of the elementary charge.",
+        "Use a negative sign for an electron.",
+        "Include the unit of electric charge."
       ],
-      ans: "-1.6 × 10⁻¹⁹ C",
-      why: "An electron carries approximately -1.6 × 10⁻¹⁹ coulombs."
+      ans: "−1.60 × 10⁻¹⁹ C",
+      why: "The electron's charge is approximately −1.60 × 10⁻¹⁹ coulombs."
     },
     {
-      q: "A beam is positively charged. Why is it not a cathode ray beam?",
+      q: "A cathode-ray beam bends towards a positively charged plate. Explain what this tells you about its charge.",
+      hint: "Consider whether like or unlike charges attract.",
       steps: [
-        "Recall that cathode rays consist of electrons.",
-        "Recall that electrons have negative charge.",
-        "Compare the expected charge with the stated positive charge."
+        "Recall that unlike charges attract.",
+        "Identify the charge of the plate.",
+        "Infer the sign of the beam's charge."
       ],
-      ans: "Cathode rays consist of negatively charged electrons, so a positively charged beam does not have the stated properties of cathode rays.",
-      why: "The negative charge follows from the identity of the particles."
+      ans: "The beam carries negative charge because it is attracted towards the positively charged plate.",
+      why: "The observed attraction is consistent with a negatively charged beam."
+    },
+    {
+      q: "A learner argues that cathode rays must be positive because they move towards the anode. Explain why this conclusion is incorrect.",
+      hint: "Distinguish the direction of motion from the charge of the particles.",
+      steps: [
+        "Recall the charge of electrons.",
+        "Recognise that electrons are attracted to a positive electrode.",
+        "Separate the direction of travel from the sign of charge."
+      ],
+      ans: "The conclusion is incorrect because cathode rays consist of negatively charged electrons, which are attracted towards the positive anode.",
+      why: "Moving towards a positive electrode does not mean the particles are positive; negative charges are attracted to positive charges."
+    },
+    {
+      q: "A beam is deflected away from a negatively charged plate and towards a positively charged plate. State its likely charge and justify your answer.",
+      hint: "Use both observations, not just one.",
+      steps: [
+        "Identify the plate the beam is attracted towards.",
+        "Recall the rule for unlike charges.",
+        "Check that repulsion from the negative plate agrees with the same conclusion."
+      ],
+      ans: "The beam is negatively charged because it is attracted to the positive plate and repelled by the negative plate.",
+      why: "Both observations are consistent with a negative charge."
     }
   ]
 );
-
-// -----------------------------------------------------
-// SCREEN 3: STRAIGHT-LINE TRAVEL OF CATHODE RAYS
-// -----------------------------------------------------
-
 add(
   "physics",
   "cathode_rays",
-  "Straight-Line Travel of Cathode Rays",
+  "How Cathode Rays Travel in Straight Lines",
   `
-  <h2>Straight-Line Travel of Cathode Rays</h2>
+  <h2>How Cathode Rays Travel in Straight Lines</h2>
 
-  <p>
-    Cathode rays travel in straight lines when they move
-    through a uniform vacuum without deflecting fields.
-  </p>
+  <p>Cathode rays travel in straight lines when they move through a uniform region without a deflecting electric or magnetic field.</p>
 
-  <h3>Understanding the concept</h3>
+  <h3>Evidence from shadow formation</h3>
 
-  <p>
-    An object placed in the path of cathode rays can block
-    the beam. The region behind the object receives no direct
-    rays, producing a shadow on a suitable fluorescent screen.
-  </p>
+  <p>Place an opaque object between a cathode-ray source and a fluorescent screen. The object blocks the rays that would otherwise reach the region behind it. The affected region of the screen glows less or remains dark, forming a shadow.</p>
+
+  <p>The sharpness and position of the shadow provide evidence that the rays travel along definite, approximately straight paths rather than spreading around the object like waves passing through a narrow opening.</p>
+
+  <h3>What the observation does and does not show</h3>
+
+  <ul>
+    <li>A shadow supports straight-line propagation under the conditions of the experiment.</li>
+    <li>The observation does not, by itself, establish the charge or mass of the particles.</li>
+    <li>Electric and magnetic fields can change the direction of the beam, so the straight-line statement assumes no significant deflecting field.</li>
+  </ul>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> State the direction of travel of
-  cathode rays in the absence of deflecting fields.</p>
+  <p><strong>Question:</strong> An opaque cross is placed in the path of cathode rays. A cross-shaped shadow appears on the fluorescent screen. What conclusion is supported?</p>
 
-  <p><b>Step 1:</b> Recall the observed path of cathode rays.</p>
-  <p><b>Step 2:</b> State the path.</p>
+  <p><strong>Step 1:</strong> Identify what caused the shadow.</p>
+  <p>The cross blocked rays from reaching part of the screen.</p>
 
-  <p><b>Answer:</b> They travel in straight lines.</p>
+  <p><strong>Step 2:</strong> Interpret the blocked region.</p>
+  <p>The rays did not bend around the cross sufficiently to illuminate the shadow region.</p>
+
+  <p><strong>Answer:</strong> The observation supports the conclusion that cathode rays travel in straight lines under the experimental conditions.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> Why can an object produce a shadow
-  in the path of cathode rays?</p>
+  <p><strong>Question:</strong> A student claims that a shadow produced by cathode rays proves that the rays are negatively charged. Is the conclusion justified?</p>
 
-  <p><b>Step 1:</b> Cathode rays travel in straight lines.</p>
-  <p><b>Step 2:</b> The object blocks the rays.</p>
-  <p><b>Step 3:</b> The region behind the object receives
-  no direct rays.</p>
+  <p><strong>Step 1:</strong> Identify what a shadow demonstrates.</p>
+  <p>It provides evidence about the path of the rays.</p>
 
-  <p><b>Answer:</b> The object blocks the straight-moving
-  cathode rays, producing a shadow.</p>
+  <p><strong>Step 2:</strong> Identify what it does not directly measure.</p>
+  <p>A shadow alone does not establish the sign of electric charge.</p>
 
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> A solid object is placed between a
-  cathode ray source and a fluorescent screen. What observation
-  supports straight-line travel?</p>
-
-  <p><b>Step 1:</b> The object blocks the beam.</p>
-  <p><b>Step 2:</b> The screen does not glow in the blocked
-  region in the same way as the exposed region.</p>
-
-  <p><b>Answer:</b> A shadow forms behind the object.</p>
+  <p><strong>Answer:</strong> No. The shadow supports straight-line travel, not the sign of the rays' charge.</p>
   `,
   [
     {
-      q: "How do cathode rays travel in the absence of deflecting fields?",
+      q: "What path do cathode rays follow when no significant deflecting field acts on them?",
+      hint: "Think of the path supported by shadow experiments.",
       steps: [
         "Recall the observed path of cathode rays.",
-        "State the direction of travel."
+        "State the path under the stated conditions."
       ],
-      ans: "Cathode rays travel in straight lines.",
-      why: "Their straight-line travel can be demonstrated by shadow formation."
+      ans: "They travel in straight lines.",
+      why: "Straight-line propagation is supported by observations such as the formation of shadows."
     },
     {
-      q: "Why does an opaque object produce a shadow in a cathode ray beam?",
-      hint: "Think about the path of the rays and what the object blocks.",
+      q: "An opaque object placed in a cathode-ray beam produces a shadow on a fluorescent screen. Explain how the shadow forms.",
+      hint: "Think about which parts of the screen receive the rays.",
       steps: [
-        "Cathode rays travel in straight lines.",
-        "The object blocks rays travelling toward the screen.",
-        "The region behind the object receives no direct rays."
+        "The object blocks the rays travelling towards it.",
+        "The region behind the object receives fewer or no direct rays.",
+        "That region glows less, forming a shadow."
       ],
-      ans: "The object blocks the straight-moving cathode rays, leaving a shadow behind it.",
-      why: "The shadow demonstrates that the rays do not simply bend around the object."
+      ans: "The object blocks the cathode rays, so the region behind it receives fewer or no direct rays and forms a shadow on the screen.",
+      why: "A fluorescent screen glows where cathode rays strike it."
     },
     {
-      q: "Which observation supports the straight-line travel of cathode rays?",
+      q: "A student observes a shadow and concludes that cathode rays carry negative charge. What is wrong with the reasoning?",
+      hint: "Ask what property a shadow directly tests.",
       steps: [
-        "Consider placing an object in the beam.",
-        "Observe the pattern on a fluorescent screen.",
-        "Identify the dark region behind the object."
+        "Identify the evidence: a shadow.",
+        "State the property the shadow supports.",
+        "Distinguish path evidence from charge evidence."
       ],
-      ans: "Formation of a shadow behind the object.",
-      why: "The object blocks the rays travelling directly toward the screen."
+      ans: "A shadow supports straight-line travel but does not by itself show that cathode rays are negatively charged.",
+      why: "The sign of charge is established by other evidence, such as deflection in an electric field."
+    },
+    {
+      q: "Why should an experiment on straight-line travel account for electric or magnetic fields near the beam?",
+      hint: "Recall what these fields can do to moving electrons.",
+      steps: [
+        "Recognise that cathode rays are moving electrons.",
+        "Recall that electric and magnetic fields can deflect moving charged particles.",
+        "Explain why the fields may change the observed path."
+      ],
+      ans: "Electric or magnetic fields can deflect the electron beam, so they may change its path from a straight line.",
+      why: "The straight-line conclusion applies when significant deflecting fields are absent."
+    },
+    {
+      q: "A small opaque disc blocks part of a cathode-ray beam. The screen directly behind the disc shows a dark circular region. What does this observation support, and what does it not prove?",
+      hint: "Separate the path conclusion from other properties of the rays.",
+      steps: [
+        "Relate the dark region to rays blocked by the disc.",
+        "Infer the path property supported by the shadow.",
+        "Name a different property that the shadow does not establish."
+      ],
+      ans: "It supports straight-line travel of cathode rays, but it does not by itself prove their charge or mass.",
+      why: "The shadow shows where the beam is blocked; it is not a direct measurement of charge or mass."
     }
   ]
 );
-
-// -----------------------------------------------------
-// SCREEN 4: CATHODE RAYS AS PARTICLES
-// -----------------------------------------------------
-
 add(
   "physics",
   "cathode_rays",
-  "Cathode Rays as Particles",
+  "Evidence That Cathode Rays Have Mass and Momentum",
   `
-  <h2>Cathode Rays as Particles</h2>
+  <h2>Evidence That Cathode Rays Have Mass and Momentum</h2>
 
-  <p>
-    Cathode rays can transfer momentum to objects they strike.
-    This provides evidence that they consist of particles.
-  </p>
+  <p>Electrons have mass. When electrons move, they also have momentum. Experiments showing that a cathode-ray beam can transfer energy and momentum to an object support the view that the beam consists of moving particles.</p>
 
-  <h3>Understanding the concept</h3>
+  <h3>The paddle-wheel observation</h3>
 
-  <p>
-    In a traditional discharge-tube experiment, cathode rays
-    can cause a light paddle wheel to move. The moving
-    electrons transfer momentum when they interact with the wheel.
-  </p>
+  <p>In historical discharge-tube experiments, a small paddle wheel placed in the path of cathode rays was observed to move under certain conditions. This was historically interpreted as evidence that the rays could transfer momentum.</p>
+
+  <p>However, the paddle-wheel observation alone is not conclusive proof of the particle nature of cathode rays. Heating, gas effects and other forces can complicate the interpretation of the wheel's motion. Stronger conclusions come from combining several experiments, including electric and magnetic deflection and evidence of energy transfer.</p>
+
+  <h3>Mass and momentum</h3>
+
+  <p><strong>Mass</strong> is a property of matter. An electron has a small but non-zero rest mass, approximately 9.11 × 10⁻³¹ kg.</p>
+
+  <p><strong>Momentum</strong> describes the motion of an object. At ordinary, non-relativistic speeds, momentum is calculated using:</p>
+
+  <p><strong>p = mv</strong></p>
+
+  <p>where p is momentum, m is mass and v is velocity. For electrons moving at speeds approaching the speed of light, the relativistic momentum formula is needed; the simple formula is an approximation.</p>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> What does the movement of a light
-  paddle wheel in a cathode ray tube demonstrate?</p>
+  <p><strong>Question:</strong> An electron of mass 9.11 × 10⁻³¹ kg moves at 2.0 × 10⁶ m/s. Estimate its momentum using p = mv.</p>
 
-  <p><b>Step 1:</b> Observe that the wheel moves when struck.</p>
-  <p><b>Step 2:</b> Recognize that momentum is transferred.</p>
-  <p><b>Step 3:</b> Relate momentum transfer to particle behaviour.</p>
+  <p><strong>Step 1:</strong> Write the formula.</p>
+  <p>p = mv</p>
 
-  <p><b>Answer:</b> The observation provides evidence that
-  cathode rays consist of particles.</p>
+  <p><strong>Step 2:</strong> Substitute the values.</p>
+  <p>p = (9.11 × 10⁻³¹)(2.0 × 10⁶)</p>
+
+  <p><strong>Step 3:</strong> Multiply the numbers and powers of ten.</p>
+  <p>p = 18.22 × 10⁻²⁵ = 1.822 × 10⁻²⁴ kg m/s</p>
+
+  <p><strong>Answer:</strong> p ≈ 1.8 × 10⁻²⁴ kg m/s.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> What physical quantity is transferred
-  when cathode rays push a paddle wheel?</p>
+  <p><strong>Question:</strong> A paddle wheel moves when struck by a cathode-ray beam. Why is this observation relevant, and why should it be interpreted cautiously?</p>
 
-  <p><b>Step 1:</b> Identify the interaction between the
-  electron beam and the wheel.</p>
-  <p><b>Step 2:</b> Identify the quantity responsible for
-  the wheel's motion.</p>
+  <p><strong>Step 1:</strong> Identify the possible transfer.</p>
+  <p>The beam may transfer energy and momentum to the wheel.</p>
 
-  <p><b>Answer:</b> Momentum is transferred to the wheel.</p>
+  <p><strong>Step 2:</strong> Relate this to moving particles.</p>
+  <p>Moving particles can transfer momentum when they interact with an object.</p>
 
-  <h3>Worked Example 3</h3>
+  <p><strong>Step 3:</strong> Consider alternative effects.</p>
+  <p>Heating and gas effects may also influence the wheel.</p>
 
-  <p><b>Question:</b> A paddle wheel does not move when
-  exposed to a cathode ray beam. Does this single observation
-  prove that cathode rays are not particles?</p>
-
-  <p><b>Step 1:</b> Recall the purpose of the experiment.</p>
-  <p><b>Step 2:</b> Recognize that a lack of visible motion
-  does not by itself establish the nature of the beam.</p>
-
-  <p><b>Answer:</b> No. The result alone does not prove that
-  cathode rays are not particles.</p>
+  <p><strong>Answer:</strong> The motion is consistent with momentum transfer, but the observation alone is not conclusive proof that cathode rays are particles.</p>
   `,
   [
     {
-      q: "What does the movement of a light paddle wheel under cathode ray bombardment demonstrate?",
-      hint: "Think about the motion transferred to the wheel.",
+      q: "What does momentum describe?",
+      hint: "It is a quantity associated with an object's motion.",
       steps: [
-        "Observe that the wheel moves.",
-        "Recognize that the beam transfers momentum.",
-        "Relate this observation to particle behaviour."
+        "Identify momentum as a physical quantity.",
+        "Relate it to an object's mass and motion."
       ],
-      ans: "It provides evidence that cathode rays consist of particles.",
-      why: "The electron beam transfers momentum to the paddle wheel."
+      ans: "Momentum is a quantity describing the motion of an object.",
+      why: "For non-relativistic motion, momentum is the product of mass and velocity."
     },
     {
-      q: "What is transferred from cathode rays to a paddle wheel when the beam makes it move?",
+      q: "An electron has a mass of 9.11 × 10⁻³¹ kg and a speed of 2.0 × 10⁶ m/s. Calculate its approximate momentum using p = mv.",
+      hint: "Multiply the mass by the speed and combine the powers of ten.",
       steps: [
-        "Identify the moving electron beam.",
-        "Identify the wheel's resulting motion.",
-        "Name the physical quantity transferred."
+        "Write p = mv.",
+        "Substitute p = (9.11 × 10⁻³¹)(2.0 × 10⁶).",
+        "Multiply 9.11 by 2.0 to get 18.22.",
+        "Add the exponents: −31 + 6 = −25.",
+        "Write the result in standard form."
       ],
-      ans: "Momentum.",
-      why: "The interaction transfers momentum from the beam to the wheel."
+      ans: "1.8 × 10⁻²⁴ kg m/s",
+      why: "The product is 18.22 × 10⁻²⁵ = 1.822 × 10⁻²⁴ kg m/s, which rounds to 1.8 × 10⁻²⁴ kg m/s."
     },
     {
-      q: "Does a stationary paddle wheel prove that cathode rays are not particles?",
+      q: "Why was the movement of a paddle wheel in a cathode-ray tube historically considered evidence relevant to the particle nature of cathode rays?",
+      hint: "Think about what moving particles can transfer to an object.",
       steps: [
-        "Recall that the experiment uses wheel movement as evidence.",
-        "Recognize that one unsuccessful observation may have other causes.",
-        "Avoid treating the observation as conclusive proof."
+        "Identify the observed movement of the wheel.",
+        "Consider the transfer of energy or momentum from the beam.",
+        "Connect that transfer to the behaviour of moving particles."
       ],
-      ans: "No. A stationary wheel alone does not prove that cathode rays are not particles.",
-      why: "A single experimental result is not sufficient to disprove the particle nature of cathode rays."
+      ans: "The wheel's movement was interpreted as evidence that cathode rays could transfer momentum to an object.",
+      why: "Momentum transfer is consistent with a beam of moving particles, although the observation is not conclusive on its own."
+    },
+    {
+      q: "Why is it scientifically inaccurate to say that the paddle-wheel experiment alone proves cathode rays consist of particles?",
+      hint: "Consider whether other effects might move the wheel.",
+      steps: [
+        "State the observation made in the experiment.",
+        "Recognise that more than one physical effect may cause movement.",
+        "Explain why independent evidence is needed."
+      ],
+      ans: "Because heating, gas effects and other forces may contribute to the wheel's movement, so the observation alone is not conclusive proof.",
+      why: "Scientific conclusions are stronger when several independent observations support the same explanation."
+    },
+    {
+      q: "Two electrons move at different non-relativistic speeds. Their masses are equal. Which electron has the greater momentum, and why?",
+      hint: "Use p = mv and compare the quantities that differ.",
+      steps: [
+        "Write p = mv.",
+        "Recognise that both electrons have the same mass.",
+        "Compare their speeds and relate speed to momentum."
+      ],
+      ans: "The faster electron has greater momentum because their masses are equal and momentum is proportional to speed in the non-relativistic approximation.",
+      why: "When mass is constant, increasing speed increases the magnitude of momentum."
     }
   ]
 );
-// =====================================================
-// BATCH 2: PRODUCTION OF CATHODE RAYS
-// Subject: Physics
-// Chapter: Cathode Rays and Cathode Ray Tube
-// Rule: One concept per screen
-// =====================================================
+add(
+  "physics",
+  "cathode_rays",
+  "How Cathode Rays Cause Fluorescence",
+  `
+  <h2>How Cathode Rays Cause Fluorescence</h2>
 
+  <p><strong>Fluorescence</strong> is the emission of light by a material after it absorbs energy. Some materials glow visibly when struck by cathode rays.</p>
 
-// -----------------------------------------------------
-// SCREEN 5: FUNCTION OF THE CATHODE
-// -----------------------------------------------------
+  <h3>What happens when cathode rays strike a material?</h3>
+
+  <p>The moving electrons transfer energy to the material they strike. Some of this energy excites electrons within the material to higher energy states. When the material's electrons return to lower energy states, energy can be emitted as light.</p>
+
+  <p>The light is emitted by the material, not because the cathode-ray beam is itself ordinary visible light. A suitable fluorescent material can therefore make the otherwise invisible beam visible at the point of impact.</p>
+
+  <h3>Fluorescence and phosphorescence</h3>
+
+  <p>Fluorescence usually stops very quickly after the exciting source is removed. Phosphorescent materials can continue emitting light for a noticeable time after the source is removed. Do not assume that every glowing material has the same afterglow behaviour.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> A cathode-ray beam strikes a fluorescent coating and a bright spot appears. Explain the process.</p>
+
+  <p><strong>Step 1:</strong> The electrons transfer energy to the coating.</p>
+  <p><strong>Step 2:</strong> The material absorbs energy and becomes excited.</p>
+  <p><strong>Step 3:</strong> The material emits some of the energy as visible light.</p>
+
+  <p><strong>Answer:</strong> The coating glows because it emits light after absorbing energy from the cathode rays.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A student says that a fluorescent screen glows because cathode rays are visible light. Explain the error.</p>
+
+  <p><strong>Step 1:</strong> Identify what cathode rays consist of.</p>
+  <p>They are moving electrons.</p>
+
+  <p><strong>Step 2:</strong> Identify the source of the visible glow.</p>
+  <p>The fluorescent material emits light after absorbing energy.</p>
+
+  <p><strong>Answer:</strong> Cathode rays are electrons; the visible light is emitted by the fluorescent material they strike.</p>
+  `,
+  [
+    {
+      q: "What is fluorescence?",
+      hint: "Describe what a material does after absorbing energy.",
+      steps: [
+        "Identify the material as absorbing energy.",
+        "State what the material emits."
+      ],
+      ans: "Fluorescence is the emission of light by a material after it absorbs energy.",
+      why: "The absorbed energy excites the material, which can then emit light."
+    },
+    {
+      q: "Explain why a fluorescent coating glows when struck by cathode rays.",
+      hint: "Follow the energy from the beam into the material.",
+      steps: [
+        "Cathode-ray electrons strike the coating and transfer energy.",
+        "The material's electrons become excited.",
+        "The material emits light as energy is released."
+      ],
+      ans: "The cathode rays transfer energy to the coating, causing it to emit visible light.",
+      why: "The glow is produced by the fluorescent material after it absorbs energy from the electron beam."
+    },
+    {
+      q: "A student claims that the bright spot on a fluorescent screen is the cathode-ray beam itself shining visibly. Correct the explanation.",
+      hint: "Distinguish the incoming electrons from the light emitted at the screen.",
+      steps: [
+        "Recall that cathode rays consist of electrons.",
+        "Identify what happens when the electrons strike the coating.",
+        "State which material produces the visible light."
+      ],
+      ans: "Cathode rays are moving electrons; the bright spot is visible light emitted by the fluorescent screen after it absorbs energy.",
+      why: "The screen converts some of the energy transferred by the electron beam into visible light."
+    },
+    {
+      q: "Why is a fluorescent screen useful when studying cathode rays that cannot be seen directly?",
+      hint: "Think about what happens at the point where the beam strikes the screen.",
+      steps: [
+        "Recognise that the electron beam is not directly visible as ordinary light.",
+        "Recall that the fluorescent material emits light when struck.",
+        "Explain how the glow reveals where the beam arrives."
+      ],
+      ans: "It emits visible light where the cathode rays strike, revealing the position of the beam.",
+      why: "The glow makes the point of impact observable."
+    },
+    {
+      q: "A fluorescent coating glows while it is struck by cathode rays but stops glowing almost immediately when the beam is removed. Is this consistent with fluorescence or long-lasting phosphorescence? Explain.",
+      hint: "Compare what happens immediately after the exciting source is removed.",
+      steps: [
+        "Identify that the glow stops almost immediately.",
+        "Recall the usual afterglow behaviour of fluorescence.",
+        "Compare it with the longer afterglow possible in phosphorescence."
+      ],
+      ans: "It is consistent with fluorescence because the emission usually stops very quickly after the exciting source is removed.",
+      why: "Phosphorescence can persist after the source is removed, whereas fluorescence usually ceases very quickly."
+    }
+  ]
+);
+add(
+  "physics",
+  "cathode_rays",
+  "How an Electric Field Deflects Cathode Rays",
+  `
+  <h2>How an Electric Field Deflects Cathode Rays</h2>
+
+  <p>Cathode rays are deflected by an electric field because their electrons carry electric charge. An electric field exerts a force on a charged particle.</p>
+
+  <h3>Direction of the electric force</h3>
+
+  <p>The electric force on a charged particle is described by:</p>
+
+  <p><strong>F = qE</strong></p>
+
+  <p>Here, F is the electric force, q is the particle's charge and E is the electric field. The equation gives the force direction as well as its magnitude.</p>
+
+  <p>For a positive charge, the electric force is in the direction of the electric field. For a negative charge, the force is opposite to the electric field.</p>
+
+  <h3>Applying this to cathode rays</h3>
+
+  <p>Between parallel plates, the electric field points from the positively charged plate towards the negatively charged plate. Since electrons are negatively charged, the force on them is opposite to that field direction.</p>
+
+  <ul>
+    <li>The beam is attracted towards the positive plate.</li>
+    <li>The beam is repelled by the negative plate.</li>
+    <li>When the field is removed, the electric force causing this deflection is removed.</li>
+  </ul>
+
+  <p>The beam's actual path depends on its initial velocity and the arrangement of the plates. The force changes the component of velocity in the force direction; it does not mean the electrons instantly turn towards the plate.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> The upper plate is positive and the lower plate is negative. A horizontal cathode-ray beam enters between them. In which direction does the electric force act?</p>
+
+  <p><strong>Step 1:</strong> The electric field points from the upper positive plate towards the lower negative plate: downwards.</p>
+
+  <p><strong>Step 2:</strong> Electrons are negatively charged, so their force is opposite to the field.</p>
+
+  <p><strong>Answer:</strong> The electric force acts upwards, towards the positive plate.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A cathode-ray beam bends upwards between two plates. The upper plate is positive. Explain why.</p>
+
+  <p><strong>Step 1:</strong> Identify the beam's particles as electrons.</p>
+  <p><strong>Step 2:</strong> Recall that negative charges experience force opposite to the electric field.</p>
+  <p><strong>Step 3:</strong> The electric field points downwards, so the force on the electrons points upwards.</p>
+
+  <p><strong>Answer:</strong> The electrons are deflected upwards because the electric force acts towards the positive upper plate.</p>
+  `,
+  [
+    {
+      q: "Why can an electric field deflect cathode rays?",
+      hint: "Identify the charge of the particles and the effect of an electric field on charged particles.",
+      steps: [
+        "Recall that cathode rays consist of electrons.",
+        "Recall that electrons carry negative charge.",
+        "Explain that an electric field exerts a force on charged particles."
+      ],
+      ans: "An electric field deflects cathode rays because it exerts a force on their negatively charged electrons.",
+      why: "The electric force changes the motion of the electrons and can change the direction of the beam."
+    },
+    {
+      q: "The upper plate is positive and the lower plate is negative. A cathode-ray beam travels horizontally between them. State the direction of the electric field and the direction of the force on the electrons.",
+      hint: "The electric field points from positive to negative; the force on a negative charge is opposite to the field.",
+      steps: [
+        "Draw the electric field from the positive upper plate to the negative lower plate.",
+        "Identify the field direction as downwards.",
+        "Reverse the direction to obtain the force on the electrons."
+      ],
+      ans: "The electric field points downwards, while the force on the electrons points upwards.",
+      why: "Electrons are negatively charged, so their electric force is opposite to the electric field."
+    },
+    {
+      q: "A cathode-ray beam bends towards the positive plate. Explain why it does not bend towards the negative plate.",
+      hint: "Use the attraction and repulsion of electric charges.",
+      steps: [
+        "Recall that electrons are negatively charged.",
+        "Apply the rule that unlike charges attract.",
+        "Apply the rule that like charges repel."
+      ],
+      ans: "The beam bends towards the positive plate because negative electrons are attracted to positive charge and repelled by negative charge.",
+      why: "The direction of deflection is consistent with the negative charge of the electrons."
+    },
+    {
+      q: "A student says that electrons experience a force in the same direction as the electric field. Identify and correct the error.",
+      hint: "The statement is true for positive charges, not negative charges.",
+      steps: [
+        "Recall the direction of force on a positive charge.",
+        "Recall that electrons have negative charge.",
+        "State the correct force direction for electrons."
+      ],
+      ans: "The error is applying the positive-charge rule to electrons. The force on an electron is opposite to the electric field.",
+      why: "The direction of electric force depends on the sign of the particle's charge."
+    },
+    {
+      q: "A horizontal cathode-ray beam enters a region where the electric force acts vertically upwards. What happens to the beam's direction while it is in the field? Explain.",
+      hint: "A force changes the velocity component in its own direction.",
+      steps: [
+        "Identify the initial horizontal motion.",
+        "Identify the upward electric force.",
+        "Explain how the upward force changes the electron velocity."
+      ],
+      ans: "The beam curves upwards while it is in the field because the upward force gives the electrons an upward component of velocity.",
+      why: "The horizontal motion continues while the vertical component changes, producing a curved path in the field."
+    }
+  ]
+);
+add(
+  "physics",
+  "cathode_rays",
+  "How a Magnetic Field Deflects Cathode Rays",
+  `
+  <h2>How a Magnetic Field Deflects Cathode Rays</h2>
+
+  <p>A magnetic field can deflect cathode rays because the electrons are moving charged particles. The magnetic force depends on the particle's charge, its velocity and the magnetic field's direction.</p>
+
+  <h3>When does magnetic deflection occur?</h3>
+
+  <p>The magnetic force on a moving charged particle has magnitude:</p>
+
+  <p><strong>F = |q|vB sin θ</strong></p>
+
+  <p>Here, |q| is the magnitude of the charge, v is the speed, B is the magnetic flux density and θ is the angle between the particle's velocity and the magnetic field.</p>
+
+  <ul>
+    <li>If the particle moves parallel or antiparallel to the magnetic field, sin θ = 0 and the magnetic force is zero.</li>
+    <li>If the particle moves perpendicular to the field, the magnetic force has its maximum magnitude for that speed and field strength.</li>
+    <li>The force on a negative charge is opposite to the direction given by the right-hand rule for a positive charge.</li>
+  </ul>
+
+  <h3>What happens to the motion?</h3>
+
+  <p>The magnetic force is perpendicular to the instantaneous velocity of a charged particle. In an ideal magnetic field alone, it changes the direction of motion but does no work on the particle, so the speed remains constant.</p>
+
+  <p>The direction of deflection cannot be determined from the words “magnetic field” alone. The directions of both the electron velocity and the magnetic field must be known.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> A cathode-ray beam travels perpendicular to a magnetic field. Will the magnetic field exert a force on the electrons?</p>
+
+  <p><strong>Step 1:</strong> Identify the angle between velocity and field.</p>
+  <p>The angle is 90°.</p>
+
+  <p><strong>Step 2:</strong> Use F = |q|vB sin θ.</p>
+  <p>Since sin 90° = 1, the force magnitude is |q|vB.</p>
+
+  <p><strong>Answer:</strong> Yes. The force has its maximum magnitude for the given charge, speed and field strength.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A student says that a magnetic field always speeds up cathode rays. Explain the error.</p>
+
+  <p><strong>Step 1:</strong> Recall the direction of magnetic force.</p>
+  <p>The force is perpendicular to the particle's instantaneous velocity.</p>
+
+  <p><strong>Step 2:</strong> Determine whether the force does work.</p>
+  <p>A force perpendicular to the displacement does no work.</p>
+
+  <p><strong>Answer:</strong> In a magnetic field alone, the force changes the direction of the electron's motion, not its speed.</p>
+  `,
+  [
+    {
+      q: "Why can a magnetic field deflect cathode rays?",
+      hint: "Identify what is moving and whether it carries charge.",
+      steps: [
+        "Identify cathode rays as moving electrons.",
+        "Recall that electrons are charged particles.",
+        "Explain that a magnetic field exerts a force on moving charges when the motion has a component perpendicular to the field."
+      ],
+      ans: "A magnetic field can deflect cathode rays because they are moving charged particles and experience a magnetic force when their motion is not parallel to the field.",
+      why: "The magnetic force can change the direction of the moving electrons."
+    },
+    {
+      q: "A cathode-ray beam moves perpendicular to a magnetic field. How does the magnetic force compare with its force when the beam moves parallel to the field, assuming the same speed and field strength?",
+      hint: "Use F = |q|vB sin θ.",
+      steps: [
+        "For perpendicular motion, θ = 90° and sin θ = 1.",
+        "For parallel motion, θ = 0° and sin θ = 0.",
+        "Compare the two force magnitudes."
+      ],
+      ans: "The force is maximum for perpendicular motion and zero for parallel motion.",
+      why: "The force magnitude depends on sin θ, which is 1 at 90° and 0° at 0°."
+    },
+    {
+      q: "Can you determine the exact direction in which a cathode-ray beam bends if you know only that a magnetic field is present? Explain.",
+      hint: "What two directions must be specified before predicting the force direction?",
+      steps: [
+        "Identify the direction of the electron velocity as necessary information.",
+        "Identify the magnetic field direction as necessary information.",
+        "Explain why the force direction depends on both."
+      ],
+      ans: "No. The direction of the electron velocity and the direction of the magnetic field must both be known.",
+      why: "The magnetic force direction depends on the relative directions of motion and the field, as well as the negative sign of the electron's charge."
+    },
+    {
+      q: "A student claims that a magnetic field always increases the speed of cathode rays. Correct the claim for an ideal magnetic field acting alone.",
+      hint: "Compare the direction of magnetic force with the instantaneous direction of motion.",
+      steps: [
+        "Recall that magnetic force is perpendicular to velocity.",
+        "Recognise that a perpendicular force does no work.",
+        "State what changes and what remains constant."
+      ],
+      ans: "An ideal magnetic field alone changes the direction of the electrons but not their speed.",
+      why: "The magnetic force is perpendicular to the motion and therefore does no work on the electrons."
+    },
+    {
+      q: "A cathode-ray beam travels exactly parallel to a uniform magnetic field. What magnetic force acts on the electrons, and what does this imply about magnetic deflection?",
+      hint: "Use the angle between velocity and the magnetic field.",
+      steps: [
+        "Identify the angle as 0° for parallel motion.",
+        "Use F = |q|vB sin θ.",
+        "Evaluate sin 0° and interpret the result."
+      ],
+      ans: "The magnetic force is zero, so the beam is not deflected by that magnetic field while it remains parallel to it.",
+      why: "For parallel motion, sin 0° = 0, making the magnetic force zero."
+    }
+  ]
+);
 
 add(
   "physics",
@@ -16655,103 +16998,98 @@ add(
   `
   <h2>Function of the Cathode</h2>
 
-  <p>
-    The cathode is the negative electrode in a discharge
-    tube. In a cathode ray tube, it provides the electrons
-    that form the cathode ray beam.
-  </p>
+  <p>The <strong>cathode</strong> is the electrode from which electrons are supplied to form a cathode-ray beam. Its role is to provide electrons that can be accelerated through the tube by an electric field.</p>
 
-  <h3>How it works</h3>
+  <h3>How the cathode works</h3>
 
-  <p>
-    When the electron source is operated under suitable
-    conditions, electrons are released from the cathode.
-    These electrons can then be accelerated through the tube.
-  </p>
+  <p>Electrons are present in the atoms of the cathode material. Under suitable conditions, some electrons can escape from the material's surface. Once released into the tube, they can be accelerated by a potential difference and form a moving electron beam.</p>
 
-  <p>
-    The cathode is therefore the source of the electrons
-    used to produce cathode rays.
-  </p>
+  <p>The exact method of electron emission depends on the apparatus. In a cathode-ray tube with a heated cathode, heating supplies energy that allows electrons to escape. In some gas-discharge tubes, electron emission can occur through processes involving positive-ion bombardment of the cathode.</p>
+
+  <h3>The cathode is not the beam</h3>
+
+  <ul>
+    <li>The cathode is a physical electrode.</li>
+    <li>Electron emission is the process by which electrons leave the material.</li>
+    <li>Cathode rays are the moving electrons after they have been emitted.</li>
+  </ul>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> State the function of the cathode
-  in a cathode ray tube.</p>
+  <p><strong>Question:</strong> A student says that the cathode pushes a complete beam of electrons through the tube like a mechanical pump. Explain the more accurate description.</p>
 
-  <p><b>Step 1:</b> Identify the particles needed to form
-  cathode rays.</p>
-  <p>They are electrons.</p>
+  <p><strong>Step 1:</strong> Identify the cathode's role. It supplies electrons.</p>
+  <p><strong>Step 2:</strong> Identify how the electrons leave the material. They escape through an emission process.</p>
+  <p><strong>Step 3:</strong> Identify what moves them through the tube. The electric field accelerates the emitted electrons.</p>
 
-  <p><b>Step 2:</b> Identify the electrode that supplies them.</p>
-  <p>The cathode supplies the electrons.</p>
-
-  <p><b>Answer:</b> The cathode provides electrons for
-  the formation of cathode rays.</p>
+  <p><strong>Answer:</strong> The cathode supplies electrons by emission; the electric field then accelerates them to form the beam.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> Is the cathode positive or negative?</p>
+  <p><strong>Question:</strong> A cathode is present in a tube, but no electrons are being emitted. Can a cathode-ray beam form from that cathode? Explain.</p>
 
-  <p><b>Step 1:</b> Recall the electrode arrangement in
-  a cathode ray tube.</p>
-
-  <p><b>Step 2:</b> Identify the cathode's polarity.</p>
-
-  <p><b>Answer:</b> The cathode is the negative electrode.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> A student says that the cathode
-  supplies protons to form cathode rays. Identify the error.</p>
-
-  <p><b>Step 1:</b> Recall the particles forming cathode rays.</p>
-  <p>They are electrons.</p>
-
-  <p><b>Step 2:</b> Correct the student's statement.</p>
-
-  <p><b>Answer:</b> The cathode supplies electrons, not
-  protons, for the cathode ray beam.</p>
+  <p><strong>Step 1:</strong> A beam requires electrons to be present in the space inside the tube.</p>
+  <p><strong>Step 2:</strong> The cathode must supply electrons through an emission process.</p>
+  <p><strong>Conclusion:</strong> Without electrons being emitted from the cathode, it cannot supply the electron beam in that arrangement.</p>
   `,
   [
     {
-      q: "What is the function of the cathode in a cathode ray tube?",
-      hint: "Think about the source of the electrons.",
+      q: "What is the main function of the cathode in a cathode-ray tube?",
+      hint: "Think about where the electrons in the beam originate.",
       steps: [
-        "Recall the particles that form cathode rays.",
+        "Identify the particles that form cathode rays.",
         "Identify the electrode that supplies these particles.",
-        "State the function of the cathode."
+        "State the cathode's role."
       ],
-      ans: "The cathode supplies electrons that form the cathode ray beam.",
-      why: "Cathode rays are streams of electrons originating from the electron source."
+      ans: "The cathode supplies electrons that can be accelerated to form the cathode-ray beam.",
+      why: "The cathode is the source of the electrons used to form the beam."
     },
     {
-      q: "What is the electrical polarity of the cathode?",
+      q: "Distinguish between the cathode and the cathode-ray beam.",
+      hint: "One is a solid component; the other consists of moving particles.",
       steps: [
-        "Recall the two types of electrode in the tube.",
-        "Identify the cathode's polarity."
+        "Identify the cathode as an electrode.",
+        "Identify the beam as moving electrons.",
+        "Explain the difference between the component and the particles."
       ],
-      ans: "Negative.",
-      why: "The cathode is the negative electrode in the discharge tube."
+      ans: "The cathode is an electrode that supplies electrons, while the cathode-ray beam is the stream of moving electrons.",
+      why: "The electrode is the source; the beam is made of the electrons emitted from it."
     },
     {
-      q: "A learner states that the cathode supplies protons to produce cathode rays. Correct the statement.",
-      hint: "Identify the particles that make up cathode rays.",
+      q: "A learner says that the cathode alone accelerates electrons all the way across the tube. Correct the statement.",
+      hint: "Separate supplying electrons from changing their motion.",
       steps: [
-        "Recall the composition of cathode rays.",
-        "Identify the correct particle.",
-        "Replace the incorrect particle in the statement."
+        "State the cathode's role in supplying electrons.",
+        "Identify the role of the electric field.",
+        "Combine the two roles in the correct order."
       ],
-      ans: "The cathode supplies electrons, not protons, for the formation of cathode rays.",
-      why: "Cathode rays consist of electrons."
+      ans: "The cathode supplies electrons, while the electric field produced by the potential difference accelerates them through the tube.",
+      why: "Electron emission and electron acceleration are related but distinct processes."
+    },
+    {
+      q: "Why must electrons escape from the cathode material before they can form a beam in the space inside the tube?",
+      hint: "Think about where the beam travels.",
+      steps: [
+        "Identify the beam as moving electrons.",
+        "Recognise that electrons inside the solid cathode are not yet a free beam in the tube.",
+        "Explain why emission is necessary."
+      ],
+      ans: "The electrons must be emitted into the space inside the tube so they can move through it as a beam.",
+      why: "A cathode-ray beam consists of electrons travelling outside the cathode material."
+    },
+    {
+      q: "A cathode-ray tube has a functioning cathode, but the conditions do not allow electrons to escape from its surface. What essential process is missing?",
+      hint: "Name the process by which electrons leave a material.",
+      steps: [
+        "Recognise that the cathode is present.",
+        "Identify that no electrons are escaping.",
+        "Name the process required to release them."
+      ],
+      ans: "Electron emission is missing.",
+      why: "The cathode must emit electrons before an electron beam can be formed."
     }
   ]
 );
-
-
-// -----------------------------------------------------
-// SCREEN 6: ELECTRON EMISSION IN A DISCHARGE TUBE
-// -----------------------------------------------------
 
 add(
   "physics",
@@ -16760,110 +17098,100 @@ add(
   `
   <h2>Electron Emission in a Discharge Tube</h2>
 
-  <p>
-    Electron emission is the release of electrons from
-    a material. In a cathode ray tube, the electron source
-    releases electrons that form the beam.
-  </p>
+  <p><strong>Electron emission</strong> is the release of electrons from a material into the surrounding space. A cathode-ray beam can form only when electrons are supplied to the space inside the tube and then accelerated.</p>
 
-  <h3>Understanding electron emission</h3>
+  <h3>Thermionic emission</h3>
 
-  <p>
-    Electrons are normally held within the material.
-    Under suitable conditions, some electrons can escape
-    from the electron source.
-  </p>
+  <p>In a cathode-ray tube with a heated cathode, electrons gain thermal energy. Some electrons acquire enough energy to overcome the attraction holding them in the metal and escape from its surface. This process is called <strong>thermionic emission</strong>.</p>
 
-  <p>
-    In a traditional cathode ray tube, the cathode is
-    commonly heated so that it releases electrons. This
-    process is called thermionic emission.
-  </p>
+  <p>Heating does not turn the electrons into a different type of particle. It provides energy that allows some electrons to leave the material.</p>
 
-  <p>
-    A potential difference then accelerates the emitted
-    electrons through the tube.
-  </p>
+  <h3>Emission in gas-discharge tubes</h3>
+
+  <p>Not every discharge tube uses a heated cathode. In some gas-discharge arrangements, energetic positive ions strike the cathode and cause electrons to be emitted. The precise mechanism therefore depends on the type of tube.</p>
+
+  <h3>Why a low-pressure environment is used</h3>
+
+  <p>A discharge tube commonly contains gas at low pressure. This reduces the number of gas particles in the path of the electrons, allowing them to travel farther between collisions. A cathode-ray tube used for displaying images is normally highly evacuated so that electrons can travel to the screen with relatively few collisions.</p>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> What is electron emission?</p>
+  <p><strong>Question:</strong> Explain how heating a cathode can supply electrons to form a beam.</p>
 
-  <p><b>Step 1:</b> Identify the particle involved.</p>
-  <p>The particle is an electron.</p>
+  <p><strong>Step 1:</strong> Heating supplies energy to electrons in the metal.</p>
+  <p><strong>Step 2:</strong> Some electrons gain enough energy to escape from the surface.</p>
+  <p><strong>Step 3:</strong> The emitted electrons can then be accelerated by an electric field.</p>
 
-  <p><b>Step 2:</b> Describe what happens to the particle.</p>
-  <p>It leaves the material from which it was held.</p>
-
-  <p><b>Answer:</b> Electron emission is the release of
-  electrons from a material.</p>
+  <p><strong>Answer:</strong> Heating enables thermionic emission, releasing electrons that can be accelerated into a beam.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> What is thermionic emission?</p>
+  <p><strong>Question:</strong> A student concludes that every cathode-ray tube must use a heated cathode. Explain why this is too broad.</p>
 
-  <p><b>Step 1:</b> Identify the energy supplied to the cathode.</p>
-  <p>The cathode is heated.</p>
+  <p><strong>Step 1:</strong> Recognise that electron emission is required in every case.</p>
+  <p><strong>Step 2:</strong> Distinguish the required result from the method used to achieve it.</p>
+  <p><strong>Step 3:</strong> Recall that some discharge tubes produce emission through processes involving positive-ion bombardment.</p>
 
-  <p><b>Step 2:</b> State the result of heating.</p>
-  <p>Electrons gain enough energy to escape from the material.</p>
-
-  <p><b>Answer:</b> Thermionic emission is the release of
-  electrons from a material due to heating.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> Why must electrons be released from
-  the cathode before they can form a cathode ray beam?</p>
-
-  <p><b>Step 1:</b> Identify what forms the beam.</p>
-  <p>The beam consists of moving electrons.</p>
-
-  <p><b>Step 2:</b> Determine where the electrons come from.</p>
-  <p>They must first leave the electron source.</p>
-
-  <p><b>Answer:</b> Electrons must be released from the
-  cathode so that they can be accelerated to form the beam.</p>
+  <p><strong>Answer:</strong> Electron emission is essential, but heating is not the only possible emission mechanism in all discharge tubes.</p>
   `,
   [
     {
-      q: "Define electron emission.",
+      q: "What is electron emission?",
+      hint: "Focus on what happens when an electron leaves a material.",
       steps: [
-        "Identify the particle involved.",
-        "Describe the particle leaving a material.",
-        "State the definition."
-      ],
-      ans: "Electron emission is the release of electrons from a material.",
-      why: "The emitted electrons can move away from the material and form an electron beam."
-    },
-    {
-      q: "What is thermionic emission?",
-      hint: "Think about the effect of heating.",
-      steps: [
-        "Identify the energy supplied to the material.",
-        "Explain that heating allows electrons to escape.",
+        "Identify the electron's initial location in the material.",
+        "Describe its movement out of the material.",
         "Name the process."
       ],
-      ans: "Thermionic emission is the release of electrons from a material due to heating.",
-      why: "Heating provides electrons with energy to escape from the material."
+      ans: "Electron emission is the release of electrons from a material into the surrounding space.",
+      why: "The emitted electrons can be accelerated to form an electron beam."
     },
     {
-      q: "Why must electrons be emitted before a cathode ray beam can be formed?",
+      q: "Explain thermionic emission in a cathode-ray tube.",
+      hint: "Consider what heating does to electrons in the cathode material.",
       steps: [
-        "Recall that cathode rays consist of electrons.",
-        "Identify the need for electrons to leave the source.",
-        "Explain that the released electrons can then be accelerated."
+        "Heating supplies energy to electrons in the material.",
+        "Some electrons gain sufficient energy to escape the surface.",
+        "The escaped electrons can then be accelerated through the tube."
       ],
-      ans: "Electrons must leave the cathode so they can be accelerated to form the beam.",
-      why: "An electron beam cannot form unless electrons are available to move through the tube."
+      ans: "Thermionic emission occurs when heating gives some electrons enough energy to escape from the cathode material.",
+      why: "Heating helps electrons overcome the attraction that otherwise keeps them in the material."
+    },
+    {
+      q: "Does heating the cathode change electrons into a new type of particle? Explain.",
+      hint: "Distinguish gaining energy from changing particle identity.",
+      steps: [
+        "Identify the electrons before heating.",
+        "Describe the effect of heating on their energy.",
+        "State whether their identity changes."
+      ],
+      ans: "No. Heating supplies energy that allows some electrons to escape; they remain electrons.",
+      why: "Thermionic emission releases electrons but does not change them into different particles."
+    },
+    {
+      q: "Why is it inaccurate to claim that every discharge tube must use thermionic emission?",
+      hint: "Consider whether different apparatus can release electrons in different ways.",
+      steps: [
+        "Recognise that all such arrangements require electrons.",
+        "Recall that a heated cathode uses thermionic emission.",
+        "Recognise that other discharge-tube arrangements can use different emission mechanisms."
+      ],
+      ans: "Because some discharge tubes can emit electrons through other mechanisms, such as positive-ion bombardment of the cathode.",
+      why: "The emission mechanism depends on the design and operating conditions of the tube."
+    },
+    {
+      q: "Why is gas pressure kept low in a discharge tube used to study cathode rays?",
+      hint: "Think about how often electrons collide with gas particles.",
+      steps: [
+        "Recognise that the electrons travel through the gas inside the tube.",
+        "Consider how reducing the number of gas particles affects collisions.",
+        "Explain how this helps electron travel."
+      ],
+      ans: "Low gas pressure reduces collisions with gas particles, allowing electrons to travel farther between collisions.",
+      why: "A lower density of gas particles helps the electron beam travel through the tube with fewer collisions."
     }
   ]
 );
-
-
-// -----------------------------------------------------
-// SCREEN 7: FUNCTION OF THE ANODE
-// -----------------------------------------------------
 
 add(
   "physics",
@@ -16872,3790 +17200,7093 @@ add(
   `
   <h2>Function of the Anode</h2>
 
-  <p>
-    The anode is the positive electrode in a cathode ray
-    tube. It helps attract and accelerate electrons emitted
-    by the cathode.
-  </p>
+  <p>The <strong>anode</strong> is the positive electrode in the usual cathode-ray arrangement. It helps establish the electric field that accelerates electrons emitted from the cathode.</p>
 
-  <h3>Understanding the concept</h3>
+  <h3>Why electrons move towards the anode</h3>
 
-  <p>
-    Electrons have negative charge. An electric field
-    between the cathode and the positively charged anode
-    exerts a force on the electrons.
-  </p>
+  <p>Electrons carry negative charge, while the anode is positive. The electric force attracts electrons towards the anode. As they move through a potential difference, they gain kinetic energy at the expense of electric potential energy.</p>
 
-  <p>
-    The electrons gain kinetic energy as they accelerate
-    through the potential difference.
-  </p>
+  <p>In a cathode-ray tube, the electron gun may contain more than one anode or accelerating electrode. These electrodes help accelerate and, in suitable designs, focus the electron beam.</p>
+
+  <h3>Do not confuse attraction with electron emission</h3>
+
+  <ul>
+    <li>The cathode supplies electrons.</li>
+    <li>The anode helps establish the accelerating electric field.</li>
+    <li>The potential difference determines the energy transferred to an electron through the electric field.</li>
+  </ul>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> State the function of the anode in
-  a cathode ray tube.</p>
+  <p><strong>Question:</strong> Why does an electron emitted from a cathode accelerate towards a positive anode?</p>
 
-  <p><b>Step 1:</b> Recall the charge of the anode.</p>
-  <p>It is positive.</p>
+  <p><strong>Step 1:</strong> The electron has negative charge.</p>
+  <p><strong>Step 2:</strong> The anode is positively charged.</p>
+  <p><strong>Step 3:</strong> Opposite charges attract, so the electric force acts towards the anode.</p>
 
-  <p><b>Step 2:</b> Identify the effect on electrons.</p>
-  <p>The anode attracts electrons and helps accelerate them.</p>
-
-  <p><b>Answer:</b> The anode attracts and helps accelerate
-  electrons emitted by the cathode.</p>
+  <p><strong>Answer:</strong> The electron accelerates towards the positive anode because the electric force attracts negative charge towards positive charge.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> Why are electrons attracted towards
-  a positively charged anode?</p>
+  <p><strong>Question:</strong> A learner says that the anode produces the electrons in a cathode-ray beam. Correct the statement.</p>
 
-  <p><b>Step 1:</b> Electrons carry negative charge.</p>
-  <p><b>Step 2:</b> The anode carries positive charge.</p>
-  <p><b>Step 3:</b> Opposite electric charges attract.</p>
-
-  <p><b>Answer:</b> Electrons are attracted towards the
-  positive anode because opposite charges attract.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> What would happen to the acceleration
-  of electrons if the accelerating potential difference
-  were increased?</p>
-
-  <p><b>Step 1:</b> Recall that a potential difference
-  establishes an electric field.</p>
-
-  <p><b>Step 2:</b> A larger accelerating potential
-  difference provides a greater energy gain.</p>
-
-  <p><b>Answer:</b> The electrons gain more kinetic energy
-  and leave the accelerating region at a higher speed,
-  assuming the same initial conditions.</p>
+  <p><strong>Step 1:</strong> Identify which electrode supplies electrons.</p>
+  <p><strong>Step 2:</strong> Identify the role of the positive anode.</p>
+  <p><strong>Conclusion:</strong> The cathode supplies the electrons, while the anode helps accelerate them through the electric field.</p>
   `,
   [
     {
-      q: "State the function of the anode in a cathode ray tube.",
-      hint: "Consider what the positive electrode does to electrons.",
+      q: "What is the main role of the anode in the usual cathode-ray arrangement?",
+      hint: "Think about the positive electrode and the motion of negative electrons.",
       steps: [
-        "Identify the polarity of the anode.",
-        "Recall the charge of electrons.",
-        "Explain the anode's effect on the electrons."
+        "Identify the anode as the positive electrode.",
+        "Recall the attraction between opposite charges.",
+        "Connect this attraction to electron acceleration."
       ],
-      ans: "The anode attracts and helps accelerate electrons emitted by the cathode.",
-      why: "The electric field between the electrodes accelerates negatively charged electrons towards the positive anode."
+      ans: "The anode helps establish the electric field that accelerates electrons towards it.",
+      why: "The positive anode attracts negatively charged electrons."
     },
     {
-      q: "Why are electrons attracted towards the anode?",
+      q: "Explain why electrons are attracted towards a positive anode.",
+      hint: "Use the basic rule for interactions between opposite electric charges.",
       steps: [
-        "State the charge of an electron.",
-        "State the charge of the anode.",
-        "Apply the rule for opposite electric charges."
+        "State the sign of an electron's charge.",
+        "State the sign of the anode's charge.",
+        "Apply the rule for opposite charges."
       ],
-      ans: "Electrons are negatively charged and the anode is positive, so they attract.",
+      ans: "Electrons are negatively charged and the anode is positive, so the electric force attracts the electrons towards the anode.",
       why: "Opposite electric charges attract."
     },
     {
-      q: "What happens to the kinetic energy gained by electrons when the accelerating potential difference increases?",
-      hint: "Consider the energy transferred by the electric field.",
+      q: "Distinguish between the functions of the cathode and the anode.",
+      hint: "One supplies electrons; the other helps accelerate them.",
       steps: [
-        "Recall that an electric potential difference transfers energy to electrons.",
-        "Relate the energy gained to the potential difference.",
-        "State the change in kinetic energy."
+        "State what the cathode supplies.",
+        "State the anode's electrical role.",
+        "Explain how the two functions work together."
       ],
-      ans: "The electrons gain more kinetic energy.",
-      why: "For an electron accelerated from rest through a potential difference V, the kinetic energy gained is eV."
+      ans: "The cathode supplies electrons, while the anode helps create the electric field that accelerates them.",
+      why: "Electron supply and electron acceleration are separate functions."
+    },
+    {
+      q: "An electron moves from the cathode towards the positive anode through a potential difference. What happens to its kinetic energy, assuming it is accelerated?",
+      hint: "Consider the work done by the electric force.",
+      steps: [
+        "Identify the electric force as acting along the electron's acceleration.",
+        "Recognise that the electric field transfers energy to the electron.",
+        "State the effect on kinetic energy."
+      ],
+      ans: "The electron's kinetic energy increases.",
+      why: "The electric field does work on the electron as it accelerates through the potential difference."
+    },
+    {
+      q: "A student says that the anode and the cathode-ray beam are the same thing because both are involved in electron movement. Explain the mistake.",
+      hint: "Distinguish a fixed component from the particles travelling through the tube.",
+      steps: [
+        "Identify the anode as an electrode in the apparatus.",
+        "Identify cathode rays as moving electrons.",
+        "State why their identities and roles differ."
+      ],
+      ans: "The anode is an electrode that helps accelerate electrons; the cathode-ray beam is the stream of electrons moving through the tube.",
+      why: "A component of the apparatus is not the same as the particles moving through it."
     }
   ]
 );
 
+add(
+  "physics",
+  "cathode_rays",
+  "How a Potential Difference Accelerates Electrons",
+  `
+  <h2>How a Potential Difference Accelerates Electrons</h2>
 
-// -----------------------------------------------------
-// SCREEN 8: ACCELERATION OF ELECTRONS BY POTENTIAL DIFFERENCE
-// -----------------------------------------------------
+  <p>A <strong>potential difference</strong> between electrodes establishes an electric field. When electrons are released into this field, the electric force can accelerate them and increase their kinetic energy.</p>
+
+  <h3>Potential difference and energy transfer</h3>
+
+  <p>Potential difference is energy transferred per unit charge. Its unit is the volt (V), where:</p>
+
+  <p><strong>1 V = 1 J/C</strong></p>
+
+  <p>When an electron moves through an accelerating potential difference of magnitude V, the magnitude of the energy transferred to it is:</p>
+
+  <p><strong>Energy gained = eV</strong></p>
+
+  <p>In this expression, e = 1.60 × 10⁻¹⁹ C is the magnitude of the electron's charge. If the electron starts nearly at rest and energy losses are negligible, the electrical energy gained becomes kinetic energy.</p>
+
+  <h3>Why the voltage matters</h3>
+
+  <p>A larger accelerating potential difference transfers more energy to each electron. It therefore produces a larger kinetic energy gain, assuming the electron travels through the full accelerating potential difference.</p>
+
+  <p>Voltage is not the same as current. Voltage describes energy transferred per unit charge, while current describes the rate of flow of electric charge.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> An electron is accelerated through a potential difference of 200 V. Calculate the energy transferred to it in joules.</p>
+
+  <p><strong>Step 1:</strong> Use E = eV.</p>
+  <p><strong>Step 2:</strong> Substitute e = 1.60 × 10⁻¹⁹ C and V = 200 V.</p>
+  <p>E = (1.60 × 10⁻¹⁹)(200)</p>
+  <p><strong>Step 3:</strong> Calculate.</p>
+  <p>E = 3.20 × 10⁻¹⁷ J</p>
+
+  <p><strong>Answer:</strong> The electron gains 3.20 × 10⁻¹⁷ J of energy if it travels through the full accelerating potential difference and losses are negligible.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> One electron is accelerated through 100 V and another through 300 V. Both start nearly at rest. Compare their kinetic energy gains.</p>
+
+  <p><strong>Step 1:</strong> Use E = eV for each electron.</p>
+  <p><strong>Step 2:</strong> The first electron gains energy e × 100 V.</p>
+  <p><strong>Step 3:</strong> The second gains energy e × 300 V.</p>
+
+  <p><strong>Answer:</strong> The second electron gains three times as much energy because 300 V is three times 100 V.</p>
+  `,
+  [
+    {
+      q: "What does a potential difference do to an electron released into an accelerating electric field?",
+      hint: "Consider the electric force and the electron's motion.",
+      steps: [
+        "Recognise that the electron is charged.",
+        "Identify the force exerted by the electric field.",
+        "Explain how this force changes the electron's motion and energy."
+      ],
+      ans: "The electric field exerts a force on the electron and can accelerate it, increasing its kinetic energy.",
+      why: "The field transfers energy to the electron as it moves through the accelerating potential difference."
+    },
+    {
+      q: "An electron moves through an accelerating potential difference of 200 V. Calculate the energy transferred to it in joules. Use e = 1.60 × 10⁻¹⁹ C.",
+      hint: "Use E = eV and remember that one volt is one joule per coulomb.",
+      steps: [
+        "Write E = eV.",
+        "Substitute E = (1.60 × 10⁻¹⁹)(200).",
+        "Multiply 1.60 by 200 to get 320.",
+        "Write 320 × 10⁻¹⁹ in standard form as 3.20 × 10⁻¹⁷ J."
+      ],
+      ans: "3.20 × 10⁻¹⁷ J",
+      why: "E = (1.60 × 10⁻¹⁹)(200) = 3.20 × 10⁻¹⁷ J."
+    },
+    {
+      q: "An electron gains 4.80 × 10⁻¹⁷ J while being accelerated from rest. Calculate the accelerating potential difference. Use e = 1.60 × 10⁻¹⁹ C.",
+      hint: "Rearrange E = eV to make V the subject.",
+      steps: [
+        "Write E = eV.",
+        "Rearrange to V = E/e.",
+        "Substitute V = (4.80 × 10⁻¹⁷)/(1.60 × 10⁻¹⁹).",
+        "Divide 4.80 by 1.60 to get 3.",
+        "Subtract the exponents: −17 − (−19) = 2.",
+        "Calculate V = 3 × 10² V."
+      ],
+      ans: "300 V",
+      why: "V = E/e = (4.80 × 10⁻¹⁷)/(1.60 × 10⁻¹⁹) = 3.00 × 10² V = 300 V."
+    },
+    {
+      q: "Two electrons start nearly at rest and pass through accelerating potential differences of 150 V and 450 V. Compare their energy gains.",
+      hint: "Energy gained is proportional to the accelerating voltage.",
+      steps: [
+        "Use E = eV for each electron.",
+        "Compare the two voltages.",
+        "Calculate the ratio 450/150."
+      ],
+      ans: "The electron accelerated through 450 V gains three times as much energy as the electron accelerated through 150 V.",
+      why: "For electrons with the same charge magnitude, E = eV means the energy gain is directly proportional to the voltage."
+    },
+    {
+      q: "A learner claims that a higher accelerating voltage always means a larger electric current. Explain why the claim is not justified by voltage alone.",
+      hint: "Distinguish energy per unit charge from charge flow per unit time.",
+      steps: [
+        "Define potential difference as energy transferred per unit charge.",
+        "Recall that current is the rate of flow of charge.",
+        "Explain why one quantity does not determine the other on its own."
+      ],
+      ans: "Voltage describes energy transferred per unit charge, while current describes the rate of charge flow. Voltage alone does not determine the current.",
+      why: "The current also depends on factors such as the electron supply and the electrical characteristics of the apparatus."
+    }
+  ]
+);
 
 add(
   "physics",
   "cathode_rays",
-  "Acceleration of Electrons by Potential Difference",
+  "Kinetic Energy Gained by an Electron",
   `
-  <h2>Acceleration of Electrons by Potential Difference</h2>
+  <h2>Kinetic Energy Gained by an Electron</h2>
 
-  <p>
-    A potential difference between electrodes transfers
-    electrical energy to electrons. The electrons gain
-    kinetic energy as they accelerate through the electric field.
-  </p>
+  <p><strong>Kinetic energy</strong> is the energy an object has because of its motion. An electron accelerated through a potential difference gains kinetic energy because the electric field does work on it.</p>
 
-  <h3>Energy relationship</h3>
+  <h3>Connecting electrical energy to kinetic energy</h3>
 
-  <p>
-    For an electron accelerated from rest through a potential
-    difference V, the kinetic energy gained is:
-  </p>
+  <p>The magnitude of the energy transferred to an electron moving through an accelerating potential difference V is:</p>
 
-  <p><b>KE = eV</b></p>
+  <p><strong>E = eV</strong></p>
 
-  <p>Where:</p>
+  <p>where e = 1.60 × 10⁻¹⁹ C is the magnitude of the electron's charge.</p>
 
+  <p>For an electron that starts nearly at rest, with negligible energy losses:</p>
+
+  <p><strong>Kinetic energy gained = eV</strong></p>
+
+  <p>If the electron already has kinetic energy before entering the accelerating region, then its final kinetic energy equals its initial kinetic energy plus the energy gained from the field, provided the field accelerates it and other energy transfers are negligible.</p>
+
+  <h3>Worked Example 1: Electron starting from rest</h3>
+
+  <p><strong>Question:</strong> An electron starts from rest and is accelerated through 500 V. Find its final kinetic energy in joules.</p>
+
+  <p><strong>Step 1:</strong> Because it starts from rest, its initial kinetic energy is zero.</p>
+  <p><strong>Step 2:</strong> Use K = eV.</p>
+  <p>K = (1.60 × 10⁻¹⁹)(500)</p>
+  <p><strong>Step 3:</strong> Multiply.</p>
+  <p>K = 8.00 × 10⁻¹⁷ J</p>
+
+  <p><strong>Answer:</strong> The final kinetic energy is 8.00 × 10⁻¹⁷ J under the stated assumptions.</p>
+
+  <h3>Worked Example 2: Electron with initial kinetic energy</h3>
+
+  <p><strong>Question:</strong> An electron initially has kinetic energy 2.0 × 10⁻¹⁷ J and then gains 3.2 × 10⁻¹⁷ J from an accelerating field. Find its final kinetic energy.</p>
+
+  <p><strong>Step 1:</strong> Write the energy relationship.</p>
+  <p>Final kinetic energy = initial kinetic energy + energy gained.</p>
+
+  <p><strong>Step 2:</strong> Substitute.</p>
+  <p>K = 2.0 × 10⁻¹⁷ + 3.2 × 10⁻¹⁷</p>
+
+  <p><strong>Step 3:</strong> Add the coefficients because the powers of ten are equal.</p>
+  <p>K = 5.2 × 10⁻¹⁷ J</p>
+
+  <p><strong>Answer:</strong> 5.2 × 10⁻¹⁷ J.</p>
+  `,
+  [
+    {
+      q: "What is kinetic energy, and why does an accelerating electron gain it?",
+      hint: "Connect energy of motion with work done by an electric field.",
+      steps: [
+        "Define kinetic energy.",
+        "Identify the electric force acting on the electron.",
+        "Explain that the field transfers energy to the electron as it accelerates."
+      ],
+      ans: "Kinetic energy is energy due to motion. An accelerating electron gains it because the electric field does work on the electron.",
+      why: "The work done by the electric field increases the electron's kinetic energy when it is accelerated."
+    },
+    {
+      q: "An electron starts from rest and moves through an accelerating potential difference of 500 V. Calculate its final kinetic energy in joules. Use e = 1.60 × 10⁻¹⁹ C.",
+      hint: "Starting from rest means the final kinetic energy equals the energy gained, eV.",
+      steps: [
+        "Write K = eV.",
+        "Substitute K = (1.60 × 10⁻¹⁹)(500).",
+        "Multiply 1.60 by 500 to obtain 800.",
+        "Convert 800 × 10⁻¹⁹ to standard form."
+      ],
+      ans: "8.00 × 10⁻¹⁷ J",
+      why: "K = eV = (1.60 × 10⁻¹⁹)(500) = 8.00 × 10⁻¹⁷ J."
+    },
+    {
+      q: "An electron has initial kinetic energy 2.0 × 10⁻¹⁷ J and gains another 3.2 × 10⁻¹⁷ J from an accelerating field. Calculate its final kinetic energy.",
+      hint: "Add the initial energy and the energy gained.",
+      steps: [
+        "Write final K = initial K + energy gained.",
+        "Substitute 2.0 × 10⁻¹⁷ + 3.2 × 10⁻¹⁷.",
+        "Add 2.0 and 3.2 because both terms have the same power of ten."
+      ],
+      ans: "5.2 × 10⁻¹⁷ J",
+      why: "The final kinetic energy is (2.0 + 3.2) × 10⁻¹⁷ = 5.2 × 10⁻¹⁷ J."
+    },
+    {
+      q: "An electron starts from rest and gains 6.4 × 10⁻¹⁷ J of kinetic energy. Calculate the accelerating potential difference. Use e = 1.60 × 10⁻¹⁹ C.",
+      hint: "Rearrange K = eV to make V the subject.",
+      steps: [
+        "Write K = eV.",
+        "Rearrange to V = K/e.",
+        "Substitute V = (6.4 × 10⁻¹⁷)/(1.60 × 10⁻¹⁹).",
+        "Divide 6.4 by 1.60 to get 4.",
+        "Subtract the exponents to obtain 10².",
+        "Calculate the voltage."
+      ],
+      ans: "400 V",
+      why: "V = (6.4 × 10⁻¹⁷)/(1.60 × 10⁻¹⁹) = 4.0 × 10² V = 400 V."
+    },
+    {
+      q: "An electron passes through a region in which the electric field does no net work on it. What happens to its kinetic energy due to that field?",
+      hint: "Relate work done to the change in kinetic energy.",
+      steps: [
+        "Recall that the net work done equals the change in kinetic energy.",
+        "Set the net work to zero.",
+        "State the resulting change in kinetic energy."
+      ],
+      ans: "Its kinetic energy does not change due to that field because the net work done is zero.",
+      why: "By the work-energy principle, a zero net work corresponds to zero change in kinetic energy."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Calculating the Speed of an Accelerated Electron",
+  `
+  <h2>Calculating the Speed of an Accelerated Electron</h2>
+
+  <p>An electron accelerated through a potential difference gains kinetic energy. If it starts from rest and energy losses are negligible, its kinetic energy can be used to calculate its final speed.</p>
+
+  <h3>Formula and assumptions</h3>
+
+  <p>For speeds much lower than the speed of light, kinetic energy is approximated by:</p>
+
+  <p><strong>K = ½mv²</strong></p>
+
+  <p>For an electron starting from rest, the energy gained through an accelerating potential difference V is:</p>
+
+  <p><strong>eV = ½mv²</strong></p>
+
+  <p>Rearrange to make speed the subject:</p>
+
+  <p><strong>v = √(2eV/m)</strong></p>
+
+  <p>Use:</p>
   <ul>
-    <li>KE is the kinetic energy gained, in joules.</li>
-    <li>e is the magnitude of the electron charge,
-    1.6 × 10⁻¹⁹ C.</li>
-    <li>V is the accelerating potential difference, in volts.</li>
+    <li>e = 1.60 × 10⁻¹⁹ C</li>
+    <li>m = 9.11 × 10⁻³¹ kg</li>
+    <li>V in volts</li>
+    <li>v in metres per second (m/s)</li>
   </ul>
 
-  <p>
-    If the electron starts from rest and its speed is much
-    less than the speed of light, its kinetic energy is:
-  </p>
+  <p><strong>Important:</strong> This is the non-relativistic formula. At sufficiently high speeds approaching the speed of light, relativistic kinetic energy must be used instead.</p>
 
-  <p><b>KE = ½mv²</b></p>
+  <h3>Worked Example 1</h3>
 
-  <p>
-    Equating the expressions gives:
-  </p>
+  <p><strong>Question:</strong> An electron starts from rest and is accelerated through 100 V. Calculate its approximate final speed.</p>
 
-  <p><b>eV = ½mv²</b></p>
-
-  <h3>Worked Example 1: Energy gained</h3>
-
-  <p>
-    <b>Question:</b> An electron is accelerated from rest
-    through a potential difference of 200 V. Calculate
-    its kinetic energy gained.
-  </p>
-
-  <p><b>Step 1:</b> Write the formula.</p>
-  <p>KE = eV</p>
-
-  <p><b>Step 2:</b> Substitute the values.</p>
-  <p>KE = (1.6 × 10⁻¹⁹) × 200</p>
-
-  <p><b>Step 3:</b> Calculate.</p>
-  <p>KE = 3.2 × 10⁻¹⁷ J</p>
-
-  <p><b>Answer:</b> 3.2 × 10⁻¹⁷ J</p>
-
-  <h3>Worked Example 2: Comparing energy gains</h3>
-
-  <p>
-    <b>Question:</b> Two electrons start from rest. One
-    passes through 100 V and the other through 300 V.
-    Which gains more kinetic energy?
-  </p>
-
-  <p><b>Step 1:</b> Use KE = eV.</p>
-
-  <p><b>Step 2:</b> Calculate the first energy gain.</p>
-  <p>KE₁ = (1.6 × 10⁻¹⁹) × 100</p>
-  <p>KE₁ = 1.6 × 10⁻¹⁷ J</p>
-
-  <p><b>Step 3:</b> Calculate the second energy gain.</p>
-  <p>KE₂ = (1.6 × 10⁻¹⁹) × 300</p>
-  <p>KE₂ = 4.8 × 10⁻¹⁷ J</p>
-
-  <p><b>Answer:</b> The electron accelerated through
-  300 V gains more kinetic energy.</p>
-
-  <h3>Worked Example 3: Finding electron speed</h3>
-
-  <p>
-    <b>Question:</b> An electron starts from rest and is
-    accelerated through 100 V. Calculate its final speed.
-  </p>
-
-  <p><b>Step 1:</b> Equate the energy expressions.</p>
-  <p>eV = ½mv²</p>
-
-  <p><b>Step 2:</b> Rearrange to make v the subject.</p>
+  <p><strong>Step 1:</strong> Write the formula.</p>
   <p>v = √(2eV/m)</p>
 
-  <p><b>Step 3:</b> Substitute the values.</p>
-  <p>
-    v = √[(2 × 1.6 × 10⁻¹⁹ × 100) /
-    (9.11 × 10⁻³¹)]
-  </p>
+  <p><strong>Step 2:</strong> Substitute.</p>
+  <p>v = √[(2 × 1.60 × 10⁻¹⁹ × 100)/(9.11 × 10⁻³¹)]</p>
 
-  <p><b>Step 4:</b> Calculate.</p>
-  <p>v ≈ 5.9 × 10⁶ m/s</p>
+  <p><strong>Step 3:</strong> Simplify the numerator.</p>
+  <p>2 × 1.60 × 100 × 10⁻¹⁹ = 3.20 × 10⁻¹⁷</p>
 
-  <p><b>Answer:</b> Approximately 5.9 × 10⁶ m/s.</p>
+  <p><strong>Step 4:</strong> Divide by the mass.</p>
+  <p>v = √(3.51 × 10¹³)</p>
+
+  <p><strong>Step 5:</strong> Take the square root.</p>
+  <p>v ≈ 5.93 × 10⁶ m/s</p>
+
+  <p><strong>Answer:</strong> Approximately 5.9 × 10⁶ m/s.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> An electron starts from rest and is accelerated through 400 V. Without repeating every calculation, compare its speed with the speed after acceleration through 100 V.</p>
+
+  <p><strong>Step 1:</strong> Use v = √(2eV/m).</p>
+  <p><strong>Step 2:</strong> Since e and m are constant, speed is proportional to √V.</p>
+  <p><strong>Step 3:</strong> Compare the voltages: 400/100 = 4.</p>
+  <p><strong>Step 4:</strong> Take the square root of the ratio: √4 = 2.</p>
+
+  <p><strong>Answer:</strong> The speed at 400 V is twice the speed at 100 V, under the same non-relativistic assumptions.</p>
   `,
   [
     {
-      q: "An electron starts from rest and passes through an accelerating potential difference of 150 V. Calculate its kinetic energy gained. Use e = 1.6 × 10⁻¹⁹ C.",
-      hint: "Use KE = eV.",
+      q: "An electron starts from rest and is accelerated through 100 V. Calculate its approximate speed using e = 1.60 × 10⁻¹⁹ C and m = 9.11 × 10⁻³¹ kg.",
+      hint: "Use v = √(2eV/m). Keep the powers of ten when dividing.",
       steps: [
-        "Write KE = eV.",
-        "Substitute e = 1.6 × 10⁻¹⁹ C and V = 150 V.",
-        "Calculate KE = 1.6 × 10⁻¹⁹ × 150.",
-        "State the answer in joules."
-      ],
-      ans: "2.4 × 10⁻¹⁷ J",
-      why: "The kinetic energy gained by an electron accelerated from rest through a potential difference V is eV."
-    },
-    {
-      q: "An electron is accelerated from rest through 250 V. If e = 1.6 × 10⁻¹⁹ C, calculate its kinetic energy gained.",
-      hint: "Multiply the magnitude of the electron charge by the potential difference.",
-      steps: [
-        "Use KE = eV.",
-        "Substitute KE = (1.6 × 10⁻¹⁹) × 250.",
-        "Multiply 1.6 by 250.",
-        "Express the result in joules."
-      ],
-      ans: "4.0 × 10⁻¹⁷ J",
-      why: "A potential difference of 250 V gives an electron an energy gain of 250 electron-volts, equivalent to 4.0 × 10⁻¹⁷ J."
-    },
-    {
-      q: "An electron starts from rest and gains 3.2 × 10⁻¹⁷ J of kinetic energy. Calculate the potential difference through which it was accelerated. Use e = 1.6 × 10⁻¹⁹ C.",
-      hint: "Rearrange KE = eV to make V the subject.",
-      steps: [
-        "Write KE = eV.",
-        "Rearrange to V = KE/e.",
-        "Substitute V = (3.2 × 10⁻¹⁷)/(1.6 × 10⁻¹⁹).",
-        "Calculate the ratio."
-      ],
-      ans: "200 V",
-      why: "The potential difference is the kinetic energy gained divided by the magnitude of the electron charge."
-    },
-    {
-      q: "An electron starts from rest and is accelerated through 100 V. Calculate its speed. Use e = 1.6 × 10⁻¹⁹ C and m = 9.11 × 10⁻³¹ kg.",
-      hint: "Use eV = ½mv² and rearrange for v.",
-      steps: [
-        "Write eV = ½mv².",
+        "Start with eV = ½mv².",
         "Rearrange to v = √(2eV/m).",
-        "Substitute v = √[(2 × 1.6 × 10⁻¹⁹ × 100)/(9.11 × 10⁻³¹)].",
-        "Evaluate the square root."
+        "Substitute v = √[(2 × 1.60 × 10⁻¹⁹ × 100)/(9.11 × 10⁻³¹)].",
+        "Simplify to v = √(3.51 × 10¹³).",
+        "Take the square root, including the power of ten."
       ],
-      ans: "Approximately 5.9 × 10⁶ m/s",
-      why: "The electric potential energy transferred to the electron becomes kinetic energy. This calculation uses the non-relativistic kinetic energy formula."
+      ans: "Approximately 5.93 × 10⁶ m/s",
+      why: "The calculation gives v = √(3.51 × 10¹³) ≈ 5.93 × 10⁶ m/s."
+    },
+    {
+      q: "An electron starts from rest and is accelerated through 400 V. Compare its final speed with the speed after acceleration through 100 V.",
+      hint: "For the same electron in the non-relativistic model, speed is proportional to the square root of voltage.",
+      steps: [
+        "Use v = √(2eV/m).",
+        "Form the speed ratio: v₄₀₀/v₁₀₀ = √(400/100).",
+        "Simplify the ratio to √4."
+      ],
+      ans: "The speed at 400 V is twice the speed at 100 V.",
+      why: "The voltage increases by a factor of four, so speed increases by √4 = 2."
+    },
+    {
+      q: "An electron is accelerated from rest through 225 V. Calculate its approximate speed using e = 1.60 × 10⁻¹⁹ C and m = 9.11 × 10⁻³¹ kg.",
+      hint: "Substitute 225 V into v = √(2eV/m), then take the square root.",
+      steps: [
+        "Write v = √(2eV/m).",
+        "Substitute v = √[(2 × 1.60 × 10⁻¹⁹ × 225)/(9.11 × 10⁻³¹)].",
+        "Calculate the numerator: 7.20 × 10⁻¹⁷.",
+        "Divide to obtain approximately 7.90 × 10¹³ inside the square root.",
+        "Take the square root."
+      ],
+      ans: "Approximately 8.89 × 10⁶ m/s",
+      why: "v = √[(7.20 × 10⁻¹⁷)/(9.11 × 10⁻³¹)] ≈ √(7.90 × 10¹³) ≈ 8.89 × 10⁶ m/s."
+    },
+    {
+      q: "A learner uses v = 2eV/m to calculate an electron's speed. Identify the error and give the correct formula.",
+      hint: "The speed formula is obtained from an equation containing v squared.",
+      steps: [
+        "Start with eV = ½mv².",
+        "Multiply both sides by 2 and divide by m.",
+        "Recognise that the result gives v², not v.",
+        "Take the square root."
+      ],
+      ans: "The learner forgot to take the square root. The correct formula is v = √(2eV/m).",
+      why: "Rearranging the kinetic-energy equation gives v² = 2eV/m, so the speed is the square root of that expression."
+    },
+    {
+      q: "Why must the formula v = √(2eV/m) be used cautiously when an electron's speed approaches the speed of light?",
+      hint: "Consider the assumption behind K = ½mv².",
+      steps: [
+        "Identify the kinetic-energy formula used to derive the speed equation.",
+        "Recognise that K = ½mv² is a non-relativistic approximation.",
+        "State what is required at speeds approaching the speed of light."
+      ],
+      ans: "The formula assumes non-relativistic motion. At speeds approaching the speed of light, relativistic kinetic energy must be used.",
+      why: "The classical kinetic-energy equation becomes inaccurate at speeds close to the speed of light."
     }
   ]
 );
-// =====================================================
-// BATCH 3: PROPERTIES OF CATHODE RAYS
-// Subject: Physics
-// Chapter: Cathode Rays and Cathode Ray Tube
-// Rule: One concept per screen
-// =====================================================
-
-
-// -----------------------------------------------------
-// SCREEN 9: FLUORESCENCE CAUSED BY CATHODE RAYS
-// -----------------------------------------------------
 
 add(
   "physics",
   "cathode_rays",
-  "Fluorescence Caused by Cathode Rays",
+  "Calculating Potential Difference from Electron Speed",
   `
-  <h2>Fluorescence Caused by Cathode Rays</h2>
+  <h2>Calculating Potential Difference from Electron Speed</h2>
 
-  <p>
-    Cathode rays cause certain materials to emit visible
-    light when the rays strike them. This effect is called
-    fluorescence.
-  </p>
+  <p>If an electron starts from rest and is accelerated through a potential difference, its gained electrical energy becomes kinetic energy when losses are negligible. If its final speed is known, the accelerating potential difference can be calculated.</p>
 
-  <h3>Understanding the concept</h3>
+  <h3>Deriving the formula</h3>
 
-  <p>
-    When fast-moving electrons strike a suitable fluorescent
-    material, they transfer energy to it. The material then
-    emits visible light.
-  </p>
+  <p>Electrical energy gained:</p>
+  <p><strong>E = eV</strong></p>
 
-  <p>
-    In a cathode ray tube, a fluorescent coating on the screen
-    glows where the electron beam strikes it.
-  </p>
+  <p>Kinetic energy gained from rest, for non-relativistic motion:</p>
+  <p><strong>K = ½mv²</strong></p>
 
-  <p>
-    Example: Zinc sulphide is a material that can fluoresce
-    when struck by cathode rays.
-  </p>
+  <p>Equate the two expressions:</p>
+  <p>eV = ½mv²</p>
+
+  <p>Rearrange to make V the subject:</p>
+  <p><strong>V = mv²/(2e)</strong></p>
+
+  <p>Use:</p>
+  <ul>
+    <li>m = 9.11 × 10⁻³¹ kg</li>
+    <li>e = 1.60 × 10⁻¹⁹ C</li>
+    <li>v in m/s</li>
+    <li>V in volts</li>
+  </ul>
+
+  <p>This formula assumes the electron starts from rest, gains energy from the accelerating potential difference, and moves at a speed for which the classical kinetic-energy equation is appropriate.</p>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> What is fluorescence?</p>
+  <p><strong>Question:</strong> An electron starting from rest reaches a speed of 5.93 × 10⁶ m/s. Estimate the potential difference that accelerated it. Use m = 9.11 × 10⁻³¹ kg and e = 1.60 × 10⁻¹⁹ C.</p>
 
-  <p><b>Step 1:</b> Consider what happens when cathode rays
-  strike a suitable material.</p>
+  <p><strong>Step 1:</strong> Write V = mv²/(2e).</p>
 
-  <p><b>Step 2:</b> Identify the visible effect.</p>
+  <p><strong>Step 2:</strong> Substitute.</p>
+  <p>V = [9.11 × 10⁻³¹ × (5.93 × 10⁶)²]/(2 × 1.60 × 10⁻¹⁹)</p>
 
-  <p><b>Answer:</b> Fluorescence is the emission of light
-  by a material after it absorbs energy from incident
-  radiation or particles.</p>
+  <p><strong>Step 3:</strong> Square the speed.</p>
+  <p>(5.93 × 10⁶)² ≈ 3.516 × 10¹³</p>
+
+  <p><strong>Step 4:</strong> Multiply by the mass and divide by the charge factor.</p>
+  <p>V ≈ (3.20 × 10⁻¹⁷)/(3.20 × 10⁻¹⁹)</p>
+
+  <p><strong>Answer:</strong> V ≈ 100 V.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p><b>Question:</b> Why does the screen of a cathode
-  ray tube glow when struck by electrons?</p>
+  <p><strong>Question:</strong> If the final speed of an electron doubles, what happens to the potential difference needed to accelerate it from rest, under the same assumptions?</p>
 
-  <p><b>Step 1:</b> Electrons strike the fluorescent coating.</p>
+  <p><strong>Step 1:</strong> Use V = mv²/(2e).</p>
+  <p><strong>Step 2:</strong> Recognise that V is proportional to v² for the same electron.</p>
+  <p><strong>Step 3:</strong> Double the speed and square the factor: 2² = 4.</p>
 
-  <p><b>Step 2:</b> They transfer energy to the coating.</p>
-
-  <p><b>Step 3:</b> The coating emits visible light.</p>
-
-  <p><b>Answer:</b> The screen glows because the electrons
-  transfer energy to its fluorescent coating, causing it
-  to emit visible light.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> Name one material that can fluoresce
-  when struck by cathode rays.</p>
-
-  <p><b>Step 1:</b> Recall examples of fluorescent materials.</p>
-
-  <p><b>Step 2:</b> Identify a suitable material.</p>
-
-  <p><b>Answer:</b> Zinc sulphide.</p>
+  <p><strong>Answer:</strong> The required potential difference becomes four times as large.</p>
   `,
   [
     {
-      q: "What is fluorescence?",
-      hint: "Think about the light emitted by a material.",
+      q: "An electron starting from rest reaches a speed of 5.93 × 10⁶ m/s. Calculate the accelerating potential difference using m = 9.11 × 10⁻³¹ kg and e = 1.60 × 10⁻¹⁹ C.",
+      hint: "Use V = mv²/(2e), and square the entire speed value.",
       steps: [
-        "Consider a suitable material struck by energetic particles.",
-        "Identify the energy transfer to the material.",
-        "Describe the resulting emission of visible light."
+        "Write V = mv²/(2e).",
+        "Substitute V = [9.11 × 10⁻³¹ × (5.93 × 10⁶)²]/(3.20 × 10⁻¹⁹).",
+        "Calculate (5.93 × 10⁶)² ≈ 3.516 × 10¹³.",
+        "Multiply the squared speed by the mass to obtain approximately 3.20 × 10⁻¹⁷.",
+        "Divide by 3.20 × 10⁻¹⁹."
       ],
-      ans: "Fluorescence is the emission of light by a material after it absorbs energy.",
-      why: "Energy supplied by the incident particles can cause the material to emit visible light."
+      ans: "Approximately 100 V",
+      why: "V ≈ (3.20 × 10⁻¹⁷)/(3.20 × 10⁻¹⁹) = 1.00 × 10² V = 100 V."
     },
     {
-      q: "Why does a fluorescent screen glow when struck by cathode rays?",
+      q: "An electron reaches a speed of 1.0 × 10⁷ m/s from rest. Estimate the accelerating potential difference using V = mv²/(2e), m = 9.11 × 10⁻³¹ kg and e = 1.60 × 10⁻¹⁹ C.",
+      hint: "Square 1.0 × 10⁷ before multiplying by the mass.",
       steps: [
-        "The electrons strike the fluorescent coating.",
-        "The electrons transfer energy to the coating.",
-        "The coating emits visible light."
+        "Write V = mv²/(2e).",
+        "Square the speed: (1.0 × 10⁷)² = 1.0 × 10¹⁴.",
+        "Multiply by the mass: 9.11 × 10⁻³¹ × 1.0 × 10¹⁴ = 9.11 × 10⁻¹⁷.",
+        "Divide by 3.20 × 10⁻¹⁹.",
+        "Calculate the result in volts."
       ],
-      ans: "The electrons transfer energy to the fluorescent coating, causing it to emit visible light.",
-      why: "The fluorescent material converts some of the energy deposited by the electron beam into light."
+      ans: "Approximately 285 V",
+      why: "V = (9.11 × 10⁻¹⁷)/(3.20 × 10⁻¹⁹) ≈ 284.7 V, which rounds to 285 V."
     },
     {
-      q: "Name one material that can fluoresce when struck by cathode rays.",
+      q: "For the same electron starting from rest, the final speed increases from v to 3v. By what factor does the required accelerating potential difference change?",
+      hint: "The formula contains the square of the speed.",
       steps: [
-        "Recall a material used to demonstrate fluorescence.",
-        "State one valid example."
+        "Use V = mv²/(2e).",
+        "Recognise that V is proportional to v².",
+        "Replace v with 3v and square the factor."
       ],
-      ans: "Zinc sulphide.",
-      why: "Zinc sulphide is a fluorescent material that can glow when struck by energetic particles."
+      ans: "The potential difference becomes nine times as large.",
+      why: "The speed factor is 3, and the potential difference varies with speed squared, so the factor is 3² = 9."
+    },
+    {
+      q: "A learner rearranges eV = ½mv² to obtain V = 2emv². Explain the error and state the correct formula.",
+      hint: "Isolate V by dividing by e after multiplying both sides by 2.",
+      steps: [
+        "Start with eV = ½mv².",
+        "Multiply both sides by 2 to get 2eV = mv².",
+        "Divide both sides by 2e.",
+        "Write V alone on the left-hand side."
+      ],
+      ans: "The correct formula is V = mv²/(2e). The learner multiplied quantities instead of isolating V.",
+      why: "Rearranging the equation requires dividing mv² by 2e."
+    },
+    {
+      q: "Why must the electron's initial state be considered before using V = mv²/(2e) to find the accelerating potential difference?",
+      hint: "The formula assumes that the gained electrical energy equals the final kinetic energy.",
+      steps: [
+        "Recall the energy equation eV = change in kinetic energy.",
+        "Identify the assumption that the electron starts from rest.",
+        "Explain what changes if it already has kinetic energy."
+      ],
+      ans: "The formula assumes the electron starts from rest. If it already has kinetic energy, the voltage corresponds to the change in kinetic energy, not the entire final kinetic energy.",
+      why: "In general, eV equals the kinetic-energy change for acceleration through the potential difference, when other energy transfers are negligible."
     }
   ]
 );
 
-
-// -----------------------------------------------------
-// SCREEN 10: MECHANICAL EFFECT OF CATHODE RAYS
-// -----------------------------------------------------
-
 add(
   "physics",
   "cathode_rays",
-  "Mechanical Effect of Cathode Rays",
+  "Main Parts of a Cathode-Ray Tube",
   `
-  <h2>Mechanical Effect of Cathode Rays</h2>
+  <h2>Main Parts of a Cathode-Ray Tube</h2>
 
-  <p>
-    Cathode rays can exert a force on an object when the
-    electrons transfer momentum to it.
-  </p>
+  <p>A <strong>cathode-ray tube (CRT)</strong> is an evacuated electronic tube in which a beam of electrons can be produced, accelerated, focused and deflected. In a traditional CRT display, the beam strikes a fluorescent screen to produce visible light.</p>
 
-  <h3>Understanding the concept</h3>
-
-  <p>
-    A traditional experiment uses a light paddle wheel
-    placed in the path of cathode rays. The beam can cause
-    the wheel to move when momentum is transferred to it.
-  </p>
-
-  <p>
-    This observation provides evidence that cathode rays
-    consist of moving particles with momentum.
-  </p>
-
-  <h3>Worked Example 1</h3>
-
-  <p><b>Question:</b> What is meant by the mechanical
-  effect of cathode rays?</p>
-
-  <p><b>Step 1:</b> Recall that cathode rays consist of
-  moving electrons.</p>
-
-  <p><b>Step 2:</b> Consider what happens when the electrons
-  strike an object.</p>
-
-  <p><b>Step 3:</b> Identify the transfer of momentum.</p>
-
-  <p><b>Answer:</b> The mechanical effect is the ability
-  of cathode rays to exert a force on an object through
-  momentum transfer.</p>
-
-  <h3>Worked Example 2</h3>
-
-  <p><b>Question:</b> What does the movement of a paddle
-  wheel in a cathode ray experiment demonstrate?</p>
-
-  <p><b>Step 1:</b> The electron beam strikes the wheel.</p>
-
-  <p><b>Step 2:</b> Momentum is transferred to the wheel.</p>
-
-  <p><b>Step 3:</b> The wheel begins to move.</p>
-
-  <p><b>Answer:</b> The observation demonstrates momentum
-  transfer and provides evidence of the particle nature
-  of cathode rays.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> Which physical quantity explains
-  how cathode rays can change the motion of a paddle wheel?</p>
-
-  <p><b>Step 1:</b> Identify the moving electrons.</p>
-
-  <p><b>Step 2:</b> Identify the quantity transferred
-  during their interaction with the wheel.</p>
-
-  <p><b>Answer:</b> Momentum.</p>
-  `,
-  [
-    {
-      q: "What is the mechanical effect of cathode rays?",
-      hint: "Think about what the electron beam can do to an object.",
-      steps: [
-        "Recall that cathode rays are moving electrons.",
-        "Consider their interaction with an object.",
-        "Identify the resulting force or motion."
-      ],
-      ans: "The ability of cathode rays to exert a force on an object through momentum transfer.",
-      why: "Electrons carry momentum and can transfer it when they interact with matter."
-    },
-    {
-      q: "What does the movement of a paddle wheel under cathode ray bombardment demonstrate?",
-      steps: [
-        "The electron beam strikes the wheel.",
-        "Momentum is transferred to the wheel.",
-        "The wheel changes its motion."
-      ],
-      ans: "It demonstrates momentum transfer and provides evidence that cathode rays consist of particles.",
-      why: "Moving electrons can transfer momentum to the paddle wheel."
-    },
-    {
-      q: "Which physical quantity is transferred when cathode rays push an object?",
-      steps: [
-        "Identify the moving electron beam.",
-        "Consider the quantity responsible for the change in the object's motion.",
-        "Name the quantity."
-      ],
-      ans: "Momentum.",
-      why: "Momentum is transferred during the interaction between the electrons and the object."
-    }
-  ]
-);
-
-
-// -----------------------------------------------------
-// SCREEN 11: DEFLECTION OF CATHODE RAYS BY AN ELECTRIC FIELD
-// -----------------------------------------------------
-
-add(
-  "physics",
-  "cathode_rays",
-  "Deflection of Cathode Rays by an Electric Field",
-  `
-  <h2>Deflection of Cathode Rays by an Electric Field</h2>
-
-  <p>
-    Cathode rays are deflected by an electric field because
-    they consist of negatively charged electrons.
-  </p>
-
-  <h3>Understanding the concept</h3>
-
-  <p>
-    When an electron beam passes between oppositely charged
-    parallel plates, the electric field exerts a force on
-    the electrons.
-  </p>
-
-  <p>
-    The electrons are attracted towards the positive plate
-    and repelled by the negative plate.
-  </p>
-
-  <p>
-    Consequently, the beam bends towards the positive plate.
-  </p>
-
-  <h3>Worked Example 1</h3>
-
-  <p><b>Question:</b> Why are cathode rays deflected by
-  an electric field?</p>
-
-  <p><b>Step 1:</b> Cathode rays consist of electrons.</p>
-
-  <p><b>Step 2:</b> Electrons carry negative charge.</p>
-
-  <p><b>Step 3:</b> An electric field exerts a force on
-  charged particles.</p>
-
-  <p><b>Answer:</b> Cathode rays are deflected because
-  negatively charged electrons experience a force in
-  an electric field.</p>
-
-  <h3>Worked Example 2</h3>
-
-  <p><b>Question:</b> Between which plates does a cathode
-  ray beam bend when placed in an electric field?</p>
-
-  <p><b>Step 1:</b> Identify the charge of the electrons.</p>
-
-  <p><b>Step 2:</b> Apply the rule that opposite charges
-  attract.</p>
-
-  <p><b>Step 3:</b> Identify the direction of deflection.</p>
-
-  <p><b>Answer:</b> The beam bends towards the positive plate.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> An electron beam passes between two
-  parallel plates. The upper plate is positive and the
-  lower plate is negative. In which direction is the beam
-  deflected?</p>
-
-  <p><b>Step 1:</b> Identify the positive plate.</p>
-  <p>It is the upper plate.</p>
-
-  <p><b>Step 2:</b> Recall that electrons are negatively charged.</p>
-
-  <p><b>Step 3:</b> Determine the direction of attraction.</p>
-
-  <p><b>Answer:</b> The beam is deflected upwards towards
-  the positive plate.</p>
-  `,
-  [
-    {
-      q: "Why are cathode rays deflected by an electric field?",
-      hint: "Recall the charge carried by electrons.",
-      steps: [
-        "Identify the particles forming cathode rays.",
-        "Recall their negative charge.",
-        "Explain how an electric field acts on charged particles."
-      ],
-      ans: "Cathode rays are deflected because negatively charged electrons experience a force in an electric field.",
-      why: "An electric field exerts a force on charged particles."
-    },
-    {
-      q: "Towards which plate does a cathode ray beam bend between oppositely charged plates?",
-      steps: [
-        "Recall that electrons have negative charge.",
-        "Apply the rule that opposite charges attract.",
-        "Identify the positive plate."
-      ],
-      ans: "Towards the positive plate.",
-      why: "The negative electrons are attracted towards the positive plate."
-    },
-    {
-      q: "The upper plate is positive and the lower plate is negative. In which direction does the cathode ray beam deflect?",
-      steps: [
-        "Identify the positive plate as the upper plate.",
-        "Recall that electrons are negatively charged.",
-        "Determine the direction of the electric force."
-      ],
-      ans: "Upwards, towards the positive plate.",
-      why: "The electric force on negatively charged electrons is towards the positive plate."
-    }
-  ]
-);
-
-
-// -----------------------------------------------------
-// SCREEN 12: DEFLECTION OF CATHODE RAYS BY A MAGNETIC FIELD
-// -----------------------------------------------------
-
-add(
-  "physics",
-  "cathode_rays",
-  "Deflection of Cathode Rays by a Magnetic Field",
-  `
-  <h2>Deflection of Cathode Rays by a Magnetic Field</h2>
-
-  <p>
-    Cathode rays can be deflected by a magnetic field
-    because they consist of moving charged particles.
-  </p>
-
-  <h3>Understanding the concept</h3>
-
-  <p>
-    A moving charged particle experiences a magnetic force
-    when its velocity has a component perpendicular to
-    the magnetic field.
-  </p>
-
-  <p>
-    The direction of the force depends on the direction
-    of motion, the magnetic field, and the negative charge
-    of the electrons.
-  </p>
-
-  <p>
-    Reversing the magnetic field reverses the direction
-    of the magnetic force, provided the electron velocity
-    remains unchanged.
-  </p>
-
-  <h3>Worked Example 1</h3>
-
-  <p><b>Question:</b> Why can a magnetic field deflect
-  cathode rays?</p>
-
-  <p><b>Step 1:</b> Identify cathode rays as moving electrons.</p>
-
-  <p><b>Step 2:</b> Recall that electrons carry electric charge.</p>
-
-  <p><b>Step 3:</b> Apply the effect of a magnetic field
-  on moving charges.</p>
-
-  <p><b>Answer:</b> A magnetic field can exert a force
-  on moving electrons, causing the beam to deflect.</p>
-
-  <h3>Worked Example 2</h3>
-
-  <p><b>Question:</b> What happens to the direction of
-  magnetic deflection if the magnetic field is reversed
-  while the electron beam continues in the same direction?</p>
-
-  <p><b>Step 1:</b> Recall that the magnetic force depends
-  on the field direction.</p>
-
-  <p><b>Step 2:</b> Reverse the field direction.</p>
-
-  <p><b>Step 3:</b> Determine the effect on the force.</p>
-
-  <p><b>Answer:</b> The magnetic force reverses direction,
-  so the beam deflects in the opposite direction.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p><b>Question:</b> Does a magnetic field always deflect
-  a moving electron?</p>
-
-  <p><b>Step 1:</b> Recall that magnetic force depends on
-  the angle between velocity and magnetic field.</p>
-
-  <p><b>Step 2:</b> Consider an electron moving parallel
-  to the magnetic field.</p>
-
-  <p><b>Step 3:</b> Determine the magnetic force.</p>
-
-  <p><b>Answer:</b> No. When the electron moves parallel
-  or antiparallel to the magnetic field, the magnetic
-  force is zero.</p>
-  `,
-  [
-    {
-      q: "Why can a magnetic field deflect cathode rays?",
-      hint: "Think about moving charged particles.",
-      steps: [
-        "Identify cathode rays as moving electrons.",
-        "Recall that electrons carry charge.",
-        "Explain the action of a magnetic field on moving charges."
-      ],
-      ans: "A magnetic field can exert a force on moving electrons, causing the beam to deflect.",
-      why: "Moving charged particles experience a magnetic force when their motion has a component perpendicular to the field."
-    },
-    {
-      q: "What happens to the magnetic deflection when the magnetic field is reversed but the electron beam direction remains unchanged?",
-      steps: [
-        "Identify the original magnetic force.",
-        "Reverse the magnetic field direction.",
-        "Determine how the force direction changes."
-      ],
-      ans: "The magnetic force reverses direction, so the beam deflects in the opposite direction.",
-      why: "The magnetic force direction depends on both the velocity and magnetic field directions."
-    },
-    {
-      q: "An electron moves parallel to a uniform magnetic field. What is the magnetic force on the electron?",
-      hint: "Consider the angle between the velocity and the magnetic field.",
-      steps: [
-        "Recall that magnetic force magnitude is proportional to qvB sin(theta).",
-        "For parallel motion, theta is zero degrees.",
-        "Evaluate sin(0 degrees)."
-      ],
-      ans: "Zero newtons.",
-      why: "The magnetic force is qvB sin(theta), which is zero when the velocity is parallel to the magnetic field."
-    }
-  ]
-);
-
-
-// -----------------------------------------------------
-// SCREEN 13: ENERGY AND MOMENTUM OF CATHODE RAYS
-// -----------------------------------------------------
-
-add(
-  "physics",
-  "cathode_rays",
-  "Energy and Momentum of Cathode Rays",
-  `
-  <h2>Energy and Momentum of Cathode Rays</h2>
-
-  <p>
-    Cathode rays possess kinetic energy and momentum
-    because they consist of moving electrons.
-  </p>
-
-  <h3>Understanding the concept</h3>
-
-  <p>
-    A moving electron has kinetic energy due to its motion.
-    It also has momentum, which depends on its mass and
-    velocity.
-  </p>
-
-  <p>
-    For speeds much lower than the speed of light, kinetic
-    energy is given by:
-  </p>
-
-  <p><b>KE = 1/2 mv²</b></p>
-
-  <p>Momentum is given by:</p>
-
-  <p><b>p = mv</b></p>
-
-  <p>Where:</p>
+  <h3>Main components and their functions</h3>
 
   <ul>
-    <li>m is the mass of the electron.</li>
-    <li>v is its speed.</li>
-    <li>KE is its kinetic energy.</li>
-    <li>p is its momentum.</li>
+    <li><strong>Heated cathode:</strong> supplies electrons through thermionic emission.</li>
+    <li><strong>Control grid:</strong> controls the number of electrons passing through the electron gun and therefore helps control beam intensity.</li>
+    <li><strong>Focusing electrodes:</strong> form an electron-optical system that brings the beam to a small spot.</li>
+    <li><strong>Accelerating anodes:</strong> increase the kinetic energy of the electrons.</li>
+    <li><strong>X-deflection plates:</strong> control horizontal movement of the beam in the usual CRT arrangement.</li>
+    <li><strong>Y-deflection plates:</strong> control vertical movement of the beam in the usual CRT arrangement.</li>
+    <li><strong>Fluorescent screen:</strong> emits visible light where the electron beam strikes it.</li>
+    <li><strong>Evacuated envelope:</strong> provides a low-pressure space so electrons can travel with relatively few collisions.</li>
+  </ul>
+
+  <h3>How the components work together</h3>
+
+  <p>The cathode supplies electrons. The electron gun controls and forms them into a beam. Accelerating electrodes increase their kinetic energy, while focusing electrodes help produce a narrow beam. Deflection plates change where the beam strikes the screen. The screen converts the energy delivered by the electrons into visible light.</p>
+
+  <p>The exact internal construction varies between CRT designs. The list above describes the main functions in a conventional electrostatically deflected CRT.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> A learner claims that the fluorescent screen produces electrons and the cathode produces the visible image. Correct the explanation.</p>
+
+  <p><strong>Step 1:</strong> Identify the electron source. The cathode supplies electrons.</p>
+  <p><strong>Step 2:</strong> Identify the screen's role. The fluorescent material emits light when struck by the beam.</p>
+  <p><strong>Step 3:</strong> Connect the two functions. Electrons travel from the gun to the screen, where their impact produces visible light.</p>
+
+  <p><strong>Answer:</strong> The cathode supplies electrons; the fluorescent screen produces visible light where the electrons strike.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A CRT has a working electron gun but no effective deflection system. What important operation would be limited?</p>
+
+  <p><strong>Step 1:</strong> The electron gun can still produce a beam.</p>
+  <p><strong>Step 2:</strong> The deflection system changes the beam's position.</p>
+  <p><strong>Conclusion:</strong> Without effective deflection, controlled movement of the beam across the screen would be limited.</p>
+  `,
+  [
+    {
+      q: "Name four major components of a conventional cathode-ray tube and state one function of each.",
+      hint: "Include components that supply electrons, accelerate them, move the beam and produce visible light.",
+      steps: [
+        "Name the cathode and state that it supplies electrons.",
+        "Name the accelerating anode and state that it increases electron kinetic energy.",
+        "Name a deflection plate and state how it changes the beam position.",
+        "Name the fluorescent screen and state how it produces visible light."
+      ],
+      ans: "For example: cathode—supplies electrons; accelerating anode—increases their kinetic energy; deflection plates—change the beam's direction; fluorescent screen—emits light where the beam strikes.",
+      why: "The CRT components perform distinct tasks that combine to produce and position a visible spot."
+    },
+    {
+      q: "Trace the main stages followed by electrons from their release to the production of a visible spot on a CRT screen.",
+      hint: "Start at the cathode and finish at the fluorescent screen.",
+      steps: [
+        "Electrons are emitted from the cathode.",
+        "The electron gun controls and forms the beam.",
+        "Accelerating electrodes increase its kinetic energy and focusing electrodes help narrow it.",
+        "Deflection plates determine where the beam travels.",
+        "The beam strikes the fluorescent screen and produces light."
+      ],
+      ans: "Electrons are emitted by the cathode, formed and controlled by the electron gun, accelerated and focused, directed by the deflection system, and finally made visible by the fluorescent screen.",
+      why: "A CRT uses a sequence of components, each with a different role."
+    },
+    {
+      q: "Why is it incorrect to say that the deflection plates produce the electrons in a CRT?",
+      hint: "Distinguish the source of the particles from the components that change their path.",
+      steps: [
+        "Identify the cathode as the electron source.",
+        "Identify the deflection plates as components that exert an electric force.",
+        "State the difference between supplying particles and steering them."
+      ],
+      ans: "The cathode supplies the electrons; the deflection plates change the direction of the electron beam.",
+      why: "Deflection changes the beam's path rather than supplying the electrons that form it."
+    },
+    {
+      q: "What is the purpose of evacuating a conventional CRT rather than leaving it filled with air at atmospheric pressure?",
+      hint: "Consider collisions between electrons and gas particles.",
+      steps: [
+        "Recognise that electrons travel through the tube.",
+        "Consider how many gas particles would be present at atmospheric pressure.",
+        "Explain how reducing gas pressure affects collisions."
+      ],
+      ans: "Evacuation reduces collisions between beam electrons and gas particles, allowing the beam to travel more freely through the tube.",
+      why: "A low-pressure environment helps electrons reach the intended region of the screen without excessive scattering and energy loss."
+    },
+    {
+      q: "A CRT produces a narrow electron beam, but the beam's position cannot be controlled properly. Which system is most directly associated with controlling the beam's position, and why?",
+      hint: "Look for the components that change the direction of the beam.",
+      steps: [
+        "Distinguish beam formation from beam positioning.",
+        "Identify the X- and Y-deflection plates.",
+        "Explain how their electric fields change the beam's direction."
+      ],
+      ans: "The deflection system, particularly the X- and Y-deflection plates in an electrostatically deflected CRT, controls the beam's position by changing its direction.",
+      why: "The focusing system controls the spot's sharpness, whereas the deflection system controls where the spot appears."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the Electron Gun",
+  `
+  <h2>Function of the Electron Gun</h2>
+
+  <p>The <strong>electron gun</strong> is the assembly in a CRT that produces and forms the electron beam. It supplies electrons, controls their flow, and helps accelerate and focus them before they travel towards the deflection system and screen.</p>
+
+  <h3>How the electron gun works</h3>
+
+  <ol>
+    <li><strong>Electron supply:</strong> a heated cathode emits electrons through thermionic emission.</li>
+    <li><strong>Beam control:</strong> a control grid regulates how many electrons pass through the gun.</li>
+    <li><strong>Acceleration:</strong> accelerating electrodes increase the electrons' kinetic energy.</li>
+    <li><strong>Focusing:</strong> focusing electrodes form the electrons into a narrow beam.</li>
+  </ol>
+
+  <p>The exact arrangement varies by CRT design. The electron gun does not itself produce the visible image. It creates the beam that can later be directed towards the screen.</p>
+
+  <h3>Beam formation versus beam deflection</h3>
+
+  <p>Forming a narrow beam is different from steering that beam. The electron gun prepares the beam; the X- and Y-deflection systems change where it strikes the screen.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> Explain why a CRT requires an electron gun rather than just a cathode and a fluorescent screen.</p>
+
+  <p><strong>Step 1:</strong> The cathode supplies electrons.</p>
+  <p><strong>Step 2:</strong> The beam must be controlled, accelerated and focused for useful operation.</p>
+  <p><strong>Step 3:</strong> The electron gun combines the necessary electron-beam preparation functions.</p>
+
+  <p><strong>Answer:</strong> The electron gun forms and prepares the electron beam so that it can be directed towards the required position on the screen.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A CRT's electron gun works, but its X-deflection plates fail. Explain why a beam may still exist even though horizontal positioning fails.</p>
+
+  <p><strong>Step 1:</strong> The electron gun produces and forms the beam.</p>
+  <p><strong>Step 2:</strong> The X-deflection plates control horizontal movement.</p>
+  <p><strong>Conclusion:</strong> The beam can still be produced, but its horizontal position can no longer be controlled normally.</p>
+  `,
+  [
+    {
+      q: "What is the main function of the electron gun in a CRT?",
+      hint: "Think about what must happen to electrons before they reach the deflection system.",
+      steps: [
+        "Identify the electron source.",
+        "Identify the need to control and form the emitted electrons.",
+        "Summarise the role of the electron gun."
+      ],
+      ans: "The electron gun produces and forms an electron beam, helping control, accelerate and focus it.",
+      why: "The gun prepares the electrons for travel through the CRT."
+    },
+    {
+      q: "Describe the sequence of processes by which a conventional heated-cathode electron gun forms a beam.",
+      hint: "Start with emission, then consider control, acceleration and focusing.",
+      steps: [
+        "The heated cathode emits electrons.",
+        "The control grid regulates electron flow.",
+        "Accelerating electrodes increase electron kinetic energy.",
+        "Focusing electrodes form a narrow beam."
+      ],
+      ans: "The cathode emits electrons, the control grid regulates their flow, accelerating electrodes increase their kinetic energy, and focusing electrodes form a narrow beam.",
+      why: "The electron gun combines several functions to produce a usable beam."
+    },
+    {
+      q: "A learner says that the electron gun moves the bright spot across the screen. Which part of the explanation is inaccurate?",
+      hint: "Separate preparation of the beam from changing its position.",
+      steps: [
+        "State the electron gun's function.",
+        "Identify the deflection system's function.",
+        "Correct the learner's statement."
+      ],
+      ans: "The electron gun produces and forms the beam; the deflection system moves the beam's position across the screen.",
+      why: "Beam formation and beam positioning are different functions."
+    },
+    {
+      q: "The electron gun emits electrons, but the beam spreads out and forms a large blurred spot. Which function of the gun may not be working effectively?",
+      hint: "Consider the component function that makes the beam narrow.",
+      steps: [
+        "Identify that electrons are being emitted.",
+        "Recognise that the problem is the beam's spread.",
+        "Identify the focusing function as the likely issue."
+      ],
+      ans: "The focusing system may not be working effectively.",
+      why: "Focusing electrodes help bring the electrons to a small spot on the screen."
+    },
+    {
+      q: "Why are acceleration and focusing both useful in an electron gun, even though they are different processes?",
+      hint: "One changes electron energy; the other controls the beam's spread.",
+      steps: [
+        "State what acceleration does to electron kinetic energy.",
+        "State what focusing does to the beam.",
+        "Explain why a CRT benefits from both."
+      ],
+      ans: "Acceleration increases the electrons' kinetic energy, while focusing forms them into a narrow beam so that a well-defined spot can be produced.",
+      why: "The electrons need suitable energy and a controlled beam shape for useful CRT operation."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the Control Grid",
+  `
+  <h2>Function of the Control Grid</h2>
+
+  <p>The <strong>control grid</strong> is an electrode in many CRT electron guns that controls the number of electrons passing through the gun. By changing the electron flow, it controls the intensity or brightness of the spot produced on the fluorescent screen.</p>
+
+  <h3>How grid voltage controls beam intensity</h3>
+
+  <p>In a common CRT arrangement, the control grid is kept at a negative potential relative to the cathode. The negative grid repels some emitted electrons. Making the grid more negative generally reduces the number of electrons that pass through; making it less negative generally allows more electrons through.</p>
+
+  <p>Fewer electrons striking the screen usually produce a dimmer spot, while more electrons striking it per second usually produce a brighter spot, assuming other operating conditions remain comparable.</p>
+
+  <p>The exact grid bias and voltage response depend on the CRT design. The important principle is that the grid regulates electron flow rather than serving as the main source of electrons.</p>
+
+  <h3>Control of brightness is not the same as focusing</h3>
+
+  <ul>
+    <li><strong>Control grid:</strong> regulates electron flow and beam intensity.</li>
+    <li><strong>Focusing electrodes:</strong> control how tightly the beam converges.</li>
+    <li><strong>Deflection plates:</strong> control the beam's position.</li>
   </ul>
 
   <h3>Worked Example 1</h3>
 
-  <p><b>Question:</b> Why do cathode rays possess kinetic energy?</p>
+  <p><strong>Question:</strong> The control grid is made more negative in a conventional CRT. Predict the usual effect on the screen brightness and explain why.</p>
 
-  <p><b>Step 1:</b> Recall that cathode rays consist of electrons.</p>
+  <p><strong>Step 1:</strong> A more negative grid repels more electrons.</p>
+  <p><strong>Step 2:</strong> Fewer electrons pass through the gun.</p>
+  <p><strong>Step 3:</strong> Fewer electrons strike the screen each second.</p>
 
-  <p><b>Step 2:</b> Recognize that the electrons are moving.</p>
-
-  <p><b>Step 3:</b> Apply the definition of kinetic energy.</p>
-
-  <p><b>Answer:</b> Cathode rays possess kinetic energy
-  because their electrons are moving.</p>
+  <p><strong>Answer:</strong> The spot usually becomes dimmer because fewer electrons reach the fluorescent screen.</p>
 
   <h3>Worked Example 2</h3>
 
-  <p>
-    <b>Question:</b> An electron has mass
-    9.11 × 10⁻³¹ kg and speed 2.0 × 10⁶ m/s.
-    Calculate its momentum.
-  </p>
+  <p><strong>Question:</strong> A bright spot is wide and blurred. Should the technician first confuse this with a brightness problem? Explain the distinction.</p>
 
-  <p><b>Step 1:</b> Write the formula.</p>
-  <p>p = mv</p>
-
-  <p><b>Step 2:</b> Substitute the values.</p>
-  <p>p = (9.11 × 10⁻³¹)(2.0 × 10⁶)</p>
-
-  <p><b>Step 3:</b> Multiply the numbers and combine powers.</p>
-  <p>p = 18.22 × 10⁻²⁵</p>
-  <p>p = 1.822 × 10⁻²⁴ kg m/s</p>
-
-  <p><b>Answer:</b> 1.822 × 10⁻²⁴ kg m/s.</p>
-
-  <h3>Worked Example 3</h3>
-
-  <p>
-    <b>Question:</b> An electron has mass
-    9.11 × 10⁻³¹ kg and speed 2.0 × 10⁶ m/s.
-    Calculate its kinetic energy.
-  </p>
-
-  <p><b>Step 1:</b> Write the formula.</p>
-  <p>KE = 1/2 mv²</p>
-
-  <p><b>Step 2:</b> Substitute the values.</p>
-  <p>KE = 1/2 × 9.11 × 10⁻³¹ × (2.0 × 10⁶)²</p>
-
-  <p><b>Step 3:</b> Square the speed.</p>
-  <p>v² = 4.0 × 10¹²</p>
-
-  <p><b>Step 4:</b> Calculate the energy.</p>
-  <p>KE = 1.822 × 10⁻¹⁸ J</p>
-
-  <p><b>Answer:</b> 1.822 × 10⁻¹⁸ J.</p>
+  <p><strong>Step 1:</strong> Brightness relates to the electron flow reaching the screen.</p>
+  <p><strong>Step 2:</strong> Spot width and sharpness relate more directly to focusing.</p>
+  <p><strong>Conclusion:</strong> A wide, blurred spot suggests a focusing issue rather than simply a control-grid brightness issue.</p>
   `,
   [
     {
-      q: "Why do cathode rays possess kinetic energy?",
+      q: "What is the main function of the control grid in a conventional CRT?",
+      hint: "Think about how many electrons are allowed to pass through the electron gun.",
       steps: [
-        "Recall that cathode rays consist of electrons.",
-        "Identify that the electrons are moving.",
-        "Relate motion to kinetic energy."
+        "Identify the control grid as an electrode in the electron gun.",
+        "State that it regulates electron flow.",
+        "Connect electron flow to the screen's brightness."
       ],
-      ans: "Cathode rays possess kinetic energy because their electrons are moving.",
-      why: "Kinetic energy is the energy an object has due to its motion."
+      ans: "The control grid regulates the number of electrons passing through the gun and therefore controls beam intensity or brightness.",
+      why: "The number of electrons reaching the fluorescent screen per second affects the brightness of the spot."
     },
     {
-      q: "An electron of mass 9.11 × 10⁻³¹ kg moves at 2.0 × 10⁶ m/s. Calculate its momentum.",
-      hint: "Use p = mv.",
+      q: "In a conventional CRT, the control grid is made more negative relative to the cathode. What usually happens to beam intensity, and why?",
+      hint: "Consider the force exerted by a negative grid on negative electrons.",
       steps: [
-        "Write p = mv.",
-        "Substitute p = (9.11 × 10⁻³¹)(2.0 × 10⁶).",
-        "Multiply 9.11 by 2.0.",
-        "Combine the powers of ten."
+        "Recognise that electrons carry negative charge.",
+        "A more negative grid repels electrons more strongly.",
+        "Fewer electrons pass through the gun.",
+        "Relate reduced electron flow to screen brightness."
       ],
-      ans: "1.822 × 10⁻²⁴ kg m/s",
-      why: "Momentum is the product of mass and velocity."
+      ans: "Beam intensity usually decreases because the more negative grid repels more electrons, allowing fewer to reach the screen.",
+      why: "Reduced electron flow to the fluorescent screen generally produces a dimmer spot."
     },
     {
-      q: "An electron of mass 9.11 × 10⁻³¹ kg moves at 2.0 × 10⁶ m/s. Calculate its kinetic energy.",
-      hint: "Use KE = 1/2 mv².",
+      q: "A CRT spot becomes dimmer when the control-grid voltage is adjusted. Explain why this does not necessarily mean that the accelerating voltage has decreased.",
+      hint: "Compare the role of the control grid with the role of accelerating electrodes.",
       steps: [
-        "Write KE = 1/2 mv².",
-        "Square the speed to obtain 4.0 × 10¹² m²/s².",
-        "Substitute the mass and squared speed.",
-        "Calculate KE = 1.822 × 10⁻¹⁸ J."
+        "Identify the control grid's role in regulating electron flow.",
+        "Identify the accelerating electrodes' role in increasing electron energy.",
+        "Explain how brightness can change without the accelerating voltage changing."
       ],
-      ans: "1.822 × 10⁻¹⁸ J",
-      why: "For a non-relativistic electron, kinetic energy is half its mass multiplied by the square of its speed."
+      ans: "The control grid can reduce the number of electrons reaching the screen even when the accelerating voltage remains unchanged.",
+      why: "Beam intensity and electron acceleration are separate functions."
+    },
+    {
+      q: "Distinguish between the function of the control grid and the function of the focusing electrodes.",
+      hint: "One controls electron quantity; the other controls beam shape.",
+      steps: [
+        "State what the control grid regulates.",
+        "State what focusing electrodes do.",
+        "Contrast their effects on the screen spot."
+      ],
+      ans: "The control grid regulates electron flow and brightness, while focusing electrodes make the beam converge to a narrow spot.",
+      why: "Changing brightness is not the same as changing the sharpness of the spot."
+    },
+    {
+      q: "A technician wants to reduce the brightness of a CRT spot without deliberately changing its horizontal or vertical position. Which component is most directly suited to controlling this, and why?",
+      hint: "Look for the component that regulates the number of electrons reaching the screen.",
+      steps: [
+        "Identify brightness as the property to change.",
+        "Recall that brightness depends on electron flow reaching the screen.",
+        "Identify the component that regulates that flow."
+      ],
+      ans: "The control grid is most directly suited because it regulates electron flow and therefore beam intensity.",
+      why: "The deflection plates control position, while the control grid controls beam intensity."
     }
   ]
 );
 
-add("physics", "cathode_rays", "Main Parts of a Cathode Ray Tube", `
-<h3>Main Parts of a Cathode Ray Tube</h3>
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the Focusing and Accelerating Anodes",
+  `
+  <h2>Function of the Focusing and Accelerating Anodes</h2>
 
-A cathode ray tube (CRT) is an evacuated glass tube in which a beam of electrons produces a visible spot on a fluorescent screen.
+  <p>Electrodes inside a CRT electron gun can perform different functions. <strong>Accelerating electrodes</strong> increase electron kinetic energy, while <strong>focusing electrodes</strong> shape the electric field so that the electron paths converge towards a small spot.</p>
 
-The main parts are:
+  <h3>Accelerating electrodes</h3>
 
-1. <b>Electron gun:</b> Produces and directs a beam of electrons.
-2. <b>Control grid:</b> Controls the number of electrons in the beam.
-3. <b>Focusing system:</b> Makes the electron beam narrow.
-4. <b>Accelerating anodes:</b> Increase the speed of the electrons.
-5. <b>Deflection plates:</b> Change the direction of the beam.
-6. <b>Fluorescent screen:</b> Produces a visible spot when struck by the beam.
+  <p>Electrons have negative charge. A suitable potential difference creates an electric field that accelerates them, increasing their kinetic energy. If an electron gains energy while travelling through an accelerating potential difference V, the energy gain has magnitude:</p>
 
-The tube is evacuated so that electrons can travel with very few collisions with gas particles.
+  <p><strong>ΔK = eV</strong></p>
 
-<h3>Worked Examples</h3>
+  <p>This expression assumes that the electron travels through the full potential difference and that other energy transfers are negligible.</p>
 
-<b>Example 1: Which part produces the electron beam?</b>
-Step 1: The beam consists of electrons.
-Step 2: The electron gun produces the beam.
-Answer: Electron gun.
+  <h3>Focusing electrodes</h3>
 
-<b>Example 2: Which part changes the direction of the beam?</b>
-Step 1: The beam must be moved to a different position.
-Step 2: The deflection plates change its direction.
-Answer: Deflection plates.
+  <p>Electrons emitted from the cathode do not all follow exactly the same path. The focusing system shapes the electric field to direct their trajectories towards a small region. This helps produce a sharp spot rather than a wide, blurred patch on the screen.</p>
 
-<b>Example 3: Which part displays the beam as a visible spot?</b>
-Step 1: The beam strikes the end of the tube.
-Step 2: The fluorescent screen emits light where the beam hits.
-Answer: Fluorescent screen.
-`, [
-  {
-    q: "Which part of a CRT produces the electron beam?",
-    hint: "Look for the component that supplies the electrons.",
-    steps: [
-      "The CRT needs a beam of electrons.",
-      "The electron gun produces this beam."
-    ],
-    ans: "Electron gun",
-    why: "The electron gun produces and directs the electrons."
-  },
-  {
-    q: "Which part of a CRT changes the direction of the electron beam?",
-    hint: "This component moves the beam across the screen.",
-    steps: [
-      "The beam must be directed to different positions.",
-      "The deflection plates change its direction."
-    ],
-    ans: "Deflection plates",
-    why: "The deflection plates control the direction of the beam."
-  },
-  {
-    q: "Which part of a CRT produces a visible spot when struck by electrons?",
-    hint: "It is the display surface at the end of the tube.",
-    steps: [
-      "The electron beam strikes the end of the tube.",
-      "The fluorescent screen emits visible light."
-    ],
-    ans: "Fluorescent screen",
-    why: "The fluorescent screen makes the position of the electron beam visible."
-  }
-]);
+  <p>Some CRT designs use electrodes that contribute to both acceleration and focusing. Their functions should be distinguished conceptually even when a particular electrode performs more than one role.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> An electron gains energy while passing through an accelerating potential difference of 250 V. Calculate its energy gain in joules. Use e = 1.60 × 10⁻¹⁹ C.</p>
+
+  <p><strong>Step 1:</strong> Use ΔK = eV.</p>
+  <p><strong>Step 2:</strong> Substitute ΔK = (1.60 × 10⁻¹⁹)(250).</p>
+  <p><strong>Step 3:</strong> Multiply to obtain ΔK = 4.00 × 10⁻¹⁷ J.</p>
+
+  <p><strong>Answer:</strong> 4.00 × 10⁻¹⁷ J.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A CRT has a bright but blurred spot. Explain why increasing the accelerating voltage is not necessarily the correct way to correct the blur.</p>
+
+  <p><strong>Step 1:</strong> Brightness relates to the number of electrons reaching the screen.</p>
+  <p><strong>Step 2:</strong> Blur relates to how tightly the beam is focused.</p>
+  <p><strong>Step 3:</strong> Identify the function directly related to spot sharpness.</p>
+
+  <p><strong>Answer:</strong> The focusing system should be checked because focusing determines spot sharpness; acceleration mainly increases electron kinetic energy.</p>
+  `,
+  [
+    {
+      q: "Distinguish between the functions of accelerating electrodes and focusing electrodes in a CRT.",
+      hint: "One mainly changes electron energy; the other controls convergence.",
+      steps: [
+        "State the effect of an accelerating potential difference.",
+        "State the purpose of the focusing electric field.",
+        "Contrast the resulting effects."
+      ],
+      ans: "Accelerating electrodes increase electron kinetic energy, while focusing electrodes shape the beam so that it converges towards a small spot.",
+      why: "Energy gain and beam focusing are different requirements in CRT operation."
+    },
+    {
+      q: "An electron gains energy while travelling through an accelerating potential difference of 250 V. Calculate the energy gained in joules using e = 1.60 × 10⁻¹⁹ C.",
+      hint: "Use ΔK = eV.",
+      steps: [
+        "Write ΔK = eV.",
+        "Substitute ΔK = (1.60 × 10⁻¹⁹)(250).",
+        "Multiply 1.60 by 250 to get 400.",
+        "Convert 400 × 10⁻¹⁹ J to standard form."
+      ],
+      ans: "4.00 × 10⁻¹⁷ J",
+      why: "ΔK = (1.60 × 10⁻¹⁹)(250) = 4.00 × 10⁻¹⁷ J."
+    },
+    {
+      q: "A CRT's spot is sharply defined but too dim. Is focusing or beam-intensity control more directly related to the problem? Explain.",
+      hint: "The spot is already sharp, so consider the number of electrons reaching the screen.",
+      steps: [
+        "Identify that sharpness is satisfactory.",
+        "Identify brightness as the remaining problem.",
+        "Choose the function that regulates electron flow."
+      ],
+      ans: "Beam-intensity control is more directly related because the control grid regulates how many electrons reach the screen.",
+      why: "Focusing affects spot sharpness, while electron flow affects brightness."
+    },
+    {
+      q: "A CRT's spot is wide even though its brightness is appropriate. Which function should be investigated first, and why?",
+      hint: "The issue is the size and sharpness of the spot, not the number of electrons.",
+      steps: [
+        "Identify spot width as a beam-shape problem.",
+        "Recall the function of focusing electrodes.",
+        "Explain why changing electron intensity alone would not directly correct the width."
+      ],
+      ans: "The focusing system should be investigated because it controls the convergence and sharpness of the electron beam.",
+      why: "A change in brightness does not necessarily make a poorly focused beam converge."
+    },
+    {
+      q: "Why is it useful to distinguish an electrode's accelerating function from its focusing function, even when one electrode can contribute to both?",
+      hint: "Consider the different observable outcomes of the two functions.",
+      steps: [
+        "Identify kinetic energy as the outcome of acceleration.",
+        "Identify beam convergence as the outcome of focusing.",
+        "Explain how separating the functions helps diagnose faults."
+      ],
+      ans: "The distinction helps explain and diagnose different outcomes: acceleration affects electron energy, while focusing affects spot sharpness.",
+      why: "A CRT may have adequate electron energy but still produce a blurred spot if its focusing system is not set correctly."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the X-Deflection Plates",
+  `
+  <h2>Function of the X-Deflection Plates</h2>
+
+  <p>In a conventional electrostatically deflected CRT, the <strong>X-deflection plates</strong> control the horizontal position of the electron beam on the screen.</p>
+
+  <h3>How the plates work</h3>
+
+  <p>The two plates create an electric field when a potential difference is applied across them. Because cathode rays consist of negatively charged electrons, the electric force on the electrons is opposite to the electric field direction.</p>
+
+  <p>Changing the potential difference across the plates changes the electric field and therefore changes the horizontal deflection. Reversing the polarity reverses the field and, under the same beam conditions, reverses the direction of the horizontal force.</p>
+
+  <p>The beam's actual displacement also depends on the electron speed, the plate geometry and the distance from the plates to the screen. Do not assume that voltage alone determines a universal displacement without knowing the apparatus.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> A horizontal electron beam passes between X-deflection plates. The upper plate is positive and the lower plate is negative. In which direction does the electric force act?</p>
+
+  <p><strong>Step 1:</strong> The electric field points downwards, from the positive plate to the negative plate.</p>
+  <p><strong>Step 2:</strong> Electrons are negatively charged, so their force is opposite to the field.</p>
+
+  <p><strong>Answer:</strong> The electric force acts upwards. In this plate arrangement, that force produces vertical deflection, illustrating why plate orientation determines which screen axis is affected.</p>
+
+  <p><strong>Important:</strong> X and Y refer to the horizontal and vertical screen axes. The physical orientation of the plate pairs in diagrams depends on the CRT design; always use the diagram's labelled axes rather than assuming that the upper and lower plates must be the X plates.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> The voltage across a correctly oriented X-plate pair is reversed. What happens to the direction of the horizontal deflection, assuming the same beam conditions?</p>
+
+  <p><strong>Step 1:</strong> Reversing the voltage reverses the electric field.</p>
+  <p><strong>Step 2:</strong> The force on negative electrons remains opposite to the field.</p>
+  <p><strong>Conclusion:</strong> The direction of horizontal deflection reverses.</p>
+  `,
+  [
+    {
+      q: "What is the main function of the X-deflection plates in a conventional CRT?",
+      hint: "Recall what the X-axis represents on a screen.",
+      steps: [
+        "Identify the X-axis as the horizontal axis.",
+        "Identify the plates as an electric-field system.",
+        "State which beam movement they control."
+      ],
+      ans: "The X-deflection plates control the horizontal position of the electron beam on the screen.",
+      why: "Their electric field deflects the beam along the horizontal screen axis in the conventional arrangement."
+    },
+    {
+      q: "The voltage across a correctly oriented X-plate pair is reversed. What happens to the direction of horizontal deflection, assuming the same beam conditions?",
+      hint: "Reversing plate polarity reverses the electric field.",
+      steps: [
+        "Identify the original electric-field direction.",
+        "Reverse the applied plate polarity.",
+        "Recall that the force on electrons is opposite to the electric field.",
+        "Determine the new deflection direction."
+      ],
+      ans: "The horizontal deflection reverses direction.",
+      why: "Reversing the voltage reverses the electric field and therefore reverses the force on the negatively charged electrons."
+    },
+    {
+      q: "Why must you know the orientation and labelled axis of a plate pair before predicting the screen direction of its deflection?",
+      hint: "An electric force has a direction, but the screen axis depends on the arrangement.",
+      steps: [
+        "Identify the electric-field direction between the plates.",
+        "Use the negative electron charge to determine the force direction.",
+        "Use the CRT diagram to relate that force to the labelled screen axes."
+      ],
+      ans: "Because the plate orientation determines how the electric force maps to the screen's horizontal or vertical axis.",
+      why: "The labels X and Y refer to screen axes; a diagram is needed to identify the corresponding physical plate orientation."
+    },
+    {
+      q: "A student says that X-deflection plates increase the kinetic energy of electrons in the same way as accelerating anodes. Explain the distinction.",
+      hint: "Compare changing the beam's position with increasing its energy.",
+      steps: [
+        "State the primary function of X-deflection plates.",
+        "State the primary function of accelerating anodes.",
+        "Explain the different intended outcomes."
+      ],
+      ans: "X-deflection plates primarily control horizontal beam position, while accelerating anodes increase the electrons' kinetic energy.",
+      why: "Deflection and acceleration serve different purposes, even though both involve electric fields."
+    },
+    {
+      q: "The beam is visible and focused, but it cannot be moved horizontally when the X-plate voltage is adjusted. Which system should be investigated first?",
+      hint: "Identify the component responsible for horizontal movement.",
+      steps: [
+        "Recognise that the beam exists and is focused.",
+        "Identify the missing horizontal movement.",
+        "Select the system responsible for horizontal deflection."
+      ],
+      ans: "The X-deflection system should be investigated first.",
+      why: "The X-deflection plates control horizontal beam positioning."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the Y-Deflection Plates",
+  `
+  <h2>Function of the Y-Deflection Plates</h2>
+
+  <p>In a conventional electrostatically deflected CRT, the <strong>Y-deflection plates</strong> control the vertical position of the electron beam on the screen.</p>
+
+  <h3>How the plates work</h3>
+
+  <p>A potential difference across the Y plates creates an electric field. The moving electrons experience an electric force in the direction opposite to that field because electrons carry negative charge.</p>
+
+  <p>Changing the voltage changes the field strength and can change the amount of vertical deflection. Reversing the voltage reverses the field and therefore reverses the direction of the vertical force, under the same beam conditions.</p>
+
+  <p>The size of the displacement also depends on the beam speed, the dimensions of the plates, the field region and the distance from the plates to the screen.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> The electric field between the Y plates points downwards. Which direction does the electric force act on the electrons?</p>
+
+  <p><strong>Step 1:</strong> Identify the field direction as downwards.</p>
+  <p><strong>Step 2:</strong> Remember that electrons have negative charge.</p>
+  <p><strong>Step 3:</strong> Reverse the field direction to determine the electron force.</p>
+
+  <p><strong>Answer:</strong> The force acts upwards.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A beam moves vertically on the screen when the Y-plate voltage is adjusted. Explain why this does not mean the plates are supplying new electrons.</p>
+
+  <p><strong>Step 1:</strong> The electron gun supplies the electrons.</p>
+  <p><strong>Step 2:</strong> The Y plates create an electric field.</p>
+  <p><strong>Step 3:</strong> The field changes the beam's direction, changing where it strikes the screen.</p>
+
+  <p><strong>Answer:</strong> The Y plates deflect existing beam electrons vertically; they do not supply the electrons that form the beam.</p>
+  `,
+  [
+    {
+      q: "What is the main function of the Y-deflection plates in a conventional CRT?",
+      hint: "Recall what the Y-axis represents on the screen.",
+      steps: [
+        "Identify the Y-axis as the vertical axis.",
+        "Recognise that the plates create an electric field.",
+        "State which movement they control."
+      ],
+      ans: "The Y-deflection plates control the vertical position of the electron beam on the screen.",
+      why: "Their electric field deflects the beam along the vertical screen axis in the conventional arrangement."
+    },
+    {
+      q: "The electric field between the Y plates points downwards. In which direction does the electric force act on the electrons?",
+      hint: "The force on a negative charge is opposite to the electric field.",
+      steps: [
+        "Identify the electric-field direction as downwards.",
+        "Recall that electrons carry negative charge.",
+        "Reverse the field direction to find the force direction."
+      ],
+      ans: "The electric force acts upwards.",
+      why: "The electric force on an electron is opposite to the direction of the electric field."
+    },
+    {
+      q: "The Y-plate voltage is reversed while the beam and other conditions remain the same. What happens to the direction of vertical deflection?",
+      hint: "Think about how reversing voltage affects the electric field.",
+      steps: [
+        "Reversing the voltage reverses the electric field.",
+        "The force on electrons remains opposite to the field.",
+        "Determine the effect on the vertical deflection."
+      ],
+      ans: "The direction of vertical deflection reverses.",
+      why: "Reversing the field reverses the electric force on the electrons."
+    },
+    {
+      q: "Distinguish between the Y-deflection plates and the electron gun.",
+      hint: "One supplies and forms the beam; the other steers it vertically.",
+      steps: [
+        "State the electron gun's role.",
+        "State the Y plates' role.",
+        "Explain why these functions are different."
+      ],
+      ans: "The electron gun supplies and forms the electron beam, while the Y-deflection plates control its vertical position.",
+      why: "Producing the beam and changing its position are separate operations."
+    },
+    {
+      q: "A CRT spot moves horizontally when the X-plate voltage changes, but changing the Y-plate voltage produces no vertical movement. Which function appears to be missing?",
+      hint: "Identify the screen axis associated with the failed response.",
+      steps: [
+        "Identify horizontal movement as the X-axis response.",
+        "Identify the missing movement as the Y-axis response.",
+        "Name the system responsible for vertical deflection."
+      ],
+      ans: "The Y-deflection system is not functioning as expected.",
+      why: "The Y plates control vertical movement of the electron beam."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Function of the Fluorescent Screen",
+  `
+  <h2>Function of the Fluorescent Screen</h2>
+
+  <p>The <strong>fluorescent screen</strong> is the part of a CRT that converts some of the energy delivered by the electron beam into visible light. The beam itself consists of electrons; the visible spot is produced by the screen material where those electrons strike.</p>
+
+  <h3>How the screen produces light</h3>
+
+  <ol>
+    <li>The electron beam reaches the fluorescent coating.</li>
+    <li>The electrons transfer energy to the screen material.</li>
+    <li>The material becomes excited.</li>
+    <li>As the material releases energy, some of it is emitted as visible light.</li>
+  </ol>
+
+  <p>The position of the glowing spot shows where the beam strikes the screen. The brightness depends on factors including the electron flow reaching the screen and the properties of the fluorescent material.</p>
+
+  <h3>Spot position, brightness and sharpness</h3>
+
+  <ul>
+    <li><strong>Position:</strong> mainly determined by the deflection system.</li>
+    <li><strong>Brightness:</strong> influenced by the electron flow reaching the screen and the screen's response.</li>
+    <li><strong>Sharpness:</strong> influenced by how well the electron beam is focused.</li>
+  </ul>
+
+  <p>These properties are related to different parts of the CRT. Changing one does not necessarily correct the others.</p>
+
+  <h3>Worked Example 1</h3>
+
+  <p><strong>Question:</strong> Explain why a bright spot appears on a CRT screen when the electron beam strikes it.</p>
+
+  <p><strong>Step 1:</strong> The electrons transfer energy to the fluorescent material.</p>
+  <p><strong>Step 2:</strong> The material absorbs energy and becomes excited.</p>
+  <p><strong>Step 3:</strong> The material emits some of the energy as visible light.</p>
+
+  <p><strong>Answer:</strong> The spot glows because the fluorescent material emits visible light after absorbing energy from the electrons.</p>
+
+  <h3>Worked Example 2</h3>
+
+  <p><strong>Question:</strong> A CRT produces a sharp spot in the wrong position. Which function should be investigated first: fluorescence, focusing or deflection?</p>
+
+  <p><strong>Step 1:</strong> The spot is sharp, so focusing is already producing an acceptable spot.</p>
+  <p><strong>Step 2:</strong> The spot is visible, so the screen is responding to the beam.</p>
+  <p><strong>Step 3:</strong> The remaining problem is its position.</p>
+
+  <p><strong>Answer:</strong> Investigate the deflection system because it controls where the beam strikes the screen.</p>
+  `,
+  [
+    {
+      q: "What is the main function of the fluorescent screen in a CRT?",
+      hint: "Think about how an invisible electron beam becomes observable.",
+      steps: [
+        "Identify what reaches the screen.",
+        "Explain what happens when electrons transfer energy to the coating.",
+        "State the observable result."
+      ],
+      ans: "The fluorescent screen emits visible light where the electron beam strikes it.",
+      why: "The screen converts some of the energy delivered by the electron beam into visible light."
+    },
+    {
+      q: "Explain how an electron beam produces a visible spot on a fluorescent screen.",
+      hint: "Follow the energy from the incoming electrons into the screen material.",
+      steps: [
+        "The electrons strike the fluorescent material.",
+        "They transfer energy to the material.",
+        "The material becomes excited and releases some energy as light.",
+        "The emitted light makes the point of impact visible."
+      ],
+      ans: "The electrons transfer energy to the fluorescent coating, which becomes excited and emits visible light at the point of impact.",
+      why: "The glowing spot reveals where the beam reaches the screen."
+    },
+    {
+      q: "A CRT has a well-focused beam and functioning deflection plates, but the screen does not glow when the beam reaches it. Which component or property should be investigated?",
+      hint: "The beam is present and positioned, but the visible-light response is missing.",
+      steps: [
+        "Recognise that the beam is being produced and directed.",
+        "Identify the missing visible response.",
+        "Investigate the screen's fluorescent material or its ability to emit light."
+      ],
+      ans: "The fluorescent screen or its light-emitting response should be investigated.",
+      why: "The screen is responsible for converting energy delivered by the electron beam into visible light."
+    },
+    {
+      q: "A CRT spot is visible and sharp but appears in the wrong place on the screen. Why is the fluorescent screen not the first system to blame?",
+      hint: "Separate producing visible light from determining where the beam strikes.",
+      steps: [
+        "Identify the screen's function as producing visible light.",
+        "Identify deflection as the function controlling spot position.",
+        "Match the fault to the function most directly responsible."
+      ],
+      ans: "The deflection system should be investigated first because it controls the beam's position; the screen's role is to produce visible light at the point of impact.",
+      why: "A visible, sharp spot in the wrong position points more directly to beam steering than to fluorescence or focusing."
+    },
+    {
+      q: "A student says that increasing the control-grid electron flow must always make a blurred spot sharp. Explain why this is incorrect.",
+      hint: "Compare the effect of electron quantity with the effect of beam convergence.",
+      steps: [
+        "Recall that the control grid affects electron flow and brightness.",
+        "Recall that focusing controls beam convergence and spot sharpness.",
+        "Explain why increasing electron flow does not necessarily correct focus."
+      ],
+      ans: "Increasing electron flow may make the spot brighter, but it does not necessarily make the beam better focused.",
+      why: "Brightness and sharpness are different properties controlled by different aspects of CRT operation."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Formation of a Visible Spot on the Screen",
+  `
+  <h2>Formation of a Visible Spot on the Screen</h2>
+
+  <h3>1. How the spot forms</h3>
+  <p>A cathode-ray tube produces a visible spot when a beam of electrons strikes a fluorescent screen. The screen contains a material that emits visible light when it receives energy from the incoming electrons.</p>
+
+  <h3>2. The process in order</h3>
+  <ol>
+    <li>The heated cathode releases electrons.</li>
+    <li>The electron gun accelerates and focuses the electrons into a narrow beam.</li>
+    <li>The deflection plates determine where the beam travels.</li>
+    <li>The electrons strike the fluorescent coating.</li>
+    <li>The coating emits light, producing a visible spot.</li>
+  </ol>
+
+  <h3>Worked Example 1: Explaining the visible spot</h3>
+  <p><strong>Question:</strong> Explain why a bright spot appears on the screen of a cathode-ray tube.</p>
+  <p><strong>Step 1:</strong> Electrons are emitted from the cathode and accelerated by the electron gun.</p>
+  <p><strong>Step 2:</strong> The beam reaches the fluorescent screen.</p>
+  <p><strong>Step 3:</strong> The electrons transfer energy to the fluorescent material, causing it to emit visible light.</p>
+  <p><strong>Conclusion:</strong> The visible spot is light emitted by the screen, not light emitted directly by the electron beam while travelling through the tube.</p>
+
+  <h3>Worked Example 2: Diagnosing a dark screen</h3>
+  <p>If the electron beam reaches the screen but the fluorescent coating no longer emits light, the spot will not be visible. This shows that beam production alone is insufficient: the screen must also convert the incoming energy into visible light.</p>
+
+  <h3>Important distinction</h3>
+  <p>The electron beam carries energy to the screen. The fluorescent material converts some of that energy into visible light. These are two different roles.</p>
+  `,
+  [
+    {
+      q: "Explain how electrons produce a visible spot when they strike a fluorescent screen.",
+      hint: "Follow the transfer of energy from the beam to the screen.",
+      steps: [
+        "The electron gun produces an accelerated beam of electrons.",
+        "The beam reaches and strikes the fluorescent coating.",
+        "The electrons transfer energy to the coating.",
+        "The coating emits visible light, forming a spot."
+      ],
+      ans: "Electrons strike the fluorescent coating and transfer energy to it, causing it to emit visible light as a spot.",
+      why: "The spot is produced by fluorescence caused by the incoming electrons."
+    },
+    {
+      q: "A beam of electrons is reaching the screen, but no visible spot appears. Give one possible explanation involving the screen.",
+      hint: "Consider what the screen must do after receiving the electrons.",
+      steps: [
+        "The beam is already reaching the screen.",
+        "The screen must emit visible light after receiving energy.",
+        "If its fluorescent coating is damaged or not functioning, a visible spot may not form."
+      ],
+      ans: "The fluorescent coating may be damaged or unable to emit visible light.",
+      why: "A beam reaching the screen does not guarantee a visible spot if the fluorescent material fails."
+    },
+    {
+      q: "Distinguish between the role of the electron gun and the role of the fluorescent screen.",
+      hint: "One prepares the beam; the other produces visible light.",
+      steps: [
+        "The electron gun produces, accelerates and focuses electrons.",
+        "The fluorescent screen receives the electrons.",
+        "The screen converts some of their energy into visible light."
+      ],
+      ans: "The electron gun produces and focuses the electron beam, while the fluorescent screen emits visible light when struck by the beam.",
+      why: "The components perform different functions in forming the visible spot."
+    },
+    {
+      q: "Why can the electron beam travel through the tube without appearing as a bright line, while a bright spot appears where it hits the screen?",
+      hint: "Compare what happens in the space inside the tube with what happens at the screen.",
+      steps: [
+        "The beam consists of moving electrons and is not ordinarily visible as a bright line in the evacuated tube.",
+        "The fluorescent screen contains material that emits visible light when struck by electrons.",
+        "Light is therefore produced at the point where the beam hits the screen."
+      ],
+      ans: "The beam does not ordinarily produce visible light along its path, but the fluorescent coating emits visible light where the electrons strike it.",
+      why: "The screen's fluorescent material makes the beam's impact visible."
+    },
+    {
+      q: "A working electron gun directs a beam onto an ordinary non-fluorescent surface inside the tube. Why might the characteristic bright spot not appear?",
+      hint: "The surface must have the correct light-emitting property.",
+      steps: [
+        "The electron gun can still direct electrons onto the surface.",
+        "The ordinary surface may not emit visible light when struck by electrons.",
+        "Without suitable fluorescence, the characteristic bright spot may not be produced."
+      ],
+      ans: "The surface may not fluoresce when struck by the electrons, so it may not emit a visible spot.",
+      why: "The fluorescent property of the screen is essential for producing the characteristic spot."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Movement of the Spot on the Screen",
+  `
+  <h2>Movement of the Spot on the Screen</h2>
+
+  <h3>1. How the spot moves</h3>
+  <p>The position of the spot on a cathode-ray tube screen depends on the direction of the electron beam when it reaches the screen. Deflection plates can change this direction by producing an electric field.</p>
+
+  <p>The X-deflection system controls horizontal movement, while the Y-deflection system controls vertical movement. The exact physical plate positions should be identified from the diagram of the particular tube.</p>
+
+  <h3>2. How voltage changes affect the spot</h3>
+  <p>Changing the potential difference across a pair of deflection plates changes the electric field between them. This changes the force on the electrons and therefore changes the direction of the beam.</p>
+
+  <p>Because electrons are negatively charged, the electric force on them acts opposite to the direction of the electric field.</p>
+
+  <h3>Worked Example 1: Horizontal movement</h3>
+  <p><strong>Question:</strong> What happens to the spot when the X-deflection voltage changes while the other controls remain fixed?</p>
+  <p><strong>Step 1:</strong> The voltage change alters the electric field between the X-deflection plates.</p>
+  <p><strong>Step 2:</strong> The electrons experience a changed force.</p>
+  <p><strong>Step 3:</strong> The beam changes its horizontal deflection.</p>
+  <p><strong>Conclusion:</strong> The spot moves horizontally. Its exact direction depends on the polarity and arrangement of the plates.</p>
+
+  <h3>Worked Example 2: No change in position</h3>
+  <p>If the deflection voltage is unchanged and all other relevant conditions remain constant, the spot remains at the same position. A changing voltage can move the spot, and a continuously changing voltage can produce a trace.</p>
+
+  <h3>Key distinction</h3>
+  <p>The electron gun produces the beam; the deflection system determines where the beam strikes the screen.</p>
+  `,
+  [
+    {
+      q: "Explain how changing the voltage across the X-deflection plates moves the spot horizontally.",
+      hint: "Connect voltage, electric field, force and beam direction.",
+      steps: [
+        "Changing the voltage changes the electric field between the plates.",
+        "The field exerts an electric force on the negatively charged electrons.",
+        "The beam direction changes.",
+        "The spot moves horizontally on the screen."
+      ],
+      ans: "Changing the voltage changes the electric field and force on the electrons, changing the beam's horizontal deflection and moving the spot horizontally.",
+      why: "The X-deflection system controls horizontal position."
+    },
+    {
+      q: "An electric field between deflection plates points upwards. In which direction does the electric force act on an electron?",
+      hint: "The electron has negative charge.",
+      steps: [
+        "The electric force on a charge is related to the electric field.",
+        "A positive charge experiences force in the field direction.",
+        "A negative charge experiences force opposite to the field direction."
+      ],
+      ans: "Downwards.",
+      why: "An electron is negatively charged, so its electric force is opposite to the electric field."
+    },
+    {
+      q: "Which part controls vertical movement of the spot, and which part controls horizontal movement?",
+      hint: "Use the X and Y labels.",
+      steps: [
+        "The X-deflection system controls the horizontal axis.",
+        "The Y-deflection system controls the vertical axis."
+      ],
+      ans: "The X-deflection system controls horizontal movement; the Y-deflection system controls vertical movement.",
+      why: "X and Y refer to the horizontal and vertical axes, respectively."
+    },
+    {
+      q: "The electron beam is functioning, but the spot does not respond when the X-deflection voltage is changed. State one possible fault in the deflection system.",
+      hint: "Think about what must happen between the plates for the beam to deflect.",
+      steps: [
+        "The X-deflection voltage should establish an electric field.",
+        "The field should exert a force on the electrons.",
+        "A faulty connection or ineffective voltage supply could prevent the required field from changing."
+      ],
+      ans: "A faulty connection or voltage supply to the X-deflection plates could prevent the electric field from changing.",
+      why: "Without the required change in the deflecting field, the expected horizontal movement will not occur."
+    },
+    {
+      q: "A spot moves vertically when the Y-deflection voltage is changed. Explain why this does not mean that the electrons have become positively charged.",
+      hint: "Separate the direction of deflection from the sign of charge.",
+      steps: [
+        "The electron retains its negative charge.",
+        "Changing the Y-plate voltage changes the electric field.",
+        "The resulting force changes the beam's vertical direction."
+      ],
+      ans: "The electrons remain negatively charged; the changed electric field alters the force on them and produces vertical deflection.",
+      why: "Spot movement is caused by a changed force and beam direction, not a change in the electrons' charge."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Why a Cathode-Ray Tube Is Evacuated",
+  `
+  <h2>Why a Cathode-Ray Tube Is Evacuated</h2>
+
+  <h3>1. Meaning of evacuation</h3>
+  <p>Evacuating a cathode-ray tube means removing most of the gas from its interior so that the gas pressure is very low. The tube is not necessarily a perfect vacuum.</p>
+
+  <h3>2. Why low pressure is necessary</h3>
+  <p>Electrons travelling through a gas can collide with gas particles. These collisions can change their direction and transfer energy to the gas.</p>
+
+  <p>At low gas pressure, there are fewer gas particles per unit volume. Electrons can therefore travel more freely from the electron gun towards the screen, with fewer collisions than they would experience in gas at ordinary pressure.</p>
+
+  <h3>Worked Example 1: Comparing two tubes</h3>
+  <p><strong>Question:</strong> Tube A has very low gas pressure, while Tube B contains gas at a much higher pressure. Which is more suitable for producing a controlled electron beam?</p>
+  <p><strong>Step 1:</strong> Higher pressure means more gas particles in a given volume.</p>
+  <p><strong>Step 2:</strong> More gas particles increase the likelihood of collisions with electrons.</p>
+  <p><strong>Step 3:</strong> Fewer collisions make the electron beam easier to direct towards the screen.</p>
+  <p><strong>Answer:</strong> Tube A is more suitable.</p>
+
+  <h3>Worked Example 2: Explaining a diffuse beam</h3>
+  <p>If the pressure inside a tube rises significantly, more collisions may scatter electrons. The beam may become less well controlled, and the display may become less effective.</p>
+
+  <h3>Common misconception</h3>
+  <p>Evacuation does not create the electrons and does not accelerate them. The cathode supplies electrons, and the electric potential difference accelerates them. Evacuation reduces interference from gas particles.</p>
+  `,
+  [
+    {
+      q: "Explain why a cathode-ray tube is evacuated before operation.",
+      hint: "Think about collisions between electrons and gas particles.",
+      steps: [
+        "Gas particles can collide with travelling electrons.",
+        "Collisions can scatter electrons and change their energy.",
+        "Removing most of the gas reduces the likelihood of these collisions.",
+        "The electron beam can travel more freely towards the screen."
+      ],
+      ans: "The tube is evacuated to reduce collisions between electrons and gas particles, allowing the electron beam to travel more freely towards the screen.",
+      why: "Low pressure helps preserve a controlled electron beam."
+    },
+    {
+      q: "Why is a low-pressure tube generally more suitable than a tube filled with gas at ordinary pressure?",
+      hint: "Compare the number of gas particles available for collisions.",
+      steps: [
+        "Ordinary-pressure gas contains many more particles per unit volume.",
+        "More particles increase the likelihood of electron collisions.",
+        "Low pressure reduces the likelihood of such collisions."
+      ],
+      ans: "A low-pressure tube has fewer gas particles, so electrons undergo fewer collisions and can travel more freely.",
+      why: "Reducing collisions improves control of the electron beam."
+    },
+    {
+      q: "A tube's internal pressure rises. Predict one effect this may have on the electron beam and explain your answer.",
+      hint: "Consider what happens when the beam encounters more gas particles.",
+      steps: [
+        "Rising pressure increases the number of gas particles in the tube.",
+        "Electrons are more likely to collide with these particles.",
+        "Collisions may scatter the electrons and change their energy."
+      ],
+      ans: "The beam may become more scattered or less well controlled because collisions with gas particles become more likely.",
+      why: "Higher pressure increases the chance of collisions along the beam's path."
+    },
+    {
+      q: "Does evacuating a cathode-ray tube produce the electrons? Explain the actual role of evacuation.",
+      hint: "Distinguish the electron source from the conditions inside the tube.",
+      steps: [
+        "The cathode releases electrons when suitable conditions are provided.",
+        "Evacuation removes most gas from the tube.",
+        "This reduces collisions as electrons travel."
+      ],
+      ans: "No. The cathode supplies the electrons; evacuation reduces collisions with gas particles as the electrons travel through the tube.",
+      why: "Electron production and evacuation perform different functions."
+    },
+    {
+      q: "A learner claims that a cathode-ray tube must contain absolutely no particles for electrons to reach the screen. Correct the claim.",
+      hint: "Recall what low pressure means.",
+      steps: [
+        "Evacuation removes most of the gas from the tube.",
+        "A practical tube is not necessarily a perfect vacuum.",
+        "The purpose is to reduce collisions sufficiently for useful beam operation."
+      ],
+      ans: "The tube contains very little gas, not necessarily zero particles; low pressure reduces collisions sufficiently for the electron beam to travel effectively.",
+      why: "A practical cathode-ray tube uses a low-pressure environment rather than requiring a perfect vacuum."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "The Electron-Volt",
+  `
+  <h2>The Electron-Volt</h2>
+
+  <h3>1. Definition</h3>
+  <p>An electron-volt (eV) is a unit of energy. One electron-volt is the energy gained by an electron when it moves through a potential difference of one volt, assuming the electric potential energy is fully converted into kinetic energy.</p>
+
+  <p>The magnitude of the electron's charge is:</p>
+  <p><strong>e = 1.602 × 10⁻¹⁹ C</strong></p>
+
+  <p>Since energy transferred by an electric potential difference is:</p>
+  <p><strong>E = QV</strong></p>
+
+  <p>For an electron crossing a potential difference of 1 V:</p>
+  <p>E = (1.602 × 10⁻¹⁹ C)(1 V)</p>
+  <p><strong>1 eV = 1.602 × 10⁻¹⁹ J</strong></p>
+
+  <h3>Worked Example 1: Energy in electron-volts</h3>
+  <p><strong>Question:</strong> An electron gains energy while moving through a potential difference of 250 V. Express the energy gained in eV.</p>
+  <p><strong>Step 1:</strong> The energy gained in electron-volts has the same numerical value as the potential difference in volts for a single electron.</p>
+  <p><strong>Step 2:</strong> E = 250 eV.</p>
+  <p><strong>Answer:</strong> 250 eV.</p>
+
+  <h3>Worked Example 2: Energy in joules</h3>
+  <p><strong>Question:</strong> Convert 250 eV to joules.</p>
+  <p>E = 250 × 1.602 × 10⁻¹⁹ J</p>
+  <p>E = 400.5 × 10⁻¹⁹ J</p>
+  <p><strong>E = 4.005 × 10⁻¹⁷ J</strong></p>
+
+  <h3>Important distinctions</h3>
+  <ul>
+    <li>The electron-volt is a unit of energy, not voltage.</li>
+    <li>The volt is a unit of potential difference.</li>
+    <li>The joule is the SI unit of energy.</li>
+  </ul>
+  `,
+  [
+    {
+      q: "Define one electron-volt.",
+      hint: "Use the energy gained by one electron crossing a potential difference.",
+      steps: [
+        "An electron-volt is a unit of energy.",
+        "It is defined using an electron crossing a potential difference of one volt.",
+        "The energy gained is 1.602 × 10⁻¹⁹ J."
+      ],
+      ans: "One electron-volt is the energy gained by an electron crossing a potential difference of one volt; 1 eV = 1.602 × 10⁻¹⁹ J.",
+      why: "The electron-volt expresses the energy transferred to a single electron by a one-volt potential difference."
+    },
+    {
+      q: "An electron is accelerated through a potential difference of 80 V. Assuming it starts with negligible kinetic energy and the energy gained becomes kinetic energy, calculate its kinetic energy in eV.",
+      hint: "For a single electron, the numerical energy in eV equals the potential difference in volts.",
+      steps: [
+        "Use the single-electron relationship: energy gained in eV equals the potential difference in V.",
+        "The potential difference is 80 V.",
+        "Therefore, the energy gained is 80 eV."
+      ],
+      ans: "80 eV.",
+      why: "An electron crossing a potential difference of 80 V gains 80 eV of energy."
+    },
+    {
+      q: "Explain why the electron-volt is a unit of energy and not a unit of potential difference.",
+      hint: "Compare what each quantity measures.",
+      steps: [
+        "Potential difference measures energy transferred per unit charge.",
+        "Energy transferred to a charge Q crossing a potential difference V has magnitude E = QV.",
+        "The electron-volt specifies an amount of energy."
+      ],
+      ans: "The electron-volt measures energy transferred to an electron, whereas potential difference measures energy transferred per unit charge and is measured in volts.",
+      why: "The definition uses a potential difference, but the electron-volt itself measures energy."
+    },
+    {
+      q: "An electron gains 1,500 eV of energy. State its energy in eV and explain why the numerical value is not automatically 1,500 J.",
+      hint: "The unit matters as much as the number.",
+      steps: [
+        "The stated energy is 1,500 eV.",
+        "One eV equals 1.602 × 10⁻¹⁹ J.",
+        "The joule value must be found by multiplying 1,500 by this conversion factor."
+      ],
+      ans: "The energy is 1,500 eV; it is not 1,500 J because an electron-volt and a joule are different units.",
+      why: "A numerical value cannot be transferred between units without conversion."
+    },
+    {
+      q: "Calculate the energy gained by an electron crossing a potential difference of 12 V, expressed in eV.",
+      hint: "Use the single-electron relationship between potential difference and energy in eV.",
+      steps: [
+        "For one electron, the energy gained in eV equals the potential difference in volts.",
+        "The potential difference is 12 V.",
+        "Therefore, the energy gained is 12 eV."
+      ],
+      ans: "12 eV.",
+      why: "A single electron crossing 12 V gains 12 eV of energy."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Converting Electron-Volts to Joules",
+  `
+  <h2>Converting Electron-Volts to Joules</h2>
+
+  <h3>1. The conversion relationship</h3>
+  <p>The electron-volt is a small unit of energy commonly used for individual particles. The joule is the SI unit of energy.</p>
+
+  <p><strong>1 eV = 1.602 × 10⁻¹⁹ J</strong></p>
+
+  <p>To convert eV to J, multiply by 1.602 × 10⁻¹⁹. To convert J to eV, divide by 1.602 × 10⁻¹⁹.</p>
+
+  <h3>Worked Example 1: Convert eV to J</h3>
+  <p><strong>Question:</strong> Convert 500 eV to joules.</p>
+  <p><strong>Step 1:</strong> Write the conversion factor.</p>
+  <p>1 eV = 1.602 × 10⁻¹⁹ J</p>
+  <p><strong>Step 2:</strong> Multiply by 500.</p>
+  <p>E = 500 × 1.602 × 10⁻¹⁹ J</p>
+  <p>E = 801 × 10⁻¹⁹ J</p>
+  <p><strong>Step 3:</strong> Express in standard scientific notation.</p>
+  <p><strong>E = 8.01 × 10⁻¹⁷ J</strong></p>
+
+  <h3>Worked Example 2: Convert J to eV</h3>
+  <p><strong>Question:</strong> Convert 3.204 × 10⁻¹⁸ J to eV.</p>
+  <p>E = (3.204 × 10⁻¹⁸) ÷ (1.602 × 10⁻¹⁹)</p>
+  <p>E = (3.204 ÷ 1.602) × 10¹</p>
+  <p><strong>E = 20 eV</strong></p>
+
+  <h3>Common error: powers of ten</h3>
+  <p>When dividing powers of ten, subtract the exponent in the denominator from the exponent in the numerator. For example, 10⁻¹⁸ ÷ 10⁻¹⁹ = 10¹.</p>
+
+  <h3>Check your result</h3>
+  <p>One eV is much smaller than one joule. Therefore, an energy of several eV should correspond to a very small number of joules.</p>
+  `,
+  [
+    {
+      q: "Convert 200 eV to joules. Show the conversion factor and your final answer in scientific notation.",
+      hint: "Multiply the energy in eV by 1.602 × 10⁻¹⁹ J per eV.",
+      steps: [
+        "Use 1 eV = 1.602 × 10⁻¹⁹ J.",
+        "E = 200 × 1.602 × 10⁻¹⁹ J.",
+        "E = 320.4 × 10⁻¹⁹ J.",
+        "Write in standard scientific notation: E = 3.204 × 10⁻¹⁷ J."
+      ],
+      ans: "3.204 × 10⁻¹⁷ J.",
+      why: "Multiplication by the conversion factor changes eV into joules."
+    },
+    {
+      q: "Convert 4.806 × 10⁻¹⁸ J to eV.",
+      hint: "Divide the energy in joules by 1.602 × 10⁻¹⁹ J per eV.",
+      steps: [
+        "E in eV = (4.806 × 10⁻¹⁸) ÷ (1.602 × 10⁻¹⁹).",
+        "Divide the coefficients: 4.806 ÷ 1.602 = 3.",
+        "Subtract exponents: −18 − (−19) = 1.",
+        "E = 3 × 10¹ eV = 30 eV."
+      ],
+      ans: "30 eV.",
+      why: "Dividing joules by the joules-per-eV conversion factor gives the energy in eV."
+    },
+    {
+      q: "A learner converts 50 eV to joules by dividing 50 by 1.602 × 10⁻¹⁹. Identify the error and state the correct operation.",
+      hint: "Check whether the starting unit is eV or J.",
+      steps: [
+        "The starting value is in eV.",
+        "To convert eV to J, multiply by 1.602 × 10⁻¹⁹.",
+        "Division is used for the reverse conversion, from J to eV."
+      ],
+      ans: "The learner used the wrong operation. Multiply 50 by 1.602 × 10⁻¹⁹ to obtain 8.01 × 10⁻¹⁸ J.",
+      why: "The conversion operation depends on the starting unit and the required unit."
+    },
+    {
+      q: "Convert 1.602 × 10⁻¹⁷ J to eV.",
+      hint: "Divide by 1.602 × 10⁻¹⁹ and simplify the powers of ten.",
+      steps: [
+        "E in eV = (1.602 × 10⁻¹⁷) ÷ (1.602 × 10⁻¹⁹).",
+        "The coefficients cancel: 1.602 ÷ 1.602 = 1.",
+        "Subtract exponents: −17 − (−19) = 2.",
+        "E = 10² eV."
+      ],
+      ans: "100 eV.",
+      why: "The ratio of the powers of ten is 10², which is 100."
+    },
+    {
+      q: "An electron gains 750 eV. Calculate this energy in joules and explain why the joule value is much smaller numerically.",
+      hint: "Multiply 750 by the conversion factor and express the result in standard notation.",
+      steps: [
+        "E = 750 × 1.602 × 10⁻¹⁹ J.",
+        "E = 1,201.5 × 10⁻¹⁹ J.",
+        "Convert to standard notation: E = 1.2015 × 10⁻¹⁶ J.",
+        "The joule value is numerically small because one eV is only 1.602 × 10⁻¹⁹ J."
+      ],
+      ans: "1.2015 × 10⁻¹⁶ J.",
+      why: "The electron-volt is much smaller than a joule, so converting a few hundred eV gives a very small energy in joules."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "The Cathode-Ray Oscilloscope",
+  `
+  <h2>The Cathode-Ray Oscilloscope</h2>
+
+  <h3>1. What a CRO does</h3>
+  <p>A cathode-ray oscilloscope (CRO) is an instrument used to display electrical signals as traces on a screen. It can help a user examine how a voltage changes with time and measure quantities such as voltage and time period.</p>
+
+  <h3>2. How the trace is produced</h3>
+  <ol>
+    <li>The electron gun produces a beam of electrons.</li>
+    <li>The input signal controls vertical deflection through the Y system.</li>
+    <li>The time-base circuit produces a voltage that moves the spot horizontally.</li>
+    <li>The fluorescent screen displays the moving spot as a trace.</li>
+  </ol>
+
+  <h3>3. What the axes represent</h3>
+  <p>In the usual CRO display, the vertical axis represents the input voltage and the horizontal axis represents time when the time base is operating normally.</p>
+
+  <h3>Worked Example 1: Identifying the signal</h3>
+  <p><strong>Question:</strong> A CRO displays a repeating wave. What does its vertical displacement represent?</p>
+  <p><strong>Step 1:</strong> The input signal controls vertical deflection.</p>
+  <p><strong>Step 2:</strong> The amount of vertical displacement is related to the input voltage through the voltage sensitivity setting.</p>
+  <p><strong>Conclusion:</strong> Vertical displacement represents the instantaneous input voltage relative to the reference level.</p>
+
+  <h3>Worked Example 2: A flat trace</h3>
+  <p>A horizontal trace at the reference level may indicate that the input voltage is zero or that the input and control settings produce no vertical displacement. A flat trace alone does not prove that the instrument is faulty.</p>
+
+  <h3>Keep the functions separate</h3>
+  <p>The electron gun creates the beam, the deflection systems position it, the time base provides horizontal movement, and the fluorescent screen makes the trace visible.</p>
+  `,
+  [
+    {
+      q: "Explain how a CRO produces a visible trace representing an electrical signal.",
+      hint: "Include the electron beam, input signal, time base and screen.",
+      steps: [
+        "The electron gun produces an electron beam.",
+        "The input voltage changes the vertical deflection.",
+        "The time base moves the beam horizontally with time.",
+        "The fluorescent screen makes the beam's path visible as a trace."
+      ],
+      ans: "The electron gun produces a beam, the input signal controls vertical deflection, the time base moves it horizontally, and the fluorescent screen displays the resulting trace.",
+      why: "The trace shows how the input voltage varies as the beam moves across the screen."
+    },
+    {
+      q: "On a CRO operating with its normal time base, what physical quantity is represented by vertical displacement?",
+      hint: "The input signal is applied to the Y-deflection system.",
+      steps: [
+        "The input signal is a voltage.",
+        "The Y system controls vertical deflection.",
+        "The vertical displacement is related to the input voltage by the selected sensitivity."
+      ],
+      ans: "The input voltage relative to the reference level.",
+      why: "Vertical displacement represents voltage when the CRO is configured for the usual voltage-versus-time display."
+    },
+    {
+      q: "What does the horizontal axis usually represent on a CRO when its time base is operating normally?",
+      hint: "The time-base circuit moves the beam horizontally.",
+      steps: [
+        "The time-base circuit generates a voltage that sweeps the beam horizontally.",
+        "The horizontal position corresponds to elapsed time during the sweep."
+      ],
+      ans: "Time.",
+      why: "The time base provides a horizontal sweep so that voltage can be displayed against time."
+    },
+    {
+      q: "A CRO screen shows a horizontal trace at the reference level. Explain why this observation alone does not prove the CRO is faulty.",
+      hint: "Consider what input signal and control settings could produce a flat trace.",
+      steps: [
+        "The trace is horizontal, so there is no visible variation in vertical displacement.",
+        "A zero or constant input voltage can produce a horizontal trace.",
+        "The trace's position also depends on the reference and control settings."
+      ],
+      ans: "A zero or constant input voltage, or the selected reference and control settings, may produce a horizontal trace even when the CRO is functioning correctly.",
+      why: "A flat trace can be a valid display of the applied signal."
+    },
+    {
+      q: "Distinguish between the function of the time base and the function of the Y-deflection system.",
+      hint: "One establishes the horizontal sweep; the other responds to the input voltage.",
+      steps: [
+        "The time base produces horizontal movement corresponding to time.",
+        "The Y-deflection system moves the beam vertically in response to the input voltage."
+      ],
+      ans: "The time base controls horizontal movement representing time, while the Y-deflection system controls vertical movement representing input voltage.",
+      why: "Together, the two systems display voltage as a function of time."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "The Time Base in a Cathode-Ray Oscilloscope",
+  `
+  <h2>The Time Base in a Cathode-Ray Oscilloscope</h2>
+
+  <h3>1. Purpose of the time base</h3>
+  <p>The time base produces a voltage that sweeps the electron beam horizontally across a CRO screen. In normal operation, the sweep moves the spot across the screen at a controlled rate so that the horizontal position represents elapsed time.</p>
+
+  <p>A common time-base waveform is a sawtooth voltage: the voltage changes steadily during the forward sweep and then returns rapidly to its starting value.</p>
+
+  <h3>2. Time represented by horizontal distance</h3>
+  <p>The time represented by a horizontal distance depends on the time-base setting, often expressed in seconds per division or milliseconds per division.</p>
+
+  <p><strong>Time interval = number of horizontal divisions × time per division</strong></p>
+
+  <h3>Worked Example 1: Measuring a time interval</h3>
+  <p><strong>Question:</strong> A waveform spans 4 horizontal divisions. The time-base setting is 2 ms/division. Calculate the time interval.</p>
+  <p><strong>Step 1:</strong> Number of divisions = 4.</p>
+  <p><strong>Step 2:</strong> Time per division = 2 ms.</p>
+  <p><strong>Step 3:</strong> Time interval = 4 × 2 ms = <strong>8 ms</strong>.</p>
+
+  <h3>Worked Example 2: Finding time per division</h3>
+  <p>A sweep represents 10 ms across 5 horizontal divisions.</p>
+  <p>Time per division = total time ÷ number of divisions.</p>
+  <p>= 10 ms ÷ 5 = <strong>2 ms/division</strong>.</p>
+
+  <h3>Important distinction</h3>
+  <p>The time-base setting determines the time represented by each horizontal division. The voltage sensitivity setting determines the voltage represented by each vertical division.</p>
+  `,
+  [
+    {
+      q: "A waveform spans 6 horizontal divisions when the time-base setting is 0.5 ms/division. Calculate the time interval represented.",
+      hint: "Multiply the horizontal divisions by the time per division.",
+      steps: [
+        "Number of divisions = 6.",
+        "Time per division = 0.5 ms.",
+        "Time interval = 6 × 0.5 ms = 3 ms."
+      ],
+      ans: "3 ms.",
+      why: "Each horizontal division represents 0.5 ms, so six divisions represent 3 ms."
+    },
+    {
+      q: "A time interval of 12 ms occupies 4 horizontal divisions. Calculate the time-base setting in ms/division.",
+      hint: "Divide the total time by the number of divisions.",
+      steps: [
+        "Total time = 12 ms.",
+        "Number of divisions = 4.",
+        "Time per division = 12 ms ÷ 4 = 3 ms/division."
+      ],
+      ans: "3 ms/division.",
+      why: "The time-base setting gives the time represented by one horizontal division."
+    },
+    {
+      q: "Explain why a time-base setting is necessary when using a CRO to measure a time interval from a trace.",
+      hint: "A distance on the screen is not itself a time measurement.",
+      steps: [
+        "The trace is displayed across horizontal screen divisions.",
+        "Each division must correspond to a known time interval.",
+        "The time-base setting supplies this time-per-division relationship."
+      ],
+      ans: "The time-base setting establishes the time represented by each horizontal division, allowing horizontal distance to be converted into a time interval.",
+      why: "Without a known time scale, horizontal displacement alone does not give a numerical time."
+    },
+    {
+      q: "A learner uses the voltage-per-division setting to calculate the time represented by a waveform's horizontal width. Explain the error.",
+      hint: "Voltage sensitivity and time-base settings measure different quantities.",
+      steps: [
+        "Voltage per division applies to vertical displacement.",
+        "Time per division applies to horizontal displacement.",
+        "A horizontal time interval must be calculated using the time-base setting."
+      ],
+      ans: "The learner used the wrong scale. Horizontal time must be calculated using the time-base setting in seconds or milliseconds per division.",
+      why: "Voltage sensitivity measures vertical voltage changes, not horizontal time intervals."
+    },
+    {
+      q: "The time-base setting is 4 ms/division. A repeating waveform completes one cycle in 2.5 horizontal divisions. Calculate its period in milliseconds.",
+      hint: "The period is the horizontal width of one complete cycle multiplied by time per division.",
+      steps: [
+        "One cycle occupies 2.5 divisions.",
+        "Each division represents 4 ms.",
+        "Period T = 2.5 × 4 ms = 10 ms."
+      ],
+      ans: "10 ms.",
+      why: "The period is the time taken for one complete cycle, found using the horizontal time scale."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Measuring Voltage from a CRO Trace",
+  `
+  <h2>Measuring Voltage from a CRO Trace</h2>
+
+  <h3>1. Voltage sensitivity</h3>
+  <p>The voltage sensitivity setting tells you how much input voltage corresponds to one vertical division on the CRO screen. It is often given in V/division or mV/division.</p>
+
+  <p><strong>Voltage change = vertical displacement × voltage per division</strong></p>
+
+  <p>For a voltage measured from the reference level, count the vertical divisions between the reference level and the trace. For a peak-to-peak voltage, count the divisions from the highest point to the lowest point.</p>
+
+  <h3>Worked Example 1: Voltage relative to the reference level</h3>
+  <p><strong>Question:</strong> A trace is 3 vertical divisions above the reference level. The sensitivity is 2 V/division. Calculate the voltage represented.</p>
+  <p><strong>Step 1:</strong> Vertical displacement = 3 divisions.</p>
+  <p><strong>Step 2:</strong> Sensitivity = 2 V/division.</p>
+  <p><strong>Step 3:</strong> Voltage = 3 × 2 V = <strong>6 V</strong> above the reference level.</p>
+
+  <h3>Worked Example 2: Peak-to-peak voltage</h3>
+  <p>A waveform extends 4 divisions from its highest point to its lowest point. The sensitivity is 0.5 V/division.</p>
+  <p>Peak-to-peak voltage = 4 × 0.5 V = <strong>2 V</strong>.</p>
+  <p>If the waveform is centred on zero and symmetric, its peak voltage is half the peak-to-peak value: 1 V.</p>
+
+  <h3>Common errors</h3>
+  <ul>
+    <li>Using horizontal divisions instead of vertical divisions.</li>
+    <li>Forgetting to multiply by the voltage sensitivity.</li>
+    <li>Confusing peak voltage with peak-to-peak voltage.</li>
+    <li>Ignoring whether the trace is above or below the reference level when stating signed voltage.</li>
+  </ul>
+  `,
+  [
+    {
+      q: "A trace is 5 vertical divisions above the reference level. The voltage sensitivity is 0.4 V/division. Calculate the voltage represented.",
+      hint: "Multiply the vertical displacement by the voltage sensitivity.",
+      steps: [
+        "Vertical displacement = 5 divisions.",
+        "Voltage sensitivity = 0.4 V/division.",
+        "Voltage = 5 × 0.4 V = 2 V."
+      ],
+      ans: "+2 V relative to the reference level.",
+      why: "The trace is above the reference level, so the voltage relative to that level is positive."
+    },
+    {
+      q: "The highest and lowest points of a waveform are separated by 6 vertical divisions. The sensitivity is 0.2 V/division. Calculate the peak-to-peak voltage.",
+      hint: "Use the full distance from the highest point to the lowest point.",
+      steps: [
+        "Peak-to-peak displacement = 6 divisions.",
+        "Voltage sensitivity = 0.2 V/division.",
+        "Peak-to-peak voltage = 6 × 0.2 V = 1.2 V."
+      ],
+      ans: "1.2 V peak-to-peak.",
+      why: "Peak-to-peak voltage uses the full vertical separation between the waveform's highest and lowest points."
+    },
+    {
+      q: "A trace is 2.5 divisions below the reference level. The sensitivity is 2 V/division. Calculate the signed voltage relative to the reference level.",
+      hint: "Calculate the magnitude first, then use the trace's position to determine the sign.",
+      steps: [
+        "Magnitude = 2.5 × 2 V = 5 V.",
+        "The trace is below the reference level.",
+        "The signed voltage is therefore negative relative to that reference."
+      ],
+      ans: "−5 V relative to the reference level.",
+      why: "The vertical displacement gives a magnitude of 5 V, and the position below the reference gives a negative sign."
+    },
+    {
+      q: "A learner sees a vertical displacement of 4 divisions and reports a voltage of 4 V without checking the sensitivity. Explain why the answer is not justified.",
+      hint: "A division is a distance on the screen, not automatically one volt.",
+      steps: [
+        "The vertical displacement is 4 divisions.",
+        "Each division represents the voltage given by the sensitivity setting.",
+        "The voltage can be calculated only after that setting is known.",
+        "If sensitivity were 2 V/division, for example, the voltage magnitude would be 8 V."
+      ],
+      ans: "The sensitivity setting is required. Four divisions do not necessarily represent 4 V; the voltage is the number of divisions multiplied by volts per division.",
+      why: "The screen displacement must be interpreted using the selected voltage scale."
+    },
+    {
+      q: "A waveform is symmetric about the zero-voltage reference level and has a peak-to-peak voltage of 3.6 V. Calculate its peak voltage.",
+      hint: "For a symmetric waveform centred on zero, the peak magnitude is half the peak-to-peak voltage.",
+      steps: [
+        "Peak-to-peak voltage = 3.6 V.",
+        "The waveform is symmetric about zero.",
+        "Peak voltage = 3.6 V ÷ 2 = 1.8 V."
+      ],
+      ans: "1.8 V peak.",
+      why: "For a waveform symmetric about zero, the positive and negative peak magnitudes are equal, so peak voltage is half the peak-to-peak voltage."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Measuring the Period of a Waveform",
+  `
+  <h2>Measuring the Period of a Waveform</h2>
+
+  <h3>1. Meaning of period</h3>
+  <p>The period, T, of a periodic waveform is the time taken to complete one full cycle. A cycle is one complete repetition of the waveform.</p>
+
+  <p>On a CRO operating with its normal time base, the horizontal axis represents time. The period can therefore be determined by measuring the horizontal distance occupied by one complete cycle.</p>
+
+  <p><strong>Period = horizontal divisions for one cycle × time per division</strong></p>
+
+  <h3>Worked Example 1: Finding the period</h3>
+  <p><strong>Question:</strong> One complete waveform occupies 4 horizontal divisions. The time-base setting is 2 ms/division. Calculate the period.</p>
+  <p><strong>Step 1:</strong> Number of divisions = 4.</p>
+  <p><strong>Step 2:</strong> Time per division = 2 ms.</p>
+  <p><strong>Step 3:</strong> T = 4 × 2 ms.</p>
+  <p><strong>Answer: T = 8 ms = 0.008 s.</strong></p>
+
+  <h3>Worked Example 2: Measuring across several cycles</h3>
+  <p><strong>Question:</strong> Three complete cycles occupy 9 horizontal divisions. The time-base setting is 0.5 ms/division. Find the period of one cycle.</p>
+  <p><strong>Step 1:</strong> Total time = 9 × 0.5 ms = 4.5 ms.</p>
+  <p><strong>Step 2:</strong> There are 3 complete cycles.</p>
+  <p><strong>Step 3:</strong> T = 4.5 ms ÷ 3.</p>
+  <p><strong>Answer: T = 1.5 ms.</strong></p>
+
+  <h3>Common errors</h3>
+  <ul>
+    <li>Measuring only half a cycle instead of one complete cycle.</li>
+    <li>Reporting the time for several cycles as the period of one cycle.</li>
+    <li>Forgetting to convert milliseconds to seconds when required.</li>
+  </ul>
+  `,
+  [
+    {
+      q: "One complete cycle occupies 5 horizontal divisions on a CRO. The time-base setting is 4 ms/division. Calculate the period in milliseconds and seconds.",
+      hint: "Multiply the divisions by the time per division, then convert milliseconds to seconds.",
+      steps: [
+        "Horizontal divisions for one cycle = 5.",
+        "Time per division = 4 ms.",
+        "T = 5 × 4 ms = 20 ms.",
+        "Convert to seconds: 20 ms = 20 ÷ 1000 s = 0.020 s."
+      ],
+      ans: "T = 20 ms = 0.020 s.",
+      why: "The period is the time taken for one complete cycle."
+    },
+    {
+      q: "Four complete cycles occupy 12 horizontal divisions. If the time-base setting is 2 ms/division, calculate the period of one cycle.",
+      hint: "First find the total time for all four cycles, then divide by four.",
+      steps: [
+        "Total horizontal divisions = 12.",
+        "Total time = 12 × 2 ms = 24 ms.",
+        "Number of cycles = 4.",
+        "Period = 24 ms ÷ 4 = 6 ms."
+      ],
+      ans: "6 ms.",
+      why: "The total time covers four cycles, so it must be divided by four to obtain the period of one cycle."
+    },
+    {
+      q: "A waveform completes one cycle across 2.5 divisions. The time-base setting is 0.4 ms/division. Calculate its period.",
+      hint: "Use period = horizontal divisions × time per division.",
+      steps: [
+        "Horizontal divisions = 2.5.",
+        "Time per division = 0.4 ms.",
+        "T = 2.5 × 0.4 ms = 1.0 ms."
+      ],
+      ans: "T = 1.0 ms = 0.001 s.",
+      why: "Multiplying the measured horizontal width by the time-base setting gives the period."
+    },
+    {
+      q: "A learner measures 10 ms across two complete cycles and reports the period as 10 ms. Explain the error and calculate the correct period.",
+      hint: "The measured time represents two cycles, not one.",
+      steps: [
+        "Total measured time = 10 ms.",
+        "Number of complete cycles = 2.",
+        "Period of one cycle = 10 ms ÷ 2 = 5 ms."
+      ],
+      ans: "The learner reported the time for two cycles. The correct period is 5 ms.",
+      why: "The period refers to one complete cycle only."
+    },
+    {
+      q: "A waveform occupies 6 divisions for one cycle. Its time-base setting is 250 microseconds per division. Calculate the period in milliseconds.",
+      hint: "Multiply first, then convert microseconds to milliseconds.",
+      steps: [
+        "Horizontal divisions = 6.",
+        "Time per division = 250 microseconds.",
+        "T = 6 × 250 microseconds = 1500 microseconds.",
+        "Since 1000 microseconds = 1 ms, T = 1.5 ms."
+      ],
+      ans: "T = 1.5 ms.",
+      why: "The time-base setting gives the time for each division, and the total must be converted to the requested unit."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "Calculating Frequency from a CRO Trace",
+  `
+  <h2>Calculating Frequency from a CRO Trace</h2>
+
+  <h3>1. Meaning of frequency</h3>
+  <p>Frequency, f, is the number of complete cycles made in one second. Its SI unit is the hertz (Hz).</p>
+
+  <p><strong>Frequency = 1 ÷ period</strong></p>
+  <p><strong>f = 1/T</strong></p>
+
+  <p>The period must be expressed in seconds when calculating frequency in hertz. A short period corresponds to a high frequency; a long period corresponds to a low frequency.</p>
+
+  <h3>Worked Example 1: Frequency from period</h3>
+  <p><strong>Question:</strong> A waveform has a period of 0.02 s. Calculate its frequency.</p>
+  <p><strong>Step 1:</strong> T = 0.02 s.</p>
+  <p><strong>Step 2:</strong> f = 1/T.</p>
+  <p><strong>Step 3:</strong> f = 1 ÷ 0.02 = 50 Hz.</p>
+  <p><strong>Answer: 50 Hz.</strong></p>
+
+  <h3>Worked Example 2: Frequency from a CRO trace</h3>
+  <p><strong>Question:</strong> One cycle occupies 4 divisions, and the time-base setting is 0.5 ms/division. Calculate the frequency.</p>
+  <p><strong>Step 1:</strong> Period = 4 × 0.5 ms = 2 ms.</p>
+  <p><strong>Step 2:</strong> Convert to seconds: T = 0.002 s.</p>
+  <p><strong>Step 3:</strong> f = 1 ÷ 0.002 = 500 Hz.</p>
+  <p><strong>Answer: 500 Hz.</strong></p>
+
+  <h3>Worked Example 3: Avoiding unit errors</h3>
+  <p>If T = 5 ms, do not substitute 5 directly into f = 1/T and label the answer hertz. First convert 5 ms to 0.005 s.</p>
+  <p>Then f = 1 ÷ 0.005 = 200 Hz.</p>
+
+  <h3>Diagnostic rule</h3>
+  <p>Read the trace to obtain the period, convert the period to seconds, and then calculate frequency using f = 1/T.</p>
+  `,
+  [
+    {
+      q: "A periodic signal has a period of 0.004 s. Calculate its frequency in hertz.",
+      hint: "Use f = 1/T with the period in seconds.",
+      steps: [
+        "T = 0.004 s.",
+        "f = 1/T.",
+        "f = 1 ÷ 0.004 = 250 Hz."
+      ],
+      ans: "250 Hz.",
+      why: "Frequency is the reciprocal of the period."
+    },
+    {
+      q: "One cycle occupies 5 horizontal divisions on a CRO. The time-base setting is 0.2 ms/division. Calculate the frequency in hertz.",
+      hint: "Find the period in milliseconds, convert to seconds, then take the reciprocal.",
+      steps: [
+        "T = 5 × 0.2 ms = 1 ms.",
+        "Convert: T = 0.001 s.",
+        "f = 1 ÷ 0.001 = 1000 Hz."
+      ],
+      ans: "1000 Hz.",
+      why: "The period is 0.001 s, so 1000 complete cycles occur per second."
+    },
+    {
+      q: "A waveform has a period of 25 ms. Calculate its frequency in hertz.",
+      hint: "Convert 25 ms to seconds before calculating the reciprocal.",
+      steps: [
+        "T = 25 ms.",
+        "Convert: T = 25 ÷ 1000 s = 0.025 s.",
+        "f = 1 ÷ 0.025 = 40 Hz."
+      ],
+      ans: "40 Hz.",
+      why: "Using the period in seconds gives frequency in hertz."
+    },
+    {
+      q: "A learner calculates the frequency of a signal with period 4 ms as 1 ÷ 4 = 0.25 Hz. Identify the error and give the correct frequency.",
+      hint: "The period was given in milliseconds, not seconds.",
+      steps: [
+        "Convert 4 ms to seconds: T = 0.004 s.",
+        "Use f = 1/T.",
+        "f = 1 ÷ 0.004 = 250 Hz."
+      ],
+      ans: "The learner failed to convert milliseconds to seconds. The correct frequency is 250 Hz.",
+      why: "Frequency in hertz requires the period to be expressed in seconds."
+    },
+    {
+      q: "Signal A has a period of 2 ms, while Signal B has a period of 8 ms. Calculate both frequencies and state which signal has the higher frequency.",
+      hint: "Convert both periods to seconds and use f = 1/T.",
+      steps: [
+        "Signal A: T = 0.002 s; f = 1 ÷ 0.002 = 500 Hz.",
+        "Signal B: T = 0.008 s; f = 1 ÷ 0.008 = 125 Hz.",
+        "Compare 500 Hz and 125 Hz."
+      ],
+      ans: "Signal A = 500 Hz; Signal B = 125 Hz. Signal A has the higher frequency.",
+      why: "Frequency and period are inversely related: the shorter period corresponds to the higher frequency."
+    }
+  ]
+);
+
+add(
+  "physics",
+  "cathode_rays",
+  "How Cathode-Ray Televisions Produce Images",
+  `
+  <h2>How Cathode-Ray Televisions Produce Images</h2>
+
+  <h3>1. The basic principle</h3>
+  <p>Older cathode-ray tube (CRT) televisions formed images by directing electron beams onto a fluorescent screen. The screen emitted light where the electrons struck it.</p>
+
+  <h3>2. How an image is formed</h3>
+  <ol>
+    <li>An electron gun produces a beam of electrons.</li>
+    <li>Deflection systems guide the beam across the screen.</li>
+    <li>The beam scans successive positions across the screen in a repeated pattern.</li>
+    <li>The beam's intensity is varied according to the picture signal, controlling the brightness at different positions.</li>
+    <li>The fluorescent screen emits light at the scanned positions, creating the visible image.</li>
+  </ol>
+
+  <h3>3. Producing a complete picture</h3>
+  <p>The beam moves rapidly across the screen in repeated lines. The scanning pattern is repeated quickly enough that the viewer perceives a complete image rather than a single moving spot. In a colour CRT television, separate electron beams or beam paths activate red, green and blue phosphor regions to produce different colours.</p>
+
+  <h3>Worked Example 1: A dark picture</h3>
+  <p><strong>Question:</strong> The beam scans the screen, but its intensity does not vary with the picture signal. Why might the display fail to reproduce the intended image correctly?</p>
+  <p><strong>Step 1:</strong> Scanning determines where the beam strikes.</p>
+  <p><strong>Step 2:</strong> The picture signal controls beam intensity and therefore brightness.</p>
+  <p><strong>Step 3:</strong> Without the required intensity variations, different picture details cannot be represented correctly.</p>
+  <p><strong>Conclusion:</strong> Scanning alone is insufficient; the beam intensity must also carry the picture information.</p>
+
+  <h3>Worked Example 2: Separating functions</h3>
+  <p>If the beam cannot move horizontally or vertically, it cannot scan the screen properly. If the beam scans but its intensity is not controlled correctly, the intended brightness pattern cannot be reproduced.</p>
+
+  <h3>Important limitation</h3>
+  <p>CRT televisions are older display technology. Modern flat-panel televisions generally form images using different technologies, such as liquid-crystal displays or light-emitting diodes, rather than scanning a fluorescent screen with an electron beam.</p>
+  `,
+  [
+    {
+      q: "Explain how an older CRT television uses cathode rays to produce a visible picture.",
+      hint: "Include electron production, scanning, beam intensity and the fluorescent screen.",
+      steps: [
+        "The electron gun produces an electron beam.",
+        "Deflection systems move the beam across the screen in a scanning pattern.",
+        "The picture signal varies the beam's intensity to represent different brightness levels.",
+        "The fluorescent screen emits light where the beam strikes.",
+        "Repeated rapid scanning produces the visible image."
+      ],
+      ans: "An electron gun produces a beam that scans the fluorescent screen. The picture signal controls the beam's intensity, and the screen emits light at each scanned position to form the image.",
+      why: "The scanning pattern determines where light is produced, while beam intensity determines brightness."
+    },
+    {
+      q: "A CRT television's electron beam scans across the screen, but its intensity remains constant. Explain why the intended picture may not appear correctly.",
+      hint: "Distinguish the beam's position from its brightness.",
+      steps: [
+        "Deflection moves the beam to different screen positions.",
+        "Beam intensity determines how much energy reaches each position per unit time.",
+        "The picture signal must vary intensity to represent different brightness levels.",
+        "Constant intensity cannot reproduce the required variations in brightness."
+      ],
+      ans: "The intended picture may not appear correctly because constant beam intensity cannot reproduce the picture's different brightness levels.",
+      why: "Scanning provides position, but intensity variations carry brightness information."
+    },
+    {
+      q: "What is the role of the fluorescent screen in a CRT television?",
+      hint: "Consider what happens when the electron beam strikes it.",
+      steps: [
+        "The electron beam transfers energy to the screen coating.",
+        "The fluorescent material emits visible light.",
+        "The emitted light forms the visible parts of the picture."
+      ],
+      ans: "The fluorescent screen converts energy from the incoming electron beam into visible light to form the picture.",
+      why: "Without the light-emitting screen, the electron beam would not produce the intended visible display."
+    },
+    {
+      q: "Why must the electron beam be deflected repeatedly across different positions to display a complete television picture?",
+      hint: "A single stationary spot can illuminate only one small region.",
+      steps: [
+        "A stationary beam illuminates only one location on the screen.",
+        "A picture contains details at many different locations.",
+        "Deflection moves the beam across the screen in a repeated scanning pattern.",
+        "The scanning process allows many picture locations to be illuminated."
+      ],
+      ans: "The beam must scan across the screen so that light can be produced at many different positions, allowing the complete picture to be formed.",
+      why: "Deflection allows the beam to address the different positions needed for an image."
+    },
+    {
+      q: "Distinguish between the function of deflection and the function of beam-intensity control in a CRT television.",
+      hint: "One determines where the beam strikes; the other determines brightness.",
+      steps: [
+        "Deflection changes the direction of the electron beam and determines its position on the screen.",
+        "Intensity control changes the beam's strength and the energy delivered to each screen position.",
+        "Together, these controls reproduce the position and brightness information in the image."
+      ],
+      ans: "Deflection determines where the beam strikes the screen, while beam-intensity control determines the brightness produced at each position.",
+      why: "Correct image formation requires both spatial scanning and appropriate brightness variation."
+    }
+  ]
+);
+
+//======================================================
+//Photoelectric effect
+//
+//======================================================
+// ============================================================
+// PHOTOELECTRIC EFFECT — BATCH 1
+// FOUNDATIONS OF PHOTOELECTRIC EMISSION
+//
+// Chapter ID: photoelectric_emission
+// Screens: 4
+// Each screen: detailed notes + 3 worked examples + 5 questions
+// ============================================================
 
 
 // ------------------------------------------------------------
-// 15. FUNCTION OF THE ELECTRON GUN
-// Skill: Explain the role of the electron gun.
+// SCREEN 1: MEANING OF PHOTOELECTRIC EMISSION
+// One concept: What photoelectric emission is
 // ------------------------------------------------------------
 
-add("physics", "cathode_rays", "Function of the Electron Gun", `
-<h3>Function of the Electron Gun</h3>
+add(
+  "physics",
+  "photoelectric_emission",
+  "Meaning of Photoelectric Emission",
+  `
+  <h3>Meaning of Photoelectric Emission</h3>
 
-The electron gun produces a narrow beam of electrons inside a cathode ray tube.
+  <p><b>Photoelectric emission</b> is the release of electrons from the surface of a material when electromagnetic radiation of sufficiently high frequency falls on it.</p>
 
-Its operation involves several stages:
+  <p>The material is commonly a metal because metals contain electrons that can move through the material. However, these electrons are normally held within the material by attractive forces.</p>
 
-1. The heated cathode emits electrons.
-2. The control grid regulates the number of electrons passing through.
-3. The focusing system concentrates the electrons into a narrow beam.
-4. Accelerating anodes increase the speed of the electrons.
+  <p>When suitable light is incident on the surface, electrons can absorb energy from the radiation. If an electron receives enough energy to overcome the energy barrier holding it in the material, it can escape from the surface.</p>
 
-The electron gun prepares the beam before it reaches the deflection plates.
+  <h3>How photoelectric emission occurs</h3>
 
-<h3>Worked Examples</h3>
+  <ol>
+    <li>Light falls on a photosensitive material.</li>
+    <li>The light transfers energy to electrons in the material.</li>
+    <li>An electron receives sufficient energy to overcome the surface energy barrier.</li>
+    <li>The electron escapes from the surface and becomes a photoelectron.</li>
+  </ol>
 
-<b>Example 1: Why is the cathode heated?</b>
-Step 1: The cathode must release electrons.
-Step 2: Heating provides energy for electron emission.
-Answer: To enable the cathode to emit electrons.
+  <p>The emitted electron does not come from the light itself. It was already present in the material; the incident radiation supplies the energy needed for it to escape.</p>
 
-<b>Example 2: Why does the electron gun contain a focusing system?</b>
-Step 1: An unfocused beam spreads out.
-Step 2: The focusing system concentrates the beam.
-Answer: To produce a narrow beam.
+  <h3>The essential condition</h3>
 
-<b>Example 3: What is the purpose of the accelerating anodes?</b>
-Step 1: Electrons leave the cathode with relatively low speeds.
-Step 2: The accelerating anodes increase their kinetic energy.
-Answer: To accelerate the electrons.
-`, [
-  {
-    q: "What is the main function of the electron gun in a CRT?",
-    hint: "Think about what must be produced before the beam can be deflected.",
-    steps: [
-      "A CRT operates using electrons.",
-      "The electron gun produces and directs a beam of electrons."
-    ],
-    ans: "To produce and direct a beam of electrons",
-    why: "The electron gun supplies the beam used by the CRT."
-  },
-  {
-    q: "Why is the cathode heated in the electron gun?",
-    hint: "Heating helps electrons leave the cathode.",
-    steps: [
-      "Electrons are released from the cathode.",
-      "Heating supplies energy for their emission."
-    ],
-    ans: "To enable it to emit electrons",
-    why: "Heating the cathode causes thermionic emission."
-  },
-  {
-    q: "What is the function of the focusing system in an electron gun?",
-    hint: "Consider the shape of the beam.",
-    steps: [
-      "The electrons must form a concentrated beam.",
-      "The focusing system reduces the spreading of the beam."
-    ],
-    ans: "To focus the electrons into a narrow beam",
-    why: "A narrow beam produces a more clearly defined spot on the screen."
-  }
-]);
+  <p>For a given material, photoelectric emission requires the frequency of the incident radiation to be at least the material's threshold frequency.</p>
 
+  <ul>
+    <li><b>Frequency below threshold:</b> no photoelectric emission occurs.</li>
+    <li><b>Frequency equal to threshold:</b> emission is possible in the ideal model, with zero maximum kinetic energy.</li>
+    <li><b>Frequency above threshold:</b> emission can occur, and the excess photon energy can become kinetic energy of the emitted electron.</li>
+  </ul>
 
-// ------------------------------------------------------------
-// 16. FUNCTION OF THE X-DEFLECTION PLATES
-// Skill: Relate the X-plates to horizontal movement.
-// ------------------------------------------------------------
+  <p>The threshold condition concerns the energy of individual photons, not simply how bright the light appears.</p>
 
-add("physics", "cathode_rays", "Function of the X-Deflection Plates", `
-<h3>Function of the X-Deflection Plates</h3>
+  <h3>Distinguish these phenomena</h3>
 
-The X-deflection plates control the horizontal position of the electron beam on the fluorescent screen.
+  <ul>
+    <li><b>Reflection:</b> light changes direction after striking a surface.</li>
+    <li><b>Photoelectric emission:</b> electrons leave a material because they receive sufficient energy from incident radiation.</li>
+  </ul>
 
-They produce a horizontal electric field when a potential difference is applied across them.
+  <p>These are different physical processes. A surface can reflect some light while also emitting photoelectrons under suitable conditions.</p>
 
-The electric field exerts a force on the negatively charged electrons, changing the direction of the beam.
+  <h3>Worked Example 1: Defining the phenomenon</h3>
 
-Reversing the polarity of the plates reverses the direction of the horizontal deflection.
+  <p><b>Question:</b> Define photoelectric emission.</p>
 
-<h3>Worked Examples</h3>
+  <p><b>Step 1:</b> Identify the agent supplying energy: incident electromagnetic radiation.</p>
 
-<b>Example 1: Which plates control horizontal movement?</b>
-Step 1: Horizontal movement is movement from left to right.
-Step 2: The X-deflection plates control this movement.
-Answer: X-deflection plates.
+  <p><b>Step 2:</b> Identify what leaves the material: electrons.</p>
 
-<b>Example 2: What happens when the polarity of the X-plates is reversed?</b>
-Step 1: Reversing the polarity reverses the electric field.
-Step 2: The force on the electrons reverses.
-Answer: The beam deflects in the opposite horizontal direction.
+  <p><b>Step 3:</b> Include the condition that the radiation must have sufficient frequency for the material.</p>
 
-<b>Example 3: What happens if no horizontal potential difference is applied?</b>
-Step 1: There is no horizontal electric field due to the X-plates.
-Step 2: There is no horizontal deflection caused by these plates.
-Answer: The beam is not deflected horizontally by the X-plates.
-`, [
-  {
-    q: "Which CRT plates control the horizontal position of the electron beam?",
-    hint: "The X-direction represents horizontal movement.",
-    steps: [
-      "Horizontal movement corresponds to the X-direction.",
-      "The X-deflection plates control this direction."
-    ],
-    ans: "X-deflection plates",
-    why: "The X-plates move the beam horizontally."
-  },
-  {
-    q: "What happens to the horizontal deflection when the polarity of the X-plates is reversed?",
-    hint: "Reversing the polarity reverses the electric field.",
-    steps: [
-      "The direction of the electric field reverses.",
-      "The force on the electrons reverses.",
-      "The horizontal deflection changes direction."
-    ],
-    ans: "The beam deflects in the opposite horizontal direction",
-    why: "The negative charge of the electrons makes the force reverse when the electric field reverses."
-  },
-  {
-    q: "What is the horizontal deflection caused by the X-plates if no potential difference is applied across them?",
-    hint: "Without a potential difference, is there an electric field between the plates?",
-    steps: [
-      "No potential difference means no electric field due to the X-plates.",
-      "The X-plates therefore exert no horizontal electric force."
-    ],
-    ans: "Zero horizontal deflection due to the X-plates",
-    why: "The X-plates need an electric field to cause horizontal deflection."
-  }
-]);
+  <p><b>Answer:</b> Photoelectric emission is the release of electrons from a material's surface when electromagnetic radiation of sufficiently high frequency falls on it.</p>
 
+  <h3>Worked Example 2: Identifying the process</h3>
 
-// ------------------------------------------------------------
-// 17. FUNCTION OF THE Y-DEFLECTION PLATES
-// Skill: Relate the Y-plates to vertical movement.
-// ------------------------------------------------------------
+  <p><b>Question:</b> Ultraviolet radiation falls on a suitable metal surface, and electrons escape from the surface. Name the phenomenon.</p>
 
-add("physics", "cathode_rays", "Function of the Y-Deflection Plates", `
-<h3>Function of the Y-Deflection Plates</h3>
+  <p><b>Step 1:</b> Radiation falls on the metal.</p>
 
-The Y-deflection plates control the vertical position of the electron beam on the fluorescent screen.
+  <p><b>Step 2:</b> Electrons leave the metal's surface.</p>
 
-They produce a vertical electric field when a potential difference is applied across them.
+  <p><b>Step 3:</b> The release of electrons due to incident radiation is photoelectric emission.</p>
 
-The electric field exerts a force on the negatively charged electrons, changing the vertical direction of the beam.
+  <p><b>Answer:</b> Photoelectric emission.</p>
 
-Reversing the polarity of the Y-plates reverses the direction of the vertical deflection.
+  <h3>Worked Example 3: Correcting a misconception</h3>
 
-<h3>Worked Examples</h3>
+  <p><b>Question:</b> A learner states that photoelectric emission occurs because light physically pushes electrons out of a metal like tiny balls being struck. Explain the more accurate energy-based description.</p>
 
-<b>Example 1: Which plates control vertical movement?</b>
-Step 1: Vertical movement is movement up or down.
-Step 2: The Y-deflection plates control this movement.
-Answer: Y-deflection plates.
+  <p><b>Step 1:</b> Incident light carries energy.</p>
 
-<b>Example 2: What happens when the polarity of the Y-plates is reversed?</b>
-Step 1: The electric field reverses.
-Step 2: The force on the electrons reverses.
-Answer: The beam deflects in the opposite vertical direction.
+  <p><b>Step 2:</b> Electrons absorb energy from the radiation.</p>
 
-<b>Example 3: What happens if no vertical potential difference is applied?</b>
-Step 1: No vertical electric field is produced by the Y-plates.
-Step 2: The Y-plates cause no vertical deflection.
-Answer: The beam is not deflected vertically by the Y-plates.
-`, [
-  {
-    q: "Which CRT plates control the vertical position of the electron beam?",
-    hint: "The Y-direction represents vertical movement.",
-    steps: [
-      "Vertical movement is movement up or down.",
-      "The Y-deflection plates control this movement."
-    ],
-    ans: "Y-deflection plates",
-    why: "The Y-plates move the beam vertically."
-  },
-  {
-    q: "What happens to the vertical deflection when the polarity of the Y-plates is reversed?",
-    hint: "Think about the direction of the electric field and force.",
-    steps: [
-      "Reversing the polarity reverses the electric field.",
-      "The force on the negatively charged electrons reverses.",
-      "The beam deflects in the opposite vertical direction."
-    ],
-    ans: "The beam deflects in the opposite vertical direction",
-    why: "Reversing the electric field reverses the force on the electrons."
-  },
-  {
-    q: "What is the vertical deflection caused by the Y-plates if no potential difference is applied across them?",
-    hint: "Consider whether the plates produce an electric field.",
-    steps: [
-      "No potential difference means no electric field due to the Y-plates.",
-      "The Y-plates exert no vertical electric force."
-    ],
-    ans: "Zero vertical deflection due to the Y-plates",
-    why: "The Y-plates need an electric field to cause vertical deflection."
-  }
-]);
+  <p><b>Step 3:</b> An electron escapes if the energy it receives is sufficient to overcome the material's energy barrier.</p>
+
+  <p><b>Answer:</b> Photoelectric emission occurs when electrons receive sufficient energy from incident radiation to escape the material; it is not explained as a simple mechanical push.</p>
+
+  <h3>Remember</h3>
+
+  <p>The defining event is the escape of electrons from a material due to incident radiation. The condition for emission depends on the radiation frequency and the material.</p>
+  `,
+  [
+    {
+      q: "Define photoelectric emission and identify the particle that leaves the material.",
+      hint: "State what incident radiation causes and name the particle released.",
+      steps: [
+        "Incident electromagnetic radiation falls on a material.",
+        "Electrons receive energy from the radiation.",
+        "Electrons that escape from the surface are released by photoelectric emission."
+      ],
+      ans: "Photoelectric emission is the release of electrons from a material's surface due to incident radiation of sufficient frequency. The particles released are electrons.",
+      why: "The phenomenon is defined by electrons escaping from the material, not by light simply striking or reflecting from it."
+    },
+    {
+      q: "Suitable radiation falls on a metal, and electrons escape from its surface. Name the phenomenon and explain why this is not simply reflection.",
+      hint: "Ask what leaves the surface in each process.",
+      steps: [
+        "In reflection, the radiation changes direction at the surface.",
+        "In the described event, electrons leave the material.",
+        "The release of electrons due to incident radiation is photoelectric emission."
+      ],
+      ans: "Photoelectric emission; electrons leave the material, whereas reflection involves light changing direction.",
+      why: "The defining observable event is the emission of electrons from the material."
+    },
+    {
+      q: "A metal is illuminated by light whose frequency is below the metal's threshold frequency. According to the standard photoelectric model, will photoelectric emission occur? Explain.",
+      hint: "Compare the incident frequency with the minimum frequency required by the material.",
+      steps: [
+        "The incident frequency is below the threshold frequency.",
+        "Each photon therefore has less energy than the work function.",
+        "The photons cannot supply the minimum energy required for emission."
+      ],
+      ans: "No. The incident frequency is below the threshold frequency, so photoelectric emission does not occur.",
+      why: "The energy of each photon is insufficient to release an electron from the material."
+    },
+    {
+      q: "A learner claims that the electrons released during photoelectric emission come from the incident light. Identify the error and correct the statement.",
+      hint: "Distinguish the source of the energy from the source of the electrons.",
+      steps: [
+        "The incident light supplies energy.",
+        "The electrons were already present in the material.",
+        "Some electrons escape after receiving sufficient energy."
+      ],
+      ans: "The electrons come from the material, not from the light. The light supplies the energy that enables them to escape.",
+      why: "Radiation transfers energy to electrons in the material; it does not supply the emitted electrons themselves."
+    },
+    {
+      q: "Explain why a metal surface may reflect light without producing photoelectric emission.",
+      hint: "Consider the difference between light interacting with a surface and electrons escaping from it.",
+      steps: [
+        "Reflection can occur when incident light interacts with a surface.",
+        "Photoelectric emission requires electrons to receive sufficient energy to escape.",
+        "If the frequency is below threshold, electrons are not emitted by the photoelectric effect even if the surface reflects light."
+      ],
+      ans: "Reflection does not require electrons to escape the surface. Photoelectric emission occurs only when the radiation satisfies the material's emission condition.",
+      why: "Reflection and photoelectric emission are distinct processes with different defining outcomes."
+    }
+  ]
+);
 
 
 // ------------------------------------------------------------
-// 18. FUNCTION OF THE FLUORESCENT SCREEN
-// Skill: Explain why the screen is used.
+// SCREEN 2: MEANING OF PHOTOELECTRONS
+// One concept: Identifying electrons released by photoelectric emission
 // ------------------------------------------------------------
 
-add("physics", "cathode_rays", "Function of the Fluorescent Screen", `
-<h3>Function of the Fluorescent Screen</h3>
+add(
+  "physics",
+  "photoelectric_emission",
+  "Meaning of Photoelectrons",
+  `
+  <h3>Meaning of Photoelectrons</h3>
 
-The fluorescent screen converts the position of the invisible electron beam into a visible spot.
+  <p><b>Photoelectrons</b> are electrons emitted from a material during photoelectric emission.</p>
 
-When the electron beam strikes the screen, the screen emits light at the point of impact.
+  <p>Before emission, these electrons belong to the material. When suitable electromagnetic radiation transfers sufficient energy to them, they can escape from the surface.</p>
 
-The spot shows where the beam reaches the screen. If the beam changes direction, the spot moves to another position.
+  <p>The word <b>photoelectron</b> identifies an electron by the process through which it was emitted. It does not describe a different fundamental particle.</p>
 
-<h3>Worked Examples</h3>
+  <h3>Properties of photoelectrons</h3>
 
-<b>Example 1: Why is a fluorescent screen used in a CRT?</b>
-Step 1: The electron beam cannot normally be seen directly.
-Step 2: The screen emits visible light where the beam strikes it.
-Answer: To make the position of the beam visible.
+  <ul>
+    <li><b>Identity:</b> a photoelectron is an electron.</li>
+    <li><b>Electric charge:</b> negative, approximately −1.60 × 10⁻¹⁹ C.</li>
+    <li><b>Rest mass:</b> approximately 9.11 × 10⁻³¹ kg.</li>
+    <li><b>Origin:</b> the material from which the electron is emitted.</li>
+    <li><b>Energy:</b> a photoelectron may leave the material with kinetic energy.</li>
+  </ul>
 
-<b>Example 2: What does the position of the spot show?</b>
-Step 1: The spot forms where the beam strikes the screen.
-Step 2: Its position indicates where the beam reaches the screen.
-Answer: The position of the electron beam.
+  <h3>What happens after emission?</h3>
 
-<b>Example 3: What happens to the spot when the beam is deflected?</b>
-Step 1: Deflection changes the direction of the beam.
-Step 2: The beam reaches a different point on the screen.
-Answer: The spot moves.
-`, [
-  {
-    q: "What is the main function of the fluorescent screen in a CRT?",
-    hint: "The electron beam is not directly visible.",
-    steps: [
-      "The electron beam strikes the screen.",
-      "The screen emits visible light at the point of impact."
-    ],
-    ans: "To make the position of the electron beam visible",
-    why: "The fluorescent screen converts the beam's point of impact into visible light."
-  },
-  {
-    q: "What does the position of the fluorescent spot indicate?",
-    hint: "The spot forms where the beam strikes the screen.",
-    steps: [
-      "The spot is produced at the point of impact.",
-      "That point shows where the beam reaches the screen."
-    ],
-    ans: "The position where the electron beam strikes the screen",
-    why: "The spot represents the position of the beam on the screen."
-  },
-  {
-    q: "What happens to the fluorescent spot when the electron beam is deflected?",
-    hint: "The beam reaches a different point after its direction changes.",
-    steps: [
-      "Deflection changes the beam's direction.",
-      "The beam strikes a different position on the screen."
-    ],
-    ans: "The spot moves to a different position",
-    why: "The visible spot follows the point where the beam hits the screen."
-  }
-]);
+  <p>Once an electron has escaped, electric fields can accelerate it, decelerate it or change its direction. In a photoelectric cell, an electric field may guide emitted electrons towards a collecting electrode.</p>
 
+  <p>Not every emitted electron has the same kinetic energy. The maximum kinetic energy is particularly important when analysing the photoelectric effect.</p>
 
-// ------------------------------------------------------------
-// 19. FORMATION OF A VISIBLE SPOT ON THE SCREEN
-// Skill: Explain the sequence from electron emission to visible spot.
-// ------------------------------------------------------------
+  <h3>Do not confuse these terms</h3>
 
-add("physics", "cathode_rays", "Formation of a Visible Spot on the Screen", `
-<h3>Formation of a Visible Spot on the Screen</h3>
+  <ul>
+    <li><b>Electron:</b> a negatively charged subatomic particle.</li>
+    <li><b>Photoelectron:</b> an electron emitted during photoelectric emission.</li>
+    <li><b>Photon:</b> a quantum of electromagnetic radiation that carries energy.</li>
+  </ul>
 
-A visible spot forms through this sequence:
+  <p>A photon and a photoelectron are not the same particle. A photon can transfer energy to an electron, and the electron may then escape from the material.</p>
 
-1. The heated cathode emits electrons.
-2. The electron gun forms the electrons into a beam.
-3. The accelerating anodes increase the electrons' speed.
-4. The deflection plates direct the beam towards a position on the screen.
-5. The beam strikes the fluorescent screen.
-6. The screen emits light at the point of impact, producing a visible spot.
+  <h3>Worked Example 1: Identifying a photoelectron</h3>
 
-The spot changes position when the direction of the electron beam changes.
+  <p><b>Question:</b> A metal emits electrons when illuminated by suitable light. What are the emitted electrons called?</p>
 
-<h3>Worked Examples</h3>
+  <p><b>Step 1:</b> The electrons originate in the metal.</p>
 
-<b>Example 1: What happens immediately before a visible spot is produced?</b>
-Step 1: The electron beam reaches the screen.
-Step 2: The screen emits light where the beam strikes it.
-Answer: The electron beam strikes the fluorescent screen.
+  <p><b>Step 2:</b> They escape after receiving energy from incident radiation.</p>
 
-<b>Example 2: Why does a CRT need an electron gun before the deflection plates can control the beam?</b>
-Step 1: The deflection plates act on an electron beam.
-Step 2: The electron gun produces that beam.
-Answer: The electron gun supplies the beam that the plates deflect.
+  <p><b>Step 3:</b> Electrons emitted through this process are called photoelectrons.</p>
 
-<b>Example 3: Why does the spot move when the voltage across the deflection plates changes?</b>
-Step 1: Changing the voltage changes the electric field.
-Step 2: The field changes the force and direction of the electrons.
-Step 3: The beam strikes a different point on the screen.
-Answer: The spot moves because the beam is deflected to a new position.
-`, [
-  {
-    q: "Which sequence correctly describes how a visible spot is formed in a CRT?",
-    hint: "Start with electron emission and finish with light from the screen.",
-    steps: [
-      "The heated cathode emits electrons.",
-      "The electron gun forms a beam.",
-      "The beam is accelerated and directed.",
-      "The beam strikes the fluorescent screen, which emits light."
-    ],
-    ans: "Electron emission → beam formation → acceleration and deflection → impact on fluorescent screen → visible spot",
-    why: "The spot appears when the electron beam reaches the fluorescent screen."
-  },
-  {
-    q: "What must happen for the fluorescent screen to produce a visible spot?",
-    hint: "Think about what causes the screen to emit light.",
-    steps: [
-      "The screen emits light at the point of impact.",
-      "The electron beam must strike the screen."
-    ],
-    ans: "The electron beam must strike the fluorescent screen",
-    why: "The impact causes the screen to emit light at that position."
-  },
-  {
-    q: "The voltage across the deflection plates is changed and the spot moves. Explain why.",
-    hint: "Connect the voltage to the electric field, force and beam direction.",
-    steps: [
-      "Changing the voltage changes the electric field.",
-      "The field changes the force on the electrons.",
-      "The beam follows a different path and strikes a new position."
-    ],
-    ans: "Changing the voltage changes the electric field and deflects the electron beam to a new position",
-    why: "The spot follows the point where the deflected beam strikes the screen."
-  }
-]);
-add("physics", "cathode_rays", "Energy Gained by an Electron", `
-<h3>Energy Gained by an Electron</h3>
+  <p><b>Answer:</b> Photoelectrons.</p>
 
-An electron gains kinetic energy when it is accelerated through a potential difference.
+  <h3>Worked Example 2: Determining the charge</h3>
 
-The energy gained is:
+  <p><b>Question:</b> A photoelectron has what electric charge? State its sign and approximate magnitude.</p>
 
-<b>E = eV</b>
+  <p><b>Step 1:</b> A photoelectron is an electron.</p>
 
-Where:
-<ul>
-<li>E = energy gained in joules (J)</li>
-<li>e = magnitude of the electron charge = 1.6 × 10⁻¹⁹ C</li>
-<li>V = potential difference in volts (V)</li>
-</ul>
+  <p><b>Step 2:</b> Every electron carries negative electric charge.</p>
 
-This equation gives the energy transferred to the electron. If the electron starts from rest and all the gained energy becomes kinetic energy, then:
+  <p><b>Step 3:</b> The magnitude of the elementary charge is approximately 1.60 × 10⁻¹⁹ C.</p>
 
-<b>KE = eV</b>
+  <p><b>Answer:</b> −1.60 × 10⁻¹⁹ C.</p>
 
-<h3>Worked Examples</h3>
+  <h3>Worked Example 3: Distinguishing a photon from a photoelectron</h3>
 
-<b>Example 1: An electron moves through 10 V. Calculate the energy gained.</b>
+  <p><b>Question:</b> Radiation transfers energy to an electron in a metal. The electron escapes. Identify the photon and the photoelectron in this event.</p>
 
-Step 1: Use E = eV.
+  <p><b>Step 1:</b> The photon is the quantum of electromagnetic radiation carrying energy to the material.</p>
 
-Step 2: Substitute:
-E = 1.6 × 10⁻¹⁹ × 10
+  <p><b>Step 2:</b> The electron initially belongs to the material.</p>
 
-Step 3: Calculate:
-E = 1.6 × 10⁻¹⁸ J
+  <p><b>Step 3:</b> After escaping due to the photoelectric effect, that electron is called a photoelectron.</p>
 
-Answer: 1.6 × 10⁻¹⁸ J.
+  <p><b>Answer:</b> The photon carries the radiation energy; the photoelectron is the emitted electron.</p>
 
-<b>Example 2: An electron moves through 250 V. Calculate the energy gained.</b>
+  <h3>Remember</h3>
 
-E = eV
-E = 1.6 × 10⁻¹⁹ × 250
-E = 4.0 × 10⁻¹⁷ J
-
-Answer: 4.0 × 10⁻¹⁷ J.
-
-<b>Example 3: An electron gains 8.0 × 10⁻¹⁷ J. Calculate the potential difference.</b>
-
-Step 1: Rearrange E = eV:
-V = E/e
-
-Step 2: Substitute:
-V = (8.0 × 10⁻¹⁷)/(1.6 × 10⁻¹⁹)
-
-Step 3: Calculate:
-V = 500 V
-
-Answer: 500 V.
-`, [
-  {
-    q: "Calculate the energy gained by an electron accelerated through a potential difference of 20 V. Take e = 1.6 × 10⁻¹⁹ C.",
-    hint: "Use E = eV.",
-    steps: [
-      "E = eV",
-      "E = 1.6 × 10⁻¹⁹ × 20",
-      "E = 3.2 × 10⁻¹⁸ J"
-    ],
-    ans: "3.2 × 10⁻¹⁸ J",
-    why: "The energy gained is the electron charge multiplied by the potential difference."
-  },
-  {
-    q: "An electron gains 4.8 × 10⁻¹⁷ J of energy. Calculate the potential difference through which it moved.",
-    hint: "Rearrange E = eV to make V the subject.",
-    steps: [
-      "V = E/e",
-      "V = (4.8 × 10⁻¹⁷)/(1.6 × 10⁻¹⁹)",
-      "V = 300 V"
-    ],
-    ans: "300 V",
-    why: "Dividing the energy gained by the electron charge gives the potential difference."
-  },
-  {
-    q: "An electron is accelerated from rest through 100 V. Assuming all the gained energy becomes kinetic energy, calculate its kinetic energy.",
-    hint: "For an electron starting from rest, KE = eV.",
-    steps: [
-      "KE = eV",
-      "KE = 1.6 × 10⁻¹⁹ × 100",
-      "KE = 1.6 × 10⁻¹⁷ J"
-    ],
-    ans: "1.6 × 10⁻¹⁷ J",
-    why: "The electrical energy gained becomes kinetic energy when the electron starts from rest and energy losses are neglected."
-  }
-]);
+  <p>Photoelectric emission is the process. A photoelectron is the electron released by that process. Its identity and negative charge do not change when it escapes.</p>
+  `,
+  [
+    {
+      q: "What is a photoelectron, and where does it originate?",
+      hint: "Define the particle by the process that releases it.",
+      steps: [
+        "An electron is initially present in the material.",
+        "It receives sufficient energy from incident radiation.",
+        "If it escapes through photoelectric emission, it is called a photoelectron."
+      ],
+      ans: "A photoelectron is an electron emitted from a material during photoelectric emission. It originates in the material.",
+      why: "The incident radiation supplies energy, while the emitted electron comes from the material."
+    },
+    {
+      q: "A photoelectron is emitted from a metal. Calculate its electric charge using the elementary charge magnitude 1.60 × 10⁻¹⁹ C.",
+      hint: "An electron has a negative charge; include the sign.",
+      steps: [
+        "A photoelectron is an electron.",
+        "The magnitude of the electron charge is 1.60 × 10⁻¹⁹ C.",
+        "Because the charge is negative, q = −1.60 × 10⁻¹⁹ C."
+      ],
+      ans: "−1.60 × 10⁻¹⁹ C",
+      why: "Emission does not change the electron's electric charge."
+    },
+    {
+      q: "Explain the difference between a photon and a photoelectron in photoelectric emission.",
+      hint: "One is a quantum of radiation; the other is an emitted electron.",
+      steps: [
+        "A photon is a quantum of electromagnetic radiation.",
+        "The photon transfers energy to an electron in the material.",
+        "The electron may escape and become a photoelectron."
+      ],
+      ans: "A photon carries electromagnetic radiation energy, whereas a photoelectron is an electron emitted from a material after receiving sufficient energy.",
+      why: "The photon and the photoelectron are different entities with different roles in the process."
+    },
+    {
+      q: "A learner says that a photoelectron becomes positively charged when it leaves a metal. Is this correct? Explain.",
+      hint: "Consider whether escaping changes the identity of an electron.",
+      steps: [
+        "A photoelectron is still an electron.",
+        "Electrons carry negative electric charge.",
+        "Leaving the metal does not reverse the sign of the electron's charge."
+      ],
+      ans: "No. A photoelectron remains negatively charged, with charge approximately −1.60 × 10⁻¹⁹ C.",
+      why: "Photoelectric emission changes the electron's location, not its electric charge."
+    },
+    {
+      q: "A metal emits two photoelectrons. Must the two electrons have equal kinetic energies? Explain.",
+      hint: "Distinguish the identity of the particles from the energy they carry.",
+      steps: [
+        "Both emitted particles are electrons.",
+        "Electrons in the material may have different initial energies and conditions of emission.",
+        "They may therefore leave with different kinetic energies."
+      ],
+      ans: "No. Photoelectrons can have different kinetic energies. The maximum kinetic energy describes the most energetic emitted electrons.",
+      why: "Being the same type of particle does not mean the electrons have equal kinetic energy."
+    }
+  ]
+);
 
 
 // ------------------------------------------------------------
-// 21. THE ELECTRON-VOLT
-// Skill: Convert between electron-volts and joules.
+// SCREEN 3: ROLE OF INCIDENT LIGHT IN PHOTOELECTRIC EMISSION
+// One concept: How incident radiation supplies energy for emission
 // ------------------------------------------------------------
 
-add("physics", "cathode_rays", "The Electron-Volt", `
-<h3>The Electron-Volt</h3>
+add(
+  "physics",
+  "photoelectric_emission",
+  "Role of Incident Light in Photoelectric Emission",
+  `
+  <h3>Role of Incident Light in Photoelectric Emission</h3>
 
-The electron-volt (eV) is a unit of energy commonly used for particles such as electrons.
+  <p>Incident light supplies energy to electrons in a material. When an electron receives enough energy to overcome the material's work function, it can escape from the surface.</p>
 
-<b>One electron-volt</b> is the energy gained by an electron when it moves through a potential difference of one volt.
+  <p>In the photon model, electromagnetic radiation transfers energy in discrete packets called photons. Each photon carries energy that depends on the frequency of the radiation.</p>
 
-Since E = eV:
+  <h3>Why frequency matters</h3>
 
-1 eV = 1.6 × 10⁻¹⁹ J
+  <p>The energy of an individual photon is:</p>
 
-To convert electron-volts to joules, multiply by 1.6 × 10⁻¹⁹.
+  <p><b>E = hf</b></p>
 
-To convert joules to electron-volts, divide by 1.6 × 10⁻¹⁹.
+  <ul>
+    <li>E = photon energy in joules (J)</li>
+    <li>h = Planck's constant = 6.63 × 10⁻³⁴ J s</li>
+    <li>f = radiation frequency in hertz (Hz)</li>
+  </ul>
 
-<h3>Worked Examples</h3>
+  <p>Since Planck's constant is fixed, a higher frequency means a higher energy per photon.</p>
 
-<b>Example 1: Convert 5 eV to joules.</b>
+  <p>For a particular material, the photon energy must be at least equal to the work function for emission to occur.</p>
 
-E = 5 × 1.6 × 10⁻¹⁹
-E = 8.0 × 10⁻¹⁹ J
+  <h3>Frequency and intensity are different</h3>
 
-Answer: 8.0 × 10⁻¹⁹ J.
+  <p><b>Frequency</b> determines the energy of an individual photon.</p>
 
-<b>Example 2: Convert 2.4 × 10⁻¹⁸ J to eV.</b>
+  <p><b>Intensity</b> describes the rate at which radiation energy arrives per unit area. For light of a fixed frequency, increasing intensity generally means more photons arrive per unit area per second.</p>
 
-E = (2.4 × 10⁻¹⁸)/(1.6 × 10⁻¹⁹)
-E = 15 eV
+  <p>These properties have different effects:</p>
 
-Answer: 15 eV.
+  <ul>
+    <li>Increasing frequency increases energy per photon.</li>
+    <li>Increasing intensity at a fixed frequency increases the photon arrival rate.</li>
+    <li>If the frequency is below threshold, increasing intensity alone does not produce photoelectric emission.</li>
+    <li>If the frequency is above threshold, increasing intensity generally increases photocurrent when other conditions remain unchanged and the cell is not already limited by saturation.</li>
+  </ul>
 
-<b>Example 3: An electron gains 750 eV. Express its energy in joules.</b>
+  <h3>Worked Example 1: Why frequency matters</h3>
 
-E = 750 × 1.6 × 10⁻¹⁹
-E = 1.2 × 10⁻¹⁶ J
+  <p><b>Question:</b> Explain why incident light must have a sufficiently high frequency to release electrons from a particular metal.</p>
 
-Answer: 1.2 × 10⁻¹⁶ J.
-`, [
-  {
-    q: "Convert 10 eV to joules. Take 1 eV = 1.6 × 10⁻¹⁹ J.",
-    hint: "Multiply the energy in eV by 1.6 × 10⁻¹⁹.",
-    steps: [
-      "E = 10 × 1.6 × 10⁻¹⁹",
-      "E = 1.6 × 10⁻¹⁸ J"
-    ],
-    ans: "1.6 × 10⁻¹⁸ J",
-    why: "Electron-volts are converted to joules by multiplying by 1.6 × 10⁻¹⁹."
-  },
-  {
-    q: "Convert 3.2 × 10⁻¹⁸ J to electron-volts.",
-    hint: "Divide the energy in joules by 1.6 × 10⁻¹⁹.",
-    steps: [
-      "E = (3.2 × 10⁻¹⁸)/(1.6 × 10⁻¹⁹)",
-      "E = 20 eV"
-    ],
-    ans: "20 eV",
-    why: "Dividing by the energy equivalent of one electron-volt gives the energy in eV."
-  },
-  {
-    q: "An electron gains 400 eV. Calculate this energy in joules.",
-    hint: "Use 1 eV = 1.6 × 10⁻¹⁹ J.",
-    steps: [
-      "E = 400 × 1.6 × 10⁻¹⁹",
-      "E = 640 × 10⁻¹⁹ J",
-      "E = 6.4 × 10⁻¹⁷ J"
-    ],
-    ans: "6.4 × 10⁻¹⁷ J",
-    why: "Multiplication by the joule equivalent of one eV gives the energy in joules."
-  }
-]);
+  <p><b>Step 1:</b> An electron requires a minimum amount of energy to escape the metal.</p>
 
+  <p><b>Step 2:</b> Each photon carries energy E = hf.</p>
 
-// ------------------------------------------------------------
-// 22. SPEED OF AN ACCELERATED ELECTRON
-// Skill: Calculate electron speed from kinetic energy.
-// ------------------------------------------------------------
+  <p><b>Step 3:</b> The photon energy must be at least equal to the work function.</p>
 
-add("physics", "cathode_rays", "Speed of an Accelerated Electron", `
-<h3>Speed of an Accelerated Electron</h3>
+  <p><b>Answer:</b> The frequency must be sufficiently high because it determines whether each photon carries enough energy to release an electron.</p>
 
-For an electron moving at a speed much less than the speed of light, its kinetic energy is:
+  <h3>Worked Example 2: Testing the threshold condition</h3>
 
-<b>KE = ½mv²</b>
+  <p><b>Question:</b> A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Light of frequency 5.0 × 10¹⁴ Hz falls on it. Will photoelectric emission occur?</p>
 
-Where:
-<ul>
-<li>KE = kinetic energy in joules (J)</li>
-<li>m = electron mass = 9.11 × 10⁻³¹ kg</li>
-<li>v = electron speed in metres per second (m/s)</li>
-</ul>
+  <p><b>Step 1:</b> Threshold frequency = 6.0 × 10¹⁴ Hz.</p>
 
-To calculate speed, rearrange:
+  <p><b>Step 2:</b> Incident frequency = 5.0 × 10¹⁴ Hz.</p>
 
-<b>v = √(2KE/m)</b>
+  <p><b>Step 3:</b> Since 5.0 × 10¹⁴ Hz is less than 6.0 × 10¹⁴ Hz, the incident frequency is below threshold.</p>
 
-If the electron starts from rest and is accelerated through a potential difference V, then KE = eV. Therefore:
+  <p><b>Answer:</b> No. Photoelectric emission will not occur.</p>
 
-<b>v = √(2eV/m)</b>
+  <h3>Worked Example 3: Increasing intensity below threshold</h3>
 
-This is a non-relativistic formula. It is suitable when the electron's speed is much less than the speed of light.
+  <p><b>Question:</b> Light below a metal's threshold frequency is made ten times more intense, but its frequency stays unchanged. Will photoelectric emission begin?</p>
 
-<h3>Worked Examples</h3>
+  <p><b>Step 1:</b> Photon energy is E = hf.</p>
 
-<b>Example 1: An electron has kinetic energy 1.6 × 10⁻¹⁸ J. Calculate its speed.</b>
+  <p><b>Step 2:</b> The frequency has not changed, so the energy of each photon remains unchanged.</p>
 
-Step 1:
-v = √(2KE/m)
+  <p><b>Step 3:</b> The photon energy remains below the work function.</p>
 
-Step 2:
-v = √[(2 × 1.6 × 10⁻¹⁸)/(9.11 × 10⁻³¹)]
+  <p><b>Answer:</b> No. Increasing intensity alone cannot cause photoelectric emission while the frequency remains below threshold.</p>
 
-Step 3:
-v ≈ 1.87 × 10⁶ m/s
+  <h3>Remember</h3>
 
-Answer: 1.87 × 10⁶ m/s.
-
-<b>Example 2: An electron has kinetic energy 4.0 × 10⁻¹⁷ J. Calculate its speed.</b>
-
-v = √[(2 × 4.0 × 10⁻¹⁷)/(9.11 × 10⁻³¹)]
-
-v ≈ 9.37 × 10⁶ m/s
-
-Answer: 9.37 × 10⁶ m/s.
-
-<b>Example 3: An electron starts from rest and is accelerated through 100 V. Calculate its speed.</b>
-
-Step 1: KE = eV
-KE = 1.6 × 10⁻¹⁹ × 100
-KE = 1.6 × 10⁻¹⁷ J
-
-Step 2:
-v = √(2KE/m)
-
-Step 3:
-v = √[(2 × 1.6 × 10⁻¹⁷)/(9.11 × 10⁻³¹)]
-
-v ≈ 5.93 × 10⁶ m/s
-
-Answer: 5.93 × 10⁶ m/s.
-`, [
-  {
-    q: "An electron has kinetic energy 8.0 × 10⁻¹⁸ J. Calculate its speed. Take its mass as 9.11 × 10⁻³¹ kg.",
-    hint: "Use v = √(2KE/m).",
-    steps: [
-      "v = √(2KE/m)",
-      "v = √[(2 × 8.0 × 10⁻¹⁸)/(9.11 × 10⁻³¹)]",
-      "v ≈ 4.19 × 10⁶ m/s"
-    ],
-    ans: "4.19 × 10⁶ m/s",
-    why: "The kinetic energy equation can be rearranged to calculate speed."
-  },
-  {
-    q: "An electron starts from rest and is accelerated through 50 V. Calculate its kinetic energy in joules.",
-    hint: "First use KE = eV.",
-    steps: [
-      "KE = eV",
-      "KE = 1.6 × 10⁻¹⁹ × 50",
-      "KE = 8.0 × 10⁻¹⁸ J"
-    ],
-    ans: "8.0 × 10⁻¹⁸ J",
-    why: "The electrical energy gained becomes kinetic energy when the electron starts from rest and energy losses are neglected."
-  },
-  {
-    q: "An electron starts from rest and gains 3.2 × 10⁻¹⁸ J of kinetic energy. Calculate its speed. Take m = 9.11 × 10⁻³¹ kg.",
-    hint: "Substitute the kinetic energy and mass into v = √(2KE/m).",
-    steps: [
-      "v = √(2KE/m)",
-      "v = √[(2 × 3.2 × 10⁻¹⁸)/(9.11 × 10⁻³¹)]",
-      "v ≈ 2.65 × 10⁶ m/s"
-    ],
-    ans: "2.65 × 10⁶ m/s",
-    why: "The speed follows from the relationship between kinetic energy, mass and speed."
-  }
-]);
+  <p>Frequency determines energy per photon. Intensity determines the rate of energy arrival and, at fixed frequency, generally the number of incident photons. Do not use these terms interchangeably.</p>
+  `,
+  [
+    {
+      q: "Explain the role of incident light in photoelectric emission.",
+      hint: "Consider where the energy needed to release the electron comes from.",
+      steps: [
+        "Incident light carries electromagnetic radiation energy.",
+        "The radiation transfers energy to electrons in the material.",
+        "An electron can escape if it receives sufficient energy to overcome the work function."
+      ],
+      ans: "Incident light supplies energy to electrons, enabling them to escape if the energy condition for photoelectric emission is satisfied.",
+      why: "Photoelectric emission depends on the transfer of sufficient energy from incident radiation to electrons in the material."
+    },
+    {
+      q: "A material has a threshold frequency of 7.0 × 10¹⁴ Hz. Incident light has frequency 4.0 × 10¹⁴ Hz. Determine whether emission occurs and justify your answer.",
+      hint: "Compare the two frequencies before making a conclusion.",
+      steps: [
+        "Threshold frequency = 7.0 × 10¹⁴ Hz.",
+        "Incident frequency = 4.0 × 10¹⁴ Hz.",
+        "Since 4.0 × 10¹⁴ Hz is less than 7.0 × 10¹⁴ Hz, the incident light is below threshold."
+      ],
+      ans: "No photoelectric emission occurs because the incident frequency is below the threshold frequency.",
+      why: "The energy of each photon is insufficient to overcome the work function."
+    },
+    {
+      q: "Light below a metal's threshold frequency is made more intense without changing its frequency. Explain why this does not produce photoelectric emission.",
+      hint: "Use E = hf and identify what remains unchanged.",
+      steps: [
+        "Photon energy is E = hf.",
+        "The frequency f remains unchanged, and h is constant.",
+        "The energy of each photon therefore remains below the required work function."
+      ],
+      ans: "Increasing intensity does not increase the energy of each photon when frequency is fixed, so emission still does not occur.",
+      why: "The threshold condition depends on photon energy, which is determined by frequency rather than intensity."
+    },
+    {
+      q: "For light already above the threshold frequency, explain what generally happens to photocurrent when intensity is increased while the frequency and other conditions remain unchanged.",
+      hint: "Think about how many photons arrive each second.",
+      steps: [
+        "The photon energy remains sufficient because the frequency is unchanged.",
+        "Higher intensity generally means more photons arrive per unit area per second.",
+        "More photoelectrons may be emitted per second, increasing the photocurrent until other limits apply."
+      ],
+      ans: "The photocurrent generally increases, provided the cell is not already limited by saturation or other conditions.",
+      why: "At fixed above-threshold frequency, greater intensity generally increases the rate of photoelectron emission."
+    },
+    {
+      q: "Two monochromatic beams have frequencies f and 3f. Compare the energies of their individual photons. Does this comparison alone establish which beam has greater intensity?",
+      hint: "Use E = hf, then distinguish photon energy from energy arriving per unit area per second.",
+      steps: [
+        "Energy of the first photon is E₁ = hf.",
+        "Energy of the second photon is E₂ = h(3f) = 3hf.",
+        "Therefore E₂ = 3E₁.",
+        "Intensity also depends on how much radiation energy arrives per unit area per second, not only on the energy per photon."
+      ],
+      ans: "Each photon in the 3f beam has three times the energy of each photon in the f beam. This alone does not determine which beam has greater intensity.",
+      why: "Frequency determines individual photon energy, whereas intensity depends on the total incident energy rate per unit area."
+    }
+  ]
+);
 
 
 // ------------------------------------------------------------
-// 23. CALCULATING THE POTENTIAL DIFFERENCE FROM ELECTRON SPEED
-// Skill: Work backwards from speed to accelerating voltage.
+// SCREEN 4: MEANING OF A PHOTON
+// One concept: The photon as a quantum of electromagnetic radiation
 // ------------------------------------------------------------
 
-add("physics", "cathode_rays", "Potential Difference from Electron Speed", `
-<h3>Potential Difference from Electron Speed</h3>
+add(
+  "physics",
+  "photoelectric_emission",
+  "Meaning of a Photon",
+  `
+  <h3>Meaning of a Photon</h3>
 
-An electron accelerated from rest gains kinetic energy from the electrical energy supplied.
+  <p>A <b>photon</b> is a quantum, or discrete packet, of electromagnetic radiation energy.</p>
 
-Therefore:
+  <p>Electromagnetic radiation includes visible light, ultraviolet radiation, infrared radiation, radio waves, X-rays and gamma rays. In the photon model, this radiation exchanges energy in photon units.</p>
 
-eV = ½mv²
+  <p>A photon is not a tiny piece of metal or an electron. It is the quantum of electromagnetic radiation.</p>
 
-Rearranging to make V the subject:
+  <h3>Properties of a photon</h3>
 
-<b>V = mv²/(2e)</b>
+  <ul>
+    <li><b>Electric charge:</b> zero.</li>
+    <li><b>Rest mass:</b> zero.</li>
+    <li><b>Speed in a vacuum:</b> the speed of light, approximately 3.00 × 10⁸ m/s.</li>
+    <li><b>Energy:</b> depends on the frequency of the radiation.</li>
+  </ul>
 
-Where:
-<ul>
-<li>m = 9.11 × 10⁻³¹ kg</li>
-<li>v = electron speed in m/s</li>
-<li>e = 1.6 × 10⁻¹⁹ C</li>
-<li>V = accelerating potential difference in volts</li>
-</ul>
+  <h3>Energy carried by a photon</h3>
 
-Use this relationship when the speed is known but the accelerating potential difference is not.
+  <p>The energy of a photon is given by Planck's equation:</p>
 
-<h3>Worked Examples</h3>
+  <p><b>E = hf</b></p>
 
-<b>Example 1: An electron travels at 2.0 × 10⁶ m/s after acceleration from rest. Calculate the potential difference.</b>
+  <p>Where:</p>
 
-Step 1:
-V = mv²/(2e)
+  <ul>
+    <li>E = energy of one photon in joules (J)</li>
+    <li>h = Planck's constant = 6.63 × 10⁻³⁴ J s</li>
+    <li>f = frequency in hertz (Hz)</li>
+  </ul>
 
-Step 2:
-V = [(9.11 × 10⁻³¹)(2.0 × 10⁶)²]/(2 × 1.6 × 10⁻¹⁹)
+  <p>The equation shows that photon energy is directly proportional to frequency. If the frequency doubles, the energy of each photon doubles.</p>
 
-Step 3:
-V ≈ 11.4 V
+  <h3>How a photon relates to photoelectric emission</h3>
 
-Answer: 11.4 V.
+  <ol>
+    <li>A photon arrives at a photosensitive material.</li>
+    <li>It can transfer energy to an electron in the material.</li>
+    <li>The electron uses some of that energy to overcome the material's work function.</li>
+    <li>Any remaining energy becomes kinetic energy of the emitted electron.</li>
+  </ol>
 
-<b>Example 2: An electron travels at 4.0 × 10⁶ m/s. Calculate the potential difference.</b>
+  <p>This energy transfer is described by Einstein's photoelectric equation, which we will study later.</p>
 
-V = [(9.11 × 10⁻³¹)(4.0 × 10⁶)²]/(3.2 × 10⁻¹⁹)
+  <h3>Worked Example 1: Defining a photon</h3>
 
-V ≈ 45.6 V
+  <p><b>Question:</b> What is a photon?</p>
 
-Answer: 45.6 V.
+  <p><b>Step 1:</b> Electromagnetic radiation transfers energy.</p>
 
-<b>Example 3: An electron travels at 6.0 × 10⁶ m/s. Calculate the potential difference.</b>
+  <p><b>Step 2:</b> In the photon model, energy is exchanged in discrete units.</p>
 
-V = [(9.11 × 10⁻³¹)(6.0 × 10⁶)²]/(3.2 × 10⁻¹⁹)
+  <p><b>Step 3:</b> Each unit is called a photon.</p>
 
-V ≈ 102.5 V
+  <p><b>Answer:</b> A photon is a discrete quantum of electromagnetic radiation.</p>
 
-Answer: 102.5 V.
-`, [
-  {
-    q: "An electron starts from rest and reaches a speed of 3.0 × 10⁶ m/s. Calculate the accelerating potential difference. Take m = 9.11 × 10⁻³¹ kg and e = 1.6 × 10⁻¹⁹ C.",
-    hint: "Use V = mv²/(2e).",
-    steps: [
-      "V = mv²/(2e)",
-      "V = [(9.11 × 10⁻³¹)(3.0 × 10⁶)²]/(3.2 × 10⁻¹⁹)",
-      "V ≈ 25.6 V"
-    ],
-    ans: "25.6 V",
-    why: "The electrical energy gained equals the kinetic energy when the electron starts from rest and losses are neglected."
-  },
-  {
-    q: "An electron is accelerated from rest through 100 V. Which equation can be used to find its final speed?",
-    hint: "Combine KE = eV with KE = ½mv².",
-    steps: [
-      "eV = ½mv²",
-      "v² = 2eV/m",
-      "v = √(2eV/m)"
-    ],
-    ans: "v = √(2eV/m)",
-    why: "Equating electrical energy gained to kinetic energy gives the speed equation."
-  },
-  {
-    q: "An electron's speed doubles. By what factor does the potential difference needed to produce that speed change, assuming it starts from rest?",
-    hint: "The equation contains v².",
-    steps: [
-      "V = mv²/(2e)",
-      "Potential difference is proportional to speed squared.",
-      "Doubling speed multiplies v² by 2² = 4."
-    ],
-    ans: "It becomes four times as large",
-    why: "The accelerating potential difference is proportional to the square of the final speed."
-  }
-]);
-add("physics", "cathode_rays", "The Cathode-Ray Oscilloscope", `
-<h3>The Cathode-Ray Oscilloscope (CRO)</h3>
+  <h3>Worked Example 2: Comparing photon energies</h3>
 
-A cathode-ray oscilloscope is an instrument that displays electrical signals as a trace on a screen.
+  <p><b>Question:</b> Photon A has frequency 4.0 × 10¹⁴ Hz. Photon B has frequency 8.0 × 10¹⁴ Hz. Compare their energies.</p>
 
-In a CRO:
+  <p><b>Step 1:</b> Use E = hf.</p>
 
-1. The electron gun produces a beam of electrons.
-2. The fluorescent screen makes the beam visible.
-3. The input signal controls the vertical deflection of the beam.
-4. A time-base voltage moves the beam horizontally with time.
+  <p><b>Step 2:</b> For photon A, Eₐ = h(4.0 × 10¹⁴).</p>
 
-The resulting trace can show how a voltage changes with time.
+  <p><b>Step 3:</b> For photon B, Eᵦ = h(8.0 × 10¹⁴).</p>
 
-A CRO can be used to investigate the shape, amplitude and time period of a repeating signal.
+  <p><b>Step 4:</b> The second frequency is twice the first, so Eᵦ = 2Eₐ.</p>
 
-<h3>Worked Examples</h3>
+  <p><b>Answer:</b> Photon B has twice the energy of photon A.</p>
 
-<b>Example 1: What is the main purpose of a CRO?</b>
+  <h3>Worked Example 3: Calculating photon energy</h3>
 
-Step 1: A CRO receives an electrical signal.
-Step 2: It displays the signal as a trace on a screen.
+  <p><b>Question:</b> Calculate the energy of a photon with frequency 5.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.</p>
 
-Answer: To display electrical signals as traces.
+  <p><b>Step 1: Write the formula.</b></p>
 
-<b>Example 2: What does the vertical movement of the trace represent?</b>
-
-Step 1: The input signal controls vertical deflection.
-Step 2: The vertical position represents the signal voltage, according to the instrument's settings.
-
-Answer: Changes in the input voltage.
-
-<b>Example 3: What is the purpose of the time-base voltage?</b>
-
-Step 1: The signal must be displayed as it changes over time.
-Step 2: The time-base voltage moves the beam horizontally.
-
-Answer: To move the beam horizontally with time.
-
-<h3>Important distinction</h3>
-
-The vertical deflection represents the input voltage, while the horizontal sweep represents time when the time-base is operating normally.
-`, [
-  {
-    q: "What is the main purpose of a cathode-ray oscilloscope?",
-    hint: "Think about what it displays on its screen.",
-    steps: [
-      "The instrument receives an electrical signal.",
-      "It displays the signal as a trace."
-    ],
-    ans: "To display electrical signals as traces on a screen",
-    why: "The CRO allows changes in an electrical signal to be observed."
-  },
-  {
-    q: "In normal CRO operation, what does the vertical position of the trace represent?",
-    hint: "The input signal controls the vertical deflection.",
-    steps: [
-      "The input voltage affects the vertical deflection.",
-      "The trace position therefore represents the signal voltage."
-    ],
-    ans: "The input voltage",
-    why: "Vertical deflection is controlled by the input signal."
-  },
-  {
-    q: "What is the function of the time-base voltage in a CRO?",
-    hint: "It controls movement along the horizontal direction.",
-    steps: [
-      "The signal must be displayed over time.",
-      "The time-base voltage sweeps the beam horizontally."
-    ],
-    ans: "To move the electron beam horizontally with time",
-    why: "The horizontal sweep allows the signal to be displayed against time."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 25. CATHODE-RAY TUBES IN OLDER TELEVISION DISPLAYS
-// Skill: Explain how a CRT television forms an image.
-// ------------------------------------------------------------
-
-add("physics", "cathode_rays", "Cathode Rays in Older Television Displays", `
-<h3>Cathode Rays in Older Television Displays</h3>
-
-Older television sets used cathode-ray tubes to form pictures on a screen.
-
-The electron beam was directed across the screen in a repeated scanning pattern.
-
-The intensity of the beam was varied according to the picture signal. This changed the brightness of different parts of the screen.
-
-The fluorescent screen emitted light where the beam struck it. By controlling the beam's position and intensity, the television formed a picture.
-
-Colour CRT televisions used separate electron beams and coloured phosphor elements to produce coloured images.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: How did an older CRT television produce a picture?</b>
-
-Step 1: An electron beam scanned across the screen.
-Step 2: The beam's intensity varied with the picture signal.
-Step 3: The screen emitted different amounts of light at different positions.
-
-Answer: By scanning the screen with a controlled electron beam.
-
-<b>Example 2: Why was the beam scanned across the screen?</b>
-
-Step 1: A picture contains information at many positions.
-Step 2: The beam had to reach different positions to reproduce that information.
-
-Answer: To form the picture across the screen.
-
-<b>Example 3: What controlled the brightness of different parts of a CRT television picture?</b>
-
-Step 1: The picture signal controlled the beam's intensity.
-Step 2: The beam caused the screen to emit light.
-Step 3: Changes in beam intensity changed the brightness.
-
-Answer: The intensity of the electron beam.
-
-<h3>Remember</h3>
-
-A CRT television forms an image by controlling the position and intensity of an electron beam on a fluorescent screen.
-`, [
-  {
-    q: "How did an older CRT television form a picture?",
-    hint: "Consider how the electron beam moved and how the screen responded.",
-    steps: [
-      "The electron beam scanned across the screen.",
-      "Its intensity was varied according to the picture signal.",
-      "The screen emitted light to form the picture."
-    ],
-    ans: "By scanning the screen with a controlled electron beam",
-    why: "The beam's position and intensity controlled the light emitted at different parts of the screen."
-  },
-  {
-    q: "Why did the electron beam scan across the screen of a CRT television?",
-    hint: "A complete picture contains information at many positions.",
-    steps: [
-      "The picture contains details across the screen.",
-      "The beam visits different positions to reproduce those details."
-    ],
-    ans: "To reproduce the picture across the screen",
-    why: "Scanning allows the beam to create the picture at different screen positions."
-  },
-  {
-    q: "What controlled the brightness of a point on an older CRT television screen?",
-    hint: "The picture signal changed how strongly the beam struck the screen.",
-    steps: [
-      "The picture signal varied the beam's intensity.",
-      "The beam caused the screen to emit light.",
-      "The intensity affected the brightness."
-    ],
-    ans: "The intensity of the electron beam",
-    why: "A stronger or weaker beam changes the light emitted at the point of impact."
-  }
-]);
-add("physics", "photoelectric_emission", "Meaning of Photoelectric Emission", `
-<h3>Meaning of Photoelectric Emission</h3>
-
-Photoelectric emission is the release of electrons from the surface of a material when light of sufficiently high frequency falls on it.
-
-The material is commonly a metal.
-
-The emitted electrons are called <b>photoelectrons</b>.
-
-Photoelectric emission occurs only when the incident light has a frequency at or above the material's threshold frequency.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: Define photoelectric emission.</b>
-
-Step 1: Light falls on a material's surface.
-Step 2: Electrons are released from the surface.
-
-Answer: Photoelectric emission is the release of electrons from a material's surface due to incident light of sufficiently high frequency.
-
-<b>Example 2: Light of sufficient frequency falls on a metal and electrons leave its surface. What phenomenon has occurred?</b>
-
-Step 1: Incident light strikes the metal.
-Step 2: Electrons are released.
-Step 3: This is photoelectric emission.
-
-Answer: Photoelectric emission.
-
-<b>Example 3: A student says photoelectric emission is the reflection of light from a metal. Is the student correct?</b>
-
-Step 1: Reflection means light bounces off a surface.
-Step 2: Photoelectric emission involves electrons leaving a surface.
-
-Answer: No. Photoelectric emission is the release of electrons, not the reflection of light.
-`, [
-  {
-    q: "What is photoelectric emission?",
-    hint: "Focus on what leaves the material when suitable light falls on it.",
-    steps: [
-      "Light of sufficiently high frequency falls on a material.",
-      "Electrons are released from its surface."
-    ],
-    ans: "The release of electrons from a material's surface when light of sufficiently high frequency falls on it",
-    why: "Photoelectric emission describes the release of electrons due to incident light."
-  },
-  {
-    q: "Light of sufficiently high frequency falls on a metal, causing electrons to leave its surface. Name the phenomenon.",
-    hint: "It is the phenomenon defined by the release of electrons due to light.",
-    steps: [
-      "Light strikes the metal.",
-      "Electrons leave the metal's surface.",
-      "This process is photoelectric emission."
-    ],
-    ans: "Photoelectric emission",
-    why: "The release of electrons from a surface due to suitable incident light is photoelectric emission."
-  },
-  {
-    q: "A learner says photoelectric emission means light bouncing off a metal surface. Identify the error.",
-    hint: "Distinguish the behaviour of light from the release of electrons.",
-    steps: [
-      "Bouncing light is reflection.",
-      "Photoelectric emission involves electrons leaving the material."
-    ],
-    ans: "Photoelectric emission is the release of electrons, not the reflection of light",
-    why: "Reflection concerns light; photoelectric emission concerns electrons released from a surface."
-  }
-]);
+  <p>E = hf</p>
+
+  <p><b>Step 2: Substitute the values.</b></p>
+
+  <p>E = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴)</p>
+
+  <p><b>Step 3: Multiply the numerical values.</b></p>
+
+  <p>6.63 × 5.0 = 33.15</p>
+
+  <p><b>Step 4: Combine the powers of ten.</b></p>
+
+  <p>10⁻³⁴ × 10¹⁴ = 10⁻²⁰</p>
+
+  <p>Therefore, E = 33.15 × 10⁻²⁰ J.</p>
+
+  <p><b>Step 5: Express the answer in standard scientific notation.</b></p>
+
+  <p>E = 3.315 × 10⁻¹⁹ J</p>
+
+  <p><b>Answer:</b> 3.315 × 10⁻¹⁹ J, or approximately 3.32 × 10⁻¹⁹ J.</p>
+
+  <h3>Common mistakes</h3>
+
+  <ul>
+    <li>Confusing a photon with an electron.</li>
+    <li>Assuming all photons have the same energy.</li>
+    <li>Forgetting that photon energy depends on frequency.</li>
+    <li>Using frequency in a unit other than hertz without converting it.</li>
+    <li>Dropping or incorrectly combining powers of ten.</li>
+  </ul>
+
+  <h3>Remember</h3>
+
+  <p>A photon is a quantum of electromagnetic radiation. Its energy is E = hf, so higher-frequency radiation has more energetic individual photons.</p>
+  `,
+  [
+    {
+      q: "Define a photon and state its electric charge.",
+      hint: "Think about the discrete units in which electromagnetic radiation exchanges energy.",
+      steps: [
+        "Electromagnetic radiation exchanges energy in discrete quanta.",
+        "Each quantum is called a photon.",
+        "A photon carries no electric charge."
+      ],
+      ans: "A photon is a quantum of electromagnetic radiation. Its electric charge is zero.",
+      why: "A photon is the radiation quantum, not a charged particle such as an electron."
+    },
+    {
+      q: "Photon A has frequency 3.0 × 10¹⁴ Hz, while photon B has frequency 9.0 × 10¹⁴ Hz. How do their individual energies compare?",
+      hint: "Use E = hf and compare the frequencies.",
+      steps: [
+        "Eₐ = hfₐ.",
+        "Eᵦ = hfᵦ.",
+        "The ratio is Eᵦ/Eₐ = fᵦ/fₐ.",
+        "Eᵦ/Eₐ = (9.0 × 10¹⁴)/(3.0 × 10¹⁴) = 3."
+      ],
+      ans: "Photon B has three times the energy of photon A.",
+      why: "Photon energy is directly proportional to frequency because Planck's constant is the same for both photons."
+    },
+    {
+      q: "Calculate the energy of one photon of frequency 6.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use E = hf and multiply the numerical values and powers of ten separately.",
+      steps: [
+        "Formula: E = hf.",
+        "Substitute: E = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴).",
+        "Multiply the numerical values: 6.63 × 6.0 = 39.78.",
+        "Combine powers: 10⁻³⁴ × 10¹⁴ = 10⁻²⁰.",
+        "E = 39.78 × 10⁻²⁰ J = 3.978 × 10⁻¹⁹ J."
+      ],
+      ans: "3.978 × 10⁻¹⁹ J, approximately 3.98 × 10⁻¹⁹ J",
+      why: "The product of Planck's constant and the photon frequency gives the energy of one photon."
+    },
+    {
+      q: "A learner says that a photon is an electron with no electric charge. Explain why this statement is incorrect.",
+      hint: "Compare the identities of the two particles, not just their charges.",
+      steps: [
+        "An electron is a negatively charged matter particle.",
+        "A photon is a quantum of electromagnetic radiation and has zero electric charge.",
+        "They are different entities, even though a photon can transfer energy to an electron."
+      ],
+      ans: "A photon is not an electron. An electron has negative electric charge, while a photon is a quantum of electromagnetic radiation with zero electric charge.",
+      why: "The particles have different identities and properties; the photon supplies energy that may be absorbed by the electron."
+    },
+    {
+      q: "A photon has energy 1.326 × 10⁻¹⁹ J. Calculate its frequency using h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Rearrange E = hf to make frequency the subject.",
+      steps: [
+        "Start with E = hf.",
+        "Rearrange: f = E/h.",
+        "Substitute: f = (1.326 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "Divide the numerical values: 1.326/6.63 = 0.200.",
+        "Divide powers of ten: 10⁻¹⁹/10⁻³⁴ = 10¹⁵.",
+        "Therefore, f = 0.200 × 10¹⁵ Hz = 2.00 × 10¹⁴ Hz."
+      ],
+      ans: "2.00 × 10¹⁴ Hz",
+      why: "Rearranging Planck's equation gives frequency as photon energy divided by Planck's constant. Correct handling of powers of ten is essential."
+    }
+  ]
+);
+// ============================================================
+// PHOTOELECTRIC EFFECT — BATCH 2
+// PHOTON ENERGY AND FREQUENCY
+//
+// Chapter ID: photoelectric_emission
+// Original screen titles preserved
+// 3 screens | 3 worked examples + 5 diagnostic questions each
+// ============================================================
 
 
 // ------------------------------------------------------------
-// 27. MEANING OF PHOTOELECTRONS
-// Skill: Identify the electrons released during photoelectric emission.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Meaning of Photoelectrons", `
-<h3>Meaning of Photoelectrons</h3>
-
-Photoelectrons are electrons emitted from a material's surface during photoelectric emission.
-
-They are electrons that originally belonged to the material but gained enough energy from incident light to escape its surface.
-
-Photoelectrons have a negative electric charge because they are electrons.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: What are photoelectrons?</b>
-
-Step 1: Suitable light falls on a material.
-Step 2: Electrons are released from its surface.
-
-Answer: The released electrons are called photoelectrons.
-
-<b>Example 2: Are photoelectrons positively or negatively charged?</b>
-
-Step 1: A photoelectron is an electron.
-Step 2: Electrons carry negative charge.
-
-Answer: Negatively charged.
-
-<b>Example 3: A metal emits electrons when illuminated by suitable light. What name is given to the emitted electrons?</b>
-
-Step 1: The electrons leave the metal due to incident light.
-Step 2: Electrons emitted in this process are called photoelectrons.
-
-Answer: Photoelectrons.
-`, [
-  {
-    q: "What are photoelectrons?",
-    hint: "They are named according to the process that releases them.",
-    steps: [
-      "Suitable light causes electrons to leave a material.",
-      "These emitted electrons are called photoelectrons."
-    ],
-    ans: "Electrons emitted from a material during photoelectric emission",
-    why: "Photoelectrons are the electrons released by the photoelectric effect."
-  },
-  {
-    q: "What is the electric charge of a photoelectron?",
-    hint: "A photoelectron is still an electron.",
-    steps: [
-      "Photoelectrons are electrons.",
-      "Electrons carry negative charge."
-    ],
-    ans: "Negative",
-    why: "Emission does not change an electron's electric charge."
-  },
-  {
-    q: "A metal releases electrons when illuminated by suitable light. What are those electrons called?",
-    hint: "Use the term for electrons emitted by the photoelectric effect.",
-    steps: [
-      "The electrons are emitted due to incident light.",
-      "Electrons emitted in this process are photoelectrons."
-    ],
-    ans: "Photoelectrons",
-    why: "The name specifically refers to electrons released during photoelectric emission."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 28. ROLE OF INCIDENT LIGHT IN PHOTOELECTRIC EMISSION
-// Skill: Explain why incident light must have suitable frequency.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Role of Incident Light in Photoelectric Emission", `
-<h3>Role of Incident Light in Photoelectric Emission</h3>
-
-Incident light supplies energy to electrons in a material.
-
-However, electrons are emitted only if the light frequency is high enough for the material.
-
-Each material has a minimum required frequency called its <b>threshold frequency</b>.
-
-- If the incident frequency is below the threshold frequency, photoelectric emission does not occur.
-- If the incident frequency is at or above the threshold frequency, emission can occur.
-
-Increasing the brightness of light does not make below-threshold-frequency light cause photoelectric emission.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: Why must incident light have a sufficiently high frequency?</b>
-
-Step 1: Electrons need enough energy to escape the material.
-Step 2: The frequency determines the energy of each photon.
-Step 3: The photon energy must be sufficient for emission.
-
-Answer: The light must provide photons with enough energy for electrons to escape.
-
-<b>Example 2: A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Light of frequency 5.0 × 10¹⁴ Hz falls on it. Will photoelectric emission occur?</b>
-
-Step 1: Compare the incident frequency with the threshold frequency.
-Step 2: 5.0 × 10¹⁴ Hz is below 6.0 × 10¹⁴ Hz.
-
-Answer: No, photoelectric emission will not occur.
-
-<b>Example 3: Light below a metal's threshold frequency is made brighter. Will this alone cause photoelectric emission?</b>
-
-Step 1: Brightness changes the intensity of the light.
-Step 2: The frequency remains below the threshold.
-Step 3: The photons still lack the required energy.
-
-Answer: No. Increasing intensity alone does not cause emission if the frequency remains below threshold.
-`, [
-  {
-    q: "What role does incident light play in photoelectric emission?",
-    hint: "Think about the energy needed for electrons to escape the material.",
-    steps: [
-      "Incident light carries energy.",
-      "Electrons absorb energy from the light.",
-      "If the photon energy is sufficient, electrons can escape."
-    ],
-    ans: "It supplies energy that can release electrons from the material",
-    why: "Photoelectric emission occurs when electrons receive sufficient energy from incident light."
-  },
-  {
-    q: "A material has a threshold frequency of 7.0 × 10¹⁴ Hz. Light of frequency 4.0 × 10¹⁴ Hz falls on it. Does photoelectric emission occur?",
-    hint: "Compare the incident frequency with the threshold frequency.",
-    steps: [
-      "Threshold frequency = 7.0 × 10¹⁴ Hz.",
-      "Incident frequency = 4.0 × 10¹⁴ Hz.",
-      "The incident frequency is below the threshold."
-    ],
-    ans: "No",
-    why: "Light below the threshold frequency does not cause photoelectric emission from that material."
-  },
-  {
-    q: "Light below a metal's threshold frequency is made more intense without changing its frequency. Will photoelectric emission begin?",
-    hint: "Intensity and frequency are different properties of light.",
-    steps: [
-      "The frequency remains below the threshold.",
-      "Increasing intensity does not increase the energy of each photon.",
-      "The photons remain insufficient to cause emission."
-    ],
-    ans: "No",
-    why: "Photoelectric emission requires sufficient photon energy, which depends on frequency."
-  }
-]);
-add("physics", "photoelectric_emission", "Meaning of a Photon", `
-<h3>Meaning of a Photon</h3>
-
-A photon is a discrete packet, or quantum, of electromagnetic radiation energy.
-
-Light transfers energy through photons.
-
-Each photon carries an amount of energy determined by the frequency of the radiation.
-
-A photon has no electric charge and has zero rest mass.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: What is a photon?</b>
-
-Step 1: Light transfers energy in discrete packets.
-Step 2: Each packet is called a photon.
-
-Answer: A photon is a discrete packet of electromagnetic radiation energy.
-
-<b>Example 2: Does a photon have an electric charge?</b>
-
-Step 1: A photon is not an electron or proton.
-Step 2: A photon carries no electric charge.
-
-Answer: No. A photon is electrically neutral.
-
-<b>Example 3: What determines the energy carried by a photon?</b>
-
-Step 1: Photons carry electromagnetic radiation energy.
-Step 2: Photon energy depends on radiation frequency.
-
-Answer: The frequency of the radiation.
-`, [
-  {
-    q: "What is a photon?",
-    hint: "Think of how electromagnetic radiation transfers energy.",
-    steps: [
-      "Electromagnetic radiation transfers energy in discrete packets.",
-      "Each packet is called a photon."
-    ],
-    ans: "A discrete packet of electromagnetic radiation energy",
-    why: "A photon is the quantum of electromagnetic radiation."
-  },
-  {
-    q: "What is the electric charge of a photon?",
-    hint: "A photon is electrically neutral.",
-    steps: [
-      "A photon is not a charged particle such as an electron.",
-      "Its electric charge is zero."
-    ],
-    ans: "Zero",
-    why: "Photons carry no electric charge."
-  },
-  {
-    q: "Which property of electromagnetic radiation determines the energy of an individual photon?",
-    hint: "The relevant property appears in E = hf.",
-    steps: [
-      "Photon energy is given by E = hf.",
-      "Here, f represents frequency."
-    ],
-    ans: "Frequency",
-    why: "Photon energy is directly proportional to the frequency of the radiation."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 30. RELATIONSHIP BETWEEN PHOTON ENERGY AND FREQUENCY
+// SCREEN 5: RELATIONSHIP BETWEEN PHOTON ENERGY AND FREQUENCY
 // Skill: Explain and use E = hf.
 // ------------------------------------------------------------
 
-add("physics", "photoelectric_emission", "Relationship Between Photon Energy and Frequency", `
-<h3>Relationship Between Photon Energy and Frequency</h3>
+add(
+  "physics",
+  "photoelectric_emission",
+  "Relationship Between Photon Energy and Frequency",
+  `
+  <h3>Relationship Between Photon Energy and Frequency</h3>
 
-The energy of a photon is given by Planck's equation:
+  <p>The energy carried by a single photon is directly proportional to the frequency of its electromagnetic radiation. This relationship is expressed by Planck's equation:</p>
 
-<b>E = hf</b>
+  <p><b>E = hf</b></p>
 
-Where:
+  <p>Where:</p>
 
-- E = photon energy in joules (J)
-- h = Planck's constant = 6.63 × 10⁻³⁴ J s
-- f = frequency in hertz (Hz)
+  <ul>
+    <li><b>E</b> = energy of one photon, measured in joules (J).</li>
+    <li><b>h</b> = Planck's constant, 6.63 × 10⁻³⁴ J s.</li>
+    <li><b>f</b> = frequency of the radiation, measured in hertz (Hz).</li>
+  </ul>
 
-The equation shows that photon energy is directly proportional to frequency.
+  <p>Planck's constant is a fixed physical constant. Therefore, the energy of a photon changes in direct proportion to its frequency.</p>
 
-Therefore:
+  <h3>What direct proportionality means</h3>
 
-- Higher frequency means greater energy per photon.
-- Lower frequency means less energy per photon.
-- Doubling the frequency doubles the photon energy.
+  <ul>
+    <li>If frequency doubles, photon energy doubles.</li>
+    <li>If frequency triples, photon energy triples.</li>
+    <li>If frequency is halved, photon energy is halved.</li>
+    <li>If two photons have equal frequencies, they have equal energies.</li>
+  </ul>
 
-<h3>Worked Examples</h3>
+  <p>These comparisons concern the energy of individual photons, not necessarily the total energy in two light beams.</p>
 
-<b>Example 1: What happens to photon energy when frequency doubles?</b>
+  <h3>Comparing photon energies without calculating them</h3>
 
-Step 1: E = hf.
-Step 2: If f doubles while h stays constant, E doubles.
+  <p>For two photons:</p>
 
-Answer: The photon energy doubles.
+  <p><b>E₁ = hf₁</b></p>
+  <p><b>E₂ = hf₂</b></p>
 
-<b>Example 2: Light A has twice the frequency of light B. Compare their photon energies.</b>
+  <p>Dividing the equations gives:</p>
 
-Step 1: E = hf.
-Step 2: The energy ratio equals the frequency ratio.
+  <p><b>E₂/E₁ = f₂/f₁</b></p>
 
-Answer: Each photon of light A has twice the energy of each photon of light B.
+  <p>This means that the ratio of their photon energies equals the ratio of their frequencies. Planck's constant cancels, so a comparison can often be completed without calculating either energy separately.</p>
 
-<b>Example 3: Light has a frequency of 5.0 × 10¹⁴ Hz. Write the equation needed to calculate the photon energy.</b>
+  <h3>Frequency is not wavelength</h3>
 
-Step 1: Identify the given frequency.
-f = 5.0 × 10¹⁴ Hz.
+  <p>Frequency measures the number of wave cycles passing a point per second. Wavelength is the distance between corresponding points on successive waves.</p>
 
-Step 2: Use Planck's equation.
-E = hf.
+  <p>In a vacuum, they are related by:</p>
 
-Step 3: Substitute h.
-E = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴) J.
+  <p><b>c = fλ</b></p>
 
-Answer: E = hf = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴) J.
-`, [
-  {
-    q: "State the equation for the energy of a photon.",
-    hint: "It relates energy, Planck's constant and frequency.",
-    steps: [
-      "Photon energy is proportional to frequency.",
-      "The relationship is E = hf."
-    ],
-    ans: "E = hf",
-    why: "Planck's equation relates photon energy to its frequency."
-  },
-  {
-    q: "What happens to the energy of each photon when the frequency of light is doubled?",
-    hint: "Use E = hf and keep h constant.",
-    steps: [
-      "E = hf.",
-      "Doubling f doubles hf.",
-      "Therefore, the photon energy doubles."
-    ],
-    ans: "It doubles",
-    why: "Photon energy is directly proportional to frequency."
-  },
-  {
-    q: "Light A has a frequency of 8.0 × 10¹⁴ Hz, while light B has a frequency of 4.0 × 10¹⁴ Hz. Compare the energy of one photon from each light.",
-    hint: "Compare the frequencies before calculating either energy.",
-    steps: [
-      "The frequency ratio is (8.0 × 10¹⁴)/(4.0 × 10¹⁴) = 2.",
-      "Photon energy is proportional to frequency.",
-      "Each photon of light A has twice the energy of each photon of light B."
-    ],
-    ans: "A photon of light A has twice the energy of a photon of light B",
-    why: "The photon energy ratio is equal to the frequency ratio."
-  }
-]);
+  <p>Since the speed of light c is constant in a vacuum, higher frequency corresponds to shorter wavelength. Combining this with E = hf shows that shorter-wavelength radiation has greater energy per photon.</p>
+
+  <h3>Worked Example 1: Doubling the frequency</h3>
+
+  <p><b>Question:</b> A photon has energy 2.0 × 10⁻¹⁹ J. What is the energy of a photon with twice its frequency?</p>
+
+  <p><b>Step 1:</b> Start with E = hf. Since h is constant, E is directly proportional to f.</p>
+
+  <p><b>Step 2:</b> The new frequency is twice the original frequency.</p>
+
+  <p><b>Step 3:</b> The new energy is also twice the original energy.</p>
+
+  <p>E₂ = 2 × 2.0 × 10⁻¹⁹ J</p>
+
+  <p><b>Answer:</b> E₂ = 4.0 × 10⁻¹⁹ J.</p>
+
+  <h3>Worked Example 2: Comparing two light beams</h3>
+
+  <p><b>Question:</b> Light A has frequency 8.0 × 10¹⁴ Hz, while light B has frequency 4.0 × 10¹⁴ Hz. Compare the energy of one photon from each beam.</p>
+
+  <p><b>Step 1:</b> Use the energy ratio:</p>
+
+  <p>Eₐ/Eᵦ = fₐ/fᵦ</p>
+
+  <p><b>Step 2:</b> Substitute the frequencies:</p>
+
+  <p>Eₐ/Eᵦ = (8.0 × 10¹⁴)/(4.0 × 10¹⁴)</p>
+
+  <p><b>Step 3:</b> Cancel the common power of ten and divide:</p>
+
+  <p>Eₐ/Eᵦ = 8.0/4.0 = 2</p>
+
+  <p><b>Answer:</b> Each photon of light A has twice the energy of each photon of light B.</p>
+
+  <h3>Worked Example 3: Finding the energy ratio from a frequency ratio</h3>
+
+  <p><b>Question:</b> The frequency of radiation X is one-third the frequency of radiation Y. If a photon of Y has energy 9.0 × 10⁻¹⁹ J, calculate the energy of a photon of X.</p>
+
+  <p><b>Step 1:</b> State the proportionality:</p>
+
+  <p>Eₓ/Eᵧ = fₓ/fᵧ</p>
+
+  <p><b>Step 2:</b> The frequency ratio is:</p>
+
+  <p>fₓ/fᵧ = 1/3</p>
+
+  <p><b>Step 3:</b> Substitute the energy of Y:</p>
+
+  <p>Eₓ/(9.0 × 10⁻¹⁹) = 1/3</p>
+
+  <p><b>Step 4:</b> Solve:</p>
+
+  <p>Eₓ = (9.0 × 10⁻¹⁹)/3</p>
+
+  <p><b>Answer:</b> Eₓ = 3.0 × 10⁻¹⁹ J.</p>
+
+  <h3>Common misconception</h3>
+
+  <p>A higher-frequency photon has greater energy than a lower-frequency photon. However, this alone does not prove that a beam of higher-frequency light has greater total energy or intensity. The number of photons and the area and time over which energy arrives also matter.</p>
+
+  <h3>Remember</h3>
+
+  <p><b>E = hf.</b> Photon energy depends directly on frequency. Use energy ratios to compare photons efficiently without unnecessary calculations.</p>
+  `,
+  [
+    {
+      q: "State Planck's equation and explain what it tells you about the relationship between photon energy and frequency.",
+      hint: "Identify the constant in the equation and describe what happens when frequency changes.",
+      steps: [
+        "Planck's equation is E = hf.",
+        "E is photon energy, h is Planck's constant, and f is frequency.",
+        "Since h is constant, photon energy is directly proportional to frequency."
+      ],
+      ans: "E = hf. Photon energy is directly proportional to frequency.",
+      why: "The equation shows that multiplying frequency by the fixed Planck constant gives the energy of one photon."
+    },
+    {
+      q: "A photon has energy 3.0 × 10⁻¹⁹ J. Calculate the energy of a photon whose frequency is three times greater.",
+      hint: "Use direct proportionality instead of calculating the new frequency.",
+      steps: [
+        "E₂/E₁ = f₂/f₁.",
+        "The frequency ratio is 3.",
+        "E₂ = 3 × 3.0 × 10⁻¹⁹ J.",
+        "E₂ = 9.0 × 10⁻¹⁹ J."
+      ],
+      ans: "9.0 × 10⁻¹⁹ J",
+      why: "Tripling the frequency triples the energy of each photon."
+    },
+    {
+      q: "Light A has frequency 6.0 × 10¹⁴ Hz and light B has frequency 2.0 × 10¹⁴ Hz. Calculate the ratio of the energy of one photon of A to that of one photon of B.",
+      hint: "Use Eₐ/Eᵦ = fₐ/fᵦ.",
+      steps: [
+        "Eₐ/Eᵦ = fₐ/fᵦ.",
+        "Eₐ/Eᵦ = (6.0 × 10¹⁴)/(2.0 × 10¹⁴).",
+        "Cancel 10¹⁴.",
+        "Eₐ/Eᵦ = 6.0/2.0 = 3."
+      ],
+      ans: "Eₐ:Eᵦ = 3:1",
+      why: "The energy ratio equals the frequency ratio because both photon energies contain the same constant h."
+    },
+    {
+      q: "Radiation A has half the frequency of radiation B. A photon of B has energy 8.0 × 10⁻¹⁹ J. Find the energy of a photon of A.",
+      hint: "A frequency ratio of 1:2 produces the same energy ratio.",
+      steps: [
+        "Eₐ/Eᵦ = fₐ/fᵦ.",
+        "Eₐ/Eᵦ = 1/2.",
+        "Eₐ = (1/2)(8.0 × 10⁻¹⁹ J).",
+        "Eₐ = 4.0 × 10⁻¹⁹ J."
+      ],
+      ans: "4.0 × 10⁻¹⁹ J",
+      why: "Halving the frequency halves the energy per photon."
+    },
+    {
+      q: "A learner argues that a beam of higher-frequency light must always have greater intensity than a beam of lower-frequency light. Explain the error.",
+      hint: "Distinguish energy per photon from the total energy arriving per unit area per second.",
+      steps: [
+        "Higher frequency means greater energy per photon.",
+        "Intensity depends on the rate at which total radiation energy arrives per unit area.",
+        "The number of photons arriving also matters.",
+        "Therefore, frequency alone cannot determine which beam has greater intensity."
+      ],
+      ans: "The claim is incorrect. Higher frequency means more energy per photon, but intensity also depends on the photon arrival rate and the energy delivered per unit area per second.",
+      why: "Individual photon energy and beam intensity describe different properties of radiation."
+    }
+  ]
+);
 
 
 // ------------------------------------------------------------
-// 31. CALCULATING THE ENERGY OF A PHOTON
+// SCREEN 6: CALCULATING THE ENERGY OF A PHOTON
 // Skill: Calculate photon energy using E = hf.
 // ------------------------------------------------------------
 
-add("physics", "photoelectric_emission", "Calculating the Energy of a Photon", `
-<h3>Calculating the Energy of a Photon</h3>
+add(
+  "physics",
+  "photoelectric_emission",
+  "Calculating the Energy of a Photon",
+  `
+  <h3>Calculating the Energy of a Photon</h3>
 
-Use Planck's equation:
+  <p>The energy of a photon can be calculated when its frequency is known. Use Planck's equation:</p>
 
-<b>E = hf</b>
+  <p><b>E = hf</b></p>
 
-Planck's constant:
+  <p>Use the value:</p>
 
-<b>h = 6.63 × 10⁻³⁴ J s</b>
+  <p><b>h = 6.63 × 10⁻³⁴ J s</b></p>
 
-The frequency must be in hertz (Hz), and the energy obtained is in joules (J).
+  <p>Where E is the energy of one photon in joules and f is its frequency in hertz.</p>
 
-<h3>Worked Examples</h3>
+  <h3>Method for solving calculations</h3>
 
-<b>Example 1: Calculate the energy of a photon with frequency 4.0 × 10¹⁴ Hz.</b>
+  <ol>
+    <li>Write the given frequency and convert it to hertz if necessary.</li>
+    <li>Write E = hf.</li>
+    <li>Substitute Planck's constant and the frequency.</li>
+    <li>Multiply the numerical values.</li>
+    <li>Combine the powers of ten.</li>
+    <li>Express the result in standard scientific notation and include joules.</li>
+  </ol>
 
-Step 1: E = hf.
+  <h3>Handling scientific notation</h3>
 
-Step 2: Substitute:
-E = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴)
+  <p>When multiplying powers of ten, add the exponents:</p>
 
-Step 3: Multiply:
-E = 26.52 × 10⁻²⁰ J
-E = 2.652 × 10⁻¹⁹ J
+  <p><b>10ᵃ × 10ᵇ = 10ᵃ⁺ᵇ</b></p>
 
-Answer: 2.65 × 10⁻¹⁹ J.
+  <p>For example:</p>
 
-<b>Example 2: Calculate the energy of a photon with frequency 6.0 × 10¹⁴ Hz.</b>
+  <p>10⁻³⁴ × 10¹⁴ = 10⁻²⁰</p>
 
-E = hf
-E = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴)
-E = 3.978 × 10⁻¹⁹ J
+  <p>Standard scientific notation has one non-zero digit before the decimal point. Therefore, 26.52 × 10⁻²⁰ J becomes 2.652 × 10⁻¹⁹ J.</p>
 
-Answer: 3.98 × 10⁻¹⁹ J.
+  <h3>Worked Example 1: Frequency given in hertz</h3>
 
-<b>Example 3: Calculate the energy of a photon with frequency 9.0 × 10¹⁴ Hz.</b>
+  <p><b>Question:</b> Calculate the energy of a photon with frequency 4.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.</p>
 
-E = hf
-E = (6.63 × 10⁻³⁴)(9.0 × 10¹⁴)
-E = 5.967 × 10⁻¹⁹ J
+  <p><b>Step 1: Write the formula.</b></p>
 
-Answer: 5.97 × 10⁻¹⁹ J.
-`, [
-  {
-    q: "Calculate the energy of a photon of frequency 3.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Use E = hf and multiply the two values.",
-    steps: [
-      "E = hf",
-      "E = (6.63 × 10⁻³⁴)(3.0 × 10¹⁴)",
-      "E = 1.989 × 10⁻¹⁹ J",
-      "E ≈ 1.99 × 10⁻¹⁹ J"
-    ],
-    ans: "1.99 × 10⁻¹⁹ J",
-    why: "Multiplying Planck's constant by frequency gives photon energy in joules."
-  },
-  {
-    q: "Calculate the energy of a photon of frequency 7.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Substitute the frequency into E = hf.",
-    steps: [
-      "E = hf",
-      "E = (6.63 × 10⁻³⁴)(7.0 × 10¹⁴)",
-      "E = 4.641 × 10⁻¹⁹ J",
-      "E ≈ 4.64 × 10⁻¹⁹ J"
-    ],
-    ans: "4.64 × 10⁻¹⁹ J",
-    why: "Photon energy is found by multiplying frequency by Planck's constant."
-  },
-  {
-    q: "A photon has a frequency of 5.5 × 10¹⁴ Hz. Calculate its energy using h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Use E = hf. Give your final answer in scientific notation.",
-    steps: [
-      "E = hf",
-      "E = (6.63 × 10⁻³⁴)(5.5 × 10¹⁴)",
-      "E = 36.465 × 10⁻²⁰ J",
-      "E = 3.6465 × 10⁻¹⁹ J",
-      "E ≈ 3.65 × 10⁻¹⁹ J"
-    ],
-    ans: "3.65 × 10⁻¹⁹ J",
-    why: "Correct multiplication and conversion to standard scientific notation give the photon energy."
-  }
-]);
+  <p>E = hf</p>
+
+  <p><b>Step 2: Substitute.</b></p>
+
+  <p>E = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴)</p>
+
+  <p><b>Step 3: Multiply the numerical values.</b></p>
+
+  <p>6.63 × 4.0 = 26.52</p>
+
+  <p><b>Step 4: Combine the powers of ten.</b></p>
+
+  <p>10⁻³⁴ × 10¹⁴ = 10⁻²⁰</p>
+
+  <p>E = 26.52 × 10⁻²⁰ J</p>
+
+  <p><b>Step 5: Convert to standard scientific notation.</b></p>
+
+  <p>E = 2.652 × 10⁻¹⁹ J</p>
+
+  <p><b>Answer:</b> 2.652 × 10⁻¹⁹ J, approximately 2.65 × 10⁻¹⁹ J.</p>
+
+  <h3>Worked Example 2: Converting kilohertz units to hertz</h3>
+
+  <p><b>Question:</b> Calculate the energy of a photon whose frequency is 6.0 × 10¹¹ kHz.</p>
+
+  <p><b>Step 1: Convert kilohertz to hertz.</b></p>
+
+  <p>1 kHz = 10³ Hz</p>
+
+  <p>f = 6.0 × 10¹¹ × 10³ Hz</p>
+
+  <p>f = 6.0 × 10¹⁴ Hz</p>
+
+  <p><b>Step 2: Apply Planck's equation.</b></p>
+
+  <p>E = hf</p>
+
+  <p>E = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴)</p>
+
+  <p><b>Step 3: Multiply.</b></p>
+
+  <p>E = 39.78 × 10⁻²⁰ J</p>
+
+  <p><b>Step 4: Normalize the scientific notation.</b></p>
+
+  <p>E = 3.978 × 10⁻¹⁹ J</p>
+
+  <p><b>Answer:</b> 3.978 × 10⁻¹⁹ J, approximately 3.98 × 10⁻¹⁹ J.</p>
+
+  <h3>Worked Example 3: A frequency with a different coefficient</h3>
+
+  <p><b>Question:</b> Calculate the energy of a photon of frequency 7.5 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.</p>
+
+  <p><b>Step 1: Use Planck's equation.</b></p>
+
+  <p>E = hf</p>
+
+  <p><b>Step 2: Substitute the values.</b></p>
+
+  <p>E = (6.63 × 10⁻³⁴)(7.5 × 10¹⁴)</p>
+
+  <p><b>Step 3: Multiply the coefficients.</b></p>
+
+  <p>6.63 × 7.5 = 49.725</p>
+
+  <p><b>Step 4: Combine the powers of ten.</b></p>
+
+  <p>E = 49.725 × 10⁻²⁰ J</p>
+
+  <p><b>Step 5: Write in standard scientific notation.</b></p>
+
+  <p>E = 4.9725 × 10⁻¹⁹ J</p>
+
+  <p><b>Answer:</b> 4.9725 × 10⁻¹⁹ J, approximately 4.97 × 10⁻¹⁹ J.</p>
+
+  <h3>Common calculation errors</h3>
+
+  <ul>
+    <li>Using frequency without converting it to hertz.</li>
+    <li>Adding exponents incorrectly when multiplying powers of ten.</li>
+    <li>Writing the coefficient outside the range required for standard scientific notation.</li>
+    <li>Giving the answer without the unit joule.</li>
+    <li>Confusing the energy of one photon with the total energy of a beam.</li>
+  </ul>
+
+  <h3>Remember</h3>
+
+  <p>Use E = hf. The answer is the energy of one photon. Keep the units consistent and check the powers of ten before finalizing the answer.</p>
+  `,
+  [
+    {
+      q: "Calculate the energy of a photon of frequency 3.0 × 10¹⁴ Hz. Take h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use E = hf and handle the coefficient and exponent separately.",
+      steps: [
+        "E = hf.",
+        "E = (6.63 × 10⁻³⁴)(3.0 × 10¹⁴).",
+        "6.63 × 3.0 = 19.89.",
+        "10⁻³⁴ × 10¹⁴ = 10⁻²⁰.",
+        "E = 19.89 × 10⁻²⁰ J = 1.989 × 10⁻¹⁹ J."
+      ],
+      ans: "1.989 × 10⁻¹⁹ J, approximately 1.99 × 10⁻¹⁹ J",
+      why: "Multiplying Planck's constant by frequency gives the energy of one photon."
+    },
+    {
+      q: "Calculate the energy of a photon with frequency 7.0 × 10¹⁴ Hz. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Multiply 6.63 by 7.0 and add the exponents of ten.",
+      steps: [
+        "E = hf.",
+        "E = (6.63 × 10⁻³⁴)(7.0 × 10¹⁴).",
+        "6.63 × 7.0 = 46.41.",
+        "10⁻³⁴ × 10¹⁴ = 10⁻²⁰.",
+        "E = 46.41 × 10⁻²⁰ J = 4.641 × 10⁻¹⁹ J."
+      ],
+      ans: "4.641 × 10⁻¹⁹ J, approximately 4.64 × 10⁻¹⁹ J",
+      why: "The coefficient and exponent must both be handled correctly when multiplying numbers in scientific notation."
+    },
+    {
+      q: "A photon has frequency 5.5 × 10¹⁴ Hz. Calculate its energy using h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use E = hf and express the final result in standard scientific notation.",
+      steps: [
+        "E = hf.",
+        "E = (6.63 × 10⁻³⁴)(5.5 × 10¹⁴).",
+        "6.63 × 5.5 = 36.465.",
+        "10⁻³⁴ × 10¹⁴ = 10⁻²⁰.",
+        "E = 36.465 × 10⁻²⁰ J.",
+        "E = 3.6465 × 10⁻¹⁹ J."
+      ],
+      ans: "3.6465 × 10⁻¹⁹ J, approximately 3.65 × 10⁻¹⁹ J",
+      why: "The coefficient is normalized by moving the decimal point one place left and increasing the exponent by one."
+    },
+    {
+      q: "A photon has frequency 2.4 × 10¹⁵ Hz. Calculate its energy. Take h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Multiply the coefficients, then combine the powers of ten.",
+      steps: [
+        "E = hf.",
+        "E = (6.63 × 10⁻³⁴)(2.4 × 10¹⁵).",
+        "6.63 × 2.4 = 15.912.",
+        "10⁻³⁴ × 10¹⁵ = 10⁻¹⁹.",
+        "E = 15.912 × 10⁻¹⁹ J.",
+        "E = 1.5912 × 10⁻¹⁸ J."
+      ],
+      ans: "1.5912 × 10⁻¹⁸ J, approximately 1.59 × 10⁻¹⁸ J",
+      why: "The exponent becomes −19 before normalization; moving the decimal one place left changes it to −18."
+    },
+    {
+      q: "A learner calculates E = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴) = 26.52 × 10⁻²⁰ J and leaves the answer in that form. Complete the calculation in standard scientific notation and explain the correction.",
+      hint: "The coefficient in standard scientific notation must be at least 1 but less than 10.",
+      steps: [
+        "The multiplication gives 26.52 × 10⁻²⁰ J.",
+        "Move the decimal point one place left: 26.52 becomes 2.652.",
+        "Increase the exponent by one: −20 becomes −19.",
+        "The normalized result is 2.652 × 10⁻¹⁹ J."
+      ],
+      ans: "2.652 × 10⁻¹⁹ J",
+      why: "The original value is numerically equivalent, but standard scientific notation requires a coefficient from 1 up to, but not including, 10."
+    }
+  ]
+);
 
 
 // ------------------------------------------------------------
-// 32. CALCULATING FREQUENCY FROM PHOTON ENERGY
+// SCREEN 7: CALCULATING FREQUENCY FROM PHOTON ENERGY
 // Skill: Rearrange E = hf to calculate frequency.
 // ------------------------------------------------------------
 
-add("physics", "photoelectric_emission", "Calculating Frequency from Photon Energy", `
-<h3>Calculating Frequency from Photon Energy</h3>
+add(
+  "physics",
+  "photoelectric_emission",
+  "Calculating Frequency from Photon Energy",
+  `
+  <h3>Calculating Frequency from Photon Energy</h3>
 
-Planck's equation is:
+  <p>When the energy of a photon is known, its frequency can be calculated by rearranging Planck's equation.</p>
 
-<b>E = hf</b>
+  <p><b>E = hf</b></p>
 
-To calculate frequency, rearrange:
+  <p>Divide both sides by h:</p>
 
-<b>f = E/h</b>
+  <p><b>f = E/h</b></p>
 
-Where:
+  <p>Where:</p>
 
-- f = frequency in hertz (Hz)
-- E = photon energy in joules (J)
-- h = 6.63 × 10⁻³⁴ J s
+  <ul>
+    <li><b>f</b> = frequency in hertz (Hz).</li>
+    <li><b>E</b> = energy of one photon in joules (J).</li>
+    <li><b>h</b> = Planck's constant = 6.63 × 10⁻³⁴ J s.</li>
+  </ul>
 
-Make sure energy is expressed in joules before using this equation.
+  <h3>How to rearrange the equation</h3>
 
-<h3>Worked Examples</h3>
+  <p>Start with E = hf. Since h multiplies f, divide both sides by h to isolate f. This gives f = E/h.</p>
 
-<b>Example 1: A photon has energy 3.315 × 10⁻¹⁹ J. Calculate its frequency.</b>
+  <p>Frequency is therefore directly proportional to photon energy. A photon with twice the energy has twice the frequency.</p>
 
-Step 1:
-f = E/h
+  <h3>Solving using scientific notation</h3>
 
-Step 2:
-f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+  <p>When dividing powers of ten, subtract the denominator's exponent from the numerator's exponent:</p>
 
-Step 3:
-f = 5.0 × 10¹⁴ Hz
+  <p><b>10ᵃ / 10ᵇ = 10ᵃ⁻ᵇ</b></p>
 
-Answer: 5.0 × 10¹⁴ Hz.
+  <p>For example:</p>
 
-<b>Example 2: A photon has energy 1.326 × 10⁻¹⁹ J. Calculate its frequency.</b>
+  <p>10⁻¹⁹ / 10⁻³⁴ = 10¹⁵</p>
 
-f = (1.326 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+  <p>Because the energy is divided by a very small value of Planck's constant, ordinary photon frequencies often have large numerical values, commonly around 10¹⁴ or 10¹⁵ Hz for visible and nearby optical radiation.</p>
 
-f = 2.0 × 10¹⁴ Hz
+  <h3>Unit check</h3>
 
-Answer: 2.0 × 10¹⁴ Hz.
+  <p>Planck's constant has units J s. Therefore:</p>
 
-<b>Example 3: A photon has energy 5.304 × 10⁻¹⁹ J. Calculate its frequency.</b>
+  <p>f = J / (J s) = 1/s = Hz</p>
 
-f = (5.304 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
-
-f = 8.0 × 10¹⁴ Hz
-
-Answer: 8.0 × 10¹⁴ Hz.
-`, [
-  {
-    q: "A photon has energy 6.63 × 10⁻¹⁹ J. Calculate its frequency. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Rearrange E = hf to make f the subject.",
-    steps: [
-      "f = E/h",
-      "f = (6.63 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f = 1.0 × 10¹⁵ Hz"
-    ],
-    ans: "1.0 × 10¹⁵ Hz",
-    why: "Dividing photon energy by Planck's constant gives frequency."
-  },
-  {
-    q: "A photon has energy 2.652 × 10⁻¹⁹ J. Calculate its frequency using h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Use f = E/h.",
-    steps: [
-      "f = E/h",
-      "f = (2.652 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f = 4.0 × 10¹⁴ Hz"
-    ],
-    ans: "4.0 × 10¹⁴ Hz",
-    why: "The photon frequency is its energy divided by Planck's constant."
-  },
-  {
-    q: "A photon has energy 4.641 × 10⁻¹⁹ J. Calculate its frequency using h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Divide the energy by Planck's constant and keep the power of ten.",
-    steps: [
-      "f = E/h",
-      "f = (4.641 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f = 7.0 × 10¹⁴ Hz"
-    ],
-    ans: "7.0 × 10¹⁴ Hz",
-    why: "Rearranging Planck's equation allows frequency to be found from photon energy."
-  }
-]);
-add("physics", "photoelectric_emission", "Meaning of Work Function", `
-<h3>Meaning of Work Function</h3>
+  <p>The joule units cancel, leaving inverse seconds, which is the hertz.</p>
 
-The work function is the minimum energy required to remove an electron from the surface of a material.
+  <h3>Worked Example 1: Finding frequency from energy</h3>
 
-It is usually represented by the symbol φ (phi).
+  <p><b>Question:</b> A photon has energy 3.315 × 10⁻¹⁹ J. Calculate its frequency. Take h = 6.63 × 10⁻³⁴ J s.</p>
 
-The work function depends on the material's surface.
+  <p><b>Step 1: Write the rearranged equation.</b></p>
 
-Its SI unit is the joule (J). It may also be expressed in electron-volts (eV).
+  <p>f = E/h</p>
 
-For photoelectric emission to occur, the energy supplied by an individual photon must be at least equal to the work function.
+  <p><b>Step 2: Substitute.</b></p>
 
-<h3>Worked Examples</h3>
+  <p>f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)</p>
 
-<b>Example 1: Define work function.</b>
+  <p><b>Step 3: Divide the coefficients.</b></p>
 
-Step 1: An electron is held within a material.
-Step 2: Energy must be supplied to release it from the surface.
+  <p>3.315/6.63 = 0.5</p>
 
-Answer: The work function is the minimum energy required to remove an electron from a material's surface.
+  <p><b>Step 4: Divide the powers of ten.</b></p>
 
-<b>Example 2: What symbol is commonly used for work function?</b>
+  <p>10⁻¹⁹/10⁻³⁴ = 10¹⁵</p>
 
-Step 1: Identify the standard symbol used in photoelectric equations.
-Step 2: Work function is represented by φ.
+  <p>f = 0.5 × 10¹⁵ Hz</p>
 
-Answer: φ (phi).
+  <p><b>Step 5: Normalize.</b></p>
 
-<b>Example 3: A metal has a work function of 2.0 eV. What does this value represent?</b>
+  <p>f = 5.0 × 10¹⁴ Hz</p>
 
-Step 1: Work function is the minimum energy required for electron emission.
-Step 2: The value is 2.0 eV.
+  <p><b>Answer:</b> 5.0 × 10¹⁴ Hz.</p>
 
-Answer: An electron requires at least 2.0 eV of energy to escape the metal's surface.
-`, [
-  {
-    q: "What is the work function of a material?",
-    hint: "Think about the minimum energy needed for an electron to escape.",
-    steps: [
-      "An electron is held within the material.",
-      "Energy must be supplied for it to escape the surface.",
-      "The minimum required energy is the work function."
-    ],
-    ans: "The minimum energy required to remove an electron from a material's surface",
-    why: "The work function describes the minimum energy needed for electron emission."
-  },
-  {
-    q: "What symbol is commonly used to represent work function?",
-    hint: "It is the Greek letter phi.",
-    steps: [
-      "Work function is represented by a Greek letter.",
-      "The symbol is φ."
-    ],
-    ans: "φ",
-    why: "The symbol φ is used for work function in photoelectric equations."
-  },
-  {
-    q: "A metal has a work function of 3.0 eV. What does this value mean?",
-    hint: "Interpret the value as a minimum energy.",
-    steps: [
-      "The work function is the minimum energy needed for electron emission.",
-      "For this metal, that energy is 3.0 eV."
-    ],
-    ans: "At least 3.0 eV is required to remove an electron from the metal's surface",
-    why: "The work function specifies the minimum energy required for emission."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 34. PHOTON ENERGY AND THE WORK FUNCTION
-// Skill: Determine whether a photon has enough energy for emission.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Photon Energy and the Work Function", `
-<h3>Photon Energy and the Work Function</h3>
-
-A photon can release an electron only if its energy is at least equal to the material's work function.
-
-The condition for photoelectric emission is:
-
-<b>E ≥ φ</b>
-
-Where:
-- E = energy of an incident photon
-- φ = work function of the material
-
-Since E = hf, the condition can also be written as:
-
-<b>hf ≥ φ</b>
+  <h3>Worked Example 2: A smaller photon energy</h3>
 
-Three cases are possible:
-
-1. If E < φ, photoelectric emission does not occur.
-2. If E = φ, emission can occur, with no excess kinetic energy in the ideal case.
-3. If E > φ, emission can occur and the emitted electron can have kinetic energy.
+  <p><b>Question:</b> A photon has energy 1.326 × 10⁻¹⁹ J. Calculate its frequency.</p>
 
-<h3>Worked Examples</h3>
+  <p><b>Step 1:</b> f = E/h.</p>
 
-<b>Example 1: A photon has energy 2.5 eV. A metal has a work function of 2.0 eV. Can emission occur?</b>
+  <p><b>Step 2:</b> Substitute:</p>
 
-Step 1: Compare the values.
-2.5 eV > 2.0 eV.
+  <p>f = (1.326 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)</p>
 
-Step 2: The photon energy exceeds the work function.
+  <p><b>Step 3:</b> Divide the coefficients:</p>
 
-Answer: Yes, photoelectric emission can occur.
+  <p>1.326/6.63 = 0.2</p>
 
-<b>Example 2: A photon has energy 1.5 eV. A metal has a work function of 2.0 eV. Can emission occur?</b>
+  <p><b>Step 4:</b> Subtract the exponents:</p>
 
-Step 1: Compare the values.
-1.5 eV < 2.0 eV.
+  <p>−19 − (−34) = 15</p>
 
-Step 2: The photon does not have enough energy.
+  <p>f = 0.2 × 10¹⁵ Hz = 2.0 × 10¹⁴ Hz</p>
 
-Answer: No, photoelectric emission does not occur.
+  <p><b>Answer:</b> 2.0 × 10¹⁴ Hz.</p>
 
-<b>Example 3: A photon has energy 3.0 eV and the metal's work function is 3.0 eV. What is the maximum kinetic energy of the emitted electron?</b>
+  <h3>Worked Example 3: A larger photon energy</h3>
 
-Step 1: Use KEmax = E − φ.
-Step 2: KEmax = 3.0 − 3.0 eV.
+  <p><b>Question:</b> A photon has energy 5.304 × 10⁻¹⁹ J. Calculate its frequency.</p>
 
-Answer: 0 eV in the ideal limiting case.
-`, [
-  {
-    q: "A photon has energy 4.0 eV and a metal has a work function of 2.5 eV. Can photoelectric emission occur?",
-    hint: "Compare photon energy with the work function.",
-    steps: [
-      "Photon energy = 4.0 eV.",
-      "Work function = 2.5 eV.",
-      "Since 4.0 eV is greater than 2.5 eV, emission can occur."
-    ],
-    ans: "Yes",
-    why: "A photon must have energy at least equal to the work function."
-  },
-  {
-    q: "A photon has energy 1.8 eV and a material has a work function of 2.2 eV. Will the photon release an electron?",
-    hint: "Check whether photon energy reaches the minimum required energy.",
-    steps: [
-      "Photon energy = 1.8 eV.",
-      "Work function = 2.2 eV.",
-      "Since 1.8 eV is less than 2.2 eV, emission cannot occur."
-    ],
-    ans: "No",
-    why: "The photon energy is below the work function."
-  },
-  {
-    q: "A photon has energy 3.5 eV and the metal's work function is 3.5 eV. Calculate the maximum kinetic energy of the emitted electron.",
-    hint: "Use KEmax = E − φ.",
-    steps: [
-      "KEmax = E − φ",
-      "KEmax = 3.5 − 3.5",
-      "KEmax = 0 eV"
-    ],
-    ans: "0 eV",
-    why: "At the threshold energy, all the photon energy is used to overcome the work function."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 35. WORK FUNCTION AND THRESHOLD FREQUENCY
-// Skill: Calculate work function from threshold frequency.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Work Function from Threshold Frequency", `
-<h3>Work Function from Threshold Frequency</h3>
-
-The threshold frequency, f₀, is the minimum frequency of incident light that can cause photoelectric emission from a material.
-
-At the threshold frequency, the photon has exactly the minimum energy needed to release an electron.
-
-Therefore:
-
-<b>φ = hf₀</b>
-
-Where:
-- φ = work function in joules (J)
-- h = Planck's constant = 6.63 × 10⁻³⁴ J s
-- f₀ = threshold frequency in hertz (Hz)
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Calculate its work function in joules.</b>
-
-Step 1: φ = hf₀.
-
-Step 2: Substitute:
-φ = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴).
+  <p><b>Step 1:</b> Use f = E/h.</p>
 
-Step 3: Calculate:
-φ = 3.315 × 10⁻¹⁹ J.
+  <p><b>Step 2:</b> Substitute:</p>
 
-Answer: 3.32 × 10⁻¹⁹ J.
+  <p>f = (5.304 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)</p>
 
-<b>Example 2: A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. Calculate its work function.</b>
+  <p><b>Step 3:</b> Divide the coefficients:</p>
 
-φ = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴)
-φ = 2.652 × 10⁻¹⁹ J.
+  <p>5.304/6.63 = 0.8</p>
 
-Answer: 2.65 × 10⁻¹⁹ J.
+  <p><b>Step 4:</b> Divide the powers of ten:</p>
 
-<b>Example 3: A material has a work function of 4.0 × 10⁻¹⁹ J. Calculate its threshold frequency.</b>
+  <p>10⁻¹⁹/10⁻³⁴ = 10¹⁵</p>
 
-Step 1: Rearrange φ = hf₀.
-f₀ = φ/h.
+  <p>f = 0.8 × 10¹⁵ Hz</p>
 
-Step 2: Substitute:
-f₀ = (4.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).
-
-Step 3: Calculate:
-f₀ ≈ 6.03 × 10¹⁴ Hz.
-
-Answer: 6.03 × 10¹⁴ Hz.
-`, [
-  {
-    q: "A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Calculate its work function in joules. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Use φ = hf₀.",
-    steps: [
-      "φ = hf₀",
-      "φ = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴)",
-      "φ = 3.978 × 10⁻¹⁹ J",
-      "φ ≈ 3.98 × 10⁻¹⁹ J"
-    ],
-    ans: "3.98 × 10⁻¹⁹ J",
-    why: "At threshold frequency, photon energy equals the work function."
-  },
-  {
-    q: "A metal has a work function of 3.315 × 10⁻¹⁹ J. Calculate its threshold frequency. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Rearrange φ = hf₀ to make f₀ the subject.",
-    steps: [
-      "f₀ = φ/h",
-      "f₀ = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f₀ = 5.0 × 10¹⁴ Hz"
-    ],
-    ans: "5.0 × 10¹⁴ Hz",
-    why: "Dividing work function by Planck's constant gives threshold frequency."
-  },
-  {
-    q: "A metal has a work function of 2.0 × 10⁻¹⁹ J. Calculate its threshold frequency. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Use f₀ = φ/h.",
-    steps: [
-      "f₀ = φ/h",
-      "f₀ = (2.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f₀ ≈ 3.02 × 10¹⁴ Hz"
-    ],
-    ans: "3.02 × 10¹⁴ Hz",
-    why: "The threshold frequency is the work function divided by Planck's constant."
-  }
-]);
-add("physics", "photoelectric_emission", "Meaning of Threshold Frequency", `
-<h3>Meaning of Threshold Frequency</h3>
-
-The threshold frequency is the minimum frequency of incident radiation required to cause photoelectric emission from a particular material.
-
-It is represented by:
-
-<b>f₀</b>
-
-The threshold frequency depends on the material because different materials require different minimum energies to release electrons.
-
-At the threshold frequency, the energy of each photon is exactly equal to the work function:
-
-<b>hf₀ = φ</b>
-
-Where:
-- h = Planck's constant
-- f₀ = threshold frequency
-- φ = work function
-
-At this frequency, the emitted electron has zero maximum kinetic energy in the ideal model.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: Define threshold frequency.</b>
+  <p><b>Step 5:</b> Write in standard scientific notation:</p>
 
-Step 1: Electrons require a minimum energy to escape a material.
-Step 2: Photon energy depends on frequency.
-Step 3: The minimum frequency that supplies sufficient photon energy is the threshold frequency.
+  <p>f = 8.0 × 10¹⁴ Hz</p>
 
-Answer: The minimum frequency of incident radiation required to cause photoelectric emission from a material.
+  <p><b>Answer:</b> 8.0 × 10¹⁴ Hz.</p>
 
-<b>Example 2: A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. What does this value mean?</b>
+  <h3>Common errors</h3>
 
-Step 1: Identify the minimum frequency.
-Step 2: The threshold frequency is 5.0 × 10¹⁴ Hz.
+  <ul>
+    <li>Multiplying E by h instead of dividing E by h.</li>
+    <li>Adding the exponents instead of subtracting them during division.</li>
+    <li>Forgetting that subtracting a negative exponent becomes addition.</li>
+    <li>Leaving the frequency in joules instead of hertz.</li>
+    <li>Failing to normalize the coefficient in scientific notation.</li>
+  </ul>
 
-Answer: Light must have a frequency of at least 5.0 × 10¹⁴ Hz to cause photoelectric emission from the metal.
+  <h3>Remember</h3>
 
-<b>Example 3: Why can two different metals have different threshold frequencies?</b>
-
-Step 1: Different materials have different work functions.
-Step 2: At threshold, φ = hf₀.
-Step 3: Different work functions therefore correspond to different threshold frequencies.
-
-Answer: Their work functions differ, so the minimum photon energies required for emission differ.
-
-<h3>Key relationship</h3>
-
-A greater work function corresponds to a greater threshold frequency because φ = hf₀.
-`, [
-  {
-    q: "What is the threshold frequency of a material?",
-    hint: "It is the minimum frequency required for photoelectric emission.",
-    steps: [
-      "Electrons require sufficient energy to escape a material.",
-      "Photon energy depends on frequency.",
-      "The minimum frequency that permits emission is the threshold frequency."
-    ],
-    ans: "The minimum frequency of incident radiation required to cause photoelectric emission",
-    why: "Threshold frequency identifies the lowest incident frequency that can release electrons from a particular material."
-  },
-  {
-    q: "A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. What does this value tell you?",
-    hint: "Interpret threshold frequency as a minimum.",
-    steps: [
-      "Threshold frequency = 4.0 × 10¹⁴ Hz.",
-      "Incident light must reach or exceed this frequency for emission."
-    ],
-    ans: "Light must have a frequency of at least 4.0 × 10¹⁴ Hz to cause photoelectric emission",
-    why: "Light below the threshold frequency cannot supply enough energy per photon for emission."
-  },
-  {
-    q: "Metal A has a greater work function than metal B. Which metal has the greater threshold frequency?",
-    hint: "Use φ = hf₀.",
-    steps: [
-      "φ = hf₀.",
-      "Planck's constant is the same for both metals.",
-      "A greater work function requires a greater threshold frequency."
-    ],
-    ans: "Metal A",
-    why: "Threshold frequency is directly proportional to work function."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 37. PHOTOELECTRIC EMISSION BELOW THRESHOLD FREQUENCY
-// Skill: Predict what happens when incident frequency is below threshold.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Photoelectric Emission Below Threshold Frequency", `
-<h3>Photoelectric Emission Below Threshold Frequency</h3>
-
-When incident light has a frequency below a material's threshold frequency, photoelectric emission does not occur.
-
-The energy of each photon is:
-
-<b>E = hf</b>
-
-Below the threshold frequency:
-
-<b>hf < φ</b>
-
-Where:
-- h = Planck's constant
-- f = incident light frequency
-- φ = work function
-
-Each photon has less energy than the minimum required to release an electron.
-
-Increasing the intensity of the same below-threshold-frequency light does not solve this problem. It increases the number of photons arriving per second, but it does not increase the energy of each photon.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Light of frequency 4.0 × 10¹⁴ Hz shines on it. Will electrons be emitted?</b>
-
-Step 1: Threshold frequency = 6.0 × 10¹⁴ Hz.
-Step 2: Incident frequency = 4.0 × 10¹⁴ Hz.
-Step 3: The incident frequency is below the threshold.
-
-Answer: No photoelectric emission occurs.
-
-<b>Example 2: The intensity of the light in Example 1 is increased substantially, without changing its frequency. Will emission begin?</b>
-
-Step 1: The frequency remains 4.0 × 10¹⁴ Hz.
-Step 2: It remains below the threshold of 6.0 × 10¹⁴ Hz.
-Step 3: Each photon still has insufficient energy.
-
-Answer: No. Increasing intensity alone will not cause emission.
-
-<b>Example 3: A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Which light can cause emission: 3.0 × 10¹⁴ Hz or 7.0 × 10¹⁴ Hz?</b>
-
-Step 1: Compare each frequency with the threshold.
-Step 2: 3.0 × 10¹⁴ Hz is below the threshold.
-Step 3: 7.0 × 10¹⁴ Hz is above the threshold.
-
-Answer: Light of frequency 7.0 × 10¹⁴ Hz can cause photoelectric emission.
-
-<h3>Important exam point</h3>
-
-For a given material, increasing intensity cannot cause photoelectric emission if the frequency remains below the threshold frequency.
-`, [
-  {
-    q: "A metal has a threshold frequency of 7.0 × 10¹⁴ Hz. Light of frequency 5.0 × 10¹⁴ Hz falls on it. Will photoelectric emission occur?",
-    hint: "Compare the incident frequency with the threshold frequency.",
-    steps: [
-      "Threshold frequency = 7.0 × 10¹⁴ Hz.",
-      "Incident frequency = 5.0 × 10¹⁴ Hz.",
-      "The incident frequency is below the threshold."
-    ],
-    ans: "No",
-    why: "The photons have insufficient energy to release electrons from the metal."
-  },
-  {
-    q: "Light below a metal's threshold frequency is made more intense without changing its frequency. Will photoelectric emission begin?",
-    hint: "Ask whether intensity changes the energy of an individual photon.",
-    steps: [
-      "Photon energy is E = hf.",
-      "The frequency has not changed.",
-      "Each photon still has insufficient energy to overcome the work function."
-    ],
-    ans: "No",
-    why: "Increasing intensity increases photon arrival rate, not the energy of each photon."
-  },
-  {
-    q: "A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Which of these frequencies can cause photoelectric emission: 3.0 × 10¹⁴ Hz, 5.0 × 10¹⁴ Hz, or 8.0 × 10¹⁴ Hz?",
-    hint: "Emission can occur at or above the threshold frequency.",
-    steps: [
-      "3.0 × 10¹⁴ Hz is below threshold.",
-      "5.0 × 10¹⁴ Hz equals threshold.",
-      "8.0 × 10¹⁴ Hz is above threshold."
-    ],
-    ans: "5.0 × 10¹⁴ Hz and 8.0 × 10¹⁴ Hz",
-    why: "Photoelectric emission can occur when the incident frequency equals or exceeds the threshold frequency."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 38. FREQUENCY AND INTENSITY OF INCIDENT LIGHT
-// Skill: Distinguish the effects of frequency and intensity.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Frequency and Intensity of Incident Light", `
-<h3>Frequency and Intensity of Incident Light</h3>
-
-Frequency and intensity describe different properties of light.
-
-<b>Frequency</b> determines the energy carried by each photon:
-
-<b>E = hf</b>
-
-<b>Intensity</b> describes the rate at which energy is incident on a unit area. For light of a given frequency, increasing intensity generally means more photons arrive per second per unit area.
-
-In the photoelectric effect, these properties have different effects.
-
-- Increasing frequency increases the energy of each photon.
-- Increasing intensity at a fixed frequency increases the photon arrival rate.
-- If frequency is below threshold, increasing intensity alone does not cause emission.
-- If frequency is above threshold, increasing intensity generally increases the photoelectric current, provided other conditions remain unchanged.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: Light above threshold frequency is made more intense. What happens to the energy of each photon?</b>
-
-Step 1: Photon energy is E = hf.
-Step 2: The frequency remains constant.
-Step 3: The energy of each photon therefore remains constant.
-
-Answer: The energy of each photon does not change.
-
-<b>Example 2: Light above threshold frequency is made more intense. What generally happens to the photoelectric current?</b>
-
-Step 1: The photon energy remains sufficient for emission.
-Step 2: Greater intensity means more photons arrive per second per unit area.
-Step 3: More photoelectrons can be emitted per second.
-
-Answer: The photoelectric current generally increases.
-
-<b>Example 3: Two beams have the same intensity, but beam A has a higher frequency than beam B. Compare the energy of their individual photons.</b>
-
-Step 1: Photon energy is E = hf.
-Step 2: Beam A has the higher frequency.
-Step 3: Its individual photons have greater energy.
-
-Answer: Photons in beam A have greater energy.
-
-<h3>Do not confuse these effects</h3>
-
-Frequency controls energy per photon. Intensity relates to the amount of radiation arriving per unit area per second. In the usual school-level photoelectric model, frequency determines whether the threshold condition is met.
-`, [
-  {
-    q: "Light above the threshold frequency is made more intense while its frequency stays constant. What happens to the energy of each photon?",
-    hint: "Use E = hf.",
-    steps: [
-      "E = hf.",
-      "The frequency f remains constant.",
-      "Planck's constant h also remains constant."
-    ],
-    ans: "It remains unchanged",
-    why: "Photon energy depends on frequency, not intensity."
-  },
-  {
-    q: "For light above the threshold frequency, what generally happens to photoelectric current when the light intensity is increased?",
-    hint: "Consider how many photons arrive each second.",
-    steps: [
-      "Greater intensity means more photons arrive per unit area per second.",
-      "The photon energy remains sufficient for emission.",
-      "More electrons can be emitted per second."
-    ],
-    ans: "The photoelectric current generally increases",
-    why: "Under otherwise unchanged conditions, a greater photon arrival rate produces a greater rate of electron emission."
-  },
-  {
-    q: "Two light beams have the same intensity, but beam A has twice the frequency of beam B. How do their individual photon energies compare?",
-    hint: "Compare their frequencies using E = hf.",
-    steps: [
-      "E = hf.",
-      "The frequency of A is twice that of B.",
-      "The energy of each photon in A is twice that of each photon in B."
-    ],
-    ans: "Each photon in beam A has twice the energy of each photon in beam B",
-    why: "Photon energy is directly proportional to frequency, regardless of the beams having equal intensity."
-  }
-]);
-add("physics", "photoelectric_emission", "Einstein's Photoelectric Equation", `
-<h3>Einstein's Photoelectric Equation</h3>
-
-When a photon strikes a suitable material, it can transfer its energy to an electron.
-
-Part of this energy is used to release the electron from the material. Any remaining energy becomes the kinetic energy of the emitted electron.
-
-The energy balance is:
-
-<b>hf = φ + KEmax</b>
-
-Rearranging:
-
-<b>KEmax = hf − φ</b>
-
-Where:
-- h = Planck's constant = 6.63 × 10⁻³⁴ J s
-- f = frequency of incident light in Hz
-- φ = work function of the material in J
-- KEmax = maximum kinetic energy of emitted electrons in J
-
-The equation applies when photoelectric emission occurs.
-
-If the photon energy is exactly equal to the work function, the maximum kinetic energy is zero in the ideal model.
-
-If the photon energy exceeds the work function, the excess energy becomes kinetic energy.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: State Einstein's photoelectric equation.</b>
-
-Step 1: The incident photon supplies energy hf.
-Step 2: Energy is used to overcome the work function φ.
-Step 3: The remaining energy becomes maximum kinetic energy.
-
-Answer: hf = φ + KEmax.
-
-<b>Example 2: A photon has energy 5.0 eV and the work function is 2.0 eV. Explain how the energy is distributed.</b>
-
-Step 1: Energy supplied = 5.0 eV.
-Step 2: Energy used to release the electron = 2.0 eV.
-Step 3: Remaining energy = 5.0 − 2.0 = 3.0 eV.
-
-Answer: 2.0 eV overcomes the work function, and the maximum kinetic energy is 3.0 eV.
-
-<b>Example 3: A photon has energy equal to the work function. What is the maximum kinetic energy?</b>
-
-Step 1: KEmax = E − φ.
-Step 2: E = φ.
-Step 3: KEmax = φ − φ = 0.
-
-Answer: 0 J in the ideal limiting case.
-
-<h3>Important</h3>
-
-Use consistent units. If photon energy and work function are in eV, kinetic energy will be in eV. If they are in joules, kinetic energy will be in joules.
-`, [
-  {
-    q: "State Einstein's photoelectric equation.",
-    hint: "Equate the energy supplied by a photon to the energy used for emission and the remaining kinetic energy.",
-    steps: [
-      "Photon energy = hf.",
-      "Energy is used to overcome the work function φ.",
-      "The remaining energy is KEmax.",
-      "Therefore, hf = φ + KEmax."
-    ],
-    ans: "hf = φ + KEmax",
-    why: "The equation expresses conservation of energy during photoelectric emission."
-  },
-  {
-    q: "A photon has energy 6.0 eV and the material has a work function of 2.5 eV. How much energy remains as the maximum kinetic energy of the emitted electron?",
-    hint: "Subtract the work function from the photon energy.",
-    steps: [
-      "KEmax = E − φ",
-      "KEmax = 6.0 − 2.5",
-      "KEmax = 3.5 eV"
-    ],
-    ans: "3.5 eV",
-    why: "The work function accounts for the minimum energy needed to release the electron; the excess becomes kinetic energy."
-  },
-  {
-    q: "At the threshold frequency, the photon energy equals the work function. What is the maximum kinetic energy of the emitted electron?",
-    hint: "Use KEmax = hf − φ.",
-    steps: [
-      "KEmax = hf − φ",
-      "At threshold, hf = φ.",
-      "KEmax = φ − φ = 0."
-    ],
-    ans: "0 J",
-    why: "At threshold, no energy remains for kinetic energy in the ideal model."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 40. CALCULATING MAXIMUM KINETIC ENERGY
-// Skill: Calculate maximum kinetic energy using photon energy and work function.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Calculating Maximum Kinetic Energy", `
-<h3>Calculating Maximum Kinetic Energy</h3>
-
-The maximum kinetic energy of an emitted photoelectron is calculated using:
-
-<b>KEmax = hf − φ</b>
-
-Alternatively, if photon energy E is already known:
-
-<b>KEmax = E − φ</b>
-
-Where:
-- KEmax = maximum kinetic energy of the emitted electron
-- E = energy of one incident photon
-- φ = work function
-
-Subtract the work function from the photon energy.
-
-The photon energy must be at least equal to the work function for emission to occur.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: A photon has energy 4.5 eV and the work function is 2.0 eV. Calculate the maximum kinetic energy.</b>
-
-Step 1:
-KEmax = E − φ
-
-Step 2:
-KEmax = 4.5 − 2.0
-
-Step 3:
-KEmax = 2.5 eV
-
-Answer: 2.5 eV.
-
-<b>Example 2: A photon has energy 8.0 × 10⁻¹⁹ J and the work function is 3.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy.</b>
-
-Step 1:
-KEmax = E − φ
-
-Step 2:
-KEmax = 8.0 × 10⁻¹⁹ − 3.0 × 10⁻¹⁹
-
-Step 3:
-KEmax = 5.0 × 10⁻¹⁹ J
-
-Answer: 5.0 × 10⁻¹⁹ J.
-
-<b>Example 3: Light of frequency 8.0 × 10¹⁴ Hz falls on a material with a work function of 3.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy. Take h = 6.63 × 10⁻³⁴ J s.</b>
-
-Step 1:
-KEmax = hf − φ
-
-Step 2:
-KEmax = (6.63 × 10⁻³⁴)(8.0 × 10¹⁴) − 3.0 × 10⁻¹⁹
-
-Step 3:
-KEmax = 5.304 × 10⁻¹⁹ − 3.0 × 10⁻¹⁹
-
-Step 4:
-KEmax = 2.304 × 10⁻¹⁹ J
-
-Answer: 2.30 × 10⁻¹⁹ J.
-
-<h3>Calculation check</h3>
-
-If your calculated kinetic energy is negative, the photon energy is below the work function. In that case, photoelectric emission does not occur; do not report a negative kinetic energy for an emitted electron.
-`, [
-  {
-    q: "A photon has energy 5.5 eV and the work function is 2.5 eV. Calculate the maximum kinetic energy of the emitted electron.",
-    hint: "Use KEmax = E − φ.",
-    steps: [
-      "KEmax = E − φ",
-      "KEmax = 5.5 − 2.5",
-      "KEmax = 3.0 eV"
-    ],
-    ans: "3.0 eV",
-    why: "The maximum kinetic energy is the photon energy remaining after overcoming the work function."
-  },
-  {
-    q: "A photon has energy 7.2 × 10⁻¹⁹ J and a material has a work function of 2.8 × 10⁻¹⁹ J. Calculate the maximum kinetic energy.",
-    hint: "Subtract the work function from the photon energy, keeping the powers of ten consistent.",
-    steps: [
-      "KEmax = E − φ",
-      "KEmax = 7.2 × 10⁻¹⁹ − 2.8 × 10⁻¹⁹",
-      "KEmax = 4.4 × 10⁻¹⁹ J"
-    ],
-    ans: "4.4 × 10⁻¹⁹ J",
-    why: "Subtracting the work function from photon energy gives the maximum kinetic energy."
-  },
-  {
-    q: "Light has a frequency of 9.0 × 10¹⁴ Hz and falls on a metal with a work function of 4.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "First calculate photon energy using E = hf, then subtract the work function.",
-    steps: [
-      "E = hf",
-      "E = (6.63 × 10⁻³⁴)(9.0 × 10¹⁴)",
-      "E = 5.967 × 10⁻¹⁹ J",
-      "KEmax = E − φ",
-      "KEmax = 5.967 × 10⁻¹⁹ − 4.0 × 10⁻¹⁹",
-      "KEmax = 1.967 × 10⁻¹⁹ J",
-      "KEmax ≈ 1.97 × 10⁻¹⁹ J"
-    ],
-    ans: "1.97 × 10⁻¹⁹ J",
-    why: "Photon energy is calculated first, and the work function is then subtracted to obtain the maximum kinetic energy."
-  }
-]);
-
-
-// ------------------------------------------------------------
-// 41. CALCULATING PHOTON FREQUENCY FROM MAXIMUM KINETIC ENERGY
-// Skill: Calculate incident frequency from kinetic energy and work function.
-// ------------------------------------------------------------
-
-add("physics", "photoelectric_emission", "Photon Frequency from Maximum Kinetic Energy", `
-<h3>Photon Frequency from Maximum Kinetic Energy</h3>
-
-Einstein's photoelectric equation is:
-
-<b>hf = φ + KEmax</b>
-
-To calculate the incident frequency, rearrange:
-
-<b>f = (φ + KEmax)/h</b>
-
-Where:
-- f = incident frequency in Hz
-- φ = work function in J
-- KEmax = maximum kinetic energy in J
-- h = Planck's constant = 6.63 × 10⁻³⁴ J s
-
-Before substituting, make sure the work function and kinetic energy use the same energy unit.
-
-If the values are given in eV, convert their sum to joules before dividing by h.
-
-<h3>Worked Examples</h3>
-
-<b>Example 1: A metal has a work function of 2.0 × 10⁻¹⁹ J. The emitted electrons have maximum kinetic energy 1.315 × 10⁻¹⁹ J. Calculate the incident frequency.</b>
-
-Step 1:
-f = (φ + KEmax)/h
-
-Step 2:
-f = [(2.0 × 10⁻¹⁹) + (1.315 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)
-
-Step 3:
-f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
-
-Step 4:
-f = 5.0 × 10¹⁴ Hz
-
-Answer: 5.0 × 10¹⁴ Hz.
-
-<b>Example 2: A material has a work function of 3.0 × 10⁻¹⁹ J and the maximum kinetic energy is 2.304 × 10⁻¹⁹ J. Calculate the incident frequency.</b>
-
-f = (φ + KEmax)/h
-
-f = [(3.0 × 10⁻¹⁹) + (2.304 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)
-
-f = (5.304 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
-
-f = 8.0 × 10¹⁴ Hz
-
-Answer: 8.0 × 10¹⁴ Hz.
-
-<b>Example 3: A metal has a work function of 2.5 eV and the maximum kinetic energy of emitted electrons is 1.5 eV. Calculate the incident frequency. Take 1 eV = 1.6 × 10⁻¹⁹ J and h = 6.63 × 10⁻³⁴ J s.</b>
-
-Step 1: Add the energies.
-E = 2.5 + 1.5 = 4.0 eV.
-
-Step 2: Convert to joules.
-E = 4.0 × 1.6 × 10⁻¹⁹
-E = 6.4 × 10⁻¹⁹ J.
-
-Step 3: Calculate frequency.
-f = E/h
-f = (6.4 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
-f ≈ 9.65 × 10¹⁴ Hz.
-
-Answer: 9.65 × 10¹⁴ Hz.
-`, [
-  {
-    q: "A metal has a work function of 2.0 × 10⁻¹⁹ J. Its emitted electrons have maximum kinetic energy 1.315 × 10⁻¹⁹ J. Calculate the incident frequency. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Use f = (φ + KEmax)/h.",
-    steps: [
-      "f = (φ + KEmax)/h",
-      "f = [(2.0 × 10⁻¹⁹) + (1.315 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)",
-      "f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f = 5.0 × 10¹⁴ Hz"
-    ],
-    ans: "5.0 × 10¹⁴ Hz",
-    why: "The photon energy is the sum of the work function and the maximum kinetic energy."
-  },
-  {
-    q: "A metal has a work function of 3.0 × 10⁻¹⁹ J. The maximum kinetic energy of its photoelectrons is 1.967 × 10⁻¹⁹ J. Calculate the incident frequency. Take h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Add the work function and kinetic energy before dividing by Planck's constant.",
-    steps: [
-      "f = (φ + KEmax)/h",
-      "f = [(3.0 × 10⁻¹⁹) + (1.967 × 10⁻¹⁹)]/(6.63 × 10⁻³⁴)",
-      "f = (4.967 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f ≈ 7.49 × 10¹⁴ Hz"
-    ],
-    ans: "7.49 × 10¹⁴ Hz",
-    why: "Adding the work function and maximum kinetic energy gives the energy of the incident photon."
-  },
-  {
-    q: "A material has a work function of 2.5 eV and its photoelectrons have maximum kinetic energy 1.5 eV. Calculate the incident frequency. Take 1 eV = 1.6 × 10⁻¹⁹ J and h = 6.63 × 10⁻³⁴ J s.",
-    hint: "Add the energies in eV, convert the total to joules, then use f = E/h.",
-    steps: [
-      "Photon energy = φ + KEmax = 2.5 + 1.5 = 4.0 eV",
-      "Photon energy = 4.0 × 1.6 × 10⁻¹⁹ = 6.4 × 10⁻¹⁹ J",
-      "f = E/h",
-      "f = (6.4 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)",
-      "f ≈ 9.65 × 10¹⁴ Hz"
-    ],
-    ans: "9.65 × 10¹⁴ Hz",
-    why: "The incident photon energy equals the work function plus the maximum kinetic energy."
-  }
-]);
-add("physics", "photoelectric_emission", "Meaning of Stopping Potential", {
-  notes: `
-Stopping potential is the minimum reverse potential difference applied across a photoelectric cell that prevents even the fastest emitted photoelectrons from reaching the collector.
-
-When light of sufficient frequency strikes a photosensitive metal, electrons are emitted with different kinetic energies.
-
-A reverse potential difference opposes the motion of these electrons.
-
-As the reverse potential increases, fewer emitted electrons reach the collector. At the stopping potential, even the fastest photoelectrons are prevented from reaching it.
-
-The stopping potential is represented by Vs and is measured in volts (V).
-
-Important:
-- Stopping potential is a reverse potential difference.
-- It opposes the motion of emitted photoelectrons.
-- It depends on the maximum kinetic energy of the emitted electrons.
-- It does not mean that photoelectrons stop being emitted from the metal.
-
-WORKED EXAMPLE 1
-
-Question:
-What is stopping potential in a photoelectric cell?
-
-Solution:
-Stopping potential is the minimum reverse potential difference needed to stop the fastest photoelectrons from reaching the collector.
-
-WORKED EXAMPLE 2
-
-Question:
-What happens to the photocurrent when the reverse potential is increased until it reaches the stopping potential?
-
-Solution:
-1. The reverse potential opposes the emitted electrons.
-2. Increasing it prevents more electrons from reaching the collector.
-3. At the stopping potential, no photoelectrons reach the collector.
-4. The photocurrent becomes zero.
-
-WORKED EXAMPLE 3
-
-Question:
-Does applying the stopping potential mean that the metal stops emitting photoelectrons?
-
-Solution:
-No.
-
-1. Incident light can still eject electrons if its frequency is sufficient.
-2. The reverse potential prevents those electrons from reaching the collector.
-3. Therefore, the photocurrent becomes zero even though emission may continue.
-`,
-  questions: [
+  <p>Use <b>f = E/h</b> when photon energy is given. Divide the numerical coefficients, subtract the exponents, normalize the result, and give the answer in hertz.</p>
+  `,
+  [
     {
-      q: "What is stopping potential in a photoelectric cell?",
-      hint: "Think about the reverse potential needed to prevent the fastest electrons from reaching the collector.",
+      q: "A photon has energy 6.63 × 10⁻¹⁹ J. Calculate its frequency. Take h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use f = E/h and subtract the exponents.",
       steps: [
-        "A reverse potential opposes the motion of emitted photoelectrons.",
-        "The stopping potential is the minimum reverse potential that stops even the fastest photoelectrons from reaching the collector."
+        "f = E/h.",
+        "f = (6.63 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "6.63/6.63 = 1.",
+        "10⁻¹⁹/10⁻³⁴ = 10¹⁵.",
+        "f = 1.0 × 10¹⁵ Hz."
       ],
-      ans: "The minimum reverse potential difference that stops the fastest photoelectrons from reaching the collector.",
-      why: "Stopping potential prevents photoelectrons from reaching the collector; it does not necessarily stop their emission."
+      ans: "1.0 × 10¹⁵ Hz",
+      why: "The coefficients cancel to 1, and subtracting −34 from −19 gives an exponent of 15."
     },
     {
-      q: "What happens to the photocurrent when the stopping potential is reached?",
-      hint: "Consider whether any emitted electrons can still reach the collector.",
+      q: "A photon has energy 2.652 × 10⁻¹⁹ J. Calculate its frequency using h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Divide the coefficients first, then calculate the power of ten.",
       steps: [
-        "The reverse potential opposes the motion of the photoelectrons.",
-        "At the stopping potential, no photoelectrons reach the collector.",
-        "No photoelectrons reach the collector to produce photocurrent."
+        "f = E/h.",
+        "f = (2.652 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "2.652/6.63 = 0.4.",
+        "10⁻¹⁹/10⁻³⁴ = 10¹⁵.",
+        "f = 0.4 × 10¹⁵ Hz = 4.0 × 10¹⁴ Hz."
       ],
-      ans: "The photocurrent becomes zero.",
-      why: "The stopping potential prevents emitted photoelectrons from reaching the collector."
+      ans: "4.0 × 10¹⁴ Hz",
+      why: "The intermediate coefficient 0.4 is converted to 4.0 by moving the decimal one place right and reducing the exponent by one."
     },
     {
-      q: "A photoelectric cell is producing photoelectrons. A reverse potential is applied until the photocurrent becomes zero. What is this potential called?",
-      hint: "It is the potential that stops even the fastest photoelectrons from reaching the collector.",
+      q: "A photon has energy 4.641 × 10⁻¹⁹ J. Calculate its frequency. Take h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use f = E/h and check the exponent subtraction carefully.",
       steps: [
-        "Identify the reverse potential applied to the cell.",
-        "The photocurrent becomes zero when the fastest photoelectrons can no longer reach the collector.",
-        "This limiting reverse potential is the stopping potential."
+        "f = E/h.",
+        "f = (4.641 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "4.641/6.63 = 0.7.",
+        "10⁻¹⁹/10⁻³⁴ = 10¹⁵.",
+        "f = 0.7 × 10¹⁵ Hz = 7.0 × 10¹⁴ Hz."
       ],
-      ans: "Stopping potential.",
-      why: "Stopping potential is defined by the point at which the photocurrent becomes zero."
+      ans: "7.0 × 10¹⁴ Hz",
+      why: "Dividing photon energy by Planck's constant gives the frequency, and the final answer must be in standard scientific notation."
+    },
+    {
+      q: "A photon has energy 9.945 × 10⁻¹⁹ J. Calculate its frequency using h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Divide 9.945 by 6.63, then subtract the exponents.",
+      steps: [
+        "f = E/h.",
+        "f = (9.945 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "9.945/6.63 = 1.5.",
+        "10⁻¹⁹/10⁻³⁴ = 10¹⁵.",
+        "f = 1.5 × 10¹⁵ Hz."
+      ],
+      ans: "1.5 × 10¹⁵ Hz",
+      why: "The coefficient is already in standard scientific notation, so no further normalization is needed."
+    },
+    {
+      q: "A learner calculates f = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴) and obtains 5.0 × 10⁻¹⁵ Hz. Identify the error and calculate the correct frequency.",
+      hint: "Check the exponent rule for division: subtract the denominator's exponent from the numerator's exponent.",
+      steps: [
+        "Use f = E/h.",
+        "Divide the coefficients: 3.315/6.63 = 0.5.",
+        "Subtract the exponents: −19 − (−34) = −19 + 34 = 15.",
+        "Therefore f = 0.5 × 10¹⁵ Hz.",
+        "Normalize: f = 5.0 × 10¹⁴ Hz."
+      ],
+      ans: "5.0 × 10¹⁴ Hz. The learner used the exponent sign incorrectly.",
+      why: "Dividing by 10⁻³⁴ is equivalent to multiplying by 10³⁴, so the resulting exponent is positive 15 before normalization."
     }
   ]
-});
+);
+// ============================================================
+// PHOTOELECTRIC EMISSION — BATCH 3
+// Screens 8–10
+// ============================================================
+// ------------------------------------------------------------
+// 8. MEANING OF WORK FUNCTION
+// ------------------------------------------------------------
 
-add("physics", "photoelectric_emission", "Stopping Potential and Maximum Kinetic Energy", {
-  notes: `
-The stopping potential is directly related to the maximum kinetic energy of emitted photoelectrons.
+add(
+  "physics",
+  "photoelectric_emission",
+  "Meaning of Work Function",
 
-The electric field does work against a photoelectron as it moves towards the collector. At the stopping potential, the electric work needed to stop the fastest photoelectrons equals their initial maximum kinetic energy.
+  `
+  <h2>Meaning of Work Function</h2>
 
-The relationship is:
+  <h3>1. Definition</h3>
 
-eVs = KEmax
+  <p>
+    The <strong>work function</strong> of a metal is the minimum energy
+    required to remove an electron from the surface of the metal.
+  </p>
 
-Where:
-e = magnitude of the charge of an electron = 1.6 × 10^-19 C
-Vs = stopping potential in volts
-KEmax = maximum kinetic energy in joules
+  <p>
+    Electrons inside a metal are held by attractive forces. An electron
+    cannot escape from the metal unless it receives enough energy to
+    overcome these forces.
+  </p>
 
-Rearranging:
+  <p>
+    The work function is represented by the Greek letter
+    <strong>φ (phi)</strong>.
+  </p>
 
-Vs = KEmax / e
+  <p>
+    Its SI unit is the joule (J). It is also commonly expressed in
+    electronvolts (eV).
+  </p>
 
-This means that a greater maximum kinetic energy requires a greater stopping potential.
+  <h3>2. Why a work function is necessary</h3>
 
-IMPORTANT UNIT RULE
+  <p>
+    An electron inside a metal cannot escape with zero supplied energy.
+    It must receive at least the minimum energy needed to overcome the
+    metal's surface binding.
+  </p>
 
-If KEmax is given in joules, divide by the electron charge in coulombs to obtain stopping potential in volts.
+  <ul>
+    <li>If supplied energy is less than φ, the electron cannot escape.</li>
+    <li>If supplied energy equals φ, the electron just escapes with zero
+    maximum kinetic energy.</li>
+    <li>If supplied energy exceeds φ, the excess energy can become the
+    electron's kinetic energy.</li>
+  </ul>
 
-If KEmax is given in electron-volts (eV), its numerical value equals the stopping potential in volts.
+  <h3>3. Work function and photon energy</h3>
 
-For example:
-KEmax = 2.5 eV
-Therefore, Vs = 2.5 V
+  <p>
+    In photoelectric emission, light transfers energy to electrons in
+    discrete packets called photons. The energy of one photon is
+    determined by its frequency.
+  </p>
 
-WORKED EXAMPLE 1
+  <p>
+    For a photon to cause emission, its energy must be at least equal
+    to the work function:
+  </p>
 
-Question:
-The maximum kinetic energy of photoelectrons is 3.0 eV. Find the stopping potential.
+  <p><strong>E ≥ φ</strong></p>
 
-Solution:
-For kinetic energy expressed in eV, the numerical value equals the stopping potential in volts.
+  <p>
+    If E is smaller than φ, increasing the intensity of the same
+    frequency light does not make an individual photon energetic enough
+    to release an electron.
+  </p>
 
-Vs = 3.0 V
+  <h3>4. Work function is a property of the material</h3>
 
-Answer: 3.0 V
+  <p>
+    Different metals generally have different work functions because
+    their electrons are bound differently. Therefore, light of a
+    particular frequency may release electrons from one metal but fail
+    to release electrons from another.
+  </p>
 
-WORKED EXAMPLE 2
+  <p>
+    The work function is not the kinetic energy of the emitted electron.
+    It is the minimum energy needed for the electron to escape.
+  </p>
 
-Question:
-The maximum kinetic energy of photoelectrons is 4.8 × 10^-19 J. Calculate the stopping potential.
+  <h3>5. Worked examples</h3>
 
-Solution:
-Given:
-KEmax = 4.8 × 10^-19 J
-e = 1.6 × 10^-19 C
+  <p><strong>Example 1: Identifying the work function</strong></p>
 
-Formula:
-Vs = KEmax / e
+  <p>
+    A metal requires a minimum energy of 3.2 × 10⁻¹⁹ J to release an
+    electron. State its work function.
+  </p>
 
-Substitute:
-Vs = (4.8 × 10^-19) / (1.6 × 10^-19)
+  <p><strong>Step 1:</strong> Identify the minimum escape energy.</p>
+  <p>φ = 3.2 × 10⁻¹⁹ J</p>
 
-Vs = 3.0 V
+  <p><strong>Answer:</strong> 3.2 × 10⁻¹⁹ J.</p>
 
-Answer: 3.0 V
+  <p><strong>Example 2: Converting electronvolts to joules</strong></p>
 
-WORKED EXAMPLE 3
+  <p>
+    A metal has a work function of 2.0 eV. Convert it to joules.
+    Use 1 eV = 1.60 × 10⁻¹⁹ J.
+  </p>
 
-Question:
-Photoelectrons from metal A have maximum kinetic energy of 2 eV, while those from metal B have maximum kinetic energy of 5 eV. Which metal requires the greater stopping potential, assuming the stated kinetic energies apply?
+  <p><strong>Step 1:</strong> Write the conversion factor.</p>
+  <p>1 eV = 1.60 × 10⁻¹⁹ J</p>
 
-Solution:
-For metal A:
-Vs = 2 V
+  <p><strong>Step 2:</strong> Multiply by 2.0.</p>
+  <p>
+    φ = 2.0 × 1.60 × 10⁻¹⁹
+  </p>
 
-For metal B:
-Vs = 5 V
+  <p><strong>Step 3:</strong> Calculate.</p>
+  <p>φ = 3.20 × 10⁻¹⁹ J</p>
 
-Since 5 V is greater than 2 V, metal B requires the greater stopping potential.
+  <p><strong>Answer:</strong> 3.20 × 10⁻¹⁹ J.</p>
 
-Answer: Metal B.
-`,
-  questions: [
+  <p><strong>Example 3: Deciding whether emission is possible</strong></p>
+
+  <p>
+    A metal has a work function of 4.0 × 10⁻¹⁹ J. A photon transfers
+    3.0 × 10⁻¹⁹ J to an electron. Can the electron escape?
+  </p>
+
+  <p><strong>Step 1:</strong> Identify the values.</p>
+  <p>E = 3.0 × 10⁻¹⁹ J; φ = 4.0 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 2:</strong> Compare photon energy with work function.</p>
+  <p>E &lt; φ</p>
+
+  <p><strong>Step 3:</strong> Apply the emission condition.</p>
+  <p>
+    The photon does not provide the minimum energy required for escape.
+  </p>
+
+  <p><strong>Answer:</strong> No photoelectric emission occurs.</p>
+  `,
+
+  [
     {
-      q: "The maximum kinetic energy of photoelectrons is 2.4 eV. Calculate the stopping potential.",
-      hint: "When kinetic energy is expressed in eV, its numerical value equals the stopping potential in volts.",
+      q: "Define the work function of a metal.",
+      hint: "Think about the minimum energy needed for an electron to leave the metal.",
       steps: [
-        "Given: KEmax = 2.4 eV.",
-        "For kinetic energy in eV, Vs has the same numerical value.",
-        "Therefore, Vs = 2.4 V."
+        "Identify the process: removing an electron from a metal surface.",
+        "State that the energy is the minimum required for escape."
       ],
-      ans: "2.4 V",
-      why: "The energy gained or lost by an electron moving through a potential difference of 1 V is 1 eV."
+      ans: "The work function is the minimum energy required to remove an electron from the surface of a metal.",
+      why: "An electron must overcome the binding at the metal surface before it can escape."
     },
     {
-      q: "The maximum kinetic energy of photoelectrons is 8.0 × 10^-19 J. Calculate the stopping potential. Take the electron charge as 1.6 × 10^-19 C.",
-      hint: "Use Vs = KEmax / e.",
+      q: "A metal has a work function of 2.5 eV. Convert this value into joules. Use 1 eV = 1.60 × 10⁻¹⁹ J.",
+      hint: "Multiply the work function in eV by 1.60 × 10⁻¹⁹ J/eV.",
       steps: [
-        "Given: KEmax = 8.0 × 10^-19 J and e = 1.6 × 10^-19 C.",
-        "Use Vs = KEmax / e.",
-        "Vs = (8.0 × 10^-19) / (1.6 × 10^-19).",
-        "Vs = 5.0 V."
+        "Write the conversion factor: 1 eV = 1.60 × 10⁻¹⁹ J.",
+        "Calculate φ = 2.5 × 1.60 × 10⁻¹⁹.",
+        "Multiply 2.5 by 1.60 to obtain 4.0."
       ],
-      ans: "5.0 V",
-      why: "Dividing the maximum kinetic energy in joules by the electron charge in coulombs gives the stopping potential in volts."
+      ans: "4.0 × 10⁻¹⁹ J",
+      why: "Electronvolts are converted to joules by multiplying by the energy equivalent of one electronvolt."
     },
     {
-      q: "Photoelectrons from metal A have maximum kinetic energy of 1.5 eV. Those from metal B have maximum kinetic energy of 3.5 eV. Which requires the greater stopping potential, and what is its value?",
-      hint: "Compare the kinetic energies in eV with their corresponding stopping potentials.",
+      q: "A metal has a work function of 3.6 × 10⁻¹⁹ J. A photon has energy 2.8 × 10⁻¹⁹ J. Explain whether the photon can cause photoelectric emission.",
+      hint: "Compare the photon energy directly with the work function.",
       steps: [
-        "Metal A: Vs = 1.5 V.",
-        "Metal B: Vs = 3.5 V.",
-        "Since 3.5 V is greater than 1.5 V, metal B requires the greater stopping potential."
+        "Write E = 2.8 × 10⁻¹⁹ J.",
+        "Write φ = 3.6 × 10⁻¹⁹ J.",
+        "Compare the values: E < φ.",
+        "Apply the condition that the photon must supply at least the work function."
       ],
-      ans: "Metal B; 3.5 V.",
-      why: "Stopping potential is directly proportional to the maximum kinetic energy of the photoelectrons."
+      ans: "No. The photon energy is less than the work function, so the electron cannot escape.",
+      why: "The energy supplied by an individual photon is insufficient to overcome the metal's surface binding."
+    },
+    {
+      q: "Two metals have work functions of 2.0 eV and 4.5 eV. Which metal requires less energy to release an electron, and by how much?",
+      hint: "Compare the work functions and subtract the smaller from the larger.",
+      steps: [
+        "Identify the work functions: 2.0 eV and 4.5 eV.",
+        "The smaller work function belongs to the first metal.",
+        "Calculate the difference: 4.5 − 2.0 = 2.5 eV."
+      ],
+      ans: "The metal with a work function of 2.0 eV requires less energy, by 2.5 eV.",
+      why: "A smaller work function means less energy is required to remove an electron from the metal surface."
+    },
+    {
+      q: "A photon has exactly the same energy as the work function of a metal. What is the maximum kinetic energy of the emitted electron?",
+      hint: "Use the energy balance when all photon energy is needed for escape.",
+      steps: [
+        "Write Einstein's energy balance: E = φ + Kmax.",
+        "Since E = φ, substitute to obtain φ = φ + Kmax.",
+        "Subtract φ from both sides."
+      ],
+      ans: "Kmax = 0 J.",
+      why: "The photon provides just enough energy for the electron to escape, leaving no excess energy for maximum kinetic energy."
     }
   ]
-});
+);
 
 
 // ------------------------------------------------------------
-// SCREEN 44: CALCULATING MAXIMUM KINETIC ENERGY FROM
-// STOPPING POTENTIAL
-// One concept: Finding electron energy from measured voltage
+// 9. PHOTON ENERGY AND THE WORK FUNCTION
 // ------------------------------------------------------------
 
-add("physics", "photoelectric_emission", "Maximum Kinetic Energy from Stopping Potential", {
-  notes: `
-When the stopping potential is known, the maximum kinetic energy of emitted photoelectrons can be calculated.
+add(
+  "physics",
+  "photoelectric_emission",
+  "Photon Energy and the Work Function",
 
-The relationship is:
+  `
+  <h2>Photon Energy and the Work Function</h2>
 
-KEmax = eVs
+  <h3>1. The energy condition for emission</h3>
 
-Where:
-KEmax = maximum kinetic energy in joules
-e = 1.6 × 10^-19 C
-Vs = stopping potential in volts
+  <p>
+    A photon transfers its energy to an electron in a metal. Some of
+    this energy is needed for the electron to escape from the metal.
+    Any energy remaining after escape becomes the electron's kinetic
+    energy.
+  </p>
 
-If the answer is required in electron-volts:
+  <p>
+    The relationship is expressed by Einstein's photoelectric energy
+    balance:
+  </p>
 
-KEmax (eV) = Vs (V), numerically.
+  <p><strong>E = φ + Kmax</strong></p>
 
-This calculation is useful when a stopping potential is measured experimentally and the maximum kinetic energy must be determined.
+  <p>Where:</p>
+  <ul>
+    <li><strong>E</strong> is the energy of the incident photon.</li>
+    <li><strong>φ</strong> is the work function of the metal.</li>
+    <li><strong>Kmax</strong> is the maximum kinetic energy of an emitted
+    electron.</li>
+  </ul>
 
-WORKED EXAMPLE 1
+  <h3>2. Three possible cases</h3>
 
-Question:
-A photoelectric cell has a stopping potential of 2.0 V. Calculate the maximum kinetic energy of the photoelectrons in joules.
+  <p><strong>Case 1: E &lt; φ</strong></p>
+  <p>
+    The photon does not provide enough energy to release an electron.
+    Photoelectric emission does not occur.
+  </p>
 
-Solution:
-Given:
-Vs = 2.0 V
-e = 1.6 × 10^-19 C
+  <p><strong>Case 2: E = φ</strong></p>
+  <p>
+    The electron just escapes. Its maximum kinetic energy is zero.
+  </p>
 
-Formula:
-KEmax = eVs
+  <p><strong>Case 3: E &gt; φ</strong></p>
+  <p>
+    The electron escapes with kinetic energy equal to the excess photon
+    energy:
+  </p>
 
-Substitute:
-KEmax = (1.6 × 10^-19)(2.0)
+  <p><strong>Kmax = E − φ</strong></p>
 
-KEmax = 3.2 × 10^-19 J
+  <h3>3. Calculating the excess energy</h3>
 
-Answer: 3.2 × 10^-19 J
+  <p>
+    Always express the photon energy and work function in the same
+    units before subtracting. If both are in joules, the answer will
+    be in joules. If both are in electronvolts, the answer will be in
+    electronvolts.
+  </p>
 
-WORKED EXAMPLE 2
+  <p>
+    Do not subtract a value in eV directly from a value in joules.
+    Convert one quantity first.
+  </p>
 
-Question:
-The stopping potential of a photoelectric cell is 4.5 V. Find the maximum kinetic energy in electron-volts and joules.
+  <h3>4. Why emitted electrons have different kinetic energies</h3>
 
-Solution:
+  <p>
+    The equation gives the <strong>maximum</strong> kinetic energy.
+    Electrons within a metal may lose different amounts of energy
+    before escaping. Consequently, not every emitted electron
+    necessarily leaves with the maximum kinetic energy.
+  </p>
 
-In electron-volts:
-KEmax = 4.5 eV
+  <h3>5. Worked examples</h3>
 
-In joules:
-KEmax = eVs
-KEmax = (1.6 × 10^-19)(4.5)
-KEmax = 7.2 × 10^-19 J
+  <p><strong>Example 1: Finding maximum kinetic energy</strong></p>
 
-Answer:
-4.5 eV or 7.2 × 10^-19 J
+  <p>
+    A photon has energy 7.0 × 10⁻¹⁹ J. The metal's work function is
+    3.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy.
+  </p>
 
-WORKED EXAMPLE 3
+  <p><strong>Step 1:</strong> Write the energy balance.</p>
+  <p>E = φ + Kmax</p>
 
-Question:
-The stopping potential of a photoelectric cell increases from 1.0 V to 3.0 V. Calculate the increase in maximum kinetic energy in joules.
+  <p><strong>Step 2:</strong> Rearrange.</p>
+  <p>Kmax = E − φ</p>
 
-Solution:
-Initial stopping potential = 1.0 V
-Final stopping potential = 3.0 V
+  <p><strong>Step 3:</strong> Substitute.</p>
+  <p>
+    Kmax = (7.0 − 3.0) × 10⁻¹⁹ J
+  </p>
 
-Increase in stopping potential:
-ΔVs = 3.0 − 1.0
-ΔVs = 2.0 V
+  <p><strong>Answer:</strong> Kmax = 4.0 × 10⁻¹⁹ J.</p>
 
-Increase in maximum kinetic energy:
-ΔKEmax = eΔVs
+  <p><strong>Example 2: Comparing photon energy with work function</strong></p>
 
-ΔKEmax = (1.6 × 10^-19)(2.0)
+  <p>
+    A photon has energy 2.4 eV and the work function is 2.4 eV.
+    Determine whether emission occurs and calculate the maximum
+    kinetic energy.
+  </p>
 
-ΔKEmax = 3.2 × 10^-19 J
+  <p><strong>Step 1:</strong> Compare the energies.</p>
+  <p>E = φ = 2.4 eV</p>
 
-Answer: 3.2 × 10^-19 J
+  <p><strong>Step 2:</strong> Use Kmax = E − φ.</p>
+  <p>Kmax = 2.4 − 2.4 = 0 eV</p>
 
-CHECK YOUR UNITS
+  <p><strong>Answer:</strong> The electron just escapes with zero
+  maximum kinetic energy.</p>
 
-- Volts × coulombs = joules.
-- An energy in joules must include the appropriate power of ten.
-- An energy in eV is not the same unit as an energy in joules.
-`,
-  questions: [
+  <p><strong>Example 3: Determining whether emission occurs</strong></p>
+
+  <p>
+    A photon has energy 3.1 eV and the work function of a metal is
+    4.2 eV. Determine whether an electron can be emitted.
+  </p>
+
+  <p><strong>Step 1:</strong> Compare the values.</p>
+  <p>3.1 eV &lt; 4.2 eV</p>
+
+  <p><strong>Step 2:</strong> Apply the emission condition.</p>
+  <p>
+    The photon energy is below the minimum escape energy.
+  </p>
+
+  <p><strong>Answer:</strong> No photoelectric emission occurs.</p>
+
+  <h3>6. Common error</h3>
+
+  <p>
+    Do not assume that all incident photon energy becomes kinetic
+    energy. The work function must first be supplied. Only the excess
+    energy contributes to the maximum kinetic energy.
+  </p>
+  `,
+
+  [
     {
-      q: "A photoelectric cell has a stopping potential of 3.0 V. Calculate the maximum kinetic energy of the photoelectrons in joules. Take e = 1.6 × 10^-19 C.",
-      hint: "Use KEmax = eVs.",
+      q: "A photon of energy 8.0 × 10⁻¹⁹ J strikes a metal with a work function of 3.5 × 10⁻¹⁹ J. Calculate the maximum kinetic energy of the emitted electron.",
+      hint: "Use Kmax = E − φ and keep the powers of ten unchanged.",
       steps: [
-        "Given: Vs = 3.0 V and e = 1.6 × 10^-19 C.",
-        "Use KEmax = eVs.",
-        "KEmax = (1.6 × 10^-19)(3.0).",
-        "KEmax = 4.8 × 10^-19 J."
+        "Write Kmax = E − φ.",
+        "Substitute: Kmax = 8.0 × 10⁻¹⁹ − 3.5 × 10⁻¹⁹ J.",
+        "Subtract the coefficients: 8.0 − 3.5 = 4.5."
       ],
-      ans: "4.8 × 10^-19 J",
-      why: "Multiplying the electron charge by the stopping potential gives the maximum kinetic energy in joules."
+      ans: "4.5 × 10⁻¹⁹ J",
+      why: "The work function accounts for the energy needed for escape; the remaining energy becomes maximum kinetic energy."
     },
     {
-      q: "The stopping potential is 2.5 V. Express the maximum kinetic energy in both eV and joules. Take e = 1.6 × 10^-19 C.",
-      hint: "The numerical value in eV equals the stopping potential in volts. Use KEmax = eVs for joules.",
+      q: "A metal has a work function of 2.1 eV. Incident photons each have energy 3.7 eV. Find the maximum kinetic energy in eV.",
+      hint: "Subtract the work function from the photon energy.",
       steps: [
-        "In electron-volts: KEmax = 2.5 eV.",
-        "In joules: KEmax = (1.6 × 10^-19)(2.5).",
-        "KEmax = 4.0 × 10^-19 J."
+        "Write Kmax = E − φ.",
+        "Substitute Kmax = 3.7 − 2.1 eV.",
+        "Calculate 3.7 − 2.1 = 1.6."
       ],
-      ans: "2.5 eV; 4.0 × 10^-19 J",
-      why: "The same energy can be expressed in different units. One electron-volt is 1.6 × 10^-19 J."
+      ans: "1.6 eV",
+      why: "The photon supplies 3.7 eV, of which 2.1 eV is required for the electron to escape."
     },
     {
-      q: "The stopping potential increases from 1.5 V to 4.0 V. Calculate the increase in maximum kinetic energy in joules. Take e = 1.6 × 10^-19 C.",
-      hint: "First find the change in stopping potential, then multiply by the electron charge.",
+      q: "A metal has a work function of 5.0 × 10⁻¹⁹ J. A photon transfers 4.0 × 10⁻¹⁹ J. Explain why the photon cannot produce photoelectric emission.",
+      hint: "Check whether the photon supplies at least the minimum escape energy.",
       steps: [
-        "Change in stopping potential: ΔVs = 4.0 − 1.5 = 2.5 V.",
-        "Use ΔKEmax = eΔVs.",
-        "ΔKEmax = (1.6 × 10^-19)(2.5).",
-        "ΔKEmax = 4.0 × 10^-19 J."
+        "Identify E = 4.0 × 10⁻¹⁹ J.",
+        "Identify φ = 5.0 × 10⁻¹⁹ J.",
+        "Compare: E < φ.",
+        "Conclude whether the electron has enough energy to escape."
       ],
-      ans: "4.0 × 10^-19 J",
-      why: "The change in maximum kinetic energy equals the electron charge multiplied by the change in stopping potential."
+      ans: "Emission does not occur because the photon energy is less than the work function.",
+      why: "The electron requires at least 5.0 × 10⁻¹⁹ J to escape, but the photon supplies only 4.0 × 10⁻¹⁹ J."
+    },
+    {
+      q: "A photon has energy 4.8 eV and causes emission from a metal whose work function is 4.8 eV. Calculate the maximum kinetic energy and explain the result.",
+      hint: "Use the energy balance, even when the two energies are equal.",
+      steps: [
+        "Write Kmax = E − φ.",
+        "Substitute Kmax = 4.8 − 4.8 eV.",
+        "Calculate Kmax = 0 eV."
+      ],
+      ans: "0 eV. The electron just escapes and has no excess energy for kinetic motion.",
+      why: "All the photon energy is used to overcome the work function."
+    },
+    {
+      q: "Photons of energy 6.0 eV strike two metals. Metal A has a work function of 2.0 eV and metal B has a work function of 4.5 eV. Calculate the maximum kinetic energy for each metal and identify which produces faster maximum-energy electrons.",
+      hint: "Calculate E − φ separately for each metal.",
+      steps: [
+        "For metal A: Kmax = 6.0 − 2.0 = 4.0 eV.",
+        "For metal B: Kmax = 6.0 − 4.5 = 1.5 eV.",
+        "Compare 4.0 eV with 1.5 eV."
+      ],
+      ans: "Metal A: 4.0 eV. Metal B: 1.5 eV. Metal A produces electrons with the greater maximum kinetic energy.",
+      why: "For the same photon energy, a lower work function leaves more excess energy for electron motion."
     }
   ]
-});
-add("physics", "photoelectric_emission", "Photoelectric Cells", {
-  notes: `
-A photoelectric cell is a device that uses the photoelectric effect to detect light.
+);
 
-When light of sufficient frequency falls on a photosensitive surface, photoelectrons are emitted. Their movement can produce a photocurrent in the external circuit.
 
-The photocurrent can be used to detect the presence or changes in light.
+// ------------------------------------------------------------
+// 10. WORK FUNCTION FROM THRESHOLD FREQUENCY
+// ------------------------------------------------------------
 
-Main parts of a simple photoelectric cell:
-1. A photosensitive cathode that emits electrons.
-2. An anode that collects the emitted electrons.
-3. An external circuit through which the photocurrent flows.
+add(
+  "physics",
+  "photoelectric_emission",
+  "Work Function from Threshold Frequency",
 
-Working principle:
-1. Light falls on the photosensitive cathode.
-2. Photoelectrons are emitted if the incident light has sufficient frequency.
-3. The electrons move towards the anode when the circuit conditions allow.
-4. The resulting photocurrent provides an electrical signal indicating light detection.
+  `
+  <h2>Work Function from Threshold Frequency</h2>
 
-A photoelectric cell does not generate electricity from every kind of incident light. The frequency must be sufficient for the photosensitive material being used.
+  <h3>1. The threshold frequency relationship</h3>
 
-WORKED EXAMPLE 1
+  <p>
+    The <strong>threshold frequency</strong>, f₀, is the minimum
+    frequency of incident light that can cause photoelectric emission
+    from a particular metal.
+  </p>
 
-Question:
-What is the main function of a photoelectric cell?
+  <p>
+    At the threshold frequency, the energy of one photon is exactly
+    equal to the work function. The emitted electron has zero maximum
+    kinetic energy.
+  </p>
 
-Solution:
-A photoelectric cell detects light by converting the effect of incident light into an electrical signal.
+  <p><strong>φ = hf₀</strong></p>
 
-Answer: To detect light and produce an electrical response.
+  <p>Where:</p>
+  <ul>
+    <li>φ = work function in joules (J)</li>
+    <li>h = Planck's constant = 6.63 × 10⁻³⁴ J s</li>
+    <li>f₀ = threshold frequency in hertz (Hz)</li>
+  </ul>
 
-WORKED EXAMPLE 2
+  <h3>2. Deriving the formula</h3>
 
-Question:
-Name the part of a simple photoelectric cell from which photoelectrons are emitted.
+  <p>
+    Einstein's photoelectric equation is:
+  </p>
 
-Solution:
-Photoelectrons are emitted from the photosensitive cathode when suitable light falls on it.
+  <p><strong>hf = φ + Kmax</strong></p>
 
-Answer: The photosensitive cathode.
+  <p>
+    At the threshold frequency, f = f₀ and Kmax = 0.
+  </p>
 
-WORKED EXAMPLE 3
+  <p>
+    Therefore:
+  </p>
 
-Question:
-Why might a photoelectric cell fail to produce a photocurrent when illuminated?
+  <p>hf₀ = φ + 0</p>
+  <p><strong>φ = hf₀</strong></p>
 
-Solution:
-1. Photoelectric emission requires light of sufficient frequency.
-2. If the incident light frequency is below the threshold frequency of the cathode material, electrons are not emitted.
-3. Without emitted electrons reaching the collector, there is no photocurrent due to photoelectric emission.
+  <h3>3. Calculating the work function</h3>
 
-Answer: The light frequency may be below the threshold frequency of the material.
-`,
-  questions: [
+  <p>
+    To find the work function from the threshold frequency:
+  </p>
+
+  <ol>
+    <li>Write φ = hf₀.</li>
+    <li>Substitute h = 6.63 × 10⁻³⁴ J s and the given frequency.</li>
+    <li>Multiply the numerical values.</li>
+    <li>Express the answer in joules.</li>
+  </ol>
+
+  <p>
+    Since 1 Hz = 1 s⁻¹, the units J s × s⁻¹ simplify to J.
+  </p>
+
+  <h3>4. Worked examples</h3>
+
+  <p><strong>Example 1: Calculating work function</strong></p>
+
+  <p>
+    The threshold frequency of a metal is 5.0 × 10¹⁴ Hz. Calculate
+    its work function. Use h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the formula.</p>
+  <p>φ = hf₀</p>
+
+  <p><strong>Step 2:</strong> Substitute.</p>
+  <p>
+    φ = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴)
+  </p>
+
+  <p><strong>Step 3:</strong> Multiply the numbers and powers of ten.</p>
+  <p>
+    6.63 × 5.0 = 33.15
+  </p>
+  <p>
+    10⁻³⁴ × 10¹⁴ = 10⁻²⁰
+  </p>
+  <p>
+    φ = 33.15 × 10⁻²⁰ J = 3.315 × 10⁻¹⁹ J
+  </p>
+
+  <p><strong>Answer:</strong> 3.32 × 10⁻¹⁹ J, to three significant figures.</p>
+
+  <p><strong>Example 2: Calculating work function at a higher threshold frequency</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 8.0 × 10¹⁴ Hz. Calculate its
+    work function.
+  </p>
+
+  <p><strong>Step 1:</strong> Use φ = hf₀.</p>
+
+  <p><strong>Step 2:</strong> Substitute the values.</p>
+  <p>
+    φ = (6.63 × 10⁻³⁴)(8.0 × 10¹⁴)
+  </p>
+
+  <p><strong>Step 3:</strong> Multiply.</p>
+  <p>
+    φ = 53.04 × 10⁻²⁰ J
+  </p>
+
+  <p><strong>Step 4:</strong> Write in standard scientific notation.</p>
+  <p>
+    φ = 5.304 × 10⁻¹⁹ J
+  </p>
+
+  <p><strong>Answer:</strong> 5.30 × 10⁻¹⁹ J, to three significant figures.</p>
+
+  <p><strong>Example 3: Converting the work function into eV</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Calculate
+    its work function in joules and electronvolts. Use
+    1 eV = 1.60 × 10⁻¹⁹ J.
+  </p>
+
+  <p><strong>Step 1:</strong> Calculate the work function in joules.</p>
+  <p>
+    φ = hf₀
+  </p>
+  <p>
+    φ = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴)
+  </p>
+  <p>
+    φ = 39.78 × 10⁻²⁰ J = 3.978 × 10⁻¹⁹ J
+  </p>
+
+  <p><strong>Step 2:</strong> Convert joules to electronvolts.</p>
+  <p>
+    φ in eV = (3.978 × 10⁻¹⁹)/(1.60 × 10⁻¹⁹)
+  </p>
+
+  <p><strong>Step 3:</strong> Divide.</p>
+  <p>
+    φ = 3.978/1.60 eV ≈ 2.49 eV
+  </p>
+
+  <p><strong>Answer:</strong> 3.98 × 10⁻¹⁹ J, approximately 2.49 eV.</p>
+
+  <h3>5. Common errors</h3>
+
+  <ul>
+    <li>Using the incident frequency instead of the threshold frequency
+    when the question asks for the work function from f₀.</li>
+    <li>Using the wrong value or units for Planck's constant.</li>
+    <li>Adding powers of ten incorrectly when multiplying.</li>
+    <li>Giving the answer in eV without converting from joules.</li>
+  </ul>
+  `,
+
+  [
     {
-      q: "What is the main function of a photoelectric cell?",
-      hint: "Think about what the device detects and what it produces.",
+      q: "A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. Calculate its work function in joules. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "At threshold, φ = hf₀.",
       steps: [
-        "Light falls on the photosensitive surface.",
-        "Suitable light causes photoelectrons to be emitted.",
-        "Their movement produces an electrical response that can be detected."
+        "Write φ = hf₀.",
+        "Substitute: φ = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴).",
+        "Multiply 6.63 × 4.0 = 26.52.",
+        "Combine powers: 10⁻³⁴ × 10¹⁴ = 10⁻²⁰.",
+        "Convert 26.52 × 10⁻²⁰ to standard form."
       ],
-      ans: "To detect light and produce an electrical signal.",
-      why: "A photoelectric cell uses the photoelectric effect to detect incident light."
+      ans: "2.652 × 10⁻¹⁹ J, approximately 2.65 × 10⁻¹⁹ J.",
+      why: "At threshold, a photon has exactly the energy needed to release an electron, so the work function equals hf₀."
     },
     {
-      q: "In a simple photoelectric cell, from which electrode are photoelectrons emitted?",
-      hint: "Identify the photosensitive electrode.",
+      q: "The threshold frequency of a metal is 7.0 × 10¹⁴ Hz. Find its work function in joules and use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Multiply Planck's constant by the threshold frequency.",
       steps: [
-        "The photosensitive surface receives the incident light.",
-        "Photoelectrons are emitted from this surface.",
-        "In a simple photoelectric cell, this electrode is the cathode."
+        "Use φ = hf₀.",
+        "Substitute: φ = (6.63 × 10⁻³⁴)(7.0 × 10¹⁴).",
+        "Multiply 6.63 × 7.0 = 46.41.",
+        "Combine powers to obtain 46.41 × 10⁻²⁰ J.",
+        "Express the answer in standard form."
       ],
-      ans: "The photosensitive cathode.",
-      why: "The cathode is the light-sensitive electrode from which photoelectrons are emitted."
+      ans: "4.641 × 10⁻¹⁹ J, approximately 4.64 × 10⁻¹⁹ J.",
+      why: "The threshold frequency determines the minimum photon energy required for electron emission."
     },
     {
-      q: "Light falls on a photoelectric cell, but its frequency is below the threshold frequency of the cathode. Explain why no photoelectric current is produced.",
-      hint: "Compare the light frequency with the threshold frequency.",
+      q: "A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Convert its work function into electronvolts. Use h = 6.63 × 10⁻³⁴ J s and 1 eV = 1.60 × 10⁻¹⁹ J.",
+      hint: "First calculate φ in joules, then divide by 1.60 × 10⁻¹⁹ J/eV.",
       steps: [
-        "The incident light frequency is below the threshold frequency.",
-        "Each photon has insufficient energy to release an electron from the cathode.",
-        "No photoelectrons are emitted by the photoelectric effect.",
-        "Therefore, no photocurrent is produced by this process."
+        "Calculate φ = hf₀ = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴).",
+        "Obtain φ = 3.315 × 10⁻¹⁹ J.",
+        "Convert to eV: φ = (3.315 × 10⁻¹⁹)/(1.60 × 10⁻¹⁹).",
+        "Divide 3.315 by 1.60."
       ],
-      ans: "The photons have insufficient energy to release photoelectrons, so no photocurrent is produced.",
-      why: "For a given material, photoelectric emission requires the incident light frequency to be at least the threshold frequency."
+      ans: "Approximately 2.07 eV.",
+      why: "The joule value is divided by the joule equivalent of one electronvolt to obtain the energy in eV."
+    },
+    {
+      q: "Metal A has a threshold frequency of 3.0 × 10¹⁴ Hz and metal B has a threshold frequency of 6.0 × 10¹⁴ Hz. Calculate both work functions and state which metal has the greater work function.",
+      hint: "Use φ = hf₀ for each metal and compare the results.",
+      steps: [
+        "For A: φA = (6.63 × 10⁻³⁴)(3.0 × 10¹⁴).",
+        "Calculate φA = 1.989 × 10⁻¹⁹ J.",
+        "For B: φB = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴).",
+        "Calculate φB = 3.978 × 10⁻¹⁹ J.",
+        "Compare the two values."
+      ],
+      ans: "Metal A: 1.99 × 10⁻¹⁹ J. Metal B: 3.98 × 10⁻¹⁹ J. Metal B has the greater work function.",
+      why: "The work function is directly proportional to threshold frequency because φ = hf₀."
+    },
+    {
+      q: "A student calculates the work function of a metal with threshold frequency 5.0 × 10¹⁴ Hz as 3.315 × 10⁻²⁰ J. Identify the likely error and give the correct value.",
+      hint: "Check the multiplication of the powers of ten in (6.63 × 10⁻³⁴)(5.0 × 10¹⁴).",
+      steps: [
+        "Write φ = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴).",
+        "Multiply the coefficients: 6.63 × 5.0 = 33.15.",
+        "Add the exponents: −34 + 14 = −20.",
+        "Write 33.15 × 10⁻²⁰ in standard form."
+      ],
+      ans: "The correct work function is 3.315 × 10⁻¹⁹ J. The student likely mishandled the powers of ten or the conversion to standard scientific notation.",
+      why: "Multiplying powers of ten requires adding their exponents. The product is 33.15 × 10⁻²⁰ J, which is 3.315 × 10⁻¹⁹ J."
     }
   ]
-});
-
-
+);
+// ============================================================
+// PHOTOELECTRIC EMISSION — BATCH 5
+// Screens 14–16
+// ============================================================
 // ------------------------------------------------------------
-// SCREEN 46: AUTOMATIC LIGHT-CONTROL SYSTEMS
-// One concept: Using light detection to control a circuit
+// 14. EINSTEIN
 // ------------------------------------------------------------
 
-add("physics", "photoelectric_emission", "Automatic Light-Control Systems", {
-  notes: `
-Photoelectric devices can be used in automatic systems that respond to changes in light.
+add(
+  "physics",
+  "photoelectric_emission",
+  "Einstein's Photoelectric Equation",
 
-For example, an automatic outdoor lighting system can use a light-sensitive detector to help switch lamps on when it becomes dark and off when it becomes bright.
+  `
+  <h2>Einstein's Explanation of Photoelectric Emission</h2>
 
-Working principle:
-1. A light-sensitive device detects the light level.
-2. Its electrical output changes in response to the detected light.
-3. A control circuit interprets that signal.
-4. The control circuit switches the lamp on or off.
+  <h3>1. Why Einstein's explanation was necessary</h3>
 
-Important distinction:
-The photoelectric detector senses the light. A control circuit operates the lamp.
+  <p>
+    The wave theory of light could not adequately explain several
+    observations of photoelectric emission, particularly the existence
+    of a threshold frequency and the immediate emission of electrons
+    when suitable light strikes a metal.
+  </p>
 
-A practical system may use a photoelectric detector or another light-sensitive electronic sensor. Not every modern automatic lighting system uses a traditional vacuum photoelectric cell.
+  <p>
+    Albert Einstein explained the phenomenon by applying the quantum
+    idea that light transfers energy in discrete packets called
+    <strong>photons</strong>.
+  </p>
 
-WORKED EXAMPLE 1
+  <h3>2. Main ideas in Einstein's explanation</h3>
 
-Question:
-How can a light-sensitive detector help control outdoor security lamps automatically?
+  <ul>
+    <li>Light consists of photons, each carrying energy E = hf.</li>
+    <li>Here, h is Planck's constant and f is the frequency of the light.</li>
+    <li>In the basic photoelectric model, an electron absorbs energy
+    from one photon.</li>
+    <li>A minimum amount of energy, called the work function φ, is
+    needed for the electron to escape from the metal.</li>
+    <li>Any photon energy remaining after the electron escapes becomes
+    the electron's kinetic energy.</li>
+  </ul>
 
-Solution:
-1. The detector senses the surrounding light level.
-2. When the environment becomes dark, its output changes.
-3. The control circuit switches the lamps on.
-4. When sufficient daylight returns, the circuit switches them off.
+  <h3>3. Einstein's photoelectric equation</h3>
 
-Answer: It detects changes in light and provides a signal to control the lamps.
+  <p>
+    Conservation of energy gives Einstein's photoelectric equation:
+  </p>
 
-WORKED EXAMPLE 2
+  <p><strong>hf = φ + Kmax</strong></p>
 
-Question:
-In an automatic lighting system, what is the function of the control circuit?
+  <p>Therefore:</p>
 
-Solution:
-The detector senses light and produces an electrical response. The control circuit uses that response to operate the lamp.
+  <p><strong>Kmax = hf − φ</strong></p>
 
-Answer: To use the detector's signal to switch the lamp on or off.
+  <p>Where:</p>
 
-WORKED EXAMPLE 3
+  <ul>
+    <li>h = Planck's constant = 6.63 × 10⁻³⁴ J s</li>
+    <li>f = frequency of incident light in Hz</li>
+    <li>φ = work function of the metal in J</li>
+    <li>Kmax = maximum kinetic energy of the emitted electrons in J</li>
+  </ul>
 
-Question:
-Why is a light-sensitive detector useful in an automatic lighting system?
+  <h3>4. What the equation predicts</h3>
 
-Solution:
-1. It responds to changes in the surrounding light.
-2. Its output can be used by a control circuit.
-3. The circuit can operate the lights without someone switching them manually.
+  <p><strong>When hf &lt; φ:</strong></p>
+  <p>
+    The photon does not supply enough energy for the electron to
+    escape. No ordinary one-photon photoelectric emission occurs.
+  </p>
 
-Answer: It enables the lights to respond automatically to changes in light level.
-`,
-  questions: [
+  <p><strong>When hf = φ:</strong></p>
+  <p>
+    The electron just escapes, so Kmax = 0.
+  </p>
+
+  <p><strong>When hf &gt; φ:</strong></p>
+  <p>
+    The electron escapes with maximum kinetic energy equal to the
+    excess energy, hf − φ.
+  </p>
+
+  <h3>5. Worked examples</h3>
+
+  <p><strong>Example 1: Finding maximum kinetic energy</strong></p>
+
+  <p>
+    Light of frequency 8.0 × 10¹⁴ Hz strikes a metal with a work
+    function of 3.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy
+    of the emitted electrons. Take h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Write Einstein's equation.</p>
+  <p>Kmax = hf − φ</p>
+
+  <p><strong>Step 2:</strong> Calculate photon energy.</p>
+  <p>
+    hf = (6.63 × 10⁻³⁴)(8.0 × 10¹⁴)
+  </p>
+  <p>hf = 5.304 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 3:</strong> Subtract the work function.</p>
+  <p>
+    Kmax = 5.304 × 10⁻¹⁹ − 3.0 × 10⁻¹⁹
+  </p>
+  <p>Kmax = 2.304 × 10⁻¹⁹ J</p>
+
+  <p><strong>Answer:</strong> 2.30 × 10⁻¹⁹ J, to three significant figures.</p>
+
+  <p><strong>Example 2: Finding the work function</strong></p>
+
+  <p>
+    A photon has energy 6.0 × 10⁻¹⁹ J. The emitted electron has a
+    maximum kinetic energy of 2.5 × 10⁻¹⁹ J. Calculate the work
+    function of the metal.
+  </p>
+
+  <p><strong>Step 1:</strong> Start with the energy balance.</p>
+  <p>hf = φ + Kmax</p>
+
+  <p><strong>Step 2:</strong> Rearrange for the work function.</p>
+  <p>φ = hf − Kmax</p>
+
+  <p><strong>Step 3:</strong> Substitute.</p>
+  <p>
+    φ = 6.0 × 10⁻¹⁹ − 2.5 × 10⁻¹⁹
+  </p>
+
+  <p><strong>Answer:</strong> φ = 3.5 × 10⁻¹⁹ J.</p>
+
+  <p><strong>Example 3: Determining whether emission occurs</strong></p>
+
+  <p>
+    A metal has a work function of 4.5 × 10⁻¹⁹ J. Incident photons
+    have energy 3.8 × 10⁻¹⁹ J. Determine whether photoelectric
+    emission occurs.
+  </p>
+
+  <p><strong>Step 1:</strong> Compare photon energy and work function.</p>
+  <p>
+    hf = 3.8 × 10⁻¹⁹ J
+  </p>
+  <p>
+    φ = 4.5 × 10⁻¹⁹ J
+  </p>
+
+  <p><strong>Step 2:</strong> Check the energy condition.</p>
+  <p>hf &lt; φ</p>
+
+  <p><strong>Answer:</strong> No photoelectric emission occurs because
+  the photon energy is insufficient to overcome the work function.</p>
+
+  <h3>6. What Einstein's equation explains</h3>
+
+  <ul>
+    <li>The threshold frequency exists because hf must reach φ.</li>
+    <li>Increasing frequency above threshold increases maximum kinetic
+    energy.</li>
+    <li>Increasing intensity at fixed frequency generally increases
+    the number of emitted electrons, not their maximum kinetic energy.</li>
+    <li>The maximum kinetic energy depends on photon frequency and
+    the work function of the material.</li>
+  </ul>
+  `,
+
+  [
     {
-      q: "How can a light-sensitive detector help an outdoor lighting system operate automatically?",
-      hint: "Consider what happens to the lights when the surroundings become dark or bright.",
+      q: "State Einstein's photoelectric equation and explain the meaning of each quantity.",
+      hint: "Relate the energy supplied by a photon to the energy needed for escape and the remaining kinetic energy.",
       steps: [
-        "The detector senses the surrounding light level.",
-        "Its electrical output changes as the light level changes.",
-        "A control circuit uses the signal to switch the lights on or off."
+        "Write the equation hf = φ + Kmax.",
+        "Identify hf as the energy of the incident photon.",
+        "Identify φ as the work function.",
+        "Identify Kmax as the maximum kinetic energy of the emitted electron."
       ],
-      ans: "It detects changes in light and signals a control circuit to switch the lights on or off.",
-      why: "Automatic lighting uses light detection to control the lamps without continuous manual operation."
+      ans: "hf = φ + Kmax, where h is Planck's constant, f is incident frequency, φ is the work function, and Kmax is the maximum kinetic energy.",
+      why: "The equation expresses conservation of energy during photoelectric emission."
     },
     {
-      q: "What is the function of the control circuit in an automatic lighting system?",
-      hint: "The detector senses light; another part operates the lamp.",
+      q: "Light of frequency 7.0 × 10¹⁴ Hz strikes a metal with work function 3.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Calculate hf first, then subtract φ.",
       steps: [
-        "The light-sensitive detector responds to the light level.",
-        "The detector provides an electrical signal.",
-        "The control circuit uses that signal to operate the lamp."
+        "Write Kmax = hf − φ.",
+        "Calculate hf = (6.63 × 10⁻³⁴)(7.0 × 10¹⁴).",
+        "Obtain hf = 4.641 × 10⁻¹⁹ J.",
+        "Subtract: Kmax = 4.641 × 10⁻¹⁹ − 3.0 × 10⁻¹⁹."
       ],
-      ans: "To use the detector's signal to switch the lamp on or off.",
-      why: "The detector and control circuit perform different jobs: sensing and controlling."
+      ans: "1.641 × 10⁻¹⁹ J, approximately 1.64 × 10⁻¹⁹ J.",
+      why: "The work function is used to overcome the metal's surface binding; the excess photon energy becomes kinetic energy."
     },
     {
-      q: "Give one reason why automatic lighting can be more convenient than manually operated lighting.",
-      hint: "Think about the need for someone to switch the lamps.",
+      q: "A photon has energy 5.8 × 10⁻¹⁹ J and produces an electron with maximum kinetic energy 2.2 × 10⁻¹⁹ J. Calculate the work function.",
+      hint: "Rearrange hf = φ + Kmax to make φ the subject.",
       steps: [
-        "A light-sensitive detector responds to the surrounding light level.",
-        "A control circuit switches the lamps according to that signal.",
-        "A person does not need to operate the switch each time the light level changes."
+        "Write φ = hf − Kmax.",
+        "Substitute φ = 5.8 × 10⁻¹⁹ − 2.2 × 10⁻¹⁹ J.",
+        "Subtract the coefficients."
       ],
-      ans: "The lights can switch on or off in response to changes in light without manual operation.",
-      why: "Automatic control reduces the need for someone to operate the lighting switch."
+      ans: "3.6 × 10⁻¹⁹ J.",
+      why: "The photon energy is divided between overcoming the work function and providing the emitted electron's kinetic energy."
+    },
+    {
+      q: "Explain why increasing the frequency of light above the threshold frequency increases the maximum kinetic energy of emitted electrons.",
+      hint: "Use Kmax = hf − φ and identify which quantity stays constant for the same metal.",
+      steps: [
+        "Write Kmax = hf − φ.",
+        "For the same metal, φ remains constant.",
+        "Increasing f increases hf because h is constant.",
+        "Therefore, Kmax increases."
+      ],
+      ans: "Increasing frequency increases photon energy hf. Since the work function stays constant for the same metal, more energy remains as maximum kinetic energy.",
+      why: "The equation shows that maximum kinetic energy increases linearly with frequency above threshold."
+    },
+    {
+      q: "A metal has a work function of 4.0 × 10⁻¹⁹ J. A photon supplies 4.0 × 10⁻¹⁹ J. Use Einstein's equation to find Kmax and explain the physical meaning.",
+      hint: "Substitute equal photon energy and work function into Kmax = hf − φ.",
+      steps: [
+        "Write Kmax = hf − φ.",
+        "Substitute Kmax = 4.0 × 10⁻¹⁹ − 4.0 × 10⁻¹⁹ J.",
+        "Subtract the equal quantities.",
+        "Interpret the result."
+      ],
+      ans: "Kmax = 0 J. The electron just escapes from the metal with no excess energy for kinetic motion.",
+      why: "At threshold, all the photon energy is required to overcome the work function."
     }
   ]
-});
+);
 
 
 // ------------------------------------------------------------
-// SCREEN 47: LIGHT BEAMS AND OBJECT DETECTION
-// One concept: Detecting an interruption in a beam of light
+// 15. CALCULATING MAXIMUM KINETIC ENERGY
 // ------------------------------------------------------------
 
-add("physics", "photoelectric_emission", "Light Beam Detection", {
-  notes: `
-A photoelectric detector can be arranged to detect whether a beam of light reaches a sensor.
+add(
+  "physics",
+  "photoelectric_emission",
+  "Calculating Maximum Kinetic Energy",
 
-In a simple beam-detection system:
-1. A light source directs a beam towards a light-sensitive detector.
-2. The detector produces an electrical signal when it receives the beam.
-3. An object passing between the source and detector interrupts the beam.
-4. The detector's output changes, allowing a control circuit to detect the interruption.
+  `
+  <h2>Calculating Maximum Kinetic Energy</h2>
 
-Applications include object counters, simple security systems, and automatic door sensors. The exact detector technology varies; many modern systems use semiconductor photodetectors rather than traditional photoelectric cells.
+  <h3>1. Meaning of maximum kinetic energy</h3>
 
-WORKED EXAMPLE 1
+  <p>
+    When an electron escapes from a metal during photoelectric
+    emission, it may have kinetic energy. The
+    <strong>maximum kinetic energy</strong>, Kmax, is the greatest
+    kinetic energy among the emitted electrons.
+  </p>
 
-Question:
-How can a light beam be used to count objects moving along a conveyor belt?
+  <p>
+    It is determined by the incident photon energy and the work
+    function of the metal.
+  </p>
 
-Solution:
-1. Direct a light beam across the path of the objects.
-2. Place a detector on the opposite side.
-3. Each object interrupts the beam as it passes.
-4. A control circuit detects and counts the interruptions.
+  <h3>2. Main formula</h3>
 
-Answer: Each interruption of the beam can be detected and counted.
+  <p><strong>Kmax = hf − φ</strong></p>
 
-WORKED EXAMPLE 2
+  <p>Where:</p>
 
-Question:
-What happens to the detector signal when an opaque object passes between a light source and its detector?
+  <ul>
+    <li>Kmax = maximum kinetic energy in joules (J)</li>
+    <li>h = 6.63 × 10⁻³⁴ J s</li>
+    <li>f = incident frequency in hertz (Hz)</li>
+    <li>φ = work function in joules (J)</li>
+  </ul>
 
-Solution:
-1. The object blocks the light beam.
-2. Less or no light reaches the detector.
-3. The detector output changes.
-4. The control circuit can register the interruption.
+  <p>
+    The formula applies when hf ≥ φ. If hf &lt; φ, emission does
+    not occur and a positive kinetic energy must not be calculated
+    from the subtraction.
+  </p>
 
-Answer: The detector's output changes because the beam is interrupted.
+  <h3>3. Method for solving numerical questions</h3>
 
-WORKED EXAMPLE 3
+  <ol>
+    <li>Write Kmax = hf − φ.</li>
+    <li>Check that h, f and φ are expressed in compatible units.</li>
+    <li>Calculate hf, the energy of one photon.</li>
+    <li>Subtract the work function from the photon energy.</li>
+    <li>State the answer with the correct unit, joules.</li>
+  </ol>
 
-Question:
-Why must the light source and detector be properly aligned in a simple beam-interruption system?
+  <h3>4. Using electronvolts</h3>
 
-Solution:
-1. The source must direct light towards the detector.
-2. The detector must receive the beam during normal operation.
-3. When an object interrupts the beam, the detector output changes.
-4. Without proper alignment, the detector may fail to distinguish normal operation from an interruption.
+  <p>
+    If photon energy and work function are both given in electronvolts,
+    subtract them directly. The maximum kinetic energy will also be
+    in electronvolts.
+  </p>
 
-Answer: Proper alignment ensures the detector receives the beam normally and can detect when it is interrupted.
-`,
-  questions: [
+  <p>
+    To convert joules into electronvolts, use:
+  </p>
+
+  <p><strong>1 eV = 1.60 × 10⁻¹⁹ J</strong></p>
+
+  <p>
+    Therefore:
+  </p>
+
+  <p>
+    <strong>Kmax in eV = Kmax in J ÷ (1.60 × 10⁻¹⁹)</strong>
+  </p>
+
+  <h3>5. Worked examples</h3>
+
+  <p><strong>Example 1: Calculating kinetic energy from frequency</strong></p>
+
+  <p>
+    Light of frequency 9.0 × 10¹⁴ Hz falls on a metal with a work
+    function of 4.0 × 10⁻¹⁹ J. Calculate Kmax. Use
+    h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the formula.</p>
+  <p>Kmax = hf − φ</p>
+
+  <p><strong>Step 2:</strong> Calculate photon energy.</p>
+  <p>
+    hf = (6.63 × 10⁻³⁴)(9.0 × 10¹⁴)
+  </p>
+  <p>hf = 5.967 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 3:</strong> Subtract the work function.</p>
+  <p>
+    Kmax = 5.967 × 10⁻¹⁹ − 4.0 × 10⁻¹⁹
+  </p>
+  <p>Kmax = 1.967 × 10⁻¹⁹ J</p>
+
+  <p><strong>Answer:</strong> 1.97 × 10⁻¹⁹ J, to three significant figures.</p>
+
+  <p><strong>Example 2: Working with electronvolts</strong></p>
+
+  <p>
+    A photon has energy 5.5 eV and the work function of the metal is
+    2.7 eV. Calculate the maximum kinetic energy in eV and joules.
+  </p>
+
+  <p><strong>Step 1:</strong> Subtract the energies in eV.</p>
+  <p>Kmax = 5.5 − 2.7 = 2.8 eV</p>
+
+  <p><strong>Step 2:</strong> Convert to joules.</p>
+  <p>
+    Kmax = 2.8 × 1.60 × 10⁻¹⁹ J
+  </p>
+
+  <p><strong>Answer:</strong> 2.8 eV = 4.48 × 10⁻¹⁹ J.</p>
+
+  <p><strong>Example 3: Finding the maximum kinetic energy when
+  frequency changes</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. It is
+    illuminated by light of frequency 7.0 × 10¹⁴ Hz. Calculate
+    Kmax using h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Use φ = hf₀ in Einstein's equation.</p>
+  <p>Kmax = hf − hf₀</p>
+
+  <p><strong>Step 2:</strong> Factor out h.</p>
+  <p>Kmax = h(f − f₀)</p>
+
+  <p><strong>Step 3:</strong> Substitute.</p>
+  <p>
+    Kmax = (6.63 × 10⁻³⁴)(7.0 × 10¹⁴ − 4.0 × 10¹⁴)
+  </p>
+
+  <p><strong>Step 4:</strong> Calculate.</p>
+  <p>
+    Kmax = (6.63 × 10⁻³⁴)(3.0 × 10¹⁴)
+  </p>
+  <p>Kmax = 1.989 × 10⁻¹⁹ J</p>
+
+  <p><strong>Answer:</strong> 1.99 × 10⁻¹⁹ J.</p>
+
+  <h3>6. Common calculation errors</h3>
+
+  <ul>
+    <li>Using the threshold frequency as the incident frequency when
+    they are different.</li>
+    <li>Subtracting the work function before calculating photon energy
+    without keeping the powers of ten correct.</li>
+    <li>Mixing joules and electronvolts in one subtraction.</li>
+    <li>Calculating a negative Kmax and treating it as a real emitted
+    electron's kinetic energy. A negative result indicates insufficient
+    photon energy and no emission in the basic model.</li>
+  </ul>
+  `,
+
+  [
     {
-      q: "How can a light beam be used to count objects on a conveyor belt?",
-      hint: "Think about what each passing object does to the beam.",
+      q: "Light of frequency 8.0 × 10¹⁴ Hz strikes a metal with a work function of 3.5 × 10⁻¹⁹ J. Calculate the maximum kinetic energy. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Calculate hf, then subtract the work function.",
       steps: [
-        "Direct a beam across the objects' path.",
-        "Position a detector so it receives the beam.",
-        "Each object interrupts the beam as it passes.",
-        "A control circuit counts the detected interruptions."
+        "Write Kmax = hf − φ.",
+        "Calculate hf = (6.63 × 10⁻³⁴)(8.0 × 10¹⁴) = 5.304 × 10⁻¹⁹ J.",
+        "Subtract: Kmax = 5.304 × 10⁻¹⁹ − 3.5 × 10⁻¹⁹ J."
       ],
-      ans: "Count the interruptions caused by objects passing through the beam.",
-      why: "Each detected interruption can represent one passing object."
+      ans: "1.804 × 10⁻¹⁹ J, approximately 1.80 × 10⁻¹⁹ J.",
+      why: "Maximum kinetic energy is the photon energy remaining after the work function has been supplied."
     },
     {
-      q: "An opaque object passes between a light source and a detector. What happens to the light reaching the detector?",
-      hint: "An opaque object blocks light.",
+      q: "A photon has energy 6.2 eV and the work function is 3.4 eV. Calculate the maximum kinetic energy in eV and joules. Use 1 eV = 1.60 × 10⁻¹⁹ J.",
+      hint: "Subtract in eV first, then convert the result to joules.",
       steps: [
-        "The object moves into the path of the beam.",
-        "It blocks the beam.",
-        "Less or no light reaches the detector."
+        "Calculate Kmax = 6.2 − 3.4 = 2.8 eV.",
+        "Convert to joules: Kmax = 2.8 × 1.60 × 10⁻¹⁹ J.",
+        "Multiply 2.8 × 1.60."
       ],
-      ans: "The amount of light reaching the detector decreases or becomes zero.",
-      why: "An opaque object interrupts the beam between the source and detector."
+      ans: "2.8 eV = 4.48 × 10⁻¹⁹ J.",
+      why: "Subtracting energies expressed in the same unit gives the excess energy; multiplying by the conversion factor gives joules."
     },
     {
-      q: "Why must the light source be aligned with the detector in a beam-interruption system?",
-      hint: "Consider the detector's normal state before an object passes.",
+      q: "A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. It is illuminated by light of frequency 8.0 × 10¹⁴ Hz. Calculate the maximum kinetic energy using h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use Kmax = h(f − f₀).",
       steps: [
-        "The source directs light towards the detector.",
-        "The detector must receive the beam under normal conditions.",
-        "An object then causes a detectable change by interrupting the beam."
+        "Write Kmax = h(f − f₀).",
+        "Calculate f − f₀ = 3.0 × 10¹⁴ Hz.",
+        "Substitute Kmax = (6.63 × 10⁻³⁴)(3.0 × 10¹⁴).",
+        "Multiply the coefficients and combine the powers of ten."
       ],
-      ans: "So the detector receives the beam normally and can detect when it is interrupted.",
-      why: "Correct alignment allows the system to distinguish the normal beam from an interruption."
+      ans: "1.989 × 10⁻¹⁹ J, approximately 1.99 × 10⁻¹⁹ J.",
+      why: "At threshold, hf₀ equals the work function, so subtracting the threshold energy from the incident photon energy gives Kmax."
+    },
+    {
+      q: "A metal has a work function of 4.0 eV. The incident photons have energy 3.0 eV. Calculate whether emission occurs and explain why the result must not be reported as a negative kinetic energy.",
+      hint: "Compare photon energy with the work function before interpreting the subtraction.",
+      steps: [
+        "Write E = 3.0 eV and φ = 4.0 eV.",
+        "Calculate E − φ = −1.0 eV.",
+        "Recognise that the photon energy is below the work function.",
+        "Interpret the negative value as failure of the emission condition."
+      ],
+      ans: "No photoelectric emission occurs. The −1.0 eV result indicates an energy shortfall, not a physically emitted electron with negative kinetic energy.",
+      why: "An electron cannot escape through the ordinary one-photon process unless the photon supplies at least the work function."
+    },
+    {
+      q: "Light of frequency 1.0 × 10¹⁵ Hz strikes a metal whose work function is 5.0 × 10⁻¹⁹ J. Calculate the maximum kinetic energy in joules and electronvolts. Use h = 6.63 × 10⁻³⁴ J s and 1 eV = 1.60 × 10⁻¹⁹ J.",
+      hint: "Find hf, subtract the work function, then divide the joule answer by 1.60 × 10⁻¹⁹.",
+      steps: [
+        "Calculate hf = (6.63 × 10⁻³⁴)(1.0 × 10¹⁵) = 6.63 × 10⁻¹⁹ J.",
+        "Calculate Kmax = 6.63 × 10⁻¹⁹ − 5.0 × 10⁻¹⁹ J.",
+        "Obtain Kmax = 1.63 × 10⁻¹⁹ J.",
+        "Convert to eV: Kmax = (1.63 × 10⁻¹⁹)/(1.60 × 10⁻¹⁹)."
+      ],
+      ans: "1.63 × 10⁻¹⁹ J, approximately 1.02 eV.",
+      why: "The photon energy exceeds the work function by 1.63 × 10⁻¹⁹ J, and that excess is the maximum kinetic energy."
     }
   ]
-});
+);
+
+
+// ------------------------------------------------------------
+// 16. PHOTON FREQUENCY FROM MAXIMUM KINETIC ENERGY
+// ------------------------------------------------------------
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Photon Frequency from Maximum Kinetic Energy",
+
+  `
+  <h2>Photon Frequency from Maximum Kinetic Energy</h2>
+
+  <h3>1. Finding frequency using Einstein's equation</h3>
+
+  <p>
+    Sometimes the maximum kinetic energy of emitted electrons and
+    the work function of the metal are known, but the frequency of
+    the incident light is not.
+  </p>
+
+  <p>
+    Einstein's photoelectric equation is:
+  </p>
+
+  <p><strong>hf = φ + Kmax</strong></p>
+
+  <p>
+    Rearranging to make frequency the subject gives:
+  </p>
+
+  <p><strong>f = (φ + Kmax)/h</strong></p>
+
+  <h3>2. Quantities and units</h3>
+
+  <ul>
+    <li>f = incident photon frequency in hertz (Hz)</li>
+    <li>φ = work function in joules (J)</li>
+    <li>Kmax = maximum kinetic energy in joules (J)</li>
+    <li>h = 6.63 × 10⁻³⁴ J s</li>
+  </ul>
+
+  <p>
+    The work function and maximum kinetic energy must be expressed
+    in the same energy unit before adding them. If the final
+    calculation uses h in J s, convert the total energy to joules.
+  </p>
+
+  <h3>3. Solving method</h3>
+
+  <ol>
+    <li>Write hf = φ + Kmax.</li>
+    <li>Rearrange to f = (φ + Kmax)/h.</li>
+    <li>Convert any electronvolt values to joules if necessary.</li>
+    <li>Add the work function and maximum kinetic energy.</li>
+    <li>Divide the total energy by Planck's constant.</li>
+    <li>Give the answer in hertz.</li>
+  </ol>
+
+  <h3>4. Worked examples</h3>
+
+  <p><strong>Example 1: Calculating frequency from energies</strong></p>
+
+  <p>
+    A metal has a work function of 3.0 × 10⁻¹⁹ J. The maximum
+    kinetic energy of its emitted electrons is 2.0 × 10⁻¹⁹ J.
+    Calculate the incident frequency. Use h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the formula.</p>
+  <p>f = (φ + Kmax)/h</p>
+
+  <p><strong>Step 2:</strong> Add the energies.</p>
+  <p>
+    φ + Kmax = 3.0 × 10⁻¹⁹ + 2.0 × 10⁻¹⁹
+  </p>
+  <p>Total energy = 5.0 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 3:</strong> Divide by Planck's constant.</p>
+  <p>
+    f = (5.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+  </p>
+
+  <p><strong>Answer:</strong> f ≈ 7.54 × 10¹⁴ Hz.</p>
+
+  <p><strong>Example 2: Converting energy from eV</strong></p>
+
+  <p>
+    A metal has a work function of 2.0 eV. Its emitted electrons
+    have maximum kinetic energy of 1.5 eV. Calculate the frequency
+    of the incident photons. Use 1 eV = 1.60 × 10⁻¹⁹ J and
+    h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Add the energies in eV.</p>
+  <p>Total photon energy = 2.0 + 1.5 = 3.5 eV</p>
+
+  <p><strong>Step 2:</strong> Convert the photon energy to joules.</p>
+  <p>
+    E = 3.5 × 1.60 × 10⁻¹⁹ J
+  </p>
+  <p>E = 5.60 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 3:</strong> Use E = hf.</p>
+  <p>
+    f = (5.60 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+  </p>
+
+  <p><strong>Answer:</strong> f ≈ 8.45 × 10¹⁴ Hz.</p>
+
+  <p><strong>Example 3: Finding frequency from threshold frequency
+  and kinetic energy</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. The
+    maximum kinetic energy of the emitted electrons is
+    1.989 × 10⁻¹⁹ J. Calculate the incident frequency using
+    h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Find the work function.</p>
+  <p>φ = hf₀</p>
+  <p>
+    φ = (6.63 × 10⁻³⁴)(4.0 × 10¹⁴)
+  </p>
+  <p>φ = 2.652 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 2:</strong> Add the work function and kinetic energy.</p>
+  <p>
+    E = 2.652 × 10⁻¹⁹ + 1.989 × 10⁻¹⁹
+  </p>
+  <p>E = 4.641 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 3:</strong> Calculate the frequency.</p>
+  <p>
+    f = (4.641 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+  </p>
+  <p>f = 7.0 × 10¹⁴ Hz</p>
+
+  <p><strong>Answer:</strong> 7.0 × 10¹⁴ Hz.</p>
+
+  <h3>5. Common errors</h3>
+
+  <ul>
+    <li>Subtracting the work function from kinetic energy instead of
+    adding them to obtain photon energy.</li>
+    <li>Dividing by the work function instead of Planck's constant.</li>
+    <li>Mixing joules and electronvolts in the same calculation.</li>
+    <li>Reporting the answer in joules when the question asks for
+    frequency in hertz.</li>
+  </ul>
+  `,
+
+  [
+    {
+      q: "A metal has a work function of 3.5 × 10⁻¹⁹ J and the emitted electrons have maximum kinetic energy of 1.5 × 10⁻¹⁹ J. Calculate the incident frequency. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use f = (φ + Kmax)/h.",
+      steps: [
+        "Add the energies: 3.5 × 10⁻¹⁹ + 1.5 × 10⁻¹⁹ = 5.0 × 10⁻¹⁹ J.",
+        "Write f = E/h.",
+        "Substitute f = (5.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "Divide the coefficients and subtract the exponents."
+      ],
+      ans: "Approximately 7.54 × 10¹⁴ Hz.",
+      why: "The photon must supply both the work function and the maximum kinetic energy, so its energy is φ + Kmax."
+    },
+    {
+      q: "A metal has a work function of 2.5 eV and the maximum kinetic energy of its emitted electrons is 1.0 eV. Calculate the photon frequency. Use 1 eV = 1.60 × 10⁻¹⁹ J and h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Add the energies in eV, convert the total to joules, then divide by h.",
+      steps: [
+        "Calculate total photon energy: 2.5 + 1.0 = 3.5 eV.",
+        "Convert to joules: E = 3.5 × 1.60 × 10⁻¹⁹ = 5.60 × 10⁻¹⁹ J.",
+        "Calculate f = E/h.",
+        "Substitute f = (5.60 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)."
+      ],
+      ans: "Approximately 8.45 × 10¹⁴ Hz.",
+      why: "The photon energy is the sum of the energy used for escape and the electron's maximum kinetic energy."
+    },
+    {
+      q: "The work function of a metal is 4.0 × 10⁻¹⁹ J. If the maximum kinetic energy is 2.0 × 10⁻¹⁹ J, calculate the photon frequency and state the photon energy.",
+      hint: "Find E = φ + Kmax first, then use f = E/h.",
+      steps: [
+        "Add the energies: E = 4.0 × 10⁻¹⁹ + 2.0 × 10⁻¹⁹ J.",
+        "Obtain E = 6.0 × 10⁻¹⁹ J.",
+        "Calculate f = (6.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "Give the energy and frequency with their correct units."
+      ],
+      ans: "Photon energy = 6.0 × 10⁻¹⁹ J; frequency ≈ 9.05 × 10¹⁴ Hz.",
+      why: "Einstein's equation gives the photon energy as the work function plus the maximum kinetic energy."
+    },
+    {
+      q: "A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Its emitted electrons have maximum kinetic energy 1.326 × 10⁻¹⁹ J. Calculate the incident frequency using h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Find φ = hf₀, add Kmax, then divide the total by h.",
+      steps: [
+        "Calculate φ = (6.63 × 10⁻³⁴)(5.0 × 10¹⁴) = 3.315 × 10⁻¹⁹ J.",
+        "Add the kinetic energy: E = 3.315 × 10⁻¹⁹ + 1.326 × 10⁻¹⁹.",
+        "Obtain E = 4.641 × 10⁻¹⁹ J.",
+        "Calculate f = (4.641 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)."
+      ],
+      ans: "7.0 × 10¹⁴ Hz.",
+      why: "The threshold frequency determines the work function, after which Einstein's equation gives the incident photon energy and frequency."
+    },
+    {
+      q: "A student uses f = (φ − Kmax)/h to calculate incident frequency. Explain the error and calculate the correct frequency if φ = 3.0 × 10⁻¹⁹ J and Kmax = 2.0 × 10⁻¹⁹ J. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Recall that photon energy supplies both the work function and kinetic energy.",
+      steps: [
+        "Start from hf = φ + Kmax.",
+        "Rearrange to f = (φ + Kmax)/h.",
+        "Add: φ + Kmax = 5.0 × 10⁻¹⁹ J.",
+        "Divide: f = (5.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)."
+      ],
+      ans: "The energies must be added, not subtracted. The correct frequency is approximately 7.54 × 10¹⁴ Hz.",
+      why: "The photon supplies energy for both electron escape and kinetic motion, so subtraction would violate the energy balance."
+    }
+  ]
+);
+// ============================================================
+// PHOTOELECTRIC EMISSION — BATCH 4
+// Screens 11–13
+// ============================================================
+
+
+// ------------------------------------------------------------
+// 11. MEANING OF THRESHOLD FREQUENCY
+// ------------------------------------------------------------
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Meaning of Threshold Frequency",
+
+  `
+  <h2>Meaning of Threshold Frequency</h2>
+
+  <h3>1. Definition</h3>
+
+  <p>
+    The <strong>threshold frequency</strong> of a metal is the minimum
+    frequency of incident electromagnetic radiation required to cause
+    photoelectric emission from its surface.
+  </p>
+
+  <p>
+    It is represented by <strong>f₀</strong> (sometimes written as
+    ν₀) and is measured in hertz (Hz).
+  </p>
+
+  <p>
+    The threshold frequency depends on the metal because different
+    metals have different work functions.
+  </p>
+
+  <h3>2. Why a minimum frequency exists</h3>
+
+  <p>
+    Light transfers energy to electrons in discrete packets called
+    photons. The energy of one photon is:
+  </p>
+
+  <p><strong>E = hf</strong></p>
+
+  <p>
+    where h is Planck's constant and f is the frequency of the
+    incident radiation.
+  </p>
+
+  <p>
+    An electron can escape only when the photon supplies at least the
+    metal's work function, φ. At the threshold frequency, the photon
+    supplies exactly this minimum energy.
+  </p>
+
+  <p><strong>hf₀ = φ</strong></p>
+
+  <p>Therefore:</p>
+
+  <p><strong>f₀ = φ/h</strong></p>
+
+  <h3>3. What happens at the threshold frequency?</h3>
+
+  <p>
+    At f = f₀, the photon supplies exactly enough energy for an
+    electron to escape from the metal. No energy remains for maximum
+    kinetic energy.
+  </p>
+
+  <p><strong>Kmax = hf₀ − φ = 0</strong></p>
+
+  <p>
+    The electron just escapes. This does not mean that no energy was
+    supplied; it means that all the photon energy was used to overcome
+    the work function.
+  </p>
+
+  <h3>4. Radiation above and below threshold</h3>
+
+  <ul>
+    <li><strong>f &lt; f₀:</strong> The photon energy is insufficient,
+    so photoelectric emission does not occur.</li>
+    <li><strong>f = f₀:</strong> Emission is just possible, with zero
+    maximum kinetic energy.</li>
+    <li><strong>f &gt; f₀:</strong> Emission is possible, and the excess
+    energy becomes maximum kinetic energy.</li>
+  </ul>
+
+  <h3>5. Worked examples</h3>
+
+  <p><strong>Example 1: Calculating threshold frequency</strong></p>
+
+  <p>
+    A metal has a work function of 3.315 × 10⁻¹⁹ J. Calculate its
+    threshold frequency. Take h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Write the relationship.</p>
+  <p>φ = hf₀</p>
+
+  <p><strong>Step 2:</strong> Rearrange.</p>
+  <p>f₀ = φ/h</p>
+
+  <p><strong>Step 3:</strong> Substitute.</p>
+  <p>
+    f₀ = (3.315 × 10⁻¹⁹)/(6.63 × 10⁻³⁴)
+  </p>
+
+  <p><strong>Step 4:</strong> Divide the coefficients and subtract
+  the exponents.</p>
+  <p>
+    f₀ = 0.5 × 10¹⁵ = 5.0 × 10¹⁴ Hz
+  </p>
+
+  <p><strong>Answer:</strong> 5.0 × 10¹⁴ Hz.</p>
+
+  <p><strong>Example 2: Determining whether a frequency is above
+  threshold</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 4.0 × 10¹⁴ Hz. Light of
+    frequency 6.0 × 10¹⁴ Hz falls on it. Determine whether emission
+    is possible.
+  </p>
+
+  <p><strong>Step 1:</strong> Identify the frequencies.</p>
+  <p>f = 6.0 × 10¹⁴ Hz; f₀ = 4.0 × 10¹⁴ Hz</p>
+
+  <p><strong>Step 2:</strong> Compare.</p>
+  <p>f &gt; f₀</p>
+
+  <p><strong>Answer:</strong> Photoelectric emission is possible
+  because the incident frequency exceeds the threshold frequency.</p>
+
+  <p><strong>Example 3: Finding the maximum kinetic energy at
+  a frequency above threshold</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. It is
+    illuminated by light of frequency 8.0 × 10¹⁴ Hz. Calculate the
+    maximum kinetic energy of the emitted electrons. Take
+    h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Use Einstein's equation.</p>
+  <p>Kmax = hf − φ</p>
+
+  <p><strong>Step 2:</strong> Since φ = hf₀, substitute.</p>
+  <p>Kmax = h(f − f₀)</p>
+
+  <p><strong>Step 3:</strong> Substitute the values.</p>
+  <p>
+    Kmax = (6.63 × 10⁻³⁴)(8.0 × 10¹⁴ − 5.0 × 10¹⁴)
+  </p>
+
+  <p><strong>Step 4:</strong> Calculate.</p>
+  <p>
+    Kmax = (6.63 × 10⁻³⁴)(3.0 × 10¹⁴)
+  </p>
+  <p>Kmax = 1.989 × 10⁻¹⁹ J</p>
+
+  <p><strong>Answer:</strong> 1.99 × 10⁻¹⁹ J.</p>
+
+  <h3>6. Important distinction</h3>
+
+  <p>
+    Threshold frequency is not the frequency that produces the
+    greatest kinetic energy. It is the minimum frequency that permits
+    emission. Increasing the frequency above threshold increases the
+    maximum kinetic energy of the emitted electrons.
+  </p>
+  `,
+
+  [
+    {
+      q: "Define the threshold frequency of a metal and state its SI unit.",
+      hint: "Think of the minimum frequency required for photoelectric emission.",
+      steps: [
+        "Identify the process: emission of electrons from a metal surface.",
+        "State that the frequency is the minimum required for emission.",
+        "Give the SI unit of frequency."
+      ],
+      ans: "Threshold frequency is the minimum frequency of incident radiation required to cause photoelectric emission from a metal. Its SI unit is the hertz (Hz).",
+      why: "Below this frequency, each photon has insufficient energy to overcome the metal's work function."
+    },
+    {
+      q: "A metal has a work function of 4.0 × 10⁻¹⁹ J. Calculate its threshold frequency using h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use f₀ = φ/h.",
+      steps: [
+        "Write f₀ = φ/h.",
+        "Substitute f₀ = (4.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "Divide 4.0 by 6.63.",
+        "Subtract the exponents: −19 − (−34) = 15.",
+        "Round suitably to three significant figures."
+      ],
+      ans: "Approximately 6.03 × 10¹⁴ Hz.",
+      why: "The threshold frequency is obtained by dividing the work function by Planck's constant."
+    },
+    {
+      q: "A metal has a threshold frequency of 5.5 × 10¹⁴ Hz. Light of frequency 4.0 × 10¹⁴ Hz is incident on it. Determine whether photoelectric emission occurs and justify your answer.",
+      hint: "Compare the incident frequency with the threshold frequency.",
+      steps: [
+        "Write f = 4.0 × 10¹⁴ Hz.",
+        "Write f₀ = 5.5 × 10¹⁴ Hz.",
+        "Compare the values: f < f₀.",
+        "Apply the threshold condition."
+      ],
+      ans: "No photoelectric emission occurs because the incident frequency is below the threshold frequency.",
+      why: "Each photon has less energy than the work function requires, and increasing the number of photons at this same frequency does not make individual photons more energetic."
+    },
+    {
+      q: "At the threshold frequency, calculate the maximum kinetic energy of an emitted electron and explain why it has this value.",
+      hint: "Use Kmax = hf₀ − φ and recall that φ = hf₀.",
+      steps: [
+        "Write Kmax = hf₀ − φ.",
+        "At threshold, substitute φ = hf₀.",
+        "Obtain Kmax = hf₀ − hf₀.",
+        "Simplify."
+      ],
+      ans: "Kmax = 0 J.",
+      why: "The photon provides exactly the energy needed for escape, leaving no excess energy for kinetic motion."
+    },
+    {
+      q: "Metal A has a work function of 2.0 × 10⁻¹⁹ J, while metal B has a work function of 4.0 × 10⁻¹⁹ J. Which metal has the lower threshold frequency? Explain using a formula.",
+      hint: "Use f₀ = φ/h and note that both metals have the same Planck constant.",
+      steps: [
+        "Write f₀A = φA/h.",
+        "Write f₀B = φB/h.",
+        "Compare the work functions: φA < φB.",
+        "Since h is the same, compare the resulting threshold frequencies."
+      ],
+      ans: "Metal A has the lower threshold frequency because its work function is smaller.",
+      why: "Threshold frequency is directly proportional to work function: f₀ = φ/h."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// 12. PHOTOELECTRIC EMISSION BELOW THRESHOLD FREQUENCY
+// ------------------------------------------------------------
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Photoelectric Emission Below Threshold Frequency",
+
+  `
+  <h2>Photoelectric Emission Below Threshold Frequency</h2>
+
+  <h3>1. What happens below threshold?</h3>
+
+  <p>
+    When the frequency of incident light is below the threshold
+    frequency of a metal, photoelectric emission does not occur.
+    The energy of each photon is insufficient to release an electron.
+  </p>
+
+  <p>
+    The condition is:
+  </p>
+
+  <p><strong>f &lt; f₀</strong></p>
+
+  <p>
+    Since photon energy is E = hf, the energy of each photon is less
+    than the work function:
+  </p>
+
+  <p><strong>hf &lt; φ</strong></p>
+
+  <h3>2. Why increasing intensity does not solve the problem</h3>
+
+  <p>
+    Intensity describes the energy delivered by light per unit area
+    per unit time. For light of a fixed frequency, increasing the
+    intensity increases the number of photons arriving each second.
+  </p>
+
+  <p>
+    However, the energy of each photon remains hf as long as the
+    frequency stays constant.
+  </p>
+
+  <p>
+    Therefore, even a very intense beam cannot produce ordinary
+    photoelectric emission from a metal if every photon has energy
+    below the work function.
+  </p>
+
+  <p>
+    The key distinction is between the energy of an individual photon
+    and the total energy carried by a beam of many photons.
+  </p>
+
+  <h3>3. A numerical demonstration</h3>
+
+  <p>
+    Suppose a metal has a work function of 3.0 eV and the incident
+    photons each have an energy of 2.0 eV.
+  </p>
+
+  <p>
+    Each photon is short of the required energy by:
+  </p>
+
+  <p>3.0 − 2.0 = 1.0 eV</p>
+
+  <p>
+    Increasing the number of 2.0 eV photons does not make any
+    individual photon carry 3.0 eV. In the ordinary one-photon
+    photoelectric effect, emission therefore does not occur.
+  </p>
+
+  <h3>4. What would allow emission?</h3>
+
+  <p>
+    The incident frequency must be raised to at least the threshold
+    frequency, so that:
+  </p>
+
+  <p><strong>hf ≥ φ</strong></p>
+
+  <p>
+    At the threshold, an electron just escapes. Above the threshold,
+    the excess photon energy can become the maximum kinetic energy
+    of the emitted electron.
+  </p>
+
+  <h3>5. Worked examples</h3>
+
+  <p><strong>Example 1: Checking the threshold condition</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. It is
+    illuminated with light of frequency 4.0 × 10¹⁴ Hz. Does
+    photoelectric emission occur?
+  </p>
+
+  <p><strong>Step 1:</strong> Identify the frequencies.</p>
+  <p>f = 4.0 × 10¹⁴ Hz; f₀ = 6.0 × 10¹⁴ Hz</p>
+
+  <p><strong>Step 2:</strong> Compare.</p>
+  <p>4.0 × 10¹⁴ &lt; 6.0 × 10¹⁴</p>
+
+  <p><strong>Answer:</strong> No emission occurs because the
+  incident frequency is below threshold.</p>
+
+  <p><strong>Example 2: Why higher intensity cannot cause emission</strong></p>
+
+  <p>
+    A metal has a work function of 4.0 eV. Each incident photon has
+    an energy of 2.5 eV. Explain whether increasing the intensity
+    will cause emission.
+  </p>
+
+  <p><strong>Step 1:</strong> Compare photon energy and work function.</p>
+  <p>2.5 eV &lt; 4.0 eV</p>
+
+  <p><strong>Step 2:</strong> Consider what intensity changes.</p>
+  <p>
+    Increasing intensity increases the number of photons arriving,
+    not the energy of each photon.
+  </p>
+
+  <p><strong>Answer:</strong> Increasing intensity alone will not
+  cause ordinary photoelectric emission at this frequency.</p>
+
+  <p><strong>Example 3: Finding the minimum photon energy needed</strong></p>
+
+  <p>
+    A metal has a threshold frequency of 7.0 × 10¹⁴ Hz. Calculate
+    the minimum photon energy needed for emission. Take
+    h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Use the threshold relationship.</p>
+  <p>Emin = hf₀</p>
+
+  <p><strong>Step 2:</strong> Substitute.</p>
+  <p>
+    Emin = (6.63 × 10⁻³⁴)(7.0 × 10¹⁴)
+  </p>
+
+  <p><strong>Step 3:</strong> Multiply.</p>
+  <p>
+    Emin = 46.41 × 10⁻²⁰ J
+  </p>
+
+  <p><strong>Step 4:</strong> Write in standard form.</p>
+  <p>Emin = 4.641 × 10⁻¹⁹ J</p>
+
+  <p><strong>Answer:</strong> 4.64 × 10⁻¹⁹ J, to three significant figures.</p>
+
+  <h3>6. Important limitation</h3>
+
+  <p>
+    The conclusion concerns the ordinary one-photon photoelectric
+    effect taught in this topic. Special high-intensity laser
+    conditions can produce multiphoton effects, but these are outside
+    the basic model used here.
+  </p>
+  `,
+
+  [
+    {
+      q: "A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. Light of frequency 3.0 × 10¹⁴ Hz falls on it. Explain why no photoelectric emission occurs.",
+      hint: "Compare the incident frequency with the threshold frequency.",
+      steps: [
+        "Identify f = 3.0 × 10¹⁴ Hz.",
+        "Identify f₀ = 5.0 × 10¹⁴ Hz.",
+        "Since f < f₀, the photon energy hf is below the work function.",
+        "Conclude whether the electron can escape."
+      ],
+      ans: "No photoelectric emission occurs because the incident frequency is below threshold, so each photon has insufficient energy to overcome the work function.",
+      why: "Emission depends on the energy of each photon, not simply on the total energy carried by the beam."
+    },
+    {
+      q: "A metal has a work function of 3.5 eV. Each incident photon has energy 2.0 eV. If the light intensity is doubled, will photoelectric emission begin? Explain.",
+      hint: "Identify what changes when intensity increases while frequency remains constant.",
+      steps: [
+        "Compare the photon energy, 2.0 eV, with the work function, 3.5 eV.",
+        "Recognise that 2.0 eV is insufficient for escape.",
+        "Doubling intensity increases the photon arrival rate but does not change the energy of each photon.",
+        "State the outcome."
+      ],
+      ans: "No. The photon energy remains below the work function, so doubling intensity alone does not initiate ordinary photoelectric emission.",
+      why: "Intensity changes the number of photons, while frequency determines the energy of each photon."
+    },
+    {
+      q: "The work function of a metal is 4.0 × 10⁻¹⁹ J. Calculate the minimum frequency needed for photoelectric emission. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use f₀ = φ/h.",
+      steps: [
+        "Write f₀ = φ/h.",
+        "Substitute f₀ = (4.0 × 10⁻¹⁹)/(6.63 × 10⁻³⁴).",
+        "Divide the coefficients and subtract the exponents.",
+        "Round to three significant figures."
+      ],
+      ans: "Approximately 6.03 × 10¹⁴ Hz.",
+      why: "The threshold frequency is the frequency at which photon energy equals the work function."
+    },
+    {
+      q: "A metal has a threshold frequency of 4.5 × 10¹⁴ Hz. Three light sources produce frequencies of 3.0 × 10¹⁴ Hz, 4.5 × 10¹⁴ Hz and 7.0 × 10¹⁴ Hz. State what happens when each source illuminates the metal.",
+      hint: "Compare each frequency with f₀ and distinguish below, at, and above threshold.",
+      steps: [
+        "For 3.0 × 10¹⁴ Hz, compare with 4.5 × 10¹⁴ Hz.",
+        "For 4.5 × 10¹⁴ Hz, identify equality with threshold.",
+        "For 7.0 × 10¹⁴ Hz, identify a frequency above threshold.",
+        "State the emission outcome for each case."
+      ],
+      ans: "At 3.0 × 10¹⁴ Hz, no emission occurs. At 4.5 × 10¹⁴ Hz, electrons just escape with zero maximum kinetic energy. At 7.0 × 10¹⁴ Hz, emission occurs with positive maximum kinetic energy.",
+      why: "The threshold frequency separates insufficient photon energy from the energy needed for emission and the excess energy available above threshold."
+    },
+    {
+      q: "A metal has a threshold frequency of 6.0 × 10¹⁴ Hz. Calculate the energy of a photon at threshold and explain why photons of lower frequency cannot release electrons. Use h = 6.63 × 10⁻³⁴ J s.",
+      hint: "First calculate E = hf₀, then relate lower frequency to lower photon energy.",
+      steps: [
+        "Write E = hf₀.",
+        "Substitute E = (6.63 × 10⁻³⁴)(6.0 × 10¹⁴).",
+        "Calculate E = 39.78 × 10⁻²⁰ J.",
+        "Express in standard form: 3.978 × 10⁻¹⁹ J.",
+        "Use E = hf to explain what happens when frequency decreases."
+      ],
+      ans: "The threshold photon energy is 3.978 × 10⁻¹⁹ J, approximately 3.98 × 10⁻¹⁹ J. Lower-frequency photons have less energy and cannot overcome the work function.",
+      why: "Photon energy is directly proportional to frequency, so a frequency below threshold means an energy below the minimum escape energy."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// 13. FREQUENCY AND INTENSITY OF INCIDENT LIGHT
+// ------------------------------------------------------------
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Frequency and Intensity of Incident Light",
+
+  `
+  <h2>Frequency and Intensity of Incident Light</h2>
+
+  <h3>1. Frequency and photon energy</h3>
+
+  <p>
+    Frequency determines the energy carried by each photon. The
+    relationship is:
+  </p>
+
+  <p><strong>E = hf</strong></p>
+
+  <p>
+    Since Planck's constant is fixed, increasing frequency increases
+    photon energy. Decreasing frequency decreases photon energy.
+  </p>
+
+  <p>
+    In photoelectric emission, frequency determines whether the photon
+    has enough energy to overcome the metal's work function.
+  </p>
+
+  <h3>2. Effect of frequency on photoelectric emission</h3>
+
+  <p>
+    When the incident frequency is below the threshold frequency,
+    emission does not occur in the ordinary one-photon model.
+  </p>
+
+  <p>
+    At threshold, electrons just escape. Above threshold, the excess
+    photon energy becomes the maximum kinetic energy of the emitted
+    electrons:
+  </p>
+
+  <p><strong>Kmax = hf − φ</strong></p>
+
+  <p>
+    For the same metal, increasing frequency above threshold increases
+    the maximum kinetic energy of the emitted electrons.
+  </p>
+
+  <h3>3. Meaning of intensity</h3>
+
+  <p>
+    The intensity of light describes the energy arriving per unit area
+    per unit time. For light of a fixed frequency, increasing intensity
+    generally increases the number of photons arriving per second per
+    unit area.
+  </p>
+
+  <p>
+    It does not increase the energy of each photon. The energy of each
+    photon remains hf when frequency remains constant.
+  </p>
+
+  <h3>4. Effect of intensity above threshold</h3>
+
+  <p>
+    If the frequency is above threshold, increasing intensity usually
+    increases the number of emitted photoelectrons per second, provided
+    other conditions remain unchanged.
+  </p>
+
+  <p>
+    This increases the photoelectric current when the emitted electrons
+    are collected by a suitable circuit.
+  </p>
+
+  <p>
+    However, increasing intensity alone does not increase the maximum
+    kinetic energy of the emitted electrons when frequency is fixed.
+  </p>
+
+  <h3>5. Comparing the two effects</h3>
+
+  <table>
+    <tr>
+      <th>Change</th>
+      <th>Main effect in the basic photoelectric model</th>
+    </tr>
+    <tr>
+      <td>Increase frequency above threshold</td>
+      <td>Increases maximum kinetic energy.</td>
+    </tr>
+    <tr>
+      <td>Increase intensity above threshold at fixed frequency</td>
+      <td>Usually increases the number of emitted electrons per second and the photoelectric current.</td>
+    </tr>
+    <tr>
+      <td>Increase intensity below threshold at fixed frequency</td>
+      <td>Does not cause ordinary one-photon emission.</td>
+    </tr>
+    <tr>
+      <td>Increase intensity at fixed frequency</td>
+      <td>Does not increase the energy of each photon.</td>
+    </tr>
+  </table>
+
+  <h3>6. Worked examples</h3>
+
+  <p><strong>Example 1: Effect of increasing frequency</strong></p>
+
+  <p>
+    Light of frequency 5.0 × 10¹⁴ Hz produces a maximum electron
+    kinetic energy of 1.0 × 10⁻¹⁹ J from a particular metal.
+    The frequency is increased to 7.0 × 10¹⁴ Hz. Assuming the same
+    metal and that emission occurs, calculate the new maximum kinetic
+    energy. Take h = 6.63 × 10⁻³⁴ J s.
+  </p>
+
+  <p><strong>Step 1:</strong> Find the change in frequency.</p>
+  <p>
+    Δf = (7.0 − 5.0) × 10¹⁴ = 2.0 × 10¹⁴ Hz
+  </p>
+
+  <p><strong>Step 2:</strong> Calculate the increase in maximum
+  kinetic energy.</p>
+  <p>ΔKmax = hΔf</p>
+  <p>
+    ΔKmax = (6.63 × 10⁻³⁴)(2.0 × 10¹⁴)
+  </p>
+  <p>ΔKmax = 1.326 × 10⁻¹⁹ J</p>
+
+  <p><strong>Step 3:</strong> Add the increase to the original
+  maximum kinetic energy.</p>
+  <p>
+    Knew = 1.0 × 10⁻¹⁹ + 1.326 × 10⁻¹⁹
+  </p>
+  <p>Knew = 2.326 × 10⁻¹⁹ J</p>
+
+  <p><strong>Answer:</strong> 2.33 × 10⁻¹⁹ J, to three significant
+  figures.</p>
+
+  <p><strong>Example 2: Effect of increasing intensity</strong></p>
+
+  <p>
+    A metal is illuminated with light above its threshold frequency.
+    The intensity is doubled while the frequency remains unchanged.
+    Describe the expected changes in photoelectric current and
+    maximum kinetic energy.
+  </p>
+
+  <p><strong>Step 1:</strong> Identify what changes.</p>
+  <p>Intensity doubles; frequency remains constant.</p>
+
+  <p><strong>Step 2:</strong> Consider the photon energy.</p>
+  <p>E = hf remains unchanged.</p>
+
+  <p><strong>Step 3:</strong> Consider the number of photons arriving.</p>
+  <p>
+    Greater intensity generally means more photons arrive per second
+    per unit area, so more electrons can be emitted.
+  </p>
+
+  <p><strong>Answer:</strong> The photoelectric current generally
+  increases, while the maximum kinetic energy remains unchanged.</p>
+
+  <p><strong>Example 3: Comparing intensity and frequency</strong></p>
+
+  <p>
+    Two light beams illuminate the same metal. Beam A has a frequency
+    above threshold but low intensity. Beam B has twice the frequency
+    of beam A and a higher intensity. Assume both frequencies are
+    above threshold. Compare the maximum kinetic energies of their
+    emitted electrons.
+  </p>
+
+  <p><strong>Step 1:</strong> Use Kmax = hf − φ for the same metal.</p>
+
+  <p><strong>Step 2:</strong> Compare the frequencies.</p>
+  <p>fB = 2fA</p>
+
+  <p><strong>Step 3:</strong> Compare the kinetic energies.</p>
+  <p>
+    Kmax,A = hfA − φ
+  </p>
+  <p>
+    Kmax,B = 2hfA − φ
+  </p>
+
+  <p>
+    Therefore, Kmax,B − Kmax,A = hfA.
+  </p>
+
+  <p><strong>Answer:</strong> Beam B produces electrons with greater
+  maximum kinetic energy because its frequency is higher. Its greater
+  intensity is not the reason for the higher maximum kinetic energy.</p>
+
+  <h3>7. Common misconceptions</h3>
+
+  <ul>
+    <li>Intensity and frequency are not interchangeable.</li>
+    <li>Higher intensity does not mean higher energy per photon.</li>
+    <li>Higher frequency above threshold increases maximum kinetic energy.</li>
+    <li>Increasing intensity below threshold does not produce ordinary
+    one-photon photoelectric emission.</li>
+  </ul>
+  `,
+
+  [
+    {
+      q: "Explain the difference between the effects of increasing frequency and increasing intensity on light incident on a metal above its threshold frequency.",
+      hint: "Separate the energy of each photon from the number of photons arriving.",
+      steps: [
+        "Use E = hf to explain the effect of frequency.",
+        "Use Kmax = hf − φ to explain the effect on maximum kinetic energy.",
+        "Explain how intensity affects the number of incident photons at fixed frequency.",
+        "Relate the number of emitted electrons to photoelectric current."
+      ],
+      ans: "Increasing frequency increases photon energy and maximum kinetic energy. Increasing intensity at fixed frequency generally increases the number of emitted electrons per second and the photoelectric current, but does not increase maximum kinetic energy.",
+      why: "Frequency determines the energy per photon, whereas intensity at fixed frequency is associated with the photon arrival rate."
+    },
+    {
+      q: "Light of frequency 4.0 × 10¹⁴ Hz produces electrons with maximum kinetic energy 8.0 × 10⁻²⁰ J. The frequency is increased to 6.0 × 10¹⁴ Hz. Calculate the new maximum kinetic energy. Take h = 6.63 × 10⁻³⁴ J s.",
+      hint: "Use ΔKmax = hΔf, then add the increase to the original kinetic energy.",
+      steps: [
+        "Calculate Δf = (6.0 − 4.0) × 10¹⁴ = 2.0 × 10¹⁴ Hz.",
+        "Calculate ΔKmax = (6.63 × 10⁻³⁴)(2.0 × 10¹⁴).",
+        "Obtain ΔKmax = 1.326 × 10⁻¹⁹ J.",
+        "Add the original energy: 8.0 × 10⁻²⁰ + 1.326 × 10⁻¹⁹ J."
+      ],
+      ans: "2.126 × 10⁻¹⁹ J, approximately 2.13 × 10⁻¹⁹ J.",
+      why: "For the same metal, the work function stays constant, so the change in maximum kinetic energy equals h times the change in frequency."
+    },
+    {
+      q: "A metal is illuminated with light above threshold. The light intensity is tripled while its frequency stays constant. State what happens to the energy of each photon, the maximum kinetic energy, and the photoelectric current.",
+      hint: "Consider separately photon energy, excess energy, and photon arrival rate.",
+      steps: [
+        "Use E = hf and note that frequency has not changed.",
+        "Use Kmax = hf − φ and note that the metal is unchanged.",
+        "Consider how tripling intensity affects the number of photons arriving per second.",
+        "State the expected effect on photoelectric current."
+      ],
+      ans: "Photon energy remains unchanged. Maximum kinetic energy remains unchanged. Photoelectric current generally increases because more electrons are emitted per second, assuming the collection conditions remain unchanged.",
+      why: "At fixed frequency, intensity changes the photon arrival rate rather than the energy carried by each photon."
+    },
+    {
+      q: "A metal has a threshold frequency of 5.0 × 10¹⁴ Hz. It is illuminated first with light of frequency 4.0 × 10¹⁴ Hz at low intensity, then with the same frequency at very high intensity. Explain the expected result in both cases.",
+      hint: "Compare the frequency with the threshold before considering intensity.",
+      steps: [
+        "Compare 4.0 × 10¹⁴ Hz with the threshold 5.0 × 10¹⁴ Hz.",
+        "Conclude whether each photon has enough energy.",
+        "Recognise that changing intensity does not change photon energy at fixed frequency.",
+        "State the outcome for both illuminations."
+      ],
+      ans: "Photoelectric emission does not occur in either case in the ordinary one-photon model because the frequency remains below threshold, even when intensity is very high.",
+      why: "A larger number of photons cannot compensate for insufficient energy per photon in the basic photoelectric effect."
+    },
+    {
+      q: "Two beams illuminate the same metal above threshold. Beam A has frequency 6.0 × 10¹⁴ Hz, while beam B has frequency 9.0 × 10¹⁴ Hz. If both beams have the same intensity, which beam produces electrons with greater maximum kinetic energy? Explain whether equal intensity changes your conclusion.",
+      hint: "Compare the frequencies using Kmax = hf − φ.",
+      steps: [
+        "Write Kmax,A = h(6.0 × 10¹⁴) − φ.",
+        "Write Kmax,B = h(9.0 × 10¹⁴) − φ.",
+        "Subtract the expressions to compare the maximum kinetic energies.",
+        "Explain why equal intensity does not make the photon energies equal."
+      ],
+      ans: "Beam B produces electrons with greater maximum kinetic energy. The difference is h(3.0 × 10¹⁴) = 1.989 × 10⁻¹⁹ J. Equal intensity does not change this conclusion.",
+      why: "For the same metal, the work function is identical for both beams. The higher frequency gives each photon more energy, regardless of the beams having equal intensity."
+    }
+  ]
+);
+// ============================================================
+// BATCH 6: PHOTOELECTRIC EMISSION
+// SCREENS 17–19
+// Focus: Stopping Potential and Maximum Kinetic Energy
+// ============================================================
+// ------------------------------------------------------------
+// 17. MEANING OF STOPPING POTENTIAL
+// ------------------------------------------------------------
+add(
+  "physics",
+  "photoelectric_emission",
+  "Meaning of Stopping Potential",
+
+  `
+  <h2>Meaning of Stopping Potential</h2>
+
+  <h3>1. What is stopping potential?</h3>
+
+  <p>
+    When light of sufficiently high frequency strikes a suitable
+    metal surface, electrons may be emitted. These emitted electrons
+    are called photoelectrons.
+  </p>
+
+  <p>
+    Some photoelectrons leave the metal with more kinetic energy
+    than others. A reverse potential difference can be applied
+    between the emitting metal and the collecting electrode to
+    oppose the motion of the photoelectrons.
+  </p>
+
+  <p>
+    The <b>stopping potential</b> is the minimum magnitude of the
+    reverse potential difference required to prevent even the
+    most energetic photoelectrons from reaching the collecting
+    electrode.
+  </p>
+
+  <p>
+    It is represented by <b>V<sub>s</sub></b> and measured in volts (V).
+  </p>
+
+  <h3>2. How does stopping potential work?</h3>
+
+  <p>
+    A photoelectron moving towards the collector has kinetic energy.
+    When a reverse potential is applied, the electric field opposes
+    the electron's motion. The electron loses kinetic energy as it
+    moves against this electric field.
+  </p>
+
+  <p>
+    As the magnitude of the reverse potential increases, fewer
+    photoelectrons can reach the collector. At the stopping
+    potential, even the fastest photoelectrons are prevented
+    from reaching it, so the photocurrent becomes zero.
+  </p>
+
+  <p>
+    Stopping potential therefore measures the maximum kinetic
+    energy of the emitted photoelectrons, rather than the number
+    of electrons emitted.
+  </p>
+
+  <h3>3. Relationship between stopping potential and kinetic energy</h3>
+
+  <p>
+    The electrical work done in stopping an electron is equal
+    to the maximum kinetic energy it initially possesses.
+  </p>
+
+  <p><b>Maximum kinetic energy = electronic charge × stopping potential</b></p>
+
+  <p>
+    K<sub>max</sub> = eV<sub>s</sub>
+  </p>
+
+  <p>Where:</p>
+
+  <ul>
+    <li>K<sub>max</sub> is the maximum kinetic energy in joules (J).</li>
+    <li>e is the magnitude of the electronic charge, 1.60 × 10<sup>-19</sup> C.</li>
+    <li>V<sub>s</sub> is the magnitude of the stopping potential in volts (V).</li>
+  </ul>
+
+  <p>
+    The equation uses the positive magnitudes of kinetic energy,
+    electronic charge and stopping potential. The applied potential
+    is reverse-biased; its signed voltage depends on the circuit's
+    chosen polarity convention.
+  </p>
+
+  <h3>4. Worked examples</h3>
+
+  <p><b>Example 1: Identifying stopping potential</b></p>
+
+  <p>
+    A reverse potential of 2.5 V is just sufficient to prevent
+    the fastest photoelectrons from reaching the collector.
+    What is the stopping potential?
+  </p>
+
+  <p><b>Step 1:</b> Identify the given reverse potential at which the photocurrent becomes zero.</p>
+  <p>V<sub>s</sub> = 2.5 V</p>
+
+  <p><b>Answer:</b> The stopping potential is 2.5 V.</p>
+
+  <p><b>Example 2: Interpreting a photocurrent measurement</b></p>
+
+  <p>
+    In a photoelectric experiment, the photocurrent decreases
+    to zero when the reverse potential reaches 1.8 V.
+    Determine the stopping potential.
+  </p>
+
+  <p><b>Step 1:</b> Stopping potential is the magnitude of the reverse potential at zero photocurrent.</p>
+  <p>V<sub>s</sub> = 1.8 V</p>
+
+  <p><b>Answer:</b> 1.8 V.</p>
+
+  <p><b>Example 3: Calculating maximum kinetic energy</b></p>
+
+  <p>
+    The stopping potential for photoelectrons is 3.0 V.
+    Calculate their maximum kinetic energy.
+  </p>
+
+  <p><b>Step 1: Write the equation.</b></p>
+  <p>K<sub>max</sub> = eV<sub>s</sub></p>
+
+  <p><b>Step 2: Substitute the values.</b></p>
+  <p>K<sub>max</sub> = (1.60 × 10<sup>-19</sup>)(3.0)</p>
+
+  <p><b>Step 3: Calculate.</b></p>
+  <p>K<sub>max</sub> = 4.80 × 10<sup>-19</sup> J</p>
+
+  <p><b>Answer:</b> 4.80 × 10<sup>-19</sup> J.</p>
+
+  <h3>5. Important distinctions</h3>
+
+  <ul>
+    <li>
+      <b>Stopping potential:</b> The reverse potential that stops
+      the fastest photoelectrons.
+    </li>
+    <li>
+      <b>Threshold frequency:</b> The minimum frequency of incident
+      light that can cause photoelectric emission from a particular
+      material.
+    </li>
+    <li>
+      <b>Photocurrent:</b> The electric current produced by
+      photoelectrons reaching the collector.
+    </li>
+  </ul>
+
+  <p>
+    Do not confuse stopping potential with threshold frequency.
+    One describes the reverse voltage needed to stop emitted
+    electrons; the other describes a minimum frequency of light.
+  </p>
+  `,
+
+  [
+    {
+      q: "In a photoelectric experiment, the photocurrent becomes zero when a reverse potential of magnitude 2.4 V is applied. Define the stopping potential and state its value.",
+      hint: "Consider the reverse potential at which even the fastest photoelectrons cannot reach the collector.",
+      steps: [
+        "Stopping potential is the minimum magnitude of reverse potential that prevents the fastest photoelectrons from reaching the collector.",
+        "The photocurrent becomes zero at a reverse potential of 2.4 V.",
+        "Therefore, V_s = 2.4 V."
+      ],
+      ans: "The stopping potential is 2.4 V.",
+      why: "The stopping potential is identified by the point at which the photocurrent becomes zero."
+    },
+    {
+      q: "Explain why applying a reverse potential reduces the photocurrent in a photoelectric cell.",
+      hint: "Think about the direction of the electric force relative to the photoelectrons' motion.",
+      steps: [
+        "Photoelectrons move from the emitting surface towards the collecting electrode.",
+        "The reverse electric field opposes their motion.",
+        "As the reverse potential increases, fewer electrons have enough kinetic energy to reach the collector.",
+        "At the stopping potential, no photoelectrons reach the collector."
+      ],
+      ans: "The reverse electric field opposes the motion of photoelectrons, reducing the number reaching the collector until the photocurrent becomes zero.",
+      why: "Photocurrent depends on electrons reaching the collector, not simply on electrons leaving the metal."
+    },
+    {
+      q: "A photoelectric cell has a stopping potential of 1.5 V. Calculate the maximum kinetic energy of its photoelectrons in joules. Take e = 1.60 × 10^-19 C.",
+      hint: "Use K_max = eV_s.",
+      steps: [
+        "Write K_max = eV_s.",
+        "Substitute: K_max = (1.60 × 10^-19)(1.5).",
+        "Multiply 1.60 by 1.5 to obtain 2.40.",
+        "Therefore, K_max = 2.40 × 10^-19 J."
+      ],
+      ans: "2.40 × 10^-19 J.",
+      why: "The electrical work eV_s equals the maximum kinetic energy removed from a photoelectron."
+    },
+    {
+      q: "Two photoelectric experiments have stopping potentials of 0.8 V and 2.6 V. Which experiment has the greater maximum kinetic energy, and why?",
+      hint: "Compare the stopping potentials using K_max = eV_s.",
+      steps: [
+        "For the first experiment, K_max = e(0.8).",
+        "For the second experiment, K_max = e(2.6).",
+        "The electronic charge e is the same in both experiments.",
+        "Since 2.6 V is greater than 0.8 V, the second experiment has greater maximum kinetic energy."
+      ],
+      ans: "The experiment with a stopping potential of 2.6 V.",
+      why: "Maximum kinetic energy is directly proportional to stopping potential for the same magnitude of electronic charge."
+    },
+    {
+      q: "A learner states that the stopping potential is the minimum frequency needed to eject electrons from a metal. Identify the error and give the correct meanings of stopping potential and threshold frequency.",
+      hint: "One quantity is a voltage; the other is a frequency.",
+      steps: [
+        "Stopping potential is measured in volts.",
+        "It is the minimum magnitude of reverse potential needed to stop the fastest photoelectrons.",
+        "Threshold frequency is measured in hertz.",
+        "It is the minimum incident-light frequency that causes photoelectric emission from a given material."
+      ],
+      ans: "The learner has confused two different quantities. Stopping potential is a reverse voltage, whereas threshold frequency is the minimum light frequency required for photoelectric emission.",
+      why: "The units and physical meanings distinguish the two quantities."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// 18. STOPPING POTENTIAL AND MAXIMUM KINETIC ENERGY
+// ------------------------------------------------------------
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Stopping Potential and Maximum Kinetic Energy",
+
+  `
+  <h2>Stopping Potential and Maximum Kinetic Energy</h2>
+
+  <h3>1. The relationship</h3>
+
+  <p>
+    Photoelectrons leave a metal surface with different kinetic
+    energies. The fastest emitted electrons have the maximum
+    kinetic energy, K<sub>max</sub>.
+  </p>
+
+  <p>
+    When a reverse potential is applied, the electric field does
+    work against the motion of these electrons. At the stopping
+    potential, the electrical work required to stop the fastest
+    electrons equals their initial maximum kinetic energy.
+  </p>
+
+  <p><b>K<sub>max</sub> = eV<sub>s</sub></b></p>
+
+  <p>
+    This is the relationship between stopping potential and
+    maximum kinetic energy.
+  </p>
+
+  <h3>2. What the equation tells us</h3>
+
+  <ul>
+    <li>
+      If the stopping potential increases, the maximum kinetic
+      energy increases.
+    </li>
+    <li>
+      If the stopping potential doubles, the maximum kinetic
+      energy doubles.
+    </li>
+    <li>
+      If the maximum kinetic energy is known, the stopping
+      potential can be calculated by dividing by e.
+    </li>
+    <li>
+      The relationship concerns the most energetic photoelectrons,
+      not the average kinetic energy of all emitted electrons.
+    </li>
+  </ul>
+
+  <h3>3. Calculating kinetic energy from stopping potential</h3>
+
+  <p>
+    When stopping potential is given in volts and the answer is
+    required in joules, use:
+  </p>
+
+  <p>
+    K<sub>max</sub> = (1.60 × 10<sup>-19</sup>)V<sub>s</sub>
+  </p>
+
+  <p>
+    Remember that 1 volt is equal to 1 joule per coulomb.
+    Multiplying the electronic charge in coulombs by the potential
+    in volts therefore gives energy in joules.
+  </p>
+
+  <h3>4. Using electronvolts</h3>
+
+  <p>
+    One electronvolt (eV) is the energy gained by a particle
+    carrying one elementary charge when it moves through a
+    potential difference of 1 V.
+  </p>
+
+  <p>
+    <b>1 eV = 1.60 × 10<sup>-19</sup> J</b>
+  </p>
+
+  <p>
+    For an electron, the numerical value of the maximum kinetic
+    energy in eV equals the numerical value of the stopping
+    potential in V.
+  </p>
+
+  <p>
+    For example, a stopping potential of 4.0 V corresponds to
+    a maximum kinetic energy of 4.0 eV, or
+    6.40 × 10<sup>-19</sup> J.
+  </p>
+
+  <h3>5. Worked examples</h3>
+
+  <p><b>Example 1: Maximum kinetic energy in joules</b></p>
+
+  <p>
+    The stopping potential of a photoelectric cell is 2.5 V.
+    Calculate the maximum kinetic energy of the emitted electrons.
+  </p>
+
+  <p><b>Step 1: Write the equation.</b></p>
+  <p>K<sub>max</sub> = eV<sub>s</sub></p>
+
+  <p><b>Step 2: Substitute.</b></p>
+  <p>K<sub>max</sub> = (1.60 × 10<sup>-19</sup>)(2.5)</p>
+
+  <p><b>Step 3: Calculate.</b></p>
+  <p>K<sub>max</sub> = 4.00 × 10<sup>-19</sup> J</p>
+
+  <p><b>Answer:</b> 4.00 × 10<sup>-19</sup> J.</p>
+
+  <p><b>Example 2: Stopping potential from kinetic energy</b></p>
+
+  <p>
+    The maximum kinetic energy of photoelectrons is
+    8.0 × 10<sup>-19</sup> J. Calculate the stopping potential.
+  </p>
+
+  <p><b>Step 1: Rearrange the equation.</b></p>
+  <p>V<sub>s</sub> = K<sub>max</sub> / e</p>
+
+  <p><b>Step 2: Substitute.</b></p>
+  <p>
+    V<sub>s</sub> =
+    (8.0 × 10<sup>-19</sup>) / (1.60 × 10<sup>-19</sup>)
+  </p>
+
+  <p><b>Step 3: Divide.</b></p>
+  <p>V<sub>s</sub> = 8.0 / 1.60 = 5.0 V</p>
+
+  <p><b>Answer:</b> 5.0 V.</p>
+
+  <p><b>Example 3: Comparing two stopping potentials</b></p>
+
+  <p>
+    In experiment A, the stopping potential is 1.2 V.
+    In experiment B, it is 3.6 V. Compare their maximum
+    kinetic energies.
+  </p>
+
+  <p><b>Step 1: Write the relationship.</b></p>
+  <p>K<sub>max</sub> = eV<sub>s</sub></p>
+
+  <p><b>Step 2: Calculate the ratio.</b></p>
+  <p>
+    K<sub>B</sub> / K<sub>A</sub> =
+    (e × 3.6) / (e × 1.2)
+  </p>
+
+  <p><b>Step 3: Cancel e and divide.</b></p>
+  <p>K<sub>B</sub> / K<sub>A</sub> = 3.6 / 1.2 = 3</p>
+
+  <p><b>Answer:</b>
+    Experiment B has three times the maximum kinetic energy
+    of experiment A.
+  </p>
+
+  <h3>6. Common calculation errors</h3>
+
+  <ul>
+    <li>
+      Multiplying by the electronic charge when the question
+      requires stopping potential instead of kinetic energy.
+    </li>
+    <li>
+      Forgetting the power of ten when using
+      1.60 × 10<sup>-19</sup> C.
+    </li>
+    <li>
+      Reporting joules when the question asks for electronvolts.
+    </li>
+    <li>
+      Using the average kinetic energy instead of maximum
+      kinetic energy.
+    </li>
+  </ul>
+
+  <p>
+    Always identify the required quantity and unit before
+    selecting the equation or performing the calculation.
+  </p>
+  `,
+
+  [
+    {
+      q: "A photoelectric cell has a stopping potential of 4.0 V. Calculate the maximum kinetic energy of the emitted electrons in joules. Take e = 1.60 × 10^-19 C.",
+      hint: "Multiply the electronic charge by the stopping potential.",
+      steps: [
+        "Use K_max = eV_s.",
+        "Substitute: K_max = (1.60 × 10^-19)(4.0).",
+        "Multiply 1.60 by 4.0 to obtain 6.40.",
+        "Therefore, K_max = 6.40 × 10^-19 J."
+      ],
+      ans: "6.40 × 10^-19 J.",
+      why: "The maximum kinetic energy equals the electrical work needed to stop the fastest photoelectrons."
+    },
+    {
+      q: "The maximum kinetic energy of photoelectrons is 3.2 × 10^-19 J. Calculate the stopping potential. Take e = 1.60 × 10^-19 C.",
+      hint: "Rearrange K_max = eV_s to make V_s the subject.",
+      steps: [
+        "V_s = K_max / e.",
+        "Substitute: V_s = (3.2 × 10^-19) / (1.60 × 10^-19).",
+        "Cancel the common power of ten.",
+        "V_s = 3.2 / 1.60 = 2.0 V."
+      ],
+      ans: "2.0 V.",
+      why: "Dividing the maximum kinetic energy in joules by the electronic charge in coulombs gives the stopping potential in volts."
+    },
+    {
+      q: "A photoelectron has a maximum kinetic energy of 6.0 eV. What is the stopping potential required to stop the fastest photoelectrons?",
+      hint: "For electrons, the numerical value of kinetic energy in eV equals the stopping potential in V.",
+      steps: [
+        "The maximum kinetic energy is 6.0 eV.",
+        "Use K_max in eV = V_s in V for an electron.",
+        "Therefore, V_s = 6.0 V."
+      ],
+      ans: "6.0 V.",
+      why: "One electronvolt corresponds to the energy associated with an electron moving through a potential difference of one volt."
+    },
+    {
+      q: "The stopping potential increases from 1.5 V to 4.5 V. By what factor does the maximum kinetic energy increase?",
+      hint: "Compare the final stopping potential with the initial stopping potential.",
+      steps: [
+        "K_initial = e × 1.5.",
+        "K_final = e × 4.5.",
+        "Calculate the ratio: K_final / K_initial = (e × 4.5) / (e × 1.5).",
+        "Cancel e: ratio = 4.5 / 1.5 = 3."
+      ],
+      ans: "The maximum kinetic energy increases by a factor of 3.",
+      why: "Maximum kinetic energy is directly proportional to stopping potential."
+    },
+    {
+      q: "A learner calculates the maximum kinetic energy using K_max = V_s/e. Explain the error and write the correct equation.",
+      hint: "Check whether multiplying or dividing the potential by charge gives the correct energy units.",
+      steps: [
+        "The stopping potential is measured in joules per coulomb.",
+        "Multiplying voltage by charge gives (J/C) × C = J.",
+        "Therefore, the correct equation is K_max = eV_s.",
+        "The rearranged equation for stopping potential is V_s = K_max/e."
+      ],
+      ans: "The learner has used the rearranged equation incorrectly. The correct kinetic-energy equation is K_max = eV_s; V_s = K_max/e is used to calculate stopping potential.",
+      why: "Dimensional analysis confirms that charge multiplied by voltage gives energy in joules."
+    }
+  ]
+);
+
+
+// ------------------------------------------------------------
+// 19. MAXIMUM KINETIC ENERGY FROM STOPPING POTENTIAL
+// ------------------------------------------------------------
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Maximum Kinetic Energy from Stopping Potential",
+
+  `
+  <h2>Maximum Kinetic Energy from Stopping Potential</h2>
+
+  <h3>1. What must you calculate?</h3>
+
+  <p>
+    The stopping potential tells us the maximum kinetic energy
+    of photoelectrons. If the stopping potential is known,
+    the maximum kinetic energy can be calculated directly.
+  </p>
+
+  <p><b>K<sub>max</sub> = eV<sub>s</sub></b></p>
+
+  <p>Use:</p>
+
+  <ul>
+    <li>
+      K<sub>max</sub> = maximum kinetic energy in joules (J).
+    </li>
+    <li>
+      e = 1.60 × 10<sup>-19</sup> C.
+    </li>
+    <li>
+      V<sub>s</sub> = magnitude of stopping potential in volts (V).
+    </li>
+  </ul>
+
+  <h3>2. A reliable calculation method</h3>
+
+  <ol>
+    <li>Identify the stopping potential given in the question.</li>
+    <li>Write K<sub>max</sub> = eV<sub>s</sub>.</li>
+    <li>Convert the electronic charge to 1.60 × 10<sup>-19</sup> C.</li>
+    <li>Substitute the values, including their powers of ten.</li>
+    <li>Multiply and state the answer in joules.</li>
+    <li>If required, convert the result into electronvolts.</li>
+  </ol>
+
+  <h3>3. Converting joules into electronvolts</h3>
+
+  <p>
+    Sometimes the answer is required in electronvolts rather
+    than joules.
+  </p>
+
+  <p>
+    <b>Energy in eV = Energy in J / (1.60 × 10<sup>-19</sup>)</b>
+  </p>
+
+  <p>
+    Since 1 eV = 1.60 × 10<sup>-19</sup> J, divide an energy
+    expressed in joules by this value to convert it to eV.
+  </p>
+
+  <p>
+    For a photoelectron, the maximum kinetic energy in eV
+    has the same numerical value as the stopping potential
+    in volts.
+  </p>
+
+  <h3>4. Worked examples</h3>
+
+  <p><b>Example 1: Calculate maximum kinetic energy</b></p>
+
+  <p>
+    A photoelectric cell has a stopping potential of 2.0 V.
+    Calculate the maximum kinetic energy in joules.
+  </p>
+
+  <p><b>Step 1: Select the equation.</b></p>
+  <p>K<sub>max</sub> = eV<sub>s</sub></p>
+
+  <p><b>Step 2: Substitute.</b></p>
+  <p>K<sub>max</sub> = (1.60 × 10<sup>-19</sup>)(2.0)</p>
+
+  <p><b>Step 3: Multiply.</b></p>
+  <p>K<sub>max</sub> = 3.20 × 10<sup>-19</sup> J</p>
+
+  <p><b>Answer:</b> 3.20 × 10<sup>-19</sup> J.</p>
+
+  <p><b>Example 2: Calculate kinetic energy and convert to eV</b></p>
+
+  <p>
+    The stopping potential in a photoelectric experiment is
+    3.5 V. Calculate the maximum kinetic energy in joules
+    and electronvolts.
+  </p>
+
+  <p><b>Step 1: Calculate in joules.</b></p>
+  <p>K<sub>max</sub> = eV<sub>s</sub></p>
+  <p>K<sub>max</sub> = (1.60 × 10<sup>-19</sup>)(3.5)</p>
+  <p>K<sub>max</sub> = 5.60 × 10<sup>-19</sup> J</p>
+
+  <p><b>Step 2: Convert to electronvolts.</b></p>
+  <p>
+    K<sub>max</sub> =
+    (5.60 × 10<sup>-19</sup>) /
+    (1.60 × 10<sup>-19</sup>) eV
+  </p>
+
+  <p><b>Step 3: Divide.</b></p>
+  <p>K<sub>max</sub> = 3.5 eV</p>
+
+  <p><b>Answer:</b>
+    5.60 × 10<sup>-19</sup> J, equivalent to 3.5 eV.
+  </p>
+
+  <p><b>Example 3: Calculate stopping potential from a given energy</b></p>
+
+  <p>
+    Photoelectrons have a maximum kinetic energy of
+    9.60 × 10<sup>-19</sup> J. Calculate the stopping potential.
+  </p>
+
+  <p><b>Step 1: Rearrange the equation.</b></p>
+  <p>V<sub>s</sub> = K<sub>max</sub> / e</p>
+
+  <p><b>Step 2: Substitute.</b></p>
+  <p>
+    V<sub>s</sub> =
+    (9.60 × 10<sup>-19</sup>) /
+    (1.60 × 10<sup>-19</sup>)
+  </p>
+
+  <p><b>Step 3: Calculate.</b></p>
+  <p>V<sub>s</sub> = 9.60 / 1.60 = 6.0 V</p>
+
+  <p><b>Answer:</b> 6.0 V.</p>
+
+  <h3>5. Understanding the physical meaning</h3>
+
+  <p>
+    A larger stopping potential means that the fastest
+    photoelectrons possess more kinetic energy and therefore
+    require a stronger reverse potential to stop them.
+  </p>
+
+  <p>
+    The stopping potential does not directly tell you how many
+    electrons are emitted. It measures the maximum kinetic
+    energy of the emitted electrons.
+  </p>
+
+  <p>
+    When answering numerical questions, always state the
+    requested unit and distinguish joules from electronvolts.
+  </p>
+  `,
+
+  [
+    {
+      q: "The stopping potential of a photoelectric cell is 5.0 V. Calculate the maximum kinetic energy of the photoelectrons in joules. Take e = 1.60 × 10^-19 C.",
+      hint: "Use K_max = eV_s and multiply the charge by 5.0.",
+      steps: [
+        "Write K_max = eV_s.",
+        "Substitute: K_max = (1.60 × 10^-19)(5.0).",
+        "Multiply 1.60 by 5.0 to get 8.00.",
+        "Therefore, K_max = 8.00 × 10^-19 J."
+      ],
+      ans: "8.00 × 10^-19 J.",
+      why: "The stopping potential multiplied by the electronic charge gives the maximum kinetic energy in joules."
+    },
+    {
+      q: "The stopping potential is 2.8 V. Find the maximum kinetic energy in both joules and electronvolts.",
+      hint: "First use K_max = eV_s for joules. For an electron, the energy in eV has the same numerical value as the stopping potential in V.",
+      steps: [
+        "Calculate the energy in joules: K_max = (1.60 × 10^-19)(2.8).",
+        "K_max = 4.48 × 10^-19 J.",
+        "Convert to electronvolts by dividing by 1.60 × 10^-19 J/eV.",
+        "K_max = 4.48 / 1.60 = 2.8 eV."
+      ],
+      ans: "4.48 × 10^-19 J or 2.8 eV.",
+      why: "Joules and electronvolts are two different units for expressing the same energy."
+    },
+    {
+      q: "A photoelectron's maximum kinetic energy is 4.80 × 10^-19 J. Calculate the stopping potential. Take e = 1.60 × 10^-19 C.",
+      hint: "Divide the maximum kinetic energy by the electronic charge.",
+      steps: [
+        "Use V_s = K_max/e.",
+        "Substitute: V_s = (4.80 × 10^-19)/(1.60 × 10^-19).",
+        "Cancel the common power of ten.",
+        "V_s = 4.80/1.60 = 3.0 V."
+      ],
+      ans: "3.0 V.",
+      why: "Stopping potential is the maximum kinetic energy divided by the magnitude of the electronic charge."
+    },
+    {
+      q: "Two experiments give stopping potentials of 2.0 V and 7.0 V. Calculate the difference between their maximum kinetic energies in joules.",
+      hint: "Calculate each kinetic energy or use the difference in stopping potentials directly.",
+      steps: [
+        "The difference in stopping potential is 7.0 - 2.0 = 5.0 V.",
+        "Use ΔK_max = eΔV_s.",
+        "ΔK_max = (1.60 × 10^-19)(5.0).",
+        "ΔK_max = 8.00 × 10^-19 J."
+      ],
+      ans: "8.00 × 10^-19 J.",
+      why: "Because K_max = eV_s, the difference in maximum kinetic energy equals the electronic charge multiplied by the difference in stopping potential."
+    },
+    {
+      q: "A learner obtains 3.2 × 10^-19 J for a photoelectron's maximum kinetic energy when the stopping potential is 2.0 V. Is the answer correct? Verify it using e = 1.60 × 10^-19 C.",
+      hint: "Multiply 1.60 × 10^-19 by 2.0 and compare your result with the learner's answer.",
+      steps: [
+        "Use K_max = eV_s.",
+        "Substitute: K_max = (1.60 × 10^-19)(2.0).",
+        "Calculate: K_max = 3.20 × 10^-19 J.",
+        "Compare this result with the learner's answer."
+      ],
+      ans: "Yes. The answer 3.2 × 10^-19 J is correct.",
+      why: "The calculated energy matches the learner's answer and has the correct unit."
+    }
+  ]
+);
+
+ // ============================================================
+ // PHOTOELECTRIC EFFECT — BATCH 6
+ // Applications of Photoelectric Devices
+ //
+ // Screen 1: Photoelectric Cells
+ // Screen 2: Automatic Light-Control Systems
+ // Screen 3: Light Beam Detection
+ //
+ // Existing subject and chapter identifiers preserved.
+ // Each screen: 3 worked examples + 5 diagnostic questions.
+ // ============================================================
+
+
+// ============================================================
+// SCREEN 1: PHOTOELECTRIC CELLS
+// ============================================================
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Photoelectric Cells",
+  `
+  <h2>Photoelectric Cells</h2>
+
+  <h3>1. Meaning of a photoelectric cell</h3>
+
+  A photoelectric cell is a device that uses incident radiation
+  to produce an electrical response. In an external photoelectric
+  cell, light falling on a photosensitive cathode can release
+  electrons, which are collected by an anode to produce a current
+  in an external circuit.
+
+  Such cells are useful for detecting light and controlling
+  electrical equipment automatically.
+
+  <h3>2. Main parts of an external photoelectric cell</h3>
+
+  <ul>
+    <li><b>Photosensitive cathode:</b> The surface from which
+    electrons are emitted when suitable radiation falls on it.</li>
+    <li><b>Anode:</b> The electrode that collects emitted
+    electrons.</li>
+    <li><b>Evacuated or gas-filled enclosure:</b> Allows electrons
+    to travel from the cathode towards the anode with minimal
+    obstruction, depending on the cell design.</li>
+    <li><b>External circuit:</b> Provides a path for current
+    and allows the electrical response to be measured or used.</li>
+  </ul>
+
+  <h3>3. How a photoelectric cell works</h3>
+
+  <ol>
+    <li>Suitable radiation reaches the photosensitive cathode.</li>
+    <li>Photons transfer energy to electrons in the cathode.</li>
+    <li>If the photon energy is sufficient, electrons escape
+    from the cathode.</li>
+    <li>An appropriate electric field accelerates the emitted
+    electrons towards the anode.</li>
+    <li>The movement of charge produces a measurable current
+    in the external circuit.</li>
+  </ol>
+
+  <p>
+  The photon energy is given by:
+  </p>
+
+  <p><b>E = hf</b></p>
+
+  <p>where:</p>
+
+  <ul>
+    <li>E = photon energy, in joules (J)</li>
+    <li>h = Planck's constant = 6.63 × 10⁻³⁴ J s</li>
+    <li>f = radiation frequency, in hertz (Hz)</li>
+  </ul>
+
+  <p>
+  For emission to occur, the photon energy must be at least
+  equal to the work function, φ, of the cathode:
+  </p>
+
+  <p><b>hf ≥ φ</b></p>
+
+  <h3>4. Effect of light intensity</h3>
+
+  If the frequency is above the threshold frequency and other
+  conditions remain unchanged, increasing the intensity usually
+  increases the number of photoelectrons emitted per second.
+  This can increase the photocurrent.
+
+  However, increasing intensity does not increase the energy
+  of each photon when frequency is unchanged. It therefore does
+  not, by itself, increase the maximum kinetic energy of the
+  photoelectrons.
+
+  <h3>5. Important limitations</h3>
+
+  <ul>
+    <li>Radiation below the threshold frequency cannot produce
+    photoelectric emission from the cathode, regardless of
+    its intensity in the standard single-photon model.</li>
+    <li>The photocurrent depends on factors including light
+    intensity, collection voltage and the cell design.</li>
+    <li>The current may reach a saturation value when essentially
+    all emitted electrons are collected.</li>
+    <li>A photoelectric cell does not necessarily supply enough
+    power to operate a large device directly; an amplifier or
+    control circuit may be required.</li>
+  </ul>
+
+  <h3>6. Three worked examples</h3>
+
+  <h4>Example 1: Explaining the operation of a photoelectric cell</h4>
+
+  <p><b>Question:</b> Describe how an external photoelectric cell
+  produces a current when suitable light falls on its cathode.</p>
+
+  <p><b>Step 1:</b> Photons reach the photosensitive cathode.</p>
+
+  <p><b>Step 2:</b> Electrons absorb photon energy. If the energy
+  is sufficient to overcome the work function, electrons escape.</p>
+
+  <p><b>Step 3:</b> The electric field between the electrodes
+  drives the emitted electrons towards the anode.</p>
+
+  <p><b>Step 4:</b> The movement of charge produces a current
+  in the external circuit.</p>
+
+  <p><b>Answer:</b> Suitable light releases electrons from the
+  cathode, and the electric field collects them at the anode,
+  producing a photocurrent.</p>
+
+  <h4>Example 2: Calculating the energy of incident photons</h4>
+
+  <p><b>Question:</b> Light of frequency 8.0 × 10¹⁴ Hz falls
+  on a cathode with a work function of 3.0 × 10⁻¹⁹ J.
+  Determine whether photoelectric emission is possible.</p>
+
+  <p><b>Step 1: Write the equation.</b></p>
+
+  E = hf
+
+  <p><b>Step 2: Substitute the values.</b></p>
+
+  E = (6.63 × 10⁻³⁴)(8.0 × 10¹⁴)
+
+  E = 5.304 × 10⁻¹⁹ J
+
+  <p><b>Step 3: Compare photon energy with work function.</b></p>
+
+  5.304 × 10⁻¹⁹ J &gt; 3.0 × 10⁻¹⁹ J
+
+  <p><b>Answer:</b> Photoelectric emission is possible because
+  each photon has sufficient energy to overcome the work
+  function. The excess energy may appear as electron kinetic
+  energy, with the maximum value given by Kmax = hf − φ.</p>
+
+  <h4>Example 3: Predicting the effect of increased intensity</h4>
+
+  <p><b>Question:</b> A photoelectric cell is illuminated by
+  light above the cathode's threshold frequency. The intensity
+  is doubled while frequency and collection conditions remain
+  unchanged. Predict the general effect on photocurrent and
+  maximum kinetic energy.</p>
+
+  <p><b>Step 1:</b> At fixed frequency, photon energy E = hf
+  remains unchanged.</p>
+
+  <p><b>Step 2:</b> Doubling intensity generally increases the
+  number of incident photons per second.</p>
+
+  <p><b>Step 3:</b> More photons can produce more emitted
+  electrons per second, increasing photocurrent if collection
+  is not already saturated.</p>
+
+  <p><b>Step 4:</b> The maximum kinetic energy remains
+  unchanged because the frequency has not changed.</p>
+
+  <p><b>Answer:</b> Photocurrent generally increases, while
+  maximum kinetic energy remains unchanged.</p>
+
+  <h3>7. Key distinction</h3>
+
+  Intensity primarily affects the number of emitted electrons
+  per second under suitable conditions. Frequency determines
+  the energy of each photon and therefore influences the
+  maximum kinetic energy of emitted electrons.
+  `,
+  [
+    {
+      q: "Name the electrode from which photoelectrons are released and the electrode that collects them in an external photoelectric cell.",
+      hint: "Think about where emission begins and where the emitted electrons travel.",
+      steps: [
+        "Incident radiation reaches the photosensitive electrode.",
+        "Electrons escape from this electrode.",
+        "The electric field directs them to the collecting electrode."
+      ],
+      ans: "Photoelectrons are emitted from the photosensitive cathode and collected by the anode.",
+      why: "The cathode supplies the emitted electrons, while the anode collects them to help establish current in the circuit."
+    },
+    {
+      q: "Explain how an external photoelectric cell converts incident light into a measurable electrical signal.",
+      hint: "Follow the energy transfer from the incoming photons to the movement of charge.",
+      steps: [
+        "Photons reach the photosensitive cathode.",
+        "Electrons absorb photon energy.",
+        "Electrons with sufficient energy escape the surface.",
+        "An electric field collects them at the anode.",
+        "The movement of charge produces photocurrent."
+      ],
+      ans: "Light transfers energy to electrons in the cathode, causing emission when the photon energy is sufficient. The emitted electrons are collected by the anode, producing photocurrent.",
+      why: "The electrical response results from emitted charge moving through the circuit, not merely from light striking the cell."
+    },
+    {
+      q: "A cathode has a work function of 4.0 × 10⁻¹⁹ J. Incident photons have an energy of 3.0 × 10⁻¹⁹ J. Will increasing light intensity at the same frequency produce photoelectric emission?",
+      hint: "Compare the energy of one photon with the work function.",
+      steps: [
+        "Photon energy = 3.0 × 10⁻¹⁹ J.",
+        "Work function = 4.0 × 10⁻¹⁹ J.",
+        "Photon energy is less than the work function.",
+        "Increasing intensity increases photon number, not individual photon energy."
+      ],
+      ans: "No. Photoelectric emission will not occur in the standard single-photon model because each photon has insufficient energy.",
+      why: "Each photon must supply at least the work function. More photons of the same insufficient energy do not overcome this requirement."
+    },
+    {
+      q: "Light above the threshold frequency illuminates a photoelectric cell. Explain what generally happens to the photocurrent when intensity increases while frequency and collection conditions remain constant.",
+      hint: "Consider the number of photons arriving per second and the number of electrons emitted.",
+      steps: [
+        "Higher intensity generally means more photons arrive per second.",
+        "Each photon still has the same energy because frequency is fixed.",
+        "More photons can release more electrons per second.",
+        "The photocurrent generally increases if the cell is not already saturated."
+      ],
+      ans: "The photocurrent generally increases because more photoelectrons can be emitted and collected per second.",
+      why: "At fixed frequency above threshold, intensity mainly affects the rate of electron emission. The current need not increase indefinitely because saturation or other limits may apply."
+    },
+    {
+      q: "A learner claims that doubling the intensity of light always doubles the maximum kinetic energy of photoelectrons. Explain why this is incorrect.",
+      hint: "Use the relationship between maximum kinetic energy, photon frequency and work function.",
+      steps: [
+        "Einstein's equation is Kmax = hf − φ.",
+        "Photon energy depends on frequency, not intensity.",
+        "Doubling intensity at fixed frequency does not change hf.",
+        "Therefore, the maximum kinetic energy remains unchanged."
+      ],
+      ans: "The claim is incorrect. At fixed frequency, doubling intensity does not change maximum kinetic energy; it generally increases the number of emitted electrons.",
+      why: "The energy available to each electron depends on photon energy and the work function. Intensity affects photon arrival rate rather than energy per photon."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 2: AUTOMATIC LIGHT-CONTROL SYSTEMS
+// ============================================================
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Automatic Light-Control Systems",
+  `
+  <h2>Automatic Light-Control Systems</h2>
+
+  <h3>1. What is automatic light control?</h3>
+
+  An automatic light-control system switches a lamp or another
+  electrical device on or off in response to the surrounding
+  light level, without requiring a person to operate the switch
+  manually.
+
+  Examples include automatic streetlights, garden lights and
+  security lighting.
+
+  <h3>2. How light sensing controls a lamp</h3>
+
+  A light sensor responds to the amount of incident light.
+  A control circuit interprets the sensor's electrical signal
+  and switches the lamp using a suitable electronic switch,
+  relay or transistor circuit.
+
+  A common arrangement uses a light-dependent resistor (LDR).
+
+  <p><b>Typical LDR system:</b></p>
+
+  Ambient light → LDR resistance changes → control voltage
+  changes → switching circuit responds → lamp switches on or off.
+
+  <h3>3. How an LDR works</h3>
+
+  An LDR is a semiconductor whose electrical resistance
+  generally decreases as the intensity of incident light
+  increases.
+
+  <ul>
+    <li><b>Bright conditions:</b> More charge carriers become
+    available in the semiconductor, so resistance generally
+    decreases.</li>
+    <li><b>Dark conditions:</b> Fewer light-generated charge
+    carriers are available, so resistance generally increases.</li>
+  </ul>
+
+  <p>
+  An LDR works through <b>photoconductivity</b>. This is not
+  the same physical process as external photoelectric emission
+  from a metal cathode. An LDR's response does not require
+  electrons to escape from the sensor into the surrounding air.
+  </p>
+
+  <h3>4. How the switching circuit operates</h3>
+
+  In a typical automatic streetlight circuit, the sensor is
+  connected to a voltage-divider or electronic control circuit.
+
+  <ol>
+    <li>In daylight, the LDR resistance is relatively low.</li>
+    <li>The control circuit detects the bright condition and
+    keeps the lamp off.</li>
+    <li>As darkness falls, LDR resistance increases.</li>
+    <li>The voltage at the control input changes.</li>
+    <li>When the signal crosses a set switching threshold,
+    the control circuit switches the lamp on.</li>
+  </ol>
+
+  <p>
+  The exact voltage change depends on how the LDR and other
+  resistors are connected. The important principle is that
+  the circuit is designed to distinguish bright and dark
+  conditions.
+  </p>
+
+  <h3>5. Why use a switching threshold?</h3>
+
+  If the switching threshold is poorly designed, small changes
+  in illumination near dusk may repeatedly turn the lamp on
+  and off.
+
+  A suitable circuit may use hysteresis, a time delay or
+  filtering to make switching more stable.
+
+  The sensor detects light; the control circuit decides what
+  action to take. These are different functions.
+
+  <h3>6. Three worked examples</h3>
+
+  <h4>Example 1: Explaining an automatic streetlight</h4>
+
+  <p><b>Question:</b> Explain how an LDR-based streetlight
+  switches on automatically at night and off during the day.</p>
+
+  <p><b>Step 1:</b> During the day, bright light falls on
+  the LDR, reducing its resistance.</p>
+
+  <p><b>Step 2:</b> The control circuit recognises the
+  daylight condition and keeps the lamp off.</p>
+
+  <p><b>Step 3:</b> At night, reduced illumination causes
+  the LDR resistance to increase.</p>
+
+  <p><b>Step 4:</b> The control voltage changes until the
+  switching circuit activates the lamp.</p>
+
+  <p><b>Answer:</b> The LDR senses changes in illumination,
+  and an electronic control circuit switches the lamp
+  according to the detected light level.</p>
+
+  <h4>Example 2: Comparing resistance in bright and dark conditions</h4>
+
+  <p><b>Question:</b> An LDR has a resistance of 2.0 kΩ in
+  bright conditions and 40 kΩ in darkness. Calculate the
+  ratio of dark resistance to bright resistance.</p>
+
+  <p><b>Step 1: Record the values.</b></p>
+
+  Dark resistance = 40 kΩ.
+
+  Bright resistance = 2.0 kΩ.
+
+  <p><b>Step 2: Form the ratio.</b></p>
+
+  Ratio = dark resistance / bright resistance.
+
+  Ratio = 40 / 2.0 = 20.
+
+  <p><b>Answer:</b> The dark resistance is 20 times the
+  bright resistance.</p>
+
+  <p><b>Interpretation:</b> This large resistance change
+  can help a control circuit distinguish darkness from
+  daylight. The values are illustrative, not universal
+  specifications for all LDRs.</p>
+
+  <h4>Example 3: Choosing the correct control response</h4>
+
+  <p><b>Question:</b> An automatic lamp is designed to switch
+  on when the environment becomes dark. The LDR resistance
+  rises from 3 kΩ to 30 kΩ as the light fades. Explain the
+  expected response.</p>
+
+  <p><b>Step 1:</b> The resistance increases because the
+  illumination has decreased.</p>
+
+  <p><b>Step 2:</b> The changed resistance alters the voltage
+  in the sensor's control circuit.</p>
+
+  <p><b>Step 3:</b> If the signal crosses the circuit's
+  dark-condition threshold, the switch activates.</p>
+
+  <p><b>Answer:</b> The lamp should switch on once the
+  control circuit detects the dark condition. The resistance
+  values alone do not determine the exact switching voltage;
+  the circuit arrangement and threshold are also required.</p>
+
+  <h3>7. Common misconceptions</h3>
+
+  <ul>
+    <li>An LDR does not work by ejecting electrons from a
+    metal surface into the surrounding space.</li>
+    <li>The sensor does not necessarily switch the lamp
+    directly; an electronic control stage is commonly used.</li>
+    <li>Higher light intensity generally lowers LDR resistance,
+    but the circuit wiring determines how its output voltage
+    changes.</li>
+    <li>A sensor's resistance alone does not reveal the
+    switching threshold without knowing the circuit design.</li>
+  </ul>
+  `,
+  [
+    {
+      q: "State the function of an LDR in an automatic streetlight system.",
+      hint: "Identify what the sensor responds to before describing the lamp's action.",
+      steps: [
+        "The LDR is exposed to ambient light.",
+        "Its resistance changes with illumination.",
+        "The control circuit uses this change to determine whether it is bright or dark."
+      ],
+      ans: "An LDR senses ambient light by changing its resistance, providing an electrical signal that the control circuit uses to switch the streetlight.",
+      why: "The LDR is the sensing component. The switching circuit uses its electrical response to control the lamp."
+    },
+    {
+      q: "Explain why the resistance of an LDR generally decreases when light intensity increases.",
+      hint: "Think about the number of mobile charge carriers in a semiconductor.",
+      steps: [
+        "Incident light transfers energy within the semiconductor.",
+        "Additional mobile charge carriers become available.",
+        "The semiconductor conducts more readily.",
+        "Its electrical resistance generally decreases."
+      ],
+      ans: "Increasing illumination generates more mobile charge carriers in the LDR, increasing its conductivity and generally reducing its resistance.",
+      why: "Conductivity increases when charge carriers become more available. The mechanism is photoconductivity, not external photoelectric emission."
+    },
+    {
+      q: "An LDR has a resistance of 5 kΩ in daylight and 25 kΩ at night. Calculate how many times its resistance at night is its daylight resistance.",
+      hint: "Divide the night resistance by the daylight resistance, keeping both values in the same unit.",
+      steps: [
+        "Night resistance = 25 kΩ.",
+        "Daylight resistance = 5 kΩ.",
+        "Ratio = 25 / 5.",
+        "Ratio = 5."
+      ],
+      ans: "The night resistance is 5 times the daylight resistance.",
+      why: "A ratio compares two quantities in the same units. The kilohm units cancel, leaving a dimensionless factor of 5."
+    },
+    {
+      q: "An LDR-based lamp is designed to switch on in darkness. Explain the sequence of events as daylight fades.",
+      hint: "Follow the changes from illumination to resistance, then to the control circuit.",
+      steps: [
+        "Illumination decreases.",
+        "The LDR resistance increases.",
+        "The sensor's control voltage changes.",
+        "The signal crosses the switching threshold.",
+        "The electronic switch turns on the lamp."
+      ],
+      ans: "As daylight fades, LDR resistance increases, changing the control signal. When that signal reaches the dark-condition threshold, the switching circuit turns on the lamp.",
+      why: "The lamp responds to the control circuit's threshold, not simply to the resistance in isolation. The exact voltage change depends on circuit connections."
+    },
+    {
+      q: "A learner states that an LDR-based streetlight is direct proof that electrons are emitted from a metal surface whenever a light sensor receives light. Explain the error.",
+      hint: "Distinguish photoconductivity in a semiconductor from external photoelectric emission.",
+      steps: [
+        "An LDR is a semiconductor sensor.",
+        "Illumination changes the number of mobile charge carriers within it.",
+        "This changes its conductivity and resistance.",
+        "External photoelectric emission instead involves electrons escaping a material's surface."
+      ],
+      ans: "The claim is incorrect. An LDR responds through photoconductivity, whereas external photoelectric emission releases electrons from a photosensitive surface.",
+      why: "Both processes involve light and electrons, but the physical mechanism is different. An LDR does not need to emit electrons into the surrounding space to detect light."
+    }
+  ]
+);
+
+
+// ============================================================
+// SCREEN 3: LIGHT BEAM DETECTION
+// ============================================================
+
+add(
+  "physics",
+  "photoelectric_emission",
+  "Light Beam Detection",
+  `
+  <h2>Light Beam Detection</h2>
+
+  <h3>1. Meaning of light beam detection</h3>
+
+  Light beam detection is the use of a light source and a
+  light-sensitive receiver to determine whether a beam is
+  reaching a particular position or has been interrupted.
+
+  A typical system contains:
+
+  <ul>
+    <li><b>Light source:</b> Produces the beam, often using
+    a lamp or an infrared LED.</li>
+    <li><b>Receiver:</b> Detects the arriving radiation and
+    produces an electrical response.</li>
+    <li><b>Control circuit:</b> Interprets the receiver's
+    output and initiates an action.</li>
+    <li><b>Alarm or switching device:</b> Responds when the
+    beam is interrupted or restored.</li>
+  </ul>
+
+  <h3>2. How beam interruption is detected</h3>
+
+  <ol>
+    <li>The source directs a beam towards the receiver.</li>
+    <li>When the beam reaches the receiver, it produces a
+    particular electrical signal.</li>
+    <li>An object crossing the beam blocks or reduces the
+    radiation reaching the receiver.</li>
+    <li>The receiver's output changes.</li>
+    <li>The control circuit recognises this change and may
+    activate an alarm, counter or other device.</li>
+  </ol>
+
+  <p>
+  In a photoelectric detector, a photosensitive element
+  converts incident radiation into an electrical response.
+  Depending on the detector design, this may involve
+  photoelectric emission or another light-sensitive process.
+  </p>
+
+  <h3>3. Applications</h3>
+
+  <ul>
+    <li><b>Security systems:</b> Detecting an intruder who
+    crosses an invisible infrared beam.</li>
+    <li><b>Automatic doors:</b> Detecting a person or object
+    in a monitored region.</li>
+    <li><b>Object counters:</b> Counting products as they
+    pass through a production line.</li>
+    <li><b>Safety systems:</b> Detecting an obstruction in
+    a protected area.</li>
+  </ul>
+
+  <p>
+  Some automatic doors use reflected-light sensors, radar or
+  other technologies instead of a simple through-beam system.
+  The exact mechanism depends on the device.
+  </p>
+
+  <h3>4. Why a control circuit is needed</h3>
+
+  The receiver's electrical output may be too small to
+  operate an alarm or motor directly. An electronic circuit
+  can amplify or compare the signal with a threshold.
+
+  A control circuit may be designed so that:
+
+  <ul>
+    <li>Beam received → normal state.</li>
+    <li>Beam interrupted → alarm or counting action.</li>
+  </ul>
+
+  Other systems may use the opposite logic. The intended
+  response depends on the circuit design.
+
+  <h3>5. Factors affecting reliable detection</h3>
+
+  <ul>
+    <li><b>Alignment:</b> The source and receiver must be
+    correctly positioned.</li>
+    <li><b>Distance:</b> The receiver must detect enough
+    radiation at the operating distance.</li>
+    <li><b>Ambient light:</b> Unwanted light may interfere
+    with the receiver unless the system filters it.</li>
+    <li><b>Obstruction:</b> The object must block enough of
+    the beam to produce a detectable signal change.</li>
+    <li><b>Threshold:</b> The control circuit must distinguish
+    the normal signal from an interrupted-beam signal.</li>
+  </ul>
+
+  <h3>6. Three worked examples</h3>
+
+  <h4>Example 1: Explaining an intruder detector</h4>
+
+  <p><b>Question:</b> An infrared beam is directed across a
+  doorway towards a receiver. Explain how the system can
+  detect a person crossing the doorway.</p>
+
+  <p><b>Step 1:</b> The source sends infrared radiation
+  towards the receiver.</p>
+
+  <p><b>Step 2:</b> Under normal conditions, the receiver
+  detects the beam and produces its normal electrical signal.</p>
+
+  <p><b>Step 3:</b> A person crossing the doorway interrupts
+  the beam, reducing the radiation reaching the receiver.</p>
+
+  <p><b>Step 4:</b> The receiver's output changes, and the
+  control circuit detects the change.</p>
+
+  <p><b>Answer:</b> The system detects the interruption of
+  the infrared beam and uses the changed receiver signal
+  to trigger an alarm or another response.</p>
+
+  <h4>Example 2: Calculating the percentage reduction in signal</h4>
+
+  <p><b>Question:</b> A beam detector produces an output of
+  8.0 mA when the beam is received and 2.0 mA when an object
+  interrupts the beam. Calculate the percentage reduction
+  in output current.</p>
+
+  <p><b>Step 1: Calculate the change in current.</b></p>
+
+  Change = 8.0 mA − 2.0 mA = 6.0 mA.
+
+  <p><b>Step 2: Divide by the original current.</b></p>
+
+  Fractional reduction = 6.0 / 8.0 = 0.75.
+
+  <p><b>Step 3: Convert to a percentage.</b></p>
+
+  Percentage reduction = 0.75 × 100% = 75%.
+
+  <p><b>Answer:</b> The output current decreases by 75%.</p>
+
+  <p><b>Interpretation:</b> A control circuit can use this
+  substantial change to identify beam interruption if its
+  threshold is designed appropriately.</p>
+
+  <h4>Example 3: Determining whether the detector can
+  distinguish an interrupted beam</h4>
+
+  <p><b>Question:</b> A detector gives 7.0 V when a beam
+  reaches its receiver and 1.5 V when the beam is blocked.
+  Its control circuit triggers when the input falls below
+  3.0 V. Will blocking the beam trigger the circuit?</p>
+
+  <p><b>Step 1: Identify the trigger condition.</b></p>
+
+  The circuit triggers when voltage &lt; 3.0 V.
+
+  <p><b>Step 2: Identify the interrupted-beam voltage.</b></p>
+
+  Interrupted-beam voltage = 1.5 V.
+
+  <p><b>Step 3: Compare the values.</b></p>
+
+  1.5 V &lt; 3.0 V.
+
+  <p><b>Answer:</b> Yes. The interrupted-beam voltage is
+  below the switching threshold, so the control circuit
+  triggers.</p>
+
+  <p><b>Check:</b> With the beam restored, the signal is
+  7.0 V, which is above 3.0 V. Under the stated ideal
+  conditions, the circuit does not trigger in the normal
+  beam-received state.</p>
+
+  <h3>7. Common misconceptions</h3>
+
+  <ul>
+    <li>The receiver detects radiation; it does not necessarily
+    identify what object blocked the beam.</li>
+    <li>The source does not have to emit visible light.
+    Infrared radiation can be used.</li>
+    <li>A change in receiver output does not automatically
+    operate an alarm. A suitable control circuit is required.</li>
+    <li>Not every light detector uses external photoelectric
+    emission. The sensing mechanism depends on the receiver.</li>
+  </ul>
+  `,
+  [
+    {
+      q: "Name the three essential functional components of a basic through-beam detection system.",
+      hint: "Think about producing the beam, detecting it and deciding what action to take.",
+      steps: [
+        "A source produces the radiation beam.",
+        "A receiver detects the arriving radiation.",
+        "A control circuit interprets the receiver's signal."
+      ],
+      ans: "A light source, a light-sensitive receiver and a control circuit.",
+      why: "The source provides the beam, the receiver detects it, and the control circuit responds to changes in the detected signal."
+    },
+    {
+      q: "Explain how a through-beam security detector can activate an alarm when a person crosses an infrared beam.",
+      hint: "Describe the difference between the normal beam-received condition and the interrupted condition.",
+      steps: [
+        "The infrared source directs a beam towards the receiver.",
+        "The receiver produces its normal signal while the beam arrives.",
+        "A person blocks the beam.",
+        "The receiver's output changes.",
+        "The control circuit detects the change and activates the alarm."
+      ],
+      ans: "A person blocks the infrared beam, changing the receiver's electrical output. The control circuit detects the change and triggers the alarm.",
+      why: "The system detects the interruption of the beam through an electrical signal change; it does not need to identify the person."
+    },
+    {
+      q: "A detector's current falls from 10 mA to 4 mA when a beam is interrupted. Calculate the percentage reduction in current.",
+      hint: "Subtract the final current from the initial current, divide by the initial current and multiply by 100%.",
+      steps: [
+        "Change in current = 10 mA − 4 mA = 6 mA.",
+        "Fractional reduction = 6 / 10 = 0.6.",
+        "Percentage reduction = 0.6 × 100% = 60%."
+      ],
+      ans: "The current decreases by 60%.",
+      why: "Percentage reduction is calculated relative to the original value, which is 10 mA. Using the final current as the denominator would give the wrong percentage."
+    },
+    {
+      q: "A beam detector triggers when its receiver voltage falls below 2.5 V. The voltage is 6.0 V with the beam present and 1.8 V when it is blocked. Determine whether blocking the beam triggers the detector.",
+      hint: "Compare the blocked-beam voltage with the stated threshold.",
+      steps: [
+        "Trigger condition: voltage < 2.5 V.",
+        "Blocked-beam voltage = 1.8 V.",
+        "Since 1.8 V < 2.5 V, the condition is satisfied."
+      ],
+      ans: "Yes. The detector triggers because 1.8 V is below the 2.5 V threshold.",
+      why: "The decision follows directly from the stated switching condition. The normal 6.0 V signal is above the threshold."
+    },
+    {
+      q: "A light beam is interrupted, but the alarm does not activate. Give two possible technical reasons.",
+      hint: "Consider whether the receiver detects the change and whether the control circuit responds correctly.",
+      steps: [
+        "Check whether the source and receiver are correctly aligned.",
+        "Check whether the receiver produces a sufficiently large signal change.",
+        "Check the control circuit, threshold and alarm connection.",
+        "Identify faults that could prevent detection or switching."
+      ],
+      ans: "Possible reasons include misalignment or a faulty receiver, insufficient signal change, an incorrectly set threshold, a faulty control circuit or a disconnected alarm.",
+      why: "Reliable detection requires the beam interruption to produce a distinguishable receiver signal and the control circuit to respond correctly."
+    }
+  ]
+);
 
 /* =========================================================
    PHYSICS: WAVES — BATCH 1

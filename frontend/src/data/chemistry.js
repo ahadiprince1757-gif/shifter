@@ -12,21 +12,21 @@ export const chemistryTopics = [
     "topic_group": "Meaning of Chemistry",
     "topic": "Meaning of Chemistry",
     "data": {
-      "notes": "\n  <h2>Meaning of Chemistry</h2>\n\n  <p><strong>Chemistry</strong> is the branch of science that studies matter,\n  its composition, structure, properties and the changes it undergoes.</p>\n\n  <h3>What Chemistry Studies</h3>\n\n  <p>Chemistry mainly deals with:</p>\n\n  <ul>\n    <li>What substances are made of.</li>\n    <li>How particles are arranged.</li>\n    <li>The properties of substances.</li>\n    <li>How substances react with one another.</li>\n    <li>The energy changes involved in chemical reactions.</li>\n  </ul>\n\n  <h3>Example</h3>\n\n  <p>When magnesium burns in oxygen, a new substance called magnesium oxide\n  is formed.</p>\n\n  <p>Therefore chemistry can be used to investigate:</p>\n\n  <ul>\n    <li>the substances involved,</li>\n    <li>what happens during the reaction,</li>\n    <li>the new substance formed, and</li>\n    <li>the energy released.</li>\n  </ul>\n\n  <h3>Importance of Chemistry</h3>\n\n  <p>Chemistry is used in areas such as medicine, agriculture, manufacturing,\n  food production, environmental protection and energy production.</p>\n  ",
+      "notes": "\n  <h2>Meaning of Chemistry</h2>\n\n  <h3>1. Definition of Chemistry</h3>\n  <p><strong>Chemistry</strong> is the branch of science that studies the composition, structure, properties and changes of matter, together with the energy changes associated with those changes.</p>\n\n  <p><strong>Matter</strong> is anything that has mass and occupies space. Air, water, soil, metals and living organisms contain matter.</p>\n\n  <h3>2. What Chemistry Studies</h3>\n  <ul>\n    <li><strong>Composition:</strong> The substances or particles that make up a material.</li>\n    <li><strong>Structure:</strong> How particles are arranged and connected.</li>\n    <li><strong>Properties:</strong> Characteristics such as colour, density, melting point and reactivity.</li>\n    <li><strong>Changes:</strong> How substances change physically or chemically.</li>\n    <li><strong>Energy changes:</strong> Energy absorbed or released during processes and reactions.</li>\n  </ul>\n\n  <h3>3. Physical and Chemical Changes</h3>\n  <p>A <strong>physical change</strong> changes the form, size or state of a substance without producing a new substance. Examples include melting ice, cutting paper and dissolving sugar in water.</p>\n\n  <p>A <strong>chemical change</strong> produces one or more new substances with different chemical properties. Examples include rusting iron, burning wood and reacting an acid with a metal.</p>\n\n  <p>Clues such as colour change, gas production, a temperature change or formation of a solid may indicate a chemical reaction. However, no single clue proves that a chemical change occurred in every situation.</p>\n\n  <h3>4. Importance and Applications of Chemistry</h3>\n  <ul>\n    <li><strong>Medicine:</strong> Developing medicines, disinfectants and diagnostic chemicals.</li>\n    <li><strong>Agriculture:</strong> Understanding fertilisers, soil chemistry and pesticides.</li>\n    <li><strong>Food:</strong> Studying preservation, fermentation and food composition.</li>\n    <li><strong>Industry:</strong> Manufacturing cement, soap, plastics, glass and metals.</li>\n    <li><strong>Environment:</strong> Testing water quality, monitoring pollution and treating waste.</li>\n    <li><strong>Energy:</strong> Studying fuels, batteries and energy-storage materials.</li>\n  </ul>\n\n  <h3>5. Worked Examples</h3>\n\n  <p><strong>Example 1: Classifying melting ice</strong></p>\n  <p><strong>Question:</strong> Is melting ice a physical or chemical change?</p>\n  <ol>\n    <li>Ice is solid water.</li>\n    <li>During melting, solid water becomes liquid water.</li>\n    <li>The substance remains H₂O; no new substance is formed.</li>\n  </ol>\n  <p><strong>Answer:</strong> A physical change.</p>\n\n  <p><strong>Example 2: Classifying rusting iron</strong></p>\n  <p><strong>Question:</strong> Why is rusting iron a chemical change?</p>\n  <ol>\n    <li>Iron reacts with oxygen in the presence of moisture.</li>\n    <li>The reaction forms rust, which consists mainly of hydrated iron(III) oxides.</li>\n    <li>The product has different properties from the original iron.</li>\n  </ol>\n  <p><strong>Answer:</strong> It is a chemical change because new substances form.</p>\n\n  <p><strong>Example 3: Identifying a chemical application</strong></p>\n  <p><strong>Question:</strong> A laboratory tests river water for harmful dissolved substances. Which branch of scientific study makes this possible?</p>\n  <ol>\n    <li>The task involves determining what substances are present in water.</li>\n    <li>It may also involve measuring their concentrations and examining their properties.</li>\n    <li>These tasks involve analysing the composition of matter.</li>\n  </ol>\n  <p><strong>Answer:</strong> Chemistry, particularly analytical chemistry.</p>\n\n  <h3>6. Common Misconceptions</h3>\n  <ul>\n    <li>Not every change that is difficult to reverse is chemical; reversibility alone does not determine the type of change.</li>\n    <li>A physical change does not necessarily mean that nothing about the material changes; its state, shape or particle arrangement may change.</li>\n    <li>Chemistry is not limited to laboratory experiments. It also explains industrial processes, agriculture, medicine and environmental problems.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "What is chemistry?",
-          "ans": "Chemistry is the branch of science that studies matter, its composition, structure, properties and the changes it undergoes.",
+          "q": "Which statement best defines chemistry?",
+          "ans": "Chemistry is the study of the composition, structure, properties and changes of matter, including associated energy changes.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify what chemistry studies.",
-            "Step 2: Chemistry studies matter, its composition, structure, properties and changes.",
-            "Step 3: State this as the definition."
+            "Step 1: Identify the subject being defined.",
+            "Step 2: Include matter, its properties and changes.",
+            "Step 3: Include the energy associated with changes."
           ],
-          "why": "The definition covers both substances themselves and the changes that occur when they interact.",
-          "sol": "Step 1: Identify what chemistry studies.\nStep 2: Chemistry studies matter, its composition, structure, properties and changes.\nStep 3: State this as the definition.",
-          "hint": "Focus on the core principle of Meaning of Chemistry.",
+          "why": "Chemistry investigates what matter is made of, how its particles are arranged, how it behaves and how it changes.",
+          "sol": "Step 1: Identify the subject being defined.\nStep 2: Include matter, its properties and changes.\nStep 3: Include the energy associated with changes.",
+          "hint": "Think about what chemistry studies about matter.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Meaning of Chemistry",
@@ -35,18 +35,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "A student burns magnesium in oxygen. Why is this a chemical process?",
-          "ans": "It is a chemical process because magnesium reacts with oxygen to form a new substance, magnesium oxide.",
+          "q": "Ice melts into liquid water. Explain why this is a physical change.",
+          "ans": "It is a physical change because the state changes but the substance remains water, H₂O.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify the substances before the reaction: magnesium and oxygen.",
-            "Step 2: Observe that they react.",
-            "Step 3: A new substance, magnesium oxide, is formed."
+            "Step 1: Identify the substance before the change: solid water.",
+            "Step 2: Identify the substance after the change: liquid water.",
+            "Step 3: Check whether a new substance has formed."
           ],
-          "why": "Formation of a new substance is evidence of a chemical change.",
-          "sol": "Step 1: Identify the substances before the reaction: magnesium and oxygen.\nStep 2: Observe that they react.\nStep 3: A new substance, magnesium oxide, is formed.",
-          "hint": "Focus on the core principle of Meaning of Chemistry.",
+          "why": "A change of state does not by itself produce a new chemical substance.",
+          "sol": "Step 1: Identify the substance before the change: solid water.\nStep 2: Identify the substance after the change: liquid water.\nStep 3: Check whether a new substance has formed.",
+          "hint": "Compare the substance before and after melting.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Meaning of Chemistry",
@@ -55,17 +55,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "State two things studied in chemistry.",
-          "ans": "The composition of matter and the chemical reactions of substances.",
+          "q": "Iron develops rust when exposed to air and moisture. Why is this a chemical change?",
+          "ans": "It is a chemical change because iron reacts to form new substances called rust.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Chemistry studies matter.",
-            "Step 2: It also studies the changes and reactions involving matter."
+            "Step 1: Iron reacts with oxygen in the presence of moisture.",
+            "Step 2: The reaction forms rust.",
+            "Step 3: Rust has a different composition and properties from iron."
           ],
-          "why": "Chemistry investigates both the nature of substances and how they change.",
-          "sol": "Step 1: Chemistry studies matter.\nStep 2: It also studies the changes and reactions involving matter.",
-          "hint": "Focus on the core principle of Meaning of Chemistry.",
+          "why": "The formation of substances with different chemical identities is the key distinction.",
+          "sol": "Step 1: Iron reacts with oxygen in the presence of moisture.\nStep 2: The reaction forms rust.\nStep 3: Rust has a different composition and properties from iron.",
+          "hint": "Consider whether the product has the same chemical identity as iron.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Meaning of Chemistry",
@@ -74,24 +75,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A learner says that chemistry only involves mixing chemicals together. Correct the statement.",
-          "ans": "Chemistry is not limited to mixing chemicals. It studies the composition, structure and properties of matter and the changes it undergoes.",
+          "q": "A student investigates the substances dissolved in a drinking-water sample. Which science is most directly involved, and why?",
+          "ans": "Chemistry, because it can identify and measure the substances present in water.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Chemistry studies matter.",
-            "Step 2: It studies composition, structure and properties.",
-            "Step 3: It also studies changes and reactions involving matter."
+            "Step 1: The student wants to identify substances in the sample.",
+            "Step 2: Identifying and measuring substances involves analysing composition.",
+            "Step 3: Relate this activity to the definition of chemistry."
           ],
-          "why": "Chemical reactions are only one part of chemistry.",
-          "sol": "Step 1: Chemistry studies matter.\nStep 2: It studies composition, structure and properties.\nStep 3: It also studies changes and reactions involving matter.",
-          "hint": "Think about everything chemistry studies, not only reactions.",
+          "why": "Chemical analysis helps determine the composition and quality of water.",
+          "sol": "Step 1: The student wants to identify substances in the sample.\nStep 2: Identifying and measuring substances involves analysing composition.\nStep 3: Relate this activity to the definition of chemistry.",
+          "hint": "Consider the study of the composition of matter.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Meaning of Chemistry",
           "conceptId": "chemistry_chemistry_foundations_meaning_of_chemistry",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "A learner says, 'Every change that cannot easily be reversed is a chemical change.' Explain why this statement is incorrect.",
+          "ans": "The statement is incorrect because an irreversible change can be physical; classification depends on whether new substances form.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Consider tearing a piece of paper.",
+            "Step 2: Tearing changes its shape and size but does not necessarily form a new substance.",
+            "Step 3: Use the formation of new substances, rather than reversibility alone, to classify changes."
+          ],
+          "why": "Reversibility is not a reliable standalone test for distinguishing physical and chemical changes.",
+          "sol": "Step 1: Consider tearing a piece of paper.\nStep 2: Tearing changes its shape and size but does not necessarily form a new substance.\nStep 3: Use the formation of new substances, rather than reversibility alone, to classify changes.",
+          "hint": "Think of a physical change that may be difficult to reverse.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Meaning of Chemistry",
+          "conceptId": "chemistry_chemistry_foundations_meaning_of_chemistry",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -105,21 +126,21 @@ export const chemistryTopics = [
     "topic_group": "Laboratory Safety Rules",
     "topic": "Laboratory Safety Rules",
     "data": {
-      "notes": "\n  <h2>Laboratory Safety Rules</h2>\n\n  <p>Laboratory safety rules are procedures followed to prevent accidents,\n  injuries and damage to equipment during practical work.</p>\n\n  <h3>Important Rules</h3>\n\n  <ul>\n    <li>Wear appropriate protective equipment such as a laboratory coat and safety goggles.</li>\n    <li>Do not eat or drink in the laboratory.</li>\n    <li>Do not taste chemicals.</li>\n    <li>Do not smell chemicals directly.</li>\n    <li>Read labels before using chemicals.</li>\n    <li>Keep the working area clean.</li>\n    <li>Report accidents and spills immediately.</li>\n    <li>Handle glassware carefully.</li>\n    <li>Follow the teacher's or laboratory instructions.</li>\n    <li>Wash hands after practical work.</li>\n  </ul>\n\n  <h3>Why Safety Matters</h3>\n\n  <p>Chemicals may be corrosive, poisonous, flammable or harmful if handled\n  incorrectly. Laboratory equipment may also cause burns, cuts or other\n  injuries.</p>\n  ",
+      "notes": "\n  <h2>Laboratory Safety Rules</h2>\n\n  <h3>1. Why Laboratory Safety Matters</h3>\n  <p>A chemistry laboratory contains chemicals, glassware, heat sources and equipment that may cause injury if used incorrectly. Laboratory safety rules reduce the risk of burns, poisoning, cuts, fires, chemical exposure and contamination.</p>\n\n  <h3>2. Before an Experiment</h3>\n  <ul>\n    <li>Read and understand the procedure before beginning.</li>\n    <li>Listen to the teacher or laboratory supervisor and follow the authorised method.</li>\n    <li>Wear appropriate protective equipment, such as safety goggles, a laboratory coat and suitable gloves when required.</li>\n    <li>Tie back long hair and secure loose clothing.</li>\n    <li>Identify emergency exits, the eyewash station, safety shower, fire equipment and first-aid arrangements.</li>\n    <li>Check that apparatus is suitable and undamaged.</li>\n  </ul>\n\n  <h3>3. During an Experiment</h3>\n  <ul>\n    <li>Never eat, drink or taste chemicals in the laboratory.</li>\n    <li>Never pipette by mouth; use a suitable pipette filler.</li>\n    <li>Do not smell chemicals directly. Only use an approved wafting method if the procedure specifically permits it.</li>\n    <li>Keep the work area organised and containers labelled.</li>\n    <li>Never perform an unauthorised experiment or mix chemicals without instructions.</li>\n    <li>Keep flammable materials away from naked flames and other ignition sources.</li>\n    <li>When heating a test tube, point its opening away from yourself and other people.</li>\n    <li>Never leave an operating flame or heating apparatus unattended.</li>\n  </ul>\n\n  <h3>4. After an Experiment</h3>\n  <ul>\n    <li>Dispose of chemicals according to the teacher's instructions and laboratory procedure.</li>\n    <li>Do not pour chemicals into a sink unless specifically authorised.</li>\n    <li>Clean the work area and return apparatus to its proper place.</li>\n    <li>Turn off burners and other equipment when instructed and when it is safe to do so.</li>\n    <li>Wash your hands after laboratory work.</li>\n  </ul>\n\n  <h3>5. Responding to Accidents</h3>\n  <p>Report spills, breakages, burns, chemical splashes and other accidents immediately. Do not attempt an unfamiliar cleanup or treatment.</p>\n  <ul>\n    <li><strong>Chemical in the eyes:</strong> Immediately use the eyewash station and rinse continuously, following the laboratory emergency procedure. Get assistance at once.</li>\n    <li><strong>Chemical on the skin:</strong> Alert the supervisor and promptly rinse with plenty of running water when appropriate. Follow the chemical-specific emergency instructions.</li>\n    <li><strong>Broken glass:</strong> Keep away from the fragments and notify the supervisor. Never pick up broken glass with bare hands.</li>\n    <li><strong>Fire:</strong> Alert the supervisor immediately. Use fire equipment only if trained and instructed; evacuate when directed.</li>\n  </ul>\n\n  <h3>6. Worked Examples</h3>\n\n  <p><strong>Example 1: A chemical splashes into the eye</strong></p>\n  <p><strong>Situation:</strong> During an experiment, a student gets a chemical in the eye.</p>\n  <ol>\n    <li>Eye exposure can cause serious injury.</li>\n    <li>The student must immediately alert the supervisor and begin rinsing at the eyewash station.</li>\n    <li>Rinsing should continue according to the laboratory emergency procedure while assistance is obtained.</li>\n  </ol>\n  <p><strong>Correct response:</strong> Start immediate eyewash rinsing, alert the supervisor and follow the emergency instructions. Do not delay to identify the chemical first.</p>\n\n  <p><strong>Example 2: Heating a test tube</strong></p>\n  <p><strong>Situation:</strong> A student heats a liquid in a test tube.</p>\n  <ol>\n    <li>Heating can cause boiling, splashing or sudden release of vapour.</li>\n    <li>The opening must be directed away from everyone.</li>\n    <li>The tube should be handled with suitable equipment and heated according to the approved procedure.</li>\n  </ol>\n  <p><strong>Correct response:</strong> Point the opening away from people and use the prescribed heating method.</p>\n\n  <p><strong>Example 3: Broken glass on the floor</strong></p>\n  <p><strong>Situation:</strong> A student accidentally breaks a glass beaker.</p>\n  <ol>\n    <li>Broken glass can cause cuts and may be contaminated with chemicals.</li>\n    <li>The student warns others and keeps them away from the area.</li>\n    <li>The student informs the supervisor so the fragments can be removed using the correct equipment.</li>\n  </ol>\n  <p><strong>Correct response:</strong> Keep clear and report the breakage; never collect fragments with bare hands.</p>\n\n  <h3>7. Common Misconceptions</h3>\n  <ul>\n    <li>Wearing goggles does not make every experiment safe; the correct procedure and other controls are still necessary.</li>\n    <li>A chemical should never be tasted to identify it, even if it looks like a familiar substance.</li>\n    <li>Water is not the correct response to every chemical spill or fire. Follow the chemical-specific procedure and supervisor's instructions.</li>\n    <li>Accidents and near misses must be reported even when an injury seems minor.</li>\n  </ul>\n  ",
       "qs": [
         {
           "q": "Why should chemicals never be tasted in the laboratory?",
-          "ans": "Chemicals should never be tasted because some may be poisonous, corrosive or otherwise harmful to the body.",
+          "ans": "Chemicals may be poisonous, corrosive or contaminated, so tasting them can cause injury or poisoning.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Chemicals are not necessarily safe for consumption.",
-            "Step 2: Some chemicals are poisonous or corrosive.",
-            "Step 3: Therefore tasting them could cause serious injury or poisoning."
+            "Step 1: A chemical's appearance does not establish that it is safe.",
+            "Step 2: Small amounts can still cause harm.",
+            "Step 3: Identification must use approved methods rather than tasting."
           ],
-          "why": "The appearance of a chemical cannot be used to determine whether it is safe to consume.",
-          "sol": "Step 1: Chemicals are not necessarily safe for consumption.\nStep 2: Some chemicals are poisonous or corrosive.\nStep 3: Therefore tasting them could cause serious injury or poisoning.",
-          "hint": "Focus on the core principle of Laboratory Safety Rules.",
+          "why": "Laboratory chemicals must never be tasted, regardless of whether they appear familiar.",
+          "sol": "Step 1: A chemical's appearance does not establish that it is safe.\nStep 2: Small amounts can still cause harm.\nStep 3: Identification must use approved methods rather than tasting.",
+          "hint": "Consider the possibility that a chemical may be toxic or contaminated.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Laboratory Safety Rules",
@@ -128,18 +149,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "Why should a student wear safety goggles during practical work?",
-          "ans": "Safety goggles protect the eyes from chemical splashes and particles.",
+          "q": "A student is heating a test tube containing a liquid. In which direction should the opening point?",
+          "ans": "Away from the student and other people.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Chemicals may splash during experiments.",
-            "Step 2: Splashes can damage the eyes.",
-            "Step 3: Goggles provide protection against such splashes."
+            "Step 1: Heating may cause splashing or sudden release of vapour.",
+            "Step 2: Anyone in the path could be injured.",
+            "Step 3: Choose a direction away from all people."
           ],
-          "why": "The eyes are particularly vulnerable to chemical injury.",
-          "sol": "Step 1: Chemicals may splash during experiments.\nStep 2: Splashes can damage the eyes.\nStep 3: Goggles provide protection against such splashes.",
-          "hint": "Focus on the core principle of Laboratory Safety Rules.",
+          "why": "Directing the opening away from people reduces the risk of injury from hot liquid or vapour.",
+          "sol": "Step 1: Heating may cause splashing or sudden release of vapour.\nStep 2: Anyone in the path could be injured.\nStep 3: Choose a direction away from all people.",
+          "hint": "Think about what could escape from the opening during heating.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Laboratory Safety Rules",
@@ -148,17 +169,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "State three laboratory safety rules.",
-          "ans": "Do not taste chemicals; wear appropriate protective equipment; and report spills or accidents immediately.",
+          "q": "What should a student do after breaking a glass beaker?",
+          "ans": "Keep clear of the fragments, warn others and report the breakage to the supervisor.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Recall rules designed to prevent chemical or physical accidents.",
-            "Step 2: Give three distinct rules."
+            "Step 1: Recognise that the fragments can cause cuts.",
+            "Step 2: Keep people away from the broken glass.",
+            "Step 3: Notify the supervisor and follow the approved cleanup procedure."
           ],
-          "why": "These rules reduce exposure to hazardous substances and help accidents receive immediate attention.",
-          "sol": "Step 1: Recall rules designed to prevent chemical or physical accidents.\nStep 2: Give three distinct rules.",
-          "hint": "Focus on the core principle of Laboratory Safety Rules.",
+          "why": "Broken glass should be removed using suitable equipment, not bare hands.",
+          "sol": "Step 1: Recognise that the fragments can cause cuts.\nStep 2: Keep people away from the broken glass.\nStep 3: Notify the supervisor and follow the approved cleanup procedure.",
+          "hint": "Consider the danger of sharp or chemically contaminated fragments.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Laboratory Safety Rules",
@@ -167,24 +189,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A student spills a chemical and decides to leave it because nobody was injured. What should the student have done?",
-          "ans": "The student should have reported the spill immediately and followed the appropriate laboratory procedure for dealing with it.",
+          "q": "A chemical splashes into a learner's eyes. What should the learner do immediately?",
+          "ans": "Immediately rinse the eyes at the eyewash station, alert the supervisor and follow emergency instructions.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Recognise that the chemical spill may still be hazardous.",
-            "Step 2: Leaving it could expose other people to danger.",
-            "Step 3: Report the spill immediately and follow the laboratory's spill procedure."
+            "Step 1: Recognise the exposure as an emergency.",
+            "Step 2: Begin rinsing immediately at the eyewash station.",
+            "Step 3: Alert the supervisor and follow the laboratory's emergency procedure."
           ],
-          "why": "A spill can remain hazardous even when nobody is immediately injured.",
-          "sol": "Step 1: Recognise that the chemical spill may still be hazardous.\nStep 2: Leaving it could expose other people to danger.\nStep 3: Report the spill immediately and follow the laboratory's spill procedure.",
-          "hint": "Think about the rule concerning spills.",
+          "why": "Prompt rinsing helps limit exposure. Treatment must not be delayed while waiting to identify the chemical.",
+          "sol": "Step 1: Recognise the exposure as an emergency.\nStep 2: Begin rinsing immediately at the eyewash station.\nStep 3: Alert the supervisor and follow the laboratory's emergency procedure.",
+          "hint": "Think about the purpose of an eyewash station.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Laboratory Safety Rules",
           "conceptId": "chemistry_chemistry_foundations_laboratory_safety_rules",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why is it unsafe to leave a burner operating unattended?",
+          "ans": "An unattended burner can cause a fire or other accident that may go unnoticed.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: A flame can ignite nearby combustible materials.",
+            "Step 2: A problem may develop while no one is monitoring the equipment.",
+            "Step 3: A person responsible for the experiment must monitor the heating process."
+          ],
+          "why": "Heating equipment must be monitored and handled according to the laboratory procedure.",
+          "sol": "Step 1: A flame can ignite nearby combustible materials.\nStep 2: A problem may develop while no one is monitoring the equipment.\nStep 3: A person responsible for the experiment must monitor the heating process.",
+          "hint": "Consider what could happen if the flame causes an unexpected fire.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Laboratory Safety Rules",
+          "conceptId": "chemistry_chemistry_foundations_laboratory_safety_rules",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -198,21 +240,21 @@ export const chemistryTopics = [
     "topic_group": "Chemical Hazard Symbols",
     "topic": "Chemical Hazard Symbols",
     "data": {
-      "notes": "\n  <h2>Chemical Hazard Symbols</h2>\n\n  <p>Hazard symbols are standard symbols placed on chemical containers to\n  warn users about dangerous properties of the substance.</p>\n\n  <h3>Common Hazards</h3>\n\n  <ul>\n    <li><strong>Flammable:</strong> the substance can easily catch fire.</li>\n    <li><strong>Corrosive:</strong> the substance can damage living tissue or corrode materials.</li>\n    <li><strong>Toxic:</strong> exposure can cause serious harm or death.</li>\n    <li><strong>Harmful/Irritant:</strong> the substance may cause harm or irritation.</li>\n    <li><strong>Oxidising:</strong> the substance can cause or intensify combustion.</li>\n    <li><strong>Explosive:</strong> the substance may explode under certain conditions.</li>\n    <li><strong>Environmental hazard:</strong> the substance can harm the environment.</li>\n  </ul>\n\n  <h3>Using Hazard Information</h3>\n\n  <p>A hazard symbol tells you what danger to expect. The information should\n  be considered before handling the chemical.</p>\n  ",
+      "notes": "\n  <h2>Chemical Hazard Symbols</h2>\n\n  <h3>1. What Hazard Symbols Mean</h3>\n  <p>Chemical hazard symbols are pictograms used on labels to warn people about particular dangers associated with a chemical. They help users identify risks and choose appropriate precautions.</p>\n\n  <p>Under the Globally Harmonized System (GHS), many chemical hazard pictograms appear as a black symbol on a white background inside a red diamond-shaped border. Always read the full label as well as the pictogram.</p>\n\n  <h3>2. Important Chemical Hazard Pictograms</h3>\n\n  <p><strong>Flame — Flammable or related fire hazards</strong></p>\n  <p>Warns of substances that can catch fire easily or present other flame-related hazards. Keep them away from ignition sources and follow storage instructions.</p>\n\n  <p><strong>Corrosion — Corrosive</strong></p>\n  <p>Indicates substances that can cause severe skin burns or eye damage and may corrode metals. Avoid contact and use the specified protective equipment.</p>\n\n  <p><strong>Skull and crossbones — Acute toxicity</strong></p>\n  <p>Warns that exposure to a substance may cause serious poisoning or death, depending on the dose and route of exposure. Prevent inhalation, swallowing and skin contact as directed by the label.</p>\n\n  <p><strong>Exclamation mark — Irritant or harmful effects</strong></p>\n  <p>May indicate skin or eye irritation, skin sensitisation, harmful acute toxicity or certain other health hazards. Read the label to determine the exact risk.</p>\n\n  <p><strong>Flame over a circle — Oxidising substance</strong></p>\n  <p>Identifies an oxidiser that can cause or intensify a fire by supporting combustion or reacting strongly with other materials. Keep it away from incompatible substances.</p>\n\n  <p><strong>Exploding bomb — Explosive or certain highly reactive hazards</strong></p>\n  <p>Warns of substances or mixtures that may explode under specified conditions, such as heat, shock or friction. Avoid impact and follow specialised handling instructions.</p>\n\n  <p><strong>Gas cylinder — Gas under pressure</strong></p>\n  <p>Indicates a gas stored under pressure. A cylinder may burst if heated, and some gases may cause cold burns or other hazards.</p>\n\n  <p><strong>Health hazard silhouette — Serious or long-term health hazards</strong></p>\n  <p>May indicate hazards such as carcinogenicity, respiratory sensitisation, reproductive toxicity, organ damage or aspiration hazard.</p>\n\n  <p><strong>Dead tree and fish — Environmental hazard</strong></p>\n  <p>Warns that a substance may be harmful to aquatic life. Prevent environmental release and dispose of the substance according to instructions.</p>\n\n  <h3>3. Using a Hazard Symbol Correctly</h3>\n  <ol>\n    <li>Identify the pictogram on the container.</li>\n    <li>Read the hazard statements and precautionary statements on the label.</li>\n    <li>Check the required protective equipment, storage conditions and first-aid guidance.</li>\n    <li>Follow the laboratory procedure and ask the supervisor if anything is unclear.</li>\n  </ol>\n\n  <p><strong>Important:</strong> A pictogram communicates a type of hazard; it does not by itself give every detail about the risk, concentration, safe exposure or correct emergency response.</p>\n\n  <h3>4. Worked Examples</h3>\n\n  <p><strong>Example 1: A bottle shows the corrosion pictogram</strong></p>\n  <p><strong>Question:</strong> What danger should the learner consider?</p>\n  <ol>\n    <li>The corrosion pictogram warns of corrosive effects.</li>\n    <li>The substance may cause severe skin burns or eye damage and may corrode metals.</li>\n    <li>The learner must read the label and use the required protective equipment.</li>\n  </ol>\n  <p><strong>Answer:</strong> The chemical may cause serious burns or eye damage; avoid contact and follow the specified precautions.</p>\n\n  <p><strong>Example 2: A chemical bears the flame-over-circle pictogram</strong></p>\n  <p><strong>Question:</strong> Why should it be kept away from incompatible combustible materials?</p>\n  <ol>\n    <li>The symbol identifies an oxidising substance.</li>\n    <li>Oxidisers can intensify combustion or react dangerously with incompatible materials.</li>\n    <li>Separating incompatible substances reduces the chance of a dangerous reaction or fire.</li>\n  </ol>\n  <p><strong>Answer:</strong> An oxidiser can intensify a fire or react dangerously with certain materials.</p>\n\n  <p><strong>Example 3: A bottle shows the skull-and-crossbones pictogram</strong></p>\n  <p><strong>Question:</strong> What precaution should the learner take?</p>\n  <ol>\n    <li>The pictogram warns of acute toxicity.</li>\n    <li>Swallowing, inhalation or skin exposure may cause serious harm, depending on the chemical.</li>\n    <li>The learner must prevent the exposure routes specified on the label and follow the authorised procedure.</li>\n  </ol>\n  <p><strong>Answer:</strong> Avoid exposure and follow the label's protective, handling and emergency instructions.</p>\n\n  <h3>5. Common Misconceptions</h3>\n  <ul>\n    <li>The flame and flame-over-circle pictograms are different: the first indicates flame-related hazards, while the second identifies oxidisers.</li>\n    <li>The exclamation mark does not mean every chemical bearing it has exactly the same hazard.</li>\n    <li>A hazard pictogram is not a complete safety procedure. The label and relevant safety information must also be checked.</li>\n    <li>Absence of a pictogram does not prove that a substance is harmless.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "What does a flammable hazard symbol warn a user about?",
-          "ans": "It warns that the substance can easily catch fire.",
+          "q": "What does the skull-and-crossbones chemical hazard pictogram primarily warn about?",
+          "ans": "Acute toxicity: exposure may cause serious poisoning or death.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify the property represented by the symbol.",
-            "Step 2: Flammable substances can ignite.",
-            "Step 3: State the associated danger."
+            "Step 1: Identify the pictogram as skull and crossbones.",
+            "Step 2: Connect it with acute toxicity.",
+            "Step 3: State the possible consequence of serious exposure."
           ],
-          "why": "Flammable substances ignite readily when exposed to a suitable source of ignition.",
-          "sol": "Step 1: Identify the property represented by the symbol.\nStep 2: Flammable substances can ignite.\nStep 3: State the associated danger.",
-          "hint": "Focus on the core principle of Chemical Hazard Symbols.",
+          "why": "The pictogram warns of substances that can cause severe toxic effects after exposure.",
+          "sol": "Step 1: Identify the pictogram as skull and crossbones.\nStep 2: Connect it with acute toxicity.\nStep 3: State the possible consequence of serious exposure.",
+          "hint": "Think about the danger of poisoning after exposure.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Chemical Hazard Symbols",
@@ -221,18 +263,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "What does the corrosive hazard symbol indicate?",
-          "ans": "It indicates that the substance can damage living tissue or corrode materials.",
+          "q": "What is the difference between the flame pictogram and the flame-over-circle pictogram?",
+          "ans": "The flame indicates flammable or related fire hazards, while the flame over a circle indicates an oxidising substance that can intensify combustion.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify the meaning of corrosive.",
-            "Step 2: A corrosive substance can attack materials or living tissue.",
-            "Step 3: State the warning."
+            "Step 1: Identify the flame pictogram.",
+            "Step 2: Identify the flame over a circle.",
+            "Step 3: Compare their main hazard meanings."
           ],
-          "why": "Corrosive substances can cause serious chemical burns and damage equipment.",
-          "sol": "Step 1: Identify the meaning of corrosive.\nStep 2: A corrosive substance can attack materials or living tissue.\nStep 3: State the warning.",
-          "hint": "Focus on the core principle of Chemical Hazard Symbols.",
+          "why": "Confusing these symbols can lead to incorrect storage and handling decisions.",
+          "sol": "Step 1: Identify the flame pictogram.\nStep 2: Identify the flame over a circle.\nStep 3: Compare their main hazard meanings.",
+          "hint": "One warns of fire-related hazards; the other identifies an oxidiser.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Chemical Hazard Symbols",
@@ -241,17 +283,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "Why are hazard symbols placed on chemical containers?",
-          "ans": "They provide a quick warning about the hazards associated with the chemical so that it can be handled safely.",
+          "q": "A chemical container displays the corrosion pictogram. Name one serious hazard it indicates.",
+          "ans": "It may cause severe skin burns or serious eye damage; it may also corrode metals.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Users need to know potential dangers before handling a chemical.",
-            "Step 2: Symbols provide a quick warning about the nature of the hazard."
+            "Step 1: Recognise the corrosion symbol.",
+            "Step 2: Consider the possible effects of corrosive chemicals.",
+            "Step 3: Give one hazard indicated by the pictogram."
           ],
-          "why": "Hazard information helps users choose appropriate precautions.",
-          "sol": "Step 1: Users need to know potential dangers before handling a chemical.\nStep 2: Symbols provide a quick warning about the nature of the hazard.",
-          "hint": "Focus on the core principle of Chemical Hazard Symbols.",
+          "why": "Corrosive substances can cause serious tissue damage and require appropriate precautions.",
+          "sol": "Step 1: Recognise the corrosion symbol.\nStep 2: Consider the possible effects of corrosive chemicals.\nStep 3: Give one hazard indicated by the pictogram.",
+          "hint": "Think about effects on skin, eyes or metals.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Chemical Hazard Symbols",
@@ -260,24 +303,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A chemical container has a flammable warning. State one important precaution.",
-          "ans": "Keep the chemical away from flames and other sources of ignition.",
+          "q": "A bottle bears the gas-cylinder pictogram. What hazard should the learner consider when storing it?",
+          "ans": "The gas is under pressure, and the cylinder may burst if heated; the gas may also have other hazards.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Flammable substances can catch fire.",
-            "Step 2: Flames and other ignition sources can start combustion.",
-            "Step 3: Keep the chemical away from ignition sources."
+            "Step 1: Identify the symbol as gas under pressure.",
+            "Step 2: Consider what may happen if the cylinder is heated.",
+            "Step 3: Follow the prescribed storage and handling instructions."
           ],
-          "why": "Removing ignition sources reduces the chance of the substance catching fire.",
-          "sol": "Step 1: Flammable substances can catch fire.\nStep 2: Flames and other ignition sources can start combustion.\nStep 3: Keep the chemical away from ignition sources.",
-          "hint": "Think about what could cause a flammable substance to ignite.",
+          "why": "Gas cylinders require appropriate storage, protection and handling.",
+          "sol": "Step 1: Identify the symbol as gas under pressure.\nStep 2: Consider what may happen if the cylinder is heated.\nStep 3: Follow the prescribed storage and handling instructions.",
+          "hint": "Think about the pressure inside the container.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Chemical Hazard Symbols",
           "conceptId": "chemistry_chemistry_foundations_chemical_hazard_symbols",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why is reading the full chemical label necessary even after identifying its hazard pictogram?",
+          "ans": "The pictogram gives only a general hazard warning; the full label provides more specific hazards and precautions.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify what the pictogram communicates.",
+            "Step 2: Recognise that the exact hazard and exposure conditions vary by substance.",
+            "Step 3: Check the hazard statements, precautions and emergency guidance."
+          ],
+          "why": "Safe handling depends on the chemical's specific risks and the instructions for controlling them.",
+          "sol": "Step 1: Identify what the pictogram communicates.\nStep 2: Recognise that the exact hazard and exposure conditions vary by substance.\nStep 3: Check the hazard statements, precautions and emergency guidance.",
+          "hint": "The symbol gives a warning, but does it explain every precaution?",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Chemical Hazard Symbols",
+          "conceptId": "chemistry_chemistry_foundations_chemical_hazard_symbols",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -291,21 +354,21 @@ export const chemistryTopics = [
     "topic_group": "Safe Handling of Chemicals",
     "topic": "Safe Handling of Chemicals",
     "data": {
-      "notes": "\n  <h2>Safe Handling of Chemicals</h2>\n\n  <p>Chemicals must be handled according to their properties and the\n  instructions provided on their labels.</p>\n\n  <h3>Important Practices</h3>\n\n  <ul>\n    <li>Read the label before use.</li>\n    <li>Use the correct chemical for the experiment.</li>\n    <li>Use the smallest practical quantity.</li>\n    <li>Wear suitable protective equipment.</li>\n    <li>Keep chemical containers closed when not in use.</li>\n    <li>Never return unused chemicals to the original container unless instructed.</li>\n    <li>Use a fume cupboard when instructed for substances that release harmful vapours.</li>\n    <li>Wash hands after handling chemicals.</li>\n  </ul>\n\n  <h3>Smelling a Chemical</h3>\n\n  <p>Never place your nose directly over a chemical container. If instructed\n  to detect an odour, use the wafting method: gently move vapour towards\n  your nose from a distance.</p>\n\n  <h3>Handling Acids</h3>\n\n  <p>Concentrated acids can be corrosive. They must be handled carefully and\n  according to laboratory instructions.</p>\n  ",
+      "notes": "\n  <h2>Safe Handling of Chemicals</h2>\n\n  <h3>1. What Safe Chemical Handling Means</h3>\n  <p>Safe chemical handling means using, transferring, storing and disposing of chemicals in ways that reduce the risk of injury, poisoning, fire, dangerous reactions and environmental harm.</p>\n\n  <p>Always follow the teacher's instructions, the experimental procedure, the container label and any applicable safety data sheet (SDS). Do not handle a chemical if you do not understand its hazards or the required precautions.</p>\n\n  <h3>2. Identifying Chemicals</h3>\n  <ul>\n    <li>Read the chemical's name, concentration and hazard information before use.</li>\n    <li>Never use an unlabelled container or guess its contents.</li>\n    <li>Do not return unused chemical to its original container unless the procedure specifically directs this. Returning it can contaminate the stock.</li>\n    <li>Keep containers closed when they are not being used.</li>\n  </ul>\n\n  <h3>3. Transferring and Measuring Chemicals</h3>\n  <ul>\n    <li>Use the correct apparatus for transferring or measuring the chemical.</li>\n    <li>Use clean equipment and avoid contaminating stock solutions.</li>\n    <li>Use a pipette filler; never draw chemicals into a pipette by mouth.</li>\n    <li>When diluting concentrated acid, add acid slowly to water while stirring, if this is the prescribed procedure. Never add water to concentrated acid because the heat released can cause dangerous splashing.</li>\n    <li>Keep chemical containers away from the edge of the bench.</li>\n  </ul>\n\n  <h3>4. Preventing Exposure</h3>\n  <ul>\n    <li>Wear the protective equipment specified for the task.</li>\n    <li>Avoid touching chemicals directly with bare hands.</li>\n    <li>Never taste a chemical.</li>\n    <li>Do not smell chemicals directly. Use wafting only when explicitly permitted by the procedure and appropriate for the substance.</li>\n    <li>Use a fume cupboard when the procedure or hazard assessment requires it.</li>\n    <li>Wash hands after handling chemicals, even when gloves have been worn.</li>\n  </ul>\n\n  <h3>5. Chemical Compatibility and Storage</h3>\n  <p>Some chemicals react dangerously when mixed. Store them according to their hazards and compatibility, not simply in alphabetical order.</p>\n  <ul>\n    <li>Keep flammable chemicals away from ignition sources.</li>\n    <li>Keep oxidisers separate from incompatible combustible or reducing materials.</li>\n    <li>Store acids and bases according to the laboratory's compatibility rules.</li>\n    <li>Secure gas cylinders as directed and protect them from heat.</li>\n    <li>Use the required labels and designated storage areas.</li>\n  </ul>\n\n  <h3>6. Chemical Spills and Waste</h3>\n  <p>Never clean up an unfamiliar or hazardous chemical spill without authorisation and appropriate training. Alert the supervisor, keep others away and follow the emergency procedure.</p>\n\n  <p>Dispose of chemical waste using the designated waste container or approved method. Do not mix waste chemicals or pour them into a sink unless specifically authorised.</p>\n\n  <h3>7. Worked Examples</h3>\n\n  <p><strong>Example 1: Diluting concentrated acid</strong></p>\n  <p><strong>Question:</strong> A learner needs to dilute concentrated acid with water. Which should be added to which?</p>\n  <ol>\n    <li>Diluting concentrated acid releases heat.</li>\n    <li>If water is poured into concentrated acid, the small amount of water may heat rapidly and cause splashing.</li>\n    <li>When directed by the approved procedure, add the acid slowly to water while stirring, using the required protective equipment.</li>\n  </ol>\n  <p><strong>Answer:</strong> Add acid slowly to water, never water to concentrated acid.</p>\n\n  <p><strong>Example 2: An unlabelled bottle</strong></p>\n  <p><strong>Question:</strong> A learner finds a bottle containing a clear liquid but no label. Should the learner use it?</p>\n  <ol>\n    <li>Clear appearance does not identify a chemical.</li>\n    <li>The liquid could be corrosive, toxic or reactive.</li>\n    <li>Using it without identification could cause exposure or an unsafe reaction.</li>\n  </ol>\n  <p><strong>Answer:</strong> Do not use it. Keep it undisturbed and report it to the supervisor.</p>\n\n  <p><strong>Example 3: Returning unused chemical</strong></p>\n  <p><strong>Question:</strong> A learner has poured out more chemical than needed. Should the excess be poured back into the stock bottle?</p>\n  <ol>\n    <li>The excess may have contacted contaminated apparatus or the surrounding environment.</li>\n    <li>Returning it could contaminate the original stock.</li>\n    <li>Follow the laboratory's instructions for unused chemical and waste disposal.</li>\n  </ol>\n  <p><strong>Answer:</strong> Do not return the excess unless specifically instructed by the approved procedure.</p>\n\n  <h3>8. Common Misconceptions</h3>\n  <ul>\n    <li>A clear, colourless liquid is not necessarily water or harmless.</li>\n    <li>Adding water to concentrated acid is unsafe because dilution releases heat.</li>\n    <li>Gloves do not replace goggles, suitable clothing or safe technique.</li>\n    <li>Not every chemical spill should be washed into a sink. The correct response depends on the substance and laboratory procedure.</li>\n    <li>Never mix chemicals merely to see what happens.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "Why should a chemical label be read before using the chemical?",
-          "ans": "The label should be read to identify the chemical, its hazards and the precautions required for safe handling.",
+          "q": "When diluting concentrated acid using the usual laboratory procedure, which substance should be added slowly to the other?",
+          "ans": "Add concentrated acid slowly to water while stirring, following the approved procedure.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The label provides information about the substance.",
-            "Step 2: It may include hazards and handling instructions.",
-            "Step 3: Reading it helps the user select appropriate precautions."
+            "Step 1: Recognise that acid dilution releases heat.",
+            "Step 2: Adding water to concentrated acid can cause rapid heating and splashing.",
+            "Step 3: Choose the safer order used in the approved procedure."
           ],
-          "why": "Correct handling depends on knowing the properties and hazards of the chemical.",
-          "sol": "Step 1: The label provides information about the substance.\nStep 2: It may include hazards and handling instructions.\nStep 3: Reading it helps the user select appropriate precautions.",
-          "hint": "Focus on the core principle of Safe Handling of Chemicals.",
+          "why": "This reduces the risk of dangerous splashing caused by localised heating.",
+          "sol": "Step 1: Recognise that acid dilution releases heat.\nStep 2: Adding water to concentrated acid can cause rapid heating and splashing.\nStep 3: Choose the safer order used in the approved procedure.",
+          "hint": "Remember the rule about acid dilution and heat.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Safe Handling of Chemicals",
@@ -314,18 +377,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "How should a student safely detect the smell of a chemical when instructed to do so?",
-          "ans": "The student should gently waft the vapour towards the nose without placing the nose directly over the container.",
+          "q": "A learner finds a clear liquid in an unlabelled bottle. What is the safest action?",
+          "ans": "Do not use it; report the unlabelled bottle to the supervisor.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Do not place the nose directly over the container.",
-            "Step 2: Hold the container at a safe distance.",
-            "Step 3: Gently waft vapour towards the nose."
+            "Step 1: A clear liquid could be many different substances.",
+            "Step 2: Some colourless substances are toxic, corrosive or reactive.",
+            "Step 3: Do not use it and inform the supervisor."
           ],
-          "why": "Direct inhalation may expose the respiratory system to a high concentration of harmful vapour.",
-          "sol": "Step 1: Do not place the nose directly over the container.\nStep 2: Hold the container at a safe distance.\nStep 3: Gently waft vapour towards the nose.",
-          "hint": "Focus on the core principle of Safe Handling of Chemicals.",
+          "why": "Chemical identity and hazards must be known before a substance is used.",
+          "sol": "Step 1: A clear liquid could be many different substances.\nStep 2: Some colourless substances are toxic, corrosive or reactive.\nStep 3: Do not use it and inform the supervisor.",
+          "hint": "Can appearance alone identify a chemical?",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Safe Handling of Chemicals",
@@ -334,18 +397,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "Why should unused chemicals generally not be returned to their original containers?",
-          "ans": "Because the unused chemical may be contaminated and could contaminate the original chemical supply.",
+          "q": "Why should unused chemical generally not be returned to its original stock bottle?",
+          "ans": "It may contaminate the original stock chemical.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The unused chemical may have become contaminated.",
-            "Step 2: Returning it could contaminate the entire stock.",
-            "Step 3: Therefore unused chemicals should be disposed of according to laboratory instructions."
+            "Step 1: The poured-out portion may have contacted other materials.",
+            "Step 2: It may therefore be contaminated.",
+            "Step 3: Returning it could contaminate the stock supply."
           ],
-          "why": "Contamination of the main stock can make the chemical unsafe or unsuitable for later experiments.",
-          "sol": "Step 1: The unused chemical may have become contaminated.\nStep 2: Returning it could contaminate the entire stock.\nStep 3: Therefore unused chemicals should be disposed of according to laboratory instructions.",
-          "hint": "Focus on the core principle of Safe Handling of Chemicals.",
+          "why": "Keeping stock chemicals uncontaminated helps maintain reliable experiments and prevents unexpected reactions.",
+          "sol": "Step 1: The poured-out portion may have contacted other materials.\nStep 2: It may therefore be contaminated.\nStep 3: Returning it could contaminate the stock supply.",
+          "hint": "Think about what the unused portion might have contacted.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Safe Handling of Chemicals",
@@ -354,24 +417,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A learner smells a chemical by placing their nose directly above the container. Identify the mistake and give the correct method.",
-          "ans": "The mistake is directly inhaling the chemical vapour. The correct method is to gently waft the vapour towards the nose from a safe distance.",
+          "q": "Why must a pipette filler be used instead of drawing liquid into a pipette by mouth?",
+          "ans": "A pipette filler prevents chemicals from being accidentally sucked into the mouth and swallowed or exposed to the user.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Directly inhaling from the container is unsafe.",
-            "Step 2: Harmful vapour may enter the respiratory system at high concentration.",
-            "Step 3: The correct method is to waft vapour gently towards the nose when instructed."
+            "Step 1: Mouth pipetting creates a direct route for chemical exposure.",
+            "Step 2: The liquid may be toxic, corrosive or otherwise harmful.",
+            "Step 3: A pipette filler transfers the liquid without using the mouth."
           ],
-          "why": "Wafting reduces direct exposure to concentrated vapour.",
-          "sol": "Step 1: Directly inhaling from the container is unsafe.\nStep 2: Harmful vapour may enter the respiratory system at high concentration.\nStep 3: The correct method is to waft vapour gently towards the nose when instructed.",
-          "hint": "Think about how vapour should reach the nose.",
+          "why": "Mouth pipetting is unsafe and must never be used in the laboratory.",
+          "sol": "Step 1: Mouth pipetting creates a direct route for chemical exposure.\nStep 2: The liquid may be toxic, corrosive or otherwise harmful.\nStep 3: A pipette filler transfers the liquid without using the mouth.",
+          "hint": "Consider accidental swallowing or exposure to the chemical.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Safe Handling of Chemicals",
           "conceptId": "chemistry_chemistry_foundations_safe_handling_of_chemicals",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "A learner spills an unfamiliar chemical on the laboratory bench. Why should the learner not immediately wipe it up without instructions?",
+          "ans": "The learner should alert the supervisor, keep others away and follow the authorised spill procedure.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: The chemical may be corrosive, toxic, flammable or reactive.",
+            "Step 2: The wrong cleanup method may increase exposure or cause a dangerous reaction.",
+            "Step 3: Alert the supervisor, keep others away and follow the spill procedure."
+          ],
+          "why": "Spill response depends on the chemical's hazards, the amount spilled and the available safety equipment.",
+          "sol": "Step 1: The chemical may be corrosive, toxic, flammable or reactive.\nStep 2: The wrong cleanup method may increase exposure or cause a dangerous reaction.\nStep 3: Alert the supervisor, keep others away and follow the spill procedure.",
+          "hint": "Think about exposure, chemical reactions and the correct cleanup method.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Safe Handling of Chemicals",
+          "conceptId": "chemistry_chemistry_foundations_safe_handling_of_chemicals",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -385,20 +468,21 @@ export const chemistryTopics = [
     "topic_group": "Measuring Apparatus",
     "topic": "Measuring Apparatus",
     "data": {
-      "notes": "\n  <h2>Measuring Apparatus</h2>\n\n  <p>Different apparatus are designed to measure different physical\n  quantities accurately.</p>\n\n  <h3>Common Measuring Apparatus</h3>\n\n  <ul>\n    <li><strong>Measuring cylinder:</strong> measures liquid volume.</li>\n    <li><strong>Burette:</strong> delivers accurately measured variable volumes of liquid, especially during titration.</li>\n    <li><strong>Pipette:</strong> transfers a fixed, accurately measured volume of liquid.</li>\n    <li><strong>Balance:</strong> measures mass.</li>\n    <li><strong>Thermometer:</strong> measures temperature.</li>\n  </ul>\n\n  <h3>Choosing Apparatus</h3>\n\n  <p>The apparatus selected depends on the quantity being measured and the\n  required accuracy.</p>\n\n  <p>For example, a measuring cylinder is suitable for ordinary volume\n  measurements, while a burette or pipette is used when greater accuracy is\n  required in analytical work.</p>\n  ",
+      "notes": "\n  <h2>Measuring Apparatus</h2>\n\n  <h3>1. Purpose of Measuring Apparatus</h3>\n  <p>Measuring apparatus is equipment used to determine quantities such as volume, mass, temperature and time. The correct apparatus depends on the quantity being measured and the precision required.</p>\n\n  <h3>2. Common Apparatus and Their Uses</h3>\n\n  <p><strong>Measuring cylinder</strong></p>\n  <p>Measures the volume of a liquid. It is generally more suitable for measuring liquid volumes than an ordinary beaker, but it is less precise than a suitable pipette or burette.</p>\n\n  <p><strong>Volumetric pipette</strong></p>\n  <p>Transfers one specified volume of liquid accurately, such as 25.0 cm³. It is commonly used when preparing solutions or transferring a fixed volume during an experiment.</p>\n\n  <p><strong>Burette</strong></p>\n  <p>Delivers variable volumes of liquid accurately. Its graduated scale is used to obtain an initial and final reading; the volume delivered is their difference.</p>\n\n  <p><strong>Volumetric flask</strong></p>\n  <p>Used to prepare a solution to one specified final volume. The liquid is made up to the calibration mark, with the bottom of the meniscus aligned with the mark at eye level for a typical clear aqueous solution.</p>\n\n  <p><strong>Balance</strong></p>\n  <p>Measures mass, usually in grams (g). A balance should be placed on a stable surface and zeroed or tared according to its instructions.</p>\n\n  <p><strong>Thermometer</strong></p>\n  <p>Measures temperature, usually in degrees Celsius (°C). The sensing part must be positioned appropriately for the substance being measured, without touching the vessel when that would distort the reading.</p>\n\n  <p><strong>Stopwatch</strong></p>\n  <p>Measures elapsed time, usually in seconds (s).</p>\n\n  <h3>3. Choosing the Correct Apparatus</h3>\n  <ul>\n    <li>Use a measuring cylinder for ordinary volume measurements when moderate precision is sufficient.</li>\n    <li>Use a volumetric pipette to transfer a fixed calibrated volume accurately.</li>\n    <li>Use a burette to deliver different volumes precisely, especially during titration.</li>\n    <li>Use a volumetric flask to prepare a solution to a specified final volume.</li>\n    <li>Use a balance for mass, a thermometer for temperature and a stopwatch for time.</li>\n  </ul>\n\n  <p><strong>Important distinction:</strong> A volumetric pipette transfers a fixed volume; a burette delivers a variable measured volume; a volumetric flask is calibrated to contain a specified final volume.</p>\n\n  <h3>4. Reading Liquid Volumes</h3>\n  <p>For most clear aqueous solutions in common glass apparatus, read the bottom of the meniscus at eye level. Looking from above or below can produce a parallax error.</p>\n\n  <p>Apparatus has a limited resolution and uncertainty. More decimal places do not automatically make a measurement more accurate.</p>\n\n  <h3>5. Worked Examples</h3>\n\n  <p><strong>Example 1: Selecting apparatus for a fixed volume</strong></p>\n  <p><strong>Question:</strong> A learner must transfer exactly 25.0 cm³ of a solution as accurately as possible. Which apparatus is most suitable?</p>\n  <ol>\n    <li>The required quantity is a fixed volume.</li>\n    <li>A volumetric pipette is calibrated to transfer a specified volume accurately.</li>\n    <li>Select a 25.0 cm³ volumetric pipette.</li>\n  </ol>\n  <p><strong>Answer:</strong> A 25.0 cm³ volumetric pipette.</p>\n\n  <p><strong>Example 2: Selecting apparatus for variable delivery</strong></p>\n  <p><strong>Question:</strong> A learner needs to deliver approximately 18.6 cm³ of solution during a titration. Which apparatus is suitable?</p>\n  <ol>\n    <li>The volume required is not a single fixed calibrated volume.</li>\n    <li>A burette allows different delivered volumes to be measured.</li>\n    <li>Subtract the initial burette reading from the final reading.</li>\n  </ol>\n  <p><strong>Answer:</strong> A burette.</p>\n\n  <p><strong>Example 3: Selecting apparatus to prepare a solution</strong></p>\n  <p><strong>Question:</strong> A learner must prepare a solution with a final volume of 250 cm³. Which apparatus is most suitable?</p>\n  <ol>\n    <li>The solution must be adjusted to one specified final volume.</li>\n    <li>A volumetric flask has a calibration mark for its intended volume.</li>\n    <li>Dissolve the solute, transfer it quantitatively as instructed, and make the solution up to the mark.</li>\n  </ol>\n  <p><strong>Answer:</strong> A 250 cm³ volumetric flask.</p>\n\n  <h3>6. Common Misconceptions</h3>\n  <ul>\n    <li>A beaker's graduations are generally not as precise as those of suitable volumetric apparatus.</li>\n    <li>A volumetric flask is intended to contain a specified final volume, not to deliver arbitrary volumes.</li>\n    <li>A burette's delivered volume is calculated from the difference between readings, not from the final reading alone.</li>\n    <li>Always match the apparatus to the required quantity and precision.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "Which apparatus is used to measure the mass of a substance?",
-          "ans": "A balance.",
+          "q": "Which apparatus is most suitable for accurately transferring a fixed volume of 25.0 cm³?",
+          "ans": "A 25.0 cm³ volumetric pipette.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify the physical quantity: mass.",
-            "Step 2: Select the apparatus designed to measure mass."
+            "Step 1: The volume required is fixed.",
+            "Step 2: A volumetric pipette is calibrated to transfer a specified volume.",
+            "Step 3: Choose the pipette calibrated for 25.0 cm³."
           ],
-          "why": "A balance measures mass.",
-          "sol": "Step 1: Identify the physical quantity: mass.\nStep 2: Select the apparatus designed to measure mass.",
-          "hint": "Focus on the core principle of Measuring Apparatus.",
+          "why": "A volumetric pipette is designed to transfer one specified volume accurately.",
+          "sol": "Step 1: The volume required is fixed.\nStep 2: A volumetric pipette is calibrated to transfer a specified volume.\nStep 3: Choose the pipette calibrated for 25.0 cm³.",
+          "hint": "Look for apparatus calibrated to transfer one specified volume.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Apparatus",
@@ -407,18 +491,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "Which apparatus is used to transfer a fixed accurate volume of liquid?",
-          "ans": "A pipette.",
+          "q": "Which apparatus is most suitable for delivering a variable volume accurately during titration?",
+          "ans": "A burette.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The volume must be fixed.",
-            "Step 2: The apparatus must be designed for accurate transfer.",
-            "Step 3: Select the pipette."
+            "Step 1: A variable delivered volume is required.",
+            "Step 2: A burette has a graduated scale and a tap for controlled delivery.",
+            "Step 3: The volume delivered is the final reading minus the initial reading."
           ],
-          "why": "A volumetric pipette is designed to transfer a specified fixed volume accurately.",
-          "sol": "Step 1: The volume must be fixed.\nStep 2: The apparatus must be designed for accurate transfer.\nStep 3: Select the pipette.",
-          "hint": "Focus on the core principle of Measuring Apparatus.",
+          "why": "A burette measures variable delivered volumes accurately.",
+          "sol": "Step 1: A variable delivered volume is required.\nStep 2: A burette has a graduated scale and a tap for controlled delivery.\nStep 3: The volume delivered is the final reading minus the initial reading.",
+          "hint": "The volume delivered is calculated from two scale readings.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Apparatus",
@@ -427,18 +511,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "Which apparatus is commonly used to measure a variable volume accurately during titration?",
-          "ans": "A burette.",
+          "q": "Which apparatus should be used to prepare a solution to a specified final volume of 250 cm³?",
+          "ans": "A 250 cm³ volumetric flask.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Titration requires controlled delivery of a solution.",
-            "Step 2: The volume delivered must be measured.",
-            "Step 3: A burette is designed for this purpose."
+            "Step 1: The solution must have a specified final volume.",
+            "Step 2: A volumetric flask is calibrated to contain a specified volume.",
+            "Step 3: Select the flask with the 250 cm³ calibration."
           ],
-          "why": "A burette allows a variable volume of solution to be delivered and measured accurately.",
-          "sol": "Step 1: Titration requires controlled delivery of a solution.\nStep 2: The volume delivered must be measured.\nStep 3: A burette is designed for this purpose.",
-          "hint": "Focus on the core principle of Measuring Apparatus.",
+          "why": "The calibration mark indicates the intended final volume of the prepared solution.",
+          "sol": "Step 1: The solution must have a specified final volume.\nStep 2: A volumetric flask is calibrated to contain a specified volume.\nStep 3: Select the flask with the 250 cm³ calibration.",
+          "hint": "Think of apparatus with one calibration mark for the final solution volume.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Apparatus",
@@ -447,24 +531,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A student needs to transfer exactly 25.0 cm³ of a solution into a flask. Which apparatus is most appropriate?",
-          "ans": "A 25.0 cm³ volumetric pipette.",
+          "q": "Which apparatus is used to measure the mass of a solid chemical?",
+          "ans": "A balance.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The required volume is fixed at 25.0 cm³.",
-            "Step 2: High accuracy is required.",
-            "Step 3: Use a 25.0 cm³ volumetric pipette."
+            "Step 1: Identify the quantity required: mass.",
+            "Step 2: Select an instrument that measures mass.",
+            "Step 3: Check that it is zeroed or tared before measuring."
           ],
-          "why": "A volumetric pipette is designed to transfer a fixed volume accurately.",
-          "sol": "Step 1: The required volume is fixed at 25.0 cm³.\nStep 2: High accuracy is required.\nStep 3: Use a 25.0 cm³ volumetric pipette.",
-          "hint": "The volume is fixed and accuracy is important.",
+          "why": "A balance measures mass, commonly in grams.",
+          "sol": "Step 1: Identify the quantity required: mass.\nStep 2: Select an instrument that measures mass.\nStep 3: Check that it is zeroed or tared before measuring.",
+          "hint": "Mass is not measured using a volume-measuring instrument.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Apparatus",
           "conceptId": "chemistry_chemistry_foundations_measuring_apparatus",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why should the bottom of the meniscus of a clear aqueous solution normally be read at eye level?",
+          "ans": "To reduce parallax error and obtain a more reliable volume reading.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: The liquid surface forms a curved meniscus.",
+            "Step 2: Viewing from above or below changes the apparent alignment with the scale.",
+            "Step 3: Eye-level reading reduces parallax error."
+          ],
+          "why": "Reading at eye level avoids errors caused by viewing the scale from an angle.",
+          "sol": "Step 1: The liquid surface forms a curved meniscus.\nStep 2: Viewing from above or below changes the apparent alignment with the scale.\nStep 3: Eye-level reading reduces parallax error.",
+          "hint": "Think about how viewing angle affects the apparent position of a scale.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Measuring Apparatus",
+          "conceptId": "chemistry_chemistry_foundations_measuring_apparatus",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -478,20 +582,21 @@ export const chemistryTopics = [
     "topic_group": "Heating Apparatus",
     "topic": "Heating Apparatus",
     "data": {
-      "notes": "\n  <h2>Heating Apparatus</h2>\n\n  <p>Heating apparatus is used to provide heat during laboratory experiments.</p>\n\n  <h3>Common Heating Apparatus</h3>\n\n  <ul>\n    <li><strong>Bunsen burner:</strong> provides a flame for heating.</li>\n    <li><strong>Tripod:</strong> supports apparatus above a flame.</li>\n    <li><strong>Wire gauze:</strong> supports glassware and distributes heat.</li>\n    <li><strong>Evaporating dish:</strong> holds a solution during evaporation.</li>\n    <li><strong>Crucible:</strong> used for strongly heating small amounts of solid substances.</li>\n    <li><strong>Test tube:</strong> can hold small quantities of substances for heating.</li>\n  </ul>\n\n  <h3>Using a Bunsen Burner</h3>\n\n  <p>The air hole affects the flame. A properly adjusted burner produces a\n  suitable flame for laboratory heating.</p>\n\n  <p>Glassware should be heated carefully to avoid thermal shock and breakage.</p>\n  ",
+      "notes": "\n  <h2>Heating Apparatus</h2>\n\n  <h3>1. Purpose of Heating Apparatus</h3>\n  <p>Heating apparatus supplies heat to substances during experiments. Different equipment is selected according to the required temperature, the material being heated and the level of control needed.</p>\n\n  <h3>2. Common Heating Apparatus</h3>\n\n  <p><strong>Bunsen burner</strong></p>\n  <p>A laboratory gas burner that produces a flame for heating. The air hole controls the amount of air mixed with the gas and affects the flame.</p>\n\n  <p><strong>Tripod stand</strong></p>\n  <p>Supports suitable apparatus above a burner. It is commonly used with wire gauze when heating a beaker or flask.</p>\n\n  <p><strong>Wire gauze</strong></p>\n  <p>Placed on a suitable support to hold glassware and help distribute heat over the base. It does not eliminate the risks of thermal shock or overheating.</p>\n\n  <p><strong>Heatproof mat</strong></p>\n  <p>Protects the bench from heat and should be used as instructed when heating equipment is placed on the work surface.</p>\n\n  <p><strong>Crucible and lid</strong></p>\n  <p>A heat-resistant container used for strongly heating small amounts of solid substances. The crucible must be handled with suitable tongs after heating.</p>\n\n  <p><strong>Evaporating dish</strong></p>\n  <p>A heat-resistant dish used to evaporate solvent from a solution, often to obtain a more concentrated solution or recover a dissolved solid.</p>\n\n  <p><strong>Water bath</strong></p>\n  <p>Heats a sample indirectly using warm or hot water. It is useful when gentle, more even heating is needed and direct flame is unsuitable.</p>\n\n  <h3>3. Bunsen Burner Flames</h3>\n  <p><strong>Air hole closed:</strong> Less air mixes with the gas, usually producing a luminous yellow flame. It is cooler and more visible and may produce soot. It is not normally the preferred flame for strong heating.</p>\n\n  <p><strong>Air hole open:</strong> More air mixes with the gas, usually producing a blue, hotter flame suitable for stronger heating. This flame can be difficult to see, so handle the burner carefully.</p>\n\n  <p>Follow the school's burner-lighting procedure. Check the gas connection and surrounding area, keep combustible materials away, and never leave a lit burner unattended.</p>\n\n  <h3>4. Safe Heating Techniques</h3>\n  <ul>\n    <li>Use suitable heat-resistant apparatus and a stable support.</li>\n    <li>Inspect glassware for cracks before heating.</li>\n    <li>Point the opening of a heated test tube away from people.</li>\n    <li>Use tongs or appropriate holders for hot apparatus.</li>\n    <li>Do not touch heated glassware simply because it looks cool; hot glass can look like cold glass.</li>\n    <li>Avoid sudden temperature changes that can cause thermal shock.</li>\n    <li>Allow apparatus to cool in a safe location before handling or storing it.</li>\n  </ul>\n\n  <h3>5. Worked Examples</h3>\n\n  <p><strong>Example 1: Choosing apparatus to heat a solid strongly</strong></p>\n  <p><strong>Question:</strong> A small amount of solid must be heated strongly. Which container is suitable?</p>\n  <ol>\n    <li>The sample is a solid requiring strong heating.</li>\n    <li>An ordinary beaker may not be suitable for this purpose.</li>\n    <li>A suitable heat-resistant crucible is designed for strongly heating small solid samples.</li>\n  </ol>\n  <p><strong>Answer:</strong> A suitable crucible, supported and handled according to the laboratory procedure.</p>\n\n  <p><strong>Example 2: Choosing gentle indirect heating</strong></p>\n  <p><strong>Question:</strong> A sample requires gentle heating and should not be heated directly with a flame. What can be used?</p>\n  <ol>\n    <li>Direct flame is unsuitable for the sample or procedure.</li>\n    <li>A water bath supplies heat indirectly through warm or hot water.</li>\n    <li>Use a bath at the required temperature under the approved procedure.</li>\n  </ol>\n  <p><strong>Answer:</strong> A water bath.</p>\n\n  <p><strong>Example 3: Selecting the Bunsen flame</strong></p>\n  <p><strong>Question:</strong> A learner needs a hot flame for heating a suitable sample. Which flame is generally preferred?</p>\n  <ol>\n    <li>The air hole controls how much air mixes with the gas.</li>\n    <li>Opening it generally produces a hotter blue flame.</li>\n    <li>Use the blue flame when required by the procedure, while observing burner safety.</li>\n  </ol>\n  <p><strong>Answer:</strong> The blue flame with the air hole open.</p>\n\n  <h3>6. Common Misconceptions</h3>\n  <ul>\n    <li>The luminous yellow flame is generally cooler and may deposit soot; it is not the normal choice for strong heating.</li>\n    <li>Hot glassware may look identical to cool glassware.</li>\n    <li>A tripod supports apparatus; it does not itself generate heat.</li>\n    <li>Never use a naked flame near flammable chemicals or vapours.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "What is the function of a Bunsen burner?",
-          "ans": "A Bunsen burner provides a flame for heating substances.",
+          "q": "Which apparatus is most suitable for strongly heating a small quantity of a solid?",
+          "ans": "A suitable crucible.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify the apparatus as a source of heat.",
-            "Step 2: State what it provides."
+            "Step 1: The sample is a small quantity of solid.",
+            "Step 2: Strong heating is required.",
+            "Step 3: Choose a suitable heat-resistant container intended for this task."
           ],
-          "why": "It is a common laboratory source of heat.",
-          "sol": "Step 1: Identify the apparatus as a source of heat.\nStep 2: State what it provides.",
-          "hint": "Focus on the core principle of Heating Apparatus.",
+          "why": "Crucibles are designed for strongly heating small quantities of solid substances.",
+          "sol": "Step 1: The sample is a small quantity of solid.\nStep 2: Strong heating is required.\nStep 3: Choose a suitable heat-resistant container intended for this task.",
+          "hint": "Choose a heat-resistant container designed for strong heating.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Heating Apparatus",
@@ -500,18 +605,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "What is the function of wire gauze?",
-          "ans": "Wire gauze supports glassware and helps distribute heat more evenly.",
+          "q": "Which flame is generally used when a hotter Bunsen burner flame is required?",
+          "ans": "The blue flame produced when the air hole is open.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify its position between the heat source and supported vessel.",
-            "Step 2: It supports the glassware.",
-            "Step 3: It also helps distribute heat."
+            "Step 1: Opening the air hole allows more air to mix with the gas.",
+            "Step 2: More complete combustion generally produces a hotter blue flame.",
+            "Step 3: Use the blue flame when the procedure calls for stronger heating."
           ],
-          "why": "It provides a stable support and reduces direct concentration of heat on one part of the vessel.",
-          "sol": "Step 1: Identify its position between the heat source and supported vessel.\nStep 2: It supports the glassware.\nStep 3: It also helps distribute heat.",
-          "hint": "Focus on the core principle of Heating Apparatus.",
+          "why": "The blue flame is generally hotter and more suitable for strong heating than the luminous yellow flame.",
+          "sol": "Step 1: Opening the air hole allows more air to mix with the gas.\nStep 2: More complete combustion generally produces a hotter blue flame.\nStep 3: Use the blue flame when the procedure calls for stronger heating.",
+          "hint": "Consider the effect of opening the burner's air hole.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Heating Apparatus",
@@ -520,17 +625,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "What is a crucible used for?",
-          "ans": "A crucible is used to strongly heat small amounts of solid substances.",
+          "q": "Which apparatus is most suitable for gently heating a sample indirectly when direct flame is unsuitable?",
+          "ans": "A water bath.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: A crucible is made to withstand strong heating.",
-            "Step 2: It holds small amounts of solid substances."
+            "Step 1: Direct flame is not appropriate for the sample.",
+            "Step 2: A water bath transfers heat through water.",
+            "Step 3: Use the water bath at the required temperature."
           ],
-          "why": "Its material and shape allow it to withstand high temperatures.",
-          "sol": "Step 1: A crucible is made to withstand strong heating.\nStep 2: It holds small amounts of solid substances.",
-          "hint": "Focus on the core principle of Heating Apparatus.",
+          "why": "A water bath provides indirect heating and can help maintain gentler, more even heating.",
+          "sol": "Step 1: Direct flame is not appropriate for the sample.\nStep 2: A water bath transfers heat through water.\nStep 3: Use the water bath at the required temperature.",
+          "hint": "Think about heating the sample using hot water.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Heating Apparatus",
@@ -539,25 +645,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A student places a glass beaker directly on a Bunsen burner flame. Why might this be unsafe or unsuitable?",
-          "ans": "Direct heating can cause uneven heating and thermal stress, which may crack or break the glass. Appropriate support and wire gauze should be used where required.",
+          "q": "What is the main purpose of wire gauze when heating a beaker on a tripod?",
+          "ans": "It supports the beaker and helps distribute heat over its base.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Direct heating can concentrate heat on one region.",
-            "Step 2: Uneven heating can cause thermal stress.",
-            "Step 3: The glass may crack or break.",
-            "Step 4: Appropriate support and wire gauze should be used where required."
+            "Step 1: The beaker needs stable support above the burner.",
+            "Step 2: Wire gauze provides a surface for the beaker to rest on.",
+            "Step 3: It also helps distribute heat over the base."
           ],
-          "why": "Even distribution of heat reduces the risk of thermal shock.",
-          "sol": "Step 1: Direct heating can concentrate heat on one region.\nStep 2: Uneven heating can cause thermal stress.\nStep 3: The glass may crack or break.\nStep 4: Appropriate support and wire gauze should be used where required.",
-          "hint": "Think about how heat reaches the glass.",
+          "why": "Wire gauze is used with suitable supports during heating; it does not make heating completely uniform or eliminate thermal shock.",
+          "sol": "Step 1: The beaker needs stable support above the burner.\nStep 2: Wire gauze provides a surface for the beaker to rest on.\nStep 3: It also helps distribute heat over the base.",
+          "hint": "Consider how the beaker is supported and how heat reaches its base.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Heating Apparatus",
           "conceptId": "chemistry_chemistry_foundations_heating_apparatus",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why should a learner use suitable tongs to handle a hot crucible?",
+          "ans": "To avoid burns from the hot crucible.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: The crucible may retain a high temperature after the flame is removed.",
+            "Step 2: Touching it can cause burns.",
+            "Step 3: Suitable tongs allow it to be handled without direct contact."
+          ],
+          "why": "Apparatus can remain hot long after heating has stopped.",
+          "sol": "Step 1: The crucible may retain a high temperature after the flame is removed.\nStep 2: Touching it can cause burns.\nStep 3: Suitable tongs allow it to be handled without direct contact.",
+          "hint": "Consider the temperature of the crucible after heating.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Heating Apparatus",
+          "conceptId": "chemistry_chemistry_foundations_heating_apparatus",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -571,21 +696,21 @@ export const chemistryTopics = [
     "topic_group": "Separation Apparatus",
     "topic": "Separation Apparatus",
     "data": {
-      "notes": "\n  <h2>Separation Apparatus</h2>\n\n  <p>Different mixtures require different apparatus depending on the\n  physical properties of their components.</p>\n\n  <h3>Common Apparatus</h3>\n\n  <ul>\n    <li><strong>Filter funnel:</strong> supports filter paper during filtration.</li>\n    <li><strong>Filter paper:</strong> separates an insoluble solid from a liquid.</li>\n    <li><strong>Evaporating dish:</strong> allows a solvent to evaporate from a solution.</li>\n    <li><strong>Distillation flask:</strong> holds the mixture being distilled.</li>\n    <li><strong>Condenser:</strong> cools vapour so that it changes back into a liquid.</li>\n    <li><strong>Separating funnel:</strong> separates immiscible liquids.</li>\n    <li><strong>Chromatography paper:</strong> provides a stationary surface for chromatography.</li>\n  </ul>\n\n  <h3>Choosing Apparatus</h3>\n\n  <p>The separation method depends on differences in properties such as\n  particle size, boiling point, solubility and density.</p>\n  ",
+      "notes": "\n  <h2>Separation Apparatus</h2>\n\n  <h3>1. Why Mixtures Are Separated</h3>\n  <p>Separation methods isolate components of a mixture by using differences in physical properties such as particle size, solubility, boiling point, density, magnetism or affinity for a surface.</p>\n\n  <p>Most ordinary separation methods do not chemically change the substances being separated.</p>\n\n  <h3>2. Common Separation Apparatus</h3>\n\n  <p><strong>Filter funnel and filter paper</strong></p>\n  <p>Used to separate an insoluble solid from a liquid. The liquid that passes through is the <strong>filtrate</strong>; the solid remaining on the filter paper is the <strong>residue</strong>.</p>\n\n  <p><strong>Evaporating dish</strong></p>\n  <p>Used to evaporate solvent from a solution, often to recover a dissolved solid. Heating must be controlled to avoid decomposition or loss of material.</p>\n\n  <p><strong>Crystallising dish</strong></p>\n  <p>Used to allow crystals to form from a concentrated solution as it cools or loses solvent.</p>\n\n  <p><strong>Distillation flask, condenser and receiver</strong></p>\n  <p>Used in distillation. A liquid is vaporised, and the vapour is cooled in a condenser to form liquid distillate, which is collected in a receiver.</p>\n\n  <p><strong>Separating funnel</strong></p>\n  <p>Used to separate immiscible liquids that form distinct layers, such as oil and water. The denser liquid generally forms the lower layer, but the actual layers must be identified before draining.</p>\n\n  <p><strong>Sieve</strong></p>\n  <p>Separates solid particles of different sizes. Smaller particles pass through the openings while larger particles remain, depending on their sizes relative to the mesh.</p>\n\n  <p><strong>Magnet</strong></p>\n  <p>Can separate a magnetic material, such as iron, from a mixture containing non-magnetic substances.</p>\n\n  <p><strong>Chromatography apparatus</strong></p>\n  <p>Separates substances according to their different movement between a stationary phase and a mobile phase. In paper chromatography, the solvent moves along the paper and carries components at different rates.</p>\n\n  <h3>3. Choosing a Separation Method</h3>\n  <ul>\n    <li><strong>Insoluble solid + liquid:</strong> filtration.</li>\n    <li><strong>Dissolved solid + solution:</strong> evaporation or crystallisation, depending on whether the aim is to recover the solid and whether heating is suitable.</li>\n    <li><strong>Solvent from a solution:</strong> distillation can recover the solvent by vaporising and condensing it.</li>\n    <li><strong>Two immiscible liquids:</strong> separating funnel.</li>\n    <li><strong>Different solid particle sizes:</strong> sieving.</li>\n    <li><strong>Magnetic and non-magnetic solids:</strong> magnetic separation.</li>\n    <li><strong>Mixture of dissolved coloured substances:</strong> chromatography, if the components have different affinities for the phases.</li>\n  </ul>\n\n  <h3>4. Worked Examples</h3>\n\n  <p><strong>Example 1: Separating sand from water</strong></p>\n  <p><strong>Question:</strong> Which apparatus should be used to separate insoluble sand from water?</p>\n  <ol>\n    <li>Sand does not dissolve in water under ordinary conditions.</li>\n    <li>A filter funnel is lined with suitable filter paper.</li>\n    <li>Pour the mixture through the filter. Sand remains as residue, while water passes through as filtrate.</li>\n  </ol>\n  <p><strong>Answer:</strong> A filter funnel and filter paper.</p>\n\n  <p><strong>Example 2: Separating oil and water</strong></p>\n  <p><strong>Question:</strong> Which apparatus can separate a mixture of oil and water into its two liquid layers?</p>\n  <ol>\n    <li>Oil and water are immiscible and form separate layers.</li>\n    <li>A separating funnel allows the lower layer to be drained first.</li>\n    <li>Identify the actual layers before opening the tap.</li>\n  </ol>\n  <p><strong>Answer:</strong> A separating funnel.</p>\n\n  <p><strong>Example 3: Recovering water from salt solution</strong></p>\n  <p><strong>Question:</strong> A learner wants to collect water from a salt solution. Which separation apparatus is appropriate?</p>\n  <ol>\n    <li>Salt is dissolved in water, so filtration cannot remove the dissolved salt.</li>\n    <li>Water can be vaporised by heating.</li>\n    <li>A condenser cools the vapour back into liquid, which is collected as distillate.</li>\n  </ol>\n  <p><strong>Answer:</strong> A distillation setup with a flask, condenser and receiver.</p>\n\n  <h3>5. Common Misconceptions</h3>\n  <ul>\n    <li>Filtration cannot normally remove a substance that is dissolved in the liquid.</li>\n    <li>Evaporation and distillation are not identical: distillation includes condensation and collection of the vapour as a liquid.</li>\n    <li>A separating funnel is for immiscible liquids, not for separating a dissolved solid from its solution.</li>\n    <li>The lower layer in a separating funnel is the denser liquid, but it should never be identified by guesswork alone.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "What is the function of filter paper?",
-          "ans": "Filter paper allows the liquid to pass through while retaining insoluble solid particles.",
+          "q": "Which apparatus is used to separate insoluble sand from water?",
+          "ans": "A filter funnel with filter paper.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Filter paper contains very small pores.",
-            "Step 2: Liquid can pass through the pores.",
-            "Step 3: Insoluble solid particles are retained."
+            "Step 1: Sand is insoluble in water.",
+            "Step 2: Filter paper traps the sand particles.",
+            "Step 3: Water passes through into the receiving container."
           ],
-          "why": "Filtration separates components based mainly on particle size and insolubility.",
-          "sol": "Step 1: Filter paper contains very small pores.\nStep 2: Liquid can pass through the pores.\nStep 3: Insoluble solid particles are retained.",
-          "hint": "Focus on the core principle of Separation Apparatus.",
+          "why": "Filtration separates an insoluble solid from a liquid.",
+          "sol": "Step 1: Sand is insoluble in water.\nStep 2: Filter paper traps the sand particles.\nStep 3: Water passes through into the receiving container.",
+          "hint": "The solid is trapped while the liquid passes through.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Separation Apparatus",
@@ -594,18 +719,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "What is the function of a condenser?",
-          "ans": "A condenser cools vapour and changes it back into a liquid.",
+          "q": "Which apparatus is suitable for separating immiscible oil and water?",
+          "ans": "A separating funnel.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: During distillation, liquid is heated and forms vapour.",
-            "Step 2: The vapour enters the condenser.",
-            "Step 3: Cooling causes the vapour to condense into liquid."
+            "Step 1: Oil and water are immiscible.",
+            "Step 2: They form distinct liquid layers.",
+            "Step 3: A separating funnel allows one layer to be drained from the other."
           ],
-          "why": "Condensation is the change from gas to liquid caused by cooling.",
-          "sol": "Step 1: During distillation, liquid is heated and forms vapour.\nStep 2: The vapour enters the condenser.\nStep 3: Cooling causes the vapour to condense into liquid.",
-          "hint": "Focus on the core principle of Separation Apparatus.",
+          "why": "The apparatus is designed to separate immiscible liquids based on their distinct layers.",
+          "sol": "Step 1: Oil and water are immiscible.\nStep 2: They form distinct liquid layers.\nStep 3: A separating funnel allows one layer to be drained from the other.",
+          "hint": "The two liquids form separate layers.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Separation Apparatus",
@@ -614,18 +739,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "What is a separating funnel used to separate?",
-          "ans": "A separating funnel is used to separate immiscible liquids.",
+          "q": "Which apparatus is needed to recover water from a salt solution by distillation?",
+          "ans": "A distillation setup containing a distillation flask, condenser and receiver.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Identify the type of mixture.",
-            "Step 2: The liquids must not mix with each other.",
-            "Step 3: The liquids form separate layers because of differences in density."
+            "Step 1: Heat the solution so water vaporises.",
+            "Step 2: Pass the vapour through a condenser.",
+            "Step 3: Collect the condensed water in a receiver."
           ],
-          "why": "Immiscible liquids form separate layers that can be drained separately.",
-          "sol": "Step 1: Identify the type of mixture.\nStep 2: The liquids must not mix with each other.\nStep 3: The liquids form separate layers because of differences in density.",
-          "hint": "Focus on the core principle of Separation Apparatus.",
+          "why": "Distillation recovers the solvent by vaporisation followed by condensation.",
+          "sol": "Step 1: Heat the solution so water vaporises.\nStep 2: Pass the vapour through a condenser.\nStep 3: Collect the condensed water in a receiver.",
+          "hint": "The water vapour must be cooled and collected.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Separation Apparatus",
@@ -634,24 +759,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A mixture contains sand and water. Which apparatus is required for the first separation step?",
-          "ans": "A filter funnel fitted with filter paper.",
+          "q": "After filtering a sand-and-water mixture, what is the name of the solid left on the filter paper?",
+          "ans": "Residue.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Sand is insoluble in water.",
-            "Step 2: An insoluble solid can be separated from a liquid by filtration.",
-            "Step 3: Use a filter funnel and filter paper."
+            "Step 1: The filter paper traps insoluble particles.",
+            "Step 2: The retained solid remains on the paper.",
+            "Step 3: Use the correct separation term."
           ],
-          "why": "The filter paper retains the sand while water passes through.",
-          "sol": "Step 1: Sand is insoluble in water.\nStep 2: An insoluble solid can be separated from a liquid by filtration.\nStep 3: Use a filter funnel and filter paper.",
-          "hint": "Sand is an insoluble solid.",
+          "why": "The residue is the material retained by the filter paper; the liquid collected is the filtrate.",
+          "sol": "Step 1: The filter paper traps insoluble particles.\nStep 2: The retained solid remains on the paper.\nStep 3: Use the correct separation term.",
+          "hint": "Distinguish the solid retained from the liquid that passes through.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Separation Apparatus",
           "conceptId": "chemistry_chemistry_foundations_separation_apparatus",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why is filtration unsuitable for separating dissolved salt from salt solution?",
+          "ans": "Dissolved salt passes through the filter paper with the water, so filtration does not separate it from the solution.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Salt dissolves in water to form a solution.",
+            "Step 2: Dissolved salt particles pass through ordinary filter paper with the water.",
+            "Step 3: A method such as evaporation or crystallisation is needed to recover the salt."
+          ],
+          "why": "Filtration removes insoluble particles, not substances dissolved in a liquid.",
+          "sol": "Step 1: Salt dissolves in water to form a solution.\nStep 2: Dissolved salt particles pass through ordinary filter paper with the water.\nStep 3: A method such as evaporation or crystallisation is needed to recover the salt.",
+          "hint": "Think about whether dissolved particles are trapped by ordinary filter paper.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Separation Apparatus",
+          "conceptId": "chemistry_chemistry_foundations_separation_apparatus",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -665,21 +810,21 @@ export const chemistryTopics = [
     "topic_group": "Apparatus Used in Titration",
     "topic": "Apparatus Used in Titration",
     "data": {
-      "notes": "\n  <h2>Apparatus Used in Titration</h2>\n\n  <p>Titration is a laboratory method used to determine the volume of one\n  solution required to react completely with a measured volume of another\n  solution.</p>\n\n  <h3>Main Apparatus</h3>\n\n  <ul>\n    <li><strong>Burette:</strong> delivers and measures a variable volume of solution accurately.</li>\n    <li><strong>Pipette:</strong> transfers a fixed measured volume of solution.</li>\n    <li><strong>Conical flask:</strong> contains the solution being titrated.</li>\n    <li><strong>Funnel:</strong> helps fill the burette, but should normally be removed before taking the final burette reading.</li>\n    <li><strong>White tile:</strong> makes the colour change easier to observe.</li>\n    <li><strong>Indicator:</strong> shows the end point by a colour change.</li>\n  </ul>\n\n  <h3>Basic Arrangement</h3>\n\n  <p>The burette is supported vertically above the conical flask. A measured\n  volume of solution is placed in the flask, usually using a pipette.</p>\n\n  <p>The burette tap controls the solution delivered into the flask.</p>\n  ",
+      "notes": "\n  <h2>Apparatus Used in Titration</h2>\n\n  <h3>1. What Titration Is</h3>\n  <p><strong>Titration</strong> is a quantitative laboratory method in which a measured volume of one solution is reacted with another solution of known concentration or otherwise known composition to determine an unknown quantity.</p>\n\n  <p>In a common acid-base titration, an indicator helps show when the reaction has reached its endpoint. The endpoint is the observed colour change; it should be close to the reaction's equivalence point when the indicator is suitable.</p>\n\n  <h3>2. Essential Titration Apparatus</h3>\n\n  <p><strong>Burette</strong></p>\n  <p>Holds and delivers a variable measured volume of titrant. Record the initial and final readings and calculate the titre by subtracting the initial reading from the final reading.</p>\n\n  <p><strong>Volumetric pipette</strong></p>\n  <p>Transfers a fixed, accurately measured volume of the solution being analysed into the conical flask. A pipette filler must be used; mouth pipetting is prohibited.</p>\n\n  <p><strong>Pipette filler</strong></p>\n  <p>Allows a liquid to be drawn into a pipette safely without using the mouth.</p>\n\n  <p><strong>Conical flask</strong></p>\n  <p>Holds the measured sample and indicator. Its shape allows the solution to be swirled with less risk of splashing.</p>\n\n  <p><strong>White tile</strong></p>\n  <p>Placed beneath the flask to make a faint indicator colour change easier to observe.</p>\n\n  <p><strong>Funnel</strong></p>\n  <p>May be used to fill the burette, but should be removed before taking readings and performing the titration so that liquid remaining in it does not enter the burette unpredictably.</p>\n\n  <p><strong>Indicator</strong></p>\n  <p>A substance that changes colour over a particular pH range. The indicator must be suitable for the reaction being studied.</p>\n\n  <h3>3. Preparing the Apparatus</h3>\n  <ol>\n    <li>Ensure the burette is clean and suitable for the solution.</li>\n    <li>Rinse the burette with a small amount of the titrant to avoid diluting it with residual water, then fill it and ensure the jet is filled without air bubbles.</li>\n    <li>Remove the filling funnel and record the initial burette reading at eye level.</li>\n    <li>Rinse the volumetric pipette with the solution it will transfer, when appropriate, and use a pipette filler.</li>\n    <li>Transfer the specified volume into a clean conical flask.</li>\n    <li>Add the required amount of suitable indicator if the method calls for one.</li>\n  </ol>\n\n  <h3>4. Carrying Out a Titration</h3>\n  <ol>\n    <li>Run titrant from the burette into the flask while swirling the flask.</li>\n    <li>As the endpoint approaches, add the titrant drop by drop.</li>\n    <li>Stop at the first persistent colour change specified by the method.</li>\n    <li>Record the final burette reading at eye level.</li>\n    <li>Calculate the titre: final reading − initial reading.</li>\n    <li>Repeat until concordant titres are obtained, using the laboratory's acceptance criterion, and use appropriate titres for the calculation.</li>\n  </ol>\n\n  <h3>5. Worked Examples</h3>\n\n  <p><strong>Example 1: Calculating a titre</strong></p>\n  <p><strong>Question:</strong> The initial burette reading is 1.20 cm³ and the final reading is 24.60 cm³. Calculate the titre.</p>\n  <ol>\n    <li>Identify the final reading: 24.60 cm³.</li>\n    <li>Identify the initial reading: 1.20 cm³.</li>\n    <li>Subtract the initial reading from the final reading: 24.60 − 1.20 = 23.40 cm³.</li>\n  </ol>\n  <p><strong>Answer:</strong> The titre is 23.40 cm³.</p>\n\n  <p><strong>Example 2: Choosing apparatus for a fixed sample volume</strong></p>\n  <p><strong>Question:</strong> A titration requires exactly 25.0 cm³ of the solution being analysed. Which apparatus transfers this volume accurately?</p>\n  <ol>\n    <li>The sample volume is fixed.</li>\n    <li>A volumetric pipette is calibrated to transfer a specified volume.</li>\n    <li>Use a 25.0 cm³ volumetric pipette with a pipette filler.</li>\n  </ol>\n  <p><strong>Answer:</strong> A 25.0 cm³ volumetric pipette.</p>\n\n  <p><strong>Example 3: Understanding the conical flask</strong></p>\n  <p><strong>Question:</strong> Why is a conical flask commonly used to hold the sample during titration?</p>\n  <ol>\n    <li>The sample must be mixed with the titrant.</li>\n    <li>The flask's narrow neck helps reduce splashing while swirling.</li>\n    <li>The flask also provides space for the indicator and reaction mixture.</li>\n  </ol>\n  <p><strong>Answer:</strong> It holds the sample and allows it to be swirled with reduced risk of splashing.</p>\n\n  <h3>6. Common Sources of Error</h3>\n  <ul>\n    <li><strong>Parallax error:</strong> Reading the burette scale from above or below eye level.</li>\n    <li><strong>Air bubble in the burette jet:</strong> Some delivered liquid fills the jet rather than entering the flask, affecting the measured titre.</li>\n    <li><strong>Overshooting the endpoint:</strong> Adding too much titrant after the colour change should have occurred.</li>\n    <li><strong>Wrong rinsing procedure:</strong> Residual water in the burette may dilute the titrant; residual water in the pipette may dilute the sample.</li>\n    <li><strong>Incorrect titre calculation:</strong> Subtracting the final reading from the initial reading instead of the other way round.</li>\n  </ul>\n\n  <h3>7. Common Misconceptions</h3>\n  <ul>\n    <li>The burette delivers a variable volume; the pipette transfers a fixed calibrated volume.</li>\n    <li>The conical flask is used to hold and swirl the sample, not to measure its volume accurately.</li>\n    <li>The titre is the difference between the final and initial burette readings.</li>\n    <li>The indicator endpoint is an observed colour change and is not automatically identical to the theoretical equivalence point.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "What is the function of a burette in titration?",
-          "ans": "A burette delivers and measures a variable volume of solution accurately.",
+          "q": "A burette reading changes from 1.20 cm³ to 24.60 cm³. What is the titre?",
+          "ans": "23.40 cm³.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: A titration requires a variable volume of solution.",
-            "Step 2: The volume delivered must be measured accurately.",
-            "Step 3: The burette provides controlled delivery and measurement."
+            "Step 1: Final reading = 24.60 cm³.",
+            "Step 2: Initial reading = 1.20 cm³.",
+            "Step 3: Titre = 24.60 − 1.20 = 23.40 cm³."
           ],
-          "why": "Its graduated scale and tap allow controlled measurement of the volume delivered.",
-          "sol": "Step 1: A titration requires a variable volume of solution.\nStep 2: The volume delivered must be measured accurately.\nStep 3: The burette provides controlled delivery and measurement.",
-          "hint": "Focus on the core principle of Apparatus Used in Titration.",
+          "why": "The titre is the volume delivered from the burette, calculated as final reading minus initial reading.",
+          "sol": "Step 1: Final reading = 24.60 cm³.\nStep 2: Initial reading = 1.20 cm³.\nStep 3: Titre = 24.60 − 1.20 = 23.40 cm³.",
+          "hint": "Subtract the initial reading from the final reading.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Apparatus Used in Titration",
@@ -688,17 +833,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "What is the function of a pipette in titration?",
-          "ans": "A pipette transfers a fixed, accurately measured volume of solution into the conical flask.",
+          "q": "Which apparatus is used to transfer an accurately measured fixed volume of 25.0 cm³ into the conical flask?",
+          "ans": "A 25.0 cm³ volumetric pipette.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: A known fixed volume of solution is required.",
-            "Step 2: A pipette is designed to transfer a fixed volume accurately."
+            "Step 1: The volume needed is fixed.",
+            "Step 2: A volumetric pipette transfers a calibrated volume.",
+            "Step 3: Use the 25.0 cm³ pipette and a pipette filler."
           ],
-          "why": "The pipette provides a more accurate fixed volume than an ordinary measuring cylinder.",
-          "sol": "Step 1: A known fixed volume of solution is required.\nStep 2: A pipette is designed to transfer a fixed volume accurately.",
-          "hint": "Focus on the core principle of Apparatus Used in Titration.",
+          "why": "A volumetric pipette is designed to transfer one specified volume accurately.",
+          "sol": "Step 1: The volume needed is fixed.\nStep 2: A volumetric pipette transfers a calibrated volume.\nStep 3: Use the 25.0 cm³ pipette and a pipette filler.",
+          "hint": "Choose apparatus calibrated to transfer one specified volume.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Apparatus Used in Titration",
@@ -707,18 +853,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "Why is a conical flask commonly used in titration?",
-          "ans": "A conical flask contains the solution and allows it to be mixed by swirling with a reduced risk of spilling.",
+          "q": "What is the main purpose of the conical flask during a typical acid-base titration?",
+          "ans": "To hold the sample and indicator and allow the mixture to be swirled with reduced risk of splashing.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The flask must contain the solution being titrated.",
-            "Step 2: The contents must be mixed without easily spilling.",
-            "Step 3: The shape allows the solution to be swirled safely."
+            "Step 1: The measured sample is placed in the flask.",
+            "Step 2: Indicator may be added when appropriate.",
+            "Step 3: The flask is swirled as titrant is added."
           ],
-          "why": "Its shape is suitable for mixing solutions during addition from the burette.",
-          "sol": "Step 1: The flask must contain the solution being titrated.\nStep 2: The contents must be mixed without easily spilling.\nStep 3: The shape allows the solution to be swirled safely.",
-          "hint": "Focus on the core principle of Apparatus Used in Titration.",
+          "why": "The conical shape makes mixing easier without making the flask a precision volume-measuring instrument.",
+          "sol": "Step 1: The measured sample is placed in the flask.\nStep 2: Indicator may be added when appropriate.\nStep 3: The flask is swirled as titrant is added.",
+          "hint": "Think about where the measured sample and indicator are placed.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Apparatus Used in Titration",
@@ -727,24 +873,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A learner leaves a funnel in the top of the burette while taking a burette reading. Why can this cause a problem?",
-          "ans": "Liquid remaining in the funnel could enter the burette and change the volume, making the measurement inaccurate.",
+          "q": "Why should a burette reading be taken at eye level?",
+          "ans": "To reduce parallax error and obtain a reliable burette reading.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Liquid may remain inside the funnel.",
-            "Step 2: That liquid could enter the burette unexpectedly.",
-            "Step 3: This would change the amount of solution delivered and affect the reading."
+            "Step 1: The liquid surface forms a meniscus.",
+            "Step 2: Viewing the scale from above or below changes its apparent position.",
+            "Step 3: Align the eye with the appropriate meniscus level."
           ],
-          "why": "The burette reading must represent only the controlled volume delivered through the tap.",
-          "sol": "Step 1: Liquid may remain inside the funnel.\nStep 2: That liquid could enter the burette unexpectedly.\nStep 3: This would change the amount of solution delivered and affect the reading.",
-          "hint": "Think about whether liquid left in the funnel could enter the burette.",
+          "why": "An eye-level reading reduces errors caused by viewing the scale from an angle.",
+          "sol": "Step 1: The liquid surface forms a meniscus.\nStep 2: Viewing the scale from above or below changes its apparent position.\nStep 3: Align the eye with the appropriate meniscus level.",
+          "hint": "Think about the apparent position of the liquid level when viewed at an angle.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Apparatus Used in Titration",
           "conceptId": "chemistry_chemistry_foundations_apparatus_used_in_titration",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why should a burette be rinsed with the titrant before it is filled for a titration?",
+          "ans": "To prevent residual water from diluting the titrant.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Residual water may remain after ordinary cleaning.",
+            "Step 2: That water can dilute the titrant.",
+            "Step 3: Rinsing with a small amount of titrant reduces dilution by residual water."
+          ],
+          "why": "An incorrectly diluted titrant can change the concentration and affect the titration result.",
+          "sol": "Step 1: Residual water may remain after ordinary cleaning.\nStep 2: That water can dilute the titrant.\nStep 3: Rinsing with a small amount of titrant reduces dilution by residual water.",
+          "hint": "Consider what residual water inside the burette would do to the solution.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Apparatus Used in Titration",
+          "conceptId": "chemistry_chemistry_foundations_apparatus_used_in_titration",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -758,21 +924,21 @@ export const chemistryTopics = [
     "topic_group": "Measuring Mass",
     "topic": "Measuring Mass",
     "data": {
-      "notes": "\n  <h2>Measuring Mass</h2>\n\n  <p>Mass is the amount of matter in a substance. In the laboratory, mass is\n  measured using a balance.</p>\n\n  <h3>Common Units</h3>\n\n  <ul>\n    <li>gram (g)</li>\n    <li>kilogram (kg)</li>\n    <li>milligram (mg)</li>\n  </ul>\n\n  <h3>Useful Conversions</h3>\n\n  <p>1 kg = 1000 g</p>\n  <p>1 g = 1000 mg</p>\n\n  <h3>Measuring a Solid</h3>\n\n  <p>If a container is used, its mass may be measured first. The container\n  can then be tared or its mass subtracted from the combined mass.</p>\n\n  <h3>Example</h3>\n\n  <p>Mass of container = 25.0 g</p>\n  <p>Mass of container + chemical = 43.5 g</p>\n\n  <p>Mass of chemical:</p>\n\n  <p><strong>43.5 − 25.0 = 18.5 g</strong></p>\n  ",
+      "notes": "\n  <h2>Measuring Mass</h2>\n\n  <h3>1. Meaning of Mass</h3>\n  <p><strong>Mass</strong> is a measure of the amount of matter in an object. In chemistry, mass is commonly measured in grams (g) or kilograms (kg).</p>\n\n  <p>Mass is different from weight. Mass is measured using a balance, while weight is a force caused by gravity and is measured in newtons (N).</p>\n\n  <h3>2. Apparatus Used to Measure Mass</h3>\n  <p><strong>Electronic balance:</strong> Displays mass digitally. It is commonly used to measure chemicals in school laboratories.</p>\n  <p><strong>Top-pan balance:</strong> Measures mass using a weighing pan and a displayed reading.</p>\n  <p><strong>Beam balance:</strong> Compares an object's mass with known masses.</p>\n\n  <h3>3. Correct Procedure for Measuring Mass</h3>\n  <ol>\n    <li>Place the balance on a stable, level surface.</li>\n    <li>Switch it on and allow the reading to stabilise if necessary.</li>\n    <li>Check that the balance reads zero before measuring.</li>\n    <li>Place the object or suitable weighing container on the balance.</li>\n    <li>Wait for the reading to stabilise and record the value with its unit.</li>\n  </ol>\n\n  <h3>4. Measuring the Mass of a Powder or Liquid</h3>\n  <p>Do not place chemicals directly on a balance pan unless the equipment and procedure specifically permit it. Use a clean, suitable weighing boat, weighing paper or container.</p>\n\n  <p><strong>Direct weighing:</strong> Place the object on the balance and record its mass.</p>\n\n  <p><strong>Using tare:</strong> Place the empty container on the balance and press the tare or zero button. Add the chemical. The displayed reading is then the mass of the chemical, provided the balance has been used correctly.</p>\n\n  <p><strong>By difference:</strong> Measure the mass of the container with the chemical, then measure the mass of the container after the chemical has been removed. The mass transferred is the difference between the two readings, assuming no other material is lost or gained.</p>\n\n  <h3>5. Units and Conversions</h3>\n  <ul>\n    <li>1 kilogram (kg) = 1,000 grams (g).</li>\n    <li>1 gram (g) = 1,000 milligrams (mg).</li>\n    <li>To convert grams to kilograms, divide by 1,000.</li>\n    <li>To convert kilograms to grams, multiply by 1,000.</li>\n  </ul>\n\n  <h3>6. Worked Examples</h3>\n\n  <p><strong>Example 1: Finding the mass of a chemical using tare</strong></p>\n  <p><strong>Question:</strong> An empty weighing boat is placed on a balance. The learner presses tare and adds a powder. The display reads 8.45 g. What is the mass of the powder?</p>\n  <ol>\n    <li>The tare function sets the display to zero with the empty boat on the balance.</li>\n    <li>The display then represents the mass added to the boat.</li>\n    <li>Mass of powder = 8.45 g.</li>\n  </ol>\n  <p><strong>Answer:</strong> 8.45 g.</p>\n\n  <p><strong>Example 2: Finding mass by difference</strong></p>\n  <p><strong>Question:</strong> A container and chemical have a mass of 42.6 g. The empty container has a mass of 27.4 g. Calculate the mass of the chemical.</p>\n  <ol>\n    <li>Mass of container plus chemical = 42.6 g.</li>\n    <li>Mass of empty container = 27.4 g.</li>\n    <li>Mass of chemical = 42.6 − 27.4 = 15.2 g.</li>\n  </ol>\n  <p><strong>Answer:</strong> 15.2 g.</p>\n\n  <p><strong>Example 3: Converting grams to kilograms</strong></p>\n  <p><strong>Question:</strong> Convert 3,250 g into kilograms.</p>\n  <ol>\n    <li>1 kg = 1,000 g.</li>\n    <li>Divide the mass in grams by 1,000.</li>\n    <li>3,250 ÷ 1,000 = 3.25 kg.</li>\n  </ol>\n  <p><strong>Answer:</strong> 3.25 kg.</p>\n\n  <h3>7. Sources of Error</h3>\n  <ul>\n    <li>A balance that is not zeroed may give an incorrect reading.</li>\n    <li>Air movement, vibration or an unstable surface may cause fluctuating readings.</li>\n    <li>A wet or contaminated weighing container may affect the measured mass.</li>\n    <li>Recording a reading without its unit can make the result ambiguous.</li>\n    <li>Spilled material or material left in the container can affect a measurement by difference.</li>\n  </ul>\n\n  <h3>8. Common Misconceptions</h3>\n  <ul>\n    <li>Mass is measured in grams or kilograms, not newtons.</li>\n    <li>Weight is a force and is measured in newtons.</li>\n    <li>Taring with an empty container on the balance allows the added material's mass to be displayed directly.</li>\n    <li>Subtracting the container's mass is necessary when tare has not already accounted for it.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "A container has a mass of 25.0 g. The container and a chemical together have a mass of 43.5 g. Calculate the mass of the chemical.",
-          "ans": "18.5 g",
+          "q": "An electronic balance is tared with an empty weighing boat. Powder is added and the display reads 8.45 g. What is the mass of the powder?",
+          "ans": "8.45 g.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Write the combined mass: 43.5 g.",
-            "Step 2: Subtract the mass of the empty container: 25.0 g.",
-            "Step 3: 43.5 − 25.0 = 18.5 g."
+            "Step 1: The empty weighing boat was tared.",
+            "Step 2: The balance therefore displays the mass added after taring.",
+            "Step 3: Read the displayed mass."
           ],
-          "why": "The mass of the chemical is the combined mass minus the mass of the empty container.",
-          "sol": "Step 1: Write the combined mass: 43.5 g.\nStep 2: Subtract the mass of the empty container: 25.0 g.\nStep 3: 43.5 − 25.0 = 18.5 g.",
-          "hint": "Focus on the core principle of Measuring Mass.",
+          "why": "The tare function accounts for the weighing boat, so the display gives the mass of the powder.",
+          "sol": "Step 1: The empty weighing boat was tared.\nStep 2: The balance therefore displays the mass added after taring.\nStep 3: Read the displayed mass.",
+          "hint": "Taring sets the displayed mass to zero with the empty boat in place.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Mass",
@@ -781,18 +947,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "Convert 2.5 kg to grams.",
-          "ans": "2500 g",
+          "q": "A container and its contents have a mass of 42.6 g. The empty container has a mass of 27.4 g. Find the mass of the contents.",
+          "ans": "15.2 g.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: 1 kg = 1000 g.",
-            "Step 2: Multiply 2.5 by 1000.",
-            "Step 3: 2.5 × 1000 = 2500 g."
+            "Step 1: Combined mass = 42.6 g.",
+            "Step 2: Empty container mass = 27.4 g.",
+            "Step 3: Contents mass = 42.6 − 27.4 = 15.2 g."
           ],
-          "why": "Each kilogram contains 1000 grams.",
-          "sol": "Step 1: 1 kg = 1000 g.\nStep 2: Multiply 2.5 by 1000.\nStep 3: 2.5 × 1000 = 2500 g.",
-          "hint": "Focus on the core principle of Measuring Mass.",
+          "why": "Subtracting the container's mass leaves the mass of the material inside.",
+          "sol": "Step 1: Combined mass = 42.6 g.\nStep 2: Empty container mass = 27.4 g.\nStep 3: Contents mass = 42.6 − 27.4 = 15.2 g.",
+          "hint": "Subtract the empty container's mass from the combined mass.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Mass",
@@ -801,18 +967,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "Convert 750 mg to grams.",
-          "ans": "0.750 g",
+          "q": "Convert 3,250 g into kilograms.",
+          "ans": "3.25 kg.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: 1 g = 1000 mg.",
-            "Step 2: Divide 750 mg by 1000.",
-            "Step 3: 750 ÷ 1000 = 0.750 g."
+            "Step 1: Write the conversion: 1 kg = 1,000 g.",
+            "Step 2: Divide 3,250 by 1,000.",
+            "Step 3: 3,250 ÷ 1,000 = 3.25."
           ],
-          "why": "Milligrams are smaller than grams, so the numerical value decreases when converting mg to g.",
-          "sol": "Step 1: 1 g = 1000 mg.\nStep 2: Divide 750 mg by 1000.\nStep 3: 750 ÷ 1000 = 0.750 g.",
-          "hint": "Focus on the core principle of Measuring Mass.",
+          "why": "Converting grams to kilograms requires division by 1,000.",
+          "sol": "Step 1: Write the conversion: 1 kg = 1,000 g.\nStep 2: Divide 3,250 by 1,000.\nStep 3: 3,250 ÷ 1,000 = 3.25.",
+          "hint": "There are 1,000 grams in one kilogram.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Mass",
@@ -821,25 +987,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A student records the mass of a container and chemical as 58.2 g but forgets to subtract the empty container mass of 20.0 g. What error has been made?",
-          "ans": "The student has reported the combined mass instead of the chemical's mass. The chemical has a mass of 38.2 g.",
+          "q": "Which instrument is most suitable for measuring the mass of a small quantity of a solid chemical?",
+          "ans": "A laboratory balance, such as an electronic balance.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The recorded 58.2 g includes both the container and chemical.",
-            "Step 2: The container has a mass of 20.0 g.",
-            "Step 3: Subtract 20.0 g from 58.2 g.",
-            "Step 4: 58.2 − 20.0 = 38.2 g."
+            "Step 1: Identify the quantity as mass.",
+            "Step 2: Choose a laboratory balance.",
+            "Step 3: Use a suitable weighing container if required."
           ],
-          "why": "The container's mass must be removed from the combined measurement.",
-          "sol": "Step 1: The recorded 58.2 g includes both the container and chemical.\nStep 2: The container has a mass of 20.0 g.\nStep 3: Subtract 20.0 g from 58.2 g.\nStep 4: 58.2 − 20.0 = 38.2 g.",
-          "hint": "The required quantity is the mass of the chemical alone.",
+          "why": "A balance measures mass and is suitable for weighing small chemical samples.",
+          "sol": "Step 1: Identify the quantity as mass.\nStep 2: Choose a laboratory balance.\nStep 3: Use a suitable weighing container if required.",
+          "hint": "Choose an instrument designed to measure mass.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Mass",
           "conceptId": "chemistry_chemistry_foundations_measuring_mass",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "A balance displays 0.36 kg. Express this mass in grams.",
+          "ans": "360 g.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: 1 kg = 1,000 g.",
+            "Step 2: 0.36 × 1,000 = 360.",
+            "Step 3: Attach the correct unit."
+          ],
+          "why": "Multiplying by 1,000 converts kilograms to grams.",
+          "sol": "Step 1: 1 kg = 1,000 g.\nStep 2: 0.36 × 1,000 = 360.\nStep 3: Attach the correct unit.",
+          "hint": "Multiply kilograms by 1,000 to obtain grams.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Measuring Mass",
+          "conceptId": "chemistry_chemistry_foundations_measuring_mass",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -853,21 +1038,21 @@ export const chemistryTopics = [
     "topic_group": "Measuring Volume",
     "topic": "Measuring Volume",
     "data": {
-      "notes": "\n  <h2>Measuring Volume</h2>\n\n  <p>Volume is the amount of space occupied by a substance.</p>\n\n  <h3>Common Units</h3>\n\n  <ul>\n    <li>litre (L)</li>\n    <li>millilitre (mL)</li>\n    <li>cubic centimetre (cm³)</li>\n  </ul>\n\n  <h3>Important Conversions</h3>\n\n  <p>1 L = 1000 mL</p>\n  <p>1 mL = 1 cm³</p>\n  <p>Therefore, 1 L = 1000 cm³.</p>\n\n  <h3>Reading Liquid Volume</h3>\n\n  <p>For many aqueous liquids in a transparent measuring vessel, the reading\n  is taken at the bottom of the meniscus when the liquid is viewed at eye\n  level.</p>\n\n  <h3>Example</h3>\n\n  <p>If a measuring cylinder contains 35 mL of water, its volume is:</p>\n\n  <p><strong>35 mL = 35 cm³</strong></p>\n  ",
+      "notes": "\n  <h2>Measuring Volume</h2>\n\n  <h3>1. Meaning of Volume</h3>\n  <p><strong>Volume</strong> is the amount of space occupied by a substance or object. In chemistry, liquid volumes are commonly measured in cubic centimetres (cm³) or millilitres (mL).</p>\n\n  <p><strong>1 cm³ = 1 mL</strong></p>\n  <p><strong>1 dm³ = 1 L = 1,000 cm³ = 1,000 mL</strong></p>\n\n  <h3>2. Apparatus for Measuring Liquid Volume</h3>\n  <ul>\n    <li><strong>Measuring cylinder:</strong> Measures liquid volume with moderate precision.</li>\n    <li><strong>Volumetric pipette:</strong> Transfers one specified volume accurately.</li>\n    <li><strong>Burette:</strong> Measures variable volumes delivered, often during titration.</li>\n    <li><strong>Volumetric flask:</strong> Holds a specified final volume when preparing a solution.</li>\n    <li><strong>Beaker:</strong> Mainly used for holding, mixing or heating liquids; its graduations are generally not intended for precise volume measurement.</li>\n  </ul>\n\n  <h3>3. Reading a Measuring Cylinder</h3>\n  <ol>\n    <li>Place the cylinder upright on a level surface.</li>\n    <li>Allow the liquid to settle.</li>\n    <li>For most clear aqueous liquids in common glass apparatus, read the bottom of the meniscus.</li>\n    <li>Bring your eyes level with the meniscus to reduce parallax error.</li>\n    <li>Record the volume with the correct unit and appropriate precision.</li>\n  </ol>\n\n  <p>The meniscus is the curved surface of a liquid. The bottom of the meniscus is normally used for clear aqueous liquids in glass measuring apparatus. Some liquids, such as mercury, form a different meniscus, so the appropriate reading convention must be followed.</p>\n\n  <h3>4. Measuring the Volume of an Irregular Solid</h3>\n  <p>The volume of a suitable irregular, insoluble solid can be determined by water displacement.</p>\n  <ol>\n    <li>Record the initial water volume, V₁.</li>\n    <li>Carefully lower the object into the water so that it is fully submerged, without splashing or trapping air bubbles.</li>\n    <li>Record the final volume, V₂.</li>\n    <li>Calculate the object's volume: V = V₂ − V₁.</li>\n  </ol>\n\n  <p>This method is unsuitable if the object dissolves, reacts with water, absorbs significant water or cannot be safely submerged.</p>\n\n  <h3>5. Worked Examples</h3>\n\n  <p><strong>Example 1: Converting millilitres to cubic centimetres</strong></p>\n  <p><strong>Question:</strong> Convert 75 mL to cm³.</p>\n  <ol>\n    <li>Use the relationship 1 mL = 1 cm³.</li>\n    <li>The numerical value stays the same.</li>\n    <li>75 mL = 75 cm³.</li>\n  </ol>\n  <p><strong>Answer:</strong> 75 cm³.</p>\n\n  <p><strong>Example 2: Water displacement</strong></p>\n  <p><strong>Question:</strong> The initial water volume is 32 cm³. After a suitable solid is submerged, the reading is 47 cm³. Find the solid's volume.</p>\n  <ol>\n    <li>Final volume = 47 cm³.</li>\n    <li>Initial volume = 32 cm³.</li>\n    <li>Solid volume = 47 − 32 = 15 cm³.</li>\n  </ol>\n  <p><strong>Answer:</strong> 15 cm³.</p>\n\n  <p><strong>Example 3: Converting litres to millilitres</strong></p>\n  <p><strong>Question:</strong> Convert 1.35 L to mL.</p>\n  <ol>\n    <li>1 L = 1,000 mL.</li>\n    <li>Multiply 1.35 by 1,000.</li>\n    <li>1.35 × 1,000 = 1,350 mL.</li>\n  </ol>\n  <p><strong>Answer:</strong> 1,350 mL.</p>\n\n  <h3>6. Common Sources of Error</h3>\n  <ul>\n    <li>Reading the scale from above or below eye level causes parallax error.</li>\n    <li>Reading before the liquid settles may give an unstable value.</li>\n    <li>Splashes or trapped air bubbles can affect displacement measurements.</li>\n    <li>Using a beaker for a measurement requiring high precision may introduce unnecessary uncertainty.</li>\n    <li>Forgetting the unit can make a correct numerical value incomplete.</li>\n  </ul>\n\n  <h3>7. Common Misconceptions</h3>\n  <ul>\n    <li>One millilitre is exactly equal to one cubic centimetre.</li>\n    <li>Water displacement measures the volume of the submerged object, not the combined volume of the object and water.</li>\n    <li>A measuring cylinder is generally more suitable for measuring liquid volume than an ordinary beaker.</li>\n    <li>Eye-level readings reduce parallax error.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "Convert 2.5 L to mL.",
-          "ans": "2500 mL",
+          "q": "Convert 75 mL to cm³.",
+          "ans": "75 cm³.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: 1 L = 1000 mL.",
-            "Step 2: Multiply 2.5 by 1000.",
-            "Step 3: 2.5 × 1000 = 2500 mL."
+            "Step 1: 1 mL = 1 cm³.",
+            "Step 2: The numerical value remains unchanged.",
+            "Step 3: 75 mL = 75 cm³."
           ],
-          "why": "Each litre contains 1000 millilitres.",
-          "sol": "Step 1: 1 L = 1000 mL.\nStep 2: Multiply 2.5 by 1000.\nStep 3: 2.5 × 1000 = 2500 mL.",
-          "hint": "Focus on the core principle of Measuring Volume.",
+          "why": "Millilitres and cubic centimetres are equivalent volume units.",
+          "sol": "Step 1: 1 mL = 1 cm³.\nStep 2: The numerical value remains unchanged.\nStep 3: 75 mL = 75 cm³.",
+          "hint": "Use the relationship between millilitres and cubic centimetres.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Volume",
@@ -876,17 +1061,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "Convert 450 mL to cm³.",
-          "ans": "450 cm³",
+          "q": "Water in a measuring cylinder rises from 32 cm³ to 47 cm³ when a suitable solid is submerged. Calculate the solid's volume.",
+          "ans": "15 cm³.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Use the relationship 1 mL = 1 cm³.",
-            "Step 2: Therefore the numerical value remains unchanged."
+            "Step 1: Initial volume = 32 cm³.",
+            "Step 2: Final volume = 47 cm³.",
+            "Step 3: Solid volume = 47 − 32 = 15 cm³."
           ],
-          "why": "A millilitre and a cubic centimetre represent equal volumes.",
-          "sol": "Step 1: Use the relationship 1 mL = 1 cm³.\nStep 2: Therefore the numerical value remains unchanged.",
-          "hint": "Focus on the core principle of Measuring Volume.",
+          "why": "The increase in water volume equals the volume of the submerged solid when displacement conditions are satisfied.",
+          "sol": "Step 1: Initial volume = 32 cm³.\nStep 2: Final volume = 47 cm³.\nStep 3: Solid volume = 47 − 32 = 15 cm³.",
+          "hint": "Subtract the initial water volume from the final volume.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Volume",
@@ -895,18 +1081,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "A measuring cylinder contains 75 mL of water. Express this volume in litres.",
-          "ans": "0.075 L",
+          "q": "Convert 1.35 L to millilitres.",
+          "ans": "1,350 mL.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: 1 L = 1000 mL.",
-            "Step 2: Divide 75 mL by 1000.",
-            "Step 3: 75 ÷ 1000 = 0.075 L."
+            "Step 1: 1 L = 1,000 mL.",
+            "Step 2: Multiply 1.35 by 1,000.",
+            "Step 3: 1.35 × 1,000 = 1,350."
           ],
-          "why": "To convert millilitres to litres, divide by 1000.",
-          "sol": "Step 1: 1 L = 1000 mL.\nStep 2: Divide 75 mL by 1000.\nStep 3: 75 ÷ 1000 = 0.075 L.",
-          "hint": "Focus on the core principle of Measuring Volume.",
+          "why": "Multiplying the number of litres by 1,000 converts the volume to millilitres.",
+          "sol": "Step 1: 1 L = 1,000 mL.\nStep 2: Multiply 1.35 by 1,000.\nStep 3: 1.35 × 1,000 = 1,350.",
+          "hint": "One litre contains 1,000 millilitres.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Volume",
@@ -915,24 +1101,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A learner reads the liquid level from above the measuring cylinder rather than at eye level. Why can this produce an inaccurate result?",
-          "ans": "It can cause parallax error. The eye should be at the same level as the meniscus when taking the reading.",
+          "q": "Which apparatus is generally more suitable for measuring 40 cm³ of liquid with greater precision than an ordinary beaker?",
+          "ans": "A measuring cylinder.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The apparent position of the liquid changes when viewed from an angle.",
-            "Step 2: This causes parallax error.",
-            "Step 3: The eye should be level with the meniscus when taking the reading."
+            "Step 1: The task is to measure a liquid volume.",
+            "Step 2: An ordinary beaker's graduations are usually approximate.",
+            "Step 3: A measuring cylinder is designed for measuring liquid volumes."
           ],
-          "why": "Viewing the scale from above or below changes the apparent position of the liquid level.",
-          "sol": "Step 1: The apparent position of the liquid changes when viewed from an angle.\nStep 2: This causes parallax error.\nStep 3: The eye should be level with the meniscus when taking the reading.",
-          "hint": "Think about the position of the eye relative to the scale.",
+          "why": "A measuring cylinder is intended for volume measurement and is generally more suitable than a beaker for this purpose.",
+          "sol": "Step 1: The task is to measure a liquid volume.\nStep 2: An ordinary beaker's graduations are usually approximate.\nStep 3: A measuring cylinder is designed for measuring liquid volumes.",
+          "hint": "Choose apparatus with a graduated scale designed for measuring liquid volume.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Volume",
           "conceptId": "chemistry_chemistry_foundations_measuring_volume",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why should a liquid's meniscus be read at eye level?",
+          "ans": "To reduce parallax error and obtain a more reliable volume reading.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: The liquid surface is curved.",
+            "Step 2: Viewing it from above or below changes its apparent alignment with the scale.",
+            "Step 3: Align the eye with the meniscus to reduce parallax."
+          ],
+          "why": "Reading at eye level reduces errors caused by viewing the scale at an angle.",
+          "sol": "Step 1: The liquid surface is curved.\nStep 2: Viewing it from above or below changes its apparent alignment with the scale.\nStep 3: Align the eye with the meniscus to reduce parallax.",
+          "hint": "Think about how an angled view affects the apparent scale position.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Measuring Volume",
+          "conceptId": "chemistry_chemistry_foundations_measuring_volume",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -946,21 +1152,21 @@ export const chemistryTopics = [
     "topic_group": "Measuring Temperature",
     "topic": "Measuring Temperature",
     "data": {
-      "notes": "\n  <h2>Measuring Temperature</h2>\n\n  <p>Temperature indicates how hot or cold a substance is. In the laboratory,\n  temperature is commonly measured using a thermometer or temperature\n  sensor.</p>\n\n  <h3>Common Unit</h3>\n\n  <p>The degree Celsius (°C) is commonly used in school laboratory work.</p>\n\n  <h3>Using a Thermometer</h3>\n\n  <ul>\n    <li>Place the sensing part in the substance being measured.</li>\n    <li>Do not allow the bulb to touch the bottom or sides of the container when this would affect the measurement.</li>\n    <li>Allow the reading to become steady.</li>\n    <li>Read the scale at eye level.</li>\n  </ul>\n\n  <h3>Temperature Change</h3>\n\n  <p>Temperature change is calculated using:</p>\n\n  <p><strong>Temperature change = final temperature − initial temperature</strong></p>\n\n  <h3>Example</h3>\n\n  <p>Initial temperature = 22°C</p>\n  <p>Final temperature = 35°C</p>\n\n  <p>Temperature change:</p>\n\n  <p><strong>35 − 22 = 13°C</strong></p>\n  ",
+      "notes": "\n  <h2>Measuring Temperature</h2>\n\n  <h3>1. Meaning of Temperature</h3>\n  <p><strong>Temperature</strong> indicates how hot or cold a substance is. At the particle level, temperature is related to the average kinetic energy of the particles' random motion.</p>\n\n  <p>Temperature is commonly measured in degrees Celsius (°C) in school chemistry laboratories. The SI unit of thermodynamic temperature is the kelvin (K).</p>\n\n  <h3>2. Apparatus Used to Measure Temperature</h3>\n  <p><strong>Liquid-in-glass thermometer:</strong> Uses the expansion and contraction of a liquid to indicate temperature on a calibrated scale.</p>\n\n  <p><strong>Digital thermometer:</strong> Uses an electronic sensor and displays the measured temperature digitally.</p>\n\n  <p><strong>Temperature probe:</strong> An electronic sensor that can monitor the temperature of a substance, sometimes continuously when connected to a suitable instrument.</p>\n\n  <h3>3. Correct Procedure for Measuring Temperature</h3>\n  <ol>\n    <li>Check that the thermometer is suitable for the expected temperature range.</li>\n    <li>Place the sensing bulb or probe in the substance being measured.</li>\n    <li>Keep the sensing part immersed appropriately without allowing it to touch the bottom or sides of the container when that would affect the result.</li>\n    <li>Wait for the reading to stabilise or for thermal equilibrium to be approached.</li>\n    <li>Read the scale at eye level when using a liquid-in-glass thermometer.</li>\n    <li>Record the value with its unit.</li>\n  </ol>\n\n  <h3>4. Celsius and Kelvin</h3>\n  <p>For school-level conversions:</p>\n  <p><strong>Temperature in K = temperature in °C + 273.15</strong></p>\n  <p><strong>Temperature in °C = temperature in K − 273.15</strong></p>\n\n  <p>For example, 25 °C = 298.15 K. Some introductory exercises use 273 as an approximation, but 273.15 is the more precise conversion constant.</p>\n\n  <p>A temperature difference of 1 °C is equal in size to a temperature difference of 1 K. However, Celsius and kelvin temperature values have different zero points.</p>\n\n  <h3>5. Factors Affecting a Temperature Reading</h3>\n  <ul>\n    <li><strong>Response time:</strong> Reading too early may give a value before the thermometer has adjusted to the sample.</li>\n    <li><strong>Position:</strong> Contact with the container may make the thermometer measure the container's temperature as well as the sample.</li>\n    <li><strong>Range:</strong> A thermometer must be suitable for the expected temperature.</li>\n    <li><strong>Resolution:</strong> The smallest scale division or digital increment limits how finely the reading can be recorded.</li>\n    <li><strong>Calibration:</strong> An improperly calibrated instrument may produce systematically incorrect readings.</li>\n  </ul>\n\n  <h3>6. Worked Examples</h3>\n\n  <p><strong>Example 1: Converting Celsius to kelvin</strong></p>\n  <p><strong>Question:</strong> Convert 25 °C to kelvin.</p>\n  <ol>\n    <li>Use K = °C + 273.15.</li>\n    <li>Substitute 25 °C: K = 25 + 273.15.</li>\n    <li>K = 298.15 K.</li>\n  </ol>\n  <p><strong>Answer:</strong> 298.15 K.</p>\n\n  <p><strong>Example 2: Converting kelvin to Celsius</strong></p>\n  <p><strong>Question:</strong> Convert 310.15 K to degrees Celsius.</p>\n  <ol>\n    <li>Use °C = K − 273.15.</li>\n    <li>Substitute 310.15 K: °C = 310.15 − 273.15.</li>\n    <li>°C = 37.00 °C.</li>\n  </ol>\n  <p><strong>Answer:</strong> 37.00 °C.</p>\n\n  <p><strong>Example 3: Finding a temperature change</strong></p>\n  <p><strong>Question:</strong> A solution warms from 22 °C to 36 °C. Calculate the temperature increase.</p>\n  <ol>\n    <li>Final temperature = 36 °C.</li>\n    <li>Initial temperature = 22 °C.</li>\n    <li>Temperature increase = 36 − 22 = 14 °C.</li>\n  </ol>\n  <p><strong>Answer:</strong> The temperature increases by 14 °C, equivalent to a temperature difference of 14 K.</p>\n\n  <h3>7. Common Misconceptions</h3>\n  <ul>\n    <li>Temperature and heat are not the same thing. Heat is energy transferred because of a temperature difference.</li>\n    <li>Kelvin is written as K, without a degree symbol.</li>\n    <li>A temperature of 0 °C is not absolute zero; it is 273.15 K.</li>\n    <li>The thermometer must be allowed to respond to the sample before the reading is recorded.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "A solution has an initial temperature of 22°C and a final temperature of 35°C. Calculate the temperature change.",
-          "ans": "13°C",
+          "q": "Convert 25 °C to kelvin using the precise conversion.",
+          "ans": "298.15 K.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Write the final temperature: 35°C.",
-            "Step 2: Write the initial temperature: 22°C.",
-            "Step 3: Subtract initial from final: 35 − 22 = 13°C."
+            "Step 1: Use K = °C + 273.15.",
+            "Step 2: Substitute 25: K = 25 + 273.15.",
+            "Step 3: Calculate K = 298.15 K."
           ],
-          "why": "Temperature change is calculated by subtracting the initial temperature from the final temperature.",
-          "sol": "Step 1: Write the final temperature: 35°C.\nStep 2: Write the initial temperature: 22°C.\nStep 3: Subtract initial from final: 35 − 22 = 13°C.",
-          "hint": "Focus on the core principle of Measuring Temperature.",
+          "why": "Kelvin and Celsius use different zero points, so 273.15 is added when converting Celsius to kelvin.",
+          "sol": "Step 1: Use K = °C + 273.15.\nStep 2: Substitute 25: K = 25 + 273.15.\nStep 3: Calculate K = 298.15 K.",
+          "hint": "Add 273.15 to the Celsius temperature.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Temperature",
@@ -969,18 +1175,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "A substance cools from 80°C to 45°C. Calculate the decrease in temperature.",
-          "ans": "35°C",
+          "q": "Convert 310.15 K to degrees Celsius.",
+          "ans": "37.00 °C.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Initial temperature = 80°C.",
-            "Step 2: Final temperature = 45°C.",
-            "Step 3: Calculate the decrease: 80 − 45 = 35°C."
+            "Step 1: Use °C = K − 273.15.",
+            "Step 2: Substitute 310.15: °C = 310.15 − 273.15.",
+            "Step 3: Calculate 37.00 °C."
           ],
-          "why": "For a cooling process, the decrease is the initial temperature minus the final temperature.",
-          "sol": "Step 1: Initial temperature = 80°C.\nStep 2: Final temperature = 45°C.\nStep 3: Calculate the decrease: 80 − 45 = 35°C.",
-          "hint": "Focus on the core principle of Measuring Temperature.",
+          "why": "Subtracting 273.15 converts a temperature in kelvin to Celsius.",
+          "sol": "Step 1: Use °C = K − 273.15.\nStep 2: Substitute 310.15: °C = 310.15 − 273.15.\nStep 3: Calculate 37.00 °C.",
+          "hint": "Subtract 273.15 from the kelvin value.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Temperature",
@@ -989,18 +1195,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "Why should a thermometer reading be taken after the temperature has become steady?",
-          "ans": "The reading should be taken when steady so that it represents the temperature of the substance accurately.",
+          "q": "A solution warms from 22 °C to 36 °C. What is the temperature increase?",
+          "ans": "14 °C.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Immediately after placing a thermometer in a substance, its reading may still be changing.",
-            "Step 2: A changing reading does not represent the stable temperature.",
-            "Step 3: Wait until the reading becomes steady before recording it."
+            "Step 1: Final temperature = 36 °C.",
+            "Step 2: Initial temperature = 22 °C.",
+            "Step 3: Change = 36 − 22 = 14 °C."
           ],
-          "why": "A changing thermometer reading has not yet reached the temperature of the substance.",
-          "sol": "Step 1: Immediately after placing a thermometer in a substance, its reading may still be changing.\nStep 2: A changing reading does not represent the stable temperature.\nStep 3: Wait until the reading becomes steady before recording it.",
-          "hint": "Focus on the core principle of Measuring Temperature.",
+          "why": "Temperature increase is calculated as final temperature minus initial temperature.",
+          "sol": "Step 1: Final temperature = 36 °C.\nStep 2: Initial temperature = 22 °C.\nStep 3: Change = 36 − 22 = 14 °C.",
+          "hint": "Subtract the initial temperature from the final temperature.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Temperature",
@@ -1009,24 +1215,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A student places the thermometer bulb against the bottom of a heated container. Explain why this can give an inaccurate temperature.",
-          "ans": "The thermometer may measure the temperature of the hot container surface instead of the substance, giving an inaccurate reading.",
+          "q": "Why should a thermometer's sensing bulb normally not touch the bottom of a heated container when measuring the liquid's temperature?",
+          "ans": "Contact with the container may cause the thermometer to measure the container's temperature as well as the liquid's temperature.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The container's bottom may be hotter than the substance.",
-            "Step 2: The thermometer can therefore measure the temperature of the hot surface rather than the substance.",
-            "Step 3: Keep the sensing part properly immersed without touching the container where appropriate."
+            "Step 1: The bottom of a heated container may be hotter than the liquid.",
+            "Step 2: Contact can transfer heat directly from the container to the sensing part.",
+            "Step 3: This may make the reading unrepresentative of the liquid."
           ],
-          "why": "The thermometer should measure the substance itself rather than a potentially hotter or colder part of the apparatus.",
-          "sol": "Step 1: The container's bottom may be hotter than the substance.\nStep 2: The thermometer can therefore measure the temperature of the hot surface rather than the substance.\nStep 3: Keep the sensing part properly immersed without touching the container where appropriate.",
-          "hint": "Think about what the thermometer is actually touching.",
+          "why": "The sensing part should measure the sample as accurately as the method allows.",
+          "sol": "Step 1: The bottom of a heated container may be hotter than the liquid.\nStep 2: Contact can transfer heat directly from the container to the sensing part.\nStep 3: This may make the reading unrepresentative of the liquid.",
+          "hint": "The container may be hotter than the liquid.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Measuring Temperature",
           "conceptId": "chemistry_chemistry_foundations_measuring_temperature",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "What is the SI unit of thermodynamic temperature, and how is its symbol written?",
+          "ans": "Kelvin, symbol K.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Identify the SI temperature unit.",
+            "Step 2: Recall the unit symbol.",
+            "Step 3: Check whether a degree symbol is used."
+          ],
+          "why": "The kelvin is the SI unit of thermodynamic temperature and is written without a degree symbol.",
+          "sol": "Step 1: Identify the SI temperature unit.\nStep 2: Recall the unit symbol.\nStep 3: Check whether a degree symbol is used.",
+          "hint": "It is not written with a degree symbol.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Measuring Temperature",
+          "conceptId": "chemistry_chemistry_foundations_measuring_temperature",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
@@ -1040,22 +1266,21 @@ export const chemistryTopics = [
     "topic_group": "Reading Measuring Instruments",
     "topic": "Reading Measuring Instruments",
     "data": {
-      "notes": "\n  <h2>Reading Measuring Instruments</h2>\n\n  <p>Accurate measurements depend on reading an instrument correctly.</p>\n\n  <h3>Important Rules</h3>\n\n  <ul>\n    <li>Identify the scale and units before reading.</li>\n    <li>Determine the value of the smallest scale division.</li>\n    <li>Place your eye at the correct level where appropriate.</li>\n    <li>Read the correct part of the scale.</li>\n    <li>Record the measurement with suitable precision.</li>\n  </ul>\n\n  <h3>Finding the Scale Division</h3>\n\n  <p>Suppose a scale increases from 10 to 20 and there are 10 equal divisions.</p>\n\n  <p>The value of one division is:</p>\n\n  <p><strong>(20 − 10) ÷ 10 = 1 unit</strong></p>\n\n  <h3>Meniscus</h3>\n\n  <p>When reading many liquid volumes, the bottom of the meniscus is used.\n  The eye should be level with the meniscus to reduce parallax error.</p>\n\n  <h3>Recording Measurements</h3>\n\n  <p>A measurement should include its numerical value and unit, for example\n  <strong>25.0 cm³</strong> rather than simply writing <strong>25</strong>.</p>\n  ",
+      "notes": "\n  <h2>Reading Measuring Instruments</h2>\n\n  <h3>1. Why Correct Readings Matter</h3>\n  <p>A measuring instrument gives information about a quantity such as mass, volume or temperature. A correct reading requires understanding the scale, using the instrument properly and recording the result with the correct unit.</p>\n\n  <h3>2. Reading a Graduated Scale</h3>\n  <p>To read an instrument with a graduated scale:</p>\n  <ol>\n    <li>Identify the quantity and unit being measured.</li>\n    <li>Locate the labelled scale values.</li>\n    <li>Determine the value represented by one small division.</li>\n    <li>Identify the position of the indicator, liquid level or pointer.</li>\n    <li>Estimate between scale divisions only when the instrument and procedure allow it.</li>\n    <li>Record the reading with an appropriate number of digits and the correct unit.</li>\n  </ol>\n\n  <h3>3. Calculating the Value of One Scale Division</h3>\n  <p>If adjacent labelled marks have values A and B and there are n equal intervals between them:</p>\n  <p><strong>Value of one interval = (B − A) ÷ n</strong></p>\n\n  <p>Count the intervals, not just the printed lines. For example, the marks 10 and 20 may have four equal intervals between them. In that case, each interval represents (20 − 10) ÷ 4 = 2.5 units.</p>\n\n  <h3>4. Parallax Error</h3>\n  <p><strong>Parallax error</strong> occurs when the apparent position of an indicator or liquid level changes because the scale is viewed from an angle.</p>\n\n  <p>To reduce parallax error:</p>\n  <ul>\n    <li>Place the instrument on a suitable surface.</li>\n    <li>Position your eye level with the reading point.</li>\n    <li>For most clear aqueous liquids in common glass apparatus, align the eye with the bottom of the meniscus.</li>\n    <li>Read the pointer or scale straight on rather than from above or below.</li>\n  </ul>\n\n  <h3>5. Resolution, Precision and Accuracy</h3>\n  <p><strong>Resolution</strong> is the smallest change an instrument can display or distinguish.</p>\n\n  <p><strong>Precision</strong> describes how closely repeated measurements agree with one another.</p>\n\n  <p><strong>Accuracy</strong> describes how close a measurement is to the true or accepted value.</p>\n\n  <p>An instrument with fine divisions can provide a more finely resolved reading, but this does not guarantee accuracy. Calibration, technique and other errors still matter.</p>\n\n  <h3>6. Common Instrument Errors</h3>\n  <ul>\n    <li><strong>Zero error:</strong> The instrument indicates a non-zero value when the actual measured quantity should be zero.</li>\n    <li><strong>Parallax error:</strong> The scale is viewed from an unsuitable angle.</li>\n    <li><strong>Reading error:</strong> The wrong scale division or unit is recorded.</li>\n    <li><strong>Instrument limitation:</strong> The resolution or range is unsuitable for the measurement.</li>\n    <li><strong>Calibration error:</strong> The instrument consistently indicates values that differ from the accepted values.</li>\n  </ul>\n\n  <p>When a zero error is present, follow the instrument's instructions and the experiment's method for correcting it. Do not assume that every instrument's correction has the same sign or procedure.</p>\n\n  <h3>7. Worked Examples</h3>\n\n  <p><strong>Example 1: Finding one scale division</strong></p>\n  <p><strong>Question:</strong> A scale runs from 10 cm³ to 20 cm³, with four equal intervals between the labelled marks. What is the value of one interval?</p>\n  <ol>\n    <li>Upper value = 20 cm³.</li>\n    <li>Lower value = 10 cm³.</li>\n    <li>Difference = 20 − 10 = 10 cm³.</li>\n    <li>Value per interval = 10 ÷ 4 = 2.5 cm³.</li>\n  </ol>\n  <p><strong>Answer:</strong> Each interval represents 2.5 cm³.</p>\n\n  <p><strong>Example 2: Reading a burette</strong></p>\n  <p><strong>Question:</strong> A burette's initial reading is 0.50 cm³ and its final reading is 18.75 cm³. Calculate the volume delivered.</p>\n  <ol>\n    <li>Initial reading = 0.50 cm³.</li>\n    <li>Final reading = 18.75 cm³.</li>\n    <li>Volume delivered = 18.75 − 0.50 = 18.25 cm³.</li>\n  </ol>\n  <p><strong>Answer:</strong> 18.25 cm³.</p>\n\n  <p><strong>Example 3: Identifying parallax error</strong></p>\n  <p><strong>Question:</strong> A learner reads a measuring cylinder while looking down at the meniscus from above. What type of error may occur, and how can it be reduced?</p>\n  <ol>\n    <li>The reading is being taken from an angle.</li>\n    <li>The apparent alignment between the liquid level and the scale may be incorrect.</li>\n    <li>Place the cylinder upright and read the appropriate meniscus level at eye height.</li>\n  </ol>\n  <p><strong>Answer:</strong> Parallax error; reduce it by reading at eye level.</p>\n\n  <h3>8. Common Misconceptions</h3>\n  <ul>\n    <li>The number of scale intervals is not always the same as the number of printed lines.</li>\n    <li>Greater resolution does not guarantee greater accuracy.</li>\n    <li>Parallax error is caused by the viewing angle, not by the chemical itself.</li>\n    <li>Always include units when recording a measured quantity.</li>\n    <li>Do not report more digits than the instrument and method justify.</li>\n  </ul>\n  ",
       "qs": [
         {
-          "q": "A scale runs from 0 cm³ to 50 cm³ and has 10 equal divisions. What is the value of each division?",
-          "ans": "5 cm³ per division.",
+          "q": "A scale runs from 10 cm³ to 20 cm³ with four equal intervals between the labelled marks. What is the value of one interval?",
+          "ans": "2.5 cm³ per interval.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Find the total change in the scale: 50 − 0 = 50 cm³.",
-            "Step 2: Count the divisions: 10.",
-            "Step 3: Divide 50 by 10.",
-            "Step 4: 50 ÷ 10 = 5 cm³."
+            "Step 1: Difference = 20 − 10 = 10 cm³.",
+            "Step 2: Number of equal intervals = 4.",
+            "Step 3: Value per interval = 10 ÷ 4 = 2.5 cm³."
           ],
-          "why": "The value of one division is the total scale range divided by the number of equal divisions.",
-          "sol": "Step 1: Find the total change in the scale: 50 − 0 = 50 cm³.\nStep 2: Count the divisions: 10.\nStep 3: Divide 50 by 10.\nStep 4: 50 ÷ 10 = 5 cm³.",
-          "hint": "Focus on the core principle of Reading Measuring Instruments.",
+          "why": "Each interval represents the total scale difference divided by the number of equal intervals.",
+          "sol": "Step 1: Difference = 20 − 10 = 10 cm³.\nStep 2: Number of equal intervals = 4.\nStep 3: Value per interval = 10 ÷ 4 = 2.5 cm³.",
+          "hint": "Divide the difference between the labelled values by the number of intervals.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Reading Measuring Instruments",
@@ -1064,18 +1289,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q1"
         },
         {
-          "q": "A measuring instrument has markings at 20, 30 and 40. There are five equal intervals between 20 and 30. What is the value of each interval?",
-          "ans": "2 units per interval.",
+          "q": "A burette reading changes from 0.50 cm³ to 18.75 cm³. Calculate the volume delivered.",
+          "ans": "18.25 cm³.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: Find the difference between 30 and 20: 10.",
-            "Step 2: There are 5 equal intervals.",
-            "Step 3: 10 ÷ 5 = 2."
+            "Step 1: Final reading = 18.75 cm³.",
+            "Step 2: Initial reading = 0.50 cm³.",
+            "Step 3: Volume delivered = 18.75 − 0.50 = 18.25 cm³."
           ],
-          "why": "The difference between two labelled marks is divided by the number of equal intervals between them.",
-          "sol": "Step 1: Find the difference between 30 and 20: 10.\nStep 2: There are 5 equal intervals.\nStep 3: 10 ÷ 5 = 2.",
-          "hint": "Focus on the core principle of Reading Measuring Instruments.",
+          "why": "The difference between the final and initial readings gives the volume delivered.",
+          "sol": "Step 1: Final reading = 18.75 cm³.\nStep 2: Initial reading = 0.50 cm³.\nStep 3: Volume delivered = 18.75 − 0.50 = 18.25 cm³.",
+          "hint": "The volume delivered is final reading minus initial reading.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Reading Measuring Instruments",
@@ -1084,18 +1309,18 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q2"
         },
         {
-          "q": "Why must the unit be included when recording a measurement?",
-          "ans": "The unit must be included because it identifies the scale of the measurement and gives the numerical value its proper meaning.",
+          "q": "What type of error can occur when a learner views a scale from above rather than at eye level?",
+          "ans": "Parallax error.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: A numerical value alone does not identify the quantity's unit.",
-            "Step 2: The same number can represent different quantities depending on the unit.",
-            "Step 3: Therefore the numerical value and unit should be recorded together."
+            "Step 1: The eye is not level with the indicator or meniscus.",
+            "Step 2: The apparent position against the scale may shift.",
+            "Step 3: Identify the error caused by this viewing angle."
           ],
-          "why": "For example, 25 could mean 25 mL, 25 cm³, 25 g or another unit.",
-          "sol": "Step 1: A numerical value alone does not identify the quantity's unit.\nStep 2: The same number can represent different quantities depending on the unit.\nStep 3: Therefore the numerical value and unit should be recorded together.",
-          "hint": "Focus on the core principle of Reading Measuring Instruments.",
+          "why": "Parallax error occurs when the reading changes depending on the angle from which the scale is viewed.",
+          "sol": "Step 1: The eye is not level with the indicator or meniscus.\nStep 2: The apparent position against the scale may shift.\nStep 3: Identify the error caused by this viewing angle.",
+          "hint": "The apparent position of the reading changes with the viewing angle.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Reading Measuring Instruments",
@@ -1104,24 +1329,44 @@ export const chemistryTopics = [
           "subskillId": "chemistry_chemistry_foundations_q3"
         },
         {
-          "q": "A learner reads a liquid level as 26 mL by looking from above the meniscus. The correct eye-level reading is 24 mL. What type of error has occurred?",
-          "ans": "Parallax error.",
+          "q": "An instrument has very fine scale divisions. Does this automatically mean its readings are accurate? Explain.",
+          "ans": "No. Fine divisions improve resolution, but accuracy also depends on calibration and correct measurement technique.",
           "type": "text",
           "options": [],
           "steps": [
-            "Step 1: The learner did not place the eye at the correct level.",
-            "Step 2: The apparent position of the meniscus changed.",
-            "Step 3: This is called parallax error."
+            "Step 1: Fine divisions indicate that small changes can be distinguished.",
+            "Step 2: Accuracy concerns closeness to the true or accepted value.",
+            "Step 3: Calibration and correct technique also affect accuracy."
           ],
-          "why": "Parallax occurs when an instrument is viewed from an incorrect angle.",
-          "sol": "Step 1: The learner did not place the eye at the correct level.\nStep 2: The apparent position of the meniscus changed.\nStep 3: This is called parallax error.",
-          "hint": "Think about an incorrect viewing angle.",
+          "why": "Resolution and accuracy are different properties of a measurement.",
+          "sol": "Step 1: Fine divisions indicate that small changes can be distinguished.\nStep 2: Accuracy concerns closeness to the true or accepted value.\nStep 3: Calibration and correct technique also affect accuracy.",
+          "hint": "Distinguish resolution from accuracy.",
           "subject": "chemistry",
           "chapter": "chemistry_foundations",
           "topic": "Reading Measuring Instruments",
           "conceptId": "chemistry_chemistry_foundations_reading_measuring_instruments",
           "skillId": "chemistry_chemistry_foundations",
           "subskillId": "chemistry_chemistry_foundations_q4"
+        },
+        {
+          "q": "Why must the number of intervals between two labelled scale marks be counted carefully?",
+          "ans": "Because the value of one interval equals the difference between the labelled values divided by the number of intervals.",
+          "type": "text",
+          "options": [],
+          "steps": [
+            "Step 1: Find the difference between the labelled values.",
+            "Step 2: Count the equal gaps between them.",
+            "Step 3: Divide the difference by the number of gaps."
+          ],
+          "why": "Counting lines instead of gaps can produce an incorrect value for each scale division.",
+          "sol": "Step 1: Find the difference between the labelled values.\nStep 2: Count the equal gaps between them.\nStep 3: Divide the difference by the number of gaps.",
+          "hint": "The value of each interval depends on the number of equal gaps.",
+          "subject": "chemistry",
+          "chapter": "chemistry_foundations",
+          "topic": "Reading Measuring Instruments",
+          "conceptId": "chemistry_chemistry_foundations_reading_measuring_instruments",
+          "skillId": "chemistry_chemistry_foundations",
+          "subskillId": "chemistry_chemistry_foundations_q5"
         }
       ]
     },
