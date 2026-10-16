@@ -193,6 +193,60 @@ function approximatelyEqual(a, b, tolerance = CONFIG.numericTolerance) {
 }
 
 // ============================================================================
+// STRICT NUMERIC PARSING
+// ============================================================================
+
+/**
+ * Parses a complete numeric literal or a simple fraction.
+ * Returns null for unsupported or malformed answers.
+ *
+ * This deliberately does not interpret units or percentages.
+ */
+function parseStrictNumericValue(value) {
+  if (value === null || value === undefined) {
+    return null;
+  }
+
+  let text = String(value).trim();
+
+  if (!text) return null;
+
+  // Allow correctly grouped thousands separators.
+  if (/,/.test(text)) {
+    if (!/^[+-]?\d{1,3}(?:,\d{3})+(?:\.\d+)?$/.test(text)) {
+      return null;
+    }
+
+    text = text.replace(/,/g, "");
+  }
+
+  // Simple fraction: 3/4, -3/4, 3/-4.
+  const fraction = text.match(
+    /^([+-]?\d+(?:\.\d+)?)\s*\/\s*([+-]?\d+(?:\.\d+)?)$/
+  );
+
+  if (fraction) {
+    const numerator = Number(fraction[1]);
+    const denominator = Number(fraction[2]);
+
+    if (denominator === 0) return null;
+
+    const result = numerator / denominator;
+
+    return Number.isFinite(result) ? result : null;
+  }
+
+  // Accept only a complete integer or decimal.
+  if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)) {
+    return null;
+  }
+
+  const result = Number(text);
+
+  return Number.isFinite(result) ? result : null;
+}
+
+// ============================================================================
 // FRACTION PARSING
 // ============================================================================
 
@@ -285,13 +339,16 @@ function parseSimpleNumeric(value) {
   );
 
   if (unitNumber) {
-    const number = Number(unitNumber[1]);
-
-    if (unitNumber[2] === "%") {
-      return number / 100;
+    const rawUnit = unitNumber[2];
+    if (rawUnit === "%") {
+      return Number(unitNumber[1]) / 100;
     }
 
-    return number;
+    if (normalizeUnit(rawUnit)) {
+      return Number(unitNumber[1]);
+    }
+
+    return null;
   }
 
   return null;
@@ -353,6 +410,15 @@ const UNIT_ALIASES = {
   joules: "j",
 };
 
+const CANONICAL_UNITS = new Set([
+  "m", "cm", "mm", "km",
+  "kg", "g", "mg",
+  "s", "min", "h", "hr",
+  "deg", "c", "k",
+  "v", "a", "w", "j", "n", "pa", "hz",
+  "mol", "l", "ml"
+]);
+
 function normalizeUnit(unit) {
   if (!unit) {
     return null;
@@ -360,7 +426,15 @@ function normalizeUnit(unit) {
 
   const normalized = normalize(unit);
 
-  return UNIT_ALIASES[normalized] || normalized;
+  if (UNIT_ALIASES[normalized]) {
+    return UNIT_ALIASES[normalized];
+  }
+
+  if (CANONICAL_UNITS.has(normalized)) {
+    return normalized;
+  }
+
+  return null;
 }
 
 function extractNumericWithUnit(value) {
@@ -415,6 +489,11 @@ function extractFinalNumericValue(value) {
 
   if (parsed !== null) {
     return parsed;
+  }
+
+  // Do not extract numbers from single malformed tokens like "12abc"
+  if (/^[+-]?\d+(?:\.\d+)?[a-zA-Z]+$/.test(lastLine.replace(/\s+/g, ""))) {
+    return null;
   }
 
   const numericParts = extractNumbers(lastLine);
@@ -661,61 +740,45 @@ function parseLinearExpression(expression) {
       : null;
   }
 
-  /**
-   * Convert:
-   *
-   * x       -> 1x
-   * -x      -> -1x
-   * 2x      -> 2x
-   */
-  const normalized = text
-    .replace(
-      new RegExp(`([+-]?)${variable}`, "gi"),
-      (match, sign) => {
-        if (sign === "-") return "-1";
-        if (sign === "+") return "+1";
-        return "1";
-      }
-    );
-
-  /**
-   * This parser is intentionally conservative.
-   */
-  if (
-    !/^[+-]?\d+(?:\.\d+)?(?:[+-]\d+(?:\.\d+)?)?$/.test(
-      normalized
-    )
-  ) {
-    return null;
+  // Linear term first: e.g. "2x", "-x", "3x+5", "-2.5x-4"
+  const linearRegex = new RegExp(
+    `^(?:([+-]?\\d+(?:\\.\\d+)?)|([+-]?))${variable}(?:([+-]\\d+(?:\\.\\d+)?))?$`,
+    "i"
+  );
+  const match = text.match(linearRegex);
+  if (match) {
+    let coefficient = 1;
+    if (match[1] !== undefined) {
+      coefficient = Number(match[1]);
+    } else if (match[2] === "-") {
+      coefficient = -1;
+    } else {
+      coefficient = 1;
+    }
+    const constant = match[3] !== undefined ? Number(match[3]) : 0;
+    return { coefficient, constant, variable };
   }
 
-  const coefficientMatch =
-    normalized.match(
-      /^([+-]?\d+(?:\.\d+)?)/
-    );
+  // Constant term first: e.g. "5+2x", "4-x"
+  const reverseRegex = new RegExp(
+    `^([+-]?\\d+(?:\\.\\d+)?)(?:([+-]\\d+(?:\\.\\d+)?)|([+-]))${variable}$`,
+    "i"
+  );
+  const revMatch = text.match(reverseRegex);
+  if (revMatch) {
+    const constant = Number(revMatch[1]);
+    let coefficient = 1;
+    if (revMatch[2] !== undefined) {
+      coefficient = Number(revMatch[2]);
+    } else if (revMatch[3] === "-") {
+      coefficient = -1;
+    } else {
+      coefficient = 1;
+    }
+    return { coefficient, constant, variable };
+  }
 
-  const coefficient =
-    coefficientMatch
-      ? Number(coefficientMatch[1])
-      : 0;
-
-  const remainder =
-    normalized.slice(
-      coefficientMatch
-        ? coefficientMatch[0].length
-        : 0
-    );
-
-  const constant =
-    remainder
-      ? Number(remainder)
-      : 0;
-
-  return {
-    coefficient,
-    constant,
-    variable,
-  };
+  return null;
 }
 
 function solveLinearEquation(equation) {
@@ -2624,6 +2687,7 @@ export {
   parseFraction,
   parsePercentage,
   parseSimpleNumeric,
+  parseStrictNumericValue,
   evaluateNumericEquivalence,
   evaluateEquationEquivalence,
   keywordEvidence,

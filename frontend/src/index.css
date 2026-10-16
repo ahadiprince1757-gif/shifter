@@ -12786,3 +12786,338 @@ html.dark-mode .adash-curriculum-chapter-row:hover {
     font-size: 0.9rem;
   }
 }
+
+/* ================================================================
+   DIAGNOSTIC REASONING TIMELINE  (fb-diag-*)
+   Palette: sky-blue (#0284c7 / #38bdf8) matching the app theme
+   ================================================================ */
+
+.fb-diag-timeline {
+  margin: 0.75rem 0 0.5rem;
+  padding: 1rem 1.15rem;
+  background: #f0f9ff;
+  border: 1px solid #bae6fd;
+  border-left: 4px solid #0284c7;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+html.dark-mode .fb-diag-timeline {
+  background: rgba(2, 132, 199, 0.07);
+  border-color: rgba(56, 189, 248, 0.25);
+  border-left-color: #38bdf8;
+}
+
+.fb-diag-timeline__title {
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #0284c7;
+  margin-bottom: 0.1rem;
+}
+
+html.dark-mode .fb-diag-timeline__title {
+  color: #38bdf8;
+}
+
+/* ── Understanding score bar ─────────────────────────────────── */
+.fb-diag-score-row {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.fb-diag-score-label {
+  font-size: 0.73rem;
+  font-weight: 700;
+  color: #475569;
+  white-space: nowrap;
+  min-width: 90px;
+}
+
+html.dark-mode .fb-diag-score-label {
+  color: #94a3b8;
+}
+
+.fb-diag-score-track {
+  flex: 1;
+  height: 7px;
+  background: #e2e8f0;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+html.dark-mode .fb-diag-score-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.fb-diag-score-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.5s ease;
+}
+
+.fb-diag-score--strong   { background: #16a34a; }
+.fb-diag-score--good     { background: #0284c7; }
+.fb-diag-score--partial  { background: #d97706; }
+.fb-diag-score--weak     { background: #dc2626; }
+
+.fb-diag-score-pct {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #0f172a;
+  min-width: 34px;
+  text-align: right;
+}
+
+html.dark-mode .fb-diag-score-pct {
+  color: #f8fafc;
+}
+
+/* ── Step list ───────────────────────────────────────────────── */
+.fb-diag-steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.fb-diag-step-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 7px;
+  background: transparent;
+  font-size: 0.85rem;
+  color: #1e293b;
+  transition: background 0.15s;
+}
+
+html.dark-mode .fb-diag-step-item {
+  color: #e2e8f0;
+}
+
+.fb-diag-step-item--gap {
+  background: rgba(220, 38, 38, 0.06);
+  border-left: 3px solid #dc2626;
+  padding-left: 0.6rem;
+}
+
+html.dark-mode .fb-diag-step-item--gap {
+  background: rgba(220, 38, 38, 0.1);
+  border-left-color: #f87171;
+}
+
+/* ── Badges ──────────────────────────────────────────────────── */
+.fb-diag-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 0.7rem;
+  font-weight: 900;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fb-diag-badge--ok {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+html.dark-mode .fb-diag-badge--ok {
+  background: rgba(22, 163, 74, 0.2);
+  color: #4ade80;
+}
+
+.fb-diag-badge--gap {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+html.dark-mode .fb-diag-badge--gap {
+  background: rgba(220, 38, 38, 0.2);
+  color: #f87171;
+}
+
+.fb-diag-badge--unclear {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+html.dark-mode .fb-diag-badge--unclear {
+  background: rgba(161, 98, 7, 0.2);
+  color: #fbbf24;
+}
+
+.fb-diag-step-msg {
+  flex: 1;
+  line-height: 1.5;
+}
+
+/* ── Gap callout ─────────────────────────────────────────────── */
+.fb-diag-gap-callout {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+  padding: 0.6rem 0.85rem;
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  border-radius: 9px;
+  font-size: 0.82rem;
+  color: #92400e;
+}
+
+html.dark-mode .fb-diag-gap-callout {
+  background: rgba(251, 146, 60, 0.1);
+  border-color: rgba(251, 146, 60, 0.3);
+  color: #fdba74;
+}
+
+.fb-diag-gap-callout__icon {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f97316;
+  color: #fff;
+  font-size: 0.72rem;
+  font-weight: 900;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.fb-diag-gap-callout__body {
+  flex: 1;
+  line-height: 1.55;
+}
+
+/* ── Misconception chips ─────────────────────────────────────── */
+.fb-diag-misconceptions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fb-diag-misconception-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 0.35rem 0.65rem;
+  background: #fef2f2;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  color: #991b1b;
+}
+
+html.dark-mode .fb-diag-misconception-chip {
+  background: rgba(220, 38, 38, 0.08);
+  border-color: rgba(220, 38, 38, 0.25);
+  color: #fca5a5;
+}
+
+.fb-diag-misconception-chip__icon {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #dc2626;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+
+html.dark-mode .fb-diag-misconception-chip__icon {
+  color: #f87171;
+}
+
+/* ── Contradiction chips ─────────────────────────────────────── */
+.fb-diag-contradictions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.fb-diag-contradiction-chip {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 0.35rem 0.65rem;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 7px;
+  font-size: 0.82rem;
+  color: #78350f;
+}
+
+html.dark-mode .fb-diag-contradiction-chip {
+  background: rgba(161, 98, 7, 0.08);
+  border-color: rgba(251, 191, 36, 0.3);
+  color: #fcd34d;
+}
+
+.fb-diag-contradiction-chip__icon {
+  font-size: 0.7rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #d97706;
+  white-space: nowrap;
+  padding-top: 1px;
+}
+
+html.dark-mode .fb-diag-contradiction-chip__icon {
+  color: #fbbf24;
+}
+
+/* ── Missing concepts ────────────────────────────────────────── */
+.fb-diag-missing-concepts {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.fb-diag-missing-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+html.dark-mode .fb-diag-missing-label {
+  color: #94a3b8;
+}
+
+.fb-diag-missing-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.fb-diag-missing-chip {
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  border-radius: 99px;
+  color: #334155;
+}
+
+html.dark-mode .fb-diag-missing-chip {
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.15);
+  color: #cbd5e1;
+}
+

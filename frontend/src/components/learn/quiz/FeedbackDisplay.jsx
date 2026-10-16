@@ -302,6 +302,165 @@ function Markdown({ children }) {
 }
 
 
+// ================================================================
+// DIAGNOSTIC REASONING TIMELINE
+// ================================================================
+
+/**
+ * Maps a step type from analyseMathSteps output to a badge config.
+ */
+const STEP_BADGE = {
+  step_correct: { icon: "✓", label: "Correct", cls: "fb-diag-badge--ok" },
+  step_wrong:   { icon: "✗", label: "Gap",     cls: "fb-diag-badge--gap" },
+  step_unverified: { icon: "?", label: "Unclear", cls: "fb-diag-badge--unclear" },
+};
+
+function DiagnosticTimeline({ analysis, isCorrect }) {
+  if (!analysis || typeof analysis !== "object") return null;
+
+  // ── Math step-by-step trace ────────────────────────────────────
+  const mathSteps = Array.isArray(analysis.math?.steps)
+    ? analysis.math.steps
+    : [];
+
+  // ── High-level misconceptions & concept gaps ──────────────────
+  const misconceptions = Array.isArray(analysis.misconceptions)
+    ? analysis.misconceptions
+    : [];
+
+  const missingConcepts = Array.isArray(analysis.concepts?.missing)
+    ? analysis.concepts.missing
+    : [];
+
+  const contradictions = Array.isArray(analysis.contradictions)
+    ? analysis.contradictions
+    : [];
+
+  // ── Understanding score ────────────────────────────────────────
+  const understandingScore =
+    typeof analysis.understanding?.score === "number"
+      ? analysis.understanding.score
+      : null;
+
+  const understandingLevel = analysis.understanding?.level ?? null;
+
+  // ── First failed step index ───────────────────────────────────
+  const firstGapIndex = analysis.math?.firstFailedStepIndex ?? -1;
+
+  // Nothing meaningful to show? Bail.
+  const hasAnything =
+    mathSteps.length > 0 ||
+    misconceptions.length > 0 ||
+    missingConcepts.length > 0 ||
+    contradictions.length > 0;
+
+  if (!hasAnything) return null;
+
+  return (
+    <div className="fb-diag-timeline">
+
+      {/* Header */}
+      <div className="fb-section-title fb-diag-timeline__title">
+        Understanding Breakdown
+      </div>
+
+      {/* Understanding score bar */}
+      {understandingScore !== null && (
+        <div className="fb-diag-score-row">
+          <span className="fb-diag-score-label">Understanding</span>
+          <div className="fb-diag-score-track">
+            <div
+              className={`fb-diag-score-fill fb-diag-score--${understandingLevel ?? "weak"}`}
+              style={{ width: `${Math.max(4, understandingScore)}%` }}
+            />
+          </div>
+          <span className="fb-diag-score-pct">{understandingScore}%</span>
+        </div>
+      )}
+
+      {/* Math step trace */}
+      {mathSteps.length > 0 && (
+        <ol className="fb-diag-steps-list">
+          {mathSteps.map((step, i) => {
+            const badge = STEP_BADGE[step.type] ?? STEP_BADGE.step_unverified;
+            const isGap = step.type === "step_wrong";
+            return (
+              <li
+                key={`diag-step-${i}`}
+                className={`fb-diag-step-item${
+                  isGap ? " fb-diag-step-item--gap" : ""
+                }`}
+              >
+                <span className={`fb-diag-badge ${badge.cls}`}>
+                  {badge.icon}
+                </span>
+                <span className="fb-diag-step-msg">{step.message}</span>
+              </li>
+            );
+          })}
+        </ol>
+      )}
+
+      {/* Prerequisite gap callout */}
+      {firstGapIndex !== -1 && !isCorrect && (
+        <div className="fb-diag-gap-callout">
+          <span className="fb-diag-gap-callout__icon">!</span>
+          <div className="fb-diag-gap-callout__body">
+            <strong>Gap identified at Step {firstGapIndex + 1}.</strong>
+            <span>
+              {" "}The steps after this one could not be reliably checked
+              because an earlier step needs to be corrected first.
+            </span>
+          </div>
+        </div>
+      )}
+
+      {/* Misconceptions */}
+      {misconceptions.length > 0 && (
+        <div className="fb-diag-misconceptions">
+          {misconceptions.map((m, i) => (
+            <div key={`mc-${i}`} className="fb-diag-misconception-chip">
+              <span className="fb-diag-misconception-chip__icon">Note:</span>
+              <span>{m.misconception}</span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Contradictions */}
+      {contradictions.length > 0 && (
+        <div className="fb-diag-contradictions">
+          {contradictions.map((c, i) => (
+            <div key={`ctr-${i}`} className="fb-diag-contradiction-chip">
+              <span className="fb-diag-contradiction-chip__icon">Swap:</span>
+              <span>
+                Used <strong>{c.studentConcept}</strong> but expected{" "}
+                <strong>{c.expectedConcept}</strong>
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
+
+      {/* Missing concept chips */}
+      {missingConcepts.length > 0 && (
+        <div className="fb-diag-missing-concepts">
+          <span className="fb-diag-missing-label">Missing concepts:</span>
+          <div className="fb-diag-missing-chips">
+            {missingConcepts.map((mc, i) => (
+              <span key={`mc-chip-${i}`} className="fb-diag-missing-chip">
+                ✗ {mc.concept ?? mc}
+              </span>
+            ))}
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+}
+
+
 function FeedbackDisplay({
   feedback,
   nextQuestion,
@@ -412,6 +571,18 @@ function FeedbackDisplay({
         .toLowerCase()
         .includes(normalizedWhy.slice(0, 20))
     );
+
+
+  // ================================================================
+  // DIAGNOSTIC ANALYSIS
+  // ================================================================
+
+  /**
+   * The diagnostic analysis object comes from analyseStudentAnswer.
+   * It is attached to feedback.analysis by the grading pipeline.
+   */
+  const diagnosticAnalysis =
+    feedback.analysis ?? feedback.diagnostic ?? null;
 
 
   // ================================================================
@@ -647,6 +818,20 @@ function FeedbackDisplay({
           </div>
 
         </div>
+      )}
+
+
+      {/* ==========================================================
+          DIAGNOSTIC REASONING TIMELINE
+          Only shown when the answer is incorrect or partial, so the
+          learner sees exactly WHERE their understanding fell short.
+      ========================================================== */}
+
+      {(isCorrect === false || isPartial) && diagnosticAnalysis && (
+        <DiagnosticTimeline
+          analysis={diagnosticAnalysis}
+          isCorrect={isCorrect}
+        />
       )}
 
 

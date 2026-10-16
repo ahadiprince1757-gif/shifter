@@ -891,9 +891,7 @@ function analyseReasoning(
   }
 
   const workTokens = tokenize(userWork);
-  const answerTokens = tokenize(
-    correctAnswer
-  );
+  const answerTokens = tokenize(correctAnswer);
 
   if (!workTokens.length) {
     reasoning.quality = "empty";
@@ -901,20 +899,45 @@ function analyseReasoning(
     return reasoning;
   }
 
-  const matchingConcepts =
-    answerTokens.filter((token) =>
-      workTokens.includes(token)
-    );
+  // IMPORTANT: Only count tokens that are meaningful concept words
+  // (length > 3 and not stop-words). A single generic word like
+  // 'the' or 'and' must not inflate the reasoning score.
+  const REASONING_STOP = new Set([
+    "the", "a", "an", "is", "are", "was", "were", "be", "been",
+    "being", "it", "its", "this", "that", "these", "those",
+    "in", "on", "at", "by", "for", "of", "to", "from", "with",
+    "and", "or", "not", "but", "so", "if", "then", "also",
+    "have", "has", "had", "will", "can", "does", "do", "did"
+  ]);
+
+  const meaningfulAnswerTokens = answerTokens.filter(
+    (t) => t.length > 3 && !REASONING_STOP.has(t)
+  );
+
+  if (meaningfulAnswerTokens.length === 0) {
+    reasoning.quality = "not_provided";
+    reasoning.score = null;
+    return reasoning;
+  }
+
+  const matchingConcepts = meaningfulAnswerTokens.filter(
+    (token) => workTokens.includes(token)
+  );
 
   const conceptRatio =
-    answerTokens.length > 0
-      ? matchingConcepts.length /
-        answerTokens.length
-      : 0;
+    matchingConcepts.length / meaningfulAnswerTokens.length;
 
-  reasoning.score = Math.round(
-    Math.min(1, conceptRatio) * 100
-  );
+  // Require at least 2 distinct matching concept words before
+  // granting anything above "weak". A single keyword hit is
+  // NOT sufficient evidence of procedural reasoning.
+  if (matchingConcepts.length < 2) {
+    reasoning.score = Math.round(Math.min(34, conceptRatio * 100));
+    reasoning.quality = "weak";
+    reasoning.evidence = matchingConcepts.slice(0, 10);
+    return reasoning;
+  }
+
+  reasoning.score = Math.round(Math.min(1, conceptRatio) * 100);
 
   if (reasoning.score >= 70) {
     reasoning.quality = "substantial";
@@ -924,8 +947,7 @@ function analyseReasoning(
     reasoning.quality = "weak";
   }
 
-  reasoning.evidence =
-    matchingConcepts.slice(0, 10);
+  reasoning.evidence = matchingConcepts.slice(0, 10);
 
   return reasoning;
 }
@@ -1336,27 +1358,42 @@ export function analyseStudentAnswer(
       correctAnswer
     );
 
-  const misconceptions =
-    analyseMisconceptions(
-      studentAnswer,
-      correctAnswer,
-      assessment
-    );
+  // Collect misconceptions from pattern diagnoser BEFORE scoring so
+  // all misconceptions are included in understandingScore penalty.
+  const rawMisconceptions = analyseMisconceptions(
+    studentAnswer,
+    correctAnswer,
+    assessment
+  );
 
-  const missingQualifiers =
-    analyseQualifiers(
-      studentAnswer,
-      correctAnswer,
-      assessment
-    );
+  const patternDiag = diagnoseMisconceptionPattern(
+    studentAnswer,
+    correctAnswer
+  );
 
-  const reasoning =
-    analyseReasoning(
-      studentAnswer,
-      correctAnswer,
-      userWork,
-      assessment
-    );
+  if (patternDiag && patternDiag.detail) {
+    rawMisconceptions.push({
+      type: "pattern_misconception",
+      misconception: patternDiag.detail,
+      category: patternDiag.category,
+      confidence: 0.8,
+    });
+  }
+
+  const misconceptions = deduplicateEvidence(rawMisconceptions);
+
+  const missingQualifiers = analyseQualifiers(
+    studentAnswer,
+    correctAnswer,
+    assessment
+  );
+
+  const reasoning = analyseReasoning(
+    studentAnswer,
+    correctAnswer,
+    userWork,
+    assessment
+  );
 
   // ----------------------------------------------------------
   // Determine answer correctness
@@ -1510,13 +1547,8 @@ export function analyseStudentAnswer(
     });
   }
 
-  const patternDiag = diagnoseMisconceptionPattern(studentAnswer, correctAnswer);
-  if (patternDiag && patternDiag.detail) {
-    misconceptions.push({
-      misconception: patternDiag.detail,
-      category: patternDiag.category
-    });
-  }
+  // patternDiag is now applied earlier (before understandingScore) —
+  // no need to re-push here.
 
   for (const misconception of misconceptions) {
     feedback.push({

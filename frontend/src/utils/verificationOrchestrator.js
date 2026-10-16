@@ -22,6 +22,62 @@ import { verifyMathAnswer } from "./mathVerifier.js";
 import { verifyScienceQuestion } from "./verifiers/scienceVerifier.js";
 import { verifyBiologyQuestion, verifyBiologyAnswer } from "./verifiers/biologyVerifier.js";
 import { verifyLanguageQuestion } from "./verifiers/languageVerifier.js";
+import { parseStrictNumericValue } from "./grader.js";
+
+/**
+ * A comparison can establish correctness or incorrectness
+ * only when both answers can be compared reliably.
+ */
+export function classifyComparableAnswers(candidate, canonical) {
+  const candidateText = String(candidate ?? "").trim();
+  const canonicalText = String(canonical ?? "").trim();
+
+  if (!candidateText || !canonicalText) {
+    return {
+      answerStatus: "NOT_COMPARABLE",
+      compared: false,
+    };
+  }
+
+  const candidateNumber = parseStrictNumericValue(candidateText);
+  const canonicalNumber = parseStrictNumericValue(canonicalText);
+
+  // If either answer is numeric, both must parse numerically.
+  // Never fall back to substring matching for a failed numeric parse.
+  if (candidateNumber !== null || canonicalNumber !== null) {
+    if (candidateNumber === null || canonicalNumber === null) {
+      return {
+        answerStatus: "NOT_COMPARABLE",
+        compared: false,
+      };
+    }
+
+    const equal = Math.abs(candidateNumber - canonicalNumber) <= 1e-9;
+
+    return {
+      answerStatus: equal ? "CORRECT" : "INCORRECT",
+      compared: true,
+    };
+  }
+
+  // Non-numeric answers need a subject-specific comparison.
+  // Exact normalized equality is safe; semantic matching should
+  // be performed by a suitable verifier, not substring matching.
+  const normalize = (text) =>
+    text.toLowerCase().replace(/\s+/g, " ").trim();
+
+  if (normalize(candidateText) === normalize(canonicalText)) {
+    return {
+      answerStatus: "CORRECT",
+      compared: true,
+    };
+  }
+
+  return {
+    answerStatus: "NOT_COMPARABLE",
+    compared: false,
+  };
+}
 
 /**
  * Universal verification entry point for any generated or candidate answer.
@@ -198,10 +254,12 @@ export function runMathVerifier(question, candidateAnswer) {
 
   const canonicalAnswer = String(result.answer ?? result.verifiedAnswer ?? "");
   let answerStatus = "NOT_COMPARABLE";
+  let compared = false;
 
   if (candidateAnswer) {
-    const isMatch = compareNumericOrString(candidateAnswer, canonicalAnswer);
-    answerStatus = isMatch ? "CORRECT" : "INCORRECT";
+    const comp = classifyComparableAnswers(candidateAnswer, canonicalAnswer);
+    answerStatus = comp.answerStatus;
+    compared = comp.compared;
   }
 
   return {
@@ -215,6 +273,7 @@ export function runMathVerifier(question, candidateAnswer) {
     answerStatus,
     extra: {
       operation: result.operation || null,
+      compared,
     },
   };
 }
@@ -228,14 +287,16 @@ export function runScienceVerifier(question, candidateAnswer) {
 
   const canonicalAnswer = String(result.canonicalAnswer || result.verifiedAnswer || result.answer || "");
   let answerStatus = "NOT_COMPARABLE";
+  let compared = false;
 
   if (candidateAnswer) {
     if (result.comparison?.compared) {
       answerStatus = result.comparison.isDifferent ? "INCORRECT" : "CORRECT";
+      compared = true;
     } else {
-      answerStatus = compareNumericOrString(candidateAnswer, canonicalAnswer)
-        ? "CORRECT"
-        : "INCORRECT";
+      const comp = classifyComparableAnswers(candidateAnswer, canonicalAnswer);
+      answerStatus = comp.answerStatus;
+      compared = comp.compared;
     }
   }
 
@@ -250,6 +311,7 @@ export function runScienceVerifier(question, candidateAnswer) {
     extra: {
       topic: result.topic,
       formula: result.formula,
+      compared,
     },
   };
 }
@@ -263,6 +325,7 @@ export function runBiologyVerifier(question, candidateAnswer) {
 
   const canonicalAnswer = String(questionResult.canonicalAnswer || questionResult.verifiedAnswer || questionResult.answer || "");
   let answerStatus = "NOT_COMPARABLE";
+  let compared = false;
   let factCheck = null;
 
   if (candidateAnswer) {
@@ -273,10 +336,13 @@ export function runBiologyVerifier(question, candidateAnswer) {
 
     if (factCheck?.verdict === "CORRECT") {
       answerStatus = "CORRECT";
+      compared = true;
     } else if (factCheck?.verdict === "PARTIALLY_CORRECT") {
       answerStatus = "PARTIALLY_CORRECT";
+      compared = true;
     } else if (factCheck?.verdict === "INCORRECT") {
       answerStatus = "INCORRECT";
+      compared = true;
     }
   }
 
@@ -291,6 +357,7 @@ export function runBiologyVerifier(question, candidateAnswer) {
     extra: {
       factCheck,
       facts: questionResult.facts || null,
+      compared,
     },
   };
 }
@@ -304,16 +371,19 @@ export function runLanguageVerifier(question, candidateAnswer) {
 
   const canonicalAnswer = String(result.canonicalAnswer || result.verifiedAnswer || result.answer || "");
   let answerStatus = "NOT_COMPARABLE";
+  let compared = false;
 
   if (candidateAnswer) {
     if (result.comparison?.compared) {
       answerStatus = result.comparison.isDifferent ? "INCORRECT" : "CORRECT";
+      compared = true;
     } else {
       answerStatus = compareLanguageAnswer(
         candidateAnswer,
         canonicalAnswer,
         result.acceptableAnswers || []
       );
+      compared = answerStatus !== "NOT_COMPARABLE";
     }
   }
 
@@ -328,6 +398,7 @@ export function runLanguageVerifier(question, candidateAnswer) {
     extra: {
       acceptableAnswers: result.acceptableAnswers || [],
       questionType: result.questionType || null,
+      compared,
     },
   };
 }
@@ -357,10 +428,20 @@ export function buildVerificationResult({
   // Only replace an answer if:
   // 1. Truth is established with high confidence (VERIFIED)
   // 2. Candidate answer is demonstrably INCORRECT
-  const shouldOverride =
-    verificationStatus === "VERIFIED" && answerStatus === "INCORRECT";
+  // 3. Comparison was actually performed and reliable (compared === true)
+  // 4. Canonical answer is a non-empty string
+  const canOverride =
+    verificationStatus === "VERIFIED" &&
+    answerStatus === "INCORRECT" &&
+    extra?.compared === true &&
+    typeof canonicalAnswer === "string" &&
+    canonicalAnswer.trim().length > 0;
+
+  const shouldOverride = canOverride;
 
   return {
+    ...extra,
+
     // Can Tixar establish truth?
     verificationStatus,
     verified: verificationStatus === "VERIFIED", // Backward compatibility alias
@@ -388,8 +469,6 @@ export function buildVerificationResult({
     wasOverridden: shouldOverride, // Backward compatibility alias
 
     requiresSecondaryVerification: verificationStatus !== "VERIFIED",
-
-    ...extra,
   };
 }
 
