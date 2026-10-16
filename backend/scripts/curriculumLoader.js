@@ -310,6 +310,8 @@ function loadCanonicalCurriculum() {
           const key = `${subj.id}/${chap.id}/${String(sub).trim()}`;
           if (!contentMap.has(key)) {
             auditErrors.push(`MISSING CONTENT: Canonical topic [${key}] has no content defined in subject JS files.`);
+          } else if (typeof topItem === "object" && topItem !== null && (topItem.name || topItem.label || topItem.id)) {
+            contentMap.get(key).topicGroup = topItem.name || topItem.label || topItem.id;
           }
         });
       });

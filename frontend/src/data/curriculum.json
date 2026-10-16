@@ -1833,899 +1833,1931 @@
         "id": "cell_biology",
         "label": "Cell Biology",
         "topics": [
-          "What Is a Cell",
-          "Why Cells Are the Basic Units of Life",
-          "Cell Membrane",
-          "Cytoplasm",
-          "Nucleus",
-          "Mitochondria",
-          "Ribosomes",
-          "Cell Wall",
-          "Large Permanent Vacuole",
-          "Structures Shared by Plant and Animal Cells",
-          "Plant Cell vs Animal Cell",
-          "Explaining Cell Differences",
-          "Growth by Increase in Cell Number",
-          "Unicellular and Multicellular Organisms",
-          "How Cells Are Organised in Multicellular Organisms",
-          "How Organelles Work Together",
-          "What Is Cell Specialisation?",
-          "Why Cells Specialise",
-          "Root Hair Cell",
-          "Guard Cells",
-          "Ciliated Cell",
-          "Goblet Cell",
-          "Sperm Cell",
-          "Egg Cell",
-          "Nerve Cell",
-          "Muscle Cell",
-          "Root Hair Cell Adaptation",
-          "Ciliated Cell Adaptation",
-          "Sperm Cell Adaptation",
-          "Egg Cell Adaptation",
-          "Muscle Cell Adaptation",
-          "Cell Differentiation",
-          "Tissue",
-          "Organ",
-          "Organ System",
-          "Levels of Organisation",
-          "Plant Tissue",
-          "Animal Tissue",
-          "Tissue Specialisation",
-          "Organ Specialisation",
-          "Plant Organ Systems",
-          "Sperm Cell Structure",
-          "Sperm Cell Adaptations",
-          "Egg Cell Structure",
-          "Egg Cell Adaptations",
-          "Sperm and Egg Comparison",
-          "Animal Cell Specialisation",
-          "Why Cells Divide",
-          "The Cell Cycle",
-          "Chromosomes",
-          "DNA",
-          "DNA Replication",
-          "Mitosis",
-          "Prophase",
-          "Metaphase",
-          "Anaphase",
-          "Telophase",
-          "Cytokinesis",
-          "Cytokinesis in Animal Cells",
-          "Cytokinesis in Plant Cells",
-          "Mitosis as a Complete Sequence",
-          "Mitosis and Chromosome Number",
-          "Mitosis and Growth",
-          "Mitosis and Tissue Repair",
-          "Mitosis and Replacement of Worn-Out Cells",
-          "Mitosis in Growing Plant Regions",
-          "Homologous Chromosomes",
-          "Prophase I",
-          "Metaphase I",
-          "Anaphase I",
-          "Telophase I",
-          "Prophase II",
-          "Metaphase II",
-          "Anaphase II",
-          "Telophase II",
-          "Random Orientation of Homologous Chromosome Pairs",
-          "What Is Meiosis?",
-          "Diploid and Haploid Cells",
-          "Meiosis I",
-          "Meiosis I and Chromosome Number",
-          "Mitosis Compared with Meiosis I",
-          "What Is Meiosis II?",
-          "Cytokinesis After Meiosis II",
-          "Four Haploid Cells",
-          "Meiosis as a Complete Sequence",
-          "Mitosis and Meiosis: Final Comparison",
-          "Why Mitosis Produces Genetically Similar Cells",
-          "Why Offspring Are Not Genetically Identical",
-          "Different Gametes Carry Different Genetic Combinations",
-          "Independent Assortment of Chromosomes",
-          "Why Siblings Can Differ Genetically",
-          "What Is a Gene"
+          {
+            "id": "intro_to_cells",
+            "name": "Introduction to Cells",
+            "subtopics": [
+              "What Is a Cell",
+              "Why Cells Are the Basic Units of Life",
+              "Cell Membrane",
+              "Cytoplasm",
+              "Nucleus"
+            ]
+          },
+          {
+            "id": "cell_organelles",
+            "name": "Organelles & Cell Structures",
+            "subtopics": [
+              "Mitochondria",
+              "Ribosomes",
+              "Cell Wall",
+              "Large Permanent Vacuole",
+              "Structures Shared by Plant and Animal Cells"
+            ]
+          },
+          {
+            "id": "plant_vs_animal_cells",
+            "name": "Comparing Plant and Animal Cells",
+            "subtopics": [
+              "Plant Cell vs Animal Cell",
+              "Explaining Cell Differences",
+              "Growth by Increase in Cell Number",
+              "Unicellular and Multicellular Organisms"
+            ]
+          },
+          {
+            "id": "cellular_organisation",
+            "name": "Organisation in Multicellular Organisms",
+            "subtopics": [
+              "How Cells Are Organised in Multicellular Organisms",
+              "How Organelles Work Together",
+              "What Is Cell Specialisation?",
+              "Why Cells Specialise"
+            ]
+          },
+          {
+            "id": "cell_specialisation_intro",
+            "name": "Cell Specialisation Principles",
+            "subtopics": [
+              "Root Hair Cell",
+              "Guard Cells",
+              "Ciliated Cell",
+              "Goblet Cell"
+            ]
+          },
+          {
+            "id": "specialised_cells_plant_animal",
+            "name": "Specialised Cells in Plants & Animals",
+            "subtopics": [
+              "Animal Cell Specialisation",
+              "Sperm Cell",
+              "Egg Cell",
+              "Nerve Cell",
+              "Muscle Cell"
+            ]
+          },
+          {
+            "id": "cell_adaptations_part_1",
+            "name": "Specialised Cell Adaptations — Part 1",
+            "subtopics": [
+              "Root Hair Cell Adaptation",
+              "Ciliated Cell Adaptation",
+              "Sperm Cell Adaptation",
+              "Egg Cell Adaptation",
+              "Muscle Cell Adaptation"
+            ]
+          },
+          {
+            "id": "levels_of_organisation",
+            "name": "Tissues, Organs & Systems",
+            "subtopics": [
+              "Cell Differentiation",
+              "Tissue",
+              "Organ",
+              "Organ System",
+              "Levels of Organisation"
+            ]
+          },
+          {
+            "id": "tissue_and_organ_specialisation",
+            "name": "Tissue & Organ Specialisation",
+            "subtopics": [
+              "Plant Tissue",
+              "Animal Tissue",
+              "Tissue Specialisation",
+              "Organ Specialisation"
+            ]
+          },
+          {
+            "id": "gamete_cells_comparison",
+            "name": "Gamete Structure & Specialisation",
+            "subtopics": [
+              "Plant Organ Systems",
+              "Sperm Cell Structure",
+              "Sperm Cell Adaptations",
+              "Egg Cell Structure",
+              "Egg Cell Adaptations",
+              "Sperm and Egg Comparison"
+            ]
+          },
+          {
+            "id": "cell_cycle_and_dna",
+            "name": "The Cell Cycle, DNA & Chromosomes",
+            "subtopics": [
+              "Why Cells Divide",
+              "The Cell Cycle",
+              "Chromosomes",
+              "DNA"
+            ]
+          },
+          {
+            "id": "mitosis_stages",
+            "name": "Stages of Mitosis",
+            "subtopics": [
+              "DNA Replication",
+              "Mitosis",
+              "Prophase",
+              "Metaphase",
+              "Anaphase",
+              "Telophase"
+            ]
+          },
+          {
+            "id": "cytokinesis_and_cell_division",
+            "name": "Cytokinesis & Division in Plants/Animals",
+            "subtopics": [
+              "Cytokinesis",
+              "Cytokinesis in Animal Cells",
+              "Cytokinesis in Plant Cells",
+              "Mitosis as a Complete Sequence",
+              "Mitosis and Chromosome Number"
+            ]
+          },
+          {
+            "id": "mitosis_significance",
+            "name": "Biological Roles of Mitosis",
+            "subtopics": [
+              "Mitosis and Growth",
+              "Mitosis and Tissue Repair",
+              "Mitosis and Replacement of Worn-Out Cells",
+              "Mitosis in Growing Plant Regions"
+            ]
+          },
+          {
+            "id": "meiosis_prophase_to_anaphase_1",
+            "name": "Meiosis I — Prophase to Telophase I",
+            "subtopics": [
+              "Prophase I",
+              "Metaphase I",
+              "Anaphase I",
+              "Telophase I",
+              "Prophase II",
+              "Metaphase II"
+            ]
+          },
+          {
+            "id": "meiosis_phase_2",
+            "name": "Meiosis II Stages & Chromosome Behaviour",
+            "subtopics": [
+              "Homologous Chromosomes",
+              "Anaphase II",
+              "Telophase II",
+              "Random Orientation of Homologous Chromosome Pairs",
+              "What Is Meiosis?",
+              "Diploid and Haploid Cells"
+            ]
+          },
+          {
+            "id": "meiosis_outcomes_and_comparison",
+            "name": "Meiosis Outcomes vs Mitosis",
+            "subtopics": [
+              "Meiosis I",
+              "Meiosis I and Chromosome Number",
+              "Mitosis Compared with Meiosis I",
+              "What Is Meiosis II?",
+              "Cytokinesis After Meiosis II"
+            ]
+          },
+          {
+            "id": "meiosis_and_variation",
+            "name": "Meiosis, Genetic Variation & Genes",
+            "subtopics": [
+              "Four Haploid Cells",
+              "Meiosis as a Complete Sequence",
+              "Mitosis and Meiosis: Final Comparison",
+              "Why Mitosis Produces Genetically Similar Cells",
+              "Why Offspring Are Not Genetically Identical",
+              "Different Gametes Carry Different Genetic Combinations"
+            ]
+          },
+          {
+            "id": "genes_and_inheritance_intro",
+            "name": "Gene Foundations in Cells",
+            "subtopics": [
+              "Independent Assortment of Chromosomes",
+              "Why Siblings Can Differ Genetically"
+            ]
+          },
+          {
+            "id": "additional_topics_part_1",
+            "name": "Additional Concepts — Part 1",
+            "subtopics": [
+              "What Is a Gene"
+            ]
+          }
         ]
       },
       {
         "id": "photosynthesis",
         "label": "Photosynthesis",
         "topics": [
-          "Chloroplasts",
-          "Palisade Mesophyll Cell",
-          "Palisade Cell Adaptation",
-          "Plant Cell Walls and Chloroplasts in Classification",
-          "photosynthesis",
-          "chlorophyll_and_light_energy",
-          "chloroplast_structure_photosynthesis",
-          "carbon_dioxide_entry_leaf",
-          "light_required_for_photosynthesis",
-          "carbon_dioxide_required_photosynthesis",
-          "light_intensity_and_photosynthesis",
-          "carbon_dioxide_concentration_and_photosynthesis",
-          "measuring_photosynthesis_rate",
-          "photosynthesis_graphs",
-          "photosynthesis_practical_variables",
-          "improving_photosynthesis_experiment",
-          "photosynthesis_complete_reasoning",
-          "leaf_as_photosynthetic_organ",
-          "upper_epidermis_leaf",
-          "palisade_mesophyll_photosynthesis",
-          "spongy_mesophyll",
-          "leaf_veins_and_photosynthesis",
-          "lower_epidermis_and_stomata",
-          "leaf_cross_section",
-          "leaf_adaptations_summary",
-          "photosynthesis_and_respiration",
-          "photosynthesis_and_mineral_nutrition",
-          "photosynthesis_experiment_control",
-          "Photosynthesis in the Carbon Cycle",
-          "water_in_photosynthesis",
-          "glucose_fates_after_photosynthesis",
-          "photosynthesis_and_oxygen",
-          "photosynthesis_and_glucose",
-          "photosynthesis_complete_process",
-          "starch_test_leaf",
-          "destarching_plants",
-          "starch_storage_in_plants",
-          "photosynthesis_starch_evidence",
-          "Light Intensity and Photosynthesis",
-          "Carbon Dioxide and Photosynthesis",
-          "Temperature and Photosynthesis",
-          "Limiting Factors in Photosynthesis",
-          "temperature_and_photosynthesis",
-          "limiting_factor"
+          {
+            "id": "chloroplasts_and_cells",
+            "name": "Chloroplasts & Photosynthetic Cells",
+            "subtopics": [
+              "Chloroplasts",
+              "Palisade Mesophyll Cell",
+              "Palisade Cell Adaptation",
+              "Plant Cell Walls and Chloroplasts in Classification"
+            ]
+          },
+          {
+            "id": "photosynthesis_basics",
+            "name": "Photosynthesis Process & Pigments",
+            "subtopics": [
+              "photosynthesis",
+              "chlorophyll_and_light_energy",
+              "chloroplast_structure_photosynthesis",
+              "carbon_dioxide_entry_leaf"
+            ]
+          },
+          {
+            "id": "raw_materials_entry",
+            "name": "Carbon Dioxide Entry & Light Capture",
+            "subtopics": [
+              "light_required_for_photosynthesis",
+              "carbon_dioxide_required_photosynthesis",
+              "light_intensity_and_photosynthesis",
+              "carbon_dioxide_concentration_and_photosynthesis"
+            ]
+          },
+          {
+            "id": "photosynthesis_investigations",
+            "name": "Investigating Light & Carbon Dioxide",
+            "subtopics": [
+              "measuring_photosynthesis_rate",
+              "photosynthesis_graphs",
+              "photosynthesis_practical_variables",
+              "improving_photosynthesis_experiment"
+            ]
+          },
+          {
+            "id": "measuring_rate",
+            "name": "Measuring Rate & Interpreting Graphs",
+            "subtopics": [
+              "photosynthesis_complete_reasoning",
+              "leaf_as_photosynthetic_organ",
+              "upper_epidermis_leaf",
+              "palisade_mesophyll_photosynthesis"
+            ]
+          },
+          {
+            "id": "leaf_anatomy_adaptations",
+            "name": "Leaf Anatomy & Internal Structure",
+            "subtopics": [
+              "spongy_mesophyll",
+              "leaf_veins_and_photosynthesis",
+              "lower_epidermis_and_stomata",
+              "leaf_cross_section",
+              "leaf_adaptations_summary"
+            ]
+          },
+          {
+            "id": "epidermis_and_veins",
+            "name": "Epidermis, Stomata & Veins",
+            "subtopics": [
+              "photosynthesis_and_respiration",
+              "photosynthesis_and_mineral_nutrition",
+              "photosynthesis_experiment_control",
+              "Photosynthesis in the Carbon Cycle",
+              "water_in_photosynthesis"
+            ]
+          },
+          {
+            "id": "products_and_carbohydrate_fate",
+            "name": "Products & Fate of Glucose",
+            "subtopics": [
+              "glucose_fates_after_photosynthesis",
+              "photosynthesis_and_oxygen",
+              "photosynthesis_and_glucose",
+              "photosynthesis_complete_process",
+              "starch_test_leaf"
+            ]
+          },
+          {
+            "id": "starch_testing_and_storage",
+            "name": "Starch Testing, Destarching & Storage",
+            "subtopics": [
+              "destarching_plants",
+              "starch_storage_in_plants",
+              "photosynthesis_starch_evidence",
+              "Light Intensity and Photosynthesis",
+              "Carbon Dioxide and Photosynthesis"
+            ]
+          },
+          {
+            "id": "limiting_factors_photosynthesis",
+            "name": "Limiting Factors & Environmental Control",
+            "subtopics": [
+              "Temperature and Photosynthesis",
+              "Limiting Factors in Photosynthesis",
+              "temperature_and_photosynthesis",
+              "limiting_factor"
+            ]
+          }
         ]
       },
       {
         "id": "transport_in_animals",
         "label": "Transport in Animals",
         "topics": [
-          "Red Blood Cell",
-          "ABO Blood Group Genotypes",
-          "Solving an ABO Blood Group Inheritance Problem",
-          "ABO Blood Group and Rhesus Factor Are Separate",
-          "Why Blood Groups Matter in Transfusion",
-          "Reading a Blood Transfusion Compatibility Problem",
-          "Blood Supply to the Alveoli",
-          "Transport of Oxygen in the Blood",
-          "Haemoglobin and Oxygen Loading",
-          "Transport of Carbon Dioxide",
-          "The Role of Red Blood Cells in Gas Transport",
-          "Components of Blood",
-          "Blood Plasma",
-          "Platelets",
-          "Blood Clotting",
-          "The Septum and Separation of Blood",
-          "Atrial Systole",
-          "Ventricular Systole",
-          "Diastole and Ventricular Filling",
-          "The Pulse",
-          "Blood Pressure",
-          "Measuring Pulse Rate Before and After Exercise",
-          "Blood Flow and Resistance",
-          "Stroke Volume",
-          "memory_cells",
-          "Why Heart Rate Increases During Exercise",
-          "The Heart as a Pump",
-          "The Four Chambers of the Heart",
-          "The Right Side of the Heart",
-          "The Left Side of the Heart",
-          "Heart Valves",
-          "Why the Left Ventricle Has a Thick Wall",
-          "The Cardiac Cycle",
-          "The Complete Cardiac Cycle",
-          "The Heartbeat and Heart Rate",
-          "Heart Rate During Exercise",
-          "Recovery of Heart Rate After Exercise",
-          "Cardiac Output",
-          "How Exercise Changes Cardiac Output",
-          "Arteries",
-          "Veins",
-          "The Pulmonary Circulation",
-          "The Systemic Circulation",
-          "Double Circulation",
-          "Why Blood Pressure Is Highest in Arteries",
-          "Capillaries",
-          "Exchange Between Capillaries and Body Cells",
-          "Tissue Fluid",
-          "Formation of Tissue Fluid",
-          "Removal of Tissue Fluid",
-          "Comparing Arteries, Veins and Capillaries",
-          "Why Capillaries Have a Narrow Lumen",
-          "White Blood Cell",
-          "ABO Antigens and Antibodies",
-          "White Blood Cells",
-          "Phagocytes",
-          "Lymphocytes and Antibodies",
-          "The Lymphatic System",
-          "antigen",
-          "antibody",
-          "antibody_action",
-          "primary_secondary_immune_response",
-          "vaccination",
-          "vaccination_population_immunity",
-          "active_passive_immunity",
-          "phagocytosis",
-          "phagocytes_and_lymphocytes",
-          "immune_response_sequence"
+          {
+            "id": "red_cells_and_blood_groups",
+            "name": "Red Blood Cells & ABO Genotypes",
+            "subtopics": [
+              "Red Blood Cell",
+              "ABO Blood Group Genotypes",
+              "Solving an ABO Blood Group Inheritance Problem",
+              "ABO Blood Group and Rhesus Factor Are Separate",
+              "Why Blood Groups Matter in Transfusion",
+              "Reading a Blood Transfusion Compatibility Problem"
+            ]
+          },
+          {
+            "id": "gas_transport_blood",
+            "name": "Oxygen & Carbon Dioxide Transport",
+            "subtopics": [
+              "Blood Supply to the Alveoli",
+              "Transport of Oxygen in the Blood",
+              "Haemoglobin and Oxygen Loading",
+              "Transport of Carbon Dioxide",
+              "The Role of Red Blood Cells in Gas Transport"
+            ]
+          },
+          {
+            "id": "plasma_and_clotting",
+            "name": "Plasma, Platelets & Blood Clotting",
+            "subtopics": [
+              "Components of Blood",
+              "Blood Plasma",
+              "Platelets",
+              "Blood Clotting"
+            ]
+          },
+          {
+            "id": "cardiac_cycle_events",
+            "name": "Cardiac Cycle & Systole/Diastole",
+            "subtopics": [
+              "The Septum and Separation of Blood",
+              "Atrial Systole",
+              "Ventricular Systole",
+              "Diastole and Ventricular Filling",
+              "The Pulse"
+            ]
+          },
+          {
+            "id": "pulse_and_blood_pressure",
+            "name": "Pulse, Pressure & Cardiac Performance",
+            "subtopics": [
+              "Blood Pressure",
+              "Measuring Pulse Rate Before and After Exercise",
+              "Blood Flow and Resistance",
+              "Stroke Volume"
+            ]
+          },
+          {
+            "id": "heart_structure_and_pumping",
+            "name": "Internal Structure & Chambers of the Heart",
+            "subtopics": [
+              "Why Heart Rate Increases During Exercise",
+              "The Heart as a Pump",
+              "The Four Chambers of the Heart",
+              "The Right Side of the Heart",
+              "The Left Side of the Heart",
+              "Heart Valves"
+            ]
+          },
+          {
+            "id": "heart_rate_and_exercise",
+            "name": "Heart Rate, Output & Exercise Response",
+            "subtopics": [
+              "Why the Left Ventricle Has a Thick Wall",
+              "The Cardiac Cycle",
+              "The Complete Cardiac Cycle",
+              "The Heartbeat and Heart Rate",
+              "Heart Rate During Exercise"
+            ]
+          },
+          {
+            "id": "blood_vessels_structure",
+            "name": "Arteries, Veins & Pulmonary/Systemic Circuits",
+            "subtopics": [
+              "Recovery of Heart Rate After Exercise",
+              "Cardiac Output",
+              "How Exercise Changes Cardiac Output",
+              "Arteries",
+              "Veins"
+            ]
+          },
+          {
+            "id": "circulation_and_pressure",
+            "name": "Double Circulation & Blood Pressure",
+            "subtopics": [
+              "The Pulmonary Circulation",
+              "The Systemic Circulation",
+              "Double Circulation",
+              "Why Blood Pressure Is Highest in Arteries"
+            ]
+          },
+          {
+            "id": "capillaries_and_tissue_fluid",
+            "name": "Capillaries, Exchange & Tissue Fluid",
+            "subtopics": [
+              "Capillaries",
+              "Exchange Between Capillaries and Body Cells",
+              "Tissue Fluid",
+              "Formation of Tissue Fluid",
+              "Removal of Tissue Fluid"
+            ]
+          },
+          {
+            "id": "vessel_comparisons",
+            "name": "Comparing Blood Vessels & Lumen Adaptations",
+            "subtopics": [
+              "Comparing Arteries, Veins and Capillaries",
+              "Why Capillaries Have a Narrow Lumen",
+              "White Blood Cell",
+              "ABO Antigens and Antibodies"
+            ]
+          },
+          {
+            "id": "white_cells_and_lymphatics",
+            "name": "White Blood Cells & Lymphatic System",
+            "subtopics": [
+              "White Blood Cells",
+              "Phagocytes",
+              "Lymphocytes and Antibodies",
+              "The Lymphatic System",
+              "antigen"
+            ]
+          },
+          {
+            "id": "antibodies_and_immunity",
+            "name": "Antigens, Antibodies & Immune Responses",
+            "subtopics": [
+              "antibody",
+              "antibody_action",
+              "primary_secondary_immune_response",
+              "vaccination",
+              "vaccination_population_immunity",
+              "memory_cells"
+            ]
+          },
+          {
+            "id": "vaccination_and_phagocytosis",
+            "name": "Vaccination & Cellular Defence Mechanisms",
+            "subtopics": [
+              "active_passive_immunity",
+              "phagocytosis",
+              "phagocytes_and_lymphocytes",
+              "immune_response_sequence"
+            ]
+          }
         ]
       },
       {
         "id": "transport_in_plants",
         "label": "Transport in Plants",
         "topics": [
-          "Xylem Vessel",
-          "need_for_transport_in_plants",
-          "xylem_structure",
-          "xylem_function",
-          "root_hair_cell_absorption",
-          "mineral_ion_absorption",
-          "root_to_xylem_water_movement",
-          "cohesion_adhesion_xylem",
-          "guard_cells",
-          "xerophyte_adaptations",
-          "interpreting_ringing_results",
-          "water_and_mineral_transport_in_xylem",
-          "mineral_ion_transport",
-          "root_pressure",
-          "transport_in_plants_complete_comparison",
-          "Transpiration and the Water Cycle",
-          "transpiration",
-          "transpiration_stream",
-          "transpiration_pull",
-          "factors_affecting_transpiration",
-          "transpiration_investigation",
-          "transpiration_temperature",
-          "transpiration_humidity",
-          "wind_and_transpiration",
-          "light_and_transpiration",
-          "transpiration_factor_comparison",
-          "transpiration_pull_vs_root_pressure",
-          "stomata",
-          "stomatal_opening_and_closing",
-          "stomata_distribution",
-          "xerophyte_stomatal_adaptations",
-          "Phloem Sieve Tube",
-          "phloem_structure",
-          "phloem_function",
-          "source_and_sink",
-          "translocation",
-          "phloem_loading",
-          "pressure_flow_phloem",
-          "phloem_unloading",
-          "phloem_transport_direction",
-          "xylem_and_phloem_comparison",
-          "ringing_experiment_phloem",
-          "phloem_transport_experiment_design"
+          {
+            "id": "plant_transport_need_and_xylem",
+            "name": "Need for Transport & Xylem Structure",
+            "subtopics": [
+              "Xylem Vessel",
+              "need_for_transport_in_plants",
+              "xylem_structure",
+              "xylem_function"
+            ]
+          },
+          {
+            "id": "root_absorption_and_water_movement",
+            "name": "Root Absorption & Radial Water Movement",
+            "subtopics": [
+              "root_hair_cell_absorption",
+              "mineral_ion_absorption",
+              "root_to_xylem_water_movement",
+              "cohesion_adhesion_xylem"
+            ]
+          },
+          {
+            "id": "xylem_transport_mechanisms",
+            "name": "Cohesion, Adhesion & Root Pressure",
+            "subtopics": [
+              "guard_cells",
+              "xerophyte_adaptations",
+              "interpreting_ringing_results",
+              "water_and_mineral_transport_in_xylem"
+            ]
+          },
+          {
+            "id": "xerophytes_and_ringing",
+            "name": "Xerophyte Adaptations & Transport Experiments",
+            "subtopics": [
+              "mineral_ion_transport",
+              "root_pressure",
+              "transport_in_plants_complete_comparison",
+              "Transpiration and the Water Cycle"
+            ]
+          },
+          {
+            "id": "transpiration_stream_and_pull",
+            "name": "Transpiration Stream & Transpiration Pull",
+            "subtopics": [
+              "transpiration",
+              "transpiration_stream",
+              "transpiration_pull",
+              "factors_affecting_transpiration"
+            ]
+          },
+          {
+            "id": "factors_affecting_transpiration",
+            "name": "Environmental Factors & Transpiration Rates",
+            "subtopics": [
+              "transpiration_investigation",
+              "transpiration_temperature",
+              "transpiration_humidity",
+              "wind_and_transpiration",
+              "light_and_transpiration"
+            ]
+          },
+          {
+            "id": "stomata_and_transpiration_control",
+            "name": "Stomata Distribution & Transpiration Controls",
+            "subtopics": [
+              "transpiration_factor_comparison",
+              "transpiration_pull_vs_root_pressure",
+              "stomata",
+              "stomatal_opening_and_closing"
+            ]
+          },
+          {
+            "id": "phloem_structure_and_function",
+            "name": "Phloem Sieve Tubes & Functional Anatomy",
+            "subtopics": [
+              "stomata_distribution",
+              "xerophyte_stomatal_adaptations",
+              "Phloem Sieve Tube",
+              "phloem_structure"
+            ]
+          },
+          {
+            "id": "translocation_and_source_sink",
+            "name": "Translocation & Source-to-Sink Transport",
+            "subtopics": [
+              "phloem_function",
+              "source_and_sink",
+              "translocation",
+              "phloem_loading",
+              "pressure_flow_phloem"
+            ]
+          },
+          {
+            "id": "phloem_experimental_evidence",
+            "name": "Experimental Evidence for Phloem Transport",
+            "subtopics": [
+              "phloem_unloading",
+              "phloem_transport_direction",
+              "xylem_and_phloem_comparison",
+              "ringing_experiment_phloem",
+              "phloem_transport_experiment_design"
+            ]
+          }
         ]
       },
       {
         "id": "genetics",
-        "label": "Genetics",
+        "label": "Genetics & Evolution",
         "topics": [
-          "What Are Gametes?",
-          "What Is Fertilisation?",
-          "The Zygote",
-          "Fertilisation Restores Diploid Chromosome Number",
-          "From Meiosis to a New Organism",
-          "What Is Inheritance",
-          "What Is an Allele",
-          "Dominant Alleles",
-          "Recessive Alleles",
-          "Genotype",
-          "Phenotype",
-          "Homozygous Genotype",
-          "Heterozygous Genotype",
-          "Homozygous Dominant and Homozygous Recessive",
-          "Carrier of a Recessive Allele",
-          "What Is a Monohybrid Cross",
-          "Determining the Genotypes of Parents",
-          "Finding the Gametes of a Parent",
-          "Why Alleles Separate During Meiosis",
-          "Building a Punnett Square",
-          "Completing a Punnett Square",
-          "Genotypic Ratio",
-          "Probability in Genetic Crosses",
-          "A Complete Monohybrid Cross",
-          "Cross Between Two Homozygous Dominant Parents",
-          "Cross Between Two Homozygous Recessive Parents",
-          "Cross Between Homozygous Dominant and Homozygous Recessive Parents",
-          "Cross Between Homozygous Dominant and Heterozygous Parents",
-          "Cross Between Homozygous Recessive and Heterozygous Parents",
-          "Cross Between Homozygous Dominant and Heterozygous Parents: Probability",
-          "Cross Between Two Homozygous Parents: Comparing Outcomes",
-          "Test Cross",
-          "Interpreting a Test Cross",
-          "Solving a Monohybrid Cross from a Written Question",
-          "Why Some Inheritance Patterns Differ from Complete Dominance",
-          "Incomplete Dominance",
-          "Solving an Incomplete Dominance Cross",
-          "Incomplete Dominance Ratios",
-          "Codominance",
-          "Solving a Codominance Cross",
-          "Incomplete Dominance Compared with Codominance",
-          "Multiple Alleles",
-          "The Rhesus Factor",
-          "Rhesus Factor Genotypes",
-          "Rhesus Factor Cross: RR × rr",
-          "Determining an Unknown Rhesus Genotype",
-          "ABO Red Cell Compatibility",
-          "How Advantageous Alleles Become More Common",
-          "What Fossils Can Reveal",
-          "Limitations of the Fossil Record",
-          "Homologous Structures",
-          "Vestigial Structures",
-          "Comparing Homologous and Vestigial Structures",
-          "Genetic Diversity",
-          "Variation in Sexual Reproduction",
-          "Genetic Variation from Fertilisation",
-          "Meiosis and Genetic Variation",
-          "Genetic Variation and Environmental Variation",
-          "Inherited Variation and Acquired Differences",
-          "Sources of Genetic Variation",
-          "Phenotypic Ratio",
-          "What Is Variation?",
-          "Genetic Causes of Variation",
-          "Environmental Causes of Variation",
-          "Genetic and Environmental Variation Together",
-          "Continuous Variation",
-          "Discontinuous Variation",
-          "Comparing Continuous and Discontinuous Variation",
-          "Mean, Range and Variation in Ecological Data",
-          "What Is a Mutation?",
-          "Causes of Mutation",
-          "Effects of Mutations",
-          "Mutations and Genetic Variation",
-          "What Is Natural Selection?",
-          "Selection Pressure",
-          "Variation and Survival",
-          "Survival of Better-Adapted Individuals",
-          "Reproduction and Natural Selection",
-          "Natural Selection in Bacteria",
-          "Adaptation Through Natural Selection",
-          "Natural Selection: Complete Reasoning Problem",
-          "What Is Evolution?",
-          "Evolution Occurs Over Generations",
-          "Fossils as Evidence for Evolution",
-          "Homologous Structures as Evidence for Evolution",
-          "Evidence for Evolution Must Be Interpreted",
-          "Evolution: Putting the Evidence Together",
-          "Rhesus Factor Cross: Rr × rr",
-          "Genetics",
-          "Molecular Genetics ",
-          "Genetics & Evolution"
+          {
+            "id": "gametes_and_fertilisation",
+            "name": "Gametes, Fertilisation & The Zygote",
+            "subtopics": [
+              "What Are Gametes?",
+              "What Is Fertilisation?",
+              "The Zygote",
+              "Fertilisation Restores Diploid Chromosome Number",
+              "From Meiosis to a New Organism"
+            ]
+          },
+          {
+            "id": "inheritance_foundations",
+            "name": "Inheritance, Alleles & Genotype/Phenotype",
+            "subtopics": [
+              "What Is Inheritance",
+              "What Is an Allele",
+              "Dominant Alleles",
+              "Recessive Alleles",
+              "Genotype"
+            ]
+          },
+          {
+            "id": "zygosity_and_alleles",
+            "name": "Homozygous, Heterozygous & Carriers",
+            "subtopics": [
+              "Phenotype",
+              "Homozygous Genotype",
+              "Heterozygous Genotype",
+              "Homozygous Dominant and Homozygous Recessive",
+              "Carrier of a Recessive Allele"
+            ]
+          },
+          {
+            "id": "monohybrid_cross_basics",
+            "name": "Monohybrid Crosses & Punnett Squares",
+            "subtopics": [
+              "What Is a Monohybrid Cross",
+              "Determining the Genotypes of Parents",
+              "Finding the Gametes of a Parent",
+              "Why Alleles Separate During Meiosis",
+              "Building a Punnett Square"
+            ]
+          },
+          {
+            "id": "ratios_and_homozygous_crosses",
+            "name": "Genotypic Ratios & Homozygous Crosses",
+            "subtopics": [
+              "Completing a Punnett Square",
+              "Genotypic Ratio",
+              "Probability in Genetic Crosses",
+              "A Complete Monohybrid Cross",
+              "Cross Between Two Homozygous Dominant Parents"
+            ]
+          },
+          {
+            "id": "heterozygous_crosses_and_probability",
+            "name": "Heterozygous Crosses & Probability",
+            "subtopics": [
+              "Cross Between Two Homozygous Recessive Parents",
+              "Cross Between Homozygous Dominant and Homozygous Recessive Parents",
+              "Cross Between Homozygous Dominant and Heterozygous Parents",
+              "Cross Between Homozygous Recessive and Heterozygous Parents",
+              "Cross Between Homozygous Dominant and Heterozygous Parents: Probability"
+            ]
+          },
+          {
+            "id": "test_crosses_and_problem_solving",
+            "name": "Test Crosses & Solving Genetics Problems",
+            "subtopics": [
+              "Cross Between Two Homozygous Parents: Comparing Outcomes",
+              "Test Cross",
+              "Interpreting a Test Cross",
+              "Solving a Monohybrid Cross from a Written Question",
+              "Why Some Inheritance Patterns Differ from Complete Dominance"
+            ]
+          },
+          {
+            "id": "incomplete_dominance_and_codominance",
+            "name": "Incomplete Dominance & Codominance Crosses",
+            "subtopics": [
+              "Incomplete Dominance",
+              "Solving an Incomplete Dominance Cross",
+              "Incomplete Dominance Ratios",
+              "Codominance",
+              "Solving a Codominance Cross"
+            ]
+          },
+          {
+            "id": "multiple_alleles_and_rhesus",
+            "name": "Multiple Alleles & The Rhesus Factor",
+            "subtopics": [
+              "Incomplete Dominance Compared with Codominance",
+              "Multiple Alleles",
+              "The Rhesus Factor",
+              "Rhesus Factor Genotypes",
+              "Rhesus Factor Cross: RR × rr"
+            ]
+          },
+          {
+            "id": "blood_groups_and_molecular_genetics",
+            "name": "Blood Compatibility & Molecular Genetics",
+            "subtopics": [
+              "Determining an Unknown Rhesus Genotype",
+              "ABO Red Cell Compatibility",
+              "How Advantageous Alleles Become More Common",
+              "What Fossils Can Reveal",
+              "Limitations of the Fossil Record"
+            ]
+          },
+          {
+            "id": "fossil_record_and_anatomy",
+            "name": "Fossil Evidence, Homologous & Vestigial Structures",
+            "subtopics": [
+              "Homologous Structures",
+              "Vestigial Structures",
+              "Comparing Homologous and Vestigial Structures",
+              "Genetic Diversity",
+              "Variation in Sexual Reproduction"
+            ]
+          },
+          {
+            "id": "sources_of_genetic_variation",
+            "name": "Sexual Reproduction, Meiosis & Variation Sources",
+            "subtopics": [
+              "Genetic Variation from Fertilisation",
+              "Meiosis and Genetic Variation",
+              "Genetic Variation and Environmental Variation",
+              "Inherited Variation and Acquired Differences",
+              "Sources of Genetic Variation"
+            ]
+          },
+          {
+            "id": "causes_and_types_of_variation",
+            "name": "Continuous vs Discontinuous Variation",
+            "subtopics": [
+              "Phenotypic Ratio",
+              "What Is Variation?",
+              "Genetic Causes of Variation",
+              "Environmental Causes of Variation",
+              "Genetic and Environmental Variation Together",
+              "Continuous Variation"
+            ]
+          },
+          {
+            "id": "mutations_and_genetic_diversity",
+            "name": "Gene Mutations & Environmental Mutagens",
+            "subtopics": [
+              "Discontinuous Variation",
+              "Comparing Continuous and Discontinuous Variation",
+              "Mean, Range and Variation in Ecological Data",
+              "What Is a Mutation?",
+              "Causes of Mutation"
+            ]
+          },
+          {
+            "id": "natural_selection_principles",
+            "name": "Natural Selection & Selection Pressure",
+            "subtopics": [
+              "Effects of Mutations",
+              "Mutations and Genetic Variation",
+              "What Is Natural Selection?",
+              "Selection Pressure",
+              "Variation and Survival"
+            ]
+          },
+          {
+            "id": "adaptation_and_antibiotic_resistance",
+            "name": "Adaptation & Bacterial Natural Selection",
+            "subtopics": [
+              "Survival of Better-Adapted Individuals",
+              "Reproduction and Natural Selection",
+              "Natural Selection in Bacteria",
+              "Adaptation Through Natural Selection"
+            ]
+          },
+          {
+            "id": "evolutionary_theory_and_evidence",
+            "name": "Evolution Concept, Generations & Evidence",
+            "subtopics": [
+              "Natural Selection: Complete Reasoning Problem",
+              "What Is Evolution?",
+              "Evolution Occurs Over Generations",
+              "Fossils as Evidence for Evolution",
+              "Homologous Structures as Evidence for Evolution"
+            ]
+          },
+          {
+            "id": "genetics_and_evolution_synthesis",
+            "name": "Genetics & Evolution Synthesis",
+            "subtopics": [
+              "Evidence for Evolution Must Be Interpreted",
+              "Evolution: Putting the Evidence Together",
+              "Rhesus Factor Cross: Rr × rr",
+              "Genetics",
+              "Molecular Genetics "
+            ]
+          },
+          {
+            "id": "additional_topics_part_1",
+            "name": "Additional Concepts — Part 1",
+            "subtopics": [
+              "Genetics & Evolution"
+            ]
+          }
         ]
       },
       {
         "id": "ecology",
         "label": "Ecology",
         "topics": [
-          "Why Antibiotics Do Not Cure Viral Infections",
-          "Ecosystem Diversity",
-          "What Is Ecology",
-          "Biotic and Abiotic Factors",
-          "Habitat",
-          "Community",
-          "Ecosystem",
-          "Niche",
-          "Parasitism",
-          "Omnivores",
-          "Immigration and Emigration",
-          "Limiting Factors",
-          "Distribution of Organisms",
-          "Ecological Succession",
-          "Primary Succession",
-          "Secondary Succession",
-          "Biomagnification",
-          "Nitrification",
-          "Denitrification",
-          "Fertiliser Runoff",
-          "Water Availability and Plant Distribution",
-          "Photosynthetic Productivity",
-          "Ecological Balance",
-          "Percentage Cover",
-          "Ecological Investigation Variables",
-          "Abiotic Factors and Species Distribution",
-          "Biotic Factors and Species Distribution",
-          "Correlation in Ecological Investigations",
-          "Evaluating an Ecological Conclusion",
-          "Improving an Ecological Investigation",
-          "Field Investigation of Plant Distribution",
-          "Mean of Ecological Data",
-          "Range of Ecological Data",
-          "Anomalous Results in Ecological Data",
-          "Drawing a Bar Chart from Ecological Data",
-          "Drawing a Line Graph from Ecological Data",
-          "Identifying Trends in Ecological Data",
-          "Comparing Ecological Data Sets",
-          "Reliability of Ecological Results",
-          "Validity of an Ecological Investigation",
-          "Drawing a Scientific Conclusion from Ecological Evidence",
-          "Evaluating Evidence in Ecology",
-          "Autotrophic and Heterotrophic Nutrition",
-          "Predation",
-          "Producers",
-          "Consumers",
-          "Herbivores",
-          "Carnivores",
-          "Food Chain",
-          "Trophic Levels",
-          "Energy Transfer in Food Chains",
-          "Food Web",
-          "Interpreting a Food Web",
-          "Effects of Removing an Organism from a Food Chain",
-          "Population",
-          "Competition",
-          "Population Size",
-          "Measuring Population Size",
-          "Estimating Population Size",
-          "Birth Rate and Death Rate",
-          "Factors Affecting Population Size",
-          "Population Growth",
-          "Exponential Population Growth",
-          "Carrying Capacity",
-          "Logistic Population Growth",
-          "Population Fluctuations",
-          "Predator and Prey Populations",
-          "Competition and Population Size",
-          "Disease and Population Size",
-          "Abiotic Factors and Population Distribution",
-          "Population Growth and Resource Demand",
-          "Population Carrying Capacity",
-          "Population Growth and Carrying Capacity",
-          "Interpreting a Population Distribution Graph",
-          "Population Density",
-          "Quadrat Sampling",
-          "Using Quadrats Correctly",
-          "Capture-Mark-Recapture",
-          "Density-Dependent Factors",
-          "Density-Independent Factors",
-          "Sampling in Ecology",
-          "Random Sampling",
-          "Systematic Sampling",
-          "Using a Quadrat",
-          "Estimating Population Size from Quadrat Data",
-          "Reliability of Ecological Sampling",
-          "Transect Investigation",
-          "Frequency of an Organism",
-          "Abundance and Density",
-          "Sampling Bias",
-          "Decomposers",
-          "Predator-Prey Cycles",
-          "Carbon Cycle",
-          "Decomposition and the Carbon Cycle",
-          "Combustion and the Carbon Cycle",
-          "Nitrogen Cycle",
-          "Nitrogen Fixation",
-          "Decomposition and Nitrogen Recycling",
-          "Nitrogen in Food Chains",
-          "Fertiliser and Nitrogen Availability",
-          "Water Cycle",
-          "Nutrient Cycling and Ecosystem Stability",
-          "Habitat Destruction and Biodiversity",
-          "Human Population Growth",
-          "Population Density and Human Settlements",
-          "Human Population Factors",
-          "Deforestation",
-          "Habitat Destruction",
-          "Pollution",
-          "Water Pollution",
-          "Eutrophication",
-          "Carbon Balance and Human Activities"
+          {
+            "id": "ecosystems_and_ecological_terms",
+            "name": "Ecology, Habitats, Niches & Ecosystems",
+            "subtopics": [
+              "Ecosystem Diversity",
+              "What Is Ecology",
+              "Biotic and Abiotic Factors",
+              "Habitat",
+              "Community"
+            ]
+          },
+          {
+            "id": "limiting_factors_and_succession",
+            "name": "Limiting Factors & Ecological Succession",
+            "subtopics": [
+              "Ecosystem",
+              "Niche",
+              "Parasitism",
+              "Omnivores",
+              "Immigration and Emigration"
+            ]
+          },
+          {
+            "id": "nutrient_cycling_and_productivity",
+            "name": "Biomagnification, Nitrogen & Productivity",
+            "subtopics": [
+              "Limiting Factors",
+              "Distribution of Organisms",
+              "Ecological Succession",
+              "Primary Succession",
+              "Secondary Succession"
+            ]
+          },
+          {
+            "id": "ecological_investigations_field",
+            "name": "Field Investigations & Abiotic/Biotic Distribution",
+            "subtopics": [
+              "Biomagnification",
+              "Nitrification",
+              "Denitrification",
+              "Fertiliser Runoff",
+              "Water Availability and Plant Distribution"
+            ]
+          },
+          {
+            "id": "evaluating_ecological_data",
+            "name": "Data Analysis, Trends, Reliability & Validity",
+            "subtopics": [
+              "Photosynthetic Productivity",
+              "Ecological Balance",
+              "Percentage Cover",
+              "Ecological Investigation Variables",
+              "Abiotic Factors and Species Distribution",
+              "Biotic Factors and Species Distribution"
+            ]
+          },
+          {
+            "id": "handling_ecological_data",
+            "name": "Ecological Charts, Graphs & Correlations",
+            "subtopics": [
+              "Correlation in Ecological Investigations",
+              "Evaluating an Ecological Conclusion",
+              "Improving an Ecological Investigation",
+              "Field Investigation of Plant Distribution",
+              "Mean of Ecological Data",
+              "Range of Ecological Data"
+            ]
+          },
+          {
+            "id": "feeding_relationships_producers_consumers",
+            "name": "Producers, Consumers & Feeding Roles",
+            "subtopics": [
+              "Anomalous Results in Ecological Data",
+              "Drawing a Bar Chart from Ecological Data",
+              "Drawing a Line Graph from Ecological Data",
+              "Identifying Trends in Ecological Data",
+              "Comparing Ecological Data Sets"
+            ]
+          },
+          {
+            "id": "food_chains_and_trophic_levels",
+            "name": "Food Chains, Trophic Levels & Energy Loss",
+            "subtopics": [
+              "Reliability of Ecological Results",
+              "Validity of an Ecological Investigation",
+              "Drawing a Scientific Conclusion from Ecological Evidence",
+              "Evaluating Evidence in Ecology"
+            ]
+          },
+          {
+            "id": "food_webs_and_interdependence",
+            "name": "Food Webs & Ecosystem Interdependence",
+            "subtopics": [
+              "Autotrophic and Heterotrophic Nutrition",
+              "Predation",
+              "Producers",
+              "Consumers"
+            ]
+          },
+          {
+            "id": "population_size_and_measuring",
+            "name": "Population Size & Measurement Techniques",
+            "subtopics": [
+              "Herbivores",
+              "Carnivores",
+              "Food Chain",
+              "Trophic Levels",
+              "Energy Transfer in Food Chains"
+            ]
+          },
+          {
+            "id": "population_growth_and_capacity",
+            "name": "Growth Curves, Carrying Capacity & Fluctuations",
+            "subtopics": [
+              "Food Web",
+              "Interpreting a Food Web",
+              "Effects of Removing an Organism from a Food Chain",
+              "Population",
+              "Competition"
+            ]
+          },
+          {
+            "id": "predator_prey_and_competition",
+            "name": "Predator-Prey Cycles & Competition",
+            "subtopics": [
+              "Population Size",
+              "Measuring Population Size",
+              "Estimating Population Size",
+              "Birth Rate and Death Rate",
+              "Factors Affecting Population Size"
+            ]
+          },
+          {
+            "id": "resources_and_distribution",
+            "name": "Resources, Carrying Capacity & Distributions",
+            "subtopics": [
+              "Population Growth",
+              "Exponential Population Growth",
+              "Carrying Capacity",
+              "Logistic Population Growth"
+            ]
+          },
+          {
+            "id": "quadrat_and_mark_recapture",
+            "name": "Population Limiting Factors, Disease & Sampling",
+            "subtopics": [
+              "Population Fluctuations",
+              "Predator and Prey Populations",
+              "Competition and Population Size",
+              "Disease and Population Size",
+              "Why Antibiotics Do Not Cure Viral Infections"
+            ]
+          },
+          {
+            "id": "sampling_principles_and_density",
+            "name": "Random vs Systematic Sampling & Density",
+            "subtopics": [
+              "Abiotic Factors and Population Distribution",
+              "Population Growth and Resource Demand",
+              "Population Carrying Capacity",
+              "Population Growth and Carrying Capacity",
+              "Interpreting a Population Distribution Graph"
+            ]
+          },
+          {
+            "id": "abundance_bias_and_decomposers",
+            "name": "Abundance, Sampling Bias & Decomposers",
+            "subtopics": [
+              "Population Density",
+              "Quadrat Sampling",
+              "Using Quadrats Correctly",
+              "Capture-Mark-Recapture",
+              "Density-Dependent Factors"
+            ]
+          },
+          {
+            "id": "carbon_and_nitrogen_cycles",
+            "name": "Biogeochemical Cycles: Carbon & Nitrogen",
+            "subtopics": [
+              "Density-Independent Factors",
+              "Sampling in Ecology",
+              "Random Sampling",
+              "Systematic Sampling",
+              "Using a Quadrat",
+              "Estimating Population Size from Quadrat Data"
+            ]
+          },
+          {
+            "id": "water_cycle_and_human_impact",
+            "name": "Water Cycle & Human Population Pressures",
+            "subtopics": [
+              "Reliability of Ecological Sampling",
+              "Transect Investigation",
+              "Frequency of an Organism",
+              "Abundance and Density",
+              "Sampling Bias"
+            ]
+          },
+          {
+            "id": "pollution_and_habitat_destruction",
+            "name": "Deforestation, Habitat Loss, Pollution & Eutrophication",
+            "subtopics": [
+              "Decomposers",
+              "Predator-Prey Cycles",
+              "Carbon Cycle",
+              "Decomposition and the Carbon Cycle",
+              "Combustion and the Carbon Cycle"
+            ]
+          },
+          {
+            "id": "global_carbon_and_conservation",
+            "name": "Carbon Balance & Environmental Conservation",
+            "subtopics": [
+              "Nitrogen Cycle",
+              "Nitrogen Fixation"
+            ]
+          },
+          {
+            "id": "ecological_balance_and_stability",
+            "name": "Ecosystem Stability & Community Interactions",
+            "subtopics": [
+              "Decomposition and Nitrogen Recycling",
+              "Nitrogen in Food Chains",
+              "Fertiliser and Nitrogen Availability",
+              "Water Cycle",
+              "Nutrient Cycling and Ecosystem Stability"
+            ]
+          },
+          {
+            "id": "additional_topics_part_1",
+            "name": "Additional Concepts — Part 1",
+            "subtopics": [
+              "Habitat Destruction and Biodiversity",
+              "Human Population Growth",
+              "Population Density and Human Settlements",
+              "Human Population Factors",
+              "Deforestation"
+            ]
+          },
+          {
+            "id": "additional_topics_part_2",
+            "name": "Additional Concepts — Part 2",
+            "subtopics": [
+              "Habitat Destruction",
+              "Pollution",
+              "Water Pollution",
+              "Eutrophication",
+              "Carbon Balance and Human Activities"
+            ]
+          }
         ]
       },
       {
         "id": "biodiversity_and_classification",
         "label": "Biodiversity and Classification",
         "topics": [
-          "What Is Biodiversity?",
-          "Fungal Hyphae and Mycelium",
-          "Yeast as a Fungus",
-          "Reading a Scientific Name",
-          "Choosing Between Two Characteristics",
-          "What Is Biodiversity",
-          "Why Biodiversity Is Important",
-          "What Is Classification?",
-          "Why Organisms Are Classified",
-          "Characteristics Used in Classification",
-          "Prokaryotic and Eukaryotic Cells in Classification",
-          "Five-Kingdom Classification",
-          "Kingdom Monera",
-          "Kingdom Protoctista",
-          "Kingdom Fungi",
-          "Kingdom Plantae",
-          "Kingdom Animalia",
-          "Kingdom Animalia Compared with Kingdom Plantae",
-          "Kingdom Fungi Compared with Kingdom Plantae",
-          "Comparing the Major Five Kingdoms",
-          "What Is a Species?",
-          "Why Species Are the Basic Classification Unit",
-          "Taxonomic Hierarchy",
-          "Kingdom to Phylum",
-          "Phylum to Class",
-          "Class to Order",
-          "Order to Family",
-          "Family to Genus",
-          "Binomial Nomenclature",
-          "Species Diversity",
-          "Competition Within a Species",
-          "Competition Between Species",
-          "Species Richness",
-          "Species Distribution Patterns",
-          "What Is a Taxonomic Key",
-          "How a Dichotomous Key Works",
-          "Paired Statements in a Dichotomous Key",
-          "Following a Key Step by Step",
-          "Constructing a Simple Dichotomous Key",
-          "Testing a Dichotomous Key",
-          "Identifying an Unknown Organism Using a Key",
-          "Common Errors When Using a Key",
-          "Complete Identification Problem",
-          "Threats to Biodiversity",
-          "Conservation of Biodiversity",
-          "In Situ Conservation",
-          "Ex Situ Conservation",
-          "Comparing In Situ and Ex Situ Conservation",
-          "Overexploitation",
-          "Sustainable Resource Use",
-          "Conservation of Natural Resources",
-          "Protected Areas"
+          {
+            "id": "biodiversity_and_scientific_naming",
+            "name": "Biodiversity & Scientific Naming",
+            "subtopics": [
+              "What Is Biodiversity?",
+              "Fungal Hyphae and Mycelium",
+              "Yeast as a Fungus",
+              "Reading a Scientific Name",
+              "Choosing Between Two Characteristics"
+            ]
+          },
+          {
+            "id": "principles_of_classification",
+            "name": "Why Classify & Cellular Characteristics",
+            "subtopics": [
+              "What Is Biodiversity",
+              "Why Biodiversity Is Important",
+              "What Is Classification?",
+              "Why Organisms Are Classified",
+              "Characteristics Used in Classification"
+            ]
+          },
+          {
+            "id": "five_kingdom_system",
+            "name": "The Five Kingdoms of Living Organisms",
+            "subtopics": [
+              "Prokaryotic and Eukaryotic Cells in Classification",
+              "Five-Kingdom Classification",
+              "Kingdom Monera",
+              "Kingdom Protoctista",
+              "Kingdom Fungi"
+            ]
+          },
+          {
+            "id": "comparing_kingdoms",
+            "name": "Comparing Animal, Plant & Fungi Kingdoms",
+            "subtopics": [
+              "Kingdom Plantae",
+              "Kingdom Animalia",
+              "Kingdom Animalia Compared with Kingdom Plantae",
+              "Kingdom Fungi Compared with Kingdom Plantae",
+              "Comparing the Major Five Kingdoms"
+            ]
+          },
+          {
+            "id": "taxonomic_hierarchy",
+            "name": "The Taxonomic Hierarchy (Kingdom to Species)",
+            "subtopics": [
+              "What Is a Species?",
+              "Why Species Are the Basic Classification Unit",
+              "Taxonomic Hierarchy",
+              "Kingdom to Phylum",
+              "Phylum to Class"
+            ]
+          },
+          {
+            "id": "species_and_binomial_nomenclature",
+            "name": "Species Concept & Binomial Nomenclature",
+            "subtopics": [
+              "Class to Order",
+              "Order to Family",
+              "Family to Genus",
+              "Binomial Nomenclature",
+              "Species Diversity"
+            ]
+          },
+          {
+            "id": "species_diversity_and_competition",
+            "name": "Species Diversity, Richness & Competition",
+            "subtopics": [
+              "Competition Within a Species",
+              "Competition Between Species",
+              "Species Richness",
+              "Species Distribution Patterns",
+              "What Is a Taxonomic Key"
+            ]
+          },
+          {
+            "id": "dichotomous_keys_principles",
+            "name": "Dichotomous Keys: Concept & Paired Statements",
+            "subtopics": [
+              "How a Dichotomous Key Works",
+              "Paired Statements in a Dichotomous Key",
+              "Following a Key Step by Step",
+              "Constructing a Simple Dichotomous Key",
+              "Testing a Dichotomous Key"
+            ]
+          },
+          {
+            "id": "constructing_and_using_keys",
+            "name": "Constructing, Testing & Applying Keys",
+            "subtopics": [
+              "Identifying an Unknown Organism Using a Key",
+              "Common Errors When Using a Key",
+              "Complete Identification Problem",
+              "Threats to Biodiversity",
+              "Conservation of Biodiversity"
+            ]
+          },
+          {
+            "id": "threats_and_conservation_strategies",
+            "name": "Threats & In Situ / Ex Situ Conservation",
+            "subtopics": [
+              "In Situ Conservation",
+              "Ex Situ Conservation",
+              "Comparing In Situ and Ex Situ Conservation",
+              "Overexploitation"
+            ]
+          },
+          {
+            "id": "sustainable_resource_management",
+            "name": "Sustainable Resources & Protected Areas",
+            "subtopics": [
+              "Sustainable Resource Use",
+              "Conservation of Natural Resources",
+              "Protected Areas"
+            ]
+          }
         ]
       },
       {
         "id": "respiration",
         "label": "Respiration",
         "topics": [
-          "Respiration and the Carbon Cycle",
-          "What Is Respiration?",
-          "Energy Released During Respiration",
-          "Aerobic Respiration",
-          "Glycolysis",
-          "Mitochondria and Aerobic Respiration",
-          "Aerobic Respiration and Oxygen Supply",
-          "Carbon Dioxide as a Product of Respiration",
-          "Water as a Product of Aerobic Respiration",
-          "Respiration Rate",
-          "Factors Affecting Respiration Rate",
-          "Respiration During Exercise",
-          "Features of an Efficient Respiratory Surface",
-          "Moist Respiratory Surfaces",
-          "Exercise and Oxygen Demand",
-          "Goblet Cells in the Respiratory Tract",
-          "Anaerobic Respiration",
-          "Anaerobic Respiration in Muscle Cells",
-          "Anaerobic Respiration in Yeast",
-          "Fermentation",
-          "Aerobic and Anaerobic Respiration Compared",
-          "Oxygen Debt",
-          "Lactic Acid During Exercise",
-          "Investigating Respiration in Germinating Seeds",
-          "Investigating Carbon Dioxide Production by Respiring Organisms",
-          "Temperature and Yeast Respiration",
-          "respiration_during_germination",
-          "germination_and_respiration_evidence"
+          {
+            "id": "respiration_basics_and_atp",
+            "name": "Respiration Concept, Carbon Cycle & Energy",
+            "subtopics": [
+              "Respiration and the Carbon Cycle",
+              "What Is Respiration?",
+              "Energy Released During Respiration",
+              "Aerobic Respiration"
+            ]
+          },
+          {
+            "id": "aerobic_respiration_pathway",
+            "name": "Aerobic Respiration, Glycolysis & Mitochondria",
+            "subtopics": [
+              "Glycolysis",
+              "Mitochondria and Aerobic Respiration",
+              "Aerobic Respiration and Oxygen Supply",
+              "Carbon Dioxide as a Product of Respiration",
+              "Water as a Product of Aerobic Respiration"
+            ]
+          },
+          {
+            "id": "factors_affecting_respiration",
+            "name": "Respiration Rate & Exercise Demand",
+            "subtopics": [
+              "Respiration Rate",
+              "Factors Affecting Respiration Rate",
+              "Respiration During Exercise",
+              "Features of an Efficient Respiratory Surface"
+            ]
+          },
+          {
+            "id": "respiratory_surfaces_adaptations",
+            "name": "Respiratory Surface Adaptations & Goblet Cells",
+            "subtopics": [
+              "Moist Respiratory Surfaces",
+              "Exercise and Oxygen Demand",
+              "Goblet Cells in the Respiratory Tract",
+              "Anaerobic Respiration"
+            ]
+          },
+          {
+            "id": "anaerobic_respiration_muscle_yeast",
+            "name": "Anaerobic Respiration, Muscles & Fermentation",
+            "subtopics": [
+              "Anaerobic Respiration in Muscle Cells",
+              "Anaerobic Respiration in Yeast",
+              "Fermentation",
+              "Aerobic and Anaerobic Respiration Compared"
+            ]
+          },
+          {
+            "id": "comparing_respiration_types",
+            "name": "Aerobic vs Anaerobic Comparison & Oxygen Debt",
+            "subtopics": [
+              "Oxygen Debt",
+              "Lactic Acid During Exercise",
+              "Investigating Respiration in Germinating Seeds",
+              "Investigating Carbon Dioxide Production by Respiring Organisms"
+            ]
+          },
+          {
+            "id": "practical_respiration_experiments",
+            "name": "Investigating Respiration in Seeds & Yeast",
+            "subtopics": [
+              "Temperature and Yeast Respiration",
+              "respiration_during_germination",
+              "germination_and_respiration_evidence"
+            ]
+          }
         ]
       },
       {
         "id": "mineral_nutrition",
         "label": "Mineral Nutrition",
         "topics": [
-          "why_plants_need_mineral_ions",
-          "nitrate_ions_in_plants",
-          "magnesium_ions_in_plants",
-          "active_transport_mineral_ions",
-          "mineral_nutrition_practical_evaluation",
-          "mineral_nutrition_complete_reasoning",
-          "mineral_nutrition_dose_response",
-          "mineral_nutrition_graph_reasoning",
-          "plant_mineral_nutrition_complete_problem",
-          "Mineral Ion Deficiency",
-          "nitrate_deficiency",
-          "magnesium_deficiency",
-          "comparing_nitrate_and_magnesium_deficiency",
-          "mineral_deficiency_controlled_investigation",
-          "mineral_deficiency_identification",
-          "mineral_deficiency_experiment_data",
-          "mineral_ion_deficiency_and_growth",
-          "Plant Uptake of Nitrate",
-          "root_absorption_of_mineral_ions",
-          "mineral_ion_movement_in_plant",
-          "mineral_ion_concentration_gradient",
-          "root_hair_cell_adaptation_mineral_absorption",
-          "waterlogging_and_mineral_absorption",
-          "hydroponics_and_mineral_nutrition"
+          {
+            "id": "mineral_requirements_in_plants",
+            "name": "Mineral Ion Roles: Nitrate, Magnesium & Transport",
+            "subtopics": [
+              "why_plants_need_mineral_ions",
+              "nitrate_ions_in_plants",
+              "magnesium_ions_in_plants",
+              "active_transport_mineral_ions",
+              "mineral_nutrition_practical_evaluation"
+            ]
+          },
+          {
+            "id": "evaluating_mineral_nutrition",
+            "name": "Dose Response & Graphical Reasoning",
+            "subtopics": [
+              "mineral_nutrition_complete_reasoning",
+              "mineral_nutrition_dose_response",
+              "mineral_nutrition_graph_reasoning",
+              "plant_mineral_nutrition_complete_problem"
+            ]
+          },
+          {
+            "id": "mineral_deficiency_symptoms",
+            "name": "Nitrate & Magnesium Deficiency Symptoms",
+            "subtopics": [
+              "Mineral Ion Deficiency",
+              "nitrate_deficiency",
+              "magnesium_deficiency",
+              "comparing_nitrate_and_magnesium_deficiency",
+              "mineral_deficiency_controlled_investigation"
+            ]
+          },
+          {
+            "id": "investigating_mineral_deficiency",
+            "name": "Controlled Deficiency Investigations & Growth",
+            "subtopics": [
+              "mineral_deficiency_identification",
+              "mineral_deficiency_experiment_data",
+              "mineral_ion_deficiency_and_growth",
+              "Plant Uptake of Nitrate"
+            ]
+          },
+          {
+            "id": "root_absorption_mechanisms",
+            "name": "Root Absorption & Concentration Gradients",
+            "subtopics": [
+              "root_absorption_of_mineral_ions",
+              "mineral_ion_movement_in_plant",
+              "mineral_ion_concentration_gradient",
+              "root_hair_cell_adaptation_mineral_absorption"
+            ]
+          },
+          {
+            "id": "environmental_factors_and_hydroponics",
+            "name": "Waterlogging, Soil Aeration & Hydroponics",
+            "subtopics": [
+              "waterlogging_and_mineral_absorption",
+              "hydroponics_and_mineral_nutrition"
+            ]
+          }
         ]
       },
       {
         "id": "gaseous_exchange",
         "label": "Gaseous Exchange",
         "topics": [
-          "Gaseous Exchange",
-          "The Human Gas Exchange System",
-          "Ventilation",
-          "Inhalation",
-          "Exhalation",
-          "Intercostal Muscles",
-          "Diaphragm and Breathing",
-          "Airways and Their Functions",
-          "Composition of Inspired and Expired Air",
-          "Testing Expired Air for Carbon Dioxide",
-          "Testing Expired Air for Oxygen",
-          "Why Breathing Rate Increases During Exercise",
-          "Practical: Investigating Breathing Rate Before and After Exercise",
-          "Pleural Membranes and the Lungs",
-          "Mucus and Cilia in the Airways",
-          "Effect of Exercise on Gas Exchange",
-          "Effect of Smoking on Gas Exchange",
-          "Gas Exchange and Carbon Monoxide",
-          "Practical: Comparing Inspired and Expired Air",
-          "Evaluating a Gas Exchange Experiment",
-          "Why Large Organisms Need Transport Systems",
-          "Diffusion in Gaseous Exchange",
-          "The Alveoli",
-          "Large Surface Area of Alveoli",
-          "Thin Alveolar Walls",
-          "Ventilation Maintains Gas Gradients",
-          "Gaseous Exchange and Diffusion Distance",
-          "Gas Exchange and Surface Area to Volume Ratio",
-          "Concentration Gradients at the Alveoli",
-          "Why Diffusion Alone Is Not Enough",
-          "Gas Exchange in Fish Gills",
-          "Comparing Human, Fish and Insect Gas Exchange",
-          "Gas Exchange in Insects",
-          "Cartilage in the Trachea",
-          "Gas Exchange in Plants"
+          {
+            "id": "human_gas_exchange_anatomy",
+            "name": "Human Respiratory System & Anatomy",
+            "subtopics": [
+              "Gaseous Exchange",
+              "The Human Gas Exchange System",
+              "Ventilation",
+              "Inhalation"
+            ]
+          },
+          {
+            "id": "ventilation_mechanisms",
+            "name": "Inhalation, Exhalation, Diaphragm & Intercostals",
+            "subtopics": [
+              "Exhalation",
+              "Intercostal Muscles",
+              "Diaphragm and Breathing",
+              "Airways and Their Functions"
+            ]
+          },
+          {
+            "id": "air_composition_and_testing",
+            "name": "Inspired vs Expired Air & Testing for Gases",
+            "subtopics": [
+              "Composition of Inspired and Expired Air",
+              "Testing Expired Air for Carbon Dioxide",
+              "Testing Expired Air for Oxygen",
+              "Why Breathing Rate Increases During Exercise"
+            ]
+          },
+          {
+            "id": "exercise_and_breathing_rate",
+            "name": "Exercise, Breathing Rate & Airway Protection",
+            "subtopics": [
+              "Practical: Investigating Breathing Rate Before and After Exercise",
+              "Pleural Membranes and the Lungs",
+              "Mucus and Cilia in the Airways",
+              "Effect of Exercise on Gas Exchange"
+            ]
+          },
+          {
+            "id": "smoking_and_airway_pathology",
+            "name": "Smoking, Carbon Monoxide & Respiratory Health",
+            "subtopics": [
+              "Effect of Smoking on Gas Exchange",
+              "Gas Exchange and Carbon Monoxide",
+              "Practical: Comparing Inspired and Expired Air",
+              "Evaluating a Gas Exchange Experiment"
+            ]
+          },
+          {
+            "id": "evaluating_respiratory_experiments",
+            "name": "Experimental Design & Diffusion Principles",
+            "subtopics": [
+              "Why Large Organisms Need Transport Systems",
+              "Diffusion in Gaseous Exchange",
+              "The Alveoli",
+              "Large Surface Area of Alveoli"
+            ]
+          },
+          {
+            "id": "alveoli_structure_and_adaptations",
+            "name": "Alveoli Structure, Capillary Network & Gradients",
+            "subtopics": [
+              "Thin Alveolar Walls",
+              "Ventilation Maintains Gas Gradients",
+              "Gaseous Exchange and Diffusion Distance",
+              "Gas Exchange and Surface Area to Volume Ratio",
+              "Concentration Gradients at the Alveoli"
+            ]
+          },
+          {
+            "id": "comparative_gas_exchange",
+            "name": "Comparative Gas Exchange: Fish, Insects & Plants",
+            "subtopics": [
+              "Why Diffusion Alone Is Not Enough",
+              "Gas Exchange in Fish Gills",
+              "Comparing Human, Fish and Insect Gas Exchange",
+              "Gas Exchange in Insects",
+              "Cartilage in the Trachea",
+              "Gas Exchange in Plants"
+            ]
+          }
         ]
       },
       {
         "id": "plant_growth_and_development",
         "label": "Plant Growth and Development",
         "topics": [
-          "plant_growth_and_development",
-          "primary_growth_in_plants",
-          "plant_growth_data_interpretation",
-          "root_cap_and_root_growth",
-          "measuring_primary_growth",
-          "investigating_plant_growth_rate",
-          "plant_growth_curve",
-          "plant_growth_experiment_evaluation",
-          "plant_growth_complete_reasoning",
-          "plant_growth_measurement_comparison",
-          "plant_growth_graph_analysis",
-          "growth_by_cell_division",
-          "cell_elongation_in_plant_growth",
-          "cell_differentiation_in_plant_growth",
-          "root_hairs_and_differentiation",
-          "plant_growth_processes_exam_problem",
-          "stored_reserves_to_photosynthesis",
-          "root_cap_function",
-          "plant_growth_processes_complete",
-          "plant_growth_rate_calculation",
-          "plant_growth_graph_gradient",
-          "plant_growth_graph_stages",
-          "comparing_plant_growth_conditions",
-          "plant_growth_experiment_variables",
-          "plant_growth_experiment_repeats",
-          "plant_growth_anomalous_result",
-          "plant_growth_data_conclusion",
-          "plant_growth_investigation_evaluation",
-          "annual_growth_rings",
-          "conditions_for_seed_germination",
-          "investigating_seed_germination",
-          "seed_dormancy",
-          "epigeal_germination",
-          "hypogeal_germination",
-          "seed_germination_start",
-          "stored_food_during_germination",
-          "germination_complete_reasoning",
-          "epigeal_vs_hypogeal_comparison",
-          "germination_sequence_problem",
-          "investigating_water_requirement_germination",
-          "investigating_oxygen_requirement_germination",
-          "investigating_temperature_germination",
-          "germination_percentage",
-          "germination_data_interpretation",
-          "germination_experiment_reliability",
-          "germination_experiment_validity",
-          "germination_complete_exam_problem",
-          "germination_failure_analysis",
-          "germination_time_course",
-          "germination_rate_from_data",
-          "seed_viability",
-          "seed_storage_and_viability",
-          "seed_germination_water_uptake",
-          "enzymes_during_germination",
-          "germination_conditions_complete",
-          "germination_radicle_emergence",
-          "plumule_emergence",
-          "cotyledon_function",
-          "seedling_establishment_after_germination",
-          "seedling_light_requirement",
-          "seedling_root_shoot_balance",
-          "seedling_root_growth_direction",
-          "seedling_shoot_growth_direction",
-          "root_hair_development_in_seedlings",
-          "first_leaves_seedling_photosynthesis",
-          "seedling_dependence_on_seed_reserves",
-          "cotyledon_depletion_during_germination",
-          "seedling_growth_measurement",
-          "comparing_seedling_growth_data",
-          "seedling_growth_by_cell_division",
-          "cell_elongation_seedling_growth",
-          "cell_differentiation_in_seedling_growth",
-          "root_apical_meristem",
-          "shoot_apical_meristem",
-          "zones_of_root_growth",
-          "lateral_meristems",
-          "growth_zones_root_sequence",
-          "meristematic_cells_and_differentiation",
-          "root_growth_zones",
-          "phototropism",
-          "positive_and_negative_tropism",
-          "gravitropism",
-          "phototropism_experiment",
-          "phototropism_experimental_evidence",
-          "phototropism_vs_gravitropism",
-          "phototropism_shoots",
-          "phototropism_experiment_setup",
-          "phototropism_evidence",
-          "gravitropism_roots",
-          "gravitropism_shoots",
-          "phototropism_gravitropism_comparison",
-          "phototropism_control_experiment",
-          "phototropism_experiment_variables",
-          "phototropism_experiment_improvements",
-          "plant_growth_hormones",
-          "auxin_distribution_in_phototropism",
-          "auxin_and_gravitropism_in_roots",
-          "auxin_and_cell_elongation",
-          "auxin_and_root_growth",
-          "auxin_concentration_and_growth",
-          "auxin_and_apical_dominance",
-          "auxin_and_plant_cuttings",
-          "plant_growth_hormone_experiment",
-          "plant_growth_hormones_complete_reasoning",
-          "auxin_production",
-          "auxin_movement_in_shoots",
-          "secondary_growth_in_plants",
-          "primary_vs_secondary_growth",
-          "secondary_growth_in_stems",
-          "secondary_growth_in_roots",
-          "primary_secondary_growth_exam_problem",
-          "secondary_growth_lateral_meristems",
-          "vascular_cambium_secondary_xylem_phloem",
-          "secondary_growth_woody_stems",
-          "secondary_growth_roots",
-          "primary_secondary_growth_data",
-          "secondary_growth_environmental_effects",
-          "primary_secondary_growth_complete_problem"
+          {
+            "id": "primary_growth_concepts",
+            "name": "Primary Growth & Root Growth Dynamics",
+            "subtopics": [
+              "plant_growth_and_development",
+              "primary_growth_in_plants",
+              "plant_growth_data_interpretation",
+              "root_cap_and_root_growth",
+              "measuring_primary_growth"
+            ]
+          },
+          {
+            "id": "measuring_plant_growth",
+            "name": "Measuring Growth, Curves & Evaluation",
+            "subtopics": [
+              "investigating_plant_growth_rate",
+              "plant_growth_curve",
+              "plant_growth_experiment_evaluation",
+              "plant_growth_complete_reasoning",
+              "plant_growth_measurement_comparison"
+            ]
+          },
+          {
+            "id": "growth_graphs_and_differentiation",
+            "name": "Growth Processes, Graphs & Differentiation",
+            "subtopics": [
+              "plant_growth_graph_analysis",
+              "growth_by_cell_division",
+              "cell_elongation_in_plant_growth",
+              "cell_differentiation_in_plant_growth",
+              "root_hairs_and_differentiation"
+            ]
+          },
+          {
+            "id": "growth_processes_and_seed_reserves",
+            "name": "Food Reserves, Root Cap & Growth Rates",
+            "subtopics": [
+              "plant_growth_processes_exam_problem",
+              "stored_reserves_to_photosynthesis",
+              "root_cap_function",
+              "plant_growth_processes_complete",
+              "plant_growth_rate_calculation"
+            ]
+          },
+          {
+            "id": "experimental_growth_conditions",
+            "name": "Comparing Growth Conditions & Variables",
+            "subtopics": [
+              "plant_growth_graph_gradient",
+              "plant_growth_graph_stages",
+              "comparing_plant_growth_conditions",
+              "plant_growth_experiment_variables",
+              "plant_growth_experiment_repeats"
+            ]
+          },
+          {
+            "id": "experimental_growth_validity",
+            "name": "Reliability, Anomalies & Growth Rings",
+            "subtopics": [
+              "plant_growth_anomalous_result",
+              "plant_growth_data_conclusion",
+              "plant_growth_investigation_evaluation",
+              "annual_growth_rings"
+            ]
+          },
+          {
+            "id": "seed_germination_fundamentals",
+            "name": "Germination Conditions, Dormancy & Types",
+            "subtopics": [
+              "conditions_for_seed_germination",
+              "investigating_seed_germination",
+              "seed_dormancy",
+              "epigeal_germination",
+              "hypogeal_germination"
+            ]
+          },
+          {
+            "id": "germination_mechanisms_and_food",
+            "name": "Food Mobilisation & Germination Sequences",
+            "subtopics": [
+              "seed_germination_start",
+              "stored_food_during_germination",
+              "germination_complete_reasoning",
+              "epigeal_vs_hypogeal_comparison",
+              "germination_sequence_problem"
+            ]
+          },
+          {
+            "id": "environmental_requirements_germination",
+            "name": "Water, Oxygen & Temperature Requirements",
+            "subtopics": [
+              "investigating_water_requirement_germination",
+              "investigating_oxygen_requirement_germination",
+              "investigating_temperature_germination",
+              "germination_percentage",
+              "germination_data_interpretation"
+            ]
+          },
+          {
+            "id": "evaluating_germination_experiments",
+            "name": "Germination Percentage, Validity & Failure",
+            "subtopics": [
+              "germination_experiment_reliability",
+              "germination_experiment_validity",
+              "germination_complete_exam_problem",
+              "germination_failure_analysis",
+              "germination_time_course"
+            ]
+          },
+          {
+            "id": "seed_viability_and_water_uptake",
+            "name": "Seed Viability, Imbibition & Enzymes",
+            "subtopics": [
+              "germination_rate_from_data",
+              "seed_viability",
+              "seed_storage_and_viability",
+              "seed_germination_water_uptake",
+              "enzymes_during_germination"
+            ]
+          },
+          {
+            "id": "early_seedling_development",
+            "name": "Radicle, Plumule & Cotyledon Mobilisation",
+            "subtopics": [
+              "germination_conditions_complete",
+              "germination_radicle_emergence",
+              "plumule_emergence",
+              "cotyledon_function",
+              "seedling_establishment_after_germination"
+            ]
+          },
+          {
+            "id": "seedling_establishment_growth",
+            "name": "Light, Root-Shoot Balance & Geotropism",
+            "subtopics": [
+              "seedling_light_requirement",
+              "seedling_root_shoot_balance",
+              "seedling_root_growth_direction",
+              "seedling_shoot_growth_direction",
+              "root_hair_development_in_seedlings"
+            ]
+          },
+          {
+            "id": "seedling_measurement_and_division",
+            "name": "Growth Measurement & Cell Division",
+            "subtopics": [
+              "first_leaves_seedling_photosynthesis",
+              "seedling_dependence_on_seed_reserves",
+              "cotyledon_depletion_during_germination",
+              "seedling_growth_measurement",
+              "comparing_seedling_growth_data"
+            ]
+          },
+          {
+            "id": "meristems_and_growth_zones",
+            "name": "Apical & Lateral Meristems & Root Zones",
+            "subtopics": [
+              "seedling_growth_by_cell_division",
+              "cell_elongation_seedling_growth",
+              "cell_differentiation_in_seedling_growth",
+              "root_apical_meristem",
+              "shoot_apical_meristem",
+              "zones_of_root_growth"
+            ]
+          },
+          {
+            "id": "tropisms_phototropism_basics",
+            "name": "Phototropism & Directional Growth",
+            "subtopics": [
+              "lateral_meristems",
+              "growth_zones_root_sequence",
+              "meristematic_cells_and_differentiation",
+              "root_growth_zones",
+              "phototropism"
+            ]
+          },
+          {
+            "id": "phototropism_experiments",
+            "name": "Investigating Phototropism in Shoots",
+            "subtopics": [
+              "positive_and_negative_tropism",
+              "gravitropism",
+              "phototropism_experiment",
+              "phototropism_experimental_evidence",
+              "phototropism_vs_gravitropism"
+            ]
+          },
+          {
+            "id": "gravitropism_in_roots_shoots",
+            "name": "Gravitropism in Roots & Shoots",
+            "subtopics": [
+              "phototropism_shoots",
+              "phototropism_experiment_setup",
+              "phototropism_evidence",
+              "gravitropism_roots",
+              "gravitropism_shoots"
+            ]
+          },
+          {
+            "id": "tropism_experimental_controls",
+            "name": "Control Experiments & Experimental Controls",
+            "subtopics": [
+              "phototropism_gravitropism_comparison",
+              "phototropism_control_experiment",
+              "phototropism_experiment_variables",
+              "phototropism_experiment_improvements"
+            ]
+          },
+          {
+            "id": "plant_hormones_auxin_actions",
+            "name": "Plant Hormones & Auxin in Tropisms",
+            "subtopics": [
+              "plant_growth_hormones",
+              "auxin_distribution_in_phototropism",
+              "auxin_and_gravitropism_in_roots",
+              "auxin_and_cell_elongation",
+              "auxin_and_root_growth"
+            ]
+          },
+          {
+            "id": "auxin_concentration_and_growth",
+            "name": "Auxin Concentration, Apical Dominance & Cuttings",
+            "subtopics": [
+              "auxin_concentration_and_growth",
+              "auxin_and_apical_dominance",
+              "auxin_and_plant_cuttings",
+              "plant_growth_hormone_experiment",
+              "plant_growth_hormones_complete_reasoning"
+            ]
+          },
+          {
+            "id": "auxin_transport_and_synthesis",
+            "name": "Auxin Transport & Hormonal Reasoning",
+            "subtopics": [
+              "auxin_production",
+              "auxin_movement_in_shoots",
+              "secondary_growth_in_plants",
+              "primary_vs_secondary_growth"
+            ]
+          },
+          {
+            "id": "secondary_growth_woody_tissues",
+            "name": "Secondary Growth in Stems & Roots",
+            "subtopics": [
+              "secondary_growth_in_stems",
+              "secondary_growth_in_roots",
+              "primary_secondary_growth_exam_problem",
+              "secondary_growth_lateral_meristems",
+              "vascular_cambium_secondary_xylem_phloem"
+            ]
+          },
+          {
+            "id": "vascular_cambium_and_environments",
+            "name": "Cambium Activity & Environmental Influence",
+            "subtopics": [
+              "secondary_growth_woody_stems",
+              "secondary_growth_roots",
+              "primary_secondary_growth_data",
+              "secondary_growth_environmental_effects"
+            ]
+          },
+          {
+            "id": "additional_topics_part_1",
+            "name": "Additional Concepts — Part 1",
+            "subtopics": [
+              "primary_secondary_growth_complete_problem"
+            ]
+          }
         ]
       },
       {
         "id": "human_physiology",
         "label": "Human Physiology",
         "topics": [
-          "Respiration — Releasing Energy from Food",
-          "Aerobic Respiration",
-          "Anaerobic Respiration & Oxygen Debt",
-          "Excretion — Removing Metabolic Waste",
-          "The Kidney",
-          "The Nephron — Filtration and Reabsorption",
-          "Urine Formation & Dialysis",
-          "Immune System — Phagocytosis",
-          "Antigens, Antibodies & Immunity"
+          {
+            "id": "energy_release_respiration",
+            "name": "Cellular Respiration & Energy Release",
+            "subtopics": [
+              "Respiration — Releasing Energy from Food",
+              "Aerobic Respiration",
+              "Anaerobic Respiration & Oxygen Debt"
+            ]
+          },
+          {
+            "id": "kidney_and_nephron_function",
+            "name": "Excretion, Kidney & Nephron Filtration",
+            "subtopics": [
+              "Excretion — Removing Metabolic Waste",
+              "The Kidney",
+              "The Nephron — Filtration and Reabsorption"
+            ]
+          },
+          {
+            "id": "urine_formation_and_immunity",
+            "name": "Urine Formation, Dialysis & Immunity",
+            "subtopics": [
+              "Urine Formation & Dialysis",
+              "Immune System — Phagocytosis",
+              "Antigens, Antibodies & Immunity"
+            ]
+          }
         ]
       },
       {
         "id": "cells",
-        "label": "Cells",
+        "label": "Cells & Microscopy",
         "topics": [
-          "Cell Biology",
-          "Microscopes & Cell Observation"
+          {
+            "id": "microscopy_and_cell_observation",
+            "name": "Microscopy & Cell Observation",
+            "subtopics": [
+              "Cell Biology",
+              "Microscopes & Cell Observation"
+            ]
+          }
         ]
       },
       {
         "id": "advanced_cell_biology",
         "label": "Advanced Cell Biology",
         "topics": [
-          "Advanced Cell Biology"
+          {
+            "id": "advanced_cellular_mechanisms",
+            "name": "Advanced Cellular Mechanisms",
+            "subtopics": [
+              "Advanced Cell Biology"
+            ]
+          }
         ]
       },
       {
         "id": "biochemistry",
         "label": "Biochemistry",
         "topics": [
-          "Biological Molecules"
+          {
+            "id": "biological_molecules",
+            "name": "Biological Molecules",
+            "subtopics": [
+              "Biological Molecules"
+            ]
+          }
         ]
       },
       {
         "id": "movement",
-        "label": "Movement",
+        "label": "Movement & Locomotion",
         "topics": [
-          "Skeleton — Support, Protection & Movement",
-          "Types of Joints",
-          "Muscles — Antagonistic Muscle Pairs",
-          "Body System Integration"
+          {
+            "id": "skeleton_joints_muscles",
+            "name": "Skeletal Framework, Joints & Antagonistic Muscles",
+            "subtopics": [
+              "Skeleton — Support, Protection & Movement",
+              "Types of Joints",
+              "Muscles — Antagonistic Muscle Pairs",
+              "Body System Integration"
+            ]
+          }
         ]
       },
       {
         "id": "plant_deep_transport",
         "label": "Plant Deep Transport",
         "topics": [
-          "Advanced Plant Biology (Transport, Tissues & Growth Systems)"
+          {
+            "id": "advanced_plant_transport_systems",
+            "name": "Advanced Plant Transport Systems",
+            "subtopics": [
+              "Advanced Plant Biology (Transport, Tissues & Growth Systems)"
+            ]
+          }
         ]
       },
       {
         "id": "microbiology",
-        "label": "Microbiology",
+        "label": "Microbiology & Health",
         "topics": [
-          "Microbiology & Health",
-          "Microbiology & Health Control"
+          {
+            "id": "microbiology_and_health_control",
+            "name": "Microorganisms & Disease Control",
+            "subtopics": [
+              "Microbiology & Health",
+              "Microbiology & Health Control"
+            ]
+          }
         ]
       },
       {
         "id": "homeostasis_reproduction",
-        "label": "Homeostasis Reproduction",
+        "label": "Homeostasis & Body Regulation",
         "topics": [
-          "Homeostasis & Reproduction"
+          {
+            "id": "homeostasis_and_regulation_overview",
+            "name": "Homeostatic Regulation Overview",
+            "subtopics": [
+              "Homeostasis & Reproduction"
+            ]
+          }
         ]
       },
       {
         "id": "practical_biology",
         "label": "Practical Biology",
         "topics": [
-          "Practical Biology",
-          "Practical Biology (Enzymes, ATP & Metabolism Master System)"
+          {
+            "id": "enzymes_atp_metabolism_practicals",
+            "name": "Enzymes, ATP & Metabolic Investigations",
+            "subtopics": [
+              "Practical Biology",
+              "Practical Biology (Enzymes, ATP & Metabolism Master System)"
+            ]
+          }
         ]
       },
       {
         "id": "exam_skills",
         "label": "Exam Skills",
         "topics": [
-          "Biology Exam Skills"
+          {
+            "id": "biology_exam_techniques",
+            "name": "Biology Examination Techniques",
+            "subtopics": [
+              "Biology Exam Skills"
+            ]
+          }
         ]
       },
       {
         "id": "classification_evolution",
-        "label": "Classification Evolution",
+        "label": "Classification & Evolution",
         "topics": [
-          "Classification & Evolution"
+          {
+            "id": "classification_evolution_synthesis",
+            "name": "Classification & Evolutionary Links",
+            "subtopics": [
+              "Classification & Evolution"
+            ]
+          }
         ]
       },
       {
         "id": "plant_ecology",
         "label": "Plant Ecology",
         "topics": [
-          "Plant Coordination, Nutrition & Ecology"
+          {
+            "id": "plant_coordination_and_ecology",
+            "name": "Plant Coordination & Ecological Interactions",
+            "subtopics": [
+              "Plant Coordination, Nutrition & Ecology"
+            ]
+          }
         ]
       },
       {
         "id": "nervous_system",
-        "label": "Nervous System",
+        "label": "Nervous System & Sense Organs",
         "topics": [
-          "The Nervous System ",
-          "Reflex Actions (Automatic Protective Responses)",
-          "The Endocrine System (Hormones, Glands & Body Regulation)",
-          "The Eye (Structure, Function & Seeing Process)",
-          "The Ear (Structure, Function & Hearing Process)",
-          "The Nose (Structure, Function & Smelling Process)",
-          "The Tongue (Structure, Function & Taste Process)",
-          "The Skin (Structure, Function & Touch Process)",
-          "The Brain (Structure, Function & Control of the Body)",
-          "The Spinal Cord (Structure, Function & Reflex Control System)"
+          {
+            "id": "nervous_coordination_and_endocrine",
+            "name": "Nervous Coordination, Reflexes & Endocrine Control",
+            "subtopics": [
+              "The Nervous System ",
+              "Reflex Actions (Automatic Protective Responses)",
+              "The Endocrine System (Hormones, Glands & Body Regulation)"
+            ]
+          },
+          {
+            "id": "sense_organs_specialised_receptors",
+            "name": "Sense Organs: Eye, Ear, Nose, Tongue & Skin",
+            "subtopics": [
+              "The Eye (Structure, Function & Seeing Process)",
+              "The Ear (Structure, Function & Hearing Process)",
+              "The Nose (Structure, Function & Smelling Process)",
+              "The Tongue (Structure, Function & Taste Process)",
+              "The Skin (Structure, Function & Touch Process)"
+            ]
+          },
+          {
+            "id": "central_nervous_system_brain_spine",
+            "name": "Central Nervous System: Brain & Spinal Cord",
+            "subtopics": [
+              "The Brain (Structure, Function & Control of the Body)",
+              "The Spinal Cord (Structure, Function & Reflex Control System)"
+            ]
+          }
         ]
       },
       {
         "id": "reproduction",
         "label": "Reproduction",
         "topics": [
-          "Reproduction (Introduction & Types of Reproduction)",
-          "Asexual Reproduction (Types, Mechanisms & Examples)",
-          "Sexual Reproduction (Gametes, Fertilization & Genetic Variation)",
-          "Human Reproductive System (Male & Female Organs in Full Detail)",
-          "Fertilization and Development (Phase 5: Zygote → Embryo → Fetus → Birth)",
-          "Reproduction (Sexual vs Asexual)"
+          {
+            "id": "types_of_reproduction_modes",
+            "name": "Asexual vs Sexual Reproduction Modes",
+            "subtopics": [
+              "Reproduction (Introduction & Types of Reproduction)",
+              "Asexual Reproduction (Types, Mechanisms & Examples)",
+              "Sexual Reproduction (Gametes, Fertilization & Genetic Variation)"
+            ]
+          },
+          {
+            "id": "human_reproduction_and_development",
+            "name": "Human Reproductive System & Embryo Development",
+            "subtopics": [
+              "Human Reproductive System (Male & Female Organs in Full Detail)",
+              "Fertilization and Development (Phase 5: Zygote → Embryo → Fetus → Birth)",
+              "Reproduction (Sexual vs Asexual)"
+            ]
+          }
         ]
       }
     ]

@@ -7,6 +7,7 @@
 add(
   "biology",
   "cell_biology",
+  "intro_to_cells",
   "What Is a Cell",
 
   `
@@ -131,6 +132,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "intro_to_cells",
   "Why Cells Are the Basic Units of Life",
 
   `
@@ -254,6 +256,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "plant_vs_animal_cells",
   "Unicellular and Multicellular Organisms",
 
   `
@@ -387,6 +390,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cellular_organisation",
   "How Cells Are Organised in Multicellular Organisms",
 
   `
@@ -511,6 +515,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "intro_to_cells",
   "Cell Membrane",
 
   `
@@ -638,6 +643,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "intro_to_cells",
   "Cytoplasm",
 
   `
@@ -747,6 +753,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "intro_to_cells",
   "Nucleus",
 
   `
@@ -858,6 +865,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cell_organelles",
   "Mitochondria",
 
   `
@@ -983,6 +991,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cell_organelles",
   "Ribosomes",
 
   `
@@ -1094,6 +1103,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cellular_organisation",
   "How Organelles Work Together",
 
   `
@@ -1245,6 +1255,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cell_organelles",
   "Cell Wall",
 
   `
@@ -1376,6 +1387,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "chloroplasts_and_cells",
   "Chloroplasts",
 
   `
@@ -1498,6 +1510,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cell_organelles",
   "Large Permanent Vacuole",
 
   `
@@ -1620,6 +1633,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cell_organelles",
   "Structures Shared by Plant and Animal Cells",
 
   `
@@ -1764,6 +1778,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "plant_vs_animal_cells",
   "Plant Cell vs Animal Cell",
 
   `
@@ -1923,6 +1938,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "plant_vs_animal_cells",
   "Explaining Cell Differences",
 
   `
@@ -2068,6 +2084,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cellular_organisation",
   "What Is Cell Specialisation?",
 
   `
@@ -2198,6 +2215,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cellular_organisation",
   "Why Cells Specialise",
 
   `
@@ -2338,6 +2356,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "red_cells_and_blood_groups",
   "Red Blood Cell",
 
   `
@@ -2477,6 +2496,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "cell_specialisation_intro",
   "Root Hair Cell",
 
   `
@@ -2625,6 +2645,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "chloroplasts_and_cells",
   "Palisade Mesophyll Cell",
   `
 <h2>Palisade Mesophyll Cell</h2>
@@ -2709,6 +2730,7 @@ light energy and carry out photosynthesis efficiently.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_specialisation_intro",
   "Guard Cells",
   `
 <h2>Guard Cells</h2>
@@ -2802,6 +2824,7 @@ become swollen.</p>
 add(
   "biology",
   "transport_in_plants",
+  "plant_transport_need_and_xylem",
   "Xylem Vessel",
   `
 <h2>Xylem Vessel</h2>
@@ -2888,6 +2911,7 @@ vessels from collapsing.</p>
 add(
   "biology",
   "transport_in_plants",
+  "phloem_structure_and_function",
   "Phloem Sieve Tube",
   `
 <h2>Phloem Sieve Tube</h2>
@@ -2973,6 +2997,7 @@ transports the sucrose to the roots?</p>
 add(
   "biology",
   "cell_biology",
+  "cell_specialisation_intro",
   "Ciliated Cell",
   `
 <h2>Ciliated Cell</h2>
@@ -3060,6 +3085,7 @@ microorganisms towards the throat.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_specialisation_intro",
   "Goblet Cell",
   `
 <h2>Goblet Cell</h2>
@@ -3148,6 +3174,7 @@ microorganisms, helping protect the respiratory tract.</p>
 add(
   "biology",
   "cell_biology",
+  "specialised_cells_plant_animal",
   "Sperm Cell",
   `
 <h2>Sperm Cell</h2>
@@ -3231,6 +3258,7 @@ of the sperm cell.</p>
 add(
   "biology",
   "cell_biology",
+  "specialised_cells_plant_animal",
   "Egg Cell",
   `
 <h2>Egg Cell</h2>
@@ -3317,6 +3345,7 @@ fertilisation.</p>
 add(
   "biology",
   "cell_biology",
+  "specialised_cells_plant_animal",
   "Nerve Cell",
   `
 <h2>Nerve Cell</h2>
@@ -3404,6 +3433,7 @@ distant parts of the nervous system.</p>
 add(
   "biology",
   "cell_biology",
+  "specialised_cells_plant_animal",
   "Muscle Cell",
   `
 <h2>Muscle Cell</h2>
@@ -3487,6 +3517,7 @@ energy required for repeated contraction.</p>
 add(
   "biology",
   "transport_in_animals",
+  "vessel_comparisons",
   "White Blood Cell",
   `
 <h2>White Blood Cell</h2>
@@ -3573,6 +3604,7 @@ towards sites of infection and respond to pathogens.</p>
 add(
   "biology",
   "transport_in_animals",
+  "red_cells_and_blood_groups",
   "Red Blood Cell",
   `
 <h2>Red Blood Cell</h2>
@@ -3664,6 +3696,7 @@ allowing efficient movement of oxygen into and out of the cell.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_specialisation_intro",
   "Root Hair Cell",
   `
 <h2>Root Hair Cell</h2>
@@ -3750,6 +3783,7 @@ cell's ability to absorb water and mineral ions.</p>
 add(
   "biology",
   "photosynthesis",
+  "chloroplasts_and_cells",
   "Palisade Cell Adaptation",
   `
 <h2>Palisade Cell Adaptation</h2>
@@ -3834,6 +3868,7 @@ energy is available.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_adaptations_part_1",
   "Root Hair Cell Adaptation",
   `
 <h2>Root Hair Cell Adaptation</h2>
@@ -3923,6 +3958,7 @@ against their concentration gradient using energy.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_adaptations_part_1",
   "Ciliated Cell Adaptation",
   `
 <h2>Ciliated Cell Adaptation</h2>
@@ -4004,6 +4040,7 @@ which can increase infection risk.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_adaptations_part_1",
   "Sperm Cell Adaptation",
   `
 <h2>Sperm Cell Adaptation</h2>
@@ -4096,6 +4133,7 @@ the egg because the flagellum is needed for swimming.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_adaptations_part_1",
   "Egg Cell Adaptation",
   `
 <h2>Egg Cell Adaptation</h2>
@@ -4183,6 +4221,7 @@ the early stages following fertilisation.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_adaptations_part_1",
   "Muscle Cell Adaptation",
   `
 <h2>Muscle Cell Adaptation</h2>
@@ -4269,6 +4308,7 @@ provide enough usable energy for repeated contraction.</p>
 add(
   "biology",
   "cell_biology",
+  "levels_of_organisation",
   "Cell Differentiation",
   `
 <h2>Cell Differentiation</h2>
@@ -4356,6 +4396,7 @@ causing the cells to develop different structures and functions.</p>
 add(
   "biology",
   "cell_biology",
+  "levels_of_organisation",
   "Tissue",
   `
 <h2>Tissue</h2>
@@ -4438,6 +4479,7 @@ together. What level of organisation do these cells form?</p>
 add(
   "biology",
   "cell_biology",
+  "levels_of_organisation",
   "Organ",
   `
 <h2>Organ</h2>
@@ -4520,6 +4562,7 @@ tissues working together to perform a specific function.</p>
 add(
   "biology",
   "cell_biology",
+  "levels_of_organisation",
   "Organ System",
   `
 <h2>Organ System</h2>
@@ -4606,6 +4649,7 @@ together to process food and absorb nutrients.</p>
 add(
   "biology",
   "cell_biology",
+  "levels_of_organisation",
   "Levels of Organisation",
   `
 <h2>Levels of Organisation</h2>
@@ -4694,6 +4738,7 @@ Muscle cell → Muscle tissue → Heart → Circulatory system
 add(
   "biology",
   "cell_biology",
+  "tissue_and_organ_specialisation",
   "Plant Tissue",
   `
 <h2>Plant Tissue</h2>
@@ -4778,6 +4823,7 @@ structures work together to perform transport.</p>
 add(
   "biology",
   "cell_biology",
+  "tissue_and_organ_specialisation",
   "Animal Tissue",
   `
 <h2>Animal Tissue</h2>
@@ -4858,6 +4904,7 @@ and produce movement.</p>
 add(
   "biology",
   "cell_biology",
+  "tissue_and_organ_specialisation",
   "Tissue Specialisation",
   `
 <h2>Tissue Specialisation</h2>
@@ -4947,6 +4994,7 @@ less efficient at carrying out the different functions needed for survival.</p>
 add(
   "biology",
   "cell_biology",
+  "tissue_and_organ_specialisation",
   "Organ Specialisation",
   `
 <h2>Organ Specialisation</h2>
@@ -5032,6 +5080,7 @@ together within it to perform its functions.</p>
 add(
   "biology",
   "cell_biology",
+  "gamete_cells_comparison",
   "Plant Organ Systems",
   `
 <h2>Plant Organ Systems</h2>
@@ -5118,6 +5167,7 @@ which can eventually interfere with normal leaf function.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_cycle_and_dna",
   "Why Cells Divide",
   `
 <h2>Why Cells Divide</h2>
@@ -5211,6 +5261,7 @@ organism to grow and develop.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_cycle_and_dna",
   "The Cell Cycle",
   `
 <h2>The Cell Cycle</h2>
@@ -5296,6 +5347,7 @@ complete set of genetic information.</p>
 add(
   "biology",
   "cell_biology",
+  "cell_cycle_and_dna",
   "Chromosomes",
   `
 <h2>Chromosomes</h2>
@@ -5381,6 +5433,7 @@ human body cell?</p>
 add(
   "biology",
   "cell_biology",
+  "cell_cycle_and_dna",
   "DNA",
   `
 <h2>DNA</h2>
@@ -5468,6 +5521,7 @@ genetic information required for their functions.</p>
 add(
   "biology",
   "cell_biology",
+  "mitosis_stages",
   "DNA Replication",
   `
 <h2>DNA Replication</h2>
@@ -5555,6 +5609,7 @@ be distributed to the new nuclei during cell division.</p>
 add(
   "biology",
   "cell_biology",
+  "mitosis_stages",
   "Mitosis",
   `
 <h2>Mitosis</h2>
@@ -5640,6 +5695,7 @@ chromosomes should each new nucleus normally receive?</p>
 add(
   "biology",
   "cell_biology",
+  "mitosis_stages",
   "Prophase",
   `
 <h2>Prophase</h2>
@@ -5721,6 +5777,7 @@ that it can be moved and separated more effectively.</p>
 add(
   "biology",
   "cell_biology",
+  "mitosis_stages",
   "Metaphase",
   `
 <h2>Metaphase</h2>
@@ -5801,6 +5858,7 @@ lined up near the middle of the cell.</p>
 add(
   "biology",
   "cell_biology",
+  "mitosis_stages",
   "Anaphase",
   `
 <h2>Anaphase</h2>
@@ -5882,6 +5940,7 @@ towards opposite poles of the cell.</p>
 add(
   "biology",
   "cell_biology",
+  "mitosis_stages",
   "Telophase",
   `
 <h2>Telophase</h2>
@@ -5963,6 +6022,7 @@ telophase forms new nuclei around the separated chromosome sets.</p>
 add(
   "biology",
   "cell_biology",
+  "cytokinesis_and_cell_division",
   "Cytokinesis",
   `
 <h2>Cytokinesis</h2>
@@ -6031,6 +6091,7 @@ new cell wall and separates the two daughter cells.
 add(
   "biology",
   "cell_biology",
+  "cytokinesis_and_cell_division",
   "Cytokinesis in Animal Cells",
   `
 <h2>Cytokinesis in Animal Cells</h2>
@@ -6103,6 +6164,7 @@ of an animal cell.
 add(
   "biology",
   "cell_biology",
+  "cytokinesis_and_cell_division",
   "Cytokinesis in Plant Cells",
   `
 <h2>Cytokinesis in Plant Cells</h2>
@@ -6172,6 +6234,7 @@ A cell plate therefore develops between the two daughter cells.
 add(
   "biology",
   "cell_biology",
+  "cytokinesis_and_cell_division",
   "Mitosis as a Complete Sequence",
   `
 <h2>Mitosis as a Complete Sequence</h2>
@@ -6236,6 +6299,7 @@ Prophase → Metaphase → Anaphase → Telophase → Cytokinesis
 add(
   "biology",
   "cell_biology",
+  "cytokinesis_and_cell_division",
   "Mitosis and Chromosome Number",
   `
 <h2>Mitosis and Chromosome Number</h2>
@@ -6305,6 +6369,7 @@ number is reduced.
 add(
   "biology",
   "cell_biology",
+  "mitosis_significance",
   "Mitosis and Growth",
   `
 <h2>Mitosis and Growth</h2>
@@ -6375,6 +6440,7 @@ Repeated mitotic divisions can increase the number of cells available for growth
 add(
   "biology",
   "cell_biology",
+  "mitosis_significance",
   "Mitosis and Tissue Repair",
   `
 <h2>Mitosis and Tissue Repair</h2>
@@ -6449,6 +6515,7 @@ Mitosis supplies new cells needed for the maintenance and repair of many tissues
 add(
   "biology",
   "cell_biology",
+  "mitosis_significance",
   "Mitosis and Replacement of Worn-Out Cells",
   `
 <h2>Mitosis and Replacement of Worn-Out Cells</h2>
@@ -6525,6 +6592,7 @@ by the needs and signals of the tissue.
 add(
   "biology",
   "cell_biology",
+  "plant_vs_animal_cells",
   "Growth by Increase in Cell Number",
   `
 <h2>Growth by Increase in Cell Number</h2>
@@ -6609,6 +6677,7 @@ Repeated mitosis can cause cell number to increase rapidly.
 add(
   "biology",
   "cell_biology",
+  "meiosis_and_variation",
   "Why Mitosis Produces Genetically Similar Cells",
   `
 <h2>Why Mitosis Produces Genetically Similar Cells</h2>
@@ -6692,6 +6761,7 @@ differential gene expression.
 add(
   "biology",
   "cell_biology",
+  "mitosis_significance",
   "Mitosis in Growing Plant Regions",
   `
 <h2>Mitosis in Growing Plant Regions</h2>
@@ -6770,6 +6840,7 @@ and specialise.
 add(
   "biology",
   "cell_biology",
+  "meiosis_phase_2",
   "What Is Meiosis?",
   `
 <h2>What Is Meiosis?</h2>
@@ -6859,6 +6930,7 @@ How many chromosomes should each resulting gamete normally contain?</p>
 add(
   "biology",
   "cell_biology",
+  "meiosis_phase_2",
   "Diploid and Haploid Cells",
   `
 <h2>Diploid and Haploid Cells</h2>
@@ -6941,6 +7013,7 @@ chromosome sets join to restore the diploid number.
 add(
   "biology",
   "cell_biology",
+  "meiosis_phase_2",
   "Homologous Chromosomes",
   `
 <h2>Homologous Chromosomes</h2>
@@ -7023,6 +7096,7 @@ separation contributes to reducing the chromosome number.
 add(
   "biology",
   "cell_biology",
+  "meiosis_outcomes_and_comparison",
   "Meiosis I",
   `
 <h2>Meiosis I</h2>
@@ -7106,6 +7180,7 @@ Meiosis I separates <b>homologous chromosomes</b>, while Meiosis II later separa
 add(
   "biology",
   "cell_biology",
+  "meiosis_prophase_to_anaphase_1",
   "Prophase I",
   `
 <h2>Prophase I</h2>
@@ -7181,6 +7256,7 @@ Prophase I prepares homologous chromosomes for their separation in Meiosis I.
 add(
   "biology",
   "cell_biology",
+  "meiosis_prophase_to_anaphase_1",
   "Metaphase I",
   `
 <h2>Metaphase I</h2>
@@ -7258,6 +7334,7 @@ Anaphase I.
 add(
   "biology",
   "cell_biology",
+  "meiosis_prophase_to_anaphase_1",
   "Anaphase I",
   `
 <h2>Anaphase I</h2>
@@ -7326,6 +7403,7 @@ opposite poles while sister chromatids remain attached. Which stage is this?</p>
 add(
   "biology",
   "cell_biology",
+  "meiosis_prophase_to_anaphase_1",
   "Telophase I",
   `
 <h2>Telophase I</h2>
@@ -7404,6 +7482,7 @@ be separated.
 add(
   "biology",
   "cell_biology",
+  "meiosis_outcomes_and_comparison",
   "Meiosis I and Chromosome Number",
   `
 <h2>Meiosis I and Chromosome Number</h2>
@@ -7479,6 +7558,7 @@ Meiosis I reduces chromosome number because homologous pairs are separated.
 add(
   "biology",
   "cell_biology",
+  "meiosis_outcomes_and_comparison",
   "Mitosis Compared with Meiosis I",
   `
 <h2>Mitosis Compared with Meiosis I</h2>
@@ -7548,6 +7628,7 @@ opposite poles. Is this mitosis or Meiosis I?</p>
 add(
   "biology",
   "cell_biology",
+  "meiosis_outcomes_and_comparison",
   "What Is Meiosis II?",
   `
 <h2>What Is Meiosis II?</h2>
@@ -7624,6 +7705,7 @@ Meiosis II separates those sister chromatids.
 add(
   "biology",
   "cell_biology",
+  "meiosis_prophase_to_anaphase_1",
   "Prophase II",
   `
 <h2>Prophase II</h2>
@@ -7693,6 +7775,7 @@ Prophase II prepares the chromosomes for sister-chromatid separation.
 add(
   "biology",
   "cell_biology",
+  "meiosis_prophase_to_anaphase_1",
   "Metaphase II",
   `
 <h2>Metaphase II</h2>
@@ -7773,6 +7856,7 @@ Metaphase II = chromosomes at the equator before sister chromatids separate.
 add(
   "biology",
   "cell_biology",
+  "meiosis_phase_2",
   "Anaphase II",
   `
 <h2>Anaphase II</h2>
@@ -7841,6 +7925,7 @@ Anaphase II separates sister chromatids.
 add(
   "biology",
   "cell_biology",
+  "meiosis_phase_2",
   "Telophase II",
   `
 <h2>Telophase II</h2>
@@ -7907,6 +7992,7 @@ Cytokinesis separates the cytoplasm, leading to the formation of four cells.
 add(
   "biology",
   "cell_biology",
+  "meiosis_outcomes_and_comparison",
   "Cytokinesis After Meiosis II",
   `
 <h2>Cytokinesis After Meiosis II</h2>
@@ -7984,6 +8070,7 @@ four cells.
 add(
   "biology",
   "cell_biology",
+  "meiosis_and_variation",
   "Four Haploid Cells",
   `
 <h2>Four Haploid Cells</h2>
@@ -8059,6 +8146,7 @@ One diploid starting cell → four haploid cells.
 add(
   "biology",
   "cell_biology",
+  "meiosis_and_variation",
   "Meiosis as a Complete Sequence",
   `
 <h2>Meiosis as a Complete Sequence</h2>
@@ -8140,6 +8228,7 @@ homologous pairs line up.</p>
 add(
   "biology",
   "cell_biology",
+  "meiosis_and_variation",
   "Mitosis and Meiosis: Final Comparison",
   `
 <h2>Mitosis and Meiosis: Final Comparison</h2>
@@ -8243,6 +8332,7 @@ haploid cells. Is it mitosis or meiosis?</p>
 add(
   "biology",
   "genetics",
+  "gametes_and_fertilisation",
   "What Are Gametes?",
   `
 <h2>What Are Gametes?</h2>
@@ -8315,6 +8405,7 @@ Gametes carry one chromosome set into sexual reproduction.
 add(
   "biology",
   "cell_biology",
+  "gamete_cells_comparison",
   "Sperm Cell Structure",
   `
 <h2>Sperm Cell Structure</h2>
@@ -8387,6 +8478,7 @@ Haploid nucleus → carries one set of chromosomes.</p>
 add(
   "biology",
   "cell_biology",
+  "gamete_cells_comparison",
   "Sperm Cell Adaptations",
   `
 <h2>Sperm Cell Adaptations</h2>
@@ -8457,6 +8549,7 @@ the male genetic material.
 add(
   "biology",
   "cell_biology",
+  "gamete_cells_comparison",
   "Egg Cell Structure",
   `
 <h2>Egg Cell Structure</h2>
@@ -8527,6 +8620,7 @@ for the early stages after fertilisation.</p>
 add(
   "biology",
   "cell_biology",
+  "gamete_cells_comparison",
   "Egg Cell Adaptations",
   `
 <h2>Egg Cell Adaptations</h2>
@@ -8599,6 +8693,7 @@ the early stages after fertilisation.
 add(
   "biology",
   "cell_biology",
+  "gamete_cells_comparison",
   "Sperm and Egg Comparison",
   `
 <h2>Sperm and Egg Comparison</h2>
@@ -8669,6 +8764,7 @@ resources for early development.
 add(
   "biology",
   "genetics",
+  "gametes_and_fertilisation",
   "What Is Fertilisation?",
   `
 <h2>What Is Fertilisation?</h2>
@@ -8744,6 +8840,7 @@ Haploid + haploid → diploid.
 add(
   "biology",
   "genetics",
+  "gametes_and_fertilisation",
   "The Zygote",
   `
 <h2>The Zygote</h2>
@@ -8817,6 +8914,7 @@ of cells during development.
 add(
   "biology",
   "genetics",
+  "gametes_and_fertilisation",
   "Fertilisation Restores Diploid Chromosome Number",
   `
 <h2>Fertilisation Restores Diploid Chromosome Number</h2>
@@ -8894,6 +8992,7 @@ fertilisation.
 add(
   "biology",
   "genetics",
+  "gametes_and_fertilisation",
   "From Meiosis to a New Organism",
   `
 <h2>From Meiosis to a New Organism</h2>
@@ -8969,6 +9068,7 @@ cell number during growth and development.
 add(
   "biology",
   "cell_biology",
+  "meiosis_and_variation",
   "Why Offspring Are Not Genetically Identical",
   `
   <h2>Why Offspring Are Not Genetically Identical</h2>
@@ -9074,6 +9174,7 @@ add(
 add(
   "biology",
   "genetics",
+  "fossil_record_and_anatomy",
   "Variation in Sexual Reproduction",
   `
   <h2>Variation in Sexual Reproduction</h2>
@@ -9191,6 +9292,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "meiosis_and_variation",
   "Different Gametes Carry Different Genetic Combinations",
   `
   <h2>Different Gametes Carry Different Genetic Combinations</h2>
@@ -9307,6 +9409,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "genes_and_inheritance_intro",
   "Independent Assortment of Chromosomes",
   `
   <h2>Independent Assortment of Chromosomes</h2>
@@ -9425,6 +9528,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "meiosis_phase_2",
   "Random Orientation of Homologous Chromosome Pairs",
   `
   <h2>Random Orientation of Homologous Chromosome Pairs</h2>
@@ -9537,6 +9641,7 @@ add(
 add(
   "biology",
   "genetics",
+  "sources_of_genetic_variation",
   "Genetic Variation from Fertilisation",
   `
   <h2>Genetic Variation from Fertilisation</h2>
@@ -9642,6 +9747,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "genes_and_inheritance_intro",
   "Why Siblings Can Differ Genetically",
   `
   <h2>Why Siblings Can Differ Genetically</h2>
@@ -9759,6 +9865,7 @@ add(
 add(
   "biology",
   "genetics",
+  "sources_of_genetic_variation",
   "Meiosis and Genetic Variation",
   `
   <h2>Meiosis and Genetic Variation</h2>
@@ -9858,6 +9965,7 @@ add(
 add(
   "biology",
   "genetics",
+  "sources_of_genetic_variation",
   "Genetic Variation and Environmental Variation",
   `
   <h2>Genetic Variation and Environmental Variation</h2>
@@ -9967,6 +10075,7 @@ add(
 add(
   "biology",
   "genetics",
+  "sources_of_genetic_variation",
   "Inherited Variation and Acquired Differences",
   `
   <h2>Inherited Variation and Acquired Differences</h2>
@@ -10083,6 +10192,7 @@ add(
 add(
   "biology",
   "genetics",
+  "sources_of_genetic_variation",
   "Sources of Genetic Variation",
   `
   <h2>Sources of Genetic Variation</h2>
@@ -10198,6 +10308,7 @@ add(
 add(
   "biology",
   "genetics",
+  "inheritance_foundations",
   "What Is Inheritance",
   `
   <h2>What Is Inheritance?</h2>
@@ -10301,6 +10412,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "additional_topics_part_1",
   "What Is a Gene",
   `
   <h2>What Is a Gene?</h2>
@@ -10405,6 +10517,7 @@ add(
 add(
   "biology",
   "genetics",
+  "inheritance_foundations",
   "What Is an Allele",
   `
   <h2>What Is an Allele?</h2>
@@ -10511,6 +10624,7 @@ add(
 add(
   "biology",
   "genetics",
+  "inheritance_foundations",
   "Dominant Alleles",
   `
   <h2>Dominant Alleles</h2>
@@ -10624,6 +10738,7 @@ add(
 add(
   "biology",
   "genetics",
+  "inheritance_foundations",
   "Recessive Alleles",
   `
   <h2>Recessive Alleles</h2>
@@ -10739,6 +10854,7 @@ add(
 add(
   "biology",
   "genetics",
+  "inheritance_foundations",
   "Genotype",
   `
   <h2>Genotype</h2>
@@ -10862,6 +10978,7 @@ add(
 add(
   "biology",
   "genetics",
+  "zygosity_and_alleles",
   "Phenotype",
   `
   <h2>Phenotype</h2>
@@ -10974,6 +11091,7 @@ add(
 add(
   "biology",
   "genetics",
+  "zygosity_and_alleles",
   "Homozygous Genotype",
   `
   <h2>Homozygous Genotype</h2>
@@ -11081,6 +11199,7 @@ add(
 add(
   "biology",
   "genetics",
+  "zygosity_and_alleles",
   "Heterozygous Genotype",
   `
   <h2>Heterozygous Genotype</h2>
@@ -11186,6 +11305,7 @@ add(
 add(
   "biology",
   "genetics",
+  "zygosity_and_alleles",
   "Homozygous Dominant and Homozygous Recessive",
   `
   <h2>Homozygous Dominant and Homozygous Recessive</h2>
@@ -11303,6 +11423,7 @@ add(
 add(
   "biology",
   "genetics",
+  "zygosity_and_alleles",
   "Carrier of a Recessive Allele",
   `
   <h2>Carrier of a Recessive Allele</h2>
@@ -11410,6 +11531,7 @@ add(
 add(
   "biology",
   "genetics",
+  "monohybrid_cross_basics",
   "What Is a Monohybrid Cross",
   `
   <h2>What Is a Monohybrid Cross?</h2>
@@ -11519,6 +11641,7 @@ add(
 add(
   "biology",
   "genetics",
+  "monohybrid_cross_basics",
   "Determining the Genotypes of Parents",
   `
   <h2>Determining the Genotypes of Parents</h2>
@@ -11642,6 +11765,7 @@ add(
 add(
   "biology",
   "genetics",
+  "monohybrid_cross_basics",
   "Finding the Gametes of a Parent",
   `
   <h2>Finding the Gametes of a Parent</h2>
@@ -11777,6 +11901,7 @@ add(
 add(
   "biology",
   "genetics",
+  "monohybrid_cross_basics",
   "Why Alleles Separate During Meiosis",
   `
   <h2>Why Alleles Separate During Meiosis</h2>
@@ -11899,6 +12024,7 @@ add(
 add(
   "biology",
   "genetics",
+  "monohybrid_cross_basics",
   "Building a Punnett Square",
   `
   <h2>Building a Punnett Square</h2>
@@ -12033,6 +12159,7 @@ add(
 add(
   "biology",
   "genetics",
+  "ratios_and_homozygous_crosses",
   "Completing a Punnett Square",
   `
   <h2>Completing a Punnett Square</h2>
@@ -12156,6 +12283,7 @@ add(
 add(
   "biology",
   "genetics",
+  "ratios_and_homozygous_crosses",
   "Genotypic Ratio",
   `
   <h2>Genotypic Ratio</h2>
@@ -12269,6 +12397,7 @@ add(
 add(
   "biology",
   "genetics",
+  "causes_and_types_of_variation",
   "Phenotypic Ratio",
   `
   <h2>Phenotypic Ratio</h2>
@@ -12404,6 +12533,7 @@ add(
 add(
   "biology",
   "genetics",
+  "ratios_and_homozygous_crosses",
   "Probability in Genetic Crosses",
   `
   <h2>Probability in Genetic Crosses</h2>
@@ -12527,6 +12657,7 @@ add(
 add(
   "biology",
   "genetics",
+  "ratios_and_homozygous_crosses",
   "A Complete Monohybrid Cross",
   `
   <h2>A Complete Monohybrid Cross</h2>
@@ -12669,6 +12800,7 @@ add(
 add(
   "biology",
   "genetics",
+  "ratios_and_homozygous_crosses",
   "Cross Between Two Homozygous Dominant Parents",
   `
   <h2>Cross Between Two Homozygous Dominant Parents</h2>
@@ -12775,6 +12907,7 @@ add(
 add(
   "biology",
   "genetics",
+  "heterozygous_crosses_and_probability",
   "Cross Between Two Homozygous Recessive Parents",
   `
   <h2>Cross Between Two Homozygous Recessive Parents</h2>
@@ -12879,6 +13012,7 @@ add(
 add(
   "biology",
   "genetics",
+  "heterozygous_crosses_and_probability",
   "Cross Between Homozygous Dominant and Homozygous Recessive Parents",
   `
   <h2>Cross Between Homozygous Dominant and Homozygous Recessive Parents</h2>
@@ -13006,6 +13140,7 @@ add(
 add(
   "biology",
   "genetics",
+  "heterozygous_crosses_and_probability",
   "Cross Between Homozygous Dominant and Heterozygous Parents",
   `
   <h2>Cross Between Homozygous Dominant and Heterozygous Parents</h2>
@@ -13133,6 +13268,7 @@ add(
 add(
   "biology",
   "genetics",
+  "heterozygous_crosses_and_probability",
   "Cross Between Homozygous Recessive and Heterozygous Parents",
   `
   <h2>Cross Between Homozygous Recessive and Heterozygous Parents</h2>
@@ -13255,6 +13391,7 @@ add(
 add(
   "biology",
   "genetics",
+  "heterozygous_crosses_and_probability",
   "Cross Between Homozygous Dominant and Heterozygous Parents: Probability",
   `
   <h2>Probability in AA × Aa</h2>
@@ -13382,6 +13519,7 @@ add(
 add(
   "biology",
   "genetics",
+  "test_crosses_and_problem_solving",
   "Cross Between Two Homozygous Parents: Comparing Outcomes",
   `
   <h2>Comparing Crosses Between Homozygous Parents</h2>
@@ -13510,6 +13648,7 @@ add(
 add(
   "biology",
   "genetics",
+  "test_crosses_and_problem_solving",
   "Test Cross",
   `
   <h2>Test Cross</h2>
@@ -13637,6 +13776,7 @@ add(
 add(
   "biology",
   "genetics",
+  "test_crosses_and_problem_solving",
   "Interpreting a Test Cross",
   `
   <h2>Interpreting a Test Cross</h2>
@@ -13763,6 +13903,7 @@ add(
 add(
   "biology",
   "genetics",
+  "test_crosses_and_problem_solving",
   "Solving a Monohybrid Cross from a Written Question",
   `
   <h2>Solving a Monohybrid Cross from a Written Question</h2>
@@ -13904,6 +14045,7 @@ add(
 add(
   "biology",
   "genetics",
+  "test_crosses_and_problem_solving",
   "Why Some Inheritance Patterns Differ from Complete Dominance",
   `
   <h2>Why Some Inheritance Patterns Differ from Complete Dominance</h2>
@@ -14006,6 +14148,7 @@ add(
 add(
   "biology",
   "genetics",
+  "incomplete_dominance_and_codominance",
   "Incomplete Dominance",
   `
   <h2>Incomplete Dominance</h2>
@@ -14107,6 +14250,7 @@ add(
 add(
   "biology",
   "genetics",
+  "incomplete_dominance_and_codominance",
   "Solving an Incomplete Dominance Cross",
   `
   <h2>Solving an Incomplete Dominance Cross</h2>
@@ -14234,6 +14378,7 @@ add(
 add(
   "biology",
   "genetics",
+  "incomplete_dominance_and_codominance",
   "Incomplete Dominance Ratios",
   `
   <h2>Incomplete Dominance Ratios</h2>
@@ -14372,6 +14517,7 @@ add(
 add(
   "biology",
   "genetics",
+  "incomplete_dominance_and_codominance",
   "Codominance",
   `
   <h2>Codominance</h2>
@@ -14472,6 +14618,7 @@ add(
 add(
   "biology",
   "genetics",
+  "incomplete_dominance_and_codominance",
   "Solving a Codominance Cross",
   `
   <h2>Solving a Codominance Cross</h2>
@@ -14592,6 +14739,7 @@ add(
 add(
   "biology",
   "genetics",
+  "multiple_alleles_and_rhesus",
   "Incomplete Dominance Compared with Codominance",
   `
   <h2>Incomplete Dominance Compared with Codominance</h2>
@@ -14708,6 +14856,7 @@ add(
 add(
   "biology",
   "genetics",
+  "multiple_alleles_and_rhesus",
   "Multiple Alleles",
   `
   <h2>Multiple Alleles</h2>
@@ -14809,6 +14958,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "red_cells_and_blood_groups",
   "ABO Blood Group Genotypes",
   `
   <h2>ABO Blood Group Genotypes</h2>
@@ -14932,6 +15082,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "red_cells_and_blood_groups",
   "Solving an ABO Blood Group Inheritance Problem",
   `
   <h2>Solving an ABO Blood Group Inheritance Problem</h2>
@@ -15059,6 +15210,7 @@ add(
 add(
   "biology",
   "genetics",
+  "multiple_alleles_and_rhesus",
   "The Rhesus Factor",
   `
   <h2>The Rhesus Factor</h2>
@@ -15158,6 +15310,7 @@ add(
 add(
   "biology",
   "genetics",
+  "multiple_alleles_and_rhesus",
   "Rhesus Factor Genotypes",
   `
   <h2>Rhesus Factor Genotypes</h2>
@@ -15258,6 +15411,7 @@ add(
 add(
   "biology",
   "genetics",
+  "multiple_alleles_and_rhesus",
   "Rhesus Factor Cross: RR × rr",
   `
   <h2>Rhesus Factor Cross: RR × rr</h2>
@@ -15351,6 +15505,7 @@ add(
 add(
   "biology",
   "genetics",
+  "genetics_and_evolution_synthesis",
   "Rhesus Factor Cross: Rr × rr",
   `
   <h2>Rhesus Factor Cross: Rr × rr</h2>
@@ -15462,6 +15617,7 @@ add(
 add(
   "biology",
   "genetics",
+  "blood_groups_and_molecular_genetics",
   "Determining an Unknown Rhesus Genotype",
   `
   <h2>Determining an Unknown Rhesus Genotype</h2>
@@ -15553,6 +15709,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "red_cells_and_blood_groups",
   "ABO Blood Group and Rhesus Factor Are Separate",
   `
   <h2>ABO Blood Group and Rhesus Factor Are Separate</h2>
@@ -15649,6 +15806,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "red_cells_and_blood_groups",
   "Why Blood Groups Matter in Transfusion",
   `
   <h2>Why Blood Groups Matter in Transfusion</h2>
@@ -15734,6 +15892,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "vessel_comparisons",
   "ABO Antigens and Antibodies",
   `
   <h2>ABO Antigens and Antibodies</h2>
@@ -15824,6 +15983,7 @@ add(
 add(
   "biology",
   "genetics",
+  "blood_groups_and_molecular_genetics",
   "ABO Red Cell Compatibility",
   `
   <h2>ABO Red Cell Compatibility</h2>
@@ -15914,6 +16074,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "red_cells_and_blood_groups",
   "Reading a Blood Transfusion Compatibility Problem",
   `
   <h2>Reading a Blood Transfusion Compatibility Problem</h2>
@@ -16004,6 +16165,7 @@ add(
 add(
   "biology",
   "genetics",
+  "causes_and_types_of_variation",
   "What Is Variation?",
   `
   <h2>What Is Variation?</h2>
@@ -16095,6 +16257,7 @@ add(
 add(
   "biology",
   "genetics",
+  "causes_and_types_of_variation",
   "Genetic Causes of Variation",
   `
   <h2>Genetic Causes of Variation</h2>
@@ -16199,6 +16362,7 @@ add(
 add(
   "biology",
   "genetics",
+  "causes_and_types_of_variation",
   "Environmental Causes of Variation",
   `
   <h2>Environmental Causes of Variation</h2>
@@ -16292,6 +16456,7 @@ add(
 add(
   "biology",
   "genetics",
+  "causes_and_types_of_variation",
   "Genetic and Environmental Variation Together",
   `
   <h2>Genetic and Environmental Variation Together</h2>
@@ -16383,6 +16548,7 @@ add(
 add(
   "biology",
   "genetics",
+  "causes_and_types_of_variation",
   "Continuous Variation",
   `
   <h2>Continuous Variation</h2>
@@ -16473,6 +16639,7 @@ add(
 add(
   "biology",
   "genetics",
+  "mutations_and_genetic_diversity",
   "Discontinuous Variation",
   `
   <h2>Discontinuous Variation</h2>
@@ -16565,6 +16732,7 @@ add(
 add(
   "biology",
   "genetics",
+  "mutations_and_genetic_diversity",
   "Comparing Continuous and Discontinuous Variation",
   `
   <h2>Comparing Continuous and Discontinuous Variation</h2>
@@ -16667,6 +16835,7 @@ add(
 add(
   "biology",
   "genetics",
+  "mutations_and_genetic_diversity",
   "What Is a Mutation?",
   `
   <h2>What Is a Mutation?</h2>
@@ -16764,6 +16933,7 @@ add(
 add(
   "biology",
   "genetics",
+  "mutations_and_genetic_diversity",
   "Causes of Mutation",
   `
   <h2>Causes of Mutation</h2>
@@ -16844,6 +17014,7 @@ add(
 add(
   "biology",
   "genetics",
+  "natural_selection_principles",
   "Effects of Mutations",
   `
   <h2>Effects of Mutations</h2>
@@ -16942,6 +17113,7 @@ add(
 add(
   "biology",
   "genetics",
+  "natural_selection_principles",
   "Mutations and Genetic Variation",
   `
   <h2>Mutations and Genetic Variation</h2>
@@ -17032,6 +17204,7 @@ add(
 add(
   "biology",
   "genetics",
+  "natural_selection_principles",
   "What Is Natural Selection?",
   `
   <h2>What Is Natural Selection?</h2>
@@ -17126,6 +17299,7 @@ add(
 add(
   "biology",
   "genetics",
+  "natural_selection_principles",
   "Selection Pressure",
   `
   <h2>Selection Pressure</h2>
@@ -17217,6 +17391,7 @@ add(
 add(
   "biology",
   "genetics",
+  "natural_selection_principles",
   "Variation and Survival",
   `
   <h2>Variation and Survival</h2>
@@ -17311,6 +17486,7 @@ add(
 add(
   "biology",
   "genetics",
+  "adaptation_and_antibiotic_resistance",
   "Survival of Better-Adapted Individuals",
   `
   <h2>Survival of Better-Adapted Individuals</h2>
@@ -17397,6 +17573,7 @@ add(
 add(
   "biology",
   "genetics",
+  "adaptation_and_antibiotic_resistance",
   "Reproduction and Natural Selection",
   `
   <h2>Reproduction and Natural Selection</h2>
@@ -17490,6 +17667,7 @@ add(
 add(
   "biology",
   "genetics",
+  "blood_groups_and_molecular_genetics",
   "How Advantageous Alleles Become More Common",
   `
   <h2>How Advantageous Alleles Become More Common</h2>
@@ -17583,6 +17761,7 @@ add(
 add(
   "biology",
   "genetics",
+  "adaptation_and_antibiotic_resistance",
   "Natural Selection in Bacteria",
   `
   <h2>Natural Selection in Bacteria</h2>
@@ -17679,6 +17858,7 @@ add(
 add(
   "biology",
   "ecology",
+  "quadrat_and_mark_recapture",
   "Why Antibiotics Do Not Cure Viral Infections",
   `
   <h2>Why Antibiotics Do Not Cure Viral Infections</h2>
@@ -17758,6 +17938,7 @@ add(
 add(
   "biology",
   "genetics",
+  "adaptation_and_antibiotic_resistance",
   "Adaptation Through Natural Selection",
   `
   <h2>Adaptation Through Natural Selection</h2>
@@ -17855,6 +18036,7 @@ add(
 add(
   "biology",
   "genetics",
+  "evolutionary_theory_and_evidence",
   "Natural Selection: Complete Reasoning Problem",
   `
   <h2>Natural Selection: Complete Reasoning Problem</h2>
@@ -17960,6 +18142,7 @@ add(
 add(
   "biology",
   "genetics",
+  "evolutionary_theory_and_evidence",
   "What Is Evolution?",
   `
   <h2>What Is Evolution?</h2>
@@ -18064,6 +18247,7 @@ add(
 add(
   "biology",
   "genetics",
+  "evolutionary_theory_and_evidence",
   "Evolution Occurs Over Generations",
   `
   <h2>Evolution Occurs Over Generations</h2>
@@ -18173,6 +18357,7 @@ add(
 add(
   "biology",
   "genetics",
+  "evolutionary_theory_and_evidence",
   "Fossils as Evidence for Evolution",
   `
   <h2>Fossils as Evidence for Evolution</h2>
@@ -18266,6 +18451,7 @@ add(
 add(
   "biology",
   "genetics",
+  "blood_groups_and_molecular_genetics",
   "What Fossils Can Reveal",
   `
   <h2>What Fossils Can Reveal</h2>
@@ -18364,6 +18550,7 @@ add(
 add(
   "biology",
   "genetics",
+  "blood_groups_and_molecular_genetics",
   "Limitations of the Fossil Record",
   `
   <h2>Limitations of the Fossil Record</h2>
@@ -18456,6 +18643,7 @@ add(
 add(
   "biology",
   "genetics",
+  "fossil_record_and_anatomy",
   "Homologous Structures",
   `
   <h2>Homologous Structures</h2>
@@ -18542,6 +18730,7 @@ add(
 add(
   "biology",
   "genetics",
+  "evolutionary_theory_and_evidence",
   "Homologous Structures as Evidence for Evolution",
   `
   <h2>Homologous Structures as Evidence for Evolution</h2>
@@ -18643,6 +18832,7 @@ add(
 add(
   "biology",
   "genetics",
+  "fossil_record_and_anatomy",
   "Vestigial Structures",
   `
   <h2>Vestigial Structures</h2>
@@ -18730,6 +18920,7 @@ add(
 add(
   "biology",
   "genetics",
+  "fossil_record_and_anatomy",
   "Comparing Homologous and Vestigial Structures",
   `
   <h2>Comparing Homologous and Vestigial Structures</h2>
@@ -18825,6 +19016,7 @@ add(
 add(
   "biology",
   "genetics",
+  "genetics_and_evolution_synthesis",
   "Evidence for Evolution Must Be Interpreted",
   `
   <h2>Evidence for Evolution Must Be Interpreted</h2>
@@ -18915,6 +19107,7 @@ add(
 add(
   "biology",
   "genetics",
+  "genetics_and_evolution_synthesis",
   "Evolution: Putting the Evidence Together",
   `
   <h2>Evolution: Putting the Evidence Together</h2>
@@ -19013,6 +19206,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "principles_of_classification",
   "What Is Classification?",
   `
   <h2>What Is Classification?</h2>
@@ -19104,6 +19298,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "biodiversity_and_scientific_naming",
   "What Is Biodiversity?",
   `
   <h2>What Is Biodiversity?</h2>
@@ -19193,6 +19388,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "principles_of_classification",
   "Why Organisms Are Classified",
   `
   <h2>Why Organisms Are Classified</h2>
@@ -19282,6 +19478,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "principles_of_classification",
   "Characteristics Used in Classification",
   `
   <h2>Characteristics Used in Classification</h2>
@@ -19372,6 +19569,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "five_kingdom_system",
   "Prokaryotic and Eukaryotic Cells in Classification",
   `
   <h2>Prokaryotic and Eukaryotic Cells in Classification</h2>
@@ -19459,6 +19657,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "plant_vs_animal_cells",
   "Unicellular and Multicellular Organisms",
   `
   <h2>Unicellular and Multicellular Organisms</h2>
@@ -19549,6 +19748,7 @@ add(
 add(
   "biology",
   "ecology",
+  "food_webs_and_interdependence",
   "Autotrophic and Heterotrophic Nutrition",
   `
   <h2>Autotrophic and Heterotrophic Nutrition</h2>
@@ -19633,6 +19833,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "five_kingdom_system",
   "Five-Kingdom Classification",
   `
   <h2>Five-Kingdom Classification</h2>
@@ -19729,6 +19930,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "five_kingdom_system",
   "Kingdom Monera",
   `
   <h2>Kingdom Monera</h2>
@@ -19818,6 +20020,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "five_kingdom_system",
   "Kingdom Protoctista",
   `
   <h2>Kingdom Protoctista</h2>
@@ -19902,6 +20105,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "five_kingdom_system",
   "Kingdom Fungi",
   `
   <h2>Kingdom Fungi</h2>
@@ -19985,6 +20189,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "biodiversity_and_scientific_naming",
   "Fungal Hyphae and Mycelium",
   `
   <h2>Fungal Hyphae and Mycelium</h2>
@@ -20067,6 +20272,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "biodiversity_and_scientific_naming",
   "Yeast as a Fungus",
   `
   <h2>Yeast as a Fungus</h2>
@@ -20151,6 +20357,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "comparing_kingdoms",
   "Kingdom Plantae",
   `
   <h2>Kingdom Plantae</h2>
@@ -20238,6 +20445,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "chloroplasts_and_cells",
   "Plant Cell Walls and Chloroplasts in Classification",
   `
   <h2>Plant Cell Walls and Chloroplasts in Classification</h2>
@@ -20324,6 +20532,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "comparing_kingdoms",
   "Kingdom Animalia",
   `
   <h2>Kingdom Animalia</h2>
@@ -20412,6 +20621,7 @@ add(
 add(
   "biology",
   "cell_biology",
+  "specialised_cells_plant_animal",
   "Animal Cell Specialisation",
   `
   <h2>Animal Cell Specialisation</h2>
@@ -20495,6 +20705,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "comparing_kingdoms",
   "Kingdom Animalia Compared with Kingdom Plantae",
   `
   <h2>Kingdom Animalia Compared with Kingdom Plantae</h2>
@@ -20587,6 +20798,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "comparing_kingdoms",
   "Kingdom Fungi Compared with Kingdom Plantae",
   `
   <h2>Kingdom Fungi Compared with Kingdom Plantae</h2>
@@ -20675,6 +20887,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "comparing_kingdoms",
   "Comparing the Major Five Kingdoms",
   `
   <h2>Comparing the Major Five Kingdoms</h2>
@@ -20778,6 +20991,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "taxonomic_hierarchy",
   "What Is a Species?",
   `
   <h2>What Is a Species?</h2>
@@ -20862,6 +21076,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "taxonomic_hierarchy",
   "Why Species Are the Basic Classification Unit",
   `
   <h2>Why Species Are the Basic Classification Unit</h2>
@@ -20942,6 +21157,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "taxonomic_hierarchy",
   "Taxonomic Hierarchy",
   `
   <h2>Taxonomic Hierarchy</h2>
@@ -21036,6 +21252,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "taxonomic_hierarchy",
   "Kingdom to Phylum",
   `
   <h2>Kingdom to Phylum</h2>
@@ -21133,6 +21350,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "taxonomic_hierarchy",
   "Phylum to Class",
   `
   <h2>Phylum to Class</h2>
@@ -21221,6 +21439,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_and_binomial_nomenclature",
   "Class to Order",
   `
   <h2>Class to Order</h2>
@@ -21298,6 +21517,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_and_binomial_nomenclature",
   "Order to Family",
   `
   <h2>Order to Family</h2>
@@ -21383,6 +21603,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_and_binomial_nomenclature",
   "Family to Genus",
   `
   <h2>Family to Genus</h2>
@@ -21467,6 +21688,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_and_binomial_nomenclature",
   "Binomial Nomenclature",
   `
   <h2>Binomial Nomenclature</h2>
@@ -21567,6 +21789,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "biodiversity_and_scientific_naming",
   "Reading a Scientific Name",
   `
   <h2>Reading a Scientific Name</h2>
@@ -21655,6 +21878,7 @@ add(
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_diversity_and_competition",
   "What Is a Taxonomic Key",
 
   `
@@ -21748,6 +21972,7 @@ A taxonomic key identifies an organism by using <b>observable characteristics in
 add(
   "biology",
   "biodiversity_and_classification",
+  "dichotomous_keys_principles",
   "How a Dichotomous Key Works",
 
   `
@@ -21847,6 +22072,7 @@ The process continues until the organism's identity is reached.
 add(
   "biology",
   "biodiversity_and_classification",
+  "dichotomous_keys_principles",
   "Paired Statements in a Dichotomous Key",
 
   `
@@ -21934,6 +22160,7 @@ For example, if the key asks whether an organism has six legs, count the legs ra
 add(
   "biology",
   "biodiversity_and_classification",
+  "biodiversity_and_scientific_naming",
   "Choosing Between Two Characteristics",
 
   `
@@ -22046,6 +22273,7 @@ At each step:
 add(
   "biology",
   "biodiversity_and_classification",
+  "dichotomous_keys_principles",
   "Following a Key Step by Step",
 
   `
@@ -22136,6 +22364,7 @@ You should not jump directly to a conclusion. Every decision must be supported b
 add(
   "biology",
   "biodiversity_and_classification",
+  "dichotomous_keys_principles",
   "Constructing a Simple Dichotomous Key",
 
   `
@@ -22252,6 +22481,7 @@ The key should eventually lead each organism to one identification.
 add(
   "biology",
   "biodiversity_and_classification",
+  "dichotomous_keys_principles",
   "Testing a Dichotomous Key",
 
   `
@@ -22358,6 +22588,7 @@ Therefore, the key must be corrected before it is used.
 add(
   "biology",
   "biodiversity_and_classification",
+  "constructing_and_using_keys",
   "Identifying an Unknown Organism Using a Key",
 
   `
@@ -22453,6 +22684,7 @@ The identification is based on the characteristics observed, not simply on what 
 add(
   "biology",
   "biodiversity_and_classification",
+  "constructing_and_using_keys",
   "Common Errors When Using a Key",
 
   `
@@ -22538,6 +22770,7 @@ If the key asks about feathers, colour should not determine your choice unless c
 add(
   "biology",
   "biodiversity_and_classification",
+  "constructing_and_using_keys",
   "Complete Identification Problem",
 
   `
@@ -22658,6 +22891,7 @@ The important part is not memorising the answer. The identification comes from f
 add(
   "biology",
   "biodiversity_and_classification",
+  "principles_of_classification",
   "What Is Biodiversity",
 
   `
@@ -22741,6 +22975,7 @@ Biodiversity is not simply the number of animals in an area. It describes the <b
 add(
   "biology",
   "genetics",
+  "fossil_record_and_anatomy",
   "Genetic Diversity",
 
   `
@@ -22830,6 +23065,7 @@ Therefore, when identifying genetic diversity, focus on <b>inherited differences
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_and_binomial_nomenclature",
   "Species Diversity",
 
   `
@@ -22920,6 +23156,7 @@ The important question is:
 add(
   "biology",
   "ecology",
+  "ecosystems_and_ecological_terms",
   "Ecosystem Diversity",
 
   `
@@ -23004,6 +23241,7 @@ For example, an area containing forests, wetlands and grasslands has greater eco
 add(
   "biology",
   "biodiversity_and_classification",
+  "principles_of_classification",
   "Why Biodiversity Is Important",
 
   `
@@ -23085,6 +23323,7 @@ The importance of biodiversity is not limited to individual species. Organisms i
 add(
   "biology",
   "biodiversity_and_classification",
+  "constructing_and_using_keys",
   "Threats to Biodiversity",
 
   `
@@ -23170,6 +23409,7 @@ Changes in temperature and rainfall patterns can alter habitats and affect the s
 add(
   "biology",
   "ecology",
+  "additional_topics_part_1",
   "Habitat Destruction and Biodiversity",
 
   `
@@ -23260,6 +23500,7 @@ Therefore, protecting habitats is an important part of conserving biodiversity.
 add(
   "biology",
   "biodiversity_and_classification",
+  "constructing_and_using_keys",
   "Conservation of Biodiversity",
 
   `
@@ -23345,6 +23586,7 @@ The central principle is to maintain the organisms and ecological processes that
 add(
   "biology",
   "biodiversity_and_classification",
+  "threats_and_conservation_strategies",
   "In Situ Conservation",
 
   `
@@ -23428,6 +23670,7 @@ This is in situ conservation because the species is being conserved <b>where it 
 add(
   "biology",
   "biodiversity_and_classification",
+  "threats_and_conservation_strategies",
   "Ex Situ Conservation",
 
   `
@@ -23509,6 +23752,7 @@ The key difference is the location of conservation.
 add(
   "biology",
   "biodiversity_and_classification",
+  "threats_and_conservation_strategies",
   "Comparing In Situ and Ex Situ Conservation",
 
   `
@@ -23620,6 +23864,7 @@ A rare plant whose seeds are stored in a seed bank is an example of <b>ex situ c
 add(
   "biology",
   "ecology",
+  "ecosystems_and_ecological_terms",
   "What Is Ecology",
 
   `
@@ -23703,6 +23948,7 @@ Ecology is about <b>relationships between organisms and their environment</b>.
 add(
   "biology",
   "ecology",
+  "ecosystems_and_ecological_terms",
   "Biotic and Abiotic Factors",
 
   `
@@ -23800,6 +24046,7 @@ If it is non-living, it is an abiotic factor.
 add(
   "biology",
   "ecology",
+  "ecosystems_and_ecological_terms",
   "Habitat",
 
   `
@@ -23888,6 +24135,7 @@ It should not be confused with a niche, which describes the organism's role and 
 add(
   "biology",
   "ecology",
+  "population_growth_and_capacity",
   "Population",
 
   `
@@ -23976,6 +24224,7 @@ A community contains populations of <b>different species</b> living and interact
 add(
   "biology",
   "ecology",
+  "ecosystems_and_ecological_terms",
   "Community",
 
   `
@@ -24072,6 +24321,7 @@ The zebras together with grasses, lions, insects and other populations form a co
 add(
   "biology",
   "ecology",
+  "limiting_factors_and_succession",
   "Ecosystem",
 
   `
@@ -24164,6 +24414,7 @@ The organisms interact with one another and with the physical environment.
 add(
   "biology",
   "ecology",
+  "limiting_factors_and_succession",
   "Niche",
 
   `
@@ -24253,6 +24504,7 @@ Differences in resource use can reduce direct competition.
 add(
   "biology",
   "ecology",
+  "population_growth_and_capacity",
   "Competition",
 
   `
@@ -24337,6 +24589,7 @@ Competition becomes important when demand for a resource is greater than the amo
 add(
   "biology",
   "ecology",
+  "food_webs_and_interdependence",
   "Predation",
 
   `
@@ -24421,6 +24674,7 @@ In predation, one organism captures and feeds on another organism.
 add(
   "biology",
   "ecology",
+  "limiting_factors_and_succession",
   "Parasitism",
 
   `
@@ -24501,6 +24755,7 @@ In parasitism, the parasite usually lives on or in the host and obtains resource
 add(
   "biology",
   "ecology",
+  "pollution_and_habitat_destruction",
   "Decomposers",
 
   `
@@ -24593,6 +24848,7 @@ The nutrients can eventually become available again in the environment.
 add(
   "biology",
   "ecology",
+  "food_webs_and_interdependence",
   "Producers",
 
   `
@@ -24678,6 +24934,7 @@ The grass is the producer because it makes its own organic food.
 add(
   "biology",
   "ecology",
+  "food_webs_and_interdependence",
   "Consumers",
 
   `
@@ -24761,6 +25018,7 @@ The grasshopper and frog are consumers because they obtain organic nutrients by 
 add(
   "biology",
   "ecology",
+  "population_size_and_measuring",
   "Herbivores",
 
   `
@@ -24844,6 +25102,7 @@ Therefore, herbivores form an important link between producers and many predator
 add(
   "biology",
   "ecology",
+  "population_size_and_measuring",
   "Carnivores",
 
   `
@@ -24930,6 +25189,7 @@ A carnivore may therefore act as a predator, but the two words describe differen
 add(
   "biology",
   "ecology",
+  "limiting_factors_and_succession",
   "Omnivores",
 
   `
@@ -25015,6 +25275,7 @@ An animal does not have to eat equal amounts of plants and animals to be an omni
 add(
   "biology",
   "ecology",
+  "population_size_and_measuring",
   "Food Chain",
 
   `
@@ -25106,6 +25367,7 @@ It represents the direction of transfer through feeding.
 add(
   "biology",
   "ecology",
+  "population_size_and_measuring",
   "Trophic Levels",
 
   `
@@ -25196,6 +25458,7 @@ Trophic level depends on the organism's position in a particular food chain.
 add(
   "biology",
   "ecology",
+  "population_size_and_measuring",
   "Energy Transfer in Food Chains",
 
   `
@@ -25294,6 +25557,7 @@ Therefore, less chemical energy is generally available at higher trophic levels.
 add(
   "biology",
   "ecology",
+  "population_growth_and_capacity",
   "Food Web",
 
   `
@@ -25384,6 +25648,7 @@ A change in one population can affect several other populations because organism
 add(
   "biology",
   "ecology",
+  "population_growth_and_capacity",
   "Interpreting a Food Web",
 
   `
@@ -25477,6 +25742,7 @@ Never interpret the arrow as simply meaning "moves toward." In a food web, it re
 add(
   "biology",
   "ecology",
+  "population_growth_and_capacity",
   "Effects of Removing an Organism from a Food Chain",
 
   `
@@ -25575,6 +25841,7 @@ Therefore, predictions should be based on the specific relationships shown in th
 add(
   "biology",
   "ecology",
+  "predator_prey_and_competition",
   "Population Size",
   `
 <h2>Population Size</h2>
@@ -25704,6 +25971,7 @@ Percentage decrease:
 add(
   "biology",
   "ecology",
+  "abundance_bias_and_decomposers",
   "Population Density",
   `
 <h2>Population Density</h2>
@@ -25823,6 +26091,7 @@ Population density tells you <b>how many organisms occur per unit area</b>.
 add(
   "biology",
   "ecology",
+  "predator_prey_and_competition",
   "Measuring Population Size",
   `
 <h2>Measuring Population Size</h2>
@@ -25946,6 +26215,7 @@ For example, counting plants only beside a stream may give a poor estimate of th
 add(
   "biology",
   "ecology",
+  "abundance_bias_and_decomposers",
   "Quadrat Sampling",
   `
 <h2>Quadrat Sampling</h2>
@@ -26079,6 +26349,7 @@ The quadrat gives a <b>sample</b>. Several samples are needed to make a more rel
 add(
   "biology",
   "ecology",
+  "abundance_bias_and_decomposers",
   "Using Quadrats Correctly",
   `
 <h2>Using Quadrats Correctly</h2>
@@ -26183,6 +26454,7 @@ This is <b>sampling bias</b>.
 add(
   "biology",
   "ecology",
+  "abundance_bias_and_decomposers",
   "Capture-Mark-Recapture",
   `
 <h2>Capture-Mark-Recapture</h2>
@@ -26316,6 +26588,7 @@ If the second sample contains a low proportion of marked animals, the estimated 
 add(
   "biology",
   "ecology",
+  "predator_prey_and_competition",
   "Estimating Population Size",
   `
 <h2>Estimating Population Size</h2>
@@ -26427,6 +26700,7 @@ The answer is an <b>estimate</b>, not necessarily an exact count.
 add(
   "biology",
   "ecology",
+  "predator_prey_and_competition",
   "Birth Rate and Death Rate",
   `
 <h2>Birth Rate and Death Rate</h2>
@@ -26546,6 +26820,7 @@ If the death rate is greater than the birth rate, the population is likely to de
 add(
   "biology",
   "ecology",
+  "limiting_factors_and_succession",
   "Immigration and Emigration",
   `
 <h2>Immigration and Emigration</h2>
@@ -26677,6 +26952,7 @@ New population:
 add(
   "biology",
   "ecology",
+  "predator_prey_and_competition",
   "Factors Affecting Population Size",
   `
 <h2>Factors Affecting Population Size</h2>
@@ -26809,6 +27085,7 @@ This shows that population size can be affected by interactions between species.
 add(
   "biology",
   "ecology",
+  "resources_and_distribution",
   "Population Growth",
   `
 <h2>Population Growth</h2>
@@ -26949,6 +27226,7 @@ If deaths and emigration are greater, the population decreases.
 add(
   "biology",
   "ecology",
+  "resources_and_distribution",
   "Exponential Population Growth",
   `
 <h2>Exponential Population Growth</h2>
@@ -27078,6 +27356,7 @@ A J-shaped curve represents rapid population increase under conditions where lim
 add(
   "biology",
   "ecology",
+  "nutrient_cycling_and_productivity",
   "Limiting Factors",
   `
 <h2>Limiting Factors</h2>
@@ -27192,6 +27471,7 @@ The importance of a limiting factor can change when environmental conditions cha
 add(
   "biology",
   "ecology",
+  "resources_and_distribution",
   "Carrying Capacity",
   `
 <h2>Carrying Capacity</h2>
@@ -27313,6 +27593,7 @@ Carrying capacity is not necessarily a permanent fixed number. It can change whe
 add(
   "biology",
   "ecology",
+  "resources_and_distribution",
   "Logistic Population Growth",
   `
 <h2>Logistic Population Growth</h2>
@@ -27415,6 +27696,7 @@ The population may then increase toward the new carrying capacity.
 add(
   "biology",
   "ecology",
+  "quadrat_and_mark_recapture",
   "Population Fluctuations",
   `
 <h2>Population Fluctuations</h2>
@@ -27532,6 +27814,7 @@ Population changes can therefore be connected to changes in other populations.
 add(
   "biology",
   "ecology",
+  "quadrat_and_mark_recapture",
   "Predator and Prey Populations",
   `
 <h2>Predator and Prey Populations</h2>
@@ -27654,6 +27937,7 @@ The predator population often responds <b>after</b> changes in prey availability
 add(
   "biology",
   "ecology",
+  "pollution_and_habitat_destruction",
   "Predator-Prey Cycles",
   `
 <h2>Predator-Prey Cycles</h2>
@@ -27775,6 +28059,7 @@ If asked why predator numbers rise after prey numbers rise, link the steps:
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_diversity_and_competition",
   "Competition Within a Species",
   `
 <h2>Competition Within a Species</h2>
@@ -27885,6 +28170,7 @@ Competition becomes particularly important when a resource is <b>limited</b>.
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_diversity_and_competition",
   "Competition Between Species",
   `
 <h2>Competition Between Species</h2>
@@ -27994,6 +28280,7 @@ The important condition is that the resource is <b>limited</b>.
 add(
   "biology",
   "ecology",
+  "quadrat_and_mark_recapture",
   "Competition and Population Size",
   `
 <h2>Competition and Population Size</h2>
@@ -28104,6 +28391,7 @@ Increasing population density can increase competition when resources are limite
 add(
   "biology",
   "ecology",
+  "quadrat_and_mark_recapture",
   "Disease and Population Size",
   `
 <h2>Disease and Population Size</h2>
@@ -28210,6 +28498,7 @@ Disease does not affect every population in exactly the same way. Transmission d
 add(
   "biology",
   "ecology",
+  "sampling_principles_and_density",
   "Abiotic Factors and Population Distribution",
   `
 <h2>Abiotic Factors and Population Distribution</h2>
@@ -28314,6 +28603,7 @@ Abiotic conditions help determine <b>where</b> organisms can survive and how com
 add(
   "biology",
   "ecology",
+  "nutrient_cycling_and_productivity",
   "Distribution of Organisms",
   `
 <h2>Distribution of Organisms</h2>
@@ -28421,6 +28711,7 @@ Distribution asks:
 add(
   "biology",
   "ecology",
+  "nutrient_cycling_and_productivity",
   "Ecological Succession",
   `
 <h2>Ecological Succession</h2>
@@ -28530,6 +28821,7 @@ Succession is a <b>change in community composition over time</b>, not simply an 
 add(
   "biology",
   "ecology",
+  "nutrient_cycling_and_productivity",
   "Primary Succession",
   `
 <h2>Primary Succession</h2>
@@ -28633,6 +28925,7 @@ Primary succession is generally slow because soil must develop before many large
 add(
   "biology",
   "ecology",
+  "nutrient_cycling_and_productivity",
   "Secondary Succession",
   `
 <h2>Secondary Succession</h2>
@@ -28738,6 +29031,7 @@ Secondary succession can occur faster because important resources and biological
 add(
   "biology",
   "ecology",
+  "additional_topics_part_1",
   "Human Population Growth",
   `
 <h2>Human Population Growth</h2>
@@ -28848,6 +29142,7 @@ Population growth does not mean that every individual has more children. It refe
 add(
   "biology",
   "ecology",
+  "additional_topics_part_1",
   "Population Density and Human Settlements",
   `
 <h2>Population Density and Human Settlements</h2>
@@ -28962,6 +29257,7 @@ It does not necessarily mean the total population is larger.
 add(
   "biology",
   "ecology",
+  "additional_topics_part_1",
   "Human Population Factors",
   `
 <h2>Factors Affecting Human Population Size</h2>
@@ -29065,6 +29361,7 @@ These factors interact. Population change usually cannot be explained by one fac
 add(
   "biology",
   "ecology",
+  "sampling_principles_and_density",
   "Population Growth and Resource Demand",
   `
 <h2>Population Growth and Resource Demand</h2>
@@ -29173,6 +29470,7 @@ Population size and resource consumption are related, but resource demand also d
 add(
   "biology",
   "ecology",
+  "additional_topics_part_1",
   "Deforestation",
   `
 <h2>Deforestation</h2>
@@ -29288,6 +29586,7 @@ Deforestation can affect several parts of an ecosystem at the same time because 
 add(
   "biology",
   "ecology",
+  "additional_topics_part_2",
   "Habitat Destruction",
   `
 <h2>Habitat Destruction</h2>
@@ -29383,6 +29682,7 @@ Habitat destruction does not necessarily kill every individual immediately. It c
 add(
   "biology",
   "biodiversity_and_classification",
+  "threats_and_conservation_strategies",
   "Overexploitation",
   `
 <h2>Overexploitation</h2>
@@ -29474,6 +29774,7 @@ The important issue is the relationship between the rate of removal and the rate
 add(
   "biology",
   "ecology",
+  "additional_topics_part_2",
   "Pollution",
   `
 <h2>Pollution</h2>
@@ -29567,6 +29868,7 @@ Pollution can affect organisms directly or indirectly by changing the conditions
 add(
   "biology",
   "ecology",
+  "additional_topics_part_2",
   "Water Pollution",
   `
 <h2>Water Pollution</h2>
@@ -29672,6 +29974,7 @@ Water pollution can cause a chain of effects rather than affecting organisms onl
 add(
   "biology",
   "ecology",
+  "additional_topics_part_2",
   "Eutrophication",
   `
 <h2>Eutrophication</h2>
@@ -29785,6 +30088,7 @@ If oxygen concentration becomes very low, fish may die.
 add(
   "biology",
   "ecology",
+  "ecological_investigations_field",
   "Biomagnification",
   `
 <h2>Biomagnification</h2>
@@ -29900,6 +30204,7 @@ Biomagnification is different from simple exposure to a pollutant. The key idea 
 add(
   "biology",
   "biodiversity_and_classification",
+  "sustainable_resource_management",
   "Sustainable Resource Use",
   `
 <h2>Sustainable Resource Use</h2>
@@ -29998,6 +30303,7 @@ Sustainability requires considering both <b>how much is removed</b> and <b>how q
 add(
   "biology",
   "biodiversity_and_classification",
+  "sustainable_resource_management",
   "Conservation of Natural Resources",
   `
 <h2>Conservation of Natural Resources</h2>
@@ -30105,6 +30411,7 @@ Conservation is not simply about protecting individual animals. It also involves
 add(
   "biology",
   "biodiversity_and_classification",
+  "sustainable_resource_management",
   "Protected Areas",
   `
 <h2>Protected Areas</h2>
@@ -30209,6 +30516,7 @@ Protecting a habitat can conserve many interacting species and ecological proces
 add(
   "biology",
   "ecology",
+  "pollution_and_habitat_destruction",
   "Carbon Cycle",
   `
 <h2>Carbon Cycle</h2>
@@ -30306,6 +30614,7 @@ photosynthesis and feeding.
 add(
   "biology",
   "photosynthesis",
+  "epidermis_and_veins",
   "Photosynthesis in the Carbon Cycle",
   `
 <h2>Photosynthesis in the Carbon Cycle</h2>
@@ -30409,6 +30718,7 @@ Therefore, photosynthesis transfers atmospheric carbon into living organisms.
 add(
   "biology",
   "respiration",
+  "respiration_basics_and_atp",
   "Respiration and the Carbon Cycle",
   `
 <h2>Respiration and the Carbon Cycle</h2>
@@ -30510,6 +30820,7 @@ Thus:
 add(
   "biology",
   "ecology",
+  "pollution_and_habitat_destruction",
   "Decomposition and the Carbon Cycle",
   `
 <h2>Decomposition and the Carbon Cycle</h2>
@@ -30596,6 +30907,7 @@ Decomposition therefore connects dead organisms back to nutrient cycling.
 add(
   "biology",
   "ecology",
+  "pollution_and_habitat_destruction",
   "Combustion and the Carbon Cycle",
   `
 <h2>Combustion and the Carbon Cycle</h2>
@@ -30688,6 +31000,7 @@ particularly carbon dioxide.
 add(
   "biology",
   "ecology",
+  "additional_topics_part_2",
   "Carbon Balance and Human Activities",
   `
 <h2>Carbon Balance and Human Activities</h2>
@@ -30779,6 +31092,7 @@ transfers and therefore disturb the balance.
 add(
   "biology",
   "ecology",
+  "global_carbon_and_conservation",
   "Nitrogen Cycle",
   `
 <h2>Nitrogen Cycle</h2>
@@ -30861,6 +31175,7 @@ living organisms.
 add(
   "biology",
   "ecology",
+  "global_carbon_and_conservation",
   "Nitrogen Fixation",
   `
 <h2>Nitrogen Fixation</h2>
@@ -30952,6 +31267,7 @@ to make nitrogen-containing organic compounds.
 add(
   "biology",
   "ecology",
+  "ecological_investigations_field",
   "Nitrification",
   `
 <h2>Nitrification</h2>
@@ -31041,6 +31357,7 @@ while nitrification converts one soil nitrogen form into another.
 add(
   "biology",
   "ecology",
+  "ecological_investigations_field",
   "Denitrification",
   `
 <h2>Denitrification</h2>
@@ -31127,6 +31444,7 @@ recycled through the environment.
 add(
   "biology",
   "mineral_nutrition",
+  "investigating_mineral_deficiency",
   "Plant Uptake of Nitrate",
   `
 <h2>Plant Uptake of Nitrate</h2>
@@ -31224,6 +31542,7 @@ limit protein production and therefore plant growth.
 add(
   "biology",
   "ecology",
+  "ecological_balance_and_stability",
   "Decomposition and Nitrogen Recycling",
   `
 <h2>Decomposition and Nitrogen Recycling</h2>
@@ -31303,6 +31622,7 @@ into nitrite and then nitrate.
 add(
   "biology",
   "ecology",
+  "ecological_balance_and_stability",
   "Nitrogen in Food Chains",
   `
 <h2>Nitrogen in Food Chains</h2>
@@ -31409,6 +31729,7 @@ Therefore, nitrogen has moved from the soil → plant → herbivore → carnivor
 add(
   "biology",
   "ecology",
+  "ecological_balance_and_stability",
   "Fertiliser and Nitrogen Availability",
   `
 <h2>Fertiliser and Nitrogen Availability</h2>
@@ -31490,6 +31811,7 @@ it needs.
 add(
   "biology",
   "ecology",
+  "ecological_investigations_field",
   "Fertiliser Runoff",
   `
 <h2>Fertiliser Runoff</h2>
@@ -31591,6 +31913,7 @@ not enough oxygen for aerobic respiration.
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_deficiency_symptoms",
   "Mineral Ion Deficiency",
   `
 <h2>Mineral Ion Deficiency</h2>
@@ -31689,6 +32012,7 @@ insufficient nitrate can reduce protein production and limit growth.
 add(
   "biology",
   "ecology",
+  "ecological_balance_and_stability",
   "Water Cycle",
   `
 <h2>Water Cycle</h2>
@@ -31770,6 +32094,7 @@ be absorbed by a plant and eventually leave the plant through transpiration.
 add(
   "biology",
   "transport_in_plants",
+  "xerophytes_and_ringing",
   "Transpiration and the Water Cycle",
   `
 <h2>Transpiration and the Water Cycle</h2>
@@ -31850,6 +32175,7 @@ terrestrial ecosystems.
 add(
   "biology",
   "ecology",
+  "ecological_investigations_field",
   "Water Availability and Plant Distribution",
   `
 <h2>Water Availability and Plant Distribution</h2>
@@ -31940,6 +32266,7 @@ during dry conditions.
 add(
   "biology",
   "ecology",
+  "ecological_balance_and_stability",
   "Nutrient Cycling and Ecosystem Stability",
   `
 <h2>Nutrient Cycling and Ecosystem Stability</h2>
@@ -32033,6 +32360,7 @@ sunlight, passes through organisms and is eventually dissipated as heat.
 add(
   "biology",
   "ecology",
+  "evaluating_ecological_data",
   "Photosynthetic Productivity",
   `
 <h2>Photosynthetic Productivity</h2>
@@ -32123,6 +32451,7 @@ Therefore, low light intensity can limit productivity.
 add(
   "biology",
   "photosynthesis",
+  "starch_testing_and_storage",
   "Light Intensity and Photosynthesis",
   `
 <h2>Light Intensity and Photosynthesis</h2>
@@ -32213,6 +32542,7 @@ Increasing light beyond this point therefore has little effect.
 add(
   "biology",
   "photosynthesis",
+  "starch_testing_and_storage",
   "Carbon Dioxide and Photosynthesis",
   `
 <h2>Carbon Dioxide and Photosynthesis</h2>
@@ -32297,6 +32627,7 @@ limit.
 add(
   "biology",
   "photosynthesis",
+  "limiting_factors_photosynthesis",
   "Temperature and Photosynthesis",
   `
 <h2>Temperature and Photosynthesis</h2>
@@ -32384,6 +32715,7 @@ dioxide entry. Therefore, the rate of photosynthesis can fall.
 add(
   "biology",
   "photosynthesis",
+  "limiting_factors_photosynthesis",
   "Limiting Factors in Photosynthesis",
   `
 <h2>Limiting Factors in Photosynthesis</h2>
@@ -32480,6 +32812,7 @@ The greatest increase occurs when the limiting factor is increased.
 add(
   "biology",
   "ecology",
+  "sampling_principles_and_density",
   "Population Carrying Capacity",
   `
 <h2>Population Carrying Capacity</h2>
@@ -32571,6 +32904,7 @@ It can change when environmental conditions change.
 add(
   "biology",
   "ecology",
+  "sampling_principles_and_density",
   "Population Growth and Carrying Capacity",
   `
 <h2>Population Growth and Carrying Capacity</h2>
@@ -32657,6 +32991,7 @@ to slow.
 add(
   "biology",
   "ecology",
+  "abundance_bias_and_decomposers",
   "Density-Dependent Factors",
   `
 <h2>Density-Dependent Factors</h2>
@@ -32751,6 +33086,7 @@ indefinitely.
 add(
   "biology",
   "ecology",
+  "carbon_and_nitrogen_cycles",
   "Density-Independent Factors",
   `
 <h2>Density-Independent Factors</h2>
@@ -32837,6 +33173,7 @@ The key question is whether its effect depends on population density.
 add(
   "biology",
   "ecology",
+  "quadrat_and_mark_recapture",
   "Population Fluctuations",
   `
 <h2>Population Fluctuations</h2>
@@ -32938,6 +33275,7 @@ processes, not a permanently fixed number.
 add(
   "biology",
   "ecology",
+  "evaluating_ecological_data",
   "Ecological Balance",
   `
 <h2>Ecological Balance</h2>
@@ -33045,6 +33383,7 @@ Therefore, changing one population can produce effects throughout a food web.
 add(
   "biology",
   "ecology",
+  "carbon_and_nitrogen_cycles",
   "Sampling in Ecology",
   `
 <h2>Sampling in Ecology</h2>
@@ -33126,6 +33465,7 @@ results to estimate the population across the larger habitat.
 add(
   "biology",
   "ecology",
+  "carbon_and_nitrogen_cycles",
   "Random Sampling",
   `
 <h2>Random Sampling</h2>
@@ -33213,6 +33553,7 @@ organisms.
 add(
   "biology",
   "ecology",
+  "carbon_and_nitrogen_cycles",
   "Systematic Sampling",
   `
 <h2>Systematic Sampling</h2>
@@ -33306,6 +33647,7 @@ distribution changes along this gradient.
 add(
   "biology",
   "ecology",
+  "carbon_and_nitrogen_cycles",
   "Using a Quadrat",
   `
 <h2>Using a Quadrat</h2>
@@ -33391,6 +33733,7 @@ the entire habitat.
 add(
   "biology",
   "ecology",
+  "evaluating_ecological_data",
   "Percentage Cover",
   `
 <h2>Percentage Cover</h2>
@@ -33481,6 +33824,7 @@ Mean percentage cover:
 add(
   "biology",
   "ecology",
+  "carbon_and_nitrogen_cycles",
   "Estimating Population Size from Quadrat Data",
   `
 <h2>Estimating Population Size from Quadrat Data</h2>
@@ -33571,6 +33915,7 @@ Its reliability depends on how representative the sampled quadrats are.
 add(
   "biology",
   "ecology",
+  "abundance_bias_and_decomposers",
   "Capture-Mark-Recapture",
   `
 <h2>Capture-Mark-Recapture</h2>
@@ -33675,6 +34020,7 @@ are reasonably satisfied.
 add(
   "biology",
   "ecology",
+  "water_cycle_and_human_impact",
   "Reliability of Ecological Sampling",
   `
 <h2>Reliability of Ecological Sampling</h2>
@@ -33762,6 +34108,7 @@ The sampling method must also be appropriate and unbiased.
 add(
   "biology",
   "genetics",
+  "mutations_and_genetic_diversity",
   "Mean, Range and Variation in Ecological Data",
   `
 <h2>Mean, Range and Variation in Ecological Data</h2>
@@ -33859,6 +34206,7 @@ The range gives an indication of how spread out the observations are.
 add(
   "biology",
   "ecology",
+  "water_cycle_and_human_impact",
   "Transect Investigation",
   `
 <h2>Transect Investigation</h2>
@@ -33945,6 +34293,7 @@ positions along this environmental gradient.
 add(
   "biology",
   "ecology",
+  "evaluating_ecological_data",
   "Ecological Investigation Variables",
   `
 <h2>Ecological Investigation Variables</h2>
@@ -34030,6 +34379,7 @@ other important conditions controlled where possible.
 add(
   "biology",
   "ecology",
+  "water_cycle_and_human_impact",
   "Frequency of an Organism",
   `
 <h2>Frequency of an Organism</h2>
@@ -34125,6 +34475,7 @@ quadrats but only a few individuals occur in each one.
 add(
   "biology",
   "ecology",
+  "water_cycle_and_human_impact",
   "Abundance and Density",
   `
 <h2>Abundance and Density</h2>
@@ -34226,6 +34577,7 @@ population density.
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_diversity_and_competition",
   "Species Richness",
   `
 <h2>Species Richness</h2>
@@ -34321,6 +34673,7 @@ more or fewer different species.
 add(
   "biology",
   "biodiversity_and_classification",
+  "species_diversity_and_competition",
   "Species Distribution Patterns",
   `
 <h2>Species Distribution Patterns</h2>
@@ -34400,6 +34753,7 @@ occur per unit area</strong>.
 add(
   "biology",
   "ecology",
+  "sampling_principles_and_density",
   "Interpreting a Population Distribution Graph",
   `
 <h2>Interpreting a Population Distribution Graph</h2>
@@ -34508,6 +34862,7 @@ the decrease.
 add(
   "biology",
   "ecology",
+  "evaluating_ecological_data",
   "Abiotic Factors and Species Distribution",
   `
 <h2>Abiotic Factors and Species Distribution</h2>
@@ -34597,6 +34952,7 @@ responsible.
 add(
   "biology",
   "ecology",
+  "evaluating_ecological_data",
   "Biotic Factors and Species Distribution",
   `
 <h2>Biotic Factors and Species Distribution</h2>
@@ -34687,6 +35043,7 @@ not one factor acting alone.
 add(
   "biology",
   "ecology",
+  "handling_ecological_data",
   "Correlation in Ecological Investigations",
   `
 <h2>Correlation in Ecological Investigations</h2>
@@ -34786,6 +35143,7 @@ nutrients, temperature or light, also differ between the areas.
 add(
   "biology",
   "ecology",
+  "handling_ecological_data",
   "Evaluating an Ecological Conclusion",
   `
 <h2>Evaluating an Ecological Conclusion</h2>
@@ -34894,6 +35252,7 @@ More appropriately distributed repeated samples would provide stronger evidence.
 add(
   "biology",
   "ecology",
+  "handling_ecological_data",
   "Improving an Ecological Investigation",
   `
 <h2>Improving an Ecological Investigation</h2>
@@ -34996,6 +35355,7 @@ This provides stronger evidence for any relationship observed.
 add(
   "biology",
   "ecology",
+  "handling_ecological_data",
   "Field Investigation of Plant Distribution",
   `
 <h2>Field Investigation of Plant Distribution</h2>
@@ -35092,6 +35452,7 @@ different times can show whether the pattern is consistent.
 add(
   "biology",
   "ecology",
+  "water_cycle_and_human_impact",
   "Sampling Bias",
   `
 <h2>Sampling Bias</h2>
@@ -35184,6 +35545,7 @@ Good sampling requires both sufficient data and appropriate selection.
 add(
   "biology",
   "ecology",
+  "handling_ecological_data",
   "Mean of Ecological Data",
   `
 <h2>Mean of Ecological Data</h2>
@@ -35277,6 +35639,7 @@ rather than relying on the mean alone.
 add(
   "biology",
   "ecology",
+  "handling_ecological_data",
   "Range of Ecological Data",
   `
 <h2>Range of Ecological Data</h2>
@@ -35392,6 +35755,7 @@ It tells us how far apart the highest and lowest measurements are.
 add(
   "biology",
   "ecology",
+  "feeding_relationships_producers_consumers",
   "Anomalous Results in Ecological Data",
   `
 <h2>Anomalous Results in Ecological Data</h2>
@@ -35477,6 +35841,7 @@ and should not automatically be discarded.
 add(
   "biology",
   "ecology",
+  "feeding_relationships_producers_consumers",
   "Drawing a Bar Chart from Ecological Data",
   `
 <h2>Drawing a Bar Chart from Ecological Data</h2>
@@ -35564,6 +35929,7 @@ abundance.
 add(
   "biology",
   "ecology",
+  "feeding_relationships_producers_consumers",
   "Drawing a Line Graph from Ecological Data",
   `
 <h2>Drawing a Line Graph from Ecological Data</h2>
@@ -35661,6 +36027,7 @@ The variable measured in response is placed on the vertical axis.
 add(
   "biology",
   "ecology",
+  "feeding_relationships_producers_consumers",
   "Identifying Trends in Ecological Data",
   `
 <h2>Identifying Trends in Ecological Data</h2>
@@ -35764,6 +36131,7 @@ Where possible, refer to actual values or ranges from the data.
 add(
   "biology",
   "ecology",
+  "feeding_relationships_producers_consumers",
   "Comparing Ecological Data Sets",
   `
 <h2>Comparing Ecological Data Sets</h2>
@@ -35873,6 +36241,7 @@ A good ecological comparison considers both.
 add(
   "biology",
   "ecology",
+  "food_chains_and_trophic_levels",
   "Reliability of Ecological Results",
   `
 <h2>Reliability of Ecological Results</h2>
@@ -35952,6 +36321,7 @@ systematically measures the wrong thing.
 add(
   "biology",
   "ecology",
+  "food_chains_and_trophic_levels",
   "Validity of an Ecological Investigation",
   `
 <h2>Validity of an Ecological Investigation</h2>
@@ -36051,6 +36421,7 @@ automatically make a poorly designed investigation valid.
 add(
   "biology",
   "ecology",
+  "food_chains_and_trophic_levels",
   "Drawing a Scientific Conclusion from Ecological Evidence",
   `
 <h2>Drawing a Scientific Conclusion from Ecological Evidence</h2>
@@ -36159,6 +36530,7 @@ the change.
 add(
   "biology",
   "ecology",
+  "food_chains_and_trophic_levels",
   "Evaluating Evidence in Ecology",
   `
 <h2>Evaluating Evidence in Ecology</h2>
@@ -36264,6 +36636,7 @@ This statement stays within the evidence.
 add(
   "biology",
   "respiration",
+  "respiration_basics_and_atp",
   "What Is Respiration?",
   `
 <h2>What Is Respiration?</h2>
@@ -36349,6 +36722,7 @@ breathing is a <strong>physical gas-exchange process</strong>.
 add(
   "biology",
   "respiration",
+  "respiration_basics_and_atp",
   "Energy Released During Respiration",
   `
 <h2>Energy Released During Respiration</h2>
@@ -36449,6 +36823,7 @@ Respiration makes chemical energy from food available for cellular work.
 add(
   "biology",
   "respiration",
+  "respiration_basics_and_atp",
   "Aerobic Respiration",
   `
 <h2>Aerobic Respiration</h2>
@@ -36539,6 +36914,7 @@ Respiration is a series of enzyme-controlled reactions.
 add(
   "biology",
   "respiration",
+  "aerobic_respiration_pathway",
   "Glycolysis",
   `
 <h2>Glycolysis</h2>
@@ -36629,6 +37005,7 @@ It should not be described as a process that occurs only inside mitochondria.
 add(
   "biology",
   "respiration",
+  "aerobic_respiration_pathway",
   "Mitochondria and Aerobic Respiration",
   `
 <h2>Mitochondria and Aerobic Respiration</h2>
@@ -36708,6 +37085,7 @@ respiration rather than saying that all respiration happens there.
 add(
   "biology",
   "respiration",
+  "aerobic_respiration_pathway",
   "Aerobic Respiration and Oxygen Supply",
   `
 <h2>Aerobic Respiration and Oxygen Supply</h2>
@@ -36808,6 +37186,7 @@ working muscles.
 add(
   "biology",
   "respiration",
+  "aerobic_respiration_pathway",
   "Carbon Dioxide as a Product of Respiration",
   `
 <h2>Carbon Dioxide as a Product of Respiration</h2>
@@ -36893,6 +37272,7 @@ It is not a reactant in aerobic respiration.
 add(
   "biology",
   "respiration",
+  "aerobic_respiration_pathway",
   "Water as a Product of Aerobic Respiration",
   `
 <h2>Water as a Product of Aerobic Respiration</h2>
@@ -36985,6 +37365,7 @@ The water is a product of the chemical reactions involved in respiration.
 add(
   "biology",
   "respiration",
+  "factors_affecting_respiration",
   "Respiration Rate",
   `
 <h2>Respiration Rate</h2>
@@ -37087,6 +37468,7 @@ The first organism has the higher measured respiration rate.
 add(
   "biology",
   "respiration",
+  "factors_affecting_respiration",
   "Factors Affecting Respiration Rate",
   `
 <h2>Factors Affecting Respiration Rate</h2>
@@ -37171,6 +37553,7 @@ kept constant, such as the amount of yeast, glucose concentration and volume.
 add(
   "biology",
   "respiration",
+  "respiratory_surfaces_adaptations",
   "Anaerobic Respiration",
   `
 <h2>Anaerobic Respiration</h2>
@@ -37249,6 +37632,7 @@ No oxygen → anaerobic pathway → some energy released from glucose
 add(
   "biology",
   "respiration",
+  "anaerobic_respiration_muscle_yeast",
   "Anaerobic Respiration in Muscle Cells",
   `
 <h2>Anaerobic Respiration in Muscle Cells</h2>
@@ -37351,6 +37735,7 @@ required aerobic respiration.</p>
 add(
   "biology",
   "respiration",
+  "anaerobic_respiration_muscle_yeast",
   "Anaerobic Respiration in Yeast",
   `
 <h2>Anaerobic Respiration in Yeast</h2>
@@ -37452,6 +37837,7 @@ That pathway occurs in human muscle cells.
 add(
   "biology",
   "respiration",
+  "anaerobic_respiration_muscle_yeast",
   "Fermentation",
   `
 <h2>Fermentation</h2>
@@ -37531,6 +37917,7 @@ energy without oxygen.
 add(
   "biology",
   "respiration",
+  "anaerobic_respiration_muscle_yeast",
   "Aerobic and Anaerobic Respiration Compared",
   `
 <h2>Aerobic and Anaerobic Respiration Compared</h2>
@@ -37628,6 +38015,7 @@ First identify the organism or cell.
 add(
   "biology",
   "respiration",
+  "comparing_respiration_types",
   "Oxygen Debt",
   `
 <h2>Oxygen Debt</h2>
@@ -37749,6 +38137,7 @@ Extra oxygen is taken in during recovery
 add(
   "biology",
   "respiration",
+  "comparing_respiration_types",
   "Lactic Acid During Exercise",
   `
 <h2>Lactic Acid During Exercise</h2>
@@ -37837,6 +38226,7 @@ can contribute and lactic acid production increases.
 add(
   "biology",
   "respiration",
+  "comparing_respiration_types",
   "Investigating Respiration in Germinating Seeds",
   `
 <h2>Investigating Respiration in Germinating Seeds</h2>
@@ -37916,6 +38306,7 @@ pressure changes alone.
 add(
   "biology",
   "respiration",
+  "comparing_respiration_types",
   "Investigating Carbon Dioxide Production by Respiring Organisms",
   `
 <h2>Investigating Carbon Dioxide Production by Respiring Organisms</h2>
@@ -38009,6 +38400,7 @@ rate, provided the experimental conditions make this a valid measure.
 add(
   "biology",
   "respiration",
+  "practical_respiration_experiments",
   "Temperature and Yeast Respiration",
   `
 <h2>Temperature and Yeast Respiration</h2>
@@ -38105,6 +38497,7 @@ Do not assume one temperature is the optimum for every organism.
 add(
   "biology",
   "respiration",
+  "factors_affecting_respiration",
   "Respiration During Exercise",
   `
 <h2>Respiration During Exercise</h2>
@@ -38193,6 +38586,7 @@ respiration → increased oxygen demand → increased breathing and heart rate
 add(
   "biology",
   "gaseous_exchange",
+  "human_gas_exchange_anatomy",
   "Gaseous Exchange",
   `
 <h2>Gaseous Exchange</h2>
@@ -38287,6 +38681,7 @@ movement of gases across a respiratory surface.
 add(
   "biology",
   "respiration",
+  "factors_affecting_respiration",
   "Features of an Efficient Respiratory Surface",
   `
 <h2>Features of an Efficient Respiratory Surface</h2>
@@ -38382,6 +38777,7 @@ This is why thin respiratory surfaces are advantageous.
 add(
   "biology",
   "gaseous_exchange",
+  "evaluating_respiratory_experiments",
   "Diffusion in Gaseous Exchange",
   `
 <h2>Diffusion in Gaseous Exchange</h2>
@@ -38472,6 +38868,7 @@ concentration gradient.
 add(
   "biology",
   "gaseous_exchange",
+  "human_gas_exchange_anatomy",
   "The Human Gas Exchange System",
   `
 <h2>The Human Gas Exchange System</h2>
@@ -38560,6 +38957,7 @@ These provide the main surface for gaseous exchange.
 add(
   "biology",
   "gaseous_exchange",
+  "evaluating_respiratory_experiments",
   "The Alveoli",
   `
 <h2>The Alveoli</h2>
@@ -38642,6 +39040,7 @@ exhalation.
 add(
   "biology",
   "gaseous_exchange",
+  "human_gas_exchange_anatomy",
   "Ventilation",
   `
 <h2>Ventilation</h2>
@@ -38727,6 +39126,7 @@ the thoracic cavity.
 add(
   "biology",
   "gaseous_exchange",
+  "human_gas_exchange_anatomy",
   "Inhalation",
   `
 <h2>Inhalation</h2>
@@ -38808,6 +39208,7 @@ Diaphragm contracts
 add(
   "biology",
   "gaseous_exchange",
+  "ventilation_mechanisms",
   "Exhalation",
   `
 <h2>Exhalation</h2>
@@ -38891,6 +39292,7 @@ Diaphragm relaxes
 add(
   "biology",
   "gaseous_exchange",
+  "ventilation_mechanisms",
   "Intercostal Muscles",
   `
 <h2>Intercostal Muscles</h2>
@@ -38999,6 +39401,7 @@ Air enters
 add(
   "biology",
   "gaseous_exchange",
+  "ventilation_mechanisms",
   "Diaphragm and Breathing",
   `
 <h2>Diaphragm and Breathing</h2>
@@ -39099,6 +39502,7 @@ Diaphragm contracts
 add(
   "biology",
   "gaseous_exchange",
+  "ventilation_mechanisms",
   "Airways and Their Functions",
   `
 <h2>Airways and Their Functions</h2>
@@ -39180,6 +39584,7 @@ This helps protect the lungs from trapped particles and microorganisms.
 add(
   "biology",
   "gaseous_exchange",
+  "evaluating_respiratory_experiments",
   "Large Surface Area of Alveoli",
   `
 <h2>Large Surface Area of Alveoli</h2>
@@ -39271,6 +39676,7 @@ not the size of one individual alveolus.
 add(
   "biology",
   "gaseous_exchange",
+  "alveoli_structure_and_adaptations",
   "Thin Alveolar Walls",
   `
 <h2>Thin Alveolar Walls</h2>
@@ -39361,6 +39767,7 @@ dioxide to diffuse rapidly.”</strong>
 add(
   "biology",
   "respiration",
+  "respiratory_surfaces_adaptations",
   "Moist Respiratory Surfaces",
   `
 <h2>Moist Respiratory Surfaces</h2>
@@ -39449,6 +39856,7 @@ maintenance of the body's water balance.
 add(
   "biology",
   "transport_in_animals",
+  "gas_transport_blood",
   "Blood Supply to the Alveoli",
   `
 <h2>Blood Supply to the Alveoli</h2>
@@ -39530,6 +39938,7 @@ Continuous blood flow
 add(
   "biology",
   "gaseous_exchange",
+  "alveoli_structure_and_adaptations",
   "Ventilation Maintains Gas Gradients",
   `
 <h2>Ventilation Maintains Gas Gradients</h2>
@@ -39611,6 +40020,7 @@ It maintains the conditions that allow diffusion to continue efficiently.
 add(
   "biology",
   "gaseous_exchange",
+  "comparative_gas_exchange",
   "Gas Exchange in Fish Gills",
   `
 <h2>Gas Exchange in Fish Gills</h2>
@@ -39689,6 +40099,7 @@ Fish exchange gases with water across their gills.
 add(
   "biology",
   "gaseous_exchange",
+  "comparative_gas_exchange",
   "Gas Exchange in Insects",
   `
 <h2>Gas Exchange in Insects</h2>
@@ -39766,6 +40177,7 @@ in humans.
 add(
   "biology",
   "gaseous_exchange",
+  "comparative_gas_exchange",
   "Gas Exchange in Plants",
   `
 <h2>Gas Exchange in Plants</h2>
@@ -39843,6 +40255,7 @@ by photosynthesis, respiration and environmental conditions.
 add(
   "biology",
   "gaseous_exchange",
+  "alveoli_structure_and_adaptations",
   "Gaseous Exchange and Diffusion Distance",
   `
 <h2>Gaseous Exchange and Diffusion Distance</h2>
@@ -39932,6 +40345,7 @@ exchange.
 add(
   "biology",
   "gaseous_exchange",
+  "comparative_gas_exchange",
   "Comparing Human, Fish and Insect Gas Exchange",
   `
 <h2>Comparing Human, Fish and Insect Gas Exchange</h2>
@@ -40038,6 +40452,7 @@ and maintained concentration gradients.
 add(
   "biology",
   "gaseous_exchange",
+  "air_composition_and_testing",
   "Composition of Inspired and Expired Air",
   `
 <h2>Composition of Inspired and Expired Air</h2>
@@ -40112,6 +40527,7 @@ the air in the lungs and the blood.
 add(
   "biology",
   "gaseous_exchange",
+  "air_composition_and_testing",
   "Testing Expired Air for Carbon Dioxide",
   `
 <h2>Testing Expired Air for Carbon Dioxide</h2>
@@ -40190,6 +40606,7 @@ expired air contains more carbon dioxide than ordinary atmospheric air.
 add(
   "biology",
   "gaseous_exchange",
+  "air_composition_and_testing",
   "Testing Expired Air for Oxygen",
   `
 <h2>Testing Expired Air for Oxygen</h2>
@@ -40268,6 +40685,7 @@ The correct idea is:
 add(
   "biology",
   "transport_in_animals",
+  "gas_transport_blood",
   "Transport of Oxygen in the Blood",
   `
 <h2>Transport of Oxygen in the Blood</h2>
@@ -40348,6 +40766,7 @@ dissolved in plasma alone.
 add(
   "biology",
   "transport_in_animals",
+  "gas_transport_blood",
   "Haemoglobin and Oxygen Loading",
   `
 <h2>Haemoglobin and Oxygen Loading</h2>
@@ -40429,6 +40848,7 @@ High oxygen concentration in lungs
 add(
   "biology",
   "transport_in_animals",
+  "gas_transport_blood",
   "Transport of Carbon Dioxide",
   `
 <h2>Transport of Carbon Dioxide</h2>
@@ -40508,6 +40928,7 @@ continuously because its accumulation can disturb normal cell function.
 add(
   "biology",
   "transport_in_animals",
+  "gas_transport_blood",
   "The Role of Red Blood Cells in Gas Transport",
   `
 <h2>The Role of Red Blood Cells in Gas Transport</h2>
@@ -40598,6 +41019,7 @@ No nucleus
 add(
   "biology",
   "gaseous_exchange",
+  "air_composition_and_testing",
   "Why Breathing Rate Increases During Exercise",
   `
 <h2>Why Breathing Rate Increases During Exercise</h2>
@@ -40681,6 +41103,7 @@ Exercise
 add(
   "biology",
   "transport_in_animals",
+  "heart_structure_and_pumping",
   "Why Heart Rate Increases During Exercise",
   `
 <h2>Why Heart Rate Increases During Exercise</h2>
@@ -40776,6 +41199,7 @@ It increases the rate at which blood transports oxygen and carbon dioxide.
 add(
   "biology",
   "respiration",
+  "respiratory_surfaces_adaptations",
   "Exercise and Oxygen Demand",
   `
 <h2>Exercise and Oxygen Demand</h2>
@@ -40860,6 +41284,7 @@ energy demand of the working muscles.
 add(
   "biology",
   "gaseous_exchange",
+  "exercise_and_breathing_rate",
   "Practical: Investigating Breathing Rate Before and After Exercise",
   `
 <h2>Practical: Investigating Breathing Rate Before and After Exercise</h2>
@@ -40956,6 +41381,7 @@ The investigation should be stopped if the participant becomes unwell.
 add(
   "biology",
   "gaseous_exchange",
+  "exercise_and_breathing_rate",
   "Pleural Membranes and the Lungs",
   `
 <h2>Pleural Membranes and the Lungs</h2>
@@ -41031,6 +41457,7 @@ They are not the main surface where oxygen and carbon dioxide are exchanged.
 add(
   "biology",
   "gaseous_exchange",
+  "comparative_gas_exchange",
   "Cartilage in the Trachea",
   `
 <h2>Cartilage in the Trachea</h2>
@@ -41099,6 +41526,7 @@ Its main role is mechanical support of the airway.
 add(
   "biology",
   "gaseous_exchange",
+  "exercise_and_breathing_rate",
   "Mucus and Cilia in the Airways",
   `
 <h2>Mucus and Cilia in the Airways</h2>
@@ -41179,6 +41607,7 @@ Its primary physical role is to trap particles and microorganisms.
 add(
   "biology",
   "respiration",
+  "respiratory_surfaces_adaptations",
   "Goblet Cells in the Respiratory Tract",
   `
 <h2>Goblet Cells in the Respiratory Tract</h2>
@@ -41266,6 +41695,7 @@ Goblet cells produce mucus; ciliated cells move it.
 add(
   "biology",
   "gaseous_exchange",
+  "alveoli_structure_and_adaptations",
   "Gas Exchange and Surface Area to Volume Ratio",
   `
 <h2>Gas Exchange and Surface Area to Volume Ratio</h2>
@@ -41350,6 +41780,7 @@ moist surfaces, blood flow and maintained concentration gradients.
 add(
   "biology",
   "gaseous_exchange",
+  "alveoli_structure_and_adaptations",
   "Concentration Gradients at the Alveoli",
   `
 <h2>Concentration Gradients at the Alveoli</h2>
@@ -41439,6 +41870,7 @@ Ventilation + blood flow
 add(
   "biology",
   "gaseous_exchange",
+  "exercise_and_breathing_rate",
   "Effect of Exercise on Gas Exchange",
   `
 <h2>Effect of Exercise on Gas Exchange</h2>
@@ -41521,6 +41953,7 @@ Exercise
 add(
   "biology",
   "gaseous_exchange",
+  "smoking_and_airway_pathology",
   "Effect of Smoking on Gas Exchange",
   `
 <h2>Effect of Smoking on Gas Exchange</h2>
@@ -41599,6 +42032,7 @@ reduce ventilation or gas-exchange efficiency.
 add(
   "biology",
   "gaseous_exchange",
+  "smoking_and_airway_pathology",
   "Gas Exchange and Carbon Monoxide",
   `
 <h2>Gas Exchange and Carbon Monoxide</h2>
@@ -41681,6 +42115,7 @@ Carbon monoxide exposure
 add(
   "biology",
   "gaseous_exchange",
+  "smoking_and_airway_pathology",
   "Practical: Comparing Inspired and Expired Air",
   `
 <h2>Practical: Comparing Inspired and Expired Air</h2>
@@ -41779,6 +42214,7 @@ in the air.
 add(
   "biology",
   "gaseous_exchange",
+  "smoking_and_airway_pathology",
   "Evaluating a Gas Exchange Experiment",
   `
 <h2>Evaluating a Gas Exchange Experiment</h2>
@@ -41867,6 +42303,7 @@ air; therefore, expired air contains more carbon dioxide.”
 add(
   "biology",
   "gaseous_exchange",
+  "evaluating_respiratory_experiments",
   "Why Large Organisms Need Transport Systems",
 
   `
@@ -41954,6 +42391,7 @@ In humans, the circulatory system transports substances in the blood.
 add(
   "biology",
   "gaseous_exchange",
+  "comparative_gas_exchange",
   "Why Diffusion Alone Is Not Enough",
 
   `
@@ -42035,6 +42473,7 @@ This brings blood close to individual cells, allowing diffusion to occur over a 
 add(
   "biology",
   "transport_in_animals",
+  "plasma_and_clotting",
   "Components of Blood",
 
   `
@@ -42120,6 +42559,7 @@ It contains a liquid component, cells and cell fragments, each performing differ
 add(
   "biology",
   "transport_in_animals",
+  "plasma_and_clotting",
   "Blood Plasma",
 
   `
@@ -42199,6 +42639,7 @@ Glucose is soluble in water. Plasma provides a liquid medium in which glucose ca
 add(
   "biology",
   "transport_in_animals",
+  "white_cells_and_lymphatics",
   "White Blood Cells",
 
   `
@@ -42271,6 +42712,7 @@ Producing or mobilising more white blood cells can increase the body's ability t
 add(
   "biology",
   "transport_in_animals",
+  "white_cells_and_lymphatics",
   "Phagocytes",
 
   `
@@ -42342,6 +42784,7 @@ The phagocyte surrounds and engulfs the bacterium, enclosing it inside the cell.
 add(
   "biology",
   "transport_in_animals",
+  "white_cells_and_lymphatics",
   "Lymphocytes and Antibodies",
 
   `
@@ -42424,6 +42867,7 @@ Antibodies have specific shapes. An antibody binds to an antigen with a compleme
 add(
   "biology",
   "transport_in_animals",
+  "plasma_and_clotting",
   "Platelets",
 
   `
@@ -42489,6 +42933,7 @@ Blood clotting would be impaired, so bleeding from damaged blood vessels could c
 add(
   "biology",
   "transport_in_animals",
+  "plasma_and_clotting",
   "Blood Clotting",
 
   `
@@ -42570,6 +43015,7 @@ Fibrin forms a network of insoluble fibres at the damaged area. The network trap
 add(
   "biology",
   "transport_in_animals",
+  "blood_vessels_structure",
   "Arteries",
 
   `
@@ -42644,6 +43090,7 @@ Blood is pumped from the heart at high pressure. A thick muscular and elastic wa
 add(
   "biology",
   "transport_in_animals",
+  "blood_vessels_structure",
   "Veins",
 
   `
@@ -42723,6 +43170,7 @@ Blood pressure in veins is relatively low. Valves prevent blood from flowing bac
 add(
   "biology",
   "transport_in_animals",
+  "capillaries_and_tissue_fluid",
   "Capillaries",
 
   `
@@ -42799,6 +43247,7 @@ The wall is only about one cell thick, so substances have a short diffusion dist
 add(
   "biology",
   "transport_in_animals",
+  "heart_structure_and_pumping",
   "The Heart as a Pump",
 
   `
@@ -42872,6 +43321,7 @@ The heart must generate pressure to move blood through the blood vessels. Cardia
 add(
   "biology",
   "transport_in_animals",
+  "heart_structure_and_pumping",
   "The Four Chambers of the Heart",
 
   `
@@ -42950,6 +43400,7 @@ Therefore, the <strong>left atrium</strong> receives oxygenated blood from the l
 add(
   "biology",
   "transport_in_animals",
+  "heart_structure_and_pumping",
   "The Right Side of the Heart",
 
   `
@@ -43027,6 +43478,7 @@ Body → vena cava → right atrium → right ventricle → pulmonary artery →
 add(
   "biology",
   "transport_in_animals",
+  "heart_structure_and_pumping",
   "The Left Side of the Heart",
 
   `
@@ -43105,6 +43557,7 @@ Lungs → pulmonary veins → left atrium → left ventricle → aorta → body.
 add(
   "biology",
   "transport_in_animals",
+  "heart_structure_and_pumping",
   "Heart Valves",
 
   `
@@ -43178,6 +43631,7 @@ Some blood could flow backwards when the pressure changes. This would reduce the
 add(
   "biology",
   "transport_in_animals",
+  "heart_rate_and_exercise",
   "Why the Left Ventricle Has a Thick Wall",
 
   `
@@ -43248,6 +43702,7 @@ The left ventricle pumps blood around the entire body and therefore must generat
 add(
   "biology",
   "transport_in_animals",
+  "cardiac_cycle_events",
   "The Septum and Separation of Blood",
 
   `
@@ -43321,6 +43776,7 @@ It separates the right and left sides of the heart, helping prevent mixing of ma
 add(
   "biology",
   "transport_in_animals",
+  "circulation_and_pressure",
   "The Pulmonary Circulation",
 
   `
@@ -43400,6 +43856,7 @@ The pulmonary artery carries blood away from the heart. It carries blood from th
 add(
   "biology",
   "transport_in_animals",
+  "circulation_and_pressure",
   "The Systemic Circulation",
 
   `
@@ -43464,6 +43921,7 @@ Left ventricle → aorta → systemic arteries → capillaries in body tissues �
 add(
   "biology",
   "transport_in_animals",
+  "circulation_and_pressure",
   "Double Circulation",
 
   `
@@ -43558,6 +44016,7 @@ The cell therefore passes through the heart twice before completing the full cir
 add(
   "biology",
   "transport_in_animals",
+  "heart_rate_and_exercise",
   "The Cardiac Cycle",
 
   `
@@ -43632,6 +44091,7 @@ The ventricles relax and fill with blood.
 add(
   "biology",
   "transport_in_animals",
+  "cardiac_cycle_events",
   "Atrial Systole",
 
   `
@@ -43697,6 +44157,7 @@ It increases pressure in the atria and pushes blood into the ventricles.
 add(
   "biology",
   "transport_in_animals",
+  "cardiac_cycle_events",
   "Ventricular Systole",
 
   `
@@ -43764,6 +44225,7 @@ Ventricular contraction raises the pressure inside the ventricles. The valves cl
 add(
   "biology",
   "transport_in_animals",
+  "cardiac_cycle_events",
   "Diastole and Ventricular Filling",
 
   `
@@ -43831,6 +44293,7 @@ The ventricles relax, causing their pressure to fall. Blood therefore flows from
 add(
   "biology",
   "transport_in_animals",
+  "heart_rate_and_exercise",
   "The Complete Cardiac Cycle",
 
   `
@@ -43908,6 +44371,7 @@ The heart therefore has to maintain continuous circulation rather than pump only
 add(
   "biology",
   "transport_in_animals",
+  "heart_rate_and_exercise",
   "The Heartbeat and Heart Rate",
 
   `
@@ -43987,6 +44451,7 @@ There are four 15-second intervals in one minute.
 add(
   "biology",
   "transport_in_animals",
+  "cardiac_cycle_events",
   "The Pulse",
 
   `
@@ -44057,6 +44522,7 @@ An artery lies close to the skin at the wrist. Each heartbeat produces a pressur
 add(
   "biology",
   "transport_in_animals",
+  "pulse_and_blood_pressure",
   "Blood Pressure",
 
   `
@@ -44141,6 +44607,7 @@ The first number, 120 mmHg, is the systolic pressure.
 add(
   "biology",
   "transport_in_animals",
+  "circulation_and_pressure",
   "Why Blood Pressure Is Highest in Arteries",
 
   `
@@ -44207,6 +44674,7 @@ Blood pressure is much higher in arteries because they receive blood directly fr
 add(
   "biology",
   "transport_in_animals",
+  "heart_rate_and_exercise",
   "Heart Rate During Exercise",
 
   `
@@ -44278,6 +44746,7 @@ Vigorous exercise increases muscle activity. Muscle cells respire more rapidly a
 add(
   "biology",
   "transport_in_animals",
+  "pulse_and_blood_pressure",
   "Measuring Pulse Rate Before and After Exercise",
 
   `
@@ -44386,6 +44855,7 @@ The pulse rate increased by:
 add(
   "biology",
   "transport_in_animals",
+  "blood_vessels_structure",
   "Recovery of Heart Rate After Exercise",
 
   `
@@ -44469,6 +44939,7 @@ The pulse rate increases substantially during exercise, reaches 132 bpm immediat
 add(
   "biology",
   "transport_in_animals",
+  "capillaries_and_tissue_fluid",
   "Exchange Between Capillaries and Body Cells",
 
   `
@@ -44551,6 +45022,7 @@ Oxygen leaves the blood in a capillary, crosses the thin capillary wall, passes 
 add(
   "biology",
   "transport_in_animals",
+  "capillaries_and_tissue_fluid",
   "Tissue Fluid",
 
   `
@@ -44625,6 +45097,7 @@ Tissue fluid surrounds the cells and provides the medium through which oxygen, n
 add(
   "biology",
   "transport_in_animals",
+  "capillaries_and_tissue_fluid",
   "Formation of Tissue Fluid",
 
   `
@@ -44700,6 +45173,7 @@ Red blood cells are much larger than the small molecules that can pass through t
 add(
   "biology",
   "transport_in_animals",
+  "capillaries_and_tissue_fluid",
   "Removal of Tissue Fluid",
 
   `
@@ -44762,6 +45236,7 @@ If excess fluid accumulated around cells, tissues would swell. The lymphatic sys
 add(
   "biology",
   "transport_in_animals",
+  "white_cells_and_lymphatics",
   "The Lymphatic System",
 
   `
@@ -44833,6 +45308,7 @@ It returns excess tissue fluid to the bloodstream and supports immune defence.
 add(
   "biology",
   "transport_in_animals",
+  "vessel_comparisons",
   "Comparing Arteries, Veins and Capillaries",
 
   `
@@ -44920,6 +45396,7 @@ It is most likely a capillary because capillaries have walls about one cell thic
 add(
   "biology",
   "transport_in_animals",
+  "vessel_comparisons",
   "Why Capillaries Have a Narrow Lumen",
 
   `
@@ -44983,6 +45460,7 @@ It keeps red blood cells close to the capillary wall, reducing the distance oxyg
 add(
   "biology",
   "transport_in_animals",
+  "pulse_and_blood_pressure",
   "Blood Flow and Resistance",
 
   `
@@ -45056,6 +45534,7 @@ A very narrow vessel would generally offer greater resistance to blood flow.
 add(
   "biology",
   "transport_in_animals",
+  "blood_vessels_structure",
   "Cardiac Output",
 
   `
@@ -45160,6 +45639,7 @@ Increasing cardiac output increases the amount of blood pumped through the circu
 add(
   "biology",
   "transport_in_animals",
+  "pulse_and_blood_pressure",
   "Stroke Volume",
 
   `
@@ -45255,6 +45735,7 @@ Cardiac output:
 add(
   "biology",
   "transport_in_animals",
+  "blood_vessels_structure",
   "How Exercise Changes Cardiac Output",
 
   `
@@ -45344,6 +45825,7 @@ Cardiac output therefore increases from <strong>4.9 L/min to 8.0 L/min</strong>.
 add(
   "biology",
   "transport_in_animals",
+  "white_cells_and_lymphatics",
   "antigen",
   `
 <h2>Antigens</h2>
@@ -45425,6 +45907,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "antibodies_and_immunity",
   "antibody",
   `
 <h2>Antibodies</h2>
@@ -45509,6 +45992,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "antibodies_and_immunity",
   "antibody_action",
   `
 <h2>How Antibodies Help Destroy Pathogens</h2>
@@ -45593,6 +46077,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "antibodies_and_immunity",
   "memory_cells",
   `
 <h2>Memory Cells</h2>
@@ -45675,6 +46160,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "antibodies_and_immunity",
   "primary_secondary_immune_response",
   `
 <h2>Primary and Secondary Immune Responses</h2>
@@ -45761,6 +46247,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "antibodies_and_immunity",
   "vaccination",
   `
 <h2>Vaccination</h2>
@@ -45835,6 +46322,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "antibodies_and_immunity",
   "vaccination_population_immunity",
   `
 <h2>Vaccination and Population Protection</h2>
@@ -45909,6 +46397,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "vaccination_and_phagocytosis",
   "active_passive_immunity",
   `
 <h2>Active and Passive Immunity</h2>
@@ -45988,6 +46477,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "vaccination_and_phagocytosis",
   "phagocytosis",
   `
 <h2>Phagocytosis</h2>
@@ -46072,6 +46562,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "vaccination_and_phagocytosis",
   "phagocytes_and_lymphocytes",
   `
 <h2>Phagocytes and Lymphocytes</h2>
@@ -46175,6 +46666,7 @@ add(
 add(
   "biology",
   "transport_in_animals",
+  "vaccination_and_phagocytosis",
   "immune_response_sequence",
   `
 <h2>Complete Immune Response</h2>
@@ -46271,6 +46763,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "plant_transport_need_and_xylem",
   "need_for_transport_in_plants",
   `
 <h2>Why Plants Need Transport Systems</h2>
@@ -46358,6 +46851,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "plant_transport_need_and_xylem",
   "xylem_structure",
   `
 <h2>Structure of Xylem Vessels</h2>
@@ -46442,6 +46936,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "plant_transport_need_and_xylem",
   "xylem_function",
   `
 <h2>Function of Xylem</h2>
@@ -46526,6 +47021,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "root_absorption_and_water_movement",
   "root_hair_cell_absorption",
   `
 <h2>Root Hair Cells and Water Absorption</h2>
@@ -46604,6 +47100,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "root_absorption_and_water_movement",
   "mineral_ion_absorption",
   `
 <h2>Mineral Ion Absorption by Roots</h2>
@@ -46680,6 +47177,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "root_absorption_and_water_movement",
   "root_to_xylem_water_movement",
   `
 <h2>Movement of Water from Root Hair to Xylem</h2>
@@ -46762,6 +47260,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "transpiration_stream_and_pull",
   "transpiration",
   `
 <h2>Transpiration</h2>
@@ -46840,6 +47339,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "transpiration_stream_and_pull",
   "transpiration_stream",
   `
 <h2>The Transpiration Stream</h2>
@@ -46920,6 +47420,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "root_absorption_and_water_movement",
   "cohesion_adhesion_xylem",
   `
 <h2>Cohesion and Adhesion in Water Transport</h2>
@@ -46996,6 +47497,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "transpiration_stream_and_pull",
   "transpiration_pull",
   `
 <h2>Transpiration Pull</h2>
@@ -47076,6 +47578,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "transpiration_stream_and_pull",
   "factors_affecting_transpiration",
   `
 <h2>Factors Affecting Transpiration Rate</h2>
@@ -47179,6 +47682,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "factors_affecting_transpiration",
   "transpiration_investigation",
   `
 <h2>Investigating Transpiration Rate</h2>
@@ -47267,6 +47771,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "stomata_and_transpiration_control",
   "stomata",
   `
 <h2>Stomata</h2>
@@ -47351,6 +47856,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "xylem_transport_mechanisms",
   "guard_cells",
   `
 <h2>Guard Cells</h2>
@@ -47431,6 +47937,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "stomata_and_transpiration_control",
   "stomatal_opening_and_closing",
   `
 <h2>Opening and Closing of Stomata</h2>
@@ -47515,6 +48022,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_structure_and_function",
   "stomata_distribution",
   `
 <h2>Distribution of Stomata on Leaves</h2>
@@ -47589,6 +48097,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "xylem_transport_mechanisms",
   "xerophyte_adaptations",
   `
 <h2>Leaf Adaptations That Reduce Water Loss</h2>
@@ -47671,6 +48180,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_structure_and_function",
   "xerophyte_stomatal_adaptations",
   `
 <h2>Stomatal Adaptations in Xerophytes</h2>
@@ -47749,6 +48259,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "factors_affecting_transpiration",
   "transpiration_temperature",
   `
 <h2>Temperature and Transpiration</h2>
@@ -47835,6 +48346,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "factors_affecting_transpiration",
   "transpiration_humidity",
   `
 <h2>Humidity and Transpiration</h2>
@@ -47917,6 +48429,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "factors_affecting_transpiration",
   "wind_and_transpiration",
   `
 <h2>Wind and Transpiration</h2>
@@ -47999,6 +48512,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "factors_affecting_transpiration",
   "light_and_transpiration",
   `
 <h2>Light Intensity and Transpiration</h2>
@@ -48079,6 +48593,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "stomata_and_transpiration_control",
   "transpiration_factor_comparison",
   `
 <h2>Comparing Factors Affecting Transpiration</h2>
@@ -48162,6 +48677,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_structure_and_function",
   "phloem_structure",
   `
 <h2>Structure of Phloem</h2>
@@ -48244,6 +48760,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "translocation_and_source_sink",
   "phloem_function",
   `
 <h2>Function of Phloem</h2>
@@ -48334,6 +48851,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "translocation_and_source_sink",
   "source_and_sink",
   `
 <h2>Sources and Sinks in Phloem Transport</h2>
@@ -48430,6 +48948,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "translocation_and_source_sink",
   "translocation",
   `
 <h2>Translocation in Phloem</h2>
@@ -48516,6 +49035,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "translocation_and_source_sink",
   "phloem_loading",
   `
 <h2>Loading Sucrose into Phloem</h2>
@@ -48600,6 +49120,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "translocation_and_source_sink",
   "pressure_flow_phloem",
   `
 <h2>Pressure Flow in Phloem</h2>
@@ -48686,6 +49207,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_experimental_evidence",
   "phloem_unloading",
   `
 <h2>Unloading Sucrose at the Sink</h2>
@@ -48769,6 +49291,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_experimental_evidence",
   "phloem_transport_direction",
   `
 <h2>Direction of Phloem Transport</h2>
@@ -48871,6 +49394,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_experimental_evidence",
   "xylem_and_phloem_comparison",
   `
 <h2>Xylem and Phloem Compared</h2>
@@ -48983,6 +49507,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_experimental_evidence",
   "ringing_experiment_phloem",
   `
 <h2>Ringing Experiment and Phloem Transport</h2>
@@ -49071,6 +49596,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "xylem_transport_mechanisms",
   "interpreting_ringing_results",
   `
 <h2>Interpreting a Ringing Experiment</h2>
@@ -49155,6 +49681,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "phloem_experimental_evidence",
   "phloem_transport_experiment_design",
   `
 <h2>Designing an Investigation of Phloem Transport</h2>
@@ -49241,6 +49768,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "xylem_transport_mechanisms",
   "water_and_mineral_transport_in_xylem",
   `
 <h2>Water and Mineral Ion Transport in Xylem</h2>
@@ -49323,6 +49851,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "xerophytes_and_ringing",
   "mineral_ion_transport",
   `
 <h2>Mineral Ion Transport in Plants</h2>
@@ -49407,6 +49936,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "xerophytes_and_ringing",
   "root_pressure",
   `
 <h2>Root Pressure</h2>
@@ -49487,6 +50017,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "stomata_and_transpiration_control",
   "transpiration_pull_vs_root_pressure",
   `
 <h2>Transpiration Pull and Root Pressure</h2>
@@ -49592,6 +50123,7 @@ add(
 add(
   "biology",
   "transport_in_plants",
+  "xerophytes_and_ringing",
   "transport_in_plants_complete_comparison",
   `
 <h2>Transport in Plants: Complete Comparison</h2>
@@ -49692,6 +50224,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_basics",
   "photosynthesis",
   `
 <h2>Photosynthesis</h2>
@@ -49783,6 +50316,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_basics",
   "chlorophyll_and_light_energy",
   `
 <h2>Chlorophyll and Light Energy</h2>
@@ -49865,6 +50399,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_basics",
   "chloroplast_structure_photosynthesis",
   `
 <h2>Chloroplasts and Photosynthesis</h2>
@@ -49947,6 +50482,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_basics",
   "carbon_dioxide_entry_leaf",
   `
 <h2>Carbon Dioxide Entry into a Leaf</h2>
@@ -50025,6 +50561,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "epidermis_and_veins",
   "water_in_photosynthesis",
   `
 <h2>Water as a Raw Material for Photosynthesis</h2>
@@ -50113,6 +50650,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "products_and_carbohydrate_fate",
   "glucose_fates_after_photosynthesis",
   `
 <h2>What Happens to Glucose After Photosynthesis?</h2>
@@ -50197,6 +50735,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "products_and_carbohydrate_fate",
   "starch_test_leaf",
   `
 <h2>Testing a Leaf for Starch</h2>
@@ -50289,6 +50828,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "starch_testing_and_storage",
   "destarching_plants",
   `
 <h2>Destarching a Plant</h2>
@@ -50369,6 +50909,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "raw_materials_entry",
   "light_required_for_photosynthesis",
   `
 <h2>Light Is Required for Photosynthesis</h2>
@@ -50453,6 +50994,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "raw_materials_entry",
   "carbon_dioxide_required_photosynthesis",
   `
 <h2>Carbon Dioxide Is Required for Photosynthesis</h2>
@@ -50535,6 +51077,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "products_and_carbohydrate_fate",
   "photosynthesis_and_oxygen",
   `
 <h2>Oxygen Production During Photosynthesis</h2>
@@ -50617,6 +51160,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "raw_materials_entry",
   "light_intensity_and_photosynthesis",
   `
 <h2>Light Intensity and Photosynthesis</h2>
@@ -50707,6 +51251,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "raw_materials_entry",
   "carbon_dioxide_concentration_and_photosynthesis",
   `
 <h2>Carbon Dioxide Concentration and Photosynthesis</h2>
@@ -50793,6 +51338,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "limiting_factors_photosynthesis",
   "temperature_and_photosynthesis",
   `
 <h2>Temperature and Photosynthesis</h2>
@@ -50889,6 +51435,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "limiting_factors_photosynthesis",
   "limiting_factor",
   `
 <h2>Limiting Factors in Photosynthesis</h2>
@@ -50986,6 +51533,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_investigations",
   "measuring_photosynthesis_rate",
   `
 <h2>Measuring the Rate of Photosynthesis</h2>
@@ -51070,6 +51618,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_investigations",
   "photosynthesis_graphs",
   `
 <h2>Interpreting Photosynthesis Graphs</h2>
@@ -51173,6 +51722,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_investigations",
   "photosynthesis_practical_variables",
   `
 <h2>Variables in a Photosynthesis Investigation</h2>
@@ -51270,6 +51820,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "photosynthesis_investigations",
   "improving_photosynthesis_experiment",
   `
 <h2>Improving a Photosynthesis Experiment</h2>
@@ -51354,6 +51905,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "measuring_rate",
   "photosynthesis_complete_reasoning",
   `
 <h2>Photosynthesis: Complete Reasoning Problem</h2>
@@ -51450,6 +52002,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "measuring_rate",
   "leaf_as_photosynthetic_organ",
   `
 <h2>The Leaf as a Photosynthetic Organ</h2>
@@ -51538,6 +52091,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "measuring_rate",
   "upper_epidermis_leaf",
   `
 <h2>Upper Epidermis of a Leaf</h2>
@@ -51616,6 +52170,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "measuring_rate",
   "palisade_mesophyll_photosynthesis",
   `
 <h2>Palisade Mesophyll and Photosynthesis</h2>
@@ -51698,6 +52253,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "leaf_anatomy_adaptations",
   "spongy_mesophyll",
   `
 <h2>Spongy Mesophyll and Gas Diffusion</h2>
@@ -51772,6 +52328,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "leaf_anatomy_adaptations",
   "leaf_veins_and_photosynthesis",
   `
 <h2>Leaf Veins and Photosynthesis</h2>
@@ -51850,6 +52407,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "leaf_anatomy_adaptations",
   "lower_epidermis_and_stomata",
   `
 <h2>Lower Epidermis and Stomata</h2>
@@ -51930,6 +52488,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "leaf_anatomy_adaptations",
   "leaf_cross_section",
   `
 <h2>Interpreting a Leaf Cross-Section</h2>
@@ -52020,6 +52579,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "leaf_anatomy_adaptations",
   "leaf_adaptations_summary",
   `
 <h2>Leaf Adaptations for Efficient Photosynthesis</h2>
@@ -52100,6 +52660,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "epidermis_and_veins",
   "photosynthesis_and_respiration",
   `
 <h2>Photosynthesis and Respiration</h2>
@@ -52192,6 +52753,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "products_and_carbohydrate_fate",
   "photosynthesis_and_glucose",
   `
 <h2>What Plants Do With Glucose</h2>
@@ -52280,6 +52842,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "starch_testing_and_storage",
   "starch_storage_in_plants",
   `
 <h2>Starch Storage in Plants</h2>
@@ -52360,6 +52923,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "epidermis_and_veins",
   "photosynthesis_and_mineral_nutrition",
   `
 <h2>Photosynthesis and Mineral Nutrition</h2>
@@ -52444,6 +53008,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "starch_testing_and_storage",
   "photosynthesis_starch_evidence",
   `
 <h2>Why the Starch Test Provides Evidence of Photosynthesis</h2>
@@ -52530,6 +53095,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "epidermis_and_veins",
   "photosynthesis_experiment_control",
   `
 <h2>Controls in a Photosynthesis Experiment</h2>
@@ -52610,6 +53176,7 @@ add(
 add(
   "biology",
   "photosynthesis",
+  "products_and_carbohydrate_fate",
   "photosynthesis_complete_process",
   `
 <h2>Photosynthesis: Complete Process</h2>
@@ -52698,6 +53265,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_requirements_in_plants",
   "why_plants_need_mineral_ions",
   `
 <h2>Why Plants Need Mineral Ions</h2>
@@ -52780,6 +53348,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_requirements_in_plants",
   "nitrate_ions_in_plants",
   `
 <h2>Nitrate Ions and Plant Growth</h2>
@@ -52862,6 +53431,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_deficiency_symptoms",
   "nitrate_deficiency",
   `
 <h2>Nitrate Deficiency</h2>
@@ -52954,6 +53524,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_requirements_in_plants",
   "magnesium_ions_in_plants",
   `
 <h2>Magnesium Ions and Chlorophyll</h2>
@@ -53022,6 +53593,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_deficiency_symptoms",
   "magnesium_deficiency",
   `
 <h2>Magnesium Deficiency</h2>
@@ -53118,6 +53690,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_deficiency_symptoms",
   "comparing_nitrate_and_magnesium_deficiency",
   `
 <h2>Nitrate Deficiency Compared with Magnesium Deficiency</h2>
@@ -53204,6 +53777,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_deficiency_symptoms",
   "mineral_deficiency_controlled_investigation",
   `
 <h2>Investigating Mineral Deficiency</h2>
@@ -53308,6 +53882,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "environmental_factors_and_hydroponics",
   "hydroponics_and_mineral_nutrition",
   `
 <h2>Investigating Mineral Requirements Using Hydroponics</h2>
@@ -53398,6 +53973,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "root_absorption_mechanisms",
   "root_absorption_of_mineral_ions",
   `
 <h2>Absorption of Mineral Ions by Roots</h2>
@@ -53484,6 +54060,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_requirements_in_plants",
   "active_transport_mineral_ions",
   `
 <h2>Active Transport of Mineral Ions</h2>
@@ -53564,6 +54141,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "root_absorption_mechanisms",
   "mineral_ion_movement_in_plant",
   `
 <h2>Movement of Mineral Ions Through a Plant</h2>
@@ -53646,6 +54224,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "investigating_mineral_deficiency",
   "mineral_deficiency_identification",
   `
 <h2>Identifying Mineral Deficiency from Evidence</h2>
@@ -53734,6 +54313,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "investigating_mineral_deficiency",
   "mineral_deficiency_experiment_data",
   `
 <h2>Interpreting Data from a Mineral Deficiency Experiment</h2>
@@ -53824,6 +54404,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "mineral_requirements_in_plants",
   "mineral_nutrition_practical_evaluation",
   `
 <h2>Evaluating a Mineral Nutrition Experiment</h2>
@@ -53912,6 +54493,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "evaluating_mineral_nutrition",
   "mineral_nutrition_complete_reasoning",
   `
 <h2>Plant Mineral Nutrition: Complete Reasoning Problem</h2>
@@ -53992,6 +54574,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "root_absorption_mechanisms",
   "mineral_ion_concentration_gradient",
   `
 <h2>Mineral Ions and Concentration Gradients</h2>
@@ -54070,6 +54653,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "root_absorption_mechanisms",
   "root_hair_cell_adaptation_mineral_absorption",
   `
 <h2>Root Hair Cells and Mineral Absorption</h2>
@@ -54156,6 +54740,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "environmental_factors_and_hydroponics",
   "waterlogging_and_mineral_absorption",
   `
 <h2>Waterlogging and Mineral Absorption</h2>
@@ -54230,6 +54815,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "investigating_mineral_deficiency",
   "mineral_ion_deficiency_and_growth",
   `
 <h2>How Mineral Deficiency Affects Plant Growth</h2>
@@ -54306,6 +54892,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "evaluating_mineral_nutrition",
   "mineral_nutrition_dose_response",
   `
 <h2>Mineral Concentration and Plant Growth</h2>
@@ -54390,6 +54977,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "evaluating_mineral_nutrition",
   "mineral_nutrition_graph_reasoning",
   `
 <h2>Reading a Mineral Nutrition Graph</h2>
@@ -54480,6 +55068,7 @@ add(
 add(
   "biology",
   "mineral_nutrition",
+  "evaluating_mineral_nutrition",
   "plant_mineral_nutrition_complete_problem",
   `
 <h2>Plant Mineral Nutrition: Complete Exam Problem</h2>
@@ -54554,6 +55143,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "primary_growth_concepts",
   "plant_growth_and_development",
   `
 <h2>Plant Growth and Development</h2>
@@ -54634,6 +55224,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "conditions_for_seed_germination",
   `
 <h2>Conditions Necessary for Seed Germination</h2>
@@ -54724,6 +55315,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "investigating_seed_germination",
   `
 <h2>Investigating Conditions Required for Germination</h2>
@@ -54812,6 +55404,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "seed_dormancy",
   `
 <h2>Seed Dormancy</h2>
@@ -54890,6 +55483,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "epigeal_germination",
   `
 <h2>Epigeal Germination</h2>
@@ -54962,6 +55556,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "hypogeal_germination",
   `
 <h2>Hypogeal Germination</h2>
@@ -55032,6 +55627,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "primary_growth_concepts",
   "primary_growth_in_plants",
   `
 <h2>Primary Growth in Plants</h2>
@@ -55108,6 +55704,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_transport_and_synthesis",
   "secondary_growth_in_plants",
   `
 <h2>Secondary Growth in Plants</h2>
@@ -55182,6 +55779,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "plant_hormones_auxin_actions",
   "plant_growth_hormones",
   `
 <h2>Growth Hormones in Plants</h2>
@@ -55252,6 +55850,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropisms_phototropism_basics",
   "phototropism",
   `
 <h2>Phototropism</h2>
@@ -55324,6 +55923,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "plant_hormones_auxin_actions",
   "auxin_distribution_in_phototropism",
   `
 <h2>Auxin Distribution During Phototropism</h2>
@@ -55398,6 +55998,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "phototropism_experiments",
   "positive_and_negative_tropism",
   `
 <h2>Positive and Negative Tropism</h2>
@@ -55478,6 +56079,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "phototropism_experiments",
   "gravitropism",
   `
 <h2>Gravitropism</h2>
@@ -55552,6 +56154,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "plant_hormones_auxin_actions",
   "auxin_and_gravitropism_in_roots",
   `
 <h2>Auxin and Gravitropism in Roots</h2>
@@ -55630,6 +56233,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "phototropism_experiments",
   "phototropism_experiment",
   `
 <h2>Investigating Phototropism</h2>
@@ -55712,6 +56316,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "phototropism_experiments",
   "phototropism_experimental_evidence",
   `
 <h2>Interpreting Evidence from a Phototropism Experiment</h2>
@@ -55788,6 +56393,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "phototropism_experiments",
   "phototropism_vs_gravitropism",
   `
 <h2>Phototropism and Gravitropism Compared</h2>
@@ -55878,6 +56484,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "plant_hormones_auxin_actions",
   "auxin_and_cell_elongation",
   `
 <h2>Auxin and Cell Elongation</h2>
@@ -55950,6 +56557,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "plant_hormones_auxin_actions",
   "auxin_and_root_growth",
   `
 <h2>Auxin and Root Growth</h2>
@@ -56028,6 +56636,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_concentration_and_growth",
   "auxin_concentration_and_growth",
   `
 <h2>Auxin Concentration and Growth Response</h2>
@@ -56116,6 +56725,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_concentration_and_growth",
   "auxin_and_apical_dominance",
   `
 <h2>Auxin and Apical Dominance</h2>
@@ -56186,6 +56796,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_concentration_and_growth",
   "auxin_and_plant_cuttings",
   `
 <h2>Auxin and Root Formation in Cuttings</h2>
@@ -56264,6 +56875,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_concentration_and_growth",
   "plant_growth_hormone_experiment",
   `
 <h2>Investigating the Effect of a Growth Hormone</h2>
@@ -56348,6 +56960,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "primary_growth_concepts",
   "plant_growth_data_interpretation",
   `
 <h2>Interpreting Plant Growth Hormone Data</h2>
@@ -56430,6 +57043,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_concentration_and_growth",
   "plant_growth_hormones_complete_reasoning",
   `
 <h2>Plant Growth Hormones: Complete Reasoning Problem</h2>
@@ -56518,6 +57132,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "root_apical_meristem",
   `
 <h2>Root Apical Meristem</h2>
@@ -56592,6 +57207,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "shoot_apical_meristem",
   `
 <h2>Shoot Apical Meristem</h2>
@@ -56662,6 +57278,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "zones_of_root_growth",
   `
 <h2>Zones of Growth in a Root</h2>
@@ -56748,6 +57365,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "primary_growth_concepts",
   "root_cap_and_root_growth",
   `
 <h2>Root Cap and Protection of the Growing Root</h2>
@@ -56822,6 +57440,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "primary_growth_concepts",
   "measuring_primary_growth",
   `
 <h2>Measuring Primary Growth</h2>
@@ -56908,6 +57527,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "measuring_plant_growth",
   "investigating_plant_growth_rate",
   `
 <h2>Investigating Plant Growth Rate</h2>
@@ -56988,6 +57608,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "measuring_plant_growth",
   "plant_growth_curve",
   `
 <h2>Interpreting a Plant Growth Curve</h2>
@@ -57070,6 +57691,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "measuring_plant_growth",
   "plant_growth_experiment_evaluation",
   `
 <h2>Evaluating a Plant Growth Experiment</h2>
@@ -57154,6 +57776,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "measuring_plant_growth",
   "plant_growth_complete_reasoning",
   `
 <h2>Plant Growth: Complete Reasoning Problem</h2>
@@ -57230,6 +57853,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_transport_and_synthesis",
   "primary_vs_secondary_growth",
   `
 <h2>Primary Growth Compared with Secondary Growth</h2>
@@ -57310,6 +57934,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropisms_phototropism_basics",
   "lateral_meristems",
   `
 <h2>Lateral Meristems and Secondary Growth</h2>
@@ -57386,6 +58011,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "secondary_growth_woody_tissues",
   "secondary_growth_in_stems",
   `
 <h2>Secondary Growth in Stems</h2>
@@ -57460,6 +58086,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "secondary_growth_woody_tissues",
   "secondary_growth_in_roots",
   `
 <h2>Secondary Growth in Roots</h2>
@@ -57534,6 +58161,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "measuring_plant_growth",
   "plant_growth_measurement_comparison",
   `
 <h2>Comparing Plant Growth Using Data</h2>
@@ -57614,6 +58242,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_graphs_and_differentiation",
   "plant_growth_graph_analysis",
   `
 <h2>Plant Growth Graph Analysis</h2>
@@ -57700,6 +58329,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "secondary_growth_woody_tissues",
   "primary_secondary_growth_exam_problem",
   `
 <h2>Primary and Secondary Growth: Complete Reasoning Problem</h2>
@@ -57774,6 +58404,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_graphs_and_differentiation",
   "growth_by_cell_division",
   `
 <h2>Growth by Cell Division</h2>
@@ -57856,6 +58487,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_graphs_and_differentiation",
   "cell_elongation_in_plant_growth",
   `
 <h2>Cell Elongation in Plant Growth</h2>
@@ -57930,6 +58562,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_graphs_and_differentiation",
   "cell_differentiation_in_plant_growth",
   `
 <h2>Cell Differentiation During Plant Growth</h2>
@@ -58008,6 +58641,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropisms_phototropism_basics",
   "growth_zones_root_sequence",
   `
 <h2>Growth Zones of a Root: Linking the Processes</h2>
@@ -58100,6 +58734,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_graphs_and_differentiation",
   "root_hairs_and_differentiation",
   `
 <h2>Root Hair Cells and Differentiation</h2>
@@ -58170,6 +58805,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropisms_phototropism_basics",
   "meristematic_cells_and_differentiation",
   `
 <h2>Meristematic Cells and Differentiation</h2>
@@ -58238,6 +58874,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_processes_and_seed_reserves",
   "plant_growth_processes_exam_problem",
   `
 <h2>Plant Growth Processes: Complete Exam Problem</h2>
@@ -58314,6 +58951,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_transport_and_synthesis",
   "auxin_production",
   `
 <h2>Auxin Production in Plants</h2>
@@ -58386,6 +59024,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "auxin_transport_and_synthesis",
   "auxin_movement_in_shoots",
   `
 <h2>Movement of Auxin in Shoots</h2>
@@ -58456,6 +59095,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "gravitropism_in_roots_shoots",
   "phototropism_shoots",
   `
 <h2>Phototropism in Shoots</h2>
@@ -58532,6 +59172,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "gravitropism_in_roots_shoots",
   "phototropism_experiment_setup",
   `
 <h2>Investigating Phototropism</h2>
@@ -58608,6 +59249,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "gravitropism_in_roots_shoots",
   "phototropism_evidence",
   `
 <h2>Interpreting Evidence from a Phototropism Experiment</h2>
@@ -58678,6 +59320,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "gravitropism_in_roots_shoots",
   "gravitropism_roots",
   `
 <h2>Gravitropism in Roots</h2>
@@ -58754,6 +59397,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "gravitropism_in_roots_shoots",
   "gravitropism_shoots",
   `
 <h2>Gravitropism in Shoots</h2>
@@ -58830,6 +59474,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropism_experimental_controls",
   "phototropism_gravitropism_comparison",
   `
 <h2>Phototropism and Gravitropism Compared</h2>
@@ -58916,6 +59561,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropism_experimental_controls",
   "phototropism_control_experiment",
   `
 <h2>Control Experiments in Phototropism</h2>
@@ -58990,6 +59636,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropism_experimental_controls",
   "phototropism_experiment_variables",
   `
 <h2>Variables in a Tropism Investigation</h2>
@@ -59066,6 +59713,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropism_experimental_controls",
   "phototropism_experiment_improvements",
   `
 <h2>Improving a Phototropism Experiment</h2>
@@ -59134,6 +59782,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "seed_dormancy",
   `
 <h2>Seed Dormancy</h2>
@@ -59204,6 +59853,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "germination_mechanisms_and_food",
   "seed_germination_start",
   `
 <h2>Starting Seed Germination</h2>
@@ -59274,6 +59924,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "germination_mechanisms_and_food",
   "stored_food_during_germination",
   `
 <h2>Stored Food During Seed Germination</h2>
@@ -59346,6 +59997,7 @@ add(
 add(
   "biology",
   "respiration",
+  "practical_respiration_experiments",
   "respiration_during_germination",
   `
 <h2>Respiration During Seed Germination</h2>
@@ -59418,6 +60070,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "germination_mechanisms_and_food",
   "germination_complete_reasoning",
   `
 <h2>Germination: Complete Reasoning Problem</h2>
@@ -59488,6 +60141,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "early_seedling_development",
   "germination_radicle_emergence",
   `
 <h2>Radicle Emergence During Germination</h2>
@@ -59560,6 +60214,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "early_seedling_development",
   "plumule_emergence",
   `
 <h2>Plumule Emergence During Germination</h2>
@@ -59628,6 +60283,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "early_seedling_development",
   "cotyledon_function",
   `
 <h2>Cotyledons and Early Seedling Growth</h2>
@@ -59694,6 +60350,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "epigeal_germination",
   `
 <h2>Epigeal Germination</h2>
@@ -59758,6 +60415,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "hypogeal_germination",
   `
 <h2>Hypogeal Germination</h2>
@@ -59828,6 +60486,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "germination_mechanisms_and_food",
   "epigeal_vs_hypogeal_comparison",
   `
 <h2>Epigeal and Hypogeal Germination Compared</h2>
@@ -59912,6 +60571,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "germination_mechanisms_and_food",
   "germination_sequence_problem",
   `
 <h2>Germination Sequence: Complete Reasoning Problem</h2>
@@ -59986,6 +60646,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "environmental_requirements_germination",
   "investigating_water_requirement_germination",
   `
 <h2>Investigating the Need for Water During Germination</h2>
@@ -60058,6 +60719,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "environmental_requirements_germination",
   "investigating_oxygen_requirement_germination",
   `
 <h2>Investigating the Need for Oxygen During Germination</h2>
@@ -60134,6 +60796,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "environmental_requirements_germination",
   "investigating_temperature_germination",
   `
 <h2>Investigating Temperature and Germination</h2>
@@ -60210,6 +60873,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "environmental_requirements_germination",
   "germination_percentage",
   `
 <h2>Calculating Germination Percentage</h2>
@@ -60282,6 +60946,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "environmental_requirements_germination",
   "germination_data_interpretation",
   `
 <h2>Interpreting Germination Data</h2>
@@ -60354,6 +61019,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "evaluating_germination_experiments",
   "germination_experiment_reliability",
   `
 <h2>Reliability in Germination Experiments</h2>
@@ -60430,6 +61096,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "evaluating_germination_experiments",
   "germination_experiment_validity",
   `
 <h2>Validity in a Germination Experiment</h2>
@@ -60500,6 +61167,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "evaluating_germination_experiments",
   "germination_complete_exam_problem",
   `
 <h2>Germination Investigation: Complete Exam Problem</h2>
@@ -60594,6 +61262,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "early_seedling_development",
   "seedling_establishment_after_germination",
   `
 <h2>Seedling Establishment After Germination</h2>
@@ -60668,6 +61337,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_processes_and_seed_reserves",
   "stored_reserves_to_photosynthesis",
   `
 <h2>From Stored Seed Reserves to Photosynthesis</h2>
@@ -60740,6 +61410,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_establishment_growth",
   "seedling_light_requirement",
   `
 <h2>Why a Developing Seedling Needs Light</h2>
@@ -60814,6 +61485,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_establishment_growth",
   "seedling_root_shoot_balance",
   `
 <h2>Root and Shoot Development in a Seedling</h2>
@@ -60896,6 +61568,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "evaluating_germination_experiments",
   "germination_failure_analysis",
   `
 <h2>Analysing Germination Failure</h2>
@@ -60970,6 +61643,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "evaluating_germination_experiments",
   "germination_time_course",
   `
 <h2>Germination Over Time</h2>
@@ -61052,6 +61726,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_viability_and_water_uptake",
   "germination_rate_from_data",
   `
 <h2>Calculating Germination Rate from Data</h2>
@@ -61128,6 +61803,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_viability_and_water_uptake",
   "seed_viability",
   `
 <h2>Seed Viability</h2>
@@ -61202,6 +61878,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_germination_fundamentals",
   "seed_dormancy",
   `
 <h2>Seed Dormancy</h2>
@@ -61268,6 +61945,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_viability_and_water_uptake",
   "seed_storage_and_viability",
   `
 <h2>Seed Storage and Viability</h2>
@@ -61342,6 +62020,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_viability_and_water_uptake",
   "seed_germination_water_uptake",
   `
 <h2>Water Uptake at the Start of Germination</h2>
@@ -61430,6 +62109,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seed_viability_and_water_uptake",
   "enzymes_during_germination",
   `
 <h2>Enzymes During Germination</h2>
@@ -61508,6 +62188,7 @@ add(
 add(
   "biology",
   "respiration",
+  "practical_respiration_experiments",
   "germination_and_respiration_evidence",
   `
 <h2>Using Respiration Evidence to Explain Germination</h2>
@@ -61576,6 +62257,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "early_seedling_development",
   "germination_conditions_complete",
   `
 <h2>Conditions for Germination: Complete Reasoning</h2>
@@ -61646,6 +62328,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_establishment_growth",
   "seedling_root_growth_direction",
   `
 <h2>Root Growth Direction in a Developing Seedling</h2>
@@ -61720,6 +62403,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_establishment_growth",
   "seedling_shoot_growth_direction",
   `
 <h2>Shoot Growth Direction in a Developing Seedling</h2>
@@ -61790,6 +62474,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_establishment_growth",
   "root_hair_development_in_seedlings",
   `
 <h2>Root Hair Development in Young Seedlings</h2>
@@ -61864,6 +62549,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_measurement_and_division",
   "first_leaves_seedling_photosynthesis",
   `
 <h2>First Leaves and Photosynthesis</h2>
@@ -61944,6 +62630,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_measurement_and_division",
   "seedling_dependence_on_seed_reserves",
   `
 <h2>Dependence on Seed Reserves During Early Growth</h2>
@@ -62020,6 +62707,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_measurement_and_division",
   "cotyledon_depletion_during_germination",
   `
 <h2>Cotyledon Depletion During Germination</h2>
@@ -62088,6 +62776,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_measurement_and_division",
   "seedling_growth_measurement",
   `
 <h2>Measuring Growth in a Young Seedling</h2>
@@ -62164,6 +62853,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "seedling_measurement_and_division",
   "comparing_seedling_growth_data",
   `
 <h2>Comparing Seedling Growth Data</h2>
@@ -62246,6 +62936,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "seedling_growth_by_cell_division",
   `
 <h2>Cell Division in a Growing Seedling</h2>
@@ -62318,6 +63009,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "cell_elongation_seedling_growth",
   `
 <h2>Cell Elongation in a Growing Seedling</h2>
@@ -62396,6 +63088,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "cell_differentiation_in_seedling_growth",
   `
 <h2>Cell Differentiation During Seedling Growth</h2>
@@ -62470,6 +63163,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "tropisms_phototropism_basics",
   "root_growth_zones",
   `
 <h2>Zones of Growth in a Root</h2>
@@ -62548,6 +63242,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_processes_and_seed_reserves",
   "root_cap_function",
   `
 <h2>Root Cap and Protection of the Growing Root</h2>
@@ -62618,6 +63313,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "shoot_apical_meristem",
   `
 <h2>Shoot Apical Meristem</h2>
@@ -62686,6 +63382,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "meristems_and_growth_zones",
   "root_apical_meristem",
   `
 <h2>Root Apical Meristem</h2>
@@ -62754,6 +63451,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_processes_and_seed_reserves",
   "plant_growth_processes_complete",
   `
 <h2>Plant Growth Processes: Complete Reasoning Problem</h2>
@@ -62830,6 +63528,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_processes_and_seed_reserves",
   "plant_growth_rate_calculation",
   `
 <h2>Calculating Plant Growth Rate</h2>
@@ -62906,6 +63605,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_graph_gradient",
   `
 <h2>Using the Gradient of a Growth Graph</h2>
@@ -62982,6 +63682,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_graph_stages",
   `
 <h2>Identifying Stages of Growth from a Graph</h2>
@@ -63066,6 +63767,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "comparing_plant_growth_conditions",
   `
 <h2>Comparing Plant Growth Under Different Conditions</h2>
@@ -63148,6 +63850,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_experiment_variables",
   `
 <h2>Variables in a Plant Growth Investigation</h2>
@@ -63234,6 +63937,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_experiment_repeats",
   `
 <h2>Repeating a Plant Growth Experiment</h2>
@@ -63306,6 +64010,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_validity",
   "plant_growth_anomalous_result",
   `
 <h2>Anomalous Results in a Plant Growth Experiment</h2>
@@ -63384,6 +64089,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_validity",
   "plant_growth_data_conclusion",
   `
 <h2>Drawing a Conclusion from Plant Growth Data</h2>
@@ -63460,6 +64166,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_validity",
   "plant_growth_investigation_evaluation",
   `
 <h2>Evaluating a Plant Growth Investigation</h2>
@@ -63532,6 +64239,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "growth_processes_and_seed_reserves",
   "plant_growth_rate_calculation",
   `
 <h2>Calculating Plant Growth Rate</h2>
@@ -63608,6 +64316,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_graph_gradient",
   `
 <h2>Using the Gradient of a Growth Graph</h2>
@@ -63684,6 +64393,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_graph_stages",
   `
 <h2>Identifying Stages of Growth from a Graph</h2>
@@ -63768,6 +64478,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "comparing_plant_growth_conditions",
   `
 <h2>Comparing Plant Growth Under Different Conditions</h2>
@@ -63850,6 +64561,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_experiment_variables",
   `
 <h2>Variables in a Plant Growth Investigation</h2>
@@ -63936,6 +64648,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_conditions",
   "plant_growth_experiment_repeats",
   `
 <h2>Repeating a Plant Growth Experiment</h2>
@@ -64008,6 +64721,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_validity",
   "plant_growth_anomalous_result",
   `
 <h2>Anomalous Results in a Plant Growth Experiment</h2>
@@ -64086,6 +64800,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_validity",
   "plant_growth_data_conclusion",
   `
 <h2>Drawing a Conclusion from Plant Growth Data</h2>
@@ -64162,6 +64877,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_validity",
   "plant_growth_investigation_evaluation",
   `
 <h2>Evaluating a Plant Growth Investigation</h2>
@@ -64234,6 +64950,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "secondary_growth_woody_tissues",
   "secondary_growth_lateral_meristems",
   `
 <h2>Secondary Growth and Lateral Meristems</h2>
@@ -64304,6 +65021,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "secondary_growth_woody_tissues",
   "vascular_cambium_secondary_xylem_phloem",
   `
 <h2>Vascular Cambium and the Production of Vascular Tissue</h2>
@@ -64376,6 +65094,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "vascular_cambium_and_environments",
   "secondary_growth_woody_stems",
   `
 <h2>Secondary Growth in Woody Stems</h2>
@@ -64446,6 +65165,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "experimental_growth_validity",
   "annual_growth_rings",
   `
 <h2>Annual Growth Rings</h2>
@@ -64518,6 +65238,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "vascular_cambium_and_environments",
   "secondary_growth_roots",
   `
 <h2>Secondary Growth in Roots</h2>
@@ -64586,6 +65307,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "vascular_cambium_and_environments",
   "primary_secondary_growth_data",
   `
 <h2>Interpreting Primary and Secondary Growth Data</h2>
@@ -64664,6 +65386,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "vascular_cambium_and_environments",
   "secondary_growth_environmental_effects",
   `
 <h2>Environmental Factors and Secondary Growth</h2>
@@ -64732,6 +65455,7 @@ add(
 add(
   "biology",
   "plant_growth_and_development",
+  "additional_topics_part_1",
   "primary_secondary_growth_complete_problem",
   `
 <h2>Primary and Secondary Growth: Complete Reasoning Problem</h2>
@@ -64811,6 +65535,7 @@ add(
 add(
   "biology",
   "human_physiology",
+  "energy_release_respiration",
   "Respiration — Releasing Energy from Food",
   `<h2>Respiration — Releasing Energy from Food</h2>
 
@@ -64899,6 +65624,7 @@ Mitochondria = "Powerhouse of the Cell"
 add(
   "biology",
   "human_physiology",
+  "energy_release_respiration",
   "Aerobic Respiration",
   `<h2>Aerobic Respiration</h2>
 
@@ -64986,6 +65712,7 @@ C6H12O6 + 6O2 → 6CO2 + 6H2O + ATP
 add(
   "biology",
   "human_physiology",
+  "energy_release_respiration",
   "Anaerobic Respiration & Oxygen Debt",
   `<h2>Anaerobic Respiration &amp; Oxygen Debt</h2>
 
@@ -65095,6 +65822,7 @@ Location         | Mitochondria     | Cytoplasm
 add(
   "biology",
   "human_physiology",
+  "kidney_and_nephron_function",
   "Excretion — Removing Metabolic Waste",
   `<h2>Excretion — Removing Metabolic Waste</h2>
 
@@ -65184,6 +65912,7 @@ Egestion  = removal of UNDIGESTED food through faeces
 add(
   "biology",
   "human_physiology",
+  "kidney_and_nephron_function",
   "The Kidney",
   `<h2>The Kidney</h2>
 
@@ -65269,6 +65998,7 @@ Ureter → Bladder → Urethra → Outside body
 add(
   "biology",
   "human_physiology",
+  "kidney_and_nephron_function",
   "The Nephron — Filtration and Reabsorption",
   `<h2>The Nephron — Filtration and Reabsorption</h2>
 
@@ -65360,6 +66090,7 @@ Remaining fluid → concentrated urea, excess water, salts → Urine
 add(
   "biology",
   "human_physiology",
+  "urine_formation_and_immunity",
   "Urine Formation & Dialysis",
   `<h2>Urine Formation &amp; Dialysis</h2>
 
@@ -65459,6 +66190,7 @@ Blood with waste → Dialysis machine → Cleaned blood returned
 add(
   "biology",
   "human_physiology",
+  "urine_formation_and_immunity",
   "Immune System — Phagocytosis",
   `<h2>Immune System — Phagocytosis</h2>
 
@@ -65548,6 +66280,7 @@ add(
 add(
   "biology",
   "human_physiology",
+  "urine_formation_and_immunity",
   "Antigens, Antibodies & Immunity",
   `<h2>Antigens, Antibodies &amp; Immunity</h2>
 
@@ -65652,6 +66385,7 @@ Vaccine → Immune response → Memory cells → Future protection
 add(
   "biology",
   "cells",
+  "microscopy_and_cell_observation",
   "Cell Biology",
   `<h2>Cell Biology</h2>
 <p>Cell biology is the study of cells, the basic structural and functional units of life.</p>
@@ -65771,6 +66505,7 @@ microscope
 add(
   "biology",
   "cells",
+  "microscopy_and_cell_observation",
   "Microscopes & Cell Observation",
   `<h2>Microscopes &amp; Cell Observation</h2>
 
@@ -66023,6 +66758,7 @@ Total Magnification =
 add(
   "biology",
   "advanced_cell_biology",
+  "advanced_cellular_mechanisms",
   "Advanced Cell Biology",
   `<h2>Advanced Cell Biology</h2>
 <p>This section explains advanced cellular processes including cell division stages, cancer biology, stem cells, and membrane transport mechanisms.</p>
@@ -66149,6 +66885,7 @@ Transport → cell intake & output
 add(
   "biology",
   "biochemistry",
+  "biological_molecules",
   "Biological Molecules",
   `<h2>Biological Molecules</h2>
 <p>Biological molecules are chemicals found in living organisms that are essential for life processes such as growth, energy, and repair.</p>
@@ -66295,7 +67032,8 @@ Vitamins → Protection & regulation
 ========================= */
 add(
   "biology",
-  "Movement",
+  "movement",
+  "skeleton_joints_muscles",
   "Skeleton — Support, Protection & Movement",
   `<h2>Skeleton — Support, Protection &amp; Movement</h2>
 
@@ -66388,7 +67126,8 @@ Ligament = connects BONE to BONE
 ========================= */
 add(
   "biology",
-  "Movement",
+  "movement",
+  "skeleton_joints_muscles",
   "Types of Joints",
   `<h2>Types of Joints</h2>
 
@@ -66478,7 +67217,8 @@ Gliding         | Sliding motion     | Wrist carpals
 ========================= */
 add(
   "biology",
-  "Movement",
+  "movement",
+  "skeleton_joints_muscles",
   "Muscles — Antagonistic Muscle Pairs",
   `<h2>Muscles — Antagonistic Muscle Pairs</h2>
 
@@ -66569,7 +67309,8 @@ Thigh       | Hamstring     | Quadriceps
 ========================= */
 add(
   "biology",
-  "Movement",
+  "movement",
+  "skeleton_joints_muscles",
   "Body System Integration",
   `<h2>Body System Integration</h2>
 
@@ -66678,6 +67419,7 @@ Nerves      → coordination and control
 add(
   "biology",
   "plant_deep_transport",
+  "advanced_plant_transport_systems",
   "Advanced Plant Biology (Transport, Tissues & Growth Systems)",
   `<h2> Plant Systems </h2>
 <p>Focus on the key systems that control plant survival: transport, growth, and distribution.</p>
@@ -66850,6 +67592,7 @@ Active transport → mineral uptake
 add(
   "biology",
   "genetics",
+  "genetics_and_evolution_synthesis",
   "Genetics",
   `<h2> Genetics</h2>
 <p>Focus on how traits are formed, expressed, and passed on.</p>
@@ -67033,6 +67776,7 @@ Selection → survival advantage
 add(
   "biology",
   "genetics",
+  "genetics_and_evolution_synthesis",
   "Molecular Genetics ",
   `<h2> Molecular Genetics</h2>
 <p>Focus on how genetic information flows to create traits.</p>
@@ -67176,6 +67920,7 @@ Evolution
 add(
   "biology",
   "genetics",
+  "additional_topics_part_1",
   "Genetics & Evolution",
   `<h1> Genetics & Evolution</h1>
     <p>
@@ -67384,6 +68129,7 @@ add(
 add(
   "biology",
   "microbiology",
+  "microbiology_and_health_control",
   "Microbiology & Health",
   `<h2>Microbiology & Health</h2>
 <p>Microbiology is the study of microorganisms and their effects on humans, animals, plants, and the environment.</p>
@@ -67544,6 +68290,7 @@ add(
 add(
   "biology",
   "microbiology",
+  "microbiology_and_health_control",
   "Microbiology & Health Control",
   `<h2> Microbiology & Health Control</h2>
 <p>Focus on how diseases are prevented, spread, and controlled.</p>
@@ -67669,6 +68416,7 @@ Control → Public health systems
 add(
   "biology",
   "homeostasis_reproduction",
+  "homeostasis_and_regulation_overview",
   "Homeostasis & Reproduction",
   `<h2>Homeostasis & Reproduction</h2>
 <p>This section explains how the body maintains a stable internal environment (homeostasis) and how organisms reproduce to ensure survival of the species.</p>
@@ -67791,6 +68539,7 @@ Decrease → Response increases it
 add(
   "biology",
   "practical_biology",
+  "enzymes_atp_metabolism_practicals",
   "Practical Biology",
   `<h2> Practical Biology</h2>
 <p>Focus on enzymes, food tests, and experimental skills.</p>
@@ -67920,6 +68669,7 @@ Graphs → show patterns
 add(
   "biology",
   "exam_skills",
+  "biology_exam_techniques",
   "Biology Exam Skills",
   `<h2>Biology Exam Skills</h2>
 <p>This phase focuses on how biology is tested in exams using graphs, experiments, tables, and unseen scenarios.</p>
@@ -68063,6 +68813,7 @@ add(
 add(
   "biology",
   "practical_biology",
+  "enzymes_atp_metabolism_practicals",
   "Practical Biology (Enzymes, ATP & Metabolism Master System)",
   `<h2>Practical Biology (Enzymes, ATP & Metabolism)</h2>
 <p>This section explains how enzymes are controlled, how energy is transferred in cells, and how metabolic pathways are regulated.</p>
@@ -68211,6 +68962,7 @@ Glucose + Oxygen → CO₂ + Water + ATP (Energy)
 add(
   "biology",
   "classification_evolution",
+  "classification_evolution_synthesis",
   "Classification & Evolution",
   `<h2> Classification & Evolution</h2>
 <p>Focus on how organisms are grouped and how they change over time.</p>
@@ -68373,6 +69125,7 @@ Adaptation → survival traits
 add(
   "biology",
   "plant_ecology",
+  "plant_coordination_and_ecology",
   "Plant Coordination, Nutrition & Ecology",
   `<h2> Plant Coordination, Nutrition & Ecology</h2>
 <p>Focus on plant response systems, nutrition, and ecosystem dynamics.</p>
@@ -68588,6 +69341,7 @@ THE NERVOUS SYSTEM
 add(
   "biology",
   "nervous_system",
+  "nervous_coordination_and_endocrine",
   "The Nervous System ",
 
   `<h2>The Nervous System (Structure, Function & Signal Transmission)</h2>
@@ -68800,6 +69554,7 @@ THE REFLEX ARC
 add(
   "biology",
   "nervous_system",
+  "nervous_coordination_and_endocrine",
   "Reflex Actions (Automatic Protective Responses)",
 
   `<h2>Reflex Actions (Automatic Protective Responses)</h2>
@@ -68971,6 +69726,7 @@ THE ENDOCRINE SYSTEM
 add(
   "biology",
   "nervous_system",
+  "nervous_coordination_and_endocrine",
   "The Endocrine System (Hormones, Glands & Body Regulation)",
   `<h2>The Endocrine System (Hormones, Glands & Body Regulation)</h2>
 <p>The endocrine system is a <b>chemical communication system</b> in the body that uses hormones to control and coordinate activities. Unlike the nervous system, it works slowly but its effects are long-lasting.</p>
@@ -69176,6 +69932,7 @@ THE EYE
 add(
   "biology",
   "nervous_system",
+  "sense_organs_specialised_receptors",
   "The Eye (Structure, Function & Seeing Process)",
 
   `<h2>The Eye (Structure, Function & Seeing Process)</h2>
@@ -69358,6 +70115,7 @@ THE EAR
 add(
   "biology",
   "nervous_system",
+  "sense_organs_specialised_receptors",
   "The Ear (Structure, Function & Hearing Process)",
 
   `<h2>The Ear (Structure, Function & Hearing Process)</h2>
@@ -69550,6 +70308,7 @@ THE NOSE
 add(
   "biology",
   "nervous_system",
+  "sense_organs_specialised_receptors",
   "The Nose (Structure, Function & Smelling Process)",
 
   `<h2>The Nose (Structure, Function & Smelling Process)</h2>
@@ -69743,6 +70502,7 @@ THE TONGUE
 add(
   "biology",
   "nervous_system",
+  "sense_organs_specialised_receptors",
   "The Tongue (Structure, Function & Taste Process)",
 
   `<h2>The Tongue (Structure, Function & Taste Process)</h2>
@@ -69932,6 +70692,7 @@ THE SKIN
 add(
   "biology",
   "nervous_system",
+  "sense_organs_specialised_receptors",
   "The Skin (Structure, Function & Touch Process)",
 
   `<h2>The Skin (Structure, Function & Touch Process)</h2>
@@ -70133,6 +70894,7 @@ THE BRAIN
 add(
   "biology",
   "nervous_system",
+  "central_nervous_system_brain_spine",
   "The Brain (Structure, Function & Control of the Body)",
 
   `<h2>The Brain (Structure, Function & Control of the Body)</h2>
@@ -70328,6 +71090,7 @@ THE SPINAL CORD
 add(
   "biology",
   "nervous_system",
+  "central_nervous_system_brain_spine",
   "The Spinal Cord (Structure, Function & Reflex Control System)",
 
   `<h2>The Spinal Cord (Structure, Function & Reflex Control System)</h2>
@@ -70521,6 +71284,7 @@ Introduction & Types of Reproduction
 add(
   "biology",
   "reproduction",
+  "types_of_reproduction_modes",
   "Reproduction (Introduction & Types of Reproduction)",
 
   `<h2>Reproduction (Introduction & Types of Reproduction)</h2>
@@ -70687,6 +71451,7 @@ Types, Mechanisms & Examples
 add(
   "biology",
   "reproduction",
+  "types_of_reproduction_modes",
   "Asexual Reproduction (Types, Mechanisms & Examples)",
 
   `<h2>Asexual Reproduction (Types, Mechanisms & Examples)</h2>
@@ -70913,6 +71678,7 @@ Gametes, Fertilization & Genetic Variation
 add(
   "biology",
   "reproduction",
+  "types_of_reproduction_modes",
   "Sexual Reproduction (Gametes, Fertilization & Genetic Variation)",
 
   `<h2>Sexual Reproduction (Gametes, Fertilization & Genetic Variation)</h2>
@@ -71112,6 +71878,7 @@ Male & Female Organs
 add(
   "biology",
   "reproduction",
+  "human_reproduction_and_development",
   "Human Reproductive System (Male & Female Organs in Full Detail)",
 
   `<h2>Human Reproductive System (Phase 4: Male & Female Organs in Full Detail)</h2>
@@ -71343,6 +72110,7 @@ Uterus = development site for baby
 add(
   "biology",
   "reproduction",
+  "human_reproduction_and_development",
   "Fertilization and Development (Phase 5: Zygote → Embryo → Fetus → Birth)",
 
   `<h2>Fertilization and Development (Phase 5: Zygote → Embryo → Fetus → Birth)</h2>
@@ -71552,6 +72320,7 @@ Birth = baby leaves uterus
 add(
   "biology",
   "reproduction",
+  "human_reproduction_and_development",
   "Reproduction (Sexual vs Asexual)",
 
   `<h2>Reproduction (Sexual vs Asexual)</h2>
