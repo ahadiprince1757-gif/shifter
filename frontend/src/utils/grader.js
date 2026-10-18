@@ -2644,18 +2644,28 @@ export function evaluateAnswer(
       safeToInferMastery:
         Boolean(
           isAnswerCorrect &&
-          analysis?.diagnosticConfidence >=
-            0.85 &&
-          reasoning.status !==
-            "limited_evidence"
+          (
+            (analysis?.diagnosticConfidence >= 0.85 && reasoning.status === "supported_evidence") ||
+            Boolean(question?.isRetest || question?.isTransfer || question?.repeatedSuccess)
+          ) &&
+          (
+            !verified?.verification?.attempted ||
+            verified?.verification?.status === "verified_or_unchanged" ||
+            verified?.verification?.status === "VERIFIED"
+          )
         ),
 
       requiresAdditionalEvidence:
         Boolean(
+          !isAnswerCorrect ||
           grade === "blank" ||
           grade === "partial" ||
-          reasoning.status ===
-            "limited_evidence"
+          reasoning.status === "limited_evidence" ||
+          (isAnswerCorrect &&
+            !question?.isRetest &&
+            !question?.isTransfer &&
+            !question?.repeatedSuccess &&
+            reasoning.status !== "supported_evidence")
         ),
     },
 

@@ -45,6 +45,7 @@
  */
 
 import { extractSignedNumbers } from "./answerParser.js";
+import { parseStrictNumericValue } from "./grader.js";
 
 // ============================================================================
 // 1. MISCONCEPTION TAXONOMY
@@ -1206,13 +1207,14 @@ function capitalize(str) {
 
 export function checkBODMASPrecedenceSignature(questionText = "", studentAnswer = "", correctAnswer = "") {
   const qStr = String(questionText || "").replace(/×/g, "*").replace(/÷/g, "/").replace(/\s+/g, "");
-  const sAns = parseFloat(String(studentAnswer || "").trim());
-  const cAns = parseFloat(String(correctAnswer || "").trim());
+  const cleanExpr = qStr.replace(/^[a-zA-Z\s:]+/, "");
+  const sAns = parseStrictNumericValue(studentAnswer);
+  const cAns = parseStrictNumericValue(correctAnswer);
 
-  if (isNaN(sAns)) return null;
+  if (sAns === null || !Number.isFinite(sAns)) return null;
 
   // Pattern 1: a + b * c  (e.g., 3 + 4 * 2)
-  const addMulMatch = qStr.match(/^(-?\d+(?:\.\d+)?)\+(-?\d+(?:\.\d+)?)\*(-?\d+(?:\.\d+)?)/);
+  const addMulMatch = cleanExpr.match(/^(-?\d+(?:\.\d+)?)\+(-?\d+(?:\.\d+)?)\*(-?\d+(?:\.\d+)?)/);
   if (addMulMatch) {
     const a = parseFloat(addMulMatch[1]);
     const b = parseFloat(addMulMatch[2]);
@@ -1231,7 +1233,7 @@ export function checkBODMASPrecedenceSignature(questionText = "", studentAnswer 
   }
 
   // Pattern 2: a - b * c  (e.g., 10 - 2 * 3)
-  const subMulMatch = qStr.match(/^(-?\d+(?:\.\d+)?)\-(-?\d+(?:\.\d+)?)\*(-?\d+(?:\.\d+)?)/);
+  const subMulMatch = cleanExpr.match(/^(-?\d+(?:\.\d+)?)\-(-?\d+(?:\.\d+)?)\*(-?\d+(?:\.\d+)?)/);
   if (subMulMatch) {
     const a = parseFloat(subMulMatch[1]);
     const b = parseFloat(subMulMatch[2]);
@@ -1250,7 +1252,7 @@ export function checkBODMASPrecedenceSignature(questionText = "", studentAnswer 
   }
 
   // Pattern 3: a + b / c  (e.g., 8 + 6 / 2)
-  const addDivMatch = qStr.match(/^(-?\d+(?:\.\d+)?)\+(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)/);
+  const addDivMatch = cleanExpr.match(/^(-?\d+(?:\.\d+)?)\+(-?\d+(?:\.\d+)?)\/(-?\d+(?:\.\d+)?)/);
   if (addDivMatch) {
     const a = parseFloat(addDivMatch[1]);
     const b = parseFloat(addDivMatch[2]);
@@ -1300,9 +1302,9 @@ export function diagnoseKnowledgeGap({
   }
 
   // 2. Correct answer check
-  const sNum = parseFloat(sAnswerStr);
-  const cNum = parseFloat(cAnswerStr);
-  if (!isNaN(sNum) && !isNaN(cNum) && Math.abs(sNum - cNum) < 1e-5) {
+  const sNum = parseStrictNumericValue(sAnswerStr);
+  const cNum = parseStrictNumericValue(cAnswerStr);
+  if (sNum !== null && cNum !== null && Math.abs(sNum - cNum) < 1e-5) {
     return {
       status: "DIAGNOSED",
       diagnosisType: "CORRECT",

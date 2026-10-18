@@ -107,24 +107,21 @@ export function verifyGeneratedAnswer(
   // 3. BUILD VERIFIER PIPELINE
   const verifiers = getVerifierPipeline(subject);
 
-  // 4. RUN VERIFIERS IN PIPELINE ORDER
+  // 4. RUN ALL CANDIDATE VERIFIERS IN PIPELINE
+  const matches = [];
+
   for (const verifier of verifiers) {
     try {
       const result = verifier(q, candidateAnswer);
 
-      if (!result?.matched) {
-        continue;
+      if (
+        result?.matched &&
+        result.canonicalAnswer !== undefined &&
+        result.canonicalAnswer !== null &&
+        String(result.canonicalAnswer).trim().length > 0
+      ) {
+        matches.push(result);
       }
-
-      return buildVerificationResult({
-        subject: result.subject,
-        canonicalAnswer: result.canonicalAnswer,
-        steps: result.steps || [],
-        explanation: result.explanation || null,
-        confidence: result.confidence ?? 0.85,
-        answerStatus: result.answerStatus || "NOT_COMPARABLE",
-        extra: result.extra || {},
-      });
     } catch (error) {
       console.warn(
         `[Truth Brain] ${verifier.name || "Verifier"} failed:`,
@@ -133,10 +130,81 @@ export function verifyGeneratedAnswer(
     }
   }
 
-  // 5. NO SAFE MATCH
-  return createUnverifiedResponse(
-    "No deterministic verification engine could safely verify this question."
-  );
+  // 5. EVALUATE MATCHES & DETECT CONFLICTS
+  if (matches.length === 0) {
+    return createUnverifiedResponse(
+      "No deterministic verification engine could safely verify this question."
+    );
+  }
+
+  if (matches.length === 1) {
+    const single = matches[0];
+    return buildVerificationResult({
+      subject: single.subject,
+      canonicalAnswer: single.canonicalAnswer,
+      steps: single.steps || [],
+      explanation: single.explanation || null,
+      confidence: single.confidence ?? 0.85,
+      answerStatus: single.answerStatus || "NOT_COMPARABLE",
+      extra: single.extra || {},
+    });
+  }
+
+  // Check whether multiple matching verifiers produce conflicting canonical answers
+  let hasConflict = false;
+  for (let i = 0; i < matches.length; i++) {
+    for (let j = i + 1; j < matches.length; j++) {
+      const comp = classifyComparableAnswers(
+        matches[i].canonicalAnswer,
+        matches[j].canonicalAnswer
+      );
+      if (comp.answerStatus === "INCORRECT") {
+        hasConflict = true;
+        break;
+      }
+    }
+    if (hasConflict) break;
+  }
+
+  if (hasConflict) {
+    // If an explicit subject hint was provided with high confidence, prefer that match
+    const hintedMatch = matches.find((m) => m.subject === subject);
+    if (
+      hintedMatch &&
+      subjectDetection.confidence >= 0.95 &&
+      hintedMatch.confidence >= 0.90
+    ) {
+      return buildVerificationResult({
+        subject: hintedMatch.subject,
+        canonicalAnswer: hintedMatch.canonicalAnswer,
+        steps: hintedMatch.steps || [],
+        explanation: hintedMatch.explanation || null,
+        confidence: hintedMatch.confidence,
+        answerStatus: hintedMatch.answerStatus || "NOT_COMPARABLE",
+        extra: hintedMatch.extra || {},
+      });
+    }
+
+    // Conflicting canonical answers across engines without definitive hint:
+    // Safe fallback per audit plan is UNVERIFIED rather than guessing.
+    return createUnverifiedResponse(
+      "Multiple verification engines produced conflicting canonical answers."
+    );
+  }
+
+  // All matched verifiers agree: pick the highest-confidence match
+  matches.sort((a, b) => (b.confidence ?? 0) - (a.confidence ?? 0));
+  const bestMatch = matches[0];
+
+  return buildVerificationResult({
+    subject: bestMatch.subject,
+    canonicalAnswer: bestMatch.canonicalAnswer,
+    steps: bestMatch.steps || [],
+    explanation: bestMatch.explanation || null,
+    confidence: bestMatch.confidence ?? 0.85,
+    answerStatus: bestMatch.answerStatus || "NOT_COMPARABLE",
+    extra: bestMatch.extra || {},
+  });
 }
 
 /**
@@ -502,9 +570,9 @@ function compareNumericOrString(candidate, canonical) {
   const normCanon = String(canonical).trim().toLowerCase();
   if (normCand === normCanon) return true;
 
-  const numCand = parseFloat(normCand);
-  const numCanon = parseFloat(normCanon);
-  if (!isNaN(numCand) && !isNaN(numCanon)) {
+  const numCand = parseStrictNumericValue(normCand);
+  const numCanon = parseStrictNumericValue(normCanon);
+  if (numCand !== null && numCanon !== null) {
     return Math.abs(numCand - numCanon) <= 0.01;
   }
 

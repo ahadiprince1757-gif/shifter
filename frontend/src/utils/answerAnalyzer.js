@@ -16,7 +16,10 @@
  * Optional AI/semantic verification can be layered above this later.
  */
 
-import { diagnoseMisconceptionPattern } from "./misconceptionDiagnoser.js";
+import {
+  diagnoseMisconceptionPattern,
+  diagnoseKnowledgeGap,
+} from "./misconceptionDiagnoser.js";
 
 // ============================================================================
 // CONCEPT CLUSTERS
@@ -1178,6 +1181,7 @@ function determineDiagnosis({
   misconceptions,
   missingQualifiers,
   reasoning,
+  knowledgeGapDiag,
 }) {
   if (contradictions.length > 0) {
     return {
@@ -1191,6 +1195,34 @@ function determineDiagnosis({
       type: "misconception",
       severity: "high",
     };
+  }
+
+  // Procedure / Sign / Calculation diagnosis backed by demonstrable working evidence
+  if (!isAnswerCorrect && knowledgeGapDiag?.status === "DIAGNOSED") {
+    if (knowledgeGapDiag.diagnosisType === "SIGN_ERROR") {
+      return {
+        type: "sign_error",
+        severity: "medium",
+        skillId: knowledgeGapDiag.skillId,
+        evidence: knowledgeGapDiag.evidence,
+      };
+    }
+    if (knowledgeGapDiag.diagnosisType === "PROCEDURE_ERROR") {
+      return {
+        type: "procedure_error",
+        severity: "high",
+        skillId: knowledgeGapDiag.skillId,
+        evidence: knowledgeGapDiag.evidence,
+      };
+    }
+    if (knowledgeGapDiag.diagnosisType === "CALCULATION_ERROR") {
+      return {
+        type: "calculation_error",
+        severity: "medium",
+        skillId: knowledgeGapDiag.skillId,
+        evidence: knowledgeGapDiag.evidence,
+      };
+    }
   }
 
   if (incorrectConcepts.length > 0) {
@@ -1380,6 +1412,46 @@ export function analyseStudentAnswer(
     });
   }
 
+  const questionText =
+    typeof question === "string"
+      ? question
+      : question.q ||
+        question.question ||
+        question.stem ||
+        options.question ||
+        assessment?.questionText ||
+        "";
+
+  // Authoritative knowledge gap and order-of-operations diagnoser
+  const knowledgeGapDiag = diagnoseKnowledgeGap({
+    question: questionText,
+    studentAnswer,
+    correctAnswer,
+    steps: options.questionSteps || question.steps || assessment?.steps || [],
+    userWork,
+    subject: options.subject || question.subject || assessment?.subject || "math",
+    conceptId: options.conceptId || question.conceptId || assessment?.conceptId || "",
+    skillId: options.skillId || question.skillId || assessment?.skillId || "",
+  });
+
+  if (knowledgeGapDiag && knowledgeGapDiag.status === "DIAGNOSED") {
+    if (knowledgeGapDiag.diagnosisType === "MISCONCEPTION") {
+      const detailMsg =
+        Array.isArray(knowledgeGapDiag.evidence) && knowledgeGapDiag.evidence.length > 0
+          ? knowledgeGapDiag.evidence.join("; ")
+          : `Order of operations error detected in ${knowledgeGapDiag.conceptId || "calculation"}`;
+
+      rawMisconceptions.push({
+        type: "knowledge_gap_misconception",
+        misconception: detailMsg,
+        category: knowledgeGapDiag.skillId || knowledgeGapDiag.conceptId || "order_of_operations",
+        confidence: knowledgeGapDiag.confidence ?? 0.9,
+        skillId: knowledgeGapDiag.skillId,
+        conceptId: knowledgeGapDiag.conceptId,
+      });
+    }
+  }
+
   const misconceptions = deduplicateEvidence(rawMisconceptions);
 
   const missingQualifiers = analyseQualifiers(
@@ -1405,7 +1477,7 @@ export function analyseStudentAnswer(
   // ----------------------------------------------------------
 
   const externallySuppliedCorrectness =
-    options.isAnswerCorrect;
+    options.isAnswerCorrect ?? question.isAnswerCorrect;
 
   const isAnswerCorrect =
     typeof externallySuppliedCorrectness ===
@@ -1477,6 +1549,7 @@ export function analyseStudentAnswer(
       misconceptions,
       missingQualifiers,
       reasoning,
+      knowledgeGapDiag,
     });
 
   // ----------------------------------------------------------
@@ -1632,6 +1705,8 @@ export function analyseStudentAnswer(
     reasoning,
 
     math: mathAnalysis,
+
+    knowledgeGap: knowledgeGapDiag,
 
     diagnosticConfidence,
 

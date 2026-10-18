@@ -193,72 +193,44 @@ function solveFromText(q) {
 // ============================================================================
 
 export function trySolveMean(q) {
-  if (!/\b(?:mean|average)\b/i.test(q)) {
-    return null;
-  }
+  // Only support a clearly delimited list immediately after
+  // "mean of" or "average of".
+  const match = q.match(
+    /\b(?:mean|average)\s+of\s+((?:\d+(?:\.\d+)?\s*(?:,\s*|\band\b\s*|\s+))*\d+(?:\.\d+)?)(?=\s*(?:[?.;]|$))/i
+  );
 
-  let listStr = null;
+  if (!match) return null;
 
-  const m1 = q.match(/\b(?:mean|average)(?:\s+(?:score|value|number)s?)?\s*(?:of|is|:)\s*([0-9.,\s]+(?:\band\b\s*[0-9.]+)?)/i);
-  if (m1) {
-    listStr = m1[1];
-  } else {
-    const m2 = q.match(/(?:numbers|values|data|scores|set)\s*(?:are|is|:)\s*([0-9.,\s]+(?:\band\b\s*[0-9.]+)?)(?:[?.;]|$)/i);
-    if (m2) {
-      listStr = m2[1];
-    } else {
-      const m3 = q.match(/\b(?:mean|average)\s*:\s*([0-9.,\s]+(?:\band\b\s*[0-9.]+)?)/i);
-      if (m3) {
-        listStr = m3[1];
-      }
-    }
-  }
-
-  if (!listStr) {
-    return null;
-  }
-
-  const rawTokens = listStr
-    .replace(/\band\b/gi, ",")
-    .split(/[\s,]+/)
-    .map((t) => t.trim())
+  const rawValues = match[1]
+    .split(/\s*(?:,|\band\b)\s*/i)
+    .map((value) => value.trim())
     .filter(Boolean);
 
-  if (rawTokens.length < 2) {
+  if (rawValues.length < 2) return null;
+
+  if (rawValues.some((value) => !/^\d+(?:\.\d+)?$/.test(value))) {
     return null;
   }
 
-  const numbers = [];
-  for (const token of rawTokens) {
-    if (!/^\d+(?:\.\d+)?$/.test(token)) {
-      return null;
-    }
-    const val = Number(token);
-    if (!Number.isFinite(val)) {
-      return null;
-    }
-    numbers.push(val);
-  }
+  const numbers = rawValues.map(Number);
 
-  if (numbers.length < 2) {
-    return null;
-  }
+  if (!numbers.every(Number.isFinite)) return null;
 
-  const sum = numbers.reduce((a, b) => a + b, 0);
-  const count = numbers.length;
-  const mean = sum / count;
-  const formatted = Number.isInteger(mean) ? String(mean) : mean.toFixed(2).replace(/\.00$/, "");
+  const sum = numbers.reduce((total, value) => total + value, 0);
+  const mean = sum / numbers.length;
+  const formatted = String(formatAnswer(mean));
 
   return {
     answer: formatted,
-    confidence: 0.98,
+    confidence: 0.95,
     operation: "mean",
-    explanation: `The mean of ${numbers.join(", ")} is calculated by (${numbers.join(" + ")}) / ${count} = ${sum} / ${count} = ${formatted}.`,
+    explanation:
+      `Mean = (${numbers.join(" + ")}) / ${numbers.length} = ${formatted}.`,
     steps: [
-      `Step 1: Sum the values: ${numbers.join(" + ")} = ${sum}`,
-      `Step 2: Count total numbers: n = ${count}`,
-      `Step 3: Calculate Mean = ${sum} / ${count} = ${formatted}`
-    ]
+      `Step 1: Add the values: ${numbers.join(" + ")} = ${sum}`,
+      `Step 2: Count the values: ${numbers.length}`,
+      `Step 3: Divide the sum by the count: ${sum} / ${numbers.length} = ${formatted}`,
+    ],
   };
 }
 
@@ -289,11 +261,25 @@ export function trySolveArea(q) {
   // Rectangle
   // ----------------------------------------------------------
 
-  const rect = extractNamedPair(
+  let rect = extractNamedPair(
     q,
     ["length", "l"],
     ["width", "breadth", "w"]
   );
+
+  if (!rect) {
+    const byMatch = q.match(
+      /\brectangle\b[^\d]*?(\d+(?:\.\d+)?)\s*(cm|m|km|mm|ft|in|inches|yards?)?\s*(?:by|x|×)\s*(\d+(?:\.\d+)?)\s*(cm|m|km|mm|ft|in|inches|yards?)?/i
+    );
+    if (byMatch) {
+      rect = {
+        first: Number(byMatch[1]),
+        firstUnit: normalizeUnit(byMatch[2]),
+        second: Number(byMatch[3]),
+        secondUnit: normalizeUnit(byMatch[4]),
+      };
+    }
+  }
 
   if (rect) {
     const { first, second, firstUnit, secondUnit } = rect;
@@ -864,6 +850,36 @@ function trySolveSimpleAlgebra(q) {
    * x / 4 = 3
    */
 
+  // ax [+-] b = c (e.g. 2x + 4 = 10)
+  const fullLinearMatch = q.match(
+    /\b(?:solve|find|calculate|determine)?\s*(?:for\s+)?(-?\d+(?:\.\d+)?)\s*x\s*([+-])\s*(\d+(?:\.\d+)?)\s*=\s*(-?\d+(?:\.\d+)?)\b/i
+  );
+
+  if (fullLinearMatch) {
+    const coeff = Number(fullLinearMatch[1]);
+    const op = fullLinearMatch[2];
+    const b = Number(fullLinearMatch[3]);
+    const c = Number(fullLinearMatch[4]);
+
+    if (coeff !== 0) {
+      const intermediate = op === "+" ? c - b : c + b;
+      const answer = intermediate / coeff;
+      return {
+        answer,
+        operation: "linear_equation",
+        confidence: 0.97,
+        steps: [
+          `Equation: ${coeff}x ${op} ${b} = ${c}`,
+          op === "+"
+            ? `Subtract ${b} from both sides: ${coeff}x = ${intermediate}`
+            : `Add ${b} to both sides: ${coeff}x = ${intermediate}`,
+          `Divide both sides by ${coeff}: x = ${formatAnswer(answer)}`,
+        ],
+        explanation: `Solving ${coeff}x ${op} ${b} = ${c} gives x = ${formatAnswer(answer)}`,
+      };
+    }
+  }
+
   const equationMatch =
     q.match(
       /\b(?:solve|find|calculate|determine)?\s*(?:for\s+)?x\s*([+-])\s*(\d+(?:\.\d+)?)\s*=\s*(-?\d+(?:\.\d+)?)\b/i
@@ -1149,6 +1165,19 @@ export function tokenizeExpression(expression) {
 // ============================================================================
 // EXPRESSION SYNTAX VALIDATOR
 // ============================================================================
+
+export function evaluateExpressionString(str) {
+  const raw = String(str || "").trim();
+  const normalized = raw
+    .replace(/×/g, "*")
+    .replace(/÷/g, "/")
+    .replace(/\*\*/g, "^");
+  const tokens = tokenizeExpression(normalized);
+  if (!tokens || !hasValidExpressionSyntax(tokens)) {
+    return null;
+  }
+  return evaluateExpression(tokens);
+}
 
 export function hasValidExpressionSyntax(tokens) {
   if (!Array.isArray(tokens) || tokens.length === 0) {
