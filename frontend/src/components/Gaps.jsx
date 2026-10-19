@@ -221,55 +221,32 @@ function StatusBadge({ gap }) {
   if (gap.resolved) {
     return (
       <span className="mj-badge mj-badge--strong">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
           <polyline points="20 6 9 17 4 12" />
         </svg>
-        <span>STRONG</span>
+        <span>MASTERED</span>
       </span>
     );
   }
   if (gap.attempt_count > 1) {
     return (
-      <span className="mj-badge mj-badge--repair">
-        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-          <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z" />
-          <line x1="12" y1="9" x2="12" y2="13" />
-          <line x1="12" y1="17" x2="12.01" y2="17" />
+      <span className="mj-badge mj-badge--practice">
+        <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <polyline points="12 7 12 12 15 15" />
         </svg>
-        <span>NEEDS REPAIR</span>
+        <span>TO PRACTICE</span>
       </span>
     );
   }
   return (
     <span className="mj-badge mj-badge--verifying">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 16v-4M12 8h.01" />
       </svg>
       <span>VERIFYING</span>
     </span>
-  );
-}
-
-function ChevronIcon({ expanded }) {
-  return (
-    <svg
-      width="14"
-      height="14"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      style={{
-        transform: expanded ? "rotate(180deg)" : "rotate(0deg)",
-        transition: "transform 0.2s ease",
-      }}
-      aria-hidden="true"
-    >
-      <polyline points="6 9 12 15 18 9" />
-    </svg>
   );
 }
 
@@ -278,9 +255,8 @@ export default function Gaps() {
   const userId = session?.user?.id || null;
   const [gaps, setGaps] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState("all");
+  const [selectedSubject, setSelectedSubject] = useState(null);
   const [isOffline, setIsOffline] = useState(!networkService.isOnline);
-  const [collapsedSubjects, setCollapsedSubjects] = useState({});
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -320,37 +296,49 @@ export default function Gaps() {
     });
   }, [gaps]);
 
-  // Filtered gaps (either 'all' or specific subject)
-  const filteredGaps = useMemo(() => {
-    if (filter === "all") return gaps;
-    return gaps.filter((g) => g.subject_id === filter);
-  }, [gaps, filter]);
+  // Current active subject (defaults to first subject with gaps)
+  const activeSubject = useMemo(() => {
+    if (selectedSubject && activeSubjects.includes(selectedSubject)) {
+      return selectedSubject;
+    }
+    return activeSubjects[0] || null;
+  }, [selectedSubject, activeSubjects]);
 
-  // Single Action Hero: Identify the single most critical gap needing immediate repair
+  // Gaps for the active subject
+  const currentSubjectGaps = useMemo(() => {
+    if (!activeSubject) return [];
+    return gaps.filter((g) => g.subject_id === activeSubject);
+  }, [gaps, activeSubject]);
+
+  // Next subject for quick transition
+  const nextSubject = useMemo(() => {
+    if (!activeSubject || activeSubjects.length <= 1) return null;
+    const currentIdx = activeSubjects.indexOf(activeSubject);
+    const nextIdx = (currentIdx + 1) % activeSubjects.length;
+    return activeSubjects[nextIdx];
+  }, [activeSubject, activeSubjects]);
+
+  // Recommended focus gap for this subject (calm priority, no red)
   const priorityGap = useMemo(() => {
-    if (!filteredGaps || filteredGaps.length === 0) return null;
-    return [...filteredGaps].sort((a, b) => {
-      // Prioritize unresolved with highest attempt counts
+    if (!currentSubjectGaps || currentSubjectGaps.length === 0) return null;
+    return [...currentSubjectGaps].sort((a, b) => {
       const aScore = (!a.resolved ? 100 : 0) + (a.attempt_count || 1) * 15;
       const bScore = (!b.resolved ? 100 : 0) + (b.attempt_count || 1) * 15;
       if (bScore !== aScore) return bScore - aScore;
       return new Date(b.updated_at) - new Date(a.updated_at);
     })[0];
-  }, [filteredGaps]);
+  }, [currentSubjectGaps]);
 
-  // Group gaps by subject for structured, clutter-free reading
-  const groupedGaps = useMemo(() => {
+  // Group current subject gaps by chapter for clean organization
+  const chapters = useMemo(() => {
     const map = new Map();
-    for (const sub of activeSubjects) {
-      map.set(sub, []);
+    for (const gap of currentSubjectGaps) {
+      const chKey = gap.chapter_id || "general";
+      if (!map.has(chKey)) map.set(chKey, []);
+      map.get(chKey).push(gap);
     }
-    for (const gap of gaps) {
-      const sub = gap.subject_id || "general";
-      if (!map.has(sub)) map.set(sub, []);
-      map.get(sub).push(gap);
-    }
-    // Sort items inside each subject: Needs Repair first, then Verifying
-    for (const [sub, list] of map.entries()) {
+    // Sort items inside each chapter
+    for (const [, list] of map.entries()) {
       list.sort((a, b) => {
         if (!a.resolved && b.resolved) return -1;
         if (a.resolved && !b.resolved) return 1;
@@ -360,15 +348,8 @@ export default function Gaps() {
         return new Date(b.updated_at) - new Date(a.updated_at);
       });
     }
-    return map;
-  }, [gaps, activeSubjects]);
-
-  const toggleSubjectCollapse = (subId) => {
-    setCollapsedSubjects((prev) => ({
-      ...prev,
-      [subId]: !prev[subId],
-    }));
-  };
+    return Array.from(map.entries());
+  }, [currentSubjectGaps]);
 
   const handlePractice = (gap) => {
     if (!gap) return;
@@ -395,13 +376,13 @@ export default function Gaps() {
           <div className="mj-title-group">
             <h1 className="mj-main-title">Knowledge Gaps</h1>
             <p className="mj-subtitle-compact">
-              Targeted practice to seal verified learning gaps.
+              Organized by subject for targeted mastery.
             </p>
           </div>
-          {gaps.length > 0 && (
-            <div className="mj-total-badge" aria-label={`${gaps.length} total gaps`}>
-              <span className="mj-total-num">{gaps.length}</span>
-              <span className="mj-total-label">Gaps</span>
+          {activeSubject && currentSubjectGaps.length > 0 && (
+            <div className="mj-total-badge" aria-label={`${currentSubjectGaps.length} gaps in ${getCanonicalSubjectName(activeSubject)}`}>
+              <span className="mj-total-num">{currentSubjectGaps.length}</span>
+              <span className="mj-total-label">{getCanonicalSubjectName(activeSubject)}</span>
             </div>
           )}
         </div>
@@ -461,17 +442,67 @@ export default function Gaps() {
         </div>
       ) : (
         <>
-          {/* ── ONE ACTION AT A SCREEN: Priority Focus Hero Card ── */}
+          {/* ── Subject Switcher Bar (Purely Subjects, Zero 'All' Button) ── */}
+          {activeSubjects.length > 1 && (
+            <div
+              className="mj-filter-scroll"
+              role="tablist"
+              aria-label="Select subject"
+            >
+              {activeSubjects.map((sub) => {
+                const count = gaps.filter((g) => g.subject_id === sub).length;
+                const subName = getCanonicalSubjectName(sub);
+                const isActive = activeSubject === sub;
+                return (
+                  <button
+                    key={sub}
+                    type="button"
+                    role="tab"
+                    aria-selected={isActive}
+                    className={`mj-chip-btn ${isActive ? "active" : ""}`}
+                    onClick={() => setSelectedSubject(sub)}
+                  >
+                    <SubjectSvgIcon subjectId={sub} size={14} />
+                    <span>{subName}</span>
+                    <span className="mj-chip-count">{count}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
+
+          {/* ── Active Subject Header Banner ── */}
+          {activeSubject && (
+            <div className="mj-subject-hero-banner">
+              <div className="mj-subject-hero-left">
+                <span className="mj-subject-hero-icon">
+                  <SubjectSvgIcon subjectId={activeSubject} size={20} />
+                </span>
+                <div>
+                  <h2 className="mj-subject-hero-title">
+                    {getCanonicalSubjectName(activeSubject)}
+                  </h2>
+                  <p className="mj-subject-hero-sub">
+                    {currentSubjectGaps.length === 1
+                      ? "1 topic identified for targeted practice"
+                      : `${currentSubjectGaps.length} topics identified for targeted practice`}
+                  </p>
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* ── Calm Focus Topic Card for Active Subject (Zero Red) ── */}
           {priorityGap && (
             <section
               className="mj-hero-section"
-              aria-label="Recommended immediate action"
+              aria-label={`Recommended next topic for ${getCanonicalSubjectName(activeSubject)}`}
             >
               <div className="mj-hero-card">
                 <div className="mj-hero-top">
                   <div className="mj-hero-kicker">
-                    <span className="mj-hero-beacon" aria-hidden="true" />
-                    <span>PRIORITY REPAIR</span>
+                    <span className="mj-hero-beacon-calm" aria-hidden="true" />
+                    <span>FOCUS TOPIC</span>
                   </div>
                   <div className="mj-hero-subject-pill">
                     <SubjectSvgIcon
@@ -515,7 +546,7 @@ export default function Gaps() {
                     className="mj-hero-action-btn"
                     onClick={() => handlePractice(priorityGap)}
                   >
-                    <span>Practice Now</span>
+                    <span>Practice Topic</span>
                     <svg
                       width="13"
                       height="13"
@@ -536,115 +567,81 @@ export default function Gaps() {
             </section>
           )}
 
-          {/* ── Subject Filter Bar (Scrollable, Clean Vector Chips) ── */}
-          {activeSubjects.length > 1 && (
-            <div
-              className="mj-filter-scroll"
-              role="tablist"
-              aria-label="Filter gaps by subject"
-            >
+          {/* ── Chapters Container: Topics Organized per Chapter ── */}
+          <div className="mj-chapters-container">
+            {chapters.map(([chapterKey, chapterGaps]) => {
+              const isGeneral = !chapterKey || chapterKey === "general";
+              const chapterTitle = isGeneral ? "Core Topics" : formatTitle(chapterKey);
+              return (
+                <section key={chapterKey} className="mj-chapter-section">
+                  <div className="mj-chapter-header">
+                    <svg
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      className="mj-chapter-icon"
+                      aria-hidden="true"
+                    >
+                      <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+                      <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+                    </svg>
+                    <h3 className="mj-chapter-title">{chapterTitle}</h3>
+                    <span className="mj-chapter-count">
+                      {chapterGaps.length} {chapterGaps.length === 1 ? "topic" : "topics"}
+                    </span>
+                  </div>
+                  <div className="mj-gap-cards-grid">
+                    {chapterGaps.map((gap) => (
+                      <GapCard
+                        key={gap.id}
+                        gap={gap}
+                        subName={getCanonicalSubjectName(gap.subject_id)}
+                        onPractice={handlePractice}
+                      />
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+
+          {/* ── Smooth Navigation to Next Subject ── */}
+          {nextSubject && (
+            <div className="mj-next-subject-card">
+              <div className="mj-next-subject-info">
+                <span className="mj-next-subject-label">Other Subjects</span>
+                <span className="mj-next-subject-name">
+                  {getCanonicalSubjectName(nextSubject)} ({gaps.filter((g) => g.subject_id === nextSubject).length})
+                </span>
+              </div>
               <button
                 type="button"
-                role="tab"
-                aria-selected={filter === "all"}
-                className={`mj-chip-btn ${filter === "all" ? "active" : ""}`}
-                onClick={() => setFilter("all")}
+                className="mj-next-subject-btn"
+                onClick={() => setSelectedSubject(nextSubject)}
               >
-                <span>All</span>
-                <span className="mj-chip-count">{gaps.length}</span>
+                <span>Switch to {getCanonicalSubjectName(nextSubject)}</span>
+                <svg
+                  width="12"
+                  height="12"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.5"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  aria-hidden="true"
+                >
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
               </button>
-
-              {activeSubjects.map((sub) => {
-                const count = gaps.filter((g) => g.subject_id === sub).length;
-                const subName = getCanonicalSubjectName(sub);
-                const isActive = filter === sub;
-                return (
-                  <button
-                    key={sub}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`mj-chip-btn ${isActive ? "active" : ""}`}
-                    onClick={() => setFilter(sub)}
-                  >
-                    <SubjectSvgIcon subjectId={sub} size={13} />
-                    <span>{subName}</span>
-                    <span className="mj-chip-count">{count}</span>
-                  </button>
-                );
-              })}
             </div>
           )}
-
-          {/* ── Sorted by Subjects List ── */}
-          <div className="mj-subject-sections">
-            {filter === "all" ? (
-              // When "All" is active, group neatly by Subject
-              activeSubjects.map((subId) => {
-                const subGaps = groupedGaps.get(subId) || [];
-                if (subGaps.length === 0) return null;
-                const isCollapsed = Boolean(collapsedSubjects[subId]);
-                const subName = getCanonicalSubjectName(subId);
-                const needsRepairCount = subGaps.filter(
-                  (g) => !g.resolved && (g.attempt_count || 1) > 1
-                ).length;
-
-                return (
-                  <div key={subId} className="mj-subject-block">
-                    <button
-                      type="button"
-                      className="mj-subject-header-btn"
-                      onClick={() => toggleSubjectCollapse(subId)}
-                      aria-expanded={!isCollapsed}
-                    >
-                      <div className="mj-subject-header-left">
-                        <span className="mj-subject-icon-box">
-                          <SubjectSvgIcon subjectId={subId} size={15} />
-                        </span>
-                        <span className="mj-subject-header-title">{subName}</span>
-                        <span className="mj-subject-header-count">
-                          {subGaps.length}
-                        </span>
-                        {needsRepairCount > 0 && (
-                          <span className="mj-subject-repair-alert">
-                            {needsRepairCount} need repair
-                          </span>
-                        )}
-                      </div>
-                      <ChevronIcon expanded={!isCollapsed} />
-                    </button>
-
-                    {!isCollapsed && (
-                      <div className="mj-gap-cards-grid">
-                        {subGaps.map((gap) => (
-                          <GapCard
-                            key={gap.id}
-                            gap={gap}
-                            subName={subName}
-                            onPractice={handlePractice}
-                          />
-                        ))}
-                      </div>
-                    )}
-                  </div>
-                );
-              })
-            ) : (
-              // When a specific subject filter is active
-              <div className="mj-subject-block">
-                <div className="mj-gap-cards-grid">
-                  {filteredGaps.map((gap) => (
-                    <GapCard
-                      key={gap.id}
-                      gap={gap}
-                      subName={getCanonicalSubjectName(gap.subject_id)}
-                      onPractice={handlePractice}
-                    />
-                  ))}
-                </div>
-              </div>
-            )}
-          </div>
 
           <p className="mj-footer-note">
             Gaps resolve automatically as you verify concepts in targeted practice.
