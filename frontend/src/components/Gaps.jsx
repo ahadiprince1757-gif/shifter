@@ -50,172 +50,6 @@ function getCanonicalSubjectName(subId) {
   return formatTitle(subId);
 }
 
-/* ─────────────────────────────────────────────────────────────
-   BESPOKE SVG GRAPHICS (NO EMOJIS)
-───────────────────────────────────────────────────────────── */
-
-function SubjectSvgIcon({ subjectId, size = 16, className = "" }) {
-  const key = (subjectId || "").toLowerCase();
-
-  if (key === "math" || key === "mathematics") {
-    // Compass / Geometry icon
-    return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="5" r="2" />
-        <path d="m11 7-6 13" />
-        <path d="m13 7 6 13" />
-        <path d="M8.5 15h7" />
-      </svg>
-    );
-  }
-
-  if (key === "chemistry") {
-    // Erlenmeyer Flask icon
-    return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-        aria-hidden="true"
-      >
-        <path d="M9 3h6" />
-        <path d="M10 3v5.5L4.5 18a2 2 0 0 0 1.7 3h11.6a2 2 0 0 0 1.7-3L14 8.5V3" />
-        <path d="M7 16h10" />
-        <circle cx="10" cy="13" r="0.75" fill="currentColor" />
-        <circle cx="14" cy="14" r="0.75" fill="currentColor" />
-      </svg>
-    );
-  }
-
-  if (key === "physics") {
-    // Atom / Orbital icon
-    return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-        aria-hidden="true"
-      >
-        <circle cx="12" cy="12" r="2" fill="currentColor" />
-        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(30 12 12)" />
-        <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(-30 12 12)" />
-      </svg>
-    );
-  }
-
-  if (key === "biology") {
-    // DNA Double Helix icon
-    return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-        aria-hidden="true"
-      >
-        <path d="M2 15c6.667-6 13.333 0 20-6" />
-        <path d="M2 9c6.667 6 13.333 0 20 6" />
-        <path d="M5.5 10.5v3" />
-        <path d="M8.5 8.5v7" />
-        <path d="M12 9v6" />
-        <path d="M15.5 8.5v7" />
-        <path d="M18.5 10.5v3" />
-      </svg>
-    );
-  }
-
-  if (key === "english") {
-    // Open Book icon
-    return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-        aria-hidden="true"
-      >
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
-        <path d="M8 7h8" />
-        <path d="M8 11h6" />
-      </svg>
-    );
-  }
-
-  if (key === "computer" || key === "computer_studies") {
-    // Terminal / Code screen icon
-    return (
-      <svg
-        width={size}
-        height={size}
-        viewBox="0 0 24 24"
-        fill="none"
-        stroke="currentColor"
-        strokeWidth="2"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        className={className}
-        aria-hidden="true"
-      >
-        <rect x="2" y="4" width="20" height="14" rx="2" />
-        <path d="m7 9 3 2.5L7 14" />
-        <line x1="12" y1="14" x2="16" y2="14" />
-      </svg>
-    );
-  }
-
-  // Fallback: Knowledge spark icon
-  return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-      className={className}
-      aria-hidden="true"
-    >
-      <circle cx="12" cy="12" r="3" />
-      <path d="M12 2v3m0 14v3M2 12h3m14 0h3" />
-    </svg>
-  );
-}
 
 function StatusBadge({ gap }) {
   if (gap.resolved) {
@@ -462,7 +296,6 @@ export default function Gaps() {
                     className={`mj-chip-btn ${isActive ? "active" : ""}`}
                     onClick={() => setSelectedSubject(sub)}
                   >
-                    <SubjectSvgIcon subjectId={sub} size={14} />
                     <span>{subName}</span>
                     <span className="mj-chip-count">{count}</span>
                   </button>
@@ -475,9 +308,6 @@ export default function Gaps() {
           {activeSubject && (
             <div className="mj-subject-hero-banner">
               <div className="mj-subject-hero-left">
-                <span className="mj-subject-hero-icon">
-                  <SubjectSvgIcon subjectId={activeSubject} size={20} />
-                </span>
                 <div>
                   <h2 className="mj-subject-hero-title">
                     {getCanonicalSubjectName(activeSubject)}
@@ -505,10 +335,6 @@ export default function Gaps() {
                     <span>FOCUS TOPIC</span>
                   </div>
                   <div className="mj-hero-subject-pill">
-                    <SubjectSvgIcon
-                      subjectId={priorityGap.subject_id}
-                      size={12}
-                    />
                     <span>{getCanonicalSubjectName(priorityGap.subject_id)}</span>
                   </div>
                 </div>
