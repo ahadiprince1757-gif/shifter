@@ -510,6 +510,8 @@ function trySolveWorkDone(q) {
 ============================================================================ */
 
 function trySolveSpeed(q) {
+  // Never attempt average speed, multi-part journeys, or multi-distance questions with simple single-leg v = d / t
+  if (/average\s*speed|parts?\s*of|return|and\s*then|\band\s+\d+/i.test(q)) return null;
   if (!/speed|velocity|distance.*time|time.*distance/.test(q)) return null;
 
   const distance = extractQuantity(q, /(\d+(?:\.\d+)?)\s*(km|kilometers?|kilometres?|cm|m|meters?|metres?)\b/);

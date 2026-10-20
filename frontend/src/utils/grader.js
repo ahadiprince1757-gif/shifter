@@ -1780,6 +1780,7 @@ function verifyQuestion(
     }
 
     if (
+      (!steps || steps.length === 0) &&
       Array.isArray(
         verification?.verifiedSteps
       ) &&

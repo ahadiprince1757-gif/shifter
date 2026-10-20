@@ -53,8 +53,10 @@ function QuizPhase({
     // Run Universal Multi-Subject Verification to get verified answer & steps
     const verification = verifyQuestionAcrossSubjects(questionText, rawAnswer, originalQ);
     const displayAnswer = verification.wasOverridden ? verification.verifiedAnswer : rawAnswer;
-    const displaySteps = verification.verifiedSteps || originalQ.steps || [];
-    const displayExplanation = verification.explanation || originalQ.why || originalQ.sol || "";
+    const displaySteps = (Array.isArray(originalQ.steps) && originalQ.steps.length > 0)
+      ? originalQ.steps
+      : (verification.verifiedSteps || []);
+    const displayExplanation = originalQ.why || originalQ.sol || verification.explanation || "";
 
     return (
       <div className="lc" id="qCard">
