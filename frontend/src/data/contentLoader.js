@@ -71,6 +71,13 @@ export async function getBundledTopic(subjectId, chapterId, topicId) {
         normalizeTopicString(t.topic) === normTopic
     );
     if (!match) {
+      match = topics.find(
+        (t) =>
+          t.curriculum_id === sid &&
+          normalizeTopicString(t.topic) === normTopic
+      );
+    }
+    if (!match) {
       const topicAsChapter = normTopic.replace(/\s+/g, "_");
       match = topics.find(
         (t) =>

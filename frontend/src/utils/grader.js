@@ -64,6 +64,7 @@
  */
 
 import { analyseStudentAnswer } from "./answerAnalyzer.js";
+import { diagnoseStudentSubmission } from "../diagnostics/teacherDiagnoser.js";
 
 import {
   verifyQuestionAcrossSubjects,
@@ -1920,7 +1921,7 @@ function safeDiagnosticAnalysis(
   isAnswerCorrect
 ) {
   try {
-    return analyseStudentAnswer(
+    const analysis = analyseStudentAnswer(
       userAnswer,
       Array.isArray(rawAnswer)
         ? rawAnswer.join(" • ")
@@ -1933,6 +1934,20 @@ function safeDiagnosticAnalysis(
         isAnswerCorrect,
       }
     );
+
+    analysis.teacherDiagnosis = diagnoseStudentSubmission({
+      studentAnswer: userAnswer,
+      userWork,
+      question,
+      expectedSolution: {
+        ans: rawAnswer,
+        steps: question.steps,
+        why: question.why,
+      },
+      isAnswerCorrect,
+    });
+
+    return analysis;
   } catch (error) {
     console.warn(
       "[Tixar Grader] Answer analysis failed:",
