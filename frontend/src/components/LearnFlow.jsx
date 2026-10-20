@@ -207,22 +207,6 @@ function LearnFlow({
         }}
       />
 
-      {repairContext && (
-        <div className="repair-mode-banner" role="status">
-          <span className="repair-mode-label">Targeted Practice</span>
-          <span className="repair-mode-text">
-            {repairContext.mode === "spaced_review"
-              ? "Spaced review session. Practice to reinforce your memory."
-              : "You missed this topic. Re-attempt the quiz, or review the notes using the tab above."}
-          </span>
-          <button
-            className="repair-mode-notes-link"
-            onClick={() => loop.setPhase(SESSION_PHASES.NOTES)}
-          >
-            View Notes
-          </button>
-        </div>
-      )}
 
       <div id="learnFlow">
         {/* STEP 0: STUDY NOTES */}
