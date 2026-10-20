@@ -265,10 +265,6 @@ export default function Gaps() {
                 <h2 className="gaps-primary-title">
                   {formatTitle(priorityGap.topic_id)}
                 </h2>
-                <div className="gaps-primary-meta">
-                  {getCanonicalSubjectName(priorityGap.subject_id)}
-                  {priorityGap.chapter_id && ` · ${formatTitle(priorityGap.chapter_id)}`}
-                </div>
               </div>
 
               <button
@@ -277,7 +273,7 @@ export default function Gaps() {
                 onClick={() => handlePractice(priorityGap)}
                 aria-label={`Start practice for ${formatTitle(priorityGap.topic_id)}`}
               >
-                <span>Practice Topic</span>
+                <span>Practice</span>
                 <svg
                   width="13"
                   height="13"
@@ -296,80 +292,61 @@ export default function Gaps() {
             </section>
           )}
 
-          {/* ── Professional Topic Queue (Clean Full-Screen Rows) ── */}
+          {/* ── Clean Concept Queue (Pure Concepts, Practice Alone) ── */}
           <div className="gaps-queue-container">
-            {chapters.map(([chapterKey, chapterGaps]) => {
-              const isGeneral = !chapterKey || chapterKey === "general";
-              const chapterTitle = isGeneral ? "Core Topics" : formatTitle(chapterKey);
-              return (
-                <section key={chapterKey} className="gaps-chapter-group">
-                  <h3 className="gaps-chapter-title">{chapterTitle}</h3>
-
-                  <div className="gaps-list">
-                    {chapterGaps.map((gap) => (
-                      <div
-                        key={gap.id}
-                        className="gaps-row"
-                        onClick={() => handlePractice(gap)}
-                        role="button"
-                        tabIndex={0}
-                        onKeyDown={(e) => {
-                          if (e.key === "Enter" || e.key === " ") {
-                            e.preventDefault();
-                            handlePractice(gap);
-                          }
-                        }}
-                        aria-label={`Practice ${formatTitle(gap.topic_id)}`}
-                      >
-                        <div className="gaps-row-main">
-                          <div className="gaps-row-title">
-                            {formatTitle(gap.topic_id)}
-                          </div>
-                          <div className="gaps-row-sub">
-                            {getCanonicalSubjectName(gap.subject_id)}
-                            {gap.chapter_id && ` · ${formatTitle(gap.chapter_id)}`}
-                          </div>
-                        </div>
-
-                        <div className="gaps-row-actions">
-                          <span
-                            className={`gaps-row-status ${gap.resolved ? "resolved" : ""}`}
-                          >
-                            {gap.resolved ? "Mastered" : "Needs review"}
-                          </span>
-
-                          <button
-                            type="button"
-                            className="gaps-action-btn"
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handlePractice(gap);
-                            }}
-                            tabIndex={-1}
-                          >
-                            <span>Practice</span>
-                            <svg
-                              width="12"
-                              height="12"
-                              viewBox="0 0 24 24"
-                              fill="none"
-                              stroke="currentColor"
-                              strokeWidth="2.5"
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              aria-hidden="true"
-                            >
-                              <line x1="5" y1="12" x2="19" y2="12" />
-                              <polyline points="12 5 19 12 12 19" />
-                            </svg>
-                          </button>
-                        </div>
-                      </div>
-                    ))}
+            <div className="gaps-list">
+              {currentSubjectGaps.map((gap) => (
+                <div
+                  key={gap.id}
+                  className="gaps-row"
+                  onClick={() => handlePractice(gap)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      handlePractice(gap);
+                    }
+                  }}
+                  aria-label={`Practice ${formatTitle(gap.topic_id)}`}
+                >
+                  <div className="gaps-row-main">
+                    <div className="gaps-row-title">
+                      {formatTitle(gap.topic_id)}
+                    </div>
                   </div>
-                </section>
-              );
-            })}
+
+                  <div className="gaps-row-actions">
+                    <button
+                      type="button"
+                      className="gaps-action-btn"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        handlePractice(gap);
+                      }}
+                      tabIndex={-1}
+                      aria-label={`Practice ${formatTitle(gap.topic_id)}`}
+                    >
+                      <span>Practice</span>
+                      <svg
+                        width="12"
+                        height="12"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2.5"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        aria-hidden="true"
+                      >
+                        <line x1="5" y1="12" x2="19" y2="12" />
+                        <polyline points="12 5 19 12 12 19" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </>
       )}

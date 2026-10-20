@@ -2,6 +2,8 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
+import TeacherFeedbackView from "./TeacherFeedbackView";
+import { diagnoseStudentSubmission } from "../../../diagnostics/teacherDiagnoser";
 
 /**
  * ================================================================
@@ -471,6 +473,7 @@ function FeedbackDisplay({
   goToReview,
   startMutatedRepair,
   refineAnswer,
+  questionText,
 }) {
   if (!feedback) {
     return null;
@@ -583,6 +586,26 @@ function FeedbackDisplay({
    */
   const diagnosticAnalysis =
     feedback.analysis ?? feedback.diagnostic ?? null;
+
+  const teacherDiagnosis =
+    feedback.analysis?.teacherDiagnosis ||
+    feedback.teacherDiagnosis ||
+    diagnoseStudentSubmission({
+      studentAnswer,
+      userWork: feedback.userWork || "",
+      question: feedback.originalQ || {
+        q: feedback.questionText || "",
+        steps,
+        ans: rawAnswer,
+        why,
+      },
+      expectedSolution: {
+        ans: rawAnswer,
+        steps,
+        why,
+      },
+      isAnswerCorrect: isCorrect === true,
+    });
 
 
   // ================================================================
@@ -778,10 +801,10 @@ function FeedbackDisplay({
 
 
       {/* ==========================================================
-          STUDENT ANSWER
+          STUDENT ANSWER (FOR CORRECT ANSWERS)
           ========================================================== */}
 
-      {hasStudentAnswer && (
+      {hasStudentAnswer && isCorrect === true && (
         <div className="fb-student-answer-box">
 
           <div className="fb-section-title">
@@ -799,46 +822,24 @@ function FeedbackDisplay({
 
 
       {/* ==========================================================
-          CORRECT ANSWER
+          TEACHER DIAGNOSTIC REVIEW (FOR INCORRECT / PARTIAL ANSWERS)
+          Replaces the robotic timeline with structured pedagogical feedback
           ========================================================== */}
-
-      {hasCorrectAnswer && (
-        <div className="fb-correct-answer-box">
-
-          <div className="fb-section-title">
-            {isCorrect === true
-              ? "Answer"
-              : "Correct Answer"}
-          </div>
-
-          <div className="fb-answer-value">
-            <Markdown>
-              {rawAnswer}
-            </Markdown>
-          </div>
-
-        </div>
-      )}
-
-
-      {/* ==========================================================
-          DIAGNOSTIC REASONING TIMELINE
-          Only shown when the answer is incorrect or partial, so the
-          learner sees exactly WHERE their understanding fell short.
-      ========================================================== */}
-
-      {(isCorrect === false || isPartial) && diagnosticAnalysis && (
-        <DiagnosticTimeline
-          analysis={diagnosticAnalysis}
-          isCorrect={isCorrect}
+      {(isCorrect === false || isPartial) && (
+        <TeacherFeedbackView
+          diagnosis={teacherDiagnosis}
+          rawAnswer={rawAnswer}
+          steps={steps}
+          why={why}
+          isPartial={isPartial}
+          questionText={questionText || feedback?.question?.q || feedback?.q || ""}
+          studentAnswer={studentAnswer}
         />
       )}
-
 
       {/* ==========================================================
           REPEATED MISTAKE
           ========================================================== */}
-
       {showRecurrence && (
         <div className="smart-analysis-recurrence-badge">
           ⚠️ {recurrence.label || "Repeated mistake"}{" "}
@@ -846,83 +847,50 @@ function FeedbackDisplay({
         </div>
       )}
 
-
       {/* ==========================================================
-          HOW TO SOLVE
+          CORRECT ANSWER & HOW TO SOLVE (FOR CORRECT ANSWERS)
           ========================================================== */}
-
-      {hasSteps && (
-        <div className="fb-steps-container">
-
-          <div className="fb-section-title">
-            {isCorrect === false
-              ? "How to Fix It"
-              : "How to Solve It"}
+      {isCorrect === true && hasCorrectAnswer && (
+        <div className="fb-correct-answer-box">
+          <div className="fb-section-title">Answer</div>
+          <div className="fb-answer-value">
+            <Markdown>{rawAnswer}</Markdown>
           </div>
+        </div>
+      )}
 
+      {isCorrect === true && hasSteps && (
+        <div className="fb-steps-container">
+          <div className="fb-section-title">How to Solve It</div>
           <ol className="fb-steps-list">
-
             {steps.map((step, index) => (
               <li
                 key={`${index}-${step.slice(0, 20)}`}
                 className="fb-step-item"
               >
-
-                <span className="fb-step-number">
-                  {index + 1}
-                </span>
-
+                <span className="fb-step-number">{index + 1}</span>
                 <span className="fb-step-text">
-                  <Markdown>
-                    {step}
-                  </Markdown>
+                  <Markdown>{step}</Markdown>
                 </span>
-
               </li>
             ))}
-
           </ol>
-
         </div>
       )}
 
-
-      {/* ==========================================================
-          FALLBACK EXPLANATION
-          ========================================================== */}
-
-      {showSolution && (
+      {isCorrect === true && showSolution && (
         <div className="fb-explanation-box">
-
-          <div className="fb-section-title">
-            Explanation
-          </div>
-
+          <div className="fb-section-title">Explanation</div>
           <div className="fb-explanation-text">
-            <Markdown>
-              {solution}
-            </Markdown>
+            <Markdown>{solution}</Markdown>
           </div>
-
         </div>
       )}
 
-
-      {/* ==========================================================
-          KEY INSIGHT
-          ========================================================== */}
-
-      {showWhy && (
+      {isCorrect === true && showWhy && (
         <div className="fb-why-box">
-
-          <div className="fb-section-title">
-            Key Insight
-          </div>
-
-          <p className="fb-why-text">
-            {why}
-          </p>
-
+          <div className="fb-section-title">Key Insight</div>
+          <p className="fb-why-text">{why}</p>
         </div>
       )}
 

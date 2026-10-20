@@ -253,6 +253,7 @@ function QuizPhase({
             retryState={retryState}
             startMutatedRepair={startMutatedRepair}
             refineAnswer={refineAnswer}
+            questionText={curQ?.q}
           />
         </div>
       </div>

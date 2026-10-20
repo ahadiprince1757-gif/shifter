@@ -1,0 +1,240 @@
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
+import rehypeRaw from "rehype-raw";
+
+function Markdown({ children }) {
+  if (!children) return null;
+  return (
+    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+      {String(children)}
+    </ReactMarkdown>
+  );
+}
+
+/**
+ * TeacherFeedbackView
+ *
+ * Implements the deterministic teacher feedback interface matching the design in media_1792479448775.jpg.
+ * Optimized specifically for mobile screens to eliminate cognitive clutter,
+ * prevent horizontal squishing, and present high-clarity pedagogical guidance.
+ */
+export default function TeacherFeedbackView({
+  diagnosis,
+  rawAnswer,
+  steps = [],
+  why = "",
+  isPartial = false,
+  questionText = "",
+  studentAnswer = "",
+}) {
+  if (!diagnosis) return null;
+
+  const {
+    status,
+    whatYouDid,
+    whyThisIsWrong = [],
+    theRightWay = [],
+    remember,
+  } = diagnosis;
+
+  // Use authored steps if available and theRightWay is empty
+  const rightWaySteps =
+    Array.isArray(theRightWay) && theRightWay.length > 0
+      ? theRightWay
+      : steps;
+
+  const approachText =
+    whatYouDid ||
+    (studentAnswer ? `You answered: **${studentAnswer}**` : "");
+
+  return (
+    <div className="tfv-container" aria-label="Teacher Diagnostic Review">
+      {/* ── CARD 0: QUESTION CONTEXT ── */}
+      {questionText && (
+        <section className="tfv-question-card">
+          <div className="tfv-question-header">
+            <svg
+              width="15"
+              height="15"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+            <span className="tfv-question-label">Question</span>
+          </div>
+          <div className="tfv-question-text">
+            <Markdown>{questionText}</Markdown>
+          </div>
+        </section>
+      )}
+
+      {/* ── CARD 1: YOUR APPROACH & WHY IT IS WRONG ── */}
+      {approachText && status !== "correct" && (
+        <section className="tfv-card tfv-card-approach">
+          <div className="tfv-card-header">
+            <div className="tfv-card-title-group">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+                className="tfv-icon-user"
+              >
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+                <circle cx="12" cy="7" r="4" />
+              </svg>
+              <h3 className="tfv-card-title">Your Approach</h3>
+            </div>
+            <span className="tfv-badge tfv-badge-error">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18" />
+                <line x1="6" y1="6" x2="18" y2="18" />
+              </svg>
+              <span>What you did</span>
+            </span>
+          </div>
+
+          <div className="tfv-what-you-did-box">
+            <svg
+              className="tfv-box-alert-icon"
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <circle cx="12" cy="12" r="10" />
+              <line x1="15" y1="9" x2="9" y2="15" />
+              <line x1="9" y1="9" x2="15" y2="15" />
+            </svg>
+            <div className="tfv-what-you-did-text">
+              <Markdown>{approachText}</Markdown>
+            </div>
+          </div>
+
+          {Array.isArray(whyThisIsWrong) && whyThisIsWrong.length > 0 && (
+            <div className="tfv-why-wrong-section">
+              <h4 className="tfv-why-wrong-heading">Why this is wrong</h4>
+              <ul className="tfv-why-wrong-list">
+                {whyThisIsWrong.map((point, idx) => (
+                  <li key={idx} className="tfv-why-wrong-item">
+                    <Markdown>{point}</Markdown>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* ── CARD 2: THE RIGHT WAY ── */}
+      {rightWaySteps.length > 0 && (
+        <section className="tfv-card tfv-card-right-way">
+          <div className="tfv-card-header">
+            <div className="tfv-card-title-group">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--gr, #10b981)"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <polyline points="9 12 11 14 15 10" />
+              </svg>
+              <h3 className="tfv-card-title">The Right Way</h3>
+            </div>
+            <span className="tfv-badge tfv-badge-success">
+              Follow this
+            </span>
+          </div>
+
+          <ol className="tfv-steps-list">
+            {rightWaySteps.map((step, idx) => (
+              <li key={idx} className="tfv-step-item">
+                <span className="tfv-step-badge">{idx + 1}</span>
+                <div className="tfv-step-content">
+                  <Markdown>{step}</Markdown>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </section>
+      )}
+
+      {/* ── CARD 3: KEY RULE TO REMEMBER ── */}
+      {(remember || why) && (
+        <section className="tfv-remember-card">
+          <div className="tfv-remember-header">
+            <svg
+              width="18"
+              height="18"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--v, #6366f1)"
+              strokeWidth="2"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
+              <path d="M9 18h6" />
+              <path d="M10 22h4" />
+              <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5" />
+            </svg>
+            <span className="tfv-remember-label">Rule to Remember</span>
+          </div>
+          <p className="tfv-remember-text">
+            <Markdown>{remember || why}</Markdown>
+          </p>
+        </section>
+      )}
+
+      {/* ── CARD 4: FINAL CORRECT ANSWER ── */}
+      {rawAnswer && (
+        <section className="tfv-final-answer-card">
+          <div className="tfv-final-answer-header">
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              aria-hidden="true"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+            <span>Standard Answer</span>
+          </div>
+          <div className="tfv-final-answer-val">
+            <Markdown>{rawAnswer}</Markdown>
+          </div>
+        </section>
+      )}
+    </div>
+  );
+}
