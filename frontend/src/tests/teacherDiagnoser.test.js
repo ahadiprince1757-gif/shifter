@@ -182,4 +182,68 @@ describe("Tixar Deterministic Teacher Diagnostic Engine", () => {
       expect(result.whatYouDid).not.toContain("averaged");
     });
   });
+
+  describe("Step-by-Step Algebraic Reasoning and Reconstructed Working", () => {
+    const linearEqQuestion = {
+      q: "Solve 3x - 5 = 16",
+      ans: "7",
+      steps: [
+        "3x - 5 = 16",
+        "3x = 16 + 5",
+        "3x = 21",
+        "x = 7",
+      ],
+      why: "Add 5 to both sides to cancel -5, then divide both sides by 3.",
+    };
+
+    it("diagnoses sign reversal error in linear equation with full student working", () => {
+      const studentWork = [
+        "3x - 5 = 16",
+        "3x = 16 - 5",
+        "3x = 11",
+        "x = 11/3",
+      ].join("\n");
+
+      const result = diagnoseStudentSubmission({
+        studentAnswer: "11/3",
+        userWork: studentWork,
+        question: linearEqQuestion,
+        isAnswerCorrect: false,
+      });
+
+      expect(result.status).toBe("diagnosed");
+      expect(result.errorType).toBe("sign_reversal_in_equation");
+      expect(result.stepAnalysis).toBeDefined();
+
+      // 1. What You Did Right
+      expect(result.stepAnalysis.whatYouDidRight.length).toBeGreaterThan(0);
+      expect(result.stepAnalysis.whatYouDidRight[0]).toContain("isolate x");
+
+      // 2. Where Working Broke Down
+      expect(result.stepAnalysis.whereYourWorkingBrokeDown.studentStep).toContain("3x = 16 - 5");
+      expect(result.stepAnalysis.whereYourWorkingBrokeDown.explanation).toContain("subtract 5");
+
+      // 3. Corrected Working using student's work
+      expect(result.stepAnalysis.correctedWorking.length).toBeGreaterThanOrEqual(4);
+      const correctedStep = result.stepAnalysis.correctedWorking.find((s) => s.status === "corrected");
+      expect(correctedStep).toBeDefined();
+      expect(correctedStep.step).toContain("3x = 16 + 5");
+
+      // 4. Thinking Strategy Repair
+      expect(result.stepAnalysis.thinkingRepair.strategy).toContain("What operation cancels");
+    });
+
+    it("diagnoses sign reversal from answer alone when student subtracts instead of adding", () => {
+      const result = diagnoseStudentSubmission({
+        studentAnswer: "11/3",
+        userWork: "",
+        question: linearEqQuestion,
+        isAnswerCorrect: false,
+      });
+
+      expect(result.status).toBe("diagnosed");
+      expect(result.errorType).toBe("sign_reversal_in_equation");
+      expect(result.stepAnalysis.whereYourWorkingBrokeDown.studentStep).toContain("3x = 16 - 5");
+    });
+  });
 });

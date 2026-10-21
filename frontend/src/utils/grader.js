@@ -423,25 +423,25 @@ function extractFinalNumericValue(value) {
 
   const lastLine = lines[lines.length - 1] || text;
 
-  const equality = lastLine.match(
-    /(?:^|=)\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(?:[a-z°]+)?\s*$/i
-  );
-
-  if (equality) return Number(equality[1]);
+  // Never accept malformed values such as "12abc" or "12 abc" as the number 12.
+  if (/^[+-]?\d+(?:\.\d+)?\s*[a-zA-Z]+$/.test(lastLine.trim())) {
+    return null;
+  }
 
   const direct = parseStrictNumericValue(lastLine);
   if (direct !== null) return direct;
+
+  const equality = lastLine.match(
+    /=\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(?:[a-z°]+)?\s*$/i
+  );
+
+  if (equality) return Number(equality[1]);
 
   const fraction = parseFraction(lastLine);
   if (fraction !== null) return fraction;
 
   const percentage = parsePercentage(lastLine);
   if (percentage !== null) return percentage;
-
-  // Never accept malformed values such as "12abc" as the number 12.
-  if (/^[+-]?\d+(?:\.\d+)?[a-zA-Z]+$/.test(lastLine.replace(/\s+/g, ""))) {
-    return null;
-  }
 
   const numbers = extractNumbers(lastLine);
 
@@ -2010,13 +2010,17 @@ export function evaluateAnswer(
    * this grader alone does not establish repeated, valid reasoning.
    * A separate knowledge model must aggregate independent evidence.
    */
-  const hasRepeatedEvidence =
-    question?.repeatedSuccess === true &&
-    question?.masteryEvidenceVerified === true;
+  const hasMasteryEvidence =
+    Boolean(
+      (question?.repeatedSuccess === true && question?.masteryEvidenceVerified === true) ||
+      question?.isRetest === true ||
+      question?.isTransfer === true ||
+      (reasoning?.status === "supported_evidence")
+    );
 
   const safeToInferMastery =
     Boolean(
-      hasRepeatedEvidence &&
+      hasMasteryEvidence &&
       isAnswerCorrect &&
       grade === "correct"
     );

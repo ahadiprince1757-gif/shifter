@@ -8394,6 +8394,127 @@ html.dark-mode .fb-repair-btn {
   border: 1px solid rgba(16, 185, 129, 0.25);
 }
 
+.tfv-badge-info {
+  background: rgba(99, 102, 241, 0.1);
+  color: var(--v, #6366f1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+}
+
+/* Step Analysis: What You Did Right */
+.tfv-right-list {
+  margin: 0;
+  padding-left: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.tfv-right-item {
+  font-size: 0.92rem;
+  color: var(--t);
+  line-height: 1.45;
+}
+
+/* Step Analysis: Where Your Working Goes Wrong */
+.tfv-breakdown-box {
+  background: rgba(239, 68, 68, 0.05);
+  border: 1px solid rgba(239, 68, 68, 0.22);
+  border-radius: 10px;
+  padding: 0.9rem 1.05rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.tfv-breakdown-student-line {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.tfv-breakdown-tag-wrong {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #dc2626;
+  background: rgba(239, 68, 68, 0.12);
+  padding: 0.15rem 0.5rem;
+  border-radius: 5px;
+}
+
+.tfv-code-highlight {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.98rem;
+  font-weight: 700;
+  color: #b91c1c;
+  background: rgba(239, 68, 68, 0.08);
+  padding: 0.2rem 0.55rem;
+  border-radius: 6px;
+}
+
+.tfv-breakdown-explanation {
+  font-size: 0.91rem;
+  color: var(--t);
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Step Analysis: Your Corrected Working */
+.tfv-corrected-work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--bd);
+  border-radius: 12px;
+  padding: 0.85rem 1rem;
+}
+
+.tfv-corrected-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  transition: background 0.15s ease;
+}
+
+.tfv-corrected-row.highlight-corrected {
+  background: rgba(16, 185, 129, 0.08);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+}
+
+.tfv-corrected-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.96rem;
+  font-weight: 700;
+  color: var(--t);
+}
+
+.tfv-corrected-tag {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #059669;
+  background: rgba(16, 185, 129, 0.14);
+  padding: 0.15rem 0.5rem;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.tfv-corrected-note {
+  font-size: 0.78rem;
+  color: var(--t3);
+  font-style: italic;
+}
+
 .tfv-what-you-did-box {
   display: flex;
   align-items: flex-start;

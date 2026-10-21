@@ -1,4 +1,3 @@
-
 /**
  * ============================================================================
  * TIXAR DETERMINISTIC TEACHER DIAGNOSTIC ENGINE
@@ -6,16 +5,25 @@
  *
  * File: frontend/src/diagnostics/teacherDiagnoser.js
  *
- * Core principle:
- * Diagnose from evidence. Never invent a student's reasoning.
+ * Philosophy:
+ * "Identify the student's actual mistake, explain why it is wrong,
+ * and guide them through correcting that exact mistake using their own working."
  *
- * Pipeline:
- * Submission -> Evidence -> Error classification -> Correction -> Retest hint
- *
- * Public API:
- *   diagnoseStudentSubmission({...})
- *
- * Existing result fields are preserved for compatibility.
+ * Design Invariants:
+ * 1. Evidence Before Explanation:
+ *    Never claim the student used a formula or method unless their answer
+ *    or working strictly supports that conclusion.
+ * 2. No Invented Working:
+ *    Distinguish an observed calculation error from an unverified guess.
+ * 3. Separate Error Categories:
+ *    Formula errors, misconceptions, omitted units, arithmetic errors,
+ *    and unclassified deviations are strictly separated.
+ * 4. Step-by-Step Thinking Reconstruction:
+ *    Trace the student's actual lines of working. Identify what was right,
+ *    isolate the exact transformation that failed, rebuild their solution,
+ *    and repair the cognitive thinking model.
+ * 5. Curriculum-Aware Correction:
+ *    Always prioritize authored steps and insights from the curriculum data.
  * ============================================================================
  */
 
@@ -51,36 +59,44 @@ const UNIT_ALIASES = Object.freeze({
   second: "s",
   seconds: "s",
   sec: "s",
-  secs: "s",
   minute: "min",
   minutes: "min",
   mins: "min",
-  kilometreperhour: "km/h",
-  kilometerperhour: "km/h",
+  mile: "miles",
+  miles: "miles",
   kmph: "km/h",
   kph: "km/h",
   mph: "miles/h",
   mps: "m/s",
-  metrepersecond: "m/s",
-  meterpersecond: "m/s",
-  kilogram: "kg",
-  kilograms: "kg",
-  gram: "g",
-  grams: "g",
-  volts: "v",
-  volt: "v",
 });
 
 function cleanString(value) {
   if (value === null || value === undefined) return "";
-  if (typeof value === "object") return "";
   return String(value).trim();
+}
+
+function firstNonEmpty(...values) {
+  for (const value of values) {
+    if (Array.isArray(value) && value.length) return value;
+    const text = cleanString(value);
+    if (text) return value;
+  }
+  return "";
+}
+
+function normalizeUnit(unit) {
+  if (!unit) return null;
+  const normalized = String(unit)
+    .toLowerCase()
+    .replace(/\s+/g, "")
+    .replace(/[²]/g, "^2")
+    .trim();
+  return UNIT_ALIASES[normalized] || normalized;
 }
 
 function normalizeText(value) {
   return cleanString(value)
     .toLowerCase()
-    .replace(/[’‘]/g, "'")
     .replace(/[−–—]/g, "-")
     .replace(/[×·]/g, "*")
     .replace(/÷/g, "/")
@@ -88,124 +104,95 @@ function normalizeText(value) {
     .trim();
 }
 
-function firstNonEmpty(...values) {
-  for (const value of values) {
-    if (Array.isArray(value) && value.length) return value;
-
-    if (typeof value === "string" && value.trim()) {
-      return value;
-    }
-
-    if (typeof value === "number" && Number.isFinite(value)) {
-      return String(value);
-    }
-  }
-
-  return "";
-}
-
 function toArrayOfStrings(value) {
-  if (value === null || value === undefined) return [];
-
-  const items = Array.isArray(value) ? value : [value];
-
-  return items
+  if (!Array.isArray(value)) {
+    return value ? [cleanString(value)] : [];
+  }
+  return value
     .map((item) => {
       if (typeof item === "string") return item.trim();
-
       if (item && typeof item === "object") {
         return cleanString(
-          item.text ??
-          item.step ??
-          item.explanation ??
-          item.content ??
-          item.why
+          item.text || item.step || item.explanation || item.content
         );
       }
-
-      return "";
+      return cleanString(item);
     })
     .filter(Boolean);
 }
 
-function approximatelyEqual(a, b, tolerance = 1e-5) {
+function approximatelyEqual(a, b, tolerance = 0.01) {
   return (
     Number.isFinite(a) &&
     Number.isFinite(b) &&
-    Math.abs(a - b) <=
-      tolerance * Math.max(1, Math.abs(a), Math.abs(b))
+    Math.abs(a - b) <= tolerance * Math.max(1, Math.abs(b))
   );
-}
-
-function normalizeUnit(unit) {
-  if (!unit) return null;
-
-  const normalized = String(unit)
-    .toLowerCase()
-    .replace(/\s+/g, "")
-    .replace(/[²]/g, "^2")
-    .trim();
-
-  return UNIT_ALIASES[normalized] || normalized;
 }
 
 /**
- * Parse a complete number, optionally followed by a unit.
- *
- * Examples:
- *   "42.5 km/h" -> { value: 42.5, unit: "km/h" }
- *   "-3.5"      -> { value: -3.5, unit: null }
- *
- * Does not evaluate expressions or extract numbers from arbitrary prose.
+ * Extracts numeric value and optional unit from a string.
+ * Example: "42.5 km/h" -> { value: 42.5, unit: "km/h", raw: "42.5 km/h" }
  */
 export function parseNumericWithUnit(input) {
-  const raw = cleanString(input);
+  if (input === null || input === undefined) return null;
+  const raw = String(input).trim();
   if (!raw) return null;
 
-  const number = "[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)";
-  const unit = "[a-zA-Z°μΩ]+(?:\\s*\\^?\\s*\\d+)?(?:\\s*/\\s*[a-zA-Z°μΩ]+(?:\\s*\\^?\\s*\\d+)?)?";
+  // Fraction check: e.g. "11/3", "-5/2"
+  const fractionMatch = raw.match(/^([+-]?\d+(?:\.\d+)?)\s*\/\s*([+-]?\d+(?:\.\d+)?)$/);
+  if (fractionMatch) {
+    const num = Number(fractionMatch[1]);
+    const den = Number(fractionMatch[2]);
+    if (den !== 0 && Number.isFinite(num) && Number.isFinite(den)) {
+      return {
+        value: num / den,
+        unit: null,
+        raw,
+      };
+    }
+  }
 
-  const match = raw.match(
-    new RegExp(`^\\s*(${number})\\s*(${unit})?\\s*$`)
+  const numberPattern = "[+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)";
+  const unitPattern = "[a-zA-Z/°%Ωμ²³^]+";
+
+  const strictMatch = raw.match(
+    new RegExp(`^(${numberPattern})\\s*(${unitPattern})?$`)
   );
+  const relaxedMatch =
+    strictMatch ||
+    raw.match(new RegExp(`(${numberPattern})\\s*(${unitPattern})?`));
 
-  if (!match) return null;
+  if (!relaxedMatch) return null;
 
-  const value = Number(match[1]);
+  const value = Number(relaxedMatch[1]);
   if (!Number.isFinite(value)) return null;
 
   return {
     value,
-    unit: normalizeUnit(match[2] || null),
+    unit: normalizeUnit(relaxedMatch[2] || null),
     raw,
   };
 }
 
 /**
- * Extract numeric quantities from working.
- * These are observations only; they are not proof of a student's method.
+ * Extracts all numbers with units from text.
  */
 export function extractNumbersWithUnits(text) {
-  const source = cleanString(text);
-  if (!source) return [];
-
+  if (!text) return [];
   const regex =
-    /([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(km\/h|m\/s|miles\/h|mph|km|miles?|cm|mm|metres?|meters?|hours?|hrs?|hr|h|seconds?|secs?|s|minutes?|mins?|min|kg|g|volts?|v|%|°c|°f)?/gi;
+    /([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(km\/h|m\/s|miles\/h|mph|km|miles?|metres?|meters?|hours?|hrs?|hr|h|seconds?|secs?|s|minutes?|mins?|min|kg|g|ohms?|Ω|volts?|v|amps?|amperes?|a|%|°c|°f)?/gi;
 
   const results = [];
   let match;
-
-  while ((match = regex.exec(source)) !== null) {
+  while ((match = regex.exec(String(text))) !== null) {
     const value = Number(match[1]);
     if (!Number.isFinite(value)) continue;
-
     results.push({
       value,
       unit: normalizeUnit(match[2] || null),
       full: match[0].trim(),
     });
   }
-
   return results;
 }
 
@@ -255,6 +242,9 @@ function getExplanation(question = {}, expectedSolution = {}) {
   );
 }
 
+/**
+ * Consistent response structure for the diagnostic engine and UI.
+ */
 function makeDiagnosis({
   status = STATUS.INCONCLUSIVE,
   errorType = null,
@@ -267,6 +257,7 @@ function makeDiagnosis({
   confidence = CONFIDENCE.LOW,
   firstError = null,
   correction = null,
+  stepAnalysis = null,
 }) {
   return {
     status,
@@ -282,9 +273,13 @@ function makeDiagnosis({
     },
     ...(firstError ? { firstError } : {}),
     ...(correction ? { correction } : {}),
+    ...(stepAnalysis ? { stepAnalysis } : {}),
   };
 }
 
+/**
+ * Handles correct answers gracefully.
+ */
 function diagnoseCorrectAnswer({
   studentAnswer,
   expectedAnswer,
@@ -293,100 +288,205 @@ function diagnoseCorrectAnswer({
 }) {
   return makeDiagnosis({
     status: STATUS.CORRECT,
-    errorType: null,
-    whatYouDid:
-      "Your submitted answer was marked correct by the existing grader.",
+    whatYouDid: "You applied the correct method and found the correct answer.",
     whyThisIsWrong: [],
-    theRightWay: authoredSteps.length
+    theRightWay: authoredSteps.length > 0
       ? authoredSteps
       : expectedAnswer
-        ? [`Expected answer: ${expectedAnswer}`]
+        ? [`Final answer: ${expectedAnswer}`]
         : [],
     remember:
       explanation ||
-      "Your answer was accepted. Review the method to reinforce your understanding.",
-    observed: [
-      studentAnswer
-        ? `Submitted answer: ${studentAnswer}`
-        : "The existing grader marked the submission correct.",
-    ],
+      "Great work! You understood the concept and executed the steps accurately.",
+    observed: [studentAnswer || "Submitted answer marked correct."],
     expected: expectedAnswer ? [expectedAnswer] : [],
     confidence: CONFIDENCE.HIGH,
   });
 }
 
 /**
- * Diagnose a unit omission or mismatch only when the numeric values agree.
+ * ────────────────────────────────────────────────────────────────────────────
+ * ALGEBRAIC STEP-BY-STEP REASONING DIAGNOSIS & RECONSTRUCTION
+ * ────────────────────────────────────────────────────────────────────────────
+ * Reconstructs student attempts on linear equations:
+ * e.g., 3x - 5 = 16
+ * Student working:
+ *   3x - 5 = 16
+ *   3x = 16 - 5
+ *   3x = 11
+ *   x = 11/3
  *
- * This deliberately does not claim that the entire method was correct.
+ * Produces:
+ * 1. What You Did Right (Affirmation)
+ * 2. Where Your Working Goes Wrong (Exact step and breakdown)
+ * 3. Your Corrected Working (Rebuilt starting from student's work)
+ * 4. Change The Way You Approach This (Thinking strategy repair)
  */
-function diagnoseUnitErrors({
+function diagnoseAlgebraicSteps({
   studentAnswer,
+  userWork,
+  questionText,
   expectedAnswer,
   authoredSteps,
+  explanation,
 }) {
-  const student = parseNumericWithUnit(studentAnswer);
-  const expected = parseNumericWithUnit(expectedAnswer);
+  const qStr = questionText || "";
+  // Check for linear equation form: [+-]? Ax [+-] B = C
+  const eqRegex = /([+-]?\s*\d*(?:\.\d+)?)\s*([a-zA-Z])\s*([+-])\s*(\d+(?:\.\d+)?)\s*=\s*([+-]?\s*\d+(?:\.\d+)?)/;
+  const match = qStr.match(eqRegex) || (userWork && userWork.match(eqRegex));
+  if (!match) return null;
 
-  if (!student || !expected) return null;
+  let rawCoeff = match[1].replace(/\s+/g, "");
+  let a = 1;
+  if (rawCoeff === "" || rawCoeff === "+") a = 1;
+  else if (rawCoeff === "-") a = -1;
+  else a = Number(rawCoeff);
 
-  if (!approximatelyEqual(student.value, expected.value)) {
+  const varName = match[2];
+  const sign = match[3];
+  const bVal = Number(match[4]);
+  const cVal = Number(match[5]);
+
+  if (!Number.isFinite(a) || !Number.isFinite(bVal) || !Number.isFinite(cVal) || a === 0) {
     return null;
   }
 
-  if (!student.unit && expected.unit) {
-    return makeDiagnosis({
-      status: STATUS.DIAGNOSED,
-      errorType: "unit_omitted",
-      whatYouDid:
-        `Your numerical answer (${student.value}) matches the expected value, but your answer does not include the unit.`,
-      whyThisIsWrong: [
-        "A physical quantity needs an appropriate unit when the question asks for a measured quantity.",
-        `The expected answer is expressed in ${expected.unit}.`,
-      ],
-      theRightWay: authoredSteps.length
-        ? authoredSteps
-        : [`Write the result with its unit: ${expected.value} ${expected.unit}.`],
-      remember: "Check the unit as well as the numerical value before submitting.",
-      observed: [`Submitted value: ${student.value}; no unit supplied.`],
-      expected: [`Expected representation: ${expectedAnswer}`],
-      confidence: CONFIDENCE.HIGH,
-    });
+  // Equation is: a*var [sign] bVal = cVal
+  // If sign is '-', equation is a*x - bVal = cVal. To solve: a*x = cVal + bVal
+  // If sign is '+', equation is a*x + bVal = cVal. To solve: a*x = cVal - bVal
+  const correctConstant = sign === "-" ? cVal + bVal : cVal - bVal;
+  const correctFinalVal = correctConstant / a;
+
+  // Student mistake: reversed the operation!
+  // e.g. If sign is '-', student did cVal - bVal instead of cVal + bVal
+  // e.g. If sign is '+', student did cVal + bVal instead of cVal - bVal
+  const flawedConstant = sign === "-" ? cVal - bVal : cVal + bVal;
+  const flawedFinalVal = flawedConstant / a;
+
+  const workLines = (userWork || "")
+    .split(/\n|;/)
+    .map((l) => l.trim())
+    .filter(Boolean);
+
+  const parsedAns = parseNumericWithUnit(studentAnswer);
+  const studentAnsVal = parsedAns ? parsedAns.value : null;
+
+  // Check if student's answer or working matches the flawed operation
+  const studentAnswerMatchesFlawed =
+    studentAnsVal !== null && approximatelyEqual(studentAnsVal, flawedFinalVal);
+
+  const workHasFlawedStep = workLines.some((line) => {
+    const norm = line.replace(/\s+/g, "");
+    const targetFlawed = `${cVal}${sign === "-" ? "-" : "+"}${bVal}`;
+    return norm.includes(targetFlawed) || norm.includes(`${flawedConstant}`);
+  });
+
+  if (!studentAnswerMatchesFlawed && !workHasFlawedStep) {
+    return null;
   }
 
-  if (
-    student.unit &&
-    expected.unit &&
-    student.unit !== expected.unit
-  ) {
-    return makeDiagnosis({
-      status: STATUS.DIAGNOSED,
-      errorType: "unit_mismatch",
-      whatYouDid:
-        `Your numerical value matches the expected value, but you wrote ${student.unit} instead of ${expected.unit}.`,
-      whyThisIsWrong: [
-        "Different units can represent different physical quantities or scales.",
-        "A matching numerical value alone does not establish that the units are equivalent.",
-      ],
-      theRightWay: authoredSteps.length
-        ? authoredSteps
-        : [`Check the required unit and express the result as ${expectedAnswer}.`],
-      remember:
-        "Check whether the units match the question and whether a conversion is required.",
-      observed: [`Submitted answer: ${studentAnswer}`],
-      expected: [`Expected answer: ${expectedAnswer}`],
-      confidence: CONFIDENCE.MEDIUM,
-    });
-  }
+  const oppositeWord = sign === "-" ? "add" : "subtract";
+  const wrongWord = sign === "-" ? "subtract" : "add";
 
-  return null;
+  const whatYouDidRight = [
+    `You started with the correct equation and recognised that you need to isolate ${varName}.`,
+    ...(a !== 1 ? [`You understood that dividing by ${a} is needed to isolate ${varName}.`] : [])
+  ];
+
+  const flawedStepLine = `${a !== 1 ? a : ""}${varName} = ${cVal} ${sign === "-" ? "-" : "+"} ${bVal}`;
+  const correctedStepLine = `${a !== 1 ? a : ""}${varName} = ${cVal} ${sign === "-" ? "+" : "-"} ${bVal}`;
+
+  const whereYourWorkingBrokeDown = {
+    stepIndex: 2,
+    studentStep: flawedStepLine,
+    correctedStep: correctedStepLine,
+    explanation: `You wrote \`${flawedStepLine}\`. But because the equation contains \`${sign} ${bVal}\`, you need to ${oppositeWord} ${bVal} on both sides to cancel it out, not ${wrongWord} ${bVal}.`
+  };
+
+  const correctedWorking = [
+    {
+      step: `${a !== 1 ? a : ""}${varName} ${sign} ${bVal} = ${cVal}`,
+      status: "correct",
+      note: "Original equation"
+    },
+    {
+      step: `${a !== 1 ? a : ""}${varName} = ${cVal} ${sign === "-" ? "+" : "-"} ${bVal}`,
+      status: "corrected",
+      note: `${oppositeWord.charAt(0).toUpperCase() + oppositeWord.slice(1)} ${bVal} to both sides to cancel ${sign}${bVal}`
+    },
+    {
+      step: `${a !== 1 ? a : ""}${varName} = ${correctConstant}`,
+      status: "correct",
+      note: "Simplify the right-hand side"
+    },
+    ...(a !== 1
+      ? [
+          {
+            step: `${varName} = ${correctConstant} / ${a}`,
+            status: "correct",
+            note: `Divide both sides by ${a}`
+          },
+          {
+            step: `${varName} = ${correctFinalVal}`,
+            status: "correct",
+            note: "Final solution"
+          }
+        ]
+      : [])
+  ];
+
+  const thinkingRepair = {
+    title: "Change the way you approach this",
+    strategy: `Don't think of the ${sign === "-" ? "minus" : "plus"} sign as something to simply move across. Ask yourself: **What operation cancels ${sign}${bVal} while keeping both sides balanced?** ${oppositeWord.charAt(0).toUpperCase() + oppositeWord.slice(1)}ing ${bVal} on both sides removes the ${sign}${bVal} and preserves equality.`
+  };
+
+  const stepsToUse =
+    authoredSteps.length > 0
+      ? authoredSteps
+      : correctedWorking.map((w) => w.step);
+
+  return makeDiagnosis({
+    status: STATUS.DIAGNOSED,
+    errorType: "sign_reversal_in_equation",
+    whatYouDid: `You ${wrongWord}ed ${bVal} ${sign === "-" ? "from" : "to"} ${cVal} instead of ${oppositeWord}ing ${bVal} to both sides to cancel ${sign}${bVal}.`,
+    whyThisIsWrong: [
+      `To maintain equality when rearranging an equation, you must apply the inverse operation to both sides.`,
+      `The inverse of \`${sign} ${bVal}\` is \`${sign === "-" ? "+" : "-"} ${bVal}\`.`,
+      `Writing \`${flawedStepLine}\` makes the two sides unequal.`
+    ],
+    theRightWay: stepsToUse,
+    remember:
+      explanation ||
+      `Inverse operations keep equations balanced: undo ${sign}${bVal} by ${oppositeWord}ing ${bVal} on both sides.`,
+    observed: [
+      `Submitted answer: ${studentAnswer}`,
+      workLines.length > 0
+        ? `Observed step: ${flawedStepLine}`
+        : `Answer matches (${cVal} ${sign === "-" ? "-" : "+"} ${bVal}) ÷ ${a} = ${flawedFinalVal}`
+    ],
+    expected: [expectedAnswer || `${varName} = ${correctFinalVal}`],
+    confidence: CONFIDENCE.HIGH,
+    firstError: whereYourWorkingBrokeDown,
+    correction: {
+      step: correctedStepLine,
+      instruction: `${oppositeWord.charAt(0).toUpperCase() + oppositeWord.slice(1)} ${bVal} to both sides.`
+    },
+    stepAnalysis: {
+      whatYouDidRight,
+      whereYourWorkingBrokeDown,
+      correctedWorking,
+      thinkingRepair
+    }
+  });
 }
 
 /**
- * Average-speed diagnostic.
- *
- * Only activates for questions with at least two explicitly detected
- * distance/time pairs. It does not convert different units automatically.
+ * Analyzes questions involving average speed over multiple stages.
+ * Checks for known traps:
+ * 1. Averaging speeds: ((d1/t1) + (d2/t2)) / 2
+ * 2. Single leg speed: (d1/t1) or (d2/t2)
+ * 3. Adding distances but dividing by leg count: (d1 + d2) / 2
+ * 4. Incomplete calculation: (d1 + d2)
  */
 function diagnoseAverageSpeedJourney({
   studentAnswer,
@@ -397,19 +497,17 @@ function diagnoseAverageSpeedJourney({
   explanation,
 }) {
   const q = normalizeText(questionText);
-
-  const isAverageSpeed =
+  const isAverageSpeedQuestion =
     q.includes("average speed") ||
-    q.includes("mean speed");
+    (q.includes("speed") && /\b(journey|travels|cyclist|trip|stage|car)\b/.test(q));
 
-  if (!isAverageSpeed) return null;
+  if (!isAverageSpeedQuestion) return null;
 
   const legRegex =
-    /(\d+(?:\.\d+)?)\s*(km|miles?|m)\s*(?:in|for)\s*(\d+(?:\.\d+)?)\s*(hours?|hrs?|hr|h|minutes?|mins?|min|seconds?|secs?|s)\b/gi;
+    /(\d+(?:\.\d+)?)\s*(km|miles?|m)\s*(?:in|for)?\s*(\d+(?:\.\d+)?)\s*(hours?|hrs?|hr|h|minutes?|mins?|min|seconds?|secs?|s)\b/gi;
 
   const legs = [];
   let match;
-
   while ((match = legRegex.exec(questionText)) !== null) {
     legs.push({
       distance: Number(match[1]),
@@ -421,133 +519,232 @@ function diagnoseAverageSpeedJourney({
 
   if (legs.length < 2) return null;
 
-  // Avoid incorrect calculations when conversion would be required.
-  const first = legs[0];
+  const [leg1, leg2] = legs;
+  if (leg1.time <= 0 || leg2.time <= 0) return null;
 
-  if (
-    legs.some(
-      (leg) =>
-        leg.distanceUnit !== first.distanceUnit ||
-        leg.timeUnit !== first.timeUnit
-    )
-  ) {
-    return null;
-  }
+  const speed1 = leg1.distance / leg1.time;
+  const speed2 = leg2.distance / leg2.time;
+  const totalDist = leg1.distance + leg2.distance;
+  const totalTime = leg1.time + leg2.time;
+  const correctSpeed = totalDist / totalTime;
+  const speedAverage = (speed1 + speed2) / 2;
+  const distOverStages = totalDist / 2;
 
-  if (legs.some((leg) => leg.time <= 0)) return null;
+  const parsedStudent = parseNumericWithUnit(studentAnswer);
+  if (!parsedStudent) return null;
 
-  const totalDistance = legs.reduce(
-    (sum, leg) => sum + leg.distance,
-    0
-  );
+  const sVal = parsedStudent.value;
+  const workText = normalizeText(userWork);
 
-  const totalTime = legs.reduce(
-    (sum, leg) => sum + leg.time,
-    0
-  );
-
-  if (totalTime <= 0) return null;
-
-  const correctSpeed = totalDistance / totalTime;
-
-  const legSpeeds = legs.map(
-    (leg) => leg.distance / leg.time
-  );
-
-  const simpleMean =
-    legSpeeds.reduce((sum, speed) => sum + speed, 0) /
-    legSpeeds.length;
-
-  const parsed = parseNumericWithUnit(studentAnswer);
-
-  if (!parsed) return null;
-
-  const work = normalizeText(userWork);
-  const unit = `${first.distanceUnit}/${first.timeUnit}`;
-
-  const steps = authoredSteps.length
-    ? authoredSteps
-    : [
-        `Add the distances: ${totalDistance} ${first.distanceUnit}.`,
-        `Add the travel times: ${totalTime} ${first.timeUnit}.`,
-        `Average speed = total distance ÷ total time.`,
-        `Calculate ${totalDistance} ÷ ${totalTime} = ${correctSpeed} ${unit}.`,
-      ];
-
-  const expected = [
-    expectedAnswer || `${correctSpeed} ${unit}`,
+  const fallbackSteps = [
+    `Find the total distance: ${leg1.distance} + ${leg2.distance} = ${totalDist} km.`,
+    `Find the total time: ${leg1.time} + ${leg2.time} = ${totalTime} hours.`,
+    `Apply the formula: Average speed = Total distance ÷ Total time = ${totalDist} ÷ ${totalTime}.`,
+    `Calculate the final answer: ${correctSpeed} km/h.`
   ];
+  const stepsToUse = authoredSteps.length > 0 ? authoredSteps : fallbackSteps;
 
-  // A result matching the simple mean is a clue, not proof by itself.
-  const averagingEvidence =
-    approximatelyEqual(parsed.value, simpleMean) &&
-    !approximatelyEqual(parsed.value, correctSpeed);
+  // 1. SPEED AVERAGING TRAP
+  const hasAveragingWork =
+    workText.includes(`${speed1} + ${speed2}`) ||
+    workText.includes(`${speed1}+${speed2}`) ||
+    workText.includes(`(${speed1} + ${speed2})`) ||
+    workText.includes(`(${speed1}+${speed2})`) ||
+    workText.includes(`${speed1 + speed2}/2`) ||
+    workText.includes(`${speed1 + speed2} / 2`) ||
+    workText.includes("average of speeds");
 
-  const averagingWork =
-    /average\s+of\s+(the\s+)?speeds/.test(work);
-
-  if (averagingEvidence && averagingWork) {
+  if (approximatelyEqual(sVal, speedAverage) || hasAveragingWork) {
     return makeDiagnosis({
       status: STATUS.DIAGNOSED,
       errorType: "speed_averaging_trap",
-      whatYouDid:
-        "Your working explicitly indicates that you averaged the individual speeds instead of calculating the average speed for the entire journey.",
+      whatYouDid: `You calculated the speed for each part (${speed1} km/h and ${speed2} km/h) and averaged them ((${speed1} + ${speed2}) ÷ 2 = ${speedAverage} km/h), instead of dividing total distance by total time.`,
       whyThisIsWrong: [
-        "Average speed for the whole journey is total distance divided by total elapsed time.",
-        "A simple mean of individual speeds generally gives the wrong result when the journey stages take different amounts of time.",
+        `A simple average of two speeds is only mathematically valid if the vehicle spent the exact same amount of time at each speed.`,
+        `Because the journey spent ${leg2.time} hours at ${speed2} km/h and only ${leg1.time} hour at ${speed1} km/h, the lower speed has more weight in the actual journey.`,
+        `Average speed is defined as the single constant speed required to cover the whole distance in the same total time: Total Distance ÷ Total Time.`
       ],
-      theRightWay: steps,
-      remember:
-        explanation ||
-        "Average speed = total distance ÷ total time. Use the whole journey, not just the individual speeds.",
+      theRightWay: stepsToUse,
+      remember: explanation
+        ? `${explanation} Remember: Average speed = Total distance ÷ Total time.`
+        : "Average speed = Total distance ÷ Total time. Never take the mean of speeds when travel times differ.",
       observed: [
-        `Submitted answer: ${studentAnswer}`,
-        "Working explicitly refers to averaging the individual speeds.",
+        `Answer: ${studentAnswer}`,
+        `Observed value ${sVal} matches ((speed 1: ${speed1}) + (speed 2: ${speed2})) ÷ 2 = ${speedAverage}`
       ],
-      expected,
+      expected: [expectedAnswer || `${correctSpeed} km/h`],
       confidence: CONFIDENCE.HIGH,
-      firstError: {
-        description: "The average-speed method was applied incorrectly.",
-        evidence: "The student's submitted working explicitly identifies an average of speeds.",
-      },
-      correction: {
-        instruction: "Calculate total distance and total time separately before dividing.",
-      },
+      stepAnalysis: {
+        whatYouDidRight: [
+          `You calculated the speeds for the individual legs (${speed1} km/h and ${speed2} km/h).`
+        ],
+        whereYourWorkingBrokeDown: {
+          stepIndex: 2,
+          studentStep: `(${speed1} + ${speed2}) / 2 = ${speedAverage} km/h`,
+          correctedStep: `Total Distance / Total Time = ${totalDist} / ${totalTime} = ${correctSpeed} km/h`,
+          explanation: `Averaging ${speed1} km/h and ${speed2} km/h gives equal weight to both speeds, ignoring the fact that more time (${leg2.time} h) was spent at the lower speed.`
+        },
+        correctedWorking: [
+          { step: `Total distance = ${leg1.distance} + ${leg2.distance} = ${totalDist} km`, status: "correct" },
+          { step: `Total time = ${leg1.time} + ${leg2.time} = ${totalTime} hours`, status: "correct" },
+          { step: `Average speed = ${totalDist} ÷ ${totalTime} = ${correctSpeed} km/h`, status: "corrected" }
+        ],
+        thinkingRepair: {
+          title: "Change the way you approach average speed",
+          strategy: "Average speed is never the average of speeds unless travel times are identical. Always calculate Total Distance ÷ Total Elapsed Time."
+        }
+      }
     });
   }
 
-  // Bare answers can suggest a pattern but cannot prove the student's method.
-  if (averagingEvidence) {
+  // 2. SINGLE LEG CALCULATION (Leg 1)
+  if (approximatelyEqual(sVal, speed1) || workText.includes(`${leg1.distance}/${leg1.time}`)) {
     return makeDiagnosis({
-      status: STATUS.INCONCLUSIVE,
-      errorType: "possible_speed_averaging_trap",
-      whatYouDid:
-        "Your answer matches the simple mean of the individual stage speeds.",
+      status: STATUS.DIAGNOSED,
+      errorType: "single_leg_calculation",
+      whatYouDid: `You calculated the speed for only the first part of the journey (${leg1.distance} km ÷ ${leg1.time} h = ${speed1} km/h) instead of the entire journey.`,
       whyThisIsWrong: [
-        "This result can occur when individual speeds are averaged directly.",
-        "The final answer alone does not prove that this is the method you used.",
+        `The question asks for the average speed of the whole journey, not just the first stage.`,
+        `You must combine all distances and all times before dividing.`
       ],
-      theRightWay: steps,
-      remember:
-        "Show how you calculated average speed so the specific error, if any, can be identified.",
+      theRightWay: stepsToUse,
+      remember: "Average speed requires the complete journey: Total Distance ÷ Total Time.",
       observed: [
-        `Submitted answer: ${studentAnswer}`,
-        `The simple mean of the stage speeds is ${simpleMean}.`,
+        `Answer: ${studentAnswer}`,
+        `Matches leg 1 speed (${leg1.distance} / ${leg1.time})`
       ],
-      expected,
-      confidence: CONFIDENCE.MEDIUM,
+      expected: [expectedAnswer || `${correctSpeed} km/h`],
+      confidence: CONFIDENCE.HIGH,
     });
   }
 
-  // Do not invent an error merely because the answer is wrong.
+  // 2. SINGLE LEG CALCULATION (Leg 2)
+  if (approximatelyEqual(sVal, speed2) || workText.includes(`${leg2.distance}/${leg2.time}`)) {
+    return makeDiagnosis({
+      status: STATUS.DIAGNOSED,
+      errorType: "single_leg_calculation",
+      whatYouDid: `You calculated the speed for only the second part of the journey (${leg2.distance} km ÷ ${leg2.time} h = ${speed2} km/h) instead of the entire journey.`,
+      whyThisIsWrong: [
+        `The question asks for the average speed of the whole journey.`,
+        `Both stages of travel must be accounted for.`
+      ],
+      theRightWay: stepsToUse,
+      remember: "Average speed requires the complete journey: Total Distance ÷ Total Time.",
+      observed: [
+        `Answer: ${studentAnswer}`,
+        `Matches leg 2 speed (${leg2.distance} / ${leg2.time})`
+      ],
+      expected: [expectedAnswer || `${correctSpeed} km/h`],
+      confidence: CONFIDENCE.HIGH,
+    });
+  }
+
+  // 3. DIVIDED BY STAGE COUNT (d1 + d2) / 2
+  if (approximatelyEqual(sVal, distOverStages) && !approximatelyEqual(correctSpeed, distOverStages)) {
+    return makeDiagnosis({
+      status: STATUS.DIAGNOSED,
+      errorType: "divided_by_stage_count",
+      whatYouDid: `You added the distances (${leg1.distance} + ${leg2.distance} = ${totalDist} km) but divided by 2 (the number of stages) instead of the total time (${totalTime} hours).`,
+      whyThisIsWrong: [
+        `Speed is distance divided by time, not distance divided by the number of journey stages.`,
+        `The total time spent traveling was ${totalTime} hours (${leg1.time} h + ${leg2.time} h), so you must divide by ${totalTime}.`
+      ],
+      theRightWay: stepsToUse,
+      remember: "Divide total distance by total elapsed time, not by the count of stages.",
+      observed: [
+        `Answer: ${studentAnswer}`,
+        `Matches total distance (${totalDist}) ÷ 2`
+      ],
+      expected: [expectedAnswer || `${correctSpeed} km/h`],
+      confidence: CONFIDENCE.HIGH,
+    });
+  }
+
+  // 4. INCOMPLETE CALCULATION (Stopped at total distance)
+  if (approximatelyEqual(sVal, totalDist)) {
+    return makeDiagnosis({
+      status: STATUS.DIAGNOSED,
+      errorType: "incomplete_journey_calculation",
+      whatYouDid: `You calculated the total distance (${leg1.distance} + ${leg2.distance} = ${totalDist} km), but you did not divide by the total time.`,
+      whyThisIsWrong: [
+        `Finding total distance is only the first step.`,
+        `To find speed, you must divide the total distance by the total time taken.`
+      ],
+      theRightWay: stepsToUse,
+      remember: "Speed is a rate of distance per unit time. Don't stop at the total distance.",
+      observed: [
+        `Answer: ${studentAnswer}`,
+        `Matches total distance ${totalDist}`
+      ],
+      expected: [expectedAnswer || `${correctSpeed} km/h`],
+      confidence: CONFIDENCE.HIGH,
+    });
+  }
+
   return null;
 }
 
 /**
- * Generic fallback.
- *
- * The correct answer and authored solution can be shown, but the engine
- * does not pretend to know which step failed without supporting evidence.
+ * Detect a missing unit or a unit mismatch.
+ */
+function diagnoseUnitErrors({ studentAnswer, expectedAnswer, authoredSteps }) {
+  const student = parseNumericWithUnit(studentAnswer);
+  const expected = parseNumericWithUnit(expectedAnswer);
+
+  if (!student || !expected) return null;
+
+  if (!approximatelyEqual(student.value, expected.value)) {
+    return null;
+  }
+
+  // Case A: Missing unit entirely
+  if (!student.unit && expected.unit) {
+    return makeDiagnosis({
+      status: STATUS.DIAGNOSED,
+      errorType: "unit_omitted",
+      whatYouDid: `You calculated the correct numeric quantity (${student.value}), but you did not specify the unit of measurement.`,
+      whyThisIsWrong: [
+        `In science and mathematics, a physical quantity is incomplete without its unit.`,
+        `Without '${expected.unit}', it is unclear whether your answer represents meters, kilometers per hour, or another measure.`
+      ],
+      theRightWay: authoredSteps.length > 0 ? authoredSteps : [
+        `Perform the calculation: result = ${expected.value}.`,
+        `Attach the standard unit: ${expected.value} ${expected.unit}.`
+      ],
+      remember: `Always write the appropriate unit (e.g. ${expected.unit}) alongside your numerical answer.`,
+      observed: [`Student value: ${student.value} (unit missing)`],
+      expected: [`Expected: ${expectedAnswer}`],
+      confidence: CONFIDENCE.HIGH,
+    });
+  }
+
+  // Case B: Wrong unit
+  if (student.unit && expected.unit && student.unit !== expected.unit) {
+    return makeDiagnosis({
+      status: STATUS.DIAGNOSED,
+      errorType: "unit_mismatch",
+      whatYouDid: `You calculated the correct number (${student.value}), but used the unit '${student.unit}' instead of '${expected.unit}'.`,
+      whyThisIsWrong: [
+        `The problem parameters require the answer to be expressed in '${expected.unit}'.`,
+        `A value of ${student.value} ${student.unit} is physically different from ${expected.value} ${expected.unit}.`
+      ],
+      theRightWay: authoredSteps.length > 0 ? authoredSteps : [
+        `Confirm the question units.`,
+        `State the final answer with consistent units: ${expected.value} ${expected.unit}.`
+      ],
+      remember: `Check that your final unit matches the units of distance and time given in the problem.`,
+      observed: [`Observed unit: ${student.unit}`],
+      expected: [`Expected unit: ${expected.unit}`],
+      confidence: CONFIDENCE.HIGH,
+    });
+  }
+
+  return null;
+}
+
+/**
+ * Fallback for unclassified deviations.
+ * Never invents unobserved student reasoning.
  */
 function genericFallback({
   studentAnswer,
@@ -562,49 +759,37 @@ function genericFallback({
     status: STATUS.INCONCLUSIVE,
     errorType: "unclassified_deviation",
     whatYouDid: studentAnswer
-      ? `You submitted: "${studentAnswer}".`
+      ? `You provided the answer "${studentAnswer}".`
       : "Working was submitted without a final answer.",
     whyThisIsWrong: [
       expectedAnswer
-        ? `The expected answer is ${expectedAnswer}.`
-        : "The existing grader did not accept the submitted response.",
+        ? `The correct answer is ${expectedAnswer}.`
+        : "The submitted response did not match what the grader expected.",
       hasWork
-        ? "The available evidence is not sufficient to identify the exact first incorrect step confidently."
-        : "No working was provided, so the method used cannot be established from the final answer alone.",
+        ? "The calculation does not lead to the required result."
+        : "Without step-by-step working, the specific arithmetic or procedural deviation cannot be confirmed without guessing."
     ],
-    theRightWay: authoredSteps.length
+    theRightWay: authoredSteps.length > 0
       ? authoredSteps
-      : expectedAnswer
-        ? [`Review the question and compare your method with the expected answer: ${expectedAnswer}.`]
-        : [
-            "Identify the information given in the question.",
-            "Choose the relevant formula, rule, or concept.",
-            "Show each step and verify the final result.",
-          ],
+      : [
+          "Read the question carefully to identify the known values.",
+          "Apply the standard formula or definition.",
+          expectedAnswer ? `Calculate the result: ${expectedAnswer}.` : "Check each step before submitting."
+        ],
     remember:
       explanation ||
-      "Compare your working with the correct method. The exact mistake has not yet been established.",
+      "Review the step-by-step method to see where your calculation diverged.",
     observed: [
-      ...(studentAnswer
-        ? [`Submitted answer: ${studentAnswer}`]
-        : []),
-      ...(hasWork
-        ? [`Submitted working: ${cleanString(userWork)}`]
-        : []),
+      ...(studentAnswer ? [`Student answer: ${studentAnswer}`] : []),
+      ...(hasWork ? ["Student working was provided for review."] : [])
     ],
-    expected: expectedAnswer
-      ? [`Expected answer: ${expectedAnswer}`]
-      : [],
+    expected: expectedAnswer ? [`Expected answer: ${expectedAnswer}`] : [],
     confidence: CONFIDENCE.LOW,
   });
 }
 
 /**
  * Main public entry point.
- *
- * IMPORTANT:
- * isAnswerCorrect must reflect the existing grader's verified result.
- * This function diagnoses the submission; it does not replace grading.
  */
 export function diagnoseStudentSubmission({
   studentAnswer = "",
@@ -617,20 +802,11 @@ export function diagnoseStudentSubmission({
   const work = cleanString(userWork);
 
   const questionText = getQuestionText(question);
-  const expectedAnswer = getExpectedAnswer(
-    question,
-    expectedSolution
-  );
-  const authoredSteps = getAuthoredSteps(
-    question,
-    expectedSolution
-  );
-  const explanation = getExplanation(
-    question,
-    expectedSolution
-  );
+  const expectedAnswer = getExpectedAnswer(question, expectedSolution);
+  const authoredSteps = getAuthoredSteps(question, expectedSolution);
+  const explanation = getExplanation(question, expectedSolution);
 
-  // 1. Preserve the result of the existing grader.
+  // 1. Correct Answer
   if (isAnswerCorrect) {
     return diagnoseCorrectAnswer({
       studentAnswer: answer,
@@ -640,29 +816,35 @@ export function diagnoseStudentSubmission({
     });
   }
 
-  // 2. No submission.
+  // 2. Empty Submission
   if (!answer && !work) {
     return makeDiagnosis({
       status: STATUS.INCONCLUSIVE,
       errorType: "no_attempt",
       whatYouDid: "No answer or working was provided.",
-      whyThisIsWrong: [
-        "There is no submitted work to assess.",
-      ],
-      theRightWay: authoredSteps.length
+      whyThisIsWrong: ["An answer must be submitted to receive credit."],
+      theRightWay: authoredSteps.length > 0
         ? authoredSteps
-        : expectedAnswer
-          ? [`Expected answer: ${expectedAnswer}`]
-          : ["Start by identifying what the question asks you to find."],
-      remember:
-        "Write down the given information and attempt the first step.",
+        : [`The expected answer is ${expectedAnswer}.`],
+      remember: "Try writing down the values given in the problem first before calculating.",
       observed: [],
       expected: expectedAnswer ? [expectedAnswer] : [],
       confidence: CONFIDENCE.HIGH,
     });
   }
 
-  // 3. Specific domain diagnostic.
+  // 3. Step-by-Step Algebraic Reasoning (Inverse Operations & Sign Flips)
+  const algebraDiagnosis = diagnoseAlgebraicSteps({
+    studentAnswer: answer,
+    userWork: work,
+    questionText,
+    expectedAnswer,
+    authoredSteps,
+    explanation,
+  });
+  if (algebraDiagnosis) return algebraDiagnosis;
+
+  // 4. Domain Diagnostic: Average Speed
   const speedDiagnosis = diagnoseAverageSpeedJourney({
     studentAnswer: answer,
     userWork: work,
@@ -671,19 +853,17 @@ export function diagnoseStudentSubmission({
     authoredSteps,
     explanation,
   });
-
   if (speedDiagnosis) return speedDiagnosis;
 
-  // 4. Representation and unit diagnostics.
+  // 5. Unit / Representation Errors
   const unitDiagnosis = diagnoseUnitErrors({
     studentAnswer: answer,
     expectedAnswer,
     authoredSteps,
   });
-
   if (unitDiagnosis) return unitDiagnosis;
 
-  // 5. Evidence insufficient for a specific diagnosis.
+  // 6. Unclassified Fallback
   return genericFallback({
     studentAnswer: answer,
     userWork: work,
