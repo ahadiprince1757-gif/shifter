@@ -104,21 +104,69 @@ function normalizeText(value) {
     .trim();
 }
 
-function toArrayOfStrings(value) {
-  if (!Array.isArray(value)) {
-    return value ? [cleanString(value)] : [];
+function unpackStructuredJson(value) {
+  if (!value) return null;
+  if (typeof value === "object") return value;
+  const str = String(value).trim();
+  if (str.startsWith("{") && str.endsWith("}")) {
+    try {
+      const parsed = JSON.parse(str);
+      if (parsed && typeof parsed === "object") return parsed;
+    } catch {
+      return null;
+    }
   }
-  return value
-    .map((item) => {
-      if (typeof item === "string") return item.trim();
-      if (item && typeof item === "object") {
-        return cleanString(
-          item.text || item.step || item.explanation || item.content
-        );
+  return null;
+}
+
+function toArrayOfStrings(value) {
+  if (!value) return [];
+
+  // Check if value itself is a structured JSON string or object
+  const unpackedRoot = unpackStructuredJson(value);
+  if (unpackedRoot) {
+    if (Array.isArray(unpackedRoot.steps) && unpackedRoot.steps.length > 0) {
+      return toArrayOfStrings(unpackedRoot.steps);
+    }
+    if (unpackedRoot.sol || unpackedRoot.solution) {
+      return String(unpackedRoot.sol || unpackedRoot.solution)
+        .split(/\r?\n/)
+        .map((s) => s.trim())
+        .filter(Boolean);
+    }
+  }
+
+  if (!Array.isArray(value)) {
+    if (typeof value === "string") {
+      return value.split(/\r?\n/).map((s) => s.trim()).filter(Boolean);
+    }
+    return [cleanString(value)].filter(Boolean);
+  }
+
+  const result = [];
+  for (const item of value) {
+    const unpacked = unpackStructuredJson(item);
+    if (unpacked) {
+      if (Array.isArray(unpacked.steps) && unpacked.steps.length > 0) {
+        unpacked.steps.forEach((s) => s && result.push(cleanString(s)));
+      } else if (unpacked.sol || unpacked.solution) {
+        String(unpacked.sol || unpacked.solution)
+          .split(/\r?\n/)
+          .forEach((s) => s.trim() && result.push(cleanString(s)));
       }
-      return cleanString(item);
-    })
-    .filter(Boolean);
+    } else if (typeof item === "string") {
+      result.push(item.trim());
+    } else if (item && typeof item === "object") {
+      result.push(
+        cleanString(
+          item.text || item.step || item.explanation || item.content
+        )
+      );
+    } else if (item) {
+      result.push(cleanString(item));
+    }
+  }
+  return result.filter(Boolean);
 }
 
 function approximatelyEqual(a, b, tolerance = 0.01) {
@@ -220,26 +268,48 @@ function getExpectedAnswer(question = {}, expectedSolution = {}) {
 }
 
 function getAuthoredSteps(question = {}, expectedSolution = {}) {
-  return toArrayOfStrings(
-    firstNonEmpty(
-      expectedSolution.steps,
-      question.steps,
-      expectedSolution.solution,
-      question.solution,
-      question.sol
-    )
+  const structured =
+    unpackStructuredJson(question?.explain) ||
+    unpackStructuredJson(expectedSolution?.explain) ||
+    unpackStructuredJson(question?.solution) ||
+    unpackStructuredJson(expectedSolution?.solution);
+
+  const rawSteps = firstNonEmpty(
+    expectedSolution.steps,
+    question.steps,
+    structured?.steps,
+    expectedSolution.solution,
+    question.solution,
+    structured?.sol,
+    question.sol
   );
+
+  return toArrayOfStrings(rawSteps);
 }
 
 function getExplanation(question = {}, expectedSolution = {}) {
-  return cleanString(
-    firstNonEmpty(
-      expectedSolution.why,
-      question.why,
-      expectedSolution.explain,
-      question.explain
-    )
+  const structured =
+    unpackStructuredJson(question?.explain) ||
+    unpackStructuredJson(expectedSolution?.explain) ||
+    unpackStructuredJson(question?.solution) ||
+    unpackStructuredJson(expectedSolution?.solution);
+
+  const rawWhy = firstNonEmpty(
+    expectedSolution.why,
+    question.why,
+    structured?.why,
+    structured?.explanation,
+    structured?.sol,
+    expectedSolution.explain,
+    question.explain
   );
+
+  const unpackedWhy = unpackStructuredJson(rawWhy);
+  if (unpackedWhy) {
+    return cleanString(unpackedWhy.why || unpackedWhy.explain || unpackedWhy.sol || "");
+  }
+
+  return cleanString(rawWhy);
 }
 
 /**
@@ -259,13 +329,19 @@ function makeDiagnosis({
   correction = null,
   stepAnalysis = null,
 }) {
+  const cleanRemember = cleanString(remember);
+  const unpackedRem = unpackStructuredJson(cleanRemember);
+  const finalRemember = unpackedRem
+    ? cleanString(unpackedRem.why || unpackedRem.explain || unpackedRem.sol || "")
+    : cleanRemember;
+
   return {
     status,
     errorType,
     whatYouDid,
     whyThisIsWrong: toArrayOfStrings(whyThisIsWrong),
     theRightWay: toArrayOfStrings(theRightWay),
-    remember,
+    remember: finalRemember,
     evidence: {
       observed: toArrayOfStrings(observed),
       expected: toArrayOfStrings(expected),
