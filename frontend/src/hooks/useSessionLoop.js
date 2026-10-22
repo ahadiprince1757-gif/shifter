@@ -161,12 +161,22 @@ export function useSessionLoop({
         },
       ]);
 
+      const resolvedSubjectId =
+        subject?.id ||
+        (typeof subject === "string" ? subject : null) ||
+        chapter?.subjectId ||
+        "general";
+      const resolvedChapterId =
+        chapter?.id ||
+        (typeof chapter === "string" ? chapter : null) ||
+        "general";
+
       mistakeRepo
         .saveMistake({
           userId,
           topicId: topic,
-          subjectId: subject?.id || null,
-          chapterId: chapter?.id || null,
+          subjectId: resolvedSubjectId,
+          chapterId: resolvedChapterId,
           questionIndex: index,
           questionText: q.q || q.stem || "",
           correctAnswer: evalResult.correctAnswer || "",
@@ -200,11 +210,21 @@ export function useSessionLoop({
       const conceptTag = q.concept_tag || q.semanticSkill?.conceptId || `q_${qIdx}`;
       setRepairedConcepts((prev) => new Set([...prev, conceptTag]));
 
+      const resolvedSubjectId =
+        subject?.id ||
+        (typeof subject === "string" ? subject : null) ||
+        chapter?.subjectId ||
+        "general";
+      const resolvedChapterId =
+        chapter?.id ||
+        (typeof chapter === "string" ? chapter : null) ||
+        "general";
+
       // Multi-state mistake transition: PROVISIONALLY_FIXED
       mistakeRepo
         .markProvisionallyFixed(topic, qIdx, {
-          subjectId: subject?.id,
-          chapterId: chapter?.id,
+          subjectId: resolvedSubjectId,
+          chapterId: resolvedChapterId,
           userId,
         })
         .catch(() => {});

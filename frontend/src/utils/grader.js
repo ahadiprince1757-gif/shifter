@@ -338,6 +338,16 @@ const UNIT_ALIASES = {
   kph: "km/h",
   "km/hr": "km/h",
   "km/hour": "km/h",
+  "kilometres per hour": "km/h",
+  "kilometers per hour": "km/h",
+  "kilometre per hour": "km/h",
+  "kilometer per hour": "km/h",
+  "metres per second": "m/s",
+  "meters per second": "m/s",
+  "metre per second": "m/s",
+  "meter per second": "m/s",
+  "miles per hour": "mph",
+  "mile per hour": "mph",
 
   mps: "m/s",
   "m/sec": "m/s",
@@ -348,13 +358,39 @@ const UNIT_ALIASES = {
   "m/s²": "m/s^2",
 };
 
+const NUMBER_WORDS_MAP = {
+  zero: 0, one: 1, two: 2, three: 3, four: 4,
+  five: 5, six: 6, seven: 7, eight: 8, nine: 9,
+  ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14,
+  fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19,
+  twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60,
+  seventy: 70, eighty: 80, ninety: 90, hundred: 100,
+};
+
+function convertNumberWordsToDigits(str) {
+  if (!str || typeof str !== "string") return str;
+  let res = str.toLowerCase();
+  const tens = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+  const units = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+  for (const t of tens) {
+    for (const u of units) {
+      const val = NUMBER_WORDS_MAP[t] + NUMBER_WORDS_MAP[u];
+      res = res.replace(new RegExp(`\\b${t}[-\\s]+${u}\\b`, "gi"), String(val));
+    }
+  }
+  for (const [w, n] of Object.entries(NUMBER_WORDS_MAP)) {
+    res = res.replace(new RegExp(`\\b${w}\\b`, "gi"), String(n));
+  }
+  return res;
+}
+
 const CANONICAL_UNITS = new Set([
   "m", "cm", "mm", "km",
   "kg", "g", "mg",
   "s", "min", "h",
   "deg", "c", "k",
   "v", "a", "w", "j", "n", "pa", "hz",
-  "mol", "l", "ml",
+  "mol", "l", "ml", "mph",
   "km/h", "m/s", "m/s^2",
 ]);
 
@@ -378,6 +414,8 @@ function extractNumericWithUnit(value) {
 
   if (!text) return null;
 
+  text = convertNumberWordsToDigits(text);
+
   text = text
     .replace(/,/g, (match, offset, whole) => {
       // Thousands separators are allowed only in valid numeric groups.
@@ -390,16 +428,32 @@ function extractNumericWithUnit(value) {
     .replace(/\s+/g, " ")
     .trim();
 
-  const match = text.match(
-    /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*([a-z]+(?:\/[a-z]+(?:\^2)?)?)?$/
+  const stripped = text.replace(/[.,;:]+$/, "").trim();
+
+  // 1. Direct match: e.g. "40 km/h" or "20 kilometres per hour"
+  let match = stripped.match(
+    /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*([a-z°\^2/ ]+)?$/i
   );
+
+  // 2. Working / statement extraction: e.g. "Step 4: Average speed = 40 km/h."
+  if (!match) {
+    const lines = stripped.split(/\n|;/).map((l) => l.trim()).filter(Boolean);
+    const lastLine = (lines[lines.length - 1] || stripped).replace(/[.,;:]+$/, "").trim();
+
+    const stmtMatch = lastLine.match(
+      /(?:(?:^|[:=]|\bis\b|\bwas\b|\bare\b|\bspeed\b|\banswer\b)\s*)+([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*([a-z°\^2/ ]+)?$/i
+    );
+    if (stmtMatch) {
+      match = stmtMatch;
+    }
+  }
 
   if (!match) return null;
 
   const numericValue = Number(match[1]);
   if (!Number.isFinite(numericValue)) return null;
 
-  const rawUnit = match[2] || null;
+  const rawUnit = match[2] ? match[2].trim() : null;
 
   return {
     value: numericValue,
@@ -413,26 +467,32 @@ function extractNumericWithUnit(value) {
 // ============================================================================
 
 function extractFinalNumericValue(value) {
-  const text = safeString(value).trim();
+  let text = safeString(value).trim();
   if (!text) return null;
+
+  text = convertNumberWordsToDigits(text);
 
   const lines = text
     .split(/\n|;/)
     .map((line) => line.trim())
     .filter(Boolean);
 
-  const lastLine = lines[lines.length - 1] || text;
+  let lastLine = lines[lines.length - 1] || text;
+  lastLine = lastLine.replace(/[.,;:]+$/, "").trim();
 
   // Never accept malformed values such as "12abc" or "12 abc" as the number 12.
   if (/^[+-]?\d+(?:\.\d+)?\s*[a-zA-Z]+$/.test(lastLine.trim())) {
-    return null;
+    const m = lastLine.trim().match(/^([+-]?\d+(?:\.\d+)?)\s*([a-zA-Z]+)$/);
+    if (!m || !normalizeUnit(m[2])) {
+      return null;
+    }
   }
 
   const direct = parseStrictNumericValue(lastLine);
   if (direct !== null) return direct;
 
   const equality = lastLine.match(
-    /=\s*([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(?:[a-z°]+)?\s*$/i
+    /(?:=\s*|:\s*|\bis\s*)([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(?:[a-z°\^2/ ]+)?$/i
   );
 
   if (equality) return Number(equality[1]);
@@ -1131,6 +1191,32 @@ function checkSingleVariant(userAnswer, correctAnswer) {
       grade: equationResult.correct ? "correct" : "incorrect",
       acceptedAlternative: false,
       shouldRecordMistake: !equationResult.correct,
+    };
+  }
+
+  // Quantitative answer guard:
+  // If the expected answer requires a numeric/quantitative value (contains numbers, fractions,
+  // percentages, or units), and previous numeric/unit equivalence checks did not pass as correct,
+  // it must NEVER be marked correct via fuzzy keyword/concept matching or phrase matching.
+  const hasExpectedNumbers = extractNumbers(correctAnswer).length > 0;
+  const isQuantitativeExpected =
+    hasExpectedNumbers ||
+    parseFraction(correctAnswer) !== null ||
+    parsePercentage(correctAnswer) !== null ||
+    extractNumericWithUnit(correctAnswer) !== null;
+
+  if (isQuantitativeExpected) {
+    return {
+      correct: false,
+      grade: "incorrect",
+      method: "numerical_mismatch",
+      confidence: 0.95,
+      acceptedAlternative: false,
+      shouldRecordMistake: true,
+      evidence: {
+        expected: correctAnswer,
+        student: userAnswer,
+      },
     };
   }
 

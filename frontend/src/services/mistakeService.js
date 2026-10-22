@@ -20,6 +20,7 @@ import { supabase, getActiveUserId } from "../supabase";
  */
 export async function recordMistake({
   userId = null,
+  subjectId = null,
   questionAttemptId = null,
   questionId = null,
   topicId = null,
@@ -39,14 +40,28 @@ export async function recordMistake({
     return null;
   }
 
+  const resolvedSubjectId =
+    subjectId ||
+    (diagnosticData && (diagnosticData.subjectId || diagnosticData.subject_id)) ||
+    (chapterKey && chapterKey.includes("|") ? chapterKey.split("|")[0] : null) ||
+    "general";
+
+  const resolvedChapterKey =
+    chapterKey ||
+    (chapterId ? String(chapterId) : null) ||
+    "general";
+
   const payload = {
     user_id: activeUserId,
+    subject_id: String(resolvedSubjectId),
+    chapter_key: String(resolvedChapterKey),
     question_index: typeof questionIndex === "number" ? questionIndex : (parseInt(questionIndex, 10) || 0),
     question_text: questionText || "",
     correct_answer: correctAnswer || "",
     solution: solution || "",
     diagnostic_data: {
       mistake_type: mistakeType || "calculation_error",
+      subject_id: String(resolvedSubjectId),
       ...(diagnosticData || {}),
     },
     resolved: false,
@@ -65,12 +80,11 @@ export async function recordMistake({
   }
   if (topicTitle) {
     payload.topic_title = topicTitle;
+  } else if (typeof topicId === "string" && isNaN(Number(topicId))) {
+    payload.topic_title = topicId;
   }
   if (chapterId && (typeof chapterId === "number" || /^\d+$/.test(chapterId))) {
     payload.chapter_id = parseInt(chapterId, 10);
-  }
-  if (chapterKey) {
-    payload.chapter_key = chapterKey;
   }
 
   try {

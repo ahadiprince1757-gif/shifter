@@ -43,10 +43,12 @@ function validateEvent(event) {
     return { valid: false, error: 'Event payload must be a non-null object' };
   }
 
-  // 1. client_event_id: Required, non-empty string for idempotency
-  if (!event.client_event_id || typeof event.client_event_id !== 'string' || event.client_event_id.trim().length === 0) {
+  // 1. client_event_id: Required, non-empty string for idempotency (supports event.id fallback)
+  const clientEventId = event.client_event_id || event.id;
+  if (!clientEventId || typeof clientEventId !== 'string' || clientEventId.trim().length === 0) {
     return { valid: false, error: 'Missing or invalid client_event_id: must be a non-empty string' };
   }
+  event.client_event_id = clientEventId.trim();
 
   // 2. event_type: Required string, standard vocabulary or valid snake_case identifier
   if (!event.event_type || typeof event.event_type !== 'string') {

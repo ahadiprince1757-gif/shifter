@@ -87,8 +87,8 @@ export const mistakeRepo = {
 
       // 2. Try Supabase; if offline enqueue for later
       const apiPayload = {
-        sid: subjectId,
-        cid: chapterId,
+        sid: subjectId || 'general',
+        cid: chapterId || 'general',
         topicTitle: topicId,
         questionIndex,
         questionText: questionText || '',

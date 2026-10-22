@@ -215,8 +215,10 @@ export function recordLearningEvent({
 
   const events = getQueuedEvents(activeUserId);
 
+  const eventId = generateId();
   const newEvent = {
-    id: generateId(),
+    id: eventId,
+    client_event_id: eventId,
     user_id: activeUserId,
     subject_id: subjectId,
     chapter_id: chapterId || null,
