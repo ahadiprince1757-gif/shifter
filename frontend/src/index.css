@@ -6335,8 +6335,28 @@ html.dark-mode .bottom-search-panel {
 }
 .notes-scroll-container img {
   max-width: 100%;
+  width: auto;
   height: auto;
   object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.30);
+}
+
+/* Diagram wrapper divs used inside notes content */
+.notes-scroll-container div[style*="text-align:center"],
+.notes-scroll-container div[style*="text-align: center"] {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0 4px;
+}
+
+@media (max-width: 600px) {
+  .notes-scroll-container img {
+    max-height: 260px;
+    border-radius: 8px;
+  }
 }
 .zoom-btn {
   transition: all 0.2s ease-in-out;
