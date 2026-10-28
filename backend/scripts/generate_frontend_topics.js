@@ -8,9 +8,11 @@ console.log("[generate_frontend_topics] Loading canonical curriculum from backen
 const { stats, contentMap } = loadCanonicalCurriculum();
 console.log(`[generate_frontend_topics] Loaded ${contentMap.size} topics (${stats.questionsCount} questions).`);
 
-const SUBJECTS = ["math", "physics", "chemistry", "biology", "english", "computer"];
+const targetSubject = process.argv[2] ? process.argv[2].toLowerCase() : null;
+const ALL_SUBJECTS = ["math", "physics", "chemistry", "biology", "english", "computer"];
+const SUBJECTS = targetSubject ? [targetSubject] : ALL_SUBJECTS;
 const topicsBySubject = {};
-for (const sid of SUBJECTS) {
+for (const sid of ALL_SUBJECTS) {
   topicsBySubject[sid] = [];
 }
 

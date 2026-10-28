@@ -260,15 +260,24 @@ function loadCanonicalCurriculum() {
       qs = Array.isArray(rawQs) ? rawQs : (rawQs ? [rawQs] : []);
     } else {
       cid = String(args[1] || "").trim();
-      topic = String(args[2] || "").trim();
-      topicGroup = topic;
-      notes = typeof args[3] === "string" ? args[3] : (Array.isArray(args[3]) ? args[3].join("\n") : String(args[3] || ""));
-      let rawQs = args[4] || [];
-      if (!Array.isArray(rawQs) && rawQs) rawQs = [rawQs];
-      if (Array.isArray(args[5])) {
-        rawQs = rawQs.concat(args[5]);
+      if (args.length >= 6) {
+        topic = String(args[3] || "").trim();
+        topicGroup = topic;
+        notes = typeof args[4] === "string" ? args[4] : (Array.isArray(args[4]) ? args[4].join("\n") : String(args[4] || ""));
+        let rawQs = args[5] || [];
+        if (!Array.isArray(rawQs) && rawQs) rawQs = [rawQs];
+        qs = rawQs;
+      } else {
+        topic = String(args[2] || "").trim();
+        topicGroup = topic;
+        notes = typeof args[3] === "string" ? args[3] : (Array.isArray(args[3]) ? args[3].join("\n") : String(args[3] || ""));
+        let rawQs = args[4] || [];
+        if (!Array.isArray(rawQs) && rawQs) rawQs = [rawQs];
+        if (Array.isArray(args[5])) {
+          rawQs = rawQs.concat(args[5]);
+        }
+        qs = rawQs;
       }
-      qs = rawQs;
     }
 
     const key = `${sid}/${cid}/${topic}`;
