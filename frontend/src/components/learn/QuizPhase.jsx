@@ -12,6 +12,14 @@ import ConceptReferenceDrawer from "./quiz/ConceptReferenceDrawer";
 import { determineResponseMode } from "../../utils/questionTypeHelper";
 import { verifyQuestionAcrossSubjects } from "../../utils/subjectVerifierRouter";
 
+const markdownComponents = {
+  table: ({ node, ...props }) => (
+    <div className="table-responsive">
+      <table {...props} />
+    </div>
+  ),
+};
+
 function QuizPhase({
   topic,
   qIdx,
@@ -80,7 +88,7 @@ function QuizPhase({
                     <div key={i} className="fb-step-card">
                       <span className="fb-step-badge">Step {i + 1}</span>
                       <div className="fb-step-text">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
                           {step.replace(/^step\s*\d+\s*:\s*/i, "")}
                         </ReactMarkdown>
                       </div>
@@ -95,7 +103,7 @@ function QuizPhase({
               <div className="fb-correct-answer-box">
                 <div className="fb-section-title">Target Correct Answer</div>
                 <div className="fb-answer-value">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
                     {String(displayAnswer)}
                   </ReactMarkdown>
                 </div>
@@ -109,7 +117,7 @@ function QuizPhase({
                 <div className="fb-explanation-box">
                   <div className="fb-section-title">Explanation</div>
                   <div className="fb-explanation-text">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
                       {displayExplanation}
                     </ReactMarkdown>
                   </div>

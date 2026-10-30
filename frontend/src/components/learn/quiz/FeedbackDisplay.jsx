@@ -297,6 +297,13 @@ function Markdown({ children }) {
     <ReactMarkdown
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
+      components={{
+        table: ({ node, ...props }) => (
+          <div className="table-responsive">
+            <table {...props} />
+          </div>
+        ),
+      }}
     >
       {String(children)}
     </ReactMarkdown>

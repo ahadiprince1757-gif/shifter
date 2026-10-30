@@ -5,7 +5,17 @@ import rehypeRaw from "rehype-raw";
 function Markdown({ children }) {
   if (!children) return null;
   return (
-    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      rehypePlugins={[rehypeRaw]}
+      components={{
+        table: ({ node, ...props }) => (
+          <div className="table-responsive">
+            <table {...props} />
+          </div>
+        ),
+      }}
+    >
       {String(children)}
     </ReactMarkdown>
   );

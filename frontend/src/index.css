@@ -2136,24 +2136,164 @@ html.dark-mode .lnav-search-panel {
   font-size: 0.81rem;
 }
 
-.nc table {
+/* ── Responsive Table System (Mobile Optimized) ─────────────────────── */
+.table-responsive {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1.1rem 0 1.25rem;
+  border-radius: 12px;
+  border: 1px solid var(--bd2);
+  background: var(--sur);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  touch-action: pan-x pan-y;
+  position: relative;
+}
+
+.table-responsive::-webkit-scrollbar {
+  height: 6px;
+}
+.table-responsive::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.04);
+  border-radius: 4px;
+}
+.table-responsive::-webkit-scrollbar-thumb {
+  background: var(--bd2);
+  border-radius: 4px;
+}
+.table-responsive::-webkit-scrollbar-thumb:hover {
+  background: var(--v);
+}
+
+.table-responsive > table,
+.nc table,
+.ref-drawer-content table,
+.fb-step-text table,
+.fb-answer-value table,
+.fb-explanation-text table,
+.repair-solution table,
+.transfer-feedback-why table {
   width: 100%;
   border-collapse: collapse;
-  margin: 0.72rem 0;
-  font-size: 0.78rem;
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  text-align: left;
+  letter-spacing: -0.01em;
+  box-sizing: border-box;
 }
 
-.nc th {
-  background: var(--bg);
-  padding: 0.38rem 0.66rem;
+/* Fallback when table is not wrapped in .table-responsive */
+.nc > table:not(.table-responsive table),
+.ref-drawer-content > table:not(.table-responsive table),
+.fb-step-text > table:not(.table-responsive table),
+.fb-explanation-text > table:not(.table-responsive table) {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: 12px;
+  border: 1px solid var(--bd2);
+  background: var(--sur);
+  margin: 1.1rem 0 1.25rem;
+  touch-action: pan-x pan-y;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+.table-responsive th,
+.nc th,
+.ref-drawer-content th,
+.fb-step-text th,
+.fb-explanation-text th {
+  background: var(--bg2);
+  color: var(--t);
+  padding: 0.65rem 0.95rem;
   text-align: left;
   font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.02em;
   border-bottom: 2px solid var(--bd2);
+  white-space: nowrap;
+  word-break: normal;
+  vertical-align: middle;
 }
 
-.nc td {
-  padding: 0.32rem 0.66rem;
+.table-responsive td,
+.nc td,
+.ref-drawer-content td,
+.fb-step-text td,
+.fb-explanation-text td {
+  padding: 0.6rem 0.95rem;
   border-bottom: 1px solid var(--bd);
+  color: var(--t2);
+  font-size: 0.84rem;
+  vertical-align: middle;
+  word-break: normal;
+  word-wrap: normal;
+}
+
+/* Zebra striping for improved legibility across multi-column data */
+.table-responsive tbody tr:nth-child(even) td,
+.nc table tbody tr:nth-child(even) td,
+.ref-drawer-content table tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.018);
+}
+
+.table-responsive tr:last-child td,
+.nc table tr:last-child td,
+.ref-drawer-content table tr:last-child td {
+  border-bottom: none;
+}
+
+.table-responsive tr:hover td,
+.nc table tr:hover td,
+.ref-drawer-content table tr:hover td {
+  background: rgba(58, 143, 253, 0.04);
+}
+
+@media (max-width: 600px) {
+  .table-responsive {
+    margin: 0.85rem 0 1rem;
+    border-radius: 10px;
+  }
+  .table-responsive > table,
+  .nc table,
+  .ref-drawer-content table {
+    font-size: 0.8rem;
+    min-width: 280px;
+  }
+  .table-responsive th,
+  .nc th,
+  .ref-drawer-content th {
+    padding: 0.52rem 0.75rem;
+    font-size: 0.76rem;
+  }
+  .table-responsive td,
+  .nc td,
+  .ref-drawer-content td {
+    padding: 0.48rem 0.75rem;
+    font-size: 0.78rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .table-responsive > table,
+  .nc table,
+  .ref-drawer-content table {
+    font-size: 0.76rem;
+  }
+  .table-responsive th,
+  .nc th {
+    padding: 0.45rem 0.62rem;
+    font-size: 0.72rem;
+  }
+  .table-responsive td,
+  .nc td {
+    padding: 0.42rem 0.62rem;
+    font-size: 0.74rem;
+  }
 }
 
 /* SWIPE GESTURE & HINT STYLES */
@@ -6317,6 +6457,12 @@ html.dark-mode .bottom-search-panel {
 }
 
 /* Notes scroll and zoom styles */
+.notes-scroll-container {
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
 .notes-scroll-container::-webkit-scrollbar {
   height: 6px;
 }
@@ -6331,7 +6477,6 @@ html.dark-mode .bottom-search-panel {
   width: 100%;
   max-width: 100%;
   box-sizing: border-box;
-  display: table;
 }
 .notes-scroll-container img {
   max-width: 100%;
