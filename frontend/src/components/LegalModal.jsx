@@ -409,7 +409,7 @@ export default function LegalModal({ isOpen, onClose, initialTab = "terms" }) {
             onClick={onClose}
             style={{ fontSize: "0.85rem", padding: "0.55rem 1.6rem", borderRadius: "10px" }}
           >
-            I Understand &amp; Close
+            I agree to this  &amp; continue
           </button>
         </div>
       </div>

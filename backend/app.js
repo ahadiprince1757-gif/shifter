@@ -778,8 +778,13 @@ app.post("/api/analytics/events", async (req, res) => {
       if (!lookupErr && matchedRows) {
         for (const row of matchedRows) {
           if (row.sid && row.cid && row.topic) {
-            const key = `${String(row.sid).toLowerCase().trim()}::${String(row.cid).toLowerCase().trim()}::${String(row.topic).toLowerCase().trim()}`;
-            topicIdLookup.set(key, row.topic_id);
+            const sidKey = String(row.sid).toLowerCase().trim();
+            const cidKey = String(row.cid).toLowerCase().trim();
+            const topicKey = String(row.topic).toLowerCase().trim();
+
+            topicIdLookup.set(`${sidKey}::${cidKey}::${topicKey}`, row.topic_id);
+            topicIdLookup.set(`${sidKey}::${cidKey}::${topicKey.replace(/[^a-z0-9]+/g, "-")}`, row.topic_id);
+            topicIdLookup.set(`${sidKey}::${cidKey}::${topicKey.replace(/[-_]/g, " ")}`, row.topic_id);
           }
         }
       }
@@ -795,31 +800,34 @@ app.post("/api/analytics/events", async (req, res) => {
       const topic = evt.topic;
       const event_type = evt.event_type || evt.type;
 
-      if (!sid || !cid || !topic || !event_type) continue;
+      if (!event_type) continue;
 
-      const lookupKey = `${String(sid).toLowerCase().trim()}::${String(cid).toLowerCase().trim()}::${String(topic).toLowerCase().trim()}`;
-      const topic_id = topicIdLookup.get(lookupKey) || null;
+      let topic_id = null;
+      if (evt.topic_id && (typeof evt.topic_id === "number" || /^\d+$/.test(evt.topic_id))) {
+        topic_id = parseInt(evt.topic_id, 10);
+      } else if (sid && cid && topic) {
+        const sidKey = String(sid).toLowerCase().trim();
+        const cidKey = String(cid).toLowerCase().trim();
+        const topicKey = String(topic).toLowerCase().trim();
+
+        topic_id =
+          topicIdLookup.get(`${sidKey}::${cidKey}::${topicKey}`) ||
+          topicIdLookup.get(`${sidKey}::${cidKey}::${topicKey.replace(/[^a-z0-9]+/g, "-")}`) ||
+          topicIdLookup.get(`${sidKey}::${cidKey}::${topicKey.replace(/[-_]/g, " ")}`) ||
+          null;
+      }
+
       if (!topic_id) {
         unresolvedTopicsCount++;
-        continue;
       }
 
       const client_event_id = evt.client_event_id || evt.id || null;
-
-      const metadata = evt.metadata || {};
-      if (evt.cognitive_level || evt.cognitiveLevel) {
-        metadata.cognitiveLevel = evt.cognitive_level || evt.cognitiveLevel;
-      }
-      if (evt.question_id) {
-        metadata.questionId = evt.question_id;
-      }
 
       rowsToInsert.push({
         topic_id,
         event_type,
         user_id: authUserId, // Server is the sole authority on identity
         client_event_id,
-        metadata,
         created_at: evt.created_at || new Date().toISOString(),
       });
     }
@@ -860,6 +868,54 @@ app.post("/api/analytics/events", async (req, res) => {
       });
     } catch (healthLogErr) {
       logger.warn("TELEMETRY_HEALTH_LOG_INSERT_FAILED", { error: healthLogErr.message });
+    }
+
+    // 6. Asynchronously trigger decision ledger update so intelligence_decisions is always updated
+    if (totalInserted > 0) {
+      (async () => {
+        try {
+          const { data: userEvents } = await supabase
+            .from("learning_events")
+            .select("id, client_event_id, topic_id, event_type, created_at, metadata")
+            .eq("user_id", authUserId)
+            .order("created_at", { ascending: true });
+
+          const attempts = [];
+          if (userEvents) {
+            userEvents.forEach((e) => {
+              const isPass = e.event_type === "pass" || e.event_type === "question_correct";
+              const isFail = e.event_type === "fail" || e.event_type === "question_incorrect";
+              if (isPass || isFail) {
+                attempts.push({
+                  id: e.id,
+                  client_event_id: e.client_event_id || null,
+                  topic_id: e.topic_id,
+                  topic: e.metadata?.topicName || (e.topic_id ? `Topic #${e.topic_id}` : "General Mathematics"),
+                  correct: isPass,
+                  event_type: e.event_type,
+                  cognitive_level: e.metadata?.cognitiveLevel || null,
+                  created_at: e.created_at,
+                });
+              }
+            });
+          }
+
+          const { data: spacedReviews } = await supabase
+            .from("spaced_reviews")
+            .select("id, user_id, topic_id, topic_title, next_review_at, interval_days, repetitions")
+            .eq("user_id", authUserId);
+
+          await intelligenceService.computeAndRecordDecision(
+            supabase,
+            authUserId,
+            attempts,
+            [],
+            spacedReviews || []
+          );
+        } catch (decErr) {
+          logger.warn("AUTO_DECISION_TRIGGER_WARN", { error: decErr.message });
+        }
+      })().catch(() => {});
     }
 
     logger.action("ANALYTICS_EVENTS_SYNCED", "success", {

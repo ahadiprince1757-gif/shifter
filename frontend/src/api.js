@@ -332,12 +332,12 @@ export async function fetchEnrollments() {
 }
 
 /** Save topic progress to Supabase via progressService. */
-export async function saveProgress({ sid, cid, topicTitle, completed, score, mastered, confidenceLevel }) {
+export async function saveProgress({ sid, cid, topicId = null, topicTitle, completed, score, mastered, confidenceLevel }) {
   const record = await serviceUpdateProgress({
     subjectId: sid,
     chapterId: cid,
-    topicId: topicTitle,
-    topicTitle,
+    topicId: topicId || topicTitle,
+    topicTitle: topicTitle || (typeof topicId === "string" ? topicId : ""),
     completed: completed ?? false,
     masteryScore: score ?? 0,
     mastered: mastered ?? false,

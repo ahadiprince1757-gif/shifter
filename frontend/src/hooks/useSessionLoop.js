@@ -23,6 +23,8 @@ import {
 } from "../utils/repairInterventionSelector";
 import { buildWeaknessMap } from "../utils/weaknessMap";
 import { getTransferQuestion } from "../utils/transferQuestion";
+import { recordQuestionAttempt } from "../services/attemptService";
+import { recordLearningEvent, LEARNING_EVENTS } from "../utils/analytics";
 
 export const SESSION_PHASES = {
   NOTES: 0,
@@ -68,6 +70,12 @@ export function useSessionLoop({
   const [transferQuestion, setTransferQuestion] = useState(null);
 
   const usedIndicesRef = useRef(new Set());
+  const questionStartTimeRef = useRef(Date.now());
+
+  // Track question start timestamp whenever question index or active question changes
+  useEffect(() => {
+    questionStartTimeRef.current = Date.now();
+  }, [qIdx, activeQuestion]);
 
   // Reset state when topic changes
   const prevTopicRef = useRef(topic);
@@ -247,9 +255,15 @@ export function useSessionLoop({
         .catch(() => {});
 
       if (subject?.id && chapter?.id) {
+        const numericTopicId =
+          content?.topic_id ||
+          content?.id ||
+          (typeof topic === "number" || /^\d+$/.test(topic) ? parseInt(topic, 10) : null);
+
         saveProgress({
           sid: subject.id,
           cid: chapter.id,
+          topicId: numericTopicId,
           topicTitle: topic,
           completed: true,
           score,
@@ -289,6 +303,52 @@ export function useSessionLoop({
     setTimeout(() => {
       const rawRes = evaluateAnswer(answer, q, work);
       const isPartial = rawRes.grade === "partial" || rawRes.partialCredit === true;
+      const isCorrect = Boolean(rawRes.isCorrect);
+      const attemptScore = isCorrect ? 100 : (isPartial ? 50 : 0);
+      const timeSpentSeconds = Math.max(1, Math.round((Date.now() - (questionStartTimeRef.current || Date.now())) / 1000));
+
+      const resolvedQuestionId =
+        q?.id ||
+        (content?.qs && content.qs.indexOf(q) !== -1 ? content.qs.indexOf(q) + 1 : qIdx + 1);
+      const resolvedTopicId =
+        content?.topic_id ||
+        content?.id ||
+        (typeof topic === "number" || /^\d+$/.test(topic) ? parseInt(topic, 10) : null);
+
+      // Record question attempt to Supabase public.question_attempts
+      recordQuestionAttempt({
+        userId,
+        questionId: resolvedQuestionId,
+        topicId: resolvedTopicId,
+        userAnswer: answer,
+        isCorrect,
+        score: attemptScore,
+        timeSpentSeconds,
+      }).catch(() => {});
+
+      // Record learning event to telemetry queue / Supabase public.learning_events
+      recordLearningEvent({
+        subjectId: subject?.id || "general",
+        chapterId: chapter?.id || "general",
+        topic: topic,
+        type: isCorrect
+          ? LEARNING_EVENTS.QUESTION_CORRECT
+          : LEARNING_EVENTS.QUESTION_INCORRECT,
+        userId,
+        correct: isCorrect,
+        score: attemptScore,
+        questionId: resolvedQuestionId,
+        timeSpentSeconds,
+        attempts: (q?.attempts || 0) + 1,
+        hintsUsed: showHint ? 1 : 0,
+        metadata: {
+          qIdx,
+          isPartial,
+          isRepaired: isRepairing,
+          confidence,
+          questionText: q?.q || q?.stem || "",
+        },
+      });
 
       if (isPartial) {
         setFeedback({

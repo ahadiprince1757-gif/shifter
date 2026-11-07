@@ -44,7 +44,23 @@ export async function updateProgress({
 
   if (typeof topicId === "number" || /^\d+$/.test(topicId)) {
     payload.topic_id = parseInt(topicId, 10);
+  } else if (topicTitle || (typeof topicId === "string" && topicId)) {
+    const searchTitle = (topicTitle || topicId).trim();
+    try {
+      const { data: topicRow } = await supabase
+        .from("topics")
+        .select("id")
+        .ilike("title", searchTitle)
+        .limit(1)
+        .maybeSingle();
+      if (topicRow?.id) {
+        payload.topic_id = topicRow.id;
+      }
+    } catch {
+      // Ignore lookup failure
+    }
   }
+
   if (topicTitle) {
     payload.topic_title = topicTitle;
   }
@@ -57,6 +73,11 @@ export async function updateProgress({
 
   if (mastered) {
     payload.mastered_at = new Date().toISOString();
+  }
+
+  if (!payload.topic_id) {
+    console.warn("[progressService] Skipping progress upsert: could not resolve numeric topic_id for topic:", topicTitle || topicId);
+    return null;
   }
 
   try {
