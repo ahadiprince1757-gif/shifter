@@ -311,14 +311,16 @@ export default function TeacherFeedbackView({
                     <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
                     <circle cx="12" cy="7" r="4" />
                   </svg>
-                  <h3 className="tfv-card-title">Your Approach</h3>
+                  <h3 className="tfv-card-title">
+                    {status === "unrecognized" ? "Unrecognized Input" : "Your Approach"}
+                  </h3>
                 </div>
                 <span className="tfv-badge tfv-badge-error">
                   <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                     <line x1="18" y1="6" x2="6" y2="18" />
                     <line x1="6" y1="6" x2="18" y2="18" />
                   </svg>
-                  <span>What you did</span>
+                  <span>{status === "unrecognized" ? "Unclear Submission" : "What you did"}</span>
                 </span>
               </div>
 

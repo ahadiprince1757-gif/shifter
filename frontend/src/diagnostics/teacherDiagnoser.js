@@ -37,7 +37,15 @@ export const STATUS = Object.freeze({
   DIAGNOSED: "diagnosed",
   INCONCLUSIVE: "inconclusive",
   CORRECT: "correct",
+  UNRECOGNIZED: "unrecognized",
 });
+
+import { isKeyboardMash } from "./engine/inputClassifier.js";
+import { diagnoseNumberClassification } from "./knowledge/numberSystems.js";
+import { findKnownMisconception } from "./knowledge/misconceptionRegistry.js";
+import { analyzeStudentSteps } from "./analyzers/stepAnalyzer.js";
+import { diagnosticEngine } from "./engine/diagnosticEngine.js";
+
 
 const UNIT_ALIASES = Object.freeze({
   kilometre: "km",
@@ -469,14 +477,21 @@ function diagnoseAlgebraicSteps({
     ...(a !== 1 ? [`You understood that dividing by ${a} is needed to isolate ${varName}.`] : [])
   ];
 
-  const flawedStepLine = `${a !== 1 ? a : ""}${varName} = ${cVal} ${sign === "-" ? "-" : "+"} ${bVal}`;
+  const studentActualLine = workLines.find((line) => {
+    const norm = line.replace(/\s+/g, "");
+    const targetFlawed = `${cVal}${sign === "-" ? "-" : "+"}${bVal}`;
+    return norm.includes(targetFlawed) || norm.includes(`=${flawedConstant}`) || norm.includes(`${flawedConstant}`);
+  });
+  const flawedStepLine = studentActualLine || `${a !== 1 ? a : ""}${varName} = ${cVal} ${sign === "-" ? "-" : "+"} ${bVal}`;
   const correctedStepLine = `${a !== 1 ? a : ""}${varName} = ${cVal} ${sign === "-" ? "+" : "-"} ${bVal}`;
 
   const whereYourWorkingBrokeDown = {
     stepIndex: 2,
     studentStep: flawedStepLine,
     correctedStep: correctedStepLine,
-    explanation: `You wrote \`${flawedStepLine}\`. But because the equation contains \`${sign} ${bVal}\`, you need to ${oppositeWord} ${bVal} on both sides to cancel it out, not ${wrongWord} ${bVal}.`
+    explanation: studentActualLine && studentActualLine.includes(`${flawedConstant}`) && !studentActualLine.includes(oppositeWord)
+      ? `You wrote \`${flawedStepLine}\`. You ${wrongWord}ed ${bVal} instead of ${oppositeWord}ing it. To isolate ${a !== 1 ? `${a}${varName}` : varName}, ${oppositeWord} ${bVal} from both sides.`
+      : `You wrote \`${flawedStepLine}\`. But because the equation contains \`${sign} ${bVal}\`, you need to ${oppositeWord} ${bVal} on both sides to cancel it out, not ${wrongWord} ${bVal}.`
   };
 
   const correctedWorking = [
@@ -909,7 +924,27 @@ export function diagnoseStudentSubmission({
     });
   }
 
-  // 3. Step-by-Step Algebraic Reasoning (Inverse Operations & Sign Flips)
+  // 3. Unrecognized Keyboard Mash / Gibberish
+  if (isKeyboardMash(answer) && !work) {
+    return makeDiagnosis({
+      status: STATUS.UNRECOGNIZED,
+      errorType: "unrecognized_input",
+      whatYouDid: `You entered "${answer}".`,
+      whyThisIsWrong: [
+        "This input could not be interpreted as a mathematical answer or reasoning step.",
+        "Please enter a valid number, fraction, or algebraic expression.",
+      ],
+      theRightWay: authoredSteps.length > 0
+        ? authoredSteps
+        : (expectedAnswer ? [`Expected answer: ${expectedAnswer}`] : []),
+      remember: "Take your time to write out your calculation or select from the available options.",
+      observed: [`Unrecognized input: ${answer}`],
+      expected: expectedAnswer ? [expectedAnswer] : [],
+      confidence: CONFIDENCE.LOW,
+    });
+  }
+
+  // 4. Step-by-Step Algebraic Reasoning (Inverse Operations & Sign Flips)
   const algebraDiagnosis = diagnoseAlgebraicSteps({
     studentAnswer: answer,
     userWork: work,
@@ -920,7 +955,67 @@ export function diagnoseStudentSubmission({
   });
   if (algebraDiagnosis) return algebraDiagnosis;
 
-  // 4. Domain Diagnostic: Average Speed
+  // 5. Multi-line Working Step Verification Engine
+  if (work && (work.includes("\n") || work.includes(";"))) {
+    const stepAnalysisResult = analyzeStudentSteps({
+      userWork: work,
+      initialEquationStr: questionText,
+      expectedAnswer,
+    });
+
+    if (stepAnalysisResult && stepAnalysisResult.hasError) {
+      const err = stepAnalysisResult.firstError;
+      const stepNum = err.stepNumber;
+      const validEarlierSteps = stepAnalysisResult.evaluatedSteps.filter((s) => s.status === "valid");
+      const whatYouDidRight = validEarlierSteps.map((s) => `Step ${s.stepNumber} was valid: \`${s.raw}\`.`);
+
+      const correctedWorking = stepAnalysisResult.evaluatedSteps.map((s) => {
+        if (s.status === "first_error") {
+          return {
+            step: err.expected || s.raw,
+            status: "corrected",
+            note: "Corrected transition",
+          };
+        }
+        return {
+          step: s.raw,
+          status: s.status === "valid" ? "correct" : "propagated",
+          note: s.statusLabel,
+        };
+      });
+
+      return makeDiagnosis({
+        status: STATUS.DIAGNOSED,
+        errorType: err.errorType === "SIGN_REVERSAL_IN_ISOLATION" ? "sign_reversal_in_equation" : err.errorType,
+        whatYouDid: `You worked through the problem, but a mathematical divergence occurred at Step ${stepNum}: \`${err.raw}\`.`,
+        whyThisIsWrong: [
+          err.explanation,
+          "Later steps followed from this altered intermediate value.",
+        ],
+        theRightWay: correctedWorking.map((c) => c.step),
+        remember: "Check each transformation symmetrically before moving to the next line.",
+        observed: [`Error at Step ${stepNum}: ${err.raw}`],
+        expected: expectedAnswer ? [expectedAnswer] : [],
+        confidence: CONFIDENCE.HIGH,
+        stepAnalysis: {
+          whatYouDidRight,
+          whereYourWorkingBrokeDown: {
+            stepIndex: stepNum,
+            studentStep: err.raw,
+            correctedStep: err.expected,
+            explanation: err.explanation,
+          },
+          correctedWorking,
+          thinkingRepair: {
+            title: "Check step transitions",
+            strategy: "Perform inverse operations to both sides of the equation.",
+          },
+        },
+      });
+    }
+  }
+
+  // 6. Domain Diagnostic: Average Speed
   const speedDiagnosis = diagnoseAverageSpeedJourney({
     studentAnswer: answer,
     userWork: work,
@@ -931,7 +1026,63 @@ export function diagnoseStudentSubmission({
   });
   if (speedDiagnosis) return speedDiagnosis;
 
-  // 5. Unit / Representation Errors
+  // 7. Number Classification Diagnoses (Natural Numbers, Whole Numbers, Integers, Rationals)
+  const qLower = questionText.toLowerCase();
+  if (
+    qLower.includes("natural number") ||
+    qLower.includes("whole number") ||
+    qLower.includes("integer") ||
+    qLower.includes("rational number")
+  ) {
+    let targetSet = "NATURAL_NUMBERS";
+    if (qLower.includes("whole number")) targetSet = "WHOLE_NUMBERS";
+    if (qLower.includes("rational number")) targetSet = "RATIONAL_NUMBERS";
+    if (qLower.includes("integer") && !qLower.includes("natural")) targetSet = "INTEGERS";
+
+    const numDiag = diagnoseNumberClassification({
+      studentInput: answer,
+      targetSet,
+      options: question?.options || [],
+    });
+
+    if (numDiag && numDiag.errorType) {
+      return makeDiagnosis({
+        status: STATUS.DIAGNOSED,
+        errorType: numDiag.errorType,
+        whatYouDid: numDiag.whatYouDid,
+        whyThisIsWrong: [numDiag.explanation],
+        theRightWay: authoredSteps.length > 0
+          ? authoredSteps
+          : (expectedAnswer ? [`The expected answer is ${expectedAnswer}.`] : []),
+        remember: numDiag.ruleToRemember,
+        observed: [`Selected distractor: ${answer}`],
+        expected: expectedAnswer ? [expectedAnswer] : [],
+        confidence: CONFIDENCE.HIGH,
+      });
+    }
+  }
+
+  // 8. Known Misconceptions Catalog (BODMAS, Fraction Operations, etc.)
+  const knownMisconception = findKnownMisconception({
+    studentAnswer: answer,
+    questionText,
+    expectedAnswer,
+  });
+  if (knownMisconception) {
+    return makeDiagnosis({
+      status: STATUS.DIAGNOSED,
+      errorType: knownMisconception.errorType,
+      whatYouDid: knownMisconception.whatYouDid,
+      whyThisIsWrong: knownMisconception.whyThisIsWrong,
+      theRightWay: knownMisconception.theRightWay,
+      remember: knownMisconception.remember,
+      observed: [`Observed answer: ${answer}`],
+      expected: [expectedAnswer],
+      confidence: CONFIDENCE.HIGH,
+    });
+  }
+
+  // 9. Unit / Representation Errors
   const unitDiagnosis = diagnoseUnitErrors({
     studentAnswer: answer,
     expectedAnswer,
@@ -939,7 +1090,7 @@ export function diagnoseStudentSubmission({
   });
   if (unitDiagnosis) return unitDiagnosis;
 
-  // 6. Unclassified Fallback
+  // 10. Unclassified Fallback (Honest uncertainty without inventing reasoning)
   return genericFallback({
     studentAnswer: answer,
     userWork: work,
@@ -949,4 +1100,6 @@ export function diagnoseStudentSubmission({
   });
 }
 
+export { diagnosticEngine };
 export default diagnoseStudentSubmission;
+
