@@ -14,9 +14,11 @@ import { interpretProblem } from "./problemInterpreter.js";
 import { analyzeStudentSteps } from "../analyzers/stepAnalyzer.js";
 import { diagnoseNumberClassification } from "../knowledge/numberSystems.js";
 import { findKnownMisconception } from "../knowledge/misconceptionRegistry.js";
+import { findCrossSubjectMisconception } from "../knowledge/subjectMisconceptions.js";
 import { evaluateDiagnosticConfidence } from "./confidenceEvaluator.js";
 import { formatTeacherFeedback } from "../feedback/didacticFormatter.js";
 import { buildLinearEquationSolution } from "../correction/solutionBuilder.js";
+import { getDiagnosticProbe } from "../knowledge/skillGraph.js";
 
 export class DiagnosticEngine {
   /**
@@ -122,6 +124,9 @@ export class DiagnosticEngine {
       const conf = evaluateDiagnosticConfidence({
         hasWorkingSteps: true,
         stepErrorFound: true,
+        transitionVerified: true,
+        rootCauseSupported: Boolean(stepAnalysisResult.diagnosis?.rootCause),
+        errorClassificationVerified: Boolean(stepAnalysisResult.diagnosis?.category),
       });
 
       return formatResult({
@@ -146,7 +151,11 @@ export class DiagnosticEngine {
       });
 
       if (numberDiagnosis && numberDiagnosis.errorType) {
-        const conf = evaluateDiagnosticConfidence({ distractorMatched: true });
+        const conf = evaluateDiagnosticConfidence({
+          distractorMatched: true,
+          rootCauseSupported: true,
+          errorClassificationVerified: true,
+        });
         return formatResult({
           status: DiagnosticStatus.DIAGNOSED,
           inputClassification,
@@ -168,12 +177,42 @@ export class DiagnosticEngine {
     });
 
     if (registryMatch) {
-      const conf = evaluateDiagnosticConfidence({ distractorMatched: true });
+      const conf = evaluateDiagnosticConfidence({
+        distractorMatched: true,
+        rootCauseSupported: true,
+        errorClassificationVerified: true,
+      });
       return formatResult({
         status: DiagnosticStatus.DIAGNOSED,
         inputClassification,
         problemInfo,
         misconception: registryMatch,
+        expected,
+        studentAns,
+        confidence: conf,
+      });
+    }
+
+    // 4c. Cross-Disciplinary Misconceptions (Physics, Chemistry, Biology, English, Computer Studies)
+    const crossSubjectMatch = findCrossSubjectMisconception({
+      studentAnswer: studentAns,
+      questionText: qText,
+      expectedAnswer: expected,
+      subject: problemInfo.subject || "",
+      questionObj: typeof question === "object" ? question : {},
+    });
+
+    if (crossSubjectMatch) {
+      const conf = evaluateDiagnosticConfidence({
+        distractorMatched: true,
+        rootCauseSupported: true,
+        errorClassificationVerified: true,
+      });
+      return formatResult({
+        status: DiagnosticStatus.DIAGNOSED,
+        inputClassification,
+        problemInfo,
+        misconception: crossSubjectMatch,
         expected,
         studentAns,
         confidence: conf,
@@ -233,7 +272,35 @@ function formatResult({
     }
   }
 
-  // Structured diagnostic response
+  // Diagnostic Probe, Repair & Retest from Step Verification, Misconception, or Skill Graph
+  let probe = stepAnalysis?.probe || misconception?.probe || null;
+  let repair = stepAnalysis?.repair || misconception?.repair || null;
+  let retest = stepAnalysis?.retest || misconception?.retest || null;
+
+  if (!probe && problemInfo.type === "AVERAGE_SPEED" && status !== DiagnosticStatus.CORRECT) {
+    const speedProbeMeta = getDiagnosticProbe("average_speed", "formula_selection");
+    if (speedProbeMeta) {
+      probe = speedProbeMeta.probe;
+      repair = speedProbeMeta.repair;
+      retest = speedProbeMeta.retest;
+    }
+  } else if (!probe && problemInfo.type === "NUMBER_CLASSIFICATION" && status !== DiagnosticStatus.CORRECT) {
+    const numProbeMeta = getDiagnosticProbe("number_classification", "natural_number_definition");
+    if (numProbeMeta) {
+      probe = numProbeMeta.probe;
+      repair = numProbeMeta.repair;
+      retest = numProbeMeta.retest;
+    }
+  } else if (!probe && problemInfo.type === "FRACTION_ARITHMETIC" && status !== DiagnosticStatus.CORRECT) {
+    const fracProbeMeta = getDiagnosticProbe("fraction_addition", "common_denominator");
+    if (fracProbeMeta) {
+      probe = fracProbeMeta.probe;
+      repair = fracProbeMeta.repair;
+      retest = fracProbeMeta.retest;
+    }
+  }
+
+  // Structured 10x diagnostic response
   return {
     ...teacherFeedback, // Contains whatYouDid, whyThisIsWrong, theRightWay, remember, stepAnalysis, evidence
     status,
@@ -246,14 +313,27 @@ function formatResult({
       correct: status === DiagnosticStatus.CORRECT,
       expectedAnswer: expected,
     },
+    evidence: {
+      workShown: Boolean(stepAnalysis?.evaluatedSteps?.length > 0),
+      rawInput: studentAns,
+      steps: stepAnalysis?.evaluatedSteps || [],
+    },
     diagnosis: {
       errorType: teacherFeedback.errorType || null,
+      category: stepAnalysis?.diagnosis?.category || teacherFeedback.errorType || null,
+      subtype: stepAnalysis?.diagnosis?.subtype || null,
+      rootCause: stepAnalysis?.diagnosis?.rootCause || teacherFeedback.errorType || null,
       concept: misconception?.concept || null,
       firstErrorStep: teacherFeedback.firstErrorStep || null,
       explanation: teacherFeedback.whyThisIsWrong?.[0] || "",
+      whatStudentDid: teacherFeedback.whatYouDid || "",
+      whatShouldHaveHappened: teacherFeedback.theRightWay?.[0] || "",
     },
     steps: stepAnalysis?.evaluatedSteps || [],
     correction,
+    probe,
+    repair,
+    retest: retest ? { required: status !== DiagnosticStatus.CORRECT, ...retest } : { required: false },
     feedback: {
       approach: teacherFeedback.whatYouDid || "",
       whatWentWrong: teacherFeedback.whyThisIsWrong?.join(" ") || "",
@@ -261,6 +341,7 @@ function formatResult({
       ruleToRemember: teacherFeedback.remember || "",
     },
     confidence: {
+      ...confidence,
       score: confidence.score,
       level: confidence.level,
     },

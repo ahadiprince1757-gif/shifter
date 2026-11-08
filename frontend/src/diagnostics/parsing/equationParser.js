@@ -1,10 +1,17 @@
 /**
  * Equation Parser and Algebraic Transformation Verifier.
+ *
+ * Models:
+ * - Mathematical Abstract Syntax Trees (LHS and RHS)
+ * - Exact linear polynomial reduction: A*x = B
+ * - Operation semantics & Inferred Student Intent
+ * - Precise Error Taxonomy (SIGN_ERROR, ARITHMETIC_ERROR, OPERATION_ERROR, EQUALITY_ERROR)
  */
 
 import { Fraction } from "./fractionParser.js";
 import { parseExpression, linearizeExpression } from "./expressionParser.js";
 import { normalizeMathText } from "./textNormalizer.js";
+import { DiagnosticErrorType } from "../engine/diagnosticTypes.js";
 
 export class ParsedEquation {
   constructor(lhsRaw, rhsRaw, varName = "x") {
@@ -33,7 +40,6 @@ export class ParsedEquation {
 
   isEquivalentTo(other) {
     if (!(other instanceof ParsedEquation)) return false;
-    // Two equations are equivalent if their solutions match (for linear non-degenerate)
     const sol1 = this.getSolution();
     const sol2 = other.getSolution();
     if (sol1 instanceof Fraction && sol2 instanceof Fraction) {
@@ -58,81 +64,183 @@ export function parseEquation(line, varName = "x") {
 
 /**
  * Analyzes the transition from eq1 to eq2:
- * e.g., eq1: "3x + 5 = 20", eq2: "3x = 25"
- * Returns analysis of the transition:
- * - valid: boolean
- * - operation: "ADD" | "SUBTRACT" | "MULTIPLY" | "DIVIDE" | "UNKNOWN"
- * - expectedRHS: string
- * - actualRHS: string
- * - errorType: "SIGN_REVERSAL_IN_ISOLATION" | ...
- * - explanation: string
+ * Evaluates:
+ * - Mathematical equivalence
+ * - Inferred student intent (what was the student trying to isolate?)
+ * - Actual operation applied to LHS vs RHS
+ * - Specific error category & subtype
  */
 export function analyzeEquationTransition(eq1, eq2) {
   if (!eq1 || !eq2) {
-    return { valid: false, explanation: "Invalid equation step" };
+    return {
+      valid: false,
+      errorType: DiagnosticErrorType.UNKNOWN,
+      explanation: "Invalid equation step structure.",
+    };
   }
 
-  // Check if they are equivalent equations
+  // 1. Equivalent transformation
   if (eq1.isEquivalentTo(eq2)) {
-    return { valid: true, explanation: "Mathematically equivalent transformation" };
+    // Determine what operation was executed
+    const c1 = eq1.lhsLinear.b;
+    const c2 = eq2.lhsLinear.b;
+    const a1 = eq1.lhsLinear.a;
+    const a2 = eq2.lhsLinear.a;
+
+    let opDescription = "Mathematically equivalent transformation";
+    let operation = { type: "IDENTITY", target: "both_sides" };
+
+    if (c1.n !== 0 && c2.n === 0 && a1.equals(a2)) {
+      const verb = c1.n > 0 ? "SUBTRACT" : "ADD";
+      const amt = Math.abs(c1.toNumber());
+      operation = { type: verb, amount: amt, target: "both_sides" };
+      opDescription = `Applied inverse operation: ${verb.toLowerCase()}ed ${amt} symmetrically to both sides.`;
+    } else if (c1.n === 0 && c2.n === 0 && a1.n !== 1 && a2.n === 1) {
+      operation = { type: "DIVIDE", amount: a1.toString(), target: "both_sides" };
+      opDescription = `Divided both sides by coefficient ${a1.toString()} to isolate ${eq1.varName}.`;
+    }
+
+    return {
+      valid: true,
+      operation,
+      inferredIntent: operation,
+      explanation: opDescription,
+    };
   }
 
-  // Check isolating constant error: ax + c1 = d1 -> ax = d2
-  // If lhs constant was c1, isolating requires subtracting c1 from RHS: d1 - c1
   const c1 = eq1.lhsLinear.b;
   const d1 = eq1.rhsLinear.b;
   const d2 = eq2.rhsLinear.b;
+  const a1 = eq1.lhsLinear.a;
+  const a2 = eq2.lhsLinear.a;
 
-  // Student kept ax on LHS
-  if (
-    eq1.lhsLinear.a.equals(eq2.lhsLinear.a) &&
-    eq2.lhsLinear.b.n === 0 &&
-    c1.n !== 0
-  ) {
+  // 2. Case: Isolating constant term (ax + c1 = d1 -> ax = d2)
+  if (a1.equals(a2) && eq2.lhsLinear.b.n === 0 && c1.n !== 0) {
     const correctRHS = d1.sub(c1);
     const signReversedRHS = d1.add(c1);
+    const absC = Math.abs(c1.toNumber());
+    const correctVerb = c1.n > 0 ? "subtract" : "add";
+    const wrongVerb = c1.n > 0 ? "added" : "subtracted";
 
+    const inferredIntent = {
+      operation: correctVerb.toUpperCase(),
+      amount: absC,
+      target: "BOTH_SIDES",
+      goal: `isolate_${a1.toString()}${eq1.varName}`,
+    };
+
+    // Subcase 2A: Sign reversal on RHS
     if (d2.equals(signReversedRHS)) {
-      const verb = c1.n > 0 ? "added" : "subtracted";
-      const correctVerb = c1.n > 0 ? "subtract" : "add";
-      const absC = Math.abs(c1.toNumber());
-
       return {
         valid: false,
         errorType: "SIGN_REVERSAL_IN_ISOLATION",
-        operation: verb.toUpperCase(),
-        explanation: `You ${verb} ${absC} instead of ${c1.n > 0 ? "subtracting" : "adding"} it. To isolate the variable term, ${correctVerb} ${absC} from both sides.`,
-        expected: `${eq1.lhsLinear.a.toString()}${eq1.varName} = ${correctRHS.toString()}`,
+        category: DiagnosticErrorType.SIGN_ERROR,
+        subtype: "SIGN_REVERSAL_IN_ISOLATION",
+        inferredIntent,
+        actualOperation: {
+          lhs: `${correctVerb.toUpperCase()}_${absC}`,
+          rhs: `${c1.n > 0 ? "ADD" : "SUBTRACT"}_${absC}`,
+        },
+        expectedOperation: {
+          type: correctVerb.toUpperCase(),
+          amount: absC,
+          target: "BOTH_SIDES",
+        },
+        explanation: `You ${wrongVerb} ${absC} instead of subtracting it. To isolate ${a1.toString()}${eq1.varName}, subtract ${absC} from both sides.`,
+        expected: `${a1.toString()}${eq1.varName} = ${correctRHS.toString()}`,
         studentStep: `${eq2.lhsRaw} = ${eq2.rhsRaw}`,
       };
     }
+
+    // Subcase 2B: Asymmetric operation (removed c1 from LHS, but forgot RHS)
+    if (d2.equals(d1)) {
+      return {
+        valid: false,
+        errorType: "ASYMMETRIC_OPERATION",
+        category: DiagnosticErrorType.EQUALITY_ERROR,
+        subtype: "ASYMMETRIC_OPERATION",
+        inferredIntent,
+        actualOperation: {
+          lhs: `${correctVerb.toUpperCase()}_${absC}`,
+          rhs: "NO_OPERATION",
+        },
+        explanation: `You eliminated ${c1.toString()} from the left-hand side, but did not apply the operation to the right-hand side. Both sides must receive the same operation.`,
+        expected: `${a1.toString()}${eq1.varName} = ${correctRHS.toString()}`,
+        studentStep: `${eq2.lhsRaw} = ${eq2.rhsRaw}`,
+      };
+    }
+
+    // Subcase 2C: Correct procedure, but arithmetic mistake in RHS calculation
+    return {
+      valid: false,
+      errorType: "ARITHMETIC_ERROR",
+      category: DiagnosticErrorType.ARITHMETIC_ERROR,
+      subtype: "SUBTRACTION_ARITHMETIC_SLIP",
+      inferredIntent,
+      actualOperation: {
+        lhs: `${correctVerb.toUpperCase()}_${absC}`,
+        rhs: `ARITHMETIC_SLIP (${d1.toString()} ${c1.n > 0 ? "-" : "+"} ${absC} ≠ ${d2.toString()})`,
+      },
+      explanation: `You chose the correct operation (${correctVerb} ${absC}), but made an arithmetic calculation slip on the right side: ${d1.toString()} ${c1.n > 0 ? "-" : "+"} ${absC} = ${correctRHS.toString()}, not ${d2.toString()}.`,
+      expected: `${a1.toString()}${eq1.varName} = ${correctRHS.toString()}`,
+      studentStep: `${eq2.lhsRaw} = ${eq2.rhsRaw}`,
+    };
   }
 
-  // Check isolating variable from ax = b -> x = b - a (subtracting coefficient instead of dividing)
-  if (
-    eq1.lhsLinear.b.n === 0 &&
-    eq2.lhsLinear.a.n === 1 &&
-    eq1.lhsLinear.a.n !== 1
-  ) {
-    const coeff = eq1.lhsLinear.a;
-    const rhsPrev = eq1.rhsLinear.b;
+  // 3. Case: Isolating variable from coefficient (ax = b -> x = b - a)
+  if (c1.n === 0 && a2.n === 1 && a1.n !== 1) {
+    const coeff = a1;
+    const rhsPrev = d1;
     const subCoeff = rhsPrev.sub(coeff);
+    const correctSol = rhsPrev.div(coeff);
+
+    const inferredIntent = {
+      operation: "DIVIDE",
+      amount: coeff.toString(),
+      target: "BOTH_SIDES",
+      goal: `isolate_${eq1.varName}`,
+    };
 
     if (d2.equals(subCoeff)) {
       return {
         valid: false,
         errorType: "SUBTRACTED_COEFFICIENT",
+        category: DiagnosticErrorType.OPERATION_ERROR,
+        subtype: "SUBTRACTED_COEFFICIENT_INSTEAD_OF_DIVIDING",
+        inferredIntent,
+        actualOperation: {
+          lhs: "DIVIDED_BY_COEFFICIENT",
+          rhs: `SUBTRACTED_${coeff.toString()}`,
+        },
         explanation: `You subtracted the coefficient ${coeff.toString()} instead of dividing by it. To isolate ${eq1.varName}, divide both sides by ${coeff.toString()}.`,
-        expected: `${eq1.varName} = ${rhsPrev.div(coeff).toString()}`,
+        expected: `${eq1.varName} = ${correctSol.toString()}`,
         studentStep: `${eq2.lhsRaw} = ${eq2.rhsRaw}`,
       };
     }
+
+    // Arithmetic division slip
+    return {
+      valid: false,
+      errorType: "ARITHMETIC_ERROR",
+      category: DiagnosticErrorType.ARITHMETIC_ERROR,
+      subtype: "DIVISION_ARITHMETIC_SLIP",
+      inferredIntent,
+      actualOperation: {
+        lhs: "DIVIDED_BY_COEFFICIENT",
+        rhs: `ARITHMETIC_SLIP (${rhsPrev.toString()} ÷ ${coeff.toString()} ≠ ${d2.toString()})`,
+      },
+      explanation: `You correctly divided to isolate ${eq1.varName}, but made an arithmetic division slip: ${rhsPrev.toString()} ÷ ${coeff.toString()} = ${correctSol.toString()}, not ${d2.toString()}.`,
+      expected: `${eq1.varName} = ${correctSol.toString()}`,
+      studentStep: `${eq2.lhsRaw} = ${eq2.rhsRaw}`,
+    };
   }
 
   return {
     valid: false,
     errorType: "INVALID_TRANSFORMATION",
-    explanation: `The transition from "${eq1.lhsRaw} = ${eq1.rhsRaw}" to "${eq2.lhsRaw} = ${eq2.rhsRaw}" is mathematically incorrect.`,
+    category: DiagnosticErrorType.UNJUSTIFIED_TRANSFORMATION,
+    subtype: "UNCLASSIFIED_TRANSFORMATION",
+    explanation: `The transition from "${eq1.lhsRaw} = ${eq1.rhsRaw}" to "${eq2.lhsRaw} = ${eq2.rhsRaw}" is mathematically unjustified.`,
     expected: null,
     studentStep: `${eq2.lhsRaw} = ${eq2.rhsRaw}`,
   };

@@ -59,6 +59,30 @@ export class Fraction {
     }
   }
 
+  abs() {
+    return new Fraction(Math.abs(this.n), this.d);
+  }
+
+  isOne() {
+    return this.n === 1 && this.d === 1;
+  }
+
+  isZero() {
+    return this.n === 0;
+  }
+
+  isNegative() {
+    return this.n < 0;
+  }
+
+  static one() {
+    return new Fraction(1, 1);
+  }
+
+  static zero() {
+    return new Fraction(0, 1);
+  }
+
   toNumber() {
     return this.n / this.d;
   }

@@ -98,8 +98,78 @@ export function interpretProblem({
     };
   }
 
+  // 5. Cross-Disciplinary Subjects (Physics, Chemistry, Biology, English, Computer Studies)
+  const detectedSubject = String(question?.subject || "").toLowerCase().trim();
+
+  if (detectedSubject === "physics" || qLower.includes("acceleration") || qLower.includes("newton") || qLower.includes("force") || qLower.includes("gravity") || qLower.includes("velocity")) {
+    const isCalc = qLower.includes("calculate") || qLower.includes("what is the weight") || qLower.includes("what is the current");
+    return {
+      type: isCalc ? ProblemType.PHYSICS_CALCULATION : ProblemType.PHYSICS_CONCEPT,
+      subject: "physics",
+      chapter: question?.chapter || "",
+      topic: question?.topic || "",
+      expectedAnswer: String(question?.ans || correctAnswer || "").trim(),
+      options,
+      steps: question?.steps || [],
+      why: question?.why || "",
+    };
+  }
+
+  if (detectedSubject === "chemistry" || qLower.includes("ph scale") || qLower.includes("acid") || qLower.includes("alkali") || qLower.includes("covalent") || qLower.includes("ionic")) {
+    return {
+      type: ProblemType.CHEMISTRY_CONCEPT,
+      subject: "chemistry",
+      chapter: question?.chapter || "",
+      topic: question?.topic || "",
+      expectedAnswer: String(question?.ans || correctAnswer || "").trim(),
+      options,
+      steps: question?.steps || [],
+      why: question?.why || "",
+    };
+  }
+
+  if (detectedSubject === "biology" || qLower.includes("mitosis") || qLower.includes("meiosis") || qLower.includes("photosynthesis") || qLower.includes("respiration") || qLower.includes("artery") || qLower.includes("vein")) {
+    return {
+      type: ProblemType.BIOLOGY_PROCESS,
+      subject: "biology",
+      chapter: question?.chapter || "",
+      topic: question?.topic || "",
+      expectedAnswer: String(question?.ans || correctAnswer || "").trim(),
+      options,
+      steps: question?.steps || [],
+      why: question?.why || "",
+    };
+  }
+
+  if (detectedSubject === "english" || qLower.includes("grammatical") || qLower.includes("verb") || qLower.includes("noun") || qLower.includes("homophone")) {
+    return {
+      type: ProblemType.ENGLISH_GRAMMAR,
+      subject: "english",
+      chapter: question?.chapter || "",
+      topic: question?.topic || "",
+      expectedAnswer: String(question?.ans || correctAnswer || "").trim(),
+      options,
+      steps: question?.steps || [],
+      why: question?.why || "",
+    };
+  }
+
+  if (detectedSubject === "computer" || qLower.includes("ram") || qLower.includes("rom") || qLower.includes("volatile") || qLower.includes("hardware") || qLower.includes("software") || qLower.includes("input device") || qLower.includes("output device") || qLower.includes("bits") || qLower.includes("bytes")) {
+    return {
+      type: ProblemType.COMPUTER_ARCHITECTURE,
+      subject: "computer",
+      chapter: question?.chapter || "",
+      topic: question?.topic || "",
+      expectedAnswer: String(question?.ans || correctAnswer || "").trim(),
+      options,
+      steps: question?.steps || [],
+      why: question?.why || "",
+    };
+  }
+
   return {
     type: ProblemType.UNKNOWN,
+    subject: detectedSubject || "math",
     expectedAnswer: String(question?.ans || correctAnswer || "").trim(),
     options,
   };

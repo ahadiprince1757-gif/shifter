@@ -43,6 +43,7 @@ export const STATUS = Object.freeze({
 import { isKeyboardMash } from "./engine/inputClassifier.js";
 import { diagnoseNumberClassification } from "./knowledge/numberSystems.js";
 import { findKnownMisconception } from "./knowledge/misconceptionRegistry.js";
+import { findCrossSubjectMisconception } from "./knowledge/subjectMisconceptions.js";
 import { analyzeStudentSteps } from "./analyzers/stepAnalyzer.js";
 import { diagnosticEngine } from "./engine/diagnosticEngine.js";
 
@@ -1079,6 +1080,31 @@ export function diagnoseStudentSubmission({
       observed: [`Observed answer: ${answer}`],
       expected: [expectedAnswer],
       confidence: CONFIDENCE.HIGH,
+    });
+  }
+
+  // 8b. Cross-Disciplinary Misconceptions (Physics, Chemistry, Biology, English, Computer Studies)
+  const crossSubjectMisconception = findCrossSubjectMisconception({
+    studentAnswer: answer,
+    questionText,
+    expectedAnswer,
+    subject: question?.subject || "",
+    questionObj: question,
+  });
+  if (crossSubjectMisconception) {
+    return makeDiagnosis({
+      status: STATUS.DIAGNOSED,
+      errorType: crossSubjectMisconception.errorType,
+      whatYouDid: crossSubjectMisconception.whatYouDid,
+      whyThisIsWrong: crossSubjectMisconception.whyThisIsWrong,
+      theRightWay: crossSubjectMisconception.theRightWay,
+      remember: crossSubjectMisconception.remember,
+      observed: [`Observed answer: ${answer}`],
+      expected: expectedAnswer ? [expectedAnswer] : [],
+      confidence: CONFIDENCE.HIGH,
+      probe: crossSubjectMisconception.probe,
+      repair: crossSubjectMisconception.repair,
+      retest: crossSubjectMisconception.retest,
     });
   }
 
