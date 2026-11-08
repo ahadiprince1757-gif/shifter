@@ -46,6 +46,8 @@ export default function TeacherFeedbackView({
     theRightWay = [],
     remember,
     stepAnalysis,
+    probe = null,
+    repair = null,
   } = diagnosis;
 
   // Helper to unpack JSON strings if backend/database stores structured explanation JSON
@@ -428,6 +430,90 @@ export default function TeacherFeedbackView({
             </section>
           )}
         </>
+      )}
+
+      {/* ── CARD 3B: COGNITIVE REPAIR (THE PRINCIPLE & COUNTEREXAMPLE) ── */}
+      {repair && (repair.principle || repair.counterExample) && (
+        <section className="tfv-card tfv-card-repair-principle">
+          <div className="tfv-card-header">
+            <div className="tfv-card-title-group">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--v, #6366f1)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <circle cx="12" cy="12" r="10" />
+                <line x1="12" y1="16" x2="12" y2="12" />
+                <line x1="12" y1="8" x2="12.01" y2="8" />
+              </svg>
+              <h3 className="tfv-card-title">Cognitive Repair</h3>
+            </div>
+            <span className="tfv-badge tfv-badge-info">Key Principle</span>
+          </div>
+          {repair.principle && (
+            <div className="tfv-repair-text">
+              <Markdown>{repair.principle}</Markdown>
+            </div>
+          )}
+          {repair.counterExample && (
+            <div className="tfv-repair-example">
+              <strong>Example: </strong>
+              <Markdown>{repair.counterExample}</Markdown>
+            </div>
+          )}
+        </section>
+      )}
+
+      {/* ── CARD 3C: TARGETED DIAGNOSTIC PROBE ── */}
+      {probe && probe.question && (
+        <section className="tfv-card tfv-card-probe">
+          <div className="tfv-card-header">
+            <div className="tfv-card-title-group">
+              <svg
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="var(--gr, #10b981)"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                aria-hidden="true"
+              >
+                <path d="M9 11l3 3L22 4" />
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
+              </svg>
+              <h3 className="tfv-card-title">Check Your Thinking</h3>
+            </div>
+            <span className="tfv-badge tfv-badge-success">Diagnostic Probe</span>
+          </div>
+          <div className="tfv-probe-q">
+            <Markdown>{probe.question}</Markdown>
+          </div>
+          {Array.isArray(probe.options) && probe.options.length > 0 && (
+            <ul className="tfv-probe-options-list">
+              {probe.options.map((opt, i) => (
+                <li
+                  key={i}
+                  className={`tfv-probe-option-item ${
+                    opt === probe.correctAnswer ? "is-target" : ""
+                  }`}
+                >
+                  <span>{opt}</span>
+                  {opt === probe.correctAnswer && (
+                    <span className="tfv-probe-badge">✓ Correct Reasoning</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
       )}
 
       {/* ── CARD 4: FINAL CORRECT ANSWER ── */}

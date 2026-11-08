@@ -8932,6 +8932,80 @@ html.dark-mode .fb-repair-btn {
   letter-spacing: -0.01em;
 }
 
+/* Cognitive Repair & Targeted Probe Cards */
+.tfv-card-repair-principle {
+  background: rgba(99, 102, 241, 0.05);
+  border: 1px solid rgba(99, 102, 241, 0.22);
+}
+
+.tfv-repair-text {
+  font-size: 0.94rem;
+  color: var(--t);
+  line-height: 1.5;
+  margin-bottom: 0.5rem;
+}
+
+.tfv-repair-example {
+  font-size: 0.88rem;
+  color: var(--t2, #64748b);
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
+  border: 1px dashed var(--bd);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  line-height: 1.45;
+}
+
+.tfv-card-probe {
+  background: rgba(16, 185, 129, 0.04);
+  border: 1px solid rgba(16, 185, 129, 0.22);
+}
+
+.tfv-probe-q {
+  font-size: 0.94rem;
+  font-weight: 600;
+  color: var(--t);
+  line-height: 1.45;
+  margin-bottom: 0.75rem;
+}
+
+.tfv-probe-options-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.tfv-probe-option-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.55rem 0.85rem;
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  font-size: 0.88rem;
+  color: var(--t);
+  transition: all 0.15s ease;
+}
+
+.tfv-probe-option-item.is-target {
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.08);
+}
+
+.tfv-probe-badge {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #059669;
+  background: rgba(16, 185, 129, 0.15);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
 .mj-container {
   max-width: 680px;
   margin: 0 auto;
