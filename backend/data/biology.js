@@ -94,35 +94,20 @@ add(
     {
       question: "What is a cell?",
       answer: "A cell is the smallest unit of a living organism that can carry out the processes needed for life.",
-      options: [
-        "The smallest living unit of an organism",
-        "A group of organs",
-        "A chemical found only in plants",
-        "A non-living part of an organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is a cell called a unit of life?",
       answer: "Because it can carry out the processes necessary for life.",
-      options: [
-        "Because it is always visible to the naked eye",
-        "Because it can carry out processes necessary for life",
-        "Because every cell is the same size",
-        "Because cells are made only of water"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What unit is commonly used to measure the size of cells?",
       answer: "Micrometre",
-      options: [
-        "Kilometre",
-        "Metre",
-        "Micrometre",
-        "Litre"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -218,35 +203,20 @@ add(
     {
       question: "Why are cells called the basic units of life?",
       answer: "Because living processes are carried out by cells.",
-      options: [
-        "Because cells are always microscopic",
-        "Because living processes are carried out by cells",
-        "Because cells are all identical",
-        "Because cells only occur in animals"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement best explains why the heart is not the basic unit of life?",
       answer: "The heart is an organ made from tissues and cells.",
-      options: [
-        "The heart is not made of cells",
-        "The heart is an organ made from tissues and cells",
-        "The heart is not part of a living organism",
-        "The heart is smaller than a cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Give one life process carried out by cells.",
       answer: "Any valid example such as respiration, growth, waste removal, response, or reproduction.",
-      options: [
-        "Respiration",
-        "Rusting",
-        "Melting",
-        "Evaporation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -352,35 +322,20 @@ add(
     {
       question: "What is a unicellular organism?",
       answer: "An organism made of one cell.",
-      options: [
-        "An organism made of one cell",
-        "An organism made only of tissues",
-        "An organism made of many organs",
-        "A non-living cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a multicellular organism?",
       answer: "An organism made of many cells.",
-      options: [
-        "An organism made of one cell",
-        "An organism made of many cells",
-        "An organism without cells",
-        "A group of unrelated cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can multicellular organisms have specialised cells?",
       answer: "Because they contain many cells that can become adapted for different functions.",
-      options: [
-        "Because every cell performs exactly the same function",
-        "Because different cells can become adapted for different functions",
-        "Because multicellular organisms have no organs",
-        "Because their cells are non-living"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -477,35 +432,20 @@ add(
     {
       question: "Arrange these in the correct order from smallest to largest.",
       answer: "Cell → Tissue → Organ → Organ system → Organism",
-      options: [
-        "Cell → Tissue → Organ → Organ system → Organism",
-        "Organ → Cell → Tissue → Organism → Organ system",
-        "Tissue → Cell → Organ → Organism → Organ system",
-        "Cell → Organ → Tissue → Organism → Organ system"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a tissue?",
       answer: "A group of similar cells working together to perform a particular function.",
-      options: [
-        "A single organ",
-        "A group of similar cells working together",
-        "A complete organism",
-        "A group of organ systems"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are organs usually made of different tissues?",
       answer: "Different tissues perform different functions that contribute to the function of the organ.",
-      options: [
-        "Because all tissues have exactly the same function",
-        "Because different tissues contribute different functions",
-        "Because organs contain no cells",
-        "Because tissues cannot work together"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -605,35 +545,20 @@ add(
     {
       question: "What is the main function of the cell membrane?",
       answer: "To control the movement of substances into and out of the cell.",
-      options: [
-        "To release energy",
-        "To control movement of substances into and out of the cell",
-        "To make the cell green",
-        "To store urine"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does selectively permeable mean in relation to the cell membrane?",
       answer: "The membrane controls which substances can cross it and how they cross.",
-      options: [
-        "Everything crosses the membrane freely",
-        "Nothing can cross the membrane",
-        "The membrane controls movement of substances across it",
-        "Only water can cross"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must a cell control what enters and leaves?",
       answer: "To maintain suitable internal conditions for the cell to function.",
-      options: [
-        "To make the cell larger",
-        "To maintain suitable internal conditions",
-        "To stop all substances entering",
-        "To prevent respiration"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -715,35 +640,20 @@ add(
     {
       question: "What is the cytoplasm?",
       answer: "The living material inside the cell membrane where many chemical reactions occur.",
-      options: [
-        "The outer boundary of the cell",
-        "The living material inside the cell membrane",
-        "The genetic material only",
-        "The rigid wall around a plant cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is the cytoplasm important?",
       answer: "Many chemical reactions needed by the cell occur there.",
-      options: [
-        "It controls the organism's behaviour",
-        "Many cellular chemical reactions occur there",
-        "It surrounds the entire organism",
-        "It prevents all substances from entering"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which structure forms the boundary around the cytoplasm?",
       answer: "Cell membrane",
-      options: [
-        "Cell wall",
-        "Nucleus",
-        "Cell membrane",
-        "Ribosome"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -827,35 +737,20 @@ add(
     {
       question: "What is the main biological importance of the nucleus?",
       answer: "It contains most of the cell's genetic material.",
-      options: [
-        "It produces all ATP",
-        "It contains most of the cell's genetic material",
-        "It forms the cell wall",
-        "It controls water movement only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What are chromosomes made from?",
       answer: "Genetic material containing DNA.",
-      options: [
-        "Only water",
-        "Genetic material containing DNA",
-        "Cellulose",
-        "Starch"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process depends on genetic information in the nucleus?",
       answer: "Cell division",
-      options: [
-        "Cell division",
-        "Evaporation",
-        "Melting",
-        "Rusting"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -953,35 +848,20 @@ add(
     {
       question: "What important process occurs in mitochondria?",
       answer: "Important stages of aerobic respiration.",
-      options: [
-        "Photosynthesis only",
-        "Important stages of aerobic respiration",
-        "Digestion of food in the intestine",
-        "Blood clotting"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are mitochondria numerous in muscle cells?",
       answer: "Muscle cells have a high demand for energy.",
-      options: [
-        "Muscle cells do not need energy",
-        "Muscle cells have a high demand for energy",
-        "Mitochondria store genetic information",
-        "Muscle cells contain no cytoplasm"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is 'powerhouse of the cell' an incomplete description?",
       answer: "It does not explain that mitochondria are sites of important stages of aerobic respiration.",
-      options: [
-        "Mitochondria do not release energy",
-        "It does not explain their role in aerobic respiration",
-        "Mitochondria are found only in plants",
-        "Mitochondria are part of the cell wall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -1065,35 +945,20 @@ add(
     {
       question: "What is the main function of ribosomes?",
       answer: "Protein synthesis.",
-      options: [
-        "Protein synthesis",
-        "Storing water",
-        "Controlling entry of substances",
-        "Producing urine"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What are proteins built from?",
       answer: "Amino acids.",
-      options: [
-        "Amino acids",
-        "Fatty acids only",
-        "Mineral salts",
-        "Glucose molecules only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which structure contains the genetic information used to specify proteins?",
       answer: "The nucleus contains the cell's genetic material.",
-      options: [
-        "Cell wall",
-        "Nucleus",
-        "Vacuole",
-        "Cell membrane"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -1213,35 +1078,20 @@ add(
     {
       question: "Which structure is directly responsible for protein synthesis?",
       answer: "Ribosomes",
-      options: [
-        "Ribosomes",
-        "Cell membrane",
-        "Vacuole",
-        "Cell wall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which structure contains most of the cell's genetic material?",
       answer: "Nucleus",
-      options: [
-        "Mitochondrion",
-        "Nucleus",
-        "Ribosome",
-        "Cell membrane"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A cell needs large amounts of energy. Which organelle is especially important?",
       answer: "Mitochondria",
-      options: [
-        "Ribosomes",
-        "Mitochondria",
-        "Cell wall",
-        "Vacuole"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -1349,35 +1199,20 @@ add(
     {
       question: "What is the main function of the plant cell wall?",
       answer: "To provide strength and support.",
-      options: [
-        "To produce proteins",
-        "To provide strength and support",
-        "To control all cell activities",
-        "To release oxygen"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the plant cell wall mainly made of?",
       answer: "Cellulose",
-      options: [
-        "Cellulose",
-        "Protein only",
-        "Starch",
-        "DNA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does a plant cell need both a cell wall and a cell membrane?",
       answer: "The cell wall provides strength while the membrane controls movement of substances.",
-      options: [
-        "Both perform exactly the same function",
-        "The wall provides strength while the membrane controls substance movement",
-        "The membrane provides strength while the wall makes proteins",
-        "Neither structure has a specific function"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -1472,35 +1307,20 @@ add(
     {
       question: "What pigment is found in chloroplasts and absorbs light?",
       answer: "Chlorophyll",
-      options: [
-        "Chlorophyll",
-        "Haemoglobin",
-        "Melanin",
-        "Insulin"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main function associated with chloroplasts?",
       answer: "Photosynthesis",
-      options: [
-        "Photosynthesis",
-        "Protein digestion",
-        "Blood clotting",
-        "Urine formation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does a root hair cell normally have few or no chloroplasts?",
       answer: "It is specialised for absorbing water and mineral ions rather than carrying out photosynthesis.",
-      options: [
-        "It cannot contain cytoplasm",
-        "It is specialised for absorbing water and mineral ions",
-        "It has no cell membrane",
-        "It is not a living cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -1595,35 +1415,20 @@ add(
     {
       question: "What does the large permanent vacuole contain?",
       answer: "Cell sap.",
-      options: [
-        "Cell sap",
-        "Only DNA",
-        "Only chlorophyll",
-        "Only oxygen"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How does the vacuole help keep a plant firm?",
       answer: "Water in the vacuole helps maintain turgor pressure.",
-      options: [
-        "It produces proteins",
-        "Water in it helps maintain turgor pressure",
-        "It removes all carbon dioxide",
-        "It destroys the cell wall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What may happen when plant cells lose too much water?",
       answer: "Turgor pressure decreases and the plant may wilt.",
-      options: [
-        "Turgor pressure increases indefinitely",
-        "The plant may wilt",
-        "The cell becomes a red blood cell",
-        "Photosynthesis always increases"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -1740,35 +1545,20 @@ add(
     {
       question: "Which structure is found in both typical plant and animal cells?",
       answer: "Cell membrane",
-      options: [
-        "Cell wall",
-        "Chloroplast",
-        "Cell membrane",
-        "Large permanent vacuole"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which structure contains genetic material in both plant and animal cells?",
       answer: "Nucleus",
-      options: [
-        "Nucleus",
-        "Cell wall",
-        "Vacuole",
-        "Chloroplast"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do both plant and animal cells contain mitochondria?",
       answer: "Both require energy for cellular processes.",
-      options: [
-        "Both need to make cellulose",
-        "Both require energy for cellular processes",
-        "Both perform photosynthesis",
-        "Both have cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -1900,35 +1690,20 @@ add(
     {
       question: "Which structure distinguishes a typical plant cell from an animal cell?",
       answer: "Cell wall",
-      options: [
-        "Cell membrane",
-        "Cytoplasm",
-        "Cell wall",
-        "Ribosome"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A cell contains chloroplasts and a cell wall. Which is the best conclusion?",
       answer: "It is a plant cell.",
-      options: [
-        "It is a typical animal cell",
-        "It is a plant cell",
-        "It is not a living cell",
-        "It must be a red blood cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do plant cells have chloroplasts?",
       answer: "Chloroplasts allow photosynthetic cells to capture light energy for photosynthesis.",
-      options: [
-        "To produce urine",
-        "To capture light energy for photosynthesis",
-        "To control blood flow",
-        "To make the cell wall from protein"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2046,35 +1821,20 @@ add(
     {
       question: "Which sequence gives the strongest biological explanation?",
       answer: "Structure → Function → Advantage",
-      options: [
-        "Name → Colour → Size",
-        "Structure → Function → Advantage",
-        "Function → Name → Colour",
-        "Size → Shape → Name"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does a chloroplast help a photosynthetic cell?",
       answer: "It contains chlorophyll that absorbs light energy needed for photosynthesis.",
-      options: [
-        "It stores urine",
-        "It contains chlorophyll that absorbs light energy",
-        "It controls the nucleus",
-        "It produces cellulose directly from oxygen"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does a cell wall help a plant cell?",
       answer: "It provides mechanical support and helps the cell resist excessive expansion.",
-      options: [
-        "It makes proteins",
-        "It provides mechanical support",
-        "It controls all genetic information",
-        "It digests glucose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2177,35 +1937,20 @@ add(
     {
       question: "What is cell specialisation?",
       answer: "The development of structures and characteristics that make a cell suited to a particular function.",
-      options: [
-        "The destruction of a cell",
-        "The development of structures suited to a particular function",
-        "The joining of all cells into one cell",
-        "The removal of the cell membrane"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is cell specialisation useful?",
       answer: "It allows different cells to perform different functions efficiently.",
-      options: [
-        "It makes all cells identical",
-        "It allows different cells to perform different functions",
-        "It prevents cells from communicating",
-        "It stops cell division"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What should you examine when explaining why a cell is specialised?",
       answer: "How its structure is adapted to its function.",
-      options: [
-        "Only its colour",
-        "How its structure is adapted to its function",
-        "Only its size",
-        "Only its location"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2318,35 +2063,20 @@ add(
     {
       question: "What does division of labour mean in a multicellular organism?",
       answer: "Different specialised cells perform different functions.",
-      options: [
-        "All cells perform the same function",
-        "Different specialised cells perform different functions",
-        "Only one cell performs all functions",
-        "Cells stop working together"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must the structure of a specialised cell suit its function?",
       answer: "Its structure determines how effectively it can perform its particular role.",
-      options: [
-        "Structure has no relationship with function",
-        "Its structure helps it perform its particular role effectively",
-        "All specialised cells have identical structures",
-        "Structure only determines cell colour"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which example shows division of labour?",
       answer: "Nerve cells transmit signals while muscle cells contract.",
-      options: [
-        "Every cell performs exactly the same task",
-        "Nerve cells transmit signals while muscle cells contract",
-        "All cells lose their nuclei",
-        "All cells become chloroplasts"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2458,35 +2188,20 @@ add(
     {
       question: "What is the main function of a red blood cell?",
       answer: "Transporting oxygen.",
-      options: [
-        "Transporting oxygen",
-        "Producing antibodies only",
-        "Digesting food",
-        "Absorbing mineral ions from soil"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What substance in red blood cells binds oxygen?",
       answer: "Haemoglobin",
-      options: [
-        "Cellulose",
-        "Haemoglobin",
-        "Chlorophyll",
-        "Insulin"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How does the biconcave shape help a red blood cell?",
       answer: "It gives the cell a large surface area relative to its volume, supporting efficient oxygen exchange.",
-      options: [
-        "It allows the cell to photosynthesise",
-        "It gives a large surface area for efficient oxygen exchange",
-        "It allows the cell to produce cellulose",
-        "It prevents all substances from entering"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2610,35 +2325,20 @@ add(
     {
       question: "What is the main function of a root hair cell?",
       answer: "Absorbing water and mineral ions from the soil.",
-      options: [
-        "Absorbing water and mineral ions",
-        "Transporting oxygen in blood",
-        "Producing antibodies",
-        "Sending nerve impulses"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does a root hair cell have a long extension?",
       answer: "To increase surface area for absorption.",
-      options: [
-        "To reduce surface area",
-        "To increase surface area for absorption",
-        "To prevent all water from entering",
-        "To make the cell photosynthesise"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process mainly allows water to enter a root hair cell?",
       answer: "Osmosis",
-      options: [
-        "Osmosis",
-        "Photosynthesis",
-        "Respiration",
-        "Digestion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2693,35 +2393,20 @@ light energy and carry out photosynthesis efficiently.</p>
     {
       question: "What is the main function of a palisade mesophyll cell?",
       answer: "Photosynthesis",
-      options: [
-        "Photosynthesis",
-        "Transport of water",
-        "Absorption of minerals",
-        "Transport of oxygen"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organelle is present in large numbers in palisade cells?",
       answer: "Chloroplasts",
-      options: [
-        "Chloroplasts",
-        "Centrioles",
-        "Lysosomes",
-        "Cilia"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are palisade cells located close to the upper surface of the leaf?",
       answer: "To receive more light for photosynthesis",
-      options: [
-        "To receive more light for photosynthesis",
-        "To absorb more minerals from soil",
-        "To release urine",
-        "To protect the roots"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2787,35 +2472,20 @@ become swollen.</p>
     {
       question: "What surrounds a stoma?",
       answer: "Guard cells",
-      options: [
-        "Guard cells",
-        "Root hair cells",
-        "Red blood cells",
-        "Palisade cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens when guard cells become turgid?",
       answer: "The stoma opens",
-      options: [
-        "The stoma opens",
-        "The stoma disappears",
-        "The leaf falls off",
-        "The root stops growing"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must plants control their stomata?",
       answer: "To regulate gas exchange and water loss",
-      options: [
-        "To regulate gas exchange and water loss",
-        "To produce red blood cells",
-        "To digest food",
-        "To absorb minerals directly from air"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2874,35 +2544,20 @@ vessels from collapsing.</p>
     {
       question: "What does xylem transport?",
       answer: "Water and dissolved mineral salts",
-      options: [
-        "Water and dissolved mineral salts",
-        "Glucose only",
-        "Oxygen only",
-        "Hormones only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which substance strengthens xylem walls?",
       answer: "Lignin",
-      options: [
-        "Lignin",
-        "Chlorophyll",
-        "Starch",
-        "Haemoglobin"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are mature xylem vessels hollow?",
       answer: "Their cell contents are lost, leaving a continuous space for water transport",
-      options: [
-        "Their cell contents are lost, leaving a continuous space for water transport",
-        "They need to store starch",
-        "They need to produce chlorophyll",
-        "They need to digest food"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -2960,35 +2615,20 @@ transports the sucrose to the roots?</p>
     {
       question: "What is the main sugar transported in phloem?",
       answer: "Sucrose",
-      options: [
-        "Sucrose",
-        "Lactose",
-        "Glycogen",
-        "Cellulose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What structure transports substances through the phloem?",
       answer: "Sieve tubes",
-      options: [
-        "Sieve tubes",
-        "Alveoli",
-        "Nephrons",
-        "Red blood cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which cells are closely associated with sieve tube elements?",
       answer: "Companion cells",
-      options: [
-        "Companion cells",
-        "Guard cells",
-        "Root hair cells",
-        "Palisade cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3048,35 +2688,20 @@ microorganisms towards the throat.</p>
     {
       question: "What is found on the surface of a ciliated cell?",
       answer: "Cilia",
-      options: [
-        "Cilia",
-        "Chloroplasts",
-        "Root hairs",
-        "Villi"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What do cilia move in the respiratory tract?",
       answer: "Mucus",
-      options: [
-        "Mucus",
-        "Blood",
-        "Urine",
-        "Bile"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does the respiratory tract contain mucus?",
       answer: "To trap dust and microorganisms",
-      options: [
-        "To trap dust and microorganisms",
-        "To produce red blood cells",
-        "To digest proteins",
-        "To transport glucose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3137,35 +2762,20 @@ microorganisms, helping protect the respiratory tract.</p>
     {
       question: "What do goblet cells produce?",
       answer: "Mucus",
-      options: [
-        "Mucus",
-        "Haemoglobin",
-        "Bile",
-        "Insulin"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can respiratory mucus trap?",
       answer: "Dust and microorganisms",
-      options: [
-        "Dust and microorganisms",
-        "Red blood cells",
-        "Glucose molecules only",
-        "Urine"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is mucus useful in the respiratory tract?",
       answer: "It helps trap potentially harmful particles",
-      options: [
-        "It helps trap potentially harmful particles",
-        "It transports blood",
-        "It produces oxygen",
-        "It breaks down bones"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3221,35 +2831,20 @@ of the sperm cell.</p>
     {
       question: "What structure helps a sperm cell move?",
       answer: "Flagellum",
-      options: [
-        "Flagellum",
-        "Vacuole",
-        "Cell wall",
-        "Chloroplast"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where is the genetic material found?",
       answer: "Nucleus",
-      options: [
-        "Nucleus",
-        "Flagellum",
-        "Cell wall",
-        "Cytoplasm only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does the sperm cell need energy?",
       answer: "To move towards the female reproductive cell",
-      options: [
-        "To move towards the female reproductive cell",
-        "To produce chlorophyll",
-        "To make a cell wall",
-        "To absorb minerals from soil"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3308,35 +2903,20 @@ fertilisation.</p>
     {
       question: "What type of cell is an egg cell?",
       answer: "Female reproductive cell",
-      options: [
-        "Female reproductive cell",
-        "Male reproductive cell",
-        "Blood cell",
-        "Nerve cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where is the genetic material of an egg cell mainly found?",
       answer: "Nucleus",
-      options: [
-        "Nucleus",
-        "Cell wall",
-        "Vacuole",
-        "Cilia"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does an egg cell contain substantial cytoplasm?",
       answer: "It provides resources for the early stages after fertilisation",
-      options: [
-        "It provides resources for the early stages after fertilisation",
-        "It allows the cell to produce chlorophyll",
-        "It allows the cell to form a cell wall",
-        "It allows the cell to transport urine"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3396,35 +2976,20 @@ distant parts of the nervous system.</p>
     {
       question: "What is the main function of a nerve cell?",
       answer: "To transmit nerve impulses",
-      options: [
-        "To transmit nerve impulses",
-        "To absorb water from soil",
-        "To carry out photosynthesis",
-        "To produce mucus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the long fibre of many neurones called?",
       answer: "Axon",
-      options: [
-        "Axon",
-        "Vacuole",
-        "Chloroplast",
-        "Stoma"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can a nerve cell have a long axon?",
       answer: "To transmit impulses over relatively long distances",
-      options: [
-        "To transmit impulses over relatively long distances",
-        "To absorb minerals",
-        "To store large amounts of water",
-        "To produce glucose by photosynthesis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3482,35 +3047,20 @@ energy required for repeated contraction.</p>
     {
       question: "What is the main function of a muscle cell?",
       answer: "To contract and produce force",
-      options: [
-        "To contract and produce force",
-        "To absorb light",
-        "To filter blood",
-        "To produce mucus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are mitochondria important in muscle cells?",
       answer: "They provide energy needed for contraction",
-      options: [
-        "They provide energy needed for contraction",
-        "They absorb light",
-        "They transport water",
-        "They produce cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens when a muscle cell contracts?",
       answer: "It shortens and generates force",
-      options: [
-        "It shortens and generates force",
-        "It produces chlorophyll",
-        "It becomes a root",
-        "It forms a stoma"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3567,35 +3117,20 @@ towards sites of infection and respond to pathogens.</p>
     {
       question: "What is an important function of white blood cells?",
       answer: "Defending the body against pathogens",
-      options: [
-        "Defending the body against pathogens",
-        "Transporting oxygen",
-        "Carrying out photosynthesis",
-        "Transporting sucrose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can some white blood cells do when responding to infection?",
       answer: "Move out of blood vessels into tissues",
-      options: [
-        "Move out of blood vessels into tissues",
-        "Become plant cells",
-        "Produce chlorophyll",
-        "Form xylem vessels"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must white blood cells reach infected tissues?",
       answer: "To respond to and help destroy pathogens",
-      options: [
-        "To respond to and help destroy pathogens",
-        "To absorb sunlight",
-        "To transport water",
-        "To produce sucrose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3659,35 +3194,20 @@ allowing efficient movement of oxygen into and out of the cell.</p>
     {
       question: "Which substance is carried by haemoglobin?",
       answer: "Oxygen",
-      options: [
-        "Oxygen",
-        "Starch",
-        "Urea",
-        "Sucrose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the shape of a mature red blood cell?",
       answer: "Biconcave",
-      options: [
-        "Biconcave",
-        "Cuboidal",
-        "Branched",
-        "Long and cylindrical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does a mature mammalian red blood cell lack a nucleus?",
       answer: "To provide more space for haemoglobin",
-      options: [
-        "To provide more space for haemoglobin",
-        "To produce chlorophyll",
-        "To absorb minerals",
-        "To produce mucus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3746,35 +3266,20 @@ cell's ability to absorb water and mineral ions.</p>
     {
       question: "What does a root hair cell absorb?",
       answer: "Water and mineral ions",
-      options: [
-        "Water and mineral ions",
-        "Oxygen only",
-        "Glucose only",
-        "Carbon dioxide only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What increases the surface area of a root hair cell?",
       answer: "The long root hair extension",
-      options: [
-        "The long root hair extension",
-        "The nucleus",
-        "The chloroplast",
-        "The cell wall alone"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is a large surface area useful for absorption?",
       answer: "It provides more area for substances to enter the cell",
-      options: [
-        "It provides more area for substances to enter the cell",
-        "It prevents all movement of water",
-        "It produces haemoglobin",
-        "It produces antibodies"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3831,35 +3336,20 @@ energy is available.</p>
     {
       question: "Why do palisade cells contain many chloroplasts?",
       answer: "To absorb light for photosynthesis",
-      options: [
-        "To absorb light for photosynthesis",
-        "To transport urine",
-        "To digest proteins",
-        "To carry oxygen"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where are palisade cells mainly located?",
       answer: "Near the upper surface of the leaf",
-      options: [
-        "Near the upper surface of the leaf",
-        "Inside the roots only",
-        "Inside the xylem",
-        "Inside the seed coat only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to photosynthesis when available light decreases?",
       answer: "The rate may decrease",
-      options: [
-        "The rate may decrease",
-        "It always increases",
-        "It stops all respiration",
-        "It converts into respiration"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -3921,35 +3411,20 @@ against their concentration gradient using energy.</p>
     {
       question: "What process can move mineral ions against a concentration gradient?",
       answer: "Active transport",
-      options: [
-        "Active transport",
-        "Diffusion only",
-        "Evaporation",
-        "Filtration"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does active transport require?",
       answer: "Energy",
-      options: [
-        "Energy",
-        "Sunlight directly at the membrane",
-        "Haemoglobin",
-        "Bile"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main advantage of the root hair extension?",
       answer: "It increases surface area for absorption",
-      options: [
-        "It increases surface area for absorption",
-        "It prevents all water entry",
-        "It produces glucose",
-        "It carries oxygen in blood"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4003,35 +3478,20 @@ which can increase infection risk.</p>
     {
       question: "What do cilia normally move?",
       answer: "Mucus",
-      options: [
-        "Mucus",
-        "Blood",
-        "Urine",
-        "Bile"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can mucus trap?",
       answer: "Dust and microorganisms",
-      options: [
-        "Dust and microorganisms",
-        "Red blood cells",
-        "Bone cells",
-        "Glucose only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a likely effect of damaged cilia?",
       answer: "Reduced movement of mucus",
-      options: [
-        "Reduced movement of mucus",
-        "Increased photosynthesis",
-        "Increased urine production",
-        "Formation of chloroplasts"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4096,35 +3556,20 @@ the egg because the flagellum is needed for swimming.</p>
     {
       question: "What structure allows a sperm cell to swim?",
       answer: "Flagellum",
-      options: [
-        "Flagellum",
-        "Cell wall",
-        "Vacuole",
-        "Stoma"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What provides energy for movement?",
       answer: "Mitochondria",
-      options: [
-        "Mitochondria",
-        "Chloroplasts",
-        "Cell wall",
-        "Ribosomes only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the function of the acrosome?",
       answer: "It contains enzymes involved in fertilisation",
-      options: [
-        "It contains enzymes involved in fertilisation",
-        "It produces red blood cells",
-        "It absorbs mineral ions",
-        "It transports water"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4184,35 +3629,20 @@ the early stages following fertilisation.</p>
     {
       question: "Why does an egg cell contain a large amount of cytoplasm?",
       answer: "To provide resources for early development",
-      options: [
-        "To provide resources for early development",
-        "To produce chlorophyll",
-        "To transport oxygen around the body",
-        "To form xylem"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does the egg nucleus contain?",
       answer: "Genetic material",
-      options: [
-        "Genetic material",
-        "Bile",
-        "Haemoglobin",
-        "Mucus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to prevent additional sperm from fertilising the egg?",
       answer: "Changes occur around the egg after fertilisation",
-      options: [
-        "Changes occur around the egg after fertilisation",
-        "The egg becomes a red blood cell",
-        "The egg produces chlorophyll",
-        "The egg develops a cell wall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4273,35 +3703,20 @@ provide enough usable energy for repeated contraction.</p>
     {
       question: "What is the main function of muscle cells?",
       answer: "To contract and generate force",
-      options: [
-        "To contract and generate force",
-        "To absorb light",
-        "To filter urine",
-        "To produce mucus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do muscle cells have many mitochondria?",
       answer: "They have a high demand for energy",
-      options: [
-        "They have a high demand for energy",
-        "They need to produce chlorophyll",
-        "They need to absorb water from soil",
-        "They need to transport sucrose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens during muscle contraction?",
       answer: "The muscle cell generates force and shortens",
-      options: [
-        "The muscle cell generates force and shortens",
-        "The cell produces oxygen",
-        "The cell forms a cell wall",
-        "The cell absorbs mineral ions"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4359,35 +3774,20 @@ causing the cells to develop different structures and functions.</p>
     {
       question: "What is cell differentiation?",
       answer: "The process by which an unspecialised cell develops specialised features",
-      options: [
-        "The process by which an unspecialised cell develops specialised features",
-        "The destruction of every cell in a tissue",
-        "The movement of blood around the body",
-        "The production of water by a cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What causes different cells to develop different characteristics?",
       answer: "Different genes are expressed in different cells",
-      options: [
-        "Different genes are expressed in different cells",
-        "Every cell loses its DNA",
-        "All cells contain different species of DNA",
-        "Cells stop using proteins"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the result of cell differentiation?",
       answer: "Cells become specialised for particular functions",
-      options: [
-        "Cells become specialised for particular functions",
-        "All cells become identical",
-        "All cells lose their nuclei",
-        "Cells become microorganisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4442,35 +3842,20 @@ together. What level of organisation do these cells form?</p>
     {
       question: "What is a tissue?",
       answer: "A group of similar cells working together",
-      options: [
-        "A group of similar cells working together",
-        "A single organelle",
-        "A single organism",
-        "A group of unrelated organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example of animal tissue?",
       answer: "Muscle tissue",
-      options: [
-        "Muscle tissue",
-        "A kidney",
-        "A red blood cell",
-        "A mitochondrion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What do cells in a tissue generally have in common?",
       answer: "They work together to perform a particular function",
-      options: [
-        "They work together to perform a particular function",
-        "They must all be identical in size",
-        "They must all have chloroplasts",
-        "They must all be nerve cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4525,35 +3910,20 @@ tissues working together to perform a specific function.</p>
     {
       question: "What is an organ?",
       answer: "A structure made from different tissues working together",
-      options: [
-        "A structure made from different tissues working together",
-        "A single cell",
-        "A single organelle",
-        "A group of identical molecules"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can an organ contain different tissues?",
       answer: "Different tissues perform different tasks within the organ",
-      options: [
-        "Different tissues perform different tasks within the organ",
-        "All tissues perform exactly the same function",
-        "Tissues cannot work together",
-        "Organs contain no specialised cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is the heart an organ?",
       answer: "It contains different tissues working together",
-      options: [
-        "It contains different tissues working together",
-        "It contains only one cell",
-        "It contains only one organelle",
-        "It is made entirely of blood"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4612,35 +3982,20 @@ together to process food and absorb nutrients.</p>
     {
       question: "What is an organ system?",
       answer: "A group of organs working together",
-      options: [
-        "A group of organs working together",
-        "A single cell",
-        "A single tissue",
-        "A group of organelles"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What do organs in an organ system have in common?",
       answer: "They cooperate to perform a major function",
-      options: [
-        "They cooperate to perform a major function",
-        "They are all made of one cell",
-        "They all have chloroplasts",
-        "They cannot interact"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example of an organ system?",
       answer: "Digestive system",
-      options: [
-        "Digestive system",
-        "Mitochondrion",
-        "Muscle cell",
-        "Xylem vessel"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4701,35 +4056,20 @@ Muscle cell → Muscle tissue → Heart → Circulatory system
     {
       question: "Which level comes directly after a cell?",
       answer: "Tissue",
-      options: [
-        "Tissue",
-        "Organ",
-        "Organ system",
-        "Organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which sequence is correct?",
       answer: "Cell → Tissue → Organ → Organ System",
-      options: [
-        "Cell → Tissue → Organ → Organ System",
-        "Organ → Cell → Tissue → Organ System",
-        "Tissue → Cell → Organ → Organ System",
-        "Cell → Organ → Tissue → Organ System"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is formed when several organs work together?",
       answer: "An organ system",
-      options: [
-        "An organ system",
-        "A cell",
-        "An organelle",
-        "A single tissue"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4786,35 +4126,20 @@ structures work together to perform transport.</p>
     {
       question: "What is plant tissue?",
       answer: "A group of plant cells working together",
-      options: [
-        "A group of plant cells working together",
-        "A single organelle",
-        "A single molecule",
-        "A complete plant"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which tissue transports water and mineral salts?",
       answer: "Xylem",
-      options: [
-        "Xylem",
-        "Phloem",
-        "Muscle",
-        "Nervous tissue"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do plants have different tissues?",
       answer: "Different tissues perform different functions",
-      options: [
-        "Different tissues perform different functions",
-        "Every tissue performs exactly the same function",
-        "Plants contain only one type of cell",
-        "Tissues prevent all transport"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4867,35 +4192,20 @@ and produce movement.</p>
     {
       question: "What is animal tissue?",
       answer: "A group of specialised animal cells working together",
-      options: [
-        "A group of specialised animal cells working together",
-        "A single organelle",
-        "A single organism",
-        "A group of plant roots"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can muscle tissue do?",
       answer: "Contract and generate force",
-      options: [
-        "Contract and generate force",
-        "Carry out photosynthesis",
-        "Absorb minerals from soil",
-        "Produce chlorophyll"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do animals have different types of tissue?",
       answer: "Different tissues are specialised for different functions",
-      options: [
-        "Different tissues are specialised for different functions",
-        "All tissues have identical functions",
-        "Animals contain only one cell type",
-        "Tissues cannot cooperate"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -4957,35 +4267,20 @@ less efficient at carrying out the different functions needed for survival.</p>
     {
       question: "Why are tissues specialised?",
       answer: "To perform particular functions efficiently",
-      options: [
-        "To perform particular functions efficiently",
-        "To make every cell identical",
-        "To stop all transport",
-        "To remove all DNA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which tissue is specialised for water transport?",
       answer: "Xylem",
-      options: [
-        "Xylem",
-        "Muscle tissue",
-        "Nervous tissue",
-        "Epithelial tissue"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main advantage of tissue specialisation?",
       answer: "Different functions can be carried out efficiently",
-      options: [
-        "Different functions can be carried out efficiently",
-        "All cells perform the same function",
-        "Cells lose their genetic information",
-        "All tissues become identical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5043,35 +4338,20 @@ together within it to perform its functions.</p>
     {
       question: "Why is a leaf an organ?",
       answer: "It contains different tissues working together",
-      options: [
-        "It contains different tissues working together",
-        "It consists of only one cell",
-        "It contains only one organelle",
-        "It contains no specialised cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main function of a leaf?",
       answer: "Photosynthesis",
-      options: [
-        "Photosynthesis",
-        "Pumping blood",
-        "Filtering urine",
-        "Producing antibodies"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does a leaf need several tissues?",
       answer: "Different tissues perform different roles",
-      options: [
-        "Different tissues perform different roles",
-        "All tissues are identical",
-        "Tissues cannot interact",
-        "A leaf has only one function"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5132,35 +4412,20 @@ which can eventually interfere with normal leaf function.</p>
     {
       question: "Which structures mainly form the root system?",
       answer: "Roots",
-      options: [
-        "Roots",
-        "Leaves only",
-        "Flowers only",
-        "Fruits only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does the root system mainly absorb?",
       answer: "Water and mineral ions",
-      options: [
-        "Water and mineral ions",
-        "Oxygen from blood",
-        "Haemoglobin",
-        "Sucrose from animals"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which structures belong to the shoot system?",
       answer: "Stems and leaves",
-      options: [
-        "Stems and leaves",
-        "Roots only",
-        "Nephrons",
-        "Red blood cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5224,35 +4489,20 @@ organism to grow and develop.</p>
     {
       question: "Why do multicellular organisms need cell division?",
       answer: "To increase cell number for growth and other processes",
-      options: [
-        "To increase cell number for growth and other processes",
-        "To make every cell disappear",
-        "To stop all metabolism",
-        "To prevent tissue formation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to cell number when cells divide?",
       answer: "Cell number increases",
-      options: [
-        "Cell number increases",
-        "Cell number always decreases",
-        "Cell number becomes zero",
-        "Only the cell wall increases"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is one reason cells divide?",
       answer: "To replace damaged cells",
-      options: [
-        "To replace damaged cells",
-        "To remove all DNA",
-        "To stop growth",
-        "To prevent repair"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5310,35 +4560,20 @@ complete set of genetic information.</p>
     {
       question: "What happens before a cell divides?",
       answer: "Its DNA is copied",
-      options: [
-        "Its DNA is copied",
-        "Its DNA is destroyed",
-        "Its nucleus disappears permanently",
-        "Its cell membrane becomes a cell wall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is DNA copied before division?",
       answer: "So new cells can receive genetic information",
-      options: [
-        "So new cells can receive genetic information",
-        "So cells can stop growing",
-        "So the cell can produce chlorophyll",
-        "So the cell can become a tissue immediately"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process produces new cells from an existing cell?",
       answer: "Cell division",
-      options: [
-        "Cell division",
-        "Photosynthesis",
-        "Digestion",
-        "Transpiration"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5396,35 +4631,20 @@ human body cell?</p>
     {
       question: "What molecule forms the main material of chromosomes?",
       answer: "DNA",
-      options: [
-        "DNA",
-        "Glucose",
-        "Starch",
-        "Fat"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where are chromosomes found in a typical human body cell?",
       answer: "Nucleus",
-      options: [
-        "Nucleus",
-        "Cell wall",
-        "Vacuole",
-        "Chloroplast"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many chromosomes are normally found in a human body cell?",
       answer: "46",
-      options: [
-        "46",
-        "23",
-        "92",
-        "12"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5484,35 +4704,20 @@ genetic information required for their functions.</p>
     {
       question: "What does DNA carry?",
       answer: "Genetic information",
-      options: [
-        "Genetic information",
-        "Only water",
-        "Only oxygen",
-        "Only mineral salts"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where is most DNA found in a human cell?",
       answer: "Nucleus",
-      options: [
-        "Nucleus",
-        "Cell wall",
-        "Vacuole",
-        "Stoma"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must DNA be copied before cell division?",
       answer: "So genetic information can be passed to new cells",
-      options: [
-        "So genetic information can be passed to new cells",
-        "So the cell loses its chromosomes",
-        "So photosynthesis can begin",
-        "So the cell becomes larger"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5572,35 +4777,20 @@ be distributed to the new nuclei during cell division.</p>
     {
       question: "What is DNA replication?",
       answer: "The copying of DNA",
-      options: [
-        "The copying of DNA",
-        "The destruction of DNA",
-        "The movement of water",
-        "The production of glucose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "When does DNA replication occur in relation to cell division?",
       answer: "Before the genetic material is divided",
-      options: [
-        "Before the genetic material is divided",
-        "Only after the cell has completely divided",
-        "Never",
-        "Only after the new cells die"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What acts as a template during DNA replication?",
       answer: "Each original DNA strand",
-      options: [
-        "Each original DNA strand",
-        "The cell wall",
-        "The vacuole",
-        "The mitochondrion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5658,35 +4848,20 @@ chromosomes should each new nucleus normally receive?</p>
     {
       question: "What is mitosis?",
       answer: "A type of nuclear division that distributes duplicated chromosomes",
-      options: [
-        "A type of nuclear division that distributes duplicated chromosomes",
-        "A type of digestion",
-        "A form of photosynthesis",
-        "The movement of water through xylem"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many nuclei are normally produced by mitosis?",
       answer: "Two",
-      options: [
-        "Two",
-        "One",
-        "Three",
-        "Four"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to chromosome number during normal mitosis?",
       answer: "It is maintained",
-      options: [
-        "It is maintained",
-        "It is always halved",
-        "It is always doubled",
-        "It becomes zero"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5740,35 +4915,20 @@ that it can be moved and separated more effectively.</p>
     {
       question: "What happens to genetic material during prophase?",
       answer: "It condenses into visible chromosomes",
-      options: [
-        "It condenses into visible chromosomes",
-        "It disappears",
-        "It becomes glucose",
-        "It leaves the cell permanently"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to the nuclear envelope during prophase?",
       answer: "It begins to break down",
-      options: [
-        "It begins to break down",
-        "It becomes a cell wall",
-        "It becomes chlorophyll",
-        "It doubles permanently"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is chromosome condensation useful?",
       answer: "It makes chromosomes easier to move during division",
-      options: [
-        "It makes chromosomes easier to move during division",
-        "It prevents DNA from existing",
-        "It produces glucose",
-        "It allows photosynthesis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5821,35 +4981,20 @@ lined up near the middle of the cell.</p>
     {
       question: "Where are chromosomes positioned during metaphase?",
       answer: "Near the middle of the cell",
-      options: [
-        "Near the middle of the cell",
-        "Outside the cell",
-        "Only inside the cytoplasm",
-        "Inside the cell wall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What attaches to the chromosomes during metaphase?",
       answer: "Spindle fibres",
-      options: [
-        "Spindle fibres",
-        "Cilia",
-        "Root hairs",
-        "Villi"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must chromosomes be positioned at the middle?",
       answer: "To prepare for accurate separation",
-      options: [
-        "To prepare for accurate separation",
-        "To produce glucose",
-        "To absorb water",
-        "To form chloroplasts"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5903,35 +5048,20 @@ towards opposite poles of the cell.</p>
     {
       question: "What happens during anaphase?",
       answer: "Duplicated chromosome copies separate",
-      options: [
-        "Duplicated chromosome copies separate",
-        "DNA is first copied",
-        "The cell begins photosynthesis",
-        "The cell absorbs water"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where do separated chromosome copies move?",
       answer: "Towards opposite poles of the cell",
-      options: [
-        "Towards opposite poles of the cell",
-        "Outside the organism",
-        "Into the vacuole",
-        "Into the chloroplast"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What helps move chromosomes during anaphase?",
       answer: "Spindle fibres",
-      options: [
-        "Spindle fibres",
-        "Cilia",
-        "Root hairs",
-        "Cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -5987,35 +5117,20 @@ telophase forms new nuclei around the separated chromosome sets.</p>
     {
       question: "What happens to chromosomes during telophase?",
       answer: "They are at opposite ends and become less condensed",
-      options: [
-        "They are at opposite ends and become less condensed",
-        "They disappear completely",
-        "They are copied for the first time",
-        "They leave the organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What forms around the chromosome sets?",
       answer: "Nuclear envelopes",
-      options: [
-        "Nuclear envelopes",
-        "Cell walls in animal cells",
-        "Chloroplasts",
-        "Cilia"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many nuclei are formed during telophase?",
       answer: "Two",
-      options: [
-        "Two",
-        "One",
-        "Three",
-        "None"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6069,20 +5184,20 @@ new cell wall and separates the two daughter cells.
     {
       question: "What is divided during cytokinesis?",
       answer: "The cytoplasm",
-      options: ["The cytoplasm", "Only the DNA", "Only the chromosomes", "The cell wall"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What forms between two daughter cells during plant cytokinesis?",
       answer: "A cell plate",
-      options: ["A spindle fibre", "A cell plate", "A centromere", "A chromosome"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How does an animal cell usually divide its cytoplasm?",
       answer: "A cleavage furrow forms",
-      options: ["A cell plate forms", "A cleavage furrow forms", "The nucleus disappears", "The chromosomes dissolve"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6132,30 +5247,20 @@ of an animal cell.
     {
       question: "What is a cleavage furrow?",
       answer: "An inward groove formed in the cell membrane during cytokinesis",
-      options: [
-        "An inward groove formed in the cell membrane during cytokinesis",
-        "A chromosome",
-        "A spindle fibre",
-        "A new nucleus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can an animal cell form a cleavage furrow?",
       answer: "It has a flexible cell membrane and no rigid cell wall",
-      options: [
-        "It has a flexible cell membrane and no rigid cell wall",
-        "It has chloroplasts",
-        "It has a cell plate",
-        "It has no chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens when the cleavage furrow completely separates the cell?",
       answer: "Two daughter cells form",
-      options: ["The chromosomes disappear", "Two daughter cells form", "The DNA doubles again", "The cell becomes a gamete"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6202,30 +5307,20 @@ A cell plate therefore develops between the two daughter cells.
     {
       question: "Why does a plant cell not normally form a cleavage furrow?",
       answer: "Its rigid cell wall prevents this type of inward constriction",
-      options: [
-        "Its rigid cell wall prevents this type of inward constriction",
-        "It has no DNA",
-        "It has no cytoplasm",
-        "It has no cell membrane"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What forms between two plant daughter cells?",
       answer: "A cell plate",
-      options: ["A cell plate", "A cleavage furrow", "A spindle", "A centromere"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In which direction does the plant cell plate develop?",
       answer: "From the centre towards the existing cell walls",
-      options: [
-        "From the centre towards the existing cell walls",
-        "Only towards the nucleus",
-        "From the cell wall towards the nucleus",
-        "It does not grow"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6277,20 +5372,20 @@ Prophase → Metaphase → Anaphase → Telophase → Cytokinesis
     {
       question: "During which stage do chromosomes line up at the equator?",
       answer: "Metaphase",
-      options: ["Prophase", "Metaphase", "Anaphase", "Telophase"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "During which stage do sister chromatids separate?",
       answer: "Anaphase",
-      options: ["Prophase", "Metaphase", "Anaphase", "Telophase"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What follows telophase in the complete cell-division sequence?",
       answer: "Cytokinesis",
-      options: ["Prophase", "Metaphase", "Cytokinesis", "DNA replication"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6347,20 +5442,20 @@ number is reduced.
     {
       question: "What normally happens to chromosome number during mitosis?",
       answer: "It remains the same",
-      options: ["It remains the same", "It is doubled", "It becomes zero", "It is always halved"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many chromosomes are normally found in a human body cell?",
       answer: "46",
-      options: ["23", "46", "92", "44"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A human body cell with 46 chromosomes divides by mitosis. How many chromosomes should each daughter cell have?",
       answer: "46",
-      options: ["23", "46", "69", "92"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6413,25 +5508,20 @@ Repeated mitotic divisions can increase the number of cells available for growth
     {
       question: "How does mitosis contribute directly to growth?",
       answer: "It increases the number of cells",
-      options: [
-        "It increases the number of cells",
-        "It removes all chromosomes",
-        "It changes every cell into a gamete",
-        "It stops cell division"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If 100 cells each divide once by mitosis and all daughter cells survive, how many cells result?",
       answer: "200",
-      options: ["100", "150", "200", "300"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which type of cell division is mainly responsible for producing new body cells during growth?",
       answer: "Mitosis",
-      options: ["Mitosis", "Meiosis", "Fertilisation", "Mutation"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6483,30 +5573,20 @@ Mitosis supplies new cells needed for the maintenance and repair of many tissues
     {
       question: "Why is mitosis important in tissue repair?",
       answer: "It produces new body cells",
-      options: [
-        "It produces new body cells",
-        "It destroys all damaged DNA",
-        "It produces sperm in every tissue",
-        "It removes the cell membrane"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What type of cell division can produce replacement body cells after tissue damage?",
       answer: "Mitosis",
-      options: ["Mitosis", "Meiosis", "Fertilisation", "None"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A skin wound needs new cells to replace cells that were lost. Which process provides these new cells?",
       answer: "Cell division by mitosis",
-      options: [
-        "Cell division by mitosis",
-        "Meiosis only",
-        "Photosynthesis",
-        "Digestion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6560,30 +5640,20 @@ by the needs and signals of the tissue.
     {
       question: "Why do some tissues need continual production of new cells?",
       answer: "Because cells are continually lost or damaged",
-      options: [
-        "Because cells are continually lost or damaged",
-        "Because chromosomes disappear every day",
-        "Because all cells become gametes",
-        "Because cells have no DNA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What process produces many replacement body cells?",
       answer: "Mitosis",
-      options: ["Mitosis", "Meiosis", "Fertilisation", "Respiration"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is one role of cell division in tissue maintenance?",
       answer: "Replacing cells that have been lost",
-      options: [
-        "Replacing cells that have been lost",
-        "Removing all chromosomes",
-        "Producing oxygen",
-        "Digesting food"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6650,25 +5720,20 @@ Repeated mitosis can cause cell number to increase rapidly.
     {
       question: "What happens to cell number when one cell divides into two?",
       answer: "It increases from one to two",
-      options: [
-        "It increases from one to two",
-        "It decreases to zero",
-        "It remains one",
-        "It becomes four immediately"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If 2 cells each divide once, how many cells result?",
       answer: "4",
-      options: ["2", "3", "4", "6"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Starting with one cell, how many cells are produced after three complete rounds of division if every daughter cell divides?",
       answer: "8",
-      options: ["3", "6", "8", "12"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6724,35 +5789,20 @@ differential gene expression.
     {
       question: "Why is DNA copied before mitosis?",
       answer: "So each daughter cell can receive a complete set of genetic information",
-      options: [
-        "So each daughter cell can receive a complete set of genetic information",
-        "So chromosomes disappear",
-        "So the cell loses its nucleus",
-        "So meiosis can occur"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to sister chromatids during anaphase?",
       answer: "They separate and move to opposite poles",
-      options: [
-        "They separate and move to opposite poles",
-        "They disappear",
-        "They form a cell wall",
-        "They leave the cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do daughter cells produced by normal mitosis have equivalent genetic information?",
       answer: "Copied chromosomes are accurately distributed between the daughter nuclei",
-      options: [
-        "Copied chromosomes are accurately distributed between the daughter nuclei",
-        "The chromosomes are destroyed",
-        "The cells receive no DNA",
-        "The nucleus divides without chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6810,30 +5860,20 @@ and specialise.
     {
       question: "What is meristematic tissue associated with?",
       answer: "Active cell division and plant growth",
-      options: [
-        "Active cell division and plant growth",
-        "Only photosynthesis",
-        "Only water loss",
-        "Digestion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process produces new cells in actively growing plant regions?",
       answer: "Mitosis",
-      options: ["Mitosis", "Meiosis", "Fertilisation", "Respiration"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can happen to newly produced plant cells after mitosis?",
       answer: "They can grow and become specialised",
-      options: [
-        "They can grow and become specialised",
-        "They immediately disappear",
-        "They lose all their DNA",
-        "They automatically become gametes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6898,30 +5938,20 @@ How many chromosomes should each resulting gamete normally contain?</p>
     {
       question: "What is the main chromosome-number effect of meiosis?",
       answer: "It reduces chromosome number by half",
-      options: [
-        "It reduces chromosome number by half",
-        "It doubles chromosome number",
-        "It removes all chromosomes",
-        "It keeps chromosome number exactly the same"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many chromosomes are normally present in a human cell produced by meiosis?",
       answer: "23",
-      options: ["23", "46", "92", "44"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must chromosome number be reduced before fertilisation?",
       answer: "So fertilisation restores the normal chromosome number instead of doubling it",
-      options: [
-        "So fertilisation restores the normal chromosome number instead of doubling it",
-        "So DNA is destroyed",
-        "So cells cannot divide",
-        "So all cells become identical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -6981,30 +6011,20 @@ chromosome sets join to restore the diploid number.
     {
       question: "What does diploid mean?",
       answer: "Having two sets of chromosomes",
-      options: [
-        "Having two sets of chromosomes",
-        "Having one chromosome",
-        "Having no chromosomes",
-        "Having four nuclei"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does haploid mean?",
       answer: "Having one set of chromosomes",
-      options: [
-        "Having one set of chromosomes",
-        "Having two sets of chromosomes",
-        "Having no DNA",
-        "Having two nuclei"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the chromosome number of a normal human haploid cell?",
       answer: "23",
-      options: ["23", "46", "44", "92"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7064,30 +6084,20 @@ separation contributes to reducing the chromosome number.
     {
       question: "What are homologous chromosomes?",
       answer: "A pair of chromosomes carrying the same types of genes at corresponding positions",
-      options: [
-        "A pair of chromosomes carrying the same types of genes at corresponding positions",
-        "Two identical DNA molecules only",
-        "Two unrelated chromosomes",
-        "Two cell membranes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where does one chromosome of a homologous pair usually come from?",
       answer: "One parent",
-      options: ["One parent", "Only the environment", "The cell wall", "A mitochondrion"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are homologous chromosomes not necessarily identical?",
       answer: "They can carry different alleles of the same genes",
-      options: [
-        "They can carry different alleles of the same genes",
-        "They contain no DNA",
-        "They have no genes",
-        "They are always from different species"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7148,30 +6158,20 @@ Meiosis I separates <b>homologous chromosomes</b>, while Meiosis II later separa
     {
       question: "What is the major chromosome-separation event in Meiosis I?",
       answer: "Homologous chromosomes separate",
-      options: [
-        "Homologous chromosomes separate",
-        "Sister chromatids separate",
-        "DNA disappears",
-        "Cell walls dissolve"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which stage of Meiosis I separates homologous chromosomes?",
       answer: "Anaphase I",
-      options: ["Prophase I", "Metaphase I", "Anaphase I", "Telophase I"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is one major result of Meiosis I?",
       answer: "The chromosome sets are separated into different cells",
-      options: [
-        "The chromosome sets are separated into different cells",
-        "Chromosome number doubles",
-        "DNA is completely destroyed",
-        "Four cells immediately form"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7224,30 +6224,20 @@ Prophase I prepares homologous chromosomes for their separation in Meiosis I.
     {
       question: "What happens to homologous chromosomes during Prophase I?",
       answer: "They pair together",
-      options: ["They pair together", "They disappear", "They leave the cell", "They become cell walls"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process makes Prophase I different from ordinary prophase in mitosis?",
       answer: "Homologous chromosomes pair",
-      options: [
-        "Homologous chromosomes pair",
-        "DNA exists",
-        "Chromosomes condense",
-        "A spindle develops"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main purpose of Prophase I in relation to Meiosis I?",
       answer: "It prepares paired homologous chromosomes for separation",
-      options: [
-        "It prepares paired homologous chromosomes for separation",
-        "It produces two final gametes",
-        "It halves the chromosome number immediately",
-        "It destroys the nucleus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7302,30 +6292,20 @@ Anaphase I.
     {
       question: "What is arranged at the equator during Metaphase I?",
       answer: "Homologous chromosome pairs",
-      options: [
-        "Homologous chromosome pairs",
-        "Only cell membranes",
-        "Two nuclei",
-        "Cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are homologous pairs positioned at the equator?",
       answer: "So they can be separated during Anaphase I",
-      options: [
-        "So they can be separated during Anaphase I",
-        "So DNA can be destroyed",
-        "So the cell can photosynthesise",
-        "So chromosomes disappear"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which stage comes immediately after Metaphase I?",
       answer: "Anaphase I",
-      options: ["Prophase I", "Anaphase I", "Telophase II", "Cytokinesis"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7381,20 +6361,20 @@ opposite poles while sister chromatids remain attached. Which stage is this?</p>
     {
       question: "What separates during Anaphase I?",
       answer: "Homologous chromosomes",
-      options: ["Homologous chromosomes", "Sister chromatids", "Cell membranes", "Nuclei"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to sister chromatids during Anaphase I?",
       answer: "They remain together",
-      options: ["They remain together", "They separate", "They disappear", "They become gametes"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which stage later separates sister chromatids?",
       answer: "Anaphase II",
-      options: ["Prophase I", "Anaphase I", "Anaphase II", "Telophase I"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7450,30 +6430,20 @@ be separated.
     {
       question: "What has happened by Telophase I?",
       answer: "Homologous chromosomes have reached opposite poles",
-      options: [
-        "Homologous chromosomes have reached opposite poles",
-        "Sister chromatids have all separated",
-        "Four gametes have formed",
-        "DNA has disappeared"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is reduced during Meiosis I?",
       answer: "Chromosome number per resulting cell",
-      options: [
-        "Chromosome number per resulting cell",
-        "The amount of cytoplasm only",
-        "The cell membrane",
-        "The number of genes to zero"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which division follows Meiosis I?",
       answer: "Meiosis II",
-      options: ["Mitosis", "Meiosis II", "Fertilisation", "DNA replication"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7531,25 +6501,20 @@ Meiosis I reduces chromosome number because homologous pairs are separated.
     {
       question: "What causes chromosome number to be reduced during Meiosis I?",
       answer: "Homologous chromosomes separate",
-      options: [
-        "Homologous chromosomes separate",
-        "Sister chromatids separate",
-        "DNA is destroyed",
-        "The cell loses its membrane"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A cell has 12 chromosomes in 6 homologous pairs. How many chromosomes are in each cell after Meiosis I?",
       answer: "6",
-      options: ["3", "6", "12", "24"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A human starting cell has 46 chromosomes. What is the chromosome number after Meiosis I?",
       answer: "23",
-      options: ["12", "23", "46", "92"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7608,20 +6573,20 @@ opposite poles. Is this mitosis or Meiosis I?</p>
     {
       question: "What separates during mitotic anaphase?",
       answer: "Sister chromatids",
-      options: ["Sister chromatids", "Homologous pairs", "Cell walls", "Nuclei"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What separates during Anaphase I?",
       answer: "Homologous chromosomes",
-      options: ["Homologous chromosomes", "Sister chromatids", "Cell membranes", "DNA bases"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process reduces chromosome number?",
       answer: "Meiosis I",
-      options: ["Mitosis", "Meiosis I", "Cytokinesis", "DNA replication"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7683,20 +6648,20 @@ Meiosis II separates those sister chromatids.
     {
       question: "What separates during Meiosis II?",
       answer: "Sister chromatids",
-      options: ["Sister chromatids", "Homologous chromosomes", "Cell walls", "Genes"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which division occurs before Meiosis II?",
       answer: "Meiosis I",
-      options: ["Mitosis", "Meiosis I", "Fertilisation", "Cytokinesis only"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does Meiosis II reduce chromosome number again?",
       answer: "No",
-      options: ["Yes", "No", "Only in plants", "Only in animals"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7748,25 +6713,20 @@ Prophase II prepares the chromosomes for sister-chromatid separation.
     {
       question: "What develops during Prophase II?",
       answer: "The spindle apparatus",
-      options: ["The spindle apparatus", "A new cell wall only", "A fertilisation membrane", "A gamete"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Do homologous chromosomes pair during Prophase II?",
       answer: "No",
-      options: ["Yes", "No", "Only in animal cells", "Only in plant cells"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does Prophase II prepare the cell for?",
       answer: "Separation of sister chromatids",
-      options: [
-        "Separation of sister chromatids",
-        "Pairing of homologous chromosomes",
-        "Fertilisation",
-        "DNA destruction"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7824,30 +6784,20 @@ Metaphase II = chromosomes at the equator before sister chromatids separate.
     {
       question: "Where are chromosomes positioned during Metaphase II?",
       answer: "At the equator",
-      options: ["At the equator", "Outside the cell", "Inside the cell wall", "At the nucleolus"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens during Metaphase II before Anaphase II?",
       answer: "Chromosomes are positioned for chromatid separation",
-      options: [
-        "Chromosomes are positioned for chromatid separation",
-        "Homologous chromosomes pair",
-        "DNA is destroyed",
-        "Four gametes fuse"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What lines up in Metaphase I but not as individual chromosomes in the same way?",
       answer: "Homologous chromosome pairs",
-      options: [
-        "Homologous chromosome pairs",
-        "Cell membranes",
-        "Ribosomes",
-        "Cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7903,20 +6853,20 @@ Anaphase II separates sister chromatids.
     {
       question: "What separates during Anaphase II?",
       answer: "Sister chromatids",
-      options: ["Sister chromatids", "Homologous pairs", "Cell membranes", "Nuclei"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where do the separated chromatids move?",
       answer: "Towards opposite poles",
-      options: ["Towards opposite poles", "Outside the cell", "Into the cell wall", "Into the nucleolus"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which meiotic stage separates sister chromatids?",
       answer: "Anaphase II",
-      options: ["Anaphase I", "Anaphase II", "Metaphase I", "Telophase I"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -7970,20 +6920,20 @@ Cytokinesis separates the cytoplasm, leading to the formation of four cells.
     {
       question: "Where are chromosomes located during Telophase II?",
       answer: "At opposite poles",
-      options: ["At opposite poles", "Outside the cell", "Only at the equator", "Inside the cell wall"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What has separated before Telophase II?",
       answer: "Sister chromatids",
-      options: ["Sister chromatids", "Cell walls", "Homologous pairs only", "Nuclei"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What process follows Telophase II to separate the cytoplasm?",
       answer: "Cytokinesis",
-      options: ["Cytokinesis", "DNA replication", "Fertilisation", "Prophase I"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8043,25 +6993,20 @@ four cells.
     {
       question: "How many cells normally result from one cell undergoing meiosis?",
       answer: "Four",
-      options: ["Two", "Four", "Six", "Eight"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many cells exist after Meiosis I?",
       answer: "Two",
-      options: ["One", "Two", "Three", "Four"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens after Meiosis II?",
       answer: "Cytokinesis separates the cells",
-      options: [
-        "Cytokinesis separates the cells",
-        "Another Meiosis I occurs",
-        "Chromosome number doubles",
-        "All DNA disappears"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8124,20 +7069,20 @@ One diploid starting cell → four haploid cells.
     {
       question: "What is the chromosome condition of the four cells produced by meiosis?",
       answer: "Haploid",
-      options: ["Haploid", "Diploid", "Triploid", "Tetraploid"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many chromosomes does each normal human haploid cell contain?",
       answer: "23",
-      options: ["23", "46", "92", "12"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the overall result of meiosis?",
       answer: "Four haploid cells",
-      options: ["Two diploid cells", "Four haploid cells", "Four diploid cells", "One haploid cell"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8206,20 +7151,20 @@ homologous pairs line up.</p>
     {
       question: "What separates during Anaphase I?",
       answer: "Homologous chromosomes",
-      options: ["Homologous chromosomes", "Sister chromatids", "Cell walls", "Nuclei"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What separates during Anaphase II?",
       answer: "Sister chromatids",
-      options: ["Sister chromatids", "Homologous pairs", "Cell membranes", "Genes"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many cells normally result after meiosis is complete?",
       answer: "Four",
-      options: ["One", "Two", "Four", "Eight"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8312,20 +7257,20 @@ haploid cells. Is it mitosis or meiosis?</p>
     {
       question: "Which process normally produces two daughter cells?",
       answer: "Mitosis",
-      options: ["Mitosis", "Meiosis", "Fertilisation", "Mutation"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process reduces chromosome number by half?",
       answer: "Meiosis",
-      options: ["Mitosis", "Meiosis", "Cytokinesis", "DNA replication"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process normally produces four haploid cells?",
       answer: "Meiosis",
-      options: ["Mitosis", "Meiosis", "Binary fission", "Fertilisation"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8378,25 +7323,20 @@ Gametes carry one chromosome set into sexual reproduction.
     {
       question: "What is a gamete?",
       answer: "A reproductive cell involved in fertilisation",
-      options: [
-        "A reproductive cell involved in fertilisation",
-        "A body tissue",
-        "A chromosome pair",
-        "A digestive enzyme"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many chromosomes are normally present in a human gamete?",
       answer: "23",
-      options: ["23", "46", "92", "44"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to chromosome number when two human gametes combine?",
       answer: "It becomes 46",
-      options: ["It becomes 23", "It becomes 46", "It becomes 92", "It becomes zero"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8451,25 +7391,20 @@ Haploid nucleus → carries one set of chromosomes.</p>
     {
       question: "Which structure helps a sperm cell move?",
       answer: "Flagellum",
-      options: ["Flagellum", "Nucleus", "Acrosome", "Cell wall"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are many mitochondria found in the sperm middle piece?",
       answer: "They provide energy for movement",
-      options: [
-        "They provide energy for movement",
-        "They store chromosomes",
-        "They form the cell wall",
-        "They produce the egg"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where is the sperm's haploid nucleus located?",
       answer: "In the head",
-      options: ["In the head", "In the flagellum", "Outside the cell", "In the cell wall"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8522,25 +7457,20 @@ the male genetic material.
     {
       question: "What is the main function of the sperm flagellum?",
       answer: "Movement",
-      options: ["Movement", "Chromosome storage", "Digestion", "Cell division"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What would most directly affect sperm movement if damaged?",
       answer: "The flagellum",
-      options: ["The flagellum", "The nucleus", "The acrosome", "The chromosome"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is the sperm cell haploid?",
       answer: "It carries one set of chromosomes for fertilisation",
-      options: [
-        "It carries one set of chromosomes for fertilisation",
-        "It cannot contain DNA",
-        "It is smaller than an egg",
-        "It has no nucleus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8593,25 +7523,20 @@ for the early stages after fertilisation.</p>
     {
       question: "Which part of an egg contains its haploid genetic material?",
       answer: "Nucleus",
-      options: ["Nucleus", "Cell wall", "Flagellum", "Middle piece"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is the egg cell relatively large?",
       answer: "It contains a large amount of cytoplasm",
-      options: [
-        "It contains a large amount of cytoplasm",
-        "It has a long flagellum",
-        "It has no nucleus",
-        "It contains a cell wall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What type of reproductive cell is an egg?",
       answer: "Female gamete",
-      options: ["Female gamete", "Body cell", "Bacterium", "Tissue"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8661,30 +7586,20 @@ the early stages after fertilisation.
     {
       question: "Why must the egg be haploid?",
       answer: "So fertilisation can restore the diploid chromosome number",
-      options: [
-        "So fertilisation can restore the diploid chromosome number",
-        "So the egg can swim",
-        "So it has no DNA",
-        "So it can produce sperm"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which feature provides substantial cytoplasm for early development?",
       answer: "The large egg cell",
       options :["The large egg cell", "The sperm flagellum", "The sperm acrosome", "A chromosome"],
-      type: "mcq"
+      type: "text"
     },
     {
       question: "Which statement best describes egg-cell specialisation?",
       answer: "It is specialised to receive sperm and support early development",
-      options: [
-        "It is specialised to receive sperm and support early development",
-        "It is specialised mainly for swimming",
-        "It contains no chromosomes",
-        "It functions as a body tissue"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8742,20 +7657,20 @@ resources for early development.
     {
       question: "What do sperm and egg cells have in common?",
       answer: "They are haploid gametes",
-      options: ["They are haploid gametes", "They both have flagella", "They both have cell walls", "They are both diploid"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which cell is specialised for movement?",
       answer: "Sperm",
-      options: ["Sperm", "Egg", "Both equally", "Neither"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which cell contains a large amount of cytoplasm?",
       answer: "Egg",
-      options: ["Egg", "Sperm", "Both equally", "Neither"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8813,25 +7728,20 @@ Haploid + haploid → diploid.
     {
       question: "What is fertilisation?",
       answer: "Fusion of the nuclei of two gametes",
-      options: [
-        "Fusion of the nuclei of two gametes",
-        "Division of a body cell",
-        "Replication of DNA",
-        "Formation of a tissue"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the cell formed after fertilisation called?",
       answer: "Zygote",
-      options: ["Zygote", "Gamete", "Chromosome", "Tissue"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the normal chromosome number of a human zygote?",
       answer: "46",
-      options: ["23", "46", "69", "92"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8887,25 +7797,20 @@ of cells during development.
     {
       question: "What type of cell is a zygote?",
       answer: "Diploid cell",
-      options: ["Diploid cell", "Haploid cell", "Bacterium", "Tissue"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to the zygote during early development?",
       answer: "It undergoes repeated mitotic divisions",
-      options: [
-        "It undergoes repeated mitotic divisions",
-        "It immediately undergoes meiosis",
-        "It loses all chromosomes",
-        "It becomes a sperm"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many chromosomes does a normal human zygote contain?",
       answer: "46",
-      options: ["23", "46", "92", "12"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -8965,25 +7870,20 @@ fertilisation.
     {
       question: "What chromosome number does fertilisation normally restore in humans?",
       answer: "46",
-      options: ["23", "46", "69", "92"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are human gametes haploid?",
       answer: "To prevent chromosome number from doubling after fertilisation",
-      options: [
-        "To prevent chromosome number from doubling after fertilisation",
-        "To prevent DNA from existing",
-        "To make all cells identical",
-        "To stop cell division"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If two hypothetical 46-chromosome gametes fused, how many chromosomes would the resulting cell have?",
       answer: "92",
-      options: ["23", "46", "69", "92"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9044,20 +7944,20 @@ cell number during growth and development.
     {
       question: "Which process produces haploid gametes?",
       answer: "Meiosis",
-      options: ["Meiosis", "Mitosis", "Fertilisation", "Respiration"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process restores the diploid chromosome number?",
       answer: "Fertilisation",
-      options: ["Mitosis", "Meiosis", "Fertilisation", "Cytokinesis"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process increases the number of cells in the developing organism?",
       answer: "Mitosis",
-      options: ["Mitosis", "Meiosis", "Fertilisation", "Crossing over"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9137,35 +8037,20 @@ add(
     {
       question: "Why are brothers and sisters usually genetically different from one another?",
       answer: "Because meiosis produces genetically different gametes and fertilisation combines different sperm and egg cells.",
-      options: [
-        "Because they always receive completely different chromosomes from their parents",
-        "Because meiosis produces different gametes and fertilisation combines different gametes",
-        "Because siblings have different numbers of chromosomes",
-        "Because their DNA is produced after birth"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the role of fertilisation in genetic variation?",
       answer: "It combines genetic information from a sperm and an egg.",
-      options: [
-        "It doubles the chromosome number of every parent",
-        "It produces gametes",
-        "It combines genetic information from a sperm and an egg",
-        "It removes chromosomes from the zygote"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement is correct?",
       answer: "Sexual reproduction produces offspring with different combinations of genetic information.",
-      options: [
-        "All siblings must have identical genetic information",
-        "Sexual reproduction produces offspring with different combinations of genetic information",
-        "Fertilisation produces haploid offspring",
-        "Meiosis produces diploid gametes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9255,35 +8140,20 @@ add(
     {
       question: "What does variation mean in biology?",
       answer: "Differences in characteristics between individuals of the same species.",
-      options: [
-        "Differences between organs in one person",
-        "Differences in characteristics between individuals of the same species",
-        "The process of cell division",
-        "The joining of tissues"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process combines genetic information from two parents?",
       answer: "Fertilisation.",
-      options: [
-        "Mitosis",
-        "Fertilisation",
-        "Diffusion",
-        "Respiration"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can two offspring from the same parents differ genetically?",
       answer: "Different sperm and egg cells can combine during fertilisation.",
-      options: [
-        "They always have different chromosome numbers",
-        "Different sperm and egg cells can combine during fertilisation",
-        "Their cells contain no DNA",
-        "Mitosis changes their chromosome number"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9372,35 +8242,20 @@ add(
     {
       question: "Why can two gametes produced by the same parent differ genetically?",
       answer: "They can receive different combinations of chromosomes during meiosis.",
-      options: [
-        "They contain different numbers of cells",
-        "They can receive different combinations of chromosomes during meiosis",
-        "They are produced by digestion",
-        "They contain no chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If a gamete receives one chromosome from each of two chromosome pairs, what is possible?",
       answer: "Different combinations of the chromosomes can occur.",
-      options: [
-        "Only one combination is possible",
-        "Different combinations of the chromosomes can occur",
-        "The gamete becomes diploid",
-        "The gamete loses all DNA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How does variation among gametes contribute to variation among offspring?",
       answer: "Different sperm and eggs can combine during fertilisation.",
-      options: [
-        "Different gametes can combine during fertilisation",
-        "Gametes divide by mitosis before fertilisation",
-        "Gametes destroy chromosomes",
-        "Gametes prevent fertilisation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9491,35 +8346,20 @@ add(
     {
       question: "What does independent assortment refer to?",
       answer: "The different ways homologous chromosome pairs can be arranged and distributed during meiosis.",
-      options: [
-        "The copying of DNA",
-        "The different ways homologous chromosome pairs can be arranged and distributed during meiosis",
-        "The joining of sperm and egg",
-        "The division of cytoplasm"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can independent assortment produce?",
       answer: "Different combinations of chromosomes in gametes.",
-      options: [
-        "Identical gametes only",
-        "Different combinations of chromosomes in gametes",
-        "Diploid sperm cells",
-        "Cells without chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "For chromosome pairs A/a and B/b, which could be a gamete combination?",
       answer: "Ab.",
-      options: [
-        "Aa",
-        "Bb",
-        "Ab",
-        "Aabb"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9604,35 +8444,20 @@ add(
     {
       question: "When do homologous chromosome pairs line up at the equator?",
       answer: "Metaphase I.",
-      options: [
-        "Prophase I",
-        "Metaphase I",
-        "Anaphase II",
-        "Telophase II"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does chromosome orientation matter?",
       answer: "It affects which chromosomes are distributed into the resulting cells.",
-      options: [
-        "It changes the number of genes in every chromosome",
-        "It affects which chromosomes are distributed into the resulting cells",
-        "It destroys the chromosomes",
-        "It prevents meiosis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does random orientation create new chromosomes?",
       answer: "No. It distributes existing chromosomes into different combinations.",
-      options: [
-        "Yes, it creates completely new chromosomes",
-        "No. It distributes existing chromosomes into different combinations",
-        "Yes, it doubles chromosome number",
-        "No, because chromosomes disappear"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9710,35 +8535,20 @@ add(
     {
       question: "What two cells fuse during fertilisation?",
       answer: "A sperm cell and an egg cell.",
-      options: [
-        "Two body cells",
-        "A sperm cell and an egg cell",
-        "Two red blood cells",
-        "A muscle cell and a nerve cell"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can fertilisation produce genetic variation?",
       answer: "Different sperm and egg cells can combine to form different genetic combinations.",
-      options: [
-        "All sperm are genetically identical",
-        "Different sperm and egg cells can combine to form different genetic combinations",
-        "Fertilisation removes chromosomes",
-        "The zygote has no genetic material"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is formed immediately after successful fertilisation?",
       answer: "A diploid zygote.",
-      options: [
-        "A haploid sperm",
-        "A diploid zygote",
-        "A gamete",
-        "A chromosome"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9828,35 +8638,20 @@ add(
     {
       question: "Why can two siblings have different genetic combinations?",
       answer: "They can result from different sperm and egg cells.",
-      options: [
-        "They always have different numbers of chromosomes",
-        "They can result from different sperm and egg cells",
-        "They have different species",
-        "Their cells contain different genetic codes in every chromosome"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What determines much of the genetic combination of an individual child?",
       answer: "The particular sperm and egg that combine during fertilisation.",
-      options: [
-        "Only the mother's age",
-        "The particular sperm and egg that combine during fertilisation",
-        "Only the number of body cells",
-        "The amount of food eaten after birth"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are identical twins different from ordinary siblings in this respect?",
       answer: "They develop from the same fertilised egg.",
-      options: [
-        "They have no chromosomes",
-        "They develop from the same fertilised egg",
-        "They are produced by two different species",
-        "They are always produced by two different eggs"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -9928,35 +8723,20 @@ add(
     {
       question: "How does meiosis contribute to genetic variation?",
       answer: "It can produce gametes containing different combinations of chromosomes.",
-      options: [
-        "It produces only identical cells",
-        "It can produce gametes containing different combinations of chromosomes",
-        "It removes all chromosomes",
-        "It produces diploid gametes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to homologous chromosomes during meiosis I?",
       answer: "They separate into different cells.",
-      options: [
-        "They become digestive enzymes",
-        "They separate into different cells",
-        "They disappear",
-        "They fuse permanently"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement best summarizes the relationship between meiosis and fertilisation?",
       answer: "Meiosis produces genetically varied haploid gametes, while fertilisation combines two gametes.",
-      options: [
-        "Meiosis produces diploid gametes and fertilisation removes chromosomes",
-        "Meiosis produces genetically varied haploid gametes, while fertilisation combines two gametes",
-        "Both processes produce identical body cells",
-        "Fertilisation occurs before meiosis in every case"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10038,35 +8818,20 @@ add(
     {
       question: "What is genetic variation?",
       answer: "Differences in genetic information between individuals.",
-      options: [
-        "Differences caused only by temperature",
-        "Differences in genetic information between individuals",
-        "Differences caused only by exercise",
-        "Differences in body size during one day"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is mainly genetically determined?",
       answer: "Blood group.",
-      options: [
-        "Blood group",
-        "Amount of water a plant receives",
-        "Amount of sunlight received yesterday",
-        "Soil moisture"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement about human height is most accurate?",
       answer: "It can be influenced by both genetic and environmental factors.",
-      options: [
-        "It is controlled only by the environment",
-        "It is controlled only by one gene",
-        "It can be influenced by both genetic and environmental factors",
-        "It is unrelated to genes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10155,35 +8920,20 @@ add(
     {
       question: "What is an inherited characteristic?",
       answer: "A characteristic associated with genetic information passed from parents to offspring.",
-      options: [
-        "A characteristic caused only by exercise",
-        "A characteristic associated with genetic information passed from parents to offspring",
-        "A temporary change caused by temperature",
-        "A change caused by injury"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A person develops larger muscles after regular exercise. How should this be classified?",
       answer: "As an acquired change.",
-      options: [
-        "As an inherited characteristic",
-        "As an acquired change",
-        "As a chromosome",
-        "As a gamete"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is increased muscle size from exercise not automatically inherited by a child?",
       answer: "The acquired increase in muscle size is not itself genetic information passed through gametes.",
-      options: [
-        "Muscles contain no cells",
-        "The acquired increase in muscle size is not itself genetic information passed through gametes",
-        "Children have no DNA",
-        "Exercise removes chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10270,35 +9020,20 @@ add(
     {
       question: "Which process contributes to genetic variation by producing different combinations of chromosomes in gametes?",
       answer: "Meiosis.",
-      options: [
-        "Digestion",
-        "Meiosis",
-        "Respiration",
-        "Transpiration"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process combines genetic information from two gametes?",
       answer: "Fertilisation.",
-      options: [
-        "Mitosis",
-        "Fertilisation",
-        "Diffusion",
-        "Excretion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement is correct?",
       answer: "Both meiosis and fertilisation contribute to genetic variation.",
-      options: [
-        "Only mitosis contributes to genetic variation",
-        "Only digestion contributes to genetic variation",
-        "Both meiosis and fertilisation contribute to genetic variation",
-        "Neither meiosis nor fertilisation affects genetic variation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );// ============================================================
@@ -10375,35 +9110,20 @@ add(
     {
       question: "What is inheritance?",
       answer: "The passing of genetic information from parents to offspring.",
-      options: [
-        "The production of energy in cells",
-        "The passing of genetic information from parents to offspring",
-        "The movement of water through a plant",
-        "The breakdown of food"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where is genetic information stored?",
       answer: "In DNA.",
-      options: [
-        "In water",
-        "In DNA",
-        "In cytoplasm only",
-        "In glucose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How does a child receive genetic information from both parents?",
       answer: "A sperm and an egg each contribute one set of chromosomes during fertilisation.",
-      options: [
-        "Only the egg contributes chromosomes",
-        "Only the sperm contributes chromosomes",
-        "A sperm and an egg each contribute one set of chromosomes",
-        "The child creates all chromosomes after birth"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10480,35 +9200,20 @@ add(
     {
       question: "What is a gene?",
       answer: "A section of DNA containing biological information.",
-      options: [
-        "A whole organism",
-        "A section of DNA containing biological information",
-        "A type of cell",
-        "A type of tissue"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Where are genes located?",
       answer: "On chromosomes.",
-      options: [
-        "Only outside cells",
-        "On chromosomes",
-        "Only in the cell membrane",
-        "Inside red blood cells as separate organs"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement is correct?",
       answer: "A chromosome can contain many genes.",
-      options: [
-        "A gene is always larger than a chromosome",
-        "A chromosome can contain many genes",
-        "Genes contain no DNA",
-        "Chromosomes are made of glucose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10587,35 +9292,20 @@ add(
     {
       question: "What is an allele?",
       answer: "A particular version of a gene.",
-      options: [
-        "A complete chromosome",
-        "A particular version of a gene",
-        "A type of tissue",
-        "A type of organ"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If A and a represent different forms of the same gene, what are A and a?",
       answer: "Alleles.",
-      options: [
-        "Organs",
-        "Alleles",
-        "Chromosomes",
-        "Cells"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the relationship between a gene and an allele?",
       answer: "An allele is a particular version of a gene.",
-      options: [
-        "A gene is a particular version of an allele",
-        "An allele is a particular version of a gene",
-        "They are completely unrelated",
-        "A chromosome is a version of a gene"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10701,35 +9391,20 @@ add(
     {
       question: "What is a dominant allele in a simple inheritance model?",
       answer: "An allele expressed in the phenotype when at least one copy is present.",
-      options: [
-        "An allele that is always more common",
-        "An allele expressed when at least one copy is present",
-        "An allele that always produces a disease",
-        "An allele found only in males"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If A is dominant over a, which genotype produces the dominant phenotype?",
       answer: "Aa.",
-      options: [
-        "aa only",
-        "Aa",
-        "Neither AA nor Aa",
-        "Only chromosomes without genes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does dominant mean that an allele is stronger or better?",
       answer: "No. It describes its expression in a particular genetic combination.",
-      options: [
-        "Yes, dominant always means better",
-        "Yes, dominant always means more common",
-        "No. It describes its expression in a particular genetic combination",
-        "Yes, dominant means healthier"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10817,35 +9492,20 @@ add(
     {
       question: "When is a recessive allele expressed in a simple inheritance model?",
       answer: "When two copies of the recessive allele are present.",
-      options: [
-        "Whenever one copy is present",
-        "When two copies of the recessive allele are present",
-        "Only in body cells",
-        "Only during mitosis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If A is dominant and a is recessive, which genotype gives the recessive phenotype?",
       answer: "aa.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Can an individual carry a recessive allele without showing its phenotype?",
       answer: "Yes, if a dominant allele is also present in the simple model.",
-      options: [
-        "No, never",
-        "Yes, if a dominant allele is also present in the simple model",
-        "Only if the person has no chromosomes",
-        "Only after fertilisation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -10941,35 +9601,20 @@ add(
     {
       question: "What is a genotype?",
       answer: "The genetic constitution of an individual for a particular gene or characteristic.",
-      options: [
-        "An observable characteristic only",
-        "The genetic constitution of an individual",
-        "The number of organs in the body",
-        "A type of chromosome division"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is a genotype?",
       answer: "Aa.",
-      options: [
-        "Tall",
-        "Brown",
-        "Aa",
-        "Smooth"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In a simple diploid inheritance model, why are two alleles usually shown?",
       answer: "Because an individual has two copies of an autosomal gene, one inherited from each parent.",
-      options: [
-        "Because every gene has exactly two versions in nature",
-        "Because an individual has two copies of an autosomal gene, one inherited from each parent",
-        "Because chromosomes always contain two genes",
-        "Because DNA occurs only in pairs"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11054,35 +9699,20 @@ add(
     {
       question: "What is a phenotype?",
       answer: "An observable or measurable characteristic of an organism.",
-      options: [
-        "The DNA molecule only",
-        "An observable or measurable characteristic of an organism",
-        "A chromosome pair",
-        "A type of gamete"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is a phenotype rather than a genotype?",
       answer: "An observable characteristic.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "An observable characteristic"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the difference between genotype and phenotype?",
       answer: "Genotype describes genetic information, while phenotype describes an observable characteristic.",
-      options: [
-        "They mean exactly the same thing",
-        "Genotype describes genetic information, while phenotype describes an observable characteristic",
-        "Phenotype describes chromosomes while genotype describes organs",
-        "Genotype only exists in plants"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11162,35 +9792,20 @@ add(
     {
       question: "What does homozygous mean?",
       answer: "Having two identical alleles for a particular gene.",
-      options: [
-        "Having two different alleles",
-        "Having two identical alleles for a particular gene",
-        "Having no alleles",
-        "Having four chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype is homozygous?",
       answer: "AA.",
-      options: [
-        "Aa",
-        "AA",
-        "Ab",
-        "Bb"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement is correct?",
       answer: "Both AA and aa are homozygous.",
-      options: [
-        "Only AA can be homozygous",
-        "Only aa can be homozygous",
-        "Both AA and aa are homozygous",
-        "Neither AA nor aa is homozygous"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11268,35 +9883,20 @@ add(
     {
       question: "What does heterozygous mean?",
       answer: "Having two different alleles for a particular gene.",
-      options: [
-        "Having two identical alleles",
-        "Having two different alleles",
-        "Having no alleles",
-        "Having two nuclei"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype is heterozygous?",
       answer: "Aa.",
-      options: [
-        "AA",
-        "aa",
-        "Aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If A is dominant and a is recessive, what is true about Aa?",
       answer: "It is heterozygous and has the dominant phenotype in the simple model.",
-      options: [
-        "It is homozygous recessive",
-        "It is heterozygous and has the dominant phenotype in the simple model",
-        "It has no phenotype",
-        "It contains only one allele"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11386,35 +9986,20 @@ add(
     {
       question: "What is AA if A is the dominant allele?",
       answer: "Homozygous dominant.",
-      options: [
-        "Heterozygous",
-        "Homozygous dominant",
-        "Homozygous recessive",
-        "Hemizygous"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is aa if a is the recessive allele?",
       answer: "Homozygous recessive.",
-      options: [
-        "Homozygous dominant",
-        "Heterozygous",
-        "Homozygous recessive",
-        "Diploid dominant"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype is homozygous dominant?",
       answer: "BB.",
-      options: [
-        "Bb",
-        "bb",
-        "BB",
-        "B"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11492,35 +10077,20 @@ add(
     {
       question: "What is a carrier in a simple recessive inheritance model?",
       answer: "An individual who has a recessive allele but does not show the recessive phenotype.",
-      options: [
-        "An individual with no genes",
-        "An individual who has a recessive allele but does not show the recessive phenotype",
-        "An individual with only recessive alleles",
-        "An individual with no chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If A is dominant and a is recessive, which genotype can represent a carrier?",
       answer: "Aa.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can a carrier pass a recessive allele to an offspring?",
       answer: "Because the recessive allele is still present in the carrier's genotype.",
-      options: [
-        "Because the recessive allele disappears and returns",
-        "Because the recessive allele is still present in the carrier's genotype",
-        "Because the carrier has no DNA",
-        "Because recessive alleles are produced during fertilisation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11604,35 +10174,20 @@ add(
     {
       question: "What is studied in a monohybrid cross?",
       answer: "One gene or characteristic at a time.",
-      options: [
-        "All genes in an organism",
-        "One gene or characteristic at a time",
-        "Only environmental characteristics",
-        "Only chromosome number"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is Aa × Aa a monohybrid cross?",
       answer: "Because one gene with two alleles is being followed.",
-      options: [
-        "Because two different species are crossed",
-        "Because one gene with two alleles is being followed",
-        "Because four genes are being studied",
-        "Because no alleles are involved"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can a monohybrid cross predict?",
       answer: "Possible offspring genotypes and phenotypes.",
-      options: [
-        "Only the parents' ages",
-        "Possible offspring genotypes and phenotypes",
-        "Only the number of chromosomes in the species",
-        "Only environmental conditions"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11728,35 +10283,20 @@ add(
     {
       question: "If A is dominant and a is recessive, what genotype must an individual with the recessive phenotype have?",
       answer: "aa.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotypes can produce a dominant phenotype?",
       answer: "AA and Aa.",
-      options: [
-        "aa only",
-        "AA and Aa",
-        "Aa and aa only",
-        "AA only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can a dominant phenotype make the genotype uncertain?",
       answer: "Both AA and Aa can produce the dominant phenotype in the simple model.",
-      options: [
-        "Because genes disappear",
-        "Because both AA and Aa can produce the dominant phenotype in the simple model",
-        "Because aa is always dominant",
-        "Because phenotypes contain no genetic information"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11864,35 +10404,20 @@ add(
     {
       question: "How many alleles of a particular gene does a normal haploid gamete carry?",
       answer: "One.",
-      options: [
-        "One",
-        "Two",
-        "Three",
-        "Four"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which alleles can a parent with genotype Aa place into its gametes?",
       answer: "A or a.",
-      options: [
-        "Only A",
-        "Only a",
-        "A or a",
-        "AA or aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What allele will every gamete from an AA parent receive for this gene?",
       answer: "A.",
-      options: [
-        "A",
-        "a",
-        "Aa",
-        "AA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -11987,35 +10512,20 @@ add(
     {
       question: "What separates during meiosis I?",
       answer: "Homologous chromosomes.",
-      options: [
-        "Homologous chromosomes",
-        "Organs",
-        "Ribosomes",
-        "Cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to the A and a alleles in a simplified Aa example?",
       answer: "They can enter different gametes.",
-      options: [
-        "They are both placed into every gamete",
-        "They can enter different gametes",
-        "They are destroyed",
-        "They become proteins"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can an Aa parent produce gametes carrying A or a?",
       answer: "The homologous chromosomes carrying the two alleles separate during meiosis.",
-      options: [
-        "The alleles are created after fertilisation",
-        "The homologous chromosomes carrying the two alleles separate during meiosis",
-        "The parent loses one chromosome permanently",
-        "Gametes are diploid"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12122,35 +10632,20 @@ add(
     {
       question: "What should be written along the top and side of a simple Punnett square?",
       answer: "The possible gametes from each parent.",
-      options: [
-        "The children's phenotypes",
-        "The possible gametes from each parent",
-        "The organs of each parent",
-        "The chromosome number only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "For Aa × Aa, what gametes can each parent produce?",
       answer: "A and a.",
-      options: [
-        "AA and aa",
-        "A and a",
-        "Only Aa",
-        "Only A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is placed inside each Punnett-square box?",
       answer: "One allele from each parent's gamete.",
-      options: [
-        "Two complete chromosomes from one parent",
-        "One allele from each parent's gamete",
-        "Only the dominant allele",
-        "The phenotype"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12246,35 +10741,20 @@ add(
     {
       question: "What is produced when A from one parent combines with a from the other?",
       answer: "Aa.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many boxes are produced in a 2 × 2 Punnett square?",
       answer: "Four.",
-      options: [
-        "Two",
-        "Three",
-        "Four",
-        "Eight"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What are the offspring genotype combinations in Aa × Aa?",
       answer: "AA, Aa, Aa and aa.",
-      options: [
-        "AA only",
-        "Aa only",
-        "AA, Aa, Aa and aa",
-        "AA and aa only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12360,35 +10840,20 @@ add(
     {
       question: "What is a genotypic ratio?",
       answer: "A comparison of the numbers of different genotypes in a genetic cross.",
-      options: [
-        "A comparison of body sizes",
-        "A comparison of the numbers of different genotypes in a genetic cross",
-        "A comparison of chromosome lengths",
-        "A measurement of cell size"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the genotypic ratio from Aa × Aa?",
       answer: "1 AA : 2 Aa : 1 aa.",
-      options: [
-        "3 AA : 1 aa",
-        "1 AA : 2 Aa : 1 aa",
-        "1 AA : 1 aa",
-        "2 AA : 2 aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does a 1:2:1 ratio guarantee that every four children will have those exact genotypes?",
       answer: "No. It describes expected probabilities, not a guaranteed outcome.",
-      options: [
-        "Yes, always",
-        "No. It describes expected probabilities, not a guaranteed outcome",
-        "Yes, if the parents are human",
-        "Only if all offspring are identical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12496,35 +10961,20 @@ add(
     {
       question: "What is a phenotypic ratio?",
       answer: "A comparison of the numbers of different observable phenotypes in a cross.",
-      options: [
-        "A comparison of chromosome numbers",
-        "A comparison of observable phenotypes in a cross",
-        "A comparison of DNA lengths",
-        "A comparison of cell sizes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the phenotypic ratio from Aa × Aa in a simple dominant-recessive model?",
       answer: "3 : 1.",
-      options: [
-        "1 : 2 : 1",
-        "3 : 1",
-        "1 : 1",
-        "2 : 2"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do AA and Aa have the same phenotype in this example?",
       answer: "Because A is dominant over a.",
-      options: [
-        "Because they have identical genotypes",
-        "Because A is dominant over a",
-        "Because aa is dominant",
-        "Because phenotype is unrelated to genotype"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12620,35 +11070,20 @@ add(
     {
       question: "What is the probability of AA from Aa × Aa?",
       answer: "1/4 or 25%.",
-      options: [
-        "1/2",
-        "1/4",
-        "3/4",
-        "1"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the probability of Aa from Aa × Aa?",
       answer: "1/2 or 50%.",
-      options: [
-        "1/4",
-        "1/2",
-        "3/4",
-        "1"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the probability of aa from Aa × Aa?",
       answer: "1/4 or 25%.",
-      options: [
-        "25%",
-        "50%",
-        "75%",
-        "100%"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12761,35 +11196,20 @@ add(
     {
       question: "What are the parental genotypes when two heterozygous parents are crossed?",
       answer: "Aa × Aa.",
-      options: [
-        "AA × AA",
-        "aa × aa",
-        "Aa × Aa",
-        "AA × aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the genotypic ratio from Aa × Aa?",
       answer: "1 : 2 : 1.",
-      options: [
-        "3 : 1",
-        "1 : 2 : 1",
-        "1 : 1",
-        "4 : 0"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the phenotypic ratio when A is completely dominant over a?",
       answer: "3 : 1.",
-      options: [
-        "1 : 2 : 1",
-        "2 : 1",
-        "3 : 1",
-        "1 : 1"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12870,35 +11290,20 @@ add(
     {
       question: "What is the cross between two homozygous dominant parents?",
       answer: "AA × AA.",
-      options: [
-        "AA × AA",
-        "Aa × Aa",
-        "aa × aa",
-        "Aa × aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which gamete can an AA parent produce for this gene?",
       answer: "A only.",
-      options: [
-        "A only",
-        "a only",
-        "A or a",
-        "AA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What genotype will the offspring have in AA × AA?",
       answer: "AA.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -12975,35 +11380,20 @@ add(
     {
       question: "What is the cross between two homozygous recessive parents?",
       answer: "aa × aa.",
-      options: [
-        "AA × AA",
-        "AA × aa",
-        "aa × aa",
-        "Aa × Aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What gamete can an aa parent produce?",
       answer: "a only.",
-      options: [
-        "A only",
-        "a only",
-        "A or a",
-        "aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What genotype will all offspring have from aa × aa?",
       answer: "aa.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -13103,35 +11493,20 @@ add(
     {
       question: "What is the cross described?",
       answer: "AA × aa.",
-      options: [
-        "AA × AA",
-        "Aa × Aa",
-        "AA × aa",
-        "aa × aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What genotype do all offspring receive?",
       answer: "Aa.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What percentage of offspring show the dominant phenotype?",
       answer: "100%.",
-      options: [
-        "0%",
-        "25%",
-        "50%",
-        "100%"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -13231,35 +11606,20 @@ add(
     {
       question: "What gametes can an AA parent produce?",
       answer: "A only.",
-      options: [
-        "A only",
-        "a only",
-        "A or a",
-        "AA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What are the possible offspring genotypes from AA × Aa?",
       answer: "AA and Aa.",
-      options: [
-        "AA and aa",
-        "Aa and aa",
-        "AA and Aa",
-        "AA, Aa and aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the expected phenotypic ratio from AA × Aa?",
       answer: "100% dominant phenotype.",
-      options: [
-        "100% recessive",
-        "75% dominant and 25% recessive",
-        "50% dominant and 50% recessive",
-        "100% dominant"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -13354,35 +11714,20 @@ add(
     {
       question: "What is the cross?",
       answer: "aa × Aa.",
-      options: [
-        "AA × Aa",
-        "aa × Aa",
-        "Aa × Aa",
-        "AA × aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What are the possible offspring genotypes?",
       answer: "Aa and aa.",
-      options: [
-        "AA and Aa",
-        "AA and aa",
-        "Aa and aa",
-        "AA only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the expected phenotypic ratio?",
       answer: "1 dominant : 1 recessive.",
-      options: [
-        "3 dominant : 1 recessive",
-        "1 dominant : 1 recessive",
-        "100% dominant",
-        "100% recessive"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -13482,35 +11827,20 @@ add(
     {
       question: "What is the probability of AA from AA × Aa?",
       answer: "50%.",
-      options: [
-        "0%",
-        "25%",
-        "50%",
-        "100%"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the probability of aa from AA × Aa?",
       answer: "0%.",
-      options: [
-        "0%",
-        "25%",
-        "50%",
-        "100%"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the probability of the dominant phenotype?",
       answer: "100%.",
-      options: [
-        "0%",
-        "25%",
-        "50%",
-        "100%"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -13611,35 +11941,20 @@ add(
     {
       question: "What is the result of AA × AA?",
       answer: "100% AA.",
-      options: [
-        "100% AA",
-        "100% Aa",
-        "100% aa",
-        "50% AA and 50% aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the result of aa × aa?",
       answer: "100% aa.",
-      options: [
-        "100% AA",
-        "100% Aa",
-        "100% aa",
-        "50% Aa and 50% aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the result of AA × aa?",
       answer: "100% Aa.",
-      options: [
-        "100% AA",
-        "100% Aa",
-        "100% aa",
-        "25% AA and 75% aa"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -13739,35 +12054,20 @@ add(
     {
       question: "What is a test cross?",
       answer: "A cross between an individual of unknown dominant genotype and a homozygous recessive individual.",
-      options: [
-        "A cross between two homozygous dominant individuals",
-        "A cross between an unknown dominant genotype and a homozygous recessive individual",
-        "A cross between two recessive gametes",
-        "A cross between two different species"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is the recessive parent used in a test cross?",
       answer: "It can contribute only the recessive allele.",
-      options: [
-        "It can contribute only the dominant allele",
-        "It can contribute only the recessive allele",
-        "It has no alleles",
-        "It produces diploid gametes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What cross is used to test an individual that may be AA or Aa?",
       answer: "AA or Aa × aa.",
-      options: [
-        "AA or Aa × aa",
-        "AA × AA only",
-        "aa × aa only",
-        "Aa × Aa only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -13866,35 +12166,20 @@ add(
     {
       question: "If a test cross produces a recessive offspring, what must the unknown parent have contributed?",
       answer: "A recessive allele.",
-      options: [
-        "A dominant allele only",
-        "A recessive allele",
-        "No allele",
-        "Two complete chromosome sets"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If an unknown dominant-phenotype parent produces aa offspring when crossed with aa, what is its genotype?",
       answer: "Aa.",
-      options: [
-        "AA",
-        "Aa",
-        "aa",
-        "A"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does Aa × aa produce?",
       answer: "Aa and aa offspring.",
-      options: [
-        "AA only",
-        "Aa only",
-        "Aa and aa",
-        "AA and aa only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14010,35 +12295,20 @@ add(
     {
       question: "What is the genotype of the heterozygous parent?",
       answer: "Bb.",
-      options: [
-        "BB",
-        "Bb",
-        "bb",
-        "B"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the probability of bb offspring?",
       answer: "50%.",
-      options: [
-        "0%",
-        "25%",
-        "50%",
-        "100%"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the phenotypic ratio?",
       answer: "1 dominant : 1 recessive.",
-      options: [
-        "3 dominant : 1 recessive",
-        "1 dominant : 1 recessive",
-        "100% dominant",
-        "100% recessive"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14112,35 +12382,20 @@ add(
     {
       question: "In complete dominance, what is true about the phenotype of Aa compared with AA?",
       answer: "Aa has the same dominant phenotype as AA.",
-      options: [
-        "Aa has the same dominant phenotype as AA.",
-        "Aa always has the same phenotype as aa.",
-        "Aa has no phenotype.",
-        "Aa contains no alleles."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does genotype describe?",
       answer: "The allele combination of an individual.",
-      options: [
-        "The allele combination of an individual.",
-        "Only the visible appearance.",
-        "The environment of an organism.",
-        "The age of an organism."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can we not always predict the phenotype of a heterozygote using the simple dominant-recessive rule?",
       answer: "Because some alleles interact in ways other than complete dominance.",
-      options: [
-        "Because some alleles interact in ways other than complete dominance.",
-        "Because heterozygotes have no genes.",
-        "Because dominant alleles disappear during meiosis.",
-        "Because phenotypes are always random."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14214,35 +12469,20 @@ add(
     {
       question: "What is incomplete dominance?",
       answer: "An inheritance pattern in which the heterozygote has an intermediate phenotype.",
-      options: [
-        "An inheritance pattern in which the heterozygote has an intermediate phenotype.",
-        "A pattern in which one allele always completely masks the other.",
-        "A pattern in which alleles are removed.",
-        "A pattern in which offspring receive only one allele."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If RR produces red flowers and WW produces white flowers, what does RW produce in the example above?",
       answer: "Pink flowers.",
-      options: [
-        "Pink flowers.",
-        "Red flowers.",
-        "White flowers.",
-        "No flowers."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype represents the heterozygote in the example?",
       answer: "RW.",
-      options: [
-        "RW.",
-        "RR.",
-        "WW.",
-        "R."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14342,35 +12582,20 @@ add(
     {
       question: "What are the parental genotypes when a red RR flower is crossed with a white WW flower?",
       answer: "RR × WW.",
-      options: [
-        "RR × WW.",
-        "RW × RW.",
-        "RR × RW.",
-        "WW × RW."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What gamete can an RR parent produce?",
       answer: "R only.",
-      options: [
-        "R only.",
-        "W only.",
-        "R or W.",
-        "RW only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What percentage of offspring from RR × WW will be RW?",
       answer: "100%.",
-      options: [
-        "100%.",
-        "75%.",
-        "50%.",
-        "25%."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14481,35 +12706,20 @@ add(
     {
       question: "What are the possible gametes from an RW parent?",
       answer: "R and W.",
-      options: [
-        "R and W.",
-        "RW only.",
-        "R only.",
-        "W only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the genotypic ratio from RW × RW?",
       answer: "1 RR : 2 RW : 1 WW.",
-      options: [
-        "1 RR : 2 RW : 1 WW.",
-        "3 RR : 1 WW.",
-        "1 RR : 1 WW.",
-        "2 RR : 2 WW."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the phenotypic ratio when RR is red, RW is pink and WW is white?",
       answer: "1 red : 2 pink : 1 white.",
-      options: [
-        "1 red : 2 pink : 1 white.",
-        "3 red : 1 white.",
-        "1 red : 1 white.",
-        "2 red : 2 white."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14582,35 +12792,20 @@ add(
     {
       question: "What is codominance?",
       answer: "A pattern in which both alleles are expressed in the heterozygote.",
-      options: [
-        "A pattern in which both alleles are expressed in the heterozygote.",
-        "A pattern in which one allele completely hides the other.",
-        "A pattern in which both alleles disappear.",
-        "A pattern in which only recessive alleles are expressed."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype produces blood group AB?",
       answer: "IᴬIᴮ.",
-      options: [
-        "IᴬIᴮ.",
-        "Iᴬi.",
-        "Iᴮi.",
-        "ii."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is blood group AB an example of codominance?",
       answer: "Both Iᴬ and Iᴮ alleles are expressed.",
-      options: [
-        "Both Iᴬ and Iᴮ alleles are expressed.",
-        "Neither allele is expressed.",
-        "Only Iᴬ is expressed.",
-        "Only i is expressed."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14703,35 +12898,20 @@ add(
     {
       question: "What gametes can Iᴬi produce?",
       answer: "Iᴬ and i.",
-      options: [
-        "Iᴬ and i.",
-        "Iᴮ and i.",
-        "IᴬIᴮ only.",
-        "i only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What genotype results when Iᴬ combines with Iᴮ?",
       answer: "IᴬIᴮ.",
-      options: [
-        "IᴬIᴮ.",
-        "Iᴬi.",
-        "Iᴮi.",
-        "ii."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What blood group is produced by genotype ii?",
       answer: "Blood group O.",
-      options: [
-        "Blood group O.",
-        "Blood group A.",
-        "Blood group B.",
-        "Blood group AB."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14820,35 +13000,20 @@ add(
     {
       question: "What happens to the phenotype of the heterozygote in incomplete dominance?",
       answer: "It is intermediate between the two homozygous phenotypes.",
-      options: [
-        "It is intermediate between the two homozygous phenotypes.",
-        "Both parental phenotypes are separately visible.",
-        "It is always identical to the dominant parent.",
-        "It has no phenotype."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens in codominance?",
       answer: "Both alleles are expressed in the heterozygote.",
-      options: [
-        "Both alleles are expressed in the heterozygote.",
-        "One allele completely hides the other.",
-        "The alleles disappear.",
-        "Only the recessive allele is expressed."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is the best example of codominance?",
       answer: "IᴬIᴮ producing blood group AB.",
-      options: [
-        "IᴬIᴮ producing blood group AB.",
-        "RR producing red flowers.",
-        "WW producing white flowers.",
-        "AA producing a dominant phenotype."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -14922,35 +13087,20 @@ add(
     {
       question: "What are multiple alleles?",
       answer: "More than two possible alleles of a gene exist in a population.",
-      options: [
-        "More than two possible alleles of a gene exist in a population.",
-        "An individual carries more than two alleles for every gene.",
-        "A gene has no alleles.",
-        "Only recessive alleles are present."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many alleles for one gene does a typical diploid individual receive?",
       answer: "Two.",
-      options: [
-        "Two.",
-        "One.",
-        "Three.",
-        "Four."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many possible alleles are involved in the ABO blood group system?",
       answer: "Three.",
-      options: [
-        "Three.",
-        "One.",
-        "Two.",
-        "Four."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15046,35 +13196,20 @@ add(
     {
       question: "Which genotype can produce blood group A?",
       answer: "IᴬIᴬ or Iᴬi.",
-      options: [
-        "IᴬIᴬ or Iᴬi.",
-        "IᴮIᴮ only.",
-        "IᴬIᴮ only.",
-        "ii only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype produces blood group AB?",
       answer: "IᴬIᴮ.",
-      options: [
-        "IᴬIᴮ.",
-        "Iᴬi.",
-        "Iᴮi.",
-        "ii."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype produces blood group O?",
       answer: "ii.",
-      options: [
-        "ii.",
-        "IᴬIᴬ.",
-        "IᴬIᴮ.",
-        "IᴮIᴮ."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15175,35 +13310,20 @@ add(
     {
       question: "What are the possible gametes from a parent with genotype Iᴬi?",
       answer: "Iᴬ and i.",
-      options: [
-        "Iᴬ and i.",
-        "Iᴮ and i.",
-        "Iᴬ and Iᴮ.",
-        "i only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype gives blood group AB?",
       answer: "IᴬIᴮ.",
-      options: [
-        "IᴬIᴮ.",
-        "Iᴬi.",
-        "Iᴮi.",
-        "ii."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which blood groups are possible from Iᴬi × Iᴮi?",
       answer: "A, B, AB and O.",
-      options: [
-        "A, B, AB and O.",
-        "A and B only.",
-        "AB and O only.",
-        "A and AB only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15274,35 +13394,20 @@ add(
     {
       question: "What does Rh+ mean?",
       answer: "The relevant Rhesus antigen is present on the red blood cells.",
-      options: [
-        "The relevant Rhesus antigen is present on the red blood cells.",
-        "The person has blood group A.",
-        "The person has no red blood cells.",
-        "The person has blood group O."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In the simplified model, which genotype represents Rh negative?",
       answer: "rr.",
-      options: [
-        "rr.",
-        "RR.",
-        "Rr.",
-        "R only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does A positive describe?",
       answer: "ABO group A and Rh positive.",
-      options: [
-        "ABO group A and Rh positive.",
-        "ABO group AB and Rh negative.",
-        "ABO group O and Rh positive.",
-        "ABO group B and Rh negative."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15375,35 +13480,20 @@ add(
     {
       question: "Which two genotypes can produce an Rh-positive phenotype?",
       answer: "RR and Rr.",
-      options: [
-        "RR and Rr.",
-        "RR and rr.",
-        "Rr and rr.",
-        "rr only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which genotype produces Rh negative in the simplified model?",
       answer: "rr.",
-      options: [
-        "rr.",
-        "RR.",
-        "Rr.",
-        "R."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Can an Rh-positive person's exact genotype always be known from the phenotype alone?",
       answer: "No. It could be RR or Rr.",
-      options: [
-        "No. It could be RR or Rr.",
-        "Yes. It must always be rr.",
-        "Yes. It must always be RR.",
-        "No. Rh-positive people have three alleles."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15469,35 +13559,20 @@ add(
     {
       question: "What is the cross between an RR parent and an rr parent?",
       answer: "RR × rr.",
-      options: [
-        "RR × rr.",
-        "RR × Rr.",
-        "Rr × rr.",
-        "rr × rr."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What genotype will every offspring receive from RR × rr?",
       answer: "Rr.",
-      options: [
-        "Rr.",
-        "RR.",
-        "rr.",
-        "R."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What percentage of offspring are predicted to be Rh positive?",
       answer: "100%.",
-      options: [
-        "100%.",
-        "75%.",
-        "50%.",
-        "0%."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15581,35 +13656,20 @@ add(
     {
       question: "What gametes can an Rr parent produce?",
       answer: "R and r.",
-      options: [
-        "R and r.",
-        "R only.",
-        "r only.",
-        "Rr only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What are the possible offspring genotypes from Rr × rr?",
       answer: "Rr and rr.",
-      options: [
-        "Rr and rr.",
-        "RR and Rr.",
-        "RR and rr.",
-        "Rr only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the predicted Rh-positive : Rh-negative ratio?",
       answer: "1 : 1.",
-      options: [
-        "1 : 1.",
-        "3 : 1.",
-        "1 : 3.",
-        "4 : 0."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15673,35 +13733,20 @@ add(
     {
       question: "What genotype must an Rh-negative child have?",
       answer: "rr.",
-      options: [
-        "rr.",
-        "RR.",
-        "Rr.",
-        "R only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If an Rh-positive parent has an Rh-negative child, what must the Rh-positive parent's genotype be?",
       answer: "Rr.",
-      options: [
-        "Rr.",
-        "RR.",
-        "rr.",
-        "R."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why must an Rh-positive parent with an Rh-negative child carry r?",
       answer: "The child must receive an r allele from that parent.",
-      options: [
-        "The child must receive an r allele from that parent.",
-        "Rh-positive parents cannot carry r.",
-        "The child receives both alleles from one parent.",
-        "The r allele can only come from the environment."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15770,35 +13815,20 @@ add(
     {
       question: "What does the ABO system determine?",
       answer: "Whether blood is A, B, AB or O.",
-      options: [
-        "Whether blood is A, B, AB or O.",
-        "Whether blood is only positive or negative.",
-        "The number of red blood cells.",
-        "The amount of oxygen in the lungs."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does the Rhesus factor describe?",
       answer: "Whether the person is Rh positive or Rh negative.",
-      options: [
-        "Whether the person is Rh positive or Rh negative.",
-        "Whether the person is A, B, AB or O.",
-        "Whether the person has haemoglobin.",
-        "Whether the person has white blood cells."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does O negative mean?",
       answer: "ABO group O and Rh negative.",
-      options: [
-        "ABO group O and Rh negative.",
-        "ABO group O and Rh positive.",
-        "ABO group AB and Rh negative.",
-        "ABO group A and Rh negative."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15856,35 +13886,20 @@ add(
     {
       question: "Why can an incompatible blood transfusion be dangerous?",
       answer: "Recipient antibodies can react with antigens on donor red blood cells.",
-      options: [
-        "Recipient antibodies can react with antigens on donor red blood cells.",
-        "Donor red blood cells have no surface molecules.",
-        "The recipient immediately produces new lungs.",
-        "All blood groups are chemically identical."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is agglutination?",
       answer: "Clumping of cells.",
-      options: [
-        "Clumping of cells.",
-        "Production of oxygen.",
-        "Formation of glucose.",
-        "Division of a cell."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which two blood classifications are important in basic transfusion compatibility?",
       answer: "ABO group and Rhesus status.",
-      options: [
-        "ABO group and Rhesus status.",
-        "Height and weight.",
-        "Age and sex.",
-        "Lung volume and pulse rate."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -15947,35 +13962,20 @@ add(
     {
       question: "Where are ABO antigens found?",
       answer: "On the surface of red blood cells.",
-      options: [
-        "On the surface of red blood cells.",
-        "Only inside the nucleus.",
-        "Only in the lungs.",
-        "Only in urine."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which antibody is found in group A plasma?",
       answer: "Anti-B.",
-      options: [
-        "Anti-B.",
-        "Anti-A.",
-        "Both anti-A and anti-B.",
-        "Neither antibody."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does anti-A antibody recognise?",
       answer: "A antigen.",
-      options: [
-        "A antigen.",
-        "B antigen.",
-        "Only the Rhesus antigen.",
-        "Haemoglobin."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16038,35 +14038,20 @@ add(
     {
       question: "Why are group O red cells useful in basic ABO compatibility reasoning?",
       answer: "They have neither A nor B antigen.",
-      options: [
-        "They have neither A nor B antigen.",
-        "They have both A and B antigens.",
-        "They contain only A antigen.",
-        "They contain only B antigen."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A group B person has which ABO antibody in their plasma?",
       answer: "Anti-A.",
-      options: [
-        "Anti-A.",
-        "Anti-B.",
-        "Both anti-A and anti-B.",
-        "No antibodies."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can group A red cells be dangerous for a group B recipient?",
       answer: "The recipient has anti-A antibodies that can react with A antigen.",
-      options: [
-        "The recipient has anti-A antibodies that can react with A antigen.",
-        "Group B recipients have no antibodies.",
-        "Group A cells have no antigens.",
-        "The Rhesus factor removes all antibodies."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16130,35 +14115,20 @@ add(
     {
       question: "What should you identify first when solving an ABO transfusion problem?",
       answer: "The recipient's blood group.",
-      options: [
-        "The recipient's blood group.",
-        "The donor's age.",
-        "The recipient's height.",
-        "The donor's blood pressure."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A group A recipient has which antibody?",
       answer: "Anti-B.",
-      options: [
-        "Anti-B.",
-        "Anti-A.",
-        "Anti-R.",
-        "No antibodies."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are group B red cells incompatible with a group A recipient in the basic ABO model?",
       answer: "Anti-B antibodies in the recipient can react with B antigen on the donor cells.",
-      options: [
-        "Anti-B antibodies in the recipient can react with B antigen on the donor cells.",
-        "Group A recipients have anti-A antibodies only.",
-        "Group B cells have no antigens.",
-        "Group A and B antigens are identical."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16221,35 +14191,20 @@ add(
     {
       question: "What is variation?",
       answer: "Differences in characteristics between individuals of the same species.",
-      options: [
-        "Differences in characteristics between individuals of the same species.",
-        "The process by which cells divide.",
-        "The production of identical organisms.",
-        "The removal of waste from cells."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Two students of the same species have different heights. What does this demonstrate?",
       answer: "Variation.",
-      options: [
-        "Variation.",
-        "Respiration.",
-        "Fertilisation.",
-        "Excretion."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does variation mean that individuals of the same species have no characteristics in common?",
       answer: "No. They share many characteristics but differ in some characteristics.",
-      options: [
-        "No. They share many characteristics but differ in some characteristics.",
-        "Yes. Every individual must be completely different.",
-        "Yes. Individuals of the same species have different DNA in every cell.",
-        "No. Variation means all individuals are identical."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16326,35 +14281,20 @@ add(
     {
       question: "What can cause genetic variation?",
       answer: "Differences in genetic information between individuals.",
-      options: [
-        "Differences in genetic information between individuals.",
-        "Only differences in body temperature.",
-        "Only differences in age.",
-        "The amount of water someone drinks."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What are different versions of a gene called?",
       answer: "Alleles.",
-      options: [
-        "Alleles.",
-        "Organs.",
-        "Tissues.",
-        "Enzymes."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If one child has genotype AA and another has genotype Aa, what is different?",
       answer: "Their allele combinations are different.",
-      options: [
-        "Their allele combinations are different.",
-        "They have different numbers of cells.",
-        "One child has no DNA.",
-        "Their species are automatically different."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16420,35 +14360,20 @@ add(
     {
       question: "What can cause environmental variation?",
       answer: "Differences in the conditions individuals experience.",
-      options: [
-        "Differences in the conditions individuals experience.",
-        "Only differences in chromosome number.",
-        "Only mutations.",
-        "Only fertilisation."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Two plants receive different amounts of water and grow to different sizes. What could explain the difference?",
       answer: "Environmental variation caused by different water availability.",
-      options: [
-        "Environmental variation caused by different water availability.",
-        "The plants must belong to different species.",
-        "The plants must have different numbers of chromosomes.",
-        "The difference must always be caused by mutation."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does every environmental difference involve a change in DNA?",
       answer: "No.",
-      options: [
-        "No.",
-        "Yes, always.",
-        "Only in plants.",
-        "Only in animals."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16512,35 +14437,20 @@ add(
     {
       question: "Which two factors can influence many characteristics?",
       answer: "Genes and environment.",
-      options: [
-        "Genes and environment.",
-        "Only temperature.",
-        "Only genes.",
-        "Only food."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can two individuals with similar genetic potential have different heights?",
       answer: "Environmental conditions can also affect growth.",
-      options: [
-        "Environmental conditions can also affect growth.",
-        "Genes have no influence on growth.",
-        "Height is never affected by the environment.",
-        "They must belong to different species."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement is most accurate?",
       answer: "Some characteristics are influenced by both genes and the environment.",
-      options: [
-        "Some characteristics are influenced by both genes and the environment.",
-        "Every characteristic is caused only by genes.",
-        "Every characteristic is caused only by the environment.",
-        "Genes and environment never interact."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16603,35 +14513,20 @@ add(
     {
       question: "What is continuous variation?",
       answer: "Variation in which a characteristic can take many values across a range.",
-      options: [
-        "Variation in which a characteristic can take many values across a range.",
-        "Variation with only two possible categories.",
-        "Variation caused only by mutation.",
-        "Variation that cannot be measured."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example of continuous variation?",
       answer: "Human height.",
-      options: [
-        "Human height.",
-        "ABO blood group.",
-        "Rhesus factor.",
-        "Biological sex."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is height considered continuous?",
       answer: "Many intermediate measurements are possible.",
-      options: [
-        "Many intermediate measurements are possible.",
-        "Everyone has exactly the same height.",
-        "There are only two possible heights.",
-        "Height cannot be measured."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16696,35 +14591,20 @@ add(
     {
       question: "What is discontinuous variation?",
       answer: "Variation in which a characteristic falls into distinct categories.",
-      options: [
-        "Variation in which a characteristic falls into distinct categories.",
-        "Variation with infinitely many measurable values.",
-        "Variation caused only by nutrition.",
-        "Variation that cannot be classified."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which characteristic shows discontinuous variation?",
       answer: "ABO blood group.",
-      options: [
-        "ABO blood group.",
-        "Height.",
-        "Body mass.",
-        "Hand span."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement describes discontinuous variation?",
       answer: "Individuals fall into separate categories.",
-      options: [
-        "Individuals fall into separate categories.",
-        "Every value between two extremes is possible.",
-        "The characteristic must always be measured in centimetres.",
-        "There are no distinct groups."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16799,35 +14679,20 @@ add(
     {
       question: "Which feature identifies continuous variation?",
       answer: "Many possible intermediate values.",
-      options: [
-        "Many possible intermediate values.",
-        "Only separate categories.",
-        "Exactly two categories.",
-        "No measurable values."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which feature identifies discontinuous variation?",
       answer: "Distinct categories.",
-      options: [
-        "Distinct categories.",
-        "Many intermediate measurements.",
-        "A continuous numerical scale.",
-        "An unlimited range of values."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which pair is correctly matched?",
       answer: "Height — continuous; ABO blood group — discontinuous.",
-      options: [
-        "Height — continuous; ABO blood group — discontinuous.",
-        "Height — discontinuous; ABO blood group — continuous.",
-        "Both are continuous.",
-        "Both are discontinuous."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16897,35 +14762,20 @@ add(
     {
       question: "What is a mutation?",
       answer: "A change in the DNA sequence.",
-      options: [
-        "A change in the DNA sequence.",
-        "A change in body temperature.",
-        "The production of an identical cell.",
-        "The movement of blood."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What has changed if ACGTA becomes ACATA?",
       answer: "The DNA base sequence.",
-      options: [
-        "The DNA base sequence.",
-        "The number of lungs.",
-        "The amount of blood.",
-        "The organism's species automatically."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does every mutation automatically cause disease?",
       answer: "No.",
-      options: [
-        "No.",
-        "Yes, every mutation causes disease.",
-        "Only plant mutations cause disease.",
-        "Only mutations in red blood cells cause disease."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -16978,35 +14828,20 @@ add(
     {
       question: "What is a mutagen?",
       answer: "An agent that increases the likelihood of mutations.",
-      options: [
-        "An agent that increases the likelihood of mutations.",
-        "A type of chromosome.",
-        "A type of blood cell.",
-        "A structure that stores urine."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How can a mutation arise during DNA replication?",
       answer: "An error can occur when DNA is copied.",
-      options: [
-        "An error can occur when DNA is copied.",
-        "DNA is never copied.",
-        "All DNA is destroyed during replication.",
-        "The nucleus turns into a red blood cell."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which can act as a mutagen?",
       answer: "Certain forms of radiation.",
-      options: [
-        "Certain forms of radiation.",
-        "Oxygen in every circumstance.",
-        "Water in every circumstance.",
-        "All carbohydrates."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17077,35 +14912,20 @@ add(
     {
       question: "Does the word mutation tell us whether a DNA change is harmful?",
       answer: "No. A mutation can be harmful, beneficial or have little noticeable effect.",
-      options: [
-        "No. A mutation can be harmful, beneficial or have little noticeable effect.",
-        "Yes. Every mutation is harmful.",
-        "Yes. Every mutation is beneficial.",
-        "Yes. Every mutation causes disease."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What determines the effect of a mutation?",
       answer: "The nature and location of the DNA change and its biological consequences.",
-      options: [
-        "The nature and location of the DNA change and its biological consequences.",
-        "Only the age of the organism.",
-        "Only the organism's body size.",
-        "Only the amount of water consumed."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a neutral mutation?",
       answer: "A mutation with little or no noticeable effect on the organism.",
-      options: [
-        "A mutation with little or no noticeable effect on the organism.",
-        "A mutation that always causes death.",
-        "A mutation that always improves survival.",
-        "A mutation that removes all chromosomes."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17169,35 +14989,20 @@ add(
     {
       question: "How can a mutation contribute to genetic variation?",
       answer: "It can produce a new version of a gene.",
-      options: [
-        "It can produce a new version of a gene.",
-        "It always removes a chromosome.",
-        "It always makes every individual identical.",
-        "It prevents DNA from existing."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a different version of a gene called?",
       answer: "An allele.",
-      options: [
-        "An allele.",
-        "A tissue.",
-        "An organ.",
-        "A gamete."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Will a mutation in an ordinary body cell generally be inherited by a person's children?",
       answer: "No.",
-      options: [
-        "No.",
-        "Yes, always.",
-        "Only if the person is tall.",
-        "Only if the mutation is in a red blood cell."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17263,35 +15068,20 @@ add(
     {
       question: "What is natural selection?",
       answer: "A process in which individuals with advantageous inherited characteristics are more likely to survive and reproduce.",
-      options: [
-        "A process in which individuals with advantageous inherited characteristics are more likely to survive and reproduce.",
-        "A process in which organisms deliberately choose their genes.",
-        "The process by which all organisms become identical.",
-        "The process by which DNA is destroyed."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does natural selection act on?",
       answer: "Variation among individuals in a population.",
-      options: [
-        "Variation among individuals in a population.",
-        "Only identical individuals.",
-        "Only environmental temperature.",
-        "Only organisms after death."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the key outcome of natural selection over generations?",
       answer: "Characteristics that improve survival and reproduction can become more common in the population.",
-      options: [
-        "Characteristics that improve survival and reproduction can become more common in the population.",
-        "Every individual becomes identical immediately.",
-        "All mutations disappear.",
-        "Individuals change their genes because they need to survive."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17355,35 +15145,20 @@ add(
     {
       question: "What is a selection pressure?",
       answer: "An environmental factor that affects survival or reproductive success.",
-      options: [
-        "An environmental factor that affects survival or reproductive success.",
-        "A type of chromosome.",
-        "A mutation that always helps an organism.",
-        "A method of cell division."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which could act as a selection pressure?",
       answer: "Predation.",
-      options: [
-        "Predation.",
-        "DNA itself.",
-        "A chromosome pair.",
-        "Mitosis."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does a selection pressure create a useful characteristic because an organism needs it?",
       answer: "No.",
-      options: [
-        "No.",
-        "Yes, always.",
-        "Only in plants.",
-        "Only in bacteria."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17450,35 +15225,20 @@ add(
     {
       question: "Why is variation important in natural selection?",
       answer: "Different characteristics can affect survival and reproduction differently.",
-      options: [
-        "Different characteristics can affect survival and reproduction differently.",
-        "Variation makes all organisms identical.",
-        "Variation prevents reproduction.",
-        "Variation removes all alleles."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In the beetle example, why do brown beetles have an advantage?",
       answer: "They are harder for predators to see on brown soil.",
-      options: [
-        "They are harder for predators to see on brown soil.",
-        "They deliberately changed colour.",
-        "They have no genes.",
-        "They cannot reproduce."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What must be true for the brown characteristic to contribute to future generations?",
       answer: "The characteristic must be inherited.",
-      options: [
-        "The characteristic must be inherited.",
-        "Every beetle must have the same genotype.",
-        "The characteristic must disappear after reproduction.",
-        "The birds must reproduce the beetles."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17537,35 +15297,20 @@ add(
     {
       question: "What does it mean for an organism to be well adapted to an environment?",
       answer: "Its inherited characteristics help it survive and reproduce in that environment.",
-      options: [
-        "Its inherited characteristics help it survive and reproduce in that environment.",
-        "It is always physically stronger than every organism.",
-        "It can change its genes whenever necessary.",
-        "It never experiences environmental challenges."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can an adaptation be useful in one environment but not another?",
       answer: "Different environments create different selection pressures.",
-      options: [
-        "Different environments create different selection pressures.",
-        "Genes have no effect on characteristics.",
-        "All environments are identical.",
-        "Adaptations disappear immediately."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does fitness mainly refer to in evolution?",
       answer: "Reproductive success.",
-      options: [
-        "Reproductive success.",
-        "Body size only.",
-        "Physical strength only.",
-        "Lifespan only."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17631,35 +15376,20 @@ add(
     {
       question: "Why is reproduction important in natural selection?",
       answer: "It allows inherited characteristics to be passed to the next generation.",
-      options: [
-        "It allows inherited characteristics to be passed to the next generation.",
-        "It prevents inheritance.",
-        "It removes all variation.",
-        "It changes every individual's DNA."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens if an advantageous characteristic is inherited?",
       answer: "Offspring can receive the allele associated with the characteristic.",
-      options: [
-        "Offspring can receive the allele associated with the characteristic.",
-        "The allele automatically disappears.",
-        "The offspring cannot inherit genes.",
-        "The characteristic must immediately become universal."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which sequence best describes natural selection?",
       answer: "Variation → selection pressure → differential survival/reproduction → inheritance.",
-      options: [
-        "Variation → selection pressure → differential survival/reproduction → inheritance.",
-        "Need → deliberate change → inheritance → variation.",
-        "Mutation → immediate adaptation → extinction → reproduction.",
-        "Environment → organism chooses gene → reproduction → no variation."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17725,35 +15455,20 @@ add(
     {
       question: "What can happen to an advantageous allele over many generations?",
       answer: "It can become more common in the population.",
-      options: [
-        "It can become more common in the population.",
-        "It must disappear immediately.",
-        "It can only exist in one individual.",
-        "It automatically changes into a chromosome."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can an advantageous allele become more common?",
       answer: "Individuals carrying it may leave more surviving offspring.",
-      options: [
-        "Individuals carrying it may leave more surviving offspring.",
-        "Individuals deliberately choose to copy the allele.",
-        "The environment directly writes the allele into DNA.",
-        "All other alleles disappear immediately."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What changes over generations as a result of natural selection?",
       answer: "The frequency of alleles in the population can change.",
-      options: [
-        "The frequency of alleles in the population can change.",
-        "Every individual's DNA changes in the same way.",
-        "The number of species always becomes zero.",
-        "All mutations are removed."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17822,35 +15537,20 @@ add(
     {
       question: "What acts as the selection pressure in antibiotic resistance?",
       answer: "The antibiotic.",
-      options: [
-        "The antibiotic.",
-        "The bacterium's ribosome.",
-        "The bacterial cell wall alone.",
-        "The offspring."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which bacteria are more likely to survive an antibiotic treatment?",
       answer: "Bacteria that already have resistance to that antibiotic.",
-      options: [
-        "Bacteria that already have resistance to that antibiotic.",
-        "All bacteria equally.",
-        "Only the largest bacteria.",
-        "Only bacteria without DNA."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can antibiotic resistance become more common in a bacterial population?",
       answer: "Resistant bacteria survive treatment and reproduce.",
-      options: [
-        "Resistant bacteria survive treatment and reproduce.",
-        "The antibiotic teaches every bacterium to mutate.",
-        "All susceptible bacteria become resistant immediately.",
-        "Bacteria stop reproducing permanently."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -17902,35 +15602,20 @@ add(
     {
       question: "Why do antibiotics not cure viral infections?",
       answer: "Antibiotics target bacterial structures or processes that viruses do not have in the same form.",
-      options: [
-        "Antibiotics target bacterial structures or processes that viruses do not have in the same form.",
-        "Viruses are always larger than bacteria.",
-        "Viruses contain no genetic material.",
-        "Antibiotics only work in plants."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can unnecessary antibiotic use contribute to?",
       answer: "Selection for antibiotic-resistant bacteria.",
-      options: [
-        "Selection for antibiotic-resistant bacteria.",
-        "The disappearance of all viruses.",
-        "The creation of human antibodies against every disease.",
-        "The elimination of all bacterial variation."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Who becomes resistant in antibiotic resistance?",
       answer: "Bacteria can become resistant to antibiotics.",
-      options: [
-        "Bacteria can become resistant to antibiotics.",
-        "The human body becomes resistant to all medicines.",
-        "Viruses become bacteria.",
-        "Antibiotics become living organisms."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18000,35 +15685,20 @@ add(
     {
       question: "What is an adaptation?",
       answer: "An inherited characteristic that increases survival and reproductive success in a particular environment.",
-      options: [
-        "An inherited characteristic that increases survival and reproductive success in a particular environment.",
-        "A temporary change caused by exercise.",
-        "A characteristic that every organism deliberately chooses.",
-        "A change that occurs only after death."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to a useful inherited characteristic over many generations?",
       answer: "It can become more common in the population.",
-      options: [
-        "It can become more common in the population.",
-        "It must disappear.",
-        "It changes into a different species immediately.",
-        "It stops being inherited."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement correctly describes evolution by natural selection?",
       answer: "Populations change over generations as inherited characteristics affecting survival and reproduction become more or less common.",
-      options: [
-        "Populations change over generations as inherited characteristics affecting survival and reproduction become more or less common.",
-        "Individual organisms deliberately change their genes.",
-        "Every organism develops the same adaptation at the same time.",
-        "The environment directly changes every organism's DNA."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18107,35 +15777,20 @@ add(
     {
       question: "What is the selection pressure in this problem?",
       answer: "Predation by birds.",
-      options: [
-        "Predation by birds.",
-        "The insects' DNA.",
-        "The insects' reproduction.",
-        "The colour allele itself."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why do less visible insects have an advantage?",
       answer: "They are less likely to be detected and eaten by predators.",
-      options: [
-        "They are less likely to be detected and eaten by predators.",
-        "They deliberately change their DNA.",
-        "They cannot reproduce.",
-        "Birds help them reproduce."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can the less visible characteristic become more common?",
       answer: "Individuals with the inherited characteristic survive and reproduce more successfully.",
-      options: [
-        "Individuals with the inherited characteristic survive and reproduce more successfully.",
-        "Every insect changes colour because it needs to.",
-        "The environment directly creates the allele.",
-        "The birds transfer the allele between insects."
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18210,35 +15865,20 @@ add(
     {
       question: "What is evolution?",
       answer: "Evolution is the change in inherited characteristics of a population over many generations.",
-      options: [
-        "Change in inherited characteristics of a population over generations",
-        "Change in one organism during its lifetime",
-        "Growth of an individual organism",
-        "Movement of organisms from one habitat to another"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is evolution described as a change in a population rather than an individual?",
       answer: "Because evolutionary change occurs across generations as inherited characteristics become more or less common in the population.",
-      options: [
-        "Because evolutionary change occurs across generations in populations",
-        "Because individuals cannot grow",
-        "Because populations do not reproduce",
-        "Because individuals have no characteristics"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A population of insects becomes mostly resistant to an insecticide after many generations. What does this demonstrate?",
       answer: "Evolutionary change in the population.",
-      options: [
-        "Evolutionary change in the population",
-        "An individual insect learning resistance",
-        "Growth of the insects",
-        "A change that cannot be inherited"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18320,35 +15960,20 @@ add(
     {
       question: "Why does evolution require many generations?",
       answer: "Because evolutionary change involves inherited characteristics becoming more or less common across generations.",
-      options: [
-        "Because inherited characteristics change in frequency across generations",
-        "Because individuals need many years to learn new traits",
-        "Because organisms cannot reproduce quickly",
-        "Because natural selection occurs only after death"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A population changes from 40% brown insects to 75% brown insects over many generations. What has changed?",
       answer: "The proportion of the inherited characteristic in the population has changed.",
-      options: [
-        "The proportion of the inherited characteristic in the population",
-        "The age of every insect",
-        "The number of chromosomes in every insect",
-        "The habitat has necessarily disappeared"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement correctly explains the insect example?",
       answer: "Natural selection changed the population because individuals with different inherited characteristics had different reproductive success.",
-      options: [
-        "Natural selection changed the population because individuals had different reproductive success",
-        "Every insect deliberately changed its colour",
-        "The insects changed because they wanted to survive",
-        "The environment directly changed the DNA of every insect"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18414,35 +16039,20 @@ add(
     {
       question: "What is a fossil?",
       answer: "A fossil is preserved evidence of an organism or its activity from the past.",
-      options: [
-        "Preserved evidence of an organism or its activity from the past",
-        "A living organism found underground",
-        "A newly formed species",
-        "A modern organism with an unusual characteristic"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are fossils useful when studying evolution?",
       answer: "They provide evidence about organisms that lived in the past and allow changes over time to be investigated.",
-      options: [
-        "They provide evidence about past organisms and changes over time",
-        "They show exactly what every organism looked like",
-        "They prevent organisms from evolving",
-        "They contain complete DNA in every case"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Fossils from older and newer rocks show changes in the characteristics of a related group. What does this provide?",
       answer: "Evidence that the group changed over time.",
-      options: [
-        "Evidence that the group changed over time",
-        "Proof that individuals changed because they needed to",
-        "Evidence that fossils are always complete",
-        "Proof that all organisms evolved at the same rate"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18513,35 +16123,20 @@ add(
     {
       question: "What can a sequence of related fossils from different periods show?",
       answer: "It can show that characteristics of a group changed over time.",
-      options: [
-        "That characteristics of a group changed over time",
-        "That every organism changed during its lifetime",
-        "That all organisms appeared simultaneously",
-        "That fossils contain complete organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why should fossils be interpreted carefully?",
       answer: "Fossils are often incomplete and may not show every stage of evolutionary change.",
-      options: [
-        "Fossils are often incomplete and may not show every stage",
-        "Fossils are always fake",
-        "Fossils cannot be compared",
-        "Fossils contain no biological information"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A sequence of fossils shows a gradual change in a bone structure. What is the best conclusion?",
       answer: "The sequence provides evidence that the characteristic changed over generations.",
-      options: [
-        "The characteristic changed over generations",
-        "One organism deliberately changed its bone",
-        "The environment instantly changed every organism",
-        "The organisms were definitely unrelated"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18606,35 +16201,20 @@ add(
     {
       question: "Why is the fossil record incomplete?",
       answer: "Fossilisation is rare and many organisms or their remains are destroyed before they can become fossils.",
-      options: [
-        "Fossilisation is rare and many remains are destroyed",
-        "All organisms become fossils",
-        "Fossils disappear immediately after formation",
-        "Scientists refuse to study fossils"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are organisms with hard structures more likely to leave fossils?",
       answer: "Hard structures such as bones and shells are more resistant to decay and can be preserved.",
-      options: [
-        "They are more resistant to decay and can be preserved",
-        "They reproduce faster",
-        "They always live underground",
-        "They contain more DNA"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does the absence of a fossil prove that an organism never existed?",
       answer: "No. Fossilisation is rare, so an organism may have existed without leaving a fossil.",
-      options: [
-        "No, because fossilisation is rare",
-        "Yes, always",
-        "Yes, if the organism was small",
-        "No, because fossils are never useful"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18693,35 +16273,20 @@ add(
     {
       question: "What is a homologous structure?",
       answer: "A structure with a similar underlying structural plan in different organisms, inherited from a common ancestor, even if its function differs.",
-      options: [
-        "A structure with a similar underlying plan inherited from a common ancestor",
-        "A structure found only in one organism",
-        "A structure that always performs exactly the same function",
-        "A structure that has no inherited component"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are the forelimbs of humans, bats and whales considered homologous?",
       answer: "They have a similar underlying arrangement of bones despite being adapted for different functions.",
-      options: [
-        "They have similar underlying bone arrangements but different functions",
-        "They all fly",
-        "They all live in water",
-        "They have exactly the same function"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can homologous structures provide evidence for?",
       answer: "Common ancestry.",
-      options: [
-        "Common ancestry",
-        "Identical habitats",
-        "Identical diets",
-        "No relationship between organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18795,35 +16360,20 @@ add(
     {
       question: "Why can homologous structures be evidence for evolution?",
       answer: "Their similar underlying structure can indicate inheritance from a common ancestor followed by modification.",
-      options: [
-        "They can indicate common ancestry followed by modification",
-        "They prove all organisms have the same habitat",
-        "They show organisms never change",
-        "They prove the structures developed independently"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A whale and a human have corresponding forelimb bones but use their limbs differently. What does this support?",
       answer: "The possibility of common ancestry and later modification.",
-      options: [
-        "Common ancestry and later modification",
-        "That humans and whales have identical lifestyles",
-        "That their limbs evolved independently with no relationship",
-        "That the structures have no inherited component"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Complete the reasoning: similar underlying structure → common ancestry → ...",
       answer: "Modification over generations.",
-      options: [
-        "Modification over generations",
-        "Immediate transformation",
-        "Loss of all variation",
-        "No further change"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18883,35 +16433,20 @@ add(
     {
       question: "What is a vestigial structure?",
       answer: "A reduced structure that has little or no significant function in its present form compared with the corresponding ancestral structure.",
-      options: [
-        "A reduced structure with little or no significant function in its present form",
-        "A completely new organ",
-        "An organ that is always essential for survival",
-        "A structure found only in plants"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can vestigial structures provide evidence for evolution?",
       answer: "They may represent reduced remnants of structures that were more important in ancestral organisms.",
-      options: [
-        "They may be reduced remnants of ancestral structures",
-        "They prove organisms never change",
-        "They show every organ has exactly the same function",
-        "They occur only because organisms need them"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why should the human appendix not simply be described as completely useless?",
       answer: "It has biological functions even though it is greatly reduced compared with the caecum of some herbivorous mammals.",
-      options: [
-        "It has biological functions despite being greatly reduced",
-        "It has no cells",
-        "It is not part of the human body",
-        "It performs photosynthesis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -18979,35 +16514,20 @@ add(
     {
       question: "What is the main feature of a homologous structure?",
       answer: "A similar underlying structural plan in different organisms.",
-      options: [
-        "A similar underlying structural plan",
-        "Complete absence of function",
-        "Small size in every organism",
-        "Occurrence only in ancestors"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main feature of a vestigial structure?",
       answer: "It is reduced and has little or no significant function in its present form compared with the ancestral structure.",
-      options: [
-        "It is reduced compared with the ancestral structure",
-        "It always has a completely new function",
-        "It is always large",
-        "It occurs only in embryos"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A group of animals has forelimbs with the same basic bone arrangement but different functions. Which concept applies?",
       answer: "Homologous structures.",
-      options: [
-        "Homologous structures",
-        "Vestigial structures",
-        "Acquired characteristics",
-        "Environmental variation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19070,35 +16590,20 @@ add(
     {
       question: "Why should scientists use more than one line of evidence when studying evolution?",
       answer: "Different lines of evidence can support the same evolutionary explanation from different perspectives.",
-      options: [
-        "Different lines of evidence can independently support the same explanation",
-        "One piece of evidence is never useful",
-        "Scientists cannot compare evidence",
-        "Evolution can only be studied with fossils"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A fossil sequence shows changes over time and homologous structures show similarities among related organisms. What does using both provide?",
       answer: "Multiple lines of evidence supporting evolutionary relationships.",
-      options: [
-        "Multiple lines of evidence supporting evolutionary relationships",
-        "Proof that all organisms are identical",
-        "Evidence that fossils are unnecessary",
-        "Evidence that natural selection never occurs"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is the strongest scientific approach?",
       answer: "Compare observations with evidence and determine which explanation best accounts for the evidence.",
-      options: [
-        "Compare observations with evidence and evaluate explanations",
-        "Choose an explanation before examining evidence",
-        "Ignore evidence that disagrees",
-        "Use only one observation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19171,35 +16676,20 @@ add(
     {
       question: "Why is a combination of evidence useful when studying evolution?",
       answer: "Different types of evidence can support the same evolutionary explanation.",
-      options: [
-        "Different types of evidence can support the same explanation",
-        "Only fossils are scientifically useful",
-        "Different evidence must always disagree",
-        "Evolution cannot be investigated scientifically"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which combination can provide evidence for evolutionary relationships?",
       answer: "Fossil evidence, homologous structures and vestigial structures.",
-      options: [
-        "Fossils, homologous structures and vestigial structures",
-        "Only body size",
-        "Only habitat",
-        "Only the age of an organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A scientist finds three different types of evidence that support common ancestry. What should the scientist do?",
       answer: "Interpret the evidence together and evaluate how well it supports the evolutionary explanation.",
-      options: [
-        "Interpret the evidence together and evaluate the explanation",
-        "Ignore two types of evidence",
-        "Choose an answer before examining the evidence",
-        "Assume every similarity proves common ancestry"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19261,35 +16751,20 @@ add(
     {
       question: "What is classification?",
       answer: "Classification is the process of grouping organisms according to their similarities and differences.",
-      options: [
-        "Grouping organisms according to similarities and differences",
-        "Naming every organism after its habitat",
-        "Changing organisms into different species",
-        "Counting the number of organisms in an ecosystem"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is classification useful?",
       answer: "It makes the enormous diversity of organisms easier to identify, study and compare.",
-      options: [
-        "It makes organisms easier to identify, study and compare",
-        "It makes organisms reproduce faster",
-        "It prevents variation",
-        "It makes all organisms identical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why would grouping organisms be useful to a biologist?",
       answer: "It allows organisms with shared characteristics to be studied and compared systematically.",
-      options: [
-        "It allows organisms with shared characteristics to be studied systematically",
-        "It removes differences between organisms",
-        "It prevents organisms from evolving",
-        "It eliminates the need for observation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19351,35 +16826,20 @@ add(
     {
       question: "What is biodiversity?",
       answer: "Biodiversity is the variety of living organisms in an area or on Earth.",
-      options: [
-        "The variety of living organisms in an area or on Earth",
-        "The number of cells in one organism",
-        "The size of an ecosystem",
-        "The amount of rainfall in a habitat"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does species diversity describe?",
       answer: "The variety of species found in an area.",
-      options: [
-        "The variety of species found in an area",
-        "Differences between cells of one organism",
-        "The number of organs in an organism",
-        "The amount of water in a habitat"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Differences among individuals of the same species are related to which level of biodiversity?",
       answer: "Genetic diversity.",
-      options: [
-        "Genetic diversity",
-        "Species diversity",
-        "Ecosystem diversity",
-        "Population density"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19441,35 +16901,20 @@ add(
     {
       question: "How does classification help identify an unknown organism?",
       answer: "Its characteristics can be compared with characteristics used to classify known organisms.",
-      options: [
-        "Its characteristics can be compared with known groups",
-        "Its DNA is automatically changed",
-        "Its habitat is permanently changed",
-        "Its size is increased"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is a standard naming system useful?",
       answer: "It allows scientists to communicate about organisms consistently and reduces confusion from different local names.",
-      options: [
-        "It reduces confusion caused by different local names",
-        "It makes all organisms identical",
-        "It prevents organisms from reproducing",
-        "It removes biological differences"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is NOT a main purpose of classification?",
       answer: "To make organisms identical.",
-      options: [
-        "To make organisms identical",
-        "To identify organisms",
-        "To compare organisms",
-        "To organise biological information"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19532,35 +16977,20 @@ add(
     {
       question: "Which characteristic can be used in biological classification?",
       answer: "Cell structure.",
-      options: [
-        "Cell structure",
-        "Favourite habitat only",
-        "Body colour only",
-        "Size only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why should scientists use several characteristics when classifying organisms?",
       answer: "Several characteristics provide a more reliable basis for distinguishing and grouping organisms.",
-      options: [
-        "They provide a more reliable basis for grouping organisms",
-        "They make every organism look different",
-        "They prevent evolution",
-        "They remove the need for observation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which pair contains biological characteristics that can be useful in classification?",
       answer: "Cell structure and mode of nutrition.",
-      options: [
-        "Cell structure and mode of nutrition",
-        "Favourite colour and body temperature preference",
-        "Location and popularity",
-        "Name and price"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19620,35 +17050,20 @@ add(
     {
       question: "What is the major difference between prokaryotic and eukaryotic cells?",
       answer: "Eukaryotic cells have a membrane-bound nucleus, while prokaryotic cells do not.",
-      options: [
-        "Eukaryotic cells have a membrane-bound nucleus while prokaryotic cells do not",
-        "Prokaryotic cells always have chloroplasts",
-        "Eukaryotic cells have no DNA",
-        "Prokaryotic cells are always multicellular"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organism is made of prokaryotic cells?",
       answer: "A bacterium.",
-      options: [
-        "A bacterium",
-        "A human",
-        "A maize plant",
-        "A mushroom"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is cell type useful in classification?",
       answer: "It represents a fundamental difference in cellular organisation.",
-      options: [
-        "It represents a fundamental difference in cellular organisation",
-        "It depends only on body colour",
-        "It changes every day",
-        "It is unrelated to biology"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19711,35 +17126,20 @@ add(
     {
       question: "What is a unicellular organism?",
       answer: "An organism consisting of one cell.",
-      options: [
-        "An organism consisting of one cell",
-        "An organism consisting only of tissues",
-        "An organism without DNA",
-        "An organism with no cytoplasm"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How does a multicellular organism differ from a unicellular organism?",
       answer: "A multicellular organism contains many cells that can become specialised for different functions.",
-      options: [
-        "It contains many cells that can specialise for different functions",
-        "It has no specialised cells",
-        "It has no genetic material",
-        "It contains only one organelle"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In a unicellular organism, who performs the essential life processes?",
       answer: "The single cell.",
-      options: [
-        "The single cell",
-        "A group of organs",
-        "A nervous system",
-        "A collection of tissues"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19796,35 +17196,20 @@ add(
     {
       question: "What is autotrophic nutrition?",
       answer: "Nutrition in which an organism makes organic food from simpler inorganic substances.",
-      options: [
-        "Making organic food from simpler inorganic substances",
-        "Obtaining all food by eating animals",
-        "Absorbing only minerals from soil",
-        "Obtaining nutrients only from dead organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organism typically obtains nutrients heterotrophically?",
       answer: "A human.",
-      options: [
-        "A human",
-        "A green maize plant making glucose by photosynthesis",
-        "A green leaf receiving light",
-        "A photosynthetic alga"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can mode of nutrition help in classification?",
       answer: "Different groups can have fundamentally different ways of obtaining organic nutrients.",
-      options: [
-        "Different groups can have fundamentally different ways of obtaining nutrients",
-        "All organisms obtain food in exactly the same way",
-        "Nutrition is unrelated to organism biology",
-        "Nutrition changes an organism into another species"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19893,35 +17278,20 @@ add(
     {
       question: "Which of the following is one of the traditional five kingdoms?",
       answer: "Fungi.",
-      options: [
-        "Fungi",
-        "Viruses",
-        "Minerals",
-        "Rocks"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which kingdom traditionally contains bacteria?",
       answer: "Monera.",
-      options: [
-        "Monera",
-        "Animalia",
-        "Plantae",
-        "Fungi"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can classification systems change?",
       answer: "New scientific evidence can improve understanding of relationships among organisms.",
-      options: [
-        "New scientific evidence can improve understanding of relationships",
-        "Organisms change their names every day",
-        "Scientists stop observing organisms",
-        "Classification has no scientific basis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -19983,35 +17353,20 @@ add(
     {
       question: "What type of cells are found in organisms traditionally placed in Monera?",
       answer: "Prokaryotic cells.",
-      options: [
-        "Prokaryotic cells",
-        "Only animal cells",
-        "Only plant cells",
-        "Cells with chloroplasts in every case"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the key cell feature distinguishing Monera from eukaryotic groups?",
       answer: "The cells lack a membrane-bound nucleus.",
-      options: [
-        "The cells lack a membrane-bound nucleus",
-        "The cells have no DNA",
-        "The cells have no cell membrane",
-        "The cells always contain chloroplasts"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organism would traditionally be placed in Monera?",
       answer: "A bacterium.",
-      options: [
-        "A bacterium",
-        "A mushroom",
-        "A human",
-        "A maize plant"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20070,35 +17425,20 @@ add(
     {
       question: "What type of cells do organisms traditionally placed in Protoctista have?",
       answer: "Eukaryotic cells.",
-      options: [
-        "Eukaryotic cells",
-        "Only prokaryotic cells",
-        "Cells without DNA",
-        "Cells without cell membranes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example traditionally classified under Protoctista?",
       answer: "Amoeba.",
-      options: [
-        "Amoeba",
-        "Human",
-        "Mushroom",
-        "Maize plant"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is Protoctista considered a diverse group?",
       answer: "It traditionally includes eukaryotic organisms with varied forms, lifestyles and nutritional methods.",
-      options: [
-        "It includes eukaryotic organisms with varied forms and lifestyles",
-        "All its members are identical",
-        "All its members are animals",
-        "All its members are prokaryotes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20152,35 +17492,20 @@ add(
     {
       question: "Which type of cell do fungi have?",
       answer: "Eukaryotic cells.",
-      options: [
-        "Eukaryotic cells",
-        "Prokaryotic cells only",
-        "Cells without nuclei",
-        "Cells without cell membranes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What substance is found in fungal cell walls?",
       answer: "Chitin.",
-      options: [
-        "Chitin",
-        "Haemoglobin",
-        "Glycogen only",
-        "Keratin only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How do many fungi obtain nutrients?",
       answer: "They secrete digestive enzymes and absorb the resulting soluble substances.",
-      options: [
-        "They secrete enzymes and absorb soluble products",
-        "They swallow food into a stomach",
-        "They manufacture all food using chlorophyll",
-        "They absorb sunlight as food"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20235,35 +17560,20 @@ add(
     {
       question: "What is a hypha?",
       answer: "A thread-like structure found in many multicellular fungi.",
-      options: [
-        "A thread-like fungal structure",
-        "A fungal reproductive organ only",
-        "A type of plant root",
-        "A bacterial chromosome"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a mycelium?",
       answer: "A mass or network of fungal hyphae.",
-      options: [
-        "A mass or network of hyphae",
-        "A single bacterial cell",
-        "A plant leaf",
-        "A fungal nucleus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How can a network of hyphae help a fungus obtain nutrients?",
       answer: "It can spread through the food source, providing a large area for digestion and absorption.",
-      options: [
-        "It provides a large area for digestion and absorption",
-        "It produces chlorophyll",
-        "It pumps blood around the fungus",
-        "It prevents enzyme secretion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20320,35 +17630,20 @@ add(
     {
       question: "What type of organism is yeast?",
       answer: "A unicellular fungus.",
-      options: [
-        "A unicellular fungus",
-        "A multicellular animal",
-        "A bacterium",
-        "A green plant"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How does yeast commonly reproduce asexually?",
       answer: "By budding.",
-      options: [
-        "By budding",
-        "By producing seeds",
-        "By forming flowers",
-        "By binary fission only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can yeast produce during anaerobic respiration?",
       answer: "Ethanol and carbon dioxide.",
-      options: [
-        "Ethanol and carbon dioxide",
-        "Oxygen and glucose",
-        "Only oxygen",
-        "Nitrogen and water"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20408,35 +17703,20 @@ add(
     {
       question: "Which type of organism belongs to Kingdom Plantae?",
       answer: "A plant.",
-      options: [
-        "A plant",
-        "A mushroom",
-        "A bacterium",
-        "A human"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What type of cells do plants have?",
       answer: "Multicellular eukaryotic cells.",
-      options: [
-        "Multicellular eukaryotic cells",
-        "Only prokaryotic cells",
-        "Cells without nuclei",
-        "Cells without cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are most green plants considered autotrophic?",
       answer: "They can manufacture organic food by photosynthesis.",
-      options: [
-        "They manufacture organic food by photosynthesis",
-        "They obtain all food by eating animals",
-        "They absorb ready-made food through roots only",
-        "They cannot produce organic substances"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20495,35 +17775,20 @@ add(
     {
       question: "What is the main structural material in a typical plant cell wall?",
       answer: "Cellulose.",
-      options: [
-        "Cellulose",
-        "Chitin",
-        "Haemoglobin",
-        "Glycogen"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main role of chlorophyll in a chloroplast?",
       answer: "It absorbs light energy for photosynthesis.",
-      options: [
-        "It absorbs light energy for photosynthesis",
-        "It digests proteins",
-        "It stores genetic material",
-        "It controls cell division"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which combination strongly indicates a typical green plant cell?",
       answer: "Cellulose cell wall and chloroplasts.",
-      options: [
-        "Cellulose cell wall and chloroplasts",
-        "Chitin wall and no chloroplasts",
-        "No cell membrane and no nucleus",
-        "Only a capsule and flagellum"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20584,35 +17849,20 @@ add(
     {
       question: "Which type of cells do animals have?",
       answer: "Multicellular eukaryotic cells.",
-      options: [
-        "Multicellular eukaryotic cells",
-        "Only prokaryotic cells",
-        "Cells without nuclei",
-        "Cells without membranes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How do animals obtain organic nutrients?",
       answer: "They obtain them heterotrophically by consuming organisms or organic material.",
-      options: [
-        "By heterotrophic nutrition",
-        "By photosynthesis in all cases",
-        "By absorbing sunlight",
-        "By producing glucose without carbon sources"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which structure is absent from typical animal cells?",
       answer: "A cellulose cell wall.",
-      options: [
-        "A cellulose cell wall",
-        "A cell membrane",
-        "A nucleus",
-        "Mitochondria"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20668,35 +17918,20 @@ add(
     {
       question: "Why do animal cells become specialised?",
       answer: "Different cells perform different functions, allowing the organism to carry out complex processes efficiently.",
-      options: [
-        "Different cells perform different specialised functions",
-        "Every cell must perform exactly the same function",
-        "Specialisation removes all DNA",
-        "Specialisation prevents tissues from forming"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a major function of a nerve cell?",
       answer: "Transmitting electrical impulses.",
-      options: [
-        "Transmitting electrical impulses",
-        "Producing chlorophyll",
-        "Absorbing water from soil",
-        "Making cellulose cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main function of muscle cells?",
       answer: "Contraction to produce movement.",
-      options: [
-        "Contraction to produce movement",
-        "Photosynthesis",
-        "Absorbing mineral ions from soil",
-        "Producing pollen"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20761,35 +17996,20 @@ add(
     {
       question: "Which feature is shared by typical plants and animals?",
       answer: "They are multicellular eukaryotic organisms.",
-      options: [
-        "They are multicellular eukaryotic organisms",
-        "They both have cellulose cell walls",
-        "They both have chloroplasts",
-        "They both obtain food only by photosynthesis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which feature distinguishes typical plant cells from animal cells?",
       answer: "Plant cells have cellulose cell walls and may contain chloroplasts.",
-      options: [
-        "Plant cells have cellulose cell walls and may contain chloroplasts",
-        "Plant cells have no nuclei",
-        "Animal cells contain chloroplasts",
-        "Animal cells have cellulose walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main nutritional difference?",
       answer: "Most green plants can manufacture organic food by photosynthesis, while animals obtain organic nutrients heterotrophically.",
-      options: [
-        "Plants can make organic food by photosynthesis while animals obtain food heterotrophically",
-        "Animals photosynthesise while plants eat animals",
-        "Both groups obtain food in exactly the same way",
-        "Neither group requires organic nutrients"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20850,35 +18070,20 @@ add(
     {
       question: "What is the main difference between typical fungal and plant cell walls?",
       answer: "Fungal cell walls contain chitin, while plant cell walls contain cellulose.",
-      options: [
-        "Fungal walls contain chitin while plant walls contain cellulose",
-        "Both contain only cellulose",
-        "Plants have chitin while fungi have cellulose",
-        "Neither group has cell walls"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are fungi not classified as plants?",
       answer: "They differ from plants in important characteristics including nutrition and cell-wall composition.",
-      options: [
-        "They differ in important characteristics such as nutrition and cell-wall composition",
-        "They are not living organisms",
-        "They contain no cells",
-        "They are all animals"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement correctly compares fungal and plant nutrition?",
       answer: "Plants can photosynthesise, while fungi obtain organic nutrients heterotrophically.",
-      options: [
-        "Plants can photosynthesise while fungi obtain nutrients heterotrophically",
-        "Both groups always photosynthesise",
-        "Fungi always eat food using mouths",
-        "Plants cannot make organic food"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -20956,35 +18161,20 @@ add(
     {
       question: "Which kingdom traditionally contains prokaryotic organisms?",
       answer: "Monera.",
-      options: [
-        "Monera",
-        "Animalia",
-        "Plantae",
-        "Fungi"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "An organism is multicellular, eukaryotic and obtains organic nutrients by consuming other organisms. Which kingdom is most likely?",
       answer: "Animalia.",
-      options: [
-        "Animalia",
-        "Monera",
-        "Plantae",
-        "Fungi"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "An organism is eukaryotic, has a chitinous cell wall and obtains nutrients by absorption after external digestion. Which kingdom is most likely?",
       answer: "Fungi.",
-      options: [
-        "Fungi",
-        "Animalia",
-        "Plantae",
-        "Monera"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21039,35 +18229,20 @@ add(
     {
       question: "What is a species?",
       answer: "A group of organisms that can interbreed naturally and produce fertile offspring.",
-      options: [
-        "A group that can interbreed naturally and produce fertile offspring",
-        "A group of organisms that always look identical",
-        "All organisms living in one habitat",
-        "All organisms with the same body size"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are horses and donkeys classified as different species?",
       answer: "Although they can produce a hybrid, the resulting mule is generally sterile.",
-      options: [
-        "Their hybrid offspring is generally sterile",
-        "They have different habitats only",
-        "They have completely different cell types",
-        "They cannot produce any offspring at all"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is physical appearance alone insufficient for defining a species?",
       answer: "Members of the same species can show substantial variation in appearance.",
-      options: [
-        "Members of the same species can vary in appearance",
-        "All organisms of one species must look identical",
-        "Appearance has no biological basis",
-        "Species cannot reproduce"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21120,35 +18295,20 @@ add(
     {
       question: "What is the most specific major rank in the traditional taxonomic hierarchy?",
       answer: "Species.",
-      options: [
-        "Species",
-        "Kingdom",
-        "Phylum",
-        "Class"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens when related species are grouped together?",
       answer: "They form a genus.",
-      options: [
-        "They form a genus",
-        "They form a kingdom immediately",
-        "They become one organism",
-        "They stop reproducing"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is species useful as a classification unit?",
       answer: "It identifies a relatively precise group of closely related organisms capable of natural reproduction with fertile offspring.",
-      options: [
-        "It identifies a relatively precise biological group",
-        "It contains every organism in an ecosystem",
-        "It is based only on colour",
-        "It contains organisms from unrelated kingdoms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21215,35 +18375,20 @@ add(
     {
       question: "Which sequence is correctly ordered from broadest to most specific?",
       answer: "Kingdom → Phylum → Class → Order → Family → Genus → Species.",
-      options: [
-        "Kingdom → Phylum → Class → Order → Family → Genus → Species",
-        "Species → Genus → Family → Kingdom → Class → Order → Phylum",
-        "Kingdom → Species → Genus → Family → Class → Order → Phylum",
-        "Phylum → Kingdom → Class → Species → Family → Genus → Order"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens to the number of organisms included as you move from kingdom toward species?",
       answer: "The group becomes smaller and more specific.",
-      options: [
-        "The group becomes smaller and more specific",
-        "The group becomes larger and less specific",
-        "The group always doubles",
-        "Nothing changes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which rank comes immediately below family?",
       answer: "Genus.",
-      options: [
-        "Genus",
-        "Species",
-        "Order",
-        "Class"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21313,35 +18458,20 @@ add(
     {
       question: "What is the relationship between kingdom and phylum?",
       answer: "A kingdom contains several phyla.",
-      options: [
-        "A kingdom contains several phyla",
-        "A phylum contains every kingdom",
-        "A kingdom is more specific than a phylum",
-        "They are exactly the same rank"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which phylum contains humans?",
       answer: "Chordata.",
-      options: [
-        "Chordata",
-        "Arthropoda",
-        "Mollusca",
-        "Annelida"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are kingdoms divided into phyla?",
       answer: "To organise the broad kingdom into smaller groups based on important shared characteristics.",
-      options: [
-        "To organise the kingdom into smaller groups",
-        "To make all organisms identical",
-        "To eliminate species",
-        "To change organisms into different kingdoms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21402,35 +18532,20 @@ add(
     {
       question: "Which rank comes below phylum?",
       answer: "Class.",
-      options: [
-        "Class",
-        "Kingdom",
-        "Family",
-        "Genus"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What class does a human belong to?",
       answer: "Mammalia.",
-      options: [
-        "Mammalia",
-        "Aves",
-        "Reptilia",
-        "Amphibia"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is a class more specific than a phylum?",
       answer: "A class contains a smaller group of organisms with more specific shared characteristics.",
-      options: [
-        "It contains a smaller group with more specific shared characteristics",
-        "It contains every organism in the kingdom",
-        "It is broader than kingdom",
-        "It contains no organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21480,35 +18595,20 @@ add(
     {
       question: "Which rank comes immediately below class?",
       answer: "Order.",
-      options: [
-        "Order",
-        "Family",
-        "Genus",
-        "Kingdom"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What order does a human belong to?",
       answer: "Primates.",
-      options: [
-        "Primates",
-        "Carnivora",
-        "Rodentia",
-        "Artiodactyla"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What happens when classification moves from class to order?",
       answer: "The group becomes smaller and more specific.",
-      options: [
-        "The group becomes smaller and more specific",
-        "The group becomes broader",
-        "The group becomes a kingdom",
-        "The group loses all shared characteristics"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21566,35 +18666,20 @@ add(
     {
       question: "Which rank comes immediately below order?",
       answer: "Family.",
-      options: [
-        "Family",
-        "Genus",
-        "Class",
-        "Kingdom"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What family does a human belong to?",
       answer: "Hominidae.",
-      options: [
-        "Hominidae",
-        "Felidae",
-        "Canidae",
-        "Bovidae"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does a family contain?",
       answer: "One or more related genera.",
-      options: [
-        "One or more related genera",
-        "All kingdoms",
-        "Only one cell",
-        "Every species on Earth"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21651,35 +18736,20 @@ add(
     {
       question: "Which rank comes immediately below family?",
       answer: "Genus.",
-      options: [
-        "Genus",
-        "Species",
-        "Order",
-        "Class"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What genus does the human species belong to?",
       answer: "Homo.",
-      options: [
-        "Homo",
-        "Hominidae",
-        "Mammalia",
-        "Primates"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the relationship between genus and species?",
       answer: "A genus contains one or more closely related species.",
-      options: [
-        "A genus contains one or more closely related species",
-        "A species contains several kingdoms",
-        "A genus is broader than kingdom",
-        "Genus and species are exactly the same rank"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21752,35 +18822,20 @@ add(
     {
       question: "How many parts does a binomial scientific name have?",
       answer: "Two.",
-      options: [
-        "Two",
-        "One",
-        "Three",
-        "Four"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the first part of a binomial name?",
       answer: "The genus.",
-      options: [
-        "The genus",
-        "The kingdom",
-        "The family",
-        "The habitat"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is correctly written?",
       answer: "Homo sapiens.",
-      options: [
-        "Homo sapiens",
-        "homo Sapiens",
-        "HOMO SAPIENS",
-        "Homo Sapiens"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21843,35 +18898,20 @@ add(
     {
       question: "In Panthera leo, which word represents the genus?",
       answer: "Panthera.",
-      options: [
-        "Panthera",
-        "leo",
-        "Both words separately",
-        "Neither word"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is required to identify the species using binomial nomenclature?",
       answer: "Both the genus and the specific name.",
-      options: [
-        "Both the genus and specific name",
-        "Only the second word",
-        "Only the genus",
-        "Only the kingdom"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can be inferred from Panthera leo and Panthera tigris sharing the same first word?",
       answer: "They belong to the same genus.",
-      options: [
-        "They belong to the same genus",
-        "They are exactly the same species",
-        "They are from different kingdoms",
-        "They have identical habitats"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -21935,35 +18975,20 @@ A taxonomic key identifies an organism by using <b>observable characteristics in
     {
       question: "What is the main purpose of a taxonomic key?",
       answer: "To identify an organism using its observable characteristics",
-      options: [
-        "To identify an organism using its observable characteristics",
-        "To measure the age of an organism",
-        "To determine how much food an organism needs",
-        "To measure the temperature of an organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can a taxonomic key identify an organism whose name is unknown?",
       answer: "It uses observable characteristics to progressively narrow the possible identities",
-      options: [
-        "It uses observable characteristics to progressively narrow the possible identities",
-        "It already contains the organism's name in every question",
-        "It identifies organisms from their size alone",
-        "It identifies organisms from where they were found"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What type of information is mainly used when following a taxonomic key?",
       answer: "Observable characteristics",
-      options: [
-        "Observable characteristics",
-        "The organism's age",
-        "The organism's weight only",
-        "The time of day"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22040,30 +19065,20 @@ The process continues until the organism's identity is reached.
     {
       question: "What does dichotomous mean in a dichotomous key?",
       answer: "Divided into two choices",
-      options: [
-        "Divided into two choices",
-        "Divided into five choices",
-        "Arranged according to size",
-        "Arranged according to age"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How many choices are normally provided at each stage of a dichotomous key?",
       answer: "Two",
-      options: ["One", "Two", "Three", "Four"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are the two choices normally contrasting?",
       answer: "So that the organism can be placed into one of two groups at each step",
-      options: [
-        "So that the organism can be placed into one of two groups at each step",
-        "So that both choices describe exactly the same characteristic",
-        "So that identification depends on the organism's age",
-        "So that the key can measure the organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22128,30 +19143,20 @@ For example, if the key asks whether an organism has six legs, count the legs ra
     {
       question: "What do the two statements in a dichotomous key normally represent?",
       answer: "Two contrasting characteristics",
-      options: [
-        "Two contrasting characteristics",
-        "Two unrelated measurements",
-        "Two different organisms",
-        "Two stages of reproduction"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If an organism has six legs and the key says '6 legs' at 1a and 'not 6 legs' at 1b, which choice should be selected?",
       answer: "1a",
-      options: ["1a", "1b", "Both", "Neither"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why should you observe the organism instead of guessing when using a key?",
       answer: "Because each choice must match the organism's actual characteristics",
-      options: [
-        "Because each choice must match the organism's actual characteristics",
-        "Because guessing makes the organism larger",
-        "Because the key works only for large organisms",
-        "Because observation changes the organism's classification"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22236,35 +19241,20 @@ At each step:
     {
       question: "A frog is being identified using a key. The key asks whether it has a backbone. Which characteristic should be considered?",
       answer: "Whether the frog has a backbone",
-      options: [
-        "Whether the frog has a backbone",
-        "The frog's colour",
-        "The frog's age",
-        "Where the frog was found"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If a bird is being tested with the choices 'has feathers' and 'does not have feathers', which should be selected?",
       answer: "Has feathers",
-      options: [
-        "Has feathers",
-        "Does not have feathers",
-        "Both",
-        "Neither"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What should you do immediately after finding the statement that matches the organism?",
       answer: "Follow the instruction attached to that statement",
-      options: [
-        "Follow the instruction attached to that statement",
-        "Return to the beginning",
-        "Ignore the next step",
-        "Choose both statements"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22342,20 +19332,20 @@ You should not jump directly to a conclusion. Every decision must be supported b
     {
       question: "An organism has wings and feathers. In the key above, which step should be used first?",
       answer: "Step 1",
-      options: ["Step 1", "Step 2", "Step 3", "No step"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If the organism has wings, which option is selected at step 1?",
       answer: "1a",
-      options: ["1a", "1b", "2a", "2b"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If the organism reaches step 2 and has feathers, what is its identification?",
       answer: "Bird",
-      options: ["Bird", "Insect", "Mammal", "Reptile"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22444,35 +19434,20 @@ The key should eventually lead each organism to one identification.
     {
       question: "What is the first major task when constructing a dichotomous key?",
       answer: "Choose an observable characteristic that separates organisms",
-      options: [
-        "Choose an observable characteristic that separates organisms",
-        "Write all organism names in alphabetical order",
-        "Measure every organism's weight",
-        "Choose a characteristic that cannot be observed"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which characteristic is most useful in a simple identification key?",
       answer: "A clear observable characteristic",
-      options: [
-        "A clear observable characteristic",
-        "A characteristic that is impossible to observe",
-        "A characteristic that changes every minute",
-        "A characteristic based only on guessing"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why should a characteristic separate organisms into different groups?",
       answer: "To reduce the number of possible identities at each step",
-      options: [
-        "To reduce the number of possible identities at each step",
-        "To make the key longer without purpose",
-        "To prevent identification",
-        "To make every organism look identical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22551,35 +19526,20 @@ Therefore, the key must be corrected before it is used.
     {
       question: "Why should a dichotomous key be tested?",
       answer: "To check that it leads to correct identifications",
-      options: [
-        "To check that it leads to correct identifications",
-        "To make the organisms change characteristics",
-        "To increase the organism's size",
-        "To determine the organism's age"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is wrong if both choices at a step describe exactly the same characteristic?",
       answer: "The step does not separate the organisms",
-      options: [
-        "The step does not separate the organisms",
-        "The organisms become extinct",
-        "The key becomes automatically correct",
-        "The organisms change kingdom"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What should happen after following a correct identification path?",
       answer: "It should lead to the correct organism or group",
-      options: [
-        "It should lead to the correct organism or group",
-        "It should return to the first step forever",
-        "It should produce two different organisms",
-        "It should stop without an identification"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22662,20 +19622,20 @@ The identification is based on the characteristics observed, not simply on what 
     {
       question: "An unknown organism has six legs. Which choice is selected at step 1?",
       answer: "1a",
-      options: ["1a", "1b", "2a", "2b"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If the organism then has wings with scales on the wings, which choice is selected?",
       answer: "2a",
-      options: ["1a", "1b", "2a", "2b"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the identification in the example?",
       answer: "Butterfly",
-      options: ["Butterfly", "Bird", "Fish", "Mammal"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22733,35 +19693,20 @@ If the key asks about feathers, colour should not determine your choice unless c
     {
       question: "What should you do instead of guessing when using a key?",
       answer: "Observe the characteristic being tested",
-      options: [
-        "Observe the characteristic being tested",
-        "Choose the first option",
-        "Choose the longest statement",
-        "Choose randomly"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can happen if you skip an identification step?",
       answer: "You may identify the organism incorrectly",
-      options: [
-        "You may identify the organism incorrectly",
-        "The organism will change species",
-        "The organism will become larger",
-        "The key will automatically correct itself"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If a key says 'go to 4', what should you do?",
       answer: "Go to step 4",
-      options: [
-        "Go to step 4",
-        "Go to step 3",
-        "Return to step 1",
-        "Choose both options"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22871,20 +19816,20 @@ The important part is not memorising the answer. The identification comes from f
     {
       question: "The unknown organism does not have six legs. Which choice is made at step 1?",
       answer: "1b",
-      options: ["1a", "1b", "2a", "2b"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "At step 3, the organism has no feathers. Which choice is correct?",
       answer: "3b",
-      options: ["3a", "3b", "4a", "4b"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "At step 4, the organism has no fur. What is the final identification?",
       answer: "Reptile",
-      options: ["Bird", "Mammal", "Reptile", "Insect"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -22938,35 +19883,20 @@ Biodiversity is not simply the number of animals in an area. It describes the <b
     {
       question: "What is biodiversity?",
       answer: "The variety of living organisms",
-      options: [
-        "The variety of living organisms",
-        "The number of rocks in an area",
-        "The amount of rainfall in an area",
-        "The size of an organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which type of biodiversity refers to differences among individuals of the same species?",
       answer: "Genetic diversity",
-      options: [
-        "Genetic diversity",
-        "Species diversity",
-        "Ecosystem diversity",
-        "Population size"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does species diversity describe?",
       answer: "The variety of species in an area",
-      options: [
-        "The variety of species in an area",
-        "Differences between ecosystems only",
-        "Differences in rainfall",
-        "The number of chromosomes in one organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23028,35 +19958,20 @@ Therefore, when identifying genetic diversity, focus on <b>inherited differences
     {
       question: "What is genetic diversity?",
       answer: "Variation in inherited characteristics among individuals of the same species",
-      options: [
-        "Variation in inherited characteristics among individuals of the same species",
-        "Variation between different ecosystems only",
-        "Variation in weather conditions",
-        "Variation in the size of habitats"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can genetic diversity help a population survive environmental change?",
       answer: "Some individuals may have inherited characteristics that improve survival",
-      options: [
-        "Some individuals may have inherited characteristics that improve survival",
-        "All individuals become genetically identical",
-        "It prevents reproduction",
-        "It stops environmental changes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which type of difference is most directly associated with genetic diversity?",
       answer: "An inherited difference",
-      options: [
-        "An inherited difference",
-        "A difference caused only by temporary weather",
-        "A difference caused only by exercise",
-        "A difference caused only by learning"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23124,30 +20039,20 @@ The important question is:
     {
       question: "What does species diversity refer to?",
       answer: "The variety of different species in an area",
-      options: [
-        "The variety of different species in an area",
-        "The number of individuals in one species only",
-        "The amount of rainfall in an area",
-        "The number of genes in one organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which area has greater species diversity?",
       answer: "An area containing a wider variety of species",
-      options: [
-        "An area containing a wider variety of species",
-        "An area containing only one species",
-        "An area with the largest individual organism",
-        "An area with the highest temperature"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Does having many individuals of one species automatically mean high species diversity?",
       answer: "No",
-      options: ["Yes", "No", "Only in plants", "Only in animals"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23204,35 +20109,20 @@ For example, an area containing forests, wetlands and grasslands has greater eco
     {
       question: "What is ecosystem diversity?",
       answer: "The variety of different ecosystems in an area",
-      options: [
-        "The variety of different ecosystems in an area",
-        "The number of organisms in one ecosystem",
-        "The number of genes in one cell",
-        "The size of one organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which example shows ecosystem diversity?",
       answer: "A region containing forests, wetlands and grasslands",
-      options: [
-        "A region containing forests, wetlands and grasslands",
-        "One tree containing many leaves",
-        "One population containing many individuals",
-        "One animal containing many organs"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can different ecosystems contribute to biodiversity?",
       answer: "They contain different communities of organisms and physical conditions",
-      options: [
-        "They contain different communities of organisms and physical conditions",
-        "They all contain exactly the same organisms",
-        "They contain no living organisms",
-        "They prevent organisms from interacting"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23286,35 +20176,20 @@ The importance of biodiversity is not limited to individual species. Organisms i
     {
       question: "Which is one reason biodiversity is important to humans?",
       answer: "It provides biological resources such as food and useful substances",
-      options: [
-        "It provides biological resources such as food and useful substances",
-        "It eliminates all environmental changes",
-        "It prevents organisms from reproducing",
-        "It makes all organisms identical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process involves organisms breaking down dead organic material?",
       answer: "Decomposition",
-      options: [
-        "Decomposition",
-        "Classification",
-        "Fertilisation",
-        "Mitosis"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can losing one species affect other organisms?",
       answer: "Organisms interact with one another within ecosystems",
-      options: [
-        "Organisms interact with one another within ecosystems",
-        "All organisms live independently",
-        "Species never depend on other organisms",
-        "All species perform exactly the same role"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23372,35 +20247,20 @@ Changes in temperature and rainfall patterns can alter habitats and affect the s
     {
       question: "How can habitat destruction reduce biodiversity?",
       answer: "It can remove places where organisms feed, reproduce and shelter",
-      options: [
-        "It can remove places where organisms feed, reproduce and shelter",
-        "It always increases the number of species",
-        "It makes every organism reproduce faster",
-        "It prevents all environmental changes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is overexploitation?",
       answer: "Using or harvesting organisms faster than populations can replace themselves",
-      options: [
-        "Using or harvesting organisms faster than populations can replace themselves",
-        "Protecting organisms from exploitation",
-        "Classifying organisms into kingdoms",
-        "Increasing habitat size"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How can pollution threaten biodiversity?",
       answer: "It can harm organisms or make habitats unsuitable",
-      options: [
-        "It can harm organisms or make habitats unsuitable",
-        "It always increases species diversity",
-        "It makes all organisms resistant to disease",
-        "It prevents all competition"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23463,35 +20323,20 @@ Therefore, protecting habitats is an important part of conserving biodiversity.
     {
       question: "What is a habitat?",
       answer: "The place where an organism normally lives and obtains the conditions and resources it needs",
-      options: [
-        "The place where an organism normally lives and obtains the conditions and resources it needs",
-        "The scientific name of an organism",
-        "The number of chromosomes in an organism",
-        "The process of cell division"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can happen to organisms when their habitat is destroyed?",
       answer: "They may lose food, shelter or breeding sites",
-      options: [
-        "They may lose food, shelter or breeding sites",
-        "They automatically become a new species",
-        "They all become stronger",
-        "They stop needing resources"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "How can habitat destruction reduce biodiversity?",
       answer: "It can cause populations or species to decline or disappear from the area",
-      options: [
-        "It can cause populations or species to decline or disappear from the area",
-        "It always increases the number of species",
-        "It makes all species identical",
-        "It prevents competition everywhere"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23549,35 +20394,20 @@ The central principle is to maintain the organisms and ecological processes that
     {
       question: "What does conservation mean?",
       answer: "Protecting and managing organisms, habitats and natural resources to maintain biodiversity",
-      options: [
-        "Protecting and managing organisms, habitats and natural resources to maintain biodiversity",
-        "Removing all organisms from a habitat",
-        "Increasing pollution",
-        "Using natural resources without limits"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example of biodiversity conservation?",
       answer: "Protecting a natural forest from destruction",
-      options: [
-        "Protecting a natural forest from destruction",
-        "Clearing an entire forest",
-        "Overfishing a lake",
-        "Dumping waste into a river"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can controlled harvesting help conserve biodiversity?",
       answer: "It can prevent populations from being removed faster than they recover",
-      options: [
-        "It can prevent populations from being removed faster than they recover",
-        "It removes every organism from the habitat",
-        "It stops reproduction",
-        "It increases habitat destruction"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23633,35 +20463,20 @@ This is in situ conservation because the species is being conserved <b>where it 
     {
       question: "What is in situ conservation?",
       answer: "Conserving organisms within their natural habitats",
-      options: [
-        "Conserving organisms within their natural habitats",
-        "Conserving organisms only in laboratories",
-        "Removing organisms from all habitats",
-        "Destroying the natural habitat"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example of in situ conservation?",
       answer: "Protecting elephants within their natural habitat",
-      options: [
-        "Protecting elephants within their natural habitat",
-        "Keeping seeds in a laboratory only",
-        "Keeping an animal specimen in a museum",
-        "Destroying a wildlife habitat"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why does protecting a natural habitat help conserve species?",
       answer: "It protects the environmental conditions and interactions needed by the species",
-      options: [
-        "It protects the environmental conditions and interactions needed by the species",
-        "It removes all competition",
-        "It prevents organisms from reproducing",
-        "It makes every species genetically identical"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23720,30 +20535,20 @@ The key difference is the location of conservation.
     {
       question: "What is ex situ conservation?",
       answer: "Conserving organisms or genetic material outside their natural habitats",
-      options: [
-        "Conserving organisms or genetic material outside their natural habitats",
-        "Protecting organisms only in natural forests",
-        "Destroying habitats",
-        "Allowing unlimited exploitation"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example of ex situ conservation?",
       answer: "A seed bank",
-      options: ["A seed bank", "A natural forest", "A natural lake", "A wild grassland"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main difference between in situ and ex situ conservation?",
       answer: "Whether conservation occurs inside or outside the organism's natural habitat",
-      options: [
-        "Whether conservation occurs inside or outside the organism's natural habitat",
-        "Whether the organism has DNA",
-        "Whether the organism can reproduce",
-        "Whether the organism is classified"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23829,35 +20634,20 @@ A rare plant whose seeds are stored in a seed bank is an example of <b>ex situ c
     {
       question: "A threatened animal is protected in its natural habitat. What type of conservation is this?",
       answer: "In situ conservation",
-      options: [
-        "In situ conservation",
-        "Ex situ conservation",
-        "Artificial selection",
-        "Classification"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Seeds of a rare plant are stored in a seed bank. What type of conservation is this?",
       answer: "Ex situ conservation",
-      options: [
-        "In situ conservation",
-        "Ex situ conservation",
-        "Natural selection",
-        "Habitat destruction"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What single question best distinguishes in situ from ex situ conservation?",
       answer: "Is the organism being conserved in its natural habitat?",
-      options: [
-        "Is the organism being conserved in its natural habitat?",
-        "Does the organism have DNA?",
-        "Does the organism have cells?",
-        "Does the organism need energy?"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -23911,35 +20701,20 @@ Ecology is about <b>relationships between organisms and their environment</b>.
     {
       question: "What is ecology?",
       answer: "The study of interactions between organisms and their environment",
-      options: [
-        "The study of interactions between organisms and their environment",
-        "The study of cell division only",
-        "The classification of rocks",
-        "The study of chemical elements only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an ecological interaction?",
       answer: "A plant competing with another plant for water",
-      options: [
-        "A plant competing with another plant for water",
-        "DNA copying inside a cell",
-        "A chromosome separating during mitosis",
-        "A molecule changing shape"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is a maize plant part of an ecological system?",
       answer: "It interacts with organisms and physical factors in its environment",
-      options: [
-        "It interacts with organisms and physical factors in its environment",
-        "It exists without an environment",
-        "It does not require resources",
-        "It cannot interact with other organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24019,25 +20794,20 @@ If it is non-living, it is an abiotic factor.
     {
       question: "Which is a biotic factor?",
       answer: "Predation",
-      options: ["Predation", "Temperature", "Light intensity", "pH"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an abiotic factor?",
       answer: "Temperature",
-      options: ["Temperature", "Predator", "Competitor", "Parasite"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main difference between biotic and abiotic factors?",
       answer: "Biotic factors are living components while abiotic factors are non-living conditions",
-      options: [
-        "Biotic factors are living components while abiotic factors are non-living conditions",
-        "Biotic factors are always harmful while abiotic factors are always helpful",
-        "Biotic factors occur only in water",
-        "Abiotic factors are all organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24103,30 +20873,20 @@ It should not be confused with a niche, which describes the organism's role and 
     {
       question: "What is a habitat?",
       answer: "The place where an organism normally lives",
-      options: [
-        "The place where an organism normally lives",
-        "The scientific name of an organism",
-        "The number of chromosomes in an organism",
-        "The process by which organisms reproduce"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is a requirement of a suitable habitat?",
       answer: "Suitable conditions and resources for survival",
-      options: [
-        "Suitable conditions and resources for survival",
-        "Complete absence of water",
-        "No food",
-        "No space for movement"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A fish living in a lake is an example of an organism occupying a:",
       answer: "Habitat",
-      options: ["Habitat", "Chromosome", "Tissue", "Taxonomic kingdom"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24192,30 +20952,20 @@ A community contains populations of <b>different species</b> living and interact
     {
       question: "What is a population?",
       answer: "A group of organisms of the same species living in the same area at the same time",
-      options: [
-        "A group of organisms of the same species living in the same area at the same time",
-        "All organisms on Earth",
-        "All organisms in different ecosystems",
-        "A group containing only different species"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A pond contains 80 frogs of the same species. What is the population size?",
       answer: "80",
-      options: ["8", "40", "80", "160"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the main difference between a population and a community?",
       answer: "A population contains one species while a community contains different populations",
-      options: [
-        "A population contains one species while a community contains different populations",
-        "A population contains only plants",
-        "A community contains only one organism",
-        "A community contains no living organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24289,30 +21039,20 @@ The zebras together with grasses, lions, insects and other populations form a co
     {
       question: "What is a community?",
       answer: "Populations of different species living and interacting in the same area",
-      options: [
-        "Populations of different species living and interacting in the same area",
-        "Individuals of only one species",
-        "One individual organism",
-        "All organisms on Earth"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organisms together could form a community?",
       answer: "Grass, insects, birds and mammals living in the same area",
-      options: [
-        "Grass, insects, birds and mammals living in the same area",
-        "Only one bird",
-        "Only one species of grass",
-        "One individual insect"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "A group of zebras of one species is best described as a:",
       answer: "Population",
-      options: ["Population", "Community", "Kingdom", "Habitat"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24382,30 +21122,20 @@ The organisms interact with one another and with the physical environment.
     {
       question: "What is an ecosystem?",
       answer: "A community interacting with its non-living environment",
-      options: [
-        "A community interacting with its non-living environment",
-        "Only the animals in an area",
-        "Only the plants in an area",
-        "One individual organism"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an abiotic component of a pond ecosystem?",
       answer: "Water",
-      options: ["Water", "Fish", "Algae", "Bacteria"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which sequence correctly builds from population to ecosystem?",
       answer: "Population → community → ecosystem",
-      options: [
-        "Population → community → ecosystem",
-        "Ecosystem → population → community",
-        "Community → population → ecosystem",
-        "Population → ecosystem → community"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24467,35 +21197,20 @@ Differences in resource use can reduce direct competition.
     {
       question: "What does a niche describe?",
       answer: "The role of an organism and how it uses resources in its ecosystem",
-      options: [
-        "The role of an organism and how it uses resources in its ecosystem",
-        "Only the physical place where an organism lives",
-        "The organism's chromosome number",
-        "The organism's scientific name"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a habitat?",
       answer: "The place where an organism lives",
-      options: [
-        "The place where an organism lives",
-        "The organism's role in a food web",
-        "The number of species in an ecosystem",
-        "The organism's genetic code"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Two bird species live in the same forest but feed on different resources. What does this demonstrate?",
       answer: "They may occupy different niches",
-      options: [
-        "They may occupy different niches",
-        "They must be the same species",
-        "They cannot interact",
-        "They have identical ecological roles"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24562,25 +21277,20 @@ Competition becomes important when demand for a resource is greater than the amo
     {
       question: "When does competition occur?",
       answer: "When organisms require the same limited resource",
-      options: [
-        "When organisms require the same limited resource",
-        "When organisms never interact",
-        "When resources are unlimited",
-        "Only when organisms are predators"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which resource can plants compete for?",
       answer: "Light",
-      options: ["Light", "Scientific names", "Chromosomes", "DNA bases only"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Can organisms of different species compete?",
       answer: "Yes",
-      options: ["Yes", "No", "Only microorganisms", "Only mammals"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24647,25 +21357,20 @@ In predation, one organism captures and feeds on another organism.
     {
       question: "What is predation?",
       answer: "An interaction in which one organism captures and feeds on another",
-      options: [
-        "An interaction in which one organism captures and feeds on another",
-        "A process in which plants make glucose",
-        "Competition between cells for chromosomes",
-        "The classification of organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In a lion eating a zebra, which organism is the predator?",
       answer: "Lion",
-      options: ["Lion", "Zebra", "Grass", "Neither"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the organism being captured and eaten called?",
       answer: "Prey",
-      options: ["Prey", "Predator", "Producer", "Decomposer"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24723,30 +21428,20 @@ In parasitism, the parasite usually lives on or in the host and obtains resource
     {
       question: "What is a parasite?",
       answer: "An organism that obtains resources from a host and harms it",
-      options: [
-        "An organism that obtains resources from a host and harms it",
-        "An organism that always produces its own food",
-        "An organism that never interacts with other organisms",
-        "An organism that only lives in water"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is the organism that provides resources to a parasite called?",
       answer: "Host",
-      options: ["Host", "Predator", "Producer", "Decomposer"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is an example of parasitism?",
       answer: "A tapeworm living in a human intestine",
-      options: [
-        "A tapeworm living in a human intestine",
-        "A lion eating a zebra",
-        "Two plants competing for light",
-        "A plant making glucose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24813,35 +21508,20 @@ The nutrients can eventually become available again in the environment.
     {
       question: "What do decomposers do?",
       answer: "Break down dead organic material and waste",
-      options: [
-        "Break down dead organic material and waste",
-        "Produce sunlight",
-        "Prevent all organisms from reproducing",
-        "Turn animals into plants"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organisms include important decomposers?",
       answer: "Bacteria and fungi",
-      options: [
-        "Bacteria and fungi",
-        "Only mammals",
-        "Only birds",
-        "Only flowering plants"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are decomposers important in ecosystems?",
       answer: "They help return nutrients from dead material to the environment",
-      options: [
-        "They help return nutrients from dead material to the environment",
-        "They stop nutrient cycling",
-        "They remove all nutrients permanently",
-        "They prevent dead material from breaking down"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24907,25 +21587,20 @@ The grass is the producer because it makes its own organic food.
     {
       question: "What is a producer?",
       answer: "An organism that makes its own organic food",
-      options: [
-        "An organism that makes its own organic food",
-        "An organism that only eats animals",
-        "An organism that breaks down dead organisms",
-        "An organism that cannot obtain energy"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which process allows green plants to make glucose?",
       answer: "Photosynthesis",
-      options: ["Photosynthesis", "Predation", "Digestion", "Decomposition"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In the chain grass → zebra → lion, which organism is the producer?",
       answer: "Grass",
-      options: ["Grass", "Zebra", "Lion", "All three"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -24986,30 +21661,20 @@ The grasshopper and frog are consumers because they obtain organic nutrients by 
     {
       question: "What is a consumer?",
       answer: "An organism that obtains organic nutrients by feeding on other organisms or organic material",
-      options: [
-        "An organism that obtains organic nutrients by feeding on other organisms or organic material",
-        "An organism that always makes its own food",
-        "An organism that only breaks down rocks",
-        "An organism that obtains energy from sunlight directly"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organism is a consumer?",
       answer: "Cow",
-      options: ["Cow", "Grass", "Algae making food", "Green plant"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is an omnivore?",
       answer: "An organism that feeds on both plant and animal material",
-      options: [
-        "An organism that feeds on both plant and animal material",
-        "An organism that feeds only on plants",
-        "An organism that feeds only on animals",
-        "An organism that feeds only on dead leaves"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25070,30 +21735,20 @@ Therefore, herbivores form an important link between producers and many predator
     {
       question: "What is a herbivore?",
       answer: "A consumer that feeds mainly on plants",
-      options: [
-        "A consumer that feeds mainly on plants",
-        "A consumer that feeds only on fungi",
-        "An organism that makes its own food",
-        "An organism that breaks down dead material"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which is a herbivore?",
       answer: "Zebra",
-      options: ["Zebra", "Lion", "Eagle", "Frog eating insects"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In grass → zebra → lion, what does the zebra obtain by feeding on grass?",
       answer: "Organic nutrients and chemical energy",
-      options: [
-        "Organic nutrients and chemical energy",
-        "Only sunlight",
-        "Only oxygen",
-        "Only mineral ions"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25157,30 +21812,20 @@ A carnivore may therefore act as a predator, but the two words describe differen
     {
       question: "What is a carnivore?",
       answer: "A consumer that feeds mainly on other animals",
-      options: [
-        "A consumer that feeds mainly on other animals",
-        "A producer that makes glucose",
-        "A consumer that feeds only on plants",
-        "A decomposer that breaks down leaves"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which organism is a carnivore?",
       answer: "Lion",
-      options: ["Lion", "Grass", "Maize", "Goat"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In grass → zebra → lion, why is the lion a carnivore?",
       answer: "It feeds on another animal",
-      options: [
-        "It feeds on another animal",
-        "It makes glucose by photosynthesis",
-        "It feeds directly on sunlight",
-        "It breaks down dead leaves"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25238,35 +21883,20 @@ An animal does not have to eat equal amounts of plants and animals to be an omni
     {
       question: "What is an omnivore?",
       answer: "A consumer that feeds on both plant and animal material",
-      options: [
-        "A consumer that feeds on both plant and animal material",
-        "A consumer that eats only plants",
-        "A consumer that eats only animals",
-        "An organism that makes food using sunlight"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which feeding pattern describes an omnivore?",
       answer: "Eating both plant and animal material",
-      options: [
-        "Eating both plant and animal material",
-        "Eating plants only",
-        "Eating animals only",
-        "Eating minerals only"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Which statement correctly compares the three groups?",
       answer: "Herbivores mainly eat plants, carnivores mainly eat animals, and omnivores eat both",
-      options: [
-        "Herbivores mainly eat plants, carnivores mainly eat animals, and omnivores eat both",
-        "Herbivores eat animals, carnivores eat plants, and omnivores eat minerals",
-        "All three groups have exactly the same diet",
-        "Only carnivores are consumers"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25335,30 +21965,20 @@ It represents the direction of transfer through feeding.
     {
       question: "What does a food chain show?",
       answer: "Feeding relationships and the direction of energy transfer",
-      options: [
-        "Feeding relationships and the direction of energy transfer",
-        "Only the size of organisms",
-        "Only the number of chromosomes",
-        "Only the habitats of organisms"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In grass → grasshopper → frog, which organism is eaten by the frog?",
       answer: "Grasshopper",
-      options: ["Grass", "Grasshopper", "Frog", "None"],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What does the arrow in a food chain represent?",
       answer: "The direction of transfer of food and chemical energy",
-      options: [
-        "The direction of transfer of food and chemical energy",
-        "The direction an organism physically moves",
-        "The size of the next organism",
-        "The direction of rainfall"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25421,35 +22041,20 @@ Trophic level depends on the organism's position in a particular food chain.
     {
       question: "What is a trophic level?",
       answer: "A feeding position in a food chain",
-      options: [
-        "A feeding position in a food chain",
-        "The size of an organism",
-        "The age of an organism",
-        "The number of chromosomes"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In grass → grasshopper → frog, what trophic level does the grasshopper occupy?",
       answer: "Second trophic level",
-      options: [
-        "First trophic level",
-        "Second trophic level",
-        "Third trophic level",
-        "Fourth trophic level"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What is a primary consumer?",
       answer: "An organism that feeds directly on a producer",
-      options: [
-        "An organism that feeds directly on a producer",
-        "An organism that feeds only on decomposers",
-        "An organism that makes its own food",
-        "An organism that never feeds"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25520,35 +22125,20 @@ Therefore, less chemical energy is generally available at higher trophic levels.
     {
       question: "Where does energy enter most ecosystems?",
       answer: "Through producers capturing light energy",
-      options: [
-        "Through producers capturing light energy",
-        "Through predators eating prey",
-        "Through decomposers producing sunlight",
-        "Through consumers making glucose"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why is less energy generally available at higher trophic levels?",
       answer: "Organisms use and lose energy during life processes and not all material is transferred",
-      options: [
-        "Organisms use and lose energy during life processes and not all material is transferred",
-        "Energy is created at every trophic level",
-        "Consumers do not respire",
-        "All energy is stored permanently"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In sunlight → grass → zebra → lion, how does the zebra obtain chemical energy?",
       answer: "By feeding on grass",
-      options: [
-        "By feeding on grass",
-        "By absorbing sunlight directly",
-        "By producing sunlight",
-        "By feeding on the lion"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25611,35 +22201,20 @@ A change in one population can affect several other populations because organism
     {
       question: "What is a food web?",
       answer: "A network of interconnected food chains",
-      options: [
-        "A network of interconnected food chains",
-        "A single organism",
-        "A list of habitats",
-        "A diagram showing only producers"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why are food webs often more realistic than single food chains?",
       answer: "Organisms commonly have several feeding relationships",
-      options: [
-        "Organisms commonly have several feeding relationships",
-        "Every organism eats only one type of food",
-        "Food chains never occur in ecosystems",
-        "Food webs contain no consumers"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "What can happen when one population in a food web changes greatly?",
       answer: "Several other populations may be affected",
-      options: [
-        "Several other populations may be affected",
-        "Only the changed organism can be affected",
-        "No organism can be affected",
-        "The ecosystem immediately disappears"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25710,30 +22285,20 @@ Never interpret the arrow as simply meaning "moves toward." In a food web, it re
     {
       question: "In a food web, what does an arrow generally show?",
       answer: "The direction of food and chemical energy transfer",
-      options: [
-        "The direction of food and chemical energy transfer",
-        "The direction the animal walks",
-        "The direction of wind",
-        "The direction of water flow"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "In grass → grasshopper → frog, what does grass → grasshopper mean?",
       answer: "The grasshopper feeds on the grass",
-      options: [
-        "The grasshopper feeds on the grass",
-        "The grass feeds on the grasshopper",
-        "The grass attacks the grasshopper",
-        "The grasshopper produces the grass"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "If an arrow points from a rabbit to a hawk, which is the prey?",
       answer: "Rabbit",
-      options: ["Rabbit", "Hawk", "Both", "Neither"],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25802,35 +22367,20 @@ Therefore, predictions should be based on the specific relationships shown in th
     {
       question: "In grass → grasshopper → frog, what may happen if the frog population decreases greatly?",
       answer: "The grasshopper population may increase",
-      options: [
-        "The grasshopper population may increase",
-        "The grasshopper population must immediately become zero",
-        "The grass will definitely increase without limit",
-        "The frog will become a producer"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why can removing one organism affect other organisms?",
       answer: "Organisms are connected through feeding relationships",
-      options: [
-        "Organisms are connected through feeding relationships",
-        "All organisms are identical",
-        "Organisms never interact",
-        "Only producers interact"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     },
     {
       question: "Why should food-web changes be analysed using the actual relationships shown?",
       answer: "Several feeding relationships and environmental factors can influence population sizes",
-      options: [
-        "Several feeding relationships and environmental factors can influence population sizes",
-        "Every ecosystem contains only one food chain",
-        "Populations never change",
-        "Predators never affect prey"
-      ],
-      type: "mcq"
+      options: [],
+      type: "text"
     }
   ]
 );
@@ -25945,14 +22495,14 @@ Percentage decrease:
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "A population contains 400 animals. 70 are born and 30 die. No animals enter or leave. What is the new population?",
       options: ["340", "400", "440", "500"],
       answer: "440",
       why: "Population = 400 + 70 − 30 = 440."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which process adds individuals to a population from another area?",
       options: ["Emigration", "Immigration", "Death", "Predation"],
       answer: "Immigration",
@@ -26060,14 +22610,14 @@ Population density tells you <b>how many organisms occur per unit area</b>.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "A field of 100 m² contains 200 plants. What is the population density?",
       options: ["0.5 plants/m²", "2 plants/m²", "20 plants/m²", "200 plants/m²"],
       answer: "2 plants/m²",
       why: "Density = 200 ÷ 100 = 2 plants/m²."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which formula calculates population density?",
       options: [
         "Area ÷ number of organisms",
@@ -26184,7 +22734,7 @@ For example, counting plants only beside a stream may give a poor estimate of th
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Why is sampling useful in ecology?",
       options: [
         "It always gives the exact population size",
@@ -26196,7 +22746,7 @@ For example, counting plants only beside a stream may give a poor estimate of th
       why: "Sampling allows scientists to study a manageable part of a population and use it to estimate or compare the whole."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which method is commonly used to sample plants?",
       options: ["Quadrat sampling", "Blood sampling", "Vaccination", "Distillation"],
       answer: "Quadrat sampling",
@@ -26313,7 +22863,7 @@ The quadrat gives a <b>sample</b>. Several samples are needed to make a more rel
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is a quadrat?",
       options: [
         "A device for measuring temperature",
@@ -26331,7 +22881,7 @@ The quadrat gives a <b>sample</b>. Several samples are needed to make a more rel
       why: "(4 + 8 + 6) ÷ 3 = 18 ÷ 3 = 6."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why are several quadrats usually used?",
       options: [
         "To increase the reliability of the sample",
@@ -26428,14 +22978,14 @@ This is <b>sampling bias</b>.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which method reduces the chance of deliberately choosing favourable sampling locations?",
       options: ["Random sampling", "Guessing", "Selective sampling", "Visual selection"],
       answer: "Random sampling",
       why: "Random selection reduces deliberate selection of particular locations."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Quadrats placed every 5 metres along a line are an example of:",
       options: ["Random sampling", "Systematic sampling", "Capture-recapture", "Selective breeding"],
       answer: "Systematic sampling",
@@ -26552,7 +23102,7 @@ If the second sample contains a low proportion of marked animals, the estimated 
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which organisms are suitable for capture-mark-recapture?",
       options: [
         "Mobile animals",
@@ -26570,7 +23120,7 @@ If the second sample contains a low proportion of marked animals, the estimated 
       why: "(40 × 80) ÷ 20 = 160."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why are marked organisms released before the second capture?",
       options: [
         "So they can mix back into the population",
@@ -26669,7 +23219,7 @@ The answer is an <b>estimate</b>, not necessarily an exact count.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "A field has a mean plant density of 4 plants/m² and an area of 300 m². Estimate the population.",
       options: ["75", "304", "1,200", "1,500"],
       answer: "1,200",
@@ -26682,7 +23232,7 @@ The answer is an <b>estimate</b>, not necessarily an exact count.
       why: "6 × 500 = 3,000."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why is a population calculated from sampling called an estimate?",
       options: [
         "Because only part of the population was directly studied",
@@ -26789,7 +23339,7 @@ If the death rate is greater than the birth rate, the population is likely to de
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "A population of 400 animals has 20 births in one year. What is the birth rate as a percentage?",
       options: ["2%", "5%", "20%", "80%"],
       answer: "5%",
@@ -26802,7 +23352,7 @@ If the death rate is greater than the birth rate, the population is likely to de
       why: "(30 ÷ 1000) × 100 = 3%."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "If births exceed deaths and migration is negligible, what is most likely to happen?",
       options: [
         "The population increases",
@@ -26921,7 +23471,7 @@ New population:
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is immigration?",
       options: [
         "Movement into a population",
@@ -26939,7 +23489,7 @@ New population:
       why: "600 + 40 − 15 = 625."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which process reduces population size by individuals leaving the area?",
       options: ["Immigration", "Emigration", "Birth", "Growth"],
       answer: "Emigration",
@@ -27055,7 +23605,7 @@ This shows that population size can be affected by interactions between species.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which factor can directly increase the death rate of a population?",
       options: ["Disease", "More available food", "More available water", "Reduced predation"],
       answer: "Disease",
@@ -27068,7 +23618,7 @@ This shows that population size can be affected by interactions between species.
       why: "Population size depends on both biological interactions and environmental conditions."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why can limited food reduce population size?",
       options: [
         "It can increase competition and reduce survival or reproduction",
@@ -27190,7 +23740,7 @@ If deaths and emigration are greater, the population decreases.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which combination causes population size to increase?",
       options: [
         "Births and immigration greater than deaths and emigration",
@@ -27208,7 +23758,7 @@ If deaths and emigration are greater, the population decreases.
       why: "600 + 80 + 20 − 30 − 10 = 660."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "A negative population change means:",
       options: [
         "More individuals were added than removed",
@@ -27325,7 +23875,7 @@ A J-shaped curve represents rapid population increase under conditions where lim
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What shape is commonly associated with exponential population growth?",
       options: ["J-shaped", "Straight horizontal line", "Perfect circle", "V-shaped"],
       answer: "J-shaped",
@@ -27338,7 +23888,7 @@ A J-shaped curve represents rapid population increase under conditions where lim
       why: "25 → 50 → 100 → 200."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why can exponential growth not continue indefinitely in a natural ecosystem?",
       options: [
         "Resources and environmental conditions become limiting",
@@ -27440,7 +23990,7 @@ The importance of a limiting factor can change when environmental conditions cha
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is a limiting factor?",
       options: [
         "A factor that restricts population growth or distribution",
@@ -27452,7 +24002,7 @@ The importance of a limiting factor can change when environmental conditions cha
       why: "Limiting factors prevent populations from increasing without restriction."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which is an abiotic limiting factor?",
       options: ["Predation", "Competition", "Temperature", "Disease"],
       answer: "Temperature",
@@ -27557,7 +24107,7 @@ Carrying capacity is not necessarily a permanent fixed number. It can change whe
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What does carrying capacity mean?",
       options: [
         "The largest population an environment can sustainably support under particular conditions",
@@ -27575,7 +24125,7 @@ Carrying capacity is not necessarily a permanent fixed number. It can change whe
       why: "The carrying capacity is the population size the lake can sustainably support."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "What could cause carrying capacity to decrease?",
       options: [
         "Reduced food availability",
@@ -27665,14 +24215,14 @@ The population may then increase toward the new carrying capacity.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What shape is associated with logistic population growth?",
       options: ["S-shaped", "J-shaped", "Circular", "V-shaped"],
       answer: "S-shaped",
       why: "Logistic growth slows as the population approaches carrying capacity."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why does population growth slow near carrying capacity?",
       options: [
         "Limiting factors become stronger",
@@ -27778,7 +24328,7 @@ Population changes can therefore be connected to changes in other populations.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is a population fluctuation?",
       options: [
         "A change in population size over time",
@@ -27796,7 +24346,7 @@ Population changes can therefore be connected to changes in other populations.
       why: "These factors can change survival, reproduction or movement."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why can changes in one population affect another population?",
       options: [
         "Populations interact through feeding relationships and competition",
@@ -27901,7 +24451,7 @@ The predator population often responds <b>after</b> changes in prey availability
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is the prey?",
       options: [
         "An organism captured and eaten by a predator",
@@ -27919,7 +24469,7 @@ The predator population often responds <b>after</b> changes in prey availability
       why: "More prey can provide more food, increasing survival and reproduction."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why might predator numbers decrease after prey numbers fall?",
       options: [
         "There is less food available",
@@ -28023,7 +24573,7 @@ If asked why predator numbers rise after prey numbers rise, link the steps:
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which event normally occurs first in a predator-prey cycle?",
       options: [
         "An increase in prey provides more food for predators",
@@ -28041,7 +24591,7 @@ If asked why predator numbers rise after prey numbers rise, link the steps:
       why: "With fewer predators, fewer prey are captured and eaten."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why is there often a time delay between changes in prey and predator populations?",
       options: [
         "Predator reproduction and population growth take time",
@@ -28134,7 +24684,7 @@ Competition becomes particularly important when a resource is <b>limited</b>.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Competition between individuals of the same species is called:",
       options: [
         "Intraspecific competition",
@@ -28152,7 +24702,7 @@ Competition becomes particularly important when a resource is <b>limited</b>.
       why: "Competition occurs when organisms require the same limited resource."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "When is competition likely to become stronger?",
       options: [
         "When resources become limited",
@@ -28245,7 +24795,7 @@ The important condition is that the resource is <b>limited</b>.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Competition between two different species is called:",
       options: [
         "Intraspecific competition",
@@ -28263,7 +24813,7 @@ The important condition is that the resource is <b>limited</b>.
       why: "The birds are different species competing for a limited resource."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "What condition makes competition between species stronger?",
       options: [
         "A shared resource becomes limited",
@@ -28355,7 +24905,7 @@ Increasing population density can increase competition when resources are limite
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Why does competition often increase when population density increases?",
       options: [
         "More individuals require the same limited resources",
@@ -28373,7 +24923,7 @@ Increasing population density can increase competition when resources are limite
       why: "Limited resources can reduce the energy and materials available for reproduction."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "What could reduce competition for food?",
       options: [
         "An increase in available food",
@@ -28462,7 +25012,7 @@ Disease does not affect every population in exactly the same way. Transmission d
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "How can disease reduce population size?",
       options: [
         "By increasing deaths and sometimes reducing reproduction",
@@ -28480,7 +25030,7 @@ Disease does not affect every population in exactly the same way. Transmission d
       why: "Close contact can increase the chance of disease-causing organisms moving between hosts."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "An outbreak causes the death rate of a population to rise sharply. What is likely to happen to population size?",
       options: [
         "It may decrease",
@@ -28572,7 +25122,7 @@ Abiotic conditions help determine <b>where</b> organisms can survive and how com
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which is an abiotic factor?",
       options: ["Predation", "Competition", "Temperature", "Disease"],
       answer: "Temperature",
@@ -28585,7 +25135,7 @@ Abiotic conditions help determine <b>where</b> organisms can survive and how com
       why: "Water availability affects whether the plant can survive and grow."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Population distribution refers to:",
       options: [
         "Where individuals of a population occur in an area",
@@ -28680,7 +25230,7 @@ Distribution asks:
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What does population distribution describe?",
       options: [
         "Where individuals occur within an area",
@@ -28692,7 +25242,7 @@ Distribution asks:
       why: "Distribution describes the spatial pattern of individuals."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Individuals occurring in groups show which distribution pattern?",
       options: ["Clumped", "Uniform", "Random", "Linear only"],
       answer: "Clumped",
@@ -28785,7 +25335,7 @@ Succession is a <b>change in community composition over time</b>, not simply an 
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is ecological succession?",
       options: [
         "Gradual change in the species composition of a community over time",
@@ -28803,7 +25353,7 @@ Succession is a <b>change in community composition over time</b>, not simply an 
       why: "Organisms can modify their environment, affecting which species can later survive."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "What changes during ecological succession?",
       options: [
         "The composition of the community",
@@ -28889,7 +25439,7 @@ Primary succession is generally slow because soil must develop before many large
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What distinguishes primary succession?",
       options: [
         "It begins where there is no established soil",
@@ -28907,7 +25457,7 @@ Primary succession is generally slow because soil must develop before many large
       why: "The initial environment has little or no developed soil."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "What can contribute to soil development during succession?",
       options: [
         "Accumulation and decomposition of organic material",
@@ -29000,7 +25550,7 @@ Secondary succession can occur faster because important resources and biological
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is characteristic of secondary succession?",
       options: [
         "Soil remains after the disturbance",
@@ -29018,7 +25568,7 @@ Secondary succession can occur faster because important resources and biological
       why: "Existing soil and biological material allow recolonisation to begin more quickly."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "A forest is cleared but soil remains. What type of succession may follow if the area is abandoned?",
       options: ["Secondary succession", "Primary succession", "No succession", "Cellular succession"],
       answer: "Secondary succession",
@@ -29106,7 +25656,7 @@ Population growth does not mean that every individual has more children. It refe
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which four processes determine changes in human population size?",
       options: [
         "Births, deaths, immigration and emigration",
@@ -29124,7 +25674,7 @@ Population growth does not mean that every individual has more children. It refe
       why: "10,000 + 300 − 100 + 200 − 150 = 10,250."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "If deaths increase while births remain unchanged, what is likely to happen to population growth?",
       options: [
         "It will slow",
@@ -29221,7 +25771,7 @@ It does not necessarily mean the total population is larger.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "A town has 30,000 people and covers 150 km². What is its population density?",
       options: [
         "20 people/km²",
@@ -29239,7 +25789,7 @@ It does not necessarily mean the total population is larger.
       why: "80,000 ÷ 400 = 200 people/km²."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Can an area with fewer people have a higher population density than another area?",
       options: [
         "Yes, if its area is much smaller",
@@ -29326,7 +25876,7 @@ These factors interact. Population change usually cannot be explained by one fac
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which factor can directly reduce the death rate?",
       options: [
         "Improved healthcare",
@@ -29344,7 +25894,7 @@ These factors interact. Population change usually cannot be explained by one fac
       why: "Human population size changes through demographic processes and is influenced by environmental and social conditions."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "How does immigration affect the population of an area?",
       options: [
         "It adds people to the area",
@@ -29434,7 +25984,7 @@ Population size and resource consumption are related, but resource demand also d
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What can happen to resource demand when population size increases?",
       options: [
         "It may increase",
@@ -29452,7 +26002,7 @@ Population size and resource consumption are related, but resource demand also d
       why: "8,000 × 40 = 320,000 litres."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which factor besides population size affects total resource demand?",
       options: [
         "Average consumption per person",
@@ -29550,7 +26100,7 @@ Deforestation can affect several parts of an ecosystem at the same time because 
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is deforestation?",
       options: [
         "Removal or clearing of forests",
@@ -29568,7 +26118,7 @@ Deforestation can affect several parts of an ecosystem at the same time because 
       why: "Removing forests changes habitats and environmental processes."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why can deforestation increase soil erosion?",
       options: [
         "Removing vegetation leaves more soil exposed",
@@ -29651,7 +26201,7 @@ Habitat destruction does not necessarily kill every individual immediately. It c
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is habitat destruction?",
       options: [
         "Damage or removal of the place where an organism normally lives",
@@ -29669,7 +26219,7 @@ Habitat destruction does not necessarily kill every individual immediately. It c
       why: "Different species depend on suitable habitats for survival and reproduction."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which activity can cause habitat destruction?",
       options: ["Deforestation", "Photosynthesis", "Pollination", "Respiration"],
       answer: "Deforestation",
@@ -29738,7 +26288,7 @@ The important issue is the relationship between the rate of removal and the rate
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is overexploitation?",
       options: [
         "Using organisms or resources faster than they can recover",
@@ -29756,7 +26306,7 @@ The important issue is the relationship between the rate of removal and the rate
       why: "Removal exceeds replacement by 300 fish per year."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which activity is an example of overexploitation?",
       options: [
         "Catching fish faster than the population can replace them",
@@ -29832,7 +26382,7 @@ Pollution can affect organisms directly or indirectly by changing the conditions
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is pollution?",
       options: [
         "Introduction of harmful substances or energy into the environment at damaging levels",
@@ -29850,7 +26400,7 @@ Pollution can affect organisms directly or indirectly by changing the conditions
       why: "Pollution can affect different parts of the environment."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "How can pollution affect a habitat?",
       options: [
         "It can change environmental conditions and harm organisms",
@@ -29943,7 +26493,7 @@ Water pollution can cause a chain of effects rather than affecting organisms onl
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "Which substance can contribute to water pollution and excessive algal growth?",
       options: ["Nitrates", "Oxygen", "Pure water", "Nitrogen gas"],
       answer: "Nitrates",
@@ -29956,7 +26506,7 @@ Water pollution can cause a chain of effects rather than affecting organisms onl
       why: "Decomposer respiration can remove dissolved oxygen from the water."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "What may happen if dissolved oxygen becomes very low?",
       options: [
         "Aquatic animals may die",
@@ -30052,7 +26602,7 @@ If oxygen concentration becomes very low, fish may die.
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is a major cause of eutrophication?",
       options: [
         "Excess nitrates and phosphates entering water",
@@ -30070,7 +26620,7 @@ If oxygen concentration becomes very low, fish may die.
       why: "Low dissolved oxygen can prevent aquatic animals from obtaining enough oxygen for respiration."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "What happens immediately before decomposers consume large amounts of oxygen during eutrophication?",
       options: [
         "Large amounts of algae and plant material die",
@@ -30173,7 +26723,7 @@ Biomagnification is different from simple exposure to a pollutant. The key idea 
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is biomagnification?",
       options: [
         "Increase in concentration of certain persistent pollutants at higher trophic levels",
@@ -30191,7 +26741,7 @@ Biomagnification is different from simple exposure to a pollutant. The key idea 
       why: "Persistent pollutants can accumulate through repeated feeding."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which organism is most likely to have the highest pollutant concentration in this chain: algae → small fish → large fish → bird?",
       options: ["Algae", "Small fish", "Large fish", "Bird"],
       answer: "Bird",
@@ -30267,7 +26817,7 @@ Sustainability requires considering both <b>how much is removed</b> and <b>how q
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What does sustainable resource use mean?",
       options: [
         "Using a resource at a rate that allows it to remain available for the future",
@@ -30285,7 +26835,7 @@ Sustainability requires considering both <b>how much is removed</b> and <b>how q
       why: "Replacement allows the resource to recover over time."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Which practice is most likely to support sustainable fishing?",
       options: [
         "Keeping catches below levels that allow the population to recover",
@@ -30375,7 +26925,7 @@ Conservation is not simply about protecting individual animals. It also involves
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is conservation?",
       options: [
         "Protection and management of organisms, habitats and resources",
@@ -30393,7 +26943,7 @@ Conservation is not simply about protecting individual animals. It also involves
       why: "Conservation can protect organisms, habitats and resources in several ways."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why is habitat conservation important?",
       options: [
         "Species depend on habitats for resources and suitable conditions",
@@ -30482,7 +27032,7 @@ Protecting a habitat can conserve many interacting species and ecological proces
 `,
   [
     {
-      type: "mcq",
+      type: "text",
       question: "What is the main purpose of a protected area?",
       options: [
         "To conserve biodiversity, habitats or natural resources",
@@ -30500,7 +27050,7 @@ Protecting a habitat can conserve many interacting species and ecological proces
       why: "Reducing threats improves the species' chances of survival and reproduction."
     },
     {
-      type: "mcq",
+      type: "text",
       question: "Why can protecting one habitat conserve many species?",
       options: [
         "Many species depend on the same habitat",
@@ -45871,7 +42421,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is an antigen?",
       options: [
         "A substance recognised as foreign by the immune system",
@@ -45889,7 +42439,7 @@ add(
       why: "A foreign molecule recognised by the immune system can act as an antigen."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Where can antigens commonly be found?",
       options: [
         "On pathogens",
@@ -45956,7 +42506,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What produces antibodies?",
       options: [
         "Certain lymphocytes",
@@ -45974,7 +42524,7 @@ add(
       why: "An antibody has a specific structure that allows it to bind to a matching antigen."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement is correct?",
       options: [
         "An antibody is produced in response to a specific antigen",
@@ -46041,7 +42591,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why does a particular antibody bind to a particular antigen?",
       options: [
         "Their shapes are complementary",
@@ -46059,7 +42609,7 @@ add(
       why: "Antibody binding helps the immune system deal with the pathogen."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence is correct?",
       options: [
         "Pathogen → antigen recognised → antibody produced → antibody binds antigen",
@@ -46124,7 +42674,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the main function of memory cells?",
       options: [
         "To allow a faster response to a previously encountered antigen",
@@ -46142,7 +42692,7 @@ add(
       why: "Memory cells formed during the first exposure allow rapid recognition and response."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "When are memory cells formed?",
       options: [
         "During an immune response",
@@ -46211,7 +42761,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which response usually has the shorter delay?",
       options: [
         "Secondary immune response",
@@ -46229,7 +42779,7 @@ add(
       why: "Memory cells from the first exposure allow a rapid response to the same antigen."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "On an antibody concentration graph, what would normally distinguish a secondary response?",
       options: [
         "A faster and larger increase in antibody concentration",
@@ -46286,7 +42836,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is a major purpose of vaccination?",
       options: [
         "To stimulate immune memory",
@@ -46304,7 +42854,7 @@ add(
       why: "Memory cells retain information about the antigen and allow a faster secondary response."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can a vaccinated person respond quickly to a later infection with the same pathogen?",
       options: [
         "Memory cells recognise the relevant antigen",
@@ -46361,7 +42911,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "How can high vaccination coverage reduce disease transmission?",
       options: [
         "It can reduce the number of susceptible people",
@@ -46379,7 +42929,7 @@ add(
       why: "A susceptible person lacks sufficient protection against the pathogen and can potentially become infected."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can vaccination indirectly protect some unvaccinated people?",
       options: [
         "Reduced transmission can reduce their exposure",
@@ -46441,7 +42991,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is active immunity?",
       options: [
         "Immunity in which the person's immune system produces its own response",
@@ -46453,7 +43003,7 @@ add(
       why: "Active immunity results when the person's own immune system is stimulated to produce an immune response."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is passive immunity?",
       options: [
         "Receiving antibodies from another source",
@@ -46526,7 +43076,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is phagocytosis?",
       options: [
         "Engulfment and digestion of foreign material by a phagocyte",
@@ -46544,7 +43094,7 @@ add(
       why: "Phagocytes are white blood cells specialised for engulfing and digesting foreign material."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence correctly describes phagocytosis?",
       options: [
         "Engulf → digest → remove remains",
@@ -46630,7 +43180,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which cell engulfs and digests pathogens?",
       options: [
         "Phagocyte",
@@ -46642,7 +43192,7 @@ add(
       why: "Phagocytes engulf and digest pathogens and foreign particles."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which cells are involved in specific immune responses?",
       options: [
         "Lymphocytes",
@@ -46729,7 +43279,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is recognised by lymphocytes during a specific immune response?",
       options: [
         "Specific antigens",
@@ -46747,7 +43297,7 @@ add(
       why: "The pathogen must enter first, its antigens are recognised, an immune response follows, and memory cells can remain afterward."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is the immune response to a second exposure usually faster?",
       options: [
         "Memory cells remain from the first response",
@@ -46821,7 +43371,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why does a large plant need transport tissues?",
       options: [
         "To move substances over long distances",
@@ -46900,7 +43450,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What substance strengthens xylem vessel walls?",
       options: [
         "Lignin",
@@ -46918,7 +43468,7 @@ add(
       why: "Mature xylem vessel elements are dead and form hollow conducting pathways."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is the hollow interior of a xylem vessel useful?",
       options: [
         "It provides a pathway for water movement",
@@ -46985,7 +43535,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does xylem transport?",
       options: [
         "Water and dissolved mineral ions",
@@ -47003,7 +43553,7 @@ add(
       why: "Water and mineral ions absorbed by the roots are transported towards the shoots."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why does a leaf need water?",
       options: [
         "It is a raw material for photosynthesis and helps maintain turgidity",
@@ -47064,7 +43614,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why do root hair cells have long extensions?",
       options: [
         "To increase surface area for absorption",
@@ -47082,7 +43632,7 @@ add(
       why: "Water moves across the partially permeable membrane by osmosis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Where does water absorbed by root hair cells eventually enter the plant transport system?",
       options: [
         "Xylem",
@@ -47141,7 +43691,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why may roots use active transport to absorb mineral ions?",
       options: [
         "The ions may need to move against their concentration gradient",
@@ -47159,7 +43709,7 @@ add(
       why: "Plants absorb nitrate ions and use their nitrogen in the synthesis of amino acids and proteins."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What energy source powers active transport in root cells?",
       options: [
         "Energy released by respiration",
@@ -47224,7 +43774,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Where does water absorbed by root hair cells eventually enter?",
       options: [
         "Xylem",
@@ -47242,7 +43792,7 @@ add(
       why: "The absorbed water eventually reaches the xylem for transport through the plant."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is one function of the endodermis?",
       options: [
         "It helps regulate movement of substances into the vascular tissue",
@@ -47303,7 +43853,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is transpiration?",
       options: [
         "Loss of water vapour from aerial parts of a plant",
@@ -47321,7 +43871,7 @@ add(
       why: "Most water vapour leaves the plant through stomata in the leaves."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence correctly describes transpiration?",
       options: [
         "Water reaches leaves → evaporates → water vapour diffuses out",
@@ -47384,7 +43934,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the transpiration stream?",
       options: [
         "Movement of water and dissolved mineral ions through xylem towards the leaves",
@@ -47402,7 +43952,7 @@ add(
       why: "Xylem vessels conduct water and dissolved mineral ions from roots towards the shoots."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What happens to water at the end of the transpiration pathway?",
       options: [
         "It is lost as water vapour from aerial parts of the plant",
@@ -47461,7 +44011,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is cohesion?",
       options: [
         "Attraction between water molecules",
@@ -47473,7 +44023,7 @@ add(
       why: "Cohesion refers to the attraction between molecules of the same substance, such as water molecules."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is adhesion in water transport?",
       options: [
         "Attraction between water and xylem walls",
@@ -47542,7 +44092,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What creates the transpiration pull?",
       options: [
         "Water loss from leaves",
@@ -47560,7 +44110,7 @@ add(
       why: "Water molecules remain connected by cohesion, allowing tension generated at the leaf to pull water upward."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence is correct?",
       options: [
         "Transpiration → tension in xylem → upward water movement",
@@ -47646,7 +44196,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What generally happens to transpiration when humidity increases?",
       options: [
         "It decreases",
@@ -47658,7 +44208,7 @@ add(
       why: "High humidity reduces the water vapour gradient between the leaf and surrounding air."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can wind increase transpiration?",
       options: [
         "It removes water vapour around the leaf",
@@ -47737,7 +44287,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does a potometer measure directly?",
       options: [
         "Water uptake by a shoot",
@@ -47755,7 +44305,7 @@ add(
       why: "Rate = distance ÷ time = 40 ÷ 8 = 5 mm/min."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should temperature be controlled when investigating the effect of wind on transpiration?",
       options: [
         "Temperature also affects transpiration",
@@ -47820,7 +44370,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is a stoma?",
       options: [
         "A pore in the leaf surface",
@@ -47838,7 +44388,7 @@ add(
       why: "Carbon dioxide diffuses into leaves through open stomata."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is one consequence of open stomata?",
       options: [
         "Carbon dioxide can enter and water vapour can leave",
@@ -47901,7 +44451,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What controls the opening and closing of stomata?",
       options: [
         "Guard cells",
@@ -47919,7 +44469,7 @@ add(
       why: "Increased guard-cell turgor generally causes the stomatal pore to open."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is stomatal control important to a plant?",
       options: [
         "It balances gas exchange with water loss",
@@ -47986,7 +44536,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What happens when guard cells lose turgor?",
       options: [
         "The stomata generally close",
@@ -48004,7 +44554,7 @@ add(
       why: "Stomata provide the main pathway for water vapour to leave the leaf."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is one disadvantage of closing stomata for a photosynthesising leaf?",
       options: [
         "Less carbon dioxide enters",
@@ -48061,7 +44611,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Where are many stomata found in typical terrestrial leaves?",
       options: [
         "Mainly on the lower epidermis",
@@ -48079,7 +44629,7 @@ add(
       why: "Greater exposure can increase evaporation and diffusion of water vapour."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Where would floating leaves commonly have stomata?",
       options: [
         "Mainly on the upper surface",
@@ -48144,7 +44694,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "How does a thick waxy cuticle help a plant in a dry environment?",
       options: [
         "It reduces water loss from the leaf surface",
@@ -48162,7 +44712,7 @@ add(
       why: "Reducing leaf surface area can reduce the area from which water is lost."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "How can leaf hairs reduce transpiration?",
       options: [
         "They trap still humid air near the leaf surface",
@@ -48223,7 +44773,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is a possible advantage of sunken stomata?",
       options: [
         "They can reduce water loss by sheltering the stomatal pore",
@@ -48241,7 +44791,7 @@ add(
       why: "Fewer stomata can reduce the total pathway through which water vapour leaves the leaf."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence correctly explains how sunken stomata reduce water loss?",
       options: [
         "Sheltered pore → more humid air → smaller diffusion gradient → less water loss",
@@ -48310,7 +44860,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why can increasing temperature increase transpiration?",
       options: [
         "It generally increases evaporation",
@@ -48328,7 +44878,7 @@ add(
       why: "Higher temperature generally increases evaporation and therefore can increase transpiration."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which explanation is strongest?",
       options: [
         "Higher temperature increases evaporation, allowing more water vapour to diffuse out",
@@ -48393,7 +44943,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What happens to transpiration when surrounding humidity increases?",
       options: [
         "It generally decreases",
@@ -48411,7 +44961,7 @@ add(
       why: "The larger difference in water vapour concentration increases the diffusion gradient."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which condition is most likely to produce the highest transpiration rate?",
       options: [
         "Warm, dry, windy conditions",
@@ -48476,7 +45026,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why can wind increase transpiration?",
       options: [
         "It removes water vapour from around the leaf",
@@ -48494,7 +45044,7 @@ add(
       why: "Moving air removes water vapour accumulating around the leaf surface."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "If wind speed increases while temperature, humidity and leaf area remain constant, what would generally happen to transpiration?",
       options: [
         "It increases",
@@ -48557,7 +45107,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why can increased light intensity increase transpiration?",
       options: [
         "It can cause stomata to open",
@@ -48575,7 +45125,7 @@ add(
       why: "The stomatal pore provides a route for water vapour to diffuse from the leaf."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why must light intensity be controlled when testing the effect of wind on transpiration?",
       options: [
         "Light can also affect stomatal opening and transpiration",
@@ -48643,7 +45193,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which condition is most likely to give a high transpiration rate?",
       options: [
         "Hot, dry and windy",
@@ -48661,7 +45211,7 @@ add(
       why: "Humid air contains more water vapour, reducing the difference between the leaf and atmosphere."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which factor can increase transpiration by removing humid air from around a leaf?",
       options: [
         "Wind",
@@ -48724,7 +45274,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which cells form the main conducting pathway in phloem?",
       options: [
         "Sieve tube elements",
@@ -48742,7 +45292,7 @@ add(
       why: "Sieve plates contain pores that allow phloem sap to move between adjacent sieve tube elements."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is one important role of companion cells?",
       options: [
         "They support sieve tube elements and help with transport processes",
@@ -48815,7 +45365,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is an important substance transported in phloem?",
       options: [
         "Sucrose",
@@ -48833,7 +45383,7 @@ add(
       why: "Leaves produce sucrose, but growing and storage tissues throughout the plant also require organic nutrients."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement about phloem transport is correct?",
       options: [
         "It can move assimilates in different directions depending on source and sink",
@@ -48912,7 +45462,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is a source in phloem transport?",
       options: [
         "A tissue supplying assimilates",
@@ -48924,7 +45474,7 @@ add(
       why: "A source supplies assimilates to the phloem."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which is most likely to act as a sink?",
       options: [
         "A developing fruit",
@@ -48999,7 +45549,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is translocation?",
       options: [
         "Transport of assimilates through phloem from sources to sinks",
@@ -49017,7 +45567,7 @@ add(
       why: "Sucrose is transported through phloem from the source leaf to the sink tuber."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement correctly distinguishes transpiration from translocation?",
       options: [
         "Transpiration is water loss; translocation is assimilate transport",
@@ -49084,7 +45634,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why can phloem loading require energy?",
       options: [
         "Sucrose may be moved against its concentration gradient",
@@ -49102,7 +45652,7 @@ add(
       why: "Companion cells support sieve tube elements and are involved in loading and unloading."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What happens to the concentration of dissolved substances in phloem when sucrose is loaded?",
       options: [
         "It increases",
@@ -49171,7 +45721,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why does water enter phloem after sucrose loading?",
       options: [
         "The solute concentration increases and water potential decreases",
@@ -49189,7 +45739,7 @@ add(
       why: "Water entering the sieve tube increases pressure within the phloem."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What causes bulk phloem sap to move from source towards sink in the pressure-flow model?",
       options: [
         "A pressure difference",
@@ -49255,7 +45805,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What happens to sucrose at a sink?",
       options: [
         "It is unloaded from the phloem",
@@ -49273,7 +45823,7 @@ add(
       why: "Sucrose can be broken down during respiration to provide energy."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which tissue is most likely to be a sink?",
       options: [
         "A developing seed",
@@ -49358,7 +45908,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What determines the direction of phloem transport?",
       options: [
         "The positions of sources and sinks",
@@ -49376,7 +45926,7 @@ add(
       why: "The leaf is the source and the developing root is the sink."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Can phloem transport occur from roots towards shoots?",
       options: [
         "Yes, if the root is acting as a source and the shoot is a sink",
@@ -49473,7 +46023,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which tissue transports water and mineral ions?",
       options: [
         "Xylem",
@@ -49485,7 +46035,7 @@ add(
       why: "Xylem conducts water and dissolved mineral ions."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which tissue transports sucrose?",
       options: [
         "Phloem",
@@ -49560,7 +46110,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What tissue is mainly interrupted when a ring of bark is removed?",
       options: [
         "Phloem",
@@ -49578,7 +46128,7 @@ add(
       why: "Assimilates produced above the ring cannot move normally through the removed phloem to tissues below it."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does ringing provide evidence for?",
       options: [
         "The role of phloem in assimilate transport",
@@ -49645,7 +46195,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the strongest explanation for swelling above a ringed stem?",
       options: [
         "Assimilates accumulate because phloem transport has been interrupted",
@@ -49663,7 +46213,7 @@ add(
       why: "Xylem is the tissue responsible for transporting water and dissolved mineral ions."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which conclusion is best supported by a ringing experiment?",
       options: [
         "Phloem is involved in transporting assimilates",
@@ -49732,7 +46282,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is an appropriate control in a ringing investigation?",
       options: [
         "A similar stem that is not ringed",
@@ -49750,7 +46300,7 @@ add(
       why: "Repeated measurements or samples provide stronger evidence than relying on one observation."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which is most important when testing the effect of ringing?",
       options: [
         "Control other relevant variables",
@@ -49815,7 +46365,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does xylem transport?",
       options: [
         "Water and dissolved mineral ions",
@@ -49833,7 +46383,7 @@ add(
       why: "Magnesium is an important component required for chlorophyll formation."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence shows a correct pathway for water?",
       options: [
         "Soil → root hair → root tissues → xylem → leaves",
@@ -49900,7 +46450,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which mineral ion supplies nitrogen used to make amino acids?",
       options: [
         "Nitrate",
@@ -49918,7 +46468,7 @@ add(
       why: "Active transport uses energy to move substances against their concentration gradient."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is a common visible effect of magnesium deficiency?",
       options: [
         "Chlorosis",
@@ -49981,7 +46531,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is root pressure?",
       options: [
         "Positive pressure that can develop in xylem as water enters roots",
@@ -49999,7 +46549,7 @@ add(
       why: "Root pressure can contribute to guttation, especially when transpiration is low."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is root pressure not considered the main explanation for water reaching the tops of all tall plants?",
       options: [
         "It is insufficient to account for long-distance transport in tall plants",
@@ -50087,7 +46637,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which process provides a major explanation for long-distance upward water movement in tall plants?",
       options: [
         "Transpiration pull",
@@ -50105,7 +46655,7 @@ add(
       why: "Evaporation and diffusion of water vapour from leaves create tension in the xylem water column."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement correctly compares root pressure and transpiration pull?",
       options: [
         "Root pressure is positive pressure in roots, while transpiration pull is associated with tension caused by water loss",
@@ -50190,7 +46740,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which tissue transports water and dissolved mineral ions?",
       options: [
         "Xylem",
@@ -50202,7 +46752,7 @@ add(
       why: "Xylem transports water and dissolved mineral ions through the plant."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which tissue transports sucrose from a source to a sink?",
       options: [
         "Phloem",
@@ -50280,7 +46830,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the main purpose of photosynthesis?",
       options: [
         "To make glucose using light energy",
@@ -50298,7 +46848,7 @@ add(
       why: "These are the reactants and products of photosynthesis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Where does photosynthesis mainly occur in a green plant cell?",
       options: [
         "Chloroplast",
@@ -50363,7 +46913,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the main role of chlorophyll in photosynthesis?",
       options: [
         "To absorb light energy",
@@ -50381,7 +46931,7 @@ add(
       why: "The light reaching our eyes from the leaf contains relatively more green wavelengths."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What would be expected in a leaf region containing no chlorophyll?",
       options: [
         "Normal photosynthesis would not occur there",
@@ -50446,7 +46996,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What organelle is the main site of photosynthesis?",
       options: [
         "Chloroplast",
@@ -50464,7 +47014,7 @@ add(
       why: "Chlorophyll is the light-absorbing pigment used in photosynthesis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why do palisade mesophyll cells commonly contain many chloroplasts?",
       options: [
         "They are well positioned to receive light for photosynthesis",
@@ -50525,7 +47075,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Through which structures does carbon dioxide mainly enter a leaf?",
       options: [
         "Stomata",
@@ -50543,7 +47093,7 @@ add(
       why: "Carbon dioxide moves down its concentration gradient by diffusion."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is one possible effect of stomata remaining closed during daylight?",
       options: [
         "Less carbon dioxide enters the leaf",
@@ -50614,7 +47164,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "How does water reach leaves from the roots?",
       options: [
         "Through xylem",
@@ -50632,7 +47182,7 @@ add(
       why: "Water stress can cause guard cells to lose turgor and stomata to close, restricting carbon dioxide diffusion."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is water considered a raw material for photosynthesis?",
       options: [
         "It participates in the photosynthetic reactions",
@@ -50699,7 +47249,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Into what carbohydrate is excess glucose commonly converted for storage?",
       options: [
         "Starch",
@@ -50717,7 +47267,7 @@ add(
       why: "Cellulose is made from glucose and forms a major structural component of plant cell walls."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What can glucose be used for immediately after it is produced?",
       options: [
         "Respiration",
@@ -50792,7 +47342,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What colour indicates starch when iodine solution is added?",
       options: [
         "Blue-black",
@@ -50810,7 +47360,7 @@ add(
       why: "Removing chlorophyll reduces the green colour that could obscure the starch test result."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does a blue-black region in the iodine test show?",
       options: [
         "Starch is present",
@@ -50873,7 +47423,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why is a plant destarched before some photosynthesis experiments?",
       options: [
         "To reduce starch already stored in the leaves",
@@ -50891,7 +47441,7 @@ add(
       why: "Darkness prevents photosynthesis while respiration uses stored carbohydrates."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What continues during destarching and helps use stored carbohydrate?",
       options: [
         "Respiration",
@@ -50958,7 +47508,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why is part of a leaf covered with opaque material in this experiment?",
       options: [
         "To prevent light reaching that region",
@@ -50976,7 +47526,7 @@ add(
       why: "Iodine turns blue-black in the presence of starch."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is the strongest conclusion from a successful light experiment?",
       options: [
         "Light is necessary for starch formation through photosynthesis under the tested conditions",
@@ -51041,7 +47591,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What gas is required as a raw material for photosynthesis?",
       options: [
         "Carbon dioxide",
@@ -51059,7 +47609,7 @@ add(
       why: "Potassium hydroxide absorbs carbon dioxide and can create a carbon-dioxide-deficient condition."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should the experimental regions receive similar light?",
       options: [
         "So that light does not become a second major variable",
@@ -51126,7 +47676,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which gas is produced during photosynthesis?",
       options: [
         "Oxygen",
@@ -51144,7 +47694,7 @@ add(
       why: "Rate = volume ÷ time = 30 ÷ 5 = 6 cm³/min."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is counting bubbles from an aquatic plant only an approximate measure of photosynthesis?",
       options: [
         "Bubbles can differ in size",
@@ -51215,7 +47765,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What normally happens when light intensity increases from a very low level?",
       options: [
         "The rate of photosynthesis increases",
@@ -51233,7 +47783,7 @@ add(
       why: "Another factor is limiting the rate of photosynthesis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which factor could become limiting when light intensity is already high?",
       options: [
         "Carbon dioxide concentration",
@@ -51302,7 +47852,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why can increasing carbon dioxide concentration increase photosynthesis?",
       options: [
         "Carbon dioxide is a raw material for photosynthesis",
@@ -51320,7 +47870,7 @@ add(
       why: "Further increases in carbon dioxide no longer increase the rate because another requirement limits photosynthesis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "If carbon dioxide concentration is the limiting factor, what happens when it is increased?",
       options: [
         "Photosynthesis rate increases",
@@ -51399,7 +47949,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why does temperature affect photosynthesis?",
       options: [
         "Photosynthesis involves enzyme-controlled reactions",
@@ -51417,7 +47967,7 @@ add(
       why: "High temperatures can impair enzyme activity and may cause water stress and stomatal closure."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does the optimum temperature represent?",
       options: [
         "The temperature at which the measured photosynthesis rate is highest",
@@ -51497,7 +48047,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is a limiting factor?",
       options: [
         "A factor that restricts the rate of a process",
@@ -51515,7 +48065,7 @@ add(
       why: "Increasing a non-limiting factor has little effect while another factor remains limiting."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement is correct?",
       options: [
         "Increasing a factor only increases photosynthesis significantly when that factor is limiting",
@@ -51600,7 +48150,7 @@ add(
       why: "Rate = 50 ÷ 10 = 5 cm³/min."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why might measured oxygen accumulation underestimate total oxygen produced by photosynthesis?",
       options: [
         "The plant also uses oxygen during respiration",
@@ -51686,7 +48236,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does a plateau in a photosynthesis graph usually suggest?",
       options: [
         "Increasing the tested factor no longer increases the rate",
@@ -51704,7 +48254,7 @@ add(
       why: "The rate has reached a point where another factor is limiting."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What should you identify first when interpreting a graph?",
       options: [
         "The variables and their units",
@@ -51784,7 +48334,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "A student changes light intensity and measures oxygen production. What is the independent variable?",
       options: [
         "Light intensity",
@@ -51796,7 +48346,7 @@ add(
       why: "The independent variable is the factor deliberately changed."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is the dependent variable in this investigation?",
       options: [
         "Rate of oxygen production",
@@ -51875,7 +48425,7 @@ add(
       why: "Repeats provide multiple measurements and reduce reliance on a single potentially unusual result."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which is generally a better measure than simply counting gas bubbles?",
       options: [
         "Measuring gas volume",
@@ -51887,7 +48437,7 @@ add(
       why: "Gas bubbles can vary in size, whereas gas volume provides a more direct quantitative measurement."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should temperature be kept constant in a light-intensity investigation?",
       options: [
         "Temperature also affects photosynthesis",
@@ -51968,7 +48518,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "A photosynthesis graph becomes flat as light intensity increases. What does this indicate?",
       options: [
         "Another factor has become limiting",
@@ -51986,7 +48536,7 @@ add(
       why: "Increasing carbon dioxide increased the rate, showing that carbon dioxide was limiting under the previous conditions."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement best describes limiting factors?",
       options: [
         "The factor in shortest effective supply can restrict the rate of photosynthesis",
@@ -52055,7 +48605,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why does a broad leaf surface help photosynthesis?",
       options: [
         "It allows the leaf to intercept more light",
@@ -52073,7 +48623,7 @@ add(
       why: "Xylem transports water and dissolved mineral ions from the roots towards the shoots."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is one important function of stomata in photosynthesis?",
       options: [
         "They allow carbon dioxide to enter the leaf",
@@ -52134,7 +48684,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is an important function of the waxy cuticle?",
       options: [
         "Reducing water loss",
@@ -52152,7 +48702,7 @@ add(
       why: "Light needs to reach chloroplast-containing cells beneath the epidermis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Through which structures does most carbon dioxide enter a leaf?",
       options: [
         "Stomata",
@@ -52217,7 +48767,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why do palisade cells commonly contain many chloroplasts?",
       options: [
         "To absorb substantial amounts of light for photosynthesis",
@@ -52235,7 +48785,7 @@ add(
       why: "Palisade mesophyll commonly lies directly beneath the upper epidermis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which substance is delivered to the leaf through xylem?",
       options: [
         "Water",
@@ -52292,7 +48842,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is a major feature of spongy mesophyll?",
       options: [
         "Large internal air spaces",
@@ -52310,7 +48860,7 @@ add(
       why: "Carbon dioxide entering through stomata can diffuse through internal air spaces towards photosynthesising cells."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why are internal air spaces useful in a leaf?",
       options: [
         "They facilitate movement of gases within the leaf",
@@ -52371,7 +48921,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does xylem in leaf veins transport?",
       options: [
         "Water and dissolved mineral ions",
@@ -52389,7 +48939,7 @@ add(
       why: "Phloem transports organic assimilates such as sucrose."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is the xylem network important for photosynthesis?",
       options: [
         "It supplies water to photosynthetic tissues",
@@ -52452,7 +49002,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Where are stomata commonly more numerous in many terrestrial leaves?",
       options: [
         "Lower epidermis",
@@ -52470,7 +49020,7 @@ add(
       why: "Guard-cell turgor changes alter the stomatal pore."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can having more stomata on the lower surface reduce water loss?",
       options: [
         "The lower surface is often less exposed to direct sunlight and moving air",
@@ -52543,7 +49093,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which tissue is usually directly below the upper epidermis?",
       options: [
         "Palisade mesophyll",
@@ -52561,7 +49111,7 @@ add(
       why: "Loosely arranged spongy mesophyll cells create internal air spaces for gas diffusion."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence is most appropriate from the upper surface towards the lower surface?",
       options: [
         "Upper epidermis → palisade mesophyll → spongy mesophyll → lower epidermis",
@@ -52717,7 +49267,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which process stores energy in glucose?",
       options: [
         "Photosynthesis",
@@ -52729,7 +49279,7 @@ add(
       why: "Photosynthesis uses light energy to form glucose, storing energy chemically."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which process releases energy from glucose?",
       options: [
         "Respiration",
@@ -52806,7 +49356,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Into which substance can excess glucose be converted for storage?",
       options: [
         "Starch",
@@ -52824,7 +49374,7 @@ add(
       why: "Cellulose is a carbohydrate polymer formed from glucose units."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What additional mineral element is required when plants make amino acids and proteins?",
       options: [
         "Nitrogen",
@@ -52887,7 +49437,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why is starch useful as a storage carbohydrate in plants?",
       options: [
         "It allows carbohydrate to be stored for later use",
@@ -52905,7 +49455,7 @@ add(
       why: "Iodine forms a blue-black colour when starch is present."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What can happen to stored starch when carbohydrate is needed?",
       options: [
         "It can be broken down into smaller sugars",
@@ -52972,7 +49522,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which mineral ion is important for chlorophyll production?",
       options: [
         "Magnesium",
@@ -52990,7 +49540,7 @@ add(
       why: "Chlorophyll absorbs light energy needed for photosynthesis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does nitrate provide to a plant?",
       options: [
         "Nitrogen",
@@ -53059,7 +49609,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why is a plant destarched before many photosynthesis experiments?",
       options: [
         "To reduce pre-existing starch",
@@ -53077,7 +49627,7 @@ add(
       why: "Glucose produced by photosynthesis can be converted into starch."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does a blue-black iodine test indicate?",
       options: [
         "Starch is present",
@@ -53140,7 +49690,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why is part of a leaf sometimes covered when testing whether light is required?",
       options: [
         "To create a comparison between a light-exposed and light-excluded region",
@@ -53158,7 +49708,7 @@ add(
       why: "Keeping control variables constant helps ensure that changes in the dependent variable are due to the independent variable."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "If both light intensity and temperature are changed in an experiment, what problem occurs?",
       options: [
         "The effect of each factor cannot be separated confidently",
@@ -53243,7 +49793,7 @@ add(
       why: "Carbon dioxide and water provide the chemical raw materials, while light provides the energy."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which pathway correctly describes water movement to a photosynthetic leaf?",
       options: [
         "Roots → xylem → leaf",
@@ -53312,7 +49862,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why do plants need mineral ions?",
       options: [
         "They are required for making important substances and supporting normal growth",
@@ -53330,7 +49880,7 @@ add(
       why: "Root cells absorb dissolved mineral ions from the soil solution."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What may happen when an essential mineral ion is deficient?",
       options: [
         "Plant growth or normal metabolism may be affected",
@@ -53407,7 +49957,7 @@ add(
       why: "Nitrate ions are an important source of nitrogen for plants."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What can plants make using nitrogen supplied by nitrate ions?",
       options: [
         "Amino acids and proteins",
@@ -53488,7 +50038,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which symptom is commonly associated with nitrate deficiency?",
       options: [
         "Reduced growth and yellowing of leaves",
@@ -53506,7 +50056,7 @@ add(
       why: "Without sufficient nitrogen, production of proteins needed for normal growth is restricted."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why may older leaves show nitrate deficiency symptoms first?",
       options: [
         "Nitrogen can be redistributed from older tissues to younger growing tissues",
@@ -53569,7 +50119,7 @@ add(
       why: "Magnesium is required for the production of chlorophyll."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can magnesium deficiency reduce photosynthesis?",
       options: [
         "It can reduce chlorophyll production",
@@ -53654,7 +50204,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is chlorosis?",
       options: [
         "Yellowing or loss of green colour in leaves",
@@ -53672,7 +50222,7 @@ add(
       why: "Insufficient magnesium can reduce chlorophyll production, making leaves pale or yellow."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement is correct?",
       options: [
         "Magnesium is required for chlorophyll production",
@@ -53741,7 +50291,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which mineral provides nitrogen needed to make amino acids?",
       options: [
         "Nitrate",
@@ -53753,7 +50303,7 @@ add(
       why: "Nitrate ions provide nitrogen needed for amino acid and protein production."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which mineral is required for chlorophyll production?",
       options: [
         "Magnesium",
@@ -53846,7 +50396,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the independent variable when testing the effect of nitrate concentration?",
       options: [
         "Nitrate concentration",
@@ -53864,7 +50414,7 @@ add(
       why: "Replicates help show whether the observed pattern is consistent rather than caused by one unusual plant."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which variable should be kept constant when testing nitrate concentration?",
       options: [
         "Light intensity",
@@ -53939,7 +50489,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is hydroponics?",
       options: [
         "Growing plants using a nutrient solution without ordinary soil",
@@ -53957,7 +50507,7 @@ add(
       why: "A controlled nutrient solution makes it easier to isolate the effect of a particular mineral."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "When testing magnesium deficiency, what should the control group receive?",
       options: [
         "A complete nutrient supply including magnesium",
@@ -54024,7 +50574,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Where are root hair cells found?",
       options: [
         "On young roots",
@@ -54042,7 +50592,7 @@ add(
       why: "The long root hair increases the surface area in contact with the soil solution."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What provides the energy for active transport of mineral ions?",
       options: [
         "Respiration",
@@ -54105,7 +50655,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which process can move mineral ions into a root cell against a concentration gradient?",
       options: [
         "Active transport",
@@ -54123,7 +50673,7 @@ add(
       why: "Movement against the gradient does not occur passively and requires energy."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can severe waterlogging reduce mineral ion uptake?",
       options: [
         "It can reduce oxygen availability for root respiration",
@@ -54194,7 +50744,7 @@ add(
       why: "Xylem transports water and dissolved mineral ions towards the shoots."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What happens to mineral ions after they reach plant tissues?",
       options: [
         "They can be used in cellular processes and synthesis of substances",
@@ -54206,7 +50756,7 @@ add(
       why: "Mineral ions are required for processes such as protein and chlorophyll production."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which pathway is correct?",
       options: [
         "Soil → roots → xylem → shoots",
@@ -54277,7 +50827,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why can yellow leaves not always be used to identify one specific mineral deficiency?",
       options: [
         "Different problems can produce similar symptoms",
@@ -54295,7 +50845,7 @@ add(
       why: "A controlled experiment can test whether changing a particular mineral causes the observed effect."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A plant has poor growth and pale leaves. What should a scientist do before confidently diagnosing nitrate deficiency?",
       options: [
         "Collect further evidence under controlled conditions",
@@ -54368,7 +50918,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which treatment produced the greatest mean growth in the example?",
       options: [
         "50 mg/L and 100 mg/L",
@@ -54386,7 +50936,7 @@ add(
       why: "Both concentrations produced the same mean growth of 11 cm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What may have become limiting at 50 mg/L nitrate?",
       options: [
         "Another growth factor",
@@ -54463,7 +51013,7 @@ add(
       why: "Replicates help determine whether the observed effect is consistent."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which is the best improvement if only one plant is used in each treatment?",
       options: [
         "Use several plants in each treatment",
@@ -54475,7 +51025,7 @@ add(
       why: "Replicates reduce the influence of unusual individual plants."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should other mineral nutrients be kept adequate when testing magnesium?",
       options: [
         "To isolate the effect of magnesium deficiency",
@@ -54617,7 +51167,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What happens when a mineral ion moves into a root cell down its concentration gradient?",
       options: [
         "It can move without energy being supplied for active transport",
@@ -54635,7 +51185,7 @@ add(
       why: "Active transport uses energy to move ions against their concentration gradient."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Where does the energy for active mineral ion uptake come from?",
       options: [
         "Respiration",
@@ -54704,7 +51254,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why does the root hair increase mineral ion absorption?",
       options: [
         "It increases surface area in contact with the soil solution",
@@ -54722,7 +51272,7 @@ add(
       why: "Active transport of mineral ions requires energy."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which structure controls what substances can enter a root hair cell?",
       options: [
         "Cell membrane",
@@ -54791,7 +51341,7 @@ add(
       why: "Root cells use oxygen in aerobic respiration to release energy."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can waterlogging reduce mineral ion absorption?",
       options: [
         "It can reduce oxygen availability for root respiration",
@@ -54868,7 +51418,7 @@ add(
       why: "Proteins are required for many cellular functions and normal growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which mineral deficiency can directly reduce chlorophyll production?",
       options: [
         "Magnesium deficiency",
@@ -54941,7 +51491,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why can plant growth plateau as mineral concentration increases?",
       options: [
         "Another factor may have become limiting",
@@ -54959,7 +51509,7 @@ add(
       why: "A factor that restricts the rate of a process is a limiting factor."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement is most scientifically accurate?",
       options: [
         "Increasing a mineral nutrient does not always increase growth",
@@ -55044,7 +51594,7 @@ add(
       why: "The response has reached a plateau."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "If growth decreases at a very high mineral concentration, what could this indicate?",
       options: [
         "The concentration may be harmful",
@@ -55200,7 +51750,7 @@ add(
       why: "Growth is a measurable permanent increase in size or dry mass."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which process increases the number of cells in a growing plant region?",
       options: [
         "Mitosis",
@@ -55285,7 +51835,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which combination is required for successful germination of most seeds?",
       options: [
         "Water, oxygen and a suitable temperature",
@@ -55380,7 +51930,7 @@ add(
       why: "15 ÷ 20 × 100 = 75%."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should only one major condition be changed when testing a germination factor?",
       options: [
         "So the effect of that factor can be identified",
@@ -55453,7 +52003,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is seed dormancy?",
       options: [
         "A period when a viable seed does not germinate",
@@ -55526,7 +52076,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which structure elongates to raise the cotyledons above the soil in epigeal germination?",
       options: [
         "Hypocotyl",
@@ -55597,7 +52147,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Where do the cotyledons remain during hypogeal germination?",
       options: [
         "Below the soil surface",
@@ -55680,7 +52230,7 @@ add(
       why: "Primary growth extends the length of plant organs."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What process increases cell number in a growing meristem?",
       options: [
         "Mitosis",
@@ -55749,7 +52299,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does secondary growth mainly increase?",
       options: [
         "Thickness or girth",
@@ -55828,7 +52378,7 @@ add(
       why: "Auxin is an important chemical regulator of plant growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What can unequal auxin distribution cause in a young shoot?",
       options: [
         "Unequal cell elongation and bending",
@@ -55899,7 +52449,7 @@ add(
       why: "Phototropism describes growth in response to the direction of light."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why does a young shoot bend towards light?",
       options: [
         "The two sides of the shoot grow at different rates",
@@ -55974,7 +52524,7 @@ add(
       why: "Auxin becomes more concentrated on the side away from the light."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why does the shaded side become longer?",
       options: [
         "It undergoes greater cell elongation",
@@ -56049,7 +52599,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does positive tropism mean?",
       options: [
         "Growth towards the stimulus",
@@ -56130,7 +52680,7 @@ add(
       why: "Gravitropism describes growth responses to the direction of gravity."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What type of gravitropism does a root normally show?",
       options: [
         "Positive gravitropism",
@@ -56209,7 +52759,7 @@ add(
       why: "Gravity causes auxin redistribution towards the lower side."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does relatively high auxin concentration do to root cell elongation?",
       options: [
         "It inhibits elongation",
@@ -56292,7 +52842,7 @@ add(
       why: "The direction of light is deliberately changed."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which is a useful dependent variable?",
       options: [
         "Angle of shoot curvature",
@@ -56363,7 +52913,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does Group A provide in this experiment?",
       options: [
         "A comparison with seedlings exposed to directional light",
@@ -56450,7 +53000,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the stimulus for phototropism?",
       options: [
         "Light",
@@ -56462,7 +53012,7 @@ add(
       why: "Phototropism is directional growth in response to light."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A root grows downward in response to gravity. What is this?",
       options: [
         "Positive gravitropism",
@@ -56533,7 +53083,7 @@ add(
       why: "Cell elongation increases the size and length of an existing cell."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement is correct?",
       options: [
         "Plant growth can involve both cell division and cell elongation",
@@ -56606,7 +53156,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "How can a high auxin concentration affect root elongation?",
       options: [
         "It can inhibit root cell elongation",
@@ -56707,7 +53257,7 @@ add(
       why: "Growth fell from 9 mm at 2 units to 5 mm and then 1 mm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is the safest conclusion from the data?",
       options: [
         "2 units gave the greatest measured growth under the conditions tested",
@@ -56766,7 +53316,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is apical dominance?",
       options: [
         "Suppression of some lateral bud growth by the main shoot tip",
@@ -56851,7 +53401,7 @@ add(
       why: "Appropriate auxin treatment can stimulate root formation."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should different auxin concentrations be tested?",
       options: [
         "The response depends on concentration",
@@ -56942,7 +53492,7 @@ add(
       why: "Root number is a measurable response to the treatment."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should several cuttings be used at each concentration?",
       options: [
         "To reduce the effect of individual variation",
@@ -57025,7 +53575,7 @@ add(
       why: "11 mm − 5 mm = 6 mm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is the strongest conclusion from the data?",
       options: [
         "2 mg/L produced the greatest measured root growth under the experimental conditions",
@@ -57183,7 +53733,7 @@ add(
       why: "Actively dividing cells in the meristem increase cell number in the growing root."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which process occurs actively in the root apical meristem?",
       options: [
         "Mitosis",
@@ -57254,7 +53804,7 @@ add(
       why: "The shoot apex contains the actively dividing region responsible for primary shoot growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What type of cell division occurs in the shoot apical meristem?",
       options: [
         "Mitosis",
@@ -57335,7 +53885,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which zone contains actively dividing cells?",
       options: [
         "Zone of cell division",
@@ -57416,7 +53966,7 @@ add(
       why: "The root cap shields delicate tissues from mechanical damage."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is mucilage useful at the root tip?",
       options: [
         "It helps reduce friction with soil particles",
@@ -57503,7 +54053,7 @@ add(
       why: "Change in length = 10 − 4 = 6 cm. 6 ÷ 3 = 2 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which equation correctly calculates growth rate?",
       options: [
         "Change in length ÷ time",
@@ -57584,7 +54134,7 @@ add(
       why: "Growth rate is the measured response."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should seedlings be similar in starting size?",
       options: [
         "To reduce the effect of starting differences on the result",
@@ -57661,7 +54211,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does the gradient of a growth-versus-time graph represent?",
       options: [
         "Growth rate",
@@ -57752,7 +54302,7 @@ add(
       why: "One plant may behave unusually and distort the result."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should water supply be kept constant when testing fertiliser concentration?",
       options: [
         "Water could also affect plant growth",
@@ -57831,7 +54381,7 @@ add(
       why: "The apical meristem is an important site of cell division for primary shoot growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence best describes plant primary growth?",
       options: [
         "Cell division → cell elongation → differentiation",
@@ -57898,7 +54448,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which type of growth increases the length of a root?",
       options: [
         "Primary growth",
@@ -57910,7 +54460,7 @@ add(
       why: "Primary growth increases the length of roots and shoots."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which type of growth increases the girth of a stem?",
       options: [
         "Secondary growth",
@@ -57987,7 +54537,7 @@ add(
       why: "Lateral meristems are important in secondary growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which lateral meristem is important in secondary growth?",
       options: [
         "Vascular cambium",
@@ -58062,7 +54612,7 @@ add(
       why: "Secondary growth increases thickness."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is secondary growth particularly important in trees?",
       options: [
         "It increases stem thickness and structural support",
@@ -58137,7 +54687,7 @@ add(
       why: "Lateral meristems can produce additional tissues that increase root thickness."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A root becomes wider. Which process is mainly responsible?",
       options: [
         "Secondary growth",
@@ -58224,7 +54774,7 @@ add(
       why: "22 − 10 = 12 cm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is the difference between growth and growth rate in an experiment?",
       options: [
         "Growth is the change in size; growth rate is the change in size per unit time",
@@ -58305,7 +54855,7 @@ add(
       why: "A steep gradient represents a large change in size per unit time."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does a horizontal section of a growth graph indicate?",
       options: [
         "Little or no increase in the measured quantity",
@@ -58457,7 +55007,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "How does mitosis contribute to plant growth?",
       options: [
         "It increases the number of cells",
@@ -58532,7 +55082,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What happens during cell elongation?",
       options: [
         "Cells increase in length",
@@ -58611,7 +55161,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is cell differentiation?",
       options: [
         "The development of specialised cell structures and functions",
@@ -58698,7 +55248,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "In which zone does rapid mitotic division mainly occur?",
       options: [
         "Zone of cell division",
@@ -58710,7 +55260,7 @@ add(
       why: "Meristematic cells near the root tip divide rapidly."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A region contains cells that are rapidly increasing in length. Which zone is this?",
       options: [
         "Zone of elongation",
@@ -58781,7 +55331,7 @@ add(
       why: "The cells develop specialised structures and functions."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why does a root hair have a long extension?",
       options: [
         "To increase surface area for absorption",
@@ -58850,7 +55400,7 @@ add(
       why: "Meristematic regions supply cells needed for continued growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What can happen to a daughter cell produced by a meristem?",
       options: [
         "It can enlarge and later differentiate",
@@ -58994,7 +55544,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is auxin?",
       options: [
         "A plant growth hormone",
@@ -59065,7 +55615,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why must auxin move away from the shoot tip?",
       options: [
         "To influence growth in other regions of the shoot",
@@ -59142,7 +55692,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is positive phototropism in a shoot?",
       options: [
         "Growth toward light",
@@ -59219,7 +55769,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the dependent variable when investigating phototropism?",
       options: [
         "Direction or amount of shoot bending",
@@ -59296,7 +55846,7 @@ add(
       why: "The shoots are growing toward the light."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is a control group useful?",
       options: [
         "It provides a comparison for the treatment",
@@ -59367,7 +55917,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is positive gravitropism in roots?",
       options: [
         "Growth in the direction of gravity",
@@ -59444,7 +55994,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What type of gravitropism does a shoot generally show?",
       options: [
         "Negative gravitropism",
@@ -59545,7 +56095,7 @@ add(
       why: "Gravitropism is directional growth in response to gravity."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A root grows downward while a shoot grows upward when a seedling is placed horizontally. Which combination is correct?",
       options: [
         "Root: positive gravitropism; shoot: negative gravitropism",
@@ -59606,7 +56156,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why is a control group used in a phototropism experiment?",
       options: [
         "To provide a comparison",
@@ -59683,7 +56233,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which is the independent variable in an experiment testing the effect of light direction on phototropism?",
       options: [
         "Direction of light",
@@ -59823,7 +56373,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is seed dormancy?",
       options: [
         "A period when a viable seed does not germinate",
@@ -59900,7 +56450,7 @@ add(
       why: "Germination is the beginning of active growth of the embryo."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is water important at the beginning of germination?",
       options: [
         "It hydrates tissues and enables metabolic processes",
@@ -59967,7 +56517,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Why does a germinating seed need stored food?",
       options: [
         "To provide energy and materials before the seedling can photosynthesise effectively",
@@ -60046,7 +56596,7 @@ add(
       why: "Germination involves many energy-demanding metabolic processes."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which gas is required for aerobic respiration during germination?",
       options: [
         "Oxygen",
@@ -60184,7 +56734,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does the radicle develop into?",
       options: [
         "The primary root",
@@ -60253,7 +56803,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does the plumule develop into?",
       options: [
         "The shoot system",
@@ -60320,7 +56870,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What are cotyledons?",
       options: [
         "Embryonic seed leaves",
@@ -60385,7 +56935,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is characteristic of epigeal germination?",
       options: [
         "Cotyledons are lifted above the soil",
@@ -60456,7 +57006,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is characteristic of hypogeal germination?",
       options: [
         "Cotyledons remain below the soil",
@@ -60553,7 +57103,7 @@ add(
       why: "Hypogeal germination leaves the cotyledons underground."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which pairing is correct?",
       options: [
         "Epigeal — hypocotyl elongation — cotyledons above soil",
@@ -60689,7 +57239,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is the independent variable in this investigation?",
       options: [
         "Water availability",
@@ -60772,7 +57322,7 @@ add(
       why: "The growing embryo requires energy for many cellular processes."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which variable should be kept constant when comparing oxygen availability?",
       options: [
         "Temperature",
@@ -60855,7 +57405,7 @@ add(
       why: "Germination depends on enzyme-controlled metabolic reactions."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "If 30°C gives the highest germination percentage in an experiment, what can be concluded?",
       options: [
         "30°C was most favourable under the conditions tested",
@@ -60928,7 +57478,7 @@ add(
       why: "(30 ÷ 40) × 100 = 75%."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is germination percentage useful when comparing groups of different sizes?",
       options: [
         "It accounts for the different numbers of seeds tested",
@@ -61078,7 +57628,7 @@ add(
       why: "(60 + 80 + 70) ÷ 3 = 210 ÷ 3 = 70%."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which action most directly improves reliability?",
       options: [
         "Repeating the investigation with several seeds",
@@ -61137,7 +57687,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does validity mainly concern?",
       options: [
         "Whether the investigation tests what it is intended to test",
@@ -61319,7 +57869,7 @@ add(
       why: "A larger absorbing surface improves contact with soil water and ions."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What major change occurs when the young leaves become photosynthetic?",
       options: [
         "The seedling can manufacture organic food using photosynthesis",
@@ -61392,7 +57942,7 @@ add(
       why: "Growth processes require energy."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What happens after green leaves become photosynthetically active?",
       options: [
         "The seedling can manufacture glucose using photosynthesis",
@@ -61467,7 +58017,7 @@ add(
       why: "Early growth does not immediately depend on photosynthesis."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is likely to happen if a seedling remains in darkness for a prolonged period?",
       options: [
         "It cannot maintain normal photosynthetic food production",
@@ -61550,7 +58100,7 @@ add(
       why: "The two systems obtain different resources needed for continued growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A seedling has functioning leaves but severely damaged roots. Which process is most directly affected first?",
       options: [
         "Water and mineral ion uptake",
@@ -61625,7 +58175,7 @@ add(
       why: "Aerobic respiration requires oxygen and releases energy for cellular processes."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A seed receives suitable water, oxygen and temperature but does not germinate. Which is a possible explanation?",
       options: [
         "The seed may be non-viable or dormant",
@@ -61708,7 +58258,7 @@ add(
       why: "(18 ÷ 20) × 100 = 90%."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does the number of seeds germinated represent in this type of data?",
       options: [
         "Cumulative germination",
@@ -61787,7 +58337,7 @@ add(
       why: "(20 − 8) ÷ (6 − 2) = 12 ÷ 4 = 3 seeds per day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why is the final number of germinated seeds alone insufficient for calculating germination rate?",
       options: [
         "A rate requires a change in measurement over a time interval",
@@ -61854,7 +58404,7 @@ add(
       why: "Viability means the seed has the capacity to germinate."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "A seed fails to germinate. Can you immediately conclude that it is non-viable?",
       options: [
         "No, it could be dormant or have unsuitable conditions",
@@ -61921,7 +58471,7 @@ add(
       why: "Dormancy delays germination even though the seed remains alive."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement correctly distinguishes dormancy from non-viability?",
       options: [
         "A dormant seed is alive, while a non-viable seed cannot successfully germinate",
@@ -62002,7 +58552,7 @@ add(
       why: "(55 ÷ 100) × 100 = 55%."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should the initial quality of seeds be controlled when comparing storage methods?",
       options: [
         "Different starting seed quality could affect later germination",
@@ -62091,7 +58641,7 @@ add(
       why: "Hydration is necessary for the biochemical processes involved in germination."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence is most appropriate?",
       options: [
         "Water uptake → metabolic activation → stored food mobilisation → respiration and growth",
@@ -62170,7 +58720,7 @@ add(
       why: "The embryo requires energy for cellular processes."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is the main role of enzymes during food mobilisation?",
       options: [
         "They catalyse chemical reactions that break stored substances down",
@@ -62239,7 +58789,7 @@ add(
       why: "A control helps identify changes caused by factors other than the seeds."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "If carbon dioxide increases around germinating seeds, what does this provide evidence for?",
       options: [
         "Respiration",
@@ -62379,7 +58929,7 @@ add(
       why: "Roots commonly show positive gravitropism."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What is positive gravitropism?",
       options: [
         "Growth towards gravity",
@@ -62456,7 +59006,7 @@ add(
       why: "The shoot grows away from the direction of gravitational pull."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why does upward shoot growth benefit a developing seedling?",
       options: [
         "It helps leaves reach light for photosynthesis",
@@ -62531,7 +59081,7 @@ add(
       why: "Water moves across a partially permeable membrane down a water potential gradient."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why can root hair cells contain many mitochondria?",
       options: [
         "They may need energy for active transport of mineral ions",
@@ -62612,7 +59162,7 @@ add(
       why: "Xylem transports water from the roots towards the shoots."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What happens to photosynthesis when a seedling is kept in complete darkness?",
       options: [
         "Photosynthesis is prevented because there is no light energy",
@@ -62689,7 +59239,7 @@ add(
       why: "Both are energy-requiring cellular processes."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What gradually becomes more important as functional green leaves develop?",
       options: [
         "Photosynthesis",
@@ -62752,7 +59302,7 @@ add(
       why: "The developing embryo uses stored nutrients before photosynthesis becomes sufficient."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What change usually accompanies decreasing dependence on cotyledon reserves?",
       options: [
         "Increasing photosynthetic activity of developing leaves",
@@ -62920,7 +59470,7 @@ add(
       why: "(11 − 6) ÷ 3 = 5 ÷ 3 ≈ 1.67 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which seedling grew faster in the example?",
       options: [
         "Seedling A",
@@ -62991,7 +59541,7 @@ add(
       why: "The root apical meristem contains actively dividing cells."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What normally happens to newly produced cells after division?",
       options: [
         "They can elongate and differentiate",
@@ -63070,7 +59620,7 @@ add(
       why: "0.9 − 0.3 = 0.6 mm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement correctly distinguishes cell division from cell elongation?",
       options: [
         "Division increases cell number, while elongation increases cell size",
@@ -63145,7 +59695,7 @@ add(
       why: "Root hair cells are specialised for absorption."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why do plant cells differentiate?",
       options: [
         "To become specialised for different functions",
@@ -63224,7 +59774,7 @@ add(
       why: "Cell expansion contributes to root length."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which sequence correctly describes the major processes in a developing root?",
       options: [
         "Division → elongation → differentiation",
@@ -63289,7 +59839,7 @@ add(
       why: "The root cap shields delicate tissues from mechanical damage in the soil."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Where is the root apical meristem located relative to the root cap?",
       options: [
         "Behind the root cap",
@@ -63364,7 +59914,7 @@ add(
       why: "Primary growth increases the length of the shoot."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What happens to many cells produced by the shoot apical meristem?",
       options: [
         "They can elongate and differentiate into specialised tissues",
@@ -63433,7 +59983,7 @@ add(
       why: "New cells are needed to build additional root tissue."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which structure mainly protects the root tip rather than producing new cells?",
       options: [
         "Root cap",
@@ -63664,7 +60214,7 @@ add(
       why: "(9 − 3) ÷ (5 − 2) = 6 ÷ 3 = 2 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does a horizontal section of a length-time graph indicate?",
       options: [
         "No increase in the measured length during that interval",
@@ -63749,7 +60299,7 @@ add(
       why: "(7 − 3) ÷ 2 = 2 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "During which interval was growth fastest in the example?",
       options: [
         "Day 0–2",
@@ -63832,7 +60382,7 @@ add(
       why: "4 ÷ 4 = 1 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should important variables other than the tested factor be controlled?",
       options: [
         "To make the comparison fair",
@@ -63907,7 +60457,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "A student changes temperature and measures shoot growth rate. What is the independent variable?",
       options: [
         "Temperature",
@@ -63992,7 +60542,7 @@ add(
       why: "(4 + 5 + 6) ÷ 3 = 5 cm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does repeating an experiment mainly help assess?",
       options: [
         "Reliability",
@@ -64059,7 +60609,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which value is most likely anomalous in the example?",
       options: [
         "5 cm",
@@ -64148,7 +60698,7 @@ add(
       why: "The data show a decrease of 0.4 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which conclusion is scientifically appropriate?",
       options: [
         "25°C produced the highest measured growth rate under the conditions tested",
@@ -64223,7 +60773,7 @@ add(
       why: "Otherwise light could become an alternative explanation for differences in growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which design is strongest?",
       options: [
         "Several similar seedlings, one factor changed, other important factors controlled, repeated measurements",
@@ -64375,7 +60925,7 @@ add(
       why: "(9 − 3) ÷ (5 − 2) = 6 ÷ 3 = 2 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does a horizontal section of a length-time graph indicate?",
       options: [
         "No increase in the measured length during that interval",
@@ -64460,7 +61010,7 @@ add(
       why: "(7 − 3) ÷ 2 = 2 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "During which interval was growth fastest in the example?",
       options: [
         "Day 0–2",
@@ -64543,7 +61093,7 @@ add(
       why: "4 ÷ 4 = 1 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Why should important variables other than the tested factor be controlled?",
       options: [
         "To make the comparison fair",
@@ -64618,7 +61168,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "A student changes temperature and measures shoot growth rate. What is the independent variable?",
       options: [
         "Temperature",
@@ -64703,7 +61253,7 @@ add(
       why: "(4 + 5 + 6) ÷ 3 = 5 cm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What does repeating an experiment mainly help assess?",
       options: [
         "Reliability",
@@ -64770,7 +61320,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which value is most likely anomalous in the example?",
       options: [
         "5 cm",
@@ -64859,7 +61409,7 @@ add(
       why: "The data show a decrease of 0.4 cm/day."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which conclusion is scientifically appropriate?",
       options: [
         "25°C produced the highest measured growth rate under the conditions tested",
@@ -64934,7 +61484,7 @@ add(
       why: "Otherwise light could become an alternative explanation for differences in growth."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which design is strongest?",
       options: [
         "Several similar seedlings, one factor changed, other important factors controlled, repeated measurements",
@@ -64991,7 +61541,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What is secondary growth?",
       options: [
         "Increase in plant thickness or girth",
@@ -65058,7 +61608,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What tissue does the vascular cambium produce towards the inside of a stem?",
       options: [
         "Secondary xylem",
@@ -65070,7 +61620,7 @@ add(
       why: "Secondary xylem is produced on the inner side of the vascular cambium."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "What tissue does the vascular cambium produce towards the outside?",
       options: [
         "Secondary phloem",
@@ -65147,7 +61697,7 @@ add(
       why: "The vascular cambium divides and produces secondary xylem and secondary phloem."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which structure is mainly associated with primary growth rather than secondary growth?",
       options: [
         "Shoot apical meristem",
@@ -65208,7 +61758,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What can differences in growth rings provide evidence about?",
       options: [
         "Past patterns of plant growth",
@@ -65277,7 +61827,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "What does secondary growth increase in a woody root?",
       options: [
         "Thickness",
@@ -65368,7 +61918,7 @@ add(
       why: "0.7 − 0.5 = 0.2 cm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which measurement would provide evidence of secondary growth?",
       options: [
         "Increase in stem diameter",
@@ -65425,7 +61975,7 @@ add(
   `,
   [
     {
-      type: "mcq",
+      type: "text",
       q: "Which factor can affect plant growth and therefore potentially affect secondary growth?",
       options: [
         "Water availability",
@@ -65518,7 +62068,7 @@ add(
       why: "1.0 − 0.6 = 0.4 cm."
     },
     {
-      type: "mcq",
+      type: "text",
       q: "Which statement best explains the data?",
       options: [
         "The stem showed both primary growth and secondary growth",

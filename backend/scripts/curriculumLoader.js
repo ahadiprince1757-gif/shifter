@@ -88,9 +88,10 @@ function normalizeQuestion(q, { sid, cid, topic, qIdx }) {
   // 2. Options and Type normalization
   let rawOptions = q.options || q.choices || null;
   let options = [];
-  let type = q.type === "mcq" || (Array.isArray(rawOptions) && rawOptions.length > 0) ? "mcq" : "text";
+  // Biology is strictly diagnostic open inquiry (no MCQs)
+  let type = sid === "biology" ? "text" : (q.type === "mcq" || (Array.isArray(rawOptions) && rawOptions.length > 0) ? "mcq" : "text");
 
-  if (type === "mcq" && Array.isArray(rawOptions) && rawOptions.length > 0) {
+  if (sid !== "biology" && type === "mcq" && Array.isArray(rawOptions) && rawOptions.length > 0) {
     // First pass: try exact match
     const hasExactMatch = rawOptions.some(opt => {
       if (typeof opt === "object" && opt !== null) return Boolean(opt.is_correct || opt.correct);
