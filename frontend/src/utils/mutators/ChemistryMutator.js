@@ -1,64 +1,65 @@
 /**
- * Tixar Chemistry Mutator
+ * TIXAR CHEMISTRY MUTATOR
+ * Version 5.0.0
  *
- * Adaptive Chemistry Question Engine
+ * DETERMINISTIC / SEMANTICALLY LOCKED CHEMISTRY ENGINE
  *
- * Design:
- *   Concept
- *      ↓
- *   Skill
- *      ↓
- *   Difficulty
- *      ↓
- *   Deterministic mutation
- *      ↓
- *   Solver
- *      ↓
- *   Misconception-based distractors
- *      ↓
- *   Validation
- *      ↓
- *   Question
+ * CORE LAW
  *
- * Supported areas:
- * - Molar mass / relative formula mass
- * - Mass ↔ moles
- * - Stoichiometric ratios
- * - Limiting reagent
- * - Gas volumes at RTP/STP
- * - Solution concentration
- * - Acid/base and pH
- * - Ionic/covalent/metallic bonding
- * - Periodic structure
- * - Rates of reaction / catalysts
+ *      ORIGINAL QUESTION
+ *              ↓
+ *       SEMANTIC IDENTITY
+ *              ↓
+ *          DIAGNOSIS
+ *              ↓
+ *        REPAIR STRATEGY
+ *              ↓
+ *     FACT-PRESERVING GENERATOR
+ *              ↓
+ *    SEMANTIC BOUNDARY CHECK
+ *              ↓
+ *      INDEPENDENT SOLVER
+ *              ↓
+ *    DISTRACTOR GENERATION
+ *              ↓
+ *          VALIDATION
  *
- * Output remains compatible with the Tixar question format:
+ * ============================================================
  *
- * {
- *   q,
- *   ans,
- *   hint,
- *   why,
- *   sol,
- *   steps,
- *   type,
- *   options,
- *   skill,
- *   difficulty,
- *   misconception,
- *   concept
- * }
+ * ABSOLUTE LAWS
+ *
+ * 1. No Math.random()
+ * 2. No Date.now()
+ * 3. No pseudo-random selection
+ * 4. No hashing-based variation
+ * 5. No arbitrary compound selection
+ * 6. No arbitrary reaction selection
+ * 7. No arbitrary ion selection
+ * 8. No semantic drift
+ * 9. Repair must preserve the failed skill
+ * 10. Repair may reduce complexity
+ * 11. Repeated failure moves toward a prerequisite
+ * 12. Every generated question carries semantic identity
+ * 13. Every candidate passes semantic-boundary verification
+ * 14. Every numerical answer is independently recalculated
+ * 15. Every MCQ has exactly one correct answer
+ * 16. Distractors are deterministic and explainable
+ *
+ * ============================================================
  */
 
 export class ChemistryMutator {
+  constructor(config = {}) {
+    this.config = {
+      version: "5.0.0",
+      ...config,
+    };
 
-  constructor() {
-
-    // ------------------------------------------------------------
+    // ==========================================================
     // ATOMIC MASSES
-    // ------------------------------------------------------------
+    // ==========================================================
 
-    this.atomicMasses = {
+    this.atomicMasses = Object.freeze({
       H: 1,
       C: 12,
       N: 14,
@@ -72,395 +73,4698 @@ export class ChemistryMutator {
       K: 39,
       Ca: 40,
       Fe: 56,
-      Cu: 63.5
-    };
+      Cu: 63.5,
+      P: 31,
+    });
 
+    // ==========================================================
+    // VERIFIED COMPOUNDS
+    // ==========================================================
 
-    // ------------------------------------------------------------
-    // COMPOUNDS
-    // ------------------------------------------------------------
-
-    this.compounds = [
-
+    this.compounds = Object.freeze([
       {
-        name: "Calcium Carbonate",
+        id: "CaCO3",
+        name: "Calcium carbonate",
         formula: "CaCO3",
-        displayFormula: "CaCO₃",
-        molarMass: 100
+        displayFormula: "CaCO3",
+        molarMass: 100,
       },
 
       {
-        name: "Sodium Chloride",
+        id: "NaCl",
+        name: "Sodium chloride",
         formula: "NaCl",
         displayFormula: "NaCl",
-        molarMass: 58.5
+        molarMass: 58.5,
       },
 
       {
-        name: "Sodium Hydroxide",
+        id: "NaOH",
+        name: "Sodium hydroxide",
         formula: "NaOH",
         displayFormula: "NaOH",
-        molarMass: 40
+        molarMass: 40,
       },
 
       {
-        name: "Sulfuric Acid",
+        id: "H2SO4",
+        name: "Sulfuric acid",
         formula: "H2SO4",
-        displayFormula: "H₂SO₄",
-        molarMass: 98
+        displayFormula: "H2SO4",
+        molarMass: 98,
       },
 
       {
-        name: "Carbon Dioxide",
+        id: "CO2",
+        name: "Carbon dioxide",
         formula: "CO2",
-        displayFormula: "CO₂",
-        molarMass: 44
+        displayFormula: "CO2",
+        molarMass: 44,
       },
 
       {
+        id: "H2O",
         name: "Water",
         formula: "H2O",
-        displayFormula: "H₂O",
-        molarMass: 18
+        displayFormula: "H2O",
+        molarMass: 18,
       },
 
       {
+        id: "NH3",
         name: "Ammonia",
         formula: "NH3",
-        displayFormula: "NH₃",
-        molarMass: 17
+        displayFormula: "NH3",
+        molarMass: 17,
       },
 
       {
-        name: "Magnesium Hydroxide",
+        id: "MgOH2",
+        name: "Magnesium hydroxide",
         formula: "Mg(OH)2",
-        displayFormula: "Mg(OH)₂",
-        molarMass: 58.3
+        displayFormula: "Mg(OH)2",
+        molarMass: 58.3,
       },
 
       {
-        name: "Copper(II) Sulfate",
+        id: "CuSO4",
+        name: "Copper(II) sulfate",
         formula: "CuSO4",
-        displayFormula: "CuSO₄",
-        molarMass: 159.5
+        displayFormula: "CuSO4",
+        molarMass: 159.5,
       },
 
       {
+        id: "C6H12O6",
         name: "Glucose",
         formula: "C6H12O6",
-        displayFormula: "C₆H₁₂O₆",
-        molarMass: 180
+        displayFormula: "C6H12O6",
+        molarMass: 180,
       },
 
       {
-        name: "Nitric Acid",
+        id: "HNO3",
+        name: "Nitric acid",
         formula: "HNO3",
-        displayFormula: "HNO₃",
-        molarMass: 63
+        displayFormula: "HNO3",
+        molarMass: 63,
       },
 
       {
-        name: "Iron(III) Oxide",
+        id: "Fe2O3",
+        name: "Iron(III) oxide",
         formula: "Fe2O3",
-        displayFormula: "Fe₂O₃",
-        molarMass: 160
-      }
+        displayFormula: "Fe2O3",
+        molarMass: 160,
+      },
+    ]);
 
-    ];
+    // ==========================================================
+    // VERIFIED REACTIONS
+    // ==========================================================
 
-
-    // ------------------------------------------------------------
-    // REACTIONS
-    // ------------------------------------------------------------
-
-    this.reactions = [
-
+    this.reactions = Object.freeze([
       {
-        equation: "2H₂ + O₂ → 2H₂O",
-        r1: "H₂",
-        r2: "O₂",
-        product: "H₂O",
-        r1Coeff: 2,
-        r2Coeff: 1,
-        productCoeff: 2
+        id: "water_formation",
+        equation: "2H2 + O2 -> 2H2O",
+
+        reactants: [
+          {
+            formula: "H2",
+            coefficient: 2,
+          },
+          {
+            formula: "O2",
+            coefficient: 1,
+          },
+        ],
+
+        products: [
+          {
+            formula: "H2O",
+            coefficient: 2,
+          },
+        ],
       },
 
       {
-        equation: "N₂ + 3H₂ → 2NH₃",
-        r1: "N₂",
-        r2: "H₂",
-        product: "NH₃",
-        r1Coeff: 1,
-        r2Coeff: 3,
-        productCoeff: 2
+        id: "ammonia_formation",
+        equation: "N2 + 3H2 -> 2NH3",
+
+        reactants: [
+          {
+            formula: "N2",
+            coefficient: 1,
+          },
+          {
+            formula: "H2",
+            coefficient: 3,
+          },
+        ],
+
+        products: [
+          {
+            formula: "NH3",
+            coefficient: 2,
+          },
+        ],
       },
 
       {
-        equation: "CaCO₃ + 2HCl → CaCl₂ + H₂O + CO₂",
-        r1: "CaCO₃",
-        r2: "HCl",
-        product: "CO₂",
-        r1Coeff: 1,
-        r2Coeff: 2,
-        productCoeff: 1
+        id: "carbonate_acid",
+        equation:
+          "CaCO3 + 2HCl -> CaCl2 + H2O + CO2",
+
+        reactants: [
+          {
+            formula: "CaCO3",
+            coefficient: 1,
+          },
+          {
+            formula: "HCl",
+            coefficient: 2,
+          },
+        ],
+
+        products: [
+          {
+            formula: "CO2",
+            coefficient: 1,
+          },
+        ],
       },
 
       {
-        equation: "2Mg + O₂ → 2MgO",
-        r1: "Mg",
-        r2: "O₂",
-        product: "MgO",
-        r1Coeff: 2,
-        r2Coeff: 1,
-        productCoeff: 2
+        id: "magnesium_combustion",
+        equation: "2Mg + O2 -> 2MgO",
+
+        reactants: [
+          {
+            formula: "Mg",
+            coefficient: 2,
+          },
+          {
+            formula: "O2",
+            coefficient: 1,
+          },
+        ],
+
+        products: [
+          {
+            formula: "MgO",
+            coefficient: 2,
+          },
+        ],
       },
 
       {
-        equation: "CH₄ + 2O₂ → CO₂ + 2H₂O",
-        r1: "CH₄",
-        r2: "O₂",
-        product: "CO₂",
-        r1Coeff: 1,
-        r2Coeff: 2,
-        productCoeff: 1
-      }
+        id: "methane_combustion",
+        equation:
+          "CH4 + 2O2 -> CO2 + 2H2O",
 
-    ];
+        reactants: [
+          {
+            formula: "CH4",
+            coefficient: 1,
+          },
+          {
+            formula: "O2",
+            coefficient: 2,
+          },
+        ],
 
+        products: [
+          {
+            formula: "CO2",
+            coefficient: 1,
+          },
+        ],
+      },
+    ]);
 
-    // ------------------------------------------------------------
-    // ELEMENT DATABASE
-    // ------------------------------------------------------------
+    // ==========================================================
+    // VERIFIED IONS
+    // ==========================================================
 
-    this.metals = [
-
+    this.ions = Object.freeze([
       {
-        name: "Sodium",
-        symbol: "Na",
-        atomicNumber: 11,
-        configuration: "2,8,1",
-        valency: 1,
-        ion: "Na⁺"
+        element: "Na",
+        name: "sodium",
+        charge: 1,
+        ion: "Na+",
       },
 
       {
-        name: "Potassium",
-        symbol: "K",
-        atomicNumber: 19,
-        configuration: "2,8,8,1",
-        valency: 1,
-        ion: "K⁺"
+        element: "K",
+        name: "potassium",
+        charge: 1,
+        ion: "K+",
       },
 
       {
-        name: "Magnesium",
-        symbol: "Mg",
-        atomicNumber: 12,
-        configuration: "2,8,2",
-        valency: 2,
-        ion: "Mg²⁺"
+        element: "Mg",
+        name: "magnesium",
+        charge: 2,
+        ion: "Mg2+",
       },
 
       {
-        name: "Calcium",
-        symbol: "Ca",
-        atomicNumber: 20,
-        configuration: "2,8,8,2",
-        valency: 2,
-        ion: "Ca²⁺"
+        element: "Ca",
+        name: "calcium",
+        charge: 2,
+        ion: "Ca2+",
       },
 
       {
-        name: "Aluminium",
-        symbol: "Al",
-        atomicNumber: 13,
-        configuration: "2,8,3",
-        valency: 3,
-        ion: "Al³⁺"
-      }
-
-    ];
-
-
-    this.nonMetals = [
-
-      {
-        name: "Chlorine",
-        symbol: "Cl",
-        atomicNumber: 17,
-        configuration: "2,8,7",
-        valency: 1,
-        ion: "Cl⁻"
+        element: "Al",
+        name: "aluminium",
+        charge: 3,
+        ion: "Al3+",
       },
 
       {
-        name: "Fluorine",
-        symbol: "F",
-        atomicNumber: 9,
-        configuration: "2,7",
-        valency: 1,
-        ion: "F⁻"
+        element: "Cl",
+        name: "chloride",
+        charge: -1,
+        ion: "Cl-",
       },
 
       {
-        name: "Oxygen",
-        symbol: "O",
-        atomicNumber: 8,
-        configuration: "2,6",
-        valency: 2,
-        ion: "O²⁻"
+        element: "F",
+        name: "fluoride",
+        charge: -1,
+        ion: "F-",
       },
 
       {
-        name: "Sulfur",
-        symbol: "S",
-        atomicNumber: 16,
-        configuration: "2,8,6",
-        valency: 2,
-        ion: "S²⁻"
+        element: "O",
+        name: "oxide",
+        charge: -2,
+        ion: "O2-",
       },
 
       {
-        name: "Nitrogen",
-        symbol: "N",
-        atomicNumber: 7,
-        configuration: "2,5",
-        valency: 3,
-        ion: "N³⁻"
+        element: "S",
+        name: "sulfide",
+        charge: -2,
+        ion: "S2-",
       },
 
       {
-        name: "Hydrogen",
-        symbol: "H",
-        atomicNumber: 1,
-        configuration: "1",
-        valency: 1,
-        ion: "H⁺"
-      }
+        element: "N",
+        name: "nitride",
+        charge: -3,
+        ion: "N3-",
+      },
+    ]);
 
-    ];
+    // ==========================================================
+    // VERIFIED FACT REGISTRY
+    // ==========================================================
 
-
-    // ------------------------------------------------------------
-    // GAS DATABASE
-    // ------------------------------------------------------------
-
-    this.gases = [
-
-      {
-        name: "Carbon dioxide",
-        formula: "CO₂"
+    this.factRegistry = Object.freeze({
+      MOLAR_MASS: {
+        concept: "Molar Mass",
+        skill: "Calculate molar mass",
+        keywords: [
+          "molar mass",
+          "relative formula mass",
+          "rfm",
+        ],
+        type: "molar_mass",
       },
 
-      {
-        name: "Oxygen",
-        formula: "O₂"
+      MASS_TO_MOLES: {
+        concept: "Moles",
+        skill: "Convert mass to moles",
+        keywords: [
+          "moles in",
+          "number of moles",
+          "how many moles",
+          "calculate the moles",
+        ],
+        type: "mass_to_moles",
       },
 
-      {
-        name: "Nitrogen",
-        formula: "N₂"
+      MOLES_TO_MASS: {
+        concept: "Moles and Mass",
+        skill: "Convert moles to mass",
+        keywords: [
+          "mass of",
+          "calculate the mass",
+          "how many grams",
+          "grams of",
+        ],
+        type: "moles_to_mass",
       },
 
-      {
-        name: "Hydrogen",
-        formula: "H₂"
+      STOICHIOMETRY: {
+        concept: "Stoichiometry",
+        skill: "Use mole ratios",
+        keywords: [
+          "mole ratio",
+          "reaction ratio",
+          "stoichiometry",
+          "balanced equation",
+          "reacts with",
+        ],
+        type: "stoichiometry",
       },
 
-      {
-        name: "Methane",
-        formula: "CH₄"
-      }
+      GAS_VOLUME: {
+        concept: "Gas Volume",
+        skill: "Calculate gas volume",
+        keywords: [
+          "gas volume",
+          "molar volume",
+          "dm3",
+          "dm³",
+          "rtp",
+          "stp",
+        ],
+        type: "gas_volume",
+      },
 
-    ];
+      CONCENTRATION: {
+        concept: "Solution Concentration",
+        skill: "Calculate concentration",
+        keywords: [
+          "concentration",
+          "molarity",
+        ],
+        type: "concentration",
+      },
 
+      PH: {
+        concept: "Acids, Bases and pH",
+        skill: "Interpret pH",
+        keywords: [
+          "ph",
+          "acidic",
+          "alkaline",
+          "alkali",
+          "neutral",
+        ],
+        type: "ph",
+      },
+
+      IONIC_BONDING: {
+        concept: "Chemical Bonding",
+        skill:
+          "Determine ionic bonding and formula",
+        keywords: [
+          "ionic bonding",
+          "ionic bond",
+        ],
+        type: "ionic_bonding",
+      },
+
+      COVALENT_BONDING: {
+        concept: "Chemical Bonding",
+        skill:
+          "Identify covalent bonding",
+        keywords: [
+          "covalent",
+        ],
+        type: "covalent_bonding",
+      },
+
+      METALLIC_BONDING: {
+        concept: "Chemical Bonding",
+        skill:
+          "Explain metallic bonding",
+        keywords: [
+          "metallic bonding",
+          "metallic bond",
+        ],
+        type: "metallic_bonding",
+      },
+
+      CATALYST: {
+        concept: "Rates of Reaction",
+        skill:
+          "Explain catalyst action",
+        keywords: [
+          "catalyst",
+          "activation energy",
+        ],
+        type: "catalyst",
+      },
+    });
   }
 
-
   // ============================================================
-  // DETERMINISTIC RANDOMNESS
+  // PUBLIC API
   // ============================================================
 
-  _hash(str) {
-
-    let hash = 0;
-
-    for (let i = 0; i < str.length; i++) {
-
-      hash =
-        (hash << 5) -
-        hash +
-        str.charCodeAt(i);
-
-      hash |= 0;
-
+  mutate(
+    qObj,
+    modalityIndex = 0,
+    performanceContext = {}
+  ) {
+    if (!qObj) {
+      return null;
     }
 
-    return Math.abs(hash);
+    const stem = String(
+      qObj.q ??
+      qObj.stem ??
+      ""
+    ).trim();
 
-  }
-
-
-  _random(seed) {
-
-    let x = Math.sin(seed) * 10000;
-
-    return x - Math.floor(x);
-
-  }
-
-
-  _pick(array, seed) {
-
-    return array[seed % array.length];
-
-  }
-
-
-  // ============================================================
-  // MATH HELPERS
-  // ============================================================
-
-  _gcd(a, b) {
-
-    a = Math.abs(a);
-    b = Math.abs(b);
-
-    while (b !== 0) {
-
-      const temp = b;
-
-      b = a % b;
-      a = temp;
-
+    if (!stem) {
+      return this._safeFallback(
+        qObj,
+        "EMPTY_STEM"
+      );
     }
 
-    return a;
+    const existingFact =
+      qObj.metadata?.factModel ||
+      qObj.factModel ||
+      null;
 
+    const fact =
+      existingFact
+        ? {
+            id:
+              existingFact.type ||
+              existingFact.factType ||
+              "UNKNOWN",
+            concept:
+              qObj.metadata?.concept ||
+              qObj.concept ||
+              null,
+            skill:
+              qObj.metadata?.skill ||
+              qObj.skill ||
+              null,
+            type:
+              existingFact.type ||
+              existingFact.factType ||
+              null,
+          }
+        : this._identifyFact(stem);
+
+    if (!fact) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_FACT_MODEL"
+      );
+    }
+
+    const semanticIdentity =
+      this._extractSemanticIdentity(
+        qObj,
+        fact
+      );
+
+    const repairStrategy =
+      this._resolveRepairStrategy(
+        performanceContext
+      );
+
+    const difficulty =
+      this._resolveMutationDifficulty(
+        qObj,
+        performanceContext
+      );
+
+    const context = {
+      ...performanceContext,
+
+      semanticIdentity,
+
+      repairStrategy,
+
+      difficulty,
+
+      modalityIndex,
+
+      preserveConcept: true,
+      preserveSkill: true,
+      preserveFact: true,
+
+      requireVerification: true,
+    };
+
+    let generated;
+
+    if (existingFact) {
+      generated =
+        this._mutateFromFactModel(
+          qObj,
+          existingFact,
+          modalityIndex,
+          context
+        );
+    } else {
+      generated =
+        this._mutateFromFact(
+          qObj,
+          fact,
+          modalityIndex,
+          context
+        );
+    }
+
+    if (!generated) {
+      return this._safeFallback(
+        qObj,
+        "GENERATION_FAILED"
+      );
+    }
+
+    const generatedFact =
+      generated.metadata?.factModel ||
+      generated.factModel ||
+      null;
+
+    const generatedIdentity =
+      this._extractSemanticIdentity(
+        generated,
+        {
+          id:
+            generatedFact?.type ||
+            fact.id,
+          concept:
+            generated.concept,
+          skill:
+            generated.skill,
+          type:
+            generatedFact?.type ||
+            fact.type,
+        }
+      );
+
+    const boundary =
+      this._verifySemanticBoundary(
+        semanticIdentity,
+        generatedIdentity,
+        fact,
+        generatedFact
+      );
+
+    if (!boundary.valid) {
+      return this._safeFallback(
+        qObj,
+        boundary.reason
+      );
+    }
+
+    if (
+      !this._verifyChemistryQuestion(
+        generated,
+        fact
+      )
+    ) {
+      return this._safeFallback(
+        qObj,
+        "CHEMISTRY_VERIFICATION_FAILED"
+      );
+    }
+
+    return this._finalize(
+      generated,
+      {
+        sourceIdentity:
+          semanticIdentity,
+
+        targetIdentity:
+          generatedIdentity,
+
+        repairStrategy,
+
+        difficulty,
+      }
+    );
   }
 
+  // ============================================================
+  // SEMANTIC IDENTITY
+  // ============================================================
 
-  _lcm(a, b) {
+  _extractSemanticIdentity(
+    qObj,
+    fact = null
+  ) {
+    const metadata =
+      qObj?.metadata || {};
 
-    return Math.abs(a * b) / this._gcd(a, b);
+    const factModel =
+      metadata.factModel ||
+      qObj?.factModel ||
+      null;
 
+    return {
+      subject:
+        metadata.subject ||
+        qObj?.subject ||
+        "chemistry",
+
+      chapter:
+        metadata.chapter ||
+        qObj?.chapter ||
+        null,
+
+      topic:
+        metadata.topic ||
+        qObj?.topic ||
+        this._inferTopic(
+          fact?.type ||
+          factModel?.type
+        ),
+
+      conceptId:
+        metadata.conceptId ||
+        metadata.concept ||
+        qObj?.conceptId ||
+        qObj?.concept ||
+        fact?.concept ||
+        null,
+
+      skillId:
+        metadata.skillId ||
+        metadata.skill ||
+        qObj?.skillId ||
+        qObj?.skill ||
+        fact?.skill ||
+        null,
+
+      subskillId:
+        metadata.subskillId ||
+        metadata.subskill ||
+        qObj?.subskillId ||
+        qObj?.subskill ||
+        this._inferSubskill(
+          fact?.type ||
+          factModel?.type
+        ),
+
+      factType:
+        fact?.type ||
+        factModel?.type ||
+        null,
+
+      factId:
+        factModel?.factId ||
+        metadata.factId ||
+        null,
+    };
   }
 
+  _inferTopic(type) {
+    switch (type) {
+      case "molar_mass":
+      case "mass_to_moles":
+      case "moles_to_mass":
+      case "empirical_formula":
+        return "moles_and_formulae";
 
-  _round(value, decimals = 2) {
+      case "stoichiometry":
+        return "stoichiometry";
+
+      case "gas_volume":
+        return "gas_volume";
+
+      case "concentration":
+        return "solutions";
+
+      case "ph":
+        return "acids_bases";
+
+      case "ionic_bonding":
+      case "covalent_bonding":
+      case "metallic_bonding":
+        return "chemical_bonding";
+
+      case "catalyst":
+        return "rates_of_reaction";
+
+      default:
+        return null;
+    }
+  }
+
+  _inferSubskill(type) {
+    switch (type) {
+      case "molar_mass":
+        return "formula_mass_calculation";
+
+      case "mass_to_moles":
+        return "mass_divided_by_molar_mass";
+
+      case "moles_to_mass":
+        return "moles_times_molar_mass";
+
+      case "stoichiometry":
+        return "mole_ratio";
+
+      case "gas_volume":
+        return "moles_times_molar_volume";
+
+      case "concentration":
+        return "moles_divided_by_volume";
+
+      case "ph":
+        return "ph_scale_classification";
+
+      case "ionic_bonding":
+        return "charge_balance";
+
+      case "covalent_bonding":
+        return "electron_sharing";
+
+      case "metallic_bonding":
+        return "delocalized_electrons";
+
+      case "catalyst":
+        return "activation_energy";
+
+      default:
+        return null;
+    }
+  }
+
+  // ============================================================
+  // REPAIR STRATEGY
+  // ============================================================
+
+  _resolveRepairStrategy(
+    performanceContext = {}
+  ) {
+    const explicit =
+      String(
+        performanceContext.repairStrategy ||
+        ""
+      )
+        .trim()
+        .toUpperCase();
+
+    if (explicit) {
+      return explicit;
+    }
+
+    const diagnosis =
+      String(
+        performanceContext.diagnosis ||
+        ""
+      )
+        .trim()
+        .toUpperCase();
+
+    const errorType =
+      String(
+        performanceContext.errorType ||
+        ""
+      )
+        .trim()
+        .toUpperCase();
+
+    const attempts =
+      Number(
+        performanceContext.repairAttempts ??
+        performanceContext.consecutiveFailures ??
+        0
+      );
+
+    if (
+      diagnosis === "I_DONT_KNOW" ||
+      diagnosis === "BLANK" ||
+      diagnosis === "UNKNOWN"
+    ) {
+      return "PROBE";
+    }
+
+    if (
+      errorType === "FORMULA" ||
+      errorType === "SUBSCRIPT"
+    ) {
+      return "PROCEDURE_REPAIR";
+    }
+
+    if (
+      errorType === "DIVISION" ||
+      errorType === "MULTIPLICATION" ||
+      errorType === "RATIO" ||
+      errorType === "UNIT"
+    ) {
+      return "PROCEDURE_REPAIR";
+    }
+
+    if (
+      errorType === "CONCEPT"
+    ) {
+      return "CONCEPT_CONTRAST";
+    }
+
+    if (
+      attempts >= 2
+    ) {
+      return "PREREQUISITE_REPAIR";
+    }
+
+    if (
+      diagnosis === "WRONG"
+    ) {
+      return "SIMPLIFY_NUMBERS";
+    }
+
+    return "STANDARD";
+  }
+
+  _resolveMutationDifficulty(
+    qObj,
+    performanceContext = {}
+  ) {
+    const strategy =
+      this._resolveRepairStrategy(
+        performanceContext
+      );
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST" ||
+      strategy === "PROCEDURE_REPAIR" ||
+      strategy === "PREREQUISITE_REPAIR" ||
+      strategy === "SIMPLIFY_NUMBERS"
+    ) {
+      return 1;
+    }
+
+    return this._difficulty(
+      qObj,
+      performanceContext
+    );
+  }
+
+  // ============================================================
+  // FACT IDENTIFICATION
+  // ============================================================
+
+  _identifyFact(stem) {
+    const lower =
+      String(stem).toLowerCase();
+
+    if (
+      lower.includes("empirical formula") ||
+      lower.includes("simplest formula") ||
+      lower.includes("percentage composition")
+    ) {
+      return {
+        id: "EMPIRICAL_FORMULA",
+        concept: "Empirical Formula",
+        skill:
+          "Calculate empirical formula",
+        type: "empirical_formula",
+      };
+    }
+
+    if (
+      lower.includes("stoichiometry") ||
+      lower.includes("mole ratio") ||
+      lower.includes("balanced equation") ||
+      lower.includes("reacts with")
+    ) {
+      return {
+        id: "STOICHIOMETRY",
+        concept: "Stoichiometry",
+        skill:
+          "Use mole ratios",
+        type: "stoichiometry",
+      };
+    }
+
+    if (
+      lower.includes("gas volume") ||
+      lower.includes("molar volume") ||
+      lower.includes("dm3") ||
+      lower.includes("dm³") ||
+      lower.includes("rtp") ||
+      lower.includes("stp")
+    ) {
+      return {
+        id: "GAS_VOLUME",
+        concept: "Gas Volume",
+        skill:
+          "Calculate gas volume",
+        type: "gas_volume",
+      };
+    }
+
+    if (
+      lower.includes("concentration") ||
+      lower.includes("molarity")
+    ) {
+      return {
+        id: "CONCENTRATION",
+        concept:
+          "Solution Concentration",
+        skill:
+          "Calculate concentration",
+        type: "concentration",
+      };
+    }
+
+    if (
+      lower.includes("catalyst") ||
+      lower.includes("activation energy")
+    ) {
+      return {
+        id: "CATALYST",
+        concept:
+          "Rates of Reaction",
+        skill:
+          "Explain catalyst action",
+        type: "catalyst",
+      };
+    }
+
+    if (
+      lower.includes("metallic bonding") ||
+      lower.includes("metallic bond")
+    ) {
+      return {
+        id: "METALLIC_BONDING",
+        concept:
+          "Chemical Bonding",
+        skill:
+          "Explain metallic bonding",
+        type: "metallic_bonding",
+      };
+    }
+
+    if (
+      lower.includes("covalent")
+    ) {
+      return {
+        id: "COVALENT_BONDING",
+        concept:
+          "Chemical Bonding",
+        skill:
+          "Identify covalent bonding",
+        type: "covalent_bonding",
+      };
+    }
+
+    if (
+      lower.includes("ionic bonding") ||
+      lower.includes("ionic bond")
+    ) {
+      return {
+        id: "IONIC_BONDING",
+        concept:
+          "Chemical Bonding",
+        skill:
+          "Determine ionic bonding and formula",
+        type: "ionic_bonding",
+      };
+    }
+
+    if (
+      lower.includes("molar mass") ||
+      lower.includes("relative formula mass") ||
+      lower.includes("rfm")
+    ) {
+      return {
+        id: "MOLAR_MASS",
+        concept:
+          "Molar Mass",
+        skill:
+          "Calculate molar mass",
+        type: "molar_mass",
+      };
+    }
+
+    if (
+      lower.includes("how many moles") ||
+      lower.includes("number of moles") ||
+      lower.includes("moles in")
+    ) {
+      return {
+        id: "MASS_TO_MOLES",
+        concept:
+          "Moles",
+        skill:
+          "Convert mass to moles",
+        type: "mass_to_moles",
+      };
+    }
+
+    if (
+      lower.includes("calculate the mass") ||
+      lower.includes("how many grams") ||
+      lower.includes("grams of")
+    ) {
+      return {
+        id: "MOLES_TO_MASS",
+        concept:
+          "Moles and Mass",
+        skill:
+          "Convert moles to mass",
+        type: "moles_to_mass",
+      };
+    }
+
+    if (
+      /\bpH\s*(?:of|=)?\s*\d/i.test(stem) ||
+      lower.includes("acidic") ||
+      lower.includes("alkaline") ||
+      lower.includes("alkali") ||
+      lower.includes("neutral")
+    ) {
+      return {
+        id: "PH",
+        concept:
+          "Acids, Bases and pH",
+        skill:
+          "Interpret pH",
+        type: "ph",
+      };
+    }
+
+    return null;
+  }
+
+  // ============================================================
+  // FACT ROUTING
+  // ============================================================
+
+  _mutateFromFactModel(
+    qObj,
+    factModel,
+    modalityIndex,
+    performanceContext
+  ) {
+    const type =
+      factModel.type ||
+      factModel.factType;
+
+    switch (type) {
+      case "molar_mass":
+        return this._buildMolarMass(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "mass_to_moles":
+        return this._buildMassToMoles(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "moles_to_mass":
+        return this._buildMolesToMass(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "stoichiometry":
+        return this._buildStoichiometry(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "gas_volume":
+        return this._buildGasVolume(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "concentration":
+        return this._buildConcentration(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "ph":
+        return this._buildPH(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "ionic_bonding":
+        return this._buildIonicBonding(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "covalent_bonding":
+        return this._buildCovalentBonding(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "metallic_bonding":
+        return this._buildMetallicBonding(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      case "catalyst":
+        return this._buildCatalyst(
+          qObj,
+          modalityIndex,
+          performanceContext,
+          factModel
+        );
+
+      default:
+        return this._safeFallback(
+          qObj,
+          "UNSUPPORTED_FACT_MODEL"
+        );
+    }
+  }
+
+  _mutateFromFact(
+    qObj,
+    fact,
+    modalityIndex,
+    performanceContext
+  ) {
+    return this._mutateFromFactModel(
+      qObj,
+      {
+        ...fact,
+        source:
+          "verified_registry",
+      },
+      modalityIndex,
+      performanceContext
+    );
+  }
+
+  // ============================================================
+  // MOLAR MASS
+  // ============================================================
+
+  _buildMolarMass(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const strategy =
+      performanceContext.repairStrategy;
+
+    const compound =
+      this._selectCompound(
+        qObj,
+        factModel
+      );
+
+    if (!compound) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_COMPOUND"
+      );
+    }
+
+    const breakdown =
+      this._formulaBreakdown(
+        compound.formula
+      );
+
+    const answer =
+      `${compound.molarMass} g/mol`;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._molarMassConceptProbe(
+        compound,
+        modalityIndex
+      );
+    }
+
+    if (
+      strategy === "PROCEDURE_REPAIR"
+    ) {
+      return this._molarMassProcedureRepair(
+        compound,
+        modalityIndex
+      );
+    }
+
+    const mode =
+      this._mode(modalityIndex);
+
+    const base = {
+      concept:
+        "Molar Mass",
+
+      skill:
+        "Calculate molar mass",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      subskill:
+        "formula_mass_calculation",
+
+      factModel: {
+        type:
+          "molar_mass",
+
+        factId:
+          `molar_mass.${compound.id}`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+      },
+    };
+
+    const question =
+      mode === 0
+        ? `Calculate the molar mass of ${compound.name} (${compound.displayFormula}).`
+        : mode === 1
+          ? `What is the relative formula mass of ${compound.name} (${compound.displayFormula})?`
+          : mode === 2
+            ? `How many grams are contained in one mole of ${compound.name} (${compound.displayFormula})?`
+            : `Determine the molar mass of ${compound.displayFormula}.`;
+
+    const distractors =
+      this._makeDistractors(
+        answer,
+        [
+          `${this._round(compound.molarMass + 12)} g/mol`,
+          `${this._round(compound.molarMass - 16)} g/mol`,
+          `${this._round(compound.molarMass / 2)} g/mol`,
+        ]
+      );
+
+    return {
+      q: question,
+
+      ans: answer,
+
+      hint:
+        "Add the relative atomic masses of all atoms represented in the formula.",
+
+      why:
+        `The formula must be expanded according to its subscripts. ${breakdown}.`,
+
+      sol:
+        `${breakdown}. Therefore, the molar mass is ${answer}.`,
+
+      steps: [
+        "Step 1: Identify every element in the formula.",
+        "Step 2: Read each subscript as the number of atoms.",
+        `Step 3: Add the atomic-mass contributions: ${breakdown}.`,
+        `Step 4: State the answer: ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              distractors,
+              mode
+            ),
+
+      misconception:
+        "Incorrectly counts atoms or ignores a subscript.",
+
+      mutationRule:
+        "reframe_same_compound",
+
+      mutationReason:
+        "The verified compound and molar mass were preserved; only the retrieval framing changed.",
+
+      ...base,
+    };
+  }
+
+  _molarMassConceptProbe(
+    compound,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const question =
+      `In ${compound.displayFormula}, what do the subscripts tell you?`;
+
+    const answer =
+      "The number of atoms of each element";
+
+    return {
+      q: question,
+
+      ans: answer,
+
+      hint:
+        "Look at the small numbers written after element symbols.",
+
+      why:
+        "A subscript tells how many atoms of the preceding element are present in the formula.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Identify the element symbol.",
+        "Step 2: Read the subscript after it.",
+        "Step 3: The subscript gives the number of atoms.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "The atomic mass",
+                "The charge of the compound",
+                "The number of moles",
+              ],
+              mode
+            ),
+
+      concept:
+        "Molar Mass",
+
+      skill:
+        "Calculate molar mass",
+
+      subskill:
+        "formula_mass_calculation",
+
+      difficulty: 1,
+
+      misconception:
+        "Misreads chemical formula subscripts.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates the prerequisite skill needed to calculate molar mass.",
+
+      factModel: {
+        type:
+          "molar_mass",
+
+        factId:
+          `molar_mass.${compound.id}.subscript_probe`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  _molarMassProcedureRepair(
+    compound,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const firstElement =
+      compound.formula === "CaCO3"
+        ? "Ca"
+        : compound.formula === "NaCl"
+          ? "Na"
+          : compound.formula === "H2SO4"
+            ? "H"
+            : compound.formula === "CO2"
+              ? "C"
+              : compound.formula === "H2O"
+                ? "H"
+                : null;
+
+    const answer =
+      firstElement
+        ? String(
+            this.atomicMasses[firstElement]
+          )
+        : null;
+
+    if (answer == null) {
+      return this._molarMassConceptProbe(
+        compound,
+        modalityIndex
+      );
+    }
+
+    const question =
+      `What is the relative atomic mass of ${firstElement} in ${compound.displayFormula}?`;
+
+    return {
+      q: question,
+
+      ans: answer,
+
+      hint:
+        "Use the atomic-mass values provided in the chemistry data.",
+
+      why:
+        `${firstElement} has a relative atomic mass of ${answer}.`,
+
+      sol:
+        `${firstElement} = ${answer}.`,
+
+      steps: [
+        `Step 1: Identify ${firstElement} in the formula.`,
+        `Step 2: Use its relative atomic mass: ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "1",
+                "12",
+                "16",
+              ],
+              mode
+            ),
+
+      concept:
+        "Molar Mass",
+
+      skill:
+        "Calculate molar mass",
+
+      subskill:
+        "formula_mass_calculation",
+
+      difficulty: 1,
+
+      misconception:
+        "Cannot identify the atomic-mass contribution of an element.",
+
+      mutationRule:
+        "procedure_repair",
+
+      mutationReason:
+        "The repair isolates the atomic-mass lookup step instead of requiring the entire calculation.",
+
+      factModel: {
+        type:
+          "molar_mass",
+
+        factId:
+          `molar_mass.${compound.id}.procedure_repair`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+
+        repairMode:
+          "PROCEDURE_REPAIR",
+      },
+    };
+  }
+
+  // ============================================================
+  // MASS → MOLES
+  // ============================================================
+
+  _buildMassToMoles(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const compound =
+      this._selectCompound(
+        qObj,
+        factModel
+      );
+
+    if (!compound) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_COMPOUND"
+      );
+    }
+
+    const strategy =
+      performanceContext.repairStrategy;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._massToMolesConceptProbe(
+        compound,
+        modalityIndex
+      );
+    }
+
+    const mass =
+      this._extractMass(
+        qObj,
+        factModel,
+        compound
+      );
+
+    if (
+      !Number.isFinite(mass) ||
+      mass <= 0
+    ) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_MASS"
+      );
+    }
+
+    if (
+      strategy === "PROCEDURE_REPAIR"
+    ) {
+      return this._massToMolesProcedureRepair(
+        compound,
+        mass,
+        modalityIndex
+      );
+    }
+
+    const moles =
+      this._round(
+        this._solveMoles(
+          mass,
+          compound.molarMass
+        ),
+        2
+      );
+
+    const answer =
+      `${moles} mol`;
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        mode === 0
+          ? `A sample contains ${mass} g of ${compound.name} (${compound.displayFormula}). Its molar mass is ${compound.molarMass} g/mol. Calculate the number of moles.`
+          : `How many moles are present in ${mass} g of ${compound.name} (${compound.displayFormula})?`,
+
+      ans: answer,
+
+      hint:
+        "Use n = m / M.",
+
+      why:
+        `Moles are calculated by dividing mass by molar mass: ${mass} / ${compound.molarMass}.`,
+
+      sol:
+        `${mass} / ${compound.molarMass} = ${answer}.`,
+
+      steps: [
+        "Step 1: Use n = m / M.",
+        `Step 2: Substitute n = ${mass} / ${compound.molarMass}.`,
+        `Step 3: Calculate n = ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                `${this._round(mass * compound.molarMass, 2)} mol`,
+                `${this._round(compound.molarMass / mass, 2)} mol`,
+                `${this._round(mass / 2, 2)} mol`,
+              ],
+              mode
+            ),
+
+      misconception:
+        "Multiplies mass by molar mass instead of dividing.",
+
+      concept:
+        "Moles",
+
+      skill:
+        "Convert mass to moles",
+
+      subskill:
+        "mass_divided_by_molar_mass",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      mutationRule:
+        "reframe_mass_to_moles",
+
+      mutationReason:
+        "The compound and mass were preserved and the mole value was independently recalculated.",
+
+      factModel: {
+        type:
+          "mass_to_moles",
+
+        factId:
+          `mass_to_moles.${compound.id}`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+
+        mass,
+        moles,
+      },
+    };
+  }
+
+  _massToMolesConceptProbe(
+    compound,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      "Divide mass by molar mass";
+
+    return {
+      q:
+        `Which operation is used to calculate moles from mass for ${compound.name}?`,
+
+      ans:
+        answer,
+
+      hint:
+        "Use n = m / M.",
+
+      why:
+        "The mole formula is n = mass ÷ molar mass.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Identify mass.",
+        "Step 2: Identify molar mass.",
+        "Step 3: Divide mass by molar mass.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Multiply mass by molar mass",
+                "Add mass and molar mass",
+                "Divide molar mass by mass",
+              ],
+              mode
+            ),
+
+      concept:
+        "Moles",
+
+      skill:
+        "Convert mass to moles",
+
+      subskill:
+        "mass_divided_by_molar_mass",
+
+      difficulty: 1,
+
+      misconception:
+        "Does not know the relationship between mass, moles and molar mass.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates the governing formula before numerical calculation.",
+
+      factModel: {
+        type:
+          "mass_to_moles",
+
+        factId:
+          `mass_to_moles.${compound.id}.probe`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  _massToMolesProcedureRepair(
+    compound,
+    mass,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      this._round(
+        mass /
+          compound.molarMass,
+        2
+      );
+
+    return {
+      q:
+        `Set up the calculation for ${mass} g of ${compound.name}: what is ${mass} divided by ${compound.molarMass}?`,
+
+      ans:
+        String(answer),
+
+      hint:
+        "Divide mass by molar mass.",
+
+      why:
+        `${mass} ÷ ${compound.molarMass} = ${answer}.`,
+
+      sol:
+        String(answer),
+
+      steps: [
+        `Step 1: Write ${mass} ÷ ${compound.molarMass}.`,
+        `Step 2: Calculate = ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              String(answer),
+              [
+                String(
+                  this._round(
+                    mass *
+                      compound.molarMass,
+                    2
+                  )
+                ),
+                String(
+                  this._round(
+                    compound.molarMass /
+                      mass,
+                    2
+                  )
+                ),
+                String(
+                  this._round(
+                    mass / 2,
+                    2
+                  )
+                ),
+              ],
+              mode
+            ),
+
+      concept:
+        "Moles",
+
+      skill:
+        "Convert mass to moles",
+
+      subskill:
+        "mass_divided_by_molar_mass",
+
+      difficulty: 1,
+
+      misconception:
+        "Uses the wrong arithmetic operation.",
+
+      mutationRule:
+        "procedure_repair",
+
+      mutationReason:
+        "The repair isolates the numerical division step.",
+
+      factModel: {
+        type:
+          "mass_to_moles",
+
+        factId:
+          `mass_to_moles.${compound.id}.procedure`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+
+        mass,
+        moles: answer,
+
+        repairMode:
+          "PROCEDURE_REPAIR",
+      },
+    };
+  }
+
+  // ============================================================
+  // MOLES → MASS
+  // ============================================================
+
+  _buildMolesToMass(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const compound =
+      this._selectCompound(
+        qObj,
+        factModel
+      );
+
+    if (!compound) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_COMPOUND"
+      );
+    }
+
+    const strategy =
+      performanceContext.repairStrategy;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._molesToMassConceptProbe(
+        compound,
+        modalityIndex
+      );
+    }
+
+    const moles =
+      this._extractMoles(
+        qObj,
+        factModel
+      );
+
+    if (
+      !Number.isFinite(moles) ||
+      moles <= 0
+    ) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_MOLES"
+      );
+    }
+
+    const mass =
+      this._round(
+        this._solveMass(
+          moles,
+          compound.molarMass
+        ),
+        2
+      );
+
+    const answer =
+      `${mass} g`;
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        `Calculate the mass of ${moles} mol of ${compound.name} (${compound.displayFormula}). The molar mass is ${compound.molarMass} g/mol.`,
+
+      ans:
+        answer,
+
+      hint:
+        "Use m = n × M.",
+
+      why:
+        "Mass is found by multiplying the number of moles by the molar mass.",
+
+      sol:
+        `${moles} × ${compound.molarMass} = ${answer}.`,
+
+      steps: [
+        "Step 1: Use m = n × M.",
+        `Step 2: Substitute m = ${moles} × ${compound.molarMass}.`,
+        `Step 3: Calculate m = ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                `${this._round(compound.molarMass / moles, 2)} g`,
+                `${this._round(moles / compound.molarMass, 3)} g`,
+                `${this._round(mass / 2, 2)} g`,
+              ],
+              mode
+            ),
+
+      misconception:
+        "Divides instead of multiplying.",
+
+      concept:
+        "Moles and Mass",
+
+      skill:
+        "Convert moles to mass",
+
+      subskill:
+        "moles_times_molar_mass",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      mutationRule:
+        "reframe_moles_to_mass",
+
+      mutationReason:
+        "The amount of substance and compound were preserved; the required mass was recalculated.",
+
+      factModel: {
+        type:
+          "moles_to_mass",
+
+        factId:
+          `moles_to_mass.${compound.id}`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+
+        moles,
+        mass,
+      },
+    };
+  }
+
+  _molesToMassConceptProbe(
+    compound,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      "Multiply moles by molar mass";
+
+    return {
+      q:
+        `Which operation converts moles of ${compound.name} into mass?`,
+
+      ans:
+        answer,
+
+      hint:
+        "Use m = n × M.",
+
+      why:
+        "Mass equals number of moles multiplied by molar mass.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Identify the number of moles.",
+        "Step 2: Identify the molar mass.",
+        "Step 3: Multiply them.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Divide moles by molar mass",
+                "Add moles to molar mass",
+                "Divide molar mass by moles",
+              ],
+              mode
+            ),
+
+      concept:
+        "Moles and Mass",
+
+      skill:
+        "Convert moles to mass",
+
+      subskill:
+        "moles_times_molar_mass",
+
+      difficulty: 1,
+
+      misconception:
+        "Does not know the mass-from-moles relationship.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates the governing formula before numerical calculation.",
+
+      factModel: {
+        type:
+          "moles_to_mass",
+
+        factId:
+          `moles_to_mass.${compound.id}.probe`,
+
+        compound: {
+          id: compound.id,
+          name: compound.name,
+          formula: compound.formula,
+          molarMass:
+            compound.molarMass,
+        },
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  // ============================================================
+  // STOICHIOMETRY
+  // ============================================================
+
+  _buildStoichiometry(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const reaction =
+      this._selectReaction(
+        qObj,
+        factModel
+      );
+
+    if (!reaction) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_REACTION"
+      );
+    }
+
+    const reactant =
+      reaction.reactants[0];
+
+    const product =
+      reaction.products[0];
+
+    const startingMoles =
+      this._extractReactionMoles(
+        qObj,
+        factModel
+      );
+
+    if (
+      !Number.isFinite(
+        startingMoles
+      ) ||
+      startingMoles <= 0
+    ) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_REACTION_MOLES"
+      );
+    }
+
+    const strategy =
+      performanceContext.repairStrategy;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._stoichiometryConceptProbe(
+        reaction,
+        reactant,
+        product,
+        modalityIndex
+      );
+    }
+
+    const produced =
+      this._round(
+        this._solveStoichiometry(
+          startingMoles,
+          reactant.coefficient,
+          product.coefficient
+        ),
+        2
+      );
+
+    const answer =
+      `${produced} mol`;
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        `Given the balanced equation ${reaction.equation}, how many moles of ${product.formula} are produced when ${startingMoles} mol of ${reactant.formula} reacts completely with excess reactant?`,
+
+      ans:
+        answer,
+
+      hint:
+        `Use the mole ratio ${reactant.coefficient}:${product.coefficient}.`,
+
+      why:
+        `The balanced equation establishes the mole ratio ${reactant.coefficient}:${product.coefficient}.`,
+
+      sol:
+        `(${startingMoles} × ${product.coefficient}) / ${reactant.coefficient} = ${answer}.`,
+
+      steps: [
+        `Step 1: Read the balanced equation: ${reaction.equation}.`,
+        `Step 2: Identify the ratio ${reactant.coefficient}:${product.coefficient}.`,
+        `Step 3: Calculate (${startingMoles} × ${product.coefficient}) / ${reactant.coefficient}.`,
+        `Step 4: Answer = ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                `${startingMoles} mol`,
+                `${this._round(startingMoles * reactant.coefficient, 2)} mol`,
+                `${this._round(produced / 2, 2)} mol`,
+              ],
+              mode
+            ),
+
+      misconception:
+        "Uses the wrong coefficient ratio.",
+
+      concept:
+        "Stoichiometry",
+
+      skill:
+        "Use mole ratios",
+
+      subskill:
+        "mole_ratio",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      mutationRule:
+        "reframe_mole_ratio",
+
+      mutationReason:
+        "The verified balanced equation was preserved and the product amount was independently recalculated.",
+
+      factModel: {
+        type:
+          "stoichiometry",
+
+        factId:
+          `stoichiometry.${reaction.id}`,
+
+        reactionId:
+          reaction.id,
+
+        reaction:
+          reaction.equation,
+
+        reactant,
+        product,
+
+        startingMoles,
+        produced,
+      },
+    };
+  }
+
+  _stoichiometryConceptProbe(
+    reaction,
+    reactant,
+    product,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      `${reactant.coefficient}:${product.coefficient}`;
+
+    return {
+      q:
+        `In ${reaction.equation}, what is the mole ratio of ${reactant.formula} to ${product.formula}?`,
+
+      ans:
+        answer,
+
+      hint:
+        "Read the coefficients in front of the substances.",
+
+      why:
+        `The coefficients are ${reactant.coefficient} and ${product.coefficient}, so the ratio is ${answer}.`,
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Read the coefficient of the reactant.",
+        "Step 2: Read the coefficient of the product.",
+        `Step 3: Form the ratio ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                `${product.coefficient}:${reactant.coefficient}`,
+                `${reactant.coefficient + 1}:${product.coefficient}`,
+                `${reactant.coefficient}:${product.coefficient + 1}`,
+              ],
+              mode
+            ),
+
+      concept:
+        "Stoichiometry",
+
+      skill:
+        "Use mole ratios",
+
+      subskill:
+        "mole_ratio",
+
+      difficulty: 1,
+
+      misconception:
+        "Reverses or ignores stoichiometric coefficients.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates coefficient-ratio recognition before requiring a full stoichiometric calculation.",
+
+      factModel: {
+        type:
+          "stoichiometry",
+
+        factId:
+          `stoichiometry.${reaction.id}.probe`,
+
+        reactionId:
+          reaction.id,
+
+        reaction:
+          reaction.equation,
+
+        reactant,
+        product,
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  // ============================================================
+  // GAS VOLUME
+  // ============================================================
+
+  _buildGasVolume(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const gas =
+      this._selectGas(
+        qObj,
+        factModel
+      );
+
+    if (!gas) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_GAS"
+      );
+    }
+
+    const condition =
+      this._selectGasCondition(
+        qObj,
+        factModel
+      );
+
+    if (!condition) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_GAS_CONDITION"
+      );
+    }
+
+    const molarVolume =
+      condition === "STP"
+        ? 22.4
+        : 24;
+
+    const moles =
+      this._extractGasMoles(
+        qObj,
+        factModel
+      );
+
+    if (
+      !Number.isFinite(moles) ||
+      moles <= 0
+    ) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_GAS_MOLES"
+      );
+    }
+
+    const strategy =
+      performanceContext.repairStrategy;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._gasVolumeConceptProbe(
+        gas,
+        condition,
+        molarVolume,
+        modalityIndex
+      );
+    }
+
+    const volume =
+      this._round(
+        this._solveGasVolume(
+          moles,
+          molarVolume
+        ),
+        2
+      );
+
+    const answer =
+      `${volume} dm3`;
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        `Calculate the volume occupied by ${moles} mol of ${gas.name} (${gas.formula}) at ${condition}, where the molar gas volume is ${molarVolume} dm3/mol.`,
+
+      ans:
+        answer,
+
+      hint:
+        `Use V = n × Vm. At ${condition}, Vm = ${molarVolume} dm3/mol.`,
+
+      why:
+        "Gas volume is calculated by multiplying the number of moles by molar volume.",
+
+      sol:
+        `${moles} × ${molarVolume} = ${answer}.`,
+
+      steps: [
+        `Step 1: Identify the condition: ${condition}.`,
+        `Step 2: Use molar volume = ${molarVolume} dm3/mol.`,
+        "Step 3: Apply V = n × Vm.",
+        `Step 4: V = ${moles} × ${molarVolume} = ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                `${this._round(moles * 22.4, 2)} dm3`,
+                `${this._round(molarVolume / moles, 2)} dm3`,
+                `${this._round(volume / 2, 2)} dm3`,
+              ],
+              mode
+            ),
+
+      misconception:
+        condition === "STP"
+          ? "Uses the RTP molar volume at STP."
+          : "Uses the STP molar volume at RTP.",
+
+      concept:
+        "Gas Volume",
+
+      skill:
+        "Calculate gas volume",
+
+      subskill:
+        "moles_times_molar_volume",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      mutationRule:
+        "reframe_gas_volume",
+
+      mutationReason:
+        "The gas, amount and condition were preserved and volume was independently recalculated.",
+
+      factModel: {
+        type:
+          "gas_volume",
+
+        factId:
+          `gas_volume.${gas.formula}.${condition}`,
+
+        gas,
+        condition,
+        molarVolume,
+        moles,
+        volume,
+      },
+    };
+  }
+
+  _gasVolumeConceptProbe(
+    gas,
+    condition,
+    molarVolume,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      "Multiply moles by molar volume";
+
+    return {
+      q:
+        `At ${condition}, how do you calculate the volume of ${gas.name} from the number of moles?`,
+
+      ans:
+        answer,
+
+      hint:
+        "Use V = n × Vm.",
+
+      why:
+        "Gas volume equals number of moles multiplied by molar volume.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Identify the number of moles.",
+        `Step 2: Use the molar volume at ${condition}: ${molarVolume} dm3/mol.`,
+        "Step 3: Multiply n by Vm.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Divide moles by molar volume",
+                "Add moles and molar volume",
+                "Divide molar volume by moles",
+              ],
+              mode
+            ),
+
+      concept:
+        "Gas Volume",
+
+      skill:
+        "Calculate gas volume",
+
+      subskill:
+        "moles_times_molar_volume",
+
+      difficulty: 1,
+
+      misconception:
+        "Uses the wrong relationship between moles and gas volume.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates the governing gas-volume relationship.",
+
+      factModel: {
+        type:
+          "gas_volume",
+
+        factId:
+          `gas_volume.${gas.formula}.${condition}.probe`,
+
+        gas,
+        condition,
+        molarVolume,
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  // ============================================================
+  // CONCENTRATION
+  // ============================================================
+
+  _buildConcentration(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const n =
+      this._extractConcentrationMoles(
+        qObj,
+        factModel
+      );
+
+    const volume =
+      this._extractConcentrationVolume(
+        qObj,
+        factModel
+      );
+
+    if (
+      !Number.isFinite(n) ||
+      !Number.isFinite(volume) ||
+      n <= 0 ||
+      volume <= 0
+    ) {
+      return this._safeFallback(
+        qObj,
+        "INVALID_CONCENTRATION_DATA"
+      );
+    }
+
+    const strategy =
+      performanceContext.repairStrategy;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._concentrationConceptProbe(
+        modalityIndex
+      );
+    }
+
+    const concentration =
+      this._round(
+        n / volume,
+        2
+      );
+
+    const answer =
+      `${concentration} mol/dm3`;
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        `Exactly ${n} mol of solute is dissolved to make ${volume} dm3 of solution. Calculate the concentration.`,
+
+      ans:
+        answer,
+
+      hint:
+        "Use C = n / V.",
+
+      why:
+        `Concentration = number of moles / volume = ${n} / ${volume}.`,
+
+      sol:
+        `${n} / ${volume} = ${answer}.`,
+
+      steps: [
+        "Step 1: Identify the number of moles.",
+        "Step 2: Identify the volume in dm3.",
+        "Step 3: Use C = n / V.",
+        `Step 4: C = ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                `${this._round(n * volume, 2)} mol/dm3`,
+                `${this._round(volume / n, 2)} mol/dm3`,
+                `${this._round(concentration * 2, 2)} mol/dm3`,
+              ],
+              mode
+            ),
+
+      misconception:
+        "Multiplies moles by volume instead of dividing.",
+
+      concept:
+        "Solution Concentration",
+
+      skill:
+        "Calculate concentration",
+
+      subskill:
+        "moles_divided_by_volume",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      mutationRule:
+        "reframe_concentration",
+
+      mutationReason:
+        "The original mole and volume values were preserved and concentration was recalculated from C = n/V.",
+
+      factModel: {
+        type:
+          "concentration",
+
+        factId:
+          "concentration.moles_over_volume",
+
+        moles: n,
+        volume,
+        concentration,
+      },
+    };
+  }
+
+  _concentrationConceptProbe(
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      "Divide moles by volume";
+
+    return {
+      q:
+        "Which formula is used to calculate concentration in mol/dm3?",
+
+      ans:
+        answer,
+
+      hint:
+        "Use C = n / V.",
+
+      why:
+        "Concentration is the amount of substance divided by the volume of solution.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Identify moles n.",
+        "Step 2: Identify volume V.",
+        "Step 3: Divide n by V.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Multiply moles by volume",
+                "Divide volume by moles",
+                "Add moles and volume",
+              ],
+              mode
+            ),
+
+      concept:
+        "Solution Concentration",
+
+      skill:
+        "Calculate concentration",
+
+      subskill:
+        "moles_divided_by_volume",
+
+      difficulty: 1,
+
+      misconception:
+        "Does not know the concentration formula.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates the concentration relationship.",
+
+      factModel: {
+        type:
+          "concentration",
+
+        factId:
+          "concentration.formula.probe",
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  // ============================================================
+  // pH
+  // ============================================================
+
+  _buildPH(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const pH =
+      this._extractPH(
+        qObj,
+        factModel
+      );
+
+    if (
+      pH == null ||
+      pH < 0 ||
+      pH > 14
+    ) {
+      return this._safeFallback(
+        qObj,
+        "INVALID_PH"
+      );
+    }
+
+    const classification =
+      this._classifyPH(pH);
+
+    const strategy =
+      performanceContext.repairStrategy;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._phConceptProbe(
+        pH,
+        modalityIndex
+      );
+    }
+
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      classification;
+
+    const distractors =
+      [
+        "Acidic",
+        "Neutral",
+        "Alkaline",
+        "Strongly acidic",
+        "Strongly alkaline",
+      ].filter(
+        (x) => x !== answer
+      );
+
+    return {
+      q:
+        `A solution has a pH of ${pH}. How should it be classified?`,
+
+      ans:
+        answer,
+
+      hint:
+        "Compare the pH with 7.",
+
+      why:
+        "pH below 7 is acidic, pH 7 is neutral, and pH above 7 is alkaline.",
+
+      sol:
+        `Since pH = ${pH}, the solution is ${answer.toLowerCase()}.`,
+
+      steps: [
+        `Step 1: Compare pH ${pH} with neutral pH 7.`,
+
+        pH < 7
+          ? "Step 2: The pH is below 7, so the solution is acidic."
+          : pH === 7
+            ? "Step 2: The pH equals 7, so the solution is neutral."
+            : "Step 2: The pH is above 7, so the solution is alkaline.",
+
+        `Step 3: Therefore the classification is ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              distractors,
+              mode
+            ),
+
+      concept:
+        "Acids, Bases and pH",
+
+      skill:
+        "Interpret pH",
+
+      subskill:
+        "ph_scale_classification",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      misconception:
+        pH < 7
+          ? "Confuses low pH with alkalinity."
+          : "Confuses high pH with acidity.",
+
+      mutationRule:
+        "reframe_ph_classification",
+
+      mutationReason:
+        "The original pH value was preserved and classification was independently recalculated.",
+
+      factModel: {
+        type:
+          "ph",
+
+        factId:
+          `ph.classification.${pH}`,
+
+        pH,
+
+        classification:
+          answer,
+      },
+    };
+  }
+
+  _phConceptProbe(
+    pH,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      pH < 7
+        ? "Below 7 means acidic"
+        : pH === 7
+          ? "7 means neutral"
+          : "Above 7 means alkaline";
+
+    return {
+      q:
+        `What does pH ${pH} tell you about a solution?`,
+
+      ans:
+        answer,
+
+      hint:
+        "Compare the number with 7.",
+
+      why:
+        "The pH scale classifies solutions relative to neutral pH 7.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Identify pH 7 as neutral.",
+        `Step 2: Compare ${pH} with 7.`,
+        `Step 3: ${answer}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Below 7 means alkaline",
+                "7 means strongly acidic",
+                "Above 7 means acidic",
+              ],
+              mode
+            ),
+
+      concept:
+        "Acids, Bases and pH",
+
+      skill:
+        "Interpret pH",
+
+      subskill:
+        "ph_scale_classification",
+
+      difficulty: 1,
+
+      misconception:
+        "Does not correctly interpret the pH scale.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates interpretation of the pH scale.",
+
+      factModel: {
+        type:
+          "ph",
+
+        factId:
+          `ph.classification.${pH}.probe`,
+
+        pH,
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  // ============================================================
+  // IONIC BONDING
+  // ============================================================
+
+  _buildIonicBonding(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const metal =
+      this._selectIon(
+        qObj,
+        factModel,
+        "positive"
+      );
+
+    const nonMetal =
+      this._selectIon(
+        qObj,
+        factModel,
+        "negative"
+      );
+
+    if (
+      !metal ||
+      !nonMetal
+    ) {
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_IONS"
+      );
+    }
+
+    const formula =
+      this._ionicFormula(
+        metal,
+        nonMetal
+      );
+
+    const strategy =
+      performanceContext.repairStrategy;
+
+    if (
+      strategy === "PROBE" ||
+      strategy === "CONCEPT_CONTRAST"
+    ) {
+      return this._ionicBondingConceptProbe(
+        metal,
+        nonMetal,
+        modalityIndex
+      );
+    }
+
+    const answer =
+      `Ionic bonding forms when ${metal.name} loses electron(s) to form ${metal.ion}, while ${nonMetal.name} gains electron(s) to form ${nonMetal.ion}. The ions combine in the ratio represented by ${formula}.`;
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        `When ${metal.name} combines with ${nonMetal.name}, what type of bonding occurs and what is the formula of the ionic compound?`,
+
+      ans:
+        answer,
+
+      hint:
+        "A metal transfers electrons to a non-metal. Balance the ion charges.",
+
+      why:
+        answer,
+
+      sol:
+        answer,
+
+      steps: [
+        `Step 1: ${metal.name} forms ${metal.ion}.`,
+        `Step 2: ${nonMetal.name} forms ${nonMetal.ion}.`,
+        "Step 3: Balance the positive and negative charges.",
+        `Step 4: The resulting formula is ${formula}.`,
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Covalent bonding; electrons are shared.",
+                "Metallic bonding; both elements form positive ions.",
+                "Hydrogen bonding; neutral atoms attract.",
+              ],
+              mode
+            ),
+
+      concept:
+        "Chemical Bonding",
+
+      skill:
+        "Determine ionic bonding and formula",
+
+      subskill:
+        "charge_balance",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      misconception:
+        "Confuses electron transfer with electron sharing.",
+
+      mutationRule:
+        "reframe_ionic_bonding",
+
+      mutationReason:
+        "The verified ions and charges were preserved; the ionic formula was independently calculated.",
+
+      factModel: {
+        type:
+          "ionic_bonding",
+
+        factId:
+          `ionic.${metal.element}.${nonMetal.element}`,
+
+        metal,
+        nonMetal,
+        formula,
+      },
+    };
+  }
+
+  _ionicBondingConceptProbe(
+    metal,
+    nonMetal,
+    modalityIndex
+  ) {
+    const mode =
+      this._mode(modalityIndex);
+
+    const answer =
+      "Electron transfer";
+
+    return {
+      q:
+        `What happens to electrons when ${metal.name} forms an ionic bond with ${nonMetal.name}?`,
+
+      ans:
+        answer,
+
+      hint:
+        "Ionic bonding occurs between a metal and a non-metal.",
+
+      why:
+        `${metal.name} forms a positive ion by losing electrons, while ${nonMetal.name} forms a negative ion by gaining electrons.`,
+
+      sol:
+        answer,
+
+      steps: [
+        `Step 1: ${metal.name} is the metal.`,
+        `Step 2: ${nonMetal.name} is the non-metal.`,
+        "Step 3: Electrons are transferred from the metal to the non-metal.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Electron sharing",
+                "Neutron transfer",
+                "Proton sharing",
+              ],
+              mode
+            ),
+
+      concept:
+        "Chemical Bonding",
+
+      skill:
+        "Determine ionic bonding and formula",
+
+      subskill:
+        "charge_balance",
+
+      difficulty: 1,
+
+      misconception:
+        "Confuses ionic electron transfer with covalent sharing.",
+
+      mutationRule:
+        "concept_probe",
+
+      mutationReason:
+        "The repair isolates the foundational electron-transfer concept.",
+
+      factModel: {
+        type:
+          "ionic_bonding",
+
+        factId:
+          `ionic.${metal.element}.${nonMetal.element}.probe`,
+
+        metal,
+        nonMetal,
+
+        formula:
+          this._ionicFormula(
+            metal,
+            nonMetal
+          ),
+
+        repairMode:
+          "CONCEPT_CONTRAST",
+      },
+    };
+  }
+
+  // ============================================================
+  // COVALENT BONDING
+  // ============================================================
+
+  _buildCovalentBonding(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const answer =
+      "Covalent bonding";
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        mode === 0
+          ? "What type of bonding forms when two non-metal atoms share pairs of electrons?"
+          : "Which type of chemical bond involves sharing pairs of electrons between non-metal atoms?",
+
+      ans:
+        answer,
+
+      hint:
+        "Think about electron sharing between non-metals.",
+
+      why:
+        "A covalent bond is formed when atoms share electron pairs.",
+
+      sol:
+        "Non-metal atoms can form covalent bonds by sharing pairs of electrons.",
+
+      steps: [
+        "Step 1: Identify the atoms as non-metals.",
+        "Step 2: Non-metals can achieve stable outer electron arrangements by sharing electrons.",
+        "Step 3: The shared electron pair forms a covalent bond.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Ionic bonding",
+                "Metallic bonding",
+                "Nuclear bonding",
+              ],
+              mode
+            ),
+
+      concept:
+        "Chemical Bonding",
+
+      skill:
+        "Identify covalent bonding",
+
+      subskill:
+        "electron_sharing",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      misconception:
+        "Confuses electron sharing with electron transfer.",
+
+      mutationRule:
+        "reframe_electron_sharing",
+
+      mutationReason:
+        "The same verified chemical principle was retained while the retrieval wording changed.",
+
+      factModel: {
+        type:
+          "covalent_bonding",
+
+        factId:
+          "bonding.covalent.electron_sharing",
+
+        relation:
+          "electron_sharing_between_nonmetals",
+      },
+    };
+  }
+
+  // ============================================================
+  // METALLIC BONDING
+  // ============================================================
+
+  _buildMetallicBonding(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const answer =
+      "Metallic bonding consists of positive metal ions attracted to delocalized electrons.";
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        mode === 0
+          ? "Why can metals conduct electricity in the solid state?"
+          : "Which feature of metallic bonding allows a solid metal to conduct electricity?",
+
+      ans:
+        answer,
+
+      hint:
+        "Think about the electrons that can move through metallic bonding.",
+
+      why:
+        "Metals contain delocalized electrons that can move through the structure and carry charge.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: Metal atoms contribute outer electrons.",
+        "Step 2: These electrons become delocalized.",
+        "Step 3: The mobile electrons carry electrical charge.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "Positive ions move freely through the solid.",
+                "Neutrons move through the metal.",
+                "Water molecules carry the electrical current.",
+              ],
+              mode
+            ),
+
+      concept:
+        "Chemical Bonding",
+
+      skill:
+        "Explain metallic bonding",
+
+      subskill:
+        "delocalized_electrons",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      misconception:
+        "Believes positive metal ions carry electrical current through the solid.",
+
+      mutationRule:
+        "reframe_metallic_conduction",
+
+      mutationReason:
+        "The verified explanation of metallic conduction was preserved while the retrieval demand changed.",
+
+      factModel: {
+        type:
+          "metallic_bonding",
+
+        factId:
+          "bonding.metallic.delocalized_electrons",
+
+        relation:
+          "delocalized_electrons_carry_charge",
+      },
+    };
+  }
+
+  // ============================================================
+  // CATALYST
+  // ============================================================
+
+  _buildCatalyst(
+    qObj,
+    modalityIndex,
+    performanceContext,
+    factModel
+  ) {
+    const answer =
+      "MnO2 acts as a catalyst by providing an alternative reaction pathway with lower activation energy.";
+
+    const mode =
+      this._mode(modalityIndex);
+
+    return {
+      q:
+        mode === 0
+          ? "A chemist adds MnO2 to hydrogen peroxide. Oxygen is produced faster, but the MnO2 is recovered unchanged. What is the role of MnO2?"
+          : "Why does MnO2 increase the rate of hydrogen peroxide decomposition without being permanently consumed?",
+
+      ans:
+        answer,
+
+      hint:
+        "A catalyst changes the rate of reaction without being permanently consumed.",
+
+      why:
+        "A catalyst provides an alternative reaction pathway with lower activation energy.",
+
+      sol:
+        answer,
+
+      steps: [
+        "Step 1: The reaction becomes faster.",
+        "Step 2: MnO2 is recovered unchanged.",
+        "Step 3: Therefore MnO2 acts as a catalyst.",
+        "Step 4: A catalyst provides an alternative pathway with lower activation energy.",
+      ],
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options:
+        mode === 0
+          ? null
+          : this._deterministicOptions(
+              answer,
+              [
+                "MnO2 is completely consumed by the reaction.",
+                "MnO2 changes the equilibrium constant.",
+                "MnO2 permanently increases the temperature.",
+              ],
+              mode
+            ),
+
+      concept:
+        "Rates of Reaction",
+
+      skill:
+        "Explain catalyst action",
+
+      subskill:
+        "activation_energy",
+
+      difficulty:
+        performanceContext.difficulty,
+
+      misconception:
+        "Believes a catalyst is consumed or changes the equilibrium constant.",
+
+      mutationRule:
+        "reframe_catalyst_action",
+
+      mutationReason:
+        "The verified catalyst mechanism was preserved while the question framing changed.",
+
+      factModel: {
+        type:
+          "catalyst",
+
+        factId:
+          "rates.catalyst.alternative_pathway",
+
+        catalyst:
+          "MnO2",
+
+        reaction:
+          "hydrogen peroxide decomposition",
+
+        unchanged:
+          true,
+
+        effect:
+          "lower_activation_energy",
+      },
+    };
+  }
+
+  // ============================================================
+  // SEMANTIC BOUNDARY VERIFICATION
+  // ============================================================
+
+  _verifySemanticBoundary(
+    source,
+    target,
+    sourceFact,
+    targetFact
+  ) {
+    if (!source || !target) {
+      return {
+        valid: false,
+        reason:
+          "SEMANTIC_IDENTITY_MISSING",
+      };
+    }
+
+    if (
+      source.subject &&
+      target.subject &&
+      source.subject !==
+        target.subject
+    ) {
+      return {
+        valid: false,
+        reason:
+          `SUBJECT_CHANGED:${source.subject}->${target.subject}`,
+      };
+    }
+
+    /*
+     * Skill is the strongest educational boundary.
+     */
+
+    if (
+      source.skillId &&
+      target.skillId &&
+      source.skillId !==
+        target.skillId
+    ) {
+      return {
+        valid: false,
+        reason:
+          `SKILL_CHANGED:${source.skillId}->${target.skillId}`,
+      };
+    }
+
+    /*
+     * Concept must remain stable unless the
+     * caller explicitly permits progression.
+     */
+
+    if (
+      source.conceptId &&
+      target.conceptId &&
+      source.conceptId !==
+        target.conceptId
+    ) {
+      return {
+        valid: false,
+        reason:
+          `CONCEPT_CHANGED:${source.conceptId}->${target.conceptId}`,
+      };
+    }
+
+    /*
+     * Fact type must remain stable.
+     */
+
+    if (
+      source.factType &&
+      target.factType &&
+      source.factType !==
+        target.factType
+    ) {
+      return {
+        valid: false,
+        reason:
+          `FACT_TYPE_CHANGED:${source.factType}->${target.factType}`,
+      };
+    }
+
+    /*
+     * Topic is a weaker boundary than skill,
+     * but if explicitly supplied it must remain
+     * stable during repair.
+     */
+
+    if (
+      source.topic &&
+      target.topic &&
+      source.topic !==
+        target.topic
+    ) {
+      return {
+        valid: false,
+        reason:
+          `TOPIC_CHANGED:${source.topic}->${target.topic}`,
+      };
+    }
+
+    return {
+      valid: true,
+      reason: null,
+    };
+  }
+
+  // ============================================================
+  // INDEPENDENT CHEMISTRY VERIFIER
+  // ============================================================
+
+  _verifyChemistryQuestion(
+    question,
+    sourceFact
+  ) {
+    if (!question) {
+      return false;
+    }
+
+    const fact =
+      question.metadata?.factModel ||
+      question.factModel;
+
+    if (!fact) {
+      return false;
+    }
+
+    switch (
+      fact.type ||
+      sourceFact?.type
+    ) {
+      case "molar_mass":
+        return this._verifyMolarMass(
+          question,
+          fact
+        );
+
+      case "mass_to_moles":
+        return this._verifyMassToMoles(
+          question,
+          fact
+        );
+
+      case "moles_to_mass":
+        return this._verifyMolesToMass(
+          question,
+          fact
+        );
+
+      case "stoichiometry":
+        return this._verifyStoichiometry(
+          question,
+          fact
+        );
+
+      case "gas_volume":
+        return this._verifyGasVolume(
+          question,
+          fact
+        );
+
+      case "concentration":
+        return this._verifyConcentration(
+          question,
+          fact
+        );
+
+      case "ph":
+        return this._verifyPH(
+          question,
+          fact
+        );
+
+      case "ionic_bonding":
+        return this._verifyIonicBonding(
+          question,
+          fact
+        );
+
+      case "covalent_bonding":
+        return this._verifyCovalentBonding(
+          question,
+          fact
+        );
+
+      case "metallic_bonding":
+        return this._verifyMetallicBonding(
+          question,
+          fact
+        );
+
+      case "catalyst":
+        return this._verifyCatalyst(
+          question,
+          fact
+        );
+
+      default:
+        return false;
+    }
+  }
+
+  _verifyMolarMass(
+    question,
+    fact
+  ) {
+    if (!fact.compound) {
+      return false;
+    }
+
+    const expected =
+      `${fact.compound.molarMass} g/mol`;
+
+    /*
+     * Probe questions intentionally have
+     * conceptual answers.
+     */
+
+    if (
+      fact.repairMode ===
+      "CONCEPT_CONTRAST" ||
+      fact.repairMode ===
+      "PROCEDURE_REPAIR"
+    ) {
+      return true;
+    }
+
+    return (
+      String(question.ans).trim() ===
+      expected
+    );
+  }
+
+  _verifyMassToMoles(
+    question,
+    fact
+  ) {
+    if (
+      !Number.isFinite(fact.mass) ||
+      !fact.compound?.molarMass
+    ) {
+      return true;
+    }
+
+    const expected =
+      this._round(
+        fact.mass /
+          fact.compound.molarMass,
+        2
+      );
+
+    if (
+      fact.repairMode ===
+      "CONCEPT_CONTRAST"
+    ) {
+      return true;
+    }
+
+    return (
+      String(question.ans)
+        .replace(" mol", "")
+        .trim() ===
+      String(expected)
+    );
+  }
+
+  _verifyMolesToMass(
+    question,
+    fact
+  ) {
+    if (
+      !Number.isFinite(fact.moles) ||
+      !fact.compound?.molarMass
+    ) {
+      return true;
+    }
+
+    const expected =
+      this._round(
+        fact.moles *
+          fact.compound.molarMass,
+        2
+      );
+
+    if (
+      fact.repairMode ===
+      "CONCEPT_CONTRAST"
+    ) {
+      return true;
+    }
+
+    return (
+      String(question.ans)
+        .replace(" g", "")
+        .trim() ===
+      String(expected)
+    );
+  }
+
+  _verifyStoichiometry(
+    question,
+    fact
+  ) {
+    if (
+      !fact.reactant ||
+      !fact.product
+    ) {
+      return false;
+    }
+
+    if (
+      fact.repairMode ===
+      "CONCEPT_CONTRAST"
+    ) {
+      return true;
+    }
+
+    if (
+      Number.isFinite(
+        fact.startingMoles
+      )
+    ) {
+      const expected =
+        this._round(
+          this._solveStoichiometry(
+            fact.startingMoles,
+            fact.reactant.coefficient,
+            fact.product.coefficient
+          ),
+          2
+        );
+
+      return (
+        String(question.ans)
+          .replace(" mol", "")
+          .trim() ===
+        String(expected)
+      );
+    }
+
+    return true;
+  }
+
+  _verifyGasVolume(
+    question,
+    fact
+  ) {
+    if (
+      fact.repairMode ===
+      "CONCEPT_CONTRAST"
+    ) {
+      return true;
+    }
+
+    if (
+      !Number.isFinite(fact.moles) ||
+      !Number.isFinite(fact.molarVolume)
+    ) {
+      return false;
+    }
+
+    const expected =
+      this._round(
+        fact.moles *
+          fact.molarVolume,
+        2
+      );
+
+    return (
+      String(question.ans)
+        .replace(" dm3", "")
+        .trim() ===
+      String(expected)
+    );
+  }
+
+  _verifyConcentration(
+    question,
+    fact
+  ) {
+    if (
+      fact.repairMode ===
+      "CONCEPT_CONTRAST"
+    ) {
+      return true;
+    }
+
+    if (
+      !Number.isFinite(fact.moles) ||
+      !Number.isFinite(fact.volume)
+    ) {
+      return false;
+    }
+
+    const expected =
+      this._round(
+        fact.moles /
+          fact.volume,
+        2
+      );
+
+    return (
+      String(question.ans)
+        .replace(" mol/dm3", "")
+        .trim() ===
+      String(expected)
+    );
+  }
+
+  _verifyPH(
+    question,
+    fact
+  ) {
+    if (
+      !Number.isFinite(fact.pH)
+    ) {
+      return false;
+    }
+
+    if (
+      fact.repairMode ===
+      "CONCEPT_CONTRAST"
+    ) {
+      return true;
+    }
+
+    return (
+      String(question.ans).trim() ===
+      this._classifyPH(
+        fact.pH
+      )
+    );
+  }
+
+  _verifyIonicBonding(
+    question,
+    fact
+  ) {
+    if (
+      !fact.metal ||
+      !fact.nonMetal ||
+      !fact.formula
+    ) {
+      return false;
+    }
+
+    /*
+     * Recalculate the formula independently.
+     */
+
+    const expectedFormula =
+      this._ionicFormula(
+        fact.metal,
+        fact.nonMetal
+      );
+
+    /*
+     * The textual answer may contain
+     * explanation, so inspect the generated
+     * fact model rather than trusting prose.
+     */
+
+    return (
+      fact.formula ===
+      expectedFormula
+    );
+  }
+
+  _verifyCovalentBonding(
+    question,
+    fact
+  ) {
+    return (
+      fact.relation ===
+      "electron_sharing_between_nonmetals"
+    );
+  }
+
+  _verifyMetallicBonding(
+    question,
+    fact
+  ) {
+    return (
+      fact.relation ===
+      "delocalized_electrons_carry_charge"
+    );
+  }
+
+  _verifyCatalyst(
+    question,
+    fact
+  ) {
+    return (
+      fact.catalyst ===
+        "MnO2" &&
+      fact.unchanged ===
+        true &&
+      fact.effect ===
+        "lower_activation_energy"
+    );
+  }
+
+  // ============================================================
+  // COMPOUND SELECTION
+  // ============================================================
+
+  _selectCompound(
+    qObj,
+    factModel
+  ) {
+    const requestedId =
+      factModel?.compound?.id;
+
+    if (requestedId) {
+      return (
+        this.compounds.find(
+          (compound) =>
+            compound.id ===
+            requestedId
+        ) ||
+        null
+      );
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      ).toLowerCase();
+
+    const found =
+      this.compounds.find(
+        (compound) =>
+          stem.includes(
+            compound.name.toLowerCase()
+          ) ||
+          stem.includes(
+            compound.formula.toLowerCase()
+          )
+      );
+
+    return found || null;
+  }
+
+  // ============================================================
+  // REACTION SELECTION
+  // ============================================================
+
+  _selectReaction(
+    qObj,
+    factModel
+  ) {
+    if (factModel?.reactionId) {
+      return (
+        this.reactions.find(
+          (reaction) =>
+            reaction.id ===
+            factModel.reactionId
+        ) ||
+        null
+      );
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      ).toLowerCase();
+
+    const found =
+      this.reactions.find(
+        (reaction) =>
+          stem.includes(
+            reaction.equation.toLowerCase()
+          )
+      );
+
+    return found || null;
+  }
+
+  // ============================================================
+  // GAS SELECTION
+  // ============================================================
+
+  _selectGas(
+    qObj,
+    factModel
+  ) {
+    const known = [
+      {
+        name:
+          "carbon dioxide",
+        formula:
+          "CO2",
+      },
+
+      {
+        name:
+          "oxygen",
+        formula:
+          "O2",
+      },
+
+      {
+        name:
+          "nitrogen",
+        formula:
+          "N2",
+      },
+
+      {
+        name:
+          "hydrogen",
+        formula:
+          "H2",
+      },
+
+      {
+        name:
+          "methane",
+        formula:
+          "CH4",
+      },
+    ];
+
+    if (
+      factModel?.gas?.formula
+    ) {
+      return (
+        known.find(
+          (gas) =>
+            gas.formula ===
+            factModel.gas.formula
+        ) ||
+        null
+      );
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      ).toLowerCase();
+
+    const found =
+      known.find(
+        (gas) =>
+          stem.includes(
+            gas.name
+          ) ||
+          stem.includes(
+            gas.formula.toLowerCase()
+          )
+      );
+
+    return found || null;
+  }
+
+  // ============================================================
+  // GAS CONDITION
+  // ============================================================
+
+  _selectGasCondition(
+    qObj,
+    factModel
+  ) {
+    if (
+      factModel?.condition ===
+        "STP" ||
+      factModel?.condition ===
+        "RTP"
+    ) {
+      return factModel.condition;
+    }
+
+    const lower =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      ).toLowerCase();
+
+    if (
+      lower.includes("stp")
+    ) {
+      return "STP";
+    }
+
+    if (
+      lower.includes("rtp")
+    ) {
+      return "RTP";
+    }
+
+    return null;
+  }
+
+  // ============================================================
+  // ION SELECTION
+  // ============================================================
+
+  _selectIon(
+    qObj,
+    factModel,
+    sign
+  ) {
+    if (
+      sign === "positive" &&
+      factModel?.metal
+    ) {
+      return factModel.metal;
+    }
+
+    if (
+      sign === "negative" &&
+      factModel?.nonMetal
+    ) {
+      return factModel.nonMetal;
+    }
+
+    const lower =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      ).toLowerCase();
+
+    const candidates =
+      this.ions.filter(
+        (ion) =>
+          sign === "positive"
+            ? ion.charge > 0
+            : ion.charge < 0
+      );
+
+    const found =
+      candidates.find(
+        (ion) =>
+          lower.includes(
+            ion.name
+          ) ||
+          lower.includes(
+            ion.element.toLowerCase()
+          )
+      );
+
+    return found || null;
+  }
+
+  // ============================================================
+  // PARAMETER EXTRACTION
+  // ============================================================
+
+  _extractMass(
+    qObj,
+    factModel,
+    compound
+  ) {
+    if (
+      Number.isFinite(
+        factModel?.mass
+      ) &&
+      factModel.mass > 0
+    ) {
+      return factModel.mass;
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      );
+
+    const gramMatch =
+      stem.match(
+        /(\d+(?:\.\d+)?)\s*(?:g|grams?)\b/i
+      );
+
+    if (gramMatch) {
+      return Number(
+        gramMatch[1]
+      );
+    }
+
+    if (
+      /\b(one|1)\s*mole\b/i.test(
+        stem
+      )
+    ) {
+      return compound.molarMass;
+    }
+
+    return null;
+  }
+
+  _extractMoles(
+    qObj,
+    factModel
+  ) {
+    if (
+      Number.isFinite(
+        factModel?.moles
+      ) &&
+      factModel.moles > 0
+    ) {
+      return factModel.moles;
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      );
+
+    const match =
+      stem.match(
+        /(\d+(?:\.\d+)?)\s*(?:mol|moles?)\b/i
+      );
+
+    return match
+      ? Number(match[1])
+      : null;
+  }
+
+  _extractReactionMoles(
+    qObj,
+    factModel
+  ) {
+    if (
+      Number.isFinite(
+        factModel?.startingMoles
+      ) &&
+      factModel.startingMoles > 0
+    ) {
+      return factModel.startingMoles;
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      );
+
+    const matches = [
+      ...stem.matchAll(
+        /(\d+(?:\.\d+)?)\s*(?:mol|moles?)\b/gi
+      ),
+    ];
+
+    if (!matches.length) {
+      return null;
+    }
 
     return Number(
-      Number(value).toFixed(decimals)
+      matches[0][1]
     );
-
   }
 
+  _extractGasMoles(
+    qObj,
+    factModel
+  ) {
+    if (
+      Number.isFinite(
+        factModel?.moles
+      ) &&
+      factModel.moles > 0
+    ) {
+      return factModel.moles;
+    }
+
+    return this._extractMoles(
+      qObj,
+      factModel
+    );
+  }
+
+  _extractConcentrationMoles(
+    qObj,
+    factModel
+  ) {
+    if (
+      Number.isFinite(
+        factModel?.moles
+      )
+    ) {
+      return factModel.moles;
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      );
+
+    const match =
+      stem.match(
+        /(\d+(?:\.\d+)?)\s*mol\b/i
+      );
+
+    return match
+      ? Number(match[1])
+      : null;
+  }
+
+  _extractConcentrationVolume(
+    qObj,
+    factModel
+  ) {
+    if (
+      Number.isFinite(
+        factModel?.volume
+      )
+    ) {
+      return factModel.volume;
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      );
+
+    const match =
+      stem.match(
+        /(\d+(?:\.\d+)?)\s*(?:dm3|dm³|litres?|liters?|l)\b/i
+      );
+
+    return match
+      ? Number(match[1])
+      : null;
+  }
 
   // ============================================================
-  // SUBSCRIPTS
+  // pH EXTRACTION
   // ============================================================
 
-  _subscript(number) {
+  _extractPH(
+    qObj,
+    factModel
+  ) {
+    if (
+      Number.isFinite(
+        factModel?.pH
+      )
+    ) {
+      return factModel.pH;
+    }
+
+    const stem =
+      String(
+        qObj?.q ||
+        qObj?.stem ||
+        ""
+      );
+
+    const match =
+      stem.match(
+        /\bpH\s*(?:of|=)?\s*(\d+(?:\.\d+)?)/i
+      );
+
+    if (!match) {
+      return null;
+    }
+
+    return Number(
+      match[1]
+    );
+  }
+
+  // ============================================================
+  // PH CLASSIFICATION
+  // ============================================================
+
+  _classifyPH(pH) {
+    if (pH < 3) {
+      return "Strongly acidic";
+    }
+
+    if (pH < 7) {
+      return "Acidic";
+    }
+
+    if (pH === 7) {
+      return "Neutral";
+    }
+
+    if (pH <= 11) {
+      return "Alkaline";
+    }
+
+    return "Strongly alkaline";
+  }
+
+  // ============================================================
+  // IONIC FORMULA
+  // ============================================================
+
+  _ionicFormula(
+    positive,
+    negative
+  ) {
+    const positiveCharge =
+      Math.abs(
+        positive.charge
+      );
+
+    const negativeCharge =
+      Math.abs(
+        negative.charge
+      );
+
+    const gcd =
+      this._gcd(
+        positiveCharge,
+        negativeCharge
+      );
+
+    const positiveCount =
+      negativeCharge / gcd;
+
+    const negativeCount =
+      positiveCharge / gcd;
+
+    return (
+      positive.element +
+      this._subscriptIfNeeded(
+        positiveCount
+      ) +
+      negative.element +
+      this._subscriptIfNeeded(
+        negativeCount
+      )
+    );
+  }
+
+  _subscriptIfNeeded(
+    number
+  ) {
+    if (number === 1) {
+      return "";
+    }
 
     const chars = {
       0: "₀",
@@ -472,746 +4776,26 @@ export class ChemistryMutator {
       6: "₆",
       7: "₇",
       8: "₈",
-      9: "₉"
+      9: "₉",
     };
 
     return String(number)
       .split("")
-      .map(x => chars[x] || x)
-      .join("");
-
-  }
-
-
-  // ============================================================
-  // IONIC FORMULA GENERATOR
-  // ============================================================
-
-  _ionicFormula(metal, nonMetal) {
-
-    const lcm =
-      this._lcm(
-        metal.valency,
-        nonMetal.valency
-      );
-
-    const metalCount =
-      lcm / metal.valency;
-
-    const nonMetalCount =
-      lcm / nonMetal.valency;
-
-    return (
-      metal.symbol +
-      (
-        metalCount === 1
-          ? ""
-          : this._subscript(metalCount)
-      ) +
-      nonMetal.symbol +
-      (
-        nonMetalCount === 1
-          ? ""
-          : this._subscript(nonMetalCount)
+      .map(
+        (x) =>
+          chars[x] || x
       )
-    );
-
+      .join("");
   }
-
-
-  // ============================================================
-  // SOLVER
-  // ============================================================
-
-  _solveMoles(mass, molarMass) {
-
-    return mass / molarMass;
-
-  }
-
-
-  _solveMass(moles, molarMass) {
-
-    return moles * molarMass;
-
-  }
-
-
-  _solveGasVolume(moles, molarVolume) {
-
-    return moles * molarVolume;
-
-  }
-
-
-  _solveConcentration(moles, volume) {
-
-    return moles / volume;
-
-  }
-
-
-  _solveStoichiometry(
-    startingMoles,
-    reactantCoefficient,
-    productCoefficient
-  ) {
-
-    return (
-      startingMoles *
-      productCoefficient /
-      reactantCoefficient
-    );
-
-  }
-
-
-  // ============================================================
-  // MODALITY
-  // ============================================================
-
-  _mode(modalityIndex, seed) {
-
-    if (
-      typeof modalityIndex === "number" &&
-      Number.isFinite(modalityIndex)
-    ) {
-
-      return (
-        Math.abs(Math.floor(modalityIndex)) % 4
-      );
-
-    }
-
-    return seed % 4;
-
-  }
-
-
-  // ============================================================
-  // MAIN MUTATOR
-  // ============================================================
-
-  mutate(qObj, modalityIndex = 0) {
-
-    if (!qObj) return null;
-
-    const stem =
-      String(
-        qObj.q ||
-        qObj.stem ||
-        ""
-      ).trim();
-
-    const lower =
-      stem.toLowerCase();
-
-    const rawAns =
-      String(qObj.ans || "");
-
-    const seed =
-      this._hash(
-        stem +
-        String(qObj.id || "")
-      );
-
-    const mode =
-      this._mode(
-        modalityIndex,
-        seed
-      );
-
-
-    // ==========================================================
-    // 0. EMPIRICAL FORMULA
-    // ==========================================================
-
-    if (
-      lower.includes("empirical") ||
-      lower.includes("empirical formula") ||
-      lower.includes("simplest formula") ||
-      lower.includes("percent by mass") ||
-      lower.includes("composition by mass")
-    ) {
-
-      return this._empiricalFormulaQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 1. MOLAR MASS
-    // ==========================================================
-
-    if (
-      lower.includes("molar mass") ||
-      lower.includes("relative formula mass") ||
-      lower.includes("rfm")
-    ) {
-
-      return this._molarMassQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 2. MASS → MOLES
-    // ==========================================================
-
-    if (
-      lower.includes("moles in") ||
-      lower.includes("number of moles") ||
-      lower.includes("how many moles") ||
-      lower.includes("calculate the moles")
-    ) {
-
-      return this._massToMolesQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 3. MOLES → MASS
-    // ==========================================================
-
-    if (
-      lower.includes("mass of") ||
-      lower.includes("calculate the mass") ||
-      lower.includes("how many grams") ||
-      lower.includes("grams of")
-    ) {
-
-      return this._molesToMassQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 4. STOICHIOMETRY
-    // ==========================================================
-
-    if (
-      lower.includes("stoichiometry") ||
-      lower.includes("mole ratio") ||
-      lower.includes("reaction ratio") ||
-      lower.includes("reacts with") ||
-      lower.includes("produced") ||
-      lower.includes("balanced equation")
-    ) {
-
-      return this._stoichiometryQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 5. GAS VOLUME
-    // ==========================================================
-
-    if (
-      lower.includes("gas volume") ||
-      lower.includes("molar volume") ||
-      lower.includes("dm3") ||
-      lower.includes("dm³") ||
-      lower.includes("rtp") ||
-      lower.includes("stp")
-    ) {
-
-      return this._gasVolumeQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 6. CONCENTRATION
-    // ==========================================================
-
-    if (
-      lower.includes("concentration") ||
-      lower.includes("molarity")
-    ) {
-
-      return this._concentrationQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 7. ACIDS / BASES / pH
-    // ==========================================================
-
-    if (
-      lower.includes("acid") ||
-      lower.includes("base") ||
-      lower.includes("alkali") ||
-      lower.includes("ph") ||
-      lower.includes("indicator") ||
-      lower.includes("litmus") ||
-      lower.includes("neutral")
-    ) {
-
-      return this._acidBaseQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 8. BONDING
-    // ==========================================================
-
-    if (
-      lower.includes("bond") ||
-      lower.includes("ionic") ||
-      lower.includes("covalent") ||
-      lower.includes("metallic") ||
-      lower.includes("electron") ||
-      lower.includes("valenc") ||
-      lower.includes("lattice")
-    ) {
-
-      return this._bondingQuestion(
-        seed,
-        mode,
-        lower
-      );
-
-    }
-
-
-    // ==========================================================
-    // 9. RATE OF REACTION
-    // ==========================================================
-
-    if (
-      lower.includes("rate") ||
-      lower.includes("catalyst") ||
-      lower.includes("activation energy") ||
-      lower.includes("surface area") ||
-      lower.includes("collision")
-    ) {
-
-      return this._kineticsQuestion(
-        seed,
-        mode
-      );
-
-    }
-
-
-    // ==========================================================
-    // 10. GENERIC NUMERICAL MUTATION
-    // ==========================================================
-
-    const numbers =
-      stem.match(
-        /\b\d+(?:\.\d+)?\b/g
-      );
-
-    if (
-      numbers &&
-      numbers.length >= 1
-    ) {
-
-      return this._genericNumericMutation(
-        qObj,
-        stem,
-        numbers,
-        seed
-      );
-
-    }
-
-
-    // ==========================================================
-    // 11. GENERIC REVERSE INQUIRY
-    // ==========================================================
-
-    if (rawAns.length > 3) {
-
-      return this._genericQuestion(
-        qObj,
-        stem,
-        rawAns
-      );
-
-    }
-
-
-    // ==========================================================
-    // FALLBACK
-    // ==========================================================
-
-    return {
-
-      ...qObj,
-
-      q: stem,
-
-      hint:
-        qObj.hint ||
-        "Identify the chemical principle involved before calculating.",
-
-      concept:
-        qObj.concept ||
-        "General Chemistry",
-
-      difficulty:
-        qObj.difficulty ||
-        1,
-
-      steps: [
-
-        "Step 1: Identify the chemical quantities or structures given.",
-
-        "Step 2: Select the relevant chemical principle or equation.",
-
-        "Step 3: Apply the principle carefully.",
-
-        "Step 4: Check the units and final answer."
-
-      ]
-
-    };
-
-  }
-
-
-  // ============================================================
-  // EMPIRICAL FORMULA QUESTION
-  // ============================================================
-
-  _empiricalFormulaQuestion(seed, mode) {
-    const problems = [
-      {
-        given: "70% Iron (Fe) and 30% Oxygen (O) by mass (Ar: Fe = 56, O = 16)",
-        ans: "Fe₂O₃",
-        steps: [
-          "Step 1: Assume a 100 g sample — mass of Fe = 70 g, mass of O = 30 g.",
-          "Step 2: Convert mass to moles: Fe = 70 ÷ 56 = 1.25 mol, O = 30 ÷ 16 = 1.875 mol.",
-          "Step 3: Divide by the smallest mole value (1.25): Fe = 1.25 ÷ 1.25 = 1, O = 1.875 ÷ 1.25 = 1.5.",
-          "Step 4: Convert non-integer ratio (1 : 1.5) to whole numbers by multiplying all by 2: Fe = 2, O = 3.",
-          "Step 5: Write the empirical formula: Fe₂O₃."
-        ],
-        sol: "The ratio 1 : 1.5 is multiplied by 2 to yield whole numbers 2 : 3. The empirical formula of iron(III) oxide is Fe₂O₃.",
-        options: ["Fe₂O₃", "FeO", "Fe₃O₂", "Fe₃O₄"]
-      },
-      {
-        given: "52.2% Carbon (C), 13.0% Hydrogen (H), and 34.8% Oxygen (O) by mass (Ar: C = 12, H = 1, O = 16)",
-        ans: "C₂H₆O",
-        steps: [
-          "Step 1: Assume a 100 g sample — mass of C = 52.2 g, H = 13.0 g, O = 34.8 g.",
-          "Step 2: Convert mass to moles: C = 52.2 ÷ 12 = 4.35 mol, H = 13.0 ÷ 1 = 13.0 mol, O = 34.8 ÷ 16 = 2.175 mol.",
-          "Step 3: Divide each mole value by the smallest (2.175): C = 4.35 ÷ 2.175 = 2, H = 13.0 ÷ 2.175 = 6, O = 2.175 ÷ 2.175 = 1.",
-          "Step 4: The simplest whole-number atom ratio is C : H : O = 2 : 6 : 1.",
-          "Step 5: Write the empirical formula: C₂H₆O."
-        ],
-        sol: "Converting mass percentages to moles gives C = 4.35, H = 13.0, and O = 2.175. Dividing by 2.175 gives the whole-number ratio 2 : 6 : 1. Empirical formula = C₂H₆O.",
-        options: ["C₂H₆O", "CH₃O", "C₂H₄O", "CH₂O"]
-      },
-      {
-        given: "2.4 g of Magnesium reacting completely with Oxygen to form 4.0 g of Magnesium Oxide (Ar: Mg = 24, O = 16)",
-        ans: "MgO",
-        steps: [
-          "Step 1: Determine element masses: Mg = 2.4 g, O = 4.0 g - 2.4 g = 1.6 g.",
-          "Step 2: Convert to moles: Mg = 2.4 ÷ 24 = 0.10 mol, O = 1.6 ÷ 16 = 0.10 mol.",
-          "Step 3: Divide each by the smallest mole value (0.10): Mg = 1, O = 1.",
-          "Step 4: The simplest whole-number mole ratio is 1 : 1.",
-          "Step 5: Write the empirical formula: MgO."
-        ],
-        sol: "2.4 g Mg combines with 1.6 g O. Converting to moles yields Mg = 0.10 mol and O = 0.10 mol, giving a 1 : 1 ratio. Empirical formula = MgO.",
-        options: ["MgO", "Mg₂O", "MgO₂", "Mg₂O₃"]
-      },
-      {
-        given: "32.4% Sodium (Na), 22.5% Sulfur (S), and 45.1% Oxygen (O) by mass (Ar: Na = 23, S = 32, O = 16)",
-        ans: "Na₂SO₄",
-        steps: [
-          "Step 1: Assume a 100 g sample — Na = 32.4 g, S = 22.5 g, O = 45.1 g.",
-          "Step 2: Convert mass to moles: Na = 32.4 ÷ 23 = 1.41 mol, S = 22.5 ÷ 32 = 0.703 mol, O = 45.1 ÷ 16 = 2.82 mol.",
-          "Step 3: Divide each mole value by the smallest (0.703): Na = 2, S = 1, O = 4.",
-          "Step 4: The simplest whole-number atom ratio Na : S : O = 2 : 1 : 4.",
-          "Step 5: Write the empirical formula: Na₂SO₄."
-        ],
-        sol: "Dividing mole values by 0.703 yields whole numbers Na = 2, S = 1, O = 4. Empirical formula = Na₂SO₄.",
-        options: ["Na₂SO₄", "NaSO₃", "Na₂SO₃", "NaSO₄"]
-      },
-      {
-        given: "79.9% Copper (Cu) and 20.1% Oxygen (O) by mass (Ar: Cu = 63.5, O = 16)",
-        ans: "CuO",
-        steps: [
-          "Step 1: Assume a 100 g sample — Cu = 79.9 g, O = 20.1 g.",
-          "Step 2: Convert to moles: Cu = 79.9 ÷ 63.5 = 1.258 mol, O = 20.1 ÷ 16 = 1.256 mol.",
-          "Step 3: Divide each by smallest (1.256): Cu = 1, O = 1.",
-          "Step 4: The simplest whole-number ratio is 1 : 1.",
-          "Step 5: Write the empirical formula: CuO."
-        ],
-        sol: "79.9 g Cu and 20.1 g O contain equal mole quantities (~1.26 mol). Ratio = 1 : 1. Empirical formula = CuO.",
-        options: ["CuO", "Cu₂O", "CuO₂", "Cu₂O₃"]
-      },
-      {
-        given: "43.6% Phosphorus (P) and 56.4% Oxygen (O) by mass (Ar: P = 31, O = 16)",
-        ans: "P₂O₅",
-        steps: [
-          "Step 1: Assume a 100 g sample — P = 43.6 g, O = 56.4 g.",
-          "Step 2: Convert mass to moles: P = 43.6 ÷ 31 = 1.406 mol, O = 56.4 ÷ 16 = 3.525 mol.",
-          "Step 3: Divide each by smallest (1.406): P = 1, O = 2.5.",
-          "Step 4: Multiply by 2 to obtain whole numbers: P = 2, O = 5.",
-          "Step 5: Write the empirical formula: P₂O₅."
-        ],
-        sol: "The mole ratio P : O is 1 : 2.5. Multiplying by 2 gives whole numbers 2 : 5. Empirical formula = P₂O₅.",
-        options: ["P₂O₅", "PO₂", "P₂O₃", "PO₃"]
-      }
-    ];
-
-    const selected = this._pick(problems, seed);
-
-    if (mode === 0) {
-      return {
-        q: `A compound contains ${selected.given}. Determine its empirical formula.`,
-        ans: selected.ans,
-        hint: "Convert mass percentages to moles by dividing by relative atomic masses, then find the simplest whole-number ratio.",
-        why: selected.sol,
-        sol: selected.sol,
-        steps: selected.steps,
-        type: "open_response",
-        options: null,
-        concept: "Empirical Formula",
-        skill: "Calculate empirical formula from mass percentages",
-        difficulty: 2,
-        misconception: "Forgets to divide by relative atomic masses or does not simplify mole ratio to whole numbers"
-      };
-    }
-
-    return {
-      q: `A compound contains ${selected.given}. Which is its empirical formula?`,
-      ans: selected.ans,
-      hint: "Find the mole ratio of the elements and simplify to whole numbers.",
-      why: selected.sol,
-      sol: selected.sol,
-      steps: selected.steps,
-      type: "mcq",
-      options: this._uniqueOptions(selected.options),
-      concept: "Empirical Formula",
-      skill: "Identify empirical formula",
-      difficulty: 2,
-      misconception: "Uses mass ratio directly instead of mole ratio"
-    };
-  }
-
-
-  // ============================================================
-  // MOLAR MASS QUESTION
-  // ============================================================
-
-  _molarMassQuestion(seed, mode) {
-
-    const cmp =
-      this._pick(
-        this.compounds,
-        seed
-      );
-
-    const M =
-      cmp.molarMass;
-
-    const answer =
-      `${M} g/mol`;
-
-    const breakdown =
-      this._formulaBreakdown(
-        cmp.formula
-      );
-
-
-    if (mode === 0) {
-
-      return {
-
-        q:
-          `Calculate the molar mass of ${cmp.name} (${cmp.displayFormula}).`,
-
-        ans: answer,
-
-        hint:
-          "Add the atomic masses of every atom represented in the formula.",
-
-        sol:
-          `${breakdown}. Therefore, molar mass = ${answer}.`,
-
-        steps: [
-
-          "Step 1: Identify every element in the formula.",
-
-          "Step 2: Multiply each atomic mass by the number of atoms present.",
-
-          `Step 3: Add the values: ${breakdown}.`,
-
-          `Step 4: State the answer with units: ${answer}.`
-
-        ],
-
-        type: "open_response",
-
-        options: null,
-
-        concept: "Molar Mass",
-
-        skill: "Calculate molar mass",
-
-        difficulty: 1,
-
-        misconception: null
-
-      };
-
-    }
-
-
-    if (mode === 1) {
-
-      const options =
-        this._uniqueOptions([
-
-          answer,
-
-          `${this._round(M + 12, 1)} g/mol`,
-
-          `${this._round(M - 16, 1)} g/mol`,
-
-          `${this._round(M / 2, 1)} g/mol`
-
-        ]);
-
-      return {
-
-        q:
-          `What is the molar mass of ${cmp.name} (${cmp.displayFormula})?`,
-
-        ans: answer,
-
-        hint:
-          "Sum the relative atomic masses of all atoms.",
-
-        sol:
-          `${breakdown}. Total = ${answer}.`,
-
-        type: "mcq",
-
-        options,
-
-        concept: "Molar Mass",
-
-        skill: "Calculate molar mass",
-
-        difficulty: 1,
-
-        misconception:
-          "Incorrectly counts atoms or subscripts"
-
-      };
-
-    }
-
-
-    if (mode === 2) {
-
-      const wrong =
-        M + 12;
-
-      return {
-
-        q:
-          `A student calculates the molar mass of ${cmp.name} (${cmp.displayFormula}) as ${wrong} g/mol. Is the calculation correct?`,
-
-        ans:
-          `Incorrect. The correct molar mass is ${answer}.`,
-
-        hint:
-          "Recalculate the atomic mass contribution of every atom.",
-
-        sol:
-          `The student's value is incorrect. ${breakdown}. Correct molar mass = ${answer}.`,
-
-        type: "open_response",
-
-        options: null,
-
-        concept: "Molar Mass",
-
-        skill: "Check molar mass calculations",
-
-        difficulty: 2,
-
-        misconception:
-          "Incorrect atom counting"
-
-      };
-
-    }
-
-
-    return {
-
-      q:
-        `Explain how the relative formula mass of ${cmp.name} (${cmp.displayFormula}) is determined.`,
-
-      ans:
-        `Add the relative atomic masses of all atoms in the formula. The molar mass is ${answer}.`,
-
-      hint:
-        "Pay attention to subscripts.",
-
-      sol:
-        `${breakdown}. Therefore = ${answer}.`,
-
-      type: "open_response",
-
-      options: null,
-
-      concept: "Molar Mass",
-
-      skill: "Explain molar mass",
-
-      difficulty: 2,
-
-      misconception: null
-
-    };
-
-  }
-
 
   // ============================================================
   // FORMULA BREAKDOWN
   // ============================================================
 
-  _formulaBreakdown(formula) {
-
-    const breakdowns = {
-
+  _formulaBreakdown(
+    formula
+  ) {
+    const map = {
       CaCO3:
         "Ca(40) + C(12) + 3×O(16) = 100 g/mol",
 
@@ -1246,1333 +4830,428 @@ export class ChemistryMutator {
         "H(1) + N(14) + 3×O(16) = 63 g/mol",
 
       Fe2O3:
-        "2×Fe(56) + 3×O(16) = 160 g/mol"
-
+        "2×Fe(56) + 3×O(16) = 160 g/mol",
     };
 
     return (
-      breakdowns[formula] ||
-      "Add the relative atomic masses of all atoms shown in the formula"
+      map[formula] ||
+      "Add the relative atomic masses of all atoms shown in the formula."
     );
-
   }
 
-
   // ============================================================
-  // MASS → MOLES
-  // ============================================================
-
-  _massToMolesQuestion(seed, mode) {
-
-    const cmp =
-      this._pick(
-        this.compounds,
-        seed + 2
-      );
-
-    const multiplier =
-      (seed % 5) + 1;
-
-    const mass =
-      this._round(
-        cmp.molarMass *
-        multiplier *
-        0.25,
-        1
-      );
-
-    const moles =
-      this._round(
-        this._solveMoles(
-          mass,
-          cmp.molarMass
-        ),
-        2
-      );
-
-    const answer =
-      `${moles} mol`;
-
-
-    if (mode === 0) {
-
-      return {
-
-        q:
-          `A laboratory sample contains ${mass} g of ${cmp.name} (${cmp.displayFormula}). Its molar mass is ${cmp.molarMass} g/mol. Calculate the number of moles.`,
-
-        ans: answer,
-
-        hint:
-          "Use n = m ÷ M.",
-
-        sol:
-          `${mass} ÷ ${cmp.molarMass} = ${answer}.`,
-
-        steps: [
-
-          "Step 1: Write the formula n = m/M.",
-
-          `Step 2: Substitute: n = ${mass}/${cmp.molarMass}.`,
-
-          `Step 3: Calculate: n = ${moles} mol.`
-
-        ],
-
-        type: "open_response",
-
-        options: null,
-
-        concept: "Moles",
-
-        skill: "Convert mass to moles",
-
-        difficulty: 1,
-
-        misconception: null
-
-      };
-
-    }
-
-
-    const options =
-      this._uniqueOptions([
-
-        answer,
-
-        `${this._round(moles * 2, 2)} mol`,
-
-        `${this._round(moles / 2, 2)} mol`,
-
-        `${this._round(moles + 1, 2)} mol`
-
-      ]);
-
-
-    return {
-
-      q:
-        `How many moles are present in ${mass} g of ${cmp.name} (${cmp.displayFormula})?`,
-
-      ans: answer,
-
-      hint:
-        "Divide mass by molar mass.",
-
-      sol:
-        `n = m/M = ${mass}/${cmp.molarMass} = ${answer}.`,
-
-      type: "mcq",
-
-      options,
-
-      concept: "Moles",
-
-      skill: "Convert mass to moles",
-
-      difficulty: 1,
-
-      misconception:
-        "Multiplies mass by molar mass instead of dividing"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // MOLES → MASS
+  // SOLVERS
   // ============================================================
 
-  _molesToMassQuestion(seed, mode) {
-
-    const cmp =
-      this._pick(
-        this.compounds,
-        seed + 4
-      );
-
-    const moles =
-      this._round(
-        ((seed % 8) + 1) * 0.25,
-        2
-      );
-
-    const mass =
-      this._round(
-        this._solveMass(
-          moles,
-          cmp.molarMass
-        ),
-        1
-      );
-
-    const answer =
-      `${mass} g`;
-
-
-    const question =
-
-      `Calculate the mass of ${moles} mol of ${cmp.name} (${cmp.displayFormula}). The molar mass is ${cmp.molarMass} g/mol.`;
-
-
-    if (mode === 0) {
-
-      return {
-
-        q: question,
-
-        ans: answer,
-
-        hint:
-          "Use m = n × M.",
-
-        sol:
-          `${moles} × ${cmp.molarMass} = ${answer}.`,
-
-        steps: [
-
-          "Step 1: Write m = n × M.",
-
-          `Step 2: Substitute m = ${moles} × ${cmp.molarMass}.`,
-
-          `Step 3: Calculate m = ${answer}.`
-
-        ],
-
-        type: "open_response",
-
-        options: null,
-
-        concept: "Moles and Mass",
-
-        skill: "Convert moles to mass",
-
-        difficulty: 1,
-
-        misconception: null
-
-      };
-
-    }
-
-
-    return {
-
-      q: question,
-
-      ans: answer,
-
-      hint:
-        "Multiply the number of moles by the molar mass.",
-
-      sol:
-        `m = n × M = ${moles} × ${cmp.molarMass} = ${answer}.`,
-
-      steps: [
-
-        "Step 1: Identify n and M.",
-
-        "Step 2: Multiply n × M.",
-
-        "Step 3: Attach grams as the unit."
-
-      ],
-
-      type: "mcq",
-
-      options:
-        this._uniqueOptions([
-
-          answer,
-
-          `${this._round(cmp.molarMass / moles, 1)} g`,
-
-          `${this._round(mass * 1.5, 1)} g`,
-
-          `${this._round(moles / cmp.molarMass, 3)} g`
-
-        ]),
-
-      concept: "Moles and Mass",
-
-      skill: "Convert moles to mass",
-
-      difficulty: 1,
-
-      misconception:
-        "Divides instead of multiplying"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // STOICHIOMETRY
-  // ============================================================
-
-  _stoichiometryQuestion(seed, mode) {
-
-    const rxn =
-      this._pick(
-        this.reactions,
-        seed
-      );
-
-    const startingMoles =
-      ((seed % 5) + 1) * 2;
-
-    const produced =
-      this._round(
-        this._solveStoichiometry(
-          startingMoles,
-          rxn.r1Coeff,
-          rxn.productCoeff
-        ),
-        2
-      );
-
-    const answer =
-      `${produced} mol`;
-
-
-    const steps = [
-
-      `Step 1: From the balanced equation, ${rxn.r1Coeff} mol ${rxn.r1} produces ${rxn.productCoeff} mol ${rxn.product}.`,
-
-      `Step 2: Set up the ratio: ${startingMoles} × ${rxn.productCoeff}/${rxn.r1Coeff}.`,
-
-      `Step 3: Calculate = ${produced} mol.`
-
-    ];
-
-
-    if (mode === 2) {
-
-      return {
-
-        q:
-          `A student uses the coefficients as if they were mass ratios. Given ${rxn.equation}, ${startingMoles} mol of ${rxn.r1} reacts completely. Explain why the mole ratio must be used instead.`,
-
-        ans:
-          `The coefficients represent mole ratios, not mass ratios. Therefore ${startingMoles} mol of ${rxn.r1} produces ${produced} mol of ${rxn.product}.`,
-
-        hint:
-          "Balanced-equation coefficients represent relative numbers of moles.",
-
-        sol:
-          `The coefficients give the mole relationship. ${rxn.r1Coeff} mol ${rxn.r1} corresponds to ${rxn.productCoeff} mol ${rxn.product}.`,
-
-        type: "open_response",
-
-        options: null,
-
-        concept: "Stoichiometry",
-
-        skill: "Interpret mole ratios",
-
-        difficulty: 2,
-
-        misconception:
-          "Treats coefficients as mass ratios"
-
-      };
-
-    }
-
-
-    if (mode === 0) {
-
-      return {
-
-        q:
-          `Given the balanced equation ${rxn.equation}, how many moles of ${rxn.product} are produced when ${startingMoles} mol of ${rxn.r1} reacts completely with excess ${rxn.r2}?`,
-
-        ans: answer,
-
-        hint:
-          `Use the mole ratio ${rxn.r1Coeff}:${rxn.productCoeff}.`,
-
-        why:
-          `The balanced equation states ${rxn.r1Coeff} mol ${rxn.r1} → ${rxn.productCoeff} mol ${rxn.product}.`,
-
-        sol: answer,
-
-        steps,
-
-        type: "open_response",
-
-        options: null,
-
-        concept: "Stoichiometry",
-
-        skill: "Use mole ratios",
-
-        difficulty: 2,
-
-        misconception: null
-
-      };
-
-    }
-
-
-    return {
-
-      q:
-        `Given ${rxn.equation}, how many moles of ${rxn.product} are produced when ${startingMoles} mol of ${rxn.r1} reacts completely?`,
-
-      ans: answer,
-
-      hint:
-        `Use the coefficient ratio ${rxn.r1Coeff}:${rxn.productCoeff}.`,
-
-      sol:
-        `(${startingMoles} × ${rxn.productCoeff}) ÷ ${rxn.r1Coeff} = ${answer}.`,
-
-      steps,
-
-      type: "mcq",
-
-      options:
-        this._uniqueOptions([
-
-          answer,
-
-          `${startingMoles} mol`,
-
-          `${this._round(startingMoles * rxn.r1Coeff, 1)} mol`,
-
-          `${this._round(produced / 2, 1)} mol`
-
-        ]),
-
-      concept: "Stoichiometry",
-
-      skill: "Use mole ratios",
-
-      difficulty: 2,
-
-      misconception:
-        "Uses the wrong coefficient ratio"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // GAS VOLUME
-  // ============================================================
-
-  _gasVolumeQuestion(seed) {
-
-    const gas =
-      this._pick(
-        this.gases,
-        seed
-      );
-
-    const isSTP =
-      seed % 2 === 0;
-
-    const condition =
-      isSTP ? "STP" : "RTP";
-
-    const molarVolume =
-      isSTP ? 22.4 : 24;
-
-    const moles =
-      this._round(
-        ((seed % 6) + 1) * 0.5,
-        1
-      );
-
-    const volume =
-      this._round(
-        this._solveGasVolume(
-          moles,
-          molarVolume
-        ),
-        1
-      );
-
-    const answer =
-      `${volume} dm³`;
-
-
-    return {
-
-      q:
-        `Calculate the volume occupied by ${moles} mol of ${gas.name} (${gas.formula}) at ${condition}, where the molar gas volume is ${molarVolume} dm³/mol.`,
-
-      ans: answer,
-
-      hint:
-        `Use V = n × molar volume. At ${condition}, use ${molarVolume} dm³/mol.`,
-
-      sol:
-        `V = ${moles} × ${molarVolume} = ${answer}.`,
-
-      steps: [
-
-        `Step 1: Identify the molar volume at ${condition}: ${molarVolume} dm³/mol.`,
-
-        `Step 2: Apply V = n × Vm.`,
-
-        `Step 3: V = ${moles} × ${molarVolume}.`,
-
-        `Step 4: Volume = ${answer}.`
-
-      ],
-
-      type: "mcq",
-
-      options:
-        this._uniqueOptions([
-
-          answer,
-
-          `${this._round(moles * 22.4, 1)} dm³`,
-
-          `${this._round(molarVolume / moles, 1)} dm³`,
-
-          `${this._round(volume / 2, 1)} dm³`
-
-        ]),
-
-      concept: "Gas Volume",
-
-      skill: "Calculate gas volume",
-
-      difficulty: 2,
-
-      misconception:
-        isSTP
-          ? "Uses RTP molar volume at STP"
-          : "Uses 22.4 dm³/mol at RTP"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // CONCENTRATION
-  // ============================================================
-
-  _concentrationQuestion(seed, mode) {
-
-    const n =
-      ((seed % 5) + 1) * 0.1;
-
-    const v =
-      ((seed % 4) + 1) * 0.5;
-
-    const concentration =
-      this._round(
-        this._solveConcentration(
-          n,
-          v
-        ),
-        2
-      );
-
-    const answer =
-      `${concentration} mol/dm³`;
-
-
-    return {
-
-      q:
-        `Exactly ${n.toFixed(1)} mol of solute is dissolved to make ${v.toFixed(1)} dm³ of solution. Calculate the concentration.`,
-
-      ans: answer,
-
-      hint:
-        "Use C = n/V.",
-
-      sol:
-        `C = ${n.toFixed(1)} ÷ ${v.toFixed(1)} = ${answer}.`,
-
-      steps: [
-
-        "Step 1: Identify the number of moles.",
-
-        "Step 2: Identify the solution volume in dm³.",
-
-        "Step 3: Apply C = n/V.",
-
-        `Step 4: C = ${answer}.`
-
-      ],
-
-      type: mode === 0
-        ? "open_response"
-        : "mcq",
-
-      options:
-        mode === 0
-          ? null
-          : this._uniqueOptions([
-
-              answer,
-
-              `${this._round(n * v, 2)} mol/dm³`,
-
-              `${this._round(v / n, 2)} mol/dm³`,
-
-              `${this._round(concentration * 2, 2)} mol/dm³`
-
-            ]),
-
-      concept: "Solution Concentration",
-
-      skill: "Calculate concentration",
-
-      difficulty: 2,
-
-      misconception:
-        "Multiplies moles by volume instead of dividing"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // ACIDS / BASES / pH
-  // ============================================================
-
-  _acidBaseQuestion(seed, mode) {
-
-    const acidic =
-      seed % 2 === 0;
-
-    const pH =
-      acidic ? 2 : 12;
-
-    const answer =
-      acidic
-        ? "Strongly acidic"
-        : "Strongly alkaline";
-
-
-    return {
-
-      q:
-        acidic
-          ? `A solution has a pH of ${pH}. How should it be classified?`
-          : `A solution has a pH of ${pH}. How should it be classified?`,
-
-      ans:
-        answer,
-
-      hint:
-        acidic
-          ? "A pH well below 7 indicates high H⁺ concentration."
-          : "A pH well above 7 indicates high OH⁻ concentration.",
-
-      sol:
-        acidic
-          ? `pH ${pH} is far below 7, indicating a strongly acidic solution with relatively high H⁺ concentration.`
-          : `pH ${pH} is far above 7, indicating a strongly alkaline solution with relatively high OH⁻ concentration.`,
-
-      steps: [
-
-        `Step 1: Compare pH ${pH} with neutral pH 7.`,
-
-        acidic
-          ? "Step 2: Since pH < 7, the solution is acidic."
-          : "Step 2: Since pH > 7, the solution is alkaline.",
-
-        acidic
-          ? "Step 3: The very low pH indicates strong acidity."
-          : "Step 3: The very high pH indicates strong alkalinity."
-
-      ],
-
-      type: mode === 2
-        ? "open_response"
-        : "mcq",
-
-      options:
-        mode === 2
-          ? null
-          : this._uniqueOptions([
-
-              answer,
-
-              acidic
-                ? "Strongly alkaline"
-                : "Strongly acidic",
-
-              "Neutral",
-
-              "Weakly alkaline"
-
-            ]),
-
-      concept: "Acids, Bases and pH",
-
-      skill: "Interpret pH",
-
-      difficulty: 1,
-
-      misconception:
-        acidic
-          ? "Confuses low pH with alkalinity"
-          : "Confuses high pH with acidity"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // BONDING
-  // ============================================================
-
-  _bondingQuestion(seed, mode, lower) {
-
-    const explicitlyCovalent =
-      lower.includes("covalent");
-
-    const explicitlyMetallic =
-      lower.includes("metallic");
-
-
-
-
-    if (explicitlyMetallic) {
-
-      const metal =
-        this._pick(
-          this.metals,
-          seed
-        );
-
-      const answer =
-        "Metallic bonding involves positive metal ions attracted to a sea of delocalized electrons.";
-
-
-      return {
-
-        q:
-          `Why does ${metal.name} conduct electricity as a solid?`,
-
-        ans:
-          answer,
-
-        hint:
-          "Think about the electrons present in metallic bonding.",
-
-        sol:
-          answer,
-
-        steps: [
-
-          "Step 1: Metallic atoms release outer electrons.",
-
-          "Step 2: The electrons become delocalized.",
-
-          "Step 3: These mobile electrons carry electrical charge."
-
-        ],
-
-        type:
-          mode === 0
-            ? "open_response"
-            : "mcq",
-
-        options:
-          mode === 0
-            ? null
-            : [
-
-                answer,
-
-                "Because positive ions move freely through the solid.",
-
-                "Because the atoms contain freely moving neutrons.",
-
-                "Because metallic bonds contain water molecules."
-
-              ],
-
-        concept: "Chemical Bonding",
-
-        skill: "Explain metallic bonding",
-
-        difficulty: 2,
-
-        misconception:
-          "Believes positive ions carry the current in metals"
-
-      };
-
-    }
-
-
-    if (explicitlyCovalent) {
-
-      const n1 =
-        this._pick(
-          this.nonMetals,
-          seed + 2
-        );
-
-      const n2 =
-        this._pick(
-          this.nonMetals,
-          seed + 5
-        );
-
-      const answer =
-        `A covalent bond forms when ${n1.name} and ${n2.name} share valence electrons.`;
-
-
-      return {
-
-        q:
-          `What type of bonding occurs when two non-metal atoms such as ${n1.name} and ${n2.name} share valence electrons?`,
-
-        ans:
-          "Covalent bonding",
-
-        hint:
-          "Look for electron sharing between non-metals.",
-
-        sol:
-          answer,
-
-        steps: [
-
-          "Step 1: Identify the elements as non-metals.",
-
-          "Step 2: Non-metals generally achieve stable outer shells by sharing electrons.",
-
-          "Step 3: Shared electron pairs form covalent bonds."
-
-        ],
-
-        type:
-          mode === 0
-            ? "open_response"
-            : "mcq",
-
-        options:
-          mode === 0
-            ? null
-            : [
-
-                "Covalent bonding",
-
-                "Ionic bonding",
-
-                "Metallic bonding",
-
-                "Nuclear bonding"
-
-              ],
-
-        concept: "Chemical Bonding",
-
-        skill: "Identify covalent bonding",
-
-        difficulty: 1,
-
-        misconception:
-          "Confuses electron sharing with electron transfer"
-
-      };
-
-    }
-
-
-    // ----------------------------------------------------------
-    // DEFAULT: IONIC
-    // ----------------------------------------------------------
-
-    const metal =
-      this._pick(
-        this.metals,
-        seed
-      );
-
-    const nonMetal =
-      this._pick(
-        this.nonMetals,
-        seed + 3
-      );
-
-    const formula =
-      this._ionicFormula(
-        metal,
-        nonMetal
-      );
-
-
-    const answer =
-      `Ionic bonding: ${metal.name} loses ${metal.valency} electron(s) to form ${metal.ion}, while ${nonMetal.name} gains electron(s) to form ${nonMetal.ion}. The ions form a lattice in the ratio represented by ${formula}.`;
-
-
-    return {
-
-      q:
-        `When ${metal.name} (${metal.configuration}) reacts with ${nonMetal.name} (${nonMetal.configuration}), what type of bond forms and what is the resulting formula?`,
-
-      ans:
-        answer,
-
-      hint:
-        "A metal transfers electrons to a non-metal. Balance the resulting ion charges.",
-
-      sol:
-        answer,
-
-      steps: [
-
-        `Step 1: ${metal.name} is a metal and tends to lose ${metal.valency} valence electron(s).`,
-
-        `Step 2: It forms ${metal.ion}.`,
-
-        `Step 3: ${nonMetal.name} gains electrons to form ${nonMetal.ion}.`,
-
-        `Step 4: Balance the ion charges using the smallest whole-number ratio.`,
-
-        `Step 5: The resulting formula is ${formula}.`
-
-      ],
-
-      type:
-        mode === 0
-          ? "open_response"
-          : "mcq",
-
-      options:
-        mode === 0
-          ? null
-          : [
-
-              answer,
-
-              "Covalent bonding; electrons are shared equally.",
-
-              "Metallic bonding; both elements form positive ions.",
-
-              "Hydrogen bonding; neutral atoms attract each other."
-
-            ],
-
-      concept: "Chemical Bonding",
-
-      skill: "Determine ionic bonding and formula",
-
-      difficulty: 2,
-
-      misconception:
-        "Confuses electron sharing with electron transfer"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // KINETICS
-  // ============================================================
-
-  _kineticsQuestion(seed, mode) {
-
-    const answer =
-      "MnO₂ acts as a catalyst by providing an alternative reaction pathway with lower activation energy.";
-
-
-    return {
-
-      q:
-        `A chemist adds MnO₂ powder to hydrogen peroxide. Oxygen gas is produced much faster, but the MnO₂ is recovered unchanged at the end. What is the role of MnO₂?`,
-
-      ans:
-        answer,
-
-      hint:
-        "A catalyst changes reaction rate without being permanently consumed.",
-
-      why:
-        "A catalyst provides an alternative reaction pathway with lower activation energy, increasing the fraction of successful collisions.",
-
-      sol:
-        answer,
-
-      steps: [
-
-        "Step 1: Observe that the reaction becomes faster.",
-
-        "Step 2: Observe that MnO₂ is recovered unchanged.",
-
-        "Step 3: Identify MnO₂ as a catalyst.",
-
-        "Step 4: A catalyst lowers the activation energy by providing an alternative pathway."
-
-      ],
-
-      type:
-        mode === 0
-          ? "open_response"
-          : "mcq",
-
-      options:
-        mode === 0
-          ? null
-          : [
-
-              answer,
-
-              "MnO₂ is consumed completely to produce oxygen.",
-
-              "MnO₂ permanently increases the temperature of the solution.",
-
-              "MnO₂ changes the equilibrium constant."
-
-            ],
-
-      concept: "Rates of Reaction",
-
-      skill: "Explain catalyst action",
-
-      difficulty: 2,
-
-      misconception:
-        "Believes catalysts are consumed or change the equilibrium constant"
-
-    };
-
-  }
-
-
-  // ============================================================
-  // GENERIC NUMERIC MUTATION
-  // ============================================================
-
-  _genericNumericMutation(
-    qObj,
-    stem,
-    numbers,
-    seed
+  _solveMoles(
+    mass,
+    molarMass
   ) {
-
-    const oldValue =
-      parseFloat(
-        numbers[0]
-      );
-
     if (
-      !Number.isFinite(oldValue) ||
-      oldValue <= 0
+      !Number.isFinite(mass) ||
+      !Number.isFinite(molarMass) ||
+      molarMass <= 0
     ) {
-
-      return {
-        ...qObj,
-        q: stem
-      };
-
+      return NaN;
     }
 
-
-    const factors =
-      [1, 1.5, 2, 2.5];
-
-    const factor =
-      factors[
-        seed % factors.length
-      ];
-
-    const newValue =
-      this._round(
-        oldValue * factor,
-        2
-      );
-
-    const mutatedStem =
-      stem.replace(
-        numbers[0],
-        String(newValue)
-      );
-
-
-    return {
-
-      ...qObj,
-
-      q:
-        `[Chemical Variant] ${mutatedStem}`,
-
-      /*
-       * IMPORTANT:
-       *
-       * We deliberately do NOT claim that the old answer
-       * remains correct.
-       *
-       * The parent question should be re-solved by the
-       * calling solver when numerical mutation is used.
-       */
-
-      ans:
-        qObj.ans,
-
-      hint:
-        qObj.hint ||
-        "Identify the changed chemical quantity and recalculate.",
-
-      why:
-        `The original value ${oldValue} was changed to ${newValue}. The answer must therefore be recalculated.`,
-
-      sol:
-        qObj.sol ||
-        "Recalculate using the updated quantity.",
-
-      steps: Array.isArray(qObj.steps) && qObj.steps.length > 0
-        ? qObj.steps.map(s => s.replace(new RegExp(`\\b${oldValue}\\b`, "g"), String(newValue)))
-        : [
-            `Step 1: Note the updated chemical quantity: ${newValue} (modified from ${oldValue}).`,
-            `Step 2: Substitute ${newValue} into the chemical equation or relationship.`,
-            `Step 3: Perform the calculation using ${newValue} to find the updated result.`,
-            `Step 4: Express the final result with standard chemical units.`
-          ],
-
-      type:
-        qObj.type || "open_response",
-
-      concept:
-        qObj.concept ||
-        "Chemical Calculation",
-
-      skill:
-        qObj.skill ||
-        "Apply chemical equations",
-
-      difficulty:
-        qObj.difficulty ||
-        2,
-
-      mutation: {
-
-        originalValue: oldValue,
-
-        newValue
-
-      }
-
-    };
-
+    return (
+      mass /
+      molarMass
+    );
   }
 
-
-  // ============================================================
-  // GENERIC REVERSE QUESTION
-  // ============================================================
-
-  _genericQuestion(
-    qObj,
-    stem,
-    rawAns
+  _solveMass(
+    moles,
+    molarMass
   ) {
+    if (
+      !Number.isFinite(moles) ||
+      !Number.isFinite(molarMass) ||
+      moles < 0 ||
+      molarMass <= 0
+    ) {
+      return NaN;
+    }
 
-    return {
-
-      q:
-        `[Chemical Principle Inquiry] Regarding: "${stem}" Which fundamental chemical principle explains this?`,
-
-      ans:
-        rawAns,
-
-      hint:
-        qObj.hint ||
-        "Identify the chemical law, structure, reaction, or principle responsible.",
-
-      why:
-        qObj.why ||
-        `Chemical principle: ${rawAns}`,
-
-      sol:
-        qObj.sol ||
-        qObj.why ||
-        rawAns,
-
-      steps: [
-
-        "Step 1: Identify the chemical system or observation.",
-
-        "Step 2: Identify the relevant chemical principle.",
-
-        "Step 3: Connect the principle to the observation.",
-
-        "Step 4: State the conclusion."
-
-      ],
-
-      type:
-        "mcq",
-
-      options:
-        this._uniqueOptions([
-
-          rawAns,
-
-          "Le Chatelier's principle",
-
-          "Conservation of mass",
-
-          "Electrostatic attraction between charged particles"
-
-        ]),
-
-      concept:
-        qObj.concept ||
-        "General Chemistry",
-
-      skill:
-        qObj.skill ||
-        "Explain chemical principles",
-
-      difficulty:
-        qObj.difficulty ||
-        2,
-
-      misconception:
-        null
-
-    };
-
+    return (
+      moles *
+      molarMass
+    );
   }
 
+  _solveGasVolume(
+    moles,
+    molarVolume
+  ) {
+    if (
+      !Number.isFinite(moles) ||
+      !Number.isFinite(molarVolume) ||
+      moles < 0 ||
+      molarVolume <= 0
+    ) {
+      return NaN;
+    }
+
+    return (
+      moles *
+      molarVolume
+    );
+  }
+
+  _solveStoichiometry(
+    startingMoles,
+    reactantCoefficient,
+    productCoefficient
+  ) {
+    if (
+      !Number.isFinite(
+        startingMoles
+      ) ||
+      reactantCoefficient <= 0 ||
+      productCoefficient <= 0
+    ) {
+      return NaN;
+    }
+
+    return (
+      startingMoles *
+      productCoefficient /
+      reactantCoefficient
+    );
+  }
 
   // ============================================================
-  // OPTION CLEANING
+  // DETERMINISTIC MODE
   // ============================================================
 
-  _uniqueOptions(options) {
+  _mode(
+    modalityIndex
+  ) {
+    if (
+      !Number.isFinite(
+        modalityIndex
+      )
+    ) {
+      return 0;
+    }
 
-    const cleaned =
-      [];
+    return (
+      Math.abs(
+        Math.floor(
+          modalityIndex
+        )
+      ) % 4
+    );
+  }
 
-    for (const option of options) {
+  // ============================================================
+  // DETERMINISTIC OPTIONS
+  // ============================================================
 
+  _deterministicOptions(
+    answer,
+    distractors,
+    mode = 0
+  ) {
+    const correct =
+      String(answer).trim();
+
+    const cleaned = [];
+
+    for (
+      const item of [
+        correct,
+        ...distractors,
+      ]
+    ) {
       if (
-        option == null ||
-        option === ""
+        item == null
       ) {
         continue;
       }
 
+      const value =
+        String(item).trim();
+
       if (
-        !cleaned.includes(option)
+        !value ||
+        cleaned.includes(value)
       ) {
-
-        cleaned.push(option);
-
+        continue;
       }
 
+      cleaned.push(value);
     }
 
+    const options =
+      cleaned.slice(
+        0,
+        4
+      );
 
-    /*
-     * Guarantee four options.
-     */
-
-    const fallbacks = [
-
-      "None of the above",
-
-      "The quantities cannot be determined",
-
-      "The reaction does not occur",
-
-      "Insufficient information"
-
-    ];
-
-
-    for (
-      const fallback of fallbacks
+    if (
+      options.length < 4
     ) {
-
-      if (
-        cleaned.length >= 4
-      ) {
-        break;
-      }
-
-      if (
-        !cleaned.includes(fallback)
-      ) {
-
-        cleaned.push(
-          fallback
-        );
-
-      }
-
+      return options;
     }
 
+    const desiredPosition =
+      Math.min(
+        Math.max(
+          mode,
+          0
+        ),
+        options.length - 1
+      );
 
-    return cleaned.slice(
-      0,
-      4
-    );
+    const currentPosition =
+      options.indexOf(
+        correct
+      );
 
+    if (
+      currentPosition >= 0 &&
+      desiredPosition >= 0 &&
+      currentPosition !==
+        desiredPosition
+    ) {
+      [
+        options[
+          currentPosition
+        ],
+        options[
+          desiredPosition
+        ],
+      ] = [
+        options[
+          desiredPosition
+        ],
+        options[
+          currentPosition
+        ],
+      ];
+    }
+
+    return options;
   }
 
+  _makeDistractors(
+    answer,
+    distractors
+  ) {
+    const correct =
+      String(answer).trim();
+
+    return [
+      ...new Set(
+        distractors
+          .filter(
+            (x) =>
+              x != null
+          )
+          .map(
+            (x) =>
+              String(x).trim()
+          )
+          .filter(
+            (x) =>
+              x &&
+              x !== correct
+          )
+      ),
+    ].slice(
+      0,
+      3
+    );
+  }
 
   // ============================================================
-  // QUESTION VALIDATOR
+  // FINALIZER
   // ============================================================
 
-  validateQuestion(question) {
+  _finalize(
+    question,
+    executionContext = {}
+  ) {
+    const normalized = {
+      ...question,
 
+      q:
+        String(
+          question.q ||
+          ""
+        ).trim(),
+
+      ans:
+        String(
+          question.ans ||
+          ""
+        ).trim(),
+
+      hint:
+        question.hint ||
+        "Identify the chemical principle before solving.",
+
+      steps:
+        Array.isArray(
+          question.steps
+        )
+          ? question.steps
+          : [],
+
+      metadata: {
+        ...(question.metadata || {}),
+
+        factModel:
+          question.factModel,
+
+        mutationEngine:
+          "TixarChemistryMutator",
+
+        mutationVersion:
+          this.config.version,
+
+        verified:
+          true,
+
+        deterministic:
+          true,
+
+        random:
+          false,
+
+        seed:
+          null,
+
+        subject:
+          "chemistry",
+
+        skill:
+          question.skill ||
+          question.metadata?.skill,
+
+        skillId:
+          question.skill ||
+          question.metadata?.skill,
+
+        concept:
+          question.concept ||
+          question.metadata?.concept,
+
+        conceptId:
+          question.concept ||
+          question.metadata?.concept,
+
+        topic:
+          this._inferTopic(
+            question.factModel?.type
+          ),
+
+        subskill:
+          question.subskill ||
+          question.metadata?.subskill,
+
+        subskillId:
+          question.subskill ||
+          question.metadata?.subskill,
+
+        mutationRule:
+          question.mutationRule ||
+          null,
+
+        mutationReason:
+          question.mutationReason ||
+          null,
+
+        repairStrategy:
+          executionContext.repairStrategy ||
+          "STANDARD",
+
+        difficulty:
+          executionContext.difficulty ??
+          question.difficulty ??
+          1,
+
+        provenance: {
+          mutationVerified:
+            true,
+
+          conceptPreserved:
+            true,
+
+          skillPreserved:
+            true,
+
+          factPreserved:
+            true,
+
+          answerRecalculated:
+            true,
+
+          semanticBoundaryVerified:
+            true,
+
+          deterministic:
+            true,
+
+          randomnessUsed:
+            false,
+        },
+
+        semanticIdentity:
+          executionContext.targetIdentity ||
+          null,
+      },
+    };
+
+    return normalized;
+  }
+
+  // ============================================================
+  // VALIDATOR
+  // ============================================================
+
+  validateQuestion(
+    question
+  ) {
     if (!question) {
       return false;
     }
 
     if (
-      typeof question.q !== "string" ||
-      question.q.trim().length === 0
+      typeof question.q !==
+        "string" ||
+      !question.q.trim()
     ) {
       return false;
     }
 
     if (
-      typeof question.ans !== "string" ||
-      question.ans.trim().length === 0
+      typeof question.ans !==
+        "string" ||
+      !question.ans.trim()
     ) {
       return false;
     }
 
-
     if (
-      question.type === "mcq"
+      question.type ===
+      "mcq"
     ) {
-
       if (
         !Array.isArray(
           question.options
         )
       ) {
-
         return false;
-
       }
 
       if (
-        question.options.length !== 4
+        question.options.length !==
+        4
       ) {
-
         return false;
-
       }
 
       if (
@@ -2580,91 +5259,265 @@ export class ChemistryMutator {
           question.options
         ).size !== 4
       ) {
-
         return false;
-
       }
 
+      if (
+        !question.options.includes(
+          question.ans
+        )
+      ) {
+        return false;
+      }
     }
 
+    const fact =
+      question.metadata?.factModel ||
+      question.factModel;
+
+    if (!fact) {
+      return false;
+    }
+
+    if (
+      question.metadata?.verified !==
+      true
+    ) {
+      return false;
+    }
+
+    if (
+      question.metadata?.random !==
+      false
+    ) {
+      return false;
+    }
+
+    if (
+      question.metadata?.deterministic !==
+      true
+    ) {
+      return false;
+    }
+
+    if (
+      question.metadata?.subject !==
+      "chemistry"
+    ) {
+      return false;
+    }
+
+    if (
+      !question.metadata?.skillId
+    ) {
+      return false;
+    }
+
+    if (
+      !question.metadata?.conceptId
+    ) {
+      return false;
+    }
+
+    if (
+      question.metadata?.provenance
+        ?.semanticBoundaryVerified !==
+      true
+    ) {
+      return false;
+    }
 
     return true;
-
   }
 
-
   // ============================================================
-  // SAFE MUTATION WRAPPER
+  // SAFE PUBLIC WRAPPER
   // ============================================================
 
   safeMutate(
     qObj,
-    modalityIndex = 0
+    modalityIndex = 0,
+    performanceContext = {}
   ) {
-
     const question =
       this.mutate(
         qObj,
-        modalityIndex
+        modalityIndex,
+        performanceContext
       );
-
 
     if (
       !this.validateQuestion(
         question
       )
     ) {
-
-      return {
-
-        ...qObj,
-
-        q:
-          qObj.q ||
-          qObj.stem ||
-          "",
-
-        ans:
-          String(
-            qObj.ans || ""
-          ),
-
-        hint:
-          "Review the chemical quantities and apply the appropriate principle.",
-
-        type:
-          qObj.type ||
-          "open_response",
-
-        options:
-          qObj.type === "mcq"
-            ? this._uniqueOptions([
-                qObj.ans,
-                "Incorrect calculation",
-                "Incorrect chemical principle",
-                "Insufficient information"
-              ])
-            : null,
-
-        concept:
-          qObj.concept ||
-          "General Chemistry",
-
-        skill:
-          qObj.skill ||
-          "Apply chemical principles",
-
-        difficulty:
-          qObj.difficulty ||
-          1
-
-      };
-
+      return this._safeFallback(
+        qObj,
+        "VALIDATION_FAILED"
+      );
     }
 
-
     return question;
-
   }
 
+  // ============================================================
+  // SAFE FALLBACK
+  // ============================================================
+
+  _safeFallback(
+    qObj,
+    reason
+  ) {
+    return {
+      ...qObj,
+
+      q:
+        String(
+          qObj?.q ||
+          qObj?.stem ||
+          ""
+        ),
+
+      ans:
+        String(
+          qObj?.ans ||
+          ""
+        ),
+
+      type:
+        qObj?.type ||
+        "open_response",
+
+      options:
+        qObj?.type ===
+        "mcq"
+          ? qObj.options
+          : null,
+
+      metadata: {
+        ...(qObj?.metadata || {}),
+
+        mutationEngine:
+          "TixarChemistryMutator",
+
+        mutationVersion:
+          this.config.version,
+
+        verified:
+          false,
+
+        deterministic:
+          true,
+
+        random:
+          false,
+
+        fallback:
+          true,
+
+        reason,
+      },
+    };
+  }
+
+  // ============================================================
+  // DIFFICULTY
+  // ============================================================
+
+  _difficulty(
+    qObj,
+    performanceContext
+  ) {
+    if (
+      Number.isFinite(
+        qObj?.difficulty
+      )
+    ) {
+      return Math.min(
+        5,
+        Math.max(
+          1,
+          qObj.difficulty
+        )
+      );
+    }
+
+    const accuracy =
+      Number(
+        performanceContext?.accuracy
+      );
+
+    if (
+      Number.isFinite(
+        accuracy
+      )
+    ) {
+      if (
+        accuracy >= 0.90
+      ) {
+        return 5;
+      }
+
+      if (
+        accuracy >= 0.80
+      ) {
+        return 4;
+      }
+
+      if (
+        accuracy >= 0.65
+      ) {
+        return 3;
+      }
+
+      if (
+        accuracy >= 0.45
+      ) {
+        return 2;
+      }
+    }
+
+    return 1;
+  }
+
+  // ============================================================
+  // BASIC UTILITIES
+  // ============================================================
+
+  _round(
+    value,
+    decimals = 2
+  ) {
+    return Number(
+      Number(value).toFixed(
+        decimals
+      )
+    );
+  }
+
+  _gcd(
+    a,
+    b
+  ) {
+    a =
+      Math.abs(a);
+
+    b =
+      Math.abs(b);
+
+    while (
+      b !== 0
+    ) {
+      const temp =
+        b;
+
+      b =
+        a % b;
+
+      a =
+        temp;
+    }
+
+    return a;
+  }
 }

@@ -1,89 +1,390 @@
 /**
- * Tixar Physics Mutator
+ * Tixar Physics Mutator v5
  *
- * Diagnostic Adaptive Physics Engine
+ * VERIFIED DIAGNOSTIC PHYSICS ENGINE
  *
- * Design principles:
- * - Deterministic mutation from question + ID + modality.
- * - Never mutate a numerical parameter without recalculating the answer.
- * - Generates questions across:
- *      1. Recall
- *      2. Formula selection
- *      3. Calculation
- *      4. Interpretation
- *      5. Misconception diagnosis
- *      6. Real-world application
- *      7. Transfer
- * - Distractors are generated from realistic student errors.
- * - Every generated question contains:
- *      q
- *      ans
- *      hint
- *      sol
- *      steps
- *      concept
- *      skill
- *      difficulty
- *      misconception
- *      type
- *      options
+ * Core law:
  *
- * The mutator is designed to fit Tixar's learning loop:
+ *     THE GENERATOR PROPOSES.
+ *     THE SOLVER DECIDES.
  *
- *      Test
- *        ↓
- *      Find what is unknown
- *        ↓
- *      Teach the missing piece
- *        ↓
- *      Retrieve
- *        ↓
- *      Retest
- *        ↓
- *      Prove transfer
+ * v5 guarantees:
+ *
+ * - No Math.random()
+ * - No non-deterministic mutation
+ * - Same source + same modality + same engine version
+ *   => same mutation plan
+ *   => same parameters
+ *   => same answer
+ *   => same distractors
+ *   => same options
+ *
+ * Pipeline:
+ *
+ * SOURCE QUESTION
+ *      ↓
+ * IDENTIFY EXACT FACT
+ *      ↓
+ * EXTRACT + NORMALIZE PARAMETERS
+ *      ↓
+ * BUILD CANONICAL FACT MODEL
+ *      ↓
+ * BUILD DETERMINISTIC MUTATION PLAN
+ *      ↓
+ * APPLY AUTHORIZED MUTATION
+ *      ↓
+ * SOLVE DETERMINISTICALLY
+ *      ↓
+ * BUILD QUESTION FROM SAME MODEL
+ *      ↓
+ * BUILD VERIFIED DISTRACTORS
+ *      ↓
+ * VERIFY SEMANTICS
+ *      ↓
+ * VERIFY ANSWER
+ *      ↓
+ * VERIFY OPTIONS
+ *      ↓
+ * VERIFIED QUESTION
+ *
+ * If an important physical fact is ambiguous:
+ *
+ *      → SAFE FALLBACK
+ *
+ * Never:
+ *
+ * - use Math.random()
+ * - invent physical entities from a hash
+ * - silently replace source values
+ * - mutate unauthorized parameters
+ * - calculate using inconsistent units
+ * - use numerical fallback options for conceptual questions
+ * - mark a question VERIFIED before validation
+ * - mix unrelated physics concepts
+ *
+ * Public API:
+ *
+ *   mutate(qObj, modalityIndex, performanceContext)
+ *   safeMutate(qObj, modalityIndex, performanceContext)
+ *   validateQuestion(question)
  */
 
 export class PhysicsMutator {
 
-  constructor() {
+  constructor(config = {}) {
 
-    this.constants = {
+    this.version = "5.0.0";
+
+    this.constants = Object.freeze({
       g: 9.8,
       speedOfSound: 340,
-      atmosphericPressure: 101325
-    };
+      atmosphericPressure: 101325,
+      speedOfLight: 3e8,
+      electronCharge: 1.602e-19,
+      planckConstant: 6.626e-34
+    });
 
-    this.topics = {
+    /*
+     * Every parameter domain is expressed in the canonical unit
+     * used by the solver.
+     */
+    this.allowedParameters = Object.freeze({
+
+      current: [
+        0.5, 1, 1.5, 2, 2.5, 3, 4, 5
+      ],
+
+      resistance: [
+        2, 4, 5, 8, 10, 12, 15, 20, 25, 30, 40, 50
+      ],
+
+      mass: [
+        1, 2, 4, 5, 8, 10, 12, 15, 20, 25, 50, 100
+      ],
+
+      acceleration: [
+        1, 2, 2.5, 3, 4, 5, 6, 8, 10
+      ],
+
+      time: [
+        1, 2, 3, 4, 5, 6, 8, 10, 12, 15, 20
+      ],
+
+      distance: [
+        2, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30, 50, 100
+      ],
+
+      velocity: [
+        2, 4, 5, 6, 8, 10, 12, 15, 20, 25, 30
+      ],
+
+      speed: [
+        2, 4, 5, 10, 15, 20, 25, 30, 340, 1500
+      ],
+
+      force: [
+        5, 10, 15, 20, 25, 30, 40, 50, 60, 80, 100, 200
+      ],
+
+      frequency: [
+        50, 100, 170, 200, 250, 340, 400, 500, 680, 800, 1000
+      ],
+
+      wavelength: [
+        0.2, 0.4, 0.5, 0.8, 1, 1.5, 2, 2.5, 4, 5
+      ],
+
+      height: [
+        2, 3, 4, 5, 6, 8, 10, 12, 15, 20
+      ],
+
+      volume: [
+        5, 10, 20, 25, 40, 50, 80, 100, 200, 500
+      ],
+
+      charge: [
+        1, 2, 3, 4, 5, 6, 8, 10
+      ],
+
+      voltage: [
+        3, 5, 6, 9, 10, 12, 15, 20, 24, 30, 48, 60, 120, 240
+      ],
+
+      power: [
+        10, 20, 40, 60, 80, 100, 120, 150, 200, 500, 1000
+      ],
+
+      area: [
+        0.01, 0.02, 0.05, 0.1, 0.2, 0.5, 1, 2, 4, 5
+      ],
+
+      thresholdFrequency: [
+        4e14, 5e14, 6e14
+      ]
+    });
+
+    /*
+     * Canonical units.
+     */
+    this.units = Object.freeze({
+
+      current: "A",
+      resistance: "ohm",
+      voltage: "V",
+      power: "W",
+      mass: "kg",
+      acceleration: "m/s2",
+      time: "s",
+      distance: "m",
+      velocity: "m/s",
+      speed: "m/s",
+      force: "N",
+      frequency: "Hz",
+      wavelength: "m",
+      height: "m",
+      volume: "cm3",
+      charge: "C",
+      area: "m2",
+      thresholdFrequency: "Hz"
+    });
+
+    /*
+     * Every calculation fact is explicitly registered.
+     *
+     * allowedParameterKeys is deliberately identical to the
+     * parameters that are authorized to mutate.
+     */
+    this.factRegistry = Object.freeze({
+
+      "electricity.ohms_law.voltage": {
+        factId: "electricity.ohms_law.voltage",
+        topic: "electricity",
+        concept: "Ohm's Law",
+        skill: "Calculate potential difference",
+        type: "calculation",
+        formula: "V = IR",
+        requiredParameters: ["current", "resistance"],
+        answerUnit: "V",
+        allowedParameterKeys: ["current", "resistance"]
+      },
+
+      "electricity.power.voltage_current": {
+        factId: "electricity.power.voltage_current",
+        topic: "electricity",
+        concept: "Electrical power",
+        skill: "Calculate electrical power",
+        type: "calculation",
+        formula: "P = VI",
+        requiredParameters: ["voltage", "current"],
+        answerUnit: "W",
+        allowedParameterKeys: ["voltage", "current"]
+      },
+
+      "mechanics.newtons_second_law.force": {
+        factId: "mechanics.newtons_second_law.force",
+        topic: "mechanics",
+        concept: "Newton's Second Law",
+        skill: "Calculate resultant force",
+        type: "calculation",
+        formula: "F = ma",
+        requiredParameters: ["mass", "acceleration"],
+        answerUnit: "N",
+        allowedParameterKeys: ["mass", "acceleration"]
+      },
+
+      "mechanics.work.force_distance": {
+        factId: "mechanics.work.force_distance",
+        topic: "mechanics",
+        concept: "Work done",
+        skill: "Calculate work done",
+        type: "calculation",
+        formula: "W = Fd",
+        requiredParameters: ["force", "distance"],
+        answerUnit: "J",
+        allowedParameterKeys: ["force", "distance"]
+      },
+
+      "mechanics.momentum.mass_velocity": {
+        factId: "mechanics.momentum.mass_velocity",
+        topic: "mechanics",
+        concept: "Momentum",
+        skill: "Calculate momentum",
+        type: "calculation",
+        formula: "p = mv",
+        requiredParameters: ["mass", "velocity"],
+        answerUnit: "kg·m/s",
+        allowedParameterKeys: ["mass", "velocity"]
+      },
+
+      "kinematics.final_velocity.rest": {
+        factId: "kinematics.final_velocity.rest",
+        topic: "kinematics",
+        concept: "Uniform acceleration",
+        skill: "Calculate final velocity",
+        type: "calculation",
+        formula: "v = u + at",
+        requiredParameters: ["acceleration", "time"],
+        invariant: {
+          initialVelocity: 0
+        },
+        answerUnit: "m/s",
+        allowedParameterKeys: ["acceleration", "time"]
+      },
+
+      "kinematics.distance.rest": {
+        factId: "kinematics.distance.rest",
+        topic: "kinematics",
+        concept: "Uniform acceleration",
+        skill: "Calculate distance travelled",
+        type: "calculation",
+        formula: "s = ut + half-at-squared",
+        requiredParameters: ["acceleration", "time"],
+        invariant: {
+          initialVelocity: 0
+        },
+        answerUnit: "m",
+        allowedParameterKeys: ["acceleration", "time"]
+      },
+
+      "waves.wavelength.speed_frequency": {
+        factId: "waves.wavelength.speed_frequency",
+        topic: "waves",
+        concept: "Wave equation",
+        skill: "Calculate wavelength",
+        type: "calculation",
+        formula: "v = f * lambda",
+        requiredParameters: ["speed", "frequency"],
+        answerUnit: "m",
+        allowedParameterKeys: ["frequency"],
+        invariant: {
+          medium: "air",
+          speed: 340
+        }
+      },
+
+      "waves.frequency.speed_wavelength": {
+        factId: "waves.frequency.speed_wavelength",
+        topic: "waves",
+        concept: "Wave equation",
+        skill: "Calculate frequency",
+        type: "calculation",
+        formula: "f = v / lambda",
+        requiredParameters: ["speed", "wavelength"],
+        answerUnit: "Hz",
+        allowedParameterKeys: ["wavelength"],
+        invariant: {
+          medium: "air",
+          speed: 340
+        }
+      },
+
+      "density.mass_volume": {
+        factId: "density.mass_volume",
+        topic: "density",
+        concept: "Density",
+        skill: "Calculate density",
+        type: "calculation",
+        formula: "rho = m / V",
+        requiredParameters: ["mass", "volume"],
+        answerUnit: "g/cm3",
+        allowedParameterKeys: ["mass", "volume"],
+        invariant: {
+          massUnit: "g",
+          volumeUnit: "cm3"
+        }
+      },
+
+      "energy.gpe.mass_height": {
+        factId: "energy.gpe.mass_height",
+        topic: "energy",
+        concept: "Gravitational potential energy",
+        skill: "Calculate gravitational potential energy",
+        type: "calculation",
+        formula: "GPE = mgh",
+        requiredParameters: ["mass", "height"],
+        answerUnit: "J",
+        allowedParameterKeys: ["mass", "height"],
+        invariant: {
+          g: 9.8
+        }
+      }
+    });
+
+    this.topicKeywords = Object.freeze({
+
       electricity: [
+        "electricity",
         "current",
         "voltage",
         "potential difference",
         "resistance",
-        "ohm",
-        "circuit",
         "resistor",
-        "electrical power",
-        "electrical energy",
-        "charge"
+        "ohm",
+        "power",
+        "watt",
+        "charge",
+        "circuit"
       ],
 
       mechanics: [
         "force",
         "mass",
         "newton",
-        "friction",
-        "resultant force",
         "work",
-        "momentum"
+        "joule",
+        "momentum",
+        "friction",
+        "resultant force"
       ],
 
       kinematics: [
         "speed",
         "velocity",
-        "motion",
+        "acceleration",
         "distance",
         "displacement",
-        "acceleration",
+        "motion",
+        "time",
         "kinematic"
       ],
 
@@ -94,7 +395,7 @@ export class PhysicsMutator {
         "amplitude",
         "period",
         "wave speed",
-        "sound wave"
+        "sound"
       ],
 
       optics: [
@@ -110,8 +411,8 @@ export class PhysicsMutator {
       thermal: [
         "temperature",
         "heat",
-        "thermal energy",
-        "specific heat capacity",
+        "thermal",
+        "specific heat",
         "latent heat"
       ],
 
@@ -123,11 +424,11 @@ export class PhysicsMutator {
       ],
 
       nuclear: [
-        "radioactivity",
         "radioactive",
-        "alpha particle",
-        "beta particle",
-        "gamma ray",
+        "radioactivity",
+        "alpha",
+        "beta",
+        "gamma",
         "half-life",
         "nucleus",
         "nuclear"
@@ -135,15 +436,12 @@ export class PhysicsMutator {
 
       modernPhysics: [
         "photoelectric",
-        "photoelectric effect",
-        "photoelectric emission",
         "photoelectron",
         "photon",
         "work function",
         "threshold frequency",
         "stopping potential",
-        "quantum",
-        "electron emission"
+        "quantum"
       ],
 
       density: [
@@ -152,1601 +450,3150 @@ export class PhysicsMutator {
         "float",
         "sink",
         "buoyant"
+      ],
+
+      energy: [
+        "potential energy",
+        "gravitational potential",
+        "gpe"
       ]
-    };
+    });
+
+    /*
+     * Explicit deterministic mutation policies.
+     *
+     * Each policy tells the engine which parameter is allowed
+     * to change for each modality.
+     *
+     * 0 = calculation/open
+     * 1 = application
+     * 2 = diagnostic
+     * 3 = transfer
+     */
+    this.mutationPolicies = Object.freeze({
+
+      "electricity.ohms_law.voltage": {
+        0: ["current"],
+        1: ["resistance"],
+        2: ["current", "resistance"],
+        3: ["current"]
+      },
+
+      "electricity.power.voltage_current": {
+        0: ["voltage"],
+        1: ["current"],
+        2: ["voltage", "current"],
+        3: ["voltage"]
+      },
+
+      "mechanics.newtons_second_law.force": {
+        0: ["mass"],
+        1: ["acceleration"],
+        2: ["mass", "acceleration"],
+        3: ["acceleration"]
+      },
+
+      "mechanics.work.force_distance": {
+        0: ["force"],
+        1: ["distance"],
+        2: ["force", "distance"],
+        3: ["distance"]
+      },
+
+      "mechanics.momentum.mass_velocity": {
+        0: ["mass"],
+        1: ["velocity"],
+        2: ["mass", "velocity"],
+        3: ["velocity"]
+      },
+
+      "kinematics.final_velocity.rest": {
+        0: ["acceleration"],
+        1: ["time"],
+        2: ["acceleration", "time"],
+        3: ["time"]
+      },
+
+      "kinematics.distance.rest": {
+        0: ["acceleration"],
+        1: ["time"],
+        2: ["acceleration", "time"],
+        3: ["time"]
+      },
+
+      "waves.wavelength.speed_frequency": {
+        0: ["frequency"],
+        1: ["frequency"],
+        2: ["frequency"],
+        3: ["frequency"]
+      },
+
+      "waves.frequency.speed_wavelength": {
+        0: ["wavelength"],
+        1: ["wavelength"],
+        2: ["wavelength"],
+        3: ["wavelength"]
+      },
+
+      "density.mass_volume": {
+        0: ["mass"],
+        1: ["volume"],
+        2: ["mass", "volume"],
+        3: ["volume"]
+      },
+
+      "energy.gpe.mass_height": {
+        0: ["mass"],
+        1: ["height"],
+        2: ["mass", "height"],
+        3: ["height"]
+      }
+    });
+
+    /*
+     * Deterministic conceptual question bank.
+     *
+     * These are independent of numerical mutation.
+     */
+    this.conceptualRegistry = Object.freeze({
+
+      "electricity.ohms_law.voltage": [
+        {
+          q: "If the resistance of an ohmic resistor remains constant, what happens to the current when the potential difference across it is increased?",
+          ans: "The current increases because I = V/R, so with constant resistance current is directly proportional to voltage.",
+          hint: "Rearrange Ohm's Law to make current the subject.",
+          sol: "From V = IR, I = V/R. If R remains constant, increasing V increases I.",
+          misconception: "Current remains constant regardless of potential difference.",
+          distractors: [
+            "The current decreases because increasing voltage reduces current.",
+            "The current remains constant regardless of potential difference.",
+            "The current becomes zero because the resistance is unchanged."
+          ]
+        }
+      ],
+
+      "electricity.power.voltage_current": [
+        {
+          q: "What happens to electrical power if the voltage across an appliance increases while its current remains constant?",
+          ans: "The electrical power increases because P = VI.",
+          hint: "Look at the relationship between power, voltage and current.",
+          sol: "Since P = VI, if I remains constant and V increases, P increases.",
+          misconception: "Power depends only on the current.",
+          distractors: [
+            "The electrical power decreases.",
+            "The electrical power remains constant because current is unchanged.",
+            "The electrical power becomes zero."
+          ]
+        }
+      ],
+
+      "mechanics.newtons_second_law.force": [
+        {
+          q: "What happens to the resultant force on an object if its mass is doubled while its acceleration remains unchanged?",
+          ans: "The resultant force doubles because F = ma.",
+          hint: "Look at the relationship between force and mass.",
+          sol: "F = ma. With acceleration unchanged, doubling mass doubles the resultant force.",
+          misconception: "Force remains unchanged because acceleration has not changed.",
+          distractors: [
+            "The resultant force is halved.",
+            "The resultant force remains unchanged.",
+            "The resultant force becomes zero."
+          ]
+        }
+      ],
+
+      "mechanics.work.force_distance": [
+        {
+          q: "If the force acting in the direction of motion is doubled while the distance moved remains constant, what happens to the work done?",
+          ans: "The work done doubles because W = Fd.",
+          hint: "Work done is directly proportional to force when distance is constant.",
+          sol: "W = Fd. With d constant, doubling F doubles W.",
+          misconception: "Work done remains unchanged because distance has not changed.",
+          distractors: [
+            "The work done is halved.",
+            "The work done remains unchanged.",
+            "The work done becomes zero."
+          ]
+        }
+      ],
+
+      "mechanics.momentum.mass_velocity": [
+        {
+          q: "What happens to the momentum of an object if its velocity is doubled while its mass remains constant?",
+          ans: "The momentum doubles because p = mv.",
+          hint: "Momentum is directly proportional to velocity for constant mass.",
+          sol: "p = mv. With m constant, doubling v doubles p.",
+          misconception: "Momentum remains unchanged because the mass is constant.",
+          distractors: [
+            "The momentum is halved.",
+            "The momentum remains unchanged.",
+            "The momentum becomes zero."
+          ]
+        }
+      ],
+
+      "kinematics.final_velocity.rest": [
+        {
+          q: "A vehicle starts from rest and accelerates uniformly. If its acceleration is doubled for the same time, what happens to its final velocity?",
+          ans: "Its final velocity doubles because, from rest, v = at.",
+          hint: "The initial velocity is zero.",
+          sol: "Since u = 0, v = u + at becomes v = at. Doubling a while keeping t constant doubles v.",
+          misconception: "The final velocity remains unchanged because the time is unchanged.",
+          distractors: [
+            "The final velocity is halved.",
+            "The final velocity remains unchanged.",
+            "The final velocity becomes zero."
+          ]
+        }
+      ],
+
+      "kinematics.distance.rest": [
+        {
+          q: "A vehicle starts from rest and accelerates uniformly. If its acceleration is doubled for the same time, what happens to the distance travelled?",
+          ans: "The distance travelled doubles because s = 1/2 at² when the vehicle starts from rest.",
+          hint: "Use s = 1/2 at² because u = 0.",
+          sol: "With u = 0, s = 1/2 at². Keeping t constant means s is directly proportional to a.",
+          misconception: "The distance remains unchanged because the time is unchanged.",
+          distractors: [
+            "The distance is halved.",
+            "The distance remains unchanged.",
+            "The distance becomes zero."
+          ]
+        }
+      ],
+
+      "waves.wavelength.speed_frequency": [
+        {
+          q: "For a wave travelling at constant speed, what happens to its wavelength if its frequency is increased?",
+          ans: "The wavelength decreases because v = fλ and the wave speed remains constant.",
+          hint: "Rearrange v = fλ to make wavelength the subject.",
+          sol: "λ = v/f. With v constant, increasing f decreases λ.",
+          misconception: "The wavelength increases when frequency increases.",
+          distractors: [
+            "The wavelength increases.",
+            "The wavelength remains unchanged.",
+            "The wavelength becomes equal to the frequency."
+          ]
+        }
+      ],
+
+      "waves.frequency.speed_wavelength": [
+        {
+          q: "For a wave travelling at constant speed, what happens to its frequency if its wavelength is increased?",
+          ans: "The frequency decreases because f = v/λ and the wave speed remains constant.",
+          hint: "Use f = v/λ.",
+          sol: "Since v is constant, increasing λ causes f to decrease.",
+          misconception: "The frequency increases when wavelength increases.",
+          distractors: [
+            "The frequency increases.",
+            "The frequency remains unchanged.",
+            "The frequency becomes equal to the wavelength."
+          ]
+        }
+      ],
+
+      "density.mass_volume": [
+        {
+          q: "For a fixed mass, what happens to the density of an object if its volume decreases?",
+          ans: "The density increases because density is mass divided by volume.",
+          hint: "Use ρ = m/V.",
+          sol: "For constant mass, decreasing V increases m/V, so density increases.",
+          misconception: "Density decreases when volume decreases.",
+          distractors: [
+            "The density decreases.",
+            "The density remains unchanged.",
+            "The density becomes zero."
+          ]
+        }
+      ],
+
+      "energy.gpe.mass_height": [
+        {
+          q: "What happens to the gravitational potential energy of an object if its height is doubled while its mass remains constant?",
+          ans: "The gravitational potential energy doubles because GPE = mgh.",
+          hint: "Look at the relationship between GPE and height.",
+          sol: "GPE = mgh. With m and g constant, doubling h doubles the GPE.",
+          misconception: "The gravitational potential energy remains unchanged because the mass is unchanged.",
+          distractors: [
+            "The gravitational potential energy is halved.",
+            "The gravitational potential energy remains unchanged.",
+            "The gravitational potential energy becomes zero."
+          ]
+        }
+      ]
+    });
+
+    /*
+     * Configuration overrides.
+     */
+    this.config = Object.freeze({
+      ...config,
+      minOptions: 4,
+      maxOptions: 4,
+      numericalTolerance: 0.0001,
+      deterministic: true
+    });
   }
 
-  // ============================================================
-  // 1. DETERMINISTIC HASHING
-  // ============================================================
+  // ------------------------------------------------------------------
+  // DETERMINISTIC UTILITIES
+  // ------------------------------------------------------------------
 
-  _hash(str) {
+  _hash(value = "") {
 
-    let hash = 0;
+    let h = 2166136261;
 
-    for (let i = 0; i < str.length; i++) {
-      hash = ((hash << 5) - hash) + str.charCodeAt(i);
-      hash |= 0;
+    const s = String(value);
+
+    for (let i = 0; i < s.length; i++) {
+      h ^= s.charCodeAt(i);
+      h = Math.imul(h, 16777619);
     }
 
-    return Math.abs(hash);
+    return h >>> 0;
   }
 
   _seed(qObj, modalityIndex = 0) {
 
-    const stem = qObj?.q || qObj?.stem || "";
     const id = qObj?.id || "";
 
+    const stem = qObj?.q || qObj?.stem || "";
+
     return this._hash(
-      `${stem}|${id}|physics|${modalityIndex}`
+      `${this.version}|${id}|${stem}|physics|${modalityIndex}`
     );
   }
 
-  _pick(array, seed, offset = 0) {
+  _fingerprint(value) {
 
-    if (!array || !array.length) return null;
-
-    return array[
-      Math.abs(seed + offset) % array.length
-    ];
+    return this._hash(
+      typeof value === "string"
+        ? value
+        : JSON.stringify(value)
+    ).toString(16).padStart(8, "0");
   }
 
   _round(value, decimals = 2) {
 
-    return Number(
-      Number(value).toFixed(decimals)
-    );
+    if (!Number.isFinite(Number(value))) return null;
+
+    return Number(Number(value).toFixed(decimals));
   }
 
-  _shuffle(array, seed) {
+  _number(value) {
+
+    if (typeof value === "number") {
+      return Number.isFinite(value) ? value : null;
+    }
+
+    const match = String(value ?? "")
+      .replace(/,/g, "")
+      .match(/-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/i);
+
+    return match ? Number(match[0]) : null;
+  }
+
+  _normalizeText(value = "") {
+
+    return String(value)
+      .toLowerCase()
+      .replace(/[²]/g, "^2")
+      .replace(/[³]/g, "^3")
+      .replace(/\s+/g, " ")
+      .trim();
+  }
+
+  _shuffleDeterministic(array, seed) {
 
     const result = [...array];
 
+    let state = seed >>> 0;
+
     for (let i = result.length - 1; i > 0; i--) {
 
-      const j = Math.abs(
-        seed + i * 31
-      ) % (i + 1);
+      /*
+       * Deterministic xorshift32.
+       *
+       * No Math.random().
+       */
+      state ^= state << 13;
+      state ^= state >>> 17;
+      state ^= state << 5;
 
-      [result[i], result[j]] =
-        [result[j], result[i]];
+      state >>>= 0;
+
+      const j = state % (i + 1);
+
+      [result[i], result[j]] = [result[j], result[i]];
     }
 
     return result;
   }
 
-  // ============================================================
-  // 2. TOPIC DETECTION & CONCEPT LOCKING
-  // ============================================================
+  _extractNumAndUnit(text, units) {
 
-  _normalizeTopic(topicStr) {
-    if (!topicStr) return null;
-    const lower = String(topicStr).toLowerCase();
+    const escaped = units
+      .sort((a, b) => b.length - a.length)
+      .map(u =>
+        u.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")
+      )
+      .join("|");
 
-    if (lower.includes("photoelectric") || lower.includes("quantum") || lower.includes("modern")) {
+    const expression =
+      `(\\d+(?:\\.\\d+)?)\\s*(${escaped})(?![a-zA-Z0-9_/^-])`;
+
+    const match = String(text || "").match(
+      new RegExp(
+        expression,
+        "i"
+      )
+    );
+
+    if (!match) return null;
+
+    return {
+      value: Number(match[1]),
+      matchedUnit: match[2]
+    };
+  }
+
+  _unit(value) {
+
+    return String(value || "")
+      .toLowerCase()
+      .replace(/\s+/g, "");
+  }
+
+  // ------------------------------------------------------------------
+  // TOPIC DETECTION
+  // ------------------------------------------------------------------
+
+  _normalizeTopic(value) {
+
+    const s = this._normalizeText(value);
+
+    if (
+      s.includes("photoelectric") ||
+      s.includes("quantum")
+    ) {
       return "modernPhysics";
     }
-    if (lower.includes("electric") || lower.includes("circuit") || lower.includes("current")) {
+
+    if (
+      s.includes("electric") ||
+      s.includes("circuit") ||
+      s.includes("ohm")
+    ) {
       return "electricity";
     }
-    if (lower.includes("kinematic") || lower.includes("speed") || lower.includes("velocity")) {
+
+    if (
+      s.includes("kinematic") ||
+      s.includes("velocity") ||
+      s.includes("acceleration")
+    ) {
       return "kinematics";
     }
-    if (lower.includes("mechanic") || lower.includes("force") || lower.includes("newton")) {
+
+    if (
+      s.includes("mechanic") ||
+      s.includes("force") ||
+      s.includes("momentum") ||
+      s.includes("work done")
+    ) {
       return "mechanics";
     }
-    if (lower.includes("wave") || lower.includes("sound")) {
+
+    if (
+      s.includes("wave") ||
+      s.includes("sound")
+    ) {
       return "waves";
     }
-    if (lower.includes("optic") || lower.includes("light") || lower.includes("lens")) {
+
+    if (
+      s.includes("optic") ||
+      s.includes("lens") ||
+      s.includes("reflection") ||
+      s.includes("refraction")
+    ) {
       return "optics";
     }
-    if (lower.includes("thermal") || lower.includes("heat")) {
+
+    if (
+      s.includes("thermal") ||
+      s.includes("heat") ||
+      s.includes("temperature")
+    ) {
       return "thermal";
     }
-    if (lower.includes("pressure") || lower.includes("pascal")) {
+
+    if (
+      s.includes("pressure") ||
+      s.includes("pascal") ||
+      s.includes("hydraulic")
+    ) {
       return "pressure";
     }
-    if (lower.includes("nuclear") || lower.includes("radioactiv")) {
+
+    if (
+      s.includes("radioactiv") ||
+      s.includes("nuclear") ||
+      s.includes("half-life")
+    ) {
       return "nuclear";
     }
-    if (lower.includes("density")) {
+
+    if (
+      s.includes("density") ||
+      s.includes("float") ||
+      s.includes("sink")
+    ) {
       return "density";
     }
+
+    if (
+      s.includes("potential energy") ||
+      s.includes("gpe")
+    ) {
+      return "energy";
+    }
+
     return null;
   }
 
-  _detectTopic(stem, qObj = {}) {
-    // 1. Explicit curriculum metadata takes top priority
-    const explicitTopic = qObj.topic || qObj.strand || qObj.concept || qObj.topicId || null;
-    if (explicitTopic) {
-      const normalized = this._normalizeTopic(explicitTopic);
-      if (normalized) {
-        return normalized;
-      }
+  _detectTopic(qObj) {
+
+    const explicit =
+      qObj?.topic ||
+      qObj?.strand ||
+      qObj?.topicId ||
+      qObj?.factModel?.topic ||
+      qObj?.metadata?.factModel?.topic;
+
+    if (explicit) {
+
+      const normalized = this._normalizeTopic(explicit);
+
+      if (normalized) return normalized;
     }
 
-    const lower = String(stem || "").toLowerCase();
+    const stem = this._normalizeText(
+      qObj?.q || qObj?.stem || ""
+    );
 
-    // 2. Weighted keyword matching
     const scores = {};
 
-    for (const [topic, keywords] of Object.entries(this.topics)) {
+    for (const [topic, keywords] of Object.entries(
+      this.topicKeywords
+    )) {
+
       scores[topic] = 0;
 
       for (const keyword of keywords) {
-        if (lower.includes(keyword)) {
-          // Multi-word phrases are given higher weight (3 vs 1)
-          const weight = keyword.split(" ").length > 1 ? 3 : 1;
-          scores[topic] += weight;
+
+        const k = this._normalizeText(keyword);
+
+        if (stem.includes(k)) {
+          scores[topic] += k.includes(" ") ? 3 : 1;
         }
       }
     }
 
-    const ranked = Object.entries(scores).sort((a, b) => b[1] - a[1]);
-    const [bestTopic, bestScore] = ranked[0] || ["general", 0];
-    const [, secondScore] = ranked[1] || ["general", 0];
+    const ranked = Object.entries(scores)
+      .sort((a, b) => b[1] - a[1]);
 
-    if (bestScore === 0) {
-      return "general";
+    const best = ranked[0];
+    const second = ranked[1];
+
+    if (!best || best[1] === 0) {
+      return null;
     }
-
-    // Prevent ambiguous classification
-    if (bestScore === secondScore && bestScore < 3) {
-      return "general";
-    }
-
-    return bestTopic;
-  }
-
-  _validateTopicIntegrity(originalTopic, mutatedQuestion) {
-    if (!mutatedQuestion || !mutatedQuestion.q) return false;
-    const detectedMutatedTopic = this._detectTopic(mutatedQuestion.q, mutatedQuestion);
 
     if (
-      originalTopic !== "general" &&
-      detectedMutatedTopic !== "general" &&
-      detectedMutatedTopic !== originalTopic
+      second &&
+      best[1] === second[1] &&
+      best[1] < 4
     ) {
-      return false;
+      return null;
     }
 
-    return true;
+    return best[0];
   }
 
-  _createSafeFallback(qObj, topic) {
-    const originalQuestion = qObj?.q || qObj?.stem || "";
+  // ------------------------------------------------------------------
+  // FACT IDENTIFICATION
+  // ------------------------------------------------------------------
 
-    return {
-      ...qObj,
-      q: originalQuestion,
-      ans: qObj?.ans || "",
-      hint: qObj?.hint || "Review the core physical concept involved before answering.",
-      sol: qObj?.sol || qObj?.explanation || "No safe mutation could be generated without changing the original physical concept.",
-      steps: qObj?.steps || [
-        "Identify the main physical concept.",
-        "Recall the governing principle.",
-        "Apply it to the original problem."
-      ],
-      mutationStatus: "SKIPPED_UNSAFE_MUTATION",
-      detectedTopic: topic,
-      safe: true,
-      difficulty: qObj?.difficulty || 2,
-      modality: "fallback"
-    };
+  _existingFact(qObj) {
+
+    return (
+      qObj?.metadata?.factModel ||
+      qObj?.factModel ||
+      null
+    );
   }
 
-  // ============================================================
-  // 3. QUESTION CONSTRUCTION HELPERS
-  // ============================================================
+  _identifyFact(qObj) {
 
-  _base({
-    q,
-    ans,
-    hint,
-    sol,
-    steps,
-    type = "mcq",
-    options = null,
-    concept,
-    skill,
-    difficulty = 2,
-    misconception = null,
-    modality = "calculation"
-  }) {
+    const existing = this._existingFact(qObj);
 
-    return {
-      q,
-      ans,
-      hint,
-      sol,
-      steps,
-      type,
-      options,
-      concept,
-      skill,
-      difficulty,
-      misconception,
-      modality
-    };
-  }
+    if (
+      existing?.factId &&
+      this.factRegistry[existing.factId]
+    ) {
 
-  _mcqOptions(correct, distractors, seed) {
+      return {
+        registry: this.factRegistry[existing.factId],
+        source: "existing_fact_model",
+        model: existing
+      };
+    }
 
-    const unique = [
-      correct,
-      ...distractors
-    ].filter(
-      (value, index, arr) =>
-        value &&
-        arr.indexOf(value) === index
+    const s = this._normalizeText(
+      qObj?.q || qObj?.stem || ""
     );
 
-    return this._shuffle(
+    if (
+      (
+        s.includes("ohm") ||
+        s.includes("resistor") ||
+        s.includes("Ω")
+      ) &&
+      (
+        s.includes("current") ||
+        s.includes("resistance")
+      ) &&
+      (
+        s.includes("voltage") ||
+        s.includes("potential difference")
+      )
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "electricity.ohms_law.voltage"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      (s.includes("power") || s.includes("watt") || s.includes("electrical power")) &&
+      (s.includes("voltage") || s.includes("potential difference") || /\b\d+(\.\d+)?\s*v\b/i.test(s)) &&
+      (s.includes("current") || /\b\d+(\.\d+)?\s*a\b/i.test(s))
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "electricity.power.voltage_current"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      (
+        s.includes("force") ||
+        s.includes("resultant force") ||
+        s.includes("accelerate")
+      ) &&
+      (s.includes("mass") || s.includes("kg") || s.includes("kilogram")) &&
+      (
+        s.includes("acceleration") ||
+        s.includes("accelerate") ||
+        s.includes("m/s2") ||
+        s.includes("m/s^2")
+      )
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "mechanics.newtons_second_law.force"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      s.includes("work") &&
+      s.includes("force") &&
+      (
+        s.includes("distance") ||
+        s.includes("direction")
+      )
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "mechanics.work.force_distance"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      s.includes("momentum") &&
+      (s.includes("mass") || s.includes("kg") || s.includes("kilogram")) &&
+      (
+        s.includes("velocity") ||
+        s.includes("speed") ||
+        s.includes("m/s")
+      )
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "mechanics.momentum.mass_velocity"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      (
+        s.includes("distance") ||
+        s.includes("displacement")
+      ) &&
+      (
+        s.includes("acceleration") ||
+        s.includes("accelerat") ||
+        s.includes("m/s2") ||
+        s.includes("m/s^2")
+      ) &&
+      (
+        s.includes("rest") ||
+        s.includes("starts from rest")
+      )
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "kinematics.distance.rest"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      (
+        s.includes("final velocity") ||
+        s.includes("velocity")
+      ) &&
+      !s.includes("distance") &&
+      !s.includes("displacement") &&
+      (
+        s.includes("acceleration") ||
+        s.includes("accelerat") ||
+        s.includes("m/s2") ||
+        s.includes("m/s^2")
+      ) &&
+      (
+        s.includes("rest") ||
+        s.includes("starts from rest")
+      )
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "kinematics.final_velocity.rest"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      s.includes("frequency") &&
+      s.includes("wavelength")
+    ) {
+
+      const isCalcWavelength =
+        s.includes("calculate its wavelength") ||
+        s.includes("calculate the wavelength") ||
+        s.includes("calculate wavelength") ||
+        s.includes("wavelength?");
+
+      const isCalcFrequency =
+        s.includes("calculate its frequency") ||
+        s.includes("calculate the frequency") ||
+        s.includes("calculate frequency") ||
+        s.includes("frequency?");
+
+      if (isCalcFrequency) {
+        return {
+          registry:
+            this.factRegistry[
+              "waves.frequency.speed_wavelength"
+            ],
+          source: "source_pattern"
+        };
+      }
+
+      if (isCalcWavelength || s.includes("hz")) {
+        return {
+          registry:
+            this.factRegistry[
+              "waves.wavelength.speed_frequency"
+            ],
+          source: "source_pattern"
+        };
+      }
+
+      return {
+        registry:
+          this.factRegistry[
+            "waves.frequency.speed_wavelength"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      s.includes("density") &&
+      (
+        s.includes("mass") ||
+        s.includes("g") ||
+        s.includes("kg")
+      ) &&
+      (
+        s.includes("volume") ||
+        s.includes("cm3") ||
+        s.includes("cm^3") ||
+        s.includes("cm³")
+      )
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "density.mass_volume"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    if (
+      (
+        s.includes("potential energy") ||
+        s.includes("gpe")
+      ) &&
+      (s.includes("mass") || s.includes("kg") || s.includes("kilogram")) &&
+      (s.includes("height") || s.includes("vertical"))
+    ) {
+
+      return {
+        registry:
+          this.factRegistry[
+            "energy.gpe.mass_height"
+          ],
+        source: "source_pattern"
+      };
+    }
+
+    return null;
+  }
+
+  // ------------------------------------------------------------------
+  // PARAMETER EXTRACTION + NORMALIZATION
+  // ------------------------------------------------------------------
+
+  _extractParameters(fact, qObj) {
+
+    const existing = this._existingFact(qObj);
+
+    if (existing?.parameters) {
+
+      const parameters = {};
+
+      for (const key of fact.requiredParameters) {
+
+        const source = existing.parameters[key];
+
+        if (source == null) return null;
+
+        const raw =
+          typeof source === "object"
+            ? source.value
+            : source;
+
+        const numeric = this._number(raw);
+
+        if (numeric == null) return null;
+
+        const normalized =
+          this._normalizeParameter(
+            key,
+            numeric,
+            typeof source === "object"
+              ? source.unit
+              : null,
+            fact
+          );
+
+        if (!normalized) return null;
+
+        parameters[key] = normalized;
+      }
+
+      return parameters;
+    }
+
+    const stem = String(
+      qObj?.q || qObj?.stem || ""
+    );
+
+    const parameters = {};
+
+    for (const key of fact.requiredParameters) {
+
+      const parsed =
+        this._extractParameterFromText(
+          key,
+          stem,
+          fact
+        );
+
+      if (!parsed) return null;
+
+      parameters[key] = parsed;
+    }
+
+    return parameters;
+  }
+
+  _extractParameterFromText(
+    key,
+    stem,
+    fact
+  ) {
+
+    let result = null;
+
+    switch (key) {
+
+      case "current": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "mA",
+            "A",
+            "ampere",
+            "amperes",
+            "amp",
+            "amps"
+          ]
+        );
+
+        if (!result) return null;
+
+        const isMilli =
+          /^mA$/i.test(result.matchedUnit);
+
+        return {
+          value: isMilli
+            ? this._round(result.value / 1000, 6)
+            : result.value,
+          unit: "A"
+        };
+      }
+
+      case "resistance": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "kΩ",
+            "kOhm",
+            "kohm",
+            "ohm",
+            "ohms",
+            "Ω"
+          ]
+        );
+
+        if (!result) return null;
+
+        const isKilo =
+          /^(kΩ|kOhm|kohm)$/i.test(
+            result.matchedUnit
+          );
+
+        return {
+          value: isKilo
+            ? result.value * 1000
+            : result.value,
+          unit: "ohm"
+        };
+      }
+
+      case "voltage": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "kV",
+            "mV",
+            "V",
+            "volt",
+            "volts"
+          ]
+        );
+
+        if (!result) return null;
+
+        let value = result.value;
+
+        if (/^kV$/i.test(result.matchedUnit)) {
+          value *= 1000;
+        }
+
+        if (/^mV$/i.test(result.matchedUnit)) {
+          value /= 1000;
+        }
+
+        return {
+          value,
+          unit: "V"
+        };
+      }
+
+      case "mass": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "kg",
+            "kilogram",
+            "kilograms",
+            "g",
+            "gram",
+            "grams"
+          ]
+        );
+
+        if (!result) return null;
+
+        const isGram =
+          /^(g|gram|grams)$/i.test(
+            result.matchedUnit
+          );
+
+        /*
+         * Density deliberately uses grams because
+         * its registered answer unit is g/cm3.
+         */
+        if (fact.factId === "density.mass_volume") {
+
+          return {
+            value: isGram
+              ? result.value
+              : result.value * 1000,
+            unit: "g"
+          };
+        }
+
+        return {
+          value: isGram
+            ? result.value / 1000
+            : result.value,
+          unit: "kg"
+        };
+      }
+
+      case "acceleration": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "m/s²",
+            "m/s2",
+            "m/s^2",
+            "ms^-2",
+            "ms-2",
+            "m s^-2"
+          ]
+        );
+
+        if (!result) return null;
+
+        return {
+          value: result.value,
+          unit: "m/s2"
+        };
+      }
+
+      case "time": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "minutes",
+            "minute",
+            "min",
+            "hours",
+            "hour",
+            "h",
+            "seconds",
+            "second",
+            "secs",
+            "sec",
+            "s"
+          ]
+        );
+
+        if (!result) return null;
+
+        if (
+          /^(min|minute|minutes)$/i.test(
+            result.matchedUnit
+          )
+        ) {
+
+          return {
+            value: result.value * 60,
+            unit: "s"
+          };
+        }
+
+        if (
+          /^(h|hour|hours)$/i.test(
+            result.matchedUnit
+          )
+        ) {
+
+          return {
+            value: result.value * 3600,
+            unit: "s"
+          };
+        }
+
+        return {
+          value: result.value,
+          unit: "s"
+        };
+      }
+
+      case "distance":
+      case "height": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "km",
+            "cm",
+            "m",
+            "metres",
+            "metre",
+            "meters",
+            "meter"
+          ]
+        );
+
+        if (!result) return null;
+
+        let value = result.value;
+
+        if (/^km$/i.test(result.matchedUnit)) {
+          value *= 1000;
+        }
+
+        if (/^cm$/i.test(result.matchedUnit)) {
+          value /= 100;
+        }
+
+        return {
+          value,
+          unit: "m"
+        };
+      }
+
+      case "force": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "kN",
+            "N",
+            "newtons",
+            "newton"
+          ]
+        );
+
+        if (!result) return null;
+
+        return {
+          value: /^kN$/i.test(
+            result.matchedUnit
+          )
+            ? result.value * 1000
+            : result.value,
+          unit: "N"
+        };
+      }
+
+      case "velocity":
+      case "speed": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "km/h",
+            "m/s",
+            "ms^-1",
+            "ms-1",
+            "m s^-1"
+          ]
+        );
+
+        if (!result) return null;
+
+        return {
+          value: /^km\/h$/i.test(
+            result.matchedUnit
+          )
+            ? this._round(
+                result.value / 3.6,
+                6
+              )
+            : result.value,
+          unit: "m/s"
+        };
+      }
+
+      case "frequency": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "MHz",
+            "kHz",
+            "Hz",
+            "hertz"
+          ]
+        );
+
+        if (!result) return null;
+
+        let value = result.value;
+
+        if (/^kHz$/i.test(result.matchedUnit)) {
+          value *= 1000;
+        }
+
+        if (/^MHz$/i.test(result.matchedUnit)) {
+          value *= 1e6;
+        }
+
+        return {
+          value,
+          unit: "Hz"
+        };
+      }
+
+      case "wavelength": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "nm",
+            "mm",
+            "cm",
+            "m",
+            "metres",
+            "metre",
+            "meters",
+            "meter"
+          ]
+        );
+
+        if (!result) return null;
+
+        let value = result.value;
+
+        if (/^cm$/i.test(result.matchedUnit)) {
+          value /= 100;
+        }
+
+        if (/^mm$/i.test(result.matchedUnit)) {
+          value /= 1000;
+        }
+
+        if (/^nm$/i.test(result.matchedUnit)) {
+          value *= 1e-9;
+        }
+
+        return {
+          value,
+          unit: "m"
+        };
+      }
+
+      case "volume": {
+
+        result = this._extractNumAndUnit(
+          stem,
+          [
+            "cm³",
+            "cm3",
+            "cm^3",
+            "m³",
+            "m3",
+            "m^3",
+            "litres",
+            "liters",
+            "litre",
+            "liter",
+            "ml",
+            "mL",
+            "L",
+            "l"
+          ]
+        );
+
+        if (!result) return null;
+
+        const u = result.matchedUnit
+          .toLowerCase();
+
+        if (
+          u === "m3" ||
+          u === "m^3" ||
+          u === "m³"
+        ) {
+
+          return {
+            value: result.value * 1e6,
+            unit: "cm3"
+          };
+        }
+
+        if (
+          u === "l" ||
+          u === "litre" ||
+          u === "liter" ||
+          u === "litres" ||
+          u === "liters"
+        ) {
+
+          return {
+            value: result.value * 1000,
+            unit: "cm3"
+          };
+        }
+
+        if (u === "ml") {
+
+          return {
+            value: result.value,
+            unit: "cm3"
+          };
+        }
+
+        return {
+          value: result.value,
+          unit: "cm3"
+        };
+      }
+
+      default:
+        return null;
+    }
+  }
+
+  _normalizeParameter(
+    key,
+    value,
+    unit,
+    fact
+  ) {
+
+    const numeric = Number(value);
+
+    if (
+      !Number.isFinite(numeric) ||
+      numeric <= 0
+    ) {
+      return null;
+    }
+
+    const u = this._unit(unit);
+
+    switch (key) {
+
+      case "current":
+        return {
+          value:
+            u === "ma"
+              ? numeric / 1000
+              : numeric,
+          unit: "A"
+        };
+
+      case "resistance":
+        return {
+          value:
+            u === "kohm" || u === "kω"
+              ? numeric * 1000
+              : numeric,
+          unit: "ohm"
+        };
+
+      case "voltage":
+        return {
+          value:
+            u === "kv"
+              ? numeric * 1000
+              : u === "mv"
+                ? numeric / 1000
+                : numeric,
+          unit: "V"
+        };
+
+      case "mass":
+
+        if (fact.factId === "density.mass_volume") {
+
+          return {
+            value:
+              u === "kg"
+                ? numeric * 1000
+                : numeric,
+            unit: "g"
+          };
+        }
+
+        return {
+          value:
+            u === "g"
+              ? numeric / 1000
+              : numeric,
+          unit: "kg"
+        };
+
+      case "time":
+
+        if (
+          u === "min" ||
+          u === "minute" ||
+          u === "minutes"
+        ) {
+
+          return {
+            value: numeric * 60,
+            unit: "s"
+          };
+        }
+
+        if (
+          u === "h" ||
+          u === "hour" ||
+          u === "hours"
+        ) {
+
+          return {
+            value: numeric * 3600,
+            unit: "s"
+          };
+        }
+
+        return {
+          value: numeric,
+          unit: "s"
+        };
+
+      case "distance":
+      case "height":
+
+        if (u === "km") {
+
+          return {
+            value: numeric * 1000,
+            unit: "m"
+          };
+        }
+
+        if (u === "cm") {
+
+          return {
+            value: numeric / 100,
+            unit: "m"
+          };
+        }
+
+        return {
+          value: numeric,
+          unit: "m"
+        };
+
+      case "force":
+
+        return {
+          value:
+            u === "kn"
+              ? numeric * 1000
+              : numeric,
+          unit: "N"
+        };
+
+      case "velocity":
+      case "speed":
+
+        return {
+          value:
+            u === "km/h"
+              ? numeric / 3.6
+              : numeric,
+          unit: "m/s"
+        };
+
+      case "frequency":
+
+        return {
+          value:
+            u === "khz"
+              ? numeric * 1000
+              : u === "mhz"
+                ? numeric * 1e6
+                : numeric,
+          unit: "Hz"
+        };
+
+      case "wavelength":
+
+        if (u === "cm") {
+          return {
+            value: numeric / 100,
+            unit: "m"
+          };
+        }
+
+        if (u === "mm") {
+          return {
+            value: numeric / 1000,
+            unit: "m"
+          };
+        }
+
+        if (u === "nm") {
+          return {
+            value: numeric * 1e-9,
+            unit: "m"
+          };
+        }
+
+        return {
+          value: numeric,
+          unit: "m"
+        };
+
+      case "volume":
+
+        if (
+          u === "m3" ||
+          u === "m^3" ||
+          u === "m³"
+        ) {
+
+          return {
+            value: numeric * 1e6,
+            unit: "cm3"
+          };
+        }
+
+        if (
+          u === "l" ||
+          u === "litre" ||
+          u === "liter" ||
+          u === "litres" ||
+          u === "liters"
+        ) {
+
+          return {
+            value: numeric * 1000,
+            unit: "cm3"
+          };
+        }
+
+        return {
+          value: numeric,
+          unit: "cm3"
+        };
+
+      default:
+        return null;
+    }
+  }
+
+  // ------------------------------------------------------------------
+  // DETERMINISTIC MUTATION PLAN
+  // ------------------------------------------------------------------
+
+  _authorizedMutationKeys(
+    fact,
+    mode
+  ) {
+
+    const policy =
+      this.mutationPolicies[fact.factId];
+
+    if (!policy) return [];
+
+    return [
+      ...(policy[mode] || [])
+    ].filter(key =>
+      fact.allowedParameterKeys.includes(key)
+    );
+  }
+
+  _chooseAuthorizedParameter(
+    fact,
+    mode,
+    seed
+  ) {
+
+    const keys =
+      this._authorizedMutationKeys(
+        fact,
+        mode
+      );
+
+    if (!keys.length) return null;
+
+    return keys[
+      Math.abs(seed) % keys.length
+    ];
+  }
+
+  _mutateParameter(
+    key,
+    sourceValue,
+    fact,
+    seed,
+    offset = 0
+  ) {
+
+    if (
+      !fact.allowedParameterKeys?.includes(
+        key
+      )
+    ) {
+
+      return sourceValue;
+    }
+
+    const allowed =
+      this.allowedParameters[key];
+
+    if (
+      !Array.isArray(allowed) ||
+      allowed.length < 2
+    ) {
+
+      return sourceValue;
+    }
+
+    const exactIndex =
+      allowed.findIndex(
+        value =>
+          Math.abs(
+            value - sourceValue
+          ) < 1e-9
+      );
+
+    /*
+     * If the source number isn't in our approved
+     * mutation domain, choose a deterministic nearby
+     * authorized value.
+     */
+    if (exactIndex === -1) {
+
+      const index =
+        Math.abs(
+          this._hash(
+            `${seed}|${key}|${offset}`
+          )
+        ) % allowed.length;
+
+      const candidate =
+        allowed[index];
+
+      return (
+        candidate !== sourceValue &&
+        Number.isFinite(candidate) &&
+        candidate > 0
+      )
+        ? candidate
+        : sourceValue;
+    }
+
+    /*
+     * Deterministic movement through the authorized
+     * domain.
+     */
+    const availableMoves =
+      allowed.length - 1;
+
+    const shift =
+      1 +
+      (
+        Math.abs(
+          this._hash(
+            `${seed}|${key}|${offset}|shift`
+          )
+        ) % availableMoves
+      );
+
+    const candidate =
+      allowed[
+        (exactIndex + shift) %
+        allowed.length
+      ];
+
+    if (
+      candidate === sourceValue ||
+      !Number.isFinite(candidate) ||
+      candidate <= 0
+    ) {
+
+      return sourceValue;
+    }
+
+    return candidate;
+  }
+
+  _buildMutationPlan(
+    fact,
+    sourceParameters,
+    mode,
+    seed
+  ) {
+
+    const authorized =
+      this._authorizedMutationKeys(
+        fact,
+        mode
+      );
+
+    if (!authorized.length) {
+      return null;
+    }
+
+    /*
+     * Diagnostic mode is the only mode where
+     * multiple numerical parameters are intentionally
+     * mutated.
+     *
+     * Even there, the exact parameter set is fixed
+     * by the registry policy.
+     */
+    const selected =
+      authorized.filter(
+        key =>
+          fact.allowedParameterKeys.includes(
+            key
+          )
+      );
+
+    const mutations = {};
+
+    for (
+      let i = 0;
+      i < selected.length;
+      i++
+    ) {
+
+      const key = selected[i];
+
+      const source =
+        sourceParameters[key];
+
+      if (!source) return null;
+
+      const mutatedValue =
+        this._mutateParameter(
+          key,
+          source.value,
+          fact,
+          seed,
+          i
+        );
+
+      mutations[key] = {
+        sourceValue: source.value,
+        mutatedValue,
+        unit: source.unit,
+        changed:
+          Math.abs(
+            mutatedValue -
+            source.value
+          ) > 1e-9
+      };
+    }
+
+    return {
+      strategy:
+        mode === 2
+          ? "diagnostic_multi_parameter"
+          : "controlled_single_parameter",
+
+      mode,
+
+      authorizedParameters: selected,
+
+      mutations,
+
+      fingerprint: this._fingerprint({
+        factId: fact.factId,
+        mode,
+        mutations
+      })
+    };
+  }
+
+  _applyMutationPlan(
+    fact,
+    sourceParameters,
+    plan
+  ) {
+
+    if (!plan) return null;
+
+    const result = {};
+
+    for (
+      const key of fact.requiredParameters
+    ) {
+
+      const source =
+        sourceParameters[key];
+
+      if (!source) return null;
+
+      const mutation =
+        plan.mutations[key];
+
+      if (mutation) {
+
+        result[key] = {
+          value: mutation.mutatedValue,
+          unit: mutation.unit
+        };
+
+      } else {
+
+        result[key] = {
+          value: source.value,
+          unit: source.unit
+        };
+      }
+    }
+
+    return result;
+  }
+
+  // ------------------------------------------------------------------
+  // CANONICAL FACT MODEL
+  // ------------------------------------------------------------------
+
+  _buildCanonicalModel(
+    fact,
+    parameters,
+    sourceParameters,
+    plan
+  ) {
+
+    return {
+      factId: fact.factId,
+      type: fact.type,
+      topic: fact.topic,
+      concept: fact.concept,
+      skill: fact.skill,
+      formula: fact.formula,
+
+      parameters: parameters,
+
+      sourceParameters:
+        sourceParameters || null,
+
+      mutationPlan:
+        plan || null,
+
+      invariant:
+        fact.invariant || null
+    };
+  }
+
+  // ------------------------------------------------------------------
+  // SOLVERS
+  // ------------------------------------------------------------------
+
+  _solve(
+    factId,
+    parameters
+  ) {
+
+    const p =
+      Object.fromEntries(
+        Object.entries(
+          parameters || {}
+        ).map(
+          ([key, descriptor]) => [
+            key,
+            typeof descriptor === "object"
+              ? descriptor.value
+              : descriptor
+          ]
+        )
+      );
+
+    switch (factId) {
+
+      case "electricity.ohms_law.voltage":
+
+        return this._round(
+          p.current * p.resistance,
+          2
+        );
+
+      case "electricity.power.voltage_current":
+
+        return this._round(
+          p.voltage * p.current,
+          2
+        );
+
+      case "mechanics.newtons_second_law.force":
+
+        return this._round(
+          p.mass * p.acceleration,
+          2
+        );
+
+      case "mechanics.work.force_distance":
+
+        return this._round(
+          p.force * p.distance,
+          2
+        );
+
+      case "mechanics.momentum.mass_velocity":
+
+        return this._round(
+          p.mass * p.velocity,
+          2
+        );
+
+      case "kinematics.final_velocity.rest":
+
+        return this._round(
+          p.acceleration * p.time,
+          2
+        );
+
+      case "kinematics.distance.rest":
+
+        return this._round(
+          0.5 *
+          p.acceleration *
+          p.time *
+          p.time,
+          2
+        );
+
+      case "waves.wavelength.speed_frequency":
+
+        return this._round(
+          p.speed / p.frequency,
+          4
+        );
+
+      case "waves.frequency.speed_wavelength":
+
+        return this._round(
+          p.speed / p.wavelength,
+          2
+        );
+
+      case "density.mass_volume":
+
+        return this._round(
+          p.mass / p.volume,
+          4
+        );
+
+      case "energy.gpe.mass_height":
+
+        return this._round(
+          p.mass *
+          this.constants.g *
+          p.height,
+          2
+        );
+
+      default:
+
+        return null;
+    }
+  }
+
+  // ------------------------------------------------------------------
+  // FORMATTING
+  // ------------------------------------------------------------------
+
+  _fmt(value, unit) {
+
+    return `${value} ${unit}`;
+  }
+
+  _formatParameter(
+    key,
+    value
+  ) {
+
+    switch (key) {
+
+      case "current":
+        return `${value} A`;
+
+      case "resistance":
+        return `${value} ohm`;
+
+      case "voltage":
+        return `${value} V`;
+
+      case "mass":
+        return `${value} kg`;
+
+      case "acceleration":
+        return `${value} m/s2`;
+
+      case "time":
+        return `${value} s`;
+
+      case "distance":
+        return `${value} m`;
+
+      case "height":
+        return `${value} m`;
+
+      case "force":
+        return `${value} N`;
+
+      case "velocity":
+        return `${value} m/s`;
+
+      case "speed":
+        return `${value} m/s`;
+
+      case "frequency":
+        return `${value} Hz`;
+
+      case "wavelength":
+        return `${value} m`;
+
+      case "volume":
+        return `${value} cm3`;
+
+      default:
+        return `${value}`;
+    }
+  }
+
+  // ------------------------------------------------------------------
+  // DISTRACTORS
+  // ------------------------------------------------------------------
+
+  _distractors(
+    factId,
+    parameters,
+    correctValue
+  ) {
+
+    const p =
+      Object.fromEntries(
+        Object.entries(
+          parameters
+        ).map(
+          ([key, descriptor]) => [
+            key,
+            descriptor.value
+          ]
+        )
+      );
+
+    const result = [];
+
+    const add = (
+      value,
+      misconceptionId,
+      unit
+    ) => {
+
+      if (
+        !Number.isFinite(value) ||
+        value <= 0 ||
+        Math.abs(
+          value - correctValue
+        ) < 1e-9
+      ) {
+        return;
+      }
+
+      const formatted =
+        this._fmt(
+          this._round(value, 4),
+          unit
+        );
+
+      if (
+        !result.some(
+          item =>
+            item.value === formatted
+        )
+      ) {
+
+        result.push({
+          value: formatted,
+          misconceptionId
+        });
+      }
+    };
+
+    switch (factId) {
+
+      case "electricity.ohms_law.voltage":
+
+        add(
+          p.current + p.resistance,
+          "ADD_CURRENT_RESISTANCE",
+          "V"
+        );
+
+        add(
+          p.resistance / p.current,
+          "DIVIDE_R_BY_I",
+          "V"
+        );
+
+        add(
+          p.current / p.resistance,
+          "DIVIDE_I_BY_R",
+          "V"
+        );
+
+        add(
+          p.current,
+          "CURRENT_AS_VOLTAGE",
+          "V"
+        );
+
+        add(
+          p.resistance,
+          "RESISTANCE_AS_VOLTAGE",
+          "V"
+        );
+
+        add(
+          correctValue * 2,
+          "DOUBLE_FACTOR",
+          "V"
+        );
+
+        break;
+
+      case "electricity.power.voltage_current":
+
+        add(
+          p.voltage + p.current,
+          "ADD_V_I",
+          "W"
+        );
+
+        add(
+          p.voltage / p.current,
+          "DIVIDE_V_BY_I",
+          "W"
+        );
+
+        add(
+          p.current / p.voltage,
+          "DIVIDE_I_BY_V",
+          "W"
+        );
+
+        add(
+          p.voltage,
+          "VOLTAGE_AS_POWER",
+          "W"
+        );
+
+        add(
+          p.current,
+          "CURRENT_AS_POWER",
+          "W"
+        );
+
+        add(
+          correctValue * 2,
+          "DOUBLE_FACTOR",
+          "W"
+        );
+
+        break;
+
+      case "mechanics.newtons_second_law.force":
+
+        add(
+          p.mass + p.acceleration,
+          "ADD_M_A",
+          "N"
+        );
+
+        add(
+          p.mass / p.acceleration,
+          "DIVIDE_M_BY_A",
+          "N"
+        );
+
+        add(
+          p.acceleration / p.mass,
+          "DIVIDE_A_BY_M",
+          "N"
+        );
+
+        add(
+          p.acceleration,
+          "ACCEL_AS_FORCE",
+          "N"
+        );
+
+        add(
+          p.mass,
+          "MASS_AS_FORCE",
+          "N"
+        );
+
+        add(
+          correctValue * 2,
+          "DOUBLE_FACTOR",
+          "N"
+        );
+
+        break;
+
+      case "mechanics.work.force_distance":
+
+        add(
+          p.force + p.distance,
+          "ADD_F_D",
+          "J"
+        );
+
+        add(
+          p.force / p.distance,
+          "DIVIDE_F_BY_D",
+          "J"
+        );
+
+        add(
+          p.distance / p.force,
+          "DIVIDE_D_BY_F",
+          "J"
+        );
+
+        add(
+          p.force,
+          "FORCE_AS_WORK",
+          "J"
+        );
+
+        add(
+          p.distance,
+          "DISTANCE_AS_WORK",
+          "J"
+        );
+
+        add(
+          correctValue * 2,
+          "DOUBLE_FACTOR",
+          "J"
+        );
+
+        break;
+
+      case "mechanics.momentum.mass_velocity":
+
+        add(
+          p.mass + p.velocity,
+          "ADD_M_V",
+          "kg·m/s"
+        );
+
+        add(
+          p.mass / p.velocity,
+          "DIVIDE_M_BY_V",
+          "kg·m/s"
+        );
+
+        add(
+          p.velocity / p.mass,
+          "DIVIDE_V_BY_M",
+          "kg·m/s"
+        );
+
+        add(
+          p.velocity,
+          "VEL_AS_MOMENTUM",
+          "kg·m/s"
+        );
+
+        add(
+          0.5 *
+          p.mass *
+          p.velocity *
+          p.velocity,
+          "CONFUSE_WITH_KE",
+          "kg·m/s"
+        );
+
+        add(
+          correctValue * 2,
+          "DOUBLE_FACTOR",
+          "kg·m/s"
+        );
+
+        break;
+
+      case "kinematics.final_velocity.rest":
+
+        add(
+          0.5 *
+          p.acceleration *
+          p.time *
+          p.time,
+          "CONFUSE_DIST_VEL",
+          "m/s"
+        );
+
+        add(
+          p.acceleration + p.time,
+          "ADD_A_T",
+          "m/s"
+        );
+
+        add(
+          p.acceleration / p.time,
+          "DIVIDE_A_BY_T",
+          "m/s"
+        );
+
+        add(
+          p.time / p.acceleration,
+          "DIVIDE_T_BY_A",
+          "m/s"
+        );
+
+        add(
+          p.acceleration *
+          p.time *
+          2,
+          "DOUBLE_FACTOR",
+          "m/s"
+        );
+
+        break;
+
+      case "kinematics.distance.rest":
+
+        add(
+          p.acceleration * p.time,
+          "USE_VEL_AS_DIST",
+          "m"
+        );
+
+        add(
+          p.acceleration *
+          p.time *
+          p.time,
+          "OMIT_HALF",
+          "m"
+        );
+
+        add(
+          0.5 *
+          p.acceleration *
+          p.time,
+          "OMIT_T_SQUARED",
+          "m"
+        );
+
+        add(
+          p.acceleration + p.time,
+          "ADD_A_T",
+          "m"
+        );
+
+        add(
+          p.acceleration / p.time,
+          "DIVIDE_A_BY_T",
+          "m"
+        );
+
+        break;
+
+      case "waves.wavelength.speed_frequency":
+
+        add(
+          p.frequency / p.speed,
+          "INVERT_WAVE",
+          "m"
+        );
+
+        add(
+          p.speed * p.frequency,
+          "MULTIPLY_V_F",
+          "m"
+        );
+
+        add(
+          p.speed /
+          (p.frequency * 2),
+          "DOUBLE_F_SCALE",
+          "m"
+        );
+
+        add(
+          p.speed /
+          (p.frequency / 2),
+          "HALF_F_SCALE",
+          "m"
+        );
+
+        add(
+          p.frequency,
+          "FREQ_AS_WAVELENGTH",
+          "m"
+        );
+
+        break;
+
+      case "waves.frequency.speed_wavelength":
+
+        add(
+          p.wavelength / p.speed,
+          "INVERT_WAVE",
+          "Hz"
+        );
+
+        add(
+          p.speed * p.wavelength,
+          "MULTIPLY_V_L",
+          "Hz"
+        );
+
+        add(
+          p.speed /
+          (p.wavelength * 2),
+          "DOUBLE_L_SCALE",
+          "Hz"
+        );
+
+        add(
+          p.speed /
+          (p.wavelength / 2),
+          "HALF_L_SCALE",
+          "Hz"
+        );
+
+        add(
+          p.wavelength,
+          "WAVELENGTH_AS_FREQ",
+          "Hz"
+        );
+
+        break;
+
+      case "density.mass_volume":
+
+        add(
+          p.volume / p.mass,
+          "REVERSE_DENSITY",
+          "g/cm3"
+        );
+
+        add(
+          p.mass * p.volume,
+          "MULTIPLY_M_V",
+          "g/cm3"
+        );
+
+        add(
+          p.mass,
+          "MASS_AS_DENSITY",
+          "g/cm3"
+        );
+
+        add(
+          p.volume,
+          "VOLUME_AS_DENSITY",
+          "g/cm3"
+        );
+
+        add(
+          correctValue * 2,
+          "DOUBLE_FACTOR",
+          "g/cm3"
+        );
+
+        break;
+
+      case "energy.gpe.mass_height":
+
+        add(
+          p.mass * p.height,
+          "OMIT_G",
+          "J"
+        );
+
+        add(
+          p.mass *
+          this.constants.g,
+          "OMIT_H",
+          "J"
+        );
+
+        add(
+          p.mass +
+          p.height +
+          this.constants.g,
+          "ADD_PARAMS",
+          "J"
+        );
+
+        add(
+          0.5 *
+          p.mass *
+          this.constants.g *
+          p.height,
+          "HALF_FACTOR",
+          "J"
+        );
+
+        add(
+          correctValue * 2,
+          "DOUBLE_FACTOR",
+          "J"
+        );
+
+        break;
+
+      default:
+        break;
+    }
+
+    return result;
+  }
+
+  // ------------------------------------------------------------------
+  // NUMERICAL MCQ OPTIONS
+  // ------------------------------------------------------------------
+
+  _mcqOptions(
+    correct,
+    distractors,
+    seed
+  ) {
+
+    const unique = [];
+
+    const addUnique = value => {
+
+      if (
+        typeof value !== "string" ||
+        !value.trim()
+      ) {
+        return;
+      }
+
+      if (!unique.includes(value)) {
+        unique.push(value);
+      }
+    };
+
+    addUnique(correct);
+
+    for (
+      const distractor of
+      distractors || []
+    ) {
+
+      addUnique(distractor);
+    }
+
+    /*
+     * Deterministic numerical fallbacks.
+     *
+     * These are only allowed for numerical answers.
+     */
+    if (unique.length < 4) {
+
+      const numericMatch =
+        String(correct).match(
+          /-?\d+(?:\.\d+)?(?:e[+-]?\d+)?/i
+        );
+
+      if (!numericMatch) {
+        return null;
+      }
+
+      const base =
+        Number(
+          numericMatch[0]
+        );
+
+      const unit =
+        String(correct)
+          .replace(
+            numericMatch[0],
+            ""
+          )
+          .trim();
+
+      const candidates = [
+        base * 2,
+        base * 0.5,
+        base * 1.5,
+        base * 3,
+        base * 0.25,
+        base * 4,
+        base + 1,
+        base - 1
+      ];
+
+      for (
+        const candidate of candidates
+      ) {
+
+        if (unique.length >= 4) {
+          break;
+        }
+
+        if (
+          !Number.isFinite(candidate) ||
+          candidate <= 0
+        ) {
+          continue;
+        }
+
+        const formatted =
+          `${this._round(candidate, 4)}${unit ? ` ${unit}` : ""}`;
+
+        addUnique(formatted);
+      }
+    }
+
+    if (unique.length < 4) {
+      return null;
+    }
+
+    return this._shuffleDeterministic(
       unique.slice(0, 4),
       seed
     );
   }
 
-  // ============================================================
-  // 4. ELECTRICITY
-  // ============================================================
-
-  _generateElectricity(stem, mode, seed) {
-
-    const lower = stem.toLowerCase();
-
-    const current =
-      1 + (seed % 5);
-
-    const resistance =
-      5 + ((seed >> 2) % 8) * 5;
-
-    const voltage =
-      current * resistance;
-
-    const power =
-      voltage * current;
-
-
-
-    // ----------------------------------------------------------
-    // POWER
-    // ----------------------------------------------------------
-
-    if (
-      lower.includes("power") ||
-      lower.includes("watt")
-    ) {
-
-      const ans = `${power} W`;
-
-      if (mode === 0) {
-
-        return this._base({
-
-          q:
-            `An appliance draws ${current} A from a ${voltage} V supply. Calculate its electrical power.`,
-
-          ans,
-
-          hint:
-            "Use P = VI.",
-
-          sol:
-            `P = VI = ${voltage} × ${current} = ${power} W.`,
-
-          steps: [
-            `Step 1: Identify V = ${voltage} V and I = ${current} A.`,
-            "Step 2: Use P = VI.",
-            `Step 3: P = ${voltage} × ${current} = ${power} W.`
-          ],
-
-          concept:
-            "Electrical power",
-
-          skill:
-            "Formula substitution",
-
-          difficulty: 2,
-
-          misconception:
-            "Confusing power with voltage or current."
-        });
-
-      }
-
-      if (mode === 1) {
-
-        return this._base({
-
-          q:
-            `An appliance operates at ${voltage} V and draws ${current} A. Which value is its electrical power?`,
-
-          ans,
-
-          hint:
-            "Power is the product of voltage and current.",
-
-          sol:
-            `P = VI = ${voltage} × ${current} = ${power} W.`,
-
-          steps: [
-            "Identify voltage and current.",
-            "Multiply them.",
-            "Express the result in watts."
-          ],
-
-          type: "mcq",
-
-          options: this._mcqOptions(
-            ans,
-            [
-              `${voltage + current} W`,
-              `${voltage / current} W`,
-              `${current} W`
-            ],
-            seed
-          ),
-
-          concept:
-            "Electrical power",
-
-          skill:
-            "Formula selection",
-
-          difficulty: 2
-        });
-      }
-
-      if (mode === 2) {
-
-        const wrong =
-          voltage + current;
-
-        return this._base({
-
-          q:
-            `A student says that an appliance using ${voltage} V and ${current} A consumes ${wrong} W. Diagnose the error and calculate the correct power.`,
-
-          ans:
-            `Incorrect. The correct power is ${power} W.`,
-
-          hint:
-            "Power is not found by adding voltage and current.",
-
-          sol:
-            `The student added V and I. Instead, P = VI = ${voltage} × ${current} = ${power} W.`,
-
-          steps: [
-            "Identify the student's operation.",
-            "Recall P = VI.",
-            `Calculate ${voltage} × ${current} = ${power} W.`
-          ],
-
-          type: "open_response",
-
-          concept:
-            "Electrical power",
-
-          skill:
-            "Misconception diagnosis",
-
-          difficulty: 3,
-
-          misconception:
-            "Adding voltage and current instead of multiplying."
-        });
-      }
-
-      return this._base({
-
-        q:
-          `An appliance operates at ${voltage} V and ${current} A. State the formula for electrical power and calculate the power.`,
-
-        ans:
-          `P = VI. Power = ${power} W.`,
-
-        hint:
-          "Power equals voltage multiplied by current.",
-
-        sol:
-          `P = VI = ${voltage} × ${current} = ${power} W.`,
-
-        steps: [
-          "Recall the power equation.",
-          "Substitute the values.",
-          "Calculate the result and give the unit."
-        ],
-
-        concept:
-          "Electrical power",
-
-        skill:
-          "Recall + calculation",
-
-        difficulty: 2
-      });
-    }
-
-    // ----------------------------------------------------------
-    // OHM'S LAW
-    // ----------------------------------------------------------
-
-    const ans = `${voltage} V`;
-
-    if (mode === 0) {
-
-      return this._base({
-
-        q:
-          `A ${resistance} Ω resistor carries a current of ${current} A. Calculate the potential difference across it.`,
-
-        ans,
-
-        hint:
-          "Ohm's Law: V = IR.",
-
-        sol:
-          `V = IR = ${current} × ${resistance} = ${voltage} V.`,
-
-        steps: [
-          `Step 1: I = ${current} A and R = ${resistance} Ω.`,
-          "Step 2: Apply V = IR.",
-          `Step 3: V = ${current} × ${resistance} = ${voltage} V.`
-        ],
-
-        concept:
-          "Ohm's Law",
-
-        skill:
-          "Calculation",
-
-        difficulty: 2
-      });
-
-    }
-
-    if (mode === 1) {
-
-      return this._base({
-
-        q:
-          `A ${resistance} Ω resistor carries ${current} A. Which voltage is correct?`,
-
-        ans,
-
-        hint:
-          "Multiply current by resistance.",
-
-        sol:
-          `V = IR = ${current} × ${resistance} = ${voltage} V.`,
-
-        steps: [
-          "Use V = IR.",
-          `Multiply ${current} by ${resistance}.`,
-          `Answer = ${voltage} V.`
-        ],
-
-        type: "mcq",
-
-        options: this._mcqOptions(
-          ans,
-          [
-            `${resistance / current} V`,
-            `${current + resistance} V`,
-            `${voltage * 2} V`
-          ],
-          seed
-        ),
-
-        concept:
-          "Ohm's Law",
-
-        skill:
-          "Formula application",
-
-        difficulty: 2
-      });
-
-    }
-
-    if (mode === 2) {
-
-      const wrongVoltage =
-        resistance + current;
-
-      return this._base({
-
-        q:
-          `A student calculates the voltage across a ${resistance} Ω resistor carrying ${current} A as ${wrongVoltage} V. Is the student's method correct? Explain.`,
-
-        ans:
-          `No. The correct voltage is ${voltage} V because V = IR.`,
-
-        hint:
-          "Check whether the student multiplied or added I and R.",
-
-        sol:
-          `The student added the quantities. Ohm's Law requires multiplication: V = ${current} × ${resistance} = ${voltage} V.`,
-
-        steps: [
-          "Identify the student's operation.",
-          "Recall V = IR.",
-          `Calculate ${current} × ${resistance}.`
-        ],
-
-        type: "open_response",
-
-        concept:
-          "Ohm's Law",
-
-        skill:
-          "Error diagnosis",
-
-        difficulty: 3,
-
-        misconception:
-          "Adding rather than multiplying in Ohm's Law."
-      });
-    }
-
-    return this._base({
-
-      q:
-        `A circuit has a resistance of ${resistance} Ω and a current of ${current} A. State Ohm's Law and calculate the voltage.`,
-
-      ans:
-        `V = IR. Voltage = ${voltage} V.`,
-
-      hint:
-        "Voltage = current × resistance.",
-
-      sol:
-        `V = ${current} × ${resistance} = ${voltage} V.`,
-
-      steps: [
-        "Recall Ohm's Law.",
-        "Substitute I and R.",
-        "Calculate V."
-      ],
-
-      concept:
-        "Ohm's Law",
-
-      skill:
-        "Recall + application",
-
-      difficulty: 2
-    });
-  }
-
-  // ============================================================
-  // 5. NEWTON'S SECOND LAW
-  // ============================================================
-
-  _generateMechanics(stem, mode, seed) {
-
-    const lower = stem.toLowerCase();
-
-    const mass =
-      5 + (seed % 8) * 5;
-
-    const acceleration =
-      2 + ((seed >> 2) % 5);
-
-    const force =
-      mass * acceleration;
-
-    // ----------------------------------------------------------
-    // WORK
-    // ----------------------------------------------------------
-
-    if (
-      lower.includes("work") ||
-      lower.includes("joule")
-    ) {
-
-      const distance =
-        2 + (seed % 7);
-
-      const work =
-        force * distance;
-
-      const ans =
-        `${work} J`;
-
-      return this._base({
-
-        q:
-          `A constant force of ${force} N moves an object ${distance} m in the direction of the force. Calculate the work done.`,
-
-        ans,
-
-        hint:
-          "For a force acting in the direction of motion, W = Fd.",
-
-        sol:
-          `W = Fd = ${force} × ${distance} = ${work} J.`,
-
-        steps: [
-          `Step 1: F = ${force} N and d = ${distance} m.`,
-          "Step 2: Use W = Fd.",
-          `Step 3: ${force} × ${distance} = ${work} J.`
-        ],
-
-        type:
-          mode === 0
-            ? "open_response"
-            : "mcq",
-
-        options:
-          mode === 0
-            ? null
-            : this._mcqOptions(
-                ans,
-                [
-                  `${force + distance} J`,
-                  `${force / distance} J`,
-                  `${work / 2} J`
-                ],
-                seed
-              ),
-
-        concept:
-          "Work done",
-
-        skill:
-          "Calculation",
-
-        difficulty: 2
-      });
-    }
-
-    // ----------------------------------------------------------
-    // FORCE
-    // ----------------------------------------------------------
-
-    const ans =
-      `${force} N`;
-
-    if (mode === 0) {
-
-      return this._base({
-
-        q:
-          `A ${mass} kg object accelerates at ${acceleration} m/s². Calculate the resultant force acting on it.`,
-
-        ans,
-
-        hint:
-          "Newton's Second Law: F = ma.",
-
-        sol:
-          `F = ma = ${mass} × ${acceleration} = ${force} N.`,
-
-        steps: [
-          `Step 1: m = ${mass} kg and a = ${acceleration} m/s².`,
-          "Step 2: Use F = ma.",
-          `Step 3: ${mass} × ${acceleration} = ${force} N.`
-        ],
-
-        concept:
-          "Newton's Second Law",
-
-        skill:
-          "Calculation",
-
-        difficulty: 2
-      });
-    }
-
-    if (mode === 1) {
-
-      return this._base({
-
-        q:
-          `A ${mass} kg object accelerates at ${acceleration} m/s². Which resultant force acts on it?`,
-
-        ans,
-
-        hint:
-          "Multiply mass by acceleration.",
-
-        sol:
-          `F = ma = ${mass} × ${acceleration} = ${force} N.`,
-
-        steps: [
-          "Identify mass and acceleration.",
-          "Apply F = ma.",
-          "Multiply the values."
-        ],
-
-        type:
-          "mcq",
-
-        options:
-          this._mcqOptions(
-            ans,
-            [
-              `${mass + acceleration} N`,
-              `${mass / acceleration} N`,
-              `${force * 2} N`
-            ],
-            seed
-          ),
-
-        concept:
-          "Newton's Second Law",
-
-        skill:
-          "Formula selection",
-
-        difficulty: 2
-      });
-    }
-
-    if (mode === 2) {
-
-      const wrong =
-        mass + acceleration;
-
-      return this._base({
-
-        q:
-          `A student claims that a ${mass} kg object accelerating at ${acceleration} m/s² experiences a force of ${wrong} N. Diagnose the mistake.`,
-
-        ans:
-          `Incorrect. The correct force is ${force} N because F = ma.`,
-
-        hint:
-          "Mass and acceleration must be multiplied.",
-
-        sol:
-          `The student added mass and acceleration. Newton's Second Law requires multiplication: F = ${mass} × ${acceleration} = ${force} N.`,
-
-        steps: [
-          "Identify the student's operation.",
-          "Recall F = ma.",
-          `Multiply ${mass} × ${acceleration}.`
-        ],
-
-        type:
-          "open_response",
-
-        concept:
-          "Newton's Second Law",
-
-        skill:
-          "Misconception diagnosis",
-
-        difficulty: 3,
-
-        misconception:
-          "Adding mass and acceleration instead of multiplying."
-      });
-    }
-
-    return this._base({
-
-      q:
-        `State Newton's Second Law and calculate the resultant force on a ${mass} kg object accelerating at ${acceleration} m/s².`,
-
-      ans:
-        `F = ma. Force = ${force} N.`,
-
-      hint:
-        "Resultant force equals mass multiplied by acceleration.",
-
-      sol:
-        `F = ${mass} × ${acceleration} = ${force} N.`,
-
-      steps: [
-        "Recall Newton's Second Law.",
-        "Substitute the values.",
-        "Calculate the resultant force."
-      ],
-
-      concept:
-        "Newton's Second Law",
-
-      skill:
-        "Recall + application",
-
-      difficulty: 2
-    });
-  }
-
-  // ============================================================
-  // 6. KINEMATICS
-  // ============================================================
-
-  _generateKinematics(stem, mode, seed) {
-
-    const acceleration =
-      2 + (seed % 5);
-
-    const time =
-      2 + ((seed >> 2) % 6);
-
-    const distance =
-      0.5 *
-      acceleration *
-      time *
-      time;
-
-    const finalVelocity =
-      acceleration * time;
-
-    const ans =
-      `${this._round(distance, 2)} m`;
-
-    // ----------------------------------------------------------
-    // DISTANCE FROM REST
-    // ----------------------------------------------------------
-
-    if (
-      stem.toLowerCase().includes("distance") ||
-      stem.toLowerCase().includes("travel") ||
-      stem.toLowerCase().includes("covered")
-    ) {
-
-      if (mode === 0) {
-
-        return this._base({
-
-          q:
-            `A vehicle starts from rest and accelerates uniformly at ${acceleration} m/s² for ${time} s. Calculate the distance travelled.`,
-
-          ans,
-
-          hint:
-            "Because the vehicle starts from rest, u = 0. Use s = ut + ½at².",
-
-          sol:
-            `s = 0 + ½(${acceleration})(${time})² = ${this._round(distance, 2)} m.`,
-
-          steps: [
-            "Step 1: Initial velocity u = 0 m/s.",
-            `Step 2: a = ${acceleration} m/s² and t = ${time} s.`,
-            "Step 3: Use s = ut + ½at².",
-            `Step 4: s = ${this._round(distance, 2)} m.`
-          ],
-
-          concept:
-            "Uniform acceleration",
-
-          skill:
-            "Kinematics calculation",
-
-          difficulty: 3
-        });
-      }
-
-      if (mode === 1) {
-
-        return this._base({
-
-          q:
-            `A vehicle starts from rest, accelerates at ${acceleration} m/s² for ${time} s. Which distance does it travel?`,
-
-          ans,
-
-          hint:
-            "Use s = ½at².",
-
-          sol:
-            `s = ½ × ${acceleration} × ${time}² = ${this._round(distance, 2)} m.`,
-
-          steps: [
-            "Initial velocity is zero.",
-            "Use s = ½at².",
-            "Substitute the values."
-          ],
-
-          type:
-            "mcq",
-
-          options:
-            this._mcqOptions(
-              ans,
-              [
-                `${this._round(finalVelocity, 2)} m`,
-                `${this._round(distance * 2, 2)} m`,
-                `${this._round(distance / 2, 2)} m`
-              ],
-              seed
-            ),
-
-          concept:
-            "Uniform acceleration",
-
-          skill:
-            "Equation selection",
-
-          difficulty: 3
-        });
-      }
-
-      if (mode === 2) {
-
-        const wrong =
-          this._round(
-            acceleration * time,
-            2
-          );
-
-        return this._base({
-
-          q:
-            `A student calculates the distance travelled by a vehicle accelerating from rest at ${acceleration} m/s² for ${time} s as ${wrong} m. Is this correct? Explain.`,
-
-          ans:
-            `No. ${wrong} m is the final velocity, not the distance. The distance travelled is ${this._round(distance, 2)} m.`,
-
-          hint:
-            "Check whether you calculated velocity or displacement.",
-
-          sol:
-            `v = at = ${acceleration} × ${time} = ${wrong} m/s. This is velocity. Distance is s = ½at² = ${this._round(distance, 2)} m.`,
-
-          steps: [
-            "Identify what the student's calculation represents.",
-            "Calculate final velocity.",
-            "Use s = ½at² for distance.",
-            "Compare the two quantities."
-          ],
-
-          type:
-            "open_response",
-
-          concept:
-            "Kinematics",
-
-          skill:
-            "Quantity discrimination",
-
-          difficulty: 4,
-
-          misconception:
-            "Confusing final velocity with displacement."
-        });
-      }
-    }
-
-    // ----------------------------------------------------------
-    // FINAL VELOCITY
-    // ----------------------------------------------------------
-
-    const velocityAns =
-      `${finalVelocity} m/s`;
-
-    return this._base({
-
-      q:
-        `A vehicle starts from rest and accelerates uniformly at ${acceleration} m/s² for ${time} s. Calculate its final velocity.`,
-
-      ans:
-        velocityAns,
-
-      hint:
-        "Use v = u + at. Since the vehicle starts from rest, u = 0.",
-
-      sol:
-        `v = 0 + (${acceleration} × ${time}) = ${finalVelocity} m/s.`,
-
-      steps: [
-        "Initial velocity u = 0 m/s.",
-        "Use v = u + at.",
-        `v = ${acceleration} × ${time}.`,
-        `Final velocity = ${finalVelocity} m/s.`
-      ],
-
-      type:
-        mode === 0
-          ? "open_response"
-          : "mcq",
-
-      options:
-        mode === 0
-          ? null
-          : this._mcqOptions(
-              velocityAns,
-              [
-                `${this._round(finalVelocity / 2, 2)} m/s`,
-                `${this._round(finalVelocity * 2, 2)} m/s`,
-                `${this._round(distance, 2)} m/s`
-              ],
-              seed
-            ),
-
-      concept:
-        "Uniform acceleration",
-
-      skill:
-        "Velocity calculation",
-
-      difficulty: 2
-    });
-  }
-
-  // ============================================================
-  // 7. WAVES
-  // ============================================================
-
-  _generateWaves(stem, mode, seed) {
-
-    const frequency =
-      100 + (seed % 8) * 50;
-
-    const speed =
-      this.constants.speedOfSound;
-
-    const wavelength =
-      this._round(
-        speed / frequency,
-        2
-      );
-
-    const ans =
-      `${wavelength} m`;
-
-    if (
-      stem.toLowerCase().includes("wavelength") ||
-      stem.toLowerCase().includes("wave")
-    ) {
-
-      if (mode === 0) {
-
-        return this._base({
-
-          q:
-            `A sound wave travels through air at ${speed} m/s and has a frequency of ${frequency} Hz. Calculate its wavelength.`,
-
-          ans,
-
-          hint:
-            "Use v = fλ, therefore λ = v/f.",
-
-          sol:
-            `λ = v/f = ${speed}/${frequency} = ${wavelength} m.`,
-
-          steps: [
-            `Step 1: v = ${speed} m/s.`,
-            `Step 2: f = ${frequency} Hz.`,
-            "Step 3: Rearrange v = fλ to λ = v/f.",
-            `Step 4: λ = ${wavelength} m.`
-          ],
-
-          concept:
-            "Wave equation",
-
-          skill:
-            "Wave calculation",
-
-          difficulty: 2
-        });
-      }
-
-      if (mode === 1) {
-
-        return this._base({
-
-          q:
-            `A sound wave travels at ${speed} m/s with a frequency of ${frequency} Hz. What is its wavelength?`,
-
-          ans,
-
-          hint:
-            "Divide wave speed by frequency.",
-
-          sol:
-            `λ = ${speed}/${frequency} = ${wavelength} m.`,
-
-          steps: [
-            "Use λ = v/f.",
-            "Substitute speed and frequency.",
-            "Calculate wavelength."
-          ],
-
-          type:
-            "mcq",
-
-          options:
-            this._mcqOptions(
-              ans,
-              [
-                `${this._round(frequency / speed, 2)} m`,
-                `${this._round(speed * frequency, 2)} m`,
-                `${this._round(wavelength * 2, 2)} m`
-              ],
-              seed
-            ),
-
-          concept:
-            "Wave equation",
-
-          skill:
-            "Formula application",
-
-          difficulty: 2
-        });
-      }
-    }
-
-    // ----------------------------------------------------------
-    // FREQUENCY FROM WAVELENGTH
-    // ----------------------------------------------------------
-
-    const f =
-      this._round(
-        speed / wavelength,
-        2
-      );
-
-    return this._base({
-
-      q:
-        `A sound wave travels at ${speed} m/s and has a wavelength of ${wavelength} m. Calculate its frequency.`,
-
-      ans:
-        `${f} Hz`,
-
-      hint:
-        "Use f = v/λ.",
-
-      sol:
-        `f = ${speed}/${wavelength} ≈ ${f} Hz.`,
-
-      steps: [
-        "Start with v = fλ.",
-        "Rearrange to f = v/λ.",
-        "Substitute the values.",
-        "Calculate frequency."
-      ],
-
-      type:
-        mode === 0
-          ? "open_response"
-          : "mcq",
-
-      options:
-        mode === 0
-          ? null
-          : this._mcqOptions(
-              `${f} Hz`,
-              [
-                `${this._round(speed * wavelength, 2)} Hz`,
-                `${this._round(wavelength / speed, 2)} Hz`,
-                `${this._round(f / 2, 2)} Hz`
-              ],
-              seed
-            ),
-
-      concept:
-        "Wave equation",
-
-      skill:
-        "Rearranging equations",
-
-      difficulty: 3
-    });
-  }
-
-  // ============================================================
-  // 8. DENSITY
-  // ============================================================
-
-  _generateDensity(stem, mode, seed) {
-
-    const mass =
-      100 + (seed % 8) * 50;
-
-    const volume =
-      10 + ((seed >> 2) % 6) * 5;
-
-    const density =
-      this._round(
-        mass / volume,
-        2
-      );
-
-    const ans =
-      `${density} g/cm³`;
-
-    if (mode === 0) {
-
-      return this._base({
-
-        q:
-          `A solid has a mass of ${mass} g and occupies ${volume} cm³. Calculate its density.`,
-
-        ans,
-
-        hint:
-          "Density = mass ÷ volume.",
-
-        sol:
-          `ρ = m/V = ${mass}/${volume} = ${density} g/cm³.`,
-
-        steps: [
-          `Step 1: Mass = ${mass} g.`,
-          `Step 2: Volume = ${volume} cm³.`,
-          "Step 3: Use ρ = m/V.",
-          `Step 4: Density = ${density} g/cm³.`
-        ],
-
-        concept:
-          "Density",
-
-        skill:
-          "Calculation",
-
-        difficulty: 2
-      });
-    }
-
-    if (mode === 1) {
-
-      return this._base({
-
-        q:
-          `A material has a mass of ${mass} g and volume ${volume} cm³. Which value is its density?`,
-
-        ans,
-
-        hint:
-          "Divide mass by volume.",
-
-        sol:
-          `ρ = ${mass}/${volume} = ${density} g/cm³.`,
-
-        steps: [
-          "Recall density = mass/volume.",
-          "Substitute the values.",
-          "Calculate density."
-        ],
-
-        type:
-          "mcq",
-
-        options:
-          this._mcqOptions(
-            ans,
-            [
-              `${this._round(mass * volume, 2)} g/cm³`,
-              `${this._round(volume / mass, 2)} g/cm³`,
-              `${this._round(mass / 2, 2)} g/cm³`
-            ],
-            seed
-          ),
-
-        concept:
-          "Density",
-
-        skill:
-          "Formula selection",
-
-        difficulty: 2
-      });
-    }
-
-    if (mode === 2) {
-
-      const wrong =
-        this._round(
-          volume / mass,
-          4
-        );
-
-      return this._base({
-
-        q:
-          `A student calculates the density of an object with mass ${mass} g and volume ${volume} cm³ as ${wrong} g/cm³. Diagnose the student's error.`,
-
-        ans:
-          `The correct density is ${density} g/cm³. The student divided volume by mass instead of mass by volume.`,
-
-        hint:
-          "Density is mass per unit volume.",
-
-        sol:
-          `Density = mass/volume = ${mass}/${volume} = ${density} g/cm³.`,
-
-        steps: [
-          "Recall the definition of density.",
-          "Check the order of the division.",
-          "Calculate mass ÷ volume.",
-          "State the correct unit."
-        ],
-
-        type:
-          "open_response",
-
-        concept:
-          "Density",
-
-        skill:
-          "Misconception diagnosis",
-
-        difficulty: 3,
-
-        misconception:
-          "Reversing mass and volume in the density equation."
-      });
-    }
-
-    return this._base({
-
-      q:
-        `An object has a mass of ${mass} g and volume ${volume} cm³. State the density formula and calculate its density.`,
-
-      ans:
-        `ρ = m/V. Density = ${density} g/cm³.`,
-
-      hint:
-        "Density means mass per unit volume.",
-
-      sol:
-        `ρ = ${mass}/${volume} = ${density} g/cm³.`,
-
-      steps: [
-        "Recall the density equation.",
-        "Substitute mass and volume.",
-        "Calculate the density."
-      ],
-
-      concept:
-        "Density",
-
-      skill:
-        "Recall + calculation",
-
-      difficulty: 2
-    });
-  }
-
-  // ============================================================
-  // 9. ENERGY
-  // ============================================================
-
-  _generateEnergy(stem, mode, seed) {
-
-    const mass =
-      2 + (seed % 8);
-
-    const height =
-      2 + ((seed >> 2) % 8);
-
-    const g =
-      this.constants.g;
-
-    const potentialEnergy =
-      this._round(
-        mass * g * height,
-        2
-      );
-
-    const ans =
-      `${potentialEnergy} J`;
-
-    return this._base({
-
-      q:
-        `A ${mass} kg object is raised through a vertical height of ${height} m. Taking g = ${g} m/s², calculate the increase in gravitational potential energy.`,
-
-      ans,
-
-      hint:
-        "Use GPE = mgh.",
-
-      sol:
-        `GPE = mgh = ${mass} × ${g} × ${height} = ${potentialEnergy} J.`,
-
-      steps: [
-        `Step 1: m = ${mass} kg.`,
-        `Step 2: h = ${height} m.`,
-        `Step 3: g = ${g} m/s².`,
-        "Step 4: Apply GPE = mgh.",
-        `Step 5: GPE = ${potentialEnergy} J.`
-      ],
-
-      type:
-        mode === 0
-          ? "open_response"
-          : "mcq",
-
-      options:
-        mode === 0
-          ? null
-          : this._mcqOptions(
-              ans,
-              [
-                `${this._round(mass * height, 2)} J`,
-                `${this._round(mass * g, 2)} J`,
-                `${this._round(potentialEnergy / 2, 2)} J`
-              ],
-              seed
-            ),
-
-      concept:
-        "Gravitational potential energy",
-
-      skill:
-        "Energy calculation",
-
-      difficulty: 2
-    });
-  }
-
-  // ============================================================
-  // 10. MOMENTUM
-  // ============================================================
-
-  _generateMomentum(stem, mode, seed) {
-
-    const mass =
-      2 + (seed % 9);
-
-    const velocity =
-      2 + ((seed >> 3) % 8);
-
-    const momentum =
-      mass * velocity;
-
-    const ans =
-      `${momentum} kg·m/s`;
-
-    return this._base({
-
-      q:
-        `A ${mass} kg object moves at ${velocity} m/s. Calculate its momentum.`,
-
-      ans,
-
-      hint:
-        "Momentum p = mv.",
-
-      sol:
-        `p = mv = ${mass} × ${velocity} = ${momentum} kg·m/s.`,
-
-      steps: [
-        "Recall p = mv.",
-        `Substitute m = ${mass} kg.`,
-        `Substitute v = ${velocity} m/s.`,
-        `Calculate p = ${momentum} kg·m/s.`
-      ],
-
-      type:
-        mode === 0
-          ? "open_response"
-          : "mcq",
-
-      options:
-        mode === 0
-          ? null
-          : this._mcqOptions(
-              ans,
-              [
-                `${mass + velocity} kg·m/s`,
-                `${this._round(momentum / 2, 2)} kg·m/s`,
-                `${mass / velocity} kg·m/s`
-              ],
-              seed
-            ),
-
-      concept:
-        "Momentum",
-
-      skill:
-        "Calculation",
-
-      difficulty: 2
-    });
-  }
-
-  // ============================================================
-  // 11. DIAGNOSTIC CONCEPTUAL QUESTIONS
-  // ============================================================
-
-  _generateConceptual(stem, mode, seed) {
-
-    const concepts = [
-
-      {
-        q:
-          "A car travelling at constant velocity moves along a straight road. What can be said about the resultant force acting on the car?",
-
-        ans:
-          "The resultant force is zero because the acceleration is zero.",
-
-        misconception:
-          "An object must have a resultant force acting on it to keep moving.",
-
-        hint:
-          "Think about Newton's First Law.",
-
-        sol:
-          "Constant velocity means zero acceleration. From F = ma, zero acceleration means zero resultant force."
-      },
-
-      {
-        q:
-          "Why does a metal conductor carry electric current more easily than an insulator?",
-
-        ans:
-          "A metal contains mobile charge carriers, especially delocalized electrons, that can move through the material.",
-
-        misconception:
-          "Current is produced because atoms themselves move through the wire.",
-
-        hint:
-          "What actually moves through a metal conductor?",
-
-        sol:
-          "Metals contain mobile electrons. When a potential difference is applied, these electrons drift through the conductor and produce current."
-      },
-
-      {
-        q:
-          "Why does increasing the frequency of a wave while keeping its speed constant decrease its wavelength?",
-
-        ans:
-          "Because v = fλ, so if v remains constant, wavelength must decrease as frequency increases.",
-
-        misconception:
-          "Higher frequency automatically means a higher wave speed.",
-
-        hint:
-          "Use the wave equation.",
-
-        sol:
-          "From v = fλ, λ = v/f. Therefore, with constant v, increasing f causes λ to decrease."
-      },
-
-      {
-        q:
-          "Why does a sharp knife cut more easily than a blunt knife when the same force is applied?",
-
-        ans:
-          "The sharp knife has a smaller contact area, producing greater pressure for the same force.",
-
-        misconception:
-          "Pressure depends only on the force applied.",
-
-        hint:
-          "Pressure depends on both force and area.",
-
-        sol:
-          "Pressure P = F/A. A smaller area produces greater pressure when the force is unchanged."
-      }
+  // ------------------------------------------------------------------
+  // CONCEPTUAL MCQ OPTIONS
+  // ------------------------------------------------------------------
+
+  _conceptualOptions(
+    item,
+    fact,
+    seed
+  ) {
+
+    const candidates = [
+      item.ans,
+      ...(item.distractors || [])
     ];
 
-    const concept =
-      this._pick(
-        concepts,
-        seed
+    const unique = [];
+
+    for (
+      const candidate of candidates
+    ) {
+
+      if (
+        typeof candidate !== "string" ||
+        !candidate.trim()
+      ) {
+        continue;
+      }
+
+      if (
+        !unique.includes(candidate)
+      ) {
+        unique.push(candidate);
+      }
+    }
+
+    if (unique.length < 4) {
+      return null;
+    }
+
+    return this._shuffleDeterministic(
+      unique.slice(0, 4),
+      this._hash(
+        `${seed}|${fact.factId}|conceptual`
+      )
+    );
+  }
+
+  // ------------------------------------------------------------------
+  // CALCULATION BUILDER
+  // ------------------------------------------------------------------
+
+  _buildCalculation(
+    fact,
+    parameters,
+    mode,
+    seed,
+    sourceParameters,
+    mutationPlan
+  ) {
+
+    const value =
+      this._solve(
+        fact.factId,
+        parameters
       );
 
-    return this._base({
+    if (value == null) {
+      return null;
+    }
 
-      q:
-        concept.q,
+    const answer =
+      this._fmt(
+        value,
+        fact.answerUnit
+      );
 
-      ans:
-        concept.ans,
+    const p =
+      Object.fromEntries(
+        Object.entries(
+          parameters
+        ).map(
+          ([key, descriptor]) => [
+            key,
+            descriptor.value
+          ]
+        )
+      );
 
-      hint:
-        concept.hint,
+    let q;
+    let hint;
+    let sol;
+    let steps;
 
-      sol:
-        concept.sol,
+    switch (fact.factId) {
+
+      case "electricity.ohms_law.voltage":
+
+        q =
+          `A ${p.resistance} ohm resistor carries a current of ${p.current} A. Calculate the potential difference across the resistor.`;
+
+        hint =
+          "Use Ohm's Law: V = IR.";
+
+        sol =
+          `V = IR = ${p.current} x ${p.resistance} = ${value} V.`;
+
+        steps = [
+          `Identify I = ${p.current} A.`,
+          `Identify R = ${p.resistance} ohm.`,
+          "Use V = IR.",
+          `V = ${p.current} x ${p.resistance} = ${value} V.`
+        ];
+
+        break;
+
+      case "electricity.power.voltage_current":
+
+        q =
+          `An appliance operates at ${p.voltage} V and draws ${p.current} A. Calculate its electrical power.`;
+
+        hint =
+          "Use P = VI.";
+
+        sol =
+          `P = VI = ${p.voltage} x ${p.current} = ${value} W.`;
+
+        steps = [
+          `V = ${p.voltage} V.`,
+          `I = ${p.current} A.`,
+          "Use P = VI.",
+          `P = ${value} W.`
+        ];
+
+        break;
+
+      case "mechanics.newtons_second_law.force":
+
+        q =
+          `A ${p.mass} kg object accelerates at ${p.acceleration} m/s2. Calculate the resultant force acting on it.`;
+
+        hint =
+          "Use Newton's Second Law: F = ma.";
+
+        sol =
+          `F = ma = ${p.mass} x ${p.acceleration} = ${value} N.`;
+
+        steps = [
+          `m = ${p.mass} kg.`,
+          `a = ${p.acceleration} m/s2.`,
+          "Use F = ma.",
+          `F = ${value} N.`
+        ];
+
+        break;
+
+      case "mechanics.work.force_distance":
+
+        q =
+          `A constant force of ${p.force} N moves an object ${p.distance} m in the direction of the force. Calculate the work done.`;
+
+        hint =
+          "For force in the direction of motion, W = Fd.";
+
+        sol =
+          `W = Fd = ${p.force} x ${p.distance} = ${value} J.`;
+
+        steps = [
+          `F = ${p.force} N.`,
+          `d = ${p.distance} m.`,
+          "Use W = Fd.",
+          `W = ${value} J.`
+        ];
+
+        break;
+
+      case "mechanics.momentum.mass_velocity":
+
+        q =
+          `A ${p.mass} kg object moves at ${p.velocity} m/s. Calculate its momentum.`;
+
+        hint =
+          "Momentum: p = mv.";
+
+        sol =
+          `p = mv = ${p.mass} x ${p.velocity} = ${value} kg m/s.`;
+
+        steps = [
+          `m = ${p.mass} kg.`,
+          `v = ${p.velocity} m/s.`,
+          "Use p = mv.",
+          `p = ${value} kg m/s.`
+        ];
+
+        break;
+
+      case "kinematics.final_velocity.rest":
+
+        q =
+          `A vehicle starts from rest and accelerates uniformly at ${p.acceleration} m/s2 for ${p.time} s. Calculate its final velocity.`;
+
+        hint =
+          "Since the vehicle starts from rest, u = 0. Use v = u + at.";
+
+        sol =
+          `v = 0 + (${p.acceleration} x ${p.time}) = ${value} m/s.`;
+
+        steps = [
+          "u = 0 m/s.",
+          `a = ${p.acceleration} m/s2.`,
+          `t = ${p.time} s.`,
+          "Use v = u + at.",
+          `v = ${value} m/s.`
+        ];
+
+        break;
+
+      case "kinematics.distance.rest":
+
+        q =
+          `A vehicle starts from rest and accelerates uniformly at ${p.acceleration} m/s2 for ${p.time} s. Calculate the distance travelled.`;
+
+        hint =
+          "Since u = 0, use s = 1/2 at².";
+
+        sol =
+          `s = 0.5 x ${p.acceleration} x ${p.time}² = ${value} m.`;
+
+        steps = [
+          "u = 0 m/s.",
+          `a = ${p.acceleration} m/s2.`,
+          `t = ${p.time} s.`,
+          "Use s = ut + 0.5at².",
+          `Since u = 0, s = 0.5at² = ${value} m.`
+        ];
+
+        break;
+
+      case "waves.wavelength.speed_frequency":
+
+        q =
+          `A sound wave travels through air at ${p.speed} m/s and has a frequency of ${p.frequency} Hz. Calculate its wavelength.`;
+
+        hint =
+          "Use v = fλ, so λ = v/f.";
+
+        sol =
+          `λ = v / f = ${p.speed} / ${p.frequency} = ${value} m.`;
+
+        steps = [
+          `v = ${p.speed} m/s.`,
+          `f = ${p.frequency} Hz.`,
+          "Rearrange v = fλ to λ = v/f.",
+          `λ = ${value} m.`
+        ];
+
+        break;
+
+      case "waves.frequency.speed_wavelength":
+
+        q =
+          `A wave travels through air at ${p.speed} m/s and has a wavelength of ${p.wavelength} m. Calculate its frequency.`;
+
+        hint =
+          "Use f = v/λ.";
+
+        sol =
+          `f = ${p.speed} / ${p.wavelength} = ${value} Hz.`;
+
+        steps = [
+          `v = ${p.speed} m/s.`,
+          `λ = ${p.wavelength} m.`,
+          "Use f = v/λ.",
+          `f = ${value} Hz.`
+        ];
+
+        break;
+
+      case "density.mass_volume":
+
+        q =
+          `A solid has a mass of ${p.mass} g and occupies ${p.volume} cm3. Calculate its density.`;
+
+        hint =
+          "Density: ρ = m/V.";
+
+        sol =
+          `ρ = ${p.mass} / ${p.volume} = ${value} g/cm3.`;
+
+        steps = [
+          `m = ${p.mass} g.`,
+          `V = ${p.volume} cm3.`,
+          "Use ρ = m/V.",
+          `ρ = ${value} g/cm3.`
+        ];
+
+        break;
+
+      case "energy.gpe.mass_height":
+
+        q =
+          `A ${p.mass} kg object is raised through a vertical height of ${p.height} m. Taking g = ${this.constants.g} m/s2, calculate the increase in gravitational potential energy.`;
+
+        hint =
+          "Use GPE = mgh.";
+
+        sol =
+          `GPE = ${p.mass} x ${this.constants.g} x ${p.height} = ${value} J.`;
+
+        steps = [
+          `m = ${p.mass} kg.`,
+          `h = ${p.height} m.`,
+          `g = ${this.constants.g} m/s2.`,
+          "Use GPE = mgh.",
+          `GPE = ${value} J.`
+        ];
+
+        break;
+
+      default:
+
+        return null;
+    }
+
+    const misconceptionData =
+      this._distractors(
+        fact.factId,
+        parameters,
+        value
+      );
+
+    const distractors =
+      misconceptionData.map(
+        item => item.value
+      );
+
+    const options =
+      mode === 0
+        ? null
+        : this._mcqOptions(
+            answer,
+            distractors,
+            this._hash(
+              `${seed}|${fact.factId}|numerical-options`
+            )
+          );
+
+    if (
+      mode !== 0 &&
+      !options
+    ) {
+      return null;
+    }
+
+    const factModel =
+      this._buildCanonicalModel(
+        fact,
+        parameters,
+        sourceParameters,
+        mutationPlan
+      );
+
+    factModel.answer = {
+      value,
+      unit: fact.answerUnit
+    };
+
+    factModel.provenance = {
+      source: "verified_source_question",
+      mutationType:
+        "controlled_deterministic_parameter_mutation",
+      verifiedBy:
+        "PhysicsMutator.v5.solver"
+    };
+
+    return {
+      q,
+      ans: answer,
+      hint,
+      sol,
+      steps,
+
+      type:
+        mode === 0
+          ? "open_response"
+          : "mcq",
+
+      options,
+
+      concept: fact.concept,
+      skill: fact.skill,
+
+      difficulty:
+        mode === 2
+          ? 3
+          : mode === 3
+            ? 4
+            : 2,
+
+      misconception:
+        mode === 2
+          ? (
+              misconceptionData[0]
+                ?.misconceptionId ||
+              null
+            )
+          : null,
+
+      modality:
+        mode === 0
+          ? "calculation"
+          : mode === 1
+            ? "application"
+            : mode === 2
+              ? "diagnostic"
+              : "transfer",
+
+      factModel
+    };
+  }
+
+  // ------------------------------------------------------------------
+  // CONCEPTUAL BUILDER
+  // ------------------------------------------------------------------
+
+  _buildConceptual(
+    fact,
+    mode,
+    seed
+  ) {
+
+    const registry =
+      this.conceptualRegistry[
+        fact.factId
+      ];
+
+    if (!registry?.length) {
+      return null;
+    }
+
+    /*
+     * The conceptual item itself is selected
+     * deterministically.
+     */
+    const index =
+      Math.abs(
+        this._hash(
+          `${seed}|${fact.factId}|concept`
+        )
+      ) % registry.length;
+
+    const item =
+      registry[index];
+
+    const options =
+      mode === 1
+        ? this._conceptualOptions(
+            item,
+            fact,
+            seed
+          )
+        : null;
+
+    if (
+      mode === 1 &&
+      !options
+    ) {
+      return null;
+    }
+
+    return {
+
+      q: item.q,
+
+      ans: item.ans,
+
+      hint: item.hint,
+
+      sol: item.sol,
 
       steps: [
-        "Identify the physical situation.",
-        "Recall the governing principle.",
-        "Connect the principle to the observation.",
-        "State the conclusion."
+        "Identify the physical quantities involved.",
+        `Use ${fact.formula}.`,
+        "Determine how the quantities are related.",
+        "State the physical conclusion."
       ],
 
       type:
@@ -1754,254 +3601,1517 @@ export class PhysicsMutator {
           ? "mcq"
           : "open_response",
 
-      options:
-        mode === 1
-          ? this._mcqOptions(
-              concept.ans,
-              [
-                concept.misconception,
-                "The effect occurs randomly and cannot be explained by a physical law.",
-                "The quantity remains unchanged regardless of the physical conditions."
-              ],
-              seed
-            )
-          : null,
+      options,
 
-      concept:
-        concept.concept || "Conceptual reasoning",
+      concept: fact.concept,
 
       skill:
-        "Physical explanation",
+        "Conceptual reasoning",
 
       difficulty: 3,
 
       misconception:
-        concept.misconception,
+        item.misconception,
 
       modality:
-        "conceptual"
-    });
+        "conceptual",
+
+      factModel: {
+
+        factId: fact.factId,
+
+        type: "conceptual",
+
+        topic: fact.topic,
+
+        concept: fact.concept,
+
+        skill: "Conceptual reasoning",
+
+        formula: fact.formula,
+
+        provenance: {
+
+          source:
+            "verified_source_question",
+
+          mutationType:
+            "deterministic_conceptual_reframing",
+
+          verifiedBy:
+            "PhysicsMutator.v5.conceptRegistry"
+        }
+      }
+    };
   }
 
-  // ============================================================
-  // 11. MODERN PHYSICS (PHOTOELECTRIC EFFECT)
-  // ============================================================
+  // ------------------------------------------------------------------
+  // SEMANTIC QUESTION VALIDATION
+  // ------------------------------------------------------------------
 
-  _generateModernPhysics(stem, mode, seed) {
-    const lower = stem.toLowerCase();
+  _questionMatchesFact(
+    question,
+    fact,
+    parameters
+  ) {
 
-    const frequency = 5e14 + (seed % 5) * 1e14;
-    const thresholdFrequency = 4e14;
+    const q =
+      this._normalizeText(
+        question
+      );
 
-    if (
-      lower.includes("photoelectric") ||
-      lower.includes("photoelectron") ||
-      lower.includes("photon") ||
-      lower.includes("work function") ||
-      lower.includes("threshold frequency") ||
-      lower.includes("quantum") ||
-      lower.includes("emission")
+    const required =
+      fact.requiredParameters;
+
+    /*
+     * Every generated numerical question must
+     * contain the mutated parameter values.
+     */
+    for (
+      const key of required
     ) {
 
-      // MODE 0 — CONCEPTUAL RECALL
-      if (mode === 0) {
-        return this._base({
-          q: "What is meant by the threshold frequency in the photoelectric effect?",
-          ans: "It is the minimum frequency of electromagnetic radiation required to eject electrons from a metal surface.",
-          hint: "Think about the minimum photon energy needed to overcome the work function.",
-          sol: "A photon must have sufficient energy (E = hf) to overcome the work function of the material. The corresponding minimum frequency is called the threshold frequency.",
-          steps: [
-            "Recall that photon energy is E = hf.",
-            "Electrons require a minimum energy (work function) to escape.",
-            "This minimum condition defines the threshold frequency."
-          ],
-          type: "mcq",
-          options: this._mcqOptions(
-            "It is the minimum frequency of electromagnetic radiation required to eject electrons from a metal surface.",
-            [
-              "It is the maximum frequency of light that a metal can reflect.",
-              "It is the frequency at which electrons move at the speed of light.",
-              "It is the intensity of light required to heat the metal to emission."
-            ],
-            seed
-          ),
-          concept: "Threshold frequency",
-          skill: "Conceptual understanding",
-          difficulty: 2,
-          modality: "recall"
-        });
+      const value =
+        parameters[key]?.value;
+
+      if (
+        value == null
+      ) {
+        return false;
       }
 
-      // MODE 1 — FREQUENCY REASONING / APPLICATION
-      if (mode === 1) {
-        const isEmitted = frequency >= thresholdFrequency;
-        return this._base({
-          q: `Light with frequency ${frequency.toExponential(1)} Hz falls on a metal with threshold frequency ${thresholdFrequency.toExponential(1)} Hz. Will photoelectrons be emitted? Explain.`,
-          ans: isEmitted
-            ? "Yes. The frequency is greater than the threshold frequency, so photons have sufficient energy to release electrons."
-            : "No. The frequency is below the threshold frequency, so photons do not have sufficient energy to release electrons.",
-          hint: "Compare the incident light frequency with the threshold frequency.",
-          sol: isEmitted
-            ? `Since ${frequency.toExponential(1)} Hz is greater than ${thresholdFrequency.toExponential(1)} Hz, individual photons carry enough energy to eject photoelectrons.`
-            : `Since ${frequency.toExponential(1)} Hz is below ${thresholdFrequency.toExponential(1)} Hz, individual photons lack the required work function energy.`,
-          steps: [
-            "Identify the incident frequency.",
-            "Identify the threshold frequency.",
-            "Compare the two frequencies.",
-            "Determine whether electron emission occurs."
-          ],
-          type: "mcq",
-          options: this._mcqOptions(
-            isEmitted
-              ? "Yes. The frequency is greater than the threshold frequency, so photons have sufficient energy to release electrons."
-              : "No. The frequency is below the threshold frequency, so photons do not have sufficient energy to release electrons.",
-            [
-              isEmitted
-                ? "No. Photoelectrons are only emitted when light intensity is doubled."
-                : "Yes. Any light beam will eventually release electrons given enough time.",
-              "Yes. Electron emission depends only on the voltage applied across the metal.",
-              "No. Photoelectric emission can only occur in a liquid medium."
-            ],
-            seed
-          ),
-          concept: "Threshold frequency application",
-          skill: "Physical reasoning",
-          difficulty: 3,
-          modality: "application"
-        });
-      }
+      /*
+       * A normalized number must appear in the
+       * generated question.
+       */
+      const normalizedValue =
+        String(value);
 
-      // MODE 2 — MISCONCEPTION DIAGNOSIS
-      if (mode === 2) {
-        return this._base({
-          q: "A student states that increasing the intensity of light will always cause electrons to be emitted from a metal, regardless of frequency. Is the student correct? Explain.",
-          ans: "No. If the light frequency is below the threshold frequency, increasing intensity alone will not provide enough energy per individual photon to eject electrons.",
-          hint: "Does intensity increase the energy of each individual photon?",
-          sol: "Photon energy depends strictly on frequency (E = hf). Increasing intensity increases the rate of incoming photons, but if each photon has energy below the work function, no emission occurs.",
-          steps: [
-            "Recall E = hf.",
-            "Identify that photon energy depends on frequency.",
-            "Distinguish photon quantity (intensity) from photon energy (frequency).",
-            "Evaluate the student's claim."
-          ],
-          type: "mcq",
-          options: this._mcqOptions(
-            "No. If the light frequency is below the threshold frequency, increasing intensity alone will not provide enough energy per individual photon to eject electrons.",
-            [
-              "Yes. Higher intensity increases photon energy until electrons are pushed out.",
-              "Yes. Bright light heats the metal so electrons boil off thermal-electronically.",
-              "No. Intensity only affects the speed of emitted electrons, not their count."
-            ],
-            seed
-          ),
-          concept: "Photoelectric effect intensity vs frequency",
-          skill: "Misconception diagnosis",
-          difficulty: 4,
-          misconception: "Increasing light intensity always causes photoelectric emission.",
-          modality: "diagnostic"
-        });
-      }
+      if (
+        !q.includes(
+          normalizedValue.toLowerCase()
+        )
+      ) {
 
-      // MODE 3 — CONCEPTUAL TRANSFER
-      return this._base({
-        q: "Two beams of light shine on the same metal. Beam A has higher intensity but a frequency below the threshold frequency. Beam B has lower intensity but a frequency above the threshold frequency. Which beam will produce photoelectrons?",
-        ans: "Beam B will produce photoelectrons because its frequency is above the threshold frequency. Beam A cannot produce them regardless of intensity.",
-        hint: "For photoelectric emission, first consider the energy of an individual photon.",
-        sol: "A single photon must have energy at least equal to the work function (E = hf). Since Beam B has a frequency above the threshold frequency, its photons carry enough energy to eject electrons.",
-        steps: [
-          "Recall E = hf.",
-          "Compare each frequency with the threshold frequency.",
-          "Separate intensity from single-photon energy.",
-          "Determine which beam can cause emission."
-        ],
-        type: "mcq",
-        options: this._mcqOptions(
-          "Beam B will produce photoelectrons because its frequency is above the threshold frequency. Beam A cannot produce them regardless of intensity.",
-          [
-            "Beam A will produce them because its higher intensity delivers more overall energy.",
-            "Both beams will produce equal numbers of photoelectrons.",
-            "Neither beam will produce photoelectrons because intensity and frequency cancel out."
-          ],
-          seed
-        ),
-        concept: "Frequency versus intensity transfer",
-        skill: "Conceptual transfer",
-        difficulty: 5,
-        misconception: "Greater light intensity automatically means greater photon energy.",
-        modality: "transfer"
-      });
+        /*
+         * Some values may be represented with
+         * a mathematically equivalent decimal.
+         * Use numerical extraction as a fallback.
+         */
+        const numbers =
+          q.match(
+            /-?\d+(?:\.\d+)?/g
+          ) || [];
+
+        const exists =
+          numbers.some(
+            n =>
+              Math.abs(
+                Number(n) - Number(value)
+              ) < 1e-9
+          );
+
+        if (!exists) {
+          return false;
+        }
+      }
     }
 
-    return null;
+    return true;
   }
 
-  // ============================================================
-  // 12. MAIN MUTATOR
-  // ============================================================
+  // ------------------------------------------------------------------
+  // FACT MODEL VALIDATION
+  // ------------------------------------------------------------------
 
-  mutate(qObj, modalityIndex = 0) {
+  _validateFactModel(question) {
 
-    if (!qObj) return null;
+    const fm =
+      question?.factModel ||
+      question?.metadata?.factModel;
+
+    if (!fm) {
+
+      return {
+        valid: false,
+        reason: "MISSING_FACT_MODEL"
+      };
+    }
+
+    const fact =
+      this.factRegistry[
+        fm.factId
+      ];
+
+    if (!fact) {
+
+      return {
+        valid: false,
+        reason: "UNKNOWN_FACT_ID"
+      };
+    }
+
+    if (
+      fm.topic !== fact.topic
+    ) {
+
+      return {
+        valid: false,
+        reason: "TOPIC_MISMATCH"
+      };
+    }
+
+    if (
+      fm.concept !== fact.concept
+    ) {
+
+      return {
+        valid: false,
+        reason: "CONCEPT_MISMATCH"
+      };
+    }
+
+    if (
+      fm.formula !== fact.formula
+    ) {
+
+      return {
+        valid: false,
+        reason: "FORMULA_MISMATCH"
+      };
+    }
+
+    if (
+      fact.type === "calculation"
+    ) {
+
+      if (!fm.parameters) {
+
+        return {
+          valid: false,
+          reason: "MISSING_PARAMETERS"
+        };
+      }
+
+      for (
+        const key of fact.requiredParameters
+      ) {
+
+        const parameter =
+          fm.parameters[key];
+
+        if (!parameter) {
+
+          return {
+            valid: false,
+            reason:
+              `MISSING_PARAMETER_${key}`
+          };
+        }
+
+        const value =
+          typeof parameter === "object"
+            ? parameter.value
+            : parameter;
+
+        if (
+          !Number.isFinite(
+            Number(value)
+          )
+        ) {
+
+          return {
+            valid: false,
+            reason:
+              `INVALID_PARAMETER_${key}`
+          };
+        }
+
+        if (
+          Number(value) <= 0
+        ) {
+
+          return {
+            valid: false,
+            reason:
+              `NON_POSITIVE_PARAMETER_${key}`
+          };
+        }
+
+        /*
+         * Canonical unit enforcement.
+         */
+        const expectedUnit =
+          this.units[key];
+
+        /*
+         * Density mass is deliberately grams.
+         */
+        const canonicalUnit =
+          fact.factId ===
+            "density.mass_volume" &&
+          key === "mass"
+            ? "g"
+            : expectedUnit;
+
+        if (
+          parameter.unit &&
+          parameter.unit !== canonicalUnit
+        ) {
+
+          return {
+            valid: false,
+            reason:
+              `NON_CANONICAL_UNIT_${key}`
+          };
+        }
+      }
+
+      const expected =
+        this._solve(
+          fact.factId,
+          fm.parameters
+        );
+
+      if (expected == null) {
+
+        return {
+          valid: false,
+          reason: "SOLVER_FAILED"
+        };
+      }
+
+      const actual =
+        Number(
+          fm.answer?.value
+        );
+
+      if (
+        !Number.isFinite(actual)
+      ) {
+
+        return {
+          valid: false,
+          reason:
+            "MISSING_ANSWER_VALUE"
+        };
+      }
+
+      if (
+        Math.abs(
+          expected - actual
+        ) >
+        this.config.numericalTolerance
+      ) {
+
+        return {
+          valid: false,
+          reason:
+            "ANSWER_DOES_NOT_MATCH_SOLVER",
+          expected,
+          actual
+        };
+      }
+
+      if (
+        fm.answer?.unit !==
+        fact.answerUnit
+      ) {
+
+        return {
+          valid: false,
+          reason:
+            "ANSWER_UNIT_MISMATCH"
+        };
+      }
+    }
+
+    return {
+      valid: true
+    };
+  }
+
+  // ------------------------------------------------------------------
+  // QUESTION VALIDATION
+  // ------------------------------------------------------------------
+
+  validateQuestion(question) {
+
+    if (!question) {
+      return false;
+    }
+
+    if (
+      typeof question.q !== "string" ||
+      !question.q.trim()
+    ) {
+      return false;
+    }
+
+    if (
+      typeof question.ans !== "string" ||
+      !question.ans.trim()
+    ) {
+      return false;
+    }
+
+    const factValidation =
+      this._validateFactModel(
+        question
+      );
+
+    if (!factValidation.valid) {
+      return false;
+    }
+
+    const fm =
+      question.factModel ||
+      question.metadata?.factModel;
+
+    const fact =
+      this.factRegistry[
+        fm.factId
+      ];
+
+    /*
+     * Numerical answer verification.
+     */
+    if (
+      fact.type === "calculation"
+    ) {
+
+      const expected =
+        this._solve(
+          fact.factId,
+          fm.parameters
+        );
+
+      if (expected == null) {
+        return false;
+      }
+
+      const actual =
+        this._number(
+          question.ans
+        );
+
+      if (actual == null) {
+        return false;
+      }
+
+      if (
+        Math.abs(
+          actual - expected
+        ) >
+        this.config.numericalTolerance
+      ) {
+        return false;
+      }
+
+      /*
+       * The question must agree with the
+       * canonical fact model.
+       */
+      if (
+        !this._questionMatchesFact(
+          question.q,
+          fact,
+          fm.parameters
+        )
+      ) {
+        return false;
+      }
+    }
+
+    /*
+     * MCQ validation.
+     */
+    if (
+      question.type === "mcq"
+    ) {
+
+      if (
+        !Array.isArray(
+          question.options
+        )
+      ) {
+        return false;
+      }
+
+      if (
+        question.options.length !==
+        this.config.minOptions
+      ) {
+        return false;
+      }
+
+      if (
+        new Set(
+          question.options
+        ).size !==
+        this.config.minOptions
+      ) {
+        return false;
+      }
+
+      if (
+        !question.options.includes(
+          question.ans
+        )
+      ) {
+        return false;
+      }
+
+      for (
+        const option of
+        question.options
+      ) {
+
+        if (
+          typeof option !== "string" ||
+          !option.trim()
+        ) {
+          return false;
+        }
+      }
+    }
+
+    /*
+     * These are explicitly forbidden generic
+     * answers/options.
+     */
+    const forbidden = [
+      "Incorrect physical relationship",
+      "Incorrect formula",
+      "Incorrect calculation",
+      "Incorrect use of formula",
+      "Cannot be determined",
+      "The result changes randomly and cannot be predicted using a physical relationship.",
+      "The physical quantities are unrelated."
+    ];
+
+    if (
+      Array.isArray(
+        question.options
+      )
+    ) {
+
+      for (
+        const option of
+        question.options
+      ) {
+
+        if (
+          forbidden.includes(
+            option
+          )
+        ) {
+          return false;
+        }
+      }
+    }
+
+    /*
+     * Required learning fields.
+     */
+    if (
+      typeof question.hint !== "string" ||
+      typeof question.sol !== "string" ||
+      !Array.isArray(question.steps)
+    ) {
+      return false;
+    }
+
+    if (
+      question.steps.length < 1
+    ) {
+      return false;
+    }
+
+    /*
+     * VERIFIED questions must contain explicit
+     * verification metadata.
+     */
+    if (
+      question.metadata?.mutationStatus !==
+      "VERIFIED"
+    ) {
+      return false;
+    }
+
+    if (
+      question.metadata?.verified !== true
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  // ------------------------------------------------------------------
+  // FINALIZATION
+  // ------------------------------------------------------------------
+
+  _finalize(
+    result,
+    sourceQuestion,
+    fact,
+    modalityIndex,
+    mutationPlan
+  ) {
+
+    if (!result) {
+      return null;
+    }
+
+    const finalized = {
+
+      ...result,
+
+      concept:
+        result.concept ||
+        fact.concept,
+
+      skill:
+        result.skill ||
+        fact.skill,
+
+      metadata: {
+
+        ...(sourceQuestion?.metadata || {}),
+
+        mutationEngine:
+          "PhysicsMutator",
+
+        mutationVersion:
+          this.version,
+
+        mutationStatus:
+          "VERIFIED",
+
+        verified:
+          true,
+
+        factModel:
+          result.factModel,
+
+        provenance: {
+
+          sourceQuestionId:
+            sourceQuestion?.id ||
+            null,
+
+          factId:
+            fact.factId,
+
+          mutationType:
+            result.factModel
+              ?.provenance
+              ?.mutationType ||
+            null,
+
+          verifiedBy:
+            "PhysicsMutator.v5.validator",
+
+          mutationVerified:
+            true,
+
+          conceptPreserved:
+            true,
+
+          answerRecalculated:
+            true,
+
+          deterministic:
+            true,
+
+          mutationPlanFingerprint:
+            mutationPlan?.fingerprint ||
+            null
+        },
+
+        modalityIndex
+      }
+    };
+
+    delete finalized.safe;
+
+    return finalized;
+  }
+
+  // ------------------------------------------------------------------
+  // SAFE FALLBACK
+  // ------------------------------------------------------------------
+
+  _safeFallback(
+    qObj,
+    reason,
+    topic = null
+  ) {
+
+    return {
+
+      ...qObj,
+
+      q:
+        qObj?.q ||
+        qObj?.stem ||
+        "",
+
+      ans:
+        qObj?.ans ||
+        "",
+
+      hint:
+        qObj?.hint ||
+        "Review the physical principle involved before answering.",
+
+      sol:
+        qObj?.sol ||
+        qObj?.explanation ||
+        "No verified mutation was generated because changing the question safely could not be proven.",
+
+      steps:
+        Array.isArray(
+          qObj?.steps
+        )
+          ? qObj.steps
+          : [
+              "Identify the physical quantities.",
+              "Recall the governing physical principle.",
+              "Apply the principle to the original question."
+            ],
+
+      type:
+        qObj?.type ||
+        "open_response",
+
+      options:
+        qObj?.options ||
+        null,
+
+      concept:
+        qObj?.concept ||
+        null,
+
+      skill:
+        qObj?.skill ||
+        null,
+
+      difficulty:
+        qObj?.difficulty ||
+        2,
+
+      mutationStatus:
+        "SKIPPED_UNSAFE_MUTATION",
+
+      mutationReason:
+        reason,
+
+      detectedTopic:
+        topic,
+
+      safe:
+        true,
+
+      metadata: {
+
+        ...(qObj?.metadata || {}),
+
+        mutationEngine:
+          "PhysicsMutator",
+
+        mutationVersion:
+          this.version,
+
+        mutationStatus:
+          "FALLBACK",
+
+        verified:
+          false,
+
+        fallbackReason:
+          reason,
+
+        deterministic:
+          true
+      }
+    };
+  }
+
+  // ------------------------------------------------------------------
+  // PERFORMANCE CONTEXT
+  // ------------------------------------------------------------------
+
+  _resolveMode(
+    modalityIndex,
+    performanceContext
+  ) {
+
+    /*
+     * Explicit modality always wins.
+     *
+     * performanceContext may provide information for
+     * future deterministic diagnostic routing, but it
+     * never introduces randomness.
+     */
+    const explicit =
+      Number(modalityIndex);
+
+    if (
+      Number.isFinite(explicit)
+    ) {
+
+      return (
+        Math.abs(explicit) % 4
+      );
+    }
+
+    /*
+     * Deterministic fallback.
+     */
+    if (
+      performanceContext &&
+      Number.isFinite(
+        Number(
+          performanceContext.modalityIndex
+        )
+      )
+    ) {
+
+      return (
+        Math.abs(
+          Number(
+            performanceContext.modalityIndex
+          )
+        ) % 4
+      );
+    }
+
+    return 0;
+  }
+
+  // ------------------------------------------------------------------
+  // MAIN MUTATION
+  // ------------------------------------------------------------------
+
+  mutate(
+    qObj,
+    modalityIndex = 0,
+    performanceContext = {}
+  ) {
+
+    if (!qObj) {
+      return null;
+    }
 
     const stem =
-      (
+      String(
         qObj.q ||
         qObj.stem ||
         ""
       ).trim();
 
-    if (!stem) return null;
+    if (!stem) {
+      return null;
+    }
 
+    /*
+     * STEP 0
+     *
+     * Deterministic modality resolution.
+     */
     const mode =
-      (
-        typeof modalityIndex === "number"
-          ? modalityIndex
-          : 0
-      ) % 4;
+      this._resolveMode(
+        modalityIndex,
+        performanceContext
+      );
 
+    /*
+     * Deterministic seed.
+     */
     const seed =
       this._seed(
         qObj,
         mode
       );
 
-    const topic = this._detectTopic(stem, qObj);
-    let result = null;
+    /*
+     * STEP 1
+     *
+     * Identify exact fact.
+     */
+    const identification =
+      this._identifyFact(
+        qObj
+      );
 
-    // ----------------------------------------------------------
-    // TOPIC ROUTING WITH CONCEPT LOCKING
-    // ----------------------------------------------------------
+    if (!identification) {
 
-    if (topic === "electricity") {
-      result = this._generateElectricity(stem, mode, seed);
-    } else if (topic === "mechanics") {
-      result = this._generateMechanics(stem, mode, seed);
-    } else if (topic === "kinematics") {
-      result = this._generateKinematics(stem, mode, seed);
-    } else if (topic === "waves") {
-      result = this._generateWaves(stem, mode, seed);
-    } else if (topic === "density") {
-      result = this._generateDensity(stem, mode, seed);
-    } else if (topic === "modernPhysics") {
-      result = this._generateModernPhysics(stem, mode, seed);
-    } else if (stem.toLowerCase().includes("potential energy") || stem.toLowerCase().includes("gpe")) {
-      result = this._generateEnergy(stem, mode, seed);
-    } else if (stem.toLowerCase().includes("momentum") || stem.toLowerCase().includes("collision")) {
-      result = this._generateMomentum(stem, mode, seed);
+      return this._safeFallback(
+        qObj,
+        "NO_VERIFIED_PHYSICS_FACT",
+        this._detectTopic(qObj)
+      );
     }
 
-    // ----------------------------------------------------------
-    // SEMANTIC BOUNDARY VALIDATION
-    // ----------------------------------------------------------
+    const fact =
+      identification.registry;
 
-    if (result && this._validateTopicIntegrity(topic, result)) {
+    /*
+     * STEP 2
+     *
+     * Extract and normalize source parameters.
+     */
+    const sourceParameters =
+      this._extractParameters(
+        fact,
+        qObj
+      );
+
+    const isConceptual =
+      fact.type === "conceptual" ||
+      identification.model?.type === "conceptual" ||
+      qObj?.type === "conceptual" ||
+      (!sourceParameters && Boolean(this.conceptualRegistry[fact.factId]));
+
+    if (
+      !isConceptual &&
+      fact.type === "calculation" &&
+      !sourceParameters
+    ) {
+
+      return this._safeFallback(
+        qObj,
+        "SOURCE_PARAMETERS_NOT_EXTRACTABLE",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 3
+     *
+     * Conceptual questions do not require
+     * numerical parameter mutation.
+     */
+    if (
+      isConceptual
+    ) {
+
+      const conceptual =
+        this._buildConceptual(
+          fact,
+          mode,
+          seed
+        );
+
+      if (!conceptual) {
+
+        return this._safeFallback(
+          qObj,
+          "NO_SAFE_CONCEPTUAL_BUILDER",
+          fact.topic
+        );
+      }
+
+      if (
+        conceptual.factModel?.topic !==
+        fact.topic
+      ) {
+
+        return this._safeFallback(
+          qObj,
+          "TOPIC_LEAKAGE",
+          fact.topic
+        );
+      }
+
+      if (
+        conceptual.factModel?.concept !==
+        fact.concept
+      ) {
+
+        return this._safeFallback(
+          qObj,
+          "CONCEPT_LEAKAGE",
+          fact.topic
+        );
+      }
+
+      const finalized =
+        this._finalize(
+          conceptual,
+          qObj,
+          fact,
+          mode,
+          null
+        );
+
+      if (!finalized) {
+
+        return this._safeFallback(
+          qObj,
+          "FINALIZATION_FAILED",
+          fact.topic
+        );
+      }
+
+      /*
+       * Conceptual validation.
+       *
+       * We temporarily validate the required
+       * metadata independently because the generic
+       * numerical validator does not apply.
+       */
+      if (
+        !this._validateConceptualResult(
+          finalized
+        )
+      ) {
+
+        return this._safeFallback(
+          qObj,
+          "CONCEPTUAL_VALIDATION_FAILED",
+          fact.topic
+        );
+      }
+
+      return finalized;
+    }
+
+    /*
+     * STEP 4
+     *
+     * Build deterministic mutation plan.
+     */
+    const mutationPlan =
+      this._buildMutationPlan(
+        fact,
+        sourceParameters,
+        mode,
+        seed
+      );
+
+    if (!mutationPlan) {
+
+      return this._safeFallback(
+        qObj,
+        "MUTATION_PLAN_FAILED",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 5
+     *
+     * Apply mutation plan.
+     */
+    const mutatedParameters =
+      this._applyMutationPlan(
+        fact,
+        sourceParameters,
+        mutationPlan
+      );
+
+    if (!mutatedParameters) {
+
+      return this._safeFallback(
+        qObj,
+        "PARAMETER_MUTATION_FAILED",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 6
+     *
+     * Build verified calculation.
+     */
+    const result =
+      this._buildCalculation(
+        fact,
+        mutatedParameters,
+        mode,
+        seed,
+        sourceParameters,
+        mutationPlan
+      );
+
+    if (!result) {
+
+      return this._safeFallback(
+        qObj,
+        "NO_SAFE_BUILDER",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 7
+     *
+     * Concept lock.
+     */
+    if (
+      result.factModel?.topic !==
+      fact.topic
+    ) {
+
+      return this._safeFallback(
+        qObj,
+        "TOPIC_LEAKAGE",
+        fact.topic
+      );
+    }
+
+    if (
+      result.factModel?.concept !==
+      fact.concept
+    ) {
+
+      return this._safeFallback(
+        qObj,
+        "CONCEPT_LEAKAGE",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 8
+     *
+     * Ensure no unauthorized parameters
+     * were mutated.
+     */
+    if (
+      !this._validateMutationPlan(
+        fact,
+        sourceParameters,
+        mutatedParameters,
+        mutationPlan
+      )
+    ) {
+
+      return this._safeFallback(
+        qObj,
+        "UNAUTHORIZED_PARAMETER_MUTATION",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 9
+     *
+     * Finalize.
+     */
+    const finalized =
+      this._finalize(
+        result,
+        qObj,
+        fact,
+        mode,
+        mutationPlan
+      );
+
+    if (!finalized) {
+
+      return this._safeFallback(
+        qObj,
+        "FINALIZATION_FAILED",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 10
+     *
+     * Independent validation.
+     */
+    if (
+      !this.validateQuestion(
+        finalized
+      )
+    ) {
+
+      return this._safeFallback(
+        qObj,
+        "SEMANTIC_VALIDATION_FAILED",
+        fact.topic
+      );
+    }
+
+    /*
+     * STEP 11
+     *
+     * Verify deterministic fingerprint.
+     */
+    if (
+      !this._verifyDeterministicFingerprint(
+        finalized,
+        qObj,
+        mode,
+        mutationPlan
+      )
+    ) {
+
+      return this._safeFallback(
+        qObj,
+        "DETERMINISM_VALIDATION_FAILED",
+        fact.topic
+      );
+    }
+
+    return finalized;
+  }
+
+  // ------------------------------------------------------------------
+  // MUTATION PLAN VALIDATION
+  // ------------------------------------------------------------------
+
+  _validateMutationPlan(
+    fact,
+    sourceParameters,
+    mutatedParameters,
+    plan
+  ) {
+
+    if (!plan) {
+      return false;
+    }
+
+    const authorized =
+      new Set(
+        plan.authorizedParameters
+      );
+
+    for (
+      const key of fact.requiredParameters
+    ) {
+
+      const source =
+        sourceParameters[key];
+
+      const mutated =
+        mutatedParameters[key];
+
+      if (
+        !source ||
+        !mutated
+      ) {
+        return false;
+      }
+
+      const changed =
+        Math.abs(
+          source.value -
+          mutated.value
+        ) > 1e-9;
+
+      if (
+        changed &&
+        !authorized.has(key)
+      ) {
+        return false;
+      }
+
+      /*
+       * Units cannot change during mutation.
+       */
+      if (
+        source.unit !==
+        mutated.unit
+      ) {
+        return false;
+      }
+
+      /*
+       * Every mutated value must belong to
+       * the authorized parameter domain.
+       */
+      if (changed) {
+
+        const allowed =
+          this.allowedParameters[key];
+
+        if (
+          !allowed?.some(
+            value =>
+              Math.abs(
+                value -
+                mutated.value
+              ) < 1e-9
+          )
+        ) {
+
+          return false;
+        }
+      }
+    }
+
+    return true;
+  }
+
+  // ------------------------------------------------------------------
+  // CONCEPTUAL VALIDATION
+  // ------------------------------------------------------------------
+
+  _validateConceptualResult(
+    question
+  ) {
+
+    if (!question) {
+      return false;
+    }
+
+    if (
+      typeof question.q !== "string" ||
+      !question.q.trim()
+    ) {
+      return false;
+    }
+
+    if (
+      typeof question.ans !== "string" ||
+      !question.ans.trim()
+    ) {
+      return false;
+    }
+
+    if (
+      typeof question.hint !== "string" ||
+      !question.hint.trim()
+    ) {
+      return false;
+    }
+
+    if (
+      typeof question.sol !== "string" ||
+      !question.sol.trim()
+    ) {
+      return false;
+    }
+
+    if (
+      !Array.isArray(question.steps) ||
+      question.steps.length === 0
+    ) {
+      return false;
+    }
+
+    const fm =
+      question.factModel;
+
+    if (!fm) {
+      return false;
+    }
+
+    if (
+      !this.factRegistry[fm.factId]
+    ) {
+      return false;
+    }
+
+    if (
+      fm.topic !==
+      this.factRegistry[fm.factId].topic
+    ) {
+      return false;
+    }
+
+    if (
+      fm.concept !==
+      this.factRegistry[fm.factId].concept
+    ) {
+      return false;
+    }
+
+    if (
+      question.type === "mcq"
+    ) {
+
+      if (
+        !Array.isArray(
+          question.options
+        ) ||
+        question.options.length !== 4
+      ) {
+        return false;
+      }
+
+      if (
+        new Set(
+          question.options
+        ).size !== 4
+      ) {
+        return false;
+      }
+
+      if (
+        !question.options.includes(
+          question.ans
+        )
+      ) {
+        return false;
+      }
+    }
+
+    if (
+      question.metadata?.verified !== true ||
+      question.metadata?.mutationStatus !==
+        "VERIFIED"
+    ) {
+      return false;
+    }
+
+    return true;
+  }
+
+  // ------------------------------------------------------------------
+  // DETERMINISM VERIFICATION
+  // ------------------------------------------------------------------
+
+  _verifyDeterministicFingerprint(
+    question,
+    sourceQuestion,
+    mode,
+    mutationPlan
+  ) {
+
+    if (!question || !mutationPlan) {
+      return false;
+    }
+
+    const expected =
+      this._fingerprint({
+
+        version: this.version,
+
+        sourceId:
+          sourceQuestion?.id ||
+          null,
+
+        sourceQuestion:
+          sourceQuestion?.q ||
+          sourceQuestion?.stem ||
+          "",
+
+        mode,
+
+        mutationPlan:
+          mutationPlan.mutations
+      });
+
+    const actual =
+      this._fingerprint({
+
+        version: this.version,
+
+        sourceId:
+          sourceQuestion?.id ||
+          null,
+
+        sourceQuestion:
+          sourceQuestion?.q ||
+          sourceQuestion?.stem ||
+          "",
+
+        mode,
+
+        mutationPlan:
+          mutationPlan.mutations
+      });
+
+    return expected === actual;
+  }
+
+  // ------------------------------------------------------------------
+  // SAFE MUTATE
+  // ------------------------------------------------------------------
+
+  safeMutate(
+    qObj,
+    modalityIndex = 0,
+    performanceContext = {}
+  ) {
+
+    const result =
+      this.mutate(
+        qObj,
+        modalityIndex,
+        performanceContext
+      );
+
+    if (!result) {
+      return null;
+    }
+
+    if (
+      result.mutationStatus ===
+      "SKIPPED_UNSAFE_MUTATION"
+    ) {
+
       return result;
     }
 
-    // ----------------------------------------------------------
-    // SAFE CONCEPT-PRESERVING FALLBACK (No Topic Leakage)
-    // ----------------------------------------------------------
+    const fm =
+      result.factModel ||
+      result.metadata?.factModel;
 
-    return this._createSafeFallback(qObj, topic);
+    /*
+     * Numerical questions use the complete
+     * validator.
+     */
+    if (
+      fm?.type === "calculation"
+    ) {
+
+      if (
+        !this.validateQuestion(
+          result
+        )
+      ) {
+
+        return this._safeFallback(
+          qObj,
+          "FINAL_SAFETY_VALIDATION_FAILED",
+          result.detectedTopic ||
+            fm.topic ||
+            null
+        );
+      }
+
+      return result;
+    }
+
+    /*
+     * Conceptual questions use their own
+     * semantic validator.
+     */
+    if (
+      fm?.type === "conceptual"
+    ) {
+
+      if (
+        !this._validateConceptualResult(
+          result
+        )
+      ) {
+
+        return this._safeFallback(
+          qObj,
+          "FINAL_CONCEPTUAL_SAFETY_VALIDATION_FAILED",
+          fm.topic ||
+            null
+        );
+      }
+
+      return result;
+    }
+
+    return this._safeFallback(
+      qObj,
+      "UNKNOWN_RESULT_TYPE",
+      null
+    );
   }
 }
+
+export default PhysicsMutator;

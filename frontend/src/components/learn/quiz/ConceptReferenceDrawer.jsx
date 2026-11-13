@@ -60,8 +60,20 @@ function ConceptReferenceDrawer({ content, topic, isOpen, onClose }) {
         <div className="ref-drawer-body">
           {notes ? (
             <div className="ref-drawer-content">
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                {notes}
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+                components={{
+                  table: ({ node, ...props }) => (
+                    <div className="table-responsive">
+                      <table {...props} />
+                    </div>
+                  ),
+                }}
+              >
+                {typeof notes === "string"
+                  ? notes.replace(/(?:<div[^>]*class="[^"]*table-responsive[^"]*"[^>]*>\s*)?(<table\b[\s\S]*?<\/table>)(?:\s*<\/div>)?/gi, (m, tbl) => `<div class="table-responsive">${tbl}</div>`)
+                  : notes}
               </ReactMarkdown>
             </div>
           ) : (

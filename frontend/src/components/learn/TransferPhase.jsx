@@ -164,7 +164,7 @@ function TransferPhase({
                 : "Not quite — review the structural connection below"}
             </div>
 
-            {feedback.correctAnswer && (
+            {feedback.correctAnswer && String(feedback.correctAnswer).trim().toLowerCase() !== "undefined" && (
               <div className="transfer-feedback-answer">
                 <div className="transfer-answer-label">Correct Solution:</div>
                 <div className="transfer-answer-body">

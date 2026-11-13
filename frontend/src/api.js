@@ -2,10 +2,25 @@ import logger from "./utils/logger";
 import { supabase, getActiveSession } from "./supabase";
 import { curriculumRepo } from "./repository/curriculumRepo";
 import { topicRepo } from "./repository/topicRepo";
+import { getBundledTopic } from "./data/contentLoader";
 
-// Base API URL – taken from env or fallback to localhost during dev
-const raw = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "https://shifter-i49i.onrender.com" : "http://localhost:3001");
-const API_BASE = raw.replace(/\/$/, "") + "/api";
+// Base API URL — resolved at build time by Vite.
+//
+// Production:   VITE_API_URL (set in Vercel dashboard) → fallback to Render URL.
+//               This guarantees production NEVER silently calls localhost.
+//
+// Development:  VITE_API_URL (from .env.development) → fallback to localhost:3001.
+//
+const _rawBase = import.meta.env.PROD
+  ? ((import.meta.env.VITE_API_URL &&
+      !import.meta.env.VITE_API_URL.includes("localhost") &&
+      !import.meta.env.VITE_API_URL.includes("vercel.app") &&
+      import.meta.env.VITE_API_URL.startsWith("http"))
+      ? import.meta.env.VITE_API_URL
+      : "https://shifter-i49i.onrender.com")
+  : (import.meta.env.VITE_API_URL || "http://localhost:3001");
+
+const API_BASE = _rawBase.replace(/\/$/, "") + "/api";
 
 /** Helper to retrieve auth headers from Supabase session */
 function getAuthHeaders() {
@@ -16,7 +31,6 @@ function getAuthHeaders() {
   return {};
 }
 
-
 export async function fetchCurriculum() {
   const startTime = Date.now();
   try {
@@ -24,46 +38,69 @@ export async function fetchCurriculum() {
     const responseTime = Date.now() - startTime;
 
     if (!r.ok) {
-      console.warn("[API] Remote curriculum endpoint unavailable. Using local database fallback.");
       return await curriculumRepo.getAll();
     }
 
     logger.api("GET", "/api/curriculum", r.status, { responseTime });
     return await r.json();
   } catch {
-    console.warn("[API] Network unavailable for curriculum. Using local IndexedDB fallback.");
     return await curriculumRepo.getAll();
   }
 }
 
 export async function fetchTopicContent(sid, cid, topic) {
-  const startTime = Date.now();
   const endpoint = `/api/content/${sid}/${cid}/${topic}`;
+  const targetUrl = `${API_BASE}/content/${encodeURIComponent(sid)}/${encodeURIComponent(cid)}/${encodeURIComponent(topic)}`;
 
-  try {
-    const r = await fetch(
-      `${API_BASE}/content/${encodeURIComponent(sid)}/${encodeURIComponent(cid)}/${encodeURIComponent(topic)}`,
-      { headers: getAuthHeaders() }
-    );
-    const responseTime = Date.now() - startTime;
+  // Attempt up to 2 times (handles cold start wakeups on Render)
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    const startTime = Date.now();
+    try {
+      const r = await fetch(targetUrl, {
+        headers: getAuthHeaders(),
+      });
+      const responseTime = Date.now() - startTime;
 
-    if (!r.ok) {
-      console.warn(`[API] Remote content unavailable for ${topic}. Using local fallback.`);
-      const cached = await topicRepo.getById(`${sid}|${cid}|${topic}`);
-      return cached?.data || null;
+      if (!r.ok) {
+        console.warn(`[API] Remote content unavailable for ${topic} (Status: ${r.status}, Attempt: ${attempt}).`);
+        if (attempt === 1) {
+          await new Promise((res) => setTimeout(res, 800));
+          continue;
+        }
+        break;
+      }
+
+      const contentType = r.headers.get("content-type") || "";
+      if (!contentType.includes("application/json")) {
+        console.warn(`[API] Expected JSON for ${topic}, got: ${contentType}`);
+        break;
+      }
+
+      const data = await r.json();
+      if (data && (data.notes || (Array.isArray(data.qs) && data.qs.length > 0))) {
+        logger.api("GET", endpoint, r.status, {
+          responseTime,
+          subject: sid,
+          chapter: cid,
+          topic,
+        });
+        return data;
+      }
+    } catch (err) {
+      if (attempt === 1) {
+        await new Promise((res) => setTimeout(res, 800));
+      }
     }
+  }
 
-    logger.api("GET", endpoint, r.status, {
-      responseTime,
-      subject: sid,
-      chapter: cid,
-      topic,
-    });
-    return await r.json();
+  // Fallback to local cache if network attempt failed
+  try {
+    const cached = await topicRepo.getTopic(sid, cid, topic) || await topicRepo.getById(`${sid}|${cid}|${topic}`);
+    if (cached?.data) return cached.data;
+    const bundled = await getBundledTopic(sid, cid, topic);
+    return bundled?.data || null;
   } catch {
-    console.warn(`[API] Network offline for topic content (${topic}). Using local fallback.`);
-    const cached = await topicRepo.getById(`${sid}|${cid}|${topic}`);
-    return cached?.data || null;
+    return null;
   }
 }
 
@@ -264,7 +301,7 @@ export async function enroll(subjectId) {
     const { error } = await supabase.from("enrollments").upsert({
       user_id: userId,
       subject_id: subjectId,
-      created_at: new Date().toISOString(),
+      enrolled_at: new Date().toISOString(),
     }, { onConflict: "user_id, subject_id" });
     if (error) console.warn("[Supabase API] enroll warning:", error.message);
     return !error;
@@ -295,12 +332,12 @@ export async function fetchEnrollments() {
 }
 
 /** Save topic progress to Supabase via progressService. */
-export async function saveProgress({ sid, cid, topicTitle, completed, score, mastered, confidenceLevel }) {
+export async function saveProgress({ sid, cid, topicId = null, topicTitle, completed, score, mastered, confidenceLevel }) {
   const record = await serviceUpdateProgress({
     subjectId: sid,
     chapterId: cid,
-    topicId: topicTitle,
-    topicTitle,
+    topicId: topicId || topicTitle,
+    topicTitle: topicTitle || (typeof topicId === "string" ? topicId : ""),
     completed: completed ?? false,
     masteryScore: score ?? 0,
     mastered: mastered ?? false,

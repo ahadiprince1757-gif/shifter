@@ -1,37 +1,23 @@
+// @ts-nocheck
 const express = require('express');
 const cors = require('cors');
 const { createClient } = require('@supabase/supabase-js');
 const logger = require('./logger');
+const { validateEventsBatch } = require('./validators/telemetryValidator');
+const intelligenceService = require('./services/intelligenceService');
 
 const app = express();
-// Configure CORS using an allowlist from `ALLOWED_ORIGINS` env (comma-separated).
-const allowedEnv = (process.env.ALLOWED_ORIGINS || "")
-  .split(',')
+// Configure CORS from the ALLOWED_ORIGINS environment variable (comma-separated list).
+// On Render set:  ALLOWED_ORIGINS=https://tixar-iota.vercel.app,http://localhost:5173
+const allowedOrigins = (process.env.ALLOWED_ORIGINS || "")
+  .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
+
 const corsOptions = {
   origin: (origin, callback) => {
-    if (!origin) return callback(null, true);
-    // Automatically allow local origins in development mode
-    if (process.env.NODE_ENV !== "production") {
-      if (
-        origin.startsWith("http://localhost:") ||
-        origin.startsWith("http://127.0.0.1:") ||
-        origin === "http://localhost" ||
-        origin === "http://127.0.0.1"
-      ) {
-        return callback(null, true);
-      }
-    }
-    if (allowedEnv.length === 0) return callback(null, true);
-    if (
-      allowedEnv.includes(origin) ||
-      allowedEnv.some((a) => origin.endsWith(a)) ||
-      origin.endsWith(".vercel.app") ||
-      origin === "https://shifter-iota.vercel.app"
-    )
-      return callback(null, true);
-    return callback(new Error("Not allowed by CORS"));
+    // Always allow all origins — educational curriculum and notes are public
+    callback(null, true);
   },
   credentials: true,
 };
@@ -94,25 +80,28 @@ function normalizeQ(q) {
   };
 }
 
-// Initialize Supabase Client
+// Initialize Supabase Client (safe conditional initialization)
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey =
   process.env.SUPABASE_KEY || process.env.SUPABASE_SERVICE_ROLE_KEY;
 
-if (!supabaseUrl || !supabaseKey) {
-  logger.error(
-    "INITIALIZATION",
-    new Error(
-      "SUPABASE_URL or SUPABASE_KEY/SUPABASE_SERVICE_ROLE_KEY not defined",
-    ),
-  );
+let supabase = null;
+if (supabaseUrl && supabaseKey) {
+  try {
+    supabase = createClient(supabaseUrl, supabaseKey, {
+      auth: { persistSession: false },
+    });
+    logger.debug("SUPABASE_INIT", { supabaseUrl });
+  } catch (err) {
+    logger.error("SUPABASE_INIT_ERROR", err);
+    supabase = null;
+  }
+} else {
+  logger.action("SUPABASE_INIT_SKIPPED", "warn", {
+    reason: "SUPABASE_URL or SUPABASE_KEY missing",
+  });
+  console.warn("⚠️ Supabase not configured; using local content fallback.");
 }
-
-const supabase = createClient(supabaseUrl, supabaseKey, {
-  auth: { persistSession: false },
-});
-
-logger.debug("SUPABASE_INIT", { supabaseUrl });
 
 // Endpoint: Ping
 app.get("/api/ping", (req, res) => {
@@ -122,8 +111,7 @@ app.get("/api/ping", (req, res) => {
 
 // Health check for platform providers (Render, Heroku, etc.)
 app.get("/health", (req, res) => {
-  logger.action("HEALTH_CHECK");
-  res.json({ ok: true });
+  res.status(200).json({ ok: true });
 });
 
 // Endpoint: Receive logs from frontend
@@ -140,9 +128,146 @@ app.post("/api/logs", (req, res) => {
   res.status(204).send(); // No content response
 });
 
+// Canonical subject whitelist — the ONLY six subjects Tixar serves.
+// Any subject not in this set is strictly excluded from curriculum and content responses.
+const CANONICAL_SUBJECT_IDS = new Set([
+  "math",
+  "physics",
+  "chemistry",
+  "biology",
+  "english",
+  "computer",
+]);
+
+// Static fallback curriculum — used when Supabase is unavailable or returns nothing.
+// Only the 6 canonical subjects are exported from this file.
+const STATIC_CURRICULUM = (() => {
+  try {
+    const raw = require("./data/curriculum.json");
+    return raw.filter((s) => CANONICAL_SUBJECT_IDS.has(s.id));
+  } catch (e) {
+    return [];
+  }
+})();
+
+function normalizeTopicKey(str) {
+  return String(str || "")
+    .replace(/[\u2010-\u2015]/g, "-")
+    .replace(/\s+/g, " ")
+    .toLowerCase()
+    .trim();
+}
+
+// In-memory local content cache for zero-downtime offline fallback
+const LOCAL_CONTENT_MAP = (() => {
+  const contentMap = new Map();
+  const prevAdd = global.add;
+  global.add = (...args) => {
+    const sid = String(args[0] || "").toLowerCase().trim();
+    if (!CANONICAL_SUBJECT_IDS.has(sid)) return;
+    let cid, topic, notes, qs, topicGroup;
+
+    if (sid === "math") {
+      const rawQs = args[args.length - 1];
+      const rawNotes = args[args.length - 2];
+      const pathParts = args.slice(1, args.length - 2).map((s) => String(s).trim());
+
+      cid = (pathParts[0] || "").toLowerCase();
+      if (cid === "calculus" || cid === "limits") {
+        cid = "calculus";
+        if (pathParts[0] === "limits") {
+          topicGroup = "Limits";
+          topic = pathParts[1];
+        } else {
+          topicGroup = pathParts[1];
+          topic = pathParts[2];
+        }
+      } else if (pathParts.length === 2) {
+        topic = pathParts[1];
+        topicGroup = pathParts[1];
+      } else if (pathParts.length === 3) {
+        topicGroup = pathParts[1];
+        topic = pathParts[2];
+      } else if (pathParts.length >= 4) {
+        topicGroup = pathParts[1];
+        topic = pathParts[pathParts.length - 1];
+      }
+
+      notes = typeof rawNotes === "string" ? rawNotes : "";
+      qs = Array.isArray(rawQs) ? rawQs : (rawQs ? [rawQs] : []);
+    } else {
+      cid = String(args[1] || "").trim();
+      topic = String(args[2] || "").trim();
+      topicGroup = topic;
+      notes = typeof args[3] === "string" ? args[3] : (Array.isArray(args[3]) ? args[3].join("\n") : String(args[3] || ""));
+      let rawQs = args[4] || [];
+      if (!Array.isArray(rawQs) && rawQs) rawQs = [rawQs];
+      if (Array.isArray(args[5])) {
+        rawQs = rawQs.concat(args[5]);
+      }
+      qs = rawQs;
+    }
+
+    const qsArray = qs.map(normalizeQ);
+    const contentObj = {
+      notes: notes,
+      qs: qsArray.map((q) => ({
+        q: q.q,
+        hint: q.hint || "",
+        ans: q.ans,
+        explain: q.why || "",
+        why: q.why || "",
+        sol: q.sol || q.why || "",
+        steps: Array.isArray(q.steps) ? q.steps : [],
+        type: q.type || null,
+        mark: q.mark || "",
+      })),
+    };
+    const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+    const normKey = `${sid}|${cid}|${normalizeTopicKey(topic)}`;
+    contentMap.set(rawKey, contentObj);
+    contentMap.set(normKey, contentObj);
+    if (topicGroup && topicGroup !== topic) {
+      contentMap.set(`${sid}|${cid}|${String(topicGroup).toLowerCase().trim()}|${String(topic).toLowerCase().trim()}`, contentObj);
+    }
+  };
+
+  const path = require("path");
+  const fs = require("fs");
+  const dataDir = path.join(__dirname, "data");
+  const files = [
+    "math.js",
+    "physics.js",
+    "chemistry.js",
+    "biology.js",
+    "english.js",
+    "computer.js",
+  ];
+  for (const file of files) {
+    const fullPath = path.join(dataDir, file);
+    if (fs.existsSync(fullPath)) {
+      try {
+        require(fullPath);
+      } catch (err) {
+        console.warn(`[LocalContent] Error loading ${file}:`, err.message);
+      }
+    }
+  }
+  global.add = prevAdd;
+  return contentMap;
+})();
+
 // Endpoint: Get Curriculum Structure
 app.get("/api/curriculum", async (req, res) => {
   try {
+    if (!supabase) {
+      logger.action("CURRICULUM_LOADED", "success", {
+        subjectCount: STATIC_CURRICULUM.length,
+        source: "static_no_supabase",
+      });
+      return res.json(STATIC_CURRICULUM);
+    }
+
     const { data, error } = await supabase.from("subjects").select(`
         id,
         label:name,
@@ -160,235 +285,389 @@ app.get("/api/curriculum", async (req, res) => {
       logger.db("SELECT", "subjects", "error", {
         error: error.message,
       });
-      return res
-        .status(500)
-        .json({ error: "Database query failed fetching curriculum" });
+      logger.action("CURRICULUM_STATIC_FALLBACK", "warn", { reason: error.message });
+      return res.json(STATIC_CURRICULUM);
     }
     logger.db("SELECT", "subjects", "success", {
       affectedRows: (data || []).length,
     });
-    const formatted = (data || []).map((subj) => {
-      const sortedChapters = (subj.chapters || []).sort(
-        (a, b) => a.position - b.position,
-      );
-      return {
-        id: subj.id,
-        icon: "",
-        label: subj.label,
-        chapters: sortedChapters.map((chap) => {
-          const sortedTopics = (chap.topics || []).sort(
-            (a, b) => a.position - b.position,
-          );
-          return {
-            id: chap.id,
-            label: chap.label,
-            topics: sortedTopics.map((t) => t.title),
-          };
-        }),
-      };
-    });
+    const formatted = (data || [])
+      // Enforce the whitelist: never return a subject not in CANONICAL_SUBJECT_IDS
+      .filter((subj) => CANONICAL_SUBJECT_IDS.has(subj.id))
+      .map((subj) => {
+        const sortedChapters = (subj.chapters || []).sort(
+          (a, b) => a.position - b.position,
+        );
+        return {
+          id: subj.id,
+          icon: "",
+          label: subj.label,
+          chapters: sortedChapters.map((chap) => {
+            const sortedTopics = (chap.topics || []).sort(
+              (a, b) => a.position - b.position,
+            );
+            return {
+              id: chap.id,
+              label: chap.label,
+              topics: sortedTopics.map((t) => t.title),
+            };
+          }),
+        };
+      });
+
+    // If Supabase returned data but none matched our whitelist (or empty topics),
+    // return the static curriculum so the app is always usable.
+    const result = formatted.length > 0 ? formatted : STATIC_CURRICULUM;
+
     logger.action("CURRICULUM_LOADED", "success", {
-      subjectCount: formatted.length,
+      subjectCount: result.length,
+      source: formatted.length > 0 ? "supabase" : "static",
     });
-    res.json(formatted);
+    res.json(result);
   } catch (err) {
     logger.error("CURRICULUM_LOAD", err);
-    res.status(500).json({ error: "Internal server error" });
+    res.json(STATIC_CURRICULUM);
   }
 });
 
 // Endpoint: Get Content (Notes + Questions without answers)
 app.get("/api/content/:sid/:cid/:topic", async (req, res) => {
   const { sid, cid, topic } = req.params;
-  try {
-    const { data: contentRow, error: contentErr } = await supabase
-      .from("content_view")
-      .select("topic_id, notes")
-      .eq("sid", sid)
-      .eq("cid", cid)
-      .eq("topic", topic)
-      .maybeSingle();
-    if (contentErr) {
-      logger.db("SELECT", "content_view", "error", {
-        subject: sid,
-        chapter: cid,
-        topic,
-        error: contentErr.message,
-      });
-      return res
-        .status(500)
-        .json({ error: "Database query failed fetching content" });
+
+  // 1. Strict validation of canonical subjects
+  if (!CANONICAL_SUBJECT_IDS.has(sid)) {
+    return res.status(404).json({ error: "Subject not recognized" });
+  }
+
+  const normKey = `${sid}|${cid}|${normalizeTopicKey(topic)}`;
+  const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+  const localContent = LOCAL_CONTENT_MAP.get(normKey) || LOCAL_CONTENT_MAP.get(rawKey);
+
+  // 2. If Supabase is configured, attempt remote query
+  if (supabase) {
+    try {
+      let { data: contentRow, error: contentErr } = await supabase
+        .from("content_view")
+        .select("topic_id, notes")
+        .eq("sid", sid)
+        .eq("cid", cid)
+        .eq("topic", topic)
+        .maybeSingle();
+
+      // If not found with exact string, try with dash variations (hyphen vs em-dash)
+      if (!contentRow && !contentErr) {
+        const altTopic = topic.includes("-")
+          ? topic.replace(/-/g, "—")
+          : topic.replace(/[\u2010-\u2015]/g, "-");
+        const altRes = await supabase
+          .from("content_view")
+          .select("topic_id, notes")
+          .eq("sid", sid)
+          .eq("cid", cid)
+          .eq("topic", altTopic)
+          .maybeSingle();
+        if (altRes.data) {
+          contentRow = altRes.data;
+        }
+      }
+
+      if (!contentErr && contentRow) {
+        const { data: quizData, error: quizErr } = await supabase
+          .from("quizzes")
+          .select(
+            `
+            id,
+            questions (
+              id,
+              question,
+              type,
+              points,
+              hint,
+              explain,
+              position,
+              answers (
+                answer_text,
+                is_correct
+              )
+            )
+          `,
+          )
+          .eq("topic_id", contentRow.topic_id)
+          .maybeSingle();
+
+        if (!quizErr) {
+          const qs = [];
+          if (quizData && quizData.questions) {
+            const sortedQuestions = quizData.questions.sort(
+              (a, b) => a.position - b.position,
+            );
+            sortedQuestions.forEach((qObj) => {
+              const answers = qObj.answers || [];
+              const correctAnswers = answers
+                .filter((a) => a.is_correct)
+                .map((a) => a.answer_text);
+
+              let why = qObj.explain || "";
+              let sol = qObj.explain || "";
+              let steps = [];
+              let options = [];
+              let conceptId = null;
+              let skillId = null;
+              let subskillId = null;
+
+              if (qObj.explain && typeof qObj.explain === "string" && qObj.explain.trim().startsWith("{")) {
+                try {
+                  const meta = JSON.parse(qObj.explain);
+                  if (meta && typeof meta === "object") {
+                    why = meta.why || why;
+                    sol = meta.sol || meta.solution || sol;
+                    if (Array.isArray(meta.steps) && meta.steps.length > 0) {
+                      steps = meta.steps;
+                    }
+                    if (Array.isArray(meta.options) && meta.options.length > 0) {
+                      options = meta.options.map((o) => (typeof o === "object" ? o.text : String(o)));
+                    }
+                    conceptId = meta.conceptId || null;
+                    skillId = meta.skillId || null;
+                    subskillId = meta.subskillId || null;
+                  }
+                } catch (e) {}
+              }
+
+              if (options.length === 0 && answers.length > 1) {
+                options = answers.map((a) => a.answer_text);
+              }
+
+              const resolvedAns = correctAnswers.length === 1
+                ? correctAnswers[0]
+                : (correctAnswers.length > 1 ? correctAnswers : (answers[0]?.answer_text || ""));
+
+              qs.push({
+                id: qObj.id,
+                q: qObj.question,
+                hint: qObj.hint || "",
+                ans: resolvedAns,
+                explain: why,
+                why: why,
+                sol: sol,
+                steps: steps,
+                type: qObj.type || (options.length > 1 ? "mcq" : "text"),
+                options: options,
+                conceptId,
+                skillId,
+                subskillId,
+              });
+            });
+          }
+
+          // CRITICAL: If Supabase has 0 questions for this topic, fallback to local questions!
+          if (qs.length === 0 && localContent && Array.isArray(localContent.qs) && localContent.qs.length > 0) {
+            qs.push(...localContent.qs);
+          }
+
+          const notes = contentRow.notes || localContent?.notes || "";
+
+          logger.action("CONTENT_SERVED", "success", {
+            source: qs.length > 0 && (!quizData || !quizData.questions?.length) ? "supabase_hybrid_local" : "supabase",
+            subject: sid,
+            chapter: cid,
+            topic,
+          });
+
+          return res.json({
+            notes,
+            qs,
+          });
+        }
+      }
+    } catch (err) {
+      logger.error("SUPABASE_CONTENT_FETCH_FAILED", err, { subject: sid, chapter: cid, topic });
     }
-    if (!contentRow) {
-      logger.action("CONTENT_NOT_FOUND", "failed", {
-        subject: sid,
-        chapter: cid,
-        topic,
-      });
-      return res.status(404).json({ error: "Content not found" });
-    }
-    logger.db("SELECT", "content_view", "success", {
+  }
+
+  // 3. Supabase unavailable or content not found in Supabase -> Try local fallback
+  if (localContent) {
+    logger.action("CONTENT_SERVED", "success", {
+      source: "local_fallback",
       subject: sid,
       chapter: cid,
       topic,
     });
-    // Fetch quizzes, questions, and answers for this topic
-    const { data: quizData, error: quizErr } = await supabase
-      .from("quizzes")
-      .select(
-        `
-        id,
-        questions (
-          id,
-          question,
-          hint,
-          explain,
-          position,
-          concept_tag,
-          difficulty,
-          answers (
-            answer_text,
-            is_correct
-          )
-        )
-      `,
-      )
-      .eq("topic_id", contentRow.topic_id)
-      .maybeSingle();
-    if (quizErr) {
-      logger.db("SELECT", "quizzes", "error", {
-        topicId: contentRow.topic_id,
-        error: quizErr.message,
-      });
-      return res
-        .status(500)
-        .json({ error: "Database query failed fetching quiz questions" });
-    }
-    logger.db("SELECT", "quizzes", "success", {
-      topicId: contentRow.topic_id,
-      questionCount: (quizData?.questions || []).length,
-    });
-    const qs = [];
-    if (quizData && quizData.questions) {
-      const sortedQuestions = quizData.questions.sort(
-        (a, b) => a.position - b.position,
-      );
-      sortedQuestions.forEach((qObj) => {
-        const correctAnswers = (qObj.answers || [])
-          .filter((a) => a.is_correct)
-          .map((a) => a.answer_text);
-        qs.push({
-          q: qObj.question,
-          hint: qObj.hint || "",
-          ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
-          explain: qObj.explain || "",
-          why: qObj.explain || "",
-          concept_tag: qObj.concept_tag || "",
-          difficulty: qObj.difficulty || "",
-        });
-      });
-    }
-    res.json({
-      notes: contentRow.notes || "",
-      qs,
-    });
-  } catch (err) {
-    logger.error("CONTENT_LOAD", err, { subject: sid, chapter: cid, topic });
-    res.status(500).json({ error: "Internal server error" });
+    return res.json(localContent);
   }
+
+  // 4. Content not found anywhere
+  logger.action("CONTENT_NOT_FOUND", "failed", {
+    subject: sid,
+    chapter: cid,
+    topic,
+  });
+  return res.status(404).json({ error: "Content not found" });
 });
 
 // Endpoint: Grade Answer
 app.post("/api/grade", async (req, res) => {
   const { sid, cid, topic, qId, answer } = req.body || {};
   try {
-    const { data: contentRow, error: contentErr } = await supabase
-      .from("content_view")
-      .select("topic_id")
-      .eq("sid", sid)
-      .eq("cid", cid)
-      .eq("topic", topic)
-      .maybeSingle();
-    if (contentErr) {
-      logger.db("SELECT", "content_view", "error", {
-        operation: "grade",
-        error: contentErr.message,
-      });
-      return res
-        .status(500)
-        .json({ error: "Database query failed grading answer" });
+    if (!CANONICAL_SUBJECT_IDS.has(sid)) {
+      return res.status(404).json({ error: "Subject not recognized" });
     }
-    if (!contentRow) {
-      logger.action("GRADE_ANSWER", "failed", { reason: "content_not_found" });
-      return res.status(404).json({ error: "Content not found" });
-    }
-    const { data: quizData, error: quizErr } = await supabase
-      .from("quizzes")
-      .select(
-        `
-        id,
-        questions (
-          id,
-          question,
-          hint,
-          explain,
-          position,
-          answers (
-            answer_text,
-            is_correct
+
+    const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
+    const normKey = `${sid}|${cid}|${normalizeTopicKey(topic)}`;
+    const topicKey = rawKey;
+    let question = null;
+
+  if (supabase) {
+    try {
+      let { data: contentRow, error: contentErr } = await supabase
+        .from("content_view")
+        .select("topic_id")
+        .eq("sid", sid)
+        .eq("cid", cid)
+        .eq("topic", topic)
+        .maybeSingle();
+
+      if (!contentRow && !contentErr) {
+        const altTopic = topic.includes("-")
+          ? topic.replace(/-/g, "—")
+          : topic.replace(/[\u2010-\u2015]/g, "-");
+        const altRes = await supabase
+          .from("content_view")
+          .select("topic_id")
+          .eq("sid", sid)
+          .eq("cid", cid)
+          .eq("topic", altTopic)
+          .maybeSingle();
+        if (altRes.data) {
+          contentRow = altRes.data;
+        }
+      }
+
+      if (!contentErr && contentRow) {
+        const { data: quizData, error: quizErr } = await supabase
+          .from("quizzes")
+          .select(
+            `
+            id,
+            questions (
+              id,
+              question,
+              type,
+              points,
+              hint,
+              explain,
+              position,
+              answers (
+                answer_text,
+                is_correct
+              )
+            )
+          `,
           )
-        )
-      `,
-      )
-      .eq("topic_id", contentRow.topic_id)
-      .maybeSingle();
-    if (quizErr) {
-      logger.db("SELECT", "quizzes", "error", {
-        operation: "grade",
-        topicId: contentRow.topic_id,
-        error: quizErr.message,
-      });
-      return res.status(500).json({
-        error: "Database query failed fetching quiz questions for grading",
-      });
-    }
-    if (!quizData || !quizData.questions) {
-      return res.status(404).json({ error: "Questions not found" });
-    }
-    const sortedQuestions = quizData.questions.sort(
-      (a, b) => a.position - b.position,
-    );
-    if (!sortedQuestions[qId]) {
-      return res.status(404).json({ error: "Question index not found" });
-    }
-    const questionObj = sortedQuestions[qId];
-    const correctAnswers = (questionObj.answers || [])
-      .filter((a) => a.is_correct)
-      .map((a) => a.answer_text);
-    const question = {
-      q: questionObj.question,
-      hint: questionObj.hint || "",
-      ans: correctAnswers.length === 1 ? correctAnswers[0] : correctAnswers,
-      why: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-      sol: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-      mark: questionObj.explain || "Demonstrate clear step-by-step reasoning.",
-    };
+          .eq("topic_id", contentRow.topic_id)
+          .maybeSingle();
 
-    // ── BACKEND SELF-VERIFICATION (Overrides corrupted DB answers) ───────────
-    const qText = String(question.q || "").toLowerCase();
-    let rawAns = question.ans;
-    const rectMatch =
-      qText.match(/(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i) ||
-      qText.match(/(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i);
+        if (!quizErr && quizData && quizData.questions) {
+          const sortedQuestions = quizData.questions.sort(
+            (a, b) => a.position - b.position,
+          );
+          if (sortedQuestions[qId]) {
+            const questionObj = sortedQuestions[qId];
+            const answers = questionObj.answers || [];
+            const correctAnswers = answers
+              .filter((a) => a.is_correct)
+              .map((a) => a.answer_text);
 
-    if (rectMatch && /area/i.test(qText)) {
-      const a = parseFloat(rectMatch[1]);
-      const b = parseFloat(rectMatch[2]);
-      const calcArea = a * b;
-      rawAns = String(calcArea);
+            let why = questionObj.explain || "Demonstrate clear step-by-step reasoning.";
+            let sol = questionObj.explain || "Demonstrate clear step-by-step reasoning.";
+            let steps = [];
+            let options = [];
+            let conceptId = null;
+            let skillId = null;
+            let subskillId = null;
+
+            if (questionObj.explain && typeof questionObj.explain === "string" && questionObj.explain.trim().startsWith("{")) {
+              try {
+                const meta = JSON.parse(questionObj.explain);
+                if (meta && typeof meta === "object") {
+                  why = meta.why || why;
+                  sol = meta.sol || meta.solution || sol;
+                  if (Array.isArray(meta.steps) && meta.steps.length > 0) {
+                    steps = meta.steps;
+                  }
+                  if (Array.isArray(meta.options) && meta.options.length > 0) {
+                    options = meta.options.map((o) => (typeof o === "object" ? o.text : String(o)));
+                  }
+                  conceptId = meta.conceptId || null;
+                  skillId = meta.skillId || null;
+                  subskillId = meta.subskillId || null;
+                }
+              } catch (e) {}
+            }
+
+            if (options.length === 0 && answers.length > 1) {
+              options = answers.map((a) => a.answer_text);
+            }
+
+            const resolvedAns = correctAnswers.length === 1
+              ? correctAnswers[0]
+              : (correctAnswers.length > 1 ? correctAnswers : (answers[0]?.answer_text || ""));
+
+            question = {
+              id: questionObj.id,
+              q: questionObj.question,
+              hint: questionObj.hint || "",
+              ans: resolvedAns,
+              explain: why,
+              why: why,
+              sol: sol,
+              mark: why,
+              steps: steps,
+              type: questionObj.type || (options.length > 1 ? "mcq" : "text"),
+              options: options,
+              conceptId,
+              skillId,
+              subskillId,
+            };
+          }
+        }
+      }
+    } catch (err) {
+      logger.error("SUPABASE_GRADE_FETCH_FAILED", err, { subject: sid, chapter: cid, topic });
     }
+  }
 
-    const correctAnswer = rawAns;
+  // Fallback to local content questions if Supabase question not found
+  if (!question) {
+    const local = LOCAL_CONTENT_MAP.get(normKey) || LOCAL_CONTENT_MAP.get(topicKey);
+    if (local && local.qs && local.qs[qId]) {
+      question = local.qs[qId];
+    }
+  }
+
+  if (!question) {
+    return res.status(404).json({ error: "Question not found for grading" });
+  }
+
+  // ── BACKEND SELF-VERIFICATION (Overrides corrupted DB answers) ───────────
+  const qText = String(question.q || "").toLowerCase();
+  let rawAns =
+    question.ans !== undefined && question.ans !== null
+      ? question.ans
+      : question.a || question.answer || question.Answer || question.sol || "";
+  const rectMatch =
+    qText.match(/(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i) ||
+    qText.match(/(?:width|w|breadth)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)\s*(?:units?|cm|m|km|mm|ft|in)?\s+(?:and|,)?\s+(?:length|l)\s+(?:of|is|=)?\s*(\d+(?:\.\d+)?)/i);
+
+  if (rectMatch && /area/i.test(qText)) {
+    const a = parseFloat(rectMatch[1]);
+    const b = parseFloat(rectMatch[2]);
+    const calcArea = a * b;
+    rawAns = String(calcArea);
+  }
+
+  const correctAnswer = rawAns;
     const normalize = (s) =>
       String(s || "")
         .toLowerCase()
@@ -415,7 +694,11 @@ app.post("/api/grade", async (req, res) => {
       isCorrect = normalize(correctAnswer) === uAns;
     }
 
-    const mainCorrectAnswerStr = Array.isArray(correctAnswer) ? correctAnswer.join(" • ") : String(correctAnswer);
+    const mainCorrectAnswerStr = Array.isArray(correctAnswer)
+      ? correctAnswer.filter((c) => c !== undefined && c !== null && String(c).toLowerCase() !== "undefined").join(" • ")
+      : (correctAnswer !== undefined && correctAnswer !== null && String(correctAnswer).toLowerCase() !== "undefined")
+        ? String(correctAnswer)
+        : "";
     logger.action("GRADE_ANSWER", "success", {
       isCorrect,
       questionIndex: qId,
@@ -423,8 +706,9 @@ app.post("/api/grade", async (req, res) => {
     res.json({
       isCorrect,
       correctAnswer: mainCorrectAnswerStr,
-      solution: question.sol || question.why,
-      mark: question.mark,
+      solution: question.sol || question.why || question.explain || "",
+      steps: Array.isArray(question.steps) ? question.steps : [],
+      mark: question.mark || "",
     });
   } catch (err) {
     logger.error("GRADE_ANSWER", err);
@@ -432,7 +716,7 @@ app.post("/api/grade", async (req, res) => {
   }
 });
 
-// Endpoint: Batch insert learning events for analytics
+// Endpoint: Batch insert learning events for analytics with idempotency & bulk resolution
 app.post("/api/analytics/events", async (req, res) => {
   const { events } = req.body || {};
   if (!Array.isArray(events) || events.length === 0) {
@@ -440,83 +724,247 @@ app.post("/api/analytics/events", async (req, res) => {
   }
   try {
     const authUserId = await resolveUserId(req);
-    const rowsToInsert = [];
-    for (const evt of events) {
-      const { sid, cid, topic, event_type, user_id } = evt;
-      if (!sid || !cid || !topic || !event_type) continue;
+    if (!authUserId) {
+      return res.status(401).json({ error: "Unauthorized" });
+    }
 
-      if (!authUserId) continue;
+    // 1. Strict Runtime Validation & Batch Deduplication (Tixar Intelligence Law)
+    const { validEvents, rejectedEvents, duplicatesCount, stats } = validateEventsBatch(events);
 
-      // Anti-spoofing rejection: Explicitly reject cross-account data submissions
-      if (user_id && user_id !== authUserId) {
-        logger.warn("ANALYTICS_REJECTED_CROSS_ACCOUNT", { authUserId, payloadUserId: user_id, topic });
-        continue;
+    if (validEvents.length === 0) {
+      try {
+        await supabase.from("telemetry_health_logs").insert({
+          batch_size: stats.total,
+          valid_events_count: 0,
+          rejected_events_count: stats.rejected,
+          duplicates_suppressed: duplicatesCount,
+          unresolved_topics_count: 0,
+          user_id: authUserId,
+          rejection_reasons: rejectedEvents.slice(0, 10).map((r) => r.error),
+        });
+      } catch (logErr) {
+        logger.warn("TELEMETRY_HEALTH_LOG_WARN", { error: logErr.message });
       }
 
-      const targetUserId = authUserId;
-
-      const { data: contentRow, error: contentErr } = await supabase
-        .from("content_view")
-        .select("topic_id")
-        .eq("sid", sid)
-        .eq("cid", cid)
-        .eq("topic", topic)
-        .maybeSingle();
-      if (contentErr || !contentRow) continue;
-      rowsToInsert.push({
-        topic_id: contentRow.topic_id,
-        event_type,
-        user_id: targetUserId,
+      return res.status(400).json({
+        error: "All events in batch failed schema validation",
+        rejectedCount: stats.rejected,
+        reasons: rejectedEvents.map((r) => r.error),
       });
     }
-    if (rowsToInsert.length === 0) {
-      return res.json({ inserted: 0 });
-    }
-    const batchSize = 100;
-    let totalInserted = 0;
-    for (let i = 0; i < rowsToInsert.length; i += batchSize) {
-      const chunk = rowsToInsert.slice(i, i + batchSize);
-      const { error: insertErr } = await supabase
-        .from("learning_events")
-        .insert(chunk);
-      if (insertErr) {
-        logger.db("INSERT", "learning_events", "error", {
-          error: insertErr.message,
-        });
-        continue;
+
+    // 2. Bulk resolution: extract unique sid::cid::topic keys to prevent N+1 queries
+    const keysToResolve = new Map();
+    for (const evt of validEvents) {
+      const sid = evt.sid || evt.subject_id;
+      const cid = evt.cid || evt.chapter_id;
+      const topic = evt.topic;
+      if (sid && cid && topic) {
+        const key = `${String(sid).toLowerCase().trim()}::${String(cid).toLowerCase().trim()}::${String(topic).toLowerCase().trim()}`;
+        if (!keysToResolve.has(key)) {
+          keysToResolve.set(key, { sid, cid, topic });
+        }
       }
-      totalInserted += chunk.length;
     }
+
+    const topicIdLookup = new Map();
+    if (keysToResolve.size > 0) {
+      const sids = [...new Set([...keysToResolve.values()].map((k) => k.sid))];
+      const { data: matchedRows, error: lookupErr } = await supabase
+        .from("content_view")
+        .select("topic_id, sid, cid, topic")
+        .in("sid", sids);
+
+      if (!lookupErr && matchedRows) {
+        for (const row of matchedRows) {
+          if (row.sid && row.cid && row.topic) {
+            const sidKey = String(row.sid).toLowerCase().trim();
+            const cidKey = String(row.cid).toLowerCase().trim();
+            const topicKey = String(row.topic).toLowerCase().trim();
+
+            topicIdLookup.set(`${sidKey}::${cidKey}::${topicKey}`, row.topic_id);
+            topicIdLookup.set(`${sidKey}::${cidKey}::${topicKey.replace(/[^a-z0-9]+/g, "-")}`, row.topic_id);
+            topicIdLookup.set(`${sidKey}::${cidKey}::${topicKey.replace(/[-_]/g, " ")}`, row.topic_id);
+          }
+        }
+      }
+    }
+
+    // 3. Build rowsToInsert with server-enforced identity and idempotency key
+    const rowsToInsert = [];
+    let unresolvedTopicsCount = 0;
+
+    for (const evt of validEvents) {
+      const sid = evt.sid || evt.subject_id;
+      const cid = evt.cid || evt.chapter_id;
+      const topic = evt.topic;
+      const event_type = evt.event_type || evt.type;
+
+      if (!event_type) continue;
+
+      let topic_id = null;
+      if (evt.topic_id && (typeof evt.topic_id === "number" || /^\d+$/.test(evt.topic_id))) {
+        topic_id = parseInt(evt.topic_id, 10);
+      } else if (sid && cid && topic) {
+        const sidKey = String(sid).toLowerCase().trim();
+        const cidKey = String(cid).toLowerCase().trim();
+        const topicKey = String(topic).toLowerCase().trim();
+
+        topic_id =
+          topicIdLookup.get(`${sidKey}::${cidKey}::${topicKey}`) ||
+          topicIdLookup.get(`${sidKey}::${cidKey}::${topicKey.replace(/[^a-z0-9]+/g, "-")}`) ||
+          topicIdLookup.get(`${sidKey}::${cidKey}::${topicKey.replace(/[-_]/g, " ")}`) ||
+          null;
+      }
+
+      if (!topic_id) {
+        unresolvedTopicsCount++;
+      }
+
+      const client_event_id = evt.client_event_id || evt.id || null;
+
+      rowsToInsert.push({
+        topic_id,
+        event_type,
+        user_id: authUserId, // Server is the sole authority on identity
+        client_event_id,
+        created_at: evt.created_at || new Date().toISOString(),
+      });
+    }
+
+    // 4. Batch upsert with ON CONFLICT (client_event_id) for retry safety
+    let totalInserted = 0;
+    if (rowsToInsert.length > 0) {
+      const batchSize = 100;
+      for (let i = 0; i < rowsToInsert.length; i += batchSize) {
+        const chunk = rowsToInsert.slice(i, i + batchSize);
+        const { error: insertErr } = await supabase
+          .from("learning_events")
+          .upsert(chunk, { onConflict: "client_event_id", ignoreDuplicates: true });
+
+        if (insertErr) {
+          logger.warn("UPSERT_FALLBACK_TO_INSERT", { error: insertErr.message });
+          const fallbackRows = chunk.map(({ client_event_id, ...rest }) => rest);
+          const { error: fallbackErr } = await supabase.from("learning_events").insert(fallbackRows);
+          if (fallbackErr) {
+            logger.db("INSERT", "learning_events", "error", { error: fallbackErr.message });
+            continue;
+          }
+        }
+        totalInserted += chunk.length;
+      }
+    }
+
+    // 5. Telemetry Ingestion Observability Log
+    try {
+      await supabase.from("telemetry_health_logs").insert({
+        batch_size: stats.total,
+        valid_events_count: validEvents.length,
+        rejected_events_count: rejectedEvents.length,
+        duplicates_suppressed: duplicatesCount,
+        unresolved_topics_count: unresolvedTopicsCount,
+        user_id: authUserId,
+        rejection_reasons: rejectedEvents.slice(0, 10).map((r) => r.error),
+      });
+    } catch (healthLogErr) {
+      logger.warn("TELEMETRY_HEALTH_LOG_INSERT_FAILED", { error: healthLogErr.message });
+    }
+
+    // 6. Asynchronously trigger decision ledger update so intelligence_decisions is always updated
+    if (totalInserted > 0) {
+      (async () => {
+        try {
+          const { data: userEvents } = await supabase
+            .from("learning_events")
+            .select("id, client_event_id, topic_id, event_type, created_at, metadata")
+            .eq("user_id", authUserId)
+            .order("created_at", { ascending: true });
+
+          const attempts = [];
+          if (userEvents) {
+            userEvents.forEach((e) => {
+              const isPass = e.event_type === "pass" || e.event_type === "question_correct";
+              const isFail = e.event_type === "fail" || e.event_type === "question_incorrect";
+              if (isPass || isFail) {
+                attempts.push({
+                  id: e.id,
+                  client_event_id: e.client_event_id || null,
+                  topic_id: e.topic_id,
+                  topic: e.metadata?.topicName || (e.topic_id ? `Topic #${e.topic_id}` : "General Mathematics"),
+                  correct: isPass,
+                  event_type: e.event_type,
+                  cognitive_level: e.metadata?.cognitiveLevel || null,
+                  created_at: e.created_at,
+                });
+              }
+            });
+          }
+
+          const { data: spacedReviews } = await supabase
+            .from("spaced_reviews")
+            .select("id, user_id, topic_id, topic_title, next_review_at, interval_days, repetitions")
+            .eq("user_id", authUserId);
+
+          await intelligenceService.computeAndRecordDecision(
+            supabase,
+            authUserId,
+            attempts,
+            [],
+            spacedReviews || []
+          );
+        } catch (decErr) {
+          logger.warn("AUTO_DECISION_TRIGGER_WARN", { error: decErr.message });
+        }
+      })().catch(() => {});
+    }
+
     logger.action("ANALYTICS_EVENTS_SYNCED", "success", {
       receivedCount: events.length,
+      validCount: validEvents.length,
+      rejectedCount: rejectedEvents.length,
+      duplicatesSuppressed: duplicatesCount,
       insertedCount: totalInserted,
       userId: authUserId,
     });
-    res.json({ inserted: totalInserted });
+
+    res.json({
+      inserted: totalInserted,
+      accepted: validEvents.length,
+      rejected: rejectedEvents.length,
+      duplicatesSuppressed: duplicatesCount,
+    });
   } catch (err) {
     logger.error("ANALYTICS_EVENTS_SYNC", err);
     res.status(500).json({ error: "Internal server error" });
   }
 });
 
-// Endpoint: Get aggregated analytics for the current user
+// Endpoint: Get aggregated canonical learning evidence for the current user
 app.get("/api/analytics", async (req, res) => {
   try {
     const userId = await resolveUserId(req);
 
     if (!userId) {
       return res.json({
+        authority: "LOCAL_PROVISIONAL",
+        engineVersion: intelligenceService.ENGINE_VERSION,
+        ruleVersion: intelligenceService.RULE_VERSION,
+        schemaVersion: intelligenceService.SCHEMA_VERSION,
+        decision: null,
         coldStart: true,
-        intelligenceState: "cold_start",
-        totalAttempts: 0,
+        intelligenceState: "no_evidence",
+        evidence: {
+          totalQuestionsAnswered: 0,
+          totalVisits: 0,
+          correctCount: 0,
+          incorrectCount: 0,
+          attempts: [],
+        },
+        topics: [],
         mostVisited: [],
         mostPassed: [],
         mostFailed: [],
         unvisited: [],
-        weakTopics: [],
-        strongTopics: [],
-        unresolvedMistakes: [],
-        dueReviews: [],
       });
     }
 
@@ -555,24 +1003,71 @@ app.get("/api/analytics", async (req, res) => {
       return null;
     };
 
-    // 1. User-specific learning events
-    const { data: events } = await supabase
+    // 1. Fetch user-specific learning events with full details
+    const { data: events, error: eventErr } = await supabase
       .from("learning_events")
-      .select("topic_id, event_type")
-      .eq("user_id", userId);
+      .select("id, client_event_id, topic_id, event_type, created_at, metadata")
+      .eq("user_id", userId)
+      .order("created_at", { ascending: true });
+
+    if (eventErr) {
+      logger.db("SELECT", "learning_events", "error", { error: eventErr.message });
+    }
+
+    const attempts = [];
+    let totalVisits = 0;
+    let correctCount = 0;
+    let incorrectCount = 0;
 
     if (events) {
       events.forEach((e) => {
+        const isVisit = e.event_type === "visit" || e.event_type === "lesson_opened";
+        const isPass = e.event_type === "pass" || e.event_type === "question_correct";
+        const isFail = e.event_type === "fail" || e.event_type === "question_incorrect";
+
         const item = getTopicItem(e.topic_id, null);
         if (item) {
-          if (e.event_type === "visit") item.visit_count += 1;
-          if (e.event_type === "pass") item.pass_count += 1;
-          if (e.event_type === "fail") item.fail_count += 1;
+          if (isVisit) {
+            item.visit_count += 1;
+            totalVisits += 1;
+          }
+          if (isPass) {
+            item.pass_count += 1;
+            correctCount += 1;
+            attempts.push({
+              id: e.id,
+              client_event_id: e.client_event_id || null,
+              topic_id: e.topic_id,
+              topic: item.topic_title,
+              subject_id: item.subject_id,
+              chapter_id: item.chapter_id,
+              correct: true,
+              event_type: e.event_type,
+              cognitive_level: e.metadata?.cognitiveLevel || e.metadata?.cognitive_level || null,
+              created_at: e.created_at,
+            });
+          }
+          if (isFail) {
+            item.fail_count += 1;
+            incorrectCount += 1;
+            attempts.push({
+              id: e.id,
+              client_event_id: e.client_event_id || null,
+              topic_id: e.topic_id,
+              topic: item.topic_title,
+              subject_id: item.subject_id,
+              chapter_id: item.chapter_id,
+              correct: false,
+              event_type: e.event_type,
+              cognitive_level: e.metadata?.cognitiveLevel || e.metadata?.cognitive_level || null,
+              created_at: e.created_at,
+            });
+          }
         }
       });
     }
 
-    // 2. User-specific progress
+    // 2. User-specific progress (for backward compatibility)
     const { data: progressRows } = await supabase
       .from("progress")
       .select("topic_id, topic_title, completed, score")
@@ -582,38 +1077,71 @@ app.get("/api/analytics", async (req, res) => {
       progressRows.forEach((p) => {
         const item = getTopicItem(p.topic_id, p.topic_title);
         if (item) {
-          if (p.completed && item.pass_count === 0) {
-            item.pass_count = 1;
-          }
-          if (p.score != null && p.score < 50 && item.fail_count === 0) {
-            item.fail_count = 1;
-          }
+          if (p.completed && item.pass_count === 0) item.pass_count = 1;
+          if (p.score != null && p.score < 50 && item.fail_count === 0) item.fail_count = 1;
         }
       });
     }
 
     const rows = Array.from(topicMap.values());
-
     const mostVisited = [...rows].filter((r) => r.visit_count > 0).sort((a, b) => b.visit_count - a.visit_count).slice(0, 10);
     const mostPassed = [...rows].filter((r) => r.pass_count > 0).sort((a, b) => b.pass_count - a.pass_count).slice(0, 10);
     const mostFailed = [...rows].filter((r) => r.fail_count > 0).sort((a, b) => b.fail_count - a.fail_count).slice(0, 10);
     const unvisited = rows.filter((r) => r.visit_count === 0 && r.pass_count === 0);
 
-    const hasLearningEvidence = mostVisited.length > 0 || mostPassed.length > 0 || mostFailed.length > 0;
-    const isColdStart = !hasLearningEvidence;
+    const totalQuestionsAnswered = attempts.length;
+    const hasAssessmentEvidence = totalQuestionsAnswered > 0;
+    const isColdStart = !hasAssessmentEvidence;
+
+    const intelligenceState =
+      totalQuestionsAnswered === 0
+        ? "no_evidence"
+        : totalQuestionsAnswered < 5
+        ? "early_evidence"
+        : "established";
+
+    // 3. Fetch Spaced Reviews for retention evaluation
+    const { data: spacedReviews } = await supabase
+      .from("spaced_reviews")
+      .select("id, user_id, topic_id, topic_title, next_review_at, interval_days, repetitions")
+      .eq("user_id", userId);
+
+    // 4. Compute and record Authoritative Intelligence Decision (Immutable Ledger)
+    const authoritativeDecision = await intelligenceService.computeAndRecordDecision(
+      supabase,
+      userId,
+      attempts,
+      rows,
+      spacedReviews || []
+    );
 
     logger.action("ANALYTICS_FETCHED", "success", {
       userId,
       totalTopics: rows.length,
-      visitedCount: mostVisited.length,
-      unvisitedCount: unvisited.length,
+      totalQuestionsAnswered,
+      totalVisits,
       isColdStart,
+      intelligenceState,
+      decisionId: authoritativeDecision.decisionId,
+      decisionType: authoritativeDecision.decisionType,
     });
 
     res.json({
+      authority: "SERVER_VERIFIED",
+      engineVersion: authoritativeDecision.engineVersion,
+      ruleVersion: authoritativeDecision.ruleVersion,
+      schemaVersion: authoritativeDecision.schemaVersion,
+      decision: authoritativeDecision,
       coldStart: isColdStart,
-      intelligenceState: isColdStart ? "cold_start" : "active_learning",
-      totalAttempts: (events || []).length + (progressRows || []).length,
+      intelligenceState,
+      evidence: {
+        totalQuestionsAnswered,
+        totalVisits,
+        correctCount,
+        incorrectCount,
+        attempts, // Canonical real assessment attempts (1:1 with learner actions)
+      },
+      topics: rows,
       mostVisited: isColdStart ? [] : mostVisited,
       mostPassed: isColdStart ? [] : mostPassed,
       mostFailed: isColdStart ? [] : mostFailed,
@@ -622,6 +1150,52 @@ app.get("/api/analytics", async (req, res) => {
   } catch (err) {
     logger.error("ANALYTICS_FETCH", err);
     res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+// Endpoint: Internal Intelligence & Telemetry Health Observability (Phase P0)
+app.get("/api/admin/intelligence-health", async (req, res) => {
+  try {
+    const { data: healthLogs } = await supabase
+      .from("telemetry_health_logs")
+      .select("*")
+      .order("recorded_at", { ascending: false })
+      .limit(50);
+
+    const { data: decisions } = await supabase
+      .from("intelligence_decisions")
+      .select("id, decision_type, action_type, engine_version, rule_version, created_at, supersedes_decision_id")
+      .order("created_at", { ascending: false })
+      .limit(50);
+
+    const totalBatches = (healthLogs || []).length;
+    const totalValid = (healthLogs || []).reduce((acc, h) => acc + (h.valid_events_count || 0), 0);
+    const totalRejected = (healthLogs || []).reduce((acc, h) => acc + (h.rejected_events_count || 0), 0);
+    const totalDuplicates = (healthLogs || []).reduce((acc, h) => acc + (h.duplicates_suppressed || 0), 0);
+
+    res.json({
+      status: "healthy",
+      engineVersion: intelligenceService.ENGINE_VERSION,
+      ruleVersion: intelligenceService.RULE_VERSION,
+      schemaVersion: intelligenceService.SCHEMA_VERSION,
+      telemetryObservability: {
+        batchesObserved: totalBatches,
+        totalValidEvents: totalValid,
+        totalRejectedEvents: totalRejected,
+        totalDuplicatesSuppressed: totalDuplicates,
+        rejectionRatePct: totalValid + totalRejected > 0
+          ? ((totalRejected / (totalValid + totalRejected)) * 100).toFixed(2)
+          : "0.00",
+        recentLogs: healthLogs || []
+      },
+      decisionsObservability: {
+        recentDecisionsCount: (decisions || []).length,
+        recentDecisions: decisions || []
+      }
+    });
+  } catch (err) {
+    logger.error("INTELLIGENCE_HEALTH_FETCH", err);
+    res.status(500).json({ error: "Failed fetching intelligence health" });
   }
 });
 

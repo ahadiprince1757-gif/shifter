@@ -24,7 +24,19 @@ function ChapterList({ subject, openChapter, goBack }) {
               <div className="chap-badge-number">Chapter {idx + 1}</div>
               <div className="chap-name-humanistic">{c.label}</div>
               <div className="chap-meta-humanistic">
-                {c.topics.length} topic{c.topics.length !== 1 ? "s" : ""}
+                {(() => {
+                  const total = (c.topics || []).reduce((acc, t) => {
+                    if (typeof t === "object" && t !== null && Array.isArray(t.subtopics) && t.subtopics.length > 0) {
+                      return acc + t.subtopics.length;
+                    }
+                    return acc + 1;
+                  }, 0);
+                  const topicCount = (c.topics || []).length;
+                  const hasHierarchy = (c.topics || []).some(t => typeof t === "object" && t !== null && Array.isArray(t.subtopics) && t.subtopics.length > 0);
+                  return hasHierarchy
+                    ? `${topicCount} Topics · ${total} Subtopics`
+                    : `${total} topic${total !== 1 ? "s" : ""}`;
+                })()}
               </div>
             </div>
             <div className="chap-arrow">→</div>

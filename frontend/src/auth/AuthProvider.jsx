@@ -68,7 +68,7 @@ export function AuthProvider({ children }) {
       })
       .catch((err) => {
         // Offline or Supabase unreachable — rely on cached session loaded above
-        console.warn("Could not reach Supabase for session (offline?)", err.message);
+        console.debug("Note: Could not reach Supabase for session (offline mode):", err?.message);
         setSessionLoading(false);
       });
 
@@ -96,7 +96,9 @@ export function AuthProvider({ children }) {
           const isAuthCallback =
             window.location.hash.includes("access_token=") ||
             window.location.search.includes("code=");
-          const isOnLanding = window.location.pathname === "/";
+          const isOnLanding =
+            window.location.pathname === "/" ||
+            window.location.pathname === "/welcome";
 
           setTimeout(() => {
             window.history.replaceState({}, document.title, window.location.pathname);
@@ -107,7 +109,11 @@ export function AuthProvider({ children }) {
               `Welcome! Logged in as ${newSession.user.user_metadata?.full_name || newSession.user.email}`
             );
 
-            if (isOnLanding || isAuthCallback) {
+            const pendingSubject = sessionStorage.getItem("tixar_pending_subject");
+            if (pendingSubject) {
+              sessionStorage.removeItem("tixar_pending_subject");
+              setTimeout(() => navigate(`/subjects/${pendingSubject}`), 100);
+            } else if (isOnLanding || isAuthCallback) {
               setTimeout(() => navigate("/subjects"), 100);
             }
             setShowAuthModal(false);
@@ -118,6 +124,7 @@ export function AuthProvider({ children }) {
             cacheSession(null);
             setSession(null);
             setSessionLoading(false);
+            navigate("/welcome");
           }
         }
 
@@ -147,7 +154,7 @@ export function AuthProvider({ children }) {
       setSession(null);
       await supabase.auth.signOut();
       toast.success("Logged out successfully");
-      navigate("/");
+      navigate("/welcome");
     } catch (err) {
       console.error("Logout error:", err);
       toast.error(`Logout failed: ${err.message}`);

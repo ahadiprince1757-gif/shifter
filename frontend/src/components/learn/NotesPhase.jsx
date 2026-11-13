@@ -73,6 +73,16 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
   }, []);
 
   const handleTouchStart = (e) => {
+    // If touch originates inside a table or scratchpad, don't initiate card swipe gestures
+    if (
+      e.target.closest(".table-responsive") ||
+      e.target.closest("table") ||
+      e.target.closest(".scratchpad-section")
+    ) {
+      touchStartX.current = null;
+      return;
+    }
+
     if (e.touches.length === 2) {
       const dist = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
@@ -90,6 +100,16 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
   };
 
   const handleTouchMove = (e) => {
+    // If touch is on table or scratchpad, disable card swipe
+    if (
+      e.target.closest(".table-responsive") ||
+      e.target.closest("table") ||
+      e.target.closest(".scratchpad-section")
+    ) {
+      touchStartX.current = null;
+      return;
+    }
+
     if (isPinching.current && e.touches.length === 2) {
       const currentDist = Math.hypot(
         e.touches[0].clientX - e.touches[1].clientX,
@@ -135,7 +155,14 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
     ? content.notes.join("\n\n")
     : content.notes || "";
   const hasHtml = typeof notes === "string" && /<[^>]+>/.test(notes);
-  const markup = notes || "<p>No notes are available for this topic yet.</p>";
+  const rawMarkup = notes || "<p>No notes are available for this topic yet.</p>";
+
+  // Ensure any HTML tables are wrapped in a responsive, horizontally-scrollable container
+  const markup = typeof rawMarkup === "string"
+    ? rawMarkup.replace(/(?:<div[^>]*class="[^"]*table-responsive[^"]*"[^>]*>\s*)?(<table\b[\s\S]*?<\/table>)(?:\s*<\/div>)?/gi, (match, tableHtml) => {
+        return `<div class="table-responsive">${tableHtml}</div>`;
+      })
+    : rawMarkup;
 
   return (
     <div
@@ -156,7 +183,17 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
             {hasHtml ? (
               <div dangerouslySetInnerHTML={{ __html: markup }} />
             ) : (
-              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                rehypePlugins={[rehypeRaw]}
+                components={{
+                  table: ({ node, ...props }) => (
+                    <div className="table-responsive">
+                      <table {...props} />
+                    </div>
+                  ),
+                }}
+              >
                 {markup}
               </ReactMarkdown>
             )}

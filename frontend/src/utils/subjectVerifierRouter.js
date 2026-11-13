@@ -72,7 +72,7 @@ export function verifyQuestionAcrossSubjects(
     ...result,
     canonicalAnswer: result.canonicalAnswer || rawAnsStr,
     verifiedAnswer: result.shouldOverride ? result.canonicalAnswer : (result.canonicalAnswer || rawAnsStr),
-    verifiedSteps: result.verifiedSteps?.length ? result.verifiedSteps : originalSteps,
+    verifiedSteps: originalSteps && originalSteps.length > 0 ? originalSteps : (result.verifiedSteps?.length ? result.verifiedSteps : originalSteps),
     wasOverridden: result.shouldOverride,
   };
 }

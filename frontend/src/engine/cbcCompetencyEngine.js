@@ -129,9 +129,12 @@ function getMasteryDescriptor(points) {
 /**
  * Builds a Vector-Based Mastery Map with Evidence Confidence scoring across topics.
  *
- * Key Feature:
- * Measures competency as a vector across individual topics rather than
- * collapsing everything into a single misleading average.
+ * Evidence Thresholds:
+ * - 1-2 attempts: Signal / Insufficient Evidence (Monitor only)
+ * - 3-4 attempts: Emerging Evidence
+ * - 5-6 attempts: Moderate Evidence (Threshold for confirmed gaps/mastery)
+ * - 7-9 attempts: Strong Evidence
+ * - 10+ attempts: High Confidence
  *
  * @param {Array<{ topic: string, correct: boolean }>} attempts
  * @returns {object} Vector map of topics + identified knowledge gaps & evidence warnings
@@ -171,14 +174,37 @@ export function buildMasteryMap(attempts = []) {
   const knowledgeGaps = [];
   const evidenceWarnings = [];
 
-  // 2. Build Mastery Vectors with Evidence Confidence
+  // 2. Build Mastery Vectors with Evidence-Aware Thresholds
   for (const [topic, data] of Object.entries(topicGroups)) {
     const performanceScore = Math.round((data.correct / data.total) * 100);
     const evidenceConfidence = calculateEvidenceConfidence(data.total);
     const cbc = mapScoreToCompetency(performanceScore);
 
-    // Verified mastery requires BOTH strong performance AND sufficient evidence
-    const verifiedMastery = performanceScore >= 75 && evidenceConfidence >= 75;
+    // Evidence Thresholds
+    const isInsufficientEvidence = data.total < 3;
+    const verifiedMastery = performanceScore >= 75 && data.total >= 5;
+
+    // Critical Gap requires BOTH persistent difficulty AND sufficient evidence (>= 5 attempts)
+    const isCriticalGap = data.total >= 5 && performanceScore < 40;
+
+    // Weak Topic requires at least 3 attempts
+    const isWeak = data.total >= 3 && performanceScore < 58;
+
+    let masteryState = "DEVELOPING";
+    if (isInsufficientEvidence) {
+      masteryState = "INSUFFICIENT_EVIDENCE";
+    } else if (verifiedMastery) {
+      masteryState = "VERIFIED_MASTERY";
+    } else if (isCriticalGap) {
+      masteryState = "CRITICAL_GAP";
+    } else if (isWeak) {
+      masteryState = "DEVELOPING_WEAKNESS";
+    }
+
+    let readinessImpact = "NONE";
+    if (isCriticalGap) readinessImpact = "BLOCKING";
+    else if (isWeak) readinessImpact = "NEEDS_ATTENTION";
+    else if (data.total < 3 && performanceScore < 58) readinessImpact = "MONITOR";
 
     const topicStats = {
       topic,
@@ -187,6 +213,8 @@ export function buildMasteryMap(attempts = []) {
       performanceScore,
       evidenceConfidence,
       verifiedMastery,
+      masteryState,
+      readinessImpact,
       cbcCode: cbc.code,
       points: cbc.points,
       category: cbc.category,
@@ -194,25 +222,27 @@ export function buildMasteryMap(attempts = []) {
 
     topics[topic] = topicStats;
 
-    // Strong Topics (Confirmed Verified Mastery)
+    // Strong Topics (Confirmed verified mastery with >= 5 attempts)
     if (verifiedMastery) {
       strongTopics.push(topicStats);
     }
 
-    // Weak Topics & Knowledge Gaps
-    if (performanceScore < 58) {
+    // Weak Topics (Confirmed difficulty with >= 3 attempts)
+    if (isWeak) {
       weakTopics.push(topicStats);
-      if (performanceScore < 40) {
-        knowledgeGaps.push({ ...topicStats, severity: "CRITICAL" });
-      }
     }
 
-    // Insufficient Evidence Warnings
-    if (evidenceConfidence < 60) {
+    // Knowledge Gaps (Critical blockers with >= 5 attempts and < 40% accuracy)
+    if (isCriticalGap) {
+      knowledgeGaps.push({ ...topicStats, severity: "CRITICAL" });
+    }
+
+    // Insufficient Evidence Warnings (1-2 attempts)
+    if (isInsufficientEvidence) {
       evidenceWarnings.push({
         topic,
         attempts: data.total,
-        message: "More evidence is required before confirming mastery.",
+        message: "Still gathering evidence to evaluate this topic.",
       });
     }
   }
@@ -227,8 +257,15 @@ export function buildMasteryMap(attempts = []) {
 }
 
 /**
- * Calculates Tixar Readiness Status based on overall score, mastery vector map,
- * critical knowledge gaps, evidence confidence, and prerequisite dependencies.
+ * Calculates Tixar Readiness Status based on evidence volume, prerequisite dependencies,
+ * evidence-backed knowledge gaps, and demonstrated mastery.
+ *
+ * Decision Hierarchy:
+ * 1. Do we have enough evidence overall? (total attempts >= 5)
+ * 2. Are prerequisites satisfied?
+ * 3. Are there evidence-backed critical gaps? (>= 5 attempts on topic, < 40% score)
+ * 4. Is mastery sufficiently demonstrated? (>= 75% accuracy)
+ * 5. Targeted revision (58 - 74%)
  *
  * @param {object|number} options - Options object or overallScore number
  * @param {object} [fallbackMap] - Fallback masteryMap if positional args used
@@ -239,6 +276,7 @@ export function calculateReadiness(options = {}, fallbackMap = null, fallbackPre
   let overallScore;
   let masteryMap;
   let prerequisiteStatus;
+  let totalAttempts = 0;
 
   if (
     typeof options === "object" &&
@@ -249,74 +287,88 @@ export function calculateReadiness(options = {}, fallbackMap = null, fallbackPre
     overallScore = options.overallScore ?? 0;
     masteryMap = options.masteryMap || null;
     prerequisiteStatus = options.prerequisiteStatus || null;
+    totalAttempts = options.totalAttempts ?? 0;
   } else {
     overallScore = options;
     masteryMap = fallbackMap;
     prerequisiteStatus = fallbackPrereq;
   }
 
+  // Derive totalAttempts from masteryMap if not explicitly passed
+  if (!totalAttempts && masteryMap?.topics) {
+    totalAttempts = Object.values(masteryMap.topics).reduce((sum, t) => sum + (t.attempts || 0), 0);
+  }
+
   const score = Math.max(0, Math.min(100, Math.round(Number(overallScore) || 0)));
   const criticalGaps = masteryMap?.knowledgeGaps || [];
   const evidenceWarnings = masteryMap?.evidenceWarnings || [];
 
-  // 1. BLOCKED BY CRITICAL KNOWLEDGE GAP
-  if (criticalGaps.length > 0) {
+  // 1. EVIDENCE BUILDING STAGE (Need at least 5 question attempts across curriculum)
+  if (totalAttempts < 5) {
     return {
       ready: false,
       score,
-      status: "CRITICAL_GAP_DETECTED",
-      label: "Not Ready — Critical Gap Detected",
-      blockingTopics: criticalGaps.map((gap) => gap.topic),
+      totalAttempts,
+      status: "INSUFFICIENT_EVIDENCE",
+      label: totalAttempts === 0 ? "Unmeasured" : "We're Still Learning Your Strengths",
+      evidenceWarnings,
       recommendation:
-        criticalGaps.length === 1
-          ? `Strengthen foundational concepts in ${criticalGaps[0].topic} before advancing.`
-          : `Strengthen foundational concepts in ${criticalGaps.length} weak topics before advancing.`,
+        totalAttempts === 0
+          ? "Complete your first topic quiz to begin establishing your readiness baseline."
+          : `You've completed ${totalAttempts} question${totalAttempts > 1 ? "s" : ""}. Keep practicing so we can build an accurate readiness picture.`,
     };
   }
 
-  // 2. PREREQUISITE FAILURE
+  // 2. PREREQUISITE SKILLS CHECK
   if (prerequisiteStatus?.satisfied === false) {
     return {
       ready: false,
       score,
+      totalAttempts,
       status: "PREREQUISITE_NOT_MET",
       label: "Prerequisite Skills Need Attention",
       missingPrerequisites: prerequisiteStatus.missing || [],
-      recommendation: "Review prerequisite skills before advancing.",
+      recommendation: "Review foundational prerequisite skills before advancing.",
     };
   }
 
-  // 3. INSUFFICIENT EVIDENCE
-  if (evidenceWarnings.length > 0 && score < 90) {
+  // 3. EVIDENCE-BACKED CRITICAL GAPS (Requires >= 5 attempts on topic + <40% score)
+  if (criticalGaps.length > 0) {
     return {
       ready: false,
       score,
-      status: "INSUFFICIENT_EVIDENCE",
-      label: "More Evidence Needed",
-      evidenceWarnings,
-      recommendation: "Complete additional questions to confirm consistent mastery.",
+      totalAttempts,
+      status: "CRITICAL_GAP_DETECTED",
+      label: "Needs Foundational Attention",
+      blockingTopics: criticalGaps.map((gap) => gap.topic),
+      recommendation:
+        criticalGaps.length === 1
+          ? `Work through foundational concepts in ${criticalGaps[0].topic} before progressing.`
+          : `Work through foundational concepts in ${criticalGaps.length} topics needing attention before progressing.`,
     };
   }
 
-  // 4. READY TO ADVANCE
+  // 4. READY TO ADVANCE (Score >= 75%)
   if (score >= 75) {
     return {
       ready: true,
       score,
+      totalAttempts,
       status: "READY_TO_ADVANCE",
       label: "Ready to Advance",
-      recommendation: "You have demonstrated sufficient and consistent competency across all assessed topics.",
+      recommendation: "You have demonstrated strong and consistent understanding across assessed topics.",
     };
   }
 
-  // 5. TARGETED REVISION
+  // 5. TARGETED REVISION (Score 58 - 74%)
   if (score >= 58) {
     return {
       ready: false,
       score,
+      totalAttempts,
       status: "TARGETED_REVISION",
       label: "Almost Ready — Targeted Revision",
-      recommendation: "Complete targeted revision before advancing.",
+      recommendation: "Review topics that need attention and demonstrate mastery again.",
     };
   }
 
@@ -324,8 +376,9 @@ export function calculateReadiness(options = {}, fallbackMap = null, fallbackPre
   return {
     ready: false,
     score,
+    totalAttempts,
     status: "FOUNDATIONAL_REVISION",
-    label: "Needs Foundational Revision",
-    recommendation: "Rebuild core concepts before progressing.",
+    label: "Needs More Practice",
+    recommendation: "Spend more time with core practice questions before moving ahead.",
   };
 }

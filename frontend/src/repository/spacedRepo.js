@@ -125,5 +125,12 @@ export const spacedRepo = {
       return null;
     }
   },
+
+  /**
+   * Alias for getDueReviews to satisfy getDueItems calls
+   */
+  async getDueItems(userId) {
+    return this.getDueReviews(userId);
+  },
 };
 

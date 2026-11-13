@@ -116,7 +116,7 @@ export function verifyMathAnswer(questionText, storedAns) {
       verifiedAnswer: formatted,
       steps,
       verifiedSteps: steps,
-      wasOverridden: true,
+      wasOverridden: false,
       confidence,
       operation,
       explanation,
@@ -192,30 +192,45 @@ function solveFromText(q) {
 // MEAN / AVERAGE SOLVER
 // ============================================================================
 
-function trySolveMean(q) {
-  if (!/\b(?:mean|average)\b/i.test(q)) {
+export function trySolveMean(q) {
+  // Only support a clearly delimited list immediately after
+  // "mean of" or "average of".
+  const match = q.match(
+    /\b(?:mean|average)\s+of\s+((?:\d+(?:\.\d+)?\s*(?:,\s*|\band\b\s*|\s+))*\d+(?:\.\d+)?)(?=\s*(?:[?.;]|$))/i
+  );
+
+  if (!match) return null;
+
+  const rawValues = match[1]
+    .split(/\s*(?:,|\band\b)\s*/i)
+    .map((value) => value.trim())
+    .filter(Boolean);
+
+  if (rawValues.length < 2) return null;
+
+  if (rawValues.some((value) => !/^\d+(?:\.\d+)?$/.test(value))) {
     return null;
   }
 
-  const matches = q.match(/\b\d+(?:\.\d+)?\b/g);
-  if (!matches || matches.length < 2) return null;
+  const numbers = rawValues.map(Number);
 
-  const numbers = matches.map(Number);
-  const sum = numbers.reduce((a, b) => a + b, 0);
-  const count = numbers.length;
-  const mean = sum / count;
-  const formatted = Number.isInteger(mean) ? String(mean) : mean.toFixed(2).replace(/\.00$/, "");
+  if (!numbers.every(Number.isFinite)) return null;
+
+  const sum = numbers.reduce((total, value) => total + value, 0);
+  const mean = sum / numbers.length;
+  const formatted = String(formatAnswer(mean));
 
   return {
     answer: formatted,
-    confidence: 0.98,
+    confidence: 0.95,
     operation: "mean",
-    explanation: `The mean of ${numbers.join(", ")} is calculated by (${numbers.join(" + ")}) / ${count} = ${sum} / ${count} = ${formatted}.`,
+    explanation:
+      `Mean = (${numbers.join(" + ")}) / ${numbers.length} = ${formatted}.`,
     steps: [
-      `Step 1: Sum the values: ${numbers.join(" + ")} = ${sum}`,
-      `Step 2: Count total numbers: n = ${count}`,
-      `Step 3: Calculate Mean = ${sum} / ${count} = ${formatted}`
-    ]
+      `Step 1: Add the values: ${numbers.join(" + ")} = ${sum}`,
+      `Step 2: Count the values: ${numbers.length}`,
+      `Step 3: Divide the sum by the count: ${sum} / ${numbers.length} = ${formatted}`,
+    ],
   };
 }
 
@@ -237,7 +252,7 @@ function normalizeQuestion(q) {
 // AREA
 // ============================================================================
 
-function trySolveArea(q) {
+export function trySolveArea(q) {
   if (!/\barea\b/i.test(q)) {
     return null;
   }
@@ -246,76 +261,75 @@ function trySolveArea(q) {
   // Rectangle
   // ----------------------------------------------------------
 
-  const rect =
-    extractNamedPair(
-      q,
-      ["length", "l"],
-      ["width", "breadth", "w"]
+  let rect = extractNamedPair(
+    q,
+    ["length", "l"],
+    ["width", "breadth", "w"]
+  );
+
+  if (!rect) {
+    const byMatch = q.match(
+      /\brectangle\b[^\d]*?(\d+(?:\.\d+)?)\s*(cm|m|km|mm|ft|in|inches|yards?)?\s*(?:by|x|×)\s*(\d+(?:\.\d+)?)\s*(cm|m|km|mm|ft|in|inches|yards?)?/i
     );
+    if (byMatch) {
+      rect = {
+        first: Number(byMatch[1]),
+        firstUnit: normalizeUnit(byMatch[2]),
+        second: Number(byMatch[3]),
+        secondUnit: normalizeUnit(byMatch[4]),
+      };
+    }
+  }
 
   if (rect) {
-    const {
-      first,
-      second,
-      firstUnit,
-      secondUnit,
-    } = rect;
+    const { first, second, firstUnit, secondUnit } = rect;
 
-    if (
-      !areCompatibleUnits(
-        firstUnit,
-        secondUnit
-      )
-    ) {
+    // Unit contract: Reject if one dimension has a unit and the other does not
+    if (Boolean(firstUnit) !== Boolean(secondUnit)) {
       return null;
     }
 
-    const length =
-      convertLengthToBase(
-        first,
-        firstUnit
-      );
-
-    const width =
-      convertLengthToBase(
-        second,
-        secondUnit
-      );
-
-    if (
-      length === null ||
-      width === null
-    ) {
+    if (!areCompatibleUnits(firstUnit, secondUnit)) {
       return null;
     }
 
-    const area =
-      length * width;
+    let area;
+    let displayUnit;
 
-    const displayUnit =
-      commonUnit(
-        firstUnit,
-        secondUnit
-      );
+    if (firstUnit && secondUnit) {
+      if (firstUnit === secondUnit) {
+        area = first * second;
+        displayUnit = firstUnit;
+      } else {
+        const length = convertLengthToBase(first, firstUnit);
+        const width = convertLengthToBase(second, secondUnit);
+        if (length === null || width === null) {
+          return null;
+        }
+        area = length * width;
+        displayUnit = "m";
+      }
+    } else {
+      area = first * second;
+      displayUnit = null;
+    }
 
     return {
       answer: area,
       operation: "rectangle_area",
       confidence: 0.99,
-
       steps: [
         "Formula: Area of rectangle = Length × Width",
         `Substituting: Area = ${first} × ${second}`,
         `Area = ${formatAnswer(area)}${
-          displayUnit
-            ? ` ${displayUnit}²`
-            : " square units"
+          displayUnit ? ` ${displayUnit}²` : " square units"
         }`,
       ],
-
       explanation:
         `Area of rectangle = Length × Width = ` +
-        `${first} × ${second} = ${formatAnswer(area)}`,
+        `${first} × ${second} = ${formatAnswer(area)}${
+          displayUnit ? ` ${displayUnit}²` : ""
+        }`,
     };
   }
 
@@ -323,47 +337,27 @@ function trySolveArea(q) {
   // Square
   // ----------------------------------------------------------
 
-  if (
-    /\bsquare\b/i.test(q)
-  ) {
-    const side =
-      extractSingleDimension(
-        q,
-        ["side"]
-      );
+  if (/\bsquare\b/i.test(q)) {
+    const side = extractSingleDimension(q, ["side"]);
 
     if (side) {
-      const sideValue =
-        convertLengthToBase(
-          side.value,
-          side.unit
-        );
-
-      if (sideValue === null) {
-        return null;
-      }
-
-      const area =
-        sideValue * sideValue;
+      const area = side.value * side.value;
+      const displayUnit = side.unit || null;
 
       return {
         answer: area,
         operation: "square_area",
         confidence: 0.99,
-
         steps: [
           "Formula: Area of square = Side²",
           `Substituting: Area = ${side.value}²`,
           `Area = ${formatAnswer(area)}${
-            side.unit
-              ? ` ${side.unit}²`
-              : " square units"
+            displayUnit ? ` ${displayUnit}²` : " square units"
           }`,
         ],
-
         explanation:
           `Area of square = ${side.value}² = ` +
-          `${formatAnswer(area)}`,
+          `${formatAnswer(area)}${displayUnit ? ` ${displayUnit}²` : ""}`,
       };
     }
   }
@@ -372,67 +366,57 @@ function trySolveArea(q) {
   // Triangle
   // ----------------------------------------------------------
 
-  if (
-    /\btriangle\b/i.test(q)
-  ) {
-    const base =
-      extractSingleDimension(
-        q,
-        ["base"]
-      );
-
-    const height =
-      extractSingleDimension(
-        q,
-        ["height"]
-      );
+  if (/\btriangle\b/i.test(q)) {
+    const base = extractSingleDimension(q, ["base"]);
+    const height = extractSingleDimension(q, ["height"]);
 
     if (base && height) {
-      if (
-        !areCompatibleUnits(
-          base.unit,
-          height.unit
-        )
-      ) {
+      // Unit contract: Reject if one has a unit and the other does not
+      if (Boolean(base.unit) !== Boolean(height.unit)) {
         return null;
       }
 
-      const b =
-        convertLengthToBase(
-          base.value,
-          base.unit
-        );
-
-      const h =
-        convertLengthToBase(
-          height.value,
-          height.unit
-        );
-
-      if (
-        b === null ||
-        h === null
-      ) {
+      if (!areCompatibleUnits(base.unit, height.unit)) {
         return null;
       }
 
-      const area =
-        0.5 * b * h;
+      let area;
+      let displayUnit;
+
+      if (base.unit && height.unit) {
+        if (base.unit === height.unit) {
+          area = 0.5 * base.value * height.value;
+          displayUnit = base.unit;
+        } else {
+          const b = convertLengthToBase(base.value, base.unit);
+          const h = convertLengthToBase(height.value, height.unit);
+          if (b === null || h === null) {
+            return null;
+          }
+          area = 0.5 * b * h;
+          displayUnit = "m";
+        }
+      } else {
+        area = 0.5 * base.value * height.value;
+        displayUnit = null;
+      }
 
       return {
         answer: area,
         operation: "triangle_area",
         confidence: 0.99,
-
         steps: [
           "Formula: Area of triangle = ½ × Base × Height",
           `Substituting: Area = 0.5 × ${base.value} × ${height.value}`,
-          `Area = ${formatAnswer(area)} square units`,
+          `Area = ${formatAnswer(area)}${
+            displayUnit ? ` ${displayUnit}²` : " square units"
+          }`,
         ],
-
         explanation:
           `Area of triangle = ½ × ${base.value} × ` +
-          `${height.value} = ${formatAnswer(area)}`,
+          `${height.value} = ${formatAnswer(area)}${
+            displayUnit ? ` ${displayUnit}²` : ""
+          }`,
       };
     }
   }
@@ -441,20 +425,9 @@ function trySolveArea(q) {
   // Circle
   // ----------------------------------------------------------
 
-  if (
-    /\bcircle\b/i.test(q)
-  ) {
-    const radius =
-      extractSingleDimension(
-        q,
-        ["radius"]
-      );
-
-    const diameter =
-      extractSingleDimension(
-        q,
-        ["diameter"]
-      );
+  if (/\bcircle\b/i.test(q)) {
+    const radius = extractSingleDimension(q, ["radius"]);
+    const diameter = extractSingleDimension(q, ["diameter"]);
 
     if (!radius && !diameter) {
       return null;
@@ -464,58 +437,34 @@ function trySolveArea(q) {
     let unit;
 
     if (radius) {
-      r =
-        convertLengthToBase(
-          radius.value,
-          radius.unit
-        );
-
-      unit = radius.unit;
+      r = radius.value;
+      unit = radius.unit || null;
     } else {
-      const d =
-        convertLengthToBase(
-          diameter.value,
-          diameter.unit
-        );
-
-      if (d === null) {
-        return null;
-      }
-
-      r = d / 2;
-      unit = diameter.unit;
+      r = diameter.value / 2;
+      unit = diameter.unit || null;
     }
 
-    if (r === null) {
+    if (r === null || !Number.isFinite(r)) {
       return null;
     }
 
-    const area =
-      Math.PI * r * r;
+    const area = Math.PI * r * r;
 
     return {
-      answer: Number(
-        area.toFixed(4)
-      ),
-
+      answer: Number(area.toFixed(4)),
       operation: "circle_area",
-
       confidence: 0.99,
-
       steps: [
         "Formula: Area of circle = π × r²",
         `Radius = ${formatAnswer(r)}`,
         `Area = π × ${formatAnswer(r)}²`,
         `Area ≈ ${area.toFixed(2)}${
-          unit
-            ? ` ${unit}²`
-            : " square units"
+          unit ? ` ${unit}²` : " square units"
         }`,
       ],
-
       explanation:
         `Area of circle = π × r² ≈ ` +
-        `${area.toFixed(2)}`,
+        `${area.toFixed(2)}${unit ? ` ${unit}²` : ""}`,
     };
   }
 
@@ -526,7 +475,7 @@ function trySolveArea(q) {
 // PERIMETER
 // ============================================================================
 
-function trySolvePerimeter(q) {
+export function trySolvePerimeter(q) {
   if (!/\bperimeter\b/i.test(q)) {
     return null;
   }
@@ -535,59 +484,56 @@ function trySolvePerimeter(q) {
   // Rectangle
   // ----------------------------------------------------------
 
-  const rect =
-    extractNamedPair(
-      q,
-      ["length", "l"],
-      ["width", "breadth", "w"]
-    );
+  const rect = extractNamedPair(
+    q,
+    ["length", "l"],
+    ["width", "breadth", "w"]
+  );
 
   if (rect) {
-    if (
-      !areCompatibleUnits(
-        rect.firstUnit,
-        rect.secondUnit
-      )
-    ) {
+    if (Boolean(rect.firstUnit) !== Boolean(rect.secondUnit)) {
       return null;
     }
 
-    const length =
-      convertLengthToBase(
-        rect.first,
-        rect.firstUnit
-      );
-
-    const width =
-      convertLengthToBase(
-        rect.second,
-        rect.secondUnit
-      );
-
-    if (
-      length === null ||
-      width === null
-    ) {
+    if (!areCompatibleUnits(rect.firstUnit, rect.secondUnit)) {
       return null;
     }
 
-    const perimeter =
-      2 * (length + width);
+    let perimeter;
+    let displayUnit;
+
+    if (rect.firstUnit && rect.secondUnit) {
+      if (rect.firstUnit === rect.secondUnit) {
+        perimeter = 2 * (rect.first + rect.second);
+        displayUnit = rect.firstUnit;
+      } else {
+        const length = convertLengthToBase(rect.first, rect.firstUnit);
+        const width = convertLengthToBase(rect.second, rect.secondUnit);
+        if (length === null || width === null) {
+          return null;
+        }
+        perimeter = 2 * (length + width);
+        displayUnit = "m";
+      }
+    } else {
+      perimeter = 2 * (rect.first + rect.second);
+      displayUnit = null;
+    }
 
     return {
       answer: perimeter,
       operation: "rectangle_perimeter",
       confidence: 0.99,
-
       steps: [
         "Formula: Perimeter of rectangle = 2 × (Length + Width)",
         `Substituting: Perimeter = 2 × (${rect.first} + ${rect.second})`,
-        `Perimeter = ${formatAnswer(perimeter)} units`,
+        `Perimeter = ${formatAnswer(perimeter)}${
+          displayUnit ? ` ${displayUnit}` : " units"
+        }`,
       ],
-
       explanation:
         `Perimeter = 2(${rect.first} + ${rect.second}) = ` +
-        `${formatAnswer(perimeter)}`,
+        `${formatAnswer(perimeter)}${displayUnit ? ` ${displayUnit}` : ""}`,
     };
   }
 
@@ -595,43 +541,27 @@ function trySolvePerimeter(q) {
   // Square
   // ----------------------------------------------------------
 
-  if (
-    /\bsquare\b/i.test(q)
-  ) {
-    const side =
-      extractSingleDimension(
-        q,
-        ["side"]
-      );
+  if (/\bsquare\b/i.test(q)) {
+    const side = extractSingleDimension(q, ["side"]);
 
     if (side) {
-      const sideValue =
-        convertLengthToBase(
-          side.value,
-          side.unit
-        );
-
-      if (sideValue === null) {
-        return null;
-      }
-
-      const perimeter =
-        4 * sideValue;
+      const perimeter = 4 * side.value;
+      const displayUnit = side.unit || null;
 
       return {
         answer: perimeter,
         operation: "square_perimeter",
         confidence: 0.99,
-
         steps: [
           "Formula: Perimeter of square = 4 × Side",
           `Substituting: Perimeter = 4 × ${side.value}`,
-          `Perimeter = ${formatAnswer(perimeter)} units`,
+          `Perimeter = ${formatAnswer(perimeter)}${
+            displayUnit ? ` ${displayUnit}` : " units"
+          }`,
         ],
-
         explanation:
           `Perimeter = 4 × ${side.value} = ` +
-          `${formatAnswer(perimeter)}`,
+          `${formatAnswer(perimeter)}${displayUnit ? ` ${displayUnit}` : ""}`,
       };
     }
   }
@@ -920,6 +850,36 @@ function trySolveSimpleAlgebra(q) {
    * x / 4 = 3
    */
 
+  // ax [+-] b = c (e.g. 2x + 4 = 10)
+  const fullLinearMatch = q.match(
+    /\b(?:solve|find|calculate|determine)?\s*(?:for\s+)?(-?\d+(?:\.\d+)?)\s*x\s*([+-])\s*(\d+(?:\.\d+)?)\s*=\s*(-?\d+(?:\.\d+)?)\b/i
+  );
+
+  if (fullLinearMatch) {
+    const coeff = Number(fullLinearMatch[1]);
+    const op = fullLinearMatch[2];
+    const b = Number(fullLinearMatch[3]);
+    const c = Number(fullLinearMatch[4]);
+
+    if (coeff !== 0) {
+      const intermediate = op === "+" ? c - b : c + b;
+      const answer = intermediate / coeff;
+      return {
+        answer,
+        operation: "linear_equation",
+        confidence: 0.97,
+        steps: [
+          `Equation: ${coeff}x ${op} ${b} = ${c}`,
+          op === "+"
+            ? `Subtract ${b} from both sides: ${coeff}x = ${intermediate}`
+            : `Add ${b} to both sides: ${coeff}x = ${intermediate}`,
+          `Divide both sides by ${coeff}: x = ${formatAnswer(answer)}`,
+        ],
+        explanation: `Solving ${coeff}x ${op} ${b} = ${c} gives x = ${formatAnswer(answer)}`,
+      };
+    }
+  }
+
   const equationMatch =
     q.match(
       /\b(?:solve|find|calculate|determine)?\s*(?:for\s+)?x\s*([+-])\s*(\d+(?:\.\d+)?)\s*=\s*(-?\d+(?:\.\d+)?)\b/i
@@ -1040,7 +1000,7 @@ function trySolveSimpleAlgebra(q) {
 // SAFE SIMPLE ARITHMETIC
 // ============================================================================
 
-function trySolveSimpleArithmetic(q) {
+export function trySolveSimpleArithmetic(q) {
   /*
    * IMPORTANT:
    *
@@ -1067,20 +1027,15 @@ function trySolveSimpleArithmetic(q) {
     return null;
   }
 
-  const expression =
-    raw
-      .replace(/×/g, "*")
-      .replace(/÷/g, "/")
-      .replace(/\^/g, "**");
+  const expression = raw
+    .replace(/×/g, "*")
+    .replace(/÷/g, "/")
+    .replace(/\*\*/g, "^");
 
   /*
    * Only numbers, whitespace and arithmetic operators.
    */
-  if (
-    !/^[0-9+\-*/().\s%]+$/.test(
-      expression.replace(/\*\*/g, "^")
-    )
-  ) {
+  if (!/^[0-9+\-*/().\s%^]+$/.test(expression)) {
     return null;
   }
 
@@ -1089,7 +1044,7 @@ function trySolveSimpleArithmetic(q) {
       expression
     );
 
-  if (!tokens) {
+  if (!tokens || !hasValidExpressionSyntax(tokens)) {
     return null;
   }
 
@@ -1130,7 +1085,7 @@ function trySolveSimpleArithmetic(q) {
 // SAFE EXPRESSION TOKENIZER
 // ============================================================================
 
-function tokenizeExpression(expression) {
+export function tokenizeExpression(expression) {
   const source =
     String(expression)
       .replace(/\s+/g, "");
@@ -1208,10 +1163,103 @@ function tokenizeExpression(expression) {
 }
 
 // ============================================================================
+// EXPRESSION SYNTAX VALIDATOR
+// ============================================================================
+
+export function evaluateExpressionString(str) {
+  const raw = String(str || "").trim();
+  const normalized = raw
+    .replace(/×/g, "*")
+    .replace(/÷/g, "/")
+    .replace(/\*\*/g, "^");
+  const tokens = tokenizeExpression(normalized);
+  if (!tokens || !hasValidExpressionSyntax(tokens)) {
+    return null;
+  }
+  return evaluateExpression(tokens);
+}
+
+export function hasValidExpressionSyntax(tokens) {
+  if (!Array.isArray(tokens) || tokens.length === 0) {
+    return false;
+  }
+
+  let parenDepth = 0;
+  let prevToken = null;
+
+  for (let i = 0; i < tokens.length; i++) {
+    const token = tokens[i];
+    if (!token || !token.type) return false;
+
+    if (token.type === "paren") {
+      if (token.value === "(") {
+        parenDepth++;
+        if (
+          prevToken &&
+          (prevToken.type === "number" ||
+            (prevToken.type === "paren" && prevToken.value === ")"))
+        ) {
+          return false;
+        }
+      } else if (token.value === ")") {
+        parenDepth--;
+        if (parenDepth < 0) return false;
+        if (
+          !prevToken ||
+          (prevToken.type === "paren" && prevToken.value === "(") ||
+          prevToken.type === "operator"
+        ) {
+          return false;
+        }
+      } else {
+        return false;
+      }
+    } else if (token.type === "operator") {
+      const isBinaryOnly = ["*", "/", "%", "^"].includes(token.value);
+      if (i === 0 && isBinaryOnly) {
+        return false;
+      }
+      if (i === tokens.length - 1) {
+        return false;
+      }
+      if (prevToken) {
+        if (prevToken.type === "operator") {
+          if (isBinaryOnly) {
+            return false;
+          }
+          if (i > 1 && tokens[i - 2].type === "operator") {
+            return false;
+          }
+        } else if (prevToken.type === "paren" && prevToken.value === "(") {
+          if (isBinaryOnly) {
+            return false;
+          }
+        }
+      }
+    } else if (token.type === "number") {
+      if (!Number.isFinite(token.value)) return false;
+      if (
+        prevToken &&
+        (prevToken.type === "number" ||
+          (prevToken.type === "paren" && prevToken.value === ")"))
+      ) {
+        return false;
+      }
+    } else {
+      return false;
+    }
+
+    prevToken = token;
+  }
+
+  return parenDepth === 0;
+}
+
+// ============================================================================
 // SAFE EXPRESSION EVALUATOR
 // ============================================================================
 
-function evaluateExpression(tokens) {
+export function evaluateExpression(tokens) {
   let position = 0;
 
   function peek() {
@@ -1223,61 +1271,39 @@ function evaluateExpression(tokens) {
   }
 
   function parseExpression() {
-    let value =
-      parseTerm();
+    let value = parseTerm();
+    if (value === null) return null;
 
     while (
       peek()?.type === "operator" &&
-      (
-        peek().value === "+" ||
-        peek().value === "-"
-      )
+      (peek().value === "+" || peek().value === "-")
     ) {
-      const operator =
-        consume().value;
-
-      const right =
-        parseTerm();
-
+      const operator = consume().value;
+      const right = parseTerm();
       if (right === null) {
         return null;
       }
-
-      value =
-        operator === "+"
-          ? value + right
-          : value - right;
+      value = operator === "+" ? value + right : value - right;
     }
 
     return value;
   }
 
   function parseTerm() {
-    let value =
-      parsePower();
+    let value = parseUnary();
+    if (value === null) return null;
 
     while (
       peek()?.type === "operator" &&
-      (
-        peek().value === "*" ||
-        peek().value === "/" ||
-        peek().value === "%"
-      )
+      (peek().value === "*" || peek().value === "/" || peek().value === "%")
     ) {
-      const operator =
-        consume().value;
-
-      const right =
-        parsePower();
-
+      const operator = consume().value;
+      const right = parseUnary();
       if (right === null) {
         return null;
       }
 
-      if (
-        operator === "/" &&
-        right === 0
-      ) {
+      if (operator === "/" && right === 0) {
         return null;
       }
 
@@ -1293,104 +1319,64 @@ function evaluateExpression(tokens) {
     return value;
   }
 
-  function parsePower() {
-    let value =
-      parseUnary();
-
-    if (
-      peek()?.type === "operator" &&
-      peek().value === "^"
-    ) {
+  function parseUnary() {
+    if (peek()?.type === "operator" && peek().value === "+") {
       consume();
+      return parseUnary();
+    }
 
-      const exponent =
-        parsePower();
+    if (peek()?.type === "operator" && peek().value === "-") {
+      consume();
+      const value = parseUnary();
+      return value === null ? null : -value;
+    }
 
+    return parsePower();
+  }
+
+  function parsePower() {
+    let value = parsePrimary();
+    if (value === null) return null;
+
+    if (peek()?.type === "operator" && peek().value === "^") {
+      consume();
+      const exponent = parseUnary();
       if (exponent === null) {
         return null;
       }
-
-      value =
-        Math.pow(
-          value,
-          exponent
-        );
+      value = Math.pow(value, exponent);
     }
 
     return value;
   }
 
-  function parseUnary() {
-    if (
-      peek()?.type === "operator" &&
-      peek().value === "+"
-    ) {
-      consume();
-      return parseUnary();
-    }
-
-    if (
-      peek()?.type === "operator" &&
-      peek().value === "-"
-    ) {
-      consume();
-
-      const value =
-        parseUnary();
-
-      return value === null
-        ? null
-        : -value;
-    }
-
-    return parsePrimary();
-  }
-
   function parsePrimary() {
-    const token =
-      peek();
-
+    const token = peek();
     if (!token) {
       return null;
     }
 
-    if (
-      token.type === "number"
-    ) {
+    if (token.type === "number") {
       consume();
       return token.value;
     }
 
-    if (
-      token.type === "paren" &&
-      token.value === "("
-    ) {
+    if (token.type === "paren" && token.value === "(") {
       consume();
-
-      const value =
-        parseExpression();
-
-      if (
-        peek()?.type !== "paren" ||
-        peek().value !== ")"
-      ) {
+      const value = parseExpression();
+      if (peek()?.type !== "paren" || peek().value !== ")") {
         return null;
       }
-
       consume();
-
       return value;
     }
 
     return null;
   }
 
-  const result =
-    parseExpression();
+  const result = parseExpression();
 
-  if (
-    position !== tokens.length
-  ) {
+  if (position !== tokens.length) {
     return null;
   }
 
@@ -1730,19 +1716,16 @@ function secondsToPreferredTime(
   }
 }
 
-function areCompatibleUnits(
-  a,
-  b
-) {
-  if (!a || !b) {
+export function areCompatibleUnits(a, b) {
+  if (!a && !b) {
     return true;
   }
+  if (!a || !b) {
+    return false;
+  }
 
-  const aLength =
-    lengthToMeters(1, a);
-
-  const bLength =
-    lengthToMeters(1, b);
+  const aLength = lengthToMeters(1, a);
+  const bLength = lengthToMeters(1, b);
 
   return (
     aLength !== null &&
@@ -1804,3 +1787,69 @@ function formatAnswer(value) {
     value.toFixed(6)
   );
 }
+
+/**
+ * Strict Semantic Boundary Verifier for Math Mutations.
+ * Discards any candidate question that violates semantic invariants or mathematical validity.
+ */
+export function verifyMathSemanticBoundary(candidateQuestion, expectedSkillId = "", expectedConceptId = "") {
+  if (!candidateQuestion) {
+    return { isValid: false, reason: "NULL_CANDIDATE" };
+  }
+
+  const text = String(
+    candidateQuestion.q ||
+    candidateQuestion.question ||
+    candidateQuestion.Question ||
+    ""
+  ).trim();
+
+  const ans = String(
+    candidateQuestion.ans ||
+    candidateQuestion.answer ||
+    candidateQuestion.Answer ||
+    ""
+  ).trim();
+
+  // 1. Structural validity
+  if (!text || !ans) {
+    return { isValid: false, reason: "MISSING_TEXT_OR_ANSWER" };
+  }
+
+  const numAns = parseNumber(ans);
+  if (numAns === null || !Number.isFinite(numAns)) {
+    // If it's not a numeric string or algebraic expression, verify non-empty
+    if (ans.length === 0) {
+      return { isValid: false, reason: "INVALID_ANSWER_FORMAT" };
+    }
+  }
+
+  // 2. Semantic drift checks
+  const normSkill = String(expectedSkillId || "").toLowerCase();
+  const normConcept = String(expectedConceptId || "").toLowerCase();
+
+  // Invariant A: BODMAS / Order of Operations must NOT drift into quadratics, linear equations with x, or trigonometry
+  if (normSkill.includes("bodmas") || normSkill.includes("multiplication_before") || normConcept.includes("order_of_operations")) {
+    const forbiddenPatterns = [
+      /x\^2|x²|quadratic/i,
+      /\bsin\b|\bcos\b|\btan\b/i,
+      /\bfind x\b|\bsolve for x\b/i,
+    ];
+
+    for (const pattern of forbiddenPatterns) {
+      if (pattern.test(text)) {
+        return { isValid: false, reason: "SEMANTIC_DRIFT_BODMAS_TO_COMPLEX_TOPIC" };
+      }
+    }
+  }
+
+  // Invariant B: Arithmetic must not drift into calculus or matrices
+  if (normConcept.includes("numbers") || normConcept.includes("arithmetic")) {
+    if (/\bint\b|\bderivative\b|\bmatrix\b/i.test(text)) {
+      return { isValid: false, reason: "SEMANTIC_DRIFT_ARITHMETIC_TO_ADVANCED" };
+    }
+  }
+
+  return { isValid: true, reason: "VERIFIED_SEMANTIC_BOUNDARY" };
+}
+

@@ -20,6 +20,7 @@ export function useLiveQuery(querier, deps, defaultResult) {
 
   useEffect(() => {
     let cancelled = false;
+    setResult(defaultResult);
     const observable = liveQuery(() => querierRef.current());
     const subscription = observable.subscribe({
       next: (val) => {

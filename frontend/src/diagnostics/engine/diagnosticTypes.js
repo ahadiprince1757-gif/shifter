@@ -1,0 +1,147 @@
+/**
+ * Standard diagnostic types, taxonomies, and status constants
+ * for the Tixar 10× Precision Educational Diagnostic Engine.
+ */
+
+export const DiagnosticStatus = {
+  CORRECT: "correct",
+  DIAGNOSED: "diagnosed",
+  INCONCLUSIVE: "inconclusive",
+  UNRECOGNIZED: "unrecognized",
+  BLANK: "blank",
+  NEEDS_PROBE: "needs_probe",
+};
+
+export const InputType = {
+  BLANK: "BLANK",
+  GIBBERISH: "GIBBERISH",
+  MULTIPLE_CHOICE: "MULTIPLE_CHOICE",
+  NUMBER: "NUMBER",
+  FRACTION: "FRACTION",
+  EQUATION: "EQUATION",
+  EXPRESSION: "EXPRESSION",
+  TEXT_EXPLANATION: "TEXT_EXPLANATION",
+  UNKNOWN: "UNKNOWN",
+};
+
+export const ProblemType = {
+  // Mathematics
+  NUMBER_CLASSIFICATION: "NUMBER_CLASSIFICATION",
+  LINEAR_EQUATION: "LINEAR_EQUATION",
+  ARITHMETIC_PRECEDENCE: "ARITHMETIC_PRECEDENCE",
+  FRACTION_ARITHMETIC: "FRACTION_ARITHMETIC",
+  AVERAGE_SPEED: "AVERAGE_SPEED",
+  CONCEPTUAL_DISCRETE: "CONCEPTUAL_DISCRETE",
+  GENERAL_NUMERIC: "GENERAL_NUMERIC",
+
+  // Physics
+  PHYSICS_CALCULATION: "PHYSICS_CALCULATION",
+  PHYSICS_CONCEPT: "PHYSICS_CONCEPT",
+
+  // Chemistry
+  CHEMISTRY_CONCEPT: "CHEMISTRY_CONCEPT",
+  CHEMISTRY_STOICHIOMETRY: "CHEMISTRY_STOICHIOMETRY",
+
+  // Biology
+  BIOLOGY_PROCESS: "BIOLOGY_PROCESS",
+  BIOLOGY_CLASSIFICATION: "BIOLOGY_CLASSIFICATION",
+
+  // English & Language Arts
+  ENGLISH_GRAMMAR: "ENGLISH_GRAMMAR",
+  ENGLISH_VOCABULARY: "ENGLISH_VOCABULARY",
+
+  // Computer Studies & ICT
+  COMPUTER_ARCHITECTURE: "COMPUTER_ARCHITECTURE",
+  COMPUTER_LOGIC: "COMPUTER_LOGIC",
+
+  UNKNOWN: "UNKNOWN",
+};
+
+export const StepStatus = {
+  VALID: "valid",
+  FIRST_ERROR: "first_error",
+  PROPAGATED_ERROR: "propagated_error",
+  INDEPENDENT_ERROR: "independent_error",
+  UNVERIFIED: "unverified",
+  INCONCLUSIVE: "inconclusive",
+  UNVERIFIABLE: "unverifiable",
+};
+
+export const ErrorOrigin = {
+  ROOT: "ROOT",
+  PROPAGATED: "PROPAGATED",
+  INDEPENDENT: "INDEPENDENT",
+  NONE: "NONE",
+};
+
+export const DiagnosticErrorType = {
+  // General & Procedural
+  SIGN_ERROR: "SIGN_ERROR",
+  ARITHMETIC_ERROR: "ARITHMETIC_ERROR",
+  OPERATION_ERROR: "OPERATION_ERROR",
+  DISTRIBUTION_ERROR: "DISTRIBUTION_ERROR",
+  FRACTION_ERROR: "FRACTION_ERROR",
+  EXPONENT_ERROR: "EXPONENT_ERROR",
+  VARIABLE_ERROR: "VARIABLE_ERROR",
+  EQUALITY_ERROR: "EQUALITY_ERROR",
+  FORMULA_ERROR: "FORMULA_ERROR",
+  SUBSTITUTION_ERROR: "SUBSTITUTION_ERROR",
+  PROCEDURE_ERROR: "PROCEDURE_ERROR",
+  CONCEPT_ERROR: "CONCEPT_ERROR",
+  UNIT_ERROR: "UNIT_ERROR",
+  READING_ERROR: "READING_ERROR",
+  INCOMPLETE_STEP: "INCOMPLETE_STEP",
+  UNJUSTIFIED_TRANSFORMATION: "UNJUSTIFIED_TRANSFORMATION",
+
+  // Cross-disciplinary Conceptual & Distinction Errors
+  DISTINCTION_CONFUSION: "DISTINCTION_CONFUSION",
+  PROCESS_INVERSION: "PROCESS_INVERSION",
+  FORMULA_SELECTION_ERROR: "FORMULA_SELECTION_ERROR",
+  PROPERTY_CONFUSION: "PROPERTY_CONFUSION",
+
+  // Language & Syntax Errors
+  SUBJECT_VERB_AGREEMENT: "SUBJECT_VERB_AGREEMENT",
+  TENSE_MISMATCH: "TENSE_MISMATCH",
+  PART_OF_SPEECH_CONFUSION: "PART_OF_SPEECH_CONFUSION",
+  HOMOPHONE_SLIP: "HOMOPHONE_SLIP",
+
+  // Computing & Architecture Errors
+  VOLATILITY_CONFUSION: "VOLATILITY_CONFUSION",
+  HARDWARE_SOFTWARE_CONFUSION: "HARDWARE_SOFTWARE_CONFUSION",
+  UNIT_BIT_BYTE_CONFUSION: "UNIT_BIT_BYTE_CONFUSION",
+
+  UNKNOWN: "UNKNOWN",
+};
+
+export const EvidenceSource = {
+  FINAL_ANSWER: "final_answer",
+  VERIFIED_WORKING: "verified_working",
+  DISTRACTOR_MATCH: "distractor_match",
+  CONCEPT_PROBE: "concept_probe",
+  STUDENT_EXPLANATION: "student_explanation",
+  SUBSTITUTION_CHECK: "substitution_check",
+};
+
+export const RepairStatus = {
+  NOT_STARTED: "not_started",
+  IN_PROGRESS: "in_progress",
+  COMPLETED: "completed",
+  VERIFIED: "verified",
+  FAILED_VERIFICATION: "failed_verification",
+};
+
+export const VerificationStatus = {
+  NOT_REQUIRED: "not_required",
+  PENDING: "pending",
+  PASSED: "passed",
+  FAILED: "failed",
+  INCONCLUSIVE: "inconclusive",
+};
+
+export const DiagnosticAction = {
+  ACCEPT: "accept",
+  DIAGNOSE: "diagnose",
+  PROBE: "probe",
+  REPAIR: "repair",
+  RETEST: "retest",
+};

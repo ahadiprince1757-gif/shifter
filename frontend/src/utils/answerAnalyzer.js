@@ -16,7 +16,10 @@
  * Optional AI/semantic verification can be layered above this later.
  */
 
-import { diagnoseMisconceptionPattern } from "./misconceptionDiagnoser.js";
+import {
+  diagnoseMisconceptionPattern,
+  diagnoseKnowledgeGap,
+} from "./misconceptionDiagnoser.js";
 
 // ============================================================================
 // CONCEPT CLUSTERS
@@ -891,9 +894,7 @@ function analyseReasoning(
   }
 
   const workTokens = tokenize(userWork);
-  const answerTokens = tokenize(
-    correctAnswer
-  );
+  const answerTokens = tokenize(correctAnswer);
 
   if (!workTokens.length) {
     reasoning.quality = "empty";
@@ -901,20 +902,45 @@ function analyseReasoning(
     return reasoning;
   }
 
-  const matchingConcepts =
-    answerTokens.filter((token) =>
-      workTokens.includes(token)
-    );
+  // IMPORTANT: Only count tokens that are meaningful concept words
+  // (length > 3 and not stop-words). A single generic word like
+  // 'the' or 'and' must not inflate the reasoning score.
+  const REASONING_STOP = new Set([
+    "the", "a", "an", "is", "are", "was", "were", "be", "been",
+    "being", "it", "its", "this", "that", "these", "those",
+    "in", "on", "at", "by", "for", "of", "to", "from", "with",
+    "and", "or", "not", "but", "so", "if", "then", "also",
+    "have", "has", "had", "will", "can", "does", "do", "did"
+  ]);
+
+  const meaningfulAnswerTokens = answerTokens.filter(
+    (t) => t.length > 3 && !REASONING_STOP.has(t)
+  );
+
+  if (meaningfulAnswerTokens.length === 0) {
+    reasoning.quality = "not_provided";
+    reasoning.score = null;
+    return reasoning;
+  }
+
+  const matchingConcepts = meaningfulAnswerTokens.filter(
+    (token) => workTokens.includes(token)
+  );
 
   const conceptRatio =
-    answerTokens.length > 0
-      ? matchingConcepts.length /
-        answerTokens.length
-      : 0;
+    matchingConcepts.length / meaningfulAnswerTokens.length;
 
-  reasoning.score = Math.round(
-    Math.min(1, conceptRatio) * 100
-  );
+  // Require at least 2 distinct matching concept words before
+  // granting anything above "weak". A single keyword hit is
+  // NOT sufficient evidence of procedural reasoning.
+  if (matchingConcepts.length < 2) {
+    reasoning.score = Math.round(Math.min(34, conceptRatio * 100));
+    reasoning.quality = "weak";
+    reasoning.evidence = matchingConcepts.slice(0, 10);
+    return reasoning;
+  }
+
+  reasoning.score = Math.round(Math.min(1, conceptRatio) * 100);
 
   if (reasoning.score >= 70) {
     reasoning.quality = "substantial";
@@ -924,8 +950,7 @@ function analyseReasoning(
     reasoning.quality = "weak";
   }
 
-  reasoning.evidence =
-    matchingConcepts.slice(0, 10);
+  reasoning.evidence = matchingConcepts.slice(0, 10);
 
   return reasoning;
 }
@@ -1156,6 +1181,7 @@ function determineDiagnosis({
   misconceptions,
   missingQualifiers,
   reasoning,
+  knowledgeGapDiag,
 }) {
   if (contradictions.length > 0) {
     return {
@@ -1169,6 +1195,34 @@ function determineDiagnosis({
       type: "misconception",
       severity: "high",
     };
+  }
+
+  // Procedure / Sign / Calculation diagnosis backed by demonstrable working evidence
+  if (!isAnswerCorrect && knowledgeGapDiag?.status === "DIAGNOSED") {
+    if (knowledgeGapDiag.diagnosisType === "SIGN_ERROR") {
+      return {
+        type: "sign_error",
+        severity: "medium",
+        skillId: knowledgeGapDiag.skillId,
+        evidence: knowledgeGapDiag.evidence,
+      };
+    }
+    if (knowledgeGapDiag.diagnosisType === "PROCEDURE_ERROR") {
+      return {
+        type: "procedure_error",
+        severity: "high",
+        skillId: knowledgeGapDiag.skillId,
+        evidence: knowledgeGapDiag.evidence,
+      };
+    }
+    if (knowledgeGapDiag.diagnosisType === "CALCULATION_ERROR") {
+      return {
+        type: "calculation_error",
+        severity: "medium",
+        skillId: knowledgeGapDiag.skillId,
+        evidence: knowledgeGapDiag.evidence,
+      };
+    }
   }
 
   if (incorrectConcepts.length > 0) {
@@ -1336,27 +1390,82 @@ export function analyseStudentAnswer(
       correctAnswer
     );
 
-  const misconceptions =
-    analyseMisconceptions(
-      studentAnswer,
-      correctAnswer,
-      assessment
-    );
+  // Collect misconceptions from pattern diagnoser BEFORE scoring so
+  // all misconceptions are included in understandingScore penalty.
+  const rawMisconceptions = analyseMisconceptions(
+    studentAnswer,
+    correctAnswer,
+    assessment
+  );
 
-  const missingQualifiers =
-    analyseQualifiers(
-      studentAnswer,
-      correctAnswer,
-      assessment
-    );
+  const patternDiag = diagnoseMisconceptionPattern(
+    studentAnswer,
+    correctAnswer
+  );
 
-  const reasoning =
-    analyseReasoning(
-      studentAnswer,
-      correctAnswer,
-      userWork,
-      assessment
-    );
+  if (patternDiag && patternDiag.detail) {
+    rawMisconceptions.push({
+      type: "pattern_misconception",
+      misconception: patternDiag.detail,
+      category: patternDiag.category,
+      confidence: 0.8,
+    });
+  }
+
+  const questionText =
+    typeof question === "string"
+      ? question
+      : question.q ||
+        question.question ||
+        question.stem ||
+        options.question ||
+        assessment?.questionText ||
+        "";
+
+  // Authoritative knowledge gap and order-of-operations diagnoser
+  const knowledgeGapDiag = diagnoseKnowledgeGap({
+    question: questionText,
+    studentAnswer,
+    correctAnswer,
+    steps: options.questionSteps || question.steps || assessment?.steps || [],
+    userWork,
+    subject: options.subject || question.subject || assessment?.subject || "math",
+    conceptId: options.conceptId || question.conceptId || assessment?.conceptId || "",
+    skillId: options.skillId || question.skillId || assessment?.skillId || "",
+  });
+
+  if (knowledgeGapDiag && knowledgeGapDiag.status === "DIAGNOSED") {
+    if (knowledgeGapDiag.diagnosisType === "MISCONCEPTION") {
+      const detailMsg =
+        Array.isArray(knowledgeGapDiag.evidence) && knowledgeGapDiag.evidence.length > 0
+          ? knowledgeGapDiag.evidence.join("; ")
+          : `Order of operations error detected in ${knowledgeGapDiag.conceptId || "calculation"}`;
+
+      rawMisconceptions.push({
+        type: "knowledge_gap_misconception",
+        misconception: detailMsg,
+        category: knowledgeGapDiag.skillId || knowledgeGapDiag.conceptId || "order_of_operations",
+        confidence: knowledgeGapDiag.confidence ?? 0.9,
+        skillId: knowledgeGapDiag.skillId,
+        conceptId: knowledgeGapDiag.conceptId,
+      });
+    }
+  }
+
+  const misconceptions = deduplicateEvidence(rawMisconceptions);
+
+  const missingQualifiers = analyseQualifiers(
+    studentAnswer,
+    correctAnswer,
+    assessment
+  );
+
+  const reasoning = analyseReasoning(
+    studentAnswer,
+    correctAnswer,
+    userWork,
+    assessment
+  );
 
   // ----------------------------------------------------------
   // Determine answer correctness
@@ -1368,7 +1477,7 @@ export function analyseStudentAnswer(
   // ----------------------------------------------------------
 
   const externallySuppliedCorrectness =
-    options.isAnswerCorrect;
+    options.isAnswerCorrect ?? question.isAnswerCorrect;
 
   const isAnswerCorrect =
     typeof externallySuppliedCorrectness ===
@@ -1440,6 +1549,7 @@ export function analyseStudentAnswer(
       misconceptions,
       missingQualifiers,
       reasoning,
+      knowledgeGapDiag,
     });
 
   // ----------------------------------------------------------
@@ -1510,13 +1620,8 @@ export function analyseStudentAnswer(
     });
   }
 
-  const patternDiag = diagnoseMisconceptionPattern(studentAnswer, correctAnswer);
-  if (patternDiag && patternDiag.detail) {
-    misconceptions.push({
-      misconception: patternDiag.detail,
-      category: patternDiag.category
-    });
-  }
+  // patternDiag is now applied earlier (before understandingScore) —
+  // no need to re-push here.
 
   for (const misconception of misconceptions) {
     feedback.push({
@@ -1600,6 +1705,8 @@ export function analyseStudentAnswer(
     reasoning,
 
     math: mathAnalysis,
+
+    knowledgeGap: knowledgeGapDiag,
 
     diagnosticConfidence,
 

@@ -134,7 +134,7 @@ export function useQuiz(
       () => gradeAnswer(payload),
       async () => {
         // Evaluate answer locally offline
-        const res = evaluateAnswer(answer, targetQ);
+        const res = evaluateAnswer(answer, targetQ, work);
         await progressRepo.saveProgress({
           userId,
           topicId: topic,
@@ -144,16 +144,55 @@ export function useQuiz(
       }
     )
       .then((serverRes) => {
+        // ------------------------------------------------------------
+        // Client evaluation
+        //
+        // The client has the canonical question object already loaded
+        // from the content pipeline. This is what gives us the
+        // authoritative curriculum answer/explanation/steps locally.
+        // ------------------------------------------------------------
         const clientRes = evaluateAnswer(answer, targetQ, work);
+
+        // ------------------------------------------------------------
+        // Merge grading evidence without allowing the server response
+        // to destroy the canonical learning content.
+        // ------------------------------------------------------------
         const res = {
           ...clientRes,
-          ...serverRes,
+
+          // Server grading may contain useful backend evidence.
+          // Keep it, but never blindly let it replace learning content.
+          serverGrading: serverRes || null,
+
+          // Client-side canonical answer/solution/steps remain together.
           isCorrect: clientRes.isCorrect,
+          isAnswerCorrect: clientRes.isAnswerCorrect,
+          grade: clientRes.grade,
+          partialCredit: clientRes.partialCredit,
+          acceptedAlternative: clientRes.acceptedAlternative,
+          shouldRecordMistake: clientRes.shouldRecordMistake,
+          missingConcepts: clientRes.missingConcepts,
+          matchedConcepts: clientRes.matchedConcepts,
           correctAnswer: clientRes.correctAnswer,
+          correctAnswerList: clientRes.correctAnswerList,
           solution: clientRes.solution,
+          steps: clientRes.steps,
+          mark: clientRes.mark,
+          analysis: clientRes.analysis,
+          understanding: clientRes.understanding,
+          diagnosis: clientRes.diagnosis,
+          misconceptions: clientRes.misconceptions,
+          conceptEvidence: clientRes.conceptEvidence,
+          diagnosticConfidence: clientRes.diagnosticConfidence,
+          evidence: clientRes.evidence,
+          workingEvaluation: clientRes.workingEvaluation,
+          questionVerification: clientRes.questionVerification,
         };
         setFeedback({ ...res, confidence });
         setGrading(false);
+
+        const isPartial = res.grade === "partial" || res.partialCredit === true;
+        const shouldRecord = res.shouldRecordMistake !== false && !isPartial;
 
         logger.action("ANSWER_GRADED", "success", {
           subject: subject.id,
@@ -161,10 +200,11 @@ export function useQuiz(
           topic,
           questionIndex: qIdx,
           isCorrect: res.isCorrect,
+          isPartial,
           confidence,
         });
 
-        if (!res.isCorrect) {
+        if (!res.isCorrect && !isPartial) {
           setFailedQuestions((prev) => [
             ...prev,
             {
@@ -194,6 +234,15 @@ export function useQuiz(
           });
           // Record fail event for analytics
           recordEvent(subject.id, chapter.id, topic, "fail", userId);
+        } else if (isPartial) {
+          // Almost There: do not record a hard mistake or trigger penalty loop
+          logger.action("ANSWER_PARTIAL", "result", {
+            subject: subject.id,
+            chapter: chapter.id,
+            topic,
+            questionIndex: qIdx,
+          });
+          recordEvent(subject.id, chapter.id, topic, "partial", userId);
         } else {
           logger.action("ANSWER_CORRECT", "result", {
             subject: subject.id,
@@ -213,7 +262,7 @@ export function useQuiz(
           questionIndex: qIdx,
         });
         // Graceful fallback to client-side grading if server request fails
-        const fallbackRes = evaluateAnswer(answer, targetQ);
+        const fallbackRes = evaluateAnswer(answer, targetQ, work);
         setFeedback(fallbackRes);
         setGrading(false);
       });
@@ -316,6 +365,13 @@ export function useQuiz(
     setFeedback(null);
   };
 
+  const refineAnswer = () => {
+    // Allows the student to refine an Almost-There response without penalty
+    setFeedback(null);
+    setGrading(false);
+    setValidationError("");
+  };
+
   return {
     qIdx,
     setQIdx,
@@ -347,6 +403,7 @@ export function useQuiz(
     failedQuestions,
     quizFinished,
     submitAnswer,
+    refineAnswer,
     nextQuestion,
     finishTopic: finishQuiz, // Map to finishQuiz for backwards compatibility
     finishQuiz,

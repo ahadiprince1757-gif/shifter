@@ -20,6 +20,7 @@ import { supabase, getActiveUserId } from "../supabase";
  */
 export async function recordMistake({
   userId = null,
+  subjectId = null,
   questionAttemptId = null,
   questionId = null,
   topicId = null,
@@ -39,14 +40,30 @@ export async function recordMistake({
     return null;
   }
 
+  const resolvedSubjectId =
+    subjectId ||
+    (diagnosticData && (diagnosticData.subjectId || diagnosticData.subject_id)) ||
+    (chapterKey && chapterKey.includes("|") ? chapterKey.split("|")[0] : null) ||
+    "general";
+
+  const resolvedChapterKey =
+    chapterKey ||
+    (chapterId ? String(chapterId) : null) ||
+    "general";
+
   const payload = {
     user_id: activeUserId,
+    subject_id: String(resolvedSubjectId),
+    chapter_key: String(resolvedChapterKey),
     question_index: typeof questionIndex === "number" ? questionIndex : (parseInt(questionIndex, 10) || 0),
     question_text: questionText || "",
     correct_answer: correctAnswer || "",
     solution: solution || "",
-    mistake_type: mistakeType || "calculation_error",
-    diagnostic_data: diagnosticData || {},
+    diagnostic_data: {
+      mistake_type: mistakeType || "calculation_error",
+      subject_id: String(resolvedSubjectId),
+      ...(diagnosticData || {}),
+    },
     resolved: false,
     created_at: new Date().toISOString(),
     updated_at: new Date().toISOString(),
@@ -63,12 +80,11 @@ export async function recordMistake({
   }
   if (topicTitle) {
     payload.topic_title = topicTitle;
+  } else if (typeof topicId === "string" && isNaN(Number(topicId))) {
+    payload.topic_title = topicId;
   }
   if (chapterId && (typeof chapterId === "number" || /^\d+$/.test(chapterId))) {
     payload.chapter_id = parseInt(chapterId, 10);
-  }
-  if (chapterKey) {
-    payload.chapter_key = chapterKey;
   }
 
   try {
@@ -127,6 +143,7 @@ export async function markMistakeResolved({ topicId, questionIndex, userId = nul
 export async function fetchUnresolvedMistakes(userId = null) {
   const activeUserId = userId || getActiveUserId();
   if (!activeUserId || !supabase) return [];
+  if (typeof navigator !== "undefined" && !navigator.onLine) return [];
   try {
     const { data, error } = await supabase
       .from("user_mistakes")
@@ -135,12 +152,12 @@ export async function fetchUnresolvedMistakes(userId = null) {
       .eq("resolved", false);
 
     if (error) {
-      console.warn("[mistakeService] Fetch unresolved mistakes warning:", error.message);
+      console.debug("[mistakeService] Fetch unresolved mistakes note:", error.message);
       return [];
     }
     return data || [];
   } catch (err) {
-    console.error("[mistakeService] Exception fetching unresolved mistakes:", err);
+    console.debug("[mistakeService] Exception fetching unresolved mistakes (offline/unreachable):", err.message || err);
     return [];
   }
 }

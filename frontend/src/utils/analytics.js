@@ -8,39 +8,6 @@ const recentEventsCache = new Map();
 const activeSyncs = new Set();
 
 /**
- * Checks whether an event is a rapid duplicate recorded within DUP_WINDOW_MS.
- * Includes optional actionId/questionId to distinguish legitimate rapid answers across distinct questions.
- */
-function isRapidDuplicate(userId, type, subjectId, chapterId, topic, actionId = "") {
-  const key = [
-    userId || "guest",
-    type,
-    subjectId,
-    chapterId || "general",
-    topic || "general",
-    actionId || ""
-  ].join(":");
-
-  const now = Date.now();
-  const lastTimestamp = recentEventsCache.get(key);
-
-  if (lastTimestamp && (now - lastTimestamp < DUP_WINDOW_MS)) {
-    return true; // Suppress rapid duplicate within 2s
-  }
-
-  recentEventsCache.set(key, now);
-
-  // Evict stale entries older than 10 seconds to keep cache lightweight
-  if (recentEventsCache.size > 1000) {
-    for (const [k, time] of recentEventsCache.entries()) {
-      if (now - time > 10000) recentEventsCache.delete(k);
-    }
-  }
-
-  return false;
-}
-
-/**
  * Standardized Learning Event Vocabulary for Tixar's Student Brain
  */
 export const LEARNING_EVENTS = {
@@ -65,6 +32,53 @@ export const LEARNING_EVENTS = {
   // Revision & Retention
   TOPIC_REVIEWED: "topic_reviewed",
 };
+
+/**
+ * Only navigation and scaffolding events are throttled.
+ * Genuine learning assessment evidence is NEVER suppressed by UI deduplication.
+ */
+const DEDUPLICATED_EVENT_TYPES = new Set([
+  LEARNING_EVENTS.LESSON_OPENED,
+  LEARNING_EVENTS.LESSON_COMPLETED,
+  LEARNING_EVENTS.QUESTION_STARTED,
+  LEARNING_EVENTS.HINT_REQUESTED,
+  LEARNING_EVENTS.EXPLANATION_VIEWED,
+]);
+
+/**
+ * Checks whether an event is a rapid duplicate recorded within DUP_WINDOW_MS.
+ * Includes optional actionId/questionId to distinguish legitimate rapid answers across distinct questions.
+ */
+function isRapidDuplicate(userId, type, subjectId, chapterId, topic, actionId = "") {
+  const key = [
+    userId || "guest",
+    type,
+    subjectId,
+    chapterId || "general",
+    topic || "general",
+    actionId || ""
+  ].join(":");
+
+  const now = Date.now();
+  const lastTimestamp = recentEventsCache.get(key);
+
+  if (lastTimestamp && (now - lastTimestamp < DUP_WINDOW_MS)) {
+    return true; // Suppress rapid duplicate within 2s
+  }
+
+  recentEventsCache.set(key, now);
+
+  // Periodically remove stale deduplication entries
+  if (recentEventsCache.size > 200) {
+    for (const [k, time] of recentEventsCache.entries()) {
+      if (now - time > DUP_WINDOW_MS * 5) {
+        recentEventsCache.delete(k);
+      }
+    }
+  }
+
+  return false;
+}
 
 /**
  * Helper to generate a random unique UUID for event deduplication
@@ -182,21 +196,34 @@ export function recordLearningEvent({
   }
 
   const activeUserId = userId || getActiveUserId();
+
+  if (!activeUserId) {
+    console.warn(`[Telemetry] Skipping ${type}: no authenticated user available.`);
+    return;
+  }
+
   const actionId = questionId || metadata?.questionId || metadata?.actionId || "";
 
-  // Defense-in-depth: Suppress rapid duplicate event recordings within 2-second window
-  if (isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic, actionId)) {
+  // Defense-in-depth: Suppress rapid duplicate event recordings for UI/scaffolding events
+  if (
+    DEDUPLICATED_EVENT_TYPES.has(type) &&
+    isRapidDuplicate(activeUserId, type, subjectId, chapterId, topic, actionId)
+  ) {
     console.warn(`[Telemetry] Suppressed rapid duplicate event (${type}) within ${DUP_WINDOW_MS}ms window.`);
     return;
   }
 
   const events = getQueuedEvents(activeUserId);
 
+  const eventId = generateId();
   const newEvent = {
-    id: generateId(),
+    id: eventId,
+    client_event_id: eventId,
     user_id: activeUserId,
     subject_id: subjectId,
     chapter_id: chapterId || null,
+    sid: subjectId,
+    cid: chapterId || null,
     topic: topic || null,
 
     strand: strand || null,
@@ -272,8 +299,12 @@ export async function triggerSync(targetUserId = null) {
   if (events.length === 0) return;
 
   activeSyncs.add(activeUserId);
-  const VITE_API_URL = import.meta.env.VITE_API_URL || "http://localhost:3001";
-  const syncUrl = `${VITE_API_URL.replace(/\/$/, "")}/api/analytics/events`;
+  const _analyticsBase = import.meta.env.PROD
+    ? ((import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes("localhost"))
+        ? import.meta.env.VITE_API_URL
+        : "https://shifter-i49i.onrender.com")
+    : (import.meta.env.VITE_API_URL || "http://localhost:3001");
+  const syncUrl = `${_analyticsBase.replace(/\/$/, "")}/api/analytics/events`;
 
   const safeEvents = events.filter((e) => e.user_id === activeUserId);
   if (safeEvents.length === 0) {
@@ -312,10 +343,10 @@ export async function triggerSync(targetUserId = null) {
       const remainingEvents = currentEvents.filter((e) => !batchIds.has(e.id));
       saveQueuedEvents(activeUserId, remainingEvents);
     } else {
-      console.warn(`[Telemetry] Sync failed with status: ${res.status}`);
+      console.debug(`[Telemetry] Sync skipped or failed with status: ${res.status}`);
     }
   } catch (err) {
-    console.warn("[Telemetry] Sync failed (offline mode):", err.message);
+    console.debug("[Telemetry] Sync deferred (offline mode):", err.message);
   } finally {
     activeSyncs.delete(activeUserId);
   }
@@ -327,12 +358,12 @@ if (typeof window !== "undefined") {
     const session = getActiveSession();
     const activeUserId = session?.user?.id || session?.user_id || null;
     if (activeUserId) {
-      console.log("[Telemetry] Internet connection restored. Initiating telemetry sync.");
       triggerSync(activeUserId);
     }
   });
 
   setTimeout(() => {
+    if (typeof navigator !== "undefined" && !navigator.onLine) return;
     const session = getActiveSession();
     const activeUserId = session?.user?.id || session?.user_id || null;
     if (activeUserId) triggerSync(activeUserId);

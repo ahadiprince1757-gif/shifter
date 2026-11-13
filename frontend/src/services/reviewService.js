@@ -78,6 +78,7 @@ export async function upsertSpacedReview({
 export async function fetchDueSpacedReviews(userId = null) {
   const activeUserId = userId || getActiveUserId();
   if (!activeUserId || !supabase) return [];
+  if (typeof navigator !== "undefined" && !navigator.onLine) return [];
   try {
     const now = new Date().toISOString();
     const { data, error } = await supabase
@@ -87,12 +88,12 @@ export async function fetchDueSpacedReviews(userId = null) {
       .lte("next_review_at", now);
 
     if (error) {
-      console.warn("[reviewService] Fetch due reviews warning:", error.message);
+      console.debug("[reviewService] Fetch due reviews note:", error.message);
       return [];
     }
     return data || [];
   } catch (err) {
-    console.error("[reviewService] Exception fetching due spaced reviews:", err);
+    console.debug("[reviewService] Exception fetching due spaced reviews (offline/unreachable):", err.message || err);
     return [];
   }
 }

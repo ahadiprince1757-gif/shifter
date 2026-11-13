@@ -1,10 +1,16 @@
 import { useMemo } from "react";
 import logger from "../utils/logger";
-import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
 import SmartPrompt from "./SmartPrompt";
 import { useNextAction } from "../hooks/useNextAction";
 import { enroll } from "../api";
+import staticCurriculum from "../data/curriculum.json";
+import { ACTIVE_SUBJECT_IDS } from "../data/subjectRegistry";
+
+// The canonical 6 subjects, immediately accessible without network or database delays
+const CANONICAL_FALLBACK = Object.freeze(
+  staticCurriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id))
+);
 
 const HUMANISTIC_PALETTES = [
   { accent: "#74B8E8", bg: "rgba(116, 184, 232, 0.06)", border: "rgba(116, 184, 232, 0.28)" },
@@ -32,10 +38,19 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
 
+  // Always drop the 6 canonical subjects immediately — zero loading state, zero blank screen
+  const displaySubjects = useMemo(() => {
+    if (Array.isArray(curriculum) && curriculum.length > 0) {
+      const canonical = curriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id));
+      if (canonical.length > 0) return canonical;
+    }
+    return CANONICAL_FALLBACK;
+  }, [curriculum]);
+
   // Compute the single most urgent next study action
   const { action: nextAction, loading: nextActionLoading } = useNextAction(userId);
 
-  // localStorage is synchronous → derive lastTopic via useMemo
+  // localStorage is synchronous — derive lastTopic via useMemo
   const lastTopic = useMemo(() => {
     if (!userId) return null;
     try {
@@ -43,16 +58,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       return raw ? JSON.parse(raw) : null;
     } catch { return null; }
   }, [userId]);
-
-  if (!curriculum) {
-    return (
-      <div id="v-subjects" className="view active" style={{ paddingTop: "0.5rem" }}>
-        <div className="subj-grid-humanistic">
-          <SkeletonLoader type="grid" count={6} />
-        </div>
-      </div>
-    );
-  }
 
   const handleSubjectClick = (subjectId, label) => {
     logger.action("SUBJECT_SELECTED", "success", { subjectId, subjectLabel: label });
@@ -99,24 +104,15 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {/* Subject Section Header */}
       <div className="sg-section-title">
         <span>Your Subjects</span>
-        <span className="sg-subject-count">{curriculum.length} curated courses</span>
+        <span className="sg-subject-count">{displaySubjects.length} curated courses</span>
       </div>
 
       {/* Humanistic Subject Cards Grid */}
       <div className="subj-grid-humanistic">
-        {curriculum.map((s, idx) => {
-          const totalTopics = s.chapters.reduce((a, c) => a + c.topics.length, 0);
-          const masteredCount = s.chapters.reduce(
-            (a, c) => a + c.topics.filter((t) => mastered.has(`${s.id}|${c.id}|${t}`)).length,
-            0
-          );
-          const pct = totalTopics > 0 ? Math.round((masteredCount / totalTopics) * 100) : 0;
+        {displaySubjects.map((s, idx) => {
+          const chapters = s.chapters || [];
+          const totalTopics = chapters.reduce((a, c) => a + (c && Array.isArray(c.topics) ? c.topics.length : 0), 0);
           const palette = HUMANISTIC_PALETTES[idx % HUMANISTIC_PALETTES.length];
-
-          // SVG progress circle calculations
-          const radius = 16;
-          const circumference = 2 * Math.PI * radius;
-          const strokeDashoffset = circumference - (pct / 100) * circumference;
 
           return (
             <button
@@ -128,7 +124,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                 "--card-bg-tint": palette.bg,
                 "--card-border-tint": palette.border,
               }}
-              aria-label={`${s.label}, ${masteredCount} of ${totalTopics} topics mastered`}
+              aria-label={`${s.label}, ${chapters.length} chapters, ${totalTopics} topics`}
             >
               <div className="subj-notebook-spine" />
               <div className="subj-notebook-body">
@@ -136,30 +132,11 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                   <div className="subj-notebook-info">
                     <div className="subj-notebook-name">{s.label}</div>
                     <div className="subj-notebook-chapters">
-                      {s.chapters.length} chapter{s.chapters.length !== 1 ? "s" : ""} · {totalTopics} topic{totalTopics !== 1 ? "s" : ""}
+                      {chapters.length} chapter{chapters.length !== 1 ? "s" : ""} · {totalTopics} topic{totalTopics !== 1 ? "s" : ""}
                     </div>
                   </div>
-                  <div className="subj-ring-container" title={`${pct}% complete`}>
-                    <svg className="subj-ring-svg" viewBox="0 0 40 40" style={{ width: "100%", height: "100%" }}>
-                      <circle
-                        cx="20"
-                        cy="20"
-                        r={radius}
-                        className="subj-ring-bg"
-                      />
-                      <circle
-                        cx="20"
-                        cy="20"
-                        r={radius}
-                        className="subj-ring-fill"
-                        style={{
-                          strokeDasharray: circumference,
-                          strokeDashoffset: strokeDashoffset,
-                          stroke: palette.accent,
-                        }}
-                      />
-                    </svg>
-                    <span className="subj-ring-pct">{pct}%</span>
+                  <div className="subj-enter-arrow" aria-hidden="true" style={{ color: palette.accent, fontSize: "1.25rem", fontWeight: 700 }}>
+                    →
                   </div>
                 </div>
               </div>
@@ -172,3 +149,4 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 }
 
 export default SubjectGrid;
+

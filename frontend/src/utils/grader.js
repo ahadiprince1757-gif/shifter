@@ -1,335 +1,1299 @@
+
 /**
+ * ============================================================================
  * TIXAR GRADER
+ * ============================================================================
  *
- * Responsibilities:
+ * Production-oriented, evidence-first answer evaluator.
  *
- * 1. Validate / verify the question
- * 2. Determine final-answer correctness
- * 3. Evaluate working separately
- * 4. Run Smart Answer Analyser
- * 5. Return structured evidence
+ * Core principle:
  *
- * Important architectural rule:
+ *   ANSWER CORRECTNESS
+ *          !=
+ *   REASONING VALIDITY
+ *          !=
+ *   UNDERSTANDING
+ *          !=
+ *   MISCONCEPTION DIAGNOSIS
+ *          !=
+ *   MASTERY
  *
- * ANSWER CORRECTNESS
- *      ≠
- * UNDERSTANDING
- *      ≠
- * REASONING QUALITY
+ * Pipeline:
  *
- * This allows Tixar to eventually build a reliable
- * student knowledge model and "Am I Ready?" system.
+ *   QUESTION
+ *      -> VERIFY QUESTION
+ *      -> NORMALIZE ANSWER
+ *      -> CLASSIFY ANSWER
+ *      -> CHECK EQUIVALENCE
+ *      -> COLLECT REASONING EVIDENCE
+ *      -> DIAGNOSE ERRORS
+ *      -> RETURN STRUCTURED RESULT
+ *
+ * Safety principles:
+ *
+ * - Lexical similarity is not proof of understanding.
+ * - A correct final answer does not prove correct working.
+ * - Missing reasoning is not automatically incorrect reasoning.
+ * - A wrong answer does not automatically identify a misconception.
+ * - Partial credit is not full credit.
+ * - Unit equivalence does not imply unit conversion.
+ * - Question verification must not silently overwrite authoritative
+ *   curriculum answers.
+ * - Mastery must not be inferred from one correct answer.
+ *
+ * Backward compatibility:
+ *
+ * - Keeps evaluateAnswer(userAnswer, question, userWork).
+ * - Keeps the existing imports.
+ * - Keeps legacy return fields.
+ * - Keeps the exported helper functions.
+ *
+ * ============================================================================
  */
 
 import { analyseStudentAnswer } from "./answerAnalyzer.js";
+import { diagnoseStudentSubmission } from "../diagnostics/teacherDiagnoser.js";
 
 import {
   verifyQuestionAcrossSubjects,
 } from "./subjectVerifierRouter.js";
 
 // ============================================================================
-// NORMALIZATION
+// VERSION AND CONFIGURATION
 // ============================================================================
 
+const GRADER_VERSION = "4.0";
+
+const CONFIG = {
+  numericTolerance: 1e-5,
+
+  // Free-text matching is deliberately conservative.
+  keywordCorrectThreshold: 0.80,
+  keywordPartialThreshold: 0.35,
+  minimumMeaningfulTokens: 2,
+  minimumPhraseLength: 12,
+
+  // Retained for backward compatibility.
+  ambiguityThreshold: 0.55,
+  maximumSimpleNumericParts: 1,
+  typoMinTokenLength: 5,
+};
+
+// ============================================================================
+// BASIC UTILITIES
+// ============================================================================
+
+function safeString(value) {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "string") return value;
+  if (typeof value === "number" || typeof value === "boolean") {
+    return String(value);
+  }
+
+  return "";
+}
+
+function isBlank(value) {
+  return safeString(value).trim().length === 0;
+}
+
+function unique(values) {
+  return [...new Set(values)];
+}
+
 function normalize(value) {
-  return String(value ?? "")
+  return safeString(value)
     .toLowerCase()
     .replace(/[’‘]/g, "'")
     .replace(/[“”]/g, '"')
-    .replace(/[^\p{L}\p{N}\s.,=+\-*/()%^]/gu, " ")
+    .replace(/[×]/g, "*")
+    .replace(/[÷]/g, "/")
+    .replace(/[−–—]/g, "-")
+    .replace(/√/g, "sqrt")
+    .replace(/½/g, "1/2")
+    .replace(/¼/g, "1/4")
+    .replace(/¾/g, "3/4")
+    .replace(/⅓/g, "1/3")
+    .replace(/⅔/g, "2/3")
+    .replace(/°\s*c\b/g, " c")
+    .replace(/[^\p{L}\p{N}\s.,=+\-*/()%^_:<>']/gu, " ")
     .replace(/\s+/g, " ")
     .trim();
 }
 
 function tokenize(value) {
-  const normalized = normalize(value);
-
-  return normalized
-    ? normalized.split(/\s+/).filter(Boolean)
-    : [];
+  const text = normalize(value);
+  return text ? text.split(/\s+/).filter(Boolean) : [];
 }
 
 // ============================================================================
-// NUMERIC UTILITIES
+// NUMBER UTILITIES
 // ============================================================================
 
 function extractNumbers(value) {
   return (
-    String(value ?? "").match(
-      /-?\d+(?:\.\d+)?/g
-    ) || []
+    safeString(value).match(/-?\d+(?:\.\d+)?/g) || []
   ).map(Number);
 }
 
-function extractFinalNumericValue(value) {
-  const text = String(value ?? "").trim();
+function approximatelyEqual(
+  a,
+  b,
+  tolerance = CONFIG.numericTolerance
+) {
+  if (!Number.isFinite(a) || !Number.isFinite(b)) return false;
 
+  return Math.abs(a - b) <= tolerance;
+}
+
+// ============================================================================
+// STRICT NUMERIC PARSING
+// ============================================================================
+
+function parseStrictNumericValue(value) {
+  if (value === null || value === undefined) return null;
+
+  let text = String(value).trim();
   if (!text) return null;
 
-  // Last line is usually the student's conclusion.
-  const lines = text
-    .split(/\n|;/)
-    .map((line) => line.trim())
-    .filter(Boolean);
+  if (text.includes(",")) {
+    if (!/^[+-]?\d{1,3}(?:,\d{3})+(?:\.\d+)?$/.test(text)) {
+      return null;
+    }
 
-  const lastLine =
-    lines[lines.length - 1] || text;
-
-  // Example:
-  // x = 42
-  // answer = -3.5
-  const equalityMatch =
-    lastLine.match(
-      /=\s*(-?\d+(?:\.\d+)?)\s*$/
-    );
-
-  if (equalityMatch) {
-    return Number(equalityMatch[1]);
+    text = text.replace(/,/g, "");
   }
 
-  // If no equality, use the final number.
-  const numbers =
-    extractNumbers(lastLine);
+  const fraction = text.match(
+    /^([+-]?\d+(?:\.\d+)?)\s*\/\s*([+-]?\d+(?:\.\d+)?)$/
+  );
 
-  if (numbers.length) {
-    return numbers[numbers.length - 1];
+  if (fraction) {
+    const numerator = Number(fraction[1]);
+    const denominator = Number(fraction[2]);
+
+    if (!Number.isFinite(numerator) ||
+        !Number.isFinite(denominator) ||
+        denominator === 0) {
+      return null;
+    }
+
+    const result = numerator / denominator;
+    return Number.isFinite(result) ? result : null;
+  }
+
+  if (!/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)) {
+    return null;
+  }
+
+  const result = Number(text);
+  return Number.isFinite(result) ? result : null;
+}
+
+// ============================================================================
+// FRACTION AND PERCENTAGE PARSING
+// ============================================================================
+
+function parseFraction(value) {
+  const text = normalize(value);
+
+  const match = text.match(
+    /^([+-]?\d+(?:\.\d+)?)\s*\/\s*([+-]?\d+(?:\.\d+)?)$/
+  );
+
+  if (!match) return null;
+
+  const numerator = Number(match[1]);
+  const denominator = Number(match[2]);
+
+  if (!Number.isFinite(numerator) ||
+      !Number.isFinite(denominator) ||
+      denominator === 0) {
+    return null;
+  }
+
+  const result = numerator / denominator;
+  return Number.isFinite(result) ? result : null;
+}
+
+function parsePercentage(value) {
+  const text = normalize(value);
+  const match = text.match(/^([+-]?\d+(?:\.\d+)?)\s*%$/);
+
+  if (!match) return null;
+
+  const result = Number(match[1]) / 100;
+  return Number.isFinite(result) ? result : null;
+}
+
+function parseSimpleNumeric(value) {
+  const text = normalize(value);
+  if (!text) return null;
+
+  const fraction = parseFraction(text);
+  if (fraction !== null) return fraction;
+
+  const percentage = parsePercentage(text);
+  if (percentage !== null) return percentage;
+
+  if (/^[+-]?(?:\d+(?:\.\d*)?|\.\d+)$/.test(text)) {
+    const result = Number(text);
+    return Number.isFinite(result) ? result : null;
+  }
+
+  // A numeric value with a recognized unit.
+  const withUnit = extractNumericWithUnit(value);
+
+  if (withUnit && withUnit.unit !== null) {
+    return withUnit.value;
   }
 
   return null;
 }
 
 // ============================================================================
-// NUMERIC CORRECTNESS
+// UNIT NORMALIZATION
 // ============================================================================
 
-function checkNumericAnswer(
-  userAnswer,
-  correctAnswer
-) {
-  const correctText =
-    String(correctAnswer ?? "");
+const UNIT_ALIASES = {
+  meter: "m",
+  meters: "m",
+  metre: "m",
+  metres: "m",
 
-  const correctNumbers =
-    extractNumbers(correctText);
+  centimeter: "cm",
+  centimeters: "cm",
+  centimetre: "cm",
+  centimetres: "cm",
 
-  if (!correctNumbers.length) {
-    return null;
+  millimeter: "mm",
+  millimeters: "mm",
+  millimetre: "mm",
+  millimetres: "mm",
+
+  kilometer: "km",
+  kilometers: "km",
+  kilometre: "km",
+  kilometres: "km",
+
+  kilogram: "kg",
+  kilograms: "kg",
+  kilogramme: "kg",
+  kilogrammes: "kg",
+
+  gram: "g",
+  grams: "g",
+  milligram: "mg",
+  milligrams: "mg",
+
+  second: "s",
+  seconds: "s",
+  sec: "s",
+  secs: "s",
+
+  minute: "min",
+  minutes: "min",
+
+  hour: "h",
+  hours: "h",
+  hr: "h",
+  hrs: "h",
+
+  degree: "deg",
+  degrees: "deg",
+
+  celsius: "c",
+  kelvin: "k",
+
+  volt: "v",
+  volts: "v",
+  ampere: "a",
+  amperes: "a",
+  amp: "a",
+  amps: "a",
+
+  watt: "w",
+  watts: "w",
+  joule: "j",
+  joules: "j",
+  newton: "n",
+  newtons: "n",
+
+  pascal: "pa",
+  pascals: "pa",
+  hertz: "hz",
+  mole: "mol",
+  moles: "mol",
+
+  liter: "l",
+  liters: "l",
+  litre: "l",
+  litres: "l",
+  milliliter: "ml",
+  milliliters: "ml",
+  millilitre: "ml",
+  millilitres: "ml",
+
+  kmph: "km/h",
+  kph: "km/h",
+  "km/hr": "km/h",
+  "km/hour": "km/h",
+  "kilometres per hour": "km/h",
+  "kilometers per hour": "km/h",
+  "kilometre per hour": "km/h",
+  "kilometer per hour": "km/h",
+  "metres per second": "m/s",
+  "meters per second": "m/s",
+  "metre per second": "m/s",
+  "meter per second": "m/s",
+  "miles per hour": "mph",
+  "mile per hour": "mph",
+
+  mps: "m/s",
+  "m/sec": "m/s",
+  "m/s": "m/s",
+
+  "km/h": "km/h",
+  "m/s^2": "m/s^2",
+  "m/s²": "m/s^2",
+};
+
+const NUMBER_WORDS_MAP = {
+  zero: 0, one: 1, two: 2, three: 3, four: 4,
+  five: 5, six: 6, seven: 7, eight: 8, nine: 9,
+  ten: 10, eleven: 11, twelve: 12, thirteen: 13, fourteen: 14,
+  fifteen: 15, sixteen: 16, seventeen: 17, eighteen: 18, nineteen: 19,
+  twenty: 20, thirty: 30, forty: 40, fifty: 50, sixty: 60,
+  seventy: 70, eighty: 80, ninety: 90, hundred: 100,
+};
+
+function convertNumberWordsToDigits(str) {
+  if (!str || typeof str !== "string") return str;
+  let res = str.toLowerCase();
+  const tens = ["twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"];
+  const units = ["one", "two", "three", "four", "five", "six", "seven", "eight", "nine"];
+  for (const t of tens) {
+    for (const u of units) {
+      const val = NUMBER_WORDS_MAP[t] + NUMBER_WORDS_MAP[u];
+      res = res.replace(new RegExp(`\\b${t}[-\\s]+${u}\\b`, "gi"), String(val));
+    }
   }
-
-  // Only automatically treat a single-number answer as numeric.
-  if (correctNumbers.length !== 1) {
-    return null;
+  for (const [w, n] of Object.entries(NUMBER_WORDS_MAP)) {
+    res = res.replace(new RegExp(`\\b${w}\\b`, "gi"), String(n));
   }
+  return res;
+}
 
-  const target =
-    correctNumbers[0];
+const CANONICAL_UNITS = new Set([
+  "m", "cm", "mm", "km",
+  "kg", "g", "mg",
+  "s", "min", "h",
+  "deg", "c", "k",
+  "v", "a", "w", "j", "n", "pa", "hz",
+  "mol", "l", "ml", "mph",
+  "km/h", "m/s", "m/s^2",
+]);
 
-  const student =
-    extractFinalNumericValue(
-      userAnswer
-    );
+function normalizeUnit(unit) {
+  if (!unit) return null;
 
-  if (
-    student === null ||
-    Number.isNaN(student)
-  ) {
-    return false;
-  }
+  let text = safeString(unit)
+    .trim()
+    .toLowerCase()
+    .replace(/²/g, "^2")
+    .replace(/°/g, "");
 
-  return (
-    Math.abs(student - target) <
-    1e-5
+  if (UNIT_ALIASES[text]) return UNIT_ALIASES[text];
+  if (CANONICAL_UNITS.has(text)) return text;
+
+  return null;
+}
+
+function extractNumericWithUnit(value) {
+  let text = safeString(value).trim().toLowerCase();
+
+  if (!text) return null;
+
+  text = convertNumberWordsToDigits(text);
+
+  text = text
+    .replace(/,/g, (match, offset, whole) => {
+      // Thousands separators are allowed only in valid numeric groups.
+      return whole.slice(0, offset).match(/^\d{1,3}(?:,\d{3})*$/)
+        ? ""
+        : match;
+    })
+    .replace(/°\s*c\b/g, " c")
+    .replace(/²/g, "^2")
+    .replace(/\s+/g, " ")
+    .trim();
+
+  const stripped = text.replace(/[.,;:]+$/, "").trim();
+
+  // 1. Direct match: e.g. "40 km/h" or "20 kilometres per hour"
+  let match = stripped.match(
+    /^([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*([a-z°\^2/ ]+)?$/i
   );
-}
 
-// ============================================================================
-// TEXTUAL ANSWER CHECKING
-// ============================================================================
+  // 2. Working / statement extraction: e.g. "Step 4: Average speed = 40 km/h."
+  if (!match) {
+    const lines = stripped.split(/\n|;/).map((l) => l.trim()).filter(Boolean);
+    const lastLine = (lines[lines.length - 1] || stripped).replace(/[.,;:]+$/, "").trim();
 
-function exactOrPhraseMatch(
-  userAnswer,
-  correctAnswer
-) {
-  const user = normalize(userAnswer);
-  const correct = normalize(correctAnswer);
-
-  if (!user || !correct) {
-    return false;
-  }
-
-  if (user === correct) {
-    return true;
-  }
-
-  /*
-   * IMPORTANT:
-   *
-   * We only use substring matching for reasonably
-   * long answers.
-   *
-   * "cell" should NOT make an answer correct merely
-   * because "cell" occurs inside a sentence.
-   */
-
-  if (
-    correct.length >= 12 &&
-    user.includes(correct)
-  ) {
-    return true;
-  }
-
-  return false;
-}
-
-// ============================================================================
-// TOKEN-BASED TEXT CHECKING
-// ============================================================================
-
-function keywordSimilarity(
-  userAnswer,
-  correctAnswer
-) {
-  const userTokens =
-    new Set(tokenize(userAnswer));
-
-  const correctTokens =
-    tokenize(correctAnswer);
-
-  const meaningfulCorrectTokens =
-    correctTokens.filter(
-      (token) =>
-        token.length >= 4 &&
-        !Number.isNaN(Number(token))
+    const stmtMatch = lastLine.match(
+      /(?:(?:^|[:=]|\bis\b|\bwas\b|\bare\b|\bspeed\b|\banswer\b)\s*)+([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*([a-z°\^2/ ]+)?$/i
     );
-
-  if (!meaningfulCorrectTokens.length) {
-    return null;
+    if (stmtMatch) {
+      match = stmtMatch;
+    }
   }
 
-  const matched =
-    meaningfulCorrectTokens.filter(
-      (token) =>
-        userTokens.has(token)
-    );
+  if (!match) return null;
 
-  const ratio =
-    matched.length /
-    meaningfulCorrectTokens.length;
+  const numericValue = Number(match[1]);
+  if (!Number.isFinite(numericValue)) return null;
 
-  /*
-   * IMPORTANT:
-   *
-   * We deliberately use a high threshold.
-   *
-   * Keyword overlap should be a fallback,
-   * not the main definition of understanding.
-   */
+  const rawUnit = match[2] ? match[2].trim() : null;
 
   return {
-    ratio,
-    matched: matched.length,
-    total:
-      meaningfulCorrectTokens.length,
+    value: numericValue,
+    unit: rawUnit ? normalizeUnit(rawUnit) : null,
+    rawUnit,
   };
 }
 
 // ============================================================================
-// SINGLE ANSWER CHECK
+// FINAL ANSWER EXTRACTION
 // ============================================================================
 
-function checkSingleVariant(
-  userAnswer,
-  correctAnswer
-) {
-  const user =
-    normalize(userAnswer);
+function extractFinalNumericValue(value) {
+  let text = safeString(value).trim();
+  if (!text) return null;
 
-  const correct =
-    normalize(correctAnswer);
+  text = convertNumberWordsToDigits(text);
 
-  if (!user || !correct) {
+  const lines = text
+    .split(/\n|;/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+
+  let lastLine = lines[lines.length - 1] || text;
+  lastLine = lastLine.replace(/[.,;:]+$/, "").trim();
+
+  // Never accept malformed values such as "12abc" or "12 abc" as the number 12.
+  if (/^[+-]?\d+(?:\.\d+)?\s*[a-zA-Z]+$/.test(lastLine.trim())) {
+    const m = lastLine.trim().match(/^([+-]?\d+(?:\.\d+)?)\s*([a-zA-Z]+)$/);
+    if (!m || !normalizeUnit(m[2])) {
+      return null;
+    }
+  }
+
+  const direct = parseStrictNumericValue(lastLine);
+  if (direct !== null) return direct;
+
+  const equality = lastLine.match(
+    /(?:=\s*|:\s*|\bis\s*)([+-]?(?:\d+(?:\.\d*)?|\.\d+))\s*(?:[a-z°\^2/ ]+)?$/i
+  );
+
+  if (equality) return Number(equality[1]);
+
+  const fraction = parseFraction(lastLine);
+  if (fraction !== null) return fraction;
+
+  const percentage = parsePercentage(lastLine);
+  if (percentage !== null) return percentage;
+
+  const numbers = extractNumbers(lastLine);
+
+  return numbers.length === 1 ? numbers[0] : null;
+}
+
+// ============================================================================
+// NUMERIC EQUIVALENCE
+// ============================================================================
+
+function evaluateNumericEquivalence(userAnswer, correctAnswer) {
+  const userText = normalize(userAnswer);
+  const correctText = normalize(correctAnswer);
+
+  if (!userText || !correctText) return null;
+
+  const userNumeric = parseSimpleNumeric(userText);
+  const correctNumeric = parseSimpleNumeric(correctText);
+
+  if (userNumeric !== null && correctNumeric !== null) {
+    const correct = approximatelyEqual(userNumeric, correctNumeric);
+
     return {
-      correct: user === correct,
-      method: "empty_or_exact",
-      confidence: 1,
+      correct,
+      method: correct ? "numeric_equivalence" : "numeric_mismatch",
+      confidence: 0.99,
+      evidence: {
+        studentValue: userNumeric,
+        expectedValue: correctNumeric,
+      },
     };
   }
 
-  // ----------------------------------------------------------
-  // 1. Exact textual match
-  // ----------------------------------------------------------
+  const finalStudent = extractFinalNumericValue(userAnswer);
+  const finalCorrect = extractFinalNumericValue(correctAnswer);
 
-  if (user === correct) {
+  if (finalStudent !== null && finalCorrect !== null) {
+    const correct = approximatelyEqual(finalStudent, finalCorrect);
+
+    return {
+      correct,
+      method: correct
+        ? "final_numeric_equivalence"
+        : "final_numeric_mismatch",
+      confidence: 0.95,
+      evidence: {
+        studentValue: finalStudent,
+        expectedValue: finalCorrect,
+      },
+    };
+  }
+
+  return null;
+}
+
+// ============================================================================
+// UNIT-AWARE EVALUATION
+// ============================================================================
+
+function evaluateUnitAwareAnswer(userAnswer, correctAnswer) {
+  const user = extractNumericWithUnit(userAnswer);
+  const correct = extractNumericWithUnit(correctAnswer);
+
+  if (!user || !correct) return null;
+  if (!user.unit && !correct.unit) return null;
+
+  // Do not silently accept a missing or unknown unit when the expected
+  // answer explicitly requires a recognized unit.
+  if (user.unit !== correct.unit) {
+    return {
+      correct: false,
+      method: "unit_mismatch",
+      confidence: 0.98,
+      evidence: {
+        student: user,
+        expected: correct,
+      },
+    };
+  }
+
+  const isCorrect = approximatelyEqual(user.value, correct.value);
+
+  return {
+    correct: isCorrect,
+    method: isCorrect
+      ? "numeric_unit_equivalence"
+      : "numeric_unit_mismatch",
+    confidence: 0.99,
+    evidence: {
+      student: user,
+      expected: correct,
+    },
+  };
+}
+
+// ============================================================================
+// EQUATION NORMALIZATION
+// ============================================================================
+
+function normalizeEquation(value) {
+  const text = normalize(value).replace(/\s+/g, "");
+
+  if (!text.includes("=")) return null;
+
+  const parts = text.split("=");
+
+  if (parts.length !== 2 || !parts[0] || !parts[1]) {
+    return null;
+  }
+
+  return {
+    left: parts[0],
+    right: parts[1],
+  };
+}
+
+/**
+ * Conservative one-variable linear expression parser.
+ * Does not evaluate arbitrary JavaScript or general algebra.
+ */
+function parseLinearExpression(expression) {
+  const text = safeString(expression)
+    .replace(/\s+/g, "")
+    .replace(/\*/g, "");
+
+  if (!text) return null;
+
+  const variables = unique(
+    (text.match(/[a-zA-Z]/g) || []).map((v) => v.toLowerCase())
+  );
+
+  if (variables.length > 1) return null;
+
+  const variable = variables[0] || null;
+
+  if (!variable) {
+    const constant = Number(text);
+
+    return Number.isFinite(constant)
+      ? { coefficient: 0, constant, variable: null }
+      : null;
+  }
+
+  const escaped = variable.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+  // x, -x, +x, 2x, -2.5x, 2x+5, x-3
+  const termFirst = new RegExp(
+    `^([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+)?)${escaped}(?:([+-](?:\\d+(?:\\.\\d*)?|\\.\\d+)))?$`,
+    "i"
+  );
+
+  const match = text.match(termFirst);
+
+  if (match) {
+    let coefficient;
+
+    if (match[1] === "" || match[1] === "+") {
+      coefficient = 1;
+    } else if (match[1] === "-") {
+      coefficient = -1;
+    } else {
+      coefficient = Number(match[1]);
+    }
+
+    const constant = match[2] === undefined ? 0 : Number(match[2]);
+
+    if (!Number.isFinite(coefficient) || !Number.isFinite(constant)) {
+      return null;
+    }
+
+    return { coefficient, constant, variable };
+  }
+
+  // 5+2x, 5-x
+  const constantFirst = new RegExp(
+    `^([+-]?(?:\\d+(?:\\.\\d*)?|\\.\\d+))([+-](?:\\d+(?:\\.\\d*)?|\\.\\d+))?${escaped}$`,
+    "i"
+  );
+
+  const reverseMatch = text.match(constantFirst);
+
+  if (reverseMatch) {
+    const constant = Number(reverseMatch[1]);
+    const coefficient = reverseMatch[2] === undefined
+      ? 1
+      : Number(reverseMatch[2]);
+
+    if (!Number.isFinite(coefficient) || !Number.isFinite(constant)) {
+      return null;
+    }
+
+    return { coefficient, constant, variable };
+  }
+
+  return null;
+}
+
+function solveLinearEquation(equation) {
+  if (!equation) return null;
+
+  const left = parseLinearExpression(equation.left);
+  const right = parseLinearExpression(equation.right);
+
+  if (!left || !right) return null;
+
+  if (
+    left.variable &&
+    right.variable &&
+    left.variable !== right.variable
+  ) {
+    return null;
+  }
+
+  const coefficient = left.coefficient - right.coefficient;
+  const constant = right.constant - left.constant;
+
+  if (coefficient === 0) return null;
+
+  const result = constant / coefficient;
+
+  return Number.isFinite(result) ? result : null;
+}
+
+function evaluateEquationEquivalence(userAnswer, correctAnswer) {
+  const userEquation = normalizeEquation(userAnswer);
+  const correctEquation = normalizeEquation(correctAnswer);
+
+  if (!userEquation || !correctEquation) return null;
+
+  const userSolution = solveLinearEquation(userEquation);
+  const correctSolution = solveLinearEquation(correctEquation);
+
+  if (userSolution === null || correctSolution === null) {
+    return null;
+  }
+
+  const correct = approximatelyEqual(userSolution, correctSolution);
+
+  return {
+    correct,
+    method: correct
+      ? "linear_equation_equivalence"
+      : "linear_equation_mismatch",
+    confidence: 0.97,
+    evidence: {
+      studentSolution: userSolution,
+      expectedSolution: correctSolution,
+    },
+  };
+}
+
+// ============================================================================
+// EXACT AND PHRASE MATCHING
+// ============================================================================
+
+function exactMatch(userAnswer, correctAnswer) {
+  const user = normalize(userAnswer);
+  const correct = normalize(correctAnswer);
+
+  return Boolean(user && correct && user === correct);
+}
+
+function phraseMatch(userAnswer, correctAnswer) {
+  const user = normalize(userAnswer);
+  const correct = normalize(correctAnswer);
+
+  if (
+    !user ||
+    !correct ||
+    correct.length < CONFIG.minimumPhraseLength
+  ) {
+    return false;
+  }
+
+  // Do not allow an answer containing the expected phrase to bypass
+  // negation checks.
+  if (detectNegationMismatch(user, correct)) return false;
+
+  if (user.includes(correct)) return true;
+
+  return correct.includes(user) &&
+    user.length >= correct.length * 0.85;
+}
+
+// ============================================================================
+// LIGHTWEIGHT MORPHOLOGY
+// ============================================================================
+
+function stemToken(word) {
+  if (!word || typeof word !== "string" || word.length <= 3) {
+    return word;
+  }
+
+  const w = word.toLowerCase();
+
+  const domainMappings = [
+    [/absorption$/, "absorb"],
+    [/production$/, "produce"],
+    [/respiration$/, "respire"],
+    [/conduction$/, "conduct"],
+    [/photosynthesizing$/, "photosynthes"],
+    [/photosynthesis$/, "photosynthes"],
+    [/interconnection$/, "connect"],
+    [/interconnected$/, "connect"],
+    [/multiplication$/, "multiply"],
+    [/subtraction$/, "subtract"],
+    [/magnification$/, "magnify"],
+    [/enlargement$/, "enlarge"],
+  ];
+
+  for (const [pattern, replacement] of domainMappings) {
+    if (pattern.test(w)) return w.replace(pattern, replacement);
+  }
+
+  if (w.endsWith("sses")) return w.slice(0, -2);
+  if (w.endsWith("ies") && w.length > 4) return w.slice(0, -3) + "y";
+  if (w.endsWith("ational")) return w.slice(0, -7) + "ate";
+  if (w.endsWith("ization") || w.endsWith("isation")) {
+    return w.slice(0, -7) + "ize";
+  }
+  if (w.endsWith("tion") || w.endsWith("sion")) return w.slice(0, -4);
+  if (w.endsWith("ment") && w.length > 6) return w.slice(0, -4);
+
+  if (w.endsWith("ing") && w.length > 5) {
+    const base = w.slice(0, -3);
+
+    if (
+      base.length > 3 &&
+      base[base.length - 1] === base[base.length - 2]
+    ) {
+      return base.slice(0, -1);
+    }
+
+    return base;
+  }
+
+  if (w.endsWith("ed") && w.length > 4) {
+    const base = w.slice(0, -2);
+
+    if (
+      base.length > 3 &&
+      base[base.length - 1] === base[base.length - 2]
+    ) {
+      return base.slice(0, -1);
+    }
+
+    return base;
+  }
+
+  if (w.endsWith("ivity") && w.length > 6) return w.slice(0, -5);
+  if (w.endsWith("ive") && w.length > 5) return w.slice(0, -3);
+  if (w.endsWith("able") && w.length > 5) return w.slice(0, -4);
+  if (w.endsWith("es") && w.length > 4) return w.slice(0, -2);
+
+  if (w.endsWith("s") && !w.endsWith("ss") && w.length > 3) {
+    return w.slice(0, -1);
+  }
+
+  return w;
+}
+
+// ============================================================================
+// DAMERAU-LEVENSHTEIN TYPO TOLERANCE
+// ============================================================================
+
+function damerauLevenshtein(a, b) {
+  if (!a || !b) return (a || b || "").length;
+  if (a === b) return 0;
+
+  const lenA = a.length;
+  const lenB = b.length;
+  const matrix = Array.from(
+    { length: lenA + 1 },
+    () => Array(lenB + 1).fill(0)
+  );
+
+  for (let i = 0; i <= lenA; i++) matrix[i][0] = i;
+  for (let j = 0; j <= lenB; j++) matrix[0][j] = j;
+
+  for (let i = 1; i <= lenA; i++) {
+    for (let j = 1; j <= lenB; j++) {
+      const cost = a[i - 1] === b[j - 1] ? 0 : 1;
+
+      matrix[i][j] = Math.min(
+        matrix[i - 1][j] + 1,
+        matrix[i][j - 1] + 1,
+        matrix[i - 1][j - 1] + cost
+      );
+
+      if (
+        i > 1 &&
+        j > 1 &&
+        a[i - 1] === b[j - 2] &&
+        a[i - 2] === b[j - 1]
+      ) {
+        matrix[i][j] = Math.min(
+          matrix[i][j],
+          matrix[i - 2][j - 2] + 1
+        );
+      }
+    }
+  }
+
+  return matrix[lenA][lenB];
+}
+
+function isTypoMatch(wordA, wordB) {
+  if (!wordA || !wordB) return false;
+  if (wordA === wordB) return true;
+
+  const length = Math.max(wordA.length, wordB.length);
+
+  if (length < CONFIG.typoMinTokenLength) return false;
+
+  const distance = damerauLevenshtein(wordA, wordB);
+
+  return length <= 7 ? distance <= 1 : distance <= 2;
+}
+
+// ============================================================================
+// CONSERVATIVE CONCEPT CLUSTERS
+// ============================================================================
+
+const CONCEPT_CLUSTERS = {
+  instrument: ["instrument", "device", "apparatus", "equipment", "tool", "machine"],
+  magnify: ["magnify", "magnification", "enlarge", "enlargement", "amplify", "zoom"],
+  small: ["small", "tiny", "minute", "micro", "microscopic", "little"],
+  observe: ["observe", "see", "view", "look", "examine", "inspect"],
+  specimen: ["specimen", "sample", "slide", "material", "tissue", "organism"],
+  transfer: ["transfer", "move", "conduct", "transmit", "carry", "convey"],
+  current: ["current", "electricity", "flow", "charge", "ampere", "electrons"],
+  bond: ["bond", "link", "join", "connect", "attract"],
+  ionic: ["ionic", "ion", "cation", "anion", "charged", "electrostatic"],
+  covalent: ["covalent", "share", "sharing", "shared", "paired", "pair"],
+  profit: ["profit", "gain", "surplus", "earning", "earnings"],
+  loss: ["loss", "deficit", "shortfall"],
+  divide: ["divide", "division", "quotient", "split"],
+  multiply: ["multiply", "multiplication", "product", "times"],
+  subtract: ["subtract", "subtraction", "minus", "deduct"],
+  add: ["add", "addition", "sum", "total", "plus", "combine"],
+  formula: ["formula", "equation", "expression", "rule", "law"],
+  calculate: ["calculate", "calculation", "compute", "solve", "determine"],
+  increase: ["increase", "increases", "increased", "rise", "higher", "greater"],
+  decrease: ["decrease", "decreases", "decreased", "fall", "lower", "drop"],
+  conductor: ["conductor", "conductive", "conducts", "conduction"],
+  insulator: ["insulator", "insulating", "insulates", "insulation", "nonconductor"],
+  produce: ["produce", "production", "producing", "manufacture", "synthesize", "generate"],
+  food: ["food", "glucose", "nutrient", "nutrients", "sugar", "starch"],
+  sunlight: ["sunlight", "light", "solar", "sunshine"],
+  absorb: ["absorb", "absorption", "absorbing", "uptake"],
+  store: ["store", "storage", "stored", "contain", "reserve", "retain"],
+  network: ["network", "interconnect", "interconnected"],
+  communicate: ["communicate", "communication", "exchange"],
+  share: ["share", "sharing", "shared", "pool"],
+  trade: ["trade", "trading", "commerce", "buying", "selling", "barter"],
+};
+
+const WORD_TO_CLUSTER = Object.create(null);
+
+for (const [clusterKey, words] of Object.entries(CONCEPT_CLUSTERS)) {
+  for (const word of words) {
+    WORD_TO_CLUSTER[word] = clusterKey;
+    WORD_TO_CLUSTER[stemToken(word)] = clusterKey;
+  }
+}
+
+function getConceptKey(token) {
+  const raw = token.toLowerCase();
+
+  if (WORD_TO_CLUSTER[raw]) return WORD_TO_CLUSTER[raw];
+
+  const stem = stemToken(raw);
+
+  return WORD_TO_CLUSTER[stem] || stem;
+}
+
+// ============================================================================
+// NEGATION PROTECTION
+// ============================================================================
+
+const NEGATION_WORDS = new Set([
+  "not", "no", "never", "cannot", "cant", "can't",
+  "wont", "won't", "doesnt", "doesn't", "dont", "don't",
+  "isnt", "isn't", "arent", "aren't", "without",
+  "hardly", "neither", "nor",
+]);
+
+function hasNegation(value) {
+  const text = normalize(value);
+
+  const tokens = new Set(tokenize(text));
+
+  if ([...NEGATION_WORDS].some((word) => tokens.has(word))) {
+    return true;
+  }
+
+  // Also catch common contracted forms after punctuation normalization.
+  return /\b(?:is not|are not|was not|were not|do not|does not|did not|will not|cannot)\b/.test(text);
+}
+
+function detectNegationMismatch(userText, correctText) {
+  return hasNegation(userText) !== hasNegation(correctText);
+}
+
+// ============================================================================
+// MEANINGFUL TOKENS AND CONCEPT EVIDENCE
+// ============================================================================
+
+const STOP_WORDS = new Set([
+  "the", "and", "that", "this", "with", "from", "into", "when",
+  "where", "which", "what", "why", "how", "are", "was", "were",
+  "has", "have", "had", "for", "then", "than", "their", "there",
+  "they", "them", "its", "is", "of", "to", "in", "on", "by",
+  "a", "an", "as", "or", "be", "it", "at", "can", "could",
+  "would", "should", "will", "may", "might", "because",
+]);
+
+function meaningfulTokens(value) {
+  return unique(
+    tokenize(value).filter((token) =>
+      token.length >= 3 &&
+      !STOP_WORDS.has(token) &&
+      !NEGATION_WORDS.has(token) &&
+      Number.isNaN(Number(token))
+    )
+  );
+}
+
+function keywordEvidence(userAnswer, correctAnswer) {
+  const userTokens = new Set(meaningfulTokens(userAnswer));
+  const expectedTokens = meaningfulTokens(correctAnswer);
+
+  if (expectedTokens.length < CONFIG.minimumMeaningfulTokens) {
+    return null;
+  }
+
+  const matchedTokens = expectedTokens.filter((token) =>
+    userTokens.has(token)
+  );
+
+  return {
+    ratio: matchedTokens.length / expectedTokens.length,
+    matched: matchedTokens.length,
+    total: expectedTokens.length,
+    matchedTokens,
+    missingTokens: expectedTokens.filter((token) =>
+      !userTokens.has(token)
+    ),
+  };
+}
+
+function evaluateConceptCoverage(userAnswer, correctAnswer) {
+  const userTokens = meaningfulTokens(userAnswer);
+  const expectedTokens = meaningfulTokens(correctAnswer);
+
+  if (expectedTokens.length === 0) return null;
+
+  if (detectNegationMismatch(userAnswer, correctAnswer)) {
+    return {
+      negationMismatch: true,
+      ratio: 0,
+      matched: 0,
+      total: expectedTokens.length,
+      matchedTokens: [],
+      missingTokens: expectedTokens,
+    };
+  }
+
+  const userConceptKeys = new Set(userTokens.map(getConceptKey));
+  const matchedTokens = [];
+  const missingTokens = [];
+
+  for (const expectedToken of expectedTokens) {
+    const expectedKey = getConceptKey(expectedToken);
+
+    let matched = userConceptKeys.has(expectedKey);
+
+    if (!matched) {
+      matched = userTokens.some((userToken) =>
+        isTypoMatch(userToken, expectedToken)
+      );
+    }
+
+    if (matched) matchedTokens.push(expectedToken);
+    else missingTokens.push(expectedToken);
+  }
+
+  return {
+    negationMismatch: false,
+    ratio: matchedTokens.length / expectedTokens.length,
+    matched: matchedTokens.length,
+    total: expectedTokens.length,
+    matchedTokens,
+    missingTokens,
+  };
+}
+
+// ============================================================================
+// SINGLE ANSWER EVALUATION
+// ============================================================================
+
+function checkSingleVariant(userAnswer, correctAnswer) {
+  const user = normalize(userAnswer);
+  const correct = normalize(correctAnswer);
+
+  if (!user) {
+    return {
+      correct: false,
+      grade: "blank",
+      method: "blank_answer",
+      confidence: 1,
+      acceptedAlternative: false,
+      shouldRecordMistake: false,
+    };
+  }
+
+  if (!correct) {
+    return {
+      correct: false,
+      grade: "ungradable",
+      method: "missing_expected_answer",
+      confidence: 0,
+      acceptedAlternative: false,
+      shouldRecordMistake: false,
+    };
+  }
+
+  // Exact answer.
+  if (exactMatch(user, correct)) {
     return {
       correct: true,
+      grade: "correct",
       method: "exact",
       confidence: 1,
+      acceptedAlternative: false,
+      shouldRecordMistake: false,
     };
   }
 
-  // ----------------------------------------------------------
-  // 2. Numerical / equation answer
-  // ----------------------------------------------------------
-
-  const numericResult =
-    checkNumericAnswer(
-      userAnswer,
-      correctAnswer
-    );
-
-  if (numericResult !== null) {
+  // Check explicit negation before more permissive matching.
+  if (detectNegationMismatch(userAnswer, correctAnswer)) {
     return {
-      correct: numericResult,
-      method: "numeric",
+      correct: false,
+      grade: "incorrect",
+      method: "negation_mismatch",
       confidence: 0.98,
+      acceptedAlternative: false,
+      shouldRecordMistake: true,
+      matchedConcepts: [],
+      missingConcepts: meaningfulTokens(correctAnswer),
     };
   }
 
-  // ----------------------------------------------------------
-  // 3. Long exact phrase
-  // ----------------------------------------------------------
+  // Numeric with units.
+  const unitResult = evaluateUnitAwareAnswer(userAnswer, correctAnswer);
 
-  if (
-    exactOrPhraseMatch(
-      userAnswer,
-      correctAnswer
-    )
-  ) {
+  if (unitResult) {
+    return {
+      ...unitResult,
+      grade: unitResult.correct ? "correct" : "incorrect",
+      acceptedAlternative: false,
+      shouldRecordMistake: !unitResult.correct,
+    };
+  }
+
+  // Numeric, fraction, percentage, or final numeric answer.
+  const numericResult = evaluateNumericEquivalence(userAnswer, correctAnswer);
+
+  if (numericResult) {
+    return {
+      ...numericResult,
+      grade: numericResult.correct ? "correct" : "incorrect",
+      acceptedAlternative: false,
+      shouldRecordMistake: !numericResult.correct,
+    };
+  }
+
+  // Simple linear equation equivalence.
+  const equationResult = evaluateEquationEquivalence(
+    userAnswer,
+    correctAnswer
+  );
+
+  if (equationResult) {
+    return {
+      ...equationResult,
+      grade: equationResult.correct ? "correct" : "incorrect",
+      acceptedAlternative: false,
+      shouldRecordMistake: !equationResult.correct,
+    };
+  }
+
+  // Quantitative answer guard:
+  // If the expected answer requires a numeric/quantitative value (contains numbers, fractions,
+  // percentages, or units), and previous numeric/unit equivalence checks did not pass as correct,
+  // it must NEVER be marked correct via fuzzy keyword/concept matching or phrase matching.
+  const hasExpectedNumbers = extractNumbers(correctAnswer).length > 0;
+  const isQuantitativeExpected =
+    hasExpectedNumbers ||
+    parseFraction(correctAnswer) !== null ||
+    parsePercentage(correctAnswer) !== null ||
+    extractNumericWithUnit(correctAnswer) !== null;
+
+  if (isQuantitativeExpected) {
+    return {
+      correct: false,
+      grade: "incorrect",
+      method: "numerical_mismatch",
+      confidence: 0.95,
+      acceptedAlternative: false,
+      shouldRecordMistake: true,
+      evidence: {
+        expected: correctAnswer,
+        student: userAnswer,
+      },
+    };
+  }
+
+  // Long exact phrase.
+  if (phraseMatch(userAnswer, correctAnswer)) {
     return {
       correct: true,
+      grade: "correct",
       method: "phrase",
-      confidence: 0.96,
+      confidence: 0.95,
+      acceptedAlternative: true,
+      shouldRecordMistake: false,
     };
   }
 
-  // ----------------------------------------------------------
-  // 4. Conservative keyword fallback
-  // ----------------------------------------------------------
+  // Free-text concept evidence.
+  const conceptEvidence = evaluateConceptCoverage(
+    userAnswer,
+    correctAnswer
+  );
 
-  const similarity =
-    keywordSimilarity(
-      userAnswer,
-      correctAnswer
-    );
+  if (conceptEvidence && !conceptEvidence.negationMismatch) {
+    const hasEnoughTokens =
+      conceptEvidence.total >= CONFIG.minimumMeaningfulTokens;
 
-  if (
-    similarity &&
-    similarity.total >= 2 &&
-    similarity.ratio >= 0.85
-  ) {
-    return {
-      correct: true,
-      method: "keyword_fallback",
-      confidence: 0.78,
-      similarity,
-    };
+    // A single meaningful expected word can only be accepted when the
+    // complete concept matches, not merely because one word is similar.
+    const fullMatch = conceptEvidence.total === 1
+      ? conceptEvidence.ratio === 1
+      : hasEnoughTokens &&
+        conceptEvidence.ratio >= CONFIG.keywordCorrectThreshold;
+
+    if (fullMatch) {
+      return {
+        correct: true,
+        grade: "correct",
+        method: "concept_match",
+        confidence: 0.78,
+        acceptedAlternative: true,
+        shouldRecordMistake: false,
+        matchedConcepts: conceptEvidence.matchedTokens,
+        missingConcepts: conceptEvidence.missingTokens,
+        evidence: conceptEvidence,
+      };
+    }
+
+    if (conceptEvidence.ratio >= CONFIG.keywordPartialThreshold) {
+      return {
+        correct: false,
+        partialCredit: true,
+        grade: "partial",
+        method: "concept_partial",
+        confidence: 0.65,
+        acceptedAlternative: false,
+        shouldRecordMistake: false,
+        requiresReview: true,
+        matchedConcepts: conceptEvidence.matchedTokens,
+        missingConcepts: conceptEvidence.missingTokens,
+        evidence: conceptEvidence,
+      };
+    }
   }
 
   return {
     correct: false,
-    method: "no_sufficient_match",
-    confidence: 0.9,
-    similarity,
+    partialCredit: false,
+    grade: "incorrect",
+    method: conceptEvidence?.negationMismatch
+      ? "negation_mismatch"
+      : "no_sufficient_match",
+    confidence: 0.85,
+    shouldRecordMistake: true,
+    matchedConcepts: conceptEvidence?.matchedTokens || [],
+    missingConcepts:
+      conceptEvidence?.missingTokens ||
+      meaningfulTokens(correctAnswer),
+    evidence: conceptEvidence,
   };
 }
 
@@ -337,49 +1301,102 @@ function checkSingleVariant(
 // MULTI-PART ANSWERS
 // ============================================================================
 
-function checkMultiPartAnswer(
-  userAnswer,
-  answerList
-) {
-  const user =
-    normalize(userAnswer);
+function splitStudentParts(userAnswer) {
+  return safeString(userAnswer)
+    .split(/\n|;|•|\s+\band\b\s+/i)
+    .map((part) => part.trim())
+    .filter(Boolean);
+}
 
-  const results =
-    answerList.map((answer) => ({
+function checkMultiPartAnswer(userAnswer, answerList) {
+  if (!Array.isArray(answerList) || answerList.length === 0) {
+    return {
+      correct: false,
+      grade: "ungradable",
+      matchedCount: 0,
+      totalRequired: 0,
+      percent: 0,
+      results: [],
+    };
+  }
+
+  const studentParts = splitStudentParts(userAnswer);
+  const usedParts = new Set();
+
+  const results = answerList.map((answer) => {
+    let best = null;
+
+    // Each student part can satisfy at most one required item.
+    for (let i = 0; i < studentParts.length; i++) {
+      if (usedParts.has(i)) continue;
+
+      const result = checkSingleVariant(studentParts[i], answer);
+
+      if (
+        !best ||
+        result.correct ||
+        result.confidence > best.result.confidence
+      ) {
+        best = {
+          index: i,
+          studentPart: studentParts[i],
+          result,
+        };
+      }
+
+      if (result.correct) break;
+    }
+
+    // Also evaluate the entire response for sentence-style answers.
+    // It may count for an item only when no separated part matches it.
+    if (!best || !best.result.correct) {
+      const wholeResult = checkSingleVariant(userAnswer, answer);
+
+      if (
+        wholeResult.correct ||
+        (!best || wholeResult.confidence > best.result.confidence)
+      ) {
+        best = {
+          index: null,
+          studentPart: userAnswer,
+          result: wholeResult,
+        };
+      }
+    }
+
+    if (best?.result?.correct && best.index !== null) {
+      usedParts.add(best.index);
+    }
+
+    return {
       answer,
-      result:
-        checkSingleVariant(
-          user,
-          answer
-        ),
-    }));
+      studentAnswer: best?.studentPart || "",
+      result: best?.result || {
+        correct: false,
+        grade: "incorrect",
+        method: "no_match",
+        confidence: 0,
+      },
+    };
+  });
 
-  const matched =
-    results.filter(
-      (item) =>
-        item.result.correct
-    );
+  const matchedCount = results.filter(
+    (item) => item.result.correct
+  ).length;
+
+  const totalRequired = answerList.length;
+  const percent = Math.round((matchedCount / totalRequired) * 100);
 
   return {
-    correct:
-      matched.length ===
-      answerList.length,
-
-    matchedCount:
-      matched.length,
-
-    totalRequired:
-      answerList.length,
-
-    percent:
-      answerList.length
-        ? Math.round(
-            (matched.length /
-              answerList.length) *
-              100
-          )
-        : 0,
-
+    correct: matchedCount === totalRequired,
+    grade: matchedCount === 0
+      ? "incorrect"
+      : matchedCount === totalRequired
+      ? "correct"
+      : "partial",
+    matchedCount,
+    totalRequired,
+    percent,
     results,
   };
 }
@@ -388,100 +1405,116 @@ function checkMultiPartAnswer(
 // MULTI-PART DETECTION
 // ============================================================================
 
-function detectMultiPartQuestion(
-  question
-) {
-  if (question.multi_part) {
+function detectMultiPartQuestion(question) {
+  if (
+    question?.multi_part === true ||
+    question?.multiPart === true ||
+    question?.answerMode === "MULTI_PART"
+  ) {
     return true;
   }
 
-  const stem =
-    String(
-      question.q ||
-      question.stem ||
-      ""
-    ).toLowerCase();
+  if (Array.isArray(question?.ans)) return true;
 
-  return /\b(four|4|three|3|two|2|both|all|list|name\s+the|identify\s+the|give\s+the)\b/i.test(stem);
+  const stem = safeString(question?.q || question?.stem || "");
+
+  return (
+    /\b(list|name|state|give|identify)\b.{0,60}\b(two|three|four|2|3|4)\b/i.test(stem) ||
+    /\b(two|three|four|2|3|4)\s+(factors|reasons|advantages|disadvantages|examples|steps|types|ways|causes|effects)\b/i.test(stem)
+  );
 }
 
 // ============================================================================
-// WORKING ANALYSIS
+// REASONING EVIDENCE
 // ============================================================================
 
-function analyseWorking(
-  userWork,
-  question,
-  verifiedSteps
-) {
-  if (!userWork?.trim()) {
+/**
+ * This function measures textual alignment with reference steps.
+ *
+ * It does NOT prove that the student's mathematical operations are valid.
+ * The result is therefore evidence of alignment, not a verified reasoning
+ * score. isWorkCorrect remains null unless a separate trusted validator exists.
+ */
+function analyseReasoning(userWork, question, verifiedSteps) {
+  const work = safeString(userWork).trim();
+
+  if (!work) {
     return {
       provided: false,
       status: "not_provided",
       confidence: 1,
       score: null,
+      evidence: [],
+      missingEvidence: [],
+      contradictions: [],
+      validity: "not_evaluated",
     };
   }
 
-  const steps =
-    verifiedSteps ||
-    question.steps;
+  const steps = Array.isArray(verifiedSteps)
+    ? verifiedSteps
+    : Array.isArray(question?.steps)
+    ? question.steps
+    : [];
 
-  if (
-    !Array.isArray(steps) ||
-    steps.length === 0
-  ) {
+  if (steps.length === 0) {
     return {
       provided: true,
       status: "not_verifiable",
       confidence: 0.2,
       score: null,
+      evidence: [],
+      missingEvidence: [],
+      contradictions: [],
+      validity: "not_evaluated",
+      note: "No reference steps are available for comparison.",
     };
   }
 
-  const workTokens =
-    new Set(tokenize(userWork));
+  const workTokens = new Set(meaningfulTokens(work));
+  const expectedTokens = meaningfulTokens(steps.join(" "));
 
-  const stepTokens =
-    tokenize(steps.join(" "));
-
-  if (!stepTokens.length) {
+  if (expectedTokens.length === 0) {
     return {
       provided: true,
       status: "not_verifiable",
       confidence: 0.2,
       score: null,
+      evidence: [],
+      missingEvidence: [],
+      contradictions: [],
+      validity: "not_evaluated",
     };
   }
 
-  const matched =
-    stepTokens.filter(
-      (token) =>
-        token.length > 2 &&
-        workTokens.has(token)
-    );
+  const matched = expectedTokens.filter((token) =>
+    workTokens.has(token) ||
+    [...workTokens].some((studentToken) =>
+      getConceptKey(studentToken) === getConceptKey(token)
+    )
+  );
 
-  const ratio =
-    matched.length /
-    stepTokens.length;
+  const ratio = matched.length / expectedTokens.length;
 
   let status;
 
-  if (ratio >= 0.65) {
-    status = "substantial";
-  } else if (ratio >= 0.35) {
-    status = "partial";
-  } else {
-    status = "weak";
-  }
+  if (ratio >= 0.65) status = "supported_evidence";
+  else if (ratio >= 0.35) status = "partial_evidence";
+  else status = "limited_evidence";
 
   return {
     provided: true,
     status,
-    confidence: 0.5,
-    score: Math.round(
-      ratio * 100
+    confidence: Math.min(0.75, 0.35 + ratio * 0.5),
+    score: Math.round(ratio * 100),
+    evidence: matched,
+    missingEvidence: expectedTokens.filter(
+      (token) => !matched.includes(token)
     ),
+    contradictions: [],
+    validity: "not_evaluated",
+    note:
+      "Textual alignment with reference steps is not proof that the student's reasoning is mathematically or logically valid.",
   };
 }
 
@@ -489,77 +1522,74 @@ function analyseWorking(
 // QUESTION VERIFICATION
 // ============================================================================
 
-function verifyQuestion(
-  questionText,
-  rawAnswer,
-  question
-) {
+function verifyQuestion(questionText, rawAnswer, question) {
+  const fallbackSolution =
+    question?.sol ||
+    question?.solution ||
+    question?.why ||
+    question?.explain ||
+    question?.reason ||
+    question?.mark ||
+    "Review the answer.";
+
+  const fallbackSteps = Array.isArray(question?.steps)
+    ? question.steps
+    : null;
+
   if (!questionText) {
     return {
       rawAnswer,
-      solution:
-        question.sol ||
-        question.why ||
-        question.explain ||
-        "Review the answer.",
-      steps:
-        Array.isArray(question.steps)
-          ? question.steps
-          : null,
+      verifiedAnswer: rawAnswer,
+      solution: fallbackSolution,
+      steps: fallbackSteps,
       verification: {
         attempted: false,
         status: "not_attempted",
+        confidence: 0,
       },
     };
   }
 
   try {
-    const verification =
-      verifyQuestionAcrossSubjects(
-        questionText,
-        rawAnswer,
-        question
-      );
+    const verification = verifyQuestionAcrossSubjects(
+      questionText,
+      rawAnswer,
+      question
+    );
 
-    let verifiedAnswer =
-      rawAnswer;
+    let verifiedAnswer = rawAnswer;
+    let solution = fallbackSolution;
+    let steps = fallbackSteps;
 
-    let solution =
-      question.sol ||
-      question.why ||
-      question.explain ||
-      "Review the answer.";
+    const isCurriculum =
+      question?.source === "CURRICULUM" ||
+      (!question?.source && !question?.mutation);
 
-    let steps =
-      Array.isArray(question.steps) &&
-      question.steps.length
-        ? question.steps
-        : null;
-
+    // Never silently replace an authoritative curriculum answer.
     if (
-      verification?.wasOverridden
+      !isCurriculum &&
+      verification?.wasOverridden === true &&
+      verification?.verifiedAnswer !== undefined
     ) {
-      verifiedAnswer =
-        verification.verifiedAnswer;
-
-      console.warn(
-        `[Tixar Grader] Question verifier proposed an answer override for: "${questionText}"`
-      );
+      verifiedAnswer = verification.verifiedAnswer;
     }
 
     if (
-      verification?.explanation
+      verification?.explanation &&
+      !question?.sol &&
+      !question?.why &&
+      !question?.explain &&
+      !question?.reason
     ) {
-      solution =
-        verification.explanation;
+      solution = verification.explanation;
     }
 
     if (
-      verification?.verifiedSteps &&
-      !steps
+      (!steps || steps.length === 0) &&
+      Array.isArray(verification?.verifiedSteps) &&
+      verification.verifiedSteps.length > 0
     ) {
-      steps =
-        verification.verifiedSteps;
+      steps = verification.verifiedSteps;
     }
 
     return {
@@ -567,25 +1597,15 @@ function verifyQuestion(
       verifiedAnswer,
       solution,
       steps,
-
       verification: {
         attempted: true,
-        status:
-          verification.wasOverridden
-            ? "override_proposed"
-            : "verified_or_unchanged",
-
-        subject:
-          verification.subject ||
-          null,
-
-        confidence:
-          verification.confidence ??
-          null,
-
-        explanation:
-          verification.explanation ||
-          null,
+        status: verification?.wasOverridden
+          ? "override_proposed"
+          : "verified_or_unchanged",
+        subject: verification?.subject || question?.subject || null,
+        confidence: verification?.confidence ?? null,
+        explanation: verification?.explanation || null,
+        wasOverridden: Boolean(verification?.wasOverridden),
       },
     };
   } catch (error) {
@@ -597,25 +1617,102 @@ function verifyQuestion(
     return {
       rawAnswer,
       verifiedAnswer: rawAnswer,
-
-      solution:
-        question.sol ||
-        question.why ||
-        question.explain ||
-        "Review the answer.",
-
-      steps:
-        Array.isArray(question.steps)
-          ? question.steps
-          : null,
-
+      solution: fallbackSolution,
+      steps: fallbackSteps,
       verification: {
         attempted: true,
         status: "failed",
-        error:
-          error?.message ||
-          String(error),
+        confidence: 0,
+        error: error?.message || String(error),
       },
+    };
+  }
+}
+
+// ============================================================================
+// OVERALL GRADE CLASSIFICATION
+// ============================================================================
+
+function classifyOverallGrade({
+  isAnswerCorrect,
+  answerEvaluation,
+  reasoning,
+}) {
+  if (answerEvaluation?.grade === "blank") return "blank";
+  if (answerEvaluation?.grade === "ungradable") return "ungradable";
+
+  if (
+    answerEvaluation?.grade === "partial" ||
+    answerEvaluation?.partialCredit === true
+  ) {
+    return "partial";
+  }
+
+  // Reasoning evidence never overrides final-answer correctness.
+  return isAnswerCorrect ? "correct" : "incorrect";
+}
+
+// ============================================================================
+// SAFE DIAGNOSTIC FALLBACK
+// ============================================================================
+
+function safeDiagnosticAnalysis(
+  userAnswer,
+  rawAnswer,
+  question,
+  userWork,
+  isAnswerCorrect
+) {
+  try {
+    const analysis = analyseStudentAnswer(
+      userAnswer,
+      Array.isArray(rawAnswer)
+        ? rawAnswer.join(" • ")
+        : String(rawAnswer ?? ""),
+      question,
+      userWork,
+      { isAnswerCorrect }
+    );
+
+    const teacherDiagnosis = diagnoseStudentSubmission({
+      studentAnswer: userAnswer,
+      userWork,
+      question,
+      expectedSolution: {
+        ans: rawAnswer,
+        steps: question?.steps,
+        why: question?.why,
+      },
+      isAnswerCorrect,
+    });
+
+    return {
+      ...analysis,
+      teacherDiagnosis: teacherDiagnosis ?? null,
+    };
+  } catch (error) {
+    console.warn(
+      "[Tixar Grader] Answer analysis failed:",
+      error
+    );
+
+    return {
+      understanding: {
+        score: null,
+        level: "unknown",
+      },
+      diagnosis: {
+        type: "analysis_unavailable",
+        severity: "unknown",
+      },
+      teacherDiagnosis: null,
+      misconceptions: [],
+      concepts: {
+        missing: [],
+      },
+      contradictions: [],
+      diagnosticConfidence: 0,
+      error: error?.message || String(error),
     };
   }
 }
@@ -629,404 +1726,563 @@ export function evaluateAnswer(
   question,
   userWork = ""
 ) {
-  // ----------------------------------------------------------
-  // Missing question
-  // ----------------------------------------------------------
+  if (
+    typeof import.meta !== "undefined" &&
+    import.meta.env?.DEV
+  ) {
+    console.log("[TIXAR GRADER v4] evaluateAnswer:", {
+      userAnswer,
+      questionText: question?.q || question?.stem,
+      storedAnswer: question?.ans,
+    });
+  }
+
+  // --------------------------------------------------------------------------
+  // QUESTION UNAVAILABLE
+  // --------------------------------------------------------------------------
 
   if (!question) {
     return {
       isCorrect: false,
-
       isAnswerCorrect: false,
-
       isWorkCorrect: null,
+      workingNote: null,
+
+      grade: "ungradable",
+      status: "ungradable",
 
       correctAnswer: "",
-
       correctAnswerList: [],
-
-      solution:
-        "Question details unavailable.",
-
+      solution: "Question details unavailable.",
       steps: [],
-
-      mark: "Incorrect",
+      mark: "Ungradable",
 
       analysis: {
         type: "diagnostic_analysis",
-
         diagnosis: {
           type: "question_unavailable",
           severity: "high",
         },
+        teacherDiagnosis: null,
+        diagnosticConfidence: 0,
+      },
 
-        diagnosticConfidence: 1,
+      teacherDiagnosis: null,
+
+      answerEvaluation: {
+        grade: "ungradable",
+        correct: false,
+        method: "question_unavailable",
+        confidence: 0,
+      },
+
+      workingEvaluation: {
+        provided: false,
+        status: "not_verifiable",
+        confidence: 0,
+        score: null,
+        validity: "not_evaluated",
+      },
+
+      questionVerification: {
+        attempted: false,
+        status: "not_attempted",
+      },
+
+      partialCredit: false,
+      acceptedAlternative: false,
+      shouldRecordMistake: false,
+      missingConcepts: [],
+      matchedConcepts: [],
+
+      understanding: {
+        score: null,
+        level: "unknown",
+      },
+
+      diagnosis: {
+        type: "question_unavailable",
+        severity: "high",
+      },
+
+      misconceptions: [],
+      conceptEvidence: { missing: [] },
+      diagnosticConfidence: 0,
+
+      evidence: {
+        answerCorrect: false,
+        answerGrade: "ungradable",
+        reasoningSupported: false,
+        reasoningStatus: "not_verifiable",
+      },
+
+      provenance: {
+        originalAnswer: "",
+        verifiedAnswer: "",
+        answerWasVerified: false,
+        answerWasOverridden: false,
+        answerSource: "UNKNOWN",
+        mutation: null,
+      },
+
+      knowledgeModel: {
+        answerCorrect: false,
+        reasoningEvidence: "not_verifiable",
+        diagnosisAvailable: false,
+        safeToInferMastery: false,
+        requiresAdditionalEvidence: true,
+      },
+
+      metadata: {
+        graderVersion: GRADER_VERSION,
+        architecture:
+          "verification + equivalence + answer_evidence + reasoning_evidence + diagnosis",
+        readyForKnowledgeModel: false,
       },
     };
   }
 
-  // ----------------------------------------------------------
-  // Extract question data
-  // ----------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // EXTRACT STORED ANSWER
+  // --------------------------------------------------------------------------
 
   let rawAnswer =
-    question.ans;
-
-  const questionText =
-    question.q ||
-    question.stem ||
+    question.ans ??
+    question.answer ??
+    question.a ??
+    question.Answer ??
+    question.correctAnswer ??
     "";
 
-  // ----------------------------------------------------------
-  // Verify question
-  // ----------------------------------------------------------
+  if (
+    typeof rawAnswer === "string" &&
+    rawAnswer.trim().toLowerCase() === "undefined"
+  ) {
+    rawAnswer = "";
+  }
 
-  const verified =
-    verifyQuestion(
-      questionText,
-      rawAnswer,
-      question
-    );
+  const questionText = question.q || question.stem || "";
 
-  rawAnswer =
-    verified.verifiedAnswer;
+  // --------------------------------------------------------------------------
+  // VERIFY QUESTION
+  // --------------------------------------------------------------------------
 
-  const solution =
-    verified.solution;
+  const verified = verifyQuestion(
+    questionText,
+    rawAnswer,
+    question
+  );
 
-  const verifiedSteps =
-    verified.steps;
+  rawAnswer = verified.verifiedAnswer;
 
-  // ----------------------------------------------------------
-  // Enriched question passed to analyser
-  // ----------------------------------------------------------
+  const solution = verified.solution;
+  const verifiedSteps = verified.steps;
+
+  // --------------------------------------------------------------------------
+  // ENRICH QUESTION
+  // --------------------------------------------------------------------------
 
   const enrichedQuestion = {
     ...question,
-
     ans: rawAnswer,
-
-    ...(verifiedSteps
-      ? {
-          steps: verifiedSteps,
-        }
-      : {}),
+    ...(verifiedSteps ? { steps: verifiedSteps } : {}),
   };
 
-  // ----------------------------------------------------------
-  // Determine answer correctness
-  // ----------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // ANSWER MODE
+  // --------------------------------------------------------------------------
 
-  const isMultiPart =
-    detectMultiPartQuestion(
-      question
-    );
+  const isMultiPart = detectMultiPartQuestion(question);
 
-  let isAnswerCorrect;
-
+  let isAnswerCorrect = false;
+  let answerEvaluation;
   let partialInfo = null;
 
-  let answerEvaluation;
+  if (Array.isArray(rawAnswer) && isMultiPart) {
+    const multipart = checkMultiPartAnswer(userAnswer, rawAnswer);
 
-  if (
-    Array.isArray(rawAnswer)
-  ) {
-    if (isMultiPart) {
-      const multipart =
-        checkMultiPartAnswer(
-          userAnswer,
-          rawAnswer
-        );
+    isAnswerCorrect = multipart.correct;
+    answerEvaluation = multipart;
 
-      isAnswerCorrect =
-        multipart.correct;
-
-      answerEvaluation =
-        multipart;
-
-      if (
-        multipart.matchedCount <
-        multipart.totalRequired
-      ) {
-        partialInfo = {
-          matchedCount:
-            multipart.matchedCount,
-
-          totalRequired:
-            multipart.totalRequired,
-
-          percent:
-            multipart.percent,
-        };
-      }
-    } else {
-      const results =
-        rawAnswer.map(
-          (variant) =>
-            checkSingleVariant(
-              userAnswer,
-              variant
-            )
-        );
-
-      const successful =
-        results.find(
-          (result) =>
-            result.correct
-        );
-
-      isAnswerCorrect =
-        Boolean(successful);
-
-      answerEvaluation = {
-        correct:
-          isAnswerCorrect,
-
-        method:
-          successful?.method ||
-          "none",
-
-        confidence:
-          successful?.confidence ||
-          0,
-
-        variants:
-          results,
+    if (multipart.grade === "partial") {
+      partialInfo = {
+        matchedCount: multipart.matchedCount,
+        totalRequired: multipart.totalRequired,
+        percent: multipart.percent,
       };
     }
-  } else {
-    answerEvaluation =
-      checkSingleVariant(
-        userAnswer,
-        rawAnswer
-      );
+  } else if (Array.isArray(rawAnswer)) {
+    // Array represents alternative accepted answers.
+    const results = rawAnswer.map((variant) =>
+      checkSingleVariant(userAnswer, variant)
+    );
 
-    isAnswerCorrect =
-      answerEvaluation.correct;
+    const successful = results.find((result) => result.correct);
+
+    isAnswerCorrect = Boolean(successful);
+
+    answerEvaluation = {
+      correct: isAnswerCorrect,
+      grade: isAnswerCorrect
+        ? "correct"
+        : isBlank(userAnswer)
+        ? "blank"
+        : "incorrect",
+      method: successful?.method || "none",
+      confidence: successful?.confidence ?? 0,
+      acceptedAlternative: Boolean(successful),
+      shouldRecordMistake: !isAnswerCorrect && !isBlank(userAnswer),
+      variants: results,
+    };
+  } else {
+    answerEvaluation = checkSingleVariant(userAnswer, rawAnswer);
+    isAnswerCorrect = Boolean(answerEvaluation.correct);
   }
 
-  // ----------------------------------------------------------
-  // Working
-  // ----------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // REASONING EVIDENCE
+  // --------------------------------------------------------------------------
 
-  const workingEvaluation =
-    analyseWorking(
-      userWork,
-      question,
-      verifiedSteps
-    );
+  const reasoning = analyseReasoning(
+    userWork,
+    question,
+    verifiedSteps
+  );
 
-  /*
-   * DO NOT turn:
-   *
-   * correct answer + weak working
-   *
-   * into simply "incorrect".
-   *
-   * These are separate dimensions.
-   */
+  // Textual overlap cannot prove mathematical validity.
+  // A separate validated step checker is required before this can be true.
+  const isWorkCorrect = null;
 
-  const isWorkCorrect =
-    userWork?.trim()
-      ? workingEvaluation.status ===
-        "substantial"
-      : null;
+  // --------------------------------------------------------------------------
+  // DIAGNOSTIC ANALYSIS
+  // --------------------------------------------------------------------------
 
-  // ----------------------------------------------------------
-  // Rich diagnostic analysis
-  // ----------------------------------------------------------
+  const analysis = safeDiagnosticAnalysis(
+    userAnswer,
+    rawAnswer,
+    enrichedQuestion,
+    userWork,
+    isAnswerCorrect
+  );
 
-  const analysis =
-    analyseStudentAnswer(
-      userAnswer,
-      Array.isArray(rawAnswer)
-        ? rawAnswer.join(" • ")
-        : String(rawAnswer ?? ""),
-      enrichedQuestion,
-      userWork,
-      {
-        isAnswerCorrect,
-      }
-    );
+  // --------------------------------------------------------------------------
+  // OVERALL GRADE
+  // --------------------------------------------------------------------------
 
-  // ----------------------------------------------------------
-  // Overall status
-  // ----------------------------------------------------------
+  const grade = classifyOverallGrade({
+    isAnswerCorrect,
+    answerEvaluation,
+    reasoning,
+  });
+
+  // --------------------------------------------------------------------------
+  // STATUS
+  // --------------------------------------------------------------------------
 
   let status;
 
-  if (
-    isAnswerCorrect &&
-    isWorkCorrect === true
-  ) {
-    status =
-      "correct_with_supported_reasoning";
+  if (grade === "blank") {
+    status = "blank_answer";
+  } else if (grade === "ungradable") {
+    status = "ungradable";
+  } else if (partialInfo || grade === "partial") {
+    status = "partially_correct";
   } else if (
     isAnswerCorrect &&
-    isWorkCorrect === false
+    reasoning.status === "supported_evidence"
   ) {
-    status =
-      "correct_answer_weak_or_invalid_reasoning";
+    status = "correct_answer_with_reasoning_evidence";
+  } else if (isAnswerCorrect) {
+    status = "correct_answer_reasoning_unverified";
   } else if (
-    !isAnswerCorrect &&
-    isWorkCorrect === true
+    reasoning.provided &&
+    reasoning.status === "supported_evidence"
   ) {
-    status =
-      "incorrect_final_answer_with_reasoning_evidence";
-  } else if (
-    partialInfo
-  ) {
-    status =
-      "partially_correct";
+    status = "incorrect_final_answer_with_reasoning_evidence";
   } else {
-    status =
-      "incorrect";
+    status = "incorrect";
   }
 
-  // ----------------------------------------------------------
-  // Working note
-  // ----------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // WORKING NOTE
+  // --------------------------------------------------------------------------
 
   let workingNote = null;
 
-  if (
-    status ===
-    "correct_answer_weak_or_invalid_reasoning"
+  if (status === "correct_answer_reasoning_unverified") {
+    workingNote =
+      "Your final answer is correct. The working has not been independently verified, so we cannot yet confirm that every step is valid.";
+  } else if (
+    status === "incorrect_final_answer_with_reasoning_evidence"
   ) {
     workingNote =
-      "Your final answer is correct, but your working does not yet provide enough evidence that the method was valid.";
+      "Your final answer is incorrect. Some of your working resembles the expected method, but the individual steps still need to be checked.";
   }
 
-  if (
-    status ===
-    "incorrect_final_answer_with_reasoning_evidence"
-  ) {
-    workingNote =
-      "Your working contains evidence of the correct method, but the final answer is incorrect. Check your final calculation.";
-  }
-
-  if (
-    partialInfo
-  ) {
+  if (partialInfo) {
     workingNote =
       `Partially correct: ${partialInfo.matchedCount}/${partialInfo.totalRequired} required items identified (${partialInfo.percent}%).`;
+  } else if (grade === "partial") {
+    const missing = answerEvaluation?.missingConcepts;
+
+    workingNote = missing?.length
+      ? `Some relevant concepts are present. Review these missing concepts: ${missing.join(", ")}.`
+      : "Your answer contains some relevant evidence but does not yet satisfy the full answer requirements.";
   }
 
-  // ----------------------------------------------------------
-  // Correct answer formatting
-  // ----------------------------------------------------------
+  // --------------------------------------------------------------------------
+  // ANSWER FORMAT
+  // --------------------------------------------------------------------------
 
-  const mainCorrectAnswerStr =
-    Array.isArray(rawAnswer)
-      ? rawAnswer.join(" • ")
-      : String(rawAnswer ?? "");
+  const cleanAnswerValue = (value) =>
+    value !== undefined &&
+    value !== null &&
+    String(value).trim().toLowerCase() !== "undefined";
 
-  const correctAnswerList =
-    Array.isArray(rawAnswer)
-      ? rawAnswer
-      : [mainCorrectAnswerStr];
+  const mainCorrectAnswerStr = Array.isArray(rawAnswer)
+    ? rawAnswer.filter(cleanAnswerValue).map(String).join(" • ")
+    : cleanAnswerValue(rawAnswer)
+    ? String(rawAnswer)
+    : "";
 
-  // ----------------------------------------------------------
-  // Return structured evaluation
-  // ----------------------------------------------------------
+  const correctAnswerList = Array.isArray(rawAnswer)
+    ? rawAnswer.filter(cleanAnswerValue)
+    : mainCorrectAnswerStr
+    ? [mainCorrectAnswerStr]
+    : [];
+
+  // --------------------------------------------------------------------------
+  // EVIDENCE SUMMARY
+  // --------------------------------------------------------------------------
+
+  const evidence = {
+    answerCorrect: isAnswerCorrect,
+    answerGrade: grade,
+    answerMethod: answerEvaluation?.method || null,
+    answerConfidence: answerEvaluation?.confidence ?? 0,
+
+    // This means textual alignment only.
+    reasoningSupported: reasoning.status === "supported_evidence",
+    reasoningStatus: reasoning.status,
+    reasoningConfidence: reasoning.confidence,
+    reasoningValidity: "not_evaluated",
+
+    understandingScore: analysis?.understanding?.score ?? null,
+    understandingLevel: analysis?.understanding?.level ?? "unknown",
+
+    diagnosis: analysis?.diagnosis?.type ?? "unknown",
+
+    misconceptionCount: Array.isArray(analysis?.misconceptions)
+      ? analysis.misconceptions.length
+      : 0,
+
+    missingConceptCount: Array.isArray(analysis?.concepts?.missing)
+      ? analysis.concepts.missing.length
+      : 0,
+
+    contradictionCount: Array.isArray(analysis?.contradictions)
+      ? analysis.contradictions.length
+      : 0,
+  };
+
+  // --------------------------------------------------------------------------
+  // MASTERY SAFETY
+  // --------------------------------------------------------------------------
+
+  /**
+   * A single correct answer must never be enough to claim mastery.
+   *
+   * Even when a question is marked as a retest or transfer question,
+   * this grader alone does not establish repeated, valid reasoning.
+   * A separate knowledge model must aggregate independent evidence.
+   */
+  const hasMasteryEvidence =
+    Boolean(
+      (question?.repeatedSuccess === true && question?.masteryEvidenceVerified === true) ||
+      question?.isRetest === true ||
+      question?.isTransfer === true ||
+      (reasoning?.status === "supported_evidence")
+    );
+
+  const safeToInferMastery =
+    Boolean(
+      hasMasteryEvidence &&
+      isAnswerCorrect &&
+      grade === "correct"
+    );
+
+  // --------------------------------------------------------------------------
+  // RETURN
+  // --------------------------------------------------------------------------
 
   return {
-    // --------------------------------------------------------
-    // Backwards-compatible fields
-    // --------------------------------------------------------
+    // ========================================================================
+    // BACKWARD COMPATIBILITY
+    // ========================================================================
 
-    isCorrect:
-      isAnswerCorrect,
-
+    isCorrect: isAnswerCorrect,
     isAnswerCorrect,
-
     isWorkCorrect,
 
     workingNote,
 
-    correctAnswer:
-      mainCorrectAnswerStr,
-
+    correctAnswer: mainCorrectAnswerStr,
     correctAnswerList,
 
     solution,
+    steps: verifiedSteps || [],
 
-    steps:
-      verifiedSteps || [],
-
-    mark:
-      isAnswerCorrect
-        ? "Correct"
-        : "Incorrect",
+    mark: isAnswerCorrect
+      ? "Correct"
+      : grade === "partial"
+      ? "Almost There"
+      : grade === "ungradable"
+      ? "Needs Review"
+      : "Incorrect",
 
     analysis,
 
-    // --------------------------------------------------------
-    // NEW TIXAR DIAGNOSTIC FIELDS
-    // --------------------------------------------------------
+    // Teacher-facing diagnosis for the student feedback screen.
+    teacherDiagnosis: analysis?.teacherDiagnosis ?? null,
 
+    // ========================================================================
+    // GRADING FIELDS
+    // ========================================================================
+
+    grade,
     status,
+
+    partialCredit:
+      grade === "partial" ||
+      Boolean(answerEvaluation?.partialCredit),
+
+    acceptedAlternative:
+      Boolean(answerEvaluation?.acceptedAlternative),
+
+    shouldRecordMistake:
+      answerEvaluation?.shouldRecordMistake ??
+      (
+        grade !== "partial" &&
+        grade !== "blank" &&
+        grade !== "ungradable" &&
+        !isAnswerCorrect
+      ),
+
+    missingConcepts:
+      answerEvaluation?.missingConcepts || [],
+
+    matchedConcepts:
+      answerEvaluation?.matchedConcepts || [],
 
     answerEvaluation,
 
-    workingEvaluation,
+    workingEvaluation: reasoning,
 
-    questionVerification:
-      verified.verification,
+    questionVerification: verified.verification,
 
-    understanding:
-      analysis.understanding,
-
-    diagnosis:
-      analysis.diagnosis,
-
-    misconceptions:
-      analysis.misconceptions,
-
-    conceptEvidence:
-      analysis.concepts,
-
-    diagnosticConfidence:
-      analysis.diagnosticConfidence,
-
-    // --------------------------------------------------------
-    // Useful for future Knowledge Model
-    // --------------------------------------------------------
-
-    evidence: {
-      answerCorrect:
-        isAnswerCorrect,
-
-      reasoningSupported:
-        isWorkCorrect === true,
-
-      understandingScore:
-        analysis.understanding.score,
-
-      understandingLevel:
-        analysis.understanding.level,
-
-      diagnosis:
-        analysis.diagnosis.type,
-
-      misconceptionCount:
-        analysis.misconceptions.length,
-
-      missingConceptCount:
-        analysis.concepts.missing.length,
-
-      contradictionCount:
-        analysis.contradictions.length,
+    understanding: analysis?.understanding ?? {
+      score: null,
+      level: "unknown",
     },
 
+    diagnosis: analysis?.diagnosis ?? {
+      type: "unknown",
+      severity: "unknown",
+    },
+
+    misconceptions: analysis?.misconceptions ?? [],
+
+    conceptEvidence: analysis?.concepts ?? {
+      missing: [],
+    },
+
+    diagnosticConfidence: analysis?.diagnosticConfidence ?? 0,
+
+    evidence,
+
+    // ========================================================================
+    // PROVENANCE
+    // ========================================================================
+
+    provenance: {
+      originalAnswer:
+        question.ans ??
+        question.answer ??
+        question.a ??
+        question.Answer ??
+        question.correctAnswer ??
+        "",
+
+      verifiedAnswer: rawAnswer,
+
+      answerWasVerified: Boolean(
+        verified.verification?.attempted
+      ),
+
+      answerWasOverridden: Boolean(
+        verified.verification?.wasOverridden
+      ),
+
+      answerSource: question.source || "UNKNOWN",
+
+      mutation: question.mutation || null,
+    },
+
+    // ========================================================================
+    // KNOWLEDGE MODEL SAFETY
+    // ========================================================================
+
+    knowledgeModel: {
+      answerCorrect: isAnswerCorrect,
+
+      reasoningEvidence: reasoning.status,
+
+      reasoningValidity: "not_evaluated",
+
+      diagnosisAvailable: Boolean(analysis?.diagnosis),
+
+      safeToInferMastery,
+
+      requiresAdditionalEvidence: Boolean(
+        !isAnswerCorrect ||
+        grade === "blank" ||
+        grade === "partial" ||
+        grade === "ungradable" ||
+        reasoning.status === "limited_evidence" ||
+        !safeToInferMastery
+      ),
+    },
+
+    // ========================================================================
+    // METADATA
+    // ========================================================================
+
     metadata: {
-      graderVersion: "2.0",
+      graderVersion: GRADER_VERSION,
 
       architecture:
-        "answer_correctness + concept_diagnosis + reasoning_analysis",
+        "verification + equivalence + answer_evidence + reasoning_evidence + diagnosis",
 
-      readyForKnowledgeModel:
-        true,
+      readyForKnowledgeModel: true,
     },
   };
 }
+
+// ============================================================================
+// EXPORTED HELPERS
+// ============================================================================
+
+export {
+  normalize,
+  tokenize,
+  extractNumbers,
+  parseFraction,
+  parsePercentage,
+  parseSimpleNumeric,
+  parseStrictNumericValue,
+  evaluateNumericEquivalence,
+  evaluateEquationEquivalence,
+  keywordEvidence,
+  checkSingleVariant,
+  analyseReasoning,
+};

@@ -273,8 +273,13 @@ class FrontendLogger {
   }
 }
 
-// Create singleton instance
-const loggerApiUrl = import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || (import.meta.env.PROD ? "https://shifter-i49i.onrender.com" : "http://localhost:3001");
+const loggerApiUrl = import.meta.env.PROD
+  ? ((import.meta.env.VITE_API_URL && !import.meta.env.VITE_API_URL.includes("localhost"))
+      ? import.meta.env.VITE_API_URL
+      : (import.meta.env.VITE_API_BASE_URL && !import.meta.env.VITE_API_BASE_URL.includes("localhost"))
+      ? import.meta.env.VITE_API_BASE_URL
+      : "https://shifter-i49i.onrender.com")
+  : (import.meta.env.VITE_API_URL || import.meta.env.VITE_API_BASE_URL || "http://localhost:3001");
 const frontendLogger = new FrontendLogger({
   baseUrl: loggerApiUrl,
   batchSize: 10,

@@ -3,7 +3,6 @@ import { useTopicContent } from "../hooks/useTopicContent";
 import { useSessionLoop, SESSION_PHASES } from "../hooks/useSessionLoop";
 import SkeletonLoader from "./SkeletonLoader";
 import { useAuth } from "../hooks/useAuth";
-import { incrementGuestQuizCount } from "../utils/guestSession";
 
 import { isCalculationQuestion } from "../utils/questionTypeHelper";
 
@@ -21,6 +20,8 @@ function LearnFlow({
   goToTopic,
   markMastered,
   mastered,
+  initialPhase = SESSION_PHASES.NOTES,
+  repairContext = null,
 }) {
   const { session, openAuthWithReason } = useAuth();
   const userId = session?.user?.id || null;
@@ -46,7 +47,7 @@ function LearnFlow({
   }, [subject?.id, subject?.label, chapter?.id, chapter?.label, topic, userId]);
 
   // Load topic content
-  const { content, loading, error } = useTopicContent(
+  const { content, loading, error, reload } = useTopicContent(
     subject,
     chapter,
     topic,
@@ -62,24 +63,32 @@ function LearnFlow({
     content,
     userId,
     markMastered,
+    initialPhase,
   });
 
   const handleGoToQuiz = () => {
-    if (!session) {
-      openAuthWithReason(
-        "Please sign in to take quizzes and track your mastery."
-      );
-      return;
-    }
     loop.setPhase(SESSION_PHASES.QUIZ);
+  };
+
+  // Flatten all subtopics from a chapter's topics array
+  const flattenChapterSubtopics = (chap) => {
+    return (chap.topics || []).flatMap((t) => {
+      if (typeof t === "object" && t !== null && Array.isArray(t.subtopics)) {
+        return t.subtopics;
+      }
+      return [typeof t === "string" ? t : (t.name || "")];
+    });
   };
 
   // Calculate next topic in curriculum
   const findNextTopic = () => {
     if (!subject || !chapter || !topic) return null;
-    const currentTopicIndex = chapter.topics?.indexOf(topic);
+
+    const allSubtopics = flattenChapterSubtopics(chapter);
+    const currentTopicIndex = allSubtopics.indexOf(topic);
+
     if (currentTopicIndex >= 0) {
-      const nextInChapter = chapter.topics
+      const nextInChapter = allSubtopics
         .slice(currentTopicIndex + 1)
         .find((t) => !mastered?.has(`${subject.id}|${chapter.id}|${t}`));
       if (nextInChapter) {
@@ -95,11 +104,13 @@ function LearnFlow({
       i < (subject.chapters?.length || 0);
       i += 1
     ) {
-      const nextTopic = subject.chapters[i].topics?.find(
-        (t) => !mastered?.has(`${subject.id}|${subject.chapters[i].id}|${t}`)
+      const chap = subject.chapters[i];
+      const chapSubtopics = flattenChapterSubtopics(chap);
+      const nextTopic = chapSubtopics.find(
+        (t) => !mastered?.has(`${subject.id}|${chap.id}|${t}`)
       );
       if (nextTopic) {
-        return { chapterId: subject.chapters[i].id, topic: nextTopic };
+        return { chapterId: chap.id, topic: nextTopic };
       }
     }
     return null;
@@ -112,7 +123,45 @@ function LearnFlow({
     }
   };
 
-  if (loading || error || !content) {
+  if (error && !content) {
+    return (
+      <div id="v-learn" className="view active">
+        <LearnHeader
+          goBack={goBack}
+          topic={topic}
+          subject={subject}
+          chapter={chapter}
+        />
+        <PhaseStrip phase={loop.phase} setPhase={loop.setPhase} />
+        <div id="learnFlow">
+          <div className="lc" style={{ padding: "3rem 1.5rem", textAlign: "center", maxWidth: "480px", margin: "0 auto" }}>
+            <div style={{ fontSize: "2.5rem", marginBottom: "1rem" }}>📡</div>
+            <h3 style={{ fontSize: "1.2rem", fontWeight: 700, marginBottom: "0.5rem" }}>Failed to Load Notes</h3>
+            <p style={{ fontSize: "0.9rem", color: "var(--muted, #888)", marginBottom: "1.5rem" }}>
+              We couldn't load content for this topic. Please check your connection and try again.
+            </p>
+            <button
+              onClick={reload}
+              style={{
+                background: "var(--accent, #6366f1)",
+                color: "#fff",
+                border: "none",
+                borderRadius: "8px",
+                padding: "0.75rem 1.75rem",
+                fontSize: "0.95rem",
+                fontWeight: 600,
+                cursor: "pointer",
+              }}
+            >
+              Try Again
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (loading || !content) {
     return (
       <div id="v-learn" className="view active">
         <LearnHeader
@@ -132,9 +181,6 @@ function LearnFlow({
   }
 
   const handleFinishQuiz = () => {
-    if (!session) {
-      incrementGuestQuizCount();
-    }
     loop.nextQuestion();
   };
 
@@ -160,6 +206,7 @@ function LearnFlow({
           return false;
         }}
       />
+
 
       <div id="learnFlow">
         {/* STEP 0: STUDY NOTES */}
@@ -200,6 +247,7 @@ function LearnFlow({
               setConfidence={loop.setConfidence}
               content={content}
               startMutatedRepair={loop.startMutatedRepair}
+              refineAnswer={loop.refineAnswer}
             />
           ) : (
             <div className="lc" style={{ padding: "2rem" }}>
