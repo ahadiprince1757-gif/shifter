@@ -151,16 +151,8 @@ function QuizPhase({
             <span className="lbadge lb-q">
               {retryState === "retry" ? "Retry" : `Question ${qIdx + 1} of ${totalQs || 1}`}
             </span>
-            //*<button
-              className="ref-drawer-trigger"
-              onClick={() => setDrawerOpen(true)}
-              title="Open concept reference"
-              aria-label="Open concept reference notes"
-            >
-              View Notes
-            </button>
           </div>
-        </div>*/
+        </div>
 
         <div className="lcb">
           {retryState === "retry" && (
