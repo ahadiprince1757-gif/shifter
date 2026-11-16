@@ -38,6 +38,7 @@ export const STATUS = Object.freeze({
   INCONCLUSIVE: "inconclusive",
   CORRECT: "correct",
   UNRECOGNIZED: "unrecognized",
+  BLANK: "blank",
 });
 
 import { isKeyboardMash } from "./engine/inputClassifier.js";
@@ -337,6 +338,9 @@ function makeDiagnosis({
   firstError = null,
   correction = null,
   stepAnalysis = null,
+  probe = null,
+  repair = null,
+  retest = null,
 }) {
   const cleanRemember = cleanString(remember);
   const unpackedRem = unpackStructuredJson(cleanRemember);
@@ -359,6 +363,9 @@ function makeDiagnosis({
     ...(firstError ? { firstError } : {}),
     ...(correction ? { correction } : {}),
     ...(stepAnalysis ? { stepAnalysis } : {}),
+    ...(probe ? { probe } : {}),
+    ...(repair ? { repair } : {}),
+    ...(retest ? { retest } : {}),
   };
 }
 
@@ -911,8 +918,8 @@ export function diagnoseStudentSubmission({
   // 2. Empty Submission
   if (!answer && !work) {
     return makeDiagnosis({
-      status: STATUS.INCONCLUSIVE,
-      errorType: "no_attempt",
+      status: STATUS.BLANK,
+      errorType: "blank_submission",
       whatYouDid: "No answer or working was provided.",
       whyThisIsWrong: ["An answer must be submitted to receive credit."],
       theRightWay: authoredSteps.length > 0

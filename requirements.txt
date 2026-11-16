@@ -1,5 +1,6 @@
 # Tixar Pedagogical Intelligence Engine
-fastapi>=0.110.0
-uvicorn[standard]>=0.28.0
-pydantic>=2.6.0
-pytest>=8.0.0
+# Pinned production versions for API boundary and testing
+fastapi==0.115.8
+pydantic==2.10.6
+uvicorn[standard]==0.34.0
+pytest==8.3.4

@@ -1,5 +1,6 @@
 """
 Automated unit tests for Tixar Pedagogical Intelligence Engine.
+Includes exhaustive edge-case test suite for RepairVerifier and epistemic parity checks.
 """
 
 from ..orchestrator import TixarEngine
@@ -17,14 +18,21 @@ def test_speed_rate_operation_inversion():
         topic="average speed",
     )
 
+    # Epistemic agreement contract checks
     assert result["status"] == "diagnosed"
-    assert result["errorType"] == "OPERATION_SELECTION_ERROR"
+    assert result["answer"]["correct"] is False
+    assert result["error"]["detected"] is True
+    assert result["error"]["code"] == "OPERATION_SELECTION_ERROR"
+    assert result["cause"]["identified"] is True
+    assert result["cause"]["misconceptionCode"] == "RATE_OPERATION_INVERSION"
+    assert result["repair"]["identified"] is True
+
+    # UI backward compatibility checks
     assert "Your arithmetic is correct" in result["whyThisIsWrong"][0]
     assert "Speed = Distance ÷ Time" in result["remember"]
-    assert "operation is the problem" in result["conversational_feedback"]
+    assert "operation is the problem" in result["naturalExplanation"]
     assert result["probe"] is not None
     assert result["probe"]["correctAnswer"] == "20 km/h"
-    assert result["repair"] is not None
     assert result["retest"] is not None
     assert result["retest"]["expectedAnswer"] == "60 km/h"
 
@@ -40,8 +48,10 @@ def test_speed_correct_answer():
     )
 
     assert result["status"] == "correct"
-    assert result["errorType"] is None
-    assert "Spot on" in result["conversational_feedback"]
+    assert result["answer"]["correct"] is True
+    assert result["error"]["detected"] is False
+    assert result["error"]["code"] is None
+    assert "Spot on" in result["naturalExplanation"]
 
 
 def test_bodmas_precedence_inversion():
@@ -55,7 +65,11 @@ def test_bodmas_precedence_inversion():
     )
 
     assert result["status"] == "diagnosed"
-    assert result["errorType"] == "BODMAS_ADDITION_BEFORE_MULTIPLICATION"
+    assert result["answer"]["correct"] is False
+    assert result["error"]["detected"] is True
+    assert result["error"]["code"] == "BODMAS_ADDITION_BEFORE_MULTIPLICATION"
+    assert result["cause"]["identified"] is True
+    assert result["repair"]["identified"] is True
     assert "Multiplication and Division always take priority" in result["remember"]
 
 
@@ -68,19 +82,51 @@ def test_blank_submission():
     )
 
     assert result["status"] == "blank"
-    assert result["errorType"] == "BLANK_SUBMISSION"
+    assert result["answer"]["correct"] is False
+    assert result["error"]["detected"] is True
+    assert result["error"]["code"] == "BLANK_SUBMISSION"
+    assert result["cause"]["identified"] is False
 
 
-def test_retest_verifier_confirmed():
-    """Validates confirmation of cognitive repair on retest."""
-    eval_result = RepairVerifier.verify(
-        retest_answer="60 km/h",
-        expected_answer="60 km/h",
-        original_misconception_code="RATE_OPERATION_INVERSION",
-    )
+def test_verifier_edge_cases():
+    """
+    Exhaustive edge-case verification testing:
+    "", "abc", "12", "-12", "12.5", "1/2", "  20 km/h "
+    """
+    # 1. Blank inputs are NEVER repaired
+    assert RepairVerifier.verify("", "60 km/h", "CODE").is_repaired is False
+    assert RepairVerifier.verify("", "", "CODE").is_repaired is False
+    assert RepairVerifier.verify("   ", "10", "CODE").is_repaired is False
 
-    assert eval_result.is_repaired is True
-    assert eval_result.persisting_misconception is None
+    # 2. Text comparisons
+    assert RepairVerifier.verify("abc", "xyz", "CODE").is_repaired is False
+    assert RepairVerifier.verify("abc", "abc", "CODE").is_repaired is True
+    assert RepairVerifier.verify("ABC", "abc", "CODE").is_repaired is True
+
+    # 3. Integers & Negative Integers
+    assert RepairVerifier.verify("12", "12", "CODE").is_repaired is True
+    assert RepairVerifier.verify("12", "15", "CODE").is_repaired is False
+    assert RepairVerifier.verify("-12", "-12", "CODE").is_repaired is True
+    assert RepairVerifier.verify("-12", "12", "CODE").is_repaired is False
+
+    # 4. Decimals
+    assert RepairVerifier.verify("12.5", "12.5", "CODE").is_repaired is True
+    assert RepairVerifier.verify("12.50", "12.5", "CODE").is_repaired is True
+    assert RepairVerifier.verify("12.5", "12.6", "CODE").is_repaired is False
+
+    # 5. Fractions & Cross-Representation
+    assert RepairVerifier.verify("1/2", "1/2", "CODE").is_repaired is True
+    assert RepairVerifier.verify("1/2", "2/4", "CODE").is_repaired is True
+    assert RepairVerifier.verify("1/2", "0.5", "CODE").is_repaired is True
+    assert RepairVerifier.verify("0.5", "1/2", "CODE").is_repaired is True
+    # Crucial regression: "1/2" must NEVER match "12"!
+    assert RepairVerifier.verify("1/2", "12", "CODE").is_repaired is False
+    assert RepairVerifier.verify("12", "1/2", "CODE").is_repaired is False
+
+    # 6. Units and Whitespace
+    assert RepairVerifier.verify("  20 km/h ", "20 km/h", "CODE").is_repaired is True
+    assert RepairVerifier.verify("20", "20 km/h", "CODE").is_repaired is True
+    assert RepairVerifier.verify("20 km/h", "20 mph", "CODE").is_repaired is False
 
 
 if __name__ == "__main__":
@@ -93,6 +139,6 @@ if __name__ == "__main__":
     print("✓ BODMAS Precedence Inversion test passed.")
     test_blank_submission()
     print("✓ Blank Submission test passed.")
-    test_retest_verifier_confirmed()
-    print("✓ Retest Verifier Confirmation test passed.")
-    print("\nAll 5 Tixar Intelligence Engine tests passed harmoniously!")
+    test_verifier_edge_cases()
+    print("✓ Exhaustive Verifier Edge Cases test passed (blank, abc, 12, -12, 12.5, 1/2, 20 km/h).")
+    print("\nAll Tixar Intelligence Engine tests passed harmoniously!")

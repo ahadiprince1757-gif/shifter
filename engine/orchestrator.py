@@ -47,7 +47,7 @@ class TixarEngine:
         # Stage 7 & 9: Plan repair and retest
         repair = RepairPlanner.plan(trace.classified_error, misconception, skill, expected_answer, student_answer)
 
-        # Stage 8: Synthesize natural response
+        # Stage 8: Synthesize natural response with structured evidence
         result = ResponseSynthesizer.synthesize(
             is_correct=trace.is_correct,
             error=trace.classified_error,
@@ -57,6 +57,7 @@ class TixarEngine:
             question_text=question_text,
             student_answer=student_answer,
             expected_answer=expected_answer,
+            evidence_score=evidence.evidence_score,
         )
 
         # Attach metadata
