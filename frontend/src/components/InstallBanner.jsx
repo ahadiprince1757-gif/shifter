@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { createPortal } from "react-dom";
 
 const INSTALL_DISMISSED_KEY = "tixar_install_dismissed";
