@@ -1,179 +1,435 @@
+
 /**
- * Didactic Formatter.
- * Formats evidence-based teacher explanations and step analysis for the UI.
+ * Tixar Response Intelligence Layer v1
+ *
+ * Responsibilities:
+ * 1. Interpret verified diagnostic evidence.
+ * 2. Build an evidence-backed response plan.
+ * 3. Render natural, student-centred feedback.
+ *
+ * Invariants:
+ * - Never invent student reasoning.
+ * - Never claim an unverified step was correct.
+ * - Never confuse propagated errors with new errors.
+ * - Never teach a repair unrelated to the diagnosed skill.
+ * - Preserve the existing UI response contract.
  */
 
-export function formatTeacherFeedback({
+const safeArray = (value) =>
+  Array.isArray(value) ? value.filter(Boolean) : [];
+
+const safeText = (value, fallback = "") =>
+  typeof value === "string" && value.trim()
+    ? value.trim()
+    : fallback;
+
+const getEvidence = (confidence) => ({
+  confidence: confidence?.level || "low",
+  score: Number.isFinite(confidence?.score)
+    ? confidence.score
+    : 0,
+});
+
+const getSteps = (problemInfo, fallback) => {
+  const steps = safeArray(problemInfo?.steps);
+
+  return steps.length
+    ? steps
+    : [fallback].filter(Boolean);
+};
+
+/**
+ * Creates a response plan from verified diagnostic information.
+ */
+function buildResponsePlan({
   status,
-  inputInfo,
-  problemInfo,
   stepAnalysis,
   misconception,
-  confidence,
-  expectedAnswer,
   studentAnswer,
+  expectedAnswer,
+  problemInfo,
 }) {
-  let whatYouDid = "";
-  let whyThisIsWrong = [];
-  let theRightWay = [];
-  let remember = "";
-  let formattedStepAnalysis = null;
+  // A verified step error takes priority over generic matching.
+  if (stepAnalysis?.hasError && stepAnalysis.firstError) {
+    const error = stepAnalysis.firstError;
 
-  // Case 1: Unrecognized / Gibberish Input
+    const validSteps = safeArray(
+      stepAnalysis.evaluatedSteps
+    ).filter((step) => step.status === "valid");
+
+    return {
+      type: "step_error",
+
+      opening: validSteps.length
+        ? `Your working was correct up to ${validSteps.length === 1
+            ? "this point"
+            : `${validSteps.length} steps`}.`
+        : "Let's look at where your working changed direction.",
+
+      studentAction: safeText(error.raw),
+
+      breakdown: safeText(
+        error.explanation,
+        "This step does not follow correctly from the preceding working."
+      ),
+
+      correction: safeText(error.expected),
+
+      errorType: error.errorType || "step_error",
+
+      evidence: {
+        firstErrorStep: error.stepNumber ?? null,
+        verifiedEarlierSteps: validSteps.length,
+      },
+
+      repair: safeText(
+        error.repairExplanation ||
+        misconception?.remember
+      ),
+
+      question: safeText(
+        error.diagnosticPrompt ||
+        misconception?.diagnosticPrompt
+      ),
+
+      steps: getSteps(
+        problemInfo,
+        `Expected answer: ${expectedAnswer}`
+      ),
+
+      error,
+      validSteps,
+    };
+  }
+
+  // Only use misconception explanations when the answer
+  // has not already been established as correct.
+  if (status !== "correct" && misconception) {
+    return {
+      type: "misconception",
+
+      opening: safeText(
+        misconception.whatYouDid,
+        `You provided: ${studentAnswer}`
+      ),
+
+      breakdown: safeText(
+        misconception.explanation,
+        safeArray(misconception.whyThisIsWrong)[0]
+      ),
+
+      correction: null,
+
+      errorType: misconception.errorType || "misconception",
+
+      evidence: {},
+
+      repair: safeText(
+        misconception.remember ||
+        misconception.ruleToRemember
+      ),
+
+      question: safeText(
+        misconception.diagnosticPrompt
+      ),
+
+      steps: safeArray(misconception.theRightWay).length
+        ? safeArray(misconception.theRightWay)
+        : getSteps(
+            problemInfo,
+            `Expected answer: ${expectedAnswer}`
+          ),
+
+      misconception,
+    };
+  }
+
+  return null;
+}
+
+/**
+ * Main formatter.
+ */
+export function formatTeacherFeedback({
+  status,
+  inputInfo = {},
+  problemInfo = {},
+  stepAnalysis = null,
+  misconception = null,
+  confidence = {},
+  expectedAnswer = "",
+  studentAnswer = "",
+}) {
+  const evidence = getEvidence(confidence);
+
+  const answer = safeText(
+    String(studentAnswer ?? ""),
+    ""
+  );
+
+  const expected = safeText(
+    String(expectedAnswer ?? ""),
+    "the expected answer"
+  );
+
+  const correctSteps = getSteps(
+    problemInfo,
+    `Expected answer: ${expected}`
+  );
+
+  // CASE 1: BLANK
+  if (status === "blank") {
+    return {
+      status: "blank",
+      errorType: "blank_submission",
+
+      whatYouDid:
+        "You haven't attempted this question yet.",
+
+      whyThisIsWrong: [
+        "There is no answer to evaluate, so we cannot identify a specific reasoning error."
+      ],
+
+      theRightWay: correctSteps,
+
+      remember:
+        "Start by identifying what the question is asking you to find. Then work through the relevant steps.",
+
+      evidence,
+
+      responsePlan: {
+        type: "encourage_attempt",
+        nextAction: "attempt_question",
+      },
+    };
+  }
+
+  // CASE 2: UNRECOGNIZED INPUT
   if (status === "unrecognized") {
-    whatYouDid = `You entered "${inputInfo.raw}".`;
-    whyThisIsWrong = [
-      "This input could not be interpreted as a mathematical answer or reasoning step.",
-      "Please enter a valid number, fraction, or algebraic expression.",
-    ];
-    theRightWay = problemInfo.steps?.length > 0 ? problemInfo.steps : [`Expected answer: ${expectedAnswer}`];
-    remember = "Take your time to write out your calculation or select from the available options.";
+    const raw = safeText(inputInfo.raw, answer);
 
     return {
       status: "unrecognized",
       errorType: "unrecognized_input",
-      whatYouDid,
-      whyThisIsWrong,
-      theRightWay,
-      remember,
-      evidence: { confidence: confidence.level, score: confidence.score },
+
+      whatYouDid: `You entered "${raw}".`,
+
+      whyThisIsWrong: [
+        "I couldn't interpret this as a mathematical answer or working step.",
+        "Try writing the number, fraction, equation or calculation more clearly."
+      ],
+
+      theRightWay: correctSteps,
+
+      remember:
+        "Show your mathematical working in a format that can be checked.",
+
+      evidence,
+
+      responsePlan: {
+        type: "input_clarification",
+        nextAction: "resubmit_answer",
+      },
     };
   }
 
-  // Case 2: Blank Input
-  if (status === "blank") {
-    whatYouDid = "No answer was submitted.";
-    whyThisIsWrong = ["The answer box was left blank."];
-    theRightWay = problemInfo.steps?.length > 0 ? problemInfo.steps : [`Expected answer: ${expectedAnswer}`];
-    remember = "Attempt each question by calculating or isolating the unknown step-by-step.";
+  // CASE 3: VERIFIED STEP ERROR
+  const plan = buildResponsePlan({
+    status,
+    stepAnalysis,
+    misconception,
+    studentAnswer: answer,
+    expectedAnswer: expected,
+    problemInfo,
+  });
 
-    return {
-      status: "blank",
-      errorType: "blank_submission",
-      whatYouDid,
-      whyThisIsWrong,
-      theRightWay,
-      remember,
-      evidence: { confidence: confidence.level, score: confidence.score },
-    };
-  }
+  if (plan?.type === "step_error") {
+    const validEarlierSteps = plan.validSteps;
 
-  // Case 3: Step Breakdown (from Step Verification Engine)
-  if (stepAnalysis && stepAnalysis.hasError) {
-    const err = stepAnalysis.firstError;
-    const stepNum = err.stepNumber;
+    const whatYouDidRight = validEarlierSteps.map(
+      (step) => `You correctly worked out: ${step.raw}.`
+    );
 
-    whatYouDid = `You worked through the problem, but a divergence occurred at Step ${stepNum}.`;
-    whyThisIsWrong = [
-      err.explanation,
-      "Downstream steps were calculated based on this erroneous intermediate value.",
-    ];
-
-    // Build Step Analysis for TeacherFeedbackView
-    const whatYouDidRight = [];
-    const validEarlierSteps = stepAnalysis.evaluatedSteps.filter((s) => s.status === "valid");
-    if (validEarlierSteps.length > 0) {
-      whatYouDidRight.push(
-        `You set up Step 1 correctly: \`${validEarlierSteps[0].raw}\`.`
-      );
-    }
-
-    const correctedWorking = stepAnalysis.evaluatedSteps.map((s) => {
-      if (s.status === "first_error") {
+    const correctedWorking = safeArray(
+      stepAnalysis.evaluatedSteps
+    ).map((step) => {
+      if (step.status === "valid") {
         return {
-          step: err.expected || s.raw,
-          status: "corrected",
-          label: "Corrected Transition",
+          step: step.raw,
+          status: "correct",
+          label: "Correct step",
         };
       }
+
+      if (step.status === "first_error") {
+        return {
+          step: plan.correction || step.expected || step.raw,
+          status: "corrected",
+          label: "Corrected step",
+        };
+      }
+
       return {
-        step: s.raw,
-        status: s.status === "valid" ? "correct" : "propagated",
-        label: s.statusLabel,
+        step: step.raw,
+        status: "propagated",
+        label: "Based on earlier error",
       };
     });
 
-    formattedStepAnalysis = {
-      whatYouDidRight,
-      whereYourWorkingBrokeDown: {
-        studentStep: err.raw,
-        explanation: err.explanation,
-      },
-      correctedWorking,
-      thinkingRepair: {
-        strategy: "Apply inverse operations symmetrically to both sides of the equation.",
-        diagnosticPrompt: "What operation cancels the constant term?",
-      },
-    };
+    const breakdown = [
+      plan.breakdown,
+    ];
 
-    theRightWay = correctedWorking.map((c) => c.step);
-    remember = "To isolate a term, perform the inverse operation to BOTH sides of the equation.";
+    if (plan.correction) {
+      breakdown.push(
+        `The corrected step is: ${plan.correction}`
+      );
+    }
+
+    const remember = plan.repair ||
+      "Focus on correcting the first step that does not follow from the previous one.";
 
     return {
       status: "diagnosed",
-      errorType: err.errorType,
-      firstErrorStep: stepNum,
-      whatYouDid,
-      whyThisIsWrong,
-      theRightWay,
+      errorType: plan.errorType,
+      firstErrorStep: plan.evidence.firstErrorStep,
+
+      whatYouDid: plan.opening,
+
+      whyThisIsWrong: breakdown,
+
+      theRightWay: plan.steps,
+
       remember,
-      stepAnalysis: formattedStepAnalysis,
-      evidence: { confidence: confidence.level, score: confidence.score },
+
+      stepAnalysis: {
+        whatYouDidRight,
+
+        whereYourWorkingBrokeDown: {
+          studentStep: plan.studentAction,
+          explanation: plan.breakdown,
+        },
+
+        correctedWorking,
+
+        thinkingRepair: {
+          strategy: remember,
+          diagnosticPrompt: plan.question,
+        },
+      },
+
+      evidence: {
+        ...evidence,
+        ...plan.evidence,
+      },
+
+      responsePlan: {
+        type: "step_error",
+        opening: plan.opening,
+        breakdown: plan.breakdown,
+        correction: plan.correction,
+        repair: remember,
+        diagnosticQuestion: plan.question,
+      },
     };
   }
 
-  // Case 4: Misconception Matched (e.g. number classification, BODMAS, fraction addition)
-  if (misconception) {
-    whatYouDid = misconception.whatYouDid || `You provided: ${studentAnswer}`;
-    whyThisIsWrong = Array.isArray(misconception.whyThisIsWrong)
-      ? misconception.whyThisIsWrong
-      : [misconception.explanation || ""];
-    theRightWay = Array.isArray(misconception.theRightWay)
-      ? misconception.theRightWay
-      : [`Expected answer: ${expectedAnswer}`];
-    remember = misconception.remember || misconception.ruleToRemember || "";
+  // CASE 4: MATCHED MISCONCEPTION
+  if (plan?.type === "misconception") {
+    const reasons = safeArray(
+      plan.misconception.whyThisIsWrong
+    );
+
+    if (!reasons.length && plan.breakdown) {
+      reasons.push(plan.breakdown);
+    }
 
     return {
       status: "diagnosed",
-      errorType: misconception.errorType,
-      concept: misconception.concept,
-      whatYouDid,
-      whyThisIsWrong,
-      theRightWay,
-      remember,
-      evidence: { confidence: confidence.level, score: confidence.score },
+      errorType: plan.errorType,
+      concept: plan.misconception.concept,
+
+      whatYouDid: plan.opening,
+
+      whyThisIsWrong: reasons,
+
+      theRightWay: plan.steps,
+
+      remember: plan.repair,
+
+      probe: plan.misconception?.probe || null,
+      repair: plan.misconception?.repair || null,
+      retest: plan.misconception?.retest || null,
+
+      evidence,
+
+      responsePlan: {
+        type: "misconception",
+        opening: plan.opening,
+        breakdown: plan.breakdown,
+        repair: plan.repair,
+        diagnosticQuestion: plan.question,
+      },
     };
   }
 
-  // Case 5: Correct Answer
+  // CASE 5: CORRECT ANSWER
+  // This comes before generic misconception matching.
   if (status === "correct") {
     return {
       status: "correct",
       errorType: null,
-      whatYouDid: `You correctly answered: ${studentAnswer}`,
+
+      whatYouDid:
+        `You correctly answered: ${answer}`,
+
       whyThisIsWrong: [],
-      theRightWay: problemInfo.steps?.length > 0 ? problemInfo.steps : [studentAnswer],
-      remember: "Well done! Your reasoning is mathematically sound.",
-      evidence: { confidence: "high", score: 1.0 },
+
+      theRightWay: safeArray(problemInfo.steps).length
+        ? correctSteps
+        : [answer],
+
+      remember:
+        "Your answer is correct. Make sure you can explain why your method works, not just reproduce the result.",
+
+      evidence: {
+        confidence: "high",
+        score: 1,
+      },
+
+      responsePlan: {
+        type: "correct",
+        nextAction: "continue_or_verify_reasoning",
+      },
     };
   }
 
-  // Case 6: Inconclusive Deviation (Honest fallback without fabricating reasoning)
-  whatYouDid = `You provided the answer "${studentAnswer}".`;
-  whyThisIsWrong = [
-    `The submitted answer does not match the expected result (${expectedAnswer}).`,
-    "Without step-by-step working, we cannot reliably determine the exact cause of the mistake.",
-  ];
-  theRightWay = problemInfo.steps?.length > 0 ? problemInfo.steps : [`The correct answer is ${expectedAnswer}.`];
-  remember = "Always show your working step-by-step so each reasoning transition can be verified.";
-
+  // CASE 6: INCONCLUSIVE
   return {
     status: "inconclusive",
     errorType: "unclassified_deviation",
-    whatYouDid,
-    whyThisIsWrong,
-    theRightWay,
-    remember,
-    evidence: { confidence: "low", score: 0.25 },
+
+    whatYouDid:
+      `You provided the answer "${answer}".`,
+
+    whyThisIsWrong: [
+      `Your answer does not match the expected result (${expected}).`,
+      "I cannot reliably identify the exact reasoning mistake from the available evidence."
+    ],
+
+    theRightWay: correctSteps,
+
+    remember:
+      "Show your working so that each step can be examined. This helps identify exactly where the reasoning changes.",
+
+    evidence: {
+      confidence: "low",
+      score: 0.25,
+    },
+
+    responsePlan: {
+      type: "inconclusive",
+      nextAction: "request_working",
+    },
   };
 }

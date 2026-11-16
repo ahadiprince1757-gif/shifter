@@ -1,11 +1,16 @@
+
 /**
- * Diagnostic Engine.
- * Central Orchestrator for deterministic pedagogical reasoning and error diagnosis.
+ * Diagnostic Engine
  *
- * Runs 100% locally:
- * - NO external AI inference APIs (OpenAI, Gemini, Claude, etc.)
- * - Zero per-question charges
- * - Mathematical AST parsing, symbolic verification, and misconception matching.
+ * Central orchestrator for deterministic pedagogical reasoning.
+ *
+ * Principles:
+ * - Evidence before explanation.
+ * - Never invent a student's reasoning.
+ * - Preserve uncertainty when evidence is insufficient.
+ * - Analyse working even when the final answer is blank or unreadable.
+ * - Keep diagnosis, correction, repair and retest connected.
+ * - Run locally without external AI inference APIs.
  */
 
 import { DiagnosticStatus, InputType } from "./diagnosticTypes.js";
@@ -20,21 +25,93 @@ import { formatTeacherFeedback } from "../feedback/didacticFormatter.js";
 import { buildLinearEquationSolution } from "../correction/solutionBuilder.js";
 import { getDiagnosticProbe } from "../knowledge/skillGraph.js";
 
+
+/* -------------------------------------------------------------------------- */
+/* Utilities                                                                  */
+/* -------------------------------------------------------------------------- */
+
+/**
+ * Normalize only superficial differences.
+ *
+ * This deliberately does NOT attempt mathematical equivalence.
+ * For example, 0.5 and 1/2 remain different until a verified
+ * mathematical comparison is available.
+ */
+function normalizeComparableAnswer(value) {
+  return String(value ?? "")
+    .normalize("NFKC")
+    .trim()
+    .toLowerCase()
+    .replace(/[−–—]/g, "-")
+    .replace(/[×·]/g, "*")
+    .replace(/[÷]/g, "/")
+    .replace(/\s+/g, "");
+}
+
+function answersMatch(expected, submitted) {
+  if (!expected || !submitted) return false;
+
+  return (
+    normalizeComparableAnswer(expected) ===
+    normalizeComparableAnswer(submitted)
+  );
+}
+
+function asString(value) {
+  if (value === null || value === undefined) return "";
+  return String(value).trim();
+}
+
+function asArray(value) {
+  return Array.isArray(value) ? value : [];
+}
+
+function getSafeConfidence(confidence) {
+  if (
+    confidence &&
+    typeof confidence === "object" &&
+    typeof confidence.score === "number" &&
+    confidence.level
+  ) {
+    return confidence;
+  }
+
+  return {
+    level: "low",
+    score: 0,
+  };
+}
+
+function getQuestionObject(question, questionText) {
+  if (typeof question === "object" && question !== null) {
+    return question;
+  }
+
+  return {
+    q: String(question || questionText || ""),
+  };
+}
+
+
+/* -------------------------------------------------------------------------- */
+/* Diagnostic Engine                                                          */
+/* -------------------------------------------------------------------------- */
+
 export class DiagnosticEngine {
   /**
-   * Main analysis pipeline.
+   * Main diagnostic pipeline.
    *
    * @param {Object} submission
-   * @param {Object|string} submission.question - Question object or text
-   * @param {string} submission.questionText - Alternative question text string
-   * @param {string} submission.correctAnswer - Expected answer
-   * @param {string} submission.studentAnswer - Submitted student answer
-   * @param {string} submission.userWork - Student's step-by-step working
-   * @param {Array<string>} submission.options - Multiple-choice options
-   * @param {string} submission.subject - Subject name
-   * @param {string} submission.topic - Topic name
-   * @param {Object} submission.curriculum - Curriculum options (e.g. natural numbers include zero)
-   * @param {boolean} submission.isAnswerCorrect - Pre-evaluated correctness flag if available
+   * @param {Object|string} submission.question
+   * @param {string} submission.questionText
+   * @param {string} submission.correctAnswer
+   * @param {string} submission.studentAnswer
+   * @param {string} submission.userWork
+   * @param {Array<string>} submission.options
+   * @param {string} submission.subject
+   * @param {string} submission.topic
+   * @param {Object} submission.curriculum
+   * @param {boolean|null} submission.isAnswerCorrect
    */
   async analyze({
     question,
@@ -47,71 +124,131 @@ export class DiagnosticEngine {
     topic = "",
     curriculum = {},
     isAnswerCorrect = null,
-  }) {
-    const qObj = typeof question === "object" && question !== null ? question : { q: String(question || questionText) };
-    const qText = String(qObj.q || questionText || "").trim();
-    const expected = String(qObj.ans || correctAnswer || "").trim();
-    const studentAns = String(studentAnswer || "").trim();
-    const working = String(userWork || "").trim();
+  } = {}) {
+    const qObj = getQuestionObject(question, questionText);
 
-    // 1. Problem Understanding
+    const qText = asString(qObj.q || questionText);
+    const expected = asString(qObj.ans || correctAnswer);
+    const studentAns = asString(studentAnswer);
+    const working = asString(userWork);
+
+    const hasStudentAnswer = Boolean(studentAns);
+    const hasWorking = Boolean(working);
+
+    const questionOptions = asArray(
+      options.length > 0 ? options : qObj.options
+    );
+
+    /* ---------------------------------------------------------------------- */
+    /* 1. Understand the question                                             */
+    /* ---------------------------------------------------------------------- */
+
     const problemInfo = interpretProblem({
       question: qObj,
       questionText: qText,
       correctAnswer: expected,
-      options: options.length > 0 ? options : (qObj.options || []),
+      options: questionOptions,
       curriculum,
     });
 
-    // 2. Input Classification
-    const inputClassification = classifyInput(studentAns, problemInfo.options);
+    /* ---------------------------------------------------------------------- */
+    /* 2. Classify the submission                                             */
+    /* ---------------------------------------------------------------------- */
 
-    // If input is blank
-    if (inputClassification.type === InputType.BLANK && !working) {
-      const conf = evaluateDiagnosticConfidence({ isBlank: true });
+    const inputClassification = classifyInput(
+      studentAns,
+      questionOptions
+    );
+
+    /* ---------------------------------------------------------------------- */
+    /* 3. Handle a genuinely empty submission                                 */
+    /* ---------------------------------------------------------------------- */
+
+    if (!hasStudentAnswer && !hasWorking) {
+      const confidence = getSafeConfidence(
+        evaluateDiagnosticConfidence({
+          isBlank: true,
+        })
+      );
+
       return formatResult({
         status: DiagnosticStatus.BLANK,
         inputClassification,
         problemInfo,
         expected,
         studentAns,
-        confidence: conf,
+        confidence,
       });
     }
 
-    // If input is gibberish / unreadable keyboard mash
-    if (inputClassification.type === InputType.GIBBERISH) {
-      const conf = evaluateDiagnosticConfidence({ hasInputMash: true });
+    /* ---------------------------------------------------------------------- */
+    /* 4. Reject unreadable input only when no usable working exists          */
+    /* ---------------------------------------------------------------------- */
+
+    if (
+      inputClassification.type === InputType.GIBBERISH &&
+      !hasWorking
+    ) {
+      const confidence = getSafeConfidence(
+        evaluateDiagnosticConfidence({
+          hasInputMash: true,
+        })
+      );
+
       return formatResult({
         status: DiagnosticStatus.UNRECOGNIZED,
         inputClassification,
         problemInfo,
         expected,
         studentAns,
-        confidence: conf,
+        confidence,
       });
     }
 
-    // Check if the answer is explicitly correct
-    const isCorrect = isAnswerCorrect === true || (
-      expected && studentAns && expected.toLowerCase() === studentAns.toLowerCase()
+    /* ---------------------------------------------------------------------- */
+    /* 5. Determine correctness                                               */
+    /* ---------------------------------------------------------------------- */
+
+    /**
+     * An explicit grading decision takes precedence over string matching.
+     *
+     * If the caller explicitly says false, do not silently override that
+     * decision merely because two strings happen to look identical.
+     *
+     * If no grading decision was supplied, use conservative normalized
+     * text equality. Mathematical equivalence belongs in a verified
+     * mathematical comparison layer, not here.
+     */
+    const isCorrect = hasStudentAnswer && (
+      typeof isAnswerCorrect === "boolean"
+        ? isAnswerCorrect
+        : answersMatch(expected, studentAns)
     );
 
     if (isCorrect) {
-      const conf = evaluateDiagnosticConfidence({ isCorrect: true });
+      const confidence = getSafeConfidence(
+        evaluateDiagnosticConfidence({
+          isCorrect: true,
+        })
+      );
+
       return formatResult({
         status: DiagnosticStatus.CORRECT,
         inputClassification,
         problemInfo,
         expected,
         studentAns,
-        confidence: conf,
+        confidence,
       });
     }
 
-    // 3. Step Analysis (if working was provided or for equations)
+    /* ---------------------------------------------------------------------- */
+    /* 6. Analyse actual student working                                      */
+    /* ---------------------------------------------------------------------- */
+
     let stepAnalysisResult = null;
-    if (working) {
+
+    if (hasWorking) {
       stepAnalysisResult = analyzeStudentSteps({
         userWork: working,
         initialEquationStr: problemInfo.equationStr || qText,
@@ -120,14 +257,24 @@ export class DiagnosticEngine {
       });
     }
 
-    if (stepAnalysisResult && stepAnalysisResult.hasError) {
-      const conf = evaluateDiagnosticConfidence({
-        hasWorkingSteps: true,
-        stepErrorFound: true,
-        transitionVerified: true,
-        rootCauseSupported: Boolean(stepAnalysisResult.diagnosis?.rootCause),
-        errorClassificationVerified: Boolean(stepAnalysisResult.diagnosis?.category),
-      });
+    /**
+     * A verified error in the student's actual working is stronger evidence
+     * than a final-answer pattern.
+     */
+    if (stepAnalysisResult?.hasError) {
+      const confidence = getSafeConfidence(
+        evaluateDiagnosticConfidence({
+          hasWorkingSteps: true,
+          stepErrorFound: true,
+          transitionVerified: true,
+          rootCauseSupported: Boolean(
+            stepAnalysisResult.diagnosis?.rootCause
+          ),
+          errorClassificationVerified: Boolean(
+            stepAnalysisResult.diagnosis?.category
+          ),
+        })
+      );
 
       return formatResult({
         status: DiagnosticStatus.DIAGNOSED,
@@ -136,13 +283,18 @@ export class DiagnosticEngine {
         stepAnalysis: stepAnalysisResult,
         expected,
         studentAns,
-        confidence: conf,
+        confidence,
       });
     }
 
-    // 4. Misconception Knowledge Engine
-    // 4a. Number classification problem (e.g. natural number distractors)
-    if (problemInfo.type === "NUMBER_CLASSIFICATION") {
+    /* ---------------------------------------------------------------------- */
+    /* 7. Number classification                                               */
+    /* ---------------------------------------------------------------------- */
+
+    if (
+      hasStudentAnswer &&
+      problemInfo.type === "NUMBER_CLASSIFICATION"
+    ) {
       const numberDiagnosis = diagnoseNumberClassification({
         studentInput: studentAns,
         targetSet: problemInfo.targetSet,
@@ -150,12 +302,19 @@ export class DiagnosticEngine {
         curriculum,
       });
 
-      if (numberDiagnosis && numberDiagnosis.errorType) {
-        const conf = evaluateDiagnosticConfidence({
-          distractorMatched: true,
-          rootCauseSupported: true,
-          errorClassificationVerified: true,
-        });
+      if (numberDiagnosis?.errorType) {
+        const confidence = getSafeConfidence(
+          evaluateDiagnosticConfidence({
+            distractorMatched: true,
+
+            // A known incorrect answer is useful evidence,
+            // but does not independently prove the student's reasoning.
+            rootCauseSupported: false,
+
+            errorClassificationVerified: true,
+          })
+        );
+
         return formatResult({
           status: DiagnosticStatus.DIAGNOSED,
           inputClassification,
@@ -163,78 +322,109 @@ export class DiagnosticEngine {
           misconception: numberDiagnosis,
           expected,
           studentAns,
-          confidence: conf,
+          confidence,
         });
       }
     }
 
-    // 4b. Known arithmetic / BODMAS / fraction misconceptions
-    const registryMatch = findKnownMisconception({
-      studentAnswer: studentAns,
-      questionText: qText,
-      expectedAnswer: expected,
-      problemInfo,
-    });
+    /* ---------------------------------------------------------------------- */
+    /* 8. Known subject-specific misconceptions                               */
+    /* ---------------------------------------------------------------------- */
 
-    if (registryMatch) {
-      const conf = evaluateDiagnosticConfidence({
-        distractorMatched: true,
-        rootCauseSupported: true,
-        errorClassificationVerified: true,
-      });
-      return formatResult({
-        status: DiagnosticStatus.DIAGNOSED,
-        inputClassification,
+    if (hasStudentAnswer) {
+      const registryMatch = findKnownMisconception({
+        studentAnswer: studentAns,
+        questionText: qText,
+        expectedAnswer: expected,
         problemInfo,
-        misconception: registryMatch,
-        expected,
-        studentAns,
-        confidence: conf,
       });
+
+      if (registryMatch) {
+        const confidence = getSafeConfidence(
+          evaluateDiagnosticConfidence({
+            distractorMatched: true,
+            rootCauseSupported: false,
+            errorClassificationVerified: true,
+          })
+        );
+
+        return formatResult({
+          status: DiagnosticStatus.DIAGNOSED,
+          inputClassification,
+          problemInfo,
+          misconception: registryMatch,
+          expected,
+          studentAns,
+          confidence,
+        });
+      }
     }
 
-    // 4c. Cross-Disciplinary Misconceptions (Physics, Chemistry, Biology, English, Computer Studies)
-    const crossSubjectMatch = findCrossSubjectMisconception({
-      studentAnswer: studentAns,
-      questionText: qText,
-      expectedAnswer: expected,
-      subject: problemInfo.subject || "",
-      questionObj: typeof question === "object" ? question : {},
-    });
+    /* ---------------------------------------------------------------------- */
+    /* 9. Cross-subject misconception matching                               */
+    /* ---------------------------------------------------------------------- */
 
-    if (crossSubjectMatch) {
-      const conf = evaluateDiagnosticConfidence({
-        distractorMatched: true,
-        rootCauseSupported: true,
-        errorClassificationVerified: true,
+    if (hasStudentAnswer) {
+      const crossSubjectMatch = findCrossSubjectMisconception({
+        studentAnswer: studentAns,
+        questionText: qText,
+        expectedAnswer: expected,
+
+        // Prefer the interpreted subject, but retain the caller's subject
+        // when the interpreter has not identified one.
+        subject: problemInfo.subject || subject,
+
+        questionObj: qObj,
       });
-      return formatResult({
-        status: DiagnosticStatus.DIAGNOSED,
-        inputClassification,
-        problemInfo,
-        misconception: crossSubjectMatch,
-        expected,
-        studentAns,
-        confidence: conf,
-      });
+
+      if (crossSubjectMatch) {
+        const confidence = getSafeConfidence(
+          evaluateDiagnosticConfidence({
+            distractorMatched: true,
+            rootCauseSupported: false,
+            errorClassificationVerified: true,
+          })
+        );
+
+        return formatResult({
+          status: DiagnosticStatus.DIAGNOSED,
+          inputClassification,
+          problemInfo,
+          misconception: crossSubjectMatch,
+          expected,
+          studentAns,
+          confidence,
+        });
+      }
     }
 
-    // 5. Inconclusive Fallback (Honest uncertainty: don't fabricate diagnosis)
-    const conf = evaluateDiagnosticConfidence({ isUnknownDeviation: true });
+    /* ---------------------------------------------------------------------- */
+    /* 10. Honest inconclusive result                                          */
+    /* ---------------------------------------------------------------------- */
+
+    const confidence = getSafeConfidence(
+      evaluateDiagnosticConfidence({
+        isUnknownDeviation: true,
+      })
+    );
+
     return formatResult({
       status: DiagnosticStatus.INCONCLUSIVE,
       inputClassification,
       problemInfo,
+      stepAnalysis: stepAnalysisResult,
       expected,
       studentAns,
-      confidence: conf,
+      confidence,
     });
   }
 }
 
-/**
- * Normalizes and formats the final result object.
- */
+
+/* -------------------------------------------------------------------------- */
+/* Result construction                                                        */
+/* -------------------------------------------------------------------------- */
+
 function formatResult({
   status,
   inputClassification,
@@ -245,108 +435,192 @@ function formatResult({
   studentAns = "",
   confidence,
 }) {
+  const safeConfidence = getSafeConfidence(confidence);
+
   const teacherFeedback = formatTeacherFeedback({
     status,
     inputInfo: inputClassification,
     problemInfo,
     stepAnalysis,
     misconception,
-    confidence,
+    confidence: safeConfidence,
     expectedAnswer: expected,
     studentAnswer: studentAns,
   });
 
-  // Build verified correction if available
+  /* ------------------------------------------------------------------------ */
+  /* Verified correction                                                      */
+  /* ------------------------------------------------------------------------ */
+
   let correction = {
     verified: false,
-    steps: problemInfo.steps || (expected ? [`Expected answer: ${expected}`] : []),
+    steps: asArray(problemInfo.steps).length > 0
+      ? problemInfo.steps
+      : expected
+        ? [`Expected answer: ${expected}`]
+        : [],
   };
 
   if (problemInfo.equationStr) {
-    const verifiedSol = buildLinearEquationSolution(problemInfo.equationStr);
-    if (verifiedSol) {
+    const verifiedSolution = buildLinearEquationSolution(
+      problemInfo.equationStr
+    );
+
+    if (verifiedSolution) {
       correction = {
-        verified: verifiedSol.verified,
-        steps: verifiedSol.steps,
+        verified: Boolean(verifiedSolution.verified),
+        steps: asArray(verifiedSolution.steps),
       };
     }
   }
 
-  // Diagnostic Probe, Repair & Retest from Step Verification, Misconception, or Skill Graph
+  /* ------------------------------------------------------------------------ */
+  /* Diagnostic probe, repair and retest                                      */
+  /* ------------------------------------------------------------------------ */
+
   let probe = stepAnalysis?.probe || misconception?.probe || null;
   let repair = stepAnalysis?.repair || misconception?.repair || null;
   let retest = stepAnalysis?.retest || misconception?.retest || null;
 
-  if (!probe && problemInfo.type === "AVERAGE_SPEED" && status !== DiagnosticStatus.CORRECT) {
-    const speedProbeMeta = getDiagnosticProbe("average_speed", "formula_selection");
-    if (speedProbeMeta) {
-      probe = speedProbeMeta.probe;
-      repair = speedProbeMeta.repair;
-      retest = speedProbeMeta.retest;
+  if (
+    !probe &&
+    problemInfo.type === "AVERAGE_SPEED" &&
+    status !== DiagnosticStatus.CORRECT
+  ) {
+    const metadata = getDiagnosticProbe(
+      "average_speed",
+      "formula_selection"
+    );
+
+    if (metadata) {
+      probe = metadata.probe;
+      repair = metadata.repair;
+      retest = metadata.retest;
     }
-  } else if (!probe && problemInfo.type === "NUMBER_CLASSIFICATION" && status !== DiagnosticStatus.CORRECT) {
-    const numProbeMeta = getDiagnosticProbe("number_classification", "natural_number_definition");
-    if (numProbeMeta) {
-      probe = numProbeMeta.probe;
-      repair = numProbeMeta.repair;
-      retest = numProbeMeta.retest;
+  } else if (
+    !probe &&
+    problemInfo.type === "NUMBER_CLASSIFICATION" &&
+    status !== DiagnosticStatus.CORRECT
+  ) {
+    const metadata = getDiagnosticProbe(
+      "number_classification",
+      "natural_number_definition"
+    );
+
+    if (metadata) {
+      probe = metadata.probe;
+      repair = metadata.repair;
+      retest = metadata.retest;
     }
-  } else if (!probe && problemInfo.type === "FRACTION_ARITHMETIC" && status !== DiagnosticStatus.CORRECT) {
-    const fracProbeMeta = getDiagnosticProbe("fraction_addition", "common_denominator");
-    if (fracProbeMeta) {
-      probe = fracProbeMeta.probe;
-      repair = fracProbeMeta.repair;
-      retest = fracProbeMeta.retest;
+  } else if (
+    !probe &&
+    problemInfo.type === "FRACTION_ARITHMETIC" &&
+    status !== DiagnosticStatus.CORRECT
+  ) {
+    const metadata = getDiagnosticProbe(
+      "fraction_addition",
+      "common_denominator"
+    );
+
+    if (metadata) {
+      probe = metadata.probe;
+      repair = metadata.repair;
+      retest = metadata.retest;
     }
   }
 
-  // Structured 10x diagnostic response
+  /* ------------------------------------------------------------------------ */
+  /* Structured response                                                      */
+  /* ------------------------------------------------------------------------ */
+
+  const evaluatedSteps = asArray(stepAnalysis?.evaluatedSteps);
+  const feedback = teacherFeedback || {};
+
+  const whyThisIsWrong = asArray(feedback.whyThisIsWrong);
+  const theRightWay = asArray(feedback.theRightWay);
+
   return {
-    ...teacherFeedback, // Contains whatYouDid, whyThisIsWrong, theRightWay, remember, stepAnalysis, evidence
+    ...feedback,
+
     status,
+
     input: {
       type: inputClassification?.type || InputType.UNKNOWN,
       recognized: inputClassification?.recognized ?? false,
       raw: inputClassification?.raw || studentAns,
     },
+
     result: {
       correct: status === DiagnosticStatus.CORRECT,
       expectedAnswer: expected,
     },
+
     evidence: {
-      workShown: Boolean(stepAnalysis?.evaluatedSteps?.length > 0),
+      workShown: evaluatedSteps.length > 0,
       rawInput: studentAns,
-      steps: stepAnalysis?.evaluatedSteps || [],
+      steps: evaluatedSteps,
     },
+
     diagnosis: {
-      errorType: teacherFeedback.errorType || null,
-      category: stepAnalysis?.diagnosis?.category || teacherFeedback.errorType || null,
-      subtype: stepAnalysis?.diagnosis?.subtype || null,
-      rootCause: stepAnalysis?.diagnosis?.rootCause || teacherFeedback.errorType || null,
+      errorType: feedback.errorType || null,
+
+      category:
+        stepAnalysis?.diagnosis?.category ||
+        feedback.errorType ||
+        null,
+
+      subtype:
+        stepAnalysis?.diagnosis?.subtype ||
+        null,
+
+      rootCause:
+        stepAnalysis?.diagnosis?.rootCause ||
+        feedback.errorType ||
+        null,
+
       concept: misconception?.concept || null,
-      firstErrorStep: teacherFeedback.firstErrorStep || null,
-      explanation: teacherFeedback.whyThisIsWrong?.[0] || "",
-      whatStudentDid: teacherFeedback.whatYouDid || "",
-      whatShouldHaveHappened: teacherFeedback.theRightWay?.[0] || "",
+
+      firstErrorStep: feedback.firstErrorStep || null,
+
+      explanation: whyThisIsWrong[0] || "",
+
+      whatStudentDid: feedback.whatYouDid || "",
+
+      whatShouldHaveHappened: theRightWay[0] || "",
     },
-    steps: stepAnalysis?.evaluatedSteps || [],
+
+    steps: evaluatedSteps,
+
     correction,
+
     probe,
     repair,
-    retest: retest ? { required: status !== DiagnosticStatus.CORRECT, ...retest } : { required: false },
+
+    retest: retest
+      ? {
+          required: status !== DiagnosticStatus.CORRECT,
+          ...retest,
+        }
+      : {
+          required: false,
+        },
+
     feedback: {
-      approach: teacherFeedback.whatYouDid || "",
-      whatWentWrong: teacherFeedback.whyThisIsWrong?.join(" ") || "",
-      rightWay: teacherFeedback.theRightWay?.join("\n") || "",
-      ruleToRemember: teacherFeedback.remember || "",
+      approach: feedback.whatYouDid || "",
+      whatWentWrong: whyThisIsWrong.join(" "),
+      rightWay: theRightWay.join("\n"),
+      ruleToRemember: feedback.remember || "",
     },
+
     confidence: {
-      ...confidence,
-      score: confidence.score,
-      level: confidence.level,
+      ...safeConfidence,
+      score: safeConfidence.score,
+      level: safeConfidence.level,
     },
   };
 }
 
+
 export const diagnosticEngine = new DiagnosticEngine();
+
 export default diagnosticEngine;

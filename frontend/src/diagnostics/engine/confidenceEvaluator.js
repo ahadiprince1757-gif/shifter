@@ -1,16 +1,30 @@
+
 /**
- * 10× Precision Multidimensional Confidence Evaluator.
+ * Multidimensional Diagnostic Confidence Evaluator.
  *
- * Replaces monolithic confidence with 4 epistemic dimensions:
- * 1. Answer Confidence: Is the submitted answer correct?
- * 2. Error Confidence: Did a verified mathematical divergence occur?
- * 3. Cause Confidence: Do we know why it happened (the root cause)?
- * 4. Repair Confidence: Do we know which targeted intervention will fix it?
+ * Evaluates four separate dimensions:
  *
- * Decision Behaviors:
- * - DIAGNOSE: High evidence on both error and cause.
- * - INVESTIGATE: Error detected, but cause needs confirmation via a probe.
- * - INCONCLUSIVE: Insufficient evidence; honest fallback without fabricating thinking.
+ * 1. Answer confidence: confidence in the answer assessment.
+ * 2. Error confidence: confidence that an error occurred.
+ * 3. Cause confidence: confidence in the identified root cause.
+ * 4. Repair confidence: confidence that the proposed intervention
+ *    addresses the identified cause.
+ *
+ * Decisions:
+ *
+ * DIAGNOSE:
+ *   A verified error and sufficiently supported root cause.
+ *
+ * INVESTIGATE:
+ *   An error or meaningful misconception signal exists,
+ *   but the exact cause needs confirmation.
+ *
+ * INCONCLUSIVE:
+ *   Available evidence is insufficient to identify an error.
+ *
+ * CORRECT:
+ *   The submitted answer is confirmed correct.
+ *   This does not automatically verify the method.
  */
 
 export const CONFIDENCE_LEVELS = {
@@ -21,18 +35,128 @@ export const CONFIDENCE_LEVELS = {
   UNRECOGNIZED: "unrecognized",
 };
 
+export const DIAGNOSTIC_DECISIONS = {
+  DIAGNOSE: "DIAGNOSE",
+  INVESTIGATE: "INVESTIGATE",
+  INCONCLUSIVE: "INCONCLUSIVE",
+  CORRECT: "CORRECT",
+};
+
+const clamp = (value) => {
+  const number = Number(value);
+
+  if (!Number.isFinite(number)) return 0;
+
+  return Math.max(0, Math.min(1, number));
+};
+
 export function getConfidenceLevel(score) {
-  if (score >= 0.85) return CONFIDENCE_LEVELS.HIGH;
-  if (score >= 0.60) return CONFIDENCE_LEVELS.MEDIUM;
-  if (score > 0) return CONFIDENCE_LEVELS.LOW;
+  const value = clamp(score);
+
+  if (value >= 0.85) return CONFIDENCE_LEVELS.HIGH;
+  if (value >= 0.60) return CONFIDENCE_LEVELS.MEDIUM;
+  if (value > 0) return CONFIDENCE_LEVELS.LOW;
+
   return CONFIDENCE_LEVELS.NONE;
 }
 
 export function createConfidence(score, evidence = []) {
+  const safeScore = clamp(score);
+
   return {
-    score,
-    level: getConfidenceLevel(score),
-    evidence,
+    score: safeScore,
+    level: getConfidenceLevel(safeScore),
+    evidence: Array.isArray(evidence) ? evidence : [],
+  };
+}
+
+function buildEvidence({
+  hasWorkingSteps,
+  stepErrorFound,
+  transitionVerified,
+  distractorMatched,
+  rootCauseSupported,
+  errorClassificationVerified,
+  independentConfirmation,
+}) {
+  return {
+    hasWorkingSteps: Boolean(hasWorkingSteps),
+    stepErrorFound: Boolean(stepErrorFound),
+    transitionVerified: Boolean(transitionVerified),
+    distractorMatched: Boolean(distractorMatched),
+    rootCauseSupported: Boolean(rootCauseSupported),
+    errorClassificationVerified: Boolean(errorClassificationVerified),
+    independentConfirmation: Boolean(independentConfirmation),
+  };
+}
+
+function buildUnrecognizedResult(hasWorkingSteps) {
+  return {
+    status: "UNRECOGNIZED",
+    decision: DIAGNOSTIC_DECISIONS.INCONCLUSIVE,
+    score: 0,
+    level: CONFIDENCE_LEVELS.UNRECOGNIZED,
+    label: "Unrecognized Input",
+
+    answer: createConfidence(0, ["INPUT_UNRECOGNIZED"]),
+    error: createConfidence(0, ["CANNOT_EVALUATE_INPUT"]),
+    cause: createConfidence(0, ["NO_INTERPRETABLE_CAUSE"]),
+    repair: createConfidence(0, ["REENTER_INPUT"]),
+
+    evidence: {
+      hasWorkingSteps: Boolean(hasWorkingSteps),
+      transitionVerified: false,
+      distractorMatched: false,
+      rootCauseSupported: false,
+      independentConfirmation: false,
+    },
+  };
+}
+
+function buildCorrectResult({
+  hasWorkingSteps,
+  transitionVerified,
+}) {
+  const answer = createConfidence(1, ["ANSWER_CONFIRMED_CORRECT"]);
+
+  /**
+   * A correct answer alone does not establish that the method was correct.
+   * Only verified working can provide procedural evidence.
+   */
+  const methodScore = transitionVerified
+    ? 0.95
+    : hasWorkingSteps
+      ? 0.50
+      : 0;
+
+  const causeEvidence = transitionVerified
+    ? ["WORKING_TRANSITIONS_VERIFIED"]
+    : hasWorkingSteps
+      ? ["WORKING_PRESENT_METHOD_NOT_VERIFIED"]
+      : ["ANSWER_ONLY_METHOD_UNKNOWN"];
+
+  return {
+    status: "ANSWER_CORRECT",
+    decision: DIAGNOSTIC_DECISIONS.CORRECT,
+    score: 1,
+    level: CONFIDENCE_LEVELS.HIGH,
+    label: "Confirmed Correct",
+
+    answer,
+
+    error: createConfidence(0, ["NO_ERROR_DETECTED"]),
+
+    cause: createConfidence(methodScore, causeEvidence),
+
+    repair: createConfidence(0, ["NO_REPAIR_REQUIRED"]),
+
+    evidence: {
+      hasWorkingSteps: Boolean(hasWorkingSteps),
+      transitionVerified: Boolean(transitionVerified),
+      distractorMatched: false,
+      rootCauseSupported: false,
+      independentConfirmation: false,
+    },
   };
 }
 
@@ -42,6 +166,7 @@ export function evaluateDiagnosticConfidence({
   stepErrorFound = false,
   distractorMatched = false,
   isCorrect = false,
+  isIncorrect = false,
   isUnknownDeviation = false,
 
   transitionVerified = false,
@@ -49,131 +174,239 @@ export function evaluateDiagnosticConfidence({
   rootCauseSupported = false,
   independentConfirmation = false,
 }) {
-  // Case 1: Unrecognized / Gibberish input
+  /* ---------------------------------------------------------------------- */
+  /* 1. Unrecognized input                                                   */
+  /* ---------------------------------------------------------------------- */
+
   if (hasInputMash) {
-    return {
-      status: "UNRECOGNIZED",
-      decision: "INCONCLUSIVE",
-      score: 0.05,
-      level: CONFIDENCE_LEVELS.UNRECOGNIZED,
-      label: "Unrecognized Input",
-      answer: createConfidence(0, ["INPUT_UNRECOGNIZED"]),
-      error: createConfidence(0, ["CANNOT_EVALUATE_MASH"]),
-      cause: createConfidence(0, ["NO_INTERPRETABLE_CAUSE"]),
-      repair: createConfidence(0, ["REENTER_INPUT"]),
-      evidence: {
-        hasWorkingSteps,
-        transitionVerified: false,
-        distractorMatched: false,
-        rootCauseSupported: false,
-        independentConfirmation: false,
-      },
-    };
+    return buildUnrecognizedResult(hasWorkingSteps);
   }
 
-  // Case 2: Correct answer
+  /* ---------------------------------------------------------------------- */
+  /* 2. Correct answer                                                       */
+  /* ---------------------------------------------------------------------- */
+
   if (isCorrect) {
-    const answerScore = 1.0;
-    // Working presence increases confidence that answer wasn't a lucky guess
-    const proceduralScore = hasWorkingSteps ? 0.95 : 0.70;
-
-    return {
-      status: "ANSWER_CORRECT",
-      decision: "DIAGNOSE",
-      score: answerScore,
-      level: CONFIDENCE_LEVELS.HIGH,
-      label: "Confirmed Correct",
-      answer: createConfidence(answerScore, ["ANSWER_MATCH"]),
-      error: createConfidence(0, ["NO_ERROR_DETECTED"]),
-      cause: createConfidence(proceduralScore, hasWorkingSteps ? ["WORKING_VERIFIED"] : ["ANSWER_ONLY"]),
-      repair: createConfidence(0, ["NO_REPAIR_REQUIRED"]),
-      evidence: {
-        hasWorkingSteps,
-        transitionVerified: true,
-        distractorMatched: false,
-        rootCauseSupported: true,
-        independentConfirmation: false,
-      },
-    };
+    return buildCorrectResult({
+      hasWorkingSteps,
+      transitionVerified,
+    });
   }
 
-  // Case 3: Error analysis
+  /* ---------------------------------------------------------------------- */
+  /* 3. Establish evidence                                                   */
+  /* ---------------------------------------------------------------------- */
+
+  const evidence = buildEvidence({
+    hasWorkingSteps,
+    stepErrorFound,
+    transitionVerified,
+    distractorMatched,
+    rootCauseSupported,
+    errorClassificationVerified,
+    independentConfirmation,
+  });
+
   const errorEvidence = [];
-  if (stepErrorFound && transitionVerified) {
+
+  if (transitionVerified) {
     errorEvidence.push("INVALID_TRANSITION_VERIFIED");
   }
-  if (distractorMatched) {
-    errorEvidence.push("CATALOGED_DISTRACTOR_MATCH");
+
+  if (stepErrorFound) {
+    errorEvidence.push("STEP_ERROR_REPORTED");
   }
+
+  if (distractorMatched) {
+    errorEvidence.push("CATALOGUED_DISTRACTOR_MATCH");
+  }
+
   if (hasWorkingSteps) {
     errorEvidence.push("STUDENT_WORKING_PROVIDED");
   }
 
-  const errorScore = transitionVerified
-    ? 0.98
-    : distractorMatched
-    ? 0.85
-    : stepErrorFound
-    ? 0.75
-    : isUnknownDeviation
-    ? 0.20
-    : 0.35;
+  if (isIncorrect) {
+    errorEvidence.push("ANSWER_ASSESSED_INCORRECT");
+  }
 
-  const causeScore = rootCauseSupported
-    ? independentConfirmation
-      ? 0.95
-      : 0.75
-    : distractorMatched
-    ? 0.70
-    : 0.25;
+  /* ---------------------------------------------------------------------- */
+  /* 4. Answer confidence                                                    */
+  /* ---------------------------------------------------------------------- */
 
-  const repairScore = rootCauseSupported
-    ? errorClassificationVerified
-      ? 0.90
-      : 0.65
-    : distractorMatched
-    ? 0.70
-    : 0.30;
+  /**
+   * This measures confidence in the answer assessment,
+   * not confidence in the student's reasoning.
+   *
+   * The caller should set isIncorrect only when the expected
+   * answer and submitted answer have been reliably assessed.
+   */
+  const answerScore = isIncorrect ? 1 : 0;
 
-  // Determine diagnostic decision
-  let decision = "INCONCLUSIVE";
+  /* ---------------------------------------------------------------------- */
+  /* 5. Error confidence                                                     */
+  /* ---------------------------------------------------------------------- */
+
+  let errorScore = 0;
+
+  if (transitionVerified) {
+    errorScore = 0.98;
+  } else if (stepErrorFound) {
+    errorScore = 0.65;
+  } else if (distractorMatched) {
+    // A distractor is a signal, not proof of the reasoning.
+    errorScore = 0.70;
+  } else if (isIncorrect) {
+    // The answer is wrong, but the specific error is not established.
+    errorScore = 0.45;
+  } else if (isUnknownDeviation) {
+    errorScore = 0.20;
+  } else if (hasWorkingSteps) {
+    errorScore = 0.15;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* 6. Cause confidence                                                     */
+  /* ---------------------------------------------------------------------- */
+
+  let causeScore = 0;
+
+  if (rootCauseSupported && transitionVerified) {
+    causeScore = independentConfirmation ? 0.98 : 0.85;
+  } else if (rootCauseSupported && stepErrorFound) {
+    causeScore = independentConfirmation ? 0.85 : 0.70;
+  } else if (distractorMatched) {
+    // A known answer pattern suggests a possible cause.
+    // It does not independently establish the cause.
+    causeScore = 0.45;
+  } else if (stepErrorFound) {
+    causeScore = 0.40;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* 7. Repair confidence                                                    */
+  /* ---------------------------------------------------------------------- */
+
+  let repairScore = 0;
+
+  if (
+    rootCauseSupported &&
+    transitionVerified &&
+    errorClassificationVerified
+  ) {
+    repairScore = independentConfirmation ? 0.98 : 0.90;
+  } else if (rootCauseSupported && errorClassificationVerified) {
+    repairScore = 0.70;
+  } else if (distractorMatched) {
+    // A probe may be useful, but a targeted repair is not yet verified.
+    repairScore = 0.35;
+  } else if (stepErrorFound) {
+    repairScore = 0.30;
+  }
+
+  /* ---------------------------------------------------------------------- */
+  /* 8. Select the diagnostic decision                                       */
+  /* ---------------------------------------------------------------------- */
+
+  let decision = DIAGNOSTIC_DECISIONS.INCONCLUSIVE;
   let status = "NEEDS_MORE_EVIDENCE";
 
-  if (errorScore >= 0.85 && causeScore >= 0.70) {
-    decision = "DIAGNOSE";
+  /**
+   * Diagnosis requires all three:
+   * - Verified transition error.
+   * - Supported root cause.
+   * - Verified error classification.
+   *
+   * A high answer-pattern score alone can never trigger DIAGNOSE.
+   */
+  if (
+    transitionVerified &&
+    rootCauseSupported &&
+    errorClassificationVerified &&
+    errorScore >= 0.85 &&
+    causeScore >= 0.70
+  ) {
+    decision = DIAGNOSTIC_DECISIONS.DIAGNOSE;
     status = "ERROR_CONFIRMED";
-  } else if (errorScore >= 0.60) {
-    decision = "INVESTIGATE";
+  } else if (
+    errorScore >= 0.60 ||
+    (distractorMatched && isIncorrect)
+  ) {
+    decision = DIAGNOSTIC_DECISIONS.INVESTIGATE;
     status = "NEEDS_PROBE";
   }
 
-  // Overall summary score for backward compatibility
-  const overallScore = Math.min(errorScore, Math.max(causeScore, 0.25));
+  /* ---------------------------------------------------------------------- */
+  /* 9. Overall score                                                        */
+  /* ---------------------------------------------------------------------- */
+
+  /**
+   * The summary score must not hide a weak dimension.
+   *
+   * For diagnosis, the weakest of error, cause and repair is important.
+   * For investigation, the score communicates the strength of the
+   * available error signal without pretending the cause is known.
+   */
+  let overallScore = 0;
+
+  if (decision === DIAGNOSTIC_DECISIONS.DIAGNOSE) {
+    overallScore = Math.min(
+      errorScore,
+      causeScore,
+      repairScore
+    );
+  } else if (decision === DIAGNOSTIC_DECISIONS.INVESTIGATE) {
+    overallScore = Math.min(errorScore, 0.70);
+  } else {
+    overallScore = Math.min(errorScore, 0.25);
+  }
+
+  const label =
+    decision === DIAGNOSTIC_DECISIONS.DIAGNOSE
+      ? "Verified Error and Supported Cause"
+      : decision === DIAGNOSTIC_DECISIONS.INVESTIGATE
+        ? "Error Signal — Needs Investigation"
+        : "Insufficient Evidence — Inconclusive";
+
+  /* ---------------------------------------------------------------------- */
+  /* 10. Return multidimensional confidence                                  */
+  /* ---------------------------------------------------------------------- */
 
   return {
     status,
     decision,
-    score: overallScore,
-    level: getConfidenceLevel(overallScore),
-    label: decision === "DIAGNOSE" ? "High Evidence (Diagnosed)" : decision === "INVESTIGATE" ? "Moderate Evidence (Needs Probe)" : "Low Evidence (Inconclusive)",
 
-    answer: createConfidence(0, ["ANSWER_INCORRECT"]),
-    error: createConfidence(errorScore, errorEvidence),
+    score: clamp(overallScore),
+    level: getConfidenceLevel(overallScore),
+    label,
+
+    answer: createConfidence(
+      answerScore,
+      isIncorrect
+        ? ["ANSWER_ASSESSED_INCORRECT"]
+        : ["ANSWER_ASSESSMENT_NOT_ESTABLISHED"]
+    ),
+
+    error: createConfidence(
+      errorScore,
+      errorEvidence
+    ),
+
     cause: createConfidence(
       causeScore,
-      rootCauseSupported ? ["ROOT_CAUSE_SUPPORTED"] : distractorMatched ? ["DISTRACTOR_RECOGNIZED"] : ["CAUSE_NOT_ESTABLISHED"]
-    ),
-    repair: createConfidence(
-      repairScore,
-      errorClassificationVerified ? ["REPAIR_MATCHES_ERROR"] : ["REPAIR_PROVISIONAL"]
+      rootCauseSupported
+        ? ["ROOT_CAUSE_SUPPORTED"]
+        : distractorMatched
+          ? ["POSSIBLE_CAUSE_FROM_DISTRACTOR"]
+          : ["CAUSE_NOT_ESTABLISHED"]
     ),
 
-    evidence: {
-      hasWorkingSteps,
-      transitionVerified,
-      distractorMatched,
-      rootCauseSupported,
-      independentConfirmation,
-    },
+    repair: createConfidence(
+      repairScore,
+      repairScore >= 0.85
+        ? ["TARGETED_REPAIR_SUPPORTED"]
+        : ["REPAIR_NOT_YET_VERIFIED"]
+    ),
+
+    evidence,
   };
 }

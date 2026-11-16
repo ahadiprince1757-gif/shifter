@@ -1080,6 +1080,9 @@ export function diagnoseStudentSubmission({
       observed: [`Observed answer: ${answer}`],
       expected: [expectedAnswer],
       confidence: CONFIDENCE.HIGH,
+      probe: knownMisconception.probe,
+      repair: knownMisconception.repair,
+      retest: knownMisconception.retest,
     });
   }
 
