@@ -87,9 +87,6 @@ export default function WelcomeAuthScreen() {
 
   return (
     <div className="welcome-auth-container">
-      {/* Install-app banner — hidden once the app is installed or dismissed */}
-      <InstallBanner />
-
       <div className="welcome-auth-card">
         <picture>
           <source srcSet="/tixar-logo.webp?v=4" type="image/webp" />
@@ -286,6 +283,9 @@ export default function WelcomeAuthScreen() {
         initialTab={legalDoc || "terms"}
         onClose={() => setLegalDoc(null)}
       />
+
+      {/* Renders via React portal into document.body — no layout conflict */}
+      <InstallBanner />
     </div>
   );
 }
