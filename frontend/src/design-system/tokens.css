@@ -1,0 +1,57 @@
+/**
+ * TIXAR CENTRAL DESIGN TOKENS
+ * "One interface. Every screen. Zero unnecessary boxes."
+ */
+
+:root {
+  /* Colors — neutral foundation, semantic-only state colors */
+  --surface: #ffffff;
+  --surface-subtle: #f7f7f7;
+  --text-primary: #171717;
+  --text-secondary: #737373;
+  --text-muted: #a3a3a3;
+  --border-subtle: #e5e5e5;
+  --state-error: #dc2626;
+  --state-success: #15803d;
+  --state-warning: #d97706;
+  --action-primary: #171717;
+  --action-primary-text: #ffffff;
+  --action-primary-hover: #262626;
+
+  /* Consistent Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+
+  /* Fluid Layout Geometry */
+  --page-gutter: clamp(18px, 4vw, 48px);
+  --content-max: 860px;
+  --workspace-max: 1200px;
+
+  /* Typography & Controls */
+  --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --radius-control: 8px;
+  --radius-pill: 9999px;
+  --transition-fast: 0.15s ease;
+}
+
+/* Dark mode theme token mapping */
+html.dark-mode {
+  --surface: #121212;
+  --surface-subtle: #1e1e1e;
+  --text-primary: #f5f5f5;
+  --text-secondary: #a3a3a3;
+  --text-muted: #737373;
+  --border-subtle: #2e2e2e;
+  --state-error: #ef4444;
+  --state-success: #22c55e;
+  --state-warning: #f59e0b;
+  --action-primary: #f5f5f5;
+  --action-primary-text: #121212;
+  --action-primary-hover: #e5e5e5;
+}

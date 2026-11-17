@@ -1,0 +1,58 @@
+/**
+ * TIXAR RESPONSIVE ARCHITECTURE
+ * Viewport-independent fluid layout from 320px to 3840px.
+ */
+
+@media (max-width: 374px) {
+  :root {
+    --page-gutter: 16px;
+  }
+
+  .content-section {
+    padding-block: var(--space-4);
+  }
+
+  .action-stack {
+    margin-top: var(--space-4);
+  }
+}
+
+@media (min-width: 375px) and (max-width: 599px) {
+  :root {
+    --page-gutter: 18px;
+  }
+
+  .content-section {
+    padding-block: var(--space-5);
+  }
+}
+
+@media (min-width: 600px) and (max-width: 767px) {
+  :root {
+    --page-gutter: 24px;
+  }
+
+  .content-section {
+    padding-block: var(--space-5);
+  }
+}
+
+@media (min-width: 768px) {
+  :root {
+    --page-gutter: 36px;
+  }
+
+  .content-section {
+    padding-block: var(--space-6);
+  }
+
+  .action-stack {
+    max-width: 480px;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --page-gutter: 48px;
+  }
+}

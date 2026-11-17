@@ -164,92 +164,97 @@ function NotesPhase({ content, goBack, onNext, topic, subject, chapter }) {
       })
     : rawMarkup;
 
+  // Strip leading duplicate topic title from notes content if LearnHeader already displays it
+  const cleanMarkup = typeof markup === "string" && topic
+    ? markup.replace(new RegExp(`^\\s*<h[12][^>]*>\\s*${topic.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*<\\/h[12]>\\s*`, 'i'), '')
+    : markup;
+
   return (
     <div
       ref={containerRef}
-      className={`lc notes-swipeable${swipeHint ? ` swipe-${swipeHint}` : ""}`}
+      className={`reading-container notes-swipeable${swipeHint ? ` swipe-${swipeHint}` : ""}`}
       id="notesCard"
+      style={{ paddingBottom: "var(--space-6)" }}
       onTouchStart={handleTouchStart}
       onTouchMove={handleTouchMove}
       onTouchEnd={handleTouchEnd}
       onTouchCancel={handleTouchEnd}
     >
-      <div className="lch">
-        <span className="lbadge lb-n">NOTES</span>
-      </div>
-      <div className="lcb">
-        <div className="notes-scroll-container">
-          <div className="nc" style={{ fontSize: `${fontSize}%` }}>
-            {hasHtml ? (
-              <div dangerouslySetInnerHTML={{ __html: markup }} />
-            ) : (
-              <ReactMarkdown
-                remarkPlugins={[remarkGfm]}
-                rehypePlugins={[rehypeRaw]}
-                components={{
-                  table: ({ node, ...props }) => (
-                    <div className="table-responsive">
-                      <table {...props} />
-                    </div>
-                  ),
-                }}
-              >
-                {markup}
-              </ReactMarkdown>
-            )}
-          </div>
-        </div>
-
-        {/* Active Synthesis Scratchpad */}
-        <div className="scratchpad-section">
-          <button
-            className="scratchpad-toggle"
-            onClick={() => setScratchpadOpen((o) => !o)}
-            aria-expanded={scratchpadOpen}
-          >
-            <span className="scratchpad-toggle-label">
-              {scratchpadOpen ? "Hide" : "Show"} Personal Notes & Key Takeaways
-            </span>
-            <span className={`scratchpad-toggle-icon ${scratchpadOpen ? "open" : ""}`}>▾</span>
-          </button>
-
-          {scratchpadOpen && (
-            <div className="scratchpad-body">
-              <p className="scratchpad-prompt">
-                Summarise this topic in your own words. What are the key ideas? What would you tell someone who has never seen this before?
-              </p>
-              <textarea
-                className="scratchpad-textarea"
-                placeholder="Write your summary and key takeaways here..."
-                value={scratchpadText}
-                onChange={(e) => {
-                  const val = e.target.value;
-                  setScratchpadText(val);
-                  setScratchpadSaved(false);
-                  clearTimeout(saveTimerRef.current);
-                  saveTimerRef.current = setTimeout(() => {
-                    if (topic) {
-                      notesRepo.saveNote(topic, val, {
-                        sid: subject?.id,
-                        cid: chapter?.id,
-                        userId,
-                      }).then(() => setScratchpadSaved(true)).catch(() => {});
-                    }
-                  }, 800);
-                }}
-                rows={5}
-              />
-              <div className="scratchpad-status">
-                {scratchpadSaved ? "Saved" : "Saving..."}
-              </div>
-            </div>
+      <div className="notes-scroll-container">
+        <div className="nc" style={{ fontSize: `${fontSize}%` }}>
+          {hasHtml ? (
+            <div dangerouslySetInnerHTML={{ __html: cleanMarkup }} />
+          ) : (
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+              components={{
+                table: ({ node, ...props }) => (
+                  <div className="table-responsive">
+                    <table {...props} />
+                  </div>
+                ),
+              }}
+            >
+              {cleanMarkup}
+            </ReactMarkdown>
           )}
         </div>
+      </div>
 
-        <div className="lnav-strip">
-          <button className="btn-g" onClick={goBack}>← Back to Topics</button>
-          <button className="btn-p" onClick={onNext}>Start Practice Quiz →</button>
-        </div>
+      {/* Active Synthesis Scratchpad */}
+      <div className="scratchpad-section" style={{ marginBlock: "var(--space-5)" }}>
+        <button
+          className="scratchpad-toggle"
+          onClick={() => setScratchpadOpen((o) => !o)}
+          aria-expanded={scratchpadOpen}
+        >
+          <span className="scratchpad-toggle-label">
+            {scratchpadOpen ? "Hide" : "Show"} Personal Notes & Key Takeaways
+          </span>
+          <span className={`scratchpad-toggle-icon ${scratchpadOpen ? "open" : ""}`}>▾</span>
+        </button>
+
+        {scratchpadOpen && (
+          <div className="scratchpad-body">
+            <p className="scratchpad-prompt">
+              Summarise this topic in your own words. What are the key ideas? What would you tell someone who has never seen this before?
+            </p>
+            <textarea
+              className="scratchpad-textarea"
+              placeholder="Write your summary and key takeaways here..."
+              value={scratchpadText}
+              onChange={(e) => {
+                const val = e.target.value;
+                setScratchpadText(val);
+                setScratchpadSaved(false);
+                clearTimeout(saveTimerRef.current);
+                saveTimerRef.current = setTimeout(() => {
+                  if (topic) {
+                    notesRepo.saveNote(topic, val, {
+                      sid: subject?.id,
+                      cid: chapter?.id,
+                      userId,
+                    }).then(() => setScratchpadSaved(true)).catch(() => {});
+                  }
+                }, 800);
+              }}
+              rows={5}
+            />
+            <div className="scratchpad-status">
+              {scratchpadSaved ? "Saved" : "Saving..."}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="action-stack">
+        <button type="button" className="primary-action-btn" onClick={onNext}>
+          START PRACTICE QUIZ →
+        </button>
+        <button type="button" className="secondary-action-btn" onClick={goBack}>
+          ← Back to Topics
+        </button>
       </div>
     </div>
   );

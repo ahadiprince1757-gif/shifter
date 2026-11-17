@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { ErrorBoundary } from './components/ErrorBoundary'
 import App from './App.jsx'
+import './design-system/index.css'
 import './index.css'
 
 // Automatically reload when a deployment update makes older chunk hashes obsolete

@@ -1,0 +1,155 @@
+/**
+ * TIXAR LAYOUT SYSTEM
+ * Editorial layout: Content is the interface, not a collection of cards.
+ */
+
+/* View and Page Boundaries */
+.page-container {
+  width: 100%;
+  padding-inline: var(--page-gutter);
+  box-sizing: border-box;
+}
+
+.workspace-container {
+  width: 100%;
+  max-width: var(--workspace-max);
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+.reading-container {
+  width: 100%;
+  max-width: var(--content-max);
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+/* Continuous Content Sectioning (Separation through typography and whitespace, zero lines) */
+.content-section {
+  width: 100%;
+  padding-block: var(--space-3) var(--space-5);
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+
+@media (min-width: 768px) {
+  .content-section {
+    padding-block: var(--space-4) var(--space-6);
+  }
+}
+
+.content-divider {
+  display: none !important;
+}
+
+/* Tabular Numbered Step List (01, 02, 03) */
+.step-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.step-item {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: baseline;
+  width: 100%;
+}
+
+.step-number {
+  color: var(--text-muted);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.05em;
+  user-select: none;
+}
+
+.step-content {
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  font-size: clamp(15px, 1.8vw, 16px);
+  line-height: 1.6;
+}
+
+.step-content p {
+  margin: 0 0 var(--space-1) 0;
+}
+
+.step-content p:last-child {
+  margin-bottom: 0;
+}
+
+/* Action System */
+.action-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  width: 100%;
+  margin-top: var(--space-6);
+}
+
+.primary-action-btn {
+  width: 100%;
+  min-height: 48px;
+  padding: var(--space-3) var(--space-5);
+  border: 0;
+  border-radius: var(--radius-control);
+  background: var(--action-primary);
+  color: var(--action-primary-text);
+  font-family: var(--font-family);
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition-fast), opacity var(--transition-fast);
+  text-decoration: none;
+}
+
+.primary-action-btn:hover:not(:disabled) {
+  background: var(--action-primary-hover);
+}
+
+.primary-action-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.secondary-action-btn {
+  width: 100%;
+  min-height: 40px;
+  padding: var(--space-2) var(--space-4);
+  border: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-family);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: color var(--transition-fast);
+  text-decoration: none;
+}
+
+.secondary-action-btn:hover:not(:disabled) {
+  color: var(--text-primary);
+}
+
+.secondary-action-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

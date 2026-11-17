@@ -11,6 +11,10 @@ import FeedbackDisplay from "./quiz/FeedbackDisplay";
 import ConceptReferenceDrawer from "./quiz/ConceptReferenceDrawer";
 import { determineResponseMode } from "../../utils/questionTypeHelper";
 import { verifyQuestionAcrossSubjects } from "../../utils/subjectVerifierRouter";
+import ReadingContainer from "../layout/ReadingContainer";
+import ContentSection from "../content/ContentSection";
+import StepList from "../content/StepList";
+import StepItem from "../content/StepItem";
 
 const markdownComponents = {
   table: ({ node, ...props }) => (
@@ -67,68 +71,79 @@ function QuizPhase({
     const displayExplanation = originalQ.why || originalQ.sol || verification.explanation || "";
 
     return (
-      <div className="lc" id="qCard">
-        <div className="lch">
-          <span className="lbadge lb-n">Concept Review & Method Repair</span>
+      <ReadingContainer style={{ paddingBlock: "var(--space-4)" }}>
+        <div className="type-meta" style={{ marginBottom: "var(--space-3)" }}>
+          Concept Review & Method Repair
         </div>
-        <div className="lcb">
-          <div className="fb-card fb-review-mode">
-            <div className="fb-header">
-              <div className="fb-status-wrapper">
-                <span className="fb-status-badge fb-badge-review">Concept Repair</span>
-              </div>
-            </div>
 
-            {/* 1. Step-by-Step Solution Timeline FIRST */}
-            {displaySteps.length > 0 && (
-              <div className="fb-steps-container">
-                <div className="fb-section-title">How to Solve It (Step-by-Step)</div>
-                <div className="fb-steps-timeline">
-                  {displaySteps.map((step, i) => (
-                    <div key={i} className="fb-step-card">
-                      <span className="fb-step-badge">Step {i + 1}</span>
-                      <div className="fb-step-text">
-                        <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
-                          {step.replace(/^step\s*\d+\s*:\s*/i, "")}
-                        </ReactMarkdown>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* 2. Verified Target Answer SECOND */}
-            {displayAnswer && (
-              <div className="fb-correct-answer-box">
-                <div className="fb-section-title">Target Correct Answer</div>
-                <div className="fb-answer-value">
+        {/* 1. Step-by-Step Solution Timeline FIRST */}
+        {displaySteps.length > 0 && (
+          <ContentSection title="HOW TO SOLVE IT (STEP-BY-STEP)">
+            <StepList>
+              {displaySteps.map((step, i) => (
+                <StepItem key={i} number={i + 1}>
                   <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
-                    {String(displayAnswer)}
+                    {step.replace(/^step\s*\d+\s*:\s*/i, "")}
                   </ReactMarkdown>
-                </div>
+                </StepItem>
+              ))}
+            </StepList>
+          </ContentSection>
+        )}
+
+        {/* 2. Verified Target Answer SECOND */}
+        {displayAnswer && (
+          <ContentSection title="TARGET CORRECT ANSWER">
+            <div className="type-question" style={{ fontWeight: 600 }}>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
+                {String(displayAnswer)}
+              </ReactMarkdown>
+            </div>
+          </ContentSection>
+        )}
+
+        {/* 3. Explanation (if non-redundant) */}
+        {displayExplanation &&
+          displaySteps.length === 0 &&
+          !/^\d+$/.test(String(displayExplanation).trim()) && (
+            <ContentSection title="EXPLANATION">
+              <div className="type-body">
+                <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
+                  {displayExplanation}
+                </ReactMarkdown>
               </div>
-            )}
+            </ContentSection>
+          )}
 
-            {/* 3. Explanation (if non-redundant) */}
-            {displayExplanation &&
-              displaySteps.length === 0 &&
-              !/^\d+$/.test(String(displayExplanation).trim()) && (
-                <div className="fb-explanation-box">
-                  <div className="fb-section-title">Explanation</div>
-                  <div className="fb-explanation-text">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]} components={markdownComponents}>
-                      {displayExplanation}
-                    </ReactMarkdown>
-                  </div>
-                </div>
-              )}
-          </div>
-
-          <button className="fb-action-btn fb-next-btn" onClick={startRetry} style={{ marginTop: "1.2rem", width: "100%" }}>
-            Try Restructured Question →
+        <div style={{ marginTop: "var(--space-6)" }}>
+          <button className="primary-action-btn" onClick={startRetry}>
+            TRY RESTRUCTURED QUESTION →
           </button>
         </div>
+      </ReadingContainer>
+    );
+  }
+
+  // ── Feedback Document View (Full Screen, Single Surface) ──
+  if (feedback) {
+    return (
+      <div className="feedback-screen-fullscreen">
+        <FeedbackDisplay
+          feedback={feedback}
+          showAnswer={showAnswer}
+          setShowAnswer={setShowAnswer}
+          nextQuestion={nextQuestion}
+          finishTopic={finishTopic}
+          isLastQuestion={isLastQuestion}
+          grading={grading}
+          qIdx={qIdx}
+          totalQs={totalQs}
+          goToReview={goToReview}
+          retryState={retryState}
+          startMutatedRepair={startMutatedRepair}
+          refineAnswer={refineAnswer}
+          questionText={curQ?.q}
+        />
       </div>
     );
   }
@@ -172,8 +187,8 @@ function QuizPhase({
               {curQ.options.map((opt, i) => (
                 <label
                   key={i}
-                  className={`mcq-option${answer === opt ? " mcq-selected" : ""}${feedback ? " mcq-disabled" : ""}`}
-                  onClick={() => !feedback && !grading && setAnswer(opt)}
+                  className={`mcq-option${answer === opt ? " mcq-selected" : ""}`}
+                  onClick={() => !grading && setAnswer(opt)}
                 >
                   <input
                     type="radio"
@@ -181,8 +196,8 @@ function QuizPhase({
                     className="mcq-radio"
                     value={opt}
                     checked={answer === opt}
-                    onChange={() => !feedback && !grading && setAnswer(opt)}
-                    disabled={!!feedback || grading}
+                    onChange={() => !grading && setAnswer(opt)}
+                    disabled={grading}
                   />
                   <span className="mcq-letter">
                     {String.fromCharCode(65 + i)}
@@ -199,7 +214,7 @@ function QuizPhase({
               setWork={setWork}
               answer={answer}
               setAnswer={setAnswer}
-              disabled={feedback || grading}
+              disabled={grading}
             />
           )}
 
@@ -210,7 +225,7 @@ function QuizPhase({
           <HintBox showHint={showHint} hintText={curQ?.hint} hints={curQ?.hints} />
 
           {/* Metacognitive Confidence Selector — shown before first submission */}
-          {!feedback && answer.trim() && (
+          {answer.trim() && (
             <div className="confidence-selector">
               <div className="confidence-selector-label">How confident are you in this answer?</div>
               <div className="confidence-btn-group">
@@ -220,7 +235,7 @@ function QuizPhase({
                     type="button"
                     className={`confidence-btn confidence-btn--${level}${confidence === level ? " confidence-btn--active" : ""}`}
                     onClick={() => setConfidence(level)}
-                    disabled={!!feedback || grading}
+                    disabled={grading}
                   >
                     {level === "low" ? "Not Sure" : level === "medium" ? "Fairly Sure" : "Very Sure"}
                   </button>
@@ -229,31 +244,12 @@ function QuizPhase({
             </div>
           )}
 
-          {!feedback && (
-            <QuizActionButtons
-              showHint={showHint}
-              setShowHint={setShowHint}
-              submitAnswer={submitAnswer}
-              grading={grading}
-              canSubmit={!!answer.trim()}
-            />
-          )}
-
-          <FeedbackDisplay
-            feedback={feedback}
-            showAnswer={showAnswer}
-            setShowAnswer={setShowAnswer}
-            nextQuestion={nextQuestion}
-            finishTopic={finishTopic}
-            isLastQuestion={isLastQuestion}
+          <QuizActionButtons
+            showHint={showHint}
+            setShowHint={setShowHint}
+            submitAnswer={submitAnswer}
             grading={grading}
-            qIdx={qIdx}
-            totalQs={totalQs}
-            goToReview={goToReview}
-            retryState={retryState}
-            startMutatedRepair={startMutatedRepair}
-            refineAnswer={refineAnswer}
-            questionText={curQ?.q}
+            canSubmit={!!answer.trim()}
           />
         </div>
       </div>

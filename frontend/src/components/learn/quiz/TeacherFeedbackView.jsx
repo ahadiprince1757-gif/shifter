@@ -1,32 +1,31 @@
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
-import rehypeRaw from "rehype-raw";
-
-function Markdown({ children }) {
-  if (!children) return null;
-  return (
-    <ReactMarkdown
-      remarkPlugins={[remarkGfm]}
-      rehypePlugins={[rehypeRaw]}
-      components={{
-        table: ({ node, ...props }) => (
-          <div className="table-responsive">
-            <table {...props} />
-          </div>
-        ),
-      }}
-    >
-      {String(children)}
-    </ReactMarkdown>
-  );
-}
+import Markdown from "../../content/Markdown";
+import ContentSection from "../../content/ContentSection";
+import StepList from "../../content/StepList";
+import StepItem from "../../content/StepItem";
+import QuestionDisplay from "../../feedback/QuestionDisplay";
+import StudentApproach from "../../feedback/StudentApproach";
+import ErrorExplanation from "../../feedback/ErrorExplanation";
+import CorrectMethod from "../../feedback/CorrectMethod";
+import RememberRule from "../../feedback/RememberRule";
+import StandardAnswer from "../../feedback/StandardAnswer";
 
 /**
  * TeacherFeedbackView
  *
- * Implements the deterministic teacher feedback interface matching the design in media_1792479448775.jpg.
- * Optimized specifically for mobile screens to eliminate cognitive clutter,
- * prevent horizontal squishing, and present high-clarity pedagogical guidance.
+ * Implements the continuous diagnostic document architecture for Tixar:
+ * 1. Question
+ * 2. Your Approach
+ * 3. Diagnosis (Why this is wrong)
+ * 4. The Right Way (tabular 01, 02 numbered steps)
+ * 5. Rule to Remember
+ * 6. Standard Answer (only when useful and mathematically consistent)
+ *
+ * Design Invariants:
+ * - One screen, one surface. Sections are separated by space and dividers, not cards.
+ * - Color communicates state, never structure. Typography establishes hierarchy.
+ * - No floating cards, no card soup, no surrounding boxes or shadows.
+ * - 01 / 02 / 03 tabular deliberate step numbering.
+ * - Full-width mobile breathing room.
  */
 export default function TeacherFeedbackView({
   diagnosis,
@@ -107,365 +106,180 @@ export default function TeacherFeedbackView({
 
   const rememberText = String(cleanRemember || cleanWhy || "").trim();
 
+  // Approach formulation
   const approachText =
     whatYouDid ||
-    (studentAnswer ? `You answered: **${studentAnswer}**` : "");
+    (studentAnswer ? `You provided the answer "${studentAnswer}".` : "You provided an incorrect calculation.");
+
+  // Consistency check: ensure standard answer does not contradict the worked solution
+  let consistentAnswer = rawAnswer;
+  if (rightWaySteps.length > 0 && rawAnswer) {
+    const lastStep = rightWaySteps[rightWaySteps.length - 1];
+    // If last step has an answer with unit (e.g. 60 km/h) and rawAnswer is just a numeric mismatch (e.g. 16.6667), extract the step answer
+    const unitMatch = lastStep.match(/(?:=|is|speed\s*=)\s*([0-9.]+\s*(?:km\/h|m\/s|N|J|W|m|kg|s|%|[a-zA-Z/]+))/i);
+    if (unitMatch && unitMatch[1]) {
+      const stepVal = unitMatch[1].trim();
+      const rawNum = parseFloat(rawAnswer);
+      const stepNum = parseFloat(stepVal);
+      if (!isNaN(rawNum) && !isNaN(stepNum) && Math.abs(rawNum - stepNum) > 0.01) {
+        // Discrepancy detected: use the worked solution's verified conclusion
+        consistentAnswer = stepVal;
+      }
+    }
+  }
+
+  // Why points fallback
+  const whyPoints =
+    Array.isArray(whyThisIsWrong) && whyThisIsWrong.length > 0
+      ? whyThisIsWrong
+      : [
+          ...(consistentAnswer ? [`The correct answer is ${consistentAnswer}.`] : []),
+          "The calculation does not produce the required result.",
+        ];
 
   return (
-    <div className="tfv-container" aria-label="Teacher Diagnostic Review">
-      {/* ── CARD 0: QUESTION CONTEXT ── */}
-      {questionText && (
-        <section className="tfv-question-card">
-          <div className="tfv-question-header">
-            <svg
-              width="15"
-              height="15"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <circle cx="12" cy="12" r="10" />
-              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
-              <line x1="12" y1="17" x2="12.01" y2="17" />
-            </svg>
-            <span className="tfv-question-label">Question</span>
-          </div>
-          <div className="tfv-question-text">
-            <Markdown>{questionText}</Markdown>
-          </div>
-        </section>
-      )}
+    <div className="teacher-diagnostic-flow" aria-label="Diagnostic Feedback">
+      {/* ── 1. QUESTION ── */}
+      <QuestionDisplay questionText={questionText} />
 
       {/* ── STEP ANALYSIS MODE (REASONING & RECONSTRUCTED WORKING) ── */}
       {stepAnalysis && status !== "correct" ? (
         <>
-          {/* ── STAGE 1: WHAT YOU DID RIGHT ── */}
           {stepAnalysis.whatYouDidRight?.length > 0 && (
-            <section className="tfv-card tfv-card-right">
-              <div className="tfv-card-header">
-                <div className="tfv-card-title-group">
-                  <span className="tfv-indicator tfv-indicator-success" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  <h3 className="tfv-card-title">What You Did Right</h3>
-                </div>
-              </div>
-              <ul className="tfv-right-list">
+            <ContentSection title="WHAT YOU DID RIGHT">
+              <ul style={{ margin: 0, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
                 {stepAnalysis.whatYouDidRight.map((item, idx) => (
-                  <li key={idx} className="tfv-right-item">
+                  <li key={idx} className="type-body">
                     <Markdown>{item}</Markdown>
                   </li>
                 ))}
               </ul>
-            </section>
+            </ContentSection>
           )}
 
-          {/* ── STAGE 2: THIS IS WHERE YOUR WORKING GOES WRONG ── */}
           {stepAnalysis.whereYourWorkingBrokeDown && (
-            <section className="tfv-card tfv-card-breakdown">
-              <div className="tfv-card-header">
-                <div className="tfv-card-title-group">
-                  <span className="tfv-indicator tfv-indicator-error" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </span>
-                  <h3 className="tfv-card-title">This Is Where Your Working Goes Wrong</h3>
-                </div>
+            <ContentSection title="WHERE YOUR WORKING WENT WRONG">
+              <div style={{ marginBottom: "var(--space-2)" }}>
+                <code style={{ background: "var(--surface-subtle)", padding: "2px 8px", borderRadius: "4px", fontSize: "14px" }}>
+                  {stepAnalysis.whereYourWorkingBrokeDown.studentStep}
+                </code>
               </div>
-
-              <div className="tfv-breakdown-box">
-                <div className="tfv-breakdown-student-line">
-                  <span className="tfv-breakdown-tag-wrong">Your Step:</span>
-                  <code className="tfv-code-highlight">{stepAnalysis.whereYourWorkingBrokeDown.studentStep}</code>
-                </div>
-                <div className="tfv-breakdown-explanation">
-                  <Markdown>{stepAnalysis.whereYourWorkingBrokeDown.explanation}</Markdown>
-                </div>
+              <div className="type-body">
+                <Markdown>{stepAnalysis.whereYourWorkingBrokeDown.explanation}</Markdown>
               </div>
-            </section>
+            </ContentSection>
           )}
 
-          {/* ── STAGE 3: YOUR CORRECTED WORKING (REBUILT FROM STUDENT ATTEMPT) ── */}
           {stepAnalysis.correctedWorking?.length > 0 && (
-            <section className="tfv-card tfv-card-corrected">
-              <div className="tfv-card-header">
-                <div className="tfv-card-title-group">
-                  <span className="tfv-indicator tfv-indicator-info" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  <h3 className="tfv-card-title">Your Corrected Working</h3>
-                </div>
-              </div>
-
-              <div className="tfv-corrected-work-list">
+            <ContentSection title="YOUR CORRECTED WORKING">
+              <StepList>
                 {stepAnalysis.correctedWorking.map((item, idx) => (
-                  <div
-                    key={idx}
-                    className={`tfv-corrected-row ${
-                      item.status === "corrected" ? "highlight-corrected" : ""
-                    }`}
-                  >
-                    <div className="tfv-corrected-line">
+                  <StepItem key={idx} number={idx + 1} isCorrected={item.status === "corrected"}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "var(--space-2)", flexWrap: "wrap" }}>
                       <code>{item.step}</code>
                       {item.status === "corrected" && (
-                        <span className="tfv-corrected-tag">Corrected Step</span>
+                        <span style={{ fontSize: "11px", fontWeight: 600, color: "var(--state-success)", textTransform: "uppercase" }}>
+                          ✓ Corrected
+                        </span>
                       )}
                     </div>
                     {item.note && (
-                      <div className="tfv-corrected-note">{item.note}</div>
+                      <div className="type-supporting" style={{ marginTop: "4px" }}>
+                        {item.note}
+                      </div>
                     )}
-                  </div>
+                  </StepItem>
                 ))}
-              </div>
-            </section>
+              </StepList>
+            </ContentSection>
           )}
 
-          {/* ── STAGE 4: CHANGE THE WAY YOU APPROACH THIS ── */}
           {stepAnalysis.thinkingRepair && (
-            <section className="tfv-remember-card">
-              <div className="tfv-remember-header">
-                <svg
-                  width="18"
-                  height="18"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="var(--v, #6366f1)"
-                  strokeWidth="2"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-                  <path d="M9 18h6" />
-                  <path d="M10 22h4" />
-                  <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5" />
-                </svg>
-                <span className="tfv-remember-label">
-                  {stepAnalysis.thinkingRepair.title || "Change the way you approach this"}
-                </span>
-              </div>
-              <div className="tfv-remember-text">
-                <Markdown>{stepAnalysis.thinkingRepair.strategy}</Markdown>
-              </div>
-            </section>
+            <RememberRule
+              title={stepAnalysis.thinkingRepair.title ? stepAnalysis.thinkingRepair.title.toUpperCase() : "CHANGE THE WAY YOU APPROACH THIS"}
+              ruleText={stepAnalysis.thinkingRepair.strategy}
+            />
           )}
         </>
       ) : (
-        /* ── STANDARD TEACHER FEEDBACK (WHEN NO STEP DEVIATION DETECTED) ── */
+        /* ── STANDARD TEACHER FEEDBACK (CONTINUOUS DOCUMENT FLOW) ── */
         <>
+          {/* ── 2. YOUR APPROACH ── */}
           {approachText && status !== "correct" && (
-            <section className="tfv-card tfv-card-approach">
-              <div className="tfv-card-header">
-                <div className="tfv-card-title-group">
-                  <span className="tfv-indicator tfv-indicator-error" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="18" y1="6" x2="6" y2="18" />
-                      <line x1="6" y1="6" x2="18" y2="18" />
-                    </svg>
-                  </span>
-                  <h3 className="tfv-card-title">
-                    {status === "unrecognized" ? "Unrecognized Input" : "Your Approach"}
-                  </h3>
-                </div>
-              </div>
-
-              <div className="tfv-what-you-did-box">
-                <div className="tfv-what-you-did-text">
-                  <Markdown>{approachText}</Markdown>
-                </div>
-              </div>
-
-              {Array.isArray(whyThisIsWrong) && whyThisIsWrong.length > 0 && (
-                <div className="tfv-why-wrong-section">
-                  <h4 className="tfv-why-wrong-heading">Why this is wrong</h4>
-                  <ul className="tfv-why-wrong-list">
-                    {whyThisIsWrong.map((point, idx) => (
-                      <li key={idx} className="tfv-why-wrong-item">
-                        <Markdown>{point}</Markdown>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </section>
+            <StudentApproach studentAnswer={studentAnswer} approachSummary={approachText} />
           )}
 
-          {/* ── CARD 2: THE RIGHT WAY ── */}
+          {/* ── 3. DIAGNOSIS (WHY THIS IS WRONG) ── */}
+          {whyPoints.length > 0 && status !== "correct" && (
+            <ErrorExplanation reasons={whyPoints} rawAnswer={consistentAnswer} />
+          )}
+
+          {/* ── 4. THE RIGHT WAY ── */}
           {rightWaySteps.length > 0 && (
-            <section className="tfv-card tfv-card-right-way">
-              <div className="tfv-card-header">
-                <div className="tfv-card-title-group">
-                  <span className="tfv-indicator tfv-indicator-success" aria-hidden="true">
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.2" strokeLinecap="round" strokeLinejoin="round">
-                      <polyline points="20 6 9 17 4 12" />
-                    </svg>
-                  </span>
-                  <h3 className="tfv-card-title">The Right Way</h3>
-                </div>
-              </div>
-
-              <ol className="tfv-steps-list">
-                {rightWaySteps.map((step, idx) => (
-                  <li key={idx} className="tfv-step-item">
-                    <span className="tfv-step-badge">{idx + 1}</span>
-                    <div className="tfv-step-content">
-                      <Markdown>{step}</Markdown>
-                    </div>
-                  </li>
-                ))}
-              </ol>
-            </section>
+            <CorrectMethod steps={rightWaySteps} />
           )}
 
-          {/* ── CARD 3: KEY RULE TO REMEMBER (NEUTRAL & FOCUSED) ── */}
+          {/* ── 5. RULE TO REMEMBER ── */}
           {rememberText && (
-            <section className="tfv-card tfv-remember-card">
-              <div className="tfv-card-header">
-                <div className="tfv-card-title-group">
-                  <span className="tfv-indicator tfv-indicator-warning" aria-hidden="true">
-                    <svg
-                      width="13"
-                      height="13"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2.2"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    >
-                      <path d="M9 18h6" />
-                      <path d="M10 22h4" />
-                      <path d="M15.09 14c.18-.98.65-1.74 1.41-2.5A4.65 4.65 0 0 0 18 8 6 6 0 0 0 6 8c0 1 .23 2.23 1.5 3.5.76.76 1.23 1.52 1.41 2.5" />
-                    </svg>
-                  </span>
-                  <h3 className="tfv-card-title">Rule to Remember</h3>
-                </div>
-              </div>
-              <p className="tfv-remember-text">
-                <Markdown>{rememberText}</Markdown>
-              </p>
-            </section>
+            <RememberRule ruleText={rememberText} />
           )}
         </>
       )}
 
-      {/* ── CARD 3B: COGNITIVE REPAIR (THE PRINCIPLE & COUNTEREXAMPLE) ── */}
+      {/* ── COGNITIVE REPAIR (KEY PRINCIPLE & COUNTEREXAMPLE) ── */}
       {repair && (repair.principle || repair.counterExample) && (
-        <section className="tfv-card tfv-card-repair-principle">
-          <div className="tfv-card-header">
-            <div className="tfv-card-title-group">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="var(--v, #6366f1)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <circle cx="12" cy="12" r="10" />
-                <line x1="12" y1="16" x2="12" y2="12" />
-                <line x1="12" y1="8" x2="12.01" y2="8" />
-              </svg>
-              <h3 className="tfv-card-title">Cognitive Repair</h3>
-            </div>
-            <span className="tfv-badge tfv-badge-info">Key Principle</span>
-          </div>
+        <ContentSection title="KEY PRINCIPLE">
           {repair.principle && (
-            <div className="tfv-repair-text">
+            <div className="type-body" style={{ marginBottom: repair.counterExample ? "var(--space-3)" : 0 }}>
               <Markdown>{repair.principle}</Markdown>
             </div>
           )}
           {repair.counterExample && (
-            <div className="tfv-repair-example">
+            <div className="type-supporting">
               <strong>Example: </strong>
               <Markdown>{repair.counterExample}</Markdown>
             </div>
           )}
-        </section>
+        </ContentSection>
       )}
 
-      {/* ── CARD 3C: TARGETED DIAGNOSTIC PROBE ── */}
+      {/* ── TARGETED DIAGNOSTIC PROBE ── */}
       {probe && probe.question && (
-        <section className="tfv-card tfv-card-probe">
-          <div className="tfv-card-header">
-            <div className="tfv-card-title-group">
-              <svg
-                width="18"
-                height="18"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="var(--gr, #10b981)"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M9 11l3 3L22 4" />
-                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" />
-              </svg>
-              <h3 className="tfv-card-title">Check Your Thinking</h3>
-            </div>
-            <span className="tfv-badge tfv-badge-success">Diagnostic Probe</span>
-          </div>
-          <div className="tfv-probe-q">
+        <ContentSection title="CHECK YOUR THINKING">
+          <div className="type-body" style={{ marginBottom: "var(--space-3)", fontWeight: 500 }}>
             <Markdown>{probe.question}</Markdown>
           </div>
           {Array.isArray(probe.options) && probe.options.length > 0 && (
-            <ul className="tfv-probe-options-list">
+            <div style={{ display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
               {probe.options.map((opt, i) => (
-                <li
+                <div
                   key={i}
-                  className={`tfv-probe-option-item ${
-                    opt === probe.correctAnswer ? "is-target" : ""
-                  }`}
+                  style={{
+                    padding: "var(--space-2) var(--space-3)",
+                    border: "1px solid var(--border-subtle)",
+                    borderRadius: "var(--radius-control)",
+                    fontSize: "14px",
+                    display: "flex",
+                    justifyContent: "space-between",
+                    alignItems: "center",
+                  }}
                 >
                   <span>{opt}</span>
                   {opt === probe.correctAnswer && (
-                    <span className="tfv-probe-badge">✓ Correct Reasoning</span>
+                    <span style={{ color: "var(--state-success)", fontWeight: 600, fontSize: "12px" }}>
+                      ✓ Correct Reasoning
+                    </span>
                   )}
-                </li>
+                </div>
               ))}
-            </ul>
+            </div>
           )}
-        </section>
+        </ContentSection>
       )}
 
-      {/* ── CARD 4: FINAL CORRECT ANSWER ── */}
-      {rawAnswer && (
-        <section className="tfv-final-answer-card">
-          <div className="tfv-final-answer-header">
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="3"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              aria-hidden="true"
-            >
-              <polyline points="20 6 9 17 4 12" />
-            </svg>
-            <span>Standard Answer</span>
-          </div>
-          <div className="tfv-final-answer-val">
-            <Markdown>{rawAnswer}</Markdown>
-          </div>
-        </section>
+      {/* ── 6. STANDARD ANSWER (Only when useful, non-redundant, and consistent) ── */}
+      {consistentAnswer && (
+        <StandardAnswer answer={consistentAnswer} steps={rightWaySteps} />
       )}
     </div>
   );

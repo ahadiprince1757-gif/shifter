@@ -4,6 +4,14 @@ import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
 import TeacherFeedbackView from "./TeacherFeedbackView";
 import { diagnoseStudentSubmission } from "../../../diagnostics/teacherDiagnoser";
+import ReadingContainer from "../../layout/ReadingContainer";
+import QuestionDisplay from "../../feedback/QuestionDisplay";
+import StudentApproach from "../../feedback/StudentApproach";
+import CorrectMethod from "../../feedback/CorrectMethod";
+import RememberRule from "../../feedback/RememberRule";
+import StandardAnswer from "../../feedback/StandardAnswer";
+import FeedbackActions from "../../feedback/FeedbackActions";
+import ContentSection from "../../content/ContentSection";
 
 /**
  * ================================================================
@@ -696,154 +704,60 @@ function FeedbackDisplay({
   // ================================================================
 
   return (
-    <div className={`fb-card ${cardClass}`}>
-
-      {/* ==========================================================
-          HEADER
-      ========================================================== */}
-
-      <div className="fb-header">
-
-        <span
-          className={`fb-status-badge ${badgeClass}`}
-        >
-          {statusText}
-        </span>
-
-        <span className="fb-progress-pill">
-          {currentQuestion} / {questionCount}
-        </span>
-
+    <ReadingContainer className="feedback-document-root">
+      {/* Subtle Progress Tracker */}
+      <div className="type-meta" style={{ marginBottom: "var(--space-4)" }}>
+        Question {currentQuestion} of {questionCount}
       </div>
 
-
-      {/* ==========================================================
-          UNKNOWN GRADING WARNING
-          ========================================================== */}
-
+      {/* Inconclusive grading notification — plain text notice, no card */}
       {!hasReliableGrade && (
-        <div className="fb-grading-warning">
-          <strong>We couldn't reliably determine the result.</strong>
-
-          <span>
-            Your answer has not been marked as mastered.
-            Please review the solution below.
-          </span>
+        <div style={{ marginBottom: "var(--space-4)", color: "var(--text-secondary)", fontSize: "14px" }}>
+          <strong style={{ color: "var(--text-primary)" }}>Notice: </strong>
+          Your answer could not be evaluated with complete certainty. Please review the solution below.
         </div>
       )}
 
-
-      {/* ==========================================================
-          WRONG ANSWER — CLEAN & RESTRAINED
-          ========================================================== */}
-
-      {isCorrect === false && !isPartial && (
-        <div className="fb-incorrect-banner">
-          <svg
-            className="fb-incorrect-icon"
-            width="16"
-            height="16"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="10" />
-            <line x1="15" y1="9" x2="9" y2="15" />
-            <line x1="9" y1="9" x2="15" y2="15" />
-          </svg>
-          <div className="fb-incorrect-text">
-            <strong>Not quite</strong>
-            <span>Your answer doesn&apos;t produce the required result.</span>
-          </div>
-        </div>
-      )}
-
-
-      {/* ==========================================================
-          ALMOST THERE BANNER
-          ========================================================== */}
-
+      {/* Partial match guidance — simple, no decorative banner */}
       {isPartial && (
-        <div className="fb-almost-banner">
-
-          <div className="fb-almost-banner-title">
-            ⚡ You're close — just missing a few key concepts!
-          </div>
-
-          {(() => {
-            const matched = feedback?.matchedConcepts || [];
-            const missing = feedback?.missingConcepts || [];
-            const hasChips = matched.length > 0 || missing.length > 0;
-
-            if (!hasChips) {
-              return (
-                <div className="fb-almost-banner-hint">
-                  Your answer captured part of the idea. Refine it to
-                  include the key concepts from the correct answer.
-                </div>
-              );
-            }
-
-            return (
-              <>
-                <div className="fb-almost-banner-hint">
-                  Try to include these concepts in your answer:
-                </div>
-
-                <div className="fb-almost-banner-concepts">
-                  {matched.map((concept, i) => (
-                    <span
-                      key={`hit-${i}`}
-                      className="fb-almost-concept-chip fb-chip-hit"
-                    >
-                      ✓ {concept}
-                    </span>
-                  ))}
-                  {missing.map((concept, i) => (
-                    <span
-                      key={`miss-${i}`}
-                      className="fb-almost-concept-chip fb-chip-miss"
-                    >
-                      ✗ {concept}
-                    </span>
-                  ))}
-                </div>
-              </>
-            );
-          })()}
-
+        <div style={{ marginBottom: "var(--space-4)", color: "var(--text-secondary)", fontSize: "14px" }}>
+          <strong style={{ color: "var(--text-primary)" }}>Almost there: </strong>
+          Your answer captured part of the idea. Refine it using the correct method below.
         </div>
       )}
 
-
       {/* ==========================================================
-          STUDENT ANSWER (FOR CORRECT ANSWERS)
+          CORRECT ANSWER DOCUMENT SURFACE (MINIMAL, ONE SURFACE)
           ========================================================== */}
+      {isCorrect === true && (
+        <div aria-label="Correct Answer Review">
+          {questionText && (
+            <QuestionDisplay questionText={questionText} />
+          )}
 
-      {hasStudentAnswer && isCorrect === true && (
-        <div className="fb-student-answer-box">
+          {hasStudentAnswer && (
+            <StudentApproach studentAnswer={studentAnswer} approachSummary={`Your answer: "${studentAnswer}"`} />
+          )}
 
-          <div className="fb-section-title">
-            Your Answer
-          </div>
+          {hasSteps && (
+            <CorrectMethod steps={steps} title="HOW TO SOLVE IT" />
+          )}
 
-          <div className="fb-answer-value">
-            <Markdown>
-              {studentAnswer}
-            </Markdown>
-          </div>
+          {(showSolution || showWhy) && (
+            <RememberRule
+              title="KEY INSIGHT"
+              ruleText={solution || why}
+            />
+          )}
 
+          {hasCorrectAnswer && (
+            <StandardAnswer answer={rawAnswer} steps={steps} />
+          )}
         </div>
       )}
 
-
       {/* ==========================================================
-          TEACHER DIAGNOSTIC REVIEW (FOR INCORRECT / PARTIAL ANSWERS)
-          Replaces the robotic timeline with structured pedagogical feedback
+          INCORRECT / PARTIAL DIAGNOSTIC DOCUMENT
           ========================================================== */}
       {(isCorrect === false || isPartial) && (
         <TeacherFeedbackView
@@ -858,147 +772,40 @@ function FeedbackDisplay({
       )}
 
       {/* ==========================================================
-          REPEATED MISTAKE
+          STANDARDIZED ACTIONS
           ========================================================== */}
-      {showRecurrence && (
-        <div className="smart-analysis-recurrence-badge">
-          ⚠️ {recurrence.label || "Repeated mistake"}{" "}
-          (seen {recurrenceCount} times)
-        </div>
-      )}
-
-      {/* ==========================================================
-          CORRECT ANSWER & HOW TO SOLVE (FOR CORRECT ANSWERS)
-          ========================================================== */}
-      {isCorrect === true && hasCorrectAnswer && (
-        <div className="fb-correct-answer-box">
-          <div className="fb-section-title">Answer</div>
-          <div className="fb-answer-value">
-            <Markdown>{rawAnswer}</Markdown>
-          </div>
-        </div>
-      )}
-
-      {isCorrect === true && hasSteps && (
-        <div className="fb-steps-container">
-          <div className="fb-section-title">How to Solve It</div>
-          <ol className="fb-steps-list">
-            {steps.map((step, index) => (
-              <li
-                key={`${index}-${step.slice(0, 20)}`}
-                className="fb-step-item"
-              >
-                <span className="fb-step-number">{index + 1}</span>
-                <span className="fb-step-text">
-                  <Markdown>{step}</Markdown>
-                </span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      )}
-
-      {isCorrect === true && showSolution && (
-        <div className="fb-explanation-box">
-          <div className="fb-section-title">Explanation</div>
-          <div className="fb-explanation-text">
-            <Markdown>{solution}</Markdown>
-          </div>
-        </div>
-      )}
-
-      {isCorrect === true && showWhy && (
-        <div className="fb-why-box">
-          <div className="fb-section-title">Key Insight</div>
-          <p className="fb-why-text">{why}</p>
-        </div>
-      )}
-
-
-      {/* ==========================================================
-          REPAIR CONFIRMED
-          ========================================================== */}
-
-      {showRepairedBanner && (
-        <div className="fb-repaired-banner">
-
-          <span className="fb-repaired-icon">
-            ✓
-          </span>
-
-          <strong>
-            Fixed. We'll check this again later.
-          </strong>
-
-        </div>
-      )}
-
-
-      {/* ==========================================================
-          ACTIONS
-          ========================================================== */}
-
-      <div className="fb-actions">
-
-        {isPartial && refineAnswer && (
-          <button
-            type="button"
-            className="fb-action-btn fb-refine-btn"
-            onClick={refineAnswer}
-            disabled={grading}
-          >
-            ✏️ Refine My Answer
-          </button>
-        )}
-
-        {isCorrect === false && !isPartial &&
-          startMutatedRepair && (
-            <button
-              type="button"
-              className="fb-action-btn fb-repair-btn"
-              onClick={startMutatedRepair}
-              disabled={grading}
-            >
-              Try Again (Retest) →
-            </button>
-          )}
-
-
-        {goToReview && (
-          <button
-            type="button"
-            className="fb-action-btn fb-review-btn"
-            onClick={goToReview}
-            disabled={grading}
-          >
-            Review Concept
-          </button>
-        )}
-
-
-        <button
-          type="button"
-          className="fb-action-btn fb-next-btn"
-          onClick={() => {
-            if (isLastQuestion) {
-              finishTopic();
-            } else {
-              nextQuestion();
-            }
-          }}
-          disabled={grading}
-        >
-          {isLastQuestion
-            ? "Finish Topic"
-            : "Next Question"}
-        </button>
-
-      </div>
-
-    </div>
+      <FeedbackActions
+        isCorrect={isCorrect}
+        isPartial={isPartial}
+        disabled={grading}
+        onPrimary={
+          isPartial && refineAnswer
+            ? refineAnswer
+            : isCorrect === false
+            ? (startMutatedRepair || nextQuestion)
+            : () => (isLastQuestion ? finishTopic() : nextQuestion())
+        }
+        primaryLabel={
+          isPartial && refineAnswer
+            ? "REFINE MY ANSWER"
+            : isCorrect === false
+            ? "TRY AGAIN"
+            : isLastQuestion
+            ? "FINISH TOPIC →"
+            : "NEXT QUESTION →"
+        }
+        onSecondary={
+          isCorrect !== true
+            ? () => (isLastQuestion ? finishTopic() : nextQuestion())
+            : null
+        }
+        secondaryLabel={isLastQuestion ? "Finish Topic →" : "Next question →"}
+        onTertiary={goToReview}
+        tertiaryLabel="Review concept"
+      />
+    </ReadingContainer>
   );
 }
-
 
 export default FeedbackDisplay;
 

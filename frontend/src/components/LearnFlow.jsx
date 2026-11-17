@@ -187,28 +187,33 @@ function LearnFlow({
   const questions = Array.isArray(content?.qs) ? content.qs : [];
   const hasQuestions = questions.length > 0;
 
+  const isFeedbackMode = loop.phase === SESSION_PHASES.QUIZ && !!loop.feedback;
+
   return (
-    <div id="v-learn" className="view active">
-      <LearnHeader
-        goBack={goBack}
-        topic={topic}
-        subject={subject}
-        chapter={chapter}
-      />
+    <div id="v-learn" className={`view active ${isFeedbackMode ? "view--feedback-fullscreen" : ""}`}>
+      {!isFeedbackMode && (
+        <>
+          <LearnHeader
+            goBack={goBack}
+            topic={topic}
+            subject={subject}
+            chapter={chapter}
+          />
 
-      <PhaseStrip
-        phase={loop.phase}
-        setPhase={loop.setPhase}
-        canJumpTo={(p) => {
-          if (p === 0) return true;
-          if (p === 1) return true;
-          if (p === 2) return loop.phase === 2 || mastered?.has(`${subject?.id}|${chapter?.id}|${topic}`);
-          return false;
-        }}
-      />
+          <PhaseStrip
+            phase={loop.phase}
+            setPhase={loop.setPhase}
+            canJumpTo={(p) => {
+              if (p === 0) return true;
+              if (p === 1) return true;
+              if (p === 2) return loop.phase === 2 || mastered?.has(`${subject?.id}|${chapter?.id}|${topic}`);
+              return false;
+            }}
+          />
+        </>
+      )}
 
-
-      <div id="learnFlow">
+      <div id="learnFlow" className={isFeedbackMode ? "learnflow--feedback-fullscreen" : ""}>
         {/* STEP 0: STUDY NOTES */}
         {loop.phase === SESSION_PHASES.NOTES && (
           <NotesPhase

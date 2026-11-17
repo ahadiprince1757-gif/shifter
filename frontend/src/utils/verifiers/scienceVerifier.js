@@ -519,6 +519,28 @@ function trySolveSpeed(q) {
 
   if (!distance || !time) return null;
 
+  const asksMS = /\bin\s*(?:m\/s|metres?\s*per\s*second|meters?\s*per\s*second)\b/i.test(q);
+  const isKm = /km|kilometer|kilometre/i.test(distance.unit);
+  const isHours = /hours?|hrs?|h\b/i.test(time.unit);
+
+  // If question given in km and hours and does NOT ask for m/s, solve naturally in km/h to prevent contradictory answers
+  if (isKm && isHours && !asksMS) {
+    const speedKmH = distance.value / time.value;
+    return makeResult({
+      answer: `${roundAnswer(speedKmH)} km/h`,
+      topic: "Speed",
+      formula: "v = d ÷ t",
+      steps: [
+        "Formula: Speed = Distance ÷ Time",
+        `Step 1: Distance = ${distance.value} km`,
+        `Step 2: Time = ${time.value} h`,
+        `Step 3: Speed = ${distance.value} ÷ ${time.value}`,
+        `Speed = ${roundAnswer(speedKmH)} km/h`,
+      ],
+      explanation: `Speed = Distance ÷ Time = ${distance.value} km ÷ ${time.value} h = ${roundAnswer(speedKmH)} km/h.`,
+    });
+  }
+
   const distanceM = convertDistanceToM(distance.value, distance.unit);
   const timeS = convertTimeToSeconds(time.value, time.unit);
 
@@ -528,7 +550,7 @@ function trySolveSpeed(q) {
   const speed = distanceM / timeS;
 
   return makeResult({
-    answer: speed,
+    answer: `${roundAnswer(speed)} m/s`,
     topic: "Speed",
     formula: "v = d ÷ t",
     steps: [
