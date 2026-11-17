@@ -47,6 +47,9 @@ import { findKnownMisconception } from "./knowledge/misconceptionRegistry.js";
 import { findCrossSubjectMisconception } from "./knowledge/subjectMisconceptions.js";
 import { analyzeStudentSteps } from "./analyzers/stepAnalyzer.js";
 import { diagnosticEngine } from "./engine/diagnosticEngine.js";
+import { executeEvidencePipeline } from "./engine/evidencePipeline.js";
+import { ReasoningLocation, VerificationStatus, OperationType, EvidenceSufficiency } from "./contracts/evidenceContract.js";
+import { verifyScienceQuestion } from "../utils/verifiers/scienceVerifier.js";
 
 
 const UNIT_ALIASES = Object.freeze({
@@ -341,6 +344,7 @@ function makeDiagnosis({
   probe = null,
   repair = null,
   retest = null,
+  contract = null,
 }) {
   const cleanRemember = cleanString(remember);
   const unpackedRem = unpackStructuredJson(cleanRemember);
@@ -360,6 +364,7 @@ function makeDiagnosis({
       expected: toArrayOfStrings(expected),
       confidence,
     },
+    ...(contract ? { contract } : {}),
     ...(firstError ? { firstError } : {}),
     ...(correction ? { correction } : {}),
     ...(stepAnalysis ? { stepAnalysis } : {}),
@@ -1125,6 +1130,132 @@ export function diagnoseStudentSubmission({
     authoredSteps,
   });
   if (unitDiagnosis) return unitDiagnosis;
+
+  // 9b. Evidence & Verification Pipeline Contract (Phase 1)
+  const scienceExpected = verifyScienceQuestion(questionText);
+  const pipelineQuestion = {
+    text: questionText,
+    skillId: question?.skillId || scienceExpected?.topic || "science",
+    subject: question?.subject || "science",
+    expected: {
+      answer: scienceExpected?.answer || expectedAnswer,
+      unit: scienceExpected?.unit || null,
+      operation: scienceExpected?.operation || null,
+      relation: scienceExpected?.relation || scienceExpected?.formula || null,
+      inputs: scienceExpected?.inputs || [],
+      steps: scienceExpected?.steps || authoredSteps,
+    },
+  };
+
+  const pipelineContract = executeEvidencePipeline(answer, pipelineQuestion);
+
+  if (pipelineContract && pipelineContract.divergence) {
+    const div = pipelineContract.divergence;
+    const ev = pipelineContract.student.evidence;
+
+    // A. Relationship / Operation Inversion (e.g. multiplied instead of divided)
+    if (div.location === ReasoningLocation.RELATIONSHIP_SELECTION) {
+      const opWord = div.observedOperation === OperationType.MULTIPLICATION ? "multiplied" : "divided";
+      const expOpWord = div.expectedOperation === OperationType.DIVISION ? "divide" : "multiply";
+      const whatDidStr = ev.observedInputs.length >= 2
+        ? `You ${opWord} the given values (${ev.observedInputs[0]} ${div.observedOperation === OperationType.MULTIPLICATION ? "×" : "÷"} ${ev.observedInputs[1]} = ${ev.observedResult}${ev.observedUnit ? " " + ev.observedUnit : ""}).`
+        : `You ${opWord} where ${expOpWord} was required.`;
+
+      const ruleText = scienceExpected?.relation
+        ? `${scienceExpected.relation}. Rate relationships require division, not multiplication.`
+        : "Check the governing formula to ensure the correct mathematical operation is chosen.";
+
+      return makeDiagnosis({
+        status: STATUS.DIAGNOSED,
+        errorType: "operation_inversion",
+        whatYouDid: whatDidStr,
+        whyThisIsWrong: [
+          div.detail,
+          `The relationship requires you to ${expOpWord} to find the correct rate.`,
+        ],
+        theRightWay: scienceExpected?.steps?.length ? scienceExpected.steps : authoredSteps,
+        remember: ruleText,
+        observed: [`Observed operation: ${div.observedOperation}`],
+        expected: [String(pipelineQuestion.expected.answer)],
+        confidence: CONFIDENCE.HIGH,
+        contract: pipelineContract,
+      });
+    }
+
+    // B. Variable Inversion (e.g. 3 / 180 instead of 180 / 3)
+    if (div.location === ReasoningLocation.VARIABLE_IDENTIFICATION) {
+      return makeDiagnosis({
+        status: STATUS.DIAGNOSED,
+        errorType: "variable_inversion",
+        whatYouDid: `You divided time by distance (${ev.observedInputs[0]} ÷ ${ev.observedInputs[1]}) instead of distance by time.`,
+        whyThisIsWrong: [
+          div.detail,
+          "The numerator must be distance and the denominator must be time.",
+        ],
+        theRightWay: scienceExpected?.steps?.length ? scienceExpected.steps : authoredSteps,
+        remember: "Keep units in order: speed in km/h means kilometres divided by hours.",
+        observed: [`Inverted fraction: ${ev.observedInputs[0]}/${ev.observedInputs[1]}`],
+        expected: [String(pipelineQuestion.expected.answer)],
+        confidence: CONFIDENCE.HIGH,
+        contract: pipelineContract,
+      });
+    }
+
+    // C. Arithmetic Divergence
+    if (div.location === ReasoningLocation.ARITHMETIC) {
+      return makeDiagnosis({
+        status: STATUS.DIAGNOSED,
+        errorType: "arithmetic_error",
+        whatYouDid: `You applied the correct formula, but an arithmetic calculation error occurred.`,
+        whyThisIsWrong: [div.detail],
+        theRightWay: scienceExpected?.steps?.length ? scienceExpected.steps : authoredSteps,
+        remember: "Double check your division or calculation carefully.",
+        observed: [`Calculated: ${div.observedValue}`],
+        expected: [String(div.expectedValue)],
+        confidence: CONFIDENCE.HIGH,
+        contract: pipelineContract,
+      });
+    }
+
+    // D. Inconclusive Cause (Epistemic Discipline: Never guess an unverified error)
+    if (
+      div.needsProbe ||
+      pipelineContract.verification.evidenceSufficiency === EvidenceSufficiency.INSUFFICIENT ||
+      pipelineContract.verification.causeConfidence < 0.5
+    ) {
+      // Prefer the probe generated by the hypothesis engine (evidence-driven),
+      // fall back to the hand-constructed formula probe if no pipeline probe exists.
+      const engineProbe = pipelineContract.probe || null;
+      const fallbackProbe = scienceExpected?.formula ? {
+        question: `Which formula describes ${scienceExpected.topic || "this problem"}?`,
+        options: [
+          scienceExpected.formula,
+          scienceExpected.formula.replace(/÷|\//g, "×"),
+          scienceExpected.formula.includes("d") && scienceExpected.formula.includes("t")
+            ? "v = t ÷ d"
+            : "Inverted formula",
+        ],
+        correctAnswer: scienceExpected.formula,
+      } : null;
+
+      return makeDiagnosis({
+        status: STATUS.INCONCLUSIVE,
+        errorType: "inconclusive_reasoning",
+        whatYouDid: `You entered "${answer}".`,
+        whyThisIsWrong: [
+          "Your answer differs from the expected result, but we cannot verify your reasoning from this number alone.",
+          "Please show your working, or check your thinking below.",
+        ],
+        theRightWay: scienceExpected?.steps?.length ? scienceExpected.steps : authoredSteps,
+        remember: scienceExpected?.formula ? `Use the formula: ${scienceExpected.formula}.` : "Show intermediate steps to get targeted diagnosis.",
+        observed: [`Answer: ${answer}`],
+        expected: [String(pipelineQuestion.expected.answer)],
+        confidence: CONFIDENCE.LOW,
+        contract: pipelineContract,
+        probe: engineProbe || fallbackProbe,
+      });
+    }
+  }
 
   // 10. Unclassified Fallback (Honest uncertainty without inventing reasoning)
   return genericFallback({
