@@ -7,5 +7,15 @@ dist/
 .env
 .env.local
 .env.development.local
-# .env.example is a template — tracked intentionally
+# .env.example is a template â€” tracked intentionally
 *.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.pytest_cache/
+.mypy_cache/
+*.egg-info/
+.venv/
+venv/
