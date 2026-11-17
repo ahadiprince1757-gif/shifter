@@ -734,18 +734,31 @@ function FeedbackDisplay({
 
 
       {/* ==========================================================
-          WRONG ANSWER — MAKE IT OBVIOUS
+          WRONG ANSWER — CLEAN & RESTRAINED
           ========================================================== */}
 
       {isCorrect === false && !isPartial && (
         <div className="fb-incorrect-banner">
-
-          <strong>Not quite.</strong>
-
-          <span>
-            Your answer needs another look.
-          </span>
-
+          <svg
+            className="fb-incorrect-icon"
+            width="16"
+            height="16"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <line x1="15" y1="9" x2="9" y2="15" />
+            <line x1="9" y1="9" x2="15" y2="15" />
+          </svg>
+          <div className="fb-incorrect-text">
+            <strong>Not quite</strong>
+            <span>Your answer doesn&apos;t produce the required result.</span>
+          </div>
         </div>
       )}
 

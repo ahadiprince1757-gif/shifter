@@ -8,12 +8,31 @@
  * - Actual internet & API connectivity verification
  * - Four Connection Health States: ONLINE, DEGRADED, OFFLINE, CHECKING
  * - Subscriber notifications
- * - Exponential backoff retry engine
+ * - Exponential backoff when server is offline (503 / sleeping Render instance)
  * - Request timeouts
  * - Automatic background monitoring
  * - Clean event listener unbinding
  * ============================================================================
  */
+
+// Backoff schedule when the backend is unreachable (503 / server sleeping).
+// After N consecutive failures the check interval grows to avoid hammering.
+// [ attempts, nextIntervalMs ]
+const BACKOFF_SCHEDULE = [
+  [0,  30_000],   //  0 failures  → check every 30s (normal)
+  [2,  60_000],   //  2 failures  → check every 1 min
+  [4, 120_000],   //  4 failures  → check every 2 min
+  [6, 300_000],   //  6 failures  → check every 5 min
+  [8, 600_000],   //  8+ failures → check every 10 min
+];
+
+function getBackoffInterval(consecutiveFailures) {
+  let interval = BACKOFF_SCHEDULE[0][1];
+  for (const [threshold, ms] of BACKOFF_SCHEDULE) {
+    if (consecutiveFailures >= threshold) interval = ms;
+  }
+  return interval;
+}
 
 class NetworkService {
   constructor({
@@ -53,6 +72,7 @@ class NetworkService {
 
     this.monitorTimer = null;
     this.isChecking = false;
+    this._consecutiveFailures = 0;  // tracks how many times /health returned non-ok
 
     // Bind event handlers
     this.handleOnline = this.handleOnline.bind(this);
@@ -126,6 +146,10 @@ class NetworkService {
   ========================================================================== */
 
   async handleOnline() {
+    // Browser came back online — reset backoff and check immediately
+    this._consecutiveFailures = 0;
+    this._scheduleNextCheck(0);
+
     this.updateState({
       browserOnline: true,
       status: "CHECKING",
@@ -153,15 +177,41 @@ class NetworkService {
     }
 
     await this.checkConnectivity();
+    this._scheduleNextCheck();
+  }
 
-    this.monitorTimer = setInterval(() => {
-      this.checkConnectivity();
-    }, this.checkInterval);
+  /**
+   * Schedule the next health check using adaptive backoff.
+   * @param {number} [overrideMs] - If provided, use this delay instead of backoff calc.
+   */
+  _scheduleNextCheck(overrideMs) {
+    if (this.monitorTimer) {
+      clearTimeout(this.monitorTimer);
+      this.monitorTimer = null;
+    }
+
+    const delay = overrideMs !== undefined
+      ? overrideMs
+      : getBackoffInterval(this._consecutiveFailures);
+
+    if (delay === 0) {
+      // Immediate check — schedule via rAF to avoid re-entrant call stack
+      this.monitorTimer = setTimeout(() => {
+        this.monitorTimer = null;
+        this.checkConnectivity().then(() => this._scheduleNextCheck());
+      }, 50);
+      return;
+    }
+
+    this.monitorTimer = setTimeout(() => {
+      this.monitorTimer = null;
+      this.checkConnectivity().then(() => this._scheduleNextCheck());
+    }, delay);
   }
 
   stop() {
     if (this.monitorTimer) {
-      clearInterval(this.monitorTimer);
+      clearTimeout(this.monitorTimer);
       this.monitorTimer = null;
     }
   }
@@ -209,6 +259,9 @@ class NetworkService {
         );
 
         if (!response.ok) {
+          // Server returned an error status (e.g. 503 Render sleeping).
+          // Treat as a server-side failure — increment backoff counter.
+          this._consecutiveFailures++;
           throw new Error(`Health check failed with status ${response.status}`);
         }
       } else {
@@ -220,6 +273,9 @@ class NetworkService {
       }
 
       const latency = Math.round(performance.now() - startTime);
+
+      // Successful response — reset backoff
+      this._consecutiveFailures = 0;
 
       let status = "ONLINE";
       if (latency > 2000) {
@@ -234,10 +290,15 @@ class NetworkService {
         lastChecked: new Date().toISOString(),
       });
     } catch {
+      // Network error or non-ok status — increment failure count if not already done above
+      if (this._consecutiveFailures === 0) {
+        this._consecutiveFailures++;
+      }
+
       const isBrowserOnline = typeof navigator !== "undefined" ? navigator.onLine : false;
       this.updateState({
         browserOnline: isBrowserOnline,
-        internetReachable: isBrowserOnline,
+        internetReachable: false,
         status: isBrowserOnline ? "DEGRADED" : "OFFLINE",
         latency: null,
         lastChecked: new Date().toISOString(),
@@ -328,6 +389,7 @@ class NetworkService {
         return await fn();
       } catch (error) {
         if (this.isNetworkError(error)) {
+          this._consecutiveFailures++;
           this.updateState({
             internetReachable: false,
             status: "OFFLINE",

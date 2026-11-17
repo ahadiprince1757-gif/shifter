@@ -2467,20 +2467,11 @@ html.dark-mode .fb-card {
   box-shadow: none;
 }
 
-.fb-correct {
-  border-left: 5px solid #10b981;
-}
-
-.fb-needs-review {
-  border-left: 5px solid #f59e0b;
-}
-
-.fb-almost-there {
-  border-left: 5px solid #f97316;
-}
-
+.fb-correct,
+.fb-needs-review,
+.fb-almost-there,
 .fb-review-mode {
-  border-left: 5px solid var(--v, #4da6ff);
+  border-left: none;
 }
 
 /* ── Feedback Header ─────────────────────────────────────── */
@@ -2495,74 +2486,92 @@ html.dark-mode .fb-card {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.32rem 0.85rem;
+  padding: 0.25rem 0.65rem;
   border-radius: 99px;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.03em;
   text-transform: uppercase;
+  background: var(--sur);
+  border: 1px solid var(--bd);
 }
 
 .fb-badge-success {
-  background: rgba(16, 185, 129, 0.12);
   color: #10b981;
-  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.35);
 }
 
 .fb-badge-almost-there {
-  background: rgba(249, 115, 22, 0.12);
   color: #f97316;
-  border: 1px solid rgba(249, 115, 22, 0.3);
-  animation: almost-pulse 1.6s ease-in-out infinite;
-}
-
-@keyframes almost-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(249, 115, 22, 0.25); }
-  50%       { box-shadow: 0 0 0 5px rgba(249, 115, 22, 0); }
+  border-color: rgba(249, 115, 22, 0.35);
 }
 
 .fb-badge-review {
-  background: rgba(245, 158, 11, 0.12);
-  color: #f59e0b;
-  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.35);
 }
 
-html.dark-mode .fb-badge-success  { background: rgba(16,185,129,0.18); color: #34d399; border-color: rgba(52,211,153,0.35); }
-html.dark-mode .fb-badge-almost-there { background: rgba(249,115,22,0.2); color: #fb923c; border-color: rgba(251,146,60,0.4); }
-html.dark-mode .fb-badge-review   { background: rgba(245,158,11,0.18); color: #fbbf24; border-color: rgba(251,191,36,0.35); }
+html.dark-mode .fb-badge-success  { color: #34d399; border-color: rgba(52, 211, 153, 0.3); }
+html.dark-mode .fb-badge-almost-there { color: #fb923c; border-color: rgba(251, 146, 60, 0.3); }
+html.dark-mode .fb-badge-review   { color: #f87171; border-color: rgba(248, 113, 113, 0.3); }
 
 .fb-progress-pill {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: var(--t3);
   background: var(--bg);
   border: 1px solid var(--bd);
-  padding: 0.22rem 0.65rem;
+  padding: 0.2rem 0.6rem;
   border-radius: 99px;
   white-space: nowrap;
 }
 
-/* ── Incorrect Banner ─────────────────────────────────────── */
+/* ── Incorrect Banner (Restrained: 90% neutral, small red signal) ─────── */
 .fb-incorrect-banner {
   display: flex;
-  align-items: center;
-  gap: 0.65rem;
-  padding: 0.75rem 1rem;
+  align-items: flex-start;
+  gap: 0.75rem;
+  padding: 0.85rem 1rem;
   border-radius: 10px;
-  background: var(--tfv-surface-err, #fff5f5);
-  border: 1px solid var(--tfv-border-err, #fecaca);
-  color: var(--tfv-text-err, #991b1b);
+  background: var(--sur);
+  border: 1px solid var(--bd);
+  color: var(--t);
   font-size: 0.88rem;
 }
 
-.fb-incorrect-banner strong {
+.fb-incorrect-icon {
+  color: #ef4444;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.fb-incorrect-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.fb-incorrect-text strong {
+  font-size: 0.88rem;
   font-weight: 700;
+  color: #ef4444;
+  letter-spacing: -0.01em;
+}
+
+.fb-incorrect-text span {
+  font-size: 0.82rem;
+  color: var(--t2);
+  line-height: 1.45;
 }
 
 html.dark-mode .fb-incorrect-banner {
-  background: var(--tfv-surface-err, #2d1515);
-  border-color: var(--tfv-border-err, #7f1d1d);
-  color: var(--tfv-text-err, #fca5a5);
+  background: var(--sur);
+  border-color: var(--bd);
+}
+
+html.dark-mode .fb-incorrect-icon,
+html.dark-mode .fb-incorrect-text strong {
+  color: #f87171;
 }
 
 /* ── Almost There Banner ─────────────────────────────────── */
@@ -8583,61 +8592,10 @@ html.dark-mode .fb-repair-btn {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TEACHER DIAGNOSTIC FEEDBACK VIEW — CLEAN, MOBILE-FIRST
-   Pure flat colors. No glassmorphism. Full dark-mode support.
+   TEACHER DIAGNOSTIC FEEDBACK VIEW — RESTRAINED & FOCUSED
+   Philosophy: 90% neutral UI, 8% semantic color, 2% emphasis.
+   No large red/green/purple cards. Reasoning is the hierarchy.
 ───────────────────────────────────────────────────────────── */
-
-/* ── CSS custom properties used here ─────────────────────────
-   --sur   : surface (card background)
-   --bg    : page background
-   --bg2   : slight surface tint
-   --bd    : border
-   --t     : primary text
-   --t2    : secondary text
-   --t3    : tertiary / muted text
-   --v     : brand purple
-   --gr    : brand green
-   Dark mode: html.dark-mode overrides set below
-──────────────────────────────────────────────────────────── */
-
-/* Light-mode surface tokens (also act as fallbacks) */
-:root {
-  --tfv-surface-err:   #fff5f5;
-  --tfv-border-err:    #fecaca;
-  --tfv-text-err:      #991b1b;
-  --tfv-surface-ok:    #f0fdf4;
-  --tfv-border-ok:     #bbf7d0;
-  --tfv-text-ok:       #15803d;
-  --tfv-surface-rule:  #f5f3ff;
-  --tfv-border-rule:   #ddd6fe;
-  --tfv-text-rule:     #5b21b6;
-  --tfv-surface-ans:   #f0fdf4;
-  --tfv-border-ans:    #86efac;
-  --tfv-text-ans:      #15803d;
-  --tfv-surface-q:     #f8fafc;
-  --tfv-border-q:      var(--bd, #e2e8f0);
-  --tfv-step-bg:       #f8fafc;
-  --tfv-step-border:   #e2e8f0;
-}
-
-html.dark-mode {
-  --tfv-surface-err:   #2d1515;
-  --tfv-border-err:    #7f1d1d;
-  --tfv-text-err:      #fca5a5;
-  --tfv-surface-ok:    #052e16;
-  --tfv-border-ok:     #166534;
-  --tfv-text-ok:       #86efac;
-  --tfv-surface-rule:  #1e1b35;
-  --tfv-border-rule:   #4c3f9f;
-  --tfv-text-rule:     #c4b5fd;
-  --tfv-surface-ans:   #052e16;
-  --tfv-border-ans:    #166534;
-  --tfv-text-ans:      #86efac;
-  --tfv-surface-q:     #1a1a2e;
-  --tfv-border-q:      var(--bd, #2d2d44);
-  --tfv-step-bg:       #1e1e30;
-  --tfv-step-border:   #2d2d44;
-}
 
 .tfv-container {
   width: 100%;
@@ -8647,40 +8605,13 @@ html.dark-mode {
   box-sizing: border-box;
 }
 
-/* ── Question context card ──────────────────────────────────── */
-.tfv-question-card {
-  background: var(--tfv-surface-q);
-  border: 1px solid var(--tfv-border-q);
-  border-radius: 10px;
-  padding: 0.75rem 1rem;
-}
-
-.tfv-question-header {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.07em;
-  color: var(--t3);
-  margin-bottom: 0.3rem;
-}
-
-.tfv-question-label { color: var(--t3); }
-
-.tfv-question-text {
-  font-size: 0.9rem;
-  color: var(--t);
-  line-height: 1.5;
-}
-
-/* ── Generic section card ───────────────────────────────────── */
+/* ── Generic Neutral Section Card (used for all sections) ───── */
 .tfv-card {
   background: var(--sur);
   border: 1px solid var(--bd);
   border-radius: 12px;
-  padding: 1rem 1.1rem;
+  padding: 1rem 1.15rem;
+  box-shadow: none;
 }
 
 html.dark-mode .tfv-card {
@@ -8699,7 +8630,7 @@ html.dark-mode .tfv-card {
 .tfv-card-title-group {
   display: flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
 }
 
 .tfv-card-title {
@@ -8707,60 +8638,101 @@ html.dark-mode .tfv-card {
   font-weight: 700;
   color: var(--t);
   margin: 0;
+  letter-spacing: -0.01em;
 }
 
-/* ── Badges ─────────────────────────────────────────────────── */
-.tfv-badge {
-  font-size: 0.7rem;
-  font-weight: 700;
-  padding: 0.18rem 0.55rem;
-  border-radius: 99px;
+/* ── Minimal Semantic Indicators (The 8% Color) ─────────────── */
+.tfv-indicator {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  white-space: nowrap;
-  letter-spacing: 0.02em;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.tfv-badge-error {
-  background: var(--tfv-surface-err);
-  color: var(--tfv-text-err);
-  border: 1px solid var(--tfv-border-err);
+.tfv-indicator-error {
+  color: #ef4444;
+  background: rgba(239, 68, 68, 0.1);
 }
 
-.tfv-badge-success {
-  background: var(--tfv-surface-ok);
-  color: var(--tfv-text-ok);
-  border: 1px solid var(--tfv-border-ok);
+.tfv-indicator-success {
+  color: #10b981;
+  background: rgba(16, 185, 129, 0.1);
 }
 
-.tfv-badge-info {
-  background: var(--tfv-surface-rule);
-  color: var(--tfv-text-rule);
-  border: 1px solid var(--tfv-border-rule);
+.tfv-indicator-warning {
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
 }
 
-/* ── "Your Approach" error card ─────────────────────────────── */
+.tfv-indicator-info {
+  color: var(--v, #6366f1);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+html.dark-mode .tfv-indicator-error {
+  color: #f87171;
+  background: rgba(239, 68, 68, 0.15);
+}
+
+html.dark-mode .tfv-indicator-success {
+  color: #34d399;
+  background: rgba(16, 185, 129, 0.15);
+}
+
+html.dark-mode .tfv-indicator-warning {
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.15);
+}
+
+/* ── Question context card (subtle & compact) ────────────────── */
+.tfv-question-card {
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--bd);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+}
+
+.tfv-question-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--t3);
+  margin-bottom: 0.3rem;
+}
+
+.tfv-question-label {
+  color: var(--t3);
+}
+
+.tfv-question-text {
+  font-size: 0.88rem;
+  color: var(--t);
+  line-height: 1.5;
+}
+
+/* ── "Your Approach" card (neutral card, quiet details) ──────── */
 .tfv-card-approach {
-  border-color: var(--tfv-border-err);
-  background: var(--tfv-surface-err);
+  background: var(--sur);
+  border: 1px solid var(--bd);
 }
 
 .tfv-what-you-did-box {
-  display: flex;
-  align-items: flex-start;
-  gap: 0.65rem;
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
   margin-bottom: 0.75rem;
 }
 
-.tfv-box-alert-icon {
-  color: var(--tfv-text-err);
-  flex-shrink: 0;
-  margin-top: 0.1rem;
-}
-
 .tfv-what-you-did-text {
-  font-size: 0.9rem;
+  font-size: 0.88rem;
   color: var(--t);
   line-height: 1.5;
   margin: 0;
@@ -8772,15 +8744,15 @@ html.dark-mode .tfv-card {
   text-transform: uppercase;
   letter-spacing: 0.06em;
   color: var(--t3);
-  margin: 0.65rem 0 0.35rem;
+  margin: 0.75rem 0 0.35rem;
 }
 
 .tfv-why-wrong-list {
   margin: 0;
-  padding-left: 1.1rem;
+  padding-left: 1.15rem;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .tfv-why-wrong-item {
@@ -8789,124 +8761,11 @@ html.dark-mode .tfv-card {
   line-height: 1.5;
 }
 
-/* ── Step Analysis cards ────────────────────────────────────── */
-.tfv-card-right { border-left: 3px solid var(--tfv-border-ok); }
-.tfv-card-breakdown { border-left: 3px solid var(--tfv-border-err); }
-
-.tfv-right-list {
-  margin: 0;
-  padding-left: 1.1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
+/* ── "The Right Way" card (neutral card, clean step rows) ────── */
+.tfv-card-right-way {
+  background: var(--sur);
+  border: 1px solid var(--bd);
 }
-
-.tfv-right-item {
-  font-size: 0.9rem;
-  color: var(--t);
-  line-height: 1.5;
-}
-
-.tfv-breakdown-box {
-  background: var(--tfv-surface-err);
-  border: 1px solid var(--tfv-border-err);
-  border-radius: 8px;
-  padding: 0.8rem 0.95rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.55rem;
-}
-
-.tfv-breakdown-student-line {
-  display: flex;
-  align-items: center;
-  gap: 0.55rem;
-  flex-wrap: wrap;
-}
-
-.tfv-breakdown-tag-wrong {
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--tfv-text-err);
-  background: var(--tfv-border-err);
-  padding: 0.12rem 0.45rem;
-  border-radius: 4px;
-}
-
-.tfv-code-highlight {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.95rem;
-  font-weight: 700;
-  color: var(--tfv-text-err);
-  background: var(--tfv-border-err);
-  padding: 0.18rem 0.5rem;
-  border-radius: 5px;
-}
-
-.tfv-breakdown-explanation {
-  font-size: 0.9rem;
-  color: var(--t);
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Corrected working list */
-.tfv-corrected-work-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.4rem;
-  background: var(--tfv-step-bg);
-  border: 1px solid var(--tfv-step-border);
-  border-radius: 10px;
-  padding: 0.75rem 0.9rem;
-}
-
-.tfv-corrected-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.15rem;
-  padding: 0.4rem 0.65rem;
-  border-radius: 7px;
-}
-
-.tfv-corrected-row.highlight-corrected {
-  background: var(--tfv-surface-ok);
-  border: 1px solid var(--tfv-border-ok);
-}
-
-.tfv-corrected-line {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.65rem;
-  font-family: var(--font-mono, monospace);
-  font-size: 0.93rem;
-  font-weight: 700;
-  color: var(--t);
-}
-
-.tfv-corrected-tag {
-  font-size: 0.65rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--tfv-text-ok);
-  background: var(--tfv-border-ok);
-  padding: 0.12rem 0.45rem;
-  border-radius: 99px;
-  white-space: nowrap;
-}
-
-.tfv-corrected-note {
-  font-size: 0.76rem;
-  color: var(--t3);
-  font-style: italic;
-}
-
-/* ── The Right Way — step list ─────────────────────────────── */
-.tfv-card-right-way { border-left: 3px solid var(--tfv-border-ok); }
 
 .tfv-steps-list {
   list-style: none;
@@ -8917,30 +8776,32 @@ html.dark-mode .tfv-card {
   gap: 0;
 }
 
-/* Steps are plain rows — no individual card borders */
 .tfv-step-item {
   display: flex;
   align-items: flex-start;
-  gap: 0.7rem;
+  gap: 0.65rem;
   padding: 0.55rem 0;
-  border-bottom: 1px solid var(--tfv-step-border);
+  border-bottom: 1px solid var(--bd);
 }
 
-.tfv-step-item:last-child { border-bottom: none; }
+.tfv-step-item:last-child {
+  border-bottom: none;
+}
 
 .tfv-step-badge {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: var(--tfv-text-ok);
-  color: #fff;
+  background: var(--bg2, rgba(0, 0, 0, 0.03));
+  color: var(--t2);
+  border: 1px solid var(--bd);
   font-size: 0.68rem;
-  font-weight: 800;
+  font-weight: 700;
   flex-shrink: 0;
-  margin-top: 0.1rem;
+  margin-top: 0.15rem;
 }
 
 .tfv-step-content {
@@ -8949,42 +8810,23 @@ html.dark-mode .tfv-card {
   line-height: 1.5;
 }
 
-/* ── Rule to Remember card ──────────────────────────────────── */
+/* ── "Rule to Remember" card (NEUTRAL! No purple surface) ────── */
 .tfv-remember-card {
-  background: var(--tfv-surface-rule);
-  border: 1px solid var(--tfv-border-rule);
-  border-radius: 10px;
-  padding: 0.85rem 1rem;
-}
-
-.tfv-remember-header {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  margin-bottom: 0.3rem;
-}
-
-.tfv-remember-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  color: var(--tfv-text-rule);
+  background: var(--sur);
+  border: 1px solid var(--bd);
 }
 
 .tfv-remember-text {
   font-size: 0.88rem;
   color: var(--t);
-  line-height: 1.5;
+  line-height: 1.55;
   margin: 0;
 }
 
-/* ── Standard Answer card ───────────────────────────────────── */
+/* ── "Standard Answer" card (NEUTRAL! No green surface) ──────── */
 .tfv-final-answer-card {
-  background: var(--tfv-surface-ans);
-  border: 1px solid var(--tfv-border-ans);
-  border-radius: 10px;
-  padding: 0.85rem 1.1rem;
+  background: var(--sur);
+  border: 1px solid var(--bd);
 }
 
 .tfv-final-answer-header {
@@ -8995,8 +8837,8 @@ html.dark-mode .tfv-card {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.07em;
-  color: var(--tfv-text-ans);
-  margin-bottom: 0.2rem;
+  color: var(--t3);
+  margin-bottom: 0.25rem;
 }
 
 .tfv-final-answer-val {
@@ -9007,37 +8849,143 @@ html.dark-mode .tfv-card {
   line-height: 1.3;
 }
 
-/* ── Cognitive Repair card ──────────────────────────────────── */
+/* ── Step Analysis (Subtle Breakdown & Reconstructed Steps) ──── */
+.tfv-right-list {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.tfv-right-item {
+  font-size: 0.88rem;
+  color: var(--t);
+  line-height: 1.5;
+}
+
+.tfv-breakdown-box {
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 0.75rem 0.9rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.tfv-breakdown-student-line {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.tfv-breakdown-tag-wrong {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #ef4444;
+}
+
+.tfv-code-highlight {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--t);
+  background: var(--bg);
+  border: 1px solid var(--bd);
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.tfv-breakdown-explanation {
+  font-size: 0.88rem;
+  color: var(--t);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.tfv-corrected-work-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--bd);
+  border-radius: 8px;
+  padding: 0.65rem 0.85rem;
+}
+
+.tfv-corrected-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+}
+
+.tfv-corrected-row.highlight-corrected {
+  background: rgba(16, 185, 129, 0.06);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.tfv-corrected-line {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.6rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--t);
+}
+
+.tfv-corrected-tag {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #10b981;
+}
+
+.tfv-corrected-note {
+  font-size: 0.76rem;
+  color: var(--t3);
+  font-style: italic;
+}
+
+/* ── Cognitive Repair card (Neutral surface) ────────────────── */
 .tfv-card-repair-principle {
-  background: var(--tfv-surface-rule);
-  border: 1px solid var(--tfv-border-rule);
+  background: var(--sur);
+  border: 1px solid var(--bd);
 }
 
 .tfv-repair-text {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   color: var(--t);
   line-height: 1.5;
   margin-bottom: 0.45rem;
 }
 
 .tfv-repair-example {
-  font-size: 0.86rem;
+  font-size: 0.85rem;
   color: var(--t2);
-  background: var(--tfv-step-bg);
-  border: 1px solid var(--tfv-step-border);
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
+  border: 1px solid var(--bd);
   border-radius: 7px;
-  padding: 0.55rem 0.75rem;
+  padding: 0.5rem 0.75rem;
   line-height: 1.5;
 }
 
-/* ── Targeted Probe card ────────────────────────────────────── */
+/* ── Targeted Probe card (Neutral surface) ──────────────────── */
 .tfv-card-probe {
-  background: var(--tfv-surface-ok);
-  border: 1px solid var(--tfv-border-ok);
+  background: var(--sur);
+  border: 1px solid var(--bd);
 }
 
 .tfv-probe-q {
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   color: var(--t);
   line-height: 1.5;
@@ -9050,7 +8998,7 @@ html.dark-mode .tfv-card {
   margin: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.35rem;
 }
 
 .tfv-probe-option-item {
@@ -9058,48 +9006,74 @@ html.dark-mode .tfv-card {
   align-items: center;
   justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.5rem 0.8rem;
-  background: var(--sur);
+  padding: 0.5rem 0.75rem;
+  background: var(--bg2, rgba(0, 0, 0, 0.02));
   border: 1px solid var(--bd);
   border-radius: 7px;
-  font-size: 0.87rem;
+  font-size: 0.86rem;
   color: var(--t);
 }
 
 .tfv-probe-option-item.is-target {
-  border-color: var(--tfv-border-ok);
-  background: var(--tfv-step-bg);
+  border-color: rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.05);
 }
 
 .tfv-probe-badge {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  color: var(--tfv-text-ok);
-  background: var(--tfv-border-ok);
-  padding: 0.12rem 0.4rem;
-  border-radius: 4px;
-  white-space: nowrap;
+  color: #10b981;
 }
 
-/* ── Mobile compact overrides (≤ 520px) ─────────────────────── */
+/* ── Mobile Compact Overrides (≤ 520px) ─────────────────────── */
 @media (max-width: 520px) {
-  .tfv-container { gap: 0.6rem; }
+  .tfv-container {
+    gap: 0.65rem;
+  }
 
-  .tfv-card { padding: 0.85rem 0.9rem; border-radius: 10px; }
-  .tfv-card-header { margin-bottom: 0.6rem; }
-  .tfv-card-title { font-size: 0.88rem; }
+  .tfv-card {
+    padding: 0.85rem 0.95rem;
+    border-radius: 10px;
+  }
 
-  .tfv-question-card { padding: 0.65rem 0.85rem; }
-  .tfv-question-text { font-size: 0.87rem; }
+  .tfv-card-header {
+    margin-bottom: 0.6rem;
+  }
 
-  .tfv-step-item { padding: 0.5rem 0; gap: 0.6rem; }
-  .tfv-step-content { font-size: 0.85rem; }
-  .tfv-step-badge { width: 18px; height: 18px; font-size: 0.62rem; }
+  .tfv-card-title {
+    font-size: 0.88rem;
+  }
 
-  .tfv-final-answer-val { font-size: 1.1rem; }
+  .tfv-question-card {
+    padding: 0.65rem 0.85rem;
+  }
 
-  .tfv-remember-card { padding: 0.75rem 0.9rem; }
-  .tfv-why-wrong-item { font-size: 0.84rem; }
+  .tfv-question-text {
+    font-size: 0.85rem;
+  }
+
+  .tfv-step-item {
+    padding: 0.45rem 0;
+    gap: 0.55rem;
+  }
+
+  .tfv-step-content {
+    font-size: 0.85rem;
+  }
+
+  .tfv-step-badge {
+    width: 17px;
+    height: 17px;
+    font-size: 0.62rem;
+  }
+
+  .tfv-final-answer-val {
+    font-size: 1.15rem;
+  }
+
+  .tfv-why-wrong-item {
+    font-size: 0.84rem;
+  }
 }
 
 .mj-container {
