@@ -8997,27 +8997,23 @@ html.dark-mode .tfv-divider {
   padding: 1.5rem 2rem 5rem !important;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Horizontally center reading content on desktop/laptop */
 }
 
 @media (max-width: 768px) {
   #v-learn {
     padding: 1.25rem 1.5rem 5rem !important;
-    align-items: stretch;
   }
 }
 
 @media (max-width: 600px) {
   #v-learn {
     padding: 1rem 1.25rem 5rem !important;
-    align-items: stretch;
   }
 }
 
 @media (max-width: 400px) {
   #v-learn {
     padding: 0.85rem 1rem 5rem !important;
-    align-items: stretch;
   }
 }
 
@@ -9025,39 +9021,36 @@ html.dark-mode #v-learn {
   background: var(--surface, #121212);
 }
 
-/* Ensure Learn Header, Phase Strip, and LearnFlow all share the centered reading column */
+/* Fluid Full-Screen Layout: zero artificial narrow boxes, spans full viewport width */
 .vhd,
 .phase-strip-container,
 #learnFlow {
   width: 100%;
-  max-width: var(--content-max, 860px);
+  max-width: 100%;
   box-sizing: border-box;
 }
 
-/* Zero-padding container for feedback — centered on desktop, 100% on mobile */
-.feedback-screen-fullscreen {
-  width: 100%;
-  max-width: var(--content-max, 860px);
+/* Notes Phase Full Screen Surface — spans 100% full screen without side gaps */
+.reading-container#notesCard,
+#notesCard {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  box-sizing: border-box;
+}
+
+/* Full-Screen Feedback Document Surface — fluid full width without empty sides */
+.feedback-screen-fullscreen,
+.feedback-document-root,
+.teacher-diagnostic-flow,
+.view--feedback-fullscreen,
+.learnflow--feedback-fullscreen {
+  width: 100% !important;
+  max-width: 100% !important;
   box-sizing: border-box;
   padding: 0;
-  margin: 0 auto;
+  margin: 0 !important;
   background: transparent;
-}
-
-.feedback-document-root {
-  width: 100%;
-  max-width: var(--content-max, 860px);
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0 auto !important;
-}
-
-/* Editorial notes typography refinement for laptop & desktop readability */
-.reading-container#notesCard {
-  width: 100%;
-  max-width: var(--content-max, 860px);
-  margin: 0 auto;
-  box-sizing: border-box;
 }
 
 .nc {
@@ -9090,12 +9083,15 @@ html.dark-mode #v-learn {
   border-radius: 0;
   box-shadow: none;
   margin: 0;
+  width: 100% !important;
+  max-width: 100% !important;
 }
 
 .lc.lc--feedback-document .lcb {
-  padding: 1.25rem 1.25rem 2.5rem;
-  max-width: 680px;
-  margin: 0 auto;
+  padding: 0;
+  max-width: 100% !important;
+  width: 100% !important;
+  margin: 0 !important;
   box-sizing: border-box;
 }
 
@@ -9106,6 +9102,8 @@ html.dark-mode #v-learn {
   box-shadow: none;
   padding: 0;
   margin: 0;
+  width: 100% !important;
+  max-width: 100% !important;
   gap: 0;
   animation: none;
   overflow: visible;
@@ -9117,7 +9115,7 @@ html.dark-mode #v-learn {
 
 @media (max-width: 520px) {
   .lc.lc--feedback-document .lcb {
-    padding: 1.25rem 1.25rem 2.5rem; /* Strict 20px left/right padding on mobile screens */
+    padding: 0;
   }
 
   .tfv-final-answer-val {

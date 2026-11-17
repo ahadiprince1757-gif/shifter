@@ -30,8 +30,8 @@
 
   /* Fluid Layout Geometry */
   --page-gutter: clamp(18px, 4vw, 48px);
-  --content-max: 860px;
-  --workspace-max: 1200px;
+  --content-max: 100%;
+  --workspace-max: 100%;
 
   /* Typography & Controls */
   --font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
