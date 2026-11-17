@@ -9,6 +9,7 @@ export default function Markdown({ children }) {
       remarkPlugins={[remarkGfm]}
       rehypePlugins={[rehypeRaw]}
       components={{
+        p: ({ node, ...props }) => <p className="editorial-p" {...props} />,
         table: ({ node, ...props }) => (
           <div className="table-responsive">
             <table {...props} />

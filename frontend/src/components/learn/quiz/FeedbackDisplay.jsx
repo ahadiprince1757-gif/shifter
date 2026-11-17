@@ -706,13 +706,13 @@ function FeedbackDisplay({
   return (
     <ReadingContainer className="feedback-document-root">
       {/* Subtle Progress Tracker */}
-      <div className="type-meta" style={{ marginBottom: "var(--space-4)" }}>
+      <div className="type-meta" style={{ marginBottom: "4px" }}>
         Question {currentQuestion} of {questionCount}
       </div>
 
       {/* Inconclusive grading notification — plain text notice, no card */}
       {!hasReliableGrade && (
-        <div style={{ marginBottom: "var(--space-4)", color: "var(--text-secondary)", fontSize: "14px" }}>
+        <div style={{ marginBottom: "8px", color: "var(--text-secondary)", fontSize: "13.5px" }}>
           <strong style={{ color: "var(--text-primary)" }}>Notice: </strong>
           Your answer could not be evaluated with complete certainty. Please review the solution below.
         </div>
@@ -720,7 +720,7 @@ function FeedbackDisplay({
 
       {/* Partial match guidance — simple, no decorative banner */}
       {isPartial && (
-        <div style={{ marginBottom: "var(--space-4)", color: "var(--text-secondary)", fontSize: "14px" }}>
+        <div style={{ marginBottom: "8px", color: "var(--text-secondary)", fontSize: "13.5px" }}>
           <strong style={{ color: "var(--text-primary)" }}>Almost there: </strong>
           Your answer captured part of the idea. Refine it using the correct method below.
         </div>

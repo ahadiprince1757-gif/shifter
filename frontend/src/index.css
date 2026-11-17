@@ -5172,24 +5172,27 @@ html.dark-mode .bottom-search-panel {
   }
 }
 
-/* Feedback full-screen document surface */
+/* Feedback full-screen document surface — single viewport padding owned by #v-learn */
 .feedback-screen-fullscreen {
   width: 100%;
   min-height: 100%;
   box-sizing: border-box;
-  padding: 1.35rem;
+  padding: 0 !important;
+  margin: 0 !important;
   background: transparent;
 }
 
 @media (max-width: 600px) {
   .feedback-screen-fullscreen {
-    padding: 1.25rem 1.25rem;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }
 
 @media (max-width: 400px) {
   .feedback-screen-fullscreen {
-    padding: 1rem 1rem;
+    padding: 0 !important;
+    margin: 0 !important;
   }
 }
 

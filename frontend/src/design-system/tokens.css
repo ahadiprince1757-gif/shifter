@@ -18,15 +18,15 @@
   --action-primary-text: #ffffff;
   --action-primary-hover: #262626;
 
-  /* Consistent Spacing Scale */
-  --space-1: 4px;
-  --space-2: 8px;
-  --space-3: 12px;
-  --space-4: 16px;
-  --space-5: 24px;
-  --space-6: 32px;
-  --space-7: 48px;
-  --space-8: 64px;
+  /* Consistent Spacing Scale (compact, purposeful rhythm) */
+  --space-1: 3px;
+  --space-2: 6px;
+  --space-3: 10px;
+  --space-4: 14px;
+  --space-5: 20px;
+  --space-6: 28px;
+  --space-7: 36px;
+  --space-8: 48px;
 
   /* Fluid Layout Geometry */
   --page-gutter: clamp(18px, 4vw, 48px);

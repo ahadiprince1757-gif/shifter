@@ -21,7 +21,7 @@ export default function ErrorExplanation({ reasons = [], rawAnswer = "" }) {
           <Markdown>{points[0]}</Markdown>
         </div>
       ) : (
-        <ul style={{ margin: 0, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+        <ul className="diagnostic-reason-list">
           {points.map((pt, idx) => (
             <li key={idx} className="type-body" style={{ color: "var(--text-primary)" }}>
               <Markdown>{pt}</Markdown>

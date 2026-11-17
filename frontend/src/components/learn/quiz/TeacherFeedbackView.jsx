@@ -147,7 +147,7 @@ export default function TeacherFeedbackView({
         <>
           {stepAnalysis.whatYouDidRight?.length > 0 && (
             <ContentSection title="WHAT YOU DID RIGHT">
-              <ul style={{ margin: 0, paddingLeft: "1.25rem", display: "flex", flexDirection: "column", gap: "var(--space-2)" }}>
+              <ul className="diagnostic-reason-list">
                 {stepAnalysis.whatYouDidRight.map((item, idx) => (
                   <li key={idx} className="type-body">
                     <Markdown>{item}</Markdown>
