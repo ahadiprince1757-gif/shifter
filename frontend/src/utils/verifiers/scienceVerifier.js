@@ -76,6 +76,10 @@ export function verifyScienceQuestion(questionText, storedAns = null) {
     subject: result.subject || "science",
     topic: result.topic,
     formula: result.formula || null,
+    inputs: result.inputs || [],
+    operation: result.operation || null,
+    relation: result.relation || null,
+    unit: result.unit || null,
     answerType: result.answerType,
     confidence: result.confidence ?? 0.95,
     confidenceTier: toConfidenceTier(result.confidence),
@@ -272,8 +276,32 @@ function roundAnswer(value, decimals = 4) {
   return Number(Number(value).toFixed(decimals));
 }
 
-function makeResult({ answer, answerType = "number", topic, formula, steps, explanation, confidence = 0.99 }) {
-  return { answer: answerType === "number" ? roundAnswer(answer) : answer, answerType, topic, formula, steps, explanation, confidence };
+function makeResult({
+  answer,
+  answerType = "number",
+  topic,
+  formula,
+  steps,
+  explanation,
+  confidence = 0.99,
+  inputs = [],
+  operation = null,
+  relation = null,
+  unit = null,
+}) {
+  return {
+    answer: answerType === "number" ? roundAnswer(answer) : answer,
+    answerType,
+    topic,
+    formula,
+    steps,
+    explanation,
+    confidence,
+    inputs,
+    operation,
+    relation: relation || formula,
+    unit,
+  };
 }
 
 
@@ -300,6 +328,10 @@ function trySolveForce(q) {
     answer: force,
     topic: "Newton's Second Law",
     formula: "F = m × a",
+    inputs: [massKg, a],
+    operation: "multiply",
+    relation: "force = mass × acceleration",
+    unit: "N",
     steps: [
       "Step 1: Identify the formula.",
       "F = m × a",
@@ -334,6 +366,10 @@ function trySolveOhmsLaw(q) {
       answer: V,
       topic: "Ohm's Law",
       formula: "V = I × R",
+      inputs: [current.value, resistance.value],
+      operation: "multiply",
+      relation: "voltage = current × resistance",
+      unit: "V",
       steps: [
         "Formula: V = I × R",
         `Current = ${current.value} A`,
@@ -353,6 +389,10 @@ function trySolveOhmsLaw(q) {
       answer: I,
       topic: "Ohm's Law",
       formula: "I = V ÷ R",
+      inputs: [voltage.value, resistance.value],
+      operation: "divide",
+      relation: "current = voltage ÷ resistance",
+      unit: "A",
       steps: [
         "Formula: I = V ÷ R",
         `Voltage = ${voltage.value} V`,
@@ -372,6 +412,10 @@ function trySolveOhmsLaw(q) {
       answer: R,
       topic: "Ohm's Law",
       formula: "R = V ÷ I",
+      inputs: [voltage.value, current.value],
+      operation: "divide",
+      relation: "resistance = voltage ÷ current",
+      unit: "Ω",
       steps: [
         "Formula: R = V ÷ I",
         `Voltage = ${voltage.value} V`,
@@ -463,6 +507,10 @@ function trySolveDensity(q) {
     answer: density,
     topic: "Density",
     formula: "ρ = m ÷ V",
+    inputs: [roundAnswer(massKg), roundAnswer(volumeM3)],
+    operation: "divide",
+    relation: "density = mass ÷ volume",
+    unit: "kg/m³",
     steps: [
       "Formula: Density = Mass ÷ Volume",
       `Step 1: Convert mass to SI. ${mass.value} ${mass.unit} = ${roundAnswer(massKg)} kg`,
@@ -493,6 +541,10 @@ function trySolveWorkDone(q) {
     answer: work,
     topic: "Work Done",
     formula: "W = F × d",
+    inputs: [force.value, distance.value],
+    operation: "multiply",
+    relation: "work = force × distance",
+    unit: "J",
     steps: [
       "Formula: W = F × d",
       `Force = ${force.value} N`,
@@ -510,8 +562,8 @@ function trySolveWorkDone(q) {
 ============================================================================ */
 
 function trySolveSpeed(q) {
-  // Never attempt average speed, multi-part journeys, or multi-distance questions with simple single-leg v = d / t
-  if (/average\s*speed|parts?\s*of|return|and\s*then|\band\s+\d+/i.test(q)) return null;
+  // Never attempt multi-part journeys or multi-distance questions with simple single-leg v = d / t
+  if (/parts?\s*of|return|and\s*then|first\s*\d+.*next\s*\d+/i.test(q)) return null;
   if (!/speed|velocity|distance.*time|time.*distance/.test(q)) return null;
 
   const distance = extractQuantity(q, /(\d+(?:\.\d+)?)\s*(km|kilometers?|kilometres?|cm|m|meters?|metres?)\b/);
@@ -530,6 +582,10 @@ function trySolveSpeed(q) {
       answer: `${roundAnswer(speedKmH)} km/h`,
       topic: "Speed",
       formula: "v = d ÷ t",
+      inputs: [distance.value, time.value],
+      operation: "divide",
+      relation: "speed = distance ÷ time",
+      unit: "km/h",
       steps: [
         "Formula: Speed = Distance ÷ Time",
         `Step 1: Distance = ${distance.value} km`,
@@ -553,6 +609,10 @@ function trySolveSpeed(q) {
     answer: `${roundAnswer(speed)} m/s`,
     topic: "Speed",
     formula: "v = d ÷ t",
+    inputs: [roundAnswer(distanceM), roundAnswer(timeS)],
+    operation: "divide",
+    relation: "speed = distance ÷ time",
+    unit: "m/s",
     steps: [
       "Formula: Speed = Distance ÷ Time",
       `Step 1: Convert distance to metres. ${distance.value} ${distance.unit} = ${roundAnswer(distanceM)} m`,
