@@ -65,7 +65,14 @@ function normalizeQ(q) {
     q.explanation ||
     "Demonstrate clear step-by-step reasoning.";
   let solStr = q.sol || q.Solution || q.soln;
-  if (!solStr && q.steps) solStr = q.steps.join("\n");
+  // steps may be a string (prose) or an array — handle both safely
+  const rawSteps = q.steps;
+  const stepsArray = Array.isArray(rawSteps)
+    ? rawSteps
+    : typeof rawSteps === "string" && rawSteps.trim()
+    ? [rawSteps]
+    : null;
+  if (!solStr && stepsArray) solStr = stepsArray.join("\n");
   if (!solStr) solStr = ansStr;
 
   return {
@@ -75,7 +82,7 @@ function normalizeQ(q) {
     why: whyStr,
     mark: whyStr,
     sol: solStr,
-    steps: q.steps || null,
+    steps: stepsArray,
     type: q.type || null,
   };
 }
