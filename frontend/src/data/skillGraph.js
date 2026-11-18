@@ -34,6 +34,16 @@ export const RELATIONSHIP_SEMANTICS = Object.freeze({
     canBlockProgression: true,
     hypothesisPriority: 100
   }),
+  PREREQUISITE_OF: Object.freeze({
+    canSupportHypothesis: true,
+    canBlockProgression: true,
+    hypothesisPriority: 100
+  }),
+  APPLIED_IN: Object.freeze({
+    canSupportHypothesis: true,
+    canBlockProgression: false,
+    hypothesisPriority: 70
+  }),
   SUPPORTS: Object.freeze({
     canSupportHypothesis: true,
     canBlockProgression: false,
@@ -161,6 +171,175 @@ export const SKILL_RELATIONSHIPS = Object.freeze([
     fromSkill: 'math.numbers.fractions.multiplication_division',
     toSkill:   'math.numbers.integers.signed_arithmetic',
     type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  // --- PILOT CROSS-SUBJECT & FOUNDATIONAL RELATIONSHIPS ---
+  {
+    id: 'rel_012',
+    fromSkill: 'math.numbers.integers.subtract_negative',
+    toSkill:   'math.numbers.integers.signed_arithmetic',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_013',
+    fromSkill: 'math.numbers.ratios.direct_proportion',
+    toSkill:   'math.numbers.ratios.simplification',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_014',
+    fromSkill: 'math.algebra.linear_equations.two_step',
+    toSkill:   'math.algebra.linear_equations.single_variable',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_015',
+    fromSkill: 'math.algebra.formulae.change_subject',
+    toSkill:   'math.algebra.linear_equations.single_variable',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  // Chemistry Stoichiometry dependencies
+  {
+    id: 'rel_016',
+    fromSkill: 'chemistry.moles.mass_to_moles',
+    toSkill:   'chemistry.moles.calculate_molar_mass',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_017',
+    fromSkill: 'chemistry.moles.moles_to_mass',
+    toSkill:   'chemistry.moles.calculate_molar_mass',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_018',
+    fromSkill: 'chemistry.stoichiometry.mole_to_mole_direct',
+    toSkill:   'chemistry.equations.balance_stoichiometry',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_019',
+    fromSkill: 'chemistry.stoichiometry.mole_to_mole_direct',
+    toSkill:   'chemistry.stoichiometry.extract_mole_ratio',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  // CROSS-SUBJECT EDGES:
+  // 1. Chemistry Stoichiometry REQUIRES Math Fraction Multiplication
+  {
+    id: 'rel_021',
+    fromSkill: 'chemistry.stoichiometry.mole_to_mole_ratio_application',
+    toSkill:   'math.numbers.fractions.multiplication_division',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  // 2. Math Fraction Multiplication is APPLIED_IN Chemistry Stoichiometry
+  {
+    id: 'rel_021_app',
+    fromSkill: 'math.numbers.fractions.multiplication_division',
+    toSkill:   'chemistry.stoichiometry.mole_to_mole_ratio_application',
+    type:      'APPLIED_IN',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_022',
+    fromSkill: 'chemistry.stoichiometry.mass_to_mass',
+    toSkill:   'chemistry.moles.mass_to_moles',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_023',
+    fromSkill: 'chemistry.stoichiometry.mass_to_mass',
+    toSkill:   'chemistry.stoichiometry.mole_to_mole_ratio_application',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_024',
+    fromSkill: 'chemistry.stoichiometry.mass_to_mass',
+    toSkill:   'chemistry.moles.moles_to_mass',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  // 3. Chemistry Limiting Reactant REQUIRES Math Ratio Direct Proportion
+  {
+    id: 'rel_025',
+    fromSkill: 'chemistry.stoichiometry.identify_limiting_reactant',
+    toSkill:   'chemistry.stoichiometry.extract_mole_ratio',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_026',
+    fromSkill: 'chemistry.stoichiometry.identify_limiting_reactant',
+    toSkill:   'math.numbers.ratios.direct_proportion',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  // Math Direct Proportion is APPLIED_IN Chemistry Limiting Reactant
+  {
+    id: 'rel_026_app',
+    fromSkill: 'math.numbers.ratios.direct_proportion',
+    toSkill:   'chemistry.stoichiometry.identify_limiting_reactant',
+    type:      'APPLIED_IN',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_027',
+    fromSkill: 'chemistry.stoichiometry.percentage_yield',
+    toSkill:   'math.numbers.fractions.multiplication_division',
+    type:      'REQUIRES',
+    ontologyVersion: '1.0.0',
+    active: true,
+    provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }
+  },
+  {
+    id: 'rel_027_app',
+    fromSkill: 'math.numbers.fractions.multiplication_division',
+    toSkill:   'chemistry.stoichiometry.percentage_yield',
+    type:      'APPLIED_IN',
     ontologyVersion: '1.0.0',
     active: true,
     provenance: { source: 'CURRICULUM_DESIGN', confidence: 'DECLARED' }

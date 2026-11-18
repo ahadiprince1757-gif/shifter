@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import rehypeRaw from "rehype-raw";
@@ -7,8 +7,14 @@ import { evaluateAnswer } from "../../utils/grader";
 import { isCalculationQuestion } from "../../utils/questionTypeHelper";
 import { getAtomicRepairContent } from "../../engine/repairPlanner";
 import { verifyRepair, OUTCOME } from "../../engine/repairVerifier";
+import { selectCrossSubjectRepair, DIAGNOSTIC_CERTAINTY } from "../../engine/crossSubjectRepairSelector";
+import { verifyFoundationalRetest, verifyContextualTransfer, VERIFICATION_OUTCOME } from "../../engine/crossSubjectVerifier";
+import { getPilotQuestionById } from "../../engine/pilotQuestionRegistry";
 import QuestionDisplay from "./quiz/QuestionDisplay";
 import HintBox from "./quiz/HintBox";
+
+// Feature Flag: Enable Cross-Subject Repair & Two-Stage Verification
+export const ENABLE_CROSS_SUBJECT_REPAIR = true;
 
 /**
  * RepairPhase
@@ -42,6 +48,7 @@ function RepairPhase({
   onSkip,
 }) {
   const [repairStep, setRepairStep] = useState("teach"); // "teach" | "retrieve"
+  const [verificationStage, setVerificationStage] = useState("foundational"); // "foundational" | "contextual"
   const [repairQ, setRepairQ] = useState(null);
   const [answer, setAnswer] = useState("");
   const [, setWork] = useState("");
@@ -51,6 +58,40 @@ function RepairPhase({
   const [validationError, setValidationError] = useState("");
 
   const primaryFailed = repairData?.questions?.[0] || null;
+
+  // ── Cross-Subject Repair Plan (Feature Flagged) ───────────────────────────
+  const crossSubjectPlan = useMemo(() => {
+    if (!ENABLE_CROSS_SUBJECT_REPAIR || !primaryFailed) return null;
+    const originalQ = primaryFailed.originalQ || (content?.qs?.[primaryFailed.qIdx]);
+    if (!originalQ) return null;
+
+    const pilotSpec = getPilotQuestionById(originalQ.questionId || originalQ.id);
+    const targetQ = pilotSpec || {
+      questionId: originalQ.questionId || originalQ.id || "custom_q",
+      subjectId: subject?.id || subject?.name || "chemistry",
+      topicId: content?.id || "general",
+      ...originalQ,
+    };
+
+    const diag = primaryFailed.diagnosis || primaryFailed.analysis?.diagnosis || {
+      status: "CONFIRMED",
+      certainty: DIAGNOSTIC_CERTAINTY.OBSERVED_CALCULATION_ERROR,
+      targetSkillId: primaryFailed.skillId || conceptTag,
+    };
+
+    const submission = {
+      rawAnswer: primaryFailed.userAnswer || primaryFailed.studentAnswer || "",
+      workingLines: primaryFailed.workingLines || (primaryFailed.userAnswer ? [primaryFailed.userAnswer] : []),
+    };
+
+    const plan = selectCrossSubjectRepair({
+      question: targetQ,
+      diagnosis: diag,
+      submission,
+    });
+
+    return plan?.status === "REPAIR_SELECTED" && plan.isCrossSubject ? plan : null;
+  }, [primaryFailed, content, subject, conceptTag]);
 
   // ── Concept snippet extraction ──────────────────────────────────────────────
   // Try to find a relevant paragraph from the notes using the concept tag or
@@ -102,6 +143,14 @@ function RepairPhase({
 
   // ── Start retrieval after mini-teach ───────────────────────────────────────
   const handleStartRetrieval = () => {
+    if (crossSubjectPlan) {
+      setVerificationStage("foundational");
+      setRepairQ(crossSubjectPlan.foundationalRetest);
+      setRepairStep("retrieve");
+      if (onTaught) onTaught(conceptTag);
+      return;
+    }
+
     // Generate a mutated variant of the failed question using diagnosis & skill context
     const originalQ = primaryFailed?.originalQ || (content?.qs?.[primaryFailed?.qIdx]);
     const subjectName = subject?.name || subject?.id || "";
@@ -128,6 +177,40 @@ function RepairPhase({
     }
     setValidationError("");
 
+    if (crossSubjectPlan) {
+      if (verificationStage === "foundational") {
+        const retestResult = verifyFoundationalRetest({
+          repairPlan: crossSubjectPlan,
+          studentAnswer: answer,
+        });
+        const isPass = retestResult.status === VERIFICATION_OUTCOME.ACQUISITION_CONFIRMED;
+        setFeedback({
+          isCorrect: isPass,
+          correctAnswer: crossSubjectPlan.foundationalRetest?.ans,
+          message: isPass
+            ? "Foundational arithmetic verified! Ready to apply back in Chemistry."
+            : "Check your calculation.",
+        });
+        setAttempts((a) => a + 1);
+        return;
+      } else {
+        const transferResult = verifyContextualTransfer({
+          repairPlan: crossSubjectPlan,
+          studentAnswer: answer,
+        });
+        const isPass = transferResult.status === VERIFICATION_OUTCOME.TRANSFER_CONFIRMED;
+        setFeedback({
+          isCorrect: isPass,
+          correctAnswer: crossSubjectPlan.contextualTransfer?.ans,
+          message: isPass
+            ? "Contextual transfer verified! Excellent work."
+            : "Check your stoichiometric ratio calculation.",
+        });
+        setAttempts((a) => a + 1);
+        return;
+      }
+    }
+
     const q = repairQ || primaryFailed?.originalQ;
     if (!q) return;
 
@@ -149,6 +232,40 @@ function RepairPhase({
 
   // ── Advance after feedback ──────────────────────────────────────────────────
   const handleAdvance = () => {
+    if (crossSubjectPlan) {
+      if (verificationStage === "foundational") {
+        if (feedback?.isCorrect) {
+          // Transition to Stage 2: Contextual Transfer
+          setVerificationStage("contextual");
+          setRepairQ(crossSubjectPlan.contextualTransfer);
+          setAnswer("");
+          setWork("");
+          setFeedback(null);
+          setAttempts(0);
+          setShowHint(false);
+          return;
+        } else if (attempts >= 2) {
+          if (onSkip) onSkip(conceptTag);
+        } else {
+          // Retry foundational
+          setAnswer("");
+          setFeedback(null);
+        }
+        return;
+      } else {
+        // Stage 2: Contextual Transfer
+        if (feedback?.isCorrect) {
+          if (onPassed) onPassed(conceptTag);
+        } else if (attempts >= 2) {
+          if (onSkip) onSkip(conceptTag);
+        } else {
+          setAnswer("");
+          setFeedback(null);
+        }
+        return;
+      }
+    }
+
     const isRepaired =
       feedback?.verification?.outcome === OUTCOME.REPAIRED ||
       Boolean(feedback?.isCorrect);
@@ -213,38 +330,69 @@ function RepairPhase({
               </div>
             )}
 
-            {atomicRepair && (
-              <div className="repair-atomic-card" style={{ background: "rgba(99, 102, 241, 0.08)", border: "1px solid rgba(99, 102, 241, 0.3)", borderRadius: "8px", padding: "1rem", margin: "1rem 0" }}>
+            {crossSubjectPlan ? (
+              <div className="repair-cross-subject-card" style={{ background: "rgba(99, 102, 241, 0.08)", border: "1px solid rgba(99, 102, 241, 0.3)", borderRadius: "8px", padding: "1rem", margin: "1rem 0" }}>
+                <div style={{ display: "inline-flex", alignItems: "center", gap: "0.5rem", background: "#e0e7ff", color: "#3730a3", padding: "0.25rem 0.6rem", borderRadius: "4px", fontSize: "0.8rem", fontWeight: 700, marginBottom: "0.6rem" }}>
+                  <span>🔀 Cross-Subject Prerequisite Gap:</span>
+                  <span>{crossSubjectPlan.sourceSubjectId?.toUpperCase()} → {crossSubjectPlan.originatingSubjectId?.toUpperCase()}</span>
+                </div>
                 <div style={{ fontWeight: 600, color: "var(--accent, #6366f1)", marginBottom: "0.4rem" }}>
-                  Key Principle to Apply:
+                  Foundational Rule from {crossSubjectPlan.sourceSubjectId === "math" ? "Mathematics" : crossSubjectPlan.sourceSubjectId}: {crossSubjectPlan.diagnosedSkillName}
                 </div>
                 <div style={{ marginBottom: "0.4rem", fontSize: "0.95rem", lineHeight: 1.5 }}>
-                  {atomicRepair.rule}
+                  {crossSubjectPlan.rule}
                 </div>
-                {atomicRepair.example && (
-                  <div style={{ fontSize: "0.85rem", opacity: 0.85, fontStyle: "italic" }}>
-                    Example: {atomicRepair.example}
+                {crossSubjectPlan.example && (
+                  <div style={{ fontSize: "0.85rem", opacity: 0.85, fontStyle: "italic", marginBottom: "0.6rem" }}>
+                    Example: {crossSubjectPlan.example}
+                  </div>
+                )}
+                {crossSubjectPlan.noteSection?.contentHtml && (
+                  <div style={{ borderTop: "1px dashed rgba(99, 102, 241, 0.2)", paddingTop: "0.6rem", fontSize: "0.9rem" }}>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                      {crossSubjectPlan.noteSection.contentHtml}
+                    </ReactMarkdown>
                   </div>
                 )}
               </div>
-            )}
+            ) : (
+              <>
+                {atomicRepair && (
+                  <div className="repair-atomic-card" style={{ background: "rgba(99, 102, 241, 0.08)", border: "1px solid rgba(99, 102, 241, 0.3)", borderRadius: "8px", padding: "1rem", margin: "1rem 0" }}>
+                    <div style={{ fontWeight: 600, color: "var(--accent, #6366f1)", marginBottom: "0.4rem" }}>
+                      Key Principle to Apply:
+                    </div>
+                    <div style={{ marginBottom: "0.4rem", fontSize: "0.95rem", lineHeight: 1.5 }}>
+                      {atomicRepair.rule}
+                    </div>
+                    {atomicRepair.example && (
+                      <div style={{ fontSize: "0.85rem", opacity: 0.85, fontStyle: "italic" }}>
+                        Example: {atomicRepair.example}
+                      </div>
+                    )}
+                  </div>
+                )}
 
-            {snippet && (
-              <div className="repair-snippet-card">
-                <div className="repair-snippet-label">Relevant concept from your notes:</div>
-                <div className="repair-snippet-body">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
-                    {snippet}
-                  </ReactMarkdown>
-                </div>
-              </div>
+                {snippet && (
+                  <div className="repair-snippet-card">
+                    <div className="repair-snippet-label">Relevant concept from your notes:</div>
+                    <div className="repair-snippet-body">
+                      <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw]}>
+                        {snippet}
+                      </ReactMarkdown>
+                    </div>
+                  </div>
+                )}
+              </>
             )}
 
             <button
               className="btn-p repair-ready-btn"
               onClick={handleStartRetrieval}
             >
-              I understand — test me on this →
+              {crossSubjectPlan
+                ? "I understand — test foundational calculation →"
+                : "I understand — test me on this →"}
             </button>
           </div>
         )}
@@ -252,8 +400,19 @@ function RepairPhase({
         {/* ── RETRIEVE step ── */}
         {repairStep === "retrieve" && repairQ && (
           <div className="repair-retrieve-block">
-            <div className="repair-retrieve-banner">
-              Retrieval — answer from memory. Notes are closed.
+            <div className="repair-retrieve-banner" style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+              <span>
+                {crossSubjectPlan
+                  ? verificationStage === "foundational"
+                    ? "Stage 1: Verify Foundational Arithmetic (Isolated Primitive)"
+                    : "Stage 2: Contextual Transfer in Chemistry (Closed Book)"
+                  : "Retrieval — answer from memory. Notes are closed."}
+              </span>
+              {crossSubjectPlan && (
+                <span style={{ fontSize: "0.75rem", opacity: 0.85, fontWeight: 600 }}>
+                  {verificationStage === "foundational" ? "Step 1 of 2" : "Step 2 of 2"}
+                </span>
+              )}
             </div>
 
             <QuestionDisplay
@@ -330,7 +489,9 @@ function RepairPhase({
                   </div>
                 )}
                 <button className="btn-p repair-next-btn" onClick={handleAdvance}>
-                  {feedback.isCorrect
+                  {crossSubjectPlan && verificationStage === "foundational" && feedback.isCorrect
+                    ? "Proceed to Chemistry Problem →"
+                    : feedback.isCorrect
                     ? "Next →"
                     : attempts >= 2
                     ? "Continue anyway →"

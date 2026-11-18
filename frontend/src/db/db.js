@@ -79,6 +79,14 @@ db.version(19).stores({
   user_notes: "[user_id+topic_id], user_id, topic_id, updated_at",
 });
 
+// Version 20: Cross-subject offline attempt queue, diagnostic evidence ledger, and derived skill state
+db.version(20).stores({
+  pending_attempts_sync: "++id, idempotency_key, user_id, question_id, client_timestamp, synced",
+  local_attempt_evidence: "++id, attempt_id, skill_id, diagnostic_status",
+  local_repair_events: "++id, idempotency_key, user_id, question_id, completion_status, synced",
+  local_learner_skill_state: "[user_id+skill_id], user_id, skill_id, acquisition_status, transfer_status, updated_at",
+});
+
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
