@@ -18,6 +18,7 @@
 
 import { diagnoseStudentSubmission, STATUS } from "../teacherDiagnoser.js";
 import { DIAGNOSTIC_STATUS, CORRECTNESS_STATUS } from "../engine/diagnosticContract.js";
+import { evaluateAnswer } from "../../utils/grader.js";
 
 function assert(condition, message) {
   if (!condition) {
@@ -295,4 +296,75 @@ for (const [name, res] of [
 }
 console.log("✅ PASS: Test 12 (Canonical Contract Compliance) verified across all outcomes.");
 
-console.log("\n🎉 ALL 12 DIAGNOSTIC FEEDBACK PIPELINE AUDIT TESTS PASSED CLEANLY!");
+
+// ── TEST 13: Data Plumbing Invariant ────────────────────────────────────────
+const bodmasQ = { q: "Solve: 6 + 2 * 3", ans: "12" };
+const studentWorkScreenshot = "6+2*3\n6+6\n=13";
+const gradedResult = evaluateAnswer("13", bodmasQ, studentWorkScreenshot);
+
+assert(gradedResult.userWork === studentWorkScreenshot, "evaluateAnswer must preserve userWork");
+assert(gradedResult.studentAnswer === "13", "evaluateAnswer must preserve studentAnswer");
+console.log("✅ PASS: Test 13 (Data Plumbing Invariant) userWork and studentAnswer survive evaluateAnswer.");
+
+
+// ── TEST 14: User Screenshot Reproduction (6+2*3 -> 6+6 -> =13) ──────────────
+const bodmasDiag = diagnoseStudentSubmission({
+  studentAnswer: "13",
+  userWork: studentWorkScreenshot,
+  question: bodmasQ,
+  expectedAnswer: "12",
+  isAnswerCorrect: false,
+});
+
+assert(bodmasDiag.status === "diagnosed", "Screenshot case MUST be diagnosed, never inconclusive");
+assert(bodmasDiag.stepAnalysis !== undefined, "Must include stepAnalysis");
+assert(bodmasDiag.stepAnalysis.whereYourWorkingBrokeDown.stepIndex === 3, "Must pinpoint Step 3 (=13)");
+assert(bodmasDiag.stepAnalysis.whatYouDidRight.length >= 2, "Must acknowledge earlier valid steps (6+2*3, 6+6)");
+assert(bodmasDiag.diagnosis.type === "calculation", "Error type must be calculation slip");
+console.log("✅ PASS: Test 14 (User Screenshot Reproduction) pinpoints exact Step 3 arithmetic slip with praise for earlier steps.");
+
+
+// ── TEST 15: BODMAS Order-of-Operations Violation (8*3 -> 24) ────────────────
+const bodmasOrderErrorDiag = diagnoseStudentSubmission({
+  studentAnswer: "24",
+  userWork: "8 * 3\n24",
+  question: bodmasQ,
+  expectedAnswer: "12",
+  isAnswerCorrect: false,
+});
+
+assert(bodmasOrderErrorDiag.status === "diagnosed", "Order of operations error must be diagnosed");
+assert(bodmasOrderErrorDiag.errorType === "order_of_operations", "Error type must be order_of_operations");
+assert(bodmasOrderErrorDiag.diagnosis.brokenAt === "multiplication_before_addition", "Broken at multiplication_before_addition");
+console.log("✅ PASS: Test 15 (BODMAS Order of Operations) identifies addition evaluated before multiplication.");
+
+
+// ── TEST 16: Left-to-Right Equal Precedence Error (18 ÷ 3 × 2 -> 18 ÷ 6 -> 3) ──
+const leftToRightQ = { q: "Evaluate: 18 / 3 * 2", ans: "12" };
+const leftToRightDiag = diagnoseStudentSubmission({
+  studentAnswer: "3",
+  userWork: "18 / 6\n3",
+  question: leftToRightQ,
+  expectedAnswer: "12",
+  isAnswerCorrect: false,
+});
+
+assert(leftToRightDiag.status === "diagnosed", "Left to right precedence error must be diagnosed");
+assert(leftToRightDiag.errorType === "left_to_right_error", "Error type must be left_to_right_error");
+assert(leftToRightDiag.diagnosis.brokenAt === "left_to_right_equal_precedence", "Broken at left_to_right_equal_precedence");
+console.log("✅ PASS: Test 16 (Left-to-Right Precedence) catches right-side multiplication evaluated before left division.");
+
+
+// ── TEST 17: Bare Wrong Answer on BODMAS (No Working) -> INCONCLUSIVE ─────────
+const bareBodmasWrong = diagnoseStudentSubmission({
+  studentAnswer: "13",
+  userWork: "",
+  question: bodmasQ,
+  expectedAnswer: "12",
+  isAnswerCorrect: false,
+});
+
+assert(bareBodmasWrong.status === "inconclusive", "Bare wrong answer without working must be inconclusive");
+console.log("✅ PASS: Test 17 (Bare Wrong Answer on BODMAS) correctly refuses to guess reasoning without working.");
+
+console.log("\n🎉 ALL 17 DIAGNOSTIC FEEDBACK PIPELINE AUDIT TESTS PASSED CLEANLY!");

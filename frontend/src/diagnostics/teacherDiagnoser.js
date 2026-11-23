@@ -46,6 +46,7 @@ import { diagnoseNumberClassification } from "./knowledge/numberSystems.js";
 import { findKnownMisconception } from "./knowledge/misconceptionRegistry.js";
 import { findCrossSubjectMisconception } from "./knowledge/subjectMisconceptions.js";
 import { analyzeStudentSteps } from "./analyzers/stepAnalyzer.js";
+import { analyzeArithmeticSteps } from "./analyzers/arithmeticStepAnalyzer.js";
 import { diagnosticEngine } from "./engine/diagnosticEngine.js";
 import { executeEvidencePipeline } from "./engine/evidencePipeline.js";
 import { ReasoningLocation, VerificationStatus, OperationType, EvidenceSufficiency } from "./contracts/evidenceContract.js";
@@ -379,7 +380,9 @@ function makeDiagnosis({
       ? DIAGNOSIS_TYPE.CLASSIFICATION
       : (errorType.includes("formula") || errorType.includes("speed_averaging"))
       ? DIAGNOSIS_TYPE.FORMULA
-      : errorType.includes("algebra") || errorType.includes("sign") || errorType.includes("step")
+      : (errorType.includes("arithmetic") || errorType.includes("calculation"))
+      ? DIAGNOSIS_TYPE.CALCULATION
+      : (errorType.includes("left_to_right") || errorType.includes("algebra") || errorType.includes("sign") || errorType.includes("step") || errorType.includes("order_of_operations"))
       ? DIAGNOSIS_TYPE.PROCEDURE
       : DIAGNOSIS_TYPE.MISCONCEPTION,
     brokenAt: errorType,
@@ -1117,7 +1120,65 @@ export function diagnoseStudentSubmission({
     });
   }
 
-  // 4. Step-by-Step Algebraic Reasoning (Inverse Operations & Sign Flips)
+  // 4a. Arithmetic & Order-of-Operations Step Verification (BODMAS, Arithmetic Slips, Left-to-Right)
+  if (work && work.trim()) {
+    const arithmeticAnalysis = analyzeArithmeticSteps({
+      userWork: work,
+      questionText,
+      expectedAnswer,
+    });
+
+    if (arithmeticAnalysis && arithmeticAnalysis.hasError) {
+      const err = arithmeticAnalysis.firstError;
+      const stepNum = err.stepNumber;
+      const validEarlierSteps = arithmeticAnalysis.evaluatedSteps.filter((s) => s.status === "valid");
+      const whatYouDidRight = validEarlierSteps.map((s) => `Step ${s.stepNumber} was valid: \`${s.raw}\`.`);
+
+      const correctedWorking = (arithmeticAnalysis.theRightWay || []).map((step) => ({
+        step,
+        status: "corrected",
+        note: "Target method",
+      }));
+
+      return makeDiagnosis({
+        status: STATUS.DIAGNOSED,
+        studentAnswer: answer,
+        userWork: work,
+        errorType: err.errorType,
+        diagnosis: {
+          type: err.category === "calculation" ? DIAGNOSIS_TYPE.CALCULATION : DIAGNOSIS_TYPE.PROCEDURE,
+          brokenAt: err.brokenAt || err.errorType,
+          explanation: err.explanation,
+        },
+        whatYouDid: arithmeticAnalysis.whatYouDid,
+        whyThisIsWrong: arithmeticAnalysis.whyThisIsWrong,
+        theRightWay: arithmeticAnalysis.theRightWay,
+        remember: arithmeticAnalysis.remember,
+        observed: [err.raw],
+        expected: expectedAnswer ? [expectedAnswer] : [],
+        confidence: CONFIDENCE.HIGH,
+        evidence: arithmeticAnalysis.evidence,
+        repair: arithmeticAnalysis.repair,
+        verification: arithmeticAnalysis.verification,
+        stepAnalysis: {
+          whatYouDidRight,
+          whereYourWorkingBrokeDown: {
+            stepIndex: stepNum,
+            studentStep: err.raw,
+            correctedStep: err.expected,
+            explanation: err.explanation,
+          },
+          correctedWorking,
+          thinkingRepair: {
+            title: "Check step transitions",
+            strategy: arithmeticAnalysis.remember,
+          },
+        },
+      });
+    }
+  }
+
+  // 4b. Step-by-Step Algebraic Reasoning (Inverse Operations & Sign Flips)
   const algebraDiagnosis = diagnoseAlgebraicSteps({
     studentAnswer: answer,
     userWork: work,
@@ -1128,8 +1189,8 @@ export function diagnoseStudentSubmission({
   });
   if (algebraDiagnosis) return algebraDiagnosis;
 
-  // 5. Multi-line Working Step Verification Engine
-  if (work && (work.includes("\n") || work.includes(";"))) {
+  // 5. Multi-line Working Step Verification Engine (Algebraic Equations)
+  if (work && work.trim()) {
     const stepAnalysisResult = analyzeStudentSteps({
       userWork: work,
       initialEquationStr: questionText,

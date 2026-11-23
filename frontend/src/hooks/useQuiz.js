@@ -96,8 +96,14 @@ export function useQuiz(
 
     if (activeQuestion) {
       setTimeout(() => {
-        const res = evaluateAnswer(answer, activeQuestion);
-        setFeedback({ ...res, confidence });
+        const res = evaluateAnswer(answer, activeQuestion, work);
+        setFeedback({
+          ...res,
+          userWork: work,
+          studentAnswer: answer,
+          userAnswer: answer,
+          confidence,
+        });
         setGrading(false);
 
         // If retry correct, mark the mistake as resolved (with context for Supabase)
@@ -187,8 +193,17 @@ export function useQuiz(
           evidence: clientRes.evidence,
           workingEvaluation: clientRes.workingEvaluation,
           questionVerification: clientRes.questionVerification,
+          userWork: work,
+          studentAnswer: answer,
+          userAnswer: answer,
         };
-        setFeedback({ ...res, confidence });
+        setFeedback({
+          ...res,
+          userWork: work,
+          studentAnswer: answer,
+          userAnswer: answer,
+          confidence,
+        });
         setGrading(false);
 
         const isPartial = res.grade === "partial" || res.partialCredit === true;
@@ -263,7 +278,13 @@ export function useQuiz(
         });
         // Graceful fallback to client-side grading if server request fails
         const fallbackRes = evaluateAnswer(answer, targetQ, work);
-        setFeedback(fallbackRes);
+        setFeedback({
+          ...fallbackRes,
+          userWork: work,
+          studentAnswer: answer,
+          userAnswer: answer,
+          confidence,
+        });
         setGrading(false);
       });
   };

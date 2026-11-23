@@ -353,6 +353,9 @@ export function useSessionLoop({
       if (isPartial) {
         setFeedback({
           ...rawRes,
+          userWork: work,
+          studentAnswer: answer,
+          userAnswer: answer,
           confidence,
           isRepaired: isRepairing,
         });
@@ -366,6 +369,9 @@ export function useSessionLoop({
 
         setFeedback({
           ...diagnosed,
+          userWork: work,
+          studentAnswer: answer,
+          userAnswer: answer,
           confidence,
           whatWentWrong: plan.whatWentWrong,
           rule: plan.rule,
@@ -380,6 +386,9 @@ export function useSessionLoop({
         // Correct answer
         setFeedback({
           ...rawRes,
+          userWork: work,
+          studentAnswer: answer,
+          userAnswer: answer,
           confidence,
           isRepaired: isRepairing,
         });

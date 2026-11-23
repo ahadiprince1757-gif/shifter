@@ -20,6 +20,7 @@ import {
   diagnoseMisconceptionPattern,
   diagnoseKnowledgeGap,
 } from "./misconceptionDiagnoser.js";
+import { analyzeArithmeticSteps } from "../diagnostics/analyzers/arithmeticStepAnalyzer.js";
 
 // ============================================================================
 // CONCEPT CLUSTERS
@@ -1359,19 +1360,41 @@ export function analyseStudentAnswer(
   }
 
   // ----------------------------------------------------------
-  // Math path
+  // Math path: Student working analysed first; authored steps are supporting knowledge
   // ----------------------------------------------------------
 
-  const mathAnalysis =
-    Array.isArray(question.steps) &&
-    question.steps.length > 0
-      ? analyseMathSteps(
-          question.steps,
-          studentAnswer,
-          userWork,
-          correctAnswer
-        )
-      : null;
+  let mathAnalysis = null;
+  if (userWork && typeof userWork === "string" && userWork.trim()) {
+    const qText =
+      typeof question === "string"
+        ? question
+        : question?.q || question?.stem || question?.question || options.question || "";
+    const arith = analyzeArithmeticSteps({
+      userWork,
+      questionText: qText,
+      expectedAnswer: correctAnswer,
+    });
+    if (arith) {
+      mathAnalysis = {
+        type: "math_analysis",
+        arithmeticAnalysis: arith,
+        hasError: arith.hasError,
+        steps: arith.evaluatedSteps || [],
+        firstFailedStepIndex: arith.firstError ? arith.firstError.stepNumber - 1 : -1,
+        reasoningScore: arith.hasError ? 0.5 : 1.0,
+        diagnosticConfidence: 0.95,
+      };
+    }
+  }
+
+  if (!mathAnalysis && Array.isArray(question.steps) && question.steps.length > 0) {
+    mathAnalysis = analyseMathSteps(
+      question.steps,
+      studentAnswer,
+      userWork,
+      correctAnswer
+    );
+  }
 
   // ----------------------------------------------------------
   // Concept analysis

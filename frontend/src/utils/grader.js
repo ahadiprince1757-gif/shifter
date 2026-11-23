@@ -2124,6 +2124,11 @@ export function evaluateAnswer(
     isAnswerCorrect,
     isWorkCorrect,
 
+    // Preserve student input and working throughout the entire grading & feedback pipeline
+    userAnswer,
+    studentAnswer: userAnswer,
+    userWork,
+
     workingNote,
 
     correctAnswer: mainCorrectAnswerStr,

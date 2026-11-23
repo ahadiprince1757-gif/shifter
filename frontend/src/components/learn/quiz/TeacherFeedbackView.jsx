@@ -269,6 +269,16 @@ export default function TeacherFeedbackView({
         {/* 2. STEP ANALYSIS (IF MULTI-LINE WORKING WAS RECONSTRUCTED) */}
         {stepAnalysis ? (
           <>
+            {/* YOUR APPROACH WITH WORKING */}
+            <StudentApproach
+              studentAnswer={studentAns}
+              approachSummary={
+                diagnosis.userWork
+                  ? `You submitted your working:\n\`\`\`\n${diagnosis.userWork}\n\`\`\``
+                  : approachText
+              }
+            />
+
             {stepAnalysis.whatYouDidRight?.length > 0 && (
               <ContentSection title="WHAT YOU DID RIGHT">
                 <ul className="diagnostic-reason-list">
@@ -282,7 +292,7 @@ export default function TeacherFeedbackView({
             )}
 
             {stepAnalysis.whereYourWorkingBrokeDown && (
-              <ContentSection title="WHERE YOUR WORKING WENT WRONG">
+              <ContentSection title="WHY YOUR THINKING BROKE" className="feedback-section-why">
                 <div style={{ marginBottom: "var(--space-2)" }}>
                   <code style={{ background: "var(--surface-subtle)", padding: "2px 8px", borderRadius: "4px", fontSize: "14px" }}>
                     {stepAnalysis.whereYourWorkingBrokeDown.studentStep}
@@ -295,7 +305,7 @@ export default function TeacherFeedbackView({
             )}
 
             {stepAnalysis.correctedWorking?.length > 0 && (
-              <ContentSection title="YOUR CORRECTED WORKING">
+              <ContentSection title="REPAIR: YOUR CORRECTED WORKING" className="feedback-section-repair">
                 <StepList>
                   {stepAnalysis.correctedWorking.map((item, idx) => (
                     <StepItem key={idx} number={idx + 1} isCorrected={item.status === "corrected"}>
@@ -310,6 +320,12 @@ export default function TeacherFeedbackView({
                     </StepItem>
                   ))}
                 </StepList>
+                {rememberText && (
+                  <div className="type-supporting" style={{ marginTop: "var(--space-3)", borderTop: "1px dashed var(--border-subtle)", paddingTop: "var(--space-2)" }}>
+                    <strong>Remember: </strong>
+                    <Markdown>{rememberText}</Markdown>
+                  </div>
+                )}
               </ContentSection>
             )}
           </>
