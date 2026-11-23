@@ -50,6 +50,16 @@ import { diagnosticEngine } from "./engine/diagnosticEngine.js";
 import { executeEvidencePipeline } from "./engine/evidencePipeline.js";
 import { ReasoningLocation, VerificationStatus, OperationType, EvidenceSufficiency } from "./contracts/evidenceContract.js";
 import { verifyScienceQuestion } from "../utils/verifiers/scienceVerifier.js";
+import {
+  DIAGNOSTIC_STATUS,
+  CORRECTNESS_STATUS,
+  DIAGNOSIS_TYPE,
+  createStructuredDiagnosis,
+} from "./engine/diagnosticContract.js";
+import {
+  analyzeNumberClassificationResponse,
+  isUninterpretableInput,
+} from "./engine/studentReasoningAnalyzer.js";
 
 
 const UNIT_ALIASES = Object.freeze({
@@ -345,6 +355,12 @@ function makeDiagnosis({
   repair = null,
   retest = null,
   contract = null,
+  studentAnswer = "",
+  userWork = "",
+  evidence = null,
+  diagnosis = null,
+  breakPoint = null,
+  verification = null,
 }) {
   const cleanRemember = cleanString(remember);
   const unpackedRem = unpackStructuredJson(cleanRemember);
@@ -352,26 +368,67 @@ function makeDiagnosis({
     ? cleanString(unpackedRem.why || unpackedRem.explain || unpackedRem.sol || "")
     : cleanRemember;
 
-  return {
-    status,
+  const whyWrongArr = toArrayOfStrings(whyThisIsWrong);
+  const rightWayArr = toArrayOfStrings(theRightWay);
+
+  // Derive canonical breakdown if not provided
+  const canonicalDiagnosis = diagnosis || (errorType ? {
+    type: errorType.includes("unit")
+      ? DIAGNOSIS_TYPE.UNITS
+      : errorType.includes("classification")
+      ? DIAGNOSIS_TYPE.CLASSIFICATION
+      : (errorType.includes("formula") || errorType.includes("speed_averaging"))
+      ? DIAGNOSIS_TYPE.FORMULA
+      : errorType.includes("algebra") || errorType.includes("sign") || errorType.includes("step")
+      ? DIAGNOSIS_TYPE.PROCEDURE
+      : DIAGNOSIS_TYPE.MISCONCEPTION,
+    brokenAt: errorType,
+    explanation: whyWrongArr[0] || "Calculated or procedural divergence from standard method.",
+  } : null);
+
+  const canonicalRepair = repair || (rightWayArr.length > 0 ? {
+    concept: errorType || "standard_method",
+    explanation: finalRemember || "Follow the correct method step-by-step:",
+    steps: rightWayArr,
+  } : null);
+
+  const canonicalVerification = verification || (probe ? {
+    question: probe.question,
+    expectedConcept: errorType || "",
+    options: probe.options || [],
+    correctAnswer: probe.correctAnswer || "",
+    type: "same_skill",
+  } : null);
+
+  return createStructuredDiagnosis({
+    status: status === STATUS.CORRECT ? "correct" : status === STATUS.DIAGNOSED ? "diagnosed" : "inconclusive",
+    correctness: status === STATUS.CORRECT ? "correct" : "incorrect",
+    studentAnswer,
+    userWork,
+    evidence: evidence || (observed.length > 0 ? observed.map((o) => ({ text: o, meaning: o })) : []),
+    diagnosis: canonicalDiagnosis,
+    breakPoint: breakPoint || (errorType ? {
+      concept: errorType,
+      errorType,
+      explanation: whyWrongArr[0] || "",
+    } : null),
+    repair: canonicalRepair,
+    verification: canonicalVerification,
+    confidence,
     errorType,
     whatYouDid,
-    whyThisIsWrong: toArrayOfStrings(whyThisIsWrong),
-    theRightWay: toArrayOfStrings(theRightWay),
+    whyThisIsWrong: whyWrongArr,
+    theRightWay: rightWayArr,
     remember: finalRemember,
-    evidence: {
-      observed: toArrayOfStrings(observed),
-      expected: toArrayOfStrings(expected),
-      confidence,
-    },
-    ...(contract ? { contract } : {}),
-    ...(firstError ? { firstError } : {}),
-    ...(correction ? { correction } : {}),
-    ...(stepAnalysis ? { stepAnalysis } : {}),
-    ...(probe ? { probe } : {}),
-    ...(repair ? { repair } : {}),
-    ...(retest ? { retest } : {}),
-  };
+    observed: toArrayOfStrings(observed),
+    expected: toArrayOfStrings(expected),
+    firstError,
+    correction,
+    stepAnalysis,
+    probe: probe || (canonicalVerification?.options ? canonicalVerification : null),
+    retest,
+    contract,
+  });
 }
 
 /**
@@ -385,7 +442,10 @@ function diagnoseCorrectAnswer({
 }) {
   return makeDiagnosis({
     status: STATUS.CORRECT,
-    whatYouDid: "You applied the correct method and found the correct answer.",
+    studentAnswer,
+    whatYouDid: studentAnswer
+      ? `You provided "${studentAnswer}", which is correct.`
+      : "You applied the correct method and found the correct answer.",
     whyThisIsWrong: [],
     theRightWay: authoredSteps.length > 0
       ? authoredSteps
@@ -394,10 +454,21 @@ function diagnoseCorrectAnswer({
         : [],
     remember:
       explanation ||
-      "Great work! You understood the concept and executed the steps accurately.",
+      "Your reasoning matches the required concept.",
     observed: [studentAnswer || "Submitted answer marked correct."],
     expected: expectedAnswer ? [expectedAnswer] : [],
     confidence: CONFIDENCE.HIGH,
+    evidence: [
+      {
+        text: studentAnswer || "Correct submission",
+        meaning: "Observed correct response matching the question concept",
+      },
+    ],
+    verification: {
+      question: "What core property confirms this answer is correct?",
+      expectedConcept: "definition",
+      type: "same_skill",
+    },
   });
 }
 
@@ -861,17 +932,17 @@ function genericFallback({
 
   return makeDiagnosis({
     status: STATUS.INCONCLUSIVE,
+    studentAnswer,
+    userWork,
     errorType: "unclassified_deviation",
     whatYouDid: studentAnswer
       ? `You provided the answer "${studentAnswer}".`
       : "Working was submitted without a final answer.",
     whyThisIsWrong: [
-      expectedAnswer
-        ? `The correct answer is ${expectedAnswer}.`
-        : "The submitted response did not match what the grader expected.",
       hasWork
         ? "The calculation does not lead to the required result."
-        : "Without step-by-step working, the specific arithmetic or procedural deviation cannot be confirmed without guessing."
+        : "Your answer differs from the expected result, but without intermediate steps or written reasoning, I cannot identify where your thinking broke.",
+      "Try showing the step you used to reach your answer.",
     ],
     theRightWay: authoredSteps.length > 0
       ? authoredSteps
@@ -889,7 +960,58 @@ function genericFallback({
     ],
     expected: expectedAnswer ? [`Expected answer: ${expectedAnswer}`] : [],
     confidence: CONFIDENCE.LOW,
+    diagnosis: {
+      type: DIAGNOSIS_TYPE.UNCLASSIFIED,
+      brokenAt: "insufficient_working",
+      explanation: "Without intermediate steps or written reasoning, the exact point of divergence cannot be verified without guessing.",
+    },
+    repair: {
+      concept: "showing_working",
+      explanation: "Show the intermediate steps or formula used to reach your result.",
+      steps: authoredSteps.length > 0 ? authoredSteps : ["Apply the standard formula or definition."],
+    },
+    verification: {
+      question: "Which step or formula did you use to calculate this result?",
+      expectedConcept: "formula",
+      type: "same_skill",
+    },
   });
+}
+
+/**
+ * Strict diagnosis confidence gate:
+ * A diagnosis requires: student evidence + identified concept + specific contradiction + repairable skill.
+ * If any are missing, demote to INCONCLUSIVE rather than guessing.
+ */
+function applyDiagnosisConfidenceGate(diag) {
+  if (!diag) return diag;
+  if (diag.status === STATUS.CORRECT || diag.status === "correct") {
+    return diag;
+  }
+
+  if (diag.status === STATUS.DIAGNOSED || diag.status === "diagnosed") {
+    const hasEvidence = Array.isArray(diag.evidence) && diag.evidence.length > 0;
+    const hasConcept = Boolean(diag.diagnosis?.brokenAt || diag.breakPoint?.concept || diag.errorType);
+    const hasContradiction = Boolean(diag.diagnosis?.explanation || (Array.isArray(diag.whyThisIsWrong) && diag.whyThisIsWrong.length > 0));
+    const hasRepairableSkill = Boolean(
+      (diag.repair?.steps && diag.repair.steps.length > 0) ||
+      (diag.theRightWay && diag.theRightWay.length > 0)
+    );
+
+    if (!hasEvidence || !hasConcept || !hasContradiction || !hasRepairableSkill) {
+      return makeDiagnosis({
+        ...diag,
+        status: STATUS.INCONCLUSIVE,
+        confidence: CONFIDENCE.LOW,
+        whyThisIsWrong: [
+          "Your response doesn't contain enough mathematical reasoning for me to identify where your thinking broke.",
+          "Try showing the step you used to reach your answer.",
+        ],
+      });
+    }
+  }
+
+  return diag;
 }
 
 /**
@@ -898,19 +1020,38 @@ function genericFallback({
 export function diagnoseStudentSubmission({
   studentAnswer = "",
   userWork = "",
+  answer: rawAnswerAlias = "",
+  work: rawWorkAlias = "",
   question = {},
+  questionText: rawQText = "",
+  expectedAnswer: rawExpectedAns = "",
   expectedSolution = {},
   isAnswerCorrect = false,
+  concept = "",
+  solution = "",
 } = {}) {
-  const answer = cleanString(studentAnswer);
-  const work = cleanString(userWork);
+  const answer = cleanString(studentAnswer || rawAnswerAlias);
+  const work = cleanString(userWork || rawWorkAlias);
 
-  const questionText = getQuestionText(question);
-  const expectedAnswer = getExpectedAnswer(question, expectedSolution);
+  const questionText = getQuestionText(question) || cleanString(rawQText);
+  const expectedAnswer = getExpectedAnswer(question, expectedSolution) || cleanString(rawExpectedAns);
   const authoredSteps = getAuthoredSteps(question, expectedSolution);
-  const explanation = getExplanation(question, expectedSolution);
+  const explanation = getExplanation(question, expectedSolution) || cleanString(solution);
 
-  // 1. Correct Answer
+  // 1. Evidence-first Reasoning Analysis for Conceptual / Number-Classification questions
+  const conceptualReasoningDiag = analyzeNumberClassificationResponse({
+    studentAnswer: answer,
+    userWork: work,
+    questionText,
+    expectedAnswer,
+    authoredSteps,
+    isAnswerCorrect,
+  });
+  if (conceptualReasoningDiag) {
+    return applyDiagnosisConfidenceGate(conceptualReasoningDiag);
+  }
+
+  // 2. Correct Answer (if not already handled by conceptual reasoner)
   if (isAnswerCorrect) {
     return diagnoseCorrectAnswer({
       studentAnswer: answer,
@@ -920,10 +1061,12 @@ export function diagnoseStudentSubmission({
     });
   }
 
-  // 2. Empty Submission
+  // 3. Empty Submission
   if (!answer && !work) {
     return makeDiagnosis({
       status: STATUS.BLANK,
+      studentAnswer: answer,
+      userWork: work,
       errorType: "blank_submission",
       whatYouDid: "No answer or working was provided.",
       whyThisIsWrong: ["An answer must be submitted to receive credit."],
@@ -937,15 +1080,17 @@ export function diagnoseStudentSubmission({
     });
   }
 
-  // 3. Unrecognized Keyboard Mash / Gibberish
-  if (isKeyboardMash(answer) && !work) {
+  // 4. Unrecognized Keyboard Mash / Gibberish (e.g. jcddcjdkdkd)
+  if ((isKeyboardMash(answer) || isUninterpretableInput(answer)) && !work) {
     return makeDiagnosis({
-      status: STATUS.UNRECOGNIZED,
+      status: STATUS.INCONCLUSIVE,
+      studentAnswer: answer,
+      userWork: work,
       errorType: "unrecognized_input",
       whatYouDid: `You entered "${answer}".`,
       whyThisIsWrong: [
-        "This input could not be interpreted as a mathematical answer or reasoning step.",
-        "Please enter a valid number, fraction, or algebraic expression.",
+        "Your response doesn't contain enough mathematical reasoning for me to determine where your thinking broke.",
+        "Try showing the step you used to reach your answer.",
       ],
       theRightWay: authoredSteps.length > 0
         ? authoredSteps
@@ -954,6 +1099,21 @@ export function diagnoseStudentSubmission({
       observed: [`Unrecognized input: ${answer}`],
       expected: expectedAnswer ? [expectedAnswer] : [],
       confidence: CONFIDENCE.LOW,
+      diagnosis: {
+        type: DIAGNOSIS_TYPE.UNCLASSIFIED,
+        brokenAt: "insufficient_evidence",
+        explanation: "Your response doesn't contain enough mathematical reasoning for me to determine where your thinking broke.",
+      },
+      repair: {
+        concept: "showing_working",
+        explanation: "Try showing the step you used to decide which number system each value belongs to.",
+        steps: ["Show the step or definition you used to reach your answer."],
+      },
+      verification: {
+        question: "What property or definition did you use to answer this question?",
+        expectedConcept: "definition",
+        type: "same_skill",
+      },
     });
   }
 
@@ -1238,13 +1398,15 @@ export function diagnoseStudentSubmission({
         correctAnswer: scienceExpected.formula,
       } : null;
 
-      return makeDiagnosis({
+      return applyDiagnosisConfidenceGate(makeDiagnosis({
         status: STATUS.INCONCLUSIVE,
+        studentAnswer: answer,
+        userWork: work,
         errorType: "inconclusive_reasoning",
         whatYouDid: `You entered "${answer}".`,
         whyThisIsWrong: [
-          "Your answer differs from the expected result, but we cannot verify your reasoning from this number alone.",
-          "Please show your working, or check your thinking below.",
+          "Your answer differs from the expected result, but without intermediate steps or written reasoning, I cannot identify where your thinking broke.",
+          "Try showing your working or explaining the step you used to reach your answer.",
         ],
         theRightWay: scienceExpected?.steps?.length ? scienceExpected.steps : authoredSteps,
         remember: scienceExpected?.formula ? `Use the formula: ${scienceExpected.formula}.` : "Show intermediate steps to get targeted diagnosis.",
@@ -1253,18 +1415,18 @@ export function diagnoseStudentSubmission({
         confidence: CONFIDENCE.LOW,
         contract: pipelineContract,
         probe: engineProbe || fallbackProbe,
-      });
+      }));
     }
   }
 
   // 10. Unclassified Fallback (Honest uncertainty without inventing reasoning)
-  return genericFallback({
+  return applyDiagnosisConfidenceGate(genericFallback({
     studentAnswer: answer,
     userWork: work,
     expectedAnswer,
     authoredSteps,
     explanation,
-  });
+  }));
 }
 
 export { diagnosticEngine };

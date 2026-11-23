@@ -5,13 +5,7 @@ import rehypeRaw from "rehype-raw";
 import TeacherFeedbackView from "./TeacherFeedbackView";
 import { diagnoseStudentSubmission } from "../../../diagnostics/teacherDiagnoser";
 import ReadingContainer from "../../layout/ReadingContainer";
-import QuestionDisplay from "../../feedback/QuestionDisplay";
-import StudentApproach from "../../feedback/StudentApproach";
-import CorrectMethod from "../../feedback/CorrectMethod";
-import RememberRule from "../../feedback/RememberRule";
-import StandardAnswer from "../../feedback/StandardAnswer";
 import FeedbackActions from "../../feedback/FeedbackActions";
-import ContentSection from "../../content/ContentSection";
 
 /**
  * ================================================================
@@ -727,49 +721,18 @@ function FeedbackDisplay({
       )}
 
       {/* ==========================================================
-          CORRECT ANSWER DOCUMENT SURFACE (MINIMAL, ONE SURFACE)
+          CONTINUOUS DIAGNOSTIC DOCUMENT SURFACE (CORRECT / DIAGNOSED / INCONCLUSIVE)
           ========================================================== */}
-      {isCorrect === true && (
-        <div aria-label="Correct Answer Review">
-          {questionText && (
-            <QuestionDisplay questionText={questionText} />
-          )}
-
-          {hasStudentAnswer && (
-            <StudentApproach studentAnswer={studentAnswer} approachSummary={`Your answer: "${studentAnswer}"`} />
-          )}
-
-          {hasSteps && (
-            <CorrectMethod steps={steps} title="HOW TO SOLVE IT" />
-          )}
-
-          {(showSolution || showWhy) && (
-            <RememberRule
-              title="KEY INSIGHT"
-              ruleText={solution || why}
-            />
-          )}
-
-          {hasCorrectAnswer && (
-            <StandardAnswer answer={rawAnswer} steps={steps} />
-          )}
-        </div>
-      )}
-
-      {/* ==========================================================
-          INCORRECT / PARTIAL DIAGNOSTIC DOCUMENT
-          ========================================================== */}
-      {(isCorrect === false || isPartial) && (
-        <TeacherFeedbackView
-          diagnosis={teacherDiagnosis}
-          rawAnswer={rawAnswer}
-          steps={steps}
-          why={why}
-          isPartial={isPartial}
-          questionText={questionText || feedback?.question?.q || feedback?.q || ""}
-          studentAnswer={studentAnswer}
-        />
-      )}
+      <TeacherFeedbackView
+        diagnosis={teacherDiagnosis}
+        rawAnswer={rawAnswer}
+        steps={steps}
+        why={why}
+        isPartial={isPartial}
+        isCorrect={isCorrect === true}
+        questionText={questionText || feedback?.question?.q || feedback?.q || ""}
+        studentAnswer={studentAnswer}
+      />
 
       {/* ==========================================================
           STANDARDIZED ACTIONS
