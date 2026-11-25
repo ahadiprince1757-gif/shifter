@@ -1,21 +1,30 @@
 import React from "react";
 import Markdown from "../../content/Markdown";
 import ContentSection from "../../content/ContentSection";
+import StepList from "../../content/StepList";
+import StepItem from "../../content/StepItem";
 import QuestionDisplay from "../../feedback/QuestionDisplay";
+import StudentApproach from "../../feedback/StudentApproach";
+import ErrorExplanation from "../../feedback/ErrorExplanation";
+import CorrectMethod from "../../feedback/CorrectMethod";
+import RememberRule from "../../feedback/RememberRule";
 import StandardAnswer from "../../feedback/StandardAnswer";
-import "./TeacherFeedbackView.css";
 
 /**
  * TeacherFeedbackView
  *
- * Implements the "Teacher Marking Student Exercise Book" feedback experience.
+ * One continuous, full-screen teaching document structured through whitespace
+ * and typography — NOT floating cards, rounded boxes, colored background panels,
+ * or decorative borders.
  *
- * Three Educational Layers:
- * 1. UNDERSTAND: Reads and marks the student's exact submission line by line.
- * 2. REPAIR: Shows the student how to correct their own step, preserving all valid work.
- * 3. VERIFY: Gives a targeted micro-check testing the isolated repaired skill.
- *
- * Invariant: Never displays generic error text or "I can't see your reasoning yet".
+ * Structure:
+ * 01 · QUESTION
+ * 02 · YOUR APPROACH
+ * 03 · DIAGNOSIS (WHY YOUR THINKING BROKE)
+ * 04 · THE RIGHT WAY (Tabular 01, 02 numbered steps demonstrating corrected method)
+ * 05 · RULE TO REMEMBER
+ * 06 · STANDARD ANSWER (if not redundant)
+ * 07 · CHECK YOUR THINKING (targeted verification probe)
  */
 export default function TeacherFeedbackView({
   diagnosis,
@@ -52,11 +61,13 @@ export default function TeacherFeedbackView({
     status === "correct" ||
     diagnosis.correctness === "correct";
 
-  // Raw submission content
+  // Raw submission content preserved exactly
   const submittedWork = (userWork || diagnosis.userWork || "").trim();
   const studentAns = (studentAnswer || diagnosis.studentAnswer || "").trim();
-  const displaySubmission = submittedWork || studentAns || "No response recorded";
-  const hasMultiLineWorking = submittedWork.includes("\n") || (submittedWork && submittedWork.length > 5);
+  const parsedStudentSteps = submittedWork
+    ? submittedWork.split(/\r?\n/).map((s) => s.trim()).filter(Boolean)
+    : [];
+  const hasMultiLineWorking = parsedStudentSteps.length > 1;
 
   // Helper to safely unpack structured explanations
   const unpack = (val) => {
@@ -99,80 +110,77 @@ export default function TeacherFeedbackView({
     unpackedRemember && typeof unpackedRemember === "object"
       ? unpackedRemember.why || unpackedRemember.explain || unpackedRemember.sol || ""
       : remember;
-  const rememberText = String(cleanRemember || why || "Double check each calculation step carefully.").trim();
+  const rememberText = String(cleanRemember || why || "").trim();
 
   // Verification Probe
   const targetVerification = verification || probe || null;
 
-  // Header meta text
-  const subjectTopicHeader = [subject, topic].filter(Boolean).join(" · ").toUpperCase() || "QUESTION FEEDBACK";
+  // Breakdown step info if multi-line working exists
+  const breakStepIndex = stepAnalysis?.whereYourWorkingBrokeDown?.stepIndex ?? parsedStudentSteps.length;
+  const breakStudentStep = stepAnalysis?.whereYourWorkingBrokeDown?.studentStep || parsedStudentSteps[parsedStudentSteps.length - 1] || studentAns;
+  const correctedStepVal = stepAnalysis?.whereYourWorkingBrokeDown?.correctedStep || expectedAnswer;
+
+  // Normalized why points
+  const rawWhyPoints = Array.isArray(whyThisIsWrong)
+    ? whyThisIsWrong
+    : (whyThisIsWrong ? [whyThisIsWrong] : []);
+  const whyPoints = Array.from(new Set(rawWhyPoints.map((p) => String(p).trim()).filter(Boolean)));
+
+  const errorExplanation =
+    diagDetail?.explanation ||
+    breakPoint?.explanation ||
+    (whyPoints.length > 0 ? whyPoints[0] : null) ||
+    (expectedAnswer
+      ? `You entered "${studentAns}", but the calculation leads to "${expectedAnswer}".`
+      : "The calculation diverged from the expected result.");
 
   // ==========================================================================
-  // PATH 1: CORRECT (Student Reasoning Verified)
+  // PATH 1: CORRECT (Student Reasoning Confirmed)
   // ==========================================================================
   if (isActuallyCorrect) {
     return (
-      <div className="teacher-exercise-book teacher-exercise-book--mastered" aria-label="Correct Exercise Marking">
-        <div className="exercise-meta-bar">
-          <span className="exercise-subject-badge">{subjectTopicHeader}</span>
-          <span className="exercise-status-badge exercise-status-badge--mastered">
-            ✓ Mastered
-          </span>
-        </div>
-
+      <div className="feedback-document-root" aria-label="Correct Exercise Feedback">
+        {/* 01 · QUESTION */}
         <QuestionDisplay questionText={questionText} />
 
-        <div className="exercise-submission-card">
-          <div className="exercise-submission-header">
-            <span>Your Submission</span>
-            <span style={{ color: "#16a34a", fontWeight: 700 }}>✓ Correct</span>
-          </div>
-          <div className="exercise-submission-content">
-            {displaySubmission}
-          </div>
-        </div>
+        {/* 02 · YOUR APPROACH */}
+        <ContentSection title="YOUR APPROACH">
+          {hasMultiLineWorking ? (
+            <div className="type-body" style={{ color: "var(--text-primary)" }}>
+              <p style={{ marginBottom: "var(--space-2)", color: "var(--text-secondary)", fontSize: "13px" }}>
+                You submitted your working:
+              </p>
+              <StepList>
+                {parsedStudentSteps.map((line, idx) => (
+                  <StepItem key={idx} number={idx + 1}>
+                    <code>{line}</code>
+                  </StepItem>
+                ))}
+              </StepList>
+            </div>
+          ) : (
+            <StudentApproach
+              studentAnswer={studentAns}
+              approachSummary={submittedWork || (studentAns ? `You entered "${studentAns}".` : "")}
+            />
+          )}
+        </ContentSection>
 
-        <ContentSection title="YOUR REASONING" className="feedback-section-reasoning">
+        {/* WHAT YOU DID RIGHT */}
+        <ContentSection title="WHAT YOU DID RIGHT">
           <div className="type-body" style={{ color: "var(--text-primary)" }}>
             <p>
-              {whatYouDid || "Your response correctly demonstrates the governing concept and calculation."}
+              {whatYouDid || "Your reasoning and calculation correctly follow the standard method."}
             </p>
           </div>
         </ContentSection>
 
+        {/* RULE TO REMEMBER */}
         {rememberText && (
-          <ContentSection title="KEY RULE REINFORCED" className="feedback-section-verified">
-            <div className="type-body" style={{ color: "var(--state-success, #16a34a)", fontWeight: 600 }}>
-              {rememberText}
-            </div>
-          </ContentSection>
+          <RememberRule ruleText={rememberText} title="RULE TO REMEMBER" />
         )}
 
-        {targetVerification?.question && (
-          <ContentSection title="CHECK YOUR THINKING" className="feedback-section-check">
-            <div className="exercise-verify-card">
-              <div className="type-body" style={{ fontWeight: 600, marginBottom: "0.5rem" }}>
-                <Markdown>{targetVerification.question}</Markdown>
-              </div>
-              {Array.isArray(targetVerification.options) && targetVerification.options.length > 0 && (
-                <div className="exercise-verify-options">
-                  {targetVerification.options.map((opt, i) => (
-                    <div
-                      key={i}
-                      className={`exercise-verify-option ${opt === targetVerification.correctAnswer ? "exercise-verify-option--correct" : ""}`}
-                    >
-                      <span>{opt}</span>
-                      {opt === targetVerification.correctAnswer && (
-                        <span className="exercise-verify-badge">✓ Key Distinction</span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          </ContentSection>
-        )}
-
+        {/* STANDARD ANSWER */}
         {expectedAnswer && (
           <StandardAnswer answer={expectedAnswer} steps={standardSteps} />
         )}
@@ -181,187 +189,130 @@ export default function TeacherFeedbackView({
   }
 
   // ==========================================================================
-  // PATH 2: INCORRECT — TEACHER MARKING EXERCISE BOOK
+  // PATH 2: DIAGNOSED / INCONCLUSIVE (Continuous Teaching Document)
   // ==========================================================================
-
-  const whyPoints = Array.isArray(whyThisIsWrong) ? whyThisIsWrong : (whyThisIsWrong ? [whyThisIsWrong] : []);
-  const errorExplanation =
-    diagDetail?.explanation ||
-    breakPoint?.explanation ||
-    (whyPoints.length > 0 ? whyPoints[0] : null) ||
-    `Your calculation diverged from the expected result (${expectedAnswer}).`;
-
-  // Fallback step generation if stepAnalysis is null but working exists
-  const parsedStudentSteps = submittedWork ? submittedWork.split(/\r?\n/).map((s) => s.trim()).filter(Boolean) : [];
-  const breakStepIndex = stepAnalysis?.whereYourWorkingBrokeDown?.stepIndex ?? parsedStudentSteps.length;
-  const breakStudentStep = stepAnalysis?.whereYourWorkingBrokeDown?.studentStep || parsedStudentSteps[parsedStudentSteps.length - 1] || studentAns;
-  const correctedStepVal = stepAnalysis?.whereYourWorkingBrokeDown?.correctedStep || expectedAnswer;
-
   return (
-    <div className="teacher-exercise-book" aria-label="Teacher Marking Feedback">
-      {/* 1. Header Meta Bar */}
-      <div className="exercise-meta-bar">
-        <span className="exercise-subject-badge">{subjectTopicHeader}</span>
-        <span className="exercise-status-badge exercise-status-badge--needs-correction">
-          Needs correction
-        </span>
-      </div>
-
-      {/* 2. Question Statement */}
+    <div className="feedback-document-root" aria-label="Feedback Document">
+      {/* 01 · QUESTION */}
       <QuestionDisplay questionText={questionText} />
 
-      {/* 3. YOUR SUBMISSION (Original student work preserved untouched) */}
-      <div className="exercise-submission-card">
-        <div className="exercise-submission-header">
-          <span>Your Submission (Original Work)</span>
-          <span style={{ color: "#dc2626", fontWeight: 700 }}>✗ Incorrect</span>
-        </div>
-        <div className="exercise-submission-content">
-          {displaySubmission}
-        </div>
-      </div>
-
-      {/* 4. LAYER 1: UNDERSTAND (Annotated Steps) */}
-      {hasMultiLineWorking && parsedStudentSteps.length > 1 ? (
-        <ContentSection title="LET'S LOOK AT YOUR STEPS">
-          <div className="exercise-step-list">
-            {parsedStudentSteps.map((line, idx) => {
-              const stepNumber = idx + 1;
-              const isErrorStep = stepNumber === breakStepIndex;
-              const isValid = stepNumber < breakStepIndex;
-
-              return (
-                <div
-                  key={idx}
-                  className={`exercise-step-card ${isErrorStep ? "exercise-step-card--divergent" : "exercise-step-card--valid"}`}
-                >
-                  <div className="exercise-step-header">
-                    <span className="exercise-step-title">
-                      <span className="exercise-step-code">Step {stepNumber}:</span>
-                      <code>{line}</code>
-                    </span>
-                    <span className={`exercise-step-badge ${isErrorStep ? "exercise-step-badge--error" : "exercise-step-badge--correct"}`}>
-                      {isErrorStep ? "✗ Where your working went wrong" : "✓ Correct"}
-                    </span>
-                  </div>
-
-                  <div className="exercise-step-explanation">
-                    {isValid && (
-                      <span>Valid step: You correctly followed the procedure up to this point.</span>
+      {/* 02 · YOUR APPROACH */}
+      <ContentSection title="YOUR APPROACH">
+        {hasMultiLineWorking ? (
+          <div className="type-body" style={{ color: "var(--text-primary)" }}>
+            <p style={{ marginBottom: "var(--space-2)", color: "var(--text-secondary)", fontSize: "13px" }}>
+              You submitted your working:
+            </p>
+            <StepList>
+              {parsedStudentSteps.map((line, idx) => {
+                const stepNum = idx + 1;
+                const isError = stepNum === breakStepIndex;
+                return (
+                  <StepItem key={idx} number={stepNum} isCorrected={isError}>
+                    <code>{line}</code>
+                    {isError && (
+                      <span style={{ marginLeft: "8px", color: "var(--state-error, #dc2626)", fontSize: "12px", fontWeight: 600 }}>
+                        ← Where working diverged
+                      </span>
                     )}
-                    {isErrorStep && (
-                      <Markdown>{errorExplanation}</Markdown>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
+                  </StepItem>
+                );
+              })}
+            </StepList>
           </div>
-        </ContentSection>
-      ) : (
-        /* Single final answer submitted — Teacher explains the calculation */
-        <ContentSection title="LET'S EXAMINE THE CALCULATION">
-          {standardSteps.length > 0 ? (
-            <div className="exercise-step-list">
-              {standardSteps.map((s, idx) => (
-                <div key={idx} className="exercise-step-card exercise-step-card--valid">
-                  <div className="exercise-step-header">
-                    <span className="exercise-step-title">Step {idx + 1}:</span>
-                  </div>
-                  <div className="exercise-step-explanation">
-                    <Markdown>{s}</Markdown>
-                  </div>
-                </div>
-              ))}
-            </div>
-          ) : (
-            <div className="type-body" style={{ color: "var(--text-primary)" }}>
-              <p>The standard method leads to <strong>{expectedAnswer}</strong>.</p>
-            </div>
-          )}
+        ) : (
+          <StudentApproach
+            studentAnswer={studentAns}
+            approachSummary={submittedWork || (studentAns ? `You entered "${studentAns}".` : "")}
+          />
+        )}
+      </ContentSection>
 
-          <div style={{ marginTop: "1rem" }}>
-            <div style={{ fontSize: "0.85rem", fontWeight: 700, color: "#dc2626", textTransform: "uppercase", marginBottom: "0.35rem" }}>
-              Where your answer diverged
-            </div>
-            <div className="type-body">
-              <p>
-                You entered <strong>"{studentAns}"</strong>, but the expected calculation gives <strong>"{expectedAnswer}"</strong>.
+      {/* 03 · WHAT YOU DID RIGHT (if multi-step working had valid initial steps) */}
+      {hasMultiLineWorking && breakStepIndex > 1 && (
+        <ContentSection title="WHAT YOU DID RIGHT">
+          <div className="type-body" style={{ color: "var(--text-primary)" }}>
+            {parsedStudentSteps.slice(0, breakStepIndex - 1).map((line, idx) => (
+              <p key={idx} style={{ margin: "2px 0" }}>
+                Step {idx + 1} was valid: <code>{line}</code>.
               </p>
-              <Markdown>{errorExplanation}</Markdown>
-            </div>
+            ))}
           </div>
         </ContentSection>
       )}
 
-      {/* 5. LAYER 2: REPAIR (Correcting the working) */}
-      <ContentSection title="LET'S CORRECT YOUR WORKING" className="feedback-section-repair">
-        <div className="exercise-comparison-box">
-          <div className="exercise-comparison-col exercise-comparison-col--original">
-            <div className="exercise-comparison-label">Your Original Step</div>
-            <div className="exercise-comparison-value">
+      {/* 04 · WHY YOUR THINKING BROKE */}
+      <ContentSection title="WHY YOUR THINKING BROKE">
+        <div className="type-body" style={{ color: "var(--text-primary)" }}>
+          {hasMultiLineWorking && breakStudentStep && (
+            <p style={{ fontFamily: "monospace", fontWeight: 600, color: "var(--state-error, #dc2626)", marginBottom: "4px" }}>
               {breakStudentStep}
-            </div>
-          </div>
-          <div className="exercise-comparison-col exercise-comparison-col--corrected">
-            <div className="exercise-comparison-label">Corrected Step</div>
-            <div className="exercise-comparison-value">
-              {correctedStepVal}
-            </div>
-          </div>
+            </p>
+          )}
+          <Markdown>{errorExplanation}</Markdown>
         </div>
-
-        <div className="exercise-reassurance-note">
-          You did not need to abandon your whole method — you only needed to correct this specific calculation step.
-        </div>
-
-        {rememberText && (
-          <div style={{ marginTop: "0.75rem", fontSize: "0.92rem", color: "var(--text-primary)" }}>
-            <strong>What to remember: </strong>
-            <Markdown>{rememberText}</Markdown>
-          </div>
-        )}
       </ContentSection>
 
-      {/* 6. LAYER 3: VERIFY (Targeted Same-Skill Retest) */}
-      <ContentSection title="LET'S SEE IF YOU'VE GOT IT (Verification)" className="feedback-section-check">
-        <div className="exercise-verify-card">
-          <div className="type-body" style={{ fontWeight: 600, marginBottom: "0.5rem" }}>
-            <Markdown>
-              {targetVerification?.question || `Calculate the corrected step: What is ${correctedStepVal}?`}
-            </Markdown>
+      {/* 05 · THE RIGHT WAY (Tabular deliberate 01, 02 steps) */}
+      {standardSteps.length > 0 && (
+        <CorrectMethod steps={standardSteps} title="THE RIGHT WAY" />
+      )}
+
+      {/* 06 · RULE TO REMEMBER */}
+      {rememberText && (
+        <RememberRule ruleText={rememberText} title="RULE TO REMEMBER" />
+      )}
+
+      {/* 07 · STANDARD ANSWER (omitted if redundant with last step) */}
+      {expectedAnswer && (
+        <StandardAnswer answer={expectedAnswer} steps={standardSteps} />
+      )}
+
+      {/* 08 · CHECK YOUR THINKING (Targeted Verification Retest) */}
+      {targetVerification?.question && (
+        <ContentSection title="CHECK YOUR THINKING">
+          <div className="type-body" style={{ fontWeight: 600, marginBottom: "var(--space-2)" }}>
+            <Markdown>{targetVerification.question}</Markdown>
           </div>
 
-          {Array.isArray(targetVerification?.options) && targetVerification.options.length > 0 ? (
-            <div className="exercise-verify-options">
-              {targetVerification.options.map((opt, i) => (
-                <div
-                  key={i}
-                  className={`exercise-verify-option ${opt === targetVerification.correctAnswer ? "exercise-verify-option--correct" : ""}`}
-                >
-                  <span>{opt}</span>
-                  {opt === targetVerification.correctAnswer && (
-                    <span className="exercise-verify-badge">✓ Correct Reasoning</span>
-                  )}
-                </div>
-              ))}
+          {Array.isArray(targetVerification.options) && targetVerification.options.length > 0 ? (
+            <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "8px" }}>
+              {targetVerification.options.map((opt, i) => {
+                const isTarget = opt === targetVerification.correctAnswer;
+                return (
+                  <div
+                    key={i}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "6px 0",
+                      borderBottom: "1px solid var(--border-subtle, #f0f0f0)",
+                      fontSize: "14.5px",
+                      color: "var(--text-primary)",
+                    }}
+                  >
+                    <span>{opt}</span>
+                    {isTarget && (
+                      <span style={{ color: "var(--state-success, #15803d)", fontSize: "12px", fontWeight: 600 }}>
+                        ✓ Correct Reasoning
+                      </span>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           ) : (
             expectedAnswer && (
-              <div className="exercise-verify-options">
-                <div className="exercise-verify-option exercise-verify-option--correct">
-                  <span>{expectedAnswer}</span>
-                  <span className="exercise-verify-badge">✓ Target Result</span>
-                </div>
+              <div style={{ padding: "6px 0", fontSize: "14.5px", color: "var(--text-primary)" }}>
+                <span>{expectedAnswer}</span>
+                <span style={{ marginLeft: "12px", color: "var(--state-success, #15803d)", fontSize: "12px", fontWeight: 600 }}>
+                  ✓ Target Result
+                </span>
               </div>
             )
           )}
-        </div>
-      </ContentSection>
-
-      {/* 7. Standard Solution Reference */}
-      {expectedAnswer && (
-        <StandardAnswer answer={expectedAnswer} steps={standardSteps} />
+        </ContentSection>
       )}
     </div>
   );

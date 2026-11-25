@@ -100,6 +100,27 @@ export class DiagnosticEngine {
     const expectedAnswer = question?.ans || question?.correctAnswer || "";
     const authoredSteps = question?.steps || [];
 
+    // Format verification question naturally without "Calculate: Is ... = ?"
+    let probeQuestion = "Which formula or operation did you use to get your answer?";
+    if (expectedAnswer) {
+      const qText = (question?.q || "").trim();
+      if (/^(is|are|which|what|can|how|why|does|do)\b/i.test(qText) || qText.endsWith("?")) {
+        probeQuestion = qText;
+      } else {
+        const cleanExp = qText.replace(/^solve:?\s*/i, "").trim();
+        probeQuestion = cleanExp ? `Calculate: ${cleanExp} = ?` : `Calculate: What is ${expectedAnswer}?`;
+      }
+    }
+
+    const whyThisIsWrong = [];
+    if (hasWork) {
+      whyThisIsWrong.push("The calculation does not lead to the required result.");
+    } else if (expectedAnswer) {
+      whyThisIsWrong.push(`You entered "${studentAnswer}", but the calculation leads to "${expectedAnswer}".`);
+    } else {
+      whyThisIsWrong.push("The calculation diverged from the expected result.");
+    }
+
     return {
       status: "inconclusive",
       correctness: "incorrect",
@@ -117,22 +138,13 @@ export class DiagnosticEngine {
       },
       errorType: "inconclusive_reasoning",
       whatYouDid: studentAnswer ? `You entered "${studentAnswer}".` : "No final answer was provided.",
-      whyThisIsWrong: [
-        hasWork
-          ? "The calculation does not lead to the required result."
-          : (expectedAnswer
-              ? `You entered "${studentAnswer}", but the calculation leads to "${expectedAnswer}".`
-              : "The calculation diverged from the expected result."),
-        "Review each step of the method below to see where the calculation diverged.",
-      ],
+      whyThisIsWrong,
       theRightWay: authoredSteps.length > 0 ? authoredSteps : (expectedAnswer ? [`Calculate: ${expectedAnswer}`] : []),
       remember: expectedAnswer
         ? `Double check your calculation: the expected result is ${expectedAnswer}.`
         : "Review the step-by-step method to see where your calculation diverged.",
       probe: {
-        question: expectedAnswer
-          ? `Calculate: ${question?.q ? question.q.replace(/^solve:?\s*/i, "") : "the result"} = ?`
-          : "Which formula or operation did you use to get your answer?",
+        question: probeQuestion,
         expectedConcept: "operation choice",
         options: expectedAnswer && studentAnswer ? [expectedAnswer, studentAnswer] : [],
         correctAnswer: expectedAnswer,
