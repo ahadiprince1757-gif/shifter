@@ -1,3 +1,13 @@
+import React from "react";
+import ContentSection from "../../content/ContentSection";
+
+/**
+ * QuizInputFields
+ *
+ * Clean, calm input areas following Global Layout Rules.
+ * Structure through typography and purposeful vertical spacing,
+ * without heavy colored boxes or noisy decorative borders.
+ */
 function QuizInputFields({
   isCalc,
   mode = "conceptual",
@@ -11,70 +21,113 @@ function QuizInputFields({
 
   if (requiresWorking) {
     return (
-      <>
-        <div style={{ margin: ".75rem 0" }}>
-          <div className="fl">
-            Show Your Working
-            <span
-              style={{
-                fontWeight: 400,
-                fontSize: ".64rem",
-                color: "var(--t3)",
-              }}
-            >
-              (write every step)
-            </span>
-          </div>
+      <div className="quiz-input-container" style={{ marginTop: "var(--space-5)" }}>
+        <ContentSection title="YOUR WORKING (STEP-BY-STEP)">
           <textarea
-            className="work-ta"
-            placeholder="Step 1: Write the formula..."
+            className="editorial-textarea"
+            placeholder="Write each step of your calculation..."
             value={work}
             onChange={(e) => setWork(e.target.value)}
             disabled={disabled}
+            rows={5}
+            style={{
+              width: "100%",
+              padding: "12px 14px",
+              fontFamily: "var(--font-mono, monospace)",
+              fontSize: "15px",
+              lineHeight: "1.6",
+              color: "var(--text-primary)",
+              background: "var(--surface)",
+              border: "1px solid var(--border-subtle, #e5e5e5)",
+              borderRadius: "var(--radius-control, 8px)",
+              resize: "vertical",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
           />
-        </div>
+        </ContentSection>
 
-        <div style={{ margin: ".58rem 0" }}>
-          <div className="fl">Your Final Answer</div>
+        <ContentSection title="FINAL ANSWER" style={{ marginTop: "var(--space-4)" }}>
           <input
             type="text"
-            className="ans-input"
-            placeholder="Type your final calculated answer..."
+            className="editorial-input"
+            placeholder="Your final result..."
             value={answer}
             onChange={(e) => setAnswer(e.target.value)}
             disabled={disabled}
+            style={{
+              width: "100%",
+              padding: "10px 14px",
+              fontFamily: "var(--font-family)",
+              fontSize: "15.5px",
+              color: "var(--text-primary)",
+              background: "var(--surface)",
+              border: "1px solid var(--border-subtle, #e5e5e5)",
+              borderRadius: "var(--radius-control, 8px)",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
           />
-        </div>
-      </>
+        </ContentSection>
+      </div>
     );
   }
 
   if (mode === "short_answer") {
     return (
-      <div style={{ margin: ".75rem 0" }}>
-        <div className="fl">Your Answer</div>
-        <input
-          type="text"
-          className="ans-input"
-          placeholder="Type your answer here..."
-          value={answer}
-          onChange={(e) => setAnswer(e.target.value)}
-          disabled={disabled}
-        />
+      <div className="quiz-input-container" style={{ marginTop: "var(--space-5)" }}>
+        <ContentSection title="YOUR ANSWER">
+          <input
+            type="text"
+            className="editorial-input"
+            placeholder="Type your answer here..."
+            value={answer}
+            onChange={(e) => setAnswer(e.target.value)}
+            disabled={disabled}
+            style={{
+              width: "100%",
+              padding: "10px 14px",
+              fontFamily: "var(--font-family)",
+              fontSize: "15.5px",
+              color: "var(--text-primary)",
+              background: "var(--surface)",
+              border: "1px solid var(--border-subtle, #e5e5e5)",
+              borderRadius: "var(--radius-control, 8px)",
+              outline: "none",
+              boxSizing: "border-box",
+            }}
+          />
+        </ContentSection>
       </div>
     );
   }
 
   return (
-    <div style={{ margin: ".75rem 0" }}>
-      <div className="fl">Your Explanation / Response</div>
-      <textarea
-        className="work-ta"
-        placeholder="Type your response here..."
-        value={answer}
-        onChange={(e) => setAnswer(e.target.value)}
-        disabled={disabled}
-      />
+    <div className="quiz-input-container" style={{ marginTop: "var(--space-5)" }}>
+      <ContentSection title="YOUR RESPONSE">
+        <textarea
+          className="editorial-textarea"
+          placeholder="Explain your thinking or response..."
+          value={answer}
+          onChange={(e) => setAnswer(e.target.value)}
+          disabled={disabled}
+          rows={4}
+          style={{
+            width: "100%",
+            padding: "12px 14px",
+            fontFamily: "var(--font-family)",
+            fontSize: "15px",
+            lineHeight: "1.6",
+            color: "var(--text-primary)",
+            background: "var(--surface)",
+            border: "1px solid var(--border-subtle, #e5e5e5)",
+            borderRadius: "var(--radius-control, 8px)",
+            resize: "vertical",
+            outline: "none",
+            boxSizing: "border-box",
+          }}
+        />
+      </ContentSection>
     </div>
   );
 }

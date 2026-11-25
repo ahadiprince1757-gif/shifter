@@ -1,3 +1,12 @@
+import React from "react";
+
+/**
+ * QuizActionButtons
+ *
+ * One primary action: Submit Answer.
+ * Secondary helper: Hint (calm, understated).
+ * Conforms to Rule 7 (ONE CLEAR ACTION) and Rule 8 (CONTENT BEFORE DECORATION).
+ */
 function QuizActionButtons({
   showHint,
   setShowHint,
@@ -6,17 +15,22 @@ function QuizActionButtons({
   canSubmit,
 }) {
   return (
-    <div className="btn-row" style={{ marginTop: ".8rem" }}>
-      <button className="btn-g" onClick={() => setShowHint(!showHint)}>
-        {showHint ? "Hide Hint" : "Show Hint"}
-      </button>
-
+    <div style={{ marginTop: "var(--space-6)", display: "flex", flexDirection: "column", gap: "10px" }}>
       <button
-        className="btn-p"
+        type="button"
+        className="primary-action-btn"
         onClick={submitAnswer}
         disabled={grading || !canSubmit}
       >
-        {grading ? "Checking..." : "Submit Answer"}
+        {grading ? "CHECKING..." : "SUBMIT ANSWER →"}
+      </button>
+
+      <button
+        type="button"
+        className="secondary-action-btn"
+        onClick={() => setShowHint(!showHint)}
+      >
+        {showHint ? "Hide Hint" : "Show Hint"}
       </button>
     </div>
   );

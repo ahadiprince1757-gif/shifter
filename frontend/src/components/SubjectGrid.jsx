@@ -6,20 +6,13 @@ import { useNextAction } from "../hooks/useNextAction";
 import { enroll } from "../api";
 import staticCurriculum from "../data/curriculum.json";
 import { ACTIVE_SUBJECT_IDS } from "../data/subjectRegistry";
+import ReadingContainer from "./layout/ReadingContainer";
+import ContentSection from "./content/ContentSection";
 
-// The canonical 6 subjects, immediately accessible without network or database delays
+// Canonical 6 subjects
 const CANONICAL_FALLBACK = Object.freeze(
   staticCurriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id))
 );
-
-const HUMANISTIC_PALETTES = [
-  { accent: "#74B8E8", bg: "rgba(116, 184, 232, 0.06)", border: "rgba(116, 184, 232, 0.28)" },
-  { accent: "#5AAEE0", bg: "rgba(90, 174, 224, 0.06)",  border: "rgba(90, 174, 224, 0.28)" },
-  { accent: "#8ECBF0", bg: "rgba(142, 203, 240, 0.06)", border: "rgba(142, 203, 240, 0.28)" },
-  { accent: "#4A9FD4", bg: "rgba(74, 159, 212, 0.06)",  border: "rgba(74, 159, 212, 0.28)" },
-  { accent: "#9ED4F5", bg: "rgba(158, 212, 245, 0.06)", border: "rgba(158, 212, 245, 0.28)" },
-  { accent: "#60B4E8", bg: "rgba(96, 180, 232, 0.06)",  border: "rgba(96, 180, 232, 0.28)" },
-];
 
 function formatTitle(str) {
   if (!str) return "";
@@ -34,11 +27,18 @@ function formatTitle(str) {
     .join(" ");
 }
 
+/**
+ * SubjectGrid
+ *
+ * Implements the Tixar Global Layout Rules:
+ * - Content belongs to the page; no artificial floating containers.
+ * - Structure through typography: Title, metadata, and clean list/grid items.
+ * - Purposeful whitespace over heavy borders, drop-shadows, and decorative card spines.
+ */
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const { session } = useAuth();
   const userId = session?.user?.id || null;
 
-  // Always drop the 6 canonical subjects immediately — zero loading state, zero blank screen
   const displaySubjects = useMemo(() => {
     if (Array.isArray(curriculum) && curriculum.length > 0) {
       const canonical = curriculum.filter((s) => ACTIVE_SUBJECT_IDS.includes(s.id));
@@ -47,10 +47,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
     return CANONICAL_FALLBACK;
   }, [curriculum]);
 
-  // Compute the single most urgent next study action
   const { action: nextAction, loading: nextActionLoading } = useNextAction(userId);
 
-  // localStorage is synchronous — derive lastTopic via useMemo
   const lastTopic = useMemo(() => {
     if (!userId) return null;
     try {
@@ -61,7 +59,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   const handleSubjectClick = (subjectId, label) => {
     logger.action("SUBJECT_SELECTED", "success", { subjectId, subjectLabel: label });
-    // Silently enroll user in the subject on first visit (fire-and-forget)
     if (userId) enroll(subjectId).catch(() => {});
     openSubject(subjectId);
   };
@@ -76,77 +73,101 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
 
   return (
     <div id="v-subjects" className="view active" style={{ paddingTop: "0.5rem" }}>
-      {/* Smart Prompt — single next-action card, hidden when nothing is urgent */}
-      <SmartPrompt action={nextAction} loading={nextActionLoading} />
+      <ReadingContainer>
+        {/* Urgent Next Action Prompt (if active) */}
+        <SmartPrompt action={nextAction} loading={nextActionLoading} />
 
-      {/* Fallback Bookmark Continue Card (only rendered if SmartPrompt is inactive) */}
-      {!nextAction && showResume && (
-        <div className="resume-card-humanistic">
-          <div className="resume-card-content">
-            <div className="resume-card-kicker">Pick up where you left off</div>
-            <h2 className="resume-card-topic-title">
-              {formatTitle(lastTopic.topic)}
-            </h2>
-            <div className="resume-card-location">
-              {formatTitle(lastTopic.subjectLabel || lastTopic.subjectId)} · {formatTitle(lastTopic.chapterLabel || lastTopic.chapterId)}
+        {/* Resume bookmark prompt */}
+        {!nextAction && showResume && (
+          <div style={{ marginBottom: "var(--space-6)", paddingBottom: "var(--space-4)", borderBottom: "1px solid var(--border-subtle, #e5e5e5)" }}>
+            <div className="type-meta" style={{ marginBottom: "var(--space-1)", textTransform: "uppercase" }}>
+              Pick up where you left off
             </div>
-          </div>
-          <button
-            type="button"
-            className="resume-card-action-btn"
-            onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
-          >
-            Continue →
-          </button>
-        </div>
-      )}
-
-      {/* Subject Section Header */}
-      <div className="sg-section-title">
-        <span>Your Subjects</span>
-        <span className="sg-subject-count">{displaySubjects.length} curated courses</span>
-      </div>
-
-      {/* Humanistic Subject Cards Grid */}
-      <div className="subj-grid-humanistic">
-        {displaySubjects.map((s, idx) => {
-          const chapters = s.chapters || [];
-          const totalTopics = chapters.reduce((a, c) => a + (c && Array.isArray(c.topics) ? c.topics.length : 0), 0);
-          const palette = HUMANISTIC_PALETTES[idx % HUMANISTIC_PALETTES.length];
-
-          return (
-            <button
-              className="subj-notebook-card"
-              key={s.id}
-              onClick={() => handleSubjectClick(s.id, s.label)}
-              style={{
-                "--card-accent": palette.accent,
-                "--card-bg-tint": palette.bg,
-                "--card-border-tint": palette.border,
-              }}
-              aria-label={`${s.label}, ${chapters.length} chapters, ${totalTopics} topics`}
-            >
-              <div className="subj-notebook-spine" />
-              <div className="subj-notebook-body">
-                <div className="subj-notebook-header">
-                  <div className="subj-notebook-info">
-                    <div className="subj-notebook-name">{s.label}</div>
-                    <div className="subj-notebook-chapters">
-                      {chapters.length} chapter{chapters.length !== 1 ? "s" : ""} · {totalTopics} topic{totalTopics !== 1 ? "s" : ""}
-                    </div>
-                  </div>
-                  <div className="subj-enter-arrow" aria-hidden="true" style={{ color: palette.accent, fontSize: "1.25rem", fontWeight: 700 }}>
-                    →
-                  </div>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px" }}>
+              <div>
+                <h2 className="type-question" style={{ margin: "0 0 4px 0" }}>
+                  {formatTitle(lastTopic.topic)}
+                </h2>
+                <div className="type-supporting">
+                  {formatTitle(lastTopic.subjectLabel || lastTopic.subjectId)} · {formatTitle(lastTopic.chapterLabel || lastTopic.chapterId)}
                 </div>
               </div>
-            </button>
-          );
-        })}
-      </div>
+              <button
+                type="button"
+                className="primary-action-btn"
+                style={{ width: "auto", minWidth: "120px", padding: "8px 16px" }}
+                onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
+              >
+                Continue →
+              </button>
+            </div>
+          </div>
+        )}
+
+        {/* Main Section Header */}
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", marginBottom: "var(--space-5)" }}>
+          <h1 className="type-page-heading" style={{ fontSize: "24px" }}>
+            Your Subjects
+          </h1>
+          <span className="type-meta">
+            {displaySubjects.length} subjects
+          </span>
+        </div>
+
+        {/* Subjects List: Typography, clean 2-column or 1-column layout, zero card soup */}
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))",
+            gap: "1px",
+            background: "var(--border-subtle, #e5e5e5)",
+            border: "1px solid var(--border-subtle, #e5e5e5)",
+            borderRadius: "var(--radius-control, 8px)",
+            overflow: "hidden",
+          }}
+        >
+          {displaySubjects.map((s) => {
+            const chapters = s.chapters || [];
+            const totalTopics = chapters.reduce((a, c) => a + (c && Array.isArray(c.topics) ? c.topics.length : 0), 0);
+
+            return (
+              <button
+                key={s.id}
+                onClick={() => handleSubjectClick(s.id, s.label)}
+                style={{
+                  background: "var(--surface)",
+                  border: "none",
+                  padding: "20px 24px",
+                  textAlign: "left",
+                  cursor: "pointer",
+                  display: "flex",
+                  justifyContent: "space-between",
+                  alignItems: "center",
+                  outline: "none",
+                  transition: "background 0.15s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.background = "var(--surface-subtle, #f7f7f7)")}
+                onMouseLeave={(e) => (e.currentTarget.style.background = "var(--surface)")}
+                aria-label={`${s.label}, ${chapters.length} chapters, ${totalTopics} topics`}
+              >
+                <div>
+                  <div className="type-question" style={{ fontSize: "17px", fontWeight: 600, color: "var(--text-primary)" }}>
+                    {s.label}
+                  </div>
+                  <div className="type-supporting" style={{ marginTop: "4px", color: "var(--text-secondary)" }}>
+                    {chapters.length} chapters · {totalTopics} topics
+                  </div>
+                </div>
+                <div style={{ color: "var(--text-muted)", fontSize: "16px", marginLeft: "12px" }} aria-hidden="true">
+                  →
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      </ReadingContainer>
     </div>
   );
 }
 
 export default SubjectGrid;
-

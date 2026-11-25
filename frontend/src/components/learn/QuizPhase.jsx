@@ -24,6 +24,16 @@ const markdownComponents = {
   ),
 };
 
+/**
+ * QuizPhase
+ *
+ * Implements the Global Layout Rules across the interactive testing phase:
+ * 1. ONE INTERFACE. EVERY SCREEN.
+ * 2. NO FLOATING CONTENT / CARDS (the screen itself is the document).
+ * 3. NO CARD SOUP (no rounded card wrappers, borders, or badge overload).
+ * 4. STRUCTURE THROUGH TYPOGRAPHY & WHITESPACE.
+ * 5. ONE CLEAR FOCUS & ONE PRIMARY ACTION.
+ */
 function QuizPhase({
   topic,
   qIdx,
@@ -72,11 +82,11 @@ function QuizPhase({
 
     return (
       <ReadingContainer style={{ paddingBlock: "var(--space-4)" }}>
-        <div className="type-meta" style={{ marginBottom: "var(--space-3)" }}>
+        <div className="type-meta" style={{ marginBottom: "var(--space-3)", textTransform: "uppercase" }}>
           Concept Review & Method Repair
         </div>
 
-        {/* 1. Step-by-Step Solution Timeline FIRST */}
+        {/* 1. Step-by-Step Solution Timeline */}
         {displaySteps.length > 0 && (
           <ContentSection title="HOW TO SOLVE IT (STEP-BY-STEP)">
             <StepList>
@@ -91,7 +101,7 @@ function QuizPhase({
           </ContentSection>
         )}
 
-        {/* 2. Verified Target Answer SECOND */}
+        {/* 2. Target Answer */}
         {displayAnswer && (
           <ContentSection title="TARGET CORRECT ANSWER">
             <div className="type-question" style={{ fontWeight: 600 }}>
@@ -102,7 +112,7 @@ function QuizPhase({
           </ContentSection>
         )}
 
-        {/* 3. Explanation (if non-redundant) */}
+        {/* 3. Explanation */}
         {displayExplanation &&
           displaySteps.length === 0 &&
           !/^\d+$/.test(String(displayExplanation).trim()) && (
@@ -148,8 +158,11 @@ function QuizPhase({
     );
   }
 
-  // ── Normal / Retry Question Screen ─────────────────────────
+  // ── Interactive Question Screen (One Continuous Surface) ──
   const isMCQ = curQ?.type === "mcq" && Array.isArray(curQ?.options) && curQ.options.length > 0;
+  const progressLabel = retryState === "retry"
+    ? "PRACTICE VARIANT"
+    : `QUESTION ${qIdx + 1} OF ${totalQs || 1}`;
 
   return (
     <>
@@ -160,99 +173,88 @@ function QuizPhase({
         onClose={() => setDrawerOpen(false)}
       />
 
-      <div className="lc" id="qCard">
-        <div className="lch">
-          <div className="quiz-phase-header-row">
-            <span className="lbadge lb-q">
-              {retryState === "retry" ? "Retry" : `Question ${qIdx + 1} of ${totalQs || 1}`}
-            </span>
-          </div>
+      <ReadingContainer style={{ paddingBlock: "var(--space-4)" }}>
+        {/* Progress Header */}
+        <div className="type-meta" style={{ marginBottom: "var(--space-4)", textTransform: "uppercase" }}>
+          {progressLabel}
         </div>
 
-        <div className="lcb">
-          {retryState === "retry" && (
-            <div className="retry-mode-banner">
-              Practice Variant — Testing the same core concept with new parameters.
-            </div>
-          )}
-          <QuestionDisplay
-            isCalc={isCalc}
-            questionText={curQ?.q}
-            rubricEval={curQ?.rubricEval}
-            proveItState={curQ?.proveItState}
-          />
+        {/* 01 · Question Statement */}
+        <QuestionDisplay
+          isCalc={isCalc}
+          questionText={curQ?.q}
+          rubricEval={curQ?.rubricEval}
+          proveItState={curQ?.proveItState}
+        />
 
-          {isMCQ ? (
-            <div className="mcq-group">
+        {/* 02 · Student Input (MCQ Options or Step-by-Step Working & Final Answer) */}
+        {isMCQ ? (
+          <ContentSection title="SELECT YOUR ANSWER" style={{ marginTop: "var(--space-5)" }}>
+            <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
               {curQ.options.map((opt, i) => (
                 <label
                   key={i}
-                  className={`mcq-option${answer === opt ? " mcq-selected" : ""}`}
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    gap: "12px",
+                    padding: "10px 14px",
+                    border: answer === opt ? "1px solid var(--text-primary)" : "1px solid var(--border-subtle, #e5e5e5)",
+                    borderRadius: "var(--radius-control, 8px)",
+                    cursor: grading ? "default" : "pointer",
+                    background: answer === opt ? "var(--surface-subtle, #f7f7f7)" : "var(--surface)",
+                    transition: "border-color 0.15s ease",
+                  }}
                   onClick={() => !grading && setAnswer(opt)}
                 >
                   <input
                     type="radio"
                     name="mcq"
-                    className="mcq-radio"
                     value={opt}
                     checked={answer === opt}
                     onChange={() => !grading && setAnswer(opt)}
                     disabled={grading}
+                    style={{ margin: 0 }}
                   />
-                  <span className="mcq-letter">
+                  <span style={{ fontWeight: 600, color: "var(--text-muted)", fontSize: "13px" }}>
                     {String.fromCharCode(65 + i)}
                   </span>
-                  <span className="mcq-label">{opt}</span>
+                  <span className="type-body" style={{ color: "var(--text-primary)" }}>
+                    {opt}
+                  </span>
                 </label>
               ))}
             </div>
-          ) : (
-            <QuizInputFields
-              isCalc={isCalc}
-              mode={determineResponseMode(curQ, topic).mode}
-              work={work}
-              setWork={setWork}
-              answer={answer}
-              setAnswer={setAnswer}
-              disabled={grading}
-            />
-          )}
-
-          {validationError && (
-            <div className="validation-error">{validationError}</div>
-          )}
-
-          <HintBox showHint={showHint} hintText={curQ?.hint} hints={curQ?.hints} />
-
-          {/* Metacognitive Confidence Selector — shown before first submission */}
-          {answer.trim() && (
-            <div className="confidence-selector">
-              <div className="confidence-selector-label">How confident are you in this answer?</div>
-              <div className="confidence-btn-group">
-                {["low", "medium", "high"].map((level) => (
-                  <button
-                    key={level}
-                    type="button"
-                    className={`confidence-btn confidence-btn--${level}${confidence === level ? " confidence-btn--active" : ""}`}
-                    onClick={() => setConfidence(level)}
-                    disabled={grading}
-                  >
-                    {level === "low" ? "Not Sure" : level === "medium" ? "Fairly Sure" : "Very Sure"}
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-
-          <QuizActionButtons
-            showHint={showHint}
-            setShowHint={setShowHint}
-            submitAnswer={submitAnswer}
-            grading={grading}
-            canSubmit={!!answer.trim()}
+          </ContentSection>
+        ) : (
+          <QuizInputFields
+            isCalc={isCalc}
+            mode={determineResponseMode(curQ, topic).mode}
+            work={work}
+            setWork={setWork}
+            answer={answer}
+            setAnswer={setAnswer}
+            disabled={grading}
           />
-        </div>
-      </div>
+        )}
+
+        {validationError && (
+          <div style={{ marginTop: "var(--space-3)", color: "var(--state-error, #dc2626)", fontSize: "14px" }}>
+            {validationError}
+          </div>
+        )}
+
+        <HintBox showHint={showHint} hintText={curQ?.hint} hints={curQ?.hints} />
+
+        {/* 03 · Action System */}
+        <QuizActionButtons
+          showHint={showHint}
+          setShowHint={setShowHint}
+          submitAnswer={submitAnswer}
+          grading={grading}
+          canSubmit={!!answer.trim()}
+        />
+      </ReadingContainer>
     </>
   );
 }

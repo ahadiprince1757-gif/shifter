@@ -1,10 +1,30 @@
+import React from "react";
+import Markdown from "../../content/Markdown";
+import ContentSection from "../../content/ContentSection";
+
+/**
+ * QuestionDisplay (Quiz Interactive Mode)
+ *
+ * Renders the question cleanly as the beginning of the interactive screen.
+ * Follows Global Layout Rules:
+ * - No floating cards
+ * - No rounded box containers
+ * - No decorative badges or colored cards
+ * - Structure through typography: uppercase 01 · QUESTION header, clear readable body
+ */
 function QuestionDisplay({ questionText, category, rubricEval, proveItState }) {
   if (!questionText) {
-    return <div className="q-txt">Question not available</div>;
+    return (
+      <ContentSection title="QUESTION">
+        <div className="type-body" style={{ color: "var(--text-muted)" }}>
+          Question not available
+        </div>
+      </ContentSection>
+    );
   }
 
-  let tag = category || null;
   let text = questionText;
+  let tag = category || null;
 
   // Extract bracketed mode tag if present
   const tagMatch = questionText.match(/^\[([^\]]+)\]\s*/);
@@ -13,54 +33,17 @@ function QuestionDisplay({ questionText, category, rubricEval, proveItState }) {
     text = questionText.replace(tagMatch[0], "");
   }
 
-  const rubric = rubricEval?.rubric;
-  const level = proveItState?.level;
-  const levelLabel = level === 3 ? "Level 3: Real-World CBC Transfer" : level === 2 ? "Level 2: Operational Stress" : "Level 1: Procedural Basis";
-
   return (
-    <div className="q-display-card">
-      <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap", marginBottom: "0.75rem", alignItems: "center" }}>
-        {rubric && (
-          <span
-            className="cbc-rubric-badge"
-            style={{
-              background: rubric.badgeBg,
-              color: rubric.badgeText,
-              padding: "0.25rem 0.6rem",
-              borderRadius: "12px",
-              fontWeight: 700,
-              fontSize: "0.75rem",
-              border: `1px solid ${rubric.color}`
-            }}
-          >
-            CBC Rubric: {rubric.code} ({rubric.label})
-          </span>
-        )}
-
-        {proveItState && (
-          <span
-            className="prove-it-ladder-badge"
-            style={{
-              background: "rgba(99, 102, 241, 0.12)",
-              color: "#4f46e5",
-              padding: "0.25rem 0.6rem",
-              borderRadius: "12px",
-              fontWeight: 600,
-              fontSize: "0.75rem",
-              border: "1px solid rgba(99, 102, 241, 0.3)"
-            }}
-          >
-            Prove It Ladder: {levelLabel}
-          </span>
-        )}
-
-        {tag && (
-          <span className="q-tag-badge">{tag}</span>
-        )}
+    <ContentSection title="QUESTION" className="feedback-section-question">
+      {tag && (
+        <div className="type-meta" style={{ marginBottom: "var(--space-2)", textTransform: "uppercase" }}>
+          {tag}
+        </div>
+      )}
+      <div className="type-question">
+        <Markdown>{text}</Markdown>
       </div>
-
-      <div className="q-txt">{text}</div>
-    </div>
+    </ContentSection>
   );
 }
 
