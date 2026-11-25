@@ -1,19 +1,17 @@
+import ReadingContainer from "./layout/ReadingContainer";
+
 /**
  * TopicList — Level 2 of the navigation hierarchy.
  *
- * For chapters with nested topics (e.g. Calculus → Limits / Differentiation / Integration):
- *   clicking a topic group navigates to the SubtopicList page.
- *
- * For flat chapters (single-level topics):
- *   clicking a topic goes directly to LearnFlow.
- *
- * Both paths use the same card visual language as ChapterList, preserving
- * Tixar's one-screen-at-a-time core principle.
+ * Conforms to Tixar Global Layout Rules:
+ * - One continuous surface; no floating card soup.
+ * - Structure through typography: Chapter title, Topic index (01, 02), Name, and Status.
+ * - Clean baseline separators without heavy rounded cards or drop shadows.
  */
 function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, mastered }) {
   if (!subject || !chapter) return null;
 
-  // Normalize: every entry becomes { name, subtopics[] }
+  // Normalize: every entry becomes { id, name, subtopics[] }
   const normalizedTopics = (chapter.topics || []).map((t, idx) => {
     if (typeof t === "object" && t !== null) {
       const subs =
@@ -34,109 +32,171 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
   const masteredCount = allSubtopics.filter((s) =>
     mastered?.has(`${subject.id}|${chapter.id}|${s}`)
   ).length;
-  const percentComplete =
-    allSubtopics.length > 0
-      ? Math.round((masteredCount / allSubtopics.length) * 100)
-      : 0;
 
-  // First unmastered subtopic (used for flat mode Up Next badge)
+  // First unmastered subtopic
   const firstUnmastered = allSubtopics.find(
     (s) => !mastered?.has(`${subject.id}|${chapter.id}|${s}`)
   );
 
   return (
-    <div id="v-topics" className="view active">
-      {/* Header */}
-      <div className="vhd-humanistic">
-        <button className="vback-humanistic" onClick={goBack}>
-          ← {subject.label}
-        </button>
-        <div className="vtitle-humanistic">{chapter.label}</div>
-        <div className="vsub-humanistic">
+    <div id="v-topics" className="view active" style={{ paddingTop: "0.5rem" }}>
+      <ReadingContainer>
+        {/* Navigation Breadcrumb / Back Action */}
+        <div style={{ marginBottom: "var(--space-4)" }}>
+          <button
+            type="button"
+            className="secondary-action-btn"
+            style={{ width: "auto", padding: "0", minHeight: "auto", color: "var(--text-secondary)" }}
+            onClick={goBack}
+          >
+            ← {subject.label}
+          </button>
+        </div>
+
+        {/* Header */}
+        <div style={{ marginBottom: "var(--space-6)" }}>
+          <h1 className="type-page-heading" style={{ fontSize: "26px", marginBottom: "6px" }}>
+            {chapter.label}
+          </h1>
+          <div className="type-supporting" style={{ color: "var(--text-secondary)" }}>
+            {hasNested
+              ? `${normalizedTopics.length} Topics · ${allSubtopics.length} Subtopics · ${masteredCount} Completed`
+              : `${allSubtopics.length} topic${allSubtopics.length !== 1 ? "s" : ""} · ${masteredCount} Completed`}
+          </div>
+        </div>
+
+        {/* Topics / Subtopics List (Continuous layout, zero cards) */}
+        <div style={{ display: "flex", flexDirection: "column" }}>
           {hasNested
-            ? `${normalizedTopics.length} Topics · ${allSubtopics.length} Subtopics · ${masteredCount} Completed`
-            : `${allSubtopics.length} topic${allSubtopics.length !== 1 ? "s" : ""} · ${masteredCount} Completed`}
-        </div>
+            ? normalizedTopics.map((topicGroup, idx) => {
+                const groupMastered = topicGroup.subtopics.filter((s) =>
+                  mastered?.has(`${subject.id}|${chapter.id}|${s}`)
+                ).length;
+                const allDone = groupMastered === topicGroup.subtopics.length;
+                const groupHasNext =
+                  !allDone && topicGroup.subtopics.some((s) => s === firstUnmastered);
 
-        {/* Chapter progress bar */}
-        <div className="chapter-progress-track">
-          <div
-            className="chapter-progress-fill"
-            style={{ width: `${percentComplete}%` }}
-          />
-        </div>
-      </div>
+                const statusLabel = allDone
+                  ? "Completed ✓"
+                  : groupHasNext
+                  ? `Up Next · ${groupMastered}/${topicGroup.subtopics.length} done`
+                  : `${topicGroup.subtopics.length} subtopics · ${groupMastered} done`;
 
-      {/* Card list */}
-      <div className="chap-list-humanistic">
-        {hasNested
-          ? /* ── NESTED: Topic group cards ─────────────────────────────────── */
-            normalizedTopics.map((topicGroup, idx) => {
-              const groupMastered = topicGroup.subtopics.filter((s) =>
-                mastered?.has(`${subject.id}|${chapter.id}|${s}`)
-              ).length;
-              const allDone = groupMastered === topicGroup.subtopics.length;
-              const groupHasNext =
-                !allDone &&
-                topicGroup.subtopics.some((s) => s === firstUnmastered);
-
-              return (
-                <div
-                  className={`chap-card-humanistic${allDone ? " done" : ""}${groupHasNext ? " suggested" : ""}`}
-                  key={topicGroup.id || topicGroup.name}
-                  onClick={() =>
-                    openTopicGroup
-                      ? openTopicGroup(topicGroup.name)
-                      : openTopic(topicGroup.subtopics[0])
-                  }
-                >
-                  <div className="chap-card-content">
-                    <div className="chap-badge-number">
-                      TOPIC {String(idx + 1).padStart(2, "0")}
+                return (
+                  <div
+                    key={topicGroup.id || topicGroup.name}
+                    onClick={() =>
+                      openTopicGroup
+                        ? openTopicGroup(topicGroup.name)
+                        : openTopic(topicGroup.subtopics[0])
+                    }
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "18px 0",
+                      borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+                      cursor: "pointer",
+                      transition: "opacity 0.15s ease",
+                    }}
+                  >
+                    <div>
+                      <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase" }}>
+                        {String(idx + 1).padStart(2, "0")}
+                      </div>
+                      <div className="type-question" style={{ fontSize: "18px", fontWeight: 600, color: "var(--text-primary)" }}>
+                        {topicGroup.name}
+                      </div>
+                      <div
+                        className="type-supporting"
+                        style={{
+                          marginTop: "3px",
+                          color: allDone
+                            ? "var(--state-success, #15803d)"
+                            : groupHasNext
+                            ? "var(--text-primary)"
+                            : "var(--text-secondary)",
+                          fontWeight: groupHasNext ? 600 : 400,
+                        }}
+                      >
+                        {statusLabel}
+                      </div>
                     </div>
-                    <div className="chap-name-humanistic">{topicGroup.name}</div>
-                    <div className="chap-meta-humanistic">
-                      {allDone
-                        ? "Completed ✓"
-                        : groupHasNext
-                        ? `Up Next · ${groupMastered}/${topicGroup.subtopics.length} done`
-                        : `${topicGroup.subtopics.length} subtopic${topicGroup.subtopics.length !== 1 ? "s" : ""} · ${groupMastered} done`}
-                    </div>
-                  </div>
-                  <div className="chap-arrow">{allDone ? "✓" : "→"}</div>
-                </div>
-              );
-            })
-          : /* ── FLAT: Direct subtopic cards ───────────────────────────────── */
-            normalizedTopics.map((t, idx) => {
-              const sub = t.subtopics[0] || t.name;
-              const isMastered = mastered?.has(`${subject.id}|${chapter.id}|${sub}`);
-              const isSuggested = !isMastered && sub === firstUnmastered;
-
-              return (
-                <div
-                  className={`chap-card-humanistic${isMastered ? " done" : ""}${isSuggested ? " suggested" : ""}`}
-                  key={sub}
-                  onClick={() => openTopic(sub)}
-                >
-                  <div className="chap-card-content">
-                    <div className="chap-badge-number">
-                      {String(idx + 1).padStart(2, "0")}
-                    </div>
-                    <div className="chap-name-humanistic">{sub}</div>
-                    <div className="chap-meta-humanistic">
-                      {isMastered
-                        ? "Completed ✓"
-                        : isSuggested
-                        ? "Up Next"
-                        : "Ready to learn"}
+                    <div
+                      style={{
+                        color: allDone ? "var(--state-success, #15803d)" : "var(--text-muted)",
+                        fontSize: "16px",
+                        marginLeft: "16px",
+                      }}
+                      aria-hidden="true"
+                    >
+                      {allDone ? "✓" : "→"}
                     </div>
                   </div>
-                  <div className="chap-arrow">{isMastered ? "✓" : "→"}</div>
-                </div>
-              );
-            })}
-      </div>
+                );
+              })
+            : normalizedTopics.map((t, idx) => {
+                const sub = t.subtopics[0] || t.name;
+                const isMastered = mastered?.has(`${subject.id}|${chapter.id}|${sub}`);
+                const isSuggested = !isMastered && sub === firstUnmastered;
+
+                const statusLabel = isMastered
+                  ? "Completed ✓"
+                  : isSuggested
+                  ? "Up Next"
+                  : "Ready to learn";
+
+                return (
+                  <div
+                    key={sub}
+                    onClick={() => openTopic(sub)}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      padding: "18px 0",
+                      borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+                      cursor: "pointer",
+                      transition: "opacity 0.15s ease",
+                    }}
+                  >
+                    <div>
+                      <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase" }}>
+                        {String(idx + 1).padStart(2, "0")}
+                      </div>
+                      <div className="type-question" style={{ fontSize: "18px", fontWeight: 600, color: "var(--text-primary)" }}>
+                        {sub}
+                      </div>
+                      <div
+                        className="type-supporting"
+                        style={{
+                          marginTop: "3px",
+                          color: isMastered
+                            ? "var(--state-success, #15803d)"
+                            : isSuggested
+                            ? "var(--text-primary)"
+                            : "var(--text-secondary)",
+                          fontWeight: isSuggested ? 600 : 400,
+                        }}
+                      >
+                        {statusLabel}
+                      </div>
+                    </div>
+                    <div
+                      style={{
+                        color: isMastered ? "var(--state-success, #15803d)" : "var(--text-muted)",
+                        fontSize: "16px",
+                        marginLeft: "16px",
+                      }}
+                      aria-hidden="true"
+                    >
+                      {isMastered ? "✓" : "→"}
+                    </div>
+                  </div>
+                );
+              })}
+        </div>
+      </ReadingContainer>
     </div>
   );
 }
