@@ -77,18 +77,21 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       style={{
         width: "100%",
         maxWidth: "100%",
-        padding: "clamp(1rem, 3vw, 2.5rem)",
+        padding: "0",
+        margin: "0",
         boxSizing: "border-box",
       }}
     >
       {/* Urgent Next Action Prompt (if active) */}
-      <SmartPrompt action={nextAction} loading={nextActionLoading} />
+      <div style={{ padding: "16px 20px 0 20px" }}>
+        <SmartPrompt action={nextAction} loading={nextActionLoading} />
+      </div>
 
       {/* Resume bookmark prompt */}
       {!nextAction && showResume && (
         <div
           style={{
-            marginBottom: "var(--space-6)",
+            margin: "0 20px var(--space-6) 20px",
             paddingBottom: "var(--space-4)",
             borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
           }}
@@ -123,10 +126,10 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "baseline",
-          marginBottom: "var(--space-5)",
+          padding: "20px 20px 14px 20px",
         }}
       >
-        <h1 className="type-page-heading" style={{ fontSize: "26px" }}>
+        <h1 className="type-page-heading" style={{ fontSize: "24px" }}>
           Your Subjects
         </h1>
         <span className="type-meta">
@@ -134,16 +137,15 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
         </span>
       </div>
 
-      {/* 2-Column Full-Screen Grid with clean 1px borders */}
+      {/* Edge-to-Edge 2-Column Grid: Spans completely to screen edges with zero outer rounded container */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
           gap: "1px",
           background: "var(--border-subtle, #e5e5e5)",
-          border: "1px solid var(--border-subtle, #e5e5e5)",
-          borderRadius: "var(--radius-control, 8px)",
-          overflow: "hidden",
+          borderTop: "1px solid var(--border-subtle, #e5e5e5)",
+          borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
           width: "100%",
           boxSizing: "border-box",
         }}
@@ -159,7 +161,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
               style={{
                 background: "var(--surface)",
                 border: "none",
-                padding: "clamp(18px, 2.5vw, 28px)",
+                padding: "clamp(16px, 2.5vw, 24px) clamp(12px, 2vw, 20px)",
                 textAlign: "left",
                 cursor: "pointer",
                 display: "flex",
@@ -172,16 +174,16 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
               onMouseLeave={(e) => (e.currentTarget.style.background = "var(--surface)")}
               aria-label={`${s.label}, ${chapters.length} chapters, ${totalTopics} topics`}
             >
-              <div>
+              <div style={{ minWidth: 0, overflow: "hidden" }}>
                 <div
                   className="type-question"
-                  style={{ fontSize: "clamp(17px, 1.4vw, 20px)", fontWeight: 600, color: "var(--text-primary)" }}
+                  style={{ fontSize: "clamp(15px, 1.3vw, 18px)", fontWeight: 600, color: "var(--text-primary)" }}
                 >
                   {s.label}
                 </div>
                 <div
                   className="type-supporting"
-                  style={{ marginTop: "6px", color: "var(--text-secondary)", fontSize: "14px" }}
+                  style={{ marginTop: "4px", color: "var(--text-secondary)", fontSize: "13px", whiteSpace: "nowrap" }}
                 >
                   {chapters.length} chapters · {totalTopics} topics
                 </div>
@@ -189,8 +191,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
               <div
                 style={{
                   color: "var(--text-muted)",
-                  fontSize: "18px",
-                  marginLeft: "16px",
+                  fontSize: "16px",
+                  marginLeft: "8px",
                   flexShrink: 0,
                 }}
                 aria-hidden="true"
