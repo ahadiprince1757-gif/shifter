@@ -1,8 +1,8 @@
-import logger from "./utils/logger";
-import { supabase, getActiveSession } from "./supabase";
-import { curriculumRepo } from "./repository/curriculumRepo";
-import { topicRepo } from "./repository/topicRepo";
-import { getBundledTopic } from "./data/contentLoader";
+import logger from "./utils/logger.js";
+import { supabase, getActiveSession } from "./supabase.js";
+import { curriculumRepo } from "./repository/curriculumRepo.js";
+import { topicRepo } from "./repository/topicRepo.js";
+import { getBundledTopic } from "./data/contentLoader.js";
 
 // Base API URL — resolved at build time by Vite.
 //
@@ -11,14 +11,15 @@ import { getBundledTopic } from "./data/contentLoader";
 //
 // Development:  VITE_API_URL (from .env.development) → fallback to localhost:3001.
 //
-const _rawBase = import.meta.env.PROD
-  ? ((import.meta.env.VITE_API_URL &&
-      !import.meta.env.VITE_API_URL.includes("localhost") &&
-      !import.meta.env.VITE_API_URL.includes("vercel.app") &&
-      import.meta.env.VITE_API_URL.startsWith("http"))
-      ? import.meta.env.VITE_API_URL
+const env = typeof import.meta !== "undefined" && import.meta.env ? import.meta.env : {};
+const _rawBase = env.PROD
+  ? ((env.VITE_API_URL &&
+      !env.VITE_API_URL.includes("localhost") &&
+      !env.VITE_API_URL.includes("vercel.app") &&
+      env.VITE_API_URL.startsWith("http"))
+      ? env.VITE_API_URL
       : "https://shifter-i49i.onrender.com")
-  : (import.meta.env.VITE_API_URL || "http://localhost:3001");
+  : (env.VITE_API_URL || "http://localhost:3001");
 
 const API_BASE = _rawBase.replace(/\/$/, "") + "/api";
 

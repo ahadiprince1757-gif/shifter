@@ -25,6 +25,7 @@ import { buildWeaknessMap } from "../utils/weaknessMap";
 import { getTransferQuestion } from "../utils/transferQuestion";
 import { recordQuestionAttempt } from "../services/attemptService";
 import { recordLearningEvent, LEARNING_EVENTS } from "../utils/analytics";
+import { submitAnswerUseCase } from "../application/use-cases/SubmitAnswer.js";
 
 export const SESSION_PHASES = {
   NOTES: 0,
@@ -300,59 +301,72 @@ export function useSessionLoop({
       return;
     }
 
-    setTimeout(() => {
-      const rawRes = evaluateAnswer(answer, q, work);
-      const isPartial = rawRes.grade === "partial" || rawRes.partialCredit === true;
-      const isCorrect = Boolean(rawRes.isCorrect);
-      const attemptScore = isCorrect ? 100 : (isPartial ? 50 : 0);
-      const timeSpentSeconds = Math.max(1, Math.round((Date.now() - (questionStartTimeRef.current || Date.now())) / 1000));
+    setTimeout(async () => {
+      try {
+        const timeSpentSeconds = Math.max(1, Math.round((Date.now() - (questionStartTimeRef.current || Date.now())) / 1000));
+        const resolvedQuestionId =
+          q?.id ||
+          (content?.qs && content.qs.indexOf(q) !== -1 ? content.qs.indexOf(q) + 1 : qIdx + 1);
+        const resolvedTopicId =
+          content?.topic_id ||
+          content?.id ||
+          (typeof topic === "number" || /^\d+$/.test(topic) ? parseInt(topic, 10) : null);
 
-      const resolvedQuestionId =
-        q?.id ||
-        (content?.qs && content.qs.indexOf(q) !== -1 ? content.qs.indexOf(q) + 1 : qIdx + 1);
-      const resolvedTopicId =
-        content?.topic_id ||
-        content?.id ||
-        (typeof topic === "number" || /^\d+$/.test(topic) ? parseInt(topic, 10) : null);
-
-      // Record question attempt to Supabase public.question_attempts
-      recordQuestionAttempt({
-        userId,
-        questionId: resolvedQuestionId,
-        topicId: resolvedTopicId,
-        userAnswer: answer,
-        isCorrect,
-        score: attemptScore,
-        timeSpentSeconds,
-      }).catch(() => {});
-
-      // Record learning event to telemetry queue / Supabase public.learning_events
-      recordLearningEvent({
-        subjectId: subject?.id || "general",
-        chapterId: chapter?.id || "general",
-        topic: topic,
-        type: isCorrect
-          ? LEARNING_EVENTS.QUESTION_CORRECT
-          : LEARNING_EVENTS.QUESTION_INCORRECT,
-        userId,
-        correct: isCorrect,
-        score: attemptScore,
-        questionId: resolvedQuestionId,
-        timeSpentSeconds,
-        attempts: (q?.attempts || 0) + 1,
-        hintsUsed: showHint ? 1 : 0,
-        metadata: {
+        // Execute unified 7-step recoverable submission lifecycle (captures attempt locally BEFORE evaluation)
+        const feedbackRes = await submitAnswerUseCase.execute({
+          answer,
+          work,
+          question: q,
+          userId,
+          topicId: resolvedTopicId || topic,
+          subjectId: subject?.id,
+          chapterId: chapter?.id,
           qIdx,
-          isPartial,
-          isRepaired: isRepairing,
+          timeSpentSeconds,
           confidence,
-          questionText: q?.q || q?.stem || "",
-        },
-      });
+        });
 
-      if (isPartial) {
+        const isCorrect = Boolean(feedbackRes.isCorrect);
+        const isPartial = feedbackRes.grade === "partial" || feedbackRes.partialCredit === true;
+        const attemptScore = isCorrect ? 100 : (isPartial ? 50 : 0);
+
+        // Record question attempt to Supabase public.question_attempts (non-blocking)
+        recordQuestionAttempt({
+          userId,
+          questionId: resolvedQuestionId,
+          topicId: resolvedTopicId,
+          userAnswer: answer,
+          isCorrect,
+          score: attemptScore,
+          timeSpentSeconds,
+        }).catch(() => {});
+
+        // Record learning event to telemetry queue / Supabase public.learning_events (non-blocking)
+        recordLearningEvent({
+          subjectId: subject?.id || "general",
+          chapterId: chapter?.id || "general",
+          topic: topic,
+          type: isCorrect
+            ? LEARNING_EVENTS.QUESTION_CORRECT
+            : LEARNING_EVENTS.QUESTION_INCORRECT,
+          userId,
+          correct: isCorrect,
+          score: attemptScore,
+          questionId: resolvedQuestionId,
+          timeSpentSeconds,
+          attempts: (q?.attempts || 0) + 1,
+          hintsUsed: showHint ? 1 : 0,
+          metadata: {
+            qIdx,
+            isPartial,
+            isRepaired: isRepairing,
+            confidence,
+            questionText: q?.q || q?.stem || "",
+          },
+        });
+
         setFeedback({
-          ...rawRes,
+          ...feedbackRes,
           userWork: work,
           studentAnswer: answer,
           userAnswer: answer,
@@ -360,45 +374,22 @@ export function useSessionLoop({
           isRepaired: isRepairing,
         });
         setGrading(false);
-      } else if (!rawRes.isCorrect) {
-        // Step A: Diagnose failure
-        const diagnosed = diagnoseFailure(rawRes, q);
 
-        // Step B: Build repair plan
-        const plan = createRepairPlan(q, answer, diagnosed);
-
-        setFeedback({
-          ...diagnosed,
-          userWork: work,
-          studentAnswer: answer,
-          userAnswer: answer,
-          confidence,
-          whatWentWrong: plan.whatWentWrong,
-          rule: plan.rule,
-        });
-        setGrading(false);
-
-        if (!isRepairing) {
-          usedIndicesRef.current.add(qIdx);
-          recordMistake(q, qIdx, diagnosed);
+        if (!isCorrect && !isPartial) {
+          if (!isRepairing) {
+            usedIndicesRef.current.add(qIdx);
+            recordMistake(q, qIdx, feedbackRes);
+          }
+        } else if (isCorrect) {
+          if (isRepairing) {
+            confirmRepair(q);
+          } else {
+            usedIndicesRef.current.add(qIdx);
+          }
         }
-      } else {
-        // Correct answer
-        setFeedback({
-          ...rawRes,
-          userWork: work,
-          studentAnswer: answer,
-          userAnswer: answer,
-          confidence,
-          isRepaired: isRepairing,
-        });
+      } catch (err) {
+        console.error("[useSessionLoop] Error during submitAnswer:", err);
         setGrading(false);
-
-        if (isRepairing) {
-          confirmRepair(q);
-        } else {
-          usedIndicesRef.current.add(qIdx);
-        }
       }
     }, 150);
   }, [

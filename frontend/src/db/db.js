@@ -87,6 +87,12 @@ db.version(20).stores({
   local_learner_skill_state: "[user_id+skill_id], user_id, skill_id, acquisition_status, transfer_status, updated_at",
 });
 
+// Version 21: Architecture v2.1 Local Attempts & Synchronized Outbox (Idempotent unique indexes)
+db.version(21).stores({
+  local_attempts: "++id, &submission_id, user_id, question_id, topic_id, processing_status, evaluation_status, diagnosis_status, created_at",
+  sync_outbox: "++id, &idempotency_key, entity_type, entity_id, operation, status, attempt_count, next_attempt_at, created_at",
+});
+
 db.on("populate", () => {
   console.log("Database initialized for the first time.");
 });
