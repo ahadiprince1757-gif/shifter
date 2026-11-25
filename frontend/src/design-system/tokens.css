@@ -1,22 +1,41 @@
 /**
  * TIXAR CENTRAL DESIGN TOKENS
  * "One interface. Every screen. Zero unnecessary boxes."
+ * Humanistic Precision: Brand blue as the living spine. Color with meaning, not decoration.
  */
 
 :root {
-  /* Colors — neutral foundation, semantic-only state colors */
+  /* Brand Identity (Derived from Tixar Logo) */
+  --tixar-blue-light: #4da6ff;            /* Electric Sky (Logo accent) */
+  --tixar-blue-core: #287ce0;             /* Royal Azure (Logo spine) */
+  --tixar-blue-deep: #1d5cb8;             /* Cobalt Anchor */
+
+  /* Rare, deliberate signature gradient: reserved for primary CTA & major active focus */
+  --tixar-brand-gradient: linear-gradient(135deg, #4da6ff 0%, #287ce0 100%);
+  --tixar-brand-gradient-hover: linear-gradient(135deg, #3b9aff 0%, #1e6ecf 100%);
+
+  /* Neutral Surface Foundation (Light Mode) */
   --surface: #ffffff;
-  --surface-subtle: #f7f7f7;
-  --text-primary: #171717;
-  --text-secondary: #737373;
-  --text-muted: #a3a3a3;
-  --border-subtle: #e5e5e5;
-  --state-error: #dc2626;
-  --state-success: #15803d;
-  --state-warning: #d97706;
-  --action-primary: #171717;
+  --surface-subtle: #f8fafc;
+  --surface-hover: #f0f7ff;               /* Gentle azure glow on hover */
+  --text-primary: #0f172a;                /* Deep editorial slate */
+  --text-secondary: #475569;              /* Readable charcoal */
+  --text-muted: #94a3b8;                  /* Light slate */
+  --border-subtle: #e2e8f0;               /* Crisp neutral divider */
+  --border-brand: rgba(40, 124, 224, 0.22);/* Subtle brand-tinted divider */
+  --border-brand-active: #287ce0;         /* Solid brand blue active indicator */
+
+  /* Semantic State Colors */
+  --state-error: #dc2626;                 /* Actual error or divergence */
+  --state-success: #15803d;               /* Successfully verified/completed */
+  --state-warning: #d97706;               /* Warning/Caution */
+  --state-active: #287ce0;                /* Active/Selected/Navigational */
+
+  /* Action Hierarchy */
+  --action-primary: var(--tixar-brand-gradient);
+  --action-primary-solid: #287ce0;
   --action-primary-text: #ffffff;
-  --action-primary-hover: #262626;
+  --action-primary-hover: var(--tixar-brand-gradient-hover);
 
   /* Consistent Spacing Scale (compact, purposeful rhythm) */
   --space-1: 3px;
@@ -42,16 +61,21 @@
 
 /* Dark mode theme token mapping */
 html.dark-mode {
-  --surface: #121212;
-  --surface-subtle: #1e1e1e;
-  --text-primary: #f5f5f5;
-  --text-secondary: #a3a3a3;
-  --text-muted: #737373;
-  --border-subtle: #2e2e2e;
+  --surface: #0f172a;
+  --surface-subtle: #1e293b;
+  --surface-hover: rgba(40, 124, 224, 0.15);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-subtle: #334155;
+  --border-brand: rgba(77, 166, 255, 0.28);
+  --border-brand-active: #4da6ff;
   --state-error: #ef4444;
   --state-success: #22c55e;
   --state-warning: #f59e0b;
-  --action-primary: #f5f5f5;
-  --action-primary-text: #121212;
-  --action-primary-hover: #e5e5e5;
+  --state-active: #4da6ff;
+  --action-primary: var(--tixar-brand-gradient);
+  --action-primary-solid: #3b82f6;
+  --action-primary-text: #ffffff;
+  --action-primary-hover: var(--tixar-brand-gradient-hover);
 }

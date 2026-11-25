@@ -3,10 +3,10 @@ import ReadingContainer from "./layout/ReadingContainer";
 /**
  * TopicList — Level 2 of the navigation hierarchy.
  *
- * Conforms to Tixar Global Layout Rules:
+ * Conforms to Tixar Global Layout Rules & Semantic Color:
  * - One continuous surface; no floating card soup.
  * - Structure through typography: Chapter title, Topic index (01, 02), Name, and Status.
- * - Clean baseline separators without heavy rounded cards or drop shadows.
+ * - Solid Tixar blue (#287ce0) for active/upcoming status, emerald (#15803d) for verified completion.
  */
 function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, mastered }) {
   if (!subject || !chapter) return null;
@@ -46,7 +46,7 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
           <button
             type="button"
             className="secondary-action-btn"
-            style={{ width: "auto", padding: "0", minHeight: "auto", color: "var(--text-secondary)" }}
+            style={{ width: "auto", padding: "0", minHeight: "auto", color: "var(--tixar-blue-core, #287ce0)", fontWeight: 500 }}
             onClick={goBack}
           >
             ← {subject.label}
@@ -95,13 +95,23 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
                       alignItems: "center",
                       justifyContent: "space-between",
                       padding: "18px 0",
-                      borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+                      borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
                       cursor: "pointer",
-                      transition: "opacity 0.15s ease",
+                      transition: "background 0.15s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.paddingLeft = "6px";
+                      e.currentTarget.style.paddingRight = "6px";
+                      e.currentTarget.style.background = "var(--surface-hover, #f0f7ff)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.paddingLeft = "0";
+                      e.currentTarget.style.paddingRight = "0";
+                      e.currentTarget.style.background = "transparent";
                     }}
                   >
                     <div>
-                      <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase" }}>
+                      <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase", color: "var(--tixar-blue-core, #287ce0)" }}>
                         {String(idx + 1).padStart(2, "0")}
                       </div>
                       <div className="type-question" style={{ fontSize: "18px", fontWeight: 600, color: "var(--text-primary)" }}>
@@ -114,7 +124,7 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
                           color: allDone
                             ? "var(--state-success, #15803d)"
                             : groupHasNext
-                            ? "var(--text-primary)"
+                            ? "var(--tixar-blue-core, #287ce0)"
                             : "var(--text-secondary)",
                           fontWeight: groupHasNext ? 600 : 400,
                         }}
@@ -124,8 +134,9 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
                     </div>
                     <div
                       style={{
-                        color: allDone ? "var(--state-success, #15803d)" : "var(--text-muted)",
+                        color: allDone ? "var(--state-success, #15803d)" : "var(--tixar-blue-core, #287ce0)",
                         fontSize: "16px",
+                        fontWeight: 600,
                         marginLeft: "16px",
                       }}
                       aria-hidden="true"
@@ -155,13 +166,23 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
                       alignItems: "center",
                       justifyContent: "space-between",
                       padding: "18px 0",
-                      borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+                      borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
                       cursor: "pointer",
-                      transition: "opacity 0.15s ease",
+                      transition: "background 0.15s ease",
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.paddingLeft = "6px";
+                      e.currentTarget.style.paddingRight = "6px";
+                      e.currentTarget.style.background = "var(--surface-hover, #f0f7ff)";
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.paddingLeft = "0";
+                      e.currentTarget.style.paddingRight = "0";
+                      e.currentTarget.style.background = "transparent";
                     }}
                   >
                     <div>
-                      <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase" }}>
+                      <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase", color: "var(--tixar-blue-core, #287ce0)" }}>
                         {String(idx + 1).padStart(2, "0")}
                       </div>
                       <div className="type-question" style={{ fontSize: "18px", fontWeight: 600, color: "var(--text-primary)" }}>
@@ -174,7 +195,7 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
                           color: isMastered
                             ? "var(--state-success, #15803d)"
                             : isSuggested
-                            ? "var(--text-primary)"
+                            ? "var(--tixar-blue-core, #287ce0)"
                             : "var(--text-secondary)",
                           fontWeight: isSuggested ? 600 : 400,
                         }}
@@ -184,8 +205,9 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
                     </div>
                     <div
                       style={{
-                        color: isMastered ? "var(--state-success, #15803d)" : "var(--text-muted)",
+                        color: isMastered ? "var(--state-success, #15803d)" : "var(--tixar-blue-core, #287ce0)",
                         fontSize: "16px",
+                        fontWeight: 600,
                         marginLeft: "16px",
                       }}
                       aria-hidden="true"

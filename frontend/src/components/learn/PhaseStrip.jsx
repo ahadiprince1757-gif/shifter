@@ -9,10 +9,11 @@ const STEPS = [
 /**
  * PhaseStrip
  *
- * Implements Tixar Global Layout Rules:
- * - Quiet, understated stepper navigation without rounded cartoon cards or neon bubble pills.
- * - Structure through typography, tabular numbers (01, 02, 03), and subtle 1px dividers.
- * - Clear active states using text weight and underline/contrast rather than loud gradient badges.
+ * Implements Tixar Global Layout Rules & Color Semantics:
+ * - Active: solid Tixar blue (#287ce0) underline and bold text weight (color + structural signal).
+ * - Completed: verified green (#15803d) checkmark.
+ * - Inactive: clean muted slate.
+ * - No floating cards or pill bubbles.
  */
 function PhaseStrip({ phase = 0, setPhase, canJumpTo }) {
   return (
@@ -22,7 +23,7 @@ function PhaseStrip({ phase = 0, setPhase, canJumpTo }) {
         alignItems: "stretch",
         width: "100%",
         maxWidth: "100%",
-        borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+        borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
         marginBottom: "var(--space-5)",
         boxSizing: "border-box",
       }}
@@ -49,8 +50,8 @@ function PhaseStrip({ phase = 0, setPhase, canJumpTo }) {
               gap: "8px",
               padding: "12px 14px",
               border: "none",
-              borderBottom: isCurrent ? "2px solid var(--text-primary)" : "2px solid transparent",
-              background: "transparent",
+              borderBottom: isCurrent ? "2px solid var(--tixar-blue-core, #287ce0)" : "2px solid transparent",
+              background: isCurrent ? "var(--surface-hover, #f0f7ff)" : "transparent",
               cursor: allowed ? "pointer" : "default",
               opacity: allowed ? 1 : 0.45,
               transition: "all 0.15s ease",
@@ -61,12 +62,12 @@ function PhaseStrip({ phase = 0, setPhase, canJumpTo }) {
               style={{
                 fontFamily: "var(--font-family)",
                 fontSize: "12px",
-                fontWeight: 600,
+                fontWeight: isCurrent ? 700 : 600,
                 color: isCurrent
-                  ? "var(--text-primary)"
+                  ? "var(--tixar-blue-core, #287ce0)"
                   : isDone
                   ? "var(--state-success, #15803d)"
-                  : "var(--text-muted)",
+                  : "var(--text-muted, #94a3b8)",
               }}
             >
               {isDone ? "✓" : number}
@@ -77,10 +78,10 @@ function PhaseStrip({ phase = 0, setPhase, canJumpTo }) {
                 fontSize: "14px",
                 fontWeight: isCurrent ? 600 : 450,
                 color: isCurrent
-                  ? "var(--text-primary)"
+                  ? "var(--tixar-blue-core, #287ce0)"
                   : isDone
                   ? "var(--state-success, #15803d)"
-                  : "var(--text-secondary)",
+                  : "var(--text-secondary, #475569)",
               }}
             >
               {label}

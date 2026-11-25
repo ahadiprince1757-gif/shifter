@@ -3,9 +3,9 @@ import ReadingContainer from "./layout/ReadingContainer";
 /**
  * ChapterList
  *
- * Implements Tixar Global Layout Rules:
- * - Full-screen continuous document layout.
+ * Implements Tixar Global Layout Rules & Semantic Color:
  * - Structure through typography: Chapter index, Title, Topic/Subtopic counts.
+ * - Solid Tixar blue (#287ce0) for navigational arrows and active cues.
  * - Calm, continuous list with simple baseline separators instead of rounded floating cards.
  */
 function ChapterList({ subject, openChapter, goBack }) {
@@ -19,7 +19,7 @@ function ChapterList({ subject, openChapter, goBack }) {
           <button
             type="button"
             className="secondary-action-btn"
-            style={{ width: "auto", padding: "0", minHeight: "auto", color: "var(--text-secondary)" }}
+            style={{ width: "auto", padding: "0", minHeight: "auto", color: "var(--tixar-blue-core, #287ce0)", fontWeight: 500 }}
             onClick={goBack}
           >
             ← All Subjects
@@ -62,13 +62,23 @@ function ChapterList({ subject, openChapter, goBack }) {
                   alignItems: "center",
                   justifyContent: "space-between",
                   padding: "18px 0",
-                  borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+                  borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
                   cursor: "pointer",
-                  transition: "opacity 0.15s ease",
+                  transition: "background 0.15s ease",
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.paddingLeft = "6px";
+                  e.currentTarget.style.paddingRight = "6px";
+                  e.currentTarget.style.background = "var(--surface-hover, #f0f7ff)";
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.paddingLeft = "0";
+                  e.currentTarget.style.paddingRight = "0";
+                  e.currentTarget.style.background = "transparent";
                 }}
               >
                 <div>
-                  <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase" }}>
+                  <div className="type-meta" style={{ marginBottom: "3px", textTransform: "uppercase", color: "var(--tixar-blue-core, #287ce0)" }}>
                     Chapter {idx + 1}
                   </div>
                   <div className="type-question" style={{ fontSize: "18px", fontWeight: 600, color: "var(--text-primary)" }}>
@@ -78,7 +88,7 @@ function ChapterList({ subject, openChapter, goBack }) {
                     {metaText}
                   </div>
                 </div>
-                <div style={{ color: "var(--text-muted)", fontSize: "16px", marginLeft: "16px" }} aria-hidden="true">
+                <div style={{ color: "var(--tixar-blue-core, #287ce0)", fontSize: "16px", fontWeight: 600, marginLeft: "16px" }} aria-hidden="true">
                   →
                 </div>
               </div>

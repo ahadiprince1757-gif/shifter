@@ -3,9 +3,9 @@ import React from "react";
 /**
  * QuizActionButtons
  *
- * One primary action: Submit Answer.
- * Secondary helper: Hint (calm, understated).
- * Conforms to Rule 7 (ONE CLEAR ACTION) and Rule 8 (CONTENT BEFORE DECORATION).
+ * Implements Rule 3 & Rule 7:
+ * - Primary Action ("SUBMIT ANSWER →"): Signature Tixar brand gradient reserved for the most important cognitive action.
+ * - Secondary Action ("Show Hint"): Understated neutral helper.
  */
 function QuizActionButtons({
   showHint,
@@ -21,6 +21,16 @@ function QuizActionButtons({
         className="primary-action-btn"
         onClick={submitAnswer}
         disabled={grading || !canSubmit}
+        style={{
+          background: grading ? "var(--text-muted)" : "var(--action-primary)",
+          color: "var(--action-primary-text, #ffffff)",
+          border: "none",
+          borderRadius: "var(--radius-control, 8px)",
+          fontWeight: 600,
+          letterSpacing: "0.02em",
+          boxShadow: grading || !canSubmit ? "none" : "0 2px 10px rgba(40, 124, 224, 0.25)",
+          cursor: grading || !canSubmit ? "not-allowed" : "pointer",
+        }}
       >
         {grading ? "CHECKING..." : "SUBMIT ANSWER →"}
       </button>
@@ -29,6 +39,9 @@ function QuizActionButtons({
         type="button"
         className="secondary-action-btn"
         onClick={() => setShowHint(!showHint)}
+        style={{
+          color: "var(--text-secondary, #475569)",
+        }}
       >
         {showHint ? "Hide Hint" : "Show Hint"}
       </button>

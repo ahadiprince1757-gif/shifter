@@ -28,11 +28,10 @@ function formatTitle(str) {
 /**
  * SubjectGrid
  *
- * Full-screen, two-column layout conforming to Global Layout Rules:
- * - Full-width surface: uses the entire screen width with comfortable horizontal padding.
- * - 2 columns: exactly 2 columns across the screen (with 1 column on narrow mobile if needed).
- * - Structure through typography: Title, metadata, and clean row dividers.
- * - No card soup, no thick borders, no floating drop shadows.
+ * Full-screen, two-column layout with semantic brand identity:
+ * - Edge-to-edge 2 columns spanning to the ends of the mobile screen.
+ * - Solid Tixar blue (#287ce0) for navigational arrows and hover states.
+ * - Structure through typography: Title, metadata, and clean dividers.
  */
 function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
   const { session } = useAuth();
@@ -93,10 +92,10 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
           style={{
             margin: "0 20px var(--space-6) 20px",
             paddingBottom: "var(--space-4)",
-            borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+            borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
           }}
         >
-          <div className="type-meta" style={{ marginBottom: "var(--space-1)", textTransform: "uppercase" }}>
+          <div className="type-meta" style={{ marginBottom: "var(--space-1)", textTransform: "uppercase", color: "var(--tixar-blue-core, #287ce0)" }}>
             Pick up where you left off
           </div>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "16px" }}>
@@ -137,15 +136,15 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
         </span>
       </div>
 
-      {/* Edge-to-Edge 2-Column Grid: Spans completely to screen edges with zero outer rounded container */}
+      {/* Edge-to-Edge 2-Column Grid */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
           gap: "1px",
-          background: "var(--border-subtle, #e5e5e5)",
-          borderTop: "1px solid var(--border-subtle, #e5e5e5)",
-          borderBottom: "1px solid var(--border-subtle, #e5e5e5)",
+          background: "var(--border-subtle, #e2e8f0)",
+          borderTop: "1px solid var(--border-subtle, #e2e8f0)",
+          borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
           width: "100%",
           boxSizing: "border-box",
         }}
@@ -170,8 +169,16 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                 outline: "none",
                 transition: "background 0.15s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.background = "var(--surface-subtle, #f7f7f7)")}
-              onMouseLeave={(e) => (e.currentTarget.style.background = "var(--surface)")}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.background = "var(--surface-hover, #f0f7ff)";
+                const arrow = e.currentTarget.querySelector(".subj-arrow");
+                if (arrow) arrow.style.transform = "translateX(3px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.background = "var(--surface)";
+                const arrow = e.currentTarget.querySelector(".subj-arrow");
+                if (arrow) arrow.style.transform = "translateX(0)";
+              }}
               aria-label={`${s.label}, ${chapters.length} chapters, ${totalTopics} topics`}
             >
               <div style={{ minWidth: 0, overflow: "hidden" }}>
@@ -189,11 +196,14 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
                 </div>
               </div>
               <div
+                className="subj-arrow"
                 style={{
-                  color: "var(--text-muted)",
+                  color: "var(--tixar-blue-core, #287ce0)",
                   fontSize: "16px",
+                  fontWeight: 600,
                   marginLeft: "8px",
                   flexShrink: 0,
+                  transition: "transform 0.15s ease",
                 }}
                 aria-hidden="true"
               >

@@ -4,9 +4,9 @@ import ContentSection from "../../content/ContentSection";
 /**
  * QuizInputFields
  *
- * Clean, calm input areas following Global Layout Rules.
- * Structure through typography and purposeful vertical spacing,
- * without heavy colored boxes or noisy decorative borders.
+ * Clean, calm input areas following Global Layout Rules:
+ * - Structure through typography: uppercase section kickers.
+ * - Meaningful brand focus state: focusing on an input highlights with Tixar blue border.
  */
 function QuizInputFields({
   isCalc,
@@ -38,11 +38,20 @@ function QuizInputFields({
               lineHeight: "1.6",
               color: "var(--text-primary)",
               background: "var(--surface)",
-              border: "1px solid var(--border-subtle, #e5e5e5)",
+              border: "1px solid var(--border-subtle, #e2e8f0)",
               borderRadius: "var(--radius-control, 8px)",
               resize: "vertical",
               outline: "none",
               boxSizing: "border-box",
+              transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.borderColor = "var(--tixar-blue-core, #287ce0)";
+              e.currentTarget.style.boxShadow = "0 0 0 3px rgba(40, 124, 224, 0.12)";
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-subtle, #e2e8f0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           />
         </ContentSection>
@@ -62,10 +71,19 @@ function QuizInputFields({
               fontSize: "15.5px",
               color: "var(--text-primary)",
               background: "var(--surface)",
-              border: "1px solid var(--border-subtle, #e5e5e5)",
+              border: "1px solid var(--border-subtle, #e2e8f0)",
               borderRadius: "var(--radius-control, 8px)",
               outline: "none",
               boxSizing: "border-box",
+              transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.borderColor = "var(--tixar-blue-core, #287ce0)";
+              e.currentTarget.style.boxShadow = "0 0 0 3px rgba(40, 124, 224, 0.12)";
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-subtle, #e2e8f0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           />
         </ContentSection>
@@ -91,10 +109,19 @@ function QuizInputFields({
               fontSize: "15.5px",
               color: "var(--text-primary)",
               background: "var(--surface)",
-              border: "1px solid var(--border-subtle, #e5e5e5)",
+              border: "1px solid var(--border-subtle, #e2e8f0)",
               borderRadius: "var(--radius-control, 8px)",
               outline: "none",
               boxSizing: "border-box",
+              transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+            }}
+            onFocus={(e) => {
+              e.currentTarget.style.borderColor = "var(--tixar-blue-core, #287ce0)";
+              e.currentTarget.style.boxShadow = "0 0 0 3px rgba(40, 124, 224, 0.12)";
+            }}
+            onBlur={(e) => {
+              e.currentTarget.style.borderColor = "var(--border-subtle, #e2e8f0)";
+              e.currentTarget.style.boxShadow = "none";
             }}
           />
         </ContentSection>
@@ -120,11 +147,20 @@ function QuizInputFields({
             lineHeight: "1.6",
             color: "var(--text-primary)",
             background: "var(--surface)",
-            border: "1px solid var(--border-subtle, #e5e5e5)",
+            border: "1px solid var(--border-subtle, #e2e8f0)",
             borderRadius: "var(--radius-control, 8px)",
             resize: "vertical",
             outline: "none",
             boxSizing: "border-box",
+            transition: "border-color 0.15s ease, box-shadow 0.15s ease",
+          }}
+          onFocus={(e) => {
+            e.currentTarget.style.borderColor = "var(--tixar-blue-core, #287ce0)";
+            e.currentTarget.style.boxShadow = "0 0 0 3px rgba(40, 124, 224, 0.12)";
+          }}
+          onBlur={(e) => {
+            e.currentTarget.style.borderColor = "var(--border-subtle, #e2e8f0)";
+            e.currentTarget.style.boxShadow = "none";
           }}
         />
       </ContentSection>
