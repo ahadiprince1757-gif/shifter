@@ -732,6 +732,9 @@ function FeedbackDisplay({
         isCorrect={isCorrect === true}
         questionText={questionText || feedback?.question?.q || feedback?.q || ""}
         studentAnswer={studentAnswer}
+        userWork={feedback?.userWork || teacherDiagnosis?.userWork || ""}
+        subject={feedback?.question?.subject || feedback?.subject || ""}
+        topic={feedback?.question?.topic || feedback?.topic || ""}
       />
 
       {/* ==========================================================

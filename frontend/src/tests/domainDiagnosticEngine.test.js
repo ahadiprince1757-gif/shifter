@@ -92,8 +92,8 @@ const diagnosis2 = diagnosticEngine.diagnose({
 });
 
 assert(diagnosis2.status === "inconclusive", "Status is 'inconclusive' when no working is provided");
-assert(diagnosis2.diagnosis.brokenAt === "insufficient_working", "Classified as insufficient_working");
-assert(diagnosis2.whyThisIsWrong[0].includes("without intermediate steps"), "Explains that intermediate steps are required");
+assert(diagnosis2.diagnosis.brokenAt === "result_divergence", "Classified as result_divergence");
+assert(diagnosis2.whyThisIsWrong[0].includes("leads to \"12\""), "Explains the calculation divergence with expected result 12");
 
 // Test 3: Correct Answer
 console.log("\n[Test 3: Correct Answer]");

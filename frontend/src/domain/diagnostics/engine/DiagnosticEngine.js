@@ -108,24 +108,34 @@ export class DiagnosticEngine {
       evidence: hasWork ? [{ text: submission.work, meaning: "Submitted working was unclassified" }] : [],
       diagnosis: {
         type: "unclassified",
-        brokenAt: hasWork ? "unclassified_step_divergence" : "insufficient_working",
+        brokenAt: hasWork ? "unclassified_step_divergence" : "result_divergence",
         explanation: hasWork
           ? "The calculation does not lead to the required result."
-          : "Your answer differs from the expected result, but without intermediate steps or written reasoning, I cannot identify where your thinking broke.",
+          : (expectedAnswer
+              ? `You entered "${studentAnswer}", but the calculation leads to "${expectedAnswer}".`
+              : "The calculation diverged from the expected result."),
       },
       errorType: "inconclusive_reasoning",
       whatYouDid: studentAnswer ? `You entered "${studentAnswer}".` : "No final answer was provided.",
       whyThisIsWrong: [
         hasWork
           ? "The calculation does not lead to the required result."
-          : "Your answer differs from the expected result, but without intermediate steps or written reasoning, I cannot identify where your thinking broke.",
-        "Try showing the step you used to reach your answer.",
+          : (expectedAnswer
+              ? `You entered "${studentAnswer}", but the calculation leads to "${expectedAnswer}".`
+              : "The calculation diverged from the expected result."),
+        "Review each step of the method below to see where the calculation diverged.",
       ],
       theRightWay: authoredSteps.length > 0 ? authoredSteps : (expectedAnswer ? [`Calculate: ${expectedAnswer}`] : []),
-      remember: "Review the step-by-step method to see where your calculation diverged.",
+      remember: expectedAnswer
+        ? `Double check your calculation: the expected result is ${expectedAnswer}.`
+        : "Review the step-by-step method to see where your calculation diverged.",
       probe: {
-        question: "Which formula or operation did you use to get your answer?",
+        question: expectedAnswer
+          ? `Calculate: ${question?.q ? question.q.replace(/^solve:?\s*/i, "") : "the result"} = ?`
+          : "Which formula or operation did you use to get your answer?",
         expectedConcept: "operation choice",
+        options: expectedAnswer && studentAnswer ? [expectedAnswer, studentAnswer] : [],
+        correctAnswer: expectedAnswer,
       },
       confidence: "low",
     };

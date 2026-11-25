@@ -944,8 +944,10 @@ function genericFallback({
     whyThisIsWrong: [
       hasWork
         ? "The calculation does not lead to the required result."
-        : "Your answer differs from the expected result, but without intermediate steps or written reasoning, I cannot identify where your thinking broke.",
-      "Try showing the step you used to reach your answer.",
+        : (expectedAnswer
+            ? `You entered "${studentAnswer}", but the calculation leads to ${expectedAnswer}.`
+            : "The calculation diverged from the expected result."),
+      "Review each step of the method below to see where your calculation diverged.",
     ],
     theRightWay: authoredSteps.length > 0
       ? authoredSteps
@@ -956,7 +958,9 @@ function genericFallback({
         ],
     remember:
       explanation ||
-      "Review the step-by-step method to see where your calculation diverged.",
+      (expectedAnswer
+        ? `Double check your calculation: the expected result is ${expectedAnswer}.`
+        : "Review the step-by-step method to see where your calculation diverged."),
     observed: [
       ...(studentAnswer ? [`Student answer: ${studentAnswer}`] : []),
       ...(hasWork ? ["Student working was provided for review."] : [])
@@ -965,8 +969,10 @@ function genericFallback({
     confidence: CONFIDENCE.LOW,
     diagnosis: {
       type: DIAGNOSIS_TYPE.UNCLASSIFIED,
-      brokenAt: "insufficient_working",
-      explanation: "Without intermediate steps or written reasoning, the exact point of divergence cannot be verified without guessing.",
+      brokenAt: "result_divergence",
+      explanation: expectedAnswer
+        ? `You entered "${studentAnswer}", but the calculation leads to ${expectedAnswer}.`
+        : "The calculation does not produce the expected result.",
     },
     repair: {
       concept: "showing_working",
@@ -1466,11 +1472,11 @@ export function diagnoseStudentSubmission({
         errorType: "inconclusive_reasoning",
         whatYouDid: `You entered "${answer}".`,
         whyThisIsWrong: [
-          "Your answer differs from the expected result, but without intermediate steps or written reasoning, I cannot identify where your thinking broke.",
-          "Try showing your working or explaining the step you used to reach your answer.",
+          `You entered "${answer}", but the calculation leads to ${pipelineQuestion.expected.answer}.`,
+          "Review each step of the formula calculation below to see where the result diverged.",
         ],
         theRightWay: scienceExpected?.steps?.length ? scienceExpected.steps : authoredSteps,
-        remember: scienceExpected?.formula ? `Use the formula: ${scienceExpected.formula}.` : "Show intermediate steps to get targeted diagnosis.",
+        remember: scienceExpected?.formula ? `Use the formula: ${scienceExpected.formula}.` : "Check each calculation step carefully.",
         observed: [`Answer: ${answer}`],
         expected: [String(pipelineQuestion.expected.answer)],
         confidence: CONFIDENCE.LOW,
