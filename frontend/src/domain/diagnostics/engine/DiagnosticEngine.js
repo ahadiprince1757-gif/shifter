@@ -32,11 +32,17 @@ export class DiagnosticEngine {
    */
   diagnose({ submission, question, evaluation }) {
     if (evaluation?.isCorrect) {
+      const authoredSteps = question?.steps || [];
+      const expectedAnswer = question?.ans || question?.correctAnswer || submission?.answer || "";
+
       return {
         status: "correct",
         correctness: "correct",
         studentAnswer: submission.answer,
         userWork: submission.work,
+        theRightWay: authoredSteps.length > 0 ? authoredSteps : (expectedAnswer ? [`Calculate: ${expectedAnswer}`] : []),
+        remember: question?.why || question?.explanation || (expectedAnswer ? `The standard method gives ${expectedAnswer}.` : ""),
+        whatYouDid: "Your reasoning and calculation correctly follow the standard method.",
         evidence: [],
         diagnosis: null,
         repair: null,

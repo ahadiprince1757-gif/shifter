@@ -175,6 +175,11 @@ export default function TeacherFeedbackView({
           </div>
         </ContentSection>
 
+        {/* THE RIGHT WAY (Always show the full step-by-step worked solution) */}
+        {standardSteps.length > 0 && (
+          <CorrectMethod steps={standardSteps} title="HOW TO SOLVE IT (STEP-BY-STEP)" />
+        )}
+
         {/* RULE TO REMEMBER */}
         {rememberText && (
           <RememberRule ruleText={rememberText} title="RULE TO REMEMBER" />
