@@ -272,53 +272,6 @@ export default function TeacherFeedbackView({
       {expectedAnswer && (
         <StandardAnswer answer={expectedAnswer} steps={standardSteps} />
       )}
-
-      {/* 08 · CHECK YOUR THINKING (Targeted Verification Retest) */}
-      {targetVerification?.question && (
-        <ContentSection title="CHECK YOUR THINKING">
-          <div className="type-body" style={{ fontWeight: 600, marginBottom: "var(--space-2)" }}>
-            <Markdown>{targetVerification.question}</Markdown>
-          </div>
-
-          {Array.isArray(targetVerification.options) && targetVerification.options.length > 0 ? (
-            <div style={{ display: "flex", flexDirection: "column", gap: "6px", marginTop: "8px" }}>
-              {targetVerification.options.map((opt, i) => {
-                const isTarget = opt === targetVerification.correctAnswer;
-                return (
-                  <div
-                    key={i}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      padding: "6px 0",
-                      borderBottom: "1px solid var(--border-subtle, #f0f0f0)",
-                      fontSize: "14.5px",
-                      color: "var(--text-primary)",
-                    }}
-                  >
-                    <span>{opt}</span>
-                    {isTarget && (
-                      <span style={{ color: "var(--state-success, #15803d)", fontSize: "12px", fontWeight: 600 }}>
-                        ✓ Correct Reasoning
-                      </span>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-          ) : (
-            expectedAnswer && (
-              <div style={{ padding: "6px 0", fontSize: "14.5px", color: "var(--text-primary)" }}>
-                <span>{expectedAnswer}</span>
-                <span style={{ marginLeft: "12px", color: "var(--state-success, #15803d)", fontSize: "12px", fontWeight: 600 }}>
-                  ✓ Target Result
-                </span>
-              </div>
-            )
-          )}
-        </ContentSection>
-      )}
     </div>
   );
 }
