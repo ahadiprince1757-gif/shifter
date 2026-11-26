@@ -115,8 +115,8 @@ export default function ProfileDropdown() {
               <button
                 className="profile-menu-item"
                 onClick={() => {
-                  setLegalDoc("terms");
                   setProfileMenuOpen(false);
+                  navigate("/legal?tab=terms");
                 }}
               >
                 <svg viewBox="0 0 24 24" width="15" height="15" fill="currentColor">
@@ -177,8 +177,8 @@ export default function ProfileDropdown() {
                   type="button"
                   className="auth-legal-link"
                   onClick={() => {
-                    setLegalDoc("terms");
                     setProfileMenuOpen(false);
+                    navigate("/legal?tab=terms");
                   }}
                   style={{ fontSize: "0.74rem" }}
                 >

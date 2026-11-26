@@ -1,30 +1,7 @@
 import { useState, useEffect } from "react";
 
-export default function LegalModal({ isOpen, onClose, initialTab = "terms" }) {
-  const [activeTab, setActiveTab] = useState(initialTab);
-
-  useEffect(() => {
-    if (initialTab) {
-      setActiveTab(initialTab);
-    }
-  }, [initialTab]);
-
-  useEffect(() => {
-    if (!isOpen) return;
-
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") {
-        onClose();
-      }
-    };
-    window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [isOpen, onClose]);
-
-  if (!isOpen) return null;
-
-  const legalDocs = {
-    terms: {
+export const LEGAL_DOCS = {
+  terms: {
       key: "terms",
       label: "Terms of Service",
       title: "TIXAR LEGAL FRAMEWORK - Terms of Service",
@@ -353,9 +330,32 @@ export default function LegalModal({ isOpen, onClose, initialTab = "terms" }) {
         </>
       ),
     },
-  };
+};
 
-  const currentDoc = legalDocs[activeTab] || legalDocs.terms;
+export default function LegalModal({ isOpen, onClose, initialTab = "terms" }) {
+  const [activeTab, setActiveTab] = useState(initialTab);
+
+  useEffect(() => {
+    if (initialTab) {
+      setActiveTab(initialTab);
+    }
+  }, [initialTab]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        onClose();
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen, onClose]);
+
+  if (!isOpen) return null;
+
+  const currentDoc = LEGAL_DOCS[activeTab] || LEGAL_DOCS.terms;
 
   return (
     <div className="legal-overlay" onClick={onClose} role="presentation">
@@ -384,7 +384,7 @@ export default function LegalModal({ isOpen, onClose, initialTab = "terms" }) {
 
         {/* Tab switcher */}
         <div className="legal-tabs-bar" role="tablist">
-          {Object.values(legalDocs).map((doc) => (
+          {Object.values(LEGAL_DOCS).map((doc) => (
             <button
               key={doc.key}
               type="button"

@@ -40,6 +40,7 @@ const TopicList = lazyWithRetry(() => import("../components/TopicList"));
 const SubtopicList = lazyWithRetry(() => import("../components/SubtopicList"));
 const LearnFlow = lazyWithRetry(() => import("../components/LearnFlow"));
 const Gaps = lazyWithRetry(() => import("../components/Gaps"));
+const LegalPage = lazyWithRetry(() => import("../pages/LegalPage"));
 const WelcomeAuthScreen = lazyWithRetry(() => import("../components/WelcomeAuthScreen"));
 
 const ChapterListWrapper = () => {
@@ -270,6 +271,9 @@ export default function AppRoutes() {
           <Route path="/learn/:subjectId/:chapterId/:topicId" element={<RequireAuth><LearnFlowWrapper /></RequireAuth>} />
           <Route path="/verification" element={<RequireAuth><VerificationPage /></RequireAuth>} />
           <Route path="/gaps" element={<RequireAuth><Gaps /></RequireAuth>} />
+          <Route path="/legal" element={<LegalPage />} />
+          <Route path="/terms" element={<Navigate to="/legal?tab=terms" replace />} />
+          <Route path="/privacy" element={<Navigate to="/legal?tab=policy" replace />} />
           <Route path="/mistakes" element={<Navigate to="/gaps" replace />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
