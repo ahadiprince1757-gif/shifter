@@ -1,4 +1,4 @@
-const CACHE_NAME = 'Tixar-v18.0';
+const CACHE_NAME = 'Tixar-v19.0';
 const ASSETS = [
   '/',
   '/index.html',
@@ -36,8 +36,26 @@ self.addEventListener('fetch', (e) => {
     return;
   }
 
-  // Bypass service worker for:
+  // Bypass service worker for cross-origin requests (Render API/health, Supabase, CDNs),
+  // non-GET requests, API routes, health checks, and Vite HMR internals.
+  if (e.request.method !== 'GET') {
+    return;
+  }
+
+  let parsedUrl;
+  try {
+    parsedUrl = new URL(url);
+  } catch {
+    return;
+  }
+
+  if (parsedUrl.origin !== self.location.origin) {
+    return;
+  }
+
   if (
+    url.includes('/api/') ||
+    url.includes('/health') ||
     url.includes('/@vite') || 
     url.includes('/@react-refresh') || 
     url.includes('?t=') ||
@@ -48,14 +66,6 @@ self.addEventListener('fetch', (e) => {
     url.includes('/rest/') ||
     url.includes('/realtime/')
   ) {
-    return;
-  }
-
-  if (e.request.method !== 'GET') {
-    return;
-  }
-
-  if (url.includes('/api/')) {
     return;
   }
 

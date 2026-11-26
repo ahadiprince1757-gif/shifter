@@ -63,11 +63,13 @@ export async function fetchTopicContent(sid, cid, topic) {
       const responseTime = Date.now() - startTime;
 
       if (!r.ok) {
-        console.warn(`[API] Remote content unavailable for ${topic} (Status: ${r.status}, Attempt: ${attempt}).`);
-        if (attempt === 1) {
+        // Never retry client errors (e.g. 404 Not Found); only retry transient 5xx responses
+        if (r.status >= 500 && attempt === 1) {
+          console.debug(`[API] Remote content temporary error for ${topic} (Status: ${r.status}, retrying...).`);
           await new Promise((res) => setTimeout(res, 800));
           continue;
         }
+        console.debug(`[API] Remote content unavailable for ${topic} (Status: ${r.status}). Using local bundle.`);
         break;
       }
 
@@ -144,7 +146,7 @@ export async function gradeAnswer(payload) {
 export async function fetchAnalytics() {
   const startTime = Date.now();
   try {
-    const r = await fetch(`${API_BASE}/analytics`, { headers: getAuthHeaders() });
+    const r = await fetch(`${API_BASE}/learning-summary`, { headers: getAuthHeaders() });
     const responseTime = Date.now() - startTime;
 
     if (!r.ok) {

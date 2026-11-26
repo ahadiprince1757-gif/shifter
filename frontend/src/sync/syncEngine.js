@@ -238,11 +238,22 @@ class SyncEngine {
    * Never throws or interrupts user learning.
    */
   async refreshTopicInBackground(subjectId, chapterId, topicId) {
+    const key = `${subjectId}|${chapterId}|${topicId}`;
+    this._recentTopicRefreshes = this._recentTopicRefreshes || new Map();
+    this._inFlightTopicRefreshes = this._inFlightTopicRefreshes || new Set();
+
+    const lastRefresh = this._recentTopicRefreshes.get(key) || 0;
+    if (this._inFlightTopicRefreshes.has(key) || Date.now() - lastRefresh < 60_000) {
+      return;
+    }
+
+    this._inFlightTopicRefreshes.add(key);
+    this._recentTopicRefreshes.set(key, Date.now());
     try {
       const topicData = await fetchTopicContent(subjectId, chapterId, topicId);
       if (topicData && (topicData.notes || (Array.isArray(topicData.qs) && topicData.qs.length > 0))) {
         await topicRepo.upsertBatch([{
-          id: `${subjectId}|${chapterId}|${topicId}`,
+          id: key,
           curriculum_id: subjectId,
           chapter_id: chapterId,
           data: topicData,
@@ -252,6 +263,8 @@ class SyncEngine {
     } catch (err) {
       // Quiet background failure — do not log scary error or disrupt user
       console.debug(`[Sync] Background refresh skipped for "${topicId}":`, err?.message || err);
+    } finally {
+      this._inFlightTopicRefreshes.delete(key);
     }
   }
 }

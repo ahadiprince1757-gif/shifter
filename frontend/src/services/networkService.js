@@ -38,7 +38,7 @@ class NetworkService {
   constructor({
     healthCheckUrl = null,
     checkInterval = 30_000,
-    timeout = 5_000,
+    timeout = 12_000,
     autoStart = true,
   } = {}) {
     const resolvedApiUrl =
@@ -72,6 +72,7 @@ class NetworkService {
 
     this.monitorTimer = null;
     this.isChecking = false;
+    this._checkPromise = null;
     this._consecutiveFailures = 0;  // tracks how many times /health returned non-ok
 
     // Bind event handlers
@@ -232,8 +233,8 @@ class NetworkService {
   ========================================================================== */
 
   async checkConnectivity() {
-    if (this.isChecking) {
-      return this.getState();
+    if (this._checkPromise) {
+      return this._checkPromise;
     }
 
     if (typeof navigator !== "undefined" && !navigator.onLine) {
@@ -248,66 +249,71 @@ class NetworkService {
       status: "CHECKING",
     });
 
-    try {
-      const startTime = performance.now();
+    this._checkPromise = (async () => {
+      try {
+        const startTime = performance.now();
 
-      if (this.healthCheckUrl) {
-        const response = await this.fetchWithTimeout(
-          this.healthCheckUrl,
-          { method: "GET", cache: "no-store" },
-          this.timeout
-        );
+        if (this.healthCheckUrl) {
+          const response = await this.fetchWithTimeout(
+            this.healthCheckUrl,
+            { method: "GET", cache: "no-store" },
+            this.timeout
+          );
 
-        if (!response.ok) {
-          // Server returned an error status (e.g. 503 Render sleeping).
-          // Treat as a server-side failure — increment backoff counter.
-          this._consecutiveFailures++;
-          throw new Error(`Health check failed with status ${response.status}`);
+          if (!response.ok) {
+            // Server returned an error status (e.g. 503 Render sleeping).
+            // Treat as a server-side failure — increment backoff counter.
+            this._consecutiveFailures++;
+            throw new Error(`Health check failed with status ${response.status}`);
+          }
+        } else {
+          await this.fetchWithTimeout(
+            "/favicon.ico",
+            { method: "HEAD", cache: "no-store" },
+            this.timeout
+          );
         }
-      } else {
-        await this.fetchWithTimeout(
-          "/favicon.ico",
-          { method: "HEAD", cache: "no-store" },
-          this.timeout
-        );
+
+        const latency = Math.round(performance.now() - startTime);
+
+        // Successful response — reset backoff
+        this._consecutiveFailures = 0;
+
+        let status = "ONLINE";
+        if (latency > 2000) {
+          status = "DEGRADED";
+        }
+
+        this.updateState({
+          browserOnline: true,
+          internetReachable: true,
+          status,
+          latency,
+          lastChecked: new Date().toISOString(),
+        });
+      } catch {
+        // Network error or non-ok status — increment failure count if not already done above
+        if (this._consecutiveFailures === 0) {
+          this._consecutiveFailures++;
+        }
+
+        const isBrowserOnline = typeof navigator !== "undefined" ? navigator.onLine : false;
+        this.updateState({
+          browserOnline: isBrowserOnline,
+          internetReachable: false,
+          status: isBrowserOnline ? "DEGRADED" : "OFFLINE",
+          latency: null,
+          lastChecked: new Date().toISOString(),
+        });
+      } finally {
+        this.isChecking = false;
+        this._checkPromise = null;
       }
 
-      const latency = Math.round(performance.now() - startTime);
+      return this.getState();
+    })();
 
-      // Successful response — reset backoff
-      this._consecutiveFailures = 0;
-
-      let status = "ONLINE";
-      if (latency > 2000) {
-        status = "DEGRADED";
-      }
-
-      this.updateState({
-        browserOnline: true,
-        internetReachable: true,
-        status,
-        latency,
-        lastChecked: new Date().toISOString(),
-      });
-    } catch {
-      // Network error or non-ok status — increment failure count if not already done above
-      if (this._consecutiveFailures === 0) {
-        this._consecutiveFailures++;
-      }
-
-      const isBrowserOnline = typeof navigator !== "undefined" ? navigator.onLine : false;
-      this.updateState({
-        browserOnline: isBrowserOnline,
-        internetReachable: false,
-        status: isBrowserOnline ? "DEGRADED" : "OFFLINE",
-        latency: null,
-        lastChecked: new Date().toISOString(),
-      });
-    } finally {
-      this.isChecking = false;
-    }
-
-    return this.getState();
+    return this._checkPromise;
   }
 
   /* ==========================================================================

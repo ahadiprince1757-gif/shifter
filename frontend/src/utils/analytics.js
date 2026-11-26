@@ -304,7 +304,7 @@ export async function triggerSync(targetUserId = null) {
         ? import.meta.env.VITE_API_URL
         : "https://shifter-i49i.onrender.com")
     : (import.meta.env.VITE_API_URL || "http://localhost:3001");
-  const syncUrl = `${_analyticsBase.replace(/\/$/, "")}/api/analytics/events`;
+  const syncUrl = `${_analyticsBase.replace(/\/$/, "")}/api/learning-events`;
 
   const safeEvents = events.filter((e) => e.user_id === activeUserId);
   if (safeEvents.length === 0) {

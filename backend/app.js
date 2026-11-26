@@ -172,9 +172,9 @@ const LOCAL_CONTENT_MAP = (() => {
   global.add = (...args) => {
     const sid = String(args[0] || "").toLowerCase().trim();
     if (!CANONICAL_SUBJECT_IDS.has(sid)) return;
-    let cid, topic, notes, qs, topicGroup;
+    let cid, topic, topicSlug = null, notes, qs, topicGroup;
 
-    if (sid === "math") {
+    if (sid === "math" || sid === "biology") {
       const rawQs = args[args.length - 1];
       const rawNotes = args[args.length - 2];
       const pathParts = args.slice(1, args.length - 2).map((s) => String(s).trim());
@@ -202,8 +202,18 @@ const LOCAL_CONTENT_MAP = (() => {
 
       notes = typeof rawNotes === "string" ? rawNotes : "";
       qs = Array.isArray(rawQs) ? rawQs : (rawQs ? [rawQs] : []);
+    } else if (args.length >= 6) {
+      // Format: add(sid, cid, topicSlug, topicTitle, notes, qs)
+      cid = String(args[1] || "").trim().toLowerCase();
+      topicSlug = String(args[2] || "").trim();
+      topic = String(args[3] || "").trim();
+      topicGroup = topic;
+      notes = typeof args[4] === "string" ? args[4] : (Array.isArray(args[4]) ? args[4].join("\n") : String(args[4] || ""));
+      let rawQs = args[5] || [];
+      if (!Array.isArray(rawQs) && rawQs) rawQs = [rawQs];
+      qs = rawQs;
     } else {
-      cid = String(args[1] || "").trim();
+      cid = String(args[1] || "").trim().toLowerCase();
       topic = String(args[2] || "").trim();
       topicGroup = topic;
       notes = typeof args[3] === "string" ? args[3] : (Array.isArray(args[3]) ? args[3].join("\n") : String(args[3] || ""));
@@ -215,27 +225,38 @@ const LOCAL_CONTENT_MAP = (() => {
       qs = rawQs;
     }
 
-    const qsArray = qs.map(normalizeQ);
-    const contentObj = {
-      notes: notes,
-      qs: qsArray.map((q) => ({
-        q: q.q,
-        hint: q.hint || "",
-        ans: q.ans,
-        explain: q.why || "",
-        why: q.why || "",
-        sol: q.sol || q.why || "",
-        steps: Array.isArray(q.steps) ? q.steps : [],
-        type: q.type || null,
-        mark: q.mark || "",
-      })),
+    const normalizedQs = qs.map(normalizeQ).map((q) => ({
+      q: q.q,
+      hint: q.hint || "",
+      ans: q.ans,
+      explain: q.why || "",
+      why: q.why || "",
+      sol: q.sol || q.why || "",
+      steps: Array.isArray(q.steps) ? q.steps : [],
+      type: q.type || null,
+      mark: q.mark || "",
+    }));
+
+    const registerKey = (k) => {
+      if (!k) return;
+      const existing = contentMap.get(k);
+      if (existing) {
+        existing.notes = existing.notes + "\n<hr>\n" + notes;
+        existing.qs = existing.qs.concat(normalizedQs);
+      } else {
+        contentMap.set(k, { notes, qs: [...normalizedQs] });
+      }
     };
+
     const rawKey = `${sid}|${cid}|${String(topic || "").toLowerCase().trim()}`;
     const normKey = `${sid}|${cid}|${normalizeTopicKey(topic)}`;
-    contentMap.set(rawKey, contentObj);
-    contentMap.set(normKey, contentObj);
+    registerKey(rawKey);
+    if (normKey !== rawKey) registerKey(normKey);
+    if (topicSlug && topicSlug.toLowerCase() !== String(topic || "").toLowerCase().trim()) {
+      registerKey(`${sid}|${cid}|${topicSlug.toLowerCase()}`);
+    }
     if (topicGroup && topicGroup !== topic) {
-      contentMap.set(`${sid}|${cid}|${String(topicGroup).toLowerCase().trim()}|${String(topic).toLowerCase().trim()}`, contentObj);
+      registerKey(`${sid}|${cid}|${String(topicGroup).toLowerCase().trim()}|${String(topic).toLowerCase().trim()}`);
     }
   };
 
@@ -723,8 +744,9 @@ app.post("/api/grade", async (req, res) => {
   }
 });
 
-// Endpoint: Batch insert learning events for analytics with idempotency & bulk resolution
-app.post("/api/analytics/events", async (req, res) => {
+// Endpoint: Batch insert learning events with idempotency & bulk resolution
+// /api/learning-events is primary (avoids browser privacy blockers on "/analytics/"); /api/analytics/events kept as alias.
+app.post(["/api/learning-events", "/api/analytics/events"], async (req, res) => {
   const { events } = req.body || {};
   if (!Array.isArray(events) || events.length === 0) {
     return res.status(400).json({ error: "events array is required" });
@@ -947,7 +969,7 @@ app.post("/api/analytics/events", async (req, res) => {
 });
 
 // Endpoint: Get aggregated canonical learning evidence for the current user
-app.get("/api/analytics", async (req, res) => {
+app.get(["/api/learning-summary", "/api/analytics"], async (req, res) => {
   try {
     const userId = await resolveUserId(req);
 
