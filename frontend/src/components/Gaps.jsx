@@ -235,9 +235,13 @@ export default function Gaps() {
                 }}
               >
                 {activeSubjects.map((sub) => {
-                  const count = gaps.filter(
-                    (g) => g.subject_id === sub && Boolean(formatTitle(g.topic_id || g.topic_title))
-                  ).length;
+                  const uniqueTopics = new Set(
+                    gaps
+                      .filter((g) => g.subject_id === sub)
+                      .map((g) => formatTitle(g.topic_id || g.topic_title).toLowerCase())
+                      .filter(Boolean)
+                  );
+                  const count = uniqueTopics.size;
                   if (count === 0) return null;
                   const subName = getCanonicalSubjectName(sub);
                   const isActive = activeSubject === sub;
@@ -287,7 +291,7 @@ export default function Gaps() {
               </div>
             )}
 
-            {/* ── Single Primary Recommendation (Left Accent, No Floating Card) ── */}
+            {/* ── Single Primary Recommendation (Left Accent, Compact Inline Action) ── */}
             {priorityGap && (
               <section
                 aria-label={`Recommended next practice: ${formatTitle(priorityGap.topic_id || priorityGap.topic_title)}`}
@@ -297,42 +301,55 @@ export default function Gaps() {
                   paddingTop: "4px",
                   paddingBottom: "4px",
                   marginBottom: "var(--space-6)",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "space-between",
+                  gap: "16px",
                 }}
               >
-                <div
-                  className="type-meta"
-                  style={{
-                    color: "var(--tixar-blue-core, #287ce0)",
-                    textTransform: "uppercase",
-                    marginBottom: "4px",
-                  }}
-                >
-                  Recommended Next
-                </div>
-                <h2
-                  className="type-question"
-                  style={{
-                    fontSize: "20px",
-                    fontWeight: 600,
-                    color: "var(--text-primary)",
-                    marginBottom: priorityGap.chapter_id ? "4px" : "14px",
-                  }}
-                >
-                  {formatTitle(priorityGap.topic_id || priorityGap.topic_title)}
-                </h2>
-                {priorityGap.chapter_id && (
+                <div style={{ minWidth: 0 }}>
                   <div
-                    className="type-supporting"
-                    style={{ color: "var(--text-secondary)", marginBottom: "14px" }}
+                    className="type-meta"
+                    style={{
+                      color: "var(--tixar-blue-core, #287ce0)",
+                      textTransform: "uppercase",
+                      marginBottom: "4px",
+                    }}
                   >
-                    {formatTitle(priorityGap.chapter_id)}
+                    Recommended Next
                   </div>
-                )}
+                  <h2
+                    className="type-question"
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: 600,
+                      color: "var(--text-primary)",
+                      marginBottom: priorityGap.chapter_id ? "3px" : "0",
+                    }}
+                  >
+                    {formatTitle(priorityGap.topic_id || priorityGap.topic_title)}
+                  </h2>
+                  {priorityGap.chapter_id && (
+                    <div
+                      className="type-supporting"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {formatTitle(priorityGap.chapter_id)}
+                    </div>
+                  )}
+                </div>
                 <button
                   type="button"
                   className="primary-action-btn"
                   onClick={() => handlePractice(priorityGap)}
                   aria-label={`Start practice for ${formatTitle(priorityGap.topic_id || priorityGap.topic_title)}`}
+                  style={{
+                    width: "auto",
+                    minHeight: "38px",
+                    padding: "8px 18px",
+                    fontSize: "14px",
+                    flexShrink: 0,
+                  }}
                 >
                   Practice →
                 </button>
