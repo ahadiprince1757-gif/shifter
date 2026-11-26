@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import { mistakeRepo } from "../repository/mistakeRepo";
 import SkeletonLoader from "./SkeletonLoader";
+import ReadingContainer from "./layout/ReadingContainer";
 import { useAuth } from "../hooks/useAuth";
 import { navigateToTopic, LEARNING_MODES } from "../utils/learningNavigation";
 import { SUBJECTS } from "../data/subjectRegistry";
@@ -104,10 +105,21 @@ export default function Gaps() {
     return activeSubjects[0] || null;
   }, [selectedSubject, activeSubjects]);
 
-  // Gaps for the active subject
+  // Gaps for the active subject (sanitized: drop blank topics & deduplicate by topic)
   const currentSubjectGaps = useMemo(() => {
     if (!activeSubject) return [];
-    return gaps.filter((g) => g.subject_id === activeSubject);
+    const seen = new Set();
+    const filtered = [];
+    for (const g of gaps) {
+      if (g.subject_id !== activeSubject) continue;
+      const title = formatTitle(g.topic_id || g.topic_title);
+      if (!title) continue;
+      const key = title.toLowerCase();
+      if (seen.has(key)) continue;
+      seen.add(key);
+      filtered.push(g);
+    }
+    return filtered;
   }, [gaps, activeSubject]);
 
   // Recommended focus gap for this subject
@@ -121,27 +133,10 @@ export default function Gaps() {
     })[0];
   }, [currentSubjectGaps]);
 
-  // Group current subject gaps by chapter for clean organization
-  const chapters = useMemo(() => {
-    const map = new Map();
-    for (const gap of currentSubjectGaps) {
-      const chKey = gap.chapter_id || "general";
-      if (!map.has(chKey)) map.set(chKey, []);
-      map.get(chKey).push(gap);
-    }
-    // Sort items inside each chapter
-    for (const [, list] of map.entries()) {
-      list.sort((a, b) => {
-        if (!a.resolved && b.resolved) return -1;
-        if (a.resolved && !b.resolved) return 1;
-        const aAttempts = a.attempt_count || 1;
-        const bAttempts = b.attempt_count || 1;
-        if (bAttempts !== aAttempts) return bAttempts - aAttempts;
-        return new Date(b.updated_at) - new Date(a.updated_at);
-      });
-    }
-    return Array.from(map.entries());
-  }, [currentSubjectGaps]);
+  const remainingGaps = useMemo(() => {
+    if (!priorityGap) return currentSubjectGaps;
+    return currentSubjectGaps.filter((g) => g.id !== priorityGap.id);
+  }, [currentSubjectGaps, priorityGap]);
 
   const handlePractice = (gap) => {
     if (!gap) return;
@@ -161,195 +156,289 @@ export default function Gaps() {
   };
 
   return (
-    <div className="gaps-workspace" id="v-gaps">
-      {/* ── Executive Noise-Free Header ── */}
-      <header className="gaps-header">
-        <h1 className="gaps-title">Knowledge Gaps</h1>
-        <p className="gaps-subtitle">
-          {activeSubject && currentSubjectGaps.length > 0
-            ? `${currentSubjectGaps.length} topic${currentSubjectGaps.length === 1 ? "" : "s"} identified for targeted practice in ${getCanonicalSubjectName(activeSubject)}.`
-            : "Review and strengthen topics identified from your previous quizzes."}
-        </p>
-      </header>
-
-      {/* ── Quiet Offline Indicator ── */}
-      {isOffline && (
-        <div className="mj-offline-banner" role="status" aria-live="polite">
-          <svg
-            className="mj-offline-svg"
-            width="14"
-            height="14"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            aria-hidden="true"
-          >
-            <line x1="1" y1="1" x2="23" y2="23" />
-            <path d="M16.72 11.06A10.94 10.94 0 0 1 19 12.55" />
-            <path d="M5 12.55a10.94 10.94 0 0 1 5.17-2.39" />
-            <path d="M10.71 5.05A16 16 0 0 1 22.56 9" />
-            <path d="M1.42 9a15.91 15.91 0 0 1 4.7-2.88" />
-            <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
-            <line x1="12" y1="20" x2="12.01" y2="20" />
-          </svg>
-          <span>Offline mode &mdash; displaying locally stored gaps.</span>
-        </div>
-      )}
-
-      {loading ? (
-        <div style={{ marginTop: "1.5rem" }}>
-          <SkeletonLoader type="list" count={4} />
-        </div>
-      ) : gaps.length === 0 ? (
-        /* ── Modern Empty State (Zero Emojis, Peaceful) ── */
-        <div className="mj-empty-state">
-          <div className="mj-empty-art" aria-hidden="true">
-            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="var(--gr, #10b981)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-              <polyline points="9 12 11 14 15 10" />
-            </svg>
+    <div id="v-gaps" className="view active" style={{ paddingTop: "0.5rem" }}>
+      <ReadingContainer>
+        {/* ── Header (Continuous Document Surface) ── */}
+        <div style={{ marginBottom: "var(--space-6)" }}>
+          <h1 className="type-page-heading" style={{ fontSize: "26px", marginBottom: "6px" }}>
+            Knowledge Gaps
+          </h1>
+          <div className="type-supporting" style={{ color: "var(--text-secondary)" }}>
+            {activeSubject && currentSubjectGaps.length > 0
+              ? `${currentSubjectGaps.length} topic${currentSubjectGaps.length === 1 ? "" : "s"} identified for targeted practice in ${getCanonicalSubjectName(activeSubject)}.`
+              : "Review and strengthen topics identified from your previous quizzes."}
           </div>
-          <h2 className="mj-empty-heading">All Clear &mdash; No Unresolved Gaps</h2>
-          <p className="mj-empty-desc">
-            You have mastered all tested concepts across your subjects. Explore new topics to keep learning.
-          </p>
-          <button
-            type="button"
-            className="mj-empty-btn"
-            onClick={() => navigate("/subjects")}
-          >
-            Explore Subjects &rarr;
-          </button>
         </div>
-      ) : (
-        <>
-          {/* ── Pure-Text Subject Navigation Tabs ── */}
-          {activeSubjects.length > 1 && (
+
+        {/* ── Quiet Offline Indicator ── */}
+        {isOffline && (
+          <div
+            role="status"
+            aria-live="polite"
+            style={{
+              marginBottom: "var(--space-4)",
+              paddingLeft: "12px",
+              borderLeft: "2px solid var(--text-muted, #94a3b8)",
+              color: "var(--text-secondary)",
+              fontSize: "13.5px",
+            }}
+          >
+            Offline mode &mdash; displaying locally stored gaps.
+          </div>
+        )}
+
+        {loading ? (
+          <div style={{ marginTop: "1.5rem" }}>
+            <SkeletonLoader type="list" count={4} />
+          </div>
+        ) : gaps.length === 0 ? (
+          /* ── Clean Document Empty State ── */
+          <div style={{ paddingTop: "var(--space-4)" }}>
             <div
-              className="gaps-subject-tabs"
-              role="tablist"
-              aria-label="Filter by subject"
+              className="type-meta"
+              style={{
+                color: "var(--state-success, #15803d)",
+                marginBottom: "6px",
+                textTransform: "uppercase",
+              }}
             >
-              {activeSubjects.map((sub) => {
-                const count = gaps.filter((g) => g.subject_id === sub).length;
-                const subName = getCanonicalSubjectName(sub);
-                const isActive = activeSubject === sub;
-                return (
-                  <button
-                    key={sub}
-                    type="button"
-                    role="tab"
-                    aria-selected={isActive}
-                    className={`gaps-tab-btn ${isActive ? "active" : ""}`}
-                    onClick={() => setSelectedSubject(sub)}
-                  >
-                    <span>{subName}</span>
-                    <span className="gaps-tab-badge">{count}</span>
-                  </button>
-                );
-              })}
+              Verified Mastery ✓
             </div>
-          )}
-
-          {/* ── Single Primary Recommendation (Noise-Free) ── */}
-          {priorityGap && (
-            <section
-              className="gaps-primary-card"
-              aria-label={`Recommended next practice: ${formatTitle(priorityGap.topic_id)}`}
+            <h2 className="type-question" style={{ fontSize: "20px", fontWeight: 600, marginBottom: "8px" }}>
+              All Clear &mdash; No Unresolved Gaps
+            </h2>
+            <p className="type-body" style={{ color: "var(--text-secondary)", marginBottom: "var(--space-6)" }}>
+              You have mastered all tested concepts across your subjects. Explore new topics to keep learning.
+            </p>
+            <button
+              type="button"
+              className="primary-action-btn"
+              onClick={() => navigate("/subjects")}
             >
-              <div className="gaps-primary-info">
-                <span className="gaps-primary-kicker">Recommended Next</span>
-                <h2 className="gaps-primary-title">
-                  {formatTitle(priorityGap.topic_id)}
-                </h2>
-              </div>
-
-              <button
-                type="button"
-                className="gaps-primary-btn"
-                onClick={() => handlePractice(priorityGap)}
-                aria-label={`Start practice for ${formatTitle(priorityGap.topic_id)}`}
+              Explore Subjects →
+            </button>
+          </div>
+        ) : (
+          <>
+            {/* ── Underline Subject Navigation Tabs (No Pill Soup) ── */}
+            {activeSubjects.length > 1 && (
+              <div
+                role="tablist"
+                aria-label="Filter by subject"
+                style={{
+                  display: "flex",
+                  gap: "24px",
+                  overflowX: "auto",
+                  borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
+                  marginBottom: "var(--space-6)",
+                  scrollbarWidth: "none",
+                }}
               >
-                <span>Practice</span>
-                <svg
-                  width="13"
-                  height="13"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2.5"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  aria-hidden="true"
-                >
-                  <line x1="5" y1="12" x2="19" y2="12" />
-                  <polyline points="12 5 19 12 12 19" />
-                </svg>
-              </button>
-            </section>
-          )}
-
-          {/* ── Clean Concept Queue (Pure Concepts, Practice Alone) ── */}
-          <div className="gaps-queue-container">
-            <div className="gaps-list">
-              {currentSubjectGaps.map((gap) => (
-                <div
-                  key={gap.id}
-                  className="gaps-row"
-                  onClick={() => handlePractice(gap)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === "Enter" || e.key === " ") {
-                      e.preventDefault();
-                      handlePractice(gap);
-                    }
-                  }}
-                  aria-label={`Practice ${formatTitle(gap.topic_id)}`}
-                >
-                  <div className="gaps-row-main">
-                    <div className="gaps-row-title">
-                      {formatTitle(gap.topic_id)}
-                    </div>
-                  </div>
-
-                  <div className="gaps-row-actions">
+                {activeSubjects.map((sub) => {
+                  const count = gaps.filter(
+                    (g) => g.subject_id === sub && Boolean(formatTitle(g.topic_id || g.topic_title))
+                  ).length;
+                  if (count === 0) return null;
+                  const subName = getCanonicalSubjectName(sub);
+                  const isActive = activeSubject === sub;
+                  return (
                     <button
+                      key={sub}
                       type="button"
-                      className="gaps-action-btn"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handlePractice(gap);
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => setSelectedSubject(sub)}
+                      style={{
+                        background: "transparent",
+                        border: "none",
+                        borderBottom: isActive
+                          ? "2px solid var(--tixar-blue-core, #287ce0)"
+                          : "2px solid transparent",
+                        padding: "10px 0",
+                        cursor: "pointer",
+                        whiteSpace: "nowrap",
+                        fontSize: "14px",
+                        fontWeight: isActive ? 600 : 500,
+                        color: isActive
+                          ? "var(--tixar-blue-core, #287ce0)"
+                          : "var(--text-secondary)",
+                        display: "inline-flex",
+                        alignItems: "center",
+                        gap: "6px",
+                        marginBottom: "-1px",
+                        transition: "color 0.15s ease",
                       }}
-                      tabIndex={-1}
-                      aria-label={`Practice ${formatTitle(gap.topic_id)}`}
                     >
-                      <span>Practice</span>
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
+                      <span>{subName}</span>
+                      <span
+                        style={{
+                          fontSize: "12px",
+                          fontWeight: 500,
+                          color: isActive
+                            ? "var(--tixar-blue-core, #287ce0)"
+                            : "var(--text-muted, #94a3b8)",
+                        }}
+                      >
+                        {count}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* ── Single Primary Recommendation (Left Accent, No Floating Card) ── */}
+            {priorityGap && (
+              <section
+                aria-label={`Recommended next practice: ${formatTitle(priorityGap.topic_id || priorityGap.topic_title)}`}
+                style={{
+                  borderLeft: "2px solid var(--tixar-blue-core, #287ce0)",
+                  paddingLeft: "16px",
+                  paddingTop: "4px",
+                  paddingBottom: "4px",
+                  marginBottom: "var(--space-6)",
+                }}
+              >
+                <div
+                  className="type-meta"
+                  style={{
+                    color: "var(--tixar-blue-core, #287ce0)",
+                    textTransform: "uppercase",
+                    marginBottom: "4px",
+                  }}
+                >
+                  Recommended Next
+                </div>
+                <h2
+                  className="type-question"
+                  style={{
+                    fontSize: "20px",
+                    fontWeight: 600,
+                    color: "var(--text-primary)",
+                    marginBottom: priorityGap.chapter_id ? "4px" : "14px",
+                  }}
+                >
+                  {formatTitle(priorityGap.topic_id || priorityGap.topic_title)}
+                </h2>
+                {priorityGap.chapter_id && (
+                  <div
+                    className="type-supporting"
+                    style={{ color: "var(--text-secondary)", marginBottom: "14px" }}
+                  >
+                    {formatTitle(priorityGap.chapter_id)}
+                  </div>
+                )}
+                <button
+                  type="button"
+                  className="primary-action-btn"
+                  onClick={() => handlePractice(priorityGap)}
+                  aria-label={`Start practice for ${formatTitle(priorityGap.topic_id || priorityGap.topic_title)}`}
+                >
+                  Practice →
+                </button>
+              </section>
+            )}
+
+            {/* ── Remaining Gaps List (Editorial Hairline Rows, Zero Card Soup) ── */}
+            {remainingGaps.length > 0 && (
+              <div style={{ display: "flex", flexDirection: "column" }}>
+                <div
+                  className="type-meta"
+                  style={{
+                    color: "var(--text-secondary)",
+                    textTransform: "uppercase",
+                    paddingBottom: "8px",
+                    borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
+                  }}
+                >
+                  More Topics to Repair
+                </div>
+                {remainingGaps.map((gap, idx) => {
+                  const title = formatTitle(gap.topic_id || gap.topic_title);
+                  const chapterLabel = gap.chapter_id ? formatTitle(gap.chapter_id) : "";
+                  return (
+                    <div
+                      key={gap.id}
+                      onClick={() => handlePractice(gap)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === "Enter" || e.key === " ") {
+                          e.preventDefault();
+                          handlePractice(gap);
+                        }
+                      }}
+                      aria-label={`Practice ${title}`}
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        padding: "18px 0",
+                        borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
+                        cursor: "pointer",
+                        transition: "background 0.15s ease",
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.paddingLeft = "6px";
+                        e.currentTarget.style.paddingRight = "6px";
+                        e.currentTarget.style.background = "var(--surface-hover, #f0f7ff)";
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.paddingLeft = "0";
+                        e.currentTarget.style.paddingRight = "0";
+                        e.currentTarget.style.background = "transparent";
+                      }}
+                    >
+                      <div>
+                        <div
+                          className="type-meta"
+                          style={{
+                            marginBottom: "3px",
+                            textTransform: "uppercase",
+                            color: "var(--tixar-blue-core, #287ce0)",
+                          }}
+                        >
+                          {String(idx + 1).padStart(2, "0")}
+                        </div>
+                        <div
+                          className="type-question"
+                          style={{
+                            fontSize: "18px",
+                            fontWeight: 600,
+                            color: "var(--text-primary)",
+                          }}
+                        >
+                          {title}
+                        </div>
+                        {chapterLabel && (
+                          <div
+                            className="type-supporting"
+                            style={{ marginTop: "3px", color: "var(--text-secondary)" }}
+                          >
+                            {chapterLabel}
+                          </div>
+                        )}
+                      </div>
+                      <div
+                        style={{
+                          color: "var(--tixar-blue-core, #287ce0)",
+                          fontSize: "16px",
+                          fontWeight: 600,
+                          marginLeft: "16px",
+                          flexShrink: 0,
+                        }}
                         aria-hidden="true"
                       >
-                        <line x1="5" y1="12" x2="19" y2="12" />
-                        <polyline points="12 5 19 12 12 19" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+                        →
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+          </>
+        )}
+      </ReadingContainer>
     </div>
   );
 }
