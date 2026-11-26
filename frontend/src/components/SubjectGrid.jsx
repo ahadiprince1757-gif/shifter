@@ -82,7 +82,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       }}
     >
       {/* Urgent Next Action Prompt (if active) */}
-      <div style={{ padding: "16px 20px 0 20px" }}>
+      <div style={{ padding: "8px 20px 0 20px" }}>
         <SmartPrompt action={nextAction} loading={nextActionLoading} />
       </div>
 
@@ -90,8 +90,8 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
       {!nextAction && showResume && (
         <div
           style={{
-            margin: "0 20px var(--space-6) 20px",
-            paddingBottom: "var(--space-4)",
+            margin: "0 20px 14px 20px",
+            paddingBottom: "14px",
             borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
           }}
         >
@@ -110,7 +110,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
             <button
               type="button"
               className="primary-action-btn"
-              style={{ width: "auto", minWidth: "120px", padding: "8px 16px" }}
+              style={{ width: "auto", minWidth: "112px", minHeight: "38px", padding: "8px 16px", fontSize: "14px" }}
               onClick={() => onResume(lastTopic.subjectId, lastTopic.chapterId, lastTopic.topic)}
             >
               Continue →
@@ -125,90 +125,82 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "baseline",
-          padding: "20px 20px 14px 20px",
+          padding: "4px 20px 10px 20px",
         }}
       >
-        <span className="type-meta">
+        <span className="type-meta" style={{ textTransform: "uppercase", color: "var(--text-secondary)" }}>
           {displaySubjects.length} subjects
         </span>
       </div>
 
-      {/* Edge-to-Edge 2-Column Grid */}
+      {/* Spaced 2-Column Editorial Grid (Subject Name Only) */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
-          gap: "1px",
-          background: "var(--border-subtle, #e2e8f0)",
-          borderTop: "1px solid var(--border-subtle, #e2e8f0)",
-          borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
+          gap: "12px 20px",
+          padding: "0 20px 24px 20px",
           width: "100%",
           boxSizing: "border-box",
         }}
       >
-        {displaySubjects.map((s) => {
-          const chapters = s.chapters || [];
-          const totalTopics = chapters.reduce((a, c) => a + (c && Array.isArray(c.topics) ? c.topics.length : 0), 0);
-
-          return (
-            <button
-              key={s.id}
-              onClick={() => handleSubjectClick(s.id, s.label)}
+        {displaySubjects.map((s) => (
+          <button
+            key={s.id}
+            onClick={() => handleSubjectClick(s.id, s.label)}
+            style={{
+              background: "transparent",
+              border: "none",
+              borderBottom: "1px solid var(--border-subtle, #e2e8f0)",
+              borderLeft: "2px solid var(--tixar-blue-core, #287ce0)",
+              padding: "18px 12px 18px 14px",
+              textAlign: "left",
+              cursor: "pointer",
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+              gap: "8px",
+              outline: "none",
+              transition: "background 0.15s ease, border-color 0.15s ease",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = "var(--surface-hover, #f0f7ff)";
+              const arrow = e.currentTarget.querySelector(".subj-arrow");
+              if (arrow) arrow.style.transform = "translateX(3px)";
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+              const arrow = e.currentTarget.querySelector(".subj-arrow");
+              if (arrow) arrow.style.transform = "translateX(0)";
+            }}
+            aria-label={s.label}
+          >
+            <span
+              className="type-question"
               style={{
-                background: "var(--surface)",
-                border: "none",
-                padding: "clamp(16px, 2.5vw, 24px) clamp(12px, 2vw, 20px)",
-                textAlign: "left",
-                cursor: "pointer",
-                display: "flex",
-                justifyContent: "space-between",
-                alignItems: "center",
-                outline: "none",
-                transition: "background 0.15s ease",
+                fontSize: "clamp(15px, 1.4vw, 18px)",
+                fontWeight: 600,
+                color: "var(--text-primary)",
+                minWidth: 0,
               }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.background = "var(--surface-hover, #f0f7ff)";
-                const arrow = e.currentTarget.querySelector(".subj-arrow");
-                if (arrow) arrow.style.transform = "translateX(3px)";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.background = "var(--surface)";
-                const arrow = e.currentTarget.querySelector(".subj-arrow");
-                if (arrow) arrow.style.transform = "translateX(0)";
-              }}
-              aria-label={`${s.label}, ${chapters.length} chapters, ${totalTopics} topics`}
             >
-              <div style={{ minWidth: 0, overflow: "hidden" }}>
-                <div
-                  className="type-question"
-                  style={{ fontSize: "clamp(15px, 1.3vw, 18px)", fontWeight: 600, color: "var(--text-primary)" }}
-                >
-                  {s.label}
-                </div>
-                <div
-                  className="type-supporting"
-                  style={{ marginTop: "4px", color: "var(--text-secondary)", fontSize: "13px", whiteSpace: "nowrap" }}
-                >
-                  {chapters.length} chapters · {totalTopics} topics
-                </div>
-              </div>
-              <div
-                className="subj-arrow"
-                style={{
-                  color: "var(--tixar-blue-core, #287ce0)",
-                  fontSize: "16px",
-                  fontWeight: 600,
-                  marginLeft: "8px",
-                  flexShrink: 0,
-                  transition: "transform 0.15s ease",
-                }}
-                aria-hidden="true"
-              >
-                →
-              </div>
-            </button>
-          );
-        })}
+              {s.label}
+            </span>
+            <span
+              className="subj-arrow"
+              style={{
+                color: "var(--tixar-blue-core, #287ce0)",
+                fontSize: "16px",
+                fontWeight: 600,
+                flexShrink: 0,
+                transition: "transform 0.15s ease",
+              }}
+              aria-hidden="true"
+            >
+              →
+            </span>
+          </button>
+        ))}
       </div>
     </div>
   );
