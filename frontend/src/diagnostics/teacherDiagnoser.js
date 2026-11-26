@@ -95,8 +95,10 @@ const UNIT_ALIASES = Object.freeze({
 });
 
 function cleanString(value) {
-  if (value === null || value === undefined) return "";
-  return String(value).trim();
+  if (value === null || value === undefined || Number.isNaN(value)) return "";
+  const str = String(value).trim();
+  if (str.toLowerCase() === "nan" || str.toLowerCase() === "undefined") return "";
+  return str;
 }
 
 function firstNonEmpty(...values) {
@@ -932,6 +934,8 @@ function genericFallback({
   explanation,
 }) {
   const hasWork = Boolean(cleanString(userWork));
+  const safeExpected = cleanString(expectedAnswer);
+  const safeExplanation = cleanString(explanation);
 
   return makeDiagnosis({
     status: STATUS.INCONCLUSIVE,
@@ -944,8 +948,8 @@ function genericFallback({
     whyThisIsWrong: [
       hasWork
         ? "The calculation does not lead to the required result."
-        : (expectedAnswer
-            ? `You entered "${studentAnswer}", but the calculation leads to ${expectedAnswer}.`
+        : (safeExpected
+            ? `You entered "${studentAnswer}", but the calculation leads to ${safeExpected}.`
             : "The calculation diverged from the expected result."),
       "Review each step of the method below to see where your calculation diverged.",
     ],
@@ -954,24 +958,24 @@ function genericFallback({
       : [
           "Read the question carefully to identify the known values.",
           "Apply the standard formula or definition.",
-          expectedAnswer ? `Calculate the result: ${expectedAnswer}.` : "Check each step before submitting."
+          safeExpected ? `Calculate the result: ${safeExpected}.` : "Check each step before submitting."
         ],
     remember:
-      explanation ||
-      (expectedAnswer
-        ? `Double check your calculation: the expected result is ${expectedAnswer}.`
+      safeExplanation ||
+      (safeExpected
+        ? `Double check your calculation: the expected result is ${safeExpected}.`
         : "Review the step-by-step method to see where your calculation diverged."),
     observed: [
       ...(studentAnswer ? [`Student answer: ${studentAnswer}`] : []),
       ...(hasWork ? ["Student working was provided for review."] : [])
     ],
-    expected: expectedAnswer ? [`Expected answer: ${expectedAnswer}`] : [],
+    expected: safeExpected ? [`Expected answer: ${safeExpected}`] : [],
     confidence: CONFIDENCE.LOW,
     diagnosis: {
       type: DIAGNOSIS_TYPE.UNCLASSIFIED,
       brokenAt: "result_divergence",
-      explanation: expectedAnswer
-        ? `You entered "${studentAnswer}", but the calculation leads to ${expectedAnswer}.`
+      explanation: safeExpected
+        ? `You entered "${studentAnswer}", but the calculation leads to ${safeExpected}.`
         : "The calculation does not produce the expected result.",
     },
     repair: {

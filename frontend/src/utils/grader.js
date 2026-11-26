@@ -1569,7 +1569,10 @@ function verifyQuestion(questionText, rawAnswer, question) {
     if (
       !isCurriculum &&
       verification?.wasOverridden === true &&
-      verification?.verifiedAnswer !== undefined
+      verification?.verifiedAnswer !== undefined &&
+      verification?.verifiedAnswer !== null &&
+      !Number.isNaN(verification?.verifiedAnswer) &&
+      String(verification.verifiedAnswer).trim().toLowerCase() !== "nan"
     ) {
       verifiedAnswer = verification.verifiedAnswer;
     }
@@ -2037,7 +2040,10 @@ export function evaluateAnswer(
   const cleanAnswerValue = (value) =>
     value !== undefined &&
     value !== null &&
-    String(value).trim().toLowerCase() !== "undefined";
+    !Number.isNaN(value) &&
+    String(value).trim() !== "" &&
+    String(value).trim().toLowerCase() !== "undefined" &&
+    String(value).trim().toLowerCase() !== "nan";
 
   const mainCorrectAnswerStr = Array.isArray(rawAnswer)
     ? rawAnswer.filter(cleanAnswerValue).map(String).join(" • ")

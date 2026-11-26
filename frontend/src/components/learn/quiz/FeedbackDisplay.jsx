@@ -114,7 +114,7 @@ function getCorrectness(feedback) {
  * Convert an answer into safe display text.
  */
 function normalizeAnswer(value) {
-  if (value === null || value === undefined) {
+  if (value === null || value === undefined || Number.isNaN(value)) {
     return "";
   }
 
@@ -124,8 +124,10 @@ function normalizeAnswer(value) {
         (v) =>
           v !== null &&
           v !== undefined &&
+          !Number.isNaN(v) &&
           String(v).trim() &&
-          String(v).trim().toLowerCase() !== "undefined"
+          String(v).trim().toLowerCase() !== "undefined" &&
+          String(v).trim().toLowerCase() !== "nan"
       )
       .map((v) => String(v).trim())
       .join(" • ");
@@ -137,7 +139,7 @@ function normalizeAnswer(value) {
 
   const text = String(value).trim();
 
-  if (!text || text.toLowerCase() === "undefined") {
+  if (!text || text.toLowerCase() === "undefined" || text.toLowerCase() === "nan") {
     return "";
   }
 

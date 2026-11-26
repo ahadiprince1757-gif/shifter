@@ -128,9 +128,6 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
           padding: "20px 20px 14px 20px",
         }}
       >
-        <h1 className="type-page-heading" style={{ fontSize: "24px" }}>
-          Your Subjects
-        </h1>
         <span className="type-meta">
           {displaySubjects.length} subjects
         </span>

@@ -63,7 +63,9 @@ export function verifyScienceQuestion(questionText, storedAns = null) {
     trySolveSpeed(q) ||
     trySolvePH(q);
 
-  if (!result) return null;
+  if (!result || Number.isNaN(result.answer) || String(result.answer).trim().toLowerCase() === "nan") {
+    return null;
+  }
 
   const comparison = compareAnswers(result.answer, storedAns, result.answerType);
 
@@ -289,8 +291,15 @@ function makeResult({
   relation = null,
   unit = null,
 }) {
+  let finalAnswer = answer;
+  if (answerType === "number") {
+    const numeric = Number(answer);
+    if (Number.isFinite(numeric)) {
+      finalAnswer = roundAnswer(numeric);
+    }
+  }
   return {
-    answer: answerType === "number" ? roundAnswer(answer) : answer,
+    answer: finalAnswer,
     answerType,
     topic,
     formula,
@@ -566,6 +575,10 @@ function trySolveSpeed(q) {
   if (/parts?\s*of|return|and\s*then|first\s*\d+.*next\s*\d+/i.test(q)) return null;
   if (!/speed|velocity|distance.*time|time.*distance/.test(q)) return null;
 
+  const distanceMatches = q.match(/(\d+(?:\.\d+)?)\s*(km|kilometers?|kilometres?|cm|m|meters?|metres?)\b/gi) || [];
+  const timeMatches = q.match(/(\d+(?:\.\d+)?)\s*(hours?|hrs?|h|minutes?|mins?|seconds?|secs?|s)\b/gi) || [];
+  if (distanceMatches.length > 1 || timeMatches.length > 1) return null;
+
   const distance = extractQuantity(q, /(\d+(?:\.\d+)?)\s*(km|kilometers?|kilometres?|cm|m|meters?|metres?)\b/);
   const time = extractQuantity(q, /(\d+(?:\.\d+)?)\s*(hours?|hrs?|h|minutes?|mins?|seconds?|secs?|s)\b/);
 
@@ -579,7 +592,7 @@ function trySolveSpeed(q) {
   if (isKm && isHours && !asksMS) {
     const speedKmH = distance.value / time.value;
     return makeResult({
-      answer: `${roundAnswer(speedKmH)} km/h`,
+      answer: roundAnswer(speedKmH),
       topic: "Speed",
       formula: "v = d ÷ t",
       inputs: [distance.value, time.value],
@@ -606,7 +619,7 @@ function trySolveSpeed(q) {
   const speed = distanceM / timeS;
 
   return makeResult({
-    answer: `${roundAnswer(speed)} m/s`,
+    answer: roundAnswer(speed),
     topic: "Speed",
     formula: "v = d ÷ t",
     inputs: [roundAnswer(distanceM), roundAnswer(timeS)],

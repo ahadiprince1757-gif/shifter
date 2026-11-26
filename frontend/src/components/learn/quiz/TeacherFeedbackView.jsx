@@ -101,16 +101,32 @@ export default function TeacherFeedbackView({
     }
   }
 
-  // Authoritative answer
-  const expectedAnswer = String(rawAnswer || diagnosis.expected?.[0] || diagnosis.correctAnswer || "").trim();
+  // Authoritative answer (never expose NaN)
+  let expectedAnswer = String(rawAnswer || diagnosis.expected?.[0] || diagnosis.correctAnswer || "").trim();
+  if (!expectedAnswer || expectedAnswer.toLowerCase() === "nan" || expectedAnswer.toLowerCase() === "undefined") {
+    const lastStep = standardSteps[standardSteps.length - 1];
+    const match = lastStep && lastStep.match(/(?:=|is)\s*([^.]+)/i);
+    expectedAnswer = match ? match[1].trim() : String(diagnosis.ans || "").trim();
+    if (expectedAnswer.toLowerCase() === "nan" || expectedAnswer.toLowerCase() === "undefined") {
+      expectedAnswer = "";
+    }
+  }
 
-  // Rule to remember
+  // Rule to remember (never expose NaN)
   const unpackedRemember = unpack(remember);
   const cleanRemember =
     unpackedRemember && typeof unpackedRemember === "object"
       ? unpackedRemember.why || unpackedRemember.explain || unpackedRemember.sol || ""
       : remember;
-  const rememberText = String(cleanRemember || why || "").trim();
+  let rememberText = String(cleanRemember || why || "").trim();
+  if (/\bNaN\b/i.test(rememberText)) {
+    const safeWhy = String(why || "").trim();
+    rememberText = safeWhy && !/\bNaN\b/i.test(safeWhy)
+      ? safeWhy
+      : (expectedAnswer
+          ? `Double check your calculation: the expected result is ${expectedAnswer}.`
+          : "Review the step-by-step method to see where your calculation diverged.");
+  }
 
   // Verification Probe
   const targetVerification = verification || probe || null;
@@ -144,8 +160,8 @@ export default function TeacherFeedbackView({
         <QuestionDisplay questionText={questionText} />
 
         {/* 02 · YOUR APPROACH */}
-        <ContentSection title="YOUR APPROACH">
-          {hasMultiLineWorking ? (
+        {hasMultiLineWorking ? (
+          <ContentSection title="YOUR APPROACH">
             <div className="type-body" style={{ color: "var(--text-primary)" }}>
               <p style={{ marginBottom: "var(--space-2)", color: "var(--text-secondary)", fontSize: "13px" }}>
                 You submitted your working:
@@ -158,13 +174,13 @@ export default function TeacherFeedbackView({
                 ))}
               </StepList>
             </div>
-          ) : (
-            <StudentApproach
-              studentAnswer={studentAns}
-              approachSummary={submittedWork || (studentAns ? `You entered "${studentAns}".` : "")}
-            />
-          )}
-        </ContentSection>
+          </ContentSection>
+        ) : (
+          <StudentApproach
+            studentAnswer={studentAns}
+            approachSummary={submittedWork || (studentAns ? `You entered "${studentAns}".` : "")}
+          />
+        )}
 
         {/* WHAT YOU DID RIGHT */}
         <ContentSection title="WHAT YOU DID RIGHT">
@@ -202,8 +218,8 @@ export default function TeacherFeedbackView({
       <QuestionDisplay questionText={questionText} />
 
       {/* 02 · YOUR APPROACH */}
-      <ContentSection title="YOUR APPROACH">
-        {hasMultiLineWorking ? (
+      {hasMultiLineWorking ? (
+        <ContentSection title="YOUR APPROACH">
           <div className="type-body" style={{ color: "var(--text-primary)" }}>
             <p style={{ marginBottom: "var(--space-2)", color: "var(--text-secondary)", fontSize: "13px" }}>
               You submitted your working:
@@ -225,13 +241,13 @@ export default function TeacherFeedbackView({
               })}
             </StepList>
           </div>
-        ) : (
-          <StudentApproach
-            studentAnswer={studentAns}
-            approachSummary={submittedWork || (studentAns ? `You entered "${studentAns}".` : "")}
-          />
-        )}
-      </ContentSection>
+        </ContentSection>
+      ) : (
+        <StudentApproach
+          studentAnswer={studentAns}
+          approachSummary={submittedWork || (studentAns ? `You entered "${studentAns}".` : "")}
+        />
+      )}
 
       {/* 03 · WHAT YOU DID RIGHT (if multi-step working had valid initial steps) */}
       {hasMultiLineWorking && breakStepIndex > 1 && (
