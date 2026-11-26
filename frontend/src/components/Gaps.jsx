@@ -165,7 +165,7 @@ export default function Gaps() {
           </h1>
           <div className="type-supporting" style={{ color: "var(--text-secondary)" }}>
             {activeSubject && currentSubjectGaps.length > 0
-              ? `${currentSubjectGaps.length} topic${currentSubjectGaps.length === 1 ? "" : "s"} identified for targeted practice in ${getCanonicalSubjectName(activeSubject)}.`
+              ? `Topics identified for targeted practice in ${getCanonicalSubjectName(activeSubject)}.`
               : "Review and strengthen topics identified from your previous quizzes."}
           </div>
         </div>
@@ -274,17 +274,6 @@ export default function Gaps() {
                       }}
                     >
                       <span>{subName}</span>
-                      <span
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: 500,
-                          color: isActive
-                            ? "var(--tixar-blue-core, #287ce0)"
-                            : "var(--text-muted, #94a3b8)",
-                        }}
-                      >
-                        {count}
-                      </span>
                     </button>
                   );
                 })}

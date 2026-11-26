@@ -59,9 +59,7 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
             {chapter.label}
           </h1>
           <div className="type-supporting" style={{ color: "var(--text-secondary)" }}>
-            {hasNested
-              ? `${normalizedTopics.length} Topics · ${allSubtopics.length} Subtopics · ${masteredCount} Completed`
-              : `${allSubtopics.length} topic${allSubtopics.length !== 1 ? "s" : ""} · ${masteredCount} Completed`}
+            Select a topic to start learning
           </div>
         </div>
 
@@ -79,8 +77,8 @@ function TopicList({ subject, chapter, openTopic, openTopicGroup, goBack, master
                 const statusLabel = allDone
                   ? "Completed ✓"
                   : groupHasNext
-                  ? `Up Next · ${groupMastered}/${topicGroup.subtopics.length} done`
-                  : `${topicGroup.subtopics.length} subtopics · ${groupMastered} done`;
+                  ? "Up Next"
+                  : "Ready to learn";
 
                 return (
                   <div

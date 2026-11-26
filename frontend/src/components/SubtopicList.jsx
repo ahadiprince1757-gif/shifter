@@ -42,7 +42,7 @@ function SubtopicList({ subject, chapter, topicGroup, openSubtopic, goBack, mast
             {topicGroup.name}
           </h1>
           <div className="type-supporting" style={{ color: "var(--text-secondary)" }}>
-            {subtopics.length} subtopic{subtopics.length !== 1 ? "s" : ""} · {masteredCount} Completed
+            Select a subtopic to start learning
           </div>
         </div>
 

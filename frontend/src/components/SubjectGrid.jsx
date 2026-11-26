@@ -129,7 +129,7 @@ function SubjectGrid({ curriculum, openSubject, mastered, onResume }) {
         }}
       >
         <span className="type-meta" style={{ textTransform: "uppercase", color: "var(--text-secondary)" }}>
-          {displaySubjects.length} subjects
+          Subjects
         </span>
       </div>
 
