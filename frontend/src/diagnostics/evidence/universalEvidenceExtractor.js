@@ -1,9 +1,12 @@
 /**
- * Universal Evidence Extractor (Phase 2)
+ * Universal Evidence Extractor (v2 — Source-Separated Evidence Pipeline)
  *
- * Observes BOTH userWork (steps / prose) AND studentAnswer (final answer / response)
- * across any subject, emitting a canonical EvidenceBundle with strict provenance
- * (OBSERVED | DERIVED | INFERRED) and confidence scores (0.0 - 1.0).
+ * Architecture:
+ * 1. Normalizes question into a canonical QuestionContract.
+ * 2. Observes `userWork` and `studentAnswer` in strictly separate streams (never flattened before interpretation).
+ * 3. Separates raw OBSERVED facts from DERIVED deterministic checks and INFERRED heuristics.
+ * 4. Reconciles both streams into an immutable EvidenceBundle with relational links
+ *    (SUPPORTS, CONTRADICTS, DERIVES_FROM), reasoningTrace, and explicit reconciliation state.
  *
  * Analyzers observe. They do NOT own diagnosis or feedback prose.
  */
@@ -12,14 +15,27 @@ import {
   EVIDENCE_TYPES,
   EVIDENCE_STATUS,
   EVIDENCE_PROVENANCE,
+  EVIDENCE_RELATION_TYPES,
+  RECONCILIATION_STATES,
   createEvidenceItem,
   createEvidenceBundle,
+  createQuestionContract,
 } from "../../domain/contracts/EvidenceBundleContract.js";
 import { analyzeArithmeticSteps } from "../analyzers/arithmeticStepAnalyzer.js";
 import { analyzeStudentSteps } from "../analyzers/stepAnalyzer.js";
 import { isKeyboardMash } from "../engine/inputClassifier.js";
 import { isUninterpretableInput } from "../engine/studentReasoningAnalyzer.js";
 import { SUBJECT_MISCONCEPTIONS } from "../knowledge/subjectMisconceptions.js";
+import {
+  normalizeQuantity,
+  compareQuantities,
+} from "./quantityUnitNormalizer.js";
+import {
+  extractClauseClaims,
+  evaluateConceptPolarity,
+  parseExpectedMultiPartTargets,
+  extractMultiPartClaimsFromSource,
+} from "./claimNegationParser.js";
 
 const STOP_WORDS = new Set([
   "the", "and", "that", "this", "with", "from", "into", "onto", "your", "their",
@@ -29,9 +45,6 @@ const STOP_WORDS = new Set([
   "covers", "because", "since", "about", "there", "here", "only", "also",
 ]);
 
-/**
- * Damerau-Levenshtein distance for typo-tolerant concept matching (e.g. foprward -> forward).
- */
 function damerauLevenshtein(a, b) {
   const m = a.length;
   const n = b.length;
@@ -43,11 +56,7 @@ function damerauLevenshtein(a, b) {
   for (let i = 1; i <= m; i++) {
     for (let j = 1; j <= n; j++) {
       const cost = a[i - 1] === b[j - 1] ? 0 : 1;
-      dp[i][j] = Math.min(
-        dp[i - 1][j] + 1,
-        dp[i][j - 1] + 1,
-        dp[i - 1][j - 1] + cost
-      );
+      dp[i][j] = Math.min(dp[i - 1][j] + 1, dp[i][j - 1] + 1, dp[i - 1][j - 1] + cost);
       if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) {
         dp[i][j] = Math.min(dp[i][j], dp[i - 2][j - 2] + cost);
       }
@@ -75,101 +84,107 @@ function fuzzyTokenMatch(targetWord, candidateTokens) {
   });
 }
 
-function parseNumericAndUnit(str) {
-  const text = String(str || "").trim();
-  const match = text.match(/(-?\d+(?:\.\d+)?)\s*([a-zA-Z/%°^2]+(?:\s*\/\s*[a-zA-Z]+)*)?/);
-  if (!match) return null;
-  const val = parseFloat(match[1]);
-  if (!Number.isFinite(val)) return null;
-  const unit = match[2] ? match[2].replace(/\s+/g, "").toLowerCase() : "";
-  return { value: val, unit };
-}
-
 /**
- * Parse labeled multi-part expected answers like:
- * "Distance = 20 m; displacement = 0 m."
+ * Observe a single source stream ("userWork" or "studentAnswer") independently.
+ * Never mixes sources!
  */
-export function parseMultiPartExpected(expectedAnswer) {
-  const raw = String(expectedAnswer || "").trim();
-  if (!raw) return [];
-  const segments = raw
-    .split(/[;\n]+/)
-    .map((s) => s.replace(/\.+$/, "").trim())
-    .filter(Boolean);
-
-  if (segments.length <= 1) return [];
-
-  const parts = [];
-  for (const seg of segments) {
-    const kv = seg.match(/^([a-zA-Z\s]{2,30}?)\s*(?:=|:|is)\s*(.+)$/i);
-    if (kv) {
-      const label = kv[1].trim();
-      const valStr = kv[2].trim();
-      const parsed = parseNumericAndUnit(valStr);
-      parts.push({
-        label,
-        key: label.toLowerCase(),
-        rawValue: valStr,
-        numericValue: parsed?.value ?? null,
-        unit: parsed?.unit || "",
-      });
-    }
-  }
-  return parts.length >= 2 ? parts : [];
-}
-
-/**
- * Extract evidence from multi-line or single-line math/algebra working.
- */
-function extractMathWorkEvidence({ userWork, studentAnswer, questionText, expectedAnswer }) {
+function observeSingleSource({
+  sourceName,
+  text,
+  question,
+  questionContract,
+  expectedParts,
+  evaluation,
+  idCounter,
+}) {
   const items = [];
+  const relationships = [];
   let stepAnalysis = null;
+  let reasoningTrace = null;
+  const nextId = () => `ev_${++idCounter.val}`;
 
-  if (userWork && userWork.trim()) {
-    const arith = analyzeArithmeticSteps({ userWork, questionText, expectedAnswer });
-    if (arith) {
-      const evaluated = arith.evaluatedSteps || [];
-      const validSteps = evaluated.filter((s) => s.status === "valid");
-      for (const vs of validSteps) {
+  const trimmed = String(text || "").trim();
+  if (!trimmed) {
+    return { items, relationships, stepAnalysis, reasoningTrace };
+  }
+
+  const questionText = String(question.q || question.stem || question.text || "").trim();
+  const expectedAnswer = questionContract.expectedAnswer;
+
+  // ── A. Quantitative Step / Equation Observation (userWork only) ────────────
+  if (sourceName === "userWork" && /\r?\n/.test(trimmed)) {
+    const arith = analyzeArithmeticSteps({
+      userWork: trimmed,
+      questionText,
+      expectedAnswer,
+    });
+
+    if (arith && Array.isArray(arith.evaluatedSteps) && arith.evaluatedSteps.length > 0) {
+      const traceSteps = [];
+      for (const step of arith.evaluatedSteps) {
+        const obsId = nextId();
         items.push(
           createEvidenceItem({
+            id: obsId,
             type: EVIDENCE_TYPES.CALCULATION,
             source: "userWork",
-            status: EVIDENCE_STATUS.VERIFIED,
+            location: { source: "userWork", line: step.stepNumber },
+            status: step.status === "valid" ? EVIDENCE_STATUS.VERIFIED : EVIDENCE_STATUS.DIVERGENT,
             provenance: EVIDENCE_PROVENANCE.OBSERVED,
-            confidence: 0.96,
-            text: vs.raw,
-            meaning: `Step ${vs.stepNumber} is mathematically valid`,
-            metadata: { stepNumber: vs.stepNumber },
+            confidenceFactors: { exactMatch: 1, explicitLabel: 1, sourceQuality: 1 },
+            text: step.raw,
+            meaning: step.raw,
+            metadata: { stepNumber: step.stepNumber },
           })
         );
-      }
 
-      if (arith.hasError && arith.firstError) {
-        const err = arith.firstError;
+        const derId = nextId();
+        const isStepValid = step.status === "valid";
         items.push(
           createEvidenceItem({
+            id: derId,
             type: EVIDENCE_TYPES.CALCULATION,
             source: "userWork",
-            status: EVIDENCE_STATUS.DIVERGENT,
-            provenance: EVIDENCE_PROVENANCE.OBSERVED,
-            confidence: 0.97,
-            text: err.raw,
-            meaning: err.explanation || `Breakdown at step ${err.stepNumber}`,
+            location: { source: "userWork", line: step.stepNumber },
+            status: isStepValid ? EVIDENCE_STATUS.VERIFIED : EVIDENCE_STATUS.DIVERGENT,
+            provenance: EVIDENCE_PROVENANCE.DERIVED,
+            confidenceFactors: { exactMatch: 1, explicitLabel: 1, sourceQuality: 1 },
+            text: step.raw,
+            meaning: isStepValid
+              ? `Step ${step.stepNumber} is mathematically valid`
+              : step.explanation || `Breakdown at step ${step.stepNumber}`,
+            derivation: { from: [obsId], rule: "ARITHMETIC_STEP_VERIFICATION" },
             metadata: {
-              stepNumber: err.stepNumber,
-              errorType: err.errorType,
-              expected: err.expected,
-              repair: err.repair || arith.repair,
-              verification: err.verification || arith.verification,
+              stepNumber: step.stepNumber,
+              errorType: step.errorType,
+              expected: step.expected,
             },
           })
         );
 
+        relationships.push({
+          type: EVIDENCE_RELATION_TYPES.DERIVES_FROM,
+          from: derId,
+          to: obsId,
+          reason: "Deterministic step verification",
+        });
+
+        traceSteps.push({
+          index: step.stepNumber,
+          text: step.raw,
+          status: isStepValid ? "SUPPORTED" : "DIVERGENT",
+          evidenceId: obsId,
+        });
+      }
+
+      const validSteps = arith.evaluatedSteps.filter((s) => s.status === "valid");
+      if (arith.hasError && arith.firstError) {
+        const err = arith.firstError;
         stepAnalysis = {
           whatYouDidRight: validSteps.map((s) => `Step ${s.stepNumber} was valid: \`${s.raw}\`.`),
           whereYourWorkingBrokeDown: {
             stepIndex: err.stepNumber,
+            brokenAt: err.errorType || `step_${err.stepNumber}`,
             studentStep: err.raw,
             correctedStep: err.expected,
             explanation: err.explanation,
@@ -180,440 +195,462 @@ function extractMathWorkEvidence({ userWork, studentAnswer, questionText, expect
             note: "Target method",
           })),
         };
+        reasoningTrace = { steps: traceSteps, firstDivergence: err.stepNumber };
+      } else {
+        reasoningTrace = { steps: traceSteps, firstDivergence: null };
       }
-      return { items, stepAnalysis };
-    }
-
-    if (userWork.includes("=")) {
-      const alg = analyzeStudentSteps({ userWork, initialEquationStr: questionText, expectedAnswer });
-      if (alg) {
-        const evaluated = alg.evaluatedSteps || [];
-        const validSteps = evaluated.filter((s) => s.status === "valid");
-        for (const vs of validSteps) {
+    } else if (trimmed.includes("=")) {
+      const alg = analyzeStudentSteps({ userWork: trimmed, initialEquationStr: questionText, expectedAnswer });
+      if (alg && Array.isArray(alg.evaluatedSteps)) {
+        const traceSteps = [];
+        for (const step of alg.evaluatedSteps) {
+          const isStepValid = step.status === "valid";
+          const obsId = nextId();
           items.push(
             createEvidenceItem({
+              id: obsId,
               type: EVIDENCE_TYPES.EQUATION,
               source: "userWork",
-              status: EVIDENCE_STATUS.VERIFIED,
+              location: { source: "userWork", line: step.stepNumber },
+              status: isStepValid ? EVIDENCE_STATUS.VERIFIED : EVIDENCE_STATUS.DIVERGENT,
               provenance: EVIDENCE_PROVENANCE.OBSERVED,
-              confidence: 0.94,
-              text: vs.raw,
-              meaning: `Equation step ${vs.stepNumber} preserves equality`,
-              metadata: { stepNumber: vs.stepNumber },
+              confidenceFactors: { exactMatch: 1, explicitLabel: 1, sourceQuality: 1 },
+              text: step.raw,
+              meaning: step.raw,
+              metadata: { stepNumber: step.stepNumber },
             })
           );
+
+          const derId = nextId();
+          items.push(
+            createEvidenceItem({
+              id: derId,
+              type: EVIDENCE_TYPES.EQUATION,
+              source: "userWork",
+              location: { source: "userWork", line: step.stepNumber },
+              status: isStepValid ? EVIDENCE_STATUS.VERIFIED : EVIDENCE_STATUS.DIVERGENT,
+              provenance: EVIDENCE_PROVENANCE.DERIVED,
+              confidenceFactors: { exactMatch: 1, explicitLabel: 1, sourceQuality: 1 },
+              text: step.raw,
+              meaning: isStepValid
+                ? `Equation step ${step.stepNumber} preserves equality`
+                : step.explanation || `Algebraic divergence at step ${step.stepNumber}`,
+              derivation: { from: [obsId], rule: "ALGEBRAIC_EQUALITY_CHECK" },
+              metadata: { stepNumber: step.stepNumber, errorType: step.errorType, expected: step.expected },
+            })
+          );
+
+          relationships.push({
+            type: EVIDENCE_RELATION_TYPES.DERIVES_FROM,
+            from: derId,
+            to: obsId,
+            reason: "Deterministic algebraic check",
+          });
+
+          traceSteps.push({
+            index: step.stepNumber,
+            text: step.raw,
+            status: isStepValid ? "SUPPORTED" : "DIVERGENT",
+            evidenceId: obsId,
+          });
         }
+
+        const validSteps = alg.evaluatedSteps.filter((s) => s.status === "valid");
         if (alg.hasError && alg.firstError) {
           const err = alg.firstError;
-          items.push(
-            createEvidenceItem({
-              type: EVIDENCE_TYPES.EQUATION,
-              source: "userWork",
-              status: EVIDENCE_STATUS.DIVERGENT,
-              provenance: EVIDENCE_PROVENANCE.OBSERVED,
-              confidence: 0.95,
-              text: err.raw,
-              meaning: err.explanation || `Algebraic divergence at step ${err.stepNumber}`,
-              metadata: {
-                stepNumber: err.stepNumber,
-                errorType: err.errorType,
-                expected: err.expected,
-              },
-            })
-          );
           stepAnalysis = {
             whatYouDidRight: validSteps.map((s) => `Step ${s.stepNumber} was valid: \`${s.raw}\`.`),
             whereYourWorkingBrokeDown: {
               stepIndex: err.stepNumber,
+              brokenAt: err.errorType || `step_${err.stepNumber}`,
               studentStep: err.raw,
               correctedStep: err.expected,
               explanation: err.explanation,
             },
           };
+          reasoningTrace = { steps: traceSteps, firstDivergence: err.stepNumber };
+        } else {
+          reasoningTrace = { steps: traceSteps, firstDivergence: null };
         }
-        return { items, stepAnalysis };
       }
     }
   }
 
-  // Check if working reached the expected numeric answer even though final answer diverged
-  if (userWork && studentAnswer) {
-    const expParsed = parseNumericAndUnit(expectedAnswer);
-    const ansParsed = parseNumericAndUnit(studentAnswer);
-    const workLines = userWork.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
-    const lastLine = workLines[workLines.length - 1] || "";
-    const lastParsed = parseNumericAndUnit(lastLine.split("=").pop());
-    if (
-      expParsed &&
-      lastParsed &&
-      ansParsed &&
-      Math.abs(lastParsed.value - expParsed.value) < 0.001 &&
-      Math.abs(ansParsed.value - expParsed.value) >= 0.001
-    ) {
+  // ── B. Multi-Part Target Observation (handles natural wording & typos) ─────
+  if (expectedParts.length > 0) {
+    const claims = extractMultiPartClaimsFromSource(trimmed, expectedParts);
+    for (const c of claims) {
+      const obsId = nextId();
       items.push(
         createEvidenceItem({
-          type: EVIDENCE_TYPES.CALCULATION,
-          source: "reconciled",
-          status: EVIDENCE_STATUS.VERIFIED,
+          id: obsId,
+          type: c.qualitativeZero ? EVIDENCE_TYPES.CLAIM : EVIDENCE_TYPES.QUANTITY,
+          source: sourceName,
+          location: { source: sourceName },
+          status: EVIDENCE_STATUS.SUPPORTED,
           provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.95,
-          text: lastLine,
-          meaning: `Your working reached the correct value (${lastParsed.value})`,
+          confidenceFactors: { exactMatch: c.qualitativeZero ? 0 : 1, explicitLabel: 1, sourceQuality: 0.9 },
+          text: c.matchedText,
+          meaning: c.matchedText,
+          subPart: c.part.partKey,
         })
       );
+
+      const cmp = compareQuantities(c.normalizedObserved, c.part.normalizedExpected);
+      const derId = nextId();
+      const isMatch = cmp.equal || c.qualitativeZero;
       items.push(
         createEvidenceItem({
-          type: EVIDENCE_TYPES.QUANTITY,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.DIVERGENT,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.95,
-          text: studentAnswer,
-          meaning: `Final answer "${studentAnswer}" differs from the value reached in your working (${lastParsed.value})`,
-          metadata: { errorType: "final_answer_error", expected: expectedAnswer },
+          id: derId,
+          type: c.qualitativeZero ? EVIDENCE_TYPES.CLAIM : EVIDENCE_TYPES.QUANTITY,
+          source: sourceName,
+          location: { source: sourceName },
+          status: isMatch ? EVIDENCE_STATUS.VERIFIED : EVIDENCE_STATUS.DIVERGENT,
+          provenance: EVIDENCE_PROVENANCE.DERIVED,
+          confidenceFactors: { exactMatch: isMatch ? 1 : 0, explicitLabel: 1, sourceQuality: 0.95 },
+          text: c.matchedText,
+          meaning: isMatch
+            ? c.qualitativeZero
+              ? `Correctly identified that returning to the starting point means ${c.part.label} is 0`
+              : `Correctly identified ${c.part.label} as ${c.part.rawExpected}`
+            : `Stated ${c.part.label} as ${c.extractedValStr}, but expected ${c.part.rawExpected}`,
+          subPart: c.part.partKey,
+          derivation: { from: [obsId], rule: "MULTI_PART_QUANTITY_COMPARISON" },
+          metadata: { partKey: c.part.partKey, expected: c.part.rawExpected, observed: c.extractedValStr },
         })
       );
+      relationships.push({
+        type: EVIDENCE_RELATION_TYPES.DERIVES_FROM,
+        from: derId,
+        to: obsId,
+        reason: `Evaluated ${c.part.label} against target`,
+      });
+    }
+  } else if (expectedAnswer) {
+    // ── C. Single Quantity / Unit Normalization Check ────────────────────────
+    const expQty = normalizeQuantity(expectedAnswer);
+    const obsQty = normalizeQuantity(trimmed);
+
+    if (expQty && obsQty) {
+      const cmp = compareQuantities(obsQty, expQty);
+      if (cmp.comparable) {
+        const obsId = nextId();
+        items.push(
+          createEvidenceItem({
+            id: obsId,
+            type: sourceName === "studentAnswer" ? EVIDENCE_TYPES.FINAL_ANSWER : EVIDENCE_TYPES.QUANTITY,
+            source: sourceName,
+            location: { source: sourceName },
+            status: cmp.equal ? EVIDENCE_STATUS.VERIFIED : EVIDENCE_STATUS.DIVERGENT,
+            provenance: EVIDENCE_PROVENANCE.OBSERVED,
+            confidenceFactors: { exactMatch: cmp.equal ? 1 : 0, explicitLabel: 0, sourceQuality: 0.9 },
+            text: trimmed,
+            meaning: trimmed,
+          })
+        );
+
+        const isUnitMismatch =
+          (cmp.dimensionMatch && !cmp.unitMatch && Math.abs(obsQty.value - expQty.value) > 1e-4) ||
+          (!cmp.equal &&
+            obsQty.rawUnit &&
+            expQty.rawUnit &&
+            obsQty.rawUnit !== expQty.rawUnit &&
+            Math.abs(obsQty.rawValue - expQty.rawValue) <= 1e-4);
+
+        if (isUnitMismatch) {
+          // Different unit in same dimension or wrong unit attached to right raw number
+          const derId = nextId();
+          items.push(
+            createEvidenceItem({
+              id: derId,
+              type: EVIDENCE_TYPES.UNIT,
+              source: sourceName,
+              location: { source: sourceName },
+              status: EVIDENCE_STATUS.DIVERGENT,
+              provenance: EVIDENCE_PROVENANCE.DERIVED,
+              confidenceFactors: { exactMatch: 0, explicitLabel: 1, sourceQuality: 0.95 },
+              text: trimmed,
+              meaning: `Unit mismatch: "${obsQty.rawUnit}" vs expected "${expQty.rawUnit}"`,
+              derivation: { from: [obsId], rule: "UNIT_NORMALIZATION_CHECK" },
+              metadata: { errorType: "unit_mismatch", expectedUnit: expQty.rawUnit, observedUnit: obsQty.rawUnit },
+            })
+          );
+          relationships.push({
+            type: EVIDENCE_RELATION_TYPES.DERIVES_FROM,
+            from: derId,
+            to: obsId,
+            reason: "Unit comparison via UnitNormalizer",
+          });
+        } else if (cmp.missingUnit) {
+          const derId = nextId();
+          items.push(
+            createEvidenceItem({
+              id: derId,
+              type: EVIDENCE_TYPES.UNIT,
+              source: sourceName,
+              location: { source: sourceName },
+              status: EVIDENCE_STATUS.DIVERGENT,
+              provenance: EVIDENCE_PROVENANCE.DERIVED,
+              confidenceFactors: { exactMatch: 1, explicitLabel: 0, sourceQuality: 0.9 },
+              text: trimmed,
+              meaning: `Numeric value matches (${obsQty.value}), but missing required unit (${expQty.rawUnit})`,
+              derivation: { from: [obsId], rule: "MISSING_UNIT_CHECK" },
+              metadata: { errorType: "missing_unit", expectedUnit: expQty.rawUnit },
+            })
+          );
+        }
+      }
     }
   }
 
-  return { items, stepAnalysis };
-}
+  // ── D. Negation-Aware Concept & Misconception Observation ──────────────────
+  const tokens = tokenizeWords(trimmed);
 
-/**
- * Evaluate multi-part targets across BOTH studentAnswer and userWork.
- */
-function extractMultiPartEvidence({ combinedText, expectedAnswer }) {
-  const parts = parseMultiPartExpected(expectedAnswer);
-  if (parts.length === 0) return [];
-
-  const items = [];
-  const lower = combinedText.toLowerCase();
-  const tokens = tokenizeWords(combinedText);
-
-  for (const part of parts) {
-    const mentionsLabel = fuzzyTokenMatch(part.key, tokens);
-    const hasZeroWord = /\b(zero|none|null|back to (?:the )?(?:start|origin))\b/i.test(lower);
-
-    // Check explicit labeled match: e.g. "distance = 20" or "displacement = 0" or "zero displacement"
-    const labelRegex = new RegExp(`(?:${part.key})\\s*(?:=|is|:|was)?\\s*(-?\\d+(?:\\.\\d+)?)`, "i");
-    const explicitMatch = lower.match(labelRegex);
-
-    if (explicitMatch && part.numericValue !== null) {
-      const obsVal = parseFloat(explicitMatch[1]);
-      if (Math.abs(obsVal - part.numericValue) < 0.01) {
+  // Check evaluation matchedConcepts / missingConcepts with negation guard
+  if (Array.isArray(evaluation?.matchedConcepts) && evaluation.matchedConcepts.length > 0) {
+    for (const concept of evaluation.matchedConcepts) {
+      const label = typeof concept === "string" ? concept : concept?.label || concept?.name || "";
+      if (!label) continue;
+      const polarityRes = evaluateConceptPolarity(trimmed, [label], "AFFIRMED");
+      if (polarityRes.matched && !polarityRes.polarityMatches) {
+        const obsId = nextId();
         items.push(
           createEvidenceItem({
-            type: EVIDENCE_TYPES.QUANTITY,
-            source: "studentAnswer",
-            status: EVIDENCE_STATUS.VERIFIED,
-            provenance: EVIDENCE_PROVENANCE.OBSERVED,
-            confidence: 0.96,
-            text: explicitMatch[0],
-            meaning: `Correctly identified ${part.label} as ${part.rawValue}`,
-            subPart: part.key,
+            id: obsId,
+            type: EVIDENCE_TYPES.CONTRADICTION,
+            source: sourceName,
+            location: { source: sourceName },
+            status: EVIDENCE_STATUS.DIVERGENT,
+            provenance: EVIDENCE_PROVENANCE.DERIVED,
+            confidenceFactors: { exactMatch: 1, explicitLabel: 1, contradiction: 1 },
+            text: polarityRes.clause,
+            meaning: `Negated expected concept "${label}" using "${polarityRes.negationCue}"`,
+            claim: { subject: label, relation: "present", polarity: "NEGATED" },
           })
         );
       } else {
+        const obsId = nextId();
         items.push(
           createEvidenceItem({
-            type: EVIDENCE_TYPES.QUANTITY,
-            source: "studentAnswer",
-            status: EVIDENCE_STATUS.DIVERGENT,
-            provenance: EVIDENCE_PROVENANCE.OBSERVED,
-            confidence: 0.94,
-            text: explicitMatch[0],
-            meaning: `Stated ${part.label} as ${obsVal} instead of ${part.rawValue}`,
-            subPart: part.key,
-            metadata: { expected: part.rawValue, observed: String(obsVal) },
-          })
-        );
-      }
-      continue;
-    }
-
-    // Qualitative match for zero displacement / return to origin
-    if (part.numericValue === 0 && mentionsLabel && hasZeroWord) {
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.CLAIM,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.VERIFIED,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.92,
-          text: combinedText,
-          meaning: `Correctly recognized that ${part.label} is zero upon returning to the starting point`,
-          subPart: part.key,
-        })
-      );
-      continue;
-    }
-
-    // Check if the numeric value appears unlabeled in the response
-    if (part.numericValue !== null) {
-      const numPresent = new RegExp(`\\b${part.numericValue}\\b`).test(lower);
-      if (numPresent && mentionsLabel) {
-        items.push(
-          createEvidenceItem({
-            type: EVIDENCE_TYPES.QUANTITY,
-            source: "studentAnswer",
-            status: EVIDENCE_STATUS.VERIFIED,
+            id: obsId,
+            type: EVIDENCE_TYPES.CONCEPT,
+            source: sourceName,
+            location: { source: sourceName },
+            status: EVIDENCE_STATUS.SUPPORTED,
             provenance: EVIDENCE_PROVENANCE.DERIVED,
-            confidence: 0.82,
-            text: `${part.label}: ${part.numericValue}`,
-            meaning: `Included value ${part.numericValue} for ${part.label}`,
-            subPart: part.key,
-          })
-        );
-        continue;
-      }
-    }
-
-    // Otherwise this required sub-part is missing
-    items.push(
-      createEvidenceItem({
-        type: EVIDENCE_TYPES.OMISSION,
-        source: "reconciled",
-        status: EVIDENCE_STATUS.MISSING,
-        provenance: EVIDENCE_PROVENANCE.DERIVED,
-        confidence: 0.9,
-        text: part.rawValue,
-        meaning: mentionsLabel
-          ? `Mentioned ${part.label}, but omitted the numerical result (${part.rawValue})`
-          : `Did not provide ${part.label} (${part.rawValue})`,
-        subPart: part.key,
-        metadata: { expected: part.rawValue, mentionedConcept: mentionsLabel },
-      })
-    );
-  }
-
-  return items;
-}
-
-/**
- * Extract prose & conceptual evidence using evaluation.analysis + typo-tolerant matching
- * + subject misconception registry.
- */
-function extractProseAndSubjectEvidence({
-  studentAnswer,
-  userWork,
-  question,
-  expectedAnswer,
-  evaluation,
-}) {
-  const items = [];
-  const combined = [userWork, studentAnswer].filter(Boolean).join(" ").trim();
-  const qText = String(question?.q || question?.stem || "").trim();
-  const subject = String(question?.subject || "").toLowerCase();
-  const tokens = tokenizeWords(combined);
-
-  // 1. Check cross-subject misconceptions registry (OBSERVED patterns)
-  for (const rule of SUBJECT_MISCONCEPTIONS) {
-    try {
-      if (rule.subject && subject && !subject.includes(rule.subject) && !rule.subject.includes(subject)) {
-        continue;
-      }
-      if (rule.matches({ studentInput: combined, questionText: qText, expectedAnswer })) {
-        const diag = rule.diagnose({ studentInput: combined, questionText: qText, expectedAnswer });
-        items.push(
-          createEvidenceItem({
-            type: EVIDENCE_TYPES.CLAIM,
-            source: userWork ? "userWork" : "studentAnswer",
-            status: EVIDENCE_STATUS.DIVERGENT,
-            provenance: EVIDENCE_PROVENANCE.OBSERVED,
-            confidence: 0.94,
-            text: combined,
-            meaning: diag.whatYouDid || diag.whyThisIsWrong?.[0] || rule.name,
-            metadata: {
-              misconceptionCode: rule.code,
-              misconceptionName: rule.name,
-              diag,
-            },
+            confidenceFactors: { exactMatch: 1, explicitLabel: 1, sourceQuality: 0.9 },
+            text: polarityRes.clause || label,
+            meaning: `Demonstrated key concept: "${label}"`,
+            claim: { subject: label, relation: "affirmed", polarity: "AFFIRMED" },
           })
         );
       }
-    } catch {
-      // ignore individual rule match errors
     }
   }
 
-  // 2. Consume answerAnalyzer.js findings from evaluation.analysis
-  const analysis = evaluation?.analysis || null;
-  if (analysis) {
-    for (const c of analysis.concepts?.present || []) {
-      const label = typeof c === "string" ? c : c.concept || c.text || "";
-      if (!label) continue;
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.CLAIM,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.VERIFIED,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.85,
-          text: label,
-          meaning: `Demonstrated key concept: "${label}"`,
-        })
-      );
-    }
+  // Subject misconceptions check on this single source ONLY
+  const subjectKey = String(questionContract.subject || "").toLowerCase();
+  const misconceptionList =
+    SUBJECT_MISCONCEPTIONS[subjectKey] ||
+    Object.values(SUBJECT_MISCONCEPTIONS).flat();
 
-    for (const contra of analysis.contradictions || []) {
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.COMPARISON,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.DIVERGENT,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.9,
-          text: contra.studentConcept || combined,
-          meaning: `Used "${contra.studentConcept}" where "${contra.expectedConcept}" was expected`,
-          metadata: {
-            expected: contra.expectedConcept,
-            observed: contra.studentConcept,
-          },
-        })
-      );
-    }
-
-    for (const m of analysis.concepts?.missing || []) {
-      const label = typeof m === "string" ? m : m.concept || "";
-      if (!label) continue;
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.OMISSION,
-          source: "reconciled",
-          status: EVIDENCE_STATUS.MISSING,
-          provenance: EVIDENCE_PROVENANCE.DERIVED,
-          confidence: 0.82,
-          text: label,
-          meaning: `Missing required concept: "${label}"`,
-        })
-      );
+  for (const rule of misconceptionList) {
+    if (typeof rule.detect === "function") {
+      try {
+        const hit = rule.detect(trimmed, questionText, expectedAnswer);
+        if (hit) {
+          const obsId = nextId();
+          items.push(
+            createEvidenceItem({
+              id: obsId,
+              type: EVIDENCE_TYPES.CLAIM,
+              source: sourceName,
+              location: { source: sourceName },
+              status: EVIDENCE_STATUS.DIVERGENT,
+              provenance: EVIDENCE_PROVENANCE.INFERRED,
+              confidenceFactors: { exactMatch: 0, explicitLabel: 1, sourceQuality: 0.85 },
+              text: trimmed,
+              meaning: hit.explanation || rule.description || rule.name,
+              derivation: { from: [obsId], rule: `MISCONCEPTION_${rule.id || "RULE"}` },
+              metadata: { misconceptionId: rule.id, repair: hit.repair },
+            })
+          );
+        }
+      } catch {
+        // Ignore single rule errors
+      }
     }
   }
 
-  // 3. Typo-tolerant keyword check against question.why / expectedAnswer when no analysis concepts matched
-  if (items.filter((i) => i.status === EVIDENCE_STATUS.VERIFIED).length === 0 && tokens.length >= 3) {
-    const referenceText = `${expectedAnswer} ${question?.why || ""}`.trim();
+  // Weak lexical overlap fallback (NEVER marked VERIFIED — strictly WEAK_SUPPORT + INFERRED)
+  const hasStrongSupport = items.some(
+    (i) => i.status === EVIDENCE_STATUS.VERIFIED || i.status === EVIDENCE_STATUS.SUPPORTED
+  );
+  if (!hasStrongSupport && expectedAnswer) {
+    const refText = [expectedAnswer, question.why || ""].join(" ");
     const refWords = Array.from(
-      new Set(tokenizeWords(referenceText).filter((w) => w.length >= 5 && !STOP_WORDS.has(w)))
+      new Set(tokenizeWords(refText).filter((w) => w.length >= 4 && !STOP_WORDS.has(w)))
     );
     const matchedWords = refWords.filter((w) => fuzzyTokenMatch(w, tokens));
-    if (matchedWords.length > 0) {
+    if (matchedWords.length > 0 && !isKeyboardMash(trimmed)) {
+      // Guard against negated statements (e.g. "Photosynthesis does not require light")
+      const clauses = extractClauseClaims(trimmed);
+      const anyNegated = clauses.some((c) => c.polarity === "NEGATED");
       items.push(
         createEvidenceItem({
-          type: EVIDENCE_TYPES.EXPLANATION,
-          source: userWork ? "userWork" : "studentAnswer",
-          status: EVIDENCE_STATUS.VERIFIED,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.78,
-          text: matchedWords.slice(0, 4).join(", "),
-          meaning: `Referenced relevant idea(s): ${matchedWords.slice(0, 4).join(", ")}`,
+          id: nextId(),
+          type: EVIDENCE_TYPES.CLAIM,
+          source: sourceName,
+          location: { source: sourceName },
+          status: anyNegated ? EVIDENCE_STATUS.AMBIGUOUS : EVIDENCE_STATUS.WEAK_SUPPORT,
+          provenance: EVIDENCE_PROVENANCE.INFERRED,
+          confidenceFactors: { exactMatch: 0, explicitLabel: 0, ambiguity: anyNegated ? 0.6 : 0.3 },
+          text: trimmed,
+          meaning: `Referenced relevant term(s): ${matchedWords.slice(0, 4).join(", ")}`,
+          metadata: { matchedKeywords: matchedWords },
         })
       );
     }
   }
 
-  return items;
+  return { items, relationships, stepAnalysis, reasoningTrace };
 }
 
 /**
- * Check unit omission / mismatch or bare numeric answer signatures.
+ * Reconciles userWorkEvidence and studentAnswerEvidence without losing provenance.
  */
-function extractQuantityAndUnitEvidence({ studentAnswer, userWork, expectedAnswer, questionText }) {
-  const items = [];
-  const exp = parseNumericAndUnit(expectedAnswer);
-  const stu = parseNumericAndUnit(studentAnswer);
-  if (!exp || !stu) return items;
+function reconcileStreams({
+  userWork,
+  studentAnswer,
+  workObs,
+  answerObs,
+  expectedParts,
+  questionContract,
+  idCounter,
+}) {
+  const allItems = [...workObs.items, ...answerObs.items];
+  const allRelations = [...workObs.relationships, ...answerObs.relationships];
+  const nextId = () => `ev_${++idCounter.val}`;
 
-  // Unit mismatch or omission when numeric value is exact
-  if (Math.abs(stu.value - exp.value) < 0.001) {
-    if (!stu.unit && exp.unit) {
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.QUANTITY,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.VERIFIED,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.96,
-          text: String(stu.value),
-          meaning: `Correct numerical value (${stu.value})`,
-        })
+  // Check multi-part coverage across BOTH independent streams
+  if (expectedParts.length > 0) {
+    for (const part of expectedParts) {
+      const foundInWork = workObs.items.find(
+        (i) => i.subPart === part.partKey && (i.status === EVIDENCE_STATUS.VERIFIED || i.status === EVIDENCE_STATUS.DIVERGENT)
       );
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.UNIT,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.MISSING,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.95,
-          text: exp.unit,
-          meaning: `Missing unit "${exp.unit}"`,
-          metadata: { errorType: "unit_omitted", expectedUnit: exp.unit },
-        })
+      const foundInAns = answerObs.items.find(
+        (i) => i.subPart === part.partKey && (i.status === EVIDENCE_STATUS.VERIFIED || i.status === EVIDENCE_STATUS.DIVERGENT)
       );
-    } else if (stu.unit && exp.unit && stu.unit !== exp.unit) {
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.QUANTITY,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.VERIFIED,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.96,
-          text: String(stu.value),
-          meaning: `Correct numerical value (${stu.value})`,
-        })
-      );
-      items.push(
-        createEvidenceItem({
-          type: EVIDENCE_TYPES.UNIT,
-          source: "studentAnswer",
-          status: EVIDENCE_STATUS.DIVERGENT,
-          provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.95,
-          text: stu.unit,
-          meaning: `Used unit "${stu.unit}" instead of "${exp.unit}"`,
-          metadata: { errorType: "unit_mismatch", expectedUnit: exp.unit, observedUnit: stu.unit },
-        })
-      );
-    }
-    return items;
-  }
 
-  // Bare wrong numeric answer (INFERRED only if no working was provided!)
-  if (!userWork || !userWork.trim()) {
-    const qLower = String(questionText || "").toLowerCase();
-    // Check for rate operation inversion signature (e.g. d * t instead of d / t)
-    if (qLower.includes("speed") || qLower.includes("velocity")) {
-      const distMatches = [...qLower.matchAll(/(\d+(?:\.\d+)?)\s*(?:km|kilometers?|kilometres?|m\b|meters?|metres?)/gi)];
-      const timeMatches = [...qLower.matchAll(/(\d+(?:\.\d+)?)\s*(?:hours?|hrs?|h\b|seconds?|secs?|s\b|minutes?|mins?)/gi)];
-      const totalD = distMatches.reduce((acc, m) => acc + parseFloat(m[1]), 0);
-      const totalT = timeMatches.reduce((acc, m) => acc + parseFloat(m[1]), 0);
-      if (totalD > 0 && totalT > 0 && Math.abs(stu.value - totalD * totalT) < 0.05) {
-        items.push(
+      if (!foundInWork && !foundInAns) {
+        allItems.push(
           createEvidenceItem({
-            type: EVIDENCE_TYPES.QUANTITY,
-            source: "studentAnswer",
-            status: EVIDENCE_STATUS.AMBIGUOUS,
-            provenance: EVIDENCE_PROVENANCE.INFERRED,
-            confidence: 0.6,
-            text: studentAnswer,
-            meaning: `Final value ${stu.value} matches ${totalD} × ${totalT}, though no working was shown`,
-            metadata: { candidateSignature: "rate_inversion", inputs: [totalD, totalT] },
+            id: nextId(),
+            type: EVIDENCE_TYPES.OMISSION,
+            source: "reconciled",
+            location: { source: "reconciled" },
+            status: EVIDENCE_STATUS.MISSING,
+            provenance: EVIDENCE_PROVENANCE.DERIVED,
+            confidenceFactors: { exactMatch: 1, explicitLabel: 1, sourceQuality: 0.9 },
+            text: "",
+            meaning: `Did not provide ${part.label} (${part.rawExpected})`,
+            subPart: part.partKey,
+            metadata: { partKey: part.partKey, expected: part.rawExpected },
           })
         );
+      } else if (foundInWork && foundInAns && foundInWork.status !== foundInAns.status) {
+        allRelations.push({
+          type: EVIDENCE_RELATION_TYPES.CONTRADICTS,
+          from: foundInAns.id,
+          to: foundInWork.id,
+          reason: `Working and final answer disagree on ${part.label}`,
+        });
       }
     }
   }
 
-  return items;
+  // Check working vs final answer numeric divergence
+  if (userWork && studentAnswer && questionContract.expectedAnswer) {
+    const expQty = normalizeQuantity(questionContract.expectedAnswer);
+    const ansQty = normalizeQuantity(studentAnswer);
+    const workLines = userWork.split(/\r?\n/).map((l) => l.trim()).filter(Boolean);
+    const lastLine = workLines[workLines.length - 1] || "";
+    const lastWorkQty = normalizeQuantity(lastLine.split("=").pop());
+
+    if (expQty && ansQty && lastWorkQty) {
+      const workMatchesExp = compareQuantities(lastWorkQty, expQty).equal;
+      const ansMatchesExp = compareQuantities(ansQty, expQty).equal;
+
+      if (workMatchesExp && !ansMatchesExp) {
+        const recId = nextId();
+        allItems.push(
+          createEvidenceItem({
+            id: recId,
+            type: EVIDENCE_TYPES.CALCULATION,
+            source: "reconciled",
+            location: { source: "reconciled" },
+            status: EVIDENCE_STATUS.VERIFIED,
+            provenance: EVIDENCE_PROVENANCE.DERIVED,
+            confidenceFactors: { exactMatch: 1, explicitLabel: 1, sourceQuality: 0.95 },
+            text: lastLine,
+            meaning: `Your working reached the correct value (${lastWorkQty.value}), but final answer was "${studentAnswer}"`,
+          })
+        );
+        return {
+          items: allItems,
+          relationships: allRelations,
+          reconciliation: RECONCILIATION_STATES.WORKING_CORRECT_FINAL_WRONG,
+          firstDivergence: null,
+        };
+      }
+    }
+  }
+
+  // Determine explicit reconciliation state
+  const hasVerified = allItems.some((i) => i.status === EVIDENCE_STATUS.VERIFIED);
+  const hasSupported = allItems.some((i) => i.status === EVIDENCE_STATUS.SUPPORTED);
+  const hasDivergent = allItems.some((i) => i.status === EVIDENCE_STATUS.DIVERGENT);
+  const hasMissing = allItems.some((i) => i.status === EVIDENCE_STATUS.MISSING);
+  const hasUnitError = allItems.some((i) => i.type === EVIDENCE_TYPES.UNIT && i.status === EVIDENCE_STATUS.DIVERGENT);
+  const hasContradiction = allItems.some((i) => i.type === EVIDENCE_TYPES.CONTRADICTION);
+
+  let reconciliation = RECONCILIATION_STATES.UNCLASSIFIED;
+  let firstDivergence = workObs.reasoningTrace?.firstDivergence ?? null;
+
+  if (workObs.stepAnalysis?.whereYourWorkingBrokeDown) {
+    reconciliation =
+      firstDivergence === 1
+        ? RECONCILIATION_STATES.FIRST_STEP_ERROR
+        : RECONCILIATION_STATES.STEP_BREAKDOWN;
+  } else if (hasContradiction) {
+    reconciliation = RECONCILIATION_STATES.CONTRADICTION;
+  } else if ((hasVerified || hasSupported) && hasMissing && !hasDivergent) {
+    reconciliation = RECONCILIATION_STATES.PARTIAL_REASONING_MISSING_CALC;
+  } else if (hasUnitError) {
+    reconciliation = RECONCILIATION_STATES.UNIT_ERROR;
+  } else if (hasDivergent) {
+    reconciliation = RECONCILIATION_STATES.DIVERGENT_EVIDENCE;
+  } else if (hasVerified || hasSupported) {
+    reconciliation = RECONCILIATION_STATES.PARTIAL_VERIFIED;
+  } else if (!userWork && studentAnswer) {
+    reconciliation = RECONCILIATION_STATES.NO_WORK;
+  }
+
+  return {
+    items: allItems,
+    relationships: allRelations,
+    reconciliation,
+    firstDivergence,
+  };
 }
 
 /**
- * Main entry point: builds a unified EvidenceBundle from CanonicalSubmission + EvaluationResult.
+ * Main entry point: builds an immutable, source-separated EvidenceBundle.
  */
 export function buildEvidenceBundle(submission = {}, questionOrEval = null, maybeEval = null) {
   const studentAnswer = String(submission.studentAnswer ?? submission.answer ?? "").trim();
   const userWork = String(submission.userWork ?? submission.work ?? "").trim();
-  
+
   let question = submission.question || {};
   let evaluation = null;
 
@@ -628,90 +665,95 @@ export function buildEvidenceBundle(submission = {}, questionOrEval = null, mayb
     }
   }
 
-  const questionText = String(question.q || question.stem || question.text || "").trim();
-  const expectedAnswer = String(
-    evaluation?.correctAnswer || question.ans || question.answer || question.correctAnswer || ""
-  ).trim();
+  const questionContract = createQuestionContract({
+    ...question,
+    ans: evaluation?.correctAnswer || question.ans || question.answer || question.correctAnswer || "",
+  });
 
-  // 1. Blank or uninterpretable / keyboard mash check
+  // 1. Blank check
   if (!studentAnswer && !userWork) {
     return createEvidenceBundle({
       studentAnswer,
       working: userWork,
       items: [],
-      reconciliation: "BLANK",
+      reconciliation: RECONCILIATION_STATES.BLANK,
+      questionContract,
     });
   }
 
+  // 2. Malformed / keyboard mash check
   if ((isKeyboardMash(studentAnswer) || isUninterpretableInput(studentAnswer)) && !userWork) {
     return createEvidenceBundle({
       studentAnswer,
       working: userWork,
       items: [
         createEvidenceItem({
+          id: "ev_1",
           type: EVIDENCE_TYPES.CLAIM,
           source: "studentAnswer",
           status: EVIDENCE_STATUS.AMBIGUOUS,
           provenance: EVIDENCE_PROVENANCE.OBSERVED,
-          confidence: 0.95,
+          confidenceFactors: { exactMatch: 0, explicitLabel: 0, ambiguity: 0.9 },
           text: studentAnswer,
           meaning: "Submitted text does not contain recognizable words or mathematical expressions",
           metadata: { malformed: true },
         }),
       ],
-      reconciliation: "MALFORMED",
+      reconciliation: RECONCILIATION_STATES.MALFORMED,
+      questionContract,
     });
   }
 
-  const allItems = [];
-  let stepAnalysis = null;
+  const expectedParts = parseExpectedMultiPartTargets(questionContract.expectedAnswer);
+  const idCounter = { val: 0 };
 
-  // 2. Quantitative working & reconciliation
-  const mathRes = extractMathWorkEvidence({ userWork, studentAnswer, questionText, expectedAnswer });
-  allItems.push(...mathRes.items);
-  stepAnalysis = mathRes.stepAnalysis;
+  // 3. Observe userWork and studentAnswer in strictly separate streams
+  const workObs = observeSingleSource({
+    sourceName: "userWork",
+    text: userWork,
+    question,
+    questionContract,
+    expectedParts,
+    evaluation,
+    idCounter,
+  });
 
-  // 3. Multi-part targets (e.g. Distance = 20 m; displacement = 0 m)
-  const combined = [userWork, studentAnswer].filter(Boolean).join(" ").trim();
-  const multiPartItems = extractMultiPartEvidence({ combinedText: combined, expectedAnswer });
-  allItems.push(...multiPartItems);
+  const answerObs = observeSingleSource({
+    sourceName: "studentAnswer",
+    text: studentAnswer,
+    question,
+    questionContract,
+    expectedParts,
+    evaluation,
+    idCounter,
+  });
 
-  // 4. Unit / numeric quantity checks
-  if (multiPartItems.length === 0) {
-    allItems.push(
-      ...extractQuantityAndUnitEvidence({ studentAnswer, userWork, expectedAnswer, questionText })
-    );
-  }
-
-  // 5. Prose / conceptual / subject knowledge checks
-  allItems.push(
-    ...extractProseAndSubjectEvidence({
-      studentAnswer,
-      userWork,
-      question,
-      expectedAnswer,
-      evaluation,
-    })
-  );
-
-  // Determine reconciliation state
-  const hasVerified = allItems.some((i) => i.status === EVIDENCE_STATUS.VERIFIED);
-  const hasDivergent = allItems.some((i) => i.status === EVIDENCE_STATUS.DIVERGENT);
-  const hasMissing = allItems.some((i) => i.status === EVIDENCE_STATUS.MISSING);
-  const hasReconciledFinalDiv = allItems.some((i) => i.source === "reconciled" && i.status === EVIDENCE_STATUS.VERIFIED);
-
-  let reconciliation = "UNCLASSIFIED";
-  if (hasReconciledFinalDiv) reconciliation = "FINAL_DIVERGENCE";
-  else if (stepAnalysis?.whereYourWorkingBrokeDown) reconciliation = "STEP_BREAKDOWN";
-  else if (hasVerified && hasMissing && !hasDivergent) reconciliation = "PARTIAL_REASONING_MISSING_CALC";
-  else if (hasDivergent) reconciliation = "DIVERGENT_EVIDENCE";
-  else if (hasVerified) reconciliation = "PARTIAL_VERIFIED";
+  // 4. Reconcile across streams
+  const reconciled = reconcileStreams({
+    userWork,
+    studentAnswer,
+    workObs,
+    answerObs,
+    expectedParts,
+    questionContract,
+    idCounter,
+  });
 
   return createEvidenceBundle({
     studentAnswer,
     working: userWork,
-    items: allItems,
-    reconciliation,
-    stepAnalysis,
+    items: reconciled.items,
+    relationships: reconciled.relationships,
+    reconciliation: reconciled.reconciliation,
+    reconciliationDetail: {
+      state: reconciled.reconciliation,
+      firstDivergence: reconciled.firstDivergence,
+    },
+    reasoningTrace: workObs.reasoningTrace,
+    questionContract,
+    stepAnalysis: workObs.stepAnalysis,
   });
 }
+
+// Keep export for backward compatibility
+export { parseExpectedMultiPartTargets as parseMultiPartExpected };

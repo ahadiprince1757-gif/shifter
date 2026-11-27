@@ -211,5 +211,123 @@ const mashDiag = diagnosticEngine.diagnose({
 assert(mashDiag.state === LEARNING_DIAGNOSIS_STATES.INCONCLUSIVE, "Mash stays INCONCLUSIVE");
 assert(mashDiag.diagnosis.category === DIAGNOSIS_CATEGORIES.MALFORMED, "Classified as malformed category");
 
+// ── TEST 5: Source Separation & Immutable EvidenceBundle ─────────────────────
+console.log("\n[Test 5: Source Separation & Contradiction Between Work and Final Answer]");
+
+const workVsAnswerSub = createSubmissionEntity({
+  questionId: physicsQuestion.id,
+  work: "Distance = 20 m",
+  answer: "Distance = 40 m; displacement = 0 m",
+  userId: "user_source_sep",
+});
+
+const workVsAnswerDiag = diagnosticEngine.diagnose({
+  submission: workVsAnswerSub,
+  question: physicsQuestion,
+  evaluation: createEvaluationResult({
+    isCorrect: false,
+    studentAnswer: workVsAnswerSub.answer,
+    userWork: workVsAnswerSub.work,
+    correctAnswer: physicsQuestion.ans,
+  }),
+});
+
+assert(Object.isFrozen(workVsAnswerDiag.evidence), "EvidenceBundle is strictly immutable");
+assert(
+  workVsAnswerDiag.evidence.userWorkEvidence.some((e) => e.source === "userWork" && e.text.includes("20")),
+  "userWorkEvidence preserves Distance = 20 m separately"
+);
+assert(
+  workVsAnswerDiag.evidence.studentAnswerEvidence.some((e) => e.source === "studentAnswer" && e.text.includes("40")),
+  "studentAnswerEvidence preserves Distance = 40 m separately"
+);
+assert(
+  workVsAnswerDiag.evidence.relationships.some((r) => r.type === "CONTRADICTS"),
+  "Cross-source contradiction relationship emitted between work and final answer"
+);
+
+// ── TEST 6: Unit Normalization & Unit Error Detection ────────────────────────
+console.log("\n[Test 6: Unit Normalization & Unit Mismatch Detection]");
+
+const unitQuestion = {
+  id: "q_unit_1",
+  q: "A car travels 120 km in 3 hours. Calculate its average speed.",
+  ans: "40 km/h",
+  skillContract: {
+    skillId: "phys-kinematics-avg-speed",
+    skillName: "Calculate average speed",
+    targetConcept: "speed = distance / time",
+  },
+  why: "Average speed equals total distance divided by total time.",
+};
+
+const unitSub = createSubmissionEntity({
+  questionId: unitQuestion.id,
+  answer: "40 m/s",
+  work: "",
+  userId: "user_unit",
+});
+
+const unitDiag = diagnosticEngine.diagnose({
+  submission: unitSub,
+  question: unitQuestion,
+  evaluation: createEvaluationResult({
+    isCorrect: false,
+    studentAnswer: "40 m/s",
+    correctAnswer: "40 km/h",
+  }),
+});
+
+assert(unitDiag.state === LEARNING_DIAGNOSIS_STATES.DIAGNOSED, "Unit mismatch is DIAGNOSED");
+assert(unitDiag.diagnosis.brokenAt === "unit_mismatch", "Pinpoints unit_mismatch");
+assert(
+  unitDiag.retest.probe.expectedConcept === "speed = distance / time",
+  "Uses skillContract.targetConcept instead of hardcoded 'operation choice'"
+);
+assert(
+  unitDiag.retest.probe.options.length === 0,
+  "Does not leak [expectedAnswer, studentAnswer] in retest options"
+);
+
+// ── TEST 7: Explicit Negation Guard (Biology) ────────────────────────────────
+console.log("\n[Test 7: Negation Guard Prevents False Support]");
+
+const bioQuestion = {
+  id: "q_bio_respire",
+  q: "Explain whether plants respire.",
+  ans: "Plants respire continuously to release energy.",
+  subject: "Biology",
+  skillId: "bio-respiration-plants",
+  why: "All living cells, including plant cells, respire continuously.",
+};
+
+const bioSub = createSubmissionEntity({
+  questionId: bioQuestion.id,
+  answer: "Plants do not respire",
+  work: "",
+  userId: "user_bio",
+});
+
+const bioDiag = diagnosticEngine.diagnose({
+  submission: bioSub,
+  question: bioQuestion,
+  evaluation: createEvaluationResult({
+    isCorrect: false,
+    studentAnswer: bioSub.answer,
+    correctAnswer: bioQuestion.ans,
+    matchedConcepts: ["respire"],
+  }),
+});
+
+assert(bioDiag.state === LEARNING_DIAGNOSIS_STATES.DIAGNOSED, "Negated concept is DIAGNOSED");
+assert(
+  bioDiag.diagnosis.category === DIAGNOSIS_CATEGORIES.MISCONCEPTION,
+  "Negated concept classified as MISCONCEPTION, not SUPPORTED"
+);
+assert(
+  bioDiag.evidence.divergent.some((e) => e.claim?.polarity === "NEGATED"),
+  "Evidence item records polarity: NEGATED"
+);
+
 console.log(`\nUniversal Learning Diagnosis Tests Complete: ${passed} passed, ${failed} failed.`);
 if (failed > 0) process.exit(1);
