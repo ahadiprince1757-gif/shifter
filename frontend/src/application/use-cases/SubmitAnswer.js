@@ -103,7 +103,14 @@ export class SubmitAnswerUseCase {
       steps: rawRes?.steps || question?.steps || [],
       partialInfo: rawRes?.partialInfo,
       confidence: rawRes?.confidence ?? 1.0,
+      analysis: rawRes?.analysis || null,
+      matchedConcepts: rawRes?.matchedConcepts || [],
+      missingConcepts: rawRes?.missingConcepts || [],
+      questionWhy: question?.why || null,
     });
+
+    // Ensure question is attached to submission
+    submission.question = question;
 
     // ── STEP 4: DIAGNOSE COGNITIVE BREAKDOWN IF INCORRECT ──
     let diagnosis = null;
@@ -185,7 +192,9 @@ export class SubmitAnswerUseCase {
       userAnswer: answer,
       userWork: work,
       confidence,
+      diagnosis,
       teacherDiagnosis: diagnosis,
+      canonicalDiagnosis: diagnosis,
       analysis: {
         ...(rawRes?.analysis || {}),
         teacherDiagnosis: diagnosis,

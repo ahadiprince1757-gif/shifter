@@ -22,6 +22,10 @@ export function createEvaluationResult({
   solution = "",
   steps = [],
   partialInfo = null,
+  analysis = null,
+  matchedConcepts = [],
+  missingConcepts = [],
+  questionWhy = "",
   method = "deterministic",
   confidence = 1.0,
 }) {
@@ -38,6 +42,10 @@ export function createEvaluationResult({
       totalRequired: Number(partialInfo.totalRequired || 0),
       percent: Number(partialInfo.percent || 0),
     } : null,
+    analysis: analysis && typeof analysis === "object" ? analysis : null,
+    matchedConcepts: Array.isArray(matchedConcepts) ? matchedConcepts : [],
+    missingConcepts: Array.isArray(missingConcepts) ? missingConcepts : [],
+    questionWhy: String(questionWhy || ""),
     method: String(method || "deterministic"),
     confidence: Number(confidence || 1.0),
   };

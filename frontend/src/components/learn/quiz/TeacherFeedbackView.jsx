@@ -127,6 +127,9 @@ export default function TeacherFeedbackView({
           ? `Double check your calculation: the expected result is ${expectedAnswer}.`
           : "Review the step-by-step method to see where your calculation diverged.");
   }
+  if (rememberText) {
+    rememberText = rememberText.replace(/\.{2,}$/, ".");
+  }
 
   // Verification Probe
   const targetVerification = verification || probe || null;
@@ -142,13 +145,22 @@ export default function TeacherFeedbackView({
     : (whyThisIsWrong ? [whyThisIsWrong] : []);
   const whyPoints = Array.from(new Set(rawWhyPoints.map((p) => String(p).trim()).filter(Boolean)));
 
+  const responseWhy = diagnosis.response?.whyYourThinkingBroke;
   const errorExplanation =
+    (responseWhy && String(responseWhy).trim()) ||
     diagDetail?.explanation ||
     breakPoint?.explanation ||
     (whyPoints.length > 0 ? whyPoints[0] : null) ||
     (expectedAnswer
       ? `You entered "${studentAns}", but the calculation leads to "${expectedAnswer}".`
       : "The calculation diverged from the expected result.");
+
+  const verifiedRights = Array.isArray(diagnosis.whatYouDidRight) && diagnosis.whatYouDidRight.length > 0
+    ? diagnosis.whatYouDidRight
+    : (Array.isArray(diagnosis.response?.whatYouDidRight) && diagnosis.response.whatYouDidRight.length > 0
+        ? diagnosis.response.whatYouDidRight
+        : []);
+  const showWhatYouDidRight = verifiedRights.length > 0 || (hasMultiLineWorking && breakStepIndex > 1);
 
   // ==========================================================================
   // PATH 1: CORRECT (Student Reasoning Confirmed)
@@ -249,15 +261,23 @@ export default function TeacherFeedbackView({
         />
       )}
 
-      {/* 03 · WHAT YOU DID RIGHT (if multi-step working had valid initial steps) */}
-      {hasMultiLineWorking && breakStepIndex > 1 && (
+      {/* 03 · WHAT YOU DID RIGHT */}
+      {showWhatYouDidRight && (
         <ContentSection title="WHAT YOU DID RIGHT">
           <div className="type-body" style={{ color: "var(--text-primary)" }}>
-            {parsedStudentSteps.slice(0, breakStepIndex - 1).map((line, idx) => (
-              <p key={idx} style={{ margin: "2px 0" }}>
-                Step {idx + 1} was valid: <code>{line}</code>.
-              </p>
-            ))}
+            {verifiedRights.length > 0 ? (
+              verifiedRights.map((item, idx) => (
+                <p key={idx} style={{ margin: "4px 0" }}>
+                  {item}
+                </p>
+              ))
+            ) : (
+              parsedStudentSteps.slice(0, breakStepIndex - 1).map((line, idx) => (
+                <p key={idx} style={{ margin: "2px 0" }}>
+                  Step {idx + 1} was valid: <code>{line}</code>.
+                </p>
+              ))
+            )}
           </div>
         </ContentSection>
       )}
